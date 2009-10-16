@@ -1,0 +1,20 @@
+To compile in Debian, please install the following package:
+
+libpanel-applet2-dev libavahi-client-dev
+
+To compile and install remmina-gnome package, please execute the following command as root:
+
+$ ./configure
+$ make
+$ make install
+
+NOTE: This package requires to be installed in the same prefix as remmina package.
+
+NOTE: The panel applet .server file will be installed as /usr/local/lib/bonobo/servers/Remmina_Applet.server by default. But in Debian 5.0, it seems that the Gnome panel is ignoring /usr/local/lib/bonobo/servers directory. Putting a symbolic-link under /usr/lib/bonobo/servers solves the problem:
+
+ln -s /usr/local/lib/bonobo/servers/Remmina_Applet.server /usr/lib/bonobo/servers/Remmina_Applet.server
+
+You might need to restart X (Ctrl-Alt-Backspace) to make it available.
+
+To add remmina applet to you panel, just right-click on your panel and choose "Remote Desktop Client".
+
