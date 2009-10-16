@@ -1199,7 +1199,12 @@ remmina_ssh_terminal_thread (gpointer data)
                 term->closed = TRUE;
                 break;
             }
-            write (term->master, buf, len);
+            while (len > 0)
+            {
+                ret = write (term->master, buf, len);
+                if (ret <= 0) break;
+                len -= ret;
+            }
         }
     }
 
