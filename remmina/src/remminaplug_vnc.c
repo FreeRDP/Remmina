@@ -116,7 +116,10 @@ remmina_plug_vnc_event_push (RemminaPlugVnc *gp_vnc, gint event_type, gpointer p
         break;
     }
     g_queue_push_tail (gp_vnc->vnc_event_queue, event);
-    write (gp_vnc->vnc_event_pipe[1], "\0", 1);
+    if (write (gp_vnc->vnc_event_pipe[1], "\0", 1))
+    {
+        /* Ignore */
+    }
 }
 
 static void
@@ -318,7 +321,10 @@ remmina_plug_vnc_process_vnc_event (RemminaPlugVnc *gp_vnc)
         }
         remmina_plug_vnc_event_free (event);
     }
-    read (gp_vnc->vnc_event_pipe[0], buf, sizeof (buf));
+    if (read (gp_vnc->vnc_event_pipe[0], buf, sizeof (buf)))
+    {
+        /* Ignore */
+    }
 }
 
 typedef struct _RemminaPlugVncCuttextParam
@@ -1808,7 +1814,12 @@ remmina_plug_vnc_init (RemminaPlugVnc *gp_vnc)
     gp_vnc->chat_window = NULL;
     gp_vnc->thread = 0;
     gp_vnc->vnc_event_queue = g_queue_new ();
-    pipe (gp_vnc->vnc_event_pipe);
+    if (pipe (gp_vnc->vnc_event_pipe))
+    {
+        g_print ("Error creating pipes.\n");
+        gp_vnc->vnc_event_pipe[0] = 0;
+        gp_vnc->vnc_event_pipe[1] = 0;
+    }
     flags = fcntl (gp_vnc->vnc_event_pipe[0], F_GETFL, 0);
     fcntl (gp_vnc->vnc_event_pipe[0], F_SETFL, flags | O_NONBLOCK);
 #ifdef HAVE_PTHREAD
