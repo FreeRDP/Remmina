@@ -2,6 +2,7 @@
 bin_PROGRAMS = remmina
 
 INCLUDES = @REMMINA_CFLAGS@ @LIBGCRYPT_CFLAGS@ \
+    -I$(top_builddir)/libvncserver \
     -DREMMINA_LOCALEDIR=\"$(remmina_localedir)\" \
     -DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
     -DREMMINA_DATADIR=\"$(pkgdatadir)\"
