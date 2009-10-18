@@ -34,7 +34,8 @@ remmina_SOURCES = remmina.c \
     remminaplug_xdmcp.h remminaplug_xdmcp.c \
     remminawidgetpool.h remminawidgetpool.c
 
-remmina_LDADD = @REMMINA_LIBS@ @LIBGCRYPT_LIBS@
+remmina_LDADD = @REMMINA_LIBS@ @LIBGCRYPT_LIBS@ \
+    $(top_builddir)/libvncserver/libvncclient.la
 
 EXTRA_DIST = remminamarshals.list
 

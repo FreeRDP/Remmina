@@ -1,3 +1,4 @@
 ## Process this file with automake to produce Makefile.in
-SUBDIRS = src po desktop icons
+SUBDIRS = libvncserver src po desktop icons
 
+EXTRA_DIST = README.LibVNCServer
