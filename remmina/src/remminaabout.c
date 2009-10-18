@@ -55,7 +55,7 @@ remmina_about_open (GtkWindow *parent)
 
     gtk_show_about_dialog (parent,
         "program-name", "Remmina",
-        "version", PACKAGE_VERSION,
+        "version", VERSION,
         "comments", _("The GTK+ Remote Desktop Client"),
         "authors", authors,
         "translator-credits", _("translator-credits"),

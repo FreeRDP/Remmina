@@ -1,19 +1,19 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ(2.59)
-AC_INIT(remmina, 0.6.99.1)
-AC_CONFIG_SRCDIR([src/remmina.c])
-AC_CONFIG_HEADER([config.h])
-AC_CONFIG_MACRO_DIR([m4])
-
+#AC_PREREQ(2.59)
+AC_INIT(config.h.in)
 AM_INIT_AUTOMAKE(remmina, 0.6.99.1)
+AM_CONFIG_HEADER([config.h])
+AC_CONFIG_SRCDIR([src/remmina.c])
+AC_CONFIG_MACRO_DIR([m4])
 
 # Checks for programs.
 AC_ISC_POSIX
 AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
+AC_PROG_LIBTOOL
 
 # Disable optimization if we enable debug
 AC_ARG_ENABLE(debug,
@@ -133,28 +133,41 @@ AC_CHECK_LIB(pthread, pthread_create, [
 ])
 
 # Check LibVNCClient
+AX_PREFIX_CONFIG_H([libvncserver/rfb/rfbconfig.h], [LIBVNCSERVER])
 AC_ARG_ENABLE(vnc,
     [AS_HELP_STRING([--disable-vnc], [Disable VNC])],
     [vnc_support=$enableval],
     [vnc_support="yes"]
 )
 if test "x$vnc_support" != "xno"; then
-    AC_CHECK_LIB(vncclient, rfbGetClient, [
-        AC_CHECK_HEADER(rfb/rfbclient.h, [
-            vnc_support="yes"
-            LIBS="-lvncclient $LIBS"
-            AC_DEFINE([HAVE_LIBVNCCLIENT], [1], [Define to 1 if you have the `vncclient' library (-lvncclient).])
-            AC_CHECK_DECL(LIBVNCSERVER_WITH_CLIENT_TLS, [
-                vnc_support="yes"
-            ], [
-                vnc_support="yes (However VeNCrypt/TLS is not supported)"
-            ], [#include "rfb/rfbclient.h"])
-        ], vnc_support="no. libvncclient(libvncserver)-dev required.")
-    ],[
-        vnc_support="no. libvncclient(libvncserver) required."
-    ])
+    vnc_support=""
 else
     vnc_support="disabled."
+fi
+if test "x$vnc_support" = "x"; then
+    AC_CHECK_LIB(z, deflate, , vnc_support="no. zlib required.")
+fi
+if test "x$vnc_support" = "x"; then
+    AC_CHECK_HEADER(zlib.h, , vnc_support="no. zlib-dev required.")
+fi
+if test "x$vnc_support" = "x"; then
+    AC_CHECK_LIB(jpeg, jpeg_CreateCompress, , vnc_support="no. libjpeg required.")
+fi
+if test "x$vnc_support" = "x"; then
+    AC_CHECK_HEADER(jpeglib.h, , vnc_support="no. libjpeg-dev required.")
+fi
+if test "x$vnc_support" = "x"; then
+    PKG_CHECK_MODULES(GNUTLS, gnutls >= 2.8.0, , vnc_support="no. libgnutls-dev required.")
+fi
+if test "x$vnc_support" = "x"; then
+    remmina_pkgs="$remmina_pkgs gnutls"
+    LIBS="-ljpeg -lz $LIBS"
+    AC_SUBST(GNUTLS_CFLAGS)
+    AC_SUBST(GNUTLS_LIBS)
+    AC_DEFINE([WITH_CLIENT_TLS], [1], [Enable support for gnutls in libvncclient])
+
+    AC_DEFINE([HAVE_LIBVNCCLIENT], [1], [Define to 1 if you have libvncclient.])
+    vnc_support="yes"
 fi
 
 # Check libssh
@@ -225,6 +238,7 @@ src/Makefile
 po/Makefile.in
 desktop/Makefile
 icons/Makefile
+libvncserver/Makefile
 ])
 
 AC_OUTPUT
