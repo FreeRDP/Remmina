@@ -2,12 +2,11 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT(remmina-gnome, 0.6.99.1)
+AC_INIT(config.h.in)
+AM_INIT_AUTOMAKE(remmina-gnome, 0.6.99.1)
 AC_CONFIG_SRCDIR([src/remminaapplet.c])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
-
-AM_INIT_AUTOMAKE(remmina-gnome, 0.6.99.1)
 
 # Checks for programs.
 AC_ISC_POSIX

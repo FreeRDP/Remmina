@@ -406,7 +406,7 @@ remmina_applet_menu_about (BonoboUIComponent *uic, RemminaAppletData *appdata, c
 
     gtk_show_about_dialog (NULL,
         "program-name", "Remmina Applet",
-        "version", PACKAGE_VERSION,
+        "version", VERSION,
         "comments", _("Remmina Remote Desktop Client Applet"),
         "authors", authors,
         "translator-credits", _("translator-credits"),
