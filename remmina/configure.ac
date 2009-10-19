@@ -2,8 +2,8 @@
 # Process this file with autoconf to produce a configure script.
 
 #AC_PREREQ(2.59)
-AC_INIT(config.h.in)
-AM_INIT_AUTOMAKE(remmina, 0.6.99.1)
+AC_INIT(remmina, 0.6.99.1)
+AM_INIT_AUTOMAKE
 AM_CONFIG_HEADER([config.h])
 AC_CONFIG_SRCDIR([src/remmina.c])
 AC_CONFIG_MACRO_DIR([m4])
