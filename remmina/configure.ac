@@ -51,6 +51,8 @@ AM_GLIB_GNU_GETTEXT
 remmina_localedir='${datadir}/locale'
 AC_SUBST(remmina_localedir)
 
+REMMINA_SUBDIRS="src po desktop icons"
+
 # Checks GTK+ version.
 PKG_CHECK_MODULES(GTK, [
     glib-2.0 >= 2.20.0
@@ -140,7 +142,20 @@ AC_ARG_ENABLE(vnc,
     [vnc_support="yes"]
 )
 if test "x$vnc_support" != "xno"; then
-    vnc_support=""
+    if test "x$vnc_support" = "xdl"; then
+        AC_CHECK_LIB(vncclient, rfbGetClient, [
+            AC_CHECK_HEADER(rfb/rfbclient.h, [
+                vnc_support="link to libvncclient externally"
+                VNC_LIBS="-lvncclient"
+                AC_SUBST(VNC_LIBS)
+                AC_DEFINE([HAVE_LIBVNCCLIENT], [1], [Define to 1 if you have libvncclient.])
+            ], vnc_support="no. libvncclient(libvncserver)-dev required.")
+        ],[
+            vnc_support="no. libvncclient(libvncserver) required."
+        ])
+    else
+        vnc_support=""
+    fi
 else
     vnc_support="disabled."
 fi
@@ -162,10 +177,12 @@ fi
 if test "x$vnc_support" = "x"; then
     remmina_pkgs="$remmina_pkgs gnutls"
     LIBS="-ljpeg -lz $LIBS"
+    REMMINA_SUBDIRS="libvncserver $REMMINA_SUBDIRS"
+    VNC_LIBS="../libvncserver/libvncclient.la"
+    AC_SUBST(VNC_LIBS)
     AC_SUBST(GNUTLS_CFLAGS)
     AC_SUBST(GNUTLS_LIBS)
     AC_DEFINE([WITH_CLIENT_TLS], [1], [Enable support for gnutls in libvncclient])
-
     AC_DEFINE([HAVE_LIBVNCCLIENT], [1], [Define to 1 if you have libvncclient.])
     vnc_support="yes"
 fi
@@ -215,6 +232,8 @@ PKG_CHECK_MODULES(REMMINA, [
 ])
 AC_SUBST(REMMINA_CFLAGS)
 AC_SUBST(REMMINA_LIBS)
+
+AC_SUBST(REMMINA_SUBDIRS)
 
 # Checks for header files.
 AC_CHECK_HEADERS_ONCE(

@@ -1,4 +1,4 @@
 ## Process this file with automake to produce Makefile.in
-SUBDIRS = libvncserver src po desktop icons
+SUBDIRS = @REMMINA_SUBDIRS@
 
 EXTRA_DIST = README.LibVNCServer
