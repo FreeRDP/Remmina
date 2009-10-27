@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT(remmina-xfce, 0.6.99.1)
+AC_INIT(remmina-xfce, 0.6.99.3)
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([src/remminaxfceplugin.c])
 AC_CONFIG_HEADER([config.h])
@@ -31,7 +31,7 @@ AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [The gettext package])
 
 if test "x$USE_NLS" != "xno"; then
-    ALL_LINGUAS="de el es nl pl ru zh_CN"
+    ALL_LINGUAS="de el es it nl pl ru zh_CN"
     nls_support="yes"
 else
     ALL_LINGUAS=""
