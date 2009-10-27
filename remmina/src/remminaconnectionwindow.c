@@ -1595,7 +1595,6 @@ static void
 remmina_connection_holder_on_page_added (GtkNotebook *notebook, GtkWidget *child, guint page_num, RemminaConnectionHolder *cnnhld)
 {
     remmina_connection_holder_update_notebook (cnnhld);
-    g_idle_add (remmina_connection_holder_grab_focus, notebook);
 }
 
 static GtkWidget*
