@@ -141,6 +141,7 @@ typedef rfbBool (*HandleCursorPosProc)(struct _rfbClient* client, int x, int y);
 typedef void (*SoftCursorLockAreaProc)(struct _rfbClient* client, int x, int y, int w, int h);
 typedef void (*SoftCursorUnlockScreenProc)(struct _rfbClient* client);
 typedef void (*GotFrameBufferUpdateProc)(struct _rfbClient* client, int x, int y, int w, int h);
+typedef void (*FinishedFrameBufferUpdateProc)(struct _rfbClient* client);
 typedef char* (*GetPasswordProc)(struct _rfbClient* client);
 typedef rfbCredential* (*GetCredentialProc)(struct _rfbClient* client, int credentialType);
 typedef rfbBool (*MallocFrameBufferProc)(struct _rfbClient* client);
@@ -184,6 +185,9 @@ typedef struct _rfbClient {
 	char *desktopName;
 	rfbPixelFormat format;
 	rfbServerInitMsg si;
+
+	/* listen.c */
+        int listenSock;
 
 	/* sockets.c */
 #define RFB_BUF_SIZE 8192
@@ -263,6 +267,7 @@ typedef struct _rfbClient {
 	SoftCursorLockAreaProc SoftCursorLockArea;
 	SoftCursorUnlockScreenProc SoftCursorUnlockScreen;
 	GotFrameBufferUpdateProc GotFrameBufferUpdate;
+	FinishedFrameBufferUpdateProc FinishedFrameBufferUpdate;
 	/* the pointer returned by GetPassword will be freed after use! */
 	GetPasswordProc GetPassword;
 	MallocFrameBufferProc MallocFrameBuffer;
@@ -309,6 +314,7 @@ extern rfbBool HandleCursorShape(rfbClient* client,int xhot, int yhot, int width
 /* listen.c */
 
 extern void listenForIncomingConnections(rfbClient* viewer);
+extern rfbBool listenForIncomingConnectionsNoFork(rfbClient* viewer, int usec_timeout);
 
 /* rfbproto.c */
 

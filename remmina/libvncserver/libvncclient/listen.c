@@ -27,6 +27,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #ifdef __MINGW32__
+#define close closesocket
 #include <winsock2.h>
 #else
 #include <sys/wait.h>
@@ -105,6 +106,62 @@ listenForIncomingConnections(rfbClient* client)
     }
   }
 #endif
+}
+
+
+
+/*
+ * listenForIncomingConnectionsNoFork() - listen for incoming connections
+ * from servers, but DON'T fork, instead just wait timeout microseconds.
+ * If timeout is negative, block indefinitly.
+ */
+
+rfbBool
+listenForIncomingConnectionsNoFork(rfbClient* client, int timeout)
+{
+  fd_set fds;
+  struct timeval to;
+
+  to.tv_sec= timeout / 1000000;
+  to.tv_usec= timeout % 1000000;
+
+  client->listenSpecified = TRUE;
+
+  if (! client->listenSock)
+    {
+      client->listenSock = ListenAtTcpPort(client->listenPort);
+
+      if (client->listenSock < 0)
+	return FALSE;
+
+      rfbClientLog("%s -listennofork: Listening on port %d\n",
+		   client->programName,client->listenPort);
+      rfbClientLog("%s -listennofork: Command line errors are not reported until "
+		   "a connection comes in.\n", client->programName);
+    }
+
+  FD_ZERO(&fds);
+
+  FD_SET(client->listenSock, &fds);
+
+  if (timeout < 0)
+    select(FD_SETSIZE, &fds, NULL, NULL, NULL);
+  else
+    select(FD_SETSIZE, &fds, NULL, NULL, &to);
+
+  if (FD_ISSET(client->listenSock, &fds))
+    {
+      client->sock = AcceptTcpConnection(client->listenSock);
+      if (client->sock < 0)
+	return FALSE;
+      if (!SetNonBlocking(client->sock))
+	return FALSE;
+
+      close(client->listenSock);
+      return TRUE;
+    }
+
+  return FALSE;
 }
 
 

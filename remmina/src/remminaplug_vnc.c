@@ -280,10 +280,6 @@ typedef struct _RemminaKeyVal
 /***************************** LibVNCClient related codes *********************************/
 #include <rfb/rfbclient.h>
 
-/* same as SupportsClient2Server */
-#define rfbSupportsClient2Server(client,messageType) \
-    ((client)->supportedMessages.client2server[((messageType & 0xFF)/8)] & (1<<(messageType % 8)))
-
 static void
 remmina_plug_vnc_process_vnc_event (RemminaPlugVnc *gp_vnc)
 {
@@ -1522,8 +1518,6 @@ remmina_plug_vnc_open_connection (RemminaPlug *gp)
 static gboolean
 remmina_plug_vnc_close_connection_timeout (RemminaPlugVnc *gp_vnc)
 {
-    gint sock;
-
     /* wait until the running attribute is set to false by the VNC thread */
     if (gp_vnc->running) return TRUE;
 
@@ -1556,11 +1550,6 @@ remmina_plug_vnc_close_connection_timeout (RemminaPlugVnc *gp_vnc)
     }
     if (gp_vnc->client)
     {
-        sock = ((rfbClient*) gp_vnc->client)->sock;
-        if (sock >= 0)
-        {
-            close (sock);
-        }
         rfbClientCleanup((rfbClient*) gp_vnc->client);
         gp_vnc->client = NULL;
     }
@@ -1632,10 +1621,10 @@ remmina_plug_vnc_query_feature (RemminaPlug *gp, RemminaPlugFeature feature)
         case REMMINA_PLUG_FEATURE_SCALE:
             return GINT_TO_POINTER (1);
         case REMMINA_PLUG_FEATURE_PREF_DISABLESERVERINPUT:
-            return (rfbSupportsClient2Server ((rfbClient*) (REMMINA_PLUG_VNC (gp)->client), rfbSetServerInput) ?
+            return (SupportsClient2Server ((rfbClient*) (REMMINA_PLUG_VNC (gp)->client), rfbSetServerInput) ?
                 GINT_TO_POINTER (1) : NULL);
         case REMMINA_PLUG_FEATURE_TOOL_CHAT:
-            return (rfbSupportsClient2Server ((rfbClient*) (REMMINA_PLUG_VNC (gp)->client), rfbTextChat) ?
+            return (SupportsClient2Server ((rfbClient*) (REMMINA_PLUG_VNC (gp)->client), rfbTextChat) ?
                 GINT_TO_POINTER (1) : NULL);
         default:
             return NULL;
