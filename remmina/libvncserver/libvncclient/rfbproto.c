@@ -75,7 +75,7 @@ rfbDefaultClientLog(const char *format, ...)
 
     time(&log_clock);
     strftime(buf, 255, "%d/%m/%Y %X ", localtime(&log_clock));
-    fprintf(stderr,buf);
+    fprintf(stderr, "%s", buf);
 
     vfprintf(stderr, format, args);
     fflush(stderr);
@@ -345,6 +345,7 @@ DefaultSupportedMessagesTightVNC(rfbClient* client)
     SetServer2Client(client, rfbTextChat);
 }
 
+#ifndef WIN32
 static rfbBool
 IsUnixSocket(const char *name)
 {
@@ -353,6 +354,7 @@ IsUnixSocket(const char *name)
     return TRUE;
   return FALSE;
 }
+#endif
 
 /*
  * ConnectToRFBServer.
@@ -679,6 +681,8 @@ HandleMSLogonAuth(rfbClient *client)
     rfbClientLog("GetCredential callback is not set.\n");
     return FALSE;
   }
+  rfbClientLog("WARNING! MSLogon security type has very low password encryption! "\
+    "Use it only with SSH tunnel or trusted network.\n");
   cred = client->GetCredential(client, rfbCredentialTypeUser);
   if (!cred)
   {
@@ -1780,6 +1784,9 @@ HandleRFBServerMessage(rfbClient* client)
 
     if (!SendIncrementalFramebufferUpdateRequest(client))
       return FALSE;
+
+    if (client->FinishedFrameBufferUpdate)
+      client->FinishedFrameBufferUpdate(client);
 
     break;
   }

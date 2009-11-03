@@ -30,6 +30,7 @@
 #include <assert.h>
 #include <rfb/rfbclient.h>
 #ifdef WIN32
+#undef SOCKET
 #include <winsock2.h>
 #define EWOULDBLOCK WSAEWOULDBLOCK
 #define close closesocket
@@ -274,6 +275,23 @@ WriteToRFBServer(rfbClient* client, char *buf, int n)
 }
 
 
+
+static int initSockets() {
+#ifdef WIN32
+  WSADATA trash;
+  static rfbBool WSAinitted=FALSE;
+  if(!WSAinitted) {
+    int i=WSAStartup(MAKEWORD(2,0),&trash);
+    if(i!=0) {
+      rfbClientErr("Couldn't init Windows Sockets\n");
+      return 0;
+    }
+    WSAinitted=TRUE;
+  }
+#endif
+  return 1;
+}
+
 /*
  * ConnectToTcpAddr connects to the given TCP port.
  */
@@ -285,18 +303,8 @@ ConnectClientToTcpAddr(unsigned int host, int port)
   struct sockaddr_in addr;
   int one = 1;
 
-#ifdef WIN32
-  WSADATA trash;
-  static rfbBool WSAinitted=FALSE;
-  if(!WSAinitted) {
-    WSAinitted=TRUE;
-    int i=WSAStartup(MAKEWORD(2,0),&trash);
-    if(i!=0) {
-      rfbClientErr("Couldn't init Windows Sockets\n");
-      return -1;
-    }
-  }
-#endif
+  if (!initSockets())
+	  return -1;
 
   addr.sin_family = AF_INET;
   addr.sin_port = htons(port);
@@ -371,6 +379,9 @@ FindFreeTcpPort(void)
   addr.sin_family = AF_INET;
   addr.sin_addr.s_addr = htonl(INADDR_ANY);
 
+  if (!initSockets())
+    return -1;
+
   sock = socket(AF_INET, SOCK_STREAM, 0);
   if (sock < 0) {
     rfbClientErr(": FindFreeTcpPort: socket\n");
@@ -404,6 +415,9 @@ ListenAtTcpPort(int port)
   addr.sin_family = AF_INET;
   addr.sin_port = htons(port);
   addr.sin_addr.s_addr = htonl(INADDR_ANY);
+
+  if (!initSockets())
+    return -1;
 
   sock = socket(AF_INET, SOCK_STREAM, 0);
   if (sock < 0) {
@@ -492,7 +506,7 @@ StringToIPAddr(const char *str, unsigned int *addr)
   struct hostent *hp;
 
   if (strcmp(str,"") == 0) {
-    *addr = 0; /* local */
+    *addr = htonl(INADDR_LOOPBACK); /* local */
     return TRUE;
   }
 
@@ -500,6 +514,9 @@ StringToIPAddr(const char *str, unsigned int *addr)
 
   if (*addr != -1)
     return TRUE;
+
+  if (!initSockets())
+	  return -1;
 
   hp = gethostbyname(str);
 

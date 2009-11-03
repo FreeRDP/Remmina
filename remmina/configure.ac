@@ -135,7 +135,6 @@ AC_CHECK_LIB(pthread, pthread_create, [
 ])
 
 # Check LibVNCClient
-AX_PREFIX_CONFIG_H([libvncserver/rfb/rfbconfig.h], [LIBVNCSERVER])
 AC_ARG_ENABLE(vnc,
     [AS_HELP_STRING([--disable-vnc], [Disable VNC])],
     [vnc_support=$enableval],
@@ -146,7 +145,9 @@ if test "x$vnc_support" != "xno"; then
         AC_CHECK_LIB(vncclient, rfbGetClient, [
             AC_CHECK_HEADER(rfb/rfbclient.h, [
                 vnc_support="link to libvncclient externally"
+                VNC_CFLAGS=""
                 VNC_LIBS="-lvncclient"
+                AC_SUBST(VNC_CFLAGS)
                 AC_SUBST(VNC_LIBS)
                 AC_DEFINE([HAVE_LIBVNCCLIENT], [1], [Define to 1 if you have libvncclient.])
             ], vnc_support="no. libvncclient(libvncserver)-dev required.")
@@ -175,10 +176,13 @@ if test "x$vnc_support" = "x"; then
     PKG_CHECK_MODULES(GNUTLS, gnutls >= 2.8.0, , vnc_support="no. libgnutls-dev required.")
 fi
 if test "x$vnc_support" = "x"; then
+    AX_PREFIX_CONFIG_H([libvncserver/rfb/rfbconfig.h], [LIBVNCSERVER])
     remmina_pkgs="$remmina_pkgs gnutls"
     LIBS="-ljpeg -lz $LIBS"
     REMMINA_SUBDIRS="libvncserver $REMMINA_SUBDIRS"
+    VNC_CFLAGS="-I../libvncserver"
     VNC_LIBS="../libvncserver/libvncclient.la"
+    AC_SUBST(VNC_CFLAGS)
     AC_SUBST(VNC_LIBS)
     AC_SUBST(GNUTLS_CFLAGS)
     AC_SUBST(GNUTLS_LIBS)
