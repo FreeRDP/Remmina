@@ -382,42 +382,7 @@ remmina_applet_menu_enable_avahi (BonoboUIComponent *uic,
 static void
 remmina_applet_menu_about (BonoboUIComponent *uic, RemminaAppletData *appdata, const char *verb)
 {
-    const gchar *authors[] =
-    {
-        "Vic Lee <llyzs@163.com>",
-        NULL
-    };
-    const gchar *licenses[] =
-    {
-        N_("Remmina is free software; you can redistribute it and/or modify "
-           "it under the terms of the GNU General Public License as published by "
-           "the Free Software Foundation; either version 2 of the License, or "
-           "(at your option) any later version."),
-        N_("Remmina is distributed in the hope that it will be useful, "
-           "but WITHOUT ANY WARRANTY; without even the implied warranty of "
-           "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the "
-           "GNU General Public License for more details."),
-        N_("You should have received a copy of the GNU General Public License "
-           "along with this program; if not, write to the Free Software "
-           "Foundation, Inc., 59 Temple Place, Suite 330, "
-           "Boston, MA 02111-1307, USA.")
-    };
-    gchar *license = g_strjoin ("\n\n", _(licenses[0]), _(licenses[1]), _(licenses[2]), NULL);
-
-    gtk_show_about_dialog (NULL,
-        "program-name", "Remmina Applet",
-        "version", VERSION,
-        "comments", _("Remmina Remote Desktop Client Applet"),
-        "authors", authors,
-        "translator-credits", _("translator-credits"),
-        "copyright", "Copyright (C) 2009 - Vic Lee",
-        "license", license,
-        "wrap-license", TRUE,
-        "logo-icon-name", "remmina",
-        "website", "http://remmina.sourceforge.net",
-        NULL);
-
-    g_free (license);
+    remmina_applet_util_launcher (REMMINA_LAUNCH_ABOUT, NULL, NULL, NULL);
 }
 
 static const BonoboUIVerb remmina_applet_menu_verbs [] =

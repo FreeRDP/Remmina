@@ -32,6 +32,7 @@
 #include "remminapref.h"
 #include "remminaprefdialog.h"
 #include "remminawidgetpool.h"
+#include "remminaabout.h"
 
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
@@ -56,7 +57,8 @@ enum
     REMMINA_COMMAND_QUICK,
     REMMINA_COMMAND_NEW,
     REMMINA_COMMAND_CONNECT,
-    REMMINA_COMMAND_EDIT
+    REMMINA_COMMAND_EDIT,
+    REMMINA_COMMAND_ABOUT
 };
 
 static gint
@@ -69,10 +71,11 @@ remmina_parse_command (int argc, char* argv[], gchar **data)
     gchar *server = NULL;
     gchar *protocol = NULL;
 
-    while ((c = getopt (argc, argv, "c:e:np:qs:t:")) != -1)
+    while ((c = getopt (argc, argv, "ac:e:np:qs:t:")) != -1)
     {
         switch (c)
         {
+        case 'a':
         case 'c':
         case 'e':
         case 'n':
@@ -119,6 +122,10 @@ remmina_parse_command (int argc, char* argv[], gchar **data)
     case 'e':
         command = REMMINA_COMMAND_EDIT;
         *data = g_strdup (opt);
+        break;
+    case 'a':
+        command = REMMINA_COMMAND_ABOUT;
+        *data = NULL;
         break;
     default:
         command = REMMINA_COMMAND_MAIN;
@@ -174,6 +181,9 @@ remmina_exec_command (gint command, const gchar *data)
         widget = remmina_file_editor_new_from_filename (data);
         if (widget) gtk_widget_show (widget);
         break;
+    case REMMINA_COMMAND_ABOUT:
+        remmina_about_open (NULL);
+        break;
     }
 }
 
@@ -208,6 +218,7 @@ remmina_unique_exec_command (gint command, const gchar *data)
         "new",      REMMINA_COMMAND_NEW,
         "connect",  REMMINA_COMMAND_CONNECT,
         "edit",     REMMINA_COMMAND_EDIT,
+        "about",    REMMINA_COMMAND_ABOUT,
         NULL);
     if (unique_app_is_running (app))
     {
