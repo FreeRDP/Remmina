@@ -239,8 +239,10 @@ static int HandleZRLETile(rfbClient* client,
 	uint8_t* buffer_copy = buffer;
 	uint8_t* buffer_end = buffer+buffer_length;
 	uint8_t type;
+#if BPP!=8
 	uint8_t zywrle_level = (client->appData.qualityLevel & 0x80) ?
 		0 : (3 - client->appData.qualityLevel / 3);
+#endif
 
 	if(buffer_length<1)
 		return -2;
