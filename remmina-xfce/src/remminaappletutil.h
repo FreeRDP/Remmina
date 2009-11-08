@@ -33,7 +33,8 @@ typedef enum
     REMMINA_LAUNCH_QUICK,
     REMMINA_LAUNCH_FILE,
     REMMINA_LAUNCH_EDIT,
-    REMMINA_LAUNCH_NEW
+    REMMINA_LAUNCH_NEW,
+    REMMINA_LAUNCH_ABOUT
 } RemminaLaunchType;
 
 void remmina_applet_util_launcher (RemminaLaunchType launch_type, const gchar *filename, const gchar *server, const gchar *protocol);
