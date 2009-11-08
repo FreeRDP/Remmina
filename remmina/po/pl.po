@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-10-13 21:52+0800\n"
-"PO-Revision-Date: 2009-10-13 16:01+0000\n"
-"Last-Translator: Vic <llyzs@163.com>\n"
+"PO-Revision-Date: 2009-10-27 22:33+0000\n"
+"Last-Translator: bogus <Unknown>\n"
 "Language-Team: None\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2009-10-14 06:54+0000\n"
+"X-Launchpad-Export-Date: 2009-10-28 08:34+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Polish\n"
 
@@ -35,6 +35,7 @@ msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "Razem %i element."
 msgstr[1] "Razem %i elementów."
+msgstr[2] "Razem %i elementy."
 
 #: ../src/remminamain.c:406
 #, c-format
@@ -43,11 +44,11 @@ msgstr "Na pewno usunąć '%s'?"
 
 #: ../src/remminamain.c:580
 msgid "_Action"
-msgstr ""
+msgstr "_Czynność"
 
 #: ../src/remminamain.c:581
 msgid "_Edit"
-msgstr ""
+msgstr "_Edycja"
 
 #: ../src/remminamain.c:582
 msgid "_View"
@@ -84,7 +85,7 @@ msgstr "Przychodzące połączenie VNC"
 
 #: ../src/remminamain.c:597 ../src/remminafileeditor.c:48
 msgid "XDMCP - X Remote Session"
-msgstr ""
+msgstr "XDMCP - Zdalna sesja X"
 
 #: ../src/remminamain.c:599 ../src/remminafileeditor.c:50
 msgid "SFTP - Secure File Transfer"
@@ -108,7 +109,7 @@ msgstr "Otwórz połączenie do wybranego pliku zdalnego pulpitu"
 
 #: ../src/remminamain.c:626
 msgid "Create a copy of the selected remote desktop file"
-msgstr ""
+msgstr "Utwórz kopię wybranego pliku zdalnego pulpitu"
 
 #: ../src/remminamain.c:630
 msgid "Edit the selected remote desktop file"
@@ -180,7 +181,7 @@ msgstr "Domyślne"
 
 #: ../src/remminafile.c:46
 msgid "Grayscale"
-msgstr ""
+msgstr "Skala szarości"
 
 #: ../src/remminafile.c:55
 msgid "Poor (Fastest)"
@@ -216,7 +217,7 @@ msgstr "Katalog główny"
 
 #: ../src/remminafileeditor.c:92
 msgid "Off"
-msgstr ""
+msgstr "Wyłączony"
 
 #: ../src/remminafileeditor.c:93 ../src/remminaftpwindow.c:1026
 msgid "Local"
@@ -233,7 +234,7 @@ msgstr "Wybierz serwer zdalnego pulpitu"
 #: ../src/remminafileeditor.c:365
 #, c-format
 msgid "Browse the network to find a %s server"
-msgstr ""
+msgstr "Przeszukaj sieć w poszukiwaniu serwera %s"
 
 #: ../src/remminafileeditor.c:385 ../src/remminafileeditor.c:655
 #: ../src/remminainitdialog.c:278
@@ -284,7 +285,7 @@ msgstr "Nazwa użytkownika"
 
 #: ../src/remminafileeditor.c:662
 msgid "Public Key (Automatic)"
-msgstr ""
+msgstr "Klucz publiczny (Automatycznie)"
 
 #: ../src/remminafileeditor.c:669 ../src/remminafileeditor.c:676
 msgid "Identity File"
@@ -316,7 +317,7 @@ msgstr "Zaawansowane"
 
 #: ../src/remminafileeditor.c:767
 msgid "Sound"
-msgstr ""
+msgstr "Dźwięk"
 
 #: ../src/remminafileeditor.c:770 ../src/remminafileeditor.c:876
 msgid "Keyboard Mapping"
@@ -336,7 +337,7 @@ msgstr "Ścieżka startowa"
 
 #: ../src/remminafileeditor.c:782
 msgid "Share Local Printers"
-msgstr ""
+msgstr "Udostępnij lokalne drukarki"
 
 #: ../src/remminafileeditor.c:785
 msgid "Attach to console (Windows 2003 or newer)"
@@ -388,15 +389,15 @@ msgstr "<Żadna>"
 
 #: ../src/remminafileeditor.c:899
 msgid "Please install Xephyr to enable XDMCP feature"
-msgstr ""
+msgstr "Zainstaluj Xephyr, by włączyć obsługę XDMCP"
 
 #: ../src/remminafileeditor.c:917
 msgid "Use Local Cursor"
-msgstr ""
+msgstr "Użyj lokalnego kursora"
 
 #: ../src/remminafileeditor.c:920
 msgid "Disconnect After One Session"
-msgstr ""
+msgstr "Rozłącz po jedynej sesji"
 
 #: ../src/remminafileeditor.c:1222
 msgid "Default settings saved."
@@ -427,6 +428,8 @@ msgstr "Plik %s nie został znaleziony."
 msgid ""
 "There are %i active connections in the current window. Are you sure to close?"
 msgstr ""
+"W aktualnym oknie pozostało %i aktywnych połączeń. Jesteś pewny, by je "
+"zamknąć?"
 
 #. Chat
 #: ../src/remminaconnectionwindow.c:826
@@ -477,7 +480,7 @@ msgstr "Przełącz tryb viewport pełny ekran"
 
 #: ../src/remminaconnectionwindow.c:972
 msgid "Switch tab pages"
-msgstr ""
+msgstr "Zmień zakładkę"
 
 #: ../src/remminaconnectionwindow.c:985
 msgid "Toggle scaled mode"
@@ -552,6 +555,7 @@ msgstr "Uwierzytelnianie VNC nie powiodło się. Ponowiono próbę połączenia.
 #: ../src/remminaplug_xdmcp.c:89
 msgid "Please install xqproxy on SSH server in order to run XDMCP over SSH"
 msgstr ""
+"Zainstaluj xqproxy na serwerze SSH, by włączyć obsługę XDMCP poprzez SSH"
 
 #: ../src/remminainitdialog.c:205
 #, c-format
@@ -560,24 +564,24 @@ msgstr "Zapisz %s"
 
 #: ../src/remminainitdialog.c:289
 msgid "Save Password"
-msgstr ""
+msgstr "Zapisz hasło"
 
 #. Buttons for choosing the certificates
 #: ../src/remminainitdialog.c:388
 msgid "CA Certificate"
-msgstr ""
+msgstr "Certyfikat CA"
 
 #: ../src/remminainitdialog.c:389
 msgid "CA CRL"
-msgstr ""
+msgstr "CA CRL"
 
 #: ../src/remminainitdialog.c:390
 msgid "Client Certificate"
-msgstr ""
+msgstr "Certyfikat klienta"
 
 #: ../src/remminainitdialog.c:391
 msgid "Client Key"
-msgstr ""
+msgstr "Klucz klienta"
 
 #: ../src/remminaabout.c:31
 msgid "Maintainers:"
@@ -624,7 +628,7 @@ msgstr ""
 
 #: ../src/remminaabout.c:59
 msgid "The GTK+ Remote Desktop Client"
-msgstr ""
+msgstr "Klient GTK+ zdalnego pulpitu"
 
 #: ../src/remminaabout.c:61
 msgid "translator-credits"
@@ -632,7 +636,8 @@ msgstr ""
 "Jakub Tomczak <tomczak.jakub@gmail.com>, 2009\n"
 "\n"
 "Launchpad Contributions:\n"
-"  Vic https://launchpad.net/~llyzs"
+"  Vic https://launchpad.net/~llyzs\n"
+"  bogus https://launchpad.net/~tomczak-jakub"
 
 #: ../src/remminaprefdialog.c:34
 msgid "Open Connection"
@@ -664,19 +669,19 @@ msgstr "Autmatycznie"
 
 #: ../src/remminaprefdialog.c:59
 msgid "Tab by Groups"
-msgstr ""
+msgstr "Umieść w zakładkach wg. grupy"
 
 #: ../src/remminaprefdialog.c:60
 msgid "Tab by Protocols"
-msgstr ""
+msgstr "Umieść w zakładkach wg. protokołu"
 
 #: ../src/remminaprefdialog.c:61
 msgid "Tab All Connections"
-msgstr ""
+msgstr "Umieść wszystkie połączenia w zakładkach"
 
 #: ../src/remminaprefdialog.c:62
 msgid "Do Not Use Tabs"
-msgstr ""
+msgstr "Nie używaj zakładek"
 
 #: ../src/remminaprefdialog.c:128
 msgid "Please enter format 'widthxheight'."
@@ -689,7 +694,7 @@ msgstr "Lista ostatnich pozycji wyczyszczona."
 #. Create the dialog
 #: ../src/remminaprefdialog.c:200
 msgid "Remmina Preferences"
-msgstr ""
+msgstr "Ustawienia"
 
 #. Options tab
 #: ../src/remminaprefdialog.c:217
@@ -714,7 +719,7 @@ msgstr "Domyślny tryb widoku"
 
 #: ../src/remminaprefdialog.c:271
 msgid "Tab Interface"
-msgstr ""
+msgstr "Zakładki"
 
 #: ../src/remminaprefdialog.c:281
 msgid "Scale Quality"
@@ -769,6 +774,8 @@ msgstr "Klucz SSH nie ustawiony.."
 #, c-format
 msgid "SSH automatic public key authentication failed: %s"
 msgstr ""
+"Automatyczna uwierzytelnienie SSH kluczem publicznym zakończone "
+"niepowodzeniem: %s"
 
 #: ../src/remminassh.c:237
 #, c-format
@@ -801,16 +808,16 @@ msgstr "Połączenie z miejscem docelowym tunelu SSH nie powiodło się: %s"
 #: ../src/remminassh.c:639
 #, c-format
 msgid "Failed to execute %s on SSH server : %%s"
-msgstr ""
+msgstr "Błąd wykonania %s on serwerze SSH: %%s"
 
 #: ../src/remminassh.c:681
 #, c-format
 msgid "Failed to request port forwarding : %s"
-msgstr ""
+msgstr "Błąd żądania przekierowania portów: %s"
 
 #: ../src/remminassh.c:720
 msgid "No response from the server."
-msgstr ""
+msgstr "Brak odpowiedzi serwera."
 
 #: ../src/remminassh.c:1062
 #, c-format
@@ -934,7 +941,7 @@ msgstr "Błąd podczas otwierania katalogu %s. %s"
 #: ../src/remminasftpwindow.c:287
 #, c-format
 msgid "Error creating file %s on server. %s"
-msgstr ""
+msgstr "Błąd podczas tworzenia pliku %s na serwerze. %s"
 
 #: ../src/remminasftpwindow.c:295
 #, c-format

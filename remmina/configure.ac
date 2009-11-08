@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 #AC_PREREQ(2.59)
-AC_INIT(remmina, 0.6.99.2)
+AC_INIT(remmina, 0.6.99.3)
 AM_INIT_AUTOMAKE
 AM_CONFIG_HEADER([config.h])
 AC_CONFIG_SRCDIR([src/remmina.c])
@@ -173,7 +173,7 @@ if test "x$vnc_support" = "x"; then
     AC_CHECK_HEADER(jpeglib.h, , vnc_support="no. libjpeg-dev required.")
 fi
 if test "x$vnc_support" = "x"; then
-    PKG_CHECK_MODULES(GNUTLS, gnutls >= 2.8.0, , vnc_support="no. libgnutls-dev required.")
+    PKG_CHECK_MODULES(GNUTLS, gnutls >= 2.4.0, , vnc_support="no. libgnutls-dev required.")
 fi
 if test "x$vnc_support" = "x"; then
     AX_PREFIX_CONFIG_H([libvncserver/rfb/rfbconfig.h], [LIBVNCSERVER])

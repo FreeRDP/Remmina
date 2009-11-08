@@ -36,6 +36,7 @@
 #define close closesocket
 #define read(sock,buf,len) recv(sock,buf,len,0)
 #define write(sock,buf,len) send(sock,buf,len,0)
+#define socklen_t int
 #else
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -457,7 +458,7 @@ AcceptTcpConnection(int listenSock)
 {
   int sock;
   struct sockaddr_in addr;
-  int addrlen = sizeof(addr);
+  socklen_t addrlen = sizeof(addr);
   int one = 1;
 
   sock = accept(listenSock, (struct sockaddr *) &addr, &addrlen);
@@ -537,7 +538,7 @@ rfbBool
 SameMachine(int sock)
 {
   struct sockaddr_in peeraddr, myaddr;
-  int addrlen = sizeof(struct sockaddr_in);
+  socklen_t addrlen = sizeof(struct sockaddr_in);
 
   getpeername(sock, (struct sockaddr *)&peeraddr, &addrlen);
   getsockname(sock, (struct sockaddr *)&myaddr, &addrlen);
