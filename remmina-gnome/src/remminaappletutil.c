@@ -63,6 +63,10 @@ remmina_applet_util_launcher (RemminaLaunchType launch_type, const gchar *filena
         argv[argc++] = g_strdup ("-n");
         break;
 
+    case REMMINA_LAUNCH_ABOUT:
+        argv[argc++] = g_strdup ("-a");
+        break;
+
     }
 
     if (server)
