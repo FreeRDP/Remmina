@@ -314,7 +314,7 @@ extern rfbBool HandleCursorShape(rfbClient* client,int xhot, int yhot, int width
 /* listen.c */
 
 extern void listenForIncomingConnections(rfbClient* viewer);
-extern rfbBool listenForIncomingConnectionsNoFork(rfbClient* viewer, int usec_timeout);
+extern int listenForIncomingConnectionsNoFork(rfbClient* viewer, int usec_timeout);
 
 /* rfbproto.c */
 
