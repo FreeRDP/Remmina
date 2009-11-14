@@ -388,7 +388,7 @@ ConnectToRFBServer(rfbClient* client,const char *hostname, int port)
       fclose(rec->file);
       return FALSE;
     }
-    client->sock = 0;
+    client->sock = -1;
     return TRUE;
   }
 

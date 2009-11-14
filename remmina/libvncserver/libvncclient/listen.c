@@ -76,7 +76,7 @@ listenForIncomingConnections(rfbClient* client)
 
     FD_SET(listenSocket, &fds);
 
-    select(FD_SETSIZE, &fds, NULL, NULL, NULL);
+    select(listenSocket+1, &fds, NULL, NULL, NULL);
 
     if (FD_ISSET(listenSocket, &fds)) {
       client->sock = AcceptTcpConnection(listenSocket);
@@ -114,25 +114,28 @@ listenForIncomingConnections(rfbClient* client)
  * listenForIncomingConnectionsNoFork() - listen for incoming connections
  * from servers, but DON'T fork, instead just wait timeout microseconds.
  * If timeout is negative, block indefinitly.
+ * Returns 1 on success (there was an incoming connection on the listen socket
+ * and we accepted it successfully), -1 on error, 0 on timeout.
  */
 
-rfbBool
+int
 listenForIncomingConnectionsNoFork(rfbClient* client, int timeout)
 {
   fd_set fds;
   struct timeval to;
+  int r;
 
   to.tv_sec= timeout / 1000000;
   to.tv_usec= timeout % 1000000;
 
   client->listenSpecified = TRUE;
 
-  if (! client->listenSock)
+  if (client->listenSock < 0)
     {
       client->listenSock = ListenAtTcpPort(client->listenPort);
 
       if (client->listenSock < 0)
-	return FALSE;
+	return -1;
 
       rfbClientLog("%s -listennofork: Listening on port %d\n",
 		   client->programName,client->listenPort);
@@ -145,23 +148,24 @@ listenForIncomingConnectionsNoFork(rfbClient* client, int timeout)
   FD_SET(client->listenSock, &fds);
 
   if (timeout < 0)
-    select(FD_SETSIZE, &fds, NULL, NULL, NULL);
+    r = select(client->listenSock+1, &fds, NULL, NULL, NULL);
   else
-    select(FD_SETSIZE, &fds, NULL, NULL, &to);
+    r = select(client->listenSock+1, &fds, NULL, NULL, &to);
 
-  if (FD_ISSET(client->listenSock, &fds))
+  if (r > 0)
     {
       client->sock = AcceptTcpConnection(client->listenSock);
       if (client->sock < 0)
-	return FALSE;
+	return -1;
       if (!SetNonBlocking(client->sock))
-	return FALSE;
+	return -1;
 
       close(client->listenSock);
-      return TRUE;
+      return r;
     }
 
-  return FALSE;
+  /* r is now either 0 (timeout) or -1 (error) */
+  return r;
 }
 
 
