@@ -224,7 +224,7 @@ remmina_plug_rdp_main (RemminaPlugRdp *gp_rdp)
     if (remminafile->shareprinter)
     {
         printers = g_string_new ("");
-        gtk_enumerate_printers (remmina_plug_rdp_printer_func, printers, NULL, TRUE);
+        gtk_enumerate_printers (remmina_plug_rdp_printer_func, printers, NULL, FALSE);
         if (printers->len > 0)
         {
             argv[argc++] = g_strdup ("-r");
