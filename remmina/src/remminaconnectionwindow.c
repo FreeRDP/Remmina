@@ -1804,8 +1804,8 @@ remmina_connection_object_on_disconnect (RemminaPlug *gp, RemminaConnectionObjec
         dialog = gtk_message_dialog_new (NULL,
             GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
             REMMINA_PLUG (cnnobj->remmina_plug)->error_message, NULL);
-        gtk_dialog_run (GTK_DIALOG (dialog));
-        gtk_widget_destroy (dialog);
+        g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
+        gtk_widget_show (dialog);
     }
 
     if (cnnobj->window)
@@ -1872,8 +1872,8 @@ remmina_connection_window_open_from_filename (const gchar *filename)
     {
         dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
             _("File %s not found."), filename);
-        gtk_dialog_run (GTK_DIALOG (dialog));
-        gtk_widget_destroy (dialog);
+        g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
+        gtk_widget_show (dialog);
         return FALSE;
     }
 }
