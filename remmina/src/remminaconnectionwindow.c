@@ -1806,6 +1806,7 @@ remmina_connection_object_on_disconnect (RemminaPlug *gp, RemminaConnectionObjec
             REMMINA_PLUG (cnnobj->remmina_plug)->error_message, NULL);
         g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
         gtk_widget_show (dialog);
+        remmina_widget_pool_register (dialog);
     }
 
     if (cnnobj->window)
@@ -1874,6 +1875,7 @@ remmina_connection_window_open_from_filename (const gchar *filename)
             _("File %s not found."), filename);
         g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
         gtk_widget_show (dialog);
+        remmina_widget_pool_register (dialog);
         return FALSE;
     }
 }
