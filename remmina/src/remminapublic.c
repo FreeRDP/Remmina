@@ -39,6 +39,9 @@
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
 #endif
+#ifdef HAVE_GTK_PRINTER
+#include <gtk/gtkprinter.h>
+#endif
 #include "remminapublic.h"
 
 GtkWidget*
@@ -383,40 +386,40 @@ guint
 remmina_public_get_current_workspace (GdkScreen *screen)
 {
 #ifdef GDK_WINDOWING_X11
-	GdkWindow *root_win;
-	GdkDisplay *display;
-	Atom type;
-	gint format;
-	gulong nitems;
-	gulong bytes_after;
-	guint *current_desktop;
-	gint err, result;
-	guint ret = 0;
+    GdkWindow *root_win;
+    GdkDisplay *display;
+    Atom type;
+    gint format;
+    gulong nitems;
+    gulong bytes_after;
+    guint *current_desktop;
+    gint err, result;
+    guint ret = 0;
 
-	g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
+    g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
 
-	root_win = gdk_screen_get_root_window (screen);
-	display = gdk_screen_get_display (screen);
+    root_win = gdk_screen_get_root_window (screen);
+    display = gdk_screen_get_display (screen);
 
-	gdk_error_trap_push ();
-	result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (root_win),
-				     gdk_x11_get_xatom_by_name_for_display (display, "_NET_CURRENT_DESKTOP"),
-				     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
-				     &bytes_after, (gpointer) &current_desktop);
-	err = gdk_error_trap_pop ();
+    gdk_error_trap_push ();
+    result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (root_win),
+                     gdk_x11_get_xatom_by_name_for_display (display, "_NET_CURRENT_DESKTOP"),
+                     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
+                     &bytes_after, (gpointer) &current_desktop);
+    err = gdk_error_trap_pop ();
 
-	if (err != Success || result != Success)
-		return ret;
+    if (err != Success || result != Success)
+        return ret;
 
-	if (type == XA_CARDINAL && format == 32 && nitems > 0)
-		ret = current_desktop[0];
+    if (type == XA_CARDINAL && format == 32 && nitems > 0)
+        ret = current_desktop[0];
 
-	XFree (current_desktop);
-	return ret;
+    XFree (current_desktop);
+    return ret;
 #else
-	/* FIXME: on mac etc proably there are native APIs
-	 * to get the current workspace etc */
-	return 0;
+    /* FIXME: on mac etc proably there are native APIs
+     * to get the current workspace etc */
+    return 0;
 #endif
 }
 
@@ -425,41 +428,98 @@ guint
 remmina_public_get_window_workspace (GtkWindow *gtkwindow)
 {
 #ifdef GDK_WINDOWING_X11
-	GdkWindow *window;
-	GdkDisplay *display;
-	Atom type;
-	gint format;
-	gulong nitems;
-	gulong bytes_after;
-	guint *workspace;
-	gint err, result;
-	guint ret = 0;
+    GdkWindow *window;
+    GdkDisplay *display;
+    Atom type;
+    gint format;
+    gulong nitems;
+    gulong bytes_after;
+    guint *workspace;
+    gint err, result;
+    guint ret = 0;
 
-	g_return_val_if_fail (GTK_IS_WINDOW (gtkwindow), 0);
-	g_return_val_if_fail (GTK_WIDGET_REALIZED (GTK_WIDGET (gtkwindow)), 0);
+    g_return_val_if_fail (GTK_IS_WINDOW (gtkwindow), 0);
+    g_return_val_if_fail (GTK_WIDGET_REALIZED (GTK_WIDGET (gtkwindow)), 0);
 
-	window = GTK_WIDGET (gtkwindow)->window;
-	display = gdk_drawable_get_display (window);
+    window = GTK_WIDGET (gtkwindow)->window;
+    display = gdk_drawable_get_display (window);
 
-	gdk_error_trap_push ();
-	result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (window),
-				     gdk_x11_get_xatom_by_name_for_display (display, "_NET_WM_DESKTOP"),
-				     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
-				     &bytes_after, (gpointer) &workspace);
-	err = gdk_error_trap_pop ();
+    gdk_error_trap_push ();
+    result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (window),
+                     gdk_x11_get_xatom_by_name_for_display (display, "_NET_WM_DESKTOP"),
+                     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
+                     &bytes_after, (gpointer) &workspace);
+    err = gdk_error_trap_pop ();
 
-	if (err != Success || result != Success)
-		return ret;
+    if (err != Success || result != Success)
+        return ret;
 
-	if (type == XA_CARDINAL && format == 32 && nitems > 0)
-		ret = workspace[0];
+    if (type == XA_CARDINAL && format == 32 && nitems > 0)
+        ret = workspace[0];
 
-	XFree (workspace);
-	return ret;
+    XFree (workspace);
+    return ret;
 #else
-	/* FIXME: on mac etc proably there are native APIs
-	 * to get the current workspace etc */
-	return 0;
+    /* FIXME: on mac etc proably there are native APIs
+     * to get the current workspace etc */
+    return 0;
 #endif
 }
+
+#ifdef HAVE_GTK_PRINTER
+typedef struct _RemminaPrinterList
+{
+    GPtrArray *printers;
+    RemminaGetPrintersCallback callback;
+    gpointer user_data;
+} RemminaPrinterList;
+
+static void
+remmina_public_printer_finalize (gpointer data)
+{
+    RemminaPrinterList *lst = (RemminaPrinterList*) data;
+
+    /* callback owns the pointer array */
+    lst->callback (lst->printers, lst->user_data);
+    g_free (lst);
+}
+
+static gboolean
+remmina_public_printer_func (GtkPrinter *printer, gpointer data)
+{
+    RemminaPrinterList *lst = (RemminaPrinterList*) data;
+    const gchar *printername;
+
+    printername = gtk_printer_get_name (printer);
+    g_ptr_array_add (lst->printers, g_strdup (printername));
+
+    return FALSE;
+}
+
+/* By using this function, we can safely perform enumerating printers asynchronously (which is needed by GTK),
+ * while we don't have to enter the glib main loop (wait=TRUE, which can cause freezing). We use callback
+ * function to inform the caller that enumeration is done, and pass a pointer array to the callback.
+ */
+void
+remmina_public_get_printers (RemminaGetPrintersCallback callback, gpointer user_data)
+{
+    RemminaPrinterList *lst;
+
+    lst = g_new (RemminaPrinterList, 1);
+    lst->printers = g_ptr_array_new ();
+    lst->callback = callback;
+    lst->user_data = user_data;
+
+    gtk_enumerate_printers (remmina_public_printer_func, lst, remmina_public_printer_finalize, FALSE);
+}
+
+#else
+
+void
+remmina_public_get_printers (RemminaGetPrintersCallback callback, gpointer user_data)
+{
+    callback (NULL, user_data);
+}
+
+#endif
 

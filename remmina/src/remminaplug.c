@@ -146,16 +146,38 @@ remmina_plug_init (RemminaPlug *gp)
     gp->ssh_tunnel = NULL;
     gp->sftp_window = NULL;
     gp->closed = FALSE;
+    gp->printers = NULL;
 }
 
-gboolean
+void
+remmina_plug_open_connection_real (GPtrArray *printers, gpointer data)
+{
+    RemminaPlug *gp = REMMINA_PLUG (data);
+
+    gp->printers = printers;
+
+    if (! (* (REMMINA_PLUG_GET_CLASS (gp)->open_connection)) (gp))
+    {
+        remmina_plug_close_connection (gp);
+    }
+}
+
+void
 remmina_plug_open_connection (RemminaPlug *gp, RemminaFile *remminafile)
 {
     gp->remmina_file = remminafile;
 
     /* Show "server" instead of "name" for quick connect */
     remmina_plug_show_init_dialog (gp, (remminafile->filename ? remminafile->name : remminafile->server));
-    return (* (REMMINA_PLUG_GET_CLASS (gp)->open_connection)) (gp);
+
+    if (remminafile->shareprinter)
+    {
+        remmina_public_get_printers (remmina_plug_open_connection_real, gp);
+    }
+    else
+    {
+        remmina_plug_open_connection_real (NULL, gp);
+    }
 }
 
 gboolean
@@ -163,6 +185,12 @@ remmina_plug_close_connection (RemminaPlug *gp)
 {
     if (!GTK_IS_WIDGET (gp) || gp->closed) return FALSE;
     gp->closed = TRUE;
+
+    if (gp->printers)
+    {
+        g_ptr_array_free (gp->printers, TRUE);
+        gp->printers = NULL;
+    }
 
 #ifdef HAVE_LIBSSH
     if (gp->ssh_tunnel)
