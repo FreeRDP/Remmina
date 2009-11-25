@@ -23,9 +23,6 @@
 #include <unistd.h>
 #include <signal.h>
 #include "config.h"
-#ifdef HAVE_GTK_PRINTER
-#include <gtk/gtkprinter.h>
-#endif
 #ifdef HAVE_PTHREAD
 #include <pthread.h>
 #endif
@@ -79,34 +76,6 @@ remmina_plug_rdp_child_exit (GPid pid, gint status, gpointer data)
     remmina_plug_emit_signal (REMMINA_PLUG (gp_rdp), "disconnect");
 }
 
-#ifdef HAVE_GTK_PRINTER
-static gboolean
-remmina_plug_rdp_printer_func (GtkPrinter *printer, gpointer data)
-{
-    GString *printers = (GString*) data;
-    const gchar *printername;
-
-    if (printers->len > 0)
-    {
-        g_string_append_c (printers, ',');
-    }
-    printername = gtk_printer_get_name (printer);
-    /* There's a bug in rdesktop causing it to crash if the printer name contains space.
-     * This is the workaround and should be removed if it's fixed in rdesktop
-     */
-    if (strchr (printername, ' '))
-    {
-        g_string_append_c (printers, '"');
-    }
-    g_string_append (printers, printername);
-    if (strchr (printername, ' '))
-    {
-        g_string_append_c (printers, '"');
-    }
-    return FALSE;
-}
-#endif
-
 static gboolean
 remmina_plug_rdp_main (RemminaPlugRdp *gp_rdp)
 {
@@ -117,6 +86,7 @@ remmina_plug_rdp_main (RemminaPlugRdp *gp_rdp)
     gint argc;
     gint i;
     GString *printers;
+    gchar *printername;
     gint advargc = 0;
     gchar **advargv = NULL;
     GError *error = NULL;
@@ -220,19 +190,33 @@ remmina_plug_rdp_main (RemminaPlugRdp *gp_rdp)
         argv[argc++] = g_strdup_printf ("sound:%s", remminafile->sound);
     }
 
-#ifdef HAVE_GTK_PRINTER
-    if (remminafile->shareprinter)
+    if (remminafile->shareprinter && gp->printers && gp->printers->len > 0)
     {
         printers = g_string_new ("");
-        gtk_enumerate_printers (remmina_plug_rdp_printer_func, printers, NULL, FALSE);
-        if (printers->len > 0)
+        for (i = 0; i < gp->printers->len; i++)
         {
-            argv[argc++] = g_strdup ("-r");
-            argv[argc++] = g_strdup_printf ("printer:%s", printers->str);
+            if (printers->len > 0)
+            {
+                g_string_append_c (printers, ',');
+            }
+            printername = (gchar*) g_ptr_array_index (gp->printers, i);
+            /* There's a bug in rdesktop causing it to crash if the printer name contains space.
+             * This is the workaround and should be removed if it's fixed in rdesktop
+             */
+            if (strchr (printername, ' '))
+            {
+                g_string_append_c (printers, '"');
+            }
+            g_string_append (printers, printername);
+            if (strchr (printername, ' '))
+            {
+                g_string_append_c (printers, '"');
+            }
         }
+        argv[argc++] = g_strdup ("-r");
+        argv[argc++] = g_strdup_printf ("printer:%s", printers->str);
         g_string_free (printers, TRUE);
     }
-#endif
 
     switch (remminafile->sharefolder)
     {

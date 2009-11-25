@@ -71,6 +71,8 @@ typedef struct _RemminaPlug
     GtkWidget *sftp_window;
 
     gboolean closed;
+
+    GPtrArray *printers;
 } RemminaPlug;
 
 typedef struct _RemminaPlugClass
@@ -90,7 +92,7 @@ typedef struct _RemminaPlugClass
 
 GType remmina_plug_get_type (void) G_GNUC_CONST;
 
-gboolean remmina_plug_open_connection (RemminaPlug *gp, RemminaFile *remminafile);
+void remmina_plug_open_connection (RemminaPlug *gp, RemminaFile *remminafile);
 gboolean remmina_plug_close_connection (RemminaPlug *gp);
 void remmina_plug_grab_focus (RemminaPlug *gp);
 gpointer remmina_plug_query_feature (RemminaPlug *gp, RemminaPlugFeature feature);

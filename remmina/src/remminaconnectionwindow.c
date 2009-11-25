@@ -1967,9 +1967,6 @@ remmina_connection_window_open_from_file (RemminaFile *remminafile)
 
     if (!remmina_pref.save_view_mode) cnnobj->remmina_file->viewmode = remmina_pref.default_mode;
 
-    if (!remmina_plug_open_connection (REMMINA_PLUG (cnnobj->remmina_plug), remminafile))
-    {
-        remmina_plug_close_connection (REMMINA_PLUG (cnnobj->remmina_plug));
-    }
+    remmina_plug_open_connection (REMMINA_PLUG (cnnobj->remmina_plug), remminafile);
 }
 
