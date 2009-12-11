@@ -349,7 +349,7 @@ remmina_plug_init_tunnel (RemminaPlug *gp)
 gchar*
 remmina_plug_start_direct_tunnel (RemminaPlug *gp, gint default_port)
 {
-    gchar *dest, *ptr;
+    gchar *dest;
 
     if (remmina_file_is_incoming (gp->remmina_file))
     {
@@ -379,9 +379,9 @@ remmina_plug_start_direct_tunnel (RemminaPlug *gp, gint default_port)
         return NULL;
     }
 
-    if (gp->remmina_file->ssh_server == NULL || gp->remmina_file->ssh_server[0] == '\0')
+    /* TODO: Provide an option to support connecting to loopback interface for easier configuration */
+    /*if (gp->remmina_file->ssh_server == NULL || gp->remmina_file->ssh_server[0] == '\0')
     {
-        /* When SSH server is the same as remote desktop server, we should connect to loopback address */
         ptr = strchr (dest, ':');
         if (ptr)
         {
@@ -389,7 +389,7 @@ remmina_plug_start_direct_tunnel (RemminaPlug *gp, gint default_port)
             g_free (dest);
             dest = ptr;
         }
-    }
+    }*/
 
     if (!remmina_ssh_tunnel_open (gp->ssh_tunnel, dest, remmina_pref.sshtunnel_port))
     {
