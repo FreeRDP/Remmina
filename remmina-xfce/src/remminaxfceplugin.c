@@ -199,6 +199,7 @@ remmina_xfce_plugin_popup_menu_add_item (gpointer data, gpointer user_data)
                 "folder-remote" : "folder"), GTK_ICON_SIZE_MENU);
             gtk_widget_show (image);
             gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (rxplugin->menu_group_widget), image);
+            gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (rxplugin->menu_group_widget), TRUE);
 
             submenu = gtk_menu_new ();
             gtk_widget_show (submenu);
