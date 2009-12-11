@@ -349,44 +349,62 @@ remmina_plug_init_tunnel (RemminaPlug *gp)
 gchar*
 remmina_plug_start_direct_tunnel (RemminaPlug *gp, gint default_port)
 {
-    gchar dest[200];
+    gchar *dest, *ptr;
 
     if (remmina_file_is_incoming (gp->remmina_file))
     {
-        dest[0] = '\0';
+        dest = g_strdup("");
     }
     else
     {
-        if (g_strrstr (gp->remmina_file->server, ":") == NULL)
+        if (strchr (gp->remmina_file->server, ':') == NULL)
         {
-            g_snprintf (dest, sizeof (dest), "%s:%i", gp->remmina_file->server, default_port);
+            dest = g_strdup_printf ("%s:%i", gp->remmina_file->server, default_port);
         }
         else
         {
-            g_strlcpy (dest, gp->remmina_file->server, sizeof (dest));
+            dest = g_strdup (gp->remmina_file->server);
         }
     }
 
 #ifdef HAVE_LIBSSH
     if (!gp->remmina_file->ssh_enabled || remmina_file_is_incoming (gp->remmina_file))
     {
-        return g_strdup (dest);
+        return dest;
     }
 
-    if (!remmina_plug_init_tunnel (gp)) return NULL;
+    if (!remmina_plug_init_tunnel (gp))
+    {
+        g_free (dest);
+        return NULL;
+    }
+
+    if (gp->remmina_file->ssh_server == NULL || gp->remmina_file->ssh_server[0] == '\0')
+    {
+        /* When SSH server is the same as remote desktop server, we should connect to loopback address */
+        ptr = strchr (dest, ':');
+        if (ptr)
+        {
+            ptr = g_strdup_printf ("127.0.0.1:%s", ptr + 1);
+            g_free (dest);
+            dest = ptr;
+        }
+    }
 
     if (!remmina_ssh_tunnel_open (gp->ssh_tunnel, dest, remmina_pref.sshtunnel_port))
     {
+        g_free (dest);
         g_strlcpy (gp->error_message, REMMINA_SSH (gp->ssh_tunnel)->error, MAX_ERROR_LENGTH);
         gp->has_error = TRUE;
         return NULL;
     }
 
+    g_free (dest);
     return g_strdup_printf ("127.0.0.1:%i", remmina_pref.sshtunnel_port);
 
 #else
 
-    return g_strdup (dest);
+    return dest;
 
 #endif
 }

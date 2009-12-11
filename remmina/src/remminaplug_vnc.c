@@ -1060,7 +1060,7 @@ remmina_plug_vnc_main_loop (RemminaPlugVnc *gp_vnc)
         if (!ret)
         {
             gp_vnc->running = FALSE;
-            if (gp_vnc->connected)
+            if (gp_vnc->connected && !REMMINA_PLUG (gp_vnc)->closed)
             {
                 IDLE_ADD ((GSourceFunc) remmina_plug_close_connection, gp_vnc);
             }
