@@ -33,6 +33,7 @@
 #include "remminaprefdialog.h"
 #include "remminawidgetpool.h"
 #include "remminaabout.h"
+#include "remminapluginmanager.h"
 
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
@@ -276,6 +277,7 @@ main (int argc, char* argv[])
 
     remmina_file_manager_init ();
     remmina_pref_init ();
+    remmina_plugin_manager_init ();
 
     g_set_application_name ("Remmina");
     gtk_window_set_default_icon_name ("remmina");

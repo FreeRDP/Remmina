@@ -78,7 +78,7 @@ gint remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, gboolean 
 /* Error handling */
 #define remmina_ssh_has_error(ssh) (((RemminaSSH*)ssh)->error!=NULL)
 void remmina_ssh_set_error (RemminaSSH *ssh, const gchar *fmt);
-#define remmina_ssh_set_application_error(ssh,msg) ((RemminaSSH*)ssh)->error = g_strdup (msg);
+void remmina_ssh_set_application_error (RemminaSSH *ssh, const gchar *fmt, ...);
 
 /* Converts a string to/from UTF-8, or simply duplicate it if no conversion */
 gchar* remmina_ssh_convert (RemminaSSH *ssh, const gchar *from);

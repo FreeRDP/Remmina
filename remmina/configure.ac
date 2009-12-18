@@ -1,12 +1,11 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-#AC_PREREQ(2.59)
-AC_INIT(remmina, 0.7.0)
+AC_PREREQ(2.60)
+AC_INIT(remmina, 0.7.99.1)
 AM_INIT_AUTOMAKE
 AM_CONFIG_HEADER([config.h])
 AC_CONFIG_SRCDIR([src/remmina.c])
-AC_CONFIG_MACRO_DIR([m4])
 
 # Checks for programs.
 AC_ISC_POSIX
@@ -30,8 +29,6 @@ if test "x$GCC" = "xyes"; then
     fi
 fi
 
-AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
-
 IT_PROG_INTLTOOL([0.35.0])
 
 GETTEXT_PACKAGE=remmina
@@ -51,14 +48,18 @@ AM_GLIB_GNU_GETTEXT
 remmina_localedir='${datadir}/locale'
 AC_SUBST(remmina_localedir)
 
-REMMINA_SUBDIRS="src po desktop icons"
+remmina_plugindir='${libdir}/remmina/plugins'
+AC_SUBST(remmina_plugindir)
+
+REMMINA_SUBDIRS="include src po desktop icons"
 
 # Checks GTK+ version.
 PKG_CHECK_MODULES(GTK, [
     glib-2.0 >= 2.20.0
     gtk+-2.0 >= 2.16.0
+    gmodule-2.0
 ])
-remmina_pkgs="glib-2.0 gtk+-2.0"
+remmina_pkgs="glib-2.0 gtk+-2.0 gmodule-2.0"
 
 PKG_CHECK_MODULES(GTK_PRINTER,
     gtk+-unix-print-2.0 >= 2.16.0, [
@@ -134,63 +135,6 @@ AC_CHECK_LIB(pthread, pthread_create, [
     pthread_support="no. libpthread required."
 ])
 
-# Check LibVNCClient
-AC_ARG_ENABLE(vnc,
-    [AS_HELP_STRING([--disable-vnc], [Disable VNC])],
-    [vnc_support=$enableval],
-    [vnc_support="yes"]
-)
-if test "x$vnc_support" != "xno"; then
-    if test "x$vnc_support" = "xdl"; then
-        AC_CHECK_LIB(vncclient, rfbGetClient, [
-            AC_CHECK_HEADER(rfb/rfbclient.h, [
-                vnc_support="link to libvncclient externally"
-                VNC_CFLAGS=""
-                VNC_LIBS="-lvncclient"
-                AC_SUBST(VNC_CFLAGS)
-                AC_SUBST(VNC_LIBS)
-                AC_DEFINE([HAVE_LIBVNCCLIENT], [1], [Define to 1 if you have libvncclient.])
-            ], vnc_support="no. libvncclient(libvncserver)-dev required.")
-        ],[
-            vnc_support="no. libvncclient(libvncserver) required."
-        ])
-    else
-        vnc_support=""
-    fi
-else
-    vnc_support="disabled."
-fi
-if test "x$vnc_support" = "x"; then
-    AC_CHECK_LIB(z, deflate, , vnc_support="no. zlib required.")
-fi
-if test "x$vnc_support" = "x"; then
-    AC_CHECK_HEADER(zlib.h, , vnc_support="no. zlib-dev required.")
-fi
-if test "x$vnc_support" = "x"; then
-    AC_CHECK_LIB(jpeg, jpeg_CreateCompress, , vnc_support="no. libjpeg required.")
-fi
-if test "x$vnc_support" = "x"; then
-    AC_CHECK_HEADER(jpeglib.h, , vnc_support="no. libjpeg-dev required.")
-fi
-if test "x$vnc_support" = "x"; then
-    PKG_CHECK_MODULES(GNUTLS, gnutls >= 2.4.0, , vnc_support="no. libgnutls-dev required.")
-fi
-if test "x$vnc_support" = "x"; then
-    AX_PREFIX_CONFIG_H([libvncserver/rfb/rfbconfig.h], [LIBVNCSERVER])
-    remmina_pkgs="$remmina_pkgs gnutls"
-    LIBS="-ljpeg -lz $LIBS"
-    REMMINA_SUBDIRS="libvncserver $REMMINA_SUBDIRS"
-    VNC_CFLAGS="-I../libvncserver"
-    VNC_LIBS="../libvncserver/libvncclient.la"
-    AC_SUBST(VNC_CFLAGS)
-    AC_SUBST(VNC_LIBS)
-    AC_SUBST(GNUTLS_CFLAGS)
-    AC_SUBST(GNUTLS_LIBS)
-    AC_DEFINE([WITH_CLIENT_TLS], [1], [Enable support for gnutls in libvncclient])
-    AC_DEFINE([HAVE_LIBVNCCLIENT], [1], [Define to 1 if you have libvncclient.])
-    vnc_support="yes"
-fi
-
 # Check libssh
 AC_ARG_ENABLE(ssh,
     [AS_HELP_STRING([--disable-ssh], [Disable SSH])],
@@ -257,11 +201,11 @@ AC_CHECK_HEADERS_ONCE(
 
 AC_CONFIG_FILES([
 Makefile
+include/Makefile
 src/Makefile
 po/Makefile.in
 desktop/Makefile
 icons/Makefile
-libvncserver/Makefile
 ])
 
 AC_OUTPUT
@@ -270,7 +214,6 @@ echo
 echo "Remmina configure result:"
 echo
 echo "* NLS support: $nls_support"
-echo "* VNC support: $vnc_support"
 echo "* Multi-threaded support: $pthread_support"
 echo "* SSH support: $ssh_support"
 echo "* Avahi support: $avahi_support"

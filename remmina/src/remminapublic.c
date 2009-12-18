@@ -164,12 +164,10 @@ remmina_public_load_combo_text_d (GtkWidget *combo, const gchar *text, const gch
 }
 
 GtkWidget*
-remmina_public_create_combo_map (const gpointer *key_value_list, const gchar *def, gboolean use_icon)
+remmina_public_create_combo (gboolean use_icon)
 {
-    gint i;
     GtkWidget *combo;
     GtkListStore *store; 
-    GtkTreeIter iter; 
     GtkCellRenderer *renderer;
 
     if (use_icon)
@@ -192,6 +190,20 @@ remmina_public_create_combo_map (const gpointer *key_value_list, const gchar *de
     gtk_cell_layout_pack_start (GTK_CELL_LAYOUT(combo), renderer, TRUE); 
     gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT(combo), renderer, "text", 1);
     if (use_icon) g_object_set (G_OBJECT (renderer), "xpad", 5, NULL);
+
+    return combo;
+}
+
+GtkWidget*
+remmina_public_create_combo_map (const gpointer *key_value_list, const gchar *def, gboolean use_icon)
+{
+    gint i;
+    GtkWidget *combo;
+    GtkListStore *store; 
+    GtkTreeIter iter; 
+
+    combo = remmina_public_create_combo (use_icon);
+    store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (combo)));
 
     for (i = 0; key_value_list[i]; i += (use_icon ? 3 : 2))
     {
@@ -360,25 +372,6 @@ remmina_public_open_xdisplay (const gchar *disp)
 
     g_free (display);
     return sock;
-}
-
-gint
-remmina_public_get_available_xdisplay (void)
-{
-    gint i;
-    gint display = 0;
-    gchar fn[MAX_PATH_LEN];
-
-    for (i = 1; i < MAX_X_DISPLAY_NUMBER; i++)
-    {
-        g_snprintf (fn, sizeof (fn), X_UNIX_SOCKET, i);
-        if (!g_file_test (fn, G_FILE_TEST_EXISTS))
-        {
-            display = i;
-            break;
-        }
-    }
-    return display;
 }
 
 /* This function was copied from GEdit (gedit-utils.c). */

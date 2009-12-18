@@ -24,6 +24,7 @@
 #include "remminapublic.h"
 #include "remminapref.h"
 #include "remminacrypt.h"
+#include "remminapluginmanager.h"
 #include "remminafile.h"
 
 #define MIN_WINDOW_WIDTH 10
@@ -450,26 +451,12 @@ remmina_file_update_screen_resolution (RemminaFile *remminafile)
 const gchar*
 remmina_file_get_icon_name (RemminaFile *remminafile)
 {
-    if (g_strcmp0 (remminafile->protocol, "SFTP") == 0)
-    {
-        return "remmina-sftp";
-    }
-    else if (g_strcmp0 (remminafile->protocol, "RDP") == 0)
-    {
-        return (remminafile->ssh_enabled ? "remmina-rdp-ssh" : "remmina-rdp");
-    }
-    else if (strncmp (remminafile->protocol, "VNC", 3) == 0)
-    {
-        return (remminafile->ssh_enabled ? "remmina-vnc-ssh" : "remmina-vnc");
-    }
-    else if (g_strcmp0 (remminafile->protocol, "XDMCP") == 0)
-    {
-        return (remminafile->ssh_enabled ? "remmina-xdmcp-ssh" : "remmina-xdmcp");
-    }
-    else
-    {
-        return "remmina";
-    }
+    RemminaProtocolPlugin *plugin;
+
+    plugin = remmina_plugin_manager_get_protocol_plugin (remminafile->protocol);
+    if (!plugin) return "remmina";
+
+    return (remminafile->ssh_enabled ? plugin->icon_name_ssh : plugin->icon_name);
 }
 
 gboolean

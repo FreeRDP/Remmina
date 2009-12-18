@@ -1,8 +1,10 @@
 ## Process this file with automake to produce Makefile.in
 bin_PROGRAMS = remmina
 
-INCLUDES = @REMMINA_CFLAGS@ @LIBGCRYPT_CFLAGS@ @VNC_CFLAGS@ \
+INCLUDES = @REMMINA_CFLAGS@ @LIBGCRYPT_CFLAGS@ \
+    -I$(top_srcdir)/include \
     -DREMMINA_LOCALEDIR=\"$(remmina_localedir)\" \
+    -DREMMINA_PLUGINDIR=\"$(remmina_plugindir)\" \
     -DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
     -DREMMINA_DATADIR=\"$(pkgdatadir)\"
 
@@ -14,9 +16,7 @@ remmina_SOURCES = remmina.c \
     remminafileeditor.h remminafileeditor.c \
     remminascrolledviewport.h remminascrolledviewport.c \
     remminaconnectionwindow.h remminaconnectionwindow.c \
-    remminaplug.h remminaplug.c \
-    remminaplug_rdp.h remminaplug_rdp.c \
-    remminaplug_vnc.h remminaplug_vnc.c \
+    remminaprotocolwidget.h remminaprotocolwidget.c \
     remminainitdialog.h remminainitdialog.c \
     remminaabout.h remminaabout.c \
     remminapref.h remminapref.c \
@@ -31,10 +31,10 @@ remmina_SOURCES = remmina.c \
     remminacrypt.h remminacrypt.c \
     remminachainbutton.h remminachainbutton.c \
     remminascaler.h remminascaler.c \
-    remminaplug_xdmcp.h remminaplug_xdmcp.c \
-    remminawidgetpool.h remminawidgetpool.c
+    remminawidgetpool.h remminawidgetpool.c \
+    remminapluginmanager.h remminapluginmanager.c
 
-remmina_LDADD = @REMMINA_LIBS@ @LIBGCRYPT_LIBS@ @VNC_LIBS@
+remmina_LDADD = @REMMINA_LIBS@ @LIBGCRYPT_LIBS@
 
 EXTRA_DIST = remminamarshals.list
 

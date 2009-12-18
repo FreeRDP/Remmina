@@ -389,7 +389,7 @@ remmina_pref_clear_recent (void)
 }
 
 guint
-remmina_pref_keymap_keyval (const gchar *keymap, guint keyval)
+remmina_pref_keymap_get_keyval (const gchar *keymap, guint keyval)
 {
     guint *table;
     gint i;
@@ -435,5 +435,11 @@ remmina_pref_keymap_groups (void)
     g_list_free (list);
 
     return g_string_free (keys, FALSE);
+}
+
+gint
+remmina_pref_get_scale_quality (void)
+{
+    return remmina_pref.scale_quality;
 }
 
