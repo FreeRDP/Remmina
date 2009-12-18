@@ -56,6 +56,7 @@ remmina_file_manager_iterate (GFunc func, gpointer user_data)
         remmina_file_free (remminafile);
         n++;
     }
+    g_dir_close (dir);
     return n;
 }
 

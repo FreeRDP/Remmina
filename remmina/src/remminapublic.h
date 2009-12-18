@@ -54,6 +54,7 @@ G_BEGIN_DECLS
 GtkWidget* remmina_public_create_combo_entry (const gchar *text, const gchar *def, gboolean descending);
 GtkWidget* remmina_public_create_combo_text_d (const gchar *text, const gchar *def, const gchar *empty_choice);
 void remmina_public_load_combo_text_d (GtkWidget *combo, const gchar *text, const gchar *def, const gchar *empty_choice);
+GtkWidget* remmina_public_create_combo (gboolean use_icon);
 GtkWidget* remmina_public_create_combo_map (const gpointer *key_value_list, const gchar *def, gboolean use_icon);
 GtkWidget* remmina_public_create_combo_mapint (const gpointer *key_value_list, gint def, gboolean use_icon);
 
@@ -71,7 +72,6 @@ void remmina_public_get_server_port (const gchar *server, gint defaultport, gcha
 /* X */
 gboolean remmina_public_get_xauth_cookie (const gchar *display, gchar **msg);
 gint remmina_public_open_xdisplay (const gchar *disp);
-gint remmina_public_get_available_xdisplay (void);
 guint remmina_public_get_current_workspace (GdkScreen *screen);
 guint remmina_public_get_window_workspace (GtkWindow *gtkwindow);
 

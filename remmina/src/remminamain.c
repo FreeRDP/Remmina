@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,6 +30,7 @@
 #include "remminapref.h"
 #include "remminaprefdialog.h"
 #include "remminawidgetpool.h"
+#include "remminapluginmanager.h"
 #include "remminamain.h"
 
 G_DEFINE_TYPE (RemminaMain, remmina_main, GTK_TYPE_WINDOW)
@@ -311,7 +312,7 @@ remmina_main_load_files (RemminaMain *remminamain)
 }
 
 static void
-remmina_main_action_action_quick_connect_full (RemminaMain *remminamain, const gchar *protocol)
+remmina_main_action_action_quick_connect_full (const gchar *protocol)
 {
     GtkWidget *widget;
 
@@ -322,37 +323,13 @@ remmina_main_action_action_quick_connect_full (RemminaMain *remminamain, const g
 static void
 remmina_main_action_action_quick_connect (GObject *object, RemminaMain *remminamain)
 {
-    remmina_main_action_action_quick_connect_full (remminamain, NULL);
+    remmina_main_action_action_quick_connect_full (NULL);
 }
 
 static void
-remmina_main_action_action_quick_connect_rdp (GObject *object, RemminaMain *remminamain)
+remmina_main_action_action_quick_connect_proto (GtkWidget *widget, const gchar *protocol)
 {
-    remmina_main_action_action_quick_connect_full (remminamain, "RDP");
-}
-
-static void
-remmina_main_action_action_quick_connect_vnc (GObject *object, RemminaMain *remminamain)
-{
-    remmina_main_action_action_quick_connect_full (remminamain, "VNC");
-}
-
-static void
-remmina_main_action_action_quick_connect_vnci (GObject *object, RemminaMain *remminamain)
-{
-    remmina_main_action_action_quick_connect_full (remminamain, "VNCI");
-}
-
-static void
-remmina_main_action_action_quick_connect_xdmcp (GObject *object, RemminaMain *remminamain)
-{
-    remmina_main_action_action_quick_connect_full (remminamain, "XDMCP");
-}
-
-static void
-remmina_main_action_action_quick_connect_sftp (GObject *object, RemminaMain *remminamain)
-{
-    remmina_main_action_action_quick_connect_full (remminamain, "SFTP");
+    remmina_main_action_action_quick_connect_full (protocol);
 }
 
 static void
@@ -525,17 +502,7 @@ static const gchar *remmina_main_ui_xml =
 "  <menubar name='MenuBar'>"
 "    <menu name='ActionMenu' action='Action'>"
 "      <menuitem name='ActionQuickConnectMenu' action='ActionQuickConnect'/>"
-"      <menu name='ActionQuickConnectProtoMenu' action='ActionQuickConnectProto'>"
-"        <menuitem name='ActionQuickConnectProtoRDPMenu' action='ActionQuickConnectProtoRDP'/>"
-#ifdef HAVE_LIBVNCCLIENT
-"        <menuitem name='ActionQuickConnectProtoVNCMenu' action='ActionQuickConnectProtoVNC'/>"
-"        <menuitem name='ActionQuickConnectProtoVNCIMenu' action='ActionQuickConnectProtoVNCI'/>"
-#endif
-"        <menuitem name='ActionQuickConnectProtoXDMCPMenu' action='ActionQuickConnectProtoXDMCP'/>"
-#ifdef HAVE_LIBSSH
-"        <menuitem name='ActionQuickConnectProtoSFTPMenu' action='ActionQuickConnectProtoSFTP'/>"
-#endif
-"      </menu>"
+"      <menuitem name='ActionQuickConnectProtoMenu' action='ActionQuickConnectProto'/>"
 "      <menuitem name='ActionConnectMenu' action='ActionConnect'/>"
 "      <separator/>"
 "      <menuitem name='ActionQuitMenu' action='ActionQuit'/>"
@@ -571,17 +538,6 @@ static const gchar *remmina_main_ui_xml =
 "    <separator/>"
 "    <toolitem action='EditPreferences'/>"
 "  </toolbar>"
-"  <popup name='PopupQuickConnectProtoMenu' action='ActionQuickConnectProto'>"
-"    <menuitem name='PopupQuickConnectProtoRDPMenu' action='ActionQuickConnectProtoRDP'/>"
-#ifdef HAVE_LIBVNCCLIENT
-"    <menuitem name='PopupQuickConnectProtoVNCMenu' action='ActionQuickConnectProtoVNC'/>"
-"    <menuitem name='PopupQuickConnectProtoVNCIMenu' action='ActionQuickConnectProtoVNCI'/>"
-#endif
-"    <menuitem name='PopupQuickConnectProtoXDMCPMenu' action='ActionQuickConnectProtoXDMCP'/>"
-#ifdef HAVE_LIBSSH
-"    <menuitem name='PopupQuickConnectProtoSFTPMenu' action='ActionQuickConnectProtoSFTP'/>"
-#endif
-"  </popup>"
 "  <popup name='PopupMenu'>"
 "    <menuitem action='ActionConnect'/>"
 "    <separator/>"
@@ -603,17 +559,6 @@ static const GtkActionEntry remmina_main_ui_menu_entries[] =
         G_CALLBACK (remmina_main_action_action_quick_connect) },
 
     { "ActionQuickConnectProto", NULL, N_("Quick _Connect To") },
-
-    { "ActionQuickConnectProtoRDP", "remmina-rdp", N_("RDP - Windows Terminal Service"), NULL, NULL,
-        G_CALLBACK (remmina_main_action_action_quick_connect_rdp) },
-    { "ActionQuickConnectProtoVNC", "remmina-vnc", N_("VNC - Virtual Network Computing"), NULL, NULL,
-        G_CALLBACK (remmina_main_action_action_quick_connect_vnc) },
-    { "ActionQuickConnectProtoVNCI", "remmina-vnc", N_("VNC - Incoming Connection"), NULL, NULL,
-        G_CALLBACK (remmina_main_action_action_quick_connect_vnci) },
-    { "ActionQuickConnectProtoXDMCP", "remmina-xdmcp", N_("XDMCP - X Remote Session"), NULL, NULL,
-        G_CALLBACK (remmina_main_action_action_quick_connect_xdmcp) },
-    { "ActionQuickConnectProtoSFTP", "remmina-sftp", N_("SFTP - Secure File Transfer"), NULL, NULL,
-        G_CALLBACK (remmina_main_action_action_quick_connect_sftp) },
 
     { "EditNew", GTK_STOCK_NEW, NULL, "<control>N",
         N_("Create a new remote desktop file"),
@@ -698,12 +643,39 @@ remmina_main_file_list_on_button_press (GtkWidget *widget, GdkEventButton *event
     return FALSE;
 }
 
+static gboolean
+remmina_main_iterate_protocol_menu (gchar *protocol, RemminaProtocolPlugin *plugin, gpointer data)
+{
+    GtkWidget *item;
+    GtkWidget *image;
+    gchar *desc;
+
+    desc = remmina_plugin_manager_get_protocol_description (plugin);
+    item = gtk_image_menu_item_new_with_label (desc);
+    g_free (desc);
+    gtk_widget_show (item);
+
+    image = gtk_image_new_from_icon_name (plugin->icon_name, GTK_ICON_SIZE_MENU);
+    gtk_widget_show (image);
+    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
+    gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (item), TRUE);
+
+    gtk_menu_shell_append (GTK_MENU_SHELL (data), item);
+
+    g_signal_connect (G_OBJECT (item), "activate",
+        G_CALLBACK (remmina_main_action_action_quick_connect_proto), plugin->protocol);
+
+    return FALSE;
+}
+
 static void
 remmina_main_init (RemminaMain *remminamain)
 {
     RemminaMainPriv *priv;
     GtkWidget *vbox;
     GtkWidget *menubar;
+    GtkWidget *menu;
+    GtkWidget *menuitem;
     GtkUIManager *uimanager;
     GtkActionGroup *action_group;
     GtkWidget *scrolledwindow;
@@ -787,8 +759,14 @@ remmina_main_init (RemminaMain *remminamain)
     g_signal_connect (G_OBJECT (toolitem), "clicked",
         G_CALLBACK (remmina_main_action_action_quick_connect), remminamain);
 
-    gtk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (toolitem),
-        gtk_ui_manager_get_widget (uimanager, "/PopupQuickConnectProtoMenu"));
+    menu = gtk_menu_new ();
+    remmina_plugin_manager_for_each_protocol (remmina_main_iterate_protocol_menu, menu);
+    gtk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (toolitem), menu);
+
+    menuitem = gtk_ui_manager_get_widget (uimanager, "/MenuBar/ActionMenu/ActionQuickConnectProtoMenu");
+    menu = gtk_menu_new ();
+    remmina_plugin_manager_for_each_protocol (remmina_main_iterate_protocol_menu, menu);
+    gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
 
     gtk_window_add_accel_group (GTK_WINDOW (remminamain), gtk_ui_manager_get_accel_group (uimanager));
 

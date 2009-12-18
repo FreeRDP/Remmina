@@ -11,12 +11,6 @@ appicon16actions_DATA = \
 
 appicon16emblemsdir = ${pkgdatadir}/icons/hicolor/16x16/emblems
 appicon16emblems_DATA = \
-    16x16/emblems/remmina-rdp.png \
-    16x16/emblems/remmina-rdp-ssh.png \
-    16x16/emblems/remmina-vnc.png \
-    16x16/emblems/remmina-vnc-ssh.png \
-    16x16/emblems/remmina-xdmcp.png \
-    16x16/emblems/remmina-xdmcp-ssh.png \
     16x16/emblems/remmina-sftp.png
 
 appicon22actionsdir = ${pkgdatadir}/icons/hicolor/22x22/actions
@@ -30,12 +24,6 @@ appicon22actions_DATA = \
 
 appicon22emblemsdir = ${pkgdatadir}/icons/hicolor/22x22/emblems
 appicon22emblems_DATA = \
-    22x22/emblems/remmina-rdp.png \
-    22x22/emblems/remmina-rdp-ssh.png \
-    22x22/emblems/remmina-vnc.png \
-    22x22/emblems/remmina-vnc-ssh.png \
-    22x22/emblems/remmina-xdmcp.png \
-    22x22/emblems/remmina-xdmcp-ssh.png \
     22x22/emblems/remmina-sftp.png
 
 EXTRA_DIST = \

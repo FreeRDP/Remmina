@@ -105,6 +105,16 @@ remmina_ssh_set_error (RemminaSSH *ssh, const gchar *fmt)
     ssh->error = g_strdup_printf (fmt, err);
 }
 
+void
+remmina_ssh_set_application_error (RemminaSSH *ssh, const gchar *fmt, ...)
+{
+    va_list args;
+
+    va_start (args, fmt);
+    ssh->error = g_strdup_vprintf (fmt, args);
+    va_end (args);
+}
+
 static gint
 remmina_ssh_auth_password (RemminaSSH *ssh)
 {
@@ -613,7 +623,7 @@ remmina_ssh_tunnel_main_thread (gpointer data)
         }
         if (!remmina_public_get_xauth_cookie (gdk_get_display (), &ptr))
         {
-            remmina_ssh_set_application_error (tunnel, ptr);
+            remmina_ssh_set_application_error (REMMINA_SSH (tunnel), "%s", ptr);
             g_free (ptr);
             channel_close (schannel);
             channel_free (schannel);
@@ -717,7 +727,7 @@ remmina_ssh_tunnel_main_thread (gpointer data)
                 channel = channel_forward_accept (REMMINA_SSH (tunnel)->session, 15000);
                 if (!channel)
                 {
-                    remmina_ssh_set_application_error (tunnel, _("No response from the server."));
+                    remmina_ssh_set_application_error (REMMINA_SSH (tunnel), _("No response from the server."));
                     if (tunnel->disconnect_func)
                     {
                         (*tunnel->disconnect_func) (tunnel, tunnel->callback_data);
@@ -943,7 +953,7 @@ remmina_ssh_tunnel_open (RemminaSSHTunnel* tunnel, const gchar *dest, gint local
 
     if (pthread_create (&tunnel->thread, NULL, remmina_ssh_tunnel_main_thread, tunnel))
     {
-        remmina_ssh_set_application_error (tunnel, "Failed to initialize pthread.");
+        remmina_ssh_set_application_error (REMMINA_SSH (tunnel), "Failed to initialize pthread.");
         tunnel->thread = 0;
         return FALSE;
     }
@@ -959,7 +969,7 @@ remmina_ssh_tunnel_x11 (RemminaSSHTunnel *tunnel, const gchar *cmd)
 
     if (pthread_create (&tunnel->thread, NULL, remmina_ssh_tunnel_main_thread, tunnel))
     {
-        remmina_ssh_set_application_error (tunnel, "Failed to initialize pthread.");
+        remmina_ssh_set_application_error (REMMINA_SSH (tunnel), "Failed to initialize pthread.");
         tunnel->thread = 0;
         return FALSE;
     }
@@ -976,7 +986,7 @@ remmina_ssh_tunnel_xport (RemminaSSHTunnel *tunnel, gint display, gboolean bindl
 
     if (pthread_create (&tunnel->thread, NULL, remmina_ssh_tunnel_main_thread, tunnel))
     {
-        remmina_ssh_set_application_error (tunnel, "Failed to initialize pthread.");
+        remmina_ssh_set_application_error (REMMINA_SSH (tunnel), "Failed to initialize pthread.");
         tunnel->thread = 0;
         return FALSE;
     }
