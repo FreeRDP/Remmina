@@ -388,11 +388,12 @@ remmina_connection_holder_update_alignment (RemminaConnectionHolder* cnnhld)
     DECLARE_CNNOBJ
     RemminaProtocolWidget *gp = REMMINA_PROTOCOL_WIDGET (cnnobj->proto);
     RemminaFile *gf = cnnobj->remmina_file;
-    gboolean scale;
+    gboolean scale, expand;
     gint gp_width, gp_height;
     gint width, height;
 
     scale = remmina_protocol_widget_get_scale (gp);
+    expand = remmina_protocol_widget_get_expand (gp);
     gp_width = remmina_protocol_widget_get_width (gp);
     gp_height = remmina_protocol_widget_get_height (gp);
 
@@ -419,8 +420,8 @@ remmina_connection_holder_update_alignment (RemminaConnectionHolder* cnnhld)
     else
     {
         gtk_alignment_set (GTK_ALIGNMENT (cnnobj->alignment), 0.5, 0.5,
-            ((scale && gf->hscale == 0) ? 1.0 : 0.0),
-            ((scale && gf->vscale == 0) ? 1.0 : 0.0));
+            ((scale && gf->hscale == 0) || expand ? 1.0 : 0.0),
+            ((scale && gf->vscale == 0) || expand ? 1.0 : 0.0));
     }
 }
 

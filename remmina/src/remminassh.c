@@ -410,7 +410,6 @@ remmina_ssh_free (RemminaSSH *ssh)
 {
     if (ssh->session)
     {
-        ssh_disconnect (ssh->session);
         ssh_free (ssh->session);
         ssh->session = NULL;
     }

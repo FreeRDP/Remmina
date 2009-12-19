@@ -65,6 +65,8 @@ gint remmina_protocol_widget_get_height (RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_height (RemminaProtocolWidget *gp, gint height);
 gboolean remmina_protocol_widget_get_scale (RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_scale (RemminaProtocolWidget *gp, gboolean scale);
+gboolean remmina_protocol_widget_get_expand (RemminaProtocolWidget *gp);
+void remmina_protocol_widget_set_expand (RemminaProtocolWidget *gp, gboolean expand);
 gboolean remmina_protocol_widget_has_error (RemminaProtocolWidget *gp);
 gchar* remmina_protocol_widget_get_error_message (RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_error (RemminaProtocolWidget *gp, const gchar *fmt, ...);

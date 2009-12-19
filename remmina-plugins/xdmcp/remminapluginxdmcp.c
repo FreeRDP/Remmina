@@ -302,9 +302,9 @@ static RemminaProtocolPlugin remmina_plugin_xdmcp =
     "remmina-xdmcp",
     "remmina-xdmcp-ssh",
     NULL,
-    TRUE,
     (RemminaProtocolSetting*) remmina_plugin_xdmcp_basic_settings,
     NULL,
+    REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,
 
     remmina_plugin_xdmcp_init,
     remmina_plugin_xdmcp_open_connection,

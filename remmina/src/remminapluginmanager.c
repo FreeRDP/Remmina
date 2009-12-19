@@ -46,6 +46,8 @@ RemminaPluginService remmina_plugin_manager_service =
     remmina_protocol_widget_set_height,
     remmina_protocol_widget_get_scale,
     remmina_protocol_widget_set_scale,
+    remmina_protocol_widget_get_expand,
+    remmina_protocol_widget_set_expand,
     remmina_protocol_widget_has_error,
     remmina_protocol_widget_set_error,
     remmina_protocol_widget_is_closed,

@@ -459,9 +459,16 @@ remmina_file_get_icon_name (RemminaFile *remminafile)
     return (remminafile->ssh_enabled ? plugin->icon_name_ssh : plugin->icon_name);
 }
 
-gboolean
-remmina_file_is_incoming (RemminaFile *remminafile)
+RemminaFile*
+remmina_file_dup_temp_protocol (RemminaFile *remminafile, const gchar *new_protocol)
 {
-    return (strncmp (remminafile->protocol, "VNC", 3) == 0 && remminafile->protocol[3] == 'I');
+    RemminaFile *tmp;
+
+    tmp = remmina_file_dup (remminafile);
+    g_free (tmp->filename);
+    tmp->filename = NULL;
+    g_free (tmp->protocol);
+    tmp->protocol = g_strdup (new_protocol);
+    return tmp;
 }
 
