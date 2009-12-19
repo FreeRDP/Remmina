@@ -39,6 +39,7 @@ struct _RemminaProtocolWidgetPriv
     gint width;
     gint height;
     gboolean scale;
+    gboolean expand;
 
     gboolean has_error;
     gchar *error_message;
@@ -284,7 +285,7 @@ remmina_protocol_widget_query_feature (RemminaProtocolWidget *gp, RemminaProtoco
 #ifdef HAVE_LIBSSH
         case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
         case REMMINA_PROTOCOL_FEATURE_TOOL_SSHTERM:
-            return (gp->priv->remmina_file->ssh_enabled ? GINT_TO_POINTER (1) : NULL);
+            return (gp->priv->ssh_tunnel ? GINT_TO_POINTER (1) : NULL);
 #endif
         default:
             return gp->priv->plugin->query_feature (gp, feature);
@@ -294,17 +295,13 @@ remmina_protocol_widget_query_feature (RemminaProtocolWidget *gp, RemminaProtoco
 void
 remmina_protocol_widget_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature, const gpointer data)
 {
-    RemminaFile *remminafile;
-
     switch (feature)
     {
 #ifdef HAVE_LIBSSH
         case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
             if (!gp->priv->ssh_tunnel) return;
-            remminafile = remmina_file_dup (gp->priv->remmina_file);
-            g_free (remminafile->protocol);
-            remminafile->protocol = g_strdup ("SFTP");
-            remmina_connection_window_open_from_file_with_data (remminafile, gp->priv->ssh_tunnel);
+            remmina_connection_window_open_from_file_with_data (
+                remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SFTP"), gp->priv->ssh_tunnel);
             break;
 
         case REMMINA_PROTOCOL_FEATURE_TOOL_SSHTERM:
@@ -386,24 +383,22 @@ remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint def
 {
     gchar *dest;
 
-    if (remmina_file_is_incoming (gp->priv->remmina_file))
+    if (!gp->priv->remmina_file->server || gp->priv->remmina_file->server[0] == '\0')
     {
-        dest = g_strdup("");
+        return g_strdup("");
+    }
+
+    if (strchr (gp->priv->remmina_file->server, ':') == NULL)
+    {
+        dest = g_strdup_printf ("%s:%i", gp->priv->remmina_file->server, default_port);
     }
     else
     {
-        if (strchr (gp->priv->remmina_file->server, ':') == NULL)
-        {
-            dest = g_strdup_printf ("%s:%i", gp->priv->remmina_file->server, default_port);
-        }
-        else
-        {
-            dest = g_strdup (gp->priv->remmina_file->server);
-        }
+        dest = g_strdup (gp->priv->remmina_file->server);
     }
 
 #ifdef HAVE_LIBSSH
-    if (!gp->priv->remmina_file->ssh_enabled || remmina_file_is_incoming (gp->priv->remmina_file))
+    if (!gp->priv->remmina_file->ssh_enabled)
     {
         return dest;
     }
@@ -609,6 +604,18 @@ void
 remmina_protocol_widget_set_scale (RemminaProtocolWidget *gp, gboolean scale)
 {
     gp->priv->scale = scale;
+}
+
+gboolean
+remmina_protocol_widget_get_expand (RemminaProtocolWidget *gp)
+{
+    return gp->priv->expand;
+}
+
+void
+remmina_protocol_widget_set_expand (RemminaProtocolWidget *gp, gboolean expand)
+{
+    gp->priv->expand = expand;
 }
 
 gboolean

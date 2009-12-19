@@ -55,8 +55,8 @@ RemminaFile* remmina_file_dup (RemminaFile *remminafile);
 void remmina_file_update_screen_resolution (RemminaFile *remminafile);
 /* Get the protocol icon name */
 const gchar* remmina_file_get_icon_name (RemminaFile *remminafile);
-/* Is an incoming protocol */
-gboolean remmina_file_is_incoming (RemminaFile *remminafile);
+/* Duplicate a temporary RemminaFile and change the protocol */
+RemminaFile* remmina_file_dup_temp_protocol (RemminaFile *remminafile, const gchar *new_protocol);
 
 G_END_DECLS
 

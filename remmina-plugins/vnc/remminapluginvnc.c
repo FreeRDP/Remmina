@@ -1828,9 +1828,9 @@ static RemminaProtocolPlugin remmina_plugin_vnc =
     "remmina-vnc",
     "remmina-vnc-ssh",
     "_rfb._tcp",
-    TRUE,
     (RemminaProtocolSetting*) remmina_plugin_vnc_basic_settings,
     (RemminaProtocolSetting*) remmina_plugin_vnc_advanced_settings,
+    REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,
 
     remmina_plugin_vnc_init,
     remmina_plugin_vnc_open_connection,
@@ -1846,9 +1846,9 @@ static RemminaProtocolPlugin remmina_plugin_vnci =
     "remmina-vnc",
     "remmina-vnc",
     NULL,
-    FALSE,
     (RemminaProtocolSetting*) remmina_plugin_vnci_basic_settings,
     (RemminaProtocolSetting*) remmina_plugin_vnc_advanced_settings,
+    REMMINA_PROTOCOL_SSH_SETTING_NONE,
 
     remmina_plugin_vnc_init,
     remmina_plugin_vnc_open_connection,

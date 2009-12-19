@@ -133,10 +133,14 @@ static gboolean
 remmina_plugin_sftp_open_connection (RemminaProtocolWidget *gp)
 {
     RemminaPluginSftpData *gpdata;
+    RemminaFile *remminafile;
 
     gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+    remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
-    remmina_plugin_service->protocol_plugin_set_scale (gp, TRUE);
+    remmina_plugin_service->protocol_plugin_set_expand (gp, TRUE);
+    remmina_plugin_service->protocol_plugin_set_width (gp, 640);
+    remmina_plugin_service->protocol_plugin_set_height (gp, 480);
 
     if (pthread_create (&gpdata->thread, NULL, remmina_plugin_sftp_main_thread, gp))
     {
