@@ -26,8 +26,9 @@ remmina_SOURCES = remmina.c \
     remminassh.h remminassh.c \
     remminachatwindow.h remminachatwindow.c \
     remminamarshals.h remminamarshals.c \
-    remminaftpwindow.h remminaftpwindow.c \
-    remminasftpwindow.h remminasftpwindow.c \
+    remminaftpclient.h remminaftpclient.c \
+    remminasftpclient.h remminasftpclient.c \
+    remminasftpplugin.h remminasftpplugin.c \
     remminacrypt.h remminacrypt.c \
     remminachainbutton.h remminachainbutton.c \
     remminascaler.h remminascaler.c \

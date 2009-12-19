@@ -57,6 +57,8 @@ GType remmina_protocol_widget_get_type (void) G_GNUC_CONST;
 
 GtkWidget* remmina_protocol_widget_new (void);
 
+GtkWidget* remmina_protocol_widget_get_init_dialog (RemminaProtocolWidget *gp);
+
 gint remmina_protocol_widget_get_width (RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_width (RemminaProtocolWidget *gp, gint width);
 gint remmina_protocol_widget_get_height (RemminaProtocolWidget *gp);

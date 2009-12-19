@@ -24,9 +24,9 @@
 #include "remminapublic.h"
 #include "remminapref.h"
 #include "remminassh.h"
-#include "remminasftpwindow.h"
 #include "remminachatwindow.h"
 #include "remminapluginmanager.h"
+#include "remminaconnectionwindow.h"
 #include "remminaprotocolwidget.h"
 
 struct _RemminaProtocolWidgetPriv
@@ -45,7 +45,6 @@ struct _RemminaProtocolWidgetPriv
     RemminaSSHTunnel *ssh_tunnel;
     RemminaXPortTunnelInitFunc init_func;
 
-    GtkWidget *sftp_window;
     GtkWidget *chat_window;
 
     gboolean closed;
@@ -154,8 +153,11 @@ remmina_protocol_widget_grab_focus (RemminaProtocolWidget *gp)
     GtkWidget *child;
 
     child = gtk_bin_get_child (GTK_BIN (gp));
-    GTK_WIDGET_SET_FLAGS (child, GTK_CAN_FOCUS);
-    gtk_widget_grab_focus (child);
+    if (child)
+    {
+        GTK_WIDGET_SET_FLAGS (child, GTK_CAN_FOCUS);
+        gtk_widget_grab_focus (child);
+    }
 }
 
 static void
@@ -252,14 +254,6 @@ remmina_protocol_widget_close_connection (RemminaProtocolWidget *gp)
     return gp->priv->plugin->close_connection (gp);
 }
 
-#ifdef HAVE_LIBSSH
-static void
-remmina_protocol_widget_sftp_window_destroy (GtkWidget *widget, RemminaProtocolWidget *gp)
-{
-    gp->priv->sftp_window = NULL;
-}
-#endif
-
 static gboolean
 remmina_protocol_widget_emit_signal_timeout (gpointer user_data)
 {
@@ -300,24 +294,17 @@ remmina_protocol_widget_query_feature (RemminaProtocolWidget *gp, RemminaProtoco
 void
 remmina_protocol_widget_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature, const gpointer data)
 {
+    RemminaFile *remminafile;
+
     switch (feature)
     {
 #ifdef HAVE_LIBSSH
         case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
-            if (!gp->priv->sftp_window)
-            {
-                RemminaSFTP *sftp;
-
-                if (!gp->priv->ssh_tunnel) return;
-
-                sftp = remmina_sftp_new_from_ssh (REMMINA_SSH (gp->priv->ssh_tunnel));
-                gp->priv->sftp_window = remmina_sftp_window_new_init (sftp);
-                if (!gp->priv->sftp_window) return;
-
-                g_signal_connect (G_OBJECT (gp->priv->sftp_window), "destroy",
-                    G_CALLBACK (remmina_protocol_widget_sftp_window_destroy), gp);
-            }
-            gtk_window_present (GTK_WINDOW (gp->priv->sftp_window));
+            if (!gp->priv->ssh_tunnel) return;
+            remminafile = remmina_file_dup (gp->priv->remmina_file);
+            g_free (remminafile->protocol);
+            remminafile->protocol = g_strdup ("SFTP");
+            remmina_connection_window_open_from_file_with_data (remminafile, gp->priv->ssh_tunnel);
             break;
 
         case REMMINA_PROTOCOL_FEATURE_TOOL_SSHTERM:
@@ -580,6 +567,12 @@ remmina_protocol_widget_start_xport_tunnel (RemminaProtocolWidget *gp, gint disp
 #else
     return FALSE;
 #endif
+}
+
+GtkWidget*
+remmina_protocol_widget_get_init_dialog (RemminaProtocolWidget *gp)
+{
+    return gp->priv->init_dialog;
 }
 
 gint

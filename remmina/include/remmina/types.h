@@ -139,6 +139,13 @@ typedef enum
     REMMINA_PROTOCOL_SETTING_ONCE
 } RemminaProtocolSetting;
 
+typedef enum
+{
+    REMMINA_PROTOCOL_SSH_SETTING_NONE,
+    REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,
+    REMMINA_PROTOCOL_SSH_SETTING_SSH
+} RemminaProtocolSSHSetting;
+
 G_END_DECLS
 
 #endif /* __REMMINA_TYPES_H__ */

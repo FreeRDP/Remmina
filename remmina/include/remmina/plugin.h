@@ -18,10 +18,10 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include <remmina/types.h>
-
 #ifndef __REMMINA_PLUGIN_H__
 #define __REMMINA_PLUGIN_H__
+
+#include <remmina/types.h>
 
 G_BEGIN_DECLS
 
@@ -32,9 +32,9 @@ typedef struct _RemminaProtocolPlugin
     gchar *icon_name;
     gchar *icon_name_ssh;
     gchar *avahi_service_type;
-    gboolean ssh_tunnel_allowed;
     RemminaProtocolSetting *basic_settings;
     RemminaProtocolSetting *advanced_settings;
+    RemminaProtocolSSHSetting ssh_setting;
 
     void (* init) (RemminaProtocolWidget *gp);
     gboolean (* open_connection) (RemminaProtocolWidget *gp);
