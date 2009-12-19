@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,39 +19,38 @@
  */
  
 
-#ifndef __REMMINAFTPWINDOW_H__
-#define __REMMINAFTPWINDOW_H__
+#ifndef __REMMINAFTPCLIENT_H__
+#define __REMMINAFTPCLIENT_H__
 
 G_BEGIN_DECLS
 
-#define REMMINA_TYPE_FTP_WINDOW               (remmina_ftp_window_get_type ())
-#define REMMINA_FTP_WINDOW(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_FTP_WINDOW, RemminaFTPWindow))
-#define REMMINA_FTP_WINDOW_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_FTP_WINDOW, RemminaFTPWindowClass))
-#define REMMINA_IS_FTP_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_FTP_WINDOW))
-#define REMMINA_IS_FTP_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_FTP_WINDOW))
-#define REMMINA_FTP_WINDOW_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_FTP_WINDOW, RemminaFTPWindowClass))
+#define REMMINA_TYPE_FTP_CLIENT               (remmina_ftp_client_get_type ())
+#define REMMINA_FTP_CLIENT(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_FTP_CLIENT, RemminaFTPClient))
+#define REMMINA_FTP_CLIENT_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_FTP_CLIENT, RemminaFTPClientClass))
+#define REMMINA_IS_FTP_CLIENT(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_FTP_CLIENT))
+#define REMMINA_IS_FTP_CLIENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_FTP_CLIENT))
+#define REMMINA_FTP_CLIENT_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_FTP_CLIENT, RemminaFTPClientClass))
 
-typedef struct _RemminaFTPWindowPriv RemminaFTPWindowPriv;
+typedef struct _RemminaFTPClientPriv RemminaFTPClientPriv;
 
-typedef struct _RemminaFTPWindow
+typedef struct _RemminaFTPClient
 {
-    GtkWindow window;
+    GtkVBox vbox;
 
-    RemminaFTPWindowPriv *priv;
-} RemminaFTPWindow;
+    RemminaFTPClientPriv *priv;
+} RemminaFTPClient;
 
-typedef struct _RemminaFTPWindowClass
+typedef struct _RemminaFTPClientClass
 {
-    GtkWindowClass parent_class;
+    GtkVBoxClass parent_class;
 
-    void (* disconnect) (RemminaFTPWindow *window);
-    void (* open_dir) (RemminaFTPWindow *window);
-    void (* new_task) (RemminaFTPWindow *window);
-    void (* cancel_task) (RemminaFTPWindow *window);
-    void (* delete_file) (RemminaFTPWindow *window);
-} RemminaFTPWindowClass;
+    void (* open_dir) (RemminaFTPClient *client);
+    void (* new_task) (RemminaFTPClient *client);
+    void (* cancel_task) (RemminaFTPClient *client);
+    void (* delete_file) (RemminaFTPClient *client);
+} RemminaFTPClientClass;
 
-GType remmina_ftp_window_get_type (void) G_GNUC_CONST;
+GType remmina_ftp_client_get_type (void) G_GNUC_CONST;
 
 enum
 {
@@ -120,23 +119,23 @@ typedef struct _RemminaFTPTask
     gchar *tooltip;
 } RemminaFTPTask;
 
-GtkWidget* remmina_ftp_window_new (GtkWindow *parent, const gchar *server_name);
+GtkWidget* remmina_ftp_client_new (void);
 
-void remmina_ftp_window_clear_file_list (RemminaFTPWindow *window);
+void remmina_ftp_client_clear_file_list (RemminaFTPClient *client);
 /* column, value, ..., -1 */
-void remmina_ftp_window_add_file (RemminaFTPWindow *window, ...);
+void remmina_ftp_client_add_file (RemminaFTPClient *client, ...);
 /* Set the current directory. Should be called by opendir signal handler */
-void remmina_ftp_window_set_dir (RemminaFTPWindow *window, const gchar *dir);
+void remmina_ftp_client_set_dir (RemminaFTPClient *client, const gchar *dir);
 /* Get the current directory as newly allocated string */
-gchar* remmina_ftp_window_get_dir (RemminaFTPWindow *window);
+gchar* remmina_ftp_client_get_dir (RemminaFTPClient *client);
 /* Get the next waiting task */
-RemminaFTPTask* remmina_ftp_window_get_waiting_task (RemminaFTPWindow *window);
+RemminaFTPTask* remmina_ftp_client_get_waiting_task (RemminaFTPClient *client);
 /* Update the task */
-void remmina_ftp_window_update_task (RemminaFTPWindow *window, RemminaFTPTask* task);
+void remmina_ftp_client_update_task (RemminaFTPClient *client, RemminaFTPTask* task);
 /* Free the RemminaFTPTask object */
 void remmina_ftp_task_free (RemminaFTPTask *task);
 
 G_END_DECLS
 
-#endif  /* __REMMINAFTPWINDOW_H__  */
+#endif  /* __REMMINAFTPCLIENT_H__  */
 

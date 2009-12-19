@@ -36,7 +36,7 @@ remmina_plugin_manager_register_protocol_plugin (RemminaProtocolPlugin *plugin)
     return TRUE;
 }
 
-static RemminaPluginService remmina_plugin_manager_service =
+RemminaPluginService remmina_plugin_manager_service =
 {
     remmina_plugin_manager_register_protocol_plugin,
 
@@ -157,8 +157,6 @@ N_("Windows Terminal Service")
 N_("Virtual Network Computing")
 N_("Incoming Connection")
 N_("X Remote Session")
-N_("Secure File Transfer")
-N_("Secure Shell")
 N_("NoMachine Remote Access")
 #endif
 

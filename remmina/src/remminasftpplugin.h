@@ -18,23 +18,14 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __REMMINAPLUGINMANAGER_H__
-#define __REMMINAPLUGINMANAGER_H__
-
-#include "remmina/plugin.h"
+#ifndef __REMMINASFTPPLUGIN_H__
+#define __REMMINASFTPPLUGIN_H__
 
 G_BEGIN_DECLS
 
-typedef gboolean (*RemminaPluginFunc) (gchar *protocol, RemminaProtocolPlugin *plugin, gpointer data);
-
-void remmina_plugin_manager_init (void);
-RemminaProtocolPlugin* remmina_plugin_manager_get_protocol_plugin (const gchar *protocol);
-void remmina_plugin_manager_for_each_protocol (RemminaPluginFunc func, gpointer data);
-gchar* remmina_plugin_manager_get_protocol_description (RemminaProtocolPlugin* plugin);
-
-extern RemminaPluginService remmina_plugin_manager_service;
+void remmina_sftp_plugin_register (void);
 
 G_END_DECLS
 
-#endif /* __REMMINAPLUGINMANAGER_H__ */
+#endif /* __REMMINASFTPPLUGIN_H__ */
 

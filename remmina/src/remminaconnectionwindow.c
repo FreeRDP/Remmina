@@ -29,7 +29,6 @@
 #include "remminaprotocolwidget.h"
 #include "remminapref.h"
 #include "remminascrolledviewport.h"
-#include "remminasftpwindow.h"
 #include "remminascaler.h"
 #include "remminawidgetpool.h"
 #include "remminaconnectionwindow.h"
@@ -1884,18 +1883,16 @@ remmina_connection_window_open_from_filename (const gchar *filename)
 void
 remmina_connection_window_open_from_file (RemminaFile *remminafile)
 {
+    remmina_connection_window_open_from_file_with_data (remminafile, NULL);
+}
+
+void
+remmina_connection_window_open_from_file_with_data (RemminaFile *remminafile, gpointer data)
+{
     RemminaConnectionWindow *cnnwin;
     RemminaConnectionHolder *cnnhld;
     RemminaConnectionObject *cnnobj;
     GdkColor color;
-
-    if (g_strcmp0 (remminafile->protocol, "SFTP") == 0)
-    {
-#ifdef HAVE_LIBSSH
-        remmina_sftp_window_open (remminafile);
-#endif
-        return;
-    }
 
     cnnwin = remmina_connection_window_find (remminafile);
 
@@ -1919,6 +1916,11 @@ remmina_connection_window_open_from_file (RemminaFile *remminafile)
 
     /* Create the RemminaProtocolWidget */
     cnnobj->proto = remmina_protocol_widget_new ();
+
+    if (data)
+    {
+        g_object_set_data (G_OBJECT (cnnobj->proto), "user-data", data);
+    }
 
     gtk_widget_show (cnnobj->proto);
     g_signal_connect (G_OBJECT (cnnobj->proto), "connect",

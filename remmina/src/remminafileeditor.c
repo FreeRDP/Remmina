@@ -733,9 +733,8 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, R
     gtk_table_resize (GTK_TABLE (table), row, 2);
 }
 
-/* ssh_type: 1=port forward, 2=forward listen, 3=sftp */
 static void
-remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, gint ssh_type)
+remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSetting ssh_setting)
 {
 #ifdef HAVE_LIBSSH
     RemminaFileEditorPriv *priv = gfe->priv;
@@ -745,18 +744,18 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, gint ssh_type)
     gint row = 0;
 
     /* forward_listen not yet necessary */
-    if (ssh_type == 2) return;
+    if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_NONE) return;
 
     /* The SSH tab (implementation) */
-    if (ssh_type == 3)
+    if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SSH)
     {
         table = remmina_file_editor_create_notebook_tab (gfe, GTK_STOCK_DIALOG_AUTHENTICATION,
-            "SFTP", 8, 3);
+            priv->remmina_file->protocol, 8, 3);
     }
     else
     {
         table = remmina_file_editor_create_notebook_tab (gfe, GTK_STOCK_DIALOG_AUTHENTICATION,
-            "SSH", (ssh_type == 2 ? 8 : 9), 3);
+            "SSH", 9, 3);
 
         widget = gtk_check_button_new_with_label (_("Enable SSH Tunnel"));
         gtk_widget_show (widget);
@@ -771,9 +770,9 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, gint ssh_type)
     remmina_public_create_group (GTK_TABLE (table), _("SSH Server"), row, 3, 3);
     row++;
 
-    switch (ssh_type)
+    switch (ssh_setting)
     {
-    case 1: /* port forward */
+    case REMMINA_PROTOCOL_SSH_SETTING_TUNNEL:
         s = g_strdup_printf (_("Same Server at Port %i"), DEFAULT_SSH_PORT);
         widget = gtk_radio_button_new_with_label (NULL, s);
         g_free (s);
@@ -797,18 +796,7 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, gint ssh_type)
         row++;
         break;
 
-    case 2: /* forward listen */
-        priv->ssh_server_default_radio = NULL;
-        priv->ssh_server_custom_radio = NULL;
-        
-        widget = gtk_entry_new_with_max_length (100);
-        gtk_widget_show (widget);
-        gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 3, row, row + 1);
-        priv->ssh_server_entry = widget;
-        row++;
-        break;
-    
-    case 3: /* sftp */
+    case REMMINA_PROTOCOL_SSH_SETTING_SSH:
         priv->ssh_server_default_radio = NULL;
         priv->ssh_server_custom_radio = NULL;
 
@@ -819,6 +807,9 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, gint ssh_type)
         g_free (s);
         row++;
 
+        break;
+
+    default:
         break;
     }
 
@@ -868,24 +859,15 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, gint ssh_type)
     row++;
 
     /* Set the values */
-    switch (ssh_type)
+    if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_TUNNEL)
     {
-    case 1:
-    case 2:
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->ssh_enabled_check), priv->remmina_file->ssh_enabled);
 
-        if (ssh_type == 1)
-        {
-            gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (
-                priv->remmina_file->ssh_server && priv->remmina_file->ssh_server[0] != '\0' ?
-                priv->ssh_server_custom_radio : priv->ssh_server_default_radio), TRUE);
-        }
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (
+            priv->remmina_file->ssh_server && priv->remmina_file->ssh_server[0] != '\0' ?
+            priv->ssh_server_custom_radio : priv->ssh_server_default_radio), TRUE);
         gtk_entry_set_text (GTK_ENTRY (priv->ssh_server_entry),
             priv->remmina_file->ssh_server ? priv->remmina_file->ssh_server : "");
-        break;
-
-    case 3:
-        break;
     }
 
     gtk_entry_set_text (GTK_ENTRY (priv->ssh_username_entry),
@@ -921,8 +903,11 @@ remmina_file_editor_create_all_settings (RemminaFileEditor *gfe)
     remmina_file_editor_create_notebook_container (gfe);
 
     /* The Basic tab */
-    table = remmina_file_editor_create_notebook_tab (gfe, GTK_STOCK_INFO, _("Basic"), 20, 2);
-    remmina_file_editor_create_settings (gfe, table, priv->plugin->basic_settings);
+    if (priv->plugin->basic_settings)
+    {
+        table = remmina_file_editor_create_notebook_tab (gfe, GTK_STOCK_INFO, _("Basic"), 20, 2);
+        remmina_file_editor_create_settings (gfe, table, priv->plugin->basic_settings);
+    }
 
     /* The Advanced tab */
     if (priv->plugin->advanced_settings)
@@ -932,17 +917,7 @@ remmina_file_editor_create_all_settings (RemminaFileEditor *gfe)
     }
 
     /* The SSH tab */
-    if (priv->plugin->ssh_tunnel_allowed)
-    {
-        remmina_file_editor_create_ssh_tab (gfe, 1);
-    }
-}
-
-static void
-remmina_file_editor_create_sftp_config (RemminaFileEditor *gfe)
-{
-    remmina_file_editor_create_notebook_container (gfe);
-    remmina_file_editor_create_ssh_tab (gfe, 3);
+    remmina_file_editor_create_ssh_tab (gfe, priv->plugin->ssh_setting);
 }
 
 static void
