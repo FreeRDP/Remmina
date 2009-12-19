@@ -813,18 +813,6 @@ remmina_ftp_client_task_list_cell_on_activate (GtkCellRenderer *renderer, gchar 
 }
 
 static void
-remmina_ftp_client_on_realize (RemminaFTPClient *client, gpointer data)
-{
-    gint height;
-
-    height = GTK_WIDGET (client->priv->vpaned)->allocation.height - 100;
-    if (height >= 100)
-    {
-        gtk_paned_set_position (GTK_PANED (client->priv->vpaned), height);
-    }
-}
-
-static void
 remmina_ftp_client_create_toolbar (RemminaFTPClient *client)
 {
     GtkWidget *box;
@@ -920,7 +908,6 @@ remmina_ftp_client_init (RemminaFTPClient *client)
     vpaned = gtk_vpaned_new ();
     gtk_widget_show (vpaned);
     gtk_box_pack_start (GTK_BOX (client), vpaned, TRUE, TRUE, 0);
-    gtk_paned_set_position (GTK_PANED (vpaned), 300);
 
     priv->vpaned = vpaned;
 
@@ -929,7 +916,7 @@ remmina_ftp_client_init (RemminaFTPClient *client)
     gtk_widget_show (scrolledwindow);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolledwindow),
         GTK_POLICY_AUTOMATIC, GTK_POLICY_ALWAYS);
-    gtk_paned_pack1 (GTK_PANED (vpaned), scrolledwindow, FALSE, TRUE);
+    gtk_paned_pack1 (GTK_PANED (vpaned), scrolledwindow, TRUE, FALSE);
 
     widget = gtk_tree_view_new ();
     gtk_widget_show (widget);
@@ -1070,8 +1057,6 @@ remmina_ftp_client_init (RemminaFTPClient *client)
     /* Setup the internal signals */
     g_signal_connect (G_OBJECT (client), "destroy",
         G_CALLBACK (remmina_ftp_client_destroy), NULL);
-    g_signal_connect (G_OBJECT (client), "realize",
-        G_CALLBACK (remmina_ftp_client_on_realize), NULL);
     g_signal_connect (G_OBJECT (gtk_bin_get_child (GTK_BIN (priv->directory_combo))), "activate",
         G_CALLBACK (remmina_ftp_client_dir_on_activate), client);
     g_signal_connect (G_OBJECT (priv->directory_combo), "changed",
