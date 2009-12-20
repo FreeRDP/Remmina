@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -176,24 +176,32 @@ gboolean remmina_sftp_open (RemminaSFTP *sftp);
 /* Free the SFTP session */
 void remmina_sftp_free (RemminaSFTP *sftp);
 
-/*----------------------- SSH Terminal ------------------------*/
+/*----------------------- SSH Shell ------------------------*/
+typedef void (*RemminaSSHExitFunc) (gpointer data);
 
-typedef struct _RemminaSSHTerminal
+typedef struct _RemminaSSHShell
 {
     RemminaSSH ssh;
 
     gint master;
     gint slave;
     pthread_t thread;
-    GtkWidget *window;
     gboolean closed;
-} RemminaSSHTerminal;
+    RemminaSSHExitFunc exit_callback;
+    gpointer user_data;
+} RemminaSSHShell;
 
-/* Create a new SSH Terminal session object from existing SSH session */
-RemminaSSHTerminal* remmina_ssh_terminal_new_from_ssh (RemminaSSH *ssh);
+/* Create a new SSH Shell session object from RemminaFile */
+RemminaSSHShell* remmina_ssh_shell_new_from_file (RemminaFile *remminafile);
 
-/* open the SSH Terminal (init -> auth -> term) */
-gboolean remmina_ssh_terminal_open (RemminaSSHTerminal *term);
+/* Create a new SSH Shell session object from existing SSH session */
+RemminaSSHShell* remmina_ssh_shell_new_from_ssh (RemminaSSH *ssh);
+
+/* open the SSH Shell, assuming the session already authenticated */
+gboolean remmina_ssh_shell_open (RemminaSSHShell *shell, RemminaSSHExitFunc exit_callback, gpointer data);
+
+/* Free the SFTP session */
+void remmina_ssh_shell_free (RemminaSSHShell *shell);
 
 G_END_DECLS
 
@@ -202,7 +210,7 @@ G_END_DECLS
 #define RemminaSSH void
 #define RemminaSSHTunnel void
 #define RemminaSFTP void
-#define RemminaTerminal void
+#define RemminaSSHShell void
 typedef void (*RemminaSSHTunnelCallback) (void);
 
 #endif /* HAVE_LIBSSH */

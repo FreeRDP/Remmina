@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,6 +35,7 @@
 #include "remminaabout.h"
 #include "remminapluginmanager.h"
 #include "remminasftpplugin.h"
+#include "remminasshplugin.h"
 
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
@@ -280,6 +281,7 @@ main (int argc, char* argv[])
     remmina_pref_init ();
     remmina_plugin_manager_init ();
     remmina_sftp_plugin_register ();
+    remmina_ssh_plugin_register ();
 
     g_set_application_name ("Remmina");
     gtk_window_set_default_icon_name ("remmina");
