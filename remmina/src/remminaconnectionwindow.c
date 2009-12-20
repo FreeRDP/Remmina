@@ -56,6 +56,7 @@ struct _RemminaConnectionWindowPriv
     GtkWidget *toolbar;
 
     /* Toolitems that need to be handled */
+    GtkToolItem *toolitem_autofit;
     GtkToolItem *toolitem_switch_page;
     GtkToolItem *toolitem_scale;
     GtkToolItem *toolitem_grab;
@@ -940,6 +941,7 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
         gtk_tool_item_set_tooltip_text (toolitem, _("Resize the window to fit in remote resolution"));
         g_signal_connect (G_OBJECT (toolitem), "clicked",
             G_CALLBACK(remmina_connection_holder_toolbar_autofit), cnnhld);
+        priv->toolitem_autofit = toolitem;
     }
     else
     {
@@ -948,6 +950,7 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
         gtk_tool_item_set_tooltip_text (toolitem, _("Toggle scrolled window mode"));
         g_signal_connect (G_OBJECT (toolitem), "clicked",
             G_CALLBACK(remmina_connection_holder_toolbar_scrolled), cnnhld);
+        priv->toolitem_autofit = NULL;
     }
     gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
     gtk_widget_show (GTK_WIDGET (toolitem));
@@ -1077,6 +1080,13 @@ remmina_connection_holder_update_toolbar (RemminaConnectionHolder *cnnhld)
     RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
     GtkToolItem *toolitem;
     gboolean bval;
+
+    toolitem = priv->toolitem_autofit;
+    if (toolitem)
+    {
+        bval = remmina_protocol_widget_get_expand (REMMINA_PROTOCOL_WIDGET (cnnobj->proto));
+        gtk_widget_set_sensitive (GTK_WIDGET (toolitem), !bval);
+    }
 
     toolitem = priv->toolitem_switch_page;
     bval = (gtk_notebook_get_n_pages (GTK_NOTEBOOK (priv->notebook)) > 1);
