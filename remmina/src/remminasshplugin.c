@@ -31,6 +31,56 @@
 #include "remminaprotocolwidget.h"
 #include "remminasshplugin.h"
 
+/***** A VTE-Terminal subclass to override the size_request behavior *****/
+#define REMMINA_TYPE_VTE               (remmina_vte_get_type ())
+#define REMMINA_VTE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_VTE, RemminaVte))
+#define REMMINA_VTE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_VTE, RemminaVteClass))
+#define REMMINA_IS_VTE(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_VTE))
+#define REMMINA_IS_VTE_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_VTE))
+#define REMMINA_VTE_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_VTE, RemminaVteClass))
+
+typedef struct _RemminaVte
+{
+    VteTerminal vte;
+} RemminaVte;
+
+typedef struct _RemminaVteClass
+{
+    VteTerminalClass parent_class;
+} RemminaVteClass;
+
+GType remmina_vte_get_type (void) G_GNUC_CONST;
+
+G_DEFINE_TYPE (RemminaVte, remmina_vte, VTE_TYPE_TERMINAL)
+
+static void
+remmina_vte_size_request (GtkWidget *widget, GtkRequisition *requisition)
+{
+    requisition->width = -1;
+    requisition->height = -1;
+}
+
+static void
+remmina_vte_class_init (RemminaVteClass *klass)
+{
+    GtkWidgetClass *widget_class;
+
+    widget_class = GTK_WIDGET_CLASS (klass);
+    widget_class->size_request = remmina_vte_size_request;
+}
+
+static void
+remmina_vte_init (RemminaVte *vte)
+{
+}
+
+static GtkWidget*
+remmina_vte_new (void)
+{
+    return GTK_WIDGET (g_object_new (REMMINA_TYPE_VTE, NULL));
+}
+
+/***** The SSH plugin implementation *****/
 typedef struct _RemminaPluginSshData
 {
     RemminaSSHShell *shell;
@@ -138,10 +188,22 @@ remmina_plugin_ssh_on_focus_in (GtkWidget *widget, GdkEventFocus *event, Remmina
     return TRUE;
 }
 
-static void
-remmina_plugin_ssh_on_resize_window (VteTerminal *vte, guint x, guint y, RemminaProtocolWidget *gp)
+static gboolean
+remmina_plugin_ssh_on_size_allocate (GtkWidget *widget, GtkAllocation *alloc, RemminaProtocolWidget *gp)
 {
-g_print ("%i x %i\n", x, y);
+    RemminaPluginSshData *gpdata;
+    gint cols, rows;
+
+    if (!GTK_WIDGET_MAPPED (widget)) return FALSE;
+
+    gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+
+    cols = vte_terminal_get_column_count (VTE_TERMINAL (widget));
+    rows = vte_terminal_get_row_count (VTE_TERMINAL (widget));
+
+    remmina_ssh_shell_set_size (gpdata->shell, cols, rows);
+
+    return FALSE;
 }
 
 static void
@@ -160,13 +222,13 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
     gtk_container_add (GTK_CONTAINER (gp), hbox);
     g_signal_connect (G_OBJECT (hbox), "focus-in-event", G_CALLBACK (remmina_plugin_ssh_on_focus_in), gp);
 
-    vte = vte_terminal_new ();
+    vte = remmina_vte_new ();
     gtk_widget_show (vte);
     vte_terminal_set_size (VTE_TERMINAL (vte), 80, 25);
     vte_terminal_set_scroll_on_keystroke (VTE_TERMINAL (vte), TRUE);
     gtk_box_pack_start (GTK_BOX (hbox), vte, TRUE, TRUE, 0);
-    g_signal_connect (G_OBJECT (vte), "resize-window", G_CALLBACK (remmina_plugin_ssh_on_resize_window), gp);
     gpdata->vte = vte;
+    g_signal_connect (G_OBJECT (vte), "size-allocate", G_CALLBACK (remmina_plugin_ssh_on_size_allocate), gp);
 
     vscrollbar = gtk_vscrollbar_new (vte_terminal_get_adjustment (VTE_TERMINAL (vte)));
     gtk_widget_show (vscrollbar);

@@ -60,6 +60,9 @@
 
 /*************************** SSH Base *********************************/
 
+#define LOCK_SSH(ssh) pthread_mutex_lock (&REMMINA_SSH (ssh)->ssh_mutex);
+#define UNLOCK_SSH(ssh) pthread_mutex_unlock (&REMMINA_SSH (ssh)->ssh_mutex);
+
 static const gchar *common_identities[] = {
     ".ssh/id_rsa",
     ".ssh/id_dsa",
@@ -754,7 +757,7 @@ remmina_ssh_tunnel_main_thread (gpointer data)
 
             if (channel)
             {
-                pthread_mutex_lock (&REMMINA_SSH (tunnel)->ssh_mutex);
+                LOCK_SSH (tunnel)
 
                 sock = remmina_public_open_xdisplay (tunnel->localdisplay);
                 if (sock >= 0)
@@ -769,7 +772,7 @@ remmina_ssh_tunnel_main_thread (gpointer data)
                 }
                 channel = NULL;
 
-                pthread_mutex_unlock (&REMMINA_SSH (tunnel)->ssh_mutex);
+                UNLOCK_SSH (tunnel)
             }
         }
 
@@ -885,12 +888,12 @@ remmina_ssh_tunnel_main_thread (gpointer data)
         }
     }
 
-    pthread_mutex_lock (&REMMINA_SSH (tunnel)->ssh_mutex);
+    LOCK_SSH (tunnel)
 
     tunnel->thread = 0;
     remmina_ssh_tunnel_close_all_channels (tunnel);
 
-    pthread_mutex_unlock (&REMMINA_SSH (tunnel)->ssh_mutex);
+    UNLOCK_SSH (tunnel)
 
     return NULL;
 }
@@ -998,7 +1001,7 @@ remmina_ssh_tunnel_terminated (RemminaSSHTunnel* tunnel)
 void
 remmina_ssh_tunnel_free (RemminaSSHTunnel* tunnel)
 {
-    pthread_mutex_lock (&REMMINA_SSH (tunnel)->ssh_mutex);
+    LOCK_SSH (tunnel)
 
     if (tunnel->thread != 0)
     {
@@ -1019,7 +1022,7 @@ remmina_ssh_tunnel_free (RemminaSSHTunnel* tunnel)
     }
     remmina_ssh_tunnel_close_all_channels (tunnel);
 
-    pthread_mutex_unlock (&REMMINA_SSH (tunnel)->ssh_mutex);
+    UNLOCK_SSH (tunnel)
 
     g_free (tunnel->buffer);
     g_free (tunnel->channels_out);
@@ -1132,9 +1135,12 @@ remmina_ssh_shell_thread (gpointer data)
     gint len;
     gint i, ret;
 
+    LOCK_SSH (shell)
+
     if ((channel = channel_new (REMMINA_SSH (shell)->session)) == NULL ||
         channel_open_session (channel))
     {
+        UNLOCK_SSH (shell)
         remmina_ssh_set_error (REMMINA_SSH (shell), "Failed to open channel : %s");
         if (channel) channel_free (channel);
         shell->thread = 0;
@@ -1144,12 +1150,17 @@ remmina_ssh_shell_thread (gpointer data)
     channel_request_pty (channel);
     if (channel_request_shell(channel))
     {
+        UNLOCK_SSH (shell)
         remmina_ssh_set_error (REMMINA_SSH (shell), "Failed to request shell : %s");
         channel_close (channel);
         channel_free (channel);
         shell->thread = 0;
         return NULL;
     }
+
+    shell->channel = channel;
+
+    UNLOCK_SSH (shell)
 
     buf_len = 1000;
     buf = g_malloc (buf_len + 1);
@@ -1173,11 +1184,15 @@ remmina_ssh_shell_thread (gpointer data)
         {
             len = read (shell->master, buf, buf_len);
             if (len <= 0) break;
+            LOCK_SSH (shell)
             channel_write (channel, buf, len);
+            UNLOCK_SSH (shell)
         }
         for (i = 0; i < 2; i++)
         {
+            LOCK_SSH (shell)
             len = channel_poll (channel, i);
+            UNLOCK_SSH (shell)
             if (len == SSH_ERROR || len == SSH_EOF)
             {
                 shell->closed = TRUE;
@@ -1189,7 +1204,9 @@ remmina_ssh_shell_thread (gpointer data)
                 buf_len = len;
                 buf = (gchar*) g_realloc (buf, buf_len + 1);
             }
+            LOCK_SSH (shell)
             len = channel_read_nonblocking (channel, buf, len, i);
+            UNLOCK_SSH (shell)
             if (len <= 0)
             {
                 shell->closed = TRUE;
@@ -1204,8 +1221,12 @@ remmina_ssh_shell_thread (gpointer data)
         }
     }
 
+    LOCK_SSH (shell)
+    shell->channel = NULL;
     channel_close (channel);
     channel_free (channel);
+    UNLOCK_SSH (shell)
+
     g_free (buf);
     shell->thread = 0;
 
@@ -1243,6 +1264,17 @@ remmina_ssh_shell_open (RemminaSSHShell *shell, RemminaSSHExitFunc exit_callback
     pthread_create (&shell->thread, NULL, remmina_ssh_shell_thread, shell);
 
     return TRUE;
+}
+
+void
+remmina_ssh_shell_set_size (RemminaSSHShell *shell, gint columns, gint rows)
+{
+    LOCK_SSH (shell)
+    if (shell->channel)
+    {
+        channel_change_pty_size (shell->channel, columns, rows);
+    }
+    UNLOCK_SSH (shell)
 }
 
 void
