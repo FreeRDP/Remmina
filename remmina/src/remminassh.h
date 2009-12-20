@@ -186,6 +186,7 @@ typedef struct _RemminaSSHShell
     gint master;
     gint slave;
     pthread_t thread;
+    ssh_channel channel;
     gboolean closed;
     RemminaSSHExitFunc exit_callback;
     gpointer user_data;
@@ -199,6 +200,9 @@ RemminaSSHShell* remmina_ssh_shell_new_from_ssh (RemminaSSH *ssh);
 
 /* open the SSH Shell, assuming the session already authenticated */
 gboolean remmina_ssh_shell_open (RemminaSSHShell *shell, RemminaSSHExitFunc exit_callback, gpointer data);
+
+/* Change the SSH Shell terminal size */
+void remmina_ssh_shell_set_size (RemminaSSHShell *shell, gint columns, gint rows);
 
 /* Free the SFTP session */
 void remmina_ssh_shell_free (RemminaSSHShell *shell);
