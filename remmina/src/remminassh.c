@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,9 +54,6 @@
 #endif
 #ifdef HAVE_TERMIOS_H
 #include <termios.h>
-#endif
-#ifdef HAVE_LIBVTE
-#include <vte/vte.h>
 #endif
 #include "remminapublic.h"
 #include "remminassh.h"
@@ -1090,53 +1087,42 @@ remmina_sftp_free (RemminaSFTP *sftp)
     remmina_ssh_free (REMMINA_SSH (sftp));
 }
 
-/*************************** SSH Terminal *********************************/
+/*************************** SSH Shell *********************************/
 
-RemminaSSHTerminal*
-remmina_ssh_terminal_new_from_ssh (RemminaSSH *ssh)
+RemminaSSHShell*
+remmina_ssh_shell_new_from_file (RemminaFile *remminafile)
 {
-    RemminaSSHTerminal *term;
+    RemminaSSHShell *shell;
 
-    term = g_new (RemminaSSHTerminal, 1);
+    shell = g_new0 (RemminaSSHShell, 1);
 
-    remmina_ssh_init_from_ssh (REMMINA_SSH (term), ssh);
+    remmina_ssh_init_from_file (REMMINA_SSH (shell), remminafile);
 
-    term->thread = 0;
-    term->window = NULL;
-    term->master = -1;
-    term->slave = -1;
-    term->closed = FALSE;
+    shell->master = -1;
+    shell->slave = -1;
 
-    return term;
+    return shell;
 }
 
-#ifdef HAVE_LIBVTE
+RemminaSSHShell*
+remmina_ssh_shell_new_from_ssh (RemminaSSH *ssh)
+{
+    RemminaSSHShell *shell;
 
-#define REMMINA_SSH_TERMINAL_THREAD_EXIT \
-    gdk_threads_enter(); \
-    gtk_widget_destroy (term->window); \
-    if (error) \
-    { \
-        dialog = gtk_message_dialog_new (NULL, \
-            GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, \
-            error, NULL); \
-        g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL); \
-        gtk_widget_show (dialog); \
-        g_free (error); \
-    } \
-    gdk_flush();gdk_threads_leave(); \
-    close (term->master); \
-    close (term->slave); \
-    channel_close (channel); \
-    channel_free (channel); \
-    remmina_ssh_free (REMMINA_SSH (term)); \
-    g_free (buf); \
-    return NULL;
+    shell = g_new0 (RemminaSSHShell, 1);
+
+    remmina_ssh_init_from_ssh (REMMINA_SSH (shell), ssh);
+
+    shell->master = -1;
+    shell->slave = -1;
+
+    return shell;
+}
 
 static gpointer
-remmina_ssh_terminal_thread (gpointer data)
+remmina_ssh_shell_thread (gpointer data)
 {
-    RemminaSSHTerminal *term = (RemminaSSHTerminal*) data;
+    RemminaSSHShell *shell = (RemminaSSHShell*) data;
     fd_set fds;
     struct timeval timeout;
     ssh_channel channel = NULL;
@@ -1145,23 +1131,24 @@ remmina_ssh_terminal_thread (gpointer data)
     gint buf_len;
     gint len;
     gint i, ret;
-    gchar *error = NULL;
-    GtkWidget *dialog;
 
-    if (!remmina_ssh_init_session (REMMINA_SSH (term)) ||
-        remmina_ssh_auth (REMMINA_SSH (term), NULL) <= 0 ||
-        (channel = channel_new (REMMINA_SSH (term)->session)) == NULL ||
+    if ((channel = channel_new (REMMINA_SSH (shell)->session)) == NULL ||
         channel_open_session (channel))
     {
-        error = g_strdup_printf ("Failed to open channel : %s", ssh_get_error (REMMINA_SSH (term)->session));
-        REMMINA_SSH_TERMINAL_THREAD_EXIT
+        remmina_ssh_set_error (REMMINA_SSH (shell), "Failed to open channel : %s");
+        if (channel) channel_free (channel);
+        shell->thread = 0;
+        return NULL;
     }
 
     channel_request_pty (channel);
     if (channel_request_shell(channel))
     {
-        error = g_strdup_printf ("Failed to request shell : %s", ssh_get_error (REMMINA_SSH (term)->session));
-        REMMINA_SSH_TERMINAL_THREAD_EXIT
+        remmina_ssh_set_error (REMMINA_SSH (shell), "Failed to request shell : %s");
+        channel_close (channel);
+        channel_free (channel);
+        shell->thread = 0;
+        return NULL;
     }
 
     buf_len = 1000;
@@ -1170,21 +1157,21 @@ remmina_ssh_terminal_thread (gpointer data)
     ch[0] = channel;
     ch[1] = NULL;
 
-    while (!term->closed)
+    while (!shell->closed)
     {
         timeout.tv_sec = 1;
         timeout.tv_usec = 0;
 
         FD_ZERO (&fds);
-        FD_SET (term->master, &fds);
+        FD_SET (shell->master, &fds);
 
         ret = ssh_select (ch, chout, FD_SETSIZE, &fds, &timeout);
         if (ret == SSH_EINTR) continue;
         if (ret == -1) break;
 
-        if (FD_ISSET (term->master, &fds))
+        if (FD_ISSET (shell->master, &fds))
         {
-            len = read (term->master, buf, buf_len);
+            len = read (shell->master, buf, buf_len);
             if (len <= 0) break;
             channel_write (channel, buf, len);
         }
@@ -1193,7 +1180,7 @@ remmina_ssh_terminal_thread (gpointer data)
             len = channel_poll (channel, i);
             if (len == SSH_ERROR || len == SSH_EOF)
             {
-                term->closed = TRUE;
+                shell->closed = TRUE;
                 break;
             }
             if (len <= 0) continue;
@@ -1205,112 +1192,74 @@ remmina_ssh_terminal_thread (gpointer data)
             len = channel_read_nonblocking (channel, buf, len, i);
             if (len <= 0)
             {
-                term->closed = TRUE;
+                shell->closed = TRUE;
                 break;
             }
             while (len > 0)
             {
-                ret = write (term->master, buf, len);
+                ret = write (shell->master, buf, len);
                 if (ret <= 0) break;
                 len -= ret;
             }
         }
     }
 
-    REMMINA_SSH_TERMINAL_THREAD_EXIT
-}
+    channel_close (channel);
+    channel_free (channel);
+    g_free (buf);
+    shell->thread = 0;
 
-static gboolean
-remmina_ssh_terminal_on_delete_event (GtkWidget *window, GdkEvent *event, RemminaSSHTerminal *term)
-{
-    term->closed = TRUE;
-    return TRUE;
-}
-
-static void
-remmina_ssh_terminal_create_window (RemminaSSHTerminal *term)
-{
-    GtkWidget *window;
-    GtkWidget *hbox;
-    GtkWidget *vscrollbar;
-    GtkWidget *vte;
-    gchar *charset;
-
-    charset = REMMINA_SSH (term)->charset;
-
-    window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title (GTK_WINDOW (window), REMMINA_SSH (term)->server);
-    gtk_window_set_resizable (GTK_WINDOW (window), FALSE);
-    g_signal_connect (G_OBJECT (window), "delete-event",
-        G_CALLBACK (remmina_ssh_terminal_on_delete_event), term);
-
-    hbox = gtk_hbox_new (FALSE, 0);
-    gtk_widget_show (hbox);
-    gtk_container_add (GTK_CONTAINER (window), hbox);
-
-    vte = vte_terminal_new ();
-    gtk_widget_show (vte);
-    vte_terminal_set_size (VTE_TERMINAL (vte), 80, 25);
-    vte_terminal_set_scroll_on_keystroke (VTE_TERMINAL (vte), TRUE);
-    gtk_box_pack_start (GTK_BOX (hbox), vte, TRUE, TRUE, 0);
-    if (charset && charset[0] != '\0')
-    {
-        vte_terminal_set_encoding (VTE_TERMINAL (vte), charset);
-    }
-
-    vscrollbar = gtk_vscrollbar_new (vte_terminal_get_adjustment (VTE_TERMINAL (vte)));
-    gtk_widget_show (vscrollbar);
-    gtk_box_pack_start (GTK_BOX (hbox), vscrollbar, FALSE, TRUE, 0);
-
-    vte_terminal_set_pty (VTE_TERMINAL (vte), term->slave);
-
-    term->window = window;
+    if (shell->exit_callback) shell->exit_callback (shell->user_data);
+    return NULL;
 }
 
 gboolean
-remmina_ssh_terminal_open (RemminaSSHTerminal *term)
+remmina_ssh_shell_open (RemminaSSHShell *shell, RemminaSSHExitFunc exit_callback, gpointer data)
 {
     gchar *slavedevice;
     struct termios stermios;
 
-    term->master = posix_openpt (O_RDWR | O_NOCTTY);
-    if (term->master == -1 ||
-        grantpt (term->master) == -1 ||
-        unlockpt (term->master) == -1 ||
-        (slavedevice = ptsname (term->master)) == NULL ||
-        (term->slave = open (slavedevice, O_RDWR | O_NOCTTY)) < 0)
+    shell->master = posix_openpt (O_RDWR | O_NOCTTY);
+    if (shell->master == -1 ||
+        grantpt (shell->master) == -1 ||
+        unlockpt (shell->master) == -1 ||
+        (slavedevice = ptsname (shell->master)) == NULL ||
+        (shell->slave = open (slavedevice, O_RDWR | O_NOCTTY)) < 0)
     {
-        REMMINA_SSH (term)->error = g_strdup ("Failed to create pty device.");
+        REMMINA_SSH (shell)->error = g_strdup ("Failed to create pty device.");
         return FALSE;
     }
 
     /* These settings works fine with OpenSSH... */
-    tcgetattr (term->slave, &stermios);
+    tcgetattr (shell->slave, &stermios);
     stermios.c_lflag &= ~(ECHO | ECHOE | ECHOK | ECHONL | ICANON);
     stermios.c_iflag &= ~(ICRNL);
-    tcsetattr (term->slave, TCSANOW, &stermios);
+    tcsetattr (shell->slave, TCSANOW, &stermios);
 
-    remmina_ssh_terminal_create_window (term);
-
-    gtk_widget_show (term->window);
-    gtk_window_present (GTK_WINDOW (term->window));
+    shell->exit_callback = exit_callback;
+    shell->user_data = data;
 
     /* Once the process started, we should always TRUE and assume the pthread will be created always */
-    pthread_create (&term->thread, NULL, remmina_ssh_terminal_thread, term);
+    pthread_create (&shell->thread, NULL, remmina_ssh_shell_thread, shell);
 
     return TRUE;
 }
 
-#else /* HAVE_LIBVTE */
-
-gboolean
-remmina_ssh_terminal_open (RemminaSSHTerminal *term)
+void
+remmina_ssh_shell_free (RemminaSSHShell *shell)
 {
-    REMMINA_SSH (term)->error = g_strdup ("No terminal support.");
-    return FALSE;
-}
+    pthread_t thread = shell->thread;
 
-#endif /* HAVE_LIBVTE */
+    shell->exit_callback = NULL;
+    if (thread)
+    {
+        shell->closed = TRUE;
+        pthread_join (thread, NULL);
+    }
+    close (shell->master);
+    /* It's not necessary to close shell->slave since the other end (vte) will close it */;
+    remmina_ssh_free (REMMINA_SSH (shell));
+}
 
 #endif /* HAVE_LIBSSH */
 

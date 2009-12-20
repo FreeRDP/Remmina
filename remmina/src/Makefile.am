@@ -24,6 +24,7 @@ remmina_SOURCES = remmina.c \
     remminastringlist.h remminastringlist.c \
     remminaprefdialog.h remminaprefdialog.c \
     remminassh.h remminassh.c \
+    remminasshplugin.h remminasshplugin.c \
     remminachatwindow.h remminachatwindow.c \
     remminamarshals.h remminamarshals.c \
     remminaftpclient.h remminaftpclient.c \

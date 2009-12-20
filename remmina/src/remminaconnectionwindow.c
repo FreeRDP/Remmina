@@ -249,6 +249,17 @@ remmina_connection_holder_get_desktop_size (RemminaConnectionHolder* cnnhld, gin
     }
 }
 
+static void
+remmina_connection_object_set_scrolled_policy (RemminaConnectionObject *cnnobj, GtkScrolledWindow *scrolled_window)
+{
+    gboolean expand;
+
+    expand = remmina_protocol_widget_get_expand (REMMINA_PROTOCOL_WIDGET (cnnobj->proto));
+    gtk_scrolled_window_set_policy (scrolled_window,
+        expand ? GTK_POLICY_NEVER : GTK_POLICY_AUTOMATIC,
+        expand ? GTK_POLICY_NEVER : GTK_POLICY_AUTOMATIC);
+}
+
 static gboolean
 remmina_connection_holder_toolbar_autofit_restore (RemminaConnectionHolder* cnnhld)
 {
@@ -265,8 +276,7 @@ remmina_connection_holder_toolbar_autofit_restore (RemminaConnectionHolder* cnnh
     }
     if (GTK_IS_SCROLLED_WINDOW (cnnobj->scrolled_container))
     {
-        gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (cnnobj->scrolled_container),
-            GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+        remmina_connection_object_set_scrolled_policy (cnnobj, GTK_SCROLLED_WINDOW (cnnobj->scrolled_container));
     }
     return FALSE;
 }
@@ -299,7 +309,7 @@ static void
 remmina_connection_holder_check_resize (RemminaConnectionHolder *cnnhld)
 {
     DECLARE_CNNOBJ
-    gboolean scroll_required;
+    gboolean scroll_required = FALSE;
     GdkScreen *screen;
     gint screen_width, screen_height;
     gint server_width, server_height;
@@ -309,13 +319,10 @@ remmina_connection_holder_check_resize (RemminaConnectionHolder *cnnhld)
     screen_width = gdk_screen_get_width (screen);
     screen_height = gdk_screen_get_height (screen);
 
-    if (server_width <= 0 || server_height <= 0 || screen_width < server_width || screen_height < server_height)
+    if (!remmina_protocol_widget_get_expand (REMMINA_PROTOCOL_WIDGET (cnnobj->proto)) &&
+        (server_width <= 0 || server_height <= 0 || screen_width < server_width || screen_height < server_height))
     {
         scroll_required = TRUE;
-    }
-    else
-    {
-        scroll_required = FALSE;
     }
 
     switch (cnnhld->cnnwin->priv->view_mode)
@@ -1420,8 +1427,7 @@ remmina_connection_object_create_scrolled_container (RemminaConnectionObject *cn
     else
     {
         container = gtk_scrolled_window_new (NULL, NULL);
-        gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (container),
-            GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+        remmina_connection_object_set_scrolled_policy (cnnobj, GTK_SCROLLED_WINDOW (container));
         gtk_container_set_border_width (GTK_CONTAINER (container), 0);
         GTK_WIDGET_UNSET_FLAGS (container, GTK_CAN_FOCUS);
     }

@@ -305,23 +305,9 @@ remmina_protocol_widget_call_feature (RemminaProtocolWidget *gp, RemminaProtocol
             break;
 
         case REMMINA_PROTOCOL_FEATURE_TOOL_SSHTERM:
-            if (gp->priv->ssh_tunnel)
-            {
-                RemminaSSHTerminal *term;
-                GtkWidget *dialog;
-
-                term = remmina_ssh_terminal_new_from_ssh (REMMINA_SSH (gp->priv->ssh_tunnel));
-                if (!remmina_ssh_terminal_open (term))
-                {
-                    dialog = gtk_message_dialog_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (gp))),
-                        GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-                        (REMMINA_SSH (term))->error, NULL);
-                    gtk_dialog_run (GTK_DIALOG (dialog));
-                    gtk_widget_destroy (dialog);
-                    remmina_ssh_free (REMMINA_SSH (term));
-                    return;
-                }
-            }
+            if (!gp->priv->ssh_tunnel) return;
+            remmina_connection_window_open_from_file_with_data (
+                remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SSH"), gp->priv->ssh_tunnel);
             break;
 
 #endif
