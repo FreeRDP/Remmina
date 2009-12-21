@@ -159,6 +159,6 @@ N_("Windows Terminal Service")
 N_("Virtual Network Computing")
 N_("Incoming Connection")
 N_("X Remote Session")
-N_("NoMachine Remote Access")
+N_("NX Technology")
 #endif
 

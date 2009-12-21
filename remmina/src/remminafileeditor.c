@@ -122,6 +122,7 @@ struct _RemminaFileEditorPriv
     GtkWidget *disableserverinput_check;
     GtkWidget *shareprinter_check;
     GtkWidget *once_check;
+    GtkWidget *encryption_check;
 
     GtkWidget *ssh_enabled_check;
     GtkWidget *ssh_server_default_radio;
@@ -724,6 +725,12 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, R
             row++;
             break;
 
+        case REMMINA_PROTOCOL_SETTING_ENCRYPTION:
+            priv->encryption_check = remmina_file_editor_create_check (gfe, table, row, 0,
+                _("Encrypt Session"), priv->remmina_file->encryption);
+            row++;
+            break;
+
         default:
             break;
         }
@@ -960,6 +967,7 @@ remmina_file_editor_protocol_combo_on_changed (GtkComboBox *combo, RemminaFileEd
     priv->disableserverinput_check = NULL;
     priv->shareprinter_check = NULL;
     priv->once_check = NULL;
+    priv->encryption_check = NULL;
 
     priv->ssh_enabled_check = NULL;
     priv->ssh_server_default_radio = NULL;
@@ -1139,6 +1147,10 @@ remmina_file_editor_update (RemminaFileEditor *gfe)
     if (priv->once_check)
     {
         priv->remmina_file->once = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->once_check));
+    }
+    if (priv->encryption_check)
+    {
+        priv->remmina_file->encryption = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->encryption_check));
     }
 
     if (g_strcmp0 (priv->remmina_file->protocol, "SFTP") == 0)

@@ -56,6 +56,29 @@ AC_CHECK_LIB(pthread, pthread_create, [
     pthread_support="no. libpthread required."
 ])
 
+# Check libssh
+AC_ARG_ENABLE(ssh,
+    [AS_HELP_STRING([--disable-ssh], [Disable SSH])],
+    [ssh_support=$enableval],
+    [ssh_support="yes"]
+)
+if test "x$ssh_support" != "xno"; then
+    if test "$pthread_support" = "yes"; then
+        AC_CHECK_LIB(ssh, ssh_options_set, [
+            AC_CHECK_HEADER(libssh/libssh.h, [
+                ssh_support="yes"
+                AC_DEFINE([HAVE_LIBSSH], [1], [Define to 1 if you have the `ssh' library (-lssh).])
+                SSH_LIBS="-lssh"
+                AC_SUBST(SSH_LIBS)
+            ], ssh_support="no. libssh-dev required.")
+        ], ssh_support="no. libssh >= 0.4 required.")
+    else
+        ssh_support="no. Multi-threaded support required."
+    fi
+else
+    ssh_support="disabled."
+fi
+
 # Check remmina executable
 if test "x$prefix" = "xNONE"; then
     remminabin=$ac_default_prefix/bin/remmina
@@ -69,8 +92,16 @@ AC_CHECK_FILE($remminabin,
 REMMINA_PLUGINS_SUBDIRS="common"
 
 # Check RDP dependencies
-rdp_plugin="yes"
-REMMINA_PLUGINS_SUBDIRS="$REMMINA_PLUGINS_SUBDIRS rdp"
+AC_ARG_ENABLE(rdp,
+    [AS_HELP_STRING([--disable-rdp], [Disable RDP])],
+    [rdp_plugin=$enableval],
+    [rdp_plugin="yes"]
+)
+if test "x$rdp_plugin" != "xno"; then
+    REMMINA_PLUGINS_SUBDIRS="$REMMINA_PLUGINS_SUBDIRS rdp"
+else
+    rdp_plugin="disabled."
+fi
 
 # Check VNC dependencies
 AC_ARG_ENABLE(vnc,
@@ -126,8 +157,32 @@ if test "x$vnc_plugin" = "x"; then
 fi
 
 # Check XDMCP dependencies
-xdmcp_plugin="yes"
-REMMINA_PLUGINS_SUBDIRS="$REMMINA_PLUGINS_SUBDIRS xdmcp"
+AC_ARG_ENABLE(xdmcp,
+    [AS_HELP_STRING([--disable-xdmcp], [Disable XDMCP])],
+    [xdmcp_plugin=$enableval],
+    [xdmcp_plugin="yes"]
+)
+if test "x$xdmcp_plugin" != "xno"; then
+    REMMINA_PLUGINS_SUBDIRS="$REMMINA_PLUGINS_SUBDIRS xdmcp"
+else
+    xdmcp_plugin="disabled."
+fi
+
+# Check NX dependencies
+if test "x$ssh_support" = "xyes"; then
+    AC_ARG_ENABLE(nx,
+        [AS_HELP_STRING([--disable-nx], [Disable NX])],
+        [nx_plugin=$enableval],
+        [nx_plugin="yes"]
+    )
+    if test "x$nx_plugin" != "xno"; then
+        REMMINA_PLUGINS_SUBDIRS="$REMMINA_PLUGINS_SUBDIRS nx"
+    else
+        nx_plugin="disabled."
+    fi
+else
+    nx_plugin="no. libssh required."
+fi
 
 # Checks for header files.
 AC_CHECK_HEADERS_ONCE(
@@ -138,7 +193,6 @@ AC_CHECK_HEADERS_ONCE(
     sys/un.h
     fcntl.h
     errno.h
-    termios.h
 )
 
 AC_SUBST(REMMINA_PLUGINS_SUBDIRS)
@@ -150,6 +204,7 @@ rdp/Makefile
 libvncserver/Makefile
 vnc/Makefile
 xdmcp/Makefile
+nx/Makefile
 ])
 
 AC_OUTPUT
@@ -159,9 +214,11 @@ echo "Remmina-Plugins configure result:"
 echo
 echo "* Remmina main program: $remminabin_found"
 echo "* Multi-threaded support: $pthread_support"
+echo "* SSH support: $ssh_support"
 echo "* RDP plugin: $rdp_plugin"
 echo "* VNC plugin: $vnc_plugin"
 echo "* XDMCP plugin: $xdmcp_plugin"
+echo "* NX plugin: $nx_plugin"
 echo
 echo "Type \"make\" to compile remmina-plugins."
 echo

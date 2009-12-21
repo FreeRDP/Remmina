@@ -143,7 +143,7 @@ AC_ARG_ENABLE(ssh,
 )
 if test "x$ssh_support" != "xno"; then
     if test "$pthread_support" = "yes"; then
-        AC_CHECK_LIB(ssh, channel_forward_listen, [
+        AC_CHECK_LIB(ssh, ssh_options_set, [
             AC_CHECK_HEADER(libssh/libssh.h, [
                 ssh_support="yes"
                 AC_DEFINE([HAVE_LIBSSH], [1], [Define to 1 if you have the `ssh' library (-lssh).])
