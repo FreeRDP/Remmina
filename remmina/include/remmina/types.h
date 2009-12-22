@@ -63,7 +63,7 @@ typedef struct _RemminaFile
     gboolean aspectscale;
     gboolean shareprinter;
     gboolean once;
-    gboolean encryption;
+    gboolean disableencryption;
 
     /* SSH settings */
     gboolean ssh_enabled;
@@ -138,7 +138,7 @@ typedef enum
     REMMINA_PROTOCOL_SETTING_SCALE,
     REMMINA_PROTOCOL_SETTING_GKEYMAP,
     REMMINA_PROTOCOL_SETTING_ONCE,
-    REMMINA_PROTOCOL_SETTING_ENCRYPTION
+    REMMINA_PROTOCOL_SETTING_DISABLEENCRYPTION
 } RemminaProtocolSetting;
 
 typedef enum

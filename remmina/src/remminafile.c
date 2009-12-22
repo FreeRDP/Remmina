@@ -108,7 +108,7 @@ remmina_file_new_temp (void)
         gf->aspectscale = FALSE;
         gf->shareprinter = FALSE;
         gf->once = FALSE;
-        gf->encryption = TRUE;
+        gf->disableencryption = FALSE;
 
         gf->ssh_enabled = FALSE;
         gf->ssh_server = NULL;
@@ -224,8 +224,7 @@ remmina_file_load (const gchar *filename)
         gf->aspectscale = g_key_file_get_boolean (gkeyfile, "remmina", "aspectscale", NULL);
         gf->shareprinter = g_key_file_get_boolean (gkeyfile, "remmina", "shareprinter", NULL);
         gf->once = g_key_file_get_boolean (gkeyfile, "remmina", "once", NULL);
-        gf->encryption = (g_key_file_has_key (gkeyfile, "remmina", "encryption", NULL) ?
-            g_key_file_get_boolean (gkeyfile, "remmina", "encryption", NULL) : TRUE);
+        gf->disableencryption = g_key_file_get_boolean (gkeyfile, "remmina", "disableencryption", NULL);
 
         gf->ssh_enabled = g_key_file_get_boolean (gkeyfile, "remmina", "ssh_enabled", NULL);
         gf->ssh_server = g_key_file_get_string (gkeyfile, "remmina", "ssh_server", NULL);
@@ -308,7 +307,7 @@ remmina_file_save (RemminaFile *gf)
     g_key_file_set_boolean (gkeyfile, "remmina", "aspectscale", gf->aspectscale);
     g_key_file_set_boolean (gkeyfile, "remmina", "shareprinter", gf->shareprinter);
     g_key_file_set_boolean (gkeyfile, "remmina", "once", gf->once);
-    g_key_file_set_boolean (gkeyfile, "remmina", "encryption", gf->encryption);
+    g_key_file_set_boolean (gkeyfile, "remmina", "disableencryption", gf->disableencryption);
 
     g_key_file_set_boolean (gkeyfile, "remmina", "ssh_enabled", gf->ssh_enabled);
     g_key_file_set_string (gkeyfile, "remmina", "ssh_server", (gf->ssh_server ? gf->ssh_server : ""));
@@ -408,7 +407,7 @@ remmina_file_dup (RemminaFile *remminafile)
     gf->aspectscale = remminafile->aspectscale;
     gf->shareprinter = remminafile->shareprinter;
     gf->once = remminafile->once;
-    gf->encryption = remminafile->encryption;
+    gf->disableencryption = remminafile->disableencryption;
 
     gf->ssh_enabled = remminafile->ssh_enabled;
     gf->ssh_server = g_strdup (remminafile->ssh_server);
