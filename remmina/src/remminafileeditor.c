@@ -756,8 +756,10 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
     /* The SSH tab (implementation) */
     if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SSH)
     {
+        s = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->protocol_combo));
         table = remmina_file_editor_create_notebook_tab (gfe, GTK_STOCK_DIALOG_AUTHENTICATION,
-            priv->remmina_file->protocol, 8, 3);
+            (s ? s : "SSH"), 8, 3);
+        g_free (s);
     }
     else
     {
@@ -1153,7 +1155,8 @@ remmina_file_editor_update (RemminaFileEditor *gfe)
         priv->remmina_file->encryption = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->encryption_check));
     }
 
-    if (g_strcmp0 (priv->remmina_file->protocol, "SFTP") == 0)
+    if (g_strcmp0 (priv->remmina_file->protocol, "SFTP") == 0 ||
+        g_strcmp0 (priv->remmina_file->protocol, "SSH") == 0)
     {
         priv->remmina_file->ssh_enabled = TRUE;
     }
