@@ -809,7 +809,7 @@ InitialiseRFBConnection(rfbClient* client)
     rfbClientLog("No authentication needed\n");
 
     /* 3.8 and upwards sends a Security Result for rfbNoAuth */
-    if (client->major==3 && client->minor > 7)
+    if ((client->major==3 && client->minor > 7) || client->major>3)
         if (!rfbHandleAuthResult(client)) return FALSE;        
 
     break;
@@ -838,7 +838,9 @@ InitialiseRFBConnection(rfbClient* client)
 
       case rfbNoAuth:
         rfbClientLog("No sub authentication needed\n");
-        if (!rfbHandleAuthResult(client)) return FALSE;
+        /* 3.8 and upwards sends a Security Result for rfbNoAuth */
+        if ((client->major==3 && client->minor > 7) || client->major>3)
+            if (!rfbHandleAuthResult(client)) return FALSE;
         break;
 
       case rfbVncAuth:
