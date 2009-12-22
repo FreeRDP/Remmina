@@ -113,7 +113,7 @@ remmina_plugin_nx_start_session_real (RemminaProtocolWidget *gp, RemminaNXSessio
     gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
-    remmina_nx_session_set_encryption (nx, remminafile->encryption ? 1 : 0);
+    remmina_nx_session_set_encryption (nx, remminafile->disableencryption ? 0 : 1);
 
     s1 = g_strdup (remminafile->server);
     s2 = strrchr (s1, ':');
@@ -316,8 +316,10 @@ static const RemminaProtocolSetting remmina_plugin_nx_basic_settings[] =
     REMMINA_PROTOCOL_SETTING_PASSWORD,
     REMMINA_PROTOCOL_SETTING_RESOLUTION,
     REMMINA_PROTOCOL_SETTING_COLORDEPTH,
-    REMMINA_PROTOCOL_SETTING_ENCRYPTION,
+    REMMINA_PROTOCOL_SETTING_CTL_CONCAT,
+    REMMINA_PROTOCOL_SETTING_DISABLEENCRYPTION,
     REMMINA_PROTOCOL_SETTING_SHOWCURSOR,
+    REMMINA_PROTOCOL_SETTING_CTL_CONCAT_END,
     REMMINA_PROTOCOL_SETTING_CTL_END
 };
 
