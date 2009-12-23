@@ -67,7 +67,7 @@ typedef struct _RemminaPluginService
     gchar*       (* protocol_plugin_start_direct_tunnel) (RemminaProtocolWidget *gp, gint default_port);
     gboolean     (* protocol_plugin_start_xport_tunnel)  (RemminaProtocolWidget *gp, gint display, RemminaXPortTunnelInitFunc init_func);
     gboolean     (* protocol_plugin_close_connection)    (RemminaProtocolWidget *gp);
-    gint         (* protocol_plugin_init_authpwd)        (RemminaProtocolWidget *gp);
+    gint         (* protocol_plugin_init_authpwd)        (RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type);
     gint         (* protocol_plugin_init_authuserpwd)    (RemminaProtocolWidget *gp);
     gchar*       (* protocol_plugin_init_get_username)   (RemminaProtocolWidget *gp);
     gchar*       (* protocol_plugin_init_get_password)   (RemminaProtocolWidget *gp);

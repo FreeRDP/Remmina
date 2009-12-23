@@ -721,7 +721,7 @@ remmina_plugin_vnc_rfb_password (rfbClient *cl)
     else
     {
         THREADS_ENTER
-        ret = remmina_plugin_service->protocol_plugin_init_authpwd (gp);
+        ret = remmina_plugin_service->protocol_plugin_init_authpwd (gp, REMMINA_AUTHPWD_TYPE_PROTOCOL);
         THREADS_LEAVE
 
         if (ret == GTK_RESPONSE_OK)

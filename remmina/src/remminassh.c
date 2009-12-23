@@ -757,8 +757,6 @@ remmina_ssh_tunnel_main_thread (gpointer data)
 
             if (channel)
             {
-                LOCK_SSH (tunnel)
-
                 sock = remmina_public_open_xdisplay (tunnel->localdisplay);
                 if (sock >= 0)
                 {
@@ -771,8 +769,6 @@ remmina_ssh_tunnel_main_thread (gpointer data)
                     channel_free (channel);
                 }
                 channel = NULL;
-
-                UNLOCK_SSH (tunnel)
             }
         }
 
@@ -888,12 +884,8 @@ remmina_ssh_tunnel_main_thread (gpointer data)
         }
     }
 
-    LOCK_SSH (tunnel)
-
     tunnel->thread = 0;
     remmina_ssh_tunnel_close_all_channels (tunnel);
-
-    UNLOCK_SSH (tunnel)
 
     return NULL;
 }
@@ -1001,15 +993,17 @@ remmina_ssh_tunnel_terminated (RemminaSSHTunnel* tunnel)
 void
 remmina_ssh_tunnel_free (RemminaSSHTunnel* tunnel)
 {
-    LOCK_SSH (tunnel)
+    pthread_t thread;
 
-    if (tunnel->thread != 0)
+    thread = tunnel->thread;
+    if (thread != 0)
     {
         tunnel->running = FALSE;
-        pthread_cancel (tunnel->thread);
-        if (tunnel->thread) pthread_join (tunnel->thread, NULL);
+        pthread_cancel (thread);
+        pthread_join (thread, NULL);
         tunnel->thread = 0;
     }
+
     if (tunnel->tunnel_type == REMMINA_SSH_TUNNEL_XPORT && tunnel->remotedisplay > 0)
     {
         channel_forward_cancel (REMMINA_SSH (tunnel)->session,
@@ -1021,8 +1015,6 @@ remmina_ssh_tunnel_free (RemminaSSHTunnel* tunnel)
         tunnel->server_sock = -1;
     }
     remmina_ssh_tunnel_close_all_channels (tunnel);
-
-    UNLOCK_SSH (tunnel)
 
     g_free (tunnel->buffer);
     g_free (tunnel->channels_out);

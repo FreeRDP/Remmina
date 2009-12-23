@@ -149,6 +149,13 @@ typedef enum
     REMMINA_PROTOCOL_SSH_SETTING_SSH
 } RemminaProtocolSSHSetting;
 
+typedef enum
+{
+    REMMINA_AUTHPWD_TYPE_PROTOCOL,
+    REMMINA_AUTHPWD_TYPE_SSH_PWD,
+    REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY
+} RemminaAuthpwdType;
+
 G_END_DECLS
 
 #endif /* __REMMINA_TYPES_H__ */

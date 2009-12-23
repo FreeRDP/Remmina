@@ -648,15 +648,31 @@ remmina_protocol_widget_get_printers (RemminaProtocolWidget *gp)
 }
 
 gint
-remmina_protocol_widget_init_authpwd (RemminaProtocolWidget *gp)
+remmina_protocol_widget_init_authpwd (RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type)
 {
     RemminaFile *remminafile = gp->priv->remmina_file;
     gchar *s;
     gint ret;
 
-    s = g_strdup_printf (_("%s Password"), remminafile->protocol);
+    switch (authpwd_type)
+    {
+    case REMMINA_AUTHPWD_TYPE_PROTOCOL:
+        s = g_strdup_printf (_("%s Password"), remminafile->protocol);
+        break;
+    case REMMINA_AUTHPWD_TYPE_SSH_PWD:
+        s = g_strdup (_("SSH Password"));
+        break;
+    case REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY:
+        s = g_strdup (_("SSH Private Key Passphrase"));
+        break;
+    default:
+        s = g_strdup (_("Password"));
+        break;
+    }
     ret = remmina_init_dialog_authpwd (REMMINA_INIT_DIALOG (gp->priv->init_dialog), s, 
-        (remminafile->filename != NULL));
+        remminafile->filename != NULL &&
+        authpwd_type != REMMINA_AUTHPWD_TYPE_SSH_PWD &&
+        authpwd_type != REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY);
     g_free (s);
 
     return ret;

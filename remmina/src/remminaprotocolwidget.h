@@ -93,7 +93,7 @@ gchar* remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, g
 gboolean remmina_protocol_widget_start_xport_tunnel (RemminaProtocolWidget *gp, gint display,
     RemminaXPortTunnelInitFunc init_func);
 
-gint remmina_protocol_widget_init_authpwd (RemminaProtocolWidget *gp);
+gint remmina_protocol_widget_init_authpwd (RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type);
 gint remmina_protocol_widget_init_authuserpwd (RemminaProtocolWidget *gp);
 gchar* remmina_protocol_widget_init_get_username (RemminaProtocolWidget *gp);
 gchar* remmina_protocol_widget_init_get_password (RemminaProtocolWidget *gp);
