@@ -268,6 +268,9 @@ remmina_nx_session_parse_line (RemminaNXSession *nx, const gchar *line, gchar **
             nx->version = g_strdup (ptr + strlen (nx_hello_server_msg));
             ptr = strchr (nx->version, ' ');
             if (ptr) *ptr = '\0';
+            /* NoMachine NX expend a dash+subversion. Need to be removed. */
+            ptr = strchr (nx->version, '-');
+            if (ptr) *ptr = '\0';
         }
         g_free (s);
         return nx->status;
