@@ -498,7 +498,6 @@ remmina_protocol_widget_tunnel_init_callback (RemminaSSHTunnel *tunnel, gpointer
 static gboolean
 remmina_protocol_widget_tunnel_connect_callback (RemminaSSHTunnel *tunnel, gpointer data)
 {
-    remmina_protocol_widget_emit_signal (REMMINA_PROTOCOL_WIDGET (data), "connect");
     return TRUE;
 }
 

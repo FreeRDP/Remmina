@@ -443,3 +443,9 @@ remmina_pref_get_scale_quality (void)
     return remmina_pref.scale_quality;
 }
 
+gint
+remmina_pref_get_sshtunnel_port (void)
+{
+    return remmina_pref.sshtunnel_port;
+}
+

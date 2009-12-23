@@ -38,6 +38,8 @@ const gchar* remmina_nx_session_get_error (RemminaNXSession *nx);
 
 void remmina_nx_session_set_encryption (RemminaNXSession *nx, gint encryption);
 
+void remmina_nx_session_set_localport (RemminaNXSession *nx, gint localport);
+
 gboolean remmina_nx_session_open (RemminaNXSession *nx, const gchar *server, guint port,
     const gchar *private_key_file, ssh_auth_callback auth_func, gpointer userdata);
 

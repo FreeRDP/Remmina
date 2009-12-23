@@ -85,10 +85,11 @@ struct _RemminaNXSession
     gint response_pos;
     gint status;
     gint encryption;
+    gint localport;
 
     gchar *version;
     gchar *session_id;
-    gchar *session_display;
+    gint session_display;
     gchar *proxy_cookie;
 
     GPid proxy_pid;
@@ -146,7 +147,6 @@ remmina_nx_session_free (RemminaNXSession *nx)
     g_string_free (nx->response, TRUE);
     g_free (nx->version);
     g_free (nx->session_id);
-    g_free (nx->session_display);
     g_free (nx->proxy_cookie);
 
     if (nx->session)
@@ -192,6 +192,12 @@ void
 remmina_nx_session_set_encryption (RemminaNXSession *nx, gint encryption)
 {
     nx->encryption = encryption;
+}
+
+void
+remmina_nx_session_set_localport (RemminaNXSession *nx, gint localport)
+{
+    nx->localport = localport;
 }
 
 static gboolean
@@ -308,7 +314,7 @@ remmina_nx_session_parse_response (RemminaNXSession *nx)
             nx->session_id = g_strdup (p);
             break;
         case 705:
-            nx->session_display = g_strdup (p);
+            nx->session_display = atoi (p);
             break;
         case 701:
             nx->proxy_cookie = g_strdup (p);
@@ -642,7 +648,7 @@ remmina_nx_session_tunnel_open (RemminaNXSession *nx)
 
     if (!nx->encryption) return TRUE;
 
-    port = atoi (nx->session_display) + 4000;
+    port = (nx->localport ? nx->localport : nx->session_display) + 4000;
 
     /* Create the server socket that listens on the local port */
     sock = socket (AF_INET, SOCK_STREAM, 0);
@@ -696,13 +702,13 @@ remmina_nx_session_get_proxy_option (RemminaNXSession *nx)
             return FALSE;
         }
 
-        return g_strdup_printf ("nx,session=%s,cookie=%s,id=%s,connect=127.0.0.1:%s",
+        return g_strdup_printf ("nx,session=%s,cookie=%s,id=%s,connect=127.0.0.1:%i",
             (gchar*) g_hash_table_lookup (nx->session_parameters, "session"),
-            nx->proxy_cookie, nx->session_id, nx->session_display);
+            nx->proxy_cookie, nx->session_id, (nx->localport ? nx->localport : nx->session_display));
     }
     else
     {
-        return g_strdup_printf ("nx,session=%s,cookie=%s,id=%s,connect=%s:%s",
+        return g_strdup_printf ("nx,session=%s,cookie=%s,id=%s,connect=%s:%i",
             (gchar*) g_hash_table_lookup (nx->session_parameters, "session"),
             nx->proxy_cookie, nx->session_id,
             nx->server, nx->session_display);
