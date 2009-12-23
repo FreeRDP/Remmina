@@ -101,6 +101,27 @@ remmina_plugin_nx_invoke_xephyr (RemminaProtocolWidget *gp)
     return TRUE;
 }
 
+int
+remmina_plugin_nx_ssh_auth_callback (const char *prompt, char *buf, size_t len,
+    int echo, int verify, void *userdata)
+{
+    RemminaProtocolWidget *gp = (RemminaProtocolWidget*) userdata;
+    gchar *pwd;
+    gint ret;
+
+    /* TODO: pass prompt to the init_authpwd function */
+    THREADS_ENTER
+    ret = remmina_plugin_service->protocol_plugin_init_authpwd (gp);
+    THREADS_LEAVE
+
+    if (ret != GTK_RESPONSE_OK) return -1;
+    pwd = remmina_plugin_service->protocol_plugin_init_get_password (gp);
+    strncpy (buf, pwd, len - 1);
+    g_free (pwd);
+
+    return 0;
+}
+
 static gboolean
 remmina_plugin_nx_start_session_real (RemminaProtocolWidget *gp, RemminaNXSession *nx)
 {
@@ -127,9 +148,13 @@ remmina_plugin_nx_start_session_real (RemminaProtocolWidget *gp, RemminaNXSessio
         port = 22;
     }
 
-    ret = remmina_nx_session_open (nx, s1, port, NULL, "");
+    if (!remmina_nx_session_open (nx, s1, port, remminafile->ssh_privatekey,
+        remmina_plugin_nx_ssh_auth_callback, gp))
+    {
+        g_free (s1);
+        return FALSE;
+    }
     g_free (s1);
-    if (!ret) return FALSE;
 g_print ("remmina_nx_session_open\n");
 
     THREADS_ENTER
@@ -312,6 +337,7 @@ remmina_plugin_nx_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeatur
 static const RemminaProtocolSetting remmina_plugin_nx_basic_settings[] =
 {
     REMMINA_PROTOCOL_SETTING_SERVER,
+    REMMINA_PROTOCOL_SETTING_SSH_PRIVATEKEY,
     REMMINA_PROTOCOL_SETTING_USERNAME,
     REMMINA_PROTOCOL_SETTING_PASSWORD,
     REMMINA_PROTOCOL_SETTING_RESOLUTION,
@@ -332,7 +358,7 @@ static RemminaProtocolPlugin remmina_plugin_nx =
     NULL,
     (RemminaProtocolSetting*) remmina_plugin_nx_basic_settings,
     NULL,
-    REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,
+    REMMINA_PROTOCOL_SSH_SETTING_NONE,
 
     remmina_plugin_nx_init,
     remmina_plugin_nx_open_connection,

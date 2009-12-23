@@ -20,10 +20,9 @@
 
 #include "common/remminaplugincommon.h"
 #include <glib/gstdio.h>
-#include <libssh/libssh.h>
 #include "remminanxsession.h"
 
-/* Some missing stuff in libssh */
+/* Some missing stuff in libssh, should be removed after using 0.4.1 */
 #define REMMINA_SSH_TYPE_DSS 1
 #define REMMINA_SSH_TYPE_RSA 2
 
@@ -64,6 +63,8 @@ static const gchar nx_default_private_key[] =
 "8xAPsSKs6yZ6j1FNklfu\n"
 "-----END DSA PRIVATE KEY-----\n";
 
+static const gchar nx_hello_server_msg[] = "hello nxserver - version ";
+
 struct _RemminaNXSession
 {
     /* Common SSH members */
@@ -85,6 +86,7 @@ struct _RemminaNXSession
     gint status;
     gint encryption;
 
+    gchar *version;
     gchar *session_id;
     gchar *session_display;
     gchar *proxy_cookie;
@@ -142,6 +144,7 @@ remmina_nx_session_free (RemminaNXSession *nx)
     g_free (nx->error);
     g_hash_table_destroy (nx->session_parameters);
     g_string_free (nx->response, TRUE);
+    g_free (nx->version);
     g_free (nx->session_id);
     g_free (nx->session_display);
     g_free (nx->proxy_cookie);
@@ -225,11 +228,11 @@ remmina_nx_session_get_response (RemminaNXSession *nx)
         g_string_append_len (nx->response, (const gchar*) buffer_get (buffer), len);
     }
 
-/*gchar *str;
+gchar *str;
 str = g_new0 (gchar, len + 1);
 memcpy (str, buffer_get (buffer), len);
 g_print ("%s", str);
-g_free (str);*/
+g_free (str);
 
     buffer_free (buffer);
     return TRUE;
@@ -238,10 +241,31 @@ g_free (str);*/
 static gint
 remmina_nx_session_parse_line (RemminaNXSession *nx, const gchar *line, gchar **valueptr)
 {
+    gchar *s;
     gchar *ptr;
     gint status;
 
     *valueptr = NULL;
+
+    /* Get the server version from the initial line */
+    if (!nx->version)
+    {
+        s = g_ascii_strdown (line, -1);
+        ptr = strstr (s, nx_hello_server_msg);
+        if (!ptr)
+        {
+            /* Try to use a default version */
+            nx->version = g_strdup ("3.3.0");
+        }
+        else
+        {
+            nx->version = g_strdup (ptr + strlen (nx_hello_server_msg));
+            ptr = strchr (nx->version, ' ');
+            if (ptr) *ptr = '\0';
+        }
+        g_free (s);
+        return nx->status;
+    }
 
     if (sscanf (line, "NX> %i ", &status) < 1) return nx->status;
     nx->status = status;
@@ -334,22 +358,28 @@ remmina_nx_session_send_command (RemminaNXSession *nx, const gchar *cmdfmt, ...)
 
 gboolean
 remmina_nx_session_open (RemminaNXSession *nx, const gchar *server, guint port,
-    const gchar *private_key_file, const gchar *passphrase)
+    const gchar *private_key_file, ssh_auth_callback auth_func, gpointer userdata)
 {
     gint ret;
+    struct ssh_callbacks_struct cb = {0};
     ssh_private_key privkey;
     ssh_public_key pubkey;
     ssh_string pubkeystr;
     gint keytype;
     gchar tmpfile[L_tmpnam + 1];
 
+    cb.userdata = userdata;
+    cb.auth_function = auth_func;
+    ssh_callbacks_init (&cb);
+
     nx->session = ssh_new ();
     ssh_options_set (nx->session, SSH_OPTIONS_HOST, server);
     ssh_options_set (nx->session, SSH_OPTIONS_PORT, &port);
     ssh_options_set (nx->session, SSH_OPTIONS_USER, "nx");
-    if (ssh_connect (nx->session))
+
+    if (ssh_set_callbacks (nx->session, &cb) < 0)
     {
-        remmina_nx_session_set_error (nx, "Failed to startup SSH session: %s");
+        remmina_nx_session_set_error (nx, "Failed to initialize libssh callbacks: %s");
         return FALSE;
     }
 
@@ -361,21 +391,21 @@ remmina_nx_session_open (RemminaNXSession *nx, const gchar *server, guint port,
             remmina_nx_session_set_application_error (nx, "Invalid private key file.");
             return FALSE;
         }
+        privkey = privatekey_from_file (nx->session, private_key_file, keytype, NULL);
     }
     else
     {
-        /* Use the default nx private key */
+        /* Use NoMachine's default nx private key */
         if ((tmpnam (tmpfile)) == NULL ||
             !g_file_set_contents (tmpfile, nx_default_private_key, -1, NULL))
         {
             remmina_nx_session_set_application_error (nx, "Failed to create temporary private key file.");
             return FALSE;
         }
-        private_key_file = tmpfile;
-        keytype = REMMINA_SSH_TYPE_DSS;
+        privkey = privatekey_from_file (nx->session, tmpfile, REMMINA_SSH_TYPE_DSS, NULL);
+        g_unlink (tmpfile);
     }
 
-    privkey = privatekey_from_file (nx->session, private_key_file, keytype, passphrase);
     if (privkey == NULL)
     {
         remmina_nx_session_set_error (nx, "Invalid private key file: %s");
@@ -384,6 +414,14 @@ remmina_nx_session_open (RemminaNXSession *nx, const gchar *server, guint port,
     pubkey = publickey_from_privatekey (privkey);
     pubkeystr = publickey_to_string (pubkey);
     publickey_free (pubkey);
+
+    if (ssh_connect (nx->session))
+    {
+        string_free (pubkeystr);
+        privatekey_free (privkey);
+        remmina_nx_session_set_error (nx, "Failed to startup SSH session: %s");
+        return FALSE;
+    }
 
     ret = ssh_userauth_pubkey (nx->session, NULL, pubkeystr, privkey);
     string_free (pubkeystr);
@@ -410,7 +448,7 @@ remmina_nx_session_open (RemminaNXSession *nx, const gchar *server, guint port,
     if (!remmina_nx_session_expect_status (nx, 105)) return FALSE;
 
     /* Say hello to the NX server */
-    remmina_nx_session_send_command (nx, "hello NXCLIENT - Version 1.5.0");
+    remmina_nx_session_send_command (nx, "HELLO NXCLIENT - Version %s", nx->version);
     if (!remmina_nx_session_expect_status (nx, 105)) return FALSE;
 
     /* Set the NX session environment */
