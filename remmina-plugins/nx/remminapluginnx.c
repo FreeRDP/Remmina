@@ -19,6 +19,7 @@
  */
 
 #include "common/remminaplugincommon.h"
+#include <libssh/libssh.h>
 #include "remminanxsession.h"
 
 INCLUDE_GET_AVAILABLE_XDISPLAY
@@ -112,25 +113,20 @@ remmina_plugin_nx_invoke_xephyr (RemminaProtocolWidget *gp)
     return TRUE;
 }
 
-int
-remmina_plugin_nx_ssh_auth_callback (const char *prompt, char *buf, size_t len,
-    int echo, int verify, void *userdata)
+gboolean
+remmina_plugin_nx_ssh_auth_callback (gchar **passphrase, gpointer userdata)
 {
     RemminaProtocolWidget *gp = (RemminaProtocolWidget*) userdata;
-    gchar *pwd;
     gint ret;
 
-    /* TODO: pass prompt to the init_authpwd function */
     THREADS_ENTER
-    ret = remmina_plugin_service->protocol_plugin_init_authpwd (gp);
+    ret = remmina_plugin_service->protocol_plugin_init_authpwd (gp, REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY);
     THREADS_LEAVE
 
-    if (ret != GTK_RESPONSE_OK) return -1;
-    pwd = remmina_plugin_service->protocol_plugin_init_get_password (gp);
-    strncpy (buf, pwd, len - 1);
-    g_free (pwd);
+    if (ret != GTK_RESPONSE_OK) return FALSE;
+    *passphrase = remmina_plugin_service->protocol_plugin_init_get_password (gp);
 
-    return 0;
+    return TRUE;
 }
 
 static gboolean
@@ -378,6 +374,8 @@ remmina_plugin_entry (RemminaPluginService *service)
     {
         return FALSE;
     }
+
+    ssh_init ();
 
     return TRUE;
 }

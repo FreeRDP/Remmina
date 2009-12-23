@@ -20,31 +20,37 @@
 
 #include "common/remminaplugincommon.h"
 #include <glib/gstdio.h>
+#include <libssh/libssh.h>
 #include "remminanxsession.h"
 
-/* Some missing stuff in libssh, should be removed after using 0.4.1 */
+/* Some missing stuff in libssh */
 #define REMMINA_SSH_TYPE_DSS 1
 #define REMMINA_SSH_TYPE_RSA 2
 
-static gint
-remmina_get_keytype (const gchar *private_key_file)
+static gboolean
+remmina_get_keytype (const gchar *private_key_file, gint *keytype, gboolean *encrypted)
 {
     FILE *fp;
-    gchar buf[100];
+    gchar buf1[100], buf2[100];
 
     if ((fp = g_fopen (private_key_file, "r")) == NULL)
     {
-        return -1;
+        return FALSE;
     }
-    if (!fgets (buf, sizeof (buf), fp))
+    if (!fgets (buf1, sizeof (buf1), fp) || !fgets (buf2, sizeof (buf2), fp))
     {
         fclose (fp);
-        return -1;
+        return FALSE;
     }
     fclose (fp);
-    if (strstr (buf, "BEGIN RSA")) return REMMINA_SSH_TYPE_RSA;
-    if (strstr (buf, "BEGIN DSA")) return REMMINA_SSH_TYPE_DSS;
-    return -1;
+
+    if (strstr (buf1, "BEGIN RSA")) *keytype = REMMINA_SSH_TYPE_RSA;
+    else if (strstr (buf1, "BEGIN DSA")) *keytype = REMMINA_SSH_TYPE_DSS;
+    else return FALSE;
+
+    *encrypted = (strstr (buf2, "ENCRYPTED") ? TRUE : FALSE);
+
+    return TRUE;
 }
 
 /*****/
@@ -268,7 +274,7 @@ remmina_nx_session_parse_line (RemminaNXSession *nx, const gchar *line, gchar **
             nx->version = g_strdup (ptr + strlen (nx_hello_server_msg));
             ptr = strchr (nx->version, ' ');
             if (ptr) *ptr = '\0';
-            /* NoMachine NX expend a dash+subversion. Need to be removed. */
+            /* NoMachine NX append a dash+subversion. Need to be removed. */
             ptr = strchr (nx->version, '-');
             if (ptr) *ptr = '\0';
         }
@@ -367,40 +373,35 @@ remmina_nx_session_send_command (RemminaNXSession *nx, const gchar *cmdfmt, ...)
 
 gboolean
 remmina_nx_session_open (RemminaNXSession *nx, const gchar *server, guint port,
-    const gchar *private_key_file, ssh_auth_callback auth_func, gpointer userdata)
+    const gchar *private_key_file, RemminaNXPassphraseCallback passphrase_func, gpointer userdata)
 {
     gint ret;
-    struct ssh_callbacks_struct cb = {0};
     ssh_private_key privkey;
     ssh_public_key pubkey;
     ssh_string pubkeystr;
     gint keytype;
+    gboolean encrypted;
+    gchar *passphrase = NULL;
     gchar tmpfile[L_tmpnam + 1];
-
-    cb.userdata = userdata;
-    cb.auth_function = auth_func;
-    ssh_callbacks_init (&cb);
 
     nx->session = ssh_new ();
     ssh_options_set (nx->session, SSH_OPTIONS_HOST, server);
     ssh_options_set (nx->session, SSH_OPTIONS_PORT, &port);
     ssh_options_set (nx->session, SSH_OPTIONS_USER, "nx");
 
-    if (ssh_set_callbacks (nx->session, &cb) < 0)
-    {
-        remmina_nx_session_set_error (nx, "Failed to initialize libssh callbacks: %s");
-        return FALSE;
-    }
-
     if (private_key_file && private_key_file[0])
     {
-        keytype = remmina_get_keytype (private_key_file);
-        if (keytype < 0)
+        if (!remmina_get_keytype (private_key_file, &keytype, &encrypted))
         {
             remmina_nx_session_set_application_error (nx, "Invalid private key file.");
             return FALSE;
         }
-        privkey = privatekey_from_file (nx->session, private_key_file, keytype, NULL);
+        if (encrypted && !passphrase_func (&passphrase, userdata))
+        {
+            return FALSE;
+        }
+        privkey = privatekey_from_file (nx->session, private_key_file, keytype, (passphrase ? passphrase : ""));
+        g_free (passphrase);
     }
     else
     {
@@ -411,7 +412,7 @@ remmina_nx_session_open (RemminaNXSession *nx, const gchar *server, guint port,
             remmina_nx_session_set_application_error (nx, "Failed to create temporary private key file.");
             return FALSE;
         }
-        privkey = privatekey_from_file (nx->session, tmpfile, REMMINA_SSH_TYPE_DSS, NULL);
+        privkey = privatekey_from_file (nx->session, tmpfile, REMMINA_SSH_TYPE_DSS, "");
         g_unlink (tmpfile);
     }
 

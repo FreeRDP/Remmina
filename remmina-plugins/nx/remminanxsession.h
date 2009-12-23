@@ -21,12 +21,11 @@
 #ifndef __REMMINANXSESSION_H__
 #define __REMMINANXSESSION_H__
 
-#include <libssh/libssh.h>
-#include <libssh/callbacks.h>
-
 G_BEGIN_DECLS
 
 typedef struct _RemminaNXSession RemminaNXSession;
+
+typedef gboolean (*RemminaNXPassphraseCallback) (gchar **passphrase, gpointer userdata);
 
 RemminaNXSession* remmina_nx_session_new (void);
 
@@ -41,7 +40,7 @@ void remmina_nx_session_set_encryption (RemminaNXSession *nx, gint encryption);
 void remmina_nx_session_set_localport (RemminaNXSession *nx, gint localport);
 
 gboolean remmina_nx_session_open (RemminaNXSession *nx, const gchar *server, guint port,
-    const gchar *private_key_file, ssh_auth_callback auth_func, gpointer userdata);
+    const gchar *private_key_file, RemminaNXPassphraseCallback passphrase_func, gpointer userdata);
 
 gboolean remmina_nx_session_login (RemminaNXSession *nx, const gchar *username, const gchar *password);
 
