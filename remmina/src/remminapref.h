@@ -108,6 +108,7 @@ guint remmina_pref_keymap_get_keyval (const gchar *keymap, guint keyval);
 gchar* remmina_pref_keymap_groups (void);
 
 gint remmina_pref_get_scale_quality (void);
+gint remmina_pref_get_sshtunnel_port (void);
 
 G_END_DECLS
 

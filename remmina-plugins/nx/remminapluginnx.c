@@ -28,7 +28,7 @@ typedef struct _RemminaPluginNxData
     GtkWidget *socket;
     gint socket_id;
     GPid xephyr_pid;
-    gint xephyr_display;
+    gint display;
     gint output_fd;
     gint error_fd;
 
@@ -42,6 +42,7 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 static void
 remmina_plugin_nx_on_plug_added (GtkSocket *socket, RemminaProtocolWidget *gp)
 {
+    remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
 }
 
 static void
@@ -51,19 +52,12 @@ remmina_plugin_nx_on_plug_removed (GtkSocket *socket, RemminaProtocolWidget *gp)
 }
 
 static gboolean
-remmina_plugin_nx_invoke_xephyr (RemminaProtocolWidget *gp)
+remmina_plugin_nx_prepare_display (RemminaProtocolWidget *gp)
 {
     RemminaPluginNxData *gpdata;
-    RemminaFile *remminafile;
-    gchar *argv[50];
-    gint argc;
     gint display;
-    gint i;
-    GError *error = NULL;
-    gboolean ret;
 
     gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
-    remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
     display = remmina_get_available_xdisplay ();
     if (display == 0)
@@ -72,10 +66,29 @@ remmina_plugin_nx_invoke_xephyr (RemminaProtocolWidget *gp)
         return FALSE;
     }
 
+    gpdata->display = display;
+
+    return TRUE;
+}
+
+static gboolean
+remmina_plugin_nx_invoke_xephyr (RemminaProtocolWidget *gp)
+{
+    RemminaPluginNxData *gpdata;
+    RemminaFile *remminafile;
+    gchar *argv[50];
+    gint argc;
+    gint i;
+    GError *error = NULL;
+    gboolean ret;
+
+    gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+    remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
+
     argc = 0;
     argv[argc++] = g_strdup ("Xephyr");
 
-    argv[argc++] = g_strdup_printf (":%i", display);
+    argv[argc++] = g_strdup_printf (":%i", gpdata->display);
 
     argv[argc++] = g_strdup ("-parent");
     argv[argc++] = g_strdup_printf ("%i", gpdata->socket_id);
@@ -95,8 +108,6 @@ remmina_plugin_nx_invoke_xephyr (RemminaProtocolWidget *gp)
         remmina_plugin_service->protocol_plugin_set_error (gp, "%s", error->message);
         return FALSE;
     }
-
-    gpdata->xephyr_display = display;
 
     return TRUE;
 }
@@ -123,18 +134,21 @@ remmina_plugin_nx_ssh_auth_callback (const char *prompt, char *buf, size_t len,
 }
 
 static gboolean
-remmina_plugin_nx_start_session_real (RemminaProtocolWidget *gp, RemminaNXSession *nx)
+remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
 {
     RemminaPluginNxData *gpdata;
     RemminaFile *remminafile;
+    RemminaNXSession *nx;
     gchar *s1, *s2;
     gint port;
     gint ret;
 
     gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
+    nx = gpdata->nx;
 
     remmina_nx_session_set_encryption (nx, remminafile->disableencryption ? 0 : 1);
+    remmina_nx_session_set_localport (nx, remmina_plugin_service->pref_get_sshtunnel_port ());
 
     s1 = g_strdup (remminafile->server);
     s2 = strrchr (s1, ':');
@@ -171,6 +185,10 @@ g_print ("remmina_nx_session_open\n");
     if (!ret) return FALSE;
 g_print ("remmina_nx_session_login\n");
 
+    if (!remmina_plugin_nx_prepare_display (gp)) return FALSE;
+    if (!remmina_plugin_nx_invoke_xephyr (gp)) return FALSE;
+g_print ("remmina_plugin_nx_invoke_xephyr\n");
+
     remmina_nx_session_add_parameter (nx, "session", "session");
     remmina_nx_session_add_parameter (nx, "type", "unix-gnome");
     remmina_nx_session_add_parameter (nx, "link", "adsl");
@@ -189,14 +207,14 @@ g_print ("remmina_nx_session_start\n");
     if (!remmina_nx_session_tunnel_open (nx)) return FALSE;
 g_print ("remmina_nx_session_tunnel_open\n");
 
-    if (!remmina_nx_session_invoke_proxy (nx, gpdata->xephyr_display)) return FALSE;
+    if (!remmina_nx_session_invoke_proxy (nx, gpdata->display)) return FALSE;
 g_print ("remmina_nx_session_invoke_proxy\n");
 
     return TRUE;
 }
 
 static gboolean
-remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
+remmina_plugin_nx_main (RemminaProtocolWidget *gp)
 {
     RemminaPluginNxData *gpdata;
     gboolean ret;
@@ -205,7 +223,7 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
     gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
 
     gpdata->nx = remmina_nx_session_new ();
-    ret = remmina_plugin_nx_start_session_real (gp, gpdata->nx);
+    ret = remmina_plugin_nx_start_session (gp);
     if (!ret)
     {
         err = remmina_nx_session_get_error (gpdata->nx);
@@ -214,22 +232,6 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
             remmina_plugin_service->protocol_plugin_set_error (gp, "%s", err);
         }
     }
-    
-    return ret;
-}
-
-static gboolean
-remmina_plugin_nx_main (RemminaProtocolWidget *gp)
-{
-    RemminaPluginNxData *gpdata;
-    gboolean ret = TRUE;
-
-    gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
-
-    if (ret && !remmina_plugin_nx_invoke_xephyr (gp)) ret = FALSE;
-    if (ret && !remmina_plugin_nx_start_session (gp)) ret = FALSE;
-
-    if (ret) remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
 
     gpdata->thread = 0;
     return ret;

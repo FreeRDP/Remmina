@@ -42,6 +42,7 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 static void
 remmina_plugin_xdmcp_on_plug_added (GtkSocket *socket, RemminaProtocolWidget *gp)
 {
+    remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
 }
 
 static void
@@ -163,10 +164,6 @@ remmina_plugin_xdmcp_main (RemminaProtocolWidget *gp)
             gpdata->thread = 0;
             return FALSE;
         }
-    }
-    else
-    {
-        remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
     }
 
     gpdata->thread = 0;
