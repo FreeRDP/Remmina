@@ -207,15 +207,17 @@ g_print ("remmina_plugin_nx_invoke_xephyr\n");
 
     remmina_nx_session_add_parameter (nx, "session", "session");
     remmina_nx_session_add_parameter (nx, "type", "unix-gnome");
-    remmina_nx_session_add_parameter (nx, "link", "adsl");
+    remmina_nx_session_add_parameter (nx, "link",
+        remminafile->quality > 2 ? "lan" :
+        remminafile->quality == 2 ? "adsl" :
+        remminafile->quality == 1 ? "isdn" : "modem");
     remmina_nx_session_add_parameter (nx, "geometry", "%ix%i+188+118",
         remminafile->resolution_width, remminafile->resolution_height);
     remmina_nx_session_add_parameter (nx, "keyboard", "defkeymap");
     remmina_nx_session_add_parameter (nx, "kbtype", "pc102/defkeymap");
     remmina_nx_session_add_parameter (nx, "media", "0");
-    remmina_nx_session_add_parameter (nx, "screeninfo", "%ix%ix%i+render",
-        remminafile->resolution_width, remminafile->resolution_height,
-        remminafile->colordepth ? remminafile->colordepth : 24);
+    remmina_nx_session_add_parameter (nx, "screeninfo", "%ix%ix24+render",
+        remminafile->resolution_width, remminafile->resolution_height);
 
     if (!remmina_nx_session_start (nx)) return FALSE;
 g_print ("remmina_nx_session_start\n");
@@ -359,7 +361,7 @@ static const RemminaProtocolSetting remmina_plugin_nx_basic_settings[] =
     REMMINA_PROTOCOL_SETTING_USERNAME,
     REMMINA_PROTOCOL_SETTING_PASSWORD,
     REMMINA_PROTOCOL_SETTING_RESOLUTION,
-    REMMINA_PROTOCOL_SETTING_COLORDEPTH,
+    REMMINA_PROTOCOL_SETTING_QUALITY,
     REMMINA_PROTOCOL_SETTING_CTL_CONCAT,
     REMMINA_PROTOCOL_SETTING_DISABLEENCRYPTION,
     REMMINA_PROTOCOL_SETTING_SHOWCURSOR,
