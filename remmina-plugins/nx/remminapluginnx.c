@@ -129,6 +129,14 @@ remmina_plugin_nx_ssh_auth_callback (gchar **passphrase, gpointer userdata)
     return TRUE;
 }
 
+static void
+remmina_plugin_nx_on_proxy_exit (GPid pid, gint status, gpointer data)
+{
+    RemminaProtocolWidget *gp = (RemminaProtocolWidget*) data;
+
+    remmina_plugin_service->protocol_plugin_close_connection (gp);
+}
+
 static gboolean
 remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
 {
@@ -167,19 +175,31 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
     g_free (s1);
 g_print ("remmina_nx_session_open\n");
 
-    THREADS_ENTER
-    ret = remmina_plugin_service->protocol_plugin_init_authuserpwd (gp);
-    THREADS_LEAVE
+    if (remminafile->username && remminafile->username[0] &&
+        remminafile->password && remminafile->password[0])
+    {
+        s1 = g_strdup (remminafile->username);
+        s2 = g_strdup (remminafile->password);
+    }
+    else
+    {
+        THREADS_ENTER
+        ret = remmina_plugin_service->protocol_plugin_init_authuserpwd (gp);
+        THREADS_LEAVE
 
-    if (ret != GTK_RESPONSE_OK) return FALSE;
+        if (ret != GTK_RESPONSE_OK) return FALSE;
 
-    s1 = remmina_plugin_service->protocol_plugin_init_get_username (gp);
-    s2 = remmina_plugin_service->protocol_plugin_init_get_password (gp);
+        s1 = remmina_plugin_service->protocol_plugin_init_get_username (gp);
+        s2 = remmina_plugin_service->protocol_plugin_init_get_password (gp);
+    }
+
     ret = remmina_nx_session_login (nx, s1, s2);
     g_free (s1);
     g_free (s2);
     if (!ret) return FALSE;
 g_print ("remmina_nx_session_login\n");
+
+    remmina_plugin_service->protocol_plugin_init_save_cred (gp);
 
     if (!remmina_plugin_nx_prepare_display (gp)) return FALSE;
     if (!remmina_plugin_nx_invoke_xephyr (gp)) return FALSE;
@@ -203,7 +223,7 @@ g_print ("remmina_nx_session_start\n");
     if (!remmina_nx_session_tunnel_open (nx)) return FALSE;
 g_print ("remmina_nx_session_tunnel_open\n");
 
-    if (!remmina_nx_session_invoke_proxy (nx, gpdata->display)) return FALSE;
+    if (!remmina_nx_session_invoke_proxy (nx, gpdata->display, remmina_plugin_nx_on_proxy_exit, gp)) return FALSE;
 g_print ("remmina_nx_session_invoke_proxy\n");
 
     return TRUE;
@@ -303,17 +323,17 @@ remmina_plugin_nx_close_connection (RemminaProtocolWidget *gp)
         if (gpdata->thread) pthread_join (gpdata->thread, NULL);
     }
 
+    if (gpdata->nx)
+    {
+        remmina_nx_session_free (gpdata->nx);
+        gpdata->nx = NULL;
+    }
+
     if (gpdata->xephyr_pid)
     {
         kill (gpdata->xephyr_pid, SIGTERM);
         g_spawn_close_pid (gpdata->xephyr_pid);
         gpdata->xephyr_pid = 0;
-    }
-
-    if (gpdata->nx)
-    {
-        remmina_nx_session_free (gpdata->nx);
-        gpdata->nx = NULL;
     }
 
     remmina_plugin_service->protocol_plugin_emit_signal (gp, "disconnect");

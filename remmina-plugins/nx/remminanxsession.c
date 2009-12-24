@@ -99,6 +99,7 @@ struct _RemminaNXSession
     gchar *proxy_cookie;
 
     GPid proxy_pid;
+    guint proxy_watch_source;
 };
 
 RemminaNXSession*
@@ -122,6 +123,11 @@ remmina_nx_session_free (RemminaNXSession *nx)
 {
     pthread_t thread;
 
+    if (nx->proxy_watch_source)
+    {
+        g_source_remove (nx->proxy_watch_source);
+        nx->proxy_watch_source = 0;
+    }
     if (nx->proxy_pid)
     {
         kill (nx->proxy_pid, SIGTERM);
@@ -720,7 +726,8 @@ remmina_nx_session_get_proxy_option (RemminaNXSession *nx)
 }
 
 gboolean
-remmina_nx_session_invoke_proxy (RemminaNXSession *nx, const gint display)
+remmina_nx_session_invoke_proxy (RemminaNXSession *nx, const gint display,
+    GChildWatchFunc exit_func, gpointer user_data)
 {
     gchar *argv[50];
     gint argc;
@@ -752,7 +759,7 @@ remmina_nx_session_invoke_proxy (RemminaNXSession *nx, const gint display)
     argv[argc++] = remmina_nx_session_get_proxy_option (nx);
     argv[argc++] = NULL;
 
-    ret = g_spawn_async (NULL, argv, envp, G_SPAWN_SEARCH_PATH,
+    ret = g_spawn_async (NULL, argv, envp, G_SPAWN_SEARCH_PATH | G_SPAWN_DO_NOT_REAP_CHILD,
         NULL, NULL, &nx->proxy_pid, &error);
     g_strfreev (envp);
     for (i = 0; i < argc; i++) g_free (argv[i]);
@@ -761,6 +768,11 @@ remmina_nx_session_invoke_proxy (RemminaNXSession *nx, const gint display)
     {
         remmina_nx_session_set_application_error (nx, "%s", error->message);
         return FALSE;
+    }
+
+    if (exit_func)
+    {
+        nx->proxy_watch_source = g_child_watch_add (nx->proxy_pid, exit_func, user_data);
     }
 
     return TRUE;
