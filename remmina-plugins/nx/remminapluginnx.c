@@ -201,12 +201,46 @@ g_print ("remmina_nx_session_login\n");
 
     remmina_plugin_service->protocol_plugin_init_save_cred (gp);
 
+    if (g_strcmp0 (remminafile->exec, "Shadow") == 0)
+    {
+        remmina_nx_session_add_parameter (nx, "type", "shadow");
+    }
+    else
+    {
+        remmina_nx_session_add_parameter (nx, "user", remminafile->username);
+        remmina_nx_session_add_parameter (nx, "status", "suspended,running");
+    }
+    if (!remmina_nx_session_list (nx)) return FALSE;
+
     if (!remmina_plugin_nx_prepare_display (gp)) return FALSE;
     if (!remmina_plugin_nx_invoke_xephyr (gp)) return FALSE;
 g_print ("remmina_plugin_nx_invoke_xephyr\n");
 
+    if (!remminafile->exec || !remminafile->exec[0] || g_strcmp0 (remminafile->exec, "GNOME") == 0)
+    {
+        remmina_nx_session_add_parameter (nx, "type", "unix-gnome");
+    }
+    else if (g_strcmp0 (remminafile->exec, "KDE") == 0)
+    {
+        remmina_nx_session_add_parameter (nx, "type", "unix-kde");
+    }
+    else if (g_strcmp0 (remminafile->exec, "Xfce") == 0)
+    {
+        /* NX does not know Xfce. So we simply launch the Xfce startup program. */
+        remmina_nx_session_add_parameter (nx, "type", "unix-application");
+        remmina_nx_session_add_parameter (nx, "application", "startxfce4");
+    }
+    else if (g_strcmp0 (remminafile->exec, "Shadow") == 0)
+    {
+        /* TODO */
+    }
+    else
+    {
+        remmina_nx_session_add_parameter (nx, "type", "unix-application");
+        remmina_nx_session_add_parameter (nx, "application", remminafile->exec);
+    }
+
     remmina_nx_session_add_parameter (nx, "session", "session");
-    remmina_nx_session_add_parameter (nx, "type", "unix-gnome");
     remmina_nx_session_add_parameter (nx, "link",
         remminafile->quality > 2 ? "lan" :
         remminafile->quality == 2 ? "adsl" :
@@ -362,6 +396,12 @@ static const RemminaProtocolSetting remmina_plugin_nx_basic_settings[] =
     REMMINA_PROTOCOL_SETTING_PASSWORD,
     REMMINA_PROTOCOL_SETTING_RESOLUTION,
     REMMINA_PROTOCOL_SETTING_QUALITY,
+    REMMINA_PROTOCOL_SETTING_EXEC_CUSTOM, "GNOME,KDE,Xfce,Shadow",
+    REMMINA_PROTOCOL_SETTING_CTL_END
+};
+
+static const RemminaProtocolSetting remmina_plugin_nx_advanced_settings[] =
+{
     REMMINA_PROTOCOL_SETTING_CTL_CONCAT,
     REMMINA_PROTOCOL_SETTING_DISABLEENCRYPTION,
     REMMINA_PROTOCOL_SETTING_SHOWCURSOR,
@@ -376,8 +416,8 @@ static RemminaProtocolPlugin remmina_plugin_nx =
     "remmina-nx",
     "remmina-nx",
     NULL,
-    (RemminaProtocolSetting*) remmina_plugin_nx_basic_settings,
-    NULL,
+    remmina_plugin_nx_basic_settings,
+    remmina_plugin_nx_advanced_settings,
     REMMINA_PROTOCOL_SSH_SETTING_NONE,
 
     remmina_plugin_nx_init,

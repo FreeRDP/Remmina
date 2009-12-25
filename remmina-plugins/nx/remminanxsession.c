@@ -489,16 +489,6 @@ remmina_nx_session_login (RemminaNXSession *nx, const gchar *username, const gch
     remmina_nx_session_send_command (nx, password);
     if (!remmina_nx_session_expect_status (nx, 105)) return FALSE;
 
-    /* Add fixed session parameters */
-    remmina_nx_session_add_parameter (nx, "cache", "16M");
-    remmina_nx_session_add_parameter (nx, "images", "64M");
-    remmina_nx_session_add_parameter (nx, "render", "1");
-    remmina_nx_session_add_parameter (nx, "backingstore", "when_requested");
-    remmina_nx_session_add_parameter (nx, "imagecompressionmethod", "2");
-    remmina_nx_session_add_parameter (nx, "agent_server", "");
-    remmina_nx_session_add_parameter (nx, "agent_user", "");
-    remmina_nx_session_add_parameter (nx, "agent_password", "");
-
     return TRUE;
 }
 
@@ -513,19 +503,14 @@ remmina_nx_session_add_parameter (RemminaNXSession *nx, const gchar *name, const
     g_hash_table_insert (nx->session_parameters, g_strdup (name), value);
 }
 
-gboolean
-remmina_nx_session_start (RemminaNXSession *nx)
+static gboolean
+remmina_nx_session_send_session_command (RemminaNXSession *nx, const gchar *cmd_type)
 {
     GString *cmd;
     GHashTableIter iter;
     gchar *key, *value;
-    gboolean ret;
 
-    value = g_strdup_printf ("%i", nx->encryption);
-    remmina_nx_session_add_parameter (nx, "encryption", value);
-    g_free (value);
-
-    cmd = g_string_new ("startsession");
+    cmd = g_string_new (cmd_type);
     g_hash_table_iter_init (&iter, nx->session_parameters);
     while (g_hash_table_iter_next (&iter, (gpointer*) &key, (gpointer*) &value)) 
     {
@@ -533,10 +518,39 @@ remmina_nx_session_start (RemminaNXSession *nx)
     }
 
     remmina_nx_session_send_command (nx, cmd->str);
-    ret = remmina_nx_session_expect_status (nx, 105);
     g_string_free (cmd, TRUE);
 
-    return ret;
+    g_hash_table_remove_all (nx->session_parameters);
+
+    return remmina_nx_session_expect_status (nx, 105);
+}
+
+gboolean
+remmina_nx_session_list (RemminaNXSession *nx)
+{
+    return remmina_nx_session_send_session_command (nx, "listsession");
+}
+
+gboolean
+remmina_nx_session_start (RemminaNXSession *nx)
+{
+    gchar *value;
+
+    /* Add fixed session parameters for startsession */
+    remmina_nx_session_add_parameter (nx, "cache", "16M");
+    remmina_nx_session_add_parameter (nx, "images", "64M");
+    remmina_nx_session_add_parameter (nx, "render", "1");
+    remmina_nx_session_add_parameter (nx, "backingstore", "when_requested");
+    remmina_nx_session_add_parameter (nx, "imagecompressionmethod", "2");
+    remmina_nx_session_add_parameter (nx, "agent_server", "");
+    remmina_nx_session_add_parameter (nx, "agent_user", "");
+    remmina_nx_session_add_parameter (nx, "agent_password", "");
+
+    value = g_strdup_printf ("%i", nx->encryption);
+    remmina_nx_session_add_parameter (nx, "encryption", value);
+    g_free (value);
+
+    return remmina_nx_session_send_session_command (nx, "startsession");
 }
 
 static gpointer
