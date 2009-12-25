@@ -46,6 +46,8 @@ gboolean remmina_nx_session_login (RemminaNXSession *nx, const gchar *username, 
 
 void remmina_nx_session_add_parameter (RemminaNXSession *nx, const gchar *name, const gchar *valuefmt, ...);
 
+gboolean remmina_nx_session_list (RemminaNXSession *nx);
+
 gboolean remmina_nx_session_start (RemminaNXSession *nx);
 
 gboolean remmina_nx_session_tunnel_open (RemminaNXSession *nx);

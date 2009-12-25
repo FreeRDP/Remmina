@@ -425,8 +425,8 @@ static RemminaProtocolPlugin remmina_plugin_rdp =
     "remmina-rdp",
     "remmina-rdp-ssh",
     NULL,
-    (RemminaProtocolSetting*) remmina_plugin_rdp_basic_settings,
-    (RemminaProtocolSetting*) remmina_plugin_rdp_advanced_settings,
+    remmina_plugin_rdp_basic_settings,
+    remmina_plugin_rdp_advanced_settings,
     REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,
 
     remmina_plugin_rdp_init,

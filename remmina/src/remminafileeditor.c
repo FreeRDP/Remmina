@@ -107,7 +107,7 @@ struct _RemminaFileEditorPriv
     GtkWidget *quality_combo;
     GtkWidget *keymap_combo;
     GtkWidget *gkeymap_combo;
-    GtkWidget *exec_entry;
+    GtkWidget *exec_widget;
     GtkWidget *execpath_entry;
     GtkWidget *sound_combo;
     GtkWidget *arguments_entry;
@@ -450,6 +450,7 @@ remmina_file_editor_create_ssh_privatekey (RemminaFileEditor *gfe, GtkWidget *ta
     if (use_label)
     {
         widget = gtk_label_new (_("Identity File"));
+        gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     }
     else
     {
@@ -605,129 +606,137 @@ remmina_file_editor_create_check (RemminaFileEditor *gfe, GtkWidget *table, gint
 }
 
 static void
-remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, RemminaProtocolSetting *settings)
+remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, const RemminaProtocolSetting *settings)
 {
     RemminaFileEditorPriv *priv = gfe->priv;
     GtkWidget *hbox = NULL;
     GtkWidget *widget;
     gint row = 0;
+    gint val;
     gchar *s;
 
-    while (*settings != REMMINA_PROTOCOL_SETTING_CTL_END)
+    while ((val = atoi (*settings)) != REMMINA_PROTOCOL_SETTING_VALUE_CTL_END)
     {
-        switch (*settings)
+        switch (val)
         {
-        case REMMINA_PROTOCOL_SETTING_CTL_CONCAT:
+        case REMMINA_PROTOCOL_SETTING_VALUE_CTL_CONCAT:
             hbox = gtk_hbox_new (TRUE, 0);
             gtk_widget_show (hbox);
             gtk_table_attach_defaults (GTK_TABLE (table), hbox, 0, 2, row, row + 1);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_CTL_CONCAT_END:
+        case REMMINA_PROTOCOL_SETTING_VALUE_CTL_CONCAT_END:
             hbox = NULL;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_SERVER:
+        case REMMINA_PROTOCOL_SETTING_VALUE_SERVER:
             remmina_file_editor_create_server (gfe, table, row);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_PASSWORD:
+        case REMMINA_PROTOCOL_SETTING_VALUE_PASSWORD:
             remmina_file_editor_create_password (gfe, table, row);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_RESOLUTION:
+        case REMMINA_PROTOCOL_SETTING_VALUE_RESOLUTION:
             remmina_file_editor_create_resolution (gfe, table, row);
             row += 2;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_USERNAME:
+        case REMMINA_PROTOCOL_SETTING_VALUE_USERNAME:
             priv->username_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
                 _("User Name"), priv->remmina_file->username);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_DOMAIN:
+        case REMMINA_PROTOCOL_SETTING_VALUE_DOMAIN:
             priv->domain_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
                 _("Domain"), priv->remmina_file->domain);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_COLORDEPTH:
+        case REMMINA_PROTOCOL_SETTING_VALUE_COLORDEPTH:
             priv->colordepth_combo = remmina_file_editor_create_combo_mapint (gfe, table, row, 0,
                 _("Color Depth"), colordepth_list, priv->remmina_file->colordepth);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_SHAREFOLDER:
+        case REMMINA_PROTOCOL_SETTING_VALUE_SHAREFOLDER:
             priv->sharefolder_combo = remmina_file_editor_create_combo_mapint (gfe, table, row, 0,
                 _("Share Folder"), sharefolder_list, priv->remmina_file->sharefolder);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_SOUND:
+        case REMMINA_PROTOCOL_SETTING_VALUE_SOUND:
             priv->sound_combo = remmina_file_editor_create_combo_map (gfe, table, row, 0,
                 _("Sound"), sound_list, priv->remmina_file->sound);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_KEYMAP:
+        case REMMINA_PROTOCOL_SETTING_VALUE_KEYMAP:
             priv->keymap_combo = remmina_file_editor_create_combo_entry (gfe, table, row, 0,
                 _("Keyboard Mapping"), keymap_list, priv->remmina_file->keymap);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_CLIENTNAME:
+        case REMMINA_PROTOCOL_SETTING_VALUE_CLIENTNAME:
             priv->clientname_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
                 _("Client Name"), priv->remmina_file->clientname);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_EXEC:
-            priv->exec_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
+        case REMMINA_PROTOCOL_SETTING_VALUE_EXEC:
+            priv->exec_widget = remmina_file_editor_create_entry (gfe, table, row, 0,
                 _("Startup Program"), priv->remmina_file->exec);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_EXECPATH:
+        case REMMINA_PROTOCOL_SETTING_VALUE_EXEC_CUSTOM:
+            settings++;
+            priv->exec_widget = remmina_file_editor_create_combo_entry (gfe, table, row, 0,
+                _("Startup Program"), (const gchar*) *settings, priv->remmina_file->exec);
+            row++;
+            break;
+
+        case REMMINA_PROTOCOL_SETTING_VALUE_EXECPATH:
             priv->execpath_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
                 _("Startup Path"), priv->remmina_file->execpath);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_SHAREPRINTER:
+        case REMMINA_PROTOCOL_SETTING_VALUE_SHAREPRINTER:
             priv->shareprinter_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
                 _("Share Local Printers"), priv->remmina_file->shareprinter);
             if (!hbox) row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_CONSOLE:
+        case REMMINA_PROTOCOL_SETTING_VALUE_CONSOLE:
             priv->console_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
                 _("Attach to console (Windows 2003 or newer)"), priv->remmina_file->console);
             if (!hbox) row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_BITMAPCACHING:
+        case REMMINA_PROTOCOL_SETTING_VALUE_BITMAPCACHING:
             priv->bitmapcaching_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
                 _("Enable bitmap caching"), priv->remmina_file->bitmapcaching);
             if (!hbox) row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_COMPRESSION:
+        case REMMINA_PROTOCOL_SETTING_VALUE_COMPRESSION:
             priv->compression_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
                 _("Enable compression"), priv->remmina_file->compression);
             if (!hbox) row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_ARGUMENTS:
+        case REMMINA_PROTOCOL_SETTING_VALUE_ARGUMENTS:
             priv->arguments_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
                 _("Advanced Arguments"), priv->remmina_file->arguments);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_LISTENPORT:
+        case REMMINA_PROTOCOL_SETTING_VALUE_LISTENPORT:
             s = g_strdup_printf ("%i", priv->remmina_file->listenport);
             priv->listenport_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
                 _("Listen on Port"), s);
@@ -736,31 +745,31 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, R
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_QUALITY:
+        case REMMINA_PROTOCOL_SETTING_VALUE_QUALITY:
             priv->quality_combo = remmina_file_editor_create_combo_mapint (gfe, table, row, 0,
                 _("Quality"), quality_list, priv->remmina_file->quality);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_SHOWCURSOR:
+        case REMMINA_PROTOCOL_SETTING_VALUE_SHOWCURSOR:
             priv->showcursor_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
                 _("Show remote cursor"), priv->remmina_file->showcursor);
             if (!hbox) row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_VIEWONLY:
+        case REMMINA_PROTOCOL_SETTING_VALUE_VIEWONLY:
             priv->viewonly_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
                 _("View Only"), priv->remmina_file->viewonly);
             if (!hbox) row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_DISABLESERVERINPUT:
+        case REMMINA_PROTOCOL_SETTING_VALUE_DISABLESERVERINPUT:
             priv->disableserverinput_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
                 _("Disable Server Input"), priv->remmina_file->disableserverinput);
             if (!hbox) row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_SCALE:
+        case REMMINA_PROTOCOL_SETTING_VALUE_SCALE:
             widget = gtk_label_new (_("Horizontal Scale"));
             gtk_widget_show (widget);
             gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
@@ -781,7 +790,7 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, R
             row += 2;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_GKEYMAP:
+        case REMMINA_PROTOCOL_SETTING_VALUE_GKEYMAP:
             s = remmina_pref_keymap_groups ();
             priv->gkeymap_combo = remmina_file_editor_create_combo_text (gfe, table, row, 0,
                 _("Keyboard Mapping"), s, priv->remmina_file->gkeymap, _("<None>"));
@@ -789,19 +798,19 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, R
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_ONCE:
+        case REMMINA_PROTOCOL_SETTING_VALUE_ONCE:
             priv->once_check = remmina_file_editor_create_check (gfe, table, row, 0,
                 _("Disconnect After One Session"), priv->remmina_file->once);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_DISABLEENCRYPTION:
+        case REMMINA_PROTOCOL_SETTING_VALUE_DISABLEENCRYPTION:
             priv->disableencryption_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
                 _("Disable Encryption"), priv->remmina_file->disableencryption);
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_SSH_PRIVATEKEY:
+        case REMMINA_PROTOCOL_SETTING_VALUE_SSH_PRIVATEKEY:
             remmina_file_editor_create_ssh_privatekey (gfe, table, row, 0, TRUE);
             row++;
             break;
@@ -1001,7 +1010,7 @@ remmina_file_editor_protocol_combo_on_changed (GtkComboBox *combo, RemminaFileEd
     priv->quality_combo = NULL;
     priv->keymap_combo = NULL;
     priv->gkeymap_combo = NULL;
-    priv->exec_entry = NULL;
+    priv->exec_widget = NULL;
     priv->execpath_entry = NULL;
     priv->sound_combo = NULL;
     priv->arguments_entry = NULL;
@@ -1141,10 +1150,17 @@ remmina_file_editor_update (RemminaFileEditor *gfe)
         priv->remmina_file->ssh_charset = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->ssh_charset_combo));
     }
 
-    if (priv->exec_entry)
+    if (priv->exec_widget)
     {
         g_free (priv->remmina_file->exec);
-        priv->remmina_file->exec = g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->exec_entry)));
+        if (GTK_IS_ENTRY (priv->exec_widget))
+        {
+            priv->remmina_file->exec = g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->exec_widget)));
+        }
+        else
+        {
+            priv->remmina_file->exec = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->exec_widget));
+        }
     }
 
     if (priv->execpath_entry)

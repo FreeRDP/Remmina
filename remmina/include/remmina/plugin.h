@@ -32,8 +32,8 @@ typedef struct _RemminaProtocolPlugin
     gchar *icon_name;
     gchar *icon_name_ssh;
     gchar *avahi_service_type;
-    RemminaProtocolSetting *basic_settings;
-    RemminaProtocolSetting *advanced_settings;
+    const RemminaProtocolSetting *basic_settings;
+    const RemminaProtocolSetting *advanced_settings;
     RemminaProtocolSSHSetting ssh_setting;
 
     void (* init) (RemminaProtocolWidget *gp);
