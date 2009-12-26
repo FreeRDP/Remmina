@@ -98,6 +98,10 @@ struct _RemminaNXSession
     gint session_display;
     gchar *proxy_cookie;
 
+    gboolean allow_start;
+    GtkListStore *session_list;
+    gint session_list_state;
+
     GPid proxy_pid;
     guint proxy_watch_source;
 };
@@ -161,6 +165,11 @@ remmina_nx_session_free (RemminaNXSession *nx)
     g_free (nx->session_id);
     g_free (nx->proxy_cookie);
 
+    if (nx->session_list)
+    {
+        g_object_unref (nx->session_list);
+        nx->session_list = NULL;
+    }
     if (nx->session)
     {
         ssh_free (nx->session);
@@ -256,6 +265,58 @@ g_free (str);
     return TRUE;
 }
 
+static void
+remmina_nx_session_parse_session_list_line (RemminaNXSession *nx, const gchar *line)
+{
+    gchar *p1, *p2;
+    gchar *val;
+    gint i;
+    GtkTreeIter iter;
+
+    p1 = (char*) line;
+    while (*p1 == ' ') p1++;
+    if (*p1 == '\0') return;
+
+    gtk_list_store_append (nx->session_list, &iter);
+
+    p1 = (char*) line;
+    for (i = 0; i < 7; i++)
+    {
+        p2 = strchr (p1, ' ');
+        if (!p2) return;
+        val = g_strndup (p1, (gint) (p2 - p1));
+        switch (i)
+        {
+        case 0:
+            gtk_list_store_set (nx->session_list, &iter, REMMINA_NX_SESSION_COLUMN_DISPLAY, val, -1);
+            break;
+        case 1:
+            gtk_list_store_set (nx->session_list, &iter, REMMINA_NX_SESSION_COLUMN_TYPE, val, -1);
+            break;
+        case 2:
+            gtk_list_store_set (nx->session_list, &iter, REMMINA_NX_SESSION_COLUMN_ID, val, -1);
+            break;
+        case 6:
+            gtk_list_store_set (nx->session_list, &iter, REMMINA_NX_SESSION_COLUMN_STATUS, val, -1);
+            break;
+        default:
+            break;
+        }
+        g_free (val);
+
+        while (*p2 == ' ') p2++;
+        p1 = p2;
+    }
+    /* The last name column might contains space so it's not in the above loop. We simply rtrim it here. */
+    i = strlen (p1);
+    if (i < 1) return;
+    p2 = p1 + i - 1;
+    while (*p2 == ' ' && p2 > p1) p2--;
+    val = g_strndup (p1, (gint) (p2 - p1 + 1));
+    gtk_list_store_set (nx->session_list, &iter, REMMINA_NX_SESSION_COLUMN_NAME, val, -1);
+    g_free (val);
+}
+
 static gint
 remmina_nx_session_parse_line (RemminaNXSession *nx, const gchar *line, gchar **valueptr)
 {
@@ -288,7 +349,24 @@ remmina_nx_session_parse_line (RemminaNXSession *nx, const gchar *line, gchar **
         return nx->status;
     }
 
-    if (sscanf (line, "NX> %i ", &status) < 1) return nx->status;
+    if (sscanf (line, "NX> %i ", &status) < 1)
+    {
+        if (nx->session_list_state && nx->session_list)
+        {
+            if (nx->session_list_state == 1 && strncmp (line, "----", 4) == 0)
+            {
+                nx->session_list_state = 2;
+            }
+            else if (nx->session_list_state == 2)
+            {
+                remmina_nx_session_parse_session_list_line (nx, line);
+            }
+            return -1;
+        }
+        return nx->status;
+    }
+
+    nx->session_list_state = 0;
     nx->status = status;
     ptr = strchr (line, ':');
     if (!ptr) return status;
@@ -296,35 +374,59 @@ remmina_nx_session_parse_line (RemminaNXSession *nx, const gchar *line, gchar **
     return status;
 }
 
+static gchar*
+remmina_nx_session_get_line (RemminaNXSession *nx)
+{
+    gchar *line;
+    gchar *pos, *ptr;
+    gint len;
+    gint l;
+
+    if (nx->response_pos >= nx->response->len) return NULL;
+
+    pos = nx->response->str + nx->response_pos;
+    if ((ptr = strchr (pos, '\n')) == NULL) return NULL;
+
+    len = ((gint) (ptr - pos)) + 1;
+    line = g_strndup (pos, len - 1);
+
+    l = strlen (line);
+    if (l > 0 && line[l - 1] == '\r')
+    {
+        line[l - 1] = '\0';
+    }
+
+    nx->response_pos += len;
+
+    return line;
+}
+
 static gint
 remmina_nx_session_parse_response (RemminaNXSession *nx)
 {
     gchar *line;
-    gchar *pos, *ptr, *p;
-    gint len, l;
-    gint status;
+    gchar *pos, *p;
+    gint status = -1;
 
     if (nx->response_pos >= nx->response->len) return -1;
 
-    pos = nx->response->str + nx->response_pos;
-    while ((ptr = strchr (pos, '\n')) != NULL)
+    while ((line = remmina_nx_session_get_line (nx)) != NULL)
     {
-        len = ((gint) (ptr - pos)) + 1;
-
-        line = g_strndup (pos, len - 1);
-        l = strlen (line);
-        if (l > 0 && line[l - 1] == '\r')
-        {
-            line[l - 1] = '\0';
-        }
         status = remmina_nx_session_parse_line (nx, line, &p);
         if (status >= 400 && status <= 599)
         {
             remmina_nx_session_set_application_error (nx, "%s", line);
+            g_free (line);
             return status;
         }
         switch (status)
         {
+        case 127: /* Session list */
+            nx->session_list_state = 1;
+            break;
+        case 148: /* Server capacity not reached for user xxx */
+            nx->allow_start = TRUE;
+            break;
         case 700:
             nx->session_id = g_strdup (p);
             break;
@@ -335,11 +437,12 @@ remmina_nx_session_parse_response (RemminaNXSession *nx)
             nx->proxy_cookie = g_strdup (p);
             break;
         }
-
         g_free (line);
-        nx->response_pos += len;
-        pos += len;
+
+        nx->status = status;
     }
+
+    pos = nx->response->str + nx->response_pos;
     if (sscanf (pos, "NX> %i ", &status) < 1)
     {
         status = nx->status;
@@ -504,7 +607,7 @@ remmina_nx_session_add_parameter (RemminaNXSession *nx, const gchar *name, const
 }
 
 static gboolean
-remmina_nx_session_send_session_command (RemminaNXSession *nx, const gchar *cmd_type)
+remmina_nx_session_send_session_command (RemminaNXSession *nx, const gchar *cmd_type, gint response)
 {
     GString *cmd;
     GHashTableIter iter;
@@ -522,17 +625,52 @@ remmina_nx_session_send_session_command (RemminaNXSession *nx, const gchar *cmd_
 
     g_hash_table_remove_all (nx->session_parameters);
 
-    return remmina_nx_session_expect_status (nx, 105);
+    return remmina_nx_session_expect_status (nx, response);
 }
 
 gboolean
 remmina_nx_session_list (RemminaNXSession *nx)
 {
-    return remmina_nx_session_send_session_command (nx, "listsession");
+    gboolean ret;
+
+    nx->session_list = gtk_list_store_new (REMMINA_NX_SESSION_N_COLUMNS,
+        G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+    ret = remmina_nx_session_send_session_command (nx, "listsession", 105);
+
+    return ret;
 }
 
 gboolean
-remmina_nx_session_start (RemminaNXSession *nx)
+remmina_nx_session_iter_first (RemminaNXSession *nx, GtkTreeIter *iter)
+{
+    if (!nx->session_list) return FALSE;
+    return gtk_tree_model_get_iter_first (GTK_TREE_MODEL (nx->session_list), iter);
+}
+
+gboolean
+remmina_nx_session_iter_next (RemminaNXSession *nx, GtkTreeIter *iter)
+{
+    if (!nx->session_list) return FALSE;
+    return gtk_tree_model_iter_next (GTK_TREE_MODEL (nx->session_list), iter);
+}
+
+gchar*
+remmina_nx_session_iter_get (RemminaNXSession *nx, GtkTreeIter *iter, gint column)
+{
+    gchar *val;
+
+    gtk_tree_model_get (GTK_TREE_MODEL (nx->session_list), iter, column, &val, -1);
+    return val;
+}
+
+gboolean
+remmina_nx_session_allow_start (RemminaNXSession *nx)
+{
+    return nx->allow_start;
+}
+
+static void
+remmina_nx_session_add_common_parameters (RemminaNXSession *nx)
 {
     gchar *value;
 
@@ -549,8 +687,27 @@ remmina_nx_session_start (RemminaNXSession *nx)
     value = g_strdup_printf ("%i", nx->encryption);
     remmina_nx_session_add_parameter (nx, "encryption", value);
     g_free (value);
+}
 
-    return remmina_nx_session_send_session_command (nx, "startsession");
+gboolean
+remmina_nx_session_start (RemminaNXSession *nx)
+{
+    remmina_nx_session_add_common_parameters (nx);
+    return remmina_nx_session_send_session_command (nx, "startsession", 105);
+}
+
+gboolean
+remmina_nx_session_attach (RemminaNXSession *nx)
+{
+    remmina_nx_session_add_common_parameters (nx);
+    return remmina_nx_session_send_session_command (nx, "attachsession", 105);
+}
+
+gboolean
+remmina_nx_session_restore (RemminaNXSession *nx)
+{
+    remmina_nx_session_add_common_parameters (nx);
+    return remmina_nx_session_send_session_command (nx, "restoresession", 105);
 }
 
 static gpointer
@@ -672,6 +829,14 @@ remmina_nx_session_tunnel_open (RemminaNXSession *nx)
 
     if (!nx->encryption) return TRUE;
 
+    remmina_nx_session_send_command (nx, "bye");
+    if (!remmina_nx_session_expect_status (nx, 999))
+    {
+        /* Shoud not happen, just in case */
+        remmina_nx_session_set_application_error (nx, "Server won't say bye to us?");
+        return FALSE;
+    }
+
     port = (nx->localport ? nx->localport : nx->session_display) + 4000;
 
     /* Create the server socket that listens on the local port */
@@ -718,14 +883,6 @@ remmina_nx_session_get_proxy_option (RemminaNXSession *nx)
 {
     if (nx->encryption)
     {
-        remmina_nx_session_send_command (nx, "bye");
-        if (!remmina_nx_session_expect_status (nx, 999))
-        {
-            /* Shoud not happen, just in case */
-            remmina_nx_session_set_application_error (nx, "Server won't say bye to us?");
-            return FALSE;
-        }
-
         return g_strdup_printf ("nx,session=%s,cookie=%s,id=%s,connect=127.0.0.1:%i",
             (gchar*) g_hash_table_lookup (nx->session_parameters, "session"),
             nx->proxy_cookie, nx->session_id, (nx->localport ? nx->localport : nx->session_display));
