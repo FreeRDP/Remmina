@@ -29,6 +29,7 @@ typedef struct _RemminaPluginNxData
     GtkWidget *socket;
     gint socket_id;
     GPid xephyr_pid;
+    gboolean xephyr_ready;
     gint display;
     gint output_fd;
     gint error_fd;
@@ -43,7 +44,12 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 static void
 remmina_plugin_nx_on_plug_added (GtkSocket *socket, RemminaProtocolWidget *gp)
 {
+    RemminaPluginNxData *gpdata;
+
+    gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+
     remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
+    gpdata->xephyr_ready = TRUE;
 }
 
 static void
@@ -143,13 +149,17 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
     RemminaPluginNxData *gpdata;
     RemminaFile *remminafile;
     RemminaNXSession *nx;
+    gchar *type, *app;
     gchar *s1, *s2;
     gint port;
     gint ret;
+    GtkTreeIter iter;
 
     gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
     nx = gpdata->nx;
+
+    /* Connect */
 
     remmina_nx_session_set_encryption (nx, remminafile->disableencryption ? 0 : 1);
     remmina_nx_session_set_localport (nx, remmina_plugin_service->pref_get_sshtunnel_port ());
@@ -173,7 +183,8 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
         return FALSE;
     }
     g_free (s1);
-g_print ("remmina_nx_session_open\n");
+
+    /* Login */
 
     if (remminafile->username && remminafile->username[0] &&
         remminafile->password && remminafile->password[0])
@@ -197,50 +208,53 @@ g_print ("remmina_nx_session_open\n");
     g_free (s1);
     g_free (s2);
     if (!ret) return FALSE;
-g_print ("remmina_nx_session_login\n");
 
     remmina_plugin_service->protocol_plugin_init_save_cred (gp);
 
-    if (g_strcmp0 (remminafile->exec, "Shadow") == 0)
-    {
-        remmina_nx_session_add_parameter (nx, "type", "shadow");
-    }
-    else
-    {
-        remmina_nx_session_add_parameter (nx, "user", remminafile->username);
-        remmina_nx_session_add_parameter (nx, "status", "suspended,running");
-    }
-    if (!remmina_nx_session_list (nx)) return FALSE;
-
-    if (!remmina_plugin_nx_prepare_display (gp)) return FALSE;
-    if (!remmina_plugin_nx_invoke_xephyr (gp)) return FALSE;
-g_print ("remmina_plugin_nx_invoke_xephyr\n");
-
+    /* Prepare the session type and application */
     if (!remminafile->exec || !remminafile->exec[0] || g_strcmp0 (remminafile->exec, "GNOME") == 0)
     {
-        remmina_nx_session_add_parameter (nx, "type", "unix-gnome");
+        type = "unix-gnome";
+        app = NULL;
     }
     else if (g_strcmp0 (remminafile->exec, "KDE") == 0)
     {
-        remmina_nx_session_add_parameter (nx, "type", "unix-kde");
+        type = "unix-kde";
+        app = NULL;
     }
     else if (g_strcmp0 (remminafile->exec, "Xfce") == 0)
     {
         /* NX does not know Xfce. So we simply launch the Xfce startup program. */
-        remmina_nx_session_add_parameter (nx, "type", "unix-application");
-        remmina_nx_session_add_parameter (nx, "application", "startxfce4");
+        type = "unix-application";
+        app = "startxfce4";
     }
     else if (g_strcmp0 (remminafile->exec, "Shadow") == 0)
     {
-        /* TODO */
+        type = "shadow";
+        app = NULL;
     }
     else
     {
-        remmina_nx_session_add_parameter (nx, "type", "unix-application");
-        remmina_nx_session_add_parameter (nx, "application", remminafile->exec);
+        type = "unix-application";
+        app = remminafile->exec;
     }
 
-    remmina_nx_session_add_parameter (nx, "session", "session");
+    /* List sessions */
+
+    remmina_nx_session_add_parameter (nx, "type", type);
+    if (g_strcmp0 (type, "shadow") != 0)
+    {
+        remmina_nx_session_add_parameter (nx, "user", remminafile->username);
+        remmina_nx_session_add_parameter (nx, "status", "suspended,running");
+    }
+
+    if (!remmina_nx_session_list (nx))
+    {
+        return FALSE;
+    }
+
+    /* Start, Restore or Attach, based on the setting and existing session */
+    remmina_nx_session_add_parameter (nx, "type", type);
     remmina_nx_session_add_parameter (nx, "link",
         remminafile->quality > 2 ? "lan" :
         remminafile->quality == 2 ? "adsl" :
@@ -250,17 +264,50 @@ g_print ("remmina_plugin_nx_invoke_xephyr\n");
     remmina_nx_session_add_parameter (nx, "keyboard", "defkeymap");
     remmina_nx_session_add_parameter (nx, "kbtype", "pc102/defkeymap");
     remmina_nx_session_add_parameter (nx, "media", "0");
-    remmina_nx_session_add_parameter (nx, "screeninfo", "%ix%ix24+render",
-        remminafile->resolution_width, remminafile->resolution_height);
 
-    if (!remmina_nx_session_start (nx)) return FALSE;
-g_print ("remmina_nx_session_start\n");
+    if (!remmina_nx_session_iter_first (nx, &iter))
+    {
+        if (app) remmina_nx_session_add_parameter (nx, "application", app);
+
+        remmina_nx_session_add_parameter (nx, "session", remminafile->name);
+        remmina_nx_session_add_parameter (nx, "screeninfo", "%ix%ix24+render",
+            remminafile->resolution_width, remminafile->resolution_height);
+
+        if (!remmina_nx_session_start (nx)) return FALSE;
+    }
+    else if (g_strcmp0 (type, "shadow") == 0)
+    {
+        s1 = remmina_nx_session_iter_get (nx, &iter, REMMINA_NX_SESSION_COLUMN_ID);
+        remmina_nx_session_add_parameter (nx, "id", s1);
+        g_free (s1);
+
+        s1 = remmina_nx_session_iter_get (nx, &iter, REMMINA_NX_SESSION_COLUMN_DISPLAY);
+        remmina_nx_session_add_parameter (nx, "display", s1);
+        g_free (s1);
+
+        if (!remmina_nx_session_attach (nx)) return FALSE;
+    }
+    else
+    {
+        s1 = remmina_nx_session_iter_get (nx, &iter, REMMINA_NX_SESSION_COLUMN_ID);
+        remmina_nx_session_add_parameter (nx, "id", s1);
+        g_free (s1);
+
+        remmina_nx_session_add_parameter (nx, "session", remminafile->name);
+
+        if (!remmina_nx_session_restore (nx)) return FALSE;
+    }
 
     if (!remmina_nx_session_tunnel_open (nx)) return FALSE;
-g_print ("remmina_nx_session_tunnel_open\n");
 
+    /* Xephyr */
+    if (!remmina_plugin_nx_prepare_display (gp)) return FALSE;
+    if (!remmina_plugin_nx_invoke_xephyr (gp)) return FALSE;
+
+    while (!gpdata->xephyr_ready) sleep (1);
+
+    /* nxproxy */
     if (!remmina_nx_session_invoke_proxy (nx, gpdata->display, remmina_plugin_nx_on_proxy_exit, gp)) return FALSE;
-g_print ("remmina_nx_session_invoke_proxy\n");
 
     return TRUE;
 }

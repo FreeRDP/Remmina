@@ -23,6 +23,16 @@
 
 G_BEGIN_DECLS
 
+enum
+{
+    REMMINA_NX_SESSION_COLUMN_DISPLAY,
+    REMMINA_NX_SESSION_COLUMN_TYPE,
+    REMMINA_NX_SESSION_COLUMN_ID,
+    REMMINA_NX_SESSION_COLUMN_STATUS,
+    REMMINA_NX_SESSION_COLUMN_NAME,
+    REMMINA_NX_SESSION_N_COLUMNS
+};
+
 typedef struct _RemminaNXSession RemminaNXSession;
 
 typedef gboolean (*RemminaNXPassphraseCallback) (gchar **passphrase, gpointer userdata);
@@ -48,7 +58,19 @@ void remmina_nx_session_add_parameter (RemminaNXSession *nx, const gchar *name, 
 
 gboolean remmina_nx_session_list (RemminaNXSession *nx);
 
+gboolean remmina_nx_session_iter_first (RemminaNXSession *nx, GtkTreeIter *iter);
+
+gboolean remmina_nx_session_iter_next (RemminaNXSession *nx, GtkTreeIter *iter);
+
+gchar* remmina_nx_session_iter_get (RemminaNXSession *nx, GtkTreeIter *iter, gint column);
+
+gboolean remmina_nx_session_allow_start (RemminaNXSession *nx);
+
 gboolean remmina_nx_session_start (RemminaNXSession *nx);
+
+gboolean remmina_nx_session_attach (RemminaNXSession *nx);
+
+gboolean remmina_nx_session_restore (RemminaNXSession *nx);
 
 gboolean remmina_nx_session_tunnel_open (RemminaNXSession *nx);
 
