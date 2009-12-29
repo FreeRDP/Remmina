@@ -1339,6 +1339,7 @@ remmina_connection_holder_create_floating_toolbar (RemminaConnectionHolder *cnnh
     {
         gtk_window_set_opacity (GTK_WINDOW (window), 0.0);
     }
+    gtk_window_set_accept_focus (GTK_WINDOW (window), FALSE);
 
     priv->floating_toolbar = window;
 
