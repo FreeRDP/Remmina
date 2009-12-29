@@ -259,10 +259,10 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
         remminafile->quality > 2 ? "lan" :
         remminafile->quality == 2 ? "adsl" :
         remminafile->quality == 1 ? "isdn" : "modem");
-    remmina_nx_session_add_parameter (nx, "geometry", "%ix%i+188+118",
+    remmina_nx_session_add_parameter (nx, "geometry", "%ix%i",
         remminafile->resolution_width, remminafile->resolution_height);
-    remmina_nx_session_add_parameter (nx, "keyboard", "defkeymap");
-    remmina_nx_session_add_parameter (nx, "kbtype", "pc102/defkeymap");
+    remmina_nx_session_add_parameter (nx, "kbtype", "pc102/%s",
+        remminafile->keymap && remminafile->keymap[0] ? remminafile->keymap : "defkeymap");
     remmina_nx_session_add_parameter (nx, "media", "0");
 
     if (!remmina_nx_session_iter_first (nx, &iter))
@@ -449,6 +449,7 @@ static const RemminaProtocolSetting remmina_plugin_nx_basic_settings[] =
 
 static const RemminaProtocolSetting remmina_plugin_nx_advanced_settings[] =
 {
+    REMMINA_PROTOCOL_SETTING_KEYMAP,
     REMMINA_PROTOCOL_SETTING_CTL_CONCAT,
     REMMINA_PROTOCOL_SETTING_DISABLEENCRYPTION,
     REMMINA_PROTOCOL_SETTING_SHOWCURSOR,

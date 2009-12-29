@@ -678,8 +678,8 @@ remmina_nx_session_add_common_parameters (RemminaNXSession *nx)
     remmina_nx_session_add_parameter (nx, "cache", "16M");
     remmina_nx_session_add_parameter (nx, "images", "64M");
     remmina_nx_session_add_parameter (nx, "render", "1");
-    remmina_nx_session_add_parameter (nx, "backingstore", "when_requested");
-    remmina_nx_session_add_parameter (nx, "imagecompressionmethod", "2");
+    remmina_nx_session_add_parameter (nx, "backingstore", "1");
+    remmina_nx_session_add_parameter (nx, "clipboard", "both");
     remmina_nx_session_add_parameter (nx, "agent_server", "");
     remmina_nx_session_add_parameter (nx, "agent_user", "");
     remmina_nx_session_add_parameter (nx, "agent_password", "");
@@ -883,13 +883,13 @@ remmina_nx_session_get_proxy_option (RemminaNXSession *nx)
 {
     if (nx->encryption)
     {
-        return g_strdup_printf ("nx,session=%s,cookie=%s,id=%s,connect=127.0.0.1:%i",
+        return g_strdup_printf ("nx,session=%s,cookie=%s,id=%s,shmem=1,shpix=1,connect=127.0.0.1:%i",
             (gchar*) g_hash_table_lookup (nx->session_parameters, "session"),
             nx->proxy_cookie, nx->session_id, (nx->localport ? nx->localport : nx->session_display));
     }
     else
     {
-        return g_strdup_printf ("nx,session=%s,cookie=%s,id=%s,connect=%s:%i",
+        return g_strdup_printf ("nx,session=%s,cookie=%s,id=%s,shmem=1,shpix=1,connect=%s:%i",
             (gchar*) g_hash_table_lookup (nx->session_parameters, "session"),
             nx->proxy_cookie, nx->session_id,
             nx->server, nx->session_display);
