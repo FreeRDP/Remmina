@@ -751,9 +751,15 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, c
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_VALUE_SHOWCURSOR:
+        case REMMINA_PROTOCOL_SETTING_VALUE_SHOWCURSOR_REMOTE:
             priv->showcursor_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
-                _("Show remote cursor"), priv->remmina_file->showcursor);
+                _("Show Remote Cursor"), priv->remmina_file->showcursor);
+            if (!hbox) row++;
+            break;
+
+        case REMMINA_PROTOCOL_SETTING_VALUE_SHOWCURSOR_LOCAL:
+            priv->showcursor_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
+                _("Use Local Cursor"), priv->remmina_file->showcursor);
             if (!hbox) row++;
             break;
 
