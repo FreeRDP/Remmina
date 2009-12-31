@@ -89,6 +89,9 @@ typedef struct _RemminaPluginService
     gint         (* pref_get_scale_quality)              (void);
     gint         (* pref_get_sshtunnel_port)             (void);
     guint        (* pref_keymap_get_keyval)              (const gchar *keymap, guint keyval);
+
+    void         (* log_print)                           (const gchar *text);
+    void         (* log_printf)                          (const gchar *fmt, ...);
 } RemminaPluginService;
 
 /* "Prototype" of the plugin entry function */

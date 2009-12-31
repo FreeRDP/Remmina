@@ -31,6 +31,7 @@
 #include "remminaprefdialog.h"
 #include "remminawidgetpool.h"
 #include "remminapluginmanager.h"
+#include "remminalog.h"
 #include "remminamain.h"
 
 G_DEFINE_TYPE (RemminaMain, remmina_main, GTK_TYPE_WINDOW)
@@ -415,6 +416,12 @@ remmina_main_action_edit_preferences (GtkAction *action, RemminaMain *remminamai
 }
 
 static void
+remmina_main_action_action_log (GtkAction *action, RemminaMain *remminamain)
+{
+    remmina_log_start ();
+}
+
+static void
 remmina_main_action_action_quit (GtkAction *action, RemminaMain *remminamain)
 {
     gtk_widget_destroy (GTK_WIDGET (remminamain));
@@ -505,6 +512,8 @@ static const gchar *remmina_main_ui_xml =
 "      <menuitem name='ActionQuickConnectProtoMenu' action='ActionQuickConnectProto'/>"
 "      <menuitem name='ActionConnectMenu' action='ActionConnect'/>"
 "      <separator/>"
+"      <menuitem name='ActionLogMenu' action='ActionLog'/>"
+"      <separator/>"
 "      <menuitem name='ActionQuitMenu' action='ActionQuit'/>"
 "    </menu>"
 "    <menu name='EditMenu' action='Edit'>"
@@ -567,6 +576,10 @@ static const GtkActionEntry remmina_main_ui_menu_entries[] =
     { "EditPreferences", GTK_STOCK_PREFERENCES, NULL, "<control>P",
         N_("Open the preferences dialog"),
         G_CALLBACK (remmina_main_action_edit_preferences) },
+
+    { "ActionLog", NULL, N_("Start Logging"), "<control>L",
+        N_("Start Logging"),
+        G_CALLBACK (remmina_main_action_action_log) },
 
     { "ActionQuit", GTK_STOCK_QUIT, NULL, "<control>Q",
         N_("Quit Remmina"),

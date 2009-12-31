@@ -953,10 +953,10 @@ remmina_plugin_vnc_rfb_output(const char *format, ...)
     {
         g_vsnprintf (vnc_error, MAX_ERROR_LENGTH, f, args);
     }
-/*g_print ("%s\n", vnc_error);*/
     g_free (f);
-
     va_end(args);
+
+    remmina_plugin_service->log_printf ("[VNC]%s\n", vnc_error);
 }
 
 static void

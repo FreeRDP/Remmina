@@ -25,6 +25,7 @@
 #include "remminafile.h"
 #include "remminapref.h"
 #include "remminaprotocolwidget.h"
+#include "remminalog.h"
 #include "remminapluginmanager.h"
 
 static GTree* remmina_protocol_plugin_table = NULL;
@@ -76,7 +77,10 @@ RemminaPluginService remmina_plugin_manager_service =
 
     remmina_pref_get_scale_quality,
     remmina_pref_get_sshtunnel_port,
-    remmina_pref_keymap_get_keyval
+    remmina_pref_keymap_get_keyval,
+
+    remmina_log_print,
+    remmina_log_printf
 };
 
 static void
