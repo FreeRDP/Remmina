@@ -1041,7 +1041,7 @@ remmina_plugin_vnc_incoming_connection (RemminaProtocolWidget *gp, rfbClient *cl
 
     FD_ZERO (&fds); 
     FD_SET (gpdata->listen_sock, &fds);
-    select (FD_SETSIZE, &fds, NULL, NULL, NULL);
+    select (gpdata->listen_sock + 1, &fds, NULL, NULL, NULL);
 
     if (!FD_ISSET (gpdata->listen_sock, &fds))
     {
@@ -1085,7 +1085,7 @@ remmina_plugin_vnc_main_loop (RemminaProtocolWidget *gp)
     FD_ZERO (&fds);
     FD_SET (cl->sock, &fds);
     FD_SET (gpdata->vnc_event_pipe[0], &fds);
-    ret = select (FD_SETSIZE, &fds, NULL, NULL, &timeout);
+    ret = select (MAX (cl->sock, gpdata->vnc_event_pipe[0]) + 1, &fds, NULL, NULL, &timeout);
 
     /* Sometimes it returns <0 when opening a modal dialog in other window. Absolutely weird */
     /* So we continue looping anyway */
