@@ -79,6 +79,9 @@ else
     ssh_support="disabled."
 fi
 
+# Check libxkbfile
+PKG_CHECK_MODULES(XKBFILE, [xkbfile], [xkbfile_support="yes"], [xkbfile_support="no. libxkbfile-dev required."])
+
 # Check remmina executable
 if test "x$prefix" = "xNONE"; then
     remminabin=$ac_default_prefix/bin/remmina
@@ -170,15 +173,19 @@ fi
 
 # Check NX dependencies
 if test "x$ssh_support" = "xyes"; then
-    AC_ARG_ENABLE(nx,
-        [AS_HELP_STRING([--disable-nx], [Disable NX])],
-        [nx_plugin=$enableval],
-        [nx_plugin="yes"]
-    )
-    if test "x$nx_plugin" != "xno"; then
-        REMMINA_PLUGINS_SUBDIRS="$REMMINA_PLUGINS_SUBDIRS nx"
+    if test "x$xkbfile_support" = "xyes"; then
+        AC_ARG_ENABLE(nx,
+            [AS_HELP_STRING([--disable-nx], [Disable NX])],
+            [nx_plugin=$enableval],
+            [nx_plugin="yes"]
+        )
+        if test "x$nx_plugin" != "xno"; then
+            REMMINA_PLUGINS_SUBDIRS="$REMMINA_PLUGINS_SUBDIRS nx"
+        else
+            nx_plugin="disabled."
+        fi
     else
-        nx_plugin="disabled."
+        nx_plugin="no. libxkbfile required."
     fi
 else
     nx_plugin="no. libssh required."
@@ -215,6 +222,8 @@ echo
 echo "* Remmina main program: $remminabin_found"
 echo "* Multi-threaded support: $pthread_support"
 echo "* SSH support: $ssh_support"
+echo "* XKB support: $xkbfile_support"
+echo
 echo "* RDP plugin: $rdp_plugin"
 echo "* VNC plugin: $vnc_plugin"
 echo "* XDMCP plugin: $xdmcp_plugin"
