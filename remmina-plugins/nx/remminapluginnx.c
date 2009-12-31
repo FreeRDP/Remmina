@@ -20,6 +20,9 @@
 
 #include "common/remminaplugincommon.h"
 #include <libssh/libssh.h>
+#include <X11/Xlib.h>
+#include <X11/XKBlib.h>
+#include <X11/extensions/XKBrules.h>
 #include "remminanxsession.h"
 
 INCLUDE_GET_AVAILABLE_XDISPLAY
@@ -40,6 +43,8 @@ typedef struct _RemminaPluginNxData
 } RemminaPluginNxData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
+
+static gchar *remmina_kbtype = "pc102/us";
 
 static void
 remmina_plugin_nx_on_plug_added (GtkSocket *socket, RemminaProtocolWidget *gp)
@@ -261,8 +266,7 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
         remminafile->quality == 1 ? "isdn" : "modem");
     remmina_nx_session_add_parameter (nx, "geometry", "%ix%i",
         remminafile->resolution_width, remminafile->resolution_height);
-    remmina_nx_session_add_parameter (nx, "kbtype", "pc102/%s",
-        remminafile->keymap && remminafile->keymap[0] ? remminafile->keymap : "defkeymap");
+    remmina_nx_session_add_parameter (nx, "kbtype", remmina_kbtype);
     remmina_nx_session_add_parameter (nx, "media", "0");
 
     if (!remmina_nx_session_iter_first (nx, &iter))
@@ -449,7 +453,6 @@ static const RemminaProtocolSetting remmina_plugin_nx_basic_settings[] =
 
 static const RemminaProtocolSetting remmina_plugin_nx_advanced_settings[] =
 {
-    REMMINA_PROTOCOL_SETTING_KEYMAP,
     REMMINA_PROTOCOL_SETTING_CTL_CONCAT,
     REMMINA_PROTOCOL_SETTING_DISABLEENCRYPTION,
     REMMINA_PROTOCOL_SETTING_SHOWCURSOR_LOCAL,
@@ -478,7 +481,20 @@ static RemminaProtocolPlugin remmina_plugin_nx =
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry (RemminaPluginService *service)
 {
+    Display *dpy;
+    XkbRF_VarDefsRec vd;
+    char *tmp = NULL;
+
     remmina_plugin_service = service;
+
+    if ((dpy = XkbOpenDisplay (NULL, NULL, NULL, NULL, NULL, NULL)) != NULL)
+    {
+        if (XkbRF_GetNamesProp (dpy, &tmp, &vd))
+        {
+            remmina_kbtype = g_strdup_printf ("%s/%s", vd.model, vd.layout);
+        }
+        XCloseDisplay (dpy);
+    }
 
     if (! service->register_protocol_plugin (&remmina_plugin_nx))
     {

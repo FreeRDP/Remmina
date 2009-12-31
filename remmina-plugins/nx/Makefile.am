@@ -7,11 +7,11 @@ remmina_plugin_nx_la_SOURCES = \
     remminanxsession.c remminanxsession.h \
     remminapluginnx.c
 
-remmina_plugin_nx_la_CFLAGS = @REMMINA_PLUGINS_CFLAGS@
+remmina_plugin_nx_la_CFLAGS = @XKBFILE_CFLAGS@ @REMMINA_PLUGINS_CFLAGS@
 
 remmina_plugin_nx_la_LDFLAGS = -avoid-version -module
 
-remmina_plugin_nx_la_LIBADD = @SSH_LIBS@ @REMMINA_PLUGINS_LIBS@
+remmina_plugin_nx_la_LIBADD = @SSH_LIBS@ @XKBFILE_LIBS@ @REMMINA_PLUGINS_LIBS@
 
 appicon16emblemsdir = $(remmina_datadir)/icons/hicolor/16x16/emblems
 appicon16emblems_DATA = \
