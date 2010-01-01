@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -61,6 +61,7 @@ typedef struct _RemminaPref
 {
     /* In RemminaPrefDialog */
     gboolean save_view_mode;
+    gboolean save_when_connect;
     gboolean invisible_toolbar;
     gint default_action;
     gint scale_quality;

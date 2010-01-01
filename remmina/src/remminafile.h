@@ -46,7 +46,10 @@ RemminaFile* remmina_file_copy (const gchar *filename);
 /* Load a new .remmina file and return the allocated RemminaFile object */
 RemminaFile* remmina_file_load (const gchar *filename);
 /* Create or overwrite the .remmina file */
-void remmina_file_save (RemminaFile *gf);
+void remmina_file_save_profile (RemminaFile *gf);
+void remmina_file_save_credential (RemminaFile *gf);
+void remmina_file_save_runtime (RemminaFile *gf);
+void remmina_file_save_all (RemminaFile *gf);
 /* Free the RemminaFile object */
 void remmina_file_free (RemminaFile *remminafile);
 /* Duplicate a RemminaFile object */
