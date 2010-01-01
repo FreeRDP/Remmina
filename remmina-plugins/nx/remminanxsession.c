@@ -78,6 +78,7 @@ struct _RemminaNXSession
     ssh_channel channel;
     gchar *server;
     gchar *error;
+    RemminaNXLogCallback log_callback;
 
     /* Tunnel related members */
     pthread_t thread;
@@ -221,6 +222,12 @@ remmina_nx_session_set_localport (RemminaNXSession *nx, gint localport)
     nx->localport = localport;
 }
 
+void
+remmina_nx_session_set_log_callback (RemminaNXSession *nx, RemminaNXLogCallback log_callback)
+{
+    nx->log_callback = log_callback;
+}
+
 static gboolean
 remmina_nx_session_get_response (RemminaNXSession *nx)
 {
@@ -254,12 +261,6 @@ remmina_nx_session_get_response (RemminaNXSession *nx)
     {
         g_string_append_len (nx->response, (const gchar*) buffer_get (buffer), len);
     }
-
-gchar *str;
-str = g_new0 (gchar, len + 1);
-memcpy (str, buffer_get (buffer), len);
-g_print ("%s", str);
-g_free (str);
 
     buffer_free (buffer);
     return TRUE;
@@ -412,6 +413,8 @@ remmina_nx_session_parse_response (RemminaNXSession *nx)
 
     while ((line = remmina_nx_session_get_line (nx)) != NULL)
     {
+        if (nx->log_callback) nx->log_callback ("[NX] %s\n", line);
+
         status = remmina_nx_session_parse_line (nx, line, &p);
         if (status >= 400 && status <= 599)
         {
@@ -449,6 +452,7 @@ remmina_nx_session_parse_response (RemminaNXSession *nx)
     }
     else
     {
+        if (nx->log_callback) nx->log_callback ("[NX] %s\n", pos);
         nx->response_pos += 8;
     }
     nx->status = -1;
