@@ -168,6 +168,7 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
 
     remmina_nx_session_set_encryption (nx, remminafile->disableencryption ? 0 : 1);
     remmina_nx_session_set_localport (nx, remmina_plugin_service->pref_get_sshtunnel_port ());
+    remmina_nx_session_set_log_callback (nx, remmina_plugin_service->log_printf);
 
     s1 = g_strdup (remminafile->server);
     s2 = strrchr (s1, ':');
