@@ -33,8 +33,6 @@ typedef struct _RemminaFile
     /* Protocol settings */
     gchar *server;
     gchar *protocol;
-    gchar *username;
-    gchar *password;
     gchar *domain;
     gchar *clientname;
     gchar *resolution;
@@ -44,10 +42,6 @@ typedef struct _RemminaFile
     gchar *execpath;
     gchar *sound;
     gchar *arguments;
-    gchar *cacert;
-    gchar *cacrl;
-    gchar *clientcert;
-    gchar *clientkey;
     gint colordepth;
     gint quality;
     gint listenport;
@@ -72,6 +66,14 @@ typedef struct _RemminaFile
     gchar *ssh_username;
     gchar *ssh_privatekey;
     gchar *ssh_charset;
+
+    /* Credential settings */
+    gchar *username;
+    gchar *password;
+    gchar *cacert;
+    gchar *cacrl;
+    gchar *clientcert;
+    gchar *clientkey;
 
     /* Run-time settings */
     gint viewmode;

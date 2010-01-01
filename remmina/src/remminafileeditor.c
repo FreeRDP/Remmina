@@ -1274,7 +1274,7 @@ remmina_file_editor_on_default (GtkWidget *button, RemminaFileEditor *gfe)
     g_free (gf->server); gf->server = NULL;
     g_free (gf->password); gf->password = NULL;
 
-    remmina_file_save (gf);
+    remmina_file_save_all (gf);
 
     remmina_file_free (gf);
 
@@ -1289,7 +1289,7 @@ static void
 remmina_file_editor_on_save (GtkWidget *button, RemminaFileEditor *gfe)
 {
     remmina_file_editor_update (gfe);
-    remmina_file_save (gfe->priv->remmina_file);
+    remmina_file_save_all (gfe->priv->remmina_file);
     gtk_widget_destroy (GTK_WIDGET (gfe));
 }
 
@@ -1299,7 +1299,10 @@ remmina_file_editor_on_connect (GtkWidget *button, RemminaFileEditor *gfe)
     RemminaFile *gf;
 
     remmina_file_editor_update (gfe);
-    remmina_file_save (gfe->priv->remmina_file);
+    if (remmina_pref.save_when_connect)
+    {
+        remmina_file_save_all (gfe->priv->remmina_file);
+    }
     gf = remmina_file_dup (gfe->priv->remmina_file);
     /* Put server into name for Quick Connect */
     if (gf->filename == NULL)

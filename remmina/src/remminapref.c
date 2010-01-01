@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -162,6 +162,11 @@ remmina_pref_init (void)
     else
         remmina_pref.save_view_mode = TRUE;
 
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "save_when_connect", NULL))
+        remmina_pref.save_when_connect = g_key_file_get_boolean (gkeyfile, "remmina_pref", "save_when_connect", NULL);
+    else
+        remmina_pref.save_when_connect = TRUE;
+
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "invisible_toolbar", NULL))
         remmina_pref.invisible_toolbar = g_key_file_get_boolean (gkeyfile, "remmina_pref", "invisible_toolbar", NULL);
     else
@@ -286,6 +291,7 @@ remmina_pref_save (void)
     g_key_file_load_from_file (gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
 
     g_key_file_set_boolean (gkeyfile, "remmina_pref", "save_view_mode", remmina_pref.save_view_mode);
+    g_key_file_set_boolean (gkeyfile, "remmina_pref", "save_when_connect", remmina_pref.save_when_connect);
     g_key_file_set_boolean (gkeyfile, "remmina_pref", "invisible_toolbar", remmina_pref.invisible_toolbar);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "default_action", remmina_pref.default_action);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "scale_quality", remmina_pref.scale_quality);

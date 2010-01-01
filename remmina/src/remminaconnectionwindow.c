@@ -1813,7 +1813,14 @@ remmina_connection_object_on_disconnect (RemminaProtocolWidget *gp, RemminaConne
         {
             cnnobj->remmina_file->viewmode = cnnhld->cnnwin->priv->view_mode;
         }
-        remmina_file_save (cnnobj->remmina_file);
+        if (remmina_pref.save_when_connect)
+        {
+            remmina_file_save_all (cnnobj->remmina_file);
+        }
+        else
+        {
+            remmina_file_save_runtime (cnnobj->remmina_file);
+        }
     }
     g_free (cnnobj->remmina_file);
 

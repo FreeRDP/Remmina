@@ -796,7 +796,7 @@ remmina_protocol_widget_init_save_cred (RemminaProtocolWidget *gp)
     }
     if (save)
     {
-        remmina_file_save (remminafile);
+        remmina_file_save_credential (remminafile);
     }
 }
 

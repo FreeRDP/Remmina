@@ -253,29 +253,13 @@ remmina_file_load (const gchar *filename)
     return gf;
 }
 
-void
-remmina_file_save (RemminaFile *gf)
+static void
+remmina_file_store_profile (RemminaFile *gf, GKeyFile *gkeyfile)
 {
-    GKeyFile *gkeyfile;
-    gchar *s;
-    gchar *content;
-    gsize length;
-
-    if (gf->filename == NULL) return;
-
-    gkeyfile = g_key_file_new ();
-
-    g_key_file_load_from_file (gkeyfile, gf->filename, G_KEY_FILE_NONE, NULL);
-
     g_key_file_set_string (gkeyfile, "remmina", "name", (gf->name ? gf->name : ""));
     g_key_file_set_string (gkeyfile, "remmina", "group", (gf->group ? gf->group : ""));
     g_key_file_set_string (gkeyfile, "remmina", "server", (gf->server ? gf->server : ""));
     g_key_file_set_string (gkeyfile, "remmina", "protocol", (gf->protocol ? gf->protocol : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "username", (gf->username ? gf->username : ""));
-
-    s = remmina_crypt_encrypt (gf->password);
-    g_key_file_set_string (gkeyfile, "remmina", "password", (s ? s : ""));
-    g_free (s);
 
     g_key_file_set_string (gkeyfile, "remmina", "domain", (gf->domain ? gf->domain : ""));
     g_key_file_set_string (gkeyfile, "remmina", "clientname", (gf->clientname ? gf->clientname : ""));
@@ -286,10 +270,6 @@ remmina_file_save (RemminaFile *gf)
     g_key_file_set_string (gkeyfile, "remmina", "execpath", (gf->execpath ? gf->execpath : ""));
     g_key_file_set_string (gkeyfile, "remmina", "sound", (gf->sound ? gf->sound : ""));
     g_key_file_set_string (gkeyfile, "remmina", "arguments", (gf->arguments ? gf->arguments : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "cacert", (gf->cacert ? gf->cacert : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "cacrl", (gf->cacrl ? gf->cacrl : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "clientcert", (gf->clientcert ? gf->clientcert : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "clientkey", (gf->clientkey ? gf->clientkey : ""));
 
     g_key_file_set_integer (gkeyfile, "remmina", "colordepth", gf->colordepth);
     g_key_file_set_integer (gkeyfile, "remmina", "quality", gf->quality);
@@ -315,7 +295,26 @@ remmina_file_save (RemminaFile *gf)
     g_key_file_set_string (gkeyfile, "remmina", "ssh_username", (gf->ssh_username ? gf->ssh_username : ""));
     g_key_file_set_string (gkeyfile, "remmina", "ssh_privatekey", (gf->ssh_privatekey ? gf->ssh_privatekey : ""));
     g_key_file_set_string (gkeyfile, "remmina", "ssh_charset", (gf->ssh_charset ? gf->ssh_charset : ""));
+}
 
+static void
+remmina_file_store_credential (RemminaFile *gf, GKeyFile *gkeyfile)
+{
+    gchar *s;
+
+    g_key_file_set_string (gkeyfile, "remmina", "username", (gf->username ? gf->username : ""));
+    s = remmina_crypt_encrypt (gf->password);
+    g_key_file_set_string (gkeyfile, "remmina", "password", (s ? s : ""));
+    g_free (s);
+    g_key_file_set_string (gkeyfile, "remmina", "cacert", (gf->cacert ? gf->cacert : ""));
+    g_key_file_set_string (gkeyfile, "remmina", "cacrl", (gf->cacrl ? gf->cacrl : ""));
+    g_key_file_set_string (gkeyfile, "remmina", "clientcert", (gf->clientcert ? gf->clientcert : ""));
+    g_key_file_set_string (gkeyfile, "remmina", "clientkey", (gf->clientkey ? gf->clientkey : ""));
+}
+
+static void
+remmina_file_store_runtime (RemminaFile *gf, GKeyFile *gkeyfile)
+{
     g_key_file_set_integer (gkeyfile, "remmina", "viewmode", gf->viewmode);
     g_key_file_set_boolean (gkeyfile, "remmina", "scale", gf->scale);
     g_key_file_set_boolean (gkeyfile, "remmina", "keyboard_grab", gf->keyboard_grab);
@@ -323,12 +322,84 @@ remmina_file_save (RemminaFile *gf)
     g_key_file_set_integer (gkeyfile, "remmina", "window_height", gf->window_height);
     g_key_file_set_boolean (gkeyfile, "remmina", "window_maximize", gf->window_maximize);
     g_key_file_set_integer (gkeyfile, "remmina", "toolbar_opacity", gf->toolbar_opacity);
+}
+
+static void
+remmina_file_store_all (RemminaFile *gf, GKeyFile *gkeyfile)
+{
+    remmina_file_store_profile (gf, gkeyfile);
+    remmina_file_store_credential (gf, gkeyfile);
+    remmina_file_store_runtime (gf, gkeyfile);
+}
+
+static GKeyFile*
+remmina_file_get_keyfile (RemminaFile *gf)
+{
+    GKeyFile *gkeyfile;
+
+    if (gf->filename == NULL) return NULL;
+    gkeyfile = g_key_file_new ();
+    if (!g_key_file_load_from_file (gkeyfile, gf->filename, G_KEY_FILE_NONE, NULL))
+    {
+        /* it's a new file, so we need to initially store everything into it */
+        remmina_file_store_all (gf, gkeyfile);
+    }
+    return gkeyfile;
+}
+
+static void
+remmina_file_save_flush (RemminaFile *gf, GKeyFile *gkeyfile)
+{
+    gchar *content;
+    gsize length = 0;
 
     content = g_key_file_to_data (gkeyfile, &length, NULL);
     g_file_set_contents (gf->filename, content, length, NULL);
-
-    g_key_file_free (gkeyfile);
     g_free (content);
+}
+
+void
+remmina_file_save_profile (RemminaFile *gf)
+{
+    GKeyFile *gkeyfile;
+
+    if ((gkeyfile = remmina_file_get_keyfile (gf)) == NULL) return;
+    remmina_file_store_profile (gf, gkeyfile);
+    remmina_file_save_flush (gf, gkeyfile);
+    g_key_file_free (gkeyfile);
+}
+
+void
+remmina_file_save_credential (RemminaFile *gf)
+{
+    GKeyFile *gkeyfile;
+
+    if ((gkeyfile = remmina_file_get_keyfile (gf)) == NULL) return;
+    remmina_file_store_credential (gf, gkeyfile);
+    remmina_file_save_flush (gf, gkeyfile);
+    g_key_file_free (gkeyfile);
+}
+
+void
+remmina_file_save_runtime (RemminaFile *gf)
+{
+    GKeyFile *gkeyfile;
+
+    if ((gkeyfile = remmina_file_get_keyfile (gf)) == NULL) return;
+    remmina_file_store_runtime (gf, gkeyfile);
+    remmina_file_save_flush (gf, gkeyfile);
+    g_key_file_free (gkeyfile);
+}
+
+void
+remmina_file_save_all (RemminaFile *gf)
+{
+    GKeyFile *gkeyfile;
+
+    if ((gkeyfile = remmina_file_get_keyfile (gf)) == NULL) return;
+    remmina_file_store_all (gf, gkeyfile);
+    remmina_file_save_flush (gf, gkeyfile);
+    g_key_file_free (gkeyfile);
 }
 
 void
