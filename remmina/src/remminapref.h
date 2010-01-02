@@ -74,6 +74,15 @@ typedef struct _RemminaPref
     gboolean applet_quick_ontop;
     gboolean applet_hide_count;
 
+    guint hostkey;
+    guint shortcutkey_fullscreen;
+    guint shortcutkey_autofit;
+    guint shortcutkey_switchtab;
+    guint shortcutkey_scale;
+    guint shortcutkey_grab;
+    guint shortcutkey_minimize;
+    guint shortcutkey_close;
+
     /* In View menu */
     gboolean hide_toolbar;
     gboolean hide_statusbar;

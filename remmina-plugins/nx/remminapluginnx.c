@@ -363,6 +363,7 @@ remmina_plugin_nx_init (RemminaProtocolWidget *gp)
     g_object_set_data_full (G_OBJECT (gp), "plugin-data", gpdata, g_free);
 
     gpdata->socket = gtk_socket_new ();
+    remmina_plugin_service->protocol_plugin_register_hostkey (gp, gpdata->socket);
     gtk_widget_show (gpdata->socket);
     g_signal_connect (G_OBJECT (gpdata->socket), "plug-added",
         G_CALLBACK (remmina_plugin_nx_on_plug_added), gp);

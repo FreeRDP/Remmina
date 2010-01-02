@@ -81,6 +81,10 @@ gpointer remmina_protocol_widget_query_feature (RemminaProtocolWidget *gp, Remmi
 void remmina_protocol_widget_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature, const gpointer data);
 /* Provide thread-safe way to emit signals */
 void remmina_protocol_widget_emit_signal (RemminaProtocolWidget *gp, const gchar *signal);
+void remmina_protocol_widget_register_hostkey (RemminaProtocolWidget *gp, GtkWidget *widget);
+
+typedef gboolean (*RemminaHostkeyFunc) (RemminaProtocolWidget *gp, guint keyval, gpointer data);
+void remmina_protocol_widget_set_hostkey_func (RemminaProtocolWidget *gp, RemminaHostkeyFunc func, gpointer data);
 
 gboolean remmina_protocol_widget_ssh_exec (RemminaProtocolWidget *gp, const gchar *fmt, ...);
 

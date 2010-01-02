@@ -55,6 +55,7 @@ RemminaPluginService remmina_plugin_manager_service =
     remmina_protocol_widget_get_file,
     remmina_protocol_widget_get_printers,
     remmina_protocol_widget_emit_signal,
+    remmina_protocol_widget_register_hostkey,
     remmina_protocol_widget_start_direct_tunnel,
     remmina_protocol_widget_start_xport_tunnel,
     remmina_protocol_widget_close_connection,
