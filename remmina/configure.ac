@@ -12,7 +12,6 @@ AC_ISC_POSIX
 AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
-AC_PROG_LIBTOOL
 
 # Disable optimization if we enable debug
 AC_ARG_ENABLE(debug,
