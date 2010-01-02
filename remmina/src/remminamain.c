@@ -476,12 +476,6 @@ remmina_main_action_edit_preferences (GtkAction *action, RemminaMain *remminamai
 }
 
 static void
-remmina_main_action_action_log (GtkAction *action, RemminaMain *remminamain)
-{
-    remmina_log_start ();
-}
-
-static void
 remmina_main_action_action_quit (GtkAction *action, RemminaMain *remminamain)
 {
     gtk_widget_destroy (GTK_WIDGET (remminamain));
@@ -590,6 +584,12 @@ remmina_main_action_view_file_mode (GtkRadioAction *action, GtkRadioAction *curr
 }
 
 static void
+remmina_main_action_help_debug (GtkAction *action, RemminaMain *remminamain)
+{
+    remmina_log_start ();
+}
+
+static void
 remmina_main_action_help_about (GtkAction *action, RemminaMain *remminamain)
 {
     remmina_about_open (GTK_WINDOW (remminamain));
@@ -602,8 +602,6 @@ static const gchar *remmina_main_ui_xml =
 "      <menuitem name='ActionQuickConnectMenu' action='ActionQuickConnect'/>"
 "      <menuitem name='ActionQuickConnectProtoMenu' action='ActionQuickConnectProto'/>"
 "      <menuitem name='ActionConnectMenu' action='ActionConnect'/>"
-"      <separator/>"
-"      <menuitem name='ActionLogMenu' action='ActionLog'/>"
 "      <separator/>"
 "      <menuitem name='ActionQuitMenu' action='ActionQuit'/>"
 "    </menu>"
@@ -626,6 +624,8 @@ static const gchar *remmina_main_ui_xml =
 "      <menuitem name='ViewFileTreeMenu' action='ViewFileTree'/>"
 "    </menu>"
 "    <menu name='HelpMenu' action='Help'>"
+"      <menuitem name='HelpDebugMenu' action='HelpDebug'/>"
+"      <separator/>"
 "      <menuitem name='HelpAboutMenu' action='HelpAbout'/>"
 "    </menu>"
 "  </menubar>"
@@ -669,13 +669,13 @@ static const GtkActionEntry remmina_main_ui_menu_entries[] =
         N_("Open the preferences dialog"),
         G_CALLBACK (remmina_main_action_edit_preferences) },
 
-    { "ActionLog", NULL, N_("Start Logging"), "<control>L",
-        N_("Start Logging"),
-        G_CALLBACK (remmina_main_action_action_log) },
-
     { "ActionQuit", GTK_STOCK_QUIT, NULL, "<control>Q",
         N_("Quit Remmina"),
         G_CALLBACK (remmina_main_action_action_quit) },
+
+    { "HelpDebug", NULL, N_("Debug Window"), NULL,
+        NULL,
+        G_CALLBACK (remmina_main_action_help_debug) },
 
     { "HelpAbout", GTK_STOCK_ABOUT, NULL, NULL,
         NULL,
