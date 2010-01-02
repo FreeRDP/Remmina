@@ -19,6 +19,7 @@
  */
 
 #include <gtk/gtk.h>
+#include <gdk/gdkkeysyms.h>
 #include <stdlib.h>
 #include <string.h>
 #include "remminastringarray.h"
@@ -267,6 +268,46 @@ remmina_pref_init (void)
     else
         remmina_pref.tab_mode = 0;
 
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "hostkey", NULL))
+        remmina_pref.hostkey = g_key_file_get_integer (gkeyfile, "remmina_pref", "hostkey", NULL);
+    else
+        remmina_pref.hostkey = GDK_Control_R;
+
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_fullscreen", NULL))
+        remmina_pref.shortcutkey_fullscreen = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_fullscreen", NULL);
+    else
+        remmina_pref.shortcutkey_fullscreen = GDK_f;
+
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_autofit", NULL))
+        remmina_pref.shortcutkey_autofit = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_autofit", NULL);
+    else
+        remmina_pref.shortcutkey_autofit = GDK_1;
+
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_switchtab", NULL))
+        remmina_pref.shortcutkey_switchtab = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_switchtab", NULL);
+    else
+        remmina_pref.shortcutkey_switchtab = GDK_Tab;
+
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_scale", NULL))
+        remmina_pref.shortcutkey_scale = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_scale", NULL);
+    else
+        remmina_pref.shortcutkey_scale = GDK_s;
+
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_grab", NULL))
+        remmina_pref.shortcutkey_grab = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_grab", NULL);
+    else
+        remmina_pref.shortcutkey_grab = GDK_k;
+
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_minimize", NULL))
+        remmina_pref.shortcutkey_minimize = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_minimize", NULL);
+    else
+        remmina_pref.shortcutkey_minimize = GDK_F9;
+
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_close", NULL))
+        remmina_pref.shortcutkey_close = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_close", NULL);
+    else
+        remmina_pref.shortcutkey_close = GDK_F4;
+
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "secret", NULL))
         remmina_pref.secret = g_key_file_get_string (gkeyfile, "remmina_pref", "secret", NULL);
     else
@@ -312,6 +353,14 @@ remmina_pref_save (void)
     g_key_file_set_integer (gkeyfile, "remmina_pref", "recent_maximum", remmina_pref.recent_maximum);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "default_mode", remmina_pref.default_mode);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "tab_mode", remmina_pref.tab_mode);
+    g_key_file_set_integer (gkeyfile, "remmina_pref", "hostkey", remmina_pref.hostkey);
+    g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_fullscreen", remmina_pref.shortcutkey_fullscreen);
+    g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_autofit", remmina_pref.shortcutkey_autofit);
+    g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_switchtab", remmina_pref.shortcutkey_switchtab);
+    g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_scale", remmina_pref.shortcutkey_scale);
+    g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_grab", remmina_pref.shortcutkey_grab);
+    g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_minimize", remmina_pref.shortcutkey_minimize);
+    g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_close", remmina_pref.shortcutkey_close);
 
     content = g_key_file_to_data (gkeyfile, &length, NULL);
     g_file_set_contents (remmina_pref_file, content, length, NULL);

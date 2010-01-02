@@ -51,6 +51,10 @@ struct _RemminaProtocolWidgetPriv
     gboolean closed;
 
     GPtrArray *printers;
+
+    gboolean hostkey_activated;
+    RemminaHostkeyFunc hostkey_func;
+    gpointer hostkey_func_data;
 };
 
 G_DEFINE_TYPE (RemminaProtocolWidget, remmina_protocol_widget, GTK_TYPE_EVENT_BOX)
@@ -298,23 +302,70 @@ remmina_protocol_widget_call_feature (RemminaProtocolWidget *gp, RemminaProtocol
     switch (feature)
     {
 #ifdef HAVE_LIBSSH
-        case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
-            if (!gp->priv->ssh_tunnel) return;
-            remmina_connection_window_open_from_file_with_data (
-                remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SFTP"), gp->priv->ssh_tunnel);
-            break;
+    case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
+        if (!gp->priv->ssh_tunnel) return;
+        remmina_connection_window_open_from_file_with_data (
+            remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SFTP"), gp->priv->ssh_tunnel);
+        return;
 
-        case REMMINA_PROTOCOL_FEATURE_TOOL_SSHTERM:
-            if (!gp->priv->ssh_tunnel) return;
-            remmina_connection_window_open_from_file_with_data (
-                remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SSH"), gp->priv->ssh_tunnel);
-            break;
-
+    case REMMINA_PROTOCOL_FEATURE_TOOL_SSHTERM:
+        if (!gp->priv->ssh_tunnel) return;
+        remmina_connection_window_open_from_file_with_data (
+            remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SSH"), gp->priv->ssh_tunnel);
+        return;
 #endif
-        default:
-            gp->priv->plugin->call_feature (gp, feature, data);
-            break;
+    case REMMINA_PROTOCOL_FEATURE_UNFOCUS:
+        gp->priv->hostkey_activated = FALSE;
+        break;
+    default:
+        break;
     }
+    gp->priv->plugin->call_feature (gp, feature, data);
+}
+
+static gboolean
+remmina_protocol_widget_on_key_press (GtkWidget *widget, GdkEventKey *event, RemminaProtocolWidget *gp)
+{
+    if (remmina_pref.hostkey && event->keyval == remmina_pref.hostkey)
+    {
+        gp->priv->hostkey_activated = TRUE;
+        return TRUE;
+    }
+    else if (gp->priv->hostkey_activated && gp->priv->hostkey_func)
+    {
+        return gp->priv->hostkey_func (gp, gdk_keyval_to_lower (event->keyval), gp->priv->hostkey_func_data);
+    }
+    return FALSE;
+}
+
+static gboolean
+remmina_protocol_widget_on_key_release (GtkWidget *widget, GdkEventKey *event, RemminaProtocolWidget *gp)
+{
+    if (remmina_pref.hostkey && event->keyval == remmina_pref.hostkey)
+    {
+        gp->priv->hostkey_activated = FALSE;
+        return TRUE;
+    }
+    else if (gp->priv->hostkey_activated)
+    {
+        /* Trap all keys when hostkey is pressed */
+        return TRUE;
+    }
+    return FALSE;
+}
+
+void
+remmina_protocol_widget_register_hostkey (RemminaProtocolWidget *gp, GtkWidget *widget)
+{
+    g_signal_connect (G_OBJECT (widget), "key-press-event", G_CALLBACK (remmina_protocol_widget_on_key_press), gp);
+    g_signal_connect (G_OBJECT (widget), "key-release-event", G_CALLBACK (remmina_protocol_widget_on_key_release), gp);
+}
+
+void
+remmina_protocol_widget_set_hostkey_func (RemminaProtocolWidget *gp, RemminaHostkeyFunc func, gpointer data)
+{
+    gp->priv->hostkey_func = func;
+    gp->priv->hostkey_func_data = data;
 }
 
 #ifdef HAVE_LIBSSH

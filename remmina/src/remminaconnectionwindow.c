@@ -92,6 +92,7 @@ typedef struct _RemminaConnectionObject
 struct _RemminaConnectionHolder
 {
     RemminaConnectionWindow *cnnwin;
+    gint fullscreen_view_mode;
 };
 
 #define DECLARE_CNNOBJ \
@@ -1376,14 +1377,9 @@ remmina_connection_window_init (RemminaConnectionWindow *cnnwin)
 {
     RemminaConnectionWindowPriv *priv;
 
-    priv = g_new (RemminaConnectionWindowPriv, 1);
+    priv = g_new0 (RemminaConnectionWindowPriv, 1);
     cnnwin->priv = priv;
 
-    priv->floating_toolbar = NULL;
-    priv->floating_toolbar_motion_time = 0;
-    priv->sticky = FALSE;
-    priv->toolbar = NULL;
-    priv->notebook = NULL;
     priv->view_mode = AUTO_MODE;
 
     gtk_window_set_position (GTK_WINDOW (cnnwin), GTK_WIN_POS_CENTER);
@@ -1737,6 +1733,7 @@ remmina_connection_holder_create_fullscreen (RemminaConnectionHolder *cnnhld, Re
 
     cnnhld->cnnwin->priv->notebook = notebook;
     cnnhld->cnnwin->priv->view_mode = view_mode;
+    cnnhld->fullscreen_view_mode = view_mode;
 
     remmina_connection_window_initialize_notebook (GTK_NOTEBOOK (notebook),
         (oldwindow ? GTK_NOTEBOOK (REMMINA_CONNECTION_WINDOW (oldwindow)->priv->notebook) : NULL), cnnobj,
@@ -1929,6 +1926,59 @@ remmina_connection_window_open_from_file (RemminaFile *remminafile)
     remmina_connection_window_open_from_file_with_data (remminafile, NULL);
 }
 
+gboolean
+remmina_connection_window_hostkey_func (RemminaProtocolWidget *gp, guint keyval, RemminaConnectionHolder *cnnhld)
+{
+    RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
+    gint i;
+
+    if (keyval == remmina_pref.shortcutkey_fullscreen)
+    {
+        switch (priv->view_mode)
+        {
+            case SCROLLED_WINDOW_MODE:
+                remmina_connection_holder_create_fullscreen (cnnhld, NULL,
+                    cnnhld->fullscreen_view_mode ? cnnhld->fullscreen_view_mode : VIEWPORT_FULLSCREEN_MODE);
+                break;
+            case SCROLLED_FULLSCREEN_MODE:
+            case VIEWPORT_FULLSCREEN_MODE:
+                remmina_connection_holder_create_scrolled (cnnhld, NULL);
+                break;
+            default:
+                break;
+        }
+    } else if (keyval == remmina_pref.shortcutkey_autofit)
+    {
+        if (priv->toolitem_autofit && GTK_WIDGET_IS_SENSITIVE (priv->toolitem_autofit))
+        {
+            remmina_connection_holder_toolbar_autofit (GTK_WIDGET (gp), cnnhld);
+        }
+    } else if (keyval == remmina_pref.shortcutkey_switchtab)
+    {
+        i = gtk_notebook_get_current_page (GTK_NOTEBOOK (priv->notebook)) + 1;
+        if (i >= gtk_notebook_get_n_pages (GTK_NOTEBOOK (priv->notebook))) i = 0;
+        gtk_notebook_set_current_page (GTK_NOTEBOOK (priv->notebook), i);
+    } else if (keyval == remmina_pref.shortcutkey_scale)
+    {
+        if (GTK_WIDGET_IS_SENSITIVE (priv->toolitem_scale))
+        {
+            gtk_toggle_tool_button_set_active (GTK_TOGGLE_TOOL_BUTTON (priv->toolitem_scale),
+                !gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (priv->toolitem_scale)));
+        }
+    } else if (keyval == remmina_pref.shortcutkey_grab)
+    {
+        gtk_toggle_tool_button_set_active (GTK_TOGGLE_TOOL_BUTTON (priv->toolitem_grab),
+            !gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (priv->toolitem_grab)));
+    } else if (keyval == remmina_pref.shortcutkey_minimize)
+    {
+        remmina_connection_holder_toolbar_minimize (GTK_WIDGET (gp), cnnhld);
+    } else if (keyval == remmina_pref.shortcutkey_close)
+    {
+        remmina_connection_holder_disconnect (cnnhld);
+    }
+    return TRUE;
+}
+
 void
 remmina_connection_window_open_from_file_with_data (RemminaFile *remminafile, gpointer data)
 {
@@ -1947,18 +1997,18 @@ remmina_connection_window_open_from_file_with_data (RemminaFile *remminafile, gp
     }
     else
     {
-        cnnhld = g_new (RemminaConnectionHolder, 1);
-        cnnhld->cnnwin = NULL;
+        cnnhld = g_new0 (RemminaConnectionHolder, 1);
     }
 
-    cnnobj = g_new (RemminaConnectionObject, 1);
+    cnnobj = g_new0 (RemminaConnectionObject, 1);
     cnnobj->cnnhld = cnnhld;
     cnnobj->remmina_file = remminafile;
-    cnnobj->scrolled_container = NULL;
-    cnnobj->connected = FALSE;
 
     /* Create the RemminaProtocolWidget */
     cnnobj->proto = remmina_protocol_widget_new ();
+
+    remmina_protocol_widget_set_hostkey_func (REMMINA_PROTOCOL_WIDGET (cnnobj->proto),
+        (RemminaHostkeyFunc) remmina_connection_window_hostkey_func, cnnhld);
 
     if (data)
     {

@@ -1511,6 +1511,8 @@ remmina_plugin_vnc_open_connection (RemminaProtocolWidget *gp)
 
     gpdata->connected = TRUE;
 
+    remmina_plugin_service->protocol_plugin_register_hostkey (gp, gpdata->drawing_area);
+
     g_signal_connect (G_OBJECT (gp), "realize",
         G_CALLBACK (remmina_plugin_vnc_on_realize), NULL);
     g_signal_connect (G_OBJECT (gpdata->drawing_area), "motion-notify-event",
