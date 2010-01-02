@@ -2,11 +2,10 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT(remmina-xfce, 0.7.0)
+AC_INIT(remmina-xfce, 0.7.99.1)
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([src/remminaxfceplugin.c])
 AC_CONFIG_HEADER([config.h])
-AC_CONFIG_MACRO_DIR([m4])
 
 # Checks for programs.
 AC_ISC_POSIX
@@ -21,8 +20,6 @@ if test "x$GCC" = "xyes"; then
         CFLAGS="$CFLAGS -Wall"
     fi
 fi
-
-AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
 
 IT_PROG_INTLTOOL([0.35.0])
 
