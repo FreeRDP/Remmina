@@ -1651,6 +1651,7 @@ remmina_plugin_vnc_query_feature (RemminaProtocolWidget *gp, RemminaProtocolFeat
         case REMMINA_PROTOCOL_FEATURE_PREF_VIEWONLY:
         case REMMINA_PROTOCOL_FEATURE_UNFOCUS:
         case REMMINA_PROTOCOL_FEATURE_SCALE:
+        case REMMINA_PROTOCOL_FEATURE_TOOL_REFRESH:
             return GINT_TO_POINTER (1);
         case REMMINA_PROTOCOL_FEATURE_PREF_DISABLESERVERINPUT:
             return (SupportsClient2Server ((rfbClient*) (gpdata->client), rfbSetServerInput) ?
@@ -1689,6 +1690,12 @@ remmina_plugin_vnc_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeatu
             break;
         case REMMINA_PROTOCOL_FEATURE_SCALE:
             remmina_plugin_vnc_update_scale (gp, (data != NULL));
+            break;
+        case REMMINA_PROTOCOL_FEATURE_TOOL_REFRESH:
+            SendFramebufferUpdateRequest ((rfbClient*) (gpdata->client), 0, 0,
+                remmina_plugin_service->protocol_plugin_get_width (gp),
+                remmina_plugin_service->protocol_plugin_get_height (gp),
+                FALSE);
             break;
         case REMMINA_PROTOCOL_FEATURE_TOOL_CHAT:
             remmina_plugin_vnc_open_chat (gp);
