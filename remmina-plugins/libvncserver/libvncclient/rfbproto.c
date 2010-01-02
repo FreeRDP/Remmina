@@ -509,12 +509,30 @@ ReadSupportedSecurityType(rfbClient* client, uint32_t *result, rfbBool subAuth)
         if (tAuth[loop]==rfbVncAuth || tAuth[loop]==rfbNoAuth || tAuth[loop]==rfbMSLogon ||
             (!subAuth && (tAuth[loop]==rfbTLS || tAuth[loop]==rfbVeNCrypt)))
         {
-            flag++;
-            authScheme=tAuth[loop];
-            rfbClientLog("Selecting security type %d (%d/%d in the list)\n", authScheme, loop, count);
-            /* send back a single byte indicating which security type to use */
-            if (!WriteToRFBServer(client, (char *)&tAuth[loop], 1)) return FALSE;
-
+            if (!subAuth && client->clientAuthSchemes)
+            {
+                int i;
+                for (i=0;client->clientAuthSchemes[i];i++)
+                {
+                    if (client->clientAuthSchemes[i]==(uint32_t)tAuth[loop])
+                    {
+                        flag++;
+                        authScheme=tAuth[loop];
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                flag++;
+                authScheme=tAuth[loop];
+            }
+            if (flag)
+            {
+                rfbClientLog("Selecting security type %d (%d/%d in the list)\n", authScheme, loop, count);
+                /* send back a single byte indicating which security type to use */
+                if (!WriteToRFBServer(client, (char *)&tAuth[loop], 1)) return FALSE;
+            }
         }
     }
     if (authScheme==0)
@@ -716,6 +734,35 @@ HandleMSLogonAuth(rfbClient *client)
   if (!rfbHandleAuthResult(client)) return FALSE;
 
   return TRUE;
+}
+
+/*
+ * SetClientAuthSchemes.
+ */
+
+void
+SetClientAuthSchemes(rfbClient* client,const uint32_t *authSchemes, int size)
+{
+  int i;
+
+  if (client->clientAuthSchemes)
+  {
+    free(client->clientAuthSchemes);
+    client->clientAuthSchemes = NULL;
+  }
+  if (authSchemes)
+  {
+    if (size<0)
+    {
+      /* If size<0 we assume the passed-in list is also 0-terminate, so we
+       * calculate the size here */
+      for (size=0;authSchemes[size];size++) ;
+    }
+    client->clientAuthSchemes = (uint32_t*)malloc(sizeof(uint32_t)*(size+1));
+    for (i=0;i<size;i++)
+      client->clientAuthSchemes[i] = authSchemes[i];
+    client->clientAuthSchemes[size] = 0;
+  }
 }
 
 /*

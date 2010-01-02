@@ -331,6 +331,8 @@ typedef struct _RemminaKeyVal
 /***************************** LibVNCClient related codes *********************************/
 #include <rfb/rfbclient.h>
 
+static const uint32_t remmina_plugin_vnc_no_encrypt_auth_types[] = {rfbNoAuth, rfbVncAuth, rfbMSLogon, 0};
+
 static void
 remmina_plugin_vnc_process_vnc_event (RemminaProtocolWidget *gp)
 {
@@ -1178,6 +1180,11 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
         remmina_plugin_vnc_update_colordepth (cl, remminafile->colordepth);
         SetFormatAndEncodings (cl);
 
+        if (remminafile->disableencryption)
+        {
+            SetClientAuthSchemes (cl, remmina_plugin_vnc_no_encrypt_auth_types, -1);
+        }
+
         if (rfbInitClient (cl, NULL, NULL)) break;
 
         /* If the authentication is not called, it has to be a fatel error and must quit */
@@ -1795,9 +1802,14 @@ static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
     REMMINA_PROTOCOL_SETTING_PASSWORD,
     REMMINA_PROTOCOL_SETTING_COLORDEPTH,
     REMMINA_PROTOCOL_SETTING_QUALITY,
+    REMMINA_PROTOCOL_SETTING_CTL_CONCAT,
     REMMINA_PROTOCOL_SETTING_SHOWCURSOR_REMOTE,
     REMMINA_PROTOCOL_SETTING_VIEWONLY,
+    REMMINA_PROTOCOL_SETTING_CTL_CONCAT_END,
+    REMMINA_PROTOCOL_SETTING_CTL_CONCAT,
     REMMINA_PROTOCOL_SETTING_DISABLESERVERINPUT,
+    REMMINA_PROTOCOL_SETTING_DISABLEENCRYPTION,
+    REMMINA_PROTOCOL_SETTING_CTL_CONCAT_END,
     REMMINA_PROTOCOL_SETTING_CTL_END
 };
 
@@ -1808,9 +1820,14 @@ static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
     REMMINA_PROTOCOL_SETTING_PASSWORD,
     REMMINA_PROTOCOL_SETTING_COLORDEPTH,
     REMMINA_PROTOCOL_SETTING_QUALITY,
+    REMMINA_PROTOCOL_SETTING_CTL_CONCAT,
     REMMINA_PROTOCOL_SETTING_SHOWCURSOR_REMOTE,
     REMMINA_PROTOCOL_SETTING_VIEWONLY,
+    REMMINA_PROTOCOL_SETTING_CTL_CONCAT_END,
+    REMMINA_PROTOCOL_SETTING_CTL_CONCAT,
     REMMINA_PROTOCOL_SETTING_DISABLESERVERINPUT,
+    REMMINA_PROTOCOL_SETTING_DISABLEENCRYPTION,
+    REMMINA_PROTOCOL_SETTING_CTL_CONCAT_END,
     REMMINA_PROTOCOL_SETTING_CTL_END
 };
 

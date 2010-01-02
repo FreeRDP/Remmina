@@ -305,6 +305,10 @@ typedef struct _rfbClient {
 	 * be bypassed.
 	 */
 	GetCredentialProc GetCredential;
+
+	/* The 0-terminated security types supported by the client.
+	 * Set by function SetClientAuthSchemes() */
+	uint32_t *clientAuthSchemes;
 } rfbClient;
 
 /* cursor.c */
@@ -322,6 +326,7 @@ extern rfbBool rfbEnableClientLogging;
 typedef void (*rfbClientLogProc)(const char *format, ...);
 extern rfbClientLogProc rfbClientLog,rfbClientErr;
 extern rfbBool ConnectToRFBServer(rfbClient* client,const char *hostname, int port);
+extern void SetClientAuthSchemes(rfbClient* client,const uint32_t *authSchemes, int size);
 extern rfbBool InitialiseRFBConnection(rfbClient* client);
 extern rfbBool SetFormatAndEncodings(rfbClient* client);
 extern rfbBool SendIncrementalFramebufferUpdateRequest(rfbClient* client);
