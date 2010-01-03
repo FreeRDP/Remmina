@@ -35,7 +35,8 @@ remmina_SOURCES = remmina.c \
     remminascaler.h remminascaler.c \
     remminawidgetpool.h remminawidgetpool.c \
     remminapluginmanager.h remminapluginmanager.c \
-    remminalog.h remminalog.c
+    remminalog.h remminalog.c \
+    remminakeychooser.h remminakeychooser.c
 
 remmina_LDADD = @REMMINA_LIBS@ @LIBGCRYPT_LIBS@
 
