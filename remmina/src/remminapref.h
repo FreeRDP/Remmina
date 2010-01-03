@@ -77,11 +77,12 @@ typedef struct _RemminaPref
     guint hostkey;
     guint shortcutkey_fullscreen;
     guint shortcutkey_autofit;
-    guint shortcutkey_switchtab;
+    guint shortcutkey_nexttab;
+    guint shortcutkey_prevtab;
     guint shortcutkey_scale;
     guint shortcutkey_grab;
     guint shortcutkey_minimize;
-    guint shortcutkey_close;
+    guint shortcutkey_disconnect;
 
     /* In View menu */
     gboolean hide_toolbar;

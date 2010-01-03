@@ -283,10 +283,15 @@ remmina_pref_init (void)
     else
         remmina_pref.shortcutkey_autofit = GDK_1;
 
-    if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_switchtab", NULL))
-        remmina_pref.shortcutkey_switchtab = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_switchtab", NULL);
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_nexttab", NULL))
+        remmina_pref.shortcutkey_nexttab = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_nexttab", NULL);
     else
-        remmina_pref.shortcutkey_switchtab = GDK_Tab;
+        remmina_pref.shortcutkey_nexttab = GDK_Right;
+
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_prevtab", NULL))
+        remmina_pref.shortcutkey_prevtab = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_prevtab", NULL);
+    else
+        remmina_pref.shortcutkey_prevtab = GDK_Left;
 
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_scale", NULL))
         remmina_pref.shortcutkey_scale = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_scale", NULL);
@@ -303,10 +308,10 @@ remmina_pref_init (void)
     else
         remmina_pref.shortcutkey_minimize = GDK_F9;
 
-    if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_close", NULL))
-        remmina_pref.shortcutkey_close = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_close", NULL);
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_disconnect", NULL))
+        remmina_pref.shortcutkey_disconnect = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_disconnect", NULL);
     else
-        remmina_pref.shortcutkey_close = GDK_F4;
+        remmina_pref.shortcutkey_disconnect = GDK_F4;
 
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "secret", NULL))
         remmina_pref.secret = g_key_file_get_string (gkeyfile, "remmina_pref", "secret", NULL);
@@ -356,11 +361,12 @@ remmina_pref_save (void)
     g_key_file_set_integer (gkeyfile, "remmina_pref", "hostkey", remmina_pref.hostkey);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_fullscreen", remmina_pref.shortcutkey_fullscreen);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_autofit", remmina_pref.shortcutkey_autofit);
-    g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_switchtab", remmina_pref.shortcutkey_switchtab);
+    g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_nexttab", remmina_pref.shortcutkey_nexttab);
+    g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_prevtab", remmina_pref.shortcutkey_prevtab);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_scale", remmina_pref.shortcutkey_scale);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_grab", remmina_pref.shortcutkey_grab);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_minimize", remmina_pref.shortcutkey_minimize);
-    g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_close", remmina_pref.shortcutkey_close);
+    g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_disconnect", remmina_pref.shortcutkey_disconnect);
 
     content = g_key_file_to_data (gkeyfile, &length, NULL);
     g_file_set_contents (remmina_pref_file, content, length, NULL);

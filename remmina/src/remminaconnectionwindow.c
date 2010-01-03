@@ -1953,10 +1953,15 @@ remmina_connection_window_hostkey_func (RemminaProtocolWidget *gp, guint keyval,
         {
             remmina_connection_holder_toolbar_autofit (GTK_WIDGET (gp), cnnhld);
         }
-    } else if (keyval == remmina_pref.shortcutkey_switchtab)
+    } else if (keyval == remmina_pref.shortcutkey_nexttab)
     {
         i = gtk_notebook_get_current_page (GTK_NOTEBOOK (priv->notebook)) + 1;
         if (i >= gtk_notebook_get_n_pages (GTK_NOTEBOOK (priv->notebook))) i = 0;
+        gtk_notebook_set_current_page (GTK_NOTEBOOK (priv->notebook), i);
+    } else if (keyval == remmina_pref.shortcutkey_prevtab)
+    {
+        i = gtk_notebook_get_current_page (GTK_NOTEBOOK (priv->notebook)) - 1;
+        if (i < 0) i = gtk_notebook_get_n_pages (GTK_NOTEBOOK (priv->notebook)) - 1;
         gtk_notebook_set_current_page (GTK_NOTEBOOK (priv->notebook), i);
     } else if (keyval == remmina_pref.shortcutkey_scale)
     {
@@ -1972,7 +1977,7 @@ remmina_connection_window_hostkey_func (RemminaProtocolWidget *gp, guint keyval,
     } else if (keyval == remmina_pref.shortcutkey_minimize)
     {
         remmina_connection_holder_toolbar_minimize (GTK_WIDGET (gp), cnnhld);
-    } else if (keyval == remmina_pref.shortcutkey_close)
+    } else if (keyval == remmina_pref.shortcutkey_disconnect)
     {
         remmina_connection_holder_disconnect (cnnhld);
     }
