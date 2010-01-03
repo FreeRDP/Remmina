@@ -50,8 +50,12 @@ struct _RemminaConnectionWindowPriv
 
     GtkWidget *floating_toolbar;
     GtkWidget *floating_toolbar_label;
+    gdouble floating_toolbar_opacity;
     /* To avoid strange event-loop */
     guint32 floating_toolbar_motion_time;
+
+    guint floating_toolbar_motion_handler;
+    gboolean floating_toolbar_motion_show;
 
     GtkWidget *toolbar;
 
@@ -189,6 +193,11 @@ remmina_connection_window_destroy (GtkWidget *widget, RemminaConnectionHolder* c
 {
     RemminaConnectionWindowPriv *priv = REMMINA_CONNECTION_WINDOW (widget)->priv;
 
+    if (priv->floating_toolbar_motion_handler)
+    {
+        g_source_remove (priv->floating_toolbar_motion_handler);
+        priv->floating_toolbar_motion_handler = 0;
+    }
     if (priv->floating_toolbar != NULL)
     {
         gtk_widget_destroy (priv->floating_toolbar);
@@ -197,23 +206,69 @@ remmina_connection_window_destroy (GtkWidget *widget, RemminaConnectionHolder* c
     g_free (priv);
 }
 
+static gboolean
+remmina_connection_holder_toolbar_motion (RemminaConnectionHolder *cnnhld)
+{
+    RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
+    GtkRequisition req;
+    gint x, y, t;
+
+    if (priv->floating_toolbar == NULL)
+    {
+        priv->floating_toolbar_motion_handler = 0;
+        return FALSE;
+    }
+
+    gtk_widget_size_request (priv->floating_toolbar, &req);
+    gtk_window_get_position (GTK_WINDOW (priv->floating_toolbar), &x, &y);
+
+    if (priv->floating_toolbar_motion_show) y += 2; else y--;
+    t = 2 - req.height;
+    if (y > 0) y = 0;
+    if (y < t) y = t;
+
+    gtk_window_move (GTK_WINDOW (priv->floating_toolbar), x, y);
+    if (remmina_pref.invisible_toolbar)
+    {
+        gtk_window_set_opacity (GTK_WINDOW (priv->floating_toolbar), (gdouble)(y - t) / (gdouble)(-t)
+            * priv->floating_toolbar_opacity);
+    }
+    if ((priv->floating_toolbar_motion_show && y >= 0) ||
+        (!priv->floating_toolbar_motion_show && y <= t))
+    {
+        priv->floating_toolbar_motion_handler = 0;
+        return FALSE;
+    }
+    return TRUE;
+}
+
 static void
 remmina_connection_holder_floating_toolbar_hide (RemminaConnectionHolder *cnnhld)
 {
     RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
-    GtkRequisition req;
-    gint x;
 
     if (priv->floating_toolbar == NULL) return;
 
-    gtk_widget_size_request (priv->floating_toolbar, &req);
-    gtk_window_get_position (GTK_WINDOW (priv->floating_toolbar), &x, NULL);
-    gtk_window_move (GTK_WINDOW (priv->floating_toolbar), x, 2 - req.height);
-    if (remmina_pref.invisible_toolbar)
-    {
-        gtk_window_set_opacity (GTK_WINDOW (priv->floating_toolbar), 0.0);
-    }
+    if (priv->floating_toolbar_motion_handler) g_source_remove (priv->floating_toolbar_motion_handler);
+    priv->floating_toolbar_motion_show = FALSE;
+    priv->floating_toolbar_motion_handler = g_timeout_add (10, (GSourceFunc) remmina_connection_holder_toolbar_motion, cnnhld);
+
     priv->floating_toolbar_motion_time = gtk_get_current_event_time ();
+}
+
+static void
+remmina_connection_holder_floating_toolbar_show (RemminaConnectionHolder *cnnhld)
+{
+    RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
+
+    if (priv->floating_toolbar == NULL) return;
+
+    /* I hardcoded a 100ms timeout here, so that the toolbar won't show up immediately after it hides */
+    if (gtk_get_current_event_time () - priv->floating_toolbar_motion_time < MOTION_TIME) return;
+
+    if (priv->floating_toolbar_motion_handler) g_source_remove (priv->floating_toolbar_motion_handler);
+    priv->floating_toolbar_motion_show = TRUE;
+    priv->floating_toolbar_motion_handler = g_idle_add ((GSourceFunc) remmina_connection_holder_toolbar_motion, cnnhld);
 }
 
 static void
@@ -1143,10 +1198,14 @@ remmina_connection_holder_update_toolbar_opacity (RemminaConnectionHolder *cnnhl
     DECLARE_CNNOBJ
     RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
 
-    gtk_window_set_opacity (GTK_WINDOW (priv->floating_toolbar),
-        (1.0 - TOOLBAR_OPACITY_MIN) / ((gdouble) TOOLBAR_OPACITY_LEVEL)
+    priv->floating_toolbar_opacity = (1.0 - TOOLBAR_OPACITY_MIN) / ((gdouble) TOOLBAR_OPACITY_LEVEL)
         * ((gdouble) (TOOLBAR_OPACITY_LEVEL - cnnobj->remmina_file->toolbar_opacity))
-        + TOOLBAR_OPACITY_MIN);
+        + TOOLBAR_OPACITY_MIN;
+
+    if (priv->floating_toolbar)
+    {
+        gtk_window_set_opacity (GTK_WINDOW (priv->floating_toolbar), priv->floating_toolbar_opacity);
+    }
 }
 
 static gboolean
@@ -1155,15 +1214,7 @@ remmina_connection_holder_toolbar_enter (
     GdkEventCrossing *event,
     RemminaConnectionHolder *cnnhld)
 {
-    RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
-    gint x;
-
-    /* I hardcoded a 100ms timeout here, so that the toolbar won't show up immediately after it hides */
-    if (gtk_get_current_event_time () - priv->floating_toolbar_motion_time < MOTION_TIME) return TRUE;
-
-    gtk_window_get_position (GTK_WINDOW (priv->floating_toolbar), &x, NULL);
-    gtk_window_move (GTK_WINDOW (priv->floating_toolbar), x, 0);
-    remmina_connection_holder_update_toolbar_opacity (cnnhld);
+    remmina_connection_holder_floating_toolbar_show (cnnhld);
     return TRUE;
 }
 
@@ -1354,13 +1405,15 @@ remmina_connection_holder_create_floating_toolbar (RemminaConnectionHolder *cnnh
 
     gtk_widget_size_request (window, &req);
     gtk_window_move (GTK_WINDOW (window), (gdk_screen_get_width (screen) - req.width) / 2, 2 - req.height);
+    gtk_window_set_accept_focus (GTK_WINDOW (window), FALSE);
+
+    priv->floating_toolbar = window;
+
+    remmina_connection_holder_update_toolbar_opacity (cnnhld);
     if (remmina_pref.invisible_toolbar)
     {
         gtk_window_set_opacity (GTK_WINDOW (window), 0.0);
     }
-    gtk_window_set_accept_focus (GTK_WINDOW (window), FALSE);
-
-    priv->floating_toolbar = window;
 
     g_signal_connect (G_OBJECT (window), "enter-notify-event", 
         G_CALLBACK (remmina_connection_holder_toolbar_enter), cnnhld);
@@ -1381,6 +1434,7 @@ remmina_connection_window_init (RemminaConnectionWindow *cnnwin)
     cnnwin->priv = priv;
 
     priv->view_mode = AUTO_MODE;
+    priv->floating_toolbar_opacity = 1.0;
 
     gtk_window_set_position (GTK_WINDOW (cnnwin), GTK_WIN_POS_CENTER);
     gtk_container_set_border_width (GTK_CONTAINER (cnnwin), 0);
