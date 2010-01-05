@@ -222,7 +222,7 @@ remmina_connection_holder_toolbar_motion (RemminaConnectionHolder *cnnhld)
     gtk_widget_size_request (priv->floating_toolbar, &req);
     gtk_window_get_position (GTK_WINDOW (priv->floating_toolbar), &x, &y);
 
-    if (priv->floating_toolbar_motion_show) y += 2; else y--;
+    if (priv->floating_toolbar_motion_show) y += 2; else y -= 2;
     t = 2 - req.height;
     if (y > 0) y = 0;
     if (y < t) y = t;
@@ -251,7 +251,7 @@ remmina_connection_holder_floating_toolbar_hide (RemminaConnectionHolder *cnnhld
 
     if (priv->floating_toolbar_motion_handler) g_source_remove (priv->floating_toolbar_motion_handler);
     priv->floating_toolbar_motion_show = FALSE;
-    priv->floating_toolbar_motion_handler = g_timeout_add (10, (GSourceFunc) remmina_connection_holder_toolbar_motion, cnnhld);
+    priv->floating_toolbar_motion_handler = g_idle_add ((GSourceFunc) remmina_connection_holder_toolbar_motion, cnnhld);
 
     priv->floating_toolbar_motion_time = gtk_get_current_event_time ();
 }
@@ -261,7 +261,7 @@ remmina_connection_holder_floating_toolbar_show (RemminaConnectionHolder *cnnhld
 {
     RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
 
-    if (priv->floating_toolbar == NULL) return;
+    if (priv->floating_toolbar == NULL || priv->floating_toolbar_motion_handler) return;
 
     /* I hardcoded a 100ms timeout here, so that the toolbar won't show up immediately after it hides */
     if (gtk_get_current_event_time () - priv->floating_toolbar_motion_time < MOTION_TIME) return;
@@ -1252,7 +1252,8 @@ remmina_connection_window_focus_out (GtkWidget *widget, GdkEventFocus *event, Re
     DECLARE_CNNOBJ_WITH_RETURN (FALSE)
     RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
 
-    if (!priv->sticky && priv->floating_toolbar)
+    if (!priv->sticky && priv->floating_toolbar &&
+        !(priv->floating_toolbar_motion_handler && priv->floating_toolbar_motion_show))
     {
         gtk_widget_hide (priv->floating_toolbar);
     }
