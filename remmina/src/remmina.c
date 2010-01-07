@@ -112,11 +112,25 @@ remmina_parse_command (int argc, char* argv[], gchar **data)
         break;
     case 'q':
         command = REMMINA_COMMAND_QUICK;
-        *data = g_strdup (protocol);
+        if (server)
+        {
+            *data = g_strdup_printf ("%s,%s", protocol, server);
+        }
+        else
+        {
+            *data = g_strdup (protocol);
+        }
         break;
     case 'n':
         command = REMMINA_COMMAND_NEW;
-        *data = g_strdup (protocol);
+        if (server)
+        {
+            *data = g_strdup_printf ("%s,%s", protocol, server);
+        }
+        else
+        {
+            *data = g_strdup (protocol);
+        }
         break;
     case 'c':
         command = REMMINA_COMMAND_CONNECT;
@@ -142,6 +156,7 @@ static void
 remmina_exec_command (gint command, const gchar *data)
 {
     GtkWidget *widget;
+    gchar *s1, *s2;
 
     switch (command)
     {
@@ -170,11 +185,35 @@ remmina_exec_command (gint command, const gchar *data)
         }
         break;
     case REMMINA_COMMAND_QUICK:
-        widget = remmina_file_editor_new_temp_full (NULL, data);
+        s1 = (data ? strchr (data, ',') : NULL);
+        if (s1)
+        {
+            s1 = g_strdup (data);
+            s2 = strchr (s1, ',');
+            *s2++ = '\0';
+            widget = remmina_file_editor_new_temp_full (s2, s1);
+            g_free (s1);
+        }
+        else
+        {
+            widget = remmina_file_editor_new_temp_full (NULL, data);
+        }
         gtk_widget_show (widget);
         break;
     case REMMINA_COMMAND_NEW:
-        widget = remmina_file_editor_new_full (NULL, data);
+        s1 = (data ? strchr (data, ',') : NULL);
+        if (s1)
+        {
+            s1 = g_strdup (data);
+            s2 = strchr (s1, ',');
+            *s2++ = '\0';
+            widget = remmina_file_editor_new_full (s2, s1);
+            g_free (s1);
+        }
+        else
+        {
+            widget = remmina_file_editor_new_full (NULL, data);
+        }
         gtk_widget_show (widget);
         break;
     case REMMINA_COMMAND_CONNECT:
@@ -218,7 +257,7 @@ remmina_unique_exec_command (gint command, const gchar *data)
         "main",     REMMINA_COMMAND_MAIN,
         "pref",     REMMINA_COMMAND_PREF,
         "quick",    REMMINA_COMMAND_QUICK,
-        "new",      REMMINA_COMMAND_NEW,
+        "newf",     REMMINA_COMMAND_NEW,
         "connect",  REMMINA_COMMAND_CONNECT,
         "edit",     REMMINA_COMMAND_EDIT,
         "about",    REMMINA_COMMAND_ABOUT,
