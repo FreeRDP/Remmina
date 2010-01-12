@@ -20,6 +20,7 @@
 
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <stdlib.h>
 #include "config.h"
 #include "remminapublic.h"
 #include "remminapref.h"
@@ -416,9 +417,10 @@ remmina_protocol_widget_init_tunnel (RemminaProtocolWidget *gp)
 #endif
 
 gchar*
-remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint default_port)
+remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint default_port, gboolean port_plus)
 {
-    gchar *dest;
+    gchar *dest, *ptr;
+    gint port;
 
     if (!gp->priv->remmina_file->server || gp->priv->remmina_file->server[0] == '\0')
     {
@@ -428,6 +430,21 @@ remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint def
     if (strchr (gp->priv->remmina_file->server, ':') == NULL)
     {
         dest = g_strdup_printf ("%s:%i", gp->priv->remmina_file->server, default_port);
+    }
+    else if (port_plus)
+    {
+        dest = g_strdup (gp->priv->remmina_file->server);
+        /* Protocols like VNC supports using instance number :0, :1, etc as port number. */
+        ptr = strchr (dest, ':');
+        port = atoi (ptr + 1);
+        if (port < 100)
+        {
+            port += default_port;
+            *ptr = '\0';
+            ptr = dest;
+            dest = g_strdup_printf ("%s:%i", ptr, port);
+            g_free (ptr);
+        }
     }
     else
     {
