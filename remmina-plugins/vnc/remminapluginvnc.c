@@ -1133,7 +1133,7 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
     {
         gpdata->auth_called = FALSE;
 
-        host = remmina_plugin_service->protocol_plugin_start_direct_tunnel (gp, 5900);
+        host = remmina_plugin_service->protocol_plugin_start_direct_tunnel (gp, 5900, TRUE);
 
         if (host == NULL)
         {

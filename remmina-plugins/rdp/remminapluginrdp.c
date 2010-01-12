@@ -113,7 +113,7 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
         }
     }
 
-    host = remmina_plugin_service->protocol_plugin_start_direct_tunnel (gp, 3389);
+    host = remmina_plugin_service->protocol_plugin_start_direct_tunnel (gp, 3389, FALSE);
     if (host == NULL)
     {
         gpdata->thread = 0;

@@ -65,7 +65,7 @@ typedef struct _RemminaPluginService
     GPtrArray*   (* protocol_plugin_get_printers)        (RemminaProtocolWidget *gp);
     void         (* protocol_plugin_emit_signal)         (RemminaProtocolWidget *gp, const gchar *signal_name);
     void         (* protocol_plugin_register_hostkey)    (RemminaProtocolWidget *gp, GtkWidget *widget);
-    gchar*       (* protocol_plugin_start_direct_tunnel) (RemminaProtocolWidget *gp, gint default_port);
+    gchar*       (* protocol_plugin_start_direct_tunnel) (RemminaProtocolWidget *gp, gint default_port, gboolean port_plus);
     gboolean     (* protocol_plugin_start_xport_tunnel)  (RemminaProtocolWidget *gp, gint display, RemminaXPortTunnelInitFunc init_func);
     gboolean     (* protocol_plugin_close_connection)    (RemminaProtocolWidget *gp);
     gint         (* protocol_plugin_init_authpwd)        (RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type);
