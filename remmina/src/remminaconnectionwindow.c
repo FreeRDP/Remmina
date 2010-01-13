@@ -1360,7 +1360,6 @@ remmina_connection_window_on_configure (GtkWidget *widget, GdkEventConfigure *ev
     DECLARE_CNNOBJ_WITH_RETURN (FALSE)
     RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
     GtkRequisition req;
-    GdkScreen *screen;
     gint y;
 
     if (cnnhld->cnnwin && gtk_widget_get_window (GTK_WIDGET (cnnhld->cnnwin)) &&
@@ -1381,11 +1380,12 @@ remmina_connection_window_on_configure (GtkWidget *widget, GdkEventConfigure *ev
 
     if (priv->floating_toolbar)
     {
-        screen = gdk_screen_get_default ();
         gtk_widget_size_request (priv->floating_toolbar, &req);
         gtk_window_get_position (GTK_WINDOW (priv->floating_toolbar), NULL, &y);
         gtk_window_move (GTK_WINDOW (priv->floating_toolbar),
-            (gdk_screen_get_width (screen) - req.width) / 2, y);
+            event->x + MAX (0, (event->width - req.width) / 2), y);
+
+        remmina_connection_holder_floating_toolbar_update (cnnhld);
     }
     
     if (REMMINA_IS_SCROLLED_VIEWPORT (cnnobj->scrolled_container))
@@ -1405,10 +1405,6 @@ remmina_connection_holder_create_floating_toolbar (RemminaConnectionHolder *cnnh
     GtkWidget *vbox;
     GtkWidget *widget;
     GtkWidget *eventbox;
-    GtkRequisition req;
-    GdkScreen *screen;
-
-    screen = gdk_screen_get_default ();
 
     /* This has to be a popup window to become visible in fullscreen mode */
     window = gtk_window_new (GTK_WINDOW_POPUP);
@@ -1430,8 +1426,8 @@ remmina_connection_holder_create_floating_toolbar (RemminaConnectionHolder *cnnh
     gtk_container_add (GTK_CONTAINER (eventbox), widget);
     priv->floating_toolbar_label = widget;
 
-    gtk_widget_size_request (window, &req);
-    gtk_window_move (GTK_WINDOW (window), (gdk_screen_get_width (screen) - req.width) / 2, 2 - req.height);
+    /* The position will be moved in configure event instead during maximizing. Just make it invisible here */
+    gtk_window_move (GTK_WINDOW (window), 0, -200);
     gtk_window_set_accept_focus (GTK_WINDOW (window), FALSE);
 
     priv->floating_toolbar = window;
