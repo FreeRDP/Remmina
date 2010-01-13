@@ -127,6 +127,8 @@ remmina_plugin_sftp_init (RemminaProtocolWidget *gp)
     gpdata->client = remmina_sftp_client_new ();
     gtk_widget_show (gpdata->client);
     gtk_container_add (GTK_CONTAINER (gp), gpdata->client);
+
+    remmina_plugin_service->protocol_plugin_register_hostkey (gp, gpdata->client);
 }
 
 static gboolean
