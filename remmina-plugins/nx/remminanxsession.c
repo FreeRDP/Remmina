@@ -901,7 +901,7 @@ remmina_nx_session_get_proxy_option (RemminaNXSession *nx)
 }
 
 gboolean
-remmina_nx_session_invoke_proxy (RemminaNXSession *nx, const gint display,
+remmina_nx_session_invoke_proxy (RemminaNXSession *nx, gint display,
     GChildWatchFunc exit_func, gpointer user_data)
 {
     gchar *argv[50];
@@ -913,19 +913,26 @@ remmina_nx_session_invoke_proxy (RemminaNXSession *nx, const gint display,
     gint i;
 
     /* Copy all current environment variable, but change DISPLAY. Assume we should always have DISPLAY... */
-    envp = g_listenv ();
-    for (i = 0; envp[i]; i++)
+    if (display >= 0)
     {
-        if (g_strcmp0 (envp[i], "DISPLAY") == 0)
+        envp = g_listenv ();
+        for (i = 0; envp[i]; i++)
         {
-            s = g_strdup_printf ("DISPLAY=:%i", display);
+            if (g_strcmp0 (envp[i], "DISPLAY") == 0)
+            {
+                s = g_strdup_printf ("DISPLAY=:%i", display);
+            }
+            else
+            {
+                s = g_strdup_printf ("%s=%s", envp[i], g_getenv (envp[i]));
+            }
+            g_free (envp[i]);
+            envp[i] = s;
         }
-        else
-        {
-            s = g_strdup_printf ("%s=%s", envp[i], g_getenv (envp[i]));
-        }
-        g_free (envp[i]);
-        envp[i] = s;
+    }
+    else
+    {
+        envp = NULL;
     }
 
     argc = 0;

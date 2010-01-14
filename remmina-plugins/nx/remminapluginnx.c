@@ -25,21 +25,18 @@
 #include <X11/extensions/XKBrules.h>
 #include "remminanxsession.h"
 
-INCLUDE_GET_AVAILABLE_XDISPLAY
-
 typedef struct _RemminaPluginNxData
 {
     GtkWidget *socket;
     gint socket_id;
-    GPid xephyr_pid;
-    gboolean xephyr_ready;
-    gint display;
-    gint output_fd;
-    gint error_fd;
 
     pthread_t thread;
 
     RemminaNXSession *nx;
+
+    Display *display;
+    Window window_id;
+    int (*orig_handler) (Display *, XErrorEvent *);
 } RemminaPluginNxData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
@@ -54,74 +51,12 @@ remmina_plugin_nx_on_plug_added (GtkSocket *socket, RemminaProtocolWidget *gp)
     gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
 
     remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
-    gpdata->xephyr_ready = TRUE;
 }
 
 static void
 remmina_plugin_nx_on_plug_removed (GtkSocket *socket, RemminaProtocolWidget *gp)
 {
     remmina_plugin_service->protocol_plugin_close_connection (gp);
-}
-
-static gboolean
-remmina_plugin_nx_prepare_display (RemminaProtocolWidget *gp)
-{
-    RemminaPluginNxData *gpdata;
-    gint display;
-
-    gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
-
-    display = remmina_get_available_xdisplay ();
-    if (display == 0)
-    {
-        remmina_plugin_service->protocol_plugin_set_error (gp, "Run out of available local X display number.");
-        return FALSE;
-    }
-
-    gpdata->display = display;
-
-    return TRUE;
-}
-
-static gboolean
-remmina_plugin_nx_invoke_xephyr (RemminaProtocolWidget *gp)
-{
-    RemminaPluginNxData *gpdata;
-    RemminaFile *remminafile;
-    gchar *argv[50];
-    gint argc;
-    gint i;
-    GError *error = NULL;
-    gboolean ret;
-
-    gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
-    remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
-
-    argc = 0;
-    argv[argc++] = g_strdup ("Xephyr");
-
-    argv[argc++] = g_strdup_printf (":%i", gpdata->display);
-
-    argv[argc++] = g_strdup ("-parent");
-    argv[argc++] = g_strdup_printf ("%i", gpdata->socket_id);
-
-    if (remminafile->showcursor)
-    {
-        argv[argc++] = g_strdup ("-host-cursor");
-    }
-    argv[argc++] = NULL;
-
-    ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH,
-        NULL, NULL, &gpdata->xephyr_pid, &error);
-    for (i = 0; i < argc; i++) g_free (argv[i]);
-
-    if (!ret)
-    {
-        remmina_plugin_service->protocol_plugin_set_error (gp, "%s", error->message);
-        return FALSE;
-    }
-
-    return TRUE;
 }
 
 gboolean
@@ -146,6 +81,67 @@ remmina_plugin_nx_on_proxy_exit (GPid pid, gint status, gpointer data)
     RemminaProtocolWidget *gp = (RemminaProtocolWidget*) data;
 
     remmina_plugin_service->protocol_plugin_close_connection (gp);
+}
+
+static int
+remmina_plugin_nx_dummy_handler (Display *dsp, XErrorEvent *err)
+{
+    return 0;
+}
+
+static gboolean
+remmina_plugin_nx_start_create_notify (RemminaProtocolWidget *gp)
+{
+    RemminaPluginNxData *gpdata;
+
+    gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+
+    gpdata->display = XOpenDisplay (gdk_display_get_name (gdk_display_get_default ()));
+    if (gpdata->display == NULL) return FALSE;
+
+    gpdata->orig_handler = XSetErrorHandler (remmina_plugin_nx_dummy_handler);
+
+    XSelectInput (gpdata->display, XDefaultRootWindow (gpdata->display), SubstructureNotifyMask);
+
+    return TRUE;
+}
+
+static gboolean
+remmina_plugin_nx_monitor_create_notify (RemminaProtocolWidget *gp, const gchar *cmd)
+{
+    RemminaPluginNxData *gpdata;
+    Atom atom;
+    XEvent xev;
+    Window w;
+    Atom type;
+    int format;
+    unsigned long nitems, rest;
+    unsigned char *data = NULL;
+
+    gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+    atom = XInternAtom (gpdata->display, "WM_COMMAND", True);
+    if (atom == None) return FALSE;
+
+    while (1)
+    {
+        XNextEvent(gpdata->display, &xev);
+        if (xev.type != CreateNotify) continue;
+        w = xev.xcreatewindow.window;
+        if (XGetWindowProperty(gpdata->display, w, atom, 0, 255, False, AnyPropertyType,
+            &type, &format, &nitems, &rest, &data) != Success) continue;
+        if (data && strstr ((char *) data, cmd))
+        {
+            gpdata->window_id = w;
+            XFree (data);
+            break;
+        }
+        if (data) XFree (data);
+    }
+
+    XSetErrorHandler (gpdata->orig_handler);
+    XCloseDisplay (gpdata->display);
+    gpdata->display = NULL;
+    return TRUE;
 }
 
 static gboolean
@@ -305,14 +301,18 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
 
     if (!remmina_nx_session_tunnel_open (nx)) return FALSE;
 
-    /* Xephyr */
-    if (!remmina_plugin_nx_prepare_display (gp)) return FALSE;
-    if (!remmina_plugin_nx_invoke_xephyr (gp)) return FALSE;
-
-    while (!gpdata->xephyr_ready) sleep (1);
+    if (!remmina_plugin_nx_start_create_notify (gp)) return FALSE;
 
     /* nxproxy */
-    if (!remmina_nx_session_invoke_proxy (nx, gpdata->display, remmina_plugin_nx_on_proxy_exit, gp)) return FALSE;
+    if (!remmina_nx_session_invoke_proxy (nx, -1, remmina_plugin_nx_on_proxy_exit, gp)) return FALSE;
+
+    /* get the window id of the remote nxagent */
+    if (!remmina_plugin_nx_monitor_create_notify (gp, "nxagent")) return FALSE;
+
+    /* embed it */
+    THREADS_ENTER
+    gtk_socket_add_id (GTK_SOCKET (gpdata->socket), gpdata->window_id);
+    THREADS_LEAVE
 
     return TRUE;
 }
@@ -381,9 +381,17 @@ remmina_plugin_nx_open_connection (RemminaProtocolWidget *gp)
     gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
-    remmina_plugin_service->protocol_plugin_set_width (gp, remminafile->resolution_width);
-    remmina_plugin_service->protocol_plugin_set_height (gp, remminafile->resolution_height);
-    gtk_widget_set_size_request (GTK_WIDGET (gp), remminafile->resolution_width, remminafile->resolution_height);
+    if (g_strcmp0 (remminafile->resolution, "AUTO") == 0)
+    {
+        remmina_plugin_service->protocol_plugin_set_expand (gp, TRUE);
+        gtk_widget_set_size_request (GTK_WIDGET (gp), 320, 240);
+    }
+    else
+    {
+        remmina_plugin_service->protocol_plugin_set_width (gp, remminafile->resolution_width);
+        remmina_plugin_service->protocol_plugin_set_height (gp, remminafile->resolution_height);
+        gtk_widget_set_size_request (GTK_WIDGET (gp), remminafile->resolution_width, remminafile->resolution_height);
+    }
     gpdata->socket_id = gtk_socket_get_id (GTK_SOCKET (gpdata->socket));
 
     if (pthread_create (&gpdata->thread, NULL, remmina_plugin_nx_main_thread, gp))
@@ -418,11 +426,11 @@ remmina_plugin_nx_close_connection (RemminaProtocolWidget *gp)
         gpdata->nx = NULL;
     }
 
-    if (gpdata->xephyr_pid)
+    if (gpdata->display)
     {
-        kill (gpdata->xephyr_pid, SIGTERM);
-        g_spawn_close_pid (gpdata->xephyr_pid);
-        gpdata->xephyr_pid = 0;
+        XSetErrorHandler (gpdata->orig_handler);
+        XCloseDisplay (gpdata->display);
+        gpdata->display = NULL;
     }
 
     remmina_plugin_service->protocol_plugin_emit_signal (gp, "disconnect");
@@ -447,7 +455,7 @@ static const RemminaProtocolSetting remmina_plugin_nx_basic_settings[] =
     REMMINA_PROTOCOL_SETTING_SSH_PRIVATEKEY,
     REMMINA_PROTOCOL_SETTING_USERNAME,
     REMMINA_PROTOCOL_SETTING_PASSWORD,
-    REMMINA_PROTOCOL_SETTING_RESOLUTION,
+    REMMINA_PROTOCOL_SETTING_RESOLUTION_FLEXIBLE,
     REMMINA_PROTOCOL_SETTING_QUALITY,
     REMMINA_PROTOCOL_SETTING_EXEC_CUSTOM, "GNOME,KDE,Xfce,Shadow",
     REMMINA_PROTOCOL_SETTING_CTL_END
