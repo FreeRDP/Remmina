@@ -286,7 +286,7 @@ remmina_plugin_xdmcp_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFea
 static const RemminaProtocolSetting remmina_plugin_xdmcp_basic_settings[] =
 {
     REMMINA_PROTOCOL_SETTING_SERVER,
-    REMMINA_PROTOCOL_SETTING_RESOLUTION,
+    REMMINA_PROTOCOL_SETTING_RESOLUTION_FIXED,
     REMMINA_PROTOCOL_SETTING_COLORDEPTH,
     REMMINA_PROTOCOL_SETTING_SHOWCURSOR_LOCAL,
     REMMINA_PROTOCOL_SETTING_ONCE,

@@ -379,7 +379,7 @@ remmina_file_editor_create_password (RemminaFileEditor *gfe, GtkWidget *table, g
 }
 
 static void
-remmina_file_editor_create_resolution (RemminaFileEditor *gfe, GtkWidget *table, gint row)
+remmina_file_editor_create_resolution (RemminaFileEditor *gfe, GtkWidget *table, gint row, gint type)
 {
     GtkWidget *widget;
     GtkWidget *hbox;
@@ -389,7 +389,8 @@ remmina_file_editor_create_resolution (RemminaFileEditor *gfe, GtkWidget *table,
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_table_attach (GTK_TABLE (table), widget, 0, 1, row, row + 1, GTK_FILL, 0, 0, 0);
 
-    widget = gtk_radio_button_new_with_label (NULL, _("Use Client Resolution"));
+    widget = gtk_radio_button_new_with_label (NULL,
+        type == REMMINA_PROTOCOL_SETTING_VALUE_RESOLUTION_FLEXIBLE ? _("Use Window Size") : _("Use Client Resolution"));
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, row, row + 1);
     gfe->priv->resolution_auto_radio = widget;
@@ -640,8 +641,9 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, c
             row++;
             break;
 
-        case REMMINA_PROTOCOL_SETTING_VALUE_RESOLUTION:
-            remmina_file_editor_create_resolution (gfe, table, row);
+        case REMMINA_PROTOCOL_SETTING_VALUE_RESOLUTION_FIXED:
+        case REMMINA_PROTOCOL_SETTING_VALUE_RESOLUTION_FLEXIBLE:
+            remmina_file_editor_create_resolution (gfe, table, row, val);
             row += 2;
             break;
 

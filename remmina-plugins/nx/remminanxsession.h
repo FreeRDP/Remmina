@@ -77,7 +77,7 @@ gboolean remmina_nx_session_restore (RemminaNXSession *nx);
 
 gboolean remmina_nx_session_tunnel_open (RemminaNXSession *nx);
 
-gboolean remmina_nx_session_invoke_proxy (RemminaNXSession *nx, const gint display,
+gboolean remmina_nx_session_invoke_proxy (RemminaNXSession *nx, gint display,
     GChildWatchFunc exit_func, gpointer user_data);
 
 void remmina_nx_session_bye (RemminaNXSession *nx);
