@@ -111,6 +111,7 @@ struct _RemminaFileEditorPriv
     GtkWidget *execpath_entry;
     GtkWidget *sound_combo;
     GtkWidget *arguments_entry;
+    GtkWidget *proxy_entry;
     GtkWidget *sharefolder_combo;
     GtkWidget *scaler_widget;
 
@@ -823,6 +824,12 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, c
             row++;
             break;
 
+        case REMMINA_PROTOCOL_SETTING_VALUE_PROXY_DEST:
+            priv->proxy_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
+                _("Proxy Destination"), priv->remmina_file->proxy);
+            row++;
+            break;
+
         default:
             break;
         }
@@ -1022,6 +1029,7 @@ remmina_file_editor_protocol_combo_on_changed (GtkComboBox *combo, RemminaFileEd
     priv->execpath_entry = NULL;
     priv->sound_combo = NULL;
     priv->arguments_entry = NULL;
+    priv->proxy_entry = NULL;
     priv->sharefolder_combo = NULL;
     priv->scaler_widget = NULL;
 
@@ -1187,6 +1195,12 @@ remmina_file_editor_update (RemminaFileEditor *gfe)
     {
         g_free (priv->remmina_file->arguments);
         priv->remmina_file->arguments = g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->arguments_entry)));
+    }
+
+    if (priv->proxy_entry)
+    {
+        g_free (priv->remmina_file->proxy);
+        priv->remmina_file->proxy = g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->proxy_entry)));
     }
 
     if (priv->bitmapcaching_check)

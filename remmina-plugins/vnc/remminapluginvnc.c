@@ -1174,6 +1174,22 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
             if (cl->serverPort < 100) cl->serverPort += 5900;
         }
 
+        if (remminafile->proxy && remminafile->proxy[0])
+        {
+            host = g_strdup (remminafile->proxy);
+            pos = g_strrstr (host, ":");
+            if (pos)
+            {
+                *pos++ = '\0';
+                cl->destPort = atoi (pos);
+            }
+            else
+            {
+                cl->destPort = 5900;
+            }
+            cl->destHost = host;
+        }
+
         cl->appData.useRemoteCursor = (remminafile->showcursor ? FALSE : TRUE);
 
         remmina_plugin_vnc_update_quality (cl, remminafile->quality);
@@ -1807,6 +1823,7 @@ remmina_plugin_vnc_init (RemminaProtocolWidget *gp)
 static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
 {
     REMMINA_PROTOCOL_SETTING_SERVER,
+    REMMINA_PROTOCOL_SETTING_PROXY_DEST,
     REMMINA_PROTOCOL_SETTING_USERNAME,
     REMMINA_PROTOCOL_SETTING_PASSWORD,
     REMMINA_PROTOCOL_SETTING_COLORDEPTH,
