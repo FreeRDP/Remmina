@@ -119,6 +119,9 @@ rfbClient* rfbGetClient(int bitsPerSample,int samplesPerPixel,
   client->programName="";
   client->serverHost=strdup("");
   client->serverPort=5900;
+
+  client->destHost = NULL;
+  client->destPort = 5900;
   
   client->CurrentKeyboardLedState = 0;
   client->HandleKeyboardLedState = (HandleKeyboardLedStateProc)DummyPoint;
@@ -202,8 +205,15 @@ static rfbBool rfbInitConnection(rfbClient* client)
      given VNC server */
 
   if (!client->listenSpecified) {
-    if (!client->serverHost || !ConnectToRFBServer(client,client->serverHost,client->serverPort))
+    if (!client->serverHost)
       return FALSE;
+    if (client->destHost) {
+      if (!ConnectToRFBRepeater(client,client->serverHost,client->serverPort,client->destHost,client->destPort))
+        return FALSE;
+    } else {
+      if (!ConnectToRFBServer(client,client->serverHost,client->serverPort))
+        return FALSE;
+    }
   }
 
   /* Initialise the VNC connection, including reading the password */
@@ -278,21 +288,35 @@ rfbBool rfbInitClient(rfbClient* client,int* argc,char** argv) {
       } else if (i+1<*argc && strcmp(argv[i], "-scale") == 0) {
         client->appData.scaleSetting = atoi(argv[i+1]);
         j+=2;
+      } else if (i+1<*argc && strcmp(argv[i], "-repeaterdest") == 0) {
+	char* colon=strchr(argv[i+1],':');
+
+	if(client->destHost)
+	  free(client->destHost);
+        client->destPort = 5900;
+
+	client->destHost = strdup(argv[i+1]);
+	if(colon) {
+	  client->destHost[(int)(colon-argv[i+1])] = '\0';
+	  client->destPort = atoi(colon+1);
+	}
+        j+=2;
       } else {
 	char* colon=strchr(argv[i],':');
 
 	if(client->serverHost)
 	  free(client->serverHost);
+        client->serverPort = 5900;
 
 	if(colon) {
-	  client->serverHost=strdup(argv[i]);
-	  client->serverHost[(int)(colon-argv[i])]='\0';
-	  client->serverPort=atoi(colon+1);
+	  client->serverHost = strdup(argv[i]);
+	  client->serverHost[(int)(colon-argv[i])] = '\0';
+	  client->serverPort = atoi(colon+1);
 	} else {
-	  client->serverHost=strdup(argv[i]);
+	  client->serverHost = strdup(argv[i]);
 	}
-	if(client->serverPort>=0 && client->serverPort<5900)
-	  client->serverPort+=5900;
+	if(client->serverPort >= 0 && client->serverPort < 5900)
+	  client->serverPort += 5900;
       }
       /* purge arguments */
       if (j>i) {
@@ -342,6 +366,8 @@ void rfbClientCleanup(rfbClient* client) {
     close(client->listenSock);
   free(client->desktopName);
   free(client->serverHost);
+  if (client->destHost)
+    free(client->destHost);
   if (client->clientAuthSchemes)
     free(client->clientAuthSchemes);
   free(client);

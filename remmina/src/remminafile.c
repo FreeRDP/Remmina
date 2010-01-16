@@ -88,6 +88,7 @@ remmina_file_new_temp (void)
         gf->execpath = NULL;
         gf->sound = NULL;
         gf->arguments = NULL;
+        gf->proxy = NULL;
         gf->cacert = NULL;
         gf->cacrl = NULL;
         gf->clientcert = NULL;
@@ -202,6 +203,7 @@ remmina_file_load (const gchar *filename)
         gf->execpath = g_key_file_get_string (gkeyfile, "remmina", "execpath", NULL);
         gf->sound = g_key_file_get_string (gkeyfile, "remmina", "sound", NULL);
         gf->arguments = g_key_file_get_string (gkeyfile, "remmina", "arguments", NULL);
+        gf->proxy = g_key_file_get_string (gkeyfile, "remmina", "proxy", NULL);
         gf->cacert = g_key_file_get_string (gkeyfile, "remmina", "cacert", NULL);
         gf->cacrl = g_key_file_get_string (gkeyfile, "remmina", "cacrl", NULL);
         gf->clientcert = g_key_file_get_string (gkeyfile, "remmina", "clientcert", NULL);
@@ -270,6 +272,7 @@ remmina_file_store_profile (RemminaFile *gf, GKeyFile *gkeyfile)
     g_key_file_set_string (gkeyfile, "remmina", "execpath", (gf->execpath ? gf->execpath : ""));
     g_key_file_set_string (gkeyfile, "remmina", "sound", (gf->sound ? gf->sound : ""));
     g_key_file_set_string (gkeyfile, "remmina", "arguments", (gf->arguments ? gf->arguments : ""));
+    g_key_file_set_string (gkeyfile, "remmina", "proxy", (gf->proxy ? gf->proxy : ""));
 
     g_key_file_set_integer (gkeyfile, "remmina", "colordepth", gf->colordepth);
     g_key_file_set_integer (gkeyfile, "remmina", "quality", gf->quality);
@@ -423,6 +426,7 @@ remmina_file_free (RemminaFile *remminafile)
     g_free (remminafile->execpath);
     g_free (remminafile->sound);
     g_free (remminafile->arguments);
+    g_free (remminafile->proxy);
     g_free (remminafile->cacert);
     g_free (remminafile->cacrl);
     g_free (remminafile->clientcert);
@@ -457,6 +461,7 @@ remmina_file_dup (RemminaFile *remminafile)
     gf->execpath = g_strdup (remminafile->execpath);
     gf->sound = g_strdup (remminafile->sound);
     gf->arguments = g_strdup (remminafile->arguments);
+    gf->proxy = g_strdup (remminafile->proxy);
     gf->cacert = g_strdup (remminafile->cacert);
     gf->cacrl = g_strdup (remminafile->cacrl);
     gf->clientcert = g_strdup (remminafile->clientcert);

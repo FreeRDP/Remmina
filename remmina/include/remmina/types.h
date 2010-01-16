@@ -42,6 +42,7 @@ typedef struct _RemminaFile
     gchar *execpath;
     gchar *sound;
     gchar *arguments;
+    gchar *proxy;
     gint colordepth;
     gint quality;
     gint listenport;
@@ -145,6 +146,7 @@ typedef gpointer RemminaProtocolSetting;
 #define REMMINA_PROTOCOL_SETTING_ONCE                   "30"
 #define REMMINA_PROTOCOL_SETTING_DISABLEENCRYPTION      "31"
 #define REMMINA_PROTOCOL_SETTING_SSH_PRIVATEKEY         "32"
+#define REMMINA_PROTOCOL_SETTING_PROXY_DEST             "33"
 
 #define REMMINA_PROTOCOL_SETTING_VALUE_CTL_END                0
 #define REMMINA_PROTOCOL_SETTING_VALUE_CTL_CONCAT             1
@@ -179,6 +181,7 @@ typedef gpointer RemminaProtocolSetting;
 #define REMMINA_PROTOCOL_SETTING_VALUE_ONCE                   30
 #define REMMINA_PROTOCOL_SETTING_VALUE_DISABLEENCRYPTION      31
 #define REMMINA_PROTOCOL_SETTING_VALUE_SSH_PRIVATEKEY         32
+#define REMMINA_PROTOCOL_SETTING_VALUE_PROXY_DEST             33
 
 typedef enum
 {
