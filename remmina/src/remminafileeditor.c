@@ -666,6 +666,12 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, c
             row++;
             break;
 
+        case REMMINA_PROTOCOL_SETTING_VALUE_COLORDEPTH2:
+            priv->colordepth_combo = remmina_file_editor_create_combo_mapint (gfe, table, row, 0,
+                _("Color Depth"), colordepth2_list, priv->remmina_file->colordepth);
+            row++;
+            break;
+
         case REMMINA_PROTOCOL_SETTING_VALUE_SHAREFOLDER:
             priv->sharefolder_combo = remmina_file_editor_create_combo_mapint (gfe, table, row, 0,
                 _("Share Folder"), sharefolder_list, priv->remmina_file->sharefolder);
