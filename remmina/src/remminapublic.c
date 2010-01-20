@@ -314,6 +314,8 @@ remmina_public_get_xauth_cookie (const gchar *display, gchar **msg)
     GError *error = NULL;
     gboolean ret;
 
+    if (!display) display = gdk_get_display ();
+
     g_snprintf (buf, sizeof (buf), "xauth list %s", display);
     ret = g_spawn_command_line_sync (buf, &out, NULL, NULL, &error);
     if (ret)

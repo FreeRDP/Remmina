@@ -29,6 +29,8 @@ typedef struct _RemminaPluginXdmcpData
     GPid pid;
     gint output_fd;
     gint error_fd;
+    gint display;
+    gboolean ready;
 
 #ifdef HAVE_PTHREAD
     pthread_t thread;
@@ -42,7 +44,12 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 static void
 remmina_plugin_xdmcp_on_plug_added (GtkSocket *socket, RemminaProtocolWidget *gp)
 {
+    RemminaPluginXdmcpData *gpdata;
+
+    gpdata = (RemminaPluginXdmcpData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+
     remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
+    gpdata->ready = TRUE;
 }
 
 static void
@@ -52,23 +59,13 @@ remmina_plugin_xdmcp_on_plug_removed (GtkSocket *socket, RemminaProtocolWidget *
 }
 
 static gboolean
-remmina_plugin_xdmcp_tunnel_init_callback (RemminaProtocolWidget *gp,
-    gint remotedisplay, const gchar *server, gint port)
-{
-    return remmina_plugin_service->protocol_plugin_ssh_exec (gp,
-        "xqproxy -display %i -host %s -port %i -query -manage",
-        remotedisplay, server, port);
-}
-
-static gboolean
-remmina_plugin_xdmcp_main (RemminaProtocolWidget *gp)
+remmina_plugin_xdmcp_start_xephyr (RemminaProtocolWidget *gp)
 {
     RemminaPluginXdmcpData *gpdata;
     RemminaFile *remminafile;
     gchar *argv[50];
     gint argc;
     gchar *p1, *p2;
-    gint display;
     gint i;
     GError *error = NULL;
     gboolean ret;
@@ -76,18 +73,17 @@ remmina_plugin_xdmcp_main (RemminaProtocolWidget *gp)
     gpdata = (RemminaPluginXdmcpData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
-    display = remmina_get_available_xdisplay ();
-    if (display == 0)
+    gpdata->display = remmina_get_available_xdisplay ();
+    if (gpdata->display == 0)
     {
         remmina_plugin_service->protocol_plugin_set_error (gp, "Run out of available local X display number.");
-        gpdata->thread = 0;
         return FALSE;
     }
 
     argc = 0;
     argv[argc++] = g_strdup ("Xephyr");
 
-    argv[argc++] = g_strdup_printf (":%i", display);
+    argv[argc++] = g_strdup_printf (":%i", gpdata->display);
 
     argv[argc++] = g_strdup ("-parent");
     argv[argc++] = g_strdup_printf ("%i", gpdata->socket_id);
@@ -152,14 +148,61 @@ remmina_plugin_xdmcp_main (RemminaProtocolWidget *gp)
     if (!ret)
     {
         remmina_plugin_service->protocol_plugin_set_error (gp, "%s", error->message);
-        gpdata->thread = 0;
         return FALSE;
     }
 
+    return TRUE;
+}
+
+static gboolean
+remmina_plugin_xdmcp_tunnel_init_callback (RemminaProtocolWidget *gp,
+    gint remotedisplay, const gchar *server, gint port)
+{
+    RemminaPluginXdmcpData *gpdata;
+    RemminaFile *remminafile;
+
+    gpdata = (RemminaPluginXdmcpData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+    remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
+
+    if (!remmina_plugin_xdmcp_start_xephyr (gp)) return FALSE;
+    while (!gpdata->ready) sleep (1);
+
+    remmina_plugin_service->protocol_plugin_set_display (gp, gpdata->display);
+
+    if (remminafile->exec && remminafile->exec[0])
+    {
+        return remmina_plugin_service->protocol_plugin_ssh_exec (gp, FALSE,
+            "DISPLAY=localhost:%i.0 %s", remotedisplay, remminafile->exec);
+    }
+    else
+    {
+        return remmina_plugin_service->protocol_plugin_ssh_exec (gp, TRUE,
+            "xqproxy -display %i -host %s -port %i -query -manage",
+            remotedisplay, server, port);
+    }
+}
+
+static gboolean
+remmina_plugin_xdmcp_main (RemminaProtocolWidget *gp)
+{
+    RemminaPluginXdmcpData *gpdata;
+    RemminaFile *remminafile;
+
+    gpdata = (RemminaPluginXdmcpData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+    remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
+
     if (remminafile->ssh_enabled)
     {
-        if (!remmina_plugin_service->protocol_plugin_start_xport_tunnel (gp, display,
+        if (!remmina_plugin_service->protocol_plugin_start_xport_tunnel (gp,
             remmina_plugin_xdmcp_tunnel_init_callback))
+        {
+            gpdata->thread = 0;
+            return FALSE;
+        }
+    }
+    else
+    {
+        if (!remmina_plugin_xdmcp_start_xephyr (gp))
         {
             gpdata->thread = 0;
             return FALSE;
@@ -288,6 +331,7 @@ static const RemminaProtocolSetting remmina_plugin_xdmcp_basic_settings[] =
     REMMINA_PROTOCOL_SETTING_SERVER,
     REMMINA_PROTOCOL_SETTING_RESOLUTION_FIXED,
     REMMINA_PROTOCOL_SETTING_COLORDEPTH2,
+    REMMINA_PROTOCOL_SETTING_EXEC,
     REMMINA_PROTOCOL_SETTING_SHOWCURSOR_LOCAL,
     REMMINA_PROTOCOL_SETTING_ONCE,
     REMMINA_PROTOCOL_SETTING_CTL_END

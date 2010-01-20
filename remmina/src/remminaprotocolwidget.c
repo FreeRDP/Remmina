@@ -45,7 +45,7 @@ struct _RemminaProtocolWidgetPriv
     gboolean has_error;
     gchar *error_message;
     RemminaSSHTunnel *ssh_tunnel;
-    RemminaXPortTunnelInitFunc init_func;
+    RemminaTunnelInitFunc init_func;
 
     GtkWidget *chat_window;
 
@@ -493,7 +493,7 @@ remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint def
 }
 
 gboolean
-remmina_protocol_widget_ssh_exec (RemminaProtocolWidget *gp, const gchar *fmt, ...)
+remmina_protocol_widget_ssh_exec (RemminaProtocolWidget *gp, gboolean wait, const gchar *fmt, ...)
 {
 #ifdef HAVE_LIBSSH
     RemminaSSHTunnel *tunnel = gp->priv->ssh_tunnel;
@@ -515,27 +515,38 @@ remmina_protocol_widget_ssh_exec (RemminaProtocolWidget *gp, const gchar *fmt, .
     if (channel_open_session (channel) == SSH_OK &&
         channel_request_exec (channel, cmd) == SSH_OK)
     {
-        channel_send_eof (channel);
-        status = channel_get_exit_status (channel);
-        ptr = strchr (cmd, ' ');
-        if (ptr) *ptr = '\0';
-        switch (status)
+        if (wait)
         {
-        case 0:
+            channel_send_eof (channel);
+            status = channel_get_exit_status (channel);
+            ptr = strchr (cmd, ' ');
+            if (ptr) *ptr = '\0';
+            switch (status)
+            {
+            case 0:
+                ret = TRUE;
+                break;
+            case 127:
+                remmina_ssh_set_application_error (REMMINA_SSH (tunnel),
+                    _("Command %s not found on SSH server"), cmd);
+                break;
+            default:
+                remmina_ssh_set_application_error (REMMINA_SSH (tunnel),
+                    _("Command %s failed on SSH server (status = %i)."), cmd, status);
+                break;
+            }
+        }
+        else
+        {
             ret = TRUE;
-            break;
-        case 127:
-            remmina_ssh_set_application_error (REMMINA_SSH (tunnel),
-                _("Command %s not found on SSH server"), cmd);
-            break;
-        default:
-            remmina_ssh_set_application_error (REMMINA_SSH (tunnel),
-                _("Command %s failed on SSH server (status = %i)."), cmd, status);
-            break;
         }
     }
+    else
+    {
+        remmina_ssh_set_error (REMMINA_SSH (tunnel), _("Failed to execute command: %s"));
+    }
     g_free (cmd);
-    channel_close (channel);
+    if (wait) channel_close (channel);
     channel_free (channel);
     return ret;
 
@@ -557,7 +568,8 @@ remmina_protocol_widget_tunnel_init_callback (RemminaSSHTunnel *tunnel, gpointer
     gboolean ret;
 
     remmina_public_get_server_port (gp->priv->remmina_file->server, 177, &server, &port);
-    ret = gp->priv->init_func (gp, tunnel->remotedisplay, (tunnel->bindlocalhost ? "localhost" : server), port);
+    ret = ((RemminaXPortTunnelInitFunc) gp->priv->init_func) (gp,
+        tunnel->remotedisplay, (tunnel->bindlocalhost ? "localhost" : server), port);
     g_free (server);
 
     return ret;
@@ -584,8 +596,7 @@ remmina_protocol_widget_tunnel_disconnect_callback (RemminaSSHTunnel *tunnel, gp
 #endif
 
 gboolean
-remmina_protocol_widget_start_xport_tunnel (RemminaProtocolWidget *gp, gint display,
-    RemminaXPortTunnelInitFunc init_func)
+remmina_protocol_widget_start_xport_tunnel (RemminaProtocolWidget *gp, RemminaXPortTunnelInitFunc init_func)
 {
 #ifdef HAVE_LIBSSH
     gboolean bindlocalhost;
@@ -603,7 +614,7 @@ remmina_protocol_widget_start_xport_tunnel (RemminaProtocolWidget *gp, gint disp
     bindlocalhost = (g_strcmp0 (REMMINA_SSH (gp->priv->ssh_tunnel)->server, server) == 0);
     g_free (server);
 
-    if (!remmina_ssh_tunnel_xport (gp->priv->ssh_tunnel, display, bindlocalhost))
+    if (!remmina_ssh_tunnel_xport (gp->priv->ssh_tunnel, bindlocalhost))
     {
         remmina_protocol_widget_set_error (gp, "Failed to open channel : %s",
             ssh_get_error (REMMINA_SSH (gp->priv->ssh_tunnel)->session));
@@ -615,6 +626,13 @@ remmina_protocol_widget_start_xport_tunnel (RemminaProtocolWidget *gp, gint disp
 #else
     return FALSE;
 #endif
+}
+
+void
+remmina_protocol_widget_set_display (RemminaProtocolWidget *gp, gint display)
+{
+    if (gp->priv->ssh_tunnel->localdisplay) g_free (gp->priv->ssh_tunnel->localdisplay);
+    gp->priv->ssh_tunnel->localdisplay = g_strdup_printf ("unix:%i", display);
 }
 
 GtkWidget*
