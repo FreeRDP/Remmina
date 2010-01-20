@@ -58,6 +58,7 @@ RemminaPluginService remmina_plugin_manager_service =
     remmina_protocol_widget_register_hostkey,
     remmina_protocol_widget_start_direct_tunnel,
     remmina_protocol_widget_start_xport_tunnel,
+    remmina_protocol_widget_set_display,
     remmina_protocol_widget_close_connection,
     remmina_protocol_widget_init_authpwd,
     remmina_protocol_widget_init_authuserpwd,

@@ -469,6 +469,7 @@ remmina_ssh_tunnel_new_from_file (RemminaFile *remminafile)
     tunnel->socketbuffers = NULL;
     tunnel->num_channels = 0;
     tunnel->max_channels = 0;
+    tunnel->x11_channel = NULL;
     tunnel->thread = 0;
     tunnel->running = FALSE;
     tunnel->server_sock = -1;
@@ -509,6 +510,13 @@ remmina_ssh_tunnel_close_all_channels (RemminaSSHTunnel *tunnel)
 
     tunnel->num_channels = 0;
     tunnel->max_channels = 0;
+
+    if (tunnel->x11_channel)
+    {
+        channel_close (tunnel->x11_channel);
+        channel_free (tunnel->x11_channel);
+        tunnel->x11_channel = NULL;
+    }
 }
 
 static void
@@ -567,7 +575,6 @@ remmina_ssh_tunnel_main_thread (gpointer data)
     GTimeVal t1, t2;
     glong diff;
     ssh_channel channel = NULL;
-    ssh_channel schannel = NULL;
     gboolean first = TRUE;
     gboolean disconnected;
     gint sock;
@@ -614,65 +621,55 @@ remmina_ssh_tunnel_main_thread (gpointer data)
         break;
 
     case REMMINA_SSH_TUNNEL_X11:
-        if ((schannel = channel_new (tunnel->ssh.session)) == NULL)
+        if ((tunnel->x11_channel = channel_new (tunnel->ssh.session)) == NULL)
         {
             remmina_ssh_set_error (REMMINA_SSH (tunnel), "Failed to create channel : %s");
             tunnel->thread = 0;
             return NULL;
         }
-        if (!remmina_public_get_xauth_cookie (gdk_get_display (), &ptr))
+        if (!remmina_public_get_xauth_cookie (tunnel->localdisplay, &ptr))
         {
             remmina_ssh_set_application_error (REMMINA_SSH (tunnel), "%s", ptr);
             g_free (ptr);
-            channel_close (schannel);
-            channel_free (schannel);
             tunnel->thread = 0;
             return NULL;
         }
-        if (channel_open_session (schannel) ||
-            channel_request_x11 (schannel, TRUE, NULL, ptr,
+        if (channel_open_session (tunnel->x11_channel) ||
+            channel_request_x11 (tunnel->x11_channel, TRUE, NULL, ptr,
                 gdk_screen_get_number (gdk_screen_get_default ())))
         {
             g_free (ptr);
-            channel_close (schannel);
-            channel_free (schannel);
             remmina_ssh_set_error (REMMINA_SSH (tunnel), "Failed to open channel : %s");
             tunnel->thread = 0;
             return NULL;
         }
         g_free (ptr);
-        if (channel_request_exec (schannel, tunnel->dest))
+        if (channel_request_exec (tunnel->x11_channel, tunnel->dest))
         {
-            channel_close (schannel);
-            channel_free (schannel);
             ptr = g_strdup_printf (_("Failed to execute %s on SSH server : %%s"), tunnel->dest);
             remmina_ssh_set_error (REMMINA_SSH (tunnel), ptr);
             g_free (ptr);
             tunnel->thread = 0;
             return NULL;
         }
-        channel = channel_accept_x11 (schannel, 15000);
-        channel_close (schannel);
-        channel_free (schannel);
-        if (channel == NULL)
+
+        if (tunnel->init_func &&
+            ! (*tunnel->init_func) (tunnel, tunnel->callback_data))
         {
-            remmina_ssh_set_error (REMMINA_SSH (tunnel), "Failed to accept X11 channel : %s");
+            if (tunnel->disconnect_func)
+            {
+                (*tunnel->disconnect_func) (tunnel, tunnel->callback_data);
+            }
             tunnel->thread = 0;
             return NULL;
         }
 
-        sock = remmina_public_open_xdisplay (gdk_get_display ());
-        if (sock < 0)
-        {
-            tunnel->thread = 0;
-            return NULL;
-        }
-        remmina_ssh_tunnel_add_channel (tunnel, channel, sock);
+        ssh_set_blocking (REMMINA_SSH (tunnel)->session, FALSE);
         break;
 
     case REMMINA_SSH_TUNNEL_XPORT:
-        /* Detect the next available port starting from 6001 on the server */
-        for (i = 1; i <= MAX_X_DISPLAY_NUMBER; i++)
+        /* Detect the next available port starting from 6010 on the server */
+        for (i = 10; i <= MAX_X_DISPLAY_NUMBER; i++)
         {
             if (channel_forward_listen (REMMINA_SSH (tunnel)->session,
                 (tunnel->bindlocalhost ? "localhost" : NULL), 6000 + i, NULL))
@@ -717,13 +714,20 @@ remmina_ssh_tunnel_main_thread (gpointer data)
     /* Start the tunnel data transmittion */
     while (tunnel->running)
     {
-        if (tunnel->tunnel_type == REMMINA_SSH_TUNNEL_XPORT)
+        if (tunnel->tunnel_type == REMMINA_SSH_TUNNEL_XPORT || tunnel->tunnel_type == REMMINA_SSH_TUNNEL_X11)
         {
             if (first)
             {
                 first = FALSE;
                 /* Wait for a period of time for the first incoming connection */
-                channel = channel_forward_accept (REMMINA_SSH (tunnel)->session, 15000);
+                if (tunnel->tunnel_type == REMMINA_SSH_TUNNEL_X11)
+                {
+                    channel = channel_accept_x11 (tunnel->x11_channel, 15000);
+                }
+                else
+                {
+                    channel = channel_forward_accept (REMMINA_SSH (tunnel)->session, 15000);
+                }
                 if (!channel)
                 {
                     remmina_ssh_set_application_error (REMMINA_SSH (tunnel), _("No response from the server."));
@@ -747,7 +751,14 @@ remmina_ssh_tunnel_main_thread (gpointer data)
                 diff = (t1.tv_sec - t2.tv_sec) * 10 + (t1.tv_usec - t2.tv_usec) / 100000;
                 if (diff > 1)
                 {
-                    channel = channel_forward_accept (REMMINA_SSH (tunnel)->session, 0);
+                    if (tunnel->tunnel_type == REMMINA_SSH_TUNNEL_X11)
+                    {
+                        channel = channel_accept_x11 (tunnel->x11_channel, 0);
+                    }
+                    else
+                    {
+                        channel = channel_forward_accept (REMMINA_SSH (tunnel)->session, 0);
+                    }
                     if (channel == NULL)
                     {
                         t2 = t1;
@@ -968,10 +979,9 @@ remmina_ssh_tunnel_x11 (RemminaSSHTunnel *tunnel, const gchar *cmd)
 }
 
 gboolean
-remmina_ssh_tunnel_xport (RemminaSSHTunnel *tunnel, gint display, gboolean bindlocalhost)
+remmina_ssh_tunnel_xport (RemminaSSHTunnel *tunnel, gboolean bindlocalhost)
 {
     tunnel->tunnel_type = REMMINA_SSH_TUNNEL_XPORT;
-    tunnel->localdisplay = g_strdup_printf ("unix:%i", display);
     tunnel->bindlocalhost = bindlocalhost;
     tunnel->running = TRUE;
 

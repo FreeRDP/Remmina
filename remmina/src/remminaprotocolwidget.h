@@ -86,7 +86,7 @@ void remmina_protocol_widget_register_hostkey (RemminaProtocolWidget *gp, GtkWid
 typedef gboolean (*RemminaHostkeyFunc) (RemminaProtocolWidget *gp, guint keyval, gpointer data);
 void remmina_protocol_widget_set_hostkey_func (RemminaProtocolWidget *gp, RemminaHostkeyFunc func, gpointer data);
 
-gboolean remmina_protocol_widget_ssh_exec (RemminaProtocolWidget *gp, const gchar *fmt, ...);
+gboolean remmina_protocol_widget_ssh_exec (RemminaProtocolWidget *gp, gboolean wait, const gchar *fmt, ...);
 
 /* Start a SSH tunnel if it's enabled. Returns a newly allocated string indicating:
  * 1. The actual destination (host:port) if SSH tunnel is disable
@@ -94,8 +94,8 @@ gboolean remmina_protocol_widget_ssh_exec (RemminaProtocolWidget *gp, const gcha
  */
 gchar* remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint default_port, gboolean port_plus);
 
-gboolean remmina_protocol_widget_start_xport_tunnel (RemminaProtocolWidget *gp, gint display,
-    RemminaXPortTunnelInitFunc init_func);
+gboolean remmina_protocol_widget_start_xport_tunnel (RemminaProtocolWidget *gp, RemminaXPortTunnelInitFunc init_func);
+void remmina_protocol_widget_set_display (RemminaProtocolWidget *gp, gint display);
 
 gint remmina_protocol_widget_init_authpwd (RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type);
 gint remmina_protocol_widget_init_authuserpwd (RemminaProtocolWidget *gp);

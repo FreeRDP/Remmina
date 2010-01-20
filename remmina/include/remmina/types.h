@@ -109,6 +109,7 @@ typedef enum
 
 typedef struct _RemminaProtocolWidgetClass RemminaProtocolWidgetClass;
 typedef struct _RemminaProtocolWidget RemminaProtocolWidget;
+typedef gpointer RemminaTunnelInitFunc;
 typedef gboolean (*RemminaXPortTunnelInitFunc) (RemminaProtocolWidget *gp,
     gint remotedisplay, const gchar *server, gint port);
 

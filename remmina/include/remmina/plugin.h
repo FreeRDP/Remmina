@@ -66,7 +66,8 @@ typedef struct _RemminaPluginService
     void         (* protocol_plugin_emit_signal)         (RemminaProtocolWidget *gp, const gchar *signal_name);
     void         (* protocol_plugin_register_hostkey)    (RemminaProtocolWidget *gp, GtkWidget *widget);
     gchar*       (* protocol_plugin_start_direct_tunnel) (RemminaProtocolWidget *gp, gint default_port, gboolean port_plus);
-    gboolean     (* protocol_plugin_start_xport_tunnel)  (RemminaProtocolWidget *gp, gint display, RemminaXPortTunnelInitFunc init_func);
+    gboolean     (* protocol_plugin_start_xport_tunnel)  (RemminaProtocolWidget *gp, RemminaXPortTunnelInitFunc init_func);
+    void         (* protocol_plugin_set_display)         (RemminaProtocolWidget *gp, gint display);
     gboolean     (* protocol_plugin_close_connection)    (RemminaProtocolWidget *gp);
     gint         (* protocol_plugin_init_authpwd)        (RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type);
     gint         (* protocol_plugin_init_authuserpwd)    (RemminaProtocolWidget *gp);
@@ -80,7 +81,7 @@ typedef struct _RemminaPluginService
     void         (* protocol_plugin_init_save_cred)      (RemminaProtocolWidget *gp);
     void         (* protocol_plugin_init_show_listen)    (RemminaProtocolWidget *gp, gint port);
     void         (* protocol_plugin_init_show_retry)     (RemminaProtocolWidget *gp);
-    gboolean     (* protocol_plugin_ssh_exec)            (RemminaProtocolWidget *gp, const gchar *fmt, ...);
+    gboolean     (* protocol_plugin_ssh_exec)            (RemminaProtocolWidget *gp, gboolean wait, const gchar *fmt, ...);
     void         (* protocol_plugin_chat_open)           (RemminaProtocolWidget *gp, const gchar *name,
                                                           void(*on_send)(RemminaProtocolWidget *gp, const gchar *text),
                                                           void(*on_destroy)(RemminaProtocolWidget *gp));
