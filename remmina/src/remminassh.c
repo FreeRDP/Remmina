@@ -664,7 +664,6 @@ remmina_ssh_tunnel_main_thread (gpointer data)
             return NULL;
         }
 
-        ssh_set_blocking (REMMINA_SSH (tunnel)->session, FALSE);
         break;
 
     case REMMINA_SSH_TUNNEL_XPORT:
@@ -704,7 +703,6 @@ remmina_ssh_tunnel_main_thread (gpointer data)
             return NULL;
         }
 
-        ssh_set_blocking (REMMINA_SSH (tunnel)->session, FALSE);
         break;
     }
 
