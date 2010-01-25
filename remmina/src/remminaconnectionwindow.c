@@ -1611,6 +1611,7 @@ remmina_connection_object_append_page (RemminaConnectionObject *cnnobj, GtkNoteb
     remmina_connection_object_create_scrolled_container (cnnobj, view_mode);
     i = gtk_notebook_append_page (notebook, cnnobj->scrolled_container, tab);
     gtk_notebook_set_tab_reorderable (notebook, cnnobj->scrolled_container, TRUE);
+    gtk_notebook_set_tab_detachable (notebook, cnnobj->scrolled_container, TRUE);
     /* This trick prevents the tab label from being focused */
     GTK_WIDGET_UNSET_FLAGS (gtk_widget_get_parent (tab), GTK_CAN_FOCUS);
     return i;
@@ -1670,8 +1671,8 @@ remmina_connection_holder_update_notebook (RemminaConnectionHolder *cnnhld)
     {
     case SCROLLED_WINDOW_MODE:
         n = gtk_notebook_get_n_pages (notebook);
-        gtk_notebook_set_show_tabs (notebook, n > 1);
-        gtk_notebook_set_show_border (notebook, n > 1);
+        gtk_notebook_set_show_tabs (notebook, remmina_pref.always_show_tab ? TRUE : n > 1);
+        gtk_notebook_set_show_border (notebook, remmina_pref.always_show_tab ? TRUE : n > 1);
         break;
     default:
         gtk_notebook_set_show_tabs (notebook, FALSE);
@@ -1703,13 +1704,57 @@ remmina_connection_holder_on_switch_page (GtkNotebook *notebook, GtkNotebookPage
 static void
 remmina_connection_holder_on_page_added (GtkNotebook *notebook, GtkWidget *child, guint page_num, RemminaConnectionHolder *cnnhld)
 {
-    remmina_connection_holder_update_notebook (cnnhld);
+    if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (cnnhld->cnnwin->priv->notebook)) <= 0)
+    {
+        gtk_widget_destroy (GTK_WIDGET (cnnhld->cnnwin));
+    }
+    else
+    {
+        remmina_connection_holder_update_notebook (cnnhld);
+    }
+}
+
+GtkNotebook*
+remmina_connection_holder_create_notebook_func (GtkNotebook *source, GtkWidget *page, gint x, gint y, gpointer data)
+{
+    RemminaConnectionWindow *srccnnwin;
+    RemminaConnectionWindow *dstcnnwin;
+    RemminaConnectionObject *cnnobj;
+    gint srcpagenum;
+    GdkWindow *window;
+
+    srccnnwin = REMMINA_CONNECTION_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (source)));
+    window = gdk_display_get_window_at_pointer (gdk_display_get_default (), &x, &y);
+    dstcnnwin = REMMINA_CONNECTION_WINDOW (remmina_widget_pool_find_by_window (REMMINA_TYPE_CONNECTION_WINDOW, window));
+
+    if (srccnnwin == dstcnnwin) return NULL;
+
+    if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (srccnnwin->priv->notebook)) == 1 && !dstcnnwin) return NULL;
+
+    cnnobj = (RemminaConnectionObject*) g_object_get_data (G_OBJECT (page), "cnnobj");
+    srcpagenum = gtk_notebook_page_num (GTK_NOTEBOOK (srccnnwin->priv->notebook), cnnobj->scrolled_container);
+
+    if (dstcnnwin)
+    {
+        cnnobj->cnnhld = dstcnnwin->priv->cnnhld;
+    }
+    else
+    {
+        cnnobj->cnnhld = g_new0 (RemminaConnectionHolder, 1);
+    }
+
+    g_signal_emit_by_name (cnnobj->proto, "connect", cnnobj);
+    gtk_notebook_remove_page (GTK_NOTEBOOK (srccnnwin->priv->notebook), srcpagenum);
+
+    return NULL;
 }
 
 static GtkWidget*
 remmina_connection_holder_create_notebook (RemminaConnectionHolder *cnnhld)
 {
     GtkWidget *notebook;
+
+    gtk_notebook_set_window_creation_hook (remmina_connection_holder_create_notebook_func, NULL, NULL);
 
     notebook = gtk_notebook_new ();
     gtk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
@@ -1841,11 +1886,8 @@ static void
 remmina_connection_object_on_connect (RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 {
     RemminaConnectionHolder *cnnhld = cnnobj->cnnhld;
-    GdkScreen *screen;
     GtkWidget *tab;
     gint i;
-
-    screen = gdk_screen_get_default ();
 
     cnnobj->connected = TRUE;
 
@@ -1936,11 +1978,6 @@ remmina_connection_object_on_disconnect (RemminaProtocolWidget *gp, RemminaConne
     {
         gtk_notebook_remove_page (GTK_NOTEBOOK (cnnhld->cnnwin->priv->notebook),
             gtk_notebook_page_num (GTK_NOTEBOOK (cnnhld->cnnwin->priv->notebook), cnnobj->scrolled_container));
-
-        if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (cnnhld->cnnwin->priv->notebook)) <= 0)
-        {
-            gtk_widget_destroy (GTK_WIDGET (cnnhld->cnnwin));
-        }
     }
     g_free (cnnobj);
 }
