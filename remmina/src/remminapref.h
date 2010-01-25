@@ -63,6 +63,7 @@ typedef struct _RemminaPref
     gboolean save_view_mode;
     gboolean save_when_connect;
     gboolean invisible_toolbar;
+    gboolean always_show_tab;
     gint default_action;
     gint scale_quality;
     gchar *resolutions;
