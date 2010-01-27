@@ -584,6 +584,12 @@ remmina_main_action_view_file_mode (GtkRadioAction *action, GtkRadioAction *curr
 }
 
 static void
+remmina_main_action_help_wiki (GtkAction *action, RemminaMain *remminamain)
+{
+    g_app_info_launch_default_for_uri ("http://sourceforge.net/apps/mediawiki/remmina/", NULL, NULL);
+}
+
+static void
 remmina_main_action_help_debug (GtkAction *action, RemminaMain *remminamain)
 {
     remmina_log_start ();
@@ -624,6 +630,7 @@ static const gchar *remmina_main_ui_xml =
 "      <menuitem name='ViewFileTreeMenu' action='ViewFileTree'/>"
 "    </menu>"
 "    <menu name='HelpMenu' action='Help'>"
+"      <menuitem name='HelpWikiMenu' action='HelpWiki'/>"
 "      <menuitem name='HelpDebugMenu' action='HelpDebug'/>"
 "      <separator/>"
 "      <menuitem name='HelpAboutMenu' action='HelpAbout'/>"
@@ -672,6 +679,10 @@ static const GtkActionEntry remmina_main_ui_menu_entries[] =
     { "ActionQuit", GTK_STOCK_QUIT, NULL, "<control>Q",
         N_("Quit Remmina"),
         G_CALLBACK (remmina_main_action_action_quit) },
+
+    { "HelpWiki", NULL, N_("Online Wiki"), NULL,
+        NULL,
+        G_CALLBACK (remmina_main_action_help_wiki) },
 
     { "HelpDebug", NULL, N_("Debug Window"), NULL,
         NULL,
