@@ -315,6 +315,77 @@ remmina_file_editor_ssh_enabled_check_on_toggled (GtkToggleButton *togglebutton,
         gtk_entry_set_text (GTK_ENTRY (gfe->priv->ssh_username_entry), g_get_user_name ());
     }
 }
+
+static gboolean
+remmina_file_editor_unselect_ssh_privatekey (gpointer data)
+{
+    gtk_file_chooser_unselect_all (GTK_FILE_CHOOSER (data));
+    return FALSE;
+}
+
+static void
+remmina_file_editor_ssh_privatekey_on_response (GtkDialog *dialog, gint response_id, RemminaFileEditor *gfe)
+{
+    if (response_id == GTK_RESPONSE_REJECT)
+    {
+        g_idle_add (remmina_file_editor_unselect_ssh_privatekey, gfe->priv->ssh_privatekey_chooser);
+    }
+}
+
+static void
+remmina_file_editor_create_ssh_privatekey (RemminaFileEditor *gfe, GtkWidget *table, gint row, gint column, gboolean use_label)
+{
+    RemminaFileEditorPriv *priv = gfe->priv;
+    GtkWidget *widget;
+    GtkWidget *dialog;
+    gchar *s;
+
+    if (use_label)
+    {
+        widget = gtk_label_new (_("Identity File"));
+        gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+    }
+    else
+    {
+        widget = gtk_radio_button_new_with_label_from_widget (
+            GTK_RADIO_BUTTON (priv->ssh_auth_password_radio), _("Identity File"));
+        g_signal_connect (G_OBJECT (widget), "toggled",
+            G_CALLBACK (remmina_file_editor_ssh_auth_publickey_radio_on_toggled), gfe);
+        priv->ssh_auth_publickey_radio = widget;
+    }
+    gtk_widget_show (widget);
+    gtk_table_attach (GTK_TABLE (table), widget, column, column + 1, row, row + 1, GTK_FILL, 0, 0, 0);
+
+    dialog = gtk_file_chooser_dialog_new (_("Identity File"), GTK_WINDOW (gfe), GTK_FILE_CHOOSER_ACTION_OPEN,
+        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+        GTK_STOCK_CLEAR, GTK_RESPONSE_REJECT,
+        GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+        NULL);
+    g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (remmina_file_editor_ssh_privatekey_on_response), gfe);
+
+    widget = gtk_file_chooser_button_new_with_dialog (dialog);
+    s = g_strdup_printf ("%s/.ssh", g_get_home_dir ());
+    if (g_file_test (s, G_FILE_TEST_IS_DIR))
+    {
+        gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (widget), s);
+    }
+    g_free (s);
+    gtk_widget_show (widget);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, column + 1, column + 2, row, row + 1);
+    priv->ssh_privatekey_chooser = widget;
+
+    if (priv->remmina_file->ssh_privatekey && priv->remmina_file->ssh_privatekey[0] &&
+        g_file_test (priv->remmina_file->ssh_privatekey, G_FILE_TEST_IS_REGULAR | G_FILE_TEST_EXISTS))
+    {
+        gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (priv->ssh_privatekey_chooser),
+            priv->remmina_file->ssh_privatekey);
+    }
+    else
+    {
+        g_free (priv->remmina_file->ssh_privatekey);
+        priv->remmina_file->ssh_privatekey = NULL;
+    }
+}
 #endif
 
 static void
@@ -422,77 +493,6 @@ remmina_file_editor_create_resolution (RemminaFileEditor *gfe, GtkWidget *table,
     else
     {
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (gfe->priv->resolution_custom_radio), TRUE);
-    }
-}
-
-static gboolean
-remmina_file_editor_unselect_ssh_privatekey (gpointer data)
-{
-    gtk_file_chooser_unselect_all (GTK_FILE_CHOOSER (data));
-    return FALSE;
-}
-
-static void
-remmina_file_editor_ssh_privatekey_on_response (GtkDialog *dialog, gint response_id, RemminaFileEditor *gfe)
-{
-    if (response_id == GTK_RESPONSE_REJECT)
-    {
-        g_idle_add (remmina_file_editor_unselect_ssh_privatekey, gfe->priv->ssh_privatekey_chooser);
-    }
-}
-
-static void
-remmina_file_editor_create_ssh_privatekey (RemminaFileEditor *gfe, GtkWidget *table, gint row, gint column, gboolean use_label)
-{
-    RemminaFileEditorPriv *priv = gfe->priv;
-    GtkWidget *widget;
-    GtkWidget *dialog;
-    gchar *s;
-
-    if (use_label)
-    {
-        widget = gtk_label_new (_("Identity File"));
-        gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
-    }
-    else
-    {
-        widget = gtk_radio_button_new_with_label_from_widget (
-            GTK_RADIO_BUTTON (priv->ssh_auth_password_radio), _("Identity File"));
-        g_signal_connect (G_OBJECT (widget), "toggled",
-            G_CALLBACK (remmina_file_editor_ssh_auth_publickey_radio_on_toggled), gfe);
-        priv->ssh_auth_publickey_radio = widget;
-    }
-    gtk_widget_show (widget);
-    gtk_table_attach (GTK_TABLE (table), widget, column, column + 1, row, row + 1, GTK_FILL, 0, 0, 0);
-
-    dialog = gtk_file_chooser_dialog_new (_("Identity File"), GTK_WINDOW (gfe), GTK_FILE_CHOOSER_ACTION_OPEN,
-        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-        GTK_STOCK_CLEAR, GTK_RESPONSE_REJECT,
-        GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
-        NULL);
-    g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (remmina_file_editor_ssh_privatekey_on_response), gfe);
-
-    widget = gtk_file_chooser_button_new_with_dialog (dialog);
-    s = g_strdup_printf ("%s/.ssh", g_get_home_dir ());
-    if (g_file_test (s, G_FILE_TEST_IS_DIR))
-    {
-        gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (widget), s);
-    }
-    g_free (s);
-    gtk_widget_show (widget);
-    gtk_table_attach_defaults (GTK_TABLE (table), widget, column + 1, column + 2, row, row + 1);
-    priv->ssh_privatekey_chooser = widget;
-
-    if (priv->remmina_file->ssh_privatekey && priv->remmina_file->ssh_privatekey[0] &&
-        g_file_test (priv->remmina_file->ssh_privatekey, G_FILE_TEST_IS_REGULAR | G_FILE_TEST_EXISTS))
-    {
-        gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (priv->ssh_privatekey_chooser),
-            priv->remmina_file->ssh_privatekey);
-    }
-    else
-    {
-        g_free (priv->remmina_file->ssh_privatekey);
-        priv->remmina_file->ssh_privatekey = NULL;
     }
 }
 
@@ -825,10 +825,12 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, c
             row++;
             break;
 
+#ifdef HAVE_LIBSSH
         case REMMINA_PROTOCOL_SETTING_VALUE_SSH_PRIVATEKEY:
             remmina_file_editor_create_ssh_privatekey (gfe, table, row, 0, TRUE);
             row++;
             break;
+#endif
 
         case REMMINA_PROTOCOL_SETTING_VALUE_PROXY_DEST:
             priv->proxy_entry = remmina_file_editor_create_entry (gfe, table, row, 0,

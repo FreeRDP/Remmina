@@ -552,7 +552,6 @@ remmina_protocol_widget_ssh_exec (RemminaProtocolWidget *gp, gboolean wait, cons
 
 #else
 
-    remmina_ssh_set_application_error (tunnel, "No SSH support");
     return FALSE;
 
 #endif
@@ -631,8 +630,10 @@ remmina_protocol_widget_start_xport_tunnel (RemminaProtocolWidget *gp, RemminaXP
 void
 remmina_protocol_widget_set_display (RemminaProtocolWidget *gp, gint display)
 {
+#ifdef HAVE_LIBSSH
     if (gp->priv->ssh_tunnel->localdisplay) g_free (gp->priv->ssh_tunnel->localdisplay);
     gp->priv->ssh_tunnel->localdisplay = g_strdup_printf ("unix:%i", display);
+#endif
 }
 
 GtkWidget*
