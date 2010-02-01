@@ -493,16 +493,18 @@ remmina_plugin_entry (RemminaPluginService *service)
 {
     Display *dpy;
     XkbRF_VarDefsRec vd;
-    char *tmp = NULL;
 
     remmina_plugin_service = service;
 
     if ((dpy = XkbOpenDisplay (NULL, NULL, NULL, NULL, NULL, NULL)) != NULL)
     {
-        if (XkbRF_GetNamesProp (dpy, &tmp, &vd))
+        if (XkbRF_GetNamesProp (dpy, NULL, &vd))
         {
             remmina_kbtype = g_strdup_printf ("%s/%s", vd.model, vd.layout);
-            if (tmp) XFree (tmp);
+            if (vd.layout) XFree(vd.layout);
+            if (vd.model) XFree(vd.model);
+            if (vd.variant) XFree(vd.variant);
+            if (vd.options) XFree(vd.options);
         }
         XCloseDisplay (dpy);
     }
