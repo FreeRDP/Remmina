@@ -87,6 +87,7 @@ remmina_file_manager_get_groups (void)
         }
         remmina_file_free (remminafile);
     }
+    g_dir_close (dir);
     remmina_string_array_sort (array);
     groups = remmina_string_array_to_string (array);
     remmina_string_array_free (array);
