@@ -502,6 +502,7 @@ remmina_plugin_entry (RemminaPluginService *service)
         if (XkbRF_GetNamesProp (dpy, &tmp, &vd))
         {
             remmina_kbtype = g_strdup_printf ("%s/%s", vd.model, vd.layout);
+            if (tmp) XFree (tmp);
         }
         XCloseDisplay (dpy);
     }
