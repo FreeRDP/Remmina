@@ -1707,6 +1707,7 @@ remmina_connection_holder_on_page_added (GtkNotebook *notebook, GtkWidget *child
     if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (cnnhld->cnnwin->priv->notebook)) <= 0)
     {
         gtk_widget_destroy (GTK_WIDGET (cnnhld->cnnwin));
+        g_free (cnnhld);
     }
     else
     {
@@ -1956,7 +1957,7 @@ remmina_connection_object_on_disconnect (RemminaProtocolWidget *gp, RemminaConne
             remmina_file_save_runtime (cnnobj->remmina_file);
         }
     }
-    g_free (cnnobj->remmina_file);
+    remmina_file_free (cnnobj->remmina_file);
 
     if (remmina_protocol_widget_has_error (gp))
     {
