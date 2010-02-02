@@ -525,6 +525,7 @@ remmina_file_update_screen_resolution (RemminaFile *remminafile)
         *pos++ = '\0';
         remminafile->resolution_width = MAX (100, MIN (4096, atoi (tmp)));
         remminafile->resolution_height = MAX (100, MIN (4096, atoi (pos)));
+        g_free (tmp);
     }
 }
 
