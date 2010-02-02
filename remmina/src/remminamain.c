@@ -101,6 +101,8 @@ remmina_main_on_delete_event (GtkWidget *widget, GdkEvent *event, gpointer data)
 static void
 remmina_main_destroy (GtkWidget *widget, gpointer data)
 {
+    g_free (REMMINA_MAIN (widget)->priv->selected_filename);
+    g_free (REMMINA_MAIN (widget)->priv->selected_name);
     g_free (REMMINA_MAIN (widget)->priv);
 }
 
