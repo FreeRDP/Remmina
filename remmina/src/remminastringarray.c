@@ -23,6 +23,12 @@
 #include "remminastringarray.h"
 
 RemminaStringArray*
+remmina_string_array_new (void)
+{
+    return g_ptr_array_new_with_free_func(g_free);
+}
+
+RemminaStringArray*
 remmina_string_array_new_from_string (const gchar *strs)
 {
     RemminaStringArray *array;
