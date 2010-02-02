@@ -114,6 +114,12 @@ remmina_scaler_on_vscale_value_changed (GtkWidget *widget, RemminaScaler *scaler
 }
 
 static void
+remmina_scaler_destroy (RemminaScaler *scaler, gpointer data)
+{
+    g_free (scaler->priv);
+}
+
+static void
 remmina_scaler_init (RemminaScaler *scaler)
 {
     RemminaScalerPriv *priv;
@@ -151,6 +157,8 @@ remmina_scaler_init (RemminaScaler *scaler)
     gtk_table_attach (GTK_TABLE (scaler), widget, 2, 3, 0, 2, 0, 0, 0, 0);
     g_signal_connect (G_OBJECT (widget), "chain-toggled", G_CALLBACK (remmina_scaler_on_chain_changed), scaler);
     priv->aspectscale_button = widget;
+
+    g_signal_connect (G_OBJECT (scaler), "destroy", G_CALLBACK (remmina_scaler_destroy), NULL);
 }
 
 GtkWidget*
