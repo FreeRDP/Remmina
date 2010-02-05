@@ -270,6 +270,7 @@ remmina_xfce_plugin_popup_menu (GtkWidget *widget, GdkEventButton *event, Remmin
 
             g_ptr_array_add (menuitem_array, menuitem);
         }
+        g_dir_close (dir);
 
         /* Iterate all discovered services from Avahi */
         if (rxplugin->avahi)
@@ -294,7 +295,7 @@ remmina_xfce_plugin_popup_menu (GtkWidget *widget, GdkEventButton *event, Remmin
 
         remmina_xfce_plugin_popup_menu_update_group (rxplugin);
 
-        g_ptr_array_free (menuitem_array, FALSE);
+        g_ptr_array_free (menuitem_array, TRUE);
     }
 
     if (!quick_ontop)

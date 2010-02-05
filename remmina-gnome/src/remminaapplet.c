@@ -279,6 +279,7 @@ remmina_applet_popup_menu (GtkWidget *widget, GdkEventButton *event, RemminaAppl
 
             g_ptr_array_add (menuitem_array, menuitem);
         }
+        g_dir_close (dir);
 
         /* Iterate all discovered services from Avahi */
         if (appdata->avahi)
@@ -303,7 +304,7 @@ remmina_applet_popup_menu (GtkWidget *widget, GdkEventButton *event, RemminaAppl
 
         remmina_applet_popup_menu_update_group (appdata);
 
-        g_ptr_array_free (menuitem_array, FALSE);
+        g_ptr_array_free (menuitem_array, TRUE);
     }
 
     if (!quick_ontop)
