@@ -81,7 +81,6 @@ remmina_string_array_find (RemminaStringArray* array, const gchar *str)
 
 void remmina_string_array_remove_index (RemminaStringArray* array, gint i)
 {
-    g_free (remmina_string_array_index (array, i));
     g_ptr_array_remove_index (array, i);
 }
 
