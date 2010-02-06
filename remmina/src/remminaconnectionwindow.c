@@ -2040,7 +2040,7 @@ remmina_connection_object_on_disconnect (RemminaProtocolWidget *gp, RemminaConne
         scale_option_window = NULL;
     }
 
-    if (remmina_pref.save_view_mode)
+    if (cnnhld && remmina_pref.save_view_mode)
     {
         if (cnnhld->cnnwin)
         {
@@ -2073,7 +2073,7 @@ remmina_connection_object_on_disconnect (RemminaProtocolWidget *gp, RemminaConne
         cnnobj->window = NULL;
     }
 
-    if (cnnhld->cnnwin && cnnobj->scrolled_container)
+    if (cnnhld && cnnhld->cnnwin && cnnobj->scrolled_container)
     {
         gtk_notebook_remove_page (GTK_NOTEBOOK (cnnhld->cnnwin->priv->notebook),
             gtk_notebook_page_num (GTK_NOTEBOOK (cnnhld->cnnwin->priv->notebook), cnnobj->scrolled_container));
