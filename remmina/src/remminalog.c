@@ -107,6 +107,12 @@ remmina_log_start (void)
     }
 }
 
+gboolean
+remmina_log_running (void)
+{
+    return (log_window != NULL);
+}
+
 static gboolean
 remmina_log_scroll_to_end (gpointer data)
 {

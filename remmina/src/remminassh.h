@@ -27,6 +27,7 @@
 #ifdef HAVE_LIBSSH
 
 #include <libssh/libssh.h>
+#include <libssh/callbacks.h>
 #include <libssh/sftp.h>
 #include <pthread.h>
 #include "remminafile.h"
@@ -41,6 +42,7 @@ G_BEGIN_DECLS
 typedef struct _RemminaSSH
 {
     ssh_session session;
+    ssh_callbacks callback;
     gboolean authenticated;
 
     gchar *server;
