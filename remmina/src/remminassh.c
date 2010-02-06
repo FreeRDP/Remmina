@@ -32,7 +32,6 @@
 #include <signal.h>
 #include <time.h>
 #include <sys/types.h>
-#include <libssh/libssh.h>
 #include <pthread.h>
 #ifdef HAVE_NETDB_H
 #include <netdb.h>
@@ -56,6 +55,7 @@
 #include <termios.h>
 #endif
 #include "remminapublic.h"
+#include "remminalog.h"
 #include "remminassh.h"
 
 /*************************** SSH Base *********************************/
@@ -276,14 +276,34 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, gboolean threa
     return 1;
 }
 
+void
+remmina_ssh_log_callback (ssh_session session, int priority, const char *message, void *userdata)
+{
+    remmina_log_printf ("[SSH] %s\n", message);
+}
+
 gboolean
 remmina_ssh_init_session (RemminaSSH *ssh)
 {
+    gint verbosity;
+
+    ssh->callback = g_new0 (struct ssh_callbacks_struct, 1);
+    ssh->callback->userdata = ssh;
+
     /* Init & startup the SSH session */    
     ssh->session = ssh_new ();
     ssh_options_set (ssh->session, SSH_OPTIONS_HOST, ssh->server);
     ssh_options_set (ssh->session, SSH_OPTIONS_PORT, &ssh->port);
     ssh_options_set (ssh->session, SSH_OPTIONS_USER, ssh->user);
+    if (remmina_log_running ())
+    {
+        verbosity = SSH_LOG_RARE;
+        ssh_options_set (ssh->session, SSH_OPTIONS_LOG_VERBOSITY, &verbosity);
+        ssh->callback->log_function = remmina_ssh_log_callback;
+    }
+    ssh_callbacks_init (ssh->callback);
+    ssh_set_callbacks(ssh->session, ssh->callback);
+    
     if (ssh_connect (ssh->session))
     {
         remmina_ssh_set_error (ssh, _("Failed to startup SSH session: %s"));
@@ -304,6 +324,7 @@ remmina_ssh_init_from_file (RemminaSSH *ssh, RemminaFile *remminafile)
     gchar *ptr, *s;
 
     ssh->session = NULL;
+    ssh->callback = NULL;
     ssh->authenticated = FALSE;
     ssh->error = NULL;
     pthread_mutex_init (&ssh->ssh_mutex, NULL);
@@ -413,6 +434,7 @@ remmina_ssh_free (RemminaSSH *ssh)
         ssh_free (ssh->session);
         ssh->session = NULL;
     }
+    g_free (ssh->callback);
     g_free (ssh->server);
     g_free (ssh->user);
     g_free (ssh->password);
