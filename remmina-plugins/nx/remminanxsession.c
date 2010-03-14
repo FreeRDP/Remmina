@@ -1,6 +1,6 @@
 /*
- * Remmina - GTK+/Gnome Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Remmina - The GTK+ Remote Desktop Client
+ * Copyright (C) 2010 Vic Lee 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -235,6 +235,7 @@ remmina_nx_session_get_response (RemminaNXSession *nx)
     ssh_channel ch[2];
     ssh_buffer buffer;
     gint len;
+    gint is_stderr;
 
     timeout.tv_sec = 60;
     timeout.tv_usec = 0;
@@ -242,16 +243,22 @@ remmina_nx_session_get_response (RemminaNXSession *nx)
     ch[1] = NULL;
     channel_select (ch, NULL, NULL, &timeout);
 
-    len = channel_poll (nx->channel, 0);
-    if (len == SSH_ERROR)
+    is_stderr = 0;
+    while (is_stderr <= 1)
     {
-        remmina_nx_session_set_error (nx, "Error reading channel: %s");
-        return FALSE;
+        len = channel_poll (nx->channel, is_stderr);
+        if (len == SSH_ERROR)
+        {
+            remmina_nx_session_set_error (nx, "Error reading channel: %s");
+            return FALSE;
+        }
+        if (len > 0) break;
+        is_stderr++;
     }
-    if (len <= 0) return TRUE;
+    if (is_stderr > 1) return TRUE;
 
     buffer = buffer_new ();
-    len = channel_read_buffer (nx->channel, buffer, len, FALSE);
+    len = channel_read_buffer (nx->channel, buffer, len, is_stderr);
     if (len <= 0)
     {
         remmina_nx_session_set_application_error (nx, "Channel closed.");
