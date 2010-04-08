@@ -117,15 +117,15 @@ static void remmina_connection_holder_create_fullscreen (RemminaConnectionHolder
 static void
 remmina_connection_window_class_init (RemminaConnectionWindowClass *klass)
 {
-	gtk_rc_parse_string (
-		"style \"remmina-small-button-style\"\n"
-		"{\n"
-		"  GtkWidget::focus-padding = 0\n"
-		"  GtkWidget::focus-line-width = 0\n"
-		"  xthickness = 0\n"
-		"  ythickness = 0\n"
-		"}\n"
-		"widget \"*.remmina-small-button\" style \"remmina-small-button-style\"");
+    gtk_rc_parse_string (
+        "style \"remmina-small-button-style\"\n"
+        "{\n"
+        "  GtkWidget::focus-padding = 0\n"
+        "  GtkWidget::focus-line-width = 0\n"
+        "  xthickness = 0\n"
+        "  ythickness = 0\n"
+        "}\n"
+        "widget \"*.remmina-small-button\" style \"remmina-small-button-style\"");
 }
 
 static void
@@ -411,6 +411,7 @@ remmina_connection_holder_check_resize (RemminaConnectionHolder *cnnhld)
     GdkScreen *screen;
     gint screen_width, screen_height;
     gint server_width, server_height;
+    GtkAdjustment *adj;
 
     remmina_connection_holder_get_desktop_size (cnnhld, &server_width, &server_height, FALSE);
     screen = gdk_screen_get_default ();
@@ -457,6 +458,14 @@ remmina_connection_holder_check_resize (RemminaConnectionHolder *cnnhld)
         {
             gtk_window_set_default_size (GTK_WINDOW (cnnhld->cnnwin),
                 cnnobj->remmina_file->window_width, cnnobj->remmina_file->window_height);
+            if (cnnobj->remmina_file->window_width >= server_width &&
+                cnnobj->remmina_file->window_height >= server_height)
+            {
+                adj = gtk_viewport_get_hadjustment (GTK_VIEWPORT (cnnobj->viewport));
+                gtk_adjustment_set_page_size (adj, cnnobj->remmina_file->window_width);
+                adj = gtk_viewport_get_vadjustment (GTK_VIEWPORT (cnnobj->viewport));
+                gtk_adjustment_set_page_size (adj, cnnobj->remmina_file->window_height);
+            }
             if (cnnobj->remmina_file->window_maximize)
             {
                 gtk_window_maximize (GTK_WINDOW (cnnhld->cnnwin));
@@ -1587,8 +1596,8 @@ remmina_connection_object_create_tab (RemminaConnectionObject *cnnobj)
     gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
 
     button = gtk_button_new ();
-	gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
-	gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
+    gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+    gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
     gtk_widget_set_name (button, "remmina-small-button");
     gtk_widget_show (button);
 
