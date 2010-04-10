@@ -1210,6 +1210,14 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
             break;
         }
 
+        /* vnc4server reports "already in use" after authentication. Workaround here */
+        if (strstr(vnc_error, "The server is already in use"))
+        {
+            gpdata->connected = FALSE;
+            gpdata->auth_called = FALSE;
+            break;
+        }
+
         /* Otherwise, it's a password error. Try to clear saved password if any */
         if (remminafile->password) remminafile->password[0] = '\0';
 
