@@ -619,6 +619,7 @@ remmina_connection_holder_toolbar_scaled_mode (GtkWidget *widget, RemminaConnect
 
     scale = gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (widget));
     gtk_widget_set_sensitive (GTK_WIDGET (cnnhld->cnnwin->priv->scale_option_button), scale);
+    remmina_protocol_widget_set_scale (REMMINA_PROTOCOL_WIDGET (cnnobj->proto), scale);
     if (remmina_pref.save_view_mode) cnnobj->remmina_file->scale = scale;
 
     remmina_protocol_widget_call_feature (REMMINA_PROTOCOL_WIDGET (cnnobj->proto), REMMINA_PROTOCOL_FEATURE_SCALE,

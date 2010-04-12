@@ -307,7 +307,6 @@ remmina_plugin_vnc_update_scale (RemminaProtocolWidget *gp, gboolean scale)
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
-    remmina_plugin_service->protocol_plugin_set_scale (gp, scale);
     width = remmina_plugin_service->protocol_plugin_get_width (gp);
     height = remmina_plugin_service->protocol_plugin_get_height (gp);
     if (scale)
