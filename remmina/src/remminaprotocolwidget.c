@@ -211,6 +211,7 @@ void
 remmina_protocol_widget_open_connection (RemminaProtocolWidget *gp, RemminaFile *remminafile)
 {
     gp->priv->remmina_file = remminafile;
+    gp->priv->scale =  remminafile->scale;
 
     /* Show "server" instead of "name" for quick connect */
     remmina_protocol_widget_show_init_dialog (gp, (remminafile->filename ? remminafile->name : remminafile->server));
