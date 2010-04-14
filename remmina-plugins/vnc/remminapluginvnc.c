@@ -192,15 +192,15 @@ remmina_plugin_vnc_scale_area (RemminaProtocolWidget *gp, gint *x, gint *y, gint
     width = remmina_plugin_service->protocol_plugin_get_width (gp);
     height = remmina_plugin_service->protocol_plugin_get_height (gp);
 
-    /* We have to extend the scaled region one scaled pixel, to avoid gaps */
+    /* We have to extend the scaled region 2 scaled pixels, to avoid gaps */
     sx = MIN (MAX (0, (*x) * gpdata->scale_width / width
-        - gpdata->scale_width / width - 1), gpdata->scale_width - 1);
+        - gpdata->scale_width / width - 2), gpdata->scale_width - 1);
     sy = MIN (MAX (0, (*y) * gpdata->scale_height / height
-        - gpdata->scale_height / height - 1), gpdata->scale_height - 1);
+        - gpdata->scale_height / height - 2), gpdata->scale_height - 1);
     sw = MIN (gpdata->scale_width - sx, (*w) * gpdata->scale_width / width
-        + gpdata->scale_width / width + 1);
+        + gpdata->scale_width / width + 4);
     sh = MIN (gpdata->scale_height - sy, (*h) * gpdata->scale_height / height
-        + gpdata->scale_height / height + 1);
+        + gpdata->scale_height / height + 4);
 
     gdk_pixbuf_scale (gpdata->rgb_buffer, gpdata->scale_buffer,
         sx, sy,
