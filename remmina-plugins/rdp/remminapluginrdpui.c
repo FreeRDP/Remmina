@@ -32,7 +32,7 @@ typedef struct _RemminaGlyph
     guchar *data;
 } RemminaGlyph;
 
-#define GLYPH_PIXEL(_rowdata,_x) (_rowdata[_x / 8] & (0x80 >> (_x % 8)))
+#define GLYPH_PIXEL(_rowdata,_x) (_rowdata[(_x) / 8] & (0x80 >> ((_x) % 8)))
 
 static guchar hatch_patterns[] = {
     0x00, 0x00, 0x00, 0xff, 0x00, 0x00, 0x00, 0x00, /* 0 - bsHorizontal */
@@ -841,22 +841,21 @@ remmina_plugin_rdpui_draw_glyph (rdpInst *inst, int x, int y, int cx, int cy,
     cx = MIN (cx, gdk_pixbuf_get_width (gpdata->drw_buffer) - x);
     cy = MIN (cy, gdk_pixbuf_get_height (gpdata->drw_buffer) - y);
     if (cx <= 0 || cy <= 0) return;
-    /*g_print ("draw_glyph: %X %i %i %i %i %i %i %i %i\n", (int)glyph, x, y, cx, cy, rg->width, rg->height,
-        gdk_pixbuf_get_width (gpdata->drw_buffer), gdk_pixbuf_get_height (gpdata->drw_buffer));*/
+    /*g_print ("draw_glyph: %X %i %i %i %i %i %i %i %i %i %i\n", (int)glyph, x, y, cx, cy, srcx, srcy,
+        rg->width, rg->height, gdk_pixbuf_get_width (gpdata->drw_buffer), gdk_pixbuf_get_height (gpdata->drw_buffer));*/
     rowstride = gdk_pixbuf_get_rowstride (gpdata->drw_buffer);
-    buffer = gdk_pixbuf_get_pixels (gpdata->drw_buffer) + y * rowstride + x * 3;
     LOCK_BUFFER (TRUE)
-    for (iy = srcy; iy < srcy + cy; iy++)
+    for (iy = 0; iy < cy; iy++)
     {
-        rgdata = rg->data + iy * rg->rowstride;
-        for (ix = srcx; ix < srcx + cx; ix++)
+        rgdata = rg->data + (srcy + iy) * rg->rowstride;
+        buffer = gdk_pixbuf_get_pixels (gpdata->drw_buffer) + (y + iy) * rowstride + x * 3;
+        for (ix = 0; ix < cx; ix++)
         {
-            if (GLYPH_PIXEL (rgdata, ix))
+            if (GLYPH_PIXEL (rgdata, srcx + ix))
             {
                 memcpy (buffer + ix * 3, gpdata->fgcolor, 3);
             }
         }
-        buffer += rowstride;
     }
     UNLOCK_BUFFER (TRUE)
 }
