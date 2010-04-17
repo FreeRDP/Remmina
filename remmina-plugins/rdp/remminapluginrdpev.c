@@ -53,19 +53,6 @@ remmina_plugin_rdpev_event_free_all (RemminaProtocolWidget *gp)
     }
 }
 
-static gint
-remmina_plugin_rdpev_convert_scancode (guchar keycode, gint *flag)
-{
-    gint vkcode;
-    gint scancode;
-
-    vkcode = keycodeToVkcode[keycode];
-    scancode = virtualKeyboard[vkcode].scancode;
-    *flag |= virtualKeyboard[vkcode].flags;
-    /*g_print ("keycode %i vkcode %i scancode %i\n", keycode, vkcode, scancode);*/
-    return scancode;
-}
-
 static void
 remmina_plugin_rdpev_release_key (RemminaProtocolWidget *gp, gint scancode)
 {
@@ -315,7 +302,7 @@ remmina_plugin_rdpev_on_key (GtkWidget *widget, GdkEventKey *event, RemminaProto
 
     gpdata = GET_DATA (gp);
     flag = (event->type == GDK_KEY_PRESS ? RDP_KEYPRESS : RDP_KEYRELEASE);
-    scancode = remmina_plugin_rdpev_convert_scancode (event->hardware_keycode, &flag);
+    scancode = freerdp_kbd_get_scancode_by_keycode (event->hardware_keycode, &flag);
     remmina_plugin_rdpev_event_push (gp, RDP_INPUT_SCANCODE, flag, scancode, 0);
 
     /* Register/unregister the pressed key */
