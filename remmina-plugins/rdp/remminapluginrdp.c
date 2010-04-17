@@ -139,7 +139,7 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
         *port++ = '\0';
         gpdata->settings->tcp_port_rdp = atoi(port);
     }
-    strncpy (gpdata->settings->server, host, sizeof(gpdata->settings->server) - 1);
+    strncpy (gpdata->settings->server, host, sizeof (gpdata->settings->server) - 1);
     g_free (host);
 
     gpdata->settings->server_depth = remminafile->colordepth;
@@ -150,27 +150,37 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
 
     if (remminafile->username && remminafile->username[0] != '\0')
     {
-        strncpy (gpdata->settings->username, remminafile->username, sizeof(gpdata->settings->username) - 1);
+        strncpy (gpdata->settings->username, remminafile->username, sizeof (gpdata->settings->username) - 1);
     }
 
     if (remminafile->domain && remminafile->domain[0] != '\0')
     {
-        strncpy (gpdata->settings->domain, remminafile->domain, sizeof(gpdata->settings->domain) - 1);
+        strncpy (gpdata->settings->domain, remminafile->domain, sizeof (gpdata->settings->domain) - 1);
     }
 
     if (remminafile->password && remminafile->password[0] != '\0')
     {
-        strncpy (gpdata->settings->password, remminafile->password, sizeof(gpdata->settings->password) - 1);
+        strncpy (gpdata->settings->password, remminafile->password, sizeof (gpdata->settings->password) - 1);
         gpdata->settings->autologin = 1;
     }
 
     if (remminafile->clientname && remminafile->clientname[0] != '\0')
     {
-        strncpy (gpdata->settings->hostname, remminafile->clientname, sizeof(gpdata->settings->hostname) - 1);
+        strncpy (gpdata->settings->hostname, remminafile->clientname, sizeof (gpdata->settings->hostname) - 1);
     }
     else
     {
-        strncpy (gpdata->settings->hostname, g_get_host_name (), sizeof(gpdata->settings->hostname) - 1);
+        strncpy (gpdata->settings->hostname, g_get_host_name (), sizeof (gpdata->settings->hostname) - 1);
+    }
+
+    if (remminafile->exec && remminafile->exec[0] != '\0')
+    {
+        strncpy (gpdata->settings->shell, remminafile->exec, sizeof (gpdata->settings->shell) - 1);
+    }
+
+    if (remminafile->execpath && remminafile->execpath[0] != '\0')
+    {
+        strncpy (gpdata->settings->directory, remminafile->execpath, sizeof (gpdata->settings->directory) - 1);
     }
 
     gpdata->settings->keyboard_layout = keyboard_layout;
@@ -203,7 +213,7 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
         remmina_plugin_service->protocol_plugin_set_error (gp,
             "freerdp_new size, version / size do not "
             "match expecting v %d s %d got v %d s %d\n",
-            FREERDP_INTERFACE_VERSION, sizeof(rdpInst),
+            FREERDP_INTERFACE_VERSION, sizeof (rdpInst),
             gpdata->inst->version, gpdata->inst->size);
         return FALSE;
     }
@@ -392,10 +402,6 @@ static const RemminaProtocolSetting remmina_plugin_rdp_advanced_settings[] =
     REMMINA_PROTOCOL_SETTING_EXECPATH,
     REMMINA_PROTOCOL_SETTING_SHAREPRINTER,
     REMMINA_PROTOCOL_SETTING_CONSOLE,
-    REMMINA_PROTOCOL_SETTING_CTL_CONCAT,
-    REMMINA_PROTOCOL_SETTING_BITMAPCACHING,
-    REMMINA_PROTOCOL_SETTING_COMPRESSION,
-    REMMINA_PROTOCOL_SETTING_CTL_CONCAT_END,
     REMMINA_PROTOCOL_SETTING_CTL_END
 };
 
