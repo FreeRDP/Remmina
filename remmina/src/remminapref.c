@@ -178,6 +178,11 @@ remmina_pref_init (void)
     else
         remmina_pref.always_show_tab = TRUE;
 
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "hide_connection_toolbar", NULL))
+        remmina_pref.hide_connection_toolbar = g_key_file_get_boolean (gkeyfile, "remmina_pref", "hide_connection_toolbar", NULL);
+    else
+        remmina_pref.hide_connection_toolbar = FALSE;
+
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "default_action", NULL))
         remmina_pref.default_action = g_key_file_get_integer (gkeyfile, "remmina_pref", "default_action", NULL);
     else
@@ -318,6 +323,11 @@ remmina_pref_init (void)
     else
         remmina_pref.shortcutkey_disconnect = GDK_F4;
 
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_toolbar", NULL))
+        remmina_pref.shortcutkey_toolbar = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_toolbar", NULL);
+    else
+        remmina_pref.shortcutkey_toolbar = GDK_t;
+
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "secret", NULL))
         remmina_pref.secret = g_key_file_get_string (gkeyfile, "remmina_pref", "secret", NULL);
     else
@@ -345,6 +355,7 @@ remmina_pref_save (void)
     g_key_file_set_boolean (gkeyfile, "remmina_pref", "save_when_connect", remmina_pref.save_when_connect);
     g_key_file_set_boolean (gkeyfile, "remmina_pref", "invisible_toolbar", remmina_pref.invisible_toolbar);
     g_key_file_set_boolean (gkeyfile, "remmina_pref", "always_show_tab", remmina_pref.always_show_tab);
+    g_key_file_set_boolean (gkeyfile, "remmina_pref", "hide_connection_toolbar", remmina_pref.hide_connection_toolbar);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "default_action", remmina_pref.default_action);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "scale_quality", remmina_pref.scale_quality);
     g_key_file_set_boolean (gkeyfile, "remmina_pref", "hide_toolbar", remmina_pref.hide_toolbar);
@@ -373,6 +384,7 @@ remmina_pref_save (void)
     g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_grab", remmina_pref.shortcutkey_grab);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_minimize", remmina_pref.shortcutkey_minimize);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_disconnect", remmina_pref.shortcutkey_disconnect);
+    g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_toolbar", remmina_pref.shortcutkey_toolbar);
 
     content = g_key_file_to_data (gkeyfile, &length, NULL);
     g_file_set_contents (remmina_pref_file, content, length, NULL);

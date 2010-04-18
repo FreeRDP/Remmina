@@ -64,6 +64,7 @@ typedef struct _RemminaPref
     gboolean save_when_connect;
     gboolean invisible_toolbar;
     gboolean always_show_tab;
+    gboolean hide_connection_toolbar;
     gint default_action;
     gint scale_quality;
     gchar *resolutions;
@@ -84,6 +85,7 @@ typedef struct _RemminaPref
     guint shortcutkey_grab;
     guint shortcutkey_minimize;
     guint shortcutkey_disconnect;
+    guint shortcutkey_toolbar;
 
     /* In View menu */
     gboolean hide_toolbar;
