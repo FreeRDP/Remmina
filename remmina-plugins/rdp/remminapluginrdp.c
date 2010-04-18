@@ -191,7 +191,7 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     }
     else if (g_strcmp0 (remminafile->sound, "local") == 0)
     {
-        gpdata->settings->leave_audio = 1;
+        gpdata->settings->console_audio = 1;
     }
 
     if (remminafile->console)
