@@ -884,7 +884,8 @@ remmina_connection_holder_toolbar_preferences (GtkWidget *widget, RemminaConnect
             gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
         }
 
-        if (remmina_protocol_widget_query_feature (REMMINA_PROTOCOL_WIDGET (cnnobj->proto), REMMINA_PROTOCOL_FEATURE_PREF_VIEWONLY))
+        if (remmina_protocol_widget_query_feature (REMMINA_PROTOCOL_WIDGET (cnnobj->proto),
+            REMMINA_PROTOCOL_FEATURE_PREF_VIEWONLY))
         {
             menuitem = gtk_check_menu_item_new_with_label (_("View Only"));
             gtk_widget_show (menuitem);
@@ -898,7 +899,8 @@ remmina_connection_holder_toolbar_preferences (GtkWidget *widget, RemminaConnect
                 G_CALLBACK (remmina_connection_holder_call_protocol_feature_check), cnnhld);
         }
 
-        if (remmina_protocol_widget_query_feature (REMMINA_PROTOCOL_WIDGET (cnnobj->proto), REMMINA_PROTOCOL_FEATURE_PREF_DISABLESERVERINPUT))
+        if (remmina_protocol_widget_query_feature (REMMINA_PROTOCOL_WIDGET (cnnobj->proto),
+            REMMINA_PROTOCOL_FEATURE_PREF_DISABLESERVERINPUT))
         {
             menuitem = gtk_check_menu_item_new_with_label (_("Disable Server Input"));
             gtk_widget_show (menuitem);
@@ -1240,6 +1242,24 @@ remmina_connection_holder_update_toolbar (RemminaConnectionHolder *cnnhld)
     if (priv->floating_toolbar)
     {
         gtk_label_set_text (GTK_LABEL (priv->floating_toolbar_label), cnnobj->remmina_file->name);
+    }
+}
+
+static void
+remmina_connection_holder_showhide_toolbar (RemminaConnectionHolder *cnnhld)
+{
+    RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
+
+    if (priv->view_mode == SCROLLED_WINDOW_MODE)
+    {
+        if (remmina_pref.hide_connection_toolbar)
+        {
+            gtk_widget_hide (priv->toolbar);
+        }
+        else
+        {
+            gtk_widget_show (priv->toolbar);
+        }
     }
 }
 
@@ -1836,6 +1856,7 @@ remmina_connection_holder_create_scrolled (RemminaConnectionHolder *cnnhld, Remm
     }
 
     remmina_connection_holder_update_toolbar (cnnhld);
+    remmina_connection_holder_showhide_toolbar (cnnhld);
     remmina_connection_holder_check_resize (cnnhld);
 
     gtk_widget_show (GTK_WIDGET (cnnhld->cnnwin));
@@ -1947,6 +1968,13 @@ remmina_connection_window_hostkey_func (RemminaProtocolWidget *gp, guint keyval,
     } else if (keyval == remmina_pref.shortcutkey_disconnect)
     {
         remmina_connection_holder_disconnect (cnnhld);
+    } else if (keyval == remmina_pref.shortcutkey_toolbar)
+    {
+        if (priv->view_mode == SCROLLED_WINDOW_MODE)
+        {
+            remmina_pref.hide_connection_toolbar = !remmina_pref.hide_connection_toolbar;
+            remmina_connection_holder_showhide_toolbar (cnnhld);
+        }
     }
     return TRUE;
 }
