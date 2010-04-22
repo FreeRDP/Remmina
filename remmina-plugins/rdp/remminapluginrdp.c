@@ -187,7 +187,7 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
 
     if (g_strcmp0 (remminafile->sound, "remote") == 0)
     {
-        freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "rdpsnd");
+        freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "rdpsnd", NULL);
     }
     else if (g_strcmp0 (remminafile->sound, "local") == 0)
     {
@@ -199,7 +199,7 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
         gpdata->settings->console_session = 1;
     }
 
-    freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "cliprdr");
+    freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "cliprdr", NULL);
 
     gpdata->inst = freerdp_new (gpdata->settings);
     if (gpdata->inst == NULL)
