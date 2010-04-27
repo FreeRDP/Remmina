@@ -39,14 +39,6 @@
 
 G_DEFINE_TYPE (RemminaFileEditor, remmina_file_editor, GTK_TYPE_DIALOG)
 
-static const gpointer sharefolder_list[] =
-{
-    "0", N_("None"),
-    "1", N_("My Home Folder"),
-    "2", N_("System Root Folder"),
-    NULL
-};
-
 /* Copied from tsclient... */
 static const gchar *keymap_list = "\
 ar,be,\
@@ -112,7 +104,8 @@ struct _RemminaFileEditorPriv
     GtkWidget *sound_combo;
     GtkWidget *arguments_entry;
     GtkWidget *proxy_entry;
-    GtkWidget *sharefolder_combo;
+    GtkWidget *sharefolder_check;
+    GtkWidget *sharefolder_chooser;
     GtkWidget *scaler_widget;
 
     GtkWidget *bitmapcaching_check;
@@ -209,10 +202,10 @@ remmina_file_editor_destroy (GtkWidget *widget, gpointer data)
 }
 
 static void
-remmina_file_editor_resolution_radio_on_toggled (GtkToggleButton *togglebutton, RemminaFileEditor *gfe)
+remmina_file_editor_button_on_toggled (GtkToggleButton *togglebutton, GtkWidget *widget)
 {
-    gtk_widget_set_sensitive (gfe->priv->resolution_custom_combo, 
-        gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (gfe->priv->resolution_custom_radio)));
+    gtk_widget_set_sensitive (widget, 
+        gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (togglebutton)));
 }
 
 static void
@@ -475,14 +468,15 @@ remmina_file_editor_create_resolution (RemminaFileEditor *gfe, GtkWidget *table,
         GTK_RADIO_BUTTON (gfe->priv->resolution_auto_radio), _("Custom"));
     gtk_widget_show (widget);
     gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, FALSE, 0);
-    g_signal_connect (G_OBJECT (widget), "toggled", 
-        G_CALLBACK (remmina_file_editor_resolution_radio_on_toggled), gfe);
     gfe->priv->resolution_custom_radio = widget;
 
     widget = remmina_public_create_combo_text_d (remmina_pref.resolutions, gfe->priv->remmina_file->resolution, NULL);
     gtk_widget_show (widget);
     gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
     gfe->priv->resolution_custom_combo = widget;
+
+    g_signal_connect (G_OBJECT (gfe->priv->resolution_custom_radio), "toggled", 
+        G_CALLBACK (remmina_file_editor_button_on_toggled), gfe->priv->resolution_custom_combo);
 
     if (!gfe->priv->remmina_file->resolution || gfe->priv->remmina_file->resolution[0] == '\0' ||
         g_strcmp0 (gfe->priv->remmina_file->resolution, "AUTO") == 0)
@@ -510,6 +504,38 @@ remmina_file_editor_create_combo_map (RemminaFileEditor *gfe, GtkWidget *table, 
     widget = remmina_public_create_combo_map (list, value, FALSE);
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, col + 1, col + 2, row, row + 1);
+
+    return widget;
+}
+
+static GtkWidget*
+remmina_file_editor_create_folder_chooser (RemminaFileEditor *gfe, GtkWidget *table, gint row, gint col,
+    const gchar *label, const gchar *value, GtkWidget *check)
+{
+    GtkWidget *widget;
+    GtkWidget *hbox;
+
+    widget = gtk_label_new (label);
+    gtk_widget_show (widget);
+    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+    gtk_table_attach (GTK_TABLE (table), widget, col, col + 1, row, row + 1, GTK_FILL, 0, 0, 0);
+
+    hbox = gtk_hbox_new (FALSE, 0);
+    gtk_widget_show (hbox);
+    gtk_table_attach_defaults (GTK_TABLE (table), hbox, col + 1, col + 2, row, row + 1);
+
+    gtk_widget_show (check);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), (value && value[0] == '/'));
+    gtk_box_pack_start (GTK_BOX (hbox), check, FALSE, FALSE, 0);
+
+    widget = gtk_file_chooser_button_new (label, GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
+    gtk_widget_show (widget);
+    gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), value);
+    gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
+
+    g_signal_connect (G_OBJECT (check), "toggled", 
+        G_CALLBACK (remmina_file_editor_button_on_toggled), widget);
+    remmina_file_editor_button_on_toggled (GTK_TOGGLE_BUTTON (check), widget);
 
     return widget;
 }
@@ -673,8 +699,9 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, c
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_SHAREFOLDER:
-            priv->sharefolder_combo = remmina_file_editor_create_combo_mapint (gfe, table, row, 0,
-                _("Share Folder"), sharefolder_list, priv->remmina_file->sharefolder);
+            priv->sharefolder_check = gtk_check_button_new ();
+            priv->sharefolder_chooser = remmina_file_editor_create_folder_chooser (gfe, table, row, 0,
+                _("Share Folder"), priv->remmina_file->sharefolder, priv->sharefolder_check);
             row++;
             break;
 
@@ -1038,7 +1065,8 @@ remmina_file_editor_protocol_combo_on_changed (GtkComboBox *combo, RemminaFileEd
     priv->sound_combo = NULL;
     priv->arguments_entry = NULL;
     priv->proxy_entry = NULL;
-    priv->sharefolder_combo = NULL;
+    priv->sharefolder_check = NULL;
+    priv->sharefolder_chooser = NULL;
     priv->scaler_widget = NULL;
 
     priv->bitmapcaching_check = NULL;
@@ -1154,11 +1182,11 @@ remmina_file_editor_update (RemminaFileEditor *gfe)
         priv->remmina_file->gkeymap = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->gkeymap_combo));
     }
 
-    if (priv->sharefolder_combo)
+    if (priv->sharefolder_check && priv->sharefolder_chooser)
     {
-        s = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->sharefolder_combo));
-        priv->remmina_file->sharefolder = atoi (s);
-        g_free (s);
+        g_free (priv->remmina_file->sharefolder);
+        priv->remmina_file->sharefolder = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->sharefolder_check)) ?
+            g_strdup (gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (priv->sharefolder_chooser))) : NULL;
     }
 
     if (priv->scaler_widget)

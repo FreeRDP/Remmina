@@ -43,10 +43,10 @@ typedef struct _RemminaFile
     gchar *sound;
     gchar *arguments;
     gchar *proxy;
+    gchar *sharefolder;
     gint colordepth;
     gint quality;
     gint listenport;
-    gint sharefolder;
     gint hscale;
     gint vscale;
     gboolean bitmapcaching;
