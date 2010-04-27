@@ -96,7 +96,7 @@ remmina_file_new_temp (void)
         gf->colordepth = 8;
         gf->quality = 0;
         gf->listenport = DEFAULT_LISTEN_PORT;
-        gf->sharefolder = 0;
+        gf->sharefolder = NULL;
         gf->hscale = 0;
         gf->vscale = 0;
 
@@ -208,12 +208,12 @@ remmina_file_load (const gchar *filename)
         gf->cacrl = g_key_file_get_string (gkeyfile, "remmina", "cacrl", NULL);
         gf->clientcert = g_key_file_get_string (gkeyfile, "remmina", "clientcert", NULL);
         gf->clientkey = g_key_file_get_string (gkeyfile, "remmina", "clientkey", NULL);
+        gf->sharefolder = g_key_file_get_string (gkeyfile, "remmina", "sharefolder", NULL);
 
         gf->colordepth = g_key_file_get_integer (gkeyfile, "remmina", "colordepth", NULL);
         gf->quality = g_key_file_get_integer (gkeyfile, "remmina", "quality", NULL);
         gf->listenport = (g_key_file_has_key (gkeyfile, "remmina", "listenport", NULL) ?
             g_key_file_get_integer (gkeyfile, "remmina", "listenport", NULL) : DEFAULT_LISTEN_PORT);
-        gf->sharefolder = g_key_file_get_integer (gkeyfile, "remmina", "sharefolder", NULL);
         gf->hscale = g_key_file_get_integer (gkeyfile, "remmina", "hscale", NULL);
         gf->vscale = g_key_file_get_integer (gkeyfile, "remmina", "vscale", NULL);
 
@@ -273,11 +273,11 @@ remmina_file_store_profile (RemminaFile *gf, GKeyFile *gkeyfile)
     g_key_file_set_string (gkeyfile, "remmina", "sound", (gf->sound ? gf->sound : ""));
     g_key_file_set_string (gkeyfile, "remmina", "arguments", (gf->arguments ? gf->arguments : ""));
     g_key_file_set_string (gkeyfile, "remmina", "proxy", (gf->proxy ? gf->proxy : ""));
+    g_key_file_set_string (gkeyfile, "remmina", "sharefolder", (gf->sharefolder ? gf->sharefolder : ""));
 
     g_key_file_set_integer (gkeyfile, "remmina", "colordepth", gf->colordepth);
     g_key_file_set_integer (gkeyfile, "remmina", "quality", gf->quality);
     g_key_file_set_integer (gkeyfile, "remmina", "listenport", gf->listenport);
-    g_key_file_set_integer (gkeyfile, "remmina", "sharefolder", gf->sharefolder);
     g_key_file_set_integer (gkeyfile, "remmina", "hscale", gf->hscale);
     g_key_file_set_integer (gkeyfile, "remmina", "vscale", gf->vscale);
 
@@ -466,11 +466,11 @@ remmina_file_dup (RemminaFile *remminafile)
     gf->cacrl = g_strdup (remminafile->cacrl);
     gf->clientcert = g_strdup (remminafile->clientcert);
     gf->clientkey = g_strdup (remminafile->clientkey);
+    gf->sharefolder = g_strdup (remminafile->sharefolder);
 
     gf->colordepth = remminafile->colordepth;
     gf->quality = remminafile->quality;
     gf->listenport = remminafile->listenport;
-    gf->sharefolder = remminafile->sharefolder;
     gf->hscale = remminafile->hscale;
     gf->vscale = remminafile->vscale;
 

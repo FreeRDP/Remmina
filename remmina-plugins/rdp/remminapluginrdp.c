@@ -124,6 +124,7 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     RemminaFile *remminafile;
     gchar *host;
     gchar *port;
+    gchar *s;
 
     gpdata = GET_DATA (gp);
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
@@ -200,6 +201,17 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     }
 
     freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "cliprdr", NULL);
+
+    if (remminafile->sharefolder && remminafile->sharefolder[0] == '/')
+    {
+        s = strrchr (remminafile->sharefolder, '/');
+        s = (s && s[1] ? s + 1 : "root");
+        gpdata->rdpdr_data[0].size = sizeof(RD_PLUGIN_DATA);
+        gpdata->rdpdr_data[0].data[0] = "disk";
+        gpdata->rdpdr_data[0].data[1] = s;
+        gpdata->rdpdr_data[0].data[2] = remminafile->sharefolder;
+        freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "rdpdr", &gpdata->rdpdr_data[0]);
+    }
 
     gpdata->inst = freerdp_new (gpdata->settings);
     if (gpdata->inst == NULL)
