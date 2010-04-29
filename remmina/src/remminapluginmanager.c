@@ -26,6 +26,7 @@
 #include "remminapref.h"
 #include "remminaprotocolwidget.h"
 #include "remminalog.h"
+#include "remminaui.h"
 #include "remminapluginmanager.h"
 
 static GTree* remmina_plugin_table = NULL;
@@ -82,7 +83,9 @@ RemminaPluginService remmina_plugin_manager_service =
     remmina_pref_keymap_get_keyval,
 
     remmina_log_print,
-    remmina_log_printf
+    remmina_log_printf,
+
+    remmina_ui_confirm
 };
 
 static void
@@ -148,7 +151,7 @@ remmina_plugin_manager_get_plugin (RemminaPluginType type, const gchar *name)
     RemminaPlugin *plugin;
 
     plugin = (RemminaPlugin *) g_tree_lookup (remmina_plugin_table, name);
-    if (plugin->type != type)
+    if (plugin && plugin->type != type)
     {
         g_print ("Invalid plugin type %i for plugin %s\n", type, name);
         return NULL;

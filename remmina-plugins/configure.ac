@@ -203,6 +203,22 @@ else
     nx_plugin="no. libssh required."
 fi
 
+# Check Telepathy dependencies
+AC_ARG_ENABLE(telepathy,
+    [AS_HELP_STRING([--disable-telepathy], [Disable Telepathy])],
+    [telepathy_plugin=$enableval],
+    [telepathy_plugin="yes"]
+)
+if test "x$telepathy_plugin" != "xno"; then
+    PKG_CHECK_MODULES(TELEPATHY, [telepathy-glib >= 0.9.0], [
+        REMMINA_PLUGINS_SUBDIRS="$REMMINA_PLUGINS_SUBDIRS telepathy"
+    ], [
+        telepathy_plugin="no. telepathy-glib-dev rquired."
+    ])
+else
+    telepathy_plugin="disabled."
+fi
+
 # Checks for header files.
 AC_CHECK_HEADERS_ONCE(
     netdb.h
@@ -224,6 +240,7 @@ libvncserver/Makefile
 vnc/Makefile
 xdmcp/Makefile
 nx/Makefile
+telepathy/Makefile
 ])
 
 AC_OUTPUT
@@ -240,6 +257,7 @@ echo "* RDP plugin: $rdp_plugin"
 echo "* VNC plugin: $vnc_plugin"
 echo "* XDMCP plugin: $xdmcp_plugin"
 echo "* NX plugin: $nx_plugin"
+echo "* Telepathy plugin: $telepathy_plugin"
 echo
 echo "Type \"make\" to compile remmina-plugins."
 echo

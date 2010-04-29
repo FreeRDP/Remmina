@@ -200,6 +200,11 @@ typedef enum
     REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY
 } RemminaAuthpwdType;
 
+typedef enum
+{
+    REMMINA_UI_CONFIRM_TYPE_SHARE_DESKTOP
+} RemminaUIConfirmType;
+
 G_END_DECLS
 
 #endif /* __REMMINA_TYPES_H__ */
