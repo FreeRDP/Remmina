@@ -28,18 +28,19 @@
 #include "remminalog.h"
 #include "remminapluginmanager.h"
 
-static GTree* remmina_protocol_plugin_table = NULL;
+static GTree* remmina_plugin_table = NULL;
 
 static gboolean
-remmina_plugin_manager_register_protocol_plugin (RemminaProtocolPlugin *plugin)
+remmina_plugin_manager_register_plugin (RemminaPlugin *plugin)
 {
-    g_tree_insert (remmina_protocol_plugin_table, plugin->protocol, plugin);
+    g_tree_insert (remmina_plugin_table, plugin->name, plugin);
+    g_print ("Remmina plugin %s (type=%i) registered.\n", plugin->name, plugin->type);
     return TRUE;
 }
 
 RemminaPluginService remmina_plugin_manager_service =
 {
-    remmina_plugin_manager_register_protocol_plugin,
+    remmina_plugin_manager_register_plugin,
 
     remmina_protocol_widget_get_width,
     remmina_protocol_widget_set_width,
@@ -119,7 +120,7 @@ remmina_plugin_manager_init (void)
     const gchar *name, *ptr;
     gchar *fullpath;
 
-    remmina_protocol_plugin_table = g_tree_new ((GCompareFunc) g_strcmp0);
+    remmina_plugin_table = g_tree_new ((GCompareFunc) g_strcmp0);
 
     if (!g_module_supported ())
     {
@@ -141,22 +142,52 @@ remmina_plugin_manager_init (void)
     g_dir_close (dir);
 }
 
-RemminaProtocolPlugin*
-remmina_plugin_manager_get_protocol_plugin (const gchar *protocol)
+RemminaPlugin*
+remmina_plugin_manager_get_plugin (RemminaPluginType type, const gchar *name)
 {
-    return g_tree_lookup (remmina_protocol_plugin_table, protocol);
+    RemminaPlugin *plugin;
+
+    plugin = (RemminaPlugin *) g_tree_lookup (remmina_plugin_table, name);
+    if (plugin->type != type)
+    {
+        g_print ("Invalid plugin type %i for plugin %s\n", type, name);
+        return NULL;
+    }
+    return plugin;
+}
+
+typedef struct _RemminaIterData
+{
+    RemminaPluginType type;
+    RemminaPluginFunc func;
+    gpointer data;
+} RemminaIterData;
+
+static gboolean
+remmina_plugin_manager_for_each_func (gchar *name, RemminaPlugin *plugin, RemminaIterData *data)
+{
+    if (data->type == plugin->type)
+    {
+        return data->func (name, plugin, data->data);
+    }
+    return FALSE;
 }
 
 void
-remmina_plugin_manager_for_each_protocol (RemminaPluginFunc func, gpointer data)
+remmina_plugin_manager_for_each_plugin (RemminaPluginType type, RemminaPluginFunc func, gpointer data)
 {
-    g_tree_foreach (remmina_protocol_plugin_table, (GTraverseFunc) func, data);
+    RemminaIterData iter_data;
+
+    iter_data.type = type;
+    iter_data.func = func;
+    iter_data.data = data;
+    g_tree_foreach (remmina_plugin_table, (GTraverseFunc) remmina_plugin_manager_for_each_func, &iter_data);
 }
 
 gchar*
-remmina_plugin_manager_get_protocol_description (RemminaProtocolPlugin* plugin)
+remmina_plugin_manager_get_plugin_description (RemminaPlugin* plugin)
 {
-    return g_strdup_printf ("%s - %s", plugin->protocol, _(plugin->description));
+    return g_strdup_printf ("%s - %s", plugin->name, _(plugin->description));
 }
 
 /* Known plugin descriptions. For translation purpose only */

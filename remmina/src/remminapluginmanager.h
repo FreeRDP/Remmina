@@ -25,12 +25,12 @@
 
 G_BEGIN_DECLS
 
-typedef gboolean (*RemminaPluginFunc) (gchar *protocol, RemminaProtocolPlugin *plugin, gpointer data);
+typedef gboolean (*RemminaPluginFunc) (gchar *name, RemminaPlugin *plugin, gpointer data);
 
 void remmina_plugin_manager_init (void);
-RemminaProtocolPlugin* remmina_plugin_manager_get_protocol_plugin (const gchar *protocol);
-void remmina_plugin_manager_for_each_protocol (RemminaPluginFunc func, gpointer data);
-gchar* remmina_plugin_manager_get_protocol_description (RemminaProtocolPlugin* plugin);
+RemminaPlugin* remmina_plugin_manager_get_plugin (RemminaPluginType type, const gchar *name);
+void remmina_plugin_manager_for_each_plugin (RemminaPluginType type, RemminaPluginFunc func, gpointer data);
+gchar* remmina_plugin_manager_get_plugin_description (RemminaPlugin* plugin);
 
 extern RemminaPluginService remmina_plugin_manager_service;
 

@@ -189,7 +189,7 @@ remmina_protocol_widget_open_connection_real (GPtrArray *printers, gpointer data
     gp->priv->printers = printers;
 
     /* Locate the protocol plugin */
-    plugin = remmina_plugin_manager_get_protocol_plugin (remminafile->protocol);
+    plugin = (RemminaProtocolPlugin *) remmina_plugin_manager_get_plugin (REMMINA_PLUGIN_TYPE_PROTOCOL, remminafile->protocol);
     if (!plugin || !plugin->init || !plugin->open_connection)
     {
         remmina_protocol_widget_set_error (gp, _("Protocol %s is not supported."), remminafile->protocol);

@@ -25,10 +25,25 @@
 
 G_BEGIN_DECLS
 
+typedef enum
+{
+    REMMINA_PLUGIN_TYPE_PROTOCOL = 0,
+    REMMINA_PLUGIN_TYPE_ENTRY = 1
+} RemminaPluginType;
+
+typedef struct _RemminaPlugin
+{
+    RemminaPluginType type;
+    gchar *name;
+    gchar *description;
+} RemminaPlugin;
+
 typedef struct _RemminaProtocolPlugin
 {
-    gchar *protocol;
+    RemminaPluginType type;
+    gchar *name;
     gchar *description;
+
     gchar *icon_name;
     gchar *icon_name_ssh;
     gchar *avahi_service_type;
@@ -43,12 +58,21 @@ typedef struct _RemminaProtocolPlugin
     void (* call_feature) (RemminaProtocolWidget *gp, RemminaProtocolFeature feature, const gpointer data);
 } RemminaProtocolPlugin;
 
+typedef struct _RemminaEntryPlugin
+{
+    RemminaPluginType type;
+    gchar *name;
+    gchar *description;
+
+    void (* entry_func) (void);
+} RemminaEntryPlugin;
+
 /* Plugin Service is a struct containing a list of function pointers,
  * which is passed from Remmina main program to the plugin module
  * through the plugin entry function remmina_plugin_entry() */
 typedef struct _RemminaPluginService
 {
-    gboolean     (* register_protocol_plugin)            (RemminaProtocolPlugin *plugin);
+    gboolean     (* register_plugin)                     (RemminaPlugin *plugin);
 
     gint         (* protocol_plugin_get_width)           (RemminaProtocolWidget *gp);
     void         (* protocol_plugin_set_width)           (RemminaProtocolWidget *gp, gint width);

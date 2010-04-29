@@ -296,8 +296,10 @@ remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeatu
 
 static RemminaProtocolPlugin remmina_plugin_ssh =
 {
+    REMMINA_PLUGIN_TYPE_PROTOCOL,
     "SSH",
     N_("Secure Shell"),
+
     "utilities-terminal",
     "utilities-terminal",
     NULL,
@@ -316,7 +318,7 @@ void
 remmina_ssh_plugin_register (void)
 {
     remmina_plugin_service = &remmina_plugin_manager_service;
-    remmina_plugin_service->register_protocol_plugin (&remmina_plugin_ssh);
+    remmina_plugin_service->register_plugin ((RemminaPlugin *) &remmina_plugin_ssh);
 }
 
 #else

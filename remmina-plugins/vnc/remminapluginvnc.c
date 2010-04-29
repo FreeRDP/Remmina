@@ -1873,8 +1873,10 @@ static const RemminaProtocolSetting remmina_plugin_vnc_advanced_settings[] =
 
 static RemminaProtocolPlugin remmina_plugin_vnc =
 {
+    REMMINA_PLUGIN_TYPE_PROTOCOL,
     "VNC",
     "Virtual Network Computing",
+
     "remmina-vnc",
     "remmina-vnc-ssh",
     "_rfb._tcp",
@@ -1891,8 +1893,10 @@ static RemminaProtocolPlugin remmina_plugin_vnc =
 
 static RemminaProtocolPlugin remmina_plugin_vnci =
 {
+    REMMINA_PLUGIN_TYPE_PROTOCOL,
     "VNCI",
     "Incoming Connection",
+
     "remmina-vnc",
     "remmina-vnc",
     NULL,
@@ -1912,12 +1916,12 @@ remmina_plugin_entry (RemminaPluginService *service)
 {
     remmina_plugin_service = service;
 
-    if (! service->register_protocol_plugin (&remmina_plugin_vnc))
+    if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_vnc))
     {
         return FALSE;
     }
 
-    if (! service->register_protocol_plugin (&remmina_plugin_vnci))
+    if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_vnci))
     {
         return FALSE;
     }

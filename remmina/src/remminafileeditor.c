@@ -394,7 +394,7 @@ remmina_file_editor_create_server (RemminaFileEditor *gfe, GtkWidget *table, gin
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_table_attach (GTK_TABLE (table), widget, 0, 1, row, row + 1, GTK_FILL, 0, 0, 0);
 
-    s = remmina_pref_get_recent (plugin->protocol);
+    s = remmina_pref_get_recent (plugin->name);
     widget = remmina_public_create_combo_entry (s, gfe->priv->remmina_file->server, TRUE);
     gtk_widget_show (widget);
     gtk_entry_set_activates_default (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (widget))), TRUE);
@@ -409,7 +409,7 @@ remmina_file_editor_create_server (RemminaFileEditor *gfe, GtkWidget *table, gin
         gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
 
         widget = gtk_button_new_with_label ("...");
-        s = g_strdup_printf (_("Browse the network to find a %s server"), plugin->protocol);
+        s = g_strdup_printf (_("Browse the network to find a %s server"), plugin->name);
         gtk_widget_set_tooltip_text (widget, s);
         g_free (s);
         gtk_widget_show (widget);
@@ -1093,7 +1093,7 @@ remmina_file_editor_protocol_combo_on_changed (GtkComboBox *combo, RemminaFileEd
     protocol = gtk_combo_box_get_active_text (combo);
     if (protocol)
     {
-        priv->plugin = remmina_plugin_manager_get_protocol_plugin (protocol);
+        priv->plugin = (RemminaProtocolPlugin *) remmina_plugin_manager_get_plugin (REMMINA_PLUGIN_TYPE_PROTOCOL, protocol);
         g_free (protocol);
         remmina_file_editor_create_all_settings (gfe);
     }
@@ -1417,7 +1417,7 @@ remmina_file_editor_init (RemminaFileEditor *gfe)
 }
 
 static gboolean
-remmina_file_editor_iterate_protocol (gchar *protocol, RemminaProtocolPlugin *plugin, gpointer data)
+remmina_file_editor_iterate_protocol (gchar *protocol, RemminaPlugin *plugin, gpointer data)
 {
     RemminaFileEditor *gfe = REMMINA_FILE_EDITOR (data);
     GtkListStore *store;
@@ -1430,8 +1430,8 @@ remmina_file_editor_iterate_protocol (gchar *protocol, RemminaProtocolPlugin *pl
     first = !gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter);
 
     gtk_list_store_append (store, &iter);
-    desc = remmina_plugin_manager_get_protocol_description (plugin);
-    gtk_list_store_set (store, &iter, 0, protocol, 1, desc, 2, plugin->icon_name, -1);
+    desc = remmina_plugin_manager_get_plugin_description (plugin);
+    gtk_list_store_set (store, &iter, 0, protocol, 1, desc, 2, ((RemminaProtocolPlugin *)plugin)->icon_name, -1);
     g_free (desc);
 
     if (first || g_strcmp0 (protocol, gfe->priv->remmina_file->protocol) == 0)
@@ -1520,7 +1520,7 @@ remmina_file_editor_new_from_file (RemminaFile *remminafile)
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 2, 3, 3, 4);
     priv->protocol_combo = widget;
-    remmina_plugin_manager_for_each_protocol (remmina_file_editor_iterate_protocol, gfe);
+    remmina_plugin_manager_for_each_plugin (REMMINA_PLUGIN_TYPE_PROTOCOL, remmina_file_editor_iterate_protocol, gfe);
     g_signal_connect (G_OBJECT (widget), "changed", G_CALLBACK (remmina_file_editor_protocol_combo_on_changed), gfe);
 
     /* Create the Preference frame */
