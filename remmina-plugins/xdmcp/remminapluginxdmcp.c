@@ -339,8 +339,10 @@ static const RemminaProtocolSetting remmina_plugin_xdmcp_basic_settings[] =
 
 static RemminaProtocolPlugin remmina_plugin_xdmcp =
 {
+    REMMINA_PLUGIN_TYPE_PROTOCOL,
     "XDMCP",
     "X Remote Session",
+
     "remmina-xdmcp",
     "remmina-xdmcp-ssh",
     NULL,
@@ -360,7 +362,7 @@ remmina_plugin_entry (RemminaPluginService *service)
 {
     remmina_plugin_service = service;
 
-    if (! service->register_protocol_plugin (&remmina_plugin_xdmcp))
+    if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_xdmcp))
     {
         return FALSE;
     }

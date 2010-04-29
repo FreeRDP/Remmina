@@ -765,18 +765,18 @@ remmina_main_file_list_on_button_press (GtkWidget *widget, GdkEventButton *event
 }
 
 static gboolean
-remmina_main_iterate_protocol_menu (gchar *protocol, RemminaProtocolPlugin *plugin, gpointer data)
+remmina_main_iterate_protocol_menu (gchar *protocol, RemminaPlugin *plugin, gpointer data)
 {
     GtkWidget *item;
     GtkWidget *image;
     gchar *desc;
 
-    desc = remmina_plugin_manager_get_protocol_description (plugin);
+    desc = remmina_plugin_manager_get_plugin_description (plugin);
     item = gtk_image_menu_item_new_with_label (desc);
     g_free (desc);
     gtk_widget_show (item);
 
-    image = gtk_image_new_from_icon_name (plugin->icon_name, GTK_ICON_SIZE_MENU);
+    image = gtk_image_new_from_icon_name (((RemminaProtocolPlugin *)plugin)->icon_name, GTK_ICON_SIZE_MENU);
     gtk_widget_show (image);
     gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
     gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (item), TRUE);
@@ -784,7 +784,7 @@ remmina_main_iterate_protocol_menu (gchar *protocol, RemminaProtocolPlugin *plug
     gtk_menu_shell_append (GTK_MENU_SHELL (data), item);
 
     g_signal_connect (G_OBJECT (item), "activate",
-        G_CALLBACK (remmina_main_action_action_quick_connect_proto), plugin->protocol);
+        G_CALLBACK (remmina_main_action_action_quick_connect_proto), plugin->name);
 
     return FALSE;
 }
@@ -931,12 +931,12 @@ remmina_main_init (RemminaMain *remminamain)
         G_CALLBACK (remmina_main_action_action_quick_connect), remminamain);
 
     menu = gtk_menu_new ();
-    remmina_plugin_manager_for_each_protocol (remmina_main_iterate_protocol_menu, menu);
+    remmina_plugin_manager_for_each_plugin (REMMINA_PLUGIN_TYPE_PROTOCOL, remmina_main_iterate_protocol_menu, menu);
     gtk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (toolitem), menu);
 
     menuitem = gtk_ui_manager_get_widget (uimanager, "/MenuBar/ActionMenu/ActionQuickConnectProtoMenu");
     menu = gtk_menu_new ();
-    remmina_plugin_manager_for_each_protocol (remmina_main_iterate_protocol_menu, menu);
+    remmina_plugin_manager_for_each_plugin (REMMINA_PLUGIN_TYPE_PROTOCOL, remmina_main_iterate_protocol_menu, menu);
     gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
 
     gtk_window_add_accel_group (GTK_WINDOW (remminamain), gtk_ui_manager_get_accel_group (uimanager));

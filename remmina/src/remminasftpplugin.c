@@ -185,8 +185,10 @@ remmina_plugin_sftp_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeat
 
 static RemminaProtocolPlugin remmina_plugin_sftp =
 {
+    REMMINA_PLUGIN_TYPE_PROTOCOL,
     "SFTP",
     N_("Secure File Transfer"),
+
     "remmina-sftp",
     "remmina-sftp",
     NULL,
@@ -205,7 +207,7 @@ void
 remmina_sftp_plugin_register (void)
 {
     remmina_plugin_service = &remmina_plugin_manager_service;
-    remmina_plugin_service->register_protocol_plugin (&remmina_plugin_sftp);
+    remmina_plugin_service->register_plugin ((RemminaPlugin *) &remmina_plugin_sftp);
 }
 
 #else

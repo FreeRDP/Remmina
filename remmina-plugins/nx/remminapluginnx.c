@@ -472,8 +472,10 @@ static const RemminaProtocolSetting remmina_plugin_nx_advanced_settings[] =
 
 static RemminaProtocolPlugin remmina_plugin_nx =
 {
+    REMMINA_PLUGIN_TYPE_PROTOCOL,
     "NX",
     "NX Technology",
+
     "remmina-nx",
     "remmina-nx",
     NULL,
@@ -509,7 +511,7 @@ remmina_plugin_entry (RemminaPluginService *service)
         XCloseDisplay (dpy);
     }
 
-    if (! service->register_protocol_plugin (&remmina_plugin_nx))
+    if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_nx))
     {
         return FALSE;
     }
