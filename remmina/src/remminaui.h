@@ -25,7 +25,8 @@
 
 G_BEGIN_DECLS
 
-gboolean remmina_ui_confirm (RemminaUIConfirmType type, GtkWidget *image, const gchar *s);
+gboolean remmina_ui_confirm (RemminaUIConfirmType type, GtkWidget *image, const gchar *s,
+    GCallback callback, gpointer data);
 
 G_END_DECLS
 

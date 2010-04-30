@@ -20,13 +20,14 @@
 
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include "remminawidgetpool.h"
 #include "remminaui.h"
 
 gboolean
-remmina_ui_confirm (RemminaUIConfirmType type, GtkWidget *image, const gchar *s)
+remmina_ui_confirm (RemminaUIConfirmType type, GtkWidget *image, const gchar *s,
+    GCallback callback, gpointer data)
 {
     GtkWidget *dialog;
-    gint ret;
 
     switch (type)
     {
@@ -38,12 +39,10 @@ remmina_ui_confirm (RemminaUIConfirmType type, GtkWidget *image, const gchar *s)
         {
             gtk_message_dialog_set_image (GTK_MESSAGE_DIALOG (dialog), image);
         }
-        ret = gtk_dialog_run (GTK_DIALOG (dialog));
-        gtk_widget_destroy (dialog);
-        if (ret == GTK_RESPONSE_YES)
-        {
-            return TRUE;
-        }
+        g_signal_connect (G_OBJECT (dialog), "response", callback, data);
+        g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
+        remmina_widget_pool_register (dialog);
+        gtk_widget_show (dialog);
         break;
     }
     return FALSE;

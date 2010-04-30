@@ -118,7 +118,8 @@ typedef struct _RemminaPluginService
     void         (* log_print)                           (const gchar *text);
     void         (* log_printf)                          (const gchar *fmt, ...);
 
-    gboolean     (* ui_confirm)                          (RemminaUIConfirmType type, GtkWidget *image, const gchar *s);
+    gboolean     (* ui_confirm)                          (RemminaUIConfirmType type, GtkWidget *image, const gchar *s,
+                                                          GCallback callback, gpointer data);
 } RemminaPluginService;
 
 /* "Prototype" of the plugin entry function */
