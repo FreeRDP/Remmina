@@ -22,7 +22,7 @@
 #include "remminapublic.h"
 #include "remminawidgetpool.h"
 
-GPtrArray *remmina_widget_pool = NULL;
+static GPtrArray *remmina_widget_pool = NULL;
 
 static guint remmina_widget_pool_try_quit_handler = 0;
 
@@ -35,6 +35,13 @@ remmina_widget_pool_try_quit (gpointer data)
     }
     remmina_widget_pool_try_quit_handler = 0;
     return FALSE;
+}
+
+void
+remmina_widget_pool_init (void)
+{
+    remmina_widget_pool = g_ptr_array_new ();
+    remmina_widget_pool_try_quit_handler = g_timeout_add (15000, remmina_widget_pool_try_quit, NULL);
 }
 
 static void
@@ -51,10 +58,6 @@ remmina_widget_pool_on_widget_destroy (GtkWidget *widget, gpointer data)
 void
 remmina_widget_pool_register (GtkWidget *widget)
 {
-    if (remmina_widget_pool == NULL)
-    {
-        remmina_widget_pool = g_ptr_array_new ();
-    }
     g_ptr_array_add (remmina_widget_pool, widget);
     g_signal_connect (G_OBJECT (widget), "destroy", G_CALLBACK (remmina_widget_pool_on_widget_destroy), NULL);
     if (remmina_widget_pool_try_quit_handler)

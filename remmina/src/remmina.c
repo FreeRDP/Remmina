@@ -343,6 +343,7 @@ main (int argc, char* argv[])
     remmina_file_manager_init ();
     remmina_pref_init ();
     remmina_plugin_manager_init ();
+    remmina_widget_pool_init ();
     remmina_sftp_plugin_register ();
     remmina_ssh_plugin_register ();
 
@@ -360,10 +361,7 @@ main (int argc, char* argv[])
 #endif
     g_free (data);
 
-    if (remmina_widget_pool && remmina_widget_pool->len > 0)
-    {    
-        gtk_main ();
-    }
+    gtk_main ();
 
     THREADS_LEAVE    
 
