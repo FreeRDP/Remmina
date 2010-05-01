@@ -23,11 +23,10 @@
 #include "remminawidgetpool.h"
 #include "remminaui.h"
 
-gboolean
-remmina_ui_confirm (RemminaUIConfirmType type, GtkWidget *image, const gchar *s,
-    GCallback callback, gpointer data)
+GtkWidget*
+remmina_ui_confirm (RemminaUIConfirmType type, const gchar *s, GCallback callback, gpointer data)
 {
-    GtkWidget *dialog;
+    GtkWidget *dialog = NULL;
 
     switch (type)
     {
@@ -35,16 +34,13 @@ remmina_ui_confirm (RemminaUIConfirmType type, GtkWidget *image, const gchar *s,
         dialog = gtk_message_dialog_new (NULL,
             GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
             _("%s wants to share his/her desktop.\nDo you accept the invitation?"), s);
-        if (image)
-        {
-            gtk_message_dialog_set_image (GTK_MESSAGE_DIALOG (dialog), image);
-        }
         g_signal_connect (G_OBJECT (dialog), "response", callback, data);
         g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
+        gtk_window_set_title (GTK_WINDOW (dialog), _("Desktop sharing invitation"));
         remmina_widget_pool_register (dialog);
         gtk_widget_show (dialog);
         break;
     }
-    return FALSE;
+    return dialog;
 }
 

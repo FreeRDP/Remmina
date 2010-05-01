@@ -18,14 +18,17 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __REMMINAUI_H__
-#define __REMMINAUI_H__
-
-#include "remmina/types.h" 
+#ifndef __REMMINATPCHANNELHANDLER_H__
+#define __REMMINATPCHANNELHANDLER_H__
 
 G_BEGIN_DECLS
 
-GtkWidget* remmina_ui_confirm (RemminaUIConfirmType type, const gchar *s, GCallback callback, gpointer data);
+void
+remmina_tp_channel_handler_new (
+    const gchar *account_path,
+    const gchar *connection_path,
+    const gchar *channel_path,
+    GHashTable *channel_properties);
 
 G_END_DECLS
 

@@ -3,7 +3,10 @@ plugindir = $(remmina_plugindir)
 
 plugin_LTLIBRARIES = remmina-plugin-telepathy.la
 
-remmina_plugin_telepathy_la_SOURCES = remminaplugintelepathy.c
+remmina_plugin_telepathy_la_SOURCES = \
+    remminaplugintelepathy.c \
+    remminatphandler.c remminatphandler.h \
+    remminatpchannelhandler.c remminatpchannelhandler.h
 
 remmina_plugin_telepathy_la_CFLAGS = @TELEPATHY_CFLAGS@ @REMMINA_PLUGINS_CFLAGS@
 
