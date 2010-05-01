@@ -545,6 +545,23 @@ remmina_plugin_rdpui_queuedraw (RemminaProtocolWidget *gp, gint x, gint y, gint 
 }
 
 static void
+remmina_plugin_rdpui_queuecursor (RemminaProtocolWidget *gp, GdkPixbuf *pixbuf, gboolean null_cursor, gint x, gint y)
+{
+    RemminaPluginRdpData *gpdata;
+
+    gpdata = GET_DATA (gp);
+
+    gpdata->queuecursor_pixbuf = pixbuf;
+    gpdata->queuecursor_null = null_cursor;
+    gpdata->queuecursor_x = x;
+    gpdata->queuecursor_y = y;
+    if (!gpdata->queuecursor_handler)
+    {
+        gpdata->queuecursor_handler = IDLE_ADD ((GSourceFunc) remmina_plugin_rdpev_queuecursor, gp);
+    }
+}
+
+static void
 remmina_plugin_rdpui_scale_area (RemminaProtocolWidget *gp, gint *x, gint *y, gint *w, gint *h)
 {
     RemminaPluginRdpData *gpdata;
@@ -1082,23 +1099,35 @@ remmina_plugin_rdpui_set_cursor (rdpInst *inst, RD_HCURSOR cursor)
     RemminaPluginRdpData *gpdata;
     GdkPixbuf *pixbuf;
     gint x, y;
-    GdkCursor *cur;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
     pixbuf = GDK_PIXBUF (cursor);
     x = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (pixbuf), "x"));
     y = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (pixbuf), "y"));
-    THREADS_ENTER
-    cur = gdk_cursor_new_from_pixbuf (gdk_display_get_default (), pixbuf, x, y);
-    gdk_window_set_cursor (gtk_widget_get_window (gpdata->drawing_area), cur);
-    gdk_cursor_unref (cur);
-    THREADS_LEAVE
+
+    LOCK_BUFFER (TRUE)
+    remmina_plugin_rdpui_queuecursor (gp, pixbuf, FALSE, x, y);
+    UNLOCK_BUFFER (TRUE)
 }
 
 static void
 remmina_plugin_rdpui_destroy_cursor (rdpInst *inst, RD_HCURSOR cursor)
 {
+    RemminaProtocolWidget *gp;
+    RemminaPluginRdpData *gpdata;
+
+    gp = GET_WIDGET (inst);
+    gpdata = GET_DATA (gp);
+
+    LOCK_BUFFER (TRUE)
+    if (gpdata->queuecursor_handler && GDK_PIXBUF (cursor) == gpdata->queuecursor_pixbuf)
+    {
+        g_source_remove (gpdata->queuecursor_handler);
+        gpdata->queuecursor_handler = 0;
+        gpdata->queuecursor_pixbuf = NULL;
+    }
+    UNLOCK_BUFFER (TRUE)
     g_object_unref (GDK_PIXBUF (cursor));
 }
 
@@ -1130,15 +1159,13 @@ remmina_plugin_rdpui_set_null_cursor (rdpInst *inst)
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
-    GdkCursor *cur;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
-    THREADS_ENTER
-    cur = gdk_cursor_new (GDK_BLANK_CURSOR);
-    gdk_window_set_cursor (gtk_widget_get_window (gpdata->drawing_area), cur);
-    gdk_cursor_unref (cur);
-    THREADS_LEAVE
+
+    LOCK_BUFFER (TRUE)
+    remmina_plugin_rdpui_queuecursor (gp, NULL, TRUE, 0, 0);
+    UNLOCK_BUFFER (TRUE)
 }
 
 static void
@@ -1149,9 +1176,10 @@ remmina_plugin_rdpui_set_default_cursor (rdpInst *inst)
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
-    THREADS_ENTER
-    gdk_window_set_cursor (gtk_widget_get_window (gpdata->drawing_area), NULL);
-    THREADS_LEAVE
+
+    LOCK_BUFFER (TRUE)
+    remmina_plugin_rdpui_queuecursor (gp, NULL, FALSE, 0, 0);
+    UNLOCK_BUFFER (TRUE)
 }
 
 static RD_HCOLOURMAP
@@ -1340,6 +1368,11 @@ remmina_plugin_rdpui_uninit (RemminaProtocolWidget *gp)
     {
         g_source_remove (gpdata->queuedraw_handler);
         gpdata->queuedraw_handler = 0;
+    }
+    if (gpdata->queuecursor_handler)
+    {
+        g_source_remove (gpdata->queuecursor_handler);
+        gpdata->queuecursor_handler = 0;
     }
     if (gpdata->rgb_buffer)
     {

@@ -64,6 +64,11 @@ typedef struct _RemminaPluginRdpData
     gint queuedraw_x, queuedraw_y, queuedraw_w, queuedraw_h;
     guint queuedraw_handler;
 
+    GdkPixbuf *queuecursor_pixbuf;
+    gboolean queuecursor_null;
+    gint queuecursor_x, queuecursor_y;
+    guint queuecursor_handler;
+
     GArray *pressed_keys;
     GQueue *event_queue;
     gint event_pipe[2];
