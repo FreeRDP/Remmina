@@ -23,6 +23,7 @@
 #include <telepathy-glib/channel.h>
 #include <telepathy-glib/contact.h>
 #include <telepathy-glib/dbus.h>
+#include <telepathy-glib/defs.h>
 #include <telepathy-glib/handle.h>
 #include <telepathy-glib/interfaces.h>
 #include <telepathy-glib/svc-client.h>
