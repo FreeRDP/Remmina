@@ -438,6 +438,40 @@ remmina_plugin_rdpev_queuedraw (RemminaProtocolWidget *gp)
     return FALSE;
 }
 
+gboolean
+remmina_plugin_rdpev_queuecursor (RemminaProtocolWidget *gp)
+{
+    RemminaPluginRdpData *gpdata;
+    GdkCursor *cur;
+
+    gpdata = GET_DATA (gp);
+
+    LOCK_BUFFER (FALSE)
+    gpdata->queuecursor_handler = 0;
+
+    if (gpdata->queuecursor_pixbuf)
+    {
+        cur = gdk_cursor_new_from_pixbuf (gdk_display_get_default (),
+            gpdata->queuecursor_pixbuf, gpdata->queuecursor_x, gpdata->queuecursor_y);
+        gdk_window_set_cursor (gtk_widget_get_window (gpdata->drawing_area), cur);
+        gdk_cursor_unref (cur);
+        gpdata->queuecursor_pixbuf = NULL;
+    }
+    else if (gpdata->queuecursor_null)
+    {
+        cur = gdk_cursor_new (GDK_BLANK_CURSOR);
+        gdk_window_set_cursor (gtk_widget_get_window (gpdata->drawing_area), cur);
+        gdk_cursor_unref (cur);
+    }
+    else
+    {
+        gdk_window_set_cursor (gtk_widget_get_window (gpdata->drawing_area), NULL);
+    }
+    UNLOCK_BUFFER (FALSE)
+
+    return FALSE;
+}
+
 void
 remmina_plugin_rdpev_unfocus (RemminaProtocolWidget *gp)
 {
