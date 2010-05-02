@@ -2181,11 +2181,12 @@ remmina_connection_window_open_from_filename (const gchar *filename)
 void
 remmina_connection_window_open_from_file (RemminaFile *remminafile)
 {
-    remmina_connection_window_open_from_file_with_data (remminafile, NULL);
+    remmina_connection_window_open_from_file_full (remminafile, NULL, NULL, NULL);
 }
 
-void
-remmina_connection_window_open_from_file_with_data (RemminaFile *remminafile, gpointer data)
+GtkWidget*
+remmina_connection_window_open_from_file_full (RemminaFile *remminafile,
+    GCallback disconnect_cb, gpointer data, guint *handler)
 {
     RemminaConnectionObject *cnnobj;
     GdkColor color;
@@ -2206,6 +2207,11 @@ remmina_connection_window_open_from_file_with_data (RemminaFile *remminafile, gp
     gtk_widget_show (cnnobj->proto);
     g_signal_connect (G_OBJECT (cnnobj->proto), "connect",
         G_CALLBACK (remmina_connection_object_on_connect), cnnobj);
+    if (disconnect_cb)
+    {
+        *handler = g_signal_connect (G_OBJECT (cnnobj->proto), "disconnect",
+            disconnect_cb, data);
+    }
     g_signal_connect (G_OBJECT (cnnobj->proto), "disconnect",
         G_CALLBACK (remmina_connection_object_on_disconnect), cnnobj);
     g_signal_connect (G_OBJECT (cnnobj->proto), "desktop-resize",
@@ -2235,5 +2241,7 @@ remmina_connection_window_open_from_file_with_data (RemminaFile *remminafile, gp
     if (!remmina_pref.save_view_mode) cnnobj->remmina_file->viewmode = remmina_pref.default_mode;
 
     remmina_protocol_widget_open_connection (REMMINA_PROTOCOL_WIDGET (cnnobj->proto), remminafile);
+
+    return cnnobj->proto;
 }
 
