@@ -118,9 +118,17 @@ remmina_plugin_rdpev_update_scale_buffer (RemminaProtocolWidget *gp)
             gpdata->scale_height = (remminafile->vscale > 0 ?
                 MAX (1, gpheight * remminafile->vscale / 100) : height);
 
-            gpdata->scale_buffer = gdk_pixbuf_scale_simple (gpdata->rgb_buffer,
-                gpdata->scale_width, gpdata->scale_height,
-                remmina_plugin_service->pref_get_scale_quality ());
+            if (gpdata->scale_width == gpwidth && gpdata->scale_height == gpheight)
+            {
+                /* Same size, just copy the pixels */
+                gpdata->scale_buffer = gdk_pixbuf_copy (gpdata->rgb_buffer);
+            }
+            else
+            {
+                gpdata->scale_buffer = gdk_pixbuf_scale_simple (gpdata->rgb_buffer,
+                    gpdata->scale_width, gpdata->scale_height,
+                    remmina_plugin_service->pref_get_scale_quality ());
+            }
 
             UNLOCK_BUFFER (FALSE)
         }

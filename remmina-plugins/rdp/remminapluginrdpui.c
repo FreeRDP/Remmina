@@ -575,6 +575,13 @@ remmina_plugin_rdpui_scale_area (RemminaProtocolWidget *gp, gint *x, gint *y, gi
     height = remmina_plugin_service->protocol_plugin_get_height (gp);
     if (width == 0 || height == 0) return;
 
+    if (gpdata->scale_width == width && gpdata->scale_height == height)
+    {
+        /* Same size, just copy the pixels */
+        gdk_pixbuf_copy_area (gpdata->rgb_buffer, *x, *y, *w, *h, gpdata->scale_buffer, *x, *y);
+        return;
+    }
+
     /* We have to extend the scaled region one scaled pixel, to avoid gaps */
     sx = MIN (MAX (0, (*x) * gpdata->scale_width / width
         - gpdata->scale_width / width - 2), gpdata->scale_width - 1);
