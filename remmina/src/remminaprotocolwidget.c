@@ -306,14 +306,14 @@ remmina_protocol_widget_call_feature (RemminaProtocolWidget *gp, RemminaProtocol
 #ifdef HAVE_LIBSSH
     case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
         if (!gp->priv->ssh_tunnel) return;
-        remmina_connection_window_open_from_file_with_data (
-            remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SFTP"), gp->priv->ssh_tunnel);
+        remmina_connection_window_open_from_file_full (
+            remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SFTP"), NULL, gp->priv->ssh_tunnel, NULL);
         return;
 
     case REMMINA_PROTOCOL_FEATURE_TOOL_SSHTERM:
         if (!gp->priv->ssh_tunnel) return;
-        remmina_connection_window_open_from_file_with_data (
-            remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SSH"), gp->priv->ssh_tunnel);
+        remmina_connection_window_open_from_file_full (
+            remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SSH"), NULL, gp->priv->ssh_tunnel, NULL);
         return;
 #endif
     case REMMINA_PROTOCOL_FEATURE_UNFOCUS:

@@ -37,14 +37,18 @@ typedef struct _RemminaTpChannelHandler
     gchar *connection_path;
     gchar *channel_path;
     GHashTable *channel_properties;
+    DBusGMethodInvocation *context;
 
     GtkWidget *dialog;
+    GtkWidget *proto_widget;
+    guint disconnect_handler;
 
     TpDBusDaemon *bus;
     TpAccount *account;
     TpConnection *connection;
     TpChannel *channel;
 
+    gchar *alias;
     gchar *host;
     guint port;
     gchar *protocol;
@@ -53,6 +57,11 @@ typedef struct _RemminaTpChannelHandler
 static void
 remmina_tp_channel_handler_free (RemminaTpChannelHandler *chandler)
 {
+    if (chandler->disconnect_handler)
+    {
+        g_signal_handler_disconnect (chandler->proto_widget, chandler->disconnect_handler);
+        chandler->disconnect_handler = 0;
+    }
     g_free (chandler->connection_path);
     g_free (chandler->channel_path);
     g_hash_table_destroy (chandler->channel_properties);
@@ -71,6 +80,10 @@ remmina_tp_channel_handler_free (RemminaTpChannelHandler *chandler)
     if (chandler->channel)
     {
         g_object_unref (chandler->channel);
+    }
+    if (chandler->alias)
+    {
+        g_free (chandler->alias);
     }
     if (chandler->host)
     {
@@ -93,8 +106,30 @@ remmina_tp_channel_handler_channel_closed (TpChannel *channel, gpointer user_dat
 }
 
 static void
+remmina_tp_channel_handler_on_disconnect (GtkWidget *widget, RemminaTpChannelHandler *chandler)
+{
+    g_print ("remmina_tp_channel_handler_on_disconnect: %s\n", chandler->channel_path);
+    g_signal_handler_disconnect (widget, chandler->disconnect_handler);
+    chandler->disconnect_handler = 0;
+    tp_cli_channel_call_close (chandler->channel, -1, NULL, NULL, NULL, NULL);
+}
+
+static void
 remmina_tp_channel_handler_connect (RemminaTpChannelHandler *chandler)
 {
+    RemminaFile *remminafile;
+
+    remminafile = g_new0 (RemminaFile, 1);
+    remminafile->name = chandler->alias;
+    remminafile->protocol = chandler->protocol;
+    remminafile->server = g_strdup_printf ("%s:%i", chandler->host, chandler->port);
+    remminafile->colordepth = 8;
+
+    chandler->alias = NULL;
+    chandler->protocol = NULL;
+
+    chandler->proto_widget = remmina_plugin_telepathy_service->open_connection (remminafile,
+        G_CALLBACK (remmina_tp_channel_handler_on_disconnect), chandler, &chandler->disconnect_handler);
 }
 
 static void
@@ -153,6 +188,7 @@ static void
 remmina_tp_channel_handler_on_response (GtkDialog *dialog, gint response_id, RemminaTpChannelHandler *chandler)
 {
     GValue noop = { 0 };
+    GError *error;
 
     chandler->dialog = NULL;
     if (response_id == GTK_RESPONSE_YES)
@@ -162,9 +198,13 @@ remmina_tp_channel_handler_on_response (GtkDialog *dialog, gint response_id, Rem
             TP_SOCKET_ADDRESS_TYPE_IPV4, TP_SOCKET_ACCESS_CONTROL_LOCALHOST, &noop,
             remmina_tp_channel_handler_accept, chandler, NULL, NULL);
         g_value_unset (&noop);
+        tp_svc_client_handler_return_from_handle_channels (chandler->context);
     }
     else
     {
+        error = g_error_new (TP_ERRORS, TP_ERROR_NOT_AVAILABLE, "Channel rejected by user.");
+        dbus_g_method_return_error (chandler->context, error);
+        g_error_free (error);
         remmina_tp_channel_handler_free (chandler);
     }
 }
@@ -201,9 +241,9 @@ remmina_tp_channel_handler_get_contacts (TpConnection *connection,
         return;
     }
     contact = contacts[0];
+    chandler->alias = g_strdup (tp_contact_get_alias (contact));
     chandler->dialog = remmina_plugin_telepathy_service->ui_confirm (REMMINA_UI_CONFIRM_TYPE_SHARE_DESKTOP,
-        tp_contact_get_alias (contact),
-        G_CALLBACK (remmina_tp_channel_handler_on_response), chandler);
+        chandler->alias, G_CALLBACK (remmina_tp_channel_handler_on_response), chandler);
     if (chandler->dialog == NULL)
     {
         g_print ("ui_confirm: failed.\n");
@@ -321,7 +361,8 @@ remmina_tp_channel_handler_new (
     const gchar *account_path,
     const gchar *connection_path,
     const gchar *channel_path,
-    GHashTable *channel_properties)
+    GHashTable *channel_properties,
+    DBusGMethodInvocation *context)
 {
     TpDBusDaemon *bus;
     TpAccount *account;
@@ -350,6 +391,7 @@ remmina_tp_channel_handler_new (
     chandler->channel_properties = tp_asv_new (NULL, NULL);
     tp_g_hash_table_update (chandler->channel_properties, channel_properties,
         (GBoxedCopyFunc) g_strdup, (GBoxedCopyFunc) tp_g_value_slice_dup);
+    chandler->context = context;
 
     tp_account_prepare_async (account, NULL, remmina_tp_channel_handler_account_ready, chandler);
 }

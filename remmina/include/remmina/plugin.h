@@ -119,6 +119,8 @@ typedef struct _RemminaPluginService
     void         (* log_printf)                          (const gchar *fmt, ...);
 
     GtkWidget*   (* ui_confirm)                          (RemminaUIConfirmType type, const gchar *s, GCallback callback, gpointer data);
+
+    GtkWidget*   (* open_connection)                     (RemminaFile *remminafile, GCallback disconnect_cb, gpointer data, guint *handler);
 } RemminaPluginService;
 
 /* "Prototype" of the plugin entry function */

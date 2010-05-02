@@ -27,6 +27,7 @@
 #include "remminaprotocolwidget.h"
 #include "remminalog.h"
 #include "remminaui.h"
+#include "remminaconnectionwindow.h"
 #include "remminapluginmanager.h"
 
 static GTree* remmina_plugin_table = NULL;
@@ -85,7 +86,9 @@ RemminaPluginService remmina_plugin_manager_service =
     remmina_log_print,
     remmina_log_printf,
 
-    remmina_ui_confirm
+    remmina_ui_confirm,
+
+    remmina_connection_window_open_from_file_full
 };
 
 static void

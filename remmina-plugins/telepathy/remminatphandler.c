@@ -66,7 +66,8 @@ remmina_tp_handler_handle_channels (
         array = g_ptr_array_index (channels, i);
         remmina_tp_channel_handler_new (account_path, connection_path,
             (const gchar *) g_value_get_boxed (g_value_array_get_nth (array, 0)),
-            (GHashTable *) g_value_get_boxed (g_value_array_get_nth (array, 1)));
+            (GHashTable *) g_value_get_boxed (g_value_array_get_nth (array, 1)),
+            context);
     }
 }
 
