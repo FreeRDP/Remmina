@@ -266,6 +266,77 @@ remmina_sftp_client_thread_recursive_dir (RemminaSFTPClient *client, RemminaSFTP
 }
 
 static gboolean
+remmina_sftp_client_thread_recursive_localdir (RemminaSFTPClient *client, RemminaFTPTask *task,
+    const gchar *rootdir_path, const gchar *subdir_path, GPtrArray *array)
+{
+    GDir *dir;
+    gchar *path;
+    const gchar *name;
+    gchar *relpath;
+    gchar *abspath;
+    struct stat st;
+    gboolean ret = TRUE;
+
+    path = g_build_filename (rootdir_path, subdir_path, NULL);
+    dir = g_dir_open (path, 0, NULL);
+    if (dir == NULL)
+    {
+        g_free (path);
+        return FALSE;
+    }
+    while ((name = g_dir_read_name (dir)) != NULL)
+    {
+        if (THREAD_CHECK_EXIT)
+        {
+            ret = FALSE;
+            break;
+        }
+        if (g_strcmp0 (name, ".") == 0 || g_strcmp0 (name, "..") == 0) continue;
+        abspath = g_build_filename (path, name, NULL);
+        if (g_stat (abspath, &st) < 0)
+        {
+            g_free (abspath);
+            continue;
+        }
+        relpath = g_build_filename (subdir_path ? subdir_path : "", name, NULL);
+        g_ptr_array_add (array, relpath);
+        if (g_file_test (abspath, G_FILE_TEST_IS_DIR))
+        {
+            ret = remmina_sftp_client_thread_recursive_localdir (client, task, rootdir_path, relpath, array);
+            if (!ret) break;
+        }
+        else
+        {
+            task->size += (gfloat) st.st_size;
+        }
+        g_free (abspath);
+    }
+    g_free (path);
+    g_dir_close (dir);
+    return ret;
+}
+
+static gboolean
+remmina_sftp_client_thread_mkdir (RemminaSFTPClient *client, RemminaSFTP *sftp, RemminaFTPTask *task, const gchar *path)
+{
+    sftp_attributes sftpattr;
+
+    sftpattr = sftp_stat (sftp->sftp_sess, path);
+    if (sftpattr != NULL)
+    {
+        sftp_attributes_free (sftpattr);
+        return TRUE;
+    }
+    if (sftp_mkdir (sftp->sftp_sess, path, 0755) < 0)
+    {
+        remmina_sftp_client_thread_set_error (client, task, _("Error creating folder %s on server. %s"),
+            path, ssh_get_error (REMMINA_SSH (client->sftp)->session));
+        return FALSE;
+    }
+    return TRUE;
+}
+
+static gboolean
 remmina_sftp_client_thread_upload_file (RemminaSFTPClient *client, RemminaSFTP *sftp, RemminaFTPTask *task,
     const gchar *remote_path, const gchar *local_path, guint64 *donesize)
 {
@@ -361,11 +432,8 @@ remmina_sftp_client_thread_main (gpointer data)
             switch (task->type)
             {
             case REMMINA_FTP_FILE_TYPE_FILE:
-                if (remmina_sftp_client_thread_download_file (client, sftp, task,
-                    remote, local, &size))
-                {
-                    remmina_sftp_client_thread_set_finish (client, task);
-                }
+                ret = remmina_sftp_client_thread_download_file (client, sftp, task,
+                    remote, local, &size);
                 break;
 
             case REMMINA_FTP_FILE_TYPE_DIR:
@@ -389,18 +457,67 @@ remmina_sftp_client_thread_main (gpointer data)
                         if (!ret) break;
                     }
                 }
+                g_ptr_array_foreach (array, (GFunc) g_free, NULL);
                 g_ptr_array_free (array, TRUE);
-                if (ret)
-                {
-                    remmina_sftp_client_thread_set_finish (client, task);
-                }
                 break;
+
+            default:
+                ret = 0;
+                break;
+            }
+            if (ret)
+            {
+                remmina_sftp_client_thread_set_finish (client, task);
             }
             break;
 
         case REMMINA_FTP_TASK_TYPE_UPLOAD:
-            if (remmina_sftp_client_thread_upload_file (client, sftp, task,
-                remote, local, &size))
+            switch (task->type)
+            {
+            case REMMINA_FTP_FILE_TYPE_FILE:
+                ret = remmina_sftp_client_thread_upload_file (client, sftp, task,
+                    remote, local, &size);
+                break;
+
+            case REMMINA_FTP_FILE_TYPE_DIR:
+                ret = remmina_sftp_client_thread_mkdir (client, sftp, task, remote);
+                if (!ret) break;
+                array = g_ptr_array_new ();
+                ret = remmina_sftp_client_thread_recursive_localdir (client, task, local, NULL, array);
+                if (ret)
+                {
+                    for (i = 0; i < array->len; i++)
+                    {
+                        if (THREAD_CHECK_EXIT)
+                        {
+                            ret = FALSE;
+                            break;
+                        }
+                        remote_file = remmina_public_combine_path (remote, (gchar*) g_ptr_array_index (array, i));
+                        local_file = g_build_filename (local, (gchar*) g_ptr_array_index (array, i), NULL);
+                        if (g_file_test (local_file, G_FILE_TEST_IS_DIR))
+                        {
+                            ret = remmina_sftp_client_thread_mkdir (client, sftp, task, remote_file);
+                        }
+                        else
+                        {
+                            ret = remmina_sftp_client_thread_upload_file (client, sftp, task,
+                                remote_file, local_file, &size);
+                        }
+                        g_free (remote_file);
+                        g_free (local_file);
+                        if (!ret) break;
+                    }
+                }
+                g_ptr_array_foreach (array, (GFunc) g_free, NULL);
+                g_ptr_array_free (array, TRUE);
+                break;
+
+            default:
+                ret = 0;
+                break;
+            }
+            if (ret)
             {
                 remmina_sftp_client_thread_set_finish (client, task);
                 tmp = remmina_ftp_client_get_dir (REMMINA_FTP_CLIENT (client));
