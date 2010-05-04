@@ -437,7 +437,7 @@ remmina_plugin_rdpui_fill_pattern (RemminaPluginRdpData *gpdata,
     {
         for (ix = 0; ix < 8; ix++)
         {
-            memcpy (dstpat, ((*srcpat & (0x80 >> ix)) ? gpdata->fgcolor : gpdata->bgcolor), 3);
+            memcpy (dstpat, ((*srcpat & (0x80 >> ix)) ? gpdata->bgcolor : gpdata->fgcolor), 3);
             dstpat += 3;
         }
         if (reverse)
