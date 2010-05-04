@@ -904,7 +904,18 @@ remmina_plugin_rdpui_end_draw_glyphs (rdpInst *inst, int x, int y, int cx, int c
 static uint32
 remmina_plugin_rdpui_get_toggle_keys_state (rdpInst *inst)
 {
-    return 0;
+    GdkKeymap *keymap;
+    uint32 state = 0;
+
+    THREADS_ENTER
+    keymap = gdk_keymap_get_default ();
+    if (gdk_keymap_get_caps_lock_state (keymap))
+    {
+        state |= KBD_SYNC_CAPS_LOCK;
+    }
+    THREADS_LEAVE
+    
+    return state;
 }
 
 static void
