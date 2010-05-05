@@ -600,6 +600,7 @@ remmina_ssh_tunnel_main_thread (gpointer data)
     gboolean first = TRUE;
     gboolean disconnected;
     gint sock;
+    gint maxfd;
     gint i;
     gint ret;
 
@@ -813,12 +814,17 @@ remmina_ssh_tunnel_main_thread (gpointer data)
         timeout.tv_usec = 200000;
 
         FD_ZERO (&set);
+        maxfd = 0;
         for (i = 0; i < tunnel->num_channels; i++)
         {
+            if (tunnel->sockets[i] > maxfd)
+            {
+                maxfd = tunnel->sockets[i];
+            }
             FD_SET (tunnel->sockets[i], &set);
         }
 
-        ret = ssh_select (tunnel->channels, tunnel->channels_out, FD_SETSIZE, &set, &timeout);
+        ret = ssh_select (tunnel->channels, tunnel->channels_out, maxfd + 1, &set, &timeout);
         if (!tunnel->running) break;
         if (ret == SSH_EINTR) continue;
         if (ret == -1) break;
@@ -1198,7 +1204,7 @@ remmina_ssh_shell_thread (gpointer data)
         FD_ZERO (&fds);
         FD_SET (shell->master, &fds);
 
-        ret = ssh_select (ch, chout, FD_SETSIZE, &fds, &timeout);
+        ret = ssh_select (ch, chout, shell->master + 1, &fds, &timeout);
         if (ret == SSH_EINTR) continue;
         if (ret == -1) break;
 

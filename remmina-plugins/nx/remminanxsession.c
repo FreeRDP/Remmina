@@ -764,7 +764,7 @@ remmina_nx_session_tunnel_main_thread (gpointer data)
         FD_ZERO (&set);
         FD_SET (sock, &set);
 
-        ret = ssh_select (channels, channels_out, FD_SETSIZE, &set, &timeout);
+        ret = ssh_select (channels, channels_out, sock + 1, &set, &timeout);
         if (!nx->running) break;
         if (ret == SSH_EINTR) continue;
         if (ret == -1) break;
