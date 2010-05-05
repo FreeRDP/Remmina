@@ -19,6 +19,7 @@
  */
 
 #include "common/remminaplugincommon.h"
+#include <time.h>
 #include <libssh/libssh.h>
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
@@ -42,6 +43,62 @@ typedef struct _RemminaPluginNxData
 static RemminaPluginService *remmina_plugin_service = NULL;
 
 static gchar *remmina_kbtype = "pc102/us";
+
+/* When more than one NX sessions is connecting in progress, we need this mutex and array
+ * to prevent them from stealing the same window id.
+ */
+static pthread_mutex_t remmina_nx_init_mutex;
+static GArray *remmina_nx_window_id_array;
+
+static gboolean
+remmina_plugin_nx_try_window_id (Window window_id)
+{
+    gint i;
+    gboolean found = FALSE;
+
+    CANCEL_DEFER
+    pthread_mutex_lock (&remmina_nx_init_mutex);
+    for (i = 0; i < remmina_nx_window_id_array->len; i++)
+    {
+        if (g_array_index (remmina_nx_window_id_array, Window, i) == window_id)
+        {
+            found = TRUE;
+            break;
+        }
+    }
+    if (!found)
+    {
+        g_array_append_val (remmina_nx_window_id_array, window_id);
+    }
+    pthread_mutex_unlock (&remmina_nx_init_mutex);
+    CANCEL_ASYNC
+
+    return (!found);
+}
+
+static void
+remmina_plugin_nx_remove_window_id (Window window_id)
+{
+    gint i;
+    gboolean found = FALSE;
+
+    CANCEL_DEFER
+    pthread_mutex_lock (&remmina_nx_init_mutex);
+    for (i = 0; i < remmina_nx_window_id_array->len; i++)
+    {
+        if (g_array_index (remmina_nx_window_id_array, Window, i) == window_id)
+        {
+            found = TRUE;
+            break;
+        }
+    }
+    if (found)
+    {
+        g_array_remove_index_fast (remmina_nx_window_id_array, i);
+    }
+    pthread_mutex_unlock (&remmina_nx_init_mutex);
+    CANCEL_ASYNC
+}
 
 static void
 remmina_plugin_nx_on_plug_added (GtkSocket *socket, RemminaProtocolWidget *gp)
@@ -117,19 +174,32 @@ remmina_plugin_nx_monitor_create_notify (RemminaProtocolWidget *gp, const gchar 
     int format;
     unsigned long nitems, rest;
     unsigned char *data = NULL;
+    struct timespec ts;
+
+    CANCEL_DEFER
 
     gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     atom = XInternAtom (gpdata->display, "WM_COMMAND", True);
     if (atom == None) return FALSE;
 
+    ts.tv_sec = 0;
+    ts.tv_nsec = 200000000;
+
     while (1)
     {
+        pthread_testcancel ();
+        while (!XPending (gpdata->display))
+        {
+            nanosleep (&ts, NULL);
+            continue;
+        }
         XNextEvent(gpdata->display, &xev);
         if (xev.type != CreateNotify) continue;
         w = xev.xcreatewindow.window;
         if (XGetWindowProperty(gpdata->display, w, atom, 0, 255, False, AnyPropertyType,
             &type, &format, &nitems, &rest, &data) != Success) continue;
-        if (data && strstr ((char *) data, cmd))
+        if (data && strstr ((char *) data, cmd) &&
+            remmina_plugin_nx_try_window_id (w))
         {
             gpdata->window_id = w;
             XFree (data);
@@ -141,6 +211,8 @@ remmina_plugin_nx_monitor_create_notify (RemminaProtocolWidget *gp, const gchar 
     XSetErrorHandler (gpdata->orig_handler);
     XCloseDisplay (gpdata->display);
     gpdata->display = NULL;
+
+    CANCEL_ASYNC
     return TRUE;
 }
 
@@ -420,6 +492,11 @@ remmina_plugin_nx_close_connection (RemminaProtocolWidget *gp)
         if (gpdata->thread) pthread_join (gpdata->thread, NULL);
     }
 
+    if (gpdata->window_id)
+    {
+        remmina_plugin_nx_remove_window_id (gpdata->window_id);
+    }
+
     if (gpdata->nx)
     {
         remmina_nx_session_free (gpdata->nx);
@@ -503,10 +580,10 @@ remmina_plugin_entry (RemminaPluginService *service)
         if (XkbRF_GetNamesProp (dpy, NULL, &vd))
         {
             remmina_kbtype = g_strdup_printf ("%s/%s", vd.model, vd.layout);
-            if (vd.layout) XFree(vd.layout);
-            if (vd.model) XFree(vd.model);
-            if (vd.variant) XFree(vd.variant);
-            if (vd.options) XFree(vd.options);
+            if (vd.layout) XFree (vd.layout);
+            if (vd.model) XFree (vd.model);
+            if (vd.variant) XFree (vd.variant);
+            if (vd.options) XFree (vd.options);
         }
         XCloseDisplay (dpy);
     }
@@ -517,6 +594,8 @@ remmina_plugin_entry (RemminaPluginService *service)
     }
 
     ssh_init ();
+    pthread_mutex_init (&remmina_nx_init_mutex, NULL);
+    remmina_nx_window_id_array = g_array_new (FALSE, TRUE, sizeof (Window));
 
     return TRUE;
 }
