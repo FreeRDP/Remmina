@@ -859,7 +859,7 @@ remmina_plugin_rdpui_draw_glyph (rdpInst *inst, int x, int y, int cx, int cy,
     srcx = 0;
     srcy = 0;
     remmina_plugin_rdpui_process_clip_full (&x, &y, &cx, &cy, &srcx, &srcy,
-        x, y, x + rg->width, y + rg->height);
+        x, y, rg->width, rg->height);
     if (cx <= 0 || cy <= 0) return;
     remmina_plugin_rdpui_process_clip (gpdata, &x, &y, &cx, &cy, &srcx, &srcy);
     cx = MIN (cx, gdk_pixbuf_get_width (gpdata->drw_buffer) - x);
@@ -871,10 +871,12 @@ remmina_plugin_rdpui_draw_glyph (rdpInst *inst, int x, int y, int cx, int cy,
     LOCK_BUFFER (TRUE)
     for (iy = 0; iy < cy; iy++)
     {
+        if (srcy + iy < 0 || y + iy < 0) continue;
         rgdata = rg->data + (srcy + iy) * rg->rowstride;
         buffer = gdk_pixbuf_get_pixels (gpdata->drw_buffer) + (y + iy) * rowstride + x * 3;
         for (ix = 0; ix < cx; ix++)
         {
+            if (srcx + ix < 0 || x + ix < 0) continue;
             if (GLYPH_PIXEL (rgdata, srcx + ix))
             {
                 memcpy (buffer + ix * 3, gpdata->fgcolor, 3);
