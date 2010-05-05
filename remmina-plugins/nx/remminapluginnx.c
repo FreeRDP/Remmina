@@ -56,7 +56,6 @@ remmina_plugin_nx_try_window_id (Window window_id)
     gint i;
     gboolean found = FALSE;
 
-    CANCEL_DEFER
     pthread_mutex_lock (&remmina_nx_init_mutex);
     for (i = 0; i < remmina_nx_window_id_array->len; i++)
     {
@@ -71,7 +70,6 @@ remmina_plugin_nx_try_window_id (Window window_id)
         g_array_append_val (remmina_nx_window_id_array, window_id);
     }
     pthread_mutex_unlock (&remmina_nx_init_mutex);
-    CANCEL_ASYNC
 
     return (!found);
 }
@@ -82,7 +80,6 @@ remmina_plugin_nx_remove_window_id (Window window_id)
     gint i;
     gboolean found = FALSE;
 
-    CANCEL_DEFER
     pthread_mutex_lock (&remmina_nx_init_mutex);
     for (i = 0; i < remmina_nx_window_id_array->len; i++)
     {
@@ -97,7 +94,6 @@ remmina_plugin_nx_remove_window_id (Window window_id)
         g_array_remove_index_fast (remmina_nx_window_id_array, i);
     }
     pthread_mutex_unlock (&remmina_nx_init_mutex);
-    CANCEL_ASYNC
 }
 
 static void
