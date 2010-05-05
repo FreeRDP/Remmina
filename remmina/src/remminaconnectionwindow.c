@@ -48,6 +48,8 @@ struct _RemminaConnectionWindowPriv
 
     GtkWidget *notebook;
 
+    guint switch_page_handler;
+
     GtkWidget *floating_toolbar;
     GtkWidget *floating_toolbar_label;
     gdouble floating_toolbar_opacity;
@@ -202,6 +204,11 @@ remmina_connection_window_destroy (GtkWidget *widget, RemminaConnectionHolder* c
     {
         gtk_widget_destroy (priv->floating_toolbar);
         priv->floating_toolbar = NULL;
+    }
+    if (priv->switch_page_handler)
+    {
+        g_source_remove (priv->switch_page_handler);
+        priv->switch_page_handler = 0;
     }
     g_free (priv);
 }
@@ -1751,13 +1758,19 @@ remmina_connection_holder_on_switch_page_real (gpointer data)
         remmina_connection_holder_update_toolbar (cnnhld);
         remmina_connection_holder_grab_focus (priv->notebook);
     }
+    priv->switch_page_handler = 0;
     return FALSE;
 }
 
 static void
 remmina_connection_holder_on_switch_page (GtkNotebook *notebook, GtkNotebookPage *page, guint page_num, RemminaConnectionHolder *cnnhld)
 {
-    g_idle_add (remmina_connection_holder_on_switch_page_real, cnnhld);
+    RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
+
+    if (!priv->switch_page_handler)
+    {
+        priv->switch_page_handler = g_idle_add (remmina_connection_holder_on_switch_page_real, cnnhld);
+    }
 }
 
 static void
