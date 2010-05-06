@@ -1423,16 +1423,13 @@ remmina_file_editor_iterate_protocol (gchar *protocol, RemminaPlugin *plugin, gp
     GtkListStore *store;
     GtkTreeIter iter;
     gboolean first;
-    gchar *desc;
 
     store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (gfe->priv->protocol_combo)));
 
     first = !gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter);
 
     gtk_list_store_append (store, &iter);
-    desc = remmina_plugin_manager_get_plugin_description (plugin);
-    gtk_list_store_set (store, &iter, 0, protocol, 1, desc, 2, ((RemminaProtocolPlugin *)plugin)->icon_name, -1);
-    g_free (desc);
+    gtk_list_store_set (store, &iter, 0, protocol, 1, plugin->description, 2, ((RemminaProtocolPlugin *)plugin)->icon_name, -1);
 
     if (first || g_strcmp0 (protocol, gfe->priv->remmina_file->protocol) == 0)
     {

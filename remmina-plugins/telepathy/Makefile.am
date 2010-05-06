@@ -8,7 +8,8 @@ remmina_plugin_telepathy_la_SOURCES = \
     remminatphandler.c remminatphandler.h \
     remminatpchannelhandler.c remminatpchannelhandler.h
 
-remmina_plugin_telepathy_la_CFLAGS = @TELEPATHY_CFLAGS@ @REMMINA_PLUGINS_CFLAGS@
+remmina_plugin_telepathy_la_CFLAGS = @TELEPATHY_CFLAGS@ @REMMINA_PLUGINS_CFLAGS@ \
+    -DREMMINA_LOCALEDIR=\"$(remmina_localedir)\"
 
 remmina_plugin_telepathy_la_LDFLAGS = -avoid-version -module
 

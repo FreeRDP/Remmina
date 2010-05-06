@@ -547,7 +547,7 @@ static RemminaProtocolPlugin remmina_plugin_nx =
 {
     REMMINA_PLUGIN_TYPE_PROTOCOL,
     "NX",
-    "NX Technology",
+    NULL,
 
     "remmina-nx",
     "remmina-nx",
@@ -571,6 +571,9 @@ remmina_plugin_entry (RemminaPluginService *service)
 
     remmina_plugin_service = service;
 
+    bindtextdomain (GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+
     if ((dpy = XkbOpenDisplay (NULL, NULL, NULL, NULL, NULL, NULL)) != NULL)
     {
         if (XkbRF_GetNamesProp (dpy, NULL, &vd))
@@ -584,6 +587,7 @@ remmina_plugin_entry (RemminaPluginService *service)
         XCloseDisplay (dpy);
     }
 
+    remmina_plugin_nx.description = _("NX - NX Technology");
     if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_nx))
     {
         return FALSE;

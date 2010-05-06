@@ -49,6 +49,9 @@ remmina_plugin_entry (RemminaPluginService *service)
 {
     remmina_plugin_telepathy_service = service;
 
+    bindtextdomain (GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+
     if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_telepathy))
     {
         return FALSE;

@@ -8,7 +8,8 @@ remmina_plugin_rdp_la_SOURCES = \
     remminapluginrdpui.c remminapluginrdpui.h \
     remminapluginrdpev.c remminapluginrdpev.h
 
-remmina_plugin_rdp_la_CFLAGS = @REMMINA_PLUGINS_CFLAGS@ @RDP_CFLAGS@
+remmina_plugin_rdp_la_CFLAGS = @REMMINA_PLUGINS_CFLAGS@ @RDP_CFLAGS@ \
+    -DREMMINA_LOCALEDIR=\"$(remmina_localedir)\"
 
 remmina_plugin_rdp_la_LDFLAGS = -avoid-version -module
 

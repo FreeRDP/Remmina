@@ -769,11 +769,8 @@ remmina_main_iterate_protocol_menu (gchar *protocol, RemminaPlugin *plugin, gpoi
 {
     GtkWidget *item;
     GtkWidget *image;
-    gchar *desc;
 
-    desc = remmina_plugin_manager_get_plugin_description (plugin);
-    item = gtk_image_menu_item_new_with_label (desc);
-    g_free (desc);
+    item = gtk_image_menu_item_new_with_label (plugin->description);
     gtk_widget_show (item);
 
     image = gtk_image_new_from_icon_name (((RemminaProtocolPlugin *)plugin)->icon_name, GTK_ICON_SIZE_MENU);
