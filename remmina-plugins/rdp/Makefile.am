@@ -6,7 +6,8 @@ plugin_LTLIBRARIES = remmina-plugin-rdp.la
 remmina_plugin_rdp_la_SOURCES = \
     remminapluginrdp.c remminapluginrdp.h \
     remminapluginrdpui.c remminapluginrdpui.h \
-    remminapluginrdpev.c remminapluginrdpev.h
+    remminapluginrdpev.c remminapluginrdpev.h \
+    remminapluginrdpfile.c remminapluginrdpfile.h
 
 remmina_plugin_rdp_la_CFLAGS = @REMMINA_PLUGINS_CFLAGS@ @RDP_CFLAGS@ \
     -DREMMINA_LOCALEDIR=\"$(remmina_localedir)\"

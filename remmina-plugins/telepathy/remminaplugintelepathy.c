@@ -38,7 +38,7 @@ static RemminaEntryPlugin remmina_plugin_telepathy =
 {
     REMMINA_PLUGIN_TYPE_ENTRY,
     "telepathy",
-    "Telepathy",
+    NULL,
 
     remmina_plugin_telepathy_entry
 };
@@ -51,6 +51,7 @@ remmina_plugin_entry (RemminaPluginService *service)
     bindtextdomain (GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
+    remmina_plugin_telepathy.description = _("Telepathy - Desktop Sharing");
     if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_telepathy))
     {
         return FALSE;

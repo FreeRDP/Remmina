@@ -586,6 +586,77 @@ remmina_main_action_view_file_mode (GtkRadioAction *action, GtkRadioAction *curr
 }
 
 static void
+remmina_main_action_tools_import_on_response (GtkDialog *dialog, gint response_id, RemminaMain *remminamain)
+{
+    GtkWidget *dlg;
+    GSList *files;
+    GSList *element;
+    gchar *path;
+    RemminaFilePlugin *plugin;
+    GString *err;
+    RemminaFile *remminafile;
+    gboolean imported;
+
+    if (response_id == GTK_RESPONSE_ACCEPT)
+    {
+        err = g_string_new (NULL);
+        imported = FALSE;
+        files = gtk_file_chooser_get_filenames (GTK_FILE_CHOOSER (dialog));
+        for (element = files; element; element = element->next)
+        {
+            path = (gchar*) element->data;
+            plugin = remmina_plugin_manager_get_file_handler (path);
+            if (plugin && (remminafile = plugin->import_func (path)) != NULL)
+            {
+                /* TODO: Just save it */
+                imported = TRUE;
+            }
+            else
+            {
+                g_string_append (err, path);
+                g_string_append_c (err, '\n');
+            }
+            g_free (path);
+        }
+        g_slist_free (files);
+        if (err->len > 0)
+        {
+            dlg = gtk_message_dialog_new (GTK_WINDOW (remminamain),
+                GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+                _("Unable to import:\n%s"), err->str);
+            g_signal_connect (G_OBJECT (dlg), "response", G_CALLBACK (gtk_widget_destroy), NULL);
+            gtk_widget_show (dlg);
+        }
+        g_string_free (err, TRUE);
+        if (imported)
+        {
+            /* TODO: Refresh the file list */
+        }
+    }
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+}
+
+static void
+remmina_main_action_tools_import (GtkAction *action, RemminaMain *remminamain)
+{
+    GtkWidget *dialog;
+
+    dialog = gtk_file_chooser_dialog_new (_("Import"), GTK_WINDOW (remminamain),
+        GTK_FILE_CHOOSER_ACTION_OPEN,
+        GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+        NULL);
+    gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (dialog), TRUE);
+    g_signal_connect (G_OBJECT (dialog), "response",
+        G_CALLBACK (remmina_main_action_tools_import_on_response), remminamain);
+    gtk_widget_show (dialog);
+}
+
+static void
+remmina_main_action_tools_export (GtkAction *action, RemminaMain *remminamain)
+{
+}
+
+static void
 remmina_main_action_tools_plugins (GtkAction *action, RemminaMain *remminamain)
 {
     remmina_plugin_manager_show (GTK_WINDOW (remminamain));
@@ -638,6 +709,9 @@ static const gchar *remmina_main_ui_xml =
 "      <menuitem name='ViewFileTreeMenu' action='ViewFileTree'/>"
 "    </menu>"
 "    <menu name='ToolsMenu' action='Tools'>"
+"      <menuitem name='ToolsImportMenu' action='ToolsImport'/>"
+"      <menuitem name='ToolsExportMenu' action='ToolsExport'/>"
+"      <separator/>"
 "      <menuitem name='ToolsPluginsMenu' action='ToolsPlugins'/>"
 "    </menu>"
 "    <menu name='HelpMenu' action='Help'>"
@@ -691,6 +765,14 @@ static const GtkActionEntry remmina_main_ui_menu_entries[] =
     { "ActionQuit", GTK_STOCK_QUIT, NULL, "<control>Q",
         N_("Quit Remmina"),
         G_CALLBACK (remmina_main_action_action_quit) },
+
+    { "ToolsImport", NULL, N_("Import"), NULL,
+        NULL,
+        G_CALLBACK (remmina_main_action_tools_import) },
+
+    { "ToolsExport", NULL, N_("Export"), NULL,
+        NULL,
+        G_CALLBACK (remmina_main_action_tools_export) },
 
     { "ToolsPlugins", NULL, N_("Plugins"), NULL,
         NULL,
@@ -795,7 +877,7 @@ remmina_main_iterate_protocol_menu (gchar *protocol, RemminaPlugin *plugin, gpoi
     gtk_menu_shell_append (GTK_MENU_SHELL (data), item);
 
     g_signal_connect (G_OBJECT (item), "activate",
-        G_CALLBACK (remmina_main_action_action_quick_connect_proto), plugin->name);
+        G_CALLBACK (remmina_main_action_action_quick_connect_proto), (gpointer) plugin->name);
 
     return FALSE;
 }
