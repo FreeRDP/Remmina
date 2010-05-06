@@ -29,6 +29,25 @@ if test "x$GCC" = "xyes"; then
     fi
 fi
 
+IT_PROG_INTLTOOL([0.35.0])
+
+GETTEXT_PACKAGE=remmina-plugins
+AC_SUBST(GETTEXT_PACKAGE)
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [The gettext package])
+
+if test "x$USE_NLS" != "xno"; then
+    ALL_LINGUAS="de el es fr hu it lt nl pl pt_PT ru uk zh_CN"
+    nls_support="yes"
+else
+    ALL_LINGUAS=""
+    nls_support="disabled."
+fi
+
+AM_GLIB_GNU_GETTEXT
+
+remmina_localedir='${datadir}/locale'
+AC_SUBST(remmina_localedir)
+
 remmina_plugindir='${libdir}/remmina/plugins'
 AC_SUBST(remmina_plugindir)
 
@@ -100,7 +119,7 @@ AC_CHECK_FILE($remminabin,
     [remminabin_found="yes"],
     [remminabin_found="no. (If you are packaging the plugins, please make sure it uses the same prefix as remmina and ignore this)"])
 
-REMMINA_PLUGINS_SUBDIRS="common"
+REMMINA_PLUGINS_SUBDIRS="common po"
 
 # Check RDP dependencies
 AC_ARG_ENABLE(rdp,
@@ -235,6 +254,7 @@ AC_SUBST(REMMINA_PLUGINS_SUBDIRS)
 AC_CONFIG_FILES([
 Makefile
 common/Makefile
+po/Makefile.in
 rdp/Makefile
 libvncserver/Makefile
 vnc/Makefile
@@ -249,6 +269,7 @@ echo
 echo "Remmina-Plugins configure result:"
 echo
 echo "* Remmina main program: $remminabin_found"
+echo "* NLS support: $nls_support"
 echo "* Multi-threaded support: $pthread_support"
 echo "* SSH support: $ssh_support"
 echo "* XKB support: $xkbfile_support"

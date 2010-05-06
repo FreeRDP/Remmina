@@ -1882,7 +1882,7 @@ static RemminaProtocolPlugin remmina_plugin_vnc =
 {
     REMMINA_PLUGIN_TYPE_PROTOCOL,
     "VNC",
-    "Virtual Network Computing",
+    NULL,
 
     "remmina-vnc",
     "remmina-vnc-ssh",
@@ -1902,7 +1902,7 @@ static RemminaProtocolPlugin remmina_plugin_vnci =
 {
     REMMINA_PLUGIN_TYPE_PROTOCOL,
     "VNCI",
-    "Incoming Connection",
+    NULL,
 
     "remmina-vnc",
     "remmina-vnc",
@@ -1923,11 +1923,16 @@ remmina_plugin_entry (RemminaPluginService *service)
 {
     remmina_plugin_service = service;
 
+    bindtextdomain (GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+
+    remmina_plugin_vnc.description = _("VNC - Virtual Network Computing");
     if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_vnc))
     {
         return FALSE;
     }
 
+    remmina_plugin_vnci.description = _("VNC - Incoming Connection");
     if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_vnci))
     {
         return FALSE;

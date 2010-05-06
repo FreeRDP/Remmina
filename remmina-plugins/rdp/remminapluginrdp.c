@@ -421,7 +421,7 @@ static RemminaProtocolPlugin remmina_plugin_rdp =
 {
     REMMINA_PLUGIN_TYPE_PROTOCOL,
     "RDP",
-    "Windows Terminal Service",
+    NULL,
 
     "remmina-rdp",
     "remmina-rdp-ssh",
@@ -442,6 +442,10 @@ remmina_plugin_entry (RemminaPluginService *service)
 {
     remmina_plugin_service = service;
 
+    bindtextdomain (GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+
+    remmina_plugin_rdp.description = _("RDP - Windows Terminal Service");
     if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_rdp))
     {
         return FALSE;

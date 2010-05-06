@@ -24,6 +24,7 @@
 
 #include "config.h"
 #include <gtk/gtk.h>
+#include <glib/gi18n-lib.h>
 #include <glib/gstdio.h>
 #include <remmina/plugin.h>
 #include <stdlib.h>

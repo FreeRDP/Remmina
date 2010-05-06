@@ -362,6 +362,10 @@ remmina_plugin_entry (RemminaPluginService *service)
 {
     remmina_plugin_service = service;
 
+    bindtextdomain (GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+
+    remmina_plugin_xdmcp.description = _("XDMCP - X Remote Session");
     if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_xdmcp))
     {
         return FALSE;

@@ -5,7 +5,8 @@ plugin_LTLIBRARIES = remmina-plugin-vnc.la
 
 remmina_plugin_vnc_la_SOURCES = remminapluginvnc.c
 
-remmina_plugin_vnc_la_CFLAGS = @VNC_CFLAGS@ @REMMINA_PLUGINS_CFLAGS@
+remmina_plugin_vnc_la_CFLAGS = @VNC_CFLAGS@ @REMMINA_PLUGINS_CFLAGS@ \
+    -DREMMINA_LOCALEDIR=\"$(remmina_localedir)\"
 
 remmina_plugin_vnc_la_LDFLAGS = -avoid-version -module
 

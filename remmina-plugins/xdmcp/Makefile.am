@@ -5,7 +5,8 @@ plugin_LTLIBRARIES = remmina-plugin-xdmcp.la
 
 remmina_plugin_xdmcp_la_SOURCES = remminapluginxdmcp.c
 
-remmina_plugin_xdmcp_la_CFLAGS = @REMMINA_PLUGINS_CFLAGS@
+remmina_plugin_xdmcp_la_CFLAGS = @REMMINA_PLUGINS_CFLAGS@ \
+    -DREMMINA_LOCALEDIR=\"$(remmina_localedir)\"
 
 remmina_plugin_xdmcp_la_LDFLAGS = -avoid-version -module
 

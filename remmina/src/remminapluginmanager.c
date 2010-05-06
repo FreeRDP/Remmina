@@ -190,18 +190,3 @@ remmina_plugin_manager_for_each_plugin (RemminaPluginType type, RemminaPluginFun
     g_tree_foreach (remmina_plugin_table, (GTraverseFunc) remmina_plugin_manager_for_each_func, &iter_data);
 }
 
-gchar*
-remmina_plugin_manager_get_plugin_description (RemminaPlugin* plugin)
-{
-    return g_strdup_printf ("%s - %s", plugin->name, _(plugin->description));
-}
-
-/* Known plugin descriptions. For translation purpose only */
-#ifdef __DO_NOT_COMPILE_ME__
-N_("Windows Terminal Service")
-N_("Virtual Network Computing")
-N_("Incoming Connection")
-N_("X Remote Session")
-N_("NX Technology")
-#endif
-

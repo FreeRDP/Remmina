@@ -7,7 +7,8 @@ remmina_plugin_nx_la_SOURCES = \
     remminanxsession.c remminanxsession.h \
     remminapluginnx.c
 
-remmina_plugin_nx_la_CFLAGS = @XKBFILE_CFLAGS@ @REMMINA_PLUGINS_CFLAGS@
+remmina_plugin_nx_la_CFLAGS = @XKBFILE_CFLAGS@ @REMMINA_PLUGINS_CFLAGS@ \
+    -DREMMINA_LOCALEDIR=\"$(remmina_localedir)\"
 
 remmina_plugin_nx_la_LDFLAGS = -avoid-version -module
 
