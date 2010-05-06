@@ -18,10 +18,10 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#include "config.h"
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <string.h>
-#include "config.h"
 #include "remminafile.h"
 #include "remminapref.h"
 #include "remminaprotocolwidget.h"
@@ -31,6 +31,12 @@
 #include "remminapluginmanager.h"
 
 static GTree* remmina_plugin_table = NULL;
+
+static const gchar *remmina_plugin_type_name[] =
+{
+    N_("Protocol"),
+    N_("Entry")
+};
 
 static gboolean
 remmina_plugin_manager_register_plugin (RemminaPlugin *plugin)
@@ -188,5 +194,72 @@ remmina_plugin_manager_for_each_plugin (RemminaPluginType type, RemminaPluginFun
     iter_data.func = func;
     iter_data.data = data;
     g_tree_foreach (remmina_plugin_table, (GTraverseFunc) remmina_plugin_manager_for_each_func, &iter_data);
+}
+
+static gboolean
+remmina_plugin_manager_show_for_each (gchar *name, RemminaPlugin *plugin, GtkListStore *store)
+{
+    GtkTreeIter iter;
+
+    gtk_list_store_append (store, &iter);
+    gtk_list_store_set (store, &iter,
+        0, plugin->name,
+        1, _(remmina_plugin_type_name[plugin->type]),
+        2, plugin->description,
+        -1);
+    return FALSE;
+}
+
+void
+remmina_plugin_manager_show (GtkWindow *parent)
+{
+    GtkWidget *dialog;
+    GtkWidget *scrolledwindow;
+    GtkWidget *tree;
+    GtkCellRenderer *renderer;
+    GtkTreeViewColumn *column;
+    GtkListStore *store;
+
+    dialog = gtk_dialog_new_with_buttons (_("Plugins"), parent, GTK_DIALOG_MODAL,
+        GTK_STOCK_OK, GTK_RESPONSE_ACCEPT, NULL);
+    g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), dialog);
+    gtk_window_set_default_size (GTK_WINDOW (dialog), 400, 300);
+
+    scrolledwindow = gtk_scrolled_window_new (NULL, NULL);
+    gtk_widget_show (scrolledwindow);
+    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolledwindow),
+        GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), scrolledwindow, TRUE, TRUE, 0);
+    
+    tree = gtk_tree_view_new ();
+    gtk_container_add (GTK_CONTAINER (scrolledwindow), tree);
+    gtk_widget_show (tree);
+
+    store = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+    g_tree_foreach (remmina_plugin_table, (GTraverseFunc) remmina_plugin_manager_show_for_each, store);
+    gtk_tree_view_set_model (GTK_TREE_VIEW (tree), GTK_TREE_MODEL (store));
+
+    renderer = gtk_cell_renderer_text_new ();
+    column = gtk_tree_view_column_new_with_attributes (_("Name"),
+        renderer, "text", 0, NULL);
+    gtk_tree_view_column_set_resizable (column, TRUE);
+    gtk_tree_view_column_set_sort_column_id (column, 0);
+    gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+
+    renderer = gtk_cell_renderer_text_new ();
+    column = gtk_tree_view_column_new_with_attributes (_("Type"),
+        renderer, "text", 1, NULL);
+    gtk_tree_view_column_set_resizable (column, TRUE);
+    gtk_tree_view_column_set_sort_column_id (column, 1);
+    gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+
+    renderer = gtk_cell_renderer_text_new ();
+    column = gtk_tree_view_column_new_with_attributes (_("Description"),
+        renderer, "text", 2, NULL);
+    gtk_tree_view_column_set_resizable (column, TRUE);
+    gtk_tree_view_column_set_sort_column_id (column, 2);
+    gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+
+    gtk_widget_show (dialog);
 }
 
