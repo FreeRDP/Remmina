@@ -28,7 +28,6 @@ static RemminaTpHandler *remmina_tp_handler = NULL;
 void
 remmina_plugin_telepathy_entry (void)
 {
-    g_print ("Telepathy entry\n");
     if (remmina_tp_handler == NULL)
     {
         remmina_tp_handler = remmina_tp_handler_new ();

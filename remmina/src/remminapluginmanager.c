@@ -26,7 +26,7 @@
 #include "remminapref.h"
 #include "remminaprotocolwidget.h"
 #include "remminalog.h"
-#include "remminaui.h"
+#include "remminawidgetpool.h"
 #include "remminaconnectionwindow.h"
 #include "remminapluginmanager.h"
 
@@ -86,7 +86,7 @@ RemminaPluginService remmina_plugin_manager_service =
     remmina_log_print,
     remmina_log_printf,
 
-    remmina_ui_confirm,
+    remmina_widget_pool_register,
 
     remmina_connection_window_open_from_file_full
 };
