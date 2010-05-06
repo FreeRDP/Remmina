@@ -30,6 +30,7 @@ typedef gboolean (*RemminaPluginFunc) (gchar *name, RemminaPlugin *plugin, gpoin
 void remmina_plugin_manager_init (void);
 RemminaPlugin* remmina_plugin_manager_get_plugin (RemminaPluginType type, const gchar *name);
 void remmina_plugin_manager_for_each_plugin (RemminaPluginType type, RemminaPluginFunc func, gpointer data);
+void remmina_plugin_manager_show (GtkWindow *parent);
 
 extern RemminaPluginService remmina_plugin_manager_service;
 

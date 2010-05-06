@@ -586,6 +586,12 @@ remmina_main_action_view_file_mode (GtkRadioAction *action, GtkRadioAction *curr
 }
 
 static void
+remmina_main_action_tools_plugins (GtkAction *action, RemminaMain *remminamain)
+{
+    remmina_plugin_manager_show (GTK_WINDOW (remminamain));
+}
+
+static void
 remmina_main_action_help_wiki (GtkAction *action, RemminaMain *remminamain)
 {
     g_app_info_launch_default_for_uri ("http://sourceforge.net/apps/mediawiki/remmina/", NULL, NULL);
@@ -631,6 +637,9 @@ static const gchar *remmina_main_ui_xml =
 "      <menuitem name='ViewFileListMenu' action='ViewFileList'/>"
 "      <menuitem name='ViewFileTreeMenu' action='ViewFileTree'/>"
 "    </menu>"
+"    <menu name='ToolsMenu' action='Tools'>"
+"      <menuitem name='ToolsPluginsMenu' action='ToolsPlugins'/>"
+"    </menu>"
 "    <menu name='HelpMenu' action='Help'>"
 "      <menuitem name='HelpWikiMenu' action='HelpWiki'/>"
 "      <menuitem name='HelpDebugMenu' action='HelpDebug'/>"
@@ -662,6 +671,7 @@ static const GtkActionEntry remmina_main_ui_menu_entries[] =
     { "Action", NULL, N_("_Action") },
     { "Edit", NULL, N_("_Edit") },
     { "View", NULL, N_("_View") },
+    { "Tools", NULL, N_("_Tools") },
     { "Help", NULL, N_("_Help") },
 
     { "ActionQuickConnect", GTK_STOCK_JUMP_TO, N_("Quick Connect"), "<control>U",
@@ -681,6 +691,10 @@ static const GtkActionEntry remmina_main_ui_menu_entries[] =
     { "ActionQuit", GTK_STOCK_QUIT, NULL, "<control>Q",
         N_("Quit Remmina"),
         G_CALLBACK (remmina_main_action_action_quit) },
+
+    { "ToolsPlugins", NULL, N_("Plugins"), NULL,
+        NULL,
+        G_CALLBACK (remmina_main_action_tools_plugins) },
 
     { "HelpWiki", NULL, N_("Online Wiki"), NULL,
         NULL,
