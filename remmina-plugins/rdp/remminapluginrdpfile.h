@@ -18,24 +18,11 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __REMMINAPLUGINMANAGER_H__
-#define __REMMINAPLUGINMANAGER_H__
+#ifndef __REMMINAPLUGINRDPFILE_H__
+#define __REMMINAPLUGINRDPFILE_H__
 
-#include "remmina/plugin.h"
+RemminaFile* remmina_plugin_rdp_file_import (const gchar *from_file);
+void remmina_plugin_rdp_file_export (RemminaFile *file, const gchar *to_file);
 
-G_BEGIN_DECLS
-
-typedef gboolean (*RemminaPluginFunc) (gchar *name, RemminaPlugin *plugin, gpointer data);
-
-void remmina_plugin_manager_init (void);
-RemminaPlugin* remmina_plugin_manager_get_plugin (RemminaPluginType type, const gchar *name);
-void remmina_plugin_manager_for_each_plugin (RemminaPluginType type, RemminaPluginFunc func, gpointer data);
-void remmina_plugin_manager_show (GtkWindow *parent);
-RemminaFilePlugin* remmina_plugin_manager_get_file_handler (const gchar *file);
-
-extern RemminaPluginService remmina_plugin_manager_service;
-
-G_END_DECLS
-
-#endif /* __REMMINAPLUGINMANAGER_H__ */
+#endif
 

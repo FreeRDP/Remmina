@@ -30,19 +30,21 @@
 #include "remminaconnectionwindow.h"
 #include "remminapluginmanager.h"
 
-static GTree* remmina_plugin_table = NULL;
+static GHashTable* remmina_plugin_table = NULL;
 
 static const gchar *remmina_plugin_type_name[] =
 {
     N_("Protocol"),
-    N_("Entry")
+    N_("Entry"),
+    N_("File"),
+    NULL
 };
 
 static gboolean
 remmina_plugin_manager_register_plugin (RemminaPlugin *plugin)
 {
-    g_tree_insert (remmina_plugin_table, plugin->name, plugin);
-    g_print ("Remmina plugin %s (type=%i) registered.\n", plugin->name, plugin->type);
+    g_hash_table_insert (remmina_plugin_table, (gpointer) plugin->name, plugin);
+    g_print ("Remmina plugin %s (type=%s) registered.\n", plugin->name, _(remmina_plugin_type_name[plugin->type]));
     return TRUE;
 }
 
@@ -132,7 +134,7 @@ remmina_plugin_manager_init (void)
     const gchar *name, *ptr;
     gchar *fullpath;
 
-    remmina_plugin_table = g_tree_new ((GCompareFunc) g_strcmp0);
+    remmina_plugin_table = g_hash_table_new (g_str_hash, g_str_equal);
 
     if (!g_module_supported ())
     {
@@ -159,7 +161,7 @@ remmina_plugin_manager_get_plugin (RemminaPluginType type, const gchar *name)
 {
     RemminaPlugin *plugin;
 
-    plugin = (RemminaPlugin *) g_tree_lookup (remmina_plugin_table, name);
+    plugin = (RemminaPlugin *) g_hash_table_lookup (remmina_plugin_table, name);
     if (plugin && plugin->type != type)
     {
         g_print ("Invalid plugin type %i for plugin %s\n", type, name);
@@ -176,11 +178,11 @@ typedef struct _RemminaIterData
 } RemminaIterData;
 
 static gboolean
-remmina_plugin_manager_for_each_func (gchar *name, RemminaPlugin *plugin, RemminaIterData *data)
+remmina_plugin_manager_for_each_func (const gchar *name, RemminaPlugin *plugin, RemminaIterData *data)
 {
     if (data->type == plugin->type)
     {
-        return data->func (name, plugin, data->data);
+        return data->func ((gchar *) name, plugin, data->data);
     }
     return FALSE;
 }
@@ -193,11 +195,11 @@ remmina_plugin_manager_for_each_plugin (RemminaPluginType type, RemminaPluginFun
     iter_data.type = type;
     iter_data.func = func;
     iter_data.data = data;
-    g_tree_foreach (remmina_plugin_table, (GTraverseFunc) remmina_plugin_manager_for_each_func, &iter_data);
+    g_hash_table_foreach (remmina_plugin_table, (GHFunc) remmina_plugin_manager_for_each_func, &iter_data);
 }
 
 static gboolean
-remmina_plugin_manager_show_for_each (gchar *name, RemminaPlugin *plugin, GtkListStore *store)
+remmina_plugin_manager_show_for_each (const gchar *name, RemminaPlugin *plugin, GtkListStore *store)
 {
     GtkTreeIter iter;
 
@@ -236,7 +238,7 @@ remmina_plugin_manager_show (GtkWindow *parent)
     gtk_widget_show (tree);
 
     store = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
-    g_tree_foreach (remmina_plugin_table, (GTraverseFunc) remmina_plugin_manager_show_for_each, store);
+    g_hash_table_foreach (remmina_plugin_table, (GHFunc) remmina_plugin_manager_show_for_each, store);
     gtk_tree_view_set_model (GTK_TREE_VIEW (tree), GTK_TREE_MODEL (store));
 
     renderer = gtk_cell_renderer_text_new ();
@@ -261,5 +263,33 @@ remmina_plugin_manager_show (GtkWindow *parent)
     gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
 
     gtk_widget_show (dialog);
+}
+
+RemminaFilePlugin*
+remmina_plugin_manager_get_file_handler (const gchar *file)
+{
+    const gchar *ext;
+    GHashTableIter iter;
+    RemminaPlugin *plugin;
+    gint i;
+
+    ext = strrchr (file, '.');
+    if (ext == NULL) return NULL;
+    ext++;
+    if (ext[0] == '\0') return NULL;
+
+    g_hash_table_iter_init (&iter, remmina_plugin_table);
+    while (g_hash_table_iter_next (&iter, NULL, (gpointer *) &plugin))
+    {
+        if (plugin->type != REMMINA_PLUGIN_TYPE_FILE) continue;
+        for (i = 0; ((RemminaFilePlugin *) plugin)->extensions[i]; i++)
+        {
+            if (g_strcmp0 (ext, ((RemminaFilePlugin *) plugin)->extensions[i]) == 0)
+            {
+                return (RemminaFilePlugin *) plugin;
+            }
+        }
+    }
+    return NULL;
 }
 

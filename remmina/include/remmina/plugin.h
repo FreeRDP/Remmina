@@ -28,25 +28,26 @@ G_BEGIN_DECLS
 typedef enum
 {
     REMMINA_PLUGIN_TYPE_PROTOCOL = 0,
-    REMMINA_PLUGIN_TYPE_ENTRY = 1
+    REMMINA_PLUGIN_TYPE_ENTRY = 1,
+    REMMINA_PLUGIN_TYPE_FILE = 2
 } RemminaPluginType;
 
 typedef struct _RemminaPlugin
 {
     RemminaPluginType type;
-    gchar *name;
-    gchar *description;
+    const gchar *name;
+    const gchar *description;
 } RemminaPlugin;
 
 typedef struct _RemminaProtocolPlugin
 {
     RemminaPluginType type;
-    gchar *name;
-    gchar *description;
+    const gchar *name;
+    const gchar *description;
 
-    gchar *icon_name;
-    gchar *icon_name_ssh;
-    gchar *avahi_service_type;
+    const gchar *icon_name;
+    const gchar *icon_name_ssh;
+    const gchar *avahi_service_type;
     const RemminaProtocolSetting *basic_settings;
     const RemminaProtocolSetting *advanced_settings;
     RemminaProtocolSSHSetting ssh_setting;
@@ -61,11 +62,22 @@ typedef struct _RemminaProtocolPlugin
 typedef struct _RemminaEntryPlugin
 {
     RemminaPluginType type;
-    gchar *name;
-    gchar *description;
+    const gchar *name;
+    const gchar *description;
 
     void (* entry_func) (void);
 } RemminaEntryPlugin;
+
+typedef struct _RemminaFilePlugin
+{
+    RemminaPluginType type;
+    const gchar *name;
+    const gchar *description;
+
+    const gchar **extensions;
+    RemminaFile* (* import_func) (const gchar *from_file);
+    void (* export_func) (RemminaFile *file, const gchar *to_file);
+} RemminaFilePlugin;
 
 /* Plugin Service is a struct containing a list of function pointers,
  * which is passed from Remmina main program to the plugin module
