@@ -39,7 +39,6 @@ typedef struct _RemminaTpChannelHandler
     GHashTable *channel_properties;
     DBusGMethodInvocation *context;
 
-    GtkWidget *dialog;
     GtkWidget *proto_widget;
     guint disconnect_handler;
 
@@ -190,7 +189,6 @@ remmina_tp_channel_handler_on_response (GtkDialog *dialog, gint response_id, Rem
     GValue noop = { 0 };
     GError *error;
 
-    chandler->dialog = NULL;
     if (response_id == GTK_RESPONSE_YES)
     {
         g_value_init (&noop, G_TYPE_INT);
@@ -227,6 +225,7 @@ remmina_tp_channel_handler_get_contacts (TpConnection *connection,
     gchar *filename;
     GdkPixbuf *pixbuf;
     GtkWidget *image;
+    GtkWidget *dialog;
 
     if (error != NULL)
     {
@@ -242,14 +241,16 @@ remmina_tp_channel_handler_get_contacts (TpConnection *connection,
     }
     contact = contacts[0];
     chandler->alias = g_strdup (tp_contact_get_alias (contact));
-    chandler->dialog = remmina_plugin_telepathy_service->ui_confirm (REMMINA_UI_CONFIRM_TYPE_SHARE_DESKTOP,
-        chandler->alias, G_CALLBACK (remmina_tp_channel_handler_on_response), chandler);
-    if (chandler->dialog == NULL)
-    {
-        g_print ("ui_confirm: failed.\n");
-        remmina_tp_channel_handler_free (chandler);
-        return;
-    }
+
+    dialog = gtk_message_dialog_new (NULL,
+        GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
+        _("%s wants to share his/her desktop.\nDo you accept the invitation?"),
+        chandler->alias);
+    g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (remmina_tp_channel_handler_on_response), chandler);
+    g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
+    gtk_window_set_title (GTK_WINDOW (dialog), _("Desktop sharing invitation"));
+    remmina_plugin_telepathy_service->ui_register (dialog);
+    gtk_widget_show (dialog);
 
     token = (gchar *) tp_contact_get_avatar_token (contact);
     if (token == NULL)
@@ -274,7 +275,7 @@ remmina_tp_channel_handler_get_contacts (TpConnection *connection,
             image = gtk_image_new_from_pixbuf (pixbuf);
             gtk_widget_show (image);
             g_object_unref (pixbuf);
-            gtk_message_dialog_set_image (GTK_MESSAGE_DIALOG (chandler->dialog), image);
+            gtk_message_dialog_set_image (GTK_MESSAGE_DIALOG (dialog), image);
         }
     }
     g_free (filename);
