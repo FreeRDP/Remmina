@@ -85,6 +85,23 @@ remmina_plugin_rdp_file_import_field (RemminaFile *remminafile, const gchar *key
     {
         remminafile->execpath = g_strdup (value);
     }
+    /* tsclient fields, import only */
+    else if (g_strcmp0 (key, "client hostname") == 0)
+    {
+        remminafile->clientname = g_strdup (value);
+    }
+    else if (g_strcmp0 (key, "domain") == 0)
+    {
+        remminafile->domain = g_strdup (value);
+    }
+    else if (g_strcmp0 (key, "username") == 0)
+    {
+        remminafile->username = g_strdup (value);
+    }
+    else if (g_strcmp0 (key, "password") == 0)
+    {
+        remminafile->password = g_strdup (value);
+    }
 }
 
 static RemminaFile*
