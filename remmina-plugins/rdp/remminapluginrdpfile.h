@@ -22,7 +22,7 @@
 #define __REMMINAPLUGINRDPFILE_H__
 
 RemminaFile* remmina_plugin_rdp_file_import (const gchar *from_file);
-void remmina_plugin_rdp_file_export (RemminaFile *file, const gchar *to_file);
+gboolean remmina_plugin_rdp_file_export (RemminaFile *file, const gchar *to_file);
 
 #endif
 

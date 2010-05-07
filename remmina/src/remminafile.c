@@ -135,7 +135,7 @@ remmina_file_new_temp (void)
     return gf;
 }
 
-static gchar*
+gchar*
 remmina_file_generate_filename (void)
 {
     GTimeVal gtime;
