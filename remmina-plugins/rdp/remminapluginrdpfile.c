@@ -21,6 +21,19 @@
 #include "common/remminaplugincommon.h"
 #include "remminapluginrdpfile.h"
 
+gboolean
+remmina_plugin_rdp_file_import_test (const gchar *from_file)
+{
+    gchar *ext;
+
+    ext = strrchr (from_file, '.');
+    if (!ext) return FALSE;
+    ext++;
+    if (g_strcmp0 (ext, "RDP") == 0) return TRUE;
+    if (g_strcmp0 (ext, "rdp") == 0) return TRUE;
+    return FALSE;
+}
+
 static void
 remmina_plugin_rdp_file_import_field (RemminaFile *remminafile, const gchar *key, const gchar *value)
 {
@@ -51,7 +64,7 @@ remmina_plugin_rdp_file_import_field (RemminaFile *remminafile, const gchar *key
         case 0:
             remminafile->sound = g_strdup ("local");
             break;
-        case 2:
+        case 1:
             remminafile->sound = g_strdup ("remote");
             break;
         }
@@ -166,9 +179,96 @@ remmina_plugin_rdp_file_import (const gchar *from_file)
 }
 
 gboolean
-remmina_plugin_rdp_file_export (RemminaFile *file, const gchar *to_file)
+remmina_plugin_rdp_file_export_test (RemminaFile *remminafile)
 {
-    g_print ("export %s file to %s\n", file->protocol, to_file);
+    if (g_strcmp0 (remminafile->protocol, "RDP") == 0) return TRUE;
     return FALSE;
+}
+
+gboolean
+remmina_plugin_rdp_file_export_channel (RemminaFile *remminafile, FILE *fp)
+{
+    gchar *s;
+    gchar *p;
+
+    fprintf (fp, "screen mode id:i:2\r\n");
+    s = g_strdup (remminafile->resolution);
+    p = strchr (s, 'x');
+    if (p)
+    {
+        *p++ = '\0';
+        fprintf (fp, "desktopwidth:i:%s\r\n", s);
+        fprintf (fp, "desktopheight:i:%s\r\n", p);
+    }
+    g_free (s);
+    fprintf (fp, "session bpp:i:%i\r\n", remminafile->colordepth);
+    //fprintf (fp, "winposstr:s:0,1,123,34,931,661\r\n");
+    fprintf (fp, "compression:i:1\r\n");
+    fprintf (fp, "keyboardhook:i:2\r\n");
+    fprintf (fp, "displayconnectionbar:i:1\r\n");
+    fprintf (fp, "disable wallpaper:i:1\r\n");
+    fprintf (fp, "disable full window drag:i:1\r\n");
+    fprintf (fp, "allow desktop composition:i:0\r\n");
+    fprintf (fp, "allow font smoothing:i:0\r\n");
+    fprintf (fp, "disable menu anims:i:1\r\n");
+    fprintf (fp, "disable themes:i:0\r\n");
+    fprintf (fp, "disable cursor setting:i:0\r\n");
+    fprintf (fp, "bitmapcachepersistenable:i:1\r\n");
+    fprintf (fp, "full address:s:%s\r\n", remminafile->server);
+    if (g_strcmp0 (remminafile->sound, "local") == 0)
+        fprintf (fp, "audiomode:i:0\r\n");
+    else if (g_strcmp0 (remminafile->sound, "remote") == 0)
+        fprintf (fp, "audiomode:i:1\r\n");
+    else
+        fprintf (fp, "audiomode:i:2\r\n");
+    fprintf (fp, "redirectprinters:i:%i\r\n", remminafile->shareprinter ? 1 : 0);
+    fprintf (fp, "redirectcomports:i:0\r\n");
+    fprintf (fp, "redirectsmartcards:i:0\r\n");
+    fprintf (fp, "redirectclipboard:i:1\r\n");
+    fprintf (fp, "redirectposdevices:i:0\r\n");
+    fprintf (fp, "autoreconnection enabled:i:1\r\n");
+    fprintf (fp, "authentication level:i:0\r\n");
+    fprintf (fp, "prompt for credentials:i:1\r\n");
+    fprintf (fp, "negotiate security layer:i:1\r\n");
+    fprintf (fp, "remoteapplicationmode:i:0\r\n");
+    fprintf (fp, "alternate shell:s:%s\r\n", remminafile->exec ? remminafile->exec : "");
+    fprintf (fp, "shell working directory:s:%s\r\n", remminafile->execpath ? remminafile->execpath : "");
+    fprintf (fp, "gatewayhostname:s:\r\n");
+    fprintf (fp, "gatewayusagemethod:i:4\r\n");
+    fprintf (fp, "gatewaycredentialssource:i:4\r\n");
+    fprintf (fp, "gatewayprofileusagemethod:i:0\r\n");
+    fprintf (fp, "promptcredentialonce:i:1\r\n");
+    fprintf (fp, "drivestoredirect:s:\r\n");
+    return TRUE;
+}
+
+gboolean
+remmina_plugin_rdp_file_export (RemminaFile *remminafile, const gchar *to_file)
+{
+    FILE *fp;
+    gboolean ret;
+    gchar *p;
+
+    p = strrchr (to_file, '.');
+    if (p && (g_strcmp0 (p + 1, "rdp") == 0 || g_strcmp0 (p + 1, "RDP") == 0))
+    {
+        p = g_strdup (to_file);
+    }
+    else
+    {
+        p = g_strdup_printf ("%s.rdp", to_file);
+    }
+    fp = g_fopen (p, "w+");
+    if (fp == NULL)
+    {
+        g_print ("Failed to export %s\n", p);
+        g_free (p);
+        return FALSE;
+    }    
+    g_free (p);
+    ret = remmina_plugin_rdp_file_export_channel (remminafile, fp);
+    fclose (fp);
+
+    return ret;
 }
 

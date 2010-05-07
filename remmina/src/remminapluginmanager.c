@@ -266,28 +266,36 @@ remmina_plugin_manager_show (GtkWindow *parent)
 }
 
 RemminaFilePlugin*
-remmina_plugin_manager_get_file_handler (const gchar *file)
+remmina_plugin_manager_get_import_file_handler (const gchar *file)
 {
-    const gchar *ext;
     GHashTableIter iter;
     RemminaPlugin *plugin;
-    gint i;
-
-    ext = strrchr (file, '.');
-    if (ext == NULL) return NULL;
-    ext++;
-    if (ext[0] == '\0') return NULL;
 
     g_hash_table_iter_init (&iter, remmina_plugin_table);
     while (g_hash_table_iter_next (&iter, NULL, (gpointer *) &plugin))
     {
         if (plugin->type != REMMINA_PLUGIN_TYPE_FILE) continue;
-        for (i = 0; ((RemminaFilePlugin *) plugin)->extensions[i]; i++)
+        if (((RemminaFilePlugin *) plugin)->import_test_func (file))
         {
-            if (g_strcmp0 (ext, ((RemminaFilePlugin *) plugin)->extensions[i]) == 0)
-            {
-                return (RemminaFilePlugin *) plugin;
-            }
+            return (RemminaFilePlugin *) plugin;
+        }
+    }
+    return NULL;
+}
+
+RemminaFilePlugin*
+remmina_plugin_manager_get_export_file_handler (RemminaFile *remminafile)
+{
+    GHashTableIter iter;
+    RemminaPlugin *plugin;
+
+    g_hash_table_iter_init (&iter, remmina_plugin_table);
+    while (g_hash_table_iter_next (&iter, NULL, (gpointer *) &plugin))
+    {
+        if (plugin->type != REMMINA_PLUGIN_TYPE_FILE) continue;
+        if (((RemminaFilePlugin *) plugin)->export_test_func (remminafile))
+        {
+            return (RemminaFilePlugin *) plugin;
         }
     }
     return NULL;
