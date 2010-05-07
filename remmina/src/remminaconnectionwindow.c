@@ -25,6 +25,7 @@
 #include "config.h"
 #include "remminapublic.h"
 #include "remminafile.h"
+#include "remminafilemanager.h"
 #include "remminainitdialog.h"
 #include "remminaprotocolwidget.h"
 #include "remminapref.h"
@@ -2174,7 +2175,7 @@ remmina_connection_window_open_from_filename (const gchar *filename)
     RemminaFile *remminafile;
     GtkWidget *dialog;
 
-    remminafile = remmina_file_load (filename);
+    remminafile = remmina_file_manager_load_file (filename);
     if (remminafile)
     {
         remmina_connection_window_open_from_file (remminafile);

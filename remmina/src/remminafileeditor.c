@@ -530,7 +530,10 @@ remmina_file_editor_create_folder_chooser (RemminaFileEditor *gfe, GtkWidget *ta
 
     widget = gtk_file_chooser_button_new (label, GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
     gtk_widget_show (widget);
-    gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), value);
+    if (value)
+    {
+        gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), value);
+    }
     gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
 
     g_signal_connect (G_OBJECT (check), "toggled", 
@@ -1578,7 +1581,7 @@ remmina_file_editor_new_from_filename (const gchar *filename)
     RemminaFile *remminafile;
     GtkWidget *dialog;
 
-    remminafile = remmina_file_load (filename);
+    remminafile = remmina_file_manager_load_file (filename);
     if (remminafile)
     {
         return remmina_file_editor_new_from_file (remminafile);

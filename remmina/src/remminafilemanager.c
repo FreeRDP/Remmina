@@ -19,8 +19,10 @@
  */
 
 #include <gtk/gtk.h>
+#include <string.h>
 #include "remminapublic.h"
 #include "remminastringarray.h"
+#include "remminapluginmanager.h"
 #include "remminafilemanager.h"
 
 void
@@ -92,5 +94,27 @@ remmina_file_manager_get_groups (void)
     groups = remmina_string_array_to_string (array);
     remmina_string_array_free (array);
     return groups;
+}
+
+RemminaFile*
+remmina_file_manager_load_file (const gchar *filename)
+{
+    RemminaFile *remminafile = NULL;
+    RemminaFilePlugin *plugin;
+    gchar *p;
+
+    if ((p = strrchr (filename, '.')) != NULL && g_strcmp0 (p + 1, "remmina") == 0)
+    {
+        remminafile = remmina_file_load (filename);
+    }
+    else
+    {
+        plugin = remmina_plugin_manager_get_import_file_handler (filename);
+        if (plugin)
+        {
+            remminafile = plugin->import_func (filename);
+        }
+    }
+    return remminafile;
 }
 
