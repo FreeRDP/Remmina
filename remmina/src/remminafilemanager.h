@@ -32,6 +32,8 @@ void remmina_file_manager_init (void);
 gint remmina_file_manager_iterate (GFunc func, gpointer user_data);
 /* Get a list of groups */
 gchar* remmina_file_manager_get_groups (void);
+/* Load or import a file */
+RemminaFile* remmina_file_manager_load_file (const gchar *filename);
 
 G_END_DECLS
 
