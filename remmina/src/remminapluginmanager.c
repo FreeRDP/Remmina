@@ -30,7 +30,7 @@
 #include "remminaconnectionwindow.h"
 #include "remminapluginmanager.h"
 
-static GHashTable* remmina_plugin_table = NULL;
+static GPtrArray* remmina_plugin_table = NULL;
 
 static const gchar *remmina_plugin_type_name[] =
 {
@@ -40,10 +40,17 @@ static const gchar *remmina_plugin_type_name[] =
     NULL
 };
 
+static gint
+remmina_plugin_manager_compare_func (RemminaPlugin **a, RemminaPlugin **b)
+{
+    return g_strcmp0 ((*a)->name, (*b)->name);
+}
+
 static gboolean
 remmina_plugin_manager_register_plugin (RemminaPlugin *plugin)
 {
-    g_hash_table_insert (remmina_plugin_table, (gpointer) plugin->name, plugin);
+    g_ptr_array_add (remmina_plugin_table, plugin);
+    g_ptr_array_sort (remmina_plugin_table, (GCompareFunc) remmina_plugin_manager_compare_func);
     g_print ("Remmina plugin %s (type=%s) registered.\n", plugin->name, _(remmina_plugin_type_name[plugin->type]));
     return TRUE;
 }
@@ -134,7 +141,7 @@ remmina_plugin_manager_init (void)
     const gchar *name, *ptr;
     gchar *fullpath;
 
-    remmina_plugin_table = g_hash_table_new (g_str_hash, g_str_equal);
+    remmina_plugin_table = g_ptr_array_new ();
 
     if (!g_module_supported ())
     {
@@ -160,46 +167,38 @@ RemminaPlugin*
 remmina_plugin_manager_get_plugin (RemminaPluginType type, const gchar *name)
 {
     RemminaPlugin *plugin;
+    gint i;
 
-    plugin = (RemminaPlugin *) g_hash_table_lookup (remmina_plugin_table, name);
-    if (plugin && plugin->type != type)
+    for (i = 0; i < remmina_plugin_table->len; i++)
     {
-        g_print ("Invalid plugin type %i for plugin %s\n", type, name);
-        return NULL;
+        plugin = (RemminaPlugin *) g_ptr_array_index (remmina_plugin_table, i);
+        if (plugin->type == type && g_strcmp0 (plugin->name, name) == 0)
+        {
+            return plugin;
+        }
     }
-    return plugin;
-}
-
-typedef struct _RemminaIterData
-{
-    RemminaPluginType type;
-    RemminaPluginFunc func;
-    gpointer data;
-} RemminaIterData;
-
-static gboolean
-remmina_plugin_manager_for_each_func (const gchar *name, RemminaPlugin *plugin, RemminaIterData *data)
-{
-    if (data->type == plugin->type)
-    {
-        return data->func ((gchar *) name, plugin, data->data);
-    }
-    return FALSE;
+    g_print ("Plugin not found (type=%i, name=%s)\n", type, name);
+    return NULL;
 }
 
 void
 remmina_plugin_manager_for_each_plugin (RemminaPluginType type, RemminaPluginFunc func, gpointer data)
 {
-    RemminaIterData iter_data;
+    RemminaPlugin *plugin;
+    gint i;
 
-    iter_data.type = type;
-    iter_data.func = func;
-    iter_data.data = data;
-    g_hash_table_foreach (remmina_plugin_table, (GHFunc) remmina_plugin_manager_for_each_func, &iter_data);
+    for (i = 0; i < remmina_plugin_table->len; i++)
+    {
+        plugin = (RemminaPlugin *) g_ptr_array_index (remmina_plugin_table, i);
+        if (plugin->type == type)
+        {
+            func ((gchar *) plugin->name, plugin, data);
+        }
+    }
 }
 
 static gboolean
-remmina_plugin_manager_show_for_each (const gchar *name, RemminaPlugin *plugin, GtkListStore *store)
+remmina_plugin_manager_show_for_each (RemminaPlugin *plugin, GtkListStore *store)
 {
     GtkTreeIter iter;
 
@@ -238,7 +237,7 @@ remmina_plugin_manager_show (GtkWindow *parent)
     gtk_widget_show (tree);
 
     store = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
-    g_hash_table_foreach (remmina_plugin_table, (GHFunc) remmina_plugin_manager_show_for_each, store);
+    g_ptr_array_foreach (remmina_plugin_table, (GFunc) remmina_plugin_manager_show_for_each, store);
     gtk_tree_view_set_model (GTK_TREE_VIEW (tree), GTK_TREE_MODEL (store));
 
     renderer = gtk_cell_renderer_text_new ();
@@ -268,16 +267,16 @@ remmina_plugin_manager_show (GtkWindow *parent)
 RemminaFilePlugin*
 remmina_plugin_manager_get_import_file_handler (const gchar *file)
 {
-    GHashTableIter iter;
-    RemminaPlugin *plugin;
+    RemminaFilePlugin *plugin;
+    gint i;
 
-    g_hash_table_iter_init (&iter, remmina_plugin_table);
-    while (g_hash_table_iter_next (&iter, NULL, (gpointer *) &plugin))
+    for (i = 0; i < remmina_plugin_table->len; i++)
     {
+        plugin = (RemminaFilePlugin *) g_ptr_array_index (remmina_plugin_table, i);
         if (plugin->type != REMMINA_PLUGIN_TYPE_FILE) continue;
-        if (((RemminaFilePlugin *) plugin)->import_test_func (file))
+        if (plugin->import_test_func (file))
         {
-            return (RemminaFilePlugin *) plugin;
+            return plugin;
         }
     }
     return NULL;
@@ -286,16 +285,16 @@ remmina_plugin_manager_get_import_file_handler (const gchar *file)
 RemminaFilePlugin*
 remmina_plugin_manager_get_export_file_handler (RemminaFile *remminafile)
 {
-    GHashTableIter iter;
-    RemminaPlugin *plugin;
+    RemminaFilePlugin *plugin;
+    gint i;
 
-    g_hash_table_iter_init (&iter, remmina_plugin_table);
-    while (g_hash_table_iter_next (&iter, NULL, (gpointer *) &plugin))
+    for (i = 0; i < remmina_plugin_table->len; i++)
     {
+        plugin = (RemminaFilePlugin *) g_ptr_array_index (remmina_plugin_table, i);
         if (plugin->type != REMMINA_PLUGIN_TYPE_FILE) continue;
-        if (((RemminaFilePlugin *) plugin)->export_test_func (remminafile))
+        if (plugin->export_test_func (remminafile))
         {
-            return (RemminaFilePlugin *) plugin;
+            return plugin;
         }
     }
     return NULL;

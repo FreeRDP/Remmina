@@ -466,6 +466,7 @@ remmina_main_action_edit_delete (GtkAction *action, RemminaMain *remminamain)
         remmina_main_load_files (remminamain);
     }
     gtk_widget_destroy (dialog);
+    remmina_main_clear_selection_data (remminamain);
 }
 
 static void
@@ -668,6 +669,7 @@ remmina_main_action_tools_export (GtkAction *action, RemminaMain *remminamain)
     if (remminamain->priv->selected_filename == NULL) return;
 
     remminafile = remmina_file_load (remminamain->priv->selected_filename);
+    if (remminafile == NULL) return;
     plugin = remmina_plugin_manager_get_export_file_handler (remminafile);
     if (plugin)
     {
