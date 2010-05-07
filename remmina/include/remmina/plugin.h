@@ -76,7 +76,7 @@ typedef struct _RemminaFilePlugin
 
     const gchar **extensions;
     RemminaFile* (* import_func) (const gchar *from_file);
-    void (* export_func) (RemminaFile *file, const gchar *to_file);
+    gboolean (* export_func) (RemminaFile *file, const gchar *to_file);
 } RemminaFilePlugin;
 
 /* Plugin Service is a struct containing a list of function pointers,

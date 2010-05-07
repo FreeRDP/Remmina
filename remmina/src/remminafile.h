@@ -43,6 +43,7 @@ extern const gpointer quality_list[];
 RemminaFile* remmina_file_new (void);
 RemminaFile* remmina_file_new_temp (void);
 RemminaFile* remmina_file_copy (const gchar *filename);
+gchar* remmina_file_generate_filename (void);
 /* Load a new .remmina file and return the allocated RemminaFile object */
 RemminaFile* remmina_file_load (const gchar *filename);
 /* Create or overwrite the .remmina file */

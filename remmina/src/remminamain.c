@@ -606,9 +606,12 @@ remmina_main_action_tools_import_on_response (GtkDialog *dialog, gint response_i
         {
             path = (gchar*) element->data;
             plugin = remmina_plugin_manager_get_file_handler (path);
-            if (plugin && (remminafile = plugin->import_func (path)) != NULL)
+            if (plugin && (remminafile = plugin->import_func (path)) != NULL &&
+                remminafile->name)
             {
-                /* TODO: Just save it */
+                remminafile->filename = remmina_file_generate_filename ();
+                remmina_file_save_all (remminafile);
+                remmina_file_free (remminafile);
                 imported = TRUE;
             }
             else
@@ -630,7 +633,7 @@ remmina_main_action_tools_import_on_response (GtkDialog *dialog, gint response_i
         g_string_free (err, TRUE);
         if (imported)
         {
-            /* TODO: Refresh the file list */
+            remmina_main_load_files (remminamain);
         }
     }
     gtk_widget_destroy (GTK_WIDGET (dialog));
