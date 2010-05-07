@@ -76,6 +76,11 @@ enum
     N_COLUMNS
 };
 
+static GtkTargetEntry remmina_drop_types[] = 
+{
+    { "text/uri-list", 0, 1 }
+};
+
 static void
 remmina_main_save_size (RemminaMain *remminamain)
 {
@@ -587,59 +592,66 @@ remmina_main_action_view_file_mode (GtkRadioAction *action, GtkRadioAction *curr
 }
 
 static void
-remmina_main_action_tools_import_on_response (GtkDialog *dialog, gint response_id, RemminaMain *remminamain)
+remmina_main_import_file_list (RemminaMain *remminamain, GSList *files)
 {
     GtkWidget *dlg;
-    GSList *files;
     GSList *element;
     gchar *path;
     RemminaFilePlugin *plugin;
     GString *err;
-    RemminaFile *remminafile;
+    RemminaFile *remminafile = NULL;
     gboolean imported;
+
+    err = g_string_new (NULL);
+    imported = FALSE;
+    for (element = files; element; element = element->next)
+    {
+        path = (gchar*) element->data;
+        plugin = remmina_plugin_manager_get_import_file_handler (path);
+        if (plugin && (remminafile = plugin->import_func (path)) != NULL &&
+            remminafile->name)
+        {
+            remminafile->filename = remmina_file_generate_filename ();
+            remmina_file_save_all (remminafile);
+            imported = TRUE;
+        }
+        else
+        {
+            g_string_append (err, path);
+            g_string_append_c (err, '\n');
+        }
+        if (remminafile)
+        {
+            remmina_file_free (remminafile);
+            remminafile = NULL;
+        }
+        g_free (path);
+    }
+    g_slist_free (files);
+    if (err->len > 0)
+    {
+        dlg = gtk_message_dialog_new (GTK_WINDOW (remminamain),
+            GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+            _("Unable to import:\n%s"), err->str);
+        g_signal_connect (G_OBJECT (dlg), "response", G_CALLBACK (gtk_widget_destroy), NULL);
+        gtk_widget_show (dlg);
+    }
+    g_string_free (err, TRUE);
+    if (imported)
+    {
+        remmina_main_load_files (remminamain);
+    }
+}
+
+static void
+remmina_main_action_tools_import_on_response (GtkDialog *dialog, gint response_id, RemminaMain *remminamain)
+{
+    GSList *files;
 
     if (response_id == GTK_RESPONSE_ACCEPT)
     {
-        err = g_string_new (NULL);
-        imported = FALSE;
         files = gtk_file_chooser_get_filenames (GTK_FILE_CHOOSER (dialog));
-        for (element = files; element; element = element->next)
-        {
-            path = (gchar*) element->data;
-            remminafile = NULL;
-            plugin = remmina_plugin_manager_get_import_file_handler (path);
-            if (plugin && (remminafile = plugin->import_func (path)) != NULL &&
-                remminafile->name)
-            {
-                remminafile->filename = remmina_file_generate_filename ();
-                remmina_file_save_all (remminafile);
-                imported = TRUE;
-            }
-            else
-            {
-                g_string_append (err, path);
-                g_string_append_c (err, '\n');
-            }
-            if (remminafile)
-            {
-                remmina_file_free (remminafile);
-            }
-            g_free (path);
-        }
-        g_slist_free (files);
-        if (err->len > 0)
-        {
-            dlg = gtk_message_dialog_new (GTK_WINDOW (remminamain),
-                GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-                _("Unable to import:\n%s"), err->str);
-            g_signal_connect (G_OBJECT (dlg), "response", G_CALLBACK (gtk_widget_destroy), NULL);
-            gtk_widget_show (dlg);
-        }
-        g_string_free (err, TRUE);
-        if (imported)
-        {
-            remmina_main_load_files (remminamain);
-        }
+        remmina_main_import_file_list (remminamain, files);
     }
     gtk_widget_destroy (GTK_WIDGET (dialog));
 }
@@ -970,6 +982,24 @@ remmina_main_create_quick_search (RemminaMain *remminamain)
 }
 
 static void
+remmina_main_on_drag_data_received (RemminaMain *remminamain, GdkDragContext *drag_context, gint x, gint y,
+    GtkSelectionData *data, guint info, guint time, gpointer user_data)
+{
+    gchar **uris;
+    GSList *files = NULL;
+    gint i;
+
+    uris = g_uri_list_extract_uris ((gchar *) data->data);
+    for (i = 0; uris[i]; i++)
+    {
+        if (strncmp (uris[i], "file://", 7) != 0) continue;
+        files = g_slist_append (files, g_strdup (uris[i] + 7));
+    }
+    g_strfreev (uris);
+    remmina_main_import_file_list (remminamain, files);
+}
+
+static void
 remmina_main_init (RemminaMain *remminamain)
 {
     RemminaMainPriv *priv;
@@ -1152,6 +1182,11 @@ remmina_main_init (RemminaMain *remminamain)
         gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (
             gtk_action_group_get_action (priv->main_group, "ViewSmallToolbutton")), TRUE);
     }
+
+    /* Drag-n-drop support */
+    gtk_drag_dest_set (GTK_WIDGET (remminamain), GTK_DEST_DEFAULT_ALL, remmina_drop_types, 1, GDK_ACTION_COPY);
+    g_signal_connect (G_OBJECT (remminamain), "drag-data-received",
+        G_CALLBACK (remmina_main_on_drag_data_received), NULL);
 
     priv->initialized = TRUE;
 
