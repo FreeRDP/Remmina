@@ -21,8 +21,10 @@
 #ifndef __REMMINAPLUGINRDPFILE_H__
 #define __REMMINAPLUGINRDPFILE_H__
 
+gboolean remmina_plugin_rdp_file_import_test (const gchar *from_file);
 RemminaFile* remmina_plugin_rdp_file_import (const gchar *from_file);
-gboolean remmina_plugin_rdp_file_export (RemminaFile *file, const gchar *to_file);
+gboolean remmina_plugin_rdp_file_export_test (RemminaFile *remminafile);
+gboolean remmina_plugin_rdp_file_export (RemminaFile *remminafile, const gchar *to_file);
 
 #endif
 

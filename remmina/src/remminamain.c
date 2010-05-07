@@ -605,19 +605,23 @@ remmina_main_action_tools_import_on_response (GtkDialog *dialog, gint response_i
         for (element = files; element; element = element->next)
         {
             path = (gchar*) element->data;
-            plugin = remmina_plugin_manager_get_file_handler (path);
+            remminafile = NULL;
+            plugin = remmina_plugin_manager_get_import_file_handler (path);
             if (plugin && (remminafile = plugin->import_func (path)) != NULL &&
                 remminafile->name)
             {
                 remminafile->filename = remmina_file_generate_filename ();
                 remmina_file_save_all (remminafile);
-                remmina_file_free (remminafile);
                 imported = TRUE;
             }
             else
             {
                 g_string_append (err, path);
                 g_string_append_c (err, '\n');
+            }
+            if (remminafile)
+            {
+                remmina_file_free (remminafile);
             }
             g_free (path);
         }
@@ -657,6 +661,35 @@ remmina_main_action_tools_import (GtkAction *action, RemminaMain *remminamain)
 static void
 remmina_main_action_tools_export (GtkAction *action, RemminaMain *remminamain)
 {
+    RemminaFilePlugin *plugin;
+    RemminaFile *remminafile;
+    GtkWidget *dialog;
+
+    if (remminamain->priv->selected_filename == NULL) return;
+
+    remminafile = remmina_file_load (remminamain->priv->selected_filename);
+    plugin = remmina_plugin_manager_get_export_file_handler (remminafile);
+    if (plugin)
+    {
+        dialog = gtk_file_chooser_dialog_new (plugin->export_hints, GTK_WINDOW (remminamain),
+            GTK_FILE_CHOOSER_ACTION_SAVE,
+            GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT,
+            NULL);
+        if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
+        {
+            plugin->export_func (remminafile, gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog)));
+        }
+        gtk_widget_destroy (dialog);
+    }
+    else
+    {
+        dialog = gtk_message_dialog_new (GTK_WINDOW (remminamain),
+            GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+            _("This protocol does not support exporting."));
+        g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
+        gtk_widget_show (dialog);
+    }
+    remmina_file_free (remminafile);
 }
 
 static void
@@ -773,10 +806,6 @@ static const GtkActionEntry remmina_main_ui_menu_entries[] =
         NULL,
         G_CALLBACK (remmina_main_action_tools_import) },
 
-    { "ToolsExport", NULL, N_("Export"), NULL,
-        NULL,
-        G_CALLBACK (remmina_main_action_tools_export) },
-
     { "ToolsPlugins", NULL, N_("Plugins"), NULL,
         NULL,
         G_CALLBACK (remmina_main_action_tools_plugins) },
@@ -810,7 +839,11 @@ static const GtkActionEntry remmina_main_ui_file_sensitive_menu_entries[] =
 
     { "EditDelete", GTK_STOCK_DELETE, NULL, "<control>D",
         N_("Delete the selected remote desktop file"),
-        G_CALLBACK (remmina_main_action_edit_delete) }
+        G_CALLBACK (remmina_main_action_edit_delete) },
+
+    { "ToolsExport", NULL, N_("Export"), NULL,
+        NULL,
+        G_CALLBACK (remmina_main_action_tools_export) }
 };
 
 static const GtkToggleActionEntry remmina_main_ui_toggle_menu_entries[] =

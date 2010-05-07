@@ -438,16 +438,17 @@ static RemminaProtocolPlugin remmina_plugin_rdp =
     remmina_plugin_rdp_call_feature
 };
 
-static const gchar *remmina_plugin_rdpf_ext[] = { "rdp", "RDP", NULL };
 static RemminaFilePlugin remmina_plugin_rdpf =
 {
     REMMINA_PLUGIN_TYPE_FILE,
     "RDPF",
     NULL,
 
-    remmina_plugin_rdpf_ext,
+    remmina_plugin_rdp_file_import_test,
     remmina_plugin_rdp_file_import,
-    remmina_plugin_rdp_file_export
+    remmina_plugin_rdp_file_export_test,
+    remmina_plugin_rdp_file_export,
+    NULL
 };
 
 G_MODULE_EXPORT gboolean
@@ -464,6 +465,7 @@ remmina_plugin_entry (RemminaPluginService *service)
         return FALSE;
     }
     remmina_plugin_rdpf.description = _("RDP - RDP File Handler");
+    remmina_plugin_rdpf.export_hints = _("Export connection in Windows .rdp file format");
     if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_rdpf))
     {
         return FALSE;
