@@ -94,6 +94,7 @@ gboolean remmina_protocol_widget_ssh_exec (RemminaProtocolWidget *gp, gboolean w
  */
 gchar* remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint default_port, gboolean port_plus);
 
+gboolean remmina_protocol_widget_start_reverse_tunnel (RemminaProtocolWidget *gp, gint local_port);
 gboolean remmina_protocol_widget_start_xport_tunnel (RemminaProtocolWidget *gp, RemminaXPortTunnelInitFunc init_func);
 void remmina_protocol_widget_set_display (RemminaProtocolWidget *gp, gint display);
 

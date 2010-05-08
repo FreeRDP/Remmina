@@ -86,55 +86,56 @@ typedef struct _RemminaFilePlugin
  * through the plugin entry function remmina_plugin_entry() */
 typedef struct _RemminaPluginService
 {
-    gboolean     (* register_plugin)                     (RemminaPlugin *plugin);
+    gboolean     (* register_plugin)                      (RemminaPlugin *plugin);
 
-    gint         (* protocol_plugin_get_width)           (RemminaProtocolWidget *gp);
-    void         (* protocol_plugin_set_width)           (RemminaProtocolWidget *gp, gint width);
-    gint         (* protocol_plugin_get_height)          (RemminaProtocolWidget *gp);
-    void         (* protocol_plugin_set_height)          (RemminaProtocolWidget *gp, gint height);
-    gboolean     (* protocol_plugin_get_scale)           (RemminaProtocolWidget *gp);
-    gboolean     (* protocol_plugin_get_expand)          (RemminaProtocolWidget *gp);
-    void         (* protocol_plugin_set_expand)          (RemminaProtocolWidget *gp, gboolean expand);
-    gboolean     (* protocol_plugin_has_error)           (RemminaProtocolWidget *gp);
-    void         (* protocol_plugin_set_error)           (RemminaProtocolWidget *gp, const gchar *fmt, ...);
-    gboolean     (* protocol_plugin_is_closed)           (RemminaProtocolWidget *gp);
-    RemminaFile* (* protocol_plugin_get_file)            (RemminaProtocolWidget *gp);
-    GPtrArray*   (* protocol_plugin_get_printers)        (RemminaProtocolWidget *gp);
-    void         (* protocol_plugin_emit_signal)         (RemminaProtocolWidget *gp, const gchar *signal_name);
-    void         (* protocol_plugin_register_hostkey)    (RemminaProtocolWidget *gp, GtkWidget *widget);
-    gchar*       (* protocol_plugin_start_direct_tunnel) (RemminaProtocolWidget *gp, gint default_port, gboolean port_plus);
-    gboolean     (* protocol_plugin_start_xport_tunnel)  (RemminaProtocolWidget *gp, RemminaXPortTunnelInitFunc init_func);
-    void         (* protocol_plugin_set_display)         (RemminaProtocolWidget *gp, gint display);
-    gboolean     (* protocol_plugin_close_connection)    (RemminaProtocolWidget *gp);
-    gint         (* protocol_plugin_init_authpwd)        (RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type);
-    gint         (* protocol_plugin_init_authuserpwd)    (RemminaProtocolWidget *gp);
-    gchar*       (* protocol_plugin_init_get_username)   (RemminaProtocolWidget *gp);
-    gchar*       (* protocol_plugin_init_get_password)   (RemminaProtocolWidget *gp);
-    gint         (* protocol_plugin_init_authx509)       (RemminaProtocolWidget *gp);
-    gchar*       (* protocol_plugin_init_get_cacert)     (RemminaProtocolWidget *gp);
-    gchar*       (* protocol_plugin_init_get_cacrl)      (RemminaProtocolWidget *gp);
-    gchar*       (* protocol_plugin_init_get_clientcert) (RemminaProtocolWidget *gp);
-    gchar*       (* protocol_plugin_init_get_clientkey)  (RemminaProtocolWidget *gp);
-    void         (* protocol_plugin_init_save_cred)      (RemminaProtocolWidget *gp);
-    void         (* protocol_plugin_init_show_listen)    (RemminaProtocolWidget *gp, gint port);
-    void         (* protocol_plugin_init_show_retry)     (RemminaProtocolWidget *gp);
-    gboolean     (* protocol_plugin_ssh_exec)            (RemminaProtocolWidget *gp, gboolean wait, const gchar *fmt, ...);
-    void         (* protocol_plugin_chat_open)           (RemminaProtocolWidget *gp, const gchar *name,
-                                                          void(*on_send)(RemminaProtocolWidget *gp, const gchar *text),
-                                                          void(*on_destroy)(RemminaProtocolWidget *gp));
-    void         (* protocol_plugin_chat_close)          (RemminaProtocolWidget *gp);
-    void         (* protocol_plugin_chat_receive)        (RemminaProtocolWidget *gp, const gchar *text);
+    gint         (* protocol_plugin_get_width)            (RemminaProtocolWidget *gp);
+    void         (* protocol_plugin_set_width)            (RemminaProtocolWidget *gp, gint width);
+    gint         (* protocol_plugin_get_height)           (RemminaProtocolWidget *gp);
+    void         (* protocol_plugin_set_height)           (RemminaProtocolWidget *gp, gint height);
+    gboolean     (* protocol_plugin_get_scale)            (RemminaProtocolWidget *gp);
+    gboolean     (* protocol_plugin_get_expand)           (RemminaProtocolWidget *gp);
+    void         (* protocol_plugin_set_expand)           (RemminaProtocolWidget *gp, gboolean expand);
+    gboolean     (* protocol_plugin_has_error)            (RemminaProtocolWidget *gp);
+    void         (* protocol_plugin_set_error)            (RemminaProtocolWidget *gp, const gchar *fmt, ...);
+    gboolean     (* protocol_plugin_is_closed)            (RemminaProtocolWidget *gp);
+    RemminaFile* (* protocol_plugin_get_file)             (RemminaProtocolWidget *gp);
+    GPtrArray*   (* protocol_plugin_get_printers)         (RemminaProtocolWidget *gp);
+    void         (* protocol_plugin_emit_signal)          (RemminaProtocolWidget *gp, const gchar *signal_name);
+    void         (* protocol_plugin_register_hostkey)     (RemminaProtocolWidget *gp, GtkWidget *widget);
+    gchar*       (* protocol_plugin_start_direct_tunnel)  (RemminaProtocolWidget *gp, gint default_port, gboolean port_plus);
+    gboolean     (* protocol_plugin_start_reverse_tunnel) (RemminaProtocolWidget *gp, gint local_port);
+    gboolean     (* protocol_plugin_start_xport_tunnel)   (RemminaProtocolWidget *gp, RemminaXPortTunnelInitFunc init_func);
+    void         (* protocol_plugin_set_display)          (RemminaProtocolWidget *gp, gint display);
+    gboolean     (* protocol_plugin_close_connection)     (RemminaProtocolWidget *gp);
+    gint         (* protocol_plugin_init_authpwd)         (RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type);
+    gint         (* protocol_plugin_init_authuserpwd)     (RemminaProtocolWidget *gp);
+    gchar*       (* protocol_plugin_init_get_username)    (RemminaProtocolWidget *gp);
+    gchar*       (* protocol_plugin_init_get_password)    (RemminaProtocolWidget *gp);
+    gint         (* protocol_plugin_init_authx509)        (RemminaProtocolWidget *gp);
+    gchar*       (* protocol_plugin_init_get_cacert)      (RemminaProtocolWidget *gp);
+    gchar*       (* protocol_plugin_init_get_cacrl)       (RemminaProtocolWidget *gp);
+    gchar*       (* protocol_plugin_init_get_clientcert)  (RemminaProtocolWidget *gp);
+    gchar*       (* protocol_plugin_init_get_clientkey)   (RemminaProtocolWidget *gp);
+    void         (* protocol_plugin_init_save_cred)       (RemminaProtocolWidget *gp);
+    void         (* protocol_plugin_init_show_listen)     (RemminaProtocolWidget *gp, gint port);
+    void         (* protocol_plugin_init_show_retry)      (RemminaProtocolWidget *gp);
+    gboolean     (* protocol_plugin_ssh_exec)             (RemminaProtocolWidget *gp, gboolean wait, const gchar *fmt, ...);
+    void         (* protocol_plugin_chat_open)            (RemminaProtocolWidget *gp, const gchar *name,
+                                                           void(*on_send)(RemminaProtocolWidget *gp, const gchar *text),
+                                                           void(*on_destroy)(RemminaProtocolWidget *gp));
+    void         (* protocol_plugin_chat_close)           (RemminaProtocolWidget *gp);
+    void         (* protocol_plugin_chat_receive)         (RemminaProtocolWidget *gp, const gchar *text);
 
-    gint         (* pref_get_scale_quality)              (void);
-    gint         (* pref_get_sshtunnel_port)             (void);
-    guint        (* pref_keymap_get_keyval)              (const gchar *keymap, guint keyval);
+    gint         (* pref_get_scale_quality)               (void);
+    gint         (* pref_get_sshtunnel_port)              (void);
+    guint        (* pref_keymap_get_keyval)                (const gchar *keymap, guint keyval);
 
-    void         (* log_print)                           (const gchar *text);
-    void         (* log_printf)                          (const gchar *fmt, ...);
+    void         (* log_print)                            (const gchar *text);
+    void         (* log_printf)                           (const gchar *fmt, ...);
 
-    void         (* ui_register)                         (GtkWidget *widget);
+    void         (* ui_register)                          (GtkWidget *widget);
 
-    GtkWidget*   (* open_connection)                     (RemminaFile *remminafile, GCallback disconnect_cb, gpointer data, guint *handler);
+    GtkWidget*   (* open_connection)                      (RemminaFile *remminafile, GCallback disconnect_cb, gpointer data, guint *handler);
 } RemminaPluginService;
 
 /* "Prototype" of the plugin entry function */

@@ -887,7 +887,6 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
     gchar *s;
     gint row = 0;
 
-    /* forward_listen not yet necessary */
     if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_NONE) return;
 
     /* The SSH tab (implementation) */
@@ -942,9 +941,19 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
         row++;
         break;
 
+    case REMMINA_PROTOCOL_SSH_SETTING_REVERSE_TUNNEL:
+        priv->ssh_server_default_radio = NULL;
+        priv->ssh_server_custom_radio = NULL;
+
+        priv->ssh_server_entry = remmina_file_editor_create_entry (gfe, table, row, 1,
+            _("Server"), NULL);
+        row++;
+        break;
+
     case REMMINA_PROTOCOL_SSH_SETTING_SSH:
         priv->ssh_server_default_radio = NULL;
         priv->ssh_server_custom_radio = NULL;
+        priv->ssh_server_entry = NULL;
 
         s = remmina_pref_get_recent ("SFTP");
         priv->server_combo = remmina_file_editor_create_combo_entry (gfe, table, row, 1,
@@ -952,7 +961,6 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
         gtk_entry_set_activates_default (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (priv->server_combo))), TRUE);
         g_free (s);
         row++;
-
         break;
 
     default:
@@ -995,6 +1003,12 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (
             priv->remmina_file->ssh_server && priv->remmina_file->ssh_server[0] != '\0' ?
             priv->ssh_server_custom_radio : priv->ssh_server_default_radio), TRUE);
+        gtk_entry_set_text (GTK_ENTRY (priv->ssh_server_entry),
+            priv->remmina_file->ssh_server ? priv->remmina_file->ssh_server : "");
+    }
+    else if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_REVERSE_TUNNEL)
+    {
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->ssh_enabled_check), priv->remmina_file->ssh_enabled);
         gtk_entry_set_text (GTK_ENTRY (priv->ssh_server_entry),
             priv->remmina_file->ssh_server ? priv->remmina_file->ssh_server : "");
     }
