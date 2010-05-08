@@ -194,7 +194,7 @@ static RemminaProtocolPlugin remmina_plugin_sftp =
     NULL,
     NULL,
     NULL,
-    REMMINA_PROTOCOL_SSH_SETTING_SSH,
+    REMMINA_PROTOCOL_SSH_SETTING_SFTP,
 
     remmina_plugin_sftp_init,
     remmina_plugin_sftp_open_connection,

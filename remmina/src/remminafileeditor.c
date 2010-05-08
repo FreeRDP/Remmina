@@ -890,7 +890,8 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
     if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_NONE) return;
 
     /* The SSH tab (implementation) */
-    if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SSH)
+    if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SSH ||
+        ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SFTP)
     {
         s = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->protocol_combo));
         table = remmina_file_editor_create_notebook_tab (gfe, GTK_STOCK_DIALOG_AUTHENTICATION,
@@ -951,6 +952,7 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
         break;
 
     case REMMINA_PROTOCOL_SSH_SETTING_SSH:
+    case REMMINA_PROTOCOL_SSH_SETTING_SFTP:
         priv->ssh_server_default_radio = NULL;
         priv->ssh_server_custom_radio = NULL;
         priv->ssh_server_entry = NULL;
@@ -970,6 +972,15 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
     priv->ssh_charset_combo = remmina_file_editor_create_combo_entry (gfe, table, row, 1,
         _("Character Set"), charset_list, priv->remmina_file->ssh_charset);
     row++;
+
+    if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SSH)
+    {
+        priv->exec_widget = remmina_file_editor_create_entry (gfe, table, row, 1,
+            _("Startup Program"), NULL);
+        gtk_entry_set_text (GTK_ENTRY (priv->exec_widget),
+            priv->remmina_file->exec ? priv->remmina_file->exec : "");
+        row++;
+    }
 
     /* SSH Authentication frame */
     remmina_public_create_group (GTK_TABLE (table), _("SSH Authentication"), row, 5, 3);

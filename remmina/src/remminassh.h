@@ -199,6 +199,7 @@ typedef struct _RemminaSSHShell
 
     gint master;
     gint slave;
+    gchar *exec;
     pthread_t thread;
     ssh_channel channel;
     gboolean closed;
