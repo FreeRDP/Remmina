@@ -408,11 +408,6 @@ remmina_protocol_widget_init_tunnel (RemminaProtocolWidget *gp)
         gp->priv->ssh_tunnel = tunnel;
     }
 
-    THREADS_ENTER
-    remmina_init_dialog_set_status (REMMINA_INIT_DIALOG (gp->priv->init_dialog),
-        _("Connecting to %s through SSH tunnel..."), gp->priv->remmina_file->server);
-    THREADS_LEAVE
-
     return TRUE;
 }
 #endif
@@ -464,6 +459,11 @@ remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint def
         return NULL;
     }
 
+    THREADS_ENTER
+    remmina_init_dialog_set_status (REMMINA_INIT_DIALOG (gp->priv->init_dialog),
+        _("Connecting to %s through SSH tunnel..."), gp->priv->remmina_file->server);
+    THREADS_LEAVE
+
     /* TODO: Provide an option to support connecting to loopback interface for easier configuration */
     /*if (gp->priv->remmina_file->ssh_server == NULL || gp->priv->remmina_file->ssh_server[0] == '\0')
     {
@@ -491,6 +491,35 @@ remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint def
     return dest;
 
 #endif
+}
+
+gboolean
+remmina_protocol_widget_start_reverse_tunnel (RemminaProtocolWidget *gp, gint local_port)
+{
+#ifdef HAVE_LIBSSH
+    if (!gp->priv->remmina_file->ssh_enabled)
+    {
+        return TRUE;
+    }
+
+    if (!remmina_protocol_widget_init_tunnel (gp))
+    {
+        return FALSE;
+    }
+
+    THREADS_ENTER
+    remmina_init_dialog_set_status (REMMINA_INIT_DIALOG (gp->priv->init_dialog),
+        _("Waiting for an incoming SSH tunnel at port %i..."), gp->priv->remmina_file->listenport);
+    THREADS_LEAVE
+
+    if (!remmina_ssh_tunnel_reverse (gp->priv->ssh_tunnel, gp->priv->remmina_file->listenport, local_port))
+    {
+        remmina_protocol_widget_set_error (gp, REMMINA_SSH (gp->priv->ssh_tunnel)->error);
+        return FALSE;
+    }
+#endif
+
+    return TRUE;
 }
 
 gboolean
@@ -603,6 +632,11 @@ remmina_protocol_widget_start_xport_tunnel (RemminaProtocolWidget *gp, RemminaXP
     gchar *server;
 
     if (!remmina_protocol_widget_init_tunnel (gp)) return FALSE;
+
+    THREADS_ENTER
+    remmina_init_dialog_set_status (REMMINA_INIT_DIALOG (gp->priv->init_dialog),
+        _("Connecting to %s through SSH tunnel..."), gp->priv->remmina_file->server);
+    THREADS_LEAVE
 
     gp->priv->init_func = init_func;
     gp->priv->ssh_tunnel->init_func = remmina_protocol_widget_tunnel_init_callback;

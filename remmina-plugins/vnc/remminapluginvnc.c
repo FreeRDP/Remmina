@@ -1047,6 +1047,8 @@ remmina_plugin_vnc_incoming_connection (RemminaProtocolWidget *gp, rfbClient *cl
 
     remmina_plugin_service->protocol_plugin_init_show_listen (gp, cl->listenPort);
 
+    remmina_plugin_service->protocol_plugin_start_reverse_tunnel (gp, cl->listenPort);
+
     FD_ZERO (&fds); 
     FD_SET (gpdata->listen_sock, &fds);
     select (gpdata->listen_sock + 1, &fds, NULL, NULL, NULL);
@@ -1165,7 +1167,17 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
         {
             cl->serverHost = host;
             cl->listenSpecified = TRUE;
-            cl->listenPort = remminafile->listenport;
+            if (remminafile->ssh_enabled)
+            {
+                /* When we use reverse tunnel, the local port does not really matter.
+                 * Hardcode a default port just in case the remote port is customized
+                 * to a privilege port then we will have problem listening. */
+                cl->listenPort = 5500;
+            }
+            else
+            {
+                cl->listenPort = remminafile->listenport;
+            }
 
             remmina_plugin_vnc_incoming_connection (gp, cl);
         }
@@ -1905,11 +1917,11 @@ static RemminaProtocolPlugin remmina_plugin_vnci =
     NULL,
 
     "remmina-vnc",
-    "remmina-vnc",
+    "remmina-vnc-ssh",
     NULL,
     remmina_plugin_vnci_basic_settings,
     remmina_plugin_vnc_advanced_settings,
-    REMMINA_PROTOCOL_SSH_SETTING_NONE,
+    REMMINA_PROTOCOL_SSH_SETTING_REVERSE_TUNNEL,
 
     remmina_plugin_vnc_init,
     remmina_plugin_vnc_open_connection,

@@ -98,7 +98,8 @@ enum
 {
     REMMINA_SSH_TUNNEL_OPEN,
     REMMINA_SSH_TUNNEL_X11,
-    REMMINA_SSH_TUNNEL_XPORT
+    REMMINA_SSH_TUNNEL_XPORT,
+    REMMINA_SSH_TUNNEL_REVERSE
 };
 
 struct _RemminaSSHTunnel
@@ -125,6 +126,7 @@ struct _RemminaSSHTunnel
     gint server_sock;
     gchar *dest;
     gint port;
+    gint localport;
 
     gint remotedisplay;
     gboolean bindlocalhost;
@@ -152,6 +154,14 @@ gboolean remmina_ssh_tunnel_x11 (RemminaSSHTunnel *tunnel, const gchar *cmd);
 
 /* start X Port Forwarding */
 gboolean remmina_ssh_tunnel_xport (RemminaSSHTunnel *tunnel, gboolean bindlocalhost);
+
+/* start reverse tunnel. A new thread will be started and waiting for incoming connection.
+ * port: the port listening on the remote server side.
+ * local_port: the port listening on the local side. When connection on the server side comes
+ *             in, it will connect to the local port and create the tunnel. The caller should
+ *             start listening on the local port before calling it or in connect_func callback.
+ */
+gboolean remmina_ssh_tunnel_reverse (RemminaSSHTunnel *tunnel, gint port, gint local_port);
 
 /* Tells if the tunnel is terminated after start */
 gboolean remmina_ssh_tunnel_terminated (RemminaSSHTunnel *tunnel);

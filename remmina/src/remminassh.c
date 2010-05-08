@@ -603,6 +603,7 @@ remmina_ssh_tunnel_main_thread (gpointer data)
     gint maxfd;
     gint i;
     gint ret;
+    struct sockaddr_in sin;
 
     pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, NULL);
 
@@ -727,6 +728,31 @@ remmina_ssh_tunnel_main_thread (gpointer data)
         }
 
         break;
+
+    case REMMINA_SSH_TUNNEL_REVERSE:
+        if (channel_forward_listen (REMMINA_SSH (tunnel)->session, NULL, tunnel->port, NULL))
+        {
+            remmina_ssh_set_error (REMMINA_SSH (tunnel), _("Failed to request port forwarding : %s"));
+            if (tunnel->disconnect_func)
+            {
+                (*tunnel->disconnect_func) (tunnel, tunnel->callback_data);
+            }
+            tunnel->thread = 0;
+            return NULL;
+        }
+
+        if (tunnel->init_func &&
+            ! (*tunnel->init_func) (tunnel, tunnel->callback_data))
+        {
+            if (tunnel->disconnect_func)
+            {
+                (*tunnel->disconnect_func) (tunnel, tunnel->callback_data);
+            }
+            tunnel->thread = 0;
+            return NULL;
+        }
+
+        break;
     }
 
     tunnel->buffer_len = 10240;
@@ -735,7 +761,9 @@ remmina_ssh_tunnel_main_thread (gpointer data)
     /* Start the tunnel data transmittion */
     while (tunnel->running)
     {
-        if (tunnel->tunnel_type == REMMINA_SSH_TUNNEL_XPORT || tunnel->tunnel_type == REMMINA_SSH_TUNNEL_X11)
+        if (tunnel->tunnel_type == REMMINA_SSH_TUNNEL_XPORT ||
+            tunnel->tunnel_type == REMMINA_SSH_TUNNEL_X11 ||
+            tunnel->tunnel_type == REMMINA_SSH_TUNNEL_REVERSE)
         {
             if (first)
             {
@@ -763,8 +791,13 @@ remmina_ssh_tunnel_main_thread (gpointer data)
                 {
                     (*tunnel->connect_func) (tunnel, tunnel->callback_data);
                 }
+                if (tunnel->tunnel_type == REMMINA_SSH_TUNNEL_REVERSE)
+                {
+                    /* For reverse tunnel, we only need one connection. */
+                    channel_forward_cancel (REMMINA_SSH (tunnel)->session, NULL, tunnel->port);
+                }
             }
-            else
+            else if (tunnel->tunnel_type != REMMINA_SSH_TUNNEL_REVERSE)
             {
                 /* Poll once per some period of time if no incoming connections.
                  * Don't try to poll continuously as it will significantly slow down the loop */
@@ -789,7 +822,24 @@ remmina_ssh_tunnel_main_thread (gpointer data)
 
             if (channel)
             {
-                sock = remmina_public_open_xdisplay (tunnel->localdisplay);
+                if (tunnel->tunnel_type == REMMINA_SSH_TUNNEL_REVERSE)
+                {
+                    sin.sin_family = AF_INET;
+                    sin.sin_port = htons (tunnel->localport);
+                    sin.sin_addr.s_addr = inet_addr ("127.0.0.1");
+                    sock = socket (AF_INET, SOCK_STREAM, 0);
+                    if (connect (sock, (struct sockaddr *) &sin, sizeof (sin)) < 0)
+                    {
+                        remmina_ssh_set_application_error (REMMINA_SSH (tunnel),
+                            "Cannot connect to local port %i.", tunnel->localport);
+                        close (sock);
+                        sock = -1;
+                    }
+                }
+                else
+                {
+                    sock = remmina_public_open_xdisplay (tunnel->localdisplay);
+                }
                 if (sock >= 0)
                 {
                     remmina_ssh_tunnel_add_channel (tunnel, channel, sock);
@@ -960,7 +1010,7 @@ remmina_ssh_tunnel_open (RemminaSSHTunnel* tunnel, const gchar *dest, gint local
 
     sin.sin_family = AF_INET;
     sin.sin_port = htons (local_port);
-    sin.sin_addr.s_addr = inet_addr("127.0.0.1");
+    sin.sin_addr.s_addr = inet_addr ("127.0.0.1");
 
     if (bind (sock, (struct sockaddr *) &sin, sizeof(sin)))
     {
@@ -1009,6 +1059,23 @@ remmina_ssh_tunnel_xport (RemminaSSHTunnel *tunnel, gboolean bindlocalhost)
 {
     tunnel->tunnel_type = REMMINA_SSH_TUNNEL_XPORT;
     tunnel->bindlocalhost = bindlocalhost;
+    tunnel->running = TRUE;
+
+    if (pthread_create (&tunnel->thread, NULL, remmina_ssh_tunnel_main_thread, tunnel))
+    {
+        remmina_ssh_set_application_error (REMMINA_SSH (tunnel), "Failed to initialize pthread.");
+        tunnel->thread = 0;
+        return FALSE;
+    }
+    return TRUE;
+}
+
+gboolean
+remmina_ssh_tunnel_reverse (RemminaSSHTunnel *tunnel, gint port, gint local_port)
+{
+    tunnel->tunnel_type = REMMINA_SSH_TUNNEL_REVERSE;
+    tunnel->port = port;
+    tunnel->localport = local_port;
     tunnel->running = TRUE;
 
     if (pthread_create (&tunnel->thread, NULL, remmina_ssh_tunnel_main_thread, tunnel))
