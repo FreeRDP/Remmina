@@ -1198,6 +1198,7 @@ remmina_ssh_shell_new_from_file (RemminaFile *remminafile)
 
     shell->master = -1;
     shell->slave = -1;
+    shell->exec = g_strdup (remminafile->exec);
 
     return shell;
 }
@@ -1243,7 +1244,15 @@ remmina_ssh_shell_thread (gpointer data)
     }
 
     channel_request_pty (channel);
-    if (channel_request_shell(channel))
+    if (shell->exec && shell->exec[0])
+    {
+        ret = channel_request_exec (channel, shell->exec);
+    }
+    else
+    {
+        ret = channel_request_shell (channel);
+    }
+    if (ret)
     {
         UNLOCK_SSH (shell)
         remmina_ssh_set_error (REMMINA_SSH (shell), "Failed to request shell : %s");
@@ -1384,6 +1393,11 @@ remmina_ssh_shell_free (RemminaSSHShell *shell)
         pthread_join (thread, NULL);
     }
     close (shell->master);
+    if (shell->exec)
+    {
+        g_free (shell->exec);
+        shell->exec = NULL;
+    }
     /* It's not necessary to close shell->slave since the other end (vte) will close it */;
     remmina_ssh_free (REMMINA_SSH (shell));
 }
