@@ -25,7 +25,7 @@
 RemminaStringArray*
 remmina_string_array_new (void)
 {
-    return g_ptr_array_new_with_free_func(g_free);
+    return g_ptr_array_new ();
 }
 
 RemminaStringArray*
@@ -144,5 +144,12 @@ remmina_string_array_to_string (RemminaStringArray* array)
         g_string_append (gstr, remmina_string_array_index (array, i));
     }
     return g_string_free (gstr, FALSE);
+}
+
+void
+remmina_string_array_free (RemminaStringArray *array)
+{
+    g_ptr_array_foreach (array, (GFunc) g_free, NULL);
+    g_ptr_array_free (array, TRUE);
 }
 
