@@ -269,12 +269,13 @@ remmina_unique_message_received (
     return UNIQUE_RESPONSE_OK;
 }
 
-static void
+static gboolean
 remmina_unique_exec_command (gint command, const gchar *data)
 {
     UniqueApp *app;
     UniqueMessageData *message;
     UniqueResponse resp;
+    gboolean newapp = TRUE;
 
     app = unique_app_new_with_commands ("org.remmina", NULL,
         "main",     REMMINA_COMMAND_MAIN,
@@ -300,7 +301,11 @@ remmina_unique_exec_command (gint command, const gchar *data)
         resp = unique_app_send_message (app, command, message);
         if (message) unique_message_data_free (message);
 
-        if (resp != UNIQUE_RESPONSE_OK)
+        if (resp == UNIQUE_RESPONSE_OK)
+        {
+            newapp = FALSE;
+        }
+        else
         {
             remmina_exec_command (command, data);
         }
@@ -311,6 +316,7 @@ remmina_unique_exec_command (gint command, const gchar *data)
         g_signal_connect (app, "message-received", G_CALLBACK (remmina_unique_message_received), NULL);
         remmina_exec_command (command, data);
     }
+    return newapp;
 }
 #endif
 
@@ -319,6 +325,7 @@ main (int argc, char* argv[])
 {
     gint command;
     gchar *data;
+    gboolean newapp;
 
     bindtextdomain (GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -355,13 +362,17 @@ main (int argc, char* argv[])
 
     command = remmina_parse_command (argc, argv, &data);
 #ifdef HAVE_LIBUNIQUE
-    remmina_unique_exec_command (command, data);
+    newapp = remmina_unique_exec_command (command, data);
 #else
     remmina_exec_command (command, data);
+    newapp = TRUE;
 #endif
     g_free (data);
 
-    gtk_main ();
+    if (newapp)
+    {
+        gtk_main ();
+    }
 
     THREADS_LEAVE    
 
