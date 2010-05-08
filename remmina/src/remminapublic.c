@@ -501,7 +501,7 @@ remmina_public_get_printers (RemminaGetPrintersCallback callback, gpointer user_
     RemminaPrinterList *lst;
 
     lst = g_new (RemminaPrinterList, 1);
-    lst->printers = g_ptr_array_new_with_free_func (g_free);
+    lst->printers = g_ptr_array_new ();
     lst->callback = callback;
     lst->user_data = user_data;
 

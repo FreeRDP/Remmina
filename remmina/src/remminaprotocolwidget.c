@@ -233,6 +233,7 @@ remmina_protocol_widget_close_connection (RemminaProtocolWidget *gp)
 
     if (gp->priv->printers)
     {
+        g_ptr_array_foreach (gp->priv->printers, (GFunc) g_free, NULL);
         g_ptr_array_free (gp->priv->printers, TRUE);
         gp->priv->printers = NULL;
     }
