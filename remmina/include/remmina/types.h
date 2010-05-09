@@ -59,6 +59,7 @@ typedef struct _RemminaFile
     gboolean shareprinter;
     gboolean once;
     gboolean disableencryption;
+    gboolean disableclipboard;
 
     /* SSH settings */
     gboolean ssh_enabled;
@@ -149,6 +150,7 @@ typedef gpointer RemminaProtocolSetting;
 #define REMMINA_PROTOCOL_SETTING_DISABLEENCRYPTION      "32"
 #define REMMINA_PROTOCOL_SETTING_SSH_PRIVATEKEY         "33"
 #define REMMINA_PROTOCOL_SETTING_PROXY_DEST             "34"
+#define REMMINA_PROTOCOL_SETTING_DISABLECLIPBOARD       "35"
 
 #define REMMINA_PROTOCOL_SETTING_VALUE_CTL_END                0
 #define REMMINA_PROTOCOL_SETTING_VALUE_CTL_CONCAT             1
@@ -185,6 +187,7 @@ typedef gpointer RemminaProtocolSetting;
 #define REMMINA_PROTOCOL_SETTING_VALUE_DISABLEENCRYPTION      32
 #define REMMINA_PROTOCOL_SETTING_VALUE_SSH_PRIVATEKEY         33
 #define REMMINA_PROTOCOL_SETTING_VALUE_PROXY_DEST             34
+#define REMMINA_PROTOCOL_SETTING_VALUE_DISABLECLIPBOARD       35
 
 typedef enum
 {
