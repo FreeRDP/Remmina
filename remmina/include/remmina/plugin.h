@@ -119,6 +119,8 @@ typedef struct _RemminaPluginService
     void         (* protocol_plugin_init_save_cred)       (RemminaProtocolWidget *gp);
     void         (* protocol_plugin_init_show_listen)     (RemminaProtocolWidget *gp, gint port);
     void         (* protocol_plugin_init_show_retry)      (RemminaProtocolWidget *gp);
+    void         (* protocol_plugin_init_show)            (RemminaProtocolWidget *gp);
+    void         (* protocol_plugin_init_hide)            (RemminaProtocolWidget *gp);
     gboolean     (* protocol_plugin_ssh_exec)             (RemminaProtocolWidget *gp, gboolean wait, const gchar *fmt, ...);
     void         (* protocol_plugin_chat_open)            (RemminaProtocolWidget *gp, const gchar *name,
                                                            void(*on_send)(RemminaProtocolWidget *gp, const gchar *text),
