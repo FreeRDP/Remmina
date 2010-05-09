@@ -373,6 +373,7 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
         remminafile->resolution_width, remminafile->resolution_height);
     remmina_nx_session_add_parameter (nx, "kbtype", remmina_kbtype);
     remmina_nx_session_add_parameter (nx, "media", "0");
+    remmina_nx_session_add_parameter (nx, "clipboard", remminafile->disableclipboard ? "none" : "both");
 
     switch (event_type)
     {
@@ -602,10 +603,9 @@ static const RemminaProtocolSetting remmina_plugin_nx_basic_settings[] =
 
 static const RemminaProtocolSetting remmina_plugin_nx_advanced_settings[] =
 {
-    REMMINA_PROTOCOL_SETTING_CTL_CONCAT,
+    REMMINA_PROTOCOL_SETTING_DISABLECLIPBOARD,
     REMMINA_PROTOCOL_SETTING_DISABLEENCRYPTION,
     REMMINA_PROTOCOL_SETTING_SHOWCURSOR_LOCAL,
-    REMMINA_PROTOCOL_SETTING_CTL_CONCAT_END,
     REMMINA_PROTOCOL_SETTING_CTL_END
 };
 

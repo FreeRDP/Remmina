@@ -201,7 +201,10 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
         gpdata->settings->console_session = 1;
     }
 
-    freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "cliprdr", NULL);
+    if (!remminafile->disableclipboard)
+    {
+        freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "cliprdr", NULL);
+    }
 
     if (remminafile->sharefolder && remminafile->sharefolder[0] == '/')
     {
@@ -414,6 +417,7 @@ static const RemminaProtocolSetting remmina_plugin_rdp_advanced_settings[] =
     REMMINA_PROTOCOL_SETTING_EXEC,
     REMMINA_PROTOCOL_SETTING_EXECPATH,
     REMMINA_PROTOCOL_SETTING_SHAREPRINTER,
+    REMMINA_PROTOCOL_SETTING_DISABLECLIPBOARD,
     REMMINA_PROTOCOL_SETTING_CONSOLE,
     REMMINA_PROTOCOL_SETTING_CTL_END
 };

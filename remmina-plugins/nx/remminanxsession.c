@@ -725,7 +725,6 @@ remmina_nx_session_add_common_parameters (RemminaNXSession *nx)
     remmina_nx_session_add_parameter (nx, "images", "64M");
     remmina_nx_session_add_parameter (nx, "render", "1");
     remmina_nx_session_add_parameter (nx, "backingstore", "1");
-    remmina_nx_session_add_parameter (nx, "clipboard", "both");
     remmina_nx_session_add_parameter (nx, "agent_server", "");
     remmina_nx_session_add_parameter (nx, "agent_user", "");
     remmina_nx_session_add_parameter (nx, "agent_password", "");

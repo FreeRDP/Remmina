@@ -110,6 +110,7 @@ remmina_file_new_temp (void)
         gf->shareprinter = FALSE;
         gf->once = FALSE;
         gf->disableencryption = FALSE;
+        gf->disableclipboard = FALSE;
 
         gf->ssh_enabled = FALSE;
         gf->ssh_server = NULL;
@@ -227,6 +228,7 @@ remmina_file_load (const gchar *filename)
         gf->shareprinter = g_key_file_get_boolean (gkeyfile, "remmina", "shareprinter", NULL);
         gf->once = g_key_file_get_boolean (gkeyfile, "remmina", "once", NULL);
         gf->disableencryption = g_key_file_get_boolean (gkeyfile, "remmina", "disableencryption", NULL);
+        gf->disableclipboard = g_key_file_get_boolean (gkeyfile, "remmina", "disableclipboard", NULL);
 
         gf->ssh_enabled = g_key_file_get_boolean (gkeyfile, "remmina", "ssh_enabled", NULL);
         gf->ssh_server = g_key_file_get_string (gkeyfile, "remmina", "ssh_server", NULL);
@@ -291,6 +293,7 @@ remmina_file_store_profile (RemminaFile *gf, GKeyFile *gkeyfile)
     g_key_file_set_boolean (gkeyfile, "remmina", "shareprinter", gf->shareprinter);
     g_key_file_set_boolean (gkeyfile, "remmina", "once", gf->once);
     g_key_file_set_boolean (gkeyfile, "remmina", "disableencryption", gf->disableencryption);
+    g_key_file_set_boolean (gkeyfile, "remmina", "disableclipboard", gf->disableclipboard);
 
     g_key_file_set_boolean (gkeyfile, "remmina", "ssh_enabled", gf->ssh_enabled);
     g_key_file_set_string (gkeyfile, "remmina", "ssh_server", (gf->ssh_server ? gf->ssh_server : ""));
@@ -484,6 +487,7 @@ remmina_file_dup (RemminaFile *remminafile)
     gf->shareprinter = remminafile->shareprinter;
     gf->once = remminafile->once;
     gf->disableencryption = remminafile->disableencryption;
+    gf->disableclipboard = remminafile->disableclipboard;
 
     gf->ssh_enabled = remminafile->ssh_enabled;
     gf->ssh_server = g_strdup (remminafile->ssh_server);

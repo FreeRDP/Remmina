@@ -117,6 +117,7 @@ struct _RemminaFileEditorPriv
     GtkWidget *shareprinter_check;
     GtkWidget *once_check;
     GtkWidget *disableencryption_check;
+    GtkWidget *disableclipboard_check;
 
     GtkWidget *ssh_enabled_check;
     GtkWidget *ssh_server_default_radio;
@@ -852,7 +853,7 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, c
         case REMMINA_PROTOCOL_SETTING_VALUE_DISABLEENCRYPTION:
             priv->disableencryption_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
                 _("Disable Encryption"), priv->remmina_file->disableencryption);
-            row++;
+            if (!hbox) row++;
             break;
 
 #ifdef HAVE_LIBSSH
@@ -866,6 +867,12 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, c
             priv->proxy_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
                 _("Proxy Destination"), priv->remmina_file->proxy);
             row++;
+            break;
+
+        case REMMINA_PROTOCOL_SETTING_VALUE_DISABLECLIPBOARD:
+            priv->disableclipboard_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
+                _("Disable Clipboard Sync"), priv->remmina_file->disableclipboard);
+            if (!hbox) row++;
             break;
 
         default:
@@ -1106,6 +1113,7 @@ remmina_file_editor_protocol_combo_on_changed (GtkComboBox *combo, RemminaFileEd
     priv->shareprinter_check = NULL;
     priv->once_check = NULL;
     priv->disableencryption_check = NULL;
+    priv->disableclipboard_check = NULL;
 
     priv->ssh_enabled_check = NULL;
     priv->ssh_server_default_radio = NULL;
@@ -1302,6 +1310,10 @@ remmina_file_editor_update (RemminaFileEditor *gfe)
     if (priv->disableencryption_check)
     {
         priv->remmina_file->disableencryption = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->disableencryption_check));
+    }
+    if (priv->disableclipboard_check)
+    {
+        priv->remmina_file->disableclipboard = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->disableclipboard_check));
     }
 
     if (g_strcmp0 (priv->remmina_file->protocol, "SFTP") == 0 ||

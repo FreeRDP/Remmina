@@ -1157,7 +1157,7 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
         cl->GetCredential = remmina_plugin_vnc_rfb_credential;
 #endif
         cl->GotFrameBufferUpdate = remmina_plugin_vnc_rfb_updatefb;
-        cl->GotXCutText = remmina_plugin_vnc_rfb_cuttext;
+        cl->GotXCutText = (remminafile->disableclipboard ? NULL : remmina_plugin_vnc_rfb_cuttext);
         cl->GotCursorShape = remmina_plugin_vnc_rfb_cursor_shape;
         cl->Bell = remmina_plugin_vnc_rfb_bell;
         cl->HandleTextChat = remmina_plugin_vnc_rfb_chat;
@@ -1548,8 +1548,10 @@ static gboolean
 remmina_plugin_vnc_open_connection (RemminaProtocolWidget *gp)
 {
     RemminaPluginVncData *gpdata;
+    RemminaFile *remminafile;
 
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+    remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
     gpdata->connected = TRUE;
 
@@ -1570,8 +1572,11 @@ remmina_plugin_vnc_open_connection (RemminaProtocolWidget *gp)
     g_signal_connect (G_OBJECT (gpdata->drawing_area), "key-release-event",
         G_CALLBACK (remmina_plugin_vnc_on_key), gp);
 
-    gpdata->clipboard_handler = g_signal_connect (G_OBJECT (gtk_clipboard_get (GDK_SELECTION_CLIPBOARD)),
-        "owner-change", G_CALLBACK (remmina_plugin_vnc_on_cuttext), gp);
+    if (!remminafile->disableclipboard)
+    {
+        gpdata->clipboard_handler = g_signal_connect (G_OBJECT (gtk_clipboard_get (GDK_SELECTION_CLIPBOARD)),
+            "owner-change", G_CALLBACK (remmina_plugin_vnc_on_cuttext), gp);
+    }
 
 #ifdef HAVE_PTHREAD
     if (pthread_create (&gpdata->thread, NULL, remmina_plugin_vnc_main_thread, gp))
@@ -1859,9 +1864,10 @@ static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
     REMMINA_PROTOCOL_SETTING_VIEWONLY,
     REMMINA_PROTOCOL_SETTING_CTL_CONCAT_END,
     REMMINA_PROTOCOL_SETTING_CTL_CONCAT,
-    REMMINA_PROTOCOL_SETTING_DISABLESERVERINPUT,
+    REMMINA_PROTOCOL_SETTING_DISABLECLIPBOARD,
     REMMINA_PROTOCOL_SETTING_DISABLEENCRYPTION,
     REMMINA_PROTOCOL_SETTING_CTL_CONCAT_END,
+    REMMINA_PROTOCOL_SETTING_DISABLESERVERINPUT,
     REMMINA_PROTOCOL_SETTING_CTL_END
 };
 
@@ -1877,9 +1883,10 @@ static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
     REMMINA_PROTOCOL_SETTING_VIEWONLY,
     REMMINA_PROTOCOL_SETTING_CTL_CONCAT_END,
     REMMINA_PROTOCOL_SETTING_CTL_CONCAT,
-    REMMINA_PROTOCOL_SETTING_DISABLESERVERINPUT,
+    REMMINA_PROTOCOL_SETTING_DISABLECLIPBOARD,
     REMMINA_PROTOCOL_SETTING_DISABLEENCRYPTION,
     REMMINA_PROTOCOL_SETTING_CTL_CONCAT_END,
+    REMMINA_PROTOCOL_SETTING_DISABLESERVERINPUT,
     REMMINA_PROTOCOL_SETTING_CTL_END
 };
 
