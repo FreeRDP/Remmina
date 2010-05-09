@@ -184,6 +184,7 @@ remmina_nx_session_set_error (RemminaNXSession *nx, const gchar *fmt)
 {
     const gchar *err;
 
+    if (nx->error) g_free (nx->error);
     err = ssh_get_error (nx->session);
     nx->error = g_strdup_printf (fmt, err);
 }
@@ -193,6 +194,7 @@ remmina_nx_session_set_application_error (RemminaNXSession *nx, const gchar *fmt
 {
     va_list args;
 
+    if (nx->error) g_free (nx->error);
     va_start (args, fmt);
     nx->error = g_strdup_vprintf (fmt, args);
     va_end (args);
@@ -208,6 +210,16 @@ const gchar*
 remmina_nx_session_get_error (RemminaNXSession *nx)
 {
     return nx->error;
+}
+
+void
+remmina_nx_session_clear_error (RemminaNXSession *nx)
+{
+    if (nx->error)
+    {
+        g_free (nx->error);
+        nx->error = NULL;
+    }
 }
 
 void
@@ -426,26 +438,27 @@ remmina_nx_session_parse_response (RemminaNXSession *nx)
         if (status >= 400 && status <= 599)
         {
             remmina_nx_session_set_application_error (nx, "%s", line);
-            g_free (line);
-            return status;
         }
-        switch (status)
+        else
         {
-        case 127: /* Session list */
-            nx->session_list_state = 1;
-            break;
-        case 148: /* Server capacity not reached for user xxx */
-            nx->allow_start = TRUE;
-            break;
-        case 700:
-            nx->session_id = g_strdup (p);
-            break;
-        case 705:
-            nx->session_display = atoi (p);
-            break;
-        case 701:
-            nx->proxy_cookie = g_strdup (p);
-            break;
+            switch (status)
+            {
+            case 127: /* Session list */
+                nx->session_list_state = 1;
+                break;
+            case 148: /* Server capacity not reached for user xxx */
+                nx->allow_start = TRUE;
+                break;
+            case 700:
+                nx->session_id = g_strdup (p);
+                break;
+            case 705:
+                nx->session_display = atoi (p);
+                break;
+            case 701:
+                nx->proxy_cookie = g_strdup (p);
+                break;
+            }
         }
         g_free (line);
 
@@ -469,11 +482,14 @@ remmina_nx_session_parse_response (RemminaNXSession *nx)
 static gboolean
 remmina_nx_session_expect_status (RemminaNXSession *nx, gint status)
 {
-    while (remmina_nx_session_parse_response (nx) != status)
+    gint response;
+
+    while ((response = remmina_nx_session_parse_response (nx)) != status)
     {
-        if (remmina_nx_session_has_error (nx)) return FALSE;
+        if (response == 999) break;
         if (!remmina_nx_session_get_response (nx)) return FALSE;
     }
+    if (remmina_nx_session_has_error (nx)) return FALSE;
     return TRUE;
 }
 
@@ -644,11 +660,24 @@ remmina_nx_session_list (RemminaNXSession *nx)
 {
     gboolean ret;
 
-    nx->session_list = gtk_list_store_new (REMMINA_NX_SESSION_N_COLUMNS,
-        G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+    if (nx->session_list == NULL)
+    {
+        nx->session_list = gtk_list_store_new (REMMINA_NX_SESSION_N_COLUMNS,
+            G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+    }
+    else
+    {
+        gtk_list_store_clear (nx->session_list);
+    }
     ret = remmina_nx_session_send_session_command (nx, "listsession", 105);
 
     return ret;
+}
+
+void
+remmina_nx_session_set_tree_view (RemminaNXSession *nx, GtkTreeView *tree)
+{
+    gtk_tree_view_set_model (tree, GTK_TREE_MODEL (nx->session_list));
 }
 
 gboolean
@@ -672,6 +701,12 @@ remmina_nx_session_iter_get (RemminaNXSession *nx, GtkTreeIter *iter, gint colum
 
     gtk_tree_model_get (GTK_TREE_MODEL (nx->session_list), iter, column, &val, -1);
     return val;
+}
+
+void
+remmina_nx_session_iter_set (RemminaNXSession *nx, GtkTreeIter *iter, gint column, const gchar *data)
+{
+    gtk_list_store_set (nx->session_list, iter, column, data, -1);
 }
 
 gboolean
@@ -719,6 +754,12 @@ remmina_nx_session_restore (RemminaNXSession *nx)
 {
     remmina_nx_session_add_common_parameters (nx);
     return remmina_nx_session_send_session_command (nx, "restoresession", 105);
+}
+
+gboolean
+remmina_nx_session_terminate (RemminaNXSession *nx)
+{
+    return remmina_nx_session_send_session_command (nx, "terminate", 105);
 }
 
 static gpointer

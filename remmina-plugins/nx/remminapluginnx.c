@@ -24,23 +24,10 @@
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
 #include <X11/extensions/XKBrules.h>
-#include "remminanxsession.h"
+#include "remminapluginnx.h"
+#include "remminanxsessionmanager.h"
 
-typedef struct _RemminaPluginNxData
-{
-    GtkWidget *socket;
-    gint socket_id;
-
-    pthread_t thread;
-
-    RemminaNXSession *nx;
-
-    Display *display;
-    Window window_id;
-    int (*orig_handler) (Display *, XErrorEvent *);
-} RemminaPluginNxData;
-
-static RemminaPluginService *remmina_plugin_service = NULL;
+RemminaPluginService *remmina_plugin_nx_service = NULL;
 
 static gchar *remmina_kbtype = "pc102/us";
 
@@ -103,13 +90,13 @@ remmina_plugin_nx_on_plug_added (GtkSocket *socket, RemminaProtocolWidget *gp)
 
     gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
 
-    remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
+    remmina_plugin_nx_service->protocol_plugin_emit_signal (gp, "connect");
 }
 
 static void
 remmina_plugin_nx_on_plug_removed (GtkSocket *socket, RemminaProtocolWidget *gp)
 {
-    remmina_plugin_service->protocol_plugin_close_connection (gp);
+    remmina_plugin_nx_service->protocol_plugin_close_connection (gp);
 }
 
 gboolean
@@ -119,11 +106,11 @@ remmina_plugin_nx_ssh_auth_callback (gchar **passphrase, gpointer userdata)
     gint ret;
 
     THREADS_ENTER
-    ret = remmina_plugin_service->protocol_plugin_init_authpwd (gp, REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY);
+    ret = remmina_plugin_nx_service->protocol_plugin_init_authpwd (gp, REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY);
     THREADS_LEAVE
 
     if (ret != GTK_RESPONSE_OK) return FALSE;
-    *passphrase = remmina_plugin_service->protocol_plugin_init_get_password (gp);
+    *passphrase = remmina_plugin_nx_service->protocol_plugin_init_get_password (gp);
 
     return TRUE;
 }
@@ -133,7 +120,7 @@ remmina_plugin_nx_on_proxy_exit (GPid pid, gint status, gpointer data)
 {
     RemminaProtocolWidget *gp = (RemminaProtocolWidget*) data;
 
-    remmina_plugin_service->protocol_plugin_close_connection (gp);
+    remmina_plugin_nx_service->protocol_plugin_close_connection (gp);
 }
 
 static int
@@ -212,6 +199,19 @@ remmina_plugin_nx_monitor_create_notify (RemminaProtocolWidget *gp, const gchar 
     return TRUE;
 }
 
+static gint
+remmina_plugin_nx_wait_signal (RemminaPluginNxData *gpdata)
+{
+    fd_set set;
+    guchar dummy = 0;
+
+    FD_ZERO (&set);
+    FD_SET (gpdata->event_pipe[0], &set);
+    select (gpdata->event_pipe[0] + 1, &set, NULL, NULL, NULL);
+    (void) read (gpdata->event_pipe[0], &dummy, 1);
+    return (gint) dummy;
+}
+
 static gboolean
 remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
 {
@@ -222,17 +222,18 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
     gchar *s1, *s2;
     gint port;
     gint ret;
-    GtkTreeIter iter;
+    gboolean is_empty_list;
+    gint event_type = 0;
 
     gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
-    remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
+    remminafile = remmina_plugin_nx_service->protocol_plugin_get_file (gp);
     nx = gpdata->nx;
 
     /* Connect */
 
     remmina_nx_session_set_encryption (nx, remminafile->disableencryption ? 0 : 1);
-    remmina_nx_session_set_localport (nx, remmina_plugin_service->pref_get_sshtunnel_port ());
-    remmina_nx_session_set_log_callback (nx, remmina_plugin_service->log_printf);
+    remmina_nx_session_set_localport (nx, remmina_plugin_nx_service->pref_get_sshtunnel_port ());
+    remmina_nx_session_set_log_callback (nx, remmina_plugin_nx_service->log_printf);
 
     s1 = g_strdup (remminafile->server);
     s2 = strrchr (s1, ':');
@@ -265,13 +266,13 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
     else
     {
         THREADS_ENTER
-        ret = remmina_plugin_service->protocol_plugin_init_authuserpwd (gp);
+        ret = remmina_plugin_nx_service->protocol_plugin_init_authuserpwd (gp);
         THREADS_LEAVE
 
         if (ret != GTK_RESPONSE_OK) return FALSE;
 
-        s1 = remmina_plugin_service->protocol_plugin_init_get_username (gp);
-        s2 = remmina_plugin_service->protocol_plugin_init_get_password (gp);
+        s1 = remmina_plugin_nx_service->protocol_plugin_init_get_username (gp);
+        s2 = remmina_plugin_nx_service->protocol_plugin_init_get_password (gp);
     }
 
     ret = remmina_nx_session_login (nx, s1, s2);
@@ -279,7 +280,7 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
     g_free (s2);
     if (!ret) return FALSE;
 
-    remmina_plugin_service->protocol_plugin_init_save_cred (gp);
+    remmina_plugin_nx_service->protocol_plugin_init_save_cred (gp);
 
     /* Prepare the session type and application */
     if (!remminafile->exec || !remminafile->exec[0] || g_strcmp0 (remminafile->exec, "GNOME") == 0)
@@ -311,16 +312,55 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
 
     /* List sessions */
 
-    remmina_nx_session_add_parameter (nx, "type", type);
-    if (g_strcmp0 (type, "shadow") != 0)
+    while (1)
     {
-        remmina_nx_session_add_parameter (nx, "user", remminafile->username);
-        remmina_nx_session_add_parameter (nx, "status", "suspended,running");
-    }
+        remmina_nx_session_add_parameter (nx, "type", type);
+        if (g_strcmp0 (type, "shadow") != 0)
+        {
+            remmina_nx_session_add_parameter (nx, "user", remminafile->username);
+            remmina_nx_session_add_parameter (nx, "status", "suspended,running");
+        }
 
-    if (!remmina_nx_session_list (nx))
-    {
-        return FALSE;
+        if (!remmina_nx_session_list (nx))
+        {
+            return FALSE;
+        }
+
+        is_empty_list = !remmina_nx_session_iter_first (nx, &gpdata->iter);
+        if (is_empty_list && !gpdata->manager_started)
+        {
+            event_type = REMMINA_NX_EVENT_START;
+        }
+        else if (g_strcmp0 (type, "shadow") == 0 && !gpdata->manager_started)
+        {
+            event_type = REMMINA_NX_EVENT_ATTACH;
+        }
+        else
+        {
+            remmina_nx_session_manager_start (gp);
+            event_type = remmina_plugin_nx_wait_signal (gpdata);
+            if (event_type == REMMINA_NX_EVENT_CANCEL)
+            {
+                return FALSE;
+            }
+            if (event_type == REMMINA_NX_EVENT_TERMINATE)
+            {
+                if (!is_empty_list)
+                {
+                    s1 = remmina_nx_session_iter_get (nx, &gpdata->iter, REMMINA_NX_SESSION_COLUMN_ID);
+                    remmina_nx_session_add_parameter (nx, "sessionid", s1);
+                    g_free (s1);
+                    if (!remmina_nx_session_terminate (nx))
+                    {
+                        remmina_nx_session_manager_start (gp);
+                        remmina_plugin_nx_wait_signal (gpdata);
+                    }
+                }
+                continue;
+            }
+        }
+
+        break;
     }
 
     /* Start, Restore or Attach, based on the setting and existing session */
@@ -334,8 +374,10 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
     remmina_nx_session_add_parameter (nx, "kbtype", remmina_kbtype);
     remmina_nx_session_add_parameter (nx, "media", "0");
 
-    if (!remmina_nx_session_iter_first (nx, &iter))
+    switch (event_type)
     {
+
+    case REMMINA_NX_EVENT_START:
         if (app) remmina_nx_session_add_parameter (nx, "application", app);
 
         remmina_nx_session_add_parameter (nx, "session", remminafile->name);
@@ -343,28 +385,32 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
             remminafile->resolution_width, remminafile->resolution_height);
 
         if (!remmina_nx_session_start (nx)) return FALSE;
-    }
-    else if (g_strcmp0 (type, "shadow") == 0)
-    {
-        s1 = remmina_nx_session_iter_get (nx, &iter, REMMINA_NX_SESSION_COLUMN_ID);
+        break;
+
+    case REMMINA_NX_EVENT_ATTACH:
+        s1 = remmina_nx_session_iter_get (nx, &gpdata->iter, REMMINA_NX_SESSION_COLUMN_ID);
         remmina_nx_session_add_parameter (nx, "id", s1);
         g_free (s1);
 
-        s1 = remmina_nx_session_iter_get (nx, &iter, REMMINA_NX_SESSION_COLUMN_DISPLAY);
+        s1 = remmina_nx_session_iter_get (nx, &gpdata->iter, REMMINA_NX_SESSION_COLUMN_DISPLAY);
         remmina_nx_session_add_parameter (nx, "display", s1);
         g_free (s1);
 
         if (!remmina_nx_session_attach (nx)) return FALSE;
-    }
-    else
-    {
-        s1 = remmina_nx_session_iter_get (nx, &iter, REMMINA_NX_SESSION_COLUMN_ID);
+        break;
+
+    case REMMINA_NX_EVENT_RESTORE:
+        s1 = remmina_nx_session_iter_get (nx, &gpdata->iter, REMMINA_NX_SESSION_COLUMN_ID);
         remmina_nx_session_add_parameter (nx, "id", s1);
         g_free (s1);
 
         remmina_nx_session_add_parameter (nx, "session", remminafile->name);
 
         if (!remmina_nx_session_restore (nx)) return FALSE;
+        break;
+
+    default:
+        return FALSE;
     }
 
     if (!remmina_nx_session_tunnel_open (nx)) return FALSE;
@@ -401,7 +447,7 @@ remmina_plugin_nx_main (RemminaProtocolWidget *gp)
         err = remmina_nx_session_get_error (gpdata->nx);
         if (err)
         {
-            remmina_plugin_service->protocol_plugin_set_error (gp, "%s", err);
+            remmina_plugin_nx_service->protocol_plugin_set_error (gp, "%s", err);
         }
     }
 
@@ -417,7 +463,7 @@ remmina_plugin_nx_main_thread (gpointer data)
     CANCEL_ASYNC
     if (!remmina_plugin_nx_main ((RemminaProtocolWidget*) data))
     {
-        IDLE_ADD ((GSourceFunc) remmina_plugin_service->protocol_plugin_close_connection, data);
+        IDLE_ADD ((GSourceFunc) remmina_plugin_nx_service->protocol_plugin_close_connection, data);
     }
     return NULL;
 }
@@ -426,18 +472,31 @@ static void
 remmina_plugin_nx_init (RemminaProtocolWidget *gp)
 {
     RemminaPluginNxData *gpdata;
+    gint flags;
 
     gpdata = g_new0 (RemminaPluginNxData, 1);
     g_object_set_data_full (G_OBJECT (gp), "plugin-data", gpdata, g_free);
 
     gpdata->socket = gtk_socket_new ();
-    remmina_plugin_service->protocol_plugin_register_hostkey (gp, gpdata->socket);
+    remmina_plugin_nx_service->protocol_plugin_register_hostkey (gp, gpdata->socket);
     gtk_widget_show (gpdata->socket);
     g_signal_connect (G_OBJECT (gpdata->socket), "plug-added",
         G_CALLBACK (remmina_plugin_nx_on_plug_added), gp);
     g_signal_connect (G_OBJECT (gpdata->socket), "plug-removed",
         G_CALLBACK (remmina_plugin_nx_on_plug_removed), gp);
     gtk_container_add (GTK_CONTAINER (gp), gpdata->socket);
+
+    if (pipe (gpdata->event_pipe))
+    {
+        g_print ("Error creating pipes.\n");
+        gpdata->event_pipe[0] = -1;
+        gpdata->event_pipe[1] = -1;
+    }
+    else
+    {
+        flags = fcntl (gpdata->event_pipe[0], F_GETFL, 0);
+        fcntl (gpdata->event_pipe[0], F_SETFL, flags | O_NONBLOCK);
+    }
 }
 
 static gboolean
@@ -447,24 +506,24 @@ remmina_plugin_nx_open_connection (RemminaProtocolWidget *gp)
     RemminaFile *remminafile;
 
     gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
-    remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
+    remminafile = remmina_plugin_nx_service->protocol_plugin_get_file (gp);
 
     if (g_strcmp0 (remminafile->resolution, "AUTO") == 0)
     {
-        remmina_plugin_service->protocol_plugin_set_expand (gp, TRUE);
+        remmina_plugin_nx_service->protocol_plugin_set_expand (gp, TRUE);
         gtk_widget_set_size_request (GTK_WIDGET (gp), 320, 240);
     }
     else
     {
-        remmina_plugin_service->protocol_plugin_set_width (gp, remminafile->resolution_width);
-        remmina_plugin_service->protocol_plugin_set_height (gp, remminafile->resolution_height);
+        remmina_plugin_nx_service->protocol_plugin_set_width (gp, remminafile->resolution_width);
+        remmina_plugin_nx_service->protocol_plugin_set_height (gp, remminafile->resolution_height);
         gtk_widget_set_size_request (GTK_WIDGET (gp), remminafile->resolution_width, remminafile->resolution_height);
     }
     gpdata->socket_id = gtk_socket_get_id (GTK_SOCKET (gpdata->socket));
 
     if (pthread_create (&gpdata->thread, NULL, remmina_plugin_nx_main_thread, gp))
     {
-        remmina_plugin_service->protocol_plugin_set_error (gp,
+        remmina_plugin_nx_service->protocol_plugin_set_error (gp,
             "Failed to initialize pthread. Falling back to non-thread mode...");
         gpdata->thread = 0;
         return FALSE;
@@ -487,6 +546,11 @@ remmina_plugin_nx_close_connection (RemminaProtocolWidget *gp)
         pthread_cancel (gpdata->thread);
         if (gpdata->thread) pthread_join (gpdata->thread, NULL);
     }
+    if (gpdata->session_manager_start_handler)
+    {
+        g_source_remove (gpdata->session_manager_start_handler);
+        gpdata->session_manager_start_handler = 0;
+    }
 
     if (gpdata->window_id)
     {
@@ -505,8 +569,10 @@ remmina_plugin_nx_close_connection (RemminaProtocolWidget *gp)
         XCloseDisplay (gpdata->display);
         gpdata->display = NULL;
     }
+    close (gpdata->event_pipe[0]);
+    close (gpdata->event_pipe[1]);
 
-    remmina_plugin_service->protocol_plugin_emit_signal (gp, "disconnect");
+    remmina_plugin_nx_service->protocol_plugin_emit_signal (gp, "disconnect");
 
     return FALSE;
 }
@@ -569,7 +635,7 @@ remmina_plugin_entry (RemminaPluginService *service)
     Display *dpy;
     XkbRF_VarDefsRec vd;
 
-    remmina_plugin_service = service;
+    remmina_plugin_nx_service = service;
 
     bindtextdomain (GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -583,6 +649,7 @@ remmina_plugin_entry (RemminaPluginService *service)
             if (vd.model) XFree (vd.model);
             if (vd.variant) XFree (vd.variant);
             if (vd.options) XFree (vd.options);
+            g_print ("NX: detected keyboard type %s\n", remmina_kbtype);
         }
         XCloseDisplay (dpy);
     }

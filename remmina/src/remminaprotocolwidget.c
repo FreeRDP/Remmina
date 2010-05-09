@@ -937,6 +937,18 @@ remmina_protocol_widget_init_show_retry (RemminaProtocolWidget *gp)
         _("Authentication failed. Trying to reconnect..."));
 }
 
+void
+remmina_protocol_widget_init_show (RemminaProtocolWidget *gp)
+{
+    gtk_widget_show (gp->priv->init_dialog);
+}
+
+void
+remmina_protocol_widget_init_hide (RemminaProtocolWidget *gp)
+{
+    gtk_widget_hide (gp->priv->init_dialog);
+}
+
 static void
 remmina_protocol_widget_chat_on_destroy (RemminaProtocolWidget *gp)
 {

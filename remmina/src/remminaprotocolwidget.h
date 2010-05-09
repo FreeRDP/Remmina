@@ -110,6 +110,8 @@ gchar* remmina_protocol_widget_init_get_clientkey (RemminaProtocolWidget *gp);
 void remmina_protocol_widget_init_save_cred (RemminaProtocolWidget *gp);
 void remmina_protocol_widget_init_show_listen (RemminaProtocolWidget *gp, gint port);
 void remmina_protocol_widget_init_show_retry (RemminaProtocolWidget *gp);
+void remmina_protocol_widget_init_show (RemminaProtocolWidget *gp);
+void remmina_protocol_widget_init_hide (RemminaProtocolWidget *gp);
 
 void remmina_protocol_widget_chat_open (RemminaProtocolWidget *gp, const gchar *name,
     void(*on_send)(RemminaProtocolWidget *gp, const gchar *text),

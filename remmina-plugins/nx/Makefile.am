@@ -5,7 +5,8 @@ plugin_LTLIBRARIES = remmina-plugin-nx.la
 
 remmina_plugin_nx_la_SOURCES = \
     remminanxsession.c remminanxsession.h \
-    remminapluginnx.c
+    remminapluginnx.c remminapluginnx.h \
+    remminanxsessionmanager.c remminanxsessionmanager.h
 
 remmina_plugin_nx_la_CFLAGS = @XKBFILE_CFLAGS@ @REMMINA_PLUGINS_CFLAGS@ \
     -DREMMINA_LOCALEDIR=\"$(remmina_localedir)\"

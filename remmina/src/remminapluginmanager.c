@@ -90,6 +90,8 @@ RemminaPluginService remmina_plugin_manager_service =
     remmina_protocol_widget_init_save_cred,
     remmina_protocol_widget_init_show_listen,
     remmina_protocol_widget_init_show_retry,
+    remmina_protocol_widget_init_show,
+    remmina_protocol_widget_init_hide,
     remmina_protocol_widget_ssh_exec,
     remmina_protocol_widget_chat_open,
     remmina_protocol_widget_chat_close,

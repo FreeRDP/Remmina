@@ -46,6 +46,8 @@ gboolean remmina_nx_session_has_error (RemminaNXSession *nx);
 
 const gchar* remmina_nx_session_get_error (RemminaNXSession *nx);
 
+void remmina_nx_session_clear_error (RemminaNXSession *nx);
+
 void remmina_nx_session_set_encryption (RemminaNXSession *nx, gint encryption);
 
 void remmina_nx_session_set_localport (RemminaNXSession *nx, gint localport);
@@ -61,11 +63,15 @@ void remmina_nx_session_add_parameter (RemminaNXSession *nx, const gchar *name, 
 
 gboolean remmina_nx_session_list (RemminaNXSession *nx);
 
+void remmina_nx_session_set_tree_view (RemminaNXSession *nx, GtkTreeView *tree);
+
 gboolean remmina_nx_session_iter_first (RemminaNXSession *nx, GtkTreeIter *iter);
 
 gboolean remmina_nx_session_iter_next (RemminaNXSession *nx, GtkTreeIter *iter);
 
 gchar* remmina_nx_session_iter_get (RemminaNXSession *nx, GtkTreeIter *iter, gint column);
+
+void remmina_nx_session_iter_set (RemminaNXSession *nx, GtkTreeIter *iter, gint column, const gchar *data);
 
 gboolean remmina_nx_session_allow_start (RemminaNXSession *nx);
 
@@ -74,6 +80,8 @@ gboolean remmina_nx_session_start (RemminaNXSession *nx);
 gboolean remmina_nx_session_attach (RemminaNXSession *nx);
 
 gboolean remmina_nx_session_restore (RemminaNXSession *nx);
+
+gboolean remmina_nx_session_terminate (RemminaNXSession *nx);
 
 gboolean remmina_nx_session_tunnel_open (RemminaNXSession *nx);
 
