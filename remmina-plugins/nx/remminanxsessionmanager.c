@@ -99,6 +99,7 @@ remmina_nx_session_manager_main (RemminaProtocolWidget *gp)
     RemminaPluginNxData *gpdata;
     RemminaFile *remminafile;
     GtkWidget *dialog;
+    GtkWidget *widget;
     gchar *s;
     GtkWidget *scrolledwindow;
     GtkWidget *tree;
@@ -114,7 +115,6 @@ remmina_nx_session_manager_main (RemminaProtocolWidget *gp)
 
         s = g_strdup_printf (_("NX Sessions on %s"), remminafile->server);
         dialog = gtk_dialog_new_with_buttons (s, NULL, 0,
-            _("Terminate"), REMMINA_NX_EVENT_TERMINATE,
             _("Restore"), REMMINA_NX_EVENT_RESTORE,
             _("Start"), REMMINA_NX_EVENT_START,
             GTK_STOCK_CANCEL, REMMINA_NX_EVENT_CANCEL,
@@ -123,8 +123,10 @@ remmina_nx_session_manager_main (RemminaProtocolWidget *gp)
         gtk_window_set_default_size (GTK_WINDOW (dialog), 640, 300);
         gpdata->manager_dialog = dialog;
 
+        widget = gtk_dialog_add_button (GTK_DIALOG (dialog), _("Terminate"), REMMINA_NX_EVENT_TERMINATE);
         gtk_button_box_set_child_secondary (GTK_BUTTON_BOX (gtk_dialog_get_action_area (GTK_DIALOG (dialog))),
-            gtk_dialog_get_widget_for_response (GTK_DIALOG (dialog), REMMINA_NX_EVENT_TERMINATE), TRUE);
+            widget, TRUE);
+
         gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog), REMMINA_NX_EVENT_TERMINATE, FALSE);
         gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog), REMMINA_NX_EVENT_RESTORE, FALSE);
 
