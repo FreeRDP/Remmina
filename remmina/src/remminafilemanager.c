@@ -54,9 +54,12 @@ remmina_file_manager_iterate (GFunc func, gpointer user_data)
         if (!g_str_has_suffix (name, ".remmina")) continue;
         g_snprintf (filename, MAX_PATH_LEN, "%s/%s", dirname, name);
         remminafile = remmina_file_load (filename);
-        (*func) (remminafile, user_data);
-        remmina_file_free (remminafile);
-        n++;
+        if (remminafile)
+        {
+            (*func) (remminafile, user_data);
+            remmina_file_free (remminafile);
+            n++;
+        }
     }
     g_dir_close (dir);
     return n;
