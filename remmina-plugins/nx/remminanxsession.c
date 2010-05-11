@@ -842,6 +842,11 @@ remmina_nx_session_tunnel_main_thread (gpointer data)
                 socketbuffer_ptr = socketbuffer;
                 socketbuffer_len = len;
             }
+            else
+            {
+		        /* Clean up the stderr buffer in case FreeNX send something there */
+		        len = channel_read_nonblocking (channels_out[0], buffer, sizeof (buffer), 1);
+            }
         }
 
         if (nx->running && socketbuffer_len > 0)
