@@ -371,7 +371,8 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
         remminafile->quality == 1 ? "isdn" : "modem");
     remmina_nx_session_add_parameter (nx, "geometry", "%ix%i",
         remminafile->resolution_width, remminafile->resolution_height);
-    remmina_nx_session_add_parameter (nx, "kbtype", remmina_kbtype);
+    remmina_nx_session_add_parameter (nx, "keyboard", remmina_kbtype);
+    remmina_nx_session_add_parameter (nx, "client", "linux");
     remmina_nx_session_add_parameter (nx, "media", "0");
     remmina_nx_session_add_parameter (nx, "clipboard", remminafile->disableclipboard ? "none" : "both");
 
