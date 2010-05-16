@@ -44,7 +44,7 @@ typedef struct _RemminaPluginRdpData
     pthread_mutex_t mutex;
     gboolean scale;
 
-    RD_PLUGIN_DATA rdpdr_data[2];
+    RD_PLUGIN_DATA rdpdr_data[5];
 
     GtkWidget *drawing_area;
     GdkPixbuf *drw_buffer;
