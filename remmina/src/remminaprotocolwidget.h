@@ -72,7 +72,6 @@ gchar* remmina_protocol_widget_get_error_message (RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_error (RemminaProtocolWidget *gp, const gchar *fmt, ...);
 gboolean remmina_protocol_widget_is_closed (RemminaProtocolWidget *gp);
 RemminaFile* remmina_protocol_widget_get_file (RemminaProtocolWidget *gp);
-GPtrArray* remmina_protocol_widget_get_printers (RemminaProtocolWidget *gp);
 
 void remmina_protocol_widget_open_connection (RemminaProtocolWidget *gp, RemminaFile *remminafile);
 gboolean remmina_protocol_widget_close_connection (RemminaProtocolWidget *gp);

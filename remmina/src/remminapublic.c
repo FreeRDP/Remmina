@@ -39,9 +39,6 @@
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
 #endif
-#ifdef HAVE_GTK_PRINTER
-#include <gtk/gtkprinter.h>
-#endif
 #include "remminapublic.h"
 
 GtkWidget*
@@ -460,61 +457,4 @@ remmina_public_get_window_workspace (GtkWindow *gtkwindow)
     return 0;
 #endif
 }
-
-#ifdef HAVE_GTK_PRINTER
-typedef struct _RemminaPrinterList
-{
-    GPtrArray *printers;
-    RemminaGetPrintersCallback callback;
-    gpointer user_data;
-} RemminaPrinterList;
-
-static void
-remmina_public_printer_finalize (gpointer data)
-{
-    RemminaPrinterList *lst = (RemminaPrinterList*) data;
-
-    /* callback owns the pointer array */
-    lst->callback (lst->printers, lst->user_data);
-    g_free (lst);
-}
-
-static gboolean
-remmina_public_printer_func (GtkPrinter *printer, gpointer data)
-{
-    RemminaPrinterList *lst = (RemminaPrinterList*) data;
-    const gchar *printername;
-
-    printername = gtk_printer_get_name (printer);
-    g_ptr_array_add (lst->printers, g_strdup (printername));
-
-    return FALSE;
-}
-
-/* By using this function, we can safely perform enumerating printers asynchronously (which is needed by GTK),
- * while we don't have to enter the glib main loop (wait=TRUE, which can cause freezing). We use callback
- * function to inform the caller that enumeration is done, and pass a pointer array to the callback.
- */
-void
-remmina_public_get_printers (RemminaGetPrintersCallback callback, gpointer user_data)
-{
-    RemminaPrinterList *lst;
-
-    lst = g_new (RemminaPrinterList, 1);
-    lst->printers = g_ptr_array_new ();
-    lst->callback = callback;
-    lst->user_data = user_data;
-
-    gtk_enumerate_printers (remmina_public_printer_func, lst, remmina_public_printer_finalize, FALSE);
-}
-
-#else
-
-void
-remmina_public_get_printers (RemminaGetPrintersCallback callback, gpointer user_data)
-{
-    callback (NULL, user_data);
-}
-
-#endif
 

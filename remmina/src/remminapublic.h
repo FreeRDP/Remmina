@@ -77,10 +77,6 @@ guint remmina_public_get_window_workspace (GtkWindow *gtkwindow);
 
 void remmina_public_threads_leave (void* data);
 
-/* printer */
-typedef void (*RemminaGetPrintersCallback)(GPtrArray *printers, gpointer user_data);
-void remmina_public_get_printers (RemminaGetPrintersCallback callback, gpointer user_data);
-
 G_END_DECLS
 
 #endif  /* __REMMINAPUBLIC_H__  */
