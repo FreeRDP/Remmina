@@ -60,14 +60,6 @@ PKG_CHECK_MODULES(GTK, [
 ])
 remmina_pkgs="glib-2.0 gtk+-2.0 gmodule-2.0"
 
-PKG_CHECK_MODULES(GTK_PRINTER,
-    gtk+-unix-print-2.0 >= 2.16.0, [
-        print_support="yes"
-        remmina_pkgs="$remmina_pkgs gtk+-unix-print-2.0"
-        AC_DEFINE([HAVE_GTK_PRINTER], [1], [Define to 1 if you have gtk+-unix-print-2.0.])
-    ], print_support="no"
-)
-
 # Check libavahi-ui
 AC_ARG_ENABLE(avahi,
     [AS_HELP_STRING([--disable-avahi], [Disable Avahi])],

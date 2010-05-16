@@ -51,8 +51,6 @@ struct _RemminaProtocolWidgetPriv
 
     gboolean closed;
 
-    GPtrArray *printers;
-
     gboolean hostkey_activated;
     RemminaHostkeyFunc hostkey_func;
     gpointer hostkey_func_data;
@@ -180,13 +178,11 @@ remmina_protocol_widget_init (RemminaProtocolWidget *gp)
 }
 
 void
-remmina_protocol_widget_open_connection_real (GPtrArray *printers, gpointer data)
+remmina_protocol_widget_open_connection_real (gpointer data)
 {
     RemminaProtocolWidget *gp = REMMINA_PROTOCOL_WIDGET (data);
     RemminaProtocolPlugin *plugin;
     RemminaFile *remminafile = gp->priv->remmina_file;
-
-    gp->priv->printers = printers;
 
     /* Locate the protocol plugin */
     plugin = (RemminaProtocolPlugin *) remmina_plugin_manager_get_plugin (REMMINA_PLUGIN_TYPE_PROTOCOL, remminafile->protocol);
@@ -215,14 +211,7 @@ remmina_protocol_widget_open_connection (RemminaProtocolWidget *gp, RemminaFile 
 
     remmina_protocol_widget_show_init_dialog (gp, remminafile->name);
 
-    if (remminafile->shareprinter)
-    {
-        remmina_public_get_printers (remmina_protocol_widget_open_connection_real, gp);
-    }
-    else
-    {
-        remmina_protocol_widget_open_connection_real (NULL, gp);
-    }
+    remmina_protocol_widget_open_connection_real (gp);
 }
 
 gboolean
@@ -230,13 +219,6 @@ remmina_protocol_widget_close_connection (RemminaProtocolWidget *gp)
 {
     if (!GTK_IS_WIDGET (gp) || gp->priv->closed) return FALSE;
     gp->priv->closed = TRUE;
-
-    if (gp->priv->printers)
-    {
-        g_ptr_array_foreach (gp->priv->printers, (GFunc) g_free, NULL);
-        g_ptr_array_free (gp->priv->printers, TRUE);
-        gp->priv->printers = NULL;
-    }
 
     if (gp->priv->chat_window)
     {
@@ -761,12 +743,6 @@ RemminaFile*
 remmina_protocol_widget_get_file (RemminaProtocolWidget *gp)
 {
     return gp->priv->remmina_file;
-}
-
-GPtrArray*
-remmina_protocol_widget_get_printers (RemminaProtocolWidget *gp)
-{
-    return gp->priv->printers;
 }
 
 gint
