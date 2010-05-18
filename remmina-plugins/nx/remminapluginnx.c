@@ -312,10 +312,11 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
 
     /* List sessions */
 
+    gpdata->attach_session = (g_strcmp0 (type, "shadow") == 0);
     while (1)
     {
         remmina_nx_session_add_parameter (nx, "type", type);
-        if (g_strcmp0 (type, "shadow") != 0)
+        if (!gpdata->attach_session)
         {
             remmina_nx_session_add_parameter (nx, "user", remminafile->username);
             remmina_nx_session_add_parameter (nx, "status", "suspended,running");
@@ -327,13 +328,9 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
         }
 
         is_empty_list = !remmina_nx_session_iter_first (nx, &gpdata->iter);
-        if (is_empty_list && !gpdata->manager_started)
+        if (is_empty_list && !gpdata->manager_started && !gpdata->attach_session)
         {
             event_type = REMMINA_NX_EVENT_START;
-        }
-        else if (g_strcmp0 (type, "shadow") == 0 && !gpdata->manager_started)
-        {
-            event_type = REMMINA_NX_EVENT_ATTACH;
         }
         else
         {

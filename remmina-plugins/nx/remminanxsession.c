@@ -447,6 +447,7 @@ remmina_nx_session_parse_response (RemminaNXSession *nx)
                 nx->session_list_state = 1;
                 break;
             case 148: /* Server capacity not reached for user xxx */
+                nx->session_list_state = 0;
                 nx->allow_start = TRUE;
                 break;
             case 700:
@@ -489,6 +490,7 @@ remmina_nx_session_expect_status (RemminaNXSession *nx, gint status)
         if (response == 999) break;
         if (!remmina_nx_session_get_response (nx)) return FALSE;
     }
+    nx->session_list_state = 0;
     if (remmina_nx_session_has_error (nx)) return FALSE;
     return TRUE;
 }

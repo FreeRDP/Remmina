@@ -23,6 +23,24 @@
 #include "remminapluginnx.h"
 #include "remminanxsessionmanager.h"
 
+static void
+remmina_nx_session_manager_set_sensitive (RemminaProtocolWidget *gp, gboolean sensitive)
+{
+    RemminaPluginNxData *gpdata;
+
+    gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+    if (gpdata->attach_session)
+    {
+        gtk_dialog_set_response_sensitive (GTK_DIALOG (gpdata->manager_dialog), REMMINA_NX_EVENT_TERMINATE, sensitive);
+        gtk_dialog_set_response_sensitive (GTK_DIALOG (gpdata->manager_dialog), REMMINA_NX_EVENT_ATTACH, sensitive);
+    }
+    else
+    {
+        gtk_dialog_set_response_sensitive (GTK_DIALOG (gpdata->manager_dialog), REMMINA_NX_EVENT_TERMINATE, sensitive);
+        gtk_dialog_set_response_sensitive (GTK_DIALOG (gpdata->manager_dialog), REMMINA_NX_EVENT_RESTORE, sensitive);
+    }
+}
+
 static gboolean
 remmina_nx_session_manager_selection_func (
     GtkTreeSelection *selection,
@@ -40,15 +58,13 @@ remmina_nx_session_manager_selection_func (
     gpdata->manager_selected = FALSE;
     if (path_currently_selected)
     {
-        gtk_dialog_set_response_sensitive (GTK_DIALOG (gpdata->manager_dialog), REMMINA_NX_EVENT_TERMINATE, FALSE);
-        gtk_dialog_set_response_sensitive (GTK_DIALOG (gpdata->manager_dialog), REMMINA_NX_EVENT_RESTORE, FALSE);
+        remmina_nx_session_manager_set_sensitive (gp, FALSE);
         return TRUE;
     }
 
     if (!gtk_tree_model_get_iter (model, &gpdata->iter, path)) return TRUE;
     gpdata->manager_selected = TRUE;
-    gtk_dialog_set_response_sensitive (GTK_DIALOG (gpdata->manager_dialog), REMMINA_NX_EVENT_TERMINATE, TRUE);
-    gtk_dialog_set_response_sensitive (GTK_DIALOG (gpdata->manager_dialog), REMMINA_NX_EVENT_RESTORE, TRUE);
+    remmina_nx_session_manager_set_sensitive (gp, TRUE);
     return TRUE;
 }
 
@@ -67,8 +83,7 @@ remmina_nx_session_manager_on_response (GtkWidget *dialog, gint response_id, Rem
     gint event_type;
 
     gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
-    gtk_dialog_set_response_sensitive (GTK_DIALOG (gpdata->manager_dialog), REMMINA_NX_EVENT_TERMINATE, FALSE);
-    gtk_dialog_set_response_sensitive (GTK_DIALOG (gpdata->manager_dialog), REMMINA_NX_EVENT_RESTORE, FALSE);
+    remmina_nx_session_manager_set_sensitive (gp, FALSE);
     if (response_id <= 0)
     {
         event_type = REMMINA_NX_EVENT_CANCEL;
@@ -113,22 +128,27 @@ remmina_nx_session_manager_main (RemminaProtocolWidget *gp)
     {
         remmina_plugin_nx_service->protocol_plugin_init_hide (gp);
 
+        dialog = gtk_dialog_new ();
         s = g_strdup_printf (_("NX Sessions on %s"), remminafile->server);
-        dialog = gtk_dialog_new_with_buttons (s, NULL, 0,
-            _("Restore"), REMMINA_NX_EVENT_RESTORE,
-            _("Start"), REMMINA_NX_EVENT_START,
-            GTK_STOCK_CANCEL, REMMINA_NX_EVENT_CANCEL,
-            NULL);
+        gtk_window_set_title (GTK_WINDOW (dialog), s);
         g_free (s);
-        gtk_window_set_default_size (GTK_WINDOW (dialog), 640, 300);
-        gpdata->manager_dialog = dialog;
+        if (gpdata->attach_session)
+        {
+            gtk_dialog_add_button (GTK_DIALOG (dialog), _("Attach"), REMMINA_NX_EVENT_ATTACH);
+        }
+        else
+        {
+            gtk_dialog_add_button (GTK_DIALOG (dialog), _("Restore"), REMMINA_NX_EVENT_RESTORE);
+            gtk_dialog_add_button (GTK_DIALOG (dialog), _("Start"), REMMINA_NX_EVENT_START);
+        }
+        gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, REMMINA_NX_EVENT_CANCEL);
 
         widget = gtk_dialog_add_button (GTK_DIALOG (dialog), _("Terminate"), REMMINA_NX_EVENT_TERMINATE);
         gtk_button_box_set_child_secondary (GTK_BUTTON_BOX (gtk_dialog_get_action_area (GTK_DIALOG (dialog))),
             widget, TRUE);
 
-        gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog), REMMINA_NX_EVENT_TERMINATE, FALSE);
-        gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog), REMMINA_NX_EVENT_RESTORE, FALSE);
+        gtk_window_set_default_size (GTK_WINDOW (dialog), 640, 300);
+        gpdata->manager_dialog = dialog;
 
         scrolledwindow = gtk_scrolled_window_new (NULL, NULL);
         gtk_widget_show (scrolledwindow);
@@ -186,8 +206,7 @@ remmina_nx_session_manager_main (RemminaProtocolWidget *gp)
     gpdata->manager_selected = FALSE;
     if (gpdata->manager_dialog)
     {
-        gtk_dialog_set_response_sensitive (GTK_DIALOG (gpdata->manager_dialog), REMMINA_NX_EVENT_TERMINATE, FALSE);
-        gtk_dialog_set_response_sensitive (GTK_DIALOG (gpdata->manager_dialog), REMMINA_NX_EVENT_RESTORE, FALSE);
+        remmina_nx_session_manager_set_sensitive (gp, FALSE);
         gtk_widget_show (gpdata->manager_dialog);
     }
     if (remmina_nx_session_has_error (gpdata->nx))

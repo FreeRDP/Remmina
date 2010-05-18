@@ -55,6 +55,7 @@ typedef struct _RemminaPluginNxData
     /* Communication between the NX thread and the session manager */
     gint event_pipe[2];
     guint session_manager_start_handler;
+    gboolean attach_session;
     GtkTreeIter iter;
 } RemminaPluginNxData;
 
