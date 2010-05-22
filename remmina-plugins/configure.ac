@@ -63,6 +63,7 @@ AC_SUBST(REMMINA_PLUGINS_CFLAGS)
 AC_SUBST(REMMINA_PLUGINS_LIBS)
 
 # Checks for plugin development files
+CFLAGS="$CFLAGS -I${prefix}/include"
 saved_CFLAGS=$CFLAGS
 CFLAGS="$CFLAGS $REMMINA_PLUGINS_CFLAGS"
 AC_CHECK_HEADER(remmina/plugin.h, [], [
