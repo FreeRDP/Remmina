@@ -46,6 +46,10 @@ typedef struct _RemminaPluginVncData
     gulong clipboard_handler;
     GTimeVal clipboard_timer;
 
+    GdkPixbuf *queuecursor_pixbuf;
+    gint queuecursor_x, queuecursor_y;
+    guint queuecursor_handler;
+
     gpointer client;
     gint listen_sock;
 
@@ -328,6 +332,55 @@ remmina_plugin_vnc_update_scale (RemminaProtocolWidget *gp, gboolean scale)
     }
 }
 
+gboolean
+remmina_plugin_vnc_setcursor (RemminaProtocolWidget *gp)
+{
+    RemminaPluginVncData *gpdata;
+    GdkCursor *cur;
+
+    gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+
+    LOCK_BUFFER (FALSE)
+    gpdata->queuecursor_handler = 0;
+
+    if (gpdata->queuecursor_pixbuf)
+    {
+        cur = gdk_cursor_new_from_pixbuf (gdk_display_get_default (),
+            gpdata->queuecursor_pixbuf, gpdata->queuecursor_x, gpdata->queuecursor_y);
+        gdk_window_set_cursor (gtk_widget_get_window (gpdata->drawing_area), cur);
+        gdk_cursor_unref (cur);
+        g_object_unref (gpdata->queuecursor_pixbuf);
+        gpdata->queuecursor_pixbuf = NULL;
+    }
+    else
+    {
+        gdk_window_set_cursor (gtk_widget_get_window (gpdata->drawing_area), NULL);
+    }
+    UNLOCK_BUFFER (FALSE)
+
+    return FALSE;
+}
+
+static void
+remmina_plugin_vnc_queuecursor (RemminaProtocolWidget *gp, GdkPixbuf *pixbuf, gint x, gint y)
+{
+    RemminaPluginVncData *gpdata;
+
+    gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+
+    if (gpdata->queuecursor_pixbuf)
+    {
+        g_object_unref (gpdata->queuecursor_pixbuf);
+    }
+    gpdata->queuecursor_pixbuf = pixbuf;
+    gpdata->queuecursor_x = x;
+    gpdata->queuecursor_y = y;
+    if (!gpdata->queuecursor_handler)
+    {
+        gpdata->queuecursor_handler = IDLE_ADD ((GSourceFunc) remmina_plugin_vnc_setcursor, gp);
+    }
+}
+
 typedef struct _RemminaKeyVal
 {
     guint keyval;
@@ -534,7 +587,7 @@ remmina_plugin_vnc_bits (gint n)
 {
     gint b = 0;
     while (n) { b++; n >>= 1; }
-    return b;
+    return b ? b : 1;
 }
 
 static gboolean
@@ -591,80 +644,97 @@ remmina_plugin_vnc_queue_draw_area (RemminaProtocolWidget *gp, gint x, gint y, g
 }
 
 static void
+remmina_plugin_vnc_rfb_fill_buffer (rfbClient* cl, guchar *dest, gint dest_rowstride,
+    guchar *src, gint src_rowstride, guchar *mask, gint w, gint h)
+{
+    guchar *destptr, *srcptr;
+    gint bytesPerPixel;
+    guint32 pixel;
+    gint ix, iy;
+    gint i;
+    guchar c;
+    gint rs, gs, bs, rm, gm, bm, rl, gl, bl, rr, gr, br;
+    gint r;
+
+    bytesPerPixel = cl->format.bitsPerPixel / 8;
+    switch (cl->format.bitsPerPixel)
+    {
+    case 32:
+        /* The following codes fill in the Alpha channel swap red/green value */
+        for (iy = 0; iy < h; iy++)
+        {
+            destptr = dest + iy * dest_rowstride;
+            srcptr = src + iy * src_rowstride;
+            for (ix = 0; ix < w; ix++)
+            {
+                *destptr++ = *(srcptr + 2);
+                *destptr++ = *(srcptr + 1);
+                *destptr++ = *srcptr;
+                if (mask) *destptr++ = (*mask++) ? 0xff : 0x00;
+                srcptr += 4;
+            }
+        }
+        break;
+    default:
+        rm = cl->format.redMax;
+        gm = cl->format.greenMax;
+        bm = cl->format.blueMax;
+        rr = remmina_plugin_vnc_bits (rm);
+        gr = remmina_plugin_vnc_bits (gm);
+        br = remmina_plugin_vnc_bits (bm);
+        rl = 8 - rr;
+        gl = 8 - gr;
+        bl = 8 - br;
+        rs = cl->format.redShift;
+        gs = cl->format.greenShift;
+        bs = cl->format.blueShift;
+        for (iy = 0; iy < h; iy++)
+        {
+            destptr = dest + iy * dest_rowstride;
+            srcptr = src + iy * src_rowstride;
+            for (ix = 0; ix < w; ix++)
+            {
+                pixel = 0;
+                for (i = 0; i < bytesPerPixel; i++) pixel += (*srcptr++) << (8 * i);
+                c = (guchar) ((pixel >> rs) & rm) << rl;
+                for (r = rr; r < 8; r *= 2) c |= c >> r;
+                *destptr++ = c;
+                c = (guchar) ((pixel >> gs) & gm) << gl;
+                for (r = gr; r < 8; r *= 2) c |= c >> r;
+                *destptr++ = c;
+                c = (guchar) ((pixel >> bs) & bm) << bl;
+                for (r = br; r < 8; r *= 2) c |= c >> r;
+                *destptr++ = c;
+                if (mask) *destptr++ = (*mask++) ? 0xff : 0x00;
+            }
+        }
+        break;
+    }
+}
+
+static void
 remmina_plugin_vnc_rfb_updatefb (rfbClient* cl, int x, int y, int w, int h)
 {
     RemminaProtocolWidget *gp;
     RemminaPluginVncData *gpdata;
-    gint ix, iy, x2, y2;
-    guchar *destptr, *srcptr;
     gint bytesPerPixel;
     gint rowstride;
-    gint i;
     gint width;
-    guint32 pixel;
-    guchar c;
-    gint rs, gs, bs, rm, gm, bm, rl, gl, bl, rr, gr, br;
 
     gp = (RemminaProtocolWidget*) (rfbClientGetClientData (cl, NULL));
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
 
     LOCK_BUFFER (TRUE)
 
-    width = remmina_plugin_service->protocol_plugin_get_width (gp);
     if (w >= 1 || h >= 1)
     {
-        x2 = x + w;
-        y2 = y + h;
+        width = remmina_plugin_service->protocol_plugin_get_width (gp);
         bytesPerPixel = cl->format.bitsPerPixel / 8;
         rowstride = gdk_pixbuf_get_rowstride (gpdata->rgb_buffer);
-        switch (cl->format.bitsPerPixel)
-        {
-        case 32:
-            /* The following codes swap red/green value */
-            for (iy = y; iy < y2; iy++)
-            {
-                destptr = gdk_pixbuf_get_pixels (gpdata->rgb_buffer) + iy * rowstride + x * 3;
-                srcptr = gpdata->vnc_buffer + ((iy * width + x) * bytesPerPixel);
-                for (ix = x; ix < x2; ix++)
-                {
-                    *destptr++ = *(srcptr + 2);
-                    *destptr++ = *(srcptr + 1);
-                    *destptr++ = *srcptr;
-                    srcptr += 4;
-                }
-            }
-            break;
-        default:
-            rm = cl->format.redMax;
-            gm = cl->format.greenMax;
-            bm = cl->format.blueMax;
-            rr = remmina_plugin_vnc_bits (rm);
-            gr = remmina_plugin_vnc_bits (gm);
-            br = remmina_plugin_vnc_bits (bm);
-            rl = 8 - rr;
-            gl = 8 - gr;
-            bl = 8 - br;
-            rs = cl->format.redShift;
-            gs = cl->format.greenShift;
-            bs = cl->format.blueShift;
-            for (iy = y; iy < y2; iy++)
-            {
-                destptr = gdk_pixbuf_get_pixels (gpdata->rgb_buffer) + iy * rowstride + x * 3;
-                srcptr = gpdata->vnc_buffer + ((iy * width + x) * bytesPerPixel);
-                for (ix = x; ix < x2; ix++)
-                {
-                    pixel = 0;
-                    for (i = 0; i < bytesPerPixel; i++) pixel += (*srcptr++) << (8 * i);
-                    c = (guchar) ((pixel >> rs) & rm) << rl;
-                    *destptr++ = c | (c >> rr);
-                    c = (guchar) ((pixel >> gs) & gm) << gl;
-                    *destptr++ = c | (c >> gr);
-                    c = (guchar) ((pixel >> bs) & bm) << bl;
-                    *destptr++ = c | (c >> br);
-                }
-            }
-            break;
-        }
+        remmina_plugin_vnc_rfb_fill_buffer (cl,
+            gdk_pixbuf_get_pixels (gpdata->rgb_buffer) + y * rowstride + x * 3, rowstride,
+            gpdata->vnc_buffer + ((y * width + x) * bytesPerPixel), width * bytesPerPixel,
+            NULL, w, h);
     }
 
     if (remmina_plugin_service->protocol_plugin_get_scale (gp))
@@ -851,15 +921,7 @@ remmina_plugin_vnc_rfb_cursor_shape (rfbClient *cl, int xhot, int yhot, int widt
     RemminaProtocolWidget *gp;
     RemminaPluginVncData *gpdata;
     guchar *pixbuf_data;
-    gint iy;
-    guchar *destptr, *srcptr, *srcmaskptr;
-    gint i;
-    guchar c;
-    gint rs, gs, bs, rm, gm, bm, rl, gl, bl, rr, gr, br;
-    guint32 pixel;
-    GdkDisplay *display;
     GdkPixbuf *pixbuf;
-    GdkCursor *cursor;
 
     gp = (RemminaProtocolWidget*) (rfbClientGetClientData (cl, NULL));
     if (!GTK_WIDGET (gp)->window) return;
@@ -868,73 +930,17 @@ remmina_plugin_vnc_rfb_cursor_shape (rfbClient *cl, int xhot, int yhot, int widt
     if (width && height)
     {
         pixbuf_data = g_malloc (width * height * 4);
-        
-        switch (cl->format.bitsPerPixel)
-        {
-        case 32:
-            /* The following codes fill in the Alpha channel of the cursor and swap red/blue value */
-            destptr = pixbuf_data;
-            srcptr = cl->rcSource;
-            srcmaskptr = cl->rcMask;
-            for (iy = 0; iy < width * height; iy++)
-            {
-                *destptr++ = *(srcptr + 2);
-                *destptr++ = *(srcptr + 1);
-                *destptr++ = *srcptr;
-                *destptr++ = (*srcmaskptr++) ? 0xff : 0x00;
-                srcptr += 4;
-            }
-            break;
-        default:
-            rm = cl->format.redMax;
-            gm = cl->format.greenMax;
-            bm = cl->format.blueMax;
-            rr = remmina_plugin_vnc_bits (rm);
-            gr = remmina_plugin_vnc_bits (gm);
-            br = remmina_plugin_vnc_bits (bm);
-            rl = 8 - rr;
-            gl = 8 - gr;
-            bl = 8 - br;
-            rs = cl->format.redShift;
-            gs = cl->format.greenShift;
-            bs = cl->format.blueShift;
-            destptr = pixbuf_data;
-            srcptr = cl->rcSource;
-            srcmaskptr = cl->rcMask;
-            for (iy = 0; iy < width * height; iy++)
-            {
-                pixel = 0;
-                for (i = 0; i < bytesPerPixel; i++) pixel += (*srcptr++) << (8 * i);
-                c = (guchar) ((pixel >> rs) & rm) << rl;
-                *destptr++ = c | (c >> rr);
-                c = (guchar) ((pixel >> gs) & gm) << gl;
-                *destptr++ = c | (c >> gr);
-                c = (guchar) ((pixel >> bs) & bm) << bl;
-                *destptr++ = c | (c >> br);
-                *destptr++ = (*srcmaskptr++) ? 0xff : 0x00;
-            }
-            break;
-        }
-
+        remmina_plugin_vnc_rfb_fill_buffer (cl,
+            pixbuf_data, width * 4,
+            cl->rcSource, width * cl->format.bitsPerPixel / 8,
+            cl->rcMask, width, height);
         pixbuf = gdk_pixbuf_new_from_data (pixbuf_data, GDK_COLORSPACE_RGB,
-                                 TRUE, 8, width, height,
-                                 width * 4, NULL, NULL);
-        THREADS_ENTER
+            TRUE, 8, width, height,
+            width * 4, (GdkPixbufDestroyNotify) g_free, NULL);
 
-        display = gdk_drawable_get_display (GDK_DRAWABLE (GTK_WIDGET (gp)->window));
-
-        cursor = gdk_cursor_new_from_pixbuf (display,
-                                 pixbuf,
-                                 xhot, yhot);
-
-        gdk_window_set_cursor (GTK_WIDGET (gp)->window, cursor);
-        gdk_cursor_unref (cursor);
-
-        THREADS_LEAVE
-
-        gdk_pixbuf_unref (pixbuf);
-
-        g_free (pixbuf_data);
+        LOCK_BUFFER (TRUE)
+        remmina_plugin_vnc_queuecursor (gp, pixbuf, xhot, yhot);
+        UNLOCK_BUFFER (TRUE)
     }
 }
 
@@ -1623,6 +1629,17 @@ remmina_plugin_vnc_close_connection_timeout (RemminaProtocolWidget *gp)
         g_signal_handler_disconnect (G_OBJECT (gtk_clipboard_get (GDK_SELECTION_CLIPBOARD)),
             gpdata->clipboard_handler);
         gpdata->clipboard_handler = 0;
+    }
+
+    if (gpdata->queuecursor_handler)
+    {
+        g_source_remove (gpdata->queuecursor_handler);
+        gpdata->queuecursor_handler = 0;
+    }
+    if (gpdata->queuecursor_pixbuf)
+    {
+        g_object_unref (gpdata->queuecursor_pixbuf);
+        gpdata->queuecursor_pixbuf = NULL;
     }
 
     if (gpdata->queuedraw_handler)
