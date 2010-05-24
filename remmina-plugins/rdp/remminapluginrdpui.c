@@ -578,6 +578,10 @@ remmina_plugin_rdpui_scale_area (RemminaProtocolWidget *gp, gint *x, gint *y, gi
     if (gpdata->scale_width == width && gpdata->scale_height == height)
     {
         /* Same size, just copy the pixels */
+        *x = MIN (MAX (0, *x), width - 1);
+        *y = MIN (MAX (0, *y), height - 1);
+        *w = MIN (width - *x, *w);
+        *h = MIN (height - *y, *h);
         gdk_pixbuf_copy_area (gpdata->rgb_buffer, *x, *y, *w, *h, gpdata->scale_buffer, *x, *y);
         return;
     }
