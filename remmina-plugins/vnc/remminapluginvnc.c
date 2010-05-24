@@ -602,7 +602,8 @@ remmina_plugin_vnc_rfb_updatefb (rfbClient* cl, int x, int y, int w, int h)
     gint i;
     gint width;
     guint32 pixel;
-    gint rs, gs, bs, rm, gm, bm, rb, gb, bb;
+    guchar c;
+    gint rs, gs, bs, rm, gm, bm, rl, gl, bl, rr, gr, br;
 
     gp = (RemminaProtocolWidget*) (rfbClientGetClientData (cl, NULL));
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
@@ -637,9 +638,12 @@ remmina_plugin_vnc_rfb_updatefb (rfbClient* cl, int x, int y, int w, int h)
             rm = cl->format.redMax;
             gm = cl->format.greenMax;
             bm = cl->format.blueMax;
-            rb = 8 - remmina_plugin_vnc_bits (rm);
-            gb = 8 - remmina_plugin_vnc_bits (gm);
-            bb = 8 - remmina_plugin_vnc_bits (bm);
+            rr = remmina_plugin_vnc_bits (rm);
+            gr = remmina_plugin_vnc_bits (gm);
+            br = remmina_plugin_vnc_bits (bm);
+            rl = 8 - rr;
+            gl = 8 - gr;
+            bl = 8 - br;
             rs = cl->format.redShift;
             gs = cl->format.greenShift;
             bs = cl->format.blueShift;
@@ -651,9 +655,12 @@ remmina_plugin_vnc_rfb_updatefb (rfbClient* cl, int x, int y, int w, int h)
                 {
                     pixel = 0;
                     for (i = 0; i < bytesPerPixel; i++) pixel += (*srcptr++) << (8 * i);
-                    *destptr++ = ((pixel >> rs) & rm) << rb;
-                    *destptr++ = ((pixel >> gs) & gm) << gb;
-                    *destptr++ = ((pixel >> bs) & bm) << bb;
+                    c = (guchar) ((pixel >> rs) & rm) << rl;
+                    *destptr++ = c | (c >> rr);
+                    c = (guchar) ((pixel >> gs) & gm) << gl;
+                    *destptr++ = c | (c >> gr);
+                    c = (guchar) ((pixel >> bs) & bm) << bl;
+                    *destptr++ = c | (c >> br);
                 }
             }
             break;
@@ -847,7 +854,8 @@ remmina_plugin_vnc_rfb_cursor_shape (rfbClient *cl, int xhot, int yhot, int widt
     gint iy;
     guchar *destptr, *srcptr, *srcmaskptr;
     gint i;
-    gint rs, gs, bs, rm, gm, bm, rb, gb, bb;
+    guchar c;
+    gint rs, gs, bs, rm, gm, bm, rl, gl, bl, rr, gr, br;
     guint32 pixel;
     GdkDisplay *display;
     GdkPixbuf *pixbuf;
@@ -881,9 +889,12 @@ remmina_plugin_vnc_rfb_cursor_shape (rfbClient *cl, int xhot, int yhot, int widt
             rm = cl->format.redMax;
             gm = cl->format.greenMax;
             bm = cl->format.blueMax;
-            rb = 8 - remmina_plugin_vnc_bits (rm);
-            gb = 8 - remmina_plugin_vnc_bits (gm);
-            bb = 8 - remmina_plugin_vnc_bits (bm);
+            rr = remmina_plugin_vnc_bits (rm);
+            gr = remmina_plugin_vnc_bits (gm);
+            br = remmina_plugin_vnc_bits (bm);
+            rl = 8 - rr;
+            gl = 8 - gr;
+            bl = 8 - br;
             rs = cl->format.redShift;
             gs = cl->format.greenShift;
             bs = cl->format.blueShift;
@@ -894,9 +905,12 @@ remmina_plugin_vnc_rfb_cursor_shape (rfbClient *cl, int xhot, int yhot, int widt
             {
                 pixel = 0;
                 for (i = 0; i < bytesPerPixel; i++) pixel += (*srcptr++) << (8 * i);
-                *destptr++ = ((pixel >> rs) & rm) << rb;
-                *destptr++ = ((pixel >> gs) & gm) << gb;
-                *destptr++ = ((pixel >> bs) & bm) << bb;
+                c = (guchar) ((pixel >> rs) & rm) << rl;
+                *destptr++ = c | (c >> rr);
+                c = (guchar) ((pixel >> gs) & gm) << gl;
+                *destptr++ = c | (c >> gr);
+                c = (guchar) ((pixel >> bs) & bm) << bl;
+                *destptr++ = c | (c >> br);
                 *destptr++ = (*srcmaskptr++) ? 0xff : 0x00;
             }
             break;
