@@ -51,7 +51,6 @@ struct _RemminaProtocolWidgetPriv
 
     gboolean closed;
 
-    gboolean hostkey_activated;
     RemminaHostkeyFunc hostkey_func;
     gpointer hostkey_func_data;
 };
@@ -299,7 +298,6 @@ remmina_protocol_widget_call_feature (RemminaProtocolWidget *gp, RemminaProtocol
         return;
 #endif
     case REMMINA_PROTOCOL_FEATURE_UNFOCUS:
-        gp->priv->hostkey_activated = FALSE;
         break;
     default:
         break;
@@ -310,14 +308,9 @@ remmina_protocol_widget_call_feature (RemminaProtocolWidget *gp, RemminaProtocol
 static gboolean
 remmina_protocol_widget_on_key_press (GtkWidget *widget, GdkEventKey *event, RemminaProtocolWidget *gp)
 {
-    if (remmina_pref.hostkey && event->keyval == remmina_pref.hostkey)
+    if (gp->priv->hostkey_func)
     {
-        gp->priv->hostkey_activated = TRUE;
-        return TRUE;
-    }
-    else if (gp->priv->hostkey_activated && gp->priv->hostkey_func)
-    {
-        return gp->priv->hostkey_func (gp, gdk_keyval_to_lower (event->keyval), gp->priv->hostkey_func_data);
+        return gp->priv->hostkey_func (gp, event->keyval, FALSE, gp->priv->hostkey_func_data);
     }
     return FALSE;
 }
@@ -325,15 +318,9 @@ remmina_protocol_widget_on_key_press (GtkWidget *widget, GdkEventKey *event, Rem
 static gboolean
 remmina_protocol_widget_on_key_release (GtkWidget *widget, GdkEventKey *event, RemminaProtocolWidget *gp)
 {
-    if (remmina_pref.hostkey && event->keyval == remmina_pref.hostkey)
+    if (gp->priv->hostkey_func)
     {
-        gp->priv->hostkey_activated = FALSE;
-        return TRUE;
-    }
-    else if (gp->priv->hostkey_activated)
-    {
-        /* Trap all keys when hostkey is pressed */
-        return TRUE;
+        return gp->priv->hostkey_func (gp, event->keyval, TRUE, gp->priv->hostkey_func_data);
     }
     return FALSE;
 }
