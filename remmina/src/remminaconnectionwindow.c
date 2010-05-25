@@ -74,6 +74,8 @@ struct _RemminaConnectionWindowPriv
     gboolean sticky;
 
     gint view_mode;
+
+    gboolean hostkey_activated;
 };
 
 typedef struct _RemminaConnectionObject
@@ -1344,6 +1346,7 @@ remmina_connection_window_focus_out (GtkWidget *widget, GdkEventFocus *event, Re
     DECLARE_CNNOBJ_WITH_RETURN (FALSE)
     RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
 
+    priv->hostkey_activated = FALSE;
     if (!priv->sticky && priv->floating_toolbar)
     {
         remmina_connection_holder_floating_toolbar_visible (cnnhld, FALSE);
@@ -1958,11 +1961,35 @@ remmina_connection_holder_create_fullscreen (RemminaConnectionHolder *cnnhld, Re
 }
 
 static gboolean
-remmina_connection_window_hostkey_func (RemminaProtocolWidget *gp, guint keyval, RemminaConnectionHolder *cnnhld)
+remmina_connection_window_hostkey_func (RemminaProtocolWidget *gp, guint keyval, gboolean release, RemminaConnectionHolder *cnnhld)
 {
     RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
     gint i;
 
+    if (release)
+    {
+        if (remmina_pref.hostkey && keyval == remmina_pref.hostkey)
+        {
+            priv->hostkey_activated = FALSE;
+            return TRUE;
+        }
+        else if (priv->hostkey_activated)
+        {
+            /* Trap all key releases when hostkey is pressed */
+            return TRUE;
+        }
+        return FALSE;
+    }
+
+    if (remmina_pref.hostkey && keyval == remmina_pref.hostkey)
+    {
+        priv->hostkey_activated = TRUE;
+        return TRUE;
+    }
+
+    if (!priv->hostkey_activated) return FALSE;
+
+    keyval = gdk_keyval_to_lower (keyval);
     if (keyval == remmina_pref.shortcutkey_fullscreen)
     {
         switch (priv->view_mode)
@@ -2019,6 +2046,7 @@ remmina_connection_window_hostkey_func (RemminaProtocolWidget *gp, guint keyval,
             remmina_connection_holder_showhide_toolbar (cnnhld, TRUE);
         }
     }
+    /* Trap all key presses when hostkey is pressed */
     return TRUE;
 }
 

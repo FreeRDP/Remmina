@@ -82,7 +82,7 @@ void remmina_protocol_widget_call_feature (RemminaProtocolWidget *gp, RemminaPro
 void remmina_protocol_widget_emit_signal (RemminaProtocolWidget *gp, const gchar *signal);
 void remmina_protocol_widget_register_hostkey (RemminaProtocolWidget *gp, GtkWidget *widget);
 
-typedef gboolean (*RemminaHostkeyFunc) (RemminaProtocolWidget *gp, guint keyval, gpointer data);
+typedef gboolean (*RemminaHostkeyFunc) (RemminaProtocolWidget *gp, guint keyval, gboolean release, gpointer data);
 void remmina_protocol_widget_set_hostkey_func (RemminaProtocolWidget *gp, RemminaHostkeyFunc func, gpointer data);
 
 gboolean remmina_protocol_widget_ssh_exec (RemminaProtocolWidget *gp, gboolean wait, const gchar *fmt, ...);
