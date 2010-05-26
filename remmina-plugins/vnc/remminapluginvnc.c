@@ -956,6 +956,13 @@ remmina_plugin_vnc_rfb_bell (rfbClient *cl)
     if (window) gdk_window_beep (window);
 }
 
+/* Translate known VNC messages. It's for intltool only, not for gcc */
+#ifdef __DO_NOT_COMPILE_ME__
+N_("Unable to connect to VNC server")
+N_("Couldn't convert '%s' to host address")
+N_("VNC connection failed: %s")
+N_("Your connection has been rejected.")
+#endif
 /* TODO: We only store the last message at this moment. */
 #define MAX_ERROR_LENGTH 1000
 static gchar vnc_error[MAX_ERROR_LENGTH + 1];
@@ -970,16 +977,14 @@ remmina_plugin_vnc_rfb_output(const char *format, ...)
     f = g_strdup (format);
     if (f[strlen (f) - 1] == '\n') f[strlen (f) - 1] = '\0';
 
-/*g_printf("%s,len=%i\n", f, strlen(f));*/
     if (g_strcmp0 (f, "VNC connection failed: %s") == 0)
     {
         p = va_arg (args, gchar*);
-/*g_printf("(param)%s,len=%i\n", p, strlen(p));*/
-        g_snprintf (vnc_error, MAX_ERROR_LENGTH, f, p);
+        g_snprintf (vnc_error, MAX_ERROR_LENGTH, _(f), _(p));
     }
     else
     {
-        g_vsnprintf (vnc_error, MAX_ERROR_LENGTH, f, args);
+        g_vsnprintf (vnc_error, MAX_ERROR_LENGTH, _(f), args);
     }
     g_free (f);
     va_end(args);
