@@ -113,6 +113,10 @@ remmina_applet_menu_item_new (RemminaAppletMenuItemType item_type, ...)
         {
             iconname = "remmina-sftp";
         }
+        else if (g_strcmp0 (item->protocol, "SSH") == 0)
+        {
+            iconname = "utilities-terminal";
+        }
         else if (g_strcmp0 (item->protocol, "RDP") == 0)
         {
             iconname = (item->ssh_enabled ? "remmina-rdp-ssh" : "remmina-rdp");
@@ -124,6 +128,10 @@ remmina_applet_menu_item_new (RemminaAppletMenuItemType item_type, ...)
         else if (g_strcmp0 (item->protocol, "XDMCP") == 0)
         {
             iconname = (item->ssh_enabled ? "remmina-xdmcp-ssh" : "remmina-xdmcp");
+        }
+        else if (g_strcmp0 (item->protocol, "NX") == 0)
+        {
+            iconname = "remmina-nx";
         }
         else
         {
