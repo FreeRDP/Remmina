@@ -255,7 +255,8 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     }
     if (gpdata->inst->rdp_connect (gpdata->inst) != 0)
     {
-        remmina_plugin_service->protocol_plugin_set_error (gp, "inst->rdp_connect failed");
+        remmina_plugin_service->protocol_plugin_set_error (gp, _("Unable to connect to RDP server %s"),
+            gpdata->settings->server);
         return FALSE;
     }
     if (freerdp_chanman_post_connect (gpdata->chan_man, gpdata->inst) != 0)
