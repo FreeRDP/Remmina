@@ -35,22 +35,8 @@ remmina_plugin_rdpev_event_push (RemminaProtocolWidget *gp,
     event->flag = flag;
     event->param1 = param1;
     event->param2 = param2;
-    g_queue_push_tail (gpdata->event_queue, event);
+    g_async_queue_push (gpdata->event_queue, event);
     (void) write (gpdata->event_pipe[1], "\0", 1);
-}
-
-static void
-remmina_plugin_rdpev_event_free_all (RemminaProtocolWidget *gp)
-{
-    RemminaPluginRdpData *gpdata;
-    RemminaPluginRdpEvent *event;
-
-    gpdata = GET_DATA (gp);
-
-    while ((event = g_queue_pop_head (gpdata->event_queue)) != NULL)
-    {
-        g_free (event);
-    }
 }
 
 static void
@@ -360,7 +346,7 @@ remmina_plugin_rdpev_init (RemminaProtocolWidget *gp)
         G_CALLBACK (remmina_plugin_rdpev_on_key), gp);
 
     gpdata->pressed_keys = g_array_new (FALSE, TRUE, sizeof (gint));
-    gpdata->event_queue = g_queue_new ();
+    gpdata->event_queue = g_async_queue_new_full (g_free);
     if (pipe (gpdata->event_pipe))
     {
         g_print ("Error creating pipes.\n");
@@ -396,7 +382,7 @@ remmina_plugin_rdpev_uninit (RemminaProtocolWidget *gp)
         gpdata->scale_handler = 0;
     }
     g_array_free (gpdata->pressed_keys, TRUE);
-    remmina_plugin_rdpev_event_free_all (gp);
+    g_async_queue_unref (gpdata->event_queue);
     close (gpdata->event_pipe[0]);
     close (gpdata->event_pipe[1]);
 }

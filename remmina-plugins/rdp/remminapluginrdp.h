@@ -70,7 +70,7 @@ typedef struct _RemminaPluginRdpData
     guint queuecursor_handler;
 
     GArray *pressed_keys;
-    GQueue *event_queue;
+    GAsyncQueue *event_queue;
     gint event_pipe[2];
 } RemminaPluginRdpData;
 

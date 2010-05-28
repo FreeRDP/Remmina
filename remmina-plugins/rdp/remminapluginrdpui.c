@@ -1436,7 +1436,7 @@ remmina_plugin_rdpui_check_fds (RemminaProtocolWidget *gp)
     gchar buf[100];
 
     gpdata = GET_DATA (gp);
-    while ((event = g_queue_pop_head (gpdata->event_queue)) != NULL)
+    while ((event = (RemminaPluginRdpEvent *) g_async_queue_try_pop (gpdata->event_queue)) != NULL)
     {
         gpdata->inst->rdp_send_input(gpdata->inst,
             event->type, event->flag, event->param1, event->param2);
