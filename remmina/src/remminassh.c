@@ -321,7 +321,7 @@ remmina_ssh_init_session (RemminaSSH *ssh)
 gboolean
 remmina_ssh_init_from_file (RemminaSSH *ssh, RemminaFile *remminafile)
 {
-    gchar *ptr, *s;
+    gchar *s;
 
     ssh->session = NULL;
     ssh->callback = NULL;
@@ -332,17 +332,7 @@ remmina_ssh_init_from_file (RemminaSSH *ssh, RemminaFile *remminafile)
     /* Parse the address and port */
     if (remminafile->ssh_server && remminafile->ssh_server[0] != '\0')
     {
-        ssh->server = g_strdup (remminafile->ssh_server);
-        ptr = g_strrstr (ssh->server, ":");
-        if (ptr != NULL)
-        {
-            *ptr++ =  '\0';
-            ssh->port = (guint) atoi (ptr);
-        }
-        else
-        {
-            ssh->port = 22;
-        }
+        remmina_public_get_server_port (remminafile->ssh_server, 22, &ssh->server, &ssh->port);
     }
     else if (remminafile->server == NULL || remminafile->server[0] == '\0')
     {
@@ -350,9 +340,7 @@ remmina_ssh_init_from_file (RemminaSSH *ssh, RemminaFile *remminafile)
     }
     else
     {
-        ssh->server = g_strdup (remminafile->server);
-        ptr = g_strrstr (ssh->server, ":");
-        if (ptr) *ptr = '\0';
+        remmina_public_get_server_port (remminafile->server, 22, &ssh->server, &ssh->port);
         ssh->port = 22;
     }
 
@@ -980,20 +968,13 @@ remmina_ssh_tunnel_main_thread (gpointer data)
 gboolean
 remmina_ssh_tunnel_open (RemminaSSHTunnel* tunnel, const gchar *dest, gint local_port)
 {
-    gchar *ptr;
     gint sock;
     gint sockopt = 1;
     struct sockaddr_in sin;
 
     tunnel->tunnel_type = REMMINA_SSH_TUNNEL_OPEN;
-    tunnel->dest = g_strdup (dest);
-    ptr = g_strrstr (tunnel->dest, ":");
-    if (ptr != NULL)
-    {
-        *ptr++ =  '\0';
-        tunnel->port = atoi (ptr);
-    }
-    else
+    remmina_public_get_server_port (dest, 0, &tunnel->dest, &tunnel->port);
+    if (tunnel->port == 0)
     {
         REMMINA_SSH (tunnel)->error = g_strdup ("Destination port has not been assigned");
         return FALSE;

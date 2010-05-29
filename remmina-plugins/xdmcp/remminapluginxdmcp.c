@@ -65,7 +65,7 @@ remmina_plugin_xdmcp_start_xephyr (RemminaProtocolWidget *gp)
     RemminaFile *remminafile;
     gchar *argv[50];
     gint argc;
-    gchar *p1, *p2;
+    gchar *host;
     gint i;
     GError *error = NULL;
     gboolean ret;
@@ -116,15 +116,15 @@ remmina_plugin_xdmcp_start_xephyr (RemminaProtocolWidget *gp)
 
     if (!remminafile->ssh_enabled)
     {
+        remmina_plugin_service->get_server_port (remminafile->server, 0, &host, &i);
+
         argv[argc++] = g_strdup ("-query");
-        p1 = g_strdup (remminafile->server);
-        argv[argc++] = p1;
-        p2 = g_strrstr (p1, ":");
-        if (p2)
+        argv[argc++] = host;
+
+        if (i)
         {
-            *p2++ = '\0';
             argv[argc++] = g_strdup ("-port");
-            argv[argc++] = g_strdup (p2);
+            argv[argc++] = g_strdup_printf ("%i", i);
         }
     }
     else

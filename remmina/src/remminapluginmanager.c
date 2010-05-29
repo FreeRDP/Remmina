@@ -22,6 +22,7 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <string.h>
+#include "remminapublic.h"
 #include "remminafile.h"
 #include "remminapref.h"
 #include "remminaprotocolwidget.h"
@@ -105,7 +106,8 @@ RemminaPluginService remmina_plugin_manager_service =
 
     remmina_widget_pool_register,
 
-    remmina_connection_window_open_from_file_full
+    remmina_connection_window_open_from_file_full,
+    remmina_public_get_server_port
 };
 
 static void

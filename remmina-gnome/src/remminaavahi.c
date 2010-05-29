@@ -76,7 +76,7 @@ remmina_avahi_resolve_callback (
                 g_free (key);
                 break;
             }
-            value = g_strdup_printf ("%s:%i", host_name, port);
+            value = g_strdup_printf ("%s/%i", host_name, port);
             g_hash_table_insert (ga->discovered_services, key, value);
             /* key and value will be freed with g_free when the has table is freed */
 
