@@ -46,7 +46,7 @@ typedef struct _RemminaSSH
     gboolean authenticated;
 
     gchar *server;
-    guint port;
+    gint port;
     gchar *user;
     gint auth;
     gchar *password;

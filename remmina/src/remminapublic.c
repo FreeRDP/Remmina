@@ -286,19 +286,37 @@ remmina_public_threads_leave (void* data)
 void
 remmina_public_get_server_port (const gchar *server, gint defaultport, gchar **host, gint *port)
 {
-    gchar *str, *ptr;
+    gchar *str, *ptr, *ptr2;
 
     str = g_strdup (server);
-    ptr = strchr (str, ':');
-    if (ptr)
+
+    do
     {
-        *ptr++ = '\0';
-        if (port) *port = atoi (ptr);
-    }
-    else
-    {
+        /* server/port format */
+        ptr = strchr (str, '/');
+        if (ptr)
+        {
+            *ptr++ = '\0';
+            if (port) *port = atoi (ptr);
+            break;
+        }
+
+        /* server:port format, IPv6 cannot use this format */
+        ptr = strchr (str, ':');
+        if (ptr)
+        {
+            ptr2 = strchr (ptr + 1, ':');
+            if (ptr2 == NULL)
+            {
+                *ptr++ = '\0';
+                if (port) *port = atoi (ptr);
+                break;
+            }
+            /* More than one ':' means this is IPv6 address. Treat it as a whole address */
+        }
         if (port) *port = defaultport;
-    }
+    } while (0);
+
     if (host) *host = str;
 }
 

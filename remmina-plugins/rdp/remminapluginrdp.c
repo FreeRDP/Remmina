@@ -124,26 +124,21 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     RemminaPluginRdpData *gpdata;
     RemminaFile *remminafile;
     gchar *host;
-    gchar *port;
     gchar *s;
     gint rdpdr_num;
 
     gpdata = GET_DATA (gp);
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
-    host = remmina_plugin_service->protocol_plugin_start_direct_tunnel (gp, 3389, FALSE);
-    if (host == NULL)
+    s = remmina_plugin_service->protocol_plugin_start_direct_tunnel (gp, 3389, FALSE);
+    if (s == NULL)
     {
         return FALSE;
     }
-    port = strchr (host, ':');
-    if (port)
-    {
-        *port++ = '\0';
-        gpdata->settings->tcp_port_rdp = atoi(port);
-    }
+    remmina_plugin_service->get_server_port (s, 3389, &host, &gpdata->settings->tcp_port_rdp);
     strncpy (gpdata->settings->server, host, sizeof (gpdata->settings->server) - 1);
     g_free (host);
+    g_free (s);
 
     gpdata->settings->server_depth = remminafile->colordepth;
     gpdata->settings->width = remminafile->resolution_width;

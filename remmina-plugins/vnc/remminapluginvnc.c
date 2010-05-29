@@ -1153,7 +1153,7 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
     RemminaPluginVncData *gpdata;
     RemminaFile *remminafile;
     rfbClient *cl = NULL;
-    gchar *host, *pos;
+    gchar *host;
 
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
@@ -1208,10 +1208,8 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
         }
         else
         {
-            pos = g_strrstr (host, ":");
-            *pos++ = '\0';
-            cl->serverPort = MAX (0, atoi (pos));
-            cl->serverHost = host;
+            remmina_plugin_service->get_server_port (host, 5900, &cl->serverHost, &cl->serverPort);
+            g_free (host);
 
             /* Support short-form (:0, :1) */
             if (cl->serverPort < 100) cl->serverPort += 5900;
@@ -1219,18 +1217,7 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
 
         if (remminafile->proxy && remminafile->proxy[0])
         {
-            host = g_strdup (remminafile->proxy);
-            pos = g_strrstr (host, ":");
-            if (pos)
-            {
-                *pos++ = '\0';
-                cl->destPort = atoi (pos);
-            }
-            else
-            {
-                cl->destPort = 5900;
-            }
-            cl->destHost = host;
+            remmina_plugin_service->get_server_port (remminafile->proxy, 5900, &cl->destHost, &cl->destPort);
         }
 
         cl->appData.useRemoteCursor = (remminafile->showcursor ? FALSE : TRUE);

@@ -434,6 +434,7 @@ remmina_file_free (RemminaFile *remminafile)
     g_free (remminafile->cacrl);
     g_free (remminafile->clientcert);
     g_free (remminafile->clientkey);
+    g_free (remminafile->sharefolder);
 
     g_free (remminafile->ssh_server);
     g_free (remminafile->ssh_username);

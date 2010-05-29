@@ -384,7 +384,7 @@ remmina_protocol_widget_init_tunnel (RemminaProtocolWidget *gp)
 gchar*
 remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint default_port, gboolean port_plus)
 {
-    gchar *dest, *ptr;
+    gchar *host, *dest;
     gint port;
 
     if (!gp->priv->remmina_file->server || gp->priv->remmina_file->server[0] == '\0')
@@ -392,29 +392,15 @@ remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint def
         return g_strdup("");
     }
 
-    if (strchr (gp->priv->remmina_file->server, ':') == NULL)
+    remmina_public_get_server_port (gp->priv->remmina_file->server, default_port, &host, &port);
+
+    if (port_plus && port < 100)
     {
-        dest = g_strdup_printf ("%s:%i", gp->priv->remmina_file->server, default_port);
-    }
-    else if (port_plus)
-    {
-        dest = g_strdup (gp->priv->remmina_file->server);
         /* Protocols like VNC supports using instance number :0, :1, etc as port number. */
-        ptr = strchr (dest, ':');
-        port = atoi (ptr + 1);
-        if (port < 100)
-        {
-            port += default_port;
-            *ptr = '\0';
-            ptr = dest;
-            dest = g_strdup_printf ("%s:%i", ptr, port);
-            g_free (ptr);
-        }
+        port += default_port;
     }
-    else
-    {
-        dest = g_strdup (gp->priv->remmina_file->server);
-    }
+    dest = g_strdup_printf ("%s/%i", host, port);
+    g_free (host);
 
 #ifdef HAVE_LIBSSH
     if (!gp->priv->remmina_file->ssh_enabled)
@@ -439,7 +425,7 @@ remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint def
         ptr = strchr (dest, ':');
         if (ptr)
         {
-            ptr = g_strdup_printf ("127.0.0.1:%s", ptr + 1);
+            ptr = g_strdup_printf ("127.0.0.1/%s", ptr + 1);
             g_free (dest);
             dest = ptr;
         }
@@ -453,7 +439,7 @@ remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint def
     }
 
     g_free (dest);
-    return g_strdup_printf ("127.0.0.1:%i", remmina_pref.sshtunnel_port);
+    return g_strdup_printf ("127.0.0.1/%i", remmina_pref.sshtunnel_port);
 
 #else
 
