@@ -74,7 +74,7 @@ static const gpointer sound_list[] =
     NULL
 };
 
-static const gchar *server_tips = N_("Accepted formats: server, server:port or server/port");
+static const gchar *server_tips = N_("Accepted formats: server, server:port or [server]:port");
 
 struct _RemminaFileEditorPriv
 {
@@ -157,7 +157,7 @@ remmina_file_editor_browse_avahi (GtkWidget *button, RemminaFileEditor *gfe)
         gfe->priv->plugin->avahi_service_type, NULL);
     if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
     {
-        host = g_strdup_printf ("%s/%i",
+        host = g_strdup_printf ("[%s]:%i",
             aui_service_dialog_get_host_name (AUI_SERVICE_DIALOG (dialog)),
             aui_service_dialog_get_port (AUI_SERVICE_DIALOG (dialog)));
     }
