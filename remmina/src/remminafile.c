@@ -113,6 +113,7 @@ remmina_file_new_temp (void)
         gf->disableclipboard = FALSE;
 
         gf->ssh_enabled = FALSE;
+        gf->ssh_loopback = FALSE;
         gf->ssh_server = NULL;
         gf->ssh_auth = SSH_AUTH_PASSWORD;
         gf->ssh_username = NULL;
@@ -231,6 +232,7 @@ remmina_file_load (const gchar *filename)
         gf->disableclipboard = g_key_file_get_boolean (gkeyfile, "remmina", "disableclipboard", NULL);
 
         gf->ssh_enabled = g_key_file_get_boolean (gkeyfile, "remmina", "ssh_enabled", NULL);
+        gf->ssh_loopback = g_key_file_get_boolean (gkeyfile, "remmina", "ssh_loopback", NULL);
         gf->ssh_server = g_key_file_get_string (gkeyfile, "remmina", "ssh_server", NULL);
         gf->ssh_auth = g_key_file_get_integer (gkeyfile, "remmina", "ssh_auth", NULL);
         gf->ssh_username = g_key_file_get_string (gkeyfile, "remmina", "ssh_username", NULL);
@@ -296,6 +298,7 @@ remmina_file_store_profile (RemminaFile *gf, GKeyFile *gkeyfile)
     g_key_file_set_boolean (gkeyfile, "remmina", "disableclipboard", gf->disableclipboard);
 
     g_key_file_set_boolean (gkeyfile, "remmina", "ssh_enabled", gf->ssh_enabled);
+    g_key_file_set_boolean (gkeyfile, "remmina", "ssh_loopback", gf->ssh_loopback);
     g_key_file_set_string (gkeyfile, "remmina", "ssh_server", (gf->ssh_server ? gf->ssh_server : ""));
     g_key_file_set_integer (gkeyfile, "remmina", "ssh_auth", gf->ssh_auth);
     g_key_file_set_string (gkeyfile, "remmina", "ssh_username", (gf->ssh_username ? gf->ssh_username : ""));
@@ -491,6 +494,7 @@ remmina_file_dup (RemminaFile *remminafile)
     gf->disableclipboard = remminafile->disableclipboard;
 
     gf->ssh_enabled = remminafile->ssh_enabled;
+    gf->ssh_loopback = remminafile->ssh_loopback;
     gf->ssh_server = g_strdup (remminafile->ssh_server);
     gf->ssh_auth = remminafile->ssh_auth;
     gf->ssh_username = g_strdup (remminafile->ssh_username);

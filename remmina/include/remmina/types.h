@@ -63,6 +63,7 @@ typedef struct _RemminaFile
 
     /* SSH settings */
     gboolean ssh_enabled;
+    gboolean ssh_loopback;
     gchar *ssh_server;
     gint ssh_auth;
     gchar *ssh_username;

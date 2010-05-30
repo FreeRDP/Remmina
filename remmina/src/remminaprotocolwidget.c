@@ -399,18 +399,18 @@ remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint def
         /* Protocols like VNC supports using instance number :0, :1, etc as port number. */
         port += default_port;
     }
-    dest = g_strdup_printf ("[%s]:%i", host, port);
-    g_free (host);
 
 #ifdef HAVE_LIBSSH
     if (!gp->priv->remmina_file->ssh_enabled)
     {
+        dest = g_strdup_printf ("[%s]:%i", host, port);
+        g_free (host);
         return dest;
     }
 
     if (!remmina_protocol_widget_init_tunnel (gp))
     {
-        g_free (dest);
+        g_free (host);
         return NULL;
     }
 
@@ -419,30 +419,26 @@ remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint def
         _("Connecting to %s through SSH tunnel..."), gp->priv->remmina_file->server);
     THREADS_LEAVE
 
-    /* TODO: Provide an option to support connecting to loopback interface for easier configuration */
-    /*if (gp->priv->remmina_file->ssh_server == NULL || gp->priv->remmina_file->ssh_server[0] == '\0')
+    if (gp->priv->remmina_file->ssh_loopback)
     {
-        ptr = strchr (dest, ':');
-        if (ptr)
-        {
-            ptr = g_strdup_printf ("127.0.0.1:%s", ptr + 1);
-            g_free (dest);
-            dest = ptr;
-        }
-    }*/
+        g_free (host);
+        host = g_strdup ("127.0.0.1");
+    }
 
-    if (!remmina_ssh_tunnel_open (gp->priv->ssh_tunnel, dest, remmina_pref.sshtunnel_port))
+    if (!remmina_ssh_tunnel_open (gp->priv->ssh_tunnel, host, port, remmina_pref.sshtunnel_port))
     {
-        g_free (dest);
+        g_free (host);
         remmina_protocol_widget_set_error (gp, REMMINA_SSH (gp->priv->ssh_tunnel)->error);
         return NULL;
     }
 
-    g_free (dest);
+    g_free (host);
     return g_strdup_printf ("127.0.0.1:%i", remmina_pref.sshtunnel_port);
 
 #else
 
+    dest = g_strdup_printf ("[%s]:%i", host, port);
+    g_free (host);
     return dest;
 
 #endif
