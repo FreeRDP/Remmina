@@ -399,7 +399,7 @@ remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint def
         /* Protocols like VNC supports using instance number :0, :1, etc as port number. */
         port += default_port;
     }
-    dest = g_strdup_printf ("%s/%i", host, port);
+    dest = g_strdup_printf ("[%s]:%i", host, port);
     g_free (host);
 
 #ifdef HAVE_LIBSSH
@@ -425,7 +425,7 @@ remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint def
         ptr = strchr (dest, ':');
         if (ptr)
         {
-            ptr = g_strdup_printf ("127.0.0.1/%s", ptr + 1);
+            ptr = g_strdup_printf ("127.0.0.1:%s", ptr + 1);
             g_free (dest);
             dest = ptr;
         }
@@ -439,7 +439,7 @@ remmina_protocol_widget_start_direct_tunnel (RemminaProtocolWidget *gp, gint def
     }
 
     g_free (dest);
-    return g_strdup_printf ("127.0.0.1/%i", remmina_pref.sshtunnel_port);
+    return g_strdup_printf ("127.0.0.1:%i", remmina_pref.sshtunnel_port);
 
 #else
 

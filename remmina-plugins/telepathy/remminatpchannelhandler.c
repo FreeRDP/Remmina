@@ -121,7 +121,7 @@ remmina_tp_channel_handler_connect (RemminaTpChannelHandler *chandler)
     remminafile = g_new0 (RemminaFile, 1);
     remminafile->name = chandler->alias;
     remminafile->protocol = chandler->protocol;
-    remminafile->server = g_strdup_printf ("%s/%i", chandler->host, chandler->port);
+    remminafile->server = g_strdup_printf ("[%s]:%i", chandler->host, chandler->port);
     remminafile->colordepth = 8;
 
     chandler->alias = NULL;
