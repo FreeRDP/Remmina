@@ -74,7 +74,21 @@ static const gpointer sound_list[] =
     NULL
 };
 
-static const gchar *server_tips = N_("Accepted formats: server, server:port or [server]:port");
+static const gchar *server_tips = N_(
+    "<tt><big>"
+    "Supported formats\n"
+    "* server\n"
+    "* server:port\n"
+    "* [server]:port"
+    "</big></tt>");
+static const gchar *server_tips2 = N_(
+    "<tt><big>"
+    "Supported formats\n"
+    "* :port\n"
+    "* server\n"
+    "* server:port\n"
+    "* [server]:port"
+    "</big></tt>");
 
 struct _RemminaFileEditorPriv
 {
@@ -402,7 +416,7 @@ remmina_file_editor_create_server (RemminaFileEditor *gfe, GtkWidget *table, gin
     s = remmina_pref_get_recent (plugin->name);
     widget = remmina_public_create_combo_entry (s, gfe->priv->remmina_file->server, TRUE);
     gtk_widget_show (widget);
-    gtk_widget_set_tooltip_text (widget, _(server_tips));
+    gtk_widget_set_tooltip_markup (widget, _(server_tips));
     gtk_entry_set_activates_default (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (widget))), TRUE);
     gfe->priv->server_combo = widget;
     g_free (s);
@@ -959,7 +973,7 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
 
         widget = gtk_entry_new_with_max_length (100);
         gtk_widget_show (widget);
-        gtk_widget_set_tooltip_text (widget, _(server_tips));
+        gtk_widget_set_tooltip_markup (widget, _(server_tips2));
         gtk_table_attach_defaults (GTK_TABLE (table), widget, 2, 3, row, row + 1);
         priv->ssh_server_entry = widget;
         row++;
@@ -971,7 +985,7 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
 
         priv->ssh_server_entry = remmina_file_editor_create_entry (gfe, table, row, 1,
             _("Server"), NULL);
-        gtk_widget_set_tooltip_text (priv->ssh_server_entry, _(server_tips));
+        gtk_widget_set_tooltip_markup (priv->ssh_server_entry, _(server_tips));
         row++;
         break;
 
@@ -984,7 +998,7 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
         s = remmina_pref_get_recent ("SFTP");
         priv->server_combo = remmina_file_editor_create_combo_entry (gfe, table, row, 1,
             _("Server"), s, priv->remmina_file->server);
-        gtk_widget_set_tooltip_text (priv->server_combo, _(server_tips));
+        gtk_widget_set_tooltip_markup (priv->server_combo, _(server_tips));
         gtk_entry_set_activates_default (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (priv->server_combo))), TRUE);
         g_free (s);
         row++;
