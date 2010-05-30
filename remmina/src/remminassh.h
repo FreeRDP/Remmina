@@ -145,7 +145,7 @@ RemminaSSHTunnel* remmina_ssh_tunnel_new_from_file (RemminaFile *remminafile);
  * dest: The host:port of the remote destination
  * local_port: The listening local port for the tunnel
  */
-gboolean remmina_ssh_tunnel_open (RemminaSSHTunnel *tunnel, const gchar *dest, gint local_port);
+gboolean remmina_ssh_tunnel_open (RemminaSSHTunnel *tunnel, const gchar *host, gint port, gint local_port);
 
 /* Accept the X11 tunnel. A new thread will be started and connect to local display.
  * cmd: The remote X11 application to be executed

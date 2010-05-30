@@ -966,14 +966,15 @@ remmina_ssh_tunnel_main_thread (gpointer data)
 }
 
 gboolean
-remmina_ssh_tunnel_open (RemminaSSHTunnel* tunnel, const gchar *dest, gint local_port)
+remmina_ssh_tunnel_open (RemminaSSHTunnel* tunnel, const gchar *host, gint port, gint local_port)
 {
     gint sock;
     gint sockopt = 1;
     struct sockaddr_in sin;
 
     tunnel->tunnel_type = REMMINA_SSH_TUNNEL_OPEN;
-    remmina_public_get_server_port (dest, 0, &tunnel->dest, &tunnel->port);
+    tunnel->dest = g_strdup (host);
+    tunnel->port = port;
     if (tunnel->port == 0)
     {
         REMMINA_SSH (tunnel)->error = g_strdup ("Destination port has not been assigned");

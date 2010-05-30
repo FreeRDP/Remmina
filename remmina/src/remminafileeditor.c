@@ -122,6 +122,7 @@ struct _RemminaFileEditorPriv
     GtkWidget *disableclipboard_check;
 
     GtkWidget *ssh_enabled_check;
+    GtkWidget *ssh_loopback_check;
     GtkWidget *ssh_server_default_radio;
     GtkWidget *ssh_server_custom_radio;
     GtkWidget *ssh_server_entry;
@@ -295,6 +296,7 @@ remmina_file_editor_ssh_enabled_check_on_toggled (GtkToggleButton *togglebutton,
     if (gfe->priv->ssh_enabled_check)
     {
         enabled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (gfe->priv->ssh_enabled_check));
+        if (gfe->priv->ssh_loopback_check) gtk_widget_set_sensitive (gfe->priv->ssh_loopback_check, enabled);
         if (gfe->priv->ssh_server_default_radio) gtk_widget_set_sensitive (gfe->priv->ssh_server_default_radio, enabled);
         if (gfe->priv->ssh_server_custom_radio) gtk_widget_set_sensitive (gfe->priv->ssh_server_custom_radio, enabled);
         remmina_file_editor_ssh_server_custom_radio_on_toggled (NULL, gfe);
@@ -893,6 +895,7 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
 #ifdef HAVE_LIBSSH
     RemminaFileEditorPriv *priv = gfe->priv;
     GtkWidget *table;
+    GtkWidget *hbox;
     GtkWidget *widget;
     gchar *s;
     gint row = 0;
@@ -913,13 +916,22 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
         table = remmina_file_editor_create_notebook_tab (gfe, GTK_STOCK_DIALOG_AUTHENTICATION,
             "SSH", 9, 3);
 
+        hbox = gtk_hbox_new (TRUE, 0);
+        gtk_widget_show (hbox);
+        gtk_table_attach_defaults (GTK_TABLE (table), hbox, 0, 3, 0, 1);
+        row++;
+
         widget = gtk_check_button_new_with_label (_("Enable SSH Tunnel"));
         gtk_widget_show (widget);
-        gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 3, 0, 1);
+        gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
         g_signal_connect (G_OBJECT (widget), "toggled",
             G_CALLBACK (remmina_file_editor_ssh_enabled_check_on_toggled), gfe);
         priv->ssh_enabled_check = widget;
-        row++;
+
+        widget = gtk_check_button_new_with_label (_("Tunnel via Loopback Address"));
+        gtk_widget_show (widget);
+        gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
+        priv->ssh_loopback_check = widget;
     }
 
     /* SSH Server group */
@@ -1023,6 +1035,7 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
     if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_TUNNEL)
     {
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->ssh_enabled_check), priv->remmina_file->ssh_enabled);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->ssh_loopback_check), priv->remmina_file->ssh_loopback);
 
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (
             priv->remmina_file->ssh_server && priv->remmina_file->ssh_server[0] != '\0' ?
@@ -1033,6 +1046,7 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
     else if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_REVERSE_TUNNEL)
     {
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->ssh_enabled_check), priv->remmina_file->ssh_enabled);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->ssh_loopback_check), priv->remmina_file->ssh_loopback);
         gtk_entry_set_text (GTK_ENTRY (priv->ssh_server_entry),
             priv->remmina_file->ssh_server ? priv->remmina_file->ssh_server : "");
     }
@@ -1122,6 +1136,7 @@ remmina_file_editor_protocol_combo_on_changed (GtkComboBox *combo, RemminaFileEd
     priv->disableclipboard_check = NULL;
 
     priv->ssh_enabled_check = NULL;
+    priv->ssh_loopback_check = NULL;
     priv->ssh_server_default_radio = NULL;
     priv->ssh_server_custom_radio = NULL;
     priv->ssh_server_entry = NULL;
@@ -1331,6 +1346,8 @@ remmina_file_editor_update (RemminaFileEditor *gfe)
     {
         priv->remmina_file->ssh_enabled = (priv->ssh_enabled_check ?
             gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->ssh_enabled_check)) : FALSE);
+        priv->remmina_file->ssh_loopback = (priv->ssh_loopback_check ?
+            gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->ssh_loopback_check)) : FALSE);
     }
     g_free (priv->remmina_file->ssh_username);
     priv->remmina_file->ssh_username = (priv->remmina_file->ssh_enabled ?
