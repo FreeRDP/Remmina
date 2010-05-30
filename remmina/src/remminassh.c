@@ -333,6 +333,11 @@ remmina_ssh_init_from_file (RemminaSSH *ssh, RemminaFile *remminafile)
     if (remminafile->ssh_server && remminafile->ssh_server[0] != '\0')
     {
         remmina_public_get_server_port (remminafile->ssh_server, 22, &ssh->server, &ssh->port);
+        if (ssh->server[0] == '\0')
+        {
+            g_free (ssh->server);
+            remmina_public_get_server_port (remminafile->server, 0, &ssh->server, NULL);
+        }
     }
     else if (remminafile->server == NULL || remminafile->server[0] == '\0')
     {
@@ -340,7 +345,7 @@ remmina_ssh_init_from_file (RemminaSSH *ssh, RemminaFile *remminafile)
     }
     else
     {
-        remmina_public_get_server_port (remminafile->server, 22, &ssh->server, &ssh->port);
+        remmina_public_get_server_port (remminafile->server, 0, &ssh->server, NULL);
         ssh->port = 22;
     }
 
