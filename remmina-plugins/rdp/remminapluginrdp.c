@@ -400,6 +400,11 @@ remmina_plugin_rdp_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeatu
             remmina_plugin_rdpev_update_scale (gp);
             break;
         case REMMINA_PROTOCOL_FEATURE_TOOL_REFRESH:
+            LOCK_BUFFER (FALSE)
+            remmina_plugin_rdpui_update_rect (gp, 0, 0,
+                remmina_plugin_service->protocol_plugin_get_width (gp),
+                remmina_plugin_service->protocol_plugin_get_height (gp));
+            UNLOCK_BUFFER (FALSE)
             break;
         default:
             break;
