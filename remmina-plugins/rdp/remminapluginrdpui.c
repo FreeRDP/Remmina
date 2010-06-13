@@ -607,7 +607,7 @@ remmina_plugin_rdpui_scale_area (RemminaProtocolWidget *gp, gint *x, gint *y, gi
     *x = sx; *y = sy; *w = sw; *h = sh;
 }
 
-static void
+void
 remmina_plugin_rdpui_update_rect (RemminaProtocolWidget *gp, int x, int y, int w, int h)
 {
     if (remmina_plugin_service->protocol_plugin_get_scale (gp))
