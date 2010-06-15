@@ -38,6 +38,7 @@ static const gchar *remmina_plugin_type_name[] =
     N_("Protocol"),
     N_("Entry"),
     N_("File"),
+    N_("Tool"),
     NULL
 };
 
