@@ -29,7 +29,8 @@ typedef enum
 {
     REMMINA_PLUGIN_TYPE_PROTOCOL = 0,
     REMMINA_PLUGIN_TYPE_ENTRY = 1,
-    REMMINA_PLUGIN_TYPE_FILE = 2
+    REMMINA_PLUGIN_TYPE_FILE = 2,
+    REMMINA_PLUGIN_TYPE_TOOL = 3
 } RemminaPluginType;
 
 typedef struct _RemminaPlugin
@@ -80,6 +81,15 @@ typedef struct _RemminaFilePlugin
     gboolean (* export_func) (RemminaFile *file, const gchar *to_file);
     const gchar *export_hints;
 } RemminaFilePlugin;
+
+typedef struct _RemminaToolPlugin
+{
+    RemminaPluginType type;
+    const gchar *name;
+    const gchar *description;
+
+    void (* exec_func) (void);
+} RemminaToolPlugin;
 
 /* Plugin Service is a struct containing a list of function pointers,
  * which is passed from Remmina main program to the plugin module

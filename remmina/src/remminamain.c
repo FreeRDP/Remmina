@@ -492,9 +492,9 @@ remmina_main_action_action_quit (GtkAction *action, RemminaMain *remminamain)
 static void
 remmina_main_action_view_toolbar (GtkToggleAction *action, RemminaMain *remminamain)
 {
-	gboolean toggled;
+    gboolean toggled;
 
-	toggled = gtk_toggle_action_get_active (action);
+    toggled = gtk_toggle_action_get_active (action);
     if (toggled)
     {
         gtk_widget_show (remminamain->priv->toolbar);
@@ -513,9 +513,9 @@ remmina_main_action_view_toolbar (GtkToggleAction *action, RemminaMain *remminam
 static void
 remmina_main_action_view_quick_search (GtkToggleAction *action, RemminaMain *remminamain)
 {
-	gboolean toggled;
+    gboolean toggled;
 
-	toggled = gtk_toggle_action_get_active (action);
+    toggled = gtk_toggle_action_get_active (action);
     if (toggled)
     {
         gtk_entry_set_text (GTK_ENTRY (remminamain->priv->quick_search_entry), "");
@@ -544,9 +544,9 @@ remmina_main_action_view_quick_search (GtkToggleAction *action, RemminaMain *rem
 static void
 remmina_main_action_view_statusbar (GtkToggleAction *action, RemminaMain *remminamain)
 {
-	gboolean toggled;
+    gboolean toggled;
 
-	toggled = gtk_toggle_action_get_active (action);
+    toggled = gtk_toggle_action_get_active (action);
     if (toggled)
     {
         gtk_widget_show (remminamain->priv->statusbar);
@@ -565,9 +565,9 @@ remmina_main_action_view_statusbar (GtkToggleAction *action, RemminaMain *remmin
 static void
 remmina_main_action_view_small_toolbutton (GtkToggleAction *action, RemminaMain *remminamain)
 {
-	gboolean toggled;
+    gboolean toggled;
 
-	toggled = gtk_toggle_action_get_active (action);
+    toggled = gtk_toggle_action_get_active (action);
     if (toggled)
     {
         gtk_toolbar_set_icon_size (GTK_TOOLBAR (remminamain->priv->toolbar), GTK_ICON_SIZE_MENU);
@@ -713,6 +713,18 @@ remmina_main_action_tools_plugins (GtkAction *action, RemminaMain *remminamain)
 }
 
 static void
+remmina_main_action_tools_addition (GtkAction *action, RemminaMain *remminamain)
+{
+    RemminaToolPlugin *plugin;
+
+    plugin = (RemminaToolPlugin *) remmina_plugin_manager_get_plugin (REMMINA_PLUGIN_TYPE_TOOL, gtk_action_get_name (action));
+    if (plugin)
+    {
+        plugin->exec_func();
+    }
+}
+
+static void
 remmina_main_action_help_wiki (GtkAction *action, RemminaMain *remminamain)
 {
     g_app_info_launch_default_for_uri ("http://sourceforge.net/apps/mediawiki/remmina/", NULL, NULL);
@@ -761,6 +773,7 @@ static const gchar *remmina_main_ui_xml =
 "    <menu name='ToolsMenu' action='Tools'>"
 "      <menuitem name='ToolsImportMenu' action='ToolsImport'/>"
 "      <menuitem name='ToolsExportMenu' action='ToolsExport'/>"
+"      <placeholder name='ToolsAdditions'/>"
 "      <separator/>"
 "      <menuitem name='ToolsPluginsMenu' action='ToolsPlugins'/>"
 "    </menu>"
@@ -999,6 +1012,25 @@ remmina_main_on_drag_data_received (RemminaMain *remminamain, GdkDragContext *dr
     remmina_main_import_file_list (remminamain, files);
 }
 
+static gboolean
+remmina_main_add_tool_plugin (gchar *name, RemminaPlugin *plugin, gpointer data)
+{
+    RemminaMain *remminamain = REMMINA_MAIN (data);
+    guint merge_id;
+    GtkAction *action;
+
+    merge_id = gtk_ui_manager_new_merge_id (remminamain->priv->uimanager);
+    action = gtk_action_new (name, plugin->description, NULL, NULL);
+    gtk_action_group_add_action (remminamain->priv->main_group, action);
+    g_signal_connect (G_OBJECT (action), "activate", G_CALLBACK (remmina_main_action_tools_addition), remminamain);
+    g_object_unref (action);
+
+    gtk_ui_manager_add_ui (remminamain->priv->uimanager, merge_id, "/MenuBar/ToolsMenu/ToolsAdditions",
+        name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
+
+    return FALSE;
+}
+
 static void
 remmina_main_init (RemminaMain *remminamain)
 {
@@ -1074,6 +1106,8 @@ remmina_main_init (RemminaMain *remminamain)
         g_message ("building menus failed: %s", error->message);
         g_error_free (error);
     }
+
+    remmina_plugin_manager_for_each_plugin (REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
 
     menubar = gtk_ui_manager_get_widget (uimanager, "/MenuBar");
     gtk_box_pack_start (GTK_BOX (vbox), menubar, FALSE, FALSE, 0);
