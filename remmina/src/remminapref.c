@@ -457,14 +457,26 @@ void
 remmina_pref_clear_recent (void)
 {
     GKeyFile *gkeyfile;
+    gchar **keys;
+    gint i;
     gchar *content;
     gsize length;
 
     gkeyfile = g_key_file_new ();
 
     g_key_file_load_from_file (gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
-    g_key_file_set_string (gkeyfile, "remmina_pref", "recent_RDP", "");
-    g_key_file_set_string (gkeyfile, "remmina_pref", "recent_VNC", "");
+    keys = g_key_file_get_keys (gkeyfile, "remmina_pref", NULL, NULL);
+    if (keys)
+    {
+        for (i = 0; keys[i]; i++)
+        {
+            if (strncmp (keys[i], "recent_", 7) == 0)
+            {
+                g_key_file_set_string (gkeyfile, "remmina_pref", keys[i], "");
+            }
+        }
+        g_strfreev (keys);
+    }
 
     content = g_key_file_to_data (gkeyfile, &length, NULL);
     g_file_set_contents (remmina_pref_file, content, length, NULL);
@@ -532,5 +544,36 @@ gint
 remmina_pref_get_sshtunnel_port (void)
 {
     return remmina_pref.sshtunnel_port;
+}
+
+void
+remmina_pref_set_value (const gchar *key, const gchar *value)
+{
+    GKeyFile *gkeyfile;
+    gchar *content;
+    gsize length;
+
+    gkeyfile = g_key_file_new ();
+    g_key_file_load_from_file (gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
+    g_key_file_set_string (gkeyfile, "remmina_pref", key, value);
+    content = g_key_file_to_data (gkeyfile, &length, NULL);
+    g_file_set_contents (remmina_pref_file, content, length, NULL);
+
+    g_key_file_free (gkeyfile);
+    g_free (content);
+}
+
+gchar*
+remmina_pref_get_value (const gchar *key)
+{
+    GKeyFile *gkeyfile;
+    gchar *value;
+
+    gkeyfile = g_key_file_new ();
+    g_key_file_load_from_file (gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
+    value = g_key_file_get_string (gkeyfile, "remmina_pref", key, NULL);
+    g_key_file_free (gkeyfile);
+
+    return value;
 }
 
