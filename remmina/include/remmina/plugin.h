@@ -137,9 +137,11 @@ typedef struct _RemminaPluginService
     void         (* protocol_plugin_chat_close)           (RemminaProtocolWidget *gp);
     void         (* protocol_plugin_chat_receive)         (RemminaProtocolWidget *gp, const gchar *text);
 
+    void         (* pref_set_value)                       (const gchar *key, const gchar *value);
+    gchar*       (* pref_get_value)                       (const gchar *key);
     gint         (* pref_get_scale_quality)               (void);
     gint         (* pref_get_sshtunnel_port)              (void);
-    guint        (* pref_keymap_get_keyval)                (const gchar *keymap, guint keyval);
+    guint        (* pref_keymap_get_keyval)               (const gchar *keymap, guint keyval);
 
     void         (* log_print)                            (const gchar *text);
     void         (* log_printf)                           (const gchar *fmt, ...);

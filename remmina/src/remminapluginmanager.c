@@ -98,6 +98,8 @@ RemminaPluginService remmina_plugin_manager_service =
     remmina_protocol_widget_chat_close,
     remmina_protocol_widget_chat_receive,
 
+    remmina_pref_set_value,
+    remmina_pref_get_value,
     remmina_pref_get_scale_quality,
     remmina_pref_get_sshtunnel_port,
     remmina_pref_keymap_get_keyval,

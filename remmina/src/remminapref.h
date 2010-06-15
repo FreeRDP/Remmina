@@ -125,6 +125,9 @@ gchar* remmina_pref_keymap_groups (void);
 gint remmina_pref_get_scale_quality (void);
 gint remmina_pref_get_sshtunnel_port (void);
 
+void remmina_pref_set_value (const gchar *key, const gchar *value);
+gchar* remmina_pref_get_value (const gchar *key);
+
 G_END_DECLS
 
 #endif  /* __REMMINAPREF_H__  */
