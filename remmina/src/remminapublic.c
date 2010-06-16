@@ -175,17 +175,17 @@ remmina_public_create_combo (gboolean use_icon)
     {
         store = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
     }
-    combo = gtk_combo_box_new_with_model (GTK_TREE_MODEL(store)); 
+    combo = gtk_combo_box_new_with_model (GTK_TREE_MODEL(store));
 
     if (use_icon)
     {
-        renderer = gtk_cell_renderer_pixbuf_new (); 
-        gtk_cell_layout_pack_start (GTK_CELL_LAYOUT(combo), renderer, FALSE); 
-        gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT(combo), renderer, "icon-name", 2);
+        renderer = gtk_cell_renderer_pixbuf_new ();
+        gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), renderer, FALSE);
+        gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (combo), renderer, "icon-name", 2);
     }
     renderer = gtk_cell_renderer_text_new (); 
-    gtk_cell_layout_pack_start (GTK_CELL_LAYOUT(combo), renderer, TRUE); 
-    gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT(combo), renderer, "text", 1);
+    gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), renderer, TRUE);
+    gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (combo), renderer, "text", 1);
     if (use_icon) g_object_set (G_OBJECT (renderer), "xpad", 5, NULL);
 
     return combo;
@@ -196,15 +196,15 @@ remmina_public_create_combo_map (const gpointer *key_value_list, const gchar *de
 {
     gint i;
     GtkWidget *combo;
-    GtkListStore *store; 
-    GtkTreeIter iter; 
+    GtkListStore *store;
+    GtkTreeIter iter;
 
     combo = remmina_public_create_combo (use_icon);
     store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (combo)));
 
     for (i = 0; key_value_list[i]; i += (use_icon ? 3 : 2))
     {
-        gtk_list_store_append (store, &iter); 
+        gtk_list_store_append (store, &iter);
         gtk_list_store_set (store, &iter, 0, key_value_list[i], 1, _(key_value_list[i + 1]), -1);
         if (use_icon)
         {
