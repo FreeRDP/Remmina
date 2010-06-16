@@ -22,11 +22,9 @@
 #include "remminapluginrdpui.h"
 #include "remminapluginrdpev.h"
 #include "remminapluginrdpfile.h"
-#include <freerdp/kbd.h>
+#include "remminapluginrdpset.h"
 
 RemminaPluginService *remmina_plugin_service = NULL;
-
-static gint keyboard_layout;
 
 static void
 remmina_plugin_rdp_main_loop (RemminaProtocolWidget *gp)
@@ -181,7 +179,7 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
         strncpy (gpdata->settings->directory, remminafile->execpath, sizeof (gpdata->settings->directory) - 1);
     }
 
-    gpdata->settings->keyboard_layout = keyboard_layout;
+    gpdata->settings->keyboard_layout = remmina_plugin_rdpset_get_keyboard_layout();
 
     if (g_strcmp0 (remminafile->sound, "remote") == 0)
     {
@@ -468,6 +466,15 @@ static RemminaFilePlugin remmina_plugin_rdpf =
     NULL
 };
 
+static RemminaToolPlugin remmina_plugin_rdps =
+{
+    REMMINA_PLUGIN_TYPE_TOOL,
+    "RDPS",
+    NULL,
+
+    remmina_plugin_rdpset_dialog_new
+};
+
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry (RemminaPluginService *service)
 {
@@ -487,9 +494,14 @@ remmina_plugin_entry (RemminaPluginService *service)
     {
         return FALSE;
     }
+    remmina_plugin_rdps.description = _("RDP - Global Settings");
+    if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_rdps))
+    {
+        return FALSE;
+    }
 
     freerdp_chanman_init ();
-    keyboard_layout = freerdp_kbd_init();
+    remmina_plugin_rdpset_init ();
 
     return TRUE;
 }

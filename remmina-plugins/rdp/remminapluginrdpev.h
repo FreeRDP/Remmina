@@ -21,6 +21,8 @@
 #ifndef __REMMINAPLUGINRDPEV_H__
 #define __REMMINAPLUGINRDPEV_H__
 
+G_BEGIN_DECLS
+
 void remmina_plugin_rdpev_init (RemminaProtocolWidget *gp);
 void remmina_plugin_rdpev_pre_connect (RemminaProtocolWidget *gp);
 void remmina_plugin_rdpev_post_connect (RemminaProtocolWidget *gp);
@@ -29,6 +31,8 @@ void remmina_plugin_rdpev_update_scale (RemminaProtocolWidget *gp);
 gboolean remmina_plugin_rdpev_queuedraw (RemminaProtocolWidget *gp);
 gboolean remmina_plugin_rdpev_queuecursor (RemminaProtocolWidget *gp);
 void remmina_plugin_rdpev_unfocus (RemminaProtocolWidget *gp);
+
+G_END_DECLS
 
 #endif
 

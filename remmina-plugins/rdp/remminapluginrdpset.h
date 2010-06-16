@@ -18,15 +18,14 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __REMMINAPLUGINRDPFILE_H__
-#define __REMMINAPLUGINRDPFILE_H__
+#ifndef __REMMINAPLUGINRDPSET_H__
+#define __REMMINAPLUGINRDPSET_H__
 
 G_BEGIN_DECLS
 
-gboolean remmina_plugin_rdp_file_import_test (const gchar *from_file);
-RemminaFile* remmina_plugin_rdp_file_import (const gchar *from_file);
-gboolean remmina_plugin_rdp_file_export_test (RemminaFile *remminafile);
-gboolean remmina_plugin_rdp_file_export (RemminaFile *remminafile, const gchar *to_file);
+void remmina_plugin_rdpset_init (void);
+guint remmina_plugin_rdpset_get_keyboard_layout (void);
+void remmina_plugin_rdpset_dialog_new (void);
 
 G_END_DECLS
 
