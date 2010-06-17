@@ -218,6 +218,7 @@ remmina_protocol_widget_close_connection (RemminaProtocolWidget *gp)
 {
     if (!GTK_IS_WIDGET (gp) || gp->priv->closed) return FALSE;
     gp->priv->closed = TRUE;
+    gdk_keyboard_ungrab (GDK_CURRENT_TIME);
 
     if (gp->priv->chat_window)
     {
