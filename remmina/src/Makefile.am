@@ -1,8 +1,8 @@
 ## Process this file with automake to produce Makefile.in
 bin_PROGRAMS = remmina
 
-INCLUDES = @REMMINA_CFLAGS@ @LIBGCRYPT_CFLAGS@ \
-    -I$(top_srcdir)/include \
+INCLUDES = -I$(top_srcdir)/include \
+    @REMMINA_CFLAGS@ @LIBGCRYPT_CFLAGS@ \
     -DREMMINA_LOCALEDIR=\"$(remmina_localedir)\" \
     -DREMMINA_PLUGINDIR=\"$(remmina_plugindir)\" \
     -DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
