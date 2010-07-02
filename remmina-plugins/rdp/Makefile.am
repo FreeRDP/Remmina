@@ -29,5 +29,7 @@ appicon22emblems_DATA = \
 
 EXTRA_DIST = \
     $(appicon16emblems_DATA) \
-    $(appicon22emblems_DATA)
+    $(appicon22emblems_DATA) \
+    genrop3.c
+
 

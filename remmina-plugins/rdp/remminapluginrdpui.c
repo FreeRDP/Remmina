@@ -24,6 +24,527 @@
 #include "remminapluginrdpev.h"
 #include "remminapluginrdpui.h"
 
+typedef guchar (*RemminaROP3Func) (guchar p, guchar s, guchar d);
+
+/* ------------ Generated codes from genrop3.c  ----------------- */
+static guchar remmina_rop3_00 (guchar p, guchar s, guchar d) { return 0; }
+static guchar remmina_rop3_01 (guchar p, guchar s, guchar d) { return ~(((s | p) | d)); }
+static guchar remmina_rop3_02 (guchar p, guchar s, guchar d) { return (~((s | p)) & d); }
+static guchar remmina_rop3_03 (guchar p, guchar s, guchar d) { return ~((s | p)); }
+static guchar remmina_rop3_04 (guchar p, guchar s, guchar d) { return (~((p | d)) & s); }
+static guchar remmina_rop3_05 (guchar p, guchar s, guchar d) { return ~((p | d)); }
+static guchar remmina_rop3_06 (guchar p, guchar s, guchar d) { return ~((~((s ^ d)) | p)); }
+static guchar remmina_rop3_07 (guchar p, guchar s, guchar d) { return ~(((s & d) | p)); }
+static guchar remmina_rop3_08 (guchar p, guchar s, guchar d) { return ((~(p) & d) & s); }
+static guchar remmina_rop3_09 (guchar p, guchar s, guchar d) { return ~(((s ^ d) | p)); }
+static guchar remmina_rop3_0a (guchar p, guchar s, guchar d) { return (~(p) & d); }
+static guchar remmina_rop3_0b (guchar p, guchar s, guchar d) { return ~(((~(d) & s) | p)); }
+static guchar remmina_rop3_0c (guchar p, guchar s, guchar d) { return (~(p) & s); }
+static guchar remmina_rop3_0d (guchar p, guchar s, guchar d) { return ~(((~(s) & d) | p)); }
+static guchar remmina_rop3_0e (guchar p, guchar s, guchar d) { return ~((~((s | d)) | p)); }
+static guchar remmina_rop3_0f (guchar p, guchar s, guchar d) { return ~(p); }
+static guchar remmina_rop3_10 (guchar p, guchar s, guchar d) { return (~((s | d)) & p); }
+static guchar remmina_rop3_11 (guchar p, guchar s, guchar d) { return ~((s | d)); }
+static guchar remmina_rop3_12 (guchar p, guchar s, guchar d) { return ~((~((p ^ d)) | s)); }
+static guchar remmina_rop3_13 (guchar p, guchar s, guchar d) { return ~(((p & d) | s)); }
+static guchar remmina_rop3_14 (guchar p, guchar s, guchar d) { return ~((~((s ^ p)) | d)); }
+static guchar remmina_rop3_15 (guchar p, guchar s, guchar d) { return ~(((s & p) | d)); }
+static guchar remmina_rop3_16 (guchar p, guchar s, guchar d) { return (((~((s & p)) & d) ^ s) ^ p); }
+static guchar remmina_rop3_17 (guchar p, guchar s, guchar d) { return ~((((s ^ d) & (p ^ s)) ^ s)); }
+static guchar remmina_rop3_18 (guchar p, guchar s, guchar d) { return ((d ^ p) & (p ^ s)); }
+static guchar remmina_rop3_19 (guchar p, guchar s, guchar d) { return ~(((~((s & p)) & d) ^ s)); }
+static guchar remmina_rop3_1a (guchar p, guchar s, guchar d) { return (((p & s) | d) ^ p); }
+static guchar remmina_rop3_1b (guchar p, guchar s, guchar d) { return ~((((s ^ p) & d) ^ s)); }
+static guchar remmina_rop3_1c (guchar p, guchar s, guchar d) { return (((p & d) | s) ^ p); }
+static guchar remmina_rop3_1d (guchar p, guchar s, guchar d) { return ~((((d ^ p) & s) ^ d)); }
+static guchar remmina_rop3_1e (guchar p, guchar s, guchar d) { return ((s | d) ^ p); }
+static guchar remmina_rop3_1f (guchar p, guchar s, guchar d) { return ~(((s | d) & p)); }
+static guchar remmina_rop3_20 (guchar p, guchar s, guchar d) { return ((~(s) & p) & d); }
+static guchar remmina_rop3_21 (guchar p, guchar s, guchar d) { return ~(((p ^ d) | s)); }
+static guchar remmina_rop3_22 (guchar p, guchar s, guchar d) { return (~(s) & d); }
+static guchar remmina_rop3_23 (guchar p, guchar s, guchar d) { return ~(((~(d) & p) | s)); }
+static guchar remmina_rop3_24 (guchar p, guchar s, guchar d) { return ((s ^ d) & (p ^ s)); }
+static guchar remmina_rop3_25 (guchar p, guchar s, guchar d) { return ~(((~((p & s)) & d) ^ p)); }
+static guchar remmina_rop3_26 (guchar p, guchar s, guchar d) { return (((s & p) | d) ^ s); }
+static guchar remmina_rop3_27 (guchar p, guchar s, guchar d) { return ((~((s ^ p)) | d) ^ s); }
+static guchar remmina_rop3_28 (guchar p, guchar s, guchar d) { return ((s ^ p) & d); }
+static guchar remmina_rop3_29 (guchar p, guchar s, guchar d) { return ~(((((s & p) | d) ^ s) ^ p)); }
+static guchar remmina_rop3_2a (guchar p, guchar s, guchar d) { return (~((s & p)) & d); }
+static guchar remmina_rop3_2b (guchar p, guchar s, guchar d) { return ~((((d ^ p) & (p ^ s)) ^ s)); }
+static guchar remmina_rop3_2c (guchar p, guchar s, guchar d) { return (((s | d) & p) ^ s); }
+static guchar remmina_rop3_2d (guchar p, guchar s, guchar d) { return ((~(d) | s) ^ p); }
+static guchar remmina_rop3_2e (guchar p, guchar s, guchar d) { return (((p ^ d) | s) ^ p); }
+static guchar remmina_rop3_2f (guchar p, guchar s, guchar d) { return ~(((~(d) | s) & p)); }
+static guchar remmina_rop3_30 (guchar p, guchar s, guchar d) { return (~(s) & p); }
+static guchar remmina_rop3_31 (guchar p, guchar s, guchar d) { return ~(((~(p) & d) | s)); }
+static guchar remmina_rop3_32 (guchar p, guchar s, guchar d) { return (((s | p) | d) ^ s); }
+static guchar remmina_rop3_33 (guchar p, guchar s, guchar d) { return ~(s); }
+static guchar remmina_rop3_34 (guchar p, guchar s, guchar d) { return (((s & d) | p) ^ s); }
+static guchar remmina_rop3_35 (guchar p, guchar s, guchar d) { return ((~((s ^ d)) | p) ^ s); }
+static guchar remmina_rop3_36 (guchar p, guchar s, guchar d) { return ((p | d) ^ s); }
+static guchar remmina_rop3_37 (guchar p, guchar s, guchar d) { return ~(((p | d) & s)); }
+static guchar remmina_rop3_38 (guchar p, guchar s, guchar d) { return (((p | d) & s) ^ p); }
+static guchar remmina_rop3_39 (guchar p, guchar s, guchar d) { return ((~(d) | p) ^ s); }
+static guchar remmina_rop3_3a (guchar p, guchar s, guchar d) { return (((s ^ d) | p) ^ s); }
+static guchar remmina_rop3_3b (guchar p, guchar s, guchar d) { return ~(((~(d) | p) & s)); }
+static guchar remmina_rop3_3c (guchar p, guchar s, guchar d) { return (s ^ p); }
+static guchar remmina_rop3_3d (guchar p, guchar s, guchar d) { return ((~((s | d)) | p) ^ s); }
+static guchar remmina_rop3_3e (guchar p, guchar s, guchar d) { return (((~(s) & d) | p) ^ s); }
+static guchar remmina_rop3_3f (guchar p, guchar s, guchar d) { return ~((s & p)); }
+static guchar remmina_rop3_40 (guchar p, guchar s, guchar d) { return ((~(d) & s) & p); }
+static guchar remmina_rop3_41 (guchar p, guchar s, guchar d) { return ~(((s ^ p) | d)); }
+static guchar remmina_rop3_42 (guchar p, guchar s, guchar d) { return ((d ^ p) & (d ^ s)); }
+static guchar remmina_rop3_43 (guchar p, guchar s, guchar d) { return ~(((~((s & d)) & p) ^ s)); }
+static guchar remmina_rop3_44 (guchar p, guchar s, guchar d) { return (~(d) & s); }
+static guchar remmina_rop3_45 (guchar p, guchar s, guchar d) { return ~(((~(s) & p) | d)); }
+static guchar remmina_rop3_46 (guchar p, guchar s, guchar d) { return (((d & p) | s) ^ d); }
+static guchar remmina_rop3_47 (guchar p, guchar s, guchar d) { return ~((((p ^ d) & s) ^ p)); }
+static guchar remmina_rop3_48 (guchar p, guchar s, guchar d) { return ((p ^ d) & s); }
+static guchar remmina_rop3_49 (guchar p, guchar s, guchar d) { return ~(((((d & p) | s) ^ d) ^ p)); }
+static guchar remmina_rop3_4a (guchar p, guchar s, guchar d) { return (((d | s) & p) ^ d); }
+static guchar remmina_rop3_4b (guchar p, guchar s, guchar d) { return ((~(s) | d) ^ p); }
+static guchar remmina_rop3_4c (guchar p, guchar s, guchar d) { return (~((p & d)) & s); }
+static guchar remmina_rop3_4d (guchar p, guchar s, guchar d) { return ~((((s ^ d) | (p ^ s)) ^ s)); }
+static guchar remmina_rop3_4e (guchar p, guchar s, guchar d) { return (((p ^ s) | d) ^ p); }
+static guchar remmina_rop3_4f (guchar p, guchar s, guchar d) { return ~(((~(s) | d) & p)); }
+static guchar remmina_rop3_50 (guchar p, guchar s, guchar d) { return (~(d) & p); }
+static guchar remmina_rop3_51 (guchar p, guchar s, guchar d) { return ~(((~(p) & s) | d)); }
+static guchar remmina_rop3_52 (guchar p, guchar s, guchar d) { return (((d & s) | p) ^ d); }
+static guchar remmina_rop3_53 (guchar p, guchar s, guchar d) { return ~((((s ^ d) & p) ^ s)); }
+static guchar remmina_rop3_54 (guchar p, guchar s, guchar d) { return ~((~((s | p)) | d)); }
+static guchar remmina_rop3_55 (guchar p, guchar s, guchar d) { return ~(d); }
+static guchar remmina_rop3_56 (guchar p, guchar s, guchar d) { return ((s | p) ^ d); }
+static guchar remmina_rop3_57 (guchar p, guchar s, guchar d) { return ~(((s | p) & d)); }
+static guchar remmina_rop3_58 (guchar p, guchar s, guchar d) { return (((p | s) & d) ^ p); }
+static guchar remmina_rop3_59 (guchar p, guchar s, guchar d) { return ((~(s) | p) ^ d); }
+static guchar remmina_rop3_5a (guchar p, guchar s, guchar d) { return (p ^ d); }
+static guchar remmina_rop3_5b (guchar p, guchar s, guchar d) { return ((~((d | s)) | p) ^ d); }
+static guchar remmina_rop3_5c (guchar p, guchar s, guchar d) { return (((d ^ s) | p) ^ d); }
+static guchar remmina_rop3_5d (guchar p, guchar s, guchar d) { return ~(((~(s) | p) & d)); }
+static guchar remmina_rop3_5e (guchar p, guchar s, guchar d) { return (((~(d) & s) | p) ^ d); }
+static guchar remmina_rop3_5f (guchar p, guchar s, guchar d) { return ~((p & d)); }
+static guchar remmina_rop3_60 (guchar p, guchar s, guchar d) { return ((s ^ d) & p); }
+static guchar remmina_rop3_61 (guchar p, guchar s, guchar d) { return ~(((((s & d) | p) ^ s) ^ d)); }
+static guchar remmina_rop3_62 (guchar p, guchar s, guchar d) { return (((d | p) & s) ^ d); }
+static guchar remmina_rop3_63 (guchar p, guchar s, guchar d) { return ((~(p) | d) ^ s); }
+static guchar remmina_rop3_64 (guchar p, guchar s, guchar d) { return (((s | p) & d) ^ s); }
+static guchar remmina_rop3_65 (guchar p, guchar s, guchar d) { return ((~(p) | s) ^ d); }
+static guchar remmina_rop3_66 (guchar p, guchar s, guchar d) { return (s ^ d); }
+static guchar remmina_rop3_67 (guchar p, guchar s, guchar d) { return ((~((s | p)) | d) ^ s); }
+static guchar remmina_rop3_68 (guchar p, guchar s, guchar d) { return ~((((~((s | d)) | p) ^ s) ^ d)); }
+static guchar remmina_rop3_69 (guchar p, guchar s, guchar d) { return ~(((s ^ d) ^ p)); }
+static guchar remmina_rop3_6a (guchar p, guchar s, guchar d) { return ((s & p) ^ d); }
+static guchar remmina_rop3_6b (guchar p, guchar s, guchar d) { return ~(((((s | p) & d) ^ s) ^ p)); }
+static guchar remmina_rop3_6c (guchar p, guchar s, guchar d) { return ((p & d) ^ s); }
+static guchar remmina_rop3_6d (guchar p, guchar s, guchar d) { return ~(((((d | p) & s) ^ d) ^ p)); }
+static guchar remmina_rop3_6e (guchar p, guchar s, guchar d) { return (((~(s) | p) & d) ^ s); }
+static guchar remmina_rop3_6f (guchar p, guchar s, guchar d) { return ~((~((s ^ d)) & p)); }
+static guchar remmina_rop3_70 (guchar p, guchar s, guchar d) { return (~((s & d)) & p); }
+static guchar remmina_rop3_71 (guchar p, guchar s, guchar d) { return ~((((d ^ p) & (d ^ s)) ^ s)); }
+static guchar remmina_rop3_72 (guchar p, guchar s, guchar d) { return (((s ^ p) | d) ^ s); }
+static guchar remmina_rop3_73 (guchar p, guchar s, guchar d) { return ~(((~(p) | d) & s)); }
+static guchar remmina_rop3_74 (guchar p, guchar s, guchar d) { return (((d ^ p) | s) ^ d); }
+static guchar remmina_rop3_75 (guchar p, guchar s, guchar d) { return ~(((~(p) | s) & d)); }
+static guchar remmina_rop3_76 (guchar p, guchar s, guchar d) { return (((~(s) & p) | d) ^ s); }
+static guchar remmina_rop3_77 (guchar p, guchar s, guchar d) { return ~((s & d)); }
+static guchar remmina_rop3_78 (guchar p, guchar s, guchar d) { return ((s & d) ^ p); }
+static guchar remmina_rop3_79 (guchar p, guchar s, guchar d) { return ~(((((s | d) & p) ^ s) ^ d)); }
+static guchar remmina_rop3_7a (guchar p, guchar s, guchar d) { return (((~(d) | s) & p) ^ d); }
+static guchar remmina_rop3_7b (guchar p, guchar s, guchar d) { return ~((~((p ^ d)) & s)); }
+static guchar remmina_rop3_7c (guchar p, guchar s, guchar d) { return (((~(s) | d) & p) ^ s); }
+static guchar remmina_rop3_7d (guchar p, guchar s, guchar d) { return ~((~((s ^ p)) & d)); }
+static guchar remmina_rop3_7e (guchar p, guchar s, guchar d) { return ((s ^ d) | (p ^ s)); }
+static guchar remmina_rop3_7f (guchar p, guchar s, guchar d) { return ~(((s & p) & d)); }
+static guchar remmina_rop3_80 (guchar p, guchar s, guchar d) { return ((s & p) & d); }
+static guchar remmina_rop3_81 (guchar p, guchar s, guchar d) { return ~(((s ^ d) | (p ^ s))); }
+static guchar remmina_rop3_82 (guchar p, guchar s, guchar d) { return (~((s ^ p)) & d); }
+static guchar remmina_rop3_83 (guchar p, guchar s, guchar d) { return ~((((~(s) | d) & p) ^ s)); }
+static guchar remmina_rop3_84 (guchar p, guchar s, guchar d) { return (~((p ^ d)) & s); }
+static guchar remmina_rop3_85 (guchar p, guchar s, guchar d) { return ~((((~(p) | s) & d) ^ p)); }
+static guchar remmina_rop3_86 (guchar p, guchar s, guchar d) { return ((((s | d) & p) ^ s) ^ d); }
+static guchar remmina_rop3_87 (guchar p, guchar s, guchar d) { return ~(((s & d) ^ p)); }
+static guchar remmina_rop3_88 (guchar p, guchar s, guchar d) { return (s & d); }
+static guchar remmina_rop3_89 (guchar p, guchar s, guchar d) { return ~((((~(s) & p) | d) ^ s)); }
+static guchar remmina_rop3_8a (guchar p, guchar s, guchar d) { return ((~(p) | s) & d); }
+static guchar remmina_rop3_8b (guchar p, guchar s, guchar d) { return ~((((d ^ p) | s) ^ d)); }
+static guchar remmina_rop3_8c (guchar p, guchar s, guchar d) { return ((~(p) | d) & s); }
+static guchar remmina_rop3_8d (guchar p, guchar s, guchar d) { return ~((((s ^ p) | d) ^ s)); }
+static guchar remmina_rop3_8e (guchar p, guchar s, guchar d) { return (((d ^ p) & (d ^ s)) ^ s); }
+static guchar remmina_rop3_8f (guchar p, guchar s, guchar d) { return ~((~((s & d)) & p)); }
+static guchar remmina_rop3_90 (guchar p, guchar s, guchar d) { return (~((s ^ d)) & p); }
+static guchar remmina_rop3_91 (guchar p, guchar s, guchar d) { return ~((((~(s) | p) & d) ^ s)); }
+static guchar remmina_rop3_92 (guchar p, guchar s, guchar d) { return ((((p | d) & s) ^ p) ^ d); }
+static guchar remmina_rop3_93 (guchar p, guchar s, guchar d) { return ~(((d & p) ^ s)); }
+static guchar remmina_rop3_94 (guchar p, guchar s, guchar d) { return ((((s | p) & d) ^ s) ^ p); }
+static guchar remmina_rop3_95 (guchar p, guchar s, guchar d) { return ~(((s & p) ^ d)); }
+static guchar remmina_rop3_96 (guchar p, guchar s, guchar d) { return ((s ^ p) ^ d); }
+static guchar remmina_rop3_97 (guchar p, guchar s, guchar d) { return (((~((s | p)) | d) ^ s) ^ p); }
+static guchar remmina_rop3_98 (guchar p, guchar s, guchar d) { return ~(((~((s | p)) | d) ^ s)); }
+static guchar remmina_rop3_99 (guchar p, guchar s, guchar d) { return ~((s ^ d)); }
+static guchar remmina_rop3_9a (guchar p, guchar s, guchar d) { return ((~(s) & p) ^ d); }
+static guchar remmina_rop3_9b (guchar p, guchar s, guchar d) { return ~((((s | p) & d) ^ s)); }
+static guchar remmina_rop3_9c (guchar p, guchar s, guchar d) { return ((~(d) & p) ^ s); }
+static guchar remmina_rop3_9d (guchar p, guchar s, guchar d) { return ~((((d | p) & s) ^ d)); }
+static guchar remmina_rop3_9e (guchar p, guchar s, guchar d) { return ((((s & d) | p) ^ s) ^ d); }
+static guchar remmina_rop3_9f (guchar p, guchar s, guchar d) { return ~(((s ^ d) & p)); }
+static guchar remmina_rop3_a0 (guchar p, guchar s, guchar d) { return (p & d); }
+static guchar remmina_rop3_a1 (guchar p, guchar s, guchar d) { return ~((((~(p) & s) | d) ^ p)); }
+static guchar remmina_rop3_a2 (guchar p, guchar s, guchar d) { return ((~(s) | p) & d); }
+static guchar remmina_rop3_a3 (guchar p, guchar s, guchar d) { return ~((((d ^ s) | p) ^ d)); }
+static guchar remmina_rop3_a4 (guchar p, guchar s, guchar d) { return ~(((~((p | s)) | d) ^ p)); }
+static guchar remmina_rop3_a5 (guchar p, guchar s, guchar d) { return ~((d ^ p)); }
+static guchar remmina_rop3_a6 (guchar p, guchar s, guchar d) { return ((~(p) & s) ^ d); }
+static guchar remmina_rop3_a7 (guchar p, guchar s, guchar d) { return ~((((p | s) & d) ^ p)); }
+static guchar remmina_rop3_a8 (guchar p, guchar s, guchar d) { return ((s | p) & d); }
+static guchar remmina_rop3_a9 (guchar p, guchar s, guchar d) { return ~(((s | p) ^ d)); }
+static guchar remmina_rop3_aa (guchar p, guchar s, guchar d) { return d; }
+static guchar remmina_rop3_ab (guchar p, guchar s, guchar d) { return (~((s | p)) | d); }
+static guchar remmina_rop3_ac (guchar p, guchar s, guchar d) { return (((s ^ d) & p) ^ s); }
+static guchar remmina_rop3_ad (guchar p, guchar s, guchar d) { return ~((((d & s) | p) ^ d)); }
+static guchar remmina_rop3_ae (guchar p, guchar s, guchar d) { return ((~(p) & s) | d); }
+static guchar remmina_rop3_af (guchar p, guchar s, guchar d) { return (~(p) | d); }
+static guchar remmina_rop3_b0 (guchar p, guchar s, guchar d) { return ((~(s) | d) & p); }
+static guchar remmina_rop3_b1 (guchar p, guchar s, guchar d) { return ~((((p ^ s) | d) ^ p)); }
+static guchar remmina_rop3_b2 (guchar p, guchar s, guchar d) { return (((s ^ d) | (p ^ s)) ^ s); }
+static guchar remmina_rop3_b3 (guchar p, guchar s, guchar d) { return ~((~((p & d)) & s)); }
+static guchar remmina_rop3_b4 (guchar p, guchar s, guchar d) { return ((~(d) & s) ^ p); }
+static guchar remmina_rop3_b5 (guchar p, guchar s, guchar d) { return ~((((d | s) & p) ^ d)); }
+static guchar remmina_rop3_b6 (guchar p, guchar s, guchar d) { return ((((p & d) | s) ^ p) ^ d); }
+static guchar remmina_rop3_b7 (guchar p, guchar s, guchar d) { return ~(((p ^ d) & s)); }
+static guchar remmina_rop3_b8 (guchar p, guchar s, guchar d) { return (((p ^ d) & s) ^ p); }
+static guchar remmina_rop3_b9 (guchar p, guchar s, guchar d) { return ~((((d & p) | s) ^ d)); }
+static guchar remmina_rop3_ba (guchar p, guchar s, guchar d) { return ((~(s) & p) | d); }
+static guchar remmina_rop3_bb (guchar p, guchar s, guchar d) { return (~(s) | d); }
+static guchar remmina_rop3_bc (guchar p, guchar s, guchar d) { return ((~((s & d)) & p) ^ s); }
+static guchar remmina_rop3_bd (guchar p, guchar s, guchar d) { return ~(((d ^ p) & (d ^ s))); }
+static guchar remmina_rop3_be (guchar p, guchar s, guchar d) { return ((s ^ p) | d); }
+static guchar remmina_rop3_bf (guchar p, guchar s, guchar d) { return (~((s & p)) | d); }
+static guchar remmina_rop3_c0 (guchar p, guchar s, guchar d) { return (s & p); }
+static guchar remmina_rop3_c1 (guchar p, guchar s, guchar d) { return ~((((~(s) & d) | p) ^ s)); }
+static guchar remmina_rop3_c2 (guchar p, guchar s, guchar d) { return ~(((~((s | d)) | p) ^ s)); }
+static guchar remmina_rop3_c3 (guchar p, guchar s, guchar d) { return ~((s ^ p)); }
+static guchar remmina_rop3_c4 (guchar p, guchar s, guchar d) { return ((~(d) | p) & s); }
+static guchar remmina_rop3_c5 (guchar p, guchar s, guchar d) { return ~((((s ^ d) | p) ^ s)); }
+static guchar remmina_rop3_c6 (guchar p, guchar s, guchar d) { return ((~(p) & d) ^ s); }
+static guchar remmina_rop3_c7 (guchar p, guchar s, guchar d) { return ~((((p | d) & s) ^ p)); }
+static guchar remmina_rop3_c8 (guchar p, guchar s, guchar d) { return ((p | d) & s); }
+static guchar remmina_rop3_c9 (guchar p, guchar s, guchar d) { return ~(((d | p) ^ s)); }
+static guchar remmina_rop3_ca (guchar p, guchar s, guchar d) { return (((d ^ s) & p) ^ d); }
+static guchar remmina_rop3_cb (guchar p, guchar s, guchar d) { return ~((((s & d) | p) ^ s)); }
+static guchar remmina_rop3_cc (guchar p, guchar s, guchar d) { return s; }
+static guchar remmina_rop3_cd (guchar p, guchar s, guchar d) { return (~((p | d)) | s); }
+static guchar remmina_rop3_ce (guchar p, guchar s, guchar d) { return ((~(p) & d) | s); }
+static guchar remmina_rop3_cf (guchar p, guchar s, guchar d) { return (~(p) | s); }
+static guchar remmina_rop3_d0 (guchar p, guchar s, guchar d) { return ((~(d) | s) & p); }
+static guchar remmina_rop3_d1 (guchar p, guchar s, guchar d) { return ~((((p ^ d) | s) ^ p)); }
+static guchar remmina_rop3_d2 (guchar p, guchar s, guchar d) { return ((~(s) & d) ^ p); }
+static guchar remmina_rop3_d3 (guchar p, guchar s, guchar d) { return ~((((s | d) & p) ^ s)); }
+static guchar remmina_rop3_d4 (guchar p, guchar s, guchar d) { return (((d ^ p) & (p ^ s)) ^ s); }
+static guchar remmina_rop3_d5 (guchar p, guchar s, guchar d) { return ~((~((s & p)) & d)); }
+static guchar remmina_rop3_d6 (guchar p, guchar s, guchar d) { return ((((s & p) | d) ^ s) ^ p); }
+static guchar remmina_rop3_d7 (guchar p, guchar s, guchar d) { return ~(((s ^ p) & d)); }
+static guchar remmina_rop3_d8 (guchar p, guchar s, guchar d) { return (((p ^ s) & d) ^ p); }
+static guchar remmina_rop3_d9 (guchar p, guchar s, guchar d) { return ~((((s & p) | d) ^ s)); }
+static guchar remmina_rop3_da (guchar p, guchar s, guchar d) { return ((~((d & s)) & p) ^ d); }
+static guchar remmina_rop3_db (guchar p, guchar s, guchar d) { return ~(((s ^ d) & (p ^ s))); }
+static guchar remmina_rop3_dc (guchar p, guchar s, guchar d) { return ((~(d) & p) | s); }
+static guchar remmina_rop3_dd (guchar p, guchar s, guchar d) { return (~(d) | s); }
+static guchar remmina_rop3_de (guchar p, guchar s, guchar d) { return ((p ^ d) | s); }
+static guchar remmina_rop3_df (guchar p, guchar s, guchar d) { return (~((p & d)) | s); }
+static guchar remmina_rop3_e0 (guchar p, guchar s, guchar d) { return ((s | d) & p); }
+static guchar remmina_rop3_e1 (guchar p, guchar s, guchar d) { return ~(((s | d) ^ p)); }
+static guchar remmina_rop3_e2 (guchar p, guchar s, guchar d) { return (((d ^ p) & s) ^ d); }
+static guchar remmina_rop3_e3 (guchar p, guchar s, guchar d) { return ~((((p & d) | s) ^ p)); }
+static guchar remmina_rop3_e4 (guchar p, guchar s, guchar d) { return (((s ^ p) & d) ^ s); }
+static guchar remmina_rop3_e5 (guchar p, guchar s, guchar d) { return ~((((p & s) | d) ^ p)); }
+static guchar remmina_rop3_e6 (guchar p, guchar s, guchar d) { return ((~((s & p)) & d) ^ s); }
+static guchar remmina_rop3_e7 (guchar p, guchar s, guchar d) { return ~(((d ^ p) & (p ^ s))); }
+static guchar remmina_rop3_e8 (guchar p, guchar s, guchar d) { return (((s ^ d) & (p ^ s)) ^ s); }
+static guchar remmina_rop3_e9 (guchar p, guchar s, guchar d) { return ~((((~((s & d)) & p) ^ s) ^ d)); }
+static guchar remmina_rop3_ea (guchar p, guchar s, guchar d) { return ((s & p) | d); }
+static guchar remmina_rop3_eb (guchar p, guchar s, guchar d) { return (~((s ^ p)) | d); }
+static guchar remmina_rop3_ec (guchar p, guchar s, guchar d) { return ((p & d) | s); }
+static guchar remmina_rop3_ed (guchar p, guchar s, guchar d) { return (~((p ^ d)) | s); }
+static guchar remmina_rop3_ee (guchar p, guchar s, guchar d) { return (s | d); }
+static guchar remmina_rop3_ef (guchar p, guchar s, guchar d) { return ((~(p) | d) | s); }
+static guchar remmina_rop3_f0 (guchar p, guchar s, guchar d) { return p; }
+static guchar remmina_rop3_f1 (guchar p, guchar s, guchar d) { return (~((s | d)) | p); }
+static guchar remmina_rop3_f2 (guchar p, guchar s, guchar d) { return ((~(s) & d) | p); }
+static guchar remmina_rop3_f3 (guchar p, guchar s, guchar d) { return (~(s) | p); }
+static guchar remmina_rop3_f4 (guchar p, guchar s, guchar d) { return ((~(d) & s) | p); }
+static guchar remmina_rop3_f5 (guchar p, guchar s, guchar d) { return (~(d) | p); }
+static guchar remmina_rop3_f6 (guchar p, guchar s, guchar d) { return ((s ^ d) | p); }
+static guchar remmina_rop3_f7 (guchar p, guchar s, guchar d) { return (~((s & d)) | p); }
+static guchar remmina_rop3_f8 (guchar p, guchar s, guchar d) { return ((s & d) | p); }
+static guchar remmina_rop3_f9 (guchar p, guchar s, guchar d) { return (~((s ^ d)) | p); }
+static guchar remmina_rop3_fa (guchar p, guchar s, guchar d) { return (p | d); }
+static guchar remmina_rop3_fb (guchar p, guchar s, guchar d) { return ((~(s) | p) | d); }
+static guchar remmina_rop3_fc (guchar p, guchar s, guchar d) { return (s | p); }
+static guchar remmina_rop3_fd (guchar p, guchar s, guchar d) { return ((~(d) | s) | p); }
+static guchar remmina_rop3_fe (guchar p, guchar s, guchar d) { return ((s | p) | d); }
+static guchar remmina_rop3_ff (guchar p, guchar s, guchar d) { return 0xff; }
+
+static RemminaROP3Func remmina_rop3_func[] = {
+    remmina_rop3_00,
+    remmina_rop3_01,
+    remmina_rop3_02,
+    remmina_rop3_03,
+    remmina_rop3_04,
+    remmina_rop3_05,
+    remmina_rop3_06,
+    remmina_rop3_07,
+    remmina_rop3_08,
+    remmina_rop3_09,
+    remmina_rop3_0a,
+    remmina_rop3_0b,
+    remmina_rop3_0c,
+    remmina_rop3_0d,
+    remmina_rop3_0e,
+    remmina_rop3_0f,
+    remmina_rop3_10,
+    remmina_rop3_11,
+    remmina_rop3_12,
+    remmina_rop3_13,
+    remmina_rop3_14,
+    remmina_rop3_15,
+    remmina_rop3_16,
+    remmina_rop3_17,
+    remmina_rop3_18,
+    remmina_rop3_19,
+    remmina_rop3_1a,
+    remmina_rop3_1b,
+    remmina_rop3_1c,
+    remmina_rop3_1d,
+    remmina_rop3_1e,
+    remmina_rop3_1f,
+    remmina_rop3_20,
+    remmina_rop3_21,
+    remmina_rop3_22,
+    remmina_rop3_23,
+    remmina_rop3_24,
+    remmina_rop3_25,
+    remmina_rop3_26,
+    remmina_rop3_27,
+    remmina_rop3_28,
+    remmina_rop3_29,
+    remmina_rop3_2a,
+    remmina_rop3_2b,
+    remmina_rop3_2c,
+    remmina_rop3_2d,
+    remmina_rop3_2e,
+    remmina_rop3_2f,
+    remmina_rop3_30,
+    remmina_rop3_31,
+    remmina_rop3_32,
+    remmina_rop3_33,
+    remmina_rop3_34,
+    remmina_rop3_35,
+    remmina_rop3_36,
+    remmina_rop3_37,
+    remmina_rop3_38,
+    remmina_rop3_39,
+    remmina_rop3_3a,
+    remmina_rop3_3b,
+    remmina_rop3_3c,
+    remmina_rop3_3d,
+    remmina_rop3_3e,
+    remmina_rop3_3f,
+    remmina_rop3_40,
+    remmina_rop3_41,
+    remmina_rop3_42,
+    remmina_rop3_43,
+    remmina_rop3_44,
+    remmina_rop3_45,
+    remmina_rop3_46,
+    remmina_rop3_47,
+    remmina_rop3_48,
+    remmina_rop3_49,
+    remmina_rop3_4a,
+    remmina_rop3_4b,
+    remmina_rop3_4c,
+    remmina_rop3_4d,
+    remmina_rop3_4e,
+    remmina_rop3_4f,
+    remmina_rop3_50,
+    remmina_rop3_51,
+    remmina_rop3_52,
+    remmina_rop3_53,
+    remmina_rop3_54,
+    remmina_rop3_55,
+    remmina_rop3_56,
+    remmina_rop3_57,
+    remmina_rop3_58,
+    remmina_rop3_59,
+    remmina_rop3_5a,
+    remmina_rop3_5b,
+    remmina_rop3_5c,
+    remmina_rop3_5d,
+    remmina_rop3_5e,
+    remmina_rop3_5f,
+    remmina_rop3_60,
+    remmina_rop3_61,
+    remmina_rop3_62,
+    remmina_rop3_63,
+    remmina_rop3_64,
+    remmina_rop3_65,
+    remmina_rop3_66,
+    remmina_rop3_67,
+    remmina_rop3_68,
+    remmina_rop3_69,
+    remmina_rop3_6a,
+    remmina_rop3_6b,
+    remmina_rop3_6c,
+    remmina_rop3_6d,
+    remmina_rop3_6e,
+    remmina_rop3_6f,
+    remmina_rop3_70,
+    remmina_rop3_71,
+    remmina_rop3_72,
+    remmina_rop3_73,
+    remmina_rop3_74,
+    remmina_rop3_75,
+    remmina_rop3_76,
+    remmina_rop3_77,
+    remmina_rop3_78,
+    remmina_rop3_79,
+    remmina_rop3_7a,
+    remmina_rop3_7b,
+    remmina_rop3_7c,
+    remmina_rop3_7d,
+    remmina_rop3_7e,
+    remmina_rop3_7f,
+    remmina_rop3_80,
+    remmina_rop3_81,
+    remmina_rop3_82,
+    remmina_rop3_83,
+    remmina_rop3_84,
+    remmina_rop3_85,
+    remmina_rop3_86,
+    remmina_rop3_87,
+    remmina_rop3_88,
+    remmina_rop3_89,
+    remmina_rop3_8a,
+    remmina_rop3_8b,
+    remmina_rop3_8c,
+    remmina_rop3_8d,
+    remmina_rop3_8e,
+    remmina_rop3_8f,
+    remmina_rop3_90,
+    remmina_rop3_91,
+    remmina_rop3_92,
+    remmina_rop3_93,
+    remmina_rop3_94,
+    remmina_rop3_95,
+    remmina_rop3_96,
+    remmina_rop3_97,
+    remmina_rop3_98,
+    remmina_rop3_99,
+    remmina_rop3_9a,
+    remmina_rop3_9b,
+    remmina_rop3_9c,
+    remmina_rop3_9d,
+    remmina_rop3_9e,
+    remmina_rop3_9f,
+    remmina_rop3_a0,
+    remmina_rop3_a1,
+    remmina_rop3_a2,
+    remmina_rop3_a3,
+    remmina_rop3_a4,
+    remmina_rop3_a5,
+    remmina_rop3_a6,
+    remmina_rop3_a7,
+    remmina_rop3_a8,
+    remmina_rop3_a9,
+    remmina_rop3_aa,
+    remmina_rop3_ab,
+    remmina_rop3_ac,
+    remmina_rop3_ad,
+    remmina_rop3_ae,
+    remmina_rop3_af,
+    remmina_rop3_b0,
+    remmina_rop3_b1,
+    remmina_rop3_b2,
+    remmina_rop3_b3,
+    remmina_rop3_b4,
+    remmina_rop3_b5,
+    remmina_rop3_b6,
+    remmina_rop3_b7,
+    remmina_rop3_b8,
+    remmina_rop3_b9,
+    remmina_rop3_ba,
+    remmina_rop3_bb,
+    remmina_rop3_bc,
+    remmina_rop3_bd,
+    remmina_rop3_be,
+    remmina_rop3_bf,
+    remmina_rop3_c0,
+    remmina_rop3_c1,
+    remmina_rop3_c2,
+    remmina_rop3_c3,
+    remmina_rop3_c4,
+    remmina_rop3_c5,
+    remmina_rop3_c6,
+    remmina_rop3_c7,
+    remmina_rop3_c8,
+    remmina_rop3_c9,
+    remmina_rop3_ca,
+    remmina_rop3_cb,
+    remmina_rop3_cc,
+    remmina_rop3_cd,
+    remmina_rop3_ce,
+    remmina_rop3_cf,
+    remmina_rop3_d0,
+    remmina_rop3_d1,
+    remmina_rop3_d2,
+    remmina_rop3_d3,
+    remmina_rop3_d4,
+    remmina_rop3_d5,
+    remmina_rop3_d6,
+    remmina_rop3_d7,
+    remmina_rop3_d8,
+    remmina_rop3_d9,
+    remmina_rop3_da,
+    remmina_rop3_db,
+    remmina_rop3_dc,
+    remmina_rop3_dd,
+    remmina_rop3_de,
+    remmina_rop3_df,
+    remmina_rop3_e0,
+    remmina_rop3_e1,
+    remmina_rop3_e2,
+    remmina_rop3_e3,
+    remmina_rop3_e4,
+    remmina_rop3_e5,
+    remmina_rop3_e6,
+    remmina_rop3_e7,
+    remmina_rop3_e8,
+    remmina_rop3_e9,
+    remmina_rop3_ea,
+    remmina_rop3_eb,
+    remmina_rop3_ec,
+    remmina_rop3_ed,
+    remmina_rop3_ee,
+    remmina_rop3_ef,
+    remmina_rop3_f0,
+    remmina_rop3_f1,
+    remmina_rop3_f2,
+    remmina_rop3_f3,
+    remmina_rop3_f4,
+    remmina_rop3_f5,
+    remmina_rop3_f6,
+    remmina_rop3_f7,
+    remmina_rop3_f8,
+    remmina_rop3_f9,
+    remmina_rop3_fa,
+    remmina_rop3_fb,
+    remmina_rop3_fc,
+    remmina_rop3_fd,
+    remmina_rop3_fe,
+    remmina_rop3_ff,
+    NULL
+};
+/* --------------------------------------------------------------------- */
+
 typedef struct _RemminaGlyph
 {
     gint width;
@@ -296,22 +817,6 @@ remmina_plugin_rdpui_process_clip (RemminaPluginRdpData *gpdata,
     }
 }
 
-static guchar
-remmina_plugin_rdpui_calc_rop3 (guchar p, guchar s, guchar d, guchar opcode)
-{
-    gint i;
-    gint val;
-    guchar r;
-
-    r = 0;
-    for (i = 0; i < 8; i++)
-    {
-        val = (((p >> i) & 1) << 2) | (((s >> i) & 1) << 1) | ((d >> i) & 1);
-        r |= (((opcode >> val) & 1) ? (1 << i) : 0);
-    }
-    return r;
-}
-
 static void
 remmina_plugin_rdpui_process_rop3 (RemminaPluginRdpData *gpdata, guchar opcode,
     gint x, gint y, gint cx, gint cy, GdkPixbuf *src, gint srcx, gint srcy)
@@ -319,9 +824,14 @@ remmina_plugin_rdpui_process_rop3 (RemminaPluginRdpData *gpdata, guchar opcode,
     GdkPixbuf *dst;
     guchar *srcbuf;
     guchar *dstbuf;
+    guchar *srcbufbase;
+    guchar *dstbufbase;
+    gint srcbufrs;
+    gint dstbufrs;
     gint ix, iy;
     guchar p;
     gint p_rowstride;
+    gint d_rowstride;
 
     remmina_plugin_rdpui_process_clip (gpdata, &x, &y, &cx, &cy, &srcx, &srcy);
     if (src)
@@ -335,21 +845,30 @@ remmina_plugin_rdpui_process_rop3 (RemminaPluginRdpData *gpdata, guchar opcode,
     dst = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, cx, cy);
     gdk_pixbuf_copy_area (gpdata->drw_buffer, x, y, cx, cy, dst, 0, 0);
     p_rowstride = gpdata->pattern_w * 3;
+    d_rowstride = cx * 3;
 
+    srcbufrs = (src ? gdk_pixbuf_get_rowstride (src) : 0);
+    srcbufbase = (src ? gdk_pixbuf_get_pixels (src) + srcy * srcbufrs + srcx * 3 : NULL);
+    dstbufrs = gdk_pixbuf_get_rowstride (dst);
+    dstbufbase = gdk_pixbuf_get_pixels (dst);
     for (iy = 0; iy < cy; iy++)
     {
-        dstbuf = gdk_pixbuf_get_pixels (dst) + iy * gdk_pixbuf_get_rowstride (dst);
-        if (src)
+        dstbuf = dstbufbase + iy * dstbufrs;
+        srcbuf = (src ? srcbufbase + iy * srcbufrs : NULL);
+        /* The simplest rop3 that can be done in row batch */
+        switch (opcode)
         {
-            srcbuf = gdk_pixbuf_get_pixels (src) +
-                (srcy + iy) * gdk_pixbuf_get_rowstride (src) +
-                srcx * 3;
+        case 0xcc:
+            if (srcbuf) memcpy (dstbuf, srcbuf, d_rowstride);
+            continue;
+        case 0x00:
+        case 0xff:
+            memset (dstbuf, opcode, d_rowstride);
+            continue;
+        case 0xaa:
+            continue;
         }
-        else
-        {
-            srcbuf = NULL;
-        }
-        for (ix = 0; ix < cx * 3; ix++)
+        for (ix = 0; ix < d_rowstride; ix++)
         {
             if (p_rowstride > 0)
             {
@@ -360,7 +879,7 @@ remmina_plugin_rdpui_process_rop3 (RemminaPluginRdpData *gpdata, guchar opcode,
             {
                 p = 0;
             }
-            *dstbuf = remmina_plugin_rdpui_calc_rop3 (p, (srcbuf ? *srcbuf++ : 0), *dstbuf, opcode);
+            *dstbuf = (*(remmina_rop3_func[opcode])) (p, (srcbuf ? *srcbuf++ : 0), *dstbuf);
             dstbuf++;
         }
     }
