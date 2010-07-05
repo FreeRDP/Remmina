@@ -853,8 +853,10 @@ remmina_plugin_rdpui_process_rop3 (RemminaPluginRdpData *gpdata, guchar opcode,
     dstbufbase = gdk_pixbuf_get_pixels (dst);
     for (iy = 0; iy < cy; iy++)
     {
-        dstbuf = dstbufbase + iy * dstbufrs;
-        srcbuf = (src ? srcbufbase + iy * srcbufrs : NULL);
+        dstbuf = dstbufbase;
+        dstbufbase += dstbufrs;
+        srcbuf = srcbufbase;
+        srcbufbase += srcbufrs;
         /* The simplest rop3 that can be done in row batch */
         switch (opcode)
         {
