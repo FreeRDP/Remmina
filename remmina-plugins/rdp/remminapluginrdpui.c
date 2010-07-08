@@ -23,6 +23,9 @@
 #include "remminapluginrdp.h"
 #include "remminapluginrdpev.h"
 #include "remminapluginrdpui.h"
+#include <X11/Xlib.h>
+#include <X11/keysym.h>
+#include <gdk/gdkx.h>
 
 typedef guchar (*RemminaROP3Func) (guchar p, guchar s, guchar d);
 
@@ -1431,16 +1434,20 @@ remmina_plugin_rdpui_end_draw_glyphs (rdpInst *inst, int x, int y, int cx, int c
 static uint32
 remmina_plugin_rdpui_get_toggle_keys_state (rdpInst *inst)
 {
-    GdkKeymap *keymap;
+    RemminaProtocolWidget *gp;
+    RemminaPluginRdpData *gpdata;
     uint32 state = 0;
 
-    THREADS_ENTER
-    keymap = gdk_keymap_get_default ();
-    if (gdk_keymap_get_caps_lock_state (keymap))
+    gp = GET_WIDGET (inst);
+    gpdata = GET_DATA (gp);
+    if (gpdata->capslock_initstate)
     {
         state |= KBD_SYNC_CAPS_LOCK;
     }
-    THREADS_LEAVE
+    if (gpdata->numlock_initstate)
+    {
+        state |= KBD_SYNC_NUM_LOCK;
+    }
     
     return state;
 }
@@ -1836,6 +1843,39 @@ remmina_plugin_rdpui_channel_data (rdpInst *inst, int chan_id, char * data, int 
 void
 remmina_plugin_rdpui_init (RemminaProtocolWidget *gp)
 {
+    RemminaPluginRdpData *gpdata;
+    Display *display;
+    gint keycode;
+    XModifierKeymap *modmap;
+    gint i;
+
+    display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+
+    gpdata = GET_DATA (gp);
+
+    gpdata->capslock_initstate = FALSE;
+    keycode = XKeysymToKeycode (display, XK_Caps_Lock);
+    modmap = XGetModifierMapping (display);
+    for (i = 0; i < 8 * modmap->max_keypermod; i++)
+    {
+        if (modmap->modifiermap[i] == keycode)
+        {
+            gpdata->capslock_initstate = TRUE;
+            break;
+        }
+    }
+
+    gpdata->numlock_initstate = FALSE;
+    keycode = XKeysymToKeycode (display, XK_Num_Lock);
+    modmap = XGetModifierMapping (display);
+    for (i = 0; i < 8 * modmap->max_keypermod; i++)
+    {
+        if (modmap->modifiermap[i] == keycode)
+        {
+            gpdata->numlock_initstate = TRUE;
+            break;
+        }
+    }
 }
 
 void

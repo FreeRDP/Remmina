@@ -60,6 +60,8 @@ typedef struct _RemminaPluginRdpData
     guchar bgcolor[3];
     guchar pattern[64 * 3];
     gint pattern_w, pattern_h;
+    gboolean capslock_initstate;
+    gboolean numlock_initstate;
 
     gint queuedraw_x, queuedraw_y, queuedraw_w, queuedraw_h;
     guint queuedraw_handler;
