@@ -363,8 +363,6 @@ IsUnixSocket(const char *name)
 rfbBool
 ConnectToRFBServer(rfbClient* client,const char *hostname, int port)
 {
-  unsigned int host;
-
   if (client->serverPort==-1) {
     /* serverHost is a file recorded by vncrec. */
     const char* magic="vncLog0.0";
@@ -399,12 +397,20 @@ ConnectToRFBServer(rfbClient* client,const char *hostname, int port)
   else
 #endif
   {
-    /* serverHost is a hostname */
-    if (!StringToIPAddr(hostname, &host)) {
-      rfbClientLog("Couldn't convert '%s' to host address\n", hostname);
-      return FALSE;
+#ifdef LIBVNCSERVER_IPv6
+    client->sock = ConnectClientToTcpAddr6(hostname, port);
+    if (client->sock == -1)
+#endif
+    {
+      unsigned int host;
+
+      /* serverHost is a hostname */
+      if (!StringToIPAddr(hostname, &host)) {
+        rfbClientLog("Couldn't convert '%s' to host address\n", hostname);
+        return FALSE;
+      }
+      client->sock = ConnectClientToTcpAddr(host, port);
     }
-    client->sock = ConnectClientToTcpAddr(host, port);
   }
 
   if (client->sock < 0) {
@@ -421,17 +427,23 @@ ConnectToRFBServer(rfbClient* client,const char *hostname, int port)
 
 rfbBool ConnectToRFBRepeater(rfbClient* client,const char *repeaterHost, int repeaterPort, const char *destHost, int destPort)
 {
-  unsigned int host;
   rfbProtocolVersionMsg pv;
   int major,minor;
   char tmphost[250];
 
-  if (!StringToIPAddr(repeaterHost, &host)) {
-    rfbClientLog("Couldn't convert '%s' to host address\n", repeaterHost);
-    return FALSE;
-  }
+#ifdef LIBVNCSERVER_IPv6
+  client->sock = ConnectClientToTcpAddr6(repeaterHost, repeaterPort);
+  if (client->sock == -1)
+#endif
+  {
+    unsigned int host;
+    if (!StringToIPAddr(repeaterHost, &host)) {
+      rfbClientLog("Couldn't convert '%s' to host address\n", repeaterHost);
+      return FALSE;
+    }
 
-  client->sock = ConnectClientToTcpAddr(host, repeaterPort);
+    client->sock = ConnectClientToTcpAddr(host, repeaterPort);
+  }
 
   if (client->sock < 0) {
     rfbClientLog("Unable to connect to VNC repeater\n");
@@ -915,6 +927,10 @@ InitialiseRFBConnection(rfbClient* client)
     break;
 
   case rfbTLS:
+#ifndef LIBVNCSERVER_WITH_CLIENT_TLS
+    rfbClientLog("TLS support was not compiled in\n");
+    return FALSE;
+#else
     if (!HandleAnonTLSAuth(client)) return FALSE;
     /* After the TLS session is established, sub auth types are expected.
      * Note that all following reading/writing are through the TLS session from here.
@@ -944,10 +960,15 @@ InitialiseRFBConnection(rfbClient* client)
             (int)subAuthScheme);
         return FALSE;
     }
+#endif
 
     break;
 
   case rfbVeNCrypt:
+#ifndef LIBVNCSERVER_WITH_CLIENT_TLS
+    rfbClientLog("TLS support was not compiled in\n");
+    return FALSE;
+#else
     if (!HandleVeNCryptAuth(client)) return FALSE;
 
     switch (client->subAuthScheme) {
@@ -973,7 +994,7 @@ InitialiseRFBConnection(rfbClient* client)
             client->subAuthScheme);
         return FALSE;
     }
-
+#endif
     break;
 
   default:
@@ -1533,6 +1554,9 @@ HandleRFBServerMessage(rfbClient* client)
       if (rect.encoding == rfbEncodingNewFBSize) {
 	client->width = rect.r.w;
 	client->height = rect.r.h;
+	client->updateRect.x = client->updateRect.y = 0;
+	client->updateRect.w = client->width;
+	client->updateRect.h = client->height;
 	client->MallocFrameBuffer(client);
 	SendFramebufferUpdateRequest(client, 0, 0, rect.r.w, rect.r.h, FALSE);
 	rfbClientLog("Got new framebuffer size: %dx%d\n", rect.r.w, rect.r.h);
@@ -1965,6 +1989,9 @@ HandleRFBServerMessage(rfbClient* client)
       return FALSE;
     client->width = rfbClientSwap16IfLE(msg.rsfb.framebufferWidth);
     client->height = rfbClientSwap16IfLE(msg.rsfb.framebufferHeigth);
+    client->updateRect.x = client->updateRect.y = 0;
+    client->updateRect.w = client->width;
+    client->updateRect.h = client->height;
     client->MallocFrameBuffer(client);
     SendFramebufferUpdateRequest(client, 0, 0, client->width, client->height, FALSE);
     rfbClientLog("Got new framebuffer size: %dx%d\n", client->width, client->height);
@@ -1978,6 +2005,9 @@ HandleRFBServerMessage(rfbClient* client)
       return FALSE;
     client->width = rfbClientSwap16IfLE(msg.prsfb.buffer_w);
     client->height = rfbClientSwap16IfLE(msg.prsfb.buffer_h);
+    client->updateRect.x = client->updateRect.y = 0;
+    client->updateRect.w = client->width;
+    client->updateRect.h = client->height;
     client->MallocFrameBuffer(client);
     SendFramebufferUpdateRequest(client, 0, 0, client->width, client->height, FALSE);
     rfbClientLog("Got new framebuffer size: %dx%d\n", client->width, client->height);
