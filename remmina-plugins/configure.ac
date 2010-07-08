@@ -188,6 +188,7 @@ if test "x$vnc_plugin" = "x"; then
     AC_SUBST(VNC_LIBS)
     AC_DEFINE([WITH_CLIENT_TLS], [1], [Enable support for gnutls in libvncclient])
     AC_DEFINE([HAVE_LIBVNCCLIENT], [1], [Define to 1 if you have libvncclient.])
+    AC_DEFINE([IPv6], [1], [Enable support for IPv6 in libvncclient])
     vnc_plugin="yes"
 fi
 

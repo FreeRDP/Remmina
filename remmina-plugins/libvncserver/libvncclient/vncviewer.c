@@ -221,12 +221,12 @@ static rfbBool rfbInitConnection(rfbClient* client)
   if (!InitialiseRFBConnection(client))
     return FALSE;
 
-  if (!SetFormatAndEncodings(client))
-    return FALSE;
-
   client->width=client->si.framebufferWidth;
   client->height=client->si.framebufferHeight;
   client->MallocFrameBuffer(client);
+
+  if (!SetFormatAndEncodings(client))
+    return FALSE;
 
   if (client->updateRect.x < 0) {
     client->updateRect.x = client->updateRect.y = 0;
@@ -306,7 +306,6 @@ rfbBool rfbInitClient(rfbClient* client,int* argc,char** argv) {
 
 	if(client->serverHost)
 	  free(client->serverHost);
-        client->serverPort = 5900;
 
 	if(colon) {
 	  client->serverHost = strdup(argv[i]);
@@ -359,7 +358,9 @@ void rfbClientCleanup(rfbClient* client) {
 #endif
 #endif
 
+#ifdef LIBVNCSERVER_WITH_CLIENT_TLS
   FreeTLS(client);
+#endif
   if (client->sock >= 0)
     close(client->sock);
   if (client->listenSock >= 0)
