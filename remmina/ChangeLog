@@ -1,3 +1,71 @@
+***** 0.8.0 - 2010-07-10 *****
+Main program design and functionality:
+o Introduce a new plugin system. All protocols except SSH are moved to a new
+  source package 'remmina-plugins' so that they can have bug-fixes and releases
+  separately. A new Plugins menu is added accordingly
+o Add Hostkey feature and related Preference options. Hostkey feature provides
+  an easy and reliable way to access various remote desktop toolbar functions
+  through customizable shortcut key combinations
+o Add Attachable / Detachable Tabs feature. Tabs now can be merged or separated
+  between windows.
+o Add ability to show / hide the toolbar through Hostkey
+o Add Quick Search filter feature
+o Add 'Save Settings When Starting the Connection' preference option, default
+  is true. If set to false, profile will not be saved if only 'Connect' button
+  is clicked
+o Add 'Always show tab' option
+o Add a little cosmetic motion effect to the floating toolbar
+o Add Debug Window feature in Help menu
+o Add Online Wiki link in Help menu
+o Support IPv6 address notation
+ 
+RDP protocol related:
+o Bring in FreeRDP (http://freerdp.sourceforge.net) project as rdesktop
+  replacement. Most of the features described below are direct benefits
+  from the FreeRDP project
+o FreeRDP provides a new keyboard system which is based on XKB and Windows
+  keyboard layouts. In most cases it can detect the keyboard layout and work
+  out of the box. It's also possible to manually assign a keyboard layout.
+o Scaling remote screen is supported
+o More clipboard formats (HTML, bitmaps, etc) are supported
+o Better disk/printer sharing. Works with Windows 7 and Windows 2008
+o Countless of original rdesktop bug-fixes and clean up
+o Support importing Windows and tsclient .rdp file, either by drag-n-drop to
+  the main window, by Tools / Import menu, or by -e / -c command line argument
+o Support exporting Windows .rdp file
+
+VNC protocol related:
+o Support disabling TLS/VeNCrypt encryption when connecting to VNC servers
+  that supports it, like Vino
+o Support Refresh screen
+o Add UltraVNC repeater support
+o Add reverse SSH tunnel support for VNC incoming connection
+o Add disabling clipboard synchronization option
+o Better cursor and color handling
+
+NX protocol related:
+o New protocol NX is supported. Depends on libssh and nxproxy
+o Support resizing of remote session and scaling of console session
+o Support session management, including resume, attach, terminate
+o Support custom private key and various trivial options
+
+SSH protocol related:
+o SSH terminal and SFTP now works as internal plugins, and can be tabbed or
+  toggled fullscreen like any other protocols
+o Add startup program support in SSH terminal
+o Add folder uploading support in SFTP
+o Add new 'Tunnel via loopback' option
+o Support tunneling through same server at custom port using ':port' custom
+  server notation
+
+XDMCP protocol related:
+o Support running a startup program from SSH tunnel, without launching XDMCP
+  login window
+
+Telepathy support:
+o Implement as a special plugin so it will work with desktop sharing feature
+  in Empathy IM client
+
 ***** 0.7.0 - 2009-12-12 *****
 o Add new XDMCP protocol (using Xephyr)
 o Implement XDMCP session over SSH (using xqproxy on SSH server side)
