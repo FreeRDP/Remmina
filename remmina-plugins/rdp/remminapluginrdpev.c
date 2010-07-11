@@ -35,8 +35,11 @@ remmina_plugin_rdpev_event_push (RemminaProtocolWidget *gp,
     event->flag = flag;
     event->param1 = param1;
     event->param2 = param2;
-    g_async_queue_push (gpdata->event_queue, event);
-    (void) write (gpdata->event_pipe[1], "\0", 1);
+    if (gpdata->event_queue)
+    {
+        g_async_queue_push (gpdata->event_queue, event);
+        (void) write (gpdata->event_pipe[1], "\0", 1);
+    }
 }
 
 static void
@@ -383,6 +386,7 @@ remmina_plugin_rdpev_uninit (RemminaProtocolWidget *gp)
     }
     g_array_free (gpdata->pressed_keys, TRUE);
     g_async_queue_unref (gpdata->event_queue);
+    gpdata->event_queue = NULL;
     close (gpdata->event_pipe[0]);
     close (gpdata->event_pipe[1]);
 }

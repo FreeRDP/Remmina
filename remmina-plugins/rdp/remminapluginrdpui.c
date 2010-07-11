@@ -2009,6 +2009,8 @@ remmina_plugin_rdpui_check_fds (RemminaProtocolWidget *gp)
     gchar buf[100];
 
     gpdata = GET_DATA (gp);
+    if (gpdata->event_queue == NULL) return 0;
+
     while ((event = (RemminaPluginRdpEvent *) g_async_queue_try_pop (gpdata->event_queue)) != NULL)
     {
         gpdata->inst->rdp_send_input(gpdata->inst,
