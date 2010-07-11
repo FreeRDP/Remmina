@@ -1840,42 +1840,54 @@ remmina_plugin_rdpui_channel_data (rdpInst *inst, int chan_id, char * data, int 
     freerdp_chanman_data (inst, chan_id, data, data_size, flags, total_size);
 }
 
+/* Migrated from xfreerdp */
+static gboolean
+remmina_plugin_rdpui_get_key_state (KeyCode keycode, int state, XModifierKeymap *modmap)
+{
+    int modifierpos, key, keysymMask = 0;
+    int offset;
+
+    if (keycode == NoSymbol)
+    {
+        return FALSE;
+    }
+    for (modifierpos = 0; modifierpos < 8; modifierpos++)
+    {
+        offset = modmap->max_keypermod * modifierpos;
+        for (key = 0; key < modmap->max_keypermod; key++)
+        {
+            if (modmap->modifiermap[offset + key] == keycode)
+            {
+                keysymMask |= 1 << modifierpos;
+            }
+        }
+    }
+    return (state & keysymMask) ? TRUE : FALSE;
+}
+
 void
 remmina_plugin_rdpui_init (RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
     Display *display;
+    Window wdummy;
+    int dummy;
+    uint32 state;
     gint keycode;
     XModifierKeymap *modmap;
-    gint i;
 
     display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+    XQueryPointer(display, GDK_ROOT_WINDOW (), &wdummy, &wdummy, &dummy, &dummy,
+        &dummy, &dummy, &state);
+    modmap = XGetModifierMapping (display);
 
     gpdata = GET_DATA (gp);
 
-    gpdata->capslock_initstate = FALSE;
     keycode = XKeysymToKeycode (display, XK_Caps_Lock);
-    modmap = XGetModifierMapping (display);
-    for (i = 0; i < 8 * modmap->max_keypermod; i++)
-    {
-        if (modmap->modifiermap[i] == keycode)
-        {
-            gpdata->capslock_initstate = TRUE;
-            break;
-        }
-    }
+    gpdata->capslock_initstate = remmina_plugin_rdpui_get_key_state (keycode, state, modmap);
 
-    gpdata->numlock_initstate = FALSE;
     keycode = XKeysymToKeycode (display, XK_Num_Lock);
-    modmap = XGetModifierMapping (display);
-    for (i = 0; i < 8 * modmap->max_keypermod; i++)
-    {
-        if (modmap->modifiermap[i] == keycode)
-        {
-            gpdata->numlock_initstate = TRUE;
-            break;
-        }
-    }
+    gpdata->numlock_initstate = remmina_plugin_rdpui_get_key_state (keycode, state, modmap);
 }
 
 void
