@@ -39,6 +39,7 @@ static const gchar *remmina_plugin_type_name[] =
     N_("Entry"),
     N_("File"),
     N_("Tool"),
+    N_("Preference"),
     NULL
 };
 

@@ -25,7 +25,7 @@ G_BEGIN_DECLS
 
 void remmina_plugin_rdpset_init (void);
 guint remmina_plugin_rdpset_get_keyboard_layout (void);
-void remmina_plugin_rdpset_dialog_new (void);
+GtkWidget* remmina_plugin_rdpset_new (void);
 
 G_END_DECLS
 
