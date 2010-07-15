@@ -183,11 +183,11 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
 
     if (g_strcmp0 (remminafile->sound, "remote") == 0)
     {
-        freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "rdpsnd", NULL);
+        gpdata->settings->console_audio = 1;
     }
     else if (g_strcmp0 (remminafile->sound, "local") == 0)
     {
-        gpdata->settings->console_audio = 1;
+        freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "rdpsnd", NULL);
     }
 
     if (remminafile->console)
