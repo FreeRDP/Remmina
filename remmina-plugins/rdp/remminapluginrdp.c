@@ -466,13 +466,14 @@ static RemminaFilePlugin remmina_plugin_rdpf =
     NULL
 };
 
-static RemminaToolPlugin remmina_plugin_rdps =
+static RemminaPrefPlugin remmina_plugin_rdps =
 {
-    REMMINA_PLUGIN_TYPE_TOOL,
+    REMMINA_PLUGIN_TYPE_PREF,
     "RDPS",
     NULL,
 
-    remmina_plugin_rdpset_dialog_new
+    "RDP",
+    remmina_plugin_rdpset_new
 };
 
 G_MODULE_EXPORT gboolean
@@ -494,7 +495,7 @@ remmina_plugin_entry (RemminaPluginService *service)
     {
         return FALSE;
     }
-    remmina_plugin_rdps.description = _("RDP - Global Settings");
+    remmina_plugin_rdps.description = _("RDP - Preferences");
     if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_rdps))
     {
         return FALSE;

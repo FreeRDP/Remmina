@@ -25,6 +25,7 @@
 #include "remminastringlist.h"
 #include "remminawidgetpool.h"
 #include "remminakeychooser.h"
+#include "remminapluginmanager.h"
 #include "remminapref.h"
 #include "remminaprefdialog.h"
 
@@ -215,6 +216,30 @@ remmina_pref_dialog_destroy (GtkWidget *widget, gpointer data)
 
     remmina_pref_save ();
     g_free (priv);
+}
+
+static gboolean
+remmina_pref_dialog_add_pref_plugin (gchar *name, RemminaPlugin *plugin, gpointer data)
+{
+    RemminaPrefDialogPriv *priv;
+    RemminaPrefPlugin *pref_plugin;
+    GtkWidget *vbox;
+    GtkWidget *widget;
+
+    priv = REMMINA_PREF_DIALOG (data)->priv;
+    pref_plugin = (RemminaPrefPlugin *) plugin;
+
+    widget = gtk_label_new (pref_plugin->pref_label);
+    gtk_widget_show (widget);
+
+    vbox = gtk_vbox_new (FALSE, 0);
+    gtk_widget_show (vbox);
+    gtk_notebook_append_page (GTK_NOTEBOOK (priv->notebook), vbox, widget);
+
+    widget = pref_plugin->get_pref_body ();
+    gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
+
+    return FALSE;
 }
 
 static void
@@ -537,6 +562,8 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 8, 9);
     priv->shortcutkey_toolbar_chooser = widget;
+
+    remmina_plugin_manager_for_each_plugin (REMMINA_PLUGIN_TYPE_PREF, remmina_pref_dialog_add_pref_plugin, dialog);
 
     remmina_widget_pool_register (GTK_WIDGET (dialog));
 }
