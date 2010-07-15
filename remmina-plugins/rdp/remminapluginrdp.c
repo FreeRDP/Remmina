@@ -123,6 +123,7 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     RemminaFile *remminafile;
     gchar *host;
     gchar *s;
+    gchar *value;
     gint rdpdr_num;
 
     gpdata = GET_DATA (gp);
@@ -178,6 +179,34 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     {
         strncpy (gpdata->settings->directory, remminafile->execpath, sizeof (gpdata->settings->directory) - 1);
     }
+
+    s = g_strdup_printf ("rdp_quality_%i", remminafile->quality);
+    value = remmina_plugin_service->pref_get_value (s);
+    g_free (s);
+    if (value && value[0])
+    {
+        gpdata->settings->rdp5_performanceflags = strtoul (value, NULL, 16);
+    }
+    else
+    {
+        switch (remminafile->quality)
+        {
+        case 9:
+            gpdata->settings->rdp5_performanceflags = 0x80;
+            break;
+        case 2:
+            gpdata->settings->rdp5_performanceflags = 0x01;
+            break;
+        case 1:
+            gpdata->settings->rdp5_performanceflags = 0x07;
+            break;
+        case 0:
+        default:
+            gpdata->settings->rdp5_performanceflags = 0x6f;
+            break;
+        }
+    }
+    g_free (value);
 
     gpdata->settings->keyboard_layout = remmina_plugin_rdpset_get_keyboard_layout();
 
@@ -299,8 +328,7 @@ remmina_plugin_rdp_init (RemminaProtocolWidget *gp)
     gpdata->settings->bitmap_cache = 1;
     gpdata->settings->bitmap_compression = 1;
     gpdata->settings->desktop_save = 0;
-    gpdata->settings->rdp5_performanceflags =
-        RDP5_NO_WALLPAPER | RDP5_NO_FULLWINDOWDRAG | RDP5_NO_MENUANIMATIONS;
+    gpdata->settings->rdp5_performanceflags = 0;
     gpdata->settings->off_screen_bitmaps = 1;
     gpdata->settings->triblt = 0;
     gpdata->settings->new_cursors = 1;
@@ -423,6 +451,7 @@ static const RemminaProtocolSetting remmina_plugin_rdp_basic_settings[] =
 
 static const RemminaProtocolSetting remmina_plugin_rdp_advanced_settings[] =
 {
+    REMMINA_PROTOCOL_SETTING_QUALITY,
     REMMINA_PROTOCOL_SETTING_SOUND,
     REMMINA_PROTOCOL_SETTING_CLIENTNAME,
     REMMINA_PROTOCOL_SETTING_EXEC,
