@@ -59,7 +59,20 @@ typedef struct _RemminaPluginRdpsetTable
 
     GtkWidget *keyboard_layout_label;
     GtkWidget *keyboard_layout_combo;
-    GtkListStore *keyboard_layout_store; 
+    GtkListStore *keyboard_layout_store;
+
+    GtkWidget *quality_combo;
+    GtkListStore *quality_store;
+    GtkWidget *wallpaper_check;
+    GtkWidget *windowdrag_check;
+    GtkWidget *menuanimation_check;
+    GtkWidget *theme_check;
+    GtkWidget *cursorshadow_check;
+    GtkWidget *cursorblinking_check;
+    GtkWidget *fontsmoothing_check;
+    GtkWidget *composition_check;
+
+    guint quality_values[10];
 } RemminaPluginRdpsetTable;
 
 typedef struct _RemminaPluginRdpsetTableClass
@@ -98,6 +111,19 @@ remmina_plugin_rdpset_table_destroy (GtkWidget *widget, gpointer data)
             keyboard_layout = freerdp_kbd_init (rdp_keyboard_layout);
         }
     }
+
+    s = g_strdup_printf ("%X", table->quality_values[0]);
+    remmina_plugin_service->pref_set_value ("rdp_quality_0", s);
+    g_free (s);
+    s = g_strdup_printf ("%X", table->quality_values[1]);
+    remmina_plugin_service->pref_set_value ("rdp_quality_1", s);
+    g_free (s);
+    s = g_strdup_printf ("%X", table->quality_values[2]);
+    remmina_plugin_service->pref_set_value ("rdp_quality_2", s);
+    g_free (s);
+    s = g_strdup_printf ("%X", table->quality_values[9]);
+    remmina_plugin_service->pref_set_value ("rdp_quality_9", s);
+    g_free (s);
 }
 
 static void
@@ -138,6 +164,81 @@ remmina_plugin_rdpset_table_load_layout (RemminaPluginRdpsetTable *table)
 }
 
 static void
+remmina_plugin_rdpset_table_load_quality (RemminaPluginRdpsetTable *table)
+{
+    GtkTreeIter iter;
+    gchar *value;
+
+    gtk_list_store_append (table->quality_store, &iter);
+    gtk_list_store_set (table->quality_store, &iter, 0, 0, 1, _("Poor (Fastest)"), -1);
+    gtk_list_store_append (table->quality_store, &iter);
+    gtk_list_store_set (table->quality_store, &iter, 0, 1, 1, _("Medium"), -1);
+    gtk_list_store_append (table->quality_store, &iter);
+    gtk_list_store_set (table->quality_store, &iter, 0, 2, 1, _("Good"), -1);
+    gtk_list_store_append (table->quality_store, &iter);
+    gtk_list_store_set (table->quality_store, &iter, 0, 9, 1, _("Best (Slowest)"), -1);
+
+    memset (table->quality_values, 0, sizeof (table->quality_values));
+    value = remmina_plugin_service->pref_get_value ("rdp_quality_0");
+    table->quality_values[0] = (value && value[0] ? strtoul (value, NULL, 16) : DEFAULT_QUALITY_0);
+    g_free (value);
+    value = remmina_plugin_service->pref_get_value ("rdp_quality_1");
+    table->quality_values[1] = (value && value[0] ? strtoul (value, NULL, 16) : DEFAULT_QUALITY_1);
+    g_free (value);
+    value = remmina_plugin_service->pref_get_value ("rdp_quality_2");
+    table->quality_values[2] = (value && value[0] ? strtoul (value, NULL, 16) : DEFAULT_QUALITY_2);
+    g_free (value);
+    value = remmina_plugin_service->pref_get_value ("rdp_quality_9");
+    table->quality_values[9] = (value && value[0] ? strtoul (value, NULL, 16) : DEFAULT_QUALITY_9);
+    g_free (value);
+}
+
+static void
+remmina_plugin_rdpset_quality_on_changed (GtkComboBox *widget, RemminaPluginRdpsetTable *table)
+{
+    GtkTreeIter iter;
+    guint i = 0;
+    guint v;
+
+    if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (table->quality_combo), &iter))
+    {
+        gtk_tree_model_get (GTK_TREE_MODEL (table->quality_store), &iter, 0, &i, -1);
+        v = table->quality_values[i];
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (table->wallpaper_check), (v & 1) == 0);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (table->windowdrag_check), (v & 2) == 0);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (table->menuanimation_check), (v & 4) == 0);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (table->theme_check), (v & 8) == 0);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (table->cursorshadow_check), (v & 0x20) == 0);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (table->cursorblinking_check), (v & 0x40) == 0);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (table->fontsmoothing_check), (v & 0x80) != 0);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (table->composition_check), (v & 0x100) != 0);
+    }
+}
+
+static void
+remmina_plugin_rdpset_quality_option_on_toggled (GtkToggleButton *togglebutton, RemminaPluginRdpsetTable *table)
+{
+    GtkTreeIter iter;
+    guint i = 0;
+    guint v;
+
+    if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (table->quality_combo), &iter))
+    {
+        gtk_tree_model_get (GTK_TREE_MODEL (table->quality_store), &iter, 0, &i, -1);
+        v = 0;
+        v |= (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (table->wallpaper_check)) ? 0 : 1);
+        v |= (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (table->windowdrag_check)) ? 0 : 2);
+        v |= (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (table->menuanimation_check)) ? 0 : 4);
+        v |= (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (table->theme_check)) ? 0 : 8);
+        v |= (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (table->cursorshadow_check)) ? 0 : 0x20);
+        v |= (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (table->cursorblinking_check)) ? 0 : 0x40);
+        v |= (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (table->fontsmoothing_check)) ? 0x80 : 0);
+        v |= (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (table->composition_check)) ? 0x100 : 0);
+        table->quality_values[i] = v;
+    }
+}
+
+static void
 remmina_plugin_rdpset_table_init (RemminaPluginRdpsetTable *table)
 {
     GtkWidget *widget;
@@ -145,7 +246,7 @@ remmina_plugin_rdpset_table_init (RemminaPluginRdpsetTable *table)
 
     /* Create the table */
     g_signal_connect (G_OBJECT (table), "destroy", G_CALLBACK (remmina_plugin_rdpset_table_destroy), NULL);
-    gtk_table_resize (GTK_TABLE (table), 2, 2);
+    gtk_table_resize (GTK_TABLE (table), 7, 3);
     gtk_table_set_homogeneous (GTK_TABLE (table), FALSE);
     gtk_container_set_border_width (GTK_CONTAINER (table), 8);
     gtk_table_set_row_spacings (GTK_TABLE (table), 4);
@@ -160,7 +261,7 @@ remmina_plugin_rdpset_table_init (RemminaPluginRdpsetTable *table)
     table->keyboard_layout_store = gtk_list_store_new (2, G_TYPE_UINT, G_TYPE_STRING);
     widget = gtk_combo_box_new_with_model (GTK_TREE_MODEL (table->keyboard_layout_store));
     gtk_widget_show (widget);
-    gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 0, 1);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 4, 0, 1);
 
     renderer = gtk_cell_renderer_text_new ();
     gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (widget), renderer, TRUE); 
@@ -170,10 +271,87 @@ remmina_plugin_rdpset_table_init (RemminaPluginRdpsetTable *table)
     widget = gtk_label_new ("-");
     gtk_widget_show (widget);
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
-    gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 1, 2);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 4, 1, 2);
     table->keyboard_layout_label = widget;
 
     remmina_plugin_rdpset_table_load_layout (table);
+
+    widget = gtk_label_new (_("Quality Option"));
+    gtk_widget_show (widget);
+    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 1, 2, 3);
+
+    table->quality_store = gtk_list_store_new (2, G_TYPE_UINT, G_TYPE_STRING);
+    widget = gtk_combo_box_new_with_model (GTK_TREE_MODEL (table->quality_store));
+    gtk_widget_show (widget);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 4, 2, 3);
+
+    renderer = gtk_cell_renderer_text_new ();
+    gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (widget), renderer, TRUE); 
+    gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (widget), renderer, "text", 1);
+    g_signal_connect (G_OBJECT (widget), "changed",
+        G_CALLBACK (remmina_plugin_rdpset_quality_on_changed), table);
+    table->quality_combo = widget;
+
+    remmina_plugin_rdpset_table_load_quality (table);
+
+    widget = gtk_check_button_new_with_label (_("Wallpaper"));
+    gtk_widget_show (widget);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 3, 4);
+    g_signal_connect (G_OBJECT (widget), "toggled",
+        G_CALLBACK (remmina_plugin_rdpset_quality_option_on_toggled), table);
+    table->wallpaper_check = widget;
+
+    widget = gtk_check_button_new_with_label (_("Window Drag"));
+    gtk_widget_show (widget);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 2, 3, 3, 4);
+    g_signal_connect (G_OBJECT (widget), "toggled",
+        G_CALLBACK (remmina_plugin_rdpset_quality_option_on_toggled), table);
+    table->windowdrag_check = widget;
+
+    widget = gtk_check_button_new_with_label (_("Menu Animation"));
+    gtk_widget_show (widget);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 4, 5);
+    g_signal_connect (G_OBJECT (widget), "toggled",
+        G_CALLBACK (remmina_plugin_rdpset_quality_option_on_toggled), table);
+    table->menuanimation_check = widget;
+
+    widget = gtk_check_button_new_with_label (_("Theme"));
+    gtk_widget_show (widget);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 2, 3, 4, 5);
+    g_signal_connect (G_OBJECT (widget), "toggled",
+        G_CALLBACK (remmina_plugin_rdpset_quality_option_on_toggled), table);
+    table->theme_check = widget;
+
+    widget = gtk_check_button_new_with_label (_("Cursor Shadow"));
+    gtk_widget_show (widget);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 5, 6);
+    g_signal_connect (G_OBJECT (widget), "toggled",
+        G_CALLBACK (remmina_plugin_rdpset_quality_option_on_toggled), table);
+    table->cursorshadow_check = widget;
+
+    widget = gtk_check_button_new_with_label (_("Cursor Blinking"));
+    gtk_widget_show (widget);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 2, 3, 5, 6);
+    g_signal_connect (G_OBJECT (widget), "toggled",
+        G_CALLBACK (remmina_plugin_rdpset_quality_option_on_toggled), table);
+    table->cursorblinking_check = widget;
+
+    widget = gtk_check_button_new_with_label (_("Font Smoothing"));
+    gtk_widget_show (widget);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 6, 7);
+    g_signal_connect (G_OBJECT (widget), "toggled",
+        G_CALLBACK (remmina_plugin_rdpset_quality_option_on_toggled), table);
+    table->fontsmoothing_check = widget;
+
+    widget = gtk_check_button_new_with_label (_("Composition"));
+    gtk_widget_show (widget);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 2, 3, 6, 7);
+    g_signal_connect (G_OBJECT (widget), "toggled",
+        G_CALLBACK (remmina_plugin_rdpset_quality_option_on_toggled), table);
+    table->composition_check = widget;
+
+    gtk_combo_box_set_active (GTK_COMBO_BOX (table->quality_combo), 0);
 }
 
 GtkWidget* remmina_plugin_rdpset_new (void)

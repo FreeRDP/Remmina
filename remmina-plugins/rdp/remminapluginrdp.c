@@ -192,17 +192,17 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
         switch (remminafile->quality)
         {
         case 9:
-            gpdata->settings->rdp5_performanceflags = 0x80;
+            gpdata->settings->rdp5_performanceflags = DEFAULT_QUALITY_9;
             break;
         case 2:
-            gpdata->settings->rdp5_performanceflags = 0x01;
+            gpdata->settings->rdp5_performanceflags = DEFAULT_QUALITY_2;
             break;
         case 1:
-            gpdata->settings->rdp5_performanceflags = 0x07;
+            gpdata->settings->rdp5_performanceflags = DEFAULT_QUALITY_1;
             break;
         case 0:
         default:
-            gpdata->settings->rdp5_performanceflags = 0x6f;
+            gpdata->settings->rdp5_performanceflags = DEFAULT_QUALITY_0;
             break;
         }
     }
