@@ -32,6 +32,11 @@
 #define GET_WIDGET(_inst) ((RemminaProtocolWidget *) (_inst)->param1)
 #define GET_DATA(_gp) (RemminaPluginRdpData*) g_object_get_data (G_OBJECT (_gp), "plugin-data")
 
+#define DEFAULT_QUALITY_0 0x6f
+#define DEFAULT_QUALITY_1 0x07
+#define DEFAULT_QUALITY_2 0x01
+#define DEFAULT_QUALITY_9 0x80
+
 extern RemminaPluginService *remmina_plugin_service;
 
 typedef struct _RemminaPluginRdpData
