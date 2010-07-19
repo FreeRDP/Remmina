@@ -20,6 +20,7 @@
 
 #include "remminapluginrdp.h"
 #include "remminapluginrdpev.h"
+#include <gdk/gdkkeysyms.h>
 #include <freerdp/kbd.h>
 
 static void
@@ -295,21 +296,43 @@ remmina_plugin_rdpev_on_key (GtkWidget *widget, GdkEventKey *event, RemminaProto
 {
     RemminaPluginRdpData *gpdata;
     gint flag;
-    gint scancode;
+    gint scancode = 0;
 
     gpdata = GET_DATA (gp);
     flag = (event->type == GDK_KEY_PRESS ? RDP_KEYPRESS : RDP_KEYRELEASE);
-    scancode = freerdp_kbd_get_scancode_by_keycode (event->hardware_keycode, &flag);
-    remmina_plugin_rdpev_event_push (gp, RDP_INPUT_SCANCODE, flag, scancode, 0);
+    switch (event->keyval)
+    {
+    case GDK_Break:
+        remmina_plugin_rdpev_event_push (gp, RDP_INPUT_SCANCODE, flag, 0xc6, 0);
+        break;
+    case GDK_Pause:
+        remmina_plugin_rdpev_event_push (gp, RDP_INPUT_SCANCODE, flag | 0x0200, 0x1d, 0);
+        remmina_plugin_rdpev_event_push (gp, RDP_INPUT_SCANCODE, flag, 0x45, 0);
+        break;
+    default:
+        scancode = freerdp_kbd_get_scancode_by_keycode (event->hardware_keycode, &flag);
+        if (scancode)
+        {
+            remmina_plugin_rdpev_event_push (gp, RDP_INPUT_SCANCODE, flag, scancode, 0);
+        }
+        else
+        {
+            g_print ("Invalid key (keyval=%04X keycode=%02X\n", event->keyval, event->hardware_keycode);
+        }
+        break;
+    }
 
     /* Register/unregister the pressed key */
-    if (event->type == GDK_KEY_PRESS)
+    if (scancode)
     {
-        g_array_append_val (gpdata->pressed_keys, scancode);
-    }
-    else
-    {
-        remmina_plugin_rdpev_release_key (gp, scancode);
+        if (event->type == GDK_KEY_PRESS)
+        {
+            g_array_append_val (gpdata->pressed_keys, scancode);
+        }
+        else
+        {
+            remmina_plugin_rdpev_release_key (gp, scancode);
+        }
     }
     return TRUE;
 }
