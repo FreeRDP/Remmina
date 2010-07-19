@@ -267,7 +267,7 @@ remmina_nx_session_get_response (RemminaNXSession *nx)
         if (len > 0) break;
         is_stderr++;
     }
-    if (is_stderr > 1) return TRUE;
+    if (is_stderr > 1) return FALSE;
 
     buffer = buffer_new ();
     len = channel_read_buffer (nx->channel, buffer, len, is_stderr);
@@ -435,7 +435,11 @@ remmina_nx_session_parse_response (RemminaNXSession *nx)
         if (nx->log_callback) nx->log_callback ("[NX] %s\n", line);
 
         status = remmina_nx_session_parse_line (nx, line, &p);
-        if (status >= 400 && status <= 599)
+        if (status == 500)
+        {
+            /* 500: Last operation failed. Should be ignored. */
+        }
+        else if (status >= 400 && status <= 599)
         {
             remmina_nx_session_set_application_error (nx, "%s", line);
         }
@@ -480,19 +484,25 @@ remmina_nx_session_parse_response (RemminaNXSession *nx)
     return status;
 }
 
-static gboolean
-remmina_nx_session_expect_status (RemminaNXSession *nx, gint status)
+static gint
+remmina_nx_session_expect_status2 (RemminaNXSession *nx, gint status, gint status2)
 {
     gint response;
 
-    while ((response = remmina_nx_session_parse_response (nx)) != status)
+    while ((response = remmina_nx_session_parse_response (nx)) != status && response != status2)
     {
         if (response == 999) break;
-        if (!remmina_nx_session_get_response (nx)) return FALSE;
+        if (!remmina_nx_session_get_response (nx)) return -1;
     }
     nx->session_list_state = 0;
-    if (remmina_nx_session_has_error (nx)) return FALSE;
-    return TRUE;
+    if (remmina_nx_session_has_error (nx)) return -1;
+    return response;
+}
+
+static gboolean
+remmina_nx_session_expect_status (RemminaNXSession *nx, gint status)
+{
+    return (remmina_nx_session_expect_status2 (nx, status, 0) == status);
 }
 
 static void
@@ -613,13 +623,23 @@ remmina_nx_session_open (RemminaNXSession *nx, const gchar *server, guint port,
 gboolean
 remmina_nx_session_login (RemminaNXSession *nx, const gchar *username, const gchar *password)
 {
+    gint response;
+
     /* Login to the NX server */
     remmina_nx_session_send_command (nx, "login");
     if (!remmina_nx_session_expect_status (nx, 101)) return FALSE;
     remmina_nx_session_send_command (nx, username);
-    if (!remmina_nx_session_expect_status (nx, 102)) return FALSE;
-    remmina_nx_session_send_command (nx, password);
-    if (!remmina_nx_session_expect_status (nx, 105)) return FALSE;
+    /* NoMachine Testdrive does not prompt for password, in which case 105 response is received without 102 */
+    response = remmina_nx_session_expect_status2 (nx, 102, 105);
+    if (response == 102)
+    {
+        remmina_nx_session_send_command (nx, password);
+        if (!remmina_nx_session_expect_status (nx, 105)) return FALSE;
+    }
+    else if (response != 105)
+    {
+        return FALSE;
+    }
 
     return TRUE;
 }
