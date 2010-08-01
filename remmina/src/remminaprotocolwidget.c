@@ -234,7 +234,7 @@ remmina_protocol_widget_close_connection (RemminaProtocolWidget *gp)
     }
 #endif
 
-    if (!gp->priv->plugin->close_connection)
+    if (!gp->priv->plugin || !gp->priv->plugin->close_connection)
     {
         remmina_protocol_widget_emit_signal (gp, "disconnect");
         return FALSE;
