@@ -18,6 +18,7 @@
  * Boston, MA 02111-1307, USA.
  */
  
+#define _FILE_OFFSET_BITS 64
 #include "config.h"
 
 #ifdef HAVE_LIBSSH
