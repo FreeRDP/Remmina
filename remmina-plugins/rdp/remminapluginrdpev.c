@@ -311,13 +311,11 @@ remmina_plugin_rdpev_on_key (GtkWidget *widget, GdkEventKey *event, RemminaProto
         break;
     default:
         scancode = freerdp_kbd_get_scancode_by_keycode (event->hardware_keycode, &flag);
+        remmina_plugin_service->log_printf ("[RDP]keyval=%04X keycode=%i scancode=%i flag=%04X\n",
+            event->keyval, event->hardware_keycode, scancode, flag);
         if (scancode)
         {
             remmina_plugin_rdpev_event_push (gp, RDP_INPUT_SCANCODE, flag, scancode, 0);
-        }
-        else
-        {
-            g_print ("Invalid key (keyval=%04X keycode=%02X\n", event->keyval, event->hardware_keycode);
         }
         break;
     }
