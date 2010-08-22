@@ -622,6 +622,7 @@ remmina_plugin_entry (RemminaPluginService *service)
 {
     Display *dpy;
     XkbRF_VarDefsRec vd;
+    gchar *s;
 
     remmina_plugin_nx_service = service;
 
@@ -637,6 +638,8 @@ remmina_plugin_entry (RemminaPluginService *service)
             if (vd.model) XFree (vd.model);
             if (vd.variant) XFree (vd.variant);
             if (vd.options) XFree (vd.options);
+            s = strchr (remmina_kbtype, ',');
+            if (s) *s = '\0';
             g_print ("NX: detected keyboard type %s\n", remmina_kbtype);
         }
         XCloseDisplay (dpy);
