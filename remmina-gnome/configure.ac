@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.60)
-AC_INIT(remmina-gnome, 0.8.0)
+AC_INIT(remmina-gnome, 0.8.1)
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([src/remminaapplet.c])
 AC_CONFIG_HEADER([config.h])
@@ -27,7 +27,7 @@ AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [The gettext package])
 
 if test "x$USE_NLS" != "xno"; then
-    ALL_LINGUAS="bg de el es eu fr id it lt nl pl pt_BR ru tr uk zh_CN"
+    ALL_LINGUAS="bg cs de el es eu fr id it lt nl pl pt_BR ru tr uk zh_CN"
     nls_support="yes"
 else
     ALL_LINGUAS=""
