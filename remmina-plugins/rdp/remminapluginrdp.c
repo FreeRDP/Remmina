@@ -185,24 +185,24 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     g_free (s);
     if (value && value[0])
     {
-        gpdata->settings->rdp5_performanceflags = strtoul (value, NULL, 16);
+        gpdata->settings->performanceflags = strtoul (value, NULL, 16);
     }
     else
     {
         switch (remminafile->quality)
         {
         case 9:
-            gpdata->settings->rdp5_performanceflags = DEFAULT_QUALITY_9;
+            gpdata->settings->performanceflags = DEFAULT_QUALITY_9;
             break;
         case 2:
-            gpdata->settings->rdp5_performanceflags = DEFAULT_QUALITY_2;
+            gpdata->settings->performanceflags = DEFAULT_QUALITY_2;
             break;
         case 1:
-            gpdata->settings->rdp5_performanceflags = DEFAULT_QUALITY_1;
+            gpdata->settings->performanceflags = DEFAULT_QUALITY_1;
             break;
         case 0:
         default:
-            gpdata->settings->rdp5_performanceflags = DEFAULT_QUALITY_0;
+            gpdata->settings->performanceflags = DEFAULT_QUALITY_0;
             break;
         }
     }
@@ -328,11 +328,12 @@ remmina_plugin_rdp_init (RemminaProtocolWidget *gp)
     gpdata->settings->bitmap_cache = 1;
     gpdata->settings->bitmap_compression = 1;
     gpdata->settings->desktop_save = 0;
-    gpdata->settings->rdp5_performanceflags = 0;
+    gpdata->settings->performanceflags = 0;
     gpdata->settings->off_screen_bitmaps = 1;
     gpdata->settings->triblt = 0;
     gpdata->settings->new_cursors = 1;
     gpdata->settings->rdp_version = 5;
+    gpdata->settings->tls = 1;
 
     pthread_mutex_init (&gpdata->mutex, NULL);
 
