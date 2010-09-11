@@ -50,6 +50,7 @@ typedef struct _RemminaPluginRdpData
     gboolean scale;
 
     RD_PLUGIN_DATA rdpdr_data[5];
+    RD_PLUGIN_DATA drdynvc_data[5];
 
     GtkWidget *drawing_area;
     GdkPixbuf *drw_buffer;
