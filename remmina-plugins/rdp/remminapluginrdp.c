@@ -125,6 +125,7 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     gchar *s;
     gchar *value;
     gint rdpdr_num;
+    gint drdynvc_num;
 
     gpdata = GET_DATA (gp);
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
@@ -210,6 +211,12 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
 
     gpdata->settings->keyboard_layout = remmina_plugin_rdpset_get_keyboard_layout();
 
+    if (remminafile->console)
+    {
+        gpdata->settings->console_session = 1;
+    }
+
+    drdynvc_num = 0;
     if (g_strcmp0 (remminafile->sound, "remote") == 0)
     {
         gpdata->settings->console_audio = 1;
@@ -217,11 +224,13 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     else if (g_strcmp0 (remminafile->sound, "local") == 0)
     {
         freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "rdpsnd", NULL);
+        gpdata->drdynvc_data[drdynvc_num].size = sizeof(RD_PLUGIN_DATA);
+        gpdata->drdynvc_data[drdynvc_num].data[0] = "audin";
+        drdynvc_num++;
     }
-
-    if (remminafile->console)
+    if (drdynvc_num)
     {
-        gpdata->settings->console_session = 1;
+        freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "drdynvc", gpdata->drdynvc_data);
     }
 
     if (!remminafile->disableclipboard)
