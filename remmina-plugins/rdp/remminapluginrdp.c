@@ -384,6 +384,10 @@ remmina_plugin_rdp_close_connection (RemminaProtocolWidget *gp)
     remmina_plugin_rdpev_uninit (gp);
     remmina_plugin_rdpui_uninit (gp);
 
+    if (gpdata->chan_man && gpdata->inst)
+    {
+        freerdp_chanman_close (gpdata->chan_man, gpdata->inst);
+    }
     if (gpdata->inst)
     {
         gpdata->inst->rdp_disconnect (gpdata->inst);
