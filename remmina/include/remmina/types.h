@@ -23,75 +23,7 @@
 
 G_BEGIN_DECLS
 
-typedef struct _RemminaFile
-{
-    /* Profile settings */
-    gchar *filename;
-    gchar *name;
-    gchar *group;
-
-    /* Protocol settings */
-    gchar *server;
-    gchar *protocol;
-    gchar *domain;
-    gchar *clientname;
-    gchar *resolution;
-    gchar *keymap;
-    gchar *gkeymap;
-    gchar *exec;
-    gchar *execpath;
-    gchar *sound;
-    gchar *arguments;
-    gchar *proxy;
-    gchar *sharefolder;
-    gint colordepth;
-    gint quality;
-    gint listenport;
-    gint hscale;
-    gint vscale;
-    gboolean bitmapcaching;
-    gboolean compression;
-    gboolean showcursor;
-    gboolean viewonly;
-    gboolean console;
-    gboolean disableserverinput;
-    gboolean aspectscale;
-    gboolean shareprinter;
-    gboolean once;
-    gboolean disableencryption;
-    gboolean disableclipboard;
-
-    /* SSH settings */
-    gboolean ssh_enabled;
-    gboolean ssh_loopback;
-    gchar *ssh_server;
-    gint ssh_auth;
-    gchar *ssh_username;
-    gchar *ssh_privatekey;
-    gchar *ssh_charset;
-
-    /* Credential settings */
-    gchar *username;
-    gchar *password;
-    gchar *cacert;
-    gchar *cacrl;
-    gchar *clientcert;
-    gchar *clientkey;
-
-    /* Run-time settings */
-    gint viewmode;
-    gboolean scale;
-    gboolean keyboard_grab;
-
-    gint window_width;
-    gint window_height;
-    gboolean window_maximize;
-
-    gint toolbar_opacity;
-
-    gint resolution_width;
-    gint resolution_height;
-} RemminaFile;
+typedef struct _RemminaFile RemminaFile;
 
 typedef enum
 {

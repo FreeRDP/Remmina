@@ -117,14 +117,19 @@ static void
 remmina_tp_channel_handler_connect (RemminaTpChannelHandler *chandler)
 {
     RemminaFile *remminafile;
+    gchar *s;
 
-    remminafile = g_new0 (RemminaFile, 1);
-    remminafile->name = chandler->alias;
-    remminafile->protocol = chandler->protocol;
-    remminafile->server = g_strdup_printf ("[%s]:%i", chandler->host, chandler->port);
-    remminafile->colordepth = 8;
+    remminafile = remmina_plugin_telepathy_service->file_new ();
+    remmina_plugin_telepathy_service->file_set_string (remminafile, "name", chandler->alias);
+    remmina_plugin_telepathy_service->file_set_string (remminafile, "protocol", chandler->protocol);
+    s = g_strdup_printf ("[%s]:%i", chandler->host, chandler->port);
+    remmina_plugin_telepathy_service->file_set_string (remminafile, "server", s);
+    g_free (s);
+    remmina_plugin_telepathy_service->file_set_int (remminafile, "colordepth", 8);
 
+    g_free (chandler->alias);
     chandler->alias = NULL;
+    g_free (chandler->protocol);
     chandler->protocol = NULL;
 
     chandler->proto_widget = remmina_plugin_telepathy_service->open_connection (remminafile,

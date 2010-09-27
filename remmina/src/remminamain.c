@@ -177,10 +177,10 @@ remmina_main_load_file_list_callback (gpointer data, gpointer user_data)
     gtk_list_store_append (store, &iter);
     gtk_list_store_set (store, &iter,
         PROTOCOL_COLUMN, remmina_file_get_icon_name (remminafile),
-        NAME_COLUMN, remminafile->name,
-        GROUP_COLUMN, remminafile->group,
-        SERVER_COLUMN, remminafile->server,
-        FILENAME_COLUMN, remminafile->filename,
+        NAME_COLUMN, remmina_file_get_string (remminafile, "name"),
+        GROUP_COLUMN, remmina_file_get_string (remminafile, "group"),
+        SERVER_COLUMN, remmina_file_get_string (remminafile, "server"),
+        FILENAME_COLUMN, remmina_file_get_filename (remminafile),
         -1);
 }
 
@@ -231,7 +231,7 @@ remmina_main_load_file_tree_callback (gpointer data, gpointer user_data)
     while (ret)
     {
         gtk_tree_model_get (GTK_TREE_MODEL (store), &iter, NAME_COLUMN, &name, FILENAME_COLUMN, &filename, -1);
-        match = (filename == NULL && g_strcmp0 (name, remminafile->group) == 0);
+        match = (filename == NULL && g_strcmp0 (name, remmina_file_get_string (remminafile, "group")) == 0);
         g_free (name);
         g_free (filename);
         if (match) break;
@@ -241,10 +241,10 @@ remmina_main_load_file_tree_callback (gpointer data, gpointer user_data)
     gtk_tree_store_append (store, &child, (match ? &iter : NULL));
     gtk_tree_store_set (store, &child,
         PROTOCOL_COLUMN, remmina_file_get_icon_name (remminafile),
-        NAME_COLUMN, remminafile->name,
-        GROUP_COLUMN, remminafile->group,
-        SERVER_COLUMN, remminafile->server,
-        FILENAME_COLUMN, remminafile->filename,
+        NAME_COLUMN, remmina_file_get_string (remminafile, "name"),
+        GROUP_COLUMN, remmina_file_get_string (remminafile, "group"),
+        SERVER_COLUMN, remmina_file_get_string (remminafile, "server"),
+        FILENAME_COLUMN, remmina_file_get_filename (remminafile),
         -1);
 }
 
@@ -609,9 +609,9 @@ remmina_main_import_file_list (RemminaMain *remminamain, GSList *files)
         path = (gchar*) element->data;
         plugin = remmina_plugin_manager_get_import_file_handler (path);
         if (plugin && (remminafile = plugin->import_func (path)) != NULL &&
-            remminafile->name)
+            remmina_file_get_string (remminafile, "name"))
         {
-            remminafile->filename = remmina_file_generate_filename ();
+            remmina_file_generate_filename (remminafile);
             remmina_file_save_all (remminafile);
             imported = TRUE;
         }

@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,7 +30,41 @@
 #define MIN_WINDOW_WIDTH 10
 #define MIN_WINDOW_HEIGHT 10
 
-#define DEFAULT_LISTEN_PORT 5500
+struct _RemminaFile
+{
+    gchar *filename;
+    GHashTable *settings;
+};
+
+typedef struct _RemminaSetting
+{
+    const gchar *setting;
+    RemminaSettingGroup group;
+    gboolean encrypted;
+} RemminaSetting;
+
+const RemminaSetting remmina_system_settings[] =
+{
+    { "resolution_width",   REMMINA_SETTING_GROUP_NONE,         FALSE },
+    { "resolution_height",  REMMINA_SETTING_GROUP_NONE,         FALSE },
+
+    { "username",           REMMINA_SETTING_GROUP_CREDENTIAL,   FALSE },
+    { "password",           REMMINA_SETTING_GROUP_CREDENTIAL,   TRUE },
+    { "cacert",             REMMINA_SETTING_GROUP_CREDENTIAL,   FALSE },
+    { "cacrl",              REMMINA_SETTING_GROUP_CREDENTIAL,   FALSE },
+    { "clientcert",         REMMINA_SETTING_GROUP_CREDENTIAL,   FALSE },
+    { "clientkey",          REMMINA_SETTING_GROUP_CREDENTIAL,   FALSE },
+
+    { "viewmode",           REMMINA_SETTING_GROUP_RUNTIME,      FALSE },
+    { "scale",              REMMINA_SETTING_GROUP_RUNTIME,      FALSE },
+    { "keyboard_grab",      REMMINA_SETTING_GROUP_RUNTIME,      FALSE },
+    { "window_width",       REMMINA_SETTING_GROUP_RUNTIME,      FALSE },
+    { "window_height",      REMMINA_SETTING_GROUP_RUNTIME,      FALSE },
+    { "window_maximize",    REMMINA_SETTING_GROUP_RUNTIME,      FALSE },
+    { "toolbar_opacity",    REMMINA_SETTING_GROUP_RUNTIME,      FALSE },
+
+    { NULL,                 0,                                  FALSE }
+};
 
 const gpointer colordepth_list[] =
 {
@@ -60,122 +94,107 @@ const gpointer quality_list[] =
     NULL
 };
 
+static RemminaSettingGroup
+remmina_setting_get_group (const gchar *setting, gboolean *encrypted)
+{
+    int i;
+
+    for (i = 0; remmina_system_settings[i].setting; i++)
+    {
+        if (g_strcmp0 (setting, remmina_system_settings[i].setting) == 0)
+        {
+            if (encrypted) *encrypted = remmina_system_settings[i].encrypted;
+            return remmina_system_settings[i].group;
+        }
+    }
+    if (encrypted) *encrypted = FALSE;
+    return REMMINA_SETTING_GROUP_PROFILE;
+}
+
+static RemminaFile*
+remmina_file_new_empty (void)
+{
+    RemminaFile *remminafile;
+
+    remminafile = g_new0 (RemminaFile, 1);
+    remminafile->settings = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
+    return remminafile;
+}
+
 RemminaFile*
 remmina_file_new_temp (void)
 {
-    RemminaFile *gf;
+    RemminaFile *remminafile;
 
     /* Try to load from the preference file for default settings first */
-    gf = remmina_file_load (remmina_pref_file);
+    remminafile = remmina_file_load (remmina_pref_file);
 
-    if (!gf)
+    if (!remminafile)
     {
-        gf = (RemminaFile*) g_malloc (sizeof (RemminaFile));
-
-        gf->filename = NULL;
-        gf->name = NULL;
-        gf->group = NULL;
-        gf->server = NULL;
-        gf->protocol = g_strdup ("RDP");
-        gf->username = NULL;
-        gf->password = NULL;
-        gf->domain = NULL;
-        gf->clientname = NULL;
-        gf->resolution = g_strdup ("AUTO");
-        gf->keymap = NULL;
-        gf->gkeymap = NULL;
-        gf->exec = NULL;
-        gf->execpath = NULL;
-        gf->sound = NULL;
-        gf->arguments = NULL;
-        gf->proxy = NULL;
-        gf->cacert = NULL;
-        gf->cacrl = NULL;
-        gf->clientcert = NULL;
-        gf->clientkey = NULL;
-        gf->colordepth = 8;
-        gf->quality = 0;
-        gf->listenport = DEFAULT_LISTEN_PORT;
-        gf->sharefolder = NULL;
-        gf->hscale = 0;
-        gf->vscale = 0;
-
-        gf->bitmapcaching = FALSE;
-        gf->compression = FALSE;
-        gf->showcursor = FALSE;
-        gf->viewonly = FALSE;
-        gf->console = FALSE;
-        gf->disableserverinput = FALSE;
-        gf->aspectscale = FALSE;
-        gf->shareprinter = FALSE;
-        gf->once = FALSE;
-        gf->disableencryption = FALSE;
-        gf->disableclipboard = FALSE;
-
-        gf->ssh_enabled = FALSE;
-        gf->ssh_loopback = FALSE;
-        gf->ssh_server = NULL;
-        gf->ssh_auth = SSH_AUTH_PASSWORD;
-        gf->ssh_username = NULL;
-        gf->ssh_privatekey = NULL;
-        gf->ssh_charset = NULL;
+        remminafile = remmina_file_new_empty ();
     }
 
-    g_free (gf->name);
-    gf->name = g_strdup (_("New Connection"));
-    g_free (gf->filename);
-    gf->filename = NULL;
+    remmina_file_set_string (remminafile, "name", _("New Connection"));
 
-    gf->viewmode = remmina_pref.default_mode;
-    gf->scale = FALSE;
-    gf->keyboard_grab = FALSE;
-    gf->window_width = 640;
-    gf->window_height = 480;
-    gf->window_maximize = FALSE;
-    gf->toolbar_opacity = 0;
-
-    return gf;
+    return remminafile;
 }
 
-gchar*
-remmina_file_generate_filename (void)
+void
+remmina_file_generate_filename (RemminaFile *remminafile)
 {
     GTimeVal gtime;
 
+    g_free (remminafile->filename);
     g_get_current_time (&gtime);
-    return g_strdup_printf ("%s/.remmina/%li%03li.remmina", g_get_home_dir (),
+    remminafile->filename = g_strdup_printf ("%s/.remmina/%li%03li.remmina", g_get_home_dir (),
         gtime.tv_sec, gtime.tv_usec / 1000);
+}
+
+void
+remmina_file_set_filename (RemminaFile *remminafile, const gchar *filename)
+{
+    g_free (remminafile->filename);
+    remminafile->filename = g_strdup (filename);
+}
+
+const gchar*
+remmina_file_get_filename (RemminaFile *remminafile)
+{
+    return remminafile->filename;
 }
 
 RemminaFile*
 remmina_file_new (void)
 {
-    RemminaFile *gf;
+    RemminaFile *remminafile;
 
-    gf = remmina_file_new_temp ();
-    gf->filename = remmina_file_generate_filename ();
+    remminafile = remmina_file_new_temp ();
+    remmina_file_generate_filename (remminafile);
 
-    return gf;
+    return remminafile;
 }
 
 RemminaFile*
 remmina_file_copy (const gchar *filename)
 {
-    RemminaFile *gf;
+    RemminaFile *remminafile;
 
-    gf = remmina_file_load (filename);
-    g_free (gf->filename);
-    gf->filename = remmina_file_generate_filename ();
+    remminafile = remmina_file_load (filename);
+    remmina_file_generate_filename (remminafile);
 
-    return gf;
+    return remminafile;
 }
 
 RemminaFile*
 remmina_file_load (const gchar *filename)
 {
     GKeyFile *gkeyfile;
-    RemminaFile *gf;
+    RemminaFile *remminafile;
+    gchar **keys;
+    gchar *key;
+    gint i;
     gchar *s;
+    gboolean encrypted;
 
     gkeyfile = g_key_file_new ();
 
@@ -183,232 +202,158 @@ remmina_file_load (const gchar *filename)
 
     if (g_key_file_has_key (gkeyfile, "remmina", "name", NULL))
     {
-        gf = (RemminaFile*) g_malloc (sizeof (RemminaFile));
+        remminafile = remmina_file_new_empty ();
 
-        gf->filename = g_strdup (filename);
-        gf->name = g_key_file_get_string (gkeyfile, "remmina", "name", NULL);
-        gf->group = g_key_file_get_string (gkeyfile, "remmina", "group", NULL);
-        gf->server = g_key_file_get_string (gkeyfile, "remmina", "server", NULL);
-        gf->protocol = g_key_file_get_string (gkeyfile, "remmina", "protocol", NULL);
-        gf->username = g_key_file_get_string (gkeyfile, "remmina", "username", NULL);
-
-        s = g_key_file_get_string (gkeyfile, "remmina", "password", NULL);
-        gf->password = remmina_crypt_decrypt (s);
-        g_free (s);
-
-        gf->domain = g_key_file_get_string (gkeyfile, "remmina", "domain", NULL);
-        gf->clientname = g_key_file_get_string (gkeyfile, "remmina", "clientname", NULL);
-        gf->resolution = g_key_file_get_string (gkeyfile, "remmina", "resolution", NULL);
-        gf->keymap = g_key_file_get_string (gkeyfile, "remmina", "keymap", NULL);
-        gf->gkeymap = g_key_file_get_string (gkeyfile, "remmina", "gkeymap", NULL);
-        gf->exec = g_key_file_get_string (gkeyfile, "remmina", "exec", NULL);
-        gf->execpath = g_key_file_get_string (gkeyfile, "remmina", "execpath", NULL);
-        gf->sound = g_key_file_get_string (gkeyfile, "remmina", "sound", NULL);
-        gf->arguments = g_key_file_get_string (gkeyfile, "remmina", "arguments", NULL);
-        gf->proxy = g_key_file_get_string (gkeyfile, "remmina", "proxy", NULL);
-        gf->cacert = g_key_file_get_string (gkeyfile, "remmina", "cacert", NULL);
-        gf->cacrl = g_key_file_get_string (gkeyfile, "remmina", "cacrl", NULL);
-        gf->clientcert = g_key_file_get_string (gkeyfile, "remmina", "clientcert", NULL);
-        gf->clientkey = g_key_file_get_string (gkeyfile, "remmina", "clientkey", NULL);
-        gf->sharefolder = g_key_file_get_string (gkeyfile, "remmina", "sharefolder", NULL);
-
-        gf->colordepth = g_key_file_get_integer (gkeyfile, "remmina", "colordepth", NULL);
-        gf->quality = g_key_file_get_integer (gkeyfile, "remmina", "quality", NULL);
-        gf->listenport = (g_key_file_has_key (gkeyfile, "remmina", "listenport", NULL) ?
-            g_key_file_get_integer (gkeyfile, "remmina", "listenport", NULL) : DEFAULT_LISTEN_PORT);
-        gf->hscale = g_key_file_get_integer (gkeyfile, "remmina", "hscale", NULL);
-        gf->vscale = g_key_file_get_integer (gkeyfile, "remmina", "vscale", NULL);
-
-        gf->bitmapcaching = g_key_file_get_boolean (gkeyfile, "remmina", "bitmapcaching", NULL);
-        gf->compression = g_key_file_get_boolean (gkeyfile, "remmina", "compression", NULL);
-        gf->showcursor = g_key_file_get_boolean (gkeyfile, "remmina", "showcursor", NULL);
-        gf->viewonly = g_key_file_get_boolean (gkeyfile, "remmina", "viewonly", NULL);
-        gf->console = g_key_file_get_boolean (gkeyfile, "remmina", "console", NULL);
-        gf->disableserverinput = g_key_file_get_boolean (gkeyfile, "remmina", "disableserverinput", NULL);
-        gf->aspectscale = g_key_file_get_boolean (gkeyfile, "remmina", "aspectscale", NULL);
-        gf->shareprinter = g_key_file_get_boolean (gkeyfile, "remmina", "shareprinter", NULL);
-        gf->once = g_key_file_get_boolean (gkeyfile, "remmina", "once", NULL);
-        gf->disableencryption = g_key_file_get_boolean (gkeyfile, "remmina", "disableencryption", NULL);
-        gf->disableclipboard = g_key_file_get_boolean (gkeyfile, "remmina", "disableclipboard", NULL);
-
-        gf->ssh_enabled = g_key_file_get_boolean (gkeyfile, "remmina", "ssh_enabled", NULL);
-        gf->ssh_loopback = g_key_file_get_boolean (gkeyfile, "remmina", "ssh_loopback", NULL);
-        gf->ssh_server = g_key_file_get_string (gkeyfile, "remmina", "ssh_server", NULL);
-        gf->ssh_auth = g_key_file_get_integer (gkeyfile, "remmina", "ssh_auth", NULL);
-        gf->ssh_username = g_key_file_get_string (gkeyfile, "remmina", "ssh_username", NULL);
-        gf->ssh_privatekey = g_key_file_get_string (gkeyfile, "remmina", "ssh_privatekey", NULL);
-        gf->ssh_charset = g_key_file_get_string (gkeyfile, "remmina", "ssh_charset", NULL);
-
-        gf->viewmode = g_key_file_get_integer (gkeyfile, "remmina", "viewmode", NULL);
-        gf->scale = g_key_file_get_boolean (gkeyfile, "remmina", "scale", NULL);
-        gf->keyboard_grab = g_key_file_get_boolean (gkeyfile, "remmina", "keyboard_grab", NULL);
-        gf->window_width = MAX (MIN_WINDOW_WIDTH, g_key_file_get_integer (gkeyfile, "remmina", "window_width", NULL));
-        gf->window_height = MAX (MIN_WINDOW_HEIGHT, g_key_file_get_integer (gkeyfile, "remmina", "window_height", NULL));
-        gf->window_maximize = (g_key_file_has_key (gkeyfile, "remmina", "window_maximize", NULL) ?
-            g_key_file_get_boolean (gkeyfile, "remmina", "window_maximize", NULL) : TRUE);
-        gf->toolbar_opacity = MIN (TOOLBAR_OPACITY_LEVEL,
-            MAX (0, g_key_file_get_integer (gkeyfile, "remmina", "toolbar_opacity", NULL)));
+        remminafile->filename = g_strdup (filename);
+        keys = g_key_file_get_keys (gkeyfile, "remmina", NULL, NULL);
+        if (keys)
+        {
+            for (i = 0; keys[i]; i++)
+            {
+                key = keys[i];
+                encrypted = FALSE;
+                remmina_setting_get_group (key, &encrypted);
+                if (encrypted)
+                {
+                    s = g_key_file_get_string (gkeyfile, "remmina", key, NULL);
+                    remmina_file_set_string_ref (remminafile, key, remmina_crypt_decrypt (s));
+                    g_free (s);
+                }
+                else
+                {
+                    remmina_file_set_string_ref (remminafile, key, g_key_file_get_string (gkeyfile, "remmina", key, NULL));
+                }
+            }
+            g_strfreev (keys);
+        }
     }
     else
     {
-        gf = NULL;
+        remminafile = NULL;
     }
 
     g_key_file_free (gkeyfile);
 
-    return gf;
+    return remminafile;
+}
+
+void
+remmina_file_set_string (RemminaFile *remminafile, const gchar *setting, const gchar *value)
+{
+    remmina_file_set_string_ref (remminafile, setting, g_strdup (value));
+}
+
+void
+remmina_file_set_string_ref (RemminaFile *remminafile, const gchar *setting, gchar *value)
+{
+    if (value && value[0])
+    {
+        g_hash_table_insert (remminafile->settings, g_strdup (setting), value);
+    }
+    else
+    {
+        g_hash_table_remove (remminafile->settings, (gpointer) setting);
+    }
+}
+
+const gchar*
+remmina_file_get_string (RemminaFile *remminafile, const gchar *setting)
+{
+    return (gchar*) g_hash_table_lookup (remminafile->settings, setting);
+}
+
+void
+remmina_file_set_int (RemminaFile *remminafile, const gchar *setting, gint value)
+{
+    g_hash_table_insert (remminafile->settings, g_strdup (setting), g_strdup_printf ("%i", value));
+}
+
+gint
+remmina_file_get_int (RemminaFile *remminafile, const gchar *setting, gint default_value)
+{
+    gchar *value;
+
+    value = g_hash_table_lookup (remminafile->settings, setting);
+    return value == NULL ? default_value : atoi (value);
 }
 
 static void
-remmina_file_store_profile (RemminaFile *gf, GKeyFile *gkeyfile)
+remmina_file_store_group (RemminaFile *remminafile, GKeyFile *gkeyfile, RemminaSettingGroup group)
 {
-    g_key_file_set_string (gkeyfile, "remmina", "name", (gf->name ? gf->name : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "group", (gf->group ? gf->group : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "server", (gf->server ? gf->server : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "protocol", (gf->protocol ? gf->protocol : ""));
-
-    g_key_file_set_string (gkeyfile, "remmina", "domain", (gf->domain ? gf->domain : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "clientname", (gf->clientname ? gf->clientname : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "resolution", (gf->resolution ? gf->resolution : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "keymap", (gf->keymap ? gf->keymap : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "gkeymap", (gf->gkeymap ? gf->gkeymap : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "exec", (gf->exec ? gf->exec : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "execpath", (gf->execpath ? gf->execpath : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "sound", (gf->sound ? gf->sound : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "arguments", (gf->arguments ? gf->arguments : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "proxy", (gf->proxy ? gf->proxy : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "sharefolder", (gf->sharefolder ? gf->sharefolder : ""));
-
-    g_key_file_set_integer (gkeyfile, "remmina", "colordepth", gf->colordepth);
-    g_key_file_set_integer (gkeyfile, "remmina", "quality", gf->quality);
-    g_key_file_set_integer (gkeyfile, "remmina", "listenport", gf->listenport);
-    g_key_file_set_integer (gkeyfile, "remmina", "hscale", gf->hscale);
-    g_key_file_set_integer (gkeyfile, "remmina", "vscale", gf->vscale);
-
-    g_key_file_set_boolean (gkeyfile, "remmina", "bitmapcaching", gf->bitmapcaching);
-    g_key_file_set_boolean (gkeyfile, "remmina", "compression", gf->compression);
-    g_key_file_set_boolean (gkeyfile, "remmina", "showcursor", gf->showcursor);
-    g_key_file_set_boolean (gkeyfile, "remmina", "viewonly", gf->viewonly);
-    g_key_file_set_boolean (gkeyfile, "remmina", "console", gf->console);
-    g_key_file_set_boolean (gkeyfile, "remmina", "disableserverinput", gf->disableserverinput);
-    g_key_file_set_boolean (gkeyfile, "remmina", "aspectscale", gf->aspectscale);
-    g_key_file_set_boolean (gkeyfile, "remmina", "shareprinter", gf->shareprinter);
-    g_key_file_set_boolean (gkeyfile, "remmina", "once", gf->once);
-    g_key_file_set_boolean (gkeyfile, "remmina", "disableencryption", gf->disableencryption);
-    g_key_file_set_boolean (gkeyfile, "remmina", "disableclipboard", gf->disableclipboard);
-
-    g_key_file_set_boolean (gkeyfile, "remmina", "ssh_enabled", gf->ssh_enabled);
-    g_key_file_set_boolean (gkeyfile, "remmina", "ssh_loopback", gf->ssh_loopback);
-    g_key_file_set_string (gkeyfile, "remmina", "ssh_server", (gf->ssh_server ? gf->ssh_server : ""));
-    g_key_file_set_integer (gkeyfile, "remmina", "ssh_auth", gf->ssh_auth);
-    g_key_file_set_string (gkeyfile, "remmina", "ssh_username", (gf->ssh_username ? gf->ssh_username : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "ssh_privatekey", (gf->ssh_privatekey ? gf->ssh_privatekey : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "ssh_charset", (gf->ssh_charset ? gf->ssh_charset : ""));
-}
-
-static void
-remmina_file_store_credential (RemminaFile *gf, GKeyFile *gkeyfile)
-{
+    GHashTableIter iter;
+    const gchar *key, *value;
     gchar *s;
+    gboolean encrypted;
+    RemminaSettingGroup g;
 
-    g_key_file_set_string (gkeyfile, "remmina", "username", (gf->username ? gf->username : ""));
-    s = remmina_crypt_encrypt (gf->password);
-    g_key_file_set_string (gkeyfile, "remmina", "password", (s ? s : ""));
-    g_free (s);
-    g_key_file_set_string (gkeyfile, "remmina", "cacert", (gf->cacert ? gf->cacert : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "cacrl", (gf->cacrl ? gf->cacrl : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "clientcert", (gf->clientcert ? gf->clientcert : ""));
-    g_key_file_set_string (gkeyfile, "remmina", "clientkey", (gf->clientkey ? gf->clientkey : ""));
+    g_hash_table_iter_init (&iter, remminafile->settings);
+    while (g_hash_table_iter_next (&iter, (gpointer*) &key, (gpointer*) &value))
+    {
+        encrypted = FALSE;
+        g = remmina_setting_get_group (key, &encrypted);
+        if (g != REMMINA_SETTING_GROUP_NONE && (group == REMMINA_SETTING_GROUP_ALL || group == g))
+        {
+            if (encrypted)
+            {
+                s = remmina_crypt_encrypt (value);
+                g_key_file_set_string (gkeyfile, "remmina", key, s);
+                g_free (s);
+            }
+            else
+            {
+                g_key_file_set_string (gkeyfile, "remmina", key, value);
+            }
+        }
+    }
 }
 
 static void
-remmina_file_store_runtime (RemminaFile *gf, GKeyFile *gkeyfile)
+remmina_file_store_all (RemminaFile *remminafile, GKeyFile *gkeyfile)
 {
-    g_key_file_set_integer (gkeyfile, "remmina", "viewmode", gf->viewmode);
-    g_key_file_set_boolean (gkeyfile, "remmina", "scale", gf->scale);
-    g_key_file_set_boolean (gkeyfile, "remmina", "keyboard_grab", gf->keyboard_grab);
-    g_key_file_set_integer (gkeyfile, "remmina", "window_width", gf->window_width);
-    g_key_file_set_integer (gkeyfile, "remmina", "window_height", gf->window_height);
-    g_key_file_set_boolean (gkeyfile, "remmina", "window_maximize", gf->window_maximize);
-    g_key_file_set_integer (gkeyfile, "remmina", "toolbar_opacity", gf->toolbar_opacity);
-}
-
-static void
-remmina_file_store_all (RemminaFile *gf, GKeyFile *gkeyfile)
-{
-    remmina_file_store_profile (gf, gkeyfile);
-    remmina_file_store_credential (gf, gkeyfile);
-    remmina_file_store_runtime (gf, gkeyfile);
+    remmina_file_store_group (remminafile, gkeyfile, REMMINA_SETTING_GROUP_ALL);
 }
 
 static GKeyFile*
-remmina_file_get_keyfile (RemminaFile *gf)
+remmina_file_get_keyfile (RemminaFile *remminafile)
 {
     GKeyFile *gkeyfile;
 
-    if (gf->filename == NULL) return NULL;
+    if (remminafile->filename == NULL) return NULL;
     gkeyfile = g_key_file_new ();
-    if (!g_key_file_load_from_file (gkeyfile, gf->filename, G_KEY_FILE_NONE, NULL))
+    if (!g_key_file_load_from_file (gkeyfile, remminafile->filename, G_KEY_FILE_NONE, NULL))
     {
         /* it's a new file, so we need to initially store everything into it */
-        remmina_file_store_all (gf, gkeyfile);
+        remmina_file_store_all (remminafile, gkeyfile);
     }
     return gkeyfile;
 }
 
 static void
-remmina_file_save_flush (RemminaFile *gf, GKeyFile *gkeyfile)
+remmina_file_save_flush (RemminaFile *remminafile, GKeyFile *gkeyfile)
 {
     gchar *content;
     gsize length = 0;
 
     content = g_key_file_to_data (gkeyfile, &length, NULL);
-    g_file_set_contents (gf->filename, content, length, NULL);
+    g_file_set_contents (remminafile->filename, content, length, NULL);
     g_free (content);
 }
 
 void
-remmina_file_save_profile (RemminaFile *gf)
+remmina_file_save_group (RemminaFile *remminafile, RemminaSettingGroup group)
 {
     GKeyFile *gkeyfile;
 
-    if ((gkeyfile = remmina_file_get_keyfile (gf)) == NULL) return;
-    remmina_file_store_profile (gf, gkeyfile);
-    remmina_file_save_flush (gf, gkeyfile);
+    if ((gkeyfile = remmina_file_get_keyfile (remminafile)) == NULL) return;
+    remmina_file_store_group (remminafile, gkeyfile, group);
+    remmina_file_save_flush (remminafile, gkeyfile);
     g_key_file_free (gkeyfile);
 }
 
 void
-remmina_file_save_credential (RemminaFile *gf)
+remmina_file_save_all (RemminaFile *remminafile)
 {
-    GKeyFile *gkeyfile;
-
-    if ((gkeyfile = remmina_file_get_keyfile (gf)) == NULL) return;
-    remmina_file_store_credential (gf, gkeyfile);
-    remmina_file_save_flush (gf, gkeyfile);
-    g_key_file_free (gkeyfile);
-}
-
-void
-remmina_file_save_runtime (RemminaFile *gf)
-{
-    GKeyFile *gkeyfile;
-
-    if ((gkeyfile = remmina_file_get_keyfile (gf)) == NULL) return;
-    remmina_file_store_runtime (gf, gkeyfile);
-    remmina_file_save_flush (gf, gkeyfile);
-    g_key_file_free (gkeyfile);
-}
-
-void
-remmina_file_save_all (RemminaFile *gf)
-{
-    GKeyFile *gkeyfile;
-
-    if ((gkeyfile = remmina_file_get_keyfile (gf)) == NULL) return;
-    remmina_file_store_all (gf, gkeyfile);
-    remmina_file_save_flush (gf, gkeyfile);
-    g_key_file_free (gkeyfile);
+    remmina_file_save_group (remminafile, REMMINA_SETTING_GROUP_ALL);
 }
 
 void
@@ -417,125 +362,52 @@ remmina_file_free (RemminaFile *remminafile)
     if (remminafile == NULL) return;
 
     g_free (remminafile->filename);
-    g_free (remminafile->name);
-    g_free (remminafile->group);
-    g_free (remminafile->server);
-    g_free (remminafile->protocol);
-    g_free (remminafile->username);
-    g_free (remminafile->password);
-    g_free (remminafile->domain);
-    g_free (remminafile->clientname);
-    g_free (remminafile->resolution);
-    g_free (remminafile->keymap);
-    g_free (remminafile->gkeymap);
-    g_free (remminafile->exec);
-    g_free (remminafile->execpath);
-    g_free (remminafile->sound);
-    g_free (remminafile->arguments);
-    g_free (remminafile->proxy);
-    g_free (remminafile->cacert);
-    g_free (remminafile->cacrl);
-    g_free (remminafile->clientcert);
-    g_free (remminafile->clientkey);
-    g_free (remminafile->sharefolder);
-
-    g_free (remminafile->ssh_server);
-    g_free (remminafile->ssh_username);
-    g_free (remminafile->ssh_privatekey);
-    g_free (remminafile->ssh_charset);
+    g_hash_table_destroy (remminafile->settings);
     g_free (remminafile);
 }
 
 RemminaFile*
 remmina_file_dup (RemminaFile *remminafile)
 {
-    RemminaFile *gf;
+    RemminaFile *dupfile;
+    GHashTableIter iter;
+    const gchar *key, *value;
 
-    gf = (RemminaFile*) g_malloc (sizeof (RemminaFile));
-    gf->filename = g_strdup (remminafile->filename);
-    gf->name = g_strdup (remminafile->name);
-    gf->group = g_strdup (remminafile->group);
-    gf->server = g_strdup (remminafile->server);
-    gf->protocol = g_strdup (remminafile->protocol);
-    gf->username = g_strdup (remminafile->username);
-    gf->password = g_strdup (remminafile->password);
-    gf->domain = g_strdup (remminafile->domain);
-    gf->clientname = g_strdup (remminafile->clientname);
-    gf->resolution = g_strdup (remminafile->resolution);
-    gf->keymap = g_strdup (remminafile->keymap);
-    gf->gkeymap = g_strdup (remminafile->gkeymap);
-    gf->exec = g_strdup (remminafile->exec);
-    gf->execpath = g_strdup (remminafile->execpath);
-    gf->sound = g_strdup (remminafile->sound);
-    gf->arguments = g_strdup (remminafile->arguments);
-    gf->proxy = g_strdup (remminafile->proxy);
-    gf->cacert = g_strdup (remminafile->cacert);
-    gf->cacrl = g_strdup (remminafile->cacrl);
-    gf->clientcert = g_strdup (remminafile->clientcert);
-    gf->clientkey = g_strdup (remminafile->clientkey);
-    gf->sharefolder = g_strdup (remminafile->sharefolder);
+    dupfile = remmina_file_new_empty ();
+    dupfile->filename = g_strdup (remminafile->filename);
 
-    gf->colordepth = remminafile->colordepth;
-    gf->quality = remminafile->quality;
-    gf->listenport = remminafile->listenport;
-    gf->hscale = remminafile->hscale;
-    gf->vscale = remminafile->vscale;
+    g_hash_table_iter_init (&iter, remminafile->settings);
+    while (g_hash_table_iter_next (&iter, (gpointer*) &key, (gpointer*) &value))
+    {
+        remmina_file_set_string (dupfile, key, value);
+    }
 
-    gf->bitmapcaching = remminafile->bitmapcaching;
-    gf->compression = remminafile->compression;
-    gf->showcursor = remminafile->showcursor;
-    gf->viewonly = remminafile->viewonly;
-    gf->console = remminafile->console;
-    gf->disableserverinput = remminafile->disableserverinput;
-    gf->aspectscale = remminafile->aspectscale;
-    gf->shareprinter = remminafile->shareprinter;
-    gf->once = remminafile->once;
-    gf->disableencryption = remminafile->disableencryption;
-    gf->disableclipboard = remminafile->disableclipboard;
-
-    gf->ssh_enabled = remminafile->ssh_enabled;
-    gf->ssh_loopback = remminafile->ssh_loopback;
-    gf->ssh_server = g_strdup (remminafile->ssh_server);
-    gf->ssh_auth = remminafile->ssh_auth;
-    gf->ssh_username = g_strdup (remminafile->ssh_username);
-    gf->ssh_privatekey = g_strdup (remminafile->ssh_privatekey);
-    gf->ssh_charset = g_strdup (remminafile->ssh_charset);
-
-    gf->viewmode = remminafile->viewmode;
-    gf->scale = remminafile->scale;
-    gf->keyboard_grab = remminafile->keyboard_grab;
-    gf->window_width = remminafile->window_width;
-    gf->window_height = remminafile->window_height;
-    gf->window_maximize = remminafile->window_maximize;
-    gf->toolbar_opacity = remminafile->toolbar_opacity;
-
-    return gf;
+    return dupfile;
 }
 
 void
 remmina_file_update_screen_resolution (RemminaFile *remminafile)
 {
     GdkScreen *screen;
-    gchar *tmp, *pos;
+    gchar *pos;
+    gchar *resolution;
 
-
-    if (remminafile->resolution == NULL ||
-        g_strcmp0 (remminafile->resolution, "AUTO") == 0 ||
-        g_strrstr (remminafile->resolution, "x") == NULL)
+    resolution = g_strdup (remmina_file_get_string (remminafile, "resolution"));
+    if (resolution == NULL ||
+        strchr (resolution, 'x') == NULL)
     {
         screen = gdk_screen_get_default ();
-        remminafile->resolution_width = gdk_screen_get_width (screen);
-        remminafile->resolution_height = gdk_screen_get_height (screen);
+        remmina_file_set_int (remminafile, "resolution_width", gdk_screen_get_width (screen));
+        remmina_file_set_int (remminafile, "resolution_height", gdk_screen_get_height (screen));
     }
     else
     {
-        tmp = g_strdup (remminafile->resolution);
-        pos = g_strrstr (tmp, "x");
+        pos = strchr (resolution, 'x');
         *pos++ = '\0';
-        remminafile->resolution_width = MAX (100, MIN (4096, atoi (tmp)));
-        remminafile->resolution_height = MAX (100, MIN (4096, atoi (pos)));
-        g_free (tmp);
+        remmina_file_set_int (remminafile, "resolution_width", MAX (100, MIN (4096, atoi (resolution))));
+        remmina_file_set_int (remminafile, "resolution_height", MAX (100, MIN (4096, atoi (pos))));
     }
+    g_free (resolution);
 }
 
 const gchar*
@@ -543,10 +415,11 @@ remmina_file_get_icon_name (RemminaFile *remminafile)
 {
     RemminaProtocolPlugin *plugin;
 
-    plugin = (RemminaProtocolPlugin *) remmina_plugin_manager_get_plugin (REMMINA_PLUGIN_TYPE_PROTOCOL, remminafile->protocol);
+    plugin = (RemminaProtocolPlugin *) remmina_plugin_manager_get_plugin (REMMINA_PLUGIN_TYPE_PROTOCOL,
+        remmina_file_get_string (remminafile, "protocol"));
     if (!plugin) return "remmina";
 
-    return (remminafile->ssh_enabled ? plugin->icon_name_ssh : plugin->icon_name);
+    return (remmina_file_get_int (remminafile, "ssh_enabled", FALSE) ? plugin->icon_name_ssh : plugin->icon_name);
 }
 
 RemminaFile*
@@ -557,8 +430,7 @@ remmina_file_dup_temp_protocol (RemminaFile *remminafile, const gchar *new_proto
     tmp = remmina_file_dup (remminafile);
     g_free (tmp->filename);
     tmp->filename = NULL;
-    g_free (tmp->protocol);
-    tmp->protocol = g_strdup (new_protocol);
+    remmina_file_set_string (tmp, "protocol", new_protocol);
     return tmp;
 }
 

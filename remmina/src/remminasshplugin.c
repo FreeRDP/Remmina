@@ -123,8 +123,8 @@ remmina_plugin_ssh_main_thread (gpointer data)
     {
         /* New SSH Shell connection */
         remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
-        g_free (remminafile->ssh_server);
-        remminafile->ssh_server = g_strdup (remminafile->server);
+        remmina_plugin_service->file_set_string (remminafile, "ssh_server",
+            remmina_plugin_service->file_get_string (remminafile, "server"));
 
         shell = remmina_ssh_shell_new_from_file (remminafile);
         while (1)

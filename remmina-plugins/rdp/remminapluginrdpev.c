@@ -84,6 +84,7 @@ remmina_plugin_rdpev_update_scale_buffer (RemminaProtocolWidget *gp)
     gint width, height;
     gint gpwidth, gpheight;
     gboolean scale;
+    gint hscale, vscale;
 
     gpdata = GET_DATA (gp);
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
@@ -103,10 +104,12 @@ remmina_plugin_rdpev_update_scale_buffer (RemminaProtocolWidget *gp)
             }
             gpwidth = remmina_plugin_service->protocol_plugin_get_width (gp);
             gpheight = remmina_plugin_service->protocol_plugin_get_height (gp);
-            gpdata->scale_width = (remminafile->hscale > 0 ?
-                MAX (1, gpwidth * remminafile->hscale / 100) : width);
-            gpdata->scale_height = (remminafile->vscale > 0 ?
-                MAX (1, gpheight * remminafile->vscale / 100) : height);
+            hscale = remmina_plugin_service->file_get_int (remminafile, "hscale", 0);
+            vscale = remmina_plugin_service->file_get_int (remminafile, "vscale", 0);
+            gpdata->scale_width = (hscale > 0 ?
+                MAX (1, gpwidth * hscale / 100) : width);
+            gpdata->scale_height = (vscale > 0 ?
+                MAX (1, gpheight * vscale / 100) : height);
 
             if (gpdata->scale_width == gpwidth && gpdata->scale_height == gpheight)
             {
@@ -418,17 +421,20 @@ remmina_plugin_rdpev_update_scale (RemminaProtocolWidget *gp)
     RemminaPluginRdpData *gpdata;
     RemminaFile *remminafile;
     gint width, height;
+    gint hscale, vscale;
 
     gpdata = GET_DATA (gp);
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
     width = remmina_plugin_service->protocol_plugin_get_width (gp);
     height = remmina_plugin_service->protocol_plugin_get_height (gp);
+    hscale = remmina_plugin_service->file_get_int (remminafile, "hscale", 0);
+    vscale = remmina_plugin_service->file_get_int (remminafile, "vscale", 0);
     if (gpdata->scale)
     {
         gtk_widget_set_size_request (GTK_WIDGET (gpdata->drawing_area),
-            (remminafile->hscale > 0 ? width * remminafile->hscale / 100 : -1),
-            (remminafile->vscale > 0 ? height * remminafile->vscale / 100 : -1));
+            (hscale > 0 ? width * hscale / 100 : -1),
+            (vscale > 0 ? height * vscale / 100 : -1));
     }
     else
     {
