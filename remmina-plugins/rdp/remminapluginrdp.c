@@ -126,6 +126,7 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     gchar *value;
     gint rdpdr_num;
     gint drdynvc_num;
+    const gchar *cs;
 
     gpdata = GET_DATA (gp);
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
@@ -140,48 +141,54 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     g_free (host);
     g_free (s);
 
-    gpdata->settings->server_depth = remminafile->colordepth;
-    gpdata->settings->width = remminafile->resolution_width;
-    gpdata->settings->height = remminafile->resolution_height;
-    remmina_plugin_service->protocol_plugin_set_width (gp, remminafile->resolution_width);
-    remmina_plugin_service->protocol_plugin_set_height (gp, remminafile->resolution_height);
+    gpdata->settings->server_depth = remmina_plugin_service->file_get_int (remminafile, "colordepth", 8);
+    gpdata->settings->width = remmina_plugin_service->file_get_int (remminafile, "resolution_width", 640);
+    gpdata->settings->height = remmina_plugin_service->file_get_int (remminafile, "resolution_height", 480);
+    remmina_plugin_service->protocol_plugin_set_width (gp, gpdata->settings->width);
+    remmina_plugin_service->protocol_plugin_set_height (gp, gpdata->settings->height);
 
-    if (remminafile->username && remminafile->username[0] != '\0')
+    if (remmina_plugin_service->file_get_string (remminafile, "username"))
     {
-        strncpy (gpdata->settings->username, remminafile->username, sizeof (gpdata->settings->username) - 1);
+        strncpy (gpdata->settings->username, remmina_plugin_service->file_get_string (remminafile, "username"),
+            sizeof (gpdata->settings->username) - 1);
     }
 
-    if (remminafile->domain && remminafile->domain[0] != '\0')
+    if (remmina_plugin_service->file_get_string (remminafile, "domain"))
     {
-        strncpy (gpdata->settings->domain, remminafile->domain, sizeof (gpdata->settings->domain) - 1);
+        strncpy (gpdata->settings->domain, remmina_plugin_service->file_get_string (remminafile, "domain"),
+            sizeof (gpdata->settings->domain) - 1);
     }
 
-    if (remminafile->password && remminafile->password[0] != '\0')
+    if (remmina_plugin_service->file_get_string (remminafile, "password"))
     {
-        strncpy (gpdata->settings->password, remminafile->password, sizeof (gpdata->settings->password) - 1);
+        strncpy (gpdata->settings->password, remmina_plugin_service->file_get_string (remminafile, "password"),
+            sizeof (gpdata->settings->password) - 1);
         gpdata->settings->autologin = 1;
     }
 
-    if (remminafile->clientname && remminafile->clientname[0] != '\0')
+    if (remmina_plugin_service->file_get_string (remminafile, "clientname"))
     {
-        strncpy (gpdata->settings->hostname, remminafile->clientname, sizeof (gpdata->settings->hostname) - 1);
+        strncpy (gpdata->settings->hostname, remmina_plugin_service->file_get_string (remminafile, "clientname"),
+            sizeof (gpdata->settings->hostname) - 1);
     }
     else
     {
         strncpy (gpdata->settings->hostname, g_get_host_name (), sizeof (gpdata->settings->hostname) - 1);
     }
 
-    if (remminafile->exec && remminafile->exec[0] != '\0')
+    if (remmina_plugin_service->file_get_string (remminafile, "exec"))
     {
-        strncpy (gpdata->settings->shell, remminafile->exec, sizeof (gpdata->settings->shell) - 1);
+        strncpy (gpdata->settings->shell, remmina_plugin_service->file_get_string (remminafile, "exec"),
+            sizeof (gpdata->settings->shell) - 1);
     }
 
-    if (remminafile->execpath && remminafile->execpath[0] != '\0')
+    if (remmina_plugin_service->file_get_string (remminafile, "execpath"))
     {
-        strncpy (gpdata->settings->directory, remminafile->execpath, sizeof (gpdata->settings->directory) - 1);
+        strncpy (gpdata->settings->directory, remmina_plugin_service->file_get_string (remminafile, "execpath"),
+            sizeof (gpdata->settings->directory) - 1);
     }
 
-    s = g_strdup_printf ("rdp_quality_%i", remminafile->quality);
+    s = g_strdup_printf ("rdp_quality_%i", remmina_plugin_service->file_get_int (remminafile, "quality", DEFAULT_QUALITY_0));
     value = remmina_plugin_service->pref_get_value (s);
     g_free (s);
     if (value && value[0])
@@ -190,7 +197,7 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     }
     else
     {
-        switch (remminafile->quality)
+        switch (remmina_plugin_service->file_get_int (remminafile, "quality", DEFAULT_QUALITY_0))
         {
         case 9:
             gpdata->settings->performanceflags = DEFAULT_QUALITY_9;
@@ -211,17 +218,17 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
 
     gpdata->settings->keyboard_layout = remmina_plugin_rdpset_get_keyboard_layout();
 
-    if (remminafile->console)
+    if (remmina_plugin_service->file_get_int (remminafile, "console", FALSE))
     {
         gpdata->settings->console_session = 1;
     }
 
     drdynvc_num = 0;
-    if (g_strcmp0 (remminafile->sound, "remote") == 0)
+    if (g_strcmp0 (remmina_plugin_service->file_get_string (remminafile, "sound"), "remote") == 0)
     {
         gpdata->settings->console_audio = 1;
     }
-    else if (g_strcmp0 (remminafile->sound, "local") == 0)
+    else if (g_strcmp0 (remmina_plugin_service->file_get_string (remminafile, "sound"), "local") == 0)
     {
         freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "rdpsnd", NULL);
         gpdata->drdynvc_data[drdynvc_num].size = sizeof(RD_PLUGIN_DATA);
@@ -233,23 +240,24 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
         freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "drdynvc", gpdata->drdynvc_data);
     }
 
-    if (!remminafile->disableclipboard)
+    if (!remmina_plugin_service->file_get_int (remminafile, "disableclipboard", FALSE))
     {
         freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "cliprdr", NULL);
     }
 
     rdpdr_num = 0;
-    if (remminafile->sharefolder && remminafile->sharefolder[0] == '/')
+    cs = remmina_plugin_service->file_get_string (remminafile, "sharefolder");
+    if (cs && cs[0] == '/')
     {
-        s = strrchr (remminafile->sharefolder, '/');
+        s = strrchr (cs, '/');
         s = (s && s[1] ? s + 1 : "root");
         gpdata->rdpdr_data[rdpdr_num].size = sizeof(RD_PLUGIN_DATA);
         gpdata->rdpdr_data[rdpdr_num].data[0] = "disk";
         gpdata->rdpdr_data[rdpdr_num].data[1] = s;
-        gpdata->rdpdr_data[rdpdr_num].data[2] = remminafile->sharefolder;
+        gpdata->rdpdr_data[rdpdr_num].data[2] = (gchar*) cs;
         rdpdr_num++;
     }
-    if (remminafile->shareprinter)
+    if (remmina_plugin_service->file_get_int (remminafile, "shareprinter", FALSE))
     {
         gpdata->rdpdr_data[rdpdr_num].size = sizeof(RD_PLUGIN_DATA);
         gpdata->rdpdr_data[rdpdr_num].data[0] = "printer";

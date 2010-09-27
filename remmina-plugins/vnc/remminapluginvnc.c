@@ -231,6 +231,7 @@ remmina_plugin_vnc_update_scale_buffer (RemminaProtocolWidget *gp, gboolean in_t
     RemminaFile *remminafile;
     gint width, height;
     gint gpwidth, gpheight;
+    gint hscale, vscale;
     gboolean scale;
     gint x, y, w, h;
     GdkPixbuf *pixbuf;
@@ -255,10 +256,12 @@ remmina_plugin_vnc_update_scale_buffer (RemminaProtocolWidget *gp, gboolean in_t
                 }
                 gpwidth = remmina_plugin_service->protocol_plugin_get_width (gp);
                 gpheight = remmina_plugin_service->protocol_plugin_get_height (gp);
-                gpdata->scale_width = (remminafile->hscale > 0 ?
-                    MAX (1, gpwidth * remminafile->hscale / 100) : width);
-                gpdata->scale_height = (remminafile->vscale > 0 ?
-                    MAX (1, gpheight * remminafile->vscale / 100) : height);
+                hscale = remmina_plugin_service->file_get_int (remminafile, "hscale", 0);
+                vscale = remmina_plugin_service->file_get_int (remminafile, "vscale", 0);
+                gpdata->scale_width = (hscale > 0 ?
+                    MAX (1, gpwidth * hscale / 100) : width);
+                gpdata->scale_height = (vscale > 0 ?
+                    MAX (1, gpheight * vscale / 100) : height);
 
                 pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8,
                     gpdata->scale_width, gpdata->scale_height);
@@ -314,6 +317,7 @@ remmina_plugin_vnc_update_scale (RemminaProtocolWidget *gp, gboolean scale)
     RemminaPluginVncData *gpdata;
     RemminaFile *remminafile;
     gint width, height;
+    gint hscale, vscale;
 
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
@@ -322,9 +326,11 @@ remmina_plugin_vnc_update_scale (RemminaProtocolWidget *gp, gboolean scale)
     height = remmina_plugin_service->protocol_plugin_get_height (gp);
     if (scale)
     {
+        hscale = remmina_plugin_service->file_get_int (remminafile, "hscale", 0);
+        vscale = remmina_plugin_service->file_get_int (remminafile, "vscale", 0);
         gtk_widget_set_size_request (GTK_WIDGET (gpdata->drawing_area),
-            (remminafile->hscale > 0 ? width * remminafile->hscale / 100 : -1),
-            (remminafile->vscale > 0 ? height * remminafile->vscale / 100 : -1));
+            (hscale > 0 ? width * hscale / 100 : -1),
+            (vscale > 0 ? height * vscale / 100 : -1));
     }
     else
     {
@@ -799,9 +805,9 @@ remmina_plugin_vnc_rfb_password (rfbClient *cl)
     gpdata->auth_called = TRUE;
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
-    if (gpdata->auth_first && remminafile->password && remminafile->password[0] != '\0')
+    if (gpdata->auth_first && remmina_plugin_service->file_get_string (remminafile, "password"))
     {
-        pwd = g_strdup (remminafile->password);
+        pwd = g_strdup (remmina_plugin_service->file_get_string (remminafile, "password"));
     }
     else
     {
@@ -829,7 +835,6 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
     RemminaProtocolWidget *gp;
     RemminaPluginVncData *gpdata;
     RemminaFile *remminafile;
-    gchar *s;
     gint ret;
 
     gp = (RemminaProtocolWidget*) (rfbClientGetClientData (cl, NULL));
@@ -845,11 +850,11 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
     case rfbCredentialTypeUser:
 
         if (gpdata->auth_first && 
-            remminafile->username && remminafile->username[0] != '\0' &&
-            remminafile->password && remminafile->password[0] != '\0')
+            remmina_plugin_service->file_get_string (remminafile, "username") &&
+            remmina_plugin_service->file_get_string (remminafile, "password"))
         {
-            cred->userCredential.username = g_strdup (remminafile->username);
-            cred->userCredential.password = g_strdup (remminafile->password);
+            cred->userCredential.username = g_strdup (remmina_plugin_service->file_get_string (remminafile, "username"));
+            cred->userCredential.password = g_strdup (remmina_plugin_service->file_get_string (remminafile, "password"));
         }
         else
         {
@@ -873,16 +878,12 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 
     case rfbCredentialTypeX509:
         if (gpdata->auth_first &&
-            remminafile->cacert && remminafile->cacert[0] != '\0')
+            remmina_plugin_service->file_get_string (remminafile, "cacert"))
         {
-            s = remminafile->cacert;
-            cred->x509Credential.x509CACertFile = (s && s[0] ? g_strdup (s) : NULL);
-            s = remminafile->cacrl;
-            cred->x509Credential.x509CACrlFile = (s && s[0] ? g_strdup (s) : NULL);
-            s = remminafile->clientcert;
-            cred->x509Credential.x509ClientCertFile = (s && s[0] ? g_strdup (s) : NULL);
-            s = remminafile->clientkey;
-            cred->x509Credential.x509ClientKeyFile = (s && s[0] ? g_strdup (s) : NULL);
+            cred->x509Credential.x509CACertFile = g_strdup (remmina_plugin_service->file_get_string (remminafile, "cacert"));
+            cred->x509Credential.x509CACrlFile = g_strdup (remmina_plugin_service->file_get_string (remminafile, "cacrl"));
+            cred->x509Credential.x509ClientCertFile = g_strdup (remmina_plugin_service->file_get_string (remminafile, "clientcert"));
+            cred->x509Credential.x509ClientKeyFile = g_strdup (remmina_plugin_service->file_get_string (remminafile, "clientkey"));
         }
         else
         {
@@ -1182,7 +1183,8 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
         cl->GetCredential = remmina_plugin_vnc_rfb_credential;
 #endif
         cl->GotFrameBufferUpdate = remmina_plugin_vnc_rfb_updatefb;
-        cl->GotXCutText = (remminafile->disableclipboard ? NULL : remmina_plugin_vnc_rfb_cuttext);
+        cl->GotXCutText = (remmina_plugin_service->file_get_int (remminafile, "disableclipboard", FALSE) ?
+            NULL : remmina_plugin_vnc_rfb_cuttext);
         cl->GotCursorShape = remmina_plugin_vnc_rfb_cursor_shape;
         cl->Bell = remmina_plugin_vnc_rfb_bell;
         cl->HandleTextChat = remmina_plugin_vnc_rfb_chat;
@@ -1192,7 +1194,7 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
         {
             cl->serverHost = host;
             cl->listenSpecified = TRUE;
-            if (remminafile->ssh_enabled)
+            if (remmina_plugin_service->file_get_int (remminafile, "ssh_enabled", FALSE))
             {
                 /* When we use reverse tunnel, the local port does not really matter.
                  * Hardcode a default port just in case the remote port is customized
@@ -1201,7 +1203,7 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
             }
             else
             {
-                cl->listenPort = remminafile->listenport;
+                cl->listenPort = remmina_plugin_service->file_get_int (remminafile, "listenport", 5500);
             }
 
             remmina_plugin_vnc_incoming_connection (gp, cl);
@@ -1215,18 +1217,19 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
             if (cl->serverPort < 100) cl->serverPort += 5900;
         }
 
-        if (remminafile->proxy && remminafile->proxy[0])
+        if (remmina_plugin_service->file_get_string (remminafile, "proxy"))
         {
-            remmina_plugin_service->get_server_port (remminafile->proxy, 5900, &cl->destHost, &cl->destPort);
+            remmina_plugin_service->get_server_port (remmina_plugin_service->file_get_string (remminafile, "proxy"), 5900,
+                &cl->destHost, &cl->destPort);
         }
 
-        cl->appData.useRemoteCursor = (remminafile->showcursor ? FALSE : TRUE);
+        cl->appData.useRemoteCursor = (remmina_plugin_service->file_get_int (remminafile, "showcursor", FALSE) ? FALSE : TRUE);
 
-        remmina_plugin_vnc_update_quality (cl, remminafile->quality);
-        remmina_plugin_vnc_update_colordepth (cl, remminafile->colordepth);
+        remmina_plugin_vnc_update_quality (cl, remmina_plugin_service->file_get_int (remminafile, "quality", 0));
+        remmina_plugin_vnc_update_colordepth (cl, remmina_plugin_service->file_get_int (remminafile, "colordepth", 8));
         SetFormatAndEncodings (cl);
 
-        if (remminafile->disableencryption)
+        if (remmina_plugin_service->file_get_int (remminafile, "disableencryption", FALSE))
         {
             SetClientAuthSchemes (cl, remmina_plugin_vnc_no_encrypt_auth_types, -1);
         }
@@ -1249,7 +1252,7 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
         }
 
         /* Otherwise, it's a password error. Try to clear saved password if any */
-        if (remminafile->password) remminafile->password[0] = '\0';
+        remmina_plugin_service->file_set_string (remminafile, "password", NULL);
 
         if (!gpdata->connected) break;
 
@@ -1281,7 +1284,7 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
 
     remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
 
-    if (remminafile->disableserverinput)
+    if (remmina_plugin_service->file_get_int (remminafile, "disableserverinput", FALSE))
     {
         PermitServerInput(cl, 1);
     }
@@ -1321,7 +1324,7 @@ remmina_plugin_vnc_on_motion (GtkWidget *widget, GdkEventMotion *event, RemminaP
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     if (!gpdata->connected || !gpdata->client) return FALSE;
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
-    if (remminafile->viewonly) return FALSE;
+    if (remmina_plugin_service->file_get_int (remminafile, "viewonly", FALSE)) return FALSE;
 
     if (remmina_plugin_service->protocol_plugin_get_scale (gp))
     {
@@ -1349,7 +1352,7 @@ remmina_plugin_vnc_on_button (GtkWidget *widget, GdkEventButton *event, RemminaP
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     if (!gpdata->connected || !gpdata->client) return FALSE;
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
-    if (remminafile->viewonly) return FALSE;
+    if (remmina_plugin_service->file_get_int (remminafile, "viewonly", FALSE)) return FALSE;
 
     /* We only accept 3 buttons */
     if (event->button < 1 || event->button > 3) return FALSE;
@@ -1386,7 +1389,7 @@ remmina_plugin_vnc_on_scroll (GtkWidget *widget, GdkEventScroll *event, RemminaP
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     if (!gpdata->connected || !gpdata->client) return FALSE;
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
-    if (remminafile->viewonly) return FALSE;
+    if (remmina_plugin_service->file_get_int (remminafile, "viewonly", FALSE)) return FALSE;
 
     switch (event->direction)
     {
@@ -1470,9 +1473,10 @@ remmina_plugin_vnc_on_key (GtkWidget *widget, GdkEventKey *event, RemminaProtoco
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     if (!gpdata->connected || !gpdata->client) return FALSE;
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
-    if (remminafile->viewonly) return FALSE;
+    if (remmina_plugin_service->file_get_int (remminafile, "viewonly", FALSE)) return FALSE;
 
-    keyval = remmina_plugin_service->pref_keymap_get_keyval (remminafile->gkeymap, event->keyval);
+    keyval = remmina_plugin_service->pref_keymap_get_keyval (
+        remmina_plugin_service->file_get_string (remminafile, "gkeymap"), event->keyval);
 
     remmina_plugin_vnc_event_push (gp, REMMINA_PLUGIN_VNC_EVENT_KEY, GUINT_TO_POINTER (keyval),
         GINT_TO_POINTER (event->type == GDK_KEY_PRESS ? TRUE : FALSE), NULL);
@@ -1522,7 +1526,7 @@ remmina_plugin_vnc_on_cuttext (GtkClipboard *clipboard, GdkEvent *event, Remmina
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     if (!gpdata->connected || !gpdata->client) return;
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
-    if (remminafile->viewonly) return;
+    if (remmina_plugin_service->file_get_int (remminafile, "viewonly", FALSE)) return;
 
     gtk_clipboard_request_text (clipboard, (GtkClipboardTextReceivedFunc) remmina_plugin_vnc_on_cuttext_request, gp);
 }
@@ -1539,7 +1543,7 @@ remmina_plugin_vnc_on_realize (RemminaProtocolWidget *gp, gpointer data)
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
-    if (remminafile->showcursor)
+    if (remmina_plugin_service->file_get_int (remminafile, "showcursor", FALSE))
     {
         /* Hide local cursor (show a small dot instead) */
         gdk_color_parse ("black", &fg);
@@ -1584,7 +1588,7 @@ remmina_plugin_vnc_open_connection (RemminaProtocolWidget *gp)
     g_signal_connect (G_OBJECT (gpdata->drawing_area), "key-release-event",
         G_CALLBACK (remmina_plugin_vnc_on_key), gp);
 
-    if (!remminafile->disableclipboard)
+    if (!remmina_plugin_service->file_get_int (remminafile, "disableclipboard", FALSE))
     {
         gpdata->clipboard_handler = g_signal_connect (G_OBJECT (gtk_clipboard_get (GDK_SELECTION_CLIPBOARD)),
             "owner-change", G_CALLBACK (remmina_plugin_vnc_on_cuttext), gp);
@@ -1751,11 +1755,11 @@ remmina_plugin_vnc_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeatu
             SetFormatAndEncodings ((rfbClient*) (gpdata->client));
             break;
         case REMMINA_PROTOCOL_FEATURE_PREF_VIEWONLY:
-            remminafile->viewonly = (data != NULL);
+            remmina_plugin_service->file_set_int (remminafile, "viewonly", (data != NULL));
             break;
         case REMMINA_PROTOCOL_FEATURE_PREF_DISABLESERVERINPUT:
             PermitServerInput ((rfbClient*) (gpdata->client), (data ? 1 : 0));
-            remminafile->disableserverinput = (data ? TRUE : FALSE);
+            remmina_plugin_service->file_set_int (remminafile, "disableserverinput", (data ? TRUE : FALSE));
             break;
         case REMMINA_PROTOCOL_FEATURE_UNFOCUS:
             remmina_plugin_vnc_release_key (gp, 0);

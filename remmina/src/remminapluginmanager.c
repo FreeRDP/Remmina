@@ -99,6 +99,12 @@ RemminaPluginService remmina_plugin_manager_service =
     remmina_protocol_widget_chat_close,
     remmina_protocol_widget_chat_receive,
 
+    remmina_file_new_temp,
+    remmina_file_set_string,
+    remmina_file_get_string,
+    remmina_file_set_int,
+    remmina_file_get_int,
+
     remmina_pref_set_value,
     remmina_pref_get_value,
     remmina_pref_get_scale_quality,

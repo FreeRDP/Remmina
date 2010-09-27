@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -74,6 +74,7 @@ remmina_file_manager_get_groups (void)
     const gchar *name;
     RemminaFile *remminafile;
     RemminaStringArray *array;
+    const gchar *group;
     gchar *groups;
 
     array = remmina_string_array_new ();
@@ -86,9 +87,10 @@ remmina_file_manager_get_groups (void)
         if (!g_str_has_suffix (name, ".remmina")) continue;
         g_snprintf (filename, MAX_PATH_LEN, "%s/%s", dirname, name);
         remminafile = remmina_file_load (filename);
-        if (remminafile->group && remminafile->group[0] != '\0' && remmina_string_array_find (array, remminafile->group) < 0)
+        group = remmina_file_get_string (remminafile, "group");
+        if (group && remmina_string_array_find (array, group) < 0)
         {
-            remmina_string_array_add (array, remminafile->group);
+            remmina_string_array_add (array, group);
         }
         remmina_file_free (remminafile);
     }

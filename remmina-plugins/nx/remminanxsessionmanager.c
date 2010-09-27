@@ -129,7 +129,7 @@ remmina_nx_session_manager_main (RemminaProtocolWidget *gp)
         remmina_plugin_nx_service->protocol_plugin_init_hide (gp);
 
         dialog = gtk_dialog_new ();
-        s = g_strdup_printf (_("NX Sessions on %s"), remminafile->server);
+        s = g_strdup_printf (_("NX Sessions on %s"), remmina_plugin_nx_service->file_get_string (remminafile, "server"));
         gtk_window_set_title (GTK_WINDOW (dialog), s);
         g_free (s);
         if (gpdata->attach_session)

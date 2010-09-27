@@ -321,6 +321,10 @@ remmina_ssh_init_session (RemminaSSH *ssh)
 gboolean
 remmina_ssh_init_from_file (RemminaSSH *ssh, RemminaFile *remminafile)
 {
+    const gchar *ssh_server;
+    const gchar *ssh_username;
+    const gchar *ssh_privatekey;
+    const gchar *server;
     gchar *s;
 
     ssh->session = NULL;
@@ -330,34 +334,36 @@ remmina_ssh_init_from_file (RemminaSSH *ssh, RemminaFile *remminafile)
     pthread_mutex_init (&ssh->ssh_mutex, NULL);
 
     /* Parse the address and port */
-    if (remminafile->ssh_server && remminafile->ssh_server[0] != '\0')
+    ssh_server = remmina_file_get_string (remminafile, "ssh_server");
+    ssh_username = remmina_file_get_string (remminafile, "ssh_username");
+    ssh_privatekey = remmina_file_get_string (remminafile, "ssh_privatekey");
+    server = remmina_file_get_string (remminafile, "server");
+    if (ssh_server)
     {
-        remmina_public_get_server_port (remminafile->ssh_server, 22, &ssh->server, &ssh->port);
+        remmina_public_get_server_port (ssh_server, 22, &ssh->server, &ssh->port);
         if (ssh->server[0] == '\0')
         {
             g_free (ssh->server);
-            remmina_public_get_server_port (remminafile->server, 0, &ssh->server, NULL);
+            remmina_public_get_server_port (server, 0, &ssh->server, NULL);
         }
     }
-    else if (remminafile->server == NULL || remminafile->server[0] == '\0')
+    else if (server == NULL)
     {
         return FALSE;
     }
     else
     {
-        remmina_public_get_server_port (remminafile->server, 0, &ssh->server, NULL);
+        remmina_public_get_server_port (server, 0, &ssh->server, NULL);
         ssh->port = 22;
     }
 
-    ssh->user = g_strdup ((remminafile->ssh_username && remminafile->ssh_username[0] != '\0' ?
-        remminafile->ssh_username : g_get_user_name ()));
+    ssh->user = g_strdup (ssh_username ? ssh_username : g_get_user_name ());
     ssh->password = NULL;
-    ssh->auth = remminafile->ssh_auth;
-    ssh->charset = g_strdup (remminafile->ssh_charset);
+    ssh->auth = remmina_file_get_int (remminafile, "ssh_auth", 0);
+    ssh->charset = g_strdup (remmina_file_get_string (remminafile, "ssh_charset"));
 
     /* Public/Private keys */
-    s = (remminafile->ssh_privatekey && remminafile->ssh_privatekey[0] != '\0' ?
-        g_strdup (remminafile->ssh_privatekey) : remmina_ssh_find_identity ());
+    s = (ssh_privatekey ? g_strdup (ssh_privatekey) : remmina_ssh_find_identity ());
     if (s)
     {
         ssh->privkeyfile = remmina_ssh_identity_path (s);
@@ -1185,7 +1191,7 @@ remmina_ssh_shell_new_from_file (RemminaFile *remminafile)
 
     shell->master = -1;
     shell->slave = -1;
-    shell->exec = g_strdup (remminafile->exec);
+    shell->exec = g_strdup (remmina_file_get_string (remminafile, "exec"));
 
     return shell;
 }

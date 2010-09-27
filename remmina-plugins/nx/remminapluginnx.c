@@ -218,12 +218,14 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
     RemminaPluginNxData *gpdata;
     RemminaFile *remminafile;
     RemminaNXSession *nx;
-    gchar *type, *app;
+    const gchar *type, *app;
     gchar *s1, *s2;
     gint port;
     gint ret;
     gboolean is_empty_list;
     gint event_type = 0;
+    const gchar *cs;
+    gint i;
 
     gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     remminafile = remmina_plugin_nx_service->protocol_plugin_get_file (gp);
@@ -231,13 +233,16 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
 
     /* Connect */
 
-    remmina_nx_session_set_encryption (nx, remminafile->disableencryption ? 0 : 1);
+    remmina_nx_session_set_encryption (nx,
+        remmina_plugin_nx_service->file_get_int (remminafile, "disableencryption", FALSE) ? 0 : 1);
     remmina_nx_session_set_localport (nx, remmina_plugin_nx_service->pref_get_sshtunnel_port ());
     remmina_nx_session_set_log_callback (nx, remmina_plugin_nx_service->log_printf);
 
-    remmina_plugin_nx_service->get_server_port (remminafile->server, 22, &s1, &port);
+    remmina_plugin_nx_service->get_server_port (
+        remmina_plugin_nx_service->file_get_string (remminafile, "server"), 22, &s1, &port);
 
-    if (!remmina_nx_session_open (nx, s1, port, remminafile->ssh_privatekey,
+    if (!remmina_nx_session_open (nx, s1, port,
+        remmina_plugin_nx_service->file_get_string (remminafile, "ssh_privatekey"),
         remmina_plugin_nx_ssh_auth_callback, gp))
     {
         g_free (s1);
@@ -247,11 +252,11 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
 
     /* Login */
 
-    if (remminafile->username && remminafile->username[0] &&
-        remminafile->password && remminafile->password[0])
+    if (remmina_plugin_nx_service->file_get_string (remminafile, "username") &&
+        remmina_plugin_nx_service->file_get_string (remminafile, "password"))
     {
-        s1 = g_strdup (remminafile->username);
-        s2 = g_strdup (remminafile->password);
+        s1 = g_strdup (remmina_plugin_nx_service->file_get_string (remminafile, "username"));
+        s2 = g_strdup (remmina_plugin_nx_service->file_get_string (remminafile, "password"));
     }
     else
     {
@@ -273,23 +278,24 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
     remmina_plugin_nx_service->protocol_plugin_init_save_cred (gp);
 
     /* Prepare the session type and application */
-    if (!remminafile->exec || !remminafile->exec[0] || g_strcmp0 (remminafile->exec, "GNOME") == 0)
+    cs = remmina_plugin_nx_service->file_get_string (remminafile, "exec");
+    if (!cs || g_strcmp0 (cs, "GNOME") == 0)
     {
         type = "unix-gnome";
         app = NULL;
     }
-    else if (g_strcmp0 (remminafile->exec, "KDE") == 0)
+    else if (g_strcmp0 (cs, "KDE") == 0)
     {
         type = "unix-kde";
         app = NULL;
     }
-    else if (g_strcmp0 (remminafile->exec, "Xfce") == 0)
+    else if (g_strcmp0 (cs, "Xfce") == 0)
     {
         /* NX does not know Xfce. So we simply launch the Xfce startup program. */
         type = "unix-application";
         app = "startxfce4";
     }
-    else if (g_strcmp0 (remminafile->exec, "Shadow") == 0)
+    else if (g_strcmp0 (cs, "Shadow") == 0)
     {
         type = "shadow";
         app = NULL;
@@ -297,7 +303,7 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
     else
     {
         type = "unix-application";
-        app = remminafile->exec;
+        app = cs;
     }
 
     /* List sessions */
@@ -308,7 +314,7 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
         remmina_nx_session_add_parameter (nx, "type", type);
         if (!gpdata->attach_session)
         {
-            remmina_nx_session_add_parameter (nx, "user", remminafile->username);
+            remmina_nx_session_add_parameter (nx, "user", remmina_plugin_nx_service->file_get_string (remminafile, "username"));
             remmina_nx_session_add_parameter (nx, "status", "suspended,running");
         }
 
@@ -352,16 +358,19 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
 
     /* Start, Restore or Attach, based on the setting and existing session */
     remmina_nx_session_add_parameter (nx, "type", type);
+    i = remmina_plugin_nx_service->file_get_int (remminafile, "quality", 0);
     remmina_nx_session_add_parameter (nx, "link",
-        remminafile->quality > 2 ? "lan" :
-        remminafile->quality == 2 ? "adsl" :
-        remminafile->quality == 1 ? "isdn" : "modem");
+        i > 2 ? "lan" :
+        i == 2 ? "adsl" :
+        i == 1 ? "isdn" : "modem");
     remmina_nx_session_add_parameter (nx, "geometry", "%ix%i",
-        remminafile->resolution_width, remminafile->resolution_height);
+        remmina_plugin_nx_service->file_get_int (remminafile, "resolution_width", 0),
+        remmina_plugin_nx_service->file_get_int (remminafile, "resolution_height", 0));
     remmina_nx_session_add_parameter (nx, "keyboard", remmina_kbtype);
     remmina_nx_session_add_parameter (nx, "client", "linux");
     remmina_nx_session_add_parameter (nx, "media", "0");
-    remmina_nx_session_add_parameter (nx, "clipboard", remminafile->disableclipboard ? "none" : "both");
+    remmina_nx_session_add_parameter (nx, "clipboard",
+        remmina_plugin_nx_service->file_get_int (remminafile, "disableclipboard", FALSE) ? "none" : "both");
 
     switch (event_type)
     {
@@ -369,9 +378,10 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
     case REMMINA_NX_EVENT_START:
         if (app) remmina_nx_session_add_parameter (nx, "application", app);
 
-        remmina_nx_session_add_parameter (nx, "session", remminafile->name);
+        remmina_nx_session_add_parameter (nx, "session", remmina_plugin_nx_service->file_get_string (remminafile, "name"));
         remmina_nx_session_add_parameter (nx, "screeninfo", "%ix%ix24+render",
-            remminafile->resolution_width, remminafile->resolution_height);
+            remmina_plugin_nx_service->file_get_int (remminafile, "resolution_width", 0),
+            remmina_plugin_nx_service->file_get_int (remminafile, "resolution_height", 0));
 
         if (!remmina_nx_session_start (nx)) return FALSE;
         break;
@@ -393,7 +403,7 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
         remmina_nx_session_add_parameter (nx, "id", s1);
         g_free (s1);
 
-        remmina_nx_session_add_parameter (nx, "session", remminafile->name);
+        remmina_nx_session_add_parameter (nx, "session", remmina_plugin_nx_service->file_get_string (remminafile, "name"));
 
         if (!remmina_nx_session_restore (nx)) return FALSE;
         break;
@@ -493,20 +503,25 @@ remmina_plugin_nx_open_connection (RemminaProtocolWidget *gp)
 {
     RemminaPluginNxData *gpdata;
     RemminaFile *remminafile;
+    const gchar *resolution;
+    gint width, height;
 
     gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     remminafile = remmina_plugin_nx_service->protocol_plugin_get_file (gp);
 
-    if (g_strcmp0 (remminafile->resolution, "AUTO") == 0)
+    resolution = remmina_plugin_nx_service->file_get_string (remminafile, "resolution");
+    if (!resolution || !strchr (resolution, 'x'))
     {
         remmina_plugin_nx_service->protocol_plugin_set_expand (gp, TRUE);
-        gtk_widget_set_size_request (GTK_WIDGET (gp), 320, 240);
+        gtk_widget_set_size_request (GTK_WIDGET (gp), 640, 480);
     }
     else
     {
-        remmina_plugin_nx_service->protocol_plugin_set_width (gp, remminafile->resolution_width);
-        remmina_plugin_nx_service->protocol_plugin_set_height (gp, remminafile->resolution_height);
-        gtk_widget_set_size_request (GTK_WIDGET (gp), remminafile->resolution_width, remminafile->resolution_height);
+        width = remmina_plugin_nx_service->file_get_int (remminafile, "resolution_width", 640);
+        height = remmina_plugin_nx_service->file_get_int (remminafile, "resolution_height", 480);
+        remmina_plugin_nx_service->protocol_plugin_set_width (gp, width);
+        remmina_plugin_nx_service->protocol_plugin_set_height (gp, height);
+        gtk_widget_set_size_request (GTK_WIDGET (gp), width, height);
     }
     gpdata->socket_id = gtk_socket_get_id (GTK_SOCKET (gpdata->socket));
 

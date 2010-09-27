@@ -93,30 +93,34 @@ remmina_plugin_xdmcp_start_xephyr (RemminaProtocolWidget *gp)
      * http://bugs.freedesktop.org/show_bug.cgi?id=24144
      * As a workaround, a "Default" color depth will not add the -screen argument.    
      */
-    if (remminafile->colordepth >= 8)
+    i = remmina_plugin_service->file_get_int (remminafile, "colordepth", 8);
+    if (i >= 8)
     {
         argv[argc++] = g_strdup ("-screen");
         argv[argc++] = g_strdup_printf ("%ix%ix%i",
-            remminafile->resolution_width, remminafile->resolution_height, remminafile->colordepth);
+            remmina_plugin_service->file_get_int (remminafile, "resolution_width", 640),
+            remmina_plugin_service->file_get_int (remminafile, "resolution_height", 480),
+            i);
     }
 
-    if (remminafile->colordepth == 2)
+    if (i == 2)
     {
         argv[argc++] = g_strdup ("-grayscale");
     }
 
-    if (remminafile->showcursor)
+    if (remmina_plugin_service->file_get_int (remminafile, "showcursor", FALSE))
     {
         argv[argc++] = g_strdup ("-host-cursor");
     }
-    if (remminafile->once)
+    if (remmina_plugin_service->file_get_int (remminafile, "once", FALSE))
     {
         argv[argc++] = g_strdup ("-once");
     }
 
-    if (!remminafile->ssh_enabled)
+    if (!remmina_plugin_service->file_get_int (remminafile, "ssh_enabled", FALSE))
     {
-        remmina_plugin_service->get_server_port (remminafile->server, 0, &host, &i);
+        remmina_plugin_service->get_server_port (
+            remmina_plugin_service->file_get_string (remminafile, "server"), 0, &host, &i);
 
         argv[argc++] = g_strdup ("-query");
         argv[argc++] = host;
@@ -169,10 +173,11 @@ remmina_plugin_xdmcp_tunnel_init_callback (RemminaProtocolWidget *gp,
 
     remmina_plugin_service->protocol_plugin_set_display (gp, gpdata->display);
 
-    if (remminafile->exec && remminafile->exec[0])
+    if (remmina_plugin_service->file_get_string (remminafile, "exec"))
     {
         return remmina_plugin_service->protocol_plugin_ssh_exec (gp, FALSE,
-            "DISPLAY=localhost:%i.0 %s", remotedisplay, remminafile->exec);
+            "DISPLAY=localhost:%i.0 %s", remotedisplay,
+            remmina_plugin_service->file_get_string (remminafile, "exec"));
     }
     else
     {
@@ -191,7 +196,7 @@ remmina_plugin_xdmcp_main (RemminaProtocolWidget *gp)
     gpdata = (RemminaPluginXdmcpData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
-    if (remminafile->ssh_enabled)
+    if (remmina_plugin_service->file_get_int (remminafile, "ssh_enabled", FALSE))
     {
         if (!remmina_plugin_service->protocol_plugin_start_xport_tunnel (gp,
             remmina_plugin_xdmcp_tunnel_init_callback))
@@ -251,18 +256,21 @@ remmina_plugin_xdmcp_open_connection (RemminaProtocolWidget *gp)
 {
     RemminaPluginXdmcpData *gpdata;
     RemminaFile *remminafile;
+    gint width, height;
 
     gpdata = (RemminaPluginXdmcpData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
-    remmina_plugin_service->protocol_plugin_set_width (gp, remminafile->resolution_width);
-    remmina_plugin_service->protocol_plugin_set_height (gp, remminafile->resolution_height);
-    gtk_widget_set_size_request (GTK_WIDGET (gp), remminafile->resolution_width, remminafile->resolution_height);
+    width = remmina_plugin_service->file_get_int (remminafile, "resolution_width", 640);
+    height = remmina_plugin_service->file_get_int (remminafile, "resolution_height", 480);
+    remmina_plugin_service->protocol_plugin_set_width (gp, width);
+    remmina_plugin_service->protocol_plugin_set_height (gp, height);
+    gtk_widget_set_size_request (GTK_WIDGET (gp), width, height);
     gpdata->socket_id = gtk_socket_get_id (GTK_SOCKET (gpdata->socket));
 
 #ifdef HAVE_PTHREAD
 
-    if (remminafile->ssh_enabled)
+    if (remmina_plugin_service->file_get_int (remminafile, "ssh_enabled", FALSE))
     {
         if (pthread_create (&gpdata->thread, NULL, remmina_plugin_xdmcp_main_thread, gp))
         {

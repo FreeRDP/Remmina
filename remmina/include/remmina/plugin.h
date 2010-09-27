@@ -148,6 +148,12 @@ typedef struct _RemminaPluginService
     void         (* protocol_plugin_chat_close)           (RemminaProtocolWidget *gp);
     void         (* protocol_plugin_chat_receive)         (RemminaProtocolWidget *gp, const gchar *text);
 
+    RemminaFile* (* file_new)                             (void);
+    void         (* file_set_string)                      (RemminaFile *remminafile, const gchar *setting, const gchar *value);
+    const gchar* (* file_get_string)                      (RemminaFile *remminafile, const gchar *setting);
+    void         (* file_set_int)                         (RemminaFile *remminafile, const gchar *setting, gint value);
+    gint         (* file_get_int)                         (RemminaFile *remminafile, const gchar *setting, gint default_value);
+
     void         (* pref_set_value)                       (const gchar *key, const gchar *value);
     gchar*       (* pref_get_value)                       (const gchar *key);
     gint         (* pref_get_scale_quality)               (void);

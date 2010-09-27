@@ -32,6 +32,15 @@ enum
     SSH_AUTH_AUTO_PUBLICKEY
 };
 
+typedef enum
+{
+    REMMINA_SETTING_GROUP_NONE,
+    REMMINA_SETTING_GROUP_PROFILE,
+    REMMINA_SETTING_GROUP_CREDENTIAL,
+    REMMINA_SETTING_GROUP_RUNTIME,
+    REMMINA_SETTING_GROUP_ALL
+} RemminaSettingGroup;
+
 #define TOOLBAR_OPACITY_LEVEL 8
 #define TOOLBAR_OPACITY_MIN 0.2
 
@@ -43,14 +52,20 @@ extern const gpointer quality_list[];
 RemminaFile* remmina_file_new (void);
 RemminaFile* remmina_file_new_temp (void);
 RemminaFile* remmina_file_copy (const gchar *filename);
-gchar* remmina_file_generate_filename (void);
+void remmina_file_generate_filename (RemminaFile *remminafile);
+void remmina_file_set_filename (RemminaFile *remminafile, const gchar *filename);
+const gchar* remmina_file_get_filename (RemminaFile *remminafile);
 /* Load a new .remmina file and return the allocated RemminaFile object */
 RemminaFile* remmina_file_load (const gchar *filename);
+/* Settings get/set functions */
+void remmina_file_set_string (RemminaFile *remminafile, const gchar *setting, const gchar *value);
+void remmina_file_set_string_ref (RemminaFile *remminafile, const gchar *setting, gchar *value);
+const gchar* remmina_file_get_string (RemminaFile *remminafile, const gchar *setting);
+void remmina_file_set_int (RemminaFile *remminafile, const gchar *setting, gint value);
+gint remmina_file_get_int (RemminaFile *remminafile, const gchar *setting, gint default_value);
 /* Create or overwrite the .remmina file */
-void remmina_file_save_profile (RemminaFile *gf);
-void remmina_file_save_credential (RemminaFile *gf);
-void remmina_file_save_runtime (RemminaFile *gf);
-void remmina_file_save_all (RemminaFile *gf);
+void remmina_file_save_group (RemminaFile *remminafile, RemminaSettingGroup group);
+void remmina_file_save_all (RemminaFile *remminafile);
 /* Free the RemminaFile object */
 void remmina_file_free (RemminaFile *remminafile);
 /* Duplicate a RemminaFile object */

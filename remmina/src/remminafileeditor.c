@@ -198,7 +198,7 @@ remmina_file_editor_on_realize (GtkWidget *widget, gpointer user_data)
 
     gfe = REMMINA_FILE_EDITOR (widget);
 
-    defaultwidget = (gfe->priv->remmina_file->filename == NULL ?
+    defaultwidget = (remmina_file_get_filename (gfe->priv->remmina_file) == NULL ?
         (gfe->priv->server_combo ? gfe->priv->server_combo : gfe->priv->listenport_entry) : 
         gfe->priv->name_entry);
 
@@ -291,7 +291,7 @@ remmina_file_editor_ssh_auth_publickey_radio_on_toggled (GtkToggleButton *toggle
         gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (gfe->priv->ssh_auth_publickey_radio)));
     gtk_widget_set_sensitive (gfe->priv->ssh_privatekey_chooser, b);
 
-    if (b && (gfe->priv->remmina_file->ssh_privatekey == NULL || gfe->priv->remmina_file->ssh_privatekey[0] == '\0'))
+    if (b && remmina_file_get_string (gfe->priv->remmina_file, "ssh_privatekey"))
     {
         s = remmina_ssh_find_identity ();
         if (s)
@@ -350,6 +350,7 @@ remmina_file_editor_create_ssh_privatekey (RemminaFileEditor *gfe, GtkWidget *ta
     RemminaFileEditorPriv *priv = gfe->priv;
     GtkWidget *widget;
     GtkWidget *dialog;
+    const gchar *ssh_privatekey;
     gchar *s;
 
     if (use_label)
@@ -386,16 +387,16 @@ remmina_file_editor_create_ssh_privatekey (RemminaFileEditor *gfe, GtkWidget *ta
     gtk_table_attach_defaults (GTK_TABLE (table), widget, column + 1, column + 2, row, row + 1);
     priv->ssh_privatekey_chooser = widget;
 
-    if (priv->remmina_file->ssh_privatekey && priv->remmina_file->ssh_privatekey[0] &&
-        g_file_test (priv->remmina_file->ssh_privatekey, G_FILE_TEST_IS_REGULAR | G_FILE_TEST_EXISTS))
+    ssh_privatekey = remmina_file_get_string (priv->remmina_file, "ssh_privatekey");
+    if (ssh_privatekey &&
+        g_file_test (ssh_privatekey, G_FILE_TEST_IS_REGULAR | G_FILE_TEST_EXISTS))
     {
         gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (priv->ssh_privatekey_chooser),
-            priv->remmina_file->ssh_privatekey);
+            ssh_privatekey);
     }
     else
     {
-        g_free (priv->remmina_file->ssh_privatekey);
-        priv->remmina_file->ssh_privatekey = NULL;
+        remmina_file_set_string (priv->remmina_file, "ssh_privatekey", NULL);
     }
 }
 #endif
@@ -414,7 +415,7 @@ remmina_file_editor_create_server (RemminaFileEditor *gfe, GtkWidget *table, gin
     gtk_table_attach (GTK_TABLE (table), widget, 0, 1, row, row + 1, GTK_FILL, 0, 0, 0);
 
     s = remmina_pref_get_recent (plugin->name);
-    widget = remmina_public_create_combo_entry (s, gfe->priv->remmina_file->server, TRUE);
+    widget = remmina_public_create_combo_entry (s, remmina_file_get_string (gfe->priv->remmina_file, "server"), TRUE);
     gtk_widget_show (widget);
     gtk_widget_set_tooltip_markup (widget, _(server_tips));
     gtk_entry_set_activates_default (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (widget))), TRUE);
@@ -449,6 +450,7 @@ static void
 remmina_file_editor_create_password (RemminaFileEditor *gfe, GtkWidget *table, gint row)
 {
     GtkWidget *widget;
+    const gchar *cs;
 
     widget = gtk_label_new (_("Password"));
     gtk_widget_show (widget);
@@ -459,7 +461,8 @@ remmina_file_editor_create_password (RemminaFileEditor *gfe, GtkWidget *table, g
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, row, row + 1);
     gtk_entry_set_visibility (GTK_ENTRY (widget), FALSE);
-    if (gfe->priv->remmina_file->password) gtk_entry_set_text (GTK_ENTRY (widget), gfe->priv->remmina_file->password);
+    cs = remmina_file_get_string (gfe->priv->remmina_file, "password");
+    if (cs) gtk_entry_set_text (GTK_ENTRY (widget), cs);
     gfe->priv->password_entry = widget;
 }
 
@@ -468,6 +471,7 @@ remmina_file_editor_create_resolution (RemminaFileEditor *gfe, GtkWidget *table,
 {
     GtkWidget *widget;
     GtkWidget *hbox;
+    const gchar *resolution;
 
     widget = gtk_label_new (_("Resolution"));
     gtk_widget_show (widget);
@@ -490,7 +494,9 @@ remmina_file_editor_create_resolution (RemminaFileEditor *gfe, GtkWidget *table,
     gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, FALSE, 0);
     gfe->priv->resolution_custom_radio = widget;
 
-    widget = remmina_public_create_combo_text_d (remmina_pref.resolutions, gfe->priv->remmina_file->resolution, NULL);
+    resolution = remmina_file_get_string (gfe->priv->remmina_file, "resolution");
+
+    widget = remmina_public_create_combo_text_d (remmina_pref.resolutions, resolution, NULL);
     gtk_widget_show (widget);
     gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
     gfe->priv->resolution_custom_combo = widget;
@@ -498,8 +504,8 @@ remmina_file_editor_create_resolution (RemminaFileEditor *gfe, GtkWidget *table,
     g_signal_connect (G_OBJECT (gfe->priv->resolution_custom_radio), "toggled", 
         G_CALLBACK (remmina_file_editor_button_on_toggled), gfe->priv->resolution_custom_combo);
 
-    if (!gfe->priv->remmina_file->resolution || gfe->priv->remmina_file->resolution[0] == '\0' ||
-        g_strcmp0 (gfe->priv->remmina_file->resolution, "AUTO") == 0)
+    if (!resolution ||
+        strchr (resolution, 'x') == NULL)
     {
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (gfe->priv->resolution_auto_radio), TRUE);
         gtk_widget_set_sensitive (gfe->priv->resolution_custom_combo, FALSE);
@@ -699,138 +705,136 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, c
 
         case REMMINA_PROTOCOL_SETTING_VALUE_USERNAME:
             priv->username_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
-                _("User Name"), priv->remmina_file->username);
+                _("User Name"), remmina_file_get_string (priv->remmina_file, "username"));
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_DOMAIN:
             priv->domain_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
-                _("Domain"), priv->remmina_file->domain);
+                _("Domain"), remmina_file_get_string (priv->remmina_file, "domain"));
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_COLORDEPTH:
             priv->colordepth_combo = remmina_file_editor_create_combo_mapint (gfe, table, row, 0,
-                _("Color Depth"), colordepth_list, priv->remmina_file->colordepth);
+                _("Color Depth"), colordepth_list, remmina_file_get_int (priv->remmina_file, "colordepth", 8));
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_COLORDEPTH2:
             priv->colordepth_combo = remmina_file_editor_create_combo_mapint (gfe, table, row, 0,
-                _("Color Depth"), colordepth2_list, priv->remmina_file->colordepth);
+                _("Color Depth"), colordepth2_list, remmina_file_get_int (priv->remmina_file, "colordepth", 8));
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_SHAREFOLDER:
             priv->sharefolder_check = gtk_check_button_new ();
             priv->sharefolder_chooser = remmina_file_editor_create_folder_chooser (gfe, table, row, 0,
-                _("Share Folder"), priv->remmina_file->sharefolder, priv->sharefolder_check);
+                _("Share Folder"), remmina_file_get_string (priv->remmina_file, "sharefolder"), priv->sharefolder_check);
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_SOUND:
             priv->sound_combo = remmina_file_editor_create_combo_map (gfe, table, row, 0,
-                _("Sound"), sound_list, priv->remmina_file->sound);
+                _("Sound"), sound_list, remmina_file_get_string (priv->remmina_file, "sound"));
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_KEYMAP:
             priv->keymap_combo = remmina_file_editor_create_combo_entry (gfe, table, row, 0,
-                _("Keyboard Mapping"), keymap_list, priv->remmina_file->keymap);
+                _("Keyboard Mapping"), keymap_list, remmina_file_get_string (priv->remmina_file, "keymap"));
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_CLIENTNAME:
             priv->clientname_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
-                _("Client Name"), priv->remmina_file->clientname);
+                _("Client Name"), remmina_file_get_string (priv->remmina_file, "clientname"));
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_EXEC:
             priv->exec_widget = remmina_file_editor_create_entry (gfe, table, row, 0,
-                _("Startup Program"), priv->remmina_file->exec);
+                _("Startup Program"), remmina_file_get_string (priv->remmina_file, "exec"));
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_EXEC_CUSTOM:
             settings++;
             priv->exec_widget = remmina_file_editor_create_combo_entry (gfe, table, row, 0,
-                _("Startup Program"), (const gchar*) *settings, priv->remmina_file->exec);
+                _("Startup Program"), (const gchar*) *settings, remmina_file_get_string (priv->remmina_file, "exec"));
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_EXECPATH:
             priv->execpath_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
-                _("Startup Path"), priv->remmina_file->execpath);
+                _("Startup Path"), remmina_file_get_string (priv->remmina_file, "execpath"));
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_SHAREPRINTER:
             priv->shareprinter_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
-                _("Share Local Printers"), priv->remmina_file->shareprinter);
+                _("Share Local Printers"), remmina_file_get_int (priv->remmina_file, "shareprinter", FALSE));
             if (!hbox) row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_CONSOLE:
             priv->console_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
-                _("Attach to console (Windows 2003 or newer)"), priv->remmina_file->console);
+                _("Attach to console (Windows 2003 or newer)"), remmina_file_get_int (priv->remmina_file, "console", FALSE));
             if (!hbox) row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_BITMAPCACHING:
             priv->bitmapcaching_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
-                _("Enable bitmap caching"), priv->remmina_file->bitmapcaching);
+                _("Enable bitmap caching"), remmina_file_get_int (priv->remmina_file, "bitmapcaching", FALSE));
             if (!hbox) row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_COMPRESSION:
             priv->compression_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
-                _("Enable compression"), priv->remmina_file->compression);
+                _("Enable compression"), remmina_file_get_int (priv->remmina_file, "compression", FALSE));
             if (!hbox) row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_ARGUMENTS:
             priv->arguments_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
-                _("Advanced Arguments"), priv->remmina_file->arguments);
+                _("Advanced Arguments"), remmina_file_get_string (priv->remmina_file, "arguments"));
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_LISTENPORT:
-            s = g_strdup_printf ("%i", priv->remmina_file->listenport);
             priv->listenport_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
-                _("Listen on Port"), s);
+                _("Listen on Port"), remmina_file_get_string (priv->remmina_file, "listenport"));
             gtk_entry_set_activates_default (GTK_ENTRY (priv->listenport_entry), TRUE);
-            g_free (s);
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_QUALITY:
             priv->quality_combo = remmina_file_editor_create_combo_mapint (gfe, table, row, 0,
-                _("Quality"), quality_list, priv->remmina_file->quality);
+                _("Quality"), quality_list, remmina_file_get_int (priv->remmina_file, "quality", 0));
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_SHOWCURSOR_REMOTE:
             priv->showcursor_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
-                _("Show Remote Cursor"), priv->remmina_file->showcursor);
+                _("Show Remote Cursor"), remmina_file_get_int (priv->remmina_file, "showcursor", FALSE));
             if (!hbox) row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_SHOWCURSOR_LOCAL:
             priv->showcursor_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
-                _("Use Local Cursor"), priv->remmina_file->showcursor);
+                _("Use Local Cursor"), remmina_file_get_int (priv->remmina_file, "showcursor", FALSE));
             if (!hbox) row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_VIEWONLY:
             priv->viewonly_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
-                _("View Only"), priv->remmina_file->viewonly);
+                _("View Only"), remmina_file_get_int (priv->remmina_file, "viewonly", FALSE));
             if (!hbox) row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_DISABLESERVERINPUT:
             priv->disableserverinput_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
-                _("Disable Server Input"), priv->remmina_file->disableserverinput);
+                _("Disable Server Input"), remmina_file_get_int (priv->remmina_file, "disableserverinput", FALSE));
             if (!hbox) row++;
             break;
 
@@ -848,8 +852,10 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, c
             widget = remmina_scaler_new ();
             gtk_widget_show (widget);
             gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, row, row + 2);
-            remmina_scaler_set (REMMINA_SCALER (widget), priv->remmina_file->hscale, priv->remmina_file->vscale,
-                priv->remmina_file->aspectscale);
+            remmina_scaler_set (REMMINA_SCALER (widget),
+                remmina_file_get_int (priv->remmina_file, "hscale", 0),
+                remmina_file_get_int (priv->remmina_file, "vscale", 0),
+                remmina_file_get_int (priv->remmina_file, "aspectscale", FALSE));
             priv->scaler_widget = widget;
 
             row += 2;
@@ -858,20 +864,20 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, c
         case REMMINA_PROTOCOL_SETTING_VALUE_GKEYMAP:
             s = remmina_pref_keymap_groups ();
             priv->gkeymap_combo = remmina_file_editor_create_combo_text (gfe, table, row, 0,
-                _("Keyboard Mapping"), s, priv->remmina_file->gkeymap, _("<None>"));
+                _("Keyboard Mapping"), s, remmina_file_get_string (priv->remmina_file, "gkeymap"), _("<None>"));
             g_free (s);
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_ONCE:
             priv->once_check = remmina_file_editor_create_check (gfe, table, row, 0,
-                _("Disconnect After One Session"), priv->remmina_file->once);
+                _("Disconnect After One Session"), remmina_file_get_int (priv->remmina_file, "once", FALSE));
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_DISABLEENCRYPTION:
             priv->disableencryption_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
-                _("Disable Encryption"), priv->remmina_file->disableencryption);
+                _("Disable Encryption"), remmina_file_get_int (priv->remmina_file, "disableencryption", FALSE));
             if (!hbox) row++;
             break;
 
@@ -884,13 +890,13 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, c
 
         case REMMINA_PROTOCOL_SETTING_VALUE_PROXY_DEST:
             priv->proxy_entry = remmina_file_editor_create_entry (gfe, table, row, 0,
-                _("Proxy Destination"), priv->remmina_file->proxy);
+                _("Proxy Destination"), remmina_file_get_string (priv->remmina_file, "proxy"));
             row++;
             break;
 
         case REMMINA_PROTOCOL_SETTING_VALUE_DISABLECLIPBOARD:
             priv->disableclipboard_check = remmina_file_editor_create_check (gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
-                _("Disable Clipboard Sync"), priv->remmina_file->disableclipboard);
+                _("Disable Clipboard Sync"), remmina_file_get_int (priv->remmina_file, "disableclipboard", FALSE));
             if (!hbox) row++;
             break;
 
@@ -911,6 +917,7 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
     GtkWidget *table;
     GtkWidget *hbox;
     GtkWidget *widget;
+    const gchar *cs;
     gchar *s;
     gint row = 0;
 
@@ -997,7 +1004,7 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
 
         s = remmina_pref_get_recent ("SFTP");
         priv->server_combo = remmina_file_editor_create_combo_entry (gfe, table, row, 1,
-            _("Server"), s, priv->remmina_file->server);
+            _("Server"), s, remmina_file_get_string (priv->remmina_file, "server"));
         gtk_widget_set_tooltip_markup (priv->server_combo, _(server_tips));
         gtk_entry_set_activates_default (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (priv->server_combo))), TRUE);
         g_free (s);
@@ -1009,15 +1016,15 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
     }
 
     priv->ssh_charset_combo = remmina_file_editor_create_combo_entry (gfe, table, row, 1,
-        _("Character Set"), charset_list, priv->remmina_file->ssh_charset);
+        _("Character Set"), charset_list, remmina_file_get_string (priv->remmina_file, "ssh_charset"));
     row++;
 
     if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SSH)
     {
         priv->exec_widget = remmina_file_editor_create_entry (gfe, table, row, 1,
             _("Startup Program"), NULL);
-        gtk_entry_set_text (GTK_ENTRY (priv->exec_widget),
-            priv->remmina_file->exec ? priv->remmina_file->exec : "");
+        cs = remmina_file_get_string (priv->remmina_file, "exec");
+        gtk_entry_set_text (GTK_ENTRY (priv->exec_widget), cs ? cs : "");
         row++;
     }
 
@@ -1046,31 +1053,35 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
     row++;
 
     /* Set the values */
+    cs = remmina_file_get_string (priv->remmina_file, "ssh_server");
     if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_TUNNEL)
     {
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->ssh_enabled_check), priv->remmina_file->ssh_enabled);
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->ssh_loopback_check), priv->remmina_file->ssh_loopback);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->ssh_enabled_check),
+            remmina_file_get_int (priv->remmina_file, "ssh_enabled", FALSE));
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->ssh_loopback_check),
+            remmina_file_get_int (priv->remmina_file, "ssh_loopback", FALSE));
 
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (
-            priv->remmina_file->ssh_server && priv->remmina_file->ssh_server[0] != '\0' ?
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (cs ?
             priv->ssh_server_custom_radio : priv->ssh_server_default_radio), TRUE);
         gtk_entry_set_text (GTK_ENTRY (priv->ssh_server_entry),
-            priv->remmina_file->ssh_server ? priv->remmina_file->ssh_server : "");
+            cs ? cs : "");
     }
     else if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_REVERSE_TUNNEL)
     {
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->ssh_enabled_check), priv->remmina_file->ssh_enabled);
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->ssh_loopback_check), priv->remmina_file->ssh_loopback);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->ssh_enabled_check),
+            remmina_file_get_int (priv->remmina_file, "ssh_enabled", FALSE));
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->ssh_loopback_check),
+            remmina_file_get_int (priv->remmina_file, "ssh_loopback", FALSE));
         gtk_entry_set_text (GTK_ENTRY (priv->ssh_server_entry),
-            priv->remmina_file->ssh_server ? priv->remmina_file->ssh_server : "");
+            cs ? cs : "");
     }
 
-    gtk_entry_set_text (GTK_ENTRY (priv->ssh_username_entry),
-        priv->remmina_file->ssh_username ? priv->remmina_file->ssh_username : "");
+    cs = remmina_file_get_string (priv->remmina_file, "ssh_username");
+    gtk_entry_set_text (GTK_ENTRY (priv->ssh_username_entry), cs ? cs : "");
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (
-        priv->remmina_file->ssh_auth == SSH_AUTH_PUBLICKEY ?
+        remmina_file_get_int (priv->remmina_file, "ssh_auth", 0) == SSH_AUTH_PUBLICKEY ?
         priv->ssh_auth_publickey_radio :
-        priv->remmina_file->ssh_auth == SSH_AUTH_AUTO_PUBLICKEY ?
+        remmina_file_get_int (priv->remmina_file, "ssh_auth", 0) == SSH_AUTH_AUTO_PUBLICKEY ?
         priv->ssh_auth_auto_publickey_radio :
         priv->ssh_auth_password_radio), TRUE);
 
@@ -1174,215 +1185,208 @@ static void
 remmina_file_editor_update (RemminaFileEditor *gfe)
 {
     RemminaFileEditorPriv *priv = gfe->priv;
-    gchar *s;
+    gboolean ssh_enabled;
 
-    g_free (priv->remmina_file->name);
-    priv->remmina_file->name = g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->name_entry)));
+    remmina_file_set_string (priv->remmina_file, "name", gtk_entry_get_text (GTK_ENTRY (priv->name_entry)));
 
-    g_free (priv->remmina_file->group);
-    priv->remmina_file->group = (priv->group_combo ?
-        gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->group_combo)) : NULL);
+    remmina_file_set_string_ref (priv->remmina_file, "group", (priv->group_combo ?
+        gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->group_combo)) : NULL));
 
-    g_free (priv->remmina_file->protocol);
-    priv->remmina_file->protocol = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->protocol_combo));
+    remmina_file_set_string_ref (priv->remmina_file, "protocol",
+        gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->protocol_combo)));
 
-    g_free (priv->remmina_file->server);
-    priv->remmina_file->server = (priv->server_combo ?
-        gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->server_combo)) : NULL);
+    remmina_file_set_string_ref (priv->remmina_file, "server", (priv->server_combo ?
+        gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->server_combo)) : NULL));
 
     if (priv->username_entry)
     {
-        g_free (priv->remmina_file->username);
-        priv->remmina_file->username = g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->username_entry)));
+        remmina_file_set_string (priv->remmina_file, "username", gtk_entry_get_text (GTK_ENTRY (priv->username_entry)));
     }
 
-    g_free (priv->remmina_file->password);
-    priv->remmina_file->password = (priv->password_entry ?
-        g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->password_entry))) : NULL);
+    remmina_file_set_string (priv->remmina_file, "password", (priv->password_entry ?
+        gtk_entry_get_text (GTK_ENTRY (priv->password_entry)) : NULL));
 
     if (priv->domain_entry)
     {
-        g_free (priv->remmina_file->domain);
-        priv->remmina_file->domain = g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->domain_entry)));
+        remmina_file_set_string (priv->remmina_file, "domain", gtk_entry_get_text (GTK_ENTRY (priv->domain_entry)));
     }
 
     if (priv->clientname_entry)
     {
-        g_free (priv->remmina_file->clientname);
-        priv->remmina_file->clientname = g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->clientname_entry)));
+        remmina_file_set_string (priv->remmina_file, "clientname", gtk_entry_get_text (GTK_ENTRY (priv->clientname_entry)));
     }
 
     if (priv->resolution_auto_radio)
     {
-        g_free (priv->remmina_file->resolution);
-        priv->remmina_file->resolution = (
+        remmina_file_set_string_ref (priv->remmina_file, "resolution", (
             gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->resolution_auto_radio)) ?
-                g_strdup ("AUTO") :
-                gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->resolution_custom_combo)));
+                NULL :
+                gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->resolution_custom_combo))));
     }
 
     if (priv->listenport_entry)
     {
-        priv->remmina_file->listenport = atoi (
-            gtk_entry_get_text (GTK_ENTRY (priv->listenport_entry)));
+        remmina_file_set_int (priv->remmina_file, "listenport", atoi (
+            gtk_entry_get_text (GTK_ENTRY (priv->listenport_entry))));
     }
 
     if (priv->colordepth_combo)
     {
-        s = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->colordepth_combo));
-        priv->remmina_file->colordepth = atoi (s);
-        g_free (s);
+        remmina_file_set_string_ref (priv->remmina_file, "colordepth",
+            gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->colordepth_combo)));
     }
 
     if (priv->quality_combo)
     {
-        s = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->quality_combo));
-        priv->remmina_file->quality = atoi (s);
-        g_free (s);
+        remmina_file_set_string_ref (priv->remmina_file, "quality",
+            gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->quality_combo)));
     }
 
     if (priv->keymap_combo)
     {
-        g_free (priv->remmina_file->keymap);
-        priv->remmina_file->keymap = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->keymap_combo));
+        remmina_file_set_string_ref (priv->remmina_file, "keymap",
+            gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->keymap_combo)));
     }
 
     if (priv->gkeymap_combo)
     {
-        g_free (priv->remmina_file->gkeymap);
-        priv->remmina_file->gkeymap = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->gkeymap_combo));
+        remmina_file_set_string_ref (priv->remmina_file, "gkeymap",
+            gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->gkeymap_combo)));
     }
 
     if (priv->sharefolder_check && priv->sharefolder_chooser)
     {
-        g_free (priv->remmina_file->sharefolder);
-        priv->remmina_file->sharefolder = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->sharefolder_check)) ?
-            g_strdup (gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (priv->sharefolder_chooser))) : NULL;
+        remmina_file_set_string (priv->remmina_file, "sharefolder",
+            gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->sharefolder_check)) ?
+            gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (priv->sharefolder_chooser)) : NULL);
     }
 
     if (priv->scaler_widget)
     {
-        priv->remmina_file->hscale = REMMINA_SCALER (priv->scaler_widget)->hscale;
-        priv->remmina_file->vscale = REMMINA_SCALER (priv->scaler_widget)->vscale;
-        priv->remmina_file->aspectscale = REMMINA_SCALER (priv->scaler_widget)->aspectscale;
+        remmina_file_set_int (priv->remmina_file, "hscale", REMMINA_SCALER (priv->scaler_widget)->hscale);
+        remmina_file_set_int (priv->remmina_file, "vscale", REMMINA_SCALER (priv->scaler_widget)->vscale);
+        remmina_file_set_int (priv->remmina_file, "aspectscale", REMMINA_SCALER (priv->scaler_widget)->aspectscale);
     }
 
     if (priv->ssh_charset_combo)
     {
-        g_free (priv->remmina_file->ssh_charset);
-        priv->remmina_file->ssh_charset = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->ssh_charset_combo));
+        remmina_file_set_string_ref (priv->remmina_file, "ssh_charset",
+            gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->ssh_charset_combo)));
     }
 
     if (priv->exec_widget)
     {
-        g_free (priv->remmina_file->exec);
         if (GTK_IS_ENTRY (priv->exec_widget))
         {
-            priv->remmina_file->exec = g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->exec_widget)));
+            remmina_file_set_string (priv->remmina_file, "exec", gtk_entry_get_text (GTK_ENTRY (priv->exec_widget)));
         }
         else
         {
-            priv->remmina_file->exec = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->exec_widget));
+            remmina_file_set_string_ref (priv->remmina_file, "exec", gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->exec_widget)));
         }
     }
 
     if (priv->execpath_entry)
     {
-        g_free (priv->remmina_file->execpath);
-        priv->remmina_file->execpath = g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->execpath_entry)));
+        remmina_file_set_string (priv->remmina_file, "execpath", gtk_entry_get_text (GTK_ENTRY (priv->execpath_entry)));
     }
 
     if (priv->sound_combo)
     {
-        g_free (priv->remmina_file->sound);
-        priv->remmina_file->sound = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->sound_combo));
+        remmina_file_set_string_ref (priv->remmina_file, "sound", gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->sound_combo)));
     }
 
     if (priv->arguments_entry)
     {
-        g_free (priv->remmina_file->arguments);
-        priv->remmina_file->arguments = g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->arguments_entry)));
+        remmina_file_set_string (priv->remmina_file, "arguments", gtk_entry_get_text (GTK_ENTRY (priv->arguments_entry)));
     }
 
     if (priv->proxy_entry)
     {
-        g_free (priv->remmina_file->proxy);
-        priv->remmina_file->proxy = g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->proxy_entry)));
+        remmina_file_set_string (priv->remmina_file, "proxy", gtk_entry_get_text (GTK_ENTRY (priv->proxy_entry)));
     }
 
     if (priv->bitmapcaching_check)
     {
-        priv->remmina_file->bitmapcaching = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->bitmapcaching_check));
+        remmina_file_set_int (priv->remmina_file, "bitmapcaching",
+            gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->bitmapcaching_check)));
     }
     if (priv->compression_check)
     {
-        priv->remmina_file->compression = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->compression_check));
+        remmina_file_set_int (priv->remmina_file, "compression",
+            gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->compression_check)));
     }
     if (priv->showcursor_check)
     {
-        priv->remmina_file->showcursor = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->showcursor_check));
+        remmina_file_set_int (priv->remmina_file, "showcursor",
+            gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->showcursor_check)));
     }
     if (priv->viewonly_check)
     {
-        priv->remmina_file->viewonly = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->viewonly_check));
+        remmina_file_set_int (priv->remmina_file, "viewonly",
+            gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->viewonly_check)));
     }
     if (priv->console_check)
     {
-        priv->remmina_file->console = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->console_check));
+        remmina_file_set_int (priv->remmina_file, "console",
+            gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->console_check)));
     }
     if (priv->disableserverinput_check)
     {
-        priv->remmina_file->disableserverinput = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->disableserverinput_check));
+        remmina_file_set_int (priv->remmina_file, "disableserverinput",
+            gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->disableserverinput_check)));
     }
     if (priv->shareprinter_check)
     {
-        priv->remmina_file->shareprinter = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->shareprinter_check));
+        remmina_file_set_int (priv->remmina_file, "shareprinter",
+            gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->shareprinter_check)));
     }
     if (priv->once_check)
     {
-        priv->remmina_file->once = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->once_check));
+        remmina_file_set_int (priv->remmina_file, "once",
+            gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->once_check)));
     }
     if (priv->disableencryption_check)
     {
-        priv->remmina_file->disableencryption = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->disableencryption_check));
+        remmina_file_set_int (priv->remmina_file, "disableencryption",
+            gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->disableencryption_check)));
     }
     if (priv->disableclipboard_check)
     {
-        priv->remmina_file->disableclipboard = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->disableclipboard_check));
+        remmina_file_set_int (priv->remmina_file, "disableclipboard",
+            gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->disableclipboard_check)));
     }
 
-    if (g_strcmp0 (priv->remmina_file->protocol, "SFTP") == 0 ||
-        g_strcmp0 (priv->remmina_file->protocol, "SSH") == 0)
+    if (g_strcmp0 (remmina_file_get_string (priv->remmina_file, "protocol"), "SFTP") == 0 ||
+        g_strcmp0 (remmina_file_get_string (priv->remmina_file, "protocol"), "SSH") == 0)
     {
-        priv->remmina_file->ssh_enabled = TRUE;
+        ssh_enabled = TRUE;
     }
     else
     {
-        priv->remmina_file->ssh_enabled = (priv->ssh_enabled_check ?
+        ssh_enabled = (priv->ssh_enabled_check ?
             gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->ssh_enabled_check)) : FALSE);
-        priv->remmina_file->ssh_loopback = (priv->ssh_loopback_check ?
-            gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->ssh_loopback_check)) : FALSE);
+        remmina_file_set_int (priv->remmina_file, "ssh_loopback", (priv->ssh_loopback_check ?
+            gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->ssh_loopback_check)) : FALSE));
     }
-    g_free (priv->remmina_file->ssh_username);
-    priv->remmina_file->ssh_username = (priv->remmina_file->ssh_enabled ?
-        g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->ssh_username_entry))) : NULL);
-    g_free (priv->remmina_file->ssh_server);
-    priv->remmina_file->ssh_server = (priv->remmina_file->ssh_enabled && priv->ssh_server_entry &&
+    remmina_file_set_int (priv->remmina_file, "ssh_enabled", ssh_enabled);
+    remmina_file_set_string (priv->remmina_file, "ssh_username", (ssh_enabled ?
+        gtk_entry_get_text (GTK_ENTRY (priv->ssh_username_entry)) : NULL));
+    remmina_file_set_string (priv->remmina_file, "ssh_server", (ssh_enabled && priv->ssh_server_entry &&
         (priv->ssh_server_custom_radio == NULL ||
         gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->ssh_server_custom_radio))) ?
-        g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->ssh_server_entry))) : NULL);
-    priv->remmina_file->ssh_auth = (
+        gtk_entry_get_text (GTK_ENTRY (priv->ssh_server_entry)) : NULL));
+    remmina_file_set_int (priv->remmina_file, "ssh_auth", (
         priv->ssh_auth_publickey_radio &&
         gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->ssh_auth_publickey_radio)) ?
         SSH_AUTH_PUBLICKEY :
         priv->ssh_auth_auto_publickey_radio &&
         gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->ssh_auth_auto_publickey_radio)) ?
         SSH_AUTH_AUTO_PUBLICKEY :
-        SSH_AUTH_PASSWORD);
-    g_free (priv->remmina_file->ssh_privatekey);
-    priv->remmina_file->ssh_privatekey = (
+        SSH_AUTH_PASSWORD));
+    remmina_file_set_string (priv->remmina_file, "ssh_privatekey", (
         priv->ssh_privatekey_chooser ?
-        g_strdup (gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (priv->ssh_privatekey_chooser))) : NULL);
+        gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (priv->ssh_privatekey_chooser)) : NULL));
 }
 
 static void
@@ -1395,16 +1399,14 @@ remmina_file_editor_on_default (GtkWidget *button, RemminaFileEditor *gfe)
 
     gf = remmina_file_dup (gfe->priv->remmina_file);
 
-    g_free (gf->filename);
-    gf->filename = g_strdup (remmina_pref_file);
+    remmina_file_set_filename (gf, remmina_pref_file);
 
     /* Clear properties that should never be default */
-    g_free (gf->name); gf->name = NULL;
-    g_free (gf->server); gf->server = NULL;
-    g_free (gf->password); gf->password = NULL;
+    remmina_file_set_string (gf, "name", NULL);
+    remmina_file_set_string (gf, "server", NULL);
+    remmina_file_set_string (gf, "password", NULL);
 
     remmina_file_save_all (gf);
-
     remmina_file_free (gf);
 
     dialog = gtk_message_dialog_new (GTK_WINDOW (gfe),
@@ -1434,10 +1436,9 @@ remmina_file_editor_on_connect (GtkWidget *button, RemminaFileEditor *gfe)
     }
     gf = remmina_file_dup (gfe->priv->remmina_file);
     /* Put server into name for Quick Connect */
-    if (gf->filename == NULL)
+    if (remmina_file_get_filename (gf) == NULL)
     {
-        g_free (gf->name);
-        gf->name = g_strdup (gf->server);
+        remmina_file_set_string (gf, "name", remmina_file_get_string (gf, "server"));
     }
     gtk_widget_destroy (GTK_WIDGET (gfe));
     remmina_connection_window_open_from_file (gf);
@@ -1508,7 +1509,7 @@ remmina_file_editor_iterate_protocol (gchar *protocol, RemminaPlugin *plugin, gp
     gtk_list_store_append (store, &iter);
     gtk_list_store_set (store, &iter, 0, protocol, 1, plugin->description, 2, ((RemminaProtocolPlugin *)plugin)->icon_name, -1);
 
-    if (first || g_strcmp0 (protocol, gfe->priv->remmina_file->protocol) == 0)
+    if (first || g_strcmp0 (protocol, remmina_file_get_string (gfe->priv->remmina_file, "protocol")) == 0)
     {
         gtk_combo_box_set_active_iter (GTK_COMBO_BOX (gfe->priv->protocol_combo), &iter);
     }
@@ -1524,12 +1525,13 @@ remmina_file_editor_new_from_file (RemminaFile *remminafile)
     GtkWidget *table;
     GtkWidget *widget;
     gchar *groups;
+    const gchar *cs;
 
     gfe = REMMINA_FILE_EDITOR (g_object_new (REMMINA_TYPE_FILE_EDITOR, NULL));
     priv = gfe->priv;
     priv->remmina_file = remminafile;
 
-    if (remminafile->filename == NULL)
+    if (remmina_file_get_filename (remminafile) == NULL)
     {
         gtk_dialog_set_response_sensitive (GTK_DIALOG (gfe), GTK_RESPONSE_APPLY, FALSE);
     }
@@ -1555,18 +1557,19 @@ remmina_file_editor_new_from_file (RemminaFile *remminafile)
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 2, 3, 1, 2);
     priv->name_entry = widget;
 
-    if (remminafile->filename == NULL)
+    if (remmina_file_get_filename (remminafile) == NULL)
     {
         gtk_widget_set_sensitive (widget, FALSE);
         gtk_entry_set_text (GTK_ENTRY (widget), _("Quick Connect"));
     }
     else
     {
-        if (remminafile->name) gtk_entry_set_text (GTK_ENTRY (widget), remminafile->name);
+        cs = remmina_file_get_string (remminafile, "name");
+        gtk_entry_set_text (GTK_ENTRY (widget), cs ? cs : "");
     }
 
     /* Profile: Group */
-    if (remminafile->filename == NULL)
+    if (remmina_file_get_filename (remminafile) == NULL)
     {
         priv->group_combo = NULL;
     }
@@ -1578,7 +1581,7 @@ remmina_file_editor_new_from_file (RemminaFile *remminafile)
         gtk_table_attach (GTK_TABLE (table), widget, 1, 2, 2, 3, GTK_FILL, 0, 0, 0);
 
         groups = remmina_file_manager_get_groups ();
-        priv->group_combo = remmina_public_create_combo_entry (groups, remminafile->group, FALSE);
+        priv->group_combo = remmina_public_create_combo_entry (groups, remmina_file_get_string (remminafile, "group"), FALSE);
         g_free (groups);
         gtk_widget_show (priv->group_combo);
         gtk_table_attach_defaults (GTK_TABLE (table), priv->group_combo, 2, 3, 2, 3);
@@ -1622,8 +1625,8 @@ remmina_file_editor_new_full (const gchar *server, const gchar *protocol)
     RemminaFile *remminafile;
 
     remminafile = remmina_file_new ();
-    if (server) { g_free (remminafile->server); remminafile->server = g_strdup (server); }
-    if (protocol) { g_free (remminafile->protocol); remminafile->protocol = g_strdup (protocol); }
+    if (server) remmina_file_set_string (remminafile, "server", server);
+    if (protocol) remmina_file_set_string (remminafile, "protocol", protocol);
 
     return remmina_file_editor_new_from_file (remminafile);
 }
@@ -1682,8 +1685,8 @@ remmina_file_editor_new_temp_full (const gchar *server, const gchar *protocol)
     RemminaFile *remminafile;
 
     remminafile = remmina_file_new_temp ();
-    if (server) { g_free (remminafile->server); remminafile->server = g_strdup (server); }
-    if (protocol) { g_free (remminafile->protocol); remminafile->protocol = g_strdup (protocol); }
+    if (server) remmina_file_set_string (remminafile, "server", server);
+    if (protocol) remmina_file_set_string (remminafile, "protocol", protocol);
 
     return remmina_file_editor_new_from_file (remminafile);
 }
