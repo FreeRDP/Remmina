@@ -459,40 +459,66 @@ remmina_plugin_rdp_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeatu
     }
 }
 
+static gpointer colordepth_list[] =
+{
+    "8", N_("256 Colors"),
+    "15", N_("High Color (15 bit)"),
+    "16", N_("High Color (16 bit)"),
+    "24", N_("True Color (24 bit)"),
+    NULL
+};
+
+static gpointer quality_list[] =
+{
+    "0", N_("Poor (Fastest)"),
+    "1", N_("Medium"),
+    "2", N_("Good"),
+    "9", N_("Best (Slowest)"),
+    NULL
+};
+
+static gpointer sound_list[] =
+{
+    "off", N_("Off"),
+    "local", N_("Local"),
+    "remote", N_("Remote"),
+    NULL
+};
+
 static const RemminaProtocolSetting remmina_plugin_rdp_basic_settings[] =
 {
-    REMMINA_PROTOCOL_SETTING_SERVER,
-    REMMINA_PROTOCOL_SETTING_USERNAME,
-    REMMINA_PROTOCOL_SETTING_PASSWORD,
-    REMMINA_PROTOCOL_SETTING_DOMAIN,
-    REMMINA_PROTOCOL_SETTING_RESOLUTION_FIXED,
-    REMMINA_PROTOCOL_SETTING_COLORDEPTH,
-    REMMINA_PROTOCOL_SETTING_SHAREFOLDER,
-    REMMINA_PROTOCOL_SETTING_CTL_END
+    { REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User Name"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "domain", N_("Domain"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color Depth"), FALSE, colordepth_list, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_FOLDER, "sharefolder", N_("Share Folder"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
 static const RemminaProtocolSetting remmina_plugin_rdp_advanced_settings[] =
 {
-    REMMINA_PROTOCOL_SETTING_QUALITY,
-    REMMINA_PROTOCOL_SETTING_SOUND,
-    REMMINA_PROTOCOL_SETTING_CLIENTNAME,
-    REMMINA_PROTOCOL_SETTING_EXEC,
-    REMMINA_PROTOCOL_SETTING_EXECPATH,
-    REMMINA_PROTOCOL_SETTING_SHAREPRINTER,
-    REMMINA_PROTOCOL_SETTING_DISABLECLIPBOARD,
-    REMMINA_PROTOCOL_SETTING_CONSOLE,
-    REMMINA_PROTOCOL_SETTING_CTL_END
+    { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "quality", N_("Quality"), FALSE, quality_list, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "sound", N_("Sound"), FALSE, sound_list, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "clientname", N_("Client Name"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "exec", N_("Startup Program"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "execpath", N_("Startup Path"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "shareprinter", N_("Share Local Printers"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable Clipboard Sync"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "console", N_("Attach to console (Windows 2003 / 2003 R2)"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
 static RemminaProtocolPlugin remmina_plugin_rdp =
 {
     REMMINA_PLUGIN_TYPE_PROTOCOL,
     "RDP",
-    NULL,
+    N_("RDP - Windows Terminal Service"),
+    GETTEXT_PACKAGE,
 
     "remmina-rdp",
     "remmina-rdp-ssh",
-    NULL,
     remmina_plugin_rdp_basic_settings,
     remmina_plugin_rdp_advanced_settings,
     REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,
@@ -508,7 +534,8 @@ static RemminaFilePlugin remmina_plugin_rdpf =
 {
     REMMINA_PLUGIN_TYPE_FILE,
     "RDPF",
-    NULL,
+    N_("RDP - RDP File Handler"),
+    GETTEXT_PACKAGE,
 
     remmina_plugin_rdp_file_import_test,
     remmina_plugin_rdp_file_import,
@@ -521,7 +548,8 @@ static RemminaPrefPlugin remmina_plugin_rdps =
 {
     REMMINA_PLUGIN_TYPE_PREF,
     "RDPS",
-    NULL,
+    N_("RDP - Preferences"),
+    GETTEXT_PACKAGE,
 
     "RDP",
     remmina_plugin_rdpset_new
@@ -535,18 +563,15 @@ remmina_plugin_entry (RemminaPluginService *service)
     bindtextdomain (GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
-    remmina_plugin_rdp.description = _("RDP - Windows Terminal Service");
     if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_rdp))
     {
         return FALSE;
     }
-    remmina_plugin_rdpf.description = _("RDP - RDP File Handler");
     remmina_plugin_rdpf.export_hints = _("Export connection in Windows .rdp file format");
     if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_rdpf))
     {
         return FALSE;
     }
-    remmina_plugin_rdps.description = _("RDP - Preferences");
     if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_rdps))
     {
         return FALSE;

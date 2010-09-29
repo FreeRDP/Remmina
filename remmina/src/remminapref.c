@@ -502,36 +502,28 @@ remmina_pref_keymap_get_keyval (const gchar *keymap, guint keyval)
     return keyval;
 }
 
-gchar*
+gchar**
 remmina_pref_keymap_groups (void)
 {
     GList *list;
     guint len;
-    GString *keys;
+    gchar **keys;
     guint i;
-    gboolean first;
 
     list = g_hash_table_get_keys (remmina_keymap_table);
     len = g_list_length (list);
 
-    keys = g_string_new (NULL);
-    first = TRUE;
+    keys = g_new0 (gchar*, (len + 1) * 2 + 1);
+    keys[0] = g_strdup ("");
+    keys[1] = g_strdup ("");
     for (i = 0; i < len; i++)
     {
-        if (first)
-        {
-            first = FALSE;
-        }
-        else
-        {
-            g_string_append (keys, ",");
-        }
-        g_string_append (keys, (gchar*) g_list_nth_data (list, i));
+        keys[(i + 1) * 2] = g_strdup ((gchar*) g_list_nth_data (list, i));
+        keys[(i + 1) * 2 + 1] = g_strdup ((gchar*) g_list_nth_data (list, i));
     }
-
     g_list_free (list);
 
-    return g_string_free (keys, FALSE);
+    return keys;
 }
 
 gint

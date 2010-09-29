@@ -332,7 +332,7 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 1, 5, 6);
 
-    widget = remmina_public_create_combo_mapint (default_action_list, remmina_pref.default_action, FALSE);
+    widget = remmina_public_create_combo_mapint (default_action_list, remmina_pref.default_action, FALSE, NULL);
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 5, 6);
     priv->default_action_combo = widget;
@@ -342,7 +342,7 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 1, 6, 7);
 
-    widget = remmina_public_create_combo_mapint (default_mode_list, remmina_pref.default_mode, FALSE);
+    widget = remmina_public_create_combo_mapint (default_mode_list, remmina_pref.default_mode, FALSE, NULL);
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 6, 7);
     priv->default_mode_combo = widget;
@@ -352,7 +352,7 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 1, 7, 8);
 
-    widget = remmina_public_create_combo_mapint (tab_mode_list, remmina_pref.tab_mode, FALSE);
+    widget = remmina_public_create_combo_mapint (tab_mode_list, remmina_pref.tab_mode, FALSE, NULL);
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 7, 8);
     priv->tab_mode_combo = widget;
@@ -362,7 +362,7 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 1, 8, 9);
 
-    widget = remmina_public_create_combo_mapint (scale_quality_list, remmina_pref.scale_quality, FALSE);
+    widget = remmina_public_create_combo_mapint (scale_quality_list, remmina_pref.scale_quality, FALSE, NULL);
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 8, 9);
     priv->scale_quality_combo = widget;

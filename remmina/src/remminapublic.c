@@ -192,7 +192,7 @@ remmina_public_create_combo (gboolean use_icon)
 }
 
 GtkWidget*
-remmina_public_create_combo_map (const gpointer *key_value_list, const gchar *def, gboolean use_icon)
+remmina_public_create_combo_map (const gpointer *key_value_list, const gchar *def, gboolean use_icon, const gchar *domain)
 {
     gint i;
     GtkWidget *combo;
@@ -205,7 +205,10 @@ remmina_public_create_combo_map (const gpointer *key_value_list, const gchar *de
     for (i = 0; key_value_list[i]; i += (use_icon ? 3 : 2))
     {
         gtk_list_store_append (store, &iter);
-        gtk_list_store_set (store, &iter, 0, key_value_list[i], 1, _(key_value_list[i + 1]), -1);
+        gtk_list_store_set (store, &iter,
+            0, key_value_list[i],
+            1, g_dgettext (domain, key_value_list[i + 1]),
+            -1);
         if (use_icon)
         {
             gtk_list_store_set (store, &iter, 2, key_value_list[i + 2], -1);
@@ -219,11 +222,11 @@ remmina_public_create_combo_map (const gpointer *key_value_list, const gchar *de
 }
 
 GtkWidget*
-remmina_public_create_combo_mapint (const gpointer *key_value_list, gint def, gboolean use_icon)
+remmina_public_create_combo_mapint (const gpointer *key_value_list, gint def, gboolean use_icon, const gchar *domain)
 {
     gchar buf[20];
     g_snprintf (buf, sizeof (buf), "%i", def);
-    return remmina_public_create_combo_map (key_value_list, buf, use_icon);
+    return remmina_public_create_combo_map (key_value_list, buf, use_icon, domain);
 }
 
 void

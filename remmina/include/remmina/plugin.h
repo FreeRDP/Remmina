@@ -39,6 +39,7 @@ typedef struct _RemminaPlugin
     RemminaPluginType type;
     const gchar *name;
     const gchar *description;
+    const gchar *domain;
 } RemminaPlugin;
 
 typedef struct _RemminaProtocolPlugin
@@ -46,10 +47,10 @@ typedef struct _RemminaProtocolPlugin
     RemminaPluginType type;
     const gchar *name;
     const gchar *description;
+    const gchar *domain;
 
     const gchar *icon_name;
     const gchar *icon_name_ssh;
-    const gchar *avahi_service_type;
     const RemminaProtocolSetting *basic_settings;
     const RemminaProtocolSetting *advanced_settings;
     RemminaProtocolSSHSetting ssh_setting;
@@ -66,6 +67,7 @@ typedef struct _RemminaEntryPlugin
     RemminaPluginType type;
     const gchar *name;
     const gchar *description;
+    const gchar *domain;
 
     void (* entry_func) (void);
 } RemminaEntryPlugin;
@@ -75,6 +77,7 @@ typedef struct _RemminaFilePlugin
     RemminaPluginType type;
     const gchar *name;
     const gchar *description;
+    const gchar *domain;
 
     gboolean (* import_test_func) (const gchar *from_file);
     RemminaFile* (* import_func) (const gchar *from_file);
@@ -88,6 +91,7 @@ typedef struct _RemminaToolPlugin
     RemminaPluginType type;
     const gchar *name;
     const gchar *description;
+    const gchar *domain;
 
     void (* exec_func) (void);
 } RemminaToolPlugin;
@@ -97,6 +101,7 @@ typedef struct _RemminaPrefPlugin
     RemminaPluginType type;
     const gchar *name;
     const gchar *description;
+    const gchar *domain;
 
     const gchar *pref_label;
     GtkWidget* (* get_pref_body) (void);

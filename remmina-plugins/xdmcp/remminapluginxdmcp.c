@@ -334,26 +334,36 @@ remmina_plugin_xdmcp_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFea
 {
 }
 
+static gpointer colordepth_list[] =
+{
+    "0", N_("Default"),
+    "2", N_("Grayscale"),
+    "8", N_("256 Colors"),
+    "16", N_("High Color (16 bit)"),
+    "24", N_("True Color (24 bit)"),
+    NULL
+};
+
 static const RemminaProtocolSetting remmina_plugin_xdmcp_basic_settings[] =
 {
-    REMMINA_PROTOCOL_SETTING_SERVER,
-    REMMINA_PROTOCOL_SETTING_RESOLUTION_FIXED,
-    REMMINA_PROTOCOL_SETTING_COLORDEPTH2,
-    REMMINA_PROTOCOL_SETTING_EXEC,
-    REMMINA_PROTOCOL_SETTING_SHOWCURSOR_LOCAL,
-    REMMINA_PROTOCOL_SETTING_ONCE,
-    REMMINA_PROTOCOL_SETTING_CTL_END
+    { REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color Depth"), FALSE, colordepth_list, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "exec", N_("Startup Program"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Use Local Cursor"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "once", N_("Disconnect After One Session"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
 static RemminaProtocolPlugin remmina_plugin_xdmcp =
 {
     REMMINA_PLUGIN_TYPE_PROTOCOL,
     "XDMCP",
-    "X Remote Session",
+    N_("XDMCP - X Remote Session"),
+    GETTEXT_PACKAGE,
 
     "remmina-xdmcp",
     "remmina-xdmcp-ssh",
-    NULL,
     remmina_plugin_xdmcp_basic_settings,
     NULL,
     REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,
@@ -373,7 +383,6 @@ remmina_plugin_entry (RemminaPluginService *service)
     bindtextdomain (GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
-    remmina_plugin_xdmcp.description = _("XDMCP - X Remote Session");
     if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_xdmcp))
     {
         return FALSE;

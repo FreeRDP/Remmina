@@ -242,7 +242,7 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
         remmina_plugin_nx_service->file_get_string (remminafile, "server"), 22, &s1, &port);
 
     if (!remmina_nx_session_open (nx, s1, port,
-        remmina_plugin_nx_service->file_get_string (remminafile, "ssh_privatekey"),
+        remmina_plugin_nx_service->file_get_string (remminafile, "nx_privatekey"),
         remmina_plugin_nx_ssh_auth_callback, gp))
     {
         g_free (s1);
@@ -592,35 +592,44 @@ remmina_plugin_nx_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeatur
 {
 }
 
+static gpointer quality_list[] =
+{
+    "0", N_("Poor (Fastest)"),
+    "1", N_("Medium"),
+    "2", N_("Good"),
+    "9", N_("Best (Slowest)"),
+    NULL
+};
+
 static const RemminaProtocolSetting remmina_plugin_nx_basic_settings[] =
 {
-    REMMINA_PROTOCOL_SETTING_SERVER,
-    REMMINA_PROTOCOL_SETTING_SSH_PRIVATEKEY,
-    REMMINA_PROTOCOL_SETTING_USERNAME,
-    REMMINA_PROTOCOL_SETTING_PASSWORD,
-    REMMINA_PROTOCOL_SETTING_RESOLUTION_FLEXIBLE,
-    REMMINA_PROTOCOL_SETTING_QUALITY,
-    REMMINA_PROTOCOL_SETTING_EXEC_CUSTOM, "GNOME,KDE,Xfce,Shadow",
-    REMMINA_PROTOCOL_SETTING_CTL_END
+    { REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_FILE, "nx_privatekey", N_("Identity File"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User Name"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, GINT_TO_POINTER (1), NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "quality", N_("Quality"), FALSE, quality_list, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "exec", N_("Startup Program"), FALSE, "GNOME,KDE,Xfce,Shadow", NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
 static const RemminaProtocolSetting remmina_plugin_nx_advanced_settings[] =
 {
-    REMMINA_PROTOCOL_SETTING_DISABLECLIPBOARD,
-    REMMINA_PROTOCOL_SETTING_DISABLEENCRYPTION,
-    REMMINA_PROTOCOL_SETTING_SHOWCURSOR_LOCAL,
-    REMMINA_PROTOCOL_SETTING_CTL_END
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable Clipboard Sync"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption", N_("Disable Encryption"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Use Local Cursor"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
 static RemminaProtocolPlugin remmina_plugin_nx =
 {
     REMMINA_PLUGIN_TYPE_PROTOCOL,
     "NX",
-    NULL,
+    N_("NX - NX Technology"),
+    GETTEXT_PACKAGE,
 
     "remmina-nx",
     "remmina-nx",
-    NULL,
     remmina_plugin_nx_basic_settings,
     remmina_plugin_nx_advanced_settings,
     REMMINA_PROTOCOL_SSH_SETTING_NONE,
@@ -660,7 +669,6 @@ remmina_plugin_entry (RemminaPluginService *service)
         XCloseDisplay (dpy);
     }
 
-    remmina_plugin_nx.description = _("NX - NX Technology");
     if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_nx))
     {
         return FALSE;
