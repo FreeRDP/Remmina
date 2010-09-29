@@ -187,11 +187,11 @@ static RemminaProtocolPlugin remmina_plugin_sftp =
 {
     REMMINA_PLUGIN_TYPE_PROTOCOL,
     "SFTP",
-    NULL,
+    N_("SFTP - Secure File Transfer"),
+    GETTEXT_PACKAGE,
 
     "remmina-sftp",
     "remmina-sftp",
-    NULL,
     NULL,
     NULL,
     REMMINA_PROTOCOL_SSH_SETTING_SFTP,
@@ -207,7 +207,6 @@ void
 remmina_sftp_plugin_register (void)
 {
     remmina_plugin_service = &remmina_plugin_manager_service;
-    remmina_plugin_sftp.description = _("SFTP - Secure File Transfer");
     remmina_plugin_service->register_plugin ((RemminaPlugin *) &remmina_plugin_sftp);
 }
 

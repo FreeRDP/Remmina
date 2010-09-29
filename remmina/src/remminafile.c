@@ -66,25 +66,6 @@ const RemminaSetting remmina_system_settings[] =
     { NULL,                 0,                                  FALSE }
 };
 
-const gpointer colordepth_list[] =
-{
-    "8", N_("256 Colors"),
-    "15", N_("High Color (15 bit)"),
-    "16", N_("High Color (16 bit)"),
-    "24", N_("True Color (24 bit)"),
-    NULL
-};
-
-const gpointer colordepth2_list[] =
-{
-    "0", N_("Default"),
-    "2", N_("Grayscale"),
-    "8", N_("256 Colors"),
-    "16", N_("High Color (16 bit)"),
-    "24", N_("True Color (24 bit)"),
-    NULL
-};
-
 const gpointer quality_list[] =
 {
     "0", N_("Poor (Fastest)"),

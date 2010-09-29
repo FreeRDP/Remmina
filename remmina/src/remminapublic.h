@@ -55,8 +55,8 @@ GtkWidget* remmina_public_create_combo_entry (const gchar *text, const gchar *de
 GtkWidget* remmina_public_create_combo_text_d (const gchar *text, const gchar *def, const gchar *empty_choice);
 void remmina_public_load_combo_text_d (GtkWidget *combo, const gchar *text, const gchar *def, const gchar *empty_choice);
 GtkWidget* remmina_public_create_combo (gboolean use_icon);
-GtkWidget* remmina_public_create_combo_map (const gpointer *key_value_list, const gchar *def, gboolean use_icon);
-GtkWidget* remmina_public_create_combo_mapint (const gpointer *key_value_list, gint def, gboolean use_icon);
+GtkWidget* remmina_public_create_combo_map (const gpointer *key_value_list, const gchar *def, gboolean use_icon, const gchar *domain);
+GtkWidget* remmina_public_create_combo_mapint (const gpointer *key_value_list, gint def, gboolean use_icon, const gchar *domain);
 
 void remmina_public_create_group (GtkTable* table, const gchar *group, gint row, gint rows, gint cols);
 
