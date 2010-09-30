@@ -54,12 +54,13 @@ typedef struct _RemminaProtocolPlugin
     const RemminaProtocolSetting *basic_settings;
     const RemminaProtocolSetting *advanced_settings;
     RemminaProtocolSSHSetting ssh_setting;
+    const RemminaProtocolFeature *features;
 
     void (* init) (RemminaProtocolWidget *gp);
     gboolean (* open_connection) (RemminaProtocolWidget *gp);
     gboolean (* close_connection) (RemminaProtocolWidget *gp);
-    gpointer (* query_feature) (RemminaProtocolWidget *gp, RemminaProtocolFeature feature);
-    void (* call_feature) (RemminaProtocolWidget *gp, RemminaProtocolFeature feature, const gpointer data);
+    gboolean (* query_feature) (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature);
+    void (* call_feature) (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature);
 } RemminaProtocolPlugin;
 
 typedef struct _RemminaEntryPlugin

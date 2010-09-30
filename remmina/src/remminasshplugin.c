@@ -283,14 +283,14 @@ remmina_plugin_ssh_close_connection (RemminaProtocolWidget *gp)
     return FALSE;
 }
 
-static gpointer
-remmina_plugin_ssh_query_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature)
+static gboolean
+remmina_plugin_ssh_query_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-    return NULL;
+    return FALSE;
 }
 
 static void
-remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature, const gpointer data)
+remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 }
 
@@ -306,6 +306,7 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
     NULL,
     NULL,
     REMMINA_PROTOCOL_SSH_SETTING_SSH,
+    NULL,
 
     remmina_plugin_ssh_init,
     remmina_plugin_ssh_open_connection,

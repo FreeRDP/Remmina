@@ -24,6 +24,10 @@
 #include "remminapluginrdpfile.h"
 #include "remminapluginrdpset.h"
 
+#define REMMINA_PLUGIN_RDP_FEATURE_TOOL_REFRESH            1
+#define REMMINA_PLUGIN_RDP_FEATURE_SCALE                   2
+#define REMMINA_PLUGIN_RDP_FEATURE_UNFOCUS                 3
+
 RemminaPluginService *remmina_plugin_service = NULL;
 
 static void
@@ -418,36 +422,30 @@ remmina_plugin_rdp_close_connection (RemminaProtocolWidget *gp)
     return FALSE;
 }
 
-static gpointer
-remmina_plugin_rdp_query_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature)
+static gboolean
+remmina_plugin_rdp_query_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-    switch (feature)
-    {
-        case REMMINA_PROTOCOL_FEATURE_UNFOCUS:
-        case REMMINA_PROTOCOL_FEATURE_SCALE:
-        case REMMINA_PROTOCOL_FEATURE_TOOL_REFRESH:
-            return GINT_TO_POINTER (1);
-        default:
-            return NULL;
-    }
+    return TRUE;
 }
 
 static void
-remmina_plugin_rdp_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature, const gpointer data)
+remmina_plugin_rdp_call_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
     RemminaPluginRdpData *gpdata;
+    RemminaFile *remminafile;
 
     gpdata = GET_DATA (gp);
-    switch (feature)
+    remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
+    switch (feature->id)
     {
-        case REMMINA_PROTOCOL_FEATURE_UNFOCUS:
+        case REMMINA_PLUGIN_RDP_FEATURE_UNFOCUS:
             remmina_plugin_rdpev_unfocus (gp);
             break;
-        case REMMINA_PROTOCOL_FEATURE_SCALE:
-            gpdata->scale = (data != NULL);
+        case REMMINA_PLUGIN_RDP_FEATURE_SCALE:
+            gpdata->scale = remmina_plugin_service->file_get_int (remminafile, "scale", FALSE);
             remmina_plugin_rdpev_update_scale (gp);
             break;
-        case REMMINA_PROTOCOL_FEATURE_TOOL_REFRESH:
+        case REMMINA_PLUGIN_RDP_FEATURE_TOOL_REFRESH:
             LOCK_BUFFER (FALSE)
             remmina_plugin_rdpui_update_rect (gp, 0, 0,
                 remmina_plugin_service->protocol_plugin_get_width (gp),
@@ -510,6 +508,14 @@ static const RemminaProtocolSetting remmina_plugin_rdp_advanced_settings[] =
     { REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
+static const RemminaProtocolFeature remmina_plugin_rdp_features[] =
+{
+    { REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_RDP_FEATURE_TOOL_REFRESH, N_("Refresh"), GTK_STOCK_REFRESH, NULL },
+    { REMMINA_PROTOCOL_FEATURE_TYPE_SCALE, REMMINA_PLUGIN_RDP_FEATURE_SCALE, NULL, NULL, NULL },
+    { REMMINA_PROTOCOL_FEATURE_TYPE_UNFOCUS, REMMINA_PLUGIN_RDP_FEATURE_UNFOCUS, NULL, NULL, NULL },
+    { REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
+};
+
 static RemminaProtocolPlugin remmina_plugin_rdp =
 {
     REMMINA_PLUGIN_TYPE_PROTOCOL,
@@ -522,6 +528,7 @@ static RemminaProtocolPlugin remmina_plugin_rdp =
     remmina_plugin_rdp_basic_settings,
     remmina_plugin_rdp_advanced_settings,
     REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,
+    remmina_plugin_rdp_features,
 
     remmina_plugin_rdp_init,
     remmina_plugin_rdp_open_connection,

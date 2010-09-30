@@ -265,27 +265,40 @@ remmina_protocol_widget_emit_signal (RemminaProtocolWidget *gp, const gchar *sig
     TIMEOUT_ADD (0, remmina_protocol_widget_emit_signal_timeout, data);
 }
 
-gpointer
-remmina_protocol_widget_query_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature)
+const RemminaProtocolFeature*
+remmina_protocol_widget_get_features (RemminaProtocolWidget *gp)
 {
-    switch (feature)
+    return gp->priv->plugin->features;
+}
+
+const gchar*
+remmina_protocol_widget_get_domain (RemminaProtocolWidget *gp)
+{
+    return gp->priv->plugin->domain;
+}
+
+gboolean
+remmina_protocol_widget_query_feature_by_type (RemminaProtocolWidget *gp, RemminaProtocolFeatureType type)
+{
+    const RemminaProtocolFeature *feature;
+
+    for (feature = gp->priv->plugin->features; feature && feature->type; feature++)
     {
-        case REMMINA_PROTOCOL_FEATURE_TOOL:
-            return GINT_TO_POINTER (1);
-#ifdef HAVE_LIBSSH
-        case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
-        case REMMINA_PROTOCOL_FEATURE_TOOL_SSHTERM:
-            return (gp->priv->ssh_tunnel ? GINT_TO_POINTER (1) : NULL);
-#endif
-        default:
-            return gp->priv->plugin->query_feature (gp, feature);
+        if (feature->type == type) return TRUE;
     }
+    return FALSE;
+}
+
+gboolean
+remmina_protocol_widget_query_feature_by_ref (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
+{
+    return gp->priv->plugin->query_feature (gp, feature);
 }
 
 void
-remmina_protocol_widget_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature, const gpointer data)
+remmina_protocol_widget_call_feature_by_type (RemminaProtocolWidget *gp, RemminaProtocolFeatureType type, gint id)
 {
-    switch (feature)
+/*    switch (feature)
     {
 #ifdef HAVE_LIBSSH
     case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
@@ -304,8 +317,23 @@ remmina_protocol_widget_call_feature (RemminaProtocolWidget *gp, RemminaProtocol
         break;
     default:
         break;
+    }*/
+    const RemminaProtocolFeature *feature;
+
+    for (feature = gp->priv->plugin->features; feature && feature->type; feature++)
+    {
+        if (feature->type == type && (id == 0 || feature->id == id))
+        {
+            gp->priv->plugin->call_feature (gp, feature);
+            break;
+        }
     }
-    gp->priv->plugin->call_feature (gp, feature, data);
+}
+
+void
+remmina_protocol_widget_call_feature_by_ref (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
+{
+    gp->priv->plugin->call_feature (gp, feature);
 }
 
 static gboolean

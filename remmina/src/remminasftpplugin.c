@@ -172,14 +172,14 @@ remmina_plugin_sftp_close_connection (RemminaProtocolWidget *gp)
     return FALSE;
 }
 
-static gpointer
-remmina_plugin_sftp_query_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature)
+static gboolean
+remmina_plugin_sftp_query_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-    return NULL;
+    return FALSE;
 }
 
 static void
-remmina_plugin_sftp_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature, const gpointer data)
+remmina_plugin_sftp_call_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 }
 
@@ -195,6 +195,7 @@ static RemminaProtocolPlugin remmina_plugin_sftp =
     NULL,
     NULL,
     REMMINA_PROTOCOL_SSH_SETTING_SFTP,
+    NULL,
 
     remmina_plugin_sftp_init,
     remmina_plugin_sftp_open_connection,
