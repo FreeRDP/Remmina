@@ -20,6 +20,14 @@
 
 #include "common/remminaplugincommon.h"
 
+#define REMMINA_PLUGIN_VNC_FEATURE_PREF_QUALITY            1
+#define REMMINA_PLUGIN_VNC_FEATURE_PREF_VIEWONLY           2
+#define REMMINA_PLUGIN_VNC_FEATURE_PREF_DISABLESERVERINPUT 3
+#define REMMINA_PLUGIN_VNC_FEATURE_TOOL_REFRESH            4
+#define REMMINA_PLUGIN_VNC_FEATURE_TOOL_CHAT               5
+#define REMMINA_PLUGIN_VNC_FEATURE_SCALE                   6
+#define REMMINA_PLUGIN_VNC_FEATURE_UNFOCUS                 7
+
 typedef struct _RemminaPluginVncData
 {
     /* Whether the user requests to connect/disconnect */
@@ -1714,66 +1722,60 @@ remmina_plugin_vnc_close_connection (RemminaProtocolWidget *gp)
     return FALSE;
 }
 
-static gpointer
-remmina_plugin_vnc_query_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature)
+static gboolean
+remmina_plugin_vnc_query_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
     RemminaPluginVncData *gpdata;
 
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
-    switch (feature)
+    switch (feature->id)
     {
-        case REMMINA_PROTOCOL_FEATURE_PREF:
-        case REMMINA_PROTOCOL_FEATURE_PREF_QUALITY:
-        case REMMINA_PROTOCOL_FEATURE_PREF_VIEWONLY:
-        case REMMINA_PROTOCOL_FEATURE_UNFOCUS:
-        case REMMINA_PROTOCOL_FEATURE_SCALE:
-        case REMMINA_PROTOCOL_FEATURE_TOOL_REFRESH:
-            return GINT_TO_POINTER (1);
-        case REMMINA_PROTOCOL_FEATURE_PREF_DISABLESERVERINPUT:
+        case REMMINA_PLUGIN_VNC_FEATURE_PREF_DISABLESERVERINPUT:
             return (SupportsClient2Server ((rfbClient*) (gpdata->client), rfbSetServerInput) ?
-                GINT_TO_POINTER (1) : NULL);
-        case REMMINA_PROTOCOL_FEATURE_TOOL_CHAT:
+                TRUE : FALSE);
+        case REMMINA_PLUGIN_VNC_FEATURE_TOOL_CHAT:
             return (SupportsClient2Server ((rfbClient*) (gpdata->client), rfbTextChat) ?
-                GINT_TO_POINTER (1) : NULL);
+                TRUE : FALSE);
         default:
-            return NULL;
+            return TRUE;
     }
 }
 
 static void
-remmina_plugin_vnc_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature, const gpointer data)
+remmina_plugin_vnc_call_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
     RemminaPluginVncData *gpdata;
     RemminaFile *remminafile;
 
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
-    switch (feature)
+    switch (feature->id)
     {
-        case REMMINA_PROTOCOL_FEATURE_PREF_QUALITY:
-            remmina_plugin_vnc_update_quality ((rfbClient*) (gpdata->client), GPOINTER_TO_INT (data));
+        case REMMINA_PLUGIN_VNC_FEATURE_PREF_QUALITY:
+            remmina_plugin_vnc_update_quality ((rfbClient*) (gpdata->client),
+                remmina_plugin_service->file_get_int (remminafile, "quality", 0));
             SetFormatAndEncodings ((rfbClient*) (gpdata->client));
             break;
-        case REMMINA_PROTOCOL_FEATURE_PREF_VIEWONLY:
-            remmina_plugin_service->file_set_int (remminafile, "viewonly", (data != NULL));
+        case REMMINA_PLUGIN_VNC_FEATURE_PREF_VIEWONLY:
             break;
-        case REMMINA_PROTOCOL_FEATURE_PREF_DISABLESERVERINPUT:
-            PermitServerInput ((rfbClient*) (gpdata->client), (data ? 1 : 0));
-            remmina_plugin_service->file_set_int (remminafile, "disableserverinput", (data ? TRUE : FALSE));
+        case REMMINA_PLUGIN_VNC_FEATURE_PREF_DISABLESERVERINPUT:
+            PermitServerInput ((rfbClient*) (gpdata->client),
+                remmina_plugin_service->file_get_int (remminafile, "disableserverinput", FALSE) ? 1 : 0);
             break;
-        case REMMINA_PROTOCOL_FEATURE_UNFOCUS:
+        case REMMINA_PLUGIN_VNC_FEATURE_UNFOCUS:
             remmina_plugin_vnc_release_key (gp, 0);
             break;
-        case REMMINA_PROTOCOL_FEATURE_SCALE:
-            remmina_plugin_vnc_update_scale (gp, (data != NULL));
+        case REMMINA_PLUGIN_VNC_FEATURE_SCALE:
+            remmina_plugin_vnc_update_scale (gp,
+                remmina_plugin_service->file_get_int (remminafile, "scale", FALSE));
             break;
-        case REMMINA_PROTOCOL_FEATURE_TOOL_REFRESH:
+        case REMMINA_PLUGIN_VNC_FEATURE_TOOL_REFRESH:
             SendFramebufferUpdateRequest ((rfbClient*) (gpdata->client), 0, 0,
                 remmina_plugin_service->protocol_plugin_get_width (gp),
                 remmina_plugin_service->protocol_plugin_get_height (gp),
                 FALSE);
             break;
-        case REMMINA_PROTOCOL_FEATURE_TOOL_CHAT:
+        case REMMINA_PLUGIN_VNC_FEATURE_TOOL_CHAT:
             remmina_plugin_vnc_open_chat (gp);
             break;
         default:
@@ -1934,6 +1936,21 @@ static const RemminaProtocolSetting remmina_plugin_vnc_advanced_settings[] =
     { REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
+static const RemminaProtocolFeature remmina_plugin_vnc_features[] =
+{
+    { REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_VNC_FEATURE_PREF_QUALITY,
+      GINT_TO_POINTER (REMMINA_PROTOCOL_FEATURE_PREF_RADIO), "quality", quality_list },
+    { REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_VNC_FEATURE_PREF_VIEWONLY,
+      GINT_TO_POINTER (REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly", N_("View Only") },
+    { REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_VNC_FEATURE_PREF_DISABLESERVERINPUT,
+      GINT_TO_POINTER (REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "disableserverinput", N_("Disable Server Input") },
+    { REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_VNC_FEATURE_TOOL_REFRESH, N_("Refresh"), GTK_STOCK_REFRESH, NULL },
+    { REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_VNC_FEATURE_TOOL_CHAT, N_("Open Chat..."), "face-smile", NULL },
+    { REMMINA_PROTOCOL_FEATURE_TYPE_SCALE, REMMINA_PLUGIN_VNC_FEATURE_SCALE, NULL, NULL, NULL },
+    { REMMINA_PROTOCOL_FEATURE_TYPE_UNFOCUS, REMMINA_PLUGIN_VNC_FEATURE_UNFOCUS, NULL, NULL, NULL },
+    { REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
+};
+
 static RemminaProtocolPlugin remmina_plugin_vnc =
 {
     REMMINA_PLUGIN_TYPE_PROTOCOL,
@@ -1946,6 +1963,7 @@ static RemminaProtocolPlugin remmina_plugin_vnc =
     remmina_plugin_vnc_basic_settings,
     remmina_plugin_vnc_advanced_settings,
     REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,
+    remmina_plugin_vnc_features,
 
     remmina_plugin_vnc_init,
     remmina_plugin_vnc_open_connection,
@@ -1966,6 +1984,7 @@ static RemminaProtocolPlugin remmina_plugin_vnci =
     remmina_plugin_vnci_basic_settings,
     remmina_plugin_vnc_advanced_settings,
     REMMINA_PROTOCOL_SSH_SETTING_REVERSE_TUNNEL,
+    remmina_plugin_vnc_features,
 
     remmina_plugin_vnc_init,
     remmina_plugin_vnc_open_connection,

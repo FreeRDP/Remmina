@@ -323,14 +323,14 @@ remmina_plugin_xdmcp_close_connection (RemminaProtocolWidget *gp)
     return FALSE;
 }
 
-static gpointer
-remmina_plugin_xdmcp_query_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature)
+static gboolean
+remmina_plugin_xdmcp_query_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-    return NULL;
+    return FALSE;
 }
 
 static void
-remmina_plugin_xdmcp_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature, const gpointer data)
+remmina_plugin_xdmcp_call_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 }
 
@@ -367,6 +367,7 @@ static RemminaProtocolPlugin remmina_plugin_xdmcp =
     remmina_plugin_xdmcp_basic_settings,
     NULL,
     REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,
+    NULL,
 
     remmina_plugin_xdmcp_init,
     remmina_plugin_xdmcp_open_connection,

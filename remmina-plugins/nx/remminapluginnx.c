@@ -581,14 +581,14 @@ remmina_plugin_nx_close_connection (RemminaProtocolWidget *gp)
     return FALSE;
 }
 
-static gpointer
-remmina_plugin_nx_query_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature)
+static gboolean
+remmina_plugin_nx_query_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-    return NULL;
+    return FALSE;
 }
 
 static void
-remmina_plugin_nx_call_feature (RemminaProtocolWidget *gp, RemminaProtocolFeature feature, const gpointer data)
+remmina_plugin_nx_call_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 }
 
@@ -633,6 +633,7 @@ static RemminaProtocolPlugin remmina_plugin_nx =
     remmina_plugin_nx_basic_settings,
     remmina_plugin_nx_advanced_settings,
     REMMINA_PROTOCOL_SSH_SETTING_NONE,
+    NULL,
 
     remmina_plugin_nx_init,
     remmina_plugin_nx_open_connection,

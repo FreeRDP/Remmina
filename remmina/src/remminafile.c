@@ -66,15 +66,6 @@ const RemminaSetting remmina_system_settings[] =
     { NULL,                 0,                                  FALSE }
 };
 
-const gpointer quality_list[] =
-{
-    "0", N_("Poor (Fastest)"),
-    "1", N_("Medium"),
-    "2", N_("Good"),
-    "9", N_("Best (Slowest)"),
-    NULL
-};
-
 static RemminaSettingGroup
 remmina_setting_get_group (const gchar *setting, gboolean *encrypted)
 {

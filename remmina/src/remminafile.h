@@ -44,8 +44,6 @@ typedef enum
 #define TOOLBAR_OPACITY_LEVEL 8
 #define TOOLBAR_OPACITY_MIN 0.2
 
-extern const gpointer quality_list[];
-
 /* Create a empty .remmina file */
 RemminaFile* remmina_file_new (void);
 RemminaFile* remmina_file_new_temp (void);
