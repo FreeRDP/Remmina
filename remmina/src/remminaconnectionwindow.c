@@ -1012,42 +1012,6 @@ remmina_connection_holder_toolbar_tools (GtkWidget *widget, RemminaConnectionHol
         }
     }
 
-    /* SFTP */
-/*    menuitem = gtk_image_menu_item_new_with_label (_("Open Secure File Transfer..."));
-    gtk_widget_show (menuitem);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
-
-    image = gtk_image_new_from_icon_name ("folder-remote", GTK_ICON_SIZE_MENU);
-    gtk_widget_show (image);
-    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menuitem), image);
-
-    g_object_set_data (G_OBJECT (menuitem), "feature-type", GINT_TO_POINTER (REMMINA_PROTOCOL_FEATURE_TOOL_SFTP));
-
-    g_signal_connect (G_OBJECT (menuitem), "activate",
-        G_CALLBACK (remmina_connection_holder_call_protocol_feature_activate), cnnhld);
-    if (!remmina_protocol_widget_query_feature (REMMINA_PROTOCOL_WIDGET (cnnobj->proto), REMMINA_PROTOCOL_FEATURE_TOOL_SFTP))
-    {
-        gtk_widget_set_sensitive (menuitem, FALSE);
-    }
-*/
-    /* SSH Terminal */
-/*    menuitem = gtk_image_menu_item_new_with_label (_("Open Secure Shell in New Terminal..."));
-    gtk_widget_show (menuitem);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
-
-    image = gtk_image_new_from_icon_name ("utilities-terminal", GTK_ICON_SIZE_MENU);
-    gtk_widget_show (image);
-    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menuitem), image);
-
-    g_object_set_data (G_OBJECT (menuitem), "feature-type", GINT_TO_POINTER (REMMINA_PROTOCOL_FEATURE_TOOL_SSHTERM));
-
-    g_signal_connect (G_OBJECT (menuitem), "activate",
-        G_CALLBACK (remmina_connection_holder_call_protocol_feature_activate), cnnhld);
-    if (!remmina_protocol_widget_query_feature (REMMINA_PROTOCOL_WIDGET (cnnobj->proto), REMMINA_PROTOCOL_FEATURE_TOOL_SSHTERM))
-    {
-        gtk_widget_set_sensitive (menuitem, FALSE);
-    }
-*/
     g_signal_connect (G_OBJECT (menu), "deactivate",
         G_CALLBACK (remmina_connection_holder_toolbar_tools_popdown), cnnhld);
 

@@ -41,9 +41,9 @@ typedef struct _RemminaProtocolFeature
 {
     RemminaProtocolFeatureType type;
     gint id;
-    const gpointer opt1;
-    const gpointer opt2;
-    const gpointer opt3;
+    gpointer opt1;
+    gpointer opt2;
+    gpointer opt3;
 } RemminaProtocolFeature;
 
 typedef struct _RemminaProtocolWidgetClass RemminaProtocolWidgetClass;

@@ -30,12 +30,16 @@
 #include "remminaconnectionwindow.h"
 #include "remminaprotocolwidget.h"
 
+#define REMMINA_PROTOCOL_FEATURE_TOOL_SSH  -1
+#define REMMINA_PROTOCOL_FEATURE_TOOL_SFTP -2
+
 struct _RemminaProtocolWidgetPriv
 {
     GtkWidget *init_dialog;
 
     RemminaFile *remmina_file;
     RemminaProtocolPlugin *plugin;
+    RemminaProtocolFeature *features;
 
     gint width;
     gint height;
@@ -134,6 +138,7 @@ static void
 remmina_protocol_widget_destroy (RemminaProtocolWidget *gp, gpointer data)
 {
     remmina_protocol_widget_hide_init_dialog (gp);
+    g_free (gp->priv->features);
     g_free (gp->priv->error_message);
     g_free (gp->priv);
 }
@@ -182,6 +187,8 @@ remmina_protocol_widget_open_connection_real (gpointer data)
     RemminaProtocolWidget *gp = REMMINA_PROTOCOL_WIDGET (data);
     RemminaProtocolPlugin *plugin;
     RemminaFile *remminafile = gp->priv->remmina_file;
+    RemminaProtocolFeature *feature;
+    gint num;
 
     /* Locate the protocol plugin */
     plugin = (RemminaProtocolPlugin *) remmina_plugin_manager_get_plugin (REMMINA_PLUGIN_TYPE_PROTOCOL,
@@ -197,6 +204,51 @@ remmina_protocol_widget_open_connection_real (gpointer data)
     plugin->init (gp);
 
     gp->priv->plugin = plugin;
+
+    for (num = 0, feature = (RemminaProtocolFeature*) plugin->features; feature && feature->type; num++, feature++)
+    {
+    }
+#ifdef HAVE_LIBSSH
+    if (remmina_file_get_int (gp->priv->remmina_file, "ssh_enabled", FALSE))
+    {
+        num += 2;
+    }
+#endif
+    if (num == 0)
+    {
+        gp->priv->features = NULL;
+    }
+    else
+    {
+        gp->priv->features = g_new0 (RemminaProtocolFeature, num + 1);
+        feature = gp->priv->features;
+#ifdef HAVE_LIBSSH
+        if (remmina_file_get_int (gp->priv->remmina_file, "ssh_enabled", FALSE))
+        {
+            feature->type = REMMINA_PROTOCOL_FEATURE_TYPE_TOOL;
+            feature->id = REMMINA_PROTOCOL_FEATURE_TOOL_SSH;
+            feature->opt1 = _("Open Secure Shell in New Terminal...");
+            feature->opt2 = "utilities-terminal";
+            feature++;
+            num--;
+
+            feature->type = REMMINA_PROTOCOL_FEATURE_TYPE_TOOL;
+            feature->id = REMMINA_PROTOCOL_FEATURE_TOOL_SFTP;
+            feature->opt1 = _("Open Secure File Transfer...");
+            feature->opt2 = "folder-remote";
+            feature++;
+            num--;
+        }
+#endif
+        if (plugin->features)
+        {
+            memcpy (feature, plugin->features, sizeof (RemminaProtocolFeature) * (num + 1));
+        }
+        else
+        {
+            feature->type = REMMINA_PROTOCOL_FEATURE_TYPE_END;
+        }
+    }
 
     if (! plugin->open_connection (gp))
     {
@@ -268,7 +320,7 @@ remmina_protocol_widget_emit_signal (RemminaProtocolWidget *gp, const gchar *sig
 const RemminaProtocolFeature*
 remmina_protocol_widget_get_features (RemminaProtocolWidget *gp)
 {
-    return gp->priv->plugin->features;
+    return gp->priv->features;
 }
 
 const gchar*
@@ -298,33 +350,13 @@ remmina_protocol_widget_query_feature_by_ref (RemminaProtocolWidget *gp, const R
 void
 remmina_protocol_widget_call_feature_by_type (RemminaProtocolWidget *gp, RemminaProtocolFeatureType type, gint id)
 {
-/*    switch (feature)
-    {
-#ifdef HAVE_LIBSSH
-    case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
-        if (!gp->priv->ssh_tunnel) return;
-        remmina_connection_window_open_from_file_full (
-            remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SFTP"), NULL, gp->priv->ssh_tunnel, NULL);
-        return;
-
-    case REMMINA_PROTOCOL_FEATURE_TOOL_SSHTERM:
-        if (!gp->priv->ssh_tunnel) return;
-        remmina_connection_window_open_from_file_full (
-            remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SSH"), NULL, gp->priv->ssh_tunnel, NULL);
-        return;
-#endif
-    case REMMINA_PROTOCOL_FEATURE_UNFOCUS:
-        break;
-    default:
-        break;
-    }*/
     const RemminaProtocolFeature *feature;
 
     for (feature = gp->priv->plugin->features; feature && feature->type; feature++)
     {
         if (feature->type == type && (id == 0 || feature->id == id))
         {
-            gp->priv->plugin->call_feature (gp, feature);
+            remmina_protocol_widget_call_feature_by_ref (gp, feature);
             break;
         }
     }
@@ -333,6 +365,24 @@ remmina_protocol_widget_call_feature_by_type (RemminaProtocolWidget *gp, Remmina
 void
 remmina_protocol_widget_call_feature_by_ref (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
+    switch (feature->id)
+    {
+#ifdef HAVE_LIBSSH
+    case REMMINA_PROTOCOL_FEATURE_TOOL_SSH:
+        if (!gp->priv->ssh_tunnel) return;
+        remmina_connection_window_open_from_file_full (
+            remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SSH"), NULL, gp->priv->ssh_tunnel, NULL);
+        return;
+
+    case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
+        if (!gp->priv->ssh_tunnel) return;
+        remmina_connection_window_open_from_file_full (
+            remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SFTP"), NULL, gp->priv->ssh_tunnel, NULL);
+        return;
+#endif
+    default:
+        break;
+    }
     gp->priv->plugin->call_feature (gp, feature);
 }
 
