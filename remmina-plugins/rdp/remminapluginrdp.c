@@ -227,6 +227,11 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
         gpdata->settings->console_session = 1;
     }
 
+    if (remmina_plugin_service->file_get_int (remminafile, "disabletls", FALSE))
+    {
+        gpdata->settings->tls = 0;
+    }
+
     drdynvc_num = 0;
     if (g_strcmp0 (remmina_plugin_service->file_get_string (remminafile, "sound"), "remote") == 0)
     {
@@ -502,8 +507,9 @@ static const RemminaProtocolSetting remmina_plugin_rdp_advanced_settings[] =
     { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "clientname", N_("Client Name"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "exec", N_("Startup Program"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "execpath", N_("Startup Path"), FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "shareprinter", N_("Share Local Printers"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "shareprinter", N_("Share Local Printers"), TRUE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable Clipboard Sync"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disabletls", N_("Disable TLS Negotiation"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "console", N_("Attach to console (Windows 2003 / 2003 R2)"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
