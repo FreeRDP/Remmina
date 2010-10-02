@@ -38,7 +38,7 @@ G_DEFINE_TYPE (RemminaConnectionWindow, remmina_connection_window, GTK_TYPE_WIND
 
 #define MOTION_TIME 100
 
-/* One process can only have one scale option popup window at a time... */
+/* One process can only have one option popup at a time */
 static GtkWidget *scale_option_window = NULL;
 
 typedef struct _RemminaConnectionHolder RemminaConnectionHolder;
@@ -64,12 +64,14 @@ struct _RemminaConnectionWindowPriv
 
     /* Toolitems that need to be handled */
     GtkToolItem *toolitem_autofit;
+    GtkToolItem *toolitem_fullscreen;
     GtkToolItem *toolitem_switch_page;
     GtkToolItem *toolitem_scale;
     GtkToolItem *toolitem_grab;
     GtkToolItem *toolitem_preferences;
     GtkToolItem *toolitem_tools;
     GtkWidget *scale_option_button;
+    GtkWidget *fullscreen_option_button;
 
     gboolean sticky;
 
@@ -500,21 +502,86 @@ remmina_connection_holder_check_resize (RemminaConnectionHolder *cnnhld)
 }
 
 static void
-remmina_connection_holder_toolbar_scrolled (GtkWidget *widget, RemminaConnectionHolder* cnnhld)
+remmina_connection_holder_toolbar_fullscreen (GtkWidget *widget, RemminaConnectionHolder* cnnhld)
 {
-    remmina_connection_holder_create_scrolled (cnnhld, NULL);
+    if (gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (widget)))
+    {
+        remmina_connection_holder_create_fullscreen (cnnhld, NULL, cnnhld->fullscreen_view_mode);
+    }
+    else
+    {
+        remmina_connection_holder_create_scrolled (cnnhld, NULL);
+    }
 }
 
 static void
-remmina_connection_holder_toolbar_scrolled_fullscreen (GtkWidget *widget, RemminaConnectionHolder* cnnhld)
+remmina_connection_holder_viewport_fullscreen_mode (GtkWidget *widget, RemminaConnectionHolder* cnnhld)
 {
-    remmina_connection_holder_create_fullscreen (cnnhld, NULL, SCROLLED_FULLSCREEN_MODE);
+    if (!gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (widget))) return;
+    cnnhld->fullscreen_view_mode = VIEWPORT_FULLSCREEN_MODE;
+    remmina_connection_holder_create_fullscreen (cnnhld, NULL, cnnhld->fullscreen_view_mode);
 }
 
 static void
-remmina_connection_holder_toolbar_viewport_fullscreen (GtkWidget *widget, RemminaConnectionHolder* cnnhld)
+remmina_connection_holder_scrolled_fullscreen_mode (GtkWidget *widget, RemminaConnectionHolder* cnnhld)
 {
-    remmina_connection_holder_create_fullscreen (cnnhld, NULL, VIEWPORT_FULLSCREEN_MODE);
+    if (!gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (widget))) return;
+    cnnhld->fullscreen_view_mode = SCROLLED_FULLSCREEN_MODE;
+    remmina_connection_holder_create_fullscreen (cnnhld, NULL, cnnhld->fullscreen_view_mode);
+}
+
+static void
+remmina_connection_holder_fullscreen_option_popdown (GtkWidget *widget, RemminaConnectionHolder* cnnhld)
+{
+    RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
+
+    priv->sticky = FALSE;
+
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->fullscreen_option_button), FALSE);
+    remmina_connection_holder_floating_toolbar_show (cnnhld, FALSE);
+}
+
+static void
+remmina_connection_holder_toolbar_fullscreen_option (GtkWidget *widget, RemminaConnectionHolder* cnnhld)
+{
+    RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
+    GtkWidget *menu;
+    GtkWidget *menuitem;
+    GSList *group;
+  
+    if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget))) return;
+
+    priv->sticky = TRUE;
+
+    menu = gtk_menu_new ();
+
+    menuitem = gtk_radio_menu_item_new_with_label (NULL, _("Viewport fullscreen mode"));
+    gtk_widget_show (menuitem);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+    group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (menuitem));
+    if (priv->view_mode == VIEWPORT_FULLSCREEN_MODE)
+    {
+        gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), TRUE);
+    }
+    g_signal_connect (G_OBJECT (menuitem), "toggled",
+        G_CALLBACK (remmina_connection_holder_viewport_fullscreen_mode), cnnhld);
+
+    menuitem = gtk_radio_menu_item_new_with_label (group, _("Scrolled fullscreen mode"));
+    gtk_widget_show (menuitem);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+    if (priv->view_mode == SCROLLED_FULLSCREEN_MODE)
+    {
+        gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), TRUE);
+    }
+    g_signal_connect (G_OBJECT (menuitem), "toggled",
+        G_CALLBACK (remmina_connection_holder_scrolled_fullscreen_mode), cnnhld);
+
+    g_signal_connect (G_OBJECT (menu), "deactivate",
+        G_CALLBACK (remmina_connection_holder_fullscreen_option_popdown), cnnhld);
+
+    gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
+        remmina_public_popup_position, priv->toolitem_fullscreen,
+        0, gtk_get_current_event_time());
 }
 
 static void
@@ -1067,58 +1134,64 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
         gtk_toolbar_set_icon_size (GTK_TOOLBAR (toolbar), GTK_ICON_SIZE_MENU);
     }
 
+    /* Auto-Fit */
+    toolitem = gtk_tool_button_new (NULL, _("Auto-Fit Window"));
+    gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (toolitem), "remmina-fit-window");
+    gtk_tool_item_set_tooltip_text (toolitem, _("Resize the window to fit in remote resolution"));
+    g_signal_connect (G_OBJECT (toolitem), "clicked",
+        G_CALLBACK (remmina_connection_holder_toolbar_autofit), cnnhld);
+    priv->toolitem_autofit = toolitem;
+    gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
+    gtk_widget_show (GTK_WIDGET (toolitem));
+
+    /* Fullscreen toggle */
+    toolitem = gtk_toggle_tool_button_new ();
+    gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (toolitem), "remmina-fullscreen");
+    gtk_tool_item_set_tooltip_text (toolitem, _("Toggle fullscreen mode"));
+    gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
+    gtk_widget_show (GTK_WIDGET (toolitem));
+    priv->toolitem_fullscreen = toolitem;
+    gtk_toggle_tool_button_set_active (GTK_TOGGLE_TOOL_BUTTON (toolitem),
+        mode != SCROLLED_WINDOW_MODE);
+    g_signal_connect (G_OBJECT (toolitem), "clicked",
+        G_CALLBACK (remmina_connection_holder_toolbar_fullscreen), cnnhld);
+
+    /* Fullscreen drop-down options */
+    toolitem = gtk_tool_item_new ();
+    gtk_widget_show (GTK_WIDGET (toolitem));
+    gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
+
+    widget = gtk_toggle_button_new ();
+    gtk_widget_show (widget);
+    gtk_container_set_border_width (GTK_CONTAINER (widget), 0);
+    gtk_button_set_relief (GTK_BUTTON (widget), GTK_RELIEF_NONE);
+    gtk_button_set_focus_on_click (GTK_BUTTON (widget), FALSE);
+    if (remmina_pref.small_toolbutton)
+    {
+        gtk_widget_set_name (widget, "remmina-small-button");
+    }
+    gtk_container_add (GTK_CONTAINER (toolitem), widget);
+
+    arrow = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_NONE);
+    gtk_widget_show (arrow);
+    gtk_container_add (GTK_CONTAINER (widget), arrow);
+
+    g_signal_connect (G_OBJECT (widget), "toggled",
+        G_CALLBACK(remmina_connection_holder_toolbar_fullscreen_option), cnnhld);
+    priv->fullscreen_option_button = widget;
     if (mode == SCROLLED_WINDOW_MODE)
     {
-        toolitem = gtk_tool_button_new (NULL, _("Auto-Fit Window"));
-        gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (toolitem), "remmina-fit-window");
-        gtk_tool_item_set_tooltip_text (toolitem, _("Resize the window to fit in remote resolution"));
-        g_signal_connect (G_OBJECT (toolitem), "clicked",
-            G_CALLBACK(remmina_connection_holder_toolbar_autofit), cnnhld);
-        priv->toolitem_autofit = toolitem;
-    }
-    else
-    {
-        toolitem = gtk_tool_button_new (NULL, _("Scrolled Window"));
-        gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (toolitem), "remmina-leave-fullscreen");
-        gtk_tool_item_set_tooltip_text (toolitem, _("Toggle scrolled window mode"));
-        g_signal_connect (G_OBJECT (toolitem), "clicked",
-            G_CALLBACK(remmina_connection_holder_toolbar_scrolled), cnnhld);
-        priv->toolitem_autofit = NULL;
-    }
-    gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
-    gtk_widget_show (GTK_WIDGET (toolitem));
-
-    toolitem = gtk_tool_button_new (NULL, _("Scrolled Fullscreen"));
-    gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (toolitem), "remmina-scrolled-fullscreen");
-    gtk_tool_item_set_tooltip_text (toolitem, _("Toggle scrolled fullscreen mode"));
-    gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
-    gtk_widget_show (GTK_WIDGET (toolitem));
-    g_signal_connect (G_OBJECT (toolitem), "clicked",
-        G_CALLBACK(remmina_connection_holder_toolbar_scrolled_fullscreen), cnnhld);
-    if (mode == FULLSCREEN_MODE || mode == SCROLLED_FULLSCREEN_MODE)
-    {
-        gtk_widget_set_sensitive (GTK_WIDGET (toolitem), FALSE);
+        gtk_widget_set_sensitive (GTK_WIDGET (widget), FALSE);
     }
 
-    toolitem = gtk_tool_button_new (NULL, _("Viewport Fullscreen"));
-    gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (toolitem), "remmina-viewport-fullscreen");
-    gtk_tool_item_set_tooltip_text (toolitem, _("Toggle viewport fullscreen mode"));
-    gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
-    gtk_widget_show (GTK_WIDGET (toolitem));
-    g_signal_connect (G_OBJECT (toolitem), "clicked",
-        G_CALLBACK(remmina_connection_holder_toolbar_viewport_fullscreen), cnnhld);
-    if (mode == FULLSCREEN_MODE || mode == VIEWPORT_FULLSCREEN_MODE)
-    {
-        gtk_widget_set_sensitive (GTK_WIDGET (toolitem), FALSE);
-    }
-
+    /* Switch tabs */
     toolitem = gtk_toggle_tool_button_new ();
     gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (toolitem), "remmina-switch-page");
     gtk_tool_item_set_tooltip_text (toolitem, _("Switch tab pages"));
     gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
     gtk_widget_show (GTK_WIDGET (toolitem));
     g_signal_connect (G_OBJECT (toolitem), "toggled",
-        G_CALLBACK(remmina_connection_holder_toolbar_switch_page), cnnhld);
+        G_CALLBACK (remmina_connection_holder_toolbar_switch_page), cnnhld);
     priv->toolitem_switch_page = toolitem;
 
     toolitem = gtk_separator_tool_item_new ();
@@ -1131,7 +1204,7 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
     gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
     gtk_widget_show (GTK_WIDGET (toolitem));
     g_signal_connect (G_OBJECT (toolitem), "toggled",
-        G_CALLBACK(remmina_connection_holder_toolbar_scaled_mode), cnnhld);
+        G_CALLBACK (remmina_connection_holder_toolbar_scaled_mode), cnnhld);
     priv->toolitem_scale = toolitem;
 
     /* We need a toggle tool button with a popup arrow; and the popup is a window not a menu.
@@ -1165,7 +1238,7 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
     gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
     gtk_widget_show (GTK_WIDGET (toolitem));
     g_signal_connect (G_OBJECT (toolitem), "toggled",
-        G_CALLBACK(remmina_connection_holder_toolbar_grab), cnnhld);
+        G_CALLBACK (remmina_connection_holder_toolbar_grab), cnnhld);
     priv->toolitem_grab = toolitem;
 
     toolitem = gtk_toggle_tool_button_new_from_stock (GTK_STOCK_PREFERENCES);
@@ -1173,7 +1246,7 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
     gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
     gtk_widget_show (GTK_WIDGET (toolitem));
     g_signal_connect (G_OBJECT (toolitem), "toggled",
-        G_CALLBACK(remmina_connection_holder_toolbar_preferences), cnnhld);
+        G_CALLBACK (remmina_connection_holder_toolbar_preferences), cnnhld);
     priv->toolitem_preferences = toolitem;
 
     toolitem = gtk_toggle_tool_button_new_from_stock (GTK_STOCK_EXECUTE);
@@ -1182,7 +1255,7 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
     gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
     gtk_widget_show (GTK_WIDGET (toolitem));
     g_signal_connect (G_OBJECT (toolitem), "toggled",
-        G_CALLBACK(remmina_connection_holder_toolbar_tools), cnnhld);
+        G_CALLBACK (remmina_connection_holder_toolbar_tools), cnnhld);
     priv->toolitem_tools = toolitem;
 
     toolitem = gtk_separator_tool_item_new ();
@@ -1194,14 +1267,14 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
     gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
     gtk_widget_show (GTK_WIDGET (toolitem));
     g_signal_connect (G_OBJECT (toolitem), "clicked",
-        G_CALLBACK(remmina_connection_holder_toolbar_minimize), cnnhld);
+        G_CALLBACK (remmina_connection_holder_toolbar_minimize), cnnhld);
 
     toolitem = gtk_tool_button_new_from_stock (GTK_STOCK_DISCONNECT);
     gtk_tool_item_set_tooltip_text (toolitem, _("Disconnect"));
     gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
     gtk_widget_show (GTK_WIDGET (toolitem));
     g_signal_connect (G_OBJECT (toolitem), "clicked",
-        G_CALLBACK(remmina_connection_holder_toolbar_disconnect), cnnhld);
+        G_CALLBACK (remmina_connection_holder_toolbar_disconnect), cnnhld);
 
     return toolbar;
 }
@@ -1217,8 +1290,15 @@ remmina_connection_holder_update_toolbar (RemminaConnectionHolder *cnnhld)
     toolitem = priv->toolitem_autofit;
     if (toolitem)
     {
-        bval = remmina_protocol_widget_get_expand (REMMINA_PROTOCOL_WIDGET (cnnobj->proto));
-        gtk_widget_set_sensitive (GTK_WIDGET (toolitem), !bval);
+        if (priv->view_mode != SCROLLED_WINDOW_MODE)
+        {
+            gtk_widget_set_sensitive (GTK_WIDGET (toolitem), FALSE);
+        }
+        else
+        {
+            bval = remmina_protocol_widget_get_expand (REMMINA_PROTOCOL_WIDGET (cnnobj->proto));
+            gtk_widget_set_sensitive (GTK_WIDGET (toolitem), !bval);
+        }
     }
 
     toolitem = priv->toolitem_switch_page;
