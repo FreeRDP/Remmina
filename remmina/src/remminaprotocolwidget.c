@@ -185,7 +185,8 @@ remmina_protocol_widget_open_connection_real (gpointer data)
     RemminaProtocolPlugin *plugin;
     RemminaFile *remminafile = gp->priv->remmina_file;
     RemminaProtocolFeature *feature;
-    gint num;
+    gint num_plugin;
+    gint num_ssh;
 
     /* Locate the protocol plugin */
     plugin = (RemminaProtocolPlugin *) remmina_plugin_manager_get_plugin (REMMINA_PLUGIN_TYPE_PROTOCOL,
@@ -202,49 +203,46 @@ remmina_protocol_widget_open_connection_real (gpointer data)
 
     gp->priv->plugin = plugin;
 
-    for (num = 0, feature = (RemminaProtocolFeature*) plugin->features; feature && feature->type; num++, feature++)
+    for (num_plugin = 0, feature = (RemminaProtocolFeature*) plugin->features; feature && feature->type; num_plugin++, feature++)
     {
     }
+    num_ssh = 0;
 #ifdef HAVE_LIBSSH
     if (remmina_file_get_int (gp->priv->remmina_file, "ssh_enabled", FALSE))
     {
-        num += 2;
+        num_ssh += 2;
     }
 #endif
-    if (num == 0)
+    if (num_plugin + num_ssh == 0)
     {
         gp->priv->features = NULL;
     }
     else
     {
-        gp->priv->features = g_new0 (RemminaProtocolFeature, num + 1);
+        gp->priv->features = g_new0 (RemminaProtocolFeature, num_plugin + num_ssh + 1);
         feature = gp->priv->features;
+        if (plugin->features)
+        {
+            memcpy (feature, plugin->features, sizeof (RemminaProtocolFeature) * num_plugin);
+            feature += num_plugin;
+        }
 #ifdef HAVE_LIBSSH
-        if (remmina_file_get_int (gp->priv->remmina_file, "ssh_enabled", FALSE))
+        if (num_ssh)
         {
             feature->type = REMMINA_PROTOCOL_FEATURE_TYPE_TOOL;
             feature->id = REMMINA_PROTOCOL_FEATURE_TOOL_SSH;
             feature->opt1 = _("Open Secure Shell in New Terminal...");
             feature->opt2 = "utilities-terminal";
             feature++;
-            num--;
 
             feature->type = REMMINA_PROTOCOL_FEATURE_TYPE_TOOL;
             feature->id = REMMINA_PROTOCOL_FEATURE_TOOL_SFTP;
             feature->opt1 = _("Open Secure File Transfer...");
             feature->opt2 = "folder-remote";
             feature++;
-            num--;
         }
+        feature->type = REMMINA_PROTOCOL_FEATURE_TYPE_END;
 #endif
-        if (plugin->features)
-        {
-            memcpy (feature, plugin->features, sizeof (RemminaProtocolFeature) * (num + 1));
-        }
-        else
-        {
-            feature->type = REMMINA_PROTOCOL_FEATURE_TYPE_END;
-        }
     }
 
     if (! plugin->open_connection (gp))
