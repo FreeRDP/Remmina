@@ -224,14 +224,17 @@ remmina_file_set_string_ref (RemminaFile *remminafile, const gchar *setting, gch
     }
     else
     {
-        g_hash_table_remove (remminafile->settings, (gpointer) setting);
+        g_hash_table_insert (remminafile->settings, g_strdup (setting), g_strdup (""));
     }
 }
 
 const gchar*
 remmina_file_get_string (RemminaFile *remminafile, const gchar *setting)
 {
-    return (gchar*) g_hash_table_lookup (remminafile->settings, setting);
+    gchar *value;
+
+    value = (gchar*) g_hash_table_lookup (remminafile->settings, setting);
+    return value && value[0] ? value : NULL;
 }
 
 void
@@ -265,7 +268,7 @@ remmina_file_store_group (RemminaFile *remminafile, GKeyFile *gkeyfile, RemminaS
         g = remmina_setting_get_group (key, &encrypted);
         if (g != REMMINA_SETTING_GROUP_NONE && (group == REMMINA_SETTING_GROUP_ALL || group == g))
         {
-            if (encrypted)
+            if (encrypted && value && value[0])
             {
                 s = remmina_crypt_encrypt (value);
                 g_key_file_set_string (gkeyfile, "remmina", key, s);
