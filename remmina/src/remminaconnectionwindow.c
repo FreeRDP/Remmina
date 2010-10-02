@@ -987,16 +987,22 @@ remmina_connection_holder_toolbar_tools (GtkWidget *widget, RemminaConnectionHol
     {
         if (feature->type != REMMINA_PROTOCOL_FEATURE_TYPE_TOOL) continue;
 
-        menuitem = gtk_image_menu_item_new_with_label (g_dgettext (domain, (const gchar*) feature->opt1));
+        if (feature->opt1)
+        {
+            menuitem = gtk_image_menu_item_new_with_label (g_dgettext (domain, (const gchar*) feature->opt1));
+            if (feature->opt2)
+            {
+                image = gtk_image_new_from_icon_name ((const gchar*) feature->opt2, GTK_ICON_SIZE_MENU);
+                gtk_widget_show (image);
+                gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menuitem), image);
+            }
+        }
+        else
+        {
+            menuitem = gtk_image_menu_item_new_from_stock ((const gchar*) feature->opt2, NULL);
+        }
         gtk_widget_show (menuitem);
         gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
-
-        if (feature->opt2)
-        {
-            image = gtk_image_new_from_icon_name ((const gchar*) feature->opt2, GTK_ICON_SIZE_MENU);
-            gtk_widget_show (image);
-            gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menuitem), image);
-        }
 
         enabled = remmina_protocol_widget_query_feature_by_ref (REMMINA_PROTOCOL_WIDGET (cnnobj->proto), feature);
         if (enabled)

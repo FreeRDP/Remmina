@@ -30,9 +30,6 @@
 #include "remminaconnectionwindow.h"
 #include "remminaprotocolwidget.h"
 
-#define REMMINA_PROTOCOL_FEATURE_TOOL_SSH  -1
-#define REMMINA_PROTOCOL_FEATURE_TOOL_SFTP -2
-
 struct _RemminaProtocolWidgetPriv
 {
     GtkWidget *init_dialog;
@@ -334,6 +331,13 @@ remmina_protocol_widget_query_feature_by_type (RemminaProtocolWidget *gp, Remmin
 {
     const RemminaProtocolFeature *feature;
 
+#ifdef HAVE_LIBSSH
+    if (type == REMMINA_PROTOCOL_FEATURE_TYPE_TOOL &&
+        remmina_file_get_int (gp->priv->remmina_file, "ssh_enabled", FALSE))
+    {
+        return TRUE;
+    }
+#endif
     for (feature = gp->priv->plugin->features; feature && feature->type; feature++)
     {
         if (feature->type == type) return TRUE;
@@ -369,16 +373,22 @@ remmina_protocol_widget_call_feature_by_ref (RemminaProtocolWidget *gp, const Re
     {
 #ifdef HAVE_LIBSSH
     case REMMINA_PROTOCOL_FEATURE_TOOL_SSH:
-        if (!gp->priv->ssh_tunnel) return;
-        remmina_connection_window_open_from_file_full (
-            remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SSH"), NULL, gp->priv->ssh_tunnel, NULL);
-        return;
+        if (gp->priv->ssh_tunnel)
+        {
+            remmina_connection_window_open_from_file_full (
+                remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SSH"), NULL, gp->priv->ssh_tunnel, NULL);
+            return;
+        }
+        break;
 
     case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
-        if (!gp->priv->ssh_tunnel) return;
-        remmina_connection_window_open_from_file_full (
-            remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SFTP"), NULL, gp->priv->ssh_tunnel, NULL);
-        return;
+        if (gp->priv->ssh_tunnel)
+        {
+            remmina_connection_window_open_from_file_full (
+                remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SFTP"), NULL, gp->priv->ssh_tunnel, NULL);
+            return;
+        }
+        break;
 #endif
     default:
         break;

@@ -28,6 +28,9 @@
 
 G_BEGIN_DECLS
 
+#define REMMINA_PROTOCOL_FEATURE_TOOL_SSH  -1
+#define REMMINA_PROTOCOL_FEATURE_TOOL_SFTP -2
+
 #define REMMINA_TYPE_PROTOCOL_WIDGET                  (remmina_protocol_widget_get_type ())
 #define REMMINA_PROTOCOL_WIDGET(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_PROTOCOL_WIDGET, RemminaProtocolWidget))
 #define REMMINA_PROTOCOL_WIDGET_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_PROTOCOL_WIDGET, RemminaProtocolWidgetClass))
