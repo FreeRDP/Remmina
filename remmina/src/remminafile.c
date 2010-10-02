@@ -246,7 +246,7 @@ remmina_file_get_int (RemminaFile *remminafile, const gchar *setting, gint defau
     gchar *value;
 
     value = g_hash_table_lookup (remminafile->settings, setting);
-    return value == NULL ? default_value : atoi (value);
+    return value == NULL ? default_value : (value[0] == 't' ? TRUE : atoi (value));
 }
 
 static void
