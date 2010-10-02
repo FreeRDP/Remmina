@@ -35,6 +35,7 @@ typedef struct _RemminaPluginSftpData
 {
     GtkWidget *client;
     pthread_t thread;
+    RemminaSFTP *sftp;
 } RemminaPluginSftpData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
@@ -109,6 +110,8 @@ remmina_plugin_sftp_main_thread (gpointer data)
     }
 
     remmina_sftp_client_open (REMMINA_SFTP_CLIENT (gpdata->client), sftp);
+    /* RemminaSFTPClient owns the object, we just take the reference */
+    gpdata->sftp = sftp;
 
     remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
 
@@ -175,12 +178,28 @@ remmina_plugin_sftp_close_connection (RemminaProtocolWidget *gp)
 static gboolean
 remmina_plugin_sftp_query_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-    return FALSE;
+    return TRUE;
 }
 
 static void
 remmina_plugin_sftp_call_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
+    RemminaPluginSftpData *gpdata;
+
+    gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+    switch (feature->id)
+    {
+    case REMMINA_PROTOCOL_FEATURE_TOOL_SSH:
+        remmina_plugin_service->open_connection (
+            remmina_file_dup_temp_protocol (remmina_plugin_service->protocol_plugin_get_file (gp), "SSH"),
+            NULL, gpdata->sftp, NULL);
+        return;
+    case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
+        remmina_plugin_service->open_connection (
+            remmina_file_dup_temp_protocol (remmina_plugin_service->protocol_plugin_get_file (gp), "SFTP"),
+            NULL, gpdata->sftp, NULL);
+        return;
+    }
 }
 
 static RemminaProtocolPlugin remmina_plugin_sftp =

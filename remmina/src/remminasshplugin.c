@@ -31,6 +31,9 @@
 #include "remminaprotocolwidget.h"
 #include "remminasshplugin.h"
 
+#define REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY  1
+#define REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE 2
+
 /***** A VTE-Terminal subclass to override the size_request behavior *****/
 #define REMMINA_TYPE_VTE               (remmina_vte_get_type ())
 #define REMMINA_VTE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_VTE, RemminaVte))
@@ -286,13 +289,42 @@ remmina_plugin_ssh_close_connection (RemminaProtocolWidget *gp)
 static gboolean
 remmina_plugin_ssh_query_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-    return FALSE;
+    return TRUE;
 }
 
 static void
 remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
+    RemminaPluginSshData *gpdata;
+
+    gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+    switch (feature->id)
+    {
+    case REMMINA_PROTOCOL_FEATURE_TOOL_SSH:
+        remmina_plugin_service->open_connection (
+            remmina_file_dup_temp_protocol (remmina_plugin_service->protocol_plugin_get_file (gp), "SSH"),
+            NULL, gpdata->shell, NULL);
+        return;
+    case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
+        remmina_plugin_service->open_connection (
+            remmina_file_dup_temp_protocol (remmina_plugin_service->protocol_plugin_get_file (gp), "SFTP"),
+            NULL, gpdata->shell, NULL);
+        return;
+    case REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY:
+        vte_terminal_copy_clipboard (VTE_TERMINAL (gpdata->vte));
+        return;
+    case REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE:
+        vte_terminal_paste_clipboard (VTE_TERMINAL (gpdata->vte));
+        return;
+    }
 }
+
+static const RemminaProtocolFeature remmina_plugin_ssh_features[] =
+{
+    { REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY, NULL, GTK_STOCK_COPY, NULL },
+    { REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE, NULL, GTK_STOCK_PASTE, NULL },
+    { REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
+};
 
 static RemminaProtocolPlugin remmina_plugin_ssh =
 {
@@ -306,7 +338,7 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
     NULL,
     NULL,
     REMMINA_PROTOCOL_SSH_SETTING_SSH,
-    NULL,
+    remmina_plugin_ssh_features,
 
     remmina_plugin_ssh_init,
     remmina_plugin_ssh_open_connection,
