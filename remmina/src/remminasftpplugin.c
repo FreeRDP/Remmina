@@ -31,6 +31,8 @@
 #include "remminaprotocolwidget.h"
 #include "remminasftpplugin.h"
 
+#define REMMINA_PLUGIN_SFTP_FEATURE_PREF_SHOW_HIDDEN 1
+
 typedef struct _RemminaPluginSftpData
 {
     GtkWidget *client;
@@ -123,6 +125,7 @@ static void
 remmina_plugin_sftp_init (RemminaProtocolWidget *gp)
 {
     RemminaPluginSftpData *gpdata;
+    RemminaFile *remminafile;
 
     gpdata = g_new0 (RemminaPluginSftpData, 1);
     g_object_set_data_full (G_OBJECT (gp), "plugin-data", gpdata, g_free);
@@ -130,6 +133,10 @@ remmina_plugin_sftp_init (RemminaProtocolWidget *gp)
     gpdata->client = remmina_sftp_client_new ();
     gtk_widget_show (gpdata->client);
     gtk_container_add (GTK_CONTAINER (gp), gpdata->client);
+
+     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
+    remmina_ftp_client_set_show_hidden (REMMINA_FTP_CLIENT (gpdata->client),
+        remmina_plugin_service->file_get_int (remminafile, "showhidden", FALSE));
 
     remmina_plugin_service->protocol_plugin_register_hostkey (gp, gpdata->client);
 }
@@ -185,8 +192,10 @@ static void
 remmina_plugin_sftp_call_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
     RemminaPluginSftpData *gpdata;
+    RemminaFile *remminafile;
 
     gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+    remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
     switch (feature->id)
     {
     case REMMINA_PROTOCOL_FEATURE_TOOL_SSH:
@@ -199,8 +208,19 @@ remmina_plugin_sftp_call_feature (RemminaProtocolWidget *gp, const RemminaProtoc
             remmina_file_dup_temp_protocol (remmina_plugin_service->protocol_plugin_get_file (gp), "SFTP"),
             NULL, gpdata->sftp, NULL);
         return;
+    case REMMINA_PLUGIN_SFTP_FEATURE_PREF_SHOW_HIDDEN:
+        remmina_ftp_client_set_show_hidden (REMMINA_FTP_CLIENT (gpdata->client),
+            remmina_plugin_service->file_get_int (remminafile, "showhidden", FALSE));
+        return;
     }
 }
+
+static const RemminaProtocolFeature remmina_plugin_sftp_features[] =
+{
+    { REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SFTP_FEATURE_PREF_SHOW_HIDDEN,
+      GINT_TO_POINTER (REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "showhidden", N_("Show Hidden Files") },
+    { REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
+};
 
 static RemminaProtocolPlugin remmina_plugin_sftp =
 {
@@ -214,7 +234,7 @@ static RemminaProtocolPlugin remmina_plugin_sftp =
     NULL,
     NULL,
     REMMINA_PROTOCOL_SSH_SETTING_SFTP,
-    NULL,
+    remmina_plugin_sftp_features,
 
     remmina_plugin_sftp_init,
     remmina_plugin_sftp_open_connection,
