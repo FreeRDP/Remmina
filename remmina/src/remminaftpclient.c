@@ -120,7 +120,10 @@ struct _RemminaFTPClientPriv
     GtkWidget *vpaned;
 
     GtkTreeModel *file_list_model;
+    GtkTreeModel *file_list_filter;
+    GtkTreeModel *file_list_sort;
     GtkWidget *file_list_view;
+    gboolean file_list_show_hidden;
 
     GtkTreeModel *task_list_model;
     GtkWidget *task_list_view;
@@ -893,6 +896,32 @@ remmina_ftp_client_create_toolbar (RemminaFTPClient *client)
     client->priv->file_action_widgets[i++] = button;
 }
 
+void
+remmina_ftp_client_set_show_hidden (RemminaFTPClient *client, gboolean show_hidden)
+{
+    client->priv->file_list_show_hidden = show_hidden;
+    gtk_tree_model_filter_refilter (GTK_TREE_MODEL_FILTER (client->priv->file_list_filter));
+}
+
+static gboolean
+remmina_ftp_client_filter_visible_func (GtkTreeModel *model, GtkTreeIter *iter, RemminaFTPClient *client)
+{
+    gchar *name;
+    gboolean result = TRUE;
+
+    if (client->priv->file_list_show_hidden) return TRUE;
+
+    gtk_tree_model_get (model, iter,
+        REMMINA_FTP_FILE_COLUMN_NAME, &name,
+        -1);
+    if (name && name[0] == '.')
+    {
+        result = FALSE;
+    }
+    g_free (name);
+    return result;
+}
+
 static void
 remmina_ftp_client_init (RemminaFTPClient *client)
 {
@@ -993,9 +1022,15 @@ remmina_ftp_client_init (RemminaFTPClient *client)
     priv->file_list_model = GTK_TREE_MODEL (gtk_list_store_new (REMMINA_FTP_FILE_N_COLUMNS,
         G_TYPE_INT, G_TYPE_STRING, G_TYPE_FLOAT,
         G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING));
-    gtk_tree_view_set_model (GTK_TREE_VIEW (priv->file_list_view), priv->file_list_model);
-    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (priv->file_list_model),
+
+    priv->file_list_filter = gtk_tree_model_filter_new (priv->file_list_model, NULL);
+    gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (priv->file_list_filter),
+        (GtkTreeModelFilterVisibleFunc) remmina_ftp_client_filter_visible_func, client, NULL);
+
+    priv->file_list_sort = gtk_tree_model_sort_new_with_model (priv->file_list_filter);
+    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (priv->file_list_sort),
         REMMINA_FTP_FILE_COLUMN_NAME_SORT, GTK_SORT_ASCENDING);
+    gtk_tree_view_set_model (GTK_TREE_VIEW (priv->file_list_view), priv->file_list_sort);
 
     /* Task List */
     scrolledwindow = gtk_scrolled_window_new (NULL, NULL);
