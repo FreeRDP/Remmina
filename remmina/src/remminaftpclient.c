@@ -26,6 +26,7 @@
 #include "remminapublic.h"
 #include "remminapref.h"
 #include "remminamarshals.h"
+#include "remminafile.h"
 #include "remminaftpclient.h"
 
 /* -------------------- RemminaCellRendererPixbuf ----------------------- */
@@ -476,7 +477,7 @@ remmina_ftp_client_download (RemminaFTPClient *client, GtkTreeIter *piter, const
     gchar *name;
     gfloat size;
 
-    gtk_tree_model_get (priv->file_list_model, piter,
+    gtk_tree_model_get (priv->file_list_sort, piter,
         REMMINA_FTP_FILE_COLUMN_TYPE, &type,
         REMMINA_FTP_FILE_COLUMN_NAME, &name,
         REMMINA_FTP_FILE_COLUMN_SIZE, &size,
@@ -575,7 +576,7 @@ remmina_ftp_client_action_download (GObject *object, RemminaFTPClient *client)
     list_iter = g_list_first (list);
     while (list_iter)
     {
-        gtk_tree_model_get_iter (priv->file_list_model, &iter, (GtkTreePath*) list_iter->data);
+        gtk_tree_model_get_iter (priv->file_list_sort, &iter, (GtkTreePath*) list_iter->data);
         remmina_ftp_client_download (client, &iter, localdir);
         list_iter = g_list_next (list_iter);
     }
@@ -614,9 +615,9 @@ remmina_ftp_client_action_delete (GObject *object, RemminaFTPClient *client)
     list_iter = g_list_first (list);
     while (list_iter)
     {
-        gtk_tree_model_get_iter (priv->file_list_model, &iter, (GtkTreePath*) list_iter->data);
+        gtk_tree_model_get_iter (priv->file_list_sort, &iter, (GtkTreePath*) list_iter->data);
 
-        gtk_tree_model_get (priv->file_list_model, &iter,
+        gtk_tree_model_get (priv->file_list_sort, &iter,
             REMMINA_FTP_FILE_COLUMN_TYPE, &type,
             REMMINA_FTP_FILE_COLUMN_NAME, &name,
             -1);
@@ -781,8 +782,8 @@ remmina_ftp_client_file_list_on_button_press (GtkWidget *widget, GdkEventButton 
             gtk_tree_view_get_selection (GTK_TREE_VIEW (priv->file_list_view)), NULL);
         if (list)
         {
-            gtk_tree_model_get_iter (priv->file_list_model, &iter, (GtkTreePath*) list->data);
-            gtk_tree_model_get (priv->file_list_model, &iter,
+            gtk_tree_model_get_iter (priv->file_list_sort, &iter, (GtkTreePath*) list->data);
+            gtk_tree_model_get (priv->file_list_sort, &iter,
                 REMMINA_FTP_FILE_COLUMN_TYPE, &type,
                 REMMINA_FTP_FILE_COLUMN_NAME, &name,
                 -1);
@@ -931,6 +932,7 @@ remmina_ftp_client_init (RemminaFTPClient *client)
     GtkWidget *widget;
     GtkCellRenderer *renderer;
     GtkTreeViewColumn *column;
+    GtkWidget *vbox;
 
     priv = g_new0 (RemminaFTPClientPriv, 1);
     client->priv = priv;
@@ -942,14 +944,6 @@ remmina_ftp_client_init (RemminaFTPClient *client)
     /* Toolbar */
     remmina_ftp_client_create_toolbar (client);
 
-    /* Remote Directory */
-    widget = gtk_combo_box_entry_new_text ();
-    gtk_widget_show (widget);
-    gtk_combo_box_append_text (GTK_COMBO_BOX (widget), "/");
-    gtk_box_pack_start (GTK_BOX (client), widget, FALSE, TRUE, 0);
-
-    priv->directory_combo = widget;
-
     /* The Paned to separate File List and Task List */
     vpaned = gtk_vpaned_new ();
     gtk_widget_show (vpaned);
@@ -957,12 +951,25 @@ remmina_ftp_client_init (RemminaFTPClient *client)
 
     priv->vpaned = vpaned;
 
+    /* Remote */
+    vbox = gtk_vbox_new (FALSE, 0);
+    gtk_widget_show (vbox);
+    gtk_paned_pack1 (GTK_PANED (vpaned), vbox, TRUE, FALSE);
+
+    /* Remote Directory */
+    widget = gtk_combo_box_entry_new_text ();
+    gtk_widget_show (widget);
+    gtk_combo_box_append_text (GTK_COMBO_BOX (widget), "/");
+    gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, TRUE, 0);
+
+    priv->directory_combo = widget;
+
     /* Remote File List */
     scrolledwindow = gtk_scrolled_window_new (NULL, NULL);
     gtk_widget_show (scrolledwindow);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolledwindow),
         GTK_POLICY_AUTOMATIC, GTK_POLICY_ALWAYS);
-    gtk_paned_pack1 (GTK_PANED (vpaned), scrolledwindow, TRUE, FALSE);
+    gtk_box_pack_start (GTK_BOX (vbox), scrolledwindow, TRUE, TRUE, 0);
 
     widget = gtk_tree_view_new ();
     gtk_widget_show (widget);
@@ -1129,6 +1136,29 @@ remmina_ftp_client_new (void)
     client = REMMINA_FTP_CLIENT (g_object_new (REMMINA_TYPE_FTP_CLIENT, NULL));
 
     return GTK_WIDGET (client);
+}
+
+void
+remmina_ftp_client_save_state (RemminaFTPClient *client, RemminaFile *remminafile)
+{
+    gint pos;
+
+    pos = gtk_paned_get_position (GTK_PANED (client->priv->vpaned));
+g_print ("save: %i\n", pos);
+    remmina_file_set_int (remminafile, "ftp_vpanedpos", pos);
+}
+
+void
+remmina_ftp_client_load_state (RemminaFTPClient *client, RemminaFile *remminafile)
+{
+    gint pos;
+
+    pos = remmina_file_get_int (remminafile, "ftp_vpanedpos", 0);
+    if (pos)
+    {
+g_print ("load: %i\n", pos);
+        gtk_paned_set_position (GTK_PANED (client->priv->vpaned), pos);
+    }
 }
 
 void
