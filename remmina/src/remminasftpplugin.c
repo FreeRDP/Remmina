@@ -122,6 +122,15 @@ remmina_plugin_sftp_main_thread (gpointer data)
 }
 
 static void
+remmina_plugin_sftp_client_on_realize (GtkWidget *widget, RemminaProtocolWidget *gp)
+{
+    RemminaFile *remminafile;
+
+    remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
+    remmina_ftp_client_load_state (REMMINA_FTP_CLIENT (widget), remminafile);
+}
+
+static void
 remmina_plugin_sftp_init (RemminaProtocolWidget *gp)
 {
     RemminaPluginSftpData *gpdata;
@@ -130,15 +139,19 @@ remmina_plugin_sftp_init (RemminaProtocolWidget *gp)
     gpdata = g_new0 (RemminaPluginSftpData, 1);
     g_object_set_data_full (G_OBJECT (gp), "plugin-data", gpdata, g_free);
 
+    remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
+
     gpdata->client = remmina_sftp_client_new ();
     gtk_widget_show (gpdata->client);
     gtk_container_add (GTK_CONTAINER (gp), gpdata->client);
 
-     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
     remmina_ftp_client_set_show_hidden (REMMINA_FTP_CLIENT (gpdata->client),
         remmina_plugin_service->file_get_int (remminafile, "showhidden", FALSE));
 
     remmina_plugin_service->protocol_plugin_register_hostkey (gp, gpdata->client);
+
+    g_signal_connect (G_OBJECT (gpdata->client),
+        "realize", G_CALLBACK (remmina_plugin_sftp_client_on_realize), gp);
 }
 
 static gboolean
@@ -170,14 +183,17 @@ static gboolean
 remmina_plugin_sftp_close_connection (RemminaProtocolWidget *gp)
 {
     RemminaPluginSftpData *gpdata;
+    RemminaFile *remminafile;
 
     gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+    remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
     if (gpdata->thread)
     {
         pthread_cancel (gpdata->thread);
         if (gpdata->thread) pthread_join (gpdata->thread, NULL);
     }
 
+    remmina_ftp_client_save_state (REMMINA_FTP_CLIENT (gpdata->client), remminafile);
     remmina_plugin_service->protocol_plugin_emit_signal (gp, "disconnect");
     return FALSE;
 }

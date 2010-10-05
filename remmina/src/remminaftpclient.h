@@ -121,6 +121,9 @@ typedef struct _RemminaFTPTask
 
 GtkWidget* remmina_ftp_client_new (void);
 
+void remmina_ftp_client_save_state (RemminaFTPClient *client, RemminaFile *remminafile);
+void remmina_ftp_client_load_state (RemminaFTPClient *client, RemminaFile *remminafile);
+
 void remmina_ftp_client_set_show_hidden (RemminaFTPClient *client, gboolean show_hidden);
 void remmina_ftp_client_clear_file_list (RemminaFTPClient *client);
 /* column, value, ..., -1 */
