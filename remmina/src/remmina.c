@@ -343,8 +343,6 @@ main (int argc, char* argv[])
     gcry_control (GCRYCTL_INITIALIZATION_FINISHED, 0);
 #endif
 
-    THREADS_ENTER
-
     gtk_init (&argc, &argv);
 
     remmina_file_manager_init ();
@@ -371,10 +369,10 @@ main (int argc, char* argv[])
 
     if (newapp)
     {
+        THREADS_ENTER
         gtk_main ();
+        THREADS_LEAVE    
     }
-
-    THREADS_LEAVE    
 
     return 0;
 }
