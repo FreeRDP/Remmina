@@ -366,14 +366,19 @@ remmina_file_update_screen_resolution (RemminaFile *remminafile)
     GdkScreen *screen;
     gchar *pos;
     gchar *resolution;
+    gint x, y;
+    gint monitor;
+    GdkRectangle rect;
 
     resolution = g_strdup (remmina_file_get_string (remminafile, "resolution"));
     if (resolution == NULL ||
         strchr (resolution, 'x') == NULL)
     {
-        screen = gdk_screen_get_default ();
-        remmina_file_set_int (remminafile, "resolution_width", gdk_screen_get_width (screen));
-        remmina_file_set_int (remminafile, "resolution_height", gdk_screen_get_height (screen));
+        gdk_display_get_pointer (gdk_display_get_default(), &screen, &x, &y, NULL);
+        monitor = gdk_screen_get_monitor_at_point (screen, x, y);
+        gdk_screen_get_monitor_geometry (screen, monitor, &rect);
+        remmina_file_set_int (remminafile, "resolution_width", rect.width);
+        remmina_file_set_int (remminafile, "resolution_height", rect.height);
     }
     else
     {
