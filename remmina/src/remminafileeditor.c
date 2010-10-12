@@ -77,6 +77,7 @@ struct _RemminaFileEditorPriv
     GtkWidget *name_entry;
     GtkWidget *group_combo;
     GtkWidget *protocol_combo;
+    GtkWidget *save_button;
 
     GtkWidget *config_box;
     GtkWidget *config_container;
@@ -154,9 +155,7 @@ remmina_file_editor_on_realize (GtkWidget *widget, gpointer user_data)
 
     gfe = REMMINA_FILE_EDITOR (widget);
 
-    defaultwidget = (remmina_file_get_filename (gfe->priv->remmina_file) == NULL ?
-        gfe->priv->server_combo : 
-        gfe->priv->name_entry);
+    defaultwidget = gfe->priv->name_entry;
 
     if (defaultwidget)
     {
@@ -1132,6 +1131,8 @@ remmina_file_editor_init (RemminaFileEditor *gfe)
 
     widget = gtk_dialog_add_button (GTK_DIALOG (gfe), GTK_STOCK_SAVE, GTK_RESPONSE_APPLY);
     g_signal_connect (G_OBJECT (widget), "clicked", G_CALLBACK (remmina_file_editor_on_save), gfe);
+    gtk_widget_set_sensitive (widget, FALSE);
+    priv->save_button = widget;
 
     widget = gtk_dialog_add_button (GTK_DIALOG (gfe), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
     g_signal_connect (G_OBJECT (widget), "clicked", G_CALLBACK (remmina_file_editor_on_cancel), gfe);
@@ -1187,6 +1188,32 @@ remmina_file_editor_iterate_protocol (gchar *protocol, RemminaPlugin *plugin, gp
     return FALSE;
 }
 
+static void
+remmina_file_editor_check_profile (RemminaFileEditor *gfe)
+{
+    RemminaFileEditorPriv *priv;
+
+    priv = gfe->priv;
+    if (remmina_file_get_filename (priv->remmina_file))
+    {
+        gtk_widget_set_sensitive (priv->group_combo, TRUE);
+        gtk_widget_set_sensitive (priv->save_button, TRUE);
+    }
+}
+
+static void
+remmina_file_editor_name_on_changed (GtkEditable *editable, RemminaFileEditor *gfe)
+{
+    RemminaFileEditorPriv *priv;
+
+    priv = gfe->priv;
+    if (remmina_file_get_filename (priv->remmina_file) == NULL)
+    {
+        remmina_file_generate_filename (priv->remmina_file);
+        remmina_file_editor_check_profile (gfe);
+    }
+}
+
 GtkWidget*
 remmina_file_editor_new_from_file (RemminaFile *remminafile)
 {
@@ -1229,8 +1256,8 @@ remmina_file_editor_new_from_file (RemminaFile *remminafile)
 
     if (remmina_file_get_filename (remminafile) == NULL)
     {
-        gtk_widget_set_sensitive (widget, FALSE);
         gtk_entry_set_text (GTK_ENTRY (widget), _("Quick Connect"));
+        g_signal_connect (G_OBJECT (widget), "changed", G_CALLBACK (remmina_file_editor_name_on_changed), gfe);
     }
     else
     {
@@ -1239,23 +1266,17 @@ remmina_file_editor_new_from_file (RemminaFile *remminafile)
     }
 
     /* Profile: Group */
-    if (remmina_file_get_filename (remminafile) == NULL)
-    {
-        priv->group_combo = NULL;
-    }
-    else
-    {
-        widget = gtk_label_new (_("Group"));
-        gtk_widget_show (widget);
-        gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
-        gtk_table_attach (GTK_TABLE (table), widget, 1, 2, 2, 3, GTK_FILL, 0, 0, 0);
+    widget = gtk_label_new (_("Group"));
+    gtk_widget_show (widget);
+    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+    gtk_table_attach (GTK_TABLE (table), widget, 1, 2, 2, 3, GTK_FILL, 0, 0, 0);
 
-        groups = remmina_file_manager_get_groups ();
-        priv->group_combo = remmina_public_create_combo_entry (groups, remmina_file_get_string (remminafile, "group"), FALSE);
-        g_free (groups);
-        gtk_widget_show (priv->group_combo);
-        gtk_table_attach_defaults (GTK_TABLE (table), priv->group_combo, 2, 3, 2, 3);
-    }
+    groups = remmina_file_manager_get_groups ();
+    priv->group_combo = remmina_public_create_combo_entry (groups, remmina_file_get_string (remminafile, "group"), FALSE);
+    g_free (groups);
+    gtk_widget_show (priv->group_combo);
+    gtk_table_attach_defaults (GTK_TABLE (table), priv->group_combo, 2, 3, 2, 3);
+    gtk_widget_set_sensitive (priv->group_combo, FALSE);
 
     /* Profile: Protocol */
     widget = gtk_label_new (_("Protocol"));
@@ -1279,6 +1300,8 @@ remmina_file_editor_new_from_file (RemminaFile *remminafile)
     priv->config_container = NULL;
 
     remmina_file_editor_protocol_combo_on_changed (GTK_COMBO_BOX (priv->protocol_combo), gfe);
+
+    remmina_file_editor_check_profile (gfe);
 
     return GTK_WIDGET (gfe);
 }
@@ -1341,23 +1364,5 @@ remmina_file_editor_new_from_filename (const gchar *filename)
         gtk_widget_destroy (dialog);
         return NULL;
     }
-}
-
-GtkWidget*
-remmina_file_editor_new_temp (void)
-{
-    return remmina_file_editor_new_temp_full (NULL, NULL);
-}
-
-GtkWidget*
-remmina_file_editor_new_temp_full (const gchar *server, const gchar *protocol)
-{
-    RemminaFile *remminafile;
-
-    remminafile = remmina_file_new_temp ();
-    if (server) remmina_file_set_string (remminafile, "server", server);
-    if (protocol) remmina_file_set_string (remminafile, "protocol", protocol);
-
-    return remmina_file_editor_new_from_file (remminafile);
 }
 

@@ -380,28 +380,7 @@ remmina_main_load_files (RemminaMain *remminamain)
 }
 
 static void
-remmina_main_action_action_quick_connect_full (const gchar *protocol)
-{
-    GtkWidget *widget;
-
-    widget = remmina_file_editor_new_temp_full (NULL, protocol);
-    gtk_widget_show (widget);
-}
-
-static void
-remmina_main_action_action_quick_connect (GObject *object, RemminaMain *remminamain)
-{
-    remmina_main_action_action_quick_connect_full (NULL);
-}
-
-static void
-remmina_main_action_action_quick_connect_proto (GtkWidget *widget, const gchar *protocol)
-{
-    remmina_main_action_action_quick_connect_full (protocol);
-}
-
-static void
-remmina_main_action_action_connect (GtkAction *action, RemminaMain *remminamain)
+remmina_main_action_connection_connect (GtkAction *action, RemminaMain *remminamain)
 {
     remmina_connection_window_open_from_filename (remminamain->priv->selected_filename);
 }
@@ -416,7 +395,7 @@ remmina_main_file_editor_destroy (GtkWidget *widget, RemminaMain *remminamain)
 }
 
 static void
-remmina_main_action_edit_new (GtkAction *action, RemminaMain *remminamain)
+remmina_main_action_connection_new (GtkAction *action, RemminaMain *remminamain)
 {
     GtkWidget *widget;
 
@@ -426,7 +405,7 @@ remmina_main_action_edit_new (GtkAction *action, RemminaMain *remminamain)
 }
 
 static void
-remmina_main_action_edit_copy (GtkAction *action, RemminaMain *remminamain)
+remmina_main_action_connection_copy (GtkAction *action, RemminaMain *remminamain)
 {
     GtkWidget *widget;
 
@@ -441,7 +420,7 @@ remmina_main_action_edit_copy (GtkAction *action, RemminaMain *remminamain)
 }
 
 static void
-remmina_main_action_edit_edit (GtkAction *action, RemminaMain *remminamain)
+remmina_main_action_connection_edit (GtkAction *action, RemminaMain *remminamain)
 {
     GtkWidget *widget;
 
@@ -456,7 +435,7 @@ remmina_main_action_edit_edit (GtkAction *action, RemminaMain *remminamain)
 }
 
 static void
-remmina_main_action_edit_delete (GtkAction *action, RemminaMain *remminamain)
+remmina_main_action_connection_delete (GtkAction *action, RemminaMain *remminamain)
 {
     GtkWidget *dialog;
 
@@ -484,7 +463,7 @@ remmina_main_action_edit_preferences (GtkAction *action, RemminaMain *remminamai
 }
 
 static void
-remmina_main_action_action_quit (GtkAction *action, RemminaMain *remminamain)
+remmina_main_action_connection_close (GtkAction *action, RemminaMain *remminamain)
 {
     gtk_widget_destroy (GTK_WIDGET (remminamain));
 }
@@ -745,19 +724,17 @@ remmina_main_action_help_about (GtkAction *action, RemminaMain *remminamain)
 static const gchar *remmina_main_ui_xml = 
 "<ui>"
 "  <menubar name='MenuBar'>"
-"    <menu name='ActionMenu' action='Action'>"
-"      <menuitem name='ActionQuickConnectMenu' action='ActionQuickConnect'/>"
-"      <menuitem name='ActionQuickConnectProtoMenu' action='ActionQuickConnectProto'/>"
-"      <menuitem name='ActionConnectMenu' action='ActionConnect'/>"
+"    <menu name='ConnectionMenu' action='Connection'>"
+"      <menuitem name='ConnectionConnectMenu' action='ConnectionConnect'/>"
 "      <separator/>"
-"      <menuitem name='ActionQuitMenu' action='ActionQuit'/>"
+"      <menuitem name='ConnectionNewMenu' action='ConnectionNew'/>"
+"      <menuitem name='ConnectionCopyMenu' action='ConnectionCopy'/>"
+"      <menuitem name='ConnectionEditMenu' action='ConnectionEdit'/>"
+"      <menuitem name='ConnectionDeleteMenu' action='ConnectionDelete'/>"
+"      <separator/>"
+"      <menuitem name='ConnectionCloseMenu' action='ConnectionClose'/>"
 "    </menu>"
 "    <menu name='EditMenu' action='Edit'>"
-"      <menuitem name='EditNewMenu' action='EditNew'/>"
-"      <menuitem name='EditCopyMenu' action='EditCopy'/>"
-"      <menuitem name='EditEditMenu' action='EditEdit'/>"
-"      <menuitem name='EditDeleteMenu' action='EditDelete'/>"
-"      <separator/>"
 "      <menuitem name='EditPreferencesMenu' action='EditPreferences'/>"
 "    </menu>"
 "    <menu name='ViewMenu' action='View'>"
@@ -785,49 +762,43 @@ static const gchar *remmina_main_ui_xml =
 "    </menu>"
 "  </menubar>"
 "  <toolbar name='ToolBar'>"
-"    <toolitem action='ActionConnect'/>"
+"    <toolitem action='ConnectionConnect'/>"
 "    <separator/>"
-"    <toolitem action='EditNew'/>"
-"    <toolitem action='EditCopy'/>"
-"    <toolitem action='EditEdit'/>"
-"    <toolitem action='EditDelete'/>"
+"    <toolitem action='ConnectionNew'/>"
+"    <toolitem action='ConnectionCopy'/>"
+"    <toolitem action='ConnectionEdit'/>"
+"    <toolitem action='ConnectionDelete'/>"
 "    <separator/>"
 "    <toolitem action='EditPreferences'/>"
 "  </toolbar>"
 "  <popup name='PopupMenu'>"
-"    <menuitem action='ActionConnect'/>"
+"    <menuitem action='ConnectionConnect'/>"
 "    <separator/>"
-"    <menuitem action='EditCopy'/>"
-"    <menuitem action='EditEdit'/>"
-"    <menuitem action='EditDelete'/>"
+"    <menuitem action='ConnectionCopy'/>"
+"    <menuitem action='ConnectionEdit'/>"
+"    <menuitem action='ConnectionDelete'/>"
 "  </popup>"
 "</ui>";
 
 static const GtkActionEntry remmina_main_ui_menu_entries[] =
 {
-    { "Action", NULL, N_("_Action") },
+    { "Connection", NULL, N_("_Connection") },
     { "Edit", NULL, N_("_Edit") },
     { "View", NULL, N_("_View") },
     { "Tools", NULL, N_("_Tools") },
     { "Help", NULL, N_("_Help") },
 
-    { "ActionQuickConnect", GTK_STOCK_JUMP_TO, N_("Quick Connect"), "<control>U",
-        N_("Open a quick connection"),
-        G_CALLBACK (remmina_main_action_action_quick_connect) },
-
-    { "ActionQuickConnectProto", NULL, N_("Quick _Connect To") },
-
-    { "EditNew", GTK_STOCK_NEW, NULL, "<control>N",
+    { "ConnectionNew", GTK_STOCK_NEW, NULL, "<control>N",
         N_("Create a new remote desktop file"),
-        G_CALLBACK (remmina_main_action_edit_new) },
+        G_CALLBACK (remmina_main_action_connection_new) },
 
     { "EditPreferences", GTK_STOCK_PREFERENCES, NULL, "<control>P",
         N_("Open the preferences dialog"),
         G_CALLBACK (remmina_main_action_edit_preferences) },
 
-    { "ActionQuit", GTK_STOCK_QUIT, NULL, "<control>Q",
+    { "ConnectionClose", GTK_STOCK_QUIT, NULL, "<control>Q",
         N_("Quit Remmina"),
-        G_CALLBACK (remmina_main_action_action_quit) },
+        G_CALLBACK (remmina_main_action_connection_close) },
 
     { "ToolsImport", NULL, N_("Import"), NULL,
         NULL,
@@ -852,21 +823,21 @@ static const GtkActionEntry remmina_main_ui_menu_entries[] =
 
 static const GtkActionEntry remmina_main_ui_file_sensitive_menu_entries[] =
 {
-    { "ActionConnect", GTK_STOCK_CONNECT, NULL, "<control>O",
+    { "ConnectionConnect", GTK_STOCK_CONNECT, NULL, "<control>O",
         N_("Open the connection to the selected remote desktop file"),
-        G_CALLBACK (remmina_main_action_action_connect) },
+        G_CALLBACK (remmina_main_action_connection_connect) },
 
-    { "EditCopy", GTK_STOCK_COPY, NULL, "<control>C",
+    { "ConnectionCopy", GTK_STOCK_COPY, NULL, "<control>C",
         N_("Create a copy of the selected remote desktop file"),
-        G_CALLBACK (remmina_main_action_edit_copy) },
+        G_CALLBACK (remmina_main_action_connection_copy) },
 
-    { "EditEdit", GTK_STOCK_EDIT, NULL, "<control>E",
+    { "ConnectionEdit", GTK_STOCK_EDIT, NULL, "<control>E",
         N_("Edit the selected remote desktop file"),
-        G_CALLBACK (remmina_main_action_edit_edit) },
+        G_CALLBACK (remmina_main_action_connection_edit) },
 
-    { "EditDelete", GTK_STOCK_DELETE, NULL, "<control>D",
+    { "ConnectionDelete", GTK_STOCK_DELETE, NULL, "<control>D",
         N_("Delete the selected remote desktop file"),
-        G_CALLBACK (remmina_main_action_edit_delete) },
+        G_CALLBACK (remmina_main_action_connection_delete) },
 
     { "ToolsExport", NULL, N_("Export"), NULL,
         NULL,
@@ -912,36 +883,14 @@ remmina_main_file_list_on_button_press (GtkWidget *widget, GdkEventButton *event
         switch (remmina_pref.default_action)
         {
         case REMMINA_ACTION_EDIT:
-            remmina_main_action_edit_edit (NULL, remminamain);
+            remmina_main_action_connection_edit (NULL, remminamain);
             break;
         case REMMINA_ACTION_CONNECT:
         default:
-            remmina_main_action_action_connect (NULL, remminamain);
+            remmina_main_action_connection_connect (NULL, remminamain);
             break;
         }
     }
-    return FALSE;
-}
-
-static gboolean
-remmina_main_iterate_protocol_menu (gchar *protocol, RemminaPlugin *plugin, gpointer data)
-{
-    GtkWidget *item;
-    GtkWidget *image;
-
-    item = gtk_image_menu_item_new_with_label (plugin->description);
-    gtk_widget_show (item);
-
-    image = gtk_image_new_from_icon_name (((RemminaProtocolPlugin *)plugin)->icon_name, GTK_ICON_SIZE_MENU);
-    gtk_widget_show (image);
-    gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
-    gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (item), TRUE);
-
-    gtk_menu_shell_append (GTK_MENU_SHELL (data), item);
-
-    g_signal_connect (G_OBJECT (item), "activate",
-        G_CALLBACK (remmina_main_action_action_quick_connect_proto), (gpointer) plugin->name);
-
     return FALSE;
 }
 
@@ -1037,13 +986,10 @@ remmina_main_init (RemminaMain *remminamain)
     RemminaMainPriv *priv;
     GtkWidget *vbox;
     GtkWidget *menubar;
-    GtkWidget *menu;
-    GtkWidget *menuitem;
     GtkUIManager *uimanager;
     GtkActionGroup *action_group;
     GtkWidget *scrolledwindow;
     GtkWidget *tree;
-    GtkToolItem *toolitem;
     GtkCellRenderer *renderer;
     GtkTreeViewColumn *column;
     GError *error;
@@ -1116,23 +1062,6 @@ remmina_main_init (RemminaMain *remminamain)
     gtk_box_pack_start (GTK_BOX (vbox), priv->toolbar, FALSE, FALSE, 0);
 
     remmina_main_create_quick_search (remminamain);
-
-    /* Customized menu items and toolbar items which can't be built through standard ui manager */
-    toolitem = gtk_menu_tool_button_new_from_stock (GTK_STOCK_JUMP_TO);
-    gtk_widget_show (GTK_WIDGET (toolitem));
-    gtk_tool_button_set_label (GTK_TOOL_BUTTON (toolitem), _("Quick Connect"));
-    gtk_toolbar_insert (GTK_TOOLBAR (priv->toolbar), toolitem, 0);
-    g_signal_connect (G_OBJECT (toolitem), "clicked",
-        G_CALLBACK (remmina_main_action_action_quick_connect), remminamain);
-
-    menu = gtk_menu_new ();
-    remmina_plugin_manager_for_each_plugin (REMMINA_PLUGIN_TYPE_PROTOCOL, remmina_main_iterate_protocol_menu, menu);
-    gtk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (toolitem), menu);
-
-    menuitem = gtk_ui_manager_get_widget (uimanager, "/MenuBar/ActionMenu/ActionQuickConnectProtoMenu");
-    menu = gtk_menu_new ();
-    remmina_plugin_manager_for_each_plugin (REMMINA_PLUGIN_TYPE_PROTOCOL, remmina_main_iterate_protocol_menu, menu);
-    gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), menu);
 
     gtk_window_add_accel_group (GTK_WINDOW (remminamain), gtk_ui_manager_get_accel_group (uimanager));
 

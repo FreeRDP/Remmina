@@ -55,9 +55,6 @@ GtkWidget* remmina_file_editor_new_full (const gchar *server, const gchar *proto
 GtkWidget* remmina_file_editor_new_copy (const gchar *filename);
 /* Open existing file */
 GtkWidget* remmina_file_editor_new_from_filename (const gchar *filename);
-/* Quick connect */
-GtkWidget* remmina_file_editor_new_temp (void);
-GtkWidget* remmina_file_editor_new_temp_full (const gchar *server, const gchar *protocol);
 
 G_END_DECLS
 
