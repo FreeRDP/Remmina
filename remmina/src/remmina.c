@@ -57,7 +57,6 @@ enum
     COMMAND_0,
     REMMINA_COMMAND_MAIN,
     REMMINA_COMMAND_PREF,
-    REMMINA_COMMAND_QUICK,
     REMMINA_COMMAND_NEW,
     REMMINA_COMMAND_CONNECT,
     REMMINA_COMMAND_EDIT,
@@ -113,16 +112,6 @@ remmina_parse_command (int argc, char* argv[], gchar **data)
         *data = g_strdup (opt);
         break;
     case 'q':
-        command = REMMINA_COMMAND_QUICK;
-        if (server)
-        {
-            *data = g_strdup_printf ("%s,%s", protocol, server);
-        }
-        else
-        {
-            *data = g_strdup (protocol);
-        }
-        break;
     case 'n':
         command = REMMINA_COMMAND_NEW;
         if (server)
@@ -190,22 +179,6 @@ remmina_exec_command (gint command, const gchar *data)
             widget = remmina_pref_dialog_new (atoi (data));
             gtk_widget_show (widget);
         }
-        break;
-    case REMMINA_COMMAND_QUICK:
-        s1 = (data ? strchr (data, ',') : NULL);
-        if (s1)
-        {
-            s1 = g_strdup (data);
-            s2 = strchr (s1, ',');
-            *s2++ = '\0';
-            widget = remmina_file_editor_new_temp_full (s2, s1);
-            g_free (s1);
-        }
-        else
-        {
-            widget = remmina_file_editor_new_temp_full (NULL, data);
-        }
-        gtk_widget_show (widget);
         break;
     case REMMINA_COMMAND_NEW:
         s1 = (data ? strchr (data, ',') : NULL);
@@ -280,7 +253,6 @@ remmina_unique_exec_command (gint command, const gchar *data)
     app = unique_app_new_with_commands ("org.remmina", NULL,
         "main",     REMMINA_COMMAND_MAIN,
         "pref",     REMMINA_COMMAND_PREF,
-        "quick",    REMMINA_COMMAND_QUICK,
         "newf",     REMMINA_COMMAND_NEW,
         "connect",  REMMINA_COMMAND_CONNECT,
         "edit",     REMMINA_COMMAND_EDIT,

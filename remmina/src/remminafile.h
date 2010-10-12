@@ -46,7 +46,6 @@ typedef enum
 
 /* Create a empty .remmina file */
 RemminaFile* remmina_file_new (void);
-RemminaFile* remmina_file_new_temp (void);
 RemminaFile* remmina_file_copy (const gchar *filename);
 void remmina_file_generate_filename (RemminaFile *remminafile);
 void remmina_file_set_filename (RemminaFile *remminafile, const gchar *filename);

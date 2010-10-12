@@ -94,19 +94,22 @@ remmina_file_new_empty (void)
 }
 
 RemminaFile*
-remmina_file_new_temp (void)
+remmina_file_new (void)
 {
     RemminaFile *remminafile;
 
     /* Try to load from the preference file for default settings first */
     remminafile = remmina_file_load (remmina_pref_file);
 
-    if (!remminafile)
+    if (remminafile)
+    {
+        g_free (remminafile->filename);
+        remminafile->filename = NULL;
+    }
+    else
     {
         remminafile = remmina_file_new_empty ();
     }
-
-    remmina_file_set_string (remminafile, "name", _("New Connection"));
 
     return remminafile;
 }
@@ -133,17 +136,6 @@ const gchar*
 remmina_file_get_filename (RemminaFile *remminafile)
 {
     return remminafile->filename;
-}
-
-RemminaFile*
-remmina_file_new (void)
-{
-    RemminaFile *remminafile;
-
-    remminafile = remmina_file_new_temp ();
-    remmina_file_generate_filename (remminafile);
-
-    return remminafile;
 }
 
 RemminaFile*
