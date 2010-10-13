@@ -796,8 +796,8 @@ static const GtkActionEntry remmina_main_ui_menu_entries[] =
         N_("Open the preferences dialog"),
         G_CALLBACK (remmina_main_action_edit_preferences) },
 
-    { "ConnectionClose", GTK_STOCK_QUIT, NULL, "<control>Q",
-        N_("Quit Remmina"),
+    { "ConnectionClose", GTK_STOCK_CLOSE, NULL, "<control>X",
+        NULL,
         G_CALLBACK (remmina_main_action_connection_close) },
 
     { "ToolsImport", NULL, N_("Import"), NULL,
