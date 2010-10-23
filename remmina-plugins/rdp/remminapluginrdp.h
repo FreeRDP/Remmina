@@ -59,7 +59,7 @@ typedef struct _RemminaPluginRdpData
     gint scale_width;
     gint scale_height;
     guint scale_handler;
-    guchar *colourmap;
+    guchar *colormap;
     gint clip_x, clip_y, clip_w, clip_h;
     gboolean clip;
     guchar fgcolor[3];
