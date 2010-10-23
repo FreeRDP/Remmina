@@ -589,9 +589,9 @@ remmina_plugin_rdpui_color_convert (RemminaPluginRdpData *gpdata,
         pixel[2] = ((cv & 0x1f) << 3) | ((cv & 0x1c) >> 2);
         break;
     case 8:
-        if (gpdata->colourmap)
+        if (gpdata->colormap)
         {
-            memcpy (pixel, gpdata->colourmap + (cv & 0xff) * 3, 3);
+            memcpy (pixel, gpdata->colormap + (cv & 0xff) * 3, 3);
         }
         break;
     }
@@ -715,7 +715,7 @@ remmina_plugin_rdpui_bitmap_convert (RemminaPluginRdpData *gpdata,
             dst = out_data + iy * rowstride;
             for (ix = 0; ix < width; ix++)
             {
-                memcpy (dst, gpdata->colourmap + (*src++) * 3, 3);
+                memcpy (dst, gpdata->colormap + (*src++) * 3, 3);
                 dst += 3;
                 if (alpha) *dst++ = 0xff;
             }
@@ -1244,12 +1244,12 @@ remmina_plugin_rdpui_line (rdpInst *inst, uint8 opcode, int startx, int starty, 
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
 
-    /*g_print ("ui_line %i %i %i %i %i %X\n", opcode, startx, starty, endx, endy, pen->colour);*/
+    /*g_print ("ui_line %i %i %i %i %i %X\n", opcode, startx, starty, endx, endy, pen->color);*/
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
     gpdata->pattern_w = 1;
     gpdata->pattern_h = 1;
-    remmina_plugin_rdpui_color_convert (gpdata, pen->colour, gpdata->pattern);
+    remmina_plugin_rdpui_color_convert (gpdata, pen->color, gpdata->pattern);
 
     LOCK_BUFFER (TRUE)
     remmina_plugin_rdpui_patline (gpdata, opcode - 1, startx, starty, endx, endy);
@@ -1266,7 +1266,7 @@ remmina_plugin_rdpui_line (rdpInst *inst, uint8 opcode, int startx, int starty, 
 }
 
 static void
-remmina_plugin_rdpui_rect (rdpInst *inst, int x, int y, int cx, int cy, int colour)
+remmina_plugin_rdpui_rect (rdpInst *inst, int x, int y, int cx, int cy, int color)
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
@@ -1275,10 +1275,10 @@ remmina_plugin_rdpui_rect (rdpInst *inst, int x, int y, int cx, int cy, int colo
     guchar *buffer;
     gint ix, iy;
 
-    /*g_print ("ui_rect %i %i %i %i %X\n", x, y, cx, cy, colour);*/
+    /*g_print ("ui_rect %i %i %i %i %X\n", x, y, cx, cy, color);*/
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
-    remmina_plugin_rdpui_color_convert (gpdata, colour, pixel);
+    remmina_plugin_rdpui_color_convert (gpdata, color, pixel);
     remmina_plugin_rdpui_process_clip (gpdata, &x, &y, &cx, &cy, NULL, NULL);
     rowstride = gdk_pixbuf_get_rowstride (gpdata->drw_buffer);
     buffer = gdk_pixbuf_get_pixels (gpdata->drw_buffer) + y * rowstride + x * 3;
@@ -1300,7 +1300,7 @@ remmina_plugin_rdpui_rect (rdpInst *inst, int x, int y, int cx, int cy, int colo
 
 static void
 remmina_plugin_rdpui_polygon (rdpInst *inst, uint8 opcode, uint8 fillmode, RD_POINT * point,
-    int npoints, RD_BRUSH * brush, int bgcolour, int fgcolour)
+    int npoints, RD_BRUSH * brush, int bgcolor, int fgcolor)
 {
 }
 
@@ -1314,13 +1314,13 @@ remmina_plugin_rdpui_polyline (rdpInst *inst, uint8 opcode, RD_POINT * points, i
     gint x0, y0, x1, y1;
     gint dx0, dy0, dx1, dy1;
 
-    /*g_print ("polyline: %i %X %i\n", opcode, pen->colour, npoints);*/
+    /*g_print ("polyline: %i %X %i\n", opcode, pen->color, npoints);*/
     if (npoints < 2) return;
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
     gpdata->pattern_w = 1;
     gpdata->pattern_h = 1;
-    remmina_plugin_rdpui_color_convert (gpdata, pen->colour, gpdata->pattern);
+    remmina_plugin_rdpui_color_convert (gpdata, pen->color, gpdata->pattern);
 
     LOCK_BUFFER (TRUE)
     dx0 = x0 = x1 = points[0].x;
@@ -1349,22 +1349,22 @@ remmina_plugin_rdpui_polyline (rdpInst *inst, uint8 opcode, RD_POINT * points, i
 
 static void
 remmina_plugin_rdpui_ellipse (rdpInst *inst, uint8 opcode, uint8 fillmode, int x, int y,
-    int cx, int cy, RD_BRUSH * brush, int bgcolour, int fgcolour)
+    int cx, int cy, RD_BRUSH * brush, int bgcolor, int fgcolor)
 {
     g_print ("ellipse:\n");
 }
 
 static void
-remmina_plugin_rdpui_start_draw_glyphs (rdpInst *inst, int bgcolour, int fgcolour)
+remmina_plugin_rdpui_start_draw_glyphs (rdpInst *inst, int bgcolor, int fgcolor)
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
-    /*g_print ("start_draw_glyphs: %X %X\n", bgcolour, fgcolour);*/
-    remmina_plugin_rdpui_color_convert (gpdata, bgcolour, gpdata->bgcolor);
-    remmina_plugin_rdpui_color_convert (gpdata, fgcolour, gpdata->fgcolor);
+    /*g_print ("start_draw_glyphs: %X %X\n", bgcolor, fgcolor);*/
+    remmina_plugin_rdpui_color_convert (gpdata, bgcolor, gpdata->bgcolor);
+    remmina_plugin_rdpui_color_convert (gpdata, fgcolor, gpdata->fgcolor);
 }
 
 static void
@@ -1486,7 +1486,7 @@ remmina_plugin_rdpui_destblt (rdpInst *inst, uint8 opcode, int x, int y, int cx,
 
 static void
 remmina_plugin_rdpui_patblt (rdpInst *inst, uint8 opcode, int x, int y, int cx, int cy,
-    RD_BRUSH * brush, int bgcolour, int fgcolour)
+    RD_BRUSH * brush, int bgcolor, int fgcolor)
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
@@ -1496,9 +1496,9 @@ remmina_plugin_rdpui_patblt (rdpInst *inst, uint8 opcode, int x, int y, int cx, 
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
-    /*g_print ("patblt %i %i %i %i opcode=%i style=%i fgcolor=%X \n", x, y, cx, cy, opcode, brush->style, fgcolour);*/
-    remmina_plugin_rdpui_color_convert(gpdata, fgcolour, gpdata->fgcolor);
-    remmina_plugin_rdpui_color_convert(gpdata, bgcolour, gpdata->bgcolor);
+    /*g_print ("patblt %i %i %i %i opcode=%i style=%i fgcolor=%X \n", x, y, cx, cy, opcode, brush->style, fgcolor);*/
+    remmina_plugin_rdpui_color_convert(gpdata, fgcolor, gpdata->fgcolor);
+    remmina_plugin_rdpui_color_convert(gpdata, bgcolor, gpdata->bgcolor);
 
     LOCK_BUFFER (TRUE)
     switch (brush->style)
@@ -1524,7 +1524,7 @@ remmina_plugin_rdpui_patblt (rdpInst *inst, uint8 opcode, int x, int y, int cx, 
         {
             remmina_plugin_rdpui_fill_pattern (gpdata, brush->pattern, 1);
         }
-        else if (brush->bd->colour_code > 1) /* > 1 bpp */
+        else if (brush->bd->color_code > 1) /* > 1 bpp */
         {
             gpdata->pattern_w = 8;
             gpdata->pattern_h = 8;
@@ -1601,7 +1601,7 @@ remmina_plugin_rdpui_memblt (rdpInst *inst, uint8 opcode, int x, int y, int cx, 
 
 static void
 remmina_plugin_rdpui_triblt (rdpInst *inst, uint8 opcode, int x, int y, int cx, int cy,
-    RD_HBITMAP src, int srcx, int srcy, RD_BRUSH * brush, int bgcolour, int fgcolour)
+    RD_HBITMAP src, int srcx, int srcy, RD_BRUSH * brush, int bgcolor, int fgcolor)
 {
 }
 
@@ -1734,28 +1734,28 @@ remmina_plugin_rdpui_set_default_cursor (rdpInst *inst)
     UNLOCK_BUFFER (TRUE)
 }
 
-static RD_HCOLOURMAP
-remmina_plugin_rdpui_create_colourmap (rdpInst *inst, RD_COLOURMAP * colours)
+static RD_HPALETTE
+remmina_plugin_rdpui_create_colormap (rdpInst *inst, RD_PALETTE * colors)
 {
-    guchar *colourmap;
+    guchar *colormap;
     guchar *dst;
     gint count;
     gint i;
 
-    colourmap = g_new0 (guchar, 3 * 256);
-    count = colours->ncolours;
+    colormap = g_new0 (guchar, 3 * 256);
+    count = colors->ncolors;
     if (count > 256)
     {
         count = 256;
     }
-    dst = colourmap;
+    dst = colormap;
     for (i = 0; i < count; i++)
     {
-        *dst++ = colours->colours[i].red;
-        *dst++ = colours->colours[i].green;
-        *dst++ = colours->colours[i].blue;
+        *dst++ = colors->colors[i].red;
+        *dst++ = colors->colors[i].green;
+        *dst++ = colors->colors[i].blue;
     }
-    return (RD_HCOLOURMAP) colourmap;
+    return (RD_HPALETTE) colormap;
 }
 
 static void
@@ -1764,18 +1764,18 @@ remmina_plugin_rdpui_move_pointer (rdpInst *inst, int x, int y)
 }
 
 static void
-remmina_plugin_rdpui_set_colourmap (rdpInst *inst, RD_HCOLOURMAP map)
+remmina_plugin_rdpui_set_colormap (rdpInst *inst, RD_HPALETTE map)
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
-    if (gpdata->colourmap)
+    if (gpdata->colormap)
     {
-        g_free (gpdata->colourmap);
+        g_free (gpdata->colormap);
     }
-    gpdata->colourmap = (guchar *) map;
+    gpdata->colormap = (guchar *) map;
 }
 
 static RD_HBITMAP
@@ -1934,9 +1934,9 @@ remmina_plugin_rdpui_pre_connect (RemminaProtocolWidget *gp)
     inst->ui_create_cursor = remmina_plugin_rdpui_create_cursor;
     inst->ui_set_null_cursor = remmina_plugin_rdpui_set_null_cursor;
     inst->ui_set_default_cursor = remmina_plugin_rdpui_set_default_cursor;
-    inst->ui_create_colourmap = remmina_plugin_rdpui_create_colourmap;
+    inst->ui_create_colormap = remmina_plugin_rdpui_create_colormap;
     inst->ui_move_pointer = remmina_plugin_rdpui_move_pointer;
-    inst->ui_set_colourmap = remmina_plugin_rdpui_set_colourmap;
+    inst->ui_set_colormap = remmina_plugin_rdpui_set_colormap;
     inst->ui_create_surface = remmina_plugin_rdpui_create_surface;
     inst->ui_set_surface = remmina_plugin_rdpui_set_surface;
     inst->ui_destroy_surface = remmina_plugin_rdpui_destroy_surface;
@@ -1981,10 +1981,10 @@ remmina_plugin_rdpui_uninit (RemminaProtocolWidget *gp)
         g_object_unref (gpdata->scale_buffer);
         gpdata->scale_buffer = NULL;
     }
-    if (gpdata->colourmap)
+    if (gpdata->colormap)
     {
-        g_free (gpdata->colourmap);
-        gpdata->colourmap = NULL;
+        g_free (gpdata->colormap);
+        gpdata->colormap = NULL;
     }
 }
 
