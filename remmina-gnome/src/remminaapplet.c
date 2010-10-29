@@ -20,6 +20,7 @@
 
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <stdlib.h>
 #include <panel-applet.h>
 #include "config.h"
 #include "remminaappletmenuitem.h"
@@ -98,9 +99,9 @@ remmina_applet_menu_open_pref (RemminaAppletMenuItem *menuitem, gpointer data)
 }
 
 static void
-remmina_applet_menu_open_quick (RemminaAppletMenuItem *menuitem, GdkEventButton *event, RemminaAppletData *appdata)
+remmina_applet_menu_open_new (RemminaAppletMenuItem *menuitem, GdkEventButton *event, RemminaAppletData *appdata)
 {
-    remmina_applet_util_launcher (REMMINA_LAUNCH_QUICK, NULL, NULL, NULL);
+    remmina_applet_util_launcher (REMMINA_LAUNCH_NEW, NULL, NULL, NULL);
 }
 
 static void
@@ -112,7 +113,7 @@ remmina_applet_menu_open_file (RemminaAppletMenuItem *menuitem, GdkEventButton *
 static void
 remmina_applet_menu_open_discovered (RemminaAppletMenuItem *menuitem, GdkEventButton *event, RemminaAppletData *appdata)
 {
-    remmina_applet_util_launcher (event->button == 3 ? REMMINA_LAUNCH_NEW : REMMINA_LAUNCH_QUICK, NULL, menuitem->name, menuitem->protocol);
+    remmina_applet_util_launcher (REMMINA_LAUNCH_NEW, NULL, menuitem->name, menuitem->protocol);
 }
 
 static void
@@ -238,20 +239,20 @@ remmina_applet_popup_menu (GtkWidget *widget, GdkEventButton *event, RemminaAppl
     gchar filename[MAX_PATH_LEN];
     GDir *dir;
     const gchar *name;
-    gboolean quick_ontop;
+    gboolean new_ontop;
     GHashTableIter iter;
     gchar *tmp;
 
-    quick_ontop = remmina_applet_util_get_pref_boolean ("applet_quick_ontop");
+    new_ontop = remmina_applet_util_get_pref_boolean ("applet_new_ontop");
 
     appdata->popup_time = gtk_get_current_event_time ();
     appdata->popup_menu = gtk_menu_new ();
 
-    if (quick_ontop)
+    if (new_ontop)
     {
-        menuitem = remmina_applet_menu_item_new (REMMINA_APPLET_MENU_ITEM_QUICK);
+        menuitem = remmina_applet_menu_item_new (REMMINA_APPLET_MENU_ITEM_NEW);
         g_signal_connect (G_OBJECT (menuitem), "button-press-event",
-            G_CALLBACK (remmina_applet_menu_open_quick), appdata);
+            G_CALLBACK (remmina_applet_menu_open_new), appdata);
         gtk_widget_show (menuitem);
         gtk_menu_shell_append (GTK_MENU_SHELL (appdata->popup_menu), menuitem);
 
@@ -307,15 +308,15 @@ remmina_applet_popup_menu (GtkWidget *widget, GdkEventButton *event, RemminaAppl
         g_ptr_array_free (menuitem_array, TRUE);
     }
 
-    if (!quick_ontop)
+    if (!new_ontop)
     {
         menuitem = gtk_separator_menu_item_new ();
         gtk_widget_show (menuitem);
         gtk_menu_shell_append (GTK_MENU_SHELL (appdata->popup_menu), menuitem);
 
-        menuitem = remmina_applet_menu_item_new (REMMINA_APPLET_MENU_ITEM_QUICK);
+        menuitem = remmina_applet_menu_item_new (REMMINA_APPLET_MENU_ITEM_NEW);
         g_signal_connect (G_OBJECT (menuitem), "button-press-event",
-            G_CALLBACK (remmina_applet_menu_open_quick), appdata);
+            G_CALLBACK (remmina_applet_menu_open_new), appdata);
         gtk_widget_show (menuitem);
         gtk_menu_shell_append (GTK_MENU_SHELL (appdata->popup_menu), menuitem);
     }
