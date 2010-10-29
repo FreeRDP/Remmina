@@ -40,6 +40,7 @@ static RemminaEntryPlugin remmina_plugin_telepathy =
     "telepathy",
     N_("Telepathy - Desktop Sharing"),
     GETTEXT_PACKAGE,
+    VERSION,
 
     remmina_plugin_telepathy_entry
 };

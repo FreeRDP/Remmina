@@ -1957,6 +1957,7 @@ static RemminaProtocolPlugin remmina_plugin_vnc =
     "VNC",
     N_("VNC - Virtual Network Computing"),
     GETTEXT_PACKAGE,
+    VERSION,
 
     "remmina-vnc",
     "remmina-vnc-ssh",
@@ -1978,6 +1979,7 @@ static RemminaProtocolPlugin remmina_plugin_vnci =
     "VNCI",
     N_("VNC - Incoming Connection"),
     GETTEXT_PACKAGE,
+    VERSION,
 
     "remmina-vnc",
     "remmina-vnc-ssh",

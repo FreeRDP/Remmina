@@ -361,6 +361,7 @@ static RemminaProtocolPlugin remmina_plugin_xdmcp =
     "XDMCP",
     N_("XDMCP - X Remote Session"),
     GETTEXT_PACKAGE,
+    VERSION,
 
     "remmina-xdmcp",
     "remmina-xdmcp-ssh",

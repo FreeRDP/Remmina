@@ -528,6 +528,7 @@ static RemminaProtocolPlugin remmina_plugin_rdp =
     "RDP",
     N_("RDP - Windows Terminal Service"),
     GETTEXT_PACKAGE,
+    VERSION,
 
     "remmina-rdp",
     "remmina-rdp-ssh",
@@ -549,6 +550,7 @@ static RemminaFilePlugin remmina_plugin_rdpf =
     "RDPF",
     N_("RDP - RDP File Handler"),
     GETTEXT_PACKAGE,
+    VERSION,
 
     remmina_plugin_rdp_file_import_test,
     remmina_plugin_rdp_file_import,
@@ -563,6 +565,7 @@ static RemminaPrefPlugin remmina_plugin_rdps =
     "RDPS",
     N_("RDP - Preferences"),
     GETTEXT_PACKAGE,
+    VERSION,
 
     "RDP",
     remmina_plugin_rdpset_new

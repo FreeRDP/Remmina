@@ -221,6 +221,7 @@ remmina_plugin_manager_show_for_each (RemminaPlugin *plugin, GtkListStore *store
         0, plugin->name,
         1, _(remmina_plugin_type_name[plugin->type]),
         2, plugin->description,
+        3, plugin->version,
         -1);
     return FALSE;
 }
@@ -238,7 +239,7 @@ remmina_plugin_manager_show (GtkWindow *parent)
     dialog = gtk_dialog_new_with_buttons (_("Plugins"), parent, GTK_DIALOG_MODAL,
         GTK_STOCK_OK, GTK_RESPONSE_ACCEPT, NULL);
     g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), dialog);
-    gtk_window_set_default_size (GTK_WINDOW (dialog), 400, 300);
+    gtk_window_set_default_size (GTK_WINDOW (dialog), 500, 350);
 
     scrolledwindow = gtk_scrolled_window_new (NULL, NULL);
     gtk_widget_show (scrolledwindow);
@@ -250,7 +251,7 @@ remmina_plugin_manager_show (GtkWindow *parent)
     gtk_container_add (GTK_CONTAINER (scrolledwindow), tree);
     gtk_widget_show (tree);
 
-    store = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+    store = gtk_list_store_new (4, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
     g_ptr_array_foreach (remmina_plugin_table, (GFunc) remmina_plugin_manager_show_for_each, store);
     gtk_tree_view_set_model (GTK_TREE_VIEW (tree), GTK_TREE_MODEL (store));
 
@@ -273,6 +274,13 @@ remmina_plugin_manager_show (GtkWindow *parent)
         renderer, "text", 2, NULL);
     gtk_tree_view_column_set_resizable (column, TRUE);
     gtk_tree_view_column_set_sort_column_id (column, 2);
+    gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+
+    renderer = gtk_cell_renderer_text_new ();
+    column = gtk_tree_view_column_new_with_attributes (_("Version"),
+        renderer, "text", 3, NULL);
+    gtk_tree_view_column_set_resizable (column, TRUE);
+    gtk_tree_view_column_set_sort_column_id (column, 3);
     gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
 
     gtk_widget_show (dialog);

@@ -332,6 +332,7 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
     "SSH",
     N_("SSH - Secure Shell"),
     GETTEXT_PACKAGE,
+    VERSION,
 
     "utilities-terminal",
     "utilities-terminal",
