@@ -73,7 +73,7 @@ typedef struct _RemminaPref
     gint default_mode;
     gint tab_mode;
 
-    gboolean applet_quick_ontop;
+    gboolean applet_new_ontop;
     gboolean applet_hide_count;
 
     guint hostkey;
