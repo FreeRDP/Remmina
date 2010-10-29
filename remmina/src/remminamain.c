@@ -280,9 +280,9 @@ remmina_main_filter_visible_func (GtkTreeModel *model, GtkTreeIter *iter, Remmin
             -1);
         if (g_strcmp0 (protocol, GTK_STOCK_DIRECTORY) != 0)
         {
-            s = g_ascii_strdown (name, -1); g_free (name); name = s;
-            s = g_ascii_strdown (group, -1); g_free (group); group = s;
-            s = g_ascii_strdown (server, -1); g_free (server); server = s;
+            s = g_ascii_strdown (name ? name : "", -1); g_free (name); name = s;
+            s = g_ascii_strdown (group ? group : "", -1); g_free (group); group = s;
+            s = g_ascii_strdown (server ? server : "", -1); g_free (server); server = s;
             result = (strstr (name, text) || strstr (server, text) || strstr (group, text));
         }
         g_free (protocol);
