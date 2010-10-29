@@ -1142,7 +1142,7 @@ remmina_plugin_rdpui_update_rect (RemminaProtocolWidget *gp, int x, int y, int w
 }
 
 static void
-remmina_plugin_rdpui_error (rdpInst *inst, char *text)
+remmina_plugin_rdpui_error (rdpInst *inst, const char *text)
 {
     remmina_plugin_service->log_printf ("[RDP]%s", text);
 }
