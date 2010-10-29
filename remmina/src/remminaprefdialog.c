@@ -80,7 +80,7 @@ struct _RemminaPrefDialogPriv
     GtkWidget *sshtunnel_port_entry;
     GtkWidget *recent_maximum_entry;
     GtkWidget *resolutions_list;
-    GtkWidget *applet_quick_ontop_check;
+    GtkWidget *applet_new_ontop_check;
     GtkWidget *applet_hide_count_check;
     GtkWidget *hostkey_chooser;
     GtkWidget *shortcutkey_fullscreen_chooser;
@@ -200,7 +200,7 @@ remmina_pref_dialog_destroy (GtkWidget *widget, gpointer data)
     if (s[0] == '\0') s = g_strdup (default_resolutions);
     remmina_pref.resolutions = s;
 
-    remmina_pref.applet_quick_ontop = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->applet_quick_ontop_check));
+    remmina_pref.applet_new_ontop = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->applet_new_ontop_check));
     remmina_pref.applet_hide_count = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->applet_hide_count_check));
 
     remmina_pref.hostkey = REMMINA_KEY_CHOOSER (priv->hostkey_chooser)->keyval;
@@ -436,11 +436,11 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_container_set_border_width (GTK_CONTAINER (table), 8);
     gtk_box_pack_start (GTK_BOX (vbox), table, FALSE, FALSE, 0);
 
-    widget = gtk_check_button_new_with_label (_("Show Quick Connect on top of the Menu"));
+    widget = gtk_check_button_new_with_label (_("Show New Connection on top of the Menu"));
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 2, 0, 1);
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), remmina_pref.applet_quick_ontop);
-    priv->applet_quick_ontop_check = widget;
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), remmina_pref.applet_new_ontop);
+    priv->applet_new_ontop_check = widget;
 
     widget = gtk_check_button_new_with_label (_("Hide Total Count in Group Expander"));
     gtk_widget_show (widget);
