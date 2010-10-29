@@ -244,6 +244,7 @@ static RemminaProtocolPlugin remmina_plugin_sftp =
     "SFTP",
     N_("SFTP - Secure File Transfer"),
     GETTEXT_PACKAGE,
+    VERSION,
 
     "remmina-sftp",
     "remmina-sftp",

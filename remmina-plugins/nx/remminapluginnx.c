@@ -627,6 +627,7 @@ static RemminaProtocolPlugin remmina_plugin_nx =
     "NX",
     N_("NX - NX Technology"),
     GETTEXT_PACKAGE,
+    VERSION,
 
     "remmina-nx",
     "remmina-nx",
