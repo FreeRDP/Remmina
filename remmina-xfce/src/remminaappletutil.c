@@ -45,8 +45,8 @@ remmina_applet_util_launcher (RemminaLaunchType launch_type, const gchar *filena
         argv[argc++] = g_strdup ("2");
         break;
 
-    case REMMINA_LAUNCH_QUICK:
-        argv[argc++] = g_strdup ("-q");
+    case REMMINA_LAUNCH_NEW:
+        argv[argc++] = g_strdup ("-n");
         break;
 
     case REMMINA_LAUNCH_FILE:
@@ -57,10 +57,6 @@ remmina_applet_util_launcher (RemminaLaunchType launch_type, const gchar *filena
     case REMMINA_LAUNCH_EDIT:
         argv[argc++] = g_strdup ("-e");
         argv[argc++] = g_strdup (filename);
-        break;
-
-    case REMMINA_LAUNCH_NEW:
-        argv[argc++] = g_strdup ("-n");
         break;
 
     case REMMINA_LAUNCH_ABOUT:

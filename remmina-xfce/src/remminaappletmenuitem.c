@@ -93,8 +93,8 @@ remmina_applet_menu_item_new (RemminaAppletMenuItemType item_type, ...)
         item->protocol = g_strdup ("VNC");
         break;
 
-    case REMMINA_APPLET_MENU_ITEM_QUICK:
-        item->name = g_strdup (_("Quick Connect"));
+    case REMMINA_APPLET_MENU_ITEM_NEW:
+        item->name = g_strdup (_("New Connection"));
         break;
     }
 
