@@ -21,7 +21,9 @@
 #include "remminapluginrdp.h"
 #include "remminapluginrdpev.h"
 #include <gdk/gdkkeysyms.h>
+#include <gdk/gdkx.h>
 #include <freerdp/kbd.h>
+#include <X11/Xlib.h>
 
 static void
 remmina_plugin_rdpev_event_push (RemminaProtocolWidget *gp,
@@ -300,6 +302,8 @@ remmina_plugin_rdpev_on_key (GtkWidget *widget, GdkEventKey *event, RemminaProto
     RemminaPluginRdpData *gpdata;
     gint flag;
     gint scancode = 0;
+    Display *display;
+    KeyCode cooked_keycode;
 
     gpdata = GET_DATA (gp);
     flag = (event->type == GDK_KEY_PRESS ? RDP_KEYPRESS : RDP_KEYRELEASE);
@@ -313,9 +317,20 @@ remmina_plugin_rdpev_on_key (GtkWidget *widget, GdkEventKey *event, RemminaProto
         remmina_plugin_rdpev_event_push (gp, RDP_INPUT_SCANCODE, flag, 0x45, 0);
         break;
     default:
-        scancode = freerdp_kbd_get_scancode_by_keycode (event->hardware_keycode, &flag);
-        remmina_plugin_service->log_printf ("[RDP]keyval=%04X keycode=%i scancode=%i flag=%04X\n",
-            event->keyval, event->hardware_keycode, scancode, flag);
+        if (!gpdata->use_client_keymap)
+        {
+            scancode = freerdp_kbd_get_scancode_by_keycode (event->hardware_keycode, &flag);
+            remmina_plugin_service->log_printf ("[RDP]keyval=%04X keycode=%i scancode=%i flag=%04X\n",
+                event->keyval, event->hardware_keycode, scancode, flag);
+        }
+        else
+        {
+            display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+            cooked_keycode = XKeysymToKeycode(display, XKeycodeToKeysym(display, event->hardware_keycode, 0));
+            scancode = freerdp_kbd_get_scancode_by_keycode (cooked_keycode, &flag);
+            remmina_plugin_service->log_printf ("[RDP]keyval=%04X raw_keycode=%i cooked_keycode=%i scancode=%i flag=%04X\n",
+                event->keyval, event->hardware_keycode, cooked_keycode, scancode, flag);
+        }
         if (scancode)
         {
             remmina_plugin_rdpev_event_push (gp, RDP_INPUT_SCANCODE, flag, scancode, 0);
@@ -343,6 +358,7 @@ remmina_plugin_rdpev_init (RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
     gint flags;
+    gchar *s;
 
     gpdata = GET_DATA (gp);
     gpdata->drawing_area = gtk_drawing_area_new ();
@@ -354,6 +370,10 @@ remmina_plugin_rdpev_init (RemminaProtocolWidget *gp)
     GTK_WIDGET_SET_FLAGS (gpdata->drawing_area, GTK_CAN_FOCUS);
 
     remmina_plugin_service->protocol_plugin_register_hostkey (gp, gpdata->drawing_area);
+
+    s = remmina_plugin_service->pref_get_value ("rdp_use_client_keymap");
+    gpdata->use_client_keymap = (s && s[0] == '1' ? TRUE : FALSE);
+    g_free (s);
 
     g_signal_connect (G_OBJECT (gpdata->drawing_area), "expose_event",
         G_CALLBACK (remmina_plugin_rdpev_on_expose), gp);

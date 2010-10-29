@@ -68,6 +68,7 @@ typedef struct _RemminaPluginRdpData
     gint pattern_w, pattern_h;
     gboolean capslock_initstate;
     gboolean numlock_initstate;
+    gboolean use_client_keymap;
 
     gint queuedraw_x, queuedraw_y, queuedraw_w, queuedraw_h;
     guint queuedraw_handler;
