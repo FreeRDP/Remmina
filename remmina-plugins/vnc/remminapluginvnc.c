@@ -1227,8 +1227,10 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
 
         if (remmina_plugin_service->file_get_string (remminafile, "proxy"))
         {
+            cl->destHost = cl->serverHost;
+            cl->destPort = cl->serverPort;
             remmina_plugin_service->get_server_port (remmina_plugin_service->file_get_string (remminafile, "proxy"), 5900,
-                &cl->destHost, &cl->destPort);
+                &cl->serverHost, &cl->serverPort);
         }
 
         cl->appData.useRemoteCursor = (remmina_plugin_service->file_get_int (remminafile, "showcursor", FALSE) ? FALSE : TRUE);
@@ -1901,7 +1903,7 @@ static gpointer quality_list[] =
 static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
 {
     { REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, "_rfb._tcp", NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "proxy", N_("Proxy Destination"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "proxy", N_("Repeater"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User Name"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color Depth"), FALSE, colordepth_list, NULL },
