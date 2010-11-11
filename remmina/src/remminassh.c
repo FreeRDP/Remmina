@@ -586,7 +586,7 @@ remmina_ssh_tunnel_add_channel (RemminaSSHTunnel *tunnel, ssh_channel channel, g
 }
 
 static gpointer
-remmina_ssh_tunnel_main_thread (gpointer data)
+remmina_ssh_tunnel_main_thread_proc (gpointer data)
 {
     RemminaSSHTunnel *tunnel = (RemminaSSHTunnel*) data;
     gchar *ptr;
@@ -604,8 +604,6 @@ remmina_ssh_tunnel_main_thread (gpointer data)
     gint ret;
     struct sockaddr_in sin;
 
-    pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, NULL);
-
     g_get_current_time (&t1);
     t2 = t1;
 
@@ -620,8 +618,6 @@ remmina_ssh_tunnel_main_thread (gpointer data)
             tunnel->thread = 0;
             return NULL;
         }
-        close (tunnel->server_sock);
-        tunnel->server_sock = -1;
 
         if ((channel = channel_new (tunnel->ssh.session)) == NULL)
         {
@@ -970,10 +966,35 @@ remmina_ssh_tunnel_main_thread (gpointer data)
         }
     }
 
-    tunnel->thread = 0;
     remmina_ssh_tunnel_close_all_channels (tunnel);
 
     return NULL;
+}
+
+static gpointer
+remmina_ssh_tunnel_main_thread (gpointer data)
+{
+    RemminaSSHTunnel *tunnel = (RemminaSSHTunnel*) data;
+
+    pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, NULL);
+
+    while (TRUE)
+    {
+        remmina_ssh_tunnel_main_thread_proc (data);
+        if (tunnel->server_sock < 0 || tunnel->thread == 0 || !tunnel->running) break;
+    }
+    tunnel->thread = 0;
+    return NULL;
+}
+
+void
+remmina_ssh_tunnel_cancel_accept (RemminaSSHTunnel *tunnel)
+{
+    if (tunnel->server_sock >= 0)
+    {
+        close (tunnel->server_sock);
+        tunnel->server_sock = -1;
+    }
 }
 
 gboolean

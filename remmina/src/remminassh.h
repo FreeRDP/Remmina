@@ -147,6 +147,11 @@ RemminaSSHTunnel* remmina_ssh_tunnel_new_from_file (RemminaFile *remminafile);
  */
 gboolean remmina_ssh_tunnel_open (RemminaSSHTunnel *tunnel, const gchar *host, gint port, gint local_port);
 
+/* Cancel accepting any incoming tunnel request.
+ * Typically called after the connection has already been establish.
+ */
+void remmina_ssh_tunnel_cancel_accept (RemminaSSHTunnel *tunnel);
+
 /* Accept the X11 tunnel. A new thread will be started and connect to local display.
  * cmd: The remote X11 application to be executed
  */
