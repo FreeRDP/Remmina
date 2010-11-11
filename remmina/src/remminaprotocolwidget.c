@@ -143,6 +143,12 @@ remmina_protocol_widget_destroy (RemminaProtocolWidget *gp, gpointer data)
 static void
 remmina_protocol_widget_connect (RemminaProtocolWidget *gp, gpointer data)
 {
+#ifdef HAVE_LIBSSH
+    if (gp->priv->ssh_tunnel)
+    {
+        remmina_ssh_tunnel_cancel_accept (gp->priv->ssh_tunnel);
+    }
+#endif
     remmina_protocol_widget_hide_init_dialog (gp);
 }
 
