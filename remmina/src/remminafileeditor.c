@@ -399,6 +399,26 @@ remmina_file_editor_create_password (RemminaFileEditor *gfe, GtkWidget *table, g
 }
 
 static void
+remmina_file_editor_update_resolution (GtkWidget *widget, RemminaFileEditor *gfe)
+{
+    remmina_public_load_combo_text_d (gfe->priv->resolution_custom_combo,
+        remmina_pref.resolutions,
+        remmina_file_get_string (gfe->priv->remmina_file, "resolution"),
+        NULL);
+}
+
+static void
+remmina_file_editor_browse_resolution (GtkWidget *button, RemminaFileEditor *gfe)
+{
+    GtkWidget *widget;
+
+    widget = remmina_pref_dialog_new (REMMINA_PREF_RESOLUTIONS_TAB);
+    gtk_widget_show (widget);
+
+    g_signal_connect (G_OBJECT (widget), "destroy", G_CALLBACK (remmina_file_editor_update_resolution), gfe);
+}
+
+static void
 remmina_file_editor_create_resolution (RemminaFileEditor *gfe, const RemminaProtocolSetting *setting, GtkWidget *table, gint row)
 {
     GtkWidget *widget;
@@ -432,6 +452,11 @@ remmina_file_editor_create_resolution (RemminaFileEditor *gfe, const RemminaProt
     gtk_widget_show (widget);
     gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
     gfe->priv->resolution_custom_combo = widget;
+
+    widget = gtk_button_new_with_label ("...");
+    gtk_widget_show (widget);
+    gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, FALSE, 0);
+    g_signal_connect (G_OBJECT (widget), "clicked", G_CALLBACK (remmina_file_editor_browse_resolution), gfe);
 
     g_signal_connect (G_OBJECT (gfe->priv->resolution_custom_radio), "toggled", 
         G_CALLBACK (remmina_file_editor_button_on_toggled), gfe->priv->resolution_custom_combo);
