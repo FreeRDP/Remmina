@@ -59,7 +59,7 @@ remmina_scaler_format_scale_value (GtkScale *scale, gdouble value, gpointer user
 {
     if (value <= MIN_SCALE_VALUE)
     {
-        return g_strdup (_("Fit Window Size"));
+        return g_strdup (_("Fit window size"));
     }
     else
     {
@@ -135,14 +135,14 @@ remmina_scaler_init (RemminaScaler *scaler)
 
     widget = gtk_hscale_new_with_range (MIN_SCALE_VALUE, 1.0, 0.01);
     gtk_widget_show (widget);
-    gtk_widget_set_tooltip_text (widget, _("Horizontal Scale"));
+    gtk_widget_set_tooltip_text (widget, _("Horizontal scale"));
     gtk_table_attach_defaults (GTK_TABLE (scaler), widget, 1, 2, 0, 1);
     g_signal_connect (G_OBJECT (widget), "format-value", G_CALLBACK (remmina_scaler_format_scale_value), NULL);
     priv->hscale_widget = widget;
 
     widget = gtk_hscale_new_with_range (MIN_SCALE_VALUE, 1.0, 0.01);
     gtk_widget_show (widget);
-    gtk_widget_set_tooltip_text (widget, _("Vertical Scale"));
+    gtk_widget_set_tooltip_text (widget, _("Vertical scale"));
     gtk_table_attach_defaults (GTK_TABLE (scaler), widget, 1, 2, 1, 2);
     g_signal_connect (G_OBJECT (widget), "format-value", G_CALLBACK (remmina_scaler_format_scale_value), NULL);
     priv->vscale_widget = widget;
