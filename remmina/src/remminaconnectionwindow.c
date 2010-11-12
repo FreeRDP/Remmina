@@ -1839,6 +1839,7 @@ remmina_connection_holder_on_switch_page_real (gpointer data)
     {
         remmina_connection_holder_update_toolbar (cnnhld);
         remmina_connection_holder_grab_focus (priv->notebook);
+        remmina_connection_holder_check_resize (cnnhld);
     }
     priv->switch_page_handler = 0;
     return FALSE;
