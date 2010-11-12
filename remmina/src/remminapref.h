@@ -103,6 +103,10 @@ typedef struct _RemminaPref
 
     /* Crypto */
     gchar *secret;
+
+    /* VTE */
+    gchar *vte_font;
+    gint vte_lines;
 } RemminaPref;
 
 #define DEFAULT_SSHTUNNEL_PORT 4732
