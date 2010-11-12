@@ -1884,19 +1884,19 @@ remmina_plugin_vnc_init (RemminaProtocolWidget *gp)
 
 static gpointer colordepth_list[] =
 {
-    "8", N_("256 Colors"),
-    "15", N_("High Color (15 bit)"),
-    "16", N_("High Color (16 bit)"),
-    "24", N_("True Color (24 bit)"),
+    "8", N_("256 colors"),
+    "15", N_("High color (15 bit)"),
+    "16", N_("High color (16 bit)"),
+    "24", N_("True color (24 bit)"),
     NULL
 };
 
 static gpointer quality_list[] =
 {
-    "0", N_("Poor (Fastest)"),
+    "0", N_("Poor (fastest)"),
     "1", N_("Medium"),
     "2", N_("Good"),
-    "9", N_("Best (Slowest)"),
+    "9", N_("Best (slowest)"),
     NULL
 };
 
@@ -1904,30 +1904,30 @@ static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
 {
     { REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, "_rfb._tcp", NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "proxy", N_("Repeater"), FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User Name"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color Depth"), FALSE, colordepth_list, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color depth"), FALSE, colordepth_list, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "quality", N_("Quality"), FALSE, quality_list, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Show Remote Cursor"), TRUE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly", N_("View Only"), FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable Clipboard Sync"), TRUE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption", N_("Disable Encryption"), FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverinput", N_("Disable Server Input"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Show remote cursor"), TRUE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly", N_("View only"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), TRUE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption", N_("Disable encryption"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverinput", N_("Disable server input"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
 static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
 {
-    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "listenport", N_("Listen on Port"), FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User Name"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "listenport", N_("Listen on port"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color Depth"), FALSE, colordepth_list, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color depth"), FALSE, colordepth_list, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "quality", N_("Quality"), FALSE, quality_list, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Show Remote Cursor"), TRUE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly", N_("View Only"), FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable Clipboard Sync"), TRUE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption", N_("Disable Encryption"), FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverinput", N_("Disable Server Input"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Show remote cursor"), TRUE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly", N_("View only"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), TRUE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption", N_("Disable encryption"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverinput", N_("Disable server input"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
@@ -1943,9 +1943,9 @@ static const RemminaProtocolFeature remmina_plugin_vnc_features[] =
     { REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_VNC_FEATURE_PREF_QUALITY,
       GINT_TO_POINTER (REMMINA_PROTOCOL_FEATURE_PREF_RADIO), "quality", quality_list },
     { REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_VNC_FEATURE_PREF_VIEWONLY,
-      GINT_TO_POINTER (REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly", N_("View Only") },
+      GINT_TO_POINTER (REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly", N_("View only") },
     { REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_VNC_FEATURE_PREF_DISABLESERVERINPUT,
-      GINT_TO_POINTER (REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "disableserverinput", N_("Disable Server Input") },
+      GINT_TO_POINTER (REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "disableserverinput", N_("Disable server input") },
     { REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_VNC_FEATURE_TOOL_REFRESH, N_("Refresh"), GTK_STOCK_REFRESH, NULL },
     { REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_VNC_FEATURE_TOOL_CHAT, N_("Open Chat..."), "face-smile", NULL },
     { REMMINA_PROTOCOL_FEATURE_TYPE_SCALE, REMMINA_PLUGIN_VNC_FEATURE_SCALE, NULL, NULL, NULL },
