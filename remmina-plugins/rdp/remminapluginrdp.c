@@ -464,19 +464,19 @@ remmina_plugin_rdp_call_feature (RemminaProtocolWidget *gp, const RemminaProtoco
 
 static gpointer colordepth_list[] =
 {
-    "8", N_("256 Colors"),
-    "15", N_("High Color (15 bit)"),
-    "16", N_("High Color (16 bit)"),
-    "24", N_("True Color (24 bit)"),
+    "8", N_("256 colors"),
+    "15", N_("High color (15 bit)"),
+    "16", N_("High color (16 bit)"),
+    "24", N_("True color (24 bit)"),
     NULL
 };
 
 static gpointer quality_list[] =
 {
-    "0", N_("Poor (Fastest)"),
+    "0", N_("Poor (fastest)"),
     "1", N_("Medium"),
     "2", N_("Good"),
-    "9", N_("Best (Slowest)"),
+    "9", N_("Best (slowest)"),
     NULL
 };
 
@@ -491,12 +491,12 @@ static gpointer sound_list[] =
 static const RemminaProtocolSetting remmina_plugin_rdp_basic_settings[] =
 {
     { REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User Name"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "domain", N_("Domain"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color Depth"), FALSE, colordepth_list, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_FOLDER, "sharefolder", N_("Share Folder"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color depth"), FALSE, colordepth_list, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_FOLDER, "sharefolder", N_("Share folder"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
@@ -504,12 +504,12 @@ static const RemminaProtocolSetting remmina_plugin_rdp_advanced_settings[] =
 {
     { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "quality", N_("Quality"), FALSE, quality_list, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "sound", N_("Sound"), FALSE, sound_list, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "clientname", N_("Client Name"), FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "exec", N_("Startup Program"), FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "execpath", N_("Startup Path"), FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "shareprinter", N_("Share Local Printers"), TRUE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable Clipboard Sync"), FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disabletls", N_("Disable TLS Negotiation"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "clientname", N_("Client name"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "exec", N_("Startup program"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "execpath", N_("Startup path"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "shareprinter", N_("Share local printers"), TRUE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disabletls", N_("Disable TLS negotiation"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "console", N_("Attach to console (Windows 2003 / 2003 R2)"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
