@@ -338,9 +338,9 @@ static gpointer colordepth_list[] =
 {
     "0", N_("Default"),
     "2", N_("Grayscale"),
-    "8", N_("256 Colors"),
-    "16", N_("High Color (16 bit)"),
-    "24", N_("True Color (24 bit)"),
+    "8", N_("256 colors"),
+    "16", N_("High color (16 bit)"),
+    "24", N_("True color (24 bit)"),
     NULL
 };
 
@@ -348,10 +348,10 @@ static const RemminaProtocolSetting remmina_plugin_xdmcp_basic_settings[] =
 {
     { REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color Depth"), FALSE, colordepth_list, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "exec", N_("Startup Program"), FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Use Local Cursor"), FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "once", N_("Disconnect After One Session"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color depth"), FALSE, colordepth_list, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "exec", N_("Startup program"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Use local cursor"), FALSE, NULL, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "once", N_("Disconnect after one session"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
