@@ -294,14 +294,14 @@ remmina_file_editor_create_ssh_privatekey (RemminaFileEditor *gfe, GtkWidget *ta
     gchar *s;
 
     widget = gtk_radio_button_new_with_label_from_widget (
-        GTK_RADIO_BUTTON (priv->ssh_auth_password_radio), _("Identity File"));
+        GTK_RADIO_BUTTON (priv->ssh_auth_password_radio), _("Identity file"));
     g_signal_connect (G_OBJECT (widget), "toggled",
         G_CALLBACK (remmina_file_editor_ssh_auth_publickey_radio_on_toggled), gfe);
     priv->ssh_auth_publickey_radio = widget;
     gtk_widget_show (widget);
     gtk_table_attach (GTK_TABLE (table), widget, column, column + 1, row, row + 1, GTK_FILL, 0, 0, 0);
 
-    dialog = gtk_file_chooser_dialog_new (_("Identity File"), GTK_WINDOW (gfe), GTK_FILE_CHOOSER_ACTION_OPEN,
+    dialog = gtk_file_chooser_dialog_new (_("Identity file"), GTK_WINDOW (gfe), GTK_FILE_CHOOSER_ACTION_OPEN,
         GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
         GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
         NULL);
@@ -411,7 +411,7 @@ remmina_file_editor_create_resolution (RemminaFileEditor *gfe, const RemminaProt
     gtk_table_attach (GTK_TABLE (table), widget, 0, 1, row, row + 1, GTK_FILL, 0, 0, 0);
 
     widget = gtk_radio_button_new_with_label (NULL,
-        setting->opt1 ? _("Use Window Size") : _("Use Client Resolution"));
+        setting->opt1 ? _("Use window size") : _("Use client resolution"));
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, row, row + 1);
     gfe->priv->resolution_auto_radio = widget;
@@ -598,17 +598,17 @@ remmina_file_editor_create_settings (RemminaFileEditor *gfe, GtkWidget *table, c
         case REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP:
             strarr = remmina_pref_keymap_groups ();
             priv->keymap_combo = remmina_file_editor_create_select (gfe, table, row, 0,
-                _("Keyboard Mapping"), (const gpointer*) strarr, remmina_file_get_string (priv->remmina_file, "keymap"));
+                _("Keyboard mapping"), (const gpointer*) strarr, remmina_file_get_string (priv->remmina_file, "keymap"));
             g_strfreev (strarr);
             break;
 
         case REMMINA_PROTOCOL_SETTING_TYPE_SCALE:
-            widget = gtk_label_new (_("Horizontal Scale"));
+            widget = gtk_label_new (_("Horizontal scale"));
             gtk_widget_show (widget);
             gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
             gtk_table_attach (GTK_TABLE (table), widget, 0, 1, row, row + 1, GTK_FILL, 0, 0, 0);
 
-            widget = gtk_label_new (_("Vertical Scale"));
+            widget = gtk_label_new (_("Vertical scale"));
             gtk_widget_show (widget);
             gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
             gtk_table_attach (GTK_TABLE (table), widget, 0, 1, row + 1, row + 2, GTK_FILL, 0, 0, 0);
@@ -718,14 +718,14 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
         gtk_table_attach_defaults (GTK_TABLE (table), hbox, 0, 3, 0, 1);
         row++;
 
-        widget = gtk_check_button_new_with_label (_("Enable SSH Tunnel"));
+        widget = gtk_check_button_new_with_label (_("Enable SSH tunnel"));
         gtk_widget_show (widget);
         gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
         g_signal_connect (G_OBJECT (widget), "toggled",
             G_CALLBACK (remmina_file_editor_ssh_enabled_check_on_toggled), gfe);
         priv->ssh_enabled_check = widget;
 
-        widget = gtk_check_button_new_with_label (_("Tunnel via Loopback Address"));
+        widget = gtk_check_button_new_with_label (_("Tunnel via loopback address"));
         gtk_widget_show (widget);
         gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
         priv->ssh_loopback_check = widget;
@@ -738,7 +738,7 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
     switch (ssh_setting)
     {
     case REMMINA_PROTOCOL_SSH_SETTING_TUNNEL:
-        s = g_strdup_printf (_("Same Server at Port %i"), DEFAULT_SSH_PORT);
+        s = g_strdup_printf (_("Same server at port %i"), DEFAULT_SSH_PORT);
         widget = gtk_radio_button_new_with_label (NULL, s);
         g_free (s);
         gtk_widget_show (widget);
@@ -792,13 +792,13 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
     }
 
     priv->ssh_charset_combo = remmina_file_editor_create_combo (gfe, table, row, 1,
-        _("Character Set"), charset_list, remmina_file_get_string (priv->remmina_file, "ssh_charset"));
+        _("Character set"), charset_list, remmina_file_get_string (priv->remmina_file, "ssh_charset"));
     row++;
 
     if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SSH)
     {
         widget = remmina_file_editor_create_text (gfe, table, row, 1,
-            _("Startup Program"), NULL);
+            _("Startup program"), NULL);
         cs = remmina_file_get_string (priv->remmina_file, "exec");
         gtk_entry_set_text (GTK_ENTRY (widget), cs ? cs : "");
         g_hash_table_insert (priv->setting_widgets, "exec", widget);
@@ -810,7 +810,7 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
     row++;
 
     priv->ssh_username_entry = remmina_file_editor_create_text (gfe, table, row, 1,
-        _("User Name"), NULL);
+        _("User name"), NULL);
     row++;
 
     widget = gtk_radio_button_new_with_label (NULL, _("Password"));
@@ -820,7 +820,7 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
     row++;
 
     widget = gtk_radio_button_new_with_label_from_widget (
-        GTK_RADIO_BUTTON (priv->ssh_auth_password_radio), _("Public Key (Automatic)"));
+        GTK_RADIO_BUTTON (priv->ssh_auth_password_radio), _("Public key (automatic)"));
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 3, row, row + 1);
     priv->ssh_auth_auto_publickey_radio = widget;
