@@ -29,6 +29,7 @@
 #include "remminapluginmanager.h"
 #include "remminassh.h"
 #include "remminaprotocolwidget.h"
+#include "remminapref.h"
 #include "remminasshplugin.h"
 
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY  1
@@ -210,6 +211,22 @@ remmina_plugin_ssh_on_size_allocate (GtkWidget *widget, GtkAllocation *alloc, Re
 }
 
 static void
+remmina_plugin_ssh_set_vte_pref (RemminaProtocolWidget *gp)
+{
+    RemminaPluginSshData *gpdata;
+
+    gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+    if (remmina_pref.vte_font && remmina_pref.vte_font[0])
+    {
+        vte_terminal_set_font_from_string (VTE_TERMINAL (gpdata->vte), remmina_pref.vte_font);
+    }
+    if (remmina_pref.vte_lines > 0)
+    {
+        vte_terminal_set_scrollback_lines (VTE_TERMINAL (gpdata->vte), remmina_pref.vte_lines);
+    }
+}
+
+static void
 remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 {
     RemminaPluginSshData *gpdata;
@@ -231,6 +248,7 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
     vte_terminal_set_scroll_on_keystroke (VTE_TERMINAL (vte), TRUE);
     gtk_box_pack_start (GTK_BOX (hbox), vte, TRUE, TRUE, 0);
     gpdata->vte = vte;
+    remmina_plugin_ssh_set_vte_pref (gp);
     g_signal_connect (G_OBJECT (vte), "size-allocate", G_CALLBACK (remmina_plugin_ssh_on_size_allocate), gp);
 
     remmina_plugin_service->protocol_plugin_register_hostkey (gp, vte);

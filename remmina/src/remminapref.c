@@ -333,6 +333,16 @@ remmina_pref_init (void)
     else
         remmina_pref.secret = NULL;
 
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "vte_font", NULL))
+        remmina_pref.vte_font = g_key_file_get_string (gkeyfile, "remmina_pref", "vte_font", NULL);
+    else
+        remmina_pref.vte_font = NULL;
+
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "vte_lines", NULL))
+        remmina_pref.vte_lines = g_key_file_get_integer (gkeyfile, "remmina_pref", "vte_lines", NULL);
+    else
+        remmina_pref.vte_lines = 512;
+
     g_key_file_free (gkeyfile);
 
     if (remmina_pref.secret == NULL) remmina_pref_gen_secret ();
@@ -385,6 +395,8 @@ remmina_pref_save (void)
     g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_minimize", remmina_pref.shortcutkey_minimize);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_disconnect", remmina_pref.shortcutkey_disconnect);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_toolbar", remmina_pref.shortcutkey_toolbar);
+    g_key_file_set_string (gkeyfile, "remmina_pref", "vte_font", remmina_pref.vte_font ? remmina_pref.vte_font : "");
+    g_key_file_set_integer (gkeyfile, "remmina_pref", "vte_lines", remmina_pref.vte_lines);
 
     content = g_key_file_to_data (gkeyfile, &length, NULL);
     g_file_set_contents (remmina_pref_file, content, length, NULL);
