@@ -238,8 +238,13 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
     remmina_nx_session_set_localport (nx, remmina_plugin_nx_service->pref_get_sshtunnel_port ());
     remmina_nx_session_set_log_callback (nx, remmina_plugin_nx_service->log_printf);
 
-    remmina_plugin_nx_service->get_server_port (
-        remmina_plugin_nx_service->file_get_string (remminafile, "server"), 22, &s1, &port);
+    s2 = remmina_plugin_nx_service->protocol_plugin_start_direct_tunnel (gp, 22, FALSE);
+    if (s2 == NULL)
+    {
+        return FALSE;
+    }
+    remmina_plugin_nx_service->get_server_port (s2, 22, &s1, &port);
+    g_free (s2);
 
     if (!remmina_nx_session_open (nx, s1, port,
         remmina_plugin_nx_service->file_get_string (remminafile, "nx_privatekey"),
@@ -633,7 +638,7 @@ static RemminaProtocolPlugin remmina_plugin_nx =
     "remmina-nx",
     remmina_plugin_nx_basic_settings,
     remmina_plugin_nx_advanced_settings,
-    REMMINA_PROTOCOL_SSH_SETTING_NONE,
+    REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,
     NULL,
 
     remmina_plugin_nx_init,
