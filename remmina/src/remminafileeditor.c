@@ -829,6 +829,15 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
         g_hash_table_insert (priv->setting_widgets, "exec", widget);
         row++;
     }
+    else if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SFTP)
+    {
+        widget = remmina_file_editor_create_text (gfe, table, row, 1,
+            _("Startup path"), NULL);
+        cs = remmina_file_get_string (priv->remmina_file, "execpath");
+        gtk_entry_set_text (GTK_ENTRY (widget), cs ? cs : "");
+        g_hash_table_insert (priv->setting_widgets, "execpath", widget);
+        row++;
+    }
 
     /* SSH Authentication frame */
     remmina_public_create_group (GTK_TABLE (table), _("SSH Authentication"), row, 5, 3);

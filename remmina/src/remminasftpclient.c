@@ -37,6 +37,12 @@
 
 G_DEFINE_TYPE (RemminaSFTPClient, remmina_sftp_client, REMMINA_TYPE_FTP_CLIENT)
 
+#define SET_CURSOR(cur) \
+    if (GDK_IS_WINDOW (GTK_WIDGET (client)->window)) \
+    { \
+        gdk_window_set_cursor (GTK_WIDGET (client)->window, cur); \
+    }
+
 static void
 remmina_sftp_client_class_init (RemminaSFTPClientClass *klass)
 {
@@ -636,6 +642,8 @@ remmina_sftp_client_on_opendir (RemminaSFTPClient *client, gchar *dir, gpointer 
     gchar *tmp;
     gint type;
 
+    if (client->sftp == NULL) return;
+
     if (!dir || dir[0] == '\0')
     {
         newdir = g_strdup (".");
@@ -665,12 +673,12 @@ remmina_sftp_client_on_opendir (RemminaSFTPClient *client, gchar *dir, gpointer 
     newdir = remmina_ssh_convert (REMMINA_SSH (client->sftp), newdir_conv);
     if (!newdir)
     {
-        dialog = gtk_message_dialog_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (client))),
+        dialog = gtk_message_dialog_new (NULL,
             GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
             _("Failed to open directory %s. %s"), dir,
             ssh_get_error (REMMINA_SSH (client->sftp)->session));
-        gtk_dialog_run (GTK_DIALOG (dialog));
-        gtk_widget_destroy (dialog);
+        gtk_widget_show (dialog);
+        g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
         g_free (newdir_conv);
         return;
     }
@@ -801,12 +809,12 @@ remmina_sftp_client_init (RemminaSFTPClient *client)
 static gboolean
 remmina_sftp_client_refresh (RemminaSFTPClient *client)
 {
-    gdk_window_set_cursor (GTK_WIDGET (client)->window, gdk_cursor_new (GDK_WATCH));
+    SET_CURSOR (gdk_cursor_new (GDK_WATCH));
     gdk_flush ();
 
     remmina_sftp_client_on_opendir (client, ".", NULL);
 
-    gdk_window_set_cursor (GTK_WIDGET (client)->window, NULL);
+    SET_CURSOR (NULL);
 
     return FALSE;
 }
@@ -833,7 +841,7 @@ remmina_sftp_client_new_init (RemminaSFTP *sftp)
 
     client = remmina_sftp_client_new ();
 
-    gdk_window_set_cursor (GTK_WIDGET (client)->window, gdk_cursor_new (GDK_WATCH));
+    SET_CURSOR (gdk_cursor_new (GDK_WATCH));
     gdk_flush ();
 
     if (!remmina_ssh_init_session (REMMINA_SSH (sftp)) ||
@@ -849,7 +857,7 @@ remmina_sftp_client_new_init (RemminaSFTP *sftp)
         return NULL;
     }
 
-    gdk_window_set_cursor (GTK_WIDGET (client)->window, NULL);
+    SET_CURSOR (NULL);
 
     g_idle_add ((GSourceFunc) remmina_sftp_client_refresh, client);
     return client;

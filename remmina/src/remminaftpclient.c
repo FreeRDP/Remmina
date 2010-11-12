@@ -109,11 +109,17 @@ remmina_cell_renderer_pixbuf_new (void)
 G_DEFINE_TYPE (RemminaFTPClient, remmina_ftp_client, GTK_TYPE_VBOX)
 
 #define BUSY_CURSOR \
-    gdk_window_set_cursor (GTK_WIDGET (client)->window, gdk_cursor_new (GDK_WATCH));\
-    gdk_flush ();
+    if (GDK_IS_WINDOW (GTK_WIDGET (client)->window)) \
+    { \
+        gdk_window_set_cursor (GTK_WIDGET (client)->window, gdk_cursor_new (GDK_WATCH));\
+        gdk_flush (); \
+    }
 
 #define NORMAL_CURSOR \
-    gdk_window_set_cursor (GTK_WIDGET (client)->window, NULL);
+    if (GDK_IS_WINDOW (GTK_WIDGET (client)->window)) \
+    { \
+        gdk_window_set_cursor (GTK_WIDGET (client)->window, NULL); \
+    }
 
 struct _RemminaFTPClientPriv
 {

@@ -52,6 +52,7 @@ remmina_plugin_sftp_main_thread (gpointer data)
     RemminaSFTP *sftp = NULL;
     gboolean cont = FALSE;
     gint ret;
+    const gchar *cs;
 
     pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, NULL);
     CANCEL_ASYNC
@@ -98,6 +99,12 @@ remmina_plugin_sftp_main_thread (gpointer data)
             {
                 remmina_plugin_service->protocol_plugin_set_error (gp, "%s", REMMINA_SSH (sftp)->error);
                 break;
+            }
+
+            cs = remmina_plugin_service->file_get_string (remminafile, "execpath");
+            if (cs && cs[0])
+            {
+                remmina_ftp_client_set_dir (REMMINA_FTP_CLIENT (gpdata->client), cs);
             }
 
             cont = TRUE;
