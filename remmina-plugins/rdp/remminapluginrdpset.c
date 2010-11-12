@@ -139,7 +139,7 @@ remmina_plugin_rdpset_table_load_layout (RemminaPluginRdpsetTable *table)
     GtkTreeIter iter;
 
     gtk_list_store_append (table->keyboard_layout_store, &iter);
-    gtk_list_store_set (table->keyboard_layout_store, &iter, 0, 0, 1, _("<Auto Detect>"), -1);
+    gtk_list_store_set (table->keyboard_layout_store, &iter, 0, 0, 1, _("<Auto detect>"), -1);
     if (rdp_keyboard_layout == 0)
     {
         gtk_combo_box_set_active (GTK_COMBO_BOX (table->keyboard_layout_combo), 0);
@@ -174,13 +174,13 @@ remmina_plugin_rdpset_table_load_quality (RemminaPluginRdpsetTable *table)
     gchar *value;
 
     gtk_list_store_append (table->quality_store, &iter);
-    gtk_list_store_set (table->quality_store, &iter, 0, 0, 1, _("Poor (Fastest)"), -1);
+    gtk_list_store_set (table->quality_store, &iter, 0, 0, 1, _("Poor (fastest)"), -1);
     gtk_list_store_append (table->quality_store, &iter);
     gtk_list_store_set (table->quality_store, &iter, 0, 1, 1, _("Medium"), -1);
     gtk_list_store_append (table->quality_store, &iter);
     gtk_list_store_set (table->quality_store, &iter, 0, 2, 1, _("Good"), -1);
     gtk_list_store_append (table->quality_store, &iter);
-    gtk_list_store_set (table->quality_store, &iter, 0, 9, 1, _("Best (Slowest)"), -1);
+    gtk_list_store_set (table->quality_store, &iter, 0, 9, 1, _("Best (slowest)"), -1);
 
     memset (table->quality_values, 0, sizeof (table->quality_values));
     value = remmina_plugin_service->pref_get_value ("rdp_quality_0");
@@ -258,7 +258,7 @@ remmina_plugin_rdpset_table_init (RemminaPluginRdpsetTable *table)
     gtk_table_set_col_spacings (GTK_TABLE (table), 4);
 
     /* Create the content */
-    widget = gtk_label_new (_("Keyboard Layout"));
+    widget = gtk_label_new (_("Keyboard layout"));
     gtk_widget_show (widget);
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 1, 0, 1);
@@ -281,7 +281,7 @@ remmina_plugin_rdpset_table_init (RemminaPluginRdpsetTable *table)
 
     remmina_plugin_rdpset_table_load_layout (table);
 
-    widget = gtk_check_button_new_with_label (_("Use Client Keyboard Mapping"));
+    widget = gtk_check_button_new_with_label (_("Use client keyboard mapping"));
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 3, 2, 3);
     table->use_client_keymap_check = widget;
@@ -291,7 +291,7 @@ remmina_plugin_rdpset_table_init (RemminaPluginRdpsetTable *table)
         s && s[0] == '1' ? TRUE : FALSE);
     g_free (s);
 
-    widget = gtk_label_new (_("Quality Option"));
+    widget = gtk_label_new (_("Quality option"));
     gtk_widget_show (widget);
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 1, 3, 4);
@@ -317,14 +317,14 @@ remmina_plugin_rdpset_table_init (RemminaPluginRdpsetTable *table)
         G_CALLBACK (remmina_plugin_rdpset_quality_option_on_toggled), table);
     table->wallpaper_check = widget;
 
-    widget = gtk_check_button_new_with_label (_("Window Drag"));
+    widget = gtk_check_button_new_with_label (_("Window drag"));
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 2, 3, 4, 5);
     g_signal_connect (G_OBJECT (widget), "toggled",
         G_CALLBACK (remmina_plugin_rdpset_quality_option_on_toggled), table);
     table->windowdrag_check = widget;
 
-    widget = gtk_check_button_new_with_label (_("Menu Animation"));
+    widget = gtk_check_button_new_with_label (_("Menu animation"));
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 5, 6);
     g_signal_connect (G_OBJECT (widget), "toggled",
@@ -338,21 +338,21 @@ remmina_plugin_rdpset_table_init (RemminaPluginRdpsetTable *table)
         G_CALLBACK (remmina_plugin_rdpset_quality_option_on_toggled), table);
     table->theme_check = widget;
 
-    widget = gtk_check_button_new_with_label (_("Cursor Shadow"));
+    widget = gtk_check_button_new_with_label (_("Cursor shadow"));
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 6, 7);
     g_signal_connect (G_OBJECT (widget), "toggled",
         G_CALLBACK (remmina_plugin_rdpset_quality_option_on_toggled), table);
     table->cursorshadow_check = widget;
 
-    widget = gtk_check_button_new_with_label (_("Cursor Blinking"));
+    widget = gtk_check_button_new_with_label (_("Cursor blinking"));
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 2, 3, 6, 7);
     g_signal_connect (G_OBJECT (widget), "toggled",
         G_CALLBACK (remmina_plugin_rdpset_quality_option_on_toggled), table);
     table->cursorblinking_check = widget;
 
-    widget = gtk_check_button_new_with_label (_("Font Smoothing"));
+    widget = gtk_check_button_new_with_label (_("Font smoothing"));
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 7, 8);
     g_signal_connect (G_OBJECT (widget), "toggled",
