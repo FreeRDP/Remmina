@@ -380,8 +380,11 @@ remmina_connection_holder_toolbar_autofit_restore (RemminaConnectionHolder* cnnh
     if (cnnobj->connected && GTK_IS_SCROLLED_WINDOW (cnnobj->scrolled_container))
     {
         remmina_connection_holder_get_desktop_size (cnnhld, &width, &height, TRUE);
-        gtk_window_resize (GTK_WINDOW (cnnhld->cnnwin), MAX (1, width),
-            MAX (1, height + priv->toolbar->allocation.height));
+        gtk_window_resize (GTK_WINDOW (cnnhld->cnnwin),
+            MAX (1, width +
+            priv->notebook->allocation.width - cnnobj->scrolled_container->allocation.width),
+            MAX (1, height + priv->toolbar->allocation.height +
+            priv->notebook->allocation.height - cnnobj->scrolled_container->allocation.height));
         gtk_container_check_resize (GTK_CONTAINER (cnnhld->cnnwin));
     }
     if (GTK_IS_SCROLLED_WINDOW (cnnobj->scrolled_container))
