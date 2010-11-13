@@ -408,8 +408,6 @@ remmina_connection_holder_toolbar_autofit (GtkWidget *widget, RemminaConnectionH
         gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (cnnobj->scrolled_container),
             GTK_POLICY_NEVER, GTK_POLICY_NEVER);
 
-        gtk_main_iteration ();
-
         g_timeout_add (200, (GSourceFunc) remmina_connection_holder_toolbar_autofit_restore, cnnhld);
     }
 
