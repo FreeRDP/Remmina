@@ -1256,6 +1256,7 @@ remmina_file_editor_new_from_file (RemminaFile *remminafile)
     GtkWidget *table;
     GtkWidget *widget;
     gchar *groups;
+    gchar *s;
     const gchar *cs;
 
     gfe = REMMINA_FILE_EDITOR (g_object_new (REMMINA_TYPE_FILE_EDITOR, NULL));
@@ -1311,6 +1312,10 @@ remmina_file_editor_new_from_file (RemminaFile *remminafile)
     gtk_widget_show (priv->group_combo);
     gtk_table_attach_defaults (GTK_TABLE (table), priv->group_combo, 2, 3, 2, 3);
     gtk_widget_set_sensitive (priv->group_combo, FALSE);
+
+    s = g_strdup_printf (_("Use '%s' as subgroup delimiter"), "/");
+    gtk_widget_set_tooltip_text (priv->group_combo, s);
+    g_free (s);
 
     /* Profile: Protocol */
     widget = gtk_label_new (_("Protocol"));
