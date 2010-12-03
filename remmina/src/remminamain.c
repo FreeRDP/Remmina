@@ -184,32 +184,72 @@ remmina_main_load_file_list_callback (gpointer data, gpointer user_data)
         -1);
 }
 
+static gboolean
+remmina_main_load_file_tree_traverse (GNode *node, GtkTreeStore *store, GtkTreeIter *parent)
+{
+    GtkTreeIter *iter;
+    RemminaGroupData *data;
+    GNode *child;
+
+    iter = NULL;
+    if (node->data)
+    {
+        data = (RemminaGroupData*)node->data;
+        iter = g_new0 (GtkTreeIter, 1);
+        gtk_tree_store_append (store, iter, parent);
+        gtk_tree_store_set (store, iter,
+            PROTOCOL_COLUMN, GTK_STOCK_DIRECTORY,
+            NAME_COLUMN, data->name,
+            GROUP_COLUMN, data->group,
+            FILENAME_COLUMN, NULL,
+            -1);
+    }
+    for (child = g_node_first_child (node); child; child = g_node_next_sibling (child))
+    {
+        remmina_main_load_file_tree_traverse (child, store, iter);
+    }
+    g_free (iter);
+    return FALSE;
+}
+
 static void
 remmina_main_load_file_tree_group (GtkTreeStore *store)
 {
-    GtkTreeIter iter;
-    gchar *groups, *ptr1, *ptr2;
+    GNode *root;
 
-    groups = remmina_file_manager_get_groups ();
-    if (groups == NULL || groups[0] == '\0') return;
+    root = remmina_file_manager_get_group_tree ();
+    remmina_main_load_file_tree_traverse (root, store, NULL);
+    remmina_file_manager_free_group_tree (root);
+}
 
-    ptr1 = groups;
-    while (ptr1)
+static gboolean
+remmina_main_load_file_tree_find (GtkTreeModel *tree, GtkTreeIter *iter, const gchar *match_group)
+{
+    gboolean ret, match;
+    gchar *group, *filename;
+    GtkTreeIter child;
+
+    match = FALSE;
+    ret = TRUE;
+    while (ret)
     {
-        ptr2 = strchr (ptr1, ',');
-        if (ptr2) *ptr2++ = '\0';
-
-        gtk_tree_store_append (store, &iter, NULL);
-        gtk_tree_store_set (store, &iter,
-            PROTOCOL_COLUMN, GTK_STOCK_DIRECTORY,
-            NAME_COLUMN, ptr1,
-            FILENAME_COLUMN, NULL,
-            -1);
-
-        ptr1 = ptr2;
+        gtk_tree_model_get (tree, iter, GROUP_COLUMN, &group, FILENAME_COLUMN, &filename, -1);
+        match = (filename == NULL && g_strcmp0 (group, match_group) == 0);
+        g_free (group);
+        g_free (filename);
+        if (match) break;
+        if (gtk_tree_model_iter_children (tree, &child, iter))
+        {
+            match = remmina_main_load_file_tree_find (tree, &child, match_group);
+            if (match)
+            {
+                memcpy (iter, &child, sizeof (GtkTreeIter));
+                break;
+            }
+        }
+        ret = gtk_tree_model_iter_next (tree, iter);
     }
-
-    g_free (groups);
+    return match;
 }
 
 static void
@@ -219,26 +259,20 @@ remmina_main_load_file_tree_callback (gpointer data, gpointer user_data)
     GtkTreeIter iter, child;
     GtkTreeStore *store;
     RemminaFile *remminafile;
-    gboolean ret, match;
-    gchar *name, *filename;
+    gboolean found;
 
     remminafile = (RemminaFile*) data;
     remminamain = (RemminaMain*) user_data;
     store = GTK_TREE_STORE (remminamain->priv->file_model);
 
-    ret = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter);
-    match = FALSE;
-    while (ret)
+    found = FALSE;
+    if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter))
     {
-        gtk_tree_model_get (GTK_TREE_MODEL (store), &iter, NAME_COLUMN, &name, FILENAME_COLUMN, &filename, -1);
-        match = (filename == NULL && g_strcmp0 (name, remmina_file_get_string (remminafile, "group")) == 0);
-        g_free (name);
-        g_free (filename);
-        if (match) break;
-        ret = gtk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter);
+        found = remmina_main_load_file_tree_find (GTK_TREE_MODEL (store), &iter,
+            remmina_file_get_string (remminafile, "group"));
     }
 
-    gtk_tree_store_append (store, &child, (match ? &iter : NULL));
+    gtk_tree_store_append (store, &child, (found ? &iter : NULL));
     gtk_tree_store_set (store, &child,
         PROTOCOL_COLUMN, remmina_file_get_icon_name (remminafile),
         NAME_COLUMN, remmina_file_get_string (remminafile, "name"),
