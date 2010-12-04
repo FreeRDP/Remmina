@@ -100,6 +100,7 @@ typedef struct _RemminaPref
     gboolean main_maximize;
     gint main_sort_column_id;
     gint main_sort_order;
+    gchar *expanded_group;
 
     /* Crypto */
     gchar *secret;

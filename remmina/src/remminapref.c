@@ -248,6 +248,11 @@ remmina_pref_init (void)
     else
         remmina_pref.main_sort_order = 0;
 
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "expanded_group", NULL))
+        remmina_pref.expanded_group = g_key_file_get_string (gkeyfile, "remmina_pref", "expanded_group", NULL);
+    else
+        remmina_pref.expanded_group = NULL;
+
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "sshtunnel_port", NULL))
         remmina_pref.sshtunnel_port = g_key_file_get_integer (gkeyfile, "remmina_pref", "sshtunnel_port", NULL);
     else
@@ -379,6 +384,7 @@ remmina_pref_save (void)
     g_key_file_set_boolean (gkeyfile, "remmina_pref", "main_maximize", remmina_pref.main_maximize);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "main_sort_column_id", remmina_pref.main_sort_column_id);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "main_sort_order", remmina_pref.main_sort_order);
+    g_key_file_set_string (gkeyfile, "remmina_pref", "expanded_group", remmina_pref.expanded_group);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "sshtunnel_port", remmina_pref.sshtunnel_port);
     g_key_file_set_boolean (gkeyfile, "remmina_pref", "applet_new_ontop", remmina_pref.applet_new_ontop);
     g_key_file_set_boolean (gkeyfile, "remmina_pref", "applet_hide_count", remmina_pref.applet_hide_count);

@@ -22,6 +22,7 @@
 #include <gtk/gtk.h>
 #include <glib/gstdio.h>
 #include <glib/gi18n.h>
+#include "remminastringarray.h"
 #include "remminafile.h"
 #include "remminafilemanager.h"
 #include "remminafileeditor.h"
@@ -59,6 +60,7 @@ struct _RemminaMainPriv
 
     gchar *selected_filename;
     gchar *selected_name;
+    RemminaStringArray *expanded_group;
 };
 
 static void
@@ -93,13 +95,54 @@ remmina_main_save_size (RemminaMain *remminamain)
     {
         remmina_pref.main_maximize = TRUE;
     }
-    remmina_pref_save ();
+}
+
+static void
+remmina_main_save_expanded_group_func (GtkTreeView *tree_view, GtkTreePath *path, RemminaMain *remminamain)
+{
+    GtkTreeIter iter;
+    gchar *group;
+
+    gtk_tree_model_get_iter (remminamain->priv->file_model, &iter, path);
+    gtk_tree_model_get (remminamain->priv->file_model, &iter, GROUP_COLUMN, &group, -1);
+    if (group)
+    {
+        remmina_string_array_add (remminamain->priv->expanded_group, group);
+        g_free (group);
+    }
+}
+
+static void
+remmina_main_save_expanded_group (RemminaMain *remminamain)
+{
+    if (GTK_IS_TREE_STORE (remminamain->priv->file_model))
+    {
+        if (remminamain->priv->expanded_group)
+        {
+            remmina_string_array_free (remminamain->priv->expanded_group);
+        }
+        remminamain->priv->expanded_group = remmina_string_array_new ();
+        gtk_tree_view_map_expanded_rows (GTK_TREE_VIEW (remminamain->priv->file_list),
+            (GtkTreeViewMappingFunc) remmina_main_save_expanded_group_func, remminamain);
+    }
 }
 
 static gboolean
 remmina_main_on_delete_event (GtkWidget *widget, GdkEvent *event, gpointer data)
 {
-    remmina_main_save_size (REMMINA_MAIN (widget));
+    RemminaMain *remminamain;
+
+    remminamain = REMMINA_MAIN (widget);
+
+    remmina_main_save_size (remminamain);
+
+    remmina_main_save_expanded_group (remminamain);
+    g_free (remmina_pref.expanded_group);
+    remmina_pref.expanded_group = remmina_string_array_to_string (remminamain->priv->expanded_group);
+    remmina_string_array_free (remminamain->priv->expanded_group);
+    remminamain->priv->expanded_group = NULL;
+
+    remmina_pref_save ();
     return FALSE;
 }
 
@@ -220,6 +263,51 @@ remmina_main_load_file_tree_group (GtkTreeStore *store)
     root = remmina_file_manager_get_group_tree ();
     remmina_main_load_file_tree_traverse (root, store, NULL);
     remmina_file_manager_free_group_tree (root);
+}
+
+static void
+remmina_main_expand_group_traverse (RemminaMain *remminamain, GtkTreeIter *iter)
+{
+    GtkTreeModel *tree;
+    gboolean ret;
+    gchar *group, *filename;
+    GtkTreeIter child;
+    GtkTreePath *path;
+
+    tree = remminamain->priv->file_model;
+    ret = TRUE;
+    while (ret)
+    {
+        gtk_tree_model_get (tree, iter, GROUP_COLUMN, &group, FILENAME_COLUMN, &filename, -1);
+        if (filename == NULL)
+        {
+            if (remmina_string_array_find (remminamain->priv->expanded_group, group) >= 0)
+            {
+                path = gtk_tree_model_get_path (remminamain->priv->file_model, iter);
+                gtk_tree_view_expand_row (GTK_TREE_VIEW (remminamain->priv->file_list), path, FALSE);
+                gtk_tree_path_free (path);
+            }
+            if (gtk_tree_model_iter_children (tree, &child, iter))
+            {
+                remmina_main_expand_group_traverse (remminamain, &child);
+            }
+        }
+        g_free (group);
+        g_free (filename);
+
+        ret = gtk_tree_model_iter_next (tree, iter);
+    }
+}
+
+static void
+remmina_main_expand_group (RemminaMain *remminamain)
+{
+    GtkTreeIter iter;
+
+    if (gtk_tree_model_get_iter_first (remminamain->priv->file_model, &iter))
+    {
+        remmina_main_expand_group_traverse (remminamain, &iter);
+    }
 }
 
 static gboolean
@@ -359,13 +447,18 @@ remmina_main_select_file (RemminaMain *remminamain, const gchar *filename)
 }
 
 static void
-remmina_main_load_files (RemminaMain *remminamain)
+remmina_main_load_files (RemminaMain *remminamain, gboolean refresh)
 {
     GtkTreeModel *filter;
     GtkTreeModel *sort;
     gint n;
     gchar buf[200];
     guint context_id;
+
+    if (refresh)
+    {
+        remmina_main_save_expanded_group (remminamain);
+    }
 
     switch (remmina_pref.view_file_mode)
     {
@@ -396,11 +489,11 @@ remmina_main_load_files (RemminaMain *remminamain)
     remminamain->priv->file_model_sort = sort;
 
     gtk_tree_view_set_model (GTK_TREE_VIEW (remminamain->priv->file_list), sort);
-    gtk_tree_view_expand_all (GTK_TREE_VIEW (remminamain->priv->file_list));
     gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort),
         remmina_pref.main_sort_column_id, remmina_pref.main_sort_order);
     g_signal_connect (G_OBJECT (sort), "sort-column-changed",
         G_CALLBACK (remmina_main_file_model_on_sort), remminamain);
+    remmina_main_expand_group (remminamain);
 
     if (remminamain->priv->selected_filename)
     {
@@ -424,7 +517,7 @@ remmina_main_file_editor_destroy (GtkWidget *widget, RemminaMain *remminamain)
 {
     if (GTK_IS_WIDGET (remminamain))
     {
-        remmina_main_load_files (remminamain);
+        remmina_main_load_files (remminamain, TRUE);
     }
 }
 
@@ -481,7 +574,7 @@ remmina_main_action_connection_delete (GtkAction *action, RemminaMain *remminama
     if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
     {
         g_unlink (remminamain->priv->selected_filename);
-        remmina_main_load_files (remminamain);
+        remmina_main_load_files (remminamain, TRUE);
     }
     gtk_widget_destroy (dialog);
     remmina_main_clear_selection_data (remminamain);
@@ -601,7 +694,7 @@ remmina_main_action_view_file_mode (GtkRadioAction *action, GtkRadioAction *curr
 {
     remmina_pref.view_file_mode = gtk_radio_action_get_current_value (action);
     remmina_pref_save ();
-    remmina_main_load_files (remminamain);
+    remmina_main_load_files (remminamain, TRUE);
 }
 
 static void
@@ -652,7 +745,7 @@ remmina_main_import_file_list (RemminaMain *remminamain, GSList *files)
     g_string_free (err, TRUE);
     if (imported)
     {
-        remmina_main_load_files (remminamain);
+        remmina_main_load_files (remminamain, TRUE);
     }
 }
 
@@ -1028,12 +1121,10 @@ remmina_main_init (RemminaMain *remminamain)
     GtkTreeViewColumn *column;
     GError *error;
 
-    priv = g_new (RemminaMainPriv, 1);
+    priv = g_new0 (RemminaMainPriv, 1);
     remminamain->priv = priv;
 
-    priv->initialized = FALSE;
-    priv->selected_filename = NULL;
-    priv->selected_name = NULL;
+    remminamain->priv->expanded_group = remmina_string_array_new_from_string (remmina_pref.expanded_group);
 
     /* Create main window */
     g_signal_connect (G_OBJECT (remminamain), "delete-event", G_CALLBACK (remmina_main_on_delete_event), NULL);
@@ -1156,7 +1247,7 @@ remmina_main_init (RemminaMain *remminamain)
     gtk_widget_show (priv->statusbar);
 
     /* Prepare the data */
-    remmina_main_load_files (remminamain);
+    remmina_main_load_files (remminamain, FALSE);
 
     /* Load the preferences */
     if (remmina_pref.hide_toolbar)
