@@ -23,6 +23,7 @@
 #include <libxfce4panel/xfce-panel-plugin.h>
 #include "config.h"
 #include "remminaappletmenuitem.h"
+#include "remminaappletmenu.h"
 #include "remminaavahi.h"
 #include "remminaappletutil.h"
 
@@ -77,21 +78,37 @@ remmina_xfce_plugin_menu_configure (XfcePanelPlugin *plugin, gpointer data)
 }
 
 static void
-remmina_xfce_plugin_menu_open_new (RemminaAppletMenuItem *menuitem, GdkEventButton *event, RemminaXfcePlugin *rxplugin)
+remmina_xfce_plugin_menu_on_launch_item (RemminaAppletMenu *menu, RemminaAppletMenuItem *menuitem, RemminaXfcePlugin *rxplugin)
 {
-    remmina_applet_util_launcher (REMMINA_LAUNCH_NEW, NULL, NULL, NULL);
+    switch (menuitem->item_type)
+    {
+    case REMMINA_APPLET_MENU_ITEM_NEW:
+        remmina_applet_util_launcher (REMMINA_LAUNCH_NEW, NULL, NULL, NULL);
+        break;
+    case REMMINA_APPLET_MENU_ITEM_FILE:
+        remmina_applet_util_launcher (REMMINA_LAUNCH_FILE, menuitem->filename, NULL, NULL);
+        break;
+    case REMMINA_APPLET_MENU_ITEM_DISCOVERED:
+        remmina_applet_util_launcher (REMMINA_LAUNCH_NEW, NULL, menuitem->name, menuitem->protocol);
+        break;
+    }
 }
 
 static void
-remmina_xfce_plugin_menu_open_file (RemminaAppletMenuItem *menuitem, GdkEventButton *event, RemminaXfcePlugin *rxplugin)
+remmina_xfce_plugin_menu_on_edit_item (RemminaAppletMenu *menu, RemminaAppletMenuItem *menuitem, RemminaXfcePlugin *rxplugin)
 {
-    remmina_applet_util_launcher (event->button == 3 ? REMMINA_LAUNCH_EDIT : REMMINA_LAUNCH_FILE, menuitem->filename, NULL, NULL);
-}
-
-static void
-remmina_xfce_plugin_menu_open_discovered (RemminaAppletMenuItem *menuitem, GdkEventButton *event, RemminaXfcePlugin *rxplugin)
-{
-    remmina_applet_util_launcher (REMMINA_LAUNCH_NEW, NULL, menuitem->name, menuitem->protocol);
+    switch (menuitem->item_type)
+    {
+    case REMMINA_APPLET_MENU_ITEM_NEW:
+        remmina_applet_util_launcher (REMMINA_LAUNCH_NEW, NULL, NULL, NULL);
+        break;
+    case REMMINA_APPLET_MENU_ITEM_FILE:
+        remmina_applet_util_launcher (REMMINA_LAUNCH_EDIT, menuitem->filename, NULL, NULL);
+        break;
+    case REMMINA_APPLET_MENU_ITEM_DISCOVERED:
+        remmina_applet_util_launcher (REMMINA_LAUNCH_NEW, NULL, menuitem->name, menuitem->protocol);
+        break;
+    }
 }
 
 static void
@@ -155,80 +172,10 @@ remmina_xfce_plugin_popup_menu_position (GtkMenu *menu, gint *x, gint *y, gboole
 }
 
 static void
-remmina_xfce_plugin_popup_menu_update_group (RemminaXfcePlugin *rxplugin)
-{
-    gchar *label;
-
-    if (rxplugin->menu_group)
-    {
-        if (!remmina_applet_util_get_pref_boolean ("applet_hide_count"))
-        {
-            label = g_strdup_printf ("%s (%i)", rxplugin->menu_group, rxplugin->menu_group_count);
-            gtk_label_set_text (GTK_LABEL (gtk_bin_get_child (GTK_BIN (rxplugin->menu_group_widget))), label);
-            g_free (label);
-        }
-        rxplugin->menu_group = NULL;
-        rxplugin->menu_group_count = 0;
-    }
-}
-
-static void
-remmina_xfce_plugin_popup_menu_add_item (gpointer data, gpointer user_data)
-{
-    RemminaXfcePlugin *rxplugin;
-    RemminaAppletMenuItem *item;
-    GtkWidget *submenu;
-    GtkWidget *image;
-
-    rxplugin = (RemminaXfcePlugin*) user_data;
-    item = REMMINA_APPLET_MENU_ITEM (data);
-
-    if (item->group && item->group[0] != '\0')
-    {
-        if (!rxplugin->menu_group || g_strcmp0 (rxplugin->menu_group, item->group) != 0)
-        {
-            remmina_xfce_plugin_popup_menu_update_group (rxplugin);
-
-            rxplugin->menu_group = item->group;
-
-            rxplugin->menu_group_widget = gtk_image_menu_item_new_with_label (rxplugin->menu_group);
-            gtk_widget_show (rxplugin->menu_group_widget);
-            gtk_menu_shell_append (GTK_MENU_SHELL (rxplugin->popup_menu), rxplugin->menu_group_widget);
-
-            image = gtk_image_new_from_icon_name ((item->item_type == REMMINA_APPLET_MENU_ITEM_DISCOVERED ?
-                "folder-remote" : "folder"), GTK_ICON_SIZE_MENU);
-            gtk_widget_show (image);
-            gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (rxplugin->menu_group_widget), image);
-            gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (rxplugin->menu_group_widget), TRUE);
-
-            submenu = gtk_menu_new ();
-            gtk_widget_show (submenu);
-            gtk_menu_item_set_submenu (GTK_MENU_ITEM (rxplugin->menu_group_widget), submenu);
-        }
-        else
-        {
-            submenu = gtk_menu_item_get_submenu (GTK_MENU_ITEM (rxplugin->menu_group_widget));
-        }
-        gtk_menu_shell_append (GTK_MENU_SHELL (submenu), GTK_WIDGET (item));
-        rxplugin->menu_group_count++;
-    }
-    else
-    {
-        remmina_xfce_plugin_popup_menu_update_group (rxplugin);
-        gtk_menu_shell_append (GTK_MENU_SHELL (rxplugin->popup_menu), GTK_WIDGET (item));
-    }
-}
-
-static void
 remmina_xfce_plugin_popup_menu (GtkWidget *widget, GdkEventButton *event, RemminaXfcePlugin *rxplugin)
 {
     GtkWidget *menuitem;
-    GPtrArray *menuitem_array;
     gint button, event_time;
-    gchar dirname[MAX_PATH_LEN];
-    gchar filename[MAX_PATH_LEN];
-    GDir *dir;
-    const gchar *name;
     gboolean new_ontop;
     GHashTableIter iter;
     gchar *tmp;
@@ -236,78 +183,47 @@ remmina_xfce_plugin_popup_menu (GtkWidget *widget, GdkEventButton *event, Remmin
     new_ontop = remmina_applet_util_get_pref_boolean ("applet_new_ontop");
 
     rxplugin->popup_time = gtk_get_current_event_time ();
-    rxplugin->popup_menu = gtk_menu_new ();
+    rxplugin->popup_menu = remmina_applet_menu_new (
+        remmina_applet_util_get_pref_boolean ("applet_hide_count"));
 
+    /* Iterate all discovered services from Avahi */
+    if (rxplugin->avahi)
+    {
+        g_hash_table_iter_init (&iter, rxplugin->avahi->discovered_services);
+        while (g_hash_table_iter_next (&iter, NULL, (gpointer*) &tmp))
+        {
+            menuitem = remmina_applet_menu_item_new (REMMINA_APPLET_MENU_ITEM_DISCOVERED, tmp);
+            gtk_widget_show (menuitem);
+            remmina_applet_menu_add_item (
+                REMMINA_APPLET_MENU (rxplugin->popup_menu),
+                REMMINA_APPLET_MENU_ITEM (menuitem));
+        }
+    }
+
+    /* Separator */
+    menuitem = gtk_separator_menu_item_new ();
+    gtk_widget_show (menuitem);
     if (new_ontop)
     {
-        menuitem = remmina_applet_menu_item_new (REMMINA_APPLET_MENU_ITEM_NEW);
-        g_signal_connect (G_OBJECT (menuitem), "button-press-event",
-            G_CALLBACK (remmina_xfce_plugin_menu_open_new), rxplugin);
-        gtk_widget_show (menuitem);
-        gtk_menu_shell_append (GTK_MENU_SHELL (rxplugin->popup_menu), menuitem);
-
-        menuitem = gtk_separator_menu_item_new ();
-        gtk_widget_show (menuitem);
+        gtk_menu_shell_prepend (GTK_MENU_SHELL (rxplugin->popup_menu), menuitem);
+    }
+    else
+    {
         gtk_menu_shell_append (GTK_MENU_SHELL (rxplugin->popup_menu), menuitem);
     }
 
-    g_snprintf (dirname, MAX_PATH_LEN, "%s/.remmina", g_get_home_dir ());
-    dir = g_dir_open (dirname, 0, NULL);
-    if (dir != NULL)
+    /* New Connection */
+    menuitem = remmina_applet_menu_item_new (REMMINA_APPLET_MENU_ITEM_NEW);
+    gtk_widget_show (menuitem);
+    remmina_applet_menu_register_item (
+        REMMINA_APPLET_MENU (rxplugin->popup_menu),
+        REMMINA_APPLET_MENU_ITEM (menuitem));
+    if (new_ontop)
     {
-        menuitem_array = g_ptr_array_new ();
-
-        /* Iterate all remote desktop profiles */
-        while ((name = g_dir_read_name (dir)) != NULL)
-        {
-            if (!g_str_has_suffix (name, ".remmina")) continue;
-            g_snprintf (filename, MAX_PATH_LEN, "%s/%s", dirname, name);
-
-            menuitem = remmina_applet_menu_item_new (REMMINA_APPLET_MENU_ITEM_FILE, filename);
-            g_signal_connect (G_OBJECT (menuitem), "button-press-event",
-                G_CALLBACK (remmina_xfce_plugin_menu_open_file), rxplugin);
-            gtk_widget_show (menuitem);
-
-            g_ptr_array_add (menuitem_array, menuitem);
-        }
-        g_dir_close (dir);
-
-        /* Iterate all discovered services from Avahi */
-        if (rxplugin->avahi)
-        {
-            g_hash_table_iter_init (&iter, rxplugin->avahi->discovered_services);
-            while (g_hash_table_iter_next (&iter, NULL, (gpointer*) &tmp))
-            {
-                menuitem = remmina_applet_menu_item_new (REMMINA_APPLET_MENU_ITEM_DISCOVERED, tmp);
-                g_signal_connect (G_OBJECT (menuitem), "button-press-event",
-                    G_CALLBACK (remmina_xfce_plugin_menu_open_discovered), rxplugin);
-                gtk_widget_show (menuitem);
-
-                g_ptr_array_add (menuitem_array, menuitem);
-            }
-        }
-
-        g_ptr_array_sort_with_data (menuitem_array, remmina_applet_menu_item_compare, NULL);
-
-        rxplugin->menu_group = NULL;
-        rxplugin->menu_group_count = 0;
-        g_ptr_array_foreach (menuitem_array, remmina_xfce_plugin_popup_menu_add_item, rxplugin);
-
-        remmina_xfce_plugin_popup_menu_update_group (rxplugin);
-
-        g_ptr_array_free (menuitem_array, TRUE);
+        gtk_menu_shell_prepend (GTK_MENU_SHELL (rxplugin->popup_menu), menuitem);
     }
-
-    if (!new_ontop)
+    else
     {
-        menuitem = gtk_separator_menu_item_new ();
-        gtk_widget_show (menuitem);
-        gtk_menu_shell_append (GTK_MENU_SHELL (rxplugin->popup_menu), menuitem);
-
-        menuitem = remmina_applet_menu_item_new (REMMINA_APPLET_MENU_ITEM_NEW);
-        g_signal_connect (G_OBJECT (menuitem), "button-press-event",
-            G_CALLBACK (remmina_xfce_plugin_menu_open_new), rxplugin);
-        gtk_widget_show (menuitem);
         gtk_menu_shell_append (GTK_MENU_SHELL (rxplugin->popup_menu), menuitem);
     }
 
@@ -327,6 +243,12 @@ remmina_xfce_plugin_popup_menu (GtkWidget *widget, GdkEventButton *event, Remmin
 
     gtk_menu_attach_to_widget (GTK_MENU (rxplugin->popup_menu), widget, NULL);
     gtk_widget_realize (rxplugin->popup_menu);
+
+    g_signal_connect (G_OBJECT (rxplugin->popup_menu), "launch-item",
+        G_CALLBACK (remmina_xfce_plugin_menu_on_launch_item), rxplugin);
+    g_signal_connect (G_OBJECT (rxplugin->popup_menu), "edit-item",
+        G_CALLBACK (remmina_xfce_plugin_menu_on_edit_item), rxplugin);
+
     gtk_menu_popup (GTK_MENU (rxplugin->popup_menu), NULL, NULL,
         remmina_xfce_plugin_popup_menu_position, rxplugin, button, event_time);
 }

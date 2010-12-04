@@ -14,6 +14,14 @@ AC_PROG_LIBTOOL
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
 
+# Disable optimization if we enable debug
+AC_ARG_ENABLE(debug,
+    [AS_HELP_STRING([--enable-debug], [Enable compiling in debug mode])], [
+    if test "x$enableval" = "xyes"; then
+        CFLAGS="-g -O0"
+    fi]
+)
+
 # Only use -Wall if we have gcc
 if test "x$GCC" = "xyes"; then
     if test -z "`echo "$CFLAGS" | grep "\-Wall" 2> /dev/null`" ; then
