@@ -210,7 +210,7 @@ remmina_file_set_string (RemminaFile *remminafile, const gchar *setting, const g
 void
 remmina_file_set_string_ref (RemminaFile *remminafile, const gchar *setting, gchar *value)
 {
-    if (value && value[0])
+    if (value)
     {
         g_hash_table_insert (remminafile->settings, g_strdup (setting), value);
     }
