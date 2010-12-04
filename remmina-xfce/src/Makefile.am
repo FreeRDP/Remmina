@@ -6,6 +6,7 @@ plugin_LTLIBRARIES = 				\
 
 libremmina_xfce_plugin_la_SOURCES = remminaxfceplugin.c \
     remminaappletmenuitem.h remminaappletmenuitem.c \
+    remminaappletmenu.h remminaappletmenu.c \
     remminaavahi.h remminaavahi.c \
     remminaappletutil.h remminaappletutil.c
 
