@@ -103,8 +103,8 @@ remmina_main_save_expanded_group_func (GtkTreeView *tree_view, GtkTreePath *path
     GtkTreeIter iter;
     gchar *group;
 
-    gtk_tree_model_get_iter (remminamain->priv->file_model, &iter, path);
-    gtk_tree_model_get (remminamain->priv->file_model, &iter, GROUP_COLUMN, &group, -1);
+    gtk_tree_model_get_iter (remminamain->priv->file_model_sort, &iter, path);
+    gtk_tree_model_get (remminamain->priv->file_model_sort, &iter, GROUP_COLUMN, &group, -1);
     if (group)
     {
         remmina_string_array_add (remminamain->priv->expanded_group, group);
@@ -274,7 +274,7 @@ remmina_main_expand_group_traverse (RemminaMain *remminamain, GtkTreeIter *iter)
     GtkTreeIter child;
     GtkTreePath *path;
 
-    tree = remminamain->priv->file_model;
+    tree = remminamain->priv->file_model_sort;
     ret = TRUE;
     while (ret)
     {
@@ -283,7 +283,7 @@ remmina_main_expand_group_traverse (RemminaMain *remminamain, GtkTreeIter *iter)
         {
             if (remmina_string_array_find (remminamain->priv->expanded_group, group) >= 0)
             {
-                path = gtk_tree_model_get_path (remminamain->priv->file_model, iter);
+                path = gtk_tree_model_get_path (tree, iter);
                 gtk_tree_view_expand_row (GTK_TREE_VIEW (remminamain->priv->file_list), path, FALSE);
                 gtk_tree_path_free (path);
             }
@@ -304,7 +304,7 @@ remmina_main_expand_group (RemminaMain *remminamain)
 {
     GtkTreeIter iter;
 
-    if (gtk_tree_model_get_iter_first (remminamain->priv->file_model, &iter))
+    if (gtk_tree_model_get_iter_first (remminamain->priv->file_model_sort, &iter))
     {
         remmina_main_expand_group_traverse (remminamain, &iter);
     }
