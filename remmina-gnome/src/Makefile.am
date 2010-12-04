@@ -8,6 +8,7 @@ INCLUDES = @REMMINA_GNOME_CFLAGS@ @AVAHI_CLIENT_CFLAGS@ \
 
 remmina_applet_SOURCES = remminaapplet.c \
     remminaappletmenuitem.h remminaappletmenuitem.c \
+    remminaappletmenu.h remminaappletmenu.c \
     remminaavahi.h remminaavahi.c \
     remminaappletutil.h remminaappletutil.c
 
