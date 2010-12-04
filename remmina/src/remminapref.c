@@ -251,7 +251,7 @@ remmina_pref_init (void)
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "expanded_group", NULL))
         remmina_pref.expanded_group = g_key_file_get_string (gkeyfile, "remmina_pref", "expanded_group", NULL);
     else
-        remmina_pref.expanded_group = NULL;
+        remmina_pref.expanded_group = g_strdup ("");
 
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "sshtunnel_port", NULL))
         remmina_pref.sshtunnel_port = g_key_file_get_integer (gkeyfile, "remmina_pref", "sshtunnel_port", NULL);
