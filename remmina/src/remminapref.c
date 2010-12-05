@@ -316,7 +316,7 @@ remmina_pref_init (void)
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_grab", NULL))
         remmina_pref.shortcutkey_grab = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_grab", NULL);
     else
-        remmina_pref.shortcutkey_grab = GDK_k;
+        remmina_pref.shortcutkey_grab = GDK_Control_R;
 
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_minimize", NULL))
         remmina_pref.shortcutkey_minimize = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_minimize", NULL);
