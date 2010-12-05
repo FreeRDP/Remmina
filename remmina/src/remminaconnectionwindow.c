@@ -73,6 +73,9 @@ struct _RemminaConnectionWindowPriv
     GtkWidget *scale_option_button;
     GtkWidget *fullscreen_option_button;
 
+    GtkWidget *pin_button;
+    gboolean pin_down;
+
     gboolean sticky;
 
     gint view_mode;
@@ -254,12 +257,12 @@ remmina_connection_holder_floating_toolbar_motion (RemminaConnectionHolder *cnnh
     if (priv->floating_toolbar_motion_show || priv->floating_toolbar_motion_visible)
     {
         if (priv->floating_toolbar_motion_show) y += 2; else y -= 2;
-        t = 2 - req.height;
+        t = (priv->pin_down ? 18 : 2) - req.height;
         if (y > 0) y = 0;
         if (y < t) y = t;
 
         gtk_window_move (GTK_WINDOW (priv->floating_toolbar), x, y);
-        if (remmina_pref.invisible_toolbar)
+        if (remmina_pref.invisible_toolbar && !priv->pin_down)
         {
             gtk_window_set_opacity (GTK_WINDOW (priv->floating_toolbar), (gdouble)(y - t) / (gdouble)(-t)
                 * priv->floating_toolbar_opacity);
@@ -1586,6 +1589,28 @@ remmina_connection_window_on_configure (GtkWidget *widget, GdkEventConfigure *ev
 }
 
 static void
+remmina_connection_holder_update_pin (RemminaConnectionHolder *cnnhld)
+{
+    if (cnnhld->cnnwin->priv->pin_down)
+    {
+        gtk_button_set_image (GTK_BUTTON (cnnhld->cnnwin->priv->pin_button),
+            gtk_image_new_from_icon_name ("remmina-pin-down", GTK_ICON_SIZE_MENU));
+    }
+    else
+    {
+        gtk_button_set_image (GTK_BUTTON (cnnhld->cnnwin->priv->pin_button),
+            gtk_image_new_from_icon_name ("remmina-pin-up", GTK_ICON_SIZE_MENU));
+    }
+}
+
+static void
+remmina_connection_holder_toolbar_pin (GtkWidget *widget, RemminaConnectionHolder *cnnhld)
+{
+    cnnhld->cnnwin->priv->pin_down = !cnnhld->cnnwin->priv->pin_down;
+    remmina_connection_holder_update_pin (cnnhld);
+}
+
+static void
 remmina_connection_holder_create_floating_toolbar (RemminaConnectionHolder *cnnhld, gint mode)
 {
     DECLARE_CNNOBJ
@@ -1594,6 +1619,7 @@ remmina_connection_holder_create_floating_toolbar (RemminaConnectionHolder *cnnh
     GtkWidget *vbox;
     GtkWidget *widget;
     GtkWidget *eventbox;
+    GtkWidget *hbox;
 
     /* This has to be a popup window to become visible in fullscreen mode */
     window = gtk_window_new (GTK_WINDOW_POPUP);
@@ -1605,10 +1631,27 @@ remmina_connection_holder_create_floating_toolbar (RemminaConnectionHolder *cnnh
     widget = remmina_connection_holder_create_toolbar (cnnhld, mode);
     gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, FALSE, 0);
 
+    hbox = gtk_hbox_new (FALSE, 0);
+    gtk_widget_show (hbox);
+    gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+
+    /* The pin button */
+    widget = gtk_button_new ();
+    gtk_widget_show (widget);
+    gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, FALSE, 0);
+    gtk_button_set_relief (GTK_BUTTON (widget), GTK_RELIEF_NONE);
+    gtk_button_set_focus_on_click (GTK_BUTTON (widget), FALSE);
+    gtk_widget_set_name (widget, "remmina-small-button");
+    g_signal_connect (G_OBJECT (widget), "clicked",
+        G_CALLBACK (remmina_connection_holder_toolbar_pin), cnnhld);
+    priv->pin_button = widget;
+    priv->pin_down = remmina_pref.toolbar_pin_down;
+    remmina_connection_holder_update_pin (cnnhld);
+
     /* An event box is required to wrap the label to avoid infinite "leave-enter" event loop */
     eventbox = gtk_event_box_new ();
     gtk_widget_show (eventbox);
-    gtk_box_pack_start (GTK_BOX (vbox), eventbox, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), eventbox, TRUE, TRUE, 0);
     widget = gtk_label_new (remmina_file_get_string (cnnobj->remmina_file, "name"));
     gtk_label_set_max_width_chars (GTK_LABEL (widget), 50);
     gtk_widget_show (widget);
@@ -1622,7 +1665,7 @@ remmina_connection_holder_create_floating_toolbar (RemminaConnectionHolder *cnnh
     priv->floating_toolbar = window;
 
     remmina_connection_holder_update_toolbar_opacity (cnnhld);
-    if (remmina_pref.invisible_toolbar)
+    if (remmina_pref.invisible_toolbar && !priv->pin_down)
     {
         gtk_window_set_opacity (GTK_WINDOW (window), 0.0);
     }
@@ -2305,6 +2348,11 @@ remmina_connection_object_on_disconnect (RemminaProtocolWidget *gp, RemminaConne
         else
         {
             remmina_file_save_group (cnnobj->remmina_file, REMMINA_SETTING_GROUP_RUNTIME);
+        }
+        if (cnnhld->cnnwin && remmina_pref.toolbar_pin_down != cnnhld->cnnwin->priv->pin_down)
+        {
+            remmina_pref.toolbar_pin_down = cnnhld->cnnwin->priv->pin_down;
+            remmina_pref_save ();
         }
     }
     remmina_file_free (cnnobj->remmina_file);
