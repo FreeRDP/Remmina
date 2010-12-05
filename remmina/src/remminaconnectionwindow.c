@@ -76,8 +76,6 @@ struct _RemminaConnectionWindowPriv
     gboolean sticky;
 
     gint view_mode;
-
-    gboolean hostkey_activated;
 };
 
 typedef struct _RemminaConnectionObject
@@ -104,6 +102,9 @@ struct _RemminaConnectionHolder
 {
     RemminaConnectionWindow *cnnwin;
     gint fullscreen_view_mode;
+
+    gboolean hostkey_activated;
+    gboolean hostkey_used;
 };
 
 #define DECLARE_CNNOBJ \
@@ -1122,13 +1123,27 @@ remmina_connection_holder_set_tooltip (GtkToolItem *toolitem, const gchar *tip, 
 {
     gchar *s1, *s2;
 
-    s1 = (remmina_pref.hostkey && key1 ?
-        (key2 ?
-        g_strdup_printf (" (%s + %s,%s)", gdk_keyval_name (remmina_pref.hostkey),
-            gdk_keyval_name (gdk_keyval_to_upper (key1)), gdk_keyval_name (gdk_keyval_to_upper (key2))) :
-        g_strdup_printf (" (%s + %s)", gdk_keyval_name (remmina_pref.hostkey),
-            gdk_keyval_name (gdk_keyval_to_upper (key1)))) :
-        NULL);
+    if (remmina_pref.hostkey && key1)
+    {
+        if (key2)
+        {
+            s1 = g_strdup_printf (" (%s + %s,%s)", gdk_keyval_name (remmina_pref.hostkey),
+                gdk_keyval_name (gdk_keyval_to_upper (key1)), gdk_keyval_name (gdk_keyval_to_upper (key2)));
+        }
+        else if (key1 == remmina_pref.hostkey)
+        {
+            s1 = g_strdup_printf (" (%s)", gdk_keyval_name (remmina_pref.hostkey));
+        }
+        else
+        {
+            s1 = g_strdup_printf (" (%s + %s)", gdk_keyval_name (remmina_pref.hostkey),
+                gdk_keyval_name (gdk_keyval_to_upper (key1)));
+        }
+    }
+    else
+    {
+        s1 = NULL;
+    }
     s2 = g_strdup_printf ("%s%s", tip, s1 ? s1 : "");
     gtk_tool_item_set_tooltip_text (toolitem, s2);
     g_free (s2);
@@ -1445,7 +1460,7 @@ remmina_connection_window_focus_out (GtkWidget *widget, GdkEventFocus *event, Re
     DECLARE_CNNOBJ_WITH_RETURN (FALSE)
     RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
 
-    priv->hostkey_activated = FALSE;
+    cnnhld->hostkey_activated = FALSE;
     if (!priv->sticky && priv->floating_toolbar)
     {
         remmina_connection_holder_floating_toolbar_visible (cnnhld, FALSE);
@@ -2075,25 +2090,37 @@ remmina_connection_window_hostkey_func (RemminaProtocolWidget *gp, guint keyval,
     {
         if (remmina_pref.hostkey && keyval == remmina_pref.hostkey)
         {
-            priv->hostkey_activated = FALSE;
-            return TRUE;
+            cnnhld->hostkey_activated = FALSE;
+            if (cnnhld->hostkey_used)
+            {
+                return TRUE;
+            }
+            /* If hostkey is released without pressing other keys, we should execute the
+             * shortcut key which is the same as hostkey. Be default, this is grab/ungrab
+             * keyboard */
         }
-        else if (priv->hostkey_activated)
+        else if (cnnhld->hostkey_activated)
         {
             /* Trap all key releases when hostkey is pressed */
             return TRUE;
         }
+        else
+        {
+            return FALSE;
+        }
+    }
+    else if (remmina_pref.hostkey && keyval == remmina_pref.hostkey)
+    {
+        cnnhld->hostkey_activated = TRUE;
+        cnnhld->hostkey_used = FALSE;
+        return TRUE;
+    }
+    else if (!cnnhld->hostkey_activated)
+    {
         return FALSE;
     }
 
-    if (remmina_pref.hostkey && keyval == remmina_pref.hostkey)
-    {
-        priv->hostkey_activated = TRUE;
-        return TRUE;
-    }
-
-    if (!priv->hostkey_activated) return FALSE;
-
+    cnnhld->hostkey_used = TRUE;
     keyval = gdk_keyval_to_lower (keyval);
     if (keyval == remmina_pref.shortcutkey_fullscreen)
     {
@@ -2110,40 +2137,48 @@ remmina_connection_window_hostkey_func (RemminaProtocolWidget *gp, guint keyval,
             default:
                 break;
         }
-    } else if (keyval == remmina_pref.shortcutkey_autofit)
+    }
+    else if (keyval == remmina_pref.shortcutkey_autofit)
     {
         if (priv->toolitem_autofit && GTK_WIDGET_IS_SENSITIVE (priv->toolitem_autofit))
         {
             remmina_connection_holder_toolbar_autofit (GTK_WIDGET (gp), cnnhld);
         }
-    } else if (keyval == remmina_pref.shortcutkey_nexttab)
+    }
+    else if (keyval == remmina_pref.shortcutkey_nexttab)
     {
         i = gtk_notebook_get_current_page (GTK_NOTEBOOK (priv->notebook)) + 1;
         if (i >= gtk_notebook_get_n_pages (GTK_NOTEBOOK (priv->notebook))) i = 0;
         gtk_notebook_set_current_page (GTK_NOTEBOOK (priv->notebook), i);
-    } else if (keyval == remmina_pref.shortcutkey_prevtab)
+    }
+    else if (keyval == remmina_pref.shortcutkey_prevtab)
     {
         i = gtk_notebook_get_current_page (GTK_NOTEBOOK (priv->notebook)) - 1;
         if (i < 0) i = gtk_notebook_get_n_pages (GTK_NOTEBOOK (priv->notebook)) - 1;
         gtk_notebook_set_current_page (GTK_NOTEBOOK (priv->notebook), i);
-    } else if (keyval == remmina_pref.shortcutkey_scale)
+    }
+    else if (keyval == remmina_pref.shortcutkey_scale)
     {
         if (GTK_WIDGET_IS_SENSITIVE (priv->toolitem_scale))
         {
             gtk_toggle_tool_button_set_active (GTK_TOGGLE_TOOL_BUTTON (priv->toolitem_scale),
                 !gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (priv->toolitem_scale)));
         }
-    } else if (keyval == remmina_pref.shortcutkey_grab)
+    }
+    else if (keyval == remmina_pref.shortcutkey_grab)
     {
         gtk_toggle_tool_button_set_active (GTK_TOGGLE_TOOL_BUTTON (priv->toolitem_grab),
             !gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (priv->toolitem_grab)));
-    } else if (keyval == remmina_pref.shortcutkey_minimize)
+    }
+    else if (keyval == remmina_pref.shortcutkey_minimize)
     {
         remmina_connection_holder_toolbar_minimize (GTK_WIDGET (gp), cnnhld);
-    } else if (keyval == remmina_pref.shortcutkey_disconnect)
+    }
+    else if (keyval == remmina_pref.shortcutkey_disconnect)
     {
         remmina_connection_holder_disconnect (cnnhld);
-    } else if (keyval == remmina_pref.shortcutkey_toolbar)
+    }
+    else if (keyval == remmina_pref.shortcutkey_toolbar)
     {
         if (priv->view_mode == SCROLLED_WINDOW_MODE)
         {
