@@ -101,6 +101,7 @@ typedef struct _RemminaPref
     gint main_sort_column_id;
     gint main_sort_order;
     gchar *expanded_group;
+    gboolean toolbar_pin_down;
 
     /* Crypto */
     gchar *secret;

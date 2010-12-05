@@ -5,7 +5,9 @@ appicon16actions_DATA = \
     16x16/actions/remmina-fit-window.png \
     16x16/actions/remmina-scale.png \
     16x16/actions/remmina-fullscreen.png \
-    16x16/actions/remmina-switch-page.png
+    16x16/actions/remmina-switch-page.png \
+    16x16/actions/remmina-pin-up.png \
+    16x16/actions/remmina-pin-down.png
 
 appicon16emblemsdir = ${pkgdatadir}/icons/hicolor/16x16/emblems
 appicon16emblems_DATA = \
