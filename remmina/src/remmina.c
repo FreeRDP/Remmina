@@ -27,15 +27,13 @@
 #include "remminapublic.h"
 #include "remminamain.h"
 #include "remminafilemanager.h"
-#include "remminafileeditor.h"
-#include "remminaconnectionwindow.h"
 #include "remminapref.h"
-#include "remminaprefdialog.h"
 #include "remminawidgetpool.h"
-#include "remminaabout.h"
 #include "remminapluginmanager.h"
 #include "remminasftpplugin.h"
 #include "remminasshplugin.h"
+#include "remminaexec.h"
+#include "remminaicon.h"
 
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
@@ -51,18 +49,6 @@ GCRY_THREAD_OPTION_PTHREAD_IMPL;
 #ifdef HAVE_LIBUNIQUE
 #include <unique/unique.h>
 #endif
-
-enum
-{
-    COMMAND_0,
-    REMMINA_COMMAND_MAIN,
-    REMMINA_COMMAND_PREF,
-    REMMINA_COMMAND_NEW,
-    REMMINA_COMMAND_CONNECT,
-    REMMINA_COMMAND_EDIT,
-    REMMINA_COMMAND_ABOUT,
-    REMMINA_COMMAND_PLUGIN
-};
 
 static gint
 remmina_parse_command (int argc, char* argv[], gchar **data)
@@ -145,84 +131,6 @@ remmina_parse_command (int argc, char* argv[], gchar **data)
         break;
     }
     return command;
-}
-
-static void
-remmina_exec_command (gint command, const gchar *data)
-{
-    GtkWidget *widget;
-    gchar *s1, *s2;
-    RemminaEntryPlugin *plugin;
-
-    switch (command)
-    {
-    case REMMINA_COMMAND_MAIN:
-        widget = remmina_widget_pool_find (REMMINA_TYPE_MAIN, NULL);
-        if (widget)
-        {
-            gtk_window_present (GTK_WINDOW (widget));
-        }
-        else
-        {
-            widget = remmina_main_new ();
-            gtk_widget_show (widget);
-        }
-        break;
-    case REMMINA_COMMAND_PREF:
-        widget = remmina_widget_pool_find (REMMINA_TYPE_PREF_DIALOG, NULL);
-        if (widget)
-        {
-            gtk_window_present (GTK_WINDOW (widget));
-        }
-        else
-        {
-            widget = remmina_pref_dialog_new (atoi (data));
-            gtk_widget_show (widget);
-        }
-        break;
-    case REMMINA_COMMAND_NEW:
-        s1 = (data ? strchr (data, ',') : NULL);
-        if (s1)
-        {
-            s1 = g_strdup (data);
-            s2 = strchr (s1, ',');
-            *s2++ = '\0';
-            widget = remmina_file_editor_new_full (s2, s1);
-            g_free (s1);
-        }
-        else
-        {
-            widget = remmina_file_editor_new_full (NULL, data);
-        }
-        gtk_widget_show (widget);
-        break;
-    case REMMINA_COMMAND_CONNECT:
-        remmina_connection_window_open_from_filename (data);
-        break;
-    case REMMINA_COMMAND_EDIT:
-        widget = remmina_file_editor_new_from_filename (data);
-        if (widget) gtk_widget_show (widget);
-        break;
-    case REMMINA_COMMAND_ABOUT:
-        remmina_about_open (NULL);
-        break;
-    case REMMINA_COMMAND_PLUGIN:
-        plugin = (RemminaEntryPlugin *) remmina_plugin_manager_get_plugin (REMMINA_PLUGIN_TYPE_ENTRY, data);
-        if (plugin)
-        {
-            plugin->entry_func ();
-        }
-        else
-        {
-            widget = gtk_message_dialog_new (NULL,
-                GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-                _("Plugin %s is not registered."), data);
-            g_signal_connect (G_OBJECT (widget), "response", G_CALLBACK (gtk_widget_destroy), NULL);
-            gtk_widget_show (widget);
-            remmina_widget_pool_register (widget);
-        }
-        break;
-    }
 }
 
 #ifdef HAVE_LIBUNIQUE
@@ -316,6 +224,7 @@ main (int argc, char* argv[])
     remmina_widget_pool_init ();
     remmina_sftp_plugin_register ();
     remmina_ssh_plugin_register ();
+    remmina_icon_create ();
 
     g_set_application_name ("Remmina");
     gtk_window_set_default_icon_name ("remmina");

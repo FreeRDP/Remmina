@@ -1130,7 +1130,7 @@ remmina_main_init (RemminaMain *remminamain)
     g_signal_connect (G_OBJECT (remminamain), "delete-event", G_CALLBACK (remmina_main_on_delete_event), NULL);
     g_signal_connect (G_OBJECT (remminamain), "destroy", G_CALLBACK (remmina_main_destroy), NULL);
     gtk_container_set_border_width (GTK_CONTAINER (remminamain), 0);
-    gtk_window_set_title (GTK_WINDOW (remminamain), _("Remote Desktop Client"));
+    gtk_window_set_title (GTK_WINDOW (remminamain), _("Remmina Remote Desktop Client"));
     gtk_window_set_default_size (GTK_WINDOW (remminamain), remmina_pref.main_width, remmina_pref.main_height);
     gtk_window_set_position (GTK_WINDOW (remminamain), GTK_WIN_POS_CENTER);
     if (remmina_pref.main_maximize)
