@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2010 Vic Lee 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,18 +18,14 @@
  * Boston, MA 02111-1307, USA.
  */
  
-#ifndef __REMMINAWIDGETPOOL_H__
-#define __REMMINAWIDGETPOOL_H__
+#ifndef __REMMINAICON_H__
+#define __REMMINAICON_H__
 
 G_BEGIN_DECLS
 
-void remmina_widget_pool_init (void);
-void remmina_widget_pool_register (GtkWidget *widget);
-GtkWidget* remmina_widget_pool_find (GType type, const gchar *tag);
-GtkWidget* remmina_widget_pool_find_by_window (GType type, GdkWindow *window);
-void remmina_widget_pool_hold (gboolean hold);
+void remmina_icon_create (void);
 
 G_END_DECLS
 
-#endif  /* __REMMINAWIDGETPOOL_H__  */
+#endif  /* __REMMINAICON_H__  */
 

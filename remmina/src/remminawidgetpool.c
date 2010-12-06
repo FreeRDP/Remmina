@@ -26,10 +26,12 @@ static GPtrArray *remmina_widget_pool = NULL;
 
 static guint remmina_widget_pool_try_quit_handler = 0;
 
+static gboolean remmina_widget_pool_on_hold = FALSE;
+
 static gboolean
 remmina_widget_pool_try_quit (gpointer data)
 {
-    if (remmina_widget_pool->len == 0)
+    if (remmina_widget_pool->len == 0 && !remmina_widget_pool_on_hold)
     {
         gtk_main_quit ();
     }
@@ -114,5 +116,15 @@ remmina_widget_pool_find_by_window (GType type, GdkWindow *window)
         }
     }
     return NULL;
+}
+
+void
+remmina_widget_pool_hold (gboolean hold)
+{
+    remmina_widget_pool_on_hold = hold;
+    if (!hold && remmina_widget_pool_try_quit_handler == 0)
+    {
+        remmina_widget_pool_try_quit_handler = g_timeout_add (10000, remmina_widget_pool_try_quit, NULL);
+    }
 }
 
