@@ -33,6 +33,7 @@ typedef struct _RemminaIcon
 {
     GtkStatusIcon *icon;
     RemminaAvahi *avahi;
+    guint32 popup_time;
 } RemminaIcon;
 
 static RemminaIcon remmina_icon = { 0 };
@@ -184,6 +185,15 @@ remmina_icon_on_edit_item (RemminaAppletMenu *menu, RemminaAppletMenuItem *menui
 }
 
 static void
+remmina_icon_popdown_menu (GtkWidget *widget, gpointer data)
+{
+    if (gtk_get_current_event_time () - remmina_icon.popup_time <= 500)
+    {
+        remmina_exec_command (REMMINA_COMMAND_MAIN, NULL);
+    }
+}
+
+static void
 remmina_icon_on_activate (GtkStatusIcon *icon, gpointer user_data)
 {
     GtkWidget *popup_menu;
@@ -195,7 +205,7 @@ remmina_icon_on_activate (GtkStatusIcon *icon, gpointer user_data)
 
     new_ontop = remmina_pref.applet_new_ontop;
 
-//    popup_time = gtk_get_current_event_time ();
+    remmina_icon.popup_time = gtk_get_current_event_time ();
     popup_menu = remmina_applet_menu_new (remmina_pref.applet_hide_count);
 
     /* Iterate all discovered services from Avahi */
@@ -242,7 +252,7 @@ remmina_icon_on_activate (GtkStatusIcon *icon, gpointer user_data)
     button = 0;
     event_time = gtk_get_current_event_time ();
 
-    //g_signal_connect (G_OBJECT (popup_menu), "deactivate", G_CALLBACK (remmina_xfce_plugin_popdown_menu), NULL);
+    g_signal_connect (G_OBJECT (popup_menu), "deactivate", G_CALLBACK (remmina_icon_popdown_menu), NULL);
 
     g_signal_connect (G_OBJECT (popup_menu), "launch-item",
         G_CALLBACK (remmina_icon_on_launch_item), NULL);
