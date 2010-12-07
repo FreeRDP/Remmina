@@ -34,6 +34,7 @@ typedef struct _RemminaIcon
     GtkStatusIcon *icon;
     RemminaAvahi *avahi;
     guint32 popup_time;
+    gchar *autostart_file;
 } RemminaIcon;
 
 static RemminaIcon remmina_icon = { 0 };
@@ -50,6 +51,11 @@ remmina_icon_destroy (void)
     {
         remmina_avahi_free (remmina_icon.avahi);
         remmina_icon.avahi = NULL;
+    }
+    if (remmina_icon.autostart_file)
+    {
+        g_free (remmina_icon.autostart_file);
+        remmina_icon.autostart_file = NULL;
     }
 }
 
@@ -263,6 +269,38 @@ remmina_icon_on_activate (GtkStatusIcon *icon, gpointer user_data)
         gtk_status_icon_position_menu, remmina_icon.icon, button, event_time);
 }
 
+static void
+remmina_icon_save_autostart_file (GKeyFile *gkeyfile)
+{
+    gchar *content;
+    gsize length;
+
+    content = g_key_file_to_data (gkeyfile, &length, NULL);
+    g_file_set_contents (remmina_icon.autostart_file, content, length, NULL);
+    g_free (content);
+}
+
+static void
+remmina_icon_create_autostart_file (void)
+{
+    GKeyFile *gkeyfile;
+
+    if (!g_file_test (remmina_icon.autostart_file, G_FILE_TEST_EXISTS))
+    {
+        gkeyfile = g_key_file_new ();
+        g_key_file_set_string (gkeyfile, "Desktop Entry", "Version", "1.0");
+        g_key_file_set_string (gkeyfile, "Desktop Entry", "Name", _("Remmina Applet"));
+        g_key_file_set_string (gkeyfile, "Desktop Entry", "Comment", _("Connect to remote desktops through the applet menu"));
+        g_key_file_set_string (gkeyfile, "Desktop Entry", "Icon", "remmina");
+        g_key_file_set_string (gkeyfile, "Desktop Entry", "Exec", "remmina -i");
+        g_key_file_set_boolean (gkeyfile, "Desktop Entry", "Terminal", FALSE);
+        g_key_file_set_string (gkeyfile, "Desktop Entry", "Type", "Application");
+        g_key_file_set_boolean (gkeyfile, "Desktop Entry", "Hidden", TRUE);
+        remmina_icon_save_autostart_file (gkeyfile);
+        g_key_file_free (gkeyfile);
+    }
+}
+
 void
 remmina_icon_init (void)
 {
@@ -297,5 +335,40 @@ remmina_icon_init (void)
             remmina_avahi_stop (remmina_icon.avahi);
         }
     }
+    if (!remmina_icon.autostart_file)
+    {
+        remmina_icon.autostart_file = g_strdup_printf ("%s/.config/autostart/remmina-applet.desktop", g_get_home_dir ());
+        remmina_icon_create_autostart_file ();
+    }
+}
+
+gboolean
+remmina_icon_is_autostart (void)
+{
+    GKeyFile *gkeyfile;
+    gboolean b;
+
+    gkeyfile = g_key_file_new ();
+    g_key_file_load_from_file (gkeyfile, remmina_icon.autostart_file, G_KEY_FILE_NONE, NULL);
+    b = !g_key_file_get_boolean (gkeyfile, "Desktop Entry", "Hidden", NULL);
+    g_key_file_free (gkeyfile);
+    return b;
+}
+
+void
+remmina_icon_set_autostart (gboolean autostart)
+{
+    GKeyFile *gkeyfile;
+    gboolean b;
+
+    gkeyfile = g_key_file_new ();
+    g_key_file_load_from_file (gkeyfile, remmina_icon.autostart_file, G_KEY_FILE_NONE, NULL);
+    b = !g_key_file_get_boolean (gkeyfile, "Desktop Entry", "Hidden", NULL);
+    if (b != autostart)
+    {
+        g_key_file_set_boolean (gkeyfile, "Desktop Entry", "Hidden", !autostart);
+        remmina_icon_save_autostart_file (gkeyfile);
+    }
+    g_key_file_free (gkeyfile);
 }
 

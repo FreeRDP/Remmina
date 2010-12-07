@@ -24,6 +24,8 @@
 G_BEGIN_DECLS
 
 void remmina_icon_init (void);
+gboolean remmina_icon_is_autostart (void);
+void remmina_icon_set_autostart (gboolean autostart);
 
 G_END_DECLS
 
