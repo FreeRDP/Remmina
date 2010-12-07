@@ -84,6 +84,7 @@ struct _RemminaPrefDialogPriv
     GtkWidget *applet_new_ontop_check;
     GtkWidget *applet_hide_count_check;
     GtkWidget *disable_tray_icon_check;
+    GtkWidget *autostart_tray_icon_check;
     GtkWidget *hostkey_chooser;
     GtkWidget *shortcutkey_fullscreen_chooser;
     GtkWidget *shortcutkey_autofit_chooser;
@@ -214,6 +215,15 @@ remmina_pref_dialog_destroy (GtkWidget *widget, gpointer data)
         remmina_pref.disable_tray_icon = b;
         remmina_icon_init ();
     }
+    if (b)
+    {
+        b = FALSE;
+    }
+    else
+    {
+        b = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->autostart_tray_icon_check));
+    }
+    remmina_icon_set_autostart (b);
 
     remmina_pref.hostkey = REMMINA_KEY_CHOOSER (priv->hostkey_chooser)->keyval;
     remmina_pref.shortcutkey_fullscreen = REMMINA_KEY_CHOOSER (priv->shortcutkey_fullscreen_chooser)->keyval;
@@ -269,6 +279,13 @@ static void
 remmina_pref_dialog_vte_font_on_toggled (GtkWidget *widget, RemminaPrefDialog *dialog)
 {
     gtk_widget_set_sensitive (dialog->priv->vte_font_button,
+        !gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)));
+}
+
+static void
+remmina_pref_dialog_disable_tray_icon_on_toggled (GtkWidget *widget, RemminaPrefDialog *dialog)
+{
+    gtk_widget_set_sensitive (dialog->priv->autostart_tray_icon_check,
         !gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)));
 }
 
@@ -459,7 +476,7 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_widget_show (vbox);
     gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, tablabel);
 
-    table = gtk_table_new (3, 2, FALSE);
+    table = gtk_table_new (4, 2, FALSE);
     gtk_widget_show (table);
     gtk_table_set_row_spacings (GTK_TABLE (table), 4);
     gtk_table_set_col_spacings (GTK_TABLE (table), 4);
@@ -483,6 +500,16 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 2, 2, 3);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), remmina_pref.disable_tray_icon);
     priv->disable_tray_icon_check = widget;
+
+    widget = gtk_check_button_new_with_label (_("Start tray icon automatically"));
+    gtk_widget_show (widget);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 2, 3, 4);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), remmina_icon_is_autostart ());
+    gtk_widget_set_sensitive (widget, !remmina_pref.disable_tray_icon);
+    priv->autostart_tray_icon_check = widget;
+
+    g_signal_connect (G_OBJECT (priv->disable_tray_icon_check), "toggled",
+        G_CALLBACK (remmina_pref_dialog_disable_tray_icon_on_toggled), dialog);
 
     /* Keyboard tab */
     tablabel = gtk_label_new (_("Keyboard"));
