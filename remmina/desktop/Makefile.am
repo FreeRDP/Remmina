@@ -1,9 +1,5 @@
 ## Process this file with automake to produce Makefile.in
 
-autostartdir = $(sysconfdir)/xdg/autostart
-autostart_in_files = remmina-applet.desktop.in
-autostart_DATA = $(autostart_in_files:.desktop.in=.desktop)
-
 desktopdir = $(datadir)/applications
 desktop_in_files = remmina.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
@@ -34,7 +30,6 @@ update-icon-cache:
 	fi
 
 EXTRA_DIST = \
-    $(autostart_in_files) \
     $(desktop_in_files) \
     $(icon16_DATA) \
     $(icon22_DATA) \
@@ -43,6 +38,5 @@ EXTRA_DIST = \
     $(icon48_DATA) \
     $(iconsvg_DATA)
 CLEANFILES = \
-    $(autostart_DATA) \
     $(desktop_DATA)
 
