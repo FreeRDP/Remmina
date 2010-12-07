@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee 
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,14 +18,28 @@
  * Boston, MA 02111-1307, USA.
  */
  
-#ifndef __REMMINAICON_H__
-#define __REMMINAICON_H__
+
+#ifndef __REMMINAAVAHI_H__
+#define __REMMINAAVAHI_H__
 
 G_BEGIN_DECLS
 
-void remmina_icon_init (void);
+typedef struct _RemminaAvahiPriv RemminaAvahiPriv;
+
+typedef struct _RemminaAvahi
+{
+    GHashTable *discovered_services;
+    gboolean started;
+
+    RemminaAvahiPriv *priv;
+} RemminaAvahi;
+
+RemminaAvahi* remmina_avahi_new (void);
+void remmina_avahi_start (RemminaAvahi* ga);
+void remmina_avahi_stop (RemminaAvahi* ga);
+void remmina_avahi_free (RemminaAvahi* ga);
 
 G_END_DECLS
 
-#endif  /* __REMMINAICON_H__  */
+#endif  /* __REMMINAAVAHI_H__  */
 

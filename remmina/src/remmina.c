@@ -224,7 +224,7 @@ main (int argc, char* argv[])
     remmina_widget_pool_init ();
     remmina_sftp_plugin_register ();
     remmina_ssh_plugin_register ();
-    remmina_icon_create ();
+    remmina_icon_init ();
 
     g_set_application_name ("Remmina");
     gtk_window_set_default_icon_name ("remmina");
