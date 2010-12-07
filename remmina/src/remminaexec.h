@@ -25,7 +25,7 @@ G_BEGIN_DECLS
 
 typedef enum
 {
-    COMMAND_0                   = 0,
+    REMMINA_COMMAND_NONE        = 0,
     REMMINA_COMMAND_MAIN        = 1,
     REMMINA_COMMAND_PREF        = 2,
     REMMINA_COMMAND_NEW         = 3,

@@ -60,13 +60,14 @@ remmina_parse_command (int argc, char* argv[], gchar **data)
     gchar *server = NULL;
     gchar *protocol = NULL;
 
-    while ((c = getopt (argc, argv, "ac:e:np:qs:t:x:")) != -1)
+    while ((c = getopt (argc, argv, "ac:e:inp:qs:t:x:")) != -1)
     {
         switch (c)
         {
         case 'a':
         case 'c':
         case 'e':
+        case 'i':
         case 'n':
         case 'p':
         case 'q':
@@ -124,6 +125,10 @@ remmina_parse_command (int argc, char* argv[], gchar **data)
     case 'x':
         command = REMMINA_COMMAND_PLUGIN;
         *data = g_strdup (opt);
+        break;
+    case 'i':
+        command = REMMINA_COMMAND_NONE;
+        *data = NULL;
         break;
     default:
         command = REMMINA_COMMAND_MAIN;
