@@ -68,10 +68,14 @@ AC_ARG_ENABLE(avahi,
 )
 if test "x$avahi_support" != "xno"; then
     PKG_CHECK_MODULES(AVAHI_UI,
-        avahi-ui >= 0.6.22, [
+        [
+            avahi-ui >= 0.6.22
+            avahi-client >= 0.6.22
+        ], [
             avahi_support="yes"
-            remmina_pkgs="$remmina_pkgs avahi-ui"
+            remmina_pkgs="$remmina_pkgs avahi-ui avahi-client"
             AC_DEFINE([HAVE_LIBAVAHI_UI], [1], [Define to 1 if you have the 'avahi-ui' library (-lavahi-ui).])
+            AC_DEFINE([HAVE_LIBAVAHI_CLIENT], [1], [Define to 1 if you have the 'avahi-client' library (-lavahi-client).])
         ], avahi_support="no. libavahi-ui-dev required."
     )
 else
