@@ -62,7 +62,7 @@ remmina_icon_main (void)
 static void
 remmina_icon_preferences (void)
 {
-    remmina_exec_command (REMMINA_COMMAND_PREF, "0");
+    remmina_exec_command (REMMINA_COMMAND_PREF, "2");
 }
 
 static void
@@ -266,7 +266,7 @@ remmina_icon_on_activate (GtkStatusIcon *icon, gpointer user_data)
 void
 remmina_icon_init (void)
 {
-    if (!remmina_icon.icon)
+    if (!remmina_icon.icon && !remmina_pref.disable_tray_icon)
     {
         remmina_icon.icon = gtk_status_icon_new_from_icon_name ("remmina");
         remmina_widget_pool_hold (TRUE);
@@ -277,9 +277,10 @@ remmina_icon_init (void)
         g_signal_connect (G_OBJECT (remmina_icon.icon), "popup-menu", G_CALLBACK (remmina_icon_on_popup_menu), NULL);
         g_signal_connect (G_OBJECT (remmina_icon.icon), "activate", G_CALLBACK (remmina_icon_on_activate), NULL);
     }
-    else
+    else if (remmina_icon.icon)
     {
-        gtk_status_icon_set_visible (remmina_icon.icon, TRUE);
+        gtk_status_icon_set_visible (remmina_icon.icon, !remmina_pref.disable_tray_icon);
+        remmina_widget_pool_hold (!remmina_pref.disable_tray_icon);
     }
     if (!remmina_icon.avahi)
     {

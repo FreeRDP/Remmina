@@ -26,6 +26,7 @@
 #include "remminawidgetpool.h"
 #include "remminakeychooser.h"
 #include "remminapluginmanager.h"
+#include "remminaicon.h"
 #include "remminapref.h"
 #include "remminaprefdialog.h"
 
@@ -82,6 +83,7 @@ struct _RemminaPrefDialogPriv
     GtkWidget *resolutions_list;
     GtkWidget *applet_new_ontop_check;
     GtkWidget *applet_hide_count_check;
+    GtkWidget *disable_tray_icon_check;
     GtkWidget *hostkey_chooser;
     GtkWidget *shortcutkey_fullscreen_chooser;
     GtkWidget *shortcutkey_autofit_chooser;
@@ -170,6 +172,7 @@ static void
 remmina_pref_dialog_destroy (GtkWidget *widget, gpointer data)
 {
     gchar *s;
+    gboolean b;
 
     RemminaPrefDialogPriv *priv = REMMINA_PREF_DIALOG (widget)->priv;
 
@@ -205,6 +208,12 @@ remmina_pref_dialog_destroy (GtkWidget *widget, gpointer data)
 
     remmina_pref.applet_new_ontop = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->applet_new_ontop_check));
     remmina_pref.applet_hide_count = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->applet_hide_count_check));
+    b = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->disable_tray_icon_check));
+    if (remmina_pref.disable_tray_icon != b)
+    {
+        remmina_pref.disable_tray_icon = b;
+        remmina_icon_init ();
+    }
 
     remmina_pref.hostkey = REMMINA_KEY_CHOOSER (priv->hostkey_chooser)->keyval;
     remmina_pref.shortcutkey_fullscreen = REMMINA_KEY_CHOOSER (priv->shortcutkey_fullscreen_chooser)->keyval;
@@ -450,7 +459,7 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_widget_show (vbox);
     gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, tablabel);
 
-    table = gtk_table_new (2, 2, FALSE);
+    table = gtk_table_new (3, 2, FALSE);
     gtk_widget_show (table);
     gtk_table_set_row_spacings (GTK_TABLE (table), 4);
     gtk_table_set_col_spacings (GTK_TABLE (table), 4);
@@ -468,6 +477,12 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 2, 1, 2);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), remmina_pref.applet_hide_count);
     priv->applet_hide_count_check = widget;
+
+    widget = gtk_check_button_new_with_label (_("Disable tray icon"));
+    gtk_widget_show (widget);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 2, 2, 3);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), remmina_pref.disable_tray_icon);
+    priv->disable_tray_icon_check = widget;
 
     /* Keyboard tab */
     tablabel = gtk_label_new (_("Keyboard"));
