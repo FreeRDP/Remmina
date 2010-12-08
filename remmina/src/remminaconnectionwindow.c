@@ -2085,6 +2085,8 @@ remmina_connection_holder_create_fullscreen (RemminaConnectionHolder *cnnhld, Re
     gtk_widget_realize (window);
     cnnhld->cnnwin = REMMINA_CONNECTION_WINDOW (window);
 
+    if (!view_mode) view_mode = VIEWPORT_FULLSCREEN_MODE;
+
     if (view_mode == VIEWPORT_FULLSCREEN_MODE)
     {
         gdk_color_parse ("black", &color);
