@@ -46,6 +46,7 @@ remmina_exec_command (RemminaCommandType command, const gchar *data)
         if (widget)
         {
             gtk_window_present (GTK_WINDOW (widget));
+            gtk_window_deiconify (GTK_WINDOW (widget));
         }
         else
         {

@@ -1697,6 +1697,18 @@ remmina_connection_window_init (RemminaConnectionWindow *cnnwin)
     remmina_widget_pool_register (GTK_WIDGET (cnnwin));
 }
 
+static gboolean
+remmina_connection_window_state_event (GtkWidget *widget, GdkEventWindowState *event, gpointer user_data)
+{
+    if ((event->changed_mask & GDK_WINDOW_STATE_ICONIFIED) != 0 &&
+        (event->new_window_state & GDK_WINDOW_STATE_ICONIFIED) != 0)
+    {
+        gtk_widget_hide (widget);
+        return TRUE;
+    }
+    return FALSE;
+}
+
 static GtkWidget*
 remmina_connection_window_new_from_holder (RemminaConnectionHolder *cnnhld)
 {
@@ -1709,6 +1721,8 @@ remmina_connection_window_new_from_holder (RemminaConnectionHolder *cnnhld)
         G_CALLBACK (remmina_connection_window_delete_event), cnnhld);
     g_signal_connect (G_OBJECT (cnnwin), "destroy",
         G_CALLBACK (remmina_connection_window_destroy), cnnhld);
+    g_signal_connect (G_OBJECT (cnnwin), "window-state-event",
+        G_CALLBACK (remmina_connection_window_state_event), cnnhld);
 
     g_signal_connect (G_OBJECT (cnnwin), "focus-in-event",
         G_CALLBACK (remmina_connection_window_focus_in), cnnhld);

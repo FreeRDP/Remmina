@@ -85,6 +85,7 @@ struct _RemminaPrefDialogPriv
     GtkWidget *applet_hide_count_check;
     GtkWidget *disable_tray_icon_check;
     GtkWidget *autostart_tray_icon_check;
+    GtkWidget *minimize_to_tray_check;
     GtkWidget *hostkey_chooser;
     GtkWidget *shortcutkey_fullscreen_chooser;
     GtkWidget *shortcutkey_autofit_chooser;
@@ -217,6 +218,14 @@ remmina_pref_dialog_destroy (GtkWidget *widget, gpointer data)
     }
     if (b)
     {
+        remmina_pref.minimize_to_tray = FALSE;
+    }
+    else
+    {
+        remmina_pref.minimize_to_tray = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->minimize_to_tray_check));
+    }
+    if (b)
+    {
         b = FALSE;
     }
     else
@@ -285,8 +294,11 @@ remmina_pref_dialog_vte_font_on_toggled (GtkWidget *widget, RemminaPrefDialog *d
 static void
 remmina_pref_dialog_disable_tray_icon_on_toggled (GtkWidget *widget, RemminaPrefDialog *dialog)
 {
-    gtk_widget_set_sensitive (dialog->priv->autostart_tray_icon_check,
-        !gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)));
+    gboolean b;
+
+    b = !gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget));
+    gtk_widget_set_sensitive (dialog->priv->autostart_tray_icon_check, b);
+    gtk_widget_set_sensitive (dialog->priv->minimize_to_tray_check, b);
 }
 
 static void
@@ -476,7 +488,7 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_widget_show (vbox);
     gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, tablabel);
 
-    table = gtk_table_new (4, 2, FALSE);
+    table = gtk_table_new (5, 2, FALSE);
     gtk_widget_show (table);
     gtk_table_set_row_spacings (GTK_TABLE (table), 4);
     gtk_table_set_col_spacings (GTK_TABLE (table), 4);
@@ -507,6 +519,13 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), remmina_icon_is_autostart ());
     gtk_widget_set_sensitive (widget, !remmina_pref.disable_tray_icon);
     priv->autostart_tray_icon_check = widget;
+
+    widget = gtk_check_button_new_with_label (_("Minimize windows to tray"));
+    gtk_widget_show (widget);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 2, 4, 5);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), remmina_pref.minimize_to_tray);
+    gtk_widget_set_sensitive (widget, !remmina_pref.disable_tray_icon);
+    priv->minimize_to_tray_check = widget;
 
     g_signal_connect (G_OBJECT (priv->disable_tray_icon_check), "toggled",
         G_CALLBACK (remmina_pref_dialog_disable_tray_icon_on_toggled), dialog);

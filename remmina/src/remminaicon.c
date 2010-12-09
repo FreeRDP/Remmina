@@ -27,6 +27,7 @@
 #include "remminaavahi.h"
 #include "remminaappletmenuitem.h"
 #include "remminaappletmenu.h"
+#include "remminaconnectionwindow.h"
 #include "remminaicon.h"
 
 typedef struct _RemminaIcon
@@ -200,6 +201,41 @@ remmina_icon_popdown_menu (GtkWidget *widget, gpointer data)
 }
 
 static void
+remmina_icon_on_activate_window (GtkMenuItem *menuitem, GtkWidget *widget)
+{
+    if (GTK_IS_WINDOW (widget))
+    {
+        gtk_window_present (GTK_WINDOW (widget));
+        gtk_window_deiconify (GTK_WINDOW (widget));
+    }
+}
+
+static gboolean
+remmina_icon_foreach_window (GtkWidget *widget, gpointer data)
+{
+    GtkWidget *popup_menu = GTK_WIDGET (data);
+    GtkWidget *menuitem;
+    GdkScreen *screen;
+    gint screen_number;
+
+    if (G_TYPE_CHECK_INSTANCE_TYPE (widget, REMMINA_TYPE_CONNECTION_WINDOW))
+    {
+        screen = gdk_screen_get_default ();
+        screen_number = gdk_screen_get_number (screen);
+        if (screen_number == gdk_screen_get_number (gtk_window_get_screen (GTK_WINDOW (widget))))
+        {
+            menuitem = gtk_menu_item_new_with_label (gtk_window_get_title (GTK_WINDOW (widget)));
+            gtk_widget_show (menuitem);
+            gtk_menu_shell_prepend (GTK_MENU_SHELL (popup_menu), menuitem);
+            g_signal_connect (G_OBJECT (menuitem), "activate",
+                G_CALLBACK (remmina_icon_on_activate_window), widget);
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+static void
 remmina_icon_on_activate (GtkStatusIcon *icon, gpointer user_data)
 {
     GtkWidget *popup_menu;
@@ -208,6 +244,7 @@ remmina_icon_on_activate (GtkStatusIcon *icon, gpointer user_data)
     gint button, event_time;
     GHashTableIter iter;
     gchar *tmp;
+    gint n;
 
     new_ontop = remmina_pref.applet_new_ontop;
 
@@ -253,6 +290,19 @@ remmina_icon_on_activate (GtkStatusIcon *icon, gpointer user_data)
     else
     {
         gtk_menu_shell_append (GTK_MENU_SHELL (popup_menu), menuitem);
+    }
+
+    /* Existing window */
+    if (remmina_pref.minimize_to_tray)
+    {
+        n = remmina_widget_pool_foreach (remmina_icon_foreach_window, popup_menu);
+        if (n > 0)
+        {
+            /* Separator */
+            menuitem = gtk_separator_menu_item_new ();
+            gtk_widget_show (menuitem);
+            gtk_menu_shell_insert (GTK_MENU_SHELL (popup_menu), menuitem, n);
+        }
     }
 
     button = 0;
