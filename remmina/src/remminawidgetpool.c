@@ -128,3 +128,20 @@ remmina_widget_pool_hold (gboolean hold)
     }
 }
 
+gint
+remmina_widget_pool_foreach (RemminaWidgetPoolForEachFunc callback, gpointer data)
+{
+    GtkWidget *widget;
+    gint i;
+    gint n = 0;
+
+    if (remmina_widget_pool == NULL) return 0;
+
+    for (i = 0; i < remmina_widget_pool->len; i++)
+    {
+        widget = GTK_WIDGET (g_ptr_array_index (remmina_widget_pool, i));
+        if  (callback (widget, data)) n++;
+    }
+    return n;
+}
+

@@ -1107,6 +1107,18 @@ remmina_main_add_tool_plugin (gchar *name, RemminaPlugin *plugin, gpointer data)
     return FALSE;
 }
 
+static gboolean
+remmina_main_on_window_state_event (GtkWidget *widget, GdkEventWindowState *event, gpointer user_data)
+{
+    if ((event->changed_mask & GDK_WINDOW_STATE_ICONIFIED) != 0 &&
+        (event->new_window_state & GDK_WINDOW_STATE_ICONIFIED) != 0)
+    {
+        gtk_widget_hide (widget);
+        return TRUE;
+    }
+    return FALSE;
+}
+
 static void
 remmina_main_init (RemminaMain *remminamain)
 {
@@ -1129,6 +1141,7 @@ remmina_main_init (RemminaMain *remminamain)
     /* Create main window */
     g_signal_connect (G_OBJECT (remminamain), "delete-event", G_CALLBACK (remmina_main_on_delete_event), NULL);
     g_signal_connect (G_OBJECT (remminamain), "destroy", G_CALLBACK (remmina_main_destroy), NULL);
+    g_signal_connect (G_OBJECT (remminamain), "window-state-event", G_CALLBACK (remmina_main_on_window_state_event), NULL);
     gtk_container_set_border_width (GTK_CONTAINER (remminamain), 0);
     gtk_window_set_title (GTK_WINDOW (remminamain), _("Remmina Remote Desktop Client"));
     gtk_window_set_default_size (GTK_WINDOW (remminamain), remmina_pref.main_width, remmina_pref.main_height);

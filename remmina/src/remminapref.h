@@ -77,6 +77,7 @@ typedef struct _RemminaPref
     gboolean applet_hide_count;
     gboolean applet_enable_avahi;
     gboolean disable_tray_icon;
+    gboolean minimize_to_tray;
 
     guint hostkey;
     guint shortcutkey_fullscreen;
