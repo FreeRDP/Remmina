@@ -417,6 +417,9 @@ remmina_icon_set_autostart (gboolean autostart)
     if (b != autostart)
     {
         g_key_file_set_boolean (gkeyfile, "Desktop Entry", "Hidden", !autostart);
+        /* Refresh it in case translation is updated */
+        g_key_file_set_string (gkeyfile, "Desktop Entry", "Name", _("Remmina Applet"));
+        g_key_file_set_string (gkeyfile, "Desktop Entry", "Comment", _("Connect to remote desktops through the applet menu"));
         remmina_icon_save_autostart_file (gkeyfile);
     }
     g_key_file_free (gkeyfile);
