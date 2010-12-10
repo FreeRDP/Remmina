@@ -36,7 +36,7 @@ AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [The gettext package])
 
 if test "x$USE_NLS" != "xno"; then
-    ALL_LINGUAS="bg cs de el es eu fr hu id it lt nl pl pt_BR pt_PT ru tr uk zh_CN"
+    ALL_LINGUAS="bg cs da de el es eu fr hu id it kk lt nl pl pt_BR pt_PT ru sk sv th tr uk zh_CN"
     nls_support="yes"
 else
     ALL_LINGUAS=""
