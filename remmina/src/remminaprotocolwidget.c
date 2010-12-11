@@ -821,13 +821,13 @@ remmina_protocol_widget_init_authpwd (RemminaProtocolWidget *gp, RemminaAuthpwdT
     switch (authpwd_type)
     {
     case REMMINA_AUTHPWD_TYPE_PROTOCOL:
-        s = g_strdup_printf (_("%s Password"), remmina_file_get_string (remminafile, "protocol"));
+        s = g_strdup_printf (_("%s password"), remmina_file_get_string (remminafile, "protocol"));
         break;
     case REMMINA_AUTHPWD_TYPE_SSH_PWD:
-        s = g_strdup (_("SSH Password"));
+        s = g_strdup (_("SSH password"));
         break;
     case REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY:
-        s = g_strdup (_("SSH Private Key Passphrase"));
+        s = g_strdup (_("SSH private key passphrase"));
         break;
     default:
         s = g_strdup (_("Password"));
@@ -965,7 +965,7 @@ void
 remmina_protocol_widget_init_show_listen (RemminaProtocolWidget *gp, gint port)
 {
     remmina_init_dialog_set_status (REMMINA_INIT_DIALOG (gp->priv->init_dialog),
-        _("Listening on Port %i for an Incoming %s Connection..."),
+        _("Listening on port %i for an incoming %s connection..."),
         port, remmina_file_get_string (gp->priv->remmina_file, "protocol"));
 }
 

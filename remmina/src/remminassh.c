@@ -245,11 +245,11 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, gboolean threa
         {
         case SSH_AUTH_PASSWORD:
             tips = _("Authenticating %s's password to SSH server %s...");
-            keyname = _("SSH Password");
+            keyname = _("SSH password");
             break;
         case SSH_AUTH_PUBLICKEY:
             tips = _("Authenticating %s's identity to SSH server %s...");
-            keyname = _("SSH Private Key Passphrase");
+            keyname = _("SSH private key passphrase");
             break;
         default:
             return FALSE;
