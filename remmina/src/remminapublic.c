@@ -207,7 +207,7 @@ remmina_public_create_combo_map (const gpointer *key_value_list, const gchar *de
         gtk_list_store_append (store, &iter);
         gtk_list_store_set (store, &iter,
             0, key_value_list[i],
-            1, g_dgettext (domain, key_value_list[i + 1]),
+            1, key_value_list[i + 1] && ((char*)key_value_list[i + 1])[0] ? g_dgettext (domain, key_value_list[i + 1]) : "",
             -1);
         if (use_icon)
         {
