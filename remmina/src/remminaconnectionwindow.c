@@ -1172,7 +1172,7 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
     }
 
     /* Auto-Fit */
-    toolitem = gtk_tool_button_new (NULL, _("Auto-Fit Window"));
+    toolitem = gtk_tool_button_new (NULL, NULL);
     gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (toolitem), "remmina-fit-window");
     remmina_connection_holder_set_tooltip (toolitem, _("Resize the window to fit in remote resolution"),
         remmina_pref.shortcutkey_autofit, 0);
