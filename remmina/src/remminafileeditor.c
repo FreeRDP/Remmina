@@ -1212,7 +1212,11 @@ remmina_file_editor_iterate_protocol (gchar *protocol, RemminaPlugin *plugin, gp
     first = !gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter);
 
     gtk_list_store_append (store, &iter);
-    gtk_list_store_set (store, &iter, 0, protocol, 1, plugin->description, 2, ((RemminaProtocolPlugin *)plugin)->icon_name, -1);
+    gtk_list_store_set (store, &iter,
+        0, protocol,
+        1, g_dgettext (plugin->domain, plugin->description),
+        2, ((RemminaProtocolPlugin *)plugin)->icon_name,
+        -1);
 
     if (first || g_strcmp0 (protocol, remmina_file_get_string (gfe->priv->remmina_file, "protocol")) == 0)
     {
