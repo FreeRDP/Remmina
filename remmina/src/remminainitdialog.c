@@ -262,7 +262,7 @@ remmina_init_dialog_authuserpwd (RemminaInitDialog *dialog, const gchar *default
     gtk_image_set_from_stock (GTK_IMAGE (dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
 
     /* Entries */
-    widget = gtk_label_new (_("User Name"));
+    widget = gtk_label_new (_("User name"));
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_widget_show (widget);
     gtk_table_attach (GTK_TABLE (table), widget, 0, 1, 0, 1, GTK_FILL, 0, 0, 0);
@@ -286,7 +286,7 @@ remmina_init_dialog_authuserpwd (RemminaInitDialog *dialog, const gchar *default
     gtk_entry_set_visibility (GTK_ENTRY (password_entry), FALSE);
     gtk_entry_set_activates_default (GTK_ENTRY (password_entry), TRUE);
 
-    save_password_check = gtk_check_button_new_with_label (_("Save Password"));
+    save_password_check = gtk_check_button_new_with_label (_("Save password"));
     gtk_widget_show (save_password_check);
     gtk_table_attach_defaults (GTK_TABLE (table), save_password_check, 0, 2, 2, 3);
     if (allow_save)
@@ -385,10 +385,10 @@ remmina_init_dialog_authx509 (RemminaInitDialog *dialog, const gchar *cacert, co
     gtk_image_set_from_stock (GTK_IMAGE (dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
 
     /* Buttons for choosing the certificates */
-    cacert_button = remmina_init_dialog_create_file_button (GTK_TABLE (table), _("CA Certificate"), 0, cacert);
+    cacert_button = remmina_init_dialog_create_file_button (GTK_TABLE (table), _("CA certificate"), 0, cacert);
     cacrl_button = remmina_init_dialog_create_file_button (GTK_TABLE (table), _("CA CRL"), 1, cacrl);
-    clientcert_button = remmina_init_dialog_create_file_button (GTK_TABLE (table), _("Client Certificate"), 2, clientcert);
-    clientkey_button = remmina_init_dialog_create_file_button (GTK_TABLE (table), _("Client Key"), 3, clientkey);
+    clientcert_button = remmina_init_dialog_create_file_button (GTK_TABLE (table), _("Client certificate"), 2, clientcert);
+    clientkey_button = remmina_init_dialog_create_file_button (GTK_TABLE (table), _("Client key"), 3, clientkey);
 
     /* Pack it into the dialog */
     gtk_box_pack_start (GTK_BOX (dialog->content_vbox), table, TRUE, TRUE, 4);
