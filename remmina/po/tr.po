@@ -3,14 +3,16 @@
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
 #
+#: ../src/remminassh.c:162
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-15 21:51+0800\n"
+"POT-Creation-Date: 2010-12-11 23:54+0800\n"
 "PO-Revision-Date: 2010-07-17 07:31+0000\n"
 "Last-Translator: Muhammed YÜRÜRDURMAZ <myururdurmaz@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,27 +24,23 @@ msgstr ""
 msgid "Connect to remote desktops"
 msgstr "Uzak masaüstlerine bağlan"
 
-#: ../desktop/remmina.desktop.in.h:2
+#: ../desktop/remmina.desktop.in.h:2 ../src/remminamain.c:1157
+#: ../src/remminaicon.c:362 ../src/remminaicon.c:363
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina Uzak Masaüstü Bağlantı Aracı"
 
-#: ../src/remmina.c:246
-#, c-format
-msgid "Plugin %s is not registered."
-msgstr "%s eklentisi kaydedilmemiş"
-
-#: ../src/remminamain.c:376
+#: ../src/remminamain.c:503
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "Toplam %i adet"
 
-#: ../src/remminamain.c:467
+#: ../src/remminamain.c:573
 #, c-format
 msgid "Are you sure to delete '%s'"
 msgstr "'%s' elemanını silmek istediğinizden eminmisiniz ?"
 
-#: ../src/remminamain.c:635
+#: ../src/remminamain.c:741
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -51,194 +49,121 @@ msgstr ""
 "İçeri alınamıyor:\n"
 "%s"
 
-#: ../src/remminamain.c:664 ../src/remminamain.c:832
+#: ../src/remminamain.c:770 ../src/remminamain.c:937
 msgid "Import"
 msgstr "İçeri al"
 
-#: ../src/remminamain.c:702
+#: ../src/remminamain.c:808
 msgid "This protocol does not support exporting."
 msgstr "Bu protokol dışarı vermeyi desteklemiyor"
 
-#: ../src/remminamain.c:808
-msgid "_Action"
-msgstr "_Eylem"
+#: ../src/remminamain.c:919
+msgid "_Connection"
+msgstr ""
 
-#: ../src/remminamain.c:809
+#: ../src/remminamain.c:920
 msgid "_Edit"
 msgstr "_Düzenle"
 
-#: ../src/remminamain.c:810
+#: ../src/remminamain.c:921
 msgid "_View"
 msgstr "_Görünüm"
 
-#: ../src/remminamain.c:811
+#: ../src/remminamain.c:922
 msgid "_Tools"
 msgstr "_Araçlar"
 
-#: ../src/remminamain.c:812
+#: ../src/remminamain.c:923
 msgid "_Help"
 msgstr "_Yardım"
 
-#: ../src/remminamain.c:814 ../src/remminamain.c:1123
-#: ../src/remminafileeditor.c:1561
-msgid "Quick Connect"
-msgstr "Hızlı Bağlantı"
-
-#: ../src/remminamain.c:815
-msgid "Open a quick connection"
-msgstr "Hızlı bağlantı aç"
-
-#: ../src/remminamain.c:818
-msgid "Quick _Connect To"
-msgstr "Şuna Hızlı Bağlantı"
-
-#: ../src/remminamain.c:821
+#: ../src/remminamain.c:926
 msgid "Create a new remote desktop file"
 msgstr "Yeni bir uzak masaüstü dosyası oluştur"
 
-#: ../src/remminamain.c:825
+#: ../src/remminamain.c:930
 msgid "Open the preferences dialog"
 msgstr "Seçenekler penceresini aç"
 
-#: ../src/remminamain.c:829
-msgid "Quit Remmina"
-msgstr "Remmina'dan Çıkış"
-
-#: ../src/remminamain.c:836 ../src/remminapluginmanager.c:232
+#: ../src/remminamain.c:941 ../src/remminapluginmanager.c:239
 msgid "Plugins"
 msgstr "Eklentiler"
 
-#: ../src/remminamain.c:840
+#: ../src/remminamain.c:945
+msgid "Homepage"
+msgstr ""
+
+#: ../src/remminamain.c:949
 msgid "Online Wiki"
 msgstr "Online Viki"
 
-#: ../src/remminamain.c:844
+#: ../src/remminamain.c:953
 msgid "Debug Window"
 msgstr "Hata Ayıklama Penceresi"
 
-#: ../src/remminamain.c:856
+#: ../src/remminamain.c:965
 msgid "Open the connection to the selected remote desktop file"
 msgstr "Seçili uzak masaüstü bağlantısına bağlan"
 
-#: ../src/remminamain.c:860
+#: ../src/remminamain.c:969
 msgid "Create a copy of the selected remote desktop file"
 msgstr "Seçili uzak masaüstü dosyasının bir kopyasını oluştur"
 
-#: ../src/remminamain.c:864
+#: ../src/remminamain.c:973
 msgid "Edit the selected remote desktop file"
 msgstr "Seçili uzak masaüstü dosyasını düzenle"
 
-#: ../src/remminamain.c:868
+#: ../src/remminamain.c:977
 msgid "Delete the selected remote desktop file"
 msgstr "Seçili uzak masaüstü dosyasını sil"
 
-#: ../src/remminamain.c:871
+#: ../src/remminamain.c:980
 msgid "Export"
 msgstr "Dışarı aktar"
 
-#: ../src/remminamain.c:878
+#: ../src/remminamain.c:987
 msgid "Toolbar"
 msgstr "Araç Çubuğu"
 
-#: ../src/remminamain.c:881
+#: ../src/remminamain.c:990
 msgid "Statusbar"
 msgstr "Durum Çubuğu"
 
-#: ../src/remminamain.c:884
+#: ../src/remminamain.c:993
 msgid "Quick Search"
 msgstr "Hızlı arama"
 
-#: ../src/remminamain.c:887
+#: ../src/remminamain.c:996
 msgid "Small Toolbar Buttons"
 msgstr "Küçük Araç Çubuğu Düğmeleri"
 
-#: ../src/remminamain.c:893
+#: ../src/remminamain.c:1002
 msgid "List View"
 msgstr "Liste Görünümü"
 
-#: ../src/remminamain.c:894
+#: ../src/remminamain.c:1003
 msgid "Tree View"
 msgstr "Ağaç Görünümü"
 
-#: ../src/remminamain.c:1062
-msgid "Remote Desktop Client"
-msgstr "Uzak Masaüstü İstemcisi"
-
 #. Profile: Name
-#: ../src/remminamain.c:1152 ../src/remminafileeditor.c:1548
-#: ../src/remminapluginmanager.c:252
+#: ../src/remminamain.c:1230 ../src/remminafileeditor.c:1286
+#: ../src/remminapluginmanager.c:259
 msgid "Name"
 msgstr "İsim"
 
-#: ../src/remminamain.c:1165 ../src/remminafileeditor.c:1575
-#: ../src/remminaftpclient.c:976
+#. Profile: Group
+#: ../src/remminamain.c:1243 ../src/remminafileeditor.c:1308
+#: ../src/remminaftpclient.c:1020
 msgid "Group"
 msgstr "Grup"
 
-#: ../src/remminamain.c:1173 ../src/remminafileeditor.c:411
-#: ../src/remminafileeditor.c:987 ../src/remminafileeditor.c:1000
-#: ../src/remminaprotocolwidget.c:939
+#: ../src/remminamain.c:1251 ../src/remminafileeditor.c:342
+#: ../src/remminafileeditor.c:795 ../src/remminafileeditor.c:808
+#: ../src/remminaprotocolwidget.c:1032
 msgid "Server"
 msgstr "Server/Sunucu"
 
-#: ../src/remminafile.c:37 ../src/remminafile.c:48
-msgid "256 Colors"
-msgstr "256 Renk"
-
-#: ../src/remminafile.c:38
-msgid "High Color (15 bit)"
-msgstr "Yüksek Renk Derinliği (15 bit)"
-
-#: ../src/remminafile.c:39 ../src/remminafile.c:49
-msgid "High Color (16 bit)"
-msgstr "Yüksek Renk Derinliği (16 bit)"
-
-#: ../src/remminafile.c:40 ../src/remminafile.c:50
-msgid "True Color (24 bit)"
-msgstr "Gerçek Renkler (24 Bit)"
-
-#. The Set As Default button
-#: ../src/remminafile.c:46 ../src/remminafileeditor.c:1485
-msgid "Default"
-msgstr "Öntanımlı"
-
-#: ../src/remminafile.c:47
-msgid "Grayscale"
-msgstr "Gri tonlama"
-
-#: ../src/remminafile.c:56
-msgid "Poor (Fastest)"
-msgstr "Kötü (Hızlı)"
-
-#: ../src/remminafile.c:57
-msgid "Medium"
-msgstr "Normal (vasat)"
-
-#: ../src/remminafile.c:58
-msgid "Good"
-msgstr "İyi"
-
-#: ../src/remminafile.c:59
-msgid "Best (Slowest)"
-msgstr "En İyi (Yavaş)"
-
-#: ../src/remminafile.c:125
-msgid "New Connection"
-msgstr "Yeni Bağlantı"
-
-#: ../src/remminafileeditor.c:71
-msgid "Off"
-msgstr "Kapalı"
-
-#: ../src/remminafileeditor.c:72 ../src/remminaftpclient.c:1037
-msgid "Local"
-msgstr "Yerel"
-
-#: ../src/remminafileeditor.c:73 ../src/remminaftpclient.c:1030
-msgid "Remote"
-msgstr "Uzak"
-
-#: ../src/remminafileeditor.c:78
+#: ../src/remminafileeditor.c:56
 msgid ""
 "<tt><big>Supported formats\n"
 "* server\n"
@@ -250,7 +175,7 @@ msgstr ""
 "* sunucu:port\n"
 "* [sunucu]:port</big></tt>"
 
-#: ../src/remminafileeditor.c:85
+#: ../src/remminafileeditor.c:63
 msgid ""
 "<tt><big>Supported formats\n"
 "* :port\n"
@@ -264,391 +189,288 @@ msgstr ""
 "* sunucu:port\n"
 "* [sunucu]:port</big></tt>"
 
-#: ../src/remminafileeditor.c:163
+#: ../src/remminafileeditor.c:120
 msgid "Choose a Remote Desktop Server"
 msgstr "Uzak Masaüstü Sunucusunu Seç"
 
-#: ../src/remminafileeditor.c:357 ../src/remminafileeditor.c:363
-#: ../src/remminafileeditor.c:371
-msgid "Identity File"
-msgstr "Identity Dosyası"
+#: ../src/remminafileeditor.c:297 ../src/remminafileeditor.c:304
+msgid "Identity file"
+msgstr "Identity dosyası"
 
-#: ../src/remminafileeditor.c:432
+#: ../src/remminafileeditor.c:365
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Bulunduğum ağı %s sunucusu bulmak için araştır"
 
-#: ../src/remminafileeditor.c:453 ../src/remminafileeditor.c:1032
-#: ../src/remminaprotocolwidget.c:737 ../src/remminainitdialog.c:278
+#: ../src/remminafileeditor.c:387 ../src/remminafileeditor.c:850
+#: ../src/remminaprotocolwidget.c:833 ../src/remminainitdialog.c:278
 msgid "Password"
 msgstr "Parola"
 
-#: ../src/remminafileeditor.c:472
+#: ../src/remminafileeditor.c:428
 msgid "Resolution"
 msgstr "Çözünürlük"
 
-#: ../src/remminafileeditor.c:478
-msgid "Use Window Size"
-msgstr "Pencere Boyutunu Kullan"
+#: ../src/remminafileeditor.c:434
+msgid "Use window size"
+msgstr "Pencere boyutunu kullan"
 
-#: ../src/remminafileeditor.c:478
-msgid "Use Client Resolution"
-msgstr "İstemci Çözünürlüğünü Kullan"
+#: ../src/remminafileeditor.c:434
+msgid "Use client resolution"
+msgstr "İstemci çözünürlüğünü kullan"
 
-#: ../src/remminafileeditor.c:488 ../src/remminafileeditor.c:967
+#: ../src/remminafileeditor.c:444 ../src/remminafileeditor.c:775
 msgid "Custom"
 msgstr "Özel"
 
-#. Entries
-#: ../src/remminafileeditor.c:702 ../src/remminafileeditor.c:1029
-#: ../src/remminainitdialog.c:265
-msgid "User Name"
-msgstr "Kullanıcı Adı"
+#: ../src/remminafileeditor.c:626
+msgid "Keyboard mapping"
+msgstr "Klavye tuş haritası"
 
-#: ../src/remminafileeditor.c:708
-msgid "Domain"
-msgstr "Alan Adı"
+#: ../src/remminafileeditor.c:631 ../src/remminascaler.c:138
+msgid "Horizontal scale"
+msgstr "Yatay ölçek"
 
-#: ../src/remminafileeditor.c:714 ../src/remminafileeditor.c:720
-msgid "Color Depth"
-msgstr "Renk Derinliği"
+#: ../src/remminafileeditor.c:636 ../src/remminascaler.c:145
+msgid "Vertical scale"
+msgstr "Dikey ölçek"
 
-#: ../src/remminafileeditor.c:727
-msgid "Share Folder"
-msgstr "Klasör Paylaş"
+#: ../src/remminafileeditor.c:746
+msgid "Enable SSH tunnel"
+msgstr "SSH tünellemeyi aktifleştir"
 
-#: ../src/remminafileeditor.c:733
-msgid "Sound"
-msgstr "Ses"
-
-#: ../src/remminafileeditor.c:739 ../src/remminafileeditor.c:861
-msgid "Keyboard Mapping"
-msgstr "Klavye Tuş Haritası"
-
-#: ../src/remminafileeditor.c:745
-msgid "Client Name"
-msgstr "İstemci İsmi"
-
-#: ../src/remminafileeditor.c:751 ../src/remminafileeditor.c:758
-#: ../src/remminafileeditor.c:1018
-msgid "Startup Program"
-msgstr "Başlangıç Programı"
-
-#: ../src/remminafileeditor.c:764
-msgid "Startup Path"
-msgstr "Başlangıç Dizini"
-
-#: ../src/remminafileeditor.c:770
-msgid "Share Local Printers"
-msgstr "Makinama Bağlı Yazıcıları Paylaş"
-
-#: ../src/remminafileeditor.c:776
-msgid "Attach to console (Windows 2003 or newer)"
-msgstr ""
-"Yönetim Konsoluna Bağlan (Windows 2003 veya daha yeni işletim sistemleri "
-"için)"
-
-#: ../src/remminafileeditor.c:782
-msgid "Enable bitmap caching"
-msgstr "Önbelleklemeyi etkinleştir"
-
-#: ../src/remminafileeditor.c:788
-msgid "Enable compression"
-msgstr "Veri Sıkıştırmayı Etkinleştir"
-
-#: ../src/remminafileeditor.c:794
-msgid "Advanced Arguments"
-msgstr "İleri Düzey Parametreler"
-
-#: ../src/remminafileeditor.c:801
-msgid "Listen on Port"
-msgstr "Portu Bekle"
-
-#: ../src/remminafileeditor.c:809
-msgid "Quality"
-msgstr "Kalite"
-
-#: ../src/remminafileeditor.c:815
-msgid "Show Remote Cursor"
-msgstr "Uzaktaki İmleci Göster"
-
-#: ../src/remminafileeditor.c:821
-msgid "Use Local Cursor"
-msgstr "Yerel İmleci Kullan"
-
-#: ../src/remminafileeditor.c:827 ../src/remminaconnectionwindow.c:908
-msgid "View Only"
-msgstr "Sadece Görüntüle"
-
-#: ../src/remminafileeditor.c:833 ../src/remminaconnectionwindow.c:923
-msgid "Disable Server Input"
-msgstr "Sunucu Tarafından Girişi Engelle"
-
-#: ../src/remminafileeditor.c:838 ../src/remminascaler.c:138
-msgid "Horizontal Scale"
-msgstr "Yatay Ölçek"
-
-#: ../src/remminafileeditor.c:843 ../src/remminascaler.c:145
-msgid "Vertical Scale"
-msgstr "Dikey Ölçek"
-
-#: ../src/remminafileeditor.c:861 ../src/remminakeychooser.c:43
-msgid "<None>"
-msgstr "<Hiçbiri>"
-
-#: ../src/remminafileeditor.c:868
-msgid "Disconnect After One Session"
-msgstr "Tek Bir bağlantıdan sonra kapat"
-
-#: ../src/remminafileeditor.c:874
-msgid "Disable Encryption"
-msgstr "Şifrelemeyi Devredışı Bırak"
-
-#: ../src/remminafileeditor.c:887
-msgid "Proxy Destination"
-msgstr "Vekil Sunucu Hedefi"
-
-#: ../src/remminafileeditor.c:893
-msgid "Disable Clipboard Sync"
-msgstr "Pano Alıpvermeyi Devredışı Bırak"
-
-#: ../src/remminafileeditor.c:938
-msgid "Enable SSH Tunnel"
-msgstr "SSH Tünellemeyi Aktifleştir"
-
-#: ../src/remminafileeditor.c:945
-msgid "Tunnel via Loopback Address"
-msgstr "Loopback Adres aracılığıyla Tünelle"
+#: ../src/remminafileeditor.c:753
+msgid "Tunnel via loopback address"
+msgstr "Loopback adres aracılığıyla tünelle"
 
 #. SSH Server group
-#: ../src/remminafileeditor.c:952
+#: ../src/remminafileeditor.c:760
 msgid "SSH Server"
 msgstr "SSH Sunucu"
 
-#: ../src/remminafileeditor.c:958
+#: ../src/remminafileeditor.c:766
 #, c-format
-msgid "Same Server at Port %i"
-msgstr "Port %i deki Aynı Sunucu"
+msgid "Same server at port %i"
+msgstr "Port %i deki aynı sunucu"
 
-#: ../src/remminafileeditor.c:1012
-msgid "Character Set"
-msgstr "Karakter Seti"
+#: ../src/remminafileeditor.c:820
+msgid "Character set"
+msgstr "Karakter seti"
+
+#: ../src/remminafileeditor.c:826
+msgid "Startup program"
+msgstr "Başlangıç programı"
+
+#: ../src/remminafileeditor.c:835
+msgid "Startup path"
+msgstr "Başlangıç dizini"
 
 #. SSH Authentication frame
-#: ../src/remminafileeditor.c:1025
+#: ../src/remminafileeditor.c:843
 msgid "SSH Authentication"
 msgstr "SSH Doğrulama"
 
-#: ../src/remminafileeditor.c:1039
-msgid "Public Key (Automatic)"
-msgstr "Public Key (Otomatik)"
+#. Entries
+#: ../src/remminafileeditor.c:847 ../src/remminainitdialog.c:265
+msgid "User name"
+msgstr "Kullanıcı adı"
 
-#: ../src/remminafileeditor.c:1092
+#: ../src/remminafileeditor.c:857
+msgid "Public key (automatic)"
+msgstr "Public Key (otomatik)"
+
+#: ../src/remminafileeditor.c:914
 msgid "Basic"
 msgstr "Basit"
 
-#: ../src/remminafileeditor.c:1099
+#: ../src/remminafileeditor.c:921
 msgid "Advanced"
 msgstr "Gelişmiş"
 
-#: ../src/remminafileeditor.c:1412
+#: ../src/remminafileeditor.c:1115
 msgid "Default settings saved."
 msgstr "Öntanımlı ayarlar kaydedildi."
 
 #. Create the editor dialog
-#: ../src/remminafileeditor.c:1462
+#: ../src/remminafileeditor.c:1164
 msgid "Remote Desktop Preference"
 msgstr "Uzak Masaüstü Ayarı"
 
-#: ../src/remminafileeditor.c:1545
+#. The Set As Default button
+#: ../src/remminafileeditor.c:1189
+msgid "Default"
+msgstr "Öntanımlı"
+
+#: ../src/remminafileeditor.c:1283
 msgid "Profile"
 msgstr "Profil"
 
-#. Profile: Protocol
-#: ../src/remminafileeditor.c:1588 ../src/remminapluginmanager.c:38
-msgid "Protocol"
-msgstr "İletişim Kuralı"
+#: ../src/remminafileeditor.c:1298
+msgid "Quick Connect"
+msgstr "Hızlı Bağlantı"
 
-#: ../src/remminafileeditor.c:1645 ../src/remminafileeditor.c:1666
-#: ../src/remminaconnectionwindow.c:2215
+#: ../src/remminafileeditor.c:1320
+#, c-format
+msgid "Use '%s' as subgroup delimiter"
+msgstr ""
+
+#. Profile: Protocol
+#: ../src/remminafileeditor.c:1325 ../src/remminapluginmanager.c:38
+msgid "Protocol"
+msgstr "İletişim kuralı"
+
+#: ../src/remminafileeditor.c:1384 ../src/remminafileeditor.c:1405
+#: ../src/remminaconnectionwindow.c:2421
 #, c-format
 msgid "File %s not found."
 msgstr "%s dosyası bulunamadı"
 
-#: ../src/remminaconnectionwindow.c:177
+#: ../src/remminaconnectionwindow.c:183
 #, c-format
 msgid ""
 "There are %i active connections in the current window. Are you sure to close?"
 msgstr ""
 "Aktif pencerede %i aktif bağlantı var. Kapatmak istediğinizdem eminmisiniz?"
 
-#. Refresh
-#: ../src/remminaconnectionwindow.c:963
-msgid "Refresh"
-msgstr "Yenile"
+#: ../src/remminaconnectionwindow.c:563
+msgid "Viewport fullscreen mode"
+msgstr ""
 
-#. Chat
-#: ../src/remminaconnectionwindow.c:981
-msgid "Open Chat..."
-msgstr "Sohbet Penceresi Aç..."
+#: ../src/remminaconnectionwindow.c:574
+msgid "Scrolled fullscreen mode"
+msgstr ""
 
-#. SFTP
-#: ../src/remminaconnectionwindow.c:999
-msgid "Open Secure File Transfer..."
-msgstr "Güvenli Dosya Aktarım Penceresi Aç..."
-
-#. SSH Terminal
-#: ../src/remminaconnectionwindow.c:1017
-msgid "Open Secure Shell in New Terminal..."
-msgstr "Güvenli Komut Satırı Penceresi Aç..."
-
-#: ../src/remminaconnectionwindow.c:1084 ../src/remminaprefdialog.c:487
-msgid "Auto-Fit Window"
-msgstr "Pencereyi Otomatik Sığdır"
-
-#: ../src/remminaconnectionwindow.c:1086
+#: ../src/remminaconnectionwindow.c:1177
 msgid "Resize the window to fit in remote resolution"
 msgstr "Pencereyi karşı makinanın çözünürlüğüne göre ayarla"
 
-#: ../src/remminaconnectionwindow.c:1093 ../src/remminaprefdialog.c:53
-msgid "Scrolled Window"
-msgstr "Kaydırmalı pencere"
+#: ../src/remminaconnectionwindow.c:1188 ../src/remminaprefdialog.c:559
+msgid "Toggle fullscreen mode"
+msgstr "Tam ekran modunu aç/kapa"
 
-#: ../src/remminaconnectionwindow.c:1095
-msgid "Toggle scrolled window mode"
-msgstr "Kaydırmalı pencere aç/kapa"
-
-#: ../src/remminaconnectionwindow.c:1103 ../src/remminaprefdialog.c:54
-msgid "Scrolled Fullscreen"
-msgstr "Kaydırmalı Tam Ekran"
-
-#: ../src/remminaconnectionwindow.c:1105
-msgid "Toggle scrolled fullscreen mode"
-msgstr "Kaydırmalı Tam Ekranı aç/kapa"
-
-#: ../src/remminaconnectionwindow.c:1115 ../src/remminaprefdialog.c:55
-msgid "Viewport Fullscreen"
-msgstr "Tam Ekra Görünüm"
-
-#: ../src/remminaconnectionwindow.c:1117
-msgid "Toggle viewport fullscreen mode"
-msgstr "Tam Ekra Görünüm aç/kapa"
-
-#: ../src/remminaconnectionwindow.c:1129
+#: ../src/remminaconnectionwindow.c:1229 ../src/remminaprefdialog.c:579
 msgid "Switch tab pages"
 msgstr "Tab sayfalarını aç/kapa"
 
-#: ../src/remminaconnectionwindow.c:1142
+#: ../src/remminaconnectionwindow.c:1243 ../src/remminaprefdialog.c:598
 msgid "Toggle scaled mode"
 msgstr "Ölçekli görünümü aç/kapa"
 
-#: ../src/remminaconnectionwindow.c:1176
+#: ../src/remminaconnectionwindow.c:1278
 msgid "Grab all keyboard events"
 msgstr "Tüm klavye olaylarını yakala"
 
-#: ../src/remminaconnectionwindow.c:1184
+#: ../src/remminaconnectionwindow.c:1287
 msgid "Preferences"
 msgstr "Seçenekler"
 
-#: ../src/remminaconnectionwindow.c:1192 ../src/remminaconnectionwindow.c:1193
+#: ../src/remminaconnectionwindow.c:1295 ../src/remminaconnectionwindow.c:1296
 msgid "Tools"
 msgstr "Araçlar"
 
-#: ../src/remminaconnectionwindow.c:1205 ../src/remminaprefdialog.c:536
-msgid "Minimize Window"
-msgstr "Pencereyi Simge Durumuna Küçült"
+#: ../src/remminaconnectionwindow.c:1308 ../src/remminaprefdialog.c:618
+msgid "Minimize window"
+msgstr "Pencereyi simge durumuna küçült"
 
-#: ../src/remminaconnectionwindow.c:1212 ../src/remminaprefdialog.c:546
+#: ../src/remminaconnectionwindow.c:1316 ../src/remminaprefdialog.c:628
 msgid "Disconnect"
-msgstr "Bağlantıyı Kes"
+msgstr "Bağlantıyı kes"
 
-#: ../src/remminaprotocolwidget.c:118
+#: ../src/remminaprotocolwidget.c:119
 #, c-format
 msgid "Connecting to '%s'..."
 msgstr "'%s' aygıtına bağlanılıyor..."
 
-#: ../src/remminaprotocolwidget.c:190
+#: ../src/remminaprotocolwidget.c:202
 #, c-format
-msgid "Protocol %s is not supported."
-msgstr "%s protokolü desteklemiyor"
+msgid "Protocol plugin %s is not installed."
+msgstr ""
 
-#: ../src/remminaprotocolwidget.c:357
+#: ../src/remminaprotocolwidget.c:240
+msgid "Open Secure Shell in New Terminal..."
+msgstr "Güvenli Komut Satırı Penceresi Aç..."
+
+#: ../src/remminaprotocolwidget.c:246
+msgid "Open Secure File Transfer..."
+msgstr "Güvenli Dosya Aktarım Penceresi Aç..."
+
+#: ../src/remminaprotocolwidget.c:451
 #, c-format
 msgid "Connecting to SSH server %s..."
 msgstr "'%s' SSH sunucusuna bağlanılıyor..."
 
-#: ../src/remminaprotocolwidget.c:420 ../src/remminaprotocolwidget.c:590
+#: ../src/remminaprotocolwidget.c:516 ../src/remminaprotocolwidget.c:686
 #, c-format
 msgid "Connecting to %s through SSH tunnel..."
 msgstr "'%s' aygıtına SSH tünelleme ile bağlanılıyor..."
 
-#: ../src/remminaprotocolwidget.c:464
+#: ../src/remminaprotocolwidget.c:560
 #, c-format
 msgid "Waiting for an incoming SSH tunnel at port %i..."
 msgstr "%i portuna gelecek SSH tünel istekleri bekleniyor..."
 
-#: ../src/remminaprotocolwidget.c:513
+#: ../src/remminaprotocolwidget.c:609
 #, c-format
 msgid "Command %s not found on SSH server"
 msgstr "%s komutu SSH sunucu üzerinde bulunamadı"
 
-#: ../src/remminaprotocolwidget.c:517
+#: ../src/remminaprotocolwidget.c:613
 #, c-format
 msgid "Command %s failed on SSH server (status = %i)."
 msgstr "%s komutu SSH sunucu üzerinde başarısız oldu (durum kodu = %i)"
 
-#: ../src/remminaprotocolwidget.c:528
+#: ../src/remminaprotocolwidget.c:624
 #, c-format
 msgid "Failed to execute command: %s"
 msgstr "%s komutunun çalıştırılması başarısız oldu"
 
-#: ../src/remminaprotocolwidget.c:728
+#: ../src/remminaprotocolwidget.c:824
 #, c-format
-msgid "%s Password"
-msgstr "%s Şifre"
+msgid "%s password"
+msgstr "%s şifre"
 
-#: ../src/remminaprotocolwidget.c:731 ../src/remminassh.c:248
-msgid "SSH Password"
-msgstr "SSH Parolası"
+#: ../src/remminaprotocolwidget.c:827 ../src/remminassh.c:248
+msgid "SSH password"
+msgstr "SSH parolası"
 
-#: ../src/remminaprotocolwidget.c:734 ../src/remminassh.c:252
-msgid "SSH Private Key Passphrase"
-msgstr "SSH Özel Anahtar Şifresi"
+#: ../src/remminaprotocolwidget.c:830 ../src/remminassh.c:252
+msgid "SSH private key passphrase"
+msgstr "SSH özel anahtar şifresi"
 
-#: ../src/remminaprotocolwidget.c:875
+#: ../src/remminaprotocolwidget.c:968
 #, c-format
-msgid "Listening on Port %i for an Incoming %s Connection..."
+msgid "Listening on port %i for an incoming %s connection..."
 msgstr "%i portuna gelecek %s bağlantıları bekleniyor..."
 
-#: ../src/remminaprotocolwidget.c:883
+#: ../src/remminaprotocolwidget.c:976
 msgid "Authentication failed. Trying to reconnect..."
 msgstr "Kimlik Denetleme başarısız oldu. Yeniden bağlanmyı deniyor..."
 
 #: ../src/remminainitdialog.c:205
 #, c-format
 msgid "Save %s"
-msgstr "%s Kaydet"
+msgstr "%s kaydet"
 
 #: ../src/remminainitdialog.c:289
-msgid "Save Password"
-msgstr "Parolayı Kaydet"
+msgid "Save password"
+msgstr "Parolayı kaydet"
 
 #. Buttons for choosing the certificates
 #: ../src/remminainitdialog.c:388
-msgid "CA Certificate"
-msgstr "CA Sertifikası"
+msgid "CA certificate"
+msgstr "CA sertifikası"
 
 #: ../src/remminainitdialog.c:389
 msgid "CA CRL"
 msgstr "CA CRL"
 
 #: ../src/remminainitdialog.c:390
-msgid "Client Certificate"
-msgstr "İstermci Sertifikası"
+msgid "Client certificate"
+msgstr "İstermci sertifikası"
 
 #: ../src/remminainitdialog.c:391
-msgid "Client Key"
-msgstr "İstemci Anahtarı"
+msgid "Client key"
+msgstr "İstemci anahtarı"
 
 #: ../src/remminaabout.c:32
 msgid "Maintainers:"
@@ -705,162 +527,195 @@ msgstr ""
 "  ripper https://launchpad.net/~ismail-proturk\n"
 "  zeugma https://launchpad.net/~sunder67"
 
-#: ../src/remminaprefdialog.c:36
-msgid "Open Connection"
-msgstr "Bağlantı Aç"
-
 #: ../src/remminaprefdialog.c:37
-msgid "Edit Settings"
-msgstr "Ayarları Düzenle"
+msgid "Open connection"
+msgstr "Bağlantı aç"
 
-#: ../src/remminaprefdialog.c:43
+#: ../src/remminaprefdialog.c:38
+msgid "Edit settings"
+msgstr "Ayarları düzenle"
+
+#: ../src/remminaprefdialog.c:44
 msgid "Nearest"
 msgstr "En Yakın"
 
-#: ../src/remminaprefdialog.c:44
+#: ../src/remminaprefdialog.c:45
 msgid "Tiles"
 msgstr "Desenler"
 
-#: ../src/remminaprefdialog.c:45
+#: ../src/remminaprefdialog.c:46
 msgid "Bilinear"
 msgstr "İki Çizgili"
 
-#: ../src/remminaprefdialog.c:46
+#: ../src/remminaprefdialog.c:47
 msgid "Hyper"
 msgstr "Hiper"
 
-#: ../src/remminaprefdialog.c:52
+#: ../src/remminaprefdialog.c:53
 msgid "Automatic"
 msgstr "Otomatik"
 
-#: ../src/remminaprefdialog.c:61
-msgid "Tab by Groups"
-msgstr "Gruplara Göre Tab"
+#: ../src/remminaprefdialog.c:54
+msgid "Scrolled window"
+msgstr "Kaydırmalı pencere"
+
+#: ../src/remminaprefdialog.c:55
+msgid "Scrolled fullscreen"
+msgstr "Kaydırmalı tam ekran"
+
+#: ../src/remminaprefdialog.c:56
+msgid "Viewport fullscreen"
+msgstr "Tam ekra görünüm"
 
 #: ../src/remminaprefdialog.c:62
-msgid "Tab by Protocols"
-msgstr "Protokollere Göre Tab"
+msgid "Tab by groups"
+msgstr "Gruplara göre tab"
 
 #: ../src/remminaprefdialog.c:63
-msgid "Tab All Connections"
-msgstr "Tüm Bağlantılar İçin  Tab"
+msgid "Tab by protocols"
+msgstr "Protokollere göre tab"
 
 #: ../src/remminaprefdialog.c:64
-msgid "Do Not Use Tabs"
+msgid "Tab all connections"
+msgstr "Tüm bağlantılar için tab"
+
+#: ../src/remminaprefdialog.c:65
+msgid "Do not use tabs"
 msgstr "Tab kullanma"
 
-#: ../src/remminaprefdialog.c:143
+#: ../src/remminaprefdialog.c:150
 msgid "Please enter format 'widthxheight'."
 msgstr "Lütfen 'GENİŞLİKxYÜKSEKLİK' formatını girin"
 
-#: ../src/remminaprefdialog.c:155
+#: ../src/remminaprefdialog.c:162
 msgid "Recent lists cleared."
 msgstr "Geçmiş listesi temizlendi"
 
 #. Create the dialog
-#: ../src/remminaprefdialog.c:261
+#: ../src/remminaprefdialog.c:320
 msgid "Remmina Preferences"
 msgstr "Remmina Tercihleri"
 
 #. Options tab
-#: ../src/remminaprefdialog.c:278
+#: ../src/remminaprefdialog.c:337
 msgid "Options"
 msgstr "Seçenekler"
 
-#: ../src/remminaprefdialog.c:293
-msgid "Remember Last View Mode for Each Connection"
-msgstr "Her Bağlantı İçin Son Görünüm Şeklini Hatırla"
+#: ../src/remminaprefdialog.c:352
+msgid "Remember last view mode for each connection"
+msgstr "Her bağlantı için son görünüm şeklini hatırla"
 
-#: ../src/remminaprefdialog.c:299
-msgid "Save Settings When Starting the Connection"
+#: ../src/remminaprefdialog.c:358
+msgid "Save settings when starting the connection"
 msgstr "Bağlantı başlatılırken ayarları kaydet"
 
-#: ../src/remminaprefdialog.c:305
-msgid "Invisible Floating Toolbar"
-msgstr "Görünmez Kayar Araç Çubuğu"
+#: ../src/remminaprefdialog.c:364
+msgid "Invisible floating toolbar"
+msgstr "Görünmez kayar araç çubuğu"
 
-#: ../src/remminaprefdialog.c:318
-msgid "Always Show Tabs"
+#: ../src/remminaprefdialog.c:377
+msgid "Always show tabs"
 msgstr "Sekmeleri her zaman göster"
 
-#: ../src/remminaprefdialog.c:324
-msgid "Hide Connection Toolbar"
+#: ../src/remminaprefdialog.c:383
+msgid "Hide connection toolbar"
 msgstr "Bağlantı araç çubuğunu gizle"
 
-#: ../src/remminaprefdialog.c:330
-msgid "Double-click Action"
-msgstr "Çift Tıklama Eylemi"
+#: ../src/remminaprefdialog.c:389
+msgid "Double-click action"
+msgstr "Çift tıklama eylemi"
 
-#: ../src/remminaprefdialog.c:340
-msgid "Default View Mode"
-msgstr "Öntanımlı Görünüm Şekli"
+#: ../src/remminaprefdialog.c:399
+msgid "Default view mode"
+msgstr "Öntanımlı görünüm şekli"
 
-#: ../src/remminaprefdialog.c:350
-msgid "Tab Interface"
-msgstr "Tab Görünümü"
+#: ../src/remminaprefdialog.c:409
+msgid "Tab interface"
+msgstr "Tab görünümü"
 
-#: ../src/remminaprefdialog.c:360
-msgid "Scale Quality"
-msgstr "Kalite Ayarla"
+#: ../src/remminaprefdialog.c:419
+msgid "Scale quality"
+msgstr "Kalite ayarla"
 
-#: ../src/remminaprefdialog.c:370
-msgid "SSH Tunnel Local Port"
-msgstr "SSH Tünel Yerel Portu"
+#: ../src/remminaprefdialog.c:429
+msgid "SSH tunnel local port"
+msgstr "SSH tünel yerel portu"
 
-#: ../src/remminaprefdialog.c:382
-msgid "Maximum Recent Items"
-msgstr "Kabul Edilen En Fazla Geçmiş Bağlantı Öğesi"
+#: ../src/remminaprefdialog.c:441
+msgid "Maximum recent items"
+msgstr "Kabul edilen en fazla geçmiş bağlantı öğesi"
 
-#: ../src/remminaprefdialog.c:398
+#: ../src/remminaprefdialog.c:457
 msgid "Clear"
 msgstr "Temizle"
 
 #. Resolutions tab
-#: ../src/remminaprefdialog.c:404
+#: ../src/remminaprefdialog.c:463
 msgid "Resolutions"
 msgstr "Çözünürlükler"
 
 #. Applet tab
-#: ../src/remminaprefdialog.c:424
+#: ../src/remminaprefdialog.c:483
 msgid "Applet"
 msgstr "Küçük Uygulama"
 
-#: ../src/remminaprefdialog.c:439
-msgid "Show Quick Connect on top of the Menu"
-msgstr "Hızlı Bağlantıyı Menünün En üstünde Göster"
+#: ../src/remminaprefdialog.c:498
+msgid "Show new connection on top of the menu"
+msgstr ""
 
-#: ../src/remminaprefdialog.c:445
-msgid "Hide Total Count in Group Expander"
-msgstr "Toplam Eleman Sayısını Menüde Gizle"
+#: ../src/remminaprefdialog.c:504
+msgid "Hide total count in group menu"
+msgstr ""
+
+#: ../src/remminaprefdialog.c:510
+msgid "Disable tray icon"
+msgstr ""
+
+#: ../src/remminaprefdialog.c:516
+msgid "Start tray icon automatically"
+msgstr ""
+
+#: ../src/remminaprefdialog.c:523
+msgid "Minimize windows to tray"
+msgstr ""
 
 #. Keyboard tab
-#: ../src/remminaprefdialog.c:452
+#: ../src/remminaprefdialog.c:534
 msgid "Keyboard"
 msgstr "Klavye"
 
-#: ../src/remminaprefdialog.c:467
-msgid "Host Key"
+#: ../src/remminaprefdialog.c:549
+msgid "Host key"
 msgstr "Host tuşu"
 
-#: ../src/remminaprefdialog.c:477
-msgid "Toggle Fullscreen Mode"
-msgstr "Tam ekran modunu aç/kapa"
+#: ../src/remminaprefdialog.c:569
+msgid "Auto-fit window"
+msgstr "Pencereyi otomatik sığdır"
 
-#: ../src/remminaprefdialog.c:497
-msgid "Switch Tab Pages"
-msgstr "Tab sayfalarını değiştir"
-
-#: ../src/remminaprefdialog.c:516
-msgid "Toggle Scaled Mode"
-msgstr "Ölçekleme modunu aç/kapa"
-
-#: ../src/remminaprefdialog.c:526
-msgid "Grab Keyboard"
+#: ../src/remminaprefdialog.c:608
+msgid "Grab keyboard"
 msgstr "Klavyeyi yakala"
 
-#: ../src/remminaprefdialog.c:556
-msgid "Show / Hide Toolbar"
-msgstr "Araç çubuğunu Göster / Gizle"
+#: ../src/remminaprefdialog.c:638
+msgid "Show / hide toolbar"
+msgstr "Araç çubuğunu göster / gizle"
+
+#. Terminal tab
+#: ../src/remminaprefdialog.c:649
+msgid "Terminal"
+msgstr ""
+
+#: ../src/remminaprefdialog.c:664
+msgid "Font"
+msgstr ""
+
+#: ../src/remminaprefdialog.c:669
+msgid "Use system default font"
+msgstr ""
+
+#: ../src/remminaprefdialog.c:694
+msgid "Scrollback lines"
+msgstr ""
 
 #: ../src/remminassh.c:129
 #, c-format
@@ -897,36 +752,36 @@ msgstr "%s'nin kimliği SSH sunucu %s üzerinde kontrol ediliyor..."
 msgid "Failed to startup SSH session: %s"
 msgstr "SSH oturumu başarısız: %s"
 
-#: ../src/remminassh.c:633
+#: ../src/remminassh.c:635
 #, c-format
 msgid "Failed to connect to the SSH tunnel destination: %s"
 msgstr "SSH Tünel hedefine bağlanılamadı: %s"
 
-#: ../src/remminassh.c:666
+#: ../src/remminassh.c:668
 #, c-format
 msgid "Failed to execute %s on SSH server : %%s"
 msgstr "SSH sunucu üzerinde %s çalıştırılamadı: %%s"
 
-#: ../src/remminassh.c:703 ../src/remminassh.c:728
+#: ../src/remminassh.c:705 ../src/remminassh.c:730
 #, c-format
 msgid "Failed to request port forwarding : %s"
 msgstr "Port yönlendirme isteği başarısız: %s"
 
-#: ../src/remminassh.c:775
+#: ../src/remminassh.c:777
 msgid "No response from the server."
 msgstr "Sunucudan hiçbir cevap yok."
 
-#: ../src/remminassh.c:1153
+#: ../src/remminassh.c:1180
 #, c-format
 msgid "Failed to create sftp session: %s"
 msgstr "SFTP oturumu oluşturma başarısız: %s"
 
-#: ../src/remminassh.c:1158
+#: ../src/remminassh.c:1185
 #, c-format
 msgid "Failed to initialize sftp session: %s"
 msgstr "SFTP oturumu başlatma başarısız: %s"
 
-#: ../src/remminasshplugin.c:321
+#: ../src/remminasshplugin.c:351
 msgid "SSH - Secure Shell"
 msgstr "SSH - Secure Shell"
 
@@ -944,130 +799,138 @@ msgstr "_Gönder"
 msgid "_Clear"
 msgstr "_Temizle"
 
-#: ../src/remminaftpclient.c:444
+#: ../src/remminaftpclient.c:456
 msgid "Choose download location"
 msgstr "İndirme yerini seçiniz"
 
-#: ../src/remminaftpclient.c:602
+#: ../src/remminaftpclient.c:614
 msgid "Are you sure to delete the selected files on server?"
 msgstr "Seçili dosyaları sunucudan silmek istediğinizden eminmisiniz?"
 
-#: ../src/remminaftpclient.c:659
+#: ../src/remminaftpclient.c:671
 msgid "Choose a file to upload"
 msgstr "Yüklemek için bir dosyayı seç"
 
-#: ../src/remminaftpclient.c:670
+#: ../src/remminaftpclient.c:682
 msgid "Upload folder"
 msgstr "Karşıya yükleme klasörü"
 
-#: ../src/remminaftpclient.c:735 ../src/remminaftpclient.c:864
+#: ../src/remminaftpclient.c:747 ../src/remminaftpclient.c:876
 msgid "Download"
 msgstr "İndir"
 
-#: ../src/remminaftpclient.c:743 ../src/remminaftpclient.c:875
+#: ../src/remminaftpclient.c:755 ../src/remminaftpclient.c:887
 msgid "Upload"
 msgstr "Yükle"
 
-#: ../src/remminaftpclient.c:845
+#: ../src/remminaftpclient.c:857
 msgid "Go to home folder"
 msgstr "Kullanıcı Ev (Home) dizinine git"
 
-#: ../src/remminaftpclient.c:852
+#: ../src/remminaftpclient.c:864
 msgid "Go to parent folder"
 msgstr "Üst klasöre git"
 
-#: ../src/remminaftpclient.c:859
+#: ../src/remminaftpclient.c:871
 msgid "Refresh current folder"
 msgstr "Şu anki klasörü yenile"
 
-#: ../src/remminaftpclient.c:866
+#: ../src/remminaftpclient.c:878
 msgid "Download from server"
 msgstr "Sunucudan İndir"
 
-#: ../src/remminaftpclient.c:877
+#: ../src/remminaftpclient.c:889
 msgid "Upload to server"
 msgstr "Sunucuya yükle"
 
-#: ../src/remminaftpclient.c:886
+#: ../src/remminaftpclient.c:898
 msgid "Delete files on server"
 msgstr "Sunucudan dosyaları sil"
 
-#: ../src/remminaftpclient.c:948 ../src/remminaftpclient.c:1014
+#: ../src/remminaftpclient.c:992 ../src/remminaftpclient.c:1064
 msgid "File Name"
 msgstr "Dosya İsmi"
 
-#: ../src/remminaftpclient.c:961 ../src/remminaftpclient.c:1044
+#: ../src/remminaftpclient.c:1005 ../src/remminaftpclient.c:1094
 msgid "Size"
 msgstr "Boyut"
 
-#: ../src/remminaftpclient.c:969
+#: ../src/remminaftpclient.c:1013
 msgid "User"
 msgstr "Kullanıcı"
 
-#: ../src/remminaftpclient.c:983
+#: ../src/remminaftpclient.c:1027
 msgid "Permission"
 msgstr "İzin"
 
-#: ../src/remminaftpclient.c:1052
+#: ../src/remminaftpclient.c:1080
+msgid "Remote"
+msgstr "Uzak"
+
+#: ../src/remminaftpclient.c:1087
+msgid "Local"
+msgstr "Yerel"
+
+#: ../src/remminaftpclient.c:1102
 msgid "Progress"
 msgstr "İlerleme"
 
-#: ../src/remminasftpclient.c:137
+#: ../src/remminasftpclient.c:144
 #, c-format
 msgid "Error creating directory %s."
 msgstr "Klasör oluşturma hatası %s"
 
-#: ../src/remminasftpclient.c:148
+#: ../src/remminasftpclient.c:155
 #, c-format
 msgid "Error opening file %s on server. %s"
 msgstr "%s dosyasını sunucuda açarken hata oluştu. %s"
 
-#: ../src/remminasftpclient.c:156
+#: ../src/remminasftpclient.c:163
 #, c-format
 msgid "Error creating file %s."
 msgstr "%s dosyasını oluştururken hata oluştu."
 
-#: ../src/remminasftpclient.c:168
+#: ../src/remminasftpclient.c:175
 #, c-format
 msgid "Error writing file %s."
 msgstr "%s dosyasını yazarken hata oluştu."
 
-#: ../src/remminasftpclient.c:211
+#: ../src/remminasftpclient.c:218
 #, c-format
 msgid "Error opening directory %s. %s"
 msgstr "%s klasörünü açmada hata. %s"
 
-#: ../src/remminasftpclient.c:332
+#: ../src/remminasftpclient.c:339
 #, c-format
 msgid "Error creating folder %s on server. %s"
 msgstr "%s klasörünü %s sunucusu üzerinde oluşturmaya çalışırken hata oluştu"
 
-#: ../src/remminasftpclient.c:357
+#: ../src/remminasftpclient.c:364
 #, c-format
 msgid "Error creating file %s on server. %s"
 msgstr "Sunucu üzerinde %s dosyasını oluşturmada hata. %s"
 
-#: ../src/remminasftpclient.c:365
+#: ../src/remminasftpclient.c:372
 #, c-format
 msgid "Error opening file %s."
 msgstr "%s dosyasını açarken hata oluştu."
 
-#: ../src/remminasftpclient.c:377
+#: ../src/remminasftpclient.c:384
 #, c-format
 msgid "Error writing file %s on server. %s"
 msgstr "%s dosyasını yazarken hata oluştu. %s"
 
-#: ../src/remminasftpclient.c:595 ../src/remminasftpclient.c:664
+#: ../src/remminasftpclient.c:607 ../src/remminasftpclient.c:678
 #, c-format
 msgid "Failed to open directory %s. %s"
 msgstr "%s Klasörünü açma başarısız. %s"
 
-#: ../src/remminasftpclient.c:613
+#: ../src/remminasftpclient.c:625
 #, c-format
 msgid "Failed reading directory. %s"
 msgstr "%s klasörünü okuma başarısız."
 
-#: ../src/remminasftpclient.c:729
+#: ../src/remminasftpclient.c:743
 msgid ""
 "File transfer currently in progress.\n"
 "Are you sure to cancel it?"
@@ -1075,17 +938,21 @@ msgstr ""
 "Şu anda aktif dosya transferi var.\n"
 "İptal etmek istediğinizden eminmisiniz?"
 
-#: ../src/remminasftpclient.c:765
+#: ../src/remminasftpclient.c:779
 #, c-format
 msgid "Failed to delete '%s'. %s"
 msgstr "%s silme başarısız. %s"
 
-#: ../src/remminasftpplugin.c:210
+#: ../src/remminasftpplugin.c:244
+msgid "Show Hidden Files"
+msgstr ""
+
+#: ../src/remminasftpplugin.c:252
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Güvenli Dosya Aktarımı"
 
 #: ../src/remminascaler.c:62
-msgid "Fit Window Size"
+msgid "Fit window size"
 msgstr "Pencere Boyutunu Sığdır"
 
 #: ../src/remminapluginmanager.c:39
@@ -1104,13 +971,21 @@ msgstr "Araç"
 msgid "Preference"
 msgstr "Tercih"
 
-#: ../src/remminapluginmanager.c:259
+#: ../src/remminapluginmanager.c:266
 msgid "Type"
 msgstr "Tip"
 
-#: ../src/remminapluginmanager.c:266
+#: ../src/remminapluginmanager.c:273
 msgid "Description"
 msgstr "Açıklama"
+
+#: ../src/remminapluginmanager.c:280
+msgid "Version"
+msgstr ""
+
+#: ../src/remminakeychooser.c:43
+msgid "<None>"
+msgstr "<Hiçbiri>"
 
 #: ../src/remminakeychooser.c:71
 msgid "Choose a new key"
@@ -1119,3 +994,34 @@ msgstr "Yeni bir tuş seçin"
 #: ../src/remminakeychooser.c:85
 msgid "Please press the new key..."
 msgstr "Lütfen yeni tuşa basın"
+
+#: ../src/remminaexec.c:105
+#, c-format
+msgid "Plugin %s is not registered."
+msgstr "%s eklentisi kaydedilmemiş"
+
+#: ../src/remminaicon.c:107
+msgid "Open Main Window"
+msgstr "Ana Pencereyi Aç"
+
+#: ../src/remminaicon.c:129
+msgid "Enable Service Discovery"
+msgstr "Servis Keşfini Aç"
+
+#. Refresh it in case translation is updated
+#: ../src/remminaicon.c:342 ../src/remminaicon.c:421
+msgid "Remmina Applet"
+msgstr ""
+
+#: ../src/remminaicon.c:343 ../src/remminaicon.c:422
+msgid "Connect to remote desktops through the applet menu"
+msgstr "Uzak masaüstlerine küçük uygulama menüsü aracılığıyla bağlan"
+
+#: ../src/remminaappletmenuitem.c:92
+msgid "Discovered"
+msgstr "Bulundu"
+
+#: ../src/remminaappletmenuitem.c:97
+msgid "New Connection"
+msgstr "Yeni Bağlantı"
+
