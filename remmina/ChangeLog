@@ -1,3 +1,47 @@
+***** 0.9.0 - 2010-12-12 *****
+Main program design and functionality:
+o Rewrite plugin system so that plugins can have more flexibilities
+o Integrate scrolled window and fullscreen view modes into one button
+o Remove quick connect menu and consolidate the feature with Connection->New
+  menu. Move other Edit menu items under Connection menu as well. See
+  http://bugs.debian.org/591755
+o Change 'Quit' menu item to 'Close'
+o Show version information in plugin window
+o Add link button to resolution field to bring up to resolution preference
+o Calculate auto-fit window size more correctly
+o Add subgroup feature, using '/' as subgroup delimiter
+o Remember group expansion status
+o Add shortcut key names to toolbar tooltips
+o Support shortcut key to be same as hostkey, which will be activated by just
+  press(down and up) the hostkey. By default, this is the Keyboard grabbing
+  shortcut.
+o Add pin button to floating toolbar
+o Add tray icon and various related preferences options. All featues in the
+  original GNOME/XFCE panel applet have been ported in it, plus all windows
+  can be minimized to tray (default is off)
+o Add Help/Homepage menu
+
+RDP protocol related:
+o Support TLS negotiation added in FreeRDP 0.8
+o Support audio input redirection added in FreeRDP 0.8
+o Add new preference option 'Use client keyboard mapping' to obey X key
+  mappings (wfaulk)
+
+VNC protocol related:
+o Change 'Proxy Destination' to 'Repeater' to make it clearer. Now the 'Server'
+  is the server and 'Repeater' is the repeater. :)
+
+NX protocol related:
+o Add SSH tunnel
+
+SSH protocol related:
+o Add ability to spawn new session from toolbar menu
+o Add Copy/Paste toolbar menu for SSH terminal
+o Add Font and Scrollback lines preference option
+o Add ability to show/hide hidden files in SFTP
+o Remember paned position in SFTP window
+o Add startup path option in SFTP
+
 ***** 0.8.0 - 2010-07-10 *****
 Main program design and functionality:
 o Introduce a new plugin system. All protocols except SSH are moved to a new
