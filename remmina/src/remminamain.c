@@ -23,6 +23,7 @@
 #include <glib/gstdio.h>
 #include <glib/gi18n.h>
 #include "remminastringarray.h"
+#include "remminapublic.h"
 #include "remminafile.h"
 #include "remminafilemanager.h"
 #include "remminafileeditor.h"
@@ -1121,9 +1122,17 @@ remmina_main_add_tool_plugin (gchar *name, RemminaPlugin *plugin, gpointer data)
 static gboolean
 remmina_main_on_window_state_event (GtkWidget *widget, GdkEventWindowState *event, gpointer user_data)
 {
+    GdkScreen *screen;
+
+    screen = gdk_screen_get_default ();
     if (remmina_pref.minimize_to_tray &&
         (event->changed_mask & GDK_WINDOW_STATE_ICONIFIED) != 0 &&
-        (event->new_window_state & GDK_WINDOW_STATE_ICONIFIED) != 0)
+        (event->new_window_state & GDK_WINDOW_STATE_ICONIFIED) != 0 &&
+        remmina_public_get_current_workspace (screen) ==
+        remmina_public_get_window_workspace (GTK_WINDOW (widget)) &&
+        gdk_screen_get_number (screen) ==
+        gdk_screen_get_number (gtk_widget_get_screen (widget))
+    )
     {
         gtk_widget_hide (widget);
         return TRUE;
