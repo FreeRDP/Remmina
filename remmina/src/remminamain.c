@@ -1121,7 +1121,8 @@ remmina_main_add_tool_plugin (gchar *name, RemminaPlugin *plugin, gpointer data)
 static gboolean
 remmina_main_on_window_state_event (GtkWidget *widget, GdkEventWindowState *event, gpointer user_data)
 {
-    if ((event->changed_mask & GDK_WINDOW_STATE_ICONIFIED) != 0 &&
+    if (remmina_pref.minimize_to_tray &&
+        (event->changed_mask & GDK_WINDOW_STATE_ICONIFIED) != 0 &&
         (event->new_window_state & GDK_WINDOW_STATE_ICONIFIED) != 0)
     {
         gtk_widget_hide (widget);
