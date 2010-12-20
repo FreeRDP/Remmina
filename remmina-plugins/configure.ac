@@ -154,6 +154,7 @@ if test "x$vnc_plugin" != "xno"; then
                 AC_SUBST(VNC_CFLAGS)
                 AC_SUBST(VNC_LIBS)
                 AC_DEFINE([HAVE_LIBVNCCLIENT], [1], [Define to 1 if you have libvncclient.])
+                REMMINA_PLUGINS_SUBDIRS="$REMMINA_PLUGINS_SUBDIRS vnc"
             ], vnc_plugin="no. libvncclient(libvncserver)-dev required.")
         ],[
             vnc_plugin="no. libvncclient(libvncserver) required."
