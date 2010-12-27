@@ -220,7 +220,7 @@ remmina_plugin_manager_show_for_each (RemminaPlugin *plugin, GtkListStore *store
     gtk_list_store_set (store, &iter,
         0, plugin->name,
         1, _(remmina_plugin_type_name[plugin->type]),
-        2, plugin->description,
+        2, g_dgettext (plugin->domain, plugin->description),
         3, plugin->version,
         -1);
     return FALSE;
