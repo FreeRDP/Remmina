@@ -1946,7 +1946,10 @@ remmina_connection_holder_on_switch_page_real (gpointer data)
     {
         remmina_connection_holder_update_toolbar (cnnhld);
         remmina_connection_holder_grab_focus (priv->notebook);
-        remmina_connection_holder_check_resize (cnnhld);
+        if (cnnhld->cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE)
+        {
+            remmina_connection_holder_check_resize (cnnhld);
+        }
     }
     priv->switch_page_handler = 0;
     return FALSE;
@@ -2409,7 +2412,10 @@ remmina_connection_object_on_disconnect (RemminaProtocolWidget *gp, RemminaConne
 static void
 remmina_connection_object_on_desktop_resize (RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 {
-    remmina_connection_holder_check_resize (cnnobj->cnnhld);
+    if (cnnobj->cnnhld->cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE)
+    {
+        remmina_connection_holder_check_resize (cnnobj->cnnhld);
+    }
 }
 
 gboolean
