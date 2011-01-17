@@ -2412,7 +2412,9 @@ remmina_connection_object_on_disconnect (RemminaProtocolWidget *gp, RemminaConne
 static void
 remmina_connection_object_on_desktop_resize (RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 {
-    if (cnnobj->cnnhld->cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE)
+    if (cnnobj->cnnhld &&
+        cnnobj->cnnhld->cnnwin &&
+        cnnobj->cnnhld->cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE)
     {
         remmina_connection_holder_check_resize (cnnobj->cnnhld);
     }
