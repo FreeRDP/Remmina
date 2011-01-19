@@ -1033,10 +1033,12 @@ remmina_file_editor_update_settings (RemminaFileEditor *gfe)
             remmina_file_set_string_ref (priv->remmina_file, (gchar*) key,
                 gtk_combo_box_get_active_text (GTK_COMBO_BOX (value)));
         }
-        else if (GTK_IS_FILE_CHOOSER (value) && gtk_widget_get_sensitive (GTK_WIDGET (value)))
+        else if (GTK_IS_FILE_CHOOSER (value))
         {
             remmina_file_set_string (priv->remmina_file, (gchar*) key,
-                gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (value)));
+                gtk_widget_get_sensitive (GTK_WIDGET (value)) ?
+                gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (value)) :
+                NULL);
         }
         else if (GTK_IS_TOGGLE_BUTTON (value))
         {
