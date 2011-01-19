@@ -1165,6 +1165,7 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
     RemminaFile *remminafile;
     rfbClient *cl = NULL;
     gchar *host;
+    gchar *s = NULL;
 
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
@@ -1202,7 +1203,7 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
 
         if (host[0] == '\0')
         {
-            cl->serverHost = host;
+            cl->serverHost = strdup (host);
             cl->listenSpecified = TRUE;
             if (remmina_plugin_service->file_get_int (remminafile, "ssh_enabled", FALSE))
             {
@@ -1220,12 +1221,15 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
         }
         else
         {
-            remmina_plugin_service->get_server_port (host, 5900, &cl->serverHost, &cl->serverPort);
-            g_free (host);
+            remmina_plugin_service->get_server_port (host, 5900, &s, &cl->serverPort);
+            cl->serverHost = strdup (s);
+            g_free (s);
 
             /* Support short-form (:0, :1) */
             if (cl->serverPort < 100) cl->serverPort += 5900;
         }
+        g_free (host);
+        host = NULL;
 
         if (remmina_plugin_service->file_get_string (remminafile, "proxy"))
         {
@@ -1233,7 +1237,9 @@ remmina_plugin_vnc_main (RemminaProtocolWidget *gp)
             cl->destHost = cl->serverHost;
             cl->destPort = cl->serverPort;
             remmina_plugin_service->get_server_port (remmina_plugin_service->file_get_string (remminafile, "proxy"), 5900,
-                &cl->serverHost, &cl->serverPort);
+                &s, &cl->serverPort);
+            cl->serverHost = strdup (s);
+            g_free (s);
 #endif
         }
 

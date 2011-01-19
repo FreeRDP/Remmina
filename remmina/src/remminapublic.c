@@ -301,9 +301,9 @@ remmina_public_get_server_port (const gchar *server, gint defaultport, gchar **h
         ptr2 = strchr (ptr, ']');
         if (ptr2) *ptr2++ = '\0';
         if (*ptr2 == ':') defaultport = atoi (ptr2 + 1);
-        if (host) *host = strdup (ptr);
+        if (host) *host = g_strdup (ptr);
         if (port) *port = defaultport;
-        free (str);
+        g_free (str);
         return;
     }
 
