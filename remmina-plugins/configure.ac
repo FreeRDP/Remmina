@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.60)
-AC_INIT(remmina-plugins, 0.9.2)
+AC_INIT(remmina-plugins, 0.9.99.1)
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([common/remminaplugincommon.h])
 AC_CONFIG_HEADER([config.h])
