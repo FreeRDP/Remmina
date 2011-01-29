@@ -649,27 +649,44 @@ remmina_plugin_rdpui_create_surface (rdpInst *inst, int width, int height, RD_HB
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
-    return NULL;
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_CREATE_SURFACE;
+    ui->object_id = ++gpdata->object_id_seq;
+    ui->alt_object_id = old_surface;
+    ui->width = width;
+    ui->height = height;
+    remmina_plugin_rdpui_queue_ui (gp, ui);
+    return (RD_HBITMAP) ui->object_id;
 }
 
 static void
 remmina_plugin_rdpui_set_surface (rdpInst *inst, RD_HBITMAP surface)
 {
     RemminaProtocolWidget *gp;
-    RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
+
+    gp = GET_WIDGET (inst);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_SET_SURFACE;
+    ui->object_id = (guint) surface;
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void
 remmina_plugin_rdpui_destroy_surface (rdpInst *inst, RD_HBITMAP surface)
 {
     RemminaProtocolWidget *gp;
-    RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gp = GET_WIDGET (inst);
-    gpdata = GET_DATA (gp);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_DESTROY_SURFACE;
+    ui->object_id = (guint) surface;
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void
