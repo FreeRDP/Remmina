@@ -398,9 +398,6 @@ remmina_plugin_rdp_close_connection (RemminaProtocolWidget *gp)
         if (gpdata->thread) pthread_join (gpdata->thread, NULL);
     }
 
-    remmina_plugin_rdpev_uninit (gp);
-    remmina_plugin_rdpui_uninit (gp);
-
     if (gpdata->chan_man && gpdata->inst)
     {
         freerdp_chanman_close (gpdata->chan_man, gpdata->inst);
@@ -422,6 +419,9 @@ remmina_plugin_rdp_close_connection (RemminaProtocolWidget *gp)
         gpdata->chan_man = NULL;
     }
     pthread_mutex_destroy (&gpdata->mutex);
+
+    remmina_plugin_rdpev_uninit (gp);
+    remmina_plugin_rdpui_uninit (gp);
 
     remmina_plugin_service->protocol_plugin_emit_signal (gp, "disconnect");
     return FALSE;

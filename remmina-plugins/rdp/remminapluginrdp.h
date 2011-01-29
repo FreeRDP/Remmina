@@ -74,6 +74,9 @@ typedef struct _RemminaPluginRdpData
     gint bitmap_pad;
     gint *colormap;
 
+    guint object_id_seq;
+    GHashTable *object_table;
+
     GAsyncQueue *ui_queue;
     guint ui_handler;
 
@@ -120,7 +123,8 @@ typedef enum
 typedef struct _RemminaPluginRdpUiObject
 {
     RemminaPluginRdpUiType type;
-    guint32 object_id;
+    guint object_id;
+    guint alt_object_id;
     gint x;
     gint y;
     gint cx;
