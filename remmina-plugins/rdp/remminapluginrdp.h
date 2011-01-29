@@ -24,6 +24,7 @@
 #include "common/remminaplugincommon.h"
 #include <freerdp/freerdp.h>
 #include <freerdp/chanman.h>
+#include <gdk/gdkx.h>
 
 #define LOCK_BUFFER(t)      if(t){CANCEL_DEFER}pthread_mutex_lock(&gpdata->mutex);
 #define UNLOCK_BUFFER(t)    pthread_mutex_unlock(&gpdata->mutex);if(t){CANCEL_ASYNC}
@@ -53,30 +54,28 @@ typedef struct _RemminaPluginRdpData
     RD_PLUGIN_DATA drdynvc_data[5];
 
     GtkWidget *drawing_area;
-    GdkPixbuf *drw_buffer;
-    GdkPixbuf *rgb_buffer;
-    GdkPixbuf *scale_buffer;
     gint scale_width;
     gint scale_height;
+    gdouble scale_x;
+    gdouble scale_y;
     guint scale_handler;
-    guchar *colormap;
-    gint clip_x, clip_y, clip_w, clip_h;
-    gboolean clip;
-    guchar fgcolor[3];
-    guchar bgcolor[3];
-    guchar pattern[64 * 3];
-    gint pattern_w, pattern_h;
     gboolean capslock_initstate;
     gboolean numlock_initstate;
     gboolean use_client_keymap;
 
-    gint queuedraw_x, queuedraw_y, queuedraw_w, queuedraw_h;
-    guint queuedraw_handler;
+    Display *display;
+    Visual *visual;
+    Drawable drw_surface;
+    Pixmap rgb_surface;
+    GdkPixmap *rgb_pixmap;
+	GC gc;
+    gint depth;
+    gint bpp;
+    gint bitmap_pad;
+    gint *colormap;
 
-    GdkPixbuf *queuecursor_pixbuf;
-    gboolean queuecursor_null;
-    gint queuecursor_x, queuecursor_y;
-    guint queuecursor_handler;
+    GAsyncQueue *ui_queue;
+    guint ui_handler;
 
     GArray *pressed_keys;
     GAsyncQueue *event_queue;
@@ -90,6 +89,50 @@ typedef struct _RemminaPluginRdpEvent
     gint param1;
     gint param2;
 } RemminaPluginRdpEvent;
+
+typedef enum
+{
+    REMMINA_PLUGIN_RDP_UI_CONNECTED = 0,
+    REMMINA_PLUGIN_RDP_UI_CREATE_GLYPH,
+    REMMINA_PLUGIN_RDP_UI_DESTROY_GLYPH,
+    REMMINA_PLUGIN_RDP_UI_CREATE_BITMAP,
+    REMMINA_PLUGIN_RDP_UI_PAINT_BITMAP,
+    REMMINA_PLUGIN_RDP_UI_DESTROY_BITMAP,
+    REMMINA_PLUGIN_RDP_UI_LINE,
+    REMMINA_PLUGIN_RDP_UI_RECT,
+    REMMINA_PLUGIN_RDP_UI_POLYLINE,
+    REMMINA_PLUGIN_RDP_UI_START_DRAW_GLYPHS,
+    REMMINA_PLUGIN_RDP_UI_DRAW_GLYPH,
+    REMMINA_PLUGIN_RDP_UI_END_DRAW_GLYPHS,
+    REMMINA_PLUGIN_RDP_UI_DESTBLT,
+    REMMINA_PLUGIN_RDP_UI_PATBLT,
+    REMMINA_PLUGIN_RDP_UI_SCREENBLT,
+    REMMINA_PLUGIN_RDP_UI_MEMBLT,
+    REMMINA_PLUGIN_RDP_UI_SET_CLIP,
+    REMMINA_PLUGIN_RDP_UI_RESET_CLIP,
+    REMMINA_PLUGIN_RDP_UI_SET_CURSOR,
+    REMMINA_PLUGIN_RDP_UI_SET_DEFAULT_CURSOR,
+    REMMINA_PLUGIN_RDP_UI_CREATE_SURFACE,
+    REMMINA_PLUGIN_RDP_UI_SET_SURFACE,
+    REMMINA_PLUGIN_RDP_UI_DESTROY_SURFACE
+} RemminaPluginRdpUiType;
+
+typedef struct _RemminaPluginRdpUiObject
+{
+    RemminaPluginRdpUiType type;
+    guint32 object_id;
+    gint x;
+    gint y;
+    gint cx;
+    gint cy;
+    gint width;
+    gint height;
+    gint bpp;
+    gint bgcolor;
+    gint fgcolor;
+    gint opcode;
+    gpointer data;
+} RemminaPluginRdpUiObject;
 
 #endif
 
