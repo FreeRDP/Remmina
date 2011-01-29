@@ -363,8 +363,8 @@ remmina_plugin_rdp_init (RemminaProtocolWidget *gp)
 
     pthread_mutex_init (&gpdata->mutex, NULL);
 
-    remmina_plugin_rdpui_init (gp);
     remmina_plugin_rdpev_init (gp);
+    remmina_plugin_rdpui_init (gp);
 }
 
 static gboolean
@@ -451,11 +451,10 @@ remmina_plugin_rdp_call_feature (RemminaProtocolWidget *gp, const RemminaProtoco
             remmina_plugin_rdpev_update_scale (gp);
             break;
         case REMMINA_PLUGIN_RDP_FEATURE_TOOL_REFRESH:
-            LOCK_BUFFER (FALSE)
-            remmina_plugin_rdpui_update_rect (gp, 0, 0,
+            gtk_widget_queue_draw_area (gpdata->drawing_area,
+                0, 0,
                 remmina_plugin_service->protocol_plugin_get_width (gp),
                 remmina_plugin_service->protocol_plugin_get_height (gp));
-            UNLOCK_BUFFER (FALSE)
             break;
         default:
             break;
