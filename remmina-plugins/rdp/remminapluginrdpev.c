@@ -264,8 +264,6 @@ remmina_plugin_rdpev_update_scale_factor (RemminaProtocolWidget *gp)
     {
         if (width > 1 && height > 1)
         {
-            LOCK_BUFFER (FALSE)
-
             gpwidth = remmina_plugin_service->protocol_plugin_get_width (gp);
             gpheight = remmina_plugin_service->protocol_plugin_get_height (gp);
             hscale = remmina_plugin_service->file_get_int (remminafile, "hscale", 0);
@@ -275,22 +273,16 @@ remmina_plugin_rdpev_update_scale_factor (RemminaProtocolWidget *gp)
             gpdata->scale_height = (vscale > 0 ?
                 MAX (1, gpheight * vscale / 100) : height);
 
-            gpdata->scale_x = (gdouble)gpdata->scale_width / (gdouble)gpwidth,
-            gpdata->scale_y = (gdouble)gpdata->scale_height / (gdouble)gpheight,
-
-            UNLOCK_BUFFER (FALSE)
+            gpdata->scale_x = (gdouble)gpdata->scale_width / (gdouble)gpwidth;
+            gpdata->scale_y = (gdouble)gpdata->scale_height / (gdouble)gpheight;
         }
     }
     else
     {
-        LOCK_BUFFER (FALSE)
-
         gpdata->scale_width = 0;
         gpdata->scale_height = 0;
         gpdata->scale_x = 0;
         gpdata->scale_y = 0;
-
-        UNLOCK_BUFFER (FALSE)
     }
     if (width > 1 && height > 1)
     {
@@ -544,6 +536,8 @@ remmina_plugin_rdpev_init (RemminaProtocolWidget *gp)
         fcntl (gpdata->event_pipe[0], F_SETFL, flags | O_NONBLOCK);
     }
 
+    gpdata->object_table = g_hash_table_new (NULL, NULL);
+
     gpdata->display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
     gpdata->depth = DefaultDepth (gpdata->display, DefaultScreen (gpdata->display));
     gpdata->visual = GDK_VISUAL_XVISUAL (gdk_visual_get_best_with_depth (gpdata->depth));
@@ -602,6 +596,8 @@ remmina_plugin_rdpev_uninit (RemminaProtocolWidget *gp)
         g_object_unref (gpdata->rgb_pixmap);
         gpdata->rgb_pixmap = NULL;
     }
+
+    g_hash_table_destroy (gpdata->object_table);
 
     g_array_free (gpdata->pressed_keys, TRUE);
     g_async_queue_unref (gpdata->event_queue);
@@ -806,6 +802,66 @@ remmina_plugin_rdpev_rect (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *
     }
 }
 
+static void
+remmina_plugin_rdpev_create_surface (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+    Pixmap new_pix, old_pix;
+
+    g_print ("create_surface: object_id=%i old_object_id=%i\n", ui->object_id, ui->alt_object_id);
+    gpdata = GET_DATA (gp);
+    new_pix = XCreatePixmap (gpdata->display, gpdata->rgb_surface, ui->width, ui->height, gpdata->depth);
+    g_hash_table_insert (gpdata->object_table, (gpointer) ui->object_id, (gpointer) new_pix);
+    if (ui->alt_object_id)
+    {
+        old_pix = (Pixmap) g_hash_table_lookup (gpdata->object_table, (gpointer) ui->alt_object_id);
+        XCopyArea (gpdata->display, old_pix, new_pix, gpdata->gc, 0, 0,
+            ui->width, ui->height, 0, 0);
+        XFreePixmap (gpdata->display, old_pix);
+        if (gpdata->drw_surface == old_pix)
+        {
+            gpdata->drw_surface = new_pix;
+        }
+    }
+}
+
+static void
+remmina_plugin_rdpev_set_surface (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+
+    g_print ("set_surface: object_id=%i\n", ui->object_id);
+    gpdata = GET_DATA (gp);
+    if (ui->object_id)
+    {
+        gpdata->drw_surface = (Drawable) g_hash_table_lookup (gpdata->object_table, (gpointer) ui->object_id);
+    }
+    else
+    {
+        gpdata->drw_surface = gpdata->rgb_surface;
+    }
+}
+
+static void
+remmina_plugin_rdpev_destroy_surface (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+    Pixmap pix;
+
+    g_print ("destroy_surface: object_id=%i\n", ui->object_id);
+    gpdata = GET_DATA (gp);
+    pix = (Pixmap) g_hash_table_lookup (gpdata->object_table, (gpointer) ui->object_id);
+    if (gpdata->drw_surface == pix)
+    {
+        gpdata->drw_surface = gpdata->rgb_surface;
+    }
+    if (pix)
+    {
+        XFreePixmap (gpdata->display, pix);
+    }
+    g_hash_table_remove (gpdata->object_table, (gpointer) ui->object_id);
+}
+
 gboolean
 remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
 {
@@ -826,6 +882,15 @@ remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
             break;
         case REMMINA_PLUGIN_RDP_UI_RECT:
             remmina_plugin_rdpev_rect (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_CREATE_SURFACE:
+            remmina_plugin_rdpev_create_surface (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_SET_SURFACE:
+            remmina_plugin_rdpev_set_surface (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_DESTROY_SURFACE:
+            remmina_plugin_rdpev_destroy_surface (gp, ui);
             break;
         default:
             break;
