@@ -28,8 +28,7 @@ void remmina_plugin_rdpev_pre_connect (RemminaProtocolWidget *gp);
 void remmina_plugin_rdpev_post_connect (RemminaProtocolWidget *gp);
 void remmina_plugin_rdpev_uninit (RemminaProtocolWidget *gp);
 void remmina_plugin_rdpev_update_scale (RemminaProtocolWidget *gp);
-gboolean remmina_plugin_rdpev_queuedraw (RemminaProtocolWidget *gp);
-gboolean remmina_plugin_rdpev_queuecursor (RemminaProtocolWidget *gp);
+gboolean remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp);
 void remmina_plugin_rdpev_unfocus (RemminaProtocolWidget *gp);
 
 G_END_DECLS
