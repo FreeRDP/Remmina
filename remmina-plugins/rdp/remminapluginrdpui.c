@@ -27,6 +27,260 @@
 #include <X11/keysym.h>
 #include <gdk/gdkx.h>
 
+/******* RDP to Xlib color conversion (ported from xfreerdp) *********/
+#define SPLIT32BGR(_alpha, _red, _green, _blue, _pixel) \
+  _red = _pixel & 0xff; \
+  _green = (_pixel & 0xff00) >> 8; \
+  _blue = (_pixel & 0xff0000) >> 16; \
+  _alpha = (_pixel & 0xff000000) >> 24;
+
+#define SPLIT24BGR(_red, _green, _blue, _pixel) \
+  _red = _pixel & 0xff; \
+  _green = (_pixel & 0xff00) >> 8; \
+  _blue = (_pixel & 0xff0000) >> 16;
+
+#define SPLIT24RGB(_red, _green, _blue, _pixel) \
+  _blue  = _pixel & 0xff; \
+  _green = (_pixel & 0xff00) >> 8; \
+  _red   = (_pixel & 0xff0000) >> 16;
+
+#define SPLIT16RGB(_red, _green, _blue, _pixel) \
+  _red = ((_pixel >> 8) & 0xf8) | ((_pixel >> 13) & 0x7); \
+  _green = ((_pixel >> 3) & 0xfc) | ((_pixel >> 9) & 0x3); \
+  _blue = ((_pixel << 3) & 0xf8) | ((_pixel >> 2) & 0x7);
+
+#define SPLIT15RGB(_red, _green, _blue, _pixel) \
+  _red = ((_pixel >> 7) & 0xf8) | ((_pixel >> 12) & 0x7); \
+  _green = ((_pixel >> 2) & 0xf8) | ((_pixel >> 8) & 0x7); \
+  _blue = ((_pixel << 3) & 0xf8) | ((_pixel >> 2) & 0x7);
+
+#define MAKE32RGB(_alpha, _red, _green, _blue) \
+  (_alpha << 24) | (_red << 16) | (_green << 8) | _blue;
+
+#define MAKE24RGB(_red, _green, _blue) \
+  (_red << 16) | (_green << 8) | _blue;
+
+#define MAKE15RGB(_red, _green, _blue) \
+  (((_red & 0xff) >> 3) << 10) | \
+  (((_green & 0xff) >> 3) <<  5) | \
+  (((_blue & 0xff) >> 3) <<  0)
+
+#define MAKE16RGB(_red, _green, _blue) \
+  (((_red & 0xff) >> 3) << 11) | \
+  (((_green & 0xff) >> 2) <<  5) | \
+  (((_blue & 0xff) >> 3) <<  0)
+
+static gint
+remmina_plugin_rdpui_color_convert (RemminaPluginRdpData *gpdata, gint color)
+{
+    gint alpha;
+    gint red;
+    gint green;
+    gint blue;
+    gint rv;
+
+    alpha = 0xff;
+    red = 0;
+    green = 0;
+    blue = 0;
+    rv = 0;
+    switch (gpdata->settings->server_depth)
+    {
+        case 32:
+            SPLIT32BGR(alpha, red, green, blue, color);
+            break;
+        case 24:
+            SPLIT24BGR(red, green, blue, color);
+            break;
+        case 16:
+            SPLIT16RGB(red, green, blue, color);
+            break;
+        case 15:
+            SPLIT15RGB(red, green, blue, color);
+            break;
+        case 8:
+            color &= 0xff;
+            SPLIT24RGB(red, green, blue, gpdata->colormap[color]);
+            break;
+        case 1:
+            if (color != 0)
+            {
+                red = 0xff;
+                green = 0xff;
+                blue = 0xff;
+            }
+            break;
+        default:
+            remmina_plugin_service->log_printf ("[RDP]unsupported server bpp %i\n", gpdata->settings->server_depth);
+            break;
+    }
+    switch (gpdata->bpp)
+    {
+        case 32:
+            rv = MAKE32RGB(alpha, red, green, blue);
+            break;
+        case 24:
+            rv = MAKE24RGB(red, green, blue);
+            break;
+        case 16:
+            rv = MAKE16RGB(red, green, blue);
+            break;
+        case 15:
+            rv = MAKE15RGB(red, green, blue);
+            break;
+        case 1:
+            if ((red != 0) || (green != 0) || (blue != 0))
+            {
+                rv = 1;
+            }
+            break;
+        default:
+            remmina_plugin_service->log_printf ("[RDP]unsupported client bpp %i\n", gpdata->bpp);
+            break;
+    }
+    return rv;
+}
+
+static guchar *
+remmina_plugin_rdpui_image_convert (RemminaPluginRdpData *gpdata, gint width, gint height, guchar *in_data)
+{
+    gint red;
+    gint green;
+    gint blue;
+    gint index;
+    gint pixel;
+    guchar *out_data;
+    guchar *src8;
+    guchar *dst8;
+
+    if ((gpdata->settings->server_depth == 24) && (gpdata->bpp == 32))
+    {
+        out_data = g_new (guchar, width * height * 4);
+        src8 = in_data;
+        dst8 = out_data;
+        for (index = width * height; index > 0; index--)
+        {
+            blue = *(src8++);
+            green = *(src8++);
+            red = *(src8++);
+            pixel = MAKE24RGB(red, green, blue);
+            *dst8++ = pixel & 0xff;
+            *dst8++ = (pixel >> 8) & 0xff;
+            *dst8++ = (pixel >> 16) & 0xff;
+            *dst8++ = (pixel >> 24) & 0xff;
+        }
+        return out_data;
+    }
+    else if ((gpdata->settings->server_depth == 16) && (gpdata->bpp == 32))
+    {
+        out_data = g_new (guchar, width * height * 4);
+        src8 = in_data;
+        dst8 = out_data;
+        for (index = width * height; index > 0; index--)
+        {
+            pixel = *src8++;
+            pixel |= (*src8++) << 8;
+            SPLIT16RGB(red, green, blue, pixel);
+            pixel = MAKE24RGB(red, green, blue);
+            *dst8++ = pixel & 0xff;
+            *dst8++ = (pixel >> 8) & 0xff;
+            *dst8++ = (pixel >> 16) & 0xff;
+            *dst8++ = (pixel >> 24) & 0xff;
+        }
+        return out_data;
+    }
+    else if ((gpdata->settings->server_depth == 15) && (gpdata->bpp == 32))
+    {
+        out_data = g_new (guchar, width * height * 4);
+        src8 = in_data;
+        dst8 = out_data;
+        for (index = width * height; index > 0; index--)
+        {
+            pixel = *src8++;
+            pixel |= (*src8++) << 8;
+            SPLIT15RGB(red, green, blue, pixel);
+            pixel = MAKE24RGB(red, green, blue);
+            *dst8++ = pixel & 0xff;
+            *dst8++ = (pixel >> 8) & 0xff;
+            *dst8++ = (pixel >> 16) & 0xff;
+            *dst8++ = (pixel >> 24) & 0xff;
+        }
+        return out_data;
+    }
+    else if ((gpdata->settings->server_depth == 8) && (gpdata->bpp == 32))
+    {
+        out_data = g_new (guchar, width * height * 4);
+        src8 = in_data;
+        dst8 = out_data;
+        for (index = width * height; index > 0; index--)
+        {
+            pixel = *src8;
+            src8++;
+            pixel = gpdata->colormap[pixel];
+            *dst8++ = pixel & 0xff;
+            *dst8++ = (pixel >> 8) & 0xff;
+            *dst8++ = (pixel >> 16) & 0xff;
+            *dst8++ = (pixel >> 24) & 0xff;
+        }
+        return out_data;
+    }
+    else if ((gpdata->settings->server_depth == 15) && (gpdata->bpp == 16))
+    {
+        out_data = g_new (guchar, width * height * 2);
+        src8 = in_data;
+        dst8 = out_data;
+        for (index = width * height; index > 0; index--)
+        {
+            pixel = *src8++;
+            pixel |= (*src8++) << 8;
+            SPLIT15RGB(red, green, blue, pixel);
+            pixel = MAKE16RGB(red, green, blue);
+            *dst8++ = pixel & 0xff;
+            *dst8++ = (pixel >> 8) & 0xff;
+        }
+        return out_data;
+    }
+    else if ((gpdata->settings->server_depth == 8) && (gpdata->bpp == 16))
+    {
+        out_data = g_new (guchar, width * height * 2);
+        src8 = in_data;
+        dst8 = out_data;
+        for (index = width * height; index > 0; index--)
+        {
+            pixel = *src8;
+            src8++;
+            pixel = gpdata->colormap[pixel];
+            SPLIT24RGB(red, green, blue, pixel);
+            pixel = MAKE16RGB(red, green, blue);
+            *dst8++ = pixel & 0xff;
+            *dst8++ = (pixel >> 8) & 0xff;
+        }
+        return out_data;
+    }
+    else if ((gpdata->settings->server_depth == 8) && (gpdata->bpp == 15))
+    {
+        out_data = g_new (guchar, width * height * 2);
+        src8 = in_data;
+        dst8 = out_data;
+        for (index = width * height; index > 0; index--)
+        {
+            pixel = *src8;
+            src8++;
+            pixel = gpdata->colormap[pixel];
+            SPLIT24RGB(red, green, blue, pixel);
+            pixel = MAKE15RGB(red, green, blue);
+            *dst8++ = pixel & 0xff;
+            *dst8++ = (pixel >> 8) & 0xff;
+        }
+        return out_data;
+    }
+    else
+    {
+        return g_memdup (in_data, width * height * ((gpdata->settings->server_depth + 7) / 8));
+    }
+}
+
+/*********************************************************************/
 #define GLYPH_PIXEL(_rowdata,_x) (_rowdata[(_x) / 8] & (0x80 >> ((_x) % 8)))
 
 static guchar hatch_patterns[] = {
@@ -37,36 +291,6 @@ static guchar hatch_patterns[] = {
     0x08, 0x08, 0x08, 0xff, 0x08, 0x08, 0x08, 0x08, /* 4 - bsCross */
     0x81, 0x42, 0x24, 0x18, 0x18, 0x24, 0x42, 0x81  /* 5 - bsDiagCross */
 };
-
-static void
-remmina_plugin_rdpui_color_convert (RemminaPluginRdpData *gpdata,
-    gint cv, guchar pixel[3])
-{
-    switch (gpdata->settings->server_depth)
-    {
-    case 24:
-        pixel[0] = (cv & 0xff);
-        pixel[1] = ((cv & 0xff00) >> 8);
-        pixel[2] = ((cv & 0xff0000) >> 16);
-        break;
-    case 16:
-        pixel[0] = ((cv & 0xf800) >> 8) | ((cv & 0xe000) >> 13);
-        pixel[1] = ((cv & 0x07e0) >> 3) | ((cv & 0x0600) >> 9);
-        pixel[2] = ((cv & 0x1f) << 3) | ((cv & 0x1c) >> 2);
-        break;
-    case 15:
-        pixel[0] = ((cv & 0x7c00) >> 7) | ((cv & 0x7000) >> 12);
-        pixel[1] = ((cv & 0x03e0) >> 2) | ((cv & 0x0380) >> 7);
-        pixel[2] = ((cv & 0x1f) << 3) | ((cv & 0x1c) >> 2);
-        break;
-    case 8:
-        if (gpdata->colormap)
-        {
-            memcpy (pixel, gpdata->colormap + (cv & 0xff) * 3, 3);
-        }
-        break;
-    }
-}
 
 static void
 remmina_plugin_rdpui_bitmap_flip (GdkPixbuf *pixbuf)
@@ -297,7 +521,6 @@ remmina_plugin_rdpui_desktop_restore (rdpInst *inst, int offset, int x, int y,
 static RD_HGLYPH
 remmina_plugin_rdpui_create_glyph (rdpInst *inst, int width, int height, uint8 * data)
 {
-    g_print ("create_glyph %i %i %X\n", width, height, (int)data);
     return NULL;
 }
 
@@ -309,7 +532,20 @@ remmina_plugin_rdpui_destroy_glyph (rdpInst *inst, RD_HGLYPH glyph)
 static RD_HBITMAP
 remmina_plugin_rdpui_create_bitmap (rdpInst *inst, int width, int height, uint8 * data)
 {
-    return NULL;
+    RemminaProtocolWidget *gp;
+    RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
+
+    gp = GET_WIDGET (inst);
+    gpdata = GET_DATA (gp);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_CREATE_BITMAP;
+    ui->object_id = ++gpdata->object_id_seq;
+    ui->width = width;
+    ui->height = height;
+    ui->data = remmina_plugin_rdpui_image_convert (gpdata, width, height, data);
+    remmina_plugin_rdpui_queue_ui (gp, ui);
+    return (RD_HBITMAP) ui->object_id;
 }
 
 static void
@@ -318,15 +554,33 @@ remmina_plugin_rdpui_paint_bitmap (rdpInst *inst, int x, int y, int cx, int cy, 
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
-    g_print ("ui_paint_bitmap %i %i %i %i %i %i\n", x, y, cx, cy, width, height);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_PAINT_BITMAP;
+    ui->x = x;
+    ui->y = y;
+    ui->cx = cx;
+    ui->cy = cy;
+    ui->width = width;
+    ui->height = height;
+    ui->data = remmina_plugin_rdpui_image_convert (gpdata, width, height, data);
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void
 remmina_plugin_rdpui_destroy_bitmap (rdpInst *inst, RD_HBITMAP bmp)
 {
+    RemminaProtocolWidget *gp;
+    RemminaPluginRdpUiObject *ui;
+
+    gp = GET_WIDGET (inst);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_DESTROY_BITMAP;
+    ui->object_id = (guint) bmp;
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void
@@ -336,7 +590,6 @@ remmina_plugin_rdpui_line (rdpInst *inst, uint8 opcode, int startx, int starty, 
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
 
-    g_print ("ui_line %i %i %i %i %i %X\n", opcode, startx, starty, endx, endy, pen->color);
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
 }
@@ -357,7 +610,7 @@ remmina_plugin_rdpui_rect (rdpInst *inst, int x, int y, int cx, int cy, int colo
     ui->y = y;
     ui->cx = cx;
     ui->cy = cy;
-    ui->fgcolor = color;
+    ui->fgcolor = remmina_plugin_rdpui_color_convert (gpdata, color);
     remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
@@ -374,7 +627,6 @@ remmina_plugin_rdpui_polyline (rdpInst *inst, uint8 opcode, RD_POINT * points, i
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
 
-    g_print ("polyline: %i %X %i\n", opcode, pen->color, npoints);
     if (npoints < 2) return;
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
@@ -395,7 +647,6 @@ remmina_plugin_rdpui_start_draw_glyphs (rdpInst *inst, int bgcolor, int fgcolor)
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
-    g_print ("start_draw_glyphs: %X %X\n", bgcolor, fgcolor);
 }
 
 static void
@@ -408,7 +659,6 @@ remmina_plugin_rdpui_draw_glyph (rdpInst *inst, int x, int y, int cx, int cy,
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
     
-    g_print ("draw_glyph: %X %i %i %i %i\n", (int)glyph, x, y, cx, cy);
 }
 
 static void
@@ -419,7 +669,6 @@ remmina_plugin_rdpui_end_draw_glyphs (rdpInst *inst, int x, int y, int cx, int c
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
-    g_print ("end_draw_glyphs %i %i %i %i\n", x, y, cx, cy);
 }
 
 static uint32
@@ -465,7 +714,6 @@ remmina_plugin_rdpui_destblt (rdpInst *inst, uint8 opcode, int x, int y, int cx,
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
 
-    g_print ("destblt: %i %i %i %i %i\n", opcode, x, y, cx, cy);
 }
 
 static void
@@ -477,7 +725,6 @@ remmina_plugin_rdpui_patblt (rdpInst *inst, uint8 opcode, int x, int y, int cx, 
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
-    g_print ("patblt %i %i %i %i opcode=%i style=%i fgcolor=%X \n", x, y, cx, cy, opcode, brush->style, fgcolor);
 }
 
 static void
@@ -490,7 +737,6 @@ remmina_plugin_rdpui_screenblt (rdpInst *inst, uint8 opcode, int x, int y, int c
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
 
-    g_print ("screenblt: %i %i %i %i %i %i %i\n", opcode, x, y, cx, cy, srcx, srcy);
 }
 
 static void
@@ -503,7 +749,6 @@ remmina_plugin_rdpui_memblt (rdpInst *inst, uint8 opcode, int x, int y, int cx, 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
 
-    g_print ("memblt: %i %i %i %i %i %i %i\n", opcode, x, y, cx, cy, srcx, srcy);
 }
 
 static void
@@ -524,7 +769,6 @@ remmina_plugin_rdpui_set_clip (rdpInst *inst, int x, int y, int cx, int cy)
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
 
-    g_print ("ui_set_clip %i %i %i %i\n", x, y, cx, cy);
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
 }
@@ -535,7 +779,6 @@ remmina_plugin_rdpui_reset_clip (rdpInst *inst)
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
 
-    g_print ("ui_reset_clip\n");
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
 }
@@ -656,7 +899,7 @@ remmina_plugin_rdpui_create_surface (rdpInst *inst, int width, int height, RD_HB
     ui = g_new0 (RemminaPluginRdpUiObject, 1);
     ui->type = REMMINA_PLUGIN_RDP_UI_CREATE_SURFACE;
     ui->object_id = ++gpdata->object_id_seq;
-    ui->alt_object_id = old_surface;
+    ui->alt_object_id = (guint) old_surface;
     ui->width = width;
     ui->height = height;
     remmina_plugin_rdpui_queue_ui (gp, ui);
