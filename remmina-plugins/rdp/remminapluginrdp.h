@@ -69,6 +69,7 @@ typedef struct _RemminaPluginRdpData
     Pixmap rgb_surface;
     GdkPixmap *rgb_pixmap;
     GC gc;
+    GC gc_default;
     Pixmap bitmap_mono;
     GC gc_mono;
     gint depth;
@@ -110,7 +111,8 @@ typedef enum
     REMMINA_PLUGIN_RDP_UI_DRAW_GLYPH,
     REMMINA_PLUGIN_RDP_UI_END_DRAW_GLYPHS,
     REMMINA_PLUGIN_RDP_UI_DESTBLT,
-    REMMINA_PLUGIN_RDP_UI_PATBLT,
+    REMMINA_PLUGIN_RDP_UI_PATBLT_GLYPH,
+    REMMINA_PLUGIN_RDP_UI_PATBLT_BITMAP,
     REMMINA_PLUGIN_RDP_UI_SCREENBLT,
     REMMINA_PLUGIN_RDP_UI_MEMBLT,
     REMMINA_PLUGIN_RDP_UI_SET_CLIP,
@@ -139,7 +141,7 @@ typedef struct _RemminaPluginRdpUiObject
     gint bgcolor;
     gint fgcolor;
     gint opcode;
-    gpointer data;
+    guchar *data;
 } RemminaPluginRdpUiObject;
 
 #endif
