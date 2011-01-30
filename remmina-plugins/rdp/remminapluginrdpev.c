@@ -421,7 +421,7 @@ remmina_plugin_rdpev_init (RemminaProtocolWidget *gp)
         fcntl (gpdata->event_pipe[0], F_SETFL, flags | O_NONBLOCK);
     }
 
-    gpdata->object_table = g_hash_table_new (NULL, NULL);
+    gpdata->object_table = g_hash_table_new_full (NULL, NULL, NULL, g_free);
 
     gpdata->display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
     gpdata->depth = DefaultDepth (gpdata->display, DefaultScreen (gpdata->display));
@@ -649,6 +649,29 @@ remmina_plugin_rdpev_set_rop3 (RemminaPluginRdpData *gpdata, gint rop3)
 }
 
 static void
+remmina_plugin_rdpev_insert_drawable (RemminaPluginRdpData *gpdata, guint object_id, Drawable obj)
+{
+    Drawable *p;
+
+    p = g_new (Drawable, 1);
+    *p = obj;
+    g_hash_table_insert (gpdata->object_table, (gpointer) object_id, p);
+}
+
+static Drawable
+remmina_plugin_rdpev_get_drawable (RemminaPluginRdpData *gpdata, guint object_id)
+{
+    Drawable *p;
+
+    p = (Drawable*) g_hash_table_lookup (gpdata->object_table, (gpointer) object_id);
+    if (!p)
+    {
+        return 0;
+    }
+    return *p;
+}
+
+static void
 remmina_plugin_rdpev_connected (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
     RemminaPluginRdpData *gpdata;
@@ -691,19 +714,22 @@ remmina_plugin_rdpev_create_surface (RemminaProtocolWidget *gp, RemminaPluginRdp
     RemminaPluginRdpData *gpdata;
     Pixmap new_pix, old_pix;
 
-    /*g_print ("create_surface: object_id=%i old_object_id=%i\n", ui->object_id, ui->alt_object_id);*/
+    /*g_print ("create_surface: object_id=%i alt_object_id=%i\n", ui->object_id, ui->alt_object_id);*/
     gpdata = GET_DATA (gp);
     new_pix = XCreatePixmap (gpdata->display, gpdata->rgb_surface, ui->width, ui->height, gpdata->depth);
-    g_hash_table_insert (gpdata->object_table, (gpointer) ui->object_id, (gpointer) new_pix);
+    remmina_plugin_rdpev_insert_drawable (gpdata, ui->object_id, new_pix);
     if (ui->alt_object_id)
     {
-        old_pix = (Pixmap) g_hash_table_lookup (gpdata->object_table, (gpointer) ui->alt_object_id);
-        XCopyArea (gpdata->display, old_pix, new_pix, gpdata->gc, 0, 0,
-            ui->width, ui->height, 0, 0);
-        XFreePixmap (gpdata->display, old_pix);
-        if (gpdata->drw_surface == old_pix)
+        old_pix = remmina_plugin_rdpev_get_drawable (gpdata, ui->alt_object_id);
+        if (old_pix)
         {
-            gpdata->drw_surface = new_pix;
+            XCopyArea (gpdata->display, old_pix, new_pix, gpdata->gc, 0, 0,
+                ui->width, ui->height, 0, 0);
+            XFreePixmap (gpdata->display, old_pix);
+            if (gpdata->drw_surface == old_pix)
+            {
+                gpdata->drw_surface = new_pix;
+            }
         }
     }
 }
@@ -717,7 +743,11 @@ remmina_plugin_rdpev_set_surface (RemminaProtocolWidget *gp, RemminaPluginRdpUiO
     gpdata = GET_DATA (gp);
     if (ui->object_id)
     {
-        gpdata->drw_surface = (Drawable) g_hash_table_lookup (gpdata->object_table, (gpointer) ui->object_id);
+        gpdata->drw_surface = remmina_plugin_rdpev_get_drawable (gpdata, ui->object_id);
+        if (!gpdata->drw_surface)
+        {
+            gpdata->drw_surface = gpdata->rgb_surface;
+        }
     }
     else
     {
@@ -733,7 +763,7 @@ remmina_plugin_rdpev_destroy_surface (RemminaProtocolWidget *gp, RemminaPluginRd
 
     /*g_print ("destroy_surface: object_id=%i\n", ui->object_id);*/
     gpdata = GET_DATA (gp);
-    pix = (Pixmap) g_hash_table_lookup (gpdata->object_table, (gpointer) ui->object_id);
+    pix = remmina_plugin_rdpev_get_drawable (gpdata, ui->object_id);
     if (gpdata->drw_surface == pix)
     {
         gpdata->drw_surface = gpdata->rgb_surface;
@@ -752,14 +782,14 @@ remmina_plugin_rdpev_create_bitmap (RemminaProtocolWidget *gp, RemminaPluginRdpU
     XImage *image;
     Pixmap bitmap;
 
-    g_print ("create_bitmap: object_id=%i\n", ui->object_id);
+    /*g_print ("create_bitmap: object_id=%i\n", ui->object_id);*/
     gpdata = GET_DATA (gp);
     bitmap = XCreatePixmap (gpdata->display, gpdata->rgb_surface, ui->width, ui->height, gpdata->depth);
     image = XCreateImage (gpdata->display, gpdata->visual, gpdata->depth, ZPixmap, 0,
         (char *) ui->data, ui->width, ui->height, gpdata->bitmap_pad, 0);
     XPutImage (gpdata->display, bitmap, gpdata->gc, image, 0, 0, 0, 0, ui->width, ui->height);
     XFree (image);
-    g_hash_table_insert (gpdata->object_table, (gpointer) ui->object_id, (gpointer) bitmap);
+    remmina_plugin_rdpev_insert_drawable (gpdata, ui->object_id, bitmap);
 }
 
 static void
@@ -785,8 +815,11 @@ remmina_plugin_rdpev_destroy_bitmap (RemminaProtocolWidget *gp, RemminaPluginRdp
 
     /*g_print ("destroy_bitmap: object_id=%i\n", ui->object_id);*/
     gpdata = GET_DATA (gp);
-    bitmap = (Pixmap) g_hash_table_lookup (gpdata->object_table, (gpointer) ui->object_id);
-    XFreePixmap (gpdata->display, (Pixmap) bitmap);
+    bitmap = remmina_plugin_rdpev_get_drawable (gpdata, ui->object_id);
+    if (bitmap)
+    {
+        XFreePixmap (gpdata->display, (Pixmap) bitmap);
+    }
     g_hash_table_remove (gpdata->object_table, (gpointer) ui->object_id);
 }
 
@@ -796,8 +829,8 @@ remmina_plugin_rdpev_set_clip (RemminaProtocolWidget *gp, RemminaPluginRdpUiObje
     RemminaPluginRdpData *gpdata;
     XRectangle clip_rect;
 
-    g_print ("set_clip: x=%i y=%i cx=%i cy=%i\n",
-        ui->x, ui->y, ui->cx, ui->cy);
+    /*g_print ("set_clip: x=%i y=%i cx=%i cy=%i\n",
+        ui->x, ui->y, ui->cx, ui->cy);*/
     gpdata = GET_DATA (gp);
     clip_rect.x = ui->x;
     clip_rect.y = ui->y;
@@ -811,7 +844,7 @@ remmina_plugin_rdpev_reset_clip (RemminaProtocolWidget *gp, RemminaPluginRdpUiOb
 {
     RemminaPluginRdpData *gpdata;
 
-    g_print ("reset_clip:\n");
+    /*g_print ("reset_clip:\n");*/
     gpdata = GET_DATA (gp);
     XSetClipMask (gpdata->display, gpdata->gc, None);
 }
@@ -860,7 +893,7 @@ remmina_plugin_rdpev_memblt (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject
         ui->object_id, ui->opcode, ui->x, ui->y, ui->cx, ui->cy, ui->srcx, ui->srcy);
     gpdata = GET_DATA (gp);
     remmina_plugin_rdpev_set_rop3 (gpdata, ui->opcode);
-    pix = (Pixmap) g_hash_table_lookup (gpdata->object_table, (gpointer) ui->object_id);
+    pix = remmina_plugin_rdpev_get_drawable (gpdata, ui->object_id);
     if (pix)
     {
         XCopyArea (gpdata->display, pix, gpdata->drw_surface, gpdata->gc,
