@@ -125,6 +125,7 @@ remmina_plugin_rdpev_update_rect (RemminaProtocolWidget *gp, gint x, gint y, gin
     {
         remmina_plugin_rdpev_scale_area (gp, &x, &y, &w, &h);
     }
+    XFlush (gpdata->display);
     gtk_widget_queue_draw_area (gpdata->drawing_area, x, y, w, h);
 }
 
@@ -730,7 +731,7 @@ remmina_plugin_rdpev_destroy_surface (RemminaProtocolWidget *gp, RemminaPluginRd
     RemminaPluginRdpData *gpdata;
     Pixmap pix;
 
-    g_print ("destroy_surface: object_id=%i\n", ui->object_id);
+    /*g_print ("destroy_surface: object_id=%i\n", ui->object_id);*/
     gpdata = GET_DATA (gp);
     pix = (Pixmap) g_hash_table_lookup (gpdata->object_table, (gpointer) ui->object_id);
     if (gpdata->drw_surface == pix)
@@ -767,7 +768,7 @@ remmina_plugin_rdpev_paint_bitmap (RemminaProtocolWidget *gp, RemminaPluginRdpUi
     RemminaPluginRdpData *gpdata;
     XImage *image;
 
-    g_print ("paint_bitmap: x=%i y=%i cx=%i cy=%i width=%i height=%i\n", ui->x, ui->y, ui->cx, ui->cy, ui->width, ui->height);
+    /*g_print ("paint_bitmap: x=%i y=%i cx=%i cy=%i width=%i height=%i\n", ui->x, ui->y, ui->cx, ui->cy, ui->width, ui->height);*/
     gpdata = GET_DATA (gp);
     image = XCreateImage (gpdata->display, gpdata->visual, gpdata->depth, ZPixmap, 0,
         (char *) ui->data, ui->width, ui->height, gpdata->bitmap_pad, 0);
@@ -782,11 +783,93 @@ remmina_plugin_rdpev_destroy_bitmap (RemminaProtocolWidget *gp, RemminaPluginRdp
     RemminaPluginRdpData *gpdata;
     Pixmap bitmap;
 
-    g_print ("destroy_bitmap: object_id=%i\n", ui->object_id);
+    /*g_print ("destroy_bitmap: object_id=%i\n", ui->object_id);*/
     gpdata = GET_DATA (gp);
     bitmap = (Pixmap) g_hash_table_lookup (gpdata->object_table, (gpointer) ui->object_id);
     XFreePixmap (gpdata->display, (Pixmap) bitmap);
     g_hash_table_remove (gpdata->object_table, (gpointer) ui->object_id);
+}
+
+static void
+remmina_plugin_rdpev_set_clip (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+    XRectangle clip_rect;
+
+    g_print ("set_clip: x=%i y=%i cx=%i cy=%i\n",
+        ui->x, ui->y, ui->cx, ui->cy);
+    gpdata = GET_DATA (gp);
+    clip_rect.x = ui->x;
+    clip_rect.y = ui->y;
+    clip_rect.width = ui->cx;
+    clip_rect.height = ui->cy;
+    XSetClipRectangles (gpdata->display, gpdata->gc, 0, 0, &clip_rect, 1, YXBanded);
+}
+
+static void
+remmina_plugin_rdpev_reset_clip (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+
+    g_print ("reset_clip:\n");
+    gpdata = GET_DATA (gp);
+    XSetClipMask (gpdata->display, gpdata->gc, None);
+}
+
+static void
+remmina_plugin_rdpev_destblt (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+
+    /*g_print ("destblt: opcode=%x x=%i y=%i cx=%i cy=%i\n",
+        ui->opcode, ui->x, ui->y, ui->cx, ui->cy);*/
+    gpdata = GET_DATA (gp);
+    remmina_plugin_rdpev_set_rop3 (gpdata, ui->opcode);
+    XSetFillStyle (gpdata->display, gpdata->gc, FillSolid);
+    XFillRectangle (gpdata->display, gpdata->drw_surface, gpdata->gc, ui->x, ui->y, ui->cx, ui->cy);
+    if (gpdata->drw_surface == gpdata->rgb_surface)
+    {
+        remmina_plugin_rdpev_update_rect (gp, ui->x, ui->y, ui->cx, ui->cy);
+    }
+}
+
+static void
+remmina_plugin_rdpev_screenblt (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+
+    /*g_print ("screenblt: opcode=%x x=%i y=%i cx=%i cy=%i srcx=%i srcy=%i\n",
+        ui->opcode, ui->x, ui->y, ui->cx, ui->cy, ui->srcx, ui->srcy);*/
+    gpdata = GET_DATA (gp);
+    remmina_plugin_rdpev_set_rop3 (gpdata, ui->opcode);
+    XCopyArea (gpdata->display, gpdata->rgb_surface, gpdata->drw_surface, gpdata->gc,
+        ui->srcx, ui->srcy, ui->cx, ui->cy, ui->x, ui->y);
+    if (gpdata->drw_surface == gpdata->rgb_surface)
+    {
+        remmina_plugin_rdpev_update_rect (gp, ui->x, ui->y, ui->cx, ui->cy);
+    }
+}
+
+static void
+remmina_plugin_rdpev_memblt (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+    Pixmap pix;
+
+    g_print ("memblt: object_id=%i opcode=%x x=%i y=%i cx=%i cy=%i srcx=%i srcy=%i\n",
+        ui->object_id, ui->opcode, ui->x, ui->y, ui->cx, ui->cy, ui->srcx, ui->srcy);
+    gpdata = GET_DATA (gp);
+    remmina_plugin_rdpev_set_rop3 (gpdata, ui->opcode);
+    pix = (Pixmap) g_hash_table_lookup (gpdata->object_table, (gpointer) ui->object_id);
+    if (pix)
+    {
+        XCopyArea (gpdata->display, pix, gpdata->drw_surface, gpdata->gc,
+            ui->srcx, ui->srcy, ui->cx, ui->cy, ui->x, ui->y);
+        if (gpdata->drw_surface == gpdata->rgb_surface)
+        {
+            remmina_plugin_rdpev_update_rect (gp, ui->x, ui->y, ui->cx, ui->cy);
+        }
+    }
 }
 
 gboolean
@@ -802,6 +885,7 @@ remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
     
     while ((ui = (RemminaPluginRdpUiObject *) g_async_queue_try_pop (gpdata->ui_queue)) != NULL)
     {
+        gdk_flush ();
         switch (ui->type)
         {
         case REMMINA_PLUGIN_RDP_UI_CONNECTED:
@@ -828,9 +912,25 @@ remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
         case REMMINA_PLUGIN_RDP_UI_DESTROY_BITMAP:
             remmina_plugin_rdpev_destroy_bitmap (gp, ui);
             break;
+        case REMMINA_PLUGIN_RDP_UI_SET_CLIP:
+            remmina_plugin_rdpev_set_clip (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_RESET_CLIP:
+            remmina_plugin_rdpev_reset_clip (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_DESTBLT:
+            remmina_plugin_rdpev_destblt (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_SCREENBLT:
+            remmina_plugin_rdpev_screenblt (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_MEMBLT:
+            remmina_plugin_rdpev_memblt (gp, ui);
+            break;
         default:
             break;
         }
+        XFlush (gpdata->display);
         remmina_plugin_rdpui_object_free (ui);
     }
 
