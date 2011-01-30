@@ -68,7 +68,9 @@ typedef struct _RemminaPluginRdpData
     Drawable drw_surface;
     Pixmap rgb_surface;
     GdkPixmap *rgb_pixmap;
-	GC gc;
+    GC gc;
+    Pixmap bitmap_mono;
+    GC gc_mono;
     gint depth;
     gint bpp;
     gint bitmap_pad;

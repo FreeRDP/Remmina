@@ -125,7 +125,6 @@ remmina_plugin_rdpev_update_rect (RemminaProtocolWidget *gp, gint x, gint y, gin
     {
         remmina_plugin_rdpev_scale_area (gp, &x, &y, &w, &h);
     }
-    XFlush (gpdata->display);
     gtk_widget_queue_draw_area (gpdata->drawing_area, x, y, w, h);
 }
 
@@ -481,6 +480,16 @@ remmina_plugin_rdpev_uninit (RemminaProtocolWidget *gp)
         g_object_unref (gpdata->rgb_pixmap);
         gpdata->rgb_pixmap = NULL;
     }
+    if (gpdata->gc_mono)
+    {
+        XFreeGC (gpdata->display, gpdata->gc_mono);
+        gpdata->gc_mono = 0;
+    }
+    if (gpdata->bitmap_mono)
+    {
+        XFreePixmap (gpdata->display, gpdata->bitmap_mono);
+        gpdata->bitmap_mono = 0;
+    }
 
     g_hash_table_destroy (gpdata->object_table);
 
@@ -687,6 +696,8 @@ remmina_plugin_rdpev_connected (RemminaProtocolWidget *gp, RemminaPluginRdpUiObj
     gpdata->gc = XCreateGC(gpdata->display,
         gpdata->rgb_surface,
         GCGraphicsExposures, &gcv);
+    gpdata->bitmap_mono = XCreatePixmap (gpdata->display, GDK_WINDOW_XID (gpdata->drawing_area->window), 8, 8, 1);
+    gpdata->gc_mono = XCreateGC (gpdata->display, gpdata->bitmap_mono, GCGraphicsExposures, &gcv);
 
     remmina_plugin_rdpev_update_scale (gp);
 }
@@ -818,7 +829,7 @@ remmina_plugin_rdpev_destroy_bitmap (RemminaProtocolWidget *gp, RemminaPluginRdp
     bitmap = remmina_plugin_rdpev_get_drawable (gpdata, ui->object_id);
     if (bitmap)
     {
-        XFreePixmap (gpdata->display, (Pixmap) bitmap);
+        XFreePixmap (gpdata->display, bitmap);
     }
     g_hash_table_remove (gpdata->object_table, (gpointer) ui->object_id);
 }
@@ -889,8 +900,8 @@ remmina_plugin_rdpev_memblt (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject
     RemminaPluginRdpData *gpdata;
     Pixmap pix;
 
-    g_print ("memblt: object_id=%i opcode=%x x=%i y=%i cx=%i cy=%i srcx=%i srcy=%i\n",
-        ui->object_id, ui->opcode, ui->x, ui->y, ui->cx, ui->cy, ui->srcx, ui->srcy);
+    /*g_print ("memblt: object_id=%i opcode=%x x=%i y=%i cx=%i cy=%i srcx=%i srcy=%i\n",
+        ui->object_id, ui->opcode, ui->x, ui->y, ui->cx, ui->cy, ui->srcx, ui->srcy);*/
     gpdata = GET_DATA (gp);
     remmina_plugin_rdpev_set_rop3 (gpdata, ui->opcode);
     pix = remmina_plugin_rdpev_get_drawable (gpdata, ui->object_id);
@@ -905,6 +916,88 @@ remmina_plugin_rdpev_memblt (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject
     }
 }
 
+static void
+remmina_plugin_rdpev_create_glyph (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+    XImage * image;
+    Pixmap bitmap;
+    gint scanline;
+
+    /*g_print ("create_glyph: object_id=%i width=%i height=%i\n", ui->object_id, ui->width, ui->height);*/
+    gpdata = GET_DATA (gp);
+    scanline = (ui->width + 7) / 8;
+    bitmap = XCreatePixmap (gpdata->display, gpdata->rgb_surface, ui->width, ui->height, 1);
+    image = XCreateImage (gpdata->display, gpdata->visual, 1, ZPixmap, 0, (char *) ui->data,
+        ui->width, ui->height, 8, scanline);
+    image->byte_order = MSBFirst;
+    image->bitmap_bit_order = MSBFirst;
+    XInitImage (image);
+    XPutImage (gpdata->display, bitmap, gpdata->gc_mono, image, 0, 0, 0, 0, ui->width, ui->height);
+    XFree (image);
+    remmina_plugin_rdpev_insert_drawable (gpdata, ui->object_id, bitmap);
+}
+
+static void
+remmina_plugin_rdpev_destroy_glyph (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+    Pixmap glyph;
+
+    /*g_print ("destroy_glyph: object_id=%i\n", ui->object_id);*/
+    gpdata = GET_DATA (gp);
+    glyph = remmina_plugin_rdpev_get_drawable (gpdata, ui->object_id);
+    if (glyph)
+    {
+        XFreePixmap (gpdata->display, glyph);
+    }
+    g_hash_table_remove (gpdata->object_table, (gpointer) ui->object_id);
+}
+
+static void
+remmina_plugin_rdpev_start_draw_glyphs (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+
+    /*g_print ("start_draw_glyphs: bgcolor=%X fgcolor=%X\n", ui->bgcolor, ui->fgcolor);*/
+    gpdata = GET_DATA (gp);
+    XSetFunction (gpdata->display, gpdata->gc, GXcopy);
+    XSetForeground (gpdata->display, gpdata->gc, ui->fgcolor);
+    XSetBackground (gpdata->display, gpdata->gc, ui->bgcolor);
+    XSetFillStyle (gpdata->display, gpdata->gc, FillStippled);
+}
+
+static void
+remmina_plugin_rdpev_draw_glyph (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+    Pixmap glyph;
+
+    /*g_print ("draw_glyph: object_id=%i x=%i y=%i cx=%i cy=%i\n", ui->object_id, ui->x, ui->y, ui->cx, ui->cy);*/
+    gpdata = GET_DATA (gp);
+    glyph = remmina_plugin_rdpev_get_drawable (gpdata, ui->object_id);
+    if (glyph)
+    {
+        XSetStipple (gpdata->display, gpdata->gc, glyph);
+        XSetTSOrigin (gpdata->display, gpdata->gc, ui->x, ui->y);
+        XFillRectangle (gpdata->display, gpdata->drw_surface, gpdata->gc, ui->x, ui->y, ui->cx, ui->cy);
+        XSetStipple (gpdata->display, gpdata->gc, gpdata->bitmap_mono);
+    }
+}
+
+static void
+remmina_plugin_rdpev_end_draw_glyphs (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+
+    /*g_print ("end_draw_glyphs: x=%i y=%i cx=%i cy=%i\n", ui->x, ui->y, ui->cx, ui->cy);*/
+    gpdata = GET_DATA (gp);
+    if (gpdata->drw_surface == gpdata->rgb_surface)
+    {
+        remmina_plugin_rdpev_update_rect (gp, ui->x, ui->y, ui->cx, ui->cy);
+    }
+}
+
 gboolean
 remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
 {
@@ -912,13 +1005,10 @@ remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
     RemminaPluginRdpUiObject *ui;
 
     gpdata = GET_DATA (gp);
-    LOCK_BUFFER (FALSE)
-    gpdata->ui_handler = 0;
-    UNLOCK_BUFFER (FALSE)
     
-    while ((ui = (RemminaPluginRdpUiObject *) g_async_queue_try_pop (gpdata->ui_queue)) != NULL)
+    ui = (RemminaPluginRdpUiObject *) g_async_queue_try_pop (gpdata->ui_queue);
+    if (ui)
     {
-        gdk_flush ();
         switch (ui->type)
         {
         case REMMINA_PLUGIN_RDP_UI_CONNECTED:
@@ -960,14 +1050,34 @@ remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
         case REMMINA_PLUGIN_RDP_UI_MEMBLT:
             remmina_plugin_rdpev_memblt (gp, ui);
             break;
+        case REMMINA_PLUGIN_RDP_UI_CREATE_GLYPH:
+            remmina_plugin_rdpev_create_glyph (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_DESTROY_GLYPH:
+            remmina_plugin_rdpev_destroy_glyph (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_START_DRAW_GLYPHS:
+            remmina_plugin_rdpev_start_draw_glyphs (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_DRAW_GLYPH:
+            remmina_plugin_rdpev_draw_glyph (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_END_DRAW_GLYPHS:
+            remmina_plugin_rdpev_end_draw_glyphs (gp, ui);
+            break;
         default:
             break;
         }
-        XFlush (gpdata->display);
         remmina_plugin_rdpui_object_free (ui);
+        return TRUE;
     }
-
-    return FALSE;
+    else
+    {
+        LOCK_BUFFER (FALSE)
+        gpdata->ui_handler = 0;
+        UNLOCK_BUFFER (FALSE)
+        return FALSE;
+    }
 }
 
 void
