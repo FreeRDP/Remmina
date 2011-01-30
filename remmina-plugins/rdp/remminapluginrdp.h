@@ -129,6 +129,8 @@ typedef struct _RemminaPluginRdpUiObject
     gint y;
     gint cx;
     gint cy;
+    gint srcx;
+    gint srcy;
     gint width;
     gint height;
     gint bpp;

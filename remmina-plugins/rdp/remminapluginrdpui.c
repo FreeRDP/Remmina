@@ -710,10 +710,18 @@ remmina_plugin_rdpui_destblt (rdpInst *inst, uint8 opcode, int x, int y, int cx,
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
-
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_DESTBLT;
+    ui->opcode = opcode;
+    ui->x = x;
+    ui->y = y;
+    ui->cx = cx;
+    ui->cy = cy;
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void
@@ -733,10 +741,20 @@ remmina_plugin_rdpui_screenblt (rdpInst *inst, uint8 opcode, int x, int y, int c
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
-
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_SCREENBLT;
+    ui->opcode = opcode;
+    ui->x = x;
+    ui->y = y;
+    ui->cx = cx;
+    ui->cy = cy;
+    ui->srcx = srcx;
+    ui->srcy = srcy;
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void
@@ -745,10 +763,21 @@ remmina_plugin_rdpui_memblt (rdpInst *inst, uint8 opcode, int x, int y, int cx, 
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
-
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_MEMBLT;
+    ui->object_id = (guint) src;
+    ui->opcode = opcode;
+    ui->x = x;
+    ui->y = y;
+    ui->cx = cx;
+    ui->cy = cy;
+    ui->srcx = srcx;
+    ui->srcy = srcy;
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void
@@ -768,9 +797,17 @@ remmina_plugin_rdpui_set_clip (rdpInst *inst, int x, int y, int cx, int cy)
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_SET_CLIP;
+    ui->x = x;
+    ui->y = y;
+    ui->cx = cx;
+    ui->cy = cy;
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void
@@ -778,9 +815,13 @@ remmina_plugin_rdpui_reset_clip (rdpInst *inst)
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_RESET_CLIP;
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void
