@@ -535,17 +535,19 @@ remmina_plugin_rdpui_create_bitmap (rdpInst *inst, int width, int height, uint8 
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
     RemminaPluginRdpUiObject *ui;
+    guint object_id;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
+    object_id = ++gpdata->object_id_seq;
     ui = g_new0 (RemminaPluginRdpUiObject, 1);
     ui->type = REMMINA_PLUGIN_RDP_UI_CREATE_BITMAP;
-    ui->object_id = ++gpdata->object_id_seq;
+    ui->object_id = object_id;
     ui->width = width;
     ui->height = height;
     ui->data = remmina_plugin_rdpui_image_convert (gpdata, width, height, data);
     remmina_plugin_rdpui_queue_ui (gp, ui);
-    return (RD_HBITMAP) ui->object_id;
+    return (RD_HBITMAP) object_id;
 }
 
 static void
@@ -934,17 +936,19 @@ remmina_plugin_rdpui_create_surface (rdpInst *inst, int width, int height, RD_HB
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
     RemminaPluginRdpUiObject *ui;
+    guint object_id;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
+    object_id = ++gpdata->object_id_seq;
     ui = g_new0 (RemminaPluginRdpUiObject, 1);
     ui->type = REMMINA_PLUGIN_RDP_UI_CREATE_SURFACE;
-    ui->object_id = ++gpdata->object_id_seq;
+    ui->object_id = object_id;
     ui->alt_object_id = (guint) old_surface;
     ui->width = width;
     ui->height = height;
     remmina_plugin_rdpui_queue_ui (gp, ui);
-    return (RD_HBITMAP) ui->object_id;
+    return (RD_HBITMAP) object_id;
 }
 
 static void
