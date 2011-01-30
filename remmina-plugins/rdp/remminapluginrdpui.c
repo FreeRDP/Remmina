@@ -521,12 +521,39 @@ remmina_plugin_rdpui_desktop_restore (rdpInst *inst, int offset, int x, int y,
 static RD_HGLYPH
 remmina_plugin_rdpui_create_glyph (rdpInst *inst, int width, int height, uint8 * data)
 {
-    return NULL;
+    RemminaProtocolWidget *gp;
+    RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
+    guint object_id;
+    gint scanline;
+
+    gp = GET_WIDGET (inst);
+    gpdata = GET_DATA (gp);
+    object_id = ++gpdata->object_id_seq;
+    scanline = (width + 7) / 8;
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_CREATE_GLYPH;
+    ui->object_id = object_id;
+    ui->width = width;
+    ui->height = height;
+    ui->data = g_memdup (data, scanline * height);
+    remmina_plugin_rdpui_queue_ui (gp, ui);
+    return (RD_HGLYPH) object_id;
 }
 
 static void
 remmina_plugin_rdpui_destroy_glyph (rdpInst *inst, RD_HGLYPH glyph)
 {
+    RemminaProtocolWidget *gp;
+    RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
+
+    gp = GET_WIDGET (inst);
+    gpdata = GET_DATA (gp);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_DESTROY_GLYPH;
+    ui->object_id = (guint) glyph;
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static RD_HBITMAP
@@ -646,9 +673,15 @@ remmina_plugin_rdpui_start_draw_glyphs (rdpInst *inst, int bgcolor, int fgcolor)
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_START_DRAW_GLYPHS;
+    ui->bgcolor = remmina_plugin_rdpui_color_convert (gpdata, bgcolor);
+    ui->fgcolor = remmina_plugin_rdpui_color_convert (gpdata, fgcolor);
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void
@@ -657,10 +690,18 @@ remmina_plugin_rdpui_draw_glyph (rdpInst *inst, int x, int y, int cx, int cy,
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
-    
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_DRAW_GLYPH;
+    ui->object_id = (guint) glyph;
+    ui->x = x;
+    ui->y = y;
+    ui->cx = cx;
+    ui->cy = cy;
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void
@@ -668,9 +709,17 @@ remmina_plugin_rdpui_end_draw_glyphs (rdpInst *inst, int x, int y, int cx, int c
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_END_DRAW_GLYPHS;
+    ui->x = x;
+    ui->y = y;
+    ui->cx = cx;
+    ui->cy = cy;
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static uint32
