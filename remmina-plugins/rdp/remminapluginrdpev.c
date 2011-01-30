@@ -25,122 +25,6 @@
 #include <gdk/gdkkeysyms.h>
 #include <freerdp/kbd.h>
 
-/******* RDP to Xlib color conversion (ported from xfreerdp) *********/
-#define SPLIT32BGR(_alpha, _red, _green, _blue, _pixel) \
-  _red = _pixel & 0xff; \
-  _green = (_pixel & 0xff00) >> 8; \
-  _blue = (_pixel & 0xff0000) >> 16; \
-  _alpha = (_pixel & 0xff000000) >> 24;
-
-#define SPLIT24BGR(_red, _green, _blue, _pixel) \
-  _red = _pixel & 0xff; \
-  _green = (_pixel & 0xff00) >> 8; \
-  _blue = (_pixel & 0xff0000) >> 16;
-
-#define SPLIT24RGB(_red, _green, _blue, _pixel) \
-  _blue  = _pixel & 0xff; \
-  _green = (_pixel & 0xff00) >> 8; \
-  _red   = (_pixel & 0xff0000) >> 16;
-
-#define SPLIT16RGB(_red, _green, _blue, _pixel) \
-  _red = ((_pixel >> 8) & 0xf8) | ((_pixel >> 13) & 0x7); \
-  _green = ((_pixel >> 3) & 0xfc) | ((_pixel >> 9) & 0x3); \
-  _blue = ((_pixel << 3) & 0xf8) | ((_pixel >> 2) & 0x7);
-
-#define SPLIT15RGB(_red, _green, _blue, _pixel) \
-  _red = ((_pixel >> 7) & 0xf8) | ((_pixel >> 12) & 0x7); \
-  _green = ((_pixel >> 2) & 0xf8) | ((_pixel >> 8) & 0x7); \
-  _blue = ((_pixel << 3) & 0xf8) | ((_pixel >> 2) & 0x7);
-
-#define MAKE32RGB(_alpha, _red, _green, _blue) \
-  (_alpha << 24) | (_red << 16) | (_green << 8) | _blue;
-
-#define MAKE24RGB(_red, _green, _blue) \
-  (_red << 16) | (_green << 8) | _blue;
-
-#define MAKE15RGB(_red, _green, _blue) \
-  (((_red & 0xff) >> 3) << 10) | \
-  (((_green & 0xff) >> 3) <<  5) | \
-  (((_blue & 0xff) >> 3) <<  0)
-
-#define MAKE16RGB(_red, _green, _blue) \
-  (((_red & 0xff) >> 3) << 11) | \
-  (((_green & 0xff) >> 2) <<  5) | \
-  (((_blue & 0xff) >> 3) <<  0)
-
-static gint
-remmina_plugin_rdpev_color_convert (RemminaPluginRdpData *gpdata, gint color)
-{
-    gint alpha;
-    gint red;
-    gint green;
-    gint blue;
-    gint rv;
-
-    alpha = 0xff;
-    red = 0;
-    green = 0;
-    blue = 0;
-    rv = 0;
-    switch (gpdata->settings->server_depth)
-    {
-        case 32:
-            SPLIT32BGR(alpha, red, green, blue, color);
-            break;
-        case 24:
-            SPLIT24BGR(red, green, blue, color);
-            break;
-        case 16:
-            SPLIT16RGB(red, green, blue, color);
-            break;
-        case 15:
-            SPLIT15RGB(red, green, blue, color);
-            break;
-        case 8:
-            color &= 0xff;
-            SPLIT24RGB(red, green, blue, gpdata->colormap[color]);
-            break;
-        case 1:
-            if (color != 0)
-            {
-                red = 0xff;
-                green = 0xff;
-                blue = 0xff;
-            }
-            break;
-        default:
-            remmina_plugin_service->log_printf ("[RDP]unsupported server bpp %i\n", gpdata->settings->server_depth);
-            break;
-    }
-    switch (gpdata->bpp)
-    {
-        case 32:
-            rv = MAKE32RGB(alpha, red, green, blue);
-            break;
-        case 24:
-            rv = MAKE24RGB(red, green, blue);
-            break;
-        case 16:
-            rv = MAKE16RGB(red, green, blue);
-            break;
-        case 15:
-            rv = MAKE15RGB(red, green, blue);
-            break;
-        case 1:
-            if ((red != 0) || (green != 0) || (blue != 0))
-            {
-                rv = 1;
-            }
-            break;
-        default:
-            remmina_plugin_service->log_printf ("[RDP]unsupported client bpp %i\n", gpdata->bpp);
-            break;
-    }
-    return rv;
-}
-
-/*********************************************************************/
-
 static void
 remmina_plugin_rdpev_event_push (RemminaProtocolWidget *gp,
     gint type, gint flag, gint param1, gint param2)
@@ -583,9 +467,9 @@ remmina_plugin_rdpev_uninit (RemminaProtocolWidget *gp)
     {
         g_source_remove (gpdata->ui_handler);
         gpdata->ui_handler = 0;
+        remmina_plugin_rdpev_queue_ui (gp);
     }
 
-    g_print ("depth %i bpp %i bitmap_pad %i\n", gpdata->depth, gpdata->bpp, gpdata->bitmap_pad);
     if (gpdata->gc)
     {
         XFreeGC (gpdata->display, gpdata->gc);
@@ -787,14 +671,12 @@ static void
 remmina_plugin_rdpev_rect (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
     RemminaPluginRdpData *gpdata;
-    gint color;
 
     /*g_print ("rect: opcode=%X x=%i y=%i cx=%i cy=%i fgcolor=%X\n", ui->opcode, ui->x, ui->y, ui->cx, ui->cy, ui->fgcolor);*/
     gpdata = GET_DATA (gp);
-    color = remmina_plugin_rdpev_color_convert (gpdata, ui->fgcolor);
     remmina_plugin_rdpev_set_rop3 (gpdata, ui->opcode);
     XSetFillStyle (gpdata->display, gpdata->gc, FillSolid);
-    XSetForeground (gpdata->display, gpdata->gc, color);
+    XSetForeground (gpdata->display, gpdata->gc, ui->fgcolor);
     XFillRectangle (gpdata->display, gpdata->drw_surface, gpdata->gc, ui->x, ui->y, ui->cx, ui->cy);
     if (gpdata->drw_surface == gpdata->rgb_surface)
     {
@@ -808,7 +690,7 @@ remmina_plugin_rdpev_create_surface (RemminaProtocolWidget *gp, RemminaPluginRdp
     RemminaPluginRdpData *gpdata;
     Pixmap new_pix, old_pix;
 
-    g_print ("create_surface: object_id=%i old_object_id=%i\n", ui->object_id, ui->alt_object_id);
+    /*g_print ("create_surface: object_id=%i old_object_id=%i\n", ui->object_id, ui->alt_object_id);*/
     gpdata = GET_DATA (gp);
     new_pix = XCreatePixmap (gpdata->display, gpdata->rgb_surface, ui->width, ui->height, gpdata->depth);
     g_hash_table_insert (gpdata->object_table, (gpointer) ui->object_id, (gpointer) new_pix);
@@ -830,7 +712,7 @@ remmina_plugin_rdpev_set_surface (RemminaProtocolWidget *gp, RemminaPluginRdpUiO
 {
     RemminaPluginRdpData *gpdata;
 
-    g_print ("set_surface: object_id=%i\n", ui->object_id);
+    /*g_print ("set_surface: object_id=%i\n", ui->object_id);*/
     gpdata = GET_DATA (gp);
     if (ui->object_id)
     {
@@ -859,6 +741,51 @@ remmina_plugin_rdpev_destroy_surface (RemminaProtocolWidget *gp, RemminaPluginRd
     {
         XFreePixmap (gpdata->display, pix);
     }
+    g_hash_table_remove (gpdata->object_table, (gpointer) ui->object_id);
+}
+
+static void
+remmina_plugin_rdpev_create_bitmap (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+    XImage *image;
+    Pixmap bitmap;
+
+    g_print ("create_bitmap: object_id=%i\n", ui->object_id);
+    gpdata = GET_DATA (gp);
+    bitmap = XCreatePixmap (gpdata->display, gpdata->rgb_surface, ui->width, ui->height, gpdata->depth);
+    image = XCreateImage (gpdata->display, gpdata->visual, gpdata->depth, ZPixmap, 0,
+        (char *) ui->data, ui->width, ui->height, gpdata->bitmap_pad, 0);
+    XPutImage (gpdata->display, bitmap, gpdata->gc, image, 0, 0, 0, 0, ui->width, ui->height);
+    XFree (image);
+    g_hash_table_insert (gpdata->object_table, (gpointer) ui->object_id, (gpointer) bitmap);
+}
+
+static void
+remmina_plugin_rdpev_paint_bitmap (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+    XImage *image;
+
+    g_print ("paint_bitmap: x=%i y=%i cx=%i cy=%i width=%i height=%i\n", ui->x, ui->y, ui->cx, ui->cy, ui->width, ui->height);
+    gpdata = GET_DATA (gp);
+    image = XCreateImage (gpdata->display, gpdata->visual, gpdata->depth, ZPixmap, 0,
+        (char *) ui->data, ui->width, ui->height, gpdata->bitmap_pad, 0);
+    XPutImage (gpdata->display, gpdata->rgb_surface, gpdata->gc, image, 0, 0, ui->x, ui->y, ui->cx, ui->cy);
+    XFree (image);
+    remmina_plugin_rdpev_update_rect (gp, ui->x, ui->y, ui->cx, ui->cy);
+}
+
+static void
+remmina_plugin_rdpev_destroy_bitmap (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+    Pixmap bitmap;
+
+    g_print ("destroy_bitmap: object_id=%i\n", ui->object_id);
+    gpdata = GET_DATA (gp);
+    bitmap = (Pixmap) g_hash_table_lookup (gpdata->object_table, (gpointer) ui->object_id);
+    XFreePixmap (gpdata->display, (Pixmap) bitmap);
     g_hash_table_remove (gpdata->object_table, (gpointer) ui->object_id);
 }
 
@@ -891,6 +818,15 @@ remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
             break;
         case REMMINA_PLUGIN_RDP_UI_DESTROY_SURFACE:
             remmina_plugin_rdpev_destroy_surface (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_CREATE_BITMAP:
+            remmina_plugin_rdpev_create_bitmap (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_PAINT_BITMAP:
+            remmina_plugin_rdpev_paint_bitmap (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_DESTROY_BITMAP:
+            remmina_plugin_rdpev_destroy_bitmap (gp, ui);
             break;
         default:
             break;
