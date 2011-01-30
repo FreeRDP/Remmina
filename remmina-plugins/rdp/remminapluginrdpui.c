@@ -781,9 +781,65 @@ remmina_plugin_rdpui_patblt (rdpInst *inst, uint8 opcode, int x, int y, int cx, 
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
+    gint i;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->opcode = opcode;
+    ui->x = x;
+    ui->y = y;
+    ui->cx = cx;
+    ui->cy = cy;
+    ui->srcx = brush->xorigin;
+    ui->srcy = brush->yorigin;
+    ui->width = 8;
+    ui->height = 8;
+    switch (brush->style)
+    {
+        case 0: /* Solid */
+            ui->type = REMMINA_PLUGIN_RDP_UI_RECT;
+            ui->fgcolor = remmina_plugin_rdpui_color_convert (gpdata, fgcolor);
+            break;
+        case 2: /* Hatch */
+            ui->type = REMMINA_PLUGIN_RDP_UI_PATBLT_GLYPH;
+            ui->fgcolor = remmina_plugin_rdpui_color_convert (gpdata, fgcolor);
+            ui->bgcolor = remmina_plugin_rdpui_color_convert (gpdata, bgcolor);
+            ui->data = g_memdup (hatch_patterns + brush->pattern[0] * 8, 8);
+            break;
+        case 3: /* Pattern */
+            if (brush->bd == 0) /* rdp4 brush */
+            {
+                ui->type = REMMINA_PLUGIN_RDP_UI_PATBLT_GLYPH;
+                ui->fgcolor = remmina_plugin_rdpui_color_convert (gpdata, bgcolor);
+                ui->bgcolor = remmina_plugin_rdpui_color_convert (gpdata, fgcolor);
+                ui->data = g_new (guchar, 8);
+                for (i = 0; i < 8; i++)
+                {
+                    ui->data[7 - i] = brush->pattern[i];
+                }
+            }
+            else if (brush->bd->color_code > 1) /* > 1 bpp */
+            {
+                ui->type = REMMINA_PLUGIN_RDP_UI_PATBLT_BITMAP;
+                i = (gpdata->settings->server_depth + 7) / 8;
+                ui->data = g_memdup (brush->bd->data, 8 * 8 * i);
+            }
+            else
+            {
+                ui->type = REMMINA_PLUGIN_RDP_UI_PATBLT_GLYPH;
+                ui->fgcolor = remmina_plugin_rdpui_color_convert (gpdata, bgcolor);
+                ui->bgcolor = remmina_plugin_rdpui_color_convert (gpdata, fgcolor);
+                ui->data = g_memdup (brush->bd->data, 8);
+            }
+            break;
+        default:
+            g_free (ui);
+            remmina_plugin_service->log_printf ("[RDP]unsupported brush style %i\n", brush->style);
+            return;
+    }
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void
