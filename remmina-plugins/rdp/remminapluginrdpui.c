@@ -958,20 +958,21 @@ static void
 remmina_plugin_rdpui_set_cursor (rdpInst *inst, RD_HCURSOR cursor)
 {
     RemminaProtocolWidget *gp;
-    RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gp = GET_WIDGET (inst);
-    gpdata = GET_DATA (gp);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_SET_CURSOR;
+    ui->pixbuf = gdk_pixbuf_copy (GDK_PIXBUF (cursor));
+    ui->x = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (cursor), "x"));
+    ui->y = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (cursor), "y"));
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void
 remmina_plugin_rdpui_destroy_cursor (rdpInst *inst, RD_HCURSOR cursor)
 {
-    RemminaProtocolWidget *gp;
-    RemminaPluginRdpData *gpdata;
-
-    gp = GET_WIDGET (inst);
-    gpdata = GET_DATA (gp);
+    g_object_unref (GDK_PIXBUF (cursor));
 }
 
 static RD_HCURSOR
@@ -980,31 +981,45 @@ remmina_plugin_rdpui_create_cursor (rdpInst *inst, uint32 x, uint32 y,
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
+    GdkPixbuf *pixbuf;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
 
-    return NULL;
+    /*g_print ("create_cursor %i %i %i %i %i\n", x, y, width, height, bpp);*/
+    pixbuf = remmina_plugin_rdpui_bitmap_convert (gpdata, width, height, bpp, TRUE, xormask);
+    remmina_plugin_rdpui_bitmap_apply_mask (pixbuf, andmask);
+    if (bpp > 1)
+    {
+        remmina_plugin_rdpui_bitmap_flip (pixbuf);
+    }
+    g_object_set_data (G_OBJECT (pixbuf), "x", GINT_TO_POINTER (x));
+    g_object_set_data (G_OBJECT (pixbuf), "y", GINT_TO_POINTER (y));
+    return (RD_HCURSOR) pixbuf;
 }
 
 static void
 remmina_plugin_rdpui_set_null_cursor (rdpInst *inst)
 {
     RemminaProtocolWidget *gp;
-    RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gp = GET_WIDGET (inst);
-    gpdata = GET_DATA (gp);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_SET_CURSOR;
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void
 remmina_plugin_rdpui_set_default_cursor (rdpInst *inst)
 {
     RemminaProtocolWidget *gp;
-    RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gp = GET_WIDGET (inst);
-    gpdata = GET_DATA (gp);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_SET_DEFAULT_CURSOR;
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static RD_HPALETTE
@@ -1272,6 +1287,10 @@ remmina_plugin_rdpui_object_free (gpointer p)
 {
     RemminaPluginRdpUiObject *obj = (RemminaPluginRdpUiObject *) p;
     g_free (obj->data);
+    if (obj->pixbuf)
+    {
+        g_object_unref (obj->pixbuf);
+    }
     g_free (obj);
 }
 
