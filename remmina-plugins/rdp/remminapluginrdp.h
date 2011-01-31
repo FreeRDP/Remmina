@@ -141,6 +141,7 @@ typedef struct _RemminaPluginRdpUiObject
     gint fgcolor;
     gint opcode;
     guchar *data;
+    GdkPixbuf *pixbuf;
 } RemminaPluginRdpUiObject;
 
 #endif

@@ -1119,6 +1119,37 @@ remmina_plugin_rdpev_patblt_bitmap (RemminaProtocolWidget *gp, RemminaPluginRdpU
     }
 }
 
+static void
+remmina_plugin_rdpev_set_cursor (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+    GdkCursor *cur;
+
+    gpdata = GET_DATA (gp);
+    if (ui->pixbuf)
+    {
+        cur = gdk_cursor_new_from_pixbuf (gdk_display_get_default (),
+            ui->pixbuf, ui->x, ui->y);
+        gdk_window_set_cursor (gtk_widget_get_window (gpdata->drawing_area), cur);
+        gdk_cursor_unref (cur);
+    }
+    else
+    {
+        cur = gdk_cursor_new (GDK_BLANK_CURSOR);
+        gdk_window_set_cursor (gtk_widget_get_window (gpdata->drawing_area), cur);
+        gdk_cursor_unref (cur);
+    }
+}
+
+static void
+remmina_plugin_rdpev_set_default_cursor (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+
+    gpdata = GET_DATA (gp);
+    gdk_window_set_cursor (gtk_widget_get_window (gpdata->drawing_area), NULL);
+}
+
 gboolean
 remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
 {
@@ -1197,6 +1228,12 @@ remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
             break;
         case REMMINA_PLUGIN_RDP_UI_PATBLT_BITMAP:
             remmina_plugin_rdpev_patblt_bitmap (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_SET_CURSOR:
+            remmina_plugin_rdpev_set_cursor (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_SET_DEFAULT_CURSOR:
+            remmina_plugin_rdpev_set_default_cursor (gp, ui);
             break;
         default:
             break;
