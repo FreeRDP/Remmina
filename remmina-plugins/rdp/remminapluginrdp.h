@@ -137,7 +137,6 @@ typedef struct _RemminaPluginRdpUiObject
     gint srcy;
     gint width;
     gint height;
-    gint bpp;
     gint bgcolor;
     gint fgcolor;
     gint opcode;
