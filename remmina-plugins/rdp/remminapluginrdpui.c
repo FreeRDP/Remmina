@@ -618,9 +618,19 @@ remmina_plugin_rdpui_line (rdpInst *inst, uint8 opcode, int startx, int starty, 
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_LINE;
+    ui->opcode = opcode;
+    ui->srcx = startx;
+    ui->srcy = starty;
+    ui->x = endx;
+    ui->y = endy;
+    ui->fgcolor = remmina_plugin_rdpui_color_convert (gpdata, pen->color);
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void
@@ -655,10 +665,18 @@ remmina_plugin_rdpui_polyline (rdpInst *inst, uint8 opcode, RD_POINT * points, i
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     if (npoints < 2) return;
     gp = GET_WIDGET (inst);
     gpdata = GET_DATA (gp);
+    ui = g_new0 (RemminaPluginRdpUiObject, 1);
+    ui->type = REMMINA_PLUGIN_RDP_UI_POLYLINE;
+    ui->opcode = opcode;
+    ui->fgcolor = remmina_plugin_rdpui_color_convert (gpdata, pen->color);
+    ui->width = npoints;
+    ui->data = g_memdup (points, sizeof (RD_POINT) * npoints);
+    remmina_plugin_rdpui_queue_ui (gp, ui);
 }
 
 static void

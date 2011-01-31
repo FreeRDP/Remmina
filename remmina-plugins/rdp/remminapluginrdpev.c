@@ -707,6 +707,27 @@ remmina_plugin_rdpev_connected (RemminaProtocolWidget *gp, RemminaPluginRdpUiObj
 }
 
 static void
+remmina_plugin_rdpev_line (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+
+    /*g_print ("line: opcode=%X srcx=%i srcy=%i x=%i y=%i fgcolor=%X\n", ui->opcode, ui->srcx, ui->srcy, ui->x, ui->y, ui->fgcolor);*/
+    gpdata = GET_DATA (gp);
+    remmina_plugin_rdpev_set_rop2 (gpdata, ui->opcode);
+    XSetFillStyle (gpdata->display, gpdata->gc, FillSolid);
+    XSetForeground (gpdata->display, gpdata->gc, ui->fgcolor);
+    XDrawLine (gpdata->display, gpdata->drw_surface, gpdata->gc, ui->srcx, ui->srcy, ui->x, ui->y);
+    if (gpdata->drw_surface == gpdata->rgb_surface)
+    {
+        remmina_plugin_rdpev_update_rect (gp,
+            ui->srcx < ui->x ? ui->srcx : ui->x,
+            ui->srcy < ui->y ? ui->srcy : ui->y,
+            (ui->srcx < ui->x ? ui->x - ui->srcx : ui->srcx - ui->x) + 1,
+            (ui->srcy < ui->y ? ui->y - ui->srcy : ui->srcy - ui->y) + 1);
+    }
+}
+
+static void
 remmina_plugin_rdpev_rect (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
     RemminaPluginRdpData *gpdata;
@@ -720,6 +741,38 @@ remmina_plugin_rdpev_rect (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *
     if (gpdata->drw_surface == gpdata->rgb_surface)
     {
         remmina_plugin_rdpev_update_rect (gp, ui->x, ui->y, ui->cx, ui->cy);
+    }
+}
+
+static void
+remmina_plugin_rdpev_polyline (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+    XPoint *pts;
+    gint x, y, x1, y1, x2, y2;
+    gint i;
+
+    /*g_print ("polyline: opcode=%X npoints=%i fgcolor=%X\n", ui->opcode, ui->width, ui->fgcolor);*/
+    gpdata = GET_DATA (gp);
+    remmina_plugin_rdpev_set_rop2 (gpdata, ui->opcode);
+    XSetFillStyle (gpdata->display, gpdata->gc, FillSolid);
+    XSetForeground (gpdata->display, gpdata->gc, ui->fgcolor);
+    pts = (XPoint *) ui->data;
+    XDrawLines (gpdata->display, gpdata->drw_surface, gpdata->gc, pts, ui->width, CoordModePrevious);
+    if (gpdata->drw_surface == gpdata->rgb_surface)
+    {
+        x = x1 = x2 = pts[0].x;
+        y = y1 = y2 = pts[0].y;
+        for (i = 1; i < ui->width; i++)
+        {
+            x += pts[i].x;
+            y += pts[i].y;
+            x1 = (x1 < x ? x1 : x);
+            x2 = (x2 > x ? x2 : x);
+            y1 = (y1 < y ? y1 : y);
+            y2 = (y2 > y ? y2 : y);
+        }
+        remmina_plugin_rdpev_update_rect (gp, x1, y1, x2 - x1 + 1, y2 - y1 + 1);
     }
 }
 
@@ -1082,8 +1135,14 @@ remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
         case REMMINA_PLUGIN_RDP_UI_CONNECTED:
             remmina_plugin_rdpev_connected (gp, ui);
             break;
+        case REMMINA_PLUGIN_RDP_UI_LINE:
+            remmina_plugin_rdpev_line (gp, ui);
+            break;
         case REMMINA_PLUGIN_RDP_UI_RECT:
             remmina_plugin_rdpev_rect (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_POLYLINE:
+            remmina_plugin_rdpev_polyline (gp, ui);
             break;
         case REMMINA_PLUGIN_RDP_UI_CREATE_SURFACE:
             remmina_plugin_rdpev_create_surface (gp, ui);
