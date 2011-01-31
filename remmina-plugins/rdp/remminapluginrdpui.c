@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee
+ * Copyright (C) 2010 Jay Sorg
+ * Copyright (C) 2010-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1168,6 +1169,8 @@ remmina_plugin_rdpui_init (RemminaProtocolWidget *gp)
 
     keycode = XKeysymToKeycode (gpdata->display, XK_Num_Lock);
     gpdata->numlock_initstate = remmina_plugin_rdpui_get_key_state (keycode, state, modmap);
+
+    XFreeModifiermap(modmap);
 }
 
 void
