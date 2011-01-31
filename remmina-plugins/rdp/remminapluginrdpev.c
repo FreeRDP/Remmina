@@ -19,6 +19,8 @@
  * Boston, MA 02111-1307, USA.
  */
 
+/* X11 drawings were ported from xfreerdp */
+
 #include "remminapluginrdp.h"
 #include "remminapluginrdpev.h"
 #include "remminapluginrdpui.h"
