@@ -1802,8 +1802,9 @@ remmina_plugin_vnc_on_expose (GtkWidget *widget, GdkEventExpose *event, RemminaP
 {
     RemminaPluginVncData *gpdata;
     GdkPixbuf *buffer;
-    gint width, height, x, y, rowstride;
+    gint x, y;
     gboolean scale;
+    cairo_t *context;
 
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
 
@@ -1817,26 +1818,14 @@ remmina_plugin_vnc_on_expose (GtkWidget *widget, GdkEventExpose *event, RemminaP
         UNLOCK_BUFFER (FALSE)
         return FALSE;
     }
-
-    width = (scale ? gpdata->scale_width : remmina_plugin_service->protocol_plugin_get_width (gp));
-    height = (scale ? gpdata->scale_height : remmina_plugin_service->protocol_plugin_get_height (gp));
-    if (event->area.x >= width || event->area.y >= height)
-    {
-        UNLOCK_BUFFER (FALSE)
-        return FALSE;
-    }
     x = event->area.x;
     y = event->area.y;
-    rowstride = gdk_pixbuf_get_rowstride (buffer);
 
-    /* this is a little tricky. It "moves" the rgb_buffer pointer to (x,y) as top-left corner,
-       and keeps the same rowstride. This is an effective way to "clip" the rgb_buffer for gdk. */
-    gdk_draw_rgb_image (widget->window, widget->style->white_gc,
-        x, y,
-        MIN (width - x, event->area.width), MIN (height - y, event->area.height),
-        GDK_RGB_DITHER_MAX,
-        gdk_pixbuf_get_pixels (buffer) + y * rowstride + x * 3,
-        rowstride);
+    context = gdk_cairo_create (GDK_DRAWABLE (gpdata->drawing_area->window));
+    cairo_rectangle (context, x, y, event->area.width, event->area.height);
+    gdk_cairo_set_source_pixbuf (context, buffer, 0, 0);
+    cairo_fill (context);
+    cairo_destroy (context);
 
     UNLOCK_BUFFER (FALSE)
     return TRUE;
