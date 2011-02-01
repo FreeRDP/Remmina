@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2009-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,8 @@ enum
     REMMINA_INIT_MODE_CONNECTING,
     REMMINA_INIT_MODE_AUTHPWD,
     REMMINA_INIT_MODE_AUTHUSERPWD,
-    REMMINA_INIT_MODE_AUTHX509
+    REMMINA_INIT_MODE_AUTHX509,
+    REMMINA_INIT_MODE_SERVERKEY_CONFIRM
 };
 
 typedef struct _RemminaInitDialog
@@ -75,6 +76,8 @@ gint remmina_init_dialog_authpwd (RemminaInitDialog *dialog, const gchar *label,
 gint remmina_init_dialog_authuserpwd (RemminaInitDialog *dialog, const gchar *default_username, gboolean allow_save);
 gint remmina_init_dialog_authx509 (RemminaInitDialog *dialog, const gchar *cacert, const gchar *cacrl,
     const gchar *clientcert, const gchar *clientkey);
+gint remmina_init_dialog_serverkey_unknown (RemminaInitDialog *dialog, const gchar *serverkey);
+gint remmina_init_dialog_serverkey_changed (RemminaInitDialog *dialog, const gchar *serverkey);
 
 G_END_DECLS
 
