@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -202,6 +202,14 @@ remmina_ssh_auth_auto_pubkey (RemminaSSH* ssh)
 gint
 remmina_ssh_auth (RemminaSSH *ssh, const gchar *password)
 {
+    /* Check known host again to ensure it's still the original server when user forks
+       a new session from existing one */
+    if (ssh_is_server_known (ssh->session) != SSH_SERVER_KNOWN_OK)
+    {
+        remmina_ssh_set_application_error (ssh, "SSH public key has changed!");
+        return 0;
+    }
+
     if (password)
     {
         g_free (ssh->password);
@@ -231,6 +239,51 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, gboolean threa
     gchar *tips;
     gchar *keyname;
     gint ret;
+    gint len;
+    guchar *pubkey;
+
+    /* Check if the server's public key is known */
+    ret = ssh_is_server_known (ssh->session);
+    switch (ret)
+    {
+    case SSH_SERVER_KNOWN_OK:
+        break;
+
+    case SSH_SERVER_NOT_KNOWN:
+    case SSH_SERVER_FILE_NOT_FOUND:
+    case SSH_SERVER_KNOWN_CHANGED:
+    case SSH_SERVER_FOUND_OTHER:
+        len = ssh_get_pubkey_hash (ssh->session, &pubkey);
+        if (len < 0)
+        {
+            remmina_ssh_set_error (ssh, "SSH pubkey hash failed: %s");
+            return 0;
+        }
+        keyname = ssh_get_hexa (pubkey, len);
+
+        if (threaded) gdk_threads_enter();
+        if (ret == SSH_SERVER_NOT_KNOWN || ret == SSH_SERVER_FILE_NOT_FOUND)
+        {
+            ret = remmina_init_dialog_serverkey_unknown (dialog, keyname);
+        }
+        else
+        {
+            ret = remmina_init_dialog_serverkey_changed (dialog, keyname);
+        }
+        if (threaded) {gdk_flush();gdk_threads_leave();}
+
+        free (keyname);
+        ssh_clean_pubkey_hash (&pubkey);
+
+        if (ret != GTK_RESPONSE_OK) return -1;
+        ssh_write_knownhost (ssh->session);
+        break;
+
+    case SSH_SERVER_ERROR:
+    default:
+        remmina_ssh_set_error (ssh, "SSH known host checking failed: %s");
+        return 0;
+    }
 
     /* Try empty password or existing password first */
     ret = remmina_ssh_auth (ssh, NULL);
