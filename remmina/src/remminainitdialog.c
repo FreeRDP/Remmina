@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2009-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -412,5 +412,68 @@ remmina_init_dialog_authx509 (RemminaInitDialog *dialog, const gchar *cacert, co
     remmina_init_dialog_connecting (dialog);
 
     return ret;
+}
+
+static gint
+remmina_init_dialog_serverkey_confirm (RemminaInitDialog *dialog, const gchar *serverkey,
+    const gchar *prompt)
+{
+    GtkWidget *vbox;
+    GtkWidget *widget;
+    gint ret;
+
+    gtk_label_set_text (GTK_LABEL (dialog->status_label), (dialog->status ? dialog->status : dialog->title));
+
+    /* Create vbox */
+    vbox = gtk_vbox_new (FALSE, 4);
+    gtk_widget_show (vbox);
+
+    /* Icon */
+    gtk_image_set_from_stock (GTK_IMAGE (dialog->image), GTK_STOCK_DIALOG_WARNING, GTK_ICON_SIZE_DIALOG);
+
+    /* Entries */
+    widget = gtk_label_new (prompt);
+    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+    gtk_widget_show (widget);
+    gtk_box_pack_start (GTK_BOX (vbox), widget, TRUE, TRUE, 4);
+
+    widget = gtk_label_new (serverkey);
+    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+    gtk_widget_show (widget);
+    gtk_box_pack_start (GTK_BOX (vbox), widget, TRUE, TRUE, 4);
+
+    widget = gtk_label_new (_("Do you trust the new public key?"));
+    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+    gtk_widget_show (widget);
+    gtk_box_pack_start (GTK_BOX (vbox), widget, TRUE, TRUE, 4);
+
+    /* Pack it into the dialog */
+    gtk_box_pack_start (GTK_BOX (dialog->content_vbox), vbox, TRUE, TRUE, 4);
+
+    gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog), GTK_RESPONSE_OK, TRUE);
+
+    dialog->mode = REMMINA_INIT_MODE_SERVERKEY_CONFIRM;
+
+    /* Now run it */
+    ret = gtk_dialog_run (GTK_DIALOG (dialog));
+    gtk_container_remove (GTK_CONTAINER (dialog->content_vbox), vbox);
+    remmina_init_dialog_connecting (dialog);
+
+    return ret;
+}
+
+gint
+remmina_init_dialog_serverkey_unknown (RemminaInitDialog *dialog, const gchar *serverkey)
+{
+    return remmina_init_dialog_serverkey_confirm (dialog, serverkey,
+        _("The server is unknown. The public key fingerprint is:"));
+}
+
+gint
+remmina_init_dialog_serverkey_changed (RemminaInitDialog *dialog, const gchar *serverkey)
+{
+    return remmina_init_dialog_serverkey_confirm (dialog, serverkey,
+        _("WARNING: The server has changed its public key. This means either you are under attack,\n"
+        "or the administrator has changed the key. The new public key fingerprint is:"));
 }
 
