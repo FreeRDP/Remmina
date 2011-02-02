@@ -1,6 +1,17 @@
 #ifndef RFBPROTO_H
 #define RFBPROTO_H
 
+/**
+ @mainpage
+ @li @ref libvncserver_api
+ @li @ref libvncserver_doc
+
+
+ @li @ref libvncclient_api
+ @li @ref libvncclient_doc
+
+*/
+
 /*
  *  Copyright (C) 2005 Rohit Kumar, Johannes E. Schindelin
  *  Copyright (C) 2000-2002 Constantin Kaplinsky.  All Rights Reserved.
@@ -68,6 +79,16 @@
 #endif
 #endif
 
+/* some autotool versions do not properly prefix
+   WORDS_BIGENDIAN, so do that manually */
+#ifdef WORDS_BIGENDIAN
+#define LIBVNCSERVER_WORDS_BIGENDIAN
+#endif
+
+/* MS compilers don't have strncasecmp */
+#ifdef _MSC_VER
+#define strncasecmp _strnicmp
+#endif
 
 #if !defined(WIN32) || defined(__MINGW32__)
 #define max(a,b) (((a)>(b))?(a):(b))
@@ -96,7 +117,7 @@ typedef uint32_t in_addr_t;
 #define                INADDR_NONE     ((in_addr_t) 0xffffffff)
 #endif
 
-#define MAX_ENCODINGS 20
+#define MAX_ENCODINGS 21
 
 /*****************************************************************************
  *
@@ -265,6 +286,7 @@ typedef char rfbProtocolVersionMsg[13];	/* allow extra byte for null */
 #define rfbUltra 17
 #define rfbTLS 18
 #define rfbVeNCrypt 19
+#define rfbARD 30
 #define rfbMSLogon 0xfffffffa
 
 #define rfbVeNCryptPlain 256
@@ -369,7 +391,6 @@ typedef struct {
 #define rfbServerCutText 3
 /* Modif sf@2002 */
 #define rfbResizeFrameBuffer 4
-#define rfbKeyFrameUpdate 5
 #define rfbPalmVNCReSizeFrameBuffer 0xF
 
 /* client -> server */
@@ -392,9 +413,10 @@ typedef struct {
 /* Modif sf@2002 - TextChat - Bidirectionnal */
 #define rfbTextChat	11
 /* Modif cs@2005 */
-#define rfbKeyFrameRequest 12
 /* PalmVNC 1.4 & 2.0 SetScale Factor message */
 #define rfbPalmVNCSetScaleFactor 0xF
+/* Xvp message - bidirectional */
+#define rfbXvp 250
 
 
 
@@ -428,6 +450,9 @@ typedef struct {
 #define rfbEncodingCacheZip              0xFFFF0007
 #define rfbEncodingSolMonoZip            0xFFFF0008
 #define rfbEncodingUltraZip              0xFFFF0009
+
+/* Xvp pseudo-encoding */
+#define rfbEncodingXvp 			 0xFFFFFECB
 
 /*
  * Special encoding numbers:
@@ -500,18 +525,6 @@ typedef struct {
 } rfbFramebufferUpdateMsg;
 
 #define sz_rfbFramebufferUpdateMsg 4
-
-/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- * KeyFrameUpdate - Acknowledgment of a key frame request, it tells the client
- * that the next update received will be a key frame.
- */
-
-typedef struct {
-    uint8_t type;
-} rfbKeyFrameUpdateMsg;
-
-#define sz_rfbKeyFrameUpdateMsg 1
-
 
 /*
  * Each rectangle of pixel data consists of a header describing the position
@@ -1051,6 +1064,44 @@ typedef struct _rfbTextChatMsg {
 #define rfbTextChatFinished 0xFFFFFFFD  
 
 
+/*-----------------------------------------------------------------------------
+ * Xvp Message
+ * Bidirectional message
+ * A server which supports the xvp extension declares this by sending a message
+ * with an Xvp_INIT xvp-message-code when it receives a request from the client
+ * to use the xvp Pseudo-encoding. The server must specify in this message the
+ * highest xvp-extension-version it supports: the client may assume that the
+ * server supports all versions from 1 up to this value. The client is then
+ * free to use any supported version. Currently, only version 1 is defined.
+ *
+ * A server which subsequently receives an xvp Client Message requesting an
+ * operation which it is unable to perform, informs the client of this by
+ * sending a message with an Xvp_FAIL xvp-message-code, and the same
+ * xvp-extension-version as included in the client's operation request.
+ *
+ * A client supporting the xvp extension sends this to request that the server
+ * initiate a clean shutdown, clean reboot or abrupt reset of the system whose
+ * framebuffer the client is displaying.
+ */
+
+
+typedef struct {
+    uint8_t type;			/* always rfbXvp */
+	uint8_t pad;
+	uint8_t version;	/* xvp extension version */
+	uint8_t code;      	/* xvp message code */
+} rfbXvpMsg;
+
+#define sz_rfbXvpMsg (4)
+
+/* server message codes */
+#define rfbXvp_Fail 0
+#define rfbXvp_Init 1
+/* client message codes */
+#define rfbXvp_Shutdown 2
+#define rfbXvp_Reboot 3
+#define rfbXvp_Reset 4
+
 
 /*-----------------------------------------------------------------------------
  * Modif sf@2002
@@ -1105,6 +1156,7 @@ typedef union {
 	rfbPalmVNCReSizeFrameBufferMsg prsfb; 
 	rfbFileTransferMsg ft;
 	rfbTextChatMsg tc;
+        rfbXvpMsg xvp;
 } rfbServerToClientMsg;
 
 
@@ -1340,6 +1392,7 @@ typedef struct _rfbSetSWMsg {
 #define sz_rfbSetSWMsg 6
 
 
+
 /*-----------------------------------------------------------------------------
  * Union of all client->server messages.
  */
@@ -1359,6 +1412,7 @@ typedef union {
 	rfbFileTransferMsg ft;
 	rfbSetSWMsg sw;
 	rfbTextChatMsg tc;
+        rfbXvpMsg xvp;
 } rfbClientToServerMsg;
 
 /* 
