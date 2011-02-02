@@ -167,15 +167,19 @@ if test "x$vnc_plugin" = "x"; then
     AC_CHECK_HEADER(jpeglib.h, , vnc_plugin="no. libjpeg-dev required.")
 fi
 if test "x$vnc_plugin" = "x"; then
+    AM_PATH_LIBGCRYPT(1.4.0, , vnc_support="no. libgcrypt-dev required.")
+fi
+if test "x$vnc_plugin" = "x"; then
     PKG_CHECK_MODULES(GNUTLS, gnutls >= 2.4.0, , vnc_plugin="no. libgnutls-dev required.")
 fi
 if test "x$vnc_plugin" = "x"; then
     AX_PREFIX_CONFIG_H([libvncserver/rfb/rfbconfig.h], [LIBVNCSERVER])
     REMMINA_PLUGINS_SUBDIRS="$REMMINA_PLUGINS_SUBDIRS libvncserver vnc"
-    VNC_CFLAGS="-I../libvncserver $GNUTLS_CFLAGS"
-    VNC_LIBS="../libvncserver/libvncclient.la -ljpeg -lz $GNUTLS_LIBS"
+    VNC_CFLAGS="-I../libvncserver $LIBGCRYPT_CFLAGS $GNUTLS_CFLAGS"
+    VNC_LIBS="../libvncserver/libvncclient.la -ljpeg -lz $LIBGCRYPT_LIBS $GNUTLS_LIBS"
     AC_SUBST(VNC_CFLAGS)
     AC_SUBST(VNC_LIBS)
+    AC_DEFINE([WITH_CLIENT_GCRYPT], [1], [Enable support for gcrypt in libvncclient])
     AC_DEFINE([WITH_CLIENT_TLS], [1], [Enable support for gnutls in libvncclient])
     AC_DEFINE([HAVE_LIBVNCCLIENT], [1], [Define to 1 if you have libvncclient.])
     AC_DEFINE([IPv6], [1], [Enable support for IPv6 in libvncclient])
