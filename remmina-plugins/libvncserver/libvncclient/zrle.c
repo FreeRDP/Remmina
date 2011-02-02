@@ -72,7 +72,7 @@
 #define PIXEL_T __RFB_CONCAT3E(uint,BPP,_t)
 #if BPP!=8
 #define ZYWRLE_DECODE 1
-#include "../libvncserver/zywrletemplate.c"
+#include "zywrletemplate.c"
 #endif
 #undef CPIXEL
 

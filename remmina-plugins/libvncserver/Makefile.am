@@ -5,9 +5,9 @@ INCLUDES = $(GNUTLS_CFLAGS)
 libvncclient_la_SOURCES = \
     libvncclient/cursor.c \
     libvncclient/listen.c \
-    libvncclient/lzoconf.h \
-    libvncclient/minilzo.c \
-    libvncclient/minilzo.h \
+    common/lzoconf.h \
+    common/minilzo.c \
+    common/minilzo.h \
     libvncclient/rfbproto.c \
     libvncclient/sockets.c \
     libvncclient/tls.c \
@@ -17,6 +17,8 @@ libvncclient_la_SOURCES = \
     libvncclient/zlib.c \
     libvncclient/zrle.c
 
+libvncclient_la_CFLAGS = -I./common
+
 libvncclient_la_LIBADD = $(GNUTLS_LIBS)
 
 EXTRA_DIST = \
@@ -24,10 +26,10 @@ EXTRA_DIST = \
     libvncclient/hextile.c \
     libvncclient/rre.c \
     libvncclient/ultra.c \
-    libvncserver/d3des.c \
-    libvncserver/d3des.h \
-    libvncserver/vncauth.c \
-    libvncserver/zywrletemplate.c
+    common/d3des.c \
+    common/d3des.h \
+    common/vncauth.c \
+    common/zywrletemplate.c
 
 DISTCLEANFILES = \
     rfb/rfbconfig.h

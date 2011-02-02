@@ -186,6 +186,7 @@ rfbClient* rfbGetClient(int bitsPerSample,int samplesPerPixel,
   client->Bell = Dummy;
   client->CurrentKeyboardLedState = 0;
   client->HandleKeyboardLedState = (HandleKeyboardLedStateProc)DummyPoint;
+  client->QoS_DSCP = 0;
 
   client->authScheme = 0;
   client->subAuthScheme = 0;
@@ -287,6 +288,9 @@ rfbBool rfbInitClient(rfbClient* client,int* argc,char** argv) {
 	j+=2;
       } else if (i+1<*argc && strcmp(argv[i], "-scale") == 0) {
         client->appData.scaleSetting = atoi(argv[i+1]);
+        j+=2;
+      } else if (i+1<*argc && strcmp(argv[i], "-qosdscp") == 0) {
+        client->QoS_DSCP = atoi(argv[i+1]);
         j+=2;
       } else if (i+1<*argc && strcmp(argv[i], "-repeaterdest") == 0) {
 	char* colon=strchr(argv[i+1],':');
