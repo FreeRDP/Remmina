@@ -196,6 +196,7 @@ AC_CHECK_HEADERS_ONCE(
 
 AC_CONFIG_FILES([
 Makefile
+remmina.pc
 include/Makefile
 src/Makefile
 po/Makefile.in
