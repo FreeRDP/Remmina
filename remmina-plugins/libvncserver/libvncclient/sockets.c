@@ -37,6 +37,10 @@
 #define read(sock,buf,len) recv(sock,buf,len,0)
 #define write(sock,buf,len) send(sock,buf,len,0)
 #define socklen_t int
+#ifdef LIBVNCSERVER_HAVE_WS2TCPIP_H
+#undef socklen_t
+#include <ws2tcpip.h>
+#endif
 #else
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -146,6 +150,11 @@ ReadFromRFBServer(rfbClient* client, char *out, unsigned int n)
 	  errno=WSAGetLastError();
 #endif
 	  if (errno == EWOULDBLOCK || errno == EAGAIN) {
+#ifndef WIN32
+        usleep (10000);
+#else
+	 Sleep (10);
+#endif
 	    /* TODO:
 	       ProcessXtEvents();
 	    */
@@ -187,6 +196,11 @@ ReadFromRFBServer(rfbClient* client, char *out, unsigned int n)
 	  errno=WSAGetLastError();
 #endif
 	  if (errno == EWOULDBLOCK || errno == EAGAIN) {
+#ifndef WIN32
+        usleep (10000);
+#else
+	 Sleep (10);
+#endif
 	    /* TODO:
 	       ProcessXtEvents();
 	    */
@@ -547,16 +561,68 @@ AcceptTcpConnection(int listenSock)
 rfbBool
 SetNonBlocking(int sock)
 {
-#ifndef __MINGW32__
-  if (fcntl(sock, F_SETFL, O_NONBLOCK) < 0) {
-    rfbClientErr("AcceptTcpConnection: fcntl\n");
+#ifdef WIN32
+  unsigned long block=1;
+  if(ioctlsocket(sock, FIONBIO, &block) == SOCKET_ERROR) {
+    errno=WSAGetLastError();
+#else
+  int flags = fcntl(sock, F_GETFL);
+  if(flags < 0 || fcntl(sock, F_SETFL, flags | O_NONBLOCK) < 0) {
+#endif
+    rfbClientErr("Setting socket to non-blocking failed: %s\n",strerror(errno));
     return FALSE;
   }
-#else
-  rfbClientErr("O_NONBLOCK on MinGW32 NOT IMPLEMENTED\n");
-#endif
   return TRUE;
 }
+
+
+
+/*
+ * SetDSCP sets a socket's IP QoS parameters aka Differentiated Services Code Point field
+ */
+
+rfbBool
+SetDSCP(int sock, int dscp)
+{
+#ifdef WIN32
+  rfbClientErr("Setting of QoS IP DSCP not implemented for Windows\n");
+  return TRUE;
+#else
+  int level, cmd;
+  struct sockaddr addr;
+  socklen_t addrlen = sizeof(addr);
+
+  if(getsockname(sock, &addr, &addrlen) != 0) {
+    rfbClientErr("Setting socket QoS failed while getting socket address: %s\n",strerror(errno));
+    return FALSE;
+  }
+
+  switch(addr.sa_family)
+    {
+#if defined LIBVNCSERVER_IPv6 && defined IPV6_TCLASS
+    case AF_INET6:
+      level = IPPROTO_IPV6;
+      cmd = IPV6_TCLASS;
+      break;
+#endif
+    case AF_INET:
+      level = IPPROTO_IP;
+      cmd = IP_TOS;
+      break;
+    default:
+      rfbClientErr("Setting socket QoS failed: Not bound to IP address");
+      return FALSE;
+    }
+
+  if(setsockopt(sock, level, cmd, (void*)&dscp, sizeof(dscp)) != 0) {
+    rfbClientErr("Setting socket QoS failed: %s\n", strerror(errno));
+    return FALSE;
+  }
+
+  return TRUE;
+#endif
+}
+
 
 
 /*
