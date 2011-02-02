@@ -361,7 +361,7 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), remmina_pref.save_when_connect);
     priv->save_when_connect_check = widget;
 
-    widget = gtk_check_button_new_with_label (_("Invisible floating toolbar"));
+    widget = gtk_check_button_new_with_label (_("Invisible toolbar in fullscreen mode"));
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 2, 2, 3);
     if (gtk_widget_is_composited (GTK_WIDGET (dialog)))
@@ -380,7 +380,7 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), remmina_pref.always_show_tab);
     priv->always_show_tab_check = widget;
 
-    widget = gtk_check_button_new_with_label (_("Hide connection toolbar"));
+    widget = gtk_check_button_new_with_label (_("Hide toolbar in tabbed interface"));
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 2, 4, 5);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), remmina_pref.hide_connection_toolbar);
