@@ -58,21 +58,10 @@ AC_SUBST(remmina_datadir)
 PKG_CHECK_MODULES(REMMINA_PLUGINS, [
     glib-2.0 >= 2.20.0
     gtk+-2.0 >= 2.16.0
+    remmina >= 0.9.99
 ])
 AC_SUBST(REMMINA_PLUGINS_CFLAGS)
 AC_SUBST(REMMINA_PLUGINS_LIBS)
-
-# Checks for plugin development files
-CFLAGS="$CFLAGS -I${prefix}/include"
-saved_CFLAGS=$CFLAGS
-CFLAGS="$CFLAGS $REMMINA_PLUGINS_CFLAGS"
-AC_CHECK_HEADER(remmina/plugin.h, [], [
-    echo "ERROR: Remmina plugin development headers are not found."
-    exit 1
-], [
-#include <gtk/gtk.h>
-])
-CFLAGS=$saved_CFLAGS
 
 # Check libpthread
 AC_CHECK_LIB(pthread, pthread_create, [
