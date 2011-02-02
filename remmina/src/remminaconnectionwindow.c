@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -2292,18 +2292,23 @@ remmina_connection_object_on_connect (RemminaProtocolWidget *gp, RemminaConnecti
     GtkWidget *tab;
     gint i;
 
-    cnnwin = remmina_connection_window_find (cnnobj->remmina_file);
-
-    if (cnnwin)
+    if (!cnnobj->cnnhld)
     {
-        cnnhld = cnnwin->priv->cnnhld;
+        cnnwin = remmina_connection_window_find (cnnobj->remmina_file);
+        if (cnnwin)
+        {
+            cnnhld = cnnwin->priv->cnnhld;
+        }
+        else
+        {
+            cnnhld = g_new0 (RemminaConnectionHolder, 1);
+        }
+        cnnobj->cnnhld = cnnhld;
     }
     else
     {
-        cnnhld = g_new0 (RemminaConnectionHolder, 1);
+        cnnhld = cnnobj->cnnhld;
     }
-
-    cnnobj->cnnhld = cnnhld;
 
     cnnobj->connected = TRUE;
 
