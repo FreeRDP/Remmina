@@ -33,6 +33,7 @@ void remmina_plugin_manager_for_each_plugin (RemminaPluginType type, RemminaPlug
 void remmina_plugin_manager_show (GtkWindow *parent);
 RemminaFilePlugin* remmina_plugin_manager_get_import_file_handler (const gchar *file);
 RemminaFilePlugin* remmina_plugin_manager_get_export_file_handler (RemminaFile *remminafile);
+RemminaSecretPlugin* remmina_plugin_manager_get_secret_plugin (void);
 
 extern RemminaPluginService remmina_plugin_manager_service;
 

@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,6 +56,7 @@ RemminaFile* remmina_file_load (const gchar *filename);
 void remmina_file_set_string (RemminaFile *remminafile, const gchar *setting, const gchar *value);
 void remmina_file_set_string_ref (RemminaFile *remminafile, const gchar *setting, gchar *value);
 const gchar* remmina_file_get_string (RemminaFile *remminafile, const gchar *setting);
+const gchar* remmina_file_get_secret (RemminaFile *remminafile, const gchar *setting);
 void remmina_file_set_int (RemminaFile *remminafile, const gchar *setting, gint value);
 gint remmina_file_get_int (RemminaFile *remminafile, const gchar *setting, gint default_value);
 /* Create or overwrite the .remmina file */
@@ -71,6 +72,8 @@ void remmina_file_update_screen_resolution (RemminaFile *remminafile);
 const gchar* remmina_file_get_icon_name (RemminaFile *remminafile);
 /* Duplicate a temporary RemminaFile and change the protocol */
 RemminaFile* remmina_file_dup_temp_protocol (RemminaFile *remminafile, const gchar *new_protocol);
+/* Delete a .remmina file */
+void remmina_file_delete (const gchar *filename);
 
 G_END_DECLS
 

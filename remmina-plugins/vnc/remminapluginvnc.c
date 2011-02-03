@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2010-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -809,15 +809,17 @@ remmina_plugin_vnc_rfb_password (rfbClient *cl)
     RemminaFile *remminafile;
     gint ret;
     gchar *pwd = NULL;
+    const gchar *cs;
 
     gp = (RemminaProtocolWidget*) (rfbClientGetClientData (cl, NULL));
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     gpdata->auth_called = TRUE;
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
-    if (gpdata->auth_first && remmina_plugin_service->file_get_string (remminafile, "password"))
+    cs = remmina_plugin_service->file_get_secret (remminafile, "password");
+    if (gpdata->auth_first && cs)
     {
-        pwd = g_strdup (remmina_plugin_service->file_get_string (remminafile, "password"));
+        pwd = g_strdup (cs);
     }
     else
     {
@@ -846,6 +848,7 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
     RemminaPluginVncData *gpdata;
     RemminaFile *remminafile;
     gint ret;
+    const gchar *cs1, *cs2;
 
     gp = (RemminaProtocolWidget*) (rfbClientGetClientData (cl, NULL));
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
@@ -859,12 +862,12 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 
     case rfbCredentialTypeUser:
 
-        if (gpdata->auth_first && 
-            remmina_plugin_service->file_get_string (remminafile, "username") &&
-            remmina_plugin_service->file_get_string (remminafile, "password"))
+        cs1 = remmina_plugin_service->file_get_string (remminafile, "username");
+        cs2 = remmina_plugin_service->file_get_secret (remminafile, "password");
+        if (gpdata->auth_first && cs1 && cs2)
         {
-            cred->userCredential.username = g_strdup (remmina_plugin_service->file_get_string (remminafile, "username"));
-            cred->userCredential.password = g_strdup (remmina_plugin_service->file_get_string (remminafile, "password"));
+            cred->userCredential.username = g_strdup (cs1);
+            cred->userCredential.password = g_strdup (cs2);
         }
         else
         {
