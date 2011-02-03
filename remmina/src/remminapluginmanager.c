@@ -113,6 +113,7 @@ RemminaPluginService remmina_plugin_manager_service =
     remmina_protocol_widget_chat_receive,
 
     remmina_file_new,
+    remmina_file_get_filename,
     remmina_file_set_string,
     remmina_file_get_string,
     remmina_file_get_secret,

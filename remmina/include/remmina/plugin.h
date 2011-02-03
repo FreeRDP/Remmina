@@ -179,6 +179,7 @@ typedef struct _RemminaPluginService
     void         (* protocol_plugin_chat_receive)         (RemminaProtocolWidget *gp, const gchar *text);
 
     RemminaFile* (* file_new)                             (void);
+    const gchar* (* file_get_path)                        (RemminaFile *remminafile);
     void         (* file_set_string)                      (RemminaFile *remminafile, const gchar *setting, const gchar *value);
     const gchar* (* file_get_string)                      (RemminaFile *remminafile, const gchar *setting);
     const gchar* (* file_get_secret)                      (RemminaFile *remminafile, const gchar *setting);
