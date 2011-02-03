@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2010-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,8 @@ typedef enum
     REMMINA_PLUGIN_TYPE_ENTRY = 1,
     REMMINA_PLUGIN_TYPE_FILE = 2,
     REMMINA_PLUGIN_TYPE_TOOL = 3,
-    REMMINA_PLUGIN_TYPE_PREF = 4
+    REMMINA_PLUGIN_TYPE_PREF = 4,
+    REMMINA_PLUGIN_TYPE_SECRET = 5
 } RemminaPluginType;
 
 typedef struct _RemminaPlugin
@@ -40,7 +41,7 @@ typedef struct _RemminaPlugin
     const gchar *name;
     const gchar *description;
     const gchar *domain;
-	const gchar *version;
+    const gchar *version;
 } RemminaPlugin;
 
 typedef struct _RemminaProtocolPlugin
@@ -49,7 +50,7 @@ typedef struct _RemminaProtocolPlugin
     const gchar *name;
     const gchar *description;
     const gchar *domain;
-	const gchar *version;
+    const gchar *version;
 
     const gchar *icon_name;
     const gchar *icon_name_ssh;
@@ -71,7 +72,7 @@ typedef struct _RemminaEntryPlugin
     const gchar *name;
     const gchar *description;
     const gchar *domain;
-	const gchar *version;
+    const gchar *version;
 
     void (* entry_func) (void);
 } RemminaEntryPlugin;
@@ -82,7 +83,7 @@ typedef struct _RemminaFilePlugin
     const gchar *name;
     const gchar *description;
     const gchar *domain;
-	const gchar *version;
+    const gchar *version;
 
     gboolean (* import_test_func) (const gchar *from_file);
     RemminaFile* (* import_func) (const gchar *from_file);
@@ -97,7 +98,7 @@ typedef struct _RemminaToolPlugin
     const gchar *name;
     const gchar *description;
     const gchar *domain;
-	const gchar *version;
+    const gchar *version;
 
     void (* exec_func) (void);
 } RemminaToolPlugin;
@@ -108,11 +109,28 @@ typedef struct _RemminaPrefPlugin
     const gchar *name;
     const gchar *description;
     const gchar *domain;
-	const gchar *version;
+    const gchar *version;
 
     const gchar *pref_label;
     GtkWidget* (* get_pref_body) (void);
 } RemminaPrefPlugin;
+
+typedef struct _RemminaSecretPlugin
+{
+    RemminaPluginType type;
+    const gchar *name;
+    const gchar *description;
+    const gchar *domain;
+    const gchar *version;
+
+    gboolean trusted;
+    void (* store_password) (RemminaFile *remminafile, const gchar *key, const gchar *password);
+    gchar* (* get_password) (RemminaFile *remminafile, const gchar *key);
+    void (* delete_password) (RemminaFile *remminafile, const gchar *key);
+    void (* store_group_password) (const gchar *name, const gchar *password);
+    gchar* (* get_group_password) (const gchar *name);
+    void (* delete_group_password) (const gchar *name);
+} RemminaSecretPlugin;
 
 /* Plugin Service is a struct containing a list of function pointers,
  * which is passed from Remmina main program to the plugin module
@@ -163,6 +181,7 @@ typedef struct _RemminaPluginService
     RemminaFile* (* file_new)                             (void);
     void         (* file_set_string)                      (RemminaFile *remminafile, const gchar *setting, const gchar *value);
     const gchar* (* file_get_string)                      (RemminaFile *remminafile, const gchar *setting);
+    const gchar* (* file_get_secret)                      (RemminaFile *remminafile, const gchar *setting);
     void         (* file_set_int)                         (RemminaFile *remminafile, const gchar *setting, gint value);
     gint         (* file_get_int)                         (RemminaFile *remminafile, const gchar *setting, gint default_value);
 

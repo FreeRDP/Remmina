@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2010-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,6 +33,9 @@
 
 static GPtrArray* remmina_plugin_table = NULL;
 
+/* There can be only one secret plugin loaded */
+static RemminaSecretPlugin *remmina_secret_plugin = NULL;
+
 static const gchar *remmina_plugin_type_name[] =
 {
     N_("Protocol"),
@@ -40,6 +43,7 @@ static const gchar *remmina_plugin_type_name[] =
     N_("File"),
     N_("Tool"),
     N_("Preference"),
+    N_("Secret"),
     NULL
 };
 
@@ -52,6 +56,15 @@ remmina_plugin_manager_compare_func (RemminaPlugin **a, RemminaPlugin **b)
 static gboolean
 remmina_plugin_manager_register_plugin (RemminaPlugin *plugin)
 {
+    if (plugin->type == REMMINA_PLUGIN_TYPE_SECRET)
+    {
+        if (remmina_secret_plugin)
+        {
+            g_print ("Remmina plugin %s (type=%s) bypassed.\n", plugin->name, _(remmina_plugin_type_name[plugin->type]));
+            return FALSE;
+        }
+        remmina_secret_plugin = (RemminaSecretPlugin*) plugin;
+    }
     g_ptr_array_add (remmina_plugin_table, plugin);
     g_ptr_array_sort (remmina_plugin_table, (GCompareFunc) remmina_plugin_manager_compare_func);
     g_print ("Remmina plugin %s (type=%s) registered.\n", plugin->name, _(remmina_plugin_type_name[plugin->type]));
@@ -102,6 +115,7 @@ RemminaPluginService remmina_plugin_manager_service =
     remmina_file_new,
     remmina_file_set_string,
     remmina_file_get_string,
+    remmina_file_get_secret,
     remmina_file_set_int,
     remmina_file_get_int,
 
@@ -320,5 +334,11 @@ remmina_plugin_manager_get_export_file_handler (RemminaFile *remminafile)
         }
     }
     return NULL;
+}
+
+RemminaSecretPlugin*
+remmina_plugin_manager_get_secret_plugin (void)
+{
+    return remmina_secret_plugin;
 }
 

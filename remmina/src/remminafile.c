@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <glib/gstdio.h>
 #include <stdlib.h>
 #include "remminapublic.h"
 #include "remminapref.h"
@@ -69,7 +70,7 @@ const RemminaSetting remmina_system_settings[] =
 static RemminaSettingGroup
 remmina_setting_get_group (const gchar *setting, gboolean *encrypted)
 {
-    int i;
+    gint i;
 
     for (i = 0; remmina_system_settings[i].setting; i++)
     {
@@ -229,6 +230,25 @@ remmina_file_get_string (RemminaFile *remminafile, const gchar *setting)
     return value && value[0] ? value : NULL;
 }
 
+const gchar*
+remmina_file_get_secret (RemminaFile *remminafile, const gchar *setting)
+{
+    RemminaSecretPlugin *plugin;
+    gchar *value;
+
+    plugin = remmina_plugin_manager_get_secret_plugin ();
+    if (plugin)
+    {
+        value = plugin->get_password (remminafile, setting);
+        remmina_file_set_string_ref (remminafile, setting, value);
+        return value && value[0] ? value : NULL;
+    }
+    else
+    {
+        return remmina_file_get_string (remminafile, setting);
+    }
+}
+
 void
 remmina_file_set_int (RemminaFile *remminafile, const gchar *setting, gint value)
 {
@@ -247,12 +267,14 @@ remmina_file_get_int (RemminaFile *remminafile, const gchar *setting, gint defau
 static void
 remmina_file_store_group (RemminaFile *remminafile, GKeyFile *gkeyfile, RemminaSettingGroup group)
 {
+    RemminaSecretPlugin *plugin;
     GHashTableIter iter;
     const gchar *key, *value;
     gchar *s;
     gboolean encrypted;
     RemminaSettingGroup g;
 
+    plugin = remmina_plugin_manager_get_secret_plugin ();
     g_hash_table_iter_init (&iter, remminafile->settings);
     while (g_hash_table_iter_next (&iter, (gpointer*) &key, (gpointer*) &value))
     {
@@ -260,11 +282,33 @@ remmina_file_store_group (RemminaFile *remminafile, GKeyFile *gkeyfile, RemminaS
         g = remmina_setting_get_group (key, &encrypted);
         if (g != REMMINA_SETTING_GROUP_NONE && (group == REMMINA_SETTING_GROUP_ALL || group == g))
         {
-            if (encrypted && value && value[0])
+            if (encrypted)
             {
-                s = remmina_crypt_encrypt (value);
-                g_key_file_set_string (gkeyfile, "remmina", key, s);
-                g_free (s);
+                if (plugin)
+                {
+                    g_key_file_set_string (gkeyfile, "remmina", key, "");
+                    if (value && value[0])
+                    {
+                        plugin->store_password (remminafile, key, value);
+                    }
+                    else
+                    {
+                        plugin->delete_password (remminafile, key);
+                    }
+                }
+                else
+                {
+                    if (value && value[0])
+                    {
+                        s = remmina_crypt_encrypt (value);
+                        g_key_file_set_string (gkeyfile, "remmina", key, s);
+                        g_free (s);
+                    }
+                    else
+                    {
+                        g_key_file_set_string (gkeyfile, "remmina", key, "");
+                    }
+                }
             }
             else
             {
@@ -404,5 +448,31 @@ remmina_file_dup_temp_protocol (RemminaFile *remminafile, const gchar *new_proto
     tmp->filename = NULL;
     remmina_file_set_string (tmp, "protocol", new_protocol);
     return tmp;
+}
+
+void
+remmina_file_delete (const gchar *filename)
+{
+    RemminaSecretPlugin *plugin;
+    RemminaFile *remminafile;
+    gint i;
+
+    remminafile = remmina_file_load (filename);
+    if (remminafile)
+    {
+        plugin = remmina_plugin_manager_get_secret_plugin ();
+        if (plugin)
+        {
+            for (i = 0; remmina_system_settings[i].setting; i++)
+            {
+                if (remmina_system_settings[i].encrypted)
+                {
+                    plugin->delete_password (remminafile, remmina_system_settings[i].setting);
+                }
+            }
+        }
+        remmina_file_free (remminafile);
+    }
+    g_unlink (filename);
 }
 

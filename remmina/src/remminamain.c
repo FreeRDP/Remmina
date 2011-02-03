@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +20,6 @@
 
 #include "config.h"
 #include <gtk/gtk.h>
-#include <glib/gstdio.h>
 #include <glib/gi18n.h>
 #include "remminastringarray.h"
 #include "remminapublic.h"
@@ -574,7 +573,7 @@ remmina_main_action_connection_delete (GtkAction *action, RemminaMain *remminama
         _("Are you sure to delete '%s'"), remminamain->priv->selected_name);
     if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
     {
-        g_unlink (remminamain->priv->selected_filename);
+        remmina_file_delete (remminamain->priv->selected_filename);
         remmina_main_load_files (remminamain, TRUE);
     }
     gtk_widget_destroy (dialog);
