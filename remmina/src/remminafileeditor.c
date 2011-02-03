@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -393,9 +393,13 @@ remmina_file_editor_create_password (RemminaFileEditor *gfe, GtkWidget *table, g
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, row, row + 1);
     gtk_entry_set_visibility (GTK_ENTRY (widget), FALSE);
-    cs = remmina_file_get_string (gfe->priv->remmina_file, "password");
-    if (cs) gtk_entry_set_text (GTK_ENTRY (widget), cs);
     gfe->priv->password_entry = widget;
+
+    cs = remmina_file_get_secret (gfe->priv->remmina_file, "password");
+    if (cs)
+    {
+        gtk_entry_set_text (GTK_ENTRY (widget), cs);
+    }
 }
 
 static void
