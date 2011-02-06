@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -98,6 +98,7 @@ struct _RemminaPrefDialogPriv
     GtkWidget *shortcutkey_toolbar_chooser;
     GtkWidget *vte_font_check;
     GtkWidget *vte_font_button;
+    GtkWidget *vte_allow_bold_text_check;
     GtkWidget *vte_lines_entry;
 };
 
@@ -254,6 +255,7 @@ remmina_pref_dialog_destroy (GtkWidget *widget, gpointer data)
     {
         remmina_pref.vte_font = g_strdup (gtk_font_button_get_font_name (GTK_FONT_BUTTON (priv->vte_font_button)));
     }
+    remmina_pref.vte_allow_bold_text = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->vte_allow_bold_text_check));
     remmina_pref.vte_lines = atoi (gtk_entry_get_text (GTK_ENTRY (priv->vte_lines_entry)));
 
     remmina_pref_save ();
@@ -654,7 +656,7 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_widget_show (vbox);
     gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, tablabel);
 
-    table = gtk_table_new (3, 2, FALSE);
+    table = gtk_table_new (4, 2, FALSE);
     gtk_widget_show (table);
     gtk_table_set_row_spacings (GTK_TABLE (table), 4);
     gtk_table_set_col_spacings (GTK_TABLE (table), 4);
@@ -691,14 +693,20 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     g_signal_connect (G_OBJECT (priv->vte_font_check), "toggled",
         G_CALLBACK (remmina_pref_dialog_vte_font_on_toggled), dialog);
 
+    widget = gtk_check_button_new_with_label (_("Allow bold text"));
+    gtk_widget_show (widget);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 2, 3);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), remmina_pref.vte_allow_bold_text);
+    priv->vte_allow_bold_text_check = widget;
+
     widget = gtk_label_new (_("Scrollback lines"));
     gtk_widget_show (widget);
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
-    gtk_table_attach (GTK_TABLE (table), widget, 0, 1, 2, 3, GTK_FILL, 0, 0, 0);
+    gtk_table_attach (GTK_TABLE (table), widget, 0, 1, 3, 4, GTK_FILL, 0, 0, 0);
 
     widget = gtk_entry_new_with_max_length (5);
     gtk_widget_show (widget);
-    gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 2, 3);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 3, 4);
     g_snprintf (buf, sizeof (buf), "%i", remmina_pref.vte_lines);
     gtk_entry_set_text (GTK_ENTRY (widget), buf);
     priv->vte_lines_entry = widget;
