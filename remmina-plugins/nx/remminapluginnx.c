@@ -257,14 +257,19 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
 
     /* Login */
 
-    s1 = (gchar*) remmina_plugin_nx_service->file_get_string (remminafile, "username");
-    s2 = (gchar*) remmina_plugin_nx_service->file_get_secret (remminafile, "password");
+    s1 = g_strdup (remmina_plugin_nx_service->file_get_string (remminafile, "username"));
+    THREADS_ENTER
+    s2 = remmina_plugin_nx_service->file_get_secret (remminafile, "password");
+    THREADS_LEAVE
     if (s1 && s2)
     {
         ret = remmina_nx_session_login (nx, s1, s2);
     }
     else
     {
+        g_free (s1);
+        g_free (s2);
+
         THREADS_ENTER
         ret = remmina_plugin_nx_service->protocol_plugin_init_authuserpwd (gp);
         THREADS_LEAVE
@@ -274,13 +279,15 @@ remmina_plugin_nx_start_session (RemminaProtocolWidget *gp)
         s1 = remmina_plugin_nx_service->protocol_plugin_init_get_username (gp);
         s2 = remmina_plugin_nx_service->protocol_plugin_init_get_password (gp);
         ret = remmina_nx_session_login (nx, s1, s2);
-        g_free (s1);
-        g_free (s2);
     }
+    g_free (s1);
+    g_free (s2);
 
     if (!ret) return FALSE;
 
+    THREADS_ENTER
     remmina_plugin_nx_service->protocol_plugin_init_save_cred (gp);
+    THREADS_LEAVE
 
     /* Prepare the session type and application */
     cs = remmina_plugin_nx_service->file_get_string (remminafile, "exec");

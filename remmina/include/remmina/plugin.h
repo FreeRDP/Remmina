@@ -127,9 +127,6 @@ typedef struct _RemminaSecretPlugin
     void (* store_password) (RemminaFile *remminafile, const gchar *key, const gchar *password);
     gchar* (* get_password) (RemminaFile *remminafile, const gchar *key);
     void (* delete_password) (RemminaFile *remminafile, const gchar *key);
-    void (* store_group_password) (const gchar *name, const gchar *password);
-    gchar* (* get_group_password) (const gchar *name);
-    void (* delete_group_password) (const gchar *name);
 } RemminaSecretPlugin;
 
 /* Plugin Service is a struct containing a list of function pointers,
@@ -182,7 +179,7 @@ typedef struct _RemminaPluginService
     const gchar* (* file_get_path)                        (RemminaFile *remminafile);
     void         (* file_set_string)                      (RemminaFile *remminafile, const gchar *setting, const gchar *value);
     const gchar* (* file_get_string)                      (RemminaFile *remminafile, const gchar *setting);
-    const gchar* (* file_get_secret)                      (RemminaFile *remminafile, const gchar *setting);
+    gchar*       (* file_get_secret)                      (RemminaFile *remminafile, const gchar *setting);
     void         (* file_set_int)                         (RemminaFile *remminafile, const gchar *setting, gint value);
     gint         (* file_get_int)                         (RemminaFile *remminafile, const gchar *setting, gint default_value);
 

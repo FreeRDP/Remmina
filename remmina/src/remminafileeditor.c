@@ -382,7 +382,7 @@ static void
 remmina_file_editor_create_password (RemminaFileEditor *gfe, GtkWidget *table, gint row)
 {
     GtkWidget *widget;
-    const gchar *cs;
+    gchar *s;
 
     widget = gtk_label_new (_("Password"));
     gtk_widget_show (widget);
@@ -395,10 +395,11 @@ remmina_file_editor_create_password (RemminaFileEditor *gfe, GtkWidget *table, g
     gtk_entry_set_visibility (GTK_ENTRY (widget), FALSE);
     gfe->priv->password_entry = widget;
 
-    cs = remmina_file_get_secret (gfe->priv->remmina_file, "password");
-    if (cs)
+    s = remmina_file_get_secret (gfe->priv->remmina_file, "password");
+    if (s)
     {
-        gtk_entry_set_text (GTK_ENTRY (widget), cs);
+        gtk_entry_set_text (GTK_ENTRY (widget), s);
+        g_free (s);
     }
 }
 
