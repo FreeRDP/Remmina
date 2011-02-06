@@ -111,22 +111,6 @@ remmina_plugin_gkeyring_delete_password (RemminaFile *remminafile, const gchar *
     }
 }
 
-void
-remmina_plugin_gkeyring_store_group_password (const gchar *name, const gchar *password)
-{
-}
-
-gchar*
-remmina_plugin_gkeyring_get_group_password (const gchar *name)
-{
-    return NULL;
-}
-
-void
-remmina_plugin_gkeyring_delete_group_password (const gchar *name)
-{
-}
-
 static RemminaSecretPlugin remmina_plugin_gkeyring =
 {
     REMMINA_PLUGIN_TYPE_SECRET,
@@ -135,13 +119,10 @@ static RemminaSecretPlugin remmina_plugin_gkeyring =
     NULL,
     VERSION,
 
-    FALSE,
+    TRUE,
     remmina_plugin_gkeyring_store_password,
     remmina_plugin_gkeyring_get_password,
-    remmina_plugin_gkeyring_delete_password,
-    remmina_plugin_gkeyring_store_group_password,
-    remmina_plugin_gkeyring_get_group_password,
-    remmina_plugin_gkeyring_delete_group_password
+    remmina_plugin_gkeyring_delete_password
 };
 
 G_MODULE_EXPORT gboolean

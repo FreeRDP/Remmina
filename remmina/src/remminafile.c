@@ -181,7 +181,14 @@ remmina_file_load (const gchar *filename)
                 if (encrypted)
                 {
                     s = g_key_file_get_string (gkeyfile, "remmina", key, NULL);
-                    remmina_file_set_string_ref (remminafile, key, remmina_crypt_decrypt (s));
+                    if (g_strcmp0 (s, ".") == 0)
+                    {
+                        remmina_file_set_string (remminafile, key, s);
+                    }
+                    else
+                    {
+                        remmina_file_set_string_ref (remminafile, key, remmina_crypt_decrypt (s));
+                    }
                     g_free (s);
                 }
                 else
@@ -230,20 +237,19 @@ remmina_file_get_string (RemminaFile *remminafile, const gchar *setting)
     return value && value[0] ? value : NULL;
 }
 
-const gchar*
+gchar*
 remmina_file_get_secret (RemminaFile *remminafile, const gchar *setting)
 {
     RemminaSecretPlugin *plugin;
-    gchar *value;
+    const gchar *cs;
 
     plugin = remmina_plugin_manager_get_secret_plugin ();
+    cs = remmina_file_get_string (remminafile, setting);
     if (plugin)
     {
-        if (remminafile->filename)
+        if (remminafile->filename && g_strcmp0 (cs, ".") == 0)
         {
-            value = plugin->get_password (remminafile, setting);
-            remmina_file_set_string_ref (remminafile, setting, value);
-            return value && value[0] ? value : NULL;
+            return plugin->get_password (remminafile, setting);
         }
         else
         {
@@ -252,7 +258,7 @@ remmina_file_get_secret (RemminaFile *remminafile, const gchar *setting)
     }
     else
     {
-        return remmina_file_get_string (remminafile, setting);
+        return g_strdup (cs);
     }
 }
 
@@ -295,13 +301,17 @@ remmina_file_store_group (RemminaFile *remminafile, GKeyFile *gkeyfile, RemminaS
                 {
                     if (plugin)
                     {
-                        g_key_file_set_string (gkeyfile, "remmina", key, "");
                         if (value && value[0])
                         {
-                            plugin->store_password (remminafile, key, value);
+                            if (g_strcmp0 (value, ".") != 0)
+                            {
+                                plugin->store_password (remminafile, key, value);
+                            }
+                            g_key_file_set_string (gkeyfile, "remmina", key, ".");
                         }
                         else
                         {
+                            g_key_file_set_string (gkeyfile, "remmina", key, "");
                             plugin->delete_password (remminafile, key);
                         }
                     }
