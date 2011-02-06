@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -363,6 +363,11 @@ remmina_pref_init (void)
     else
         remmina_pref.vte_font = NULL;
 
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "vte_allow_bold_text", NULL))
+        remmina_pref.vte_allow_bold_text = g_key_file_get_integer (gkeyfile, "remmina_pref", "vte_allow_bold_text", NULL);
+    else
+        remmina_pref.vte_allow_bold_text = TRUE;
+
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "vte_lines", NULL))
         remmina_pref.vte_lines = g_key_file_get_integer (gkeyfile, "remmina_pref", "vte_lines", NULL);
     else
@@ -426,6 +431,7 @@ remmina_pref_save (void)
     g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_disconnect", remmina_pref.shortcutkey_disconnect);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_toolbar", remmina_pref.shortcutkey_toolbar);
     g_key_file_set_string (gkeyfile, "remmina_pref", "vte_font", remmina_pref.vte_font ? remmina_pref.vte_font : "");
+    g_key_file_set_boolean (gkeyfile, "remmina_pref", "vte_allow_bold_text", remmina_pref.vte_allow_bold_text);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "vte_lines", remmina_pref.vte_lines);
 
     content = g_key_file_to_data (gkeyfile, &length, NULL);
