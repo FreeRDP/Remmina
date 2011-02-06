@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,8 +33,9 @@ remmina_about_open (GtkWindow *parent)
         "Vic Lee <llyzs@163.com>",
         "",
         N_("Contributors:"),
-        "Nikolay Botev <bono8106@gmail.com>",
         "Alex Chateau <ash@zednet.lv>",
+        "Alexander Logvinov <avl@logvinov.com>",
+        "Nikolay Botev <bono8106@gmail.com>",
         NULL
     };
     const gchar *artists[] =
