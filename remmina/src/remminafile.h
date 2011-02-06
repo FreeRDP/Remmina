@@ -56,7 +56,7 @@ RemminaFile* remmina_file_load (const gchar *filename);
 void remmina_file_set_string (RemminaFile *remminafile, const gchar *setting, const gchar *value);
 void remmina_file_set_string_ref (RemminaFile *remminafile, const gchar *setting, gchar *value);
 const gchar* remmina_file_get_string (RemminaFile *remminafile, const gchar *setting);
-const gchar* remmina_file_get_secret (RemminaFile *remminafile, const gchar *setting);
+gchar* remmina_file_get_secret (RemminaFile *remminafile, const gchar *setting);
 void remmina_file_set_int (RemminaFile *remminafile, const gchar *setting, gint value);
 gint remmina_file_get_int (RemminaFile *remminafile, const gchar *setting, gint default_value);
 /* Create or overwrite the .remmina file */

@@ -163,11 +163,14 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
             sizeof (gpdata->settings->domain) - 1);
     }
 
-    cs = remmina_plugin_service->file_get_secret (remminafile, "password");
-    if (cs)
+    THREADS_ENTER
+    s = remmina_plugin_service->file_get_secret (remminafile, "password");
+    THREADS_LEAVE
+    if (s)
     {
-        strncpy (gpdata->settings->password, cs, sizeof (gpdata->settings->password) - 1);
+        strncpy (gpdata->settings->password, s, sizeof (gpdata->settings->password) - 1);
         gpdata->settings->autologin = 1;
+        g_free (s);
     }
 
     if (remmina_plugin_service->file_get_string (remminafile, "clientname"))
