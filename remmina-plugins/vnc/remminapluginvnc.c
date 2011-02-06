@@ -848,7 +848,7 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
     RemminaPluginVncData *gpdata;
     RemminaFile *remminafile;
     gint ret;
-    const gchar *cs1, *cs2;
+    gchar *s1, *s2;
 
     gp = (RemminaProtocolWidget*) (rfbClientGetClientData (cl, NULL));
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
@@ -862,17 +862,20 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 
     case rfbCredentialTypeUser:
 
-        cs1 = remmina_plugin_service->file_get_string (remminafile, "username");
+        s1 = g_strdup (remmina_plugin_service->file_get_string (remminafile, "username"));
         THREADS_ENTER
-        cs2 = remmina_plugin_service->file_get_secret (remminafile, "password");
+        s2 = remmina_plugin_service->file_get_secret (remminafile, "password");
         THREADS_LEAVE
-        if (gpdata->auth_first && cs1 && cs2)
+        if (gpdata->auth_first && s1 && s2)
         {
-            cred->userCredential.username = g_strdup (cs1);
-            cred->userCredential.password = g_strdup (cs2);
+            cred->userCredential.username = s1;
+            cred->userCredential.password = s2;
         }
         else
         {
+            g_free (s1);
+            g_free (s2);
+
             THREADS_ENTER
             ret = remmina_plugin_service->protocol_plugin_init_authuserpwd (gp);
             THREADS_LEAVE
