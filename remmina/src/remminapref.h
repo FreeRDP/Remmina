@@ -113,6 +113,8 @@ typedef struct _RemminaPref
     gchar *vte_font;
     gboolean vte_allow_bold_text;
     gint vte_lines;
+    guint vte_shortcutkey_copy;
+    guint vte_shortcutkey_paste;
 } RemminaPref;
 
 #define DEFAULT_SSHTUNNEL_PORT 4732

@@ -373,6 +373,16 @@ remmina_pref_init (void)
     else
         remmina_pref.vte_lines = 512;
 
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "vte_shortcutkey_copy", NULL))
+        remmina_pref.vte_shortcutkey_copy = g_key_file_get_integer (gkeyfile, "remmina_pref", "vte_shortcutkey_copy", NULL);
+    else
+        remmina_pref.vte_shortcutkey_copy = GDK_c;
+
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "vte_shortcutkey_paste", NULL))
+        remmina_pref.vte_shortcutkey_paste = g_key_file_get_integer (gkeyfile, "remmina_pref", "vte_shortcutkey_paste", NULL);
+    else
+        remmina_pref.vte_shortcutkey_paste = GDK_p;
+
     g_key_file_free (gkeyfile);
 
     if (remmina_pref.secret == NULL) remmina_pref_gen_secret ();

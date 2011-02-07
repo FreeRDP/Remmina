@@ -338,10 +338,10 @@ remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, const RemminaProtoco
     }
 }
 
-static const RemminaProtocolFeature remmina_plugin_ssh_features[] =
+static RemminaProtocolFeature remmina_plugin_ssh_features[] =
 {
-    { REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY, NULL, GTK_STOCK_COPY, NULL },
-    { REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE, NULL, GTK_STOCK_PASTE, NULL },
+    { REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY, N_("Copy"), GTK_STOCK_COPY, NULL },
+    { REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE, N_("Paste"), GTK_STOCK_PASTE, NULL },
     { REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
@@ -370,6 +370,9 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 void
 remmina_ssh_plugin_register (void)
 {
+    remmina_plugin_ssh_features[0].opt3 = GUINT_TO_POINTER (remmina_pref.vte_shortcutkey_copy);
+    remmina_plugin_ssh_features[1].opt3 = GUINT_TO_POINTER (remmina_pref.vte_shortcutkey_paste);
+
     remmina_plugin_service = &remmina_plugin_manager_service;
     remmina_plugin_service->register_plugin ((RemminaPlugin *) &remmina_plugin_ssh);
 }
