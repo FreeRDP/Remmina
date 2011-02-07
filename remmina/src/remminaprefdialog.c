@@ -100,6 +100,8 @@ struct _RemminaPrefDialogPriv
     GtkWidget *vte_font_button;
     GtkWidget *vte_allow_bold_text_check;
     GtkWidget *vte_lines_entry;
+    GtkWidget *vte_shortcutkey_copy_chooser;
+    GtkWidget *vte_shortcutkey_paste_chooser;
 };
 
 static void
@@ -257,6 +259,8 @@ remmina_pref_dialog_destroy (GtkWidget *widget, gpointer data)
     }
     remmina_pref.vte_allow_bold_text = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->vte_allow_bold_text_check));
     remmina_pref.vte_lines = atoi (gtk_entry_get_text (GTK_ENTRY (priv->vte_lines_entry)));
+    remmina_pref.vte_shortcutkey_copy = REMMINA_KEY_CHOOSER (priv->vte_shortcutkey_copy_chooser)->keyval;
+    remmina_pref.vte_shortcutkey_paste = REMMINA_KEY_CHOOSER (priv->vte_shortcutkey_paste_chooser)->keyval;
 
     remmina_pref_save ();
     g_free (priv);
@@ -656,7 +660,7 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_widget_show (vbox);
     gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, tablabel);
 
-    table = gtk_table_new (4, 2, FALSE);
+    table = gtk_table_new (6, 2, FALSE);
     gtk_widget_show (table);
     gtk_table_set_row_spacings (GTK_TABLE (table), 4);
     gtk_table_set_col_spacings (GTK_TABLE (table), 4);
@@ -710,6 +714,52 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     g_snprintf (buf, sizeof (buf), "%i", remmina_pref.vte_lines);
     gtk_entry_set_text (GTK_ENTRY (widget), buf);
     priv->vte_lines_entry = widget;
+
+    widget = gtk_label_new (_("Keyboard"));
+    gtk_widget_show (widget);
+    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+    gtk_table_attach (GTK_TABLE (table), widget, 0, 1, 4, 5, GTK_FILL, 0, 0, 0);
+
+    hbox = gtk_hbox_new (FALSE, 2);
+    gtk_widget_show (hbox);
+    gtk_table_attach_defaults (GTK_TABLE (table), hbox, 1, 2, 4, 5);
+
+    widget = gtk_label_new (_("Copy"));
+    gtk_widget_show (widget);
+    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+    gtk_widget_set_size_request (widget, 100, -1);
+    gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, TRUE, 0);
+
+    g_snprintf (buf, sizeof (buf), "%s + ", _("Host key"));
+    widget = gtk_label_new (buf);
+    gtk_widget_show (widget);
+    gtk_misc_set_alignment (GTK_MISC (widget), 1.0, 0.5);
+    gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, TRUE, 0);
+
+    widget = remmina_key_chooser_new (remmina_pref.vte_shortcutkey_copy);
+    gtk_widget_show (widget);
+    gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
+    priv->vte_shortcutkey_copy_chooser = widget;
+
+    hbox = gtk_hbox_new (FALSE, 2);
+    gtk_widget_show (hbox);
+    gtk_table_attach_defaults (GTK_TABLE (table), hbox, 1, 2, 5, 6);
+
+    widget = gtk_label_new (_("Paste"));
+    gtk_widget_show (widget);
+    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+    gtk_widget_set_size_request (widget, 100, -1);
+    gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, TRUE, 0);
+
+    widget = gtk_label_new (buf);
+    gtk_widget_show (widget);
+    gtk_misc_set_alignment (GTK_MISC (widget), 1.0, 0.5);
+    gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, TRUE, 0);
+
+    widget = remmina_key_chooser_new (remmina_pref.vte_shortcutkey_paste);
+    gtk_widget_show (widget);
+    gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
+    priv->vte_shortcutkey_paste_chooser = widget;
 
     remmina_plugin_manager_for_each_plugin (REMMINA_PLUGIN_TYPE_PREF, remmina_pref_dialog_add_pref_plugin, dialog);
 
