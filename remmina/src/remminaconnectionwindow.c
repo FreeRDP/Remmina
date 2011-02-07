@@ -507,6 +507,38 @@ remmina_connection_holder_check_resize (RemminaConnectionHolder *cnnhld)
 }
 
 static void
+remmina_connection_holder_set_tooltip (GtkWidget *item, const gchar *tip, guint key1, guint key2)
+{
+    gchar *s1, *s2;
+
+    if (remmina_pref.hostkey && key1)
+    {
+        if (key2)
+        {
+            s1 = g_strdup_printf (" (%s + %s,%s)", gdk_keyval_name (remmina_pref.hostkey),
+                gdk_keyval_name (gdk_keyval_to_upper (key1)), gdk_keyval_name (gdk_keyval_to_upper (key2)));
+        }
+        else if (key1 == remmina_pref.hostkey)
+        {
+            s1 = g_strdup_printf (" (%s)", gdk_keyval_name (remmina_pref.hostkey));
+        }
+        else
+        {
+            s1 = g_strdup_printf (" (%s + %s)", gdk_keyval_name (remmina_pref.hostkey),
+                gdk_keyval_name (gdk_keyval_to_upper (key1)));
+        }
+    }
+    else
+    {
+        s1 = NULL;
+    }
+    s2 = g_strdup_printf ("%s%s", tip, s1 ? s1 : "");
+    gtk_widget_set_tooltip_text (item, s2);
+    g_free (s2);
+    g_free (s1);
+}
+
+static void
 remmina_connection_holder_toolbar_fullscreen (GtkWidget *widget, RemminaConnectionHolder* cnnhld)
 {
     if (gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (widget)))
@@ -1073,6 +1105,10 @@ remmina_connection_holder_toolbar_tools (GtkWidget *widget, RemminaConnectionHol
         {
             menuitem = gtk_image_menu_item_new_from_stock ((const gchar*) feature->opt2, NULL);
         }
+        if (feature->opt3)
+        {
+            remmina_connection_holder_set_tooltip (menuitem, "", GPOINTER_TO_UINT (feature->opt3), 0);
+        }
         gtk_widget_show (menuitem);
         gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
 
@@ -1121,38 +1157,6 @@ remmina_connection_holder_toolbar_grab (GtkWidget *widget, RemminaConnectionHold
     remmina_connection_holder_keyboard_grab (cnnhld);
 }
 
-static void
-remmina_connection_holder_set_tooltip (GtkToolItem *toolitem, const gchar *tip, guint key1, guint key2)
-{
-    gchar *s1, *s2;
-
-    if (remmina_pref.hostkey && key1)
-    {
-        if (key2)
-        {
-            s1 = g_strdup_printf (" (%s + %s,%s)", gdk_keyval_name (remmina_pref.hostkey),
-                gdk_keyval_name (gdk_keyval_to_upper (key1)), gdk_keyval_name (gdk_keyval_to_upper (key2)));
-        }
-        else if (key1 == remmina_pref.hostkey)
-        {
-            s1 = g_strdup_printf (" (%s)", gdk_keyval_name (remmina_pref.hostkey));
-        }
-        else
-        {
-            s1 = g_strdup_printf (" (%s + %s)", gdk_keyval_name (remmina_pref.hostkey),
-                gdk_keyval_name (gdk_keyval_to_upper (key1)));
-        }
-    }
-    else
-    {
-        s1 = NULL;
-    }
-    s2 = g_strdup_printf ("%s%s", tip, s1 ? s1 : "");
-    gtk_tool_item_set_tooltip_text (toolitem, s2);
-    g_free (s2);
-    g_free (s1);
-}
-
 static GtkWidget*
 remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint mode)
 {
@@ -1174,7 +1178,7 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
     /* Auto-Fit */
     toolitem = gtk_tool_button_new (NULL, NULL);
     gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (toolitem), "remmina-fit-window");
-    remmina_connection_holder_set_tooltip (toolitem, _("Resize the window to fit in remote resolution"),
+    remmina_connection_holder_set_tooltip (GTK_WIDGET (toolitem), _("Resize the window to fit in remote resolution"),
         remmina_pref.shortcutkey_autofit, 0);
     g_signal_connect (G_OBJECT (toolitem), "clicked",
         G_CALLBACK (remmina_connection_holder_toolbar_autofit), cnnhld);
@@ -1185,7 +1189,7 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
     /* Fullscreen toggle */
     toolitem = gtk_toggle_tool_button_new ();
     gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (toolitem), "remmina-fullscreen");
-    remmina_connection_holder_set_tooltip (toolitem, _("Toggle fullscreen mode"),
+    remmina_connection_holder_set_tooltip (GTK_WIDGET (toolitem), _("Toggle fullscreen mode"),
         remmina_pref.shortcutkey_fullscreen, 0);
     gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
     gtk_widget_show (GTK_WIDGET (toolitem));
@@ -1226,7 +1230,7 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
     /* Switch tabs */
     toolitem = gtk_toggle_tool_button_new ();
     gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (toolitem), "remmina-switch-page");
-    remmina_connection_holder_set_tooltip (toolitem, _("Switch tab pages"),
+    remmina_connection_holder_set_tooltip (GTK_WIDGET (toolitem), _("Switch tab pages"),
         remmina_pref.shortcutkey_prevtab, remmina_pref.shortcutkey_nexttab);
     gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
     gtk_widget_show (GTK_WIDGET (toolitem));
@@ -1240,7 +1244,7 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
 
     toolitem = gtk_toggle_tool_button_new ();
     gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (toolitem), "remmina-scale");
-    remmina_connection_holder_set_tooltip (toolitem, _("Toggle scaled mode"),
+    remmina_connection_holder_set_tooltip (GTK_WIDGET (toolitem), _("Toggle scaled mode"),
         remmina_pref.shortcutkey_scale, 0);
     gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
     gtk_widget_show (GTK_WIDGET (toolitem));
@@ -1275,7 +1279,7 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
 
     toolitem = gtk_toggle_tool_button_new ();
     gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (toolitem), "input-keyboard");
-    remmina_connection_holder_set_tooltip (toolitem, _("Grab all keyboard events"),
+    remmina_connection_holder_set_tooltip (GTK_WIDGET (toolitem), _("Grab all keyboard events"),
         remmina_pref.shortcutkey_grab, 0);
     gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
     gtk_widget_show (GTK_WIDGET (toolitem));
@@ -1305,7 +1309,7 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
     gtk_widget_show (GTK_WIDGET (toolitem));
 
     toolitem = gtk_tool_button_new_from_stock (GTK_STOCK_GOTO_BOTTOM);
-    remmina_connection_holder_set_tooltip (toolitem, _("Minimize window"),
+    remmina_connection_holder_set_tooltip (GTK_WIDGET (toolitem), _("Minimize window"),
         remmina_pref.shortcutkey_minimize, 0);
     gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
     gtk_widget_show (GTK_WIDGET (toolitem));
@@ -1313,7 +1317,7 @@ remmina_connection_holder_create_toolbar (RemminaConnectionHolder *cnnhld, gint 
         G_CALLBACK (remmina_connection_holder_toolbar_minimize), cnnhld);
 
     toolitem = gtk_tool_button_new_from_stock (GTK_STOCK_DISCONNECT);
-    remmina_connection_holder_set_tooltip (toolitem, _("Disconnect"),
+    remmina_connection_holder_set_tooltip (GTK_WIDGET (toolitem), _("Disconnect"),
         remmina_pref.shortcutkey_disconnect, 0);
     gtk_toolbar_insert (GTK_TOOLBAR (toolbar), toolitem, -1);
     gtk_widget_show (GTK_WIDGET (toolitem));
@@ -2154,7 +2158,9 @@ remmina_connection_holder_create_fullscreen (RemminaConnectionHolder *cnnhld, Re
 static gboolean
 remmina_connection_window_hostkey_func (RemminaProtocolWidget *gp, guint keyval, gboolean release, RemminaConnectionHolder *cnnhld)
 {
+    DECLARE_CNNOBJ_WITH_RETURN (FALSE);
     RemminaConnectionWindowPriv *priv = cnnhld->cnnwin->priv;
+    const RemminaProtocolFeature *feature;
     gint i;
 
     if (release)
@@ -2255,6 +2261,17 @@ remmina_connection_window_hostkey_func (RemminaProtocolWidget *gp, guint keyval,
         {
             remmina_pref.hide_connection_toolbar = !remmina_pref.hide_connection_toolbar;
             remmina_connection_holder_showhide_toolbar (cnnhld, TRUE);
+        }
+    }
+    else
+    {
+        for (feature = remmina_protocol_widget_get_features (REMMINA_PROTOCOL_WIDGET (cnnobj->proto)); feature && feature->type; feature++)
+        {
+            if (feature->type == REMMINA_PROTOCOL_FEATURE_TYPE_TOOL && GPOINTER_TO_UINT (feature->opt3) == keyval)
+            {
+                remmina_protocol_widget_call_feature_by_ref (REMMINA_PROTOCOL_WIDGET (cnnobj->proto), feature);
+                break;
+            }
         }
     }
     /* Trap all key presses when hostkey is pressed */
