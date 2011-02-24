@@ -1135,17 +1135,29 @@ remmina_plugin_rdpui_authenticate (rdpInst *inst)
     gpdata = GET_DATA (gp);
 
     THREADS_ENTER
-    ret = remmina_plugin_service->protocol_plugin_init_authuserpwd (gp);
+    ret = remmina_plugin_service->protocol_plugin_init_authuserpwd (gp, TRUE);
     THREADS_LEAVE
 
     if (ret == GTK_RESPONSE_OK)
     {
         s = remmina_plugin_service->protocol_plugin_init_get_username (gp);
-        strncpy (gpdata->settings->username, s, sizeof (gpdata->settings->username) - 1);
-        g_free (s);
+        if (s)
+        {
+            strncpy (gpdata->settings->username, s, sizeof (gpdata->settings->username) - 1);
+            g_free (s);
+        }
         s = remmina_plugin_service->protocol_plugin_init_get_password (gp);
-        strncpy (gpdata->settings->password, s, sizeof (gpdata->settings->password) - 1);
-        g_free (s);
+        if (s)
+        {
+            strncpy (gpdata->settings->password, s, sizeof (gpdata->settings->password) - 1);
+            g_free (s);
+        }
+        s = remmina_plugin_service->protocol_plugin_init_get_domain (gp);
+        if (s)
+        {
+            strncpy (gpdata->settings->domain, s, sizeof (gpdata->settings->domain) - 1);
+            g_free (s);
+        }
         return TRUE;
     }
     else

@@ -36,6 +36,7 @@ remmina_init_dialog_destroy (RemminaInitDialog *dialog, gpointer data)
     g_free (dialog->title);
     g_free (dialog->status);
     g_free (dialog->username);
+    g_free (dialog->domain);
     g_free (dialog->password);
     g_free (dialog->cacert);
     g_free (dialog->cacrl);
@@ -56,6 +57,7 @@ remmina_init_dialog_init (RemminaInitDialog *dialog)
     dialog->title = NULL;
     dialog->status = NULL;
     dialog->username = NULL;
+    dialog->domain = NULL;
     dialog->password = NULL;
     dialog->save_password = FALSE;
     dialog->cacert = NULL;
@@ -170,7 +172,8 @@ remmina_init_dialog_set_status_temp (RemminaInitDialog *dialog, const gchar *sta
 }
 
 gint
-remmina_init_dialog_authpwd (RemminaInitDialog *dialog, const gchar *label, gboolean allow_save)
+remmina_init_dialog_authpwd (RemminaInitDialog *dialog,
+    const gchar *label, gboolean allow_save)
 {
     GtkWidget *table;
     GtkWidget *password_entry;
@@ -241,11 +244,13 @@ remmina_init_dialog_authpwd (RemminaInitDialog *dialog, const gchar *label, gboo
 }
 
 gint
-remmina_init_dialog_authuserpwd (RemminaInitDialog *dialog, const gchar *default_username, gboolean allow_save)
+remmina_init_dialog_authuserpwd (RemminaInitDialog *dialog, gboolean want_domain,
+    const gchar *default_username, const gchar *default_domain, gboolean allow_save)
 {
     GtkWidget *table;
     GtkWidget *username_entry;
     GtkWidget *password_entry;
+    GtkWidget *domain_entry = NULL;
     GtkWidget *save_password_check;
     GtkWidget *widget;
     gint ret;
@@ -253,7 +258,7 @@ remmina_init_dialog_authuserpwd (RemminaInitDialog *dialog, const gchar *default
     gtk_label_set_text (GTK_LABEL (dialog->status_label), (dialog->status ? dialog->status : dialog->title));
 
     /* Create table */
-    table = gtk_table_new (3, 2, FALSE);
+    table = gtk_table_new (4, 2, FALSE);
     gtk_widget_show (table);
     gtk_table_set_row_spacings (GTK_TABLE (table), 8);
     gtk_table_set_col_spacings (GTK_TABLE (table), 8);
@@ -298,6 +303,22 @@ remmina_init_dialog_authuserpwd (RemminaInitDialog *dialog, const gchar *default
         gtk_widget_set_sensitive (save_password_check, FALSE);
     }
 
+    if (want_domain)
+    {
+        widget = gtk_label_new (_("Domain"));
+        gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+        gtk_widget_show (widget);
+        gtk_table_attach (GTK_TABLE (table), widget, 0, 1, 3, 4, GTK_FILL, 0, 0, 0);
+
+        domain_entry = gtk_entry_new_with_max_length (100);
+        gtk_widget_show (domain_entry);
+        gtk_table_attach_defaults (GTK_TABLE (table), domain_entry, 1, 2, 3, 4);
+        if (default_domain && default_domain[0] != '\0')
+        {
+            gtk_entry_set_text (GTK_ENTRY (domain_entry), default_domain);
+        }
+    }
+
     /* Pack it into the dialog */
     gtk_box_pack_start (GTK_BOX (dialog->content_vbox), table, TRUE, TRUE, 4);
 
@@ -321,6 +342,10 @@ remmina_init_dialog_authuserpwd (RemminaInitDialog *dialog, const gchar *default
         dialog->username = g_strdup (gtk_entry_get_text (GTK_ENTRY (username_entry)));
         dialog->password = g_strdup (gtk_entry_get_text (GTK_ENTRY (password_entry)));
         dialog->save_password = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (save_password_check));
+        if  (want_domain)
+        {
+            dialog->domain = g_strdup (gtk_entry_get_text (GTK_ENTRY (domain_entry)));
+        }
     }
 
     gtk_container_remove (GTK_CONTAINER (dialog->content_vbox), table);
@@ -363,8 +388,8 @@ remmina_init_dialog_create_file_button (GtkTable *table, const gchar *label, gin
 }
 
 gint
-remmina_init_dialog_authx509 (RemminaInitDialog *dialog, const gchar *cacert, const gchar *cacrl,
-    const gchar *clientcert, const gchar *clientkey)
+remmina_init_dialog_authx509 (RemminaInitDialog *dialog,
+    const gchar *cacert, const gchar *cacrl, const gchar *clientcert, const gchar *clientkey)
 {
     GtkWidget *table;
     GtkWidget *cacert_button;
