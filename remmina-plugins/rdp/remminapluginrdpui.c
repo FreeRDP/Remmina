@@ -1123,6 +1123,38 @@ remmina_plugin_rdpui_channel_data (rdpInst *inst, int chan_id, char * data, int 
     freerdp_chanman_data (inst, chan_id, data, data_size, flags, total_size);
 }
 
+static RD_BOOL
+remmina_plugin_rdpui_authenticate (rdpInst *inst)
+{
+    RemminaProtocolWidget *gp;
+    RemminaPluginRdpData *gpdata;
+    gchar *s;
+    gint ret;
+
+    gp = GET_WIDGET (inst);
+    gpdata = GET_DATA (gp);
+
+    THREADS_ENTER
+    ret = remmina_plugin_service->protocol_plugin_init_authuserpwd (gp);
+    THREADS_LEAVE
+
+    if (ret == GTK_RESPONSE_OK)
+    {
+        s = remmina_plugin_service->protocol_plugin_init_get_username (gp);
+        strncpy (gpdata->settings->username, s, sizeof (gpdata->settings->username) - 1);
+        g_free (s);
+        s = remmina_plugin_service->protocol_plugin_init_get_password (gp);
+        strncpy (gpdata->settings->password, s, sizeof (gpdata->settings->password) - 1);
+        g_free (s);
+        return TRUE;
+    }
+    else
+    {
+        gpdata->user_cancelled = TRUE;
+        return FALSE;
+    }
+}
+
 /* Migrated from xfreerdp */
 static gboolean
 remmina_plugin_rdpui_get_key_state (KeyCode keycode, int state, XModifierKeymap *modmap)
@@ -1224,6 +1256,7 @@ remmina_plugin_rdpui_pre_connect (RemminaProtocolWidget *gp)
     inst->ui_set_surface = remmina_plugin_rdpui_set_surface;
     inst->ui_destroy_surface = remmina_plugin_rdpui_destroy_surface;
     inst->ui_channel_data = remmina_plugin_rdpui_channel_data;
+    inst->ui_authenticate = remmina_plugin_rdpui_authenticate;
 }
 
 void

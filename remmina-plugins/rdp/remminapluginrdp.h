@@ -49,6 +49,7 @@ typedef struct _RemminaPluginRdpData
     pthread_t thread;
     pthread_mutex_t mutex;
     gboolean scale;
+    gboolean user_cancelled;
 
     RD_PLUGIN_DATA rdpdr_data[5];
     RD_PLUGIN_DATA drdynvc_data[5];
