@@ -230,9 +230,24 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
         gpdata->settings->console_session = 1;
     }
 
-    if (remmina_plugin_service->file_get_int (remminafile, "disabletls", FALSE))
+    cs = remmina_plugin_service->file_get_string (remminafile, "security");
+    if (g_strcmp0 (cs, "rdp") == 0)
     {
-        gpdata->settings->tls = 0;
+        gpdata->settings->rdp_security = 1;
+        gpdata->settings->tls_security = 0;
+        gpdata->settings->nla_security = 0;
+    }
+    else if (g_strcmp0 (cs, "tls") == 0)
+    {
+        gpdata->settings->rdp_security = 0;
+        gpdata->settings->tls_security = 1;
+        gpdata->settings->nla_security = 0;
+    }
+    else if (g_strcmp0 (cs, "nla") == 0)
+    {
+        gpdata->settings->rdp_security = 0;
+        gpdata->settings->tls_security = 0;
+        gpdata->settings->nla_security = 1;
     }
 
     drdynvc_num = 0;
@@ -306,8 +321,11 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     }
     if (gpdata->inst->rdp_connect (gpdata->inst) != 0)
     {
-        remmina_plugin_service->protocol_plugin_set_error (gp, _("Unable to connect to RDP server %s"),
-            gpdata->settings->server);
+        if (!gpdata->user_cancelled)
+        {
+            remmina_plugin_service->protocol_plugin_set_error (gp, _("Unable to connect to RDP server %s"),
+                gpdata->settings->server);
+        }
         return FALSE;
     }
     if (freerdp_chanman_post_connect (gpdata->chan_man, gpdata->inst) != 0)
@@ -362,7 +380,9 @@ remmina_plugin_rdp_init (RemminaProtocolWidget *gp)
     gpdata->settings->triblt = 0;
     gpdata->settings->new_cursors = 1;
     gpdata->settings->rdp_version = 5;
-    gpdata->settings->tls = 1;
+    gpdata->settings->rdp_security = 1;
+    gpdata->settings->tls_security = 1;
+    gpdata->settings->nla_security = 1;
 
     pthread_mutex_init (&gpdata->mutex, NULL);
 
@@ -490,6 +510,15 @@ static gpointer sound_list[] =
     NULL
 };
 
+static gpointer security_list[] =
+{
+    "", N_("Negotiate"),
+    "nla", "NLA",
+    "tls", "TLS",
+    "rdp", "RDP",
+    NULL
+};
+
 static const RemminaProtocolSetting remmina_plugin_rdp_basic_settings[] =
 {
     { REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
@@ -506,12 +535,12 @@ static const RemminaProtocolSetting remmina_plugin_rdp_advanced_settings[] =
 {
     { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "quality", N_("Quality"), FALSE, quality_list, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "sound", N_("Sound"), FALSE, sound_list, NULL },
+    { REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "security", N_("Security"), FALSE, security_list, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "clientname", N_("Client name"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "exec", N_("Startup program"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "execpath", N_("Startup path"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "shareprinter", N_("Share local printers"), TRUE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), FALSE, NULL, NULL },
-    { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disabletls", N_("Disable TLS negotiation"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "console", N_("Attach to console (Windows 2003 / 2003 R2)"), FALSE, NULL, NULL },
     { REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
