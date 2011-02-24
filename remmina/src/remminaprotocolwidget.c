@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -843,12 +843,14 @@ remmina_protocol_widget_init_authpwd (RemminaProtocolWidget *gp, RemminaAuthpwdT
 }
 
 gint
-remmina_protocol_widget_init_authuserpwd (RemminaProtocolWidget *gp)
+remmina_protocol_widget_init_authuserpwd (RemminaProtocolWidget *gp, gboolean want_domain)
 {
     RemminaFile *remminafile = gp->priv->remmina_file;
 
-    return remmina_init_dialog_authuserpwd (REMMINA_INIT_DIALOG (gp->priv->init_dialog),
-        remmina_file_get_string (remminafile, "username"), (remmina_file_get_filename (remminafile) != NULL));
+    return remmina_init_dialog_authuserpwd (REMMINA_INIT_DIALOG (gp->priv->init_dialog), want_domain,
+        remmina_file_get_string (remminafile, "username"),
+        want_domain ? remmina_file_get_string (remminafile, "domain") : NULL,
+        (remmina_file_get_filename (remminafile) != NULL));
 }
 
 gchar*
@@ -861,6 +863,12 @@ gchar*
 remmina_protocol_widget_init_get_password (RemminaProtocolWidget *gp)
 {
     return g_strdup (REMMINA_INIT_DIALOG (gp->priv->init_dialog)->password);
+}
+
+gchar*
+remmina_protocol_widget_init_get_domain (RemminaProtocolWidget *gp)
+{
+    return g_strdup (REMMINA_INIT_DIALOG (gp->priv->init_dialog)->domain);
 }
 
 gint

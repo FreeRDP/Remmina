@@ -155,9 +155,10 @@ typedef struct _RemminaPluginService
     void         (* protocol_plugin_set_display)          (RemminaProtocolWidget *gp, gint display);
     gboolean     (* protocol_plugin_close_connection)     (RemminaProtocolWidget *gp);
     gint         (* protocol_plugin_init_authpwd)         (RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type);
-    gint         (* protocol_plugin_init_authuserpwd)     (RemminaProtocolWidget *gp);
+    gint         (* protocol_plugin_init_authuserpwd)     (RemminaProtocolWidget *gp, gboolean want_domain);
     gchar*       (* protocol_plugin_init_get_username)    (RemminaProtocolWidget *gp);
     gchar*       (* protocol_plugin_init_get_password)    (RemminaProtocolWidget *gp);
+    gchar*       (* protocol_plugin_init_get_domain)      (RemminaProtocolWidget *gp);
     gint         (* protocol_plugin_init_authx509)        (RemminaProtocolWidget *gp);
     gchar*       (* protocol_plugin_init_get_cacert)      (RemminaProtocolWidget *gp);
     gchar*       (* protocol_plugin_init_get_cacrl)       (RemminaProtocolWidget *gp);
