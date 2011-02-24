@@ -53,6 +53,7 @@ typedef struct _RemminaInitDialog
     gchar *title;
     gchar *status;
     gchar *username;
+    gchar *domain;
     gchar *password;
     gboolean save_password;
     gchar *cacert;
@@ -72,12 +73,16 @@ GtkWidget* remmina_init_dialog_new (const gchar *title_format, ...);
 void remmina_init_dialog_set_status (RemminaInitDialog *dialog, const gchar *status_format, ...);
 void remmina_init_dialog_set_status_temp (RemminaInitDialog *dialog, const gchar *status_format, ...);
 /* Run authentication. Return GTK_RESPONSE_OK or GTK_RESPONSE_CANCEL. Caller is blocked. */
-gint remmina_init_dialog_authpwd (RemminaInitDialog *dialog, const gchar *label, gboolean allow_save);
-gint remmina_init_dialog_authuserpwd (RemminaInitDialog *dialog, const gchar *default_username, gboolean allow_save);
-gint remmina_init_dialog_authx509 (RemminaInitDialog *dialog, const gchar *cacert, const gchar *cacrl,
-    const gchar *clientcert, const gchar *clientkey);
-gint remmina_init_dialog_serverkey_unknown (RemminaInitDialog *dialog, const gchar *serverkey);
-gint remmina_init_dialog_serverkey_changed (RemminaInitDialog *dialog, const gchar *serverkey);
+gint remmina_init_dialog_authpwd (RemminaInitDialog *dialog,
+    const gchar *label, gboolean allow_save);
+gint remmina_init_dialog_authuserpwd (RemminaInitDialog *dialog, gboolean want_domain,
+    const gchar *default_username, const gchar *default_domain, gboolean allow_save);
+gint remmina_init_dialog_authx509 (RemminaInitDialog *dialog,
+    const gchar *cacert, const gchar *cacrl, const gchar *clientcert, const gchar *clientkey);
+gint remmina_init_dialog_serverkey_unknown (RemminaInitDialog *dialog,
+    const gchar *serverkey);
+gint remmina_init_dialog_serverkey_changed (RemminaInitDialog *dialog,
+    const gchar *serverkey);
 
 G_END_DECLS
 
