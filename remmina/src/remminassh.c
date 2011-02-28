@@ -119,11 +119,29 @@ static gint
 remmina_ssh_auth_password (RemminaSSH *ssh)
 {
     gint ret;
+    gint authlist;
+    gint n;
+    gint i;
 
     if (ssh->authenticated) return 1;
     if (ssh->password == NULL) return -1;
 
-    ret = ssh_userauth_password (ssh->session, NULL, ssh->password);
+    authlist = ssh_userauth_list (ssh->session, NULL);
+    if (authlist | SSH_AUTH_METHOD_INTERACTIVE)
+    {
+        while ((ret = ssh_userauth_kbdint (ssh->session, NULL, NULL)) == SSH_AUTH_INFO)
+        {
+            n = ssh_userauth_kbdint_getnprompts (ssh->session);
+            for (i = 0; i < n; i++)
+            {
+                ssh_userauth_kbdint_setanswer(ssh->session, i, ssh->password);
+            }
+        }
+    }
+    else
+    {
+        ret = ssh_userauth_password (ssh->session, NULL, ssh->password);
+    }
     if (ret != SSH_AUTH_SUCCESS)
     {
         remmina_ssh_set_error (ssh, _("SSH password authentication failed: %s"));
@@ -187,7 +205,7 @@ static gint
 remmina_ssh_auth_auto_pubkey (RemminaSSH* ssh)
 {
     gint ret;
-	ret = ssh_userauth_autopubkey (ssh->session, "");
+    ret = ssh_userauth_autopubkey (ssh->session, "");
 
     if (ret != SSH_AUTH_SUCCESS)
     {
