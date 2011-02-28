@@ -420,7 +420,8 @@ remmina_ssh_init_from_file (RemminaSSH *ssh, RemminaFile *remminafile)
     }
     else if (server == NULL)
     {
-        return FALSE;
+        ssh->server = g_strdup ("localhost");
+        ssh->port = 22;
     }
     else
     {
