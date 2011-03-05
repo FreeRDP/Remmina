@@ -163,7 +163,7 @@ remmina_sftp_client_thread_download_file (RemminaSFTPClient *client, RemminaSFTP
         return FALSE;
     }
 
-    fseek (local_file, 0, SEEK_END);
+    fseeko (local_file, 0, SEEK_END);
     size = ftello (local_file);
     if (size > 0)
     {
@@ -477,7 +477,7 @@ remmina_sftp_client_thread_upload_file (RemminaSFTPClient *client, RemminaSFTP *
 
     if (size > 0)
     {
-        if (fseek (local_file, size, SEEK_SET) < 0)
+        if (fseeko (local_file, size, SEEK_SET) < 0)
         {
             sftp_close (remote_file);
             fclose (local_file);
