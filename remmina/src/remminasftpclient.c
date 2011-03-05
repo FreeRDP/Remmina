@@ -61,6 +61,7 @@ remmina_sftp_client_class_init (RemminaSFTPClientClass *klass)
 /* ------------------------ The Task Thread routines ----------------------------- */
 
 static gboolean remmina_sftp_client_refresh (RemminaSFTPClient *client);
+static gint remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path);
 
 #define THREAD_CHECK_EXIT \
     (!client->taskid || client->thread_abort)
@@ -83,9 +84,16 @@ remmina_sftp_client_thread_set_error (RemminaSFTPClient *client, RemminaFTPTask 
 
     task->status = REMMINA_FTP_TASK_STATUS_ERROR;
     g_free (task->tooltip);
-    va_start (args, error_format);
-    task->tooltip = g_strdup_vprintf (error_format, args);
-    va_end (args);
+    if (error_format)
+    {
+        va_start (args, error_format);
+        task->tooltip = g_strdup_vprintf (error_format, args);
+        va_end (args);
+    }
+    else
+    {
+        task->tooltip = NULL;
+    }
 
     remmina_sftp_client_thread_update_task (client, task);
 }
@@ -350,13 +358,16 @@ remmina_sftp_client_thread_upload_file (RemminaSFTPClient *client, RemminaSFTP *
     sftp_file remote_file;
     FILE *local_file;
     gchar *tmp;
-    gchar buf[20000];
+    gchar buf[20480];
     gint len;
+    sftp_attributes attr;
+    gint response;
+    uint64_t size;
 
     if (THREAD_CHECK_EXIT) return FALSE;
 
     tmp = remmina_ssh_unconvert (REMMINA_SSH (sftp), remote_path);
-    remote_file = sftp_open (sftp->sftp_sess, tmp, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    remote_file = sftp_open (sftp->sftp_sess, tmp, O_WRONLY | O_CREAT, 0644);
     g_free (tmp);
 
     if (!remote_file)
@@ -365,12 +376,67 @@ remmina_sftp_client_thread_upload_file (RemminaSFTPClient *client, RemminaSFTP *
             remote_path, ssh_get_error (REMMINA_SSH (client->sftp)->session));
         return FALSE;
     }
+    attr = sftp_fstat (remote_file);
+    size = attr->size;
+    sftp_attributes_free (attr);
+    if (size > 0)
+    {
+        THREADS_ENTER
+        response = remmina_sftp_client_confirm_resume (client, remote_path);
+        THREADS_LEAVE
+
+        switch (response)
+        {
+        case GTK_RESPONSE_CANCEL:
+        case GTK_RESPONSE_DELETE_EVENT:
+            sftp_close (remote_file);
+            remmina_sftp_client_thread_set_error (client, task, NULL);
+            return FALSE;
+
+        case GTK_RESPONSE_ACCEPT:
+            sftp_close (remote_file);
+            tmp = remmina_ssh_unconvert (REMMINA_SSH (sftp), remote_path);
+            remote_file = sftp_open (sftp->sftp_sess, tmp, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+            g_free (tmp);
+            if (!remote_file)
+            {
+                remmina_sftp_client_thread_set_error (client, task, _("Error creating file %s on server. %s"),
+                    remote_path, ssh_get_error (REMMINA_SSH (client->sftp)->session));
+                return FALSE;
+            }
+            size = 0;
+            break;
+
+        case GTK_RESPONSE_APPLY:
+            if (sftp_seek64 (remote_file, size) < 0)
+            {
+                sftp_close (remote_file);
+                remmina_sftp_client_thread_set_error (client, task, "Error seeking remote file %s. %s",
+                    remote_path, ssh_get_error (REMMINA_SSH (client->sftp)->session));
+                return FALSE;
+            }
+            break;
+        }
+    }
+
     local_file = g_fopen (local_path, "rb");
     if (!local_file)
     {
         sftp_close (remote_file);
         remmina_sftp_client_thread_set_error (client, task, _("Error opening file %s."), local_path);
         return FALSE;
+    }
+
+    if (size > 0)
+    {
+        if (fseek (local_file, size, SEEK_SET) < 0)
+        {
+            sftp_close (remote_file);
+            fclose (local_file);
+            remmina_sftp_client_thread_set_error (client, task, "Error seeking local file %s.", local_path);
+            return FALSE;
+        }
+        *donesize = size;
     }
 
     while (!THREAD_CHECK_EXIT && (len = fread (buf, 1, sizeof (buf), local_file)) > 0)
@@ -817,6 +883,56 @@ remmina_sftp_client_refresh (RemminaSFTPClient *client)
     SET_CURSOR (NULL);
 
     return FALSE;
+}
+
+static gint
+remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path)
+{
+    GtkWidget *dialog;
+    gint response;
+    GtkWidget *hbox;
+    GtkWidget *vbox;
+    GtkWidget *widget;
+    const gchar *filename;
+
+    filename = strrchr (path, '/');
+    filename = filename ? filename + 1 : path;
+
+    dialog = gtk_dialog_new_with_buttons (_("File exists"),
+        GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (client))),
+        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+        _("Resume"), GTK_RESPONSE_APPLY,
+        _("Overwrite"), GTK_RESPONSE_ACCEPT,
+        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+        NULL);
+    gtk_container_set_border_width (GTK_CONTAINER (dialog), 4);
+
+    hbox = gtk_hbox_new (FALSE, 4);
+    gtk_widget_show (hbox);
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))),
+        hbox, TRUE, TRUE, 4);
+
+    widget = gtk_image_new_from_stock (GTK_STOCK_DIALOG_QUESTION, GTK_ICON_SIZE_DIALOG);
+    gtk_widget_show (widget);
+    gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 4);
+
+    vbox = gtk_vbox_new (FALSE, 4);
+    gtk_widget_show (vbox);
+    gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 4);
+
+    widget = gtk_label_new (_("The following file already exists in the target folder:"));
+    gtk_widget_show (widget);
+    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+    gtk_box_pack_start (GTK_BOX (vbox), widget, TRUE, TRUE, 4);
+
+    widget = gtk_label_new (filename);
+    gtk_widget_show (widget);
+    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+    gtk_box_pack_start (GTK_BOX (vbox), widget, TRUE, TRUE, 4);
+
+    response = gtk_dialog_run (GTK_DIALOG (dialog));
+    gtk_widget_destroy (dialog);
+    return response;
 }
 
 GtkWidget*
