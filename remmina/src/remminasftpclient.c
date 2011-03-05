@@ -136,8 +136,10 @@ remmina_sftp_client_thread_download_file (RemminaSFTPClient *client, RemminaSFTP
     sftp_file remote_file;
     FILE *local_file;
     gchar *tmp;
-    gchar buf[20000];
+    gchar buf[20480];
     gint len;
+    gint response;
+    uint64_t size;
 
     if (THREAD_CHECK_EXIT) return FALSE;
 
@@ -154,22 +156,68 @@ remmina_sftp_client_thread_download_file (RemminaSFTPClient *client, RemminaSFTP
         }
     }
 
+    local_file = g_fopen (local_path, "ab");
+    if (!local_file)
+    {
+        remmina_sftp_client_thread_set_error (client, task, _("Error creating file %s."), local_path);
+        return FALSE;
+    }
+
+    fseek (local_file, 0, SEEK_END);
+    size = ftello (local_file);
+    if (size > 0)
+    {
+        THREADS_ENTER
+        response = remmina_sftp_client_confirm_resume (client, local_path);
+        THREADS_LEAVE
+
+        switch (response)
+        {
+        case GTK_RESPONSE_CANCEL:
+        case GTK_RESPONSE_DELETE_EVENT:
+            fclose (local_file);
+            remmina_sftp_client_thread_set_error (client, task, NULL);
+            return FALSE;
+
+        case GTK_RESPONSE_ACCEPT:
+            fclose (local_file);
+            local_file = g_fopen (local_path, "wb");
+            if (!local_file)
+            {
+                remmina_sftp_client_thread_set_error (client, task, _("Error creating file %s."), local_path);
+                return FALSE;
+            }
+            size = 0;
+            break;
+
+        case GTK_RESPONSE_APPLY:
+            break;
+        }
+    }
+
     tmp = remmina_ssh_unconvert (REMMINA_SSH (sftp), remote_path);
     remote_file = sftp_open (sftp->sftp_sess, tmp, O_RDONLY, 0);
     g_free (tmp);
 
     if (!remote_file)
     {
+        fclose (local_file);
         remmina_sftp_client_thread_set_error (client, task, _("Error opening file %s on server. %s"),
             remote_path, ssh_get_error (REMMINA_SSH (client->sftp)->session));
         return FALSE;
     }
-    local_file = g_fopen (local_path, "wb");
-    if (!local_file)
+
+    if (size > 0)
     {
-        sftp_close (remote_file);
-        remmina_sftp_client_thread_set_error (client, task, _("Error creating file %s."), local_path);
-        return FALSE;
+        if (sftp_seek64 (remote_file, size) < 0)
+        {
+            sftp_close (remote_file);
+            fclose (local_file);
+            remmina_sftp_client_thread_set_error (client, task, "Error seeking remote file %s. %s",
+                remote_path, ssh_get_error (REMMINA_SSH (client->sftp)->session));
+            return FALSE;
+        }
+        *donesize = size;
     }
 
     while (!THREAD_CHECK_EXIT && (len = sftp_read (remote_file, buf, sizeof (buf))) > 0)
