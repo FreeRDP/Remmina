@@ -303,6 +303,11 @@ remmina_pref_init (void)
     else
         remmina_pref.tab_mode = 0;
 
+    if (g_key_file_has_key (gkeyfile, "remmina_pref", "auto_scroll_step", NULL))
+        remmina_pref.auto_scroll_step = g_key_file_get_integer (gkeyfile, "remmina_pref", "auto_scroll_step", NULL);
+    else
+        remmina_pref.auto_scroll_step = 10;
+
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "hostkey", NULL))
         remmina_pref.hostkey = g_key_file_get_integer (gkeyfile, "remmina_pref", "hostkey", NULL);
     else
@@ -430,6 +435,7 @@ remmina_pref_save (void)
     g_key_file_set_integer (gkeyfile, "remmina_pref", "recent_maximum", remmina_pref.recent_maximum);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "default_mode", remmina_pref.default_mode);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "tab_mode", remmina_pref.tab_mode);
+    g_key_file_set_integer (gkeyfile, "remmina_pref", "auto_scroll_step", remmina_pref.auto_scroll_step);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "hostkey", remmina_pref.hostkey);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_fullscreen", remmina_pref.shortcutkey_fullscreen);
     g_key_file_set_integer (gkeyfile, "remmina_pref", "shortcutkey_autofit", remmina_pref.shortcutkey_autofit);
