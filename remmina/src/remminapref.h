@@ -72,6 +72,7 @@ typedef struct _RemminaPref
     gint recent_maximum;
     gint default_mode;
     gint tab_mode;
+    gint auto_scroll_step;
 
     gboolean applet_new_ontop;
     gboolean applet_hide_count;
