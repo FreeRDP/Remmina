@@ -79,6 +79,7 @@ struct _RemminaPrefDialogPriv
     GtkWidget *tab_mode_combo;
     GtkWidget *scale_quality_combo;
     GtkWidget *sshtunnel_port_entry;
+    GtkWidget *auto_scroll_step_entry;
     GtkWidget *recent_maximum_entry;
     GtkWidget *resolutions_list;
     GtkWidget *applet_new_ontop_check;
@@ -202,6 +203,10 @@ remmina_pref_dialog_destroy (GtkWidget *widget, gpointer data)
 
     remmina_pref.sshtunnel_port = atoi (gtk_entry_get_text (GTK_ENTRY (priv->sshtunnel_port_entry)));
     if (remmina_pref.sshtunnel_port <= 0) remmina_pref.sshtunnel_port = DEFAULT_SSHTUNNEL_PORT;
+
+    remmina_pref.auto_scroll_step = atoi (gtk_entry_get_text (GTK_ENTRY (priv->auto_scroll_step_entry)));
+    if (remmina_pref.auto_scroll_step < 10) remmina_pref.auto_scroll_step = 10;
+    else if (remmina_pref.auto_scroll_step > 500) remmina_pref.auto_scroll_step = 500;
 
     remmina_pref.recent_maximum = atoi (gtk_entry_get_text (GTK_ENTRY (priv->recent_maximum_entry)));
     if (remmina_pref.recent_maximum < 0) remmina_pref.recent_maximum = 0;
@@ -348,7 +353,7 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_widget_show (vbox);
     gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, tablabel);
 
-    table = gtk_table_new (11, 2, FALSE);
+    table = gtk_table_new (12, 2, FALSE);
     gtk_widget_show (table);
     gtk_table_set_row_spacings (GTK_TABLE (table), 4);
     gtk_table_set_col_spacings (GTK_TABLE (table), 4);
@@ -444,14 +449,26 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_entry_set_text (GTK_ENTRY (widget), buf);
     priv->sshtunnel_port_entry = widget;
 
-    widget = gtk_label_new (_("Maximum recent items"));
+    widget = gtk_label_new (_("Auto scroll step size"));
     gtk_widget_show (widget);
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 1, 10, 11);
 
+    widget = gtk_entry_new_with_max_length (3);
+    gtk_widget_show (widget);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 10, 11);
+    g_snprintf (buf, sizeof (buf), "%i", remmina_pref.auto_scroll_step);
+    gtk_entry_set_text (GTK_ENTRY (widget), buf);
+    priv->auto_scroll_step_entry = widget;
+    
+    widget = gtk_label_new (_("Maximum recent items"));
+    gtk_widget_show (widget);
+    gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+    gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 1, 11, 12);
+
     hbox = gtk_hbox_new (FALSE, 2);
     gtk_widget_show (hbox);
-    gtk_table_attach_defaults (GTK_TABLE (table), hbox, 1, 2, 10, 11);
+    gtk_table_attach_defaults (GTK_TABLE (table), hbox, 1, 2, 11, 12);
 
     widget = gtk_entry_new_with_max_length (2);
     gtk_widget_show (widget);
