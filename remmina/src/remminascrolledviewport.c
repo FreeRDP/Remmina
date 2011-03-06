@@ -20,6 +20,7 @@
 
 #include <gtk/gtk.h>
 #include "remminascrolledviewport.h"
+#include "remminapref.h"
 
 G_DEFINE_TYPE (RemminaScrolledViewport, remmina_scrolled_viewport, GTK_TYPE_EVENT_BOX)
 
@@ -52,15 +53,17 @@ remmina_scrolled_viewport_motion_timeout (gpointer data)
     my = (y == 0 ? -1 : (y >= h - 1 ? 1 : 0));
     if (mx != 0)
     {
+        gint step = MAX (10, MIN (remmina_pref.auto_scroll_step, w / 5));
         adj = gtk_viewport_get_hadjustment (GTK_VIEWPORT (child));
-        value = gtk_adjustment_get_value (GTK_ADJUSTMENT (adj)) + (gdouble) (mx * 10);
+        value = gtk_adjustment_get_value (GTK_ADJUSTMENT (adj)) + (gdouble) (mx * step);
         value = MAX (0, MIN (value, adj->upper - (gdouble) w + 2.0));
         gtk_adjustment_set_value (GTK_ADJUSTMENT (adj), value);
     }
     if (my != 0)
     {
+        gint step = MAX (10, MIN (remmina_pref.auto_scroll_step, h / 5));
         adj = gtk_viewport_get_vadjustment (GTK_VIEWPORT (child));
-        value = gtk_adjustment_get_value (GTK_ADJUSTMENT (adj)) + (gdouble) (my * 10);
+        value = gtk_adjustment_get_value (GTK_ADJUSTMENT (adj)) + (gdouble) (my * step);
         value = MAX (0, MIN (value, adj->upper - (gdouble) h + 2.0));
         gtk_adjustment_set_value (GTK_ADJUSTMENT (adj), value);
     }
