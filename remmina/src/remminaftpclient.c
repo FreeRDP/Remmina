@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1150,7 +1150,6 @@ remmina_ftp_client_save_state (RemminaFTPClient *client, RemminaFile *remminafil
     gint pos;
 
     pos = gtk_paned_get_position (GTK_PANED (client->priv->vpaned));
-g_print ("save: %i\n", pos);
     remmina_file_set_int (remminafile, "ftp_vpanedpos", pos);
 }
 
@@ -1162,7 +1161,11 @@ remmina_ftp_client_load_state (RemminaFTPClient *client, RemminaFile *remminafil
     pos = remmina_file_get_int (remminafile, "ftp_vpanedpos", 0);
     if (pos)
     {
-g_print ("load: %i\n", pos);
+        if (client->priv->vpaned->allocation.height > 0 &&
+            pos > client->priv->vpaned->allocation.height - 60)
+        {
+            pos = client->priv->vpaned->allocation.height - 60;
+        }
         gtk_paned_set_position (GTK_PANED (client->priv->vpaned), pos);
     }
 }
