@@ -127,7 +127,7 @@ remmina_ssh_auth_password (RemminaSSH *ssh)
     if (ssh->password == NULL) return -1;
 
     authlist = ssh_userauth_list (ssh->session, NULL);
-    if (authlist | SSH_AUTH_METHOD_INTERACTIVE)
+    if (authlist & SSH_AUTH_METHOD_INTERACTIVE)
     {
         while ((ret = ssh_userauth_kbdint (ssh->session, NULL, NULL)) == SSH_AUTH_INFO)
         {
