@@ -35,6 +35,7 @@ remmina_about_open (GtkWindow *parent)
         N_("Contributors:"),
         "Alex Chateau <ash@zednet.lv>",
         "Alexander Logvinov <avl@logvinov.com>",
+        "Harun Trefry <aihtdikh@gmail.com>",
         "Nikolay Botev <bono8106@gmail.com>",
         NULL
     };
