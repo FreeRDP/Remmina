@@ -130,6 +130,7 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     gchar *value;
     gint rdpdr_num;
     gint drdynvc_num;
+    gint rdpsnd_num;
     const gchar *cs;
 
     gpdata = GET_DATA (gp);
@@ -251,13 +252,37 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     }
 
     drdynvc_num = 0;
-    if (g_strcmp0 (remmina_plugin_service->file_get_string (remminafile, "sound"), "remote") == 0)
+    rdpsnd_num = 0;
+    cs = remmina_plugin_service->file_get_string (remminafile, "sound");
+    if (g_strcmp0 (cs, "remote") == 0)
     {
         gpdata->settings->console_audio = 1;
     }
-    else if (g_strcmp0 (remmina_plugin_service->file_get_string (remminafile, "sound"), "local") == 0)
+    else if (g_str_has_prefix (cs, "local"))
     {
-        freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "rdpsnd", NULL);
+        cs = strchr (cs, ',');
+        if (cs)
+        {
+            snprintf (gpdata->rdpsnd_options, sizeof (gpdata->rdpsnd_options), "%s", cs + 1);
+            s = strchr (gpdata->rdpsnd_options, ',');
+            if (s) *s++ = '\0';
+
+            gpdata->rdpsnd_data[rdpsnd_num].size = sizeof(RD_PLUGIN_DATA);
+            gpdata->rdpsnd_data[rdpsnd_num].data[0] = "rate";
+            gpdata->rdpsnd_data[rdpsnd_num].data[1] = gpdata->rdpsnd_options;
+            rdpsnd_num++;
+
+            if (s)
+            {
+                gpdata->rdpsnd_data[rdpsnd_num].size = sizeof(RD_PLUGIN_DATA);
+                gpdata->rdpsnd_data[rdpsnd_num].data[0] = "channel";
+                gpdata->rdpsnd_data[rdpsnd_num].data[1] = s;
+                rdpsnd_num++;
+            }
+        }
+
+        freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "rdpsnd", gpdata->rdpsnd_data);
+
         gpdata->drdynvc_data[drdynvc_num].size = sizeof(RD_PLUGIN_DATA);
         gpdata->drdynvc_data[drdynvc_num].data[0] = "audin";
         drdynvc_num++;
@@ -506,6 +531,9 @@ static gpointer sound_list[] =
 {
     "off", N_("Off"),
     "local", N_("Local"),
+    "local,11025,1", N_("Local - low quality"),
+    "local,22050,2", N_("Local - medium quality"),
+    "local,44100,2", N_("Local - high quality"),
     "remote", N_("Remote"),
     NULL
 };

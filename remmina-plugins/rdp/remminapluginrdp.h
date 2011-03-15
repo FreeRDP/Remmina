@@ -53,6 +53,8 @@ typedef struct _RemminaPluginRdpData
 
     RD_PLUGIN_DATA rdpdr_data[5];
     RD_PLUGIN_DATA drdynvc_data[5];
+    RD_PLUGIN_DATA rdpsnd_data[5];
+    gchar rdpsnd_options[20];
 
     GtkWidget *drawing_area;
     gint scale_width;
