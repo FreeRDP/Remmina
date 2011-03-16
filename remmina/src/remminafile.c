@@ -245,9 +245,9 @@ remmina_file_get_secret (RemminaFile *remminafile, const gchar *setting)
 
     plugin = remmina_plugin_manager_get_secret_plugin ();
     cs = remmina_file_get_string (remminafile, setting);
-    if (plugin)
+    if (plugin && g_strcmp0 (cs, ".") == 0)
     {
-        if (remminafile->filename && g_strcmp0 (cs, ".") == 0)
+        if (remminafile->filename)
         {
             return plugin->get_password (remminafile, setting);
         }
