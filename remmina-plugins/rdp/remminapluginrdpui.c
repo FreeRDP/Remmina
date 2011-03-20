@@ -1167,6 +1167,29 @@ remmina_plugin_rdpui_authenticate (rdpInst *inst)
     }
 }
 
+static int
+remmina_plugin_rdpui_decode(struct rdp_inst * inst, uint8 * data, int data_size)
+{
+	printf("l_ui_decode: size %d\n", data_size);
+	return 0;
+}
+
+RD_BOOL
+remmina_plugin_rdpui_check_certificate(rdpInst * inst, const char * fingerprint,
+	const char * subject, const char * issuer, RD_BOOL verified)
+{
+	/* TODO: popup dialog, ask for confirmation and store known_hosts file */
+	printf("certificate details:\n");
+	printf("  Subject:\n    %s\n", subject);
+	printf("  Issued by:\n    %s\n", issuer);
+	printf("  Fingerprint:\n    %s\n",  fingerprint);
+
+	if (!verified)
+		printf("The server could not be authenticated. Connection security may be compromised!\n");
+
+	return True;
+}
+
 /* Migrated from xfreerdp */
 static gboolean
 remmina_plugin_rdpui_get_key_state (KeyCode keycode, int state, XModifierKeymap *modmap)
@@ -1269,6 +1292,8 @@ remmina_plugin_rdpui_pre_connect (RemminaProtocolWidget *gp)
     inst->ui_destroy_surface = remmina_plugin_rdpui_destroy_surface;
     inst->ui_channel_data = remmina_plugin_rdpui_channel_data;
     inst->ui_authenticate = remmina_plugin_rdpui_authenticate;
+    inst->ui_decode = remmina_plugin_rdpui_decode;
+    inst->ui_check_certificate = remmina_plugin_rdpui_check_certificate;
 }
 
 void
