@@ -150,14 +150,10 @@ ReadFromRFBServer(rfbClient* client, char *out, unsigned int n)
 	  errno=WSAGetLastError();
 #endif
 	  if (errno == EWOULDBLOCK || errno == EAGAIN) {
-#ifndef WIN32
-        usleep (10000);
-#else
-	 Sleep (10);
-#endif
 	    /* TODO:
 	       ProcessXtEvents();
 	    */
+	    WaitForMessage(client, 100000);
 	    i = 0;
 	  } else {
 	    rfbClientErr("read (%d: %s)\n",errno,strerror(errno));
@@ -196,14 +192,10 @@ ReadFromRFBServer(rfbClient* client, char *out, unsigned int n)
 	  errno=WSAGetLastError();
 #endif
 	  if (errno == EWOULDBLOCK || errno == EAGAIN) {
-#ifndef WIN32
-        usleep (10000);
-#else
-	 Sleep (10);
-#endif
 	    /* TODO:
 	       ProcessXtEvents();
 	    */
+	    WaitForMessage(client, 100000);
 	    i = 0;
 	  } else {
 	    rfbClientErr("read (%s)\n",strerror(errno));
@@ -262,6 +254,9 @@ WriteToRFBServer(rfbClient* client, char *buf, int n)
     j = write(client->sock, buf + i, (n - i));
     if (j <= 0) {
       if (j < 0) {
+#ifdef WIN32
+	 errno=WSAGetLastError();
+#endif
 	if (errno == EWOULDBLOCK ||
 #ifdef LIBVNCSERVER_ENOENT_WORKAROUND
 		errno == ENOENT ||
@@ -735,8 +730,12 @@ int WaitForMessage(rfbClient* client,unsigned int usecs)
   FD_SET(client->sock,&fds);
 
   num=select(client->sock+1, &fds, NULL, NULL, &timeout);
-  if(num<0)
+  if(num<0) {
+#ifdef WIN32
+    errno=WSAGetLastError();
+#endif
     rfbClientLog("Waiting for message failed: %d (%s)\n",errno,strerror(errno));
+  }
 
   return num;
 }

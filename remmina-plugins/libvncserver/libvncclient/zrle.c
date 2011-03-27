@@ -363,7 +363,7 @@ static int HandleZRLETile(rfbClient* client,
 		{
 			return -8;
 		}
-		else if( (type >= 130)&&(type <= 255) ) /* palette RLE */
+		else if( type >= 130 ) /* palette RLE */
 		{
 			CARDBPP palette[128];
 			int i,j;
