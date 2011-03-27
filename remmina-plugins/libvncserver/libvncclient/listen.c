@@ -29,6 +29,7 @@
 #ifdef __MINGW32__
 #define close closesocket
 #include <winsock2.h>
+#undef max
 #else
 #include <sys/wait.h>
 #include <sys/utsname.h>
