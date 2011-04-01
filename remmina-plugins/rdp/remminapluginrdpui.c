@@ -1170,24 +1170,24 @@ remmina_plugin_rdpui_authenticate (rdpInst *inst)
 static int
 remmina_plugin_rdpui_decode(struct rdp_inst * inst, uint8 * data, int data_size)
 {
-	printf("l_ui_decode: size %d\n", data_size);
-	return 0;
+    printf("l_ui_decode: size %d\n", data_size);
+    return 0;
 }
 
 RD_BOOL
 remmina_plugin_rdpui_check_certificate(rdpInst * inst, const char * fingerprint,
-	const char * subject, const char * issuer, RD_BOOL verified)
+    const char * subject, const char * issuer, RD_BOOL verified)
 {
-	/* TODO: popup dialog, ask for confirmation and store known_hosts file */
-	printf("certificate details:\n");
-	printf("  Subject:\n    %s\n", subject);
-	printf("  Issued by:\n    %s\n", issuer);
-	printf("  Fingerprint:\n    %s\n",  fingerprint);
+    /* TODO: popup dialog, ask for confirmation and store known_hosts file */
+    printf("certificate details:\n");
+    printf("  Subject:\n    %s\n", subject);
+    printf("  Issued by:\n    %s\n", issuer);
+    printf("  Fingerprint:\n    %s\n",  fingerprint);
 
-	if (!verified)
-		printf("The server could not be authenticated. Connection security may be compromised!\n");
+    if (!verified)
+        printf("The server could not be authenticated. Connection security may be compromised!\n");
 
-	return True;
+    return True;
 }
 
 /* Migrated from xfreerdp */
@@ -1346,8 +1346,17 @@ remmina_plugin_rdpui_check_fds (RemminaProtocolWidget *gp)
 
     while ((event = (RemminaPluginRdpEvent *) g_async_queue_try_pop (gpdata->event_queue)) != NULL)
     {
-        gpdata->inst->rdp_send_input(gpdata->inst,
-            event->type, event->flag, event->param1, event->param2);
+        switch (event->type)
+        {
+        case REMMINA_PLUGIN_RDP_EVENT_TYPE_SCANCODE:
+            gpdata->inst->rdp_send_input_scancode(gpdata->inst,
+                event->key_event.up, event->key_event.extended, event->key_event.key_code);
+            break;
+        case REMMINA_PLUGIN_RDP_EVENT_TYPE_MOUSE:
+            gpdata->inst->rdp_send_input_mouse(gpdata->inst,
+                event->mouse_event.flags, event->mouse_event.x, event->mouse_event.y);
+            break;
+        }
         g_free (event);
     }
 
