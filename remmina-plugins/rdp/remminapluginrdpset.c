@@ -25,6 +25,12 @@
 static guint rdp_keyboard_layout = 0;
 static guint keyboard_layout = 0;
 
+static void
+remmina_plugin_rdpset_kbd_init (void)
+{
+    keyboard_layout = freerdp_kbd_init (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), rdp_keyboard_layout);
+}
+
 void
 remmina_plugin_rdpset_init (void)
 {
@@ -37,7 +43,7 @@ remmina_plugin_rdpset_init (void)
     }
     g_free (value);
 
-    keyboard_layout = freerdp_kbd_init (rdp_keyboard_layout);
+    remmina_plugin_rdpset_kbd_init ();
 }
 
 guint
@@ -109,7 +115,7 @@ remmina_plugin_rdpset_table_destroy (GtkWidget *widget, gpointer data)
             remmina_plugin_service->pref_set_value ("rdp_keyboard_layout", s);
             g_free (s);
 
-            keyboard_layout = freerdp_kbd_init (rdp_keyboard_layout);
+            remmina_plugin_rdpset_kbd_init ();
         }
     }
 
