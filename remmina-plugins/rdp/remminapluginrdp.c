@@ -652,6 +652,7 @@ remmina_plugin_entry (RemminaPluginService *service)
         return FALSE;
     }
 
+    freerdp_global_init ();
     freerdp_chanman_init ();
     remmina_plugin_rdpset_init ();
 

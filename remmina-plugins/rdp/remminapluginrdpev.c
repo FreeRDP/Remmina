@@ -28,20 +28,15 @@
 #include <freerdp/kbd.h>
 
 static void
-remmina_plugin_rdpev_event_push (RemminaProtocolWidget *gp,
-    gint type, gint flag, gint param1, gint param2)
+remmina_plugin_rdpev_event_push (RemminaProtocolWidget *gp, const RemminaPluginRdpEvent *e)
 {
     RemminaPluginRdpData *gpdata;
     RemminaPluginRdpEvent *event;
 
     gpdata = GET_DATA (gp);
-    event = g_new (RemminaPluginRdpEvent, 1);
-    event->type = type;
-    event->flag = flag;
-    event->param1 = param1;
-    event->param2 = param2;
     if (gpdata->event_queue)
     {
+        event = g_memdup (e, sizeof(RemminaPluginRdpEvent));
         g_async_queue_push (gpdata->event_queue, event);
         (void) write (gpdata->event_pipe[1], "\0", 1);
     }
@@ -51,17 +46,20 @@ static void
 remmina_plugin_rdpev_release_key (RemminaProtocolWidget *gp, gint scancode)
 {
     RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpEvent rdp_event = { 0 };
     gint k;
     gint i;
 
     gpdata = GET_DATA (gp);
+    rdp_event.type = REMMINA_PLUGIN_RDP_EVENT_TYPE_SCANCODE;
     if (scancode == 0)
     {
         /* Send all release key events for previously pressed keys */
+        rdp_event.key_event.up = True;
         for (i = 0; i < gpdata->pressed_keys->len; i++)
         {
-            k = g_array_index (gpdata->pressed_keys, gint, i);
-            remmina_plugin_rdpev_event_push (gp, RDP_INPUT_SCANCODE, RDP_KEYRELEASE, k, 0);
+            rdp_event.key_event.key_code = g_array_index (gpdata->pressed_keys, gint, i);
+            remmina_plugin_rdpev_event_push (gp, &rdp_event);
         }
         g_array_set_size (gpdata->pressed_keys, 0);
     }
@@ -219,37 +217,39 @@ remmina_plugin_rdpev_on_configure (GtkWidget *widget, GdkEventConfigure *event, 
 }
 
 static void
-remmina_plugin_rdpev_translate_pos (RemminaProtocolWidget *gp, int ix, int iy, int *ox, int *oy)
+remmina_plugin_rdpev_translate_pos (RemminaProtocolWidget *gp, int ix, int iy, uint16 *ox, uint16 *oy)
 {
     RemminaPluginRdpData *gpdata;
 
     gpdata = GET_DATA (gp);
     if (gpdata->scale && gpdata->scale_width >= 1 && gpdata->scale_height >= 1)
     {
-        *ox = ix * remmina_plugin_service->protocol_plugin_get_width (gp) / gpdata->scale_width;
-        *oy = iy * remmina_plugin_service->protocol_plugin_get_height (gp) / gpdata->scale_height;
+        *ox = (uint16) (ix * remmina_plugin_service->protocol_plugin_get_width (gp) / gpdata->scale_width);
+        *oy = (uint16) (iy * remmina_plugin_service->protocol_plugin_get_height (gp) / gpdata->scale_height);
     }
     else
     {
-        *ox = ix;
-        *oy = iy;
+        *ox = (uint16) ix;
+        *oy = (uint16) iy;
     }
 }
 
 static gboolean
 remmina_plugin_rdpev_on_motion (GtkWidget *widget, GdkEventMotion *event, RemminaProtocolWidget *gp)
 {
-    gint x, y;
+    RemminaPluginRdpEvent rdp_event = { 0 };
 
-    remmina_plugin_rdpev_translate_pos (gp, event->x, event->y, &x, &y);
-    remmina_plugin_rdpev_event_push (gp, RDP_INPUT_MOUSE, PTRFLAGS_MOVE, x, y);
+    rdp_event.type = REMMINA_PLUGIN_RDP_EVENT_TYPE_MOUSE;
+    rdp_event.mouse_event.flags = PTRFLAGS_MOVE;
+    remmina_plugin_rdpev_translate_pos (gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
+    remmina_plugin_rdpev_event_push (gp, &rdp_event);
     return TRUE;
 }
 
 static gboolean
 remmina_plugin_rdpev_on_button (GtkWidget *widget, GdkEventButton *event, RemminaProtocolWidget *gp)
 {
-    gint x, y;
+    RemminaPluginRdpEvent rdp_event = { 0 };
     gint flag;
 
     /* We only accept 3 buttons */
@@ -257,7 +257,8 @@ remmina_plugin_rdpev_on_button (GtkWidget *widget, GdkEventButton *event, Remmin
     /* We bypass 2button-press and 3button-press events */
     if (event->type != GDK_BUTTON_PRESS && event->type != GDK_BUTTON_RELEASE) return TRUE;
 
-    remmina_plugin_rdpev_translate_pos (gp, event->x, event->y, &x, &y);
+    rdp_event.type = REMMINA_PLUGIN_RDP_EVENT_TYPE_MOUSE;
+    remmina_plugin_rdpev_translate_pos (gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
 
     flag = 0;
     if (event->type == GDK_BUTTON_PRESS)
@@ -278,7 +279,8 @@ remmina_plugin_rdpev_on_button (GtkWidget *widget, GdkEventButton *event, Remmin
     }
     if (flag != 0)
     {
-        remmina_plugin_rdpev_event_push (gp, RDP_INPUT_MOUSE, flag, x, y);
+        rdp_event.mouse_event.flags = flag;
+        remmina_plugin_rdpev_event_push (gp, &rdp_event);
     }
     return TRUE;
 }
@@ -286,9 +288,10 @@ remmina_plugin_rdpev_on_button (GtkWidget *widget, GdkEventButton *event, Remmin
 static gboolean
 remmina_plugin_rdpev_on_scroll (GtkWidget *widget, GdkEventScroll *event, RemminaProtocolWidget *gp)
 {
-    gint x, y;
+    RemminaPluginRdpEvent rdp_event = { 0 };
     gint flag;
 
+    rdp_event.type = REMMINA_PLUGIN_RDP_EVENT_TYPE_MOUSE;
     flag = 0;
     switch (event->direction)
     {
@@ -302,8 +305,9 @@ remmina_plugin_rdpev_on_scroll (GtkWidget *widget, GdkEventScroll *event, Remmin
         return FALSE;
     }
 
-    remmina_plugin_rdpev_translate_pos (gp, event->x, event->y, &x, &y);
-    remmina_plugin_rdpev_event_push (gp, RDP_INPUT_MOUSE, flag, x, y);
+    rdp_event.mouse_event.flags = flag;
+    remmina_plugin_rdpev_translate_pos (gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
+    remmina_plugin_rdpev_event_push (gp, &rdp_event);
     return TRUE;
 }
 
@@ -311,54 +315,60 @@ static gboolean
 remmina_plugin_rdpev_on_key (GtkWidget *widget, GdkEventKey *event, RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
-    gint flag;
-    gint scancode = 0;
+    RemminaPluginRdpEvent rdp_event;
     Display *display;
     KeyCode cooked_keycode;
 
     gpdata = GET_DATA (gp);
-    flag = (event->type == GDK_KEY_PRESS ? RDP_KEYPRESS : RDP_KEYRELEASE);
+    rdp_event.type = REMMINA_PLUGIN_RDP_EVENT_TYPE_SCANCODE;
+    rdp_event.key_event.up = (event->type == GDK_KEY_PRESS ? False : True);
+    rdp_event.key_event.extended = False;
     switch (event->keyval)
     {
     case GDK_Break:
-        remmina_plugin_rdpev_event_push (gp, RDP_INPUT_SCANCODE, flag, 0xc6, 0);
+        rdp_event.key_event.key_code = 0xc6;
+        remmina_plugin_rdpev_event_push (gp, &rdp_event);
         break;
     case GDK_Pause:
-        remmina_plugin_rdpev_event_push (gp, RDP_INPUT_SCANCODE, flag | 0x0200, 0x1d, 0);
-        remmina_plugin_rdpev_event_push (gp, RDP_INPUT_SCANCODE, flag, 0x45, 0);
+        rdp_event.key_event.key_code = 0x1d;
+        rdp_event.key_event.extended = True;
+        remmina_plugin_rdpev_event_push (gp, &rdp_event);
+        rdp_event.key_event.key_code = 0x45;
+        rdp_event.key_event.extended = False;
+        remmina_plugin_rdpev_event_push (gp, &rdp_event);
         break;
     default:
         if (!gpdata->use_client_keymap)
         {
-            scancode = freerdp_kbd_get_scancode_by_keycode (event->hardware_keycode, &flag);
-            remmina_plugin_service->log_printf ("[RDP]keyval=%04X keycode=%i scancode=%i flag=%04X\n",
-                event->keyval, event->hardware_keycode, scancode, flag);
+            rdp_event.key_event.key_code = freerdp_kbd_get_scancode_by_keycode (event->hardware_keycode, &rdp_event.key_event.extended);
+            remmina_plugin_service->log_printf ("[RDP]keyval=%04X keycode=%i scancode=%i extended=%i\n",
+                event->keyval, event->hardware_keycode, rdp_event.key_event.key_code, &rdp_event.key_event.extended);
         }
         else
         {
             display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
             cooked_keycode = XKeysymToKeycode(display, XKeycodeToKeysym(display, event->hardware_keycode, 0));
-            scancode = freerdp_kbd_get_scancode_by_keycode (cooked_keycode, &flag);
-            remmina_plugin_service->log_printf ("[RDP]keyval=%04X raw_keycode=%i cooked_keycode=%i scancode=%i flag=%04X\n",
-                event->keyval, event->hardware_keycode, cooked_keycode, scancode, flag);
+            rdp_event.key_event.key_code = freerdp_kbd_get_scancode_by_keycode (cooked_keycode, &rdp_event.key_event.extended);
+            remmina_plugin_service->log_printf ("[RDP]keyval=%04X raw_keycode=%i cooked_keycode=%i scancode=%i extended=%i\n",
+                event->keyval, event->hardware_keycode, cooked_keycode, rdp_event.key_event.key_code, &rdp_event.key_event.extended);
         }
-        if (scancode)
+        if (rdp_event.key_event.key_code)
         {
-            remmina_plugin_rdpev_event_push (gp, RDP_INPUT_SCANCODE, flag, scancode, 0);
+            remmina_plugin_rdpev_event_push (gp, &rdp_event);
         }
         break;
     }
 
     /* Register/unregister the pressed key */
-    if (scancode)
+    if (rdp_event.key_event.key_code)
     {
         if (event->type == GDK_KEY_PRESS)
         {
-            g_array_append_val (gpdata->pressed_keys, scancode);
+            g_array_append_val (gpdata->pressed_keys, rdp_event.key_event.key_code);
         }
         else
         {
-            remmina_plugin_rdpev_release_key (gp, scancode);
+            remmina_plugin_rdpev_release_key (gp, rdp_event.key_event.key_code);
         }
     }
     return TRUE;

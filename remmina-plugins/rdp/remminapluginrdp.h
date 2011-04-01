@@ -91,12 +91,30 @@ typedef struct _RemminaPluginRdpData
     gint event_pipe[2];
 } RemminaPluginRdpData;
 
+typedef enum
+{
+    REMMINA_PLUGIN_RDP_EVENT_TYPE_SCANCODE,
+    REMMINA_PLUGIN_RDP_EVENT_TYPE_MOUSE
+} RemminaPluginRdpEventType;
+
 typedef struct _RemminaPluginRdpEvent
 {
-    gint type;
-    gint flag;
-    gint param1;
-    gint param2;
+    RemminaPluginRdpEventType type;
+    union
+    {
+        struct
+        {
+            RD_BOOL up;
+            RD_BOOL extended;
+            uint8 key_code;
+        } key_event;
+        struct
+        {
+            uint16 flags;
+            uint16 x;
+            uint16 y;
+        } mouse_event;
+    };
 } RemminaPluginRdpEvent;
 
 typedef enum
