@@ -325,16 +325,18 @@ remmina_plugin_rdpev_on_key (GtkWidget *widget, GdkEventKey *event, RemminaProto
     rdp_event.key_event.extended = False;
     switch (event->keyval)
     {
-    case GDK_Break:
-        rdp_event.key_event.key_code = 0xc6;
-        remmina_plugin_rdpev_event_push (gp, &rdp_event);
-        break;
     case GDK_Pause:
         rdp_event.key_event.key_code = 0x1d;
-        rdp_event.key_event.extended = True;
+        rdp_event.key_event.up = False;
         remmina_plugin_rdpev_event_push (gp, &rdp_event);
         rdp_event.key_event.key_code = 0x45;
-        rdp_event.key_event.extended = False;
+        rdp_event.key_event.up = False;
+        remmina_plugin_rdpev_event_push (gp, &rdp_event);
+        rdp_event.key_event.key_code = 0x1d;
+        rdp_event.key_event.up = True;
+        remmina_plugin_rdpev_event_push (gp, &rdp_event);
+        rdp_event.key_event.key_code = 0x45;
+        rdp_event.key_event.up = True;
         remmina_plugin_rdpev_event_push (gp, &rdp_event);
         break;
     default:
