@@ -1024,8 +1024,9 @@ remmina_plugin_rdpui_set_default_cursor (rdpInst *inst)
 }
 
 static RD_HPALETTE
-remmina_plugin_rdpui_create_colormap (rdpInst *inst, RD_PALETTE * colors)
+remmina_plugin_rdpui_create_palette (rdpInst *inst, RD_HPALETTE palette)
 {
+    RD_PALETTE * colors = (RD_PALETTE *) palette;
     gint *colormap;
     gint index;
     gint red;
@@ -1034,16 +1035,16 @@ remmina_plugin_rdpui_create_colormap (rdpInst *inst, RD_PALETTE * colors)
     gint count;
 
     colormap = g_new0 (gint, 256);
-    count = colors->ncolors;
+    count = colors->count;
     if (count > 256)
     {
         count = 256;
     }
     for (index = count - 1; index >= 0; index--)
     {
-        red = colors->colors[index].red;
-        green = colors->colors[index].green;
-        blue = colors->colors[index].blue;
+        red = colors->entries[index].red;
+        green = colors->entries[index].green;
+        blue = colors->entries[index].blue;
         colormap[index] = (red << 16) | (green << 8) | blue;
     }
     return (RD_HPALETTE) colormap;
@@ -1055,7 +1056,7 @@ remmina_plugin_rdpui_move_pointer (rdpInst *inst, int x, int y)
 }
 
 static void
-remmina_plugin_rdpui_set_colormap (rdpInst *inst, RD_HPALETTE map)
+remmina_plugin_rdpui_set_palette (rdpInst *inst, RD_HPALETTE map)
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
@@ -1284,9 +1285,9 @@ remmina_plugin_rdpui_pre_connect (RemminaProtocolWidget *gp)
     inst->ui_create_cursor = remmina_plugin_rdpui_create_cursor;
     inst->ui_set_null_cursor = remmina_plugin_rdpui_set_null_cursor;
     inst->ui_set_default_cursor = remmina_plugin_rdpui_set_default_cursor;
-    inst->ui_create_colormap = remmina_plugin_rdpui_create_colormap;
+    inst->ui_create_palette = remmina_plugin_rdpui_create_palette;
     inst->ui_move_pointer = remmina_plugin_rdpui_move_pointer;
-    inst->ui_set_colormap = remmina_plugin_rdpui_set_colormap;
+    inst->ui_set_palette = remmina_plugin_rdpui_set_palette;
     inst->ui_create_surface = remmina_plugin_rdpui_create_surface;
     inst->ui_set_surface = remmina_plugin_rdpui_set_surface;
     inst->ui_destroy_surface = remmina_plugin_rdpui_destroy_surface;
