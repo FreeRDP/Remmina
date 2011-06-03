@@ -635,7 +635,7 @@ remmina_plugin_rdpui_line (rdpInst *inst, uint8 opcode, int startx, int starty, 
 }
 
 static void
-remmina_plugin_rdpui_rect (rdpInst *inst, int x, int y, int cx, int cy, int color)
+remmina_plugin_rdpui_rect (rdpInst *inst, int x, int y, int cx, int cy, uint32 color)
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
@@ -656,7 +656,7 @@ remmina_plugin_rdpui_rect (rdpInst *inst, int x, int y, int cx, int cy, int colo
 
 static void
 remmina_plugin_rdpui_polygon (rdpInst *inst, uint8 opcode, uint8 fillmode, RD_POINT * point,
-    int npoints, RD_BRUSH * brush, int bgcolor, int fgcolor)
+    int npoints, RD_BRUSH * brush, uint32 bgcolor, uint32 fgcolor)
 {
 }
 
@@ -682,13 +682,13 @@ remmina_plugin_rdpui_polyline (rdpInst *inst, uint8 opcode, RD_POINT * points, i
 
 static void
 remmina_plugin_rdpui_ellipse (rdpInst *inst, uint8 opcode, uint8 fillmode, int x, int y,
-    int cx, int cy, RD_BRUSH * brush, int bgcolor, int fgcolor)
+    int cx, int cy, RD_BRUSH * brush, uint32 bgcolor, uint32 fgcolor)
 {
     g_print ("ellipse:\n");
 }
 
 static void
-remmina_plugin_rdpui_start_draw_glyphs (rdpInst *inst, int bgcolor, int fgcolor)
+remmina_plugin_rdpui_start_draw_glyphs (rdpInst *inst, uint32 bgcolor, uint32 fgcolor)
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
@@ -796,7 +796,7 @@ remmina_plugin_rdpui_destblt (rdpInst *inst, uint8 opcode, int x, int y, int cx,
 
 static void
 remmina_plugin_rdpui_patblt (rdpInst *inst, uint8 opcode, int x, int y, int cx, int cy,
-    RD_BRUSH * brush, int bgcolor, int fgcolor)
+    RD_BRUSH * brush, uint32 bgcolor, uint32 fgcolor)
 {
     RemminaProtocolWidget *gp;
     RemminaPluginRdpData *gpdata;
@@ -908,7 +908,7 @@ remmina_plugin_rdpui_memblt (rdpInst *inst, uint8 opcode, int x, int y, int cx, 
 
 static void
 remmina_plugin_rdpui_triblt (rdpInst *inst, uint8 opcode, int x, int y, int cx, int cy,
-    RD_HBITMAP src, int srcx, int srcy, RD_BRUSH * brush, int bgcolor, int fgcolor)
+    RD_HBITMAP src, int srcx, int srcy, RD_BRUSH * brush, uint32 bgcolor, uint32 fgcolor)
 {
 }
 
@@ -1024,9 +1024,8 @@ remmina_plugin_rdpui_set_default_cursor (rdpInst *inst)
 }
 
 static RD_HPALETTE
-remmina_plugin_rdpui_create_palette (rdpInst *inst, RD_HPALETTE palette)
+remmina_plugin_rdpui_create_palette (rdpInst *inst, RD_PALETTE * palette)
 {
-    RD_PALETTE * colors = (RD_PALETTE *) palette;
     gint *colormap;
     gint index;
     gint red;
@@ -1035,16 +1034,16 @@ remmina_plugin_rdpui_create_palette (rdpInst *inst, RD_HPALETTE palette)
     gint count;
 
     colormap = g_new0 (gint, 256);
-    count = colors->count;
+    count = palette->count;
     if (count > 256)
     {
         count = 256;
     }
     for (index = count - 1; index >= 0; index--)
     {
-        red = colors->entries[index].red;
-        green = colors->entries[index].green;
-        blue = colors->entries[index].blue;
+        red = palette->entries[index].red;
+        green = palette->entries[index].green;
+        blue = palette->entries[index].blue;
         colormap[index] = (red << 16) | (green << 8) | blue;
     }
     return (RD_HPALETTE) colormap;
