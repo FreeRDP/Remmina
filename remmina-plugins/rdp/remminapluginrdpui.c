@@ -1002,6 +1002,7 @@ remmina_plugin_rdpui_create_cursor (rdpInst *inst, uint32 x, uint32 y,
 static void
 remmina_plugin_rdpui_set_null_cursor (rdpInst *inst)
 {
+/*
     RemminaProtocolWidget *gp;
     RemminaPluginRdpUiObject *ui;
 
@@ -1009,6 +1010,7 @@ remmina_plugin_rdpui_set_null_cursor (rdpInst *inst)
     ui = g_new0 (RemminaPluginRdpUiObject, 1);
     ui->type = REMMINA_PLUGIN_RDP_UI_SET_CURSOR;
     remmina_plugin_rdpui_queue_ui (gp, ui);
+*/
 }
 
 static void
