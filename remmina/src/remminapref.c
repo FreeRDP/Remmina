@@ -386,7 +386,7 @@ remmina_pref_init (void)
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "vte_shortcutkey_paste", NULL))
         remmina_pref.vte_shortcutkey_paste = g_key_file_get_integer (gkeyfile, "remmina_pref", "vte_shortcutkey_paste", NULL);
     else
-        remmina_pref.vte_shortcutkey_paste = GDK_p;
+        remmina_pref.vte_shortcutkey_paste = GDK_v;
 
     g_key_file_free (gkeyfile);
 
