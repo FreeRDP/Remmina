@@ -516,6 +516,7 @@ remmina_nx_session_send_command (RemminaNXSession *nx, const gchar *cmdfmt, ...)
     channel_write (nx->channel, cmd, strlen (cmd));
     g_free (cmd);
 
+    ssh_set_fd_towrite (nx->session);
     channel_write (nx->channel, "\n", 1);
 }
 
