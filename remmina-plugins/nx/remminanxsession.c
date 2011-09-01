@@ -840,6 +840,7 @@ remmina_nx_session_tunnel_main_thread (gpointer data)
             {
                 for (ptr = buffer, lenw = 0; len > 0; len -= lenw, ptr += lenw)
                 {
+                    ssh_set_fd_towrite (nx->session);
                     lenw = channel_write (channels[0], (char*) ptr, len);
                     if (lenw <= 0)
                     {
