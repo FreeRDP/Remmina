@@ -98,24 +98,6 @@ else
     vte_support="disabled."
 fi
 
-# Check libunique
-AC_ARG_ENABLE(unique,
-    [AS_HELP_STRING([--disable-unique], [Disable libunique])],
-    [unique_support=$enableval],
-    [unique_support="yes"]
-)
-if test "x$unique_support" != "xno"; then
-    PKG_CHECK_MODULES(UNIQUE,
-        unique-1.0 >= 1.0.8, [
-            unique_support="yes"
-            remmina_pkgs="$remmina_pkgs unique-1.0"
-            AC_DEFINE([HAVE_LIBUNIQUE], [1], [Define to 1 if you have the 'unique' library (-lunique).])
-        ], unique_support="no. libunique-dev required."
-    )
-else
-    unique_support="disabled."
-fi
-
 # Check libpthread (if found I assume GThread uses pthread)
 AC_CHECK_LIB(pthread, pthread_create, [
     AC_CHECK_HEADER(pthread.h, [
@@ -213,7 +195,6 @@ echo "* SSH support: $ssh_support"
 echo "* Avahi support: $avahi_support"
 echo "* Terminal support: $vte_support"
 echo "* Encryption support: $gcrypt_support"
-echo "* Unique-App support: $unique_support"
 echo
 echo "Type \"make\" to compile remmina."
 echo
