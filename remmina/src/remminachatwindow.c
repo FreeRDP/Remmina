@@ -144,7 +144,7 @@ remmina_chat_window_send (GtkWidget *widget, RemminaChatWindow *window)
 static gboolean
 remmina_chat_window_send_text_on_key (GtkWidget *widget, GdkEventKey *event, RemminaChatWindow *window)
 {
-    if (event->keyval == GDK_Return)
+    if (event->keyval == GDK_KEY_Return)
     {
         remmina_chat_window_send (widget, window);
         return TRUE;
@@ -162,7 +162,6 @@ remmina_chat_window_new (GtkWindow *parent, const gchar *chat_with)
     GtkWidget *widget;
     GtkWidget *image;
     GtkTextBuffer *buffer;
-    GtkTextTag *tag;
 
     window = REMMINA_CHAT_WINDOW (g_object_new (REMMINA_TYPE_CHAT_WINDOW, NULL));
 
@@ -198,8 +197,8 @@ remmina_chat_window_new (GtkWindow *parent, const gchar *chat_with)
     gtk_container_add (GTK_CONTAINER (scrolledwindow), widget);
 
     buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (widget));
-    tag = gtk_text_buffer_create_tag (buffer, "sender-foreground", "foreground", "blue", NULL);
-    tag = gtk_text_buffer_create_tag (buffer, "receiver-foreground", "foreground", "red", NULL);
+    gtk_text_buffer_create_tag (buffer, "sender-foreground", "foreground", "blue", NULL);
+    gtk_text_buffer_create_tag (buffer, "receiver-foreground", "foreground", "red", NULL);
 
     window->history_text = widget;
 

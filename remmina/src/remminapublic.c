@@ -49,7 +49,7 @@ remmina_public_create_combo_entry (const gchar *text, const gchar *def, gboolean
     gchar *buf, *ptr1, *ptr2;
     gint i;
 
-    combo = gtk_combo_box_entry_new_text ();
+    combo = gtk_combo_box_text_new_with_entry ();
     found = FALSE;
 
     if (text && text[0] != '\0')
@@ -64,7 +64,7 @@ remmina_public_create_combo_entry (const gchar *text, const gchar *def, gboolean
 
             if (descending)
             {
-                gtk_combo_box_prepend_text (GTK_COMBO_BOX (combo), ptr1);
+                gtk_combo_box_text_prepend_text (GTK_COMBO_BOX_TEXT (combo), ptr1);
                 if (!found && g_strcmp0 (ptr1, def) == 0)
                 {
                     gtk_combo_box_set_active (GTK_COMBO_BOX (combo), 0);
@@ -73,7 +73,7 @@ remmina_public_create_combo_entry (const gchar *text, const gchar *def, gboolean
             }
             else
             {
-                gtk_combo_box_append_text (GTK_COMBO_BOX (combo), ptr1);
+                gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), ptr1);
                 if (!found && g_strcmp0 (ptr1, def) == 0)
                 {
                     gtk_combo_box_set_active (GTK_COMBO_BOX (combo), i);
@@ -249,26 +249,48 @@ remmina_public_create_group (GtkTable* table, const gchar *group, gint row, gint
     gtk_table_attach (table, widget, 0, 1, row + 1, row + rows, 0, 0, 0, 0);
 }
 
+gchar*
+remmina_public_combo_get_active_text (GtkComboBox *combo)
+{
+    GtkTreeModel *model;
+    GtkTreeIter iter;
+    gchar *s;
+
+    if (GTK_IS_COMBO_BOX_TEXT (combo))
+    {
+        return gtk_combo_box_text_get_active_text (GTK_COMBO_BOX_TEXT (combo));
+    }
+
+    if (!gtk_combo_box_get_active_iter (combo, &iter)) return NULL;
+
+    model = gtk_combo_box_get_model (combo);
+    gtk_tree_model_get (model, &iter, 0, &s, -1);
+
+    return s;
+}
+
 void
 remmina_public_popup_position (GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data)
 {
     GtkWidget *widget;
     gint tx, ty;
+    GtkAllocation allocation;
 
     widget = GTK_WIDGET (user_data);
-    if (widget->window == NULL)
+    if (gtk_widget_get_window (widget) == NULL)
     {
         *x = 0; *y = 0; *push_in = TRUE; return;
     }
-    gdk_window_get_origin (widget->window, &tx, &ty);
-    if (GTK_WIDGET_NO_WINDOW (widget))
+    gdk_window_get_origin (gtk_widget_get_window (widget), &tx, &ty);
+    gtk_widget_get_allocation (widget, &allocation);
+    if (gtk_widget_get_has_window (widget))
     {
-        tx += widget->allocation.x;
-        ty += widget->allocation.y;
+        tx += allocation.x;
+        ty += allocation.y;
     }
 
     *x = tx;
-    *y = ty + widget->allocation.height - 1;
+    *y = ty + allocation.height - 1;
     *push_in = TRUE;
 }
 
@@ -452,10 +474,10 @@ remmina_public_get_window_workspace (GtkWindow *gtkwindow)
     guint ret = 0;
 
     g_return_val_if_fail (GTK_IS_WINDOW (gtkwindow), 0);
-    g_return_val_if_fail (GTK_WIDGET_REALIZED (GTK_WIDGET (gtkwindow)), 0);
+    g_return_val_if_fail (gtk_widget_get_realized (GTK_WIDGET (gtkwindow)), 0);
 
-    window = GTK_WIDGET (gtkwindow)->window;
-    display = gdk_drawable_get_display (window);
+    window = gtk_widget_get_window (GTK_WIDGET (gtkwindow));
+    display = gdk_window_get_display (window);
 
     gdk_error_trap_push ();
     result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (window),

@@ -54,11 +54,9 @@ REMMINA_SUBDIRS="include src po desktop icons"
 
 # Checks GTK+ version.
 PKG_CHECK_MODULES(GTK, [
-    glib-2.0 >= 2.20.0
-    gtk+-2.0 >= 2.16.0
-    gmodule-2.0
+    gtk+-3.0
 ])
-remmina_pkgs="glib-2.0 gtk+-2.0 gmodule-2.0"
+remmina_pkgs="gtk+-3.0"
 
 # Check libavahi-ui
 AC_ARG_ENABLE(avahi,
@@ -69,14 +67,14 @@ AC_ARG_ENABLE(avahi,
 if test "x$avahi_support" != "xno"; then
     PKG_CHECK_MODULES(AVAHI_UI,
         [
-            avahi-ui >= 0.6.22
-            avahi-client >= 0.6.22
+            avahi-ui-gtk3 >= 0.6.30
+            avahi-client >= 0.6.30
         ], [
             avahi_support="yes"
-            remmina_pkgs="$remmina_pkgs avahi-ui avahi-client"
+            remmina_pkgs="$remmina_pkgs avahi-ui-gtk3 avahi-client"
             AC_DEFINE([HAVE_LIBAVAHI_UI], [1], [Define to 1 if you have the 'avahi-ui' library (-lavahi-ui).])
             AC_DEFINE([HAVE_LIBAVAHI_CLIENT], [1], [Define to 1 if you have the 'avahi-client' library (-lavahi-client).])
-        ], avahi_support="no. libavahi-ui-dev required."
+        ], avahi_support="no. libavahi-ui-gtk3-dev required."
     )
 else
     avahi_support="disabled."
@@ -90,11 +88,11 @@ AC_ARG_ENABLE(vte,
 )
 if test "x$vte_support" != "xno"; then
     PKG_CHECK_MODULES(VTE,
-        vte >= 0.12.0, [
+        vte-2.90, [
             vte_support="yes"
-            remmina_pkgs="$remmina_pkgs vte"
+            remmina_pkgs="$remmina_pkgs vte-2.90"
             AC_DEFINE([HAVE_LIBVTE], [1], [Define to 1 if you have the 'vte' library (-lvte).])
-        ], vte_support="no. libvte-dev required."
+        ], vte_support="no. libvte-2.90-dev required."
     )
 else
     vte_support="disabled."

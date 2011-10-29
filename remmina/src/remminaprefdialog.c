@@ -188,16 +188,16 @@ remmina_pref_dialog_destroy (GtkWidget *widget, gpointer data)
     remmina_pref.always_show_tab = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->always_show_tab_check));
     remmina_pref.hide_connection_toolbar = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->hide_connection_toolbar_check));
 
-    s = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->default_action_combo));
+    s = remmina_public_combo_get_active_text (GTK_COMBO_BOX (priv->default_action_combo));
     remmina_pref.default_action = atoi (s);
     g_free (s);
-    s = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->default_mode_combo));
+    s = remmina_public_combo_get_active_text (GTK_COMBO_BOX (priv->default_mode_combo));
     remmina_pref.default_mode = atoi (s);
     g_free (s);
-    s = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->tab_mode_combo));
+    s = remmina_public_combo_get_active_text (GTK_COMBO_BOX (priv->tab_mode_combo));
     remmina_pref.tab_mode = atoi (s);
     g_free (s);
-    s = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->scale_quality_combo));
+    s = remmina_public_combo_get_active_text (GTK_COMBO_BOX (priv->scale_quality_combo));
     remmina_pref.scale_quality = atoi (s);
     g_free (s);
 
@@ -333,14 +333,13 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     widget = gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
     g_signal_connect (G_OBJECT (widget), "clicked", G_CALLBACK (remmina_pref_dialog_on_close_clicked), dialog);
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
-    gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 
     g_signal_connect (G_OBJECT (dialog), "destroy", G_CALLBACK (remmina_pref_dialog_destroy), NULL);
 
     /* Create the notebook */
     notebook = gtk_notebook_new ();
     gtk_widget_show (notebook);
-    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), notebook, TRUE, TRUE, 4);
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), notebook, TRUE, TRUE, 4);
     gtk_container_set_border_width (GTK_CONTAINER (notebook), 4);
     priv->notebook = notebook;
 
@@ -442,9 +441,10 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 1, 9, 10);
 
-    widget = gtk_entry_new_with_max_length (5);
+    widget = gtk_entry_new ();
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 9, 10);
+    gtk_entry_set_max_length (GTK_ENTRY (widget), 5);
     g_snprintf (buf, sizeof (buf), "%i", remmina_pref.sshtunnel_port);
     gtk_entry_set_text (GTK_ENTRY (widget), buf);
     priv->sshtunnel_port_entry = widget;
@@ -454,9 +454,10 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 0, 1, 10, 11);
 
-    widget = gtk_entry_new_with_max_length (3);
+    widget = gtk_entry_new ();
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 10, 11);
+    gtk_entry_set_max_length (GTK_ENTRY (widget), 3);
     g_snprintf (buf, sizeof (buf), "%i", remmina_pref.auto_scroll_step);
     gtk_entry_set_text (GTK_ENTRY (widget), buf);
     priv->auto_scroll_step_entry = widget;
@@ -470,9 +471,10 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_widget_show (hbox);
     gtk_table_attach_defaults (GTK_TABLE (table), hbox, 1, 2, 11, 12);
 
-    widget = gtk_entry_new_with_max_length (2);
+    widget = gtk_entry_new ();
     gtk_widget_show (widget);
     gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
+    gtk_entry_set_max_length (GTK_ENTRY (widget), 2);
     g_snprintf (buf, sizeof (buf), "%i", remmina_pref.recent_maximum);
     gtk_entry_set_text (GTK_ENTRY (widget), buf);
     priv->recent_maximum_entry = widget;
@@ -725,9 +727,10 @@ remmina_pref_dialog_init (RemminaPrefDialog *dialog)
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_table_attach (GTK_TABLE (table), widget, 0, 1, 3, 4, GTK_FILL, 0, 0, 0);
 
-    widget = gtk_entry_new_with_max_length (5);
+    widget = gtk_entry_new ();
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, 3, 4);
+    gtk_entry_set_max_length (GTK_ENTRY (widget), 5);
     g_snprintf (buf, sizeof (buf), "%i", remmina_pref.vte_lines);
     gtk_entry_set_text (GTK_ENTRY (widget), buf);
     priv->vte_lines_entry = widget;

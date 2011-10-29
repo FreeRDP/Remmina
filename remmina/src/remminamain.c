@@ -1089,7 +1089,7 @@ remmina_main_on_drag_data_received (RemminaMain *remminamain, GdkDragContext *dr
     GSList *files = NULL;
     gint i;
 
-    uris = g_uri_list_extract_uris ((gchar *) data->data);
+    uris = g_uri_list_extract_uris ((const gchar *) gtk_selection_data_get_data (data));
     for (i = 0; uris[i]; i++)
     {
         if (strncmp (uris[i], "file://", 7) != 0) continue;

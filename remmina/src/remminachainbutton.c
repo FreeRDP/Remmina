@@ -23,7 +23,7 @@
 
 G_DEFINE_TYPE (RemminaChainButton, remmina_chain_button, GTK_TYPE_TABLE)
 
-static gchar * line_up_xpm[] = {
+static const gchar * line_up_xpm[] = {
 "9 7 3 1",
 " 	c None",
 ".	c #A9A5A2",
@@ -36,7 +36,7 @@ static gchar * line_up_xpm[] = {
 "    +.   ",
 "         "};
 
-static gchar * line_down_xpm[] = {
+static const gchar * line_down_xpm[] = {
 "9 7 3 1",
 " 	c None",
 ".	c #FFFFFF",
@@ -49,7 +49,7 @@ static gchar * line_down_xpm[] = {
 ".....+   ",
 "+++++    "};
 
-static gchar * vchain_xpm[] = {
+static const gchar * vchain_xpm[] = {
 "9 24 13 1",
 " 	c None",
 ".	c #555753",
@@ -89,7 +89,7 @@ static gchar * vchain_xpm[] = {
 "         ",
 "         "};
 
-static gchar * vchain_broken_xpm[] = {
+static const gchar * vchain_broken_xpm[] = {
 "9 24 13 1",
 " 	c None",
 ".	c #555753",
@@ -152,14 +152,11 @@ remmina_chain_button_class_init (RemminaChainButtonClass *klass)
 static void
 remmina_chain_button_update_chained (RemminaChainButton *cb)
 {
-    GdkPixmap *pixmap;
-    GdkBitmap *mask;
+    GdkPixbuf *pixbuf;
 
-    pixmap = gdk_pixmap_colormap_create_from_xpm_d (NULL, gdk_colormap_get_system (),
-        &mask, NULL, (cb->chained ? vchain_xpm : vchain_broken_xpm));
-    gtk_image_set_from_pixmap (GTK_IMAGE (cb->chain_image), pixmap, mask);
-    g_object_unref (pixmap);
-    g_object_unref (mask);
+    pixbuf = gdk_pixbuf_new_from_xpm_data (cb->chained ? vchain_xpm : vchain_broken_xpm);
+    gtk_image_set_from_pixbuf (GTK_IMAGE (cb->chain_image), pixbuf);
+    g_object_unref (pixbuf);
 }
 
 static void
@@ -176,16 +173,13 @@ remmina_chain_button_init (RemminaChainButton *cb)
 {
     GtkWidget *widget;
     GtkWidget *image;
-    GdkPixmap *pixmap;
-    GdkBitmap *mask;
+    GdkPixbuf *pixbuf;
 
     gtk_table_resize (GTK_TABLE (cb), 3, 1);
 
-    pixmap = gdk_pixmap_colormap_create_from_xpm_d (NULL, gdk_colormap_get_system (),
-        &mask, NULL, line_up_xpm);
-    image = gtk_image_new_from_pixmap (pixmap, mask);
-    g_object_unref (pixmap);
-    g_object_unref (mask);
+    pixbuf = gdk_pixbuf_new_from_xpm_data (line_up_xpm);
+    image = gtk_image_new_from_pixbuf (pixbuf);
+    g_object_unref (pixbuf);
     gtk_widget_show (image);
     gtk_table_attach_defaults (GTK_TABLE (cb), image, 0, 1, 0, 1);
 
@@ -200,11 +194,9 @@ remmina_chain_button_init (RemminaChainButton *cb)
     gtk_container_add (GTK_CONTAINER (widget), image);
     cb->chain_image = image;
 
-    pixmap = gdk_pixmap_colormap_create_from_xpm_d (NULL, gdk_colormap_get_system (),
-        &mask, NULL, line_down_xpm);
-    image = gtk_image_new_from_pixmap (pixmap, mask);
-    g_object_unref (pixmap);
-    g_object_unref (mask);
+    pixbuf = gdk_pixbuf_new_from_xpm_data (line_down_xpm);
+    image = gtk_image_new_from_pixbuf (pixbuf);
+    g_object_unref (pixbuf);
     gtk_widget_show (image);
     gtk_table_attach_defaults (GTK_TABLE (cb), image, 0, 1, 2, 3);
 

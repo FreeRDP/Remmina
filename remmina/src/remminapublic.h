@@ -60,6 +60,8 @@ GtkWidget* remmina_public_create_combo_mapint (const gpointer *key_value_list, g
 
 void remmina_public_create_group (GtkTable* table, const gchar *group, gint row, gint rows, gint cols);
 
+gchar* remmina_public_combo_get_active_text (GtkComboBox *combo);
+
 /* A function for gtk_menu_popup to get the position right below the widget specified by user_data */
 void remmina_public_popup_position (GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data);
 

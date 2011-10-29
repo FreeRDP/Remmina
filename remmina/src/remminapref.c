@@ -311,52 +311,52 @@ remmina_pref_init (void)
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "hostkey", NULL))
         remmina_pref.hostkey = g_key_file_get_integer (gkeyfile, "remmina_pref", "hostkey", NULL);
     else
-        remmina_pref.hostkey = GDK_Control_R;
+        remmina_pref.hostkey = GDK_KEY_Control_R;
 
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_fullscreen", NULL))
         remmina_pref.shortcutkey_fullscreen = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_fullscreen", NULL);
     else
-        remmina_pref.shortcutkey_fullscreen = GDK_f;
+        remmina_pref.shortcutkey_fullscreen = GDK_KEY_f;
 
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_autofit", NULL))
         remmina_pref.shortcutkey_autofit = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_autofit", NULL);
     else
-        remmina_pref.shortcutkey_autofit = GDK_1;
+        remmina_pref.shortcutkey_autofit = GDK_KEY_1;
 
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_nexttab", NULL))
         remmina_pref.shortcutkey_nexttab = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_nexttab", NULL);
     else
-        remmina_pref.shortcutkey_nexttab = GDK_Right;
+        remmina_pref.shortcutkey_nexttab = GDK_KEY_Right;
 
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_prevtab", NULL))
         remmina_pref.shortcutkey_prevtab = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_prevtab", NULL);
     else
-        remmina_pref.shortcutkey_prevtab = GDK_Left;
+        remmina_pref.shortcutkey_prevtab = GDK_KEY_Left;
 
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_scale", NULL))
         remmina_pref.shortcutkey_scale = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_scale", NULL);
     else
-        remmina_pref.shortcutkey_scale = GDK_s;
+        remmina_pref.shortcutkey_scale = GDK_KEY_s;
 
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_grab", NULL))
         remmina_pref.shortcutkey_grab = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_grab", NULL);
     else
-        remmina_pref.shortcutkey_grab = GDK_Control_R;
+        remmina_pref.shortcutkey_grab = GDK_KEY_Control_R;
 
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_minimize", NULL))
         remmina_pref.shortcutkey_minimize = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_minimize", NULL);
     else
-        remmina_pref.shortcutkey_minimize = GDK_F9;
+        remmina_pref.shortcutkey_minimize = GDK_KEY_F9;
 
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_disconnect", NULL))
         remmina_pref.shortcutkey_disconnect = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_disconnect", NULL);
     else
-        remmina_pref.shortcutkey_disconnect = GDK_F4;
+        remmina_pref.shortcutkey_disconnect = GDK_KEY_F4;
 
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "shortcutkey_toolbar", NULL))
         remmina_pref.shortcutkey_toolbar = g_key_file_get_integer (gkeyfile, "remmina_pref", "shortcutkey_toolbar", NULL);
     else
-        remmina_pref.shortcutkey_toolbar = GDK_t;
+        remmina_pref.shortcutkey_toolbar = GDK_KEY_t;
 
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "secret", NULL))
         remmina_pref.secret = g_key_file_get_string (gkeyfile, "remmina_pref", "secret", NULL);
@@ -381,12 +381,12 @@ remmina_pref_init (void)
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "vte_shortcutkey_copy", NULL))
         remmina_pref.vte_shortcutkey_copy = g_key_file_get_integer (gkeyfile, "remmina_pref", "vte_shortcutkey_copy", NULL);
     else
-        remmina_pref.vte_shortcutkey_copy = GDK_c;
+        remmina_pref.vte_shortcutkey_copy = GDK_KEY_c;
 
     if (g_key_file_has_key (gkeyfile, "remmina_pref", "vte_shortcutkey_paste", NULL))
         remmina_pref.vte_shortcutkey_paste = g_key_file_get_integer (gkeyfile, "remmina_pref", "vte_shortcutkey_paste", NULL);
     else
-        remmina_pref.vte_shortcutkey_paste = GDK_v;
+        remmina_pref.vte_shortcutkey_paste = GDK_KEY_v;
 
     g_key_file_free (gkeyfile);
 
