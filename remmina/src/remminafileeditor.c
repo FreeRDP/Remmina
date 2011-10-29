@@ -389,9 +389,10 @@ remmina_file_editor_create_password (RemminaFileEditor *gfe, GtkWidget *table, g
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_table_attach (GTK_TABLE (table), widget, 0, 1, row, row + 1, GTK_FILL, 0, 0, 0);
 
-    widget = gtk_entry_new_with_max_length (100);
+    widget = gtk_entry_new ();
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 2, row, row + 1);
+    gtk_entry_set_max_length (GTK_ENTRY (widget), 100);
     gtk_entry_set_visibility (GTK_ENTRY (widget), FALSE);
     gfe->priv->password_entry = widget;
 
@@ -489,9 +490,10 @@ remmina_file_editor_create_text (RemminaFileEditor *gfe, GtkWidget *table, gint 
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_table_attach (GTK_TABLE (table), widget, col, col + 1, row, row + 1, GTK_FILL, 0, 0, 0);
 
-    widget = gtk_entry_new_with_max_length (300);
+    widget = gtk_entry_new ();
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, col + 1, col + 2, row, row + 1);
+    gtk_entry_set_max_length (GTK_ENTRY (widget), 300);
     if (value) gtk_entry_set_text (GTK_ENTRY (widget), value);
 
     return widget;
@@ -733,7 +735,7 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
     if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SSH ||
         ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SFTP)
     {
-        s = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->protocol_combo));
+        s = remmina_public_combo_get_active_text (GTK_COMBO_BOX (priv->protocol_combo));
         table = remmina_file_editor_create_notebook_tab (gfe, GTK_STOCK_DIALOG_AUTHENTICATION,
             (s ? s : "SSH"), 8, 3);
         g_free (s);
@@ -784,8 +786,9 @@ remmina_file_editor_create_ssh_tab (RemminaFileEditor *gfe, RemminaProtocolSSHSe
             G_CALLBACK (remmina_file_editor_ssh_server_custom_radio_on_toggled), gfe);
         priv->ssh_server_custom_radio = widget;
 
-        widget = gtk_entry_new_with_max_length (100);
+        widget = gtk_entry_new ();
         gtk_widget_show (widget);
+        gtk_entry_set_max_length (GTK_ENTRY (widget), 100);
         gtk_widget_set_tooltip_markup (widget, _(server_tips2));
         gtk_table_attach_defaults (GTK_TABLE (table), widget, 2, 3, row, row + 1);
         priv->ssh_server_entry = widget;
@@ -965,7 +968,7 @@ remmina_file_editor_protocol_combo_on_changed (GtkComboBox *combo, RemminaFileEd
 
     g_hash_table_remove_all (priv->setting_widgets);
 
-    protocol = gtk_combo_box_get_active_text (combo);
+    protocol = remmina_public_combo_get_active_text (combo);
     if (protocol)
     {
         priv->plugin = (RemminaProtocolPlugin *) remmina_plugin_manager_get_plugin (REMMINA_PLUGIN_TYPE_PROTOCOL, protocol);
@@ -983,7 +986,7 @@ remmina_file_editor_update_ssh (RemminaFileEditor *gfe)
     if (priv->ssh_charset_combo)
     {
         remmina_file_set_string_ref (priv->remmina_file, "ssh_charset",
-            gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->ssh_charset_combo)));
+            remmina_public_combo_get_active_text (GTK_COMBO_BOX (priv->ssh_charset_combo)));
     }
 
     if (g_strcmp0 (remmina_file_get_string (priv->remmina_file, "protocol"), "SFTP") == 0 ||
@@ -1036,7 +1039,7 @@ remmina_file_editor_update_settings (RemminaFileEditor *gfe)
         else if (GTK_IS_COMBO_BOX (value))
         {
             remmina_file_set_string_ref (priv->remmina_file, (gchar*) key,
-                gtk_combo_box_get_active_text (GTK_COMBO_BOX (value)));
+                remmina_public_combo_get_active_text (GTK_COMBO_BOX (value)));
         }
         else if (GTK_IS_FILE_CHOOSER (value))
         {
@@ -1061,13 +1064,13 @@ remmina_file_editor_update (RemminaFileEditor *gfe)
     remmina_file_set_string (priv->remmina_file, "name", gtk_entry_get_text (GTK_ENTRY (priv->name_entry)));
 
     remmina_file_set_string_ref (priv->remmina_file, "group", (priv->group_combo ?
-        gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->group_combo)) : NULL));
+        remmina_public_combo_get_active_text (GTK_COMBO_BOX (priv->group_combo)) : NULL));
 
     remmina_file_set_string_ref (priv->remmina_file, "protocol",
-        gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->protocol_combo)));
+        remmina_public_combo_get_active_text (GTK_COMBO_BOX (priv->protocol_combo)));
 
     remmina_file_set_string_ref (priv->remmina_file, "server", (priv->server_combo ?
-        gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->server_combo)) : NULL));
+        remmina_public_combo_get_active_text (GTK_COMBO_BOX (priv->server_combo)) : NULL));
 
     remmina_file_set_string (priv->remmina_file, "password", (priv->password_entry ?
         gtk_entry_get_text (GTK_ENTRY (priv->password_entry)) : NULL));
@@ -1077,13 +1080,13 @@ remmina_file_editor_update (RemminaFileEditor *gfe)
         remmina_file_set_string_ref (priv->remmina_file, "resolution", (
             gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->resolution_auto_radio)) ?
                 NULL :
-                gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->resolution_custom_combo))));
+                remmina_public_combo_get_active_text (GTK_COMBO_BOX (priv->resolution_custom_combo))));
     }
 
     if (priv->keymap_combo)
     {
         remmina_file_set_string_ref (priv->remmina_file, "keymap",
-            gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->keymap_combo)));
+            remmina_public_combo_get_active_text (GTK_COMBO_BOX (priv->keymap_combo)));
     }
 
     if (priv->scaler_widget)
@@ -1184,7 +1187,6 @@ remmina_file_editor_init (RemminaFileEditor *gfe)
     gtk_dialog_set_alternative_button_order (GTK_DIALOG (gfe),
         GTK_RESPONSE_OK, GTK_RESPONSE_APPLY, GTK_RESPONSE_CANCEL, -1);
     gtk_dialog_set_default_response (GTK_DIALOG (gfe), GTK_RESPONSE_OK);
-    gtk_dialog_set_has_separator (GTK_DIALOG (gfe), FALSE);
     gtk_window_set_default_size (GTK_WINDOW (gfe), 450, 500);
 
     g_signal_connect (G_OBJECT (gfe),
@@ -1196,8 +1198,8 @@ remmina_file_editor_init (RemminaFileEditor *gfe)
     widget = gtk_button_new_with_label (_("Default"));
     gtk_widget_show (widget);
     gtk_button_set_image (GTK_BUTTON (widget), gtk_image_new_from_stock (GTK_STOCK_PREFERENCES, GTK_ICON_SIZE_BUTTON));
-    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (gfe)->action_area), widget, FALSE, TRUE, 0);
-    gtk_button_box_set_child_secondary (GTK_BUTTON_BOX (GTK_DIALOG (gfe)->action_area), widget, TRUE);
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_action_area (GTK_DIALOG (gfe))), widget, FALSE, TRUE, 0);
+    gtk_button_box_set_child_secondary (GTK_BUTTON_BOX (gtk_dialog_get_action_area (GTK_DIALOG (gfe))), widget, TRUE);
 
     g_signal_connect (G_OBJECT (widget), "clicked", G_CALLBACK (remmina_file_editor_on_default), gfe);
 
@@ -1285,7 +1287,7 @@ remmina_file_editor_new_from_file (RemminaFile *remminafile)
     gtk_table_set_row_spacings (GTK_TABLE (table), 4);
     gtk_table_set_col_spacings (GTK_TABLE (table), 8);
     gtk_container_set_border_width (GTK_CONTAINER (table), 8);
-    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (gfe)->vbox), table, FALSE, FALSE, 2);
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (gfe))), table, FALSE, FALSE, 2);
 
     remmina_public_create_group (GTK_TABLE (table), _("Profile"), 0, 4, 3);
 
@@ -1295,9 +1297,10 @@ remmina_file_editor_new_from_file (RemminaFile *remminafile)
     gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
     gtk_table_attach (GTK_TABLE (table), widget, 1, 2, 1, 2, GTK_FILL, 0, 0, 0);
 
-    widget = gtk_entry_new_with_max_length (100);
+    widget = gtk_entry_new ();
     gtk_widget_show (widget);
     gtk_table_attach_defaults (GTK_TABLE (table), widget, 2, 3, 1, 2);
+    gtk_entry_set_max_length (GTK_ENTRY (widget), 100);
     priv->name_entry = widget;
 
     if (remmina_file_get_filename (remminafile) == NULL)
@@ -1344,7 +1347,7 @@ remmina_file_editor_new_from_file (RemminaFile *remminafile)
     /* Create the Preference frame */
     widget = gtk_event_box_new ();
     gtk_widget_show (widget);
-    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (gfe)->vbox), widget, TRUE, TRUE, 2);
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (gfe))), widget, TRUE, TRUE, 2);
     priv->config_box = widget;
 
     priv->config_container = NULL;

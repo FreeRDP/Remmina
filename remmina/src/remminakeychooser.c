@@ -80,7 +80,7 @@ remmina_key_chooser_on_clicked (RemminaKeyChooser *kc, gpointer data)
     gtk_widget_add_events (eventbox, GDK_KEY_PRESS_MASK);
     g_signal_connect (G_OBJECT (eventbox), "key-press-event",
         G_CALLBACK (remmina_key_chooser_dialog_on_key_press), kc);
-    GTK_WIDGET_SET_FLAGS (eventbox, GTK_CAN_FOCUS);
+    gtk_widget_set_can_focus (eventbox, TRUE);
 
     widget = gtk_label_new (_("Please press the new key..."));
     gtk_misc_set_alignment (GTK_MISC (widget), 0.5, 0.5);

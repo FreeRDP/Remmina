@@ -56,7 +56,7 @@ remmina_scrolled_viewport_motion_timeout (gpointer data)
         gint step = MAX (10, MIN (remmina_pref.auto_scroll_step, w / 5));
         adj = gtk_viewport_get_hadjustment (GTK_VIEWPORT (child));
         value = gtk_adjustment_get_value (GTK_ADJUSTMENT (adj)) + (gdouble) (mx * step);
-        value = MAX (0, MIN (value, adj->upper - (gdouble) w + 2.0));
+        value = MAX (0, MIN (value, gtk_adjustment_get_upper (GTK_ADJUSTMENT (adj)) - (gdouble) w + 2.0));
         gtk_adjustment_set_value (GTK_ADJUSTMENT (adj), value);
     }
     if (my != 0)
@@ -64,7 +64,7 @@ remmina_scrolled_viewport_motion_timeout (gpointer data)
         gint step = MAX (10, MIN (remmina_pref.auto_scroll_step, h / 5));
         adj = gtk_viewport_get_vadjustment (GTK_VIEWPORT (child));
         value = gtk_adjustment_get_value (GTK_ADJUSTMENT (adj)) + (gdouble) (my * step);
-        value = MAX (0, MIN (value, adj->upper - (gdouble) h + 2.0));
+        value = MAX (0, MIN (value, gtk_adjustment_get_upper (GTK_ADJUSTMENT (adj)) - (gdouble) h + 2.0));
         gtk_adjustment_set_value (GTK_ADJUSTMENT (adj), value);
     }
     return TRUE;
@@ -93,19 +93,8 @@ remmina_scrolled_viewport_destroy (GtkWidget *widget, gpointer data)
 }
 
 static void
-remmina_scrolled_viewport_size_request (GtkWidget *widget, GtkRequisition *requisition)
-{
-    requisition->width = 1;
-    requisition->height = 1;
-}
-
-static void
 remmina_scrolled_viewport_class_init (RemminaScrolledViewportClass *klass)
 {
-    GtkWidgetClass *widget_class;
-
-    widget_class = (GtkWidgetClass*) klass;
-    widget_class->size_request = remmina_scrolled_viewport_size_request;
 }
 
 static void
@@ -134,6 +123,7 @@ remmina_scrolled_viewport_new (void)
     gsv->viewport_motion = FALSE;
     gsv->viewport_motion_handler = 0;
 
+    gtk_widget_set_size_request (GTK_WIDGET (gsv), 1, 1);
     gtk_widget_add_events (GTK_WIDGET (gsv), GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK);
     g_signal_connect (G_OBJECT (gsv), "destroy", 
         G_CALLBACK (remmina_scrolled_viewport_destroy), NULL);
