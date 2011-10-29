@@ -83,7 +83,7 @@ remmina_init_dialog_init (RemminaInitDialog *dialog)
     hbox = gtk_hbox_new (FALSE, 4);
     gtk_widget_show (hbox);
     gtk_container_set_border_width (GTK_CONTAINER (hbox), 15);
-    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), hbox, TRUE, TRUE, 0);
 
     /* Icon */
     widget = gtk_image_new_from_stock (GTK_STOCK_DIALOG_INFO, GTK_ICON_SIZE_DIALOG);
@@ -199,9 +199,10 @@ remmina_init_dialog_authpwd (RemminaInitDialog *dialog,
     gtk_widget_show (widget);
     gtk_table_attach (GTK_TABLE (table), widget, 0, 1, 0, 1, GTK_FILL, 0, 0, 0);
 
-    password_entry = gtk_entry_new_with_max_length (100);
+    password_entry = gtk_entry_new ();
     gtk_widget_show (password_entry);
     gtk_table_attach_defaults (GTK_TABLE (table), password_entry, 1, 2, 0, 1);
+    gtk_entry_set_max_length (GTK_ENTRY (password_entry), 100);
     gtk_entry_set_visibility (GTK_ENTRY (password_entry), FALSE);
     gtk_entry_set_activates_default (GTK_ENTRY (password_entry), TRUE);
 
@@ -272,9 +273,10 @@ remmina_init_dialog_authuserpwd (RemminaInitDialog *dialog, gboolean want_domain
     gtk_widget_show (widget);
     gtk_table_attach (GTK_TABLE (table), widget, 0, 1, 0, 1, GTK_FILL, 0, 0, 0);
 
-    username_entry = gtk_entry_new_with_max_length (100);
+    username_entry = gtk_entry_new ();
     gtk_widget_show (username_entry);
     gtk_table_attach_defaults (GTK_TABLE (table), username_entry, 1, 2, 0, 1);
+    gtk_entry_set_max_length (GTK_ENTRY (username_entry), 100);
     if (default_username && default_username[0] != '\0')
     {
         gtk_entry_set_text (GTK_ENTRY (username_entry), default_username);
@@ -285,9 +287,10 @@ remmina_init_dialog_authuserpwd (RemminaInitDialog *dialog, gboolean want_domain
     gtk_widget_show (widget);
     gtk_table_attach (GTK_TABLE (table), widget, 0, 1, 1, 2, GTK_FILL, 0, 0, 0);
 
-    password_entry = gtk_entry_new_with_max_length (100);
+    password_entry = gtk_entry_new ();
     gtk_widget_show (password_entry);
     gtk_table_attach_defaults (GTK_TABLE (table), password_entry, 1, 2, 1, 2);
+    gtk_entry_set_max_length (GTK_ENTRY (password_entry), 100);
     gtk_entry_set_visibility (GTK_ENTRY (password_entry), FALSE);
     gtk_entry_set_activates_default (GTK_ENTRY (password_entry), TRUE);
 
@@ -310,9 +313,10 @@ remmina_init_dialog_authuserpwd (RemminaInitDialog *dialog, gboolean want_domain
         gtk_widget_show (widget);
         gtk_table_attach (GTK_TABLE (table), widget, 0, 1, 3, 4, GTK_FILL, 0, 0, 0);
 
-        domain_entry = gtk_entry_new_with_max_length (100);
+        domain_entry = gtk_entry_new ();
         gtk_widget_show (domain_entry);
         gtk_table_attach_defaults (GTK_TABLE (table), domain_entry, 1, 2, 3, 4);
+        gtk_entry_set_max_length (GTK_ENTRY (domain_entry), 100);
         if (default_domain && default_domain[0] != '\0')
         {
             gtk_entry_set_text (GTK_ENTRY (domain_entry), default_domain);

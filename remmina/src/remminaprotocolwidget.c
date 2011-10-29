@@ -166,7 +166,7 @@ remmina_protocol_widget_grab_focus (RemminaProtocolWidget *gp)
     child = gtk_bin_get_child (GTK_BIN (gp));
     if (child)
     {
-        GTK_WIDGET_SET_FLAGS (child, GTK_CAN_FOCUS);
+        gtk_widget_set_can_focus (child, TRUE);
         gtk_widget_grab_focus (child);
     }
 }

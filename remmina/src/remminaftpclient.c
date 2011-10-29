@@ -59,13 +59,13 @@ G_DEFINE_TYPE (RemminaCellRendererPixbuf, remmina_cell_renderer_pixbuf, GTK_TYPE
 
 static guint remmina_cell_renderer_pixbuf_signals[1] = { 0 };
 
-gboolean
+static gboolean
 remmina_cell_renderer_pixbuf_activate (GtkCellRenderer *renderer,
     GdkEvent             *event,
     GtkWidget            *widget,
     const gchar          *path,
-    GdkRectangle         *background_area,
-    GdkRectangle         *cell_area,
+    const GdkRectangle   *background_area,
+    const GdkRectangle   *cell_area,
     GtkCellRendererState  flags)
 {
     g_signal_emit (G_OBJECT (renderer), remmina_cell_renderer_pixbuf_signals[0], 0, path);
@@ -109,16 +109,16 @@ remmina_cell_renderer_pixbuf_new (void)
 G_DEFINE_TYPE (RemminaFTPClient, remmina_ftp_client, GTK_TYPE_VBOX)
 
 #define BUSY_CURSOR \
-    if (GDK_IS_WINDOW (GTK_WIDGET (client)->window)) \
+    if (GDK_IS_WINDOW (gtk_widget_get_window (GTK_WIDGET (client)))) \
     { \
-        gdk_window_set_cursor (GTK_WIDGET (client)->window, gdk_cursor_new (GDK_WATCH));\
+        gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (client)), gdk_cursor_new (GDK_WATCH));\
         gdk_flush (); \
     }
 
 #define NORMAL_CURSOR \
-    if (GDK_IS_WINDOW (GTK_WIDGET (client)->window)) \
+    if (GDK_IS_WINDOW (gtk_widget_get_window (GTK_WIDGET (client)))) \
     { \
-        gdk_window_set_cursor (GTK_WIDGET (client)->window, NULL); \
+        gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (client)), NULL); \
     }
 
 struct _RemminaFTPClientPriv
@@ -963,9 +963,9 @@ remmina_ftp_client_init (RemminaFTPClient *client)
     gtk_paned_pack1 (GTK_PANED (vpaned), vbox, TRUE, FALSE);
 
     /* Remote Directory */
-    widget = gtk_combo_box_entry_new_text ();
+    widget = gtk_combo_box_text_new_with_entry ();
     gtk_widget_show (widget);
-    gtk_combo_box_append_text (GTK_COMBO_BOX (widget), "/");
+    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (widget), "/");
     gtk_box_pack_start (GTK_BOX (vbox), widget, FALSE, TRUE, 0);
 
     priv->directory_combo = widget;
@@ -1157,14 +1157,16 @@ void
 remmina_ftp_client_load_state (RemminaFTPClient *client, RemminaFile *remminafile)
 {
     gint pos;
+    GtkAllocation a;
 
     pos = remmina_file_get_int (remminafile, "ftp_vpanedpos", 0);
     if (pos)
     {
-        if (client->priv->vpaned->allocation.height > 0 &&
-            pos > client->priv->vpaned->allocation.height - 60)
+        gtk_widget_get_allocation (client->priv->vpaned, &a);
+        if (a.height > 0 &&
+            pos > a.height - 60)
         {
-            pos = client->priv->vpaned->allocation.height - 60;
+            pos = a.height - 60;
         }
         gtk_paned_set_position (GTK_PANED (client->priv->vpaned), pos);
     }
@@ -1230,7 +1232,7 @@ remmina_ftp_client_set_dir (RemminaFTPClient *client, const gchar *dir)
         g_free (t);
     }
 
-    gtk_combo_box_prepend_text (GTK_COMBO_BOX (priv->directory_combo), dir);
+    gtk_combo_box_text_prepend_text (GTK_COMBO_BOX_TEXT (priv->directory_combo), dir);
     gtk_combo_box_set_active (GTK_COMBO_BOX (priv->directory_combo), 0);
 
     g_free (priv->current_directory);
