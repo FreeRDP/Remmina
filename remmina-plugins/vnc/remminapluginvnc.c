@@ -78,14 +78,18 @@ typedef struct _RemminaPluginVncData
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
-#define dot_cursor_width 5
-#define dot_cursor_height 5
-#define dot_cursor_x_hot 2
-#define dot_cursor_y_hot 2
-static const gchar dot_cursor_bits[] = {
-    0x00, 0x0e, 0x0e, 0x0e, 0x00 };
-static const gchar dot_cursor_mask_bits[] = {
-    0x0e, 0x1f, 0x1f, 0x1f, 0x0e };
+static int dot_cursor_x_hot = 2;
+static int dot_cursor_y_hot = 2;
+static const gchar * dot_cursor_xpm[] = {
+"5 5 3 1",
+" 	c None",
+".	c #000000",
+"+	c #FFFFFF",
+" ... ",
+".+++.",
+".+ +.",
+".+++.",
+" ... "};
 
 #ifdef HAVE_PTHREAD
 #define LOCK_BUFFER(t)      if(t){CANCEL_DEFER}pthread_mutex_lock(&gpdata->buffer_mutex);
@@ -243,14 +247,16 @@ remmina_plugin_vnc_update_scale_buffer (RemminaProtocolWidget *gp, gboolean in_t
     gboolean scale;
     gint x, y, w, h;
     GdkPixbuf *pixbuf;
+    GtkAllocation a;
 
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
     if (gpdata->running)
     {
-        width = GTK_WIDGET (gp)->allocation.width;
-        height = GTK_WIDGET (gp)->allocation.height;
+        gtk_widget_get_allocation (GTK_WIDGET (gp), &a);
+        width = a.width;
+        height = a.height;
         scale = remmina_plugin_service->protocol_plugin_get_scale (gp);
         if (scale)
         {
@@ -943,7 +949,7 @@ remmina_plugin_vnc_rfb_cursor_shape (rfbClient *cl, int xhot, int yhot, int widt
     GdkPixbuf *pixbuf;
 
     gp = (RemminaProtocolWidget*) (rfbClientGetClientData (cl, NULL));
-    if (!GTK_WIDGET (gp)->window) return;
+    if (!gtk_widget_get_window (GTK_WIDGET (gp))) return;
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
 
     if (width && height)
@@ -970,7 +976,7 @@ remmina_plugin_vnc_rfb_bell (rfbClient *cl)
     GdkWindow *window;
     
     gp = (RemminaProtocolWidget*) (rfbClientGetClientData (cl, NULL));
-    window = GTK_WIDGET (gp)->window;
+    window = gtk_widget_get_window (GTK_WIDGET (gp));
 
     if (window) gdk_window_beep (window);
 }
@@ -1054,10 +1060,8 @@ static void
 remmina_plugin_vnc_rfb_chat (rfbClient* cl, int value, char *text)
 {
     RemminaProtocolWidget *gp;
-    RemminaPluginVncData *gpdata;
 
     gp = (RemminaProtocolWidget*) (rfbClientGetClientData (cl, NULL));
-    gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     switch (value)
     {
     case rfbTextChatOpen:
@@ -1566,26 +1570,19 @@ remmina_plugin_vnc_on_cuttext (GtkClipboard *clipboard, GdkEvent *event, Remmina
 static void
 remmina_plugin_vnc_on_realize (RemminaProtocolWidget *gp, gpointer data)
 {
-    RemminaPluginVncData *gpdata;
     RemminaFile *remminafile;
     GdkCursor *cursor;
-    GdkPixmap *source, *mask;
-    GdkColor fg, bg;
+    GdkPixbuf *pixbuf;
 
-    gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
     remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
     if (remmina_plugin_service->file_get_int (remminafile, "showcursor", FALSE))
     {
         /* Hide local cursor (show a small dot instead) */
-        gdk_color_parse ("black", &fg);
-        gdk_color_parse ("white", &bg);
-        source = gdk_bitmap_create_from_data (NULL, dot_cursor_bits, dot_cursor_width, dot_cursor_height);
-        mask = gdk_bitmap_create_from_data (NULL, dot_cursor_mask_bits, dot_cursor_width, dot_cursor_height);
-        cursor = gdk_cursor_new_from_pixmap (source, mask, &fg, &bg, dot_cursor_x_hot, dot_cursor_y_hot);
-        gdk_pixmap_unref (source);
-        gdk_pixmap_unref (mask);
-        gdk_window_set_cursor (GTK_WIDGET (gp)->window, cursor);
+        pixbuf = gdk_pixbuf_new_from_xpm_data (dot_cursor_xpm);
+        cursor = gdk_cursor_new_from_pixbuf (gdk_display_get_default (), pixbuf, dot_cursor_x_hot, dot_cursor_y_hot);
+        gdk_pixbuf_unref (pixbuf);
+        gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (gp)), cursor);
         gdk_cursor_unref (cursor);
     }
 }
@@ -1831,7 +1828,7 @@ remmina_plugin_vnc_on_expose (GtkWidget *widget, GdkEventExpose *event, RemminaP
     x = event->area.x;
     y = event->area.y;
 
-    context = gdk_cairo_create (GDK_DRAWABLE (gpdata->drawing_area->window));
+    context = gdk_cairo_create (gtk_widget_get_window (gpdata->drawing_area));
     cairo_rectangle (context, x, y, event->area.width, event->area.height);
     gdk_cairo_set_source_pixbuf (context, buffer, 0, 0);
     cairo_fill (context);
@@ -1868,7 +1865,7 @@ remmina_plugin_vnc_init (RemminaProtocolWidget *gp)
 
     gtk_widget_add_events (gpdata->drawing_area, GDK_POINTER_MOTION_MASK | GDK_BUTTON_PRESS_MASK
         | GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK);
-    GTK_WIDGET_SET_FLAGS (gpdata->drawing_area, GTK_CAN_FOCUS);
+    gtk_widget_set_can_focus (gpdata->drawing_area, TRUE);
 
     g_signal_connect (G_OBJECT (gpdata->drawing_area), "expose_event",
         G_CALLBACK (remmina_plugin_vnc_on_expose), gp);
