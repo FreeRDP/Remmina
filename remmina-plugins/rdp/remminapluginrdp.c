@@ -24,70 +24,178 @@
 #include "remminapluginrdpfile.h"
 #include "remminapluginrdpset.h"
 
+#include <freerdp/utils/memory.h>
+
 #define REMMINA_PLUGIN_RDP_FEATURE_TOOL_REFRESH            1
 #define REMMINA_PLUGIN_RDP_FEATURE_SCALE                   2
 #define REMMINA_PLUGIN_RDP_FEATURE_UNFOCUS                 3
 
 RemminaPluginService *remmina_plugin_service = NULL;
 
+boolean
+remmina_plugin_rdp_pre_connect (freerdp* instance)
+{
+    RemminaPluginRdpData *gpdata;
+    RemminaProtocolWidget *gp;
+
+    gpdata = (RemminaPluginRdpData*) instance->context;
+    gp = gpdata->protocol_widget;
+
+    remmina_plugin_rdpui_pre_connect (gp);
+    remmina_plugin_rdpev_pre_connect (gp);
+    if (!freerdp_channels_pre_connect (gpdata->channels, instance))
+    {
+        return False;
+    }
+
+    return True;
+}
+
+boolean
+remmina_plugin_rdp_post_connect (freerdp* instance)
+{
+    RemminaPluginRdpData *gpdata;
+    RemminaProtocolWidget *gp;
+
+    gpdata = (RemminaPluginRdpData*) instance->context;
+    gp = gpdata->protocol_widget;
+
+    if (!freerdp_channels_post_connect (gpdata->channels, instance))
+    {
+        return False;
+    }
+    remmina_plugin_rdpui_post_connect (gp);
+    remmina_plugin_rdpev_post_connect (gp);
+    remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
+
+    return True;
+}
+
+boolean
+remmina_plugin_rdp_authenticate (freerdp* instance, char** username, char** password, char** domain)
+{
+    RemminaProtocolWidget *gp;
+    RemminaPluginRdpData *gpdata;
+    gchar *s;
+    gint ret;
+
+    gpdata = (RemminaPluginRdpData*) instance->context;
+    gp = gpdata->protocol_widget;
+
+    THREADS_ENTER
+    ret = remmina_plugin_service->protocol_plugin_init_authuserpwd (gp, TRUE);
+    THREADS_LEAVE
+
+    if (ret == GTK_RESPONSE_OK)
+    {
+        s = remmina_plugin_service->protocol_plugin_init_get_username (gp);
+        if (s)
+        {
+            gpdata->settings->username = xstrdup (s);
+            g_free (s);
+        }
+        s = remmina_plugin_service->protocol_plugin_init_get_password (gp);
+        if (s)
+        {
+            gpdata->settings->password = xstrdup (s);
+            g_free (s);
+        }
+        s = remmina_plugin_service->protocol_plugin_init_get_domain (gp);
+        if (s)
+        {
+            gpdata->settings->domain = xstrdup (s);
+            g_free (s);
+        }
+        return True;
+    }
+    else
+    {
+        gpdata->user_cancelled = TRUE;
+        return False;
+    }
+
+    return True;
+}
+
+boolean
+remmina_plugin_rdp_verify_certificate(freerdp* instance, char* subject, char* issuer, char* fingerprint)
+{
+    /* TODO: popup dialog, ask for confirmation and store known_hosts file */
+    printf("certificate details:\n");
+    printf("  Subject:\n    %s\n", subject);
+    printf("  Issued by:\n    %s\n", issuer);
+    printf("  Fingerprint:\n    %s\n",  fingerprint);
+
+    return True;
+}
+
+int
+remmina_plugin_rdp_receive_channel_data (freerdp* instance, int channelId, uint8* data, int size, int flags, int total_size)
+{
+    return freerdp_channels_data (instance, channelId, data, size, flags, total_size);
+}
+
 static void
 remmina_plugin_rdp_main_loop (RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
-    void *read_fds[32];
-    void *write_fds[32];
-    int read_count;
-    int write_count;
-    int index;
-    int sck;
-    int max_sck;
-    fd_set rfds;
-    fd_set wfds;
+    void *rfds[32];
+    void *wfds[32];
+    int rcount;
+    int wcount;
+    int i;
+    int fds;
+    int max_fds;
+    fd_set rfds_set;
+    fd_set wfds_set;
+
+    memset (rfds, 0, sizeof(rfds));
+    memset (wfds, 0, sizeof(wfds));
 
     gpdata = GET_DATA (gp);
+
     while (1)
     {
-        read_count = 0;
-        write_count = 0;
-        /* get libfreerdp fds */
-        if (gpdata->inst->rdp_get_fds (gpdata->inst, read_fds, &read_count, write_fds, &write_count) != 0)
+        rcount = 0;
+        wcount = 0;
+
+        if (!freerdp_get_fds (gpdata->instance, rfds, &rcount, wfds, &wcount))
         {
-            gpdata->inst->ui_error (gpdata->inst, "inst->rdp_get_fds failed\n");
             break;
         }
-        /* get channel fds */
-        if (freerdp_chanman_get_fds (gpdata->chan_man, gpdata->inst, read_fds, &read_count, write_fds, &write_count) != 0)
+        if (!freerdp_channels_get_fds (gpdata->channels, gpdata->instance, rfds, &rcount, wfds, &wcount))
         {
-            gpdata->inst->ui_error (gpdata->inst, "freerdp_chanman_get_fds failed\n");
             break;
         }
-        remmina_plugin_rdpui_get_fds (gp, read_fds, &read_count);
-        max_sck = 0;
-        FD_ZERO (&rfds);
-        for (index = 0; index < read_count; index++)
+        remmina_plugin_rdpui_get_fds (gp, rfds, &rcount);
+
+        max_fds = 0;
+        FD_ZERO (&rfds_set);
+        for (i = 0; i < rcount; i++)
         {
-            sck = (int) (read_fds[index]);
-            if (sck > max_sck)
-                max_sck = sck;
-            FD_SET (sck, &rfds);
+            fds = (int) (uint64) (rfds[i]);
+            if (fds > max_fds)
+                max_fds = fds;
+            FD_SET (fds, &rfds_set);
         }
-        /* setup write fds */
-        FD_ZERO (&wfds);
-        for (index = 0; index < write_count; index++)
+
+        FD_ZERO (&wfds_set);
+        for (i = 0; i < wcount; i++)
         {
-            sck = (int) (write_fds[index]);
-            if (sck > max_sck)
-                max_sck = sck;
-            FD_SET (sck, &wfds);
+            fds = GPOINTER_TO_INT (wfds[i]);
+            if (fds > max_fds)
+                max_fds = fds;
+            FD_SET (fds, &wfds_set);
         }
+
         /* exit if nothing to do */
-        if (max_sck == 0)
+        if (max_fds == 0)
         {
-            gpdata->inst->ui_error (gpdata->inst, "max_sck is zero\n");
             break;
         }
+
         /* do the wait */
-        if (select (max_sck + 1, &rfds, &wfds, NULL, NULL) == -1)
+        if (select (max_fds + 1, &rfds_set, &wfds_set, NULL, NULL) == -1)
         {
             /* these are not really errors */
             if (!((errno == EAGAIN) ||
@@ -95,26 +203,23 @@ remmina_plugin_rdp_main_loop (RemminaProtocolWidget *gp)
                 (errno == EINPROGRESS) ||
                 (errno == EINTR))) /* signal occurred */
             {
-                gpdata->inst->ui_error (gpdata->inst, "select failed\n");
                 break;
             }
         }
+
         /* check the libfreerdp fds */
-        if (gpdata->inst->rdp_check_fds (gpdata->inst) != 0)
+        if (!freerdp_check_fds (gpdata->instance))
         {
-            gpdata->inst->ui_error (gpdata->inst, "inst->rdp_check_fds failed\n");
             break;
         }
         /* check channel fds */
-        if (freerdp_chanman_check_fds (gpdata->chan_man, gpdata->inst) != 0)
+        if (!freerdp_channels_check_fds (gpdata->channels, gpdata->instance))
         {
-            gpdata->inst->ui_error (gpdata->inst, "freerdp_chanman_check_fds failed\n");
             break;
         }
         /* check ui */
-        if (remmina_plugin_rdpui_check_fds (gp) != 0)
+        if (!remmina_plugin_rdpui_check_fds (gp))
         {
-            gpdata->inst->ui_error (gpdata->inst, "remmina_plugin_rdpui_check_fds failed\n");
             break;
         }
     }
@@ -126,6 +231,7 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     RemminaPluginRdpData *gpdata;
     RemminaFile *remminafile;
     gchar *host;
+    gint port;
     gchar *s;
     gchar *value;
     gint rdpdr_num;
@@ -141,12 +247,13 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     {
         return FALSE;
     }
-    remmina_plugin_service->get_server_port (s, 3389, &host, &gpdata->settings->tcp_port_rdp);
-    strncpy (gpdata->settings->server, host, sizeof (gpdata->settings->server) - 1);
+    remmina_plugin_service->get_server_port (s, 3389, &host, &port);
+    gpdata->settings->hostname = xstrdup (host);
     g_free (host);
     g_free (s);
+    gpdata->settings->port = port;
 
-    gpdata->settings->server_depth = remmina_plugin_service->file_get_int (remminafile, "colordepth", 8);
+    gpdata->settings->color_depth = remmina_plugin_service->file_get_int (remminafile, "colordepth", 8);
     gpdata->settings->width = remmina_plugin_service->file_get_int (remminafile, "resolution_width", 640);
     gpdata->settings->height = remmina_plugin_service->file_get_int (remminafile, "resolution_height", 480);
     remmina_plugin_service->protocol_plugin_set_width (gp, gpdata->settings->width);
@@ -154,14 +261,12 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
 
     if (remmina_plugin_service->file_get_string (remminafile, "username"))
     {
-        strncpy (gpdata->settings->username, remmina_plugin_service->file_get_string (remminafile, "username"),
-            sizeof (gpdata->settings->username) - 1);
+        gpdata->settings->username = xstrdup (remmina_plugin_service->file_get_string (remminafile, "username"));
     }
 
     if (remmina_plugin_service->file_get_string (remminafile, "domain"))
     {
-        strncpy (gpdata->settings->domain, remmina_plugin_service->file_get_string (remminafile, "domain"),
-            sizeof (gpdata->settings->domain) - 1);
+        gpdata->settings->domain = xstrdup (remmina_plugin_service->file_get_string (remminafile, "domain"));
     }
 
     THREADS_ENTER
@@ -169,31 +274,29 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     THREADS_LEAVE
     if (s)
     {
-        strncpy (gpdata->settings->password, s, sizeof (gpdata->settings->password) - 1);
-        gpdata->settings->autologin = 1;
+        gpdata->settings->password = xstrdup (s);
+        gpdata->settings->autologon = 1;
         g_free (s);
     }
 
     if (remmina_plugin_service->file_get_string (remminafile, "clientname"))
     {
-        strncpy (gpdata->settings->hostname, remmina_plugin_service->file_get_string (remminafile, "clientname"),
-            sizeof (gpdata->settings->hostname) - 1);
+        strncpy (gpdata->settings->client_hostname, remmina_plugin_service->file_get_string (remminafile, "clientname"),
+            sizeof (gpdata->settings->client_hostname) - 1);
     }
     else
     {
-        strncpy (gpdata->settings->hostname, g_get_host_name (), sizeof (gpdata->settings->hostname) - 1);
+        strncpy (gpdata->settings->client_hostname, g_get_host_name (), sizeof (gpdata->settings->client_hostname) - 1);
     }
 
     if (remmina_plugin_service->file_get_string (remminafile, "exec"))
     {
-        strncpy (gpdata->settings->shell, remmina_plugin_service->file_get_string (remminafile, "exec"),
-            sizeof (gpdata->settings->shell) - 1);
+        gpdata->settings->shell = xstrdup (remmina_plugin_service->file_get_string (remminafile, "exec"));
     }
 
     if (remmina_plugin_service->file_get_string (remminafile, "execpath"))
     {
-        strncpy (gpdata->settings->directory, remmina_plugin_service->file_get_string (remminafile, "execpath"),
-            sizeof (gpdata->settings->directory) - 1);
+        gpdata->settings->directory = xstrdup (remmina_plugin_service->file_get_string (remminafile, "execpath"));
     }
 
     s = g_strdup_printf ("rdp_quality_%i", remmina_plugin_service->file_get_int (remminafile, "quality", DEFAULT_QUALITY_0));
@@ -201,54 +304,54 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     g_free (s);
     if (value && value[0])
     {
-        gpdata->settings->performanceflags = strtoul (value, NULL, 16);
+        gpdata->settings->performance_flags = strtoul (value, NULL, 16);
     }
     else
     {
         switch (remmina_plugin_service->file_get_int (remminafile, "quality", DEFAULT_QUALITY_0))
         {
         case 9:
-            gpdata->settings->performanceflags = DEFAULT_QUALITY_9;
+            gpdata->settings->performance_flags = DEFAULT_QUALITY_9;
             break;
         case 2:
-            gpdata->settings->performanceflags = DEFAULT_QUALITY_2;
+            gpdata->settings->performance_flags = DEFAULT_QUALITY_2;
             break;
         case 1:
-            gpdata->settings->performanceflags = DEFAULT_QUALITY_1;
+            gpdata->settings->performance_flags = DEFAULT_QUALITY_1;
             break;
         case 0:
         default:
-            gpdata->settings->performanceflags = DEFAULT_QUALITY_0;
+            gpdata->settings->performance_flags = DEFAULT_QUALITY_0;
             break;
         }
     }
     g_free (value);
 
-    gpdata->settings->keyboard_layout = remmina_plugin_rdpset_get_keyboard_layout();
+    gpdata->settings->kbd_layout = remmina_plugin_rdpset_get_keyboard_layout();
 
     if (remmina_plugin_service->file_get_int (remminafile, "console", FALSE))
     {
-        gpdata->settings->console_session = 1;
+        gpdata->settings->console_session = True;
     }
 
     cs = remmina_plugin_service->file_get_string (remminafile, "security");
     if (g_strcmp0 (cs, "rdp") == 0)
     {
-        gpdata->settings->rdp_security = 1;
-        gpdata->settings->tls_security = 0;
-        gpdata->settings->nla_security = 0;
+        gpdata->settings->rdp_security = True;
+        gpdata->settings->tls_security = False;
+        gpdata->settings->nla_security = False;
     }
     else if (g_strcmp0 (cs, "tls") == 0)
     {
-        gpdata->settings->rdp_security = 0;
-        gpdata->settings->tls_security = 1;
-        gpdata->settings->nla_security = 0;
+        gpdata->settings->rdp_security = False;
+        gpdata->settings->tls_security = True;
+        gpdata->settings->nla_security = False;
     }
     else if (g_strcmp0 (cs, "nla") == 0)
     {
-        gpdata->settings->rdp_security = 0;
-        gpdata->settings->tls_security = 0;
-        gpdata->settings->nla_security = 1;
+        gpdata->settings->rdp_security = False;
+        gpdata->settings->tls_security = False;
+        gpdata->settings->nla_security = True;
     }
 
     drdynvc_num = 0;
@@ -267,34 +370,34 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
             s = strchr (gpdata->rdpsnd_options, ',');
             if (s) *s++ = '\0';
 
-            gpdata->rdpsnd_data[rdpsnd_num].size = sizeof(RD_PLUGIN_DATA);
+            gpdata->rdpsnd_data[rdpsnd_num].size = sizeof(RDP_PLUGIN_DATA);
             gpdata->rdpsnd_data[rdpsnd_num].data[0] = "rate";
             gpdata->rdpsnd_data[rdpsnd_num].data[1] = gpdata->rdpsnd_options;
             rdpsnd_num++;
 
             if (s)
             {
-                gpdata->rdpsnd_data[rdpsnd_num].size = sizeof(RD_PLUGIN_DATA);
+                gpdata->rdpsnd_data[rdpsnd_num].size = sizeof(RDP_PLUGIN_DATA);
                 gpdata->rdpsnd_data[rdpsnd_num].data[0] = "channel";
                 gpdata->rdpsnd_data[rdpsnd_num].data[1] = s;
                 rdpsnd_num++;
             }
         }
 
-        freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "rdpsnd", gpdata->rdpsnd_data);
+        freerdp_channels_load_plugin (gpdata->channels, gpdata->settings, "rdpsnd", gpdata->rdpsnd_data);
 
-        gpdata->drdynvc_data[drdynvc_num].size = sizeof(RD_PLUGIN_DATA);
+        gpdata->drdynvc_data[drdynvc_num].size = sizeof(RDP_PLUGIN_DATA);
         gpdata->drdynvc_data[drdynvc_num].data[0] = "audin";
         drdynvc_num++;
     }
     if (drdynvc_num)
     {
-        freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "drdynvc", gpdata->drdynvc_data);
+        freerdp_channels_load_plugin (gpdata->channels, gpdata->settings, "drdynvc", gpdata->drdynvc_data);
     }
 
     if (!remmina_plugin_service->file_get_int (remminafile, "disableclipboard", FALSE))
     {
-        freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "cliprdr", NULL);
+        freerdp_channels_load_plugin (gpdata->channels, gpdata->settings, "cliprdr", NULL);
     }
 
     rdpdr_num = 0;
@@ -303,7 +406,7 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     {
         s = strrchr (cs, '/');
         s = (s && s[1] ? s + 1 : "root");
-        gpdata->rdpdr_data[rdpdr_num].size = sizeof(RD_PLUGIN_DATA);
+        gpdata->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
         gpdata->rdpdr_data[rdpdr_num].data[0] = "disk";
         gpdata->rdpdr_data[rdpdr_num].data[1] = s;
         gpdata->rdpdr_data[rdpdr_num].data[2] = (gchar*) cs;
@@ -311,56 +414,25 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
     }
     if (remmina_plugin_service->file_get_int (remminafile, "shareprinter", FALSE))
     {
-        gpdata->rdpdr_data[rdpdr_num].size = sizeof(RD_PLUGIN_DATA);
+        gpdata->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
         gpdata->rdpdr_data[rdpdr_num].data[0] = "printer";
         rdpdr_num++;
     }
     if (rdpdr_num)
     {
-        freerdp_chanman_load_plugin (gpdata->chan_man, gpdata->settings, "rdpdr", gpdata->rdpdr_data);
+        freerdp_channels_load_plugin (gpdata->channels, gpdata->settings, "rdpdr", gpdata->rdpdr_data);
     }
 
-    gpdata->inst = freerdp_new (gpdata->settings);
-    if (gpdata->inst == NULL)
-    {
-        remmina_plugin_service->protocol_plugin_set_error (gp, "freerdp_new failed");
-        return FALSE;
-    }
-    if (gpdata->inst->version != FREERDP_INTERFACE_VERSION ||
-        gpdata->inst->size != sizeof (rdpInst))
-    {
-        remmina_plugin_service->protocol_plugin_set_error (gp,
-            "freerdp_new size, version / size do not "
-            "match expecting v %d s %d got v %d s %d\n",
-            FREERDP_INTERFACE_VERSION, sizeof (rdpInst),
-            gpdata->inst->version, gpdata->inst->size);
-        return FALSE;
-    }
-    SET_WIDGET (gpdata->inst, gp);
-    remmina_plugin_rdpui_pre_connect (gp);
-    remmina_plugin_rdpev_pre_connect (gp);
-    if (freerdp_chanman_pre_connect (gpdata->chan_man, gpdata->inst) != 0)
-    {
-        remmina_plugin_service->protocol_plugin_set_error (gp, "freerdp_chanman_pre_connect failed");
-        return FALSE;
-    }
-    if (gpdata->inst->rdp_connect (gpdata->inst) != 0)
+    if (!freerdp_connect(gpdata->instance))
     {
         if (!gpdata->user_cancelled)
         {
             remmina_plugin_service->protocol_plugin_set_error (gp, _("Unable to connect to RDP server %s"),
-                gpdata->settings->server);
+                gpdata->settings->hostname);
         }
         return FALSE;
     }
-    if (freerdp_chanman_post_connect (gpdata->chan_man, gpdata->inst) != 0)
-    {
-        remmina_plugin_service->protocol_plugin_set_error (gp, "freerdp_chanman_post_connect failed");
-        return FALSE;
-    }
-    remmina_plugin_rdpui_post_connect (gp);
-    remmina_plugin_rdpev_post_connect (gp);
-    remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
+
     remmina_plugin_rdp_main_loop (gp);
 
     return TRUE;
@@ -386,28 +458,25 @@ static void
 remmina_plugin_rdp_init (RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
+    freerdp* instance;
 
-    gpdata = g_new0 (RemminaPluginRdpData, 1);
-    memset (gpdata, 0, sizeof (RemminaPluginRdpData));
-    g_object_set_data_full (G_OBJECT (gp), "plugin-data", gpdata, g_free);
+    instance = freerdp_new ();
+    instance->PreConnect = remmina_plugin_rdp_pre_connect;
+    instance->PostConnect = remmina_plugin_rdp_post_connect;
+    instance->Authenticate = remmina_plugin_rdp_authenticate;
+    instance->VerifyCertificate = remmina_plugin_rdp_verify_certificate;
+    instance->ReceiveChannelData = remmina_plugin_rdp_receive_channel_data;
 
-    gpdata->settings = (rdpSet *) malloc (sizeof (rdpSet));
-    memset (gpdata->settings, 0, sizeof (rdpSet));
-    gpdata->chan_man = freerdp_chanman_new ();
+    instance->context_size = sizeof (RemminaPluginRdpData);
+    freerdp_context_new (instance);
+    gpdata = (RemminaPluginRdpData*) instance->context;
 
-    gpdata->settings->tcp_port_rdp = 3389;
-    gpdata->settings->encryption = 1;
-    gpdata->settings->bitmap_cache = 1;
-    gpdata->settings->bitmap_compression = 1;
-    gpdata->settings->desktop_save = 0;
-    gpdata->settings->performanceflags = 0;
-    gpdata->settings->off_screen_bitmaps = 1;
-    gpdata->settings->triblt = 0;
-    gpdata->settings->new_cursors = 1;
-    gpdata->settings->rdp_version = 5;
-    gpdata->settings->rdp_security = 1;
-    gpdata->settings->tls_security = 1;
-    gpdata->settings->nla_security = 1;
+    g_object_set_data_full (G_OBJECT (gp), "plugin-data", gpdata, xfree);
+
+    gpdata->protocol_widget = gp;
+    gpdata->instance = instance;
+    gpdata->settings = instance->settings;
+    gpdata->channels = freerdp_channels_new ();
 
     pthread_mutex_init (&gpdata->mutex, NULL);
 
@@ -446,25 +515,20 @@ remmina_plugin_rdp_close_connection (RemminaProtocolWidget *gp)
         if (gpdata->thread) pthread_join (gpdata->thread, NULL);
     }
 
-    if (gpdata->chan_man && gpdata->inst)
+    if (gpdata->channels && gpdata->instance)
     {
-        freerdp_chanman_close (gpdata->chan_man, gpdata->inst);
+        freerdp_channels_close (gpdata->channels, gpdata->instance);
     }
-    if (gpdata->inst)
+    if (gpdata->instance)
     {
-        gpdata->inst->rdp_disconnect (gpdata->inst);
-        freerdp_free (gpdata->inst);
-        gpdata->inst = NULL;
+        freerdp_disconnect (gpdata->instance);
+        freerdp_free (gpdata->instance);
+        gpdata->instance = NULL;
     }
-    if (gpdata->settings)
+    if (gpdata->channels)
     {
-        free (gpdata->settings);
-        gpdata->settings = NULL;
-    }
-    if (gpdata->chan_man)
-    {
-        freerdp_chanman_free (gpdata->chan_man);
-        gpdata->chan_man = NULL;
+        freerdp_channels_free (gpdata->channels);
+        gpdata->channels = NULL;
     }
     pthread_mutex_destroy (&gpdata->mutex);
 
@@ -652,8 +716,7 @@ remmina_plugin_entry (RemminaPluginService *service)
         return FALSE;
     }
 
-    freerdp_global_init ();
-    freerdp_chanman_init ();
+    freerdp_channels_global_init ();
     remmina_plugin_rdpset_init ();
 
     return TRUE;
