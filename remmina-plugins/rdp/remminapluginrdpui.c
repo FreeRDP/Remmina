@@ -45,6 +45,89 @@ remmina_plugin_rdpui_queue_ui (RemminaProtocolWidget *gp, RemminaPluginRdpUiObje
     UNLOCK_BUFFER (TRUE)
 }
 
+static void
+remmina_plugin_rdpui_palette (rdpUpdate* update, PALETTE_UPDATE* palette)
+{
+    g_print ("palette\n");
+}
+
+static void
+remmina_plugin_rdpui_set_bounds (rdpUpdate* update, BOUNDS* bounds)
+{
+    g_print ("set_bounds\n");
+}
+
+static void
+remmina_plugin_rdpui_dstblt (rdpUpdate* update, DSTBLT_ORDER* dstblt)
+{
+    g_print ("dstblt\n");
+}
+
+static void
+remmina_plugin_rdpui_patblt (rdpUpdate* update, PATBLT_ORDER* patblt)
+{
+    g_print ("patblt\n");
+}
+
+static void
+remmina_plugin_rdpui_scrblt (rdpUpdate* update, SCRBLT_ORDER* scrblt)
+{
+    g_print ("srcblt\n");
+}
+
+static void
+remmina_plugin_rdpui_opaque_rect (rdpUpdate* update, OPAQUE_RECT_ORDER* opaque_rect)
+{
+    g_print ("opaque_rect\n");
+}
+
+static void
+remmina_plugin_rdpui_multi_opaque_rect (rdpUpdate* update, MULTI_OPAQUE_RECT_ORDER* multi_opaque_rect)
+{
+    g_print ("multi_opaque_rect\n");
+}
+
+static void
+remmina_plugin_rdpui_line_to (rdpUpdate* update, LINE_TO_ORDER* line_to)
+{
+    g_print ("line_to\n");
+}
+
+static void remmina_plugin_rdpui_polyline (rdpUpdate* update, POLYLINE_ORDER* polyline)
+{
+    g_print ("polyline\n");
+}
+
+static void remmina_plugin_rdpui_memblt (rdpUpdate* update, MEMBLT_ORDER* memblt)
+{
+    g_print ("memblt\n");
+}
+
+static void remmina_plugin_rdpui_fast_index (rdpUpdate* update, FAST_INDEX_ORDER* fast_index)
+{
+    g_print ("fast_index\n");
+}
+
+static void remmina_plugin_rdpui_cache_color_table (rdpUpdate* update, CACHE_COLOR_TABLE_ORDER* cache_color_table_order)
+{
+    g_print ("cache_color_table\n");
+}
+
+static void remmina_plugin_rdpui_cache_glyph (rdpUpdate* update, CACHE_GLYPH_ORDER* cache_glyph_order)
+{
+    g_print ("cache_glyph\n");
+}
+
+static void remmina_plugin_rdpui_cache_glyph_v2 (rdpUpdate* update, CACHE_GLYPH_V2_ORDER* cache_glyph_v2_order)
+{
+    g_print ("cache_glyph_v2\n");
+}
+
+static void remmina_plugin_rdpui_surface_bits (rdpUpdate* update, SURFACE_BITS_COMMAND* surface_bits_command)
+{
+    g_print ("surface_bits\n");
+}
+
 /* Migrated from xfreerdp */
 static gboolean
 remmina_plugin_rdpui_get_key_state (KeyCode keycode, int state, XModifierKeymap *modmap)
@@ -99,10 +182,37 @@ void
 remmina_plugin_rdpui_pre_connect (RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
-    freerdp *instance;
+    rdpSettings *settings;
 
     gpdata = GET_DATA (gp);
-    instance = gpdata->instance;
+    settings = gpdata->settings;
+
+    settings->bitmap_cache = True;
+
+    settings->order_support[NEG_DSTBLT_INDEX] = True;
+    settings->order_support[NEG_PATBLT_INDEX] = True;
+    settings->order_support[NEG_SCRBLT_INDEX] = True;
+    settings->order_support[NEG_OPAQUE_RECT_INDEX] = True;
+    settings->order_support[NEG_DRAWNINEGRID_INDEX] = False;
+    settings->order_support[NEG_MULTIDSTBLT_INDEX] = False;
+    settings->order_support[NEG_MULTIPATBLT_INDEX] = False;
+    settings->order_support[NEG_MULTISCRBLT_INDEX] = False;
+    settings->order_support[NEG_MULTIOPAQUERECT_INDEX] = True;
+    settings->order_support[NEG_MULTI_DRAWNINEGRID_INDEX] = False;
+    settings->order_support[NEG_LINETO_INDEX] = True;
+    settings->order_support[NEG_POLYLINE_INDEX] = True;
+    settings->order_support[NEG_MEMBLT_INDEX] = True;
+    settings->order_support[NEG_MEM3BLT_INDEX] = False;
+    settings->order_support[NEG_MEMBLT_V2_INDEX] = True;
+    settings->order_support[NEG_MEM3BLT_V2_INDEX] = False;
+    settings->order_support[NEG_SAVEBITMAP_INDEX] = False;
+    settings->order_support[NEG_GLYPH_INDEX_INDEX] = True;
+    settings->order_support[NEG_FAST_INDEX_INDEX] = True;
+    settings->order_support[NEG_FAST_GLYPH_INDEX] = False;
+    settings->order_support[NEG_POLYGON_SC_INDEX] = False;
+    settings->order_support[NEG_POLYGON_CB_INDEX] = False;
+    settings->order_support[NEG_ELLIPSE_SC_INDEX] = False;
+    settings->order_support[NEG_ELLIPSE_CB_INDEX] = False;
 }
 
 void
@@ -110,8 +220,42 @@ remmina_plugin_rdpui_post_connect (RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
     RemminaPluginRdpUiObject *ui;
+    rdpUpdate *update;
 
     gpdata = GET_DATA (gp);
+    update = gpdata->instance->update;
+
+    update->Palette = remmina_plugin_rdpui_palette;
+    update->SetBounds = remmina_plugin_rdpui_set_bounds;
+    update->DstBlt = remmina_plugin_rdpui_dstblt;
+    update->PatBlt = remmina_plugin_rdpui_patblt;
+    update->ScrBlt = remmina_plugin_rdpui_scrblt;
+    update->OpaqueRect = remmina_plugin_rdpui_opaque_rect;
+    update->DrawNineGrid = NULL;
+    update->MultiDstBlt = NULL;
+    update->MultiPatBlt = NULL;
+    update->MultiScrBlt = NULL;
+    update->MultiOpaqueRect = remmina_plugin_rdpui_multi_opaque_rect;
+    update->MultiDrawNineGrid = NULL;
+    update->LineTo = remmina_plugin_rdpui_line_to;
+    update->Polyline = remmina_plugin_rdpui_polyline;
+    update->MemBlt = remmina_plugin_rdpui_memblt;
+    update->Mem3Blt = NULL;
+    update->SaveBitmap = NULL;
+    update->GlyphIndex = NULL;
+    update->FastIndex = remmina_plugin_rdpui_fast_index;
+    update->FastGlyph = NULL;
+    update->PolygonSC = NULL;
+    update->PolygonCB = NULL;
+    update->EllipseSC = NULL;
+    update->EllipseCB = NULL;
+
+    update->CacheColorTable = remmina_plugin_rdpui_cache_color_table;
+    update->CacheGlyph = remmina_plugin_rdpui_cache_glyph;
+    update->CacheGlyphV2 = remmina_plugin_rdpui_cache_glyph_v2;
+
+    update->SurfaceBits = remmina_plugin_rdpui_surface_bits;
+
     ui = g_new0 (RemminaPluginRdpUiObject, 1);
     ui->type = REMMINA_PLUGIN_RDP_UI_CONNECTED;
     remmina_plugin_rdpui_queue_ui (gp, ui);

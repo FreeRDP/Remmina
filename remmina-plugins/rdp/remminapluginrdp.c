@@ -32,7 +32,7 @@
 
 RemminaPluginService *remmina_plugin_service = NULL;
 
-boolean
+static boolean
 remmina_plugin_rdp_pre_connect (freerdp* instance)
 {
     RemminaPluginRdpData *gpdata;
@@ -43,15 +43,12 @@ remmina_plugin_rdp_pre_connect (freerdp* instance)
 
     remmina_plugin_rdpui_pre_connect (gp);
     remmina_plugin_rdpev_pre_connect (gp);
-    if (!freerdp_channels_pre_connect (gpdata->channels, instance))
-    {
-        return False;
-    }
+    freerdp_channels_pre_connect (gpdata->channels, instance);
 
     return True;
 }
 
-boolean
+static boolean
 remmina_plugin_rdp_post_connect (freerdp* instance)
 {
     RemminaPluginRdpData *gpdata;
@@ -60,10 +57,7 @@ remmina_plugin_rdp_post_connect (freerdp* instance)
     gpdata = (RemminaPluginRdpData*) instance->context;
     gp = gpdata->protocol_widget;
 
-    if (!freerdp_channels_post_connect (gpdata->channels, instance))
-    {
-        return False;
-    }
+    freerdp_channels_post_connect (gpdata->channels, instance);
     remmina_plugin_rdpui_post_connect (gp);
     remmina_plugin_rdpev_post_connect (gp);
     remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
@@ -71,7 +65,7 @@ remmina_plugin_rdp_post_connect (freerdp* instance)
     return True;
 }
 
-boolean
+static boolean
 remmina_plugin_rdp_authenticate (freerdp* instance, char** username, char** password, char** domain)
 {
     RemminaProtocolWidget *gp;
@@ -117,7 +111,7 @@ remmina_plugin_rdp_authenticate (freerdp* instance, char** username, char** pass
     return True;
 }
 
-boolean
+static boolean
 remmina_plugin_rdp_verify_certificate(freerdp* instance, char* subject, char* issuer, char* fingerprint)
 {
     /* TODO: popup dialog, ask for confirmation and store known_hosts file */
@@ -129,7 +123,7 @@ remmina_plugin_rdp_verify_certificate(freerdp* instance, char* subject, char* is
     return True;
 }
 
-int
+static int
 remmina_plugin_rdp_receive_channel_data (freerdp* instance, int channelId, uint8* data, int size, int flags, int total_size)
 {
     return freerdp_channels_data (instance, channelId, data, size, flags, total_size);
