@@ -23,14 +23,12 @@
 
 #include "common/remminaplugincommon.h"
 #include <freerdp/freerdp.h>
-#include <freerdp/chanman.h>
+#include <freerdp/channels/channels.h>
 #include <gdk/gdkx.h>
 
 #define LOCK_BUFFER(t)      if(t){CANCEL_DEFER}pthread_mutex_lock(&gpdata->mutex);
 #define UNLOCK_BUFFER(t)    pthread_mutex_unlock(&gpdata->mutex);if(t){CANCEL_ASYNC}
 
-#define SET_WIDGET(_inst,_data) (_inst)->param1 = (_data)
-#define GET_WIDGET(_inst) ((RemminaProtocolWidget *) (_inst)->param1)
 #define GET_DATA(_gp) (RemminaPluginRdpData*) g_object_get_data (G_OBJECT (_gp), "plugin-data")
 
 #define DEFAULT_QUALITY_0 0x6f
@@ -42,18 +40,23 @@ extern RemminaPluginService *remmina_plugin_service;
 
 typedef struct _RemminaPluginRdpData
 {
+    rdpContext _p;
+
+    RemminaProtocolWidget *protocol_widget;
+
     /* main */
-    rdpSet *settings;
-    rdpInst *inst;
-    rdpChanMan *chan_man;
+    rdpSettings *settings;
+    freerdp* instance;
+    rdpChannels *channels;
+
     pthread_t thread;
     pthread_mutex_t mutex;
     gboolean scale;
     gboolean user_cancelled;
 
-    RD_PLUGIN_DATA rdpdr_data[5];
-    RD_PLUGIN_DATA drdynvc_data[5];
-    RD_PLUGIN_DATA rdpsnd_data[5];
+    RDP_PLUGIN_DATA rdpdr_data[5];
+    RDP_PLUGIN_DATA drdynvc_data[5];
+    RDP_PLUGIN_DATA rdpsnd_data[5];
     gchar rdpsnd_options[20];
 
     GtkWidget *drawing_area;
@@ -70,7 +73,7 @@ typedef struct _RemminaPluginRdpData
     Visual *visual;
     Drawable drw_surface;
     Pixmap rgb_surface;
-    GdkPixmap *rgb_pixmap;
+    cairo_surface_t *rgb_cairo_surface;
     GC gc;
     GC gc_default;
     Pixmap bitmap_mono;
@@ -104,8 +107,8 @@ typedef struct _RemminaPluginRdpEvent
     {
         struct
         {
-            RD_BOOL up;
-            RD_BOOL extended;
+            boolean up;
+            boolean extended;
             uint8 key_code;
         } key_event;
         struct
@@ -120,49 +123,11 @@ typedef struct _RemminaPluginRdpEvent
 typedef enum
 {
     REMMINA_PLUGIN_RDP_UI_CONNECTED = 0,
-    REMMINA_PLUGIN_RDP_UI_CREATE_GLYPH,
-    REMMINA_PLUGIN_RDP_UI_DESTROY_GLYPH,
-    REMMINA_PLUGIN_RDP_UI_CREATE_BITMAP,
-    REMMINA_PLUGIN_RDP_UI_PAINT_BITMAP,
-    REMMINA_PLUGIN_RDP_UI_DESTROY_BITMAP,
-    REMMINA_PLUGIN_RDP_UI_LINE,
-    REMMINA_PLUGIN_RDP_UI_RECT,
-    REMMINA_PLUGIN_RDP_UI_POLYLINE,
-    REMMINA_PLUGIN_RDP_UI_START_DRAW_GLYPHS,
-    REMMINA_PLUGIN_RDP_UI_DRAW_GLYPH,
-    REMMINA_PLUGIN_RDP_UI_END_DRAW_GLYPHS,
-    REMMINA_PLUGIN_RDP_UI_DESTBLT,
-    REMMINA_PLUGIN_RDP_UI_PATBLT_GLYPH,
-    REMMINA_PLUGIN_RDP_UI_PATBLT_BITMAP,
-    REMMINA_PLUGIN_RDP_UI_SCREENBLT,
-    REMMINA_PLUGIN_RDP_UI_MEMBLT,
-    REMMINA_PLUGIN_RDP_UI_SET_CLIP,
-    REMMINA_PLUGIN_RDP_UI_RESET_CLIP,
-    REMMINA_PLUGIN_RDP_UI_SET_CURSOR,
-    REMMINA_PLUGIN_RDP_UI_SET_DEFAULT_CURSOR,
-    REMMINA_PLUGIN_RDP_UI_CREATE_SURFACE,
-    REMMINA_PLUGIN_RDP_UI_SET_SURFACE,
-    REMMINA_PLUGIN_RDP_UI_DESTROY_SURFACE
 } RemminaPluginRdpUiType;
 
 typedef struct _RemminaPluginRdpUiObject
 {
     RemminaPluginRdpUiType type;
-    guint object_id;
-    guint alt_object_id;
-    gint x;
-    gint y;
-    gint cx;
-    gint cy;
-    gint srcx;
-    gint srcy;
-    gint width;
-    gint height;
-    gint bgcolor;
-    gint fgcolor;
-    gint opcode;
-    guchar *data;
-    GdkPixbuf *pixbuf;
 } RemminaPluginRdpUiObject;
 
 #endif

@@ -20,7 +20,7 @@
 
 #include "remminapluginrdp.h"
 #include "remminapluginrdpset.h"
-#include <freerdp/kbd.h>
+#include <freerdp/kbd/kbd.h>
 
 static guint rdp_keyboard_layout = 0;
 static guint keyboard_layout = 0;
