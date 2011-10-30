@@ -19,6 +19,7 @@
  */
 
 #include "common/remminaplugincommon.h"
+#include <gtk/gtkx.h>
 #include <time.h>
 #include <libssh/libssh.h>
 #include <X11/Xlib.h>
@@ -86,10 +87,6 @@ remmina_plugin_nx_remove_window_id (Window window_id)
 static void
 remmina_plugin_nx_on_plug_added (GtkSocket *socket, RemminaProtocolWidget *gp)
 {
-    RemminaPluginNxData *gpdata;
-
-    gpdata = (RemminaPluginNxData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
-
     remmina_plugin_nx_service->protocol_plugin_emit_signal (gp, "connect");
 }
 
@@ -208,7 +205,9 @@ remmina_plugin_nx_wait_signal (RemminaPluginNxData *gpdata)
     FD_ZERO (&set);
     FD_SET (gpdata->event_pipe[0], &set);
     select (gpdata->event_pipe[0] + 1, &set, NULL, NULL, NULL);
-    (void) read (gpdata->event_pipe[0], &dummy, 1);
+    if (read (gpdata->event_pipe[0], &dummy, 1))
+    {
+    }
     return (gint) dummy;
 }
 

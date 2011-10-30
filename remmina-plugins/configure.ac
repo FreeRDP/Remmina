@@ -56,8 +56,7 @@ AC_SUBST(remmina_datadir)
 
 # Checks for libraries.
 PKG_CHECK_MODULES(REMMINA_PLUGINS, [
-    glib-2.0 >= 2.20.0
-    gtk+-2.0 >= 2.16.0
+    gtk+-3.0
     remmina >= 0.9.99
 ])
 AC_SUBST(REMMINA_PLUGINS_CFLAGS)

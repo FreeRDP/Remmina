@@ -73,7 +73,9 @@ remmina_nx_session_manager_send_signal (RemminaPluginNxData *gpdata, gint event_
 {
     guchar dummy = (guchar) event_type;
     /* Signal the NX thread to resume execution */
-    (void) write (gpdata->event_pipe[1], &dummy, 1);
+    if (write (gpdata->event_pipe[1], &dummy, 1))
+    {
+    }
 }
 
 static void
