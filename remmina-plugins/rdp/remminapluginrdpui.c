@@ -25,6 +25,8 @@
 #include "remminapluginrdp.h"
 #include "remminapluginrdpev.h"
 #include "remminapluginrdpui.h"
+#include <freerdp/constants.h>
+#include <freerdp/utils/memory.h>
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
 #include <gdk/gdkx.h>
@@ -125,7 +127,38 @@ static void remmina_plugin_rdpui_cache_glyph_v2 (rdpUpdate* update, CACHE_GLYPH_
 
 static void remmina_plugin_rdpui_surface_bits (rdpUpdate* update, SURFACE_BITS_COMMAND* surface_bits_command)
 {
-    g_print ("surface_bits\n");
+    uint8* bitmap;
+    RFX_MESSAGE* message;
+    RemminaPluginRdpUiObject *ui;
+    RemminaPluginRdpData *gpdata = (RemminaPluginRdpData*) update->context;
+
+    if (surface_bits_command->codecID == CODEC_ID_REMOTEFX && gpdata->rfx_context)
+    {
+        message = rfx_process_message (gpdata->rfx_context, surface_bits_command->bitmapData, surface_bits_command->bitmapDataLength);
+
+        ui = g_new0 (RemminaPluginRdpUiObject, 1);
+        ui->type = REMMINA_PLUGIN_RDP_UI_RFX;
+        ui->rfx.left = surface_bits_command->destLeft;
+        ui->rfx.top = surface_bits_command->destTop;
+        ui->rfx.message = message;
+        remmina_plugin_rdpui_queue_ui (gpdata->protocol_widget, ui);
+    }
+    else if (surface_bits_command->codecID == CODEC_ID_NONE)
+    {
+        bitmap = (uint8*) xzalloc(surface_bits_command->width * surface_bits_command->height * 4);
+
+        freerdp_image_flip(surface_bits_command->bitmapData, bitmap,
+                surface_bits_command->width, surface_bits_command->height, 32);
+
+        ui = g_new0 (RemminaPluginRdpUiObject, 1);
+        ui->type = REMMINA_PLUGIN_RDP_UI_NOCODEC;
+        ui->nocodec.bitmap = bitmap;
+        remmina_plugin_rdpui_queue_ui (gpdata->protocol_widget, ui);
+    }
+    else
+    {
+        printf("Unsupported codecID %d\n", surface_bits_command->codecID);
+    }
 }
 
 /* Migrated from xfreerdp */
@@ -188,6 +221,7 @@ remmina_plugin_rdpui_pre_connect (RemminaProtocolWidget *gp)
     settings = gpdata->settings;
 
     settings->bitmap_cache = True;
+    settings->offscreen_bitmap_cache = True;
 
     settings->order_support[NEG_DSTBLT_INDEX] = True;
     settings->order_support[NEG_PATBLT_INDEX] = True;
@@ -213,6 +247,16 @@ remmina_plugin_rdpui_pre_connect (RemminaProtocolWidget *gp)
     settings->order_support[NEG_POLYGON_CB_INDEX] = False;
     settings->order_support[NEG_ELLIPSE_SC_INDEX] = False;
     settings->order_support[NEG_ELLIPSE_CB_INDEX] = False;
+
+    if (settings->color_depth >= 24)
+    {
+        settings->rfx_codec = True;
+        settings->frame_acknowledge = False;
+        settings->large_pointer = True;
+
+        gpdata->rfx_context = rfx_context_new ();
+        rfx_context_set_cpu_opt (gpdata->rfx_context, CPU_SSE2);
+    }
 }
 
 void
@@ -267,6 +311,12 @@ remmina_plugin_rdpui_uninit (RemminaProtocolWidget *gp)
     RemminaPluginRdpData *gpdata;
 
     gpdata = GET_DATA (gp);
+
+    if (gpdata->rfx_context)
+    {
+        rfx_context_free (gpdata->rfx_context);
+        gpdata->rfx_context = NULL;
+    }
 }
 
 void
@@ -320,9 +370,22 @@ remmina_plugin_rdpui_check_fds (RemminaProtocolWidget *gp)
 }
 
 void
-remmina_plugin_rdpui_object_free (gpointer p)
+remmina_plugin_rdpui_object_free (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *obj)
 {
-    RemminaPluginRdpUiObject *obj = (RemminaPluginRdpUiObject *) p;
+    RemminaPluginRdpData *gpdata;
+
+    gpdata = GET_DATA (gp);
+    switch (obj->type)
+    {
+    case REMMINA_PLUGIN_RDP_UI_RFX:
+        rfx_message_free (gpdata->rfx_context, obj->rfx.message);
+        break;
+    case REMMINA_PLUGIN_RDP_UI_NOCODEC:
+        xfree (obj->nocodec.bitmap);
+        break;
+    default:
+        break;
+    }
     g_free (obj);
 }
 

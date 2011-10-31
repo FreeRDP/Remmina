@@ -24,6 +24,8 @@
 #include "common/remminaplugincommon.h"
 #include <freerdp/freerdp.h>
 #include <freerdp/channels/channels.h>
+#include <freerdp/codec/color.h>
+#include <freerdp/codec/rfx.h>
 #include <gdk/gdkx.h>
 
 #define LOCK_BUFFER(t)      if(t){CANCEL_DEFER}pthread_mutex_lock(&gpdata->mutex);
@@ -58,6 +60,8 @@ typedef struct _RemminaPluginRdpData
     RDP_PLUGIN_DATA drdynvc_data[5];
     RDP_PLUGIN_DATA rdpsnd_data[5];
     gchar rdpsnd_options[20];
+
+    RFX_CONTEXT *rfx_context;
 
     GtkWidget *drawing_area;
     gint scale_width;
@@ -123,11 +127,26 @@ typedef struct _RemminaPluginRdpEvent
 typedef enum
 {
     REMMINA_PLUGIN_RDP_UI_CONNECTED = 0,
+    REMMINA_PLUGIN_RDP_UI_RFX,
+    REMMINA_PLUGIN_RDP_UI_NOCODEC
 } RemminaPluginRdpUiType;
 
 typedef struct _RemminaPluginRdpUiObject
 {
     RemminaPluginRdpUiType type;
+    union
+    {
+        struct
+        {
+            gint left;
+            gint top;
+            RFX_MESSAGE* message;
+        } rfx;
+        struct
+        {
+            uint8* bitmap;
+        } nocodec;
+    };
 } RemminaPluginRdpUiObject;
 
 #endif
