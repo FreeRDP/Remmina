@@ -152,6 +152,10 @@ static void remmina_plugin_rdpui_surface_bits (rdpUpdate* update, SURFACE_BITS_C
 
         ui = g_new0 (RemminaPluginRdpUiObject, 1);
         ui->type = REMMINA_PLUGIN_RDP_UI_NOCODEC;
+        ui->nocodec.left = surface_bits_command->destLeft;
+        ui->nocodec.top = surface_bits_command->destTop;
+        ui->nocodec.width = surface_bits_command->width;
+        ui->nocodec.height = surface_bits_command->height;
         ui->nocodec.bitmap = bitmap;
         remmina_plugin_rdpui_queue_ui (gpdata->protocol_widget, ui);
     }

@@ -774,8 +774,25 @@ static void
 remmina_plugin_rdpev_nocodec (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
     RemminaPluginRdpData *gpdata;
+    XImage *image;
 
     gpdata = GET_DATA (gp);
+
+    XSetFunction(gpdata->display, gpdata->gc, GXcopy);
+    XSetFillStyle(gpdata->display, gpdata->gc, FillSolid);
+
+    image = XCreateImage(gpdata->display, gpdata->visual, 24, ZPixmap, 0,
+        (char*) ui->nocodec.bitmap, ui->nocodec.width, ui->nocodec.height, 32, 0);
+
+    XPutImage(gpdata->display, gpdata->rgb_surface, gpdata->gc, image, 0, 0,
+        ui->nocodec.left, ui->nocodec.top,
+        ui->nocodec.width, ui->nocodec.height);
+
+    remmina_plugin_rdpev_update_rect (gp,
+        ui->nocodec.left, ui->nocodec.top,
+        ui->nocodec.width, ui->nocodec.height);
+
+    XSetClipMask(gpdata->display, gpdata->gc, None);
 }
 
 gboolean
