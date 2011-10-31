@@ -54,6 +54,7 @@ struct _RemminaProtocolWidgetClass
     void (* connect) (RemminaProtocolWidget *gp);
     void (* disconnect) (RemminaProtocolWidget *gp);
     void (* desktop_resize) (RemminaProtocolWidget *gp);
+    void (* update_align) (RemminaProtocolWidget *gp);
 };
 
 GType remmina_protocol_widget_get_type (void) G_GNUC_CONST;

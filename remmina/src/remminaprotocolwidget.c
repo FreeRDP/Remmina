@@ -62,6 +62,7 @@ enum {
     CONNECT_SIGNAL,
     DISCONNECT_SIGNAL,
     DESKTOP_RESIZE_SIGNAL,
+    UPDATE_ALIGN_SIGNAL,
     LAST_SIGNAL
 };
 
@@ -95,6 +96,13 @@ remmina_protocol_widget_class_init (RemminaProtocolWidgetClass *klass)
             G_TYPE_FROM_CLASS (klass),
             G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
             G_STRUCT_OFFSET (RemminaProtocolWidgetClass, desktop_resize),
+            NULL, NULL,
+            g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
+    remmina_protocol_widget_signals[UPDATE_ALIGN_SIGNAL] =
+        g_signal_new ("update-align",
+            G_TYPE_FROM_CLASS (klass),
+            G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+            G_STRUCT_OFFSET (RemminaProtocolWidgetClass, update_align),
             NULL, NULL,
             g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 }
