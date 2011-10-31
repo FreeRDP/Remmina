@@ -549,14 +549,16 @@ remmina_plugin_rdpev_update_scale (RemminaProtocolWidget *gp)
     vscale = remmina_plugin_service->file_get_int (remminafile, "vscale", 0);
     if (gpdata->scale)
     {
-        gtk_widget_set_size_request (GTK_WIDGET (gpdata->drawing_area),
+        gtk_widget_set_size_request (gpdata->drawing_area,
             (hscale > 0 ? width * hscale / 100 : -1),
             (vscale > 0 ? height * vscale / 100 : -1));
     }
     else
     {
-        gtk_widget_set_size_request (GTK_WIDGET (gpdata->drawing_area), width, height);
+        gtk_widget_set_size_request (gpdata->drawing_area, width, height);
     }
+    gtk_widget_queue_resize (GTK_WIDGET (gp));
+    gtk_container_check_resize (GTK_CONTAINER (gtk_widget_get_parent (GTK_WIDGET (gp))));
 }
 
 static uint8 remmina_plugin_rdpev_rop2_map[] =
