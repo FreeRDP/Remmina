@@ -2449,6 +2449,12 @@ remmina_connection_object_on_desktop_resize (RemminaProtocolWidget *gp, RemminaC
     }
 }
 
+static void
+remmina_connection_object_on_update_align (RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
+{
+    remmina_connection_holder_update_alignment (cnnobj->cnnhld);
+}
+
 gboolean
 remmina_connection_window_open_from_filename (const gchar *filename)
 {
@@ -2510,6 +2516,8 @@ remmina_connection_window_open_from_file_full (RemminaFile *remminafile,
         G_CALLBACK (remmina_connection_object_on_disconnect), cnnobj);
     g_signal_connect (G_OBJECT (cnnobj->proto), "desktop-resize",
         G_CALLBACK (remmina_connection_object_on_desktop_resize), cnnobj);
+    g_signal_connect (G_OBJECT (cnnobj->proto), "update-align",
+        G_CALLBACK (remmina_connection_object_on_update_align), cnnobj);
 
     /* Create the alignment to make the RemminaProtocolWidget centered */
     cnnobj->alignment = gtk_alignment_new (0.5, 0.5, 1.0, 1.0);

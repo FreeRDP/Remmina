@@ -557,8 +557,7 @@ remmina_plugin_rdpev_update_scale (RemminaProtocolWidget *gp)
     {
         gtk_widget_set_size_request (gpdata->drawing_area, width, height);
     }
-    gtk_widget_queue_resize (GTK_WIDGET (gp));
-    gtk_container_check_resize (GTK_CONTAINER (gtk_widget_get_parent (GTK_WIDGET (gp))));
+    remmina_plugin_service->protocol_plugin_emit_signal (gp, "update-align");
 }
 
 static uint8 remmina_plugin_rdpev_rop2_map[] =
