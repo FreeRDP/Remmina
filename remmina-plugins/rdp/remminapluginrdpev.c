@@ -183,30 +183,26 @@ remmina_plugin_rdpev_update_scale_factor (RemminaProtocolWidget *gp)
 }
 
 static gboolean
-remmina_plugin_rdpev_on_expose (GtkWidget *widget, GdkEventExpose *event, RemminaProtocolWidget *gp)
+remmina_plugin_rdpev_on_draw (GtkWidget *widget, cairo_t *context, RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
-    gint x, y;
     gboolean scale;
-    cairo_t *context;
 
     gpdata = GET_DATA (gp);
 
     if (!gpdata->rgb_cairo_surface) return FALSE;
 
     scale = remmina_plugin_service->protocol_plugin_get_scale (gp);
-    x = event->area.x;
-    y = event->area.y;
 
-    context = gdk_cairo_create (gtk_widget_get_window (gpdata->drawing_area));
-    cairo_rectangle (context, x, y, event->area.width, event->area.height);
+    cairo_rectangle (context, 0, 0, gtk_widget_get_allocated_width (widget),
+        gtk_widget_get_allocated_height (widget));
     if (scale)
     {
         cairo_scale (context, gpdata->scale_x, gpdata->scale_y);
     }
     cairo_set_source_surface (context, gpdata->rgb_cairo_surface, 0, 0);
     cairo_fill (context);
-    cairo_destroy (context);
+
     return TRUE;
 }
 
@@ -408,9 +404,9 @@ remmina_plugin_rdpev_init (RemminaProtocolWidget *gp)
     gpdata->use_client_keymap = (s && s[0] == '1' ? TRUE : FALSE);
     g_free (s);
 
-    g_signal_connect (G_OBJECT (gpdata->drawing_area), "expose_event",
-        G_CALLBACK (remmina_plugin_rdpev_on_expose), gp);
-    g_signal_connect (G_OBJECT (gpdata->drawing_area), "configure_event",
+    g_signal_connect (G_OBJECT (gpdata->drawing_area), "draw",
+        G_CALLBACK (remmina_plugin_rdpev_on_draw), gp);
+    g_signal_connect (G_OBJECT (gpdata->drawing_area), "configure-event",
         G_CALLBACK (remmina_plugin_rdpev_on_configure), gp);
     g_signal_connect (G_OBJECT (gpdata->drawing_area), "motion-notify-event",
         G_CALLBACK (remmina_plugin_rdpev_on_motion), gp);
@@ -427,7 +423,7 @@ remmina_plugin_rdpev_init (RemminaProtocolWidget *gp)
 
     gpdata->pressed_keys = g_array_new (FALSE, TRUE, sizeof (gint));
     gpdata->event_queue = g_async_queue_new_full (g_free);
-    gpdata->ui_queue = g_async_queue_new_full (remmina_plugin_rdpui_object_free);
+    gpdata->ui_queue = g_async_queue_new ();
     if (pipe (gpdata->event_pipe))
     {
         g_print ("Error creating pipes.\n");
@@ -476,6 +472,7 @@ void
 remmina_plugin_rdpev_uninit (RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpUiObject *ui;
 
     gpdata = GET_DATA (gp);
     if (gpdata->scale_handler)
@@ -487,7 +484,10 @@ remmina_plugin_rdpev_uninit (RemminaProtocolWidget *gp)
     {
         g_source_remove (gpdata->ui_handler);
         gpdata->ui_handler = 0;
-        remmina_plugin_rdpev_queue_ui (gp);
+    }
+    while ((ui = (RemminaPluginRdpUiObject *) g_async_queue_try_pop (gpdata->ui_queue)) != NULL)
+    {
+        remmina_plugin_rdpui_object_free (gp, ui);
     }
 
     if (gpdata->gc)
@@ -733,6 +733,49 @@ remmina_plugin_rdpev_connected (RemminaProtocolWidget *gp, RemminaPluginRdpUiObj
     remmina_plugin_rdpev_update_scale (gp);
 }
 
+static void
+remmina_plugin_rdpev_rfx (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    XImage *image;
+    gint i, tx, ty;
+    RFX_MESSAGE *message;
+    RemminaPluginRdpData *gpdata;
+
+    gpdata = GET_DATA (gp);
+    message = ui->rfx.message;
+
+    XSetFunction(gpdata->display, gpdata->gc, GXcopy);
+    XSetFillStyle(gpdata->display, gpdata->gc, FillSolid);
+
+    XSetClipRectangles(gpdata->display, gpdata->gc, ui->rfx.left, ui->rfx.top,
+        (XRectangle*) message->rects, message->num_rects, YXBanded);
+
+    /* Draw the tiles to primary surface, each is 64x64. */
+    for (i = 0; i < message->num_tiles; i++)
+    {
+        image = XCreateImage(gpdata->display, gpdata->visual, 24, ZPixmap, 0,
+            (char*) message->tiles[i]->data, 64, 64, 32, 0);
+
+        tx = message->tiles[i]->x + ui->rfx.left;
+        ty = message->tiles[i]->y + ui->rfx.top;
+
+        XPutImage(gpdata->display, gpdata->rgb_surface, gpdata->gc, image, 0, 0, tx, ty, 64, 64);
+        XFree(image);
+
+        remmina_plugin_rdpev_update_rect (gp, tx, ty, message->rects[i].width, message->rects[i].height);
+    }
+
+    XSetClipMask(gpdata->display, gpdata->gc, None);
+}
+
+static void
+remmina_plugin_rdpev_nocodec (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+{
+    RemminaPluginRdpData *gpdata;
+
+    gpdata = GET_DATA (gp);
+}
+
 gboolean
 remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
 {
@@ -749,10 +792,16 @@ remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
         case REMMINA_PLUGIN_RDP_UI_CONNECTED:
             remmina_plugin_rdpev_connected (gp, ui);
             break;
+        case REMMINA_PLUGIN_RDP_UI_RFX:
+            remmina_plugin_rdpev_rfx (gp, ui);
+            break;
+        case REMMINA_PLUGIN_RDP_UI_NOCODEC:
+            remmina_plugin_rdpev_nocodec (gp, ui);
+            break;
         default:
             break;
         }
-        remmina_plugin_rdpui_object_free (ui);
+        remmina_plugin_rdpui_object_free (gp, ui);
         return TRUE;
     }
     else

@@ -29,7 +29,7 @@ void remmina_plugin_rdpui_post_connect (RemminaProtocolWidget *gp);
 void remmina_plugin_rdpui_uninit (RemminaProtocolWidget *gp);
 void remmina_plugin_rdpui_get_fds (RemminaProtocolWidget *gp, void **rfds, int *rcount);
 boolean remmina_plugin_rdpui_check_fds (RemminaProtocolWidget *gp);
-void remmina_plugin_rdpui_object_free (gpointer p);
+void remmina_plugin_rdpui_object_free (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *obj);
 
 G_END_DECLS
 

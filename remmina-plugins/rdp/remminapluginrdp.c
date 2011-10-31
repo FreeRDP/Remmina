@@ -348,6 +348,10 @@ remmina_plugin_rdp_main (RemminaProtocolWidget *gp)
         gpdata->settings->nla_security = True;
     }
 
+    gpdata->settings->compression = True;
+    gpdata->settings->fastpath_input = True;
+    gpdata->settings->fastpath_output = True;
+
     drdynvc_num = 0;
     rdpsnd_num = 0;
     cs = remmina_plugin_service->file_get_string (remminafile, "sound");
