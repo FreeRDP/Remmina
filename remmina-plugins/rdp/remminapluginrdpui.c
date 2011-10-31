@@ -48,6 +48,29 @@ remmina_plugin_rdpui_queue_ui (RemminaProtocolWidget *gp, RemminaPluginRdpUiObje
 }
 
 static void
+remmina_plugin_rdpui_desktop_resize(rdpUpdate* update)
+{
+    RemminaPluginRdpData *gpdata;
+    RemminaProtocolWidget *gp;
+
+    gpdata = (RemminaPluginRdpData*) update->context;
+    gp = gpdata->protocol_widget;
+
+    LOCK_BUFFER (TRUE)
+
+    remmina_plugin_service->protocol_plugin_set_width (gp, gpdata->settings->width);
+    remmina_plugin_service->protocol_plugin_set_height (gp, gpdata->settings->height);
+
+    UNLOCK_BUFFER (TRUE)
+
+    THREADS_ENTER
+    remmina_plugin_rdpev_update_scale (gp);
+    THREADS_LEAVE
+
+    remmina_plugin_service->protocol_plugin_emit_signal (gp, "desktop-resize");
+}
+
+static void
 remmina_plugin_rdpui_palette (rdpUpdate* update, PALETTE_UPDATE* palette)
 {
     g_print ("palette\n");
@@ -273,6 +296,7 @@ remmina_plugin_rdpui_post_connect (RemminaProtocolWidget *gp)
     gpdata = GET_DATA (gp);
     update = gpdata->instance->update;
 
+    update->DesktopResize = remmina_plugin_rdpui_desktop_resize;
     update->Palette = remmina_plugin_rdpui_palette;
     update->SetBounds = remmina_plugin_rdpui_set_bounds;
     update->DstBlt = remmina_plugin_rdpui_dstblt;
