@@ -144,6 +144,10 @@ typedef struct _RemminaPluginRdpUiObject
         } rfx;
         struct
         {
+            gint left;
+            gint top;
+            gint width;
+            gint height;
             uint8* bitmap;
         } nocodec;
     };
