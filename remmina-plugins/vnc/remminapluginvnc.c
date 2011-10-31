@@ -350,6 +350,7 @@ remmina_plugin_vnc_update_scale (RemminaProtocolWidget *gp, gboolean scale)
     {
         gtk_widget_set_size_request (GTK_WIDGET (gpdata->drawing_area), width, height);
     }
+    remmina_plugin_service->protocol_plugin_emit_signal (gp, "update-align");
 }
 
 gboolean
@@ -1805,13 +1806,11 @@ remmina_plugin_vnc_call_feature (RemminaProtocolWidget *gp, const RemminaProtoco
 }
 
 static gboolean
-remmina_plugin_vnc_on_expose (GtkWidget *widget, GdkEventExpose *event, RemminaProtocolWidget *gp)
+remmina_plugin_vnc_on_draw (GtkWidget *widget, cairo_t *context, RemminaProtocolWidget *gp)
 {
     RemminaPluginVncData *gpdata;
     GdkPixbuf *buffer;
-    gint x, y;
     gboolean scale;
-    cairo_t *context;
 
     gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
 
@@ -1825,14 +1824,11 @@ remmina_plugin_vnc_on_expose (GtkWidget *widget, GdkEventExpose *event, RemminaP
         UNLOCK_BUFFER (FALSE)
         return FALSE;
     }
-    x = event->area.x;
-    y = event->area.y;
 
-    context = gdk_cairo_create (gtk_widget_get_window (gpdata->drawing_area));
-    cairo_rectangle (context, x, y, event->area.width, event->area.height);
+    cairo_rectangle (context, 0, 0, gtk_widget_get_allocated_width (widget),
+        gtk_widget_get_allocated_height (widget));
     gdk_cairo_set_source_pixbuf (context, buffer, 0, 0);
     cairo_fill (context);
-    cairo_destroy (context);
 
     UNLOCK_BUFFER (FALSE)
     return TRUE;
@@ -1867,8 +1863,8 @@ remmina_plugin_vnc_init (RemminaProtocolWidget *gp)
         | GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK);
     gtk_widget_set_can_focus (gpdata->drawing_area, TRUE);
 
-    g_signal_connect (G_OBJECT (gpdata->drawing_area), "expose_event",
-        G_CALLBACK (remmina_plugin_vnc_on_expose), gp);
+    g_signal_connect (G_OBJECT (gpdata->drawing_area), "draw",
+        G_CALLBACK (remmina_plugin_vnc_on_draw), gp);
     g_signal_connect (G_OBJECT (gpdata->drawing_area), "configure_event",
         G_CALLBACK (remmina_plugin_vnc_on_configure), gp);
 
