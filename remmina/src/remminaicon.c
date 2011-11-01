@@ -30,9 +30,17 @@
 #include "remminaconnectionwindow.h"
 #include "remminaicon.h"
 
+#ifdef HAVE_LIBAPPINDICATOR
+#include <libappindicator/app-indicator.h>
+#endif
+
 typedef struct _RemminaIcon
 {
+#ifdef HAVE_LIBAPPINDICATOR
+    AppIndicator *icon;
+#else
     GtkStatusIcon *icon;
+#endif
     RemminaAvahi *avahi;
     guint32 popup_time;
     gchar *autostart_file;
@@ -45,7 +53,11 @@ remmina_icon_destroy (void)
 {
     if (remmina_icon.icon)
     {
+#ifdef HAVE_LIBAPPINDICATOR
+        app_indicator_set_status (remmina_icon.icon, APP_INDICATOR_STATUS_PASSIVE);
+#else
         gtk_status_icon_set_visible (remmina_icon.icon, FALSE);
+#endif
         remmina_widget_pool_hold (FALSE);
     }
     if (remmina_icon.avahi)
@@ -97,12 +109,9 @@ remmina_icon_enable_avahi (GtkCheckMenuItem *checkmenuitem, gpointer data)
 }
 
 static void
-remmina_icon_on_popup_menu (GtkStatusIcon *icon, guint button, guint activate_time, gpointer user_data)
+remmina_icon_populate_additional_menu_item (GtkWidget *menu)
 {
-    GtkWidget *menu;
     GtkWidget *menuitem;
-
-    menu = gtk_menu_new ();
 
     menuitem = gtk_image_menu_item_new_with_label (_("Open Main Window"));
     gtk_widget_show (menuitem);
@@ -144,9 +153,6 @@ remmina_icon_on_popup_menu (GtkStatusIcon *icon, guint button, guint activate_ti
     gtk_widget_show (menuitem);
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
     g_signal_connect (G_OBJECT (menuitem), "activate", G_CALLBACK (remmina_icon_destroy), NULL);
-
-    gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
-        gtk_status_icon_position_menu, remmina_icon.icon, button, activate_time);
 }
 
 static void
@@ -192,15 +198,6 @@ remmina_icon_on_edit_item (RemminaAppletMenu *menu, RemminaAppletMenuItem *menui
 }
 
 static void
-remmina_icon_popdown_menu (GtkWidget *widget, gpointer data)
-{
-    if (gtk_get_current_event_time () - remmina_icon.popup_time <= 500)
-    {
-        remmina_exec_command (REMMINA_COMMAND_MAIN, NULL);
-    }
-}
-
-static void
 remmina_icon_on_activate_window (GtkMenuItem *menuitem, GtkWidget *widget)
 {
     if (GTK_IS_WINDOW (widget))
@@ -236,20 +233,15 @@ remmina_icon_foreach_window (GtkWidget *widget, gpointer data)
 }
 
 static void
-remmina_icon_on_activate (GtkStatusIcon *icon, gpointer user_data)
+remmina_icon_populate_extra_menu_item (GtkWidget *menu)
 {
-    GtkWidget *popup_menu;
     GtkWidget *menuitem;
     gboolean new_ontop;
-    gint button, event_time;
     GHashTableIter iter;
     gchar *tmp;
     gint n;
 
     new_ontop = remmina_pref.applet_new_ontop;
-
-    remmina_icon.popup_time = gtk_get_current_event_time ();
-    popup_menu = remmina_applet_menu_new (remmina_pref.applet_hide_count);
 
     /* Iterate all discovered services from Avahi */
     if (remmina_icon.avahi)
@@ -260,7 +252,7 @@ remmina_icon_on_activate (GtkStatusIcon *icon, gpointer user_data)
             menuitem = remmina_applet_menu_item_new (REMMINA_APPLET_MENU_ITEM_DISCOVERED, tmp);
             gtk_widget_show (menuitem);
             remmina_applet_menu_add_item (
-                REMMINA_APPLET_MENU (popup_menu),
+                REMMINA_APPLET_MENU (menu),
                 REMMINA_APPLET_MENU_ITEM (menuitem));
         }
     }
@@ -270,54 +262,121 @@ remmina_icon_on_activate (GtkStatusIcon *icon, gpointer user_data)
     gtk_widget_show (menuitem);
     if (new_ontop)
     {
-        gtk_menu_shell_prepend (GTK_MENU_SHELL (popup_menu), menuitem);
+        gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menuitem);
     }
     else
     {
-        gtk_menu_shell_append (GTK_MENU_SHELL (popup_menu), menuitem);
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
     }
 
     /* New Connection */
     menuitem = remmina_applet_menu_item_new (REMMINA_APPLET_MENU_ITEM_NEW);
     gtk_widget_show (menuitem);
     remmina_applet_menu_register_item (
-        REMMINA_APPLET_MENU (popup_menu),
+        REMMINA_APPLET_MENU (menu),
         REMMINA_APPLET_MENU_ITEM (menuitem));
     if (new_ontop)
     {
-        gtk_menu_shell_prepend (GTK_MENU_SHELL (popup_menu), menuitem);
+        gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menuitem);
     }
     else
     {
-        gtk_menu_shell_append (GTK_MENU_SHELL (popup_menu), menuitem);
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
     }
 
     /* Existing window */
     if (remmina_pref.minimize_to_tray)
     {
-        n = remmina_widget_pool_foreach (remmina_icon_foreach_window, popup_menu);
+        n = remmina_widget_pool_foreach (remmina_icon_foreach_window, menu);
         if (n > 0)
         {
             /* Separator */
             menuitem = gtk_separator_menu_item_new ();
             gtk_widget_show (menuitem);
-            gtk_menu_shell_insert (GTK_MENU_SHELL (popup_menu), menuitem, n);
+            gtk_menu_shell_insert (GTK_MENU_SHELL (menu), menuitem, n);
         }
     }
+
+    g_signal_connect (G_OBJECT (menu), "launch-item",
+        G_CALLBACK (remmina_icon_on_launch_item), NULL);
+    g_signal_connect (G_OBJECT (menu), "edit-item",
+        G_CALLBACK (remmina_icon_on_edit_item), NULL);
+}
+
+#ifdef HAVE_LIBAPPINDICATOR
+
+void
+remmina_icon_populate_menu (void)
+{
+    GtkWidget *menu;
+    GtkWidget *menuitem;
+
+    menu = remmina_applet_menu_new ();
+    app_indicator_set_menu (remmina_icon.icon, GTK_MENU (menu));
+
+    remmina_applet_menu_set_hide_count (REMMINA_APPLET_MENU (menu), remmina_pref.applet_hide_count);
+    remmina_applet_menu_populate (REMMINA_APPLET_MENU (menu));
+    remmina_icon_populate_extra_menu_item (menu);
+
+    menuitem = gtk_separator_menu_item_new ();
+    gtk_widget_show (menuitem);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+
+    remmina_icon_populate_additional_menu_item (menu);
+}
+
+#else
+
+void
+remmina_icon_populate_menu (void)
+{
+}
+
+static void
+remmina_icon_popdown_menu (GtkWidget *widget, gpointer data)
+{
+    if (gtk_get_current_event_time () - remmina_icon.popup_time <= 500)
+    {
+        remmina_exec_command (REMMINA_COMMAND_MAIN, NULL);
+    }
+}
+
+static void
+remmina_icon_on_activate (GtkStatusIcon *icon, gpointer user_data)
+{
+    GtkWidget *menu;
+    gint button, event_time;
+
+    remmina_icon.popup_time = gtk_get_current_event_time ();
+    menu = remmina_applet_menu_new ();
+    remmina_applet_menu_set_hide_count (REMMINA_APPLET_MENU (menu), remmina_pref.applet_hide_count);
+    remmina_applet_menu_populate (REMMINA_APPLET_MENU (menu));
+
+    remmina_icon_populate_extra_menu_item (menu);
 
     button = 0;
     event_time = gtk_get_current_event_time ();
 
-    g_signal_connect (G_OBJECT (popup_menu), "deactivate", G_CALLBACK (remmina_icon_popdown_menu), NULL);
+    g_signal_connect (G_OBJECT (menu), "deactivate", G_CALLBACK (remmina_icon_popdown_menu), NULL);
 
-    g_signal_connect (G_OBJECT (popup_menu), "launch-item",
-        G_CALLBACK (remmina_icon_on_launch_item), NULL);
-    g_signal_connect (G_OBJECT (popup_menu), "edit-item",
-        G_CALLBACK (remmina_icon_on_edit_item), NULL);
-
-    gtk_menu_popup (GTK_MENU (popup_menu), NULL, NULL,
+    gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
         gtk_status_icon_position_menu, remmina_icon.icon, button, event_time);
 }
+
+static void
+remmina_icon_on_popup_menu (GtkStatusIcon *icon, guint button, guint activate_time, gpointer user_data)
+{
+    GtkWidget *menu;
+
+    menu = gtk_menu_new ();
+
+    remmina_icon_populate_additional_menu_item (menu);
+
+    gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
+        gtk_status_icon_position_menu, remmina_icon.icon, button, activate_time);
+}
+
+#endif
 
 static void
 remmina_icon_save_autostart_file (GKeyFile *gkeyfile)
@@ -356,18 +415,30 @@ remmina_icon_init (void)
 {
     if (!remmina_icon.icon && !remmina_pref.disable_tray_icon)
     {
+#ifdef HAVE_LIBAPPINDICATOR
+        remmina_icon.icon = app_indicator_new ("remmina-icon", "remmina", APP_INDICATOR_CATEGORY_OTHER);
+
+        app_indicator_set_status (remmina_icon.icon, APP_INDICATOR_STATUS_ACTIVE);
+        remmina_icon_populate_menu ();
+#else
         remmina_icon.icon = gtk_status_icon_new_from_icon_name ("remmina");
-        remmina_widget_pool_hold (TRUE);
 
         gtk_status_icon_set_title (remmina_icon.icon, _("Remmina Remote Desktop Client"));
         gtk_status_icon_set_tooltip_text (remmina_icon.icon, _("Remmina Remote Desktop Client"));
 
         g_signal_connect (G_OBJECT (remmina_icon.icon), "popup-menu", G_CALLBACK (remmina_icon_on_popup_menu), NULL);
         g_signal_connect (G_OBJECT (remmina_icon.icon), "activate", G_CALLBACK (remmina_icon_on_activate), NULL);
+#endif
+        remmina_widget_pool_hold (TRUE);
     }
     else if (remmina_icon.icon)
     {
+#ifdef HAVE_LIBAPPINDICATOR
+        app_indicator_set_status (remmina_icon.icon, remmina_pref.disable_tray_icon ?
+            APP_INDICATOR_STATUS_PASSIVE : APP_INDICATOR_STATUS_ACTIVE);
+#else
         gtk_status_icon_set_visible (remmina_icon.icon, !remmina_pref.disable_tray_icon);
+#endif
         remmina_widget_pool_hold (!remmina_pref.disable_tray_icon);
     }
     if (!remmina_icon.avahi)

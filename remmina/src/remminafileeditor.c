@@ -35,6 +35,7 @@
 #include "remminascaler.h"
 #include "remminawidgetpool.h"
 #include "remminapluginmanager.h"
+#include "remminaicon.h"
 #include "remminafileeditor.h"
 
 G_DEFINE_TYPE (RemminaFileEditor, remmina_file_editor, GTK_TYPE_DIALOG)
@@ -1132,6 +1133,7 @@ remmina_file_editor_on_save (GtkWidget *button, RemminaFileEditor *gfe)
 {
     remmina_file_editor_update (gfe);
     remmina_file_save_all (gfe->priv->remmina_file);
+    remmina_icon_populate_menu ();
     gtk_widget_destroy (GTK_WIDGET (gfe));
 }
 
@@ -1144,6 +1146,7 @@ remmina_file_editor_on_connect (GtkWidget *button, RemminaFileEditor *gfe)
     if (remmina_pref.save_when_connect)
     {
         remmina_file_save_all (gfe->priv->remmina_file);
+        remmina_icon_populate_menu ();
     }
     gf = remmina_file_dup (gfe->priv->remmina_file);
     /* Put server into name for Quick Connect */
