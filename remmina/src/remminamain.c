@@ -33,6 +33,7 @@
 #include "remminawidgetpool.h"
 #include "remminapluginmanager.h"
 #include "remminalog.h"
+#include "remminaicon.h"
 #include "remminamain.h"
 
 G_DEFINE_TYPE (RemminaMain, remmina_main, GTK_TYPE_WINDOW)
@@ -574,6 +575,7 @@ remmina_main_action_connection_delete (GtkAction *action, RemminaMain *remminama
     if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
     {
         remmina_file_delete (remminamain->priv->selected_filename);
+        remmina_icon_populate_menu ();
         remmina_main_load_files (remminamain, TRUE);
     }
     gtk_widget_destroy (dialog);

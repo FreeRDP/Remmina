@@ -149,6 +149,24 @@ else
     gcrypt_support="disabled."
 fi
 
+# Check libappindicator
+AC_ARG_ENABLE(appindicator,
+    [AS_HELP_STRING([--disable-appindicator], [Disable application indicators])],
+    [appindicator_support=$enableval],
+    [appindicator_support="yes"]
+)
+if test "x$appindicator_support" != "xno"; then
+    PKG_CHECK_MODULES(APP_INDICATOR,
+        appindicator3-0.1, [
+            appindicator_support="yes"
+            remmina_pkgs="$remmina_pkgs appindicator3-0.1"
+            AC_DEFINE([HAVE_LIBAPPINDICATOR], [1], [Define to 1 if you have the 'appindicator' library (-lappindicator).])
+        ], appindicator_support="no. libappindicator3-dev required."
+    )
+else
+     appindicator_support="disabled."
+fi
+
 # Merge all PKG checks here
 PKG_CHECK_MODULES(REMMINA, [
     $remmina_pkgs
@@ -195,6 +213,7 @@ echo "* SSH support: $ssh_support"
 echo "* Avahi support: $avahi_support"
 echo "* Terminal support: $vte_support"
 echo "* Encryption support: $gcrypt_support"
+echo "* Application indicator support: $appindicator_support"
 echo
 echo "Type \"make\" to compile remmina."
 echo
