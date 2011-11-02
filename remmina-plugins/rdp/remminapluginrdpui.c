@@ -275,11 +275,12 @@ remmina_plugin_rdpui_pre_connect (RemminaProtocolWidget *gp)
     settings->order_support[NEG_ELLIPSE_SC_INDEX] = False;
     settings->order_support[NEG_ELLIPSE_CB_INDEX] = False;
 
-    if (settings->color_depth >= 24)
+    if (settings->color_depth == 32)
     {
         settings->rfx_codec = True;
         settings->frame_acknowledge = False;
         settings->large_pointer = True;
+        settings->performance_flags = PERF_FLAG_NONE;
 
         gpdata->rfx_context = rfx_context_new ();
         rfx_context_set_cpu_opt (gpdata->rfx_context, CPU_SSE2);
