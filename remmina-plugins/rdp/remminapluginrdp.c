@@ -577,6 +577,7 @@ static gpointer colordepth_list[] =
     "15", N_("High color (15 bit)"),
     "16", N_("High color (16 bit)"),
     "24", N_("True color (24 bit)"),
+    "32", N_("RemoteFX (32 bit)"),
     NULL
 };
 
