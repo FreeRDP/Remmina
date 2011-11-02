@@ -1,0 +1,41 @@
+Remmina: The GTK+ Remote Desktop Client
+=======================================
+
+Remmina is a remote desktop client written in GTK+, aiming to be useful for
+system administrators and travellers, who need to work with lots of remote
+computers in front of either large monitors or tiny netbooks. Remmina supports
+multiple network protocols in an integrated and consistant user interface.
+Currently RDP, VNC, NX, XDMCP and SSH are supported.
+
+Remmina is released in separated source packages:
+* "remmina", the main GTK+ application
+* "remmina-plugins", a set of plugins
+
+Remmina is free and open-source software, released under GNU GPL license.
+
+Resources
+---------
+
+Website: http://remmina.sourceforge.net
+Wiki: http://sourceforge.net/apps/mediawiki/remmina/
+Forums: http://sourceforge.net/apps/phpbb/remmina/
+Mailing List: https://lists.sourceforge.net/mailman/listinfo/remmina-common
+
+Prerequisites
+-------------
+
+On Ubuntu, install the following packages before compiling:
+
+sudo apt-get install intltool libgtk-3-dev libssh-dev libavahi-ui-gtk3-dev libvte-2.90-dev
+libunique-dev libtelepathy-glib-dev libgnome-keyring-dev libappindicator3-dev
+
+Compilation
+-----------
+
+To compile and install, perform the following for all of the three main packages:
+
+./autogen.sh
+./configure
+make
+sudo make install
+
