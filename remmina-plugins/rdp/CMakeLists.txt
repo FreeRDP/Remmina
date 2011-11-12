@@ -1,4 +1,4 @@
-# src/remmina - The GTK+ Remote Desktop Client
+# remmina-plugin-gtk - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2011 Marc-Andre Moreau
 #

@@ -1,4 +1,4 @@
-# Remmina - The GTK+ Remote Desktop Client
+# libvncclient - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2011 Marc-Andre Moreau
 #
@@ -17,13 +17,32 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
-include_directories(${CMAKE_SOURCE_DIR}/remmina-plugins)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/common)
 
-add_subdirectory(nx)
-add_subdirectory(rdp)
-add_subdirectory(xdmcp)
-add_subdirectory(telepathy)
+set(REMMINA_VNC_CLIENT_SRCS
+	libvncclient/cursor.c
+	libvncclient/listen.c
+	common/lzoconf.h
+	common/minilzo.c
+	common/minilzo.h
+	libvncclient/rfbproto.c
+	libvncclient/sockets.c
+	libvncclient/tls.c
+	libvncclient/tls.h
+	libvncclient/tight.c
+	libvncclient/vncviewer.c
+	libvncclient/zlib.c
+	libvncclient/zrle.c
+	)
 
-#add_subdirectory(libvncserver)
-#add_subdirectory(vnc)
+add_library(vncclient ${REMMINA_VNC_CLIENT_SRCS})
+
+find_package(GTK3 REQUIRED)
+
+if(GTK3_FOUND)
+	add_definitions(-DWITH_GTK3)
+	include_directories(${GTK3_INCLUDE_DIRS})
+	target_link_libraries(vncclient ${GTK3_LIBRARY_DIRS})
+endif()
 

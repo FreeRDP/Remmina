@@ -1,4 +1,4 @@
-# Remmina - The GTK+ Remote Desktop Client
+# remmina-plugin-xdmcp - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2011 Marc-Andre Moreau
 #
@@ -17,13 +17,17 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
-include_directories(${CMAKE_SOURCE_DIR}/remmina-plugins)
+set(REMMINA_PLUGIN_XDMCP_SRCS
+	remminapluginxdmcp.c
+	)
 
-add_subdirectory(nx)
-add_subdirectory(rdp)
-add_subdirectory(xdmcp)
-add_subdirectory(telepathy)
+add_library(remmina-plugin-xdmcp ${REMMINA_PLUGIN_XDMCP_SRCS})
 
-#add_subdirectory(libvncserver)
-#add_subdirectory(vnc)
+find_package(GTK3 REQUIRED)
+
+if(GTK3_FOUND)
+	add_definitions(-DWITH_GTK3)
+	include_directories(${GTK3_INCLUDE_DIRS})
+	target_link_libraries(remmina-plugin-xdmcp ${GTK3_LIBRARY_DIRS})
+endif()
 

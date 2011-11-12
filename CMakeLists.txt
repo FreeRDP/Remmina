@@ -42,4 +42,5 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DI
 
 add_subdirectory(remmina)
 add_subdirectory(remmina-plugins)
+#add_subdirectory(remmina-plugins-gnome)
 
