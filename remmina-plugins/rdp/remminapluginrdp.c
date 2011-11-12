@@ -24,6 +24,8 @@
 #include "remminapluginrdpfile.h"
 #include "remminapluginrdpset.h"
 
+#include <errno.h>
+#include <pthread.h>
 #include <freerdp/utils/memory.h>
 
 #define REMMINA_PLUGIN_RDP_FEATURE_TOOL_REFRESH            1
