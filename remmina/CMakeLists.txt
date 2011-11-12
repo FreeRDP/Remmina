@@ -98,5 +98,33 @@ if(GTK3_FOUND)
 	target_link_libraries(remmina ${GTK3_LIBRARY_DIRS})
 endif()
 
+find_package(AVAHI)
+if(AVAHI_FOUND)
+	add_definitions(-DHAVE_LIBAVAHI_UI)
+	add_definitions(-DHAVE_LIBAVAHI_CLIENT)
+	include_directories(${AVAHI_INCLUDE_DIRS})
+	target_link_libraries(remmina ${AVAHI_LIBRARIES})
+endif()
+
+find_package(VTE)
+if(VTE_FOUND)
+	add_definitions(-DHAVE_LIBVTE)
+	include_directories(${VTE_INCLUDE_DIRS})
+	target_link_libraries(remmina ${VTE_LIBRARIES})
+endif()
+
+find_package(SSH)
+if(SSH_FOUND)
+	add_definitions(-DHAVE_LIBSSH)
+	include_directories(${SSH_INCLUDE_DIRS})
+	target_link_libraries(remmina ${SSH_LIBRARIES})
+endif()
+
+find_package(APPINDICATOR)
+if(APPINDICATOR_FOUND)
+	add_definitions(-DHAVE_LIBAPPINDICATOR)
+	include_directories(${APPINDICATOR_INCLUDE_DIRS})
+	target_link_libraries(remmina ${APPINDICATOR_LIBRARIES})
+endif()
 
 
