@@ -126,6 +126,10 @@ if(APPINDICATOR_FOUND)
 endif()
 
 add_subdirectory(icons)
+add_subdirectory(desktop)
 
 install(TARGETS remmina DESTINATION ${CMAKE_INSTALL_BINDIR})
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina.pc.in ${CMAKE_CURRENT_BINARY_DIR}/remmina.pc @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 
