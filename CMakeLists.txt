@@ -74,8 +74,8 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 
 set(REMMINA_VERSION "0.9.99.1")
 set(REMMINA_DATADIR "${CMAKE_INSTALL_PREFIX}/share/remmina")
-set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_PREFIX}/share/remmina")
-set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_PREFIX}/share/remmina")
+set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_PREFIX}/share/locale")
+set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_PREFIX}/lib/remmina/plugins")
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
 

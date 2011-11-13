@@ -23,11 +23,11 @@ set(REMMINA_PLUGIN_XDMCP_SRCS
 
 add_library(remmina-plugin-xdmcp ${REMMINA_PLUGIN_XDMCP_SRCS})
 
-find_package(GTK3 REQUIRED)
-
+find_required_package(GTK3)
 if(GTK3_FOUND)
-	add_definitions(-DWITH_GTK3)
 	include_directories(${GTK3_INCLUDE_DIRS})
 	target_link_libraries(remmina-plugin-xdmcp ${GTK3_LIBRARY_DIRS})
 endif()
+
+install(TARGETS remmina-plugin-xdmcp DESTINATION ${REMMINA_PLUGINDIR})
 
