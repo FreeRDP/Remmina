@@ -20,6 +20,8 @@
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/common)
 
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/rfb/rfbconfig.h.in ${CMAKE_CURRENT_SOURCE_DIR}/rfb/rfbconfig.h)
+
 set(REMMINA_VNC_CLIENT_SRCS
 	libvncclient/cursor.c
 	libvncclient/listen.c

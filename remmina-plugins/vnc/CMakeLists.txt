@@ -17,17 +17,18 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../libvncserver)
+
 set(REMMINA_PLUGIN_VNC_SRCS
 	remminapluginvnc.c
 	)
 
 add_library(remmina-plugin-vnc ${REMMINA_PLUGIN_VNC_SRCS})
 
-find_package(GTK3 REQUIRED)
-
+find_required_package(GTK3)
 if(GTK3_FOUND)
-	add_definitions(-DWITH_GTK3)
 	include_directories(${GTK3_INCLUDE_DIRS})
 	target_link_libraries(remmina-plugin-vnc ${GTK3_LIBRARY_DIRS})
 endif()
 
+target_link_libraries(remmina-plugin-vnc vncclient)
