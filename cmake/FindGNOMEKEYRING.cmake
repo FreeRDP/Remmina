@@ -1,4 +1,4 @@
-# remmina-plugins-gnome - The GTK+ Remote Desktop Client
+# Remmina - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2011 Marc-Andre Moreau
 #
@@ -17,21 +17,19 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
-set(REMMINA_PLUGINS_GNOME_SRCS
-	src/remminaplugingkeyring.c
-	)
+find_path(GNOMEKEYRING_INCLUDE_DIR NAMES gnome-keyring.h
+	PATH_SUFFIXES gnome-keyring-1)
 
-add_library(remmina-plugins-gnome ${REMMINA_PLUGINS_GNOME_SRCS})
+find_library(GNOMEKEYRING_LIBRARY NAMES gnome-keyring)
 
-find_required_package(GTK3)
-if(GTK3_FOUND)
-	include_directories(${GTK3_INCLUDE_DIRS})
-	target_link_libraries(remmina-plugins-gnome ${GTK3_LIBRARY_DIRS})
-endif()
+include(FindPackageHandleStandardArgs)
 
-find_required_package(GNOMEKEYRING)
+find_package_handle_standard_args(GNOMEKEYRING DEFAULT_MSG GNOMEKEYRING_LIBRARY GNOMEKEYRING_INCLUDE_DIR)
+
 if(GNOMEKEYRING_FOUND)
-	include_directories(${GNOMEKEYRING_INCLUDE_DIRS})
-	target_link_libraries(remmina-plugins-gnome ${GNOMEKEYRING_LIBRARIES})
+	set(GNOMEKEYRING_LIBRARIES ${GNOMEKEYRING_LIBRARY})
+	set(GNOMEKEYRING_INCLUDE_DIRS ${GNOMEKEYRING_INCLUDE_DIR})
 endif()
+
+mark_as_advanced(GNOMEKEYRING_INCLUDE_DIR GNOMEKEYRING_LIBRARY)
 
