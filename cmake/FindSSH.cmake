@@ -17,9 +17,13 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
-find_path(SSH_INCLUDE_DIR NAMES libssh/libssh.h)
+pkg_check_modules(PC_LIBSSH libssh)
 
-find_library(SSH_LIBRARY NAMES ssh)
+find_path(SSH_INCLUDE_DIR NAMES libssh/libssh.h
+	HINTS ${PC_LIBSSH_INCLUDEDIR} ${PC_LIBSSH_INCLUDE_DIRS})
+
+find_library(SSH_LIBRARY NAMES ssh
+	HINTS ${PC_LIBSSH_INCLUDEDIR} ${PC_LIBSSH_INCLUDE_DIRS})
 
 include(FindPackageHandleStandardArgs)
 

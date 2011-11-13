@@ -28,11 +28,11 @@ set(REMMINA_PLUGIN_NX_SRCS
 
 add_library(remmina-plugin-nx ${REMMINA_PLUGIN_NX_SRCS})
 
-find_package(GTK3 REQUIRED)
-
+find_required_package(GTK3)
 if(GTK3_FOUND)
-	add_definitions(-DWITH_GTK3)
 	include_directories(${GTK3_INCLUDE_DIRS})
 	target_link_libraries(remmina-plugin-nx ${GTK3_LIBRARY_DIRS})
 endif()
+
+install(TARGETS remmina-plugin-nx DESTINATION ${REMMINA_PLUGINDIR})
 
