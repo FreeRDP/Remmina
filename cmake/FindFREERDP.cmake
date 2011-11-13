@@ -17,25 +17,22 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
-include_directories(${CMAKE_SOURCE_DIR}/remmina-plugins)
+pkg_check_modules(PC_FREERDP freerdp)
 
-add_subdirectory(nx)
-add_subdirectory(xdmcp)
+find_path(FREERDP_INCLUDE_DIR NAMES freerdp/freerdp.h
+	HINTS ${PC_FREERDP_INCLUDEDIR} ${PC_FREERDP_INCLUDE_DIRS})
 
-find_suggested_package(FREERDP)
+find_library(FREERDP_LIBRARY NAMES freerdp-core
+	HINTS ${PC_FREERDP_INCLUDEDIR} ${PC_FREERDP_INCLUDE_DIRS})
+
+include(FindPackageHandleStandardArgs)
+
+find_package_handle_standard_args(FREERDP DEFAULT_MSG FREERDP_LIBRARY FREERDP_INCLUDE_DIR)
+
 if(FREERDP_FOUND)
-	add_subdirectory(rdp)
+	set(FREERDP_LIBRARIES ${FREERDP_LIBRARY})
+	set(FREERDP_INCLUDE_DIRS ${FREERDP_INCLUDE_DIR})
 endif()
 
-find_suggested_package(TELEPATHY)
-if(TELEPATHY_FOUND)
-	add_subdirectory(telepathy)
-endif()
-
-find_suggested_package(ZLIB)
-
-if(ZLIB_FOUND)
-	add_subdirectory(libvncserver)
-	add_subdirectory(vnc)
-endif()
+mark_as_advanced(FREERDP_INCLUDE_DIR FREERDP_LIBRARY)
 
