@@ -111,7 +111,7 @@ if(VTE_FOUND)
 	target_link_libraries(remmina ${VTE_LIBRARIES})
 endif()
 
-find_suggested_package(SSH)
+find_optional_package(SSH)
 if(SSH_FOUND)
 	add_definitions(-DHAVE_LIBSSH)
 	include_directories(${SSH_INCLUDE_DIRS})
@@ -125,4 +125,5 @@ if(APPINDICATOR_FOUND)
 	target_link_libraries(remmina ${APPINDICATOR_LIBRARIES})
 endif()
 
+install(TARGETS remmina DESTINATION ${CMAKE_INSTALL_BINDIR})
 

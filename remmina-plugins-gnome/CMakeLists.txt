@@ -35,3 +35,5 @@ if(GNOMEKEYRING_FOUND)
 	target_link_libraries(remmina-plugins-gnome ${GNOMEKEYRING_LIBRARIES})
 endif()
 
+install(TARGETS remmina-plugins-gnome DESTINATION ${REMMINA_PLUGINDIR})
+

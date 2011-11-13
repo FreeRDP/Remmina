@@ -18,16 +18,15 @@
 # Boston, MA 02111-1307, USA.
 
 find_library(AVAHI_LIBRARY_UI NAMES avahi-ui-gtk3)
-find_library(AVAHI_LIBRARY_CLIENT NAMES avahi-client)
 
-find_path(AVAHI_INCLUDE_DIR avahi-client/publish.h)
+find_path(AVAHI_INCLUDE_DIR avahi-ui/avahi-ui.h)
 
 include(FindPackageHandleStandardArgs)
 
-find_package_handle_standard_args(AVAHI DEFAULT_MSG AVAHI_LIBRARY_UI AVAHI_LIBRARY_CLIENT AVAHI_INCLUDE_DIR)
+find_package_handle_standard_args(AVAHI DEFAULT_MSG AVAHI_LIBRARY_UI AVAHI_INCLUDE_DIR)
 
 if(AVAHI_FOUND)
-	set(AVAHI_LIBRARIES ${AVAHI_LIBRARY_UI} ${AVAHI_LIBRARY_CLIENT})
+	set(AVAHI_LIBRARIES ${AVAHI_LIBRARY_UI})
 	set(AVAHI_INCLUDE_DIRS ${AVAHI_INCLUDE_DIR})
 endif()
 

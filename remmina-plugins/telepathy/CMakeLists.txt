@@ -23,11 +23,12 @@ set(REMMINA_PLUGIN_TELEPATHY_SRCS
 
 add_library(remmina-plugin-telepathy ${REMMINA_PLUGIN_TELEPATHY_SRCS})
 
-find_package(GTK3 REQUIRED)
+find_required_package(GTK3)
 
 if(GTK3_FOUND)
-	add_definitions(-DWITH_GTK3)
 	include_directories(${GTK3_INCLUDE_DIRS})
 	target_link_libraries(remmina-plugin-telepathy ${GTK3_LIBRARY_DIRS})
 endif()
+
+install(TARGETS remmina-plugin-telepathy DESTINATION ${REMMINA_PLUGINDIR})
 

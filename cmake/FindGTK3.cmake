@@ -30,6 +30,17 @@ find_library(GTK3_LIBRARY NAMES gtk-3)
 
 find_library(GDK3_LIBRARY NAMES gdk-3)
 
+# Gdk-Pixbuf
+
+pkg_check_modules(PC_GDKPIXBUF REQUIRED gdk-pixbuf-2.0)
+
+find_path(GDKPIXBUF_INCLUDE_DIR gdk-pixbuf/gdk-pixbuf.h
+	HINTS ${PC_GDKPIXBUF_INCLUDEDIR} ${PC_GDKPIXBUF_INCLUDE_DIRS}
+	PATH_SUFFIXES gdk-pixbuf-2.0)
+
+find_library(GDKPIXBUF_LIBRARY NAMES gdk-3
+	HINTS ${PC_GDKPIXBUF_LIBDIR} ${PC_GDKPIXBUF_LIBRARY_DIRS})
+
 # Glib
 
 pkg_check_modules(PC_GLIB2 REQUIRED glib-2.0)
@@ -67,17 +78,6 @@ find_path(CAIRO_INCLUDE_DIR cairo.h
 
 find_library(CAIRO_LIBRARY NAMES cairo
 	HINTS ${PC_CAIRO_LIBDIR} ${PC_CAIRO_LIBRARY_DIRS})
-
-# Gdk-Pixbuf
-
-pkg_check_modules(PC_GDKPIXBUF REQUIRED gdk-pixbuf-2.0)
-
-find_path(GDKPIXBUF_INCLUDE_DIR gdk-pixbuf/gdk-pixbuf.h
-	HINTS ${PC_GDKPIXBUF_INCLUDEDIR} ${PC_GDKPIXBUF_INCLUDE_DIRS}
-	PATH_SUFFIXES gdk-pixbuf-2.0)
-
-find_library(GDKPIXBUF_LIBRARY NAMES gdk-3
-	HINTS ${PC_GDKPIXBUF_LIBDIR} ${PC_GDKPIXBUF_LIBRARY_DIRS})
 
 # Atk
 

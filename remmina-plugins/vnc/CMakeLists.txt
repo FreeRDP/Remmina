@@ -32,3 +32,6 @@ if(GTK3_FOUND)
 endif()
 
 target_link_libraries(remmina-plugin-vnc vncclient)
+
+install(TARGETS remmina-plugin-vnc DESTINATION ${REMMINA_PLUGINDIR})
+
