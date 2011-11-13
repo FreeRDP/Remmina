@@ -90,15 +90,13 @@ set(REMMINA_SRCS
 
 add_executable(remmina ${REMMINA_SRCS})
 
-find_package(GTK3 REQUIRED)
-
+find_required_package(GTK3)
 if(GTK3_FOUND)
-	add_definitions(-DWITH_GTK3)
 	include_directories(${GTK3_INCLUDE_DIRS})
 	target_link_libraries(remmina ${GTK3_LIBRARY_DIRS})
 endif()
 
-find_package(AVAHI)
+find_suggested_package(AVAHI)
 if(AVAHI_FOUND)
 	add_definitions(-DHAVE_LIBAVAHI_UI)
 	add_definitions(-DHAVE_LIBAVAHI_CLIENT)
@@ -106,21 +104,21 @@ if(AVAHI_FOUND)
 	target_link_libraries(remmina ${AVAHI_LIBRARIES})
 endif()
 
-find_package(VTE)
+find_suggested_package(VTE)
 if(VTE_FOUND)
 	add_definitions(-DHAVE_LIBVTE)
 	include_directories(${VTE_INCLUDE_DIRS})
 	target_link_libraries(remmina ${VTE_LIBRARIES})
 endif()
 
-find_package(SSH)
+find_suggested_package(SSH)
 if(SSH_FOUND)
 	add_definitions(-DHAVE_LIBSSH)
 	include_directories(${SSH_INCLUDE_DIRS})
 	target_link_libraries(remmina ${SSH_LIBRARIES})
 endif()
 
-find_package(APPINDICATOR)
+find_suggested_package(APPINDICATOR)
 if(APPINDICATOR_FOUND)
 	add_definitions(-DHAVE_LIBAPPINDICATOR)
 	include_directories(${APPINDICATOR_INCLUDE_DIRS})
