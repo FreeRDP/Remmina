@@ -17,15 +17,19 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
-include_directories(${CMAKE_SOURCE_DIR}/remmina-plugins)
+find_path(XKBFILE_INCLUDE_DIR NAMES XKBfile.h
+          PATH_SUFFIXES X11/extensions)
 
-add_subdirectory(nx)
-add_subdirectory(rdp)
-add_subdirectory(xdmcp)
-add_subdirectory(telepathy)
+find_library(XKBFILE_LIBRARY NAMES xkbfile)
 
-find_required_package(ZLIB)
+include(FindPackageHandleStandardArgs)
 
-add_subdirectory(libvncserver)
-add_subdirectory(vnc)
+find_package_handle_standard_args(XKBFILE DEFAULT_MSG XKBFILE_LIBRARY XKBFILE_INCLUDE_DIR)
+
+if(XKBFILE_FOUND)
+	set(XKBFILE_LIBRARIES ${XKBFILE_LIBRARY})
+	set(XKBFILE_INCLUDE_DIRS ${XKBFILE_INCLUDE_DIR})
+endif()
+
+mark_as_advanced(XKBFILE_INCLUDE_DIR XKBFILE_LIBRARY)
 
