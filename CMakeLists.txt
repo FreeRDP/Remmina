@@ -28,6 +28,8 @@ include(CheckCCompilerFlag)
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
 
+include(FindOptionalPackage)
+
 if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE "Release")
 endif()
@@ -60,6 +62,16 @@ set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_PREFIX}/share/remmina")
 set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_PREFIX}/share/remmina")
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h)
+
+find_suggested_package(PTHREAD)
+if(PTHREAD_FOUND)
+	add_definitions(-DHAVE_PTHREAD)
+endif()
+
+find_suggested_package(GCRYPT)
+if(GCRYPT_FOUND)
+	add_definitions(-DHAVE_GCRYPT)
+endif()
 
 add_subdirectory(remmina)
 add_subdirectory(remmina-plugins)
