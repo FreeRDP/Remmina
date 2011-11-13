@@ -17,25 +17,22 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
-include_directories(${CMAKE_SOURCE_DIR}/remmina-plugins)
+pkg_check_modules(PC_TELEPATHY telepathy-glib)
 
-add_subdirectory(nx)
-add_subdirectory(xdmcp)
+find_path(TELEPATHY_INCLUDE_DIR NAMES telepathy-glib/telepathy-glib.h
+	HINTS ${PC_TELEPATHY_INCLUDEDIR} ${PC_TELEPATHY_INCLUDE_DIRS}
+	PATH_SUFFIXES telepathy-1.0)
 
-find_suggested_package(FREERDP)
-if(FREERDP_FOUND)
-	add_subdirectory(rdp)
-endif()
+find_library(TELEPATHY_LIBRARY NAMES telepathy-glib)
 
-find_suggested_package(TELEPATHY)
+include(FindPackageHandleStandardArgs)
+
+find_package_handle_standard_args(TELEPATHY DEFAULT_MSG TELEPATHY_LIBRARY TELEPATHY_INCLUDE_DIR)
+
 if(TELEPATHY_FOUND)
-	add_subdirectory(telepathy)
+	set(TELEPATHY_LIBRARIES ${TELEPATHY_LIBRARY})
+	set(TELEPATHY_INCLUDE_DIRS ${TELEPATHY_INCLUDE_DIR})
 endif()
 
-find_suggested_package(ZLIB)
-
-if(ZLIB_FOUND)
-	add_subdirectory(libvncserver)
-	add_subdirectory(vnc)
-endif()
+mark_as_advanced(TELEPATHY_INCLUDE_DIR TELEPATHY_LIBRARY)
 
