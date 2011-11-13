@@ -125,5 +125,7 @@ if(APPINDICATOR_FOUND)
 	target_link_libraries(remmina ${APPINDICATOR_LIBRARIES})
 endif()
 
+add_subdirectory(icons)
+
 install(TARGETS remmina DESTINATION ${CMAKE_INSTALL_BINDIR})
 
