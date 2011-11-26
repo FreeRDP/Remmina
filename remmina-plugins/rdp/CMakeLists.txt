@@ -36,14 +36,8 @@ set(REMMINA_PLUGIN_RDP_SRCS
 add_library(remmina-plugin-rdp ${REMMINA_PLUGIN_RDP_SRCS})
 set_target_properties(remmina-plugin-rdp PROPERTIES PREFIX "")
 
-find_required_package(GTK3)
-if(GTK3_FOUND)
-	include_directories(${GTK3_INCLUDE_DIRS})
-	target_link_libraries(remmina-plugin-rdp ${GTK3_LIBRARY_DIRS})
-endif()
-
-include_directories(${FREERDP_INCLUDE_DIRS})
-target_link_libraries(remmina-plugin-rdp ${FREERDP_LIBRARY_DIRS})
+include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${FREERDP_INCLUDE_DIRS})
+target_link_libraries(remmina-plugin-rdp ${REMMINA_COMMON_LIBRARIES} ${FREERDP_LIBRARIES})
 
 install(TARGETS remmina-plugin-rdp DESTINATION ${REMMINA_PLUGINDIR})
 

@@ -29,10 +29,8 @@ include(FindPackageHandleStandardArgs)
 
 find_package_handle_standard_args(VTE DEFAULT_MSG VTE_LIBRARY VTE_INCLUDE_DIR)
 
-if(VTE_FOUND)
-	set(VTE_LIBRARIES ${VTE_LIBRARY})
-	set(VTE_INCLUDE_DIRS ${VTE_INCLUDE_DIR})
-endif()
+set(VTE_LIBRARIES ${VTE_LIBRARY})
+set(VTE_INCLUDE_DIRS ${VTE_INCLUDE_DIR})
 
 mark_as_advanced(VTE_INCLUDE_DIR VTE_LIBRARY)
 
