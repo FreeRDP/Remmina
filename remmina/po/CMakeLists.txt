@@ -1,4 +1,4 @@
-# Remmina - The GTK+ Remote Desktop Client
+# po/remmina - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2011 Marc-Andre Moreau
 #
@@ -17,27 +17,6 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
-include_directories(${CMAKE_SOURCE_DIR}/remmina-plugins)
-
-add_subdirectory(nx)
-add_subdirectory(xdmcp)
-
-find_suggested_package(FREERDP)
-if(FREERDP_FOUND)
-	add_subdirectory(rdp)
-endif()
-
-find_suggested_package(TELEPATHY)
-if(TELEPATHY_FOUND)
-	add_subdirectory(telepathy)
-endif()
-
-find_suggested_package(ZLIB)
-
-if(ZLIB_FOUND)
-	add_subdirectory(libvncserver)
-	add_subdirectory(vnc)
-endif()
-
-add_subdirectory(po)
+include(GETTEXT)
+gettext(${CMAKE_CURRENT_SOURCE_DIR} "remmina")
 
