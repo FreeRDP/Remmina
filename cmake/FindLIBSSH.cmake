@@ -17,22 +17,22 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
-pkg_check_modules(PC_LIBSSH libssh)
+find_package(PkgConfig)
+pkg_check_modules(PC_LIBSSH libssh>=0.4)
+set(LIBSSH_DEFINITIONS ${PC_LIBSSH_CFLAGS_OTHER})
 
-find_path(SSH_INCLUDE_DIR NAMES libssh/libssh.h
+find_path(LIBSSH_INCLUDE_DIR NAMES libssh/libssh.h
 	HINTS ${PC_LIBSSH_INCLUDEDIR} ${PC_LIBSSH_INCLUDE_DIRS})
 
-find_library(SSH_LIBRARY NAMES ssh
+find_library(LIBSSH_LIBRARY NAMES ssh
 	HINTS ${PC_LIBSSH_LIBDIR} ${PC_LIBSSH_LIBRARY_DIRS})
 
 include(FindPackageHandleStandardArgs)
 
-find_package_handle_standard_args(SSH DEFAULT_MSG SSH_LIBRARY SSH_INCLUDE_DIR)
+find_package_handle_standard_args(LIBSSH DEFAULT_MSG LIBSSH_LIBRARY LIBSSH_INCLUDE_DIR)
 
-if(SSH_FOUND)
-	set(SSH_LIBRARIES ${SSH_LIBRARY})
-	set(SSH_INCLUDE_DIRS ${SSH_INCLUDE_DIR})
-endif()
+set(LIBSSH_LIBRARIES ${LIBSSH_LIBRARY})
+set(LIBSSH_INCLUDE_DIRS ${LIBSSH_INCLUDE_DIR})
 
-mark_as_advanced(SSH_INCLUDE_DIR SSH_LIBRARY)
+mark_as_advanced(LIBSSH_INCLUDE_DIR LIBSSH_LIBRARY)
 
