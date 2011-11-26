@@ -1,43 +1,31 @@
-noinst_LTLIBRARIES = libvncclient.la
+if WITH_X11VNC
+X11VNC=x11vnc
+endif
 
-INCLUDES = $(GNUTLS_CFLAGS)
+SUBDIRS=libvncserver examples libvncclient vncterm classes client_examples test $(X11VNC)
+DIST_SUBDIRS=libvncserver examples libvncclient vncterm classes client_examples test
+EXTRA_DIST = CMakeLists.txt rfb/rfbint.h.cmake rfb/rfbconfig.h.cmake
 
-libvncclient_la_SOURCES = \
-    libvncclient/cursor.c \
-    libvncclient/listen.c \
-    common/lzoconf.h \
-    common/minilzo.c \
-    common/minilzo.h \
-    libvncclient/rfbproto.c \
-    libvncclient/sockets.c \
-    libvncclient/tls.c \
-    libvncclient/tls.h \
-    libvncclient/tight.c \
-    libvncclient/vncviewer.c \
-    libvncclient/zlib.c \
-    libvncclient/zrle.c
+bin_SCRIPTS = libvncserver-config
 
-libvncclient_la_CFLAGS = -I./common
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = libvncserver.pc libvncclient.pc
 
-libvncclient_la_LIBADD = $(GNUTLS_LIBS)
+includedir=$(prefix)/include/rfb
+#include_HEADERS=rfb.h rfbconfig.h rfbint.h rfbproto.h keysym.h rfbregion.h
 
-EXTRA_DIST = \
-    libvncclient/corre.c \
-    libvncclient/hextile.c \
-    libvncclient/rre.c \
-    libvncclient/ultra.c \
-    common/d3des.c \
-    common/d3des.h \
-    common/vncauth.c \
-    common/zywrletemplate.c
+include_HEADERS=rfb/rfb.h rfb/rfbconfig.h rfb/rfbint.h rfb/rfbproto.h \
+	rfb/keysym.h rfb/rfbregion.h rfb/rfbclient.h
 
-DISTCLEANFILES = \
-    rfb/rfbconfig.h
+$(PACKAGE)-$(VERSION).tar.gz: dist
 
-noinst_HEADERS = \
-    rfb/rfbclient.h \
-    rfb/rfbconfig.h \
-    rfb/rfbint.h \
-    rfb/rfbproto.h \
-    rfb/keysym.h
+if HAVE_RPM
+# Rule to build RPM distribution package
+rpm: $(PACKAGE)-$(VERSION).tar.gz $(PACKAGE).spec
+	cp $(PACKAGE)-$(VERSION).tar.gz @RPMSOURCEDIR@
+	rpmbuild -ba $(PACKAGE).spec
+endif
+
+t:
+	$(MAKE) -C test test
 
