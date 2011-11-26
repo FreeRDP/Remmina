@@ -84,11 +84,6 @@ set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_PREFIX}/lib/remmina/plugins")
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
 
-find_suggested_package(SSH)
-if(SSH_FOUND)
-	add_definitions(-DHAVE_LIBSSH)
-endif()
-
 find_suggested_package(PTHREAD)
 if(PTHREAD_FOUND)
 	add_definitions(-DHAVE_PTHREAD)

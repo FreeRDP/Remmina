@@ -111,13 +111,6 @@ if(VTE_FOUND)
 	target_link_libraries(remmina ${VTE_LIBRARIES})
 endif()
 
-find_optional_package(SSH)
-if(SSH_FOUND)
-	add_definitions(-DHAVE_LIBSSH)
-	include_directories(${SSH_INCLUDE_DIRS})
-	target_link_libraries(remmina ${SSH_LIBRARIES})
-endif()
-
 find_suggested_package(APPINDICATOR)
 if(APPINDICATOR_FOUND)
 	add_definitions(-DHAVE_LIBAPPINDICATOR)
