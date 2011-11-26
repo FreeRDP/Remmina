@@ -84,6 +84,11 @@ set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_PREFIX}/lib/remmina/plugins")
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
 
+find_suggested_package(SSH)
+if(SSH_FOUND)
+	add_definitions(-DHAVE_LIBSSH)
+endif()
+
 find_suggested_package(PTHREAD)
 if(PTHREAD_FOUND)
 	add_definitions(-DHAVE_PTHREAD)
@@ -91,7 +96,13 @@ endif()
 
 find_suggested_package(GCRYPT)
 if(GCRYPT_FOUND)
-	add_definitions(-DHAVE_GCRYPT)
+	add_definitions(-DHAVE_LIBGCRYPT)
+endif()
+
+find_suggested_package(AVAHI)
+if(AVAHI_FOUND)
+	add_definitions(-DHAVE_LIBAVAHI_UI)
+	add_definitions(-DHAVE_LIBAVAHI_CLIENT)
 endif()
 
 add_subdirectory(remmina)

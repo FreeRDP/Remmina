@@ -125,6 +125,12 @@ if(APPINDICATOR_FOUND)
 	target_link_libraries(remmina ${APPINDICATOR_LIBRARIES})
 endif()
 
+find_suggested_package(GCRYPT)
+if(GCRYPT_FOUND)
+	include_directories(${GCRYPT_INCLUDE_DIRS})
+	target_link_libraries(remmina ${GCRYPT_LIBRARIES})
+endif()
+
 add_subdirectory(po)
 add_subdirectory(icons)
 add_subdirectory(desktop)

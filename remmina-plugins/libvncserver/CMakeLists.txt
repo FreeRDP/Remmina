@@ -78,8 +78,8 @@ endif(NOT HAVE_LIBVNCSERVER_IN_ADDR_T)
 
 TEST_BIG_ENDIAN(LIBVNCSERVER_WORDS_BIGENDIAN)
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/rfb/rfbconfig.h.cmake ${CMAKE_BINARY_DIR}/rfb/rfbconfig.h)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/rfb/rfbint.h.cmake ${CMAKE_BINARY_DIR}/rfb/rfbint.h)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/rfb/rfbconfig.h.cmake ${CMAKE_CURRENT_SOURCE_DIR}/rfb/rfbconfig.h)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/rfb/rfbint.h.cmake ${CMAKE_CURRENT_SOURCE_DIR}/rfb/rfbint.h)
 
 set(COMMON_DIR ${CMAKE_CURRENT_SOURCE_DIR}/common)
 set(LIBVNCCLIENT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libvncclient)
