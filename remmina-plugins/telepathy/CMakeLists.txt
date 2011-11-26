@@ -22,6 +22,7 @@ set(REMMINA_PLUGIN_TELEPATHY_SRCS
 	)
 
 add_library(remmina-plugin-telepathy ${REMMINA_PLUGIN_TELEPATHY_SRCS})
+set_target_properties(remmina-plugin-telepathy PROPERTIES PREFIX "")
 
 find_required_package(GTK3)
 

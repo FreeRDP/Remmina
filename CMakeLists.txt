@@ -42,8 +42,13 @@ if(NOT DEFINED CMAKE_INSTALL_BINDIR)
 	set(CMAKE_INSTALL_BINDIR "bin")
 endif()
 
+if(NOT BUILD_SHARED_LIBS)
+    set(BUILD_SHARED_LIBS ON)
+endif()
+
 if(CMAKE_COMPILER_IS_GNUCC)
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
 	CHECK_C_COMPILER_FLAG(-Wno-unused-result Wno-unused-result)
 	if(Wno-unused-result)
 		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-result")
