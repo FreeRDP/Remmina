@@ -24,6 +24,7 @@ set(REMMINA_PLUGIN_VNC_SRCS
 	)
 
 add_library(remmina-plugin-vnc ${REMMINA_PLUGIN_VNC_SRCS})
+set_target_properties(remmina-plugin-vnc PROPERTIES PREFIX "")
 
 find_required_package(GTK3)
 if(GTK3_FOUND)

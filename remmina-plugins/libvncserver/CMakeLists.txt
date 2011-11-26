@@ -38,7 +38,7 @@ set(REMMINA_VNC_CLIENT_SRCS
 	libvncclient/zrle.c
 	)
 
-add_library(vncclient ${REMMINA_VNC_CLIENT_SRCS})
+add_library(vncclient STATIC ${REMMINA_VNC_CLIENT_SRCS})
 
 find_package(GTK3 REQUIRED)
 

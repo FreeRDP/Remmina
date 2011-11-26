@@ -22,6 +22,7 @@ set(REMMINA_PLUGINS_GNOME_SRCS
 	)
 
 add_library(remmina-plugins-gnome ${REMMINA_PLUGINS_GNOME_SRCS})
+set_target_properties(remmina-plugins-gnome PROPERTIES PREFIX "")
 
 find_required_package(GTK3)
 if(GTK3_FOUND)
