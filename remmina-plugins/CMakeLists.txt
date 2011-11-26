@@ -19,7 +19,19 @@
 
 include_directories(${CMAKE_SOURCE_DIR}/remmina-plugins)
 
-add_subdirectory(nx)
+find_required_package(GTK3)
+if(GTK3_FOUND)
+	set(REMMINA_COMMON_INCLUDE_DIRS ${GTK3_INCLUDE_DIRS})
+	set(REMMINA_COMMON_LIBRARIES ${GTK3_LIBRARIES})
+endif()
+
+find_required_package(SSH)
+find_required_package(XKBFILE)
+
+if(SSH_FOUND AND XKBFILE_FOUND)
+	add_subdirectory(nx)
+endif()
+
 add_subdirectory(xdmcp)
 
 find_suggested_package(FREERDP)

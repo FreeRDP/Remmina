@@ -100,7 +100,9 @@ if(AVAHI_FOUND)
 	add_definitions(-DHAVE_LIBAVAHI_CLIENT)
 endif()
 
-add_subdirectory(remmina)
-add_subdirectory(remmina-plugins)
-add_subdirectory(remmina-plugins-gnome)
-
+find_required_package(GTK3)
+if(GTK3_FOUND)
+	add_subdirectory(remmina)
+	add_subdirectory(remmina-plugins)
+	add_subdirectory(remmina-plugins-gnome)
+endif()

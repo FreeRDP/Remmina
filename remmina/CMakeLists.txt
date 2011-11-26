@@ -90,11 +90,8 @@ set(REMMINA_SRCS
 
 add_executable(remmina ${REMMINA_SRCS})
 
-find_required_package(GTK3)
-if(GTK3_FOUND)
-	include_directories(${GTK3_INCLUDE_DIRS})
-	target_link_libraries(remmina ${GTK3_LIBRARY_DIRS})
-endif()
+include_directories(${GTK3_INCLUDE_DIRS})
+target_link_libraries(remmina ${GTK3_LIBRARIES})
 
 find_suggested_package(AVAHI)
 if(AVAHI_FOUND)

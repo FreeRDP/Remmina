@@ -17,19 +17,22 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
-find_path(XKBFILE_INCLUDE_DIR NAMES XKBfile.h
-          PATH_SUFFIXES X11/extensions)
+find_package(PkgConfig)
+pkg_check_modules(PC_XKBFILE xkbfile)
 
-find_library(XKBFILE_LIBRARY NAMES xkbfile)
+find_path(XKBFILE_INCLUDE_DIR NAMES XKBfile.h
+	HINTS ${PC_XKBFILE_INCLUDEDIR} ${PC_XKBFILE_INCLUDE_DIRS}
+	PATH_SUFFIXES X11/extensions)
+
+find_library(XKBFILE_LIBRARY NAMES xkbfile
+	HINTS ${PC_XKBFILE_LIBDIR} ${PC_XKBFILE_LIBRARY_DIRS})
 
 include(FindPackageHandleStandardArgs)
 
 find_package_handle_standard_args(XKBFILE DEFAULT_MSG XKBFILE_LIBRARY XKBFILE_INCLUDE_DIR)
 
-if(XKBFILE_FOUND)
-	set(XKBFILE_LIBRARIES ${XKBFILE_LIBRARY})
-	set(XKBFILE_INCLUDE_DIRS ${XKBFILE_INCLUDE_DIR})
-endif()
+set(XKBFILE_LIBRARIES ${XKBFILE_LIBRARY})
+set(XKBFILE_INCLUDE_DIRS ${XKBFILE_INCLUDE_DIR})
 
 mark_as_advanced(XKBFILE_INCLUDE_DIR XKBFILE_LIBRARY)
 

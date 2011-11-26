@@ -26,10 +26,8 @@ set_target_properties(remmina-plugin-telepathy PROPERTIES PREFIX "")
 
 find_required_package(GTK3)
 
-if(GTK3_FOUND)
-	include_directories(${GTK3_INCLUDE_DIRS})
-	target_link_libraries(remmina-plugin-telepathy ${GTK3_LIBRARY_DIRS})
-endif()
+include_directories(${REMMINA_COMMON_INCLUDE_DIRS})
+target_link_libraries(remmina-plugin-telepathy ${REMMINA_COMMON_LIBRARIES})
 
 install(TARGETS remmina-plugin-telepathy DESTINATION ${REMMINA_PLUGINDIR})
 
