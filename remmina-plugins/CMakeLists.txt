@@ -25,10 +25,16 @@ if(GTK3_FOUND)
 	set(REMMINA_COMMON_LIBRARIES ${GTK3_LIBRARIES})
 endif()
 
-find_required_package(SSH)
+find_suggested_package(LIBSSH)
+if(LIBSSH_FOUND)
+	add_definitions(-DHAVE_LIBSSH)
+	include_directories(${SSH_INCLUDE_DIRS})
+	target_link_libraries(remmina ${SSH_LIBRARIES})
+endif()
+
 find_required_package(XKBFILE)
 
-if(SSH_FOUND AND XKBFILE_FOUND)
+if(LIBSSH_FOUND AND XKBFILE_FOUND)
 	add_subdirectory(nx)
 endif()
 
