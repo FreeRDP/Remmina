@@ -34,6 +34,7 @@ set(REMMINA_PLUGIN_RDP_SRCS
 	)
 
 add_library(remmina-plugin-rdp ${REMMINA_PLUGIN_RDP_SRCS})
+set_target_properties(remmina-plugin-rdp PROPERTIES PREFIX "")
 
 find_required_package(GTK3)
 if(GTK3_FOUND)
