@@ -125,6 +125,7 @@ if(APPINDICATOR_FOUND)
 	target_link_libraries(remmina ${APPINDICATOR_LIBRARIES})
 endif()
 
+add_subdirectory(po)
 add_subdirectory(icons)
 add_subdirectory(desktop)
 
