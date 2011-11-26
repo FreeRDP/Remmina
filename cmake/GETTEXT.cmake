@@ -17,27 +17,19 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
-include_directories(${CMAKE_SOURCE_DIR}/remmina-plugins)
+find_suggested_package(Gettext)
 
-add_subdirectory(nx)
-add_subdirectory(xdmcp)
-
-find_suggested_package(FREERDP)
-if(FREERDP_FOUND)
-	add_subdirectory(rdp)
-endif()
-
-find_suggested_package(TELEPATHY)
-if(TELEPATHY_FOUND)
-	add_subdirectory(telepathy)
-endif()
-
-find_suggested_package(ZLIB)
-
-if(ZLIB_FOUND)
-	add_subdirectory(libvncserver)
-	add_subdirectory(vnc)
-endif()
-
-add_subdirectory(po)
+function(gettext po_dir package_name)
+	set(mo_files)
+	file(GLOB po_files ${po_dir}/*.po)
+	foreach(po_file ${po_files})
+		get_filename_component(lang ${po_file} NAME_WE)
+		set(mo_file ${CMAKE_CURRENT_BINARY_DIR}/${lang}.mo)
+		add_custom_command(OUTPUT ${mo_file} COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${mo_file} ${po_file} DEPENDS ${po_file})
+		install(FILES ${mo_file} DESTINATION share/locale/${lang}/LC_MESSAGES RENAME ${package_name}.mo)
+		set(mo_files ${mo_files} ${mo_file})
+	endforeach()
+	set(translations-target "${package_name}-translations")
+	add_custom_target(${translations-target} ALL DEPENDS ${mo_files})
+endfunction()
 
