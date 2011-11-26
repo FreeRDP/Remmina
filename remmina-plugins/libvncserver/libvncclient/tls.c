@@ -31,8 +31,10 @@
 
 #ifdef LIBVNCSERVER_WITH_CLIENT_TLS
 
-static const char *rfbTLSPriority = "NORMAL:+DHE-DSS:+RSA:+DHE-RSA:+SRP";
-static const char *rfbAnonTLSPriority= "NORMAL:+ANON-DH";
+static const int rfbCertTypePriority[] = { GNUTLS_CRT_X509, 0 };
+static const int rfbProtoPriority[]= { GNUTLS_TLS1_1, GNUTLS_TLS1_0, GNUTLS_SSL3, 0 };
+static const int rfbKXPriority[] = {GNUTLS_KX_DHE_DSS, GNUTLS_KX_RSA, GNUTLS_KX_DHE_RSA, GNUTLS_KX_SRP, 0};
+static const int rfbKXAnon[] = {GNUTLS_KX_ANON_DH, 0};
 
 #define DH_BITS 1024
 static gnutls_dh_params_t rfbDHParams;
@@ -131,7 +133,6 @@ static rfbBool
 InitializeTLSSession(rfbClient* client, rfbBool anonTLS)
 {
   int ret;
-  const char *p;
 
   if (client->tlsSession) return TRUE;
 
@@ -141,10 +142,12 @@ InitializeTLSSession(rfbClient* client, rfbBool anonTLS)
     return FALSE;
   }
 
-  if ((ret = gnutls_priority_set_direct(client->tlsSession,
-    anonTLS ? rfbAnonTLSPriority : rfbTLSPriority, &p)) < 0)
+  if ((ret = gnutls_set_default_priority(client->tlsSession)) < 0 ||
+      (ret = gnutls_kx_set_priority(client->tlsSession, anonTLS ? rfbKXAnon : rfbKXPriority)) < 0 ||
+      (ret = gnutls_certificate_type_set_priority(client->tlsSession, rfbCertTypePriority)) < 0 ||
+      (ret = gnutls_protocol_set_priority(client->tlsSession, rfbProtoPriority)) < 0)
   {
-    rfbClientLog("Warning: Failed to set TLS priority: %s (%s).\n", gnutls_strerror(ret), p);
+    rfbClientLog("Warning: Failed to set TLS priority: %s.\n", gnutls_strerror(ret));
   }
 
   gnutls_transport_set_ptr(client->tlsSession, (gnutls_transport_ptr_t)client);
