@@ -42,5 +42,8 @@ if(GTK3_FOUND)
 	target_link_libraries(remmina-plugin-rdp ${GTK3_LIBRARY_DIRS})
 endif()
 
+include_directories(${FREERDP_INCLUDE_DIRS})
+target_link_libraries(remmina-plugin-rdp ${FREERDP_LIBRARY_DIRS})
+
 install(TARGETS remmina-plugin-rdp DESTINATION ${REMMINA_PLUGINDIR})
 
