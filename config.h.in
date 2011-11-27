@@ -1,0 +1,23 @@
+#ifndef __CONFIG_H
+#define __CONFIG_H
+
+#cmakedefine HAVE_SYS_PARAM_H
+#cmakedefine HAVE_SYS_SOCKET_H
+#cmakedefine HAVE_ARPA_INET_H
+#cmakedefine HAVE_NETINET_IN_H
+#cmakedefine HAVE_TERMIOS_H
+#cmakedefine HAVE_NETDB_H
+#cmakedefine HAVE_FCNTL_H
+#cmakedefine HAVE_UNISTD_H
+#cmakedefine HAVE_SYS_UN_H
+#cmakedefine HAVE_ERRNO_H
+
+#define remmina			"remmina"
+#define VERSION			"${REMMINA_VERSION}"
+#define GETTEXT_PACKAGE		remmina
+
+#define REMMINA_DATADIR		"${REMMINA_DATADIR}"
+#define REMMINA_LOCALEDIR	"${REMMINA_LOCALEDIR}"
+#define REMMINA_PLUGINDIR	"${REMMINA_PLUGINDIR}"
+
+#endif

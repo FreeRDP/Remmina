@@ -1,6 +1,9 @@
+*.a
 *.o
 *.lo
 *.la
+*.so
+*.mo
 *.gmo
 *.swp
 *.tar.gz
@@ -14,7 +17,6 @@ Makefile.in
 aclocal.m4
 _configs.sed
 config.h
-config.h.in
 config.log
 config.status
 config.guess
@@ -31,6 +33,18 @@ ltmain.sh
 */po/POTFILES
 */po/stamp-it
 
+.project
+.cproject
+.settings
+
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+install_manifest.txt
+
+remmina/remmina
+
+rfbint.h
 remmina/src/remmina
 remmina/desktop/remmina.desktop
 remmina-plugins/libvncserver/rfb/rfbconfig.h
