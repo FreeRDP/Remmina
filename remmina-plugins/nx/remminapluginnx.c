@@ -18,6 +18,8 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#include <errno.h>
+#include <pthread.h>
 #include "common/remminaplugincommon.h"
 #include <gtk/gtkx.h>
 #include <time.h>
