@@ -24,18 +24,22 @@ Mailing List: https://lists.sourceforge.net/mailman/listinfo/remmina-common
 Prerequisites
 -------------
 
-On Ubuntu, install the following packages before compiling:
+On Ubuntu 11.10 (Oneiric), install the following packages before compiling:
 
-sudo apt-get install intltool libgtk-3-dev libssh-dev libavahi-ui-gtk3-dev libvte-2.90-dev
-libunique-dev libtelepathy-glib-dev libgnome-keyring-dev libappindicator3-dev
+sudo add-apt-repository ppa:chihchun/freerdp # for freerdp v1
+sudo apt-get update
+sudo apt-get install cmake intltool \
+  libgtk-3-dev libssh-dev libavahi-ui-gtk3-dev libvte-dev \
+  libunique-dev libtelepathy-glib-dev libgnome-keyring-dev \
+  libappindicator3-dev libgcrypt11-dev libgnutls-dev \
+  libfreerdp-dev libjpeg-dev
 
 Compilation
 -----------
 
 To compile and install, perform the following for all of the three main packages:
 
-./autogen.sh
-./configure
+mkdir build
+cmake --build=build .
 make
 sudo make install
-
