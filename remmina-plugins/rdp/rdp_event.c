@@ -24,7 +24,7 @@
 
 #include "rdp_plugin.h"
 #include "rdp_event.h"
-#include "rdp_ui.h"
+#include "rdp_gdi.h"
 #include <gdk/gdkkeysyms.h>
 #include <cairo/cairo-xlib.h>
 #include <freerdp/kbd/kbd.h>
@@ -55,7 +55,7 @@ remmina_rdp_event_release_key (RemminaProtocolWidget *gp, gint scancode)
     gint i;
 
     gpdata = GET_DATA (gp);
-    rdp_event.type = REMMINA_PLUGIN_RDP_EVENT_TYPE_SCANCODE;
+    rdp_event.type = REMMINA_RDP_EVENT_TYPE_SCANCODE;
     if (scancode == 0)
     {
         /* Send all release key events for previously pressed keys */
@@ -241,7 +241,7 @@ remmina_rdp_event_on_motion (GtkWidget *widget, GdkEventMotion *event, RemminaPr
 {
     RemminaPluginRdpEvent rdp_event = { 0 };
 
-    rdp_event.type = REMMINA_PLUGIN_RDP_EVENT_TYPE_MOUSE;
+    rdp_event.type = REMMINA_RDP_EVENT_TYPE_MOUSE;
     rdp_event.mouse_event.flags = PTR_FLAGS_MOVE;
     remmina_rdp_event_translate_pos (gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
     remmina_rdp_event_event_push (gp, &rdp_event);
@@ -251,15 +251,15 @@ remmina_rdp_event_on_motion (GtkWidget *widget, GdkEventMotion *event, RemminaPr
 static gboolean
 remmina_rdp_event_on_button (GtkWidget *widget, GdkEventButton *event, RemminaProtocolWidget *gp)
 {
-    RemminaPluginRdpEvent rdp_event = { 0 };
     gint flag;
+    RemminaPluginRdpEvent rdp_event = { 0 };
 
     /* We only accept 3 buttons */
     if (event->button < 1 || event->button > 3) return FALSE;
     /* We bypass 2button-press and 3button-press events */
     if (event->type != GDK_BUTTON_PRESS && event->type != GDK_BUTTON_RELEASE) return TRUE;
 
-    rdp_event.type = REMMINA_PLUGIN_RDP_EVENT_TYPE_MOUSE;
+    rdp_event.type = REMMINA_RDP_EVENT_TYPE_MOUSE;
     remmina_rdp_event_translate_pos (gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
 
     flag = 0;
@@ -290,10 +290,10 @@ remmina_rdp_event_on_button (GtkWidget *widget, GdkEventButton *event, RemminaPr
 static gboolean
 remmina_rdp_event_on_scroll (GtkWidget *widget, GdkEventScroll *event, RemminaProtocolWidget *gp)
 {
-    RemminaPluginRdpEvent rdp_event = { 0 };
     gint flag;
+    RemminaPluginRdpEvent rdp_event = { 0 };
 
-    rdp_event.type = REMMINA_PLUGIN_RDP_EVENT_TYPE_MOUSE;
+    rdp_event.type = REMMINA_RDP_EVENT_TYPE_MOUSE;
     flag = 0;
     switch (event->direction)
     {
@@ -316,15 +316,16 @@ remmina_rdp_event_on_scroll (GtkWidget *widget, GdkEventScroll *event, RemminaPr
 static gboolean
 remmina_rdp_event_on_key (GtkWidget *widget, GdkEventKey *event, RemminaProtocolWidget *gp)
 {
-    RemminaPluginRdpData *gpdata;
-    RemminaPluginRdpEvent rdp_event;
     Display *display;
     KeyCode cooked_keycode;
+    RemminaPluginRdpData *gpdata;
+    RemminaPluginRdpEvent rdp_event;
 
     gpdata = GET_DATA (gp);
-    rdp_event.type = REMMINA_PLUGIN_RDP_EVENT_TYPE_SCANCODE;
+    rdp_event.type = REMMINA_RDP_EVENT_TYPE_SCANCODE;
     rdp_event.key_event.up = (event->type == GDK_KEY_PRESS ? False : True);
     rdp_event.key_event.extended = False;
+
     switch (event->keyval)
     {
     case GDK_KEY_Pause:
@@ -375,19 +376,20 @@ remmina_rdp_event_on_key (GtkWidget *widget, GdkEventKey *event, RemminaProtocol
             remmina_rdp_event_release_key (gp, rdp_event.key_event.key_code);
         }
     }
+
     return TRUE;
 }
 
 void
 remmina_rdp_event_init (RemminaProtocolWidget *gp)
 {
-    RemminaPluginRdpData *gpdata;
-    gint flags;
-    gchar *s;
-    XPixmapFormatValues *pfs;
-    XPixmapFormatValues *pf;
     gint n;
     gint i;
+    gchar *s;
+    gint flags;
+    XPixmapFormatValues *pf;
+    XPixmapFormatValues *pfs;
+    RemminaPluginRdpData *gpdata;
 
     gpdata = GET_DATA (gp);
     gpdata->drawing_area = gtk_drawing_area_new ();
@@ -424,6 +426,7 @@ remmina_rdp_event_init (RemminaProtocolWidget *gp)
     gpdata->pressed_keys = g_array_new (FALSE, TRUE, sizeof (gint));
     gpdata->event_queue = g_async_queue_new_full (g_free);
     gpdata->ui_queue = g_async_queue_new ();
+
     if (pipe (gpdata->event_pipe))
     {
         g_print ("Error creating pipes.\n");
@@ -442,6 +445,7 @@ remmina_rdp_event_init (RemminaProtocolWidget *gp)
     gpdata->depth = DefaultDepth (gpdata->display, DefaultScreen (gpdata->display));
     gpdata->visual = GDK_VISUAL_XVISUAL (gdk_visual_get_best_with_depth (gpdata->depth));
     pfs = XListPixmapFormats (gpdata->display, &n);
+
     if (pfs)
     {
         for (i = 0; i < n; i++)
@@ -487,7 +491,7 @@ remmina_rdp_event_uninit (RemminaProtocolWidget *gp)
     }
     while ((ui = (RemminaPluginRdpUiObject *) g_async_queue_try_pop (gpdata->ui_queue)) != NULL)
     {
-        remmina_rdp_ui_object_free (gp, ui);
+        rf_object_free (gp, ui);
     }
 
     if (gpdata->gc)
@@ -807,19 +811,19 @@ remmina_rdp_event_queue_ui (RemminaProtocolWidget *gp)
     {
         switch (ui->type)
         {
-        case REMMINA_PLUGIN_RDP_UI_CONNECTED:
+        case REMMINA_RDP_UI_CONNECTED:
             remmina_rdp_event_connected (gp, ui);
             break;
-        case REMMINA_PLUGIN_RDP_UI_RFX:
+        case REMMINA_RDP_UI_RFX:
             remmina_rdp_event_rfx (gp, ui);
             break;
-        case REMMINA_PLUGIN_RDP_UI_NOCODEC:
+        case REMMINA_RDP_UI_NOCODEC:
             remmina_rdp_event_nocodec (gp, ui);
             break;
         default:
             break;
         }
-        remmina_rdp_ui_object_free (gp, ui);
+        rf_object_free (gp, ui);
         return TRUE;
     }
     else

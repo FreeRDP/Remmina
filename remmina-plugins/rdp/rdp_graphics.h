@@ -18,20 +18,41 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __REMMINA_RDP_UI_H__
-#define __REMMINA_RDP_UI_H__
+#ifndef __REMMINA_RDP_GRAPHICS_H__
+#define __REMMINA_RDP_GRAPHICS_H__
 
-G_BEGIN_DECLS
+#include "rdp_plugin.h"
 
-void remmina_rdp_ui_init (RemminaProtocolWidget *gp);
-void remmina_rdp_ui_pre_connect (RemminaProtocolWidget *gp);
-void remmina_rdp_ui_post_connect (RemminaProtocolWidget *gp);
-void remmina_rdp_ui_uninit (RemminaProtocolWidget *gp);
-void remmina_rdp_ui_get_fds (RemminaProtocolWidget *gp, void **rfds, int *rcount);
-boolean remmina_rdp_ui_check_fds (RemminaProtocolWidget *gp);
-void remmina_rdp_ui_object_free (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *obj);
+struct rf_pointer
+{
+    rdpPointer pointer;
+    Cursor cursor;
+};
+typedef struct rf_pointer rfPointer;
 
-G_END_DECLS
+struct rf_bitmap
+{
+    rdpBitmap bitmap;
+    Pixmap pixmap;
+};
+typedef struct rf_bitmap rfBitmap;
+
+struct rf_glyph
+{
+    rdpGlyph glyph;
+    Pixmap pixmap;
+};
+typedef struct rf_glyph rfGlyph;
+
+struct rf_context
+{
+    rdpContext _p;
+
+    rdpSettings* settings;
+};
+typedef struct rf_context rfContext;
+
+void rf_register_graphics(rdpGraphics* graphics);
 
 #endif
 

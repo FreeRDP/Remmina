@@ -53,11 +53,11 @@ remmina_rdp_settings_get_keyboard_layout (void)
 }
 
 #define REMMINA_TYPE_PLUGIN_RDPSET_TABLE               (remmina_rdp_settings_table_get_type ())
-#define REMMINA_PLUGIN_RDPSET_TABLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_PLUGIN_RDPSET_TABLE, RemminaPluginRdpsetTable))
-#define REMMINA_PLUGIN_RDPSET_TABLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_PLUGIN_RDPSET_TABLE, RemminaPluginRdpsetTableClass))
+#define REMMINA_RDPSET_TABLE(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_PLUGIN_RDPSET_TABLE, RemminaPluginRdpsetTable))
+#define REMMINA_RDPSET_TABLE_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_PLUGIN_RDPSET_TABLE, RemminaPluginRdpsetTableClass))
 #define REMMINA_IS_PLUGIN_RDPSET_TABLE(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_PLUGIN_RDPSET_TABLE))
 #define REMMINA_IS_PLUGIN_RDPSET_TABLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_PLUGIN_RDPSET_TABLE))
-#define REMMINA_PLUGIN_RDPSET_TABLE_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_PLUGIN_RDPSET_TABLE, RemminaPluginRdpsetTableClass))
+#define REMMINA_RDPSET_TABLE_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_PLUGIN_RDPSET_TABLE, RemminaPluginRdpsetTableClass))
 
 typedef struct _RemminaPluginRdpsetTable
 {
@@ -104,7 +104,7 @@ remmina_rdp_settings_table_destroy (GtkWidget *widget, gpointer data)
     guint new_layout;
     gchar *s;
 
-    table = REMMINA_PLUGIN_RDPSET_TABLE (widget);
+    table = REMMINA_RDPSET_TABLE (widget);
     if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (table->keyboard_layout_combo), &iter))
     {
         gtk_tree_model_get (GTK_TREE_MODEL (table->keyboard_layout_store), &iter, 0, &new_layout, -1);
