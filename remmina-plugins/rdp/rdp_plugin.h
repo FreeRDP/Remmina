@@ -18,8 +18,8 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __REMMINAPLUGINRDP_H__
-#define __REMMINAPLUGINRDP_H__
+#ifndef __REMMINA_RDP_H__
+#define __REMMINA_RDP_H__
 
 #include "common/remminaplugincommon.h"
 #include <freerdp/freerdp.h>

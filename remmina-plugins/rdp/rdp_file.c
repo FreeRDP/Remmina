@@ -19,11 +19,11 @@
  */
 
 #include "common/remminaplugincommon.h"
-#include "remminapluginrdp.h"
-#include "remminapluginrdpfile.h"
+#include "rdp_plugin.h"
+#include "rdp_file.h"
 
 gboolean
-remmina_plugin_rdp_file_import_test (const gchar *from_file)
+remmina_rdp_file_import_test (const gchar *from_file)
 {
     gchar *ext;
 
@@ -36,7 +36,7 @@ remmina_plugin_rdp_file_import_test (const gchar *from_file)
 }
 
 static void
-remmina_plugin_rdp_file_import_field (RemminaFile *remminafile, const gchar *key, const gchar *value)
+remmina_rdp_file_import_field (RemminaFile *remminafile, const gchar *key, const gchar *value)
 {
     if (g_strcmp0 (key, "desktopwidth") == 0)
     {
@@ -106,7 +106,7 @@ remmina_plugin_rdp_file_import_field (RemminaFile *remminafile, const gchar *key
 }
 
 static RemminaFile*
-remmina_plugin_rdp_file_import_channel (GIOChannel *channel)
+remmina_rdp_file_import_channel (GIOChannel *channel)
 {
     RemminaFile *remminafile;
     GError *error = NULL;
@@ -163,7 +163,7 @@ remmina_plugin_rdp_file_import_channel (GIOChannel *channel)
             if (p)
             {
                 p++;
-                remmina_plugin_rdp_file_import_field (remminafile, line, p);
+                remmina_rdp_file_import_field (remminafile, line, p);
             }
         }
         g_free (line);
@@ -185,7 +185,7 @@ remmina_plugin_rdp_file_import_channel (GIOChannel *channel)
 }
 
 RemminaFile*
-remmina_plugin_rdp_file_import (const gchar *from_file)
+remmina_rdp_file_import (const gchar *from_file)
 {
     RemminaFile *remminafile;
     GIOChannel *channel;
@@ -197,20 +197,20 @@ remmina_plugin_rdp_file_import (const gchar *from_file)
         g_print ("Failed to import %s: %s\n", from_file, error->message);
         return NULL;
     }    
-    remminafile = remmina_plugin_rdp_file_import_channel (channel);
+    remminafile = remmina_rdp_file_import_channel (channel);
     g_io_channel_close (channel);
     return remminafile;
 }
 
 gboolean
-remmina_plugin_rdp_file_export_test (RemminaFile *remminafile)
+remmina_rdp_file_export_test (RemminaFile *remminafile)
 {
     if (g_strcmp0 (remmina_plugin_service->file_get_string (remminafile, "protocol"), "RDP") == 0) return TRUE;
     return FALSE;
 }
 
 gboolean
-remmina_plugin_rdp_file_export_channel (RemminaFile *remminafile, FILE *fp)
+remmina_rdp_file_export_channel (RemminaFile *remminafile, FILE *fp)
 {
     gchar *s;
     gchar *p;
@@ -270,7 +270,7 @@ remmina_plugin_rdp_file_export_channel (RemminaFile *remminafile, FILE *fp)
 }
 
 gboolean
-remmina_plugin_rdp_file_export (RemminaFile *remminafile, const gchar *to_file)
+remmina_rdp_file_export (RemminaFile *remminafile, const gchar *to_file)
 {
     FILE *fp;
     gboolean ret;
@@ -293,7 +293,7 @@ remmina_plugin_rdp_file_export (RemminaFile *remminafile, const gchar *to_file)
         return FALSE;
     }    
     g_free (p);
-    ret = remmina_plugin_rdp_file_export_channel (remminafile, fp);
+    ret = remmina_rdp_file_export_channel (remminafile, fp);
     fclose (fp);
 
     return ret;

@@ -18,18 +18,15 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __REMMINAPLUGINRDPUI_H__
-#define __REMMINAPLUGINRDPUI_H__
+#ifndef __REMMINA_RDP_FILE_H__
+#define __REMMINA_RDP_FILE_H__
 
 G_BEGIN_DECLS
 
-void remmina_plugin_rdpui_init (RemminaProtocolWidget *gp);
-void remmina_plugin_rdpui_pre_connect (RemminaProtocolWidget *gp);
-void remmina_plugin_rdpui_post_connect (RemminaProtocolWidget *gp);
-void remmina_plugin_rdpui_uninit (RemminaProtocolWidget *gp);
-void remmina_plugin_rdpui_get_fds (RemminaProtocolWidget *gp, void **rfds, int *rcount);
-boolean remmina_plugin_rdpui_check_fds (RemminaProtocolWidget *gp);
-void remmina_plugin_rdpui_object_free (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *obj);
+gboolean remmina_rdp_file_import_test (const gchar *from_file);
+RemminaFile* remmina_rdp_file_import (const gchar *from_file);
+gboolean remmina_rdp_file_export_test (RemminaFile *remminafile);
+gboolean remmina_rdp_file_export (RemminaFile *remminafile, const gchar *to_file);
 
 G_END_DECLS
 
