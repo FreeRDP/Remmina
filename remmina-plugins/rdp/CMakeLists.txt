@@ -1,4 +1,4 @@
-# remmina-plugin-gtk - The GTK+ Remote Desktop Client
+# remmina-plugin-rdp - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2011 Marc-Andre Moreau
 #
@@ -21,16 +21,16 @@ set(CMAKE_THREAD_PREFER_PTHREAD)
 find_package(Threads)
 
 set(REMMINA_PLUGIN_RDP_SRCS
-	remminapluginrdp.c
-	remminapluginrdp.h
-	remminapluginrdpui.c
-	remminapluginrdpui.h
-	remminapluginrdpev.c
-	remminapluginrdpev.h
-	remminapluginrdpfile.c
-	remminapluginrdpfile.h
-	remminapluginrdpset.c
-	remminapluginrdpset.h
+	rdp_plugin.c
+	rdp_plugin.h
+	rdp_event.c
+	rdp_event.h
+	rdp_file.c
+	rdp_file.h
+	rdp_settings.c
+	rdp_settings.h
+	rdp_ui.c
+	rdp_ui.h
 	)
 
 add_library(remmina-plugin-rdp ${REMMINA_PLUGIN_RDP_SRCS})
@@ -40,4 +40,3 @@ include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${FREERDP_INCLUDE_DIRS})
 target_link_libraries(remmina-plugin-rdp ${REMMINA_COMMON_LIBRARIES} ${FREERDP_LIBRARIES})
 
 install(TARGETS remmina-plugin-rdp DESTINATION ${REMMINA_PLUGINDIR})
-
