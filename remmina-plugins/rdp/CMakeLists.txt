@@ -29,8 +29,10 @@ set(REMMINA_PLUGIN_RDP_SRCS
 	rdp_file.h
 	rdp_settings.c
 	rdp_settings.h
-	rdp_ui.c
-	rdp_ui.h
+	rdp_gdi.c
+	rdp_gdi.h
+	rdp_graphics.c
+	rdp_graphics.h
 	)
 
 add_library(remmina-plugin-rdp ${REMMINA_PLUGIN_RDP_SRCS})

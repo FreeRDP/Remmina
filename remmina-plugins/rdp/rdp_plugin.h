@@ -100,8 +100,8 @@ typedef struct _RemminaPluginRdpData
 
 typedef enum
 {
-    REMMINA_PLUGIN_RDP_EVENT_TYPE_SCANCODE,
-    REMMINA_PLUGIN_RDP_EVENT_TYPE_MOUSE
+    REMMINA_RDP_EVENT_TYPE_SCANCODE,
+    REMMINA_RDP_EVENT_TYPE_MOUSE
 } RemminaPluginRdpEventType;
 
 typedef struct _RemminaPluginRdpEvent
@@ -126,9 +126,9 @@ typedef struct _RemminaPluginRdpEvent
 
 typedef enum
 {
-    REMMINA_PLUGIN_RDP_UI_CONNECTED = 0,
-    REMMINA_PLUGIN_RDP_UI_RFX,
-    REMMINA_PLUGIN_RDP_UI_NOCODEC
+    REMMINA_RDP_UI_CONNECTED = 0,
+    REMMINA_RDP_UI_RFX,
+    REMMINA_RDP_UI_NOCODEC
 } RemminaPluginRdpUiType;
 
 typedef struct _RemminaPluginRdpUiObject
