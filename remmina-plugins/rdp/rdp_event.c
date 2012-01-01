@@ -22,15 +22,15 @@
 
 /* X11 drawings were ported from xfreerdp */
 
-#include "remminapluginrdp.h"
-#include "remminapluginrdpev.h"
-#include "remminapluginrdpui.h"
+#include "rdp_plugin.h"
+#include "rdp_event.h"
+#include "rdp_ui.h"
 #include <gdk/gdkkeysyms.h>
 #include <cairo/cairo-xlib.h>
 #include <freerdp/kbd/kbd.h>
 
 static void
-remmina_plugin_rdpev_event_push (RemminaProtocolWidget *gp, const RemminaPluginRdpEvent *e)
+remmina_rdp_event_event_push (RemminaProtocolWidget *gp, const RemminaPluginRdpEvent *e)
 {
     RemminaPluginRdpData *gpdata;
     RemminaPluginRdpEvent *event;
@@ -47,7 +47,7 @@ remmina_plugin_rdpev_event_push (RemminaProtocolWidget *gp, const RemminaPluginR
 }
 
 static void
-remmina_plugin_rdpev_release_key (RemminaProtocolWidget *gp, gint scancode)
+remmina_rdp_event_release_key (RemminaProtocolWidget *gp, gint scancode)
 {
     RemminaPluginRdpData *gpdata;
     RemminaPluginRdpEvent rdp_event = { 0 };
@@ -63,7 +63,7 @@ remmina_plugin_rdpev_release_key (RemminaProtocolWidget *gp, gint scancode)
         for (i = 0; i < gpdata->pressed_keys->len; i++)
         {
             rdp_event.key_event.key_code = g_array_index (gpdata->pressed_keys, gint, i);
-            remmina_plugin_rdpev_event_push (gp, &rdp_event);
+            remmina_rdp_event_event_push (gp, &rdp_event);
         }
         g_array_set_size (gpdata->pressed_keys, 0);
     }
@@ -83,7 +83,7 @@ remmina_plugin_rdpev_release_key (RemminaProtocolWidget *gp, gint scancode)
 }
 
 static void
-remmina_plugin_rdpev_scale_area (RemminaProtocolWidget *gp, gint *x, gint *y, gint *w, gint *h)
+remmina_rdp_event_scale_area (RemminaProtocolWidget *gp, gint *x, gint *y, gint *w, gint *h)
 {
     RemminaPluginRdpData *gpdata;
     gint sx, sy, sw, sh;
@@ -120,20 +120,20 @@ remmina_plugin_rdpev_scale_area (RemminaProtocolWidget *gp, gint *x, gint *y, gi
 }
 
 static void
-remmina_plugin_rdpev_update_rect (RemminaProtocolWidget *gp, gint x, gint y, gint w, gint h)
+remmina_rdp_event_update_rect (RemminaProtocolWidget *gp, gint x, gint y, gint w, gint h)
 {
     RemminaPluginRdpData *gpdata;
 
     gpdata = GET_DATA (gp);
     if (remmina_plugin_service->protocol_plugin_get_scale (gp))
     {
-        remmina_plugin_rdpev_scale_area (gp, &x, &y, &w, &h);
+        remmina_rdp_event_scale_area (gp, &x, &y, &w, &h);
     }
     gtk_widget_queue_draw_area (gpdata->drawing_area, x, y, w, h);
 }
 
 static gboolean
-remmina_plugin_rdpev_update_scale_factor (RemminaProtocolWidget *gp)
+remmina_rdp_event_update_scale_factor (RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
     RemminaFile *remminafile;
@@ -183,7 +183,7 @@ remmina_plugin_rdpev_update_scale_factor (RemminaProtocolWidget *gp)
 }
 
 static gboolean
-remmina_plugin_rdpev_on_draw (GtkWidget *widget, cairo_t *context, RemminaProtocolWidget *gp)
+remmina_rdp_event_on_draw (GtkWidget *widget, cairo_t *context, RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
     gboolean scale;
@@ -207,19 +207,19 @@ remmina_plugin_rdpev_on_draw (GtkWidget *widget, cairo_t *context, RemminaProtoc
 }
 
 static gboolean
-remmina_plugin_rdpev_on_configure (GtkWidget *widget, GdkEventConfigure *event, RemminaProtocolWidget *gp)
+remmina_rdp_event_on_configure (GtkWidget *widget, GdkEventConfigure *event, RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
 
     gpdata = GET_DATA (gp);
     /* We do a delayed reallocating to improve performance */
     if (gpdata->scale_handler) g_source_remove (gpdata->scale_handler);
-    gpdata->scale_handler = g_timeout_add (1000, (GSourceFunc) remmina_plugin_rdpev_update_scale_factor, gp);
+    gpdata->scale_handler = g_timeout_add (1000, (GSourceFunc) remmina_rdp_event_update_scale_factor, gp);
     return FALSE;
 }
 
 static void
-remmina_plugin_rdpev_translate_pos (RemminaProtocolWidget *gp, int ix, int iy, uint16 *ox, uint16 *oy)
+remmina_rdp_event_translate_pos (RemminaProtocolWidget *gp, int ix, int iy, uint16 *ox, uint16 *oy)
 {
     RemminaPluginRdpData *gpdata;
 
@@ -237,19 +237,19 @@ remmina_plugin_rdpev_translate_pos (RemminaProtocolWidget *gp, int ix, int iy, u
 }
 
 static gboolean
-remmina_plugin_rdpev_on_motion (GtkWidget *widget, GdkEventMotion *event, RemminaProtocolWidget *gp)
+remmina_rdp_event_on_motion (GtkWidget *widget, GdkEventMotion *event, RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpEvent rdp_event = { 0 };
 
     rdp_event.type = REMMINA_PLUGIN_RDP_EVENT_TYPE_MOUSE;
     rdp_event.mouse_event.flags = PTR_FLAGS_MOVE;
-    remmina_plugin_rdpev_translate_pos (gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
-    remmina_plugin_rdpev_event_push (gp, &rdp_event);
+    remmina_rdp_event_translate_pos (gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
+    remmina_rdp_event_event_push (gp, &rdp_event);
     return TRUE;
 }
 
 static gboolean
-remmina_plugin_rdpev_on_button (GtkWidget *widget, GdkEventButton *event, RemminaProtocolWidget *gp)
+remmina_rdp_event_on_button (GtkWidget *widget, GdkEventButton *event, RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpEvent rdp_event = { 0 };
     gint flag;
@@ -260,7 +260,7 @@ remmina_plugin_rdpev_on_button (GtkWidget *widget, GdkEventButton *event, Remmin
     if (event->type != GDK_BUTTON_PRESS && event->type != GDK_BUTTON_RELEASE) return TRUE;
 
     rdp_event.type = REMMINA_PLUGIN_RDP_EVENT_TYPE_MOUSE;
-    remmina_plugin_rdpev_translate_pos (gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
+    remmina_rdp_event_translate_pos (gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
 
     flag = 0;
     if (event->type == GDK_BUTTON_PRESS)
@@ -282,13 +282,13 @@ remmina_plugin_rdpev_on_button (GtkWidget *widget, GdkEventButton *event, Remmin
     if (flag != 0)
     {
         rdp_event.mouse_event.flags = flag;
-        remmina_plugin_rdpev_event_push (gp, &rdp_event);
+        remmina_rdp_event_event_push (gp, &rdp_event);
     }
     return TRUE;
 }
 
 static gboolean
-remmina_plugin_rdpev_on_scroll (GtkWidget *widget, GdkEventScroll *event, RemminaProtocolWidget *gp)
+remmina_rdp_event_on_scroll (GtkWidget *widget, GdkEventScroll *event, RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpEvent rdp_event = { 0 };
     gint flag;
@@ -308,13 +308,13 @@ remmina_plugin_rdpev_on_scroll (GtkWidget *widget, GdkEventScroll *event, Remmin
     }
 
     rdp_event.mouse_event.flags = flag;
-    remmina_plugin_rdpev_translate_pos (gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
-    remmina_plugin_rdpev_event_push (gp, &rdp_event);
+    remmina_rdp_event_translate_pos (gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
+    remmina_rdp_event_event_push (gp, &rdp_event);
     return TRUE;
 }
 
 static gboolean
-remmina_plugin_rdpev_on_key (GtkWidget *widget, GdkEventKey *event, RemminaProtocolWidget *gp)
+remmina_rdp_event_on_key (GtkWidget *widget, GdkEventKey *event, RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
     RemminaPluginRdpEvent rdp_event;
@@ -330,16 +330,16 @@ remmina_plugin_rdpev_on_key (GtkWidget *widget, GdkEventKey *event, RemminaProto
     case GDK_KEY_Pause:
         rdp_event.key_event.key_code = 0x1d;
         rdp_event.key_event.up = False;
-        remmina_plugin_rdpev_event_push (gp, &rdp_event);
+        remmina_rdp_event_event_push (gp, &rdp_event);
         rdp_event.key_event.key_code = 0x45;
         rdp_event.key_event.up = False;
-        remmina_plugin_rdpev_event_push (gp, &rdp_event);
+        remmina_rdp_event_event_push (gp, &rdp_event);
         rdp_event.key_event.key_code = 0x1d;
         rdp_event.key_event.up = True;
-        remmina_plugin_rdpev_event_push (gp, &rdp_event);
+        remmina_rdp_event_event_push (gp, &rdp_event);
         rdp_event.key_event.key_code = 0x45;
         rdp_event.key_event.up = True;
-        remmina_plugin_rdpev_event_push (gp, &rdp_event);
+        remmina_rdp_event_event_push (gp, &rdp_event);
         break;
     default:
         if (!gpdata->use_client_keymap)
@@ -358,7 +358,7 @@ remmina_plugin_rdpev_on_key (GtkWidget *widget, GdkEventKey *event, RemminaProto
         }
         if (rdp_event.key_event.key_code)
         {
-            remmina_plugin_rdpev_event_push (gp, &rdp_event);
+            remmina_rdp_event_event_push (gp, &rdp_event);
         }
         break;
     }
@@ -372,14 +372,14 @@ remmina_plugin_rdpev_on_key (GtkWidget *widget, GdkEventKey *event, RemminaProto
         }
         else
         {
-            remmina_plugin_rdpev_release_key (gp, rdp_event.key_event.key_code);
+            remmina_rdp_event_release_key (gp, rdp_event.key_event.key_code);
         }
     }
     return TRUE;
 }
 
 void
-remmina_plugin_rdpev_init (RemminaProtocolWidget *gp)
+remmina_rdp_event_init (RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
     gint flags;
@@ -405,21 +405,21 @@ remmina_plugin_rdpev_init (RemminaProtocolWidget *gp)
     g_free (s);
 
     g_signal_connect (G_OBJECT (gpdata->drawing_area), "draw",
-        G_CALLBACK (remmina_plugin_rdpev_on_draw), gp);
+        G_CALLBACK (remmina_rdp_event_on_draw), gp);
     g_signal_connect (G_OBJECT (gpdata->drawing_area), "configure-event",
-        G_CALLBACK (remmina_plugin_rdpev_on_configure), gp);
+        G_CALLBACK (remmina_rdp_event_on_configure), gp);
     g_signal_connect (G_OBJECT (gpdata->drawing_area), "motion-notify-event",
-        G_CALLBACK (remmina_plugin_rdpev_on_motion), gp);
+        G_CALLBACK (remmina_rdp_event_on_motion), gp);
     g_signal_connect (G_OBJECT (gpdata->drawing_area), "button-press-event",
-        G_CALLBACK (remmina_plugin_rdpev_on_button), gp);
+        G_CALLBACK (remmina_rdp_event_on_button), gp);
     g_signal_connect (G_OBJECT (gpdata->drawing_area), "button-release-event",
-        G_CALLBACK (remmina_plugin_rdpev_on_button), gp);
+        G_CALLBACK (remmina_rdp_event_on_button), gp);
     g_signal_connect (G_OBJECT (gpdata->drawing_area), "scroll-event",
-        G_CALLBACK (remmina_plugin_rdpev_on_scroll), gp);
+        G_CALLBACK (remmina_rdp_event_on_scroll), gp);
     g_signal_connect (G_OBJECT (gpdata->drawing_area), "key-press-event",
-        G_CALLBACK (remmina_plugin_rdpev_on_key), gp);
+        G_CALLBACK (remmina_rdp_event_on_key), gp);
     g_signal_connect (G_OBJECT (gpdata->drawing_area), "key-release-event",
-        G_CALLBACK (remmina_plugin_rdpev_on_key), gp);
+        G_CALLBACK (remmina_rdp_event_on_key), gp);
 
     gpdata->pressed_keys = g_array_new (FALSE, TRUE, sizeof (gint));
     gpdata->event_queue = g_async_queue_new_full (g_free);
@@ -459,17 +459,17 @@ remmina_plugin_rdpev_init (RemminaProtocolWidget *gp)
 }
 
 void
-remmina_plugin_rdpev_pre_connect (RemminaProtocolWidget *gp)
+remmina_rdp_event_pre_connect (RemminaProtocolWidget *gp)
 {
 }
 
 void
-remmina_plugin_rdpev_post_connect (RemminaProtocolWidget *gp)
+remmina_rdp_event_post_connect (RemminaProtocolWidget *gp)
 {
 }
 
 void
-remmina_plugin_rdpev_uninit (RemminaProtocolWidget *gp)
+remmina_rdp_event_uninit (RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
     RemminaPluginRdpUiObject *ui;
@@ -487,7 +487,7 @@ remmina_plugin_rdpev_uninit (RemminaProtocolWidget *gp)
     }
     while ((ui = (RemminaPluginRdpUiObject *) g_async_queue_try_pop (gpdata->ui_queue)) != NULL)
     {
-        remmina_plugin_rdpui_object_free (gp, ui);
+        remmina_rdp_ui_object_free (gp, ui);
     }
 
     if (gpdata->gc)
@@ -533,7 +533,7 @@ remmina_plugin_rdpev_uninit (RemminaProtocolWidget *gp)
 }
 
 void
-remmina_plugin_rdpev_update_scale (RemminaProtocolWidget *gp)
+remmina_rdp_event_update_scale (RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
     RemminaFile *remminafile;
@@ -560,7 +560,7 @@ remmina_plugin_rdpev_update_scale (RemminaProtocolWidget *gp)
     remmina_plugin_service->protocol_plugin_emit_signal (gp, "update-align");
 }
 
-static uint8 remmina_plugin_rdpev_rop2_map[] =
+static uint8 remmina_rdp_event_rop2_map[] =
 {
     GXclear,        /* 0 */
     GXnor,          /* DPon */
@@ -581,7 +581,7 @@ static uint8 remmina_plugin_rdpev_rop2_map[] =
 };
 
 static void
-remmina_plugin_rdpev_set_rop2 (RemminaPluginRdpData *gpdata, gint rop2)
+remmina_rdp_event_set_rop2 (RemminaPluginRdpData *gpdata, gint rop2)
 {
     if ((rop2 < 0x01) || (rop2 > 0x10))
     {
@@ -589,12 +589,12 @@ remmina_plugin_rdpev_set_rop2 (RemminaPluginRdpData *gpdata, gint rop2)
     }
     else
     {
-        XSetFunction (gpdata->display, gpdata->gc, remmina_plugin_rdpev_rop2_map[rop2 - 1]);
+        XSetFunction (gpdata->display, gpdata->gc, remmina_rdp_event_rop2_map[rop2 - 1]);
     }
 }
 
 static void
-remmina_plugin_rdpev_set_rop3 (RemminaPluginRdpData *gpdata, gint rop3)
+remmina_rdp_event_set_rop3 (RemminaPluginRdpData *gpdata, gint rop3)
 {
     switch (rop3)
     {
@@ -689,7 +689,7 @@ remmina_plugin_rdpev_set_rop3 (RemminaPluginRdpData *gpdata, gint rop3)
 }
 
 static void
-remmina_plugin_rdpev_insert_drawable (RemminaPluginRdpData *gpdata, guint object_id, Drawable obj)
+remmina_rdp_event_insert_drawable (RemminaPluginRdpData *gpdata, guint object_id, Drawable obj)
 {
     Drawable *p;
 
@@ -699,7 +699,7 @@ remmina_plugin_rdpev_insert_drawable (RemminaPluginRdpData *gpdata, guint object
 }
 
 static Drawable
-remmina_plugin_rdpev_get_drawable (RemminaPluginRdpData *gpdata, guint object_id)
+remmina_rdp_event_get_drawable (RemminaPluginRdpData *gpdata, guint object_id)
 {
     Drawable *p;
 
@@ -712,7 +712,7 @@ remmina_plugin_rdpev_get_drawable (RemminaPluginRdpData *gpdata, guint object_id
 }
 
 static void
-remmina_plugin_rdpev_connected (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+remmina_rdp_event_connected (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
     RemminaPluginRdpData *gpdata;
     XGCValues gcv = { 0 };
@@ -731,11 +731,11 @@ remmina_plugin_rdpev_connected (RemminaProtocolWidget *gp, RemminaPluginRdpUiObj
         8, 8, 1);
     gpdata->gc_mono = XCreateGC (gpdata->display, gpdata->bitmap_mono, GCGraphicsExposures, &gcv);
 
-    remmina_plugin_rdpev_update_scale (gp);
+    remmina_rdp_event_update_scale (gp);
 }
 
 static void
-remmina_plugin_rdpev_rfx (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+remmina_rdp_event_rfx (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
     XImage *image;
     gint i, tx, ty;
@@ -763,14 +763,14 @@ remmina_plugin_rdpev_rfx (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *u
         XPutImage(gpdata->display, gpdata->rgb_surface, gpdata->gc, image, 0, 0, tx, ty, 64, 64);
         XFree(image);
 
-        remmina_plugin_rdpev_update_rect (gp, tx, ty, message->rects[i].width, message->rects[i].height);
+        remmina_rdp_event_update_rect (gp, tx, ty, message->rects[i].width, message->rects[i].height);
     }
 
     XSetClipMask(gpdata->display, gpdata->gc, None);
 }
 
 static void
-remmina_plugin_rdpev_nocodec (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
+remmina_rdp_event_nocodec (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui)
 {
     RemminaPluginRdpData *gpdata;
     XImage *image;
@@ -787,7 +787,7 @@ remmina_plugin_rdpev_nocodec (RemminaProtocolWidget *gp, RemminaPluginRdpUiObjec
         ui->nocodec.left, ui->nocodec.top,
         ui->nocodec.width, ui->nocodec.height);
 
-    remmina_plugin_rdpev_update_rect (gp,
+    remmina_rdp_event_update_rect (gp,
         ui->nocodec.left, ui->nocodec.top,
         ui->nocodec.width, ui->nocodec.height);
 
@@ -795,7 +795,7 @@ remmina_plugin_rdpev_nocodec (RemminaProtocolWidget *gp, RemminaPluginRdpUiObjec
 }
 
 gboolean
-remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
+remmina_rdp_event_queue_ui (RemminaProtocolWidget *gp)
 {
     RemminaPluginRdpData *gpdata;
     RemminaPluginRdpUiObject *ui;
@@ -808,18 +808,18 @@ remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
         switch (ui->type)
         {
         case REMMINA_PLUGIN_RDP_UI_CONNECTED:
-            remmina_plugin_rdpev_connected (gp, ui);
+            remmina_rdp_event_connected (gp, ui);
             break;
         case REMMINA_PLUGIN_RDP_UI_RFX:
-            remmina_plugin_rdpev_rfx (gp, ui);
+            remmina_rdp_event_rfx (gp, ui);
             break;
         case REMMINA_PLUGIN_RDP_UI_NOCODEC:
-            remmina_plugin_rdpev_nocodec (gp, ui);
+            remmina_rdp_event_nocodec (gp, ui);
             break;
         default:
             break;
         }
-        remmina_plugin_rdpui_object_free (gp, ui);
+        remmina_rdp_ui_object_free (gp, ui);
         return TRUE;
     }
     else
@@ -832,8 +832,8 @@ remmina_plugin_rdpev_queue_ui (RemminaProtocolWidget *gp)
 }
 
 void
-remmina_plugin_rdpev_unfocus (RemminaProtocolWidget *gp)
+remmina_rdp_event_unfocus (RemminaProtocolWidget *gp)
 {
-    remmina_plugin_rdpev_release_key (gp, 0);
+    remmina_rdp_event_release_key (gp, 0);
 }
 
