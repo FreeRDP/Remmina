@@ -75,7 +75,7 @@ check_include_files(sys/un.h HAVE_SYS_UN_H)
 check_include_files(errno.h HAVE_ERRNO_H)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
-include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(remmina/include)
 
 set(REMMINA_VERSION "0.9.99.1")
 set(REMMINA_DATADIR "${CMAKE_INSTALL_PREFIX}/share/remmina")
