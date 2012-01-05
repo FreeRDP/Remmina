@@ -106,3 +106,5 @@ if(GTK3_FOUND)
 	add_subdirectory(remmina-plugins)
 	add_subdirectory(remmina-plugins-gnome)
 endif()
+
+install(DIRECTORY include/remmina DESTINATION include/remmina FILES_MATCHING PATTERN "*.h")
