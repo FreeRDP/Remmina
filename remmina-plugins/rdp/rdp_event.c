@@ -111,12 +111,16 @@ static void remmina_rdp_event_scale_area(RemminaProtocolWidget* gp, gint* x, gin
 	}
 
 	/* We have to extend the scaled region one scaled pixel, to avoid gaps */
+
 	sx = MIN(MAX(0, (*x) * gpdata->scale_width / width
 		- gpdata->scale_width / width - 2), gpdata->scale_width - 1);
+
 	sy = MIN(MAX(0, (*y) * gpdata->scale_height / height
 		- gpdata->scale_height / height - 2), gpdata->scale_height - 1);
+
 	sw = MIN(gpdata->scale_width - sx, (*w) * gpdata->scale_width / width
 		+ gpdata->scale_width / width + 4);
+
 	sh = MIN(gpdata->scale_height - sy, (*h) * gpdata->scale_height / height
 		+ gpdata->scale_height / height + 4);
 
@@ -137,13 +141,13 @@ static void remmina_rdp_event_update_rect(RemminaProtocolWidget* gp, gint x, gin
 
 static gboolean remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 {
-	RemminaPluginRdpData* gpdata;
-	RemminaFile* remminafile;
 	GtkAllocation a;
-	gint width, height;
-	gint gpwidth, gpheight;
 	gboolean scale;
+	gint width, height;
 	gint hscale, vscale;
+	gint gpwidth, gpheight;
+	RemminaFile* remminafile;
+	RemminaPluginRdpData* gpdata;
 
 	gpdata = GET_DATA(gp);
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
@@ -180,7 +184,7 @@ static gboolean remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 	}
 
 	if ((width > 1) && (height > 1))
-		gtk_widget_queue_draw_area (GTK_WIDGET (gp), 0, 0, width, height);
+		gtk_widget_queue_draw_area(GTK_WIDGET (gp), 0, 0, width, height);
 
 	gpdata->scale_handler = 0;
 
@@ -233,10 +237,10 @@ static void remmina_rdp_event_translate_pos(RemminaProtocolWidget* gp, int ix, i
 
 	gpdata = GET_DATA(gp);
 
-	if (gpdata->scale && gpdata->scale_width >= 1 && gpdata->scale_height >= 1)
+	if ((gpdata->scale) && (gpdata->scale_width >= 1) && (gpdata->scale_height >= 1))
 	{
-		*ox = (uint16) (ix * remmina_plugin_service->protocol_plugin_get_width (gp) / gpdata->scale_width);
-		*oy = (uint16) (iy * remmina_plugin_service->protocol_plugin_get_height (gp) / gpdata->scale_height);
+		*ox = (uint16) (ix * remmina_plugin_service->protocol_plugin_get_width(gp) / gpdata->scale_width);
+		*oy = (uint16) (iy * remmina_plugin_service->protocol_plugin_get_height(gp) / gpdata->scale_height);
 	}
 	else
 	{
@@ -268,7 +272,7 @@ static gboolean remmina_rdp_event_on_button(GtkWidget* widget, GdkEventButton* e
 		return FALSE;
 
 	/* We bypass 2button-press and 3button-press events */
-	if (event->type != GDK_BUTTON_PRESS && event->type != GDK_BUTTON_RELEASE)
+	if ((event->type != GDK_BUTTON_PRESS) && (event->type != GDK_BUTTON_RELEASE))
 		return TRUE;
 
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_MOUSE;
@@ -314,9 +318,11 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget* widget, GdkEventScroll* e
 		case GDK_SCROLL_UP:
 			flag = PTR_FLAGS_WHEEL | 0x0078;
 			break;
+
 		case GDK_SCROLL_DOWN:
 			flag = PTR_FLAGS_WHEEL | PTR_FLAGS_WHEEL_NEGATIVE | 0x0088;
 			break;
+
 		default:
 			return FALSE;
 	}
@@ -356,6 +362,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 			rdp_event.key_event.up = True;
 			remmina_rdp_event_event_push(gp, &rdp_event);
 			break;
+
 		default:
 			if (!gpdata->use_client_keymap)
 			{
@@ -371,10 +378,10 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 				remmina_plugin_service->log_printf("[RDP]keyval=%04X raw_keycode=%i cooked_keycode=%i scancode=%i extended=%i\n",
 						event->keyval, event->hardware_keycode, cooked_keycode, rdp_event.key_event.key_code, &rdp_event.key_event.extended);
 			}
+
 			if (rdp_event.key_event.key_code)
-			{
 				remmina_rdp_event_event_push(gp, &rdp_event);
-			}
+
 			break;
 	}
 
@@ -382,13 +389,9 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 	if (rdp_event.key_event.key_code)
 	{
 		if (event->type == GDK_KEY_PRESS)
-		{
 			g_array_append_val(gpdata->pressed_keys, rdp_event.key_event.key_code);
-		}
 		else
-		{
 			remmina_rdp_event_release_key(gp, rdp_event.key_event.key_code);
-		}
 	}
 
 	return TRUE;
@@ -472,6 +475,7 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 				break;
 			}
 		}
+
 		XFree(pfs);
 	}
 }
