@@ -19,6 +19,9 @@
 
 include_directories(${CMAKE_SOURCE_DIR}/remmina-plugins)
 
+set(APPICON16_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/16x16/emblems")
+set(APPICON22_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/22x22/emblems")
+
 find_required_package(GTK3)
 if(GTK3_FOUND)
 	set(REMMINA_COMMON_INCLUDE_DIRS ${GTK3_INCLUDE_DIRS})
