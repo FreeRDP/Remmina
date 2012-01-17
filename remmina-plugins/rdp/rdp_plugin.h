@@ -28,129 +28,129 @@
 #include <freerdp/codec/rfx.h>
 #include <gdk/gdkx.h>
 
-#define LOCK_BUFFER(t)      if(t){CANCEL_DEFER}pthread_mutex_lock(&gpdata->mutex);
-#define UNLOCK_BUFFER(t)    pthread_mutex_unlock(&gpdata->mutex);if(t){CANCEL_ASYNC}
+#define LOCK_BUFFER(t)	  	if (t) {CANCEL_DEFER} pthread_mutex_lock(&gpdata->mutex);
+#define UNLOCK_BUFFER(t)	pthread_mutex_unlock(&gpdata->mutex); if (t) {CANCEL_ASYNC}
 
-#define GET_DATA(_gp) (RemminaPluginRdpData*) g_object_get_data (G_OBJECT (_gp), "plugin-data")
+#define GET_DATA(_gp)		(RemminaPluginRdpData*) g_object_get_data(G_OBJECT(_gp), "plugin-data")
 
-#define DEFAULT_QUALITY_0 0x6f
-#define DEFAULT_QUALITY_1 0x07
-#define DEFAULT_QUALITY_2 0x01
-#define DEFAULT_QUALITY_9 0x80
+#define DEFAULT_QUALITY_0	0x6f
+#define DEFAULT_QUALITY_1	0x07
+#define DEFAULT_QUALITY_2	0x01
+#define DEFAULT_QUALITY_9	0x80
 
 extern RemminaPluginService *remmina_plugin_service;
 
 typedef struct _RemminaPluginRdpData
 {
-    rdpContext _p;
+	rdpContext _p;
 
-    RemminaProtocolWidget *protocol_widget;
+	RemminaProtocolWidget* protocol_widget;
 
-    /* main */
-    rdpSettings *settings;
-    freerdp* instance;
-    rdpChannels *channels;
+	/* main */
+	rdpSettings* settings;
+	freerdp* instance;
+	rdpChannels* channels;
 
-    pthread_t thread;
-    pthread_mutex_t mutex;
-    gboolean scale;
-    gboolean user_cancelled;
+	pthread_t thread;
+	pthread_mutex_t mutex;
+	gboolean scale;
+	gboolean user_cancelled;
 
-    RDP_PLUGIN_DATA rdpdr_data[5];
-    RDP_PLUGIN_DATA drdynvc_data[5];
-    RDP_PLUGIN_DATA rdpsnd_data[5];
-    gchar rdpsnd_options[20];
+	RDP_PLUGIN_DATA rdpdr_data[5];
+	RDP_PLUGIN_DATA drdynvc_data[5];
+	RDP_PLUGIN_DATA rdpsnd_data[5];
+	gchar rdpsnd_options[20];
 
-    RFX_CONTEXT *rfx_context;
+	RFX_CONTEXT* rfx_context;
 
-    GtkWidget *drawing_area;
-    gint scale_width;
-    gint scale_height;
-    gdouble scale_x;
-    gdouble scale_y;
-    guint scale_handler;
-    gboolean capslock_initstate;
-    gboolean numlock_initstate;
-    gboolean use_client_keymap;
+	GtkWidget* drawing_area;
+	gint scale_width;
+	gint scale_height;
+	gdouble scale_x;
+	gdouble scale_y;
+	guint scale_handler;
+	gboolean capslock_initstate;
+	gboolean numlock_initstate;
+	gboolean use_client_keymap;
 
-    Display *display;
-    Visual *visual;
-    Drawable drw_surface;
-    Pixmap rgb_surface;
-    cairo_surface_t *rgb_cairo_surface;
-    GC gc;
-    GC gc_default;
-    Pixmap bitmap_mono;
-    GC gc_mono;
-    gint depth;
-    gint bpp;
-    gint bitmap_pad;
-    gint *colormap;
+	Display* display;
+	Visual* visual;
+	Drawable drw_surface;
+	Pixmap rgb_surface;
+	cairo_surface_t* rgb_cairo_surface;
+	GC gc;
+	GC gc_default;
+	Pixmap bitmap_mono;
+	GC gc_mono;
+	gint depth;
+	gint bpp;
+	gint bitmap_pad;
+	gint* colormap;
 
-    guint object_id_seq;
-    GHashTable *object_table;
+	guint object_id_seq;
+	GHashTable* object_table;
 
-    GAsyncQueue *ui_queue;
-    guint ui_handler;
+	GAsyncQueue* ui_queue;
+	guint ui_handler;
 
-    GArray *pressed_keys;
-    GAsyncQueue *event_queue;
-    gint event_pipe[2];
+	GArray* pressed_keys;
+	GAsyncQueue* event_queue;
+	gint event_pipe[2];
 } RemminaPluginRdpData;
 
 typedef enum
 {
-    REMMINA_RDP_EVENT_TYPE_SCANCODE,
-    REMMINA_RDP_EVENT_TYPE_MOUSE
+	REMMINA_RDP_EVENT_TYPE_SCANCODE,
+	REMMINA_RDP_EVENT_TYPE_MOUSE
 } RemminaPluginRdpEventType;
 
 typedef struct _RemminaPluginRdpEvent
 {
-    RemminaPluginRdpEventType type;
-    union
-    {
-        struct
-        {
-            boolean up;
-            boolean extended;
-            uint8 key_code;
-        } key_event;
-        struct
-        {
-            uint16 flags;
-            uint16 x;
-            uint16 y;
-        } mouse_event;
-    };
+	RemminaPluginRdpEventType type;
+	union
+	{
+		struct
+		{
+			boolean up;
+			boolean extended;
+			uint8 key_code;
+		} key_event;
+		struct
+		{
+			uint16 flags;
+			uint16 x;
+			uint16 y;
+		} mouse_event;
+	};
 } RemminaPluginRdpEvent;
 
 typedef enum
 {
-    REMMINA_RDP_UI_CONNECTED = 0,
-    REMMINA_RDP_UI_RFX,
-    REMMINA_RDP_UI_NOCODEC
+	REMMINA_RDP_UI_CONNECTED = 0,
+	REMMINA_RDP_UI_RFX,
+	REMMINA_RDP_UI_NOCODEC
 } RemminaPluginRdpUiType;
 
 typedef struct _RemminaPluginRdpUiObject
 {
-    RemminaPluginRdpUiType type;
-    union
-    {
-        struct
-        {
-            gint left;
-            gint top;
-            RFX_MESSAGE* message;
-        } rfx;
-        struct
-        {
-            gint left;
-            gint top;
-            gint width;
-            gint height;
-            uint8* bitmap;
-        } nocodec;
-    };
+	RemminaPluginRdpUiType type;
+	union
+	{
+		struct
+		{
+			gint left;
+			gint top;
+			RFX_MESSAGE* message;
+		} rfx;
+		struct
+		{
+			gint left;
+			gint top;
+			gint width;
+			gint height;
+			uint8* bitmap;
+		} nocodec;
+	};
 } RemminaPluginRdpUiObject;
 
 #endif
