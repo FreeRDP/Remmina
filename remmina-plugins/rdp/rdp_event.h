@@ -23,13 +23,13 @@
 
 G_BEGIN_DECLS
 
-void remmina_rdp_event_init (RemminaProtocolWidget *gp);
-void remmina_rdp_event_pre_connect (RemminaProtocolWidget *gp);
-void remmina_rdp_event_post_connect (RemminaProtocolWidget *gp);
-void remmina_rdp_event_uninit (RemminaProtocolWidget *gp);
-void remmina_rdp_event_update_scale (RemminaProtocolWidget *gp);
-gboolean remmina_rdp_event_queue_ui (RemminaProtocolWidget *gp);
-void remmina_rdp_event_unfocus (RemminaProtocolWidget *gp);
+void remmina_rdp_event_init(RemminaProtocolWidget *gp);
+void remmina_rdp_event_pre_connect(RemminaProtocolWidget *gp);
+void remmina_rdp_event_post_connect(RemminaProtocolWidget *gp);
+void remmina_rdp_event_uninit(RemminaProtocolWidget *gp);
+void remmina_rdp_event_update_scale(RemminaProtocolWidget *gp);
+gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget *gp);
+void remmina_rdp_event_unfocus(RemminaProtocolWidget *gp);
 
 G_END_DECLS
 

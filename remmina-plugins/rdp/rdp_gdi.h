@@ -23,13 +23,13 @@
 
 G_BEGIN_DECLS
 
-void rf_init (RemminaProtocolWidget *gp);
-void rf_pre_connect (RemminaProtocolWidget *gp);
-void rf_post_connect (RemminaProtocolWidget *gp);
-void rf_uninit (RemminaProtocolWidget *gp);
-void rf_get_fds (RemminaProtocolWidget *gp, void **rfds, int *rcount);
-boolean rf_check_fds (RemminaProtocolWidget *gp);
-void rf_object_free (RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *obj);
+void rf_init(RemminaProtocolWidget* gp);
+void rf_pre_connect(RemminaProtocolWidget* gp);
+void rf_post_connect(RemminaProtocolWidget* gp);
+void rf_uninit(RemminaProtocolWidget* gp);
+void rf_get_fds(RemminaProtocolWidget* gp, void** rfds, int* rcount);
+boolean rf_check_fds(RemminaProtocolWidget* gp);
+void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj);
 
 G_END_DECLS
 

@@ -25,30 +25,30 @@
 
 struct rf_pointer
 {
-    rdpPointer pointer;
-    Cursor cursor;
+	rdpPointer pointer;
+	Cursor cursor;
 };
 typedef struct rf_pointer rfPointer;
 
 struct rf_bitmap
 {
-    rdpBitmap bitmap;
-    Pixmap pixmap;
+	rdpBitmap bitmap;
+	Pixmap pixmap;
 };
 typedef struct rf_bitmap rfBitmap;
 
 struct rf_glyph
 {
-    rdpGlyph glyph;
-    Pixmap pixmap;
+	rdpGlyph glyph;
+	Pixmap pixmap;
 };
 typedef struct rf_glyph rfGlyph;
 
 struct rf_context
 {
-    rdpContext _p;
+	rdpContext _p;
 
-    rdpSettings* settings;
+	rdpSettings* settings;
 };
 typedef struct rf_context rfContext;
 
