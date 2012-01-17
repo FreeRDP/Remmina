@@ -29,3 +29,5 @@ target_link_libraries(remmina-plugin-xdmcp ${REMMINA_COMMON_LIBRARIES})
 
 install(TARGETS remmina-plugin-xdmcp DESTINATION ${REMMINA_PLUGINDIR})
 
+install(FILES 16x16/emblems/remmina-xdmcp-ssh.png 16x16/emblems/remmina-xdmcp.png DESTINATION ${APPICON16_EMBLEMS_DIR})
+install(FILES 22x22/emblems/remmina-xdmcp-ssh.png 22x22/emblems/remmina-xdmcp.png DESTINATION ${APPICON22_EMBLEMS_DIR})
