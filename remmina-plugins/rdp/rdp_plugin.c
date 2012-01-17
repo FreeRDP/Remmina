@@ -356,7 +356,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	{
 		gpdata->settings->console_audio = 1;
 	}
-	else if (g_str_has_prefix (cs, "local"))
+	else if (g_str_has_prefix(cs, "local"))
 	{
 		cs = strchr(cs, ',');
 
@@ -486,20 +486,22 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	rf_init(gp);
 }
 
-static gboolean remmina_rdp_open_connection (RemminaProtocolWidget* gp)
+static gboolean remmina_rdp_open_connection(RemminaProtocolWidget* gp)
 {
 	RemminaPluginRdpData* gpdata;
 
 	gpdata = GET_DATA(gp);
-	gpdata->scale = remmina_plugin_service->protocol_plugin_get_scale (gp);
+	gpdata->scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
 
-	if (pthread_create (&gpdata->thread, NULL, remmina_rdp_main_thread, gp))
+	if (pthread_create(&gpdata->thread, NULL, remmina_rdp_main_thread, gp))
 	{
-		remmina_plugin_service->protocol_plugin_set_error (gp, "%s",
+		remmina_plugin_service->protocol_plugin_set_error(gp, "%s",
 			"Failed to initialize pthread. Falling back to non-thread mode...");
 		gpdata->thread = 0;
+
 		return FALSE;
 	}
+
 	return TRUE;
 }
 
@@ -521,17 +523,20 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 	{
 		freerdp_channels_close(gpdata->channels, gpdata->instance);
 	}
+
 	if (gpdata->instance)
 	{
 		freerdp_disconnect(gpdata->instance);
 		freerdp_free(gpdata->instance);
 		gpdata->instance = NULL;
 	}
+
 	if (gpdata->channels)
 	{
 		freerdp_channels_free(gpdata->channels);
 		gpdata->channels = NULL;
 	}
+
 	pthread_mutex_destroy(&gpdata->mutex);
 
 	remmina_rdp_event_uninit(gp);
