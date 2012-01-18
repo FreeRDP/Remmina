@@ -485,14 +485,6 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 	}
 }
 
-void remmina_rdp_event_pre_connect(RemminaProtocolWidget* gp)
-{
-}
-
-void remmina_rdp_event_post_connect(RemminaProtocolWidget* gp)
-{
-}
-
 void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 {
 	rfContext* rfi;
@@ -736,13 +728,11 @@ static Drawable remmina_rdp_event_get_drawable(rfContext* rfi, guint object_id)
 static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
 	rfContext* rfi;
-	XGCValues gcv = { 0 };
 
 	rfi = GET_DATA(gp);
+
 	gtk_widget_realize(rfi->drawing_area);
 
-	rfi->width = rfi->settings->width;
-	rfi->height = rfi->settings->height;
 	rfi->drawable = GDK_WINDOW_XID(gtk_widget_get_window(rfi->drawing_area));
 
 	rfi->rgb_surface = XCreatePixmap(rfi->display, rfi->drawable,
@@ -752,13 +742,6 @@ static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPlugin
 			rfi->rgb_surface, rfi->visual, rfi->width, rfi->height);
 
 	rfi->drw_surface = rfi->rgb_surface;
-	rfi->gc = XCreateGC(rfi->display, rfi->rgb_surface, GCGraphicsExposures, &gcv);
-	rfi->gc_default = XCreateGC(rfi->display, rfi->rgb_surface, GCGraphicsExposures, &gcv);
-	rfi->bitmap_mono = XCreatePixmap(rfi->display, rfi->drawable, 8, 8, 1);
-	rfi->gc_mono = XCreateGC(rfi->display, rfi->bitmap_mono, GCGraphicsExposures, &gcv);
-
-	rfi->primary = XCreatePixmap(rfi->display, rfi->drawable, rfi->width, rfi->height, rfi->depth);
-	rfi->drawing = rfi->primary;
 
 	remmina_rdp_event_update_scale(gp);
 }
