@@ -26,21 +26,47 @@
 #include <freerdp/channels/channels.h>
 #include <freerdp/codec/color.h>
 #include <freerdp/codec/rfx.h>
+#include <freerdp/gdi/gdi.h>
+#include <freerdp/gdi/dc.h>
+#include <freerdp/gdi/region.h>
 #include <gdk/gdkx.h>
 
-#define LOCK_BUFFER(t)	  	if (t) {CANCEL_DEFER} pthread_mutex_lock(&gpdata->mutex);
-#define UNLOCK_BUFFER(t)	pthread_mutex_unlock(&gpdata->mutex); if (t) {CANCEL_ASYNC}
+typedef struct rf_context rfContext;
 
-#define GET_DATA(_gp)		(RemminaPluginRdpData*) g_object_get_data(G_OBJECT(_gp), "plugin-data")
+#define LOCK_BUFFER(t)	  	if (t) {CANCEL_DEFER} pthread_mutex_lock(&rfi->mutex);
+#define UNLOCK_BUFFER(t)	pthread_mutex_unlock(&rfi->mutex); if (t) {CANCEL_ASYNC}
+
+#define GET_DATA(_rfi)		(rfContext*) g_object_get_data(G_OBJECT(_rfi), "plugin-data")
 
 #define DEFAULT_QUALITY_0	0x6f
 #define DEFAULT_QUALITY_1	0x07
 #define DEFAULT_QUALITY_2	0x01
 #define DEFAULT_QUALITY_9	0x80
 
-extern RemminaPluginService *remmina_plugin_service;
+extern RemminaPluginService* remmina_plugin_service;
 
-typedef struct _RemminaPluginRdpData
+struct rf_pointer
+{
+	rdpPointer pointer;
+	Cursor cursor;
+};
+typedef struct rf_pointer rfPointer;
+
+struct rf_bitmap
+{
+	rdpBitmap bitmap;
+	Pixmap pixmap;
+};
+typedef struct rf_bitmap rfBitmap;
+
+struct rf_glyph
+{
+	rdpGlyph glyph;
+	Pixmap pixmap;
+};
+typedef struct rf_glyph rfGlyph;
+
+struct rf_context
 {
 	rdpContext _p;
 
@@ -73,19 +99,27 @@ typedef struct _RemminaPluginRdpData
 	gboolean numlock_initstate;
 	gboolean use_client_keymap;
 
+	HGDI_DC hdc;
+	gint srcBpp;
 	Display* display;
 	Visual* visual;
+	Drawable drawable;
 	Drawable drw_surface;
 	Pixmap rgb_surface;
-	cairo_surface_t* rgb_cairo_surface;
 	GC gc;
 	GC gc_default;
 	Pixmap bitmap_mono;
 	GC gc_mono;
 	gint depth;
 	gint bpp;
-	gint bitmap_pad;
+	gint width;
+	gint height;
+	gint scanline_pad;
 	gint* colormap;
+	HCLRCONV clrconv;
+	Pixmap primary;
+	Pixmap drawing;
+	cairo_surface_t* rgb_cairo_surface;
 
 	guint object_id_seq;
 	GHashTable* object_table;
@@ -96,7 +130,7 @@ typedef struct _RemminaPluginRdpData
 	GArray* pressed_keys;
 	GAsyncQueue* event_queue;
 	gint event_pipe[2];
-} RemminaPluginRdpData;
+};
 
 typedef enum
 {
@@ -104,7 +138,7 @@ typedef enum
 	REMMINA_RDP_EVENT_TYPE_MOUSE
 } RemminaPluginRdpEventType;
 
-typedef struct _RemminaPluginRdpEvent
+struct remmina_plugin_rdp_event
 {
 	RemminaPluginRdpEventType type;
 	union
@@ -122,7 +156,8 @@ typedef struct _RemminaPluginRdpEvent
 			uint16 y;
 		} mouse_event;
 	};
-} RemminaPluginRdpEvent;
+};
+typedef struct remmina_plugin_rdp_event RemminaPluginRdpEvent;
 
 typedef enum
 {
@@ -131,7 +166,7 @@ typedef enum
 	REMMINA_RDP_UI_NOCODEC
 } RemminaPluginRdpUiType;
 
-typedef struct _RemminaPluginRdpUiObject
+struct remmina_plugin_rdp_ui_object
 {
 	RemminaPluginRdpUiType type;
 	union
@@ -151,7 +186,8 @@ typedef struct _RemminaPluginRdpUiObject
 			uint8* bitmap;
 		} nocodec;
 	};
-} RemminaPluginRdpUiObject;
+};
+typedef struct remmina_plugin_rdp_ui_object RemminaPluginRdpUiObject;
 
 #endif
 
