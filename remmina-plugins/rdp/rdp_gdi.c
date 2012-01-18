@@ -26,6 +26,7 @@
 #include "rdp_event.h"
 #include "rdp_gdi.h"
 #include <freerdp/constants.h>
+#include <freerdp/cache/cache.h>
 #include <freerdp/utils/memory.h>
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
@@ -33,31 +34,31 @@
 
 static void rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
-	g_async_queue_push(gpdata->ui_queue, ui);
+	rfi = GET_DATA(gp);
+	g_async_queue_push(rfi->ui_queue, ui);
 
-	LOCK_BUFFER (TRUE)
+	LOCK_BUFFER(TRUE)
 
-	if (!gpdata->ui_handler)
-		gpdata->ui_handler = IDLE_ADD((GSourceFunc) remmina_rdp_event_queue_ui, gp);
+	if (!rfi->ui_handler)
+		rfi->ui_handler = IDLE_ADD((GSourceFunc) remmina_rdp_event_queue_ui, gp);
 
-	UNLOCK_BUFFER (TRUE)
+	UNLOCK_BUFFER(TRUE)
 }
 
 static void rf_desktop_resize(rdpContext* context)
 {
 	RemminaProtocolWidget* gp;
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = (RemminaPluginRdpData*) context;
-	gp = gpdata->protocol_widget;
+	rfi = (rfContext*) context;
+	gp = rfi->protocol_widget;
 
 	LOCK_BUFFER(TRUE)
 
-	remmina_plugin_service->protocol_plugin_set_width(gp, gpdata->settings->width);
-	remmina_plugin_service->protocol_plugin_set_height(gp, gpdata->settings->height);
+	remmina_plugin_service->protocol_plugin_set_width(gp, rfi->settings->width);
+	remmina_plugin_service->protocol_plugin_set_height(gp, rfi->settings->height);
 
 	UNLOCK_BUFFER(TRUE)
 
@@ -75,7 +76,23 @@ static void rf_gdi_palette(rdpContext* context, PALETTE_UPDATE* palette)
 
 static void rf_gdi_set_bounds(rdpContext* context, rdpBounds* bounds)
 {
-	g_print("set_bounds\n");
+	/*
+	XRectangle clip;
+	rfContext* rfi = (rfContext*) context;
+
+	if (bounds != NULL)
+	{
+		clip.x = bounds->left;
+		clip.y = bounds->top;
+		clip.width = bounds->right - bounds->left + 1;
+		clip.height = bounds->bottom - bounds->top + 1;
+		XSetClipRectangles(rfi->display, rfi->gc, 0, 0, &clip, 1, YXBanded);
+	}
+	else
+	{
+		XSetClipMask(rfi->display, rfi->gc, None);
+	}
+	*/
 }
 
 static void rf_gdi_dstblt(rdpContext* context, DSTBLT_ORDER* dstblt)
@@ -123,38 +140,25 @@ static void rf_gdi_fast_index(rdpContext* context, FAST_INDEX_ORDER* fast_index)
 	g_print("fast_index\n");
 }
 
-static void rf_gdi_cache_color_table(rdpContext* context, CACHE_COLOR_TABLE_ORDER* cache_color_table_order)
-{
-	g_print("cache_color_table\n");
-}
-
-static void rf_gdi_cache_glyph(rdpContext* context, CACHE_GLYPH_ORDER* cache_glyph_order)
-{
-	g_print("cache_glyph\n");
-}
-
-static void rf_gdi_cache_glyph_v2(rdpContext* context, CACHE_GLYPH_V2_ORDER* cache_glyph_v2_order)
-{
-	g_print("cache_glyph_v2\n");
-}
-
 static void rf_gdi_surface_bits(rdpContext* context, SURFACE_BITS_COMMAND* surface_bits_command)
 {
 	uint8* bitmap;
 	RFX_MESSAGE* message;
 	RemminaPluginRdpUiObject* ui;
-	RemminaPluginRdpData* gpdata = (RemminaPluginRdpData*) context;
+	rfContext* rfi = (rfContext*) context;
 
-	if (surface_bits_command->codecID == CODEC_ID_REMOTEFX && gpdata->rfx_context)
+	if (surface_bits_command->codecID == CODEC_ID_REMOTEFX && rfi->rfx_context)
 	{
-		message = rfx_process_message (gpdata->rfx_context, surface_bits_command->bitmapData, surface_bits_command->bitmapDataLength);
+		message = rfx_process_message(rfi->rfx_context, surface_bits_command->bitmapData,
+				surface_bits_command->bitmapDataLength);
 
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_RFX;
 		ui->rfx.left = surface_bits_command->destLeft;
 		ui->rfx.top = surface_bits_command->destTop;
 		ui->rfx.message = message;
-		rf_queue_ui (gpdata->protocol_widget, ui);
+
+		rf_queue_ui(rfi->protocol_widget, ui);
 	}
 	else if (surface_bits_command->codecID == CODEC_ID_NONE)
 	{
@@ -170,7 +174,8 @@ static void rf_gdi_surface_bits(rdpContext* context, SURFACE_BITS_COMMAND* surfa
 		ui->nocodec.width = surface_bits_command->width;
 		ui->nocodec.height = surface_bits_command->height;
 		ui->nocodec.bitmap = bitmap;
-		rf_queue_ui (gpdata->protocol_widget, ui);
+
+		rf_queue_ui(rfi->protocol_widget, ui);
 	}
 	else
 	{
@@ -208,20 +213,20 @@ void rf_init(RemminaProtocolWidget* gp)
 	gint keycode;
 	Window wdummy;
 	XModifierKeymap* modmap;
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 
-	XQueryPointer(gpdata->display, GDK_ROOT_WINDOW(), &wdummy, &wdummy, &dummy, &dummy,
+	XQueryPointer(rfi->display, GDK_ROOT_WINDOW(), &wdummy, &wdummy, &dummy, &dummy,
 		&dummy, &dummy, &state);
 
-	modmap = XGetModifierMapping(gpdata->display);
+	modmap = XGetModifierMapping(rfi->display);
 
-	keycode = XKeysymToKeycode(gpdata->display, XK_Caps_Lock);
-	gpdata->capslock_initstate = rf_get_key_state(keycode, state, modmap);
+	keycode = XKeysymToKeycode(rfi->display, XK_Caps_Lock);
+	rfi->capslock_initstate = rf_get_key_state(keycode, state, modmap);
 
-	keycode = XKeysymToKeycode(gpdata->display, XK_Num_Lock);
-	gpdata->numlock_initstate = rf_get_key_state(keycode, state, modmap);
+	keycode = XKeysymToKeycode(rfi->display, XK_Num_Lock);
+	rfi->numlock_initstate = rf_get_key_state(keycode, state, modmap);
 
 	XFreeModifiermap(modmap);
 }
@@ -229,10 +234,10 @@ void rf_init(RemminaProtocolWidget* gp)
 void rf_pre_connect(RemminaProtocolWidget* gp)
 {
 	rdpSettings* settings;
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
-	settings = gpdata->settings;
+	rfi = GET_DATA(gp);
+	settings = rfi->settings;
 
 	settings->bitmap_cache = True;
 	settings->offscreen_bitmap_cache = True;
@@ -269,23 +274,25 @@ void rf_pre_connect(RemminaProtocolWidget* gp)
 		settings->large_pointer = True;
 		settings->performance_flags = PERF_FLAG_NONE;
 
-		gpdata->rfx_context = rfx_context_new ();
-		rfx_context_set_cpu_opt(gpdata->rfx_context, CPU_SSE2);
+		rfi->rfx_context = rfx_context_new();
+		rfx_context_set_cpu_opt(rfi->rfx_context, CPU_SSE2);
 	}
 }
 
 void rf_post_connect(RemminaProtocolWidget* gp)
 {
 	rdpUpdate* update;
+	rdpSettings* settings;
 	rdpPrimaryUpdate* primary;
 	rdpSecondaryUpdate* secondary;
-	RemminaPluginRdpData* gpdata;
-	RemminaPluginRdpUiObject *ui;
+	rfContext* rfi;
+	RemminaPluginRdpUiObject* ui;
 
-	gpdata = GET_DATA(gp);
-	update = gpdata->instance->update;
+	rfi = GET_DATA(gp);
+	update = rfi->instance->update;
 	primary = update->primary;
 	secondary = update->secondary;
+	settings = rfi->instance->settings;
 
 	update->DesktopResize = rf_desktop_resize;
 	update->Palette = rf_gdi_palette;
@@ -314,59 +321,58 @@ void rf_post_connect(RemminaProtocolWidget* gp)
 	primary->EllipseSC = NULL;
 	primary->EllipseCB = NULL;
 
-	secondary->CacheColorTable = rf_gdi_cache_color_table;
-	secondary->CacheGlyph = rf_gdi_cache_glyph;
-	secondary->CacheGlyphV2 = rf_gdi_cache_glyph_v2;
-
 	update->SurfaceBits = rf_gdi_surface_bits;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CONNECTED;
-	rf_queue_ui (gp, ui);
+
+	rfi->srcBpp = settings->color_depth;
+
+	rf_queue_ui(gp, ui);
 }
 
-void rf_uninit(RemminaProtocolWidget *gp)
+void rf_uninit(RemminaProtocolWidget* gp)
 {
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 
-	if (gpdata->rfx_context)
+	if (rfi->rfx_context)
 	{
-		rfx_context_free (gpdata->rfx_context);
-		gpdata->rfx_context = NULL;
+		rfx_context_free (rfi->rfx_context);
+		rfi->rfx_context = NULL;
 	}
 }
 
-void rf_get_fds(RemminaProtocolWidget *gp, void **rfds, int *rcount)
+void rf_get_fds(RemminaProtocolWidget* gp, void** rfds, int* rcount)
 {
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 
-	if (gpdata->event_pipe[0] != -1)
+	if (rfi->event_pipe[0] != -1)
 	{
-		rfds[*rcount] = GINT_TO_POINTER (gpdata->event_pipe[0]);
+		rfds[*rcount] = GINT_TO_POINTER(rfi->event_pipe[0]);
 		(*rcount)++;
 	}
 }
 
-boolean rf_check_fds(RemminaProtocolWidget *gp)
+boolean rf_check_fds(RemminaProtocolWidget* gp)
 {
 	uint16 flags;
 	gchar buf[100];
 	rdpInput* input;
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 	RemminaPluginRdpEvent* event;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 
-	if (gpdata->event_queue == NULL)
+	if (rfi->event_queue == NULL)
 		return True;
 
-	input = gpdata->instance->input;
+	input = rfi->instance->input;
 
-	while ((event =(RemminaPluginRdpEvent*) g_async_queue_try_pop(gpdata->event_queue)) != NULL)
+	while ((event =(RemminaPluginRdpEvent*) g_async_queue_try_pop(rfi->event_queue)) != NULL)
 	{
 		switch (event->type)
 		{
@@ -377,15 +383,15 @@ boolean rf_check_fds(RemminaProtocolWidget *gp)
 				break;
 
 			case REMMINA_RDP_EVENT_TYPE_MOUSE:
-				input->MouseEvent(input,
-						event->mouse_event.flags, event->mouse_event.x, event->mouse_event.y);
+				input->MouseEvent(input, event->mouse_event.flags,
+						event->mouse_event.x, event->mouse_event.y);
 				break;
 		}
 
 		g_free(event);
 	}
 
-	if (read(gpdata->event_pipe[0], buf, sizeof (buf)))
+	if (read(rfi->event_pipe[0], buf, sizeof (buf)))
 	{
 	}
 
@@ -394,14 +400,14 @@ boolean rf_check_fds(RemminaProtocolWidget *gp)
 
 void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj)
 {
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 
 	switch (obj->type)
 	{
 		case REMMINA_RDP_UI_RFX:
-			rfx_message_free(gpdata->rfx_context, obj->rfx.message);
+			rfx_message_free(rfi->rfx_context, obj->rfx.message);
 			break;
 
 		case REMMINA_RDP_UI_NOCODEC:

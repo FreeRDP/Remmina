@@ -31,17 +31,17 @@
 
 static void remmina_rdp_event_event_push(RemminaProtocolWidget* gp, const RemminaPluginRdpEvent* e)
 {
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 	RemminaPluginRdpEvent* event;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 
-	if (gpdata->event_queue)
+	if (rfi->event_queue)
 	{
 		event = g_memdup(e, sizeof(RemminaPluginRdpEvent));
-		g_async_queue_push(gpdata->event_queue, event);
+		g_async_queue_push(rfi->event_queue, event);
 
-		if (write(gpdata->event_pipe[1], "\0", 1))
+		if (write(rfi->event_pipe[1], "\0", 1))
 		{
 		}
 	}
@@ -50,33 +50,35 @@ static void remmina_rdp_event_event_push(RemminaProtocolWidget* gp, const Remmin
 static void remmina_rdp_event_release_key(RemminaProtocolWidget* gp, gint scancode)
 {
 	gint i, k;
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 	RemminaPluginRdpEvent rdp_event = { 0 };
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_SCANCODE;
 
 	if (scancode == 0)
 	{
 		/* Send all release key events for previously pressed keys */
 		rdp_event.key_event.up = True;
-		for (i = 0; i < gpdata->pressed_keys->len; i++)
+
+		for (i = 0; i < rfi->pressed_keys->len; i++)
 		{
-			rdp_event.key_event.key_code = g_array_index(gpdata->pressed_keys, gint, i);
+			rdp_event.key_event.key_code = g_array_index(rfi->pressed_keys, gint, i);
 			remmina_rdp_event_event_push(gp, &rdp_event);
 		}
-		g_array_set_size(gpdata->pressed_keys, 0);
+
+		g_array_set_size(rfi->pressed_keys, 0);
 	}
 	else
 	{
 		/* Unregister the keycode only */
-		for (i = 0; i < gpdata->pressed_keys->len; i++)
+		for (i = 0; i < rfi->pressed_keys->len; i++)
 		{
-			k = g_array_index(gpdata->pressed_keys, gint, i);
+			k = g_array_index(rfi->pressed_keys, gint, i);
 
 			if (k == scancode)
 			{
-				g_array_remove_index_fast(gpdata->pressed_keys, i);
+				g_array_remove_index_fast(rfi->pressed_keys, i);
 				break;
 			}
 		}
@@ -87,11 +89,11 @@ static void remmina_rdp_event_scale_area(RemminaProtocolWidget* gp, gint* x, gin
 {
 	gint width, height;
 	gint sx, sy, sw, sh;
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 
-	if (!gpdata->rgb_surface)
+	if (!rfi->rgb_surface)
 		return;
 
 	width = remmina_plugin_service->protocol_plugin_get_width(gp);
@@ -100,7 +102,7 @@ static void remmina_rdp_event_scale_area(RemminaProtocolWidget* gp, gint* x, gin
 	if ((width == 0) || (height == 0))
 		return;
 
-	if (gpdata->scale_width == width && gpdata->scale_height == height)
+	if ((rfi->scale_width == width) && (rfi->scale_height == height))
 	{
 		/* Same size, just copy the pixels */
 		*x = MIN(MAX(0, *x), width - 1);
@@ -112,31 +114,34 @@ static void remmina_rdp_event_scale_area(RemminaProtocolWidget* gp, gint* x, gin
 
 	/* We have to extend the scaled region one scaled pixel, to avoid gaps */
 
-	sx = MIN(MAX(0, (*x) * gpdata->scale_width / width
-		- gpdata->scale_width / width - 2), gpdata->scale_width - 1);
+	sx = MIN(MAX(0, (*x) * rfi->scale_width / width
+		- rfi->scale_width / width - 2), rfi->scale_width - 1);
 
-	sy = MIN(MAX(0, (*y) * gpdata->scale_height / height
-		- gpdata->scale_height / height - 2), gpdata->scale_height - 1);
+	sy = MIN(MAX(0, (*y) * rfi->scale_height / height
+		- rfi->scale_height / height - 2), rfi->scale_height - 1);
 
-	sw = MIN(gpdata->scale_width - sx, (*w) * gpdata->scale_width / width
-		+ gpdata->scale_width / width + 4);
+	sw = MIN(rfi->scale_width - sx, (*w) * rfi->scale_width / width
+		+ rfi->scale_width / width + 4);
 
-	sh = MIN(gpdata->scale_height - sy, (*h) * gpdata->scale_height / height
-		+ gpdata->scale_height / height + 4);
+	sh = MIN(rfi->scale_height - sy, (*h) * rfi->scale_height / height
+		+ rfi->scale_height / height + 4);
 
-	*x = sx; *y = sy; *w = sw; *h = sh;
+	*x = sx;
+	*y = sy;
+	*w = sw;
+	*h = sh;
 }
 
 static void remmina_rdp_event_update_rect(RemminaProtocolWidget* gp, gint x, gint y, gint w, gint h)
 {
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 
 	if (remmina_plugin_service->protocol_plugin_get_scale(gp))
 		remmina_rdp_event_scale_area(gp, &x, &y, &w, &h);
 
-	gtk_widget_queue_draw_area(gpdata->drawing_area, x, y, w, h);
+	gtk_widget_queue_draw_area(rfi->drawing_area, x, y, w, h);
 }
 
 static gboolean remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
@@ -147,9 +152,9 @@ static gboolean remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 	gint hscale, vscale;
 	gint gpwidth, gpheight;
 	RemminaFile* remminafile;
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	gtk_widget_get_allocation(GTK_WIDGET(gp), &a);
@@ -166,27 +171,27 @@ static gboolean remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 			hscale = remmina_plugin_service->file_get_int(remminafile, "hscale", 0);
 			vscale = remmina_plugin_service->file_get_int(remminafile, "vscale", 0);
 
-			gpdata->scale_width = (hscale > 0 ?
+			rfi->scale_width = (hscale > 0 ?
 				MAX(1, gpwidth * hscale / 100) : width);
-			gpdata->scale_height = (vscale > 0 ?
+			rfi->scale_height = (vscale > 0 ?
 				MAX(1, gpheight * vscale / 100) : height);
 
-			gpdata->scale_x = (gdouble) gpdata->scale_width / (gdouble) gpwidth;
-			gpdata->scale_y = (gdouble) gpdata->scale_height / (gdouble) gpheight;
+			rfi->scale_x = (gdouble) rfi->scale_width / (gdouble) gpwidth;
+			rfi->scale_y = (gdouble) rfi->scale_height / (gdouble) gpheight;
 		}
 	}
 	else
 	{
-		gpdata->scale_width = 0;
-		gpdata->scale_height = 0;
-		gpdata->scale_x = 0;
-		gpdata->scale_y = 0;
+		rfi->scale_width = 0;
+		rfi->scale_height = 0;
+		rfi->scale_x = 0;
+		rfi->scale_y = 0;
 	}
 
 	if ((width > 1) && (height > 1))
 		gtk_widget_queue_draw_area(GTK_WIDGET (gp), 0, 0, width, height);
 
-	gpdata->scale_handler = 0;
+	rfi->scale_handler = 0;
 
 	return FALSE;
 }
@@ -194,11 +199,11 @@ static gboolean remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, RemminaProtocolWidget* gp)
 {
 	gboolean scale;
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 
-	if (!gpdata->rgb_cairo_surface)
+	if (!rfi->rgb_cairo_surface)
 		return FALSE;
 
 	scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
@@ -207,9 +212,9 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 		gtk_widget_get_allocated_height(widget));
 
 	if (scale)
-		cairo_scale(context, gpdata->scale_x, gpdata->scale_y);
+		cairo_scale(context, rfi->scale_x, rfi->scale_y);
 
-	cairo_set_source_surface(context, gpdata->rgb_cairo_surface, 0, 0);
+	cairo_set_source_surface(context, rfi->rgb_cairo_surface, 0, 0);
 	cairo_fill(context);
 
 	return TRUE;
@@ -217,30 +222,30 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 
 static gboolean remmina_rdp_event_on_configure(GtkWidget* widget, GdkEventConfigure* event, RemminaProtocolWidget* gp)
 {
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 
 	/* We do a delayed reallocating to improve performance */
 
-	if (gpdata->scale_handler)
-		g_source_remove(gpdata->scale_handler);
+	if (rfi->scale_handler)
+		g_source_remove(rfi->scale_handler);
 
-	gpdata->scale_handler = g_timeout_add(1000, (GSourceFunc) remmina_rdp_event_update_scale_factor, gp);
+	rfi->scale_handler = g_timeout_add(1000, (GSourceFunc) remmina_rdp_event_update_scale_factor, gp);
 
 	return FALSE;
 }
 
 static void remmina_rdp_event_translate_pos(RemminaProtocolWidget* gp, int ix, int iy, uint16* ox, uint16* oy)
 {
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 
-	if ((gpdata->scale) && (gpdata->scale_width >= 1) && (gpdata->scale_height >= 1))
+	if ((rfi->scale) && (rfi->scale_width >= 1) && (rfi->scale_height >= 1))
 	{
-		*ox = (uint16) (ix * remmina_plugin_service->protocol_plugin_get_width(gp) / gpdata->scale_width);
-		*oy = (uint16) (iy * remmina_plugin_service->protocol_plugin_get_height(gp) / gpdata->scale_height);
+		*ox = (uint16) (ix * remmina_plugin_service->protocol_plugin_get_width(gp) / rfi->scale_width);
+		*oy = (uint16) (iy * remmina_plugin_service->protocol_plugin_get_height(gp) / rfi->scale_height);
 	}
 	else
 	{
@@ -338,10 +343,10 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 {
 	Display* display;
 	KeyCode cooked_keycode;
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 	RemminaPluginRdpEvent rdp_event;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_SCANCODE;
 	rdp_event.key_event.up = (event->type == GDK_KEY_PRESS ? False : True);
 	rdp_event.key_event.extended = False;
@@ -349,13 +354,13 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 	switch (event->keyval)
 	{
 		case GDK_KEY_Pause:
-			rdp_event.key_event.key_code = 0x1d;
+			rdp_event.key_event.key_code = 0x1D;
 			rdp_event.key_event.up = False;
 			remmina_rdp_event_event_push(gp, &rdp_event);
 			rdp_event.key_event.key_code = 0x45;
 			rdp_event.key_event.up = False;
 			remmina_rdp_event_event_push(gp, &rdp_event);
-			rdp_event.key_event.key_code = 0x1d;
+			rdp_event.key_event.key_code = 0x1D;
 			rdp_event.key_event.up = True;
 			remmina_rdp_event_event_push(gp, &rdp_event);
 			rdp_event.key_event.key_code = 0x45;
@@ -364,7 +369,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 			break;
 
 		default:
-			if (!gpdata->use_client_keymap)
+			if (!rfi->use_client_keymap)
 			{
 				rdp_event.key_event.key_code = freerdp_kbd_get_scancode_by_keycode(event->hardware_keycode, &rdp_event.key_event.extended);
 				remmina_plugin_service->log_printf("[RDP]keyval=%04X keycode=%i scancode=%i extended=%i\n",
@@ -389,7 +394,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 	if (rdp_event.key_event.key_code)
 	{
 		if (event->type == GDK_KEY_PRESS)
-			g_array_append_val(gpdata->pressed_keys, rdp_event.key_event.key_code);
+			g_array_append_val(rfi->pressed_keys, rdp_event.key_event.key_code);
 		else
 			remmina_rdp_event_release_key(gp, rdp_event.key_event.key_code);
 	}
@@ -405,62 +410,62 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 	gint flags;
 	XPixmapFormatValues* pf;
 	XPixmapFormatValues* pfs;
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
-	gpdata->drawing_area = gtk_drawing_area_new();
-	gtk_widget_show(gpdata->drawing_area);
-	gtk_container_add(GTK_CONTAINER(gp), gpdata->drawing_area);
+	rfi = GET_DATA(gp);
+	rfi->drawing_area = gtk_drawing_area_new();
+	gtk_widget_show(rfi->drawing_area);
+	gtk_container_add(GTK_CONTAINER(gp), rfi->drawing_area);
 
-	gtk_widget_add_events(gpdata->drawing_area, GDK_POINTER_MOTION_MASK | GDK_BUTTON_PRESS_MASK
+	gtk_widget_add_events(rfi->drawing_area, GDK_POINTER_MOTION_MASK | GDK_BUTTON_PRESS_MASK
 		| GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK);
-	gtk_widget_set_can_focus(gpdata->drawing_area, TRUE);
+	gtk_widget_set_can_focus(rfi->drawing_area, TRUE);
 
-	remmina_plugin_service->protocol_plugin_register_hostkey(gp, gpdata->drawing_area);
+	remmina_plugin_service->protocol_plugin_register_hostkey(gp, rfi->drawing_area);
 
 	s = remmina_plugin_service->pref_get_value("rdp_use_client_keymap");
-	gpdata->use_client_keymap = (s && s[0] == '1' ? TRUE : FALSE);
+	rfi->use_client_keymap = (s && s[0] == '1' ? TRUE : FALSE);
 	g_free(s);
 
-	g_signal_connect(G_OBJECT(gpdata->drawing_area), "draw",
+	g_signal_connect(G_OBJECT(rfi->drawing_area), "draw",
 		G_CALLBACK(remmina_rdp_event_on_draw), gp);
-	g_signal_connect(G_OBJECT(gpdata->drawing_area), "configure-event",
+	g_signal_connect(G_OBJECT(rfi->drawing_area), "configure-event",
 		G_CALLBACK(remmina_rdp_event_on_configure), gp);
-	g_signal_connect(G_OBJECT(gpdata->drawing_area), "motion-notify-event",
+	g_signal_connect(G_OBJECT(rfi->drawing_area), "motion-notify-event",
 		G_CALLBACK(remmina_rdp_event_on_motion), gp);
-	g_signal_connect(G_OBJECT(gpdata->drawing_area), "button-press-event",
+	g_signal_connect(G_OBJECT(rfi->drawing_area), "button-press-event",
 		G_CALLBACK(remmina_rdp_event_on_button), gp);
-	g_signal_connect(G_OBJECT(gpdata->drawing_area), "button-release-event",
+	g_signal_connect(G_OBJECT(rfi->drawing_area), "button-release-event",
 		G_CALLBACK(remmina_rdp_event_on_button), gp);
-	g_signal_connect(G_OBJECT(gpdata->drawing_area), "scroll-event",
+	g_signal_connect(G_OBJECT(rfi->drawing_area), "scroll-event",
 		G_CALLBACK(remmina_rdp_event_on_scroll), gp);
-	g_signal_connect(G_OBJECT(gpdata->drawing_area), "key-press-event",
+	g_signal_connect(G_OBJECT(rfi->drawing_area), "key-press-event",
 		G_CALLBACK(remmina_rdp_event_on_key), gp);
-	g_signal_connect(G_OBJECT(gpdata->drawing_area), "key-release-event",
+	g_signal_connect(G_OBJECT(rfi->drawing_area), "key-release-event",
 		G_CALLBACK(remmina_rdp_event_on_key), gp);
 
-	gpdata->pressed_keys = g_array_new(FALSE, TRUE, sizeof (gint));
-	gpdata->event_queue = g_async_queue_new_full(g_free);
-	gpdata->ui_queue = g_async_queue_new();
+	rfi->pressed_keys = g_array_new(FALSE, TRUE, sizeof (gint));
+	rfi->event_queue = g_async_queue_new_full(g_free);
+	rfi->ui_queue = g_async_queue_new();
 
-	if (pipe(gpdata->event_pipe))
+	if (pipe(rfi->event_pipe))
 	{
 		g_print("Error creating pipes.\n");
-		gpdata->event_pipe[0] = -1;
-		gpdata->event_pipe[1] = -1;
+		rfi->event_pipe[0] = -1;
+		rfi->event_pipe[1] = -1;
 	}
 	else
 	{
-		flags = fcntl(gpdata->event_pipe[0], F_GETFL, 0);
-		fcntl(gpdata->event_pipe[0], F_SETFL, flags | O_NONBLOCK);
+		flags = fcntl(rfi->event_pipe[0], F_GETFL, 0);
+		fcntl(rfi->event_pipe[0], F_SETFL, flags | O_NONBLOCK);
 	}
 
-	gpdata->object_table = g_hash_table_new_full(NULL, NULL, NULL, g_free);
+	rfi->object_table = g_hash_table_new_full(NULL, NULL, NULL, g_free);
 
-	gpdata->display = GDK_DISPLAY_XDISPLAY(gdk_display_get_default());
-	gpdata->depth = DefaultDepth(gpdata->display, DefaultScreen(gpdata->display));
-	gpdata->visual = GDK_VISUAL_XVISUAL(gdk_visual_get_best_with_depth(gpdata->depth));
-	pfs = XListPixmapFormats(gpdata->display, &n);
+	rfi->display = GDK_DISPLAY_XDISPLAY(gdk_display_get_default());
+	rfi->depth = DefaultDepth(rfi->display, DefaultScreen(rfi->display));
+	rfi->visual = GDK_VISUAL_XVISUAL(gdk_visual_get_best_with_depth(rfi->depth));
+	pfs = XListPixmapFormats(rfi->display, &n);
 
 	if (pfs)
 	{
@@ -468,10 +473,10 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 		{
 			pf = pfs + i;
 
-			if (pf->depth == gpdata->depth)
+			if (pf->depth == rfi->depth)
 			{
-				gpdata->bitmap_pad = pf->scanline_pad;
-				gpdata->bpp = pf->bits_per_pixel;
+				rfi->scanline_pad = pf->scanline_pad;
+				rfi->bpp = pf->bits_per_pixel;
 				break;
 			}
 		}
@@ -490,66 +495,66 @@ void remmina_rdp_event_post_connect(RemminaProtocolWidget* gp)
 
 void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 {
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 	RemminaPluginRdpUiObject* ui;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 
-	if (gpdata->scale_handler)
+	if (rfi->scale_handler)
 	{
-		g_source_remove(gpdata->scale_handler);
-		gpdata->scale_handler = 0;
+		g_source_remove(rfi->scale_handler);
+		rfi->scale_handler = 0;
 	}
-	if (gpdata->ui_handler)
+	if (rfi->ui_handler)
 	{
-		g_source_remove(gpdata->ui_handler);
-		gpdata->ui_handler = 0;
+		g_source_remove(rfi->ui_handler);
+		rfi->ui_handler = 0;
 	}
-	while ((ui =(RemminaPluginRdpUiObject*) g_async_queue_try_pop(gpdata->ui_queue)) != NULL)
+	while ((ui =(RemminaPluginRdpUiObject*) g_async_queue_try_pop(rfi->ui_queue)) != NULL)
 	{
 		rf_object_free (gp, ui);
 	}
 
-	if (gpdata->gc)
+	if (rfi->gc)
 	{
-		XFreeGC(gpdata->display, gpdata->gc);
-		gpdata->gc = 0;
+		XFreeGC(rfi->display, rfi->gc);
+		rfi->gc = 0;
 	}
-	if (gpdata->gc_default)
+	if (rfi->gc_default)
 	{
-		XFreeGC(gpdata->display, gpdata->gc_default);
-		gpdata->gc_default = 0;
+		XFreeGC(rfi->display, rfi->gc_default);
+		rfi->gc_default = 0;
 	}
-	if (gpdata->rgb_cairo_surface)
+	if (rfi->rgb_cairo_surface)
 	{
-		cairo_surface_destroy(gpdata->rgb_cairo_surface);
-		gpdata->rgb_cairo_surface = NULL;
+		cairo_surface_destroy(rfi->rgb_cairo_surface);
+		rfi->rgb_cairo_surface = NULL;
 	}
-	if (gpdata->rgb_surface)
+	if (rfi->rgb_surface)
 	{
-		XFreePixmap(gpdata->display, gpdata->rgb_surface);
-		gpdata->rgb_surface = 0;
+		XFreePixmap(rfi->display, rfi->rgb_surface);
+		rfi->rgb_surface = 0;
 	}
-	if (gpdata->gc_mono)
+	if (rfi->gc_mono)
 	{
-		XFreeGC(gpdata->display, gpdata->gc_mono);
-		gpdata->gc_mono = 0;
+		XFreeGC(rfi->display, rfi->gc_mono);
+		rfi->gc_mono = 0;
 	}
-	if (gpdata->bitmap_mono)
+	if (rfi->bitmap_mono)
 	{
-		XFreePixmap(gpdata->display, gpdata->bitmap_mono);
-		gpdata->bitmap_mono = 0;
+		XFreePixmap(rfi->display, rfi->bitmap_mono);
+		rfi->bitmap_mono = 0;
 	}
 
-	g_hash_table_destroy(gpdata->object_table);
+	g_hash_table_destroy(rfi->object_table);
 
-	g_array_free(gpdata->pressed_keys, TRUE);
-	g_async_queue_unref(gpdata->event_queue);
-	gpdata->event_queue = NULL;
-	g_async_queue_unref(gpdata->ui_queue);
-	gpdata->ui_queue = NULL;
-	close(gpdata->event_pipe[0]);
-	close(gpdata->event_pipe[1]);
+	g_array_free(rfi->pressed_keys, TRUE);
+	g_async_queue_unref(rfi->event_queue);
+	rfi->event_queue = NULL;
+	g_async_queue_unref(rfi->ui_queue);
+	rfi->ui_queue = NULL;
+	close(rfi->event_pipe[0]);
+	close(rfi->event_pipe[1]);
 }
 
 void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
@@ -557,9 +562,9 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 	gint width, height;
 	gint hscale, vscale;
 	RemminaFile* remminafile;
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	width = remmina_plugin_service->protocol_plugin_get_width(gp);
@@ -567,15 +572,15 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 	hscale = remmina_plugin_service->file_get_int(remminafile, "hscale", 0);
 	vscale = remmina_plugin_service->file_get_int(remminafile, "vscale", 0);
 
-	if (gpdata->scale)
+	if (rfi->scale)
 	{
-		gtk_widget_set_size_request(gpdata->drawing_area,
+		gtk_widget_set_size_request(rfi->drawing_area,
 			(hscale > 0 ? width * hscale / 100 : -1),
 			(vscale > 0 ? height * vscale / 100 : -1));
 	}
 	else
 	{
-		gtk_widget_set_size_request(gpdata->drawing_area, width, height);
+		gtk_widget_set_size_request(rfi->drawing_area, width, height);
 	}
 
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "update-align");
@@ -601,7 +606,7 @@ static uint8 remmina_rdp_event_rop2_map[] =
 	GXset			/* 1 */
 };
 
-static void remmina_rdp_event_set_rop2(RemminaPluginRdpData* gpdata, gint rop2)
+static void remmina_rdp_event_set_rop2(rfContext* rfi, gint rop2)
 {
 	if ((rop2 < 0x01) || (rop2 > 0x10))
 	{
@@ -609,97 +614,97 @@ static void remmina_rdp_event_set_rop2(RemminaPluginRdpData* gpdata, gint rop2)
 	}
 	else
 	{
-		XSetFunction(gpdata->display, gpdata->gc, remmina_rdp_event_rop2_map[rop2 - 1]);
+		XSetFunction(rfi->display, rfi->gc, remmina_rdp_event_rop2_map[rop2 - 1]);
 	}
 }
 
-static void remmina_rdp_event_set_rop3(RemminaPluginRdpData* gpdata, gint rop3)
+static void remmina_rdp_event_set_rop3(rfContext* rfi, gint rop3)
 {
 	switch (rop3)
 	{
 		case 0x00: /* 0 - 0 */
-			XSetFunction(gpdata->display, gpdata->gc, GXclear);
+			XSetFunction(rfi->display, rfi->gc, GXclear);
 			break;
 		case 0x05: /* ~(P | D) - DPon */
-			XSetFunction(gpdata->display, gpdata->gc, GXnor);
+			XSetFunction(rfi->display, rfi->gc, GXnor);
 			break;
 		case 0x0a: /* ~P & D - DPna */
-			XSetFunction(gpdata->display, gpdata->gc, GXandInverted);
+			XSetFunction(rfi->display, rfi->gc, GXandInverted);
 			break;
 		case 0x0f: /* ~P - Pn */
-			XSetFunction(gpdata->display, gpdata->gc, GXcopyInverted);
+			XSetFunction(rfi->display, rfi->gc, GXcopyInverted);
 			break;
 		case 0x11: /* ~(S | D) - DSon */
-			XSetFunction(gpdata->display, gpdata->gc, GXnor);
+			XSetFunction(rfi->display, rfi->gc, GXnor);
 			break;
 		case 0x22: /* ~S & D - DSna */
-			XSetFunction(gpdata->display, gpdata->gc, GXandInverted);
+			XSetFunction(rfi->display, rfi->gc, GXandInverted);
 			break;
 		case 0x33: /* ~S - Sn */
-			XSetFunction(gpdata->display, gpdata->gc, GXcopyInverted);
+			XSetFunction(rfi->display, rfi->gc, GXcopyInverted);
 			break;
 		case 0x44: /* S & ~D - SDna */
-			XSetFunction(gpdata->display, gpdata->gc, GXandReverse);
+			XSetFunction(rfi->display, rfi->gc, GXandReverse);
 			break;
 		case 0x50: /* P & ~D - PDna */
-			XSetFunction(gpdata->display, gpdata->gc, GXandReverse);
+			XSetFunction(rfi->display, rfi->gc, GXandReverse);
 			break;
 		case 0x55: /* ~D - Dn */
-			XSetFunction(gpdata->display, gpdata->gc, GXinvert);
+			XSetFunction(rfi->display, rfi->gc, GXinvert);
 			break;
 		case 0x5a: /* D ^ P - DPx */
-			XSetFunction(gpdata->display, gpdata->gc, GXxor);
+			XSetFunction(rfi->display, rfi->gc, GXxor);
 			break;
 		case 0x5f: /* ~(P & D) - DPan */
-			XSetFunction(gpdata->display, gpdata->gc, GXnand);
+			XSetFunction(rfi->display, rfi->gc, GXnand);
 			break;
 		case 0x66: /* D ^ S - DSx */
-			XSetFunction(gpdata->display, gpdata->gc, GXxor);
+			XSetFunction(rfi->display, rfi->gc, GXxor);
 			break;
 		case 0x77: /* ~(S & D) - DSan */
-			XSetFunction(gpdata->display, gpdata->gc, GXnand);
+			XSetFunction(rfi->display, rfi->gc, GXnand);
 			break;
 		case 0x88: /* D & S - DSa */
-			XSetFunction(gpdata->display, gpdata->gc, GXand);
+			XSetFunction(rfi->display, rfi->gc, GXand);
 			break;
 		case 0x99: /* ~(S ^ D) - DSxn */
-			XSetFunction(gpdata->display, gpdata->gc, GXequiv);
+			XSetFunction(rfi->display, rfi->gc, GXequiv);
 			break;
 		case 0xa0: /* P & D - DPa */
-			XSetFunction(gpdata->display, gpdata->gc, GXand);
+			XSetFunction(rfi->display, rfi->gc, GXand);
 			break;
 		case 0xa5: /* ~(P ^ D) - PDxn */
-			XSetFunction(gpdata->display, gpdata->gc, GXequiv);
+			XSetFunction(rfi->display, rfi->gc, GXequiv);
 			break;
 		case 0xaa: /* D - D */
-			XSetFunction(gpdata->display, gpdata->gc, GXnoop);
+			XSetFunction(rfi->display, rfi->gc, GXnoop);
 			break;
 		case 0xaf: /* ~P | D - DPno */
-			XSetFunction(gpdata->display, gpdata->gc, GXorInverted);
+			XSetFunction(rfi->display, rfi->gc, GXorInverted);
 			break;
 		case 0xbb: /* ~S | D - DSno */
-			XSetFunction(gpdata->display, gpdata->gc, GXorInverted);
+			XSetFunction(rfi->display, rfi->gc, GXorInverted);
 			break;
 		case 0xcc: /* S - S */
-			XSetFunction(gpdata->display, gpdata->gc, GXcopy);
+			XSetFunction(rfi->display, rfi->gc, GXcopy);
 			break;
 		case 0xdd: /* S | ~D - SDno */
-			XSetFunction(gpdata->display, gpdata->gc, GXorReverse);
+			XSetFunction(rfi->display, rfi->gc, GXorReverse);
 			break;
 		case 0xee: /* D | S - DSo */
-			XSetFunction(gpdata->display, gpdata->gc, GXor);
+			XSetFunction(rfi->display, rfi->gc, GXor);
 			break;
 		case 0xf0: /* P - P */
-			XSetFunction(gpdata->display, gpdata->gc, GXcopy);
+			XSetFunction(rfi->display, rfi->gc, GXcopy);
 			break;
 		case 0xf5: /* P | ~D - PDno */
-			XSetFunction(gpdata->display, gpdata->gc, GXorReverse);
+			XSetFunction(rfi->display, rfi->gc, GXorReverse);
 			break;
 		case 0xfa: /* P | D - DPo */
-			XSetFunction(gpdata->display, gpdata->gc, GXor);
+			XSetFunction(rfi->display, rfi->gc, GXor);
 			break;
 		case 0xff: /* 1 - 1 */
-			XSetFunction(gpdata->display, gpdata->gc, GXset);
+			XSetFunction(rfi->display, rfi->gc, GXset);
 			break;
 		default:
 			remmina_plugin_service->log_printf("[RDP]unknown rop3 0x%x", rop3);
@@ -707,20 +712,20 @@ static void remmina_rdp_event_set_rop3(RemminaPluginRdpData* gpdata, gint rop3)
 	}
 }
 
-static void remmina_rdp_event_insert_drawable(RemminaPluginRdpData* gpdata, guint object_id, Drawable obj)
+static void remmina_rdp_event_insert_drawable(rfContext* rfi, guint object_id, Drawable obj)
 {
 	Drawable* p;
 
 	p = g_new(Drawable, 1);
 	*p = obj;
-	g_hash_table_insert(gpdata->object_table, GINT_TO_POINTER(object_id), p);
+	g_hash_table_insert(rfi->object_table, GINT_TO_POINTER(object_id), p);
 }
 
-static Drawable remmina_rdp_event_get_drawable(RemminaPluginRdpData* gpdata, guint object_id)
+static Drawable remmina_rdp_event_get_drawable(rfContext* rfi, guint object_id)
 {
 	Drawable* p;
 
-	p = (Drawable*) g_hash_table_lookup(gpdata->object_table, GINT_TO_POINTER(object_id));
+	p = (Drawable*) g_hash_table_lookup(rfi->object_table, GINT_TO_POINTER(object_id));
 
 	if (!p)
 		return 0;
@@ -730,22 +735,30 @@ static Drawable remmina_rdp_event_get_drawable(RemminaPluginRdpData* gpdata, gui
 
 static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 	XGCValues gcv = { 0 };
 
-	gpdata = GET_DATA(gp);
-	gtk_widget_realize(gpdata->drawing_area);
+	rfi = GET_DATA(gp);
+	gtk_widget_realize(rfi->drawing_area);
 
-	gpdata->rgb_surface = XCreatePixmap(gpdata->display, GDK_WINDOW_XID(gtk_widget_get_window(gpdata->drawing_area)),
-		gpdata->settings->width, gpdata->settings->height, gpdata->depth);
-	gpdata->rgb_cairo_surface = cairo_xlib_surface_create(gpdata->display, gpdata->rgb_surface, gpdata->visual,
-		gpdata->settings->width, gpdata->settings->height);
-	gpdata->drw_surface = gpdata->rgb_surface;
-	gpdata->gc = XCreateGC(gpdata->display, gpdata->rgb_surface, GCGraphicsExposures, &gcv);
-	gpdata->gc_default = XCreateGC(gpdata->display, gpdata->rgb_surface, GCGraphicsExposures, &gcv);
-	gpdata->bitmap_mono = XCreatePixmap(gpdata->display, GDK_WINDOW_XID(gtk_widget_get_window (gpdata->drawing_area)),
-		8, 8, 1);
-	gpdata->gc_mono = XCreateGC(gpdata->display, gpdata->bitmap_mono, GCGraphicsExposures, &gcv);
+	rfi->width = rfi->settings->width;
+	rfi->height = rfi->settings->height;
+	rfi->drawable = GDK_WINDOW_XID(gtk_widget_get_window(rfi->drawing_area));
+
+	rfi->rgb_surface = XCreatePixmap(rfi->display, rfi->drawable,
+		rfi->settings->width, rfi->settings->height, rfi->depth);
+
+	rfi->rgb_cairo_surface = cairo_xlib_surface_create(rfi->display,
+			rfi->rgb_surface, rfi->visual, rfi->width, rfi->height);
+
+	rfi->drw_surface = rfi->rgb_surface;
+	rfi->gc = XCreateGC(rfi->display, rfi->rgb_surface, GCGraphicsExposures, &gcv);
+	rfi->gc_default = XCreateGC(rfi->display, rfi->rgb_surface, GCGraphicsExposures, &gcv);
+	rfi->bitmap_mono = XCreatePixmap(rfi->display, rfi->drawable, 8, 8, 1);
+	rfi->gc_mono = XCreateGC(rfi->display, rfi->bitmap_mono, GCGraphicsExposures, &gcv);
+
+	rfi->primary = XCreatePixmap(rfi->display, rfi->drawable, rfi->width, rfi->height, rfi->depth);
+	rfi->drawing = rfi->primary;
 
 	remmina_rdp_event_update_scale(gp);
 }
@@ -755,49 +768,49 @@ static void remmina_rdp_event_rfx(RemminaProtocolWidget* gp, RemminaPluginRdpUiO
 	XImage* image;
 	gint i, tx, ty;
 	RFX_MESSAGE* message;
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 	message = ui->rfx.message;
 
-	XSetFunction(gpdata->display, gpdata->gc, GXcopy);
-	XSetFillStyle(gpdata->display, gpdata->gc, FillSolid);
+	XSetFunction(rfi->display, rfi->gc, GXcopy);
+	XSetFillStyle(rfi->display, rfi->gc, FillSolid);
 
-	XSetClipRectangles(gpdata->display, gpdata->gc, ui->rfx.left, ui->rfx.top,
+	XSetClipRectangles(rfi->display, rfi->gc, ui->rfx.left, ui->rfx.top,
 		(XRectangle*) message->rects, message->num_rects, YXBanded);
 
 	/* Draw the tiles to primary surface, each is 64x64. */
 	for (i = 0; i < message->num_tiles; i++)
 	{
-		image = XCreateImage(gpdata->display, gpdata->visual, 24, ZPixmap, 0,
+		image = XCreateImage(rfi->display, rfi->visual, 24, ZPixmap, 0,
 			(char*) message->tiles[i]->data, 64, 64, 32, 0);
 
 		tx = message->tiles[i]->x + ui->rfx.left;
 		ty = message->tiles[i]->y + ui->rfx.top;
 
-		XPutImage(gpdata->display, gpdata->rgb_surface, gpdata->gc, image, 0, 0, tx, ty, 64, 64);
+		XPutImage(rfi->display, rfi->rgb_surface, rfi->gc, image, 0, 0, tx, ty, 64, 64);
 		XFree(image);
 
 		remmina_rdp_event_update_rect(gp, tx, ty, message->rects[i].width, message->rects[i].height);
 	}
 
-	XSetClipMask(gpdata->display, gpdata->gc, None);
+	XSetClipMask(rfi->display, rfi->gc, None);
 }
 
 static void remmina_rdp_event_nocodec(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject *ui)
 {
 	XImage* image;
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 
-	XSetFunction(gpdata->display, gpdata->gc, GXcopy);
-	XSetFillStyle(gpdata->display, gpdata->gc, FillSolid);
+	XSetFunction(rfi->display, rfi->gc, GXcopy);
+	XSetFillStyle(rfi->display, rfi->gc, FillSolid);
 
-	image = XCreateImage(gpdata->display, gpdata->visual, 24, ZPixmap, 0,
+	image = XCreateImage(rfi->display, rfi->visual, 24, ZPixmap, 0,
 		(char*) ui->nocodec.bitmap, ui->nocodec.width, ui->nocodec.height, 32, 0);
 
-	XPutImage(gpdata->display, gpdata->rgb_surface, gpdata->gc, image, 0, 0,
+	XPutImage(rfi->display, rfi->rgb_surface, rfi->gc, image, 0, 0,
 		ui->nocodec.left, ui->nocodec.top,
 		ui->nocodec.width, ui->nocodec.height);
 
@@ -805,17 +818,17 @@ static void remmina_rdp_event_nocodec(RemminaProtocolWidget* gp, RemminaPluginRd
 		ui->nocodec.left, ui->nocodec.top,
 		ui->nocodec.width, ui->nocodec.height);
 
-	XSetClipMask(gpdata->display, gpdata->gc, None);
+	XSetClipMask(rfi->display, rfi->gc, None);
 }
 
 gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 {
-	RemminaPluginRdpData* gpdata;
+	rfContext* rfi;
 	RemminaPluginRdpUiObject* ui;
 
-	gpdata = GET_DATA(gp);
+	rfi = GET_DATA(gp);
 
-	ui = (RemminaPluginRdpUiObject*) g_async_queue_try_pop(gpdata->ui_queue);
+	ui = (RemminaPluginRdpUiObject*) g_async_queue_try_pop(rfi->ui_queue);
 
 	if (ui)
 	{
@@ -843,7 +856,7 @@ gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 	else
 	{
 		LOCK_BUFFER(FALSE)
-		gpdata->ui_handler = 0;
+		rfi->ui_handler = 0;
 		UNLOCK_BUFFER(FALSE)
 		return FALSE;
 	}
