@@ -189,5 +189,12 @@ struct remmina_plugin_rdp_ui_object
 };
 typedef struct remmina_plugin_rdp_ui_object RemminaPluginRdpUiObject;
 
+void rf_init(RemminaProtocolWidget* gp);
+void rf_uninit(RemminaProtocolWidget* gp);
+void rf_get_fds(RemminaProtocolWidget* gp, void** rfds, int* rcount);
+boolean rf_check_fds(RemminaProtocolWidget* gp);
+void rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui);
+void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj);
+
 #endif
 
