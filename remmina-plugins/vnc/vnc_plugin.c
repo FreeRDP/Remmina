@@ -981,7 +981,7 @@ static void remmina_plugin_vnc_rfb_output(const char *format, ...)
 	f = g_strdup (format);
 	if (f[strlen (f) - 1] == '\n') f[strlen (f) - 1] = '\0';
 
-	if (g_strcmp0 (f, "VNC connection failed: %s") == 0)
+	if (g_strcmp0(f, "VNC connection failed: %s") == 0)
 	{
 		p = va_arg (args, gchar*);
 		g_snprintf (vnc_error, MAX_ERROR_LENGTH, _(f), _(p));

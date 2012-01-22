@@ -281,8 +281,8 @@ remmina_sftp_client_thread_recursive_dir (RemminaSFTPClient *client, RemminaSFTP
 
 	while ((sftpattr = sftp_readdir (sftp->sftp_sess, sftpdir)))
 	{
-		if (g_strcmp0 (sftpattr->name, ".") != 0 &&
-				g_strcmp0 (sftpattr->name, "..") != 0)
+		if (g_strcmp0(sftpattr->name, ".") != 0 &&
+				g_strcmp0(sftpattr->name, "..") != 0)
 		{
 			GET_SFTPATTR_TYPE (sftpattr, type);
 
@@ -354,7 +354,7 @@ remmina_sftp_client_thread_recursive_localdir (RemminaSFTPClient *client, Remmin
 			ret = FALSE;
 			break;
 		}
-		if (g_strcmp0 (name, ".") == 0 || g_strcmp0 (name, "..") == 0) continue;
+		if (g_strcmp0(name, ".") == 0 || g_strcmp0(name, "..") == 0) continue;
 		abspath = g_build_filename (path, name, NULL);
 		if (g_stat (abspath, &st) < 0)
 		{
@@ -642,7 +642,7 @@ remmina_sftp_client_thread_main (gpointer data)
 			{
 				remmina_sftp_client_thread_set_finish (client, task);
 				tmp = remmina_ftp_client_get_dir (REMMINA_FTP_CLIENT (client));
-				if (g_strcmp0 (tmp, task->remotedir) == 0)
+				if (g_strcmp0(tmp, task->remotedir) == 0)
 				{
 					refresh = TRUE;
 					g_free (refreshdir);
@@ -675,7 +675,7 @@ remmina_sftp_client_thread_main (gpointer data)
 	if (!client->thread_abort && refresh)
 	{
 		tmp = remmina_ftp_client_get_dir (REMMINA_FTP_CLIENT (client));
-		if (g_strcmp0 (tmp, refreshdir) == 0)
+		if (g_strcmp0(tmp, refreshdir) == 0)
 		{
 			IDLE_ADD ((GSourceFunc) remmina_sftp_client_refresh, client);
 		}
@@ -791,7 +791,7 @@ remmina_sftp_client_on_opendir (RemminaSFTPClient *client, gchar *dir, gpointer 
 				GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 				_("Failed to open directory %s. %s"), dir,
 				ssh_get_error (REMMINA_SSH (client->sftp)->session));
-		gtk_widget_show (dialog);
+		gtk_widget_show(dialog);
 		g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
 		g_free (newdir_conv);
 		return;
@@ -809,8 +809,8 @@ remmina_sftp_client_on_opendir (RemminaSFTPClient *client, gchar *dir, gpointer 
 
 	while ((sftpattr = sftp_readdir (client->sftp->sftp_sess, sftpdir)))
 	{
-		if (g_strcmp0 (sftpattr->name, ".") != 0 &&
-				g_strcmp0 (sftpattr->name, "..") != 0)
+		if (g_strcmp0(sftpattr->name, ".") != 0 &&
+				g_strcmp0(sftpattr->name, "..") != 0)
 		{
 			GET_SFTPATTR_TYPE (sftpattr, type);
 
@@ -956,25 +956,25 @@ remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path
 	gtk_container_set_border_width (GTK_CONTAINER (dialog), 4);
 
 	hbox = gtk_hbox_new (FALSE, 4);
-	gtk_widget_show (hbox);
+	gtk_widget_show(hbox);
 	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))),
 			hbox, TRUE, TRUE, 4);
 
 	widget = gtk_image_new_from_stock (GTK_STOCK_DIALOG_QUESTION, GTK_ICON_SIZE_DIALOG);
-	gtk_widget_show (widget);
+	gtk_widget_show(widget);
 	gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 4);
 
 	vbox = gtk_vbox_new (FALSE, 4);
-	gtk_widget_show (vbox);
+	gtk_widget_show(vbox);
 	gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 4);
 
 	widget = gtk_label_new (_("The following file already exists in the target folder:"));
-	gtk_widget_show (widget);
+	gtk_widget_show(widget);
 	gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
 	gtk_box_pack_start (GTK_BOX (vbox), widget, TRUE, TRUE, 4);
 
 	widget = gtk_label_new (filename);
-	gtk_widget_show (widget);
+	gtk_widget_show(widget);
 	gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
 	gtk_box_pack_start (GTK_BOX (vbox), widget, TRUE, TRUE, 4);
 
