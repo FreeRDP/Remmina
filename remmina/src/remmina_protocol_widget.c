@@ -661,7 +661,7 @@ gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget *gp, R
 	gp->priv->ssh_tunnel->callback_data = gp;
 
 	remmina_public_get_server_port (remmina_file_get_string (gp->priv->remmina_file, "server"), 0, &server, NULL);
-	bindlocalhost = (g_strcmp0 (REMMINA_SSH (gp->priv->ssh_tunnel)->server, server) == 0);
+	bindlocalhost = (g_strcmp0(REMMINA_SSH (gp->priv->ssh_tunnel)->server, server) == 0);
 	g_free (server);
 
 	if (!remmina_ssh_tunnel_xport (gp->priv->ssh_tunnel, bindlocalhost))
