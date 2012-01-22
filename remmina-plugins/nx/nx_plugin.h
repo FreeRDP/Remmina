@@ -27,36 +27,36 @@ G_BEGIN_DECLS
 
 typedef enum
 {
-    REMMINA_NX_EVENT_CANCEL,
-    REMMINA_NX_EVENT_START,
-    REMMINA_NX_EVENT_RESTORE,
-    REMMINA_NX_EVENT_ATTACH,
-    REMMINA_NX_EVENT_TERMINATE
+	REMMINA_NX_EVENT_CANCEL,
+	REMMINA_NX_EVENT_START,
+	REMMINA_NX_EVENT_RESTORE,
+	REMMINA_NX_EVENT_ATTACH,
+	REMMINA_NX_EVENT_TERMINATE
 } RemminaNXEventType;
 
 typedef struct _RemminaPluginNxData
 {
-    GtkWidget *socket;
-    gint socket_id;
+	GtkWidget *socket;
+	gint socket_id;
 
-    pthread_t thread;
+	pthread_t thread;
 
-    RemminaNXSession *nx;
+	RemminaNXSession *nx;
 
-    Display *display;
-    Window window_id;
-    int (*orig_handler) (Display *, XErrorEvent *);
+	Display *display;
+	Window window_id;
+	int (*orig_handler)(Display *, XErrorEvent *);
 
-    /* Session Manager data */
-    gboolean manager_started;
-    GtkWidget *manager_dialog;
-    gboolean manager_selected;
+	/* Session Manager data */
+	gboolean manager_started;
+	GtkWidget *manager_dialog;
+	gboolean manager_selected;
 
-    /* Communication between the NX thread and the session manager */
-    gint event_pipe[2];
-    guint session_manager_start_handler;
-    gboolean attach_session;
-    GtkTreeIter iter;
+	/* Communication between the NX thread and the session manager */
+	gint event_pipe[2];
+	guint session_manager_start_handler;
+	gboolean attach_session;
+	GtkTreeIter iter;
 } RemminaPluginNxData;
 
 extern RemminaPluginService *remmina_plugin_nx_service;

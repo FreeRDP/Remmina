@@ -32,15 +32,15 @@ G_BEGIN_DECLS
 
 typedef struct _RemminaTpHandler
 {
-    GObject parent;
+	GObject parent;
 } RemminaTpHandler;
 
 typedef struct _RemminaTpHandlerClass
 {
-    GObjectClass parent_class;
+	GObjectClass parent_class;
 } RemminaTpHandlerClass;
 
-RemminaTpHandler* remmina_tp_handler_new (void);
+RemminaTpHandler* remmina_tp_handler_new(void);
 
 G_END_DECLS
 
