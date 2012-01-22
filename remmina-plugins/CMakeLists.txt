@@ -56,7 +56,7 @@ endif()
 find_suggested_package(ZLIB)
 
 if(ZLIB_FOUND)
-	add_subdirectory(libvncserver)
+	add_subdirectory(vnc/libvncserver)
 	add_subdirectory(vnc)
 endif()
 
