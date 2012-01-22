@@ -164,7 +164,8 @@ typedef struct remmina_plugin_rdp_event RemminaPluginRdpEvent;
 
 typedef enum
 {
-	REMMINA_RDP_UI_CONNECTED = 0,
+	REMMINA_RDP_UI_UPDATE_REGION = 0,
+	REMMINA_RDP_UI_CONNECTED,
 	REMMINA_RDP_UI_RFX,
 	REMMINA_RDP_UI_NOCODEC
 } RemminaPluginRdpUiType;
@@ -174,6 +175,13 @@ struct remmina_plugin_rdp_ui_object
 	RemminaPluginRdpUiType type;
 	union
 	{
+		struct
+		{
+			gint x;
+			gint y;
+			gint width;
+			gint height;
+		} region;
 		struct
 		{
 			gint left;
