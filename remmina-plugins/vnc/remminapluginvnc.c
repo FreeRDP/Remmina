@@ -18,7 +18,7 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include "common/remminaplugincommon.h"
+#include "common/remmina_plugin.h"
 
 #define REMMINA_PLUGIN_VNC_FEATURE_PREF_QUALITY            1
 #define REMMINA_PLUGIN_VNC_FEATURE_PREF_VIEWONLY           2
