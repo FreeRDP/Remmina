@@ -89,6 +89,7 @@ struct rf_context
 
 	RFX_CONTEXT* rfx_context;
 
+	gboolean sw_gdi;
 	GtkWidget* drawing_area;
 	gint scale_width;
 	gint scale_height;
@@ -119,6 +120,8 @@ struct rf_context
 	HCLRCONV clrconv;
 	Pixmap primary;
 	Pixmap drawing;
+	XImage* image;
+	uint8* primary_buffer;
 	cairo_surface_t* rgb_cairo_surface;
 
 	guint object_id_seq;
