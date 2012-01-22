@@ -36,21 +36,21 @@ typedef struct _RemminaChainButton
     GtkTable table;
 
     gboolean chained;
-    GtkWidget *chain_image;
+    GtkWidget* chain_image;
 } RemminaChainButton;
 
 typedef struct _RemminaChainButtonClass
 {
     GtkTableClass parent_class;
 
-    void (* chain_toggled) (RemminaChainButton *cb);
+    void (* chain_toggled) (RemminaChainButton* cb);
 } RemminaChainButtonClass;
 
-GType remmina_chain_button_get_type (void) G_GNUC_CONST;
+GType remmina_chain_button_get_type(void) G_GNUC_CONST;
 
-GtkWidget* remmina_chain_button_new (void);
+GtkWidget* remmina_chain_button_new(void);
 
-void remmina_chain_button_set (RemminaChainButton *cb, gboolean chained);
+void remmina_chain_button_set (RemminaChainButton* cb, gboolean chained);
 
 G_END_DECLS
 

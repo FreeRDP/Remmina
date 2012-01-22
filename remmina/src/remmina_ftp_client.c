@@ -1079,10 +1079,10 @@ void remmina_ftp_client_add_file(RemminaFTPClient *client, ...)
 			REMMINA_FTP_FILE_COLUMN_NAME, &name,
 			-1);
 
-	ptr = g_strdup_printf ("%i%s", type, name);
+	ptr = g_strdup_printf("%i%s", type, name);
 	gtk_list_store_set (store, &iter, REMMINA_FTP_FILE_COLUMN_NAME_SORT, ptr, -1);
-	g_free (ptr);
-	g_free (name);
+	g_free(ptr);
+	g_free(name);
 }
 
 void remmina_ftp_client_set_dir(RemminaFTPClient *client, const gchar *dir)

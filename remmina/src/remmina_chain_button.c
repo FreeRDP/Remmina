@@ -23,137 +23,145 @@
 
 G_DEFINE_TYPE (RemminaChainButton, remmina_chain_button, GTK_TYPE_TABLE)
 
-static const gchar * line_up_xpm[] = {
-"9 7 3 1",
-" 	c None",
-".	c #A9A5A2",
-"+	c #FFFFFF",
-".....    ",
-"+++++.   ",
-"    +.   ",
-"    +.   ",
-"    +.   ",
-"    +.   ",
-"         "};
+static const gchar* line_up_xpm[] =
+{
+	"9 7 3 1",
+	" 	c None",
+	".	c #A9A5A2",
+	"+	c #FFFFFF",
+	".....    ",
+	"+++++.   ",
+	"    +.   ",
+	"    +.   ",
+	"    +.   ",
+	"    +.   ",
+	"         "
+};
 
-static const gchar * line_down_xpm[] = {
-"9 7 3 1",
-" 	c None",
-".	c #FFFFFF",
-"+	c #A9A5A2",
-"         ",
-"    .+   ",
-"    .+   ",
-"    .+   ",
-"    .+   ",
-".....+   ",
-"+++++    "};
+static const gchar* line_down_xpm[] =
+{
+	"9 7 3 1",
+	" 	c None",
+	".	c #FFFFFF",
+	"+	c #A9A5A2",
+	"         ",
+	"    .+   ",
+	"    .+   ",
+	"    .+   ",
+	"    .+   ",
+	".....+   ",
+	"+++++    "
+};
 
-static const gchar * vchain_xpm[] = {
-"9 24 13 1",
-" 	c None",
-".	c #555753",
-"+	c #8D8D8E",
-"@	c #E8E8E9",
-"#	c #8E8E90",
-"$	c #888A85",
-"%	c #8F8F91",
-"&	c #2E3436",
-"*	c #EEEEEC",
-"=	c #989899",
-"-	c #959597",
-";	c #9D9D9E",
-">	c #B9B9BA",
-"         ",
-"         ",
-"  .....  ",
-" .+@@@#. ",
-" .@...@. ",
-" .@. .@. ",
-" .@. .@. ",
-" .@. .@. ",
-" .@.$.@. ",
-" .%&*$%. ",
-"  .&*$.  ",
-"   &*$   ",
-"   &*$   ",
-"  .&*$.  ",
-" .=&*$-. ",
-" .@.&.@. ",
-" .@. .@. ",
-" .@. .@. ",
-" .@. .@. ",
-" .@...@. ",
-" .;@@@>. ",
-"  .....  ",
-"         ",
-"         "};
+static const gchar* vchain_xpm[] =
+{
+	"9 24 13 1",
+	" 	c None",
+	".	c #555753",
+	"+	c #8D8D8E",
+	"@	c #E8E8E9",
+	"#	c #8E8E90",
+	"$	c #888A85",
+	"%	c #8F8F91",
+	"&	c #2E3436",
+	"*	c #EEEEEC",
+	"=	c #989899",
+	"-	c #959597",
+	";	c #9D9D9E",
+	">	c #B9B9BA",
+	"         ",
+	"         ",
+	"  .....  ",
+	" .+@@@#. ",
+	" .@...@. ",
+	" .@. .@. ",
+	" .@. .@. ",
+	" .@. .@. ",
+	" .@.$.@. ",
+	" .%&*$%. ",
+	"  .&*$.  ",
+	"   &*$   ",
+	"   &*$   ",
+	"  .&*$.  ",
+	" .=&*$-. ",
+	" .@.&.@. ",
+	" .@. .@. ",
+	" .@. .@. ",
+	" .@. .@. ",
+	" .@...@. ",
+	" .;@@@>. ",
+	"  .....  ",
+	"         ",
+	"         "
+};
 
-static const gchar * vchain_broken_xpm[] = {
-"9 24 13 1",
-" 	c None",
-".	c #555753",
-"+	c #8D8D8E",
-"@	c #E8E8E9",
-"#	c #8E8E90",
-"$	c #888A85",
-"%	c #8F8F91",
-"&	c #2E3436",
-"*	c #EEEEEC",
-"=	c #989899",
-"-	c #959597",
-";	c #9D9D9E",
-">	c #B9B9BA",
-"  .....  ",
-" .+@@@#. ",
-" .@...@. ",
-" .@. .@. ",
-" .@. .@. ",
-" .@. .@. ",
-" .@.$.@. ",
-" .%&*$%. ",
-"  .&*$.  ",
-"   &*$   ",
-"         ",
-"         ",
-"         ",
-"         ",
-"   &*$   ",
-"  .&*$.  ",
-" .=&*$-. ",
-" .@.&.@. ",
-" .@. .@. ",
-" .@. .@. ",
-" .@. .@. ",
-" .@...@. ",
-" .;@@@>. ",
-"  .....  "};
+static const gchar* vchain_broken_xpm[] =
+{
+	"9 24 13 1",
+	" 	c None",
+	".	c #555753",
+	"+	c #8D8D8E",
+	"@	c #E8E8E9",
+	"#	c #8E8E90",
+	"$	c #888A85",
+	"%	c #8F8F91",
+	"&	c #2E3436",
+	"*	c #EEEEEC",
+	"=	c #989899",
+	"-	c #959597",
+	";	c #9D9D9E",
+	">	c #B9B9BA",
+	"  .....  ",
+	" .+@@@#. ",
+	" .@...@. ",
+	" .@. .@. ",
+	" .@. .@. ",
+	" .@. .@. ",
+	" .@.$.@. ",
+	" .%&*$%. ",
+	"  .&*$.  ",
+	"   &*$   ",
+	"         ",
+	"         ",
+	"         ",
+	"         ",
+	"   &*$   ",
+	"  .&*$.  ",
+	" .=&*$-. ",
+	" .@.&.@. ",
+	" .@. .@. ",
+	" .@. .@. ",
+	" .@. .@. ",
+	" .@...@. ",
+	" .;@@@>. ",
+	"  .....  "
+};
 
 enum
 {
-	CHAIN_TOGGLED_SIGNAL, LAST_SIGNAL
+	CHAIN_TOGGLED_SIGNAL,
+	LAST_SIGNAL
 };
 
-static guint remmina_chain_button_signals[LAST_SIGNAL] =
-{ 0 };
+static guint remmina_chain_button_signals[LAST_SIGNAL] = { 0 };
 
-static void remmina_chain_button_class_init(RemminaChainButtonClass *klass)
+static void remmina_chain_button_class_init(RemminaChainButtonClass* klass)
 {
 	remmina_chain_button_signals[CHAIN_TOGGLED_SIGNAL] = g_signal_new("chain-toggled", G_TYPE_FROM_CLASS(klass),
 			G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaChainButtonClass, chain_toggled), NULL,
 			NULL, g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 }
 
-static void remmina_chain_button_update_chained(RemminaChainButton *cb)
+static void remmina_chain_button_update_chained(RemminaChainButton* cb)
 {
-	GdkPixbuf *pixbuf;
+	GdkPixbuf* pixbuf;
 
 	pixbuf = gdk_pixbuf_new_from_xpm_data(cb->chained ? vchain_xpm : vchain_broken_xpm);
 	gtk_image_set_from_pixbuf(GTK_IMAGE(cb->chain_image), pixbuf);
 	g_object_unref(pixbuf);
 }
 
-static void remmina_chain_button_on_clicked(GtkWidget *widget, RemminaChainButton *cb)
+static void remmina_chain_button_on_clicked(GtkWidget* widget, RemminaChainButton* cb)
 {
 	cb->chained = !cb->chained;
 	remmina_chain_button_update_chained(cb);
@@ -161,11 +169,11 @@ static void remmina_chain_button_on_clicked(GtkWidget *widget, RemminaChainButto
 	g_signal_emit(G_OBJECT(cb), remmina_chain_button_signals[CHAIN_TOGGLED_SIGNAL], 0);
 }
 
-static void remmina_chain_button_init(RemminaChainButton *cb)
+static void remmina_chain_button_init(RemminaChainButton* cb)
 {
-	GtkWidget *widget;
-	GtkWidget *image;
-	GdkPixbuf *pixbuf;
+	GtkWidget* widget;
+	GtkWidget* image;
+	GdkPixbuf* pixbuf;
 
 	gtk_table_resize(GTK_TABLE(cb), 3, 1);
 
@@ -201,7 +209,7 @@ remmina_chain_button_new(void)
 	return GTK_WIDGET(g_object_new(REMMINA_TYPE_CHAIN_BUTTON, NULL));
 }
 
-void remmina_chain_button_set(RemminaChainButton *cb, gboolean chained)
+void remmina_chain_button_set(RemminaChainButton* cb, gboolean chained)
 {
 	cb->chained = chained;
 	remmina_chain_button_update_chained(cb);

@@ -135,7 +135,7 @@ void remmina_init_dialog_set_status(RemminaInitDialog *dialog, const gchar *stat
 
 	if (status_format)
 	{
-		if (dialog->status) g_free (dialog->status);
+		if (dialog->status) g_free(dialog->status);
 
 		va_start (args, status_format);
 		dialog->status = g_strdup_vprintf (status_format, args);
@@ -157,7 +157,7 @@ void remmina_init_dialog_set_status_temp(RemminaInitDialog *dialog, const gchar 
 		va_end (args);
 
 		gtk_label_set_text (GTK_LABEL (dialog->status_label), s);
-		g_free (s);
+		g_free(s);
 	}
 }
 

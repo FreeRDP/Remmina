@@ -76,7 +76,7 @@ remmina_ssh_identity_path (const gchar *id)
 {
 	if (id == NULL) return NULL;
 	if (id[0] == '/') return g_strdup (id);
-	return g_strdup_printf ("%s/%s", g_get_home_dir (), id);
+	return g_strdup_printf("%s/%s", g_get_home_dir (), id);
 }
 
 gchar*
@@ -92,7 +92,7 @@ remmina_ssh_find_identity (void)
 		{
 			return path;
 		}
-		g_free (path);
+		g_free(path);
 	}
 	return NULL;
 }
@@ -103,7 +103,7 @@ remmina_ssh_set_error (RemminaSSH *ssh, const gchar *fmt)
 	const gchar *err;
 
 	err = ssh_get_error (ssh->session);
-	ssh->error = g_strdup_printf (fmt, err);
+	ssh->error = g_strdup_printf(fmt, err);
 }
 
 void
@@ -165,7 +165,7 @@ remmina_ssh_auth_pubkey (RemminaSSH *ssh)
 
 	if (ssh->pubkeyfile == NULL || ssh->privkeyfile == NULL)
 	{
-		ssh->error = g_strdup_printf (_("SSH public key authentication failed: %s"),
+		ssh->error = g_strdup_printf(_("SSH public key authentication failed: %s"),
 				_("SSH Key file not yet set."));
 		return 0;
 	}
@@ -181,7 +181,7 @@ remmina_ssh_auth_pubkey (RemminaSSH *ssh)
 			(ssh->password ? ssh->password : ""));
 	if (privkey == NULL)
 	{
-		string_free (pubkey);
+		string_free(pubkey);
 		if (ssh->password == NULL || ssh->password[0] == '\0') return -1;
 
 		remmina_ssh_set_error (ssh, _("SSH public key authentication failed: %s"));
@@ -189,7 +189,7 @@ remmina_ssh_auth_pubkey (RemminaSSH *ssh)
 	}
 
 	ret = ssh_userauth_pubkey (ssh->session, NULL, pubkey, privkey);
-	string_free (pubkey);
+	string_free(pubkey);
 	privatekey_free (privkey);
 
 	if (ret != SSH_AUTH_SUCCESS)
@@ -231,7 +231,7 @@ remmina_ssh_auth (RemminaSSH *ssh, const gchar *password)
 
 	if (password)
 	{
-		g_free (ssh->password);
+		g_free(ssh->password);
 		ssh->password = g_strdup (password);
 	}
 
@@ -351,7 +351,7 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, gboolean threa
 }
 
 void
-remmina_ssh_log_callback (ssh_session session, int priority, const char *message, void *userdata)
+remmina_ssh_loG_CALLBACK(ssh_session session, int priority, const char *message, void *userdata)
 {
 	remmina_log_printf ("[SSH] %s\n", message);
 }
@@ -417,7 +417,7 @@ remmina_ssh_init_from_file (RemminaSSH *ssh, RemminaFile *remminafile)
 		remmina_public_get_server_port (ssh_server, 22, &ssh->server, &ssh->port);
 		if (ssh->server[0] == '\0')
 		{
-			g_free (ssh->server);
+			g_free(ssh->server);
 			remmina_public_get_server_port (server, 0, &ssh->server, NULL);
 		}
 	}
@@ -442,8 +442,8 @@ remmina_ssh_init_from_file (RemminaSSH *ssh, RemminaFile *remminafile)
 	if (s)
 	{
 		ssh->privkeyfile = remmina_ssh_identity_path (s);
-		ssh->pubkeyfile = g_strdup_printf ("%s.pub", ssh->privkeyfile);
-		g_free (s);
+		ssh->pubkeyfile = g_strdup_printf("%s.pub", ssh->privkeyfile);
+		g_free(s);
 	}
 	else
 	{
@@ -508,16 +508,16 @@ remmina_ssh_free (RemminaSSH *ssh)
 		ssh_free (ssh->session);
 		ssh->session = NULL;
 	}
-	g_free (ssh->callback);
-	g_free (ssh->server);
-	g_free (ssh->user);
-	g_free (ssh->password);
-	g_free (ssh->pubkeyfile);
-	g_free (ssh->privkeyfile);
-	g_free (ssh->charset);
-	g_free (ssh->error);
+	g_free(ssh->callback);
+	g_free(ssh->server);
+	g_free(ssh->user);
+	g_free(ssh->password);
+	g_free(ssh->pubkeyfile);
+	g_free(ssh->privkeyfile);
+	g_free(ssh->charset);
+	g_free(ssh->error);
 	pthread_mutex_destroy (&ssh->ssh_mutex);
-	g_free (ssh);
+	g_free(ssh);
 }
 
 /*************************** SSH Tunnel *********************************/
@@ -545,8 +545,8 @@ remmina_ssh_tunnel_buffer_free (RemminaSSHTunnelBuffer *buffer)
 {
 	if (buffer)
 	{
-		g_free (buffer->data);
-		g_free (buffer);
+		g_free(buffer->data);
+		g_free(buffer);
 	}
 }
 
@@ -597,11 +597,11 @@ remmina_ssh_tunnel_close_all_channels (RemminaSSHTunnel *tunnel)
 		channel_free (tunnel->channels[i]);
 	}
 
-	g_free (tunnel->channels);
+	g_free(tunnel->channels);
 	tunnel->channels = NULL;
-	g_free (tunnel->sockets);
+	g_free(tunnel->sockets);
 	tunnel->sockets = NULL;
-	g_free (tunnel->socketbuffers);
+	g_free(tunnel->socketbuffers);
 	tunnel->socketbuffers = NULL;
 
 	tunnel->num_channels = 0;
@@ -724,7 +724,7 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 		if (!remmina_public_get_xauth_cookie (tunnel->localdisplay, &ptr))
 		{
 			remmina_ssh_set_application_error (REMMINA_SSH (tunnel), "%s", ptr);
-			g_free (ptr);
+			g_free(ptr);
 			tunnel->thread = 0;
 			return NULL;
 		}
@@ -732,17 +732,17 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 				channel_request_x11 (tunnel->x11_channel, TRUE, NULL, ptr,
 						gdk_screen_get_number (gdk_screen_get_default ())))
 		{
-			g_free (ptr);
+			g_free(ptr);
 			remmina_ssh_set_error (REMMINA_SSH (tunnel), "Failed to open channel : %s");
 			tunnel->thread = 0;
 			return NULL;
 		}
-		g_free (ptr);
+		g_free(ptr);
 		if (channel_request_exec (tunnel->x11_channel, tunnel->dest))
 		{
-			ptr = g_strdup_printf (_("Failed to execute %s on SSH server : %%s"), tunnel->dest);
+			ptr = g_strdup_printf(_("Failed to execute %s on SSH server : %%s"), tunnel->dest);
 			remmina_ssh_set_error (REMMINA_SSH (tunnel), ptr);
-			g_free (ptr);
+			g_free(ptr);
 			tunnel->thread = 0;
 			return NULL;
 		}
@@ -1208,10 +1208,10 @@ remmina_ssh_tunnel_free (RemminaSSHTunnel* tunnel)
 	}
 	remmina_ssh_tunnel_close_all_channels (tunnel);
 
-	g_free (tunnel->buffer);
-	g_free (tunnel->channels_out);
-	g_free (tunnel->dest);
-	g_free (tunnel->localdisplay);
+	g_free(tunnel->buffer);
+	g_free(tunnel->channels_out);
+	g_free(tunnel->dest);
+	g_free(tunnel->localdisplay);
 
 	remmina_ssh_free (REMMINA_SSH (tunnel));
 }
@@ -1420,7 +1420,7 @@ remmina_ssh_shell_thread (gpointer data)
 	channel_free (channel);
 	UNLOCK_SSH (shell)
 
-	g_free (buf);
+	g_free(buf);
 	shell->thread = 0;
 
 	if (shell->exit_callback) shell->exit_callback (shell->user_data);
@@ -1484,7 +1484,7 @@ remmina_ssh_shell_free (RemminaSSHShell *shell)
 	close (shell->master);
 	if (shell->exec)
 	{
-		g_free (shell->exec);
+		g_free(shell->exec);
 		shell->exec = NULL;
 	}
 	/* It's not necessary to close shell->slave since the other end (vte) will close it */;

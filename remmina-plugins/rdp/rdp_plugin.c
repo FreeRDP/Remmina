@@ -675,7 +675,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->directory = xstrdup(remmina_plugin_service->file_get_string(remminafile, "execpath"));
 	}
 
-	s = g_strdup_printf ("rdp_quality_%i", remmina_plugin_service->file_get_int(remminafile, "quality", DEFAULT_QUALITY_0));
+	s = g_strdup_printf("rdp_quality_%i", remmina_plugin_service->file_get_int(remminafile, "quality", DEFAULT_QUALITY_0));
 	value = remmina_plugin_service->pref_get_value(s);
 	g_free(s);
 

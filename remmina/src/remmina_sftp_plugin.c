@@ -57,9 +57,9 @@ remmina_plugin_sftp_main_thread (gpointer data)
 	pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
 
-	gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+	gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 
-	ssh = g_object_get_data (G_OBJECT (gp), "user-data");
+	ssh = g_object_get_data (G_OBJECT(gp), "user-data");
 	if (ssh)
 	{
 		/* Create SFTP connection based on existing SSH session */
@@ -144,21 +144,21 @@ remmina_plugin_sftp_init (RemminaProtocolWidget *gp)
 	RemminaFile *remminafile;
 
 	gpdata = g_new0 (RemminaPluginSftpData, 1);
-	g_object_set_data_full (G_OBJECT (gp), "plugin-data", gpdata, g_free);
+	g_object_set_data_full (G_OBJECT(gp), "plugin-data", gpdata, g_free);
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
 	gpdata->client = remmina_sftp_client_new ();
 	gtk_widget_show(gpdata->client);
-	gtk_container_add (GTK_CONTAINER (gp), gpdata->client);
+	gtk_container_add(GTK_CONTAINER (gp), gpdata->client);
 
 	remmina_ftp_client_set_show_hidden (REMMINA_FTP_CLIENT (gpdata->client),
 			remmina_plugin_service->file_get_int (remminafile, "showhidden", FALSE));
 
 	remmina_plugin_service->protocol_plugin_register_hostkey (gp, gpdata->client);
 
-	g_signal_connect (G_OBJECT (gpdata->client),
-			"realize", G_CALLBACK (remmina_plugin_sftp_client_on_realize), gp);
+	g_signal_connect(G_OBJECT(gpdata->client),
+			"realize", G_CALLBACK(remmina_plugin_sftp_client_on_realize), gp);
 }
 
 static gboolean
@@ -166,7 +166,7 @@ remmina_plugin_sftp_open_connection (RemminaProtocolWidget *gp)
 {
 	RemminaPluginSftpData *gpdata;
 
-	gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+	gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 
 	remmina_plugin_service->protocol_plugin_set_expand (gp, TRUE);
 	remmina_plugin_service->protocol_plugin_set_width (gp, 640);
@@ -192,7 +192,7 @@ remmina_plugin_sftp_close_connection (RemminaProtocolWidget *gp)
 	RemminaPluginSftpData *gpdata;
 	RemminaFile *remminafile;
 
-	gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+	gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 	if (gpdata->thread)
 	{
@@ -217,7 +217,7 @@ remmina_plugin_sftp_call_feature (RemminaProtocolWidget *gp, const RemminaProtoc
 	RemminaPluginSftpData *gpdata;
 	RemminaFile *remminafile;
 
-	gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+	gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 	switch (feature->id)
 	{

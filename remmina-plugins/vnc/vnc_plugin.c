@@ -839,7 +839,7 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 	gchar *s1, *s2;
 
 	gp = (RemminaProtocolWidget*) (rfbClientGetClientData (cl, NULL));
-	gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+	gpdata = (RemminaPluginVncData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 	gpdata->auth_called = TRUE;
 	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
@@ -861,8 +861,8 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 		}
 		else
 		{
-			g_free (s1);
-			g_free (s2);
+			g_free(s1);
+			g_free(s2);
 
 			THREADS_ENTER
 			ret = remmina_plugin_service->protocol_plugin_init_authuserpwd (gp, FALSE);
@@ -875,7 +875,7 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 			}
 			else
 			{
-				g_free (cred);
+				g_free(cred);
 				cred = NULL;
 				gpdata->connected = FALSE;
 			}
@@ -906,7 +906,7 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 			}
 			else
 			{
-				g_free (cred);
+				g_free(cred);
 				cred = NULL;
 				gpdata->connected = FALSE;
 			}
@@ -914,7 +914,7 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 		break;
 
 		default:
-		g_free (cred);
+		g_free(cred);
 		cred = NULL;
 		break;
 	}
@@ -990,7 +990,7 @@ static void remmina_plugin_vnc_rfb_output(const char *format, ...)
 	{
 		g_vsnprintf (vnc_error, MAX_ERROR_LENGTH, _(f), args);
 	}
-	g_free (f);
+	g_free(f);
 	va_end(args);
 
 	remmina_plugin_service->log_printf ("[VNC]%s\n", vnc_error);
@@ -1226,7 +1226,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 			remmina_plugin_service->get_server_port (remmina_plugin_service->file_get_string (remminafile, "proxy"), 5900,
 					&s, &cl->serverPort);
 			cl->serverHost = strdup (s);
-			g_free (s);
+			g_free(s);
 #endif
 		}
 
@@ -1605,7 +1605,7 @@ static gboolean remmina_plugin_vnc_open_connection(RemminaProtocolWidget *gp)
 	if (pthread_create (&gpdata->thread, NULL, remmina_plugin_vnc_main_thread, gp))
 	{
 		/* I don't think this will ever happen... */
-		g_print ("Failed to initialize pthread. Falling back to non-thread mode...\n");
+		g_print("Failed to initialize pthread. Falling back to non-thread mode...\n");
 		g_timeout_add (0, (GSourceFunc) remmina_plugin_vnc_main, gp);
 		gpdata->thread = 0;
 	}
