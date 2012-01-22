@@ -23,16 +23,16 @@
 #include <glib/gi18n.h>
 #include <stdlib.h>
 #include "config.h"
-#include "remminapublic.h"
-#include "remminamain.h"
-#include "remminafilemanager.h"
-#include "remminapref.h"
-#include "remminawidgetpool.h"
-#include "remminapluginmanager.h"
-#include "remminasftpplugin.h"
-#include "remminasshplugin.h"
-#include "remminaexec.h"
-#include "remminaicon.h"
+#include "remmina_public.h"
+#include "remmina_main.h"
+#include "remmina_file_manager.h"
+#include "remmina_pref.h"
+#include "remmina_widget_pool.h"
+#include "remmina_plugin_manager.h"
+#include "remmina_sftp_plugin.h"
+#include "remmina_ssh_plugin.h"
+#include "remmina_exec.h"
+#include "remmina_icon.h"
 
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
