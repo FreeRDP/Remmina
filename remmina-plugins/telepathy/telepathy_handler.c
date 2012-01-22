@@ -22,8 +22,8 @@
 #include <telepathy-glib/dbus.h>
 #include <telepathy-glib/defs.h>
 #include <telepathy-glib/svc-client.h>
-#include "remminatpchannelhandler.h"
-#include "remminatphandler.h"
+#include "telepathy_channel_handler.h"
+#include "telepathy_handler.h"
 
 extern RemminaPluginService *remmina_plugin_telepathy_service;
 
