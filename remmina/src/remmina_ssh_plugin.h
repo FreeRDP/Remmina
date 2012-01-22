@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-void remmina_ssh_plugin_register (void);
+void remmina_ssh_plugin_register(void);
 
 G_END_DECLS
 

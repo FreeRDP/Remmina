@@ -17,7 +17,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, 
  * Boston, MA 02111-1307, USA.
  */
- 
 
 #ifndef __REMMINAMAIN_H__
 #define __REMMINAMAIN_H__
@@ -35,20 +34,21 @@ typedef struct _RemminaMainPriv RemminaMainPriv;
 
 typedef struct _RemminaMain
 {
-    GtkWindow window;
+	GtkWindow window;
 
-    RemminaMainPriv *priv;
+	RemminaMainPriv *priv;
 } RemminaMain;
 
 typedef struct _RemminaMainClass
 {
-    GtkWindowClass parent_class;
+	GtkWindowClass parent_class;
 } RemminaMainClass;
 
-GType remmina_main_get_type (void) G_GNUC_CONST;
+GType remmina_main_get_type(void)
+G_GNUC_CONST;
 
 /* Create the main Remmina window */
-GtkWidget* remmina_main_new (void);
+GtkWidget* remmina_main_new(void);
 
 G_END_DECLS
 

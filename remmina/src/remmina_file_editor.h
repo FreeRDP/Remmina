@@ -17,7 +17,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, 
  * Boston, MA 02111-1307, USA.
  */
- 
 
 #ifndef __REMMINAFILEEDIOR_H__
 #define __REMMINAFILEEDIOR_H__
@@ -35,26 +34,27 @@ typedef struct _RemminaFileEditorPriv RemminaFileEditorPriv;
 
 typedef struct _RemminaFileEditor
 {
-    GtkDialog dialog;
+	GtkDialog dialog;
 
-    RemminaFileEditorPriv *priv;
+	RemminaFileEditorPriv *priv;
 } RemminaFileEditor;
 
 typedef struct _RemminaFileEditorClass
 {
-    GtkDialogClass parent_class;
+	GtkDialogClass parent_class;
 } RemminaFileEditorClass;
 
-GType remmina_file_editor_get_type (void) G_GNUC_CONST;
+GType remmina_file_editor_get_type(void)
+G_GNUC_CONST;
 
 /* Base constructor */
-GtkWidget* remmina_file_editor_new_from_file (RemminaFile *remminafile);
+GtkWidget* remmina_file_editor_new_from_file(RemminaFile *remminafile);
 /* Create new file */
-GtkWidget* remmina_file_editor_new (void);
-GtkWidget* remmina_file_editor_new_full (const gchar *server, const gchar *protocol);
-GtkWidget* remmina_file_editor_new_copy (const gchar *filename);
+GtkWidget* remmina_file_editor_new(void);
+GtkWidget* remmina_file_editor_new_full(const gchar *server, const gchar *protocol);
+GtkWidget* remmina_file_editor_new_copy(const gchar *filename);
 /* Open existing file */
-GtkWidget* remmina_file_editor_new_from_filename (const gchar *filename);
+GtkWidget* remmina_file_editor_new_from_filename(const gchar *filename);
 
 G_END_DECLS
 

@@ -17,14 +17,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, 
  * Boston, MA 02111-1307, USA.
  */
- 
+
 #ifndef __REMMINAABOUT_H__
 #define __REMMINAABOUT_H__
 
 G_BEGIN_DECLS
 
-GdkPixbuf* remmina_about_get_logo (void);
-void remmina_about_open (GtkWindow *parent);
+GdkPixbuf* remmina_about_get_logo(void);
+void remmina_about_open(GtkWindow *parent);
 
 G_END_DECLS
 
