@@ -17,7 +17,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, 
  * Boston, MA 02111-1307, USA.
  */
- 
 
 #ifndef __REMMINASCALER_H__
 #define __REMMINASCALER_H__
@@ -35,29 +34,30 @@ typedef struct _RemminaScalerPriv RemminaScalerPriv;
 
 typedef struct _RemminaScaler
 {
-    GtkTable table;
+	GtkTable table;
 
-    gint hscale;
-    gint vscale;
-    gboolean aspectscale;
+	gint hscale;
+	gint vscale;
+	gboolean aspectscale;
 
-    RemminaScalerPriv *priv;
+	RemminaScalerPriv *priv;
 } RemminaScaler;
 
 typedef struct _RemminaScalerClass
 {
-    GtkTableClass parent_class;
+	GtkTableClass parent_class;
 
-    void (* scaled) (RemminaScaler *scaler);
+	void (*scaled)(RemminaScaler *scaler);
 } RemminaScalerClass;
 
-GType remmina_scaler_get_type (void) G_GNUC_CONST;
+GType remmina_scaler_get_type(void)
+G_GNUC_CONST;
 
-GtkWidget* remmina_scaler_new (void);
+GtkWidget* remmina_scaler_new(void);
 
-void remmina_scaler_set (RemminaScaler *scaler, gint hscale, gint vscale, gboolean chained);
+void remmina_scaler_set(RemminaScaler *scaler, gint hscale, gint vscale, gboolean chained);
 
-void remmina_scaler_set_draw_value (RemminaScaler *scaler, gboolean draw_value);
+void remmina_scaler_set_draw_value(RemminaScaler *scaler, gboolean draw_value);
 
 G_END_DECLS
 

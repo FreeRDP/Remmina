@@ -17,7 +17,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, 
  * Boston, MA 02111-1307, USA.
  */
- 
 
 #ifndef __REMMINAAPPLETMENUITEM_H__
 #define __REMMINAAPPLETMENUITEM_H__
@@ -33,33 +32,32 @@ G_BEGIN_DECLS
 
 typedef enum
 {
-    REMMINA_APPLET_MENU_ITEM_FILE,
-    REMMINA_APPLET_MENU_ITEM_NEW,
-    REMMINA_APPLET_MENU_ITEM_DISCOVERED
+	REMMINA_APPLET_MENU_ITEM_FILE, REMMINA_APPLET_MENU_ITEM_NEW, REMMINA_APPLET_MENU_ITEM_DISCOVERED
 } RemminaAppletMenuItemType;
 
 typedef struct _RemminaAppletMenuItem
 {
-    GtkImageMenuItem image_menu_item;
+	GtkImageMenuItem image_menu_item;
 
-    RemminaAppletMenuItemType item_type;
-    gchar *filename;
-    gchar *name;
-    gchar *group;
-    gchar *protocol;
-    gchar *server;
-    gboolean ssh_enabled;
+	RemminaAppletMenuItemType item_type;
+	gchar *filename;
+	gchar *name;
+	gchar *group;
+	gchar *protocol;
+	gchar *server;
+	gboolean ssh_enabled;
 } RemminaAppletMenuItem;
 
 typedef struct _RemminaAppletMenuItemClass
 {
-    GtkImageMenuItemClass parent_class;
+	GtkImageMenuItemClass parent_class;
 } RemminaAppletMenuItemClass;
 
-GType remmina_applet_menu_item_get_type (void) G_GNUC_CONST;
+GType remmina_applet_menu_item_get_type(void)
+G_GNUC_CONST;
 
-GtkWidget* remmina_applet_menu_item_new (RemminaAppletMenuItemType item_type, ...);
-gint remmina_applet_menu_item_compare (gconstpointer a, gconstpointer b, gpointer user_data);
+GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...);
+gint remmina_applet_menu_item_compare(gconstpointer a, gconstpointer b, gpointer user_data);
 
 G_END_DECLS
 

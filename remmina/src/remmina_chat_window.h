@@ -17,7 +17,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, 
  * Boston, MA 02111-1307, USA.
  */
- 
 
 #ifndef __REMMINACHATWINDOW_H__
 #define __REMMINACHATWINDOW_H__
@@ -33,23 +32,24 @@ G_BEGIN_DECLS
 
 typedef struct _RemminaChatWindow
 {
-    GtkWindow window;
+	GtkWindow window;
 
-    GtkWidget *history_text;
-    GtkWidget *send_text;
+	GtkWidget *history_text;
+	GtkWidget *send_text;
 } RemminaChatWindow;
 
 typedef struct _RemminaChatWindowClass
 {
-    GtkWindowClass parent_class;
+	GtkWindowClass parent_class;
 
-    void (* send) (RemminaChatWindow *window);
+	void (*send)(RemminaChatWindow *window);
 } RemminaChatWindowClass;
 
-GType remmina_chat_window_get_type (void) G_GNUC_CONST;
+GType remmina_chat_window_get_type(void)
+G_GNUC_CONST;
 
-GtkWidget* remmina_chat_window_new (GtkWindow *parent, const gchar *chat_with);
-void remmina_chat_window_receive (RemminaChatWindow *window, const gchar *name, const gchar *text);
+GtkWidget* remmina_chat_window_new(GtkWindow *parent, const gchar *chat_with);
+void remmina_chat_window_receive(RemminaChatWindow *window, const gchar *name, const gchar *text);
 
 G_END_DECLS
 

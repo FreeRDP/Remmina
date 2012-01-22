@@ -17,7 +17,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, 
  * Boston, MA 02111-1307, USA.
  */
- 
 
 #ifndef __REMMINAPREFDIALOG_H__
 #define __REMMINAPREFDIALOG_H__
@@ -39,26 +38,25 @@ typedef struct _RemminaPrefDialogPriv RemminaPrefDialogPriv;
 
 typedef struct _RemminaPrefDialog
 {
-    GtkDialog dialog;
+	GtkDialog dialog;
 
-    RemminaPrefDialogPriv *priv;
+	RemminaPrefDialogPriv *priv;
 } RemminaPrefDialog;
 
 typedef struct _RemminaPrefDialogClass
 {
-    GtkDialogClass parent_class;
+	GtkDialogClass parent_class;
 } RemminaPrefDialogClass;
 
-GType remmina_pref_dialog_get_type (void) G_GNUC_CONST;
+GType remmina_pref_dialog_get_type(void)
+G_GNUC_CONST;
 
 enum
 {
-    REMMINA_PREF_OPTIONS_TAB = 0,
-    REMMINA_PREF_RESOLUTIONS_TAB = 1,
-    REMMINA_PREF_APPLET_TAB = 2
+	REMMINA_PREF_OPTIONS_TAB = 0, REMMINA_PREF_RESOLUTIONS_TAB = 1, REMMINA_PREF_APPLET_TAB = 2
 };
 
-GtkWidget* remmina_pref_dialog_new (gint default_tab);
+GtkWidget* remmina_pref_dialog_new(gint default_tab);
 
 G_END_DECLS
 
