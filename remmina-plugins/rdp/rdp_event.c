@@ -132,7 +132,7 @@ static void remmina_rdp_event_scale_area(RemminaProtocolWidget* gp, gint* x, gin
 	*h = sh;
 }
 
-static void remmina_rdp_event_update_rect(RemminaProtocolWidget* gp, gint x, gint y, gint w, gint h)
+void remmina_rdp_event_update_rect(RemminaProtocolWidget* gp, gint x, gint y, gint w, gint h)
 {
 	rfContext* rfi;
 
@@ -189,7 +189,7 @@ static gboolean remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 	}
 
 	if ((width > 1) && (height > 1))
-		gtk_widget_queue_draw_area(GTK_WIDGET (gp), 0, 0, width, height);
+		gtk_widget_queue_draw_area(GTK_WIDGET(gp), 0, 0, width, height);
 
 	rfi->scale_handler = 0;
 
@@ -797,7 +797,7 @@ static void remmina_rdp_event_nocodec(RemminaProtocolWidget* gp, RemminaPluginRd
 		ui->nocodec.left, ui->nocodec.top,
 		ui->nocodec.width, ui->nocodec.height);
 
-	remmina_rdp_event_update_rect (gp,
+	remmina_rdp_event_update_rect(gp,
 		ui->nocodec.left, ui->nocodec.top,
 		ui->nocodec.width, ui->nocodec.height);
 
