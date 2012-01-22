@@ -18,7 +18,7 @@
 # Boston, MA 02111-1307, USA.
 
 set(REMMINA_PLUGIN_XDMCP_SRCS
-	remminapluginxdmcp.c
+	xdmcp_plugin.c
 	)
 
 add_library(remmina-plugin-xdmcp ${REMMINA_PLUGIN_XDMCP_SRCS})
