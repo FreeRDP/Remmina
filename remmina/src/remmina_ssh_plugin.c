@@ -190,12 +190,12 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	g_object_set_data_full (G_OBJECT (gp), "plugin-data", gpdata, g_free);
 
 	hbox = gtk_hbox_new (FALSE, 0);
-	gtk_widget_show (hbox);
+	gtk_widget_show(hbox);
 	gtk_container_add (GTK_CONTAINER (gp), hbox);
 	g_signal_connect (G_OBJECT (hbox), "focus-in-event", G_CALLBACK (remmina_plugin_ssh_on_focus_in), gp);
 
 	vte = vte_terminal_new ();
-	gtk_widget_show (vte);
+	gtk_widget_show(vte);
 	vte_terminal_set_size (VTE_TERMINAL (vte), 80, 25);
 	vte_terminal_set_scroll_on_keystroke (VTE_TERMINAL (vte), TRUE);
 	gtk_box_pack_start (GTK_BOX (hbox), vte, TRUE, TRUE, 0);
@@ -206,7 +206,7 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	remmina_plugin_service->protocol_plugin_register_hostkey (gp, vte);
 
 	vscrollbar = gtk_vscrollbar_new (vte_terminal_get_adjustment (VTE_TERMINAL (vte)));
-	gtk_widget_show (vscrollbar);
+	gtk_widget_show(vscrollbar);
 	gtk_box_pack_start (GTK_BOX (hbox), vscrollbar, FALSE, TRUE, 0);
 }
 

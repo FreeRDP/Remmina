@@ -137,7 +137,7 @@ static void remmina_icon_populate_additional_menu_item(GtkWidget *menu)
 	{
 		gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), TRUE);
 	}
-	gtk_widget_show (menuitem);
+	gtk_widget_show(menuitem);
 	g_signal_connect (G_OBJECT (menuitem), "toggled", G_CALLBACK (remmina_icon_enable_avahi), NULL);
 	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
 #endif
@@ -304,7 +304,7 @@ remmina_icon_populate_menu (void)
 	remmina_icon_populate_extra_menu_item (menu);
 
 	menuitem = gtk_separator_menu_item_new ();
-	gtk_widget_show (menuitem);
+	gtk_widget_show(menuitem);
 	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
 
 	remmina_icon_populate_additional_menu_item (menu);

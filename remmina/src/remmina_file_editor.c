@@ -289,7 +289,7 @@ remmina_file_editor_create_ssh_privatekey (RemminaFileEditor *gfe, GtkWidget *ta
 	g_signal_connect (G_OBJECT (widget), "toggled",
 			G_CALLBACK (remmina_file_editor_ssh_auth_publickey_radio_on_toggled), gfe);
 	priv->ssh_auth_publickey_radio = widget;
-	gtk_widget_show (widget);
+	gtk_widget_show(widget);
 	gtk_table_attach (GTK_TABLE (table), widget, column, column + 1, row, row + 1, GTK_FILL, 0, 0, 0);
 
 	dialog = gtk_file_chooser_dialog_new (_("Identity file"), GTK_WINDOW (gfe), GTK_FILE_CHOOSER_ACTION_OPEN,
@@ -304,7 +304,7 @@ remmina_file_editor_create_ssh_privatekey (RemminaFileEditor *gfe, GtkWidget *ta
 		gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (widget), s);
 	}
 	g_free (s);
-	gtk_widget_show (widget);
+	gtk_widget_show(widget);
 	gtk_table_attach_defaults (GTK_TABLE (table), widget, column + 1, column + 2, row, row + 1);
 	priv->ssh_privatekey_chooser = widget;
 
@@ -349,14 +349,14 @@ static void remmina_file_editor_create_server(RemminaFileEditor *gfe, const Remm
 		gfe->priv->avahi_service_type = (const gchar*) setting->opt1;
 
 		hbox = gtk_hbox_new (FALSE, 0);
-		gtk_widget_show (hbox);
+		gtk_widget_show(hbox);
 		gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
 
 		widget = gtk_button_new_with_label ("...");
 		s = g_strdup_printf (_("Browse the network to find a %s server"), plugin->name);
 		gtk_widget_set_tooltip_text (widget, s);
 		g_free (s);
-		gtk_widget_show (widget);
+		gtk_widget_show(widget);
 		gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, FALSE, 0);
 		g_signal_connect (G_OBJECT (widget), "clicked", G_CALLBACK (remmina_file_editor_browse_avahi), gfe);
 
@@ -732,19 +732,19 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor *gfe, RemminaPr
 				"SSH", 9, 3);
 
 		hbox = gtk_hbox_new (TRUE, 0);
-		gtk_widget_show (hbox);
+		gtk_widget_show(hbox);
 		gtk_table_attach_defaults (GTK_TABLE (table), hbox, 0, 3, 0, 1);
 		row++;
 
 		widget = gtk_check_button_new_with_label (_("Enable SSH tunnel"));
-		gtk_widget_show (widget);
+		gtk_widget_show(widget);
 		gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
 		g_signal_connect (G_OBJECT (widget), "toggled",
 				G_CALLBACK (remmina_file_editor_ssh_enabled_check_on_toggled), gfe);
 		priv->ssh_enabled_check = widget;
 
 		widget = gtk_check_button_new_with_label (_("Tunnel via loopback address"));
-		gtk_widget_show (widget);
+		gtk_widget_show(widget);
 		gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
 		priv->ssh_loopback_check = widget;
 	}
@@ -759,21 +759,21 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor *gfe, RemminaPr
 		s = g_strdup_printf (_("Same server at port %i"), DEFAULT_SSH_PORT);
 		widget = gtk_radio_button_new_with_label (NULL, s);
 		g_free (s);
-		gtk_widget_show (widget);
+		gtk_widget_show(widget);
 		gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 3, row, row + 1);
 		priv->ssh_server_default_radio = widget;
 		row++;
 
 		widget = gtk_radio_button_new_with_label_from_widget (
 				GTK_RADIO_BUTTON (priv->ssh_server_default_radio), _("Custom"));
-		gtk_widget_show (widget);
+		gtk_widget_show(widget);
 		gtk_table_attach (GTK_TABLE (table), widget, 1, 2, row, row + 1, GTK_FILL, 0, 0, 0);
 		g_signal_connect (G_OBJECT (widget), "toggled",
 				G_CALLBACK (remmina_file_editor_ssh_server_custom_radio_on_toggled), gfe);
 		priv->ssh_server_custom_radio = widget;
 
 		widget = gtk_entry_new ();
-		gtk_widget_show (widget);
+		gtk_widget_show(widget);
 		gtk_entry_set_max_length (GTK_ENTRY (widget), 100);
 		gtk_widget_set_tooltip_markup (widget, _(server_tips2));
 		gtk_table_attach_defaults (GTK_TABLE (table), widget, 2, 3, row, row + 1);
@@ -842,14 +842,14 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor *gfe, RemminaPr
 	row++;
 
 	widget = gtk_radio_button_new_with_label (NULL, _("Password"));
-	gtk_widget_show (widget);
+	gtk_widget_show(widget);
 	gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 3, row, row + 1);
 	priv->ssh_auth_password_radio = widget;
 	row++;
 
 	widget = gtk_radio_button_new_with_label_from_widget (
 			GTK_RADIO_BUTTON (priv->ssh_auth_password_radio), _("Public key (automatic)"));
-	gtk_widget_show (widget);
+	gtk_widget_show(widget);
 	gtk_table_attach_defaults (GTK_TABLE (table), widget, 1, 3, row, row + 1);
 	priv->ssh_auth_auto_publickey_radio = widget;
 	row++;

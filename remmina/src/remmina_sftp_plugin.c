@@ -149,7 +149,7 @@ remmina_plugin_sftp_init (RemminaProtocolWidget *gp)
 	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
 	gpdata->client = remmina_sftp_client_new ();
-	gtk_widget_show (gpdata->client);
+	gtk_widget_show(gpdata->client);
 	gtk_container_add (GTK_CONTAINER (gp), gpdata->client);
 
 	remmina_ftp_client_set_show_hidden (REMMINA_FTP_CLIENT (gpdata->client),
