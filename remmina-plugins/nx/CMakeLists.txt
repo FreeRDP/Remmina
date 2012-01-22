@@ -18,12 +18,12 @@
 # Boston, MA 02111-1307, USA.
 
 set(REMMINA_PLUGIN_NX_SRCS
-	remminanxsession.c
-	remminanxsession.h
-	remminanxsessionmanager.c
-	remminanxsessionmanager.h
-	remminapluginnx.c
-	remminapluginnx.h
+	nx_session.c
+	nx_session.h
+	nx_session_manager.c
+	nx_session_manager.h
+	nx_plugin.c
+	nx_plugin.h
 	)
 
 add_library(remmina-plugin-nx ${REMMINA_PLUGIN_NX_SRCS})
