@@ -55,7 +55,7 @@
 
 typedef void (*PThreadCleanupFunc)(void*);
 
-/* Wrapper marcos to make the compiler happy on both signle/multi-threaded mode */
+/* Wrapper macros to make the compiler happy on both signle/multi-threaded mode */
 #ifdef HAVE_PTHREAD
 #define IDLE_ADD        gdk_threads_add_idle
 #define TIMEOUT_ADD     gdk_threads_add_timeout

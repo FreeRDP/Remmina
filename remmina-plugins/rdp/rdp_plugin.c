@@ -205,6 +205,7 @@ void rf_sw_end_paint(rdpContext* context)
 	rdpGdi* gdi;
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
+	RemminaPluginRdpUiObject* ui;
 
 	gdi = context->gdi;
 	rfi = (rfContext*) context;
@@ -218,11 +219,14 @@ void rf_sw_end_paint(rdpContext* context)
 	w = gdi->primary->hdc->hwnd->invalid->w;
 	h = gdi->primary->hdc->hwnd->invalid->h;
 
-	THREADS_ENTER
-	XPutImage(rfi->display, rfi->primary, rfi->gc, rfi->image, x, y, x, y, w, h);
-	XCopyArea(rfi->display, rfi->primary, rfi->rgb_surface, rfi->gc, x, y, w, h, x, y);
-	remmina_rdp_event_update_rect(gp, x, y, w, h);
-	THREADS_LEAVE
+	ui = g_new0(RemminaPluginRdpUiObject, 1);
+	ui->type = REMMINA_RDP_UI_UPDATE_REGION;
+	ui->region.x = x;
+	ui->region.y = y;
+	ui->region.width = w;
+	ui->region.height = h;
+
+	rf_queue_ui(rfi->protocol_widget, ui);
 }
 
 static void rf_sw_desktop_resize(rdpContext* context)
