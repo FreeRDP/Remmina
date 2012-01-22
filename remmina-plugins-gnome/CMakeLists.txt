@@ -18,7 +18,7 @@
 # Boston, MA 02111-1307, USA.
 
 set(REMMINA_PLUGINS_GNOME_SRCS
-	src/remminaplugingkeyring.c
+	src/gkeyring_plugin.c
 	)
 
 add_library(remmina-plugins-gnome ${REMMINA_PLUGINS_GNOME_SRCS})
