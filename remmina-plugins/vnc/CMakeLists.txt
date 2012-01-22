@@ -21,7 +21,7 @@ set(LIBVNCSERVER_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../libvncserver)
 set(LIBVNCSERVER_LIBRARIES vncclient)
 
 set(REMMINA_PLUGIN_VNC_SRCS
-	remminapluginvnc.c
+	vnc_plugin.c
 	)
 
 add_library(remmina-plugin-vnc ${REMMINA_PLUGIN_VNC_SRCS})
