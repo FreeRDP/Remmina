@@ -27,8 +27,8 @@
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
 #include <X11/extensions/XKBrules.h>
-#include "remminapluginnx.h"
-#include "remminanxsessionmanager.h"
+#include "nx_plugin.h"
+#include "nx_session_manager.h"
 
 RemminaPluginService *remmina_plugin_nx_service = NULL;
 

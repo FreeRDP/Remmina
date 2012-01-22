@@ -23,7 +23,7 @@
 #include "common/remminaplugincommon.h"
 #include <glib/gstdio.h>
 #include <libssh/libssh.h>
-#include "remminanxsession.h"
+#include "nx_session.h"
 
 /* Some missing stuff in libssh */
 #define REMMINA_SSH_TYPE_DSS 1

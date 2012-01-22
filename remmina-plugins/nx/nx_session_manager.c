@@ -20,8 +20,8 @@
 
 #include "common/remminaplugincommon.h"
 #include <X11/Xlib.h>
-#include "remminapluginnx.h"
-#include "remminanxsessionmanager.h"
+#include "nx_plugin.h"
+#include "nx_session_manager.h"
 
 static void
 remmina_nx_session_manager_set_sensitive (RemminaProtocolWidget *gp, gboolean sensitive)

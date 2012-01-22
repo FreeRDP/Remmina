@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-#include "remminanxsession.h"
+#include "nx_session.h"
 
 typedef enum
 {
