@@ -86,9 +86,9 @@ G_DEFINE_TYPE_WITH_CODE (RemminaTpHandler, remmina_tp_handler, G_TYPE_OBJECT,
 				g_object_unref(bus);
 				g_print("tp_dbus_daemon_request_name: %s", error->message);
 				return FALSE;
-			} dbus_g_connection_register_g_object (
+			} dbus_g_connection_register_G_OBJECT(
 					tp_proxy_get_dbus_connection (TP_PROXY (bus)),
-					REMMINA_TP_OBJECT_PATH, G_OBJECT (handler));
+					REMMINA_TP_OBJECT_PATH, G_OBJECT(handler));
 			g_object_unref(bus);
 			g_print("remmina_tp_handler_register: bus_name " REMMINA_TP_BUS_NAME
 					" object_path " REMMINA_TP_OBJECT_PATH "\n");

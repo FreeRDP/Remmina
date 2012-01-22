@@ -35,7 +35,7 @@ typedef enum
 	REMMINA_COMMAND_PLUGIN = 7
 } RemminaCommandType;
 
-void remmina_exec_command(RemminaCommandType command, const gchar *data);
+void remmina_exec_command(RemminaCommandType command, const gchar* data);
 
 G_END_DECLS
 

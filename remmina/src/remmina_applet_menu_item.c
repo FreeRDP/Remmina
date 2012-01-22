@@ -100,10 +100,10 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 	va_end(ap);
 
 	/* Create the label */
-	widget = gtk_label_new (item->name);
+	widget = gtk_label_new(item->name);
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment(GTK_MISC (widget), 0.0, 0.5);
-	gtk_container_add (GTK_CONTAINER (item), widget);
+	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_container_add(GTK_CONTAINER(item), widget);
 
 	/* Create the image */
 	if (item_type == REMMINA_APPLET_MENU_ITEM_FILE || item_type == REMMINA_APPLET_MENU_ITEM_DISCOVERED)

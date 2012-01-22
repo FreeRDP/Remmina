@@ -196,7 +196,7 @@ static void remmina_nx_session_set_application_error(RemminaNXSession *nx, const
 {
 	va_list args;
 
-	if (nx->error) g_free (nx->error);
+	if (nx->error) g_free(nx->error);
 	va_start (args, fmt);
 	nx->error = g_strdup_vprintf (fmt, args);
 	va_end (args);
@@ -525,7 +525,7 @@ static void remmina_nx_session_send_command(RemminaNXSession *nx, const gchar *c
 	va_start (args, cmdfmt);
 	cmd = g_strdup_vprintf (cmdfmt, args);
 	channel_write (nx->channel, cmd, strlen (cmd));
-	g_free (cmd);
+	g_free(cmd);
 
 	ssh_set_fd_towrite (nx->session);
 	channel_write (nx->channel, "\n", 1);
@@ -666,7 +666,7 @@ void remmina_nx_session_add_parameter(RemminaNXSession *nx, const gchar *name, c
 
 	va_start (args, valuefmt);
 	value = g_strdup_vprintf (valuefmt, args);
-	g_hash_table_insert (nx->session_parameters, g_strdup (name), value);
+	g_hash_table_insert(nx->session_parameters, g_strdup (name), value);
 }
 
 static gboolean remmina_nx_session_send_session_command(RemminaNXSession *nx, const gchar *cmd_type, gint response)
