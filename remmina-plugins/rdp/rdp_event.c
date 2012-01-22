@@ -132,11 +132,41 @@ static void remmina_rdp_event_scale_area(RemminaProtocolWidget* gp, gint* x, gin
 	*h = sh;
 }
 
+void remmina_rdp_event_update_region(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+{
+	rfContext* rfi;
+	gint x, y, w, h;
+
+	x = ui->region.x;
+	y = ui->region.y;
+	w = ui->region.width;
+	h = ui->region.height;
+
+	rfi = GET_DATA(gp);
+
+	if (rfi->sw_gdi)
+	{
+		XPutImage(rfi->display, rfi->primary, rfi->gc, rfi->image, x, y, x, y, w, h);
+		XCopyArea(rfi->display, rfi->primary, rfi->rgb_surface, rfi->gc, x, y, w, h, x, y);
+	}
+
+	if (remmina_plugin_service->protocol_plugin_get_scale(gp))
+		remmina_rdp_event_scale_area(gp, &x, &y, &w, &h);
+
+	gtk_widget_queue_draw_area(rfi->drawing_area, x, y, w, h);
+}
+
 void remmina_rdp_event_update_rect(RemminaProtocolWidget* gp, gint x, gint y, gint w, gint h)
 {
 	rfContext* rfi;
 
 	rfi = GET_DATA(gp);
+
+	if (rfi->sw_gdi)
+	{
+		XPutImage(rfi->display, rfi->primary, rfi->gc, rfi->image, x, y, x, y, w, h);
+		XCopyArea(rfi->display, rfi->primary, rfi->rgb_surface, rfi->gc, x, y, w, h, x, y);
+	}
 
 	if (remmina_plugin_service->protocol_plugin_get_scale(gp))
 		remmina_rdp_event_scale_area(gp, &x, &y, &w, &h);
@@ -504,7 +534,7 @@ void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 	}
 	while ((ui =(RemminaPluginRdpUiObject*) g_async_queue_try_pop(rfi->ui_queue)) != NULL)
 	{
-		rf_object_free (gp, ui);
+		rf_object_free(gp, ui);
 	}
 
 	if (rfi->gc)
@@ -780,7 +810,7 @@ static void remmina_rdp_event_rfx(RemminaProtocolWidget* gp, RemminaPluginRdpUiO
 	XSetClipMask(rfi->display, rfi->gc, None);
 }
 
-static void remmina_rdp_event_nocodec(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject *ui)
+static void remmina_rdp_event_nocodec(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
 	XImage* image;
 	rfContext* rfi;
@@ -817,6 +847,10 @@ gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 	{
 		switch (ui->type)
 		{
+			case REMMINA_RDP_UI_UPDATE_REGION:
+				remmina_rdp_event_update_region(gp, ui);
+				break;
+
 			case REMMINA_RDP_UI_CONNECTED:
 				remmina_rdp_event_connected(gp, ui);
 				break;
