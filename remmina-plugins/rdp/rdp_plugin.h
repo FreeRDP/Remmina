@@ -21,7 +21,7 @@
 #ifndef __REMMINA_RDP_H__
 #define __REMMINA_RDP_H__
 
-#include "common/remminaplugincommon.h"
+#include "common/remmina_plugin.h"
 #include <freerdp/freerdp.h>
 #include <freerdp/channels/channels.h>
 #include <freerdp/codec/color.h>
