@@ -18,7 +18,7 @@
 # Boston, MA 02111-1307, USA.
 
 set(REMMINA_PLUGIN_TELEPATHY_SRCS
-	remminaplugintelepathy.c
+	telepathy_plugin.c
 	)
 
 add_library(remmina-plugin-telepathy ${REMMINA_PLUGIN_TELEPATHY_SRCS})

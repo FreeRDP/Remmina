@@ -19,7 +19,7 @@
  */
 
 #include "common/remmina_plugin.h"
-#include "remminatphandler.h"
+#include "telepathy_handler.h"
 
 RemminaPluginService *remmina_plugin_telepathy_service = NULL;
 
