@@ -18,7 +18,7 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include "common/remminaplugincommon.h"
+#include "common/remmina_plugin.h"
 #include <telepathy-glib/account.h>
 #include <telepathy-glib/channel.h>
 #include <telepathy-glib/contact.h>

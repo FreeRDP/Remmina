@@ -20,7 +20,7 @@
 
 #include <errno.h>
 #include <pthread.h>
-#include "common/remminaplugincommon.h"
+#include "common/remmina_plugin.h"
 #include <glib/gstdio.h>
 #include <libssh/libssh.h>
 #include "nx_session.h"
