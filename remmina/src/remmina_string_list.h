@@ -17,7 +17,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, 
  * Boston, MA 02111-1307, USA.
  */
- 
 
 #ifndef __REMMINASTRINGLIST_H__
 #define __REMMINASTRINGLIST_H__
@@ -31,42 +30,43 @@ G_BEGIN_DECLS
 #define REMMINA_IS_STRING_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_STRING_LIST))
 #define REMMINA_STRING_LIST_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_STRING_LIST, RemminaStringListClass))
 
-typedef gboolean (*RemminaStringListValidationFunc) (const gchar *new_str, gchar **error);
+typedef gboolean (*RemminaStringListValidationFunc)(const gchar *new_str, gchar **error);
 
 typedef struct _RemminaStringList
 {
-    GtkTable table;
+	GtkTable table;
 
-    GtkListStore *store;
-    GtkWidget *list;
-    GtkWidget *status_label;
-    const gchar *hints;
+	GtkListStore *store;
+	GtkWidget *list;
+	GtkWidget *status_label;
+	const gchar *hints;
 
-    GtkWidget *up_button;
-    GtkWidget *down_button;
+	GtkWidget *up_button;
+	GtkWidget *down_button;
 
-    RemminaStringListValidationFunc validation_func;
+	RemminaStringListValidationFunc validation_func;
 } RemminaStringList;
 
 typedef struct _RemminaStringListClass
 {
-    GtkTableClass parent_class;
+	GtkTableClass parent_class;
 } RemminaStringListClass;
 
-GType remmina_string_list_get_type (void) G_GNUC_CONST;
+GType remmina_string_list_get_type(void)
+G_GNUC_CONST;
 
-GtkWidget* remmina_string_list_new (void);
+GtkWidget* remmina_string_list_new(void);
 
-void remmina_string_list_set_auto_sort (RemminaStringList *gsl, gboolean auto_sort);
+void remmina_string_list_set_auto_sort(RemminaStringList *gsl, gboolean auto_sort);
 
-void remmina_string_list_set_hints (RemminaStringList *gsl, const gchar *hints);
+void remmina_string_list_set_hints(RemminaStringList *gsl, const gchar *hints);
 
-void remmina_string_list_set_text (RemminaStringList *gsl, const gchar *text);
+void remmina_string_list_set_text(RemminaStringList *gsl, const gchar *text);
 
-void remmina_string_list_set_validation_func (RemminaStringList *gsl, RemminaStringListValidationFunc func);
+void remmina_string_list_set_validation_func(RemminaStringList *gsl, RemminaStringListValidationFunc func);
 
 /* The returned text is newly allocated */
-gchar* remmina_string_list_get_text (RemminaStringList *gsl);
+gchar* remmina_string_list_get_text(RemminaStringList *gsl);
 
 G_END_DECLS
 

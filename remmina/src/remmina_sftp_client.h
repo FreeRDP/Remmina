@@ -17,7 +17,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, 
  * Boston, MA 02111-1307, USA.
  */
- 
 
 #ifndef __REMMINASFTPCLIENT_H__
 #define __REMMINASFTPCLIENT_H__
@@ -26,9 +25,9 @@
 
 #ifdef HAVE_LIBSSH
 
-#include "remminafile.h"
-#include "remminaftpclient.h"
-#include "remminassh.h"
+#include "remmina_file.h"
+#include "remmina_ftp_client.h"
+#include "remmina_ssh.h"
 
 G_BEGIN_DECLS
 
@@ -41,20 +40,20 @@ G_BEGIN_DECLS
 
 typedef struct _RemminaSFTPClient
 {
-    RemminaFTPClient client;
+	RemminaFTPClient client;
 
-    RemminaSFTP *sftp;
+	RemminaSFTP *sftp;
 
-    pthread_t thread;
-    gint taskid;
-    gboolean thread_abort;
-} RemminaSFTPClient;
+	pthread_t thread;
+	gint taskid;
+	gboolean thread_abort;
+}RemminaSFTPClient;
 
 typedef struct _RemminaSFTPClientClass
 {
-    RemminaFTPClientClass parent_class;
+	RemminaFTPClientClass parent_class;
 
-} RemminaSFTPClientClass;
+}RemminaSFTPClientClass;
 
 GType remmina_sftp_client_get_type (void) G_GNUC_CONST;
 

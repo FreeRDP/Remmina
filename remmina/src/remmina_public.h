@@ -17,7 +17,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, 
  * Boston, MA 02111-1307, USA.
  */
- 
 
 #ifndef __REMMINAPUBLIC_H__
 #define __REMMINAPUBLIC_H__
@@ -51,33 +50,34 @@
 G_BEGIN_DECLS
 
 /* items is separated by STRING_DELIMTOR */
-GtkWidget* remmina_public_create_combo_entry (const gchar *text, const gchar *def, gboolean descending);
-GtkWidget* remmina_public_create_combo_text_d (const gchar *text, const gchar *def, const gchar *empty_choice);
-void remmina_public_load_combo_text_d (GtkWidget *combo, const gchar *text, const gchar *def, const gchar *empty_choice);
-GtkWidget* remmina_public_create_combo (gboolean use_icon);
-GtkWidget* remmina_public_create_combo_map (const gpointer *key_value_list, const gchar *def, gboolean use_icon, const gchar *domain);
-GtkWidget* remmina_public_create_combo_mapint (const gpointer *key_value_list, gint def, gboolean use_icon, const gchar *domain);
+GtkWidget* remmina_public_create_combo_entry(const gchar *text, const gchar *def, gboolean descending);
+GtkWidget* remmina_public_create_combo_text_d(const gchar *text, const gchar *def, const gchar *empty_choice);
+void remmina_public_load_combo_text_d(GtkWidget *combo, const gchar *text, const gchar *def, const gchar *empty_choice);
+GtkWidget* remmina_public_create_combo(gboolean use_icon);
+GtkWidget* remmina_public_create_combo_map(const gpointer *key_value_list, const gchar *def, gboolean use_icon,
+		const gchar *domain);
+GtkWidget* remmina_public_create_combo_mapint(const gpointer *key_value_list, gint def, gboolean use_icon, const gchar *domain);
 
-void remmina_public_create_group (GtkTable* table, const gchar *group, gint row, gint rows, gint cols);
+void remmina_public_create_group(GtkTable* table, const gchar *group, gint row, gint rows, gint cols);
 
-gchar* remmina_public_combo_get_active_text (GtkComboBox *combo);
+gchar* remmina_public_combo_get_active_text(GtkComboBox *combo);
 
 /* A function for gtk_menu_popup to get the position right below the widget specified by user_data */
-void remmina_public_popup_position (GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data);
+void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data);
 
 /* Combine two paths into one by correctly handling trailing slash. Return newly allocated string */
-gchar* remmina_public_combine_path (const gchar *path1, const gchar *path2);
+gchar* remmina_public_combine_path(const gchar *path1, const gchar *path2);
 
 /* Parse a server entry with server name and port */
-void remmina_public_get_server_port (const gchar *server, gint defaultport, gchar **host, gint *port);
+void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar **host, gint *port);
 
 /* X */
-gboolean remmina_public_get_xauth_cookie (const gchar *display, gchar **msg);
-gint remmina_public_open_xdisplay (const gchar *disp);
-guint remmina_public_get_current_workspace (GdkScreen *screen);
-guint remmina_public_get_window_workspace (GtkWindow *gtkwindow);
+gboolean remmina_public_get_xauth_cookie(const gchar *display, gchar **msg);
+gint remmina_public_open_xdisplay(const gchar *disp);
+guint remmina_public_get_current_workspace(GdkScreen *screen);
+guint remmina_public_get_window_workspace(GtkWindow *gtkwindow);
 
-void remmina_public_threads_leave (void* data);
+void remmina_public_threads_leave(void* data);
 
 G_END_DECLS
 

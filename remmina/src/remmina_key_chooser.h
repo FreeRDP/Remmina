@@ -32,20 +32,21 @@ G_BEGIN_DECLS
 
 typedef struct _RemminaKeyChooser
 {
-    GtkButton button;
+	GtkButton button;
 
-    guint keyval;
+	guint keyval;
 } RemminaKeyChooser;
 
 typedef struct _RemminaKeyChooserClass
 {
-    GtkButtonClass parent_class;
+	GtkButtonClass parent_class;
 } RemminaKeyChooserClass;
 
-GType remmina_key_chooser_get_type (void) G_GNUC_CONST;
+GType remmina_key_chooser_get_type(void)
+G_GNUC_CONST;
 
-GtkWidget* remmina_key_chooser_new (guint keyval);
-void remmina_key_chooser_set_keyval (RemminaKeyChooser *kc, guint keyval);
+GtkWidget* remmina_key_chooser_new(guint keyval);
+void remmina_key_chooser_set_keyval(RemminaKeyChooser *kc, guint keyval);
 
 G_END_DECLS
 

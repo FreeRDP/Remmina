@@ -17,7 +17,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, 
  * Boston, MA 02111-1307, USA.
  */
- 
 
 #ifndef __REMMINAAVAHI_H__
 #define __REMMINAAVAHI_H__
@@ -28,16 +27,16 @@ typedef struct _RemminaAvahiPriv RemminaAvahiPriv;
 
 typedef struct _RemminaAvahi
 {
-    GHashTable *discovered_services;
-    gboolean started;
+	GHashTable *discovered_services;
+	gboolean started;
 
-    RemminaAvahiPriv *priv;
+	RemminaAvahiPriv *priv;
 } RemminaAvahi;
 
-RemminaAvahi* remmina_avahi_new (void);
-void remmina_avahi_start (RemminaAvahi* ga);
-void remmina_avahi_stop (RemminaAvahi* ga);
-void remmina_avahi_free (RemminaAvahi* ga);
+RemminaAvahi* remmina_avahi_new(void);
+void remmina_avahi_start(RemminaAvahi* ga);
+void remmina_avahi_stop(RemminaAvahi* ga);
+void remmina_avahi_free(RemminaAvahi* ga);
 
 G_END_DECLS
 
