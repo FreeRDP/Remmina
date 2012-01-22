@@ -471,14 +471,14 @@ remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gint defa
 #ifdef HAVE_LIBSSH
 	if (!remmina_file_get_int (gp->priv->remmina_file, "ssh_enabled", FALSE))
 	{
-		dest = g_strdup_printf ("[%s]:%i", host, port);
-		g_free (host);
+		dest = g_strdup_printf("[%s]:%i", host, port);
+		g_free(host);
 		return dest;
 	}
 
 	if (!remmina_protocol_widget_init_tunnel (gp))
 	{
-		g_free (host);
+		g_free(host);
 		return NULL;
 	}
 
@@ -489,19 +489,19 @@ remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gint defa
 
 	if (remmina_file_get_int (gp->priv->remmina_file, "ssh_loopback", FALSE))
 	{
-		g_free (host);
+		g_free(host);
 		host = g_strdup ("127.0.0.1");
 	}
 
 	if (!remmina_ssh_tunnel_open (gp->priv->ssh_tunnel, host, port, remmina_pref.sshtunnel_port))
 	{
-		g_free (host);
+		g_free(host);
 		remmina_protocol_widget_set_error (gp, REMMINA_SSH (gp->priv->ssh_tunnel)->error);
 		return NULL;
 	}
 
-	g_free (host);
-	return g_strdup_printf ("127.0.0.1:%i", remmina_pref.sshtunnel_port);
+	g_free(host);
+	return g_strdup_printf("127.0.0.1:%i", remmina_pref.sshtunnel_port);
 
 #else
 
@@ -592,7 +592,7 @@ gboolean remmina_protocol_widget_ssh_exec(RemminaProtocolWidget *gp, gboolean wa
     {
         remmina_ssh_set_error (REMMINA_SSH (tunnel), _("Failed to execute command: %s"));
     }
-    g_free (cmd);
+    g_free(cmd);
     if (wait) channel_close (channel);
     channel_free (channel);
     return ret;
@@ -616,7 +616,7 @@ remmina_protocol_widget_tunnel_init_callback (RemminaSSHTunnel *tunnel, gpointer
 	remmina_public_get_server_port (remmina_file_get_string (gp->priv->remmina_file, "server"), 177, &server, &port);
 	ret = ((RemminaXPortTunnelInitFunc) gp->priv->init_func) (gp,
 			tunnel->remotedisplay, (tunnel->bindlocalhost ? "localhost" : server), port);
-	g_free (server);
+	g_free(server);
 
 	return ret;
 }
@@ -662,7 +662,7 @@ gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget *gp, R
 
 	remmina_public_get_server_port (remmina_file_get_string (gp->priv->remmina_file, "server"), 0, &server, NULL);
 	bindlocalhost = (g_strcmp0(REMMINA_SSH (gp->priv->ssh_tunnel)->server, server) == 0);
-	g_free (server);
+	g_free(server);
 
 	if (!remmina_ssh_tunnel_xport (gp->priv->ssh_tunnel, bindlocalhost))
 	{
@@ -681,8 +681,8 @@ gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget *gp, R
 void remmina_protocol_widget_set_display(RemminaProtocolWidget *gp, gint display)
 {
 #ifdef HAVE_LIBSSH
-	if (gp->priv->ssh_tunnel->localdisplay) g_free (gp->priv->ssh_tunnel->localdisplay);
-	gp->priv->ssh_tunnel->localdisplay = g_strdup_printf ("unix:%i", display);
+	if (gp->priv->ssh_tunnel->localdisplay) g_free(gp->priv->ssh_tunnel->localdisplay);
+	gp->priv->ssh_tunnel->localdisplay = g_strdup_printf("unix:%i", display);
 #endif
 }
 
@@ -747,7 +747,7 @@ void remmina_protocol_widget_set_error(RemminaProtocolWidget *gp, const gchar *f
 {
 	va_list args;
 
-	if (gp->priv->error_message) g_free (gp->priv->error_message);
+	if (gp->priv->error_message) g_free(gp->priv->error_message);
 
 	va_start (args, fmt);
 	gp->priv->error_message = g_strdup_vprintf (fmt, args);

@@ -32,11 +32,12 @@
 #include "remmina_plugin_manager.h"
 #include "remmina_exec.h"
 
-void remmina_exec_command(RemminaCommandType command, const gchar *data)
+void remmina_exec_command(RemminaCommandType command, const gchar* data)
 {
-	GtkWidget *widget;
-	gchar *s1, *s2;
-	RemminaEntryPlugin *plugin;
+	gchar* s1;
+	gchar* s2;
+	GtkWidget* widget;
+	RemminaEntryPlugin* plugin;
 
 	switch (command)
 	{
@@ -53,6 +54,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar *data)
 				gtk_widget_show(widget);
 			}
 			break;
+
 		case REMMINA_COMMAND_PREF:
 			widget = remmina_widget_pool_find(REMMINA_TYPE_PREF_DIALOG, NULL);
 			if (widget)
@@ -65,6 +67,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar *data)
 				gtk_widget_show(widget);
 			}
 			break;
+
 		case REMMINA_COMMAND_NEW:
 			s1 = (data ? strchr(data, ',') : NULL);
 			if (s1)
@@ -81,19 +84,23 @@ void remmina_exec_command(RemminaCommandType command, const gchar *data)
 			}
 			gtk_widget_show(widget);
 			break;
+
 		case REMMINA_COMMAND_CONNECT:
 			remmina_connection_window_open_from_filename(data);
 			break;
+
 		case REMMINA_COMMAND_EDIT:
 			widget = remmina_file_editor_new_from_filename(data);
 			if (widget)
 				gtk_widget_show(widget);
 			break;
+
 		case REMMINA_COMMAND_ABOUT:
 			remmina_about_open(NULL);
 			break;
+
 		case REMMINA_COMMAND_PLUGIN:
-			plugin = (RemminaEntryPlugin *) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_ENTRY, data);
+			plugin = (RemminaEntryPlugin*) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_ENTRY, data);
 			if (plugin)
 			{
 				plugin->entry_func();
@@ -107,6 +114,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar *data)
 				remmina_widget_pool_register(widget);
 			}
 			break;
+
 		default:
 			break;
 	}

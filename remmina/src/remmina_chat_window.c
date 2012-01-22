@@ -27,37 +27,37 @@ G_DEFINE_TYPE( RemminaChatWindow, remmina_chat_window, GTK_TYPE_WINDOW)
 
 enum
 {
-	SEND_SIGNAL, LAST_SIGNAL
+	SEND_SIGNAL,
+	LAST_SIGNAL
 };
 
-static guint remmina_chat_window_signals[LAST_SIGNAL] =
-{ 0 };
+static guint remmina_chat_window_signals[LAST_SIGNAL] = { 0 };
 
-static void remmina_chat_window_class_init(RemminaChatWindowClass *klass)
+static void remmina_chat_window_class_init(RemminaChatWindowClass* klass)
 {
 	remmina_chat_window_signals[SEND_SIGNAL] = g_signal_new("send", G_TYPE_FROM_CLASS(klass),
 			G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaChatWindowClass, send), NULL, NULL,
 			g_cclosure_marshal_VOID__STRING, G_TYPE_NONE, 1, G_TYPE_STRING);
 }
 
-static void remmina_chat_window_init(RemminaChatWindow *window)
+static void remmina_chat_window_init(RemminaChatWindow* window)
 {
 	window->history_text = NULL;
 	window->send_text = NULL;
 }
 
-static void remmina_chat_window_clear_send_text(GtkWidget *widget, RemminaChatWindow *window)
+static void remmina_chat_window_clear_send_text(GtkWidget* widget, RemminaChatWindow* window)
 {
-	GtkTextBuffer *buffer;
+	GtkTextBuffer* buffer;
 
 	buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(window->send_text));
 	gtk_text_buffer_set_text(buffer, "", -1);
 	gtk_widget_grab_focus(window->send_text);
 }
 
-static gboolean remmina_chat_window_scroll_proc(RemminaChatWindow *window)
+static gboolean remmina_chat_window_scroll_proc(RemminaChatWindow* window)
 {
-	GtkTextBuffer *buffer;
+	GtkTextBuffer* buffer;
 	GtkTextIter iter;
 
 	buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(window->history_text));
@@ -67,12 +67,12 @@ static gboolean remmina_chat_window_scroll_proc(RemminaChatWindow *window)
 	return FALSE;
 }
 
-static void remmina_chat_window_append_text(RemminaChatWindow *window, const gchar *name, const gchar *tagname,
-		const gchar *text)
+static void remmina_chat_window_append_text(RemminaChatWindow* window, const gchar* name, const gchar* tagname,
+		const gchar* text)
 {
-	GtkTextBuffer *buffer;
+	GtkTextBuffer* buffer;
 	GtkTextIter iter;
-	gchar *ptr;
+	gchar* ptr;
 
 	buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(window->history_text));
 
@@ -110,11 +110,11 @@ static void remmina_chat_window_append_text(RemminaChatWindow *window, const gch
 	g_idle_add((GSourceFunc) remmina_chat_window_scroll_proc, window);
 }
 
-static void remmina_chat_window_send(GtkWidget *widget, RemminaChatWindow *window)
+static void remmina_chat_window_send(GtkWidget* widget, RemminaChatWindow* window)
 {
-	GtkTextBuffer *buffer;
+	GtkTextBuffer* buffer;
 	GtkTextIter start, end;
-	gchar *text;
+	gchar* text;
 
 	buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(window->send_text));
 	gtk_text_buffer_get_bounds(buffer, &start, &end);
@@ -132,7 +132,7 @@ static void remmina_chat_window_send(GtkWidget *widget, RemminaChatWindow *windo
 	remmina_chat_window_clear_send_text(widget, window);
 }
 
-static gboolean remmina_chat_window_send_text_on_key(GtkWidget *widget, GdkEventKey *event, RemminaChatWindow *window)
+static gboolean remmina_chat_window_send_text_on_key(GtkWidget* widget, GdkEventKey* event, RemminaChatWindow* window)
 {
 	if (event->keyval == GDK_KEY_Return)
 	{
@@ -143,15 +143,15 @@ static gboolean remmina_chat_window_send_text_on_key(GtkWidget *widget, GdkEvent
 }
 
 GtkWidget*
-remmina_chat_window_new(GtkWindow *parent, const gchar *chat_with)
+remmina_chat_window_new(GtkWindow* parent, const gchar* chat_with)
 {
-	RemminaChatWindow *window;
+	RemminaChatWindow* window;
 	gchar buf[100];
-	GtkWidget *table;
-	GtkWidget *scrolledwindow;
-	GtkWidget *widget;
-	GtkWidget *image;
-	GtkTextBuffer *buffer;
+	GtkWidget* table;
+	GtkWidget* scrolledwindow;
+	GtkWidget* widget;
+	GtkWidget* image;
+	GtkTextBuffer* buffer;
 
 	window = REMMINA_CHAT_WINDOW(g_object_new(REMMINA_TYPE_CHAT_WINDOW, NULL));
 
@@ -230,7 +230,7 @@ remmina_chat_window_new(GtkWindow *parent, const gchar *chat_with)
 	return GTK_WIDGET(window);
 }
 
-void remmina_chat_window_receive(RemminaChatWindow *window, const gchar *name, const gchar *text)
+void remmina_chat_window_receive(RemminaChatWindow* window, const gchar* name, const gchar* text)
 {
 	remmina_chat_window_append_text(window, name, "receiver-foreground", text);
 }

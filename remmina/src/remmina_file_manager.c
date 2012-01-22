@@ -37,13 +37,14 @@ gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 {
 	gchar dirname[MAX_PATH_LEN];
 	gchar filename[MAX_PATH_LEN];
-	GDir *dir;
-	const gchar *name;
-	RemminaFile *remminafile;
+	GDir* dir;
+	const gchar* name;
+	RemminaFile* remminafile;
 	gint n;
 
 	g_snprintf(dirname, MAX_PATH_LEN, "%s/.remmina", g_get_home_dir());
 	dir = g_dir_open(dirname, 0, NULL);
+
 	if (dir == NULL)
 		return 0;
 
@@ -65,17 +66,16 @@ gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 	return n;
 }
 
-gchar*
-remmina_file_manager_get_groups(void)
+gchar* remmina_file_manager_get_groups(void)
 {
 	gchar dirname[MAX_PATH_LEN];
 	gchar filename[MAX_PATH_LEN];
-	GDir *dir;
-	const gchar *name;
-	RemminaFile *remminafile;
-	RemminaStringArray *array;
-	const gchar *group;
-	gchar *groups;
+	GDir* dir;
+	const gchar* name;
+	RemminaFile* remminafile;
+	RemminaStringArray* array;
+	const gchar* group;
+	gchar* groups;
 
 	array = remmina_string_array_new();
 
@@ -103,32 +103,40 @@ remmina_file_manager_get_groups(void)
 	return groups;
 }
 
-static void remmina_file_manager_add_group(GNode *node, const gchar *group)
+static void remmina_file_manager_add_group(GNode* node, const gchar* group)
 {
-	RemminaGroupData *data;
-	gchar *p1, *p2;
-	GNode *child;
 	gint cmp;
+	gchar* p1;
+	gchar* p2;
+	GNode* child;
 	gboolean found;
+	RemminaGroupData* data;
 
 	if (group == NULL || group[0] == '\0')
 		return;
+
 	p1 = g_strdup(group);
 	p2 = strchr(p1, '/');
+
 	if (p2)
 		*p2++ = '\0';
+
 	found = FALSE;
+
 	for (child = g_node_first_child(node); child; child = g_node_next_sibling(child))
 	{
 		cmp = g_strcmp0(((RemminaGroupData*) child->data)->name, p1);
+
 		if (cmp == 0)
 		{
 			found = TRUE;
 			break;
 		}
+
 		if (cmp > 0)
 			break;
 	}
+
 	if (!found)
 	{
 		data = g_new0(RemminaGroupData, 1);
@@ -151,22 +159,22 @@ static void remmina_file_manager_add_group(GNode *node, const gchar *group)
 		}
 	}
 	remmina_file_manager_add_group(child, p2);
+
 	if (found)
 	{
 		g_free(p1);
 	}
 }
 
-GNode*
-remmina_file_manager_get_group_tree(void)
+GNode* remmina_file_manager_get_group_tree(void)
 {
 	gchar dirname[MAX_PATH_LEN];
 	gchar filename[MAX_PATH_LEN];
-	GDir *dir;
-	const gchar *name;
-	RemminaFile *remminafile;
-	const gchar *group;
-	GNode *root;
+	GDir* dir;
+	const gchar* name;
+	RemminaFile* remminafile;
+	const gchar* group;
+	GNode* root;
 
 	root = g_node_new(NULL);
 
@@ -188,10 +196,10 @@ remmina_file_manager_get_group_tree(void)
 	return root;
 }
 
-void remmina_file_manager_free_group_tree(GNode *node)
+void remmina_file_manager_free_group_tree(GNode* node)
 {
-	RemminaGroupData *data;
-	GNode *child;
+	RemminaGroupData* data;
+	GNode* child;
 
 	if (!node)
 		return;
@@ -210,12 +218,11 @@ void remmina_file_manager_free_group_tree(GNode *node)
 	g_node_unlink(node);
 }
 
-RemminaFile*
-remmina_file_manager_load_file(const gchar *filename)
+RemminaFile* remmina_file_manager_load_file(const gchar* filename)
 {
-	RemminaFile *remminafile = NULL;
-	RemminaFilePlugin *plugin;
-	gchar *p;
+	RemminaFile* remminafile = NULL;
+	RemminaFilePlugin* plugin;
+	gchar* p;
 
 	if ((p = strrchr(filename, '.')) != NULL && g_strcmp0(p + 1, "remmina") == 0)
 	{

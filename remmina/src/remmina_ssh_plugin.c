@@ -60,9 +60,9 @@ remmina_plugin_ssh_main_thread (gpointer data)
 	pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
 
-	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 
-	ssh = g_object_get_data (G_OBJECT (gp), "user-data");
+	ssh = g_object_get_data (G_OBJECT(gp), "user-data");
 	if (ssh)
 	{
 		/* Create SSH Shell connection based on existing SSH session */
@@ -138,7 +138,7 @@ remmina_plugin_ssh_on_focus_in (GtkWidget *widget, GdkEventFocus *event, Remmina
 {
 	RemminaPluginSshData *gpdata;
 
-	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 	gtk_widget_grab_focus (gpdata->vte);
 	return TRUE;
 }
@@ -151,7 +151,7 @@ remmina_plugin_ssh_on_size_allocate (GtkWidget *widget, GtkAllocation *alloc, Re
 
 	if (!gtk_widget_get_mapped (widget)) return FALSE;
 
-	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 
 	cols = vte_terminal_get_column_count (VTE_TERMINAL (widget));
 	rows = vte_terminal_get_row_count (VTE_TERMINAL (widget));
@@ -166,7 +166,7 @@ remmina_plugin_ssh_set_vte_pref (RemminaProtocolWidget *gp)
 {
 	RemminaPluginSshData *gpdata;
 
-	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 	if (remmina_pref.vte_font && remmina_pref.vte_font[0])
 	{
 		vte_terminal_set_font_from_string (VTE_TERMINAL (gpdata->vte), remmina_pref.vte_font);
@@ -187,12 +187,12 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	GtkWidget *vte;
 
 	gpdata = g_new0 (RemminaPluginSshData, 1);
-	g_object_set_data_full (G_OBJECT (gp), "plugin-data", gpdata, g_free);
+	g_object_set_data_full (G_OBJECT(gp), "plugin-data", gpdata, g_free);
 
 	hbox = gtk_hbox_new (FALSE, 0);
 	gtk_widget_show(hbox);
-	gtk_container_add (GTK_CONTAINER (gp), hbox);
-	g_signal_connect (G_OBJECT (hbox), "focus-in-event", G_CALLBACK (remmina_plugin_ssh_on_focus_in), gp);
+	gtk_container_add(GTK_CONTAINER (gp), hbox);
+	g_signal_connect(G_OBJECT(hbox), "focus-in-event", G_CALLBACK(remmina_plugin_ssh_on_focus_in), gp);
 
 	vte = vte_terminal_new ();
 	gtk_widget_show(vte);
@@ -201,7 +201,7 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	gtk_box_pack_start (GTK_BOX (hbox), vte, TRUE, TRUE, 0);
 	gpdata->vte = vte;
 	remmina_plugin_ssh_set_vte_pref (gp);
-	g_signal_connect (G_OBJECT (vte), "size-allocate", G_CALLBACK (remmina_plugin_ssh_on_size_allocate), gp);
+	g_signal_connect(G_OBJECT(vte), "size-allocate", G_CALLBACK(remmina_plugin_ssh_on_size_allocate), gp);
 
 	remmina_plugin_service->protocol_plugin_register_hostkey (gp, vte);
 
@@ -215,7 +215,7 @@ remmina_plugin_ssh_open_connection (RemminaProtocolWidget *gp)
 {
 	RemminaPluginSshData *gpdata;
 
-	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 
 	remmina_plugin_service->protocol_plugin_set_expand (gp, TRUE);
 	remmina_plugin_service->protocol_plugin_set_width (gp, 640);
@@ -240,7 +240,7 @@ remmina_plugin_ssh_close_connection (RemminaProtocolWidget *gp)
 {
 	RemminaPluginSshData *gpdata;
 
-	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 	if (gpdata->thread)
 	{
 		pthread_cancel (gpdata->thread);
@@ -267,7 +267,7 @@ remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, const RemminaProtoco
 {
 	RemminaPluginSshData *gpdata;
 
-	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT (gp), "plugin-data");
+	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 	switch (feature->id)
 	{
 		case REMMINA_PROTOCOL_FEATURE_TOOL_SSH:

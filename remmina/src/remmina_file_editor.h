@@ -36,7 +36,7 @@ typedef struct _RemminaFileEditor
 {
 	GtkDialog dialog;
 
-	RemminaFileEditorPriv *priv;
+	RemminaFileEditorPriv* priv;
 } RemminaFileEditor;
 
 typedef struct _RemminaFileEditorClass
@@ -48,13 +48,13 @@ GType remmina_file_editor_get_type(void)
 G_GNUC_CONST;
 
 /* Base constructor */
-GtkWidget* remmina_file_editor_new_from_file(RemminaFile *remminafile);
+GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile);
 /* Create new file */
 GtkWidget* remmina_file_editor_new(void);
-GtkWidget* remmina_file_editor_new_full(const gchar *server, const gchar *protocol);
-GtkWidget* remmina_file_editor_new_copy(const gchar *filename);
+GtkWidget* remmina_file_editor_new_full(const gchar* server, const gchar* protocol);
+GtkWidget* remmina_file_editor_new_copy(const gchar* filename);
 /* Open existing file */
-GtkWidget* remmina_file_editor_new_from_filename(const gchar *filename);
+GtkWidget* remmina_file_editor_new_from_filename(const gchar* filename);
 
 G_END_DECLS
 

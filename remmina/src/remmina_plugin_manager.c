@@ -144,7 +144,7 @@ void remmina_plugin_manager_init(void)
 			continue;
 		ptr++;
 		if (g_strcmp0(ptr, G_MODULE_SUFFIX) != 0)
-			continue; fullpath = g_strdup_printf (REMMINA_PLUGINDIR "/%s", name);
+			continue; fullpath = g_strdup_printf(REMMINA_PLUGINDIR "/%s", name);
 		remmina_plugin_manager_load_plugin(fullpath);
 		g_free(fullpath);
 	}
