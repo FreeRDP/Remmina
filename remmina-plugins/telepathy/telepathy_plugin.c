@@ -25,38 +25,31 @@ RemminaPluginService *remmina_plugin_telepathy_service = NULL;
 
 static RemminaTpHandler *remmina_tp_handler = NULL;
 
-void
-remmina_plugin_telepathy_entry (void)
+void remmina_plugin_telepathy_entry(void)
 {
-    if (remmina_tp_handler == NULL)
-    {
-        remmina_tp_handler = remmina_tp_handler_new ();
-    }
+	if (remmina_tp_handler == NULL)
+	{
+		remmina_tp_handler = remmina_tp_handler_new();
+	}
 }
 
 static RemminaEntryPlugin remmina_plugin_telepathy =
-{
-    REMMINA_PLUGIN_TYPE_ENTRY,
-    "telepathy",
-    N_("Telepathy - Desktop Sharing"),
-    GETTEXT_PACKAGE,
-    VERSION,
+{ REMMINA_PLUGIN_TYPE_ENTRY, "telepathy", N_("Telepathy - Desktop Sharing"), GETTEXT_PACKAGE, VERSION,
 
-    remmina_plugin_telepathy_entry
-};
+remmina_plugin_telepathy_entry };
 
 G_MODULE_EXPORT gboolean
-remmina_plugin_entry (RemminaPluginService *service)
+remmina_plugin_entry(RemminaPluginService *service)
 {
-    remmina_plugin_telepathy_service = service;
+	remmina_plugin_telepathy_service = service;
 
-    bindtextdomain (GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
+	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 
-    if (! service->register_plugin ((RemminaPlugin *) &remmina_plugin_telepathy))
-    {
-        return FALSE;
-    }
-    return TRUE;
+	if (!service->register_plugin((RemminaPlugin *) &remmina_plugin_telepathy))
+	{
+		return FALSE;
+	}
+	return TRUE;
 }
 
