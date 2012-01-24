@@ -1074,7 +1074,7 @@ void remmina_ftp_client_add_file(RemminaFTPClient *client, ...)
 	gtk_list_store_set_valist (store, &iter, args);
 	va_end (args);
 
-	gtk_tree_model_get (GTK_TREE_MODEL (store), &iter,
+	gtk_tree_model_get (GTK_TREE_MODEL(store), &iter,
 			REMMINA_FTP_FILE_COLUMN_TYPE, &type,
 			REMMINA_FTP_FILE_COLUMN_NAME, &name,
 			-1);

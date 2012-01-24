@@ -206,7 +206,7 @@ static gboolean remmina_nx_session_manager_main(RemminaProtocolWidget *gp)
 		GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, "%s",
 		remmina_nx_session_get_error (gpdata->nx));
 		remmina_nx_session_clear_error (gpdata->nx);
-		gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_dialog_run (GTK_DIALOG(dialog));
 		gtk_widget_destroy (dialog);
 		remmina_nx_session_manager_send_signal (gpdata, 0);
 	}

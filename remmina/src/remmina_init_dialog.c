@@ -122,7 +122,7 @@ remmina_init_dialog_new(const gchar *title_format, ...)
 	va_start (args, title_format);
 	dialog->title = g_strdup_vprintf (title_format, args);
 	va_end (args);
-	gtk_window_set_title (GTK_WINDOW (dialog), dialog->title);
+	gtk_window_set_title (GTK_WINDOW(dialog), dialog->title);
 
 	remmina_init_dialog_connecting (dialog);
 
