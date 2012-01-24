@@ -716,11 +716,11 @@ remmina_sftp_client_sftp_session_opendir (RemminaSFTPClient *client, const gchar
 	sftpdir = sftp_opendir (client->sftp->sftp_sess, (gchar*) dir);
 	if (!sftpdir)
 	{
-		dialog = gtk_message_dialog_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (client))),
+		dialog = gtk_message_dialog_new (GTK_WINDOW(gtk_widget_get_toplevel (GTK_WIDGET (client))),
 				GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 				_("Failed to open directory %s. %s"), dir,
 				ssh_get_error (REMMINA_SSH (client->sftp)->session));
-		gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_dialog_run (GTK_DIALOG(dialog));
 		gtk_widget_destroy (dialog);
 		return NULL;
 	}
@@ -734,10 +734,10 @@ remmina_sftp_client_sftp_session_closedir (RemminaSFTPClient *client, sftp_dir s
 
 	if (!sftp_dir_eof (sftpdir))
 	{
-		dialog = gtk_message_dialog_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (client))),
+		dialog = gtk_message_dialog_new (GTK_WINDOW(gtk_widget_get_toplevel (GTK_WIDGET (client))),
 				GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 				_("Failed reading directory. %s"), ssh_get_error (REMMINA_SSH (client->sftp)->session));
-		gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_dialog_run (GTK_DIALOG(dialog));
 		gtk_widget_destroy (dialog);
 		return FALSE;
 	}
@@ -852,10 +852,10 @@ remmina_sftp_client_on_canceltask (RemminaSFTPClient *client, gint taskid, gpoin
 
 	if (client->taskid != taskid) return TRUE;
 
-	dialog = gtk_message_dialog_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (client))),
+	dialog = gtk_message_dialog_new (GTK_WINDOW(gtk_widget_get_toplevel (GTK_WIDGET (client))),
 			GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
 			_("File transfer currently in progress.\nAre you sure to cancel it?"));
-	ret = gtk_dialog_run (GTK_DIALOG (dialog));
+	ret = gtk_dialog_run (GTK_DIALOG(dialog));
 	gtk_widget_destroy (dialog);
 	if (ret == GTK_RESPONSE_YES)
 	{
@@ -888,11 +888,11 @@ remmina_sftp_client_on_deletefile (RemminaSFTPClient *client, gint type, gchar *
 
 	if (ret != 0)
 	{
-		dialog = gtk_message_dialog_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (client))),
+		dialog = gtk_message_dialog_new (GTK_WINDOW(gtk_widget_get_toplevel (GTK_WIDGET (client))),
 				GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 				_("Failed to delete '%s'. %s"),
 				name, ssh_get_error (REMMINA_SSH (client->sftp)->session));
-		gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_dialog_run (GTK_DIALOG(dialog));
 		gtk_widget_destroy (dialog);
 		return FALSE;
 	}
@@ -947,7 +947,7 @@ remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path
 	filename = filename ? filename + 1 : path;
 
 	dialog = gtk_dialog_new_with_buttons (_("File exists"),
-			GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (client))),
+			GTK_WINDOW(gtk_widget_get_toplevel (GTK_WIDGET (client))),
 			GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
 			_("Resume"), GTK_RESPONSE_APPLY,
 			_("Overwrite"), GTK_RESPONSE_ACCEPT,
@@ -957,7 +957,7 @@ remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path
 
 	hbox = gtk_hbox_new (FALSE, 4);
 	gtk_widget_show(hbox);
-	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))),
+	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG(dialog))),
 			hbox, TRUE, TRUE, 4);
 
 	widget = gtk_image_new_from_stock (GTK_STOCK_DIALOG_QUESTION, GTK_ICON_SIZE_DIALOG);
@@ -970,15 +970,15 @@ remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path
 
 	widget = gtk_label_new(_("The following file already exists in the target folder:"));
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+	gtk_misc_set_alignment (GTK_MISC(widget), 0.0, 0.5);
 	gtk_box_pack_start (GTK_BOX (vbox), widget, TRUE, TRUE, 4);
 
 	widget = gtk_label_new(filename);
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment (GTK_MISC (widget), 0.0, 0.5);
+	gtk_misc_set_alignment (GTK_MISC(widget), 0.0, 0.5);
 	gtk_box_pack_start (GTK_BOX (vbox), widget, TRUE, TRUE, 4);
 
-	response = gtk_dialog_run (GTK_DIALOG (dialog));
+	response = gtk_dialog_run (GTK_DIALOG(dialog));
 	gtk_widget_destroy (dialog);
 	return response;
 }
@@ -1012,10 +1012,10 @@ remmina_sftp_client_new_init (RemminaSFTP *sftp)
 			remmina_ssh_auth (REMMINA_SSH (sftp), NULL) <= 0 ||
 			!remmina_sftp_open (sftp))
 	{
-		dialog = gtk_message_dialog_new (GTK_WINDOW (gtk_widget_get_toplevel (client)),
+		dialog = gtk_message_dialog_new (GTK_WINDOW(gtk_widget_get_toplevel (client)),
 				GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 				(REMMINA_SSH (sftp))->error, NULL);
-		gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_dialog_run (GTK_DIALOG(dialog));
 		gtk_widget_destroy (dialog);
 		gtk_widget_destroy (client);
 		return NULL;

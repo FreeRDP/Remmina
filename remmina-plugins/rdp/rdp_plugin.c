@@ -94,7 +94,7 @@ void rf_uninit(RemminaProtocolWidget* gp)
 
 	if (rfi->rfx_context)
 	{
-		rfx_context_free (rfi->rfx_context);
+		rfx_context_free(rfi->rfx_context);
 		rfi->rfx_context = NULL;
 	}
 }
@@ -321,9 +321,8 @@ static boolean remmina_rdp_pre_connect(freerdp* instance)
 	settings->order_support[NEG_ELLIPSE_SC_INDEX] = False;
 	settings->order_support[NEG_ELLIPSE_CB_INDEX] = False;
 
-	if (settings->color_depth == 32)
+	if (settings->rfx_codec == True)
 	{
-		settings->rfx_codec = True;
 		settings->frame_acknowledge = False;
 		settings->large_pointer = True;
 		settings->performance_flags = PERF_FLAG_NONE;
@@ -447,10 +446,10 @@ static boolean remmina_rdp_post_connect(freerdp* instance)
 
 static boolean remmina_rdp_authenticate(freerdp* instance, char** username, char** password, char** domain)
 {
-	gchar *s;
+	gchar* s;
 	gint ret;
-	RemminaProtocolWidget* gp;
 	rfContext* rfi;
+	RemminaProtocolWidget* gp;
 
 	rfi = (rfContext*) instance->context;
 	gp = rfi->protocol_widget;
@@ -632,9 +631,16 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	g_free(s);
 	rfi->settings->port = port;
 
-	rfi->settings->color_depth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 8);
-	rfi->settings->width = remmina_plugin_service->file_get_int(remminafile, "resolution_width", 640);
-	rfi->settings->height = remmina_plugin_service->file_get_int(remminafile, "resolution_height", 480);
+	rfi->settings->color_depth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 0);
+
+	if (rfi->settings->color_depth == 0)
+	{
+		rfi->settings->rfx_codec = True;
+		rfi->settings->color_depth = 32;
+	}
+
+	rfi->settings->width = remmina_plugin_service->file_get_int(remminafile, "resolution_width", 1024);
+	rfi->settings->height = remmina_plugin_service->file_get_int(remminafile, "resolution_height", 768);
 	remmina_plugin_service->protocol_plugin_set_width(gp, rfi->settings->width);
 	remmina_plugin_service->protocol_plugin_set_height(gp, rfi->settings->height);
 
@@ -662,7 +668,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	}
 	else
 	{
-		strncpy(rfi->settings->client_hostname, g_get_host_name(), sizeof (rfi->settings->client_hostname) - 1);
+		strncpy(rfi->settings->client_hostname, g_get_host_name(), sizeof(rfi->settings->client_hostname) - 1);
 	}
 
 	if (remmina_plugin_service->file_get_string(remminafile, "exec"))
@@ -861,7 +867,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	instance->ReceiveChannelData = remmina_rdp_receive_channel_data;
 
 	instance->context_size = sizeof(rfContext);
-	freerdp_context_new (instance);
+	freerdp_context_new(instance);
 	rfi = (rfContext*) instance->context;
 
 	g_object_set_data_full(G_OBJECT(gp), "plugin-data", rfi, xfree);
@@ -911,22 +917,18 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 			pthread_join(rfi->thread, NULL);
 	}
 
-	if (rfi->channels && rfi->instance)
-	{
-		freerdp_channels_close(rfi->channels, rfi->instance);
-	}
-
 	if (rfi->instance)
 	{
+		if (rfi->channels)
+		{
+			//freerdp_channels_close(rfi->channels, rfi->instance);
+			freerdp_channels_free(rfi->channels);
+			rfi->channels = NULL;
+		}
+
 		freerdp_disconnect(rfi->instance);
 		freerdp_free(rfi->instance);
 		rfi->instance = NULL;
-	}
-
-	if (rfi->channels)
-	{
-		freerdp_channels_free(rfi->channels);
-		rfi->channels = NULL;
 	}
 
 	pthread_mutex_destroy(&rfi->mutex);
@@ -964,7 +966,7 @@ static void remmina_rdp_call_feature(RemminaProtocolWidget* gp, const RemminaPro
 			break;
 
 		case REMMINA_RDP_FEATURE_TOOL_REFRESH:
-			gtk_widget_queue_draw_area (rfi->drawing_area, 0, 0,
+			gtk_widget_queue_draw_area(rfi->drawing_area, 0, 0,
 				remmina_plugin_service->protocol_plugin_get_width(gp),
 				remmina_plugin_service->protocol_plugin_get_height(gp));
 			break;
@@ -976,11 +978,12 @@ static void remmina_rdp_call_feature(RemminaProtocolWidget* gp, const RemminaPro
 
 static gpointer colordepth_list[] =
 {
-	"8", N_("256 colors"),
-	"15", N_("High color (15 bit)"),
-	"16", N_("High color (16 bit)"),
-	"24", N_("True color (24 bit)"),
-	"32", N_("RemoteFX (32 bit)"),
+	"8", N_("256 colors (8 bpp)"),
+	"15", N_("High color (15 bpp)"),
+	"16", N_("High color (16 bpp)"),
+	"24", N_("True color (24 bpp)"),
+	"32", N_("True color (32 bpp)"),
+	"0", N_("RemoteFX (32 bpp)"),
 	NULL
 };
 
@@ -1051,7 +1054,7 @@ static RemminaProtocolPlugin remmina_rdp =
 {
 	REMMINA_PLUGIN_TYPE_PROTOCOL,
 	"RDP",
-	N_("RDP - Windows Terminal Service"),
+	N_("RDP - Remote Desktop Protocol"),
 	GETTEXT_PACKAGE,
 	VERSION,
 
