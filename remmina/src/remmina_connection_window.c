@@ -464,19 +464,19 @@ static void remmina_connection_holder_check_resize(RemminaConnectionHolder* cnnh
 					break;
 
 					case VIEWPORT_FULLSCREEN_MODE:
-					gtk_window_resize (GTK_WINDOW (cnnhld->cnnwin), screen_width, screen_height);
+					gtk_window_resize (GTK_WINDOW(cnnhld->cnnwin), screen_width, screen_height);
 					gtk_container_set_border_width (GTK_CONTAINER (cnnhld->cnnwin), scroll_required ? 1 : 0);
         break;
 
     case SCROLLED_WINDOW_MODE:
         if (remmina_file_get_int (cnnobj->remmina_file, "viewmode", AUTO_MODE) == AUTO_MODE)
         {
-            gtk_window_set_default_size (GTK_WINDOW (cnnhld->cnnwin),
+            gtk_window_set_default_size (GTK_WINDOW(cnnhld->cnnwin),
                 MIN (server_width, screen_width), MIN (server_height, screen_height));
             if (server_width >= screen_width ||
                 server_height >= screen_height)
             {
-                gtk_window_maximize (GTK_WINDOW (cnnhld->cnnwin));
+                gtk_window_maximize (GTK_WINDOW(cnnhld->cnnwin));
                 remmina_file_set_int (cnnobj->remmina_file, "window_maximize", TRUE);
             }
             else
@@ -487,12 +487,12 @@ static void remmina_connection_holder_check_resize(RemminaConnectionHolder* cnnh
         }
         else
         {
-            gtk_window_set_default_size (GTK_WINDOW (cnnhld->cnnwin),
+            gtk_window_set_default_size (GTK_WINDOW(cnnhld->cnnwin),
                 remmina_file_get_int (cnnobj->remmina_file, "window_width", 640),
                 remmina_file_get_int (cnnobj->remmina_file, "window_height", 480));
             if (remmina_file_get_int (cnnobj->remmina_file, "window_maximize", FALSE))
             {
-                gtk_window_maximize (GTK_WINDOW (cnnhld->cnnwin));
+                gtk_window_maximize (GTK_WINDOW(cnnhld->cnnwin));
             }
         }
         break;
