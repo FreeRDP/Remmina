@@ -30,10 +30,10 @@
 #ifdef HAVE_FCNTL_H
 #include <fcntl.h>
 #endif
-#include "remminapublic.h"
-#include "remminapref.h"
-#include "remminassh.h"
-#include "remminasftpclient.h"
+#include "remmina_public.h"
+#include "remmina_pref.h"
+#include "remmina_ssh.h"
+#include "remmina_sftp_client.h"
 
 G_DEFINE_TYPE (RemminaSFTPClient, remmina_sftp_client, REMMINA_TYPE_FTP_CLIENT)
 
