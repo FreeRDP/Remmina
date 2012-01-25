@@ -54,9 +54,9 @@
 #ifdef HAVE_TERMIOS_H
 #include <termios.h>
 #endif
-#include "remminapublic.h"
-#include "remminalog.h"
-#include "remminassh.h"
+#include "remmina_public.h"
+#include "remmina_log.h"
+#include "remmina_ssh.h"
 
 /*************************** SSH Base *********************************/
 
@@ -351,7 +351,7 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, gboolean threa
 }
 
 void
-remmina_ssh_loG_CALLBACK(ssh_session session, int priority, const char *message, void *userdata)
+remmina_ssh_log_callback(ssh_session session, int priority, const char *message, void *userdata)
 {
 	remmina_log_printf ("[SSH] %s\n", message);
 }
