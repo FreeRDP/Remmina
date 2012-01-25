@@ -23,7 +23,7 @@ find_path(VTE_INCLUDE_DIR NAMES vte/vte.h
 	HINTS ${PC_VTE_INCLUDEDIR} ${PC_VTE_INCLUDE_DIRS}
 	PATH_SUFFIXES vte-2.90)
 
-find_library(VTE_LIBRARY NAMES vte)
+find_library(VTE_LIBRARY NAMES vte2_90)
 
 include(FindPackageHandleStandardArgs)
 
