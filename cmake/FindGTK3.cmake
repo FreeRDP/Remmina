@@ -17,9 +17,15 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
+set(_GTK3_found_all true)
+
 # Gtk
 
-pkg_check_modules(PC_GTK3 REQUIRED gtk+-3.0)
+pkg_check_modules(PC_GTK3 gtk+-3.0)
+
+if(NOT PC_GTK3_FOUND)
+	set(_GTK3_found_all false)
+endif()
 
 find_path(GTK3_INCLUDE_DIR NAMES gtk/gtk.h
 	PATH_SUFFIXES gtk-3.0)
@@ -32,7 +38,11 @@ find_library(GDK3_LIBRARY NAMES gdk-3)
 
 # Gdk-Pixbuf
 
-pkg_check_modules(PC_GDKPIXBUF REQUIRED gdk-pixbuf-2.0)
+pkg_check_modules(PC_GDKPIXBUF gdk-pixbuf-2.0)
+
+if(NOT PC_GDKPIXBUF_FOUND)
+	set(_GTK3_found_all false)
+endif()
 
 find_path(GDKPIXBUF_INCLUDE_DIR gdk-pixbuf/gdk-pixbuf.h
 	HINTS ${PC_GDKPIXBUF_INCLUDEDIR} ${PC_GDKPIXBUF_INCLUDE_DIRS}
@@ -43,7 +53,11 @@ find_library(GDKPIXBUF_LIBRARY NAMES gdk-3
 
 # Glib
 
-pkg_check_modules(PC_GLIB2 REQUIRED glib-2.0)
+pkg_check_modules(PC_GLIB2 glib-2.0)
+
+if(NOT PC_GLIB2_FOUND)
+	set(_GTK3_found_all false)
+endif()
 
 find_path(GLIB2_INCLUDE_DIR_PART1 NAMES glib.h
 	HINTS ${PC_GLIB2_INCLUDEDIR} ${PC_GLIB2_INCLUDE_DIRS}
@@ -59,7 +73,11 @@ find_library(GLIB2_LIBRARY NAMES glib-2.0)
 
 # Pango
 
-pkg_check_modules(PC_PANGO REQUIRED pango)
+pkg_check_modules(PC_PANGO pango)
+
+if(NOT PC_PANGO_FOUND)
+	set(_GTK3_found_all false)
+endif()
 
 find_path(PANGO_INCLUDE_DIR pango/pango.h
 	HINTS ${PC_PANGO_INCLUDEDIR} ${PC_PANGO_INCLUDE_DIRS}
@@ -81,7 +99,11 @@ find_library(CAIRO_LIBRARY NAMES cairo
 
 # Atk
 
-pkg_check_modules(PC_ATK REQUIRED atk)
+pkg_check_modules(PC_ATK atk)
+
+if(NOT PC_ATK_FOUND)
+	set(_GTK3_found_all false)
+endif()
 
 find_path(ATK_INCLUDE_DIR atk/atk.h
 	HINTS ${PC_ATK_INCLUDEDIR} ${PC_ATK_INCLUDE_DIRS}
@@ -92,13 +114,20 @@ find_library(ATK_LIBRARY NAMES atk-1.0
 
 # Finalize
 
-include(FindPackageHandleStandardArgs)
+if(_GTK3_found_all)
+	include(FindPackageHandleStandardArgs)
 
-find_package_handle_standard_args(GTK3 DEFAULT_MSG GTK3_LIBRARY GTK3_INCLUDE_DIR)
+	find_package_handle_standard_args(GTK3 DEFAULT_MSG GTK3_LIBRARY GTK3_INCLUDE_DIR)
 
-set(GTK3_LIBRARIES ${GTK3_LIBRARY} ${GDK3_LIBRARY} ${GLIB2_LIBRARY} ${PANGO_LIBRARY} ${CAIRO_LIBRARY} ${GDKPIXBUF_LIBRARY} ${ATK_LIBRARY})
-set(GTK3_INCLUDE_DIRS ${GTK3_INCLUDE_DIR} ${GLIB2_INCLUDE_DIR} ${PANGO_INCLUDE_DIR} ${CAIRO_INCLUDE_DIR} ${GDKPIXBUF_INCLUDE_DIR} ${ATK_INCLUDE_DIR})
+	set(GTK3_LIBRARIES ${GTK3_LIBRARY} ${GDK3_LIBRARY} ${GLIB2_LIBRARY} ${PANGO_LIBRARY} ${CAIRO_LIBRARY} ${GDKPIXBUF_LIBRARY} ${ATK_LIBRARY})
+	set(GTK3_INCLUDE_DIRS ${GTK3_INCLUDE_DIR} ${GLIB2_INCLUDE_DIR} ${PANGO_INCLUDE_DIR} ${CAIRO_INCLUDE_DIR} ${GDKPIXBUF_INCLUDE_DIR} ${ATK_INCLUDE_DIR})
 
-mark_as_advanced(GTK3_INCLUDE_DIR GTK3_LIBRARY)
+	mark_as_advanced(GTK3_INCLUDE_DIR GTK3_LIBRARY)
 
+	set(GTK3_FOUND true)
+else()
+	unset(GTK3_LIBRARY)
+	unset(GDK3_INCLUDE_DIR)
 
+	set(GTK3_FOUND false)
+endif()
