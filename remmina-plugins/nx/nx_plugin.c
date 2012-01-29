@@ -21,7 +21,6 @@
 #include <errno.h>
 #include <pthread.h>
 #include "common/remmina_plugin.h"
-#include <gtk/gtkx.h>
 #include <time.h>
 #include <libssh/libssh.h>
 #include <X11/Xlib.h>
