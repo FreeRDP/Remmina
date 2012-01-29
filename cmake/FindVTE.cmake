@@ -17,13 +17,23 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
-pkg_check_modules(PC_VTE vte-2.90)
+if(NOT _VTE_VERSION_NUM)
+	set(_VTE_LIB_NAME vte)
+	set(_VTE_VERSION vte)
+else()
+	set(_VTE_LIB_NAME vte${_VTE_VERSION_NUM})
+	set(_VTE_VERSION vte-${_VTE_VERSION_NUM})
+endif()
+
+string(REPLACE . _ _VTE_LIB_NAME ${_VTE_LIB_NAME})
+
+pkg_check_modules(PC_VTE ${_VTE_VERSION})
 
 find_path(VTE_INCLUDE_DIR NAMES vte/vte.h
 	HINTS ${PC_VTE_INCLUDEDIR} ${PC_VTE_INCLUDE_DIRS}
-	PATH_SUFFIXES vte-2.90)
+	PATH_SUFFIXES ${_VTE_VERSION})
 
-find_library(VTE_LIBRARY NAMES vte2_90)
+find_library(VTE_LIBRARY NAMES ${_VTE_LIB_NAME})
 
 include(FindPackageHandleStandardArgs)
 
