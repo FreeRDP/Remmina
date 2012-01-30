@@ -18,7 +18,7 @@
 # Boston, MA 02111-1307, USA.
 
 if(GTK_VERSION)
-	find_required_package(GTK${WITH_GTK_VERSION})
+	find_required_package(GTK${GTK_VERSION})
 else()
 	# Prefer GTK+ 3 over GTK+ 2
 
