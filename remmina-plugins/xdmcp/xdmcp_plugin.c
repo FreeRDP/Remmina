@@ -19,6 +19,7 @@
  */
 
 #include "common/remmina_plugin.h"
+#include <gtk/gtkx.h>
 
 INCLUDE_GET_AVAILABLE_XDISPLAY
 
