@@ -61,9 +61,15 @@ G_DEFINE_TYPE(RemminaCellRendererPixbuf, remmina_cell_renderer_pixbuf, GTK_TYPE_
 static guint remmina_cell_renderer_pixbuf_signals[1] =
 { 0 };
 
+#if GTK_VERSION == 2
+static gboolean remmina_cell_renderer_pixbuf_activate(GtkCellRenderer *renderer, GdkEvent *event, GtkWidget *widget,
+		const gchar *path, GdkRectangle *background_area, GdkRectangle *cell_area,
+		GtkCellRendererState flags)
+#elif GTK_VERSION == 3
 static gboolean remmina_cell_renderer_pixbuf_activate(GtkCellRenderer *renderer, GdkEvent *event, GtkWidget *widget,
 		const gchar *path, const GdkRectangle *background_area, const GdkRectangle *cell_area,
 		GtkCellRendererState flags)
+#endif
 {
 	g_signal_emit(G_OBJECT(renderer), remmina_cell_renderer_pixbuf_signals[0], 0, path);
 	return TRUE;
