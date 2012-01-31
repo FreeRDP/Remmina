@@ -1833,7 +1833,11 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 					| GDK_KEY_RELEASE_MASK);
 	gtk_widget_set_can_focus(gpdata->drawing_area, TRUE);
 
+#if GTK_VERSION == 3
 	g_signal_connect(G_OBJECT(gpdata->drawing_area), "draw", G_CALLBACK(remmina_plugin_vnc_on_draw), gp);
+#elif GTK_VERSION == 2
+	g_signal_connect(G_OBJECT(gpdata->drawing_area), "expose-event", G_CALLBACK(remmina_plugin_vnc_on_draw), gp);
+#endif
 	g_signal_connect(G_OBJECT(gpdata->drawing_area), "configure_event", G_CALLBACK(remmina_plugin_vnc_on_configure), gp);
 
 	gpdata->auth_first = TRUE;

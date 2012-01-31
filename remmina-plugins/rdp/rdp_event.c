@@ -459,8 +459,13 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 	rfi->use_client_keymap = (s && s[0] == '1' ? TRUE : FALSE);
 	g_free(s);
 
+#if GTK_VERSION == 3
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "draw",
 		G_CALLBACK(remmina_rdp_event_on_draw), gp);
+#elif GTK_VERSION == 2
+	g_signal_connect(G_OBJECT(rfi->drawing_area), "expose-event",
+		G_CALLBACK(remmina_rdp_event_on_draw), gp);
+#endif
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "configure-event",
 		G_CALLBACK(remmina_rdp_event_on_configure), gp);
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "motion-notify-event",
