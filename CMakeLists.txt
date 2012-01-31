@@ -82,8 +82,6 @@ set(REMMINA_DATADIR "${CMAKE_INSTALL_PREFIX}/share/remmina")
 set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_PREFIX}/share/locale")
 set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_PREFIX}/lib/remmina/plugins")
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
-
 find_suggested_package(PTHREAD)
 if(PTHREAD_FOUND)
 	add_definitions(-DHAVE_PTHREAD)
@@ -106,5 +104,7 @@ if(GTK_FOUND)
 	add_subdirectory(remmina-plugins)
 	add_subdirectory(remmina-plugins-gnome)
 endif()
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
 
 install(DIRECTORY include/remmina DESTINATION include/remmina FILES_MATCHING PATTERN "*.h")
