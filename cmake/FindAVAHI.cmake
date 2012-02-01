@@ -17,13 +17,21 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
+if(GTK3_FOUND)
+	set(_AVAHI_LIB_NAME avahi-ui-gtk3)
+	set(_AVAHI_PKG_NAME avahi-ui-gtk3>=0.6.30 avahi-client>=0.6.30)
+else()
+	set(_AVAHI_LIB_NAME avahi-ui)
+	set(_AVAHI_PKG_NAME avahi-ui>=0.6.30 avahi-client>=0.6.30)
+endif()
+
 find_package(PkgConfig)
-pkg_check_modules(PC_AVAHI avahi-ui-gtk3>=0.6.30 avahi-client>=0.6.30)
+pkg_check_modules(PC_AVAHI ${_AVAHI_PKG_NAME})
 
 find_path(AVAHI_INCLUDE_DIR avahi-ui/avahi-ui.h
 	HINTS ${PC_AVAHI_INCLUDEDIR} ${PC_AVAHI_INCLUDE_DIRS})
 
-find_library(AVAHI_LIBRARY NAMES avahi-ui-gtk3
+find_library(AVAHI_LIBRARY NAMES ${_AVAHI_LIB_NAME}
 	HINTS ${PC_AVAHI_LIBDIR} ${PC_AVAHI_LIBRARY_DIRS})
 
 include(FindPackageHandleStandardArgs)
