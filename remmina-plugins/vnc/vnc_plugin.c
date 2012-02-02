@@ -1779,7 +1779,6 @@ static gboolean remmina_plugin_vnc_on_draw(GtkWidget *widget, cairo_t *context, 
 	RemminaPluginVncData *gpdata;
 	GdkPixbuf *buffer;
 	gboolean scale;
-	GtkAllocation a;
 
 	gpdata = (RemminaPluginVncData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 
@@ -1794,8 +1793,7 @@ static gboolean remmina_plugin_vnc_on_draw(GtkWidget *widget, cairo_t *context, 
 		return FALSE;
 	}
 
-	gtk_widget_get_allocation(GTK_WIDGET(gp), &a);
-	cairo_rectangle(context, 0, 0, a.width, a.height);
+	cairo_rectangle(context, 0, 0, gtk_widget_get_allocated_width(widget), gtk_widget_get_allocated_height(widget));
 	gdk_cairo_set_source_pixbuf(context, buffer, 0, 0);
 	cairo_fill(context);
 
