@@ -226,10 +226,18 @@ static gboolean remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 	return FALSE;
 }
 
+#if GTK_VERSION == 2
+static gboolean remmina_rdp_event_on_expose(GtkWidget *widget, GdkEventExpose *event, RemminaProtocolWidget *gp)
+#else
 static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, RemminaProtocolWidget* gp)
+#endif
 {
 	gboolean scale;
 	rfContext* rfi;
+#if GTK_VERSION == 2
+	gint x, y;
+	cairo_t *context;
+#endif
 
 	rfi = GET_DATA(gp);
 
@@ -238,14 +246,26 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 
 	scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
 
+#if GTK_VERSION == 2
+	x = event->area.x;
+	y = event->area.y;
+
+	context = gdk_cairo_create(gtk_widget_get_window (rfi->drawing_area));
+	cairo_rectangle(context, x, y, event->area.width, event->area.height);
+#else
 	cairo_rectangle(context, 0, 0, gtk_widget_get_allocated_width(widget),
 		gtk_widget_get_allocated_height(widget));
+#endif
 
 	if (scale)
 		cairo_scale(context, rfi->scale_x, rfi->scale_y);
 
 	cairo_set_source_surface(context, rfi->rgb_cairo_surface, 0, 0);
 	cairo_fill(context);
+
+#if GTK_VERSION == 2
+	cairo_destroy(context);
+#endif
 
 	return TRUE;
 }
@@ -462,7 +482,7 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 		G_CALLBACK(remmina_rdp_event_on_draw), gp);
 #elif GTK_VERSION == 2
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "expose-event",
-		G_CALLBACK(remmina_rdp_event_on_draw), gp);
+		G_CALLBACK(remmina_rdp_event_on_expose), gp);
 #endif
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "configure-event",
 		G_CALLBACK(remmina_rdp_event_on_configure), gp);
