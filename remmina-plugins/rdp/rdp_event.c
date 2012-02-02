@@ -230,7 +230,6 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 {
 	gboolean scale;
 	rfContext* rfi;
-	GtkAllocation a;
 
 	rfi = GET_DATA(gp);
 
@@ -239,9 +238,8 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 
 	scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
 
-	gtk_widget_get_allocation(GTK_WIDGET(gp), &a);
-	cairo_rectangle(context, 0, 0, a.width,
-		a.height);
+	cairo_rectangle(context, 0, 0, gtk_widget_get_allocated_width(widget),
+		gtk_widget_get_allocated_height(widget));
 
 	if (scale)
 		cairo_scale(context, rfi->scale_x, rfi->scale_y);
