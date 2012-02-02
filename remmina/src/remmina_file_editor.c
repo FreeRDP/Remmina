@@ -331,7 +331,9 @@ static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const Remm
 {
 	RemminaProtocolPlugin* plugin = gfe->priv->plugin;
 	GtkWidget* widget;
+#ifdef HAVE_LIBAVAHI_UI
 	GtkWidget* hbox;
+#endif
 	gchar* s;
 
 	widget = gtk_label_new(_("Server"));
