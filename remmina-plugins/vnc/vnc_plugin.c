@@ -331,6 +331,7 @@ static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean 
 	{
 		gtk_widget_set_size_request (GTK_WIDGET (gpdata->drawing_area), width, height);
 	}
+
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "update-align");
 }
 
@@ -1774,11 +1775,19 @@ static void remmina_plugin_vnc_call_feature(RemminaProtocolWidget *gp, const Rem
 	}
 }
 
+#if GTK_VERSION == 2
+static gboolean remmina_plugin_vnc_on_expose(GtkWidget *widget, GdkEventExpose *event, RemminaProtocolWidget *gp)
+#else
 static gboolean remmina_plugin_vnc_on_draw(GtkWidget *widget, cairo_t *context, RemminaProtocolWidget *gp)
+#endif
 {
 	RemminaPluginVncData *gpdata;
 	GdkPixbuf *buffer;
 	gboolean scale;
+#if GTK_VERSION == 2
+	gint x, y;
+	cairo_t *context;
+#endif
 
 	gpdata = (RemminaPluginVncData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 
@@ -1792,10 +1801,20 @@ static gboolean remmina_plugin_vnc_on_draw(GtkWidget *widget, cairo_t *context, 
 		UNLOCK_BUFFER (FALSE)
 		return FALSE;
 	}
+#if GTK_VERSION == 2
+	x = event->area.x;
+	y = event->area.y;
 
+	context = gdk_cairo_create(gtk_widget_get_window (gpdata->drawing_area));
+	cairo_rectangle(context, x, y, event->area.width, event->area.height);
+#else
 	cairo_rectangle(context, 0, 0, gtk_widget_get_allocated_width(widget), gtk_widget_get_allocated_height(widget));
+#endif
 	gdk_cairo_set_source_pixbuf(context, buffer, 0, 0);
 	cairo_fill(context);
+#if GTK_VERSION == 2
+	cairo_destroy(context);
+#endif
 
 	UNLOCK_BUFFER (FALSE)
 	return TRUE;
@@ -1834,7 +1853,7 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 #if GTK_VERSION == 3
 	g_signal_connect(G_OBJECT(gpdata->drawing_area), "draw", G_CALLBACK(remmina_plugin_vnc_on_draw), gp);
 #elif GTK_VERSION == 2
-	g_signal_connect(G_OBJECT(gpdata->drawing_area), "expose-event", G_CALLBACK(remmina_plugin_vnc_on_draw), gp);
+	g_signal_connect(G_OBJECT(gpdata->drawing_area), "expose-event", G_CALLBACK(remmina_plugin_vnc_on_expose), gp);
 #endif
 	g_signal_connect(G_OBJECT(gpdata->drawing_area), "configure_event", G_CALLBACK(remmina_plugin_vnc_on_configure), gp);
 
