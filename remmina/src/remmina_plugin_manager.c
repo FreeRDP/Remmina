@@ -63,36 +63,69 @@ static gboolean remmina_plugin_manager_register_plugin(RemminaPlugin *plugin)
 }
 
 RemminaPluginService remmina_plugin_manager_service =
-{ remmina_plugin_manager_register_plugin,
-
-remmina_protocol_widget_get_width, remmina_protocol_widget_set_width, remmina_protocol_widget_get_height,
-		remmina_protocol_widget_set_height, remmina_protocol_widget_get_scale, remmina_protocol_widget_get_expand,
-		remmina_protocol_widget_set_expand, remmina_protocol_widget_has_error, remmina_protocol_widget_set_error,
-		remmina_protocol_widget_is_closed, remmina_protocol_widget_get_file, remmina_protocol_widget_emit_signal,
-		remmina_protocol_widget_register_hostkey, remmina_protocol_widget_start_direct_tunnel,
-		remmina_protocol_widget_start_reverse_tunnel, remmina_protocol_widget_start_xport_tunnel,
-		remmina_protocol_widget_set_display, remmina_protocol_widget_close_connection,
-		remmina_protocol_widget_init_authpwd, remmina_protocol_widget_init_authuserpwd,
-		remmina_protocol_widget_init_get_username, remmina_protocol_widget_init_get_password,
-		remmina_protocol_widget_init_get_domain, remmina_protocol_widget_init_authx509,
-		remmina_protocol_widget_init_get_cacert, remmina_protocol_widget_init_get_cacrl,
-		remmina_protocol_widget_init_get_clientcert, remmina_protocol_widget_init_get_clientkey,
-		remmina_protocol_widget_init_save_cred, remmina_protocol_widget_init_show_listen,
-		remmina_protocol_widget_init_show_retry, remmina_protocol_widget_init_show, remmina_protocol_widget_init_hide,
-		remmina_protocol_widget_ssh_exec, remmina_protocol_widget_chat_open, remmina_protocol_widget_chat_close,
+{
+		remmina_plugin_manager_register_plugin,
+		remmina_protocol_widget_get_width,
+		remmina_protocol_widget_set_width,
+		remmina_protocol_widget_get_height,
+		remmina_protocol_widget_set_height,
+		remmina_protocol_widget_get_scale,
+		remmina_protocol_widget_get_expand,
+		remmina_protocol_widget_set_expand,
+		remmina_protocol_widget_has_error,
+		remmina_protocol_widget_set_error,
+		remmina_protocol_widget_is_closed,
+		remmina_protocol_widget_get_file,
+		remmina_protocol_widget_emit_signal,
+		remmina_protocol_widget_register_hostkey,
+		remmina_protocol_widget_start_direct_tunnel,
+		remmina_protocol_widget_start_reverse_tunnel,
+		remmina_protocol_widget_start_xport_tunnel,
+		remmina_protocol_widget_set_display,
+		remmina_protocol_widget_close_connection,
+		remmina_protocol_widget_init_authpwd,
+		remmina_protocol_widget_init_authuserpwd,
+		remmina_protocol_widget_init_certificate,
+		remmina_protocol_widget_init_get_username,
+		remmina_protocol_widget_init_get_password,
+		remmina_protocol_widget_init_get_domain,
+		remmina_protocol_widget_init_authx509,
+		remmina_protocol_widget_init_get_cacert,
+		remmina_protocol_widget_init_get_cacrl,
+		remmina_protocol_widget_init_get_clientcert,
+		remmina_protocol_widget_init_get_clientkey,
+		remmina_protocol_widget_init_save_cred,
+		remmina_protocol_widget_init_show_listen,
+		remmina_protocol_widget_init_show_retry,
+		remmina_protocol_widget_init_show,
+		remmina_protocol_widget_init_hide,
+		remmina_protocol_widget_ssh_exec,
+		remmina_protocol_widget_chat_open,
+		remmina_protocol_widget_chat_close,
 		remmina_protocol_widget_chat_receive,
 
-		remmina_file_new, remmina_file_get_filename, remmina_file_set_string, remmina_file_get_string,
-		remmina_file_get_secret, remmina_file_set_int, remmina_file_get_int,
+		remmina_file_new,
+		remmina_file_get_filename,
+		remmina_file_set_string,
+		remmina_file_get_string,
+		remmina_file_get_secret,
+		remmina_file_set_int,
+		remmina_file_get_int,
 
-		remmina_pref_set_value, remmina_pref_get_value, remmina_pref_get_scale_quality, remmina_pref_get_sshtunnel_port,
+		remmina_pref_set_value,
+		remmina_pref_get_value,
+		remmina_pref_get_scale_quality,
+		remmina_pref_get_sshtunnel_port,
 		remmina_pref_keymap_get_keyval,
 
-		remmina_log_print, remmina_log_printf,
+		remmina_log_print,
+		remmina_log_printf,
 
 		remmina_widget_pool_register,
 
-		remmina_connection_window_open_from_file_full, remmina_public_get_server_port };
+		remmina_connection_window_open_from_file_full,
+		remmina_public_get_server_port
+};
 
 static void remmina_plugin_manager_load_plugin(const gchar *name)
 {
@@ -100,6 +133,7 @@ static void remmina_plugin_manager_load_plugin(const gchar *name)
 	RemminaPluginEntryFunc entry;
 
 	module = g_module_open(name, G_MODULE_BIND_LAZY | G_MODULE_BIND_LOCAL);
+
 	if (!module)
 	{
 		g_print("Failed to load plugin: %s.\n", name);
@@ -151,8 +185,7 @@ void remmina_plugin_manager_init(void)
 	g_dir_close(dir);
 }
 
-RemminaPlugin*
-remmina_plugin_manager_get_plugin(RemminaPluginType type, const gchar *name)
+RemminaPlugin* remmina_plugin_manager_get_plugin(RemminaPluginType type, const gchar *name)
 {
 	RemminaPlugin *plugin;
 	gint i;
@@ -247,8 +280,7 @@ void remmina_plugin_manager_show(GtkWindow *parent)
 	gtk_widget_show(dialog);
 }
 
-RemminaFilePlugin*
-remmina_plugin_manager_get_import_file_handler(const gchar *file)
+RemminaFilePlugin* remmina_plugin_manager_get_import_file_handler(const gchar *file)
 {
 	RemminaFilePlugin *plugin;
 	gint i;
@@ -256,8 +288,10 @@ remmina_plugin_manager_get_import_file_handler(const gchar *file)
 	for (i = 0; i < remmina_plugin_table->len; i++)
 	{
 		plugin = (RemminaFilePlugin *) g_ptr_array_index(remmina_plugin_table, i);
+
 		if (plugin->type != REMMINA_PLUGIN_TYPE_FILE)
 			continue;
+
 		if (plugin->import_test_func(file))
 		{
 			return plugin;
@@ -266,8 +300,7 @@ remmina_plugin_manager_get_import_file_handler(const gchar *file)
 	return NULL;
 }
 
-RemminaFilePlugin*
-remmina_plugin_manager_get_export_file_handler(RemminaFile *remminafile)
+RemminaFilePlugin* remmina_plugin_manager_get_export_file_handler(RemminaFile *remminafile)
 {
 	RemminaFilePlugin *plugin;
 	gint i;
@@ -285,8 +318,7 @@ remmina_plugin_manager_get_export_file_handler(RemminaFile *remminafile)
 	return NULL;
 }
 
-RemminaSecretPlugin*
-remmina_plugin_manager_get_secret_plugin(void)
+RemminaSecretPlugin* remmina_plugin_manager_get_secret_plugin(void)
 {
 	return remmina_secret_plugin;
 }
