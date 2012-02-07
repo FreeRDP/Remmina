@@ -21,7 +21,9 @@
 #include <errno.h>
 #include <pthread.h>
 #include "common/remmina_plugin.h"
-#include <gtk/gtkx.h>
+#if GTK_VERSION == 3
+#  include <gtk/gtkx.h>
+#endif
 #include <time.h>
 #include <libssh/libssh.h>
 #include <X11/Xlib.h>
