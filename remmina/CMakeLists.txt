@@ -90,8 +90,8 @@ set(REMMINA_SRCS
 
 add_executable(remmina ${REMMINA_SRCS})
 
-include_directories(${GTK3_INCLUDE_DIRS})
-target_link_libraries(remmina ${GTK3_LIBRARIES})
+include_directories(${GTK_INCLUDE_DIRS})
+target_link_libraries(remmina ${GTK_LIBRARIES})
 
 find_suggested_package(LIBSSH)
 if(LIBSSH_FOUND)
@@ -110,18 +110,26 @@ if(AVAHI_FOUND)
 	target_link_libraries(remmina ${AVAHI_LIBRARIES})
 endif()
 
-find_suggested_package(VTE)
+if(GTK3_FOUND)
+	set(_VTE_VERSION_NUM 2.90)
+else()
+	set(_VTE_VERSION_NUM)
+endif()
+
+find_suggested_package(VTE _VTE_VERSION_NUM)
 if(VTE_FOUND)
 	add_definitions(-DHAVE_LIBVTE)
 	include_directories(${VTE_INCLUDE_DIRS})
 	target_link_libraries(remmina ${VTE_LIBRARIES})
 endif()
 
-find_suggested_package(APPINDICATOR)
-if(APPINDICATOR_FOUND)
-	add_definitions(-DHAVE_LIBAPPINDICATOR)
-	include_directories(${APPINDICATOR_INCLUDE_DIRS})
-	target_link_libraries(remmina ${APPINDICATOR_LIBRARIES})
+if(GTK3_FOUND)
+	find_suggested_package(APPINDICATOR)
+	if(APPINDICATOR_FOUND)
+		add_definitions(-DHAVE_LIBAPPINDICATOR)
+		include_directories(${APPINDICATOR_INCLUDE_DIRS})
+		target_link_libraries(remmina ${APPINDICATOR_LIBRARIES})
+	endif()
 endif()
 
 add_subdirectory(po)
