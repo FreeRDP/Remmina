@@ -497,13 +497,21 @@ static boolean remmina_rdp_authenticate(freerdp* instance, char** username, char
 
 static boolean remmina_rdp_verify_certificate(freerdp* instance, char* subject, char* issuer, char* fingerprint)
 {
-	/* TODO: popup dialog, ask for confirmation and store known_hosts file */
-	printf("certificate details:\n");
-	printf("  Subject:\n	%s\n", subject);
-	printf("  Issued by:\n	%s\n", issuer);
-	printf("  Fingerprint:\n	%s\n",  fingerprint);
+	gint status;
+	rfContext* rfi;
+	RemminaProtocolWidget* gp;
 
-	return True;
+	rfi = (rfContext*) instance->context;
+	gp = rfi->protocol_widget;
+
+	THREADS_ENTER
+	status = remmina_plugin_service->protocol_plugin_init_certificate(gp, subject, issuer, fingerprint);
+	THREADS_LEAVE
+
+	if (status == GTK_RESPONSE_OK)
+		return True;
+
+	return False;
 }
 
 static int remmina_rdp_receive_channel_data(freerdp* instance, int channelId, uint8* data, int size, int flags, int total_size)
