@@ -32,11 +32,11 @@
 
 struct _RemminaProtocolWidgetPriv
 {
-	GtkWidget *init_dialog;
+	GtkWidget* init_dialog;
 
-	RemminaFile *remmina_file;
-	RemminaProtocolPlugin *plugin;
-	RemminaProtocolFeature *features;
+	RemminaFile* remmina_file;
+	RemminaProtocolPlugin* plugin;
+	RemminaProtocolFeature* features;
 
 	gint width;
 	gint height;
@@ -44,11 +44,11 @@ struct _RemminaProtocolWidgetPriv
 	gboolean expand;
 
 	gboolean has_error;
-	gchar *error_message;
-	RemminaSSHTunnel *ssh_tunnel;
+	gchar* error_message;
+	RemminaSSHTunnel* ssh_tunnel;
 	RemminaTunnelInitFunc init_func;
 
-	GtkWidget *chat_window;
+	GtkWidget* chat_window;
 
 	gboolean closed;
 
@@ -56,17 +56,21 @@ struct _RemminaProtocolWidgetPriv
 	gpointer hostkey_func_data;
 };
 
-G_DEFINE_TYPE( RemminaProtocolWidget, remmina_protocol_widget, GTK_TYPE_EVENT_BOX)
+G_DEFINE_TYPE(RemminaProtocolWidget, remmina_protocol_widget, GTK_TYPE_EVENT_BOX)
 
 enum
 {
-	CONNECT_SIGNAL, DISCONNECT_SIGNAL, DESKTOP_RESIZE_SIGNAL, UPDATE_ALIGN_SIGNAL, LAST_SIGNAL
+	CONNECT_SIGNAL,
+	DISCONNECT_SIGNAL,
+	DESKTOP_RESIZE_SIGNAL,
+	UPDATE_ALIGN_SIGNAL,
+	LAST_SIGNAL
 };
 
 typedef struct _RemminaProtocolWidgetSignalData
 {
 	RemminaProtocolWidget* gp;
-	const gchar *signal_name;
+	const gchar* signal_name;
 } RemminaProtocolWidgetSignalData;
 
 static guint remmina_protocol_widget_signals[LAST_SIGNAL] =
@@ -78,14 +82,14 @@ static void remmina_protocol_widget_class_init(RemminaProtocolWidgetClass *klass
 			G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaProtocolWidgetClass, connect), NULL, NULL,
 			g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 	remmina_protocol_widget_signals[DISCONNECT_SIGNAL] = g_signal_new("disconnect", G_TYPE_FROM_CLASS(klass),
-			G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaProtocolWidgetClass, disconnect), NULL,
-			NULL, g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
+			G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaProtocolWidgetClass, disconnect), NULL, NULL,
+			g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 	remmina_protocol_widget_signals[DESKTOP_RESIZE_SIGNAL] = g_signal_new("desktop-resize", G_TYPE_FROM_CLASS(klass),
-			G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaProtocolWidgetClass, desktop_resize), NULL,
-			NULL, g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
+			G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaProtocolWidgetClass, desktop_resize), NULL, NULL,
+			g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 	remmina_protocol_widget_signals[UPDATE_ALIGN_SIGNAL] = g_signal_new("update-align", G_TYPE_FROM_CLASS(klass),
-			G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaProtocolWidgetClass, update_align), NULL,
-			NULL, g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
+			G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaProtocolWidgetClass, update_align), NULL, NULL,
+			g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 }
 
 static void remmina_protocol_widget_init_cancel(RemminaInitDialog *dialog, gint response_id, RemminaProtocolWidget* gp)
@@ -111,9 +115,8 @@ static void remmina_protocol_widget_show_init_dialog(RemminaProtocolWidget* gp, 
 static void remmina_protocol_widget_hide_init_dialog(RemminaProtocolWidget* gp)
 {
 	if (gp->priv->init_dialog && GTK_IS_WIDGET(gp->priv->init_dialog))
-	{
 		gtk_widget_destroy(gp->priv->init_dialog);
-	}
+
 	gp->priv->init_dialog = NULL;
 }
 
@@ -143,9 +146,10 @@ static void remmina_protocol_widget_disconnect(RemminaProtocolWidget* gp, gpoint
 
 void remmina_protocol_widget_grab_focus(RemminaProtocolWidget* gp)
 {
-	GtkWidget *child;
+	GtkWidget* child;
 
 	child = gtk_bin_get_child(GTK_BIN(gp));
+
 	if (child)
 	{
 		gtk_widget_set_can_focus(child, TRUE);
@@ -168,15 +172,16 @@ static void remmina_protocol_widget_init(RemminaProtocolWidget* gp)
 void remmina_protocol_widget_open_connection_real(gpointer data)
 {
 	RemminaProtocolWidget* gp = REMMINA_PROTOCOL_WIDGET(data);
-	RemminaProtocolPlugin *plugin;
-	RemminaFile *remminafile = gp->priv->remmina_file;
-	RemminaProtocolFeature *feature;
+	RemminaProtocolPlugin* plugin;
+	RemminaFile* remminafile = gp->priv->remmina_file;
+	RemminaProtocolFeature* feature;
 	gint num_plugin;
 	gint num_ssh;
 
 	/* Locate the protocol plugin */
-	plugin = (RemminaProtocolPlugin *) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL,
+	plugin = (RemminaProtocolPlugin*) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL,
 			remmina_file_get_string(remminafile, "protocol"));
+
 	if (!plugin || !plugin->init || !plugin->open_connection)
 	{
 		remmina_protocol_widget_set_error(gp, _("Protocol plugin %s is not installed."),
@@ -189,13 +194,13 @@ void remmina_protocol_widget_open_connection_real(gpointer data)
 
 	gp->priv->plugin = plugin;
 
-	for (num_plugin = 0, feature = (RemminaProtocolFeature*) plugin->features; feature && feature->type;
-			num_plugin++, feature++)
-			{
+	for (num_plugin = 0, feature = (RemminaProtocolFeature*) plugin->features; feature && feature->type; num_plugin++, feature++)
+	{
 	}
+
 	num_ssh = 0;
 #ifdef HAVE_LIBSSH
-	if (remmina_file_get_int (gp->priv->remmina_file, "ssh_enabled", FALSE))
+	if (remmina_file_get_int(gp->priv->remmina_file, "ssh_enabled", FALSE))
 	{
 		num_ssh += 2;
 	}
@@ -238,7 +243,7 @@ void remmina_protocol_widget_open_connection_real(gpointer data)
 	}
 }
 
-void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp, RemminaFile *remminafile)
+void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp, RemminaFile* remminafile)
 {
 	gp->priv->remmina_file = remminafile;
 	gp->priv->scale = remmina_file_get_int(remminafile, "scale", FALSE);
@@ -252,6 +257,7 @@ gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 {
 	if (!GTK_IS_WIDGET(gp) || gp->priv->closed)
 		return FALSE;
+
 	gp->priv->closed = TRUE;
 	gdk_keyboard_ungrab(GDK_CURRENT_TIME);
 
@@ -264,7 +270,7 @@ gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 #ifdef HAVE_LIBSSH
 	if (gp->priv->ssh_tunnel)
 	{
-		remmina_ssh_tunnel_free (gp->priv->ssh_tunnel);
+		remmina_ssh_tunnel_free(gp->priv->ssh_tunnel);
 		gp->priv->ssh_tunnel = NULL;
 	}
 #endif
@@ -280,15 +286,15 @@ gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 
 static gboolean remmina_protocol_widget_emit_signal_timeout(gpointer user_data)
 {
-	RemminaProtocolWidgetSignalData *data = (RemminaProtocolWidgetSignalData*) user_data;
+	RemminaProtocolWidgetSignalData* data = (RemminaProtocolWidgetSignalData*) user_data;
 	g_signal_emit_by_name(G_OBJECT(data->gp), data->signal_name);
 	g_free(data);
 	return FALSE;
 }
 
-void remmina_protocol_widget_emit_signal(RemminaProtocolWidget* gp, const gchar *signal_name)
+void remmina_protocol_widget_emit_signal(RemminaProtocolWidget* gp, const gchar* signal_name)
 {
-	RemminaProtocolWidgetSignalData *data;
+	RemminaProtocolWidgetSignalData* data;
 
 	data = g_new(RemminaProtocolWidgetSignalData, 1);
 	data->gp = gp;
@@ -296,8 +302,7 @@ void remmina_protocol_widget_emit_signal(RemminaProtocolWidget* gp, const gchar 
 	TIMEOUT_ADD(0, remmina_protocol_widget_emit_signal_timeout, data);
 }
 
-const RemminaProtocolFeature*
-remmina_protocol_widget_get_features(RemminaProtocolWidget* gp)
+const RemminaProtocolFeature* remmina_protocol_widget_get_features(RemminaProtocolWidget* gp)
 {
 	return gp->priv->features;
 }
@@ -452,6 +457,7 @@ gchar* remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget* gp, gi
 	gint port;
 
 	server = remmina_file_get_string(gp->priv->remmina_file, "server");
+
 	if (!server)
 	{
 		return g_strdup("");
@@ -761,8 +767,8 @@ RemminaFile* remmina_protocol_widget_get_file(RemminaProtocolWidget* gp)
 
 gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget* gp, RemminaAuthpwdType authpwd_type)
 {
-	RemminaFile *remminafile = gp->priv->remmina_file;
-	gchar *s;
+	RemminaFile* remminafile = gp->priv->remmina_file;
+	gchar* s;
 	gint ret;
 
 	switch (authpwd_type)
@@ -792,7 +798,7 @@ gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget* gp, RemminaAuth
 
 gint remmina_protocol_widget_init_authuserpwd(RemminaProtocolWidget* gp, gboolean want_domain)
 {
-	RemminaFile *remminafile = gp->priv->remmina_file;
+	RemminaFile* remminafile = gp->priv->remmina_file;
 
 	return remmina_init_dialog_authuserpwd(REMMINA_INIT_DIALOG(gp->priv->init_dialog), want_domain,
 			remmina_file_get_string(remminafile, "username"),
@@ -822,7 +828,7 @@ gchar* remmina_protocol_widget_init_get_domain(RemminaProtocolWidget* gp)
 
 gint remmina_protocol_widget_init_authx509(RemminaProtocolWidget* gp)
 {
-	RemminaFile *remminafile = gp->priv->remmina_file;
+	RemminaFile* remminafile = gp->priv->remmina_file;
 
 	return remmina_init_dialog_authx509(REMMINA_INIT_DIALOG(gp->priv->init_dialog),
 			remmina_file_get_string(remminafile, "cacert"), remmina_file_get_string(remminafile, "cacrl"),
@@ -831,7 +837,7 @@ gint remmina_protocol_widget_init_authx509(RemminaProtocolWidget* gp)
 
 gchar* remmina_protocol_widget_init_get_cacert(RemminaProtocolWidget* gp)
 {
-	gchar *s;
+	gchar* s;
 
 	s = REMMINA_INIT_DIALOG(gp->priv->init_dialog)->cacert;
 	return (s && s[0] ? g_strdup(s) : NULL);
@@ -839,7 +845,7 @@ gchar* remmina_protocol_widget_init_get_cacert(RemminaProtocolWidget* gp)
 
 gchar* remmina_protocol_widget_init_get_cacrl(RemminaProtocolWidget* gp)
 {
-	gchar *s;
+	gchar* s;
 
 	s = REMMINA_INIT_DIALOG(gp->priv->init_dialog)->cacrl;
 	return (s && s[0] ? g_strdup(s) : NULL);
@@ -847,7 +853,7 @@ gchar* remmina_protocol_widget_init_get_cacrl(RemminaProtocolWidget* gp)
 
 gchar* remmina_protocol_widget_init_get_clientcert(RemminaProtocolWidget* gp)
 {
-	gchar *s;
+	gchar* s;
 
 	s = REMMINA_INIT_DIALOG(gp->priv->init_dialog)->clientcert;
 	return (s && s[0] ? g_strdup(s) : NULL);
@@ -855,7 +861,7 @@ gchar* remmina_protocol_widget_init_get_clientcert(RemminaProtocolWidget* gp)
 
 gchar* remmina_protocol_widget_init_get_clientkey(RemminaProtocolWidget* gp)
 {
-	gchar *s;
+	gchar* s;
 
 	s = REMMINA_INIT_DIALOG(gp->priv->init_dialog)->clientkey;
 	return (s && s[0] ? g_strdup(s) : NULL);
@@ -863,8 +869,8 @@ gchar* remmina_protocol_widget_init_get_clientkey(RemminaProtocolWidget* gp)
 
 void remmina_protocol_widget_init_save_cred(RemminaProtocolWidget* gp)
 {
-	RemminaFile *remminafile = gp->priv->remmina_file;
-	gchar *s;
+	RemminaFile* remminafile = gp->priv->remmina_file;
+	gchar* s;
 	gboolean save = FALSE;
 
 	/* Save user name and certificates if any; save the password if it's requested to do so */
@@ -976,4 +982,3 @@ GtkWidget* remmina_protocol_widget_new(void)
 {
 	return GTK_WIDGET(g_object_new(REMMINA_TYPE_PROTOCOL_WIDGET, NULL));
 }
-

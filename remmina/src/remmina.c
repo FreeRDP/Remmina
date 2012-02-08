@@ -186,7 +186,7 @@ gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
 
 int main(int argc, char* argv[])
 {
-	GApplication *app;
+	GApplication* app;
 	int status;
 
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
