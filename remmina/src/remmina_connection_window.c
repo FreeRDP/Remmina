@@ -1743,8 +1743,7 @@ static void remmina_connection_object_on_close_button_clicked(GtkButton* button,
 	}
 }
 
-static GtkWidget*
-remmina_connection_object_create_tab(RemminaConnectionObject* cnnobj)
+static GtkWidget* remmina_connection_object_create_tab(RemminaConnectionObject* cnnobj)
 {
 	GtkWidget* hbox;
 	GtkWidget* widget;
