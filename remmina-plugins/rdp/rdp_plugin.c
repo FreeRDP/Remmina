@@ -98,13 +98,13 @@ void rf_uninit(RemminaProtocolWidget* gp)
 		rfi->rfx_context = NULL;
 	}
 
+#if 0
 	if (rfi->channels)
 	{
 		freerdp_channels_free(rfi->channels);
 		rfi->channels = NULL;
 	}
 
-#if 0
 	if (rfi->instance)
 	{
 		freerdp_free(rfi->instance);
@@ -943,16 +943,13 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 	{
 		if (rfi->channels)
 		{
-			freerdp_channels_close(rfi->channels, rfi->instance);
+			//freerdp_channels_close(rfi->channels, rfi->instance);
 		}
 
 		freerdp_disconnect(rfi->instance);
 	}
 
 	pthread_mutex_destroy(&rfi->mutex);
-
-	//freerdp_channels_free(rfi->channels);
-	//freerdp_free(rfi->instance);
 
 	remmina_rdp_event_uninit(gp);
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
