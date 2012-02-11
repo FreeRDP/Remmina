@@ -194,7 +194,7 @@ int main(int argc, char* argv[])
 	textdomain(GETTEXT_PACKAGE);
 
 #ifdef HAVE_PTHREAD
-	g_thread_init (NULL);
+	g_type_init ();
 	gdk_threads_init ();
 #endif
 
