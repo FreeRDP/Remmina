@@ -32,6 +32,8 @@ if(LIBSSH_FOUND)
 	target_link_libraries(remmina ${SSH_LIBRARIES})
 endif()
 
+find_required_package(LIBVNCSERVER)
+
 find_required_package(XKBFILE)
 
 if(LIBSSH_FOUND AND XKBFILE_FOUND)
@@ -53,7 +55,6 @@ endif()
 find_suggested_package(ZLIB)
 
 if(ZLIB_FOUND)
-	add_subdirectory(vnc/libvncserver)
 	add_subdirectory(vnc)
 endif()
 
