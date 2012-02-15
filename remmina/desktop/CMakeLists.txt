@@ -38,4 +38,4 @@ install(FILES ${ICON32_DATA} DESTINATION ${ICON32_DIR})
 install(FILES ${ICON48_DATA} DESTINATION ${ICON48_DIR})
 install(FILES ${ICONSVG_DATA} DESTINATION ${ICONSVG_DIR})
 
-install(FILES remmina.desktop DESTINATION share/applications/remmina.desktop)
+install(FILES remmina.desktop DESTINATION "${REMMINA_DATADIR}/applications")
