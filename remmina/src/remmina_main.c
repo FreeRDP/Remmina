@@ -1120,6 +1120,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 	gtk_box_pack_start(GTK_BOX(vbox), menubar, FALSE, FALSE, 0);
 
 	priv->toolbar = gtk_ui_manager_get_widget(uimanager, "/ToolBar");
+	gtk_style_context_add_class(gtk_widget_get_style_context(priv->toolbar), GTK_STYLE_CLASS_PRIMARY_TOOLBAR);
 	gtk_box_pack_start(GTK_BOX(vbox), priv->toolbar, FALSE, FALSE, 0);
 
 	remmina_main_create_quick_search(remminamain);
