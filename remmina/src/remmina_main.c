@@ -1121,14 +1121,16 @@ static void remmina_main_init(RemminaMain *remminamain)
 	gtk_box_pack_start(GTK_BOX(vbox), menubar, FALSE, FALSE, 0);
 
 	priv->toolbar = gtk_ui_manager_get_widget(uimanager, "/ToolBar");
+#if GTK_VERSION == 3
 	gtk_style_context_add_class(gtk_widget_get_style_context(priv->toolbar), GTK_STYLE_CLASS_PRIMARY_TOOLBAR);
+#endif
 	gtk_box_pack_start(GTK_BOX(vbox), priv->toolbar, FALSE, FALSE, 0);
 
 	tool_item = gtk_ui_manager_get_widget(uimanager, "/ToolBar/ConnectionConnect");
-	gtk_tool_item_set_is_important (tool_item, TRUE);
+	gtk_tool_item_set_is_important (GTK_TOOL_ITEM(tool_item), TRUE);
 
 	tool_item = gtk_ui_manager_get_widget(uimanager, "/ToolBar/ConnectionNew");
-	gtk_tool_item_set_is_important (tool_item, TRUE);
+	gtk_tool_item_set_is_important (GTK_TOOL_ITEM(tool_item), TRUE);
 
 	remmina_main_create_quick_search(remminamain);
 
