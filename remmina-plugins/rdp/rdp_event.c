@@ -16,7 +16,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
 
@@ -27,7 +27,7 @@
 #include "rdp_gdi.h"
 #include <gdk/gdkkeysyms.h>
 #include <cairo/cairo-xlib.h>
-#include <freerdp/kbd/kbd.h>
+#include <freerdp/locale/keyboard.h>
 
 static void remmina_rdp_event_event_push(RemminaProtocolWidget* gp, const RemminaPluginRdpEvent* e)
 {
@@ -421,7 +421,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 		default:
 			if (!rfi->use_client_keymap)
 			{
-				rdp_event.key_event.key_code = freerdp_kbd_get_scancode_by_keycode(event->hardware_keycode, &rdp_event.key_event.extended);
+				rdp_event.key_event.key_code = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(event->hardware_keycode, &rdp_event.key_event.extended);
 				remmina_plugin_service->log_printf("[RDP]keyval=%04X keycode=%i scancode=%i extended=%i\n",
 						event->keyval, event->hardware_keycode, rdp_event.key_event.key_code, &rdp_event.key_event.extended);
 			}
@@ -429,7 +429,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 			{
 				display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default());
 				cooked_keycode = XKeysymToKeycode(display, XKeycodeToKeysym(display, event->hardware_keycode, 0));
-				rdp_event.key_event.key_code = freerdp_kbd_get_scancode_by_keycode(cooked_keycode, &rdp_event.key_event.extended);
+				rdp_event.key_event.key_code = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(cooked_keycode, &rdp_event.key_event.extended);
 				remmina_plugin_service->log_printf("[RDP]keyval=%04X raw_keycode=%i cooked_keycode=%i scancode=%i extended=%i\n",
 						event->keyval, event->hardware_keycode, cooked_keycode, rdp_event.key_event.key_code, &rdp_event.key_event.extended);
 			}
