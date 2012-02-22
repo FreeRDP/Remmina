@@ -27,7 +27,7 @@ static guint rdp_keyboard_layout = 0;
 
 static void remmina_rdp_settings_kbd_init(void)
 {
-	keyboard_layout = freerdp_kbd_init(GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), rdp_keyboard_layout);
+	keyboard_layout = freerdp_keyboard_init(rdp_keyboard_layout);
 }
 
 void remmina_rdp_settings_init(void)
@@ -141,7 +141,7 @@ static void remmina_rdp_settings_table_load_layout(RemminaPluginRdpsetTable* tab
 	gint i;
 	gchar* s;
 	GtkTreeIter iter;
-	rdpKeyboardLayout* layouts;
+	RDP_KEYBOARD_LAYOUT* layouts;
 
 	gtk_list_store_append(table->keyboard_layout_store, &iter);
 	gtk_list_store_set(table->keyboard_layout_store, &iter, 0, 0, 1, _("<Auto detect>"), -1);
@@ -151,7 +151,7 @@ static void remmina_rdp_settings_table_load_layout(RemminaPluginRdpsetTable* tab
 
 	gtk_label_set_text(GTK_LABEL(table->keyboard_layout_label), "-");
 
-	layouts = freerdp_kbd_get_layouts(RDP_KEYBOARD_LAYOUT_TYPE_STANDARD | RDP_KEYBOARD_LAYOUT_TYPE_VARIANT);
+	layouts = freerdp_keyboard_get_layouts(RDP_KEYBOARD_LAYOUT_TYPE_STANDARD | RDP_KEYBOARD_LAYOUT_TYPE_VARIANT);
 
 	for (i = 0; layouts[i].code; i++)
 	{
