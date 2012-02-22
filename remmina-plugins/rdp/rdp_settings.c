@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010-2011 Vic Lee 
+ * Copyright (C) 2010-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,13 +14,13 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
 
 #include "rdp_plugin.h"
 #include "rdp_settings.h"
-#include <freerdp/kbd/kbd.h>
+#include <freerdp/locale/keyboard.h>
 
 static guint keyboard_layout = 0;
 static guint rdp_keyboard_layout = 0;

@@ -14,7 +14,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, 
+# Foundation, Inc., 59 Temple Place, Suite 330,
 # Boston, MA 02111-1307, USA.
 
 find_package(PkgConfig)
@@ -30,7 +30,7 @@ find_library(FREERDP_LIBRARY NAMES freerdp-core
 find_library(FREERDP_GDI_LIBRARY NAMES freerdp-gdi
 	HINTS ${PC_FREERDP_LIBDIR} ${PC_FREERDP_LIBRARY_DIRS})
 
-find_library(FREERDP_KBD_LIBRARY NAMES freerdp-kbd
+find_library(FREERDP_LOCALE_LIBRARY NAMES freerdp-locale
 	HINTS ${PC_FREERDP_LIBDIR} ${PC_FREERDP_LIBRARY_DIRS})
 
 find_library(FREERDP_RAIL_LIBRARY NAMES freerdp-rail
@@ -46,7 +46,7 @@ include(FindPackageHandleStandardArgs)
 
 find_package_handle_standard_args(FREERDP DEFAULT_MSG FREERDP_LIBRARY FREERDP_INCLUDE_DIR)
 
-set(FREERDP_LIBRARIES ${FREERDP_LIBRARY} ${FREERDP_GDI_LIBRARY} ${FREERDP_KBD_LIBRARY} ${FREERDP_RAIL_LIBRARY} ${FREERDP_CODEC_LIBRARY} ${FREERDP_CHANNELS_LIBRARY})
+set(FREERDP_LIBRARIES ${FREERDP_LIBRARY} ${FREERDP_GDI_LIBRARY} ${FREERDP_LOCALE_LIBRARY} ${FREERDP_RAIL_LIBRARY} ${FREERDP_CODEC_LIBRARY} ${FREERDP_CHANNELS_LIBRARY})
 set(FREERDP_INCLUDE_DIRS ${FREERDP_INCLUDE_DIR})
 
 mark_as_advanced(FREERDP_INCLUDE_DIR FREERDP_LIBRARY)
