@@ -80,6 +80,10 @@ static void remmina_rdp_file_import_field(RemminaFile* remminafile, const gchar*
 	{
 		remmina_plugin_service->file_set_int(remminafile, "shareprinter", (atoi (value) == 1));
 	}
+	else if (g_strcmp0(key, "redirectsmartcard") == 0)
+	{
+		remmina_plugin_service->file_set_int(remminafile, "sharesmartcard", (atoi (value) == 1));
+	}
 	else if (g_strcmp0(key, "redirectclipboard") == 0)
 	{
 		remmina_plugin_service->file_set_int(remminafile, "disableclipboard", (atoi (value) != 1));
@@ -268,6 +272,7 @@ gboolean remmina_rdp_file_export_channel(RemminaFile* remminafile, FILE* fp)
 	else
 		fprintf(fp, "audiomode:i:2\r\n");
 	fprintf(fp, "redirectprinters:i:%i\r\n", remmina_plugin_service->file_get_int(remminafile, "shareprinter", FALSE) ? 1 : 0);
+	fprintf(fp, "redirectsmartcard:i:%i\r\n", remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE) ? 1 : 0);
 	fprintf(fp, "redirectcomports:i:0\r\n");
 	fprintf(fp, "redirectsmartcards:i:0\r\n");
 	fprintf(fp, "redirectclipboard:i:1\r\n");
