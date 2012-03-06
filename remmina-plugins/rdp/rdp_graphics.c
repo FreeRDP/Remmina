@@ -180,6 +180,14 @@ void rf_Pointer_Set(rdpContext* context, rdpPointer* pointer)
 
 }
 
+void rf_Pointer_SetNull(rdpContext* context)
+{
+}
+
+void rf_Pointer_SetDefault(rdpContext* context)
+{
+}
+
 /* Glyph Class */
 
 void rf_Glyph_New(rdpContext* context, rdpGlyph* glyph)
@@ -297,6 +305,8 @@ void rf_register_graphics(rdpGraphics* graphics)
 	pointer->New = rf_Pointer_New;
 	pointer->Free = rf_Pointer_Free;
 	pointer->Set = rf_Pointer_Set;
+	pointer->SetNull = rf_Pointer_SetNull;
+	pointer->SetDefault = rf_Pointer_SetDefault;
 
 	graphics_register_pointer(graphics, pointer);
 	xfree(pointer);
