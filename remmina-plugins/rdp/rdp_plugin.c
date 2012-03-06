@@ -812,6 +812,14 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rdpdr_num++;
 	}
 
+	if (remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE))
+	{
+		rfi->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
+		rfi->rdpdr_data[rdpdr_num].data[0] = "scard";
+		rfi->rdpdr_data[rdpdr_num].data[1] = "scard";
+		rdpdr_num++;
+	}
+
 	if (rdpdr_num)
 	{
 		freerdp_channels_load_plugin(rfi->channels, rfi->settings, "rdpdr", rfi->rdpdr_data);
@@ -1042,6 +1050,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "exec", N_("Startup program"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "execpath", N_("Startup path"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "shareprinter", N_("Share local printers"), TRUE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "sharesmartcard", N_("Share smartcard"), TRUE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "console", N_("Attach to console (Windows 2003 / 2003 R2)"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
