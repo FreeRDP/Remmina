@@ -55,6 +55,7 @@ static gchar *remmina_option_plugin;
 static gboolean remmina_option_quit;
 static gchar *remmina_option_server;
 static gchar *remmina_option_protocol;
+static gboolean remmina_option_icon;
 
 static GOptionEntry remmina_options[] =
 {
@@ -68,6 +69,7 @@ static GOptionEntry remmina_options[] =
 { "quit", 'q', 0, G_OPTION_ARG_NONE, &remmina_option_quit, "Quit the application", NULL },
 { "server", 's', 0, G_OPTION_ARG_STRING, &remmina_option_server, "Use default server name S", "S" },
 { "protocol", 't', 0, G_OPTION_ARG_STRING, &remmina_option_protocol, "Use default protocol T", "T" },
+{ "icon", 'i', 0, G_OPTION_ARG_NONE, &remmina_option_icon, "Start as tray icon", NULL },
 { NULL } };
 
 static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *cmdline)
@@ -90,6 +92,7 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 	remmina_option_plugin = NULL;
 	remmina_option_server = NULL;
 	remmina_option_protocol = NULL;
+	remmina_option_icon = FALSE;
 
 	argv = g_application_command_line_get_arguments(cmdline, &argc);
 
@@ -155,6 +158,11 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 	if (remmina_option_plugin)
 	{
 		remmina_exec_command(REMMINA_COMMAND_PLUGIN, remmina_option_plugin);
+		executed = TRUE;
+	}
+	if (remmina_option_icon)
+	{
+		remmina_exec_command(REMMINA_COMMAND_NONE, remmina_option_icon);
 		executed = TRUE;
 	}
 	if (!executed)
