@@ -77,7 +77,7 @@ check_include_files(errno.h HAVE_ERRNO_H)
 include_directories(.)
 include_directories(remmina/include)
 
-set(REMMINA_VERSION "0.9.99.1")
+set(REMMINA_VERSION "1.0.0")
 set(REMMINA_DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_PREFIX}/share/locale")
 set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/remmina/plugins")
