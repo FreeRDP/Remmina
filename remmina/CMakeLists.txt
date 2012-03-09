@@ -93,11 +93,20 @@ add_executable(remmina ${REMMINA_SRCS})
 include_directories(${GTK_INCLUDE_DIRS})
 target_link_libraries(remmina ${GTK_LIBRARIES})
 
+find_package(X11)
+include_directories(${X11_INCLUDE_DIR})
+target_link_libraries(remmina ${X11_LIBRARIES})
+
 find_suggested_package(LIBSSH)
 if(LIBSSH_FOUND)
 	add_definitions(-DHAVE_LIBSSH)
 	include_directories(${LIBSSH_INCLUDE_DIRS})
 	target_link_libraries(remmina ${LIBSSH_LIBRARIES})
+endif()
+
+if(PTHREAD_FOUND)
+	include_directories(${PTHREAD_INCLUDE_DIRS})
+	target_link_libraries(remmina ${PTHREAD_LIBRARIES})
 endif()
 
 if(GCRYPT_FOUND)
