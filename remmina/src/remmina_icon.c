@@ -394,6 +394,7 @@ void remmina_icon_init(void)
 	{
 #ifdef HAVE_LIBAPPINDICATOR
 		remmina_icon.icon = app_indicator_new ("remmina-icon", "remmina", APP_INDICATOR_CATEGORY_OTHER);
+		app_indicator_set_icon_theme_path (remmina_icon.icon, REMMINA_DATADIR G_DIR_SEPARATOR_S "icons");
 
 		app_indicator_set_status (remmina_icon.icon, APP_INDICATOR_STATUS_ACTIVE);
 		remmina_icon_populate_menu ();
