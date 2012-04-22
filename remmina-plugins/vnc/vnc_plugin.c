@@ -1426,6 +1426,16 @@ static gboolean remmina_plugin_vnc_on_scroll(GtkWidget *widget, GdkEventScroll *
 		case GDK_SCROLL_RIGHT:
 			mask = (1 << 6);
 			break;
+		case GDK_SCROLL_SMOOTH:
+			if (event->delta_y < 0)
+				mask = (1 << 3);
+			if (event->delta_y > 0)
+				mask = (1 << 4);
+			if (event->delta_x < 0)
+				mask = (1 << 5);
+			if (event->delta_x > 0)
+				mask = (1 << 6);
+			break;
 		default:
 			return FALSE;
 	}
