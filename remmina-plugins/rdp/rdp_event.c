@@ -369,18 +369,18 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget* widget, GdkEventScroll* e
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_MOUSE;
 
 	switch (event->direction)
+	if (event->direction == GDK_SCROLL_UP || (event->direction == GDK_SCROLL_SMOOTH && event->delta_y < 0))
 	{
-		case GDK_SCROLL_UP:
-			flag = PTR_FLAGS_WHEEL | 0x0078;
-			break;
-
-		case GDK_SCROLL_DOWN:
-			flag = PTR_FLAGS_WHEEL | PTR_FLAGS_WHEEL_NEGATIVE | 0x0088;
-			break;
-
-		default:
-			return FALSE;
+		flag = PTR_FLAGS_WHEEL | 0x0078;
 	}
+	if (event->direction == GDK_SCROLL_DOWN || (event->direction == GDK_SCROLL_SMOOTH && event->delta_y > 0))
+	{
+		flag = PTR_FLAGS_WHEEL | PTR_FLAGS_WHEEL_NEGATIVE | 0x0088;
+	}
+	if (!flags)
+	{
+		return FALSE;
+	}	
 
 	rdp_event.mouse_event.flags = flag;
 	remmina_rdp_event_translate_pos(gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);

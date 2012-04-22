@@ -1459,26 +1459,23 @@ static gboolean remmina_connection_holder_toolbar_scroll(GtkWidget* widget, GdkE
 	int opacity;
 
 	opacity = remmina_file_get_int(cnnobj->remmina_file, "toolbar_opacity", 0);
-	switch (event->direction)
+	if (event->direction == GDK_SCROLL_UP || (event->direction == GDK_SCROLL_SMOOTH && event->delta_y < 0))
 	{
-		case GDK_SCROLL_UP:
-			if (opacity > 0)
-			{
-				remmina_file_set_int(cnnobj->remmina_file, "toolbar_opacity", opacity - 1);
-				remmina_connection_holder_update_toolbar_opacity(cnnhld);
-				return TRUE;
-			}
-			break;
-		case GDK_SCROLL_DOWN:
-			if (opacity < TOOLBAR_OPACITY_LEVEL)
-			{
-				remmina_file_set_int(cnnobj->remmina_file, "toolbar_opacity", opacity + 1);
-				remmina_connection_holder_update_toolbar_opacity(cnnhld);
-				return TRUE;
-			}
-			break;
-		default:
-			break;
+		if (opacity > 0)
+		{
+			remmina_file_set_int(cnnobj->remmina_file, "toolbar_opacity", opacity - 1);
+			remmina_connection_holder_update_toolbar_opacity(cnnhld);
+	    		return TRUE;
+		}
+	}
+	if (event->direction == GDK_SCROLL_DOWN || (event->direction == GDK_SCROLL_SMOOTH && event->delta_y > 0))
+	{
+		if (opacity < TOOLBAR_OPACITY_LEVEL)
+		{
+			remmina_file_set_int(cnnobj->remmina_file, "toolbar_opacity", opacity + 1);
+			remmina_connection_holder_update_toolbar_opacity(cnnhld);
+			return TRUE;
+		}
 	}
 	return FALSE;
 }
