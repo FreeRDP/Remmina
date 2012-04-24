@@ -255,11 +255,21 @@ void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp, RemminaF
 
 gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 {
+	GdkDisplay *display;
+	GdkDeviceManager *manager;
+	GdkDevice *device = NULL;
+
 	if (!GTK_IS_WIDGET(gp) || gp->priv->closed)
 		return FALSE;
 
 	gp->priv->closed = TRUE;
-	gdk_keyboard_ungrab(GDK_CURRENT_TIME);
+	display = gtk_widget_get_display(GTK_WIDGET(gp));
+	manager = gdk_display_get_device_manager(display);
+	device = gdk_device_manager_get_client_pointer(manager);
+	if (device != NULL)
+	{
+		gdk_device_ungrab(device, GDK_CURRENT_TIME);
+	}
 
 	if (gp->priv->chat_window)
 	{

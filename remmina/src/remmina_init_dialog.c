@@ -73,7 +73,7 @@ static void remmina_init_dialog_init(RemminaInitDialog *dialog)
 	/**** Create the dialog content from here ****/
 
 	/* Create top-level hbox */
-	hbox = gtk_hbox_new(FALSE, 4);
+	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 4);
 	gtk_widget_show(hbox);
 	gtk_container_set_border_width(GTK_CONTAINER(hbox), 15);
 	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dialog))), hbox, TRUE, TRUE, 0);
@@ -85,7 +85,7 @@ static void remmina_init_dialog_init(RemminaInitDialog *dialog)
 	dialog->image = widget;
 
 	/* Create vbox for other dialog content */
-	widget = gtk_vbox_new(FALSE, 4);
+	widget = gtk_box_new(GTK_ORIENTATION_VERTICAL, 4);
 	gtk_widget_show(widget);
 	gtk_box_pack_start(GTK_BOX(hbox), widget, TRUE, TRUE, 4);
 	dialog->content_vbox = widget;
@@ -512,7 +512,7 @@ static gint remmina_init_dialog_serverkey_confirm(RemminaInitDialog *dialog, con
 	gtk_label_set_text(GTK_LABEL(dialog->status_label), (dialog->status ? dialog->status : dialog->title));
 
 	/* Create vbox */
-	vbox = gtk_vbox_new(FALSE, 4);
+	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 4);
 	gtk_widget_show(vbox);
 
 	/* Icon */
