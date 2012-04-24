@@ -206,7 +206,7 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	gtk_tree_view_append_column(GTK_TREE_VIEW(gsl->list), column);
 
 	/* buttons packed into a vbox */
-	vbox = gtk_vbox_new(FALSE, 0);
+	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
 	gtk_widget_show(vbox);
 	gtk_table_attach(GTK_TABLE(gsl), vbox, 1, 2, 0, 3, 0, GTK_EXPAND | GTK_FILL, 0, 0);
 
