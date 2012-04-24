@@ -123,14 +123,14 @@ static void remmina_scaler_init(RemminaScaler *scaler)
 
 	gtk_table_resize(GTK_TABLE(scaler), 2, 2);
 
-	widget = gtk_hscale_new_with_range(MIN_SCALE_VALUE, 1.0, 0.01);
+	widget = gtk_scale_new_with_range(GTK_ORIENTATION_HORIZONTAL, MIN_SCALE_VALUE, 1.0, 0.01);
 	gtk_widget_show(widget);
 	gtk_widget_set_tooltip_text(widget, _("Horizontal scale"));
 	gtk_table_attach_defaults(GTK_TABLE(scaler), widget, 1, 2, 0, 1);
 	g_signal_connect(G_OBJECT(widget), "format-value", G_CALLBACK(remmina_scaler_format_scale_value), NULL);
 	priv->hscale_widget = widget;
 
-	widget = gtk_hscale_new_with_range(MIN_SCALE_VALUE, 1.0, 0.01);
+	widget = gtk_scale_new_with_range(GTK_ORIENTATION_HORIZONTAL, MIN_SCALE_VALUE, 1.0, 0.01);
 	gtk_widget_show(widget);
 	gtk_widget_set_tooltip_text(widget, _("Vertical scale"));
 	gtk_table_attach_defaults(GTK_TABLE(scaler), widget, 1, 2, 1, 2);

@@ -30,6 +30,8 @@ static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 	RemminaScrolledViewport *gsv;
 	GtkWidget *child;
 	GdkDisplay *display;
+	GdkDeviceManager *device_manager;
+	GdkDevice  *pointer;
 	GdkScreen *screen;
 	gint x, y, mx, my, w, h;
 	GtkAdjustment *adj;
@@ -49,7 +51,9 @@ static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 	display = gdk_display_get_default();
 	if (!display)
 		return FALSE;
-	gdk_display_get_pointer(display, &screen, &x, &y, NULL);
+	device_manager = gdk_display_get_device_manager (display);
+	pointer = gdk_device_manager_get_client_pointer (device_manager);
+	gdk_device_get_position(pointer, &screen, &x, &y);
 
 	w = gdk_screen_get_width(screen);
 	h = gdk_screen_get_height(screen);
@@ -58,7 +62,7 @@ static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 	if (mx != 0)
 	{
 		gint step = MAX(10, MIN(remmina_pref.auto_scroll_step, w / 5));
-		adj = gtk_viewport_get_hadjustment(GTK_VIEWPORT(child));
+		adj = gtk_scrollable_get_hadjustment(GTK_SCROLLABLE(child));
 		value = gtk_adjustment_get_value(GTK_ADJUSTMENT(adj)) + (gdouble)(mx * step);
 		value = MAX(0, MIN(value, gtk_adjustment_get_upper(GTK_ADJUSTMENT(adj)) - (gdouble) w + 2.0));
 		gtk_adjustment_set_value(GTK_ADJUSTMENT(adj), value);
@@ -66,7 +70,7 @@ static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 	if (my != 0)
 	{
 		gint step = MAX(10, MIN(remmina_pref.auto_scroll_step, h / 5));
-		adj = gtk_viewport_get_vadjustment(GTK_VIEWPORT(child));
+		adj = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(child));
 		value = gtk_adjustment_get_value(GTK_ADJUSTMENT(adj)) + (gdouble)(my * step);
 		value = MAX(0, MIN(value, gtk_adjustment_get_upper(GTK_ADJUSTMENT(adj)) - (gdouble) h + 2.0));
 		gtk_adjustment_set_value(GTK_ADJUSTMENT(adj), value);

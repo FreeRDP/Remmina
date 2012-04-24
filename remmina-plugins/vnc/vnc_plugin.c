@@ -350,7 +350,7 @@ gboolean remmina_plugin_vnc_setcursor(RemminaProtocolWidget *gp)
 		cur = gdk_cursor_new_from_pixbuf(gdk_display_get_default(), gpdata->queuecursor_pixbuf, gpdata->queuecursor_x,
 				gpdata->queuecursor_y);
 		gdk_window_set_cursor(gtk_widget_get_window(gpdata->drawing_area), cur);
-		gdk_cursor_unref(cur);
+		g_object_unref(cur);
 		g_object_unref(gpdata->queuecursor_pixbuf);
 		gpdata->queuecursor_pixbuf = NULL;
 	}
@@ -1580,9 +1580,9 @@ static void remmina_plugin_vnc_on_realize(RemminaProtocolWidget *gp, gpointer da
 		/* Hide local cursor (show a small dot instead) */
 		pixbuf = gdk_pixbuf_new_from_xpm_data(dot_cursor_xpm);
 		cursor = gdk_cursor_new_from_pixbuf(gdk_display_get_default(), pixbuf, dot_cursor_x_hot, dot_cursor_y_hot);
-		gdk_pixbuf_unref(pixbuf);
+		g_object_unref(pixbuf);
 		gdk_window_set_cursor(gtk_widget_get_window(GTK_WIDGET(gp)), cursor);
-		gdk_cursor_unref(cursor);
+		g_object_unref(cursor);
 	}
 }
 
