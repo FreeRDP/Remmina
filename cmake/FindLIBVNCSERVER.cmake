@@ -18,7 +18,7 @@
 # Boston, MA 02111-1307, USA.
 
 find_package(PkgConfig)
-pkg_check_modules(PC_LIBVNCSERVER LibVNCServer)
+pkg_check_modules(PC_LIBVNCSERVER libvncserver)
 set(LIBVNCSERVER_DEFINITIONS ${PC_LIBVNCSERVER_CFLAGS_OTHER})
 
 find_path(LIBVNCSERVER_INCLUDE_DIR NAMES rfb/rfb.h

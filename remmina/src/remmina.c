@@ -55,7 +55,7 @@ static gchar *remmina_option_plugin;
 static gboolean remmina_option_quit;
 static gchar *remmina_option_server;
 static gchar *remmina_option_protocol;
-static gboolean remmina_option_icon;
+static gchar *remmina_option_icon;
 
 static GOptionEntry remmina_options[] =
 {

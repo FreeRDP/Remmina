@@ -195,7 +195,7 @@ static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe
 	GtkWidget* table;
 	GtkWidget* widget;
 
-	tablabel = gtk_hbox_new(FALSE, 0);
+	tablabel = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_widget_show(tablabel);
 
 	widget = gtk_image_new_from_stock(stock_id, GTK_ICON_SIZE_MENU);
@@ -206,7 +206,7 @@ static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe
 	gtk_box_pack_start(GTK_BOX(tablabel), widget, FALSE, FALSE, 0);
 	gtk_widget_show(widget);
 
-	tabbody = gtk_vbox_new(FALSE, 0);
+	tabbody = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
 	gtk_widget_show(tabbody);
 	gtk_notebook_append_page(GTK_NOTEBOOK(gfe->priv->config_container), tabbody, tablabel);
 
@@ -354,7 +354,7 @@ static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const Remm
 	{
 		gfe->priv->avahi_service_type = (const gchar*) setting->opt1;
 
-		hbox = gtk_hbox_new (FALSE, 0);
+		hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 		gtk_widget_show(hbox);
 		gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
 
@@ -433,7 +433,7 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 	gtk_table_attach_defaults(GTK_TABLE(table), widget, 1, 2, row, row + 1);
 	gfe->priv->resolution_auto_radio = widget;
 
-	hbox = gtk_hbox_new(FALSE, 0);
+	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_widget_show(hbox);
 	gtk_table_attach_defaults(GTK_TABLE(table), hbox, 1, 2, row + 1, row + 2);
 
@@ -556,7 +556,7 @@ remmina_file_editor_create_chooser(RemminaFileEditor* gfe, GtkWidget* table, gin
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_table_attach(GTK_TABLE(table), widget, col, col + 1, row, row + 1, GTK_FILL, 0, 0, 0);
 
-	hbox = gtk_hbox_new(FALSE, 0);
+	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_widget_show(hbox);
 	gtk_table_attach_defaults(GTK_TABLE(table), hbox, col + 1, col + 2, row, row + 1);
 
@@ -594,7 +594,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 		{
 			if (hbox == NULL)
 			{
-				hbox = gtk_hbox_new(TRUE, 0);
+				hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
 				gtk_widget_show(hbox);
 				gtk_table_attach_defaults(GTK_TABLE(table), hbox, 0, 2, row, row + 1);
 			}
@@ -734,7 +734,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		table = remmina_file_editor_create_notebook_tab (gfe, GTK_STOCK_DIALOG_AUTHENTICATION,
 				"SSH", 9, 3);
 
-		hbox = gtk_hbox_new (TRUE, 0);
+		hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 		gtk_widget_show(hbox);
 		gtk_table_attach_defaults (GTK_TABLE(table), hbox, 0, 3, 0, 1);
 		row++;

@@ -749,7 +749,7 @@ static void remmina_ftp_client_create_toolbar(RemminaFTPClient *client)
 	GtkWidget *image;
 	gint i = 0;
 
-	box = gtk_hbutton_box_new();
+	box = gtk_button_box_new(GTK_ORIENTATION_HORIZONTAL);
 	gtk_widget_show(box);
 	gtk_button_box_set_layout(GTK_BUTTON_BOX(box), GTK_BUTTONBOX_START);
 	gtk_box_pack_start(GTK_BOX(client), box, FALSE, TRUE, 0);
@@ -849,14 +849,14 @@ static void remmina_ftp_client_init(RemminaFTPClient *client)
 	remmina_ftp_client_create_toolbar(client);
 
 	/* The Paned to separate File List and Task List */
-	vpaned = gtk_vpaned_new();
+	vpaned = gtk_paned_new(GTK_ORIENTATION_VERTICAL);
 	gtk_widget_show(vpaned);
 	gtk_box_pack_start(GTK_BOX(client), vpaned, TRUE, TRUE, 0);
 
 	priv->vpaned = vpaned;
 
 	/* Remote */
-	vbox = gtk_vbox_new(FALSE, 0);
+	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
 	gtk_widget_show(vbox);
 	gtk_paned_pack1(GTK_PANED(vpaned), vbox, TRUE, FALSE);
 
