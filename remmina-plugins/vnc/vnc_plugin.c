@@ -1859,7 +1859,7 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 	gtk_widget_add_events(
 			gpdata->drawing_area,
 			GDK_POINTER_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK
-					| GDK_KEY_RELEASE_MASK);
+					| GDK_KEY_RELEASE_MASK | GDK_SCROLL_MASK);
 	gtk_widget_set_can_focus(gpdata->drawing_area, TRUE);
 
 #if GTK_VERSION == 3

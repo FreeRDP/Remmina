@@ -477,7 +477,7 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 	gtk_container_add(GTK_CONTAINER(gp), rfi->drawing_area);
 
 	gtk_widget_add_events(rfi->drawing_area, GDK_POINTER_MOTION_MASK | GDK_BUTTON_PRESS_MASK
-		| GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK);
+		| GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK | GDK_SCROLL_MASK);
 	gtk_widget_set_can_focus(rfi->drawing_area, TRUE);
 
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, rfi->drawing_area);
