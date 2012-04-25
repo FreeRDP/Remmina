@@ -430,7 +430,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 		default:
 			if (!rfi->use_client_keymap)
 			{
-				rdp_event.key_event.key_code = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(event->hardware_keycode, &rdp_event.key_event.extended);
+				rdp_event.key_event.key_code = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(event->hardware_keycode);
 				remmina_plugin_service->log_printf("[RDP]keyval=%04X keycode=%i scancode=%i extended=%i\n",
 						event->keyval, event->hardware_keycode, rdp_event.key_event.key_code, &rdp_event.key_event.extended);
 			}
@@ -438,7 +438,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 			{
 				display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default());
 				cooked_keycode = XKeysymToKeycode(display, XKeycodeToKeysym(display, event->hardware_keycode, 0));
-				rdp_event.key_event.key_code = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(cooked_keycode, &rdp_event.key_event.extended);
+				rdp_event.key_event.key_code = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(cooked_keycode);
 				remmina_plugin_service->log_printf("[RDP]keyval=%04X raw_keycode=%i cooked_keycode=%i scancode=%i extended=%i\n",
 						event->keyval, event->hardware_keycode, cooked_keycode, rdp_event.key_event.key_code, &rdp_event.key_event.extended);
 			}
@@ -477,7 +477,7 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 	gtk_container_add(GTK_CONTAINER(gp), rfi->drawing_area);
 
 	gtk_widget_add_events(rfi->drawing_area, GDK_POINTER_MOTION_MASK | GDK_BUTTON_PRESS_MASK
-		| GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK);
+		| GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK | GDK_SCROLL_MASK);
 	gtk_widget_set_can_focus(rfi->drawing_area, TRUE);
 
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, rfi->drawing_area);
