@@ -24,6 +24,7 @@
 #include "rdp_graphics.h"
 #include "rdp_file.h"
 #include "rdp_settings.h"
+#include "rdp_cliprdr.h"
 
 #include <errno.h>
 #include <pthread.h>
@@ -31,6 +32,7 @@
 #include <freerdp/freerdp.h>
 #include <freerdp/constants.h>
 #include <freerdp/utils/memory.h>
+#include <freerdp/plugins/cliprdr.h>
 
 #define REMMINA_RDP_FEATURE_TOOL_REFRESH		1
 #define REMMINA_RDP_FEATURE_SCALE			2
@@ -127,6 +129,11 @@ boolean rf_check_fds(RemminaProtocolWidget* gp)
 			case REMMINA_RDP_EVENT_TYPE_MOUSE:
 				input->MouseEvent(input, event->mouse_event.flags,
 						event->mouse_event.x, event->mouse_event.y);
+				break;
+			case REMMINA_RDP_EVENT_TYPE_CLIPBOARD:
+				if (!rfi->clipboard_wait)
+					remmina_rdp_cliprdr_send_format_list_event(gp);
+				rfi->clipboard_wait = FALSE;
 				break;
 		}
 
@@ -503,6 +510,7 @@ static boolean remmina_rdp_verify_certificate(freerdp* instance, char* subject, 
 
 static int remmina_rdp_receive_channel_data(freerdp* instance, int channelId, uint8* data, int size, int flags, int total_size)
 {
+	g_printf("EVENT RECEIVED -> DATA: %s\nSIZE: %d\nFLAGS: %d\n", (char*)data, size, flags);
 	return freerdp_channels_data(instance, channelId, data, size, flags, total_size);
 }
 
@@ -518,6 +526,7 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 	fd_set rfds_set;
 	fd_set wfds_set;
 	rfContext* rfi;
+	RDP_EVENT* event;
 
 	memset(rfds, 0, sizeof(rfds));
 	memset(wfds, 0, sizeof(wfds));
@@ -590,6 +599,12 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 		if (!freerdp_channels_check_fds(rfi->channels, rfi->instance))
 		{
 			break;
+		}
+		else
+		{
+			event = freerdp_channels_pop_event(rfi->channels);
+			if (event)
+				remmina_handle_channel_event(gp, event);
 		}
 		/* check ui */
 		if (!rf_check_fds(gp))
