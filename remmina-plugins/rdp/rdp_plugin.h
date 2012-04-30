@@ -133,12 +133,16 @@ struct rf_context
 	GArray* pressed_keys;
 	GAsyncQueue* event_queue;
 	gint event_pipe[2];
+
+	gboolean clipboard_wait;
+	uint32 requested_format;
 };
 
 typedef enum
 {
 	REMMINA_RDP_EVENT_TYPE_SCANCODE,
-	REMMINA_RDP_EVENT_TYPE_MOUSE
+	REMMINA_RDP_EVENT_TYPE_MOUSE,
+	REMMINA_RDP_EVENT_TYPE_CLIPBOARD
 } RemminaPluginRdpEventType;
 
 struct remmina_plugin_rdp_event
