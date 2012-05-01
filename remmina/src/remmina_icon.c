@@ -397,6 +397,7 @@ void remmina_icon_init(void)
 		app_indicator_set_icon_theme_path (remmina_icon.icon, REMMINA_DATADIR G_DIR_SEPARATOR_S "icons");
 
 		app_indicator_set_status (remmina_icon.icon, APP_INDICATOR_STATUS_ACTIVE);
+		app_indicator_set_title (remmina_icon.icon, "Remmina");
 		remmina_icon_populate_menu ();
 #else
 		remmina_icon.icon = gtk_status_icon_new_from_icon_name("remmina");
