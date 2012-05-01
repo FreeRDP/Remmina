@@ -225,7 +225,7 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 
 	if (format == CB_FORMAT_TEXT || format == CB_FORMAT_HTML || format == CB_FORMAT_UNICODETEXT)
 	{
-		lf2crlf(inbuf, size);
+		inbuf = lf2crlf(inbuf, size);
 		if (format == CB_FORMAT_TEXT)
 		{
 			outbuf = inbuf;
@@ -269,6 +269,11 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 			memcpy(outbuf, data + 14, *size);
 		}
 	}
+
+	if (inbuf)
+		g_free(inbuf);
+	if (G_IS_OBJECT(image))
+		g_object_unref(image);
 	
 	if (!outbuf)
 		outbuf = (uint8*)"";
@@ -288,7 +293,7 @@ void remmina_rdp_cliprdr_parse_response_event(RemminaProtocolWidget* gp, RDP_EVE
 	gboolean img = FALSE;
 	rfContext* rfi = GET_DATA(gp);
 	RDP_CB_DATA_RESPONSE_EVENT* data_response_event;
-
+	GdkPixbufLoader *pixbuf;
 	data_response_event = (RDP_CB_DATA_RESPONSE_EVENT*) event;
 	data = data_response_event->data;
 	size = data_response_event->size;
@@ -341,7 +346,6 @@ void remmina_rdp_cliprdr_parse_response_event(RemminaProtocolWidget* gp, RDP_EVE
 			stream_detach(s);
 			stream_free(s);
 		}
-		GdkPixbufLoader *pixbuf;
 		pixbuf = gdk_pixbuf_loader_new();
 		gdk_pixbuf_loader_write(pixbuf, data, size, NULL);
 		image = gdk_pixbuf_loader_get_pixbuf(pixbuf);
@@ -355,9 +359,17 @@ void remmina_rdp_cliprdr_parse_response_event(RemminaProtocolWidget* gp, RDP_EVE
 		if (text || img)
 			rfi->clipboard_wait = TRUE;
 		if (text)
-			gtk_clipboard_set_text(clipboard, (gchar*)data, size);		
+		{
+			gtk_clipboard_set_text(clipboard, (gchar*)data, size);
+			gtk_clipboard_store(clipboard);
+		}
 		if (img)
+		{
 			gtk_clipboard_set_image(clipboard, image);
+			gtk_clipboard_store(clipboard);
+			gdk_pixbuf_loader_close(pixbuf, NULL);
+			g_object_unref(pixbuf);
+		}
 	}
 	THREADS_LEAVE
 	
