@@ -204,7 +204,7 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 	g_printf("GetData: Requested Format: %#X\n", format);
 	rfContext* rfi = GET_DATA(gp);
 	GtkClipboard* clipboard;
-	uint8* inbuf = NULL;
+	uint8* inbuf = (uint8*)"";
 	uint8* outbuf = NULL;
 	GdkPixbuf *image = NULL;
 	
@@ -225,6 +225,8 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 
 	if (format == CB_FORMAT_TEXT || format == CB_FORMAT_HTML || format == CB_FORMAT_UNICODETEXT)
 	{
+		if (inbuf == NULL)
+			inbuf = (uint8*)"";
 		inbuf = lf2crlf(inbuf, size);
 		if (format == CB_FORMAT_TEXT)
 		{
@@ -243,6 +245,7 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 			uniconv = freerdp_uniconv_new();
 			outbuf = (uint8*) freerdp_uniconv_out(uniconv, (char*) inbuf, &out_size);
 			freerdp_uniconv_free(uniconv);
+			g_free(inbuf);
 			*size = out_size + 2;
 		}
 	}
@@ -253,11 +256,13 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 		if (format == CB_FORMAT_PNG)
 		{
 			gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "png", NULL, NULL);
+			outbuf = (uint8*) xmalloc(buffersize);
 			memcpy(outbuf, data, buffersize);
 		}
 		if (format == CB_FORMAT_JPEG)
 		{
 			gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "jpeg", NULL, NULL);
+			outbuf = (uint8*) xmalloc(buffersize);
 			memcpy(outbuf, data, buffersize);
 		}
 		if (format == CB_FORMAT_DIB)
@@ -268,13 +273,9 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 			outbuf = (uint8*) xmalloc(*size);
 			memcpy(outbuf, data + 14, *size);
 		}
+		g_object_unref(image);
 	}
 
-	if (inbuf)
-		g_free(inbuf);
-	if (G_IS_OBJECT(image))
-		g_object_unref(image);
-	
 	if (!outbuf)
 		outbuf = (uint8*)"";
 
@@ -357,7 +358,10 @@ void remmina_rdp_cliprdr_parse_response_event(RemminaProtocolWidget* gp, RDP_EVE
 	if (clipboard)
 	{
 		if (text || img)
-			rfi->clipboard_wait = TRUE;
+		{
+			rfi->clipboard_wait = 2;
+			g_printf("Setting Clipboard Wait\n");
+		}
 		if (text)
 		{
 			gtk_clipboard_set_text(clipboard, (gchar*)data, size);
@@ -404,31 +408,39 @@ void remmina_handle_channel_event(RemminaProtocolWidget* gp, RDP_EVENT* event)
 				for (i = 0; i < format_list_event->num_formats; i++)
 				{
 					g_printf("Format: 0x%X\n", format_list_event->formats[i]);
-					if (format_list_event->formats[i] == CB_FORMAT_UNICODETEXT)
+				}
+
+				for (i = 0; i < format_list_event->num_formats; i++)
+				{
+					g_printf("Format: 0x%X\n", format_list_event->formats[i]);
+					if (format_list_event->formats[i] > format)
 					{
-						format = CB_FORMAT_UNICODETEXT;
-						break;
+						g_printf("Format 0x%X is bigger!\n", format_list_event->formats[i]);
+						if (format_list_event->formats[i] == CB_FORMAT_UNICODETEXT)
+						{
+							format = CB_FORMAT_UNICODETEXT;
+						}
+						if (format_list_event->formats[i] == CB_FORMAT_DIB)
+						{
+							format = CB_FORMAT_DIB;
+						}
+						if (format_list_event->formats[i] == CB_FORMAT_JPEG)
+						{
+							format = CB_FORMAT_JPEG;
+						}
+						if (format_list_event->formats[i] == CB_FORMAT_PNG)
+						{
+							format = CB_FORMAT_PNG;
+						}
+						if (format_list_event->formats[i] == CB_FORMAT_TEXT)
+						{
+							format = CB_FORMAT_TEXT;
+						}
 					}
-					if (format_list_event->formats[i] == CB_FORMAT_DIB)
+					else
 					{
-						format = CB_FORMAT_DIB;
-						break;
+						g_printf("Format 0x%X is smaller!\n", format_list_event->formats[i]);
 					}
-					if (format_list_event->formats[i] == CB_FORMAT_JPEG)
-					{
-						format = CB_FORMAT_JPEG;
-						break;
-					}
-					if (format_list_event->formats[i] == CB_FORMAT_PNG)
-					{
-						format = CB_FORMAT_PNG;
-						break;
-					}
-					if (format_list_event->formats[i] == CB_FORMAT_TEXT)
-					{
-						format = CB_FORMAT_TEXT;
-						break;
-					}				
 				}
 				rfi->requested_format = format;
 				
