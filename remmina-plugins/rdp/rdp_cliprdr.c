@@ -36,7 +36,7 @@ void remmina_rdp_cliprdr_get_target_types(uint32** dst_formats, uint16* size, Gd
 	gboolean text = FALSE;
 	gboolean textutf8 = FALSE;
 	int matches = 1;
-	uint32* formats = (uint32*) xmalloc(sizeof(uint32) * 10);
+	uint32* formats = (uint32*) xmalloc(sizeof(uint32) * (count+1));
 
 	formats[0] = CB_FORMAT_RAW;	
 	for (i = 0; i < count; i++)
