@@ -204,7 +204,7 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 	g_printf("GetData: Requested Format: %#X\n", format);
 	rfContext* rfi = GET_DATA(gp);
 	GtkClipboard* clipboard;
-	uint8* inbuf = (uint8*)"";
+	uint8* inbuf = NULL;
 	uint8* outbuf = NULL;
 	GdkPixbuf *image = NULL;
 	
@@ -223,10 +223,18 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 	}
 	THREADS_LEAVE
 
+	/* No data received, send nothing */
+	if (inbuf == NULL && image == NULL)
+	{
+		g_printf("NO DATA RECEIVED\n");
+		*size = 0;
+		return NULL;
+	}
+
+
 	if (format == CB_FORMAT_TEXT || format == CB_FORMAT_HTML || format == CB_FORMAT_UNICODETEXT)
 	{
-		if (inbuf == NULL)
-			inbuf = (uint8*)"";
+		*size = strlen((char*)inbuf);
 		inbuf = lf2crlf(inbuf, size);
 		if (format == CB_FORMAT_TEXT)
 		{
@@ -258,12 +266,14 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 			gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "png", NULL, NULL);
 			outbuf = (uint8*) xmalloc(buffersize);
 			memcpy(outbuf, data, buffersize);
+			*size = buffersize;
 		}
 		if (format == CB_FORMAT_JPEG)
 		{
 			gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "jpeg", NULL, NULL);
 			outbuf = (uint8*) xmalloc(buffersize);
 			memcpy(outbuf, data, buffersize);
+			*size = buffersize;
 		}
 		if (format == CB_FORMAT_DIB)
 		{
@@ -275,9 +285,6 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 		}
 		g_object_unref(image);
 	}
-
-	if (!outbuf)
-		outbuf = (uint8*)"";
 
 	return outbuf;
 }
