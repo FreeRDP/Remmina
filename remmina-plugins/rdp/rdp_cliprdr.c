@@ -74,6 +74,7 @@ void remmina_rdp_cliprdr_get_target_types(uint32** dst_formats, uint16* size, Gd
 			image = TRUE;
 			matches++;
 		}
+		g_free(name);
 	}
 	//Only add text formats if we don't have image formats
 	if (!image)
