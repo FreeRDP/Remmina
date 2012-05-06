@@ -36,7 +36,7 @@ void remmina_rdp_cliprdr_get_target_types(uint32** dst_formats, uint16* size, Gd
 	gboolean text = FALSE;
 	gboolean textutf8 = FALSE;
 	int matches = 1;
-	uint32* formats = (uint32*) xmalloc(sizeof(uint32) * 10);
+	uint32* formats = (uint32*) xmalloc(sizeof(uint32) * (count+1));
 
 	formats[0] = CB_FORMAT_RAW;	
 	for (i = 0; i < count; i++)
@@ -74,6 +74,7 @@ void remmina_rdp_cliprdr_get_target_types(uint32** dst_formats, uint16* size, Gd
 			image = TRUE;
 			matches++;
 		}
+		g_free(name);
 	}
 	//Only add text formats if we don't have image formats
 	if (!image)
@@ -223,8 +224,18 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 	}
 	THREADS_LEAVE
 
+	/* No data received, send nothing */
+	if (inbuf == NULL && image == NULL)
+	{
+		g_printf("NO DATA RECEIVED\n");
+		*size = 0;
+		return NULL;
+	}
+
+
 	if (format == CB_FORMAT_TEXT || format == CB_FORMAT_HTML || format == CB_FORMAT_UNICODETEXT)
 	{
+		*size = strlen((char*)inbuf);
 		inbuf = lf2crlf(inbuf, size);
 		if (format == CB_FORMAT_TEXT)
 		{
@@ -243,6 +254,7 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 			uniconv = freerdp_uniconv_new();
 			outbuf = (uint8*) freerdp_uniconv_out(uniconv, (char*) inbuf, &out_size);
 			freerdp_uniconv_free(uniconv);
+			g_free(inbuf);
 			*size = out_size + 2;
 		}
 	}
@@ -253,12 +265,16 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 		if (format == CB_FORMAT_PNG)
 		{
 			gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "png", NULL, NULL);
+			outbuf = (uint8*) xmalloc(buffersize);
 			memcpy(outbuf, data, buffersize);
+			*size = buffersize;
 		}
 		if (format == CB_FORMAT_JPEG)
 		{
 			gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "jpeg", NULL, NULL);
+			outbuf = (uint8*) xmalloc(buffersize);
 			memcpy(outbuf, data, buffersize);
+			*size = buffersize;
 		}
 		if (format == CB_FORMAT_DIB)
 		{
@@ -268,15 +284,8 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 			outbuf = (uint8*) xmalloc(*size);
 			memcpy(outbuf, data + 14, *size);
 		}
-	}
-
-	if (inbuf)
-		g_free(inbuf);
-	if (G_IS_OBJECT(image))
 		g_object_unref(image);
-	
-	if (!outbuf)
-		outbuf = (uint8*)"";
+	}
 
 	return outbuf;
 }
@@ -357,7 +366,10 @@ void remmina_rdp_cliprdr_parse_response_event(RemminaProtocolWidget* gp, RDP_EVE
 	if (clipboard)
 	{
 		if (text || img)
-			rfi->clipboard_wait = TRUE;
+		{
+			rfi->clipboard_wait = 2;
+			g_printf("Setting Clipboard Wait\n");
+		}
 		if (text)
 		{
 			gtk_clipboard_set_text(clipboard, (gchar*)data, size);
@@ -404,31 +416,39 @@ void remmina_handle_channel_event(RemminaProtocolWidget* gp, RDP_EVENT* event)
 				for (i = 0; i < format_list_event->num_formats; i++)
 				{
 					g_printf("Format: 0x%X\n", format_list_event->formats[i]);
-					if (format_list_event->formats[i] == CB_FORMAT_UNICODETEXT)
+				}
+
+				for (i = 0; i < format_list_event->num_formats; i++)
+				{
+					g_printf("Format: 0x%X\n", format_list_event->formats[i]);
+					if (format_list_event->formats[i] > format)
 					{
-						format = CB_FORMAT_UNICODETEXT;
-						break;
+						g_printf("Format 0x%X is bigger!\n", format_list_event->formats[i]);
+						if (format_list_event->formats[i] == CB_FORMAT_UNICODETEXT)
+						{
+							format = CB_FORMAT_UNICODETEXT;
+						}
+						if (format_list_event->formats[i] == CB_FORMAT_DIB)
+						{
+							format = CB_FORMAT_DIB;
+						}
+						if (format_list_event->formats[i] == CB_FORMAT_JPEG)
+						{
+							format = CB_FORMAT_JPEG;
+						}
+						if (format_list_event->formats[i] == CB_FORMAT_PNG)
+						{
+							format = CB_FORMAT_PNG;
+						}
+						if (format_list_event->formats[i] == CB_FORMAT_TEXT)
+						{
+							format = CB_FORMAT_TEXT;
+						}
 					}
-					if (format_list_event->formats[i] == CB_FORMAT_DIB)
+					else
 					{
-						format = CB_FORMAT_DIB;
-						break;
+						g_printf("Format 0x%X is smaller!\n", format_list_event->formats[i]);
 					}
-					if (format_list_event->formats[i] == CB_FORMAT_JPEG)
-					{
-						format = CB_FORMAT_JPEG;
-						break;
-					}
-					if (format_list_event->formats[i] == CB_FORMAT_PNG)
-					{
-						format = CB_FORMAT_PNG;
-						break;
-					}
-					if (format_list_event->formats[i] == CB_FORMAT_TEXT)
-					{
-						format = CB_FORMAT_TEXT;
-						break;
-					}				
 				}
 				rfi->requested_format = format;
 				
