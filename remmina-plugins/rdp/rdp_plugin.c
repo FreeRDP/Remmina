@@ -131,9 +131,14 @@ boolean rf_check_fds(RemminaProtocolWidget* gp)
 						event->mouse_event.x, event->mouse_event.y);
 				break;
 			case REMMINA_RDP_EVENT_TYPE_CLIPBOARD:
-				if (!rfi->clipboard_wait)
+				if (rfi->clipboard_wait <= 0)
+				{
 					remmina_rdp_cliprdr_send_format_list_event(gp);
-				rfi->clipboard_wait = FALSE;
+					g_printf("Clipboard Wait ON\n");
+					rfi->clipboard_wait = 0;
+				}
+				g_printf("Setting Clipboard Wait To FALSE\n");
+				rfi->clipboard_wait--;
 				break;
 		}
 
