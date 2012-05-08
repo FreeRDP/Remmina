@@ -134,6 +134,7 @@ struct rf_context
 	GAsyncQueue* event_queue;
 	gint event_pipe[2];
 
+	gint clipboard_handler;
 	gint clipboard_wait;
 	uint32 requested_format;
 };
