@@ -119,12 +119,6 @@ int remmina_rdp_cliprdr_send_format_list_event(RemminaProtocolWidget* gp)
 	if (!result)
 		return 1;
 
-	int i;
-	for (i = 0; i < count; i++)
-	{
-		g_printf("Target %d: %s\n", i, gdk_atom_name(targets[i]));
-	}
-
 	rdp_event = (RDP_EVENT*) xnew(RDP_CB_FORMAT_LIST_EVENT);
 	rdp_event->event_class = RDP_EVENT_CLASS_CLIPRDR;
 	rdp_event->event_type = RDP_EVENT_TYPE_CB_FORMAT_LIST;
@@ -133,13 +127,6 @@ int remmina_rdp_cliprdr_send_format_list_event(RemminaProtocolWidget* gp)
 	remmina_rdp_cliprdr_get_target_types(&format_list_event->formats, &format_list_event->num_formats, targets, count);
 	g_free(targets);
 
-	int num_formats = format_list_event->num_formats;
-	g_printf("Sending %d formats\n", num_formats);
-	for (i = 0; i < num_formats; i++)
-	{
-		g_printf("Sending format %#X\n", format_list_event->formats[i]);
-	}
-	
 	return freerdp_channels_send_event(rfi->channels, (RDP_EVENT*) format_list_event);
 }
 
@@ -202,7 +189,6 @@ static void crlf2lf(uint8* data, int* size)
 
 uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, int* size)
 {
-	g_printf("GetData: Requested Format: %#X\n", format);
 	rfContext* rfi = GET_DATA(gp);
 	GtkClipboard* clipboard;
 	uint8* inbuf = NULL;
@@ -227,7 +213,6 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 	/* No data received, send nothing */
 	if (inbuf == NULL && image == NULL)
 	{
-		g_printf("NO DATA RECEIVED\n");
 		*size = 0;
 		return NULL;
 	}
@@ -280,7 +265,6 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 		{
 			gdk_pixbuf_save_to_buffer(image, &data, &buffersize, "bmp", NULL, NULL);
 			*size = buffersize - 14;
-			g_printf("Size of pixels: %d\n", *size);
 			outbuf = (uint8*) xmalloc(*size);
 			memcpy(outbuf, data + 14, *size);
 		}
@@ -292,8 +276,6 @@ uint8* remmina_rdp_cliprdr_get_data(RemminaProtocolWidget* gp, uint32 format, in
 
 void remmina_rdp_cliprdr_parse_response_event(RemminaProtocolWidget* gp, RDP_EVENT* event)
 {
-	g_printf("Received RDP_EVENT_TYPE_CB_DATA_RESPONSE\n");
-
 	GtkClipboard* clipboard;
 	GdkPixbuf *image = NULL;
 	uint8* data;
@@ -307,8 +289,6 @@ void remmina_rdp_cliprdr_parse_response_event(RemminaProtocolWidget* gp, RDP_EVE
 	data = data_response_event->data;
 	size = data_response_event->size;
 
-	g_printf("Requested format was: 0x%x\n", rfi->requested_format);
-	
 	if (rfi->requested_format == CB_FORMAT_TEXT || rfi->requested_format == CB_FORMAT_UNICODETEXT || rfi->requested_format == CB_FORMAT_HTML)
 	{
 		if (rfi->requested_format == CB_FORMAT_UNICODETEXT)
@@ -368,7 +348,6 @@ void remmina_rdp_cliprdr_parse_response_event(RemminaProtocolWidget* gp, RDP_EVE
 		if (text || img)
 		{
 			rfi->clipboard_wait = 2;
-			g_printf("Setting Clipboard Wait\n");
 		}
 		if (text)
 		{
@@ -395,35 +374,24 @@ void remmina_handle_channel_event(RemminaProtocolWidget* gp, RDP_EVENT* event)
 	switch (event->event_class)
 	{
 		case RDP_EVENT_CLASS_CLIPRDR:
-			g_printf("Event ID: %d\n", event->event_type);
 			if (event->event_type == RDP_EVENT_TYPE_CB_MONITOR_READY)
 			{
-				g_printf("Received CB_MONITOR_READY - Sending RDP_EVENT_TYPE_CB_FORMAT_LIST\n");
 				/* Sending our format list */
 				remmina_rdp_cliprdr_send_format_list_event(gp);
 			}
 			if (event->event_type == RDP_EVENT_TYPE_CB_FORMAT_LIST)
 			{
 				/* We received a FORMAT_LIST from the server, update our clipboard */
-				g_printf("Received RDP_EVENT_TYPE_CB_FORMAT_LIST\n");
 				int i;	
 				uint32 format = CB_FORMAT_RAW;	
 				RDP_CB_FORMAT_LIST_EVENT* format_list_event;
 
 				format_list_event = (RDP_CB_FORMAT_LIST_EVENT*) event;
 
-				g_printf("Format List Size: %d\n", format_list_event->num_formats);
 				for (i = 0; i < format_list_event->num_formats; i++)
 				{
-					g_printf("Format: 0x%X\n", format_list_event->formats[i]);
-				}
-
-				for (i = 0; i < format_list_event->num_formats; i++)
-				{
-					g_printf("Format: 0x%X\n", format_list_event->formats[i]);
 					if (format_list_event->formats[i] > format)
 					{
-						g_printf("Format 0x%X is bigger!\n", format_list_event->formats[i]);
 						if (format_list_event->formats[i] == CB_FORMAT_UNICODETEXT)
 						{
 							format = CB_FORMAT_UNICODETEXT;
@@ -445,14 +413,9 @@ void remmina_handle_channel_event(RemminaProtocolWidget* gp, RDP_EVENT* event)
 							format = CB_FORMAT_TEXT;
 						}
 					}
-					else
-					{
-						g_printf("Format 0x%X is smaller!\n", format_list_event->formats[i]);
-					}
 				}
 				rfi->requested_format = format;
 				
-				g_printf("Format Requested: 0x%X\n", format);
 				/* Request Clipboard data of the server */
 				RDP_CB_DATA_REQUEST_EVENT* data_request_event;
 				rdp_event = (RDP_EVENT*) xnew(RDP_CB_DATA_REQUEST_EVENT);
@@ -464,14 +427,10 @@ void remmina_handle_channel_event(RemminaProtocolWidget* gp, RDP_EVENT* event)
 			}
 			if (event->event_type == RDP_EVENT_TYPE_CB_DATA_REQUEST)
 			{	
-				g_printf("Received RDP_EVENT_TYPE_CB_DATA_REQUEST\n");
-				
 				uint8* data;
 				int size;
 				RDP_CB_DATA_REQUEST_EVENT* data_request_event = (RDP_CB_DATA_REQUEST_EVENT*) event;
 				RDP_CB_DATA_RESPONSE_EVENT* data_response_event;
-
-				g_printf("Event Format: %d\n", data_request_event->format);
 
 				/* Send Data */
 				rdp_event = (RDP_EVENT*) xnew(RDP_CB_DATA_RESPONSE_EVENT);
