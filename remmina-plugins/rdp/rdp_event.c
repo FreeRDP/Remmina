@@ -523,8 +523,7 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 	if (!remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE))
 	{
 		clipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);
-		g_signal_connect(clipboard, "owner-change",
-			G_CALLBACK(remmina_rdp_event_on_clipboard), gp);
+		rfi->clipboard_handler = g_signal_connect(clipboard, "owner-change", G_CALLBACK(remmina_rdp_event_on_clipboard), gp);
 	}
 
 	rfi->pressed_keys = g_array_new(FALSE, TRUE, sizeof (gint));
@@ -575,6 +574,13 @@ void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 
 	rfi = GET_DATA(gp);
 
+
+	/* unregister the clipboard monitor */
+	if (rfi->clipboard_handler)
+	{
+		g_signal_handler_disconnect(G_OBJECT(gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD)), rfi->clipboard_handler);
+		rfi->clipboard_handler = NULL;
+	}
 	if (rfi->scale_handler)
 	{
 		g_source_remove(rfi->scale_handler);
