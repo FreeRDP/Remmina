@@ -134,10 +134,8 @@ boolean rf_check_fds(RemminaProtocolWidget* gp)
 				if (rfi->clipboard_wait <= 0)
 				{
 					remmina_rdp_cliprdr_send_format_list_event(gp);
-					g_printf("Clipboard Wait ON\n");
 					rfi->clipboard_wait = 0;
 				}
-				g_printf("Setting Clipboard Wait To FALSE\n");
 				rfi->clipboard_wait--;
 				break;
 		}
@@ -515,7 +513,6 @@ static boolean remmina_rdp_verify_certificate(freerdp* instance, char* subject, 
 
 static int remmina_rdp_receive_channel_data(freerdp* instance, int channelId, uint8* data, int size, int flags, int total_size)
 {
-	g_printf("EVENT RECEIVED -> DATA: %s\nSIZE: %d\nFLAGS: %d\n", (char*)data, size, flags);
 	return freerdp_channels_data(instance, channelId, data, size, flags, total_size);
 }
 
