@@ -1519,6 +1519,7 @@ static gboolean remmina_connection_holder_toolbar_scroll(GtkWidget* widget, GdkE
 				return TRUE;
 			}
 			break;
+#ifdef GDK_SCROLL_SMOOTH
 		case GDK_SCROLL_SMOOTH:
 			if (event->delta_y < 0 && opacity > 0)
                         {
@@ -1533,6 +1534,7 @@ static gboolean remmina_connection_holder_toolbar_scroll(GtkWidget* widget, GdkE
                                 return TRUE;
                         }
                         break;
+#endif
 		default:
 			break;
 	}
