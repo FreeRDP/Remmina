@@ -378,6 +378,7 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget* widget, GdkEventScroll* e
 			flag = PTR_FLAGS_WHEEL | PTR_FLAGS_WHEEL_NEGATIVE | 0x0088;
 			break;
 		
+#ifdef GDK_SCROLL_SMOOTH
 		case GDK_SCROLL_SMOOTH:
 			if (event->delta_y < 0)
 				flag = PTR_FLAGS_WHEEL | 0x0078;
@@ -386,6 +387,7 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget* widget, GdkEventScroll* e
 			if (!flag)
 				return FALSE;
 			break;
+#endif
 
 		default:
 			return FALSE;
