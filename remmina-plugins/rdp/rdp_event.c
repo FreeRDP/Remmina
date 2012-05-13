@@ -581,7 +581,7 @@ void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 	if (rfi->clipboard_handler)
 	{
 		g_signal_handler_disconnect(G_OBJECT(gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD)), rfi->clipboard_handler);
-		rfi->clipboard_handler = NULL;
+		rfi->clipboard_handler = 0;
 	}
 	if (rfi->scale_handler)
 	{
