@@ -1076,7 +1076,11 @@ static void remmina_main_init(RemminaMain *remminamain)
 	}
 
 	/* Create the main container */
+#if GTK_VERSION == 3
 	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+#elif GTK_VERSION == 2
+	vbox = gtk_vbox_new(FALSE, 0);
+#endif
 	gtk_container_add(GTK_CONTAINER(remminamain), vbox);
 	gtk_widget_show(vbox);
 
