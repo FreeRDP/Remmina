@@ -96,8 +96,6 @@ struct rf_context
 	gdouble scale_x;
 	gdouble scale_y;
 	guint scale_handler;
-	gboolean capslock_initstate;
-	gboolean numlock_initstate;
 	gboolean use_client_keymap;
 
 	HGDI_DC hdc;
