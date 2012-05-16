@@ -40,54 +40,6 @@
 
 RemminaPluginService* remmina_plugin_service = NULL;
 
-/* Migrated from xfreerdp */
-static gboolean rf_get_key_state(KeyCode keycode, int state, XModifierKeymap* modmap)
-{
-	int offset;
-	int modifierpos, key, keysymMask = 0;
-
-	if (keycode == NoSymbol)
-		return FALSE;
-
-	for (modifierpos = 0; modifierpos < 8; modifierpos++)
-	{
-		offset = modmap->max_keypermod * modifierpos;
-
-		for (key = 0; key < modmap->max_keypermod; key++)
-		{
-			if (modmap->modifiermap[offset + key] == keycode)
-				keysymMask |= 1 << modifierpos;
-		}
-	}
-
-	return (state & keysymMask) ? TRUE : FALSE;
-}
-
-void rf_init(RemminaProtocolWidget* gp)
-{
-	int dummy;
-	uint32 state;
-	gint keycode;
-	Window wdummy;
-	XModifierKeymap* modmap;
-	rfContext* rfi;
-
-	rfi = GET_DATA(gp);
-
-	XQueryPointer(rfi->display, GDK_ROOT_WINDOW(), &wdummy, &wdummy, &dummy, &dummy,
-		&dummy, &dummy, &state);
-
-	modmap = XGetModifierMapping(rfi->display);
-
-	keycode = XKeysymToKeycode(rfi->display, XK_Caps_Lock);
-	rfi->capslock_initstate = rf_get_key_state(keycode, state, modmap);
-
-	keycode = XKeysymToKeycode(rfi->display, XK_Num_Lock);
-	rfi->numlock_initstate = rf_get_key_state(keycode, state, modmap);
-
-	XFreeModifiermap(modmap);
-}
-
 void rf_get_fds(RemminaProtocolWidget* gp, void** rfds, int* rcount)
 {
 	rfContext* rfi;
@@ -900,7 +852,6 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	pthread_mutex_init(&rfi->mutex, NULL);
 
 	remmina_rdp_event_init(gp);
-	rf_init(gp);
 }
 
 static gboolean remmina_rdp_open_connection(RemminaProtocolWidget* gp)
