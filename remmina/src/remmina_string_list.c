@@ -20,6 +20,7 @@
 
 #include <gtk/gtk.h>
 #include <string.h>
+#include "config.h"
 #include "remmina_public.h"
 #include "remmina_string_list.h"
 
