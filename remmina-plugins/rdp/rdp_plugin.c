@@ -296,7 +296,6 @@ static boolean remmina_rdp_pre_connect(freerdp* instance)
 static boolean remmina_rdp_post_connect(freerdp* instance)
 {
 	rfContext* rfi;
-	XGCValues gcv = { 0 };
 	RemminaProtocolWidget* gp;
 	RemminaPluginRdpUiObject* ui;
 
@@ -306,16 +305,6 @@ static boolean remmina_rdp_post_connect(freerdp* instance)
 	rfi->width = rfi->settings->width;
 	rfi->height = rfi->settings->height;
 	rfi->srcBpp = rfi->settings->color_depth;
-
-	rfi->drawable = DefaultRootWindow(rfi->display);
-	rfi->primary = XCreatePixmap(rfi->display, rfi->drawable, rfi->width, rfi->height, rfi->depth);
-	rfi->drawing = rfi->primary;
-
-	rfi->drawable = rfi->primary;
-	rfi->gc = XCreateGC(rfi->display, rfi->drawable, GCGraphicsExposures, &gcv);
-	rfi->gc_default = XCreateGC(rfi->display, rfi->drawable, GCGraphicsExposures, &gcv);
-	rfi->bitmap_mono = XCreatePixmap(rfi->display, rfi->drawable, 8, 8, 1);
-	rfi->gc_mono = XCreateGC(rfi->display, rfi->bitmap_mono, GCGraphicsExposures, &gcv);
 
 	if (rfi->settings->rfx_codec == false)
 		rfi->sw_gdi = true;
@@ -330,16 +319,19 @@ static boolean remmina_rdp_post_connect(freerdp* instance)
 		flags = CLRCONV_ALPHA;
 
 		if (rfi->bpp > 16)
+		{
 			flags |= CLRBUF_32BPP;
+			rfi->cairo_format = CAIRO_FORMAT_ARGB32;
+		}
 		else
+		{
 			flags |= CLRBUF_16BPP;
+			rfi->cairo_format = CAIRO_FORMAT_RGB16_565;
+		}
 
 		gdi_init(instance, flags, NULL);
 		gdi = instance->context->gdi;
 		rfi->primary_buffer = gdi->primary_buffer;
-
-		rfi->image = XCreateImage(rfi->display, rfi->visual, rfi->depth, ZPixmap, 0,
-				(char*) rfi->primary_buffer, rfi->width, rfi->height, rfi->scanline_pad, 0);
 	}
 	else
 	{
