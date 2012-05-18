@@ -100,15 +100,10 @@ struct rf_context
 
 	HGDI_DC hdc;
 	gint srcBpp;
-	Display* display;
-	Visual* visual;
-	Drawable drawable;
-	Drawable drw_surface;
-	Pixmap rgb_surface;
-	GC gc;
-	GC gc_default;
-	Pixmap bitmap_mono;
-	GC gc_mono;
+	GdkDisplay* display;
+	GdkVisual* visual;
+	cairo_surface_t* surface;
+	cairo_format_t cairo_format;
 	gint depth;
 	gint bpp;
 	gint width;
@@ -116,11 +111,7 @@ struct rf_context
 	gint scanline_pad;
 	gint* colormap;
 	HCLRCONV clrconv;
-	Pixmap primary;
-	Pixmap drawing;
-	XImage* image;
 	uint8* primary_buffer;
-	cairo_surface_t* rgb_cairo_surface;
 
 	guint object_id_seq;
 	GHashTable* object_table;
