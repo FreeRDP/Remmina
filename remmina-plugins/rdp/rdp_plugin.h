@@ -48,7 +48,7 @@ extern RemminaPluginService* remmina_plugin_service;
 struct rf_pointer
 {
 	rdpPointer pointer;
-	Cursor cursor;
+	GdkCursor* cursor;
 };
 typedef struct rf_pointer rfPointer;
 
@@ -56,6 +56,7 @@ struct rf_bitmap
 {
 	rdpBitmap bitmap;
 	Pixmap pixmap;
+	cairo_surface_t* surface;
 };
 typedef struct rf_bitmap rfBitmap;
 
@@ -96,33 +97,21 @@ struct rf_context
 	gdouble scale_x;
 	gdouble scale_y;
 	guint scale_handler;
-	gboolean capslock_initstate;
-	gboolean numlock_initstate;
 	gboolean use_client_keymap;
 
 	HGDI_DC hdc;
 	gint srcBpp;
-	Display* display;
-	Visual* visual;
-	Drawable drawable;
-	Drawable drw_surface;
-	Pixmap rgb_surface;
-	GC gc;
-	GC gc_default;
-	Pixmap bitmap_mono;
-	GC gc_mono;
-	gint depth;
+	GdkDisplay* display;
+	GdkVisual* visual;
+	cairo_surface_t* surface;
+	cairo_format_t cairo_format;
 	gint bpp;
 	gint width;
 	gint height;
 	gint scanline_pad;
 	gint* colormap;
 	HCLRCONV clrconv;
-	Pixmap primary;
-	Pixmap drawing;
-	XImage* image;
 	uint8* primary_buffer;
-	cairo_surface_t* rgb_cairo_surface;
 
 	guint object_id_seq;
 	GHashTable* object_table;
@@ -171,6 +160,7 @@ typedef enum
 {
 	REMMINA_RDP_UI_UPDATE_REGION = 0,
 	REMMINA_RDP_UI_CONNECTED,
+	REMMINA_RDP_UI_UPDATE_CURSOR,
 	REMMINA_RDP_UI_RFX,
 	REMMINA_RDP_UI_NOCODEC
 } RemminaPluginRdpUiType;
@@ -187,6 +177,10 @@ struct remmina_plugin_rdp_ui_object
 			gint width;
 			gint height;
 		} region;
+		struct
+		{
+			GdkCursor* cursor;
+		} cursor;
 		struct
 		{
 			gint left;

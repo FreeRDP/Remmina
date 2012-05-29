@@ -23,6 +23,7 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
+#include "config.h"
 #include "remmina_public.h"
 #include "remmina_pref.h"
 #include "remmina_marshals.h"

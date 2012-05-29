@@ -19,6 +19,7 @@
  */
 
 #include <gtk/gtk.h>
+#include "config.h"
 #include "remmina_scrolled_viewport.h"
 #include "remmina_pref.h"
 
