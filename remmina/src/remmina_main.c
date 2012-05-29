@@ -20,6 +20,7 @@
 
 #include "config.h"
 #include <gtk/gtk.h>
+#include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
 #include "remmina_string_array.h"
 #include "remmina_public.h"
@@ -944,6 +945,27 @@ static gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEve
 		}
 	return FALSE;
 }
+static gboolean remmina_main_file_list_on_key_press(GtkWidget *widget, GdkEventKey *event, RemminaMain *remminamain)
+{
+#if GTK_VERSION == 3
+	if (event->type == GDK_KEY_PRESS && (event->keyval == GDK_KEY_Return || event->keyval == GDK_KEY_KP_Enter) && remminamain->priv->selected_filename)
+#else
+	if (event->type == GDK_KEY_PRESS && (event->keyval == GDK_Return || event->keyval == GDK_KP_Enter) && remminamain->priv->selected_filename)
+#endif
+	{
+		switch (remmina_pref.default_action)
+		{
+			case REMMINA_ACTION_EDIT:
+				remmina_main_action_connection_edit(NULL, remminamain);
+				break;
+			case REMMINA_ACTION_CONNECT:
+			default:
+				remmina_main_action_connection_connect(NULL, remminamain);
+				break;
+		}
+	}
+	return FALSE;
+}
 
 static void remmina_main_quick_search_on_icon_press(GtkEntry *entry, GtkEntryIconPosition icon_pos, GdkEvent *event,
 		RemminaMain *remminamain)
@@ -1183,6 +1205,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 	gtk_tree_selection_set_select_function(gtk_tree_view_get_selection(GTK_TREE_VIEW(tree)), remmina_main_selection_func,
 			remminamain, NULL);
 	g_signal_connect(G_OBJECT(tree), "button-press-event", G_CALLBACK(remmina_main_file_list_on_button_press), remminamain);
+	g_signal_connect(G_OBJECT(tree), "key-press-event", G_CALLBACK(remmina_main_file_list_on_key_press), remminamain);
 
 	priv->file_list = tree;
 

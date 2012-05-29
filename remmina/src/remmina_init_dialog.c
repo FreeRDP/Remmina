@@ -20,6 +20,7 @@
 
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include "config.h"
 #include "remmina_widget_pool.h"
 #include "remmina_init_dialog.h"
 
