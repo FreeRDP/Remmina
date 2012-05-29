@@ -140,14 +140,14 @@ void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj)
 	g_free(obj);
 }
 
-void rf_sw_begin_paint(rdpContext* context)
+void rf_begin_paint(rdpContext* context)
 {
 	rdpGdi* gdi = context->gdi;
 	gdi->primary->hdc->hwnd->invalid->null = 1;
 	gdi->primary->hdc->hwnd->ninvalid = 0;
 }
 
-void rf_sw_end_paint(rdpContext* context)
+void rf_end_paint(rdpContext* context)
 {
 	sint32 x, y;
 	uint32 w, h;
@@ -178,39 +178,7 @@ void rf_sw_end_paint(rdpContext* context)
 	rf_queue_ui(rfi->protocol_widget, ui);
 }
 
-static void rf_sw_desktop_resize(rdpContext* context)
-{
-	rfContext* rfi;
-	RemminaProtocolWidget* gp;
-
-	rfi = (rfContext*) context;
-	gp = rfi->protocol_widget;
-
-	LOCK_BUFFER(TRUE)
-
-	remmina_plugin_service->protocol_plugin_set_width(gp, rfi->settings->width);
-	remmina_plugin_service->protocol_plugin_set_height(gp, rfi->settings->height);
-
-	UNLOCK_BUFFER(TRUE)
-
-	THREADS_ENTER
-	remmina_rdp_event_update_scale(gp);
-	THREADS_LEAVE
-
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "desktop-resize");
-}
-
-void rf_hw_begin_paint(rdpContext* context)
-{
-
-}
-
-void rf_hw_end_paint(rdpContext* context)
-{
-
-}
-
-static void rf_hw_desktop_resize(rdpContext* context)
+static void rf_desktop_resize(rdpContext* context)
 {
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
@@ -293,11 +261,14 @@ static boolean remmina_rdp_pre_connect(freerdp* instance)
 	return True;
 }
 
+
 static boolean remmina_rdp_post_connect(freerdp* instance)
 {
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
 	RemminaPluginRdpUiObject* ui;
+	rdpGdi* gdi;
+	uint32 flags;
 
 	rfi = (rfContext*) instance->context;
 	gp = rfi->protocol_widget;
@@ -311,32 +282,27 @@ static boolean remmina_rdp_post_connect(freerdp* instance)
 
 	rf_register_graphics(instance->context->graphics);
 
-	if (rfi->sw_gdi)
+	flags = CLRCONV_ALPHA;
+
+	if (rfi->bpp == 32)
 	{
-		rdpGdi* gdi;
-		uint32 flags;
-
-		flags = CLRCONV_ALPHA;
-
-		if (rfi->bpp > 16)
-		{
-			flags |= CLRBUF_32BPP;
-			rfi->cairo_format = CAIRO_FORMAT_ARGB32;
-		}
-		else
-		{
-			flags |= CLRBUF_16BPP;
-			rfi->cairo_format = CAIRO_FORMAT_RGB16_565;
-		}
-
-		gdi_init(instance, flags, NULL);
-		gdi = instance->context->gdi;
-		rfi->primary_buffer = gdi->primary_buffer;
+		flags |= CLRBUF_32BPP;
+		rfi->cairo_format = CAIRO_FORMAT_ARGB32;
+	}
+	else if (rfi->bpp == 24)
+	{
+		flags |= CLRBUF_24BPP;
+		rfi->cairo_format = CAIRO_FORMAT_RGB24;
 	}
 	else
 	{
-		rf_gdi_register_update_callbacks(instance->update);
+		flags |= CLRBUF_16BPP;
+		rfi->cairo_format = CAIRO_FORMAT_RGB16_565;
 	}
+
+	gdi_init(instance, flags, NULL);
+	gdi = instance->context->gdi;
+	rfi->primary_buffer = gdi->primary_buffer;
 
 	rfi->hdc = gdi_GetDC();
 	rfi->hdc->bitsPerPixel = rfi->bpp;
@@ -352,6 +318,7 @@ static boolean remmina_rdp_post_connect(freerdp* instance)
 
 	pointer_cache_register_callbacks(instance->update);
 
+/*
 	if (rfi->sw_gdi != true)
 	{
 		glyph_cache_register_callbacks(instance->update);
@@ -360,19 +327,11 @@ static boolean remmina_rdp_post_connect(freerdp* instance)
 		offscreen_cache_register_callbacks(instance->update);
 		palette_cache_register_callbacks(instance->update);
 	}
+*/
 
-	if (rfi->sw_gdi)
-	{
-		instance->update->BeginPaint = rf_sw_begin_paint;
-		instance->update->EndPaint = rf_sw_end_paint;
-		instance->update->DesktopResize = rf_sw_desktop_resize;
-	}
-	else
-	{
-		instance->update->BeginPaint = rf_hw_begin_paint;
-		instance->update->EndPaint = rf_hw_end_paint;
-		instance->update->DesktopResize = rf_hw_desktop_resize;
-	}
+	instance->update->BeginPaint = rf_begin_paint;
+	instance->update->EndPaint = rf_end_paint;
+	instance->update->DesktopResize = rf_desktop_resize;
 
 	freerdp_channels_post_connect(rfi->channels, instance);
 
