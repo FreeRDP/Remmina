@@ -56,6 +56,7 @@ struct rf_bitmap
 {
 	rdpBitmap bitmap;
 	Pixmap pixmap;
+	cairo_surface_t* surface;
 };
 typedef struct rf_bitmap rfBitmap;
 
@@ -104,7 +105,6 @@ struct rf_context
 	GdkVisual* visual;
 	cairo_surface_t* surface;
 	cairo_format_t cairo_format;
-	gint depth;
 	gint bpp;
 	gint width;
 	gint height;
