@@ -31,18 +31,35 @@ static void remmina_rdp_event_on_focus_in(GtkWidget* widget, GdkEventKey* event,
 {
 	rfContext* rfi;
 	rdpInput* input;
+	GdkModifierType state;
+#if GTK_VERSION == 3
+	GdkDeviceManager *manager;
+	GdkDevice *keyboard = NULL;
+#endif
 
 	rfi = GET_DATA(gp);
 	input = rfi->instance->input;
 	uint32 toggle_keys_state = 0;
 
-	if (gdk_keymap_get_num_lock_state(gdk_keymap_get_default()))
+#if GTK_VERSION == 3
+	manager = gdk_display_get_device_manager(gdk_display_get_default());
+	keyboard = gdk_device_manager_get_client_pointer(manager);
+	gdk_window_get_device_position(gdk_get_default_root_window(), keyboard, NULL, NULL, &state);
+#else
+	gdk_window_get_pointer(gdk_get_default_root_window(), NULL, NULL, &state);
+#endif
+
+	if (state & GDK_LOCK_MASK)
+	{
+		toggle_keys_state |= KBD_SYNC_CAPS_LOCK;
+	}
+	if (state & GDK_MOD2_MASK)
 	{
 		toggle_keys_state |= KBD_SYNC_NUM_LOCK;
 	}
-	if (gdk_keymap_get_caps_lock_state(gdk_keymap_get_default()))
+	if (state & GDK_MOD5_MASK)
 	{
-		toggle_keys_state |= KBD_SYNC_CAPS_LOCK;
+		toggle_keys_state |= KBD_SYNC_SCROLL_LOCK;
 	}
 
 	input->SynchronizeEvent(input, toggle_keys_state);
