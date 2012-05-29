@@ -663,6 +663,15 @@ static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPlugin
 	remmina_rdp_event_update_scale(gp);
 }
 
+static void remmina_rdp_event_update_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+{
+	rfContext* rfi;
+
+	rfi = GET_DATA(gp);
+
+	gdk_window_set_cursor(gtk_widget_get_window(rfi->drawing_area), ui->cursor.cursor);
+}
+
 gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 {
 	rfContext* rfi;
@@ -682,6 +691,10 @@ gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 
 			case REMMINA_RDP_UI_CONNECTED:
 				remmina_rdp_event_connected(gp, ui);
+				break;
+
+			case REMMINA_RDP_UI_UPDATE_CURSOR:
+				remmina_rdp_event_update_cursor(gp, ui);
 				break;
 
 			default:
