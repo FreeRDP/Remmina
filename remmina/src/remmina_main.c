@@ -20,6 +20,7 @@
 
 #include "config.h"
 #include <gtk/gtk.h>
+#include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
 #include "remmina_string_array.h"
 #include "remmina_public.h"
@@ -946,7 +947,11 @@ static gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEve
 }
 static gboolean remmina_main_file_list_on_key_press(GtkWidget *widget, GdkEventKey *event, RemminaMain *remminamain)
 {
+#if GTK_VERSION == 3
 	if (event->type == GDK_KEY_PRESS && (event->keyval == GDK_KEY_Return || event->keyval == GDK_KEY_KP_Enter) && remminamain->priv->selected_filename)
+#else
+	if (event->type == GDK_KEY_PRESS && (event->keyval == GDK_Return || event->keyval == GDK_KP_Enter) && remminamain->priv->selected_filename)
+#endif
 	{
 		switch (remmina_pref.default_action)
 		{
