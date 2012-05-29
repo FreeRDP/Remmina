@@ -48,7 +48,7 @@ extern RemminaPluginService* remmina_plugin_service;
 struct rf_pointer
 {
 	rdpPointer pointer;
-	Cursor cursor;
+	GdkCursor* cursor;
 };
 typedef struct rf_pointer rfPointer;
 
@@ -160,6 +160,7 @@ typedef enum
 {
 	REMMINA_RDP_UI_UPDATE_REGION = 0,
 	REMMINA_RDP_UI_CONNECTED,
+	REMMINA_RDP_UI_UPDATE_CURSOR,
 	REMMINA_RDP_UI_RFX,
 	REMMINA_RDP_UI_NOCODEC
 } RemminaPluginRdpUiType;
@@ -176,6 +177,10 @@ struct remmina_plugin_rdp_ui_object
 			gint width;
 			gint height;
 		} region;
+		struct
+		{
+			GdkCursor* cursor;
+		} cursor;
 		struct
 		{
 			gint left;
