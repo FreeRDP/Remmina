@@ -29,9 +29,6 @@
 #include <freerdp/constants.h>
 #include <freerdp/cache/cache.h>
 #include <freerdp/utils/memory.h>
-#include <X11/Xlib.h>
-#include <X11/keysym.h>
-#include <gdk/gdkx.h>
 
 static void rf_desktop_resize(rdpContext* context)
 {
@@ -62,23 +59,6 @@ static void rf_gdi_palette(rdpContext* context, PALETTE_UPDATE* palette)
 
 static void rf_gdi_set_bounds(rdpContext* context, rdpBounds* bounds)
 {
-	/*
-	XRectangle clip;
-	rfContext* rfi = (rfContext*) context;
-
-	if (bounds != NULL)
-	{
-		clip.x = bounds->left;
-		clip.y = bounds->top;
-		clip.width = bounds->right - bounds->left + 1;
-		clip.height = bounds->bottom - bounds->top + 1;
-		XSetClipRectangles(rfi->display, rfi->gc, 0, 0, &clip, 1, YXBanded);
-	}
-	else
-	{
-		XSetClipMask(rfi->display, rfi->gc, None);
-	}
-	*/
 }
 
 static void rf_gdi_dstblt(rdpContext* context, DSTBLT_ORDER* dstblt)
