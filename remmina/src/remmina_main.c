@@ -53,6 +53,9 @@ struct _RemminaMainPriv
 	GtkToolItem *quick_search_item;
 	GtkWidget *quick_search_entry;
 
+	GtkWidget *quickconnect_protocol;
+	GtkWidget *quickconnect_server;
+
 	GtkTreeViewColumn *group_column;
 
 	GtkActionGroup *main_group;
@@ -901,6 +904,7 @@ static const GtkActionEntry remmina_main_ui_file_sensitive_menu_entries[] =
 
 { "ToolsExport", NULL, N_("Export"), NULL, NULL, G_CALLBACK(remmina_main_action_tools_export) } };
 
+
 static const GtkToggleActionEntry remmina_main_ui_toggle_menu_entries[] =
 {
 { "ViewToolbar", NULL, N_("Toolbar"), NULL, NULL, G_CALLBACK(remmina_main_action_view_toolbar), TRUE },
@@ -916,6 +920,62 @@ static const GtkRadioActionEntry remmina_main_ui_view_file_mode_entries[] =
 {
 { "ViewFileList", NULL, N_("List View"), NULL, NULL, REMMINA_VIEW_FILE_LIST },
 { "ViewFileTree", NULL, N_("Tree View"), NULL, NULL, REMMINA_VIEW_FILE_TREE } };
+
+static gboolean remmina_main_quickconnect(RemminaMain *remminamain)
+{
+	RemminaFile* remminafile;
+	gint index;
+	gchar* server;
+	gchar* protocol;
+
+	remminafile = remmina_file_new();
+	server = strdup(gtk_entry_get_text(GTK_ENTRY(remminamain->priv->quickconnect_server)));
+	index = gtk_combo_box_get_active(GTK_COMBO_BOX(remminamain->priv->quickconnect_protocol));
+
+	switch (index)
+	{
+		case 0:
+			protocol = "RDP";
+			break;
+		case 1:
+			protocol = "VNC";
+			break;
+		case 2:
+			protocol = "NX";
+			break;
+		case 3:
+			protocol = "SSH";
+			break;
+		default:
+			protocol = "RDP";
+			break;
+	}
+
+	remmina_file_set_string(remminafile, "sound", "off");
+	remmina_file_set_string(remminafile, "server", server);
+	remmina_file_set_string(remminafile, "name", server);
+	remmina_file_set_string(remminafile, "protocol", protocol);
+
+	remmina_connection_window_open_from_file(remminafile);
+
+	return FALSE;
+}
+static gboolean remmina_main_quickconnect_on_click(GtkWidget *widget, RemminaMain *remminamain)
+{
+	return remmina_main_quickconnect(remminamain);
+}
+static gboolean remmina_main_quickconnect_on_key_press(GtkWidget *widget, GdkEventKey *event, RemminaMain *remminamain)
+{
+#if GTK_VERSION == 3
+    if (event->type == GDK_KEY_PRESS && (event->keyval == GDK_KEY_Return || event->keyval == GDK_KEY_KP_Enter))
+#else
+    if (event->type == GDK_KEY_PRESS && (event->keyval == GDK_Return || event->keyval == GDK_KP_Enter))
+#endif
+    {
+		return remmina_main_quickconnect(remminamain);
+    }
+    return FALSE;
+}
 
 static gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEventButton *event, RemminaMain *remminamain)
 {
@@ -1070,6 +1130,8 @@ static void remmina_main_init(RemminaMain *remminamain)
 	RemminaMainPriv *priv;
 	GtkWidget *vbox;
 	GtkWidget *menubar;
+	GtkWidget *hbox;
+	GtkWidget *quickconnect;
 	GtkWidget *tool_item;
 	GtkUIManager *uimanager;
 	GtkActionGroup *action_group;
@@ -1163,6 +1225,32 @@ static void remmina_main_init(RemminaMain *remminamain)
 	gtk_window_add_accel_group(GTK_WINDOW(remminamain), gtk_ui_manager_get_accel_group(uimanager));
 
 	gtk_action_group_set_sensitive(priv->file_sensitive_group, FALSE);
+
+	/* Add a Fast Connection box */
+	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
+
+	priv->quickconnect_protocol = gtk_combo_box_text_new();
+	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(priv->quickconnect_protocol), "RDP", "RDP");
+	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(priv->quickconnect_protocol), "VNC", "VNC");
+	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(priv->quickconnect_protocol), "NX", "NX");
+	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(priv->quickconnect_protocol), "SSH", "SSH");
+	gtk_combo_box_set_active(GTK_COMBO_BOX(priv->quickconnect_protocol), 0);
+	gtk_widget_show(priv->quickconnect_protocol);
+	gtk_box_pack_start(GTK_BOX(hbox), priv->quickconnect_protocol, FALSE, FALSE, 0);
+
+	priv->quickconnect_server = gtk_entry_new();
+	gtk_entry_set_width_chars(GTK_ENTRY(priv->quickconnect_server), 25);
+	gtk_widget_show(priv->quickconnect_server);
+	gtk_box_pack_start(GTK_BOX(hbox), priv->quickconnect_server, FALSE, FALSE, 0);
+	g_signal_connect(G_OBJECT(priv->quickconnect_server), "key-press-event", G_CALLBACK(remmina_main_quickconnect_on_key_press), remminamain);
+
+	quickconnect = gtk_button_new_with_label("Connect !");
+	gtk_widget_show(quickconnect);
+	gtk_box_pack_start(GTK_BOX(hbox), quickconnect, FALSE, FALSE, 0);
+	g_signal_connect(G_OBJECT(quickconnect), "clicked", G_CALLBACK(remmina_main_quickconnect_on_click), remminamain);
+
+	gtk_container_add(GTK_CONTAINER(vbox), hbox);
+	gtk_widget_show(hbox);
 
 	/* Create the scrolled window for the file list */
 	scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
