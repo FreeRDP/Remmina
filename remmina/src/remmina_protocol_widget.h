@@ -108,6 +108,7 @@ void remmina_protocol_widget_set_display(RemminaProtocolWidget *gp, gint display
 gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type);
 gint remmina_protocol_widget_init_authuserpwd(RemminaProtocolWidget *gp, gboolean want_domain);
 gint remmina_protocol_widget_init_certificate(RemminaProtocolWidget* gp, const gchar* subject, const gchar* issuer, const gchar* fingerprint);
+gint remmina_protocol_widget_changed_certificate(RemminaProtocolWidget *gp, const gchar* subject, const gchar* issuer, const gchar* new_fingerprint, const gchar* old_fingerprint);
 gchar* remmina_protocol_widget_init_get_username(RemminaProtocolWidget *gp);
 gchar* remmina_protocol_widget_init_get_password(RemminaProtocolWidget *gp);
 gchar* remmina_protocol_widget_init_get_domain(RemminaProtocolWidget *gp);
