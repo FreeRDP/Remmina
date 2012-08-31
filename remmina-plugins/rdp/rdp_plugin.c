@@ -413,6 +413,24 @@ static boolean remmina_rdp_verify_certificate(freerdp* instance, char* subject, 
 
 	return False;
 }
+static boolean remmina_rdp_verify_changed_certificate(freerdp* instance, char* subject, char* issuer, char* new_fingerprint, char* old_fingerprint)
+{
+	gint status;
+	rfContext* rfi;
+	RemminaProtocolWidget* gp;
+
+	rfi = (rfContext*) instance->context;
+	gp = rfi->protocol_widget;
+
+	THREADS_ENTER
+	status = remmina_plugin_service->protocol_plugin_changed_certificate(gp, subject, issuer, new_fingerprint, old_fingerprint);
+	THREADS_LEAVE
+
+	if (status == GTK_RESPONSE_OK)
+		return True;
+
+	return False;
+}
 
 static int remmina_rdp_receive_channel_data(freerdp* instance, int channelId, uint8* data, int size, int flags, int total_size)
 {
@@ -787,6 +805,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	instance->PostConnect = remmina_rdp_post_connect;
 	instance->Authenticate = remmina_rdp_authenticate;
 	instance->VerifyCertificate = remmina_rdp_verify_certificate;
+	instance->VerifyChangedCertificate = remmina_rdp_verify_changed_certificate;
 	instance->ReceiveChannelData = remmina_rdp_receive_channel_data;
 
 	instance->context_size = sizeof(rfContext);
@@ -854,8 +873,10 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 			freerdp_channels_free(rfi->channels);
 			rfi->channels = NULL;
 		}
-
-		freerdp_disconnect(instance);
+		if (freerdp_shall_disconnect(instance))
+		{
+			freerdp_disconnect(instance);
+		}
 	}
 
 	if (rfi->rfx_context)
