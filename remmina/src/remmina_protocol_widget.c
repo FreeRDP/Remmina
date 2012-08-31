@@ -826,6 +826,10 @@ gint remmina_protocol_widget_init_certificate(RemminaProtocolWidget* gp, const g
 {
 	return remmina_init_dialog_certificate(REMMINA_INIT_DIALOG(gp->priv->init_dialog), subject, issuer, fingerprint);
 }
+gint remmina_protocol_widget_changed_certificate(RemminaProtocolWidget *gp, const gchar* subject, const gchar* issuer, const gchar* new_fingerprint, const gchar* old_fingerprint)
+{
+	return remmina_init_dialog_certificate_changed(REMMINA_INIT_DIALOG(gp->priv->init_dialog), subject, issuer, new_fingerprint, old_fingerprint);
+}
 
 gchar* remmina_protocol_widget_init_get_username(RemminaProtocolWidget* gp)
 {
