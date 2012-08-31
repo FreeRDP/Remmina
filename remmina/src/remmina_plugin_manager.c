@@ -86,6 +86,7 @@ RemminaPluginService remmina_plugin_manager_service =
 		remmina_protocol_widget_init_authpwd,
 		remmina_protocol_widget_init_authuserpwd,
 		remmina_protocol_widget_init_certificate,
+		remmina_protocol_widget_changed_certificate,
 		remmina_protocol_widget_init_get_username,
 		remmina_protocol_widget_init_get_password,
 		remmina_protocol_widget_init_get_domain,

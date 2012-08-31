@@ -78,6 +78,7 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_domain, const gchar *default_username,
 		const gchar *default_domain, gboolean allow_save);
 gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* subject, const gchar* issuer, const gchar* fingerprint);
+gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gchar* subject, const gchar* issuer, const gchar* old_fingerprint, const gchar* new_fingerprint);
 gint remmina_init_dialog_authx509(RemminaInitDialog *dialog, const gchar *cacert, const gchar *cacrl, const gchar *clientcert,
 		const gchar *clientkey);
 gint remmina_init_dialog_serverkey_unknown(RemminaInitDialog *dialog, const gchar *serverkey);
