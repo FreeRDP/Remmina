@@ -68,7 +68,7 @@ void remmina_about_open(GtkWindow* parent)
 
 	gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(dialog), "Remmina");
 	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), VERSION);
-	gtk_about_dialog_set_copyright(GTK_ABOUT_DIALOG(dialog), "Copyright (C) 2009-2010 Vic Lee");
+	gtk_about_dialog_set_copyright(GTK_ABOUT_DIALOG(dialog), "Copyright (C) 2009-2012 Vic Lee");
 	gtk_about_dialog_set_comments(GTK_ABOUT_DIALOG(dialog), _("The GTK+ Remote Desktop Client")), gtk_about_dialog_set_license(
 			GTK_ABOUT_DIALOG(dialog), license);
 	gtk_about_dialog_set_wrap_license(GTK_ABOUT_DIALOG(dialog), TRUE);

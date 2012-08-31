@@ -429,6 +429,88 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 
 	return status;
 }
+gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gchar* subject, const gchar* issuer, const gchar* new_fingerprint, const gchar* old_fingerprint)
+{
+	gint status;
+	GtkWidget* table;
+	GtkWidget* widget;
+
+	gtk_label_set_text(GTK_LABEL(dialog->status_label), "Certificate Changed! Details:");
+
+	/* Create table */
+	table = gtk_table_new(6, 2, FALSE);
+	gtk_widget_show(table);
+	gtk_table_set_row_spacings(GTK_TABLE(table), 8);
+	gtk_table_set_col_spacings(GTK_TABLE(table), 8);
+
+	/* Icon */
+	gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
+
+	/* Entries */
+	widget = gtk_label_new(_("Subject:"));
+	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_show(widget);
+	gtk_table_attach(GTK_TABLE(table), widget, 0, 1, 0, 1, GTK_FILL, 0, 0, 0);
+
+	widget = gtk_label_new(subject);
+	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_show(widget);
+	gtk_table_attach(GTK_TABLE(table), widget, 1, 2, 0, 1, GTK_FILL, 0, 0, 0);
+
+	widget = gtk_label_new(_("Issuer:"));
+	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_show(widget);
+	gtk_table_attach(GTK_TABLE(table), widget, 0, 1, 1, 2, GTK_FILL, 0, 0, 0);
+
+	widget = gtk_label_new(issuer);
+	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_show(widget);
+	gtk_table_attach(GTK_TABLE(table), widget, 1, 2, 1, 2, GTK_FILL, 0, 0, 0);
+
+	widget = gtk_label_new(_("Old Fingerprint:"));
+	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_show(widget);
+	gtk_table_attach(GTK_TABLE(table), widget, 0, 1, 2, 3, GTK_FILL, 0, 0, 0);
+
+	widget = gtk_label_new(old_fingerprint);
+	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_show(widget);
+	gtk_table_attach(GTK_TABLE(table), widget, 1, 2, 2, 3, GTK_FILL, 0, 0, 0);
+
+	widget = gtk_label_new(_("New Fingerprint:"));
+	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_show(widget);
+	gtk_table_attach(GTK_TABLE(table), widget, 0, 1, 3, 4, GTK_FILL, 0, 0, 0);
+
+	widget = gtk_label_new(new_fingerprint);
+	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_show(widget);
+	gtk_table_attach(GTK_TABLE(table), widget, 1, 2, 3, 4, GTK_FILL, 0, 0, 0);
+
+	widget = gtk_label_new(_("Accept Changed Certificate?"));
+	gtk_misc_set_alignment(GTK_MISC(widget), 1.0, 0.5);
+	gtk_widget_show(widget);
+	gtk_table_attach(GTK_TABLE(table), widget, 0, 2, 4, 5, GTK_FILL, 0, 0, 0);
+
+	/* Pack it into the dialog */
+	gtk_box_pack_start(GTK_BOX(dialog->content_vbox), table, TRUE, TRUE, 4);
+
+	gtk_dialog_set_response_sensitive(GTK_DIALOG(dialog), GTK_RESPONSE_OK, TRUE);
+
+	dialog->mode = REMMINA_INIT_MODE_CERTIFICATE;
+
+	/* Now run it */
+	status = gtk_dialog_run(GTK_DIALOG(dialog));
+
+	if (status == GTK_RESPONSE_OK)
+	{
+
+	}
+
+	gtk_container_remove(GTK_CONTAINER(dialog->content_vbox), table);
+
+	return status;
+}
 
 static GtkWidget* remmina_init_dialog_create_file_button(GtkTable *table, const gchar *label, gint row, const gchar *filename)
 {
