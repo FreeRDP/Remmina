@@ -260,6 +260,7 @@ gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 	GdkDeviceManager *manager;
 	GdkDevice *device = NULL;
 #endif
+	gboolean retval;
 
 	if (!GTK_IS_WIDGET(gp) || gp->priv->closed)
 		return FALSE;
@@ -283,21 +284,23 @@ gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 		gp->priv->chat_window = NULL;
 	}
 
-#ifdef HAVE_LIBSSH
-	if (gp->priv->ssh_tunnel)
-	{
-		remmina_ssh_tunnel_free(gp->priv->ssh_tunnel);
-		gp->priv->ssh_tunnel = NULL;
-	}
-#endif
-
 	if (!gp->priv->plugin || !gp->priv->plugin->close_connection)
 	{
 		remmina_protocol_widget_emit_signal(gp, "disconnect");
 		return FALSE;
 	}
 
-	return gp->priv->plugin->close_connection(gp);
+	retval = gp->priv->plugin->close_connection(gp);
+
+	#ifdef HAVE_LIBSSH
+	if (gp->priv->ssh_tunnel)
+	{
+		remmina_ssh_tunnel_free(gp->priv->ssh_tunnel);
+		gp->priv->ssh_tunnel = NULL;
+	}
+	#endif
+
+	return retval;
 }
 
 static gboolean remmina_protocol_widget_emit_signal_timeout(gpointer user_data)
