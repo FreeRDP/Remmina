@@ -496,13 +496,21 @@ static void remmina_connection_holder_check_resize(RemminaConnectionHolder* cnnh
 	DECLARE_CNNOBJ
 	gboolean scroll_required = FALSE;
 	GdkScreen* screen;
+	gint monitor;
+	GdkRectangle screen_size;
 	gint screen_width, screen_height;
 	gint server_width, server_height;
 
 	remmina_connection_holder_get_desktop_size(cnnhld, &server_width, &server_height, FALSE);
-	screen = gdk_screen_get_default();
-	screen_width = gdk_screen_get_width(screen);
-	screen_height = gdk_screen_get_height(screen);
+	screen = gtk_window_get_screen(GTK_WINDOW(cnnhld->cnnwin));
+	monitor = gdk_screen_get_monitor_at_window(screen, gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
+#ifdef gdk_screen_get_monitor_workarea
+	gdk_screen_get_monitor_workarea(screen, monitor, &screen_size);
+#else
+	gdk_screen_get_monitor_geometry(screen, monitor, &screen_size);
+#endif
+	screen_width = screen_size.width;
+	screen_height = screen_size.height;
 
 	if (!remmina_protocol_widget_get_expand(REMMINA_PROTOCOL_WIDGET(cnnobj->proto))
 			&& (server_width <= 0 || server_height <= 0 || screen_width < server_width
