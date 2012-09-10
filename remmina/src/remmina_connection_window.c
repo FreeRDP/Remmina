@@ -436,7 +436,7 @@ static gboolean remmina_connection_holder_toolbar_autofit_restore(RemminaConnect
 		remmina_connection_holder_get_desktop_size(cnnhld, &width, &height, TRUE);
 		gtk_widget_get_allocation(priv->notebook, &na);
 		gtk_widget_get_allocation(cnnobj->scrolled_container, &ca);
-		gtk_widget_get_allocation(priv->toolbar, &ca);
+		gtk_widget_get_allocation(priv->toolbar, &ta);
 		gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), MAX(1, width + na.width - ca.width),
 				MAX(1, height + ta.height + na.height - ca.height));
 		gtk_container_check_resize(GTK_CONTAINER(cnnhld->cnnwin));
