@@ -660,6 +660,10 @@ static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPlugin
 	rfi->surface = cairo_image_surface_create_for_data((unsigned char*) rfi->primary_buffer, rfi->cairo_format, rfi->width, rfi->height, stride);
 	gtk_widget_queue_draw_area(rfi->drawing_area, 0, 0, rfi->width, rfi->height);
 
+	if (rfi->clipboard_handler)
+	{
+		remmina_rdp_event_on_clipboard(NULL, NULL, gp);
+	}
 	remmina_rdp_event_update_scale(gp);
 }
 
