@@ -436,7 +436,7 @@ static gboolean remmina_connection_holder_toolbar_autofit_restore(RemminaConnect
 		remmina_connection_holder_get_desktop_size(cnnhld, &width, &height, TRUE);
 		gtk_widget_get_allocation(priv->notebook, &na);
 		gtk_widget_get_allocation(cnnobj->scrolled_container, &ca);
-		gtk_widget_get_allocation(priv->toolbar, &ca);
+		gtk_widget_get_allocation(priv->toolbar, &ta);
 		gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), MAX(1, width + na.width - ca.width),
 				MAX(1, height + ta.height + na.height - ca.height));
 		gtk_container_check_resize(GTK_CONTAINER(cnnhld->cnnwin));
@@ -496,13 +496,21 @@ static void remmina_connection_holder_check_resize(RemminaConnectionHolder* cnnh
 	DECLARE_CNNOBJ
 	gboolean scroll_required = FALSE;
 	GdkScreen* screen;
+	gint monitor;
+	GdkRectangle screen_size;
 	gint screen_width, screen_height;
 	gint server_width, server_height;
 
 	remmina_connection_holder_get_desktop_size(cnnhld, &server_width, &server_height, FALSE);
-	screen = gdk_screen_get_default();
-	screen_width = gdk_screen_get_width(screen);
-	screen_height = gdk_screen_get_height(screen);
+	screen = gtk_window_get_screen(GTK_WINDOW(cnnhld->cnnwin));
+	monitor = gdk_screen_get_monitor_at_window(screen, gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
+#ifdef gdk_screen_get_monitor_workarea
+	gdk_screen_get_monitor_workarea(screen, monitor, &screen_size);
+#else
+	gdk_screen_get_monitor_geometry(screen, monitor, &screen_size);
+#endif
+	screen_width = screen_size.width;
+	screen_height = screen_size.height;
 
 	if (!remmina_protocol_widget_get_expand(REMMINA_PROTOCOL_WIDGET(cnnobj->proto))
 			&& (server_width <= 0 || server_height <= 0 || screen_width < server_width
@@ -513,52 +521,50 @@ static void remmina_connection_holder_check_resize(RemminaConnectionHolder* cnnh
 
 	switch (cnnhld->cnnwin->priv->view_mode)
 	{
-
 		case SCROLLED_FULLSCREEN_MODE:
 			gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), screen_width, screen_height);
 			gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(cnnobj->scrolled_container),
 					(scroll_required ? GTK_POLICY_AUTOMATIC : GTK_POLICY_NEVER),
 					(scroll_required ? GTK_POLICY_AUTOMATIC : GTK_POLICY_NEVER));
-					break;
+			break;
 
-					case VIEWPORT_FULLSCREEN_MODE:
-					gtk_window_resize (GTK_WINDOW(cnnhld->cnnwin), screen_width, screen_height);
-					gtk_container_set_border_width (GTK_CONTAINER (cnnhld->cnnwin), scroll_required ? 1 : 0);
-        break;
+		case VIEWPORT_FULLSCREEN_MODE:
+				gtk_window_resize (GTK_WINDOW(cnnhld->cnnwin), screen_width, screen_height);
+				gtk_container_set_border_width (GTK_CONTAINER (cnnhld->cnnwin), scroll_required ? 1 : 0);
+			break;
 
-    case SCROLLED_WINDOW_MODE:
-        if (remmina_file_get_int (cnnobj->remmina_file, "viewmode", AUTO_MODE) == AUTO_MODE)
-        {
-            gtk_window_set_default_size (GTK_WINDOW(cnnhld->cnnwin),
-                MIN (server_width, screen_width), MIN (server_height, screen_height));
-            if (server_width >= screen_width ||
-                server_height >= screen_height)
-            {
-                gtk_window_maximize (GTK_WINDOW(cnnhld->cnnwin));
-                remmina_file_set_int (cnnobj->remmina_file, "window_maximize", TRUE);
-            }
-            else
-            {
-                remmina_connection_holder_toolbar_autofit (NULL, cnnhld);
-                remmina_file_set_int (cnnobj->remmina_file, "window_maximize", FALSE);
-            }
-        }
-        else
-        {
-            gtk_window_set_default_size (GTK_WINDOW(cnnhld->cnnwin),
-                remmina_file_get_int (cnnobj->remmina_file, "window_width", 640),
-                remmina_file_get_int (cnnobj->remmina_file, "window_height", 480));
-            if (remmina_file_get_int (cnnobj->remmina_file, "window_maximize", FALSE))
-            {
-                gtk_window_maximize (GTK_WINDOW(cnnhld->cnnwin));
-            }
-        }
-        break;
+		case SCROLLED_WINDOW_MODE:
+			if (remmina_file_get_int (cnnobj->remmina_file, "viewmode", AUTO_MODE) == AUTO_MODE)
+			{
+				gtk_window_set_default_size (GTK_WINDOW(cnnhld->cnnwin),
+					MIN (server_width, screen_width), MIN (server_height, screen_height));
+				if (server_width >= screen_width || server_height >= screen_height)
+				{
+					gtk_window_maximize (GTK_WINDOW(cnnhld->cnnwin));
+					remmina_file_set_int (cnnobj->remmina_file, "window_maximize", TRUE);
+				}
+				else
+				{
+					remmina_connection_holder_toolbar_autofit (NULL, cnnhld);
+					remmina_file_set_int (cnnobj->remmina_file, "window_maximize", FALSE);
+				}
+			}
+			else
+			{
+				gtk_window_set_default_size (GTK_WINDOW(cnnhld->cnnwin),
+					remmina_file_get_int (cnnobj->remmina_file, "window_width", 640),
+				remmina_file_get_int (cnnobj->remmina_file, "window_height", 480));
+				if (remmina_file_get_int (cnnobj->remmina_file, "window_maximize", FALSE))
+				{
+					gtk_window_maximize (GTK_WINDOW(cnnhld->cnnwin));
+				}
+			}
+			break;
 
-    default:
-        break;
-    }
-		}
+		default:
+			break;
+	}
+}
 
 static void remmina_connection_holder_set_tooltip(GtkWidget* item, const gchar* tip, guint key1, guint key2)
 {
