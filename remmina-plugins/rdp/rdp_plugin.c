@@ -82,14 +82,6 @@ boolean rf_check_fds(RemminaProtocolWidget* gp)
 				input->MouseEvent(input, event->mouse_event.flags,
 						event->mouse_event.x, event->mouse_event.y);
 				break;
-			case REMMINA_RDP_EVENT_TYPE_CLIPBOARD:
-				if (rfi->clipboard_wait <= 0)
-				{
-					remmina_rdp_cliprdr_send_format_list_event(gp);
-					rfi->clipboard_wait = 0;
-				}
-				rfi->clipboard_wait--;
-				break;
 		}
 
 		g_free(event);
@@ -437,6 +429,16 @@ static int remmina_rdp_receive_channel_data(freerdp* instance, int channelId, ui
 	return freerdp_channels_data(instance, channelId, data, size, flags, total_size);
 }
 
+void remmina_rdp_channels_process_event(RemminaProtocolWidget* gp, RDP_EVENT* event)
+{
+	switch (event->event_class)
+	{
+		case RDP_EVENT_CLASS_CLIPRDR:
+			remmina_rdp_channel_cliprdr_process(gp, event);
+			break;
+	}
+}
+
 static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 {
 	int i;
@@ -527,7 +529,7 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 		{
 			event = freerdp_channels_pop_event(rfi->channels);
 			if (event)
-				remmina_handle_channel_event(gp, event);
+				remmina_rdp_channels_process_event(gp, event);
 		}
 		/* check ui */
 		if (!rf_check_fds(gp))

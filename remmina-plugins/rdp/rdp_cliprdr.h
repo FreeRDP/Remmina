@@ -24,9 +24,8 @@
 
 G_BEGIN_DECLS
 
-RDP_EVENT* remmina_rdp_cliprdr_get_event(uint16 event_type);
-int remmina_rdp_cliprdr_send_format_list_event(RemminaProtocolWidget* gp);
-void remmina_handle_channel_event(RemminaProtocolWidget* gp, RDP_EVENT* event);
+void remmina_rdp_channel_cliprdr_process(RemminaProtocolWidget* gp, RDP_EVENT* event);
+void remmina_rdp_event_process_clipboard(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui);
 
 G_END_DECLS
 
