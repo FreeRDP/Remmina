@@ -123,16 +123,16 @@ struct rf_context
 	GAsyncQueue* event_queue;
 	gint event_pipe[2];
 
+	GAsyncQueue* clipboard_queue;
+	uint32 format;
+	gboolean clipboard_wait;
 	gulong clipboard_handler;
-	gint clipboard_wait;
-	uint32 requested_format;
 };
 
 typedef enum
 {
 	REMMINA_RDP_EVENT_TYPE_SCANCODE,
-	REMMINA_RDP_EVENT_TYPE_MOUSE,
-	REMMINA_RDP_EVENT_TYPE_CLIPBOARD
+	REMMINA_RDP_EVENT_TYPE_MOUSE
 } RemminaPluginRdpEventType;
 
 struct remmina_plugin_rdp_event
@@ -162,8 +162,16 @@ typedef enum
 	REMMINA_RDP_UI_CONNECTED,
 	REMMINA_RDP_UI_UPDATE_CURSOR,
 	REMMINA_RDP_UI_RFX,
-	REMMINA_RDP_UI_NOCODEC
+	REMMINA_RDP_UI_NOCODEC,
+	REMMINA_RDP_UI_CLIPBOARD
 } RemminaPluginRdpUiType;
+
+typedef enum
+{
+	REMMINA_RDP_UI_CLIPBOARD_FORMATLIST,
+	REMMINA_RDP_UI_CLIPBOARD_GET_DATA,
+	REMMINA_RDP_UI_CLIPBOARD_SET_DATA
+} RemminaPluginRdpUiClipboardType;
 
 struct remmina_plugin_rdp_ui_object
 {
@@ -195,6 +203,12 @@ struct remmina_plugin_rdp_ui_object
 			gint height;
 			uint8* bitmap;
 		} nocodec;
+		struct
+		{
+			RemminaPluginRdpUiClipboardType type;
+			GtkTargetList* targetlist;
+			uint32 format;
+		} clipboard;
 	};
 };
 typedef struct remmina_plugin_rdp_ui_object RemminaPluginRdpUiObject;
