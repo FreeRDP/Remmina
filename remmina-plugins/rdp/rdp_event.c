@@ -401,7 +401,7 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget* widget, GdkEventScroll* e
 		case GDK_SCROLL_DOWN:
 			flag = PTR_FLAGS_WHEEL | PTR_FLAGS_WHEEL_NEGATIVE | 0x0088;
 			break;
-		
+
 #ifdef GDK_SCROLL_SMOOTH
 		case GDK_SCROLL_SMOOTH:
 			if (event->delta_y < 0)
@@ -488,12 +488,14 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 	return TRUE;
 }
 
-static gboolean remmina_rdp_event_on_clipboard(GtkClipboard *clipboard, GdkEvent *event, RemminaProtocolWidget *gp)
+gboolean remmina_rdp_event_on_clipboard(GtkClipboard *clipboard, GdkEvent *event, RemminaProtocolWidget *gp)
 {
-	RemminaPluginRdpEvent rdp_event = { 0 };
+	RemminaPluginRdpUiObject* ui;
 
-	rdp_event.type = REMMINA_RDP_EVENT_TYPE_CLIPBOARD;
-	remmina_rdp_event_event_push(gp, &rdp_event);
+	ui = g_new0(RemminaPluginRdpUiObject, 1);
+	ui->type = REMMINA_RDP_UI_CLIPBOARD;
+	ui->clipboard.type = REMMINA_RDP_UI_CLIPBOARD_FORMATLIST;
+	rf_queue_ui(gp, ui);
 
 	return TRUE;
 }
@@ -701,6 +703,10 @@ gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 				remmina_rdp_event_update_cursor(gp, ui);
 				break;
 
+			case REMMINA_RDP_UI_CLIPBOARD:
+				remmina_rdp_event_process_clipboard(gp, ui);
+				break;
+
 			default:
 				break;
 		}
@@ -721,4 +727,3 @@ void remmina_rdp_event_unfocus(RemminaProtocolWidget* gp)
 {
 	remmina_rdp_event_release_key(gp, 0);
 }
-
