@@ -431,6 +431,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 	guint16 cooked_keycode;
 	rfContext* rfi;
 	RemminaPluginRdpEvent rdp_event;
+	RDP_SCANCODE scancode;
 
 	rfi = GET_DATA(gp);
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_SCANCODE;
@@ -457,18 +458,22 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 		default:
 			if (!rfi->use_client_keymap)
 			{
-				rdp_event.key_event.key_code = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(event->hardware_keycode);
-				remmina_plugin_service->log_printf("[RDP]keyval=%04X keycode=%i scancode=%i extended=%i\n",
-						event->keyval, event->hardware_keycode, rdp_event.key_event.key_code, &rdp_event.key_event.extended);
+				scancode = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(event->hardware_keycode);
+				rdp_event.key_event.key_code = scancode & 0xFF;
+				rdp_event.key_event.extended = scancode & 0x100;
+				remmina_plugin_service->log_printf("[RDP]keyval=%02X keycode=%02X scancode=%02X extended=%s\n",
+						event->keyval, event->hardware_keycode, rdp_event.key_event.key_code, rdp_event.key_event.extended ? "true" : "false");
 			}
 			else
 			{
 				//TODO: Port to GDK functions
 				display = gdk_display_get_default();
 				cooked_keycode = XKeysymToKeycode(GDK_DISPLAY_XDISPLAY(display), XKeycodeToKeysym(GDK_DISPLAY_XDISPLAY(display), event->hardware_keycode, 0));
-				rdp_event.key_event.key_code = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(cooked_keycode);
-				remmina_plugin_service->log_printf("[RDP]keyval=%04X raw_keycode=%i cooked_keycode=%i scancode=%i extended=%i\n",
-						event->keyval, event->hardware_keycode, cooked_keycode, rdp_event.key_event.key_code, &rdp_event.key_event.extended);
+				scancode = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(cooked_keycode);
+				rdp_event.key_event.key_code = scancode & 0xFF;
+				rdp_event.key_event.extended = scancode & 0x100;
+				remmina_plugin_service->log_printf("[RDP]keyval=%02X raw_keycode=%02X cooked_keycode=%02X scancode=%02X extended=%s\n",
+						event->keyval, event->hardware_keycode, cooked_keycode, rdp_event.key_event.key_code, rdp_event.key_event.extended ? "true" : "false");
 			}
 
 			if (rdp_event.key_event.key_code)
