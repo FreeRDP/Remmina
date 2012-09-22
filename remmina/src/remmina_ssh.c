@@ -139,7 +139,7 @@ remmina_ssh_auth_password (RemminaSSH *ssh)
 			}
 		}
 	}
-	else
+	if (ret != SSH_AUTH_SUCCESS && authlist & SSH_AUTH_METHOD_PASSWORD)
 	{
 		ret = ssh_userauth_password (ssh->session, NULL, ssh->password);
 	}
