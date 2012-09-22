@@ -167,17 +167,18 @@ void rf_Bitmap_SetSurface(rdpContext* context, rdpBitmap* bitmap, boolean primar
 
 void rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 {
+	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
-	GdkPixbuf *pixbuf;
-	guchar* pixbuf_data;
 
-	pixbuf_data = g_malloc(pointer->width * pointer->height * 4);
 	if ((pointer->andMaskData != 0) && (pointer->xorMaskData != 0))
 	{
-		freerdp_alpha_cursor_convert(pixbuf_data, pointer->xorMaskData, pointer->andMaskData, pointer->width, pointer->height, pointer->xorBpp, rfi->clrconv);
+		ui = g_new0(RemminaPluginRdpUiObject, 1);
+		ui->type = REMMINA_RDP_UI_CREATE_CURSOR;
+		ui->cursor.pointer = (rfPointer*) pointer;
+		ui->cursor.type = REMMINA_RDP_POINTER_NEW;
+
+		rf_queue_ui(rfi->protocol_widget, ui);
 	}
-	pixbuf = gdk_pixbuf_new_from_data(pixbuf_data, GDK_COLORSPACE_RGB, TRUE, 8, pointer->width, pointer->height, (pointer->width * 4), (GdkPixbufDestroyNotify) g_free, NULL);
-	((rfPointer*) pointer)->cursor = gdk_cursor_new_from_pixbuf(rfi->display, pixbuf, pointer->xPos, pointer->yPos);
 }
 
 void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
@@ -188,39 +189,37 @@ void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 
 void rf_Pointer_Set(rdpContext* context, rdpPointer* pointer)
 {
-	rfContext* rfi = (rfContext*) context;
 	RemminaPluginRdpUiObject* ui;
+	rfContext* rfi = (rfContext*) context;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_UPDATE_CURSOR;
-	ui->cursor.cursor = ((rfPointer*) pointer)->cursor;
+	ui->cursor.pointer = (rfPointer*) pointer;
+	ui->cursor.type = REMMINA_RDP_POINTER_NEW;
 
 	rf_queue_ui(rfi->protocol_widget, ui);
 }
 
 void rf_Pointer_SetNull(rdpContext* context)
 {
-	rfContext* rfi = (rfContext*) context;
-	GdkCursor* nullcursor = NULL;
 	RemminaPluginRdpUiObject* ui;
-
-	nullcursor = gdk_cursor_new(GDK_BLANK_CURSOR);
+	rfContext* rfi = (rfContext*) context;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_UPDATE_CURSOR;
-	ui->cursor.cursor = nullcursor;
+	ui->cursor.type = REMMINA_RDP_POINTER_NULL;
 
 	rf_queue_ui(rfi->protocol_widget, ui);
 }
 
 void rf_Pointer_SetDefault(rdpContext* context)
 {
-	rfContext* rfi = (rfContext*) context;
 	RemminaPluginRdpUiObject* ui;
+	rfContext* rfi = (rfContext*) context;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_UPDATE_CURSOR;
-	ui->cursor.cursor = NULL;
+	ui->cursor.type = REMMINA_RDP_POINTER_DEFAULT;
 
 	rf_queue_ui(rfi->protocol_widget, ui);
 }
