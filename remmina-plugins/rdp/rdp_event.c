@@ -23,6 +23,7 @@
 #include "rdp_plugin.h"
 #include "rdp_event.h"
 #include "rdp_gdi.h"
+#include "rdp_cliprdr.h"
 #include <gdk/gdkkeysyms.h>
 #include <cairo/cairo-xlib.h>
 #include <freerdp/locale/keyboard.h>
@@ -671,11 +672,31 @@ static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPlugin
 
 static void remmina_rdp_event_update_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
-	rfContext* rfi;
+	GdkCursor* cursor = NULL;
+	rfContext* rfi = GET_DATA(gp);
 
-	rfi = GET_DATA(gp);
+	if (ui->cursor.pointer && ui->cursor.type == REMMINA_RDP_POINTER_NEW)
+	{
+		cursor = ui->cursor.pointer->cursor;
+	}
+	else if (ui->cursor.type == REMMINA_RDP_POINTER_NULL)
+	{
+		cursor = gdk_cursor_new(GDK_BLANK_CURSOR);
+	}
+	gdk_window_set_cursor(gtk_widget_get_window(rfi->drawing_area), cursor);
+}
 
-	gdk_window_set_cursor(gtk_widget_get_window(rfi->drawing_area), ui->cursor.cursor);
+static void remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+{
+	guchar* data;
+	GdkPixbuf* pixbuf;
+	rfContext* rfi = GET_DATA(gp);
+	rdpPointer* pointer = (rdpPointer*)ui->cursor.pointer;
+
+	data = g_malloc0(pointer->width * pointer->height * 4);
+	freerdp_alpha_cursor_convert(data, pointer->xorMaskData, pointer->andMaskData, pointer->width, pointer->height, pointer->xorBpp, rfi->clrconv);
+	pixbuf = gdk_pixbuf_new_from_data(data, GDK_COLORSPACE_RGB, TRUE, 8, pointer->width, pointer->height, (pointer->width * 4), (GdkPixbufDestroyNotify) g_free, NULL);
+	((rfPointer*)ui->cursor.pointer)->cursor = gdk_cursor_new_from_pixbuf(rfi->display, pixbuf, pointer->xPos, pointer->yPos);
 }
 
 gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
@@ -701,6 +722,10 @@ gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 
 			case REMMINA_RDP_UI_UPDATE_CURSOR:
 				remmina_rdp_event_update_cursor(gp, ui);
+				break;
+
+			case REMMINA_RDP_UI_CREATE_CURSOR:
+				remmina_rdp_event_create_cursor(gp, ui);
 				break;
 
 			case REMMINA_RDP_UI_CLIPBOARD:
