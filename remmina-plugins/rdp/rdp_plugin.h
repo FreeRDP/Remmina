@@ -161,6 +161,7 @@ typedef enum
 	REMMINA_RDP_UI_UPDATE_REGION = 0,
 	REMMINA_RDP_UI_CONNECTED,
 	REMMINA_RDP_UI_UPDATE_CURSOR,
+	REMMINA_RDP_UI_CREATE_CURSOR,
 	REMMINA_RDP_UI_RFX,
 	REMMINA_RDP_UI_NOCODEC,
 	REMMINA_RDP_UI_CLIPBOARD
@@ -172,6 +173,13 @@ typedef enum
 	REMMINA_RDP_UI_CLIPBOARD_GET_DATA,
 	REMMINA_RDP_UI_CLIPBOARD_SET_DATA
 } RemminaPluginRdpUiClipboardType;
+
+typedef enum
+{
+	REMMINA_RDP_POINTER_NEW,
+	REMMINA_RDP_POINTER_NULL,
+	REMMINA_RDP_POINTER_DEFAULT
+} RemminaPluginRdpUiPointerType;
 
 struct remmina_plugin_rdp_ui_object
 {
@@ -187,7 +195,8 @@ struct remmina_plugin_rdp_ui_object
 		} region;
 		struct
 		{
-			GdkCursor* cursor;
+			rfPointer* pointer;
+			RemminaPluginRdpUiPointerType type;
 		} cursor;
 		struct
 		{
