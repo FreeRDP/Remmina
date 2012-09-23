@@ -173,7 +173,7 @@ void rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 	if ((pointer->andMaskData != 0) && (pointer->xorMaskData != 0))
 	{
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
-		ui->type = REMMINA_RDP_UI_CREATE_CURSOR;
+		ui->type = REMMINA_RDP_UI_CURSOR;
 		ui->cursor.pointer = (rfPointer*) pointer;
 		ui->cursor.type = REMMINA_RDP_POINTER_NEW;
 
@@ -183,8 +183,19 @@ void rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 
 void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 {
+	RemminaPluginRdpUiObject* ui;
+	rfContext* rfi = (rfContext*) context;
+
 	if (((rfPointer*) pointer)->cursor != 0)
-		g_object_unref(((rfPointer*) pointer)->cursor);
+	{
+
+		ui = g_new0(RemminaPluginRdpUiObject, 1);
+		ui->type = REMMINA_RDP_UI_CURSOR;
+		ui->cursor.pointer = (rfPointer*) pointer;
+		ui->cursor.type = REMMINA_RDP_POINTER_FREE;
+
+		rf_queue_ui(rfi->protocol_widget, ui);
+	}
 }
 
 void rf_Pointer_Set(rdpContext* context, rdpPointer* pointer)
@@ -193,9 +204,9 @@ void rf_Pointer_Set(rdpContext* context, rdpPointer* pointer)
 	rfContext* rfi = (rfContext*) context;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
-	ui->type = REMMINA_RDP_UI_UPDATE_CURSOR;
+	ui->type = REMMINA_RDP_UI_CURSOR;
 	ui->cursor.pointer = (rfPointer*) pointer;
-	ui->cursor.type = REMMINA_RDP_POINTER_NEW;
+	ui->cursor.type = REMMINA_RDP_POINTER_SET;
 
 	rf_queue_ui(rfi->protocol_widget, ui);
 }
@@ -206,7 +217,7 @@ void rf_Pointer_SetNull(rdpContext* context)
 	rfContext* rfi = (rfContext*) context;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
-	ui->type = REMMINA_RDP_UI_UPDATE_CURSOR;
+	ui->type = REMMINA_RDP_UI_CURSOR;
 	ui->cursor.type = REMMINA_RDP_POINTER_NULL;
 
 	rf_queue_ui(rfi->protocol_widget, ui);
@@ -218,7 +229,7 @@ void rf_Pointer_SetDefault(rdpContext* context)
 	rfContext* rfi = (rfContext*) context;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
-	ui->type = REMMINA_RDP_UI_UPDATE_CURSOR;
+	ui->type = REMMINA_RDP_UI_CURSOR;
 	ui->cursor.type = REMMINA_RDP_POINTER_DEFAULT;
 
 	rf_queue_ui(rfi->protocol_widget, ui);
