@@ -242,11 +242,7 @@ static boolean remmina_rdp_pre_connect(freerdp* instance)
 
 	freerdp_channels_pre_connect(rfi->channels, instance);
 
-	rfi->clrconv = xnew(CLRCONV);
-	rfi->clrconv->alpha = true;
-	rfi->clrconv->invert = false;
-	rfi->clrconv->rgb555 = false;
-	rfi->clrconv->palette = xnew(rdpPalette);
+	rfi->clrconv = freerdp_clrconv_new(CLRCONV_ALPHA);
 
 	instance->context->cache = cache_new(instance->settings);
 
