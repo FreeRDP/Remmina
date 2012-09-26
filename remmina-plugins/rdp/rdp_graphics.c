@@ -186,9 +186,8 @@ void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 
-	if (((rfPointer*) pointer)->cursor != 0)
+	if (G_IS_OBJECT(((rfPointer*) pointer)->cursor))
 	{
-
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_CURSOR;
 		ui->cursor.pointer = (rfPointer*) pointer;
