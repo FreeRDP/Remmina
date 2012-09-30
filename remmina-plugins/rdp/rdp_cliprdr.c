@@ -24,6 +24,7 @@
 #include <freerdp/freerdp.h>
 #include <freerdp/utils/memory.h>
 #include <freerdp/utils/event.h>
+#include <freerdp/utils/unicode.h>
 #include <freerdp/channels/channels.h>
 #include <freerdp/plugins/cliprdr.h>
 
@@ -215,12 +216,7 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 		{
 			case CB_FORMAT_UNICODETEXT:
 			{
-				UNICONV* uniconv;
-
-				uniconv = freerdp_uniconv_new();
-				data = (uint8*) freerdp_uniconv_in(uniconv, data, size);
-				size = strlen((char*) data);
-				freerdp_uniconv_free(uniconv);
+				size = freerdp_UnicodeToAsciiAlloc((WCHAR*)data, (CHAR**)&data, size/2);
 				crlf2lf(data, &size);
 				output = data;
 				break;
@@ -431,16 +427,10 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 			}
 			case CB_FORMAT_UNICODETEXT:
 			{
-				size_t out_size;
-				UNICONV* uniconv;
-
 				size = strlen((char*)inbuf);
 				inbuf = lf2crlf(inbuf, &size);
-				uniconv = freerdp_uniconv_new();
-				outbuf = (uint8*) freerdp_uniconv_out(uniconv, (char*) inbuf, &out_size);
-				freerdp_uniconv_free(uniconv);
+				size = (freerdp_AsciiToUnicodeAlloc((CHAR*)inbuf, (WCHAR**)&outbuf, 0) + 1) * 2;
 				g_free(inbuf);
-				size = out_size + 2;
 				break;
 			}
 			case CB_FORMAT_PNG:
