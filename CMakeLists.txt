@@ -93,17 +93,17 @@ if(GCRYPT_FOUND)
 	add_definitions(-DHAVE_LIBGCRYPT)
 endif()
 
+find_suggested_package(AVAHI)
+if(AVAHI_FOUND)
+	add_definitions(-DHAVE_LIBAVAHI_UI)
+	add_definitions(-DHAVE_LIBAVAHI_CLIENT)
+endif()
+
 find_required_package(GTK)
 if(GTK_FOUND)
 	add_subdirectory(remmina)
 	add_subdirectory(remmina-plugins)
 	add_subdirectory(remmina-plugins-gnome)
-endif()
-
-find_suggested_package(AVAHI)
-if(AVAHI_FOUND)
-	add_definitions(-DHAVE_LIBAVAHI_UI)
-	add_definitions(-DHAVE_LIBAVAHI_CLIENT)
 endif()
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
