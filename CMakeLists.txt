@@ -83,23 +83,24 @@ set(REMMINA_DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_PREFIX}/share/locale")
 set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/remmina/plugins")
 
+find_required_package(GTK)
 find_suggested_package(PTHREAD)
+find_suggested_package(GCRYPT)
+find_suggested_package(AVAHI)
+
 if(PTHREAD_FOUND)
 	add_definitions(-DHAVE_PTHREAD)
 endif()
 
-find_suggested_package(GCRYPT)
 if(GCRYPT_FOUND)
 	add_definitions(-DHAVE_LIBGCRYPT)
 endif()
 
-find_suggested_package(AVAHI)
 if(AVAHI_FOUND)
 	add_definitions(-DHAVE_LIBAVAHI_UI)
 	add_definitions(-DHAVE_LIBAVAHI_CLIENT)
 endif()
 
-find_required_package(GTK)
 if(GTK_FOUND)
 	add_subdirectory(remmina)
 	add_subdirectory(remmina-plugins)
