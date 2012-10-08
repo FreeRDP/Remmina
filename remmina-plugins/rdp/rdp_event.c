@@ -690,6 +690,17 @@ static void remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPl
 	((rfPointer*)ui->cursor.pointer)->cursor = gdk_cursor_new_from_pixbuf(rfi->display, pixbuf, pointer->xPos, pointer->yPos);
 }
 
+static void remmina_rdp_event_free_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+{
+	rfContext* rfi = GET_DATA(gp);
+
+	g_mutex_lock(rfi->gmutex);
+	g_object_unref(ui->cursor.pointer->cursor);
+	ui->cursor.pointer->cursor = NULL;
+	g_cond_signal(rfi->gcond);
+	g_mutex_unlock(rfi->gmutex);
+}
+
 static void remmina_rdp_event_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
 	rfContext* rfi = GET_DATA(gp);
@@ -701,7 +712,7 @@ static void remmina_rdp_event_cursor(RemminaProtocolWidget* gp, RemminaPluginRdp
 			break;
 
 		case REMMINA_RDP_POINTER_FREE:
-			g_object_unref(ui->cursor.pointer->cursor);
+			remmina_rdp_event_free_cursor(gp, ui);
 			break;
 
 		case REMMINA_RDP_POINTER_SET:

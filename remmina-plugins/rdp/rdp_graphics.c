@@ -194,6 +194,13 @@ void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 		ui->cursor.type = REMMINA_RDP_POINTER_FREE;
 
 		rf_queue_ui(rfi->protocol_widget, ui);
+
+		g_mutex_lock(rfi->gmutex);
+		while (G_IS_OBJECT(((rfPointer*) pointer)->cursor))
+		{
+			g_cond_wait(rfi->gcond, rfi->gmutex);
+		}
+		g_mutex_unlock(rfi->gmutex);
 	}
 }
 
