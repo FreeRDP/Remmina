@@ -83,6 +83,9 @@ struct rf_context
 	gboolean scale;
 	gboolean user_cancelled;
 
+	GMutex* gmutex;
+	GCond* gcond;
+
 	RDP_PLUGIN_DATA rdpdr_data[5];
 	RDP_PLUGIN_DATA drdynvc_data[5];
 	RDP_PLUGIN_DATA rdpsnd_data[5];
