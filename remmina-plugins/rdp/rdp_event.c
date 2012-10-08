@@ -691,19 +691,6 @@ static void remmina_rdp_event_update_cursor(RemminaProtocolWidget* gp, RemminaPl
 	gdk_window_set_cursor(gtk_widget_get_window(rfi->drawing_area), cursor);
 }
 
-static void remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
-{
-	guchar* data;
-	GdkPixbuf* pixbuf;
-	rfContext* rfi = GET_DATA(gp);
-	rdpPointer* pointer = (rdpPointer*)ui->cursor.pointer;
-
-	data = g_malloc0(pointer->width * pointer->height * 4);
-	freerdp_alpha_cursor_convert(data, pointer->xorMaskData, pointer->andMaskData, pointer->width, pointer->height, pointer->xorBpp, rfi->clrconv);
-	pixbuf = gdk_pixbuf_new_from_data(data, GDK_COLORSPACE_RGB, TRUE, 8, pointer->width, pointer->height, (pointer->width * 4), (GdkPixbufDestroyNotify) g_free, NULL);
-	((rfPointer*)ui->cursor.pointer)->cursor = gdk_cursor_new_from_pixbuf(rfi->display, pixbuf, pointer->xPos, pointer->yPos);
-}
-
 gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 {
 	rfContext* rfi;
