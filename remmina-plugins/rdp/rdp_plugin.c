@@ -32,7 +32,7 @@
 #include <freerdp/freerdp.h>
 #include <freerdp/constants.h>
 #include <freerdp/utils/memory.h>
-#include <freerdp/plugins/cliprdr.h>
+#include <freerdp/client/cliprdr.h>
 
 #define REMMINA_RDP_FEATURE_TOOL_REFRESH		1
 #define REMMINA_RDP_FEATURE_SCALE			2
@@ -53,9 +53,9 @@ void rf_get_fds(RemminaProtocolWidget* gp, void** rfds, int* rcount)
 	}
 }
 
-boolean rf_check_fds(RemminaProtocolWidget* gp)
+BOOL rf_check_fds(RemminaProtocolWidget* gp)
 {
-	uint16 flags;
+	UINT16 flags;
 	gchar buf[100];
 	rdpInput* input;
 	rfContext* rfi;
@@ -122,7 +122,7 @@ void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj)
 			break;
 
 		case REMMINA_RDP_UI_NOCODEC:
-			xfree(obj->nocodec.bitmap);
+			free(obj->nocodec.bitmap);
 			break;
 
 		default:
@@ -141,8 +141,8 @@ void rf_begin_paint(rdpContext* context)
 
 void rf_end_paint(rdpContext* context)
 {
-	sint32 x, y;
-	uint32 w, h;
+	INT32 x, y;
+	UINT32 w, h;
 	rdpGdi* gdi;
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
@@ -192,7 +192,7 @@ static void rf_desktop_resize(rdpContext* context)
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "desktop-resize");
 }
 
-static boolean remmina_rdp_pre_connect(freerdp* instance)
+static BOOL remmina_rdp_pre_connect(freerdp* instance)
 {
 	rfContext* rfi;
 	rdpSettings* settings;
@@ -250,13 +250,13 @@ static boolean remmina_rdp_pre_connect(freerdp* instance)
 }
 
 
-static boolean remmina_rdp_post_connect(freerdp* instance)
+static BOOL remmina_rdp_post_connect(freerdp* instance)
 {
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
 	RemminaPluginRdpUiObject* ui;
 	rdpGdi* gdi;
-	uint32 flags;
+	UINT32 flags;
 
 	rfi = (rfContext*) instance->context;
 	gp = rfi->protocol_widget;
@@ -265,8 +265,8 @@ static boolean remmina_rdp_post_connect(freerdp* instance)
 	rfi->height = rfi->settings->height;
 	rfi->srcBpp = rfi->settings->color_depth;
 
-	if (rfi->settings->rfx_codec == false)
-		rfi->sw_gdi = true;
+	if (rfi->settings->rfx_codec == FALSE)
+		rfi->sw_gdi = TRUE;
 
 	rf_register_graphics(instance->context->graphics);
 
@@ -332,7 +332,7 @@ static boolean remmina_rdp_post_connect(freerdp* instance)
 	return True;
 }
 
-static boolean remmina_rdp_authenticate(freerdp* instance, char** username, char** password, char** domain)
+static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** password, char** domain)
 {
 	gchar* s;
 	gint ret;
@@ -352,7 +352,7 @@ static boolean remmina_rdp_authenticate(freerdp* instance, char** username, char
 
 		if (s)
 		{
-			rfi->settings->username = xstrdup(s);
+			rfi->settings->username = strdup(s);
 			g_free(s);
 		}
 
@@ -360,7 +360,7 @@ static boolean remmina_rdp_authenticate(freerdp* instance, char** username, char
 
 		if (s)
 		{
-			rfi->settings->password = xstrdup(s);
+			rfi->settings->password = strdup(s);
 			g_free(s);
 		}
 
@@ -368,7 +368,7 @@ static boolean remmina_rdp_authenticate(freerdp* instance, char** username, char
 
 		if (s)
 		{
-			rfi->settings->domain = xstrdup(s);
+			rfi->settings->domain = strdup(s);
 			g_free(s);
 		}
 
@@ -383,7 +383,7 @@ static boolean remmina_rdp_authenticate(freerdp* instance, char** username, char
 	return True;
 }
 
-static boolean remmina_rdp_verify_certificate(freerdp* instance, char* subject, char* issuer, char* fingerprint)
+static BOOL remmina_rdp_verify_certificate(freerdp* instance, char* subject, char* issuer, char* fingerprint)
 {
 	gint status;
 	rfContext* rfi;
@@ -401,7 +401,7 @@ static boolean remmina_rdp_verify_certificate(freerdp* instance, char* subject, 
 
 	return False;
 }
-static boolean remmina_rdp_verify_changed_certificate(freerdp* instance, char* subject, char* issuer, char* new_fingerprint, char* old_fingerprint)
+static BOOL remmina_rdp_verify_changed_certificate(freerdp* instance, char* subject, char* issuer, char* new_fingerprint, char* old_fingerprint)
 {
 	gint status;
 	rfContext* rfi;
@@ -420,7 +420,7 @@ static boolean remmina_rdp_verify_changed_certificate(freerdp* instance, char* s
 	return False;
 }
 
-static int remmina_rdp_receive_channel_data(freerdp* instance, int channelId, uint8* data, int size, int flags, int total_size)
+static int remmina_rdp_receive_channel_data(freerdp* instance, int channelId, UINT8* data, int size, int flags, int total_size)
 {
 	return freerdp_channels_data(instance, channelId, data, size, flags, total_size);
 }
@@ -473,7 +473,7 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 		FD_ZERO(&rfds_set);
 		for (i = 0; i < rcount; i++)
 		{
-			fds = (int) (uint64) (rfds[i]);
+			fds = (int) (UINT64) (rfds[i]);
 
 			if (fds > max_fds)
 				max_fds = fds;
@@ -557,7 +557,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		return FALSE;
 
 	remmina_plugin_service->get_server_port(s, 3389, &host, &port);
-	rfi->settings->hostname = xstrdup(host);
+	rfi->settings->hostname = strdup(host);
 	g_free(host);
 	g_free(s);
 	rfi->settings->port = port;
@@ -576,10 +576,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	remmina_plugin_service->protocol_plugin_set_height(gp, rfi->settings->height);
 
 	if (remmina_plugin_service->file_get_string(remminafile, "username"))
-		rfi->settings->username = xstrdup(remmina_plugin_service->file_get_string(remminafile, "username"));
+		rfi->settings->username = strdup(remmina_plugin_service->file_get_string(remminafile, "username"));
 
 	if (remmina_plugin_service->file_get_string(remminafile, "domain"))
-		rfi->settings->domain = xstrdup(remmina_plugin_service->file_get_string(remminafile, "domain"));
+		rfi->settings->domain = strdup(remmina_plugin_service->file_get_string(remminafile, "domain"));
 
 	THREADS_ENTER
 	s = remmina_plugin_service->file_get_secret(remminafile, "password");
@@ -587,7 +587,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	if (s)
 	{
-		rfi->settings->password = xstrdup(s);
+		rfi->settings->password = strdup(s);
 		rfi->settings->autologon = 1;
 		g_free(s);
 	}
@@ -604,12 +604,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	if (remmina_plugin_service->file_get_string(remminafile, "exec"))
 	{
-		rfi->settings->shell = xstrdup(remmina_plugin_service->file_get_string(remminafile, "exec"));
+		rfi->settings->shell = strdup(remmina_plugin_service->file_get_string(remminafile, "exec"));
 	}
 
 	if (remmina_plugin_service->file_get_string(remminafile, "execpath"))
 	{
-		rfi->settings->directory = xstrdup(remmina_plugin_service->file_get_string(remminafile, "execpath"));
+		rfi->settings->directory = strdup(remmina_plugin_service->file_get_string(remminafile, "execpath"));
 	}
 
 	s = g_strdup_printf("rdp_quality_%i", remmina_plugin_service->file_get_int(remminafile, "quality", DEFAULT_QUALITY_0));
@@ -810,7 +810,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	freerdp_context_new(instance);
 	rfi = (rfContext*) instance->context;
 
-	g_object_set_data_full(G_OBJECT(gp), "plugin-data", rfi, xfree);
+	g_object_set_data_full(G_OBJECT(gp), "plugin-data", rfi, free);
 
 	rfi->protocol_widget = gp;
 	rfi->instance = instance;
