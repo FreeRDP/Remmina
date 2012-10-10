@@ -108,7 +108,7 @@ static void rf_gdi_fast_index(rdpContext* context, FAST_INDEX_ORDER* fast_index)
 
 static void rf_gdi_surface_bits(rdpContext* context, SURFACE_BITS_COMMAND* surface_bits_command)
 {
-	uint8* bitmap;
+	UINT8* bitmap;
 	RFX_MESSAGE* message;
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
@@ -128,7 +128,7 @@ static void rf_gdi_surface_bits(rdpContext* context, SURFACE_BITS_COMMAND* surfa
 	}
 	else if (surface_bits_command->codecID == CODEC_ID_NONE)
 	{
-		bitmap = (uint8*) xzalloc(surface_bits_command->width * surface_bits_command->height * 4);
+		bitmap = (UINT8*) xzalloc(surface_bits_command->width * surface_bits_command->height * 4);
 
 		freerdp_image_flip(surface_bits_command->bitmapData, bitmap,
 				surface_bits_command->width, surface_bits_command->height, 32);
