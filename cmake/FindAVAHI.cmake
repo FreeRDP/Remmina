@@ -20,8 +20,7 @@
 include(FindPkgConfig)
 
 if(PKG_CONFIG_FOUND)
-	pkg_check_modules(AVAHI_COMMON avahi-common)
-	pkg_check_modules(AVAHI_CLIENT avahi-client)
+	pkg_check_modules(PC_AVAHI_CLIENT avahi-client)
 	if(GTK3_FOUND)
 		set(_AVAHI_UI_LIB_NAME avahi-ui-gtk3)
 		set(_AVAHI_UI_PKG_NAME avahi-ui-gtk3>=0.6.30 avahi-client>=0.6.30)
@@ -29,11 +28,11 @@ if(PKG_CONFIG_FOUND)
 		set(_AVAHI_UI_LIB_NAME avahi-ui)
 		set(_AVAHI_UI_PKG_NAME avahi-ui>=0.6.30 avahi-client>=0.6.30)
 	endif()
-	pkg_check_modules(AVAHI_UI ${_AVAHI_UI_PKG_NAME})
+	pkg_check_modules(PC_AVAHI_UI ${_AVAHI_UI_PKG_NAME})
 endif()
 
 
-find_library(AVAHI_COMMON_LIBRARY NAMES avahi-common PATHS ${PC_AVAHI_COMMON_LIBRARY_DIRS})
+find_library(AVAHI_COMMON_LIBRARY NAMES avahi-common PATHS ${PC_AVAHI_CLIENT_LIBRARY_DIRS})
 if(AVAHI_COMMON_LIBRARY)
 	set(AVAHI_COMMON_FOUND TRUE)
 endif()
