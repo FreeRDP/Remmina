@@ -33,6 +33,7 @@
 #include <freerdp/constants.h>
 #include <freerdp/utils/memory.h>
 #include <freerdp/client/cliprdr.h>
+#include <freerdp/client/channels.h>
 
 #define REMMINA_RDP_FEATURE_TOOL_REFRESH		1
 #define REMMINA_RDP_FEATURE_SCALE			2
@@ -535,6 +536,27 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 	}
 }
 
+gboolean remmina_rdp_load_plugin(rdpChannels* channels, rdpSettings* settings, const char* name, RDP_PLUGIN_DATA* plugin_data)
+{
+	void* entry = NULL;
+
+	entry = freerdp_channels_find_static_virtual_channel_entry(name);
+
+	if (entry)
+	{
+		if (freerdp_channels_client_load(channels, settings, entry, plugin_data) == 0)
+		{
+			g_printf("loading channel %s (static)\n", name);
+			return TRUE;
+		}
+	}
+
+	g_printf("loading channel %s (plugin)\n", name);
+	freerdp_channels_load_plugin(channels, settings, name, plugin_data);
+
+	return TRUE;
+}
+
 static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 {
 	gchar* s;
@@ -710,7 +732,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 			}
 		}
 
-		freerdp_channels_load_plugin(rfi->channels, rfi->settings, "rdpsnd", rfi->rdpsnd_data);
+		remmina_rdp_load_plugin(rfi->channels, rfi->settings, "rdpsnd", rfi->rdpsnd_data);
 
 		rfi->drdynvc_data[drdynvc_num].size = sizeof(RDP_PLUGIN_DATA);
 		rfi->drdynvc_data[drdynvc_num].data[0] = "audin";
@@ -719,12 +741,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	if (drdynvc_num)
 	{
-		freerdp_channels_load_plugin(rfi->channels, rfi->settings, "drdynvc", rfi->drdynvc_data);
+		remmina_rdp_load_plugin(rfi->channels, rfi->settings, "drdynvc", rfi->drdynvc_data);
 	}
 
 	if (!remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE))
 	{
-		freerdp_channels_load_plugin(rfi->channels, rfi->settings, "cliprdr", NULL);
+		remmina_rdp_load_plugin(rfi->channels, rfi->settings, "cliprdr", NULL);
 	}
 
 	rdpdr_num = 0;
@@ -758,7 +780,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	if (rdpdr_num)
 	{
-		freerdp_channels_load_plugin(rfi->channels, rfi->settings, "rdpdr", rfi->rdpdr_data);
+		remmina_rdp_load_plugin(rfi->channels, rfi->settings, "rdpdr", rfi->rdpdr_data);
 	}
 
 	if (!freerdp_connect(rfi->instance))
