@@ -58,5 +58,7 @@ if(ZLIB_FOUND)
 	add_subdirectory(vnc)
 endif()
 
-add_subdirectory(po)
+if(WITH_TRANSLATIONS)
+	add_subdirectory(po)
+endif()
 
