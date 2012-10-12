@@ -29,6 +29,7 @@ include(CheckCCompilerFlag)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
 
 include(FindOptionalPackage)
+include(ConfigOptions)
 
 if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE "Release")
