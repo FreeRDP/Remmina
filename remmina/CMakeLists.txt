@@ -141,7 +141,9 @@ if(GTK3_FOUND)
 	endif()
 endif()
 
-add_subdirectory(po)
+if(WITH_TRANSLATIONS)
+	add_subdirectory(po)
+endif()
 add_subdirectory(icons)
 add_subdirectory(desktop)
 
