@@ -17,29 +17,43 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, 
 # Boston, MA 02111-1307, USA.
 
-if(GTK3_FOUND)
-	set(_AVAHI_LIB_NAME avahi-ui-gtk3)
-	set(_AVAHI_PKG_NAME avahi-ui-gtk3>=0.6.30 avahi-client>=0.6.30)
-else()
-	set(_AVAHI_LIB_NAME avahi-ui)
-	set(_AVAHI_PKG_NAME avahi-ui>=0.6.30 avahi-client>=0.6.30)
+include(FindPkgConfig)
+
+if(PKG_CONFIG_FOUND)
+	pkg_check_modules(AVAHI_COMMON avahi-common)
+	pkg_check_modules(AVAHI_CLIENT avahi-client)
+	if(GTK3_FOUND)
+		set(_AVAHI_UI_LIB_NAME avahi-ui-gtk3)
+		set(_AVAHI_UI_PKG_NAME avahi-ui-gtk3>=0.6.30 avahi-client>=0.6.30)
+	else()
+		set(_AVAHI_UI_LIB_NAME avahi-ui)
+		set(_AVAHI_UI_PKG_NAME avahi-ui>=0.6.30 avahi-client>=0.6.30)
+	endif()
+	pkg_check_modules(AVAHI_UI ${_AVAHI_UI_PKG_NAME})
 endif()
 
-find_package(PkgConfig)
-pkg_check_modules(PC_AVAHI ${_AVAHI_PKG_NAME})
 
-find_path(AVAHI_INCLUDE_DIR avahi-ui/avahi-ui.h
-	HINTS ${PC_AVAHI_INCLUDEDIR} ${PC_AVAHI_INCLUDE_DIRS})
+find_library(AVAHI_COMMON_LIBRARY NAMES avahi-common PATHS ${PC_AVAHI_COMMON_LIBRARY_DIRS})
+if(AVAHI_COMMON_LIBRARY)
+	set(AVAHI_COMMON_FOUND TRUE)
+endif()
 
-find_library(AVAHI_LIBRARY NAMES ${_AVAHI_LIB_NAME}
-	HINTS ${PC_AVAHI_LIBDIR} ${PC_AVAHI_LIBRARY_DIRS})
+find_library(AVAHI_CLIENT_LIBRARY NAMES avahi-client PATHS ${PC_AVAHI_CLIENT_LIBRARY_DIRS})
+if(AVAHI_CLIENT_LIBRARY)
+	set(AVAHI_CLIENT_FOUND TRUE)
+endif()
 
-include(FindPackageHandleStandardArgs)
+find_path(AVAHI_UI_INCLUDE_DIR avahi-ui/avahi-ui.h PATHS ${PC_AVAHI_UI_INCLUDE_DIRS})
+find_library(AVAHI_UI_LIBRARY NAMES ${_AVAHI_UI_LIB_NAME} PATHS ${PC_AVAHI_UI_LIBRARY_DIRS})
+if(AVAHI_UI_INCLUDE_DIR AND AVAHI_UI_LIBRARY)
+	set(AVAHI_UI_FOUND TRUE)
+endif()
 
-find_package_handle_standard_args(AVAHI DEFAULT_MSG AVAHI_LIBRARY AVAHI_INCLUDE_DIR)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(AVAHI DEFAULT_MSG AVAHI_COMMON_FOUND AVAHI_CLIENT_FOUND AVAHI_UI_FOUND)
 
-set(AVAHI_LIBRARIES ${AVAHI_LIBRARY})
-set(AVAHI_INCLUDE_DIRS ${AVAHI_INCLUDE_DIR})
+if (AVAHI_FOUND)
+	set(AVAHI_INCLUDE_DIRS ${AVAHI_UI_INCLUDE_DIR})
+	set(AVAHI_LIBRARIES ${AVAHI_COMMON_LIBRARY} ${AVAHI_CLIENT_LIBRARY} ${AVAHI_UI_LIBRARY})
+endif()
 
-mark_as_advanced(AVAHI_INCLUDE_DIR AVAHI_LIBRARY)
-
+mark_as_advanced(AVAHI_INCLUDE_DIRS AVAHI_LIBRARIES)
