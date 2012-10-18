@@ -540,7 +540,7 @@ gboolean remmina_rdp_load_plugin(rdpChannels* channels, rdpSettings* settings, c
 {
 	void* entry = NULL;
 
-	entry = freerdp_channels_find_static_virtual_channel_entry(name);
+	entry = freerdp_channels_client_find_static_entry("VirtualChannelEntry", name);
 
 	if (entry)
 	{
