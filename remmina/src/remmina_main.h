@@ -39,6 +39,32 @@ typedef struct _RemminaMain
 	RemminaMainPriv *priv;
 } RemminaMain;
 
+struct _RemminaMainPriv
+{
+	GtkWidget *file_list;
+	GtkTreeModel *file_model;
+	GtkTreeModel *file_model_filter;
+	GtkTreeModel *file_model_sort;
+	GtkUIManager *uimanager;
+	GtkWidget *toolbar;
+	GtkWidget *statusbar;
+
+	GtkToolItem *quick_search_separator;
+	GtkToolItem *quick_search_item;
+	GtkWidget *quick_search_entry;
+
+	GtkTreeViewColumn *group_column;
+
+	GtkActionGroup *main_group;
+	GtkActionGroup *file_sensitive_group;
+
+	gboolean initialized;
+
+	gchar *selected_filename;
+	gchar *selected_name;
+	RemminaStringArray *expanded_group;
+};
+
 typedef struct _RemminaMainClass
 {
 	GtkWindowClass parent_class;
