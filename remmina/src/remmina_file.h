@@ -25,6 +25,12 @@
 
 G_BEGIN_DECLS
 
+struct _RemminaFile
+{
+	gchar *filename;
+	GHashTable *settings;
+};
+
 enum
 {
 	SSH_AUTH_PASSWORD, SSH_AUTH_PUBLICKEY, SSH_AUTH_AUTO_PUBLICKEY
