@@ -24,9 +24,9 @@
 #include "rdp_event.h"
 #include "rdp_graphics.h"
 
-#include <freerdp/utils/memory.h>
 #include <freerdp/codec/color.h>
 #include <freerdp/codec/bitmap.h>
+#include <winpr/memory.h>
 
 //#define RF_BITMAP
 //#define RF_GLYPH
@@ -340,7 +340,8 @@ void rf_register_graphics(rdpGraphics* graphics)
 	rdpPointer* pointer;
 	rdpGlyph* glyph;
 
-	bitmap = xnew(rdpBitmap);
+	bitmap = (rdpBitmap*) malloc(sizeof(rdpBitmap));
+	ZeroMemory(bitmap, sizeof(rdpBitmap));
 	bitmap->size = sizeof(rfBitmap);
 
 	bitmap->New = rf_Bitmap_New;
@@ -352,7 +353,8 @@ void rf_register_graphics(rdpGraphics* graphics)
 	graphics_register_bitmap(graphics, bitmap);
 	free(bitmap);
 
-	pointer = xnew(rdpPointer);
+	pointer = (rdpPointer*) malloc(sizeof(rdpPointer));
+	ZeroMemory(pointer, sizeof(rdpPointer));
 	pointer->size = sizeof(rfPointer);
 
 	pointer->New = rf_Pointer_New;
@@ -364,7 +366,8 @@ void rf_register_graphics(rdpGraphics* graphics)
 	graphics_register_pointer(graphics, pointer);
 	free(pointer);
 
-	glyph = xnew(rdpGlyph);
+	glyph = (rdpGlyph*) malloc(sizeof(rdpGlyph));
+	ZeroMemory(glyph, sizeof(rdpGlyph));
 	glyph->size = sizeof(rfGlyph);
 
 	glyph->New = rf_Glyph_New;
