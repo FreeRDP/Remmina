@@ -28,7 +28,6 @@
 #include <freerdp/freerdp.h>
 #include <freerdp/constants.h>
 #include <freerdp/cache/cache.h>
-#include <freerdp/utils/memory.h>
 
 static void rf_desktop_resize(rdpContext* context)
 {
@@ -40,8 +39,8 @@ static void rf_desktop_resize(rdpContext* context)
 
 	LOCK_BUFFER(TRUE)
 
-	remmina_plugin_service->protocol_plugin_set_width(gp, rfi->settings->width);
-	remmina_plugin_service->protocol_plugin_set_height(gp, rfi->settings->height);
+	remmina_plugin_service->protocol_plugin_set_width(gp, rfi->settings->DesktopWidth);
+	remmina_plugin_service->protocol_plugin_set_height(gp, rfi->settings->DesktopHeight);
 
 	UNLOCK_BUFFER(TRUE)
 
@@ -128,7 +127,7 @@ static void rf_gdi_surface_bits(rdpContext* context, SURFACE_BITS_COMMAND* surfa
 	}
 	else if (surface_bits_command->codecID == CODEC_ID_NONE)
 	{
-		bitmap = (UINT8*) xzalloc(surface_bits_command->width * surface_bits_command->height * 4);
+		bitmap = (UINT8*) malloc(surface_bits_command->width * surface_bits_command->height * 4);
 
 		freerdp_image_flip(surface_bits_command->bitmapData, bitmap,
 				surface_bits_command->width, surface_bits_command->height, 32);

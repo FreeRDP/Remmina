@@ -22,7 +22,6 @@
 #include "rdp_cliprdr.h"
 
 #include <freerdp/freerdp.h>
-#include <freerdp/utils/memory.h>
 #include <freerdp/utils/event.h>
 #include <freerdp/utils/unicode.h>
 #include <freerdp/channels/channels.h>
