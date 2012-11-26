@@ -460,7 +460,7 @@ static void remmina_main_action_connection_connect(GtkAction *action, RemminaMai
 
 static void remmina_main_action_connection_external_tools(GtkAction *action, RemminaMain *remminamain)
 {
-    remmina_external_tools_from_filename(remminamain,remminamain->priv->selected_filename);
+	remmina_external_tools_from_filename(remminamain, remminamain->priv->selected_filename);
 }
 
 static void remmina_main_file_editor_destroy(GtkWidget *widget, RemminaMain *remminamain)
@@ -882,7 +882,7 @@ static const GtkActionEntry remmina_main_ui_file_sensitive_menu_entries[] =
 { "ConnectionDelete", GTK_STOCK_DELETE, NULL, "<control>D", N_("Delete the selected remote desktop file"), G_CALLBACK(
 		remmina_main_action_connection_delete) },
 
-{ "ToolsExport", NULL, N_("Export"), NULL, NULL, G_CALLBACK(remmina_main_action_tools_export) } };
+{ "ToolsExport", NULL, N_("Export"), NULL, NULL, G_CALLBACK(remmina_main_action_tools_export) },
 
 { "ConnectionExternalTools", NULL, N_("External Tools"), "<control>T", NULL,
 		G_CALLBACK(remmina_main_action_connection_external_tools) }

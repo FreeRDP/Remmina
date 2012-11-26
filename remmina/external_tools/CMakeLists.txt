@@ -23,5 +23,3 @@ file(MAKE_DIRECTORY ${EXTERNAL_TOOLS_DIR})
 
 INSTALL(PROGRAMS launcher.sh pause.sh remmina_filezilla_sftp.sh remmina_filezilla_sftp_pki.sh remmina_nslookup.sh remmina_ping.sh remmina_traceroute.sh DESTINATION ${EXTERNAL_TOOLS_DIR})
 
-
-
