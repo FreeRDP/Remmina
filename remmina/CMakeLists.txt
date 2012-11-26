@@ -86,7 +86,7 @@ set(REMMINA_SRCS
 	src/remmina_string_list.h
 	src/remmina_widget_pool.c
 	src/remmina_widget_pool.h
-    src/remmina_external_tools.c
+	src/remmina_external_tools.c
 	src/remmina_external_tools.h
 	)
 

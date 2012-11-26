@@ -18,6 +18,8 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#include "remmina_string_array.h"
+
 #ifndef __REMMINAMAIN_H__
 #define __REMMINAMAIN_H__
 
@@ -52,6 +54,9 @@ struct _RemminaMainPriv
 	GtkToolItem *quick_search_separator;
 	GtkToolItem *quick_search_item;
 	GtkWidget *quick_search_entry;
+
+	GtkWidget *quickconnect_protocol;
+	GtkWidget *quickconnect_server;
 
 	GtkTreeViewColumn *group_column;
 
