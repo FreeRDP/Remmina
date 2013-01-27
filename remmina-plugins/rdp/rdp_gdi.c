@@ -112,7 +112,7 @@ static void rf_gdi_surface_bits(rdpContext* context, SURFACE_BITS_COMMAND* surfa
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 
-	if (surface_bits_command->codecID == CODEC_ID_REMOTEFX && rfi->rfx_context)
+	if (surface_bits_command->codecID == RDP_CODEC_ID_REMOTEFX && rfi->rfx_context)
 	{
 		message = rfx_process_message(rfi->rfx_context, surface_bits_command->bitmapData,
 				surface_bits_command->bitmapDataLength);
@@ -125,7 +125,7 @@ static void rf_gdi_surface_bits(rdpContext* context, SURFACE_BITS_COMMAND* surfa
 
 		rf_queue_ui(rfi->protocol_widget, ui);
 	}
-	else if (surface_bits_command->codecID == CODEC_ID_NONE)
+	else if (surface_bits_command->codecID == RDP_CODEC_ID_NONE)
 	{
 		bitmap = (UINT8*) malloc(surface_bits_command->width * surface_bits_command->height * 4);
 
