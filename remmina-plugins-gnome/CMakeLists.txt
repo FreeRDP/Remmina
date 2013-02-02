@@ -25,6 +25,7 @@ if(GNOMEKEYRING_FOUND)
 
 	add_library(remmina-plugins-gnome ${REMMINA_PLUGINS_GNOME_SRCS})
 	set_target_properties(remmina-plugins-gnome PROPERTIES PREFIX "")
+	set_target_properties(remmina-plugins-gnome PROPERTIES NO_SONAME 1)
 
 	include_directories(${GTK_INCLUDE_DIRS})
 	target_link_libraries(remmina-plugins-gnome ${GTK_LIBRARY_DIRS})
