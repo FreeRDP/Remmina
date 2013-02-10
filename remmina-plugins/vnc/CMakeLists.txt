@@ -26,6 +26,7 @@ set(REMMINA_PLUGIN_VNC_SRCS
 
 add_library(remmina-plugin-vnc ${REMMINA_PLUGIN_VNC_SRCS})
 set_target_properties(remmina-plugin-vnc PROPERTIES PREFIX "")
+set_target_properties(remmina-plugin-vnc PROPERTIES NO_SONAME 1)
 
 include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${LIBVNCSERVER_INCLUDE_DIRS})
 target_link_libraries(remmina-plugin-vnc ${REMMINA_COMMON_LIBRARIES} ${LIBVNCSERVER_LIBRARIES})
