@@ -23,6 +23,7 @@ set(REMMINA_PLUGIN_XDMCP_SRCS
 
 add_library(remmina-plugin-xdmcp ${REMMINA_PLUGIN_XDMCP_SRCS})
 set_target_properties(remmina-plugin-xdmcp PROPERTIES PREFIX "")
+set_target_properties(remmina-plugin-xdmcp PROPERTIES NO_SONAME 1)
 
 include_directories(${REMMINA_COMMON_INCLUDE_DIRS})
 target_link_libraries(remmina-plugin-xdmcp ${REMMINA_COMMON_LIBRARIES})

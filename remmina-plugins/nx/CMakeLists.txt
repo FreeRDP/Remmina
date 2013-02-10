@@ -28,6 +28,7 @@ set(REMMINA_PLUGIN_NX_SRCS
 
 add_library(remmina-plugin-nx ${REMMINA_PLUGIN_NX_SRCS})
 set_target_properties(remmina-plugin-nx PROPERTIES PREFIX "")
+set_target_properties(remmina-plugin-nx PROPERTIES NO_SONAME 1)
 
 include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${XKBFILE_INCLUDE_DIRS} ${LIBSSH_INCLUDE_DIRS})
 target_link_libraries(remmina-plugin-nx ${REMMINA_COMMON_LIBRARIES} ${XKBFILE_LIBRARIES} ${LIBSSH_LIBRARIES})
