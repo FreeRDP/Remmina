@@ -23,7 +23,6 @@
 
 #include <freerdp/freerdp.h>
 #include <freerdp/utils/event.h>
-#include <freerdp/utils/unicode.h>
 #include <freerdp/channels/channels.h>
 #include <freerdp/client/cliprdr.h>
 
@@ -204,7 +203,7 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 	int size;
 	rfContext* rfi = GET_DATA(gp);
 	GdkPixbufLoader *pixbuf;
-	gpointer output;
+	gpointer output = NULL;
 
 	data = event->data;
 	size = event->size;
@@ -215,7 +214,7 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 		{
 			case CB_FORMAT_UNICODETEXT:
 			{
-				size = freerdp_UnicodeToAsciiAlloc((WCHAR*)data, (CHAR**)&data, size/2);
+				size = ConvertFromUnicode(CP_UTF8, 0, (WCHAR*)data, size / 2, (CHAR**)&data, 0, NULL, NULL);
 				crlf2lf(data, &size);
 				output = data;
 				break;
@@ -276,10 +275,6 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 				break;
 			}
 		}
-	}
-	else
-	{
-		output = NULL;
 	}
 	g_async_queue_push(rfi->clipboard_queue, output);
 }
@@ -428,7 +423,7 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 			{
 				size = strlen((char*)inbuf);
 				inbuf = lf2crlf(inbuf, &size);
-				size = (freerdp_AsciiToUnicodeAlloc((CHAR*)inbuf, (WCHAR**)&outbuf, 0) + 1) * 2;
+				size = (ConvertToUnicode(CP_UTF8, 0, (CHAR*)inbuf, -1, (WCHAR**)&outbuf, 0) + 1) * 2;
 				g_free(inbuf);
 				break;
 			}
