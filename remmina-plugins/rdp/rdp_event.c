@@ -431,7 +431,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 	guint16 cooked_keycode;
 	rfContext* rfi;
 	RemminaPluginRdpEvent rdp_event;
-	RDP_SCANCODE scancode;
+	DWORD scancode;
 
 	rfi = GET_DATA(gp);
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_SCANCODE;
