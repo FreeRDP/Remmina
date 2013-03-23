@@ -237,7 +237,6 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 		settings->PerformanceFlags = PERF_FLAG_NONE;
 
 		rfi->rfx_context = rfx_context_new();
-		rfx_context_set_cpu_opt(rfi->rfx_context, CPU_SSE2);
 	}
 
 	freerdp_channels_pre_connect(rfi->channels, instance);
