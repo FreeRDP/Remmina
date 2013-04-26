@@ -230,21 +230,21 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 
 			case CB_FORMAT_DIB:
 			{
-				STREAM* s;
+				wStream* s;
 				UINT16 bpp;
 				UINT32 offset;
 				UINT32 ncolors;
 
-				s = stream_new(0);
+				s = Stream_New(NULL, 0);
 				stream_attach(s, data, size);
 				stream_seek(s, 14);
 				stream_read_UINT16(s, bpp);
 				stream_read_UINT32(s, ncolors);
 				offset = 14 + 40 + (bpp <= 8 ? (ncolors == 0 ? (1 << bpp) : ncolors) * 4 : 0);
 				stream_detach(s);
-				stream_free(s);
+				Stream_Free(s, TRUE);
 
-				s = stream_new(14 + size);
+				s = Stream_New(NULL, 14 + size);
 				stream_write_BYTE(s, 'B');
 				stream_write_BYTE(s, 'M');
 				stream_write_UINT32(s, 14 + size);
@@ -255,7 +255,7 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 				data = stream_get_head(s);
 				size = stream_get_length(s);
 				stream_detach(s);
-				stream_free(s);
+				Stream_Free(s, TRUE);
 				pixbuf = gdk_pixbuf_loader_new();
 				gdk_pixbuf_loader_write(pixbuf, data, size, NULL);
 				output = g_object_ref(gdk_pixbuf_loader_get_pixbuf(pixbuf));
@@ -279,23 +279,23 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 	g_async_queue_push(rfi->clipboard_queue, output);
 }
 
-void remmina_rdp_channel_cliprdr_process(RemminaProtocolWidget* gp, RDP_EVENT* event)
+void remmina_rdp_channel_cliprdr_process(RemminaProtocolWidget* gp, wMessage* event)
 {
-	switch (event->event_type)
+	switch (GetMessageType(event->id))
 	{
-		case RDP_EVENT_TYPE_CB_MONITOR_READY:
+		case CliprdrChannel_MonitorReady:
 			remmina_rdp_cliprdr_process_monitor_ready(gp, (RDP_CB_MONITOR_READY_EVENT*) event);
 			break;
 
-		case RDP_EVENT_TYPE_CB_FORMAT_LIST:
+		case CliprdrChannel_FormatList:
 			remmina_rdp_cliprdr_process_format_list(gp, (RDP_CB_FORMAT_LIST_EVENT*) event);
 			break;
 
-		case RDP_EVENT_TYPE_CB_DATA_REQUEST:
+		case CliprdrChannel_DataRequest:
 			remmina_rdp_cliprdr_process_data_request(gp, (RDP_CB_DATA_REQUEST_EVENT*) event);
 			break;
 
-		case RDP_EVENT_TYPE_CB_DATA_RESPONSE:
+		case CliprdrChannel_DataResponse:
 			remmina_rdp_cliprdr_process_data_response(gp, (RDP_CB_DATA_RESPONSE_EVENT*) event);
 			break;
 	}
@@ -314,9 +314,9 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *clipboard, GtkSelectionData 
 
 	/* Request Clipboard data of the server */
 	event = (RDP_CB_DATA_REQUEST_EVENT*)
-		freerdp_event_new(RDP_EVENT_CLASS_CLIPRDR, RDP_EVENT_TYPE_CB_DATA_REQUEST, NULL, NULL);
+		freerdp_event_new(CliprdrChannel_Class, CliprdrChannel_DataRequest, NULL, NULL);
 	event->format = rfi->format;
-	freerdp_channels_send_event(rfi->channels, (RDP_EVENT*) event);
+	freerdp_channels_send_event(rfi->channels, (wMessage*) event);
 
 	data = g_async_queue_timeout_pop(rfi->clipboard_queue, 1000000);
 	if (data != NULL)
@@ -365,12 +365,12 @@ int remmina_rdp_cliprdr_send_format_list(RemminaProtocolWidget* gp, RemminaPlugi
 		return 0;
 
 	event = (RDP_CB_FORMAT_LIST_EVENT*)
-		freerdp_event_new(RDP_EVENT_CLASS_CLIPRDR, RDP_EVENT_TYPE_CB_FORMAT_LIST, NULL, NULL);
+		freerdp_event_new(CliprdrChannel_Class, CliprdrChannel_FormatList, NULL, NULL);
 
 	remmina_rdp_cliprdr_get_target_types(&event->formats, &event->num_formats, targets, count);
 	g_free(targets);
 
-	return freerdp_channels_send_event(rfi->channels, (RDP_EVENT*) event);
+	return freerdp_channels_send_event(rfi->channels, (wMessage*) event);
 }
 
 void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
@@ -463,10 +463,10 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 		}
 	}
 	event = (RDP_CB_DATA_RESPONSE_EVENT*)
-		        freerdp_event_new(RDP_EVENT_CLASS_CLIPRDR, RDP_EVENT_TYPE_CB_DATA_RESPONSE, NULL, NULL);
+		        freerdp_event_new(CliprdrChannel_Class, CliprdrChannel_DataResponse, NULL, NULL);
 	event->data = outbuf;
 	event->size = size;
-	freerdp_channels_send_event(rfi->channels, (RDP_EVENT*) event);
+	freerdp_channels_send_event(rfi->channels, (wMessage*) event);
 }
 
 void remmina_rdp_cliprdr_set_clipboard_data(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
