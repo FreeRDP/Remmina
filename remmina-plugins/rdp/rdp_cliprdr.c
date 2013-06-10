@@ -200,7 +200,7 @@ void remmina_rdp_cliprdr_process_data_request(RemminaProtocolWidget* gp, RDP_CB_
 void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB_DATA_RESPONSE_EVENT* event)
 {
 	UINT8* data;
-	int size;
+	size_t size;
 	rfContext* rfi = GET_DATA(gp);
 	GdkPixbufLoader *pixbuf;
 	gpointer output = NULL;
@@ -235,29 +235,26 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 				UINT32 offset;
 				UINT32 ncolors;
 
-				s = Stream_New(NULL, 0);
-				stream_attach(s, data, size);
-				stream_seek(s, 14);
-				stream_read_UINT16(s, bpp);
-				stream_read_UINT32(s, ncolors);
+				s = Stream_New(data, size);
+				Stream_Seek(s, 14);
+				Stream_Read_UINT16(s, bpp);
+				Stream_Read_UINT32(s, ncolors);
 				offset = 14 + 40 + (bpp <= 8 ? (ncolors == 0 ? (1 << bpp) : ncolors) * 4 : 0);
-				stream_detach(s);
 				Stream_Free(s, TRUE);
 
 				s = Stream_New(NULL, 14 + size);
-				stream_write_BYTE(s, 'B');
-				stream_write_BYTE(s, 'M');
-				stream_write_UINT32(s, 14 + size);
-				stream_write_UINT32(s, 0);
-				stream_write_UINT32(s, offset);
-				stream_write(s, data, size);
+				Stream_Write_UINT8(s, 'B');
+				Stream_Write_UINT8(s, 'M');
+				Stream_Write_UINT32(s, 14 + size);
+				Stream_Write_UINT32(s, 0);
+				Stream_Write_UINT32(s, offset);
+				Stream_Write(s, data, size);
 
-				data = stream_get_head(s);
-				size = stream_get_length(s);
-				stream_detach(s);
-				Stream_Free(s, TRUE);
+				data = Stream_Buffer(s);
+				size = Stream_Length(s);
 				pixbuf = gdk_pixbuf_loader_new();
 				gdk_pixbuf_loader_write(pixbuf, data, size, NULL);
+				Stream_Free(s, TRUE);
 				output = g_object_ref(gdk_pixbuf_loader_get_pixbuf(pixbuf));
 				gdk_pixbuf_loader_close(pixbuf, NULL);
 				g_object_unref(pixbuf);
