@@ -826,7 +826,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	instance->VerifyChangedCertificate = remmina_rdp_verify_changed_certificate;
 	instance->ReceiveChannelData = remmina_rdp_receive_channel_data;
 
-	instance->context_size = sizeof(rfContext);
+	instance->ContextSize = sizeof(rfContext);
 	freerdp_context_new(instance);
 	rfi = (rfContext*) instance->context;
 
