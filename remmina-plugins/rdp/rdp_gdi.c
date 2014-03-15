@@ -127,7 +127,7 @@ static void rf_gdi_surface_bits(rdpContext* context, SURFACE_BITS_COMMAND* surfa
 	}
 	else if (surface_bits_command->codecID == RDP_CODEC_ID_NONE)
 	{
-		bitmap = (UINT8*) xzalloc(surface_bits_command->width * surface_bits_command->height * 4);
+		bitmap = (UINT8*) calloc(1, surface_bits_command->width * surface_bits_command->height * 4);
 
 		freerdp_image_flip(surface_bits_command->bitmapData, bitmap,
 				surface_bits_command->width, surface_bits_command->height, 32);
