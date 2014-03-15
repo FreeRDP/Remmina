@@ -182,7 +182,7 @@ void rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 
 void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 {
-	if (((rfPointer*) pointer)->cursor != 0)
+	if (G_IS_OBJECT(((rfPointer*) pointer)->cursor))
 		g_object_unref(((rfPointer*) pointer)->cursor);
 }
 
