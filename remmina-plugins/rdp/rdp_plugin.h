@@ -111,7 +111,7 @@ struct rf_context
 	gint scanline_pad;
 	gint* colormap;
 	HCLRCONV clrconv;
-	uint8* primary_buffer;
+	UINT8* primary_buffer;
 
 	guint object_id_seq;
 	GHashTable* object_table;
@@ -124,7 +124,7 @@ struct rf_context
 	gint event_pipe[2];
 
 	GAsyncQueue* clipboard_queue;
-	uint32 format;
+	UINT32 format;
 	gboolean clipboard_wait;
 	gulong clipboard_handler;
 };
@@ -142,15 +142,15 @@ struct remmina_plugin_rdp_event
 	{
 		struct
 		{
-			boolean up;
-			boolean extended;
-			uint8 key_code;
+			BOOL up;
+			BOOL extended;
+			UINT8 key_code;
 		} key_event;
 		struct
 		{
-			uint16 flags;
-			uint16 x;
-			uint16 y;
+			UINT16 flags;
+			UINT16 x;
+			UINT16 y;
 		} mouse_event;
 	};
 };
@@ -210,13 +210,13 @@ struct remmina_plugin_rdp_ui_object
 			gint top;
 			gint width;
 			gint height;
-			uint8* bitmap;
+			UINT8* bitmap;
 		} nocodec;
 		struct
 		{
 			RemminaPluginRdpUiClipboardType type;
 			GtkTargetList* targetlist;
-			uint32 format;
+			UINT32 format;
 		} clipboard;
 	};
 };
@@ -225,7 +225,7 @@ typedef struct remmina_plugin_rdp_ui_object RemminaPluginRdpUiObject;
 void rf_init(RemminaProtocolWidget* gp);
 void rf_uninit(RemminaProtocolWidget* gp);
 void rf_get_fds(RemminaProtocolWidget* gp, void** rfds, int* rcount);
-boolean rf_check_fds(RemminaProtocolWidget* gp);
+BOOL rf_check_fds(RemminaProtocolWidget* gp);
 void rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui);
 void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj);
 

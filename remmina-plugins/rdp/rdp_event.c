@@ -40,7 +40,7 @@ static void remmina_rdp_event_on_focus_in(GtkWidget* widget, GdkEventKey* event,
 
 	rfi = GET_DATA(gp);
 	input = rfi->instance->input;
-	uint32 toggle_keys_state = 0;
+	UINT32 toggle_keys_state = 0;
 
 #if GTK_VERSION == 3
 	manager = gdk_display_get_device_manager(gdk_display_get_default());
@@ -311,7 +311,7 @@ static gboolean remmina_rdp_event_on_configure(GtkWidget* widget, GdkEventConfig
 	return FALSE;
 }
 
-static void remmina_rdp_event_translate_pos(RemminaProtocolWidget* gp, int ix, int iy, uint16* ox, uint16* oy)
+static void remmina_rdp_event_translate_pos(RemminaProtocolWidget* gp, int ix, int iy, UINT16* ox, UINT16* oy)
 {
 	rfContext* rfi;
 
@@ -319,13 +319,13 @@ static void remmina_rdp_event_translate_pos(RemminaProtocolWidget* gp, int ix, i
 
 	if ((rfi->scale) && (rfi->scale_width >= 1) && (rfi->scale_height >= 1))
 	{
-		*ox = (uint16) (ix * remmina_plugin_service->protocol_plugin_get_width(gp) / rfi->scale_width);
-		*oy = (uint16) (iy * remmina_plugin_service->protocol_plugin_get_height(gp) / rfi->scale_height);
+		*ox = (UINT16) (ix * remmina_plugin_service->protocol_plugin_get_width(gp) / rfi->scale_width);
+		*oy = (UINT16) (iy * remmina_plugin_service->protocol_plugin_get_height(gp) / rfi->scale_height);
 	}
 	else
 	{
-		*ox = (uint16) ix;
-		*oy = (uint16) iy;
+		*ox = (UINT16) ix;
+		*oy = (UINT16) iy;
 	}
 }
 
@@ -431,7 +431,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 	guint16 cooked_keycode;
 	rfContext* rfi;
 	RemminaPluginRdpEvent rdp_event;
-	RDP_SCANCODE scancode;
+	DWORD scancode;
 
 	rfi = GET_DATA(gp);
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_SCANCODE;
