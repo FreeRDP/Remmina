@@ -479,12 +479,13 @@ void remmina_rdp_cliprdr_set_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 
 	targets = gtk_target_table_new_from_list(ui->clipboard.targetlist, &n_targets);
 	clipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);
-	if (clipboard)
+	if (clipboard && targets)
 	{
 		rfi->clipboard_wait = TRUE;
 		gtk_clipboard_set_with_owner(clipboard, targets, n_targets,
 				(GtkClipboardGetFunc) remmina_rdp_cliprdr_request_data,
 				(GtkClipboardClearFunc) remmina_rdp_cliprdr_empty_clipboard, G_OBJECT(gp));
+		gtk_target_table_free(targets, n_targets);
 	}
 }
 
