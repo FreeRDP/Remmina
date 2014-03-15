@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-void remmina_rdp_channel_cliprdr_process(RemminaProtocolWidget* gp, RDP_EVENT* event);
+void remmina_rdp_channel_cliprdr_process(RemminaProtocolWidget* gp, wMessage* event);
 void remmina_rdp_event_process_clipboard(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui);
 
 G_END_DECLS

@@ -28,7 +28,6 @@
 #include <freerdp/freerdp.h>
 #include <freerdp/constants.h>
 #include <freerdp/cache/cache.h>
-#include <freerdp/utils/memory.h>
 
 static void rf_desktop_resize(rdpContext* context)
 {
@@ -40,8 +39,8 @@ static void rf_desktop_resize(rdpContext* context)
 
 	LOCK_BUFFER(TRUE)
 
-	remmina_plugin_service->protocol_plugin_set_width(gp, rfi->settings->width);
-	remmina_plugin_service->protocol_plugin_set_height(gp, rfi->settings->height);
+	remmina_plugin_service->protocol_plugin_set_width(gp, rfi->settings->DesktopWidth);
+	remmina_plugin_service->protocol_plugin_set_height(gp, rfi->settings->DesktopHeight);
 
 	UNLOCK_BUFFER(TRUE)
 
@@ -108,12 +107,12 @@ static void rf_gdi_fast_index(rdpContext* context, FAST_INDEX_ORDER* fast_index)
 
 static void rf_gdi_surface_bits(rdpContext* context, SURFACE_BITS_COMMAND* surface_bits_command)
 {
-	uint8* bitmap;
+	UINT8* bitmap;
 	RFX_MESSAGE* message;
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 
-	if (surface_bits_command->codecID == CODEC_ID_REMOTEFX && rfi->rfx_context)
+	if (surface_bits_command->codecID == RDP_CODEC_ID_REMOTEFX && rfi->rfx_context)
 	{
 		message = rfx_process_message(rfi->rfx_context, surface_bits_command->bitmapData,
 				surface_bits_command->bitmapDataLength);
@@ -126,9 +125,9 @@ static void rf_gdi_surface_bits(rdpContext* context, SURFACE_BITS_COMMAND* surfa
 
 		rf_queue_ui(rfi->protocol_widget, ui);
 	}
-	else if (surface_bits_command->codecID == CODEC_ID_NONE)
+	else if (surface_bits_command->codecID == RDP_CODEC_ID_NONE)
 	{
-		bitmap = (uint8*) xzalloc(surface_bits_command->width * surface_bits_command->height * 4);
+		bitmap = (UINT8*) xzalloc(surface_bits_command->width * surface_bits_command->height * 4);
 
 		freerdp_image_flip(surface_bits_command->bitmapData, bitmap,
 				surface_bits_command->width, surface_bits_command->height, 32);

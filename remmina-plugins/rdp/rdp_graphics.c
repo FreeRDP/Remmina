@@ -24,7 +24,6 @@
 #include "rdp_event.h"
 #include "rdp_graphics.h"
 
-#include <freerdp/utils/memory.h>
 #include <freerdp/codec/color.h>
 #include <freerdp/codec/bitmap.h>
 
@@ -36,7 +35,7 @@
 void rf_Bitmap_New(rdpContext* context, rdpBitmap* bitmap)
 {
 #ifdef RF_BITMAP
-	uint8* data;
+	UINT8* data;
 	Pixmap pixmap;
 	XImage* image;
 	rfContext* rfi = (rfContext*) context;
@@ -49,7 +48,7 @@ void rf_Bitmap_New(rdpContext* context, rdpBitmap* bitmap)
 		data = freerdp_image_convert(bitmap->data, NULL,
 				bitmap->width, bitmap->height, rfi->srcBpp, rfi->bpp, rfi->clrconv);
 
-		if (bitmap->ephemeral != true)
+		if (bitmap->ephemeral != TRUE)
 		{
 			image = XCreateImage(rfi->display, rfi->visual, rfi->depth,
 				ZPixmap, 0, (char*) data, bitmap->width, bitmap->height, rfi->scanline_pad, 0);
@@ -57,13 +56,13 @@ void rf_Bitmap_New(rdpContext* context, rdpBitmap* bitmap)
 			XPutImage(rfi->display, pixmap, rfi->gc, image, 0, 0, 0, 0, bitmap->width, bitmap->height);
 			XFree(image);
 
-			if (data != bitmap->data)
-				xfree(data);
+			if (data != bitmap->data) && (data != NULL)
+				free(data);
 		}
 		else
 		{
-			if (data != bitmap->data)
-				xfree(bitmap->data);
+			if (data != bitmap->data) && (data != NULL)
+				free(bitmap->data);
 
 			bitmap->data = data;
 		}
@@ -115,19 +114,19 @@ void rf_Bitmap_Paint(rdpContext* context, rdpBitmap* bitmap)
 }
 
 void rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
-	uint8* data, int width, int height, int bpp, int length, boolean compressed)
+	UINT8* data, int width, int height, int bpp, int length, BOOL compressed)
 {
 #ifdef RF_BITMAP
-	uint16 size;
+	UINT16 size;
 
 	printf("rf_Bitmap_Decompress\n");
 
 	size = width * height * (bpp + 7) / 8;
 
 	if (bitmap->data == NULL)
-		bitmap->data = (uint8*) xmalloc(size);
+		bitmap->data = (UINT8*) malloc(size);
 	else
-		bitmap->data = (uint8*) xrealloc(bitmap->data, size);
+		bitmap->data = (UINT8*) realloc(bitmap->data, size);
 
 	if (compressed)
 	{
@@ -135,7 +134,7 @@ void rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
 
 		status = bitmap_decompress(data, bitmap->data, width, height, length, bpp, bpp);
 
-		if (status != true)
+		if (status != TRUE)
 		{
 			printf("Bitmap Decompression Failed\n");
 		}
@@ -145,13 +144,13 @@ void rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
 		freerdp_image_flip(data, bitmap->data, width, height, bpp);
 	}
 
-	bitmap->compressed = false;
+	bitmap->compressed = FALSE;
 	bitmap->length = size;
 	bitmap->bpp = bpp;
 #endif
 }
 
-void rf_Bitmap_SetSurface(rdpContext* context, rdpBitmap* bitmap, boolean primary)
+void rf_Bitmap_SetSurface(rdpContext* context, rdpBitmap* bitmap, BOOL primary)
 {
 #ifdef RF_BITMAP
 	rfContext* rfi = (rfContext*) context;
@@ -278,7 +277,7 @@ void rf_Glyph_Draw(rdpContext* context, rdpGlyph* glyph, int x, int y)
 #endif
 }
 
-void rf_Glyph_BeginDraw(rdpContext* context, int x, int y, int width, int height, uint32 bgcolor, uint32 fgcolor)
+void rf_Glyph_BeginDraw(rdpContext* context, int x, int y, int width, int height, UINT32 bgcolor, UINT32 fgcolor)
 {
 #ifdef RF_GLYPH
 	rfContext* rfi = (rfContext*) context;
@@ -302,7 +301,7 @@ void rf_Glyph_BeginDraw(rdpContext* context, int x, int y, int width, int height
 #endif
 }
 
-void rf_Glyph_EndDraw(rdpContext* context, int x, int y, int width, int height, uint32 bgcolor, uint32 fgcolor)
+void rf_Glyph_EndDraw(rdpContext* context, int x, int y, int width, int height, UINT32 bgcolor, UINT32 fgcolor)
 {
 #ifdef RF_GLYPH
 	rfContext* rfi = (rfContext*) context;
@@ -323,7 +322,7 @@ void rf_register_graphics(rdpGraphics* graphics)
 	rdpPointer* pointer;
 	rdpGlyph* glyph;
 
-	bitmap = xnew(rdpBitmap);
+	bitmap = calloc(1, sizeof(rdpBitmap));
 	bitmap->size = sizeof(rfBitmap);
 
 	bitmap->New = rf_Bitmap_New;
@@ -333,9 +332,10 @@ void rf_register_graphics(rdpGraphics* graphics)
 	bitmap->SetSurface = rf_Bitmap_SetSurface;
 
 	graphics_register_bitmap(graphics, bitmap);
-	xfree(bitmap);
+	if (bitmap != NULL)
+		free(bitmap);
 
-	pointer = xnew(rdpPointer);
+	pointer = calloc(1, sizeof(rdpPointer));
 	pointer->size = sizeof(rfPointer);
 
 	pointer->New = rf_Pointer_New;
@@ -345,9 +345,10 @@ void rf_register_graphics(rdpGraphics* graphics)
 	pointer->SetDefault = rf_Pointer_SetDefault;
 
 	graphics_register_pointer(graphics, pointer);
-	xfree(pointer);
+	if (pointer != NULL)
+		free(pointer);
 
-	glyph = xnew(rdpGlyph);
+	glyph = calloc(1, sizeof(rdpGlyph));
 	glyph->size = sizeof(rfGlyph);
 
 	glyph->New = rf_Glyph_New;
@@ -357,5 +358,6 @@ void rf_register_graphics(rdpGraphics* graphics)
 	glyph->EndDraw = rf_Glyph_EndDraw;
 
 	graphics_register_glyph(graphics, glyph);
-	xfree(glyph);
+	if (glyph != NULL)
+		free(glyph);
 }
