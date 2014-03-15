@@ -21,7 +21,7 @@ set(_GLIB_found_all true)
 
 # Glib
 
-pkg_check_modules(PC_GLIB2 glib-2.0)
+pkg_check_modules(PC_GLIB2 glib-2.0>=2.28)
 
 if(NOT PC_GLIB2_FOUND)
 	set(_GLIB_found_all false)
