@@ -25,6 +25,7 @@ include(CheckIncludeFiles)
 include(CheckLibraryExists)
 include(FindPkgConfig)
 include(CheckCCompilerFlag)
+include(GNUInstallDirs)
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
 
@@ -33,14 +34,6 @@ include(ConfigOptions)
 
 if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE "Release")
-endif()
-
-if(NOT DEFINED CMAKE_INSTALL_LIBDIR)
-	set(CMAKE_INSTALL_LIBDIR "lib")
-endif()
-
-if(NOT DEFINED CMAKE_INSTALL_BINDIR)
-	set(CMAKE_INSTALL_BINDIR "bin")
 endif()
 
 if(NOT BUILD_SHARED_LIBS)
@@ -79,9 +72,9 @@ include_directories(.)
 include_directories(remmina/include)
 
 set(REMMINA_VERSION "1.0.0")
-set(REMMINA_DATADIR "${CMAKE_INSTALL_PREFIX}/share")
-set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_PREFIX}/share/locale")
-set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/remmina/plugins")
+set(REMMINA_DATADIR "${CMAKE_INSTALL_FULL_DATADIR}")
+set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_FULL_DATADIR}/locale")
+set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/remmina/plugins")
 
 find_required_package(GTK)
 find_suggested_package(PTHREAD)

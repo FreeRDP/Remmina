@@ -1,4 +1,4 @@
-# remmina-plugin-telepathy - The GTK+ Remote Desktop Client
+# desktop/remmina - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2011 Marc-Andre Moreau
 #
@@ -14,20 +14,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, 
+# Foundation, Inc., 59 Temple Place, Suite 330,
 # Boston, MA 02111-1307, USA.
 
-set(REMMINA_PLUGIN_TELEPATHY_SRCS
-	telepathy_plugin.c
-	)
+set(EXTERNAL_TOOLS_DIR "$ENV{HOME}/.remmina/external_tools")
 
-add_library(remmina-plugin-telepathy ${REMMINA_PLUGIN_TELEPATHY_SRCS})
-set_target_properties(remmina-plugin-telepathy PROPERTIES PREFIX "")
-set_target_properties(remmina-plugin-telepathy PROPERTIES NO_SONAME 1)
+file(MAKE_DIRECTORY ${EXTERNAL_TOOLS_DIR})
 
-find_required_package(GTK3)
+INSTALL(PROGRAMS launcher.sh pause.sh remmina_filezilla_sftp.sh remmina_filezilla_sftp_pki.sh remmina_nslookup.sh remmina_ping.sh remmina_traceroute.sh DESTINATION ${EXTERNAL_TOOLS_DIR})
 
-include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${TELEPATHY_INCLUDE_DIRS})
-target_link_libraries(remmina-plugin-telepathy ${REMMINA_COMMON_LIBRARIES} ${TELEPATHY_LIBRARIES})
-
-install(TARGETS remmina-plugin-telepathy DESTINATION ${REMMINA_PLUGINDIR})
