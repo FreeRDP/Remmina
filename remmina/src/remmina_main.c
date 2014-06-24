@@ -36,37 +36,11 @@
 #include "remmina_log.h"
 #include "remmina_icon.h"
 #include "remmina_main.h"
+#include "remmina_external_tools.h"
 
 G_DEFINE_TYPE( RemminaMain, remmina_main, GTK_TYPE_WINDOW)
 
-struct _RemminaMainPriv
-{
-	GtkWidget *file_list;
-	GtkTreeModel *file_model;
-	GtkTreeModel *file_model_filter;
-	GtkTreeModel *file_model_sort;
-	GtkUIManager *uimanager;
-	GtkWidget *toolbar;
-	GtkWidget *statusbar;
 
-	GtkToolItem *quick_search_separator;
-	GtkToolItem *quick_search_item;
-	GtkWidget *quick_search_entry;
-
-	GtkWidget *quickconnect_protocol;
-	GtkWidget *quickconnect_server;
-
-	GtkTreeViewColumn *group_column;
-
-	GtkActionGroup *main_group;
-	GtkActionGroup *file_sensitive_group;
-
-	gboolean initialized;
-
-	gchar *selected_filename;
-	gchar *selected_name;
-	RemminaStringArray *expanded_group;
-};
 
 static void remmina_main_class_init(RemminaMainClass *klass)
 {
@@ -484,6 +458,11 @@ static void remmina_main_action_connection_connect(GtkAction *action, RemminaMai
 	remmina_connection_window_open_from_filename(remminamain->priv->selected_filename);
 }
 
+static void remmina_main_action_connection_external_tools(GtkAction *action, RemminaMain *remminamain)
+{
+	remmina_external_tools_from_filename(remminamain, remminamain->priv->selected_filename);
+}
+
 static void remmina_main_file_editor_destroy(GtkWidget *widget, RemminaMain *remminamain)
 {
 	if (GTK_IS_WIDGET(remminamain))
@@ -857,6 +836,7 @@ static const gchar *remmina_main_ui_xml = "<ui>"
 		"    <menuitem action='ConnectionCopy'/>"
 		"    <menuitem action='ConnectionEdit'/>"
 		"    <menuitem action='ConnectionDelete'/>"
+		"    <menuitem action='ConnectionExternalTools'/>"
 		"  </popup>"
 		"</ui>";
 
@@ -902,8 +882,12 @@ static const GtkActionEntry remmina_main_ui_file_sensitive_menu_entries[] =
 { "ConnectionDelete", GTK_STOCK_DELETE, NULL, "<control>D", N_("Delete the selected remote desktop file"), G_CALLBACK(
 		remmina_main_action_connection_delete) },
 
-{ "ToolsExport", NULL, N_("Export"), NULL, NULL, G_CALLBACK(remmina_main_action_tools_export) } };
+{ "ToolsExport", NULL, N_("Export"), NULL, NULL, G_CALLBACK(remmina_main_action_tools_export) },
 
+{ "ConnectionExternalTools", NULL, N_("External Tools"), "<control>T", NULL,
+		G_CALLBACK(remmina_main_action_connection_external_tools) }
+
+};
 
 static const GtkToggleActionEntry remmina_main_ui_toggle_menu_entries[] =
 {

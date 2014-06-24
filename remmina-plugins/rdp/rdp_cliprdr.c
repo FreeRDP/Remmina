@@ -200,10 +200,10 @@ void remmina_rdp_cliprdr_process_data_request(RemminaProtocolWidget* gp, RDP_CB_
 void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB_DATA_RESPONSE_EVENT* event)
 {
 	UINT8* data;
-	int size;
+	size_t size;
 	rfContext* rfi = GET_DATA(gp);
 	GdkPixbufLoader *pixbuf;
-	gpointer output;
+	gpointer output = NULL;
 
 	data = event->data;
 	size = event->size;
@@ -255,6 +255,7 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 				Stream_Free(s, TRUE);
 				pixbuf = gdk_pixbuf_loader_new();
 				gdk_pixbuf_loader_write(pixbuf, data, size, NULL);
+				Stream_Free(s, TRUE);
 				output = g_object_ref(gdk_pixbuf_loader_get_pixbuf(pixbuf));
 				gdk_pixbuf_loader_close(pixbuf, NULL);
 				g_object_unref(pixbuf);
@@ -272,10 +273,6 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 				break;
 			}
 		}
-	}
-	else
-	{
-		output = NULL;
 	}
 	g_async_queue_push(rfi->clipboard_queue, output);
 }

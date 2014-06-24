@@ -26,6 +26,7 @@
 
 #include <freerdp/codec/color.h>
 #include <freerdp/codec/bitmap.h>
+#include <winpr/memory.h>
 
 //#define RF_BITMAP
 //#define RF_GLYPH
@@ -114,7 +115,7 @@ void rf_Bitmap_Paint(rdpContext* context, rdpBitmap* bitmap)
 }
 
 void rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
-	UINT8* data, int width, int height, int bpp, int length, BOOL compressed)
+	BYTE* data, int width, int height, int bpp, int length, BOOL compressed, int codec_id)
 {
 #ifdef RF_BITMAP
 	UINT16 size;
@@ -124,13 +125,13 @@ void rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
 	size = width * height * (bpp + 7) / 8;
 
 	if (bitmap->data == NULL)
-		bitmap->data = (UINT8*) malloc(size);
+		bitmap->data = (UINT8*) xmalloc(size);
 	else
-		bitmap->data = (UINT8*) realloc(bitmap->data, size);
+		bitmap->data = (UINT8*) xrealloc(bitmap->data, size);
 
 	if (compressed)
 	{
-		boolean status;
+		BOOL status;
 
 		status = bitmap_decompress(data, bitmap->data, width, height, length, bpp, bpp);
 
@@ -172,7 +173,7 @@ void rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 	if ((pointer->andMaskData != 0) && (pointer->xorMaskData != 0))
 	{
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
-		ui->type = REMMINA_RDP_UI_CREATE_CURSOR;
+		ui->type = REMMINA_RDP_UI_CURSOR;
 		ui->cursor.pointer = (rfPointer*) pointer;
 		ui->cursor.type = REMMINA_RDP_POINTER_NEW;
 
@@ -182,8 +183,25 @@ void rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 
 void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 {
+	RemminaPluginRdpUiObject* ui;
+	rfContext* rfi = (rfContext*) context;
+
 	if (G_IS_OBJECT(((rfPointer*) pointer)->cursor))
-		g_object_unref(((rfPointer*) pointer)->cursor);
+	{
+		ui = g_new0(RemminaPluginRdpUiObject, 1);
+		ui->type = REMMINA_RDP_UI_CURSOR;
+		ui->cursor.pointer = (rfPointer*) pointer;
+		ui->cursor.type = REMMINA_RDP_POINTER_FREE;
+
+		rf_queue_ui(rfi->protocol_widget, ui);
+
+		g_mutex_lock(rfi->gmutex);
+		while (G_IS_OBJECT(((rfPointer*) pointer)->cursor))
+		{
+			g_cond_wait(rfi->gcond, rfi->gmutex);
+		}
+		g_mutex_unlock(rfi->gmutex);
+	}
 }
 
 void rf_Pointer_Set(rdpContext* context, rdpPointer* pointer)
@@ -192,9 +210,9 @@ void rf_Pointer_Set(rdpContext* context, rdpPointer* pointer)
 	rfContext* rfi = (rfContext*) context;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
-	ui->type = REMMINA_RDP_UI_UPDATE_CURSOR;
+	ui->type = REMMINA_RDP_UI_CURSOR;
 	ui->cursor.pointer = (rfPointer*) pointer;
-	ui->cursor.type = REMMINA_RDP_POINTER_NEW;
+	ui->cursor.type = REMMINA_RDP_POINTER_SET;
 
 	rf_queue_ui(rfi->protocol_widget, ui);
 }
@@ -205,7 +223,7 @@ void rf_Pointer_SetNull(rdpContext* context)
 	rfContext* rfi = (rfContext*) context;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
-	ui->type = REMMINA_RDP_UI_UPDATE_CURSOR;
+	ui->type = REMMINA_RDP_UI_CURSOR;
 	ui->cursor.type = REMMINA_RDP_POINTER_NULL;
 
 	rf_queue_ui(rfi->protocol_widget, ui);
@@ -217,7 +235,7 @@ void rf_Pointer_SetDefault(rdpContext* context)
 	rfContext* rfi = (rfContext*) context;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
-	ui->type = REMMINA_RDP_UI_UPDATE_CURSOR;
+	ui->type = REMMINA_RDP_UI_CURSOR;
 	ui->cursor.type = REMMINA_RDP_POINTER_DEFAULT;
 
 	rf_queue_ui(rfi->protocol_widget, ui);
@@ -322,7 +340,8 @@ void rf_register_graphics(rdpGraphics* graphics)
 	rdpPointer* pointer;
 	rdpGlyph* glyph;
 
-	bitmap = calloc(1, sizeof(rdpBitmap));
+	bitmap = (rdpBitmap*) malloc(sizeof(rdpBitmap));
+	ZeroMemory(bitmap, sizeof(rdpBitmap));
 	bitmap->size = sizeof(rfBitmap);
 
 	bitmap->New = rf_Bitmap_New;
@@ -332,10 +351,11 @@ void rf_register_graphics(rdpGraphics* graphics)
 	bitmap->SetSurface = rf_Bitmap_SetSurface;
 
 	graphics_register_bitmap(graphics, bitmap);
-	if (bitmap != NULL)
-		free(bitmap);
+	free(bitmap);
 
-	pointer = calloc(1, sizeof(rdpPointer));
+	pointer = (rdpPointer*) malloc(sizeof(rdpPointer));
+	ZeroMemory(pointer, sizeof(rdpPointer));
+
 	pointer->size = sizeof(rfPointer);
 
 	pointer->New = rf_Pointer_New;
@@ -345,10 +365,12 @@ void rf_register_graphics(rdpGraphics* graphics)
 	pointer->SetDefault = rf_Pointer_SetDefault;
 
 	graphics_register_pointer(graphics, pointer);
-	if (pointer != NULL)
-		free(pointer);
 
-	glyph = calloc(1, sizeof(rdpGlyph));
+	free(pointer);
+
+	glyph = (rdpGlyph*) malloc(sizeof(rdpGlyph));
+	ZeroMemory(glyph, sizeof(rdpGlyph));
+
 	glyph->size = sizeof(rfGlyph);
 
 	glyph->New = rf_Glyph_New;
@@ -358,6 +380,6 @@ void rf_register_graphics(rdpGraphics* graphics)
 	glyph->EndDraw = rf_Glyph_EndDraw;
 
 	graphics_register_glyph(graphics, glyph);
-	if (glyph != NULL)
-		free(glyph);
+
+	free(glyph);
 }
