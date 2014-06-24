@@ -677,16 +677,24 @@ static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPlugin
 
 static void remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
-	cairo_surface_t* surface;
 	GdkPixbuf* pixbuf;
 	rfContext* rfi = GET_DATA(gp);
 	rdpPointer* pointer = (rdpPointer*)ui->cursor.pointer;
+#if GTK_VERSION == 3
+	cairo_surface_t* surface;	
 	UINT8* data = malloc(pointer->width * pointer->height * 4);
+#else
+	guchar *data = g_malloc0(pointer->width * pointer->height * 4);
+#endif
 
 	freerdp_alpha_cursor_convert(data, pointer->xorMaskData, pointer->andMaskData, pointer->width, pointer->height, pointer->xorBpp, rfi->clrconv);
+#if GTK_VERSION == 3
 	surface = cairo_image_surface_create_for_data(data, CAIRO_FORMAT_ARGB32, pointer->width, pointer->height, cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, pointer->width));
 	pixbuf = gdk_pixbuf_get_from_surface(surface, 0, 0, pointer->width, pointer->height);
 	cairo_surface_destroy(surface);
+#else
+	pixbuf = gdk_pixbuf_new_from_data(data, GDK_COLORSPACE_RGB, TRUE, 8, pointer->width, pointer->height, (pointer->width * 4), NULL, NULL);
+#endif	
 	((rfPointer*)ui->cursor.pointer)->cursor = gdk_cursor_new_from_pixbuf(rfi->display, pixbuf, pointer->xPos, pointer->yPos);
 }
 
@@ -695,7 +703,10 @@ static void remmina_rdp_event_free_cursor(RemminaProtocolWidget* gp, RemminaPlug
 	rfContext* rfi = GET_DATA(gp);
 
 	g_mutex_lock(rfi->gmutex);
+	/* Ugly leak with GTK2, otherwise g_object_unref segfaults */
+#if GTK_VERSION == 3
 	g_object_unref(ui->cursor.pointer->cursor);
+#endif	
 	ui->cursor.pointer->cursor = NULL;
 	g_cond_signal(rfi->gcond);
 	g_mutex_unlock(rfi->gmutex);

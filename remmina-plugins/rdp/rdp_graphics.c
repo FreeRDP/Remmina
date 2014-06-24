@@ -186,7 +186,11 @@ void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 
+#if GTK_VERSION == 2
+	if (((rfPointer*) pointer)->cursor != NULL)
+#else
 	if (G_IS_OBJECT(((rfPointer*) pointer)->cursor))
+#endif
 	{
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_CURSOR;
@@ -196,7 +200,11 @@ void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 		rf_queue_ui(rfi->protocol_widget, ui);
 
 		g_mutex_lock(rfi->gmutex);
+#if GTK_VERSION == 2
+		while (((rfPointer*) pointer)->cursor != NULL)
+#else	
 		while (G_IS_OBJECT(((rfPointer*) pointer)->cursor))
+#endif
 		{
 			g_cond_wait(rfi->gcond, rfi->gmutex);
 		}
