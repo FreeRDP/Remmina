@@ -112,7 +112,7 @@ static UINT8* lf2crlf(UINT8* data, int* size)
         return outbuf;
 }
 
-static void crlf2lf(UINT8* data, int* size)
+static void crlf2lf(UINT8* data, size_t* size)
 {
         UINT8 c;
         UINT8* out;
