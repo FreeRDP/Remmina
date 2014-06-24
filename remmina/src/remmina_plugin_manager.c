@@ -138,6 +138,7 @@ static void remmina_plugin_manager_load_plugin(const gchar *name)
 	if (!module)
 	{
 		g_print("Failed to load plugin: %s.\n", name);
+		g_print("Error: %s\n", g_module_error());
 		return;
 	}
 

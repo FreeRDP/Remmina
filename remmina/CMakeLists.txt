@@ -86,6 +86,8 @@ set(REMMINA_SRCS
 	src/remmina_string_list.h
 	src/remmina_widget_pool.c
 	src/remmina_widget_pool.h
+	src/remmina_external_tools.c
+	src/remmina_external_tools.h
 	)
 
 add_executable(remmina ${REMMINA_SRCS})
@@ -146,6 +148,7 @@ if(WITH_TRANSLATIONS)
 endif()
 add_subdirectory(icons)
 add_subdirectory(desktop)
+add_subdirectory(external_tools)
 
 install(TARGETS remmina DESTINATION ${CMAKE_INSTALL_BINDIR})
 

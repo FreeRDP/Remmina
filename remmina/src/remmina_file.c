@@ -32,12 +32,6 @@
 #define MIN_WINDOW_WIDTH 10
 #define MIN_WINDOW_HEIGHT 10
 
-struct _RemminaFile
-{
-	gchar *filename;
-	GHashTable *settings;
-};
-
 typedef struct _RemminaSetting
 {
 	const gchar *setting;
