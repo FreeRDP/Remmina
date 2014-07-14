@@ -49,7 +49,7 @@ void rf_Bitmap_New(rdpContext* context, rdpBitmap* bitmap)
 		data = freerdp_image_convert(bitmap->data, NULL,
 				bitmap->width, bitmap->height, rfi->srcBpp, rfi->bpp, rfi->clrconv);
 
-		if (bitmap->ephemeral != true)
+		if (bitmap->ephemeral != TRUE)
 		{
 			image = XCreateImage(rfi->display, rfi->visual, rfi->depth,
 				ZPixmap, 0, (char*) data, bitmap->width, bitmap->height, rfi->scanline_pad, 0);
@@ -57,13 +57,13 @@ void rf_Bitmap_New(rdpContext* context, rdpBitmap* bitmap)
 			XPutImage(rfi->display, pixmap, rfi->gc, image, 0, 0, 0, 0, bitmap->width, bitmap->height);
 			XFree(image);
 
-			if (data != bitmap->data)
-				xfree(data);
+			if (data != bitmap->data) && (data != NULL)
+				free(data);
 		}
 		else
 		{
-			if (data != bitmap->data)
-				xfree(bitmap->data);
+			if (data != bitmap->data) && (data != NULL)
+				free(bitmap->data);
 
 			bitmap->data = data;
 		}
@@ -135,7 +135,7 @@ void rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
 
 		status = bitmap_decompress(data, bitmap->data, width, height, length, bpp, bpp);
 
-		if (status != true)
+		if (status != TRUE)
 		{
 			printf("Bitmap Decompression Failed\n");
 		}
@@ -145,7 +145,7 @@ void rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
 		freerdp_image_flip(data, bitmap->data, width, height, bpp);
 	}
 
-	bitmap->compressed = false;
+	bitmap->compressed = FALSE;
 	bitmap->length = size;
 	bitmap->bpp = bpp;
 #endif
@@ -186,7 +186,11 @@ void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 
+#if GTK_VERSION == 2
+	if (((rfPointer*) pointer)->cursor != NULL)
+#else
 	if (G_IS_OBJECT(((rfPointer*) pointer)->cursor))
+#endif
 	{
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_CURSOR;
@@ -196,7 +200,11 @@ void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 		rf_queue_ui(rfi->protocol_widget, ui);
 
 		g_mutex_lock(rfi->gmutex);
+#if GTK_VERSION == 2
+		while (((rfPointer*) pointer)->cursor != NULL)
+#else	
 		while (G_IS_OBJECT(((rfPointer*) pointer)->cursor))
+#endif
 		{
 			g_cond_wait(rfi->gcond, rfi->gmutex);
 		}
@@ -355,6 +363,7 @@ void rf_register_graphics(rdpGraphics* graphics)
 
 	pointer = (rdpPointer*) malloc(sizeof(rdpPointer));
 	ZeroMemory(pointer, sizeof(rdpPointer));
+
 	pointer->size = sizeof(rfPointer);
 
 	pointer->New = rf_Pointer_New;
@@ -364,10 +373,12 @@ void rf_register_graphics(rdpGraphics* graphics)
 	pointer->SetDefault = rf_Pointer_SetDefault;
 
 	graphics_register_pointer(graphics, pointer);
+
 	free(pointer);
 
 	glyph = (rdpGlyph*) malloc(sizeof(rdpGlyph));
 	ZeroMemory(glyph, sizeof(rdpGlyph));
+
 	glyph->size = sizeof(rfGlyph);
 
 	glyph->New = rf_Glyph_New;
@@ -377,5 +388,6 @@ void rf_register_graphics(rdpGraphics* graphics)
 	glyph->EndDraw = rf_Glyph_EndDraw;
 
 	graphics_register_glyph(graphics, glyph);
+
 	free(glyph);
 }
