@@ -112,7 +112,7 @@ static UINT8* lf2crlf(UINT8* data, int* size)
         return outbuf;
 }
 
-static void crlf2lf(UINT8* data, int* size)
+static void crlf2lf(UINT8* data, size_t* size)
 {
         UINT8 c;
         UINT8* out;
@@ -252,6 +252,7 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 
 				data = Stream_Buffer(s);
 				size = Stream_Length(s);
+				Stream_Free(s, TRUE);
 				pixbuf = gdk_pixbuf_loader_new();
 				gdk_pixbuf_loader_write(pixbuf, data, size, NULL);
 				Stream_Free(s, TRUE);

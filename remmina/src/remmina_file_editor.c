@@ -40,6 +40,7 @@
 
 G_DEFINE_TYPE( RemminaFileEditor, remmina_file_editor, GTK_TYPE_DIALOG)
 
+#ifdef HAVE_LIBSSH
 static const gchar* charset_list = "ASCII,BIG5,"
 		"CP437,CP720,CP737,CP775,CP850,CP852,CP855,"
 		"CP857,CP858,CP862,CP866,CP874,CP1125,CP1250,"
@@ -51,6 +52,7 @@ static const gchar* charset_list = "ASCII,BIG5,"
 		"ISO-8859-9,ISO-8859-10,ISO-8859-11,ISO-8859-12,"
 		"ISO-8859-13,ISO-8859-14,ISO-8859-15,ISO-8859-16,"
 		"KOI8-R,SJIS,UTF-8";
+#endif
 
 static const gchar* server_tips = N_("<tt><big>"
 		"Supported formats\n"
@@ -59,6 +61,7 @@ static const gchar* server_tips = N_("<tt><big>"
 		"* [server]:port"
 		"</big></tt>");
 
+#ifdef HAVE_LIBSSH
 static const gchar* server_tips2 = N_("<tt><big>"
 		"Supported formats\n"
 		"* :port\n"
@@ -66,6 +69,7 @@ static const gchar* server_tips2 = N_("<tt><big>"
 		"* server:port\n"
 		"* [server]:port"
 		"</big></tt>");
+#endif
 
 struct _RemminaFileEditorPriv
 {
