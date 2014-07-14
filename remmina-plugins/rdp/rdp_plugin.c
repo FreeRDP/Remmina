@@ -1095,7 +1095,6 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService* service)
 	if (! service->register_plugin((RemminaPlugin*) &remmina_rdps))
 		return FALSE;
 
-	freerdp_channels_global_init();
 	remmina_rdp_settings_init();
 
 	return TRUE;
