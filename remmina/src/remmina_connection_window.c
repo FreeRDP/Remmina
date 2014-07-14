@@ -1757,10 +1757,12 @@ static void remmina_connection_holder_create_floating_toolbar(RemminaConnectionH
 	{
 		gtk_window_set_opacity(GTK_WINDOW(window), 0.0);
 	}
-
-	g_signal_connect(G_OBJECT(window), "enter-notify-event", G_CALLBACK(remmina_connection_holder_toolbar_enter), cnnhld);
-	g_signal_connect(G_OBJECT(window), "leave-notify-event", G_CALLBACK(remmina_connection_holder_toolbar_leave), cnnhld);
-	g_signal_connect(G_OBJECT(window), "scroll-event", G_CALLBACK(remmina_connection_holder_toolbar_scroll), cnnhld);
+	else
+	{
+		g_signal_connect(G_OBJECT(window), "enter-notify-event", G_CALLBACK(remmina_connection_holder_toolbar_enter), cnnhld);
+		g_signal_connect(G_OBJECT(window), "leave-notify-event", G_CALLBACK(remmina_connection_holder_toolbar_leave), cnnhld);
+		g_signal_connect(G_OBJECT(window), "scroll-event", G_CALLBACK(remmina_connection_holder_toolbar_scroll), cnnhld);
+	}
 
 	if (cnnobj->connected)
 		gtk_widget_show(window);
