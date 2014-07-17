@@ -1217,17 +1217,19 @@ static void remmina_main_init(RemminaMain *remminamain)
 	hbox = gtk_hbox_new(FALSE, 0);
 #endif
 
-	priv->quickconnect_protocol = gtk_combo_box_text_new();
+	
 #if GTK_VERSION == 3
+	priv->quickconnect_protocol = gtk_combo_box_text_new();
 	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(priv->quickconnect_protocol), "RDP", "RDP");
 	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(priv->quickconnect_protocol), "VNC", "VNC");
 	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(priv->quickconnect_protocol), "NX", "NX");
 	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(priv->quickconnect_protocol), "SSH", "SSH");
 #elif GTK_VERSION == 2
-	gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(priv->quickconnect_protocol), "RDP");
-	gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(priv->quickconnect_protocol), "VNC");
-	gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(priv->quickconnect_protocol), "NX");
-	gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(priv->quickconnect_protocol), "SSH");
+	priv->quickconnect_protocol = gtk_combo_box_new_text();
+	gtk_combo_box_append_text(GTK_COMBO_BOX(priv->quickconnect_protocol), "RDP");
+	gtk_combo_box_append_text(GTK_COMBO_BOX(priv->quickconnect_protocol), "VNC");
+	gtk_combo_box_append_text(GTK_COMBO_BOX(priv->quickconnect_protocol), "NX");
+	gtk_combo_box_append_text(GTK_COMBO_BOX(priv->quickconnect_protocol), "SSH");
 #endif
 	gtk_combo_box_set_active(GTK_COMBO_BOX(priv->quickconnect_protocol), 0);
 	gtk_widget_show(priv->quickconnect_protocol);
@@ -1244,7 +1246,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 	gtk_box_pack_start(GTK_BOX(hbox), quickconnect, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(quickconnect), "clicked", G_CALLBACK(remmina_main_quickconnect_on_click), remminamain);
 
-	gtk_container_add(GTK_CONTAINER(vbox), hbox);
+	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
 	/* Create the scrolled window for the file list */

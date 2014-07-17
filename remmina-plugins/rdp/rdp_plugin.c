@@ -306,7 +306,7 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	pointer_cache_register_callbacks(instance->update);
 
 /*
-	if (rfi->sw_gdi != true)
+	if (rfi->sw_gdi != TRUE)
 	{
 		glyph_cache_register_callbacks(instance->update);
 		brush_cache_register_callbacks(instance->update);
