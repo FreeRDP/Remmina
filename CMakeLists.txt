@@ -41,6 +41,7 @@ if(NOT BUILD_SHARED_LIBS)
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCC)
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
 	CHECK_C_COMPILER_FLAG(-Wno-unused-result Wno-unused-result)
