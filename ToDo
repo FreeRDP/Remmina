@@ -1,0 +1,52 @@
+
+Clipboard
+    o Rewrite to make use of the new CliprdrClientContext
+        * This should fix the segmentation fault as well
+
+
+        * IRC log
+
+
+        16:57 < awakecoding> oh, that part specifically. you don't need to take it off by parts, you can take xfreerdp almost as-is, and no need to copy the code
+        16:57 < awakecoding> I have structured each of the client to be offered as a library, with a common framework
+        16:58 < awakecoding> think like the Microsoft RDP activex control, but without the activex crap
+        16:58 < awakecoding> https://github.com/FreeRDP/FreeRDP/blob/master/client/X11/xf_client.h#L48
+        16:58 < awakecoding> each of the clients expose a similar entry point function
+        16:58 < mythos> only from an understanding viewpoint. is xembed not good enough? what is the advantage to use it as a library?
+        16:59 < antenore> ah! 
+        16:59 < awakecoding> mythos: the point is to embed the xfreerdp x11 window within a contain which you control, but when used as a library, you are within the same process and have direct control over a lot of things
+        16:59 < awakecoding> there is also messaging support for synchronization for resizing of the container, etc
+        17:00 < awakecoding> smart sizing
+        17:00 < awakecoding> all these things wouldn't really be possible if it were out of process, we'd need IPC
+        17:00 < mythos> sure
+        17:00 < awakecoding> antenore: the xfreerdp executable is in fact just this file which uses the xfreerdp client library; https://github.com/FreeRDP/FreeRDP/blob/master/client/X11/cli/xfreerdp.c
+        17:01 < antenore> awakecoding: yes, I understand 
+        17:01 < awakecoding> mythos: at one point the wayk client was just a front end to all of the freerdp clients
+        17:01 < mythos> but then there are rather few usecases... but ok. i get it
+        17:02 < awakecoding> mythos: the problem with simple out of process is you can't do much once it's launched
+        17:02 < awakecoding> having it in process with all of the freerdp api allows you to do a lot more
+        17:02 < awakecoding> hook a credential prompt provided by remmina, for instance, etc
+        17:02 < mythos> well, dbus is there to stay ;)
+        17:03 < mythos> a library is of course easier
+        17:03 < awakecoding> yeah but why dbus or any form of IPC if you can just keep using the same freerdp api in process
+        17:03 < awakecoding> a library just makes it a zillion times easier, no extra IPC development involved
+        17:03 < mythos> because it is multi purpose
+        17:03 < antenore> awakecoding: I like and I get the idea, I'm not usre I still have the competencies, but I'll try
+        17:03 < mythos> login manager as example
+        17:04 < awakecoding> mythos: what do you mean login manager, the hacked xfreerdp mode for using xfreerdp for testing auth?
+        17:06 < awakecoding> mythos: in any case, I fail to see why using IPC would be better than in process with the regular FreeRDP API in the case of a GUI front-end like remmina
+        17:06 < awakecoding> all it would add is work to make all of the in process apis available out of process, which is really a waste of time if you don't really need it
+        17:06  * mythos nods 
+        17:07 < mythos> you design decision is reasonable
+        17:07 < awakecoding> the point of the client library like xfreerdp is really to make the clients available as embeddable clients in front-end guis
+        17:07 < mythos> and i'm quite sure it's the best considering your recourses
+        17:07 < awakecoding> think of how much work remmina is when it is done by reimplementing all of the stuff xfreerdp does
+        17:08 < awakecoding> the problem is it is too much work, so it just becomes crap over time
+        17:08 < mythos> dunno what remmina does. never used it ^^"
+        17:08 < mythos> and never looked into it
+        17:08 < awakecoding> but if we can just have it reuse the vast majority of xfreerdp, we win big. and it still doesn't mean remmina cannot implement a few channels on its own, overriding those implemented normally in xfreerdp
+        17:08 < awakecoding> oh, I thought you did
+        17:09 < mythos> nope. i never said i did
+        17:09 < mythos> my question was only out of interest
+        17:10 < awakecoding> antenore: it should be quite easy to get started. try it on a branch, the first step is to do something similar to what you can see in cli/xfreerdp.c, but in remmina. you should end up with a detached window if you don't do anything special. the next step would then be to prepare your X11 container, and set settings->ParentWindowId with the window XID before launching xfreerdp
+

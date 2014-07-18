@@ -33,6 +33,7 @@
 #include <freerdp/constants.h>
 #include <freerdp/client/cliprdr.h>
 #include <freerdp/client/channels.h>
+#include <winpr/memory.h>
 
 #define REMMINA_RDP_FEATURE_TOOL_REFRESH		1
 #define REMMINA_RDP_FEATURE_SCALE			2
@@ -195,7 +196,7 @@ static void rf_desktop_resize(rdpContext* context)
 static BOOL remmina_rdp_pre_connect(freerdp* instance)
 {
 	rfContext* rfi;
-	rdpSettings* settings;
+	ALIGN64 rdpSettings* settings;
 	RemminaProtocolWidget* gp;
 
 	rfi = (rfContext*) instance->context;
@@ -534,7 +535,7 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 	}
 }
 
-gboolean remmina_rdp_load_plugin(rdpChannels* channels, rdpSettings* settings, const char* name, RDP_PLUGIN_DATA* plugin_data)
+gboolean remmina_rdp_load_plugin(rdpChannels* channels, rdpSettings* settings, const char* name, rdpSettings* plugin_data)
 {
 	void* entry = NULL;
 
@@ -706,6 +707,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	}
 	else if (g_str_has_prefix(cs, "local"))
 	{
+/* Removed becuase of issue #280 - TODO: fix this
 		cs = strchr(cs, ',');
 
 		if (cs)
@@ -729,12 +731,15 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 				rdpsnd_num++;
 			}
 		}
+*/
 
-		remmina_rdp_load_plugin(rfi->channels, rfi->settings, "rdpsnd", rfi->rdpsnd_data);
-
+		/* remmina_rdp_load_plugin(rfi->channels, rfi->settings, "rdpsnd", rfi->rdpsnd_data); */
+        remmina_rdp_load_plugin(rfi->channels, rfi->settings, "rdpsnd", rfi->settings);
+/* TODO: Fix/Check this - Removed because of issue #280
 		rfi->drdynvc_data[drdynvc_num].size = sizeof(RDP_PLUGIN_DATA);
 		rfi->drdynvc_data[drdynvc_num].data[0] = "audin";
 		drdynvc_num++;
+*/
 	}
 
 	if (drdynvc_num)
@@ -752,33 +757,38 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	if (cs && cs[0] == '/')
 	{
-		s = strrchr (cs, '/');
-		s = (s && s[1] ? s + 1 : "root");
-		rfi->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
-		rfi->rdpdr_data[rdpdr_num].data[0] = "disk";
-		rfi->rdpdr_data[rdpdr_num].data[1] = s;
-		rfi->rdpdr_data[rdpdr_num].data[2] = (gchar*) cs;
+        RDPDR_DRIVE* drive;
+        drive = (RDPDR_DRIVE*) malloc(sizeof(RDPDR_DRIVE));
+        ZeroMemory(drive, sizeof(RDPDR_DRIVE));
+
+        drive->Type = RDPDR_DTYP_FILESYSTEM;
+        drive->Name = _strdup(s);
+        drive->Path = _strdup(cs);
+
+        freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*) drive);
+        rfi->settings->DeviceRedirection = TRUE;
 		rdpdr_num++;
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "shareprinter", FALSE))
 	{
-		rfi->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
-		rfi->rdpdr_data[rdpdr_num].data[0] = "printer";
+//		rfi->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
+//		rfi->rdpdr_data[rdpdr_num].data[0] = "printer";
 		rdpdr_num++;
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE))
 	{
-		rfi->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
-		rfi->rdpdr_data[rdpdr_num].data[0] = "scard";
-		rfi->rdpdr_data[rdpdr_num].data[1] = "scard";
+        //rfi->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
+        //rfi->rdpdr_data[rdpdr_num].data[0] = "scard";
+        //rfi->rdpdr_data[rdpdr_num].data[1] = "scard";
 		rdpdr_num++;
 	}
 
 	if (rdpdr_num)
 	{
-		remmina_rdp_load_plugin(rfi->channels, rfi->settings, "rdpdr", rfi->rdpdr_data);
+		//remmina_rdp_load_plugin(rfi->channels, rfi->settings, "rdpdr", rfi->rdpdr_data);
+        remmina_rdp_load_plugin(rfi->channels, rfi->settings, "rdpdr", rfi->settings);
 	}
 
 	if (!freerdp_connect(rfi->instance))
@@ -847,6 +857,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 
 static gboolean remmina_rdp_open_connection(RemminaProtocolWidget* gp)
 {
+
 	rfContext* rfi;
 
 	rfi = GET_DATA(gp);
@@ -1095,7 +1106,6 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService* service)
 	if (! service->register_plugin((RemminaPlugin*) &remmina_rdps))
 		return FALSE;
 
-	freerdp_channels_global_init();
 	remmina_rdp_settings_init();
 
 	return TRUE;
