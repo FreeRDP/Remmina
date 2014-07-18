@@ -50,13 +50,13 @@ guint remmina_rdp_settings_get_keyboard_layout(void)
 }
 
 #define REMMINA_TYPE_PLUGIN_RDPSET_GRID		(remmina_rdp_settings_grid_get_type())
-#define REMMINA_RDPSET_GRID(obj)			(G_TYPE_CHECK_INSTANCE_CAST((obj), REMMINA_TYPE_PLUGIN_RDPSET_GRID, RemminaPluginRdpsetgrid))
-#define REMMINA_RDPSET_GRID_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST((klass), REMMINA_TYPE_PLUGIN_RDPSET_GRID, RemminaPluginRdpsetgridClass))
+#define REMMINA_RDPSET_GRID(obj)			(G_TYPE_CHECK_INSTANCE_CAST((obj), REMMINA_TYPE_PLUGIN_RDPSET_GRID, RemminaPluginRdpsetGrid))
+#define REMMINA_RDPSET_GRID_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST((klass), REMMINA_TYPE_PLUGIN_RDPSET_GRID, RemminaPluginRdpsetGridClass))
 #define REMMINA_IS_PLUGIN_RDPSET_GRID(obj)		(G_TYPE_CHECK_INSTANCE_TYPE((obj), REMMINA_TYPE_PLUGIN_RDPSET_GRID))
 #define REMMINA_IS_PLUGIN_RDPSET_GRID_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE((klass), REMMINA_TYPE_PLUGIN_RDPSET_GRID))
-#define REMMINA_RDPSET_GRID_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_PLUGIN_RDPSET_GRID, RemminaPluginRdpsetgridClass))
+#define REMMINA_RDPSET_GRID_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_PLUGIN_RDPSET_GRID, RemminaPluginRdpsetGridClass))
 
-typedef struct _RemminaPluginRdpsetgrid
+typedef struct _RemminaPluginRdpsetGrid
 {
 	GtkGrid grid;
 
@@ -77,18 +77,18 @@ typedef struct _RemminaPluginRdpsetgrid
 	GtkWidget* use_client_keymap_check;
 
 	guint quality_values[10];
-} RemminaPluginRdpsetgrid;
+} RemminaPluginRdpsetGrid;
 
-typedef struct _RemminaPluginRdpsetgridClass
+typedef struct _RemminaPluginRdpsetGridClass
 {
 	GtkGridClass parent_class;
-} RemminaPluginRdpsetgridClass;
+} RemminaPluginRdpsetGridClass;
 
 GType remmina_rdp_settings_grid_get_type(void) G_GNUC_CONST;
 
-G_DEFINE_TYPE(RemminaPluginRdpsetgrid, remmina_rdp_settings_grid, GTK_TYPE_GRID)
+G_DEFINE_TYPE(RemminaPluginRdpsetGrid, remmina_rdp_settings_grid, GTK_TYPE_GRID)
 
-static void remmina_rdp_settings_grid_class_init(RemminaPluginRdpsetgridClass* klass)
+static void remmina_rdp_settings_grid_class_init(RemminaPluginRdpsetGridClass* klass)
 {
 }
 
@@ -97,7 +97,7 @@ static void remmina_rdp_settings_grid_destroy(GtkWidget* widget, gpointer data)
 	gchar* s;
 	guint new_layout;
 	GtkTreeIter iter;
-	RemminaPluginRdpsetgrid* grid;
+	RemminaPluginRdpsetGrid* grid;
 
 	grid = REMMINA_RDPSET_GRID(widget);
 
@@ -136,7 +136,7 @@ static void remmina_rdp_settings_grid_destroy(GtkWidget* widget, gpointer data)
 	g_free(s);
 }
 
-static void remmina_rdp_settings_grid_load_layout(RemminaPluginRdpsetgrid* grid)
+static void remmina_rdp_settings_grid_load_layout(RemminaPluginRdpsetGrid* grid)
 {
 	gint i;
 	gchar* s;
@@ -171,7 +171,7 @@ static void remmina_rdp_settings_grid_load_layout(RemminaPluginRdpsetgrid* grid)
 	free(layouts);
 }
 
-static void remmina_rdp_settings_grid_load_quality(RemminaPluginRdpsetgrid* grid)
+static void remmina_rdp_settings_grid_load_quality(RemminaPluginRdpsetGrid* grid)
 {
 	gchar* value;
 	GtkTreeIter iter;
@@ -204,7 +204,7 @@ static void remmina_rdp_settings_grid_load_quality(RemminaPluginRdpsetgrid* grid
 	g_free(value);
 }
 
-static void remmina_rdp_settings_quality_on_changed(GtkComboBox *widget, RemminaPluginRdpsetgrid *grid)
+static void remmina_rdp_settings_quality_on_changed(GtkComboBox *widget, RemminaPluginRdpsetGrid *grid)
 {
 	guint v;
 	guint i = 0;
@@ -225,7 +225,7 @@ static void remmina_rdp_settings_quality_on_changed(GtkComboBox *widget, Remmina
 	}
 }
 
-static void remmina_rdp_settings_quality_option_on_toggled(GtkToggleButton* togglebutton, RemminaPluginRdpsetgrid* grid)
+static void remmina_rdp_settings_quality_option_on_toggled(GtkToggleButton* togglebutton, RemminaPluginRdpsetGrid* grid)
 {
 	guint v;
 	guint i = 0;
@@ -247,7 +247,7 @@ static void remmina_rdp_settings_quality_option_on_toggled(GtkToggleButton* togg
 	}
 }
 
-static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetgrid *grid)
+static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 {
 	gchar* s;
 	GtkWidget* widget;
@@ -255,9 +255,8 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetgrid *grid)
 
 	/* Create the grid */
 	g_signal_connect(G_OBJECT(grid), "destroy", G_CALLBACK(remmina_rdp_settings_grid_destroy), NULL);
-	//gtk_grid_resize(GTK_GRID(grid), 8, 3);
-    gtk_grid_set_row_homogeneous(GTK_GRID(grid), FALSE);
-    gtk_grid_set_column_homogeneous(GTK_GRID(grid), FALSE);
+	gtk_grid_set_row_homogeneous(GTK_GRID(grid), FALSE);
+	gtk_grid_set_column_homogeneous(GTK_GRID(grid), FALSE);
 	gtk_container_set_border_width(GTK_CONTAINER(grid), 8);
 	gtk_grid_set_row_spacing(GTK_GRID(grid), 4);
 	gtk_grid_set_column_spacing(GTK_GRID(grid), 4);
