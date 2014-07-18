@@ -277,7 +277,7 @@ static void remmina_connection_holder_update_toolbar_opacity(RemminaConnectionHo
 
 	if (priv->floating_toolbar)
 	{
-		gtk_window_set_opacity(GTK_WINDOW(priv->floating_toolbar), priv->floating_toolbar_opacity);
+		gtk_widget_set_opacity(GTK_WIDGET(priv->floating_toolbar), priv->floating_toolbar_opacity);
 	}
 }
 
@@ -315,7 +315,7 @@ static gboolean remmina_connection_holder_floating_toolbar_motion(RemminaConnect
 		gtk_window_move(GTK_WINDOW(priv->floating_toolbar), x, y);
 		if (remmina_pref.invisible_toolbar && !priv->pin_down)
 		{
-			gtk_window_set_opacity(GTK_WINDOW(priv->floating_toolbar),
+			gtk_widget_set_opacity(GTK_WIDGET(priv->floating_toolbar),
 					(gdouble)(y - t) / (gdouble)(-t) * priv->floating_toolbar_opacity);
 		}
 		if ((priv->floating_toolbar_motion_show && y >= 0) || (!priv->floating_toolbar_motion_show && y <= t))
@@ -1755,7 +1755,7 @@ static void remmina_connection_holder_create_floating_toolbar(RemminaConnectionH
 	remmina_connection_holder_update_toolbar_opacity(cnnhld);
 	if (remmina_pref.invisible_toolbar && !priv->pin_down)
 	{
-		gtk_window_set_opacity(GTK_WINDOW(window), 0.0);
+		gtk_widget_set_opacity(GTK_WIDGET(window), 0.0);
 	}
 	else
 	{

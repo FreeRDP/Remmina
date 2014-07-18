@@ -240,6 +240,7 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 		rfi->rfx_context = rfx_context_new(FALSE);
 	}
 
+    freerdp_register_addin_provider(freerdp_channels_load_static_addin_entry, 0);
 	freerdp_channels_pre_connect(rfi->channels, instance);
 
 	rfi->clrconv = freerdp_clrconv_new(CLRCONV_ALPHA);
