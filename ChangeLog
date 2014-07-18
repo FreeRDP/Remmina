@@ -1,3 +1,42 @@
+***** 1.0.0 - 2014-07-14 *****
+Pull requests
+o Typo in preference name broke key mapping in VNC
+o Fix for issue #251:  RDP: No caret on explorer address bar and white squares
+                            instead of small icons
+o Fix issue with invisible toolbar in fullscreen.
+
+o Fixes from repzilon and Mike Gilbert
+  + repzilon
+    - Replaced missed xzalloc with calloc
+    - cmake: add WITH_TRANSLATIONS to disable .po files (Fixes: #23)
+  + Mike Gilbert
+    - Remove duplicate Actions key in desktop file
+  + repzilon
+    - Fixed Gentoo QA Notice in desktop file
+  + repzilon
+    - Recompressed icons. Also removed executable bit to some icons
+  + repzilon
+    - freerdp-channels was remed to freerdp-client
+  + repzilon
+    - plugins-rdp: fix crash when free'ing cursor
+    - Fixes #120: Fix linking of avahi
+    - cmake: small change in FindAVAHI
+    - Fixes #113: call add_subdirectory after ALL add_definitions …
+    - Detect GTK before other packages …
+  + repzilon   Updated README with GTK2 on uclibc instructions
+  + repzilon   Merge commit 'b6a55ae6f4633d55f8f03e7ce2eeb5899514a8fc'
+  + repzilon   Corrected compile warnings
+  + repzilon   GTK+2 compatibility
+               * RDP mouse cursor image reference count is no longer decremented. It
+                 probably introduces a memory leak, but decrementing the reference
+                 count causes a segfault.
+               * The Quick Connect bar of the main window no longer take half of the
+                 window height.
+               * The protocol selector of the Quick Connect bar looks like a regular
+                 drop-down list on QtCurve theme.
+
+
+
 ***** 1.0.0 - 2012-02-10 *****
 Main program design and functionality:
 o Switch to the CMake build system

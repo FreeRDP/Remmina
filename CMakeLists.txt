@@ -18,7 +18,9 @@
 # Boston, MA 02111-1307, USA.
 
 cmake_minimum_required(VERSION 2.8)
+
 set(CMAKE_COLOR_MAKEFILE ON)
+
 project(Remmina C)
 
 include(CheckIncludeFiles)
@@ -43,6 +45,9 @@ endif()
 if(CMAKE_COMPILER_IS_GNUCC)
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+	if(WITH_SSE2)
+		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2")
+	endif()
 	CHECK_C_COMPILER_FLAG(-Wno-unused-result Wno-unused-result)
 	if(Wno-unused-result)
 		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-result")
@@ -71,7 +76,14 @@ check_include_files(errno.h HAVE_ERRNO_H)
 include_directories(.)
 include_directories(remmina/include)
 
-set(REMMINA_VERSION "1.0.0")
+# Versioning
+set(WITH_LIBRARY_VERSIONING "ON")
+set(REMMINA_VERSION_MAJOR "1")
+set(REMMINA_VERSION_MINOR "0")
+set(REMMINA_VERSION_REVISION "0")
+set(REMMINA_VERSION_SUFFIX "release")
+set(REMMINA_VERSION "${REMMINA_VERSION_MAJOR}.${REMMINA_VERSION_MINOR}.${REMMINA_VERSION_REVISION}")
+
 set(REMMINA_DATADIR "${CMAKE_INSTALL_FULL_DATADIR}")
 set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_FULL_DATADIR}/locale")
 set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/remmina/plugins")
