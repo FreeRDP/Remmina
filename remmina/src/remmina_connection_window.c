@@ -483,27 +483,6 @@ static void remmina_connection_holder_toolbar_autofit(GtkWidget* widget, Remmina
 
 }
 
-static void remmina_connection_object_init_adjustment(RemminaConnectionObject* cnnobj)
-{
-	GdkScreen* screen;
-	GtkAdjustment* adjh;
-	GtkAdjustment* adjv;
-	gint screen_width, screen_height;
-
-	screen = gdk_screen_get_default();
-	screen_width = gdk_screen_get_width(screen);
-	screen_height = gdk_screen_get_height(screen);
-
-#if GTK_VERSION == 3
-	adjh = gtk_scrollable_get_hadjustment(GTK_SCROLLABLE(cnnobj->viewport));
-	adjv = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(cnnobj->viewport));
-#elif GTK_VERSION == 2
-	adjh = gtk_viewport_get_hadjustment(GTK_VIEWPORT(cnnobj->viewport));
-	adjv = gtk_viewport_get_vadjustment(GTK_VIEWPORT(cnnobj->viewport));
-#endif
-	gtk_adjustment_set_page_size(adjh, screen_width);
-	gtk_adjustment_set_page_size(adjv, screen_height);
-}
 
 static void remmina_connection_holder_check_resize(RemminaConnectionHolder* cnnhld)
 {
@@ -2522,7 +2501,6 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 		gtk_window_present(GTK_WINDOW(cnnhld->cnnwin));
 		gtk_notebook_set_current_page(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook), i);
 	}
-	remmina_connection_object_init_adjustment(cnnobj);
 
 	if (cnnhld->cnnwin->priv->floating_toolbar)
 	{
