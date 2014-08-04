@@ -923,10 +923,7 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 			freerdp_channels_free(rfi->channels);
 			rfi->channels = NULL;
 		}
-		if (freerdp_shall_disconnect(instance))
-		{
-			freerdp_disconnect(instance);
-		}
+		freerdp_disconnect(instance);
 	}
 
 	if (rfi->rfx_context)
