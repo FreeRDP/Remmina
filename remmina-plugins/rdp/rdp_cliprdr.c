@@ -328,7 +328,7 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *clipboard, GtkSelectionData 
 	event = (RDP_CB_DATA_REQUEST_EVENT*)
 		freerdp_event_new(CliprdrChannel_Class, CliprdrChannel_DataRequest, NULL, NULL);
 	event->format = rfi->format;
-	freerdp_channels_send_event(rfi->channels, (wMessage*) event);
+	freerdp_channels_send_event(rfi->instance->context->channels, (wMessage*) event);
 
 	data = g_async_queue_timeout_pop(rfi->clipboard_queue, 1000000);
 	if (data != NULL)
@@ -382,7 +382,7 @@ int remmina_rdp_cliprdr_send_format_list(RemminaProtocolWidget* gp, RemminaPlugi
 	remmina_rdp_cliprdr_get_target_types(&event->formats, &event->num_formats, targets, count);
 	g_free(targets);
 
-	return freerdp_channels_send_event(rfi->channels, (wMessage*) event);
+	return freerdp_channels_send_event(rfi->instance->context->channels, (wMessage*) event);
 }
 
 void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
@@ -478,7 +478,7 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 		        freerdp_event_new(CliprdrChannel_Class, CliprdrChannel_DataResponse, NULL, NULL);
 	event->data = outbuf;
 	event->size = size;
-	freerdp_channels_send_event(rfi->channels, (wMessage*) event);
+	freerdp_channels_send_event(rfi->instance->context->channels, (wMessage*) event);
 }
 
 void remmina_rdp_cliprdr_set_clipboard_data(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
