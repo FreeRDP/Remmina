@@ -266,7 +266,7 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 
 				data = Stream_Buffer(s);
 				size = Stream_Length(s);
-				Stream_Free(s, TRUE);
+
 				pixbuf = gdk_pixbuf_loader_new();
 				gdk_pixbuf_loader_write(pixbuf, data, size, NULL);
 				Stream_Free(s, TRUE);
