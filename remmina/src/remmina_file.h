@@ -92,6 +92,8 @@ const gchar* remmina_file_get_icon_name(RemminaFile *remminafile);
 RemminaFile* remmina_file_dup_temp_protocol(RemminaFile *remminafile, const gchar *new_protocol);
 /* Delete a .remmina file */
 void remmina_file_delete(const gchar *filename);
+/* Delete a "password" field and save into .remmina file */
+void remmina_file_unsave_password(RemminaFile *remminafile);
 
 G_END_DECLS
 
