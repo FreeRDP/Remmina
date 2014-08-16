@@ -47,6 +47,7 @@
 #include <freerdp/constants.h>
 #include <freerdp/client/cliprdr.h>
 #include <freerdp/client/channels.h>
+#include <freerdp/error.h>
 #include <winpr/memory.h>
 
 #define REMMINA_RDP_FEATURE_TOOL_REFRESH		1
@@ -351,13 +352,16 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 
 static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** password, char** domain)
 {
-	gchar* s;
+	gchar *s_username, *s_password, *s_domain;
 	gint ret;
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
+	gboolean save;
+	RemminaFile* remminafile;
 
 	rfi = (rfContext*) instance->context;
 	gp = rfi->protocol_widget;
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	THREADS_ENTER
 	ret = remmina_plugin_service->protocol_plugin_init_authuserpwd(gp, TRUE);
@@ -365,29 +369,32 @@ static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** 
 
 	if (ret == GTK_RESPONSE_OK)
 	{
-		s = remmina_plugin_service->protocol_plugin_init_get_username(gp);
+		s_username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
+		if (s_username) rfi->settings->Username = strdup(s_username);
 
-		if (s)
+		s_password = remmina_plugin_service->protocol_plugin_init_get_password(gp);
+		if (s_password) rfi->settings->Password = strdup(s_password);
+
+		s_domain = remmina_plugin_service->protocol_plugin_init_get_domain(gp);
+		if (s_domain) rfi->settings->Domain = strdup(s_domain);
+		
+		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
+		if (save)
 		{
-			rfi->settings->Username = strdup(s);
-			g_free(s);
+			// User has requested to save password. We put all the new cretentials
+			// into remminafile->settings. They will be saved later, when disconnecting, by
+			// remmina_connection_object_on_disconnect of remmina_connection_window.c
+			// (this operation should be called "save credentials" and not "save password")
+			
+			remmina_plugin_service->file_set_string( remminafile, "username", s_username );
+			remmina_plugin_service->file_set_string( remminafile, "password", s_password );
+			remmina_plugin_service->file_set_string( remminafile, "domain", s_domain );
+			
 		}
-
-		s = remmina_plugin_service->protocol_plugin_init_get_password(gp);
-
-		if (s)
-		{
-			rfi->settings->Password = strdup(s);
-			g_free(s);
-		}
-
-		s = remmina_plugin_service->protocol_plugin_init_get_domain(gp);
-
-		if (s)
-		{
-			rfi->settings->Domain = strdup(s);
-			g_free(s);
-		}
+		
+		if ( s_username ) g_free( s_username );
+		if ( s_password ) g_free( s_password );
+		if ( s_domain ) g_free( s_domain );
 
 		return True;
 	}
@@ -879,8 +886,24 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	{
 		if (!rfi->user_cancelled)
 		{
-			remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"),
-				rfi->settings->ServerHostname);
+			UINT32 e;
+		
+			e = freerdp_get_last_error(rfi->instance->context);
+			switch(e) {
+				case FREERDP_ERROR_AUTHENTICATION_FAILED:
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Authentication to RDP server %s failed.\nCheck username, password and domain."),
+						rfi->settings->ServerHostname );
+					// Invalidate the saved password, so the user will be re-asked at next logon
+					remmina_plugin_service->file_unsave_password(remminafile);
+					break;
+				case FREERDP_ERROR_CONNECT_FAILED:
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to RDP server %s failed."), rfi->settings->ServerHostname );
+					break;
+				default:
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
+					break;
+			}
+
 		}
 
 		return FALSE;
