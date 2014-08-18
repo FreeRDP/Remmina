@@ -197,6 +197,12 @@ static void remmina_connection_holder_keyboard_grab(RemminaConnectionHolder* cnn
 
 	if (keyboard != NULL)
 	{
+		
+		if ( gdk_device_get_source (keyboard) != GDK_SOURCE_KEYBOARD)
+		{
+			keyboard = gdk_device_get_associated_device( keyboard );
+		}
+		
 		if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE))
 		{
 			gdk_device_grab(keyboard, gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)), GDK_OWNERSHIP_WINDOW, TRUE, GDK_KEY_PRESS | GDK_KEY_RELEASE, NULL, GDK_CURRENT_TIME);
@@ -1548,6 +1554,9 @@ static gboolean remmina_connection_window_on_leave(GtkWidget* widget, GdkEventCr
 		device = gdk_device_manager_get_client_pointer(manager);
 		if (device != NULL)
 		{
+			if ( device != GDK_SOURCE_KEYBOARD ) {
+				device = gdk_device_get_associated_device (device);
+			}
 			gdk_device_ungrab(device, GDK_CURRENT_TIME);
 		}
 	}
