@@ -364,7 +364,11 @@ gboolean remmina_plugin_vnc_setcursor(RemminaProtocolWidget *gp)
 		cur = gdk_cursor_new_from_pixbuf(gdk_display_get_default(), gpdata->queuecursor_pixbuf, gpdata->queuecursor_x,
 				gpdata->queuecursor_y);
 		gdk_window_set_cursor(gtk_widget_get_window(gpdata->drawing_area), cur);
+#if GTK_VERSION == 3
 		g_object_unref(cur);
+#else
+		gdk_cursor_unref(cur);
+#endif
 		g_object_unref(gpdata->queuecursor_pixbuf);
 		gpdata->queuecursor_pixbuf = NULL;
 	}
@@ -1598,7 +1602,11 @@ static void remmina_plugin_vnc_on_realize(RemminaProtocolWidget *gp, gpointer da
 		cursor = gdk_cursor_new_from_pixbuf(gdk_display_get_default(), pixbuf, dot_cursor_x_hot, dot_cursor_y_hot);
 		g_object_unref(pixbuf);
 		gdk_window_set_cursor(gtk_widget_get_window(GTK_WIDGET(gp)), cursor);
+#if GTK_VERSION == 3
 		g_object_unref(cursor);
+#else
+		gdk_cursor_unref(cursor);
+#endif
 	}
 }
 
