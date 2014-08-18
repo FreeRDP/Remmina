@@ -1082,7 +1082,11 @@ static gboolean remmina_plugin_vnc_incoming_connection(RemminaProtocolWidget *gp
 
 	gpdata = (RemminaPluginVncData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 
-	gpdata->listen_sock = ListenAtTcpPort(cl->listenPort);
+    if (cl->listenAddress == NULL) {            
+		gpdata->listen_sock = ListenAtTcpPort(cl->listenPort);
+    } else {
+		gpdata->listen_sock = ListenAtTcpPortAndAddress(cl->listenPort, cl->listenAddress);
+    }
 	if (gpdata->listen_sock < 0)
 		return FALSE;
 
@@ -1219,7 +1223,24 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 			}
 			else
 			{
-				cl->listenPort = remmina_plugin_service->file_get_int(remminafile, "listenport", 5500);
+				host = remmina_plugin_service->file_get_string(remminafile, "listenport");
+                cl->listenPort = 5500;
+                cl->listenAddress = NULL;
+
+				if (host != NULL && host[0] != '\0') {
+					gchar *str, *ptr;
+
+					str = g_strdup(host);
+                    ptr = strchr(str, ':');                                
+                    if (ptr) {
+						*ptr = '\0';
+                        cl->listenAddress = g_strdup(str);
+                        cl->listenPort = atoi(ptr + 1);
+                    } else {
+						cl->listenPort = atoi(str);
+                    }
+                    g_free(str);
+                }
 			}
 
 			remmina_plugin_vnc_incoming_connection(gp, cl);
@@ -2007,4 +2028,3 @@ remmina_plugin_entry(RemminaPluginService *service)
 
 	return TRUE;
 }
-
