@@ -295,7 +295,7 @@ static void remmina_connection_holder_update_toolbar_opacity(RemminaConnectionHo
 			* ((gdouble)(TOOLBAR_OPACITY_LEVEL - remmina_file_get_int(cnnobj->remmina_file, "toolbar_opacity", 0)))
 			+ TOOLBAR_OPACITY_MIN;
 
-#if !GTK_CHECK_VERSION(3, 8, 0)     /* gtk_widget_set_opacity supported starting from GTK 3.8.0 */
+#if (GTK_MAJOR_VERSION == 3 && GTK_MINOR_VERSION >= 8) /* gtk_widget_set_opacity supported starting from GTK 3.8.0 */
 	if (priv->floating_toolbar)
 	{
 		gtk_widget_set_opacity(GTK_WIDGET(priv->floating_toolbar), priv->floating_toolbar_opacity);
@@ -335,7 +335,7 @@ static gboolean remmina_connection_holder_floating_toolbar_motion(RemminaConnect
 			y = t;
 
 		gtk_window_move(GTK_WINDOW(priv->floating_toolbar), x, y);
-#if !GTK_CHECK_VERSION(3, 8, 0)     /* gtk_widget_set_opacity supported starting from GTK 3.8.0 */
+#if (GTK_MAJOR_VERSION == 3 && GTK_MINOR_VERSION >= 8) /* gtk_widget_set_opacity supported starting from GTK 3.8.0 */
 		if (remmina_pref.invisible_toolbar && !priv->pin_down)
 		{
 			gtk_widget_set_opacity(GTK_WIDGET(priv->floating_toolbar),
@@ -1761,7 +1761,7 @@ static void remmina_connection_holder_create_floating_toolbar(RemminaConnectionH
 	remmina_connection_holder_update_toolbar_opacity(cnnhld);
 	if (remmina_pref.invisible_toolbar && !priv->pin_down)
 	{
-#if !GTK_CHECK_VERSION(3, 8, 0)     /* gtk_widget_set_opacity supported starting from GTK 3.8.0 */
+#if (GTK_MAJOR_VERSION == 3 && GTK_MINOR_VERSION >= 8) /* gtk_widget_set_opacity supported starting from GTK 3.8.0 */
 		gtk_widget_set_opacity(GTK_WIDGET(window), 0.0);
 #else
 		g_signal_connect(G_OBJECT(window), "enter-notify-event", G_CALLBACK(remmina_connection_holder_toolbar_enter), cnnhld);
