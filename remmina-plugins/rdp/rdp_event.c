@@ -41,6 +41,7 @@
 #include <gdk/gdkkeysyms.h>
 #include <cairo/cairo-xlib.h>
 #include <freerdp/locale/keyboard.h>
+#include <X11/XKBlib.h>
 
 static void remmina_rdp_event_on_focus_in(GtkWidget* widget, GdkEventKey* event, RemminaProtocolWidget* gp)
 {
@@ -482,7 +483,8 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 			{
 				//TODO: Port to GDK functions
 				display = gdk_display_get_default();
-				cooked_keycode = XKeysymToKeycode(GDK_DISPLAY_XDISPLAY(display), XKeycodeToKeysym(GDK_DISPLAY_XDISPLAY(display), event->hardware_keycode, 0));
+				//cooked_keycode = XKeysymToKeycode(GDK_DISPLAY_XDISPLAY(display), XKeycodeToKeysym(GDK_DISPLAY_XDISPLAY(display), event->hardware_keycode, 0));
+				cooked_keycode = XKeysymToKeycode(GDK_DISPLAY_XDISPLAY(display), XkbKeycodeToKeysym(GDK_DISPLAY_XDISPLAY(display), event->hardware_keycode, 0, 0));
 				scancode = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(cooked_keycode);
 				rdp_event.key_event.key_code = scancode & 0xFF;
 				rdp_event.key_event.extended = scancode & 0x100;
@@ -717,9 +719,10 @@ static void remmina_rdp_event_free_cursor(RemminaProtocolWidget* gp, RemminaPlug
 	rfContext* rfi = GET_DATA(gp);
 
 	g_mutex_lock(rfi->gmutex);
-	/* Ugly leak with GTK2, otherwise g_object_unref segfaults */
 #if GTK_VERSION == 3
 	g_object_unref(ui->cursor.pointer->cursor);
+#else
+	gdk_cursor_unref(ui->cursor.pointer->cursor);
 #endif	
 	ui->cursor.pointer->cursor = NULL;
 	g_cond_signal(rfi->gcond);
