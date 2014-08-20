@@ -482,7 +482,7 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 	rfi = GET_DATA(gp);
 	channels = rfi->instance->context->channels;
 
-	while (1)
+	while (!freerdp_shall_disconnect(rfi->instance))
 	{
 		rcount = 0;
 		wcount = 0;
