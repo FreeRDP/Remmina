@@ -90,7 +90,7 @@ struct rf_context
 	/* main */
 	rdpSettings* settings;
 	freerdp* instance;
-	rdpChannels* channels;
+	// rdpChannels* channels;
 
 	pthread_t thread;
 	pthread_mutex_t mutex;
@@ -102,7 +102,6 @@ struct rf_context
 
 	RDP_PLUGIN_DATA rdpdr_data[5];
 	RDP_PLUGIN_DATA drdynvc_data[5];
-	RDP_PLUGIN_DATA rdpsnd_data[5];
 	gchar rdpsnd_options[20];
 
 	RFX_CONTEXT* rfx_context;
