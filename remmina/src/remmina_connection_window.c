@@ -615,6 +615,7 @@ static void remmina_connection_holder_toolbar_fullscreen(GtkWidget* widget, Remm
 	}
 	else
 	{
+		remmina_pref.toolbar_pin_down = cnnhld->cnnwin->priv->pin_down;
 		remmina_connection_holder_create_scrolled(cnnhld, NULL);
 	}
 }
@@ -2330,6 +2331,7 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
 				break;
 			case SCROLLED_FULLSCREEN_MODE:
 			case VIEWPORT_FULLSCREEN_MODE:
+				remmina_pref.toolbar_pin_down = cnnhld->cnnwin->priv->pin_down;
 				remmina_connection_holder_create_scrolled(cnnhld, NULL);
 				break;
 			default:
