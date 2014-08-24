@@ -154,7 +154,7 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 	}
 	else
 	{
-		widget = gtk_image_new_from_stock(GTK_STOCK_JUMP_TO, GTK_ICON_SIZE_MENU);
+		widget = gtk_image_new_from_icon_name(GTK_STOCK_JUMP_TO, GTK_ICON_SIZE_MENU);
 	}
 
 	gtk_widget_show(widget);
