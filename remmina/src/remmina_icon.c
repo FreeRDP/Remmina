@@ -124,10 +124,8 @@ static void remmina_icon_populate_additional_menu_item(GtkWidget *menu)
 {
 	GtkWidget *menuitem;
 
-	menuitem = gtk_image_menu_item_new_with_label(_("Open Main Window"));
+	menuitem = gtk_menu_item_new_with_label(_("Open Main Window"));
 	gtk_widget_show(menuitem);
-	gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(menuitem),
-			gtk_image_new_from_icon_name("remmina", GTK_ICON_SIZE_MENU));
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_main), NULL);
 
