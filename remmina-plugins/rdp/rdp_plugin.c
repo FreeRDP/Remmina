@@ -55,6 +55,7 @@
 #define REMMINA_RDP_FEATURE_UNFOCUS			3
 
 RemminaPluginService* remmina_plugin_service = NULL;
+static char remmina_rdp_plugin_default_drive_name[]="RemminaDisk";
 
 void rf_get_fds(RemminaProtocolWidget* gp, void** rfds, int* rcount)
 {
@@ -825,16 +826,26 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	if (cs && cs[0] == '/')
 	{
-        RDPDR_DRIVE* drive;
-        drive = (RDPDR_DRIVE*) malloc(sizeof(RDPDR_DRIVE));
-        ZeroMemory(drive, sizeof(RDPDR_DRIVE));
+		RDPDR_DRIVE* drive;
+		gsize sz;
 
-        drive->Type = RDPDR_DTYP_FILESYSTEM;
-        drive->Name = _strdup(s);
-        drive->Path = _strdup(cs);
+		drive = (RDPDR_DRIVE*) malloc(sizeof(RDPDR_DRIVE));
+		ZeroMemory(drive, sizeof(RDPDR_DRIVE));
 
-        freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*) drive);
-        rfi->settings->DeviceRedirection = TRUE;
+		s = strrchr( cs, '/' );
+		if ( s == NULL || s[1] == 0 )
+			s = remmina_rdp_plugin_default_drive_name;
+		else
+			s++;
+		s = g_convert_with_fallback(s, -1, "ascii", "utf-8", "_", NULL, &sz, NULL);
+
+		drive->Type = RDPDR_DTYP_FILESYSTEM;
+		drive->Name = _strdup(s);
+		drive->Path = _strdup(cs);
+		g_free(s);
+
+		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*) drive);
+		rfi->settings->DeviceRedirection = TRUE;
 		rdpdr_num++;
 	}
 
