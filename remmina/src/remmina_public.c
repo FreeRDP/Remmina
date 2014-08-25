@@ -250,7 +250,7 @@ remmina_public_create_combo_mapint(const gpointer *key_value_list, gint def, gbo
 	return remmina_public_create_combo_map(key_value_list, buf, use_icon, domain);
 }
 
-void remmina_public_create_group(GtkGrid* table, const gchar *group, gint row, gint rows, gint cols)
+void remmina_public_create_group(GtkWidget* table, const gchar *group, gint row, gint rows, gint cols)
 {
 	GtkWidget *widget;
 	gchar *str;
