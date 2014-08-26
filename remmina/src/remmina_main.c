@@ -1106,8 +1106,10 @@ static gboolean remmina_main_add_tool_plugin(gchar *name, RemminaPlugin *plugin,
 	return FALSE;
 }
 
+
 static gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWindowState *event, gpointer user_data)
 {
+#ifdef ENABLE_MINIMIZE_TO_TRAY
 	GdkScreen *screen;
 
 	screen = gdk_screen_get_default();
@@ -1121,7 +1123,9 @@ static gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWi
 		return TRUE;
 	}
 	return FALSE;
+#endif
 }
+
 
 static void remmina_main_init(RemminaMain *remminamain)
 {

@@ -138,6 +138,7 @@ remmina_ssh_auth_password (RemminaSSH *ssh)
 	gint n;
 	gint i;
 
+	ret = SSH_AUTH_ERROR;
 	if (ssh->authenticated) return 1;
 	if (ssh->password == NULL) return -1;
 
