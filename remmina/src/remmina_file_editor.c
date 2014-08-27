@@ -228,7 +228,7 @@ static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe
 	gtk_box_pack_start(GTK_BOX(tablabel), widget, FALSE, FALSE, 0);
 	gtk_widget_show(widget);
 
-#if GTK_VERSION == 3
+#if GTK_VERSION == 6
 	tabbody = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
 #elif GTK_VERSION == 2
 	tabbody = gtk_vbox_new(FALSE, 0);
@@ -327,7 +327,7 @@ static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor* gfe, Gt
 
 	dialog = gtk_file_chooser_dialog_new (_("Identity file"), GTK_WINDOW(gfe), GTK_FILE_CHOOSER_ACTION_OPEN,
 			"_Cancel", GTK_RESPONSE_CANCEL,
-			GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+			"_Open", GTK_RESPONSE_ACCEPT,
 			NULL);
 
 	widget = gtk_file_chooser_button_new_with_dialog (dialog);
@@ -509,12 +509,13 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkGri
 	widget = gtk_label_new(label);
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, row , 1, 1);
+	gtk_grid_attach(GTK_GRID(table), widget, 0, row , col + 1, 1);
+    //gtk_table_attach(GTK_TABLE(table), widget, col, col + 1, row, row + 1);
 
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(table), widget, 1, row, 1, 1);
-	gtk_entry_set_max_length(GTK_ENTRY(widget), 400);
+	gtk_entry_set_max_length(GTK_ENTRY(widget), 300);
 
 	if (value)
 		gtk_entry_set_text(GTK_ENTRY(widget), value);
@@ -565,10 +566,10 @@ static GtkWidget* remmina_file_editor_create_check(RemminaFileEditor* gfe, GtkGr
 
 	gtk_widget_show(widget);
 
-	//if (col >= 0)
+	if (col >= 0)
 		gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
-	//else
-		//gtk_box_pack_start(GTK_BOX(table), widget, TRUE, TRUE, 0);
+	else
+		gtk_box_pack_start(GTK_BOX(table), widget, TRUE, TRUE, 0);
 
 	if (value)
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
@@ -687,7 +688,8 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_TEXT:
-				widget = remmina_file_editor_create_text(gfe, table, row, 1,
+				//widget = remmina_file_editor_create_text(gfe, table, row, 1,
+				widget = remmina_file_editor_create_text(gfe, table, row, 0,
 						g_dgettext(priv->plugin->domain, settings->label),
 						remmina_file_get_string(priv->remmina_file, settings->name));
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
