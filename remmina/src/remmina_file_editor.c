@@ -205,7 +205,8 @@ static void remmina_file_editor_create_notebook_container(RemminaFileEditor* gfe
 	gtk_widget_show(gfe->priv->config_container);
 }
 
-static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe,
+//AGAT static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe,
+static GtkGrid* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe,
 		const gchar* stock_id, const gchar* label, gint rows, gint cols)
 {
 	GtkWidget* tablabel;
@@ -228,7 +229,7 @@ static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe
 	gtk_box_pack_start(GTK_BOX(tablabel), widget, FALSE, FALSE, 0);
 	gtk_widget_show(widget);
 
-#if GTK_VERSION == 6
+#if GTK_VERSION == 3
 	tabbody = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
 #elif GTK_VERSION == 2
 	tabbody = gtk_vbox_new(FALSE, 0);
