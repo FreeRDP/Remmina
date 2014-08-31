@@ -24,9 +24,7 @@
       <div id="banner">
         <span id="logo"></span>
 
-        <a href="http://ic3d.github.io/Remmina/faq.html" class="button fork"><strong>FAQ</strong></a>
         <a href="https://github.com/ic3d/Remmina" class="button fork"><strong>View On GitHub</strong></a>
-        
         <div class="downloads">
           <span>Downloads:</span>
           <ul>
@@ -55,9 +53,87 @@ user interface. Currently RDP, VNC, NX, XDMCP and SSH are supported.</p>
 <ul>
 <li>"remmina", the main GTK+ application</li>
     <li>"remmina-plugins", a set of plugins</li>
-</ul><p><a href="faq.html">FAQ</a></p>
+</ul><p>Remmina is free and open-source software, released under GNU GPL license.</p>
 
-<p>Remmina is free and open-source software, released under GNU GPL license.</p>
+<div><div>
+
+<h2>
+<a name="faq---background" class="anchor" href="#faq---background"><span class="octicon octicon-link"></span></a>FAQ - Background</h2>
+<dl>
+<dt>Q:
+Why did you start this project?
+</dt>
+<dd>A:
+The whole story started from my new netbook Eee PC.
+I bought it and installed Debian on it.
+I really enjoyed it until I realized that the default installation of
+the RDP client 'tsclient' on Debian is quite annoying for me:
+<ul>
+<li>The Eee PC has very small screen resolution,
+but it won't allow me to scroll when I am connecting to my desktop.
+I can move the window by pressing Alt, but I have to disable capturing all WM key bindings,
+and it means no Alt-Tab in remote desktop. This made me crazy.</li>
+<li>In fullscreen mode, it occupies all my virtual desktops and provides no control.
+I can do nothing else when I am connecting to my desktop. When I roll my desktop cube, RDP is in all sides.</li>
+<li>I had great experience with Krdc, which is part of the KDE project.
+But in order to install Krdc in Gnome desktop, I have to install tons of additional dependencies;
+This is obvious not a good news for a small netbook user, or a Gnome fan.</li>
+<li>Remote desktop is one of the most frequently used application to me in my netbook;
+I have to look for a perfect solution.</li>
+</ul>
+Well, if you happen to be in the same boat as me, I hope this is the place you are looking for!
+</dd>
+<dt>Q:
+Why the name "Remmina"?
+</dt>
+<dd>A:
+This is mostly personal preference. :) But just for you to easier remember it, it can
+also stand for Remote Mini Assistant.
+</dd>
+</dl>
+<h2>
+<a name="faq---usage" class="anchor" href="#faq---usage"><span class="octicon octicon-link"></span></a>FAQ - Usage</h2>
+<dl>
+<dt>Q:
+Where are all my connections and preferences stored?
+</dt>
+<dd>A:
+Everything is placed in a hidden directory <code>.remmina</code> under your home directory. It will be created
+automatically with <code>0700</code> permissions.
+</dd>
+<dt>Q:
+Can I start a connection using a shell command?
+</dt>
+<dd>A:
+Yes, use <code>remmina -c filename</code>.
+</dd>
+<dt>Q:
+How are my passwords stored? Are they secure?
+</dt>
+<dd>A:
+They are encrypted using 3DES with a 256bit randomly generated key. You should keep your
+key secure.
+</dd>
+<dt>Q:
+Why you don't use GNOME keyring?
+</dt>
+<dd>A:
+I would like to keep the main program GTK+ only so non-GNOME users, especially XFCE users, can use it.
+However, with the plugin system it's possible to implement GNOME keyring support as a separated plugin.
+Right now it's just a matter of whether there are actually demands out there. So if you think this is
+important for you, please let me know!
+</dd>
+<dt>Q:
+Where can I find some documentation?
+</dt>
+<dd>A:
+Remmina was designed to be hopefully work for most people without the aid of any documentation.
+But if you want to find some technical information, the
+<a href="https://sourceforge.net/apps/mediawiki/remmina/index.php?title=Main_Page">Remmina Wiki page</a>
+might be useful. This Wiki page is also open for contribution.
+</dd>
+</dl>
+</div></div>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/ic3d">ic3d</a></p>
