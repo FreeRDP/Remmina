@@ -1920,7 +1920,7 @@ static gpointer quality_list[] =
 
 static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
 {
-{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, "_rfb._tcp", NULL },
+{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
 #ifdef LIBVNCSERVER_WITH_CLIENT_TLS
 		{	REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "proxy", N_("Repeater"), FALSE, NULL, NULL},
 #endif
