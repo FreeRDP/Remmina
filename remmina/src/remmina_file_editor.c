@@ -267,14 +267,9 @@ static void remmina_file_editor_ssh_auth_publickey_radio_on_toggled(GtkToggleBut
 			gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_auth_publickey_radio)));
 	gtk_widget_set_sensitive(gfe->priv->ssh_privatekey_chooser, b);
 
-	if (b && remmina_file_get_string (gfe->priv->remmina_file, "ssh_privatekey"))
+	if (b && ( s = remmina_file_get_string (gfe->priv->remmina_file, "ssh_privatekey")) )
 	{
-		s = remmina_ssh_find_identity ();
-		if (s)
-		{
-			gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (gfe->priv->ssh_privatekey_chooser), s);
-			g_free(s);
-		}
+		gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (gfe->priv->ssh_privatekey_chooser), s);
 	}
 }
 
