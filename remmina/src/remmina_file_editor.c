@@ -324,7 +324,7 @@ static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor* gfe, Gt
 			G_CALLBACK(remmina_file_editor_ssh_auth_publickey_radio_on_toggled), gfe);
 	priv->ssh_auth_publickey_radio = widget;
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, column, row + 20, 1, 1);
+	gtk_grid_attach(GTK_GRID(table), widget, column, row + 15, 1, 1);
 
 	dialog = gtk_file_chooser_dialog_new (_("Identity file"), GTK_WINDOW(gfe), GTK_FILE_CHOOSER_ACTION_OPEN,
 			"_Cancel", GTK_RESPONSE_CANCEL,
@@ -339,7 +339,7 @@ static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor* gfe, Gt
 	}
 	g_free(s);
 	gtk_widget_show(widget);
-	gtk_grid_attach (GTK_GRID(table), widget, column + 3, row + 20, 1, 1);
+	gtk_grid_attach (GTK_GRID(table), widget, column + 3, row + 15, 1, 1);
 	priv->ssh_privatekey_chooser = widget;
 
 	ssh_privatekey = remmina_file_get_string (priv->remmina_file, "ssh_privatekey");
@@ -567,8 +567,10 @@ static GtkWidget* remmina_file_editor_create_check(RemminaFileEditor* gfe, GtkGr
 
 	gtk_widget_show(widget);
 
-	if (col >= 0)
-		gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
+	//if (col >= 0)
+	if (row >= 0)
+		//gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
+		gtk_grid_attach(GTK_GRID(table), widget, 0, row, col + 2, row + 1);
 	else
 		gtk_box_pack_start(GTK_BOX(table), widget, TRUE, TRUE, 0);
 
@@ -790,7 +792,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		hbox = gtk_hbox_new(FALSE, 0);
 #endif
 		gtk_widget_show(hbox);
-		gtk_grid_attach (GTK_GRID(table), hbox, 0, 2, 1, 1);
+		gtk_grid_attach (GTK_GRID(table), hbox, 0, 0, 3, 1);
 		row++;
 
 		widget = gtk_check_button_new_with_label (_("Enable SSH tunnel"));
@@ -807,7 +809,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 	}
 
 	/* SSH Server group */
-	remmina_public_create_group (GTK_GRID(table), _("SSH Server"), row, 0, 3);
+	//remmina_public_create_group (GTK_GRID(table), _("SSH Server"), row, 3, 3);
 	row++;
 
 	switch (ssh_setting)
@@ -817,14 +819,16 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		widget = gtk_radio_button_new_with_label (NULL, s);
 		g_free(s);
 		gtk_widget_show(widget);
-		gtk_grid_attach (GTK_GRID(table), widget, 1, row, 3, 1);
+		//gtk_grid_attach (GTK_GRID(table), widget, 1, row, 3, 1);
+		gtk_grid_attach (GTK_GRID(table), widget, 0, row, 3, 1);
 		priv->ssh_server_default_radio = widget;
 		row++;
 
 		widget = gtk_radio_button_new_with_label_from_widget (
 				GTK_RADIO_BUTTON(priv->ssh_server_default_radio), _("Custom"));
 		gtk_widget_show(widget);
-		gtk_grid_attach (GTK_GRID(table), widget, 1, 4, row + 1, 1);
+		//gtk_grid_attach (GTK_GRID(table), widget, 1, 4, row + 1, 1);
+		gtk_grid_attach (GTK_GRID(table), widget, 0, row, 2, 1);
 		g_signal_connect(G_OBJECT(widget), "toggled",
 				G_CALLBACK(remmina_file_editor_ssh_server_custom_radio_on_toggled), gfe);
 		priv->ssh_server_custom_radio = widget;
@@ -833,7 +837,8 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		gtk_widget_show(widget);
 		gtk_entry_set_max_length (GTK_ENTRY(widget), 100);
 		gtk_widget_set_tooltip_markup (widget, _(server_tips2));
-		gtk_grid_attach (GTK_GRID(table), widget, 0, row + 2, 1, 1);
+		//gtk_grid_attach (GTK_GRID(table), widget, 0, row + 2, 1, 1);
+		gtk_grid_attach (GTK_GRID(table), widget, 0, row, 3, 1);
 		priv->ssh_server_entry = widget;
 		row++;
 		break;
@@ -900,18 +905,18 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 
 	widget = gtk_radio_button_new_with_label (NULL, _("Password"));
 	gtk_widget_show(widget);
-	gtk_grid_attach (GTK_GRID(table), widget, 1, row + 17, 1, 1);
+	gtk_grid_attach (GTK_GRID(table), widget, 0, row + 19, 1, 1);
 	priv->ssh_auth_password_radio = widget;
 	row++;
 
 	widget = gtk_radio_button_new_with_label_from_widget (
 			GTK_RADIO_BUTTON(priv->ssh_auth_password_radio), _("Public key (automatic)"));
 	gtk_widget_show(widget);
-	gtk_grid_attach (GTK_GRID(table), widget, 1, row + 18, 1, 1);
+	gtk_grid_attach (GTK_GRID(table), widget, 0, row + 20, 1, 1);
 	priv->ssh_auth_auto_publickey_radio = widget;
 	row++;
 
-	remmina_file_editor_create_ssh_privatekey (gfe, table, row + 1, 1);
+	remmina_file_editor_create_ssh_privatekey (gfe, table, row + 1, 0);
 	row++;
 
 	/* Set the values */
