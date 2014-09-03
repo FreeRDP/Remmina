@@ -570,9 +570,9 @@ static GtkWidget* remmina_file_editor_create_check(RemminaFileEditor* gfe, GtkGr
 	//if (col >= 0)
 	if (row >= 0)
 		//gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
-		gtk_grid_attach(GTK_GRID(table), widget, 0, row, col + 2, row + 1);
+		gtk_grid_attach(GTK_GRID(table), widget, col, row + 1, col + 2, row + 1);
 	else
-		gtk_box_pack_start(GTK_BOX(table), widget, TRUE, TRUE, 0);
+		gtk_box_pack_start(GTK_BOX(table), widget, TRUE, TRUE, 10);
 
 	if (value)
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
@@ -626,7 +626,6 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 	RemminaFileEditorPriv* priv = gfe->priv;
 	GtkWidget* hbox = NULL;
 	GtkWidget* widget;
-	GtkGrid* radiogrid;
 	gint row = 0;
 	gchar** strarr;
 
@@ -668,22 +667,25 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 						_("Keyboard mapping"), (const gpointer*) strarr,
 						remmina_file_get_string(priv->remmina_file, "keymap"));
 				g_strfreev(strarr);
+				row++;
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_SCALE:
 				widget = gtk_label_new(_("Horizontal scale"));
 				gtk_widget_show(widget);
 				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
-				gtk_grid_attach(GTK_GRID(table), widget, 0, 3, row + 1, row);
+				//gtk_grid_attach(GTK_GRID(table), widget, 0, 3, row + 1, row);
+				gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, row + 1);
 
 				widget = gtk_label_new(_("Vertical scale"));
 				gtk_widget_show(widget);
 				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
-				gtk_grid_attach(GTK_GRID(table), widget, 0, 3, row + 1, 1);
+				//gtk_grid_attach(GTK_GRID(table), widget, 0, 3, row + 1, 1);
+				gtk_grid_attach(GTK_GRID(table), widget, 0, row + 1, 1, row + 2);
 
 				widget = remmina_scaler_new();
 				gtk_widget_show(widget);
-				gtk_grid_attach(GTK_GRID(table), widget, 1, row + 2, 2, 1);
+				gtk_grid_attach(GTK_GRID(table), widget, 1, row, 2, row + 2);
 				remmina_scaler_set(REMMINA_SCALER(widget),
 						remmina_file_get_int(priv->remmina_file, "hscale", 0),
 						remmina_file_get_int(priv->remmina_file, "vscale", 0),
@@ -720,12 +722,11 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_CHECK:
-                radiogrid = gtk_grid_new();
-                gtk_grid_set_row_spacing(GTK_GRID(radiogrid), 4);
-                gtk_grid_set_column_spacing(GTK_GRID(radiogrid), 8);
-				widget = remmina_file_editor_create_check(gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
-				g_dgettext (priv->plugin->domain, settings->label),
+				//widget = remmina_file_editor_create_check(gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
+				widget = remmina_file_editor_create_check(gfe, table, row, 0,
+						g_dgettext (priv->plugin->domain, settings->label),
 				remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
+				row += 2;
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
 				break;
 
@@ -970,7 +971,7 @@ static void remmina_file_editor_create_all_settings(RemminaFileEditor* gfe)
 	/* The Basic tab */
 	if (priv->plugin->basic_settings)
 	{
-		table = remmina_file_editor_create_notebook_tab(gfe, GTK_STOCK_INFO, _("Basic"), 20, 2);
+		table = remmina_file_editor_create_notebook_tab(gfe, GTK_STOCK_DIALOG_INFO, _("Basic"), 20, 2);
 		remmina_file_editor_create_settings(gfe, table, priv->plugin->basic_settings);
 	}
 
