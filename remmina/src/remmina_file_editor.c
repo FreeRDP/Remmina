@@ -626,6 +626,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 	RemminaFileEditorPriv* priv = gfe->priv;
 	GtkWidget* hbox = NULL;
 	GtkWidget* widget;
+	GtkGrid* radiogrid;
 	gint row = 0;
 	gchar** strarr;
 
@@ -719,6 +720,9 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_CHECK:
+                radiogrid = gtk_grid_new();
+                gtk_grid_set_row_spacing(GTK_GRID(radiogrid), 4);
+                gtk_grid_set_column_spacing(GTK_GRID(radiogrid), 8);
 				widget = remmina_file_editor_create_check(gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
 				g_dgettext (priv->plugin->domain, settings->label),
 				remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
