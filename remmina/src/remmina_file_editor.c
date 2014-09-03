@@ -242,8 +242,6 @@ static GtkGrid* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe,
 	gtk_widget_show(table);
 	gtk_grid_set_row_spacing(GTK_GRID(table), 8);
 	gtk_grid_set_column_spacing(GTK_GRID(table), 8);
-    //gtk_grid_set_row_homogeneous (GTK_GRID(table), TRUE);
-	//gtk_grid_set_column_homogeneous (GTK_GRID(table), TRUE);
 	gtk_container_set_border_width(GTK_CONTAINER(table), 15);
 	gtk_box_pack_start(GTK_BOX(tabbody), table, FALSE, FALSE, 0);
 
@@ -1342,7 +1340,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	gtk_widget_show(table);
 	gtk_grid_set_row_spacing(GTK_GRID(table), 4);
 	gtk_grid_set_column_spacing(GTK_GRID(table), 8);
-	//gtk_grid_set_column_homogeneous (GTK_GRID(table), TRUE);
+	gtk_grid_set_column_homogeneous (GTK_GRID(table), TRUE);
 	gtk_container_set_border_width(GTK_CONTAINER(table), 8);
 	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(gfe))), table, FALSE, FALSE, 2);
 
