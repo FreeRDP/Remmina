@@ -978,7 +978,7 @@ remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path
 	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG(dialog))),
 			hbox, TRUE, TRUE, 4);
 
-	widget = gtk_image_new_from_stock (GTK_STOCK_DIALOG_QUESTION, GTK_ICON_SIZE_DIALOG);
+	widget = gtk_image_new_from_icon_name (GTK_STOCK_DIALOG_QUESTION, GTK_ICON_SIZE_DIALOG);
 	gtk_widget_show(widget);
 	gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 4);
 
