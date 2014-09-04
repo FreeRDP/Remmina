@@ -560,7 +560,7 @@ static GtkWidget* remmina_file_editor_create_check(RemminaFileEditor* gfe, GtkGr
 	widget = gtk_check_button_new_with_label(label);
 	gtk_widget_show(widget);
 	gtk_grid_set_row_spacing(GTK_GRID(table), 1);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, row , 1, 1);
+	gtk_grid_attach(GTK_GRID(table), widget, 0, row , 2, 1);
 
 	return widget;
 }
@@ -701,7 +701,6 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_CHECK:
-				//gtk_container_add(GTK_CONTAINER(gfe), widget);
 				widget = remmina_file_editor_create_check(gfe, table, row, 0,
 						g_dgettext (priv->plugin->domain, settings->label),
 				remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
