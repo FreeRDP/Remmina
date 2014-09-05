@@ -543,6 +543,7 @@ static GtkWidget* remmina_file_editor_create_combo(RemminaFileEditor* gfe, GtkGr
 
 	widget = remmina_public_create_combo_entry(list, value, FALSE);
 	gtk_widget_show(widget);
+    gtk_widget_set_hexpand(GTK_GRID(table), TRUE);
 	gtk_grid_attach(GTK_GRID(table), widget, 1, row, 1, 1);
 
 	return widget;
@@ -737,7 +738,6 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 		if (!settings->compact)
 		{
 			hbox = NULL;
-			//row++;
             (ccount ? 1 : row++);
 		}
 
