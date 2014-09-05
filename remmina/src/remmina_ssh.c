@@ -1322,6 +1322,16 @@ remmina_ssh_shell_new_from_ssh (RemminaSSH *ssh)
 	return shell;
 }
 
+static gboolean
+remmina_ssh_call_exit_callback_on_main_thread(gpointer data)
+{
+
+	RemminaSSHShell *shell = (RemminaSSHShell*) data;
+	if ( shell->exit_callback )
+		shell->exit_callback( shell->user_data );
+	return FALSE;
+}
+
 static gpointer
 remmina_ssh_shell_thread (gpointer data)
 {
@@ -1438,9 +1448,13 @@ remmina_ssh_shell_thread (gpointer data)
 	g_free(buf);
 	shell->thread = 0;
 
-	if (shell->exit_callback) shell->exit_callback (shell->user_data);
+	if ( shell->exit_callback )
+	{
+		IDLE_ADD ((GSourceFunc) remmina_ssh_call_exit_callback_on_main_thread, (gpointer)shell );
+	}
 	return NULL;
 }
+
 
 gboolean
 remmina_ssh_shell_open (RemminaSSHShell *shell, RemminaSSHExitFunc exit_callback, gpointer data)
