@@ -615,6 +615,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 	{
 		if (settings->compact)
 		{
+#if 0
 			if (hbox == NULL)
 			{
 #if GTK_VERSION == 3
@@ -623,8 +624,9 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 				hbox = gtk_hbox_new(FALSE, 0);
 #endif
 				gtk_widget_show(hbox);
-				gtk_grid_attach(GTK_GRID(table), hbox, 0, row + 2, 1, 1);
+				gtk_grid_attach(GTK_GRID(table), hbox, 0, row + 2, 2, 1);
 			}
+#endif
 		}
 		switch (settings->type)
 		{
@@ -735,7 +737,8 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 		if (!settings->compact)
 		{
 			hbox = NULL;
-			row++;
+			//row++;
+            (ccount ? 1 : row++);
 		}
 
 		settings++;
