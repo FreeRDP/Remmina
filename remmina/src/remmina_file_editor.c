@@ -814,7 +814,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		gtk_widget_show(widget);
 		gtk_entry_set_max_length (GTK_ENTRY(widget), 100);
 		gtk_widget_set_tooltip_markup (widget, _(server_tips2));
-		gtk_grid_attach (GTK_GRID(table), widget, 0, row, 3, 1);
+		gtk_grid_attach (GTK_GRID(table), widget, 1, row, 2, 1);
 		priv->ssh_server_entry = widget;
 		row++;
 		break;
