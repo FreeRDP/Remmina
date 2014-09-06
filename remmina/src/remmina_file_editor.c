@@ -543,19 +543,20 @@ static GtkWidget* remmina_file_editor_create_combo(RemminaFileEditor* gfe, GtkGr
 
 	widget = remmina_public_create_combo_entry(list, value, FALSE);
 	gtk_widget_show(widget);
+    gtk_widget_set_hexpand(GTK_GRID(table), TRUE);
 	gtk_grid_attach(GTK_GRID(table), widget, 1, row, 1, 1);
 
 	return widget;
 }
 
 static GtkWidget* remmina_file_editor_create_check(RemminaFileEditor* gfe, GtkGrid* table,
-		gint row, gint col, const gchar* label, gboolean value)
+		gint row, gint top, const gchar* label, gboolean value)
 {
 	GtkWidget* widget;
 	widget = gtk_check_button_new_with_label(label);
 	gtk_widget_show(widget);
 	gtk_grid_set_row_spacing(GTK_GRID(table), 1);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, row , 2, 1);
+	gtk_grid_attach(GTK_GRID(table), widget, top, row , 1, 1);
 
 	return widget;
 }
@@ -607,12 +608,15 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 	GtkWidget* hbox = NULL;
 	GtkWidget* widget;
 	gint row = 0;
+	gint top = 0;
+	gint ccount;
 	gchar** strarr;
 
 	while (settings->type != REMMINA_PROTOCOL_SETTING_TYPE_END)
 	{
 		if (settings->compact)
 		{
+#if 0
 			if (hbox == NULL)
 			{
 #if GTK_VERSION == 3
@@ -621,8 +625,9 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 				hbox = gtk_hbox_new(FALSE, 0);
 #endif
 				gtk_widget_show(hbox);
-				gtk_grid_attach(GTK_GRID(table), hbox, 0, row + 2, 1, 1);
+				gtk_grid_attach(GTK_GRID(table), hbox, 0, row + 2, 2, 1);
 			}
+#endif
 		}
 		switch (settings->type)
 		{
@@ -696,10 +701,17 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_CHECK:
-				widget = remmina_file_editor_create_check(gfe, table, row, 0,
+                if (ccount > 0) {
+                    top = 1;
+                    ccount = 0;
+                } else {
+                    top = 0;
+                    ccount = 1;
+                }
+				widget = remmina_file_editor_create_check(gfe, table, row, top,
 						g_dgettext (priv->plugin->domain, settings->label),
 				remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
-				row++;
+				(ccount ? 1 : row++);
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
 				break;
 
@@ -726,7 +738,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 		if (!settings->compact)
 		{
 			hbox = NULL;
-			row++;
+            (ccount ? 1 : row++);
 		}
 
 		settings++;
