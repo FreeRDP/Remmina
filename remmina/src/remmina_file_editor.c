@@ -500,6 +500,7 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkGri
 
 	widget = gtk_label_new(label);
 	gtk_widget_show(widget);
+	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
 
@@ -543,7 +544,7 @@ static GtkWidget* remmina_file_editor_create_combo(RemminaFileEditor* gfe, GtkGr
 
 	widget = remmina_public_create_combo_entry(list, value, FALSE);
 	gtk_widget_show(widget);
-    gtk_widget_set_hexpand(GTK_GRID(table), TRUE);
+	gtk_widget_set_hexpand(widget, TRUE);
 	gtk_grid_attach(GTK_GRID(table), widget, 1, row, 1, 1);
 
 	return widget;
@@ -637,7 +638,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD:
 				remmina_file_editor_create_password(gfe, table, row);
-                row++;
+				row++;
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION:
@@ -658,11 +659,13 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 				widget = gtk_label_new(_("Horizontal scale"));
 				gtk_widget_show(widget);
 				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+				gtk_widget_set_margin_end(GTK_MISC(widget), 40);
 				gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, row + 1);
 
 				widget = gtk_label_new(_("Vertical scale"));
 				gtk_widget_show(widget);
 				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+				gtk_widget_set_margin_end(GTK_MISC(widget), 40);
 				gtk_grid_attach(GTK_GRID(table), widget, 0, row + 1, 1, row + 2);
 
 				widget = remmina_scaler_new();
@@ -701,13 +704,13 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_CHECK:
-                if (ccount > 0) {
-                    top = 1;
-                    ccount = 0;
-                } else {
-                    top = 0;
-                    ccount = 1;
-                }
+				if (ccount > 0) {
+					top = 1;
+					ccount = 0;
+				} else {
+					top = 0;
+					ccount = 1;
+				}
 				widget = remmina_file_editor_create_check(gfe, table, row, top,
 						g_dgettext (priv->plugin->domain, settings->label),
 				remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
@@ -738,7 +741,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 		if (!settings->compact)
 		{
 			hbox = NULL;
-            (ccount ? 1 : row++);
+			(ccount ? 1 : row++);
 		}
 
 		settings++;
@@ -1216,15 +1219,15 @@ static void remmina_file_editor_init(RemminaFileEditor* gfe)
 	/* Create the editor dialog */
 	gtk_window_set_title(GTK_WINDOW(gfe), _("Remote Desktop Preference"));
 
-	widget = gtk_dialog_add_button(GTK_DIALOG(gfe), (_("Save")), GTK_RESPONSE_APPLY);
+	widget = gtk_dialog_add_button(GTK_DIALOG(gfe), (_("_Save")), GTK_RESPONSE_APPLY);
 	gtk_button_set_image(GTK_BUTTON(widget), gtk_image_new_from_icon_name("document-save", GTK_ICON_SIZE_BUTTON));
 	gtk_button_box_set_child_secondary(GTK_BUTTON_BOX(gtk_dialog_get_action_area(GTK_DIALOG(gfe))), widget, TRUE);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_file_editor_on_save), gfe);
 	gtk_widget_set_sensitive(widget, FALSE);
 	priv->save_button = widget;
 
-	widget = gtk_dialog_add_button(GTK_DIALOG(gfe), (_("Cancel")), GTK_RESPONSE_CANCEL);
-	gtk_button_set_image(GTK_BUTTON(widget), gtk_image_new_from_icon_name("gtk-cancel", GTK_ICON_SIZE_BUTTON));
+	widget = gtk_dialog_add_button(GTK_DIALOG(gfe), (_("_Cancel")), GTK_RESPONSE_CANCEL);
+	//gtk_button_set_image(GTK_BUTTON(widget), gtk_image_new_from_icon_name("gtk-cancel", GTK_ICON_SIZE_BUTTON));
 	gtk_button_box_set_child_secondary(GTK_BUTTON_BOX(gtk_dialog_get_action_area(GTK_DIALOG(gfe))), widget, TRUE);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_file_editor_on_cancel), gfe);
 
@@ -1342,7 +1345,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_grid_attach(GTK_GRID(table), widget, 0, 3, 2, 1);
-    gtk_grid_set_column_spacing (GTK_GRID(table), 10);
+	gtk_grid_set_column_spacing (GTK_GRID(table), 10);
 
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
