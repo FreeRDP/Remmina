@@ -621,18 +621,6 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 	{
 		if (settings->compact)
 		{
-#if 0
-			if (hbox == NULL)
-			{
-#if GTK_VERSION == 3
-				hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
-#elif GTK_VERSION == 2
-				hbox = gtk_hbox_new(FALSE, 0);
-#endif
-				gtk_widget_show(hbox);
-				gtk_grid_attach(GTK_GRID(table), hbox, 0, row + 2, 2, 1);
-			}
-#endif
 		}
 		switch (settings->type)
 		{
@@ -1478,4 +1466,4 @@ GtkWidget* remmina_file_editor_new_from_filename(const gchar* filename)
 		return NULL;
 	}
 }
-
+// vim:noet:ci:pi:sts=0:sw=4:ts=4
