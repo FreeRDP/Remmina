@@ -500,7 +500,11 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkGri
 
 	widget = gtk_label_new(label);
 	gtk_widget_show(widget);
+#if GTK_CHECK_VERSION(3, 12, 0)
+	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+#else
 	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+#endif 
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
 
@@ -659,13 +663,21 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkGrid*
 				widget = gtk_label_new(_("Horizontal scale"));
 				gtk_widget_show(widget);
 				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
-				gtk_widget_set_margin_right(GTK_MISC(widget), 40);
+#if GTK_CHECK_VERSION(3, 12, 0)
+				gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+#else
+				gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+#endif
 				gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, row + 1);
 
 				widget = gtk_label_new(_("Vertical scale"));
 				gtk_widget_show(widget);
 				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
-				gtk_widget_set_margin_right(GTK_MISC(widget), 40);
+#if GTK_CHECK_VERSION(3, 12, 0)
+				gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+#else
+				gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+#endif
 				gtk_grid_attach(GTK_GRID(table), widget, 0, row + 1, 1, row + 2);
 
 				widget = remmina_scaler_new();
