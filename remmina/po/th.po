@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-08 23:43+0200\n"
+"POT-Creation-Date: 2014-09-09 00:39+0200\n"
 "PO-Revision-Date: 2012-03-22 12:19+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -176,6 +176,10 @@ msgstr "มุมมองต้นไม้"
 #: remmina/src/remmina_icon.c:423
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina ลูกข่ายพื้นโต๊ะระยะไกล"
+
+#: remmina/src/remmina_main.c:1262
+msgid "Connect !"
+msgstr ""
 
 #: remmina/src/remmina_main.c:1280 remmina/src/remmina_plugin_manager.c:275
 #: remmina/src/remmina_file_editor.c:1344
@@ -374,6 +378,10 @@ msgstr ""
 
 #: remmina/src/remmina_init_dialog.c:422
 msgid "Accept Certificate?"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:452
+msgid "Certificate Changed! Details:"
 msgstr ""
 
 #: remmina/src/remmina_init_dialog.c:484
@@ -972,10 +980,23 @@ msgstr ""
 msgid "Choose a Remote Desktop Server"
 msgstr "เลือกเซิร์ฟเวอร์พื้นโต๊ะระยะไกล"
 
+#: remmina/src/remmina_file_editor.c:138 remmina/src/remmina_file_editor.c:321
+#: remmina/src/remmina_file_editor.c:1229
+msgid "_Cancel"
+msgstr ""
+
+#: remmina/src/remmina_file_editor.c:139
+msgid "_OK"
+msgstr ""
+
 #: remmina/src/remmina_file_editor.c:313 remmina/src/remmina_file_editor.c:320
 #: remmina-plugins/nx/nx_plugin.c:625
 msgid "Identity file"
 msgstr "ระบุแฟ้ม"
+
+#: remmina/src/remmina_file_editor.c:322
+msgid "_Open"
+msgstr ""
 
 #: remmina/src/remmina_file_editor.c:383
 #, c-format
@@ -1054,10 +1075,6 @@ msgstr "ค่าปรับแต่งพื้นโต๊ะระยะไ
 
 #: remmina/src/remmina_file_editor.c:1222
 msgid "_Save"
-msgstr ""
-
-#: remmina/src/remmina_file_editor.c:1229
-msgid "_Cancel"
 msgstr ""
 
 #: remmina/src/remmina_file_editor.c:1234
@@ -1488,39 +1505,39 @@ msgstr ""
 msgid "Desktop sharing invitation"
 msgstr ""
 
-msgid ""
-"You should have received a copy of the GNU General Public License along with "
-"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
-"Place, Suite 330, Boston, MA 02111-1307, USA.In addition, as a special "
-"exception, the copyright holders give permission to link the code of "
-"portions of this program with the OpenSSL library under certain conditions "
-"as described in each individual source file, and distribute linked "
-"combinations including the two. You must obey the GNU General Public License "
-"in all respects for all of the code used other than OpenSSL. If you modify "
-"file(s) with this exception, you may extend this exception to your version "
-"of the file(s), but you are not obligated to do so. If you do not wish to do "
-"so, delete this exception statement from your version. If you delete this "
-"exception statement from all source files in the program, then also delete "
-"it here. "
-msgstr ""
-"คุณควรได้รับสำเนาของสัญญาอนุญาตสาธารณะทั่วไปของกนูมาพร้อมกับโปรแกรมนี้ หากคุณไม่ได้รับ "
-"กรุณาเขียนถึง Free Software Foundation, Inc., 59 Temple Place, Suite 330, "
-"Boston, MA 02111-1307, USA.In addition, as a special exception, the "
-"copyright holders give permission to link the code of portions of this "
-"program with the OpenSSL library under certain conditions as described in "
-"each individual source file, and distribute linked combinations including "
-"the two. You must obey the GNU General Public License in all respects for "
-"all of the code used other than OpenSSL. If you modify file(s) with this "
-"exception, you may extend this exception to your version of the file(s), but "
-"you are not obligated to do so. If you do not wish to do so, delete this "
-"exception statement from your version. If you delete this exception "
-"statement from all source files in the program, then also delete it here. "
+#~ msgid ""
+#~ "You should have received a copy of the GNU General Public License along "
+#~ "with this program; if not, write to the Free Software Foundation, Inc., "
+#~ "59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.In addition, as a "
+#~ "special exception, the copyright holders give permission to link the code "
+#~ "of portions of this program with the OpenSSL library under certain "
+#~ "conditions as described in each individual source file, and distribute "
+#~ "linked combinations including the two. You must obey the GNU General "
+#~ "Public License in all respects for all of the code used other than "
+#~ "OpenSSL. If you modify file(s) with this exception, you may extend this "
+#~ "exception to your version of the file(s), but you are not obligated to do "
+#~ "so. If you do not wish to do so, delete this exception statement from "
+#~ "your version. If you delete this exception statement from all source "
+#~ "files in the program, then also delete it here. "
+#~ msgstr ""
+#~ "คุณควรได้รับสำเนาของสัญญาอนุญาตสาธารณะทั่วไปของกนูมาพร้อมกับโปรแกรมนี้ หากคุณไม่ได้รับ "
+#~ "กรุณาเขียนถึง Free Software Foundation, Inc., 59 Temple Place, Suite 330, "
+#~ "Boston, MA 02111-1307, USA.In addition, as a special exception, the "
+#~ "copyright holders give permission to link the code of portions of this "
+#~ "program with the OpenSSL library under certain conditions as described in "
+#~ "each individual source file, and distribute linked combinations including "
+#~ "the two. You must obey the GNU General Public License in all respects for "
+#~ "all of the code used other than OpenSSL. If you modify file(s) with this "
+#~ "exception, you may extend this exception to your version of the file(s), "
+#~ "but you are not obligated to do so. If you do not wish to do so, delete "
+#~ "this exception statement from your version. If you delete this exception "
+#~ "statement from all source files in the program, then also delete it here. "
 
-msgid "Invisible floating toolbar"
-msgstr "แถบเครื่องมือลอยล่องหน"
+#~ msgid "Invisible floating toolbar"
+#~ msgstr "แถบเครื่องมือลอยล่องหน"
 
-msgid "Hide connection toolbar"
-msgstr "ซ่อนแถบเครื่องมือการเชื่อมต่อ"
+#~ msgid "Hide connection toolbar"
+#~ msgstr "ซ่อนแถบเครื่องมือการเชื่อมต่อ"
 
 #~ msgid "SSH Server"
 #~ msgstr "เซิร์ฟเวอร์ SSH Serve"
