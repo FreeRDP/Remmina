@@ -135,8 +135,8 @@ static void remmina_file_editor_browse_avahi(GtkWidget* button, RemminaFileEdito
 
 	dialog = aui_service_dialog_new(_("Choose a Remote Desktop Server"),
 			GTK_WINDOW(gfe),
-			"_Cancel", GTK_RESPONSE_CANCEL,
-			"_OK", GTK_RESPONSE_ACCEPT,
+			_("_Cancel"), GTK_RESPONSE_CANCEL,
+			_("_OK"), GTK_RESPONSE_ACCEPT,
 			NULL);
 
 	gtk_window_set_transient_for (GTK_WINDOW(dialog), GTK_WINDOW(gfe));
@@ -318,8 +318,8 @@ static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor* gfe, Gt
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row + 15, 1, 1);
 
 	dialog = gtk_file_chooser_dialog_new (_("Identity file"), GTK_WINDOW(gfe), GTK_FILE_CHOOSER_ACTION_OPEN,
-			"_Cancel", GTK_RESPONSE_CANCEL,
-			"_Open", GTK_RESPONSE_ACCEPT,
+			_("_Cancel"), GTK_RESPONSE_CANCEL,
+			_("_Open"), GTK_RESPONSE_ACCEPT,
 			NULL);
 
 	widget = gtk_file_chooser_button_new_with_dialog (dialog);
