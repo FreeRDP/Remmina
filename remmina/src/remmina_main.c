@@ -1259,7 +1259,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 	gtk_box_pack_start(GTK_BOX(hbox), priv->quickconnect_server, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(priv->quickconnect_server), "key-press-event", G_CALLBACK(remmina_main_quickconnect_on_key_press), remminamain);
 
-	quickconnect = gtk_button_new_with_label("Connect !");
+	quickconnect = gtk_button_new_with_label(_("Connect !"));
 	gtk_widget_show(quickconnect);
 	gtk_box_pack_start(GTK_BOX(hbox), quickconnect, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(quickconnect), "clicked", G_CALLBACK(remmina_main_quickconnect_on_click), remminamain);
