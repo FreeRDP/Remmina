@@ -195,7 +195,7 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 
 	gtk_label_set_text(GTK_LABEL(dialog->status_label), (dialog->status ? dialog->status : dialog->title));
 
-	/* Create table */
+	/* Create grid (was a table) */
 	table = gtk_grid_new();
 	gtk_widget_show(table);
 	gtk_grid_set_row_spacing(GTK_GRID(table), 8);
@@ -221,7 +221,7 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 	save_password_check = gtk_check_button_new_with_label(s);
 	g_free(s);
 	gtk_widget_show(save_password_check);
-	gtk_grid_attach(GTK_GRID(table), save_password_check, 0, 1, 2, 2);
+	gtk_grid_attach(GTK_GRID(table), save_password_check, 0, 1, 2, 1);
 	if (allow_save)
 	{
 		if (dialog->save_password)
@@ -275,6 +275,7 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 	gtk_widget_show(table);
 	gtk_grid_set_row_spacing(GTK_GRID(table), 8);
 	gtk_grid_set_column_spacing(GTK_GRID(table), 8);
+	gtk_grid_set_column_homogeneous (GTK_GRID(table), TRUE);
 
 	/* Icon */
 	gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
@@ -297,18 +298,36 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 	widget = gtk_label_new(_("Password"));
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 1, 1, 2);
+	gtk_grid_attach(GTK_GRID(table), widget, 0, 2, 1, 1);
 
 	password_entry = gtk_entry_new();
 	gtk_widget_show(password_entry);
-	gtk_grid_attach(GTK_GRID(table), password_entry, 1, 1, 2, 2);
+	gtk_grid_attach(GTK_GRID(table), password_entry, 1, 2, 2, 1);
 	gtk_entry_set_max_length(GTK_ENTRY(password_entry), 100);
 	gtk_entry_set_visibility(GTK_ENTRY(password_entry), FALSE);
 	gtk_entry_set_activates_default(GTK_ENTRY(password_entry), TRUE);
 
+
+	if (want_domain)
+	{
+		widget = gtk_label_new(_("Domain"));
+		gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+		gtk_widget_show(widget);
+		gtk_grid_attach(GTK_GRID(table), widget, 0, 3, 1, 1);
+
+		domain_entry = gtk_entry_new();
+		gtk_widget_show(domain_entry);
+		gtk_grid_attach(GTK_GRID(table), domain_entry, 1, 3, 2, 1);
+		gtk_entry_set_max_length(GTK_ENTRY(domain_entry), 100);
+		if (default_domain && default_domain[0] != '\0')
+		{
+			gtk_entry_set_text(GTK_ENTRY(domain_entry), default_domain);
+		}
+	}
+
 	save_password_check = gtk_check_button_new_with_label(_("Save password"));
 	gtk_widget_show(save_password_check);
-	gtk_grid_attach(GTK_GRID(table), save_password_check, 0, 2, 2, 3);
+	gtk_grid_attach(GTK_GRID(table), save_password_check, 0, 4, 2, 3);
 	if (allow_save)
 	{
 		if (dialog->save_password)
@@ -317,23 +336,6 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 	else
 	{
 		gtk_widget_set_sensitive(save_password_check, FALSE);
-	}
-
-	if (want_domain)
-	{
-		widget = gtk_label_new(_("Domain"));
-		gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
-		gtk_widget_show(widget);
-		gtk_grid_attach(GTK_GRID(table), widget, 0, 3, 1, 4);
-
-		domain_entry = gtk_entry_new();
-		gtk_widget_show(domain_entry);
-		gtk_grid_attach(GTK_GRID(table), domain_entry, 1, 3, 2, 4);
-		gtk_entry_set_max_length(GTK_ENTRY(domain_entry), 100);
-		if (default_domain && default_domain[0] != '\0')
-		{
-			gtk_entry_set_text(GTK_ENTRY(domain_entry), default_domain);
-		}
 	}
 
 	/* Pack it into the dialog */
@@ -384,6 +386,7 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 	gtk_widget_show(table);
 	gtk_grid_set_row_spacing(GTK_GRID(table), 8);
 	gtk_grid_set_column_spacing(GTK_GRID(table), 8);
+	//gtk_grid_set_column_homogeneous (GTK_GRID(table), TRUE);
 
 	/* Icon */
 	gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
@@ -392,7 +395,7 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 	widget = gtk_label_new(_("Subject:"));
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 1, 1, 1);
+	gtk_grid_attach(GTK_GRID(table), widget, 0, 0, 1, 1);
 
 	widget = gtk_label_new(subject);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
@@ -402,27 +405,28 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 	widget = gtk_label_new(_("Issuer:"));
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 1, 1, 2);
+	gtk_grid_attach(GTK_GRID(table), widget, 0, 1, 1, 1);
 
 	widget = gtk_label_new(issuer);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 1, 2, 3);
+	gtk_grid_attach(GTK_GRID(table), widget, 1, 1, 2, 1);
 
 	widget = gtk_label_new(_("Fingerprint:"));
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 2, 1, 2);
+	gtk_grid_attach(GTK_GRID(table), widget, 0, 2, 1, 1);
 
 	widget = gtk_label_new(fingerprint);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 2, 2, 3);
+	gtk_grid_attach(GTK_GRID(table), widget, 1, 2, 2, 1);
 
-	widget = gtk_label_new(_("Accept Certificate?"));
-	gtk_misc_set_alignment(GTK_MISC(widget), 1.0, 0.5);
+	widget = gtk_label_new (NULL);
+	gtk_label_set_markup(GTK_LABEL (widget), "<span size=\"large\"><b>Accept Certificate?</b></span>");
+	gtk_misc_set_alignment(GTK_MISC(widget), 0.5, 0.5);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 3, 2, 4);
+	gtk_grid_attach(GTK_GRID(table), widget, 0, 3, 3, 1);
 
 	/* Pack it into the dialog */
 	gtk_box_pack_start(GTK_BOX(dialog->content_vbox), table, TRUE, TRUE, 4);
@@ -461,10 +465,12 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 	gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
 
 	/* Entries */
+	/* Not tested */
 	widget = gtk_label_new(_("Subject:"));
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(table), widget, 0, 0, 1, 1);
+
 
 	widget = gtk_label_new(subject);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
@@ -474,37 +480,38 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 	widget = gtk_label_new(_("Issuer:"));
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 1, 1, 2);
+	gtk_grid_attach(GTK_GRID(table), widget, 0, 1, 1, 1);
 
 	widget = gtk_label_new(issuer);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 1, 2, 2);
+	gtk_grid_attach(GTK_GRID(table), widget, 1, 1, 2, 1);
 
 	widget = gtk_label_new(_("Old Fingerprint:"));
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 2, 1, 3);
+	gtk_grid_attach(GTK_GRID(table), widget, 0, 2, 1, 1);
 
 	widget = gtk_label_new(old_fingerprint);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 2, 2, 3);
+	gtk_grid_attach(GTK_GRID(table), widget, 1, 2, 2, 1);
 
 	widget = gtk_label_new(_("New Fingerprint:"));
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 3, 1, 4);
+	gtk_grid_attach(GTK_GRID(table), widget, 0, 3, 1, 1);
 
 	widget = gtk_label_new(new_fingerprint);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 3, 2, 4);
+	gtk_grid_attach(GTK_GRID(table), widget, 1, 3, 2, 1);
 
-	widget = gtk_label_new(_("Accept Changed Certificate?"));
-	gtk_misc_set_alignment(GTK_MISC(widget), 1.0, 0.5);
+	widget = gtk_label_new (NULL);
+	gtk_label_set_markup(GTK_LABEL (widget), "<span size=\"large\"><b>Accept Changed Certificate?</b></span>");
+	gtk_misc_set_alignment(GTK_MISC(widget), 0.5, 0.5);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 4, 2, 5);
+	gtk_grid_attach(GTK_GRID(table), widget, 0, 4, 3, 1);
 
 	/* Pack it into the dialog */
 	gtk_box_pack_start(GTK_BOX(dialog->content_vbox), table, TRUE, TRUE, 4);
@@ -526,6 +533,7 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 	return status;
 }
 
+/* NOT TESTED */
 static GtkWidget* remmina_init_dialog_create_file_button(GtkTable *table, const gchar *label, gint row, const gchar *filename)
 {
 	GtkWidget *widget;
