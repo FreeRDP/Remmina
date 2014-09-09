@@ -453,7 +453,7 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 	GtkWidget* table;
 	GtkWidget* widget;
 
-	gtk_label_set_text(GTK_LABEL(dialog->status_label), "Certificate Changed! Details:");
+	gtk_label_set_text(GTK_LABEL(dialog->status_label), _("Certificate Changed! Details:"));
 
 	/* Create table */
 	table = gtk_grid_new();
