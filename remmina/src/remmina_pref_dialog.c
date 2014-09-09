@@ -552,7 +552,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.disable_tray_icon);
 	priv->disable_tray_icon_check = widget;
 
-	widget = gtk_check_button_new_with_label(_("Start tray icon at user logon"));
+	widget = gtk_check_button_new_with_label(_("Start Remmina in tray icon at user logon"));
 	gtk_widget_show(widget);
 	gtk_table_attach_defaults(GTK_TABLE(table), widget, 0, 2, 3, 4);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_icon_is_autostart());
