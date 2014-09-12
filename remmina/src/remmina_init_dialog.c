@@ -399,7 +399,7 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 	GtkWidget* table;
 	GtkWidget* widget;
 
-	gtk_label_set_text(GTK_LABEL(dialog->status_label), "Certificate Details:");
+	gtk_label_set_text(GTK_LABEL(dialog->status_label), _("Certificate Details:"));
 
 	/* Create table */
 	table = remmina_init_dialog_container_new(5, 2, FALSE);
@@ -439,7 +439,7 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 	remmina_init_dialog_attach(table, widget, 1, 2, 2, 1);
 
 	widget = gtk_label_new (NULL);
-	gtk_label_set_markup(GTK_LABEL (widget), "<span size=\"large\"><b>Accept Certificate?</b></span>");
+	gtk_label_set_markup(GTK_LABEL (widget), _("Accept Certificate?"));
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.5, 0.5);
 	gtk_widget_show(widget);
 	remmina_init_dialog_attach(table, widget, 0, 3, 3, 1);
