@@ -13,47 +13,11 @@ Remmina is released in separated source packages:
 
 Remmina is free and open-source software, released under GNU GPL license.
 
+
 Resources
 ---------
 
-Website: http://remmina.sourceforge.net
-Wiki: http://sourceforge.net/apps/mediawiki/remmina/
-Forums: http://sourceforge.net/apps/phpbb/remmina/
+Wiki and compilation instructions: https://github.com/FreeRDP/Remmina/wiki
 Mailing List: https://lists.sourceforge.net/mailman/listinfo/remmina-common
 
-Prerequisites
--------------
 
-On Ubuntu 12.04 or later, install the following packages to compile Remmina:
-
-cmake (>= 2.6)
-libgtk-2-dev
-libgcrypt11-dev
-libssh-dev (>= 0.4)
-libvte-2.90-dev
-libxkbfile-dev
-libfreerdp-dev (>= 1.1)
-libtelepathy-glib-dev
-libjpeg-dev
-libgnutls-dev
-libgnome-keyring-dev
-libavahi-ui-gtk2-dev (>= 0.6.0)
-libvncserver-dev
-
-Or be lazy and execute this:
-
-apt-get install cmake libgtk-3-dev libgcrypt11-dev libssh-dev libvte-2.90-dev libxkbfile-dev libfreerdp-dev libtelepathy-glib-dev libjpeg-dev libgnutls-dev libgnome-keyring-dev libavahi-ui-gtk3-dev libvncserver-dev libappindicator3-dev intltool
-
-If libfreerdb-dev is not available in the required version, you'll have to
-compile and install it from source. Follow instructions at:
-https://github.com/FreeRDP/FreeRDP/wiki/Compilation
-
-Compilation
------------
-
-To compile and install, perform the following for all of the three main packages:
-
-mkdir build
-cmake --build=build -DGTK_VERSION=3 -DWITHOUT_GETTEXT -DWITHOUT_TRANSLATIONS .
-make
-sudo make install
