@@ -668,7 +668,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		dest_server = remmina_plugin_service->file_get_string(remminafile, "server");
 		if ( dest_server ) {
 			remmina_plugin_service->get_server_port(dest_server, 0, &dest_host, &dest_port);
-			printf("GIO: Setting certificate name to %s\n", dest_host);
 			rfi->settings->CertificateName = _strdup( dest_host );
 			g_free(dest_host);
 		}
