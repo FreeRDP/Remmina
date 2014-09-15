@@ -821,7 +821,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		widget = gtk_radio_button_new_with_label_from_widget (
 				GTK_RADIO_BUTTON(priv->ssh_server_default_radio), _("Custom"));
 		gtk_widget_show(widget);
-		gtk_grid_attach (GTK_GRID(table), widget, 0, row, 2, 1);
+		gtk_grid_attach (GTK_GRID(table), widget, 0, row, 1, 1);
 		g_signal_connect(G_OBJECT(widget), "toggled",
 				G_CALLBACK(remmina_file_editor_ssh_server_custom_radio_on_toggled), gfe);
 		priv->ssh_server_custom_radio = widget;
