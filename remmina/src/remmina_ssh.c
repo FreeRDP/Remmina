@@ -172,40 +172,28 @@ static gint
 remmina_ssh_auth_pubkey (RemminaSSH *ssh)
 {
 	gint ret;
-	ssh_string pubkey;
-	ssh_private_key privkey;
-	gint keytype;
+	ssh_key priv_key;
 
 	if (ssh->authenticated) return 1;
 
-	if (ssh->pubkeyfile == NULL || ssh->privkeyfile == NULL)
+	if (ssh->privkeyfile == NULL)
 	{
 		ssh->error = g_strdup_printf(_("SSH public key authentication failed: %s"),
 				_("SSH Key file not yet set."));
 		return 0;
 	}
 
-	pubkey = publickey_from_file (ssh->session, ssh->pubkeyfile, &keytype);
-	if (pubkey == NULL)
+	if ( ssh_pki_import_privkey_file( ssh->privkeyfile, (ssh->password ? ssh->password : ""),
+		NULL, NULL, &priv_key ) != SSH_OK )
 	{
-		remmina_ssh_set_error (ssh, _("SSH public key authentication failed: %s"));
-		return 0;
-	}
-
-	privkey = privatekey_from_file (ssh->session, ssh->privkeyfile, keytype,
-			(ssh->password ? ssh->password : ""));
-	if (privkey == NULL)
-	{
-		string_free(pubkey);
 		if (ssh->password == NULL || ssh->password[0] == '\0') return -1;
 
 		remmina_ssh_set_error (ssh, _("SSH public key authentication failed: %s"));
 		return 0;
 	}
 
-	ret = ssh_userauth_pubkey (ssh->session, NULL, pubkey, privkey);
-	string_free(pubkey);
-	privatekey_free (privkey);
+	ret = ssh_userauth_publickey (ssh->session, NULL, priv_key);
+	ssh_key_free(priv_key);
 
 	if (ret != SSH_AUTH_SUCCESS)
 	{
@@ -273,50 +261,54 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, gboolean threa
 	gchar *tips;
 	gchar *keyname;
 	gint ret;
-	gint len;
+	size_t len;
 	guchar *pubkey;
+	ssh_key server_pubkey;
 
 	/* Check if the server's public key is known */
 	ret = ssh_is_server_known (ssh->session);
 	switch (ret)
 	{
 		case SSH_SERVER_KNOWN_OK:
-		break;
+			break;
 
 		case SSH_SERVER_NOT_KNOWN:
 		case SSH_SERVER_FILE_NOT_FOUND:
 		case SSH_SERVER_KNOWN_CHANGED:
 		case SSH_SERVER_FOUND_OTHER:
-		len = ssh_get_pubkey_hash (ssh->session, &pubkey);
-		if (len < 0)
-		{
-			remmina_ssh_set_error (ssh, "SSH pubkey hash failed: %s");
-			return 0;
-		}
-		keyname = ssh_get_hexa (pubkey, len);
+			if ( ssh_get_publickey(ssh->session, &server_pubkey) != SSH_OK )
+			{
+				remmina_ssh_set_error(ssh, "ssh_get_publickey() has failed: %s");
+				return 0;
+			}
+			if ( ssh_get_publickey_hash(server_pubkey, SSH_PUBLICKEY_HASH_MD5, &pubkey, &len) != 0 ) {
+				ssh_key_free(server_pubkey);
+				remmina_ssh_set_error(ssh, "ssh_get_publickey_hash() has failed: %s");
+				return 0;
+			}
+			ssh_key_free(server_pubkey);
+			keyname = ssh_get_hexa (pubkey, len);
 
-		if (threaded) gdk_threads_enter();
-		if (ret == SSH_SERVER_NOT_KNOWN || ret == SSH_SERVER_FILE_NOT_FOUND)
-		{
-			ret = remmina_init_dialog_serverkey_unknown (dialog, keyname);
-		}
-		else
-		{
-			ret = remmina_init_dialog_serverkey_changed (dialog, keyname);
-		}
-		if (threaded)
-		{	gdk_flush();gdk_threads_leave();}
+			if (threaded) gdk_threads_enter();
+			if (ret == SSH_SERVER_NOT_KNOWN || ret == SSH_SERVER_FILE_NOT_FOUND)
+			{
+				ret = remmina_init_dialog_serverkey_unknown (dialog, keyname);
+			}
+			else
+			{
+				ret = remmina_init_dialog_serverkey_changed (dialog, keyname);
+			}
+			if (threaded)
+			{	gdk_flush();gdk_threads_leave();}
 
-		free (keyname);
-		ssh_clean_pubkey_hash (&pubkey);
-
-		if (ret != GTK_RESPONSE_OK) return -1;
-		ssh_write_knownhost (ssh->session);
-		break;
-
+			ssh_string_free_char(keyname);
+			ssh_clean_pubkey_hash (&pubkey);
+			if (ret != GTK_RESPONSE_OK) return -1;
+			ssh_write_knownhost (ssh->session);
+			break;
 		case SSH_SERVER_ERROR:
 		default:
-		remmina_ssh_set_error (ssh, "SSH known host checking failed: %s");
+			remmina_ssh_set_error (ssh, "SSH known host checking failed: %s");
 		return 0;
 	}
 
@@ -457,13 +449,11 @@ remmina_ssh_init_from_file (RemminaSSH *ssh, RemminaFile *remminafile)
 	if (s)
 	{
 		ssh->privkeyfile = remmina_ssh_identity_path (s);
-		ssh->pubkeyfile = g_strdup_printf("%s.pub", ssh->privkeyfile);
 		g_free(s);
 	}
 	else
 	{
 		ssh->privkeyfile = NULL;
-		ssh->pubkeyfile = NULL;
 	}
 
 	return TRUE;
@@ -482,7 +472,6 @@ remmina_ssh_init_from_ssh (RemminaSSH *ssh, const RemminaSSH *ssh_src)
 	ssh->user = g_strdup (ssh_src->user);
 	ssh->auth = ssh_src->auth;
 	ssh->password = g_strdup (ssh_src->password);
-	ssh->pubkeyfile = g_strdup (ssh_src->pubkeyfile);
 	ssh->privkeyfile = g_strdup (ssh_src->privkeyfile);
 	ssh->charset = g_strdup (ssh_src->charset);
 
@@ -527,7 +516,6 @@ remmina_ssh_free (RemminaSSH *ssh)
 	g_free(ssh->server);
 	g_free(ssh->user);
 	g_free(ssh->password);
-	g_free(ssh->pubkeyfile);
 	g_free(ssh->privkeyfile);
 	g_free(ssh->charset);
 	g_free(ssh->error);
