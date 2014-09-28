@@ -211,7 +211,7 @@ static gboolean remmina_main_load_file_tree_traverse(GNode *node, GtkTreeStore *
 		data = (RemminaGroupData*) node->data;
 		iter = g_new0(GtkTreeIter, 1);
 		gtk_tree_store_append(store, iter, parent);
-		gtk_tree_store_set(store, iter, PROTOCOL_COLUMN, GTK_STOCK_DIRECTORY, NAME_COLUMN, data->name, GROUP_COLUMN,
+		gtk_tree_store_set(store, iter, PROTOCOL_COLUMN, "folder", NAME_COLUMN, data->name, GROUP_COLUMN,
 				data->group, FILENAME_COLUMN, NULL, -1);
 	}
 	for (child = g_node_first_child(node); child; child = g_node_next_sibling(child))
@@ -356,7 +356,7 @@ static gboolean remmina_main_filter_visible_func(GtkTreeModel *model, GtkTreeIte
 	{
 		gtk_tree_model_get(model, iter, PROTOCOL_COLUMN, &protocol, NAME_COLUMN, &name, GROUP_COLUMN, &group,
 				SERVER_COLUMN, &server, -1);
-		if (g_strcmp0(protocol, GTK_STOCK_DIRECTORY) != 0)
+		if (g_strcmp0(protocol, "folder") != 0)
 		{
 			s = g_ascii_strdown(name ? name : "", -1);
 			g_free(name);

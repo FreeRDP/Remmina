@@ -78,7 +78,7 @@ static void remmina_key_chooser_on_clicked(RemminaKeyChooser *kc, gpointer data)
 	gint ret;
 
 	dialog = gtk_dialog_new_with_buttons(_("Choose a new key"), GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(kc))),
-			GTK_DIALOG_MODAL, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_REMOVE, GTK_RESPONSE_REJECT, NULL);
+			GTK_DIALOG_MODAL, GTK_STOCK_CANCEL, _("_Cancel"), _("_Remove"), GTK_RESPONSE_REJECT, NULL);
 
 	eventbox = gtk_event_box_new();
 	gtk_widget_show(eventbox);

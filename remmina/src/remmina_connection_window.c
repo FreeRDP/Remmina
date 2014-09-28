@@ -1188,7 +1188,8 @@ static void remmina_connection_holder_toolbar_tools(GtkWidget* widget, RemminaCo
 		}
 		else
 		{
-			menuitem = gtk_image_menu_item_new_from_stock((const gchar*) feature->opt2, NULL);
+			menuitem = gtk_menu_item_new_with_label(g_dgettext(domain, (const gchar*) feature->opt2));
+			//menuitem = gtk_image_menu_item_new_from_stock((const gchar*) feature->opt2, NULL);
 		}
 		if (feature->opt3)
 		{
