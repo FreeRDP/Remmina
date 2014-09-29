@@ -251,7 +251,7 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 		settings->LargePointerFlag = True;
 		settings->PerformanceFlags = PERF_FLAG_NONE;
 
-		rfi->rfx_context = rfx_context_new(FALSE);
+		rfi->rfx_context = rfx_context_new();
 	}
 
     freerdp_register_addin_provider(freerdp_channels_load_static_addin_entry, 0);
