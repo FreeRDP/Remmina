@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Waits for user key press.
 pause ()
 {
