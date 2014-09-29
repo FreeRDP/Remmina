@@ -409,10 +409,8 @@ typedef struct _RemminaKeyVal
 /***************************** LibVNCClient related codes *********************************/
 #include <rfb/rfbclient.h>
 
-#ifdef LIBVNCSERVER_WITH_CLIENT_TLS
 static const uint32_t remmina_plugin_vnc_no_encrypt_auth_types[] =
 {	rfbNoAuth, rfbVncAuth, rfbMSLogon, 0};
-#endif
 
 static void remmina_plugin_vnc_process_vnc_event(RemminaProtocolWidget *gp)
 {
@@ -846,7 +844,6 @@ remmina_plugin_vnc_rfb_password(rfbClient *cl)
 	return pwd;
 }
 
-#ifdef LIBVNCSERVER_WITH_CLIENT_TLS
 static rfbCredential*
 remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 {
@@ -939,7 +936,6 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 	}
 	return cred;
 }
-#endif
 
 static void remmina_plugin_vnc_rfb_cursor_shape(rfbClient *cl, int xhot, int yhot, int width, int height, int bytesPerPixel)
 {
@@ -1194,9 +1190,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		cl->MallocFrameBuffer = remmina_plugin_vnc_rfb_allocfb;
 		cl->canHandleNewFBSize = TRUE;
 		cl->GetPassword = remmina_plugin_vnc_rfb_password;
-#ifdef LIBVNCSERVER_WITH_CLIENT_TLS
 		cl->GetCredential = remmina_plugin_vnc_rfb_credential;
-#endif
 		cl->GotFrameBufferUpdate = remmina_plugin_vnc_rfb_updatefb;
 		cl->GotXCutText = (
 				remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE) ?
@@ -1239,14 +1233,12 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 
 		if (remmina_plugin_service->file_get_string(remminafile, "proxy"))
 		{
-#ifdef LIBVNCSERVER_WITH_CLIENT_TLS
 			cl->destHost = cl->serverHost;
 			cl->destPort = cl->serverPort;
 			remmina_plugin_service->get_server_port (remmina_plugin_service->file_get_string (remminafile, "proxy"), 5900,
 					&s, &cl->serverPort);
 			cl->serverHost = strdup (s);
 			g_free(s);
-#endif
 		}
 
 		cl->appData.useRemoteCursor = (
@@ -1258,9 +1250,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 
 		if (remmina_plugin_service->file_get_int(remminafile, "disableencryption", FALSE))
 		{
-#ifdef LIBVNCSERVER_WITH_CLIENT_TLS
 			SetClientAuthSchemes (cl, remmina_plugin_vnc_no_encrypt_auth_types, -1);
-#endif
 		}
 
 		if (rfbInitClient(cl, NULL, NULL))
@@ -1921,9 +1911,7 @@ static gpointer quality_list[] =
 static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
 {
 { REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, "_rfb._tcp", NULL },
-#ifdef LIBVNCSERVER_WITH_CLIENT_TLS
-		{	REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "proxy", N_("Repeater"), FALSE, NULL, NULL},
-#endif
+		{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "proxy", N_("Repeater"), FALSE, NULL, NULL},
 		{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
 		{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
 		{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color depth"), FALSE, colordepth_list, NULL },
