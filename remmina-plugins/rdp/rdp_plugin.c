@@ -49,6 +49,7 @@
 #include <freerdp/client/channels.h>
 #include <freerdp/client/cmdline.h>
 #include <freerdp/error.h>
+#include <freerdp/utils/signal.h>
 #include <winpr/memory.h>
 
 #define REMMINA_RDP_FEATURE_TOOL_REFRESH		1
@@ -256,7 +257,7 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 		settings->LargePointerFlag = True;
 		settings->PerformanceFlags = PERF_FLAG_NONE;
 
-		rfi->rfx_context = rfx_context_new(FALSE);
+		rfi->rfx_context = rfx_context_new();
 	}
 
 	freerdp_client_load_addins(instance->context->channels, instance->settings);
@@ -885,20 +886,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 			UINT32 e;
 		
 			e = freerdp_get_last_error(rfi->instance->context);
-			switch(e) {
-				case FREERDP_ERROR_AUTHENTICATION_FAILED:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Authentication to RDP server %s failed.\nCheck username, password and domain."),
-						rfi->settings->ServerHostname );
-					// Invalidate the saved password, so the user will be re-asked at next logon
-					remmina_plugin_service->file_unsave_password(remminafile);
-					break;
-				case FREERDP_ERROR_CONNECT_FAILED:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to RDP server %s failed."), rfi->settings->ServerHostname );
-					break;
-				default:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
-					break;
-			}
+			remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
 
 		}
 
@@ -1212,6 +1200,8 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService* service)
 		return FALSE;
 
 	remmina_rdp_settings_init();
+	freerdp_handle_signals();
+	freerdp_channels_global_init();
 
 	return TRUE;
 }
