@@ -63,7 +63,6 @@ typedef struct _RemminaSSH
 	gchar *user;
 	gint auth;
 	gchar *password;
-	gchar *pubkeyfile;
 	gchar *privkeyfile;
 
 	gchar *charset;

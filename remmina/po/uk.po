@@ -1,183 +1,307 @@
 # Ukrainian translation for remmina
-# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-11 23:54+0800\n"
-"PO-Revision-Date: 2010-12-12 08:56+0000\n"
-"Last-Translator: Сергій Дубик <dubyk@library.lviv.ua>\n"
+"POT-Creation-Date: 2014-09-20 16:53+0200\n"
+"PO-Revision-Date: 2013-05-30 17:28+0000\n"
+"Last-Translator: Stuartlittle1970@gmail.com <Stuartlittle1970@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2010-12-13 05:17+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
-"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
+"X-Generator: Launchpad (build 16976)\n"
 
-#: ../desktop/remmina.desktop.in.h:1
+#: remmina/desktop/remmina.desktop.in.h:1
+msgid "Remmina"
+msgstr "Remmina"
+
+#: remmina/desktop/remmina.desktop.in.h:2
+msgid "Remote Desktop Client"
+msgstr "Клієнт з'єднання з віддаленою стільницею"
+
+#: remmina/desktop/remmina.desktop.in.h:3
 msgid "Connect to remote desktops"
-msgstr "З'єднання з відаленим комп'ютером"
+msgstr "Приєднатися до віддаленого комп’ютера"
 
-#: ../desktop/remmina.desktop.in.h:2 ../src/remminamain.c:1157
-#: ../src/remminaicon.c:362 ../src/remminaicon.c:363
-msgid "Remmina Remote Desktop Client"
-msgstr "Клієнт з'єднань з відаленим комп'ютером Remmina"
+#: remmina/desktop/remmina.desktop.in.h:4
+msgid "Create a New Connection Profile"
+msgstr "Створити новий профіль з’єднання"
 
-#: ../src/remminamain.c:503
-#, c-format
-msgid "Total %i item."
-msgid_plural "Total %i items."
-msgstr[0] "Усього %i"
-msgstr[1] "Усього %i"
-msgstr[2] "Усього %i"
+#: remmina/desktop/remmina.desktop.in.h:5
+msgid "Start Remmina Minimized"
+msgstr "Запустити Rammina у системному лотку"
 
-#: ../src/remminamain.c:573
-#, c-format
-msgid "Are you sure to delete '%s'"
-msgstr "Впевнені, що бажаєте видалити '%s' ?"
+#: remmina/src/remmina_key_chooser.c:55
+msgid "<None>"
+msgstr "<Немає>"
 
-#: ../src/remminamain.c:741
-#, c-format
-msgid ""
-"Unable to import:\n"
-"%s"
+#: remmina/src/remmina_key_chooser.c:80
+msgid "Choose a new key"
+msgstr "Оберіть новий ключ"
+
+#: remmina/src/remmina_key_chooser.c:90
+msgid "Please press the new key..."
+msgstr "Будь-ласка, натисніть нову клавішу для вибору…"
+
+#: remmina/src/remmina_scaler.c:72
+msgid "Fit window size"
+msgstr "Розтягнути до розміру вікна"
+
+#: remmina/src/remmina_scaler.c:147 remmina/src/remmina_file_editor.c:654
+msgid "Horizontal scale"
+msgstr "Масштабувати горизонтально"
+
+#: remmina/src/remmina_scaler.c:158 remmina/src/remmina_file_editor.c:664
+msgid "Vertical scale"
+msgstr "Масштабувати вертикально"
+
+#: remmina/src/remmina_pref_dialog.c:51
+msgid "Open connection"
+msgstr "Відкрити з’єднання"
+
+#: remmina/src/remmina_pref_dialog.c:51
+msgid "Edit settings"
+msgstr "Редагувати налаштування"
+
+#: remmina/src/remmina_pref_dialog.c:54
+msgid "Nearest"
+msgstr "Найближчий"
+
+#: remmina/src/remmina_pref_dialog.c:54
+msgid "Tiles"
+msgstr "Плиткою"
+
+#: remmina/src/remmina_pref_dialog.c:54
+msgid "Bilinear"
+msgstr "Білінійно"
+
+#: remmina/src/remmina_pref_dialog.c:54
+msgid "Hyper"
+msgstr "Гіпер"
+
+#: remmina/src/remmina_pref_dialog.c:57
+msgid "Automatic"
+msgstr "Автоматично"
+
+#: remmina/src/remmina_pref_dialog.c:57
+msgid "Scrolled window"
+msgstr "Вікно з прокруткою"
+
+#: remmina/src/remmina_pref_dialog.c:57
+msgid "Scrolled fullscreen"
+msgstr "На весь екран з прокруткою"
+
+#: remmina/src/remmina_pref_dialog.c:57
+msgid "Viewport fullscreen"
+msgstr "На весь екран"
+
+#: remmina/src/remmina_pref_dialog.c:60
+msgid "Tab by groups"
+msgstr "Об’єднувати за групами"
+
+#: remmina/src/remmina_pref_dialog.c:60
+msgid "Tab by protocols"
+msgstr "Об’єднувати за протоколами"
+
+#: remmina/src/remmina_pref_dialog.c:60
+msgid "Tab all connections"
+msgstr "Об’єднувати усі з’єднання"
+
+#: remmina/src/remmina_pref_dialog.c:60
+msgid "Do not use tabs"
+msgstr "Не використовувати вкладки"
+
+#: remmina/src/remmina_pref_dialog.c:147
+msgid "Please enter format 'widthxheight'."
+msgstr "Будь ласка, введіть у форматі „ширинаxвисота“."
+
+#: remmina/src/remmina_pref_dialog.c:157
+msgid "Recent lists cleared."
+msgstr "Очищено історію останніх з’єднань"
+
+#: remmina/src/remmina_pref_dialog.c:330
+msgid "Remmina Preferences"
+msgstr "Налаштування клієнта Remmina"
+
+#: remmina/src/remmina_pref_dialog.c:346
+msgid "Options"
+msgstr "Параметри"
+
+#: remmina/src/remmina_pref_dialog.c:365
+msgid "Remember last view mode for each connection"
+msgstr "Пам’ятати останній режим перегляду для кожного з’єднання"
+
+#: remmina/src/remmina_pref_dialog.c:371
+msgid "Save settings when starting the connection"
+msgstr "Зберегти налаштування при запуску з’єднання"
+
+#: remmina/src/remmina_pref_dialog.c:377
+msgid "Invisible toolbar in fullscreen mode"
+msgstr "Приховати панель інструментів в повноекранному режимі"
+
+#: remmina/src/remmina_pref_dialog.c:390
+msgid "Always show tabs"
+msgstr "Завжди показувати вкладки"
+
+#: remmina/src/remmina_pref_dialog.c:396
+msgid "Hide toolbar in tabbed interface"
+msgstr "Приховати панель в інтерфейсі закладок"
+
+#: remmina/src/remmina_pref_dialog.c:402
+msgid "Double-click action"
+msgstr "При подвійному натисканні"
+
+#: remmina/src/remmina_pref_dialog.c:412
+msgid "Default view mode"
+msgstr "Режим перегляду за умовчанням"
+
+#: remmina/src/remmina_pref_dialog.c:422
+msgid "Tab interface"
+msgstr "Режим вкладок"
+
+#: remmina/src/remmina_pref_dialog.c:432
+msgid "Scale quality"
+msgstr "Якість масштабування"
+
+#: remmina/src/remmina_pref_dialog.c:442
+msgid "SSH tunnel local port"
+msgstr "Локальний порт SSH-тунелю"
+
+#: remmina/src/remmina_pref_dialog.c:455
+msgid "Auto scroll step size"
+msgstr "Крок авто-прокрутки"
+
+#: remmina/src/remmina_pref_dialog.c:468
+msgid "Maximum recent items"
+msgstr "Кількість недавніх з’єднань"
+
+#: remmina/src/remmina_pref_dialog.c:489
+msgid "Clear"
+msgstr "Очистити"
+
+#: remmina/src/remmina_pref_dialog.c:495
+msgid "Resolutions"
+msgstr "Роздільна здатність"
+
+#: remmina/src/remmina_pref_dialog.c:518
+msgid "Applet"
+msgstr "Аплет"
+
+#: remmina/src/remmina_pref_dialog.c:537
+msgid "Show new connection on top of the menu"
+msgstr "Показувати „Нове підключення“ зверху меню"
+
+#: remmina/src/remmina_pref_dialog.c:543
+msgid "Hide total count in group menu"
+msgstr "Сховати повну кількість в меню груп"
+
+#: remmina/src/remmina_pref_dialog.c:549
+msgid "Disable tray icon"
+msgstr "Не показувати значок у області сповіщень"
+
+#: remmina/src/remmina_pref_dialog.c:555
+msgid "Start Remmina in tray icon at user logon"
 msgstr ""
-"Неможливо імпортувати:\n"
-"%s"
 
-#: ../src/remminamain.c:770 ../src/remminamain.c:937
-msgid "Import"
-msgstr "Імпортування"
+#: remmina/src/remmina_pref_dialog.c:563
+msgid "Minimize windows to tray"
+msgstr "Згортати вікна до області сповіщень"
 
-#: ../src/remminamain.c:808
-msgid "This protocol does not support exporting."
-msgstr "Неможливо експортувати цей вид протоколів"
+#: remmina/src/remmina_pref_dialog.c:576 remmina/src/remmina_pref_dialog.c:851
+msgid "Keyboard"
+msgstr "Клавіатура"
 
-#: ../src/remminamain.c:919
-msgid "_Connection"
-msgstr ""
+#: remmina/src/remmina_pref_dialog.c:595 remmina/src/remmina_pref_dialog.c:875
+msgid "Host key"
+msgstr "Host-клавіша"
 
-#: ../src/remminamain.c:920
-msgid "_Edit"
-msgstr "_Правка"
+#: remmina/src/remmina_pref_dialog.c:611
+#: remmina/src/remmina_connection_window.c:1270
+msgid "Toggle fullscreen mode"
+msgstr "Переключити повноекранний режим"
 
-#: ../src/remminamain.c:921
-msgid "_View"
-msgstr "_Вигляд"
+#: remmina/src/remmina_pref_dialog.c:627
+msgid "Auto-fit window"
+msgstr "Автоматично підібрати розмір вікна"
 
-#: ../src/remminamain.c:922
-msgid "_Tools"
-msgstr "_Інструменти"
+#: remmina/src/remmina_pref_dialog.c:643
+#: remmina/src/remmina_connection_window.c:1308
+msgid "Switch tab pages"
+msgstr "Переключити вкладку"
 
-#: ../src/remminamain.c:923
-msgid "_Help"
-msgstr "_Довідка"
+#: remmina/src/remmina_pref_dialog.c:672
+#: remmina/src/remmina_connection_window.c:1321
+msgid "Toggle scaled mode"
+msgstr "Розтягувати під прозмір екрану"
 
-#: ../src/remminamain.c:926
-msgid "Create a new remote desktop file"
-msgstr "Створити новий файли з'єднання"
+#: remmina/src/remmina_pref_dialog.c:688
+msgid "Grab keyboard"
+msgstr "Захоплення клавіатури"
 
-#: ../src/remminamain.c:930
-msgid "Open the preferences dialog"
-msgstr "Відкрити діалог параметрів програми"
+#: remmina/src/remmina_pref_dialog.c:704
+#: remmina/src/remmina_connection_window.c:1383
+msgid "Minimize window"
+msgstr "Згорнути вікно"
 
-#: ../src/remminamain.c:941 ../src/remminapluginmanager.c:239
-msgid "Plugins"
-msgstr "Модулі"
+#: remmina/src/remmina_pref_dialog.c:720
+#: remmina/src/remmina_connection_window.c:1390
+msgid "Disconnect"
+msgstr "Від’єднатися"
 
-#: ../src/remminamain.c:945
-msgid "Homepage"
-msgstr ""
+#: remmina/src/remmina_pref_dialog.c:736
+msgid "Show / hide toolbar"
+msgstr "Відображати/приховати панель"
 
-#: ../src/remminamain.c:949
-msgid "Online Wiki"
-msgstr "База знань (Wiki) в Інтернет"
+#: remmina/src/remmina_pref_dialog.c:753
+msgid "Terminal"
+msgstr "Термінал"
 
-#: ../src/remminamain.c:953
-msgid "Debug Window"
-msgstr "Вікно відлагодження"
+#: remmina/src/remmina_pref_dialog.c:772
+msgid "Font"
+msgstr "Шрифт"
 
-#: ../src/remminamain.c:965
-msgid "Open the connection to the selected remote desktop file"
-msgstr "З'єднатись за налаштуваннями обраного файлу віддаленого з'єднання"
+#: remmina/src/remmina_pref_dialog.c:782
+msgid "Use system default font"
+msgstr "Використовувати системний шрифт"
 
-#: ../src/remminamain.c:969
-msgid "Create a copy of the selected remote desktop file"
-msgstr "Створити копію обраного файлу з'єднання"
+#: remmina/src/remmina_pref_dialog.c:815
+msgid "Allow bold text"
+msgstr "Дозволити жирний текст"
 
-#: ../src/remminamain.c:973
-msgid "Edit the selected remote desktop file"
-msgstr "Редагувати обраний файл з'єднання"
+#: remmina/src/remmina_pref_dialog.c:827
+msgid "Scrollback lines"
+msgstr "Рядки для прокрутки"
 
-#: ../src/remminamain.c:977
-msgid "Delete the selected remote desktop file"
-msgstr "Видалити обраний файл з'єднання"
+#: remmina/src/remmina_pref_dialog.c:869 remmina/src/remmina_ssh_plugin.c:316
+msgid "Copy"
+msgstr "Копіювати"
 
-#: ../src/remminamain.c:980
-msgid "Export"
-msgstr "Експортування"
+#: remmina/src/remmina_pref_dialog.c:899 remmina/src/remmina_ssh_plugin.c:317
+msgid "Paste"
+msgstr "Вставити"
 
-#: ../src/remminamain.c:987
-msgid "Toolbar"
-msgstr "Панель інструментів"
-
-#: ../src/remminamain.c:990
-msgid "Statusbar"
-msgstr "Смужка стану"
-
-#: ../src/remminamain.c:993
-msgid "Quick Search"
-msgstr "Швидкий пошук"
-
-#: ../src/remminamain.c:996
-msgid "Small Toolbar Buttons"
-msgstr "Відбражати малі іконки"
-
-#: ../src/remminamain.c:1002
-msgid "List View"
-msgstr "Перегляд списком"
-
-#: ../src/remminamain.c:1003
-msgid "Tree View"
-msgstr "Ієрархічний перегляд"
-
-#. Profile: Name
-#: ../src/remminamain.c:1230 ../src/remminafileeditor.c:1286
-#: ../src/remminapluginmanager.c:259
-msgid "Name"
-msgstr "Назва"
-
-#. Profile: Group
-#: ../src/remminamain.c:1243 ../src/remminafileeditor.c:1308
-#: ../src/remminaftpclient.c:1020
-msgid "Group"
-msgstr "Група"
-
-#: ../src/remminamain.c:1251 ../src/remminafileeditor.c:342
-#: ../src/remminafileeditor.c:795 ../src/remminafileeditor.c:808
-#: ../src/remminaprotocolwidget.c:1032
-msgid "Server"
-msgstr "Сервер"
-
-#: ../src/remminafileeditor.c:56
+#: remmina/src/remmina_file_editor.c:71
 msgid ""
 "<tt><big>Supported formats\n"
 "* server\n"
 "* server:port\n"
 "* [server]:port</big></tt>"
 msgstr ""
-"<tt><big>Підтримуються такі формати\n"
+"<tt><big>Підтримувані формати\n"
 "* сервер\n"
 "* сервер:порт\n"
 "* [сервер]:порт</big></tt>"
 
-#: ../src/remminafileeditor.c:63
+#: remmina/src/remmina_file_editor.c:79
 msgid ""
 "<tt><big>Supported formats\n"
 "* :port\n"
@@ -185,315 +309,196 @@ msgid ""
 "* server:port\n"
 "* [server]:port</big></tt>"
 msgstr ""
-"<tt><big>Підтримуються такі формати\n"
+"<tt><big>Підтримувані формати\n"
 "* сервер\n"
 "* сервер:порт\n"
 "* [сервер]:порт</big></tt>"
 
-#: ../src/remminafileeditor.c:120
+#: remmina/src/remmina_file_editor.c:136
 msgid "Choose a Remote Desktop Server"
-msgstr "Введіть адресу комп'ютера з котрим з'єднуєтесь"
+msgstr "Виберіть сервер віддаленого робочого столу"
 
-#: ../src/remminafileeditor.c:297 ../src/remminafileeditor.c:304
+#: remmina/src/remmina_file_editor.c:138 remmina/src/remmina_file_editor.c:321
+#: remmina/src/remmina_file_editor.c:1235
+msgid "_Cancel"
+msgstr ""
+
+#: remmina/src/remmina_file_editor.c:139
+msgid "_OK"
+msgstr ""
+
+#: remmina/src/remmina_file_editor.c:313 remmina/src/remmina_file_editor.c:320
+#: remmina-plugins/nx/nx_plugin.c:625
 msgid "Identity file"
 msgstr "Ідентифікувати файл"
 
-#: ../src/remminafileeditor.c:365
+#: remmina/src/remmina_file_editor.c:322
+msgid "_Open"
+msgstr ""
+
+#: remmina/src/remmina_file_editor.c:360 remmina/src/remmina_file_editor.c:843
+#: remmina/src/remmina_file_editor.c:856 remmina/src/remmina_main.c:1300
+#: remmina/src/remmina_protocol_widget.c:1019
+msgid "Server"
+msgstr "Сервер"
+
+#: remmina/src/remmina_file_editor.c:383
 #, c-format
 msgid "Browse the network to find a %s server"
-msgstr "Шукти в мережі сервер %s"
+msgstr "Провести огляд мережі для пошуку сервера %s"
 
-#: ../src/remminafileeditor.c:387 ../src/remminafileeditor.c:850
-#: ../src/remminaprotocolwidget.c:833 ../src/remminainitdialog.c:278
+#: remmina/src/remmina_file_editor.c:404 remmina/src/remmina_file_editor.c:898
+#: remmina/src/remmina_protocol_widget.c:819
+#: remmina/src/remmina_init_dialog.c:298
 msgid "Password"
 msgstr "Пароль"
 
-#: ../src/remminafileeditor.c:428
+#: remmina/src/remmina_file_editor.c:447
 msgid "Resolution"
 msgstr "Роздільна здатність"
 
-#: ../src/remminafileeditor.c:434
+#: remmina/src/remmina_file_editor.c:452
 msgid "Use window size"
-msgstr "По розміру вікна"
+msgstr "Використовувати розмір вікна"
 
-#: ../src/remminafileeditor.c:434
+#: remmina/src/remmina_file_editor.c:452
 msgid "Use client resolution"
-msgstr "Налаштування на сервері"
+msgstr "Використовувати роздільну здатність клієнта"
 
-#: ../src/remminafileeditor.c:444 ../src/remminafileeditor.c:775
+#: remmina/src/remmina_file_editor.c:465 remmina/src/remmina_file_editor.c:822
 msgid "Custom"
-msgstr "Нетипова"
+msgstr "Нетиповий"
 
-#: ../src/remminafileeditor.c:626
+#: remmina/src/remmina_file_editor.c:647
 msgid "Keyboard mapping"
-msgstr "Розкладка клавіатури (мова)"
+msgstr "Розкладка клавіатури"
 
-#: ../src/remminafileeditor.c:631 ../src/remminascaler.c:138
-msgid "Horizontal scale"
-msgstr "Масштабувати горизонтально"
-
-#: ../src/remminafileeditor.c:636 ../src/remminascaler.c:145
-msgid "Vertical scale"
-msgstr "Масштабувати вертикально"
-
-#: ../src/remminafileeditor.c:746
+#: remmina/src/remmina_file_editor.c:794
 msgid "Enable SSH tunnel"
-msgstr "Увімкнути SSH Тунель"
+msgstr "Увімкнути SSH-тунель"
 
-#: ../src/remminafileeditor.c:753
+#: remmina/src/remmina_file_editor.c:801
 msgid "Tunnel via loopback address"
-msgstr "Tunnel via Loopback Address"
+msgstr "Тунеллювання через локальну петлю"
 
-#. SSH Server group
-#: ../src/remminafileeditor.c:760
-msgid "SSH Server"
-msgstr "SSH Сервер"
-
-#: ../src/remminafileeditor.c:766
+#: remmina/src/remmina_file_editor.c:813
 #, c-format
 msgid "Same server at port %i"
-msgstr "Той же сервер. Порт %i"
+msgstr "Цей же сервер на порті %i"
 
-#: ../src/remminafileeditor.c:820
+#: remmina/src/remmina_file_editor.c:868
 msgid "Character set"
-msgstr "Розкладка клавіатури (мова)"
+msgstr "Кодування символів"
 
-#: ../src/remminafileeditor.c:826
+#: remmina/src/remmina_file_editor.c:874 remmina-plugins/rdp/rdp_plugin.c:1130
+#: remmina-plugins/nx/nx_plugin.c:630 remmina-plugins/xdmcp/xdmcp_plugin.c:349
 msgid "Startup program"
 msgstr "Запускати програму"
 
-#: ../src/remminafileeditor.c:835
+#: remmina/src/remmina_file_editor.c:883 remmina-plugins/rdp/rdp_plugin.c:1131
 msgid "Startup path"
-msgstr "Адреса"
+msgstr "Шлях до програми"
 
-#. SSH Authentication frame
-#: ../src/remminafileeditor.c:843
+#: remmina/src/remmina_file_editor.c:891
 msgid "SSH Authentication"
-msgstr "Перевірка прав доступу по SSH"
+msgstr "Автентифікація SSH"
 
-#. Entries
-#: ../src/remminafileeditor.c:847 ../src/remminainitdialog.c:265
+#: remmina/src/remmina_file_editor.c:895 remmina/src/remmina_init_dialog.c:284
+#: remmina-plugins/vnc/vnc_plugin.c:1927 remmina-plugins/vnc/vnc_plugin.c:1941
+#: remmina-plugins/rdp/rdp_plugin.c:1115 remmina-plugins/nx/nx_plugin.c:626
 msgid "User name"
-msgstr "Користувач"
+msgstr "Ім’я користувача"
 
-#: ../src/remminafileeditor.c:857
+#: remmina/src/remmina_file_editor.c:905
 msgid "Public key (automatic)"
-msgstr "Відкритий ключ (Automatic)"
+msgstr "Відкритий ключ (автоматично)"
 
-#: ../src/remminafileeditor.c:914
+#: remmina/src/remmina_file_editor.c:961
 msgid "Basic"
-msgstr "Простий"
+msgstr "Базовий"
 
-#: ../src/remminafileeditor.c:921
+#: remmina/src/remmina_file_editor.c:968
 msgid "Advanced"
 msgstr "Додатково"
 
-#: ../src/remminafileeditor.c:1115
+#: remmina/src/remmina_file_editor.c:1179
 msgid "Default settings saved."
-msgstr "Стандартні налаштування збережено"
+msgstr "Стандартні налаштування збережено."
 
-#. Create the editor dialog
-#: ../src/remminafileeditor.c:1164
+#: remmina/src/remmina_file_editor.c:1226
 msgid "Remote Desktop Preference"
-msgstr "Налаштування робочого столу віддаленого комп'ютера"
+msgstr "Параметри віддаленого робочого столу"
 
-#. The Set As Default button
-#: ../src/remminafileeditor.c:1189
+#: remmina/src/remmina_file_editor.c:1228
+msgid "_Save"
+msgstr ""
+
+#: remmina/src/remmina_file_editor.c:1240
+msgid "Connect"
+msgstr ""
+
+#: remmina/src/remmina_file_editor.c:1253
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:341
 msgid "Default"
 msgstr "Типовий"
 
-#: ../src/remminafileeditor.c:1283
+#: remmina/src/remmina_file_editor.c:1347
 msgid "Profile"
 msgstr "Профіль"
 
-#: ../src/remminafileeditor.c:1298
+#: remmina/src/remmina_file_editor.c:1350
+#: remmina/src/remmina_plugin_manager.c:275 remmina/src/remmina_main.c:1280
+#: remmina-plugins/nx/nx_session_manager.c:199
+msgid "Name"
+msgstr "Ім’я"
+
+#: remmina/src/remmina_file_editor.c:1364
 msgid "Quick Connect"
 msgstr "Швидке з’єднання"
 
-#: ../src/remminafileeditor.c:1320
+#: remmina/src/remmina_file_editor.c:1374 remmina/src/remmina_ftp_client.c:940
+#: remmina/src/remmina_main.c:1293
+msgid "Group"
+msgstr "Група"
+
+#: remmina/src/remmina_file_editor.c:1386
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
-msgstr ""
+msgstr "Використовувати „%s“ як роздільник підгруп"
 
-#. Profile: Protocol
-#: ../src/remminafileeditor.c:1325 ../src/remminapluginmanager.c:38
+#: remmina/src/remmina_file_editor.c:1391
+#: remmina/src/remmina_plugin_manager.c:54
 msgid "Protocol"
 msgstr "Протокол"
 
-#: ../src/remminafileeditor.c:1384 ../src/remminafileeditor.c:1405
-#: ../src/remminaconnectionwindow.c:2421
+#: remmina/src/remmina_file_editor.c:1449
+#: remmina/src/remmina_file_editor.c:1469
+#: remmina/src/remmina_connection_window.c:2627
 #, c-format
 msgid "File %s not found."
-msgstr "Файл %s відсутній."
+msgstr "Файл %s не знайдено."
 
-#: ../src/remminaconnectionwindow.c:183
-#, c-format
-msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
-msgstr ""
-"В цьому вікні відкрито %i активних з'єднань. Впевнені, що потрібно вийти?"
-
-#: ../src/remminaconnectionwindow.c:563
-msgid "Viewport fullscreen mode"
-msgstr ""
-
-#: ../src/remminaconnectionwindow.c:574
-msgid "Scrolled fullscreen mode"
-msgstr ""
-
-#: ../src/remminaconnectionwindow.c:1177
-msgid "Resize the window to fit in remote resolution"
-msgstr "Зменьшувати до розміру екрану свого комп'ютера"
-
-#: ../src/remminaconnectionwindow.c:1188 ../src/remminaprefdialog.c:559
-msgid "Toggle fullscreen mode"
-msgstr "На ввесь екран"
-
-#: ../src/remminaconnectionwindow.c:1229 ../src/remminaprefdialog.c:579
-msgid "Switch tab pages"
-msgstr "Перемкнути закладки"
-
-#: ../src/remminaconnectionwindow.c:1243 ../src/remminaprefdialog.c:598
-msgid "Toggle scaled mode"
-msgstr "Розтягувати під прозмір екрану свого комп'ютера"
-
-#: ../src/remminaconnectionwindow.c:1278
-msgid "Grab all keyboard events"
-msgstr "Передавати на віддалений комп'ютер будь-яке натискання клавіш"
-
-#: ../src/remminaconnectionwindow.c:1287
-msgid "Preferences"
-msgstr "Налаштування"
-
-#: ../src/remminaconnectionwindow.c:1295 ../src/remminaconnectionwindow.c:1296
-msgid "Tools"
-msgstr "Інструменти"
-
-#: ../src/remminaconnectionwindow.c:1308 ../src/remminaprefdialog.c:618
-msgid "Minimize window"
-msgstr "Згорнути вікно"
-
-#: ../src/remminaconnectionwindow.c:1316 ../src/remminaprefdialog.c:628
-msgid "Disconnect"
-msgstr "Від'єднатися"
-
-#: ../src/remminaprotocolwidget.c:119
-#, c-format
-msgid "Connecting to '%s'..."
-msgstr "Встановлення з'єднання з  '%s'..."
-
-#: ../src/remminaprotocolwidget.c:202
-#, c-format
-msgid "Protocol plugin %s is not installed."
-msgstr ""
-
-#: ../src/remminaprotocolwidget.c:240
-msgid "Open Secure Shell in New Terminal..."
-msgstr "Відкрити захищений канал у новому вікні..."
-
-#: ../src/remminaprotocolwidget.c:246
-msgid "Open Secure File Transfer..."
-msgstr "Розпочати безпечну передачу файлів..."
-
-#: ../src/remminaprotocolwidget.c:451
-#, c-format
-msgid "Connecting to SSH server %s..."
-msgstr "Встановлюється з'єднання з SSH сервером %s..."
-
-#: ../src/remminaprotocolwidget.c:516 ../src/remminaprotocolwidget.c:686
-#, c-format
-msgid "Connecting to %s through SSH tunnel..."
-msgstr "Встановлюється з'єднання з %s... по SSH протоколу"
-
-#: ../src/remminaprotocolwidget.c:560
-#, c-format
-msgid "Waiting for an incoming SSH tunnel at port %i..."
-msgstr "Очікування на вхідне SSH з'єднання на порт %i..."
-
-#: ../src/remminaprotocolwidget.c:609
-#, c-format
-msgid "Command %s not found on SSH server"
-msgstr "Команда „%s“ не знайдена на SSH-сервері"
-
-#: ../src/remminaprotocolwidget.c:613
-#, c-format
-msgid "Command %s failed on SSH server (status = %i)."
-msgstr "Команда „%s“ завершилася помилкою на SSH-сервері (статус = %i)."
-
-#: ../src/remminaprotocolwidget.c:624
-#, c-format
-msgid "Failed to execute command: %s"
-msgstr "Помилка при виконанні команди: %s"
-
-#: ../src/remminaprotocolwidget.c:824
-#, c-format
-msgid "%s password"
-msgstr "%s Пароль"
-
-#: ../src/remminaprotocolwidget.c:827 ../src/remminassh.c:248
-msgid "SSH password"
-msgstr "Пароль SSH"
-
-#: ../src/remminaprotocolwidget.c:830 ../src/remminassh.c:252
-msgid "SSH private key passphrase"
-msgstr "Ключова фраза закритого ключа SSH"
-
-#: ../src/remminaprotocolwidget.c:968
-#, c-format
-msgid "Listening on port %i for an incoming %s connection..."
-msgstr "Прослуховування порту %i на вхідне %s підключення…"
-
-#: ../src/remminaprotocolwidget.c:976
-msgid "Authentication failed. Trying to reconnect..."
-msgstr "Помилка при перевірці прав доступу. Ще одна спроба..."
-
-#: ../src/remminainitdialog.c:205
-#, c-format
-msgid "Save %s"
-msgstr "Зберегти %s"
-
-#: ../src/remminainitdialog.c:289
-msgid "Save password"
-msgstr "Зберегти пароль"
-
-#. Buttons for choosing the certificates
-#: ../src/remminainitdialog.c:388
-msgid "CA certificate"
-msgstr "CA Certificate"
-
-#: ../src/remminainitdialog.c:389
-msgid "CA CRL"
-msgstr "CA CRL"
-
-#: ../src/remminainitdialog.c:390
-msgid "Client certificate"
-msgstr "Клієнтський сертифікат"
-
-#: ../src/remminainitdialog.c:391
-msgid "Client key"
-msgstr "Клієнтський ключ"
-
-#: ../src/remminaabout.c:32
+#: remmina/src/remmina_about.c:46
 msgid "Maintainers:"
 msgstr "Відповідальні:"
 
-#: ../src/remminaabout.c:35
+#: remmina/src/remmina_about.c:49
 msgid "Contributors:"
 msgstr "Учасники розробки:"
 
-#: ../src/remminaabout.c:47
+#: remmina/src/remmina_about.c:65
 msgid ""
 "Remmina is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
 "Foundation; either version 2 of the License, or (at your option) any later "
 "version."
 msgstr ""
-"Клієнт Remmina є вільним програмним забезпеченням; Ви маєте право поширювати "
-"його/або змінювати його код з гідно з умовами ліцензії GNU General Public "
-"License опублікованою компанією Free Software Foundation; згідно з 2ю або "
-"будь-якою більш пізньою версією цієї ліцензії - на Ваш вибір."
+"Клієнт Remmina — вільне програмне забезпечення; Ви маєте право поширювати "
+"його та/чи змінювати його код відповідно до умов ліцензії „GNU General "
+"Public License“, опублікованої компанією Free Software Foundation, версії 2 "
+"чи, на Ваш вибір, будь-якої більш новішої версії цієї ліцензії."
 
-#: ../src/remminaabout.c:51
+#: remmina/src/remmina_about.c:69
 msgid ""
 "Remmina is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -502,548 +507,1053 @@ msgid ""
 msgstr ""
 "Програма Remmina поширюється в вірою в те, що вона буде корисна, але без "
 "БУДЬ-ЯКИХ ГАРАНТІЙ; у тому числі й без гарантій КОМЕРЦІЙНОЇ ЦІННОСТІ чи "
-"ПРИДАТНОСТІ ДЛЯ БУДЬ-ЯКОЇ конкретної мети. Більш детально — дивіться "
-"ліцензію GNU General Public License."
+"ПРИДАТНОСТІ ДЛЯ БУДЬ-ЯКОЇ КОНКРЕТНОЇ МЕТИ. Більш детально — дивіться "
+"ліцензію „GNU General Public License“."
 
-#: ../src/remminaabout.c:55
+#: remmina/src/remmina_about.c:73
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
 "Place, Suite 330, Boston, MA 02111-1307, USA."
-"In addition, as a special exception, the copyright holders give "
-"permission to link the code of portions of this program with the "
-"OpenSSL library under certain conditions as described in each "
-"individual source file, and distribute linked combinations "
-"including the two. "
-"You must obey the GNU General Public License in all respects "
-"for all of the code used other than OpenSSL. If you modify "
-"file(s) with this exception, you may extend this exception to your "
-"version of the file(s), but you are not obligated to do so. If you "
-"do not wish to do so, delete this exception statement from your "
-"version. If you delete this exception statement from all source "
-"files in the program, then also delete it here. "
 msgstr ""
-"Ви повинні були отримати копію ліцензії GNU General Public License разом з "
+"Ви повинні були отримати копію ліцензії „GNU General Public License“ разом з "
 "цією програмою, якщо цього не сталося, то напишіть за адресою Free Software "
 "Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA."
-"In addition, as a special exception, the copyright holders give "
-"permission to link the code of portions of this program with the "
-"OpenSSL library under certain conditions as described in each "
-"individual source file, and distribute linked combinations "
-"including the two. "
-"You must obey the GNU General Public License in all respects "
-"for all of the code used other than OpenSSL. If you modify "
-"file(s) with this exception, you may extend this exception to your "
-"version of the file(s), but you are not obligated to do so. If you "
-"do not wish to do so, delete this exception statement from your "
-"version. If you delete this exception statement from all source "
-"files in the program, then also delete it here. "
 
-#: ../src/remminaabout.c:68
+#: remmina/src/remmina_about.c:87
 msgid "The GTK+ Remote Desktop Client"
-msgstr "GTK+ Клієнт з'єднань з робочим столом віддаленого комп'ютера"
+msgstr "Клієнт віддаленого підключення до робочого столу на GTK+"
 
-#: ../src/remminaabout.c:74
+#: remmina/src/remmina_about.c:93
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Andriy Nezhivy https://launchpad.net/~andriynezhivy\n"
+"  Sergey Hordiyenko https://launchpad.net/~phrippy2\n"
+"  Sergiy Matrunchyk https://launchpad.net/~sergiy.matrunchyk\n"
 "  Serhey Kusyumoff (Сергій Кусюмов) https://launchpad.net/~sergemine\n"
+"  Stuartlittle1970@gmail.com https://launchpad.net/~stuartlittle1970\n"
 "  Сергій Дубик https://launchpad.net/~dubyk-library"
 
-#: ../src/remminaprefdialog.c:37
-msgid "Open connection"
-msgstr "Відкрити з'єднання"
-
-#: ../src/remminaprefdialog.c:38
-msgid "Edit settings"
-msgstr "Редагувати налаштування"
-
-#: ../src/remminaprefdialog.c:44
-msgid "Nearest"
-msgstr "Найближчий"
-
-#: ../src/remminaprefdialog.c:45
-msgid "Tiles"
-msgstr "Плиткою"
-
-#: ../src/remminaprefdialog.c:46
-msgid "Bilinear"
-msgstr "Білінійно"
-
-#: ../src/remminaprefdialog.c:47
-msgid "Hyper"
-msgstr "Hyper"
-
-#: ../src/remminaprefdialog.c:53
-msgid "Automatic"
-msgstr "Автоматично"
-
-#: ../src/remminaprefdialog.c:54
-msgid "Scrolled window"
-msgstr "Вікно з прокруткою"
-
-#: ../src/remminaprefdialog.c:55
-msgid "Scrolled fullscreen"
-msgstr "На ввесь екран, з переміщенням полосою прокрутки"
-
-#: ../src/remminaprefdialog.c:56
-msgid "Viewport fullscreen"
-msgstr "На ввесь екран"
-
-#: ../src/remminaprefdialog.c:62
-msgid "Tab by groups"
-msgstr "Закладки згідно з групами"
-
-#: ../src/remminaprefdialog.c:63
-msgid "Tab by protocols"
-msgstr "Закладки за протоколами"
-
-#: ../src/remminaprefdialog.c:64
-msgid "Tab all connections"
-msgstr "Всі з'єднання в закладки"
-
-#: ../src/remminaprefdialog.c:65
-msgid "Do not use tabs"
-msgstr "Не використовувати закладки"
-
-#: ../src/remminaprefdialog.c:150
-msgid "Please enter format 'widthxheight'."
-msgstr "Будь ласка, введіть формат 'ширина x висота'."
-
-#: ../src/remminaprefdialog.c:162
-msgid "Recent lists cleared."
-msgstr "Очищено список останніх з'єднань"
-
-#. Create the dialog
-#: ../src/remminaprefdialog.c:320
-msgid "Remmina Preferences"
-msgstr "Налаштування клієнта Remmina"
-
-#. Options tab
-#: ../src/remminaprefdialog.c:337
-msgid "Options"
-msgstr "Параметри"
-
-#: ../src/remminaprefdialog.c:352
-msgid "Remember last view mode for each connection"
-msgstr "Зберігати налаштування перегляду кожного з'єднання"
-
-#: ../src/remminaprefdialog.c:358
-msgid "Save settings when starting the connection"
-msgstr "При здійснення з'єднання зберегти налаштування"
-
-#: ../src/remminaprefdialog.c:364
-msgid "Invisible floating toolbar"
-msgstr "Спливаюча панель (як в Windows)"
-
-#: ../src/remminaprefdialog.c:377
-msgid "Always show tabs"
-msgstr "pFD;LB DSLJ,HF;FNB PFRKFLRB"
-
-#: ../src/remminaprefdialog.c:383
-msgid "Hide connection toolbar"
-msgstr "Не відображати панель з'єднання"
-
-#: ../src/remminaprefdialog.c:389
-msgid "Double-click action"
-msgstr "При подвійному натисканні:"
-
-#: ../src/remminaprefdialog.c:399
-msgid "Default view mode"
-msgstr "Основний режим перегляду"
-
-#: ../src/remminaprefdialog.c:409
-msgid "Tab interface"
-msgstr "Закладки"
-
-#: ../src/remminaprefdialog.c:419
-msgid "Scale quality"
-msgstr "Якість масштабування"
-
-#: ../src/remminaprefdialog.c:429
-msgid "SSH tunnel local port"
-msgstr "Локальний порт SSH-тунелю"
-
-#: ../src/remminaprefdialog.c:441
-msgid "Maximum recent items"
-msgstr "Кільксть останніх елементів"
-
-#: ../src/remminaprefdialog.c:457
-msgid "Clear"
-msgstr "Очистити"
-
-#. Resolutions tab
-#: ../src/remminaprefdialog.c:463
-msgid "Resolutions"
-msgstr "Роздільність"
-
-#. Applet tab
-#: ../src/remminaprefdialog.c:483
-msgid "Applet"
-msgstr "Аплет панелі GNOME"
-
-#: ../src/remminaprefdialog.c:498
-msgid "Show new connection on top of the menu"
-msgstr ""
-
-#: ../src/remminaprefdialog.c:504
-msgid "Hide total count in group menu"
-msgstr ""
-
-#: ../src/remminaprefdialog.c:510
-msgid "Disable tray icon"
-msgstr ""
-
-#: ../src/remminaprefdialog.c:516
-msgid "Start tray icon automatically"
-msgstr ""
-
-#: ../src/remminaprefdialog.c:523
-msgid "Minimize windows to tray"
-msgstr ""
-
-#. Keyboard tab
-#: ../src/remminaprefdialog.c:534
-msgid "Keyboard"
-msgstr "Клавіатура"
-
-#: ../src/remminaprefdialog.c:549
-msgid "Host key"
-msgstr "Host-клавіша"
-
-#: ../src/remminaprefdialog.c:569
-msgid "Auto-fit window"
-msgstr "Автоматично підібрати розмір"
-
-#: ../src/remminaprefdialog.c:608
-msgid "Grab keyboard"
-msgstr "Захват клавіатури"
-
-#: ../src/remminaprefdialog.c:638
-msgid "Show / hide toolbar"
-msgstr "Відображати / Сховати панель"
-
-#. Terminal tab
-#: ../src/remminaprefdialog.c:649
-msgid "Terminal"
-msgstr ""
-
-#: ../src/remminaprefdialog.c:664
-msgid "Font"
-msgstr ""
-
-#: ../src/remminaprefdialog.c:669
-msgid "Use system default font"
-msgstr ""
-
-#: ../src/remminaprefdialog.c:694
-msgid "Scrollback lines"
-msgstr ""
-
-#: ../src/remminassh.c:129
-#, c-format
-msgid "SSH password authentication failed: %s"
-msgstr "Аутентифікація за SSH-паролем не вдалася: %s"
-
-#: ../src/remminassh.c:149 ../src/remminassh.c:157 ../src/remminassh.c:168
-#: ../src/remminassh.c:178
-#, c-format
-msgid "SSH public key authentication failed: %s"
-msgstr "Аутентифікація за публічним SSH-ключем не вдалася: %s"
-
-#: ../src/remminassh.c:150
-msgid "SSH Key file not yet set."
-msgstr "Ключовий файл SSH ще не встановлено."
-
-#: ../src/remminassh.c:194
-#, c-format
-msgid "SSH automatic public key authentication failed: %s"
-msgstr "Автоматична аутентифікація за публічним SSH-ключем не вдалася: %s"
-
-#: ../src/remminassh.c:247
-#, c-format
-msgid "Authenticating %s's password to SSH server %s..."
-msgstr "Підключення з паролем %s до SSH-сервера %s…"
-
-#: ../src/remminassh.c:251
-#, c-format
-msgid "Authenticating %s's identity to SSH server %s..."
-msgstr "Перевірка автентичності %s на SSH-сервері %s…"
-
-#: ../src/remminassh.c:309
-#, c-format
-msgid "Failed to startup SSH session: %s"
-msgstr "Помилка при запуску SSH-сеансу: %s"
-
-#: ../src/remminassh.c:635
-#, c-format
-msgid "Failed to connect to the SSH tunnel destination: %s"
-msgstr "Помилка при підключенні до пункту призначення в SSH-тунелі: %s"
-
-#: ../src/remminassh.c:668
-#, c-format
-msgid "Failed to execute %s on SSH server : %%s"
-msgstr "Не вдалося виконати „%s“ на SSH-сервері: %%s"
-
-#: ../src/remminassh.c:705 ../src/remminassh.c:730
-#, c-format
-msgid "Failed to request port forwarding : %s"
-msgstr "Не вдалося запросити переадресацію порту: %s"
-
-#: ../src/remminassh.c:777
-msgid "No response from the server."
-msgstr "Немає відповіді від сервера."
-
-#: ../src/remminassh.c:1180
-#, c-format
-msgid "Failed to create sftp session: %s"
-msgstr "Не вдалося створити sftp-сесію: %s"
-
-#: ../src/remminassh.c:1185
-#, c-format
-msgid "Failed to initialize sftp session: %s"
-msgstr "Не вдалося ініціалізувати sftp-сесію: %s"
-
-#: ../src/remminasshplugin.c:351
-msgid "SSH - Secure Shell"
-msgstr "SSH — безпечна оболонка"
-
-#. Title
-#: ../src/remminachatwindow.c:175
+#: remmina/src/remmina_chat_window.c:178
 #, c-format
 msgid "Chat with %s"
 msgstr "Розмова з %s (текст)"
 
-#: ../src/remminachatwindow.c:227
+#: remmina/src/remmina_chat_window.c:226
 msgid "_Send"
 msgstr "_Надіслати"
 
-#: ../src/remminachatwindow.c:237
+#: remmina/src/remmina_chat_window.c:236
 msgid "_Clear"
 msgstr "_Очистити"
 
-#: ../src/remminaftpclient.c:456
+#: remmina/src/remmina_ftp_client.c:405
 msgid "Choose download location"
-msgstr "Завантажувати до ..."
+msgstr "Вибрати місце для звантаження"
 
-#: ../src/remminaftpclient.c:614
+#: remmina/src/remmina_ftp_client.c:543
 msgid "Are you sure to delete the selected files on server?"
-msgstr "Точно бажаєте видалити зазначені файли?"
+msgstr "Ви дійсно хочете видалити вибрані файли з сервера?"
 
-#: ../src/remminaftpclient.c:671
+#: remmina/src/remmina_ftp_client.c:600
 msgid "Choose a file to upload"
-msgstr "Оберіть файл для відвантаження"
+msgstr "Оберіть файл для вивантаження"
 
-#: ../src/remminaftpclient.c:682
+#: remmina/src/remmina_ftp_client.c:608
 msgid "Upload folder"
-msgstr "Тека для відвантаження"
+msgstr "Вивантажити теку"
 
-#: ../src/remminaftpclient.c:747 ../src/remminaftpclient.c:876
+#: remmina/src/remmina_ftp_client.c:668 remmina/src/remmina_ftp_client.c:796
 msgid "Download"
-msgstr "Завантаження"
+msgstr "Звантаження"
 
-#: ../src/remminaftpclient.c:755 ../src/remminaftpclient.c:887
+#: remmina/src/remmina_ftp_client.c:675 remmina/src/remmina_ftp_client.c:807
 msgid "Upload"
-msgstr "Відвантаження"
+msgstr "Вивантаження"
 
-#: ../src/remminaftpclient.c:857
+#: remmina/src/remmina_ftp_client.c:683
+msgid "_Delete"
+msgstr ""
+
+#: remmina/src/remmina_ftp_client.c:777
 msgid "Go to home folder"
-msgstr "Перейти до Домашньої папки"
+msgstr "Перейти до домашньої теки"
 
-#: ../src/remminaftpclient.c:864
+#: remmina/src/remmina_ftp_client.c:784
 msgid "Go to parent folder"
-msgstr "На одну папку вверх"
+msgstr "На одну теку вверх"
 
-#: ../src/remminaftpclient.c:871
+#: remmina/src/remmina_ftp_client.c:791
 msgid "Refresh current folder"
-msgstr "Оновити поточну папку"
+msgstr "Оновити поточну теку"
 
-#: ../src/remminaftpclient.c:878
+#: remmina/src/remmina_ftp_client.c:798
 msgid "Download from server"
-msgstr "Завантажити з сервера"
+msgstr "Звантажити з сервера"
 
-#: ../src/remminaftpclient.c:889
+#: remmina/src/remmina_ftp_client.c:809
 msgid "Upload to server"
-msgstr "Відвантажити на сервер"
+msgstr "Вивантажити на сервер"
 
-#: ../src/remminaftpclient.c:898
+#: remmina/src/remmina_ftp_client.c:818
 msgid "Delete files on server"
-msgstr "Видалити файли на сервері"
+msgstr "Видалити файли зі сервера"
 
-#: ../src/remminaftpclient.c:992 ../src/remminaftpclient.c:1064
+#: remmina/src/remmina_ftp_client.c:913 remmina/src/remmina_ftp_client.c:982
 msgid "File Name"
 msgstr "Назва файлу"
 
-#: ../src/remminaftpclient.c:1005 ../src/remminaftpclient.c:1094
+#: remmina/src/remmina_ftp_client.c:926 remmina/src/remmina_ftp_client.c:1011
 msgid "Size"
 msgstr "Розмір"
 
-#: ../src/remminaftpclient.c:1013
+#: remmina/src/remmina_ftp_client.c:934
 msgid "User"
 msgstr "Користувач"
 
-#: ../src/remminaftpclient.c:1027
+#: remmina/src/remmina_ftp_client.c:946
 msgid "Permission"
-msgstr "Права доступу"
+msgstr "Права"
 
-#: ../src/remminaftpclient.c:1080
+#: remmina/src/remmina_ftp_client.c:998 remmina-plugins/rdp/rdp_plugin.c:1099
 msgid "Remote"
 msgstr "Віддалений"
 
-#: ../src/remminaftpclient.c:1087
+#: remmina/src/remmina_ftp_client.c:1005 remmina-plugins/rdp/rdp_plugin.c:1095
 msgid "Local"
 msgstr "Локальний"
 
-#: ../src/remminaftpclient.c:1102
+#: remmina/src/remmina_ftp_client.c:1019
 msgid "Progress"
-msgstr "Виконання"
+msgstr "Хід виконання"
 
-#: ../src/remminasftpclient.c:144
+#: remmina/src/remmina_ssh.c:163
+#, c-format
+msgid "SSH password authentication failed: %s"
+msgstr "Аутентифікація за SSH-паролем не вдалася: %s"
+
+#: remmina/src/remmina_ssh.c:181 remmina/src/remmina_ssh.c:191
+#: remmina/src/remmina_ssh.c:200
+#, c-format
+msgid "SSH public key authentication failed: %s"
+msgstr "Аутентифікація за публічним SSH-ключем не вдалася: %s"
+
+#: remmina/src/remmina_ssh.c:182
+msgid "SSH Key file not yet set."
+msgstr "Ключовий файл SSH ще не встановлено."
+
+#: remmina/src/remmina_ssh.c:216
+#, c-format
+msgid "SSH automatic public key authentication failed: %s"
+msgstr "Автоматична аутентифікація за публічним SSH-ключем не вдалася: %s"
+
+#: remmina/src/remmina_ssh.c:327
+#, c-format
+msgid "Authenticating %s's password to SSH server %s..."
+msgstr "Підключення з паролем користувача %s до SSH-сервера %s…"
+
+#: remmina/src/remmina_ssh.c:328 remmina/src/remmina_protocol_widget.c:813
+msgid "SSH password"
+msgstr "Пароль SSH"
+
+#: remmina/src/remmina_ssh.c:331
+#, c-format
+msgid "Authenticating %s's identity to SSH server %s..."
+msgstr "Перевірка автентичності користувача %s на SSH-сервері %s…"
+
+#: remmina/src/remmina_ssh.c:332 remmina/src/remmina_protocol_widget.c:816
+msgid "SSH private key passphrase"
+msgstr "Ключова фраза закритого ключа SSH"
+
+#: remmina/src/remmina_ssh.c:390
+#, c-format
+msgid "Failed to startup SSH session: %s"
+msgstr "Помилка при запуску SSH-сеансу: %s"
+
+#: remmina/src/remmina_ssh.c:713
+#, c-format
+msgid "Failed to connect to the SSH tunnel destination: %s"
+msgstr "Помилка при підключенні до пункту призначення в SSH-тунелі: %s"
+
+#: remmina/src/remmina_ssh.c:746
+#, c-format
+msgid "Failed to execute %s on SSH server : %%s"
+msgstr "Не вдалося виконати „%s“ на SSH-сервері: %%s"
+
+#: remmina/src/remmina_ssh.c:783 remmina/src/remmina_ssh.c:808
+#, c-format
+msgid "Failed to request port forwarding : %s"
+msgstr "Не вдалося запросити переадресацію порту: %s"
+
+#: remmina/src/remmina_ssh.c:855
+msgid "No response from the server."
+msgstr "Немає відповіді від сервера."
+
+#: remmina/src/remmina_ssh.c:1258
+#, c-format
+msgid "Failed to create sftp session: %s"
+msgstr "Не вдалося створити sftp-сесію: %s"
+
+#: remmina/src/remmina_ssh.c:1263
+#, c-format
+msgid "Failed to initialize sftp session: %s"
+msgstr "Не вдалося ініціалізувати sftp-сесію: %s"
+
+#: remmina/src/remmina_applet_menu_item.c:105
+msgid "Discovered"
+msgstr "Виявлено"
+
+#: remmina/src/remmina_applet_menu_item.c:110
+msgid "New Connection"
+msgstr "Нове з’єднання"
+
+#: remmina/src/remmina_plugin_manager.c:54
+msgid "Entry"
+msgstr "Запис"
+
+#: remmina/src/remmina_plugin_manager.c:54
+msgid "File"
+msgstr "Файл"
+
+#: remmina/src/remmina_plugin_manager.c:54
+msgid "Tool"
+msgstr "Інструмент"
+
+#: remmina/src/remmina_plugin_manager.c:54
+msgid "Preference"
+msgstr "Налаштування"
+
+#: remmina/src/remmina_plugin_manager.c:54
+msgid "Secret"
+msgstr "Таємно"
+
+#: remmina/src/remmina_plugin_manager.c:257 remmina/src/remmina_main.c:875
+msgid "Plugins"
+msgstr "Додатки"
+
+#: remmina/src/remmina_plugin_manager.c:281
+#: remmina-plugins/nx/nx_session_manager.c:178
+msgid "Type"
+msgstr "Тип"
+
+#: remmina/src/remmina_plugin_manager.c:287
+msgid "Description"
+msgstr "Опис"
+
+#: remmina/src/remmina_plugin_manager.c:293
+msgid "Version"
+msgstr "Версія"
+
+#: remmina/src/remmina_ssh_plugin.c:325
+msgid "SSH - Secure Shell"
+msgstr "SSH — безпечна оболонка"
+
+#: remmina/src/remmina_main.c:464
+#, c-format
+msgid "Total %i item."
+msgid_plural "Total %i items."
+msgstr[0] "Усього %i підключення."
+msgstr[1] "Усього %i підключення."
+msgstr[2] "Усього %i підключень."
+
+#: remmina/src/remmina_main.c:535
+#, c-format
+msgid "Are you sure to delete '%s'"
+msgstr "Впевнені, що бажаєте видалити „%s“?"
+
+#: remmina/src/remmina_main.c:694
+#, c-format
+msgid ""
+"Unable to import:\n"
+"%s"
+msgstr ""
+"Неможливо імпортувати:\n"
+"%s"
+
+#: remmina/src/remmina_main.c:721 remmina/src/remmina_main.c:873
+msgid "Import"
+msgstr "Імпортувати"
+
+#: remmina/src/remmina_main.c:754
+msgid "This protocol does not support exporting."
+msgstr "Цей протокол не підтримує експорт."
+
+#: remmina/src/remmina_main.c:859
+msgid "_Connection"
+msgstr "_З’єднання"
+
+#: remmina/src/remmina_main.c:860
+msgid "_Edit"
+msgstr "_Правка"
+
+#: remmina/src/remmina_main.c:861
+msgid "_View"
+msgstr "_Вигляд"
+
+#: remmina/src/remmina_main.c:862
+msgid "_Tools"
+msgstr "_Інструменти"
+
+#: remmina/src/remmina_main.c:863
+msgid "_Help"
+msgstr "_Довідка"
+
+#: remmina/src/remmina_main.c:865
+msgid "Create a new remote desktop file"
+msgstr "Створити нове підключення до віддаленого робочого столу"
+
+#: remmina/src/remmina_main.c:868
+msgid "Open the preferences dialog"
+msgstr "Відкрити діалог для налаштування програми"
+
+#: remmina/src/remmina_main.c:877
+msgid "Homepage"
+msgstr "Домашня сторінка"
+
+#: remmina/src/remmina_main.c:879
+msgid "Online Wiki"
+msgstr "База знань (Wiki) в Інтернет"
+
+#: remmina/src/remmina_main.c:881
+msgid "Debug Window"
+msgstr "Вікно налагодження"
+
+#: remmina/src/remmina_main.c:887
+msgid "Open the connection to the selected remote desktop file"
+msgstr "Відкрити вибране віддалене підключення"
+
+#: remmina/src/remmina_main.c:890
+msgid "Create a copy of the selected remote desktop file"
+msgstr "Створити копію обраного підключення до віддаленого робочого столу"
+
+#: remmina/src/remmina_main.c:893
+msgid "Edit the selected remote desktop file"
+msgstr "Редагувати властивості обраного віддаленого підключення"
+
+#: remmina/src/remmina_main.c:896
+msgid "Delete the selected remote desktop file"
+msgstr "Видалити обраний файл віддаленого підключення"
+
+#: remmina/src/remmina_main.c:899
+msgid "Export"
+msgstr "Експорт"
+
+#: remmina/src/remmina_main.c:901
+msgid "External Tools"
+msgstr ""
+
+#: remmina/src/remmina_main.c:908
+msgid "Toolbar"
+msgstr "Панель інструментів"
+
+#: remmina/src/remmina_main.c:910
+msgid "Statusbar"
+msgstr "Рядок стану"
+
+#: remmina/src/remmina_main.c:912
+msgid "Quick Search"
+msgstr "Швидкий пошук"
+
+#: remmina/src/remmina_main.c:914
+msgid "Small Toolbar Buttons"
+msgstr "Маленькі кнопки панелі інструментів"
+
+#: remmina/src/remmina_main.c:919
+msgid "List View"
+msgstr "У вигляді списку"
+
+#: remmina/src/remmina_main.c:920
+msgid "Tree View"
+msgstr "У вигляді дерева"
+
+#: remmina/src/remmina_main.c:1156 remmina/src/remmina_icon.c:422
+#: remmina/src/remmina_icon.c:423
+msgid "Remmina Remote Desktop Client"
+msgstr "Клієнт віддаленого робочого столу Remmina"
+
+#: remmina/src/remmina_main.c:1262
+msgid "Connect !"
+msgstr ""
+
+#: remmina/src/remmina_sftp_plugin.c:258
+msgid "Show Hidden Files"
+msgstr "Показувати приховані файли"
+
+#: remmina/src/remmina_sftp_plugin.c:266
+msgid "SFTP - Secure File Transfer"
+msgstr "SFTP — Захищена передача файлів"
+
+#: remmina/src/remmina_sftp_client.c:168
 #, c-format
 msgid "Error creating directory %s."
-msgstr "При створенні папки %s виникла помилка."
+msgstr "Помилка створення теки %s."
 
-#: ../src/remminasftpclient.c:155
-#, c-format
-msgid "Error opening file %s on server. %s"
-msgstr "Помилка при відкритті файлу %s з сервера. %s"
-
-#: ../src/remminasftpclient.c:163
+#: remmina/src/remmina_sftp_client.c:176 remmina/src/remmina_sftp_client.c:201
 #, c-format
 msgid "Error creating file %s."
-msgstr "Помилка при створенні файлу %s."
+msgstr "Помилка створення файлу %s."
 
-#: ../src/remminasftpclient.c:175
+#: remmina/src/remmina_sftp_client.c:219
+#, c-format
+msgid "Error opening file %s on server. %s"
+msgstr "Помилка відкриття файлу %s на сервері %s"
+
+#: remmina/src/remmina_sftp_client.c:245
 #, c-format
 msgid "Error writing file %s."
 msgstr "Помилка при записі файлу %s."
 
-#: ../src/remminasftpclient.c:218
+#: remmina/src/remmina_sftp_client.c:288
 #, c-format
 msgid "Error opening directory %s. %s"
-msgstr "Помилка при відкритті теки %s. %s"
+msgstr "Помилка відкриття теки %s. %s"
 
-#: ../src/remminasftpclient.c:339
+#: remmina/src/remmina_sftp_client.c:409
 #, c-format
 msgid "Error creating folder %s on server. %s"
-msgstr "Помилка при створенні теки %s на сервері. %s"
+msgstr "Помилка створення теки %s на сервері. %s"
 
-#: ../src/remminasftpclient.c:364
+#: remmina/src/remmina_sftp_client.c:437 remmina/src/remmina_sftp_client.c:465
 #, c-format
 msgid "Error creating file %s on server. %s"
-msgstr "Помилка при створенні файлу %s на сервері. %s"
+msgstr "Помилка створення файлу %s на сервері. %s"
 
-#: ../src/remminasftpclient.c:372
+#: remmina/src/remmina_sftp_client.c:488
 #, c-format
 msgid "Error opening file %s."
-msgstr "Помилка при відкритті файлу %s."
+msgstr "Помилка відкриття файлу %s."
 
-#: ../src/remminasftpclient.c:384
+#: remmina/src/remmina_sftp_client.c:512
 #, c-format
 msgid "Error writing file %s on server. %s"
-msgstr "Помилка при записі файлу %s на сервері. %s"
+msgstr "Помилка запису файла %s на сервері. %s"
 
-#: ../src/remminasftpclient.c:607 ../src/remminasftpclient.c:678
+#: remmina/src/remmina_sftp_client.c:735 remmina/src/remmina_sftp_client.c:806
 #, c-format
 msgid "Failed to open directory %s. %s"
-msgstr "Не вдалося відкрити теку %s. %s"
+msgstr "Помилка відкриття теки %s. %s"
 
-#: ../src/remminasftpclient.c:625
+#: remmina/src/remmina_sftp_client.c:753
 #, c-format
 msgid "Failed reading directory. %s"
-msgstr "Помилка при читанні теки. %s"
+msgstr "Помилка читання теки. %s"
 
-#: ../src/remminasftpclient.c:743
+#: remmina/src/remmina_sftp_client.c:871
 msgid ""
 "File transfer currently in progress.\n"
 "Are you sure to cancel it?"
 msgstr ""
-"В даний момент відбувається передача файлів.\n"
-"Точно бажаєте скасувати?"
+"Наразі ще відбувається передача файлів.\n"
+" Ви дійсно хочете скасувати її?"
 
-#: ../src/remminasftpclient.c:779
+#: remmina/src/remmina_sftp_client.c:907
 #, c-format
 msgid "Failed to delete '%s'. %s"
-msgstr "Не вдалося вилучити „%s“. %s"
+msgstr "Помилка видалення теки „%s“. %s"
 
-#: ../src/remminasftpplugin.c:244
-msgid "Show Hidden Files"
-msgstr ""
+#: remmina/src/remmina_sftp_client.c:963
+msgid "File exists"
+msgstr "Файл вже існує"
 
-#: ../src/remminasftpplugin.c:252
-msgid "SFTP - Secure File Transfer"
-msgstr "SFTP - Безпечна передача файлів"
+#: remmina/src/remmina_sftp_client.c:966
+msgid "Resume"
+msgstr "Поновити"
 
-#: ../src/remminascaler.c:62
-msgid "Fit window size"
-msgstr "Уміщати в вікні"
+#: remmina/src/remmina_sftp_client.c:967
+msgid "Overwrite"
+msgstr "Перезаписати"
 
-#: ../src/remminapluginmanager.c:39
-msgid "Entry"
-msgstr "Запис"
+#: remmina/src/remmina_sftp_client.c:993
+msgid "The following file already exists in the target folder:"
+msgstr "Наступний файл вже існує в цільовій папці:"
 
-#: ../src/remminapluginmanager.c:40
-msgid "File"
-msgstr "Файл"
-
-#: ../src/remminapluginmanager.c:41
-msgid "Tool"
-msgstr "Інструмент"
-
-#: ../src/remminapluginmanager.c:42
-msgid "Preference"
-msgstr "Налаштування"
-
-#: ../src/remminapluginmanager.c:266
-msgid "Type"
-msgstr "Тип"
-
-#: ../src/remminapluginmanager.c:273
-msgid "Description"
-msgstr "Опис"
-
-#: ../src/remminapluginmanager.c:280
-msgid "Version"
-msgstr ""
-
-#: ../src/remminakeychooser.c:43
-msgid "<None>"
-msgstr "Не обрано"
-
-#: ../src/remminakeychooser.c:71
-msgid "Choose a new key"
-msgstr "Оберіть новий ключ"
-
-#: ../src/remminakeychooser.c:85
-msgid "Please press the new key..."
-msgstr "Натисніть нову клавішу для вибору ...."
-
-#: ../src/remminaexec.c:105
+#: remmina/src/remmina_protocol_widget.c:124
 #, c-format
-msgid "Plugin %s is not registered."
-msgstr "Модуль %s не зареєстровано."
+msgid "Connecting to '%s'..."
+msgstr "Встановлення з’єднання з '%s'…"
 
-#: ../src/remminaicon.c:107
+#: remmina/src/remmina_protocol_widget.c:201
+#, c-format
+msgid "Protocol plugin %s is not installed."
+msgstr "Додаток для протоколу %s не встановлений."
+
+#: remmina/src/remmina_protocol_widget.c:240
+msgid "Open Secure Shell in New Terminal..."
+msgstr "Відкрити захищену оболонку SSH в новому терміналі…"
+
+#: remmina/src/remmina_protocol_widget.c:246
+msgid "Open Secure File Transfer..."
+msgstr "Розпочати захищену передачу файлів (SFTP)..."
+
+#: remmina/src/remmina_protocol_widget.c:458
+#, c-format
+msgid "Connecting to SSH server %s..."
+msgstr "Встановлюється з’єднання з SSH-сервером %s…"
+
+#: remmina/src/remmina_protocol_widget.c:523
+#: remmina/src/remmina_protocol_widget.c:688
+#, c-format
+msgid "Connecting to %s through SSH tunnel..."
+msgstr "Підключення до %s через SSH-тунель…"
+
+#: remmina/src/remmina_protocol_widget.c:566
+#, c-format
+msgid "Waiting for an incoming SSH tunnel at port %i..."
+msgstr "Очікування вхідного SSH-тунелю на порті %i…"
+
+#: remmina/src/remmina_protocol_widget.c:614
+#, c-format
+msgid "Command %s not found on SSH server"
+msgstr "Команда „%s“ не знайдена на SSH-сервері"
+
+#: remmina/src/remmina_protocol_widget.c:618
+#, c-format
+msgid "Command %s failed on SSH server (status = %i)."
+msgstr "Команда „%s“ завершилася помилкою на SSH-сервері (статус = %i)."
+
+#: remmina/src/remmina_protocol_widget.c:629
+#, c-format
+msgid "Failed to execute command: %s"
+msgstr "Помилка при виконанні команди: %s"
+
+#: remmina/src/remmina_protocol_widget.c:810
+#, c-format
+msgid "%s password"
+msgstr "%s Пароль"
+
+#: remmina/src/remmina_protocol_widget.c:964
+#, c-format
+msgid "Listening on port %i for an incoming %s connection..."
+msgstr "Прослуховування порту %i на вхідне %s підключення…"
+
+#: remmina/src/remmina_protocol_widget.c:971
+msgid "Authentication failed. Trying to reconnect..."
+msgstr "Помилка при перевірці прав доступу. Ще одна спроба…"
+
+#: remmina/src/remmina_icon.c:127
 msgid "Open Main Window"
 msgstr "Відкрити головне вікно"
 
-#: ../src/remminaicon.c:129
-msgid "Enable Service Discovery"
-msgstr "Ввімкнути службу пошуку серверів"
-
-#. Refresh it in case translation is updated
-#: ../src/remminaicon.c:342 ../src/remminaicon.c:421
-msgid "Remmina Applet"
+#: remmina/src/remmina_icon.c:133
+msgid "_Preferences"
 msgstr ""
 
-#: ../src/remminaicon.c:343 ../src/remminaicon.c:422
+#: remmina/src/remmina_icon.c:139
+msgid "_About"
+msgstr ""
+
+#: remmina/src/remmina_icon.c:149
+msgid "Enable Service Discovery"
+msgstr "Ввімкнути службу виявлення серверів"
+
+#: remmina/src/remmina_icon.c:164
+msgid "_Quit"
+msgstr ""
+
+#: remmina/src/remmina_icon.c:395 remmina/src/remmina_icon.c:488
+msgid "Remmina Applet"
+msgstr "Апплет Remmina"
+
+#: remmina/src/remmina_icon.c:397 remmina/src/remmina_icon.c:490
 msgid "Connect to remote desktops through the applet menu"
-msgstr "Приєднуватись до відділених робочих столів через Аплет панелі"
+msgstr "Приєднуватись до віддалених робочих столів через меню аплету"
 
-#: ../src/remminaappletmenuitem.c:92
-msgid "Discovered"
-msgstr "Знайдено"
+#: remmina/src/remmina_exec.c:125
+#, c-format
+msgid "Plugin %s is not registered."
+msgstr "Додаток %s не зареєстровано."
 
-#: ../src/remminaappletmenuitem.c:97
-msgid "New Connection"
-msgstr "Нове з'єднання"
+#: remmina/src/remmina_init_dialog.c:220
+#, c-format
+msgid "Save %s"
+msgstr "Зберегти %s"
+
+#: remmina/src/remmina_init_dialog.c:313 remmina-plugins/rdp/rdp_plugin.c:1117
+msgid "Domain"
+msgstr "Домен"
+
+#: remmina/src/remmina_init_dialog.c:328
+msgid "Save password"
+msgstr "Запам'ятати пароль"
+
+#: remmina/src/remmina_init_dialog.c:383
+msgid "Certificate Details:"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:396 remmina/src/remmina_init_dialog.c:473
+msgid "Subject:"
+msgstr "Суб’єкт"
+
+#: remmina/src/remmina_init_dialog.c:406 remmina/src/remmina_init_dialog.c:484
+msgid "Issuer:"
+msgstr "Джерело:"
+
+#: remmina/src/remmina_init_dialog.c:416
+msgid "Fingerprint:"
+msgstr "Відбиток пальця:"
+
+#: remmina/src/remmina_init_dialog.c:427
+msgid "Accept Certificate?"
+msgstr "Прийняти сертифікат?"
+
+#: remmina/src/remmina_init_dialog.c:460
+msgid "Certificate Changed! Details:"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:494
+msgid "Old Fingerprint:"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:504
+msgid "New Fingerprint:"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:515
+msgid "Accept Changed Certificate?"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:596
+msgid "CA certificate"
+msgstr "Сертифікат CA"
+
+#: remmina/src/remmina_init_dialog.c:597
+msgid "CA CRL"
+msgstr "CA CRL"
+
+#: remmina/src/remmina_init_dialog.c:598
+msgid "Client certificate"
+msgstr "Клієнтський сертифікат"
+
+#: remmina/src/remmina_init_dialog.c:599
+msgid "Client key"
+msgstr "Клієнтський ключ"
+
+#: remmina/src/remmina_init_dialog.c:655
+msgid "Do you trust the new public key?"
+msgstr "Ви довіряєте новому публічному ключу?"
+
+#: remmina/src/remmina_init_dialog.c:678
+msgid "The server is unknown. The public key fingerprint is:"
+msgstr "Невідомий сервер. Відкритий ключ відбитків пальців:"
+
+#: remmina/src/remmina_init_dialog.c:684
+msgid ""
+"WARNING: The server has changed its public key. This means either you are "
+"under attack,\n"
+"or the administrator has changed the key. The new public key fingerprint is:"
+msgstr ""
+"УВАГА: Сервер змінив свій відкритий ключ. Це означає, що ви перебуваєте під "
+"атакою,\n"
+"або адміністратор змінив ключ. Новий відкритий ключ відбитків пальців:"
+
+#: remmina/src/remmina_connection_window.c:247
+#, c-format
+msgid ""
+"There are %i active connections in the current window. Are you sure to close?"
+msgstr ""
+"У цьому вікні відкрито %i активних з’єднань. \r\n"
+"Впевнені, що потрібно вийти?"
+
+#: remmina/src/remmina_connection_window.c:667
+msgid "Viewport fullscreen mode"
+msgstr "Повноекранний режим"
+
+#: remmina/src/remmina_connection_window.c:677
+msgid "Scrolled fullscreen mode"
+msgstr "Повноекранний режим з прокруткою"
+
+#: remmina/src/remmina_connection_window.c:1260
+msgid "Resize the window to fit in remote resolution"
+msgstr ""
+"Розтягнути вікно відповідно до роздільної здатності віддаленого комп’ютера"
+
+#: remmina/src/remmina_connection_window.c:1353
+msgid "Grab all keyboard events"
+msgstr "Передавати на віддалений комп’ютер будь-яке натискання клавіш"
+
+#: remmina/src/remmina_connection_window.c:1362
+msgid "Preferences"
+msgstr "Налаштування"
+
+#: remmina/src/remmina_connection_window.c:1370
+#: remmina/src/remmina_connection_window.c:1371
+msgid "Tools"
+msgstr "Інструменти"
+
+#: remmina-plugins/vnc/vnc_plugin.c:984
+msgid "Unable to connect to VNC server"
+msgstr "При з’єднанні з VNC-сервером виникла помилка"
+
+#: remmina-plugins/vnc/vnc_plugin.c:985
+#, c-format
+msgid "Couldn't convert '%s' to host address"
+msgstr "Неможливо визначити ІР адресу сервера '%s'"
+
+#: remmina-plugins/vnc/vnc_plugin.c:986
+#, c-format
+msgid "VNC connection failed: %s"
+msgstr "Помилка VNC-з’єднання: %s"
+
+#: remmina-plugins/vnc/vnc_plugin.c:987
+msgid "Your connection has been rejected."
+msgstr "Вам відмовлено у з’єднанні"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1915
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:341
+msgid "256 colors"
+msgstr "256 кольорів"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1915
+msgid "High color (15 bit)"
+msgstr "Середній колір (15 bit)"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1915
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:341
+msgid "High color (16 bit)"
+msgstr "Якісний колір (16bit)"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1916
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:342
+msgid "True color (24 bit)"
+msgstr "Справжній колір (24 bit)"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1919 remmina-plugins/rdp/rdp_plugin.c:1085
+#: remmina-plugins/rdp/rdp_settings.c:194 remmina-plugins/nx/nx_plugin.c:620
+msgid "Poor (fastest)"
+msgstr "Низька якість (найшвидше)"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1919 remmina-plugins/rdp/rdp_plugin.c:1086
+#: remmina-plugins/rdp/rdp_settings.c:196 remmina-plugins/nx/nx_plugin.c:620
+msgid "Medium"
+msgstr "Середня"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1919 remmina-plugins/rdp/rdp_plugin.c:1087
+#: remmina-plugins/rdp/rdp_settings.c:198 remmina-plugins/nx/nx_plugin.c:620
+msgid "Good"
+msgstr "Працездатна"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1919 remmina-plugins/rdp/rdp_plugin.c:1088
+#: remmina-plugins/rdp/rdp_settings.c:200 remmina-plugins/nx/nx_plugin.c:620
+msgid "Best (slowest)"
+msgstr "Найкраще (найповільніше)"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1925
+msgid "Repeater"
+msgstr "Ретранслятор"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1929 remmina-plugins/vnc/vnc_plugin.c:1943
+#: remmina-plugins/rdp/rdp_plugin.c:1119
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:348
+msgid "Color depth"
+msgstr "Глибина кольору"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1930 remmina-plugins/vnc/vnc_plugin.c:1944
+#: remmina-plugins/rdp/rdp_plugin.c:1126 remmina-plugins/nx/nx_plugin.c:629
+msgid "Quality"
+msgstr "Якість"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1931 remmina-plugins/vnc/vnc_plugin.c:1945
+msgid "Show remote cursor"
+msgstr "Відображати курсор робочого столу віддаленого комп’ютера"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1932 remmina-plugins/vnc/vnc_plugin.c:1946
+#: remmina-plugins/vnc/vnc_plugin.c:1963
+msgid "View only"
+msgstr "Лише перегляд"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1933 remmina-plugins/vnc/vnc_plugin.c:1947
+#: remmina-plugins/rdp/rdp_plugin.c:1134 remmina-plugins/nx/nx_plugin.c:635
+msgid "Disable clipboard sync"
+msgstr "Не використовувати синхронізацію буферів обміну"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1934 remmina-plugins/vnc/vnc_plugin.c:1948
+#: remmina-plugins/nx/nx_plugin.c:636
+msgid "Disable encryption"
+msgstr "Вимкнути шифрування"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1935 remmina-plugins/vnc/vnc_plugin.c:1949
+#: remmina-plugins/vnc/vnc_plugin.c:1965
+msgid "Disable server input"
+msgstr "Блокувати управління на віддаленому комп’ютері"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1940
+msgid "Listen on port"
+msgstr "Приймати з’єднання на порт"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1966 remmina-plugins/rdp/rdp_plugin.c:1141
+msgid "Refresh"
+msgstr "Оновити"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1967
+msgid "Open Chat..."
+msgstr "Розпочати розмову (текст)…"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1973
+msgid "VNC - Virtual Network Computing"
+msgstr "VNC — Віртуальне мережеве з’єднання (Virtual Network Computing)"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1982
+msgid "VNC - Incoming Connection"
+msgstr "VNC - Вхідне з'єднання"
+
+#: remmina-plugins/rdp/rdp_plugin.c:890
+#, c-format
+msgid ""
+"Authentication to RDP server %s failed.\n"
+"Check username, password and domain."
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_plugin.c:896
+#, c-format
+msgid "Connection to RDP server %s failed."
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_plugin.c:899
+#, c-format
+msgid "Unable to connect to RDP server %s"
+msgstr "При з’єнанні з Windows RDP сервером %s виникла помилка"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1074
+msgid "256 colors (8 bpp)"
+msgstr "256 кольорів (8 bpp)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1075
+msgid "High color (15 bpp)"
+msgstr "Якісний колір (15dpp)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1076
+msgid "High color (16 bpp)"
+msgstr "Якісний колір (16dpp)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1077
+msgid "True color (24 bpp)"
+msgstr "Справжній нолір (24 bpp)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1078
+msgid "True color (32 bpp)"
+msgstr "Справжній колір (34 bpp)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1079
+msgid "RemoteFX (32 bpp)"
+msgstr "bВіддалений FX (32 bpp)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1094
+msgid "Off"
+msgstr "Вимкнути"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1096
+msgid "Local - low quality"
+msgstr "Місцевий - низька якість"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1097
+msgid "Local - medium quality"
+msgstr "Місцевий - середня якість"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1098
+msgid "Local - high quality"
+msgstr "Місцевий - висока якість"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1105
+msgid "Negotiate"
+msgstr "Вести переговори"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1120
+msgid "Share folder"
+msgstr "Спільний доступ до теки"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1127
+msgid "Sound"
+msgstr "Звук"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1128
+msgid "Security"
+msgstr "Захист"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1129
+msgid "Client name"
+msgstr "Ім’я клієнта"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1132
+msgid "Share local printers"
+msgstr "Підключати локальні принтери"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1133
+msgid "Share smartcard"
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_plugin.c:1135
+msgid "Attach to console (Windows 2003 / 2003 R2)"
+msgstr "Прикріпити до консолі (Windows 2003 / 2003 R2)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1151
+msgid "RDP - Remote Desktop Protocol"
+msgstr "RDP - Remote Desktop Protocol"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1173
+msgid "RDP - RDP File Handler"
+msgstr "RDP — Файли типу RDP"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1188
+msgid "RDP - Preferences"
+msgstr "RDP - Налаштування"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1206
+msgid "Export connection in Windows .rdp file format"
+msgstr "Експортувати ці налаштування у файл .rdp (для використання у Windows)"
+
+#: remmina-plugins/rdp/rdp_settings.c:161
+msgid "<Auto detect>"
+msgstr "<Автоматичний пошук>"
+
+#: remmina-plugins/rdp/rdp_settings.c:280
+msgid "Keyboard layout"
+msgstr "Розкладка клавіатури"
+
+#: remmina-plugins/rdp/rdp_settings.c:303
+msgid "Use client keyboard mapping"
+msgstr "Використовувати розкладку клавіатури кілєнта"
+
+#: remmina-plugins/rdp/rdp_settings.c:313
+msgid "Quality option"
+msgstr "Налаштування якості"
+
+#: remmina-plugins/rdp/rdp_settings.c:332
+msgid "Wallpaper"
+msgstr "Шпалери"
+
+#: remmina-plugins/rdp/rdp_settings.c:339
+msgid "Window drag"
+msgstr "Перетягнути вікно"
+
+#: remmina-plugins/rdp/rdp_settings.c:346
+msgid "Menu animation"
+msgstr "Анімація меню"
+
+#: remmina-plugins/rdp/rdp_settings.c:353
+msgid "Theme"
+msgstr "Тема"
+
+#: remmina-plugins/rdp/rdp_settings.c:360
+msgid "Cursor shadow"
+msgstr "Тінь курсора"
+
+#: remmina-plugins/rdp/rdp_settings.c:367
+msgid "Cursor blinking"
+msgstr "Блимання курсора"
+
+#: remmina-plugins/rdp/rdp_settings.c:374
+msgid "Font smoothing"
+msgstr "Згладжування шрифту"
+
+#: remmina-plugins/rdp/rdp_settings.c:381
+msgid "Composition"
+msgstr "Композиція"
+
+#: remmina-plugins/telepathy/telepathy_channel_handler.c:246
+#, c-format
+msgid ""
+"%s wants to share his/her desktop.\n"
+"Do you accept the invitation?"
+msgstr ""
+"%s бажає надати Вам доступ до робочого столу свого комп’ютера.\n"
+"Бажаєте прийняти запрошення?"
+
+#: remmina-plugins/telepathy/telepathy_channel_handler.c:249
+msgid "Desktop sharing invitation"
+msgstr "Запрошення спільного використання робочого столу комп'ютера"
+
+#: remmina-plugins/telepathy/telepathy_plugin.c:51
+msgid "Telepathy - Desktop Sharing"
+msgstr "Telepathy — Надання доступу до робочого столу комп’ютера"
+
+#: remmina-plugins/nx/nx_session_manager.c:106
+msgid "Terminating"
+msgstr "Відміняється"
+
+#: remmina-plugins/nx/nx_session_manager.c:140
+#, c-format
+msgid "NX Sessions on %s"
+msgstr "Сеанси NX на %s"
+
+#: remmina-plugins/nx/nx_session_manager.c:145
+msgid "Attach"
+msgstr "Долучити"
+
+#: remmina-plugins/nx/nx_session_manager.c:149
+msgid "Restore"
+msgstr "Відновити"
+
+#: remmina-plugins/nx/nx_session_manager.c:150
+msgid "Start"
+msgstr "Пуск"
+
+#: remmina-plugins/nx/nx_session_manager.c:154
+msgid "Terminate"
+msgstr "Перервати"
+
+#: remmina-plugins/nx/nx_session_manager.c:185
+msgid "Display"
+msgstr "Дисплей"
+
+#: remmina-plugins/nx/nx_session_manager.c:192
+msgid "Status"
+msgstr "Статус"
+
+#: remmina-plugins/nx/nx_plugin.c:637 remmina-plugins/xdmcp/xdmcp_plugin.c:350
+msgid "Use local cursor"
+msgstr "Використовувати курсор свого комп’ютера"
+
+#: remmina-plugins/nx/nx_plugin.c:641
+msgid "NX - NX Technology"
+msgstr "Технологія NX - NX"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:341
+msgid "Grayscale"
+msgstr "Тони сірого"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:351
+msgid "Disconnect after one session"
+msgstr "Роз’єднати після одного з’єднання"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:355
+msgid "XDMCP - X Remote Session"
+msgstr "XDMCP — Віддалений вхід у графічне середовище"
+
+#~ msgid ""
+#~ "You should have received a copy of the GNU General Public License along "
+#~ "with this program; if not, write to the Free Software Foundation, Inc., "
+#~ "59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.In addition, as a "
+#~ "special exception, the copyright holders give permission to link the code "
+#~ "of portions of this program with the OpenSSL library under certain "
+#~ "conditions as described in each individual source file, and distribute "
+#~ "linked combinations including the two. You must obey the GNU General "
+#~ "Public License in all respects for all of the code used other than "
+#~ "OpenSSL. If you modify file(s) with this exception, you may extend this "
+#~ "exception to your version of the file(s), but you are not obligated to do "
+#~ "so. If you do not wish to do so, delete this exception statement from "
+#~ "your version. If you delete this exception statement from all source "
+#~ "files in the program, then also delete it here. "
+#~ msgstr ""
+#~ "Ви повинні були отримати копію ліцензії GNU General Public License разом "
+#~ "з цією програмою, якщо цього не сталося, то напишіть за адресою Free "
+#~ "Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA "
+#~ "02111-1307, USA.In addition, as a special exception, the copyright "
+#~ "holders give permission to link the code of portions of this program with "
+#~ "the OpenSSL library under certain conditions as described in each "
+#~ "individual source file, and distribute linked combinations including the "
+#~ "two. You must obey the GNU General Public License in all respects for all "
+#~ "of the code used other than OpenSSL. If you modify file(s) with this "
+#~ "exception, you may extend this exception to your version of the file(s), "
+#~ "but you are not obligated to do so. If you do not wish to do so, delete "
+#~ "this exception statement from your version. If you delete this exception "
+#~ "statement from all source files in the program, then also delete it here. "
+
+#~ msgid "Invisible floating toolbar"
+#~ msgstr "Спливаюча панель (як в Windows)"
+
+#~ msgid "Hide connection toolbar"
+#~ msgstr "Не відображати панель з'єднання"
+
+#~ msgid "SSH Server"
+#~ msgstr "Сервер SSH"

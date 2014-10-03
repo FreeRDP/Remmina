@@ -175,6 +175,7 @@ typedef struct _RemminaPluginService
     gchar*       (* protocol_plugin_init_get_username)    (RemminaProtocolWidget *gp);
     gchar*       (* protocol_plugin_init_get_password)    (RemminaProtocolWidget *gp);
     gchar*       (* protocol_plugin_init_get_domain)      (RemminaProtocolWidget *gp);
+    gboolean     (* protocol_plugin_init_get_savepassword) (RemminaProtocolWidget *gp);
     gint         (* protocol_plugin_init_authx509)        (RemminaProtocolWidget *gp);
     gchar*       (* protocol_plugin_init_get_cacert)      (RemminaProtocolWidget *gp);
     gchar*       (* protocol_plugin_init_get_cacrl)       (RemminaProtocolWidget *gp);
@@ -199,6 +200,7 @@ typedef struct _RemminaPluginService
     gchar*       (* file_get_secret)                      (RemminaFile *remminafile, const gchar *setting);
     void         (* file_set_int)                         (RemminaFile *remminafile, const gchar *setting, gint value);
     gint         (* file_get_int)                         (RemminaFile *remminafile, const gchar *setting, gint default_value);
+    void         (* file_unsave_password)                 (RemminaFile *remminafile);
 
     void         (* pref_set_value)                       (const gchar *key, const gchar *value);
     gchar*       (* pref_get_value)                       (const gchar *key);

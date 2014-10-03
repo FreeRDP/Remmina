@@ -47,7 +47,7 @@ G_BEGIN_DECLS
 
 typedef struct _RemminaChainButton
 {
-    GtkTable table;
+    GtkGrid table;
 
     gboolean chained;
     GtkWidget* chain_image;
@@ -55,7 +55,7 @@ typedef struct _RemminaChainButton
 
 typedef struct _RemminaChainButtonClass
 {
-    GtkTableClass parent_class;
+    GtkGridClass parent_class;
 
     void (* chain_toggled) (RemminaChainButton* cb);
 } RemminaChainButtonClass;

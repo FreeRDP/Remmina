@@ -38,7 +38,7 @@
 #include "remmina_public.h"
 #include "remmina_string_list.h"
 
-G_DEFINE_TYPE( RemminaStringList, remmina_string_list, GTK_TYPE_TABLE)
+G_DEFINE_TYPE( RemminaStringList, remmina_string_list, GTK_TYPE_GRID)
 
 #define ERROR_COLOR "red"
 
@@ -195,12 +195,19 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	GtkTreeViewColumn *column;
 	GtkWidget *frame;
 
-	gtk_table_resize(GTK_TABLE(gsl), 3, 2);
+	//gtk_table_resize(GTK_TABLE(gsl), 3, 2);
 
 	/* Create the frame and add a new scrolled window, followed by the group list */
 	frame = gtk_frame_new(NULL);
 	gtk_widget_show(frame);
-	gtk_table_attach_defaults(GTK_TABLE(gsl), frame, 0, 1, 0, 1);
+	gtk_widget_set_hexpand(frame, TRUE);
+	gtk_widget_set_vexpand(frame, TRUE);
+#if GTK_CHECK_VERSION(3, 12, 0)
+	gtk_widget_set_margin_end (GTK_FRAME(frame), 80);
+#else
+	gtk_widget_set_margin_right (GTK_FRAME(frame), 80);
+#endif
+	gtk_grid_attach(GTK_GRID(gsl), frame, 0, 0, 1, 1);
 
 	scrolled_window = gtk_scrolled_window_new(NULL, NULL);
 	gtk_widget_show(scrolled_window);
@@ -227,9 +234,9 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	vbox = gtk_vbox_new(FALSE, 0);
 #endif
 	gtk_widget_show(vbox);
-	gtk_table_attach(GTK_TABLE(gsl), vbox, 1, 2, 0, 3, 0, GTK_EXPAND | GTK_FILL, 0, 0);
+	gtk_grid_attach(GTK_GRID(gsl), vbox, 1, 0, 2, 1);
 
-	image = gtk_image_new_from_stock(GTK_STOCK_ADD, GTK_ICON_SIZE_MENU);
+	image = gtk_image_new_from_icon_name("list-add", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
 	widget = gtk_button_new();
 	gtk_widget_show(widget);
@@ -237,7 +244,7 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	gtk_box_pack_start(GTK_BOX(vbox), widget, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_string_list_add), gsl);
 
-	image = gtk_image_new_from_stock(GTK_STOCK_REMOVE, GTK_ICON_SIZE_MENU);
+	image = gtk_image_new_from_icon_name("list-remove", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
 	widget = gtk_button_new();
 	gtk_widget_show(widget);
@@ -245,7 +252,7 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	gtk_box_pack_start(GTK_BOX(vbox), widget, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_string_list_remove), gsl);
 
-	image = gtk_image_new_from_stock(GTK_STOCK_GO_UP, GTK_ICON_SIZE_MENU);
+	image = gtk_image_new_from_icon_name("go-up", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
 	widget = gtk_button_new();
 	gtk_widget_show(widget);
@@ -254,7 +261,7 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_string_list_up), gsl);
 	gsl->up_button = widget;
 
-	image = gtk_image_new_from_stock(GTK_STOCK_GO_DOWN, GTK_ICON_SIZE_MENU);
+	image = gtk_image_new_from_icon_name("go-down", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
 	widget = gtk_button_new();
 	gtk_widget_show(widget);
@@ -267,7 +274,8 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	gsl->status_label = gtk_label_new(NULL);
 	gtk_widget_show(gsl->status_label);
 	gtk_misc_set_alignment(GTK_MISC(gsl->status_label), 0.0, 0.5);
-	gtk_table_attach(GTK_TABLE(gsl), gsl->status_label, 0, 2, 2, 3, GTK_EXPAND | GTK_FILL, 0, 0, 0);
+	gtk_widget_set_hexpand(gsl->status_label, TRUE);
+	gtk_grid_attach(GTK_GRID(gsl), gsl->status_label, 0, 2, 2, 1);
 
 	gsl->hints = NULL;
 	gsl->validation_func = NULL;

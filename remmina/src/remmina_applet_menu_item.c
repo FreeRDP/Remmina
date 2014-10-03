@@ -154,12 +154,10 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 	}
 	else
 	{
-		widget = gtk_image_new_from_stock(GTK_STOCK_JUMP_TO, GTK_ICON_SIZE_MENU);
+		widget = gtk_image_new_from_icon_name("go-jump", GTK_ICON_SIZE_MENU);
 	}
 
 	gtk_widget_show(widget);
-	gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(item), widget);
-	gtk_image_menu_item_set_always_show_image(GTK_IMAGE_MENU_ITEM(item), TRUE);
 
 	if (item->server)
 	{

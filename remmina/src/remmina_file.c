@@ -290,6 +290,7 @@ static void remmina_file_store_group(RemminaFile *remminafile, GKeyFile *gkeyfil
 	gchar *s;
 	gboolean encrypted;
 	RemminaSettingGroup g;
+	
 
 	plugin = remmina_plugin_manager_get_secret_plugin();
 	g_hash_table_iter_init(&iter, remminafile->settings);
@@ -502,3 +503,8 @@ void remmina_file_delete(const gchar *filename)
 	g_unlink(filename);
 }
 
+void remmina_file_unsave_password(RemminaFile *remminafile)
+{
+	remmina_file_set_string(remminafile, "password", NULL);
+	remmina_file_save_group(remminafile, REMMINA_SETTING_GROUP_CREDENTIAL);
+}
