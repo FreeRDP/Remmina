@@ -161,7 +161,7 @@ remmina_chat_window_new(GtkWindow* parent, const gchar* chat_with)
 {
 	RemminaChatWindow* window;
 	gchar buf[100];
-	GtkWidget* table;
+	GtkWidget* grid;
 	GtkWidget* scrolledwindow;
 	GtkWidget* widget;
 	GtkWidget* image;
@@ -180,18 +180,18 @@ remmina_chat_window_new(GtkWindow* parent, const gchar* chat_with)
 	gtk_window_set_default_size(GTK_WINDOW(window), 450, 300);
 
 	/* Main container */
-	table = gtk_table_new(3, 2, FALSE);
-	gtk_widget_show(table);
-	gtk_table_set_row_spacings(GTK_TABLE(table), 4);
-	gtk_table_set_col_spacings(GTK_TABLE(table), 4);
-	gtk_container_set_border_width(GTK_CONTAINER(table), 8);
-	gtk_container_add(GTK_CONTAINER(window), table);
+	grid = gtk_grid_new();
+	gtk_widget_show(grid);
+	gtk_grid_set_row_spacing(GTK_GRID(grid), 4);
+	gtk_grid_set_column_spacing(GTK_GRID(grid), 4);
+	gtk_container_set_border_width(GTK_CONTAINER(grid), 8);
+	gtk_container_add(GTK_CONTAINER(window), grid);
 
 	/* Chat history */
 	scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
 	gtk_widget_show(scrolledwindow);
 	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolledwindow), GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
-	gtk_table_attach_defaults(GTK_TABLE(table), scrolledwindow, 0, 2, 0, 1);
+	gtk_grid_attach(GTK_GRID(grid), scrolledwindow, 0, 0, 2, 1);
 
 	widget = gtk_text_view_new();
 	gtk_widget_show(widget);
@@ -209,7 +209,7 @@ remmina_chat_window_new(GtkWindow* parent, const gchar* chat_with)
 	scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
 	gtk_widget_show(scrolledwindow);
 	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolledwindow), GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
-	gtk_table_attach(GTK_TABLE(table), scrolledwindow, 0, 1, 1, 3, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+	gtk_grid_attach(GTK_GRID(grid), scrolledwindow, 0, 1, 1, 3);
 
 	widget = gtk_text_view_new();
 	gtk_widget_show(widget);
@@ -226,17 +226,17 @@ remmina_chat_window_new(GtkWindow* parent, const gchar* chat_with)
 	widget = gtk_button_new_with_mnemonic(_("_Send"));
 	gtk_widget_show(widget);
 	gtk_button_set_image(GTK_BUTTON(widget), image);
-	gtk_table_attach(GTK_TABLE(table), widget, 1, 2, 1, 2, 0, 0, 0, 0);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 1, 2, 1);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_chat_window_send), window);
 
 	/* Clear button */
-	image = gtk_image_new_from_stock(GTK_STOCK_CLEAR, GTK_ICON_SIZE_BUTTON);
+	image = gtk_image_new_from_icon_name("edit-clear", GTK_ICON_SIZE_BUTTON);
 	gtk_widget_show(image);
 
 	widget = gtk_button_new_with_mnemonic(_("_Clear"));
 	gtk_widget_show(widget);
 	gtk_button_set_image(GTK_BUTTON(widget), image);
-	gtk_table_attach(GTK_TABLE(table), widget, 1, 2, 2, 3, 0, 0, 0, 0);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 2, 2, 1);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_chat_window_clear_send_text), window);
 
 	gtk_widget_grab_focus(window->send_text);

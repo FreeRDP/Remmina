@@ -767,7 +767,7 @@ static void remmina_main_action_tools_addition(GtkAction *action, RemminaMain *r
 {
 	RemminaToolPlugin *plugin;
 
-	plugin = (RemminaToolPlugin *) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_TOOL, gtk_action_get_name(action));
+	plugin = (RemminaToolPlugin *) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_TOOL, g_action_get_name(action));
 	if (plugin)
 	{
 		plugin->exec_func();
@@ -1106,8 +1106,10 @@ static gboolean remmina_main_add_tool_plugin(gchar *name, RemminaPlugin *plugin,
 	return FALSE;
 }
 
+
 static gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWindowState *event, gpointer user_data)
 {
+#ifdef ENABLE_MINIMIZE_TO_TRAY
 	GdkScreen *screen;
 
 	screen = gdk_screen_get_default();
@@ -1121,7 +1123,9 @@ static gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWi
 		return TRUE;
 	}
 	return FALSE;
+#endif
 }
+
 
 static void remmina_main_init(RemminaMain *remminamain)
 {
@@ -1255,7 +1259,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 	gtk_box_pack_start(GTK_BOX(hbox), priv->quickconnect_server, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(priv->quickconnect_server), "key-press-event", G_CALLBACK(remmina_main_quickconnect_on_key_press), remminamain);
 
-	quickconnect = gtk_button_new_with_label("Connect !");
+	quickconnect = gtk_button_new_with_label(_("Connect !"));
 	gtk_widget_show(quickconnect);
 	gtk_box_pack_start(GTK_BOX(hbox), quickconnect, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(quickconnect), "clicked", G_CALLBACK(remmina_main_quickconnect_on_click), remminamain);
