@@ -89,7 +89,7 @@ void remmina_about_open(GtkWindow* parent)
 	gtk_about_dialog_set_comments(GTK_ABOUT_DIALOG(dialog), _("The GTK+ Remote Desktop Client")), gtk_about_dialog_set_license(
 			GTK_ABOUT_DIALOG(dialog), license);
 	gtk_about_dialog_set_wrap_license(GTK_ABOUT_DIALOG(dialog), TRUE);
-	gtk_about_dialog_set_website(GTK_ABOUT_DIALOG(dialog), "http://remmina.sourceforge.net");
+	gtk_about_dialog_set_website(GTK_ABOUT_DIALOG(dialog), "https://github.com/FreeRDP/Remmina/wiki");
 	gtk_about_dialog_set_authors(GTK_ABOUT_DIALOG(dialog), authors);
 	gtk_about_dialog_set_artists(GTK_ABOUT_DIALOG(dialog), artists);
 	gtk_about_dialog_set_translator_credits(GTK_ABOUT_DIALOG(dialog), _("translator-credits"));
