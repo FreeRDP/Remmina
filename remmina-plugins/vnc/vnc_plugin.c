@@ -1510,7 +1510,9 @@ static gboolean remmina_plugin_vnc_on_key(GtkWidget *widget, GdkEventKey *event,
 	RemminaPluginVncData *gpdata;
 	RemminaFile *remminafile;
 	RemminaKeyVal *k;
+	guint event_keyval;
 	guint keyval;
+	int i;
 
 	gpdata = (RemminaPluginVncData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	if (!gpdata->connected || !gpdata->client)
@@ -1519,8 +1521,22 @@ static gboolean remmina_plugin_vnc_on_key(GtkWidget *widget, GdkEventKey *event,
 	if (remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE))
 		return FALSE;
 
+	/* When sending key release, try first to find out a previously sent keyval
+	   to workaround bugs like https://bugs.freedesktop.org/show_bug.cgi?id=7430 */
+
+	event_keyval = event->keyval;
+	if ( event->type == GDK_KEY_RELEASE ) {
+		for (i = 0; i < gpdata->pressed_keys->len; i++) {
+			k = g_ptr_array_index(gpdata->pressed_keys, i);
+			if ( k->keycode == event->hardware_keycode ) {
+				event_keyval = k->keyval;
+				break;
+			}
+		}
+	}
+
 	keyval = remmina_plugin_service->pref_keymap_get_keyval(remmina_plugin_service->file_get_string(remminafile, "keymap"),
-			event->keyval);
+			event_keyval);
 
 	remmina_plugin_vnc_event_push(gp, REMMINA_PLUGIN_VNC_EVENT_KEY, GUINT_TO_POINTER(keyval),
 			GINT_TO_POINTER(event->type == GDK_KEY_PRESS ? TRUE : FALSE), NULL);
