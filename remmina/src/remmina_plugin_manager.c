@@ -149,7 +149,7 @@ static void remmina_plugin_manager_load_plugin(const gchar *name)
 	GModule *module;
 	RemminaPluginEntryFunc entry;
 
-	module = g_module_open(name, G_MODULE_BIND_LAZY | G_MODULE_BIND_LOCAL);
+	module = g_module_open(name, G_MODULE_BIND_LAZY);
 
 	if (!module)
 	{
