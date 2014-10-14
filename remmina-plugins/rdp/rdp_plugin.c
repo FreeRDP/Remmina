@@ -859,16 +859,18 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	if (remmina_plugin_service->file_get_int(remminafile, "shareprinter", FALSE))
 	{
-//		rfi->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
-//		rfi->rdpdr_data[rdpdr_num].data[0] = "printer";
+		rfi->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
+		rfi->rdpdr_data[rdpdr_num].data[0] = "printer";
+		rfi->settings->RedirectPrinters = TRUE;
 		rdpdr_num++;
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE))
 	{
-        //rfi->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
-        //rfi->rdpdr_data[rdpdr_num].data[0] = "scard";
-        //rfi->rdpdr_data[rdpdr_num].data[1] = "scard";
+        	rfi->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
+        	rfi->rdpdr_data[rdpdr_num].data[0] = "scard";
+        	rfi->rdpdr_data[rdpdr_num].data[1] = "scard";
+        	rfi->settings->RedirectSmartCards = TRUE;
 		rdpdr_num++;
 	}
 
