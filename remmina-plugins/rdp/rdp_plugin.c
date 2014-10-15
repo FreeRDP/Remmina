@@ -561,27 +561,6 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 	}
 }
 
-gboolean remmina_rdp_load_plugin(rdpChannels* channels, rdpSettings* settings, const char* name, rdpSettings* plugin_data)
-{
-	void* entry = NULL;
-
-	entry = freerdp_channels_client_find_static_entry("VirtualChannelEntry", name);
-
-	if (entry)
-	{
-		if (freerdp_channels_client_load(channels, settings, entry, plugin_data) == 0)
-		{
-			g_printf("loading channel %s (static)\n", name);
-			return TRUE;
-		}
-	}
-
-	g_printf("loading channel %s (plugin)\n", name);
-	freerdp_channels_load_plugin(channels, settings, name, plugin_data);
-
-	return TRUE;
-}
-
 int remmina_rdp_load_static_channel_addin(rdpChannels* channels, rdpSettings* settings, char* name, void* data)
 {
 	void* entry;
@@ -630,7 +609,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	gint port;
 	gchar* host;
 	gchar* value;
-	gint rdpdr_num;
 	gint drdynvc_num;
 	gint rdpsnd_rate;
 	gint rdpsnd_channel;
@@ -829,7 +807,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	rfi->settings->RedirectClipboard = ( remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE) ? FALSE: TRUE );
 
-	rdpdr_num = 0;
 	cs = remmina_plugin_service->file_get_string(remminafile, "sharefolder");
 
 	if (cs && cs[0] == '/')
@@ -854,28 +831,25 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*) drive);
 		rfi->settings->DeviceRedirection = TRUE;
-		rdpdr_num++;
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "shareprinter", FALSE))
 	{
-//		rfi->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
-//		rfi->rdpdr_data[rdpdr_num].data[0] = "printer";
-		rdpdr_num++;
+		RDPDR_PRINTER* printer;
+		printer = (RDPDR_PRINTER*) malloc(sizeof(RDPDR_DEVICE));
+		ZeroMemory(printer, sizeof(RDPDR_PRINTER));
+
+		printer->Type = RDPDR_DTYP_PRINT;
+
+		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*) printer);
+		rfi->settings->DeviceRedirection = TRUE;
+
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE))
 	{
-        //rfi->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
-        //rfi->rdpdr_data[rdpdr_num].data[0] = "scard";
-        //rfi->rdpdr_data[rdpdr_num].data[1] = "scard";
-		rdpdr_num++;
-	}
-
-	if (rdpdr_num)
-	{
-		//remmina_rdp_load_plugin(rfi->channels, rfi->settings, "rdpdr", rfi->rdpdr_data);
-        remmina_rdp_load_plugin(rfi->instance->context->channels, rfi->settings, "rdpdr", rfi->settings);
+		// Not implemented yet
+		// see FreeRDP client/common/cmdline.c for an example
 	}
 
 
