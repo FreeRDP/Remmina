@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -375,7 +375,7 @@ static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** 
 
 		s_domain = remmina_plugin_service->protocol_plugin_init_get_domain(gp);
 		if (s_domain) rfi->settings->Domain = strdup(s_domain);
-		
+
 		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
 		if (save)
 		{
@@ -383,13 +383,13 @@ static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** 
 			// into remminafile->settings. They will be saved later, when disconnecting, by
 			// remmina_connection_object_on_disconnect of remmina_connection_window.c
 			// (this operation should be called "save credentials" and not "save password")
-			
+
 			remmina_plugin_service->file_set_string( remminafile, "username", s_username );
 			remmina_plugin_service->file_set_string( remminafile, "password", s_password );
 			remmina_plugin_service->file_set_string( remminafile, "domain", s_domain );
-			
+
 		}
-		
+
 		if ( s_username ) g_free( s_username );
 		if ( s_password ) g_free( s_password );
 		if ( s_domain ) g_free( s_domain );
@@ -470,9 +470,9 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 	fd_set wfds_set;
 	rfContext* rfi;
 	wMessage* event;
-	
+
 	rdpChannels *channels;
-	
+
 
 	memset(rfds, 0, sizeof(rfds));
 	memset(wfds, 0, sizeof(wfds));
@@ -566,13 +566,13 @@ int remmina_rdp_load_static_channel_addin(rdpChannels* channels, rdpSettings* se
 	void* entry;
 
 	entry = freerdp_load_channel_addin_entry(name, NULL, NULL, FREERDP_ADDIN_CHANNEL_STATIC);
-	
-	
-	
+
+
+
 
 	if (entry)
 	{
-	
+
 		if (freerdp_channels_client_load(channels, settings, entry, data) == 0)
 		{
 			fprintf(stderr, "loading channel %s\n", name);
@@ -836,7 +836,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	if (remmina_plugin_service->file_get_int(remminafile, "shareprinter", FALSE))
 	{
 		RDPDR_PRINTER* printer;
-		printer = (RDPDR_PRINTER*) malloc(sizeof(RDPDR_DEVICE));
+		printer = (RDPDR_PRINTER*) malloc(sizeof(RDPDR_PRINTER));
 		ZeroMemory(printer, sizeof(RDPDR_PRINTER));
 
 		printer->Type = RDPDR_DTYP_PRINT;
@@ -848,8 +848,15 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	if (remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE))
 	{
-		// Not implemented yet
-		// see FreeRDP client/common/cmdline.c for an example
+		RDPDR_SMARTCARD* smartcard;
+		smartcard = (RDPDR_SMARTCARD*) malloc(sizeof(RDPDR_SMARTCARD));
+		ZeroMemory(smartcard, sizeof(RDPDR_SMARTCARD));
+
+		smartcard->Type = RDPDR_DTYP_SMARTCARD;
+		smartcard->Name = _strdup("scard");
+
+		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*) smartcard);
+		rfi->settings->DeviceRedirection = TRUE;
 	}
 
 
@@ -863,7 +870,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 		return FALSE;
 	}
-	
+
 
 
 	remmina_rdp_main_loop(gp);
@@ -891,7 +898,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 {
 	freerdp* instance;
 	rfContext* rfi;
-	
+
 	freerdp_register_addin_provider(freerdp_channels_load_static_addin_entry, 0);
 
 	instance = freerdp_new();
@@ -946,7 +953,7 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 {
 	rfContext* rfi;
 	freerdp* instance;
-	
+
 
 	rfi = GET_DATA(gp);
 	instance = rfi->instance;
