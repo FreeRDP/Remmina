@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -965,7 +965,7 @@ remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path
 			GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
 			_("Resume"), GTK_RESPONSE_APPLY,
 			_("Overwrite"), GTK_RESPONSE_ACCEPT,
-			GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+			_("Cancel"), GTK_RESPONSE_CANCEL,
 			NULL);
 	gtk_container_set_border_width (GTK_CONTAINER (dialog), 4);
 
@@ -978,7 +978,7 @@ remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path
 	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG(dialog))),
 			hbox, TRUE, TRUE, 4);
 
-	widget = gtk_image_new_from_icon_name (GTK_STOCK_DIALOG_QUESTION, GTK_ICON_SIZE_DIALOG);
+	widget = gtk_image_new_from_icon_name (_("Question"), GTK_ICON_SIZE_DIALOG);
 	gtk_widget_show(widget);
 	gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 4);
 
