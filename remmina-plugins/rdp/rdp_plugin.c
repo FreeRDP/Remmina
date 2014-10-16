@@ -613,7 +613,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	RemminaFile* remminafile;
 	rfContext* rfi;
 
-	gchar *dest_server, *dest_host;
+	gchar *dest_host;
+	const gchar *dest_server;
 	gint dest_port;
 
 	rfi = GET_DATA(gp);
@@ -829,19 +830,31 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	if (remmina_plugin_service->file_get_int(remminafile, "shareprinter", FALSE))
 	{
 		RDPDR_PRINTER* printer;
-		printer = (RDPDR_PRINTER*) malloc(sizeof(RDPDR_DEVICE));
+		printer = (RDPDR_PRINTER*) malloc(sizeof(RDPDR_PRINTER));
 		ZeroMemory(printer, sizeof(RDPDR_PRINTER));
 
 		printer->Type = RDPDR_DTYP_PRINT;
 
-		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*) printer);
 		rfi->settings->DeviceRedirection = TRUE;
+		rfi->settings->RedirectPrinters = TRUE;
+
+		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*) printer);
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE))
 	{
-		// Not implemented yet
-		// see FreeRDP client/common/cmdline.c for an example
+		RDPDR_SMARTCARD* smartcard;
+		smartcard = (RDPDR_SMARTCARD*) malloc(sizeof(RDPDR_SMARTCARD));
+		ZeroMemory(smartcard, sizeof(RDPDR_SMARTCARD));
+
+		smartcard->Type = RDPDR_DTYP_SMARTCARD;
+
+		smartcard->Name = _strdup("scard");
+
+		rfi->settings->DeviceRedirection = TRUE;
+		rfi->settings->RedirectSmartCards = TRUE;
+
+		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*) smartcard);
 	}
 
 	if (!freerdp_connect(rfi->instance))
