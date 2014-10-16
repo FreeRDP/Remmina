@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -197,10 +197,10 @@ static void remmina_ftp_client_cell_data_filetype_pixbuf(GtkTreeViewColumn *col,
 	switch (type)
 	{
 		case REMMINA_FTP_FILE_TYPE_DIR:
-			g_object_set(renderer, "stock-id", GTK_STOCK_DIRECTORY, NULL);
+			g_object_set(renderer, "stock-id", "folder", NULL);
 			break;
 		default:
-			g_object_set(renderer, "stock-id", GTK_STOCK_FILE, NULL);
+			g_object_set(renderer, "stock-id", "text-x-generic", NULL);
 			break;
 	}
 }
@@ -216,17 +216,17 @@ static void remmina_ftp_client_cell_data_progress_pixbuf(GtkTreeViewColumn *col,
 	switch (status)
 	{
 		case REMMINA_FTP_TASK_STATUS_WAIT:
-			g_object_set(renderer, "stock-id", GTK_STOCK_MEDIA_PAUSE, NULL);
+			g_object_set(renderer, "stock-id", "P_ause", NULL);
 			break;
 		case REMMINA_FTP_TASK_STATUS_RUN:
 			g_object_set(renderer, "stock-id",
-					(tasktype == REMMINA_FTP_TASK_TYPE_UPLOAD ? GTK_STOCK_GO_UP : GTK_STOCK_GO_DOWN), NULL);
+					(tasktype == REMMINA_FTP_TASK_TYPE_UPLOAD ? "go-up" : "go-down"), NULL);
 			break;
 		case REMMINA_FTP_TASK_STATUS_FINISH:
-			g_object_set(renderer, "stock-id", GTK_STOCK_YES, NULL);
+			g_object_set(renderer, "stock-id", "_Yes", NULL);
 			break;
 		case REMMINA_FTP_TASK_STATUS_ERROR:
-			g_object_set(renderer, "stock-id", GTK_STOCK_NO, NULL);
+			g_object_set(renderer, "stock-id", "_No", NULL);
 			break;
 	}
 }
@@ -404,7 +404,7 @@ remmina_ftp_client_get_download_dir(RemminaFTPClient *client)
 
 	dialog = gtk_file_chooser_dialog_new(_("Choose download location"),
 			GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(client))), GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER,
-			GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OK, GTK_RESPONSE_ACCEPT, NULL);
+			"_Cancel", GTK_RESPONSE_CANCEL, "_OK", GTK_RESPONSE_ACCEPT, NULL);
 	if (priv->working_directory)
 	{
 		gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(dialog), priv->working_directory);
@@ -598,8 +598,8 @@ static void remmina_ftp_client_action_upload(GObject *object, RemminaFTPClient *
 	struct stat st;
 
 	dialog = gtk_file_chooser_dialog_new(_("Choose a file to upload"),
-			GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(client))), GTK_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
-			GTK_RESPONSE_CANCEL, GTK_STOCK_OK, GTK_RESPONSE_ACCEPT, NULL);
+			GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(client))), GTK_FILE_CHOOSER_ACTION_OPEN, "_Cancel",
+			GTK_RESPONSE_CANCEL, "_OK", GTK_RESPONSE_ACCEPT, NULL);
 	gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(dialog), TRUE);
 	if (priv->working_directory)
 	{
@@ -771,21 +771,21 @@ static void remmina_ftp_client_create_toolbar(RemminaFTPClient *client)
 	gtk_button_box_set_layout(GTK_BUTTON_BOX(box), GTK_BUTTONBOX_START);
 	gtk_box_pack_start(GTK_BOX(client), box, FALSE, TRUE, 0);
 
-	button = gtk_button_new_from_stock(GTK_STOCK_HOME);
+	button = gtk_button_new_with_label(_("Home"));
 	gtk_widget_show(button);
 	gtk_widget_set_tooltip_text(button, _("Go to home folder"));
 	gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
 	gtk_box_pack_start(GTK_BOX(box), button, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(remmina_ftp_client_action_home), client);
 
-	button = gtk_button_new_from_stock(GTK_STOCK_GO_UP);
+	button = gtk_button_new_with_label(_("Up"));
 	gtk_widget_show(button);
 	gtk_widget_set_tooltip_text(button, _("Go to parent folder"));
 	gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
 	gtk_box_pack_start(GTK_BOX(box), button, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(remmina_ftp_client_action_parent), client);
 
-	button = gtk_button_new_from_stock(GTK_STOCK_REFRESH);
+	button = gtk_button_new_with_label(_("Refresh"));
 	gtk_widget_show(button);
 	gtk_widget_set_tooltip_text(button, _("Refresh current folder"));
 	gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
@@ -812,7 +812,7 @@ static void remmina_ftp_client_create_toolbar(RemminaFTPClient *client)
 	gtk_box_pack_start(GTK_BOX(box), button, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(remmina_ftp_client_action_upload), client);
 
-	button = gtk_button_new_from_stock(GTK_STOCK_DELETE);
+	button = gtk_button_new_with_label(_("Delete"));
 	gtk_widget_show(button);
 	gtk_widget_set_tooltip_text(button, _("Delete files on server"));
 	gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
@@ -1022,7 +1022,7 @@ static void remmina_ftp_client_init(RemminaFTPClient *client)
 
 	renderer = remmina_cell_renderer_pixbuf_new();
 	column = gtk_tree_view_column_new_with_attributes(NULL, renderer, NULL);
-	g_object_set(G_OBJECT(renderer), "stock-id", GTK_STOCK_CANCEL, NULL);
+	g_object_set(G_OBJECT(renderer), "stock-id", "_Cancel", NULL);
 	gtk_tree_view_column_set_resizable(column, FALSE);
 	gtk_tree_view_append_column(GTK_TREE_VIEW(priv->task_list_view), column);
 
