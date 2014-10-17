@@ -987,6 +987,7 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 			if (instance->context->channels)
 				freerdp_channels_close(instance->context->channels, instance);
 			freerdp_disconnect(instance);
+			rfi->connected = False;
 		}
 	}
 
@@ -1000,8 +1001,6 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 	{
 		/* Remove instance->context from gp object data to avoid double free */
 		g_object_steal_data(G_OBJECT(gp), "plugin-data");
-
-
 
 		if (instance->context->channels) {
 			freerdp_channels_free(instance->context->channels);
