@@ -337,6 +337,7 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	instance->update->DesktopResize = rf_desktop_resize;
 
 	freerdp_channels_post_connect(instance->context->channels, instance);
+	rfi->connected = True;
 
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 
@@ -636,7 +637,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		dest_server = remmina_plugin_service->file_get_string(remminafile, "server");
 		if ( dest_server ) {
 			remmina_plugin_service->get_server_port(dest_server, 0, &dest_host, &dest_port);
-			rfi->settings->CertificateName = _strdup( dest_host );
+			rfi->settings->CertificateName = strdup( dest_host );
 			g_free(dest_host);
 		}
 	}
@@ -673,12 +674,17 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	if (remmina_plugin_service->file_get_string(remminafile, "clientname"))
 	{
-		strncpy(rfi->settings->ClientHostname, remmina_plugin_service->file_get_string(remminafile, "clientname"),
-			sizeof(rfi->settings->ClientHostname) - 1);
+		s = remmina_plugin_service->file_get_string(remminafile, "clientname");
+		if ( s ) {
+			free( rfi->settings->ClientHostname );
+			rfi->settings->ClientHostname = strdup(s);
+			g_free(s);
+		}
 	}
 	else
 	{
-		strncpy(rfi->settings->ClientHostname, g_get_host_name(), sizeof(rfi->settings->ClientHostname) - 1);
+		free( rfi->settings->ClientHostname );
+		rfi->settings->ClientHostname = strdup( g_get_host_name() );
 	}
 
 	if (remmina_plugin_service->file_get_string(remminafile, "exec"))
@@ -932,6 +938,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	rfi->instance = instance;
 	rfi->settings = instance->settings;
 	rfi->instance->context->channels = freerdp_channels_new();
+	rfi->connected = False;
 
 	pthread_mutex_init(&rfi->mutex, NULL);
 
@@ -989,13 +996,11 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 
 	if (instance)
 	{
-		if (instance->context->channels)
-		{
-			//freerdp_channels_close(rfi->channels, instance);
-			freerdp_channels_free(instance->context->channels);
-			instance->context->channels = NULL;
+		if ( rfi->connected ) {
+			if (instance->context->channels)
+				freerdp_channels_close(instance->context->channels, instance);
+			freerdp_disconnect(instance);
 		}
-		freerdp_disconnect(instance);
 	}
 
 	if (rfi->rfx_context)
@@ -1006,8 +1011,19 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 
 	if (instance)
 	{
-		//freerdp_context_free(instance); /* context is rfContext* rfi */
+		/* Remove instance->context from gp object data to avoid double free */
+		g_object_steal_data(G_OBJECT(gp), "plugin-data");
+
+
+
+		if (instance->context->channels) {
+			freerdp_channels_free(instance->context->channels);
+			instance->context->channels = NULL;
+		}
+
+		freerdp_context_free(instance); /* context is rfContext* rfi */
 		freerdp_free(instance);
+		rfi->instance = NULL;
 	}
 
 	return FALSE;
