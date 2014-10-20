@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -49,6 +49,7 @@
 #include <freerdp/client/channels.h>
 #include <freerdp/client/cmdline.h>
 #include <freerdp/error.h>
+#include <freerdp/utils/signal.h>
 #include <winpr/memory.h>
 
 #define REMMINA_RDP_FEATURE_TOOL_REFRESH		1
@@ -256,7 +257,7 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 		settings->LargePointerFlag = True;
 		settings->PerformanceFlags = PERF_FLAG_NONE;
 
-		rfi->rfx_context = rfx_context_new(FALSE);
+		rfi->rfx_context = rfx_context_new();
 	}
 
 	freerdp_client_load_addins(instance->context->channels, instance->settings);
@@ -337,6 +338,7 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	instance->update->DesktopResize = rf_desktop_resize;
 
 	freerdp_channels_post_connect(instance->context->channels, instance);
+	rfi->connected = True;
 
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 
@@ -374,7 +376,7 @@ static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** 
 
 		s_domain = remmina_plugin_service->protocol_plugin_init_get_domain(gp);
 		if (s_domain) rfi->settings->Domain = strdup(s_domain);
-		
+
 		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
 		if (save)
 		{
@@ -382,13 +384,13 @@ static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** 
 			// into remminafile->settings. They will be saved later, when disconnecting, by
 			// remmina_connection_object_on_disconnect of remmina_connection_window.c
 			// (this operation should be called "save credentials" and not "save password")
-			
+
 			remmina_plugin_service->file_set_string( remminafile, "username", s_username );
 			remmina_plugin_service->file_set_string( remminafile, "password", s_password );
 			remmina_plugin_service->file_set_string( remminafile, "domain", s_domain );
-			
+
 		}
-		
+
 		if ( s_username ) g_free( s_username );
 		if ( s_password ) g_free( s_password );
 		if ( s_domain ) g_free( s_domain );
@@ -469,9 +471,9 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 	fd_set wfds_set;
 	rfContext* rfi;
 	wMessage* event;
-	
+
 	rdpChannels *channels;
-	
+
 
 	memset(rfds, 0, sizeof(rfds));
 	memset(wfds, 0, sizeof(wfds));
@@ -560,39 +562,18 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 	}
 }
 
-gboolean remmina_rdp_load_plugin(rdpChannels* channels, rdpSettings* settings, const char* name, rdpSettings* plugin_data)
-{
-	void* entry = NULL;
-
-	entry = freerdp_channels_client_find_static_entry("VirtualChannelEntry", name);
-
-	if (entry)
-	{
-		if (freerdp_channels_client_load(channels, settings, entry, plugin_data) == 0)
-		{
-			g_printf("loading channel %s (static)\n", name);
-			return TRUE;
-		}
-	}
-
-	g_printf("loading channel %s (plugin)\n", name);
-	freerdp_channels_load_plugin(channels, settings, name, plugin_data);
-
-	return TRUE;
-}
-
 int remmina_rdp_load_static_channel_addin(rdpChannels* channels, rdpSettings* settings, char* name, void* data)
 {
 	void* entry;
 
 	entry = freerdp_load_channel_addin_entry(name, NULL, NULL, FREERDP_ADDIN_CHANNEL_STATIC);
-	
-	
-	
+
+
+
 
 	if (entry)
 	{
-	
+
 		if (freerdp_channels_client_load(channels, settings, entry, data) == 0)
 		{
 			fprintf(stderr, "loading channel %s\n", name);
@@ -629,7 +610,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	gint port;
 	gchar* host;
 	gchar* value;
-	gint rdpdr_num;
 	gint drdynvc_num;
 	gint rdpsnd_rate;
 	gint rdpsnd_channel;
@@ -663,7 +643,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		dest_server = remmina_plugin_service->file_get_string(remminafile, "server");
 		if ( dest_server ) {
 			remmina_plugin_service->get_server_port(dest_server, 0, &dest_host, &dest_port);
-			rfi->settings->CertificateName = _strdup( dest_host );
+			rfi->settings->CertificateName = strdup( dest_host );
 			g_free(dest_host);
 		}
 	}
@@ -700,12 +680,17 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	if (remmina_plugin_service->file_get_string(remminafile, "clientname"))
 	{
-		strncpy(rfi->settings->ClientHostname, remmina_plugin_service->file_get_string(remminafile, "clientname"),
-			sizeof(rfi->settings->ClientHostname) - 1);
+		s = remmina_plugin_service->file_get_string(remminafile, "clientname");
+		if ( s ) {
+			free( rfi->settings->ClientHostname );
+			rfi->settings->ClientHostname = strdup(s);
+			g_free(s);
+		}
 	}
 	else
 	{
-		strncpy(rfi->settings->ClientHostname, g_get_host_name(), sizeof(rfi->settings->ClientHostname) - 1);
+		free( rfi->settings->ClientHostname );
+		rfi->settings->ClientHostname = strdup( g_get_host_name() );
 	}
 
 	if (remmina_plugin_service->file_get_string(remminafile, "exec"))
@@ -828,7 +813,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	rfi->settings->RedirectClipboard = ( remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE) ? FALSE: TRUE );
 
-	rdpdr_num = 0;
 	cs = remmina_plugin_service->file_get_string(remminafile, "sharefolder");
 
 	if (cs && cs[0] == '/')
@@ -853,28 +837,32 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*) drive);
 		rfi->settings->DeviceRedirection = TRUE;
-		rdpdr_num++;
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "shareprinter", FALSE))
 	{
-//		rfi->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
-//		rfi->rdpdr_data[rdpdr_num].data[0] = "printer";
-		rdpdr_num++;
+		RDPDR_PRINTER* printer;
+		printer = (RDPDR_PRINTER*) malloc(sizeof(RDPDR_PRINTER));
+		ZeroMemory(printer, sizeof(RDPDR_PRINTER));
+
+		printer->Type = RDPDR_DTYP_PRINT;
+
+		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*) printer);
+		rfi->settings->DeviceRedirection = TRUE;
+
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE))
 	{
-        //rfi->rdpdr_data[rdpdr_num].size = sizeof(RDP_PLUGIN_DATA);
-        //rfi->rdpdr_data[rdpdr_num].data[0] = "scard";
-        //rfi->rdpdr_data[rdpdr_num].data[1] = "scard";
-		rdpdr_num++;
-	}
+		RDPDR_SMARTCARD* smartcard;
+		smartcard = (RDPDR_SMARTCARD*) malloc(sizeof(RDPDR_SMARTCARD));
+		ZeroMemory(smartcard, sizeof(RDPDR_SMARTCARD));
 
-	if (rdpdr_num)
-	{
-		//remmina_rdp_load_plugin(rfi->channels, rfi->settings, "rdpdr", rfi->rdpdr_data);
-        remmina_rdp_load_plugin(rfi->instance->context->channels, rfi->settings, "rdpdr", rfi->settings);
+		smartcard->Type = RDPDR_DTYP_SMARTCARD;
+		smartcard->Name = _strdup("scard");
+
+		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*) smartcard);
+		rfi->settings->DeviceRedirection = TRUE;
 	}
 
 
@@ -882,29 +870,13 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	{
 		if (!rfi->user_cancelled)
 		{
-			UINT32 e;
-		
-			e = freerdp_get_last_error(rfi->instance->context);
-			switch(e) {
-				case FREERDP_ERROR_AUTHENTICATION_FAILED:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Authentication to RDP server %s failed.\nCheck username, password and domain."),
-						rfi->settings->ServerHostname );
-					// Invalidate the saved password, so the user will be re-asked at next logon
-					remmina_plugin_service->file_unsave_password(remminafile);
-					break;
-				case FREERDP_ERROR_CONNECT_FAILED:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to RDP server %s failed."), rfi->settings->ServerHostname );
-					break;
-				default:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
-					break;
-			}
+			remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
 
 		}
 
 		return FALSE;
 	}
-	
+
 
 
 	remmina_rdp_main_loop(gp);
@@ -932,7 +904,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 {
 	freerdp* instance;
 	rfContext* rfi;
-	
+
 	freerdp_register_addin_provider(freerdp_channels_load_static_addin_entry, 0);
 
 	instance = freerdp_new();
@@ -953,6 +925,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	rfi->instance = instance;
 	rfi->settings = instance->settings;
 	rfi->instance->context->channels = freerdp_channels_new();
+	rfi->connected = False;
 
 	pthread_mutex_init(&rfi->mutex, NULL);
 
@@ -987,7 +960,7 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 {
 	rfContext* rfi;
 	freerdp* instance;
-	
+
 
 	rfi = GET_DATA(gp);
 	instance = rfi->instance;
@@ -1010,13 +983,12 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 
 	if (instance)
 	{
-		if (instance->context->channels)
-		{
-			//freerdp_channels_close(rfi->channels, instance);
-			freerdp_channels_free(instance->context->channels);
-			instance->context->channels = NULL;
+		if ( rfi->connected ) {
+			if (instance->context->channels)
+				freerdp_channels_close(instance->context->channels, instance);
+			freerdp_disconnect(instance);
+			rfi->connected = False;
 		}
-		freerdp_disconnect(instance);
 	}
 
 	if (rfi->rfx_context)
@@ -1027,8 +999,17 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 
 	if (instance)
 	{
-		//freerdp_context_free(instance); /* context is rfContext* rfi */
+		/* Remove instance->context from gp object data to avoid double free */
+		g_object_steal_data(G_OBJECT(gp), "plugin-data");
+
+		if (instance->context->channels) {
+			freerdp_channels_free(instance->context->channels);
+			instance->context->channels = NULL;
+		}
+
+		freerdp_context_free(instance); /* context is rfContext* rfi */
 		freerdp_free(instance);
+		rfi->instance = NULL;
 	}
 
 	return FALSE;
@@ -1212,6 +1193,8 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService* service)
 		return FALSE;
 
 	remmina_rdp_settings_init();
+	freerdp_handle_signals();
+	freerdp_channels_global_init();
 
 	return TRUE;
 }
