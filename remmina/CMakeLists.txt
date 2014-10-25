@@ -110,6 +110,9 @@ add_executable(remmina ${REMMINA_SRCS})
 
 include_directories(${GTK_INCLUDE_DIRS})
 target_link_libraries(remmina ${GTK_LIBRARIES})
+if(NOT LIBINTL_LIBC_HAS_DGETTEXT)
+	target_link_libraries(remmina -lintl)
+endif()
 
 find_package(X11)
 include_directories(${X11_INCLUDE_DIR})
