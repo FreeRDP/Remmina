@@ -46,11 +46,11 @@ UINT32 remmina_rdp_cliprdr_get_format_from_gdkatom(GdkAtom atom)
 	gchar* name = gdk_atom_name(atom);
 	if (g_strcmp0("UTF8_STRING", name) == 0 || g_strcmp0("text/plain;charset=utf-8", name) == 0)
 	{
-		return CB_FORMAT_UNICODETEXT;
+		return CF_UNICODETEXT;
 	}
 	if (g_strcmp0("TEXT", name) == 0 || g_strcmp0("text/plain", name) == 0)
 	{
-		return CB_FORMAT_TEXT;
+		return CF_TEXT;
 	}
 	if (g_strcmp0("text/html", name) == 0)
 	{
@@ -66,9 +66,9 @@ UINT32 remmina_rdp_cliprdr_get_format_from_gdkatom(GdkAtom atom)
 	}
 	if (g_strcmp0("image/bmp", name) == 0)
 	{
-		return CB_FORMAT_DIB;
+		return CF_DIB;
 	}
-	return CB_FORMAT_RAW;
+	return 0;
 }
 
 void remmina_rdp_cliprdr_get_target_types(UINT32** formats, UINT16* size, GdkAtom* types, int count)
@@ -77,11 +77,11 @@ void remmina_rdp_cliprdr_get_target_types(UINT32** formats, UINT16* size, GdkAto
 	*size = 1;
 	*formats = (UINT32*) malloc(sizeof(UINT32) * (count+1));
 
-	*formats[0] = CB_FORMAT_RAW;
+	*formats[0] = 0;
 	for (i = 0; i < count; i++)
 	{
 		UINT32 format = remmina_rdp_cliprdr_get_format_from_gdkatom(types[i]);
-		if (format != CB_FORMAT_RAW)
+		if (format != 0)
 		{
 			(*formats)[*size] = format;
 			(*size)++;
@@ -166,20 +166,20 @@ void remmina_rdp_cliprdr_process_format_list(RemminaProtocolWidget* gp, RDP_CB_F
 
 	for (i = 0; i < event->num_formats; i++)
 	{
-		if (event->formats[i] == CB_FORMAT_UNICODETEXT)
+		if (event->formats[i] == CF_UNICODETEXT)
 		{
 			GdkAtom atom = gdk_atom_intern("UTF8_STRING", TRUE);
-			gtk_target_list_add(list, atom, 0, CB_FORMAT_UNICODETEXT);
+			gtk_target_list_add(list, atom, 0, CF_UNICODETEXT);
 		}
-		if (event->formats[i] == CB_FORMAT_TEXT)
+		if (event->formats[i] == CF_TEXT)
 		{
 			GdkAtom atom = gdk_atom_intern("TEXT", TRUE);
-			gtk_target_list_add(list, atom, 0, CB_FORMAT_TEXT);
+			gtk_target_list_add(list, atom, 0, CF_TEXT);
 		}
-		if (event->formats[i] == CB_FORMAT_DIB)
+		if (event->formats[i] == CF_DIB)
 		{
 			GdkAtom atom = gdk_atom_intern("image/bmp", TRUE);
-			gtk_target_list_add(list, atom, 0, CB_FORMAT_DIB);
+			gtk_target_list_add(list, atom, 0, CF_DIB);
 		}
 		if (event->formats[i] == CB_FORMAT_JPEG)
 		{
@@ -226,7 +226,7 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 	{
 		switch (rfi->format)
 		{
-			case CB_FORMAT_UNICODETEXT:
+			case CF_UNICODETEXT:
 			{
 				size = ConvertFromUnicode(CP_UTF8, 0, (WCHAR*)data, size / 2, (CHAR**)&data, 0, NULL, NULL);
 				crlf2lf(data, &size);
@@ -234,7 +234,7 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 				break;
 			}
 
-			case CB_FORMAT_TEXT:
+			case CF_TEXT:
 			case CB_FORMAT_HTML:
 			{
 				crlf2lf(data, &size);
@@ -242,7 +242,7 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 				break;
 			}
 
-			case CB_FORMAT_DIB:
+			case CF_DIB:
 			{
 				wStream* s;
 				UINT16 bpp;
@@ -333,7 +333,7 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *clipboard, GtkSelectionData 
 	data = g_async_queue_timeout_pop(rfi->clipboard_queue, 1000000);
 	if (data != NULL)
 	{
-		if (info == CB_FORMAT_PNG || info == CB_FORMAT_DIB || info == CB_FORMAT_JPEG)
+		if (info == CB_FORMAT_PNG || info == CF_DIB || info == CB_FORMAT_JPEG)
 		{
 			gtk_selection_data_set_pixbuf(selection_data, data);
 			g_object_unref(data);
@@ -405,8 +405,8 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 	{
 		switch (ui->clipboard.format)
 		{
-			case CB_FORMAT_TEXT:
-			case CB_FORMAT_UNICODETEXT:
+			case CF_TEXT:
+			case CF_UNICODETEXT:
 			case CB_FORMAT_HTML:
 			{
 				inbuf = (UINT8*)gtk_clipboard_wait_for_text(clipboard);
@@ -415,7 +415,7 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 
 			case CB_FORMAT_PNG:
 			case CB_FORMAT_JPEG:
-			case CB_FORMAT_DIB:
+			case CF_DIB:
 			{
 				image = gtk_clipboard_wait_for_image(clipboard);
 				break;
@@ -428,14 +428,14 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 	{
 		switch (ui->clipboard.format)
 		{
-			case CB_FORMAT_TEXT:
+			case CF_TEXT:
 			case CB_FORMAT_HTML:
 			{
 				size = strlen((char*)inbuf);
 				outbuf = lf2crlf(inbuf, &size);
 				break;
 			}
-			case CB_FORMAT_UNICODETEXT:
+			case CF_UNICODETEXT:
 			{
 				size = strlen((char*)inbuf);
 				inbuf = lf2crlf(inbuf, &size);
@@ -465,7 +465,7 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 				g_object_unref(image);
 				break;
 			}
-			case CB_FORMAT_DIB:
+			case CF_DIB:
 			{
 				gchar* data;
 				gsize buffersize;
