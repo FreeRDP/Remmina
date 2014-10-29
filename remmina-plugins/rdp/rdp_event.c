@@ -54,6 +54,9 @@ static void remmina_rdp_event_on_focus_in(GtkWidget* widget, GdkEventKey* event,
 #endif
 
 	rfi = GET_DATA(gp);
+	if ( !rfi )
+		return;
+
 	input = rfi->instance->input;
 	UINT32 toggle_keys_state = 0;
 
@@ -88,6 +91,8 @@ static void remmina_rdp_event_event_push(RemminaProtocolWidget* gp, const Remmin
 	RemminaPluginRdpEvent* event;
 
 	rfi = GET_DATA(gp);
+	if ( !rfi )
+		return;
 
 	if (rfi->event_queue)
 	{
@@ -454,6 +459,8 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 	DWORD scancode;
 
 	rfi = GET_DATA(gp);
+	if ( !rfi ) return TRUE;
+
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_SCANCODE;
 	rdp_event.key_event.up = (event->type == GDK_KEY_PRESS ? False : True);
 	rdp_event.key_event.extended = False;
@@ -535,6 +542,8 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 	GtkClipboard* clipboard;
 
 	rfi = GET_DATA(gp);
+	if ( !rfi ) return;
+
 	rfi->drawing_area = gtk_drawing_area_new();
 	gtk_widget_show(rfi->drawing_area);
 	gtk_container_add(GTK_CONTAINER(gp), rfi->drawing_area);
@@ -608,7 +617,7 @@ void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 	RemminaPluginRdpUiObject* ui;
 
 	rfi = GET_DATA(gp);
-
+	if ( !rfi ) return;
 
 	/* unregister the clipboard monitor */
 	if (rfi->clipboard_handler)
@@ -702,7 +711,7 @@ static void remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPl
 	rfContext* rfi = GET_DATA(gp);
 	rdpPointer* pointer = (rdpPointer*)ui->cursor.pointer;
 #if GTK_VERSION == 3
-	cairo_surface_t* surface;	
+	cairo_surface_t* surface;
 	UINT8* data = malloc(pointer->width * pointer->height * 4);
 #else
 	guchar *data = g_malloc0(pointer->width * pointer->height * 4);
@@ -715,7 +724,7 @@ static void remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPl
 	cairo_surface_destroy(surface);
 #else
 	pixbuf = gdk_pixbuf_new_from_data(data, GDK_COLORSPACE_RGB, TRUE, 8, pointer->width, pointer->height, (pointer->width * 4), NULL, NULL);
-#endif	
+#endif
 	((rfPointer*)ui->cursor.pointer)->cursor = gdk_cursor_new_from_pixbuf(rfi->display, pixbuf, pointer->xPos, pointer->yPos);
 }
 
@@ -728,7 +737,7 @@ static void remmina_rdp_event_free_cursor(RemminaProtocolWidget* gp, RemminaPlug
 	g_object_unref(ui->cursor.pointer->cursor);
 #else
 	gdk_cursor_unref(ui->cursor.pointer->cursor);
-#endif	
+#endif
 	ui->cursor.pointer->cursor = NULL;
 	g_cond_signal(rfi->gcond);
 	g_mutex_unlock(rfi->gmutex);
