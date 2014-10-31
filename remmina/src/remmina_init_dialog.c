@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -77,7 +77,7 @@ static void remmina_init_dialog_init(RemminaInitDialog *dialog)
 	dialog->clientcert = NULL;
 	dialog->clientkey = NULL;
 
-	gtk_dialog_add_buttons(GTK_DIALOG(dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
+	gtk_dialog_add_buttons(GTK_DIALOG(dialog),  _("_Cancel"), GTK_RESPONSE_CANCEL, _("_OK"), GTK_RESPONSE_OK, NULL);
 	gtk_dialog_set_alternative_button_order(GTK_DIALOG(dialog), GTK_RESPONSE_OK, GTK_RESPONSE_CANCEL, -1);
 
 	gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
@@ -98,7 +98,7 @@ static void remmina_init_dialog_init(RemminaInitDialog *dialog)
 	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dialog))), hbox, TRUE, TRUE, 0);
 
 	/* Icon */
-	widget = gtk_image_new_from_icon_name(GTK_STOCK_DIALOG_INFO, GTK_ICON_SIZE_DIALOG);
+	widget = gtk_image_new_from_icon_name("dialog-information", GTK_ICON_SIZE_DIALOG);
 	gtk_widget_show(widget);
 	gtk_box_pack_start(GTK_BOX(hbox), widget, TRUE, TRUE, 4);
 	dialog->image = widget;
@@ -128,7 +128,8 @@ static void remmina_init_dialog_init(RemminaInitDialog *dialog)
 static void remmina_init_dialog_connecting(RemminaInitDialog *dialog)
 {
 	gtk_label_set_text(GTK_LABEL(dialog->status_label), (dialog->status ? dialog->status : dialog->title));
-	gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_INFO, GTK_ICON_SIZE_DIALOG);
+	// DEPRECATED gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_INFO, GTK_ICON_SIZE_DIALOG);
+	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-information", GTK_ICON_SIZE_DIALOG);
 	gtk_dialog_set_response_sensitive(GTK_DIALOG(dialog), GTK_RESPONSE_OK, FALSE);
 
 	dialog->mode = REMMINA_INIT_MODE_CONNECTING;
@@ -202,7 +203,8 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 	gtk_grid_set_column_spacing(GTK_GRID(table), 8);
 
 	/* Icon */
-	gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
+	//gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
+	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-password", GTK_ICON_SIZE_DIALOG);
 
 	/* Entries */
 	widget = gtk_label_new(label);
@@ -278,7 +280,8 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 	gtk_grid_set_column_homogeneous (GTK_GRID(table), TRUE);
 
 	/* Icon */
-	gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
+	// DEPRECATED gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
+	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-password", GTK_ICON_SIZE_DIALOG);
 
 	/* Entries */
 	widget = gtk_label_new(_("User name"));
@@ -390,7 +393,8 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 	//gtk_grid_set_column_homogeneous (GTK_GRID(table), TRUE);
 
 	/* Icon */
-	gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
+	// DEPRECATED gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
+	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-password", GTK_ICON_SIZE_DIALOG);
 
 	/* Entries */
 	widget = gtk_label_new(_("Subject:"));
@@ -424,7 +428,7 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 	gtk_grid_attach(GTK_GRID(table), widget, 1, 2, 2, 1);
 
 	widget = gtk_label_new (NULL);
-	s = g_strdup_printf("<span size=\"large\"><b>%s</b></span>", _("Accept Certificate?")); 
+	s = g_strdup_printf("<span size=\"large\"><b>%s</b></span>", _("Accept Certificate?"));
 	gtk_label_set_markup(GTK_LABEL (widget), s);
 	g_free(s);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.5, 0.5);
@@ -466,7 +470,8 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 	gtk_grid_set_column_spacing(GTK_GRID(table), 8);
 
 	/* Icon */
-	gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
+	// DEPRECATED gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
+	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-password", GTK_ICON_SIZE_DIALOG);
 
 	/* Entries */
 	/* Not tested */
@@ -512,7 +517,7 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 	gtk_grid_attach(GTK_GRID(table), widget, 1, 3, 2, 1);
 
 	widget = gtk_label_new (NULL);
-	s = g_strdup_printf("<span size=\"large\"><b>%s</b></span>", _("Accept Changed Certificate?")); 
+	s = g_strdup_printf("<span size=\"large\"><b>%s</b></span>", _("Accept Changed Certificate?"));
 	gtk_label_set_markup(GTK_LABEL (widget), s);
 	g_free(s);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.5, 0.5);
@@ -590,7 +595,8 @@ gint remmina_init_dialog_authx509(RemminaInitDialog *dialog, const gchar *cacert
 	gtk_grid_set_column_spacing(GTK_GRID(table), 8);
 
 	/* Icon */
-	gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
+	// DEPRECATED gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
+	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-password", GTK_ICON_SIZE_DIALOG);
 
 	/* Buttons for choosing the certificates */
 	cacert_button = remmina_init_dialog_create_file_button(GTK_GRID(table), _("CA certificate"), 0, cacert);
@@ -639,7 +645,8 @@ static gint remmina_init_dialog_serverkey_confirm(RemminaInitDialog *dialog, con
 	gtk_widget_show(vbox);
 
 	/* Icon */
-	gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_WARNING, GTK_ICON_SIZE_DIALOG);
+	// DEPRECATED gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_WARNING, GTK_ICON_SIZE_DIALOG);
+	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-warning", GTK_ICON_SIZE_DIALOG);
 
 	/* Entries */
 	widget = gtk_label_new(prompt);
