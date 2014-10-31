@@ -142,7 +142,7 @@ static void remmina_main_clear_selection_data(RemminaMain *remminamain)
 	remminamain->priv->selected_filename = NULL;
 	remminamain->priv->selected_name = NULL;
 
-	gtk_action_group_set_sensitive(remminamain->priv->file_sensitive_group, FALSE);
+	// DEPRECATED gtk_action_group_set_sensitive(remminamain->priv->file_sensitive_group, FALSE);
 }
 
 static gboolean remmina_main_selection_func(GtkTreeSelection *selection, GtkTreeModel *model, GtkTreePath *path,
@@ -169,7 +169,7 @@ static gboolean remmina_main_selection_func(GtkTreeSelection *selection, GtkTree
 	gtk_statusbar_pop(GTK_STATUSBAR(remminamain->priv->statusbar), context_id);
 	if (remminamain->priv->selected_filename)
 	{
-		gtk_action_group_set_sensitive(remminamain->priv->file_sensitive_group, TRUE);
+		// DEPRECATED gtk_action_group_set_sensitive(remminamain->priv->file_sensitive_group, TRUE);
 		g_snprintf(buf, sizeof(buf), "%s (%s)", remminamain->priv->selected_name, remminamain->priv->selected_filename);
 		gtk_statusbar_push(GTK_STATUSBAR(remminamain->priv->statusbar), context_id, buf);
 	}
@@ -1226,7 +1226,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 
 	gtk_window_add_accel_group(GTK_WINDOW(remminamain), gtk_ui_manager_get_accel_group(uimanager));
 
-	gtk_action_group_set_sensitive(priv->file_sensitive_group, FALSE);
+	// DPRECATED gtk_action_group_set_sensitive(priv->file_sensitive_group, FALSE);
 
 	/* Add a Fast Connection box */
 #if GTK_VERSION == 3
