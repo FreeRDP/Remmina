@@ -886,30 +886,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	{
 		if (!rfi->user_cancelled)
 		{
-			UINT32 e;
-		
-			e = freerdp_get_last_error(rfi->instance->context);
-			switch(e) {
-				case FREERDP_ERROR_AUTHENTICATION_FAILED:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Authentication to RDP server %s failed.\nCheck username, password and domain."),
-						rfi->settings->ServerHostname );
-					// Invalidate the saved password, so the user will be re-asked at next logon
-					remmina_plugin_service->file_unsave_password(remminafile);
-					break;
-				case FREERDP_ERROR_CONNECT_FAILED:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to RDP server %s failed."), rfi->settings->ServerHostname );
-					break;
-				default:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
-					break;
-			}
-
+			remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
 		}
-
 		return FALSE;
 	}
-	
-
 
 	remmina_rdp_main_loop(gp);
 
