@@ -220,7 +220,7 @@ static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe
 #endif
 	gtk_widget_show(tablabel);
 
-	widget = gtk_image_new_from_stock(stock_id, GTK_ICON_SIZE_MENU);
+	widget = gtk_image_new_from_icon_name(stock_id, GTK_ICON_SIZE_MENU);
 	gtk_box_pack_start(GTK_BOX(tablabel), widget, FALSE, FALSE, 0);
 	gtk_widget_show(widget);
 
@@ -1237,7 +1237,7 @@ static void remmina_file_editor_init(RemminaFileEditor* gfe)
 	/* The Set As Default button */
 	widget = gtk_button_new_with_label(_("Default"));
 	gtk_widget_show(widget);
-	gtk_button_set_image(GTK_BUTTON(widget), gtk_image_new_from_stock(GTK_STOCK_PREFERENCES, GTK_ICON_SIZE_BUTTON));
+	gtk_button_set_image(GTK_BUTTON(widget), gtk_image_new_from_icon_name(GTK_STOCK_PREFERENCES, GTK_ICON_SIZE_BUTTON));
 	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_action_area(GTK_DIALOG(gfe))), widget, FALSE, TRUE, 0);
 	gtk_button_box_set_child_secondary(GTK_BUTTON_BOX(gtk_dialog_get_action_area(GTK_DIALOG(gfe))), widget, TRUE);
 

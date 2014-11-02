@@ -155,7 +155,14 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 	}
 	else
 	{
+#if GTK_VERSION == 3
+		widget = gtk_image_new_from_icon_name(GTK_STOCK_JUMP_TO, GTK_ICON_SIZE_MENU);
+#else
+		// This is weird I must use the deprecated function call for the jump to 
+		// icon keep it working with MATE, Tango and GNOME themes
+		// Everywhere else can use the forward compatible function
 		widget = gtk_image_new_from_stock(GTK_STOCK_JUMP_TO, GTK_ICON_SIZE_MENU);
+#endif
 	}
 
 	gtk_widget_show(widget);
