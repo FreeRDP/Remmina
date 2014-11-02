@@ -32,6 +32,7 @@
  *
  */
 
+#include "config.h"
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <string.h>
@@ -158,8 +159,10 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 	}
 
 	gtk_widget_show(widget);
+#if GTK_VERSION == 2
 	gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(item), widget);
 	gtk_image_menu_item_set_always_show_image(GTK_IMAGE_MENU_ITEM(item), TRUE);
+#endif
 
 	if (item->server)
 	{
