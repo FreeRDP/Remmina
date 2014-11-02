@@ -197,6 +197,12 @@ static void remmina_connection_holder_keyboard_grab(RemminaConnectionHolder* cnn
 
 	if (keyboard != NULL)
 	{
+		
+		if ( gdk_device_get_source (keyboard) != GDK_SOURCE_KEYBOARD)
+		{
+			keyboard = gdk_device_get_associated_device( keyboard );
+		}
+		
 		if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE))
 		{
 			gdk_device_grab(keyboard, gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)), GDK_OWNERSHIP_WINDOW, TRUE, GDK_KEY_PRESS | GDK_KEY_RELEASE, NULL, GDK_CURRENT_TIME);
@@ -609,6 +615,7 @@ static void remmina_connection_holder_toolbar_fullscreen(GtkWidget* widget, Remm
 	}
 	else
 	{
+		remmina_pref.toolbar_pin_down = cnnhld->cnnwin->priv->pin_down;
 		remmina_connection_holder_create_scrolled(cnnhld, NULL);
 	}
 }
@@ -1557,6 +1564,9 @@ static gboolean remmina_connection_window_on_leave(GtkWidget* widget, GdkEventCr
 		device = gdk_device_manager_get_client_pointer(manager);
 		if (device != NULL)
 		{
+			if ( device != GDK_SOURCE_KEYBOARD ) {
+				device = gdk_device_get_associated_device (device);
+			}
 			gdk_device_ungrab(device, GDK_CURRENT_TIME);
 		}
 	}
@@ -2321,6 +2331,7 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
 				break;
 			case SCROLLED_FULLSCREEN_MODE:
 			case VIEWPORT_FULLSCREEN_MODE:
+				remmina_pref.toolbar_pin_down = cnnhld->cnnwin->priv->pin_down;
 				remmina_connection_holder_create_scrolled(cnnhld, NULL);
 				break;
 			default:

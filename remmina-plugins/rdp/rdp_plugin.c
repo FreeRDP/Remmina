@@ -257,7 +257,7 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 		rfi->rfx_context = rfx_context_new();
 	}
 
-
+	freerdp_client_load_addins(instance->context->channels, instance->settings);
 	freerdp_channels_pre_connect(instance->context->channels, instance);
 
 	rfi->clrconv = freerdp_clrconv_new(CLRCONV_ALPHA);
@@ -482,7 +482,7 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 	rfi = GET_DATA(gp);
 	channels = rfi->instance->context->channels;
 
-	while (1)
+	while (!freerdp_shall_disconnect(rfi->instance))
 	{
 		rcount = 0;
 		wcount = 0;
@@ -634,7 +634,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	gchar* value;
 	gint rdpdr_num;
 	gint drdynvc_num;
-	gint rdpsnd_num;
+	gint rdpsnd_rate;
+	gint rdpsnd_channel;
+	char *rdpsnd_params[3];
+	int rdpsnd_nparams;
+	char rdpsnd_param1[16];
+	char rdpsnd_param2[16];
 	const gchar* cs;
 	RemminaFile* remminafile;
 	rfContext* rfi;
@@ -770,7 +775,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	rfi->settings->FastPathOutput = True;
 
 	drdynvc_num = 0;
-	rdpsnd_num = 0;
+
 	cs = remmina_plugin_service->file_get_string(remminafile, "sound");
 
 	if (g_strcmp0(cs, "remote") == 0)
@@ -779,39 +784,33 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	}
 	else if (g_str_has_prefix(cs, "local"))
 	{
-/* Removed becuase of issue #280 - TODO: fix this
-		cs = strchr(cs, ',');
 
+		rdpsnd_nparams = 0;
+		rdpsnd_params[rdpsnd_nparams++] = "rdpsnd";
+
+		cs = strchr(cs, ',');
 		if (cs)
 		{
-			snprintf(rfi->rdpsnd_options, sizeof(rfi->rdpsnd_options), "%s", cs + 1);
-			s = strchr(rfi->rdpsnd_options, ',');
-
-			if (s)
-				*s++ = '\0';
-
-			rfi->rdpsnd_data[rdpsnd_num].size = sizeof(RDP_PLUGIN_DATA);
-			rfi->rdpsnd_data[rdpsnd_num].data[0] = "rate";
-			rfi->rdpsnd_data[rdpsnd_num].data[1] = rfi->rdpsnd_options;
-			rdpsnd_num++;
-
-			if (s)
+			rdpsnd_rate = atoi(cs + 1);
+			if (rdpsnd_rate > 1000 && rdpsnd_rate < 150000)
 			{
-				rfi->rdpsnd_data[rdpsnd_num].size = sizeof(RDP_PLUGIN_DATA);
-				rfi->rdpsnd_data[rdpsnd_num].data[0] = "channel";
-				rfi->rdpsnd_data[rdpsnd_num].data[1] = s;
-				rdpsnd_num++;
+				snprintf( rdpsnd_param1, sizeof(rdpsnd_param1), "rate:%d", rdpsnd_rate );
+				rdpsnd_params[rdpsnd_nparams++] = rdpsnd_param1;
+				cs = strchr(cs +1, ',');
+				if (cs)
+				{
+					rdpsnd_channel = atoi(cs + 1);
+					if (rdpsnd_channel >= 1 && rdpsnd_channel <= 2)
+					{
+						snprintf( rdpsnd_param2, sizeof(rdpsnd_param2), "channel:%d", rdpsnd_channel );
+						rdpsnd_params[rdpsnd_nparams++] = rdpsnd_param2;
+					}
+				}
 			}
 		}
-*/
 
-		/* remmina_rdp_load_plugin(rfi->channels, rfi->settings, "rdpsnd", rfi->rdpsnd_data); */
-        remmina_rdp_load_plugin(rfi->instance->context->channels, rfi->settings, "rdpsnd", rfi->settings);
-/* TODO: Fix/Check this - Removed because of issue #280
-		rfi->drdynvc_data[drdynvc_num].size = sizeof(RDP_PLUGIN_DATA);
-		rfi->drdynvc_data[drdynvc_num].data[0] = "audin";
-		drdynvc_num++;
-*/
+		remmina_rdp_add_static_channel(rfi->settings, rdpsnd_nparams, (char**) rdpsnd_params);
+
 	}
 
 	if (drdynvc_num)
@@ -819,19 +818,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		remmina_rdp_load_plugin(rfi->instance->context->channels, rfi->settings, "drdynvc", rfi->drdynvc_data);
 	}
 
-	if (!remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE))
-	{
-
-		if (!freerdp_static_channel_collection_find(rfi->settings, "cliprdr"))
-		{
-			char* params[1];
-			params[0] = "cliprdr";
-			remmina_rdp_add_static_channel(rfi->settings, 1, (char**) params);
-		}
-
-		// Old version: remmina_rdp_load_plugin(rfi->instance->context->channels, rfi->settings, "cliprdr", NULL);
-
-	}
+	rfi->settings->RedirectClipboard = ( remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE) ? FALSE: TRUE );
 
 	rdpdr_num = 0;
 	cs = remmina_plugin_service->file_get_string(remminafile, "sharefolder");
@@ -871,15 +858,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		//remmina_rdp_load_plugin(rfi->channels, rfi->settings, "rdpdr", rfi->rdpdr_data);
         remmina_rdp_load_plugin(rfi->instance->context->channels, rfi->settings, "rdpdr", rfi->settings);
 	}
-
-
-	for (index = 0; index < rfi->settings->StaticChannelCount; index++)
-	{
-		args = rfi->settings->StaticChannelArray[index];
-		remmina_rdp_load_static_channel_addin(rfi->instance->context->channels, rfi->settings, args->argv[0], args);
-
-	}
-
 
 
 	if (!freerdp_connect(rfi->instance))
