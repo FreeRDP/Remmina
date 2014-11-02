@@ -348,6 +348,10 @@ remmina_ssh_plugin_register (void)
 
 	remmina_plugin_service = &remmina_plugin_manager_service;
 	remmina_plugin_service->register_plugin ((RemminaPlugin *) &remmina_plugin_ssh);
+
+	ssh_threads_set_callbacks(ssh_threads_get_pthread());
+	ssh_init();
+
 }
 
 #else

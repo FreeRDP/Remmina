@@ -262,7 +262,9 @@ static void remmina_icon_populate_extra_menu_item(GtkWidget *menu)
 	gboolean new_ontop;
 	GHashTableIter iter;
 	gchar *tmp;
+#ifdef ENABLE_MINIMIZE_TO_TRAY
 	gint n;
+#endif
 
 	new_ontop = remmina_pref.applet_new_ontop;
 
@@ -303,6 +305,7 @@ static void remmina_icon_populate_extra_menu_item(GtkWidget *menu)
 		gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	}
 
+#ifdef ENABLE_MINIMIZE_TO_TRAY
 	/* Existing window */
 	if (remmina_pref.minimize_to_tray)
 	{
@@ -315,6 +318,7 @@ static void remmina_icon_populate_extra_menu_item(GtkWidget *menu)
 			gtk_menu_shell_insert(GTK_MENU_SHELL(menu), menuitem, n);
 		}
 	}
+#endif
 
 	g_signal_connect(G_OBJECT(menu), "launch-item", G_CALLBACK(remmina_icon_on_launch_item), NULL);
 	g_signal_connect(G_OBJECT(menu), "edit-item", G_CALLBACK(remmina_icon_on_edit_item), NULL);

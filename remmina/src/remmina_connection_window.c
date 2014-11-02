@@ -1817,6 +1817,7 @@ static void remmina_connection_window_init(RemminaConnectionWindow* cnnwin)
 
 static gboolean remmina_connection_window_state_event(GtkWidget* widget, GdkEventWindowState* event, gpointer user_data)
 {
+#ifdef ENABLE_MINIMIZE_TO_TRAY
 	GdkScreen* screen;
 
 	screen = gdk_screen_get_default();
@@ -1829,6 +1830,7 @@ static gboolean remmina_connection_window_state_event(GtkWidget* widget, GdkEven
 		gtk_widget_hide(widget);
 		return TRUE;
 	}
+#endif	
 	return FALSE;
 }
 
