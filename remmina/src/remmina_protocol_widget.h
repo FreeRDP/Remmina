@@ -126,6 +126,7 @@ gint remmina_protocol_widget_changed_certificate(RemminaProtocolWidget *gp, cons
 gchar* remmina_protocol_widget_init_get_username(RemminaProtocolWidget *gp);
 gchar* remmina_protocol_widget_init_get_password(RemminaProtocolWidget *gp);
 gchar* remmina_protocol_widget_init_get_domain(RemminaProtocolWidget *gp);
+gboolean remmina_protocol_widget_init_get_savepassword(RemminaProtocolWidget *gp);
 gint remmina_protocol_widget_init_authx509(RemminaProtocolWidget *gp);
 gchar* remmina_protocol_widget_init_get_cacert(RemminaProtocolWidget *gp);
 gchar* remmina_protocol_widget_init_get_cacrl(RemminaProtocolWidget *gp);

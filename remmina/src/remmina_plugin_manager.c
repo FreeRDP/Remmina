@@ -104,6 +104,7 @@ RemminaPluginService remmina_plugin_manager_service =
 		remmina_protocol_widget_init_get_username,
 		remmina_protocol_widget_init_get_password,
 		remmina_protocol_widget_init_get_domain,
+		remmina_protocol_widget_init_get_savepassword,
 		remmina_protocol_widget_init_authx509,
 		remmina_protocol_widget_init_get_cacert,
 		remmina_protocol_widget_init_get_cacrl,
@@ -126,6 +127,7 @@ RemminaPluginService remmina_plugin_manager_service =
 		remmina_file_get_secret,
 		remmina_file_set_int,
 		remmina_file_get_int,
+		remmina_file_unsave_password,
 
 		remmina_pref_set_value,
 		remmina_pref_get_value,
