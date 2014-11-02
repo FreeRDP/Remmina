@@ -129,12 +129,14 @@ static void remmina_icon_populate_additional_menu_item(GtkWidget *menu)
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_main), NULL);
 
-	menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_PREFERENCES, NULL);
+	//menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_PREFERENCES, NULL);
+	menuitem = gtk_menu_item_new_with_mnemonic(_("_Preferences"));
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_preferences), NULL);
 
-	menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_ABOUT, NULL);
+	//menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_ABOUT, NULL);
+	menuitem = gtk_menu_item_new_with_mnemonic(_("_About"));
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_about), NULL);
@@ -158,7 +160,8 @@ static void remmina_icon_populate_additional_menu_item(GtkWidget *menu)
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 #endif
 
-	menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_QUIT, NULL);
+	//menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_QUIT, NULL);
+	menuitem = gtk_menu_item_new_with_mnemonic(_("_Quit"));
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_destroy), NULL);

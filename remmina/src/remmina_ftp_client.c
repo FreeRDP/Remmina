@@ -679,7 +679,8 @@ static void remmina_ftp_client_popup_menu(RemminaFTPClient *client, GdkEventButt
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_ftp_client_action_upload), client);
 
-	menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_DELETE, NULL);
+	//menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_DELETE, NULL);
+	menuitem = gtk_menu_item_new_with_mnemonic(_("_Delete"));
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_ftp_client_action_delete), client);
