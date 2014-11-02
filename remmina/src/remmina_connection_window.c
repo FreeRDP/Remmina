@@ -1489,14 +1489,14 @@ static void remmina_connection_holder_showhide_toolbar(RemminaConnectionHolder* 
 	}
 }
 
-static gboolean remmina_connection_holder_toolbar_enter(GtkWidget* widget, GdkEventCrossing* event,
+static gboolean remmina_connection_holder_floating_toolbar_on_enter(GtkWidget* widget, GdkEventCrossing* event,
 		RemminaConnectionHolder* cnnhld)
 {
 	remmina_connection_holder_floating_toolbar_show(cnnhld, TRUE);
 	return TRUE;
 }
 
-static gboolean remmina_connection_holder_toolbar_leave(GtkWidget* widget, GdkEventCrossing* event,
+static gboolean remmina_connection_holder_floating_toolbar_on_leave(GtkWidget* widget, GdkEventCrossing* event,
 		RemminaConnectionHolder* cnnhld)
 {
 	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
@@ -1584,7 +1584,7 @@ static gboolean remmina_connection_window_on_leave(GtkWidget* widget, GdkEventCr
 }
 #endif
 
-static gboolean remmina_connection_holder_toolbar_scroll(GtkWidget* widget, GdkEventScroll* event,
+static gboolean remmina_connection_holder_floating_toolbar_on_scroll(GtkWidget* widget, GdkEventScroll* event,
 		RemminaConnectionHolder* cnnhld)
 {
 	DECLARE_CNNOBJ_WITH_RETURN(FALSE)
@@ -1773,13 +1773,11 @@ static void remmina_connection_holder_create_floating_toolbar(RemminaConnectionH
 		gtk_window_set_opacity(GTK_WINDOW(window), 0.0);
 #endif
 	}
-	else
-	{
-		g_signal_connect(G_OBJECT(window), "enter-notify-event", G_CALLBACK(remmina_connection_holder_toolbar_enter), cnnhld);
-		g_signal_connect(G_OBJECT(window), "leave-notify-event", G_CALLBACK(remmina_connection_holder_toolbar_leave), cnnhld);
-		g_signal_connect(G_OBJECT(window), "scroll-event", G_CALLBACK(remmina_connection_holder_toolbar_scroll), cnnhld);
-		gtk_widget_add_events(GTK_WIDGET(window), GDK_SCROLL_MASK);
-	}
+
+	g_signal_connect(G_OBJECT(window), "enter-notify-event", G_CALLBACK(remmina_connection_holder_floating_toolbar_on_enter), cnnhld);
+	g_signal_connect(G_OBJECT(window), "leave-notify-event", G_CALLBACK(remmina_connection_holder_floating_toolbar_on_leave), cnnhld);
+	g_signal_connect(G_OBJECT(window), "scroll-event", G_CALLBACK(remmina_connection_holder_floating_toolbar_on_scroll), cnnhld);
+	gtk_widget_add_events(GTK_WIDGET(window), GDK_SCROLL_MASK);
 
 	if (cnnobj->connected)
 		gtk_widget_show(window);
