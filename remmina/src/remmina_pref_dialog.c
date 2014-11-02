@@ -220,6 +220,7 @@ static void remmina_pref_dialog_destroy(GtkWidget *widget, gpointer data)
 		remmina_pref.disable_tray_icon = b;
 		remmina_icon_init();
 	}
+#ifdef ENABLE_MINIMIZE_TO_TRAY
 	if (b)
 	{
 		remmina_pref.minimize_to_tray = FALSE;
@@ -228,6 +229,7 @@ static void remmina_pref_dialog_destroy(GtkWidget *widget, gpointer data)
 	{
 		remmina_pref.minimize_to_tray = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->minimize_to_tray_check));
 	}
+#endif
 	if (b)
 	{
 		b = FALSE;
@@ -305,7 +307,9 @@ static void remmina_pref_dialog_disable_tray_icon_on_toggled(GtkWidget *widget, 
 
 	b = !gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
 	gtk_widget_set_sensitive(dialog->priv->autostart_tray_icon_check, b);
+#ifdef ENABLE_MINIMIZE_TO_TRAY
 	gtk_widget_set_sensitive(dialog->priv->minimize_to_tray_check, b);
+#endif
 }
 
 static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
@@ -548,22 +552,25 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.disable_tray_icon);
 	priv->disable_tray_icon_check = widget;
 
-	widget = gtk_check_button_new_with_label(_("Start tray icon automatically"));
+	widget = gtk_check_button_new_with_label(_("Start tray icon at user logon"));
 	gtk_widget_show(widget);
 	gtk_table_attach_defaults(GTK_TABLE(table), widget, 0, 2, 3, 4);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_icon_is_autostart());
 	gtk_widget_set_sensitive(widget, !remmina_pref.disable_tray_icon);
 	priv->autostart_tray_icon_check = widget;
 
+#ifdef ENABLE_MINIMIZE_TO_TRAY
 	widget = gtk_check_button_new_with_label(_("Minimize windows to tray"));
 	gtk_widget_show(widget);
 	gtk_table_attach_defaults(GTK_TABLE(table), widget, 0, 2, 4, 5);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.minimize_to_tray);
 	gtk_widget_set_sensitive(widget, !remmina_pref.disable_tray_icon);
 	priv->minimize_to_tray_check = widget;
+#endif
 
 	g_signal_connect(G_OBJECT(priv->disable_tray_icon_check), "toggled",
 			G_CALLBACK(remmina_pref_dialog_disable_tray_icon_on_toggled), dialog);
+
 
 	/* Keyboard tab */
 	tablabel = gtk_label_new(_("Keyboard"));
