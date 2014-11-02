@@ -32,6 +32,7 @@
  *
  */
 
+#include "config.h"
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <string.h>
@@ -88,7 +89,11 @@ remmina_applet_menu_add_group(GtkWidget *menu, const gchar *group, gint position
 	GtkWidget *image;
 	GtkWidget *submenu;
 
+#if GTK_VERSION == 3
+	widget = gtk_menu_item_new_with_label(group);
+#else
 	widget = gtk_image_menu_item_new_with_label(group);
+#endif
 	gtk_widget_show(widget);
 
 	image =
@@ -96,8 +101,10 @@ remmina_applet_menu_add_group(GtkWidget *menu, const gchar *group, gint position
 					(menuitem->item_type == REMMINA_APPLET_MENU_ITEM_DISCOVERED ?
 							"folder-remote" : "folder"), GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
+#if GTK_VERSION == 2
 	gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(widget), image);
 	gtk_image_menu_item_set_always_show_image(GTK_IMAGE_MENU_ITEM(widget), TRUE);
+#endif
 
 	g_object_set_data_full(G_OBJECT(widget), "group", g_strdup(group), g_free);
 	g_object_set_data(G_OBJECT(widget), "count", GINT_TO_POINTER(0));

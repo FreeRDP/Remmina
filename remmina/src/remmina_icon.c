@@ -124,21 +124,33 @@ static void remmina_icon_populate_additional_menu_item(GtkWidget *menu)
 {
 	GtkWidget *menuitem;
 
+#if GTK_VERSION == 3
+	menuitem = gtk_menu_item_new_with_label(_("Open Main Window"));
+#else
 	menuitem = gtk_image_menu_item_new_with_label(_("Open Main Window"));
+#endif
 	gtk_widget_show(menuitem);
+#if GTK_VERSION == 2
 	gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(menuitem),
 			gtk_image_new_from_icon_name("remmina", GTK_ICON_SIZE_MENU));
+#endif
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_main), NULL);
 
-	//menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_PREFERENCES, NULL);
+#if GTK_VERSION == 2
+	menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_PREFERENCES, NULL);
+#else
 	menuitem = gtk_menu_item_new_with_mnemonic(_("_Preferences"));
+#endif
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_preferences), NULL);
 
-	//menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_ABOUT, NULL);
+#if GTK_VERSION == 2
+	menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_ABOUT, NULL);
+#else
 	menuitem = gtk_menu_item_new_with_mnemonic(_("_About"));
+#endif
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_about), NULL);
@@ -162,8 +174,11 @@ static void remmina_icon_populate_additional_menu_item(GtkWidget *menu)
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 #endif
 
-	//menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_QUIT, NULL);
+#if GTK_VERSION == 2
+	menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_QUIT, NULL);
+#else
 	menuitem = gtk_menu_item_new_with_mnemonic(_("_Quit"));
+#endif
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_destroy), NULL);
