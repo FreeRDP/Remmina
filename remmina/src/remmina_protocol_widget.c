@@ -803,7 +803,7 @@ gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget* gp, RemminaAuth
 	RemminaFile* remminafile = gp->priv->remmina_file;
 	gchar* s;
 	gint ret;
-
+	
 	switch (authpwd_type)
 	{
 		case REMMINA_AUTHPWD_TYPE_PROTOCOL:
@@ -832,7 +832,7 @@ gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget* gp, RemminaAuth
 gint remmina_protocol_widget_init_authuserpwd(RemminaProtocolWidget* gp, gboolean want_domain)
 {
 	RemminaFile* remminafile = gp->priv->remmina_file;
-
+	
 	return remmina_init_dialog_authuserpwd(REMMINA_INIT_DIALOG(gp->priv->init_dialog), want_domain,
 			remmina_file_get_string(remminafile, "username"),
 			want_domain ? remmina_file_get_string(remminafile, "domain") : NULL,
@@ -861,6 +861,11 @@ gchar* remmina_protocol_widget_init_get_password(RemminaProtocolWidget* gp)
 gchar* remmina_protocol_widget_init_get_domain(RemminaProtocolWidget* gp)
 {
 	return g_strdup(REMMINA_INIT_DIALOG(gp->priv->init_dialog)->domain);
+}
+
+gboolean remmina_protocol_widget_init_get_savepassword(RemminaProtocolWidget *gp)
+{
+	return REMMINA_INIT_DIALOG(gp->priv->init_dialog)->save_password;
 }
 
 gint remmina_protocol_widget_init_authx509(RemminaProtocolWidget* gp)
@@ -951,6 +956,7 @@ void remmina_protocol_widget_init_save_cred(RemminaProtocolWidget* gp)
 		remmina_file_save_group(remminafile, REMMINA_SETTING_GROUP_CREDENTIAL);
 	}
 }
+
 
 void remmina_protocol_widget_init_show_listen(RemminaProtocolWidget* gp, gint port)
 {
