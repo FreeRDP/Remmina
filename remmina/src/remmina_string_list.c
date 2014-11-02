@@ -229,7 +229,7 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	gtk_widget_show(vbox);
 	gtk_table_attach(GTK_TABLE(gsl), vbox, 1, 2, 0, 3, 0, GTK_EXPAND | GTK_FILL, 0, 0);
 
-	image = gtk_image_new_from_icon_name(GTK_STOCK_ADD, GTK_ICON_SIZE_MENU);
+	image = gtk_image_new_from_icon_name("list-add", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
 	widget = gtk_button_new();
 	gtk_widget_show(widget);
@@ -237,7 +237,7 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	gtk_box_pack_start(GTK_BOX(vbox), widget, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_string_list_add), gsl);
 
-	image = gtk_image_new_from_icon_name(GTK_STOCK_REMOVE, GTK_ICON_SIZE_MENU);
+	image = gtk_image_new_from_icon_name("list-remove", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
 	widget = gtk_button_new();
 	gtk_widget_show(widget);
@@ -245,7 +245,7 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	gtk_box_pack_start(GTK_BOX(vbox), widget, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_string_list_remove), gsl);
 
-	image = gtk_image_new_from_icon_name(GTK_STOCK_GO_UP, GTK_ICON_SIZE_MENU);
+	image = gtk_image_new_from_icon_name("go-up", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
 	widget = gtk_button_new();
 	gtk_widget_show(widget);
@@ -254,7 +254,7 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_string_list_up), gsl);
 	gsl->up_button = widget;
 
-	image = gtk_image_new_from_icon_name(GTK_STOCK_GO_DOWN, GTK_ICON_SIZE_MENU);
+	image = gtk_image_new_from_icon_name("go-down", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
 	widget = gtk_button_new();
 	gtk_widget_show(widget);

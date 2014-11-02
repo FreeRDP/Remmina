@@ -250,7 +250,7 @@ remmina_public_create_combo_mapint(const gpointer *key_value_list, gint def, gbo
 	return remmina_public_create_combo_map(key_value_list, buf, use_icon, domain);
 }
 
-void remmina_public_create_group(GtkTable* table, const gchar *group, gint row, gint rows, gint cols)
+void remmina_public_create_group(GtkContainer* table, const gchar *group, gint row, gint rows, gint cols)
 {
 	GtkWidget *widget;
 	gchar *str;
@@ -261,12 +261,20 @@ void remmina_public_create_group(GtkTable* table, const gchar *group, gint row, 
 	str = g_markup_printf_escaped("<b>%s</b>", group);
 	gtk_label_set_markup(GTK_LABEL(widget), str);
 	g_free(str);
+#if GTK_VERSION == 3
+	gtk_grid_attach(table, widget, 0, row, cols, row + 1);
+#elif GTK_VERSION == 2
 	gtk_table_attach_defaults(table, widget, 0, cols, row, row + 1);
+#endif
 
 	widget = gtk_label_new(NULL);
 	gtk_widget_show(widget);
 	gtk_widget_set_size_request(widget, 15, -1);
+#if GTK_VERSION == 3
+	gtk_grid_attach(table, widget, 0, row + 1, 3, row + rows);
+#elif GTK_VERSION == 2
 	gtk_table_attach(table, widget, 0, 1, row + 1, row + rows, 0, 0, 0, 0);
+#endif
 }
 
 gchar*
