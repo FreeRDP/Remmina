@@ -135,8 +135,8 @@ static void remmina_file_editor_browse_avahi(GtkWidget* button, RemminaFileEdito
 
 	dialog = aui_service_dialog_new(_("Choose a Remote Desktop Server"),
 			GTK_WINDOW(gfe),
-			GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-			GTK_STOCK_OK, GTK_RESPONSE_ACCEPT,
+			"_Cancel", GTK_RESPONSE_CANCEL,
+			"_OK", GTK_RESPONSE_ACCEPT,
 			NULL);
 
 	gtk_window_set_transient_for (GTK_WINDOW(dialog), GTK_WINDOW(gfe));
