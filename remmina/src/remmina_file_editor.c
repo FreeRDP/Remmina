@@ -330,7 +330,7 @@ static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor* gfe, Gt
 	priv->ssh_auth_publickey_radio = widget;
 	gtk_widget_show(widget);
 #if GTK_VERSION == 3
-	gtk_grid_attach(GTK_GRID(table), widget, column, row + 3, column + 1, row);
+	gtk_grid_attach(GTK_GRID(table), widget, column, row + 20, column + 1, row);
 #elif GTK_VERSION == 2
 	gtk_table_attach(GTK_TABLE(table), widget, column, column + 1, row, row + 1, GTK_FILL, 0, 0, 0);
 #endif
@@ -349,7 +349,7 @@ static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor* gfe, Gt
 	g_free(s);
 	gtk_widget_show(widget);
 #if GTK_VERSION == 3
-	gtk_grid_attach (GTK_GRID(table), widget, column + 1, row + 3, column + 2, row + 1);
+	gtk_grid_attach (GTK_GRID(table), widget, column + 2, row + 20, column, row);
 #elif GTK_VERSION == 2
 	gtk_table_attach_defaults (GTK_TABLE(table), widget, column + 1, column + 2, row, row + 1);
 #endif
@@ -556,7 +556,7 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWid
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
-	gtk_grid_attach(GTK_GRID(table), widget, col, row + 3, col +1, row);
+	gtk_grid_attach(GTK_GRID(table), widget, col, row , col +1, row);
 #elif GTK_VERSION == 2
 	gtk_table_attach(GTK_TABLE(table), widget, col, col + 1, row, row + 1, GTK_FILL, 0, 0, 0);
 #endif
@@ -564,7 +564,7 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWid
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
 #if GTK_VERSION == 3
-	gtk_grid_attach(GTK_GRID(table), widget, col + 2, row + 3, col + 2, row + 1);
+	gtk_grid_attach(GTK_GRID(table), widget, col + 2, row, col + 2, row + 1);
 #elif GTK_VERSION == 2
 	gtk_table_attach(GTK_TABLE(table), widget, col, col + 1, row, row + 1, GTK_FILL, 0, 0, 0);
 #endif
@@ -931,7 +931,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 
 	/* SSH Server group */
 #if GTK_VERSION == 3
-	remmina_public_create_group (GTK_GRID(table), _("SSH Server"), row, 3, 3);
+	remmina_public_create_group (GTK_GRID(table), _("SSH Server"), row, 0, 3);
 #elif GTK_VERSION == 2
 	remmina_public_create_group (GTK_TABLE(table), _("SSH Server"), row, 3, 3);
 #endif
@@ -945,7 +945,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		g_free(s);
 		gtk_widget_show(widget);
 #if GTK_VERSION == 3
-		gtk_grid_attach (GTK_GRID(table), widget, 1, row + 2, 3, row + 1);
+		gtk_grid_attach (GTK_GRID(table), widget, 1, row, 3, row + 1);
 #elif GTK_VERSION == 2
 		gtk_table_attach_defaults (GTK_TABLE(table), hbox, 0, 3, 0, 1);
 #endif
@@ -1015,7 +1015,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 	}
 
 #if GTK_VERSION == 3
-	priv->ssh_charset_combo = remmina_file_editor_create_combo (gfe, table, row + 1, 1,
+	priv->ssh_charset_combo = remmina_file_editor_create_combo (gfe, table, row + 3, 1,
 #elif GTK_VERSION == 2
 	priv->ssh_charset_combo = remmina_file_editor_create_combo (gfe, table, row, 1,
 #endif
@@ -1025,7 +1025,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 	if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SSH)
 	{
 #if GTK_VERSION == 3
-		widget = remmina_file_editor_create_text (gfe, table, row + 3, 1,
+		widget = remmina_file_editor_create_text (gfe, table, row + 7, 1,
 #elif GTK_VERSION == 2
 		widget = remmina_file_editor_create_text (gfe, table, row, 1,
 #endif
@@ -1038,7 +1038,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 	else if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SFTP)
 	{
 #if GTK_VERSION == 3
-		widget = remmina_file_editor_create_text (gfe, table, row + 3, 1,
+		widget = remmina_file_editor_create_text (gfe, table, row + 8, 1,
 #elif GTK_VERSION == 2
 		widget = remmina_file_editor_create_text (gfe, table, row, 1,
 #endif
@@ -1051,14 +1051,14 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 
 	/* SSH Authentication frame */
 #if GTK_VERSION == 3
-	remmina_public_create_group (GTK_GRID(table), _("SSH Authentication"), row + 3, 5, 3);
+	remmina_public_create_group (GTK_GRID(table), _("SSH Authentication"), row + 8, 5, 3);
 #elif GTK_VERSION == 2
 	remmina_public_create_group (GTK_TABLE(table), _("SSH Authentication"), row, 5, 3);
 #endif
 	row++;
 	
 #if GTK_VERSION == 3
-	priv->ssh_username_entry = remmina_file_editor_create_text (gfe, table, row + 1, 1,
+	priv->ssh_username_entry = remmina_file_editor_create_text (gfe, table, row + 10, 1,
 #elif GTK_VERSION == 2
 	priv->ssh_username_entry = remmina_file_editor_create_text (gfe, table, row, 1,
 #endif
@@ -1068,7 +1068,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 	widget = gtk_radio_button_new_with_label (NULL, _("Password"));
 	gtk_widget_show(widget);
 #if GTK_VERSION == 3
-	gtk_grid_attach (GTK_GRID(table), widget, 1, row + 3, 3, row + 1);
+	gtk_grid_attach (GTK_GRID(table), widget, 1, row + 17, 3, row + 1);
 #elif GTK_VERSION == 2
 	gtk_table_attach_defaults (GTK_TABLE(table), widget, 1, 3, row, row + 1);
 #endif
@@ -1079,7 +1079,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 			GTK_RADIO_BUTTON(priv->ssh_auth_password_radio), _("Public key (automatic)"));
 	gtk_widget_show(widget);
 #if GTK_VERSION == 3
-	gtk_grid_attach (GTK_GRID(table), widget, 1, row + 2, 4, row + 1);
+	gtk_grid_attach (GTK_GRID(table), widget, 1, row + 18, 2, row + 1);
 #elif GTK_VERSION == 2
 	gtk_table_attach_defaults (GTK_TABLE(table), widget, 1, 3, row, row + 1);
 #endif

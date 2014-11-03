@@ -264,16 +264,16 @@ void remmina_public_create_group(GtkContainer* table, const gchar *group, gint r
 #if GTK_VERSION == 3
 	gtk_grid_attach(table, widget, 0, row, cols, row + 1);
 #elif GTK_VERSION == 2
-	gtk_table_attach_defaults(table, widget, 0, cols, row, row + 1);
+	gtk_table_attach_defaults(GTK_TABLE(table), widget, 0, cols, row, row + 1);
 #endif
 
 	widget = gtk_label_new(NULL);
 	gtk_widget_show(widget);
 	gtk_widget_set_size_request(widget, 15, -1);
 #if GTK_VERSION == 3
-	gtk_grid_attach(table, widget, 0, row + 1, 3, row + rows);
+	gtk_grid_attach(table, widget, 0, row + 1, 1, row + rows);
 #elif GTK_VERSION == 2
-	gtk_table_attach(table, widget, 0, 1, row + 1, row + rows, 0, 0, 0, 0);
+	gtk_table_attach(GTK_TABLE(table), widget, 0, 1, row + 1, row + rows, 0, 0, 0, 0);
 #endif
 }
 
