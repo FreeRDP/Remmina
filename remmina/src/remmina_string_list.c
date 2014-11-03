@@ -60,7 +60,11 @@ static void remmina_string_list_status_error(RemminaStringList *gsl, const gchar
 
 static void remmina_string_list_status_hints(RemminaStringList *gsl)
 {
+#if GTK_VERSION == 3
+	gtk_widget_override_color(gsl->status_label, GTK_STATE_NORMAL, NULL);
+#else
 	gtk_widget_modify_fg(gsl->status_label, GTK_STATE_NORMAL, NULL);
+#endif
 	gtk_label_set_text(GTK_LABEL(gsl->status_label), gsl->hints);
 }
 
@@ -205,7 +209,7 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 #if GTK_CHECK_VERSION(3, 12, 0)
 	gtk_widget_set_margin_end (GTK_FRAME(frame), 80);
 #else
-	gtk_widget_set_margin_right (GTK_FRAME(frame), 80);
+	gtk_widget_set_margin_right (frame, 80);
 #endif
 	gtk_grid_attach(GTK_GRID(gsl), frame, 0, 0, 1, 1);
 
