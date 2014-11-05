@@ -626,6 +626,26 @@ static void remmina_main_action_view_statusbar(GtkToggleAction *action, RemminaM
 	}
 }
 
+static void remmina_main_action_view_quick_connect(GtkToggleAction *action, RemminaMain *remminamain)
+{
+	gboolean toggled;
+
+	toggled = gtk_toggle_action_get_active(action);
+	if (toggled)
+	{
+		gtk_widget_show(GTK_WIDGET(remminamain->priv->quickconnect_box));
+	}
+	else
+	{
+		gtk_widget_hide(GTK_WIDGET(remminamain->priv->quickconnect_box));
+	}
+	if (remminamain->priv->initialized)
+	{
+		remmina_pref.hide_quick_connect = !toggled;
+		remmina_pref_save();
+	}
+}
+
 static void remmina_main_action_view_small_toolbutton(GtkToggleAction *action, RemminaMain *remminamain)
 {
 	gboolean toggled;
@@ -813,6 +833,7 @@ static const gchar *remmina_main_ui_xml = "<ui>"
 		"      <menuitem name='ViewToolbarMenu' action='ViewToolbar'/>"
 		"      <menuitem name='ViewStatusbarMenu' action='ViewStatusbar'/>"
 		"      <menuitem name='ViewQuickSearchMenu' action='ViewQuickSearch'/>"
+		"      <menuitem name='ViewQuickConnect' action='ViewQuickConnect'/>"
 		"      <separator/>"
 		"      <menuitem name='ViewSmallToolbuttonMenu' action='ViewSmallToolbutton'/>"
 		"      <separator/>"
@@ -910,6 +931,8 @@ static const GtkToggleActionEntry remmina_main_ui_toggle_menu_entries[] =
 { "ViewStatusbar", NULL, N_("Statusbar"), NULL, NULL, G_CALLBACK(remmina_main_action_view_statusbar), TRUE },
 
 { "ViewQuickSearch", NULL, N_("Quick Search"), NULL, NULL, G_CALLBACK(remmina_main_action_view_quick_search), FALSE },
+
+{ "ViewQuickConnect", NULL, N_("Quick Connect"), NULL, NULL, G_CALLBACK(remmina_main_action_view_quick_connect), TRUE },
 
 { "ViewSmallToolbutton", NULL, N_("Small Toolbar Buttons"), NULL, NULL, G_CALLBACK(remmina_main_action_view_small_toolbutton),
 		FALSE } };
@@ -1132,7 +1155,6 @@ static void remmina_main_init(RemminaMain *remminamain)
 	RemminaMainPriv *priv;
 	GtkWidget *vbox;
 	GtkWidget *menubar;
-	GtkWidget *hbox;
 	GtkWidget *quickconnect;
 	GtkWidget *tool_item;
 	GtkUIManager *uimanager;
@@ -1230,9 +1252,9 @@ static void remmina_main_init(RemminaMain *remminamain)
 
 	/* Add a Fast Connection box */
 #if GTK_VERSION == 3
-	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
+	priv->quickconnect_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
 #elif GTK_VERSION == 2
-	hbox = gtk_hbox_new(FALSE, 0);
+	priv->quickconnect_box = gtk_hbox_new(FALSE, 0);
 #endif
 
 
@@ -1251,21 +1273,21 @@ static void remmina_main_init(RemminaMain *remminamain)
 #endif
 	gtk_combo_box_set_active(GTK_COMBO_BOX(priv->quickconnect_protocol), 0);
 	gtk_widget_show(priv->quickconnect_protocol);
-	gtk_box_pack_start(GTK_BOX(hbox), priv->quickconnect_protocol, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(priv->quickconnect_box), priv->quickconnect_protocol, FALSE, FALSE, 0);
 
 	priv->quickconnect_server = gtk_entry_new();
 	gtk_entry_set_width_chars(GTK_ENTRY(priv->quickconnect_server), 25);
 	gtk_widget_show(priv->quickconnect_server);
-	gtk_box_pack_start(GTK_BOX(hbox), priv->quickconnect_server, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(priv->quickconnect_box), priv->quickconnect_server, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(priv->quickconnect_server), "key-press-event", G_CALLBACK(remmina_main_quickconnect_on_key_press), remminamain);
 
 	quickconnect = gtk_button_new_with_label(_("Connect !"));
 	gtk_widget_show(quickconnect);
-	gtk_box_pack_start(GTK_BOX(hbox), quickconnect, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(priv->quickconnect_box), quickconnect, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(quickconnect), "clicked", G_CALLBACK(remmina_main_quickconnect_on_click), remminamain);
 
-	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
-	gtk_widget_show(hbox);
+	gtk_box_pack_start(GTK_BOX(vbox), priv->quickconnect_box, FALSE, FALSE, 0);
+	gtk_widget_show(priv->quickconnect_box);
 
 	/* Create the scrolled window for the file list */
 	scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
@@ -1335,6 +1357,12 @@ static void remmina_main_init(RemminaMain *remminamain)
 	{
 		gtk_toggle_action_set_active(
 				GTK_TOGGLE_ACTION(gtk_action_group_get_action(priv->main_group, "ViewQuickSearch")), TRUE);
+	}
+	if (remmina_pref.hide_quick_connect)
+	{
+		gtk_toggle_action_set_active(
+        GTK_TOGGLE_ACTION(gtk_action_group_get_action(priv->main_group, "ViewQuickConnect")),
+				FALSE);
 	}
 	if (remmina_pref.small_toolbutton)
 	{
