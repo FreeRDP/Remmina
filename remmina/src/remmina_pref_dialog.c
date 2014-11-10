@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -319,7 +319,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	GtkWidget *tablabel;
 	GtkWidget *vbox;
 	GtkWidget *hbox;
-	GtkGrid *table;
+	GtkWidget *grid;
 	GtkWidget *widget;
 	gchar buf[100];
 
@@ -329,7 +329,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	/* Create the dialog */
 	gtk_window_set_title(GTK_WINDOW(dialog), _("Remmina Preferences"));
 	gtk_window_set_modal(GTK_WINDOW(dialog), TRUE);
-	widget = gtk_dialog_add_button(GTK_DIALOG(dialog), GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
+	widget = gtk_dialog_add_button(GTK_DIALOG(dialog), _("_Close"), GTK_RESPONSE_CLOSE);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_pref_dialog_on_close_clicked), dialog);
 	gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_CLOSE);
 
@@ -355,28 +355,28 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(vbox);
 	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, tablabel);
 
-	table = gtk_grid_new();
-	gtk_widget_show(table);
-	gtk_grid_set_row_spacing(GTK_GRID(table), 4);
-	gtk_grid_set_column_spacing(GTK_GRID(table), 4);
-	gtk_container_set_border_width(GTK_CONTAINER(table), 8);
-	gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 0);
+	grid = gtk_grid_new();
+	gtk_widget_show(grid);
+	gtk_grid_set_row_spacing(GTK_GRID(grid), 5);
+	gtk_grid_set_column_spacing(GTK_GRID(grid), 4);
+	gtk_container_set_border_width(GTK_CONTAINER(grid), 8);
+	gtk_box_pack_start(GTK_BOX(vbox), grid, FALSE, FALSE, 0);
 
 	widget = gtk_check_button_new_with_label(_("Remember last view mode for each connection"));
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 0, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.save_view_mode);
 	priv->save_view_mode_check = widget;
 
 	widget = gtk_check_button_new_with_label(_("Save settings when starting the connection"));
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 1, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 1, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.save_when_connect);
 	priv->save_when_connect_check = widget;
 
 	widget = gtk_check_button_new_with_label(_("Invisible toolbar in fullscreen mode"));
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 2, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 2, 2, 1);
 	if (gtk_widget_is_composited(GTK_WIDGET(dialog)))
 	{
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.invisible_toolbar);
@@ -389,64 +389,64 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 
 	widget = gtk_check_button_new_with_label(_("Always show tabs"));
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 3, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 3, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.always_show_tab);
 	priv->always_show_tab_check = widget;
 
 	widget = gtk_check_button_new_with_label(_("Hide toolbar in tabbed interface"));
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 4, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 4, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.hide_connection_toolbar);
 	priv->hide_connection_toolbar_check = widget;
 
 	widget = gtk_label_new(_("Double-click action"));
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 5, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 5, 1, 1);
 
 	widget = remmina_public_create_combo_mapint(default_action_list, remmina_pref.default_action, FALSE, NULL);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 5, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 5, 2, 1);
 	priv->default_action_combo = widget;
 
 	widget = gtk_label_new(_("Default view mode"));
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 6, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 6, 1, 1);
 
 	widget = remmina_public_create_combo_mapint(default_mode_list, remmina_pref.default_mode, FALSE, NULL);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 6, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 6, 2, 1);
 	priv->default_mode_combo = widget;
 
 	widget = gtk_label_new(_("Tab interface"));
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 7, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 7, 1, 1);
 
 	widget = remmina_public_create_combo_mapint(tab_mode_list, remmina_pref.tab_mode, FALSE, NULL);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 7, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 7, 2, 1);
 	priv->tab_mode_combo = widget;
 
 	widget = gtk_label_new(_("Scale quality"));
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 8, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 8, 1, 1);
 
 	widget = remmina_public_create_combo_mapint(scale_quality_list, remmina_pref.scale_quality, FALSE, NULL);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 8, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 8, 2, 1);
 	priv->scale_quality_combo = widget;
 
 	widget = gtk_label_new(_("SSH tunnel local port"));
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 9, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 9, 1, 1);
 
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 9, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 9, 2, 1);
 	gtk_entry_set_max_length(GTK_ENTRY(widget), 5);
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.sshtunnel_port);
 	gtk_entry_set_text(GTK_ENTRY(widget), buf);
@@ -455,11 +455,11 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	widget = gtk_label_new(_("Auto scroll step size"));
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 10, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 10, 1, 1);
 
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 10, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 10, 2, 1);
 	gtk_entry_set_max_length(GTK_ENTRY(widget), 3);
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.auto_scroll_step);
 	gtk_entry_set_text(GTK_ENTRY(widget), buf);
@@ -468,7 +468,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	widget = gtk_label_new(_("Maximum recent items"));
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 11, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 11, 1, 1);
 
 #if GTK_VERSION == 3
 	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 2);
@@ -476,7 +476,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	hbox = gtk_hbox_new(FALSE, 2);
 #endif
 	gtk_widget_show(hbox);
-	gtk_grid_attach(GTK_GRID(table), hbox, 1, 11, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), hbox, 1, 11, 2, 1);
 
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
@@ -527,34 +527,34 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(vbox);
 	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, tablabel);
 
-	table = gtk_grid_new();
-	gtk_widget_show(table);
-	gtk_grid_set_row_spacing(GTK_GRID(table), 4);
-	gtk_grid_set_column_spacing(GTK_GRID(table), 4);
-	gtk_container_set_border_width(GTK_CONTAINER(table), 8);
-	gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 0);
+	grid = gtk_grid_new();
+	gtk_widget_show(grid);
+	gtk_grid_set_row_spacing(GTK_GRID(grid), 4);
+	gtk_grid_set_column_spacing(GTK_GRID(grid), 4);
+	gtk_container_set_border_width(GTK_CONTAINER(grid), 8);
+	gtk_box_pack_start(GTK_BOX(vbox), grid, FALSE, FALSE, 0);
 
 	widget = gtk_check_button_new_with_label(_("Show new connection on top of the menu"));
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 0, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.applet_new_ontop);
 	priv->applet_new_ontop_check = widget;
 
 	widget = gtk_check_button_new_with_label(_("Hide total count in group menu"));
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 1, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 1, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.applet_hide_count);
 	priv->applet_hide_count_check = widget;
 
 	widget = gtk_check_button_new_with_label(_("Disable tray icon"));
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 2, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 2, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.disable_tray_icon);
 	priv->disable_tray_icon_check = widget;
 
 	widget = gtk_check_button_new_with_label(_("Start Remmina in tray icon at user logon"));
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 3, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 3, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_icon_is_autostart());
 	gtk_widget_set_sensitive(widget, !remmina_pref.disable_tray_icon);
 	priv->autostart_tray_icon_check = widget;
@@ -562,7 +562,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 #ifdef ENABLE_MINIMIZE_TO_TRAY
 	widget = gtk_check_button_new_with_label(_("Minimize windows to tray"));
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 4, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 4, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.minimize_to_tray);
 	gtk_widget_set_sensitive(widget, !remmina_pref.disable_tray_icon);
 	priv->minimize_to_tray_check = widget;
@@ -585,12 +585,12 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(vbox);
 	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, tablabel);
 
-	table = gtk_grid_new();
-	gtk_widget_show(table);
-	gtk_grid_set_row_spacing(GTK_GRID(table), 4);
-	gtk_grid_set_column_spacing(GTK_GRID(table), 4);
-	gtk_container_set_border_width(GTK_CONTAINER(table), 8);
-	gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 0);
+	grid = gtk_grid_new();
+	gtk_widget_show(grid);
+	gtk_grid_set_row_spacing(GTK_GRID(grid), 4);
+	gtk_grid_set_column_spacing(GTK_GRID(grid), 4);
+	gtk_container_set_border_width(GTK_CONTAINER(grid), 8);
+	gtk_box_pack_start(GTK_BOX(vbox), grid, FALSE, FALSE, 0);
 
 	widget = gtk_label_new(_("Host key"));
 	gtk_widget_show(widget);
@@ -601,11 +601,11 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 #else
 	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
 #endif
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 0, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 1, 1);
 
 	widget = remmina_key_chooser_new(remmina_pref.hostkey);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 0, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 0, 2, 1);
 	priv->hostkey_chooser = widget;
 
 	widget = gtk_label_new(_("Toggle fullscreen mode"));
@@ -617,11 +617,11 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 #else
 	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
 #endif
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 1, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 1, 1, 1);
 
 	widget = remmina_key_chooser_new(remmina_pref.shortcutkey_fullscreen);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 1, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 1, 2, 1);
 	priv->shortcutkey_fullscreen_chooser = widget;
 
 	widget = gtk_label_new(_("Auto-fit window"));
@@ -633,11 +633,11 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 #else
 	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
 #endif
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 2, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 2, 1, 1);
 
 	widget = remmina_key_chooser_new(remmina_pref.shortcutkey_autofit);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 2, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 2, 2, 1);
 	priv->shortcutkey_autofit_chooser = widget;
 
 	widget = gtk_label_new(_("Switch tab pages"));
@@ -649,7 +649,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 #else
 	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
 #endif
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 3, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 3, 1, 1);
 
 #if GTK_VERSION == 3
 	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 2);
@@ -657,7 +657,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	hbox = gtk_hbox_new(TRUE, 2);
 #endif
 	gtk_widget_show(hbox);
-	gtk_grid_attach(GTK_GRID(table), hbox, 1, 3, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), hbox, 1, 3, 2, 1);
 
 	widget = remmina_key_chooser_new(remmina_pref.shortcutkey_prevtab);
 	gtk_widget_show(widget);
@@ -678,11 +678,11 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 #else
 	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
 #endif
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 4, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 4, 1, 1);
 
 	widget = remmina_key_chooser_new(remmina_pref.shortcutkey_scale);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 4, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 4, 2, 1);
 	priv->shortcutkey_scale_chooser = widget;
 
 	widget = gtk_label_new(_("Grab keyboard"));
@@ -694,11 +694,11 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 #else
 	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
 #endif
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 5, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 5, 1, 1);
 
 	widget = remmina_key_chooser_new(remmina_pref.shortcutkey_grab);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 5, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 5, 2, 1);
 	priv->shortcutkey_grab_chooser = widget;
 
 	widget = gtk_label_new(_("Minimize window"));
@@ -710,11 +710,11 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 #else
 	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
 #endif
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 6, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 6, 1, 1);
 
 	widget = remmina_key_chooser_new(remmina_pref.shortcutkey_minimize);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 6, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 6, 2, 1);
 	priv->shortcutkey_minimize_chooser = widget;
 
 	widget = gtk_label_new(_("Disconnect"));
@@ -726,11 +726,11 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 #else
 	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
 #endif
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 7, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 7, 1, 1);
 
 	widget = remmina_key_chooser_new(remmina_pref.shortcutkey_disconnect);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 7, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 7, 2, 1);
 	priv->shortcutkey_disconnect_chooser = widget;
 
 	widget = gtk_label_new(_("Show / hide toolbar"));
@@ -742,11 +742,11 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 #else
 	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
 #endif
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 8, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 8, 1, 1);
 
 	widget = remmina_key_chooser_new(remmina_pref.shortcutkey_toolbar);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 8, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 8, 2, 1);
 	priv->shortcutkey_toolbar_chooser = widget;
 
 	/* Terminal tab */
@@ -762,12 +762,12 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(vbox);
 	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, tablabel);
 
-	table = gtk_grid_new();
-	gtk_widget_show(table);
-	gtk_grid_set_row_spacing(GTK_GRID(table), 4);
-	gtk_grid_set_column_spacing(GTK_GRID(table), 4);
-	gtk_container_set_border_width(GTK_CONTAINER(table), 8);
-	gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 0);
+	grid = gtk_grid_new();
+	gtk_widget_show(grid);
+	gtk_grid_set_row_spacing(GTK_GRID(grid), 4);
+	gtk_grid_set_column_spacing(GTK_GRID(grid), 4);
+	gtk_container_set_border_width(GTK_CONTAINER(grid), 8);
+	gtk_box_pack_start(GTK_BOX(vbox), grid, FALSE, FALSE, 0);
 
 	widget = gtk_label_new(_("Font"));
 	gtk_widget_show(widget);
@@ -777,13 +777,13 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 #else
 	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
 #endif
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 0, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 1, 1);
 
 	widget = gtk_check_button_new_with_label(_("Use system default font"));
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
 	gtk_widget_set_margin_right (GTK_CHECK_BUTTON(widget), 40);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 0, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 0, 2, 1);
 	priv->vte_font_check = widget;
 	if (!(remmina_pref.vte_font && remmina_pref.vte_font[0]))
 	{
@@ -798,7 +798,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 #else
 	gtk_widget_set_margin_right (GTK_FONT_BUTTON(widget), 40);
 #endif
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 1, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 1, 2, 1);
 	priv->vte_font_button = widget;
 	if (remmina_pref.vte_font && remmina_pref.vte_font[0])
 	{
@@ -820,7 +820,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 #else
 	gtk_widget_set_margin_right (GTK_CHECK_BUTTON(widget), 40);
 #endif
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 2, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 2, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.vte_allow_bold_text);
 	priv->vte_allow_bold_text_check = widget;
 
@@ -832,7 +832,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
 #endif
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 3, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 3, 1, 1);
 
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
@@ -842,7 +842,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 #else
 	gtk_widget_set_margin_right (GTK_ENTRY(widget), 40);
 #endif
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 3, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 3, 2, 1);
 	gtk_entry_set_max_length(GTK_ENTRY(widget), 5);
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.vte_lines);
 	gtk_entry_set_text(GTK_ENTRY(widget), buf);
@@ -856,7 +856,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 #else
 	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
 #endif
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 4, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 4, 1, 1);
 
 #if GTK_VERSION == 3
 	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 2);
@@ -864,7 +864,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	hbox = gtk_hbox_new(FALSE, 2);
 #endif
 	gtk_widget_show(hbox);
-	gtk_grid_attach(GTK_GRID(table), hbox, 1, 4, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), hbox, 1, 4, 2, 1);
 
 	widget = gtk_label_new(_("Copy"));
 	gtk_widget_show(widget);
@@ -894,7 +894,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	hbox = gtk_hbox_new(FALSE, 2);
 #endif
 	gtk_widget_show(hbox);
-	gtk_grid_attach(GTK_GRID(table), hbox, 1, 5, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), hbox, 1, 5, 2, 1);
 
 	widget = gtk_label_new(_("Paste"));
 	gtk_widget_show(widget);
