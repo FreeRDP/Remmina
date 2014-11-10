@@ -136,9 +136,18 @@ remmina_plugin_ssh_main_thread (gpointer data)
 	THREADS_ENTER
 	if (charset && charset[0] != '\0')
 	{
+#if !VTE_CHECK_VERSION(0,38,0)
 		vte_terminal_set_encoding (VTE_TERMINAL (gpdata->vte), charset);
+#else
+		vte_terminal_set_encoding (VTE_TERMINAL (gpdata->vte), charset, NULL);
+#endif
 	}
+#if !VTE_CHECK_VERSION(0,38,0)
 	vte_terminal_set_pty (VTE_TERMINAL (gpdata->vte), shell->slave);
+#else
+	vte_terminal_set_pty (VTE_TERMINAL (gpdata->vte),
+                          vte_pty_new_foreign_sync (shell->slave, NULL, NULL));
+#endif
 	THREADS_LEAVE
 
 	remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
@@ -183,7 +192,12 @@ remmina_plugin_ssh_set_vte_pref (RemminaProtocolWidget *gp)
 	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 	if (remmina_pref.vte_font && remmina_pref.vte_font[0])
 	{
+#if !VTE_CHECK_VERSION(0,38,0)
 		vte_terminal_set_font_from_string (VTE_TERMINAL (gpdata->vte), remmina_pref.vte_font);
+#else
+		vte_terminal_set_font (VTE_TERMINAL (gpdata->vte),
+							   pango_font_description_from_string (remmina_pref.vte_font));
+#endif
 	}
 	vte_terminal_set_allow_bold (VTE_TERMINAL (gpdata->vte), remmina_pref.vte_allow_bold_text);
 	if (remmina_pref.vte_lines > 0)
@@ -224,9 +238,17 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	remmina_plugin_service->protocol_plugin_register_hostkey (gp, vte);
 
 #if GTK_VERSION == 3
+#if VTE_CHECK_VERSION(0, 38, 0)
+	vscrollbar = gtk_scrollbar_new (GTK_ORIENTATION_VERTICAL, gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (vte)));
+#else
 	vscrollbar = gtk_scrollbar_new (GTK_ORIENTATION_VERTICAL, vte_terminal_get_adjustment (VTE_TERMINAL (vte)));
+#endif
 #elif GTK_VERSION == 2
+#if VTE_CHECK_VERSION(0, 38, 0)
+	vscrollbar = gtk_vscrollbar_new (gtk_scrollable_get_vadjustment (GTK_SCROLLABLE_TERMINAL (vte)));
+#else
 	vscrollbar = gtk_vscrollbar_new (vte_terminal_get_adjustment (VTE_TERMINAL (vte)));
+#endif
 #endif
 	gtk_widget_show(vscrollbar);
 	gtk_box_pack_start (GTK_BOX (hbox), vscrollbar, FALSE, TRUE, 0);
