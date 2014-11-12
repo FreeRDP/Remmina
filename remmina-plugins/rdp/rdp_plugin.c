@@ -603,7 +603,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	gint port;
 	gchar* host;
 	gchar* value;
-	gint drdynvc_num;
 	gint rdpsnd_rate;
 	gint rdpsnd_channel;
 	char *rdpsnd_params[3];
@@ -761,7 +760,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	rfi->settings->FastPathInput = True;
 	rfi->settings->FastPathOutput = True;
 
-	drdynvc_num = 0;
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "sound");
 
@@ -798,11 +796,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 		remmina_rdp_add_static_channel(rfi->settings, rdpsnd_nparams, (char**) rdpsnd_params);
 
-	}
-
-	if (drdynvc_num)
-	{
-		remmina_rdp_load_plugin(rfi->instance->context->channels, rfi->settings, "drdynvc", rfi->drdynvc_data);
 	}
 
 	rfi->settings->RedirectClipboard = ( remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE) ? FALSE: TRUE );
