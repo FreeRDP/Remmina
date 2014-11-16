@@ -205,7 +205,8 @@ static void remmina_file_editor_create_notebook_container(RemminaFileEditor* gfe
 	gtk_widget_show(gfe->priv->config_container);
 }
 
-static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe,
+//AGAT static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe,
+static GtkGrid* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe,
 		const gchar* stock_id, const gchar* label, gint rows, gint cols)
 {
 	GtkWidget* tablabel;
