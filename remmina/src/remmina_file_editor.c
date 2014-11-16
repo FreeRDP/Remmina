@@ -378,7 +378,7 @@ static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const Remm
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
-	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
+	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, row + 1);
 #elif GTK_VERSION == 2
 	gtk_table_attach(GTK_TABLE(table), widget, 0, 1, row, row + 1, GTK_FILL, 0, 0, 0);
 #endif
@@ -551,7 +551,7 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWid
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
-	gtk_grid_attach(GTK_GRID(table), widget, 0, row, col + 1, 1);
+	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
 #elif GTK_VERSION == 2
 	gtk_table_attach(GTK_TABLE(table), widget, col, col + 1, row, row + 1, GTK_FILL, 0, 0, 0);
 #endif
@@ -625,19 +625,18 @@ static GtkWidget* remmina_file_editor_create_check(RemminaFileEditor* gfe, GtkWi
 		gint row, gint col, const gchar* label, gboolean value)
 {
 	GtkWidget* widget;
-
 	widget = gtk_check_button_new_with_label(label);
-
 	gtk_widget_show(widget);
 
-	if (row >= 0)
 #if GTK_VERSION == 3
-		gtk_grid_attach(GTK_GRID(table), widget, col, row + 1, col + 2, row + 1);
+	gtk_grid_set_row_spacing(GTK_GRID(table), 1);
+	gtk_grid_attach(GTK_GRID(table), widget, 0, row , 1, 1);
 #elif GTK_VERSION == 2
+	if (row >= 0)
 		gtk_table_attach_defaults(GTK_TABLE(table), widget, col, col + 2, row, row + 1);
-#endif
 	else
 		gtk_box_pack_start(GTK_BOX(table), widget, TRUE, TRUE, 10);
+#endif
 
 	if (value)
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
@@ -724,7 +723,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 		switch (settings->type)
 		{
 			case REMMINA_PROTOCOL_SETTING_TYPE_SERVER:
-				remmina_file_editor_create_server(gfe, settings, table, row);
+				remmina_file_editor_create_server(gfe, settings, table, 0);
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD:
@@ -826,11 +825,10 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_CHECK:
-				//widget = remmina_file_editor_create_check(gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
 				widget = remmina_file_editor_create_check(gfe, table, row, 0,
 						g_dgettext (priv->plugin->domain, settings->label),
 				remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
-				row += 2;
+				row++;
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
 				break;
 
@@ -930,13 +928,6 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 	}
 
 	/* SSH Server group */
-/*
-#if GTK_VERSION == 3
-	remmina_public_create_group (GTK_GRID(table), _("SSH Server"), row, 3, 3);
-#elif GTK_VERSION == 2
-	remmina_public_create_group (GTK_TABLE(table), _("SSH Server"), row, 3, 3);
-#endif
-*/
 	row++;
 
 	switch (ssh_setting)
@@ -1427,8 +1418,8 @@ static void remmina_file_editor_init(RemminaFileEditor* gfe)
 	g_signal_connect(G_OBJECT(gfe), "destroy", G_CALLBACK(remmina_file_editor_destroy), NULL);
 	g_signal_connect(G_OBJECT(gfe), "realize", G_CALLBACK(remmina_file_editor_on_realize), NULL);
 
-	/* The Set As Default button */
-	widget = gtk_button_new_with_label(_("Default"));
+	/* Default button */
+	widget = gtk_button_new_with_label("Default");
 	gtk_widget_show(widget);
 	gtk_button_set_image(GTK_BUTTON(widget), gtk_image_new_from_icon_name("_Preferences", GTK_ICON_SIZE_BUTTON));
 	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_action_area(GTK_DIALOG(gfe))), widget, FALSE, TRUE, 0);
