@@ -192,7 +192,7 @@ remmina_ssh_auth_pubkey (RemminaSSH *ssh)
 		return 0;
 	}
 
-	privkey = privatekey_from_file (ssh->session, ssh->privkeyfile, keytype, _
+	privkey = privatekey_from_file (ssh->session, ssh->privkeyfile, keytype,
 			(ssh->password ? ssh->password : ""));
 	if (privkey == NULL)
 	{

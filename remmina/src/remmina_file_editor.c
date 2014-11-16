@@ -135,8 +135,8 @@ static void remmina_file_editor_browse_avahi(GtkWidget* button, RemminaFileEdito
 
 	dialog = aui_service_dialog_new(_("Choose a Remote Desktop Server"),
 			GTK_WINDOW(gfe),
-			"_Cancel", GTK_RESPONSE_CANCEL,
-			"_OK", GTK_RESPONSE_ACCEPT,
+			_("_Cancel"), GTK_RESPONSE_CANCEL,
+			_("_OK"), GTK_RESPONSE_ACCEPT,
 			NULL);
 
 	gtk_window_set_transient_for (GTK_WINDOW(dialog), GTK_WINDOW(gfe));
@@ -331,8 +331,8 @@ static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor* gfe, Gt
 #endif
 
 	dialog = gtk_file_chooser_dialog_new (_("Identity file"), GTK_WINDOW(gfe), GTK_FILE_CHOOSER_ACTION_OPEN,
-			"_Cancel", GTK_RESPONSE_CANCEL,
-			"_Open", GTK_RESPONSE_ACCEPT,
+			_("_Cancel"), GTK_RESPONSE_CANCEL,
+			_("_Open"), GTK_RESPONSE_ACCEPT,
 			NULL);
 
 	widget = gtk_file_chooser_button_new_with_dialog (dialog);
@@ -549,6 +549,7 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWid
 
 	widget = gtk_label_new(label);
 	gtk_widget_show(widget);
+	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
@@ -613,6 +614,7 @@ static GtkWidget* remmina_file_editor_create_combo(RemminaFileEditor* gfe, GtkWi
 	widget = remmina_public_create_combo_entry(list, value, FALSE);
 	gtk_widget_show(widget);
 #if GTK_VERSION == 3
+	gtk_widget_set_hexpand(widget, TRUE);
 	gtk_grid_attach(GTK_GRID(table), widget, 1, row, 1, 1);
 #elif GTK_VERSION == 2
 	gtk_table_attach_defaults(GTK_TABLE(table), widget, col + 1, col + 2, row, row + 1);
@@ -707,6 +709,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 	{
 		if (settings->compact)
 		{
+#if 0
 			if (hbox == NULL)
 			{
 #if GTK_VERSION == 3
@@ -716,11 +719,12 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 #endif
 				gtk_widget_show(hbox);
 #if GTK_VERSION == 3
-				gtk_grid_attach(GTK_GRID(table), hbox, 0, row + 2, 1, 1);
+				gtk_grid_attach(GTK_GRID(table), hbox, 0, row + 2, 2, 1);
 #elif GTK_VERSION == 2
 				gtk_table_attach_defaults(GTK_TABLE(table), hbox, 0, 2, row, row + 1);
 #endif
 			}
+#endif
 		}
 		switch (settings->type)
 		{
@@ -760,6 +764,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				gtk_widget_show(widget);
 				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
+				gtk_widget_set_margin_right(GTK_MISC(widget), 40);
 				gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, row + 1);
 #elif GTK_VERSION == 2
 				gtk_table_attach(GTK_TABLE(table), widget, 0, 1, row, row + 1, GTK_FILL, 0, 0, 0);
@@ -769,6 +774,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				gtk_widget_show(widget);
 				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
+				gtk_widget_set_margin_right(GTK_MISC(widget), 40);
 				gtk_grid_attach(GTK_GRID(table), widget, 0, row + 1, 1, row + 2);
 #elif GTK_VERSION == 2
 				gtk_table_attach(GTK_TABLE(table), widget, 0, 1, row + 1, row + 2, GTK_FILL, 0, 0, 0);
@@ -827,13 +833,13 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_CHECK:
-                if (ccount > 0) {
-                    top = 1;
-                    ccount = 0;
-                } else {
-                    top = 0;
-                    ccount = 1;
-                }
+				if (ccount > 0) {
+					top = 1;
+					ccount = 0;
+				} else {
+					top = 0;
+					ccount = 1;
+				}
 				widget = remmina_file_editor_create_check(gfe, table, row, top,
 						g_dgettext (priv->plugin->domain, settings->label),
 				remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
@@ -872,7 +878,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 		if (!settings->compact)
 		{
 			hbox = NULL;
-			row++;
+			(ccount ? 1 : row++);
 		}
 
 		settings++;
@@ -1409,15 +1415,15 @@ static void remmina_file_editor_init(RemminaFileEditor* gfe)
 	/* Create the editor dialog */
 	gtk_window_set_title(GTK_WINDOW(gfe), _("Remote Desktop Preference"));
 
-	widget = gtk_dialog_add_button(GTK_DIALOG(gfe), (_("Save")), GTK_RESPONSE_APPLY);
+	widget = gtk_dialog_add_button(GTK_DIALOG(gfe), (_("_Save")), GTK_RESPONSE_APPLY);
 	gtk_button_set_image(GTK_BUTTON(widget), gtk_image_new_from_icon_name("document-save", GTK_ICON_SIZE_BUTTON));
 	gtk_button_box_set_child_secondary(GTK_BUTTON_BOX(gtk_dialog_get_action_area(GTK_DIALOG(gfe))), widget, TRUE);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_file_editor_on_save), gfe);
 	gtk_widget_set_sensitive(widget, FALSE);
 	priv->save_button = widget;
 
-	widget = gtk_dialog_add_button(GTK_DIALOG(gfe), (_("Cancel")), GTK_RESPONSE_CANCEL);
-	gtk_button_set_image(GTK_BUTTON(widget), gtk_image_new_from_icon_name("gtk-cancel", GTK_ICON_SIZE_BUTTON));
+	widget = gtk_dialog_add_button(GTK_DIALOG(gfe), (_("_Cancel")), GTK_RESPONSE_CANCEL);
+	//gtk_button_set_image(GTK_BUTTON(widget), gtk_image_new_from_icon_name("gtk-cancel", GTK_ICON_SIZE_BUTTON));
 	gtk_button_box_set_child_secondary(GTK_BUTTON_BOX(gtk_dialog_get_action_area(GTK_DIALOG(gfe))), widget, TRUE);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_file_editor_on_cancel), gfe);
 
