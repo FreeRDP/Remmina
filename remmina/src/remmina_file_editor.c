@@ -549,9 +549,9 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWid
 
 	widget = gtk_label_new(label);
 	gtk_widget_show(widget);
-	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
+	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
 #elif GTK_VERSION == 2
 	gtk_table_attach(GTK_TABLE(table), widget, col, col + 1, row, row + 1, GTK_FILL, 0, 0, 0);
