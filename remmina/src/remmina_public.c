@@ -192,6 +192,7 @@ remmina_public_create_combo(gboolean use_icon)
 		store = gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_STRING);
 	}
 	combo = gtk_combo_box_new_with_model(GTK_TREE_MODEL(store));
+    gtk_widget_set_hexpand(combo, TRUE);
 
 	if (use_icon)
 	{
