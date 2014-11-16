@@ -269,7 +269,6 @@ void remmina_public_create_group(GtkContainer* table, const gchar *group, gint r
 
 	widget = gtk_label_new(NULL);
 	gtk_widget_show(widget);
-	gtk_widget_set_size_request(widget, 15, -1);
 #if GTK_VERSION == 3
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row + 1, 1, 1);
 #elif GTK_VERSION == 2
