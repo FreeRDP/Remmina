@@ -639,12 +639,12 @@ static GtkWidget* remmina_file_editor_create_check(RemminaFileEditor* gfe, GtkWi
 
 	if (row >= 0)
 #if GTK_VERSION == 3
-		gtk_grid_attach(GTK_GRID(table), widget, 0, row, col + 2, row + 1);
+		gtk_grid_attach(GTK_GRID(table), widget, col, row + 1, col + 2, row + 1);
 #elif GTK_VERSION == 2
 		gtk_table_attach_defaults(GTK_TABLE(table), widget, col, col + 2, row, row + 1);
 #endif
 	else
-		gtk_box_pack_start(GTK_BOX(table), widget, TRUE, TRUE, 0);
+		gtk_box_pack_start(GTK_BOX(table), widget, TRUE, TRUE, 10);
 
 	if (value)
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
@@ -758,6 +758,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 						_("Keyboard mapping"), (const gpointer*) strarr,
 						remmina_file_get_string(priv->remmina_file, "keymap"));
 				g_strfreev(strarr);
+				row++;
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_SCALE:
@@ -765,7 +766,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				gtk_widget_show(widget);
 				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
-				gtk_grid_attach(GTK_GRID(table), widget, 0, 3, row + 1, row);
+				gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, row + 1);
 #elif GTK_VERSION == 2
 				gtk_table_attach(GTK_TABLE(table), widget, 0, 1, row, row + 1, GTK_FILL, 0, 0, 0);
 #endif
@@ -774,7 +775,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				gtk_widget_show(widget);
 				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
-				gtk_grid_attach(GTK_GRID(table), widget, 0, 3, row + 1, 1);
+				gtk_grid_attach(GTK_GRID(table), widget, 0, row + 1, 1, row + 2);
 #elif GTK_VERSION == 2
 				gtk_table_attach(GTK_TABLE(table), widget, 0, 1, row + 1, row + 2, GTK_FILL, 0, 0, 0);
 #endif
@@ -782,7 +783,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				widget = remmina_scaler_new();
 				gtk_widget_show(widget);
 #if GTK_VERSION == 3
-				gtk_grid_attach(GTK_GRID(table), widget, 1, row + 2, 2, 1);
+				gtk_grid_attach(GTK_GRID(table), widget, 1, row, 2, row + 2);
 #elif GTK_VERSION == 2
 				gtk_table_attach_defaults(GTK_TABLE(table), widget, 1, 2, row, row + 2);
 #endif
@@ -832,9 +833,11 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_CHECK:
-				widget = remmina_file_editor_create_check(gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
-				g_dgettext (priv->plugin->domain, settings->label),
+				//widget = remmina_file_editor_create_check(gfe, (hbox ? hbox : table), (hbox ? -1 : row), 0,
+				widget = remmina_file_editor_create_check(gfe, table, row, 0,
+						g_dgettext (priv->plugin->domain, settings->label),
 				remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
+				row += 2;
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
 				break;
 
@@ -1146,7 +1149,7 @@ static void remmina_file_editor_create_all_settings(RemminaFileEditor* gfe)
 	/* The Basic tab */
 	if (priv->plugin->basic_settings)
 	{
-		table = remmina_file_editor_create_notebook_tab(gfe, GTK_STOCK_INFO, _("Basic"), 20, 2);
+		table = remmina_file_editor_create_notebook_tab(gfe, GTK_STOCK_DIALOG_INFO, _("Basic"), 20, 2);
 		remmina_file_editor_create_settings(gfe, table, priv->plugin->basic_settings);
 	}
 
