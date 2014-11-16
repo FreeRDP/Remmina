@@ -630,7 +630,7 @@ static GtkWidget* remmina_file_editor_create_check(RemminaFileEditor* gfe, GtkWi
 
 #if GTK_VERSION == 3
 	gtk_grid_set_row_spacing(GTK_GRID(table), 1);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, row , 1, 1);
+	gtk_grid_attach(GTK_GRID(table), widget, col, row , 1, 1);
 #elif GTK_VERSION == 2
 	if (row >= 0)
 		gtk_table_attach_defaults(GTK_TABLE(table), widget, col, col + 2, row, row + 1);
@@ -699,6 +699,8 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 	GtkWidget* hbox = NULL;
 	GtkWidget* widget;
 	gint row = 0;
+	gint top = 0;
+	gint ccount = 0;
 	gchar** strarr;
 
 	while (settings->type != REMMINA_PROTOCOL_SETTING_TYPE_END)
@@ -825,10 +827,17 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_CHECK:
-				widget = remmina_file_editor_create_check(gfe, table, row, 0,
+                if (ccount > 0) {
+                    top = 1;
+                    ccount = 0;
+                } else {
+                    top = 0;
+                    ccount = 1;
+                }
+				widget = remmina_file_editor_create_check(gfe, table, row, top,
 						g_dgettext (priv->plugin->domain, settings->label),
 				remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
-				row++;
+				(ccount ? 1 : row++);
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
 				break;
 
