@@ -1775,7 +1775,7 @@ static void remmina_connection_holder_create_floating_toolbar(RemminaConnectionH
 	priv->floating_toolbar_label = widget;
 
 	/* The position will be moved in configure event instead during maximizing. Just make it invisible here */
-	gtk_window_move(GTK_WINDOW(window), 0, -200);
+	gtk_window_move(GTK_WINDOW(window), 0, 6000);
 	gtk_window_set_accept_focus(GTK_WINDOW(window), FALSE);
 
 	priv->floating_toolbar = window;
