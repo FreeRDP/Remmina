@@ -14,7 +14,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, 
+# Foundation, Inc., 59 Temple Place, Suite 330,
 # Boston, MA 02111-1307, USA.
 #
 # In addition, as a special exception, the copyright holders give
@@ -49,6 +49,8 @@ set(REMMINA_PLUGIN_RDP_SRCS
 	rdp_graphics.h
 	rdp_cliprdr.c
 	rdp_cliprdr.h
+	rdp_channels.c
+	rdp_channels.h
 	)
 
 add_library(remmina-plugin-rdp ${REMMINA_PLUGIN_RDP_SRCS})
