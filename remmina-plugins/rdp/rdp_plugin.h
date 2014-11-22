@@ -43,7 +43,10 @@
 #include <freerdp/gdi/gdi.h>
 #include <freerdp/gdi/dc.h>
 #include <freerdp/gdi/region.h>
+#include <freerdp/client/cliprdr.h>
 #include <gdk/gdkx.h>
+
+#include <winpr/clipboard.h>
 
 typedef struct rf_context rfContext;
 
@@ -58,6 +61,26 @@ typedef struct rf_context rfContext;
 #define DEFAULT_QUALITY_9	0x80
 
 extern RemminaPluginService* remmina_plugin_service;
+
+
+
+
+struct rf_clipboard
+{
+	rfContext* rfi;
+	CliprdrClientContext* context;
+	BOOL sync;
+	wClipboard* system;
+	int requestedFormatId;
+
+	gboolean clipboard_wait;
+	UINT32 format;
+	gulong clipboard_handler;
+
+	GAsyncQueue *clipboard_queue;
+
+};
+typedef struct rf_clipboard rfClipboard;
 
 struct rf_pointer
 {
@@ -90,12 +113,13 @@ struct rf_context
 	/* main */
 	rdpSettings* settings;
 	freerdp* instance;
-	// rdpChannels* channels;
 
 	pthread_t thread;
 	pthread_mutex_t mutex;
 	gboolean scale;
 	gboolean user_cancelled;
+
+	CliprdrClientContext* cliprdr;
 
 	GMutex* gmutex;
 	GCond* gcond;
@@ -137,14 +161,13 @@ struct rf_context
 	GAsyncQueue* ui_queue;
 	guint ui_handler;
 
+
+
 	GArray* pressed_keys;
 	GAsyncQueue* event_queue;
 	gint event_pipe[2];
 
-	GAsyncQueue* clipboard_queue;
-	UINT32 format;
-	gboolean clipboard_wait;
-	gulong clipboard_handler;
+	rfClipboard clipboard;
 };
 
 typedef enum
@@ -186,6 +209,7 @@ typedef enum
 
 typedef enum
 {
+	REMMINA_RDP_UI_CLIPBOARD_MONITORREADY,
 	REMMINA_RDP_UI_CLIPBOARD_FORMATLIST,
 	REMMINA_RDP_UI_CLIPBOARD_GET_DATA,
 	REMMINA_RDP_UI_CLIPBOARD_SET_DATA
@@ -236,6 +260,8 @@ struct remmina_plugin_rdp_ui_object
 			RemminaPluginRdpUiClipboardType type;
 			GtkTargetList* targetlist;
 			UINT32 format;
+			rfClipboard* clipboard;
+
 		} clipboard;
 	};
 };
