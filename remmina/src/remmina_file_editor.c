@@ -551,7 +551,11 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWid
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
+#if GTK_CHECK_VERSION(3, 12, 0)
+	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+#else
 	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+#endif 
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
 #elif GTK_VERSION == 2
 	gtk_table_attach(GTK_TABLE(table), widget, col, col + 1, row, row + 1, GTK_FILL, 0, 0, 0);
@@ -707,25 +711,6 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 
 	while (settings->type != REMMINA_PROTOCOL_SETTING_TYPE_END)
 	{
-		if (settings->compact)
-		{
-#if 0
-			if (hbox == NULL)
-			{
-#if GTK_VERSION == 3
-				hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
-#elif GTK_VERSION == 2
-				hbox = gtk_hbox_new(FALSE, 0);
-#endif
-				gtk_widget_show(hbox);
-#if GTK_VERSION == 3
-				gtk_grid_attach(GTK_GRID(table), hbox, 0, row + 2, 2, 1);
-#elif GTK_VERSION == 2
-				gtk_table_attach_defaults(GTK_TABLE(table), hbox, 0, 2, row, row + 1);
-#endif
-			}
-#endif
-		}
 		switch (settings->type)
 		{
 			case REMMINA_PROTOCOL_SETTING_TYPE_SERVER:
@@ -764,7 +749,11 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				gtk_widget_show(widget);
 				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
-				gtk_widget_set_margin_right(GTK_MISC(widget), 40);
+#if GTK_CHECK_VERSION(3, 12, 0)
+				gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+#else
+				gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+#endif
 				gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, row + 1);
 #elif GTK_VERSION == 2
 				gtk_table_attach(GTK_TABLE(table), widget, 0, 1, row, row + 1, GTK_FILL, 0, 0, 0);
@@ -774,7 +763,11 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				gtk_widget_show(widget);
 				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
-				gtk_widget_set_margin_right(GTK_MISC(widget), 40);
+#if GTK_CHECK_VERSION(3, 12, 0)
+				gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+#else
+				gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+#endif
 				gtk_grid_attach(GTK_GRID(table), widget, 0, row + 1, 1, row + 2);
 #elif GTK_VERSION == 2
 				gtk_table_attach(GTK_TABLE(table), widget, 0, 1, row + 1, row + 2, GTK_FILL, 0, 0, 0);
