@@ -1,6 +1,5 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010-2011 Vic Lee
  * Copyright (C) 2012-2012 Jean-Louis Dupond
  *
  * This program is free software; you can redistribute it and/or modify
@@ -33,18 +32,25 @@
  *
  */
 
-#ifndef __REMMINA_RDP_CLIPRDR_H__
-#define __REMMINA_RDP_CLIPRDR_H__
 
+#ifndef __REMMINA_RDP_CHANNELS_H
+#define __REMMINA_RDP_CHANNELS_H
 
 #include <freerdp/freerdp.h>
-#include "rdp_plugin.h"
+#include <freerdp/client/channels.h>
+#include <freerdp/client/rdpei.h>
+#include <freerdp/client/tsmf.h>
+#include <freerdp/client/rail.h>
+#include <freerdp/client/cliprdr.h>
+#include <freerdp/client/rdpgfx.h>
+#include <freerdp/client/encomsp.h>
 
-void remmina_rdp_clipboard_init(rfContext* rfi);
-void remmina_rdp_clipboard_free(rfContext* rfi);
-void remmina_rdp_cliprdr_init(rfContext* rfc, CliprdrClientContext* cliprdr);
-void remmina_rdp_channel_cliprdr_process(RemminaProtocolWidget* gp, wMessage* event);
-void remmina_rdp_event_process_clipboard(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui);
+G_BEGIN_DECLS
 
+void remmina_rdp_OnChannelConnectedEventHandler(rdpContext* context, ChannelConnectedEventArgs* e);
+void remmina_rdp_OnChannelDisconnectedEventHandler(rdpContext* context, ChannelConnectedEventArgs* e);
+
+
+G_END_DECLS
 
 #endif
