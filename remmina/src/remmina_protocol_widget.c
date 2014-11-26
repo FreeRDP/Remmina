@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -43,6 +43,7 @@
 #include "remmina_plugin_manager.h"
 #include "remmina_connection_window.h"
 #include "remmina_protocol_widget.h"
+#include "remmina_masterthread_exec.h"
 
 struct _RemminaProtocolWidgetPriv
 {
@@ -453,10 +454,8 @@ static gboolean remmina_protocol_widget_init_tunnel (RemminaProtocolWidget* gp)
 	{
 		tunnel = remmina_ssh_tunnel_new_from_file (gp->priv->remmina_file);
 
-		THREADS_ENTER
 		remmina_init_dialog_set_status (REMMINA_INIT_DIALOG (gp->priv->init_dialog),
 				_("Connecting to SSH server %s..."), REMMINA_SSH (tunnel)->server);
-		THREADS_LEAVE
 
 		if (!remmina_ssh_init_session (REMMINA_SSH (tunnel)))
 		{
@@ -465,7 +464,7 @@ static gboolean remmina_protocol_widget_init_tunnel (RemminaProtocolWidget* gp)
 			return FALSE;
 		}
 
-		ret = remmina_ssh_auth_gui (REMMINA_SSH (tunnel), REMMINA_INIT_DIALOG (gp->priv->init_dialog), TRUE);
+		ret = remmina_ssh_auth_gui (REMMINA_SSH (tunnel), REMMINA_INIT_DIALOG (gp->priv->init_dialog));
 		if (ret <= 0)
 		{
 			if (ret == 0)
@@ -518,10 +517,8 @@ gchar* remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget* gp, gi
 		return NULL;
 	}
 
-	THREADS_ENTER
 	remmina_init_dialog_set_status (REMMINA_INIT_DIALOG (gp->priv->init_dialog),
 			_("Connecting to %s through SSH tunnel..."), server);
-	THREADS_LEAVE
 
 	if (remmina_file_get_int (gp->priv->remmina_file, "ssh_loopback", FALSE))
 	{
@@ -561,10 +558,8 @@ gboolean remmina_protocol_widget_start_reverse_tunnel(RemminaProtocolWidget* gp,
 		return FALSE;
 	}
 
-	THREADS_ENTER
 	remmina_init_dialog_set_status (REMMINA_INIT_DIALOG (gp->priv->init_dialog),
 			_("Waiting for an incoming SSH tunnel at port %i..."), remmina_file_get_int (gp->priv->remmina_file, "listenport", 0));
-	THREADS_LEAVE
 
 	if (!remmina_ssh_tunnel_reverse (gp->priv->ssh_tunnel, remmina_file_get_int (gp->priv->remmina_file, "listenport", 0), local_port))
 	{
@@ -683,10 +678,8 @@ gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget* gp, R
 
 	if (!remmina_protocol_widget_init_tunnel (gp)) return FALSE;
 
-	THREADS_ENTER
 	remmina_init_dialog_set_status (REMMINA_INIT_DIALOG (gp->priv->init_dialog),
 			_("Connecting to %s through SSH tunnel..."), remmina_file_get_string (gp->priv->remmina_file, "server"));
-	THREADS_LEAVE
 
 	gp->priv->init_func = init_func;
 	gp->priv->ssh_tunnel->init_func = remmina_protocol_widget_tunnel_init_callback;
@@ -803,7 +796,7 @@ gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget* gp, RemminaAuth
 	RemminaFile* remminafile = gp->priv->remmina_file;
 	gchar* s;
 	gint ret;
-	
+
 	switch (authpwd_type)
 	{
 		case REMMINA_AUTHPWD_TYPE_PROTOCOL:
@@ -832,7 +825,7 @@ gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget* gp, RemminaAuth
 gint remmina_protocol_widget_init_authuserpwd(RemminaProtocolWidget* gp, gboolean want_domain)
 {
 	RemminaFile* remminafile = gp->priv->remmina_file;
-	
+
 	return remmina_init_dialog_authuserpwd(REMMINA_INIT_DIALOG(gp->priv->init_dialog), want_domain,
 			remmina_file_get_string(remminafile, "username"),
 			want_domain ? remmina_file_get_string(remminafile, "domain") : NULL,
@@ -911,9 +904,21 @@ gchar* remmina_protocol_widget_init_get_clientkey(RemminaProtocolWidget* gp)
 
 void remmina_protocol_widget_init_save_cred(RemminaProtocolWidget* gp)
 {
+
 	RemminaFile* remminafile = gp->priv->remmina_file;
 	gchar* s;
 	gboolean save = FALSE;
+
+	if ( !remmina_masterthread_exec_is_main_thread() ) {
+		/* Allow the execution of this function from a non main thread */
+		RemminaMTExecData *d;
+		d = (RemminaMTExecData*)g_malloc( sizeof(RemminaMTExecData) );
+		d->func = FUNC_INIT_SAVE_CRED;
+		d->p.init_save_creds.gp = gp;
+		remmina_masterthread_exec_and_wait(d);
+		g_free(d);
+		return;
+	}
 
 	/* Save user name and certificates if any; save the password if it's requested to do so */
 	s = REMMINA_INIT_DIALOG(gp->priv->init_dialog)->username;
@@ -1014,8 +1019,21 @@ void remmina_protocol_widget_chat_close(RemminaProtocolWidget* gp)
 
 void remmina_protocol_widget_chat_receive(RemminaProtocolWidget* gp, const gchar* text)
 {
+	/* This function can be called from a non main thread */
+
 	if (gp->priv->chat_window)
 	{
+		if ( !remmina_masterthread_exec_is_main_thread() ) {
+			/* Allow the execution of this function from a non main thread */
+			RemminaMTExecData *d;
+			d = (RemminaMTExecData*)g_malloc( sizeof(RemminaMTExecData) );
+			d->func = FUNC_CHAT_RECEIVE;
+			d->p.chat_receive.gp = gp;
+			d->p.chat_receive.text = text;
+			remmina_masterthread_exec_and_wait(d);
+			g_free(d);
+			return;
+		}
 		remmina_chat_window_receive(REMMINA_CHAT_WINDOW(gp->priv->chat_window), _("Server"), text);
 		gtk_window_present(GTK_WINDOW(gp->priv->chat_window));
 	}

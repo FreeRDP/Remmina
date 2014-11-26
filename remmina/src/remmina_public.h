@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -37,22 +37,14 @@
 
 #include "config.h"
 
-/* Wrapper marcos to make the compiler happy on both signle/multi-threaded mode */
-#ifdef HAVE_PTHREAD
 #define IDLE_ADD        gdk_threads_add_idle
 #define TIMEOUT_ADD     gdk_threads_add_timeout
 #define CANCEL_ASYNC    pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS,NULL);pthread_testcancel();
 #define CANCEL_DEFER    pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED,NULL);
-#define THREADS_ENTER   gdk_threads_enter();pthread_cleanup_push(remmina_public_threads_leave,NULL);
-#define THREADS_LEAVE   pthread_cleanup_pop(TRUE);
-#else
-#define IDLE_ADD        g_idle_add
-#define TIMEOUT_ADD     g_timeout_add
-#define CANCEL_ASYNC
-#define CANCEL_DEFER
-#define THREADS_ENTER
-#define THREADS_LEAVE
-#endif
+
+#define THREADS_ENTER _Pragma("GCC error \"THREADS_ENTER has been deprecated in Remmina 1.2\"")
+#define THREADS_LEAVE _Pragma("GCC error \"THREADS_LEAVE has been deprecated in Remmina 1.2\"")
+
 
 #define MAX_PATH_LEN 255
 
@@ -92,8 +84,6 @@ guint remmina_public_get_current_workspace(GdkScreen *screen);
 guint remmina_public_get_window_workspace(GtkWindow *gtkwindow);
 
 void remmina_public_threads_leave(void* data);
-
-G_END_DECLS
 
 #endif  /* __REMMINAPUBLIC_H__  */
 
