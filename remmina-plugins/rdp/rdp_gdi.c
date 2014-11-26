@@ -16,7 +16,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -46,6 +46,7 @@
 static void rf_desktop_resize(rdpContext* context)
 {
 	RemminaProtocolWidget* gp;
+	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi;
 
 	rfi = (rfContext*) context;
@@ -58,9 +59,11 @@ static void rf_desktop_resize(rdpContext* context)
 
 	UNLOCK_BUFFER(TRUE)
 
-	THREADS_ENTER
-	remmina_rdp_event_update_scale(gp);
-	THREADS_LEAVE
+	ui = g_new0(RemminaPluginRdpUiObject, 1);
+	ui->sync = TRUE;	// Wait for completion too
+	ui->type = REMMINA_RDP_UI_EVENT;
+	ui->event.type = REMMINA_RDP_UI_EVENT_UPDATE_SCALE;
+	rf_queue_ui(gp, ui);
 
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "desktop-resize");
 }

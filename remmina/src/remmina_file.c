@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -42,6 +42,7 @@
 #include "remmina_crypt.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_file.h"
+#include "remmina_masterthread_exec.h"
 
 #define MIN_WINDOW_WIDTH 10
 #define MIN_WINDOW_HEIGHT 10
@@ -74,6 +75,7 @@ const RemminaSetting remmina_system_settings[] =
 { "toolbar_opacity", REMMINA_SETTING_GROUP_RUNTIME, FALSE },
 
 { NULL, 0, FALSE } };
+
 
 static RemminaSettingGroup remmina_setting_get_group(const gchar *setting, gboolean *encrypted)
 {
@@ -247,8 +249,24 @@ remmina_file_get_string(RemminaFile *remminafile, const gchar *setting)
 gchar*
 remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting)
 {
+	/* This function can be called from a non main thread */
+
 	RemminaSecretPlugin *plugin;
 	const gchar *cs;
+
+	if ( !remmina_masterthread_exec_is_main_thread() ) {
+		/* Allow the execution of this function from a non main thread */
+		RemminaMTExecData *d;
+		gchar *retval;
+		d = (RemminaMTExecData*)g_malloc( sizeof(RemminaMTExecData) );
+		d->func = FUNC_FILE_GET_SECRET;
+		d->p.file_get_secret.remminafile = remminafile;
+		d->p.file_get_secret.setting = setting;
+		remmina_masterthread_exec_and_wait(d);
+		retval = d->p.file_get_secret.retval;
+		g_free(d);
+		return retval;
+	}
 
 	plugin = remmina_plugin_manager_get_secret_plugin();
 	cs = remmina_file_get_string(remminafile, setting);
@@ -290,7 +308,7 @@ static void remmina_file_store_group(RemminaFile *remminafile, GKeyFile *gkeyfil
 	gchar *s;
 	gboolean encrypted;
 	RemminaSettingGroup g;
-	
+
 
 	plugin = remmina_plugin_manager_get_secret_plugin();
 	g_hash_table_iter_init(&iter, remminafile->settings);

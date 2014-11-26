@@ -214,7 +214,9 @@ typedef struct _RemminaPluginService
     void         (* ui_register)                          (GtkWidget *widget);
 
     GtkWidget*   (* open_connection)                      (RemminaFile *remminafile, GCallback disconnect_cb, gpointer data, guint *handler);
-    void         (* get_server_port)                      (const gchar *server, gint defaultport, gchar **host, gint *port);
+    void         (* get_server_port)                      (const gchar *server, gint defaultport, gchar **host, gint *port);  
+    gboolean     (* is_main_thread)                       (void);
+
 } RemminaPluginService;
 
 /* "Prototype" of the plugin entry function */
