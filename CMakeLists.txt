@@ -103,13 +103,9 @@ set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_FULL_DATADIR}/locale")
 set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/remmina/plugins")
 
 find_required_package(GTK)
-find_suggested_package(PTHREAD)
+find_required_package(PTHREAD)
 find_suggested_package(GCRYPT)
 find_suggested_package(AVAHI)
-
-if(PTHREAD_FOUND)
-	add_definitions(-DHAVE_PTHREAD)
-endif()
 
 if(GCRYPT_FOUND)
 	add_definitions(-DHAVE_LIBGCRYPT)
