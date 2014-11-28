@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -44,6 +44,8 @@
 #include "remmina_widget_pool.h"
 #include "remmina_connection_window.h"
 #include "remmina_plugin_manager.h"
+#include "remmina_public.h"
+#include "remmina_masterthread_exec.h"
 
 static GPtrArray* remmina_plugin_table = NULL;
 
@@ -141,7 +143,9 @@ RemminaPluginService remmina_plugin_manager_service =
 		remmina_widget_pool_register,
 
 		remmina_connection_window_open_from_file_full,
-		remmina_public_get_server_port
+		remmina_public_get_server_port,
+		remmina_masterthread_exec_is_main_thread
+
 };
 
 static void remmina_plugin_manager_load_plugin(const gchar *name)

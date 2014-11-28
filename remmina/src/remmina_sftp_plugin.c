@@ -102,7 +102,7 @@ remmina_plugin_sftp_main_thread (gpointer data)
 			}
 
 			ret = remmina_ssh_auth_gui (REMMINA_SSH (sftp),
-					REMMINA_INIT_DIALOG (remmina_protocol_widget_get_init_dialog (gp)), TRUE);
+					REMMINA_INIT_DIALOG (remmina_protocol_widget_get_init_dialog (gp)));
 			if (ret == 0)
 			{
 				remmina_plugin_service->protocol_plugin_set_error (gp, "%s", REMMINA_SSH (sftp)->error);

@@ -120,12 +120,36 @@ void rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 	rfi = GET_DATA(gp);
 	g_async_queue_push(rfi->ui_queue, ui);
 
+	if (ui->sync) {
+		pthread_mutex_init(&ui->sync_wait_mutex,NULL);
+		pthread_mutex_lock(&ui->sync_wait_mutex);
+	}
+
 	LOCK_BUFFER(TRUE)
 
 	if (!rfi->ui_handler)
 		rfi->ui_handler = IDLE_ADD((GSourceFunc) remmina_rdp_event_queue_ui, gp);
 
 	UNLOCK_BUFFER(TRUE)
+
+	if ( ui->sync ) {
+		struct timeval  tv;
+		double tms;
+		/* Wait for main thread function completion before returning */
+
+		gettimeofday(&tv, NULL);
+		tms = (tv.tv_sec) * 1000 + (tv.tv_usec) / 1000 ;
+		printf("Waiting for main thread to complete its job %f\n",tms);
+
+		pthread_mutex_lock(&ui->sync_wait_mutex);
+
+		gettimeofday(&tv, NULL);
+		tms = (tv.tv_sec) * 1000 + (tv.tv_usec) / 1000 ;
+		printf("Got lock, ending %f\n",tms);
+
+
+		pthread_mutex_unlock(&ui->sync_wait_mutex);
+	}
 }
 
 void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj)
@@ -193,6 +217,7 @@ static void rf_desktop_resize(rdpContext* context)
 {
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
+	RemminaPluginRdpUiObject* ui;
 
 	rfi = (rfContext*) context;
 	gp = rfi->protocol_widget;
@@ -204,9 +229,13 @@ static void rf_desktop_resize(rdpContext* context)
 
 	UNLOCK_BUFFER(TRUE)
 
-	THREADS_ENTER
-	remmina_rdp_event_update_scale(gp);
-	THREADS_LEAVE
+	/* Call to remmina_rdp_event_update_scale(gp) on the main UI thread */
+
+	ui = g_new0(RemminaPluginRdpUiObject, 1);
+	ui->sync = TRUE;	// Wait for completion too
+	ui->type = REMMINA_RDP_UI_EVENT;
+	ui->event.type = REMMINA_RDP_UI_EVENT_UPDATE_SCALE;
+	rf_queue_ui(gp, ui);
 
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "desktop-resize");
 }
@@ -368,9 +397,7 @@ static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** 
 	gp = rfi->protocol_widget;
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
-	THREADS_ENTER
 	ret = remmina_plugin_service->protocol_plugin_init_authuserpwd(gp, TRUE);
-	THREADS_LEAVE
 
 	if (ret == GTK_RESPONSE_OK)
 	{
@@ -421,9 +448,7 @@ static BOOL remmina_rdp_verify_certificate(freerdp* instance, char* subject, cha
 	rfi = (rfContext*) instance->context;
 	gp = rfi->protocol_widget;
 
-	THREADS_ENTER
 	status = remmina_plugin_service->protocol_plugin_init_certificate(gp, subject, issuer, fingerprint);
-	THREADS_LEAVE
 
 	if (status == GTK_RESPONSE_OK)
 		return True;
@@ -439,9 +464,7 @@ static BOOL remmina_rdp_verify_changed_certificate(freerdp* instance, char* subj
 	rfi = (rfContext*) instance->context;
 	gp = rfi->protocol_widget;
 
-	THREADS_ENTER
 	status = remmina_plugin_service->protocol_plugin_changed_certificate(gp, subject, issuer, new_fingerprint, old_fingerprint);
-	THREADS_LEAVE
 
 	if (status == GTK_RESPONSE_OK)
 		return True;
@@ -650,9 +673,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	if (remmina_plugin_service->file_get_string(remminafile, "domain"))
 		rfi->settings->Domain = strdup(remmina_plugin_service->file_get_string(remminafile, "domain"));
 
-	THREADS_ENTER
 	s = remmina_plugin_service->file_get_secret(remminafile, "password");
-	THREADS_LEAVE
 
 	if (s)
 	{
@@ -887,10 +908,12 @@ static gpointer remmina_rdp_main_thread(gpointer data)
 
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
+
 	gp = (RemminaProtocolWidget*) data;
 	rfi = GET_DATA(gp);
 	remmina_rdp_main(gp);
 	rfi->thread = 0;
+
 	IDLE_ADD((GSourceFunc) remmina_plugin_service->protocol_plugin_close_connection, gp);
 
 	return NULL;
@@ -965,10 +988,12 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 
 	if (rfi->thread)
 	{
+		rfi->thread_cancelled = TRUE;	// Avoid all rf_queue function to run
 		pthread_cancel(rfi->thread);
 
 		if (rfi->thread)
 			pthread_join(rfi->thread, NULL);
+
 	}
 
 	pthread_mutex_destroy(&rfi->mutex);

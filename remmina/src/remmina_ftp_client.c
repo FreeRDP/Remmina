@@ -43,6 +43,7 @@
 #include "remmina_marshals.h"
 #include "remmina_file.h"
 #include "remmina_ftp_client.h"
+#include "remmina_masterthread_exec.h"
 
 /* -------------------- RemminaCellRendererPixbuf ----------------------- */
 /* A tiny cell renderer that extends the default pixbuf cell render to accept activation */
@@ -1163,6 +1164,19 @@ remmina_ftp_client_get_waiting_task(RemminaFTPClient *client)
 	GtkTreeIter iter;
 	RemminaFTPTask task;
 
+	if ( !remmina_masterthread_exec_is_main_thread() ) {
+		/* Allow the execution of this function from a non main thread */
+		RemminaMTExecData *d;
+		RemminaFTPTask* retval;
+		d = (RemminaMTExecData*)g_malloc( sizeof(RemminaMTExecData) );
+		d->func = FUNC_FTP_CLIENT_GET_WAITING_TASK;
+		d->p.ftp_client_get_waiting_task.client = client;
+		remmina_masterthread_exec_and_wait(d);
+		retval = d->p.ftp_client_get_waiting_task.retval;
+		g_free(d);
+		return retval;
+	}
+
 	if (!gtk_tree_model_get_iter_first(priv->task_list_model, &iter))
 		return NULL;
 
@@ -1194,6 +1208,21 @@ void remmina_ftp_client_update_task(RemminaFTPClient *client, RemminaFTPTask* ta
 	GtkListStore *store = GTK_LIST_STORE(priv->task_list_model);
 	GtkTreePath *path;
 	GtkTreeIter iter;
+
+	if ( !remmina_masterthread_exec_is_main_thread() ) {
+		/* Allow the execution of this function from a non main thread */
+		RemminaMTExecData *d;
+		gint retval;
+		d = (RemminaMTExecData*)g_malloc( sizeof(RemminaMTExecData) );
+		d->func = FUNC_FTP_CLIENT_UPDATE_TASK;
+		d->p.ftp_client_update_task.client = client;
+		d->p.ftp_client_update_task.task = task;
+		remmina_masterthread_exec_and_wait(d);
+		g_free(d);
+		return;
+	}
+
+
 
 	path = gtk_tree_row_reference_get_path(task->rowref);
 	if (path == NULL)
