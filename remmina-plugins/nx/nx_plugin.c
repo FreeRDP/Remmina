@@ -56,6 +56,77 @@ static gchar *remmina_kbtype = "pc102/us";
 static pthread_mutex_t remmina_nx_init_mutex;
 static GArray *remmina_nx_window_id_array;
 
+/* --------- Support for execution on main thread of GTK functions -------------- */
+
+struct onMainThread_cb_data {
+	enum { FUNC_GTK_SOCKET_ADD_ID } func;
+
+	GtkSocket* sk;
+	Window w;
+
+	/* Mutex for thread synchronization */
+	pthread_mutex_t mu;
+	/* Flag to catch cancellations */
+	gboolean cancelled;
+};
+
+static gboolean onMainThread_cb(struct onMainThread_cb_data *d)
+{
+	if ( !d->cancelled ) {
+		switch( d->func ) {
+			case FUNC_GTK_SOCKET_ADD_ID:
+				gtk_socket_add_id( d->sk, d->w );
+				break;
+		}
+		pthread_mutex_unlock( &d->mu );
+	} else {
+		/* thread has been cancelled, so we must free d memory here */
+		g_free( d );
+	}
+	return G_SOURCE_REMOVE;
+}
+
+
+static void onMainThread_cleanup_handler( struct onMainThread_cb_data *d )
+{
+	d->cancelled = TRUE;
+}
+
+
+static void onMainThread_schedule_callback_and_wait( struct onMainThread_cb_data *d )
+{
+	d->cancelled = FALSE;
+	pthread_cleanup_push( onMainThread_cleanup_handler, (void *)d );
+	pthread_mutex_init( &d->mu, NULL );
+	pthread_mutex_lock( &d->mu );
+	gdk_threads_add_idle( (GSourceFunc)onMainThread_cb, (gpointer) d );
+
+	pthread_mutex_lock( &d->mu );
+
+	pthread_cleanup_pop(0);
+	pthread_mutex_unlock( &d->mu );
+	pthread_mutex_destroy( &d->mu );
+}
+
+static void onMainThread_gtk_socket_add_id( GtkSocket* sk, Window w)
+{
+
+	struct onMainThread_cb_data *d;
+
+	d = (struct onMainThread_cb_data *)g_malloc( sizeof(struct onMainThread_cb_data) );
+	d->func = FUNC_GTK_SOCKET_ADD_ID;
+	d->sk = sk;
+	d->w = w;
+
+	onMainThread_schedule_callback_and_wait( d );
+	g_free(d);
+
+}
+
+
+/* --------------------------------------- */
+
+
 static gboolean remmina_plugin_nx_try_window_id(Window window_id)
 {
 	gint i;
@@ -115,8 +186,7 @@ gboolean remmina_plugin_nx_ssh_auth_callback(gchar **passphrase, gpointer userda
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget*) userdata;
 	gint ret;
 
-	THREADS_ENTER ret = remmina_plugin_nx_service->protocol_plugin_init_authpwd(gp, REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY);
-	THREADS_LEAVE
+	ret = remmina_plugin_nx_service->protocol_plugin_init_authpwd(gp, REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY);
 
 	if (ret != GTK_RESPONSE_OK)
 		return FALSE;
@@ -267,8 +337,8 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 	/* Login */
 
 	s1 = g_strdup(remmina_plugin_nx_service->file_get_string(remminafile, "username"));
-	THREADS_ENTER s2 = remmina_plugin_nx_service->file_get_secret(remminafile, "password");
-	THREADS_LEAVE
+	s2 = remmina_plugin_nx_service->file_get_secret(remminafile, "password");
+
 	if (s1 && s2)
 	{
 		ret = remmina_nx_session_login(nx, s1, s2);
@@ -278,8 +348,7 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 		g_free(s1);
 		g_free(s2);
 
-		THREADS_ENTER ret = remmina_plugin_nx_service->protocol_plugin_init_authuserpwd(gp, FALSE);
-		THREADS_LEAVE
+		ret = remmina_plugin_nx_service->protocol_plugin_init_authuserpwd(gp, FALSE);
 
 		if (ret != GTK_RESPONSE_OK)
 			return FALSE;
@@ -294,9 +363,7 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 	if (!ret)
 		return FALSE;
 
-	THREADS_ENTER
 	remmina_plugin_nx_service->protocol_plugin_init_save_cred(gp);
-	THREADS_LEAVE
 
 	/* Prepare the session type and application */
 	cs = remmina_plugin_nx_service->file_get_string(remminafile, "exec");
@@ -455,9 +522,8 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 		return FALSE;
 
 	/* embed it */
-	THREADS_ENTER
-	gtk_socket_add_id(GTK_SOCKET(gpdata->socket), gpdata->window_id);
-	THREADS_LEAVE
+	onMainThread_gtk_socket_add_id(GTK_SOCKET(gpdata->socket), gpdata->window_id);
+
 
 	return TRUE;
 }

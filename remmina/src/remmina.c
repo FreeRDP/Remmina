@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -47,13 +47,12 @@
 #include "remmina_ssh_plugin.h"
 #include "remmina_exec.h"
 #include "remmina_icon.h"
+#include "remmina_masterthread_exec.h"
 
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
 #endif
-#ifdef HAVE_PTHREAD
 #include <pthread.h>
-#endif
 #ifdef HAVE_LIBGCRYPT
 #include <gcrypt.h>
 GCRY_THREAD_OPTION_PTHREAD_IMPL;
@@ -70,6 +69,7 @@ static gboolean remmina_option_quit;
 static gchar *remmina_option_server;
 static gchar *remmina_option_protocol;
 static gchar *remmina_option_icon;
+
 
 static GOptionEntry remmina_options[] =
 {
@@ -202,7 +202,7 @@ static void remmina_on_startup(GApplication *app)
 	g_set_application_name("Remmina");
 	gtk_window_set_default_icon_name("remmina");
 
-gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
+	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
 		REMMINA_DATADIR G_DIR_SEPARATOR_S "icons");
 }
 
@@ -211,14 +211,11 @@ int main(int argc, char* argv[])
 	GApplication* app;
 	int status;
 
+	remmina_masterthread_exec_save_main_thread_id();
+
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 	textdomain(GETTEXT_PACKAGE);
-
-#ifdef HAVE_PTHREAD
-	g_type_init ();
-	gdk_threads_init ();
-#endif
 
 #ifdef HAVE_LIBGCRYPT
 	gcry_control (GCRYCTL_SET_THREAD_CBS, &gcry_threads_pthread);
@@ -238,9 +235,7 @@ int main(int argc, char* argv[])
 
 	if (status == 0 && !g_application_get_is_remote(app))
 	{
-		THREADS_ENTER
 		gtk_main();
-		THREADS_LEAVE
 	}
 
 	g_object_unref(app);

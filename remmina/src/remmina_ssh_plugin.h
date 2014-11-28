@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -35,9 +35,14 @@
 #ifndef __REMMINASSHPLUGIN_H__
 #define __REMMINASSHPLUGIN_H__
 
+#include <vte/vte.h>
+
 G_BEGIN_DECLS
 
 void remmina_ssh_plugin_register(void);
+
+/* For callback in main thread */
+void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal, const char *codeset, VtePty *pty);
 
 G_END_DECLS
 
