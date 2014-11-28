@@ -780,6 +780,23 @@ static void remmina_rdp_event_cursor(RemminaProtocolWidget* gp, RemminaPluginRdp
 	}
 }
 
+static void remmina_rdp_ui_event_update_scale(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+{
+	remmina_rdp_event_update_scale(gp);
+}
+
+
+static void remmina_rdp_event_process_event(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+{
+	switch (ui->event.type)
+	{
+		case REMMINA_RDP_UI_EVENT_UPDATE_SCALE:
+			remmina_rdp_ui_event_update_scale(gp, ui);
+			break;
+	}
+}
+
+
 gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 {
 	rfContext* rfi;
@@ -791,28 +808,39 @@ gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 
 	if (ui)
 	{
-		switch (ui->type)
-		{
-			case REMMINA_RDP_UI_UPDATE_REGION:
-				remmina_rdp_event_update_region(gp, ui);
-				break;
+		if ( !rfi->thread_cancelled ) {
+			switch (ui->type)
+			{
+				case REMMINA_RDP_UI_UPDATE_REGION:
+					remmina_rdp_event_update_region(gp, ui);
+					break;
 
-			case REMMINA_RDP_UI_CONNECTED:
-				remmina_rdp_event_connected(gp, ui);
-				break;
+				case REMMINA_RDP_UI_CONNECTED:
+					remmina_rdp_event_connected(gp, ui);
+					break;
 
-			case REMMINA_RDP_UI_CURSOR:
-				remmina_rdp_event_cursor(gp, ui);
-				break;
+				case REMMINA_RDP_UI_CURSOR:
+					remmina_rdp_event_cursor(gp, ui);
+					break;
 
-			case REMMINA_RDP_UI_CLIPBOARD:
-				remmina_rdp_event_process_clipboard(gp, ui);
-				break;
+				case REMMINA_RDP_UI_CLIPBOARD:
+					remmina_rdp_event_process_clipboard(gp, ui);
+					break;
 
-			default:
-				break;
+				case REMMINA_RDP_UI_EVENT:
+					remmina_rdp_event_process_event(gp,ui);
+					break;
+
+				default:
+					break;
+			}
 		}
 		rf_object_free(gp, ui);
+
+		// Should we signal the subthread to unlock ?
+		if ( ui->sync )
+			pthread_mutex_unlock(&ui->sync_wait_mutex);
+
 
 		return TRUE;
 	}

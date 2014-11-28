@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -97,6 +97,7 @@ gint remmina_init_dialog_authx509(RemminaInitDialog *dialog, const gchar *cacert
 		const gchar *clientkey);
 gint remmina_init_dialog_serverkey_unknown(RemminaInitDialog *dialog, const gchar *serverkey);
 gint remmina_init_dialog_serverkey_changed(RemminaInitDialog *dialog, const gchar *serverkey);
+gint remmina_init_dialog_serverkey_confirm(RemminaInitDialog *dialog, const gchar *serverkey, const gchar *prompt);
 
 G_END_DECLS
 

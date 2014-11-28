@@ -82,12 +82,9 @@ typedef struct _RemminaPluginVncData
 	GQueue *vnc_event_queue;
 	gint vnc_event_pipe[2];
 
-#ifdef HAVE_PTHREAD
 	pthread_t thread;
 	pthread_mutex_t buffer_mutex;
-#else
-	gint thread;
-#endif
+
 } RemminaPluginVncData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
@@ -97,13 +94,9 @@ static int dot_cursor_y_hot = 2;
 static const gchar * dot_cursor_xpm[] =
 { "5 5 3 1", " 	c None", ".	c #000000", "+	c #FFFFFF", " ... ", ".+++.", ".+ +.", ".+++.", " ... " };
 
-#ifdef HAVE_PTHREAD
+
 #define LOCK_BUFFER(t)      if(t){CANCEL_DEFER}pthread_mutex_lock(&gpdata->buffer_mutex);
 #define UNLOCK_BUFFER(t)    pthread_mutex_unlock(&gpdata->buffer_mutex);if(t){CANCEL_ASYNC}
-#else
-#define LOCK_BUFFER(t)
-#define UNLOCK_BUFFER(t)
-#endif
 
 enum
 {
@@ -137,6 +130,82 @@ typedef struct _RemminaPluginVncEvent
 		} text;
 	} event_data;
 } RemminaPluginVncEvent;
+
+
+
+/* --------- Support for execution on main thread of GUI functions -------------- */
+static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean scale);
+
+struct onMainThread_cb_data {
+	enum { FUNC_GTK_WIDGET_QUEUE_DRAW_AREA, FUNC_UPDATE_SCALE } func;
+
+	GtkWidget *widget;
+	gint x, y, width, height;
+	RemminaProtocolWidget* gp;
+	gboolean scale;
+
+	/* Mutex for thread synchronization */
+	pthread_mutex_t mu;
+	/* Flag to catch cancellations */
+	gboolean cancelled;
+};
+
+static gboolean onMainThread_cb(struct onMainThread_cb_data *d)
+{
+	if ( !d->cancelled ) {
+		switch( d->func ) {
+			case FUNC_GTK_WIDGET_QUEUE_DRAW_AREA:
+				gtk_widget_queue_draw_area( d->widget, d->x, d->y, d->width, d->height );
+				break;
+			case FUNC_UPDATE_SCALE:
+				remmina_plugin_vnc_update_scale( d->gp, d->scale );
+				break;
+		}
+		pthread_mutex_unlock( &d->mu );
+	} else {
+		/* thread has been cancelled, so we must free d memory here */
+		g_free( d );
+	}
+	return G_SOURCE_REMOVE;
+}
+
+
+static void onMainThread_cleanup_handler( struct onMainThread_cb_data *d )
+{
+	d->cancelled = TRUE;
+}
+
+
+static void onMainThread_schedule_callback_and_wait( struct onMainThread_cb_data *d )
+{
+	d->cancelled = FALSE;
+	pthread_cleanup_push( onMainThread_cleanup_handler, (void *)d );
+	pthread_mutex_init( &d->mu, NULL );
+	pthread_mutex_lock( &d->mu );
+	gdk_threads_add_idle( (GSourceFunc)onMainThread_cb, (gpointer) d );
+
+	pthread_mutex_lock( &d->mu );
+
+	pthread_cleanup_pop(0);
+	pthread_mutex_unlock( &d->mu );
+	pthread_mutex_destroy( &d->mu );
+}
+
+static void onMainThread_gtk_widget_queue_draw_area(GtkWidget *widget, gint x, gint y, gint width, gint height )
+{
+	struct onMainThread_cb_data *d;
+	d = (struct onMainThread_cb_data *)g_malloc( sizeof(struct onMainThread_cb_data) );
+	d->func = FUNC_GTK_WIDGET_QUEUE_DRAW_AREA;
+	d->widget = widget;
+	d->x = x; d->y = y; d->width = width; d->height = height;
+	onMainThread_schedule_callback_and_wait( d );
+	g_free(d);
+}
+
+
+/* --------------------------------------- */
+
+
 
 static void remmina_plugin_vnc_event_push(RemminaProtocolWidget *gp, gint event_type, gpointer p1, gpointer p2, gpointer p3)
 {
@@ -303,9 +372,7 @@ UNLOCK_BUFFER			(in_thread)
 		{
 			if (in_thread)
 			{
-				THREADS_ENTER
-				gtk_widget_queue_draw_area(GTK_WIDGET(gp), 0, 0, width, height);
-				THREADS_LEAVE
+				onMainThread_gtk_widget_queue_draw_area(GTK_WIDGET(gp), 0, 0, width, height);
 			}
 			else
 			{
@@ -324,10 +391,24 @@ static gboolean remmina_plugin_vnc_update_scale_buffer_main(RemminaProtocolWidge
 
 static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean scale)
 {
+	/* This function can be called from a non main thread */
+
 	RemminaPluginVncData *gpdata;
 	RemminaFile *remminafile;
 	gint width, height;
 	gint hscale, vscale;
+
+	if ( !remmina_plugin_service->is_main_thread() ) {
+		struct onMainThread_cb_data *d;
+		d = (struct onMainThread_cb_data *)g_malloc( sizeof(struct onMainThread_cb_data) );
+		d->func = FUNC_UPDATE_SCALE;
+		d->gp = gp;
+		d->scale = scale;
+		onMainThread_schedule_callback_and_wait( d );
+		g_free(d);
+		return;
+	}
+
 
 	gpdata = (RemminaPluginVncData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
@@ -585,9 +666,8 @@ static rfbBool remmina_plugin_vnc_rfb_allocfb(rfbClient *cl)
 		g_object_unref(old_pixbuf);
 
 	scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
-	THREADS_ENTER
+
 	remmina_plugin_vnc_update_scale( gp, scale);
-	THREADS_LEAVE
 
 	if (gpdata->scale_handler == 0)
 		remmina_plugin_vnc_update_scale_buffer(gp, TRUE);
@@ -824,13 +904,11 @@ remmina_plugin_vnc_rfb_password(rfbClient *cl)
 
 	if (gpdata->auth_first)
 	{
-		THREADS_ENTER pwd = remmina_plugin_service->file_get_secret(remminafile, "password");
-		THREADS_LEAVE
+		pwd = remmina_plugin_service->file_get_secret(remminafile, "password");
 	}
 	if (!pwd)
 	{
-		THREADS_ENTER ret = remmina_plugin_service->protocol_plugin_init_authpwd(gp, REMMINA_AUTHPWD_TYPE_PROTOCOL);
-		THREADS_LEAVE
+		ret = remmina_plugin_service->protocol_plugin_init_authpwd(gp, REMMINA_AUTHPWD_TYPE_PROTOCOL);
 
 		if (ret == GTK_RESPONSE_OK)
 		{
@@ -867,9 +945,9 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 		case rfbCredentialTypeUser:
 
 		s1 = g_strdup (remmina_plugin_service->file_get_string (remminafile, "username"));
-		THREADS_ENTER
+
 		s2 = remmina_plugin_service->file_get_secret (remminafile, "password");
-		THREADS_LEAVE
+
 		if (gpdata->auth_first && s1 && s2)
 		{
 			cred->userCredential.username = s1;
@@ -880,9 +958,8 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 			g_free(s1);
 			g_free(s2);
 
-			THREADS_ENTER
 			ret = remmina_plugin_service->protocol_plugin_init_authuserpwd (gp, FALSE);
-			THREADS_LEAVE
+
 
 			if (ret == GTK_RESPONSE_OK)
 			{
@@ -909,9 +986,8 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 		}
 		else
 		{
-			THREADS_ENTER
+
 			ret = remmina_plugin_service->protocol_plugin_init_authx509 (gp);
-			THREADS_LEAVE
 
 			if (ret == GTK_RESPONSE_OK)
 			{
@@ -1064,9 +1140,7 @@ static void remmina_plugin_vnc_rfb_chat(rfbClient* cl, int value, char *text)
 			break;
 		default:
 			/* value is the text length */
-			THREADS_ENTER
 			remmina_plugin_service->protocol_plugin_chat_receive(gp, text);
-			THREADS_LEAVE
 			break;
 	}
 }
@@ -1277,9 +1351,8 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		if (!gpdata->connected)
 			break;
 
-		THREADS_ENTER
 		remmina_plugin_service->protocol_plugin_init_show_retry(gp);
-		THREADS_LEAVE
+
 		/* It's safer to sleep a while before reconnect */
 		sleep(2);
 
@@ -1299,9 +1372,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		return FALSE;
 	}
 
-	THREADS_ENTER
 	remmina_plugin_service->protocol_plugin_init_save_cred(gp);
-	THREADS_LEAVE
 
 	gpdata->client = cl;
 
@@ -1327,7 +1398,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 	return FALSE;
 }
 
-#ifdef HAVE_PTHREAD
+
 static gpointer
 remmina_plugin_vnc_main_thread (gpointer data)
 {
@@ -1337,7 +1408,7 @@ remmina_plugin_vnc_main_thread (gpointer data)
 	remmina_plugin_vnc_main ((RemminaProtocolWidget*) data);
 	return NULL;
 }
-#endif
+
 
 static gboolean remmina_plugin_vnc_on_motion(GtkWidget *widget, GdkEventMotion *event, RemminaProtocolWidget *gp)
 {
@@ -1644,7 +1715,7 @@ static gboolean remmina_plugin_vnc_open_connection(RemminaProtocolWidget *gp)
 				"owner-change", G_CALLBACK(remmina_plugin_vnc_on_cuttext), gp);
 	}
 
-#ifdef HAVE_PTHREAD
+
 	if (pthread_create (&gpdata->thread, NULL, remmina_plugin_vnc_main_thread, gp))
 	{
 		/* I don't think this will ever happen... */
@@ -1652,9 +1723,6 @@ static gboolean remmina_plugin_vnc_open_connection(RemminaProtocolWidget *gp)
 		g_timeout_add (0, (GSourceFunc) remmina_plugin_vnc_main, gp);
 		gpdata->thread = 0;
 	}
-#else
-	g_timeout_add(0, (GSourceFunc) remmina_plugin_vnc_main, gp);
-#endif
 
 	return TRUE;
 }
@@ -1727,9 +1795,9 @@ static gboolean remmina_plugin_vnc_close_connection_timeout(RemminaProtocolWidge
 	close(gpdata->vnc_event_pipe[0]);
 	close(gpdata->vnc_event_pipe[1]);
 
-#ifdef HAVE_PTHREAD
+
 	pthread_mutex_destroy (&gpdata->buffer_mutex);
-#endif
+
 
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 
@@ -1743,7 +1811,6 @@ static gboolean remmina_plugin_vnc_close_connection(RemminaProtocolWidget *gp)
 	gpdata = (RemminaPluginVncData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	gpdata->connected = FALSE;
 
-#ifdef HAVE_PTHREAD
 	if (gpdata->thread)
 	{
 		pthread_cancel (gpdata->thread);
@@ -1755,9 +1822,6 @@ static gboolean remmina_plugin_vnc_close_connection(RemminaProtocolWidget *gp)
 	{
 		g_timeout_add (200, (GSourceFunc) remmina_plugin_vnc_close_connection_timeout, gp);
 	}
-#else
-	g_timeout_add(200, (GSourceFunc) remmina_plugin_vnc_close_connection_timeout, gp);
-#endif
 
 	return FALSE;
 }
@@ -1912,9 +1976,9 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 	}
 	flags = fcntl(gpdata->vnc_event_pipe[0], F_GETFL, 0);
 	fcntl(gpdata->vnc_event_pipe[0], F_SETFL, flags | O_NONBLOCK);
-#ifdef HAVE_PTHREAD
+
 	pthread_mutex_init (&gpdata->buffer_mutex, NULL);
-#endif
+
 }
 
 static gpointer colordepth_list[] =
