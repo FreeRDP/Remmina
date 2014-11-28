@@ -118,6 +118,7 @@ struct rf_context
 	pthread_mutex_t mutex;
 	gboolean scale;
 	gboolean user_cancelled;
+	gboolean thread_cancelled;
 
 	CliprdrClientContext* cliprdr;
 
@@ -204,7 +205,8 @@ typedef enum
 	REMMINA_RDP_UI_CURSOR,
 	REMMINA_RDP_UI_RFX,
 	REMMINA_RDP_UI_NOCODEC,
-	REMMINA_RDP_UI_CLIPBOARD
+	REMMINA_RDP_UI_CLIPBOARD,
+	REMMINA_RDP_UI_EVENT
 } RemminaPluginRdpUiType;
 
 typedef enum
@@ -224,9 +226,16 @@ typedef enum
 	REMMINA_RDP_POINTER_DEFAULT
 } RemminaPluginRdpUiPointerType;
 
+typedef enum
+{
+	REMMINA_RDP_UI_EVENT_UPDATE_SCALE
+} RemminaPluginRdpUiEeventType;
+
 struct remmina_plugin_rdp_ui_object
 {
 	RemminaPluginRdpUiType type;
+	gboolean sync;
+	pthread_mutex_t sync_wait_mutex;
 	union
 	{
 		struct
@@ -263,6 +272,9 @@ struct remmina_plugin_rdp_ui_object
 			rfClipboard* clipboard;
 
 		} clipboard;
+		struct {
+			RemminaPluginRdpUiEeventType type;
+		} event;
 	};
 };
 typedef struct remmina_plugin_rdp_ui_object RemminaPluginRdpUiObject;
