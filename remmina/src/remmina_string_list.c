@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2009 - Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -60,7 +60,11 @@ static void remmina_string_list_status_error(RemminaStringList *gsl, const gchar
 
 static void remmina_string_list_status_hints(RemminaStringList *gsl)
 {
+#if GTK_VERSION == 3
+	gtk_widget_override_color(gsl->status_label, GTK_STATE_NORMAL, NULL);
+#else
 	gtk_widget_modify_fg(gsl->status_label, GTK_STATE_NORMAL, NULL);
+#endif
 	gtk_label_set_text(GTK_LABEL(gsl->status_label), gsl->hints);
 }
 
@@ -205,7 +209,7 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 #if GTK_CHECK_VERSION(3, 12, 0)
 	gtk_widget_set_margin_end (GTK_FRAME(frame), 80);
 #else
-	gtk_widget_set_margin_right (GTK_FRAME(frame), 80);
+	gtk_widget_set_margin_right (frame, 80);
 #endif
 	gtk_grid_attach(GTK_GRID(gsl), frame, 0, 0, 1, 1);
 
