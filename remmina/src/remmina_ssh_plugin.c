@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -45,6 +45,7 @@
 #include "remmina_protocol_widget.h"
 #include "remmina_pref.h"
 #include "remmina_ssh_plugin.h"
+#include "remmina_masterthread_exec.h"
 
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY  1
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE 2
@@ -105,7 +106,7 @@ remmina_plugin_ssh_main_thread (gpointer data)
 			}
 
 			ret = remmina_ssh_auth_gui (REMMINA_SSH (shell),
-					REMMINA_INIT_DIALOG (remmina_protocol_widget_get_init_dialog (gp)), TRUE);
+					REMMINA_INIT_DIALOG (remmina_protocol_widget_get_init_dialog (gp)));
 			if (ret == 0)
 			{
 				remmina_plugin_service->protocol_plugin_set_error (gp, "%s", REMMINA_SSH (shell)->error);
@@ -132,29 +133,45 @@ remmina_plugin_ssh_main_thread (gpointer data)
 	gpdata->shell = shell;
 
 	charset = REMMINA_SSH (shell)->charset;
-
-	THREADS_ENTER
-	if (charset && charset[0] != '\0')
-	{
-#if !VTE_CHECK_VERSION(0,38,0)
-		vte_terminal_set_encoding (VTE_TERMINAL (gpdata->vte), charset);
-#else
-		vte_terminal_set_encoding (VTE_TERMINAL (gpdata->vte), charset, NULL);
-#endif
-	}
-#if !VTE_CHECK_VERSION(0,38,0)
-	vte_terminal_set_pty (VTE_TERMINAL (gpdata->vte), shell->slave);
-#else
-	vte_terminal_set_pty (VTE_TERMINAL (gpdata->vte),
-                          vte_pty_new_foreign_sync (shell->slave, NULL, NULL));
-#endif
-	THREADS_LEAVE
-
+	remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VTE_TERMINAL (gpdata->vte), charset, shell->slave);
 	remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
 
 	gpdata->thread = 0;
 	return NULL;
 }
+
+void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal, const char *codeset, VtePty *pty)
+{
+	if ( !remmina_masterthread_exec_is_main_thread() ) {
+		/* Allow the execution of this function from a non main thread */
+		RemminaMTExecData *d;
+		d = (RemminaMTExecData*)g_malloc( sizeof(RemminaMTExecData) );
+		d->func = FUNC_VTE_TERMINAL_SET_ENCODING_AND_PTY;
+		d->p.vte_terminal_set_encoding_and_pty.terminal = terminal;
+		d->p.vte_terminal_set_encoding_and_pty.codeset = codeset;
+		d->p.vte_terminal_set_encoding_and_pty.pty = pty;
+		remmina_masterthread_exec_and_wait(d);
+		g_free(d);
+		return;
+	}
+
+	if (codeset && codeset[0] != '\0')
+	{
+#if !VTE_CHECK_VERSION(0,38,0)
+		vte_terminal_set_encoding (terminal, codeset);
+#else
+		vte_terminal_set_encoding (terminal, codeset, NULL);
+#endif
+	}
+
+#if !VTE_CHECK_VERSION(0,38,0)
+	vte_terminal_set_pty (terminal, pty);
+#else
+	vte_terminal_set_pty (terminal, pty);
+#endif
+
+}
+
 
 static gboolean
 remmina_plugin_ssh_on_focus_in (GtkWidget *widget, GdkEventFocus *event, RemminaProtocolWidget *gp)
