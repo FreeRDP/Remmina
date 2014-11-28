@@ -49,11 +49,8 @@ typedef struct _RemminaPluginXdmcpData
 	gint display;
 	gboolean ready;
 
-#ifdef HAVE_PTHREAD
 	pthread_t thread;
-#else
-	gint thread;
-#endif
+
 } RemminaPluginXdmcpData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
@@ -228,7 +225,7 @@ static gboolean remmina_plugin_xdmcp_main(RemminaProtocolWidget *gp)
 	return TRUE;
 }
 
-#ifdef HAVE_PTHREAD
+
 static gpointer
 remmina_plugin_xdmcp_main_thread (gpointer data)
 {
@@ -241,7 +238,7 @@ remmina_plugin_xdmcp_main_thread (gpointer data)
 	}
 	return NULL;
 }
-#endif
+
 
 static void remmina_plugin_xdmcp_init(RemminaProtocolWidget *gp)
 {
@@ -274,7 +271,7 @@ static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 	gtk_widget_set_size_request(GTK_WIDGET(gp), width, height);
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 
-#ifdef HAVE_PTHREAD
+
 
 	if (remmina_plugin_service->file_get_int (remminafile, "ssh_enabled", FALSE))
 	{
@@ -295,11 +292,6 @@ static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 		return remmina_plugin_xdmcp_main (gp);
 	}
 
-#else
-
-	return remmina_plugin_xdmcp_main(gp);
-
-#endif
 }
 
 static gboolean remmina_plugin_xdmcp_close_connection(RemminaProtocolWidget *gp)
@@ -308,13 +300,12 @@ static gboolean remmina_plugin_xdmcp_close_connection(RemminaProtocolWidget *gp)
 
 	gpdata = (RemminaPluginXdmcpData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 
-#ifdef HAVE_PTHREAD
+
 	if (gpdata->thread)
 	{
 		pthread_cancel (gpdata->thread);
 		if (gpdata->thread) pthread_join (gpdata->thread, NULL);
 	}
-#endif
 
 	if (gpdata->pid)
 	{

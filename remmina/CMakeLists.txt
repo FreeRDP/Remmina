@@ -74,6 +74,8 @@ set(REMMINA_SRCS
 	src/remmina_marshals.c
 	src/remmina_marshals.h
 	src/remmina_marshals.list
+	src/remmina_masterthread_exec.c
+	src/remmina_masterthread_exec.h
 	src/remmina_plugin_manager.c
 	src/remmina_plugin_manager.h
 	src/remmina_pref.c
