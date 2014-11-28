@@ -256,7 +256,7 @@ remmina_ssh_auth (RemminaSSH *ssh, const gchar *password)
 }
 
 gint
-remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, gboolean threaded)
+remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog)
 {
 	gchar *tips;
 	gchar *keyname;
@@ -289,7 +289,7 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, gboolean threa
 			ssh_key_free(server_pubkey);
 			keyname = ssh_get_hexa (pubkey, len);
 
-			if (threaded) gdk_threads_enter();
+
 			if (ret == SSH_SERVER_NOT_KNOWN || ret == SSH_SERVER_FILE_NOT_FOUND)
 			{
 				ret = remmina_init_dialog_serverkey_unknown (dialog, keyname);
@@ -298,8 +298,6 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, gboolean threa
 			{
 				ret = remmina_init_dialog_serverkey_changed (dialog, keyname);
 			}
-			if (threaded)
-			{	gdk_flush();gdk_threads_leave();}
 
 			ssh_string_free_char(keyname);
 			ssh_clean_pubkey_hash (&pubkey);
@@ -337,12 +335,8 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, gboolean threa
 
 		if (ssh->auth != SSH_AUTH_AUTO_PUBLICKEY)
 		{
-			if (threaded) gdk_threads_enter();
 			remmina_init_dialog_set_status (dialog, tips, ssh->user, ssh->server);
-
 			ret = remmina_init_dialog_authpwd (dialog, keyname, FALSE);
-			if (threaded)
-			{	gdk_flush();gdk_threads_leave();}
 
 			if (ret != GTK_RESPONSE_OK) return -1;
 		}
