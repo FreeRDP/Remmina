@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010-2011 Vic Lee 
+ * Copyright (C) 2010-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -163,7 +163,7 @@ static RemminaFile* remmina_rdp_file_import_channel(GIOChannel* channel)
 	else
 	{
 		enc = "UTF-8";
-		if (g_io_channel_seek(channel, 0, G_SEEK_SET) != G_IO_ERROR_NONE)
+		if (g_io_channel_seek_position(channel, 0, G_SEEK_SET, &error) != G_IO_STATUS_NORMAL)
 		{
 			g_print("g_io_channel_seek: failed\n");
 			return NULL;
@@ -233,7 +233,7 @@ RemminaFile* remmina_rdp_file_import(const gchar* from_file)
 	}
 
 	remminafile = remmina_rdp_file_import_channel(channel);
-	g_io_channel_close(channel);
+	g_io_channel_shutdown(channel, TRUE, &error);
 
 	return remminafile;
 }
