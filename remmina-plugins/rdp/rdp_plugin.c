@@ -297,11 +297,6 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 		flags |= CLRBUF_32BPP;
 		rfi->cairo_format = CAIRO_FORMAT_ARGB32;
 	}
-	else if (rfi->bpp == 24)
-	{
-		flags |= CLRBUF_24BPP;
-		rfi->cairo_format = CAIRO_FORMAT_RGB24;
-	}
 	else
 	{
 		flags |= CLRBUF_16BPP;
