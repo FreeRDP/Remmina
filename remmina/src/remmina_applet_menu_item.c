@@ -156,7 +156,7 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 	else
 	{
 #if GTK_VERSION == 3
-		widget = gtk_image_new_from_icon_name(GTK_STOCK_JUMP_TO, GTK_ICON_SIZE_MENU);
+		widget = gtk_image_new_from_icon_name("go-jump", GTK_ICON_SIZE_MENU);
 #else
 		// This is weird I must use the deprecated function call for the jump to 
 		// icon keep it working with MATE, Tango and GNOME themes
