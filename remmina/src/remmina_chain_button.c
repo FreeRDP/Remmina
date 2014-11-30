@@ -35,7 +35,11 @@
 #include <gtk/gtk.h>
 #include "remmina_chain_button.h"
 
+#if GTK_VERSION == 3
 G_DEFINE_TYPE (RemminaChainButton, remmina_chain_button, GTK_TYPE_GRID)
+#elif GTK_VERSION == 2
+G_DEFINE_TYPE (RemminaChainButton, remmina_chain_button, GTK_TYPE_TABLE)
+#endif
 
 static const gchar* line_up_xpm[] =
 {
@@ -189,16 +193,28 @@ static void remmina_chain_button_init(RemminaChainButton* cb)
 	GtkWidget* image;
 	GdkPixbuf* pixbuf;
 
+#if GTK_VERSION == 2
+	gtk_table_resize(GTK_TABLE(cb), 3, 1);
+#endif
+
 	pixbuf = gdk_pixbuf_new_from_xpm_data(line_up_xpm);
 	image = gtk_image_new_from_pixbuf(pixbuf);
 	g_object_unref(pixbuf);
 	gtk_widget_show(image);
+#if GTK_VERSION == 3
 	gtk_grid_attach(GTK_GRID(cb), image, 0, 0, 1, 1);
+#elif GTK_VERSION == 2
+	gtk_table_attach_defaults(GTK_TABLE(cb), image, 0, 1, 0, 1);
+#endif
 
 	widget = gtk_button_new();
 	gtk_widget_show(widget);
 	gtk_button_set_relief(GTK_BUTTON(widget), GTK_RELIEF_NONE);
+#if GTK_VERSION == 3
 	gtk_grid_attach(GTK_GRID(cb), widget, 0, 1, 1, 1);
+#elif GTK_VERSION == 2
+	gtk_table_attach_defaults(GTK_TABLE(cb), widget, 0, 1, 1, 2);
+#endif
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_chain_button_on_clicked), cb);
 
 	image = gtk_image_new();
@@ -210,7 +226,11 @@ static void remmina_chain_button_init(RemminaChainButton* cb)
 	image = gtk_image_new_from_pixbuf(pixbuf);
 	g_object_unref(pixbuf);
 	gtk_widget_show(image);
+#if GTK_VERSION == 3
 	gtk_grid_attach(GTK_GRID(cb), image, 0, 2, 1, 1);
+#elif GTK_VERSION == 2
+	gtk_table_attach_defaults(GTK_TABLE(cb), image, 0, 1, 2, 3);
+#endif
 
 	cb->chained = FALSE;
 }

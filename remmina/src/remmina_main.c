@@ -767,7 +767,7 @@ static void remmina_main_action_tools_addition(GtkAction *action, RemminaMain *r
 {
 	RemminaToolPlugin *plugin;
 
-	plugin = (RemminaToolPlugin *) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_TOOL, g_action_get_name(action));
+	plugin = (RemminaToolPlugin *) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_TOOL, gtk_action_get_name(action));
 	if (plugin)
 	{
 		plugin->exec_func();
@@ -1122,8 +1122,8 @@ static gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWi
 		gtk_widget_hide(widget);
 		return TRUE;
 	}
-	return FALSE;
 #endif
+	return FALSE;
 }
 
 

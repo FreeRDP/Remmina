@@ -192,7 +192,9 @@ remmina_public_create_combo(gboolean use_icon)
 		store = gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_STRING);
 	}
 	combo = gtk_combo_box_new_with_model(GTK_TREE_MODEL(store));
+#if GTK_VERSION == 3
     gtk_widget_set_hexpand(combo, TRUE);
+#endif
 
 	if (use_icon)
 	{
@@ -251,7 +253,7 @@ remmina_public_create_combo_mapint(const gpointer *key_value_list, gint def, gbo
 	return remmina_public_create_combo_map(key_value_list, buf, use_icon, domain);
 }
 
-void remmina_public_create_group(GtkGrid *table, const gchar *group, gint row, gint rows, gint cols)
+void remmina_public_create_group(GtkContainer* table, const gchar *group, gint row, gint rows, gint cols)
 {
 	GtkWidget *widget;
 	gchar *str;
@@ -262,11 +264,19 @@ void remmina_public_create_group(GtkGrid *table, const gchar *group, gint row, g
 	str = g_markup_printf_escaped("<b>%s</b>", group);
 	gtk_label_set_markup(GTK_LABEL(widget), str);
 	g_free(str);
+#if GTK_VERSION == 3
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 2);
+#elif GTK_VERSION == 2
+	gtk_table_attach_defaults(GTK_TABLE(table), widget, 0, cols, row, row + 1);
+#endif
 
 	widget = gtk_label_new(NULL);
 	gtk_widget_show(widget);
+#if GTK_VERSION == 3
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row + 1, 1, 1);
+#elif GTK_VERSION == 2
+	gtk_table_attach(GTK_TABLE(table), widget, 0, 1, row + 1, row + rows, 0, 0, 0, 0);
+#endif
 }
 
 gchar*

@@ -38,7 +38,11 @@
 #include "remmina_public.h"
 #include "remmina_string_list.h"
 
+#if GTK_VERSION == 3
 G_DEFINE_TYPE( RemminaStringList, remmina_string_list, GTK_TYPE_GRID)
+#elif GTK_VERSION == 2
+G_DEFINE_TYPE( RemminaStringList, remmina_string_list, GTK_TYPE_TABLE)
+#endif
 
 #define ERROR_COLOR "red"
 
@@ -199,11 +203,14 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	GtkTreeViewColumn *column;
 	GtkWidget *frame;
 
-	//gtk_table_resize(GTK_TABLE(gsl), 3, 2);
+#if GTK_VERSION == 2
+	gtk_table_resize(GTK_TABLE(gsl), 3, 2);
+#endif
 
 	/* Create the frame and add a new scrolled window, followed by the group list */
 	frame = gtk_frame_new(NULL);
 	gtk_widget_show(frame);
+#if GTK_VERSION == 3
 	gtk_widget_set_hexpand(frame, TRUE);
 	gtk_widget_set_vexpand(frame, TRUE);
 #if GTK_CHECK_VERSION(3, 12, 0)
@@ -212,6 +219,9 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	gtk_widget_set_margin_right (frame, 80);
 #endif
 	gtk_grid_attach(GTK_GRID(gsl), frame, 0, 0, 1, 1);
+#elif GTK_VERSION == 2
+	gtk_table_attach_defaults(GTK_TABLE(gsl), frame, 0, 1, 0, 1);
+#endif
 
 	scrolled_window = gtk_scrolled_window_new(NULL, NULL);
 	gtk_widget_show(scrolled_window);
@@ -238,7 +248,11 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	vbox = gtk_vbox_new(FALSE, 0);
 #endif
 	gtk_widget_show(vbox);
+#if GTK_VERSION == 3
 	gtk_grid_attach(GTK_GRID(gsl), vbox, 1, 0, 2, 1);
+#elif GTK_VERSION == 2
+	gtk_table_attach(GTK_TABLE(gsl), vbox, 1, 2, 0, 3, 0, GTK_EXPAND | GTK_FILL, 0, 0);
+#endif
 
 	image = gtk_image_new_from_icon_name("list-add", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
@@ -278,8 +292,12 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	gsl->status_label = gtk_label_new(NULL);
 	gtk_widget_show(gsl->status_label);
 	gtk_misc_set_alignment(GTK_MISC(gsl->status_label), 0.0, 0.5);
+#if GTK_VERSION == 3
 	gtk_widget_set_hexpand(gsl->status_label, TRUE);
 	gtk_grid_attach(GTK_GRID(gsl), gsl->status_label, 0, 2, 2, 1);
+#elif GTK_VERSION == 2
+	gtk_table_attach(GTK_TABLE(gsl), gsl->status_label, 0, 2, 2, 3, GTK_EXPAND | GTK_FILL, 0, 0, 0);
+#endif
 
 	gsl->hints = NULL;
 	gsl->validation_func = NULL;

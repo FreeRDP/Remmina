@@ -665,21 +665,39 @@ static void remmina_ftp_client_popup_menu(RemminaFTPClient *client, GdkEventButt
 
 	menu = gtk_menu_new();
 
+#if GTK_VERSION == 3
 	menuitem = gtk_menu_item_new_with_label(_("Download"));
+#else
+	menuitem = gtk_image_menu_item_new_with_label(_("Download"));
+#endif
 	gtk_widget_show(menuitem);
 	image = gtk_image_new_from_icon_name("document-save", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
+#if GTK_VERSION == 2
+	gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(menuitem), image);
+#endif
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_ftp_client_action_download), client);
 
+#if GTK_VERSION == 3
 	menuitem = gtk_menu_item_new_with_label(_("Upload"));
+#else
+	menuitem = gtk_image_menu_item_new_with_label(_("Upload"));
+#endif
 	gtk_widget_show(menuitem);
 	image = gtk_image_new_from_icon_name("document-send", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
+#if GTK_VERSION == 2
+	gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(menuitem), image);
+#endif
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_ftp_client_action_upload), client);
 
+#if GTK_VERSION == 2
+	menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_DELETE, NULL);
+#else
 	menuitem = gtk_menu_item_new_with_mnemonic(_("_Delete"));
+#endif
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_ftp_client_action_delete), client);

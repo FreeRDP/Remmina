@@ -110,6 +110,9 @@ add_executable(remmina ${REMMINA_SRCS})
 
 include_directories(${GTK_INCLUDE_DIRS})
 target_link_libraries(remmina ${GTK_LIBRARIES})
+if(NOT LIBINTL_LIBC_HAS_DGETTEXT)
+	target_link_libraries(remmina -lintl)
+endif()
 
 find_package(X11)
 include_directories(${X11_INCLUDE_DIR})
@@ -149,7 +152,7 @@ if(GTK3_FOUND AND WITH_VTE)
 		message(STATUS "VTE ${__VTE_VERSION} not found")
 	endforeach(__VTE_VERSION)
 elseif(WITH_VTE)
-	set(_VTE_VERSION_NUM)
+	set(_VTE_VERSION_NUM 2.90)
 	find_package(VTE)
 endif()
 

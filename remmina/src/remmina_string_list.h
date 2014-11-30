@@ -48,7 +48,11 @@ typedef gboolean (*RemminaStringListValidationFunc)(const gchar *new_str, gchar 
 
 typedef struct _RemminaStringList
 {
+#if GTK_VERSION == 3
 	GtkGrid table;
+#elif GTK_VERSION == 2
+	GtkTable table;
+#endif
 
 	GtkListStore *store;
 	GtkWidget *list;
@@ -63,7 +67,11 @@ typedef struct _RemminaStringList
 
 typedef struct _RemminaStringListClass
 {
+#if GTK_VERSION == 3
 	GtkGridClass parent_class;
+#elif GTK_VERSION == 2
+	GtkTableClass parent_class;
+#endif
 } RemminaStringListClass;
 
 GType remmina_string_list_get_type(void)

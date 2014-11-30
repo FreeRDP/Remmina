@@ -18,6 +18,9 @@
 # Boston, MA 02111-1307, USA.
 
 find_suggested_package(Gettext)
+if (GETTEXT_FOUND)
+	find_package(Libintl)
+endif()
 
 function(gettext po_dir package_name)
 	set(mo_files)

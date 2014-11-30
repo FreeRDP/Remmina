@@ -779,12 +779,19 @@ static void remmina_connection_holder_toolbar_switch_page(GtkWidget* widget, Rem
 			break;
 		cnnobj = (RemminaConnectionObject*) g_object_get_data(G_OBJECT(page), "cnnobj");
 
+#if GTK_VERSION == 3
 		menuitem = gtk_menu_item_new_with_label(remmina_file_get_string(cnnobj->remmina_file, "name"));
+#else
+		menuitem = gtk_image_menu_item_new_with_label(remmina_file_get_string(cnnobj->remmina_file, "name"));
+#endif
 		gtk_widget_show(menuitem);
 		gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 
 		image = gtk_image_new_from_icon_name(remmina_file_get_icon_name(cnnobj->remmina_file), GTK_ICON_SIZE_MENU);
 		gtk_widget_show(image);
+#if GTK_VERSION == 2
+		gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(menuitem), image);
+#endif
 
 		g_object_set_data(G_OBJECT(menuitem), "new-page-num", GINT_TO_POINTER(i));
 		g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_connection_holder_switch_page_activate),
@@ -1179,11 +1186,18 @@ static void remmina_connection_holder_toolbar_tools(GtkWidget* widget, RemminaCo
 
 		if (feature->opt1)
 		{
+#if GTK_VERSION == 3
 			menuitem = gtk_menu_item_new_with_label(g_dgettext(domain, (const gchar*) feature->opt1));
+#else
+			menuitem = gtk_image_menu_item_new_with_label(g_dgettext(domain, (const gchar*) feature->opt1));
+#endif
 			if (feature->opt2)
 			{
 				image = gtk_image_new_from_icon_name((const gchar*) feature->opt2, GTK_ICON_SIZE_MENU);
 				gtk_widget_show(image);
+#if GTK_VERSION == 2
+				gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(menuitem), image);
+#endif
 			}
 		}
 		else
@@ -2240,9 +2254,14 @@ static void remmina_connection_holder_create_fullscreen(RemminaConnectionHolder*
 
 	if (view_mode == VIEWPORT_FULLSCREEN_MODE)
 	{
-		//gdk_color_parse("black", &color);
+#if GTK_VERSION == 2
+		GdkColor color;
+		gdk_color_parse("black", &color);
+		gtk_widget_modify_bg(window, GTK_STATE_NORMAL, &color);
+#elif GTK_VERSION == 3
 		GdkRGBA color = {.0, .0, .0, 1.0};
 		gtk_widget_override_background_color(window, GTK_STATE_NORMAL, &color);
+#endif
 	}
 
 	notebook = remmina_connection_holder_create_notebook(cnnhld);
@@ -2642,7 +2661,12 @@ GtkWidget*
 remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallback disconnect_cb, gpointer data, guint* handler)
 {
 	RemminaConnectionObject* cnnobj;
-	//GdkRGBA color;
+#if GTK_VERSION == 3
+	GdkRGBA color = {.0, .0, .0, 1.0};
+#elif GTK_VERSION == 2
+	GdkColor color;
+	gdk_color_parse("black", &color);
+#endif
 
 	remmina_file_update_screen_resolution(remminafile);
 
@@ -2680,9 +2704,11 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 	/* Create the viewport to make the RemminaProtocolWidget scrollable */
 	cnnobj->viewport = gtk_viewport_new(NULL, NULL);
 	gtk_widget_show(cnnobj->viewport);
-	//gdk_color_parse("black", &color);
-    GdkRGBA color = {.0, .0, .0, 1.0};
+#if GTK_VERSION == 3
 	gtk_widget_override_background_color(cnnobj->viewport, GTK_STATE_NORMAL, &color);
+#elif GTK_VERSION == 2
+	gtk_widget_modify_bg(cnnobj->viewport, GTK_STATE_NORMAL, &color);
+#endif
 	gtk_container_set_border_width(GTK_CONTAINER(cnnobj->viewport), 0);
 	gtk_viewport_set_shadow_type(GTK_VIEWPORT(cnnobj->viewport), GTK_SHADOW_NONE);
 	gtk_container_add(GTK_CONTAINER(cnnobj->viewport), cnnobj->alignment);
