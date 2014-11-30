@@ -647,6 +647,9 @@ static GtkWidget* remmina_file_editor_create_check(RemminaFileEditor* gfe, GtkWi
 	if (value)
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
 
+	if (value)
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
+
 	return widget;
 }
 
@@ -826,6 +829,9 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_CHECK:
+				/* with top e count we manage to distribute the check boxes on two columns */
+				//top = (ccount > 0 ? 1 : 0);
+				//ccount = (ccount > 0 ? 0 : 1);
 				if (ccount > 0) {
 					top = 1;
 					ccount = 0;
@@ -834,7 +840,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 					ccount = 1;
 				}
 				widget = remmina_file_editor_create_check(gfe, table, row, top,
-						g_dgettext (priv->plugin->domain, settings->label),
+				g_dgettext (priv->plugin->domain, settings->label),
 				remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
 				(ccount ? 1 : row++);
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
