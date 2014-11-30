@@ -49,6 +49,7 @@
 #include <freerdp/client/channels.h>
 #include <freerdp/client/cmdline.h>
 #include <freerdp/error.h>
+#include <freerdp/utils/signal.h>
 #include <winpr/memory.h>
 
 #define REMMINA_RDP_FEATURE_TOOL_REFRESH		1
@@ -882,6 +883,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	{
 		if (!rfi->user_cancelled)
 		{
+			UINT32 e = freerdp_get_last_error(rfi->instance->context);
 			remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
 		}
 		return FALSE;
@@ -1192,6 +1194,8 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService* service)
 		return FALSE;
 
 	remmina_rdp_settings_init();
+	freerdp_handle_signals();
+	freerdp_channels_global_init();
 
 	return TRUE;
 }
