@@ -1958,7 +1958,7 @@ static GtkWidget* remmina_connection_object_create_tab(RemminaConnectionObject* 
 	gtk_widget_set_name(button, "remmina-small-button");
 	gtk_widget_show(button);
 
-	widget = gtk_image_new_from_icon_name("Close", GTK_ICON_SIZE_MENU);
+	widget = gtk_image_new_from_icon_name("window-close", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(widget);
 	gtk_container_add(GTK_CONTAINER(button), widget);
 
