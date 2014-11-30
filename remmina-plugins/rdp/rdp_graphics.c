@@ -16,7 +16,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -208,21 +208,11 @@ void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 	{
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_CURSOR;
+		ui->sync = TRUE;	// Also wait for completion
 		ui->cursor.pointer = (rfPointer*) pointer;
 		ui->cursor.type = REMMINA_RDP_POINTER_FREE;
 
 		rf_queue_ui(rfi->protocol_widget, ui);
-
-		g_mutex_lock(rfi->gmutex);
-#if GTK_VERSION == 2
-		while (((rfPointer*) pointer)->cursor != NULL)
-#else	
-		while (G_IS_OBJECT(((rfPointer*) pointer)->cursor))
-#endif
-		{
-			g_cond_wait(rfi->gcond, rfi->gmutex);
-		}
-		g_mutex_unlock(rfi->gmutex);
 	}
 }
 
@@ -317,7 +307,7 @@ void rf_Glyph_Draw(rdpContext* context, rdpGlyph* glyph, int x, int y)
 #endif
 }
 
-void rf_Glyph_BeginDraw(rdpContext* context, int x, int y, int width, int height, UINT32 bgcolor, UINT32 fgcolor)
+void rf_Glyph_BeginDraw(rdpContext* context, int x, int y, int width, int height, UINT32 bgcolor, UINT32 fgcolor, BOOL fOpRedundant)
 {
 #ifdef RF_GLYPH
 	rfContext* rfi = (rfContext*) context;

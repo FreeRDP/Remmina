@@ -290,6 +290,7 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 #endif
 
 	rfi = GET_DATA(gp);
+	if (!rfi) return FALSE;
 
 	if (!rfi->surface)
 		return FALSE;
@@ -325,6 +326,7 @@ static gboolean remmina_rdp_event_on_configure(GtkWidget* widget, GdkEventConfig
 	rfContext* rfi;
 
 	rfi = GET_DATA(gp);
+	if (!rfi) return FALSE;
 
 	/* We do a delayed reallocating to improve performance */
 
@@ -341,6 +343,7 @@ static void remmina_rdp_event_translate_pos(RemminaProtocolWidget* gp, int ix, i
 	rfContext* rfi;
 
 	rfi = GET_DATA(gp);
+	if (!rfi) return;
 
 	if ((rfi->scale) && (rfi->scale_width >= 1) && (rfi->scale_height >= 1))
 	{
@@ -739,17 +742,12 @@ static void remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPl
 
 static void remmina_rdp_event_free_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
-	rfContext* rfi = GET_DATA(gp);
-
-	g_mutex_lock(rfi->gmutex);
 #if GTK_VERSION == 3
 	g_object_unref(ui->cursor.pointer->cursor);
 #else
 	gdk_cursor_unref(ui->cursor.pointer->cursor);
 #endif
 	ui->cursor.pointer->cursor = NULL;
-	g_cond_signal(rfi->gcond);
-	g_mutex_unlock(rfi->gmutex);
 }
 
 static void remmina_rdp_event_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
