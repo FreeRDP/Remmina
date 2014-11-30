@@ -36,6 +36,8 @@
 #ifndef __REMMINACHAINBUTTON_H__
 #define __REMMINACHAINBUTTON_H__
 
+#include "config.h"
+
 G_BEGIN_DECLS
 
 #define REMMINA_TYPE_CHAIN_BUTTON               (remmina_chain_button_get_type ())
@@ -47,7 +49,11 @@ G_BEGIN_DECLS
 
 typedef struct _RemminaChainButton
 {
+#if GTK_VERSION == 3
     GtkGrid table;
+#elif GTK_VERSION == 2
+    GtkTable table;
+#endif
 
     gboolean chained;
     GtkWidget* chain_image;
@@ -55,7 +61,11 @@ typedef struct _RemminaChainButton
 
 typedef struct _RemminaChainButtonClass
 {
+#if GTK_VERSION == 3
     GtkGridClass parent_class;
+#elif GTK_VERSION == 2
+    GtkTableClass parent_class;
+#endif
 
     void (* chain_toggled) (RemminaChainButton* cb);
 } RemminaChainButtonClass;
