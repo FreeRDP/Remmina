@@ -308,6 +308,7 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 	cairo_fill(context);
 	cairo_destroy(context);
 #else
+	cairo_set_operator (context, CAIRO_OPERATOR_SOURCE);	// Ignore alpha channel from FreeRDP
 	cairo_paint(context);
 #endif
 
