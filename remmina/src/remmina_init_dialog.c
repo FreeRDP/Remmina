@@ -398,6 +398,7 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 	gint status;
 	GtkWidget* table;
 	GtkWidget* widget;
+	gchar* s;
 
 	gtk_label_set_text(GTK_LABEL(dialog->status_label), _("Certificate Details:"));
 
@@ -439,7 +440,9 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 	remmina_init_dialog_attach(table, widget, 1, 2, 2, 1);
 
 	widget = gtk_label_new (NULL);
-	gtk_label_set_markup(GTK_LABEL (widget), _("Accept Certificate?"));
+	s = g_strdup_printf("<span size=\"large\"><b>%s</b></span>", _("Accept Certificate?")); 
+	gtk_label_set_markup(GTK_LABEL (widget), s);
+	g_free(s);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.5, 0.5);
 	gtk_widget_show(widget);
 	remmina_init_dialog_attach(table, widget, 0, 3, 3, 1);
@@ -469,6 +472,7 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 	gint status;
 	GtkWidget* table;
 	GtkWidget* widget;
+	gchar* s;
 
 	gtk_label_set_text(GTK_LABEL(dialog->status_label), _("Certificate Changed! Details:"));
 
@@ -522,7 +526,9 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 	remmina_init_dialog_attach(table, widget, 1, 3, 2, 1);
 
 	widget = gtk_label_new (NULL);
-	gtk_label_set_markup(GTK_LABEL (widget), "<span size=\"large\"><b>Accept Changed Certificate?</b></span>");
+	s = g_strdup_printf("<span size=\"large\"><b>%s</b></span>", _("Accept Changed Certificate?")); 
+	gtk_label_set_markup(GTK_LABEL (widget), s);
+	g_free(s);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.5, 0.5);
 	gtk_widget_show(widget);
 	remmina_init_dialog_attach(table, widget, 0, 4, 3, 1);

@@ -47,6 +47,7 @@
 #include <freerdp/constants.h>
 #include <freerdp/client/cliprdr.h>
 #include <freerdp/client/channels.h>
+#include <freerdp/client/cmdline.h>
 #include <freerdp/error.h>
 #include <winpr/memory.h>
 
@@ -644,8 +645,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	const gchar* cs;
 	RemminaFile* remminafile;
 	rfContext* rfi;
-	ADDIN_ARGV* args;
-	gint index;
+
+	gchar *dest_server, *dest_host;
+	gint dest_port;
 
 	rfi = GET_DATA(gp);
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
@@ -660,6 +662,16 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	g_free(host);
 	g_free(s);
 	rfi->settings->ServerPort = port;
+
+	// Setup rfi->settings->CertificateName when tunneled with SSH
+	if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
+		dest_server = remmina_plugin_service->file_get_string(remminafile, "server");
+		if ( dest_server ) {
+			remmina_plugin_service->get_server_port(dest_server, 0, &dest_host, &dest_port);
+			rfi->settings->CertificateName = _strdup( dest_host );
+			g_free(dest_host);
+		}
+	}
 
 	rfi->settings->ColorDepth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 0);
 
