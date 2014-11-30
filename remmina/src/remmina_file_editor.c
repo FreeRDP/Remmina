@@ -963,7 +963,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 				GTK_RADIO_BUTTON(priv->ssh_server_default_radio), _("Custom"));
 		gtk_widget_show(widget);
 #if GTK_VERSION == 3
-		gtk_grid_attach (GTK_GRID(table), widget, 0, row, 2, 1);
+		gtk_grid_attach (GTK_GRID(table), widget, 0, row, 1, 1);
 #elif GTK_VERSION == 2
 		gtk_table_attach (GTK_TABLE(table), widget, 1, 2, row, row + 1, GTK_FILL, 0, 0, 0);
 #endif
