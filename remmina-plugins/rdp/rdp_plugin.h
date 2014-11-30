@@ -122,9 +122,6 @@ struct rf_context
 
 	CliprdrClientContext* cliprdr;
 
-	GMutex* gmutex;
-	GCond* gcond;
-
 	RDP_PLUGIN_DATA rdpdr_data[5];
 	RDP_PLUGIN_DATA drdynvc_data[5];
 	gchar rdpsnd_options[20];
