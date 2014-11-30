@@ -269,7 +269,7 @@ static void remmina_file_editor_ssh_server_custom_radio_on_toggled(GtkToggleButt
 static void remmina_file_editor_ssh_auth_publickey_radio_on_toggled(GtkToggleButton* togglebutton, RemminaFileEditor* gfe)
 {
 	gboolean b;
-	gchar* s;
+	const gchar* s;
 
 	b = ((!gfe->priv->ssh_enabled_check ||
 					gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_enabled_check))) &&
@@ -552,9 +552,9 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWid
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_end (widget, 40);
 #else
-	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_right (widget, 40);
 #endif 
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
 #elif GTK_VERSION == 2
@@ -717,7 +717,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 		switch (settings->type)
 		{
 			case REMMINA_PROTOCOL_SETTING_TYPE_SERVER:
-				remmina_file_editor_create_server(gfe, settings, table, 0);
+				remmina_file_editor_create_server(gfe, settings, table, row);
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD:
@@ -753,9 +753,9 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
 #if GTK_CHECK_VERSION(3, 12, 0)
-				gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+				gtk_widget_set_margin_end (widget, 40);
 #else
-				gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+				gtk_widget_set_margin_right (widget, 40);
 #endif
 				gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, row + 1);
 #elif GTK_VERSION == 2
@@ -767,9 +767,9 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
 #if GTK_CHECK_VERSION(3, 12, 0)
-				gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+				gtk_widget_set_margin_end (widget, 40);
 #else
-				gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+				gtk_widget_set_margin_right (widget, 40);
 #endif
 				gtk_grid_attach(GTK_GRID(table), widget, 0, row + 1, 1, row + 2);
 #elif GTK_VERSION == 2
@@ -906,13 +906,13 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 			ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SFTP)
 	{
 		s = remmina_public_combo_get_active_text (GTK_COMBO_BOX (priv->protocol_combo));
-		table = remmina_file_editor_create_notebook_tab (gfe, GTK_STOCK_DIALOG_AUTHENTICATION,
+		table = remmina_file_editor_create_notebook_tab (gfe, "dialog-password",
 				(s ? s : "SSH"), 8, 3);
 		g_free(s);
 	}
 	else
 	{
-		table = remmina_file_editor_create_notebook_tab (gfe, GTK_STOCK_DIALOG_AUTHENTICATION,
+		table = remmina_file_editor_create_notebook_tab (gfe, "dialog-password",
 				"SSH", 9, 3);
 
 #if GTK_VERSION == 3
@@ -1147,14 +1147,14 @@ static void remmina_file_editor_create_all_settings(RemminaFileEditor* gfe)
 	/* The Basic tab */
 	if (priv->plugin->basic_settings)
 	{
-		table = remmina_file_editor_create_notebook_tab(gfe, GTK_STOCK_DIALOG_INFO, _("Basic"), 20, 2);
+		table = remmina_file_editor_create_notebook_tab(gfe, "dialog-information", _("Basic"), 20, 2);
 		remmina_file_editor_create_settings(gfe, table, priv->plugin->basic_settings);
 	}
 
 	/* The Advanced tab */
 	if (priv->plugin->advanced_settings)
 	{
-		table = remmina_file_editor_create_notebook_tab(gfe, GTK_STOCK_DIALOG_WARNING, _("Advanced"), 20, 2);
+		table = remmina_file_editor_create_notebook_tab(gfe, "dialog-warning", _("Advanced"), 20, 2);
 		remmina_file_editor_create_settings(gfe, table, priv->plugin->advanced_settings);
 	}
 
@@ -1503,6 +1503,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 {
 	RemminaFileEditor* gfe;
 	RemminaFileEditorPriv* priv;
+
 	GtkWidget* table;
 	GtkWidget* widget;
 	gchar* groups;

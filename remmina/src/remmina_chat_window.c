@@ -249,7 +249,7 @@ remmina_chat_window_new(GtkWindow* parent, const gchar* chat_with)
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_chat_window_send), window);
 
 	/* Clear button */
-	image = gtk_image_new_from_icon_name(GTK_STOCK_CLEAR, GTK_ICON_SIZE_BUTTON);
+	image = gtk_image_new_from_icon_name("edit-clear", GTK_ICON_SIZE_BUTTON);
 	gtk_widget_show(image);
 
 	widget = gtk_button_new_with_mnemonic(_("_Clear"));
