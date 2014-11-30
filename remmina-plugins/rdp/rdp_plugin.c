@@ -133,21 +133,8 @@ void rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 	UNLOCK_BUFFER(TRUE)
 
 	if ( ui->sync ) {
-		struct timeval  tv;
-		double tms;
 		/* Wait for main thread function completion before returning */
-
-		gettimeofday(&tv, NULL);
-		tms = (tv.tv_sec) * 1000 + (tv.tv_usec) / 1000 ;
-		printf("Waiting for main thread to complete its job %f\n",tms);
-
 		pthread_mutex_lock(&ui->sync_wait_mutex);
-
-		gettimeofday(&tv, NULL);
-		tms = (tv.tv_sec) * 1000 + (tv.tv_usec) / 1000 ;
-		printf("Got lock, ending %f\n",tms);
-
-
 		pthread_mutex_unlock(&ui->sync_wait_mutex);
 	}
 }
@@ -684,11 +671,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	if (remmina_plugin_service->file_get_string(remminafile, "clientname"))
 	{
-		s = remmina_plugin_service->file_get_string(remminafile, "clientname");
-		if ( s ) {
+		cs = remmina_plugin_service->file_get_string(remminafile, "clientname");
+		if ( cs ) {
 			free( rfi->settings->ClientHostname );
-			rfi->settings->ClientHostname = strdup(s);
-			g_free(s);
+			rfi->settings->ClientHostname = strdup(cs);
 		}
 	}
 	else
@@ -947,9 +933,6 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 
 	pthread_mutex_init(&rfi->mutex, NULL);
 
-	rfi->gmutex = g_mutex_new();
-	rfi->gcond = g_cond_new();
-
 	freerdp_register_addin_provider(freerdp_channels_load_static_addin_entry, 0);
 
 	remmina_rdp_event_init(gp);
@@ -997,9 +980,6 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 	}
 
 	pthread_mutex_destroy(&rfi->mutex);
-
-	g_mutex_free(rfi->gmutex);
-	g_cond_free(rfi->gcond);
 
 	remmina_rdp_event_uninit(gp);
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
@@ -1144,7 +1124,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 
 static const RemminaProtocolFeature remmina_rdp_features[] =
 {
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_RDP_FEATURE_TOOL_REFRESH, N_("Refresh"), GTK_STOCK_REFRESH, NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_RDP_FEATURE_TOOL_REFRESH, N_("Refresh"), NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_SCALE, REMMINA_RDP_FEATURE_SCALE, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_UNFOCUS, REMMINA_RDP_FEATURE_UNFOCUS, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
