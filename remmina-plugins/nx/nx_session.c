@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2010 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -166,8 +166,8 @@ void remmina_nx_session_free(RemminaNXSession *nx)
 	}
 	if (nx->channel)
 	{
-		channel_close(nx->channel);
-		channel_free(nx->channel);
+		ssh_channel_close(nx->channel);
+		ssh_channel_free(nx->channel);
 	}
 	if (nx->server_sock >= 0)
 	{
@@ -538,26 +538,23 @@ static void remmina_nx_session_send_command(RemminaNXSession *nx, const gchar *c
 
 	va_start (args, cmdfmt);
 	cmd = g_strdup_vprintf (cmdfmt, args);
-	channel_write (nx->channel, cmd, strlen (cmd));
+	ssh_channel_write (nx->channel, cmd, strlen (cmd));
 	g_free(cmd);
 
 	ssh_set_fd_towrite (nx->session);
-	channel_write (nx->channel, "\n", 1);
+	ssh_channel_write (nx->channel, "\n", 1);
 }
 
 gboolean remmina_nx_session_open(RemminaNXSession *nx, const gchar *server, guint port, const gchar *private_key_file,
 		RemminaNXPassphraseCallback passphrase_func, gpointer userdata)
 {
 	gint ret;
-	ssh_private_key privkey;
-	ssh_public_key pubkey;
-	ssh_string pubkeystr;
+	ssh_key priv_key;
 	gint keytype;
 	gboolean encrypted;
 	gchar *passphrase = NULL;
-	gchar tmpfile[L_tmpnam + 1];
 
-nx	->session = ssh_new();
+	nx->session = ssh_new();
 	ssh_options_set(nx->session, SSH_OPTIONS_HOST, server);
 	ssh_options_set(nx->session, SSH_OPTIONS_PORT, &port);
 	ssh_options_set(nx->session, SSH_OPTIONS_USER, "nx");
@@ -573,41 +570,32 @@ nx	->session = ssh_new();
 		{
 			return FALSE;
 		}
-		privkey = privatekey_from_file(nx->session, private_key_file, keytype, (passphrase ? passphrase : ""));
+		if ( ssh_pki_import_privkey_file(private_key_file, (passphrase ? passphrase : ""), NULL, NULL, &priv_key) != SSH_OK ) {
+			remmina_nx_session_set_application_error(nx, "Error importing private key from file.");
+			g_free(passphrase);
+			return FALSE;
+		}
 		g_free(passphrase);
 	}
 	else
 	{
 		/* Use NoMachine's default nx private key */
-		if ((tmpnam(tmpfile)) == NULL || !g_file_set_contents(tmpfile, nx_default_private_key, -1, NULL))
-		{
-			remmina_nx_session_set_application_error(nx, "Failed to create temporary private key file.");
+		if ( ssh_pki_import_privkey_base64(nx_default_private_key, NULL, NULL, NULL, &priv_key) != SSH_OK ) {
+			remmina_nx_session_set_application_error(nx, "Failed to import NX default private key.");
 			return FALSE;
 		}
-		privkey = privatekey_from_file(nx->session, tmpfile, REMMINA_SSH_TYPE_DSS, "");
-		g_unlink(tmpfile);
 	}
-
-	if (privkey == NULL)
-	{
-		remmina_nx_session_set_error(nx, "Invalid private key file: %s");
-		return FALSE;
-	}
-	pubkey = publickey_from_privatekey(privkey);
-	pubkeystr = publickey_to_string(pubkey);
-	publickey_free(pubkey);
 
 	if (ssh_connect(nx->session))
 	{
-		string_free(pubkeystr);
-		privatekey_free(privkey);
+		ssh_key_free(priv_key);
 		remmina_nx_session_set_error(nx, "Failed to startup SSH session: %s");
 		return FALSE;
 	}
 
-	ret = ssh_userauth_pubkey(nx->session, NULL, pubkeystr, privkey);
-	string_free(pubkeystr);
-	privatekey_free(privkey);
+	ret = ssh_userauth_publickey(nx->session, NULL, priv_key);
+
+	ssh_key_free(priv_key);
 
 	if (ret != SSH_AUTH_SUCCESS)
 	{
@@ -615,12 +603,12 @@ nx	->session = ssh_new();
 		return FALSE;
 	}
 
-	if ((nx->channel = channel_new(nx->session)) == NULL || channel_open_session(nx->channel))
+	if ((nx->channel = ssh_channel_new(nx->session)) == NULL || ssh_channel_open_session(nx->channel) != SSH_OK)
 	{
 		return FALSE;
 	}
 
-	if (channel_request_shell(nx->channel))
+	if (ssh_channel_request_shell(nx->channel) != SSH_OK)
 	{
 		return FALSE;
 	}
