@@ -603,6 +603,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	gint port;
 	gchar* host;
 	gchar* value;
+	gchar* hostport;
 	gint rdpsnd_rate;
 	gint rdpsnd_channel;
 	char *rdpsnd_params[3];
@@ -613,9 +614,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	RemminaFile* remminafile;
 	rfContext* rfi;
 
-	gchar *dest_host;
-	const gchar *dest_server;
-	gint dest_port;
+	const gchar *cert_hostport;
+	gchar *cert_host;
+	gint cert_port;
 
 	rfi = GET_DATA(gp);
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
@@ -627,20 +628,33 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	remmina_plugin_service->get_server_port(s, 3389, &host, &port);
 	rfi->settings->ServerHostname = strdup(host);
-	g_free(host);
-	g_free(s);
-	rfi->settings->ServerPort = port;
 
-	// Setup rfi->settings->CertificateName when tunneled with SSH
+	cert_host = host;
+	cert_port = port;
+
 	if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
-		dest_server = remmina_plugin_service->file_get_string(remminafile, "server");
-		if ( dest_server ) {
-			remmina_plugin_service->get_server_port(dest_server, 0, &dest_host, &dest_port);
-			rfi->settings->CertificateName = strdup( dest_host );
-			g_free(dest_host);
+		cert_hostport = remmina_plugin_service->file_get_string(remminafile, "server");
+		if ( cert_hostport ) {
+			remmina_plugin_service->get_server_port(cert_hostport, 3389, &cert_host, &cert_port);
 		}
 	}
 
+	if (cert_port == 3389)
+	{
+		rfi->settings->CertificateName = strdup(cert_host);
+	}
+	else
+	{
+		hostport = g_strdup_printf("%s:%d", cert_host, cert_port);
+		rfi->settings->CertificateName = strdup(hostport);
+		g_free(hostport);
+	}
+
+	if (cert_host != host) g_free(cert_host);
+	g_free(host);
+	g_free(s);
+
+	rfi->settings->ServerPort = port;
 	rfi->settings->ColorDepth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 0);
 
 	if (rfi->settings->ColorDepth == 0)
