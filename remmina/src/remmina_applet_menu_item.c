@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -38,7 +38,7 @@
 #include <stdarg.h>
 #include "remmina_applet_menu_item.h"
 
-G_DEFINE_TYPE( RemminaAppletMenuItem, remmina_applet_menu_item, GTK_TYPE_IMAGE_MENU_ITEM)
+G_DEFINE_TYPE( RemminaAppletMenuItem, remmina_applet_menu_item, GTK_TYPE_MENU_ITEM)
 
 #define IS_EMPTY(s) ((!s)||(s[0]==0))
 
@@ -120,6 +120,7 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 	gtk_container_add(GTK_CONTAINER(item), widget);
 
 	/* Create the image */
+
 	if (item_type == REMMINA_APPLET_MENU_ITEM_FILE || item_type == REMMINA_APPLET_MENU_ITEM_DISCOVERED)
 	{
 		if (g_strcmp0(item->protocol, "SFTP") == 0)
