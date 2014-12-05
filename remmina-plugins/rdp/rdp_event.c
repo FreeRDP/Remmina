@@ -833,12 +833,13 @@ gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 					break;
 			}
 		}
-		rf_object_free(gp, ui);
 
 		// Should we signal the subthread to unlock ?
-		if ( ui->sync )
+		if (ui->sync) {
 			pthread_mutex_unlock(&ui->sync_wait_mutex);
+		}
 
+		rf_object_free(gp, ui);
 
 		return TRUE;
 	}
