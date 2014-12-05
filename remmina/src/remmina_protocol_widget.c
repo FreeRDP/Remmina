@@ -829,14 +829,13 @@ gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget* gp, RemminaAuth
 	return ret;
 }
 
-gint remmina_protocol_widget_init_authuserpwd(RemminaProtocolWidget* gp, gboolean want_domain)
+gint remmina_protocol_widget_init_authuserpwd(RemminaProtocolWidget* gp, gboolean want_domain, gboolean storepassword)
 {
 	RemminaFile* remminafile = gp->priv->remmina_file;
 	
 	return remmina_init_dialog_authuserpwd(REMMINA_INIT_DIALOG(gp->priv->init_dialog), want_domain,
 			remmina_file_get_string(remminafile, "username"),
-			want_domain ? remmina_file_get_string(remminafile, "domain") : NULL,
-			(remmina_file_get_filename(remminafile) != NULL));
+			want_domain ? remmina_file_get_string(remminafile, "domain") : NULL, (remmina_file_get_filename(remminafile) != NULL) && storepassword);
 }
 
 gint remmina_protocol_widget_init_certificate(RemminaProtocolWidget* gp, const gchar* subject, const gchar* issuer, const gchar* fingerprint)

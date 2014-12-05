@@ -220,10 +220,10 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 	s = g_strdup_printf(_("Save %s"), label);
 	save_password_check = gtk_check_button_new_with_label(s);
 	g_free(s);
-	gtk_widget_show(save_password_check);
-	gtk_grid_attach(GTK_GRID(table), save_password_check, 0, 1, 2, 1);
 	if (allow_save)
 	{
+		gtk_widget_show(save_password_check);
+		gtk_grid_attach(GTK_GRID(table), save_password_check, 0, 1, 2, 1);
 		if (dialog->save_password)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(save_password_check), TRUE);
 	}
@@ -326,10 +326,11 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 	}
 
 	save_password_check = gtk_check_button_new_with_label(_("Save password"));
-	gtk_widget_show(save_password_check);
-	gtk_grid_attach(GTK_GRID(table), save_password_check, 0, 4, 2, 3);
+	
 	if (allow_save)
 	{
+		gtk_widget_show(save_password_check);
+		gtk_grid_attach(GTK_GRID(table), save_password_check, 0, 4, 2, 3);
 		if (dialog->save_password)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(save_password_check), TRUE);
 	}

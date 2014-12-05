@@ -356,14 +356,15 @@ static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** 
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
 	gboolean save;
+	gboolean s_storepassword;
 	RemminaFile* remminafile;
 
 	rfi = (rfContext*) instance->context;
 	gp = rfi->protocol_widget;
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-
+	s_storepassword = remmina_plugin_service->file_get_int(remminafile, "storepassword", FALSE);
 	THREADS_ENTER
-	ret = remmina_plugin_service->protocol_plugin_init_authuserpwd(gp, TRUE);
+	ret = remmina_plugin_service->protocol_plugin_init_authuserpwd(gp, TRUE, s_storepassword);
 	THREADS_LEAVE
 
 	if (ret == GTK_RESPONSE_OK)
@@ -1106,6 +1107,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "sharesmartcard", N_("Share smartcard"), TRUE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "console", N_("Attach to console (Windows 2003 / 2003 R2)"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "storepassword", N_("Permit store password"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 

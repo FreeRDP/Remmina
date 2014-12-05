@@ -278,7 +278,7 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 		g_free(s1);
 		g_free(s2);
 
-		THREADS_ENTER ret = remmina_plugin_nx_service->protocol_plugin_init_authuserpwd(gp, FALSE);
+		THREADS_ENTER ret = remmina_plugin_nx_service->protocol_plugin_init_authuserpwd(gp, FALSE, TRUE);
 		THREADS_LEAVE
 
 		if (ret != GTK_RESPONSE_OK)
