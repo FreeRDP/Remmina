@@ -835,7 +835,7 @@ gint remmina_protocol_widget_init_authuserpwd(RemminaProtocolWidget* gp, gboolea
 	
 	return remmina_init_dialog_authuserpwd(REMMINA_INIT_DIALOG(gp->priv->init_dialog), want_domain,
 			remmina_file_get_string(remminafile, "username"),
-			want_domain ? remmina_file_get_string(remminafile, "domain") : NULL, (remmina_file_get_filename(remminafile) != NULL) && storepassword);
+			want_domain ? remmina_file_get_string(remminafile, "domain") : NULL, (remmina_file_get_filename(remminafile) != NULL) && (storepassword == FALSE));
 }
 
 gint remmina_protocol_widget_init_certificate(RemminaProtocolWidget* gp, const gchar* subject, const gchar* issuer, const gchar* fingerprint)
