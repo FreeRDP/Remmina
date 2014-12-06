@@ -18,7 +18,7 @@
 # Boston, MA 02111-1307, USA.
 
 find_package(PkgConfig)
-pkg_check_modules(PC_LIBSSH libssh>=0.4)
+pkg_check_modules(PC_LIBSSH libssh>=0.6)
 set(LIBSSH_DEFINITIONS ${PC_LIBSSH_CFLAGS_OTHER})
 
 find_path(LIBSSH_INCLUDE_DIR NAMES libssh/libssh.h
