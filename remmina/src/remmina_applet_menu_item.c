@@ -116,7 +116,8 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 	/* Create the label */
 	widget = gtk_label_new(item->name);
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+    gtk_widget_set_valign (widget, GTK_ALIGN_START);
+    gtk_widget_set_halign (widget, GTK_ALIGN_START);
 	gtk_container_add(GTK_CONTAINER(item), widget);
 
 	/* Create the image */
