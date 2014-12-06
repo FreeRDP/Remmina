@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2010 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -149,7 +149,7 @@ static gboolean remmina_nx_session_manager_main(RemminaProtocolWidget *gp)
 			gtk_dialog_add_button(GTK_DIALOG(dialog), _("Restore"), REMMINA_NX_EVENT_RESTORE);
 			gtk_dialog_add_button(GTK_DIALOG(dialog), _("Start"), REMMINA_NX_EVENT_START);
 		}
-		gtk_dialog_add_button(GTK_DIALOG(dialog), GTK_STOCK_CANCEL, REMMINA_NX_EVENT_CANCEL);
+		gtk_dialog_add_button(GTK_DIALOG(dialog), _("_Cancel"), REMMINA_NX_EVENT_CANCEL);
 
 		widget = gtk_dialog_add_button(GTK_DIALOG(dialog), _("Terminate"), REMMINA_NX_EVENT_TERMINATE);
 		gtk_button_box_set_child_secondary(GTK_BUTTON_BOX(gtk_dialog_get_action_area(GTK_DIALOG(dialog))), widget,
