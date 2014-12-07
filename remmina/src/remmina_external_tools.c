@@ -30,6 +30,8 @@ gboolean remmina_external_tools_from_filename(RemminaMain *remminamain,gchar* re
 	gchar filename[MAX_PATH_LEN];
 	GDir* dir;
 	const gchar* name;
+	size_t noprefixlen;
+	gchar* unprefixed;
 	GNode* root;
 	root = g_node_new(NULL);
 
@@ -48,11 +50,11 @@ gboolean remmina_external_tools_from_filename(RemminaMain *remminamain,gchar* re
 		ret = (RemminaExternalTools *)malloc(sizeof(RemminaExternalTools));
 		strcpy(ret->remminafilename,remminafilename);
 		strcpy(ret->scriptfilename,filename);
-		menuitem = gtk_menu_item_new_with_label(strndup(name + 8, strlen(name) -8));
+		noprefixlen = strlen(name) - 8;
+		unprefixed = malloc(noprefixlen + 1);
+		strncpy(unprefixed, name + 8, noprefixlen);
+		menuitem = gtk_menu_item_new_with_label(unprefixed);
 		g_signal_connect(menuitem, "activate", (GCallback) view_popup_menu_onDoSomething, ret);
-
-		//g_signal_connect(menuitem, "activate",
-		//                  (GCallback) view_popup_menu_onDoSomething, treeview);
 
 		gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	}

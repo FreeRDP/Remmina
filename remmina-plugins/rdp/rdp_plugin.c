@@ -863,13 +863,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		if (!rfi->user_cancelled)
 		{
 			remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
-
 		}
-
 		return FALSE;
 	}
-
-
 
 	remmina_rdp_main_loop(gp);
 

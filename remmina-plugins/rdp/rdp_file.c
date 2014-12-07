@@ -163,7 +163,7 @@ static RemminaFile* remmina_rdp_file_import_channel(GIOChannel* channel)
 	else
 	{
 		enc = "UTF-8";
-		if (g_io_channel_seek(channel, 0, G_SEEK_SET) != G_IO_ERROR_NONE)
+		if (g_io_channel_seek_position(channel, 0, G_SEEK_SET, &error) != G_IO_STATUS_NORMAL)
 		{
 			g_print("g_io_channel_seek: failed\n");
 			return NULL;
@@ -233,7 +233,7 @@ RemminaFile* remmina_rdp_file_import(const gchar* from_file)
 	}
 
 	remminafile = remmina_rdp_file_import_channel(channel);
-	g_io_channel_close(channel);
+	g_io_channel_shutdown(channel, FALSE, &error);
 
 	return remminafile;
 }
