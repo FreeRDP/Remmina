@@ -136,6 +136,7 @@ void rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 		/* Wait for main thread function completion before returning */
 		pthread_mutex_lock(&ui->sync_wait_mutex);
 		pthread_mutex_unlock(&ui->sync_wait_mutex);
+		rf_object_free(gp, ui);
 	}
 }
 
