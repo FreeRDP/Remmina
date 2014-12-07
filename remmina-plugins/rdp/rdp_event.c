@@ -837,9 +837,11 @@ gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 		// Should we signal the subthread to unlock ?
 		if (ui->sync) {
 			pthread_mutex_unlock(&ui->sync_wait_mutex);
+			/* Freeing ui, when in sync mode, must be done by the just
+			 * unlocked rf_queue_ui() */
+		} else {
+			rf_object_free(gp, ui);
 		}
-
-		rf_object_free(gp, ui);
 
 		return TRUE;
 	}
