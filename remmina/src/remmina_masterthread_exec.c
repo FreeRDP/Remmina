@@ -97,12 +97,16 @@ static gboolean remmina_masterthread_exec_callback(RemminaMTExecData *d)
 				d->p.ftp_client_get_waiting_task.retval = remmina_ftp_client_get_waiting_task( d->p.ftp_client_get_waiting_task.client );
 				break;
 			case FUNC_SFTP_CLIENT_CONFIRM_RESUME:
+#ifdef HAVE_LIBSSH
 				d->p.sftp_client_confirm_resume.retval = remmina_sftp_client_confirm_resume( d->p.sftp_client_confirm_resume.client,
 					d->p.sftp_client_confirm_resume.path );
+#endif
 				break;
 			case FUNC_VTE_TERMINAL_SET_ENCODING_AND_PTY:
+#if defined (HAVE_LIBSSH) && defined (HAVE_LIBVTE)
 				remmina_plugin_ssh_vte_terminal_set_encoding_and_pty( d->p.vte_terminal_set_encoding_and_pty.terminal,
 					d->p.vte_terminal_set_encoding_and_pty.codeset, d->p.vte_terminal_set_encoding_and_pty.pty );
+#endif
 				break;
 		}
 		pthread_mutex_unlock(&d->mu);

@@ -117,16 +117,20 @@ typedef struct remmina_masterthread_exec_data {
 			RemminaFTPClient *client;
 			RemminaFTPTask* retval;
 		} ftp_client_get_waiting_task;
+#if defined (HAVE_LIBSSH) && defined (HAVE_LIBVTE)
 		struct {
 			RemminaSFTPClient *client;
 			const gchar *path;
 			gint retval;
 		} sftp_client_confirm_resume;
+#endif
+#ifdef HAVE_LIBVTE
 		struct {
 			VteTerminal *terminal;
 			const char *codeset;
 			VtePty *pty;
 		} vte_terminal_set_encoding_and_pty;
+#endif
 	} p;
 
 	/* Mutex for thread synchronization */
