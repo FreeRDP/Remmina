@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -359,7 +359,8 @@ static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const Remm
 
 	widget = gtk_label_new(_("Server"));
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+    gtk_widget_set_valign (widget, GTK_ALIGN_START);
+    gtk_widget_set_halign (widget, GTK_ALIGN_START);
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, row + 1);
 
 	s = remmina_pref_get_recent(plugin->name);
@@ -403,7 +404,8 @@ static void remmina_file_editor_create_password(RemminaFileEditor* gfe, GtkWidge
 
 	widget = gtk_label_new(_("Password"));
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_set_valign (widget, GTK_ALIGN_START);
+	gtk_widget_set_halign (widget, GTK_ALIGN_START);
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
 
 	widget = gtk_entry_new();
@@ -446,7 +448,8 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 
 	widget = gtk_label_new(_("Resolution"));
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_set_valign (widget, GTK_ALIGN_START);
+	gtk_widget_set_halign (widget, GTK_ALIGN_START);
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
 
 	widget = gtk_radio_button_new_with_label(NULL, setting->opt1 ? _("Use window size") : _("Use client resolution"));
@@ -504,8 +507,9 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWid
 	gtk_widget_set_margin_end (widget, 40);
 #else
 	gtk_widget_set_margin_right (widget, 40);
-#endif 
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+#endif
+	gtk_widget_set_valign (widget, GTK_ALIGN_START);
+	gtk_widget_set_halign (widget, GTK_ALIGN_START);
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
 
 	widget = gtk_entry_new();
@@ -526,7 +530,8 @@ static GtkWidget* remmina_file_editor_create_select(RemminaFileEditor* gfe, GtkW
 
 	widget = gtk_label_new(label);
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_set_valign (widget, GTK_ALIGN_START);
+	gtk_widget_set_halign (widget, GTK_ALIGN_START);
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
 
 	widget = remmina_public_create_combo_map(list, value, FALSE, gfe->priv->plugin->domain);
@@ -543,7 +548,8 @@ static GtkWidget* remmina_file_editor_create_combo(RemminaFileEditor* gfe, GtkWi
 
 	widget = gtk_label_new(label);
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_set_valign (widget, GTK_ALIGN_START);
+	gtk_widget_set_halign (widget, GTK_ALIGN_START);
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row , 1, 1);
 
 	widget = remmina_public_create_combo_entry(list, value, FALSE);
@@ -579,7 +585,8 @@ remmina_file_editor_create_chooser(RemminaFileEditor* gfe, GtkWidget* table, gin
 
 	widget = gtk_label_new(label);
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_set_valign (widget, GTK_ALIGN_START);
+	gtk_widget_set_halign (widget, GTK_ALIGN_START);
 	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
 
 #if GTK_VERSION == 3
@@ -653,7 +660,8 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 			case REMMINA_PROTOCOL_SETTING_TYPE_SCALE:
 				widget = gtk_label_new(_("Horizontal scale"));
 				gtk_widget_show(widget);
-				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+				gtk_widget_set_valign (widget, GTK_ALIGN_START);
+				gtk_widget_set_halign (widget, GTK_ALIGN_START);
 #if GTK_CHECK_VERSION(3, 12, 0)
 				gtk_widget_set_margin_end (widget, 40);
 #else
@@ -663,7 +671,8 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 
 				widget = gtk_label_new(_("Vertical scale"));
 				gtk_widget_show(widget);
-				gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+				gtk_widget_set_valign (widget, GTK_ALIGN_START);
+				gtk_widget_set_halign (widget, GTK_ALIGN_START);
 #if GTK_CHECK_VERSION(3, 12, 0)
 				gtk_widget_set_margin_end (widget, 40);
 #else
@@ -1233,7 +1242,6 @@ static void remmina_file_editor_init(RemminaFileEditor* gfe)
 	priv->save_button = widget;
 
 	widget = gtk_dialog_add_button(GTK_DIALOG(gfe), (_("_Cancel")), GTK_RESPONSE_CANCEL);
-	//gtk_button_set_image(GTK_BUTTON(widget), gtk_image_new_from_icon_name("gtk-cancel", GTK_ICON_SIZE_BUTTON));
 	gtk_button_box_set_child_secondary(GTK_BUTTON_BOX(gtk_dialog_get_action_area(GTK_DIALOG(gfe))), widget, TRUE);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_file_editor_on_cancel), gfe);
 
@@ -1317,7 +1325,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	/* antenore - 2014/09
 	 * IMPORTANT - The code has been migrated from GtkTable to GtkGrid
 	 * but I didn't rename row, column and table to top, left and grid.
-	 * This is indeed an important step and it should be done soon or later to 
+	 * This is indeed an important step and it should be done soon or later to
 	 * avoid confusion.
 	 */
 	GtkWidget* table;
@@ -1349,7 +1357,8 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	/* Profile: Name */
 	widget = gtk_label_new(_("Name"));
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_set_valign (widget, GTK_ALIGN_START);
+	gtk_widget_set_halign (widget, GTK_ALIGN_START);
 	gtk_grid_attach(GTK_GRID(table), widget, 0, 3, 2, 1);
 	gtk_grid_set_column_spacing (GTK_GRID(table), 10);
 
@@ -1373,7 +1382,8 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	/* Profile: Group */
 	widget = gtk_label_new(_("Group"));
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_set_valign (widget, GTK_ALIGN_START);
+	gtk_widget_set_halign (widget, GTK_ALIGN_START);
 	gtk_grid_attach(GTK_GRID(table), widget, 0, 6, 2, 1);
 
 	groups = remmina_file_manager_get_groups();
@@ -1390,7 +1400,8 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	/* Profile: Protocol */
 	widget = gtk_label_new(_("Protocol"));
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_set_valign (widget, GTK_ALIGN_START);
+	gtk_widget_set_halign (widget, GTK_ALIGN_START);
 	gtk_grid_attach(GTK_GRID(table), widget, 0, 9, 2, 1);
 
 	widget = remmina_public_create_combo(TRUE);
