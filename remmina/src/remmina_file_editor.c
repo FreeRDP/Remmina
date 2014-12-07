@@ -210,7 +210,7 @@ static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe
 {
 	GtkWidget* tablabel;
 	GtkWidget* tabbody;
-	GtkWidget* table;
+	GtkWidget* grid;
 	GtkWidget* widget;
 
 #if GTK_VERSION == 3
@@ -236,14 +236,14 @@ static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe
 	gtk_widget_show(tabbody);
 	gtk_notebook_append_page(GTK_NOTEBOOK(gfe->priv->config_container), tabbody, tablabel);
 
-	table = gtk_grid_new();
-	gtk_widget_show(table);
-	gtk_grid_set_row_spacing(GTK_GRID(table), 8);
-	gtk_grid_set_column_spacing(GTK_GRID(table), 8);
-	gtk_container_set_border_width(GTK_CONTAINER(table), 15);
-	gtk_box_pack_start(GTK_BOX(tabbody), table, FALSE, FALSE, 0);
+	grid = gtk_grid_new();
+	gtk_widget_show(grid);
+	gtk_grid_set_row_spacing(GTK_GRID(grid), 8);
+	gtk_grid_set_column_spacing(GTK_GRID(grid), 8);
+	gtk_container_set_border_width(GTK_CONTAINER(grid), 15);
+	gtk_box_pack_start(GTK_BOX(tabbody), grid, FALSE, FALSE, 0);
 
-	return table;
+	return grid;
 }
 
 #ifdef HAVE_LIBSSH
@@ -301,7 +301,7 @@ static void remmina_file_editor_ssh_enabled_check_on_toggled(GtkToggleButton* to
 	}
 }
 
-static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor* gfe, GtkWidget* table, gint row, gint column)
+static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor* gfe, GtkWidget* grid, gint row, gint column)
 {
 	gchar* s;
 	GtkWidget* widget;
@@ -315,7 +315,7 @@ static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor* gfe, Gt
 			G_CALLBACK(remmina_file_editor_ssh_auth_publickey_radio_on_toggled), gfe);
 	priv->ssh_auth_publickey_radio = widget;
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, row + 15, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, row + 15, 1, 1);
 
 	dialog = gtk_file_chooser_dialog_new (_("Identity file"), GTK_WINDOW(gfe), GTK_FILE_CHOOSER_ACTION_OPEN,
 			_("_Cancel"), GTK_RESPONSE_CANCEL,
@@ -330,7 +330,7 @@ static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor* gfe, Gt
 	}
 	g_free(s);
 	gtk_widget_show(widget);
-	gtk_grid_attach (GTK_GRID(table), widget, column + 1, row + 15, 1, 1);
+	gtk_grid_attach (GTK_GRID(grid), widget, column + 1, row + 15, 1, 1);
 	priv->ssh_privatekey_chooser = widget;
 
 	ssh_privatekey = remmina_file_get_string (priv->remmina_file, "ssh_privatekey");
@@ -347,7 +347,7 @@ static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor* gfe, Gt
 }
 #endif
 
-static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const RemminaProtocolSetting* setting, GtkWidget* table,
+static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const RemminaProtocolSetting* setting, GtkWidget* grid,
 		gint row)
 {
 	RemminaProtocolPlugin* plugin = gfe->priv->plugin;
@@ -361,7 +361,7 @@ static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const Remm
 	gtk_widget_show(widget);
     gtk_widget_set_valign (widget, GTK_ALIGN_START);
     gtk_widget_set_halign (widget, GTK_ALIGN_START);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, row + 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, row + 1);
 
 	s = remmina_pref_get_recent(plugin->name);
 	widget = remmina_public_create_combo_entry(s, remmina_file_get_string(gfe->priv->remmina_file, "server"), TRUE);
@@ -388,16 +388,16 @@ static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const Remm
 		gtk_box_pack_start (GTK_BOX (hbox), widget, FALSE, FALSE, 0);
 		g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_file_editor_browse_avahi), gfe);
 
-		gtk_grid_attach (GTK_GRID(table), hbox, 1, row , 1, 1);
+		gtk_grid_attach (GTK_GRID(grid), hbox, 1, row , 1, 1);
 	}
 	else
 #endif
 	{
-		gtk_grid_attach(GTK_GRID(table), widget, 1, row, 1, 1);
+		gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 1, 1);
 	}
 }
 
-static void remmina_file_editor_create_password(RemminaFileEditor* gfe, GtkWidget* table, gint row)
+static void remmina_file_editor_create_password(RemminaFileEditor* gfe, GtkWidget* grid, gint row)
 {
 	GtkWidget* widget;
 	gchar* s;
@@ -406,11 +406,11 @@ static void remmina_file_editor_create_password(RemminaFileEditor* gfe, GtkWidge
 	gtk_widget_show(widget);
 	gtk_widget_set_valign (widget, GTK_ALIGN_START);
 	gtk_widget_set_halign (widget, GTK_ALIGN_START);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
 
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, row, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 1, 1);
 	gtk_entry_set_max_length(GTK_ENTRY(widget), 100);
 	gtk_entry_set_visibility(GTK_ENTRY(widget), FALSE);
 	gfe->priv->password_entry = widget;
@@ -440,7 +440,7 @@ static void remmina_file_editor_browse_resolution(GtkWidget* button, RemminaFile
 }
 
 static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const RemminaProtocolSetting* setting,
-		GtkWidget* table, gint row)
+		GtkWidget* grid, gint row)
 {
 	GtkWidget* widget;
 	GtkWidget* hbox;
@@ -450,11 +450,11 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 	gtk_widget_show(widget);
 	gtk_widget_set_valign (widget, GTK_ALIGN_START);
 	gtk_widget_set_halign (widget, GTK_ALIGN_START);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
 
 	widget = gtk_radio_button_new_with_label(NULL, setting->opt1 ? _("Use window size") : _("Use client resolution"));
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, row, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 1, 1);
 	gfe->priv->resolution_auto_radio = widget;
 
 #if GTK_VERSION == 3
@@ -463,7 +463,7 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 	hbox = gtk_hbox_new (FALSE, 0);
 #endif
 	gtk_widget_show(hbox);
-	gtk_grid_attach(GTK_GRID(table), hbox, 1, row + 1, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), hbox, 1, row + 1, 1, 1);
 
 	widget = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(gfe->priv->resolution_auto_radio), _("Custom"));
 	gtk_widget_show(widget);
@@ -496,7 +496,7 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 	}
 }
 
-static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWidget* table,
+static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWidget* grid,
 		gint row, gint col, const gchar* label, const gchar* value)
 {
 	GtkWidget* widget;
@@ -510,11 +510,11 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWid
 #endif
 	gtk_widget_set_valign (widget, GTK_ALIGN_START);
 	gtk_widget_set_halign (widget, GTK_ALIGN_START);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
 
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, row, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 1, 1);
 	gtk_entry_set_max_length(GTK_ENTRY(widget), 300);
 
 	if (value)
@@ -523,7 +523,7 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWid
 	return widget;
 }
 
-static GtkWidget* remmina_file_editor_create_select(RemminaFileEditor* gfe, GtkWidget* table,
+static GtkWidget* remmina_file_editor_create_select(RemminaFileEditor* gfe, GtkWidget* grid,
 		gint row, gint col, const gchar* label, const gpointer* list, const gchar* value)
 {
 	GtkWidget* widget;
@@ -532,16 +532,16 @@ static GtkWidget* remmina_file_editor_create_select(RemminaFileEditor* gfe, GtkW
 	gtk_widget_show(widget);
 	gtk_widget_set_valign (widget, GTK_ALIGN_START);
 	gtk_widget_set_halign (widget, GTK_ALIGN_START);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
 
 	widget = remmina_public_create_combo_map(list, value, FALSE, gfe->priv->plugin->domain);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, row, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 1, 1);
 
 	return widget;
 }
 
-static GtkWidget* remmina_file_editor_create_combo(RemminaFileEditor* gfe, GtkWidget* table,
+static GtkWidget* remmina_file_editor_create_combo(RemminaFileEditor* gfe, GtkWidget* grid,
 		gint row, gint col, const gchar* label, const gchar* list, const gchar* value)
 {
 	GtkWidget* widget;
@@ -550,24 +550,24 @@ static GtkWidget* remmina_file_editor_create_combo(RemminaFileEditor* gfe, GtkWi
 	gtk_widget_show(widget);
 	gtk_widget_set_valign (widget, GTK_ALIGN_START);
 	gtk_widget_set_halign (widget, GTK_ALIGN_START);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, row , 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, row , 1, 1);
 
 	widget = remmina_public_create_combo_entry(list, value, FALSE);
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, row, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 1, 1);
 
 	return widget;
 }
 
-static GtkWidget* remmina_file_editor_create_check(RemminaFileEditor* gfe, GtkWidget* table,
+static GtkWidget* remmina_file_editor_create_check(RemminaFileEditor* gfe, GtkWidget* grid,
 		gint row, gint top, const gchar* label, gboolean value)
 {
 	GtkWidget* widget;
 	widget = gtk_check_button_new_with_label(label);
 	gtk_widget_show(widget);
-	gtk_grid_set_row_spacing(GTK_GRID(table), 1);
-	gtk_grid_attach(GTK_GRID(table), widget, top, row , 1, 1);
+	gtk_grid_set_row_spacing(GTK_GRID(grid), 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, top, row , 1, 1);
 
 	if (value)
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
@@ -576,7 +576,7 @@ static GtkWidget* remmina_file_editor_create_check(RemminaFileEditor* gfe, GtkWi
 }
 
 static GtkWidget*
-remmina_file_editor_create_chooser(RemminaFileEditor* gfe, GtkWidget* table, gint row, gint col, const gchar* label,
+remmina_file_editor_create_chooser(RemminaFileEditor* gfe, GtkWidget* grid, gint row, gint col, const gchar* label,
 		const gchar* value, gint type)
 {
 	GtkWidget* check;
@@ -587,7 +587,7 @@ remmina_file_editor_create_chooser(RemminaFileEditor* gfe, GtkWidget* table, gin
 	gtk_widget_show(widget);
 	gtk_widget_set_valign (widget, GTK_ALIGN_START);
 	gtk_widget_set_halign (widget, GTK_ALIGN_START);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
 
 #if GTK_VERSION == 3
 	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
@@ -595,7 +595,7 @@ remmina_file_editor_create_chooser(RemminaFileEditor* gfe, GtkWidget* table, gin
 	hbox = gtk_hbox_new(FALSE, 0);
 #endif
 	gtk_widget_show(hbox);
-	gtk_grid_attach(GTK_GRID(table), hbox, 1, row, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), hbox, 1, row, 1, 1);
 
 	check = gtk_check_button_new();
 	gtk_widget_show(check);
@@ -616,7 +616,7 @@ remmina_file_editor_create_chooser(RemminaFileEditor* gfe, GtkWidget* table, gin
 	return widget;
 }
 
-static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidget* table,
+static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidget* grid,
 		const RemminaProtocolSetting* settings)
 {
 	RemminaFileEditorPriv* priv = gfe->priv;
@@ -635,22 +635,22 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 		switch (settings->type)
 		{
 			case REMMINA_PROTOCOL_SETTING_TYPE_SERVER:
-				remmina_file_editor_create_server(gfe, settings, table, row);
+				remmina_file_editor_create_server(gfe, settings, grid, row);
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD:
-				remmina_file_editor_create_password(gfe, table, row);
+				remmina_file_editor_create_password(gfe, grid, row);
 				row++;
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION:
-				remmina_file_editor_create_resolution(gfe, settings, table, row);
+				remmina_file_editor_create_resolution(gfe, settings, grid, row);
 				row++;
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP:
 				strarr = remmina_pref_keymap_groups();
-				priv->keymap_combo = remmina_file_editor_create_select(gfe, table, row + 1, 0,
+				priv->keymap_combo = remmina_file_editor_create_select(gfe, grid, row + 1, 0,
 						_("Keyboard mapping"), (const gpointer*) strarr,
 						remmina_file_get_string(priv->remmina_file, "keymap"));
 				g_strfreev(strarr);
@@ -667,7 +667,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 #else
 				gtk_widget_set_margin_right (widget, 40);
 #endif
-				gtk_grid_attach(GTK_GRID(table), widget, 0, row, 1, row + 1);
+				gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, row + 1);
 
 				widget = gtk_label_new(_("Vertical scale"));
 				gtk_widget_show(widget);
@@ -678,11 +678,11 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 #else
 				gtk_widget_set_margin_right (widget, 40);
 #endif
-				gtk_grid_attach(GTK_GRID(table), widget, 0, row + 1, 1, row + 2);
+				gtk_grid_attach(GTK_GRID(grid), widget, 0, row + 1, 1, row + 2);
 
 				widget = remmina_scaler_new();
 				gtk_widget_show(widget);
-				gtk_grid_attach(GTK_GRID(table), widget, 1, row, 2, row + 2);
+				gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 2, row + 2);
 				remmina_scaler_set(REMMINA_SCALER(widget),
 						remmina_file_get_int(priv->remmina_file, "hscale", 0),
 						remmina_file_get_int(priv->remmina_file, "vscale", 0),
@@ -693,14 +693,14 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_TEXT:
-				widget = remmina_file_editor_create_text(gfe, table, row, 0,
+				widget = remmina_file_editor_create_text(gfe, grid, row, 0,
 						g_dgettext(priv->plugin->domain, settings->label),
 						remmina_file_get_string(priv->remmina_file, settings->name));
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_SELECT:
-				widget = remmina_file_editor_create_select(gfe, table, row, 0,
+				widget = remmina_file_editor_create_select(gfe, grid, row, 0,
 						g_dgettext(priv->plugin->domain, settings->label),
 						(const gpointer*) settings->opt1,
 						remmina_file_get_string(priv->remmina_file, settings->name));
@@ -708,7 +708,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_COMBO:
-				widget = remmina_file_editor_create_combo(gfe, table, row, 0,
+				widget = remmina_file_editor_create_combo(gfe, grid, row, 0,
 						g_dgettext(priv->plugin->domain, settings->label),
 						(const gchar*) settings->opt1,
 						remmina_file_get_string(priv->remmina_file, settings->name));
@@ -717,8 +717,6 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_CHECK:
 				/* with top e count we manage to distribute the check boxes on two columns */
-				//top = (ccount > 0 ? 1 : 0);
-				//ccount = (ccount > 0 ? 0 : 1);
 				if (ccount > 0) {
 					top = 1;
 					ccount = 0;
@@ -726,7 +724,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 					top = 0;
 					ccount = 1;
 				}
-				widget = remmina_file_editor_create_check(gfe, table, row, top,
+				widget = remmina_file_editor_create_check(gfe, grid, row, top,
 				g_dgettext (priv->plugin->domain, settings->label),
 				remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
 				(ccount ? 1 : row++);
@@ -734,7 +732,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				break;
 
 				case REMMINA_PROTOCOL_SETTING_TYPE_FILE:
-				widget = remmina_file_editor_create_chooser (gfe, table, row, 0,
+				widget = remmina_file_editor_create_chooser (gfe, grid, row, 0,
 						g_dgettext (priv->plugin->domain, settings->label),
 						remmina_file_get_string (priv->remmina_file, settings->name),
 						GTK_FILE_CHOOSER_ACTION_OPEN);
@@ -742,7 +740,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				break;
 
 				case REMMINA_PROTOCOL_SETTING_TYPE_FOLDER:
-				widget = remmina_file_editor_create_chooser (gfe, table, row, 0,
+				widget = remmina_file_editor_create_chooser (gfe, grid, row, 0,
 						g_dgettext (priv->plugin->domain, settings->label),
 						remmina_file_get_string (priv->remmina_file, settings->name),
 						GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
@@ -768,7 +766,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 {
 #ifdef HAVE_LIBSSH
 	RemminaFileEditorPriv* priv = gfe->priv;
-	GtkWidget* table;
+	GtkWidget* grid;
 	GtkWidget* hbox;
 	GtkWidget* widget;
 	const gchar* cs;
@@ -782,13 +780,13 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 			ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SFTP)
 	{
 		s = remmina_public_combo_get_active_text (GTK_COMBO_BOX (priv->protocol_combo));
-		table = remmina_file_editor_create_notebook_tab (gfe, "dialog-password",
+		grid = remmina_file_editor_create_notebook_tab (gfe, "dialog-password",
 				(s ? s : "SSH"), 8, 3);
 		g_free(s);
 	}
 	else
 	{
-		table = remmina_file_editor_create_notebook_tab (gfe, "dialog-password",
+		grid = remmina_file_editor_create_notebook_tab (gfe, "dialog-password",
 				"SSH", 9, 3);
 
 #if GTK_VERSION == 3
@@ -797,7 +795,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		hbox = gtk_hbox_new(FALSE, 0);
 #endif
 		gtk_widget_show(hbox);
-		gtk_grid_attach (GTK_GRID(table), hbox, 0, 0, 3, 1);
+		gtk_grid_attach (GTK_GRID(grid), hbox, 0, 0, 3, 1);
 		row++;
 
 		widget = gtk_check_button_new_with_label (_("Enable SSH tunnel"));
@@ -823,14 +821,14 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		widget = gtk_radio_button_new_with_label (NULL, s);
 		g_free(s);
 		gtk_widget_show(widget);
-		gtk_grid_attach (GTK_GRID(table), widget, 0, row, 3, 1);
+		gtk_grid_attach (GTK_GRID(grid), widget, 0, row, 3, 1);
 		priv->ssh_server_default_radio = widget;
 		row++;
 
 		widget = gtk_radio_button_new_with_label_from_widget (
 				GTK_RADIO_BUTTON(priv->ssh_server_default_radio), _("Custom"));
 		gtk_widget_show(widget);
-		gtk_grid_attach (GTK_GRID(table), widget, 0, row, 1, 1);
+		gtk_grid_attach (GTK_GRID(grid), widget, 0, row, 1, 1);
 		g_signal_connect(G_OBJECT(widget), "toggled",
 				G_CALLBACK(remmina_file_editor_ssh_server_custom_radio_on_toggled), gfe);
 		priv->ssh_server_custom_radio = widget;
@@ -839,7 +837,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		gtk_widget_show(widget);
 		gtk_entry_set_max_length (GTK_ENTRY(widget), 100);
 		gtk_widget_set_tooltip_markup (widget, _(server_tips2));
-		gtk_grid_attach (GTK_GRID(table), widget, 1, row, 2, 1);
+		gtk_grid_attach (GTK_GRID(grid), widget, 1, row, 2, 1);
 		priv->ssh_server_entry = widget;
 		row++;
 		break;
@@ -848,7 +846,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		priv->ssh_server_default_radio = NULL;
 		priv->ssh_server_custom_radio = NULL;
 
-		priv->ssh_server_entry = remmina_file_editor_create_text (gfe, table, 1, 0,
+		priv->ssh_server_entry = remmina_file_editor_create_text (gfe, grid, 1, 0,
 				_("Server"), NULL);
 		gtk_widget_set_tooltip_markup (priv->ssh_server_entry, _(server_tips));
 		row++;
@@ -861,7 +859,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		priv->ssh_server_entry = NULL;
 
 		s = remmina_pref_get_recent ("SFTP");
-		priv->server_combo = remmina_file_editor_create_combo (gfe, table, row + 1, 1,
+		priv->server_combo = remmina_file_editor_create_combo (gfe, grid, row + 1, 1,
 				_("Server"), s, remmina_file_get_string (priv->remmina_file, "server"));
 		gtk_widget_set_tooltip_markup (priv->server_combo, _(server_tips));
 		gtk_entry_set_activates_default (GTK_ENTRY(gtk_bin_get_child (GTK_BIN (priv->server_combo))), TRUE);
@@ -873,13 +871,13 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		break;
 	}
 
-	priv->ssh_charset_combo = remmina_file_editor_create_combo (gfe, table, row + 3, 0,
+	priv->ssh_charset_combo = remmina_file_editor_create_combo (gfe, grid, row + 3, 0,
 			_("Character set"), charset_list, remmina_file_get_string (priv->remmina_file, "ssh_charset"));
 	row++;
 
 	if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SSH)
 	{
-		widget = remmina_file_editor_create_text (gfe, table, row + 7, 1,
+		widget = remmina_file_editor_create_text (gfe, grid, row + 7, 1,
 				_("Startup program"), NULL);
 		cs = remmina_file_get_string (priv->remmina_file, "exec");
 		gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
@@ -888,7 +886,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 	}
 	else if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SFTP)
 	{
-		widget = remmina_file_editor_create_text (gfe, table, row + 8, 1,
+		widget = remmina_file_editor_create_text (gfe, grid, row + 8, 1,
 				_("Startup path"), NULL);
 		cs = remmina_file_get_string (priv->remmina_file, "execpath");
 		gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
@@ -897,27 +895,27 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 	}
 
 	/* SSH Authentication frame */
-	remmina_public_create_group (GTK_GRID(table), _("SSH Authentication"), row + 8, 5, 1);
+	remmina_public_create_group (GTK_GRID(grid), _("SSH Authentication"), row + 8, 5, 1);
 	row++;
 
-	priv->ssh_username_entry = remmina_file_editor_create_text (gfe, table, row + 10, 0,
+	priv->ssh_username_entry = remmina_file_editor_create_text (gfe, grid, row + 10, 0,
 			_("User name"), NULL);
 	row++;
 
 	widget = gtk_radio_button_new_with_label (NULL, _("Password"));
 	gtk_widget_show(widget);
-	gtk_grid_attach (GTK_GRID(table), widget, 0, row + 19, 1, 1);
+	gtk_grid_attach (GTK_GRID(grid), widget, 0, row + 19, 1, 1);
 	priv->ssh_auth_password_radio = widget;
 	row++;
 
 	widget = gtk_radio_button_new_with_label_from_widget (
 			GTK_RADIO_BUTTON(priv->ssh_auth_password_radio), _("Public key (automatic)"));
 	gtk_widget_show(widget);
-	gtk_grid_attach (GTK_GRID(table), widget, 0, row + 20, 1, 1);
+	gtk_grid_attach (GTK_GRID(grid), widget, 0, row + 20, 1, 1);
 	priv->ssh_auth_auto_publickey_radio = widget;
 	row++;
 
-	remmina_file_editor_create_ssh_privatekey (gfe, table, row + 1, 0);
+	remmina_file_editor_create_ssh_privatekey (gfe, grid, row + 1, 0);
 	row++;
 
 	/* Set the values */
@@ -960,22 +958,22 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 static void remmina_file_editor_create_all_settings(RemminaFileEditor* gfe)
 {
 	RemminaFileEditorPriv* priv = gfe->priv;
-	GtkWidget* table;
+	GtkWidget* grid;
 
 	remmina_file_editor_create_notebook_container(gfe);
 
 	/* The Basic tab */
 	if (priv->plugin->basic_settings)
 	{
-		table = remmina_file_editor_create_notebook_tab(gfe, "dialog-information", _("Basic"), 20, 2);
-		remmina_file_editor_create_settings(gfe, table, priv->plugin->basic_settings);
+		grid = remmina_file_editor_create_notebook_tab(gfe, "dialog-information", _("Basic"), 20, 2);
+		remmina_file_editor_create_settings(gfe, grid, priv->plugin->basic_settings);
 	}
 
 	/* The Advanced tab */
 	if (priv->plugin->advanced_settings)
 	{
-		table = remmina_file_editor_create_notebook_tab(gfe, "dialog-warning", _("Advanced"), 20, 2);
-		remmina_file_editor_create_settings(gfe, table, priv->plugin->advanced_settings);
+		grid = remmina_file_editor_create_notebook_tab(gfe, "dialog-warning", _("Advanced"), 20, 2);
+		remmina_file_editor_create_settings(gfe, grid, priv->plugin->advanced_settings);
 	}
 
 	/* The SSH tab */
@@ -1322,13 +1320,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 {
 	RemminaFileEditor* gfe;
 	RemminaFileEditorPriv* priv;
-	/* antenore - 2014/09
-	 * IMPORTANT - The code has been migrated from GtkTable to GtkGrid
-	 * but I didn't rename row, column and table to top, left and grid.
-	 * This is indeed an important step and it should be done soon or later to
-	 * avoid confusion.
-	 */
-	GtkWidget* table;
+	GtkWidget* grid;
 	GtkWidget* widget;
 	gchar* groups;
 	gchar* s;
@@ -1344,27 +1336,27 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	}
 
 	/* Create the Profile group on the top (for name and protocol) */
-	table = gtk_grid_new();
-	gtk_widget_show(table);
-	gtk_grid_set_row_spacing(GTK_GRID(table), 4);
-	gtk_grid_set_column_spacing(GTK_GRID(table), 8);
-	gtk_grid_set_column_homogeneous (GTK_GRID(table), TRUE);
-	gtk_container_set_border_width(GTK_CONTAINER(table), 8);
-	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(gfe))), table, FALSE, FALSE, 2);
+	grid = gtk_grid_new();
+	gtk_widget_show(grid);
+	gtk_grid_set_row_spacing(GTK_GRID(grid), 4);
+	gtk_grid_set_column_spacing(GTK_GRID(grid), 8);
+	gtk_grid_set_column_homogeneous (GTK_GRID(grid), TRUE);
+	gtk_container_set_border_width(GTK_CONTAINER(grid), 8);
+	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(gfe))), grid, FALSE, FALSE, 2);
 
-	remmina_public_create_group(GTK_GRID(table), _("Profile"), 0, 4, 3);
+	remmina_public_create_group(GTK_GRID(grid), _("Profile"), 0, 4, 3);
 
 	/* Profile: Name */
 	widget = gtk_label_new(_("Name"));
 	gtk_widget_show(widget);
 	gtk_widget_set_valign (widget, GTK_ALIGN_START);
 	gtk_widget_set_halign (widget, GTK_ALIGN_START);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 3, 2, 1);
-	gtk_grid_set_column_spacing (GTK_GRID(table), 10);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 3, 2, 1);
+	gtk_grid_set_column_spacing (GTK_GRID(grid), 10);
 
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 3, 3, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 3, 3, 1);
 	gtk_entry_set_max_length(GTK_ENTRY(widget), 100);
 	priv->name_entry = widget;
 
@@ -1384,13 +1376,13 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	gtk_widget_show(widget);
 	gtk_widget_set_valign (widget, GTK_ALIGN_START);
 	gtk_widget_set_halign (widget, GTK_ALIGN_START);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 6, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 6, 2, 1);
 
 	groups = remmina_file_manager_get_groups();
 	priv->group_combo = remmina_public_create_combo_entry(groups, remmina_file_get_string(remminafile, "group"), FALSE);
 	g_free(groups);
 	gtk_widget_show(priv->group_combo);
-	gtk_grid_attach(GTK_GRID(table), priv->group_combo, 1, 6, 3, 1);
+	gtk_grid_attach(GTK_GRID(grid), priv->group_combo, 1, 6, 3, 1);
 	gtk_widget_set_sensitive(priv->group_combo, FALSE);
 
 	s = g_strdup_printf(_("Use '%s' as subgroup delimiter"), "/");
@@ -1402,11 +1394,11 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	gtk_widget_show(widget);
 	gtk_widget_set_valign (widget, GTK_ALIGN_START);
 	gtk_widget_set_halign (widget, GTK_ALIGN_START);
-	gtk_grid_attach(GTK_GRID(table), widget, 0, 9, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 9, 2, 1);
 
 	widget = remmina_public_create_combo(TRUE);
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(table), widget, 1, 9, 3, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 9, 3, 1);
 	priv->protocol_combo = widget;
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL, remmina_file_editor_iterate_protocol, gfe);
 	g_signal_connect(G_OBJECT(widget), "changed", G_CALLBACK(remmina_file_editor_protocol_combo_on_changed), gfe);
