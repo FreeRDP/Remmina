@@ -50,6 +50,7 @@ void remmina_about_open(GtkWindow* parent)
 		"Alex Chateau <ash@zednet.lv>",
 		"Alexander Logvinov <avl@logvinov.com>",
 		"Antenore Gatta <antenore@simbiosi.org>",
+		"Fabio Castelli (Muflone) <muflone@vbsimple.net>",
 		"Giovanni Panozzo <giovanni@panozzo.it>",
 		"Harun Trefry <aihtdikh@gmail.com>",
 		"Nikolay Botev <bono8106@gmail.com>",
