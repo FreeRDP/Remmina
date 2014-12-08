@@ -116,23 +116,23 @@ BOOL rf_check_fds(RemminaProtocolWidget* gp)
 void rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
 	rfContext* rfi;
+	gboolean ui_sync_save;
 
+	ui_sync_save = ui->sync;
 	rfi = GET_DATA(gp);
-	g_async_queue_push(rfi->ui_queue, ui);
 
-	if (ui->sync) {
+	if (ui_sync_save) {
 		pthread_mutex_init(&ui->sync_wait_mutex,NULL);
 		pthread_mutex_lock(&ui->sync_wait_mutex);
 	}
 
 	LOCK_BUFFER(TRUE)
-
+	g_async_queue_push(rfi->ui_queue, ui);
 	if (!rfi->ui_handler)
 		rfi->ui_handler = IDLE_ADD((GSourceFunc) remmina_rdp_event_queue_ui, gp);
-
 	UNLOCK_BUFFER(TRUE)
 
-	if ( ui->sync ) {
+	if (ui_sync_save) {
 		/* Wait for main thread function completion before returning */
 		pthread_mutex_lock(&ui->sync_wait_mutex);
 		pthread_mutex_unlock(&ui->sync_wait_mutex);
