@@ -802,10 +802,12 @@ gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 
 	rfi = GET_DATA(gp);
 
+	LOCK_BUFFER(FALSE);
 	ui = (RemminaPluginRdpUiObject*) g_async_queue_try_pop(rfi->ui_queue);
 
 	if (ui)
 	{
+		UNLOCK_BUFFER(FALSE)
 		if ( !rfi->thread_cancelled ) {
 			switch (ui->type)
 			{
@@ -847,7 +849,6 @@ gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 	}
 	else
 	{
-		LOCK_BUFFER(FALSE)
 		rfi->ui_handler = 0;
 		UNLOCK_BUFFER(FALSE)
 		return FALSE;
