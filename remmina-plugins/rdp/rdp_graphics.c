@@ -188,6 +188,7 @@ void rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 	{
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_CURSOR;
+		ui->sync = TRUE;	// Also wait for completion
 		ui->cursor.pointer = (rfPointer*) pointer;
 		ui->cursor.type = REMMINA_RDP_POINTER_NEW;
 
@@ -223,6 +224,7 @@ void rf_Pointer_Set(rdpContext* context, rdpPointer* pointer)
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CURSOR;
+	ui->sync = TRUE;	// Also wait for completion
 	ui->cursor.pointer = (rfPointer*) pointer;
 	ui->cursor.type = REMMINA_RDP_POINTER_SET;
 
@@ -236,6 +238,7 @@ void rf_Pointer_SetNull(rdpContext* context)
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CURSOR;
+	ui->sync = TRUE;	// Also wait for completion
 	ui->cursor.type = REMMINA_RDP_POINTER_NULL;
 
 	rf_queue_ui(rfi->protocol_widget, ui);
@@ -248,6 +251,7 @@ void rf_Pointer_SetDefault(rdpContext* context)
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CURSOR;
+	ui->sync = TRUE;	// Also wait for completion
 	ui->cursor.type = REMMINA_RDP_POINTER_DEFAULT;
 
 	rf_queue_ui(rfi->protocol_widget, ui);
