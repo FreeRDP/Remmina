@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -197,12 +197,12 @@ static void remmina_connection_holder_keyboard_grab(RemminaConnectionHolder* cnn
 
 	if (keyboard != NULL)
 	{
-		
+
 		if ( gdk_device_get_source (keyboard) != GDK_SOURCE_KEYBOARD)
 		{
 			keyboard = gdk_device_get_associated_device( keyboard );
 		}
-		
+
 		if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE))
 		{
 			gdk_device_grab(keyboard, gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)), GDK_OWNERSHIP_WINDOW, TRUE, GDK_KEY_PRESS | GDK_KEY_RELEASE, NULL, GDK_CURRENT_TIME);
@@ -1550,7 +1550,7 @@ static gboolean remmina_connection_window_on_leave(GtkWidget* widget, GdkEventCr
 	GdkDisplay *display;
 	GdkDeviceManager *manager;
 	GdkDevice *device = NULL;
-	
+
 	if (event->detail == GDK_NOTIFY_VIRTUAL || event->detail == GDK_NOTIFY_NONLINEAR
 			|| event->detail == GDK_NOTIFY_NONLINEAR_VIRTUAL)
 	{
@@ -1995,7 +1995,7 @@ static void remmina_connection_window_initialize_notebook(GtkNotebook* to, GtkNo
 			tab = remmina_connection_object_create_tab(cnnobj);
 			remmina_connection_object_append_page(cnnobj, to, tab, view_mode);
 
-#if GTK_VERSION == 3		
+#if GTK_VERSION == 3
 			/* Reparent cnnobj->viewport */
 			g_object_ref(cnnobj->viewport);
 			gtk_container_remove(GTK_CONTAINER(gtk_widget_get_parent(cnnobj->viewport)), cnnobj->viewport);
