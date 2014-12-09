@@ -83,7 +83,6 @@ gint remmina_public_open_xdisplay(const gchar *disp);
 guint remmina_public_get_current_workspace(GdkScreen *screen);
 guint remmina_public_get_window_workspace(GtkWindow *gtkwindow);
 
-void remmina_public_threads_leave(void* data);
 
 #endif  /* __REMMINAPUBLIC_H__  */
 
