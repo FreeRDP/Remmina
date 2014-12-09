@@ -327,11 +327,6 @@ remmina_public_combine_path(const gchar *path1, const gchar *path2)
 	return g_strdup_printf("%s/%s", path1, path2);
 }
 
-void remmina_public_threads_leave(void* data)
-{
-	gdk_threads_leave();
-}
-
 void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar **host, gint *port)
 {
 	gchar *str, *ptr, *ptr2;
