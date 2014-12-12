@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -211,7 +211,7 @@ static gboolean remmina_main_load_file_tree_traverse(GNode *node, GtkTreeStore *
 		data = (RemminaGroupData*) node->data;
 		iter = g_new0(GtkTreeIter, 1);
 		gtk_tree_store_append(store, iter, parent);
-		gtk_tree_store_set(store, iter, PROTOCOL_COLUMN, GTK_STOCK_DIRECTORY, NAME_COLUMN, data->name, GROUP_COLUMN,
+		gtk_tree_store_set(store, iter, PROTOCOL_COLUMN, "folder", NAME_COLUMN, data->name, GROUP_COLUMN,
 				data->group, FILENAME_COLUMN, NULL, -1);
 	}
 	for (child = g_node_first_child(node); child; child = g_node_next_sibling(child))
@@ -356,7 +356,7 @@ static gboolean remmina_main_filter_visible_func(GtkTreeModel *model, GtkTreeIte
 	{
 		gtk_tree_model_get(model, iter, PROTOCOL_COLUMN, &protocol, NAME_COLUMN, &name, GROUP_COLUMN, &group,
 				SERVER_COLUMN, &server, -1);
-		if (g_strcmp0(protocol, GTK_STOCK_DIRECTORY) != 0)
+		if (g_strcmp0(protocol, "folder") != 0)
 		{
 			s = g_ascii_strdown(name ? name : "", -1);
 			g_free(name);
@@ -718,7 +718,7 @@ static void remmina_main_action_tools_import(GtkAction *action, RemminaMain *rem
 {
 	GtkWidget *dialog;
 
-	dialog = gtk_file_chooser_dialog_new(_("Import"), GTK_WINDOW(remminamain), GTK_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_OPEN,
+	dialog = gtk_file_chooser_dialog_new(_("Import"), GTK_WINDOW(remminamain), GTK_FILE_CHOOSER_ACTION_OPEN, "document-open",
 			GTK_RESPONSE_ACCEPT, NULL);
 	gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(dialog), TRUE);
 	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(remmina_main_action_tools_import_on_response), remminamain);
@@ -741,7 +741,7 @@ static void remmina_main_action_tools_export(GtkAction *action, RemminaMain *rem
 	if (plugin)
 	{
 		dialog = gtk_file_chooser_dialog_new(plugin->export_hints, GTK_WINDOW(remminamain),
-				GTK_FILE_CHOOSER_ACTION_SAVE, GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT, NULL);
+				GTK_FILE_CHOOSER_ACTION_SAVE, "document-save", GTK_RESPONSE_ACCEPT, NULL);
 		if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT)
 		{
 			plugin->export_func(remminafile, gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog)));
@@ -862,13 +862,13 @@ static const GtkActionEntry remmina_main_ui_menu_entries[] =
 { "Tools", NULL, N_("_Tools") },
 { "Help", NULL, N_("_Help") },
 
-{ "ConnectionNew", GTK_STOCK_NEW, NULL, "<control>N", N_("Create a new remote desktop file"), G_CALLBACK(
+{ "ConnectionNew", "gtk-new", NULL, "<control>N", N_("Create a new remote desktop file"), G_CALLBACK(
 		remmina_main_action_connection_new) },
 
-{ "EditPreferences", GTK_STOCK_PREFERENCES, NULL, "<control>P", N_("Open the preferences dialog"), G_CALLBACK(
+{ "EditPreferences", "gtk-preferences", NULL, "<control>P", N_("Open the preferences dialog"), G_CALLBACK(
 		remmina_main_action_edit_preferences) },
 
-{ "ConnectionClose", GTK_STOCK_CLOSE, NULL, "<control>X", NULL, G_CALLBACK(remmina_main_action_connection_close) },
+{ "ConnectionClose", "gtk-close", NULL, "<control>X", NULL, G_CALLBACK(remmina_main_action_connection_close) },
 
 { "ToolsImport", NULL, N_("Import"), NULL, NULL, G_CALLBACK(remmina_main_action_tools_import) },
 
@@ -880,20 +880,20 @@ static const GtkActionEntry remmina_main_ui_menu_entries[] =
 
 { "HelpDebug", NULL, N_("Debug Window"), NULL, NULL, G_CALLBACK(remmina_main_action_help_debug) },
 
-{ "HelpAbout", GTK_STOCK_ABOUT, NULL, NULL, NULL, G_CALLBACK(remmina_main_action_help_about) } };
+{ "HelpAbout", "gtk-about", NULL, NULL, NULL, G_CALLBACK(remmina_main_action_help_about) } };
 
 static const GtkActionEntry remmina_main_ui_file_sensitive_menu_entries[] =
 {
-{ "ConnectionConnect", GTK_STOCK_CONNECT, NULL, "<control>O", N_("Open the connection to the selected remote desktop file"),
+{ "ConnectionConnect", "gtk-connect", NULL, "<control>O", N_("Open the connection to the selected remote desktop file"),
 		G_CALLBACK(remmina_main_action_connection_connect) },
 
-{ "ConnectionCopy", GTK_STOCK_COPY, NULL, "<control>C", N_("Create a copy of the selected remote desktop file"), G_CALLBACK(
+{ "ConnectionCopy", "gtk-copy", NULL, "<control>C", N_("Create a copy of the selected remote desktop file"), G_CALLBACK(
 		remmina_main_action_connection_copy) },
 
-{ "ConnectionEdit", GTK_STOCK_EDIT, NULL, "<control>E", N_("Edit the selected remote desktop file"), G_CALLBACK(
+{ "ConnectionEdit", "gtk-edit", NULL, "<control>E", N_("Edit the selected remote desktop file"), G_CALLBACK(
 		remmina_main_action_connection_edit) },
 
-{ "ConnectionDelete", GTK_STOCK_DELETE, NULL, "<control>D", N_("Delete the selected remote desktop file"), G_CALLBACK(
+{ "ConnectionDelete", "gtk-delete", NULL, "<control>D", N_("Delete the selected remote desktop file"), G_CALLBACK(
 		remmina_main_action_connection_delete) },
 
 { "ToolsExport", NULL, N_("Export"), NULL, NULL, G_CALLBACK(remmina_main_action_tools_export) },
@@ -1054,8 +1054,8 @@ static void remmina_main_create_quick_search(RemminaMain *remminamain)
 
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
-	gtk_entry_set_icon_from_stock(GTK_ENTRY(widget), GTK_ENTRY_ICON_PRIMARY, GTK_STOCK_FIND);
-	gtk_entry_set_icon_from_stock(GTK_ENTRY(widget), GTK_ENTRY_ICON_SECONDARY, GTK_STOCK_CLEAR);
+	gtk_entry_set_icon_from_stock(GTK_ENTRY(widget), GTK_ENTRY_ICON_PRIMARY, "gtk-find");
+	gtk_entry_set_icon_from_stock(GTK_ENTRY(widget), GTK_ENTRY_ICON_SECONDARY, "gtk-clear");
 	gtk_entry_set_width_chars(GTK_ENTRY(widget), 25);
 	gtk_container_add(GTK_CONTAINER(remminamain->priv->quick_search_item), widget);
 
@@ -1235,7 +1235,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 	hbox = gtk_hbox_new(FALSE, 0);
 #endif
 
-	
+
 #if GTK_VERSION == 3
 	priv->quickconnect_protocol = gtk_combo_box_text_new();
 	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(priv->quickconnect_protocol), "RDP", "RDP");
