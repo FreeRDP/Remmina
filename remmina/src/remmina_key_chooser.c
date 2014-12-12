@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -78,7 +78,7 @@ static void remmina_key_chooser_on_clicked(RemminaKeyChooser *kc, gpointer data)
 	gint ret;
 
 	dialog = gtk_dialog_new_with_buttons(_("Choose a new key"), GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(kc))),
-			GTK_DIALOG_MODAL, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_REMOVE, GTK_RESPONSE_REJECT, NULL);
+			GTK_DIALOG_MODAL, _("_Cancel"), GTK_RESPONSE_CANCEL, _("_Remove"), GTK_RESPONSE_REJECT, NULL);
 
 	eventbox = gtk_event_box_new();
 	gtk_widget_show(eventbox);
