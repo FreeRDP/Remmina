@@ -41,6 +41,7 @@
 G_DEFINE_TYPE( RemminaStringList, remmina_string_list, GTK_TYPE_GRID)
 
 #define ERROR_COLOR "red"
+const GdkRGBA ErrorColor = { 1.0, 0.0, 0.0, 1.0 };
 
 enum
 {
@@ -51,20 +52,13 @@ enum
 
 static void remmina_string_list_status_error(RemminaStringList *gsl, const gchar *error)
 {
-	GdkColor color;
-
-	gdk_color_parse(ERROR_COLOR, &color);
-	gtk_widget_modify_fg(gsl->status_label, GTK_STATE_NORMAL, &color);
+	gtk_widget_override_color(gsl->status_label, GTK_STATE_FLAG_NORMAL, &ErrorColor);
 	gtk_label_set_text(GTK_LABEL(gsl->status_label), error);
 }
 
 static void remmina_string_list_status_hints(RemminaStringList *gsl)
 {
-#if GTK_VERSION == 3
 	gtk_widget_override_color(gsl->status_label, GTK_STATE_NORMAL, NULL);
-#else
-	gtk_widget_modify_fg(gsl->status_label, GTK_STATE_NORMAL, NULL);
-#endif
 	gtk_label_set_text(GTK_LABEL(gsl->status_label), gsl->hints);
 }
 
@@ -232,11 +226,7 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	gtk_tree_view_append_column(GTK_TREE_VIEW(gsl->list), column);
 
 	/* buttons packed into a vbox */
-#if GTK_VERSION == 3
 	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-#elif GTK_VERSION == 2
-	vbox = gtk_vbox_new(FALSE, 0);
-#endif
 	gtk_widget_show(vbox);
 	gtk_grid_attach(GTK_GRID(gsl), vbox, 1, 0, 2, 1);
 
