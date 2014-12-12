@@ -917,8 +917,8 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 
 	pthread_mutex_init(&rfi->mutex, NULL);
 
-	rfi->gmutex = g_mutex_new();
-	rfi->gcond = g_cond_new();
+	g_mutex_init(&rfi->gmutex);
+	g_cond_init(&rfi->gcond);
 
 	remmina_rdp_event_init(gp);
 }
@@ -962,9 +962,6 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 	}
 
 	pthread_mutex_destroy(&rfi->mutex);
-
-	g_mutex_free(rfi->gmutex);
-	g_cond_free(rfi->gcond);
 
 	remmina_rdp_event_uninit(gp);
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");

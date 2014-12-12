@@ -732,15 +732,15 @@ static void remmina_rdp_event_free_cursor(RemminaProtocolWidget* gp, RemminaPlug
 {
 	rfContext* rfi = GET_DATA(gp);
 
-	g_mutex_lock(rfi->gmutex);
+	g_mutex_lock(&rfi->gmutex);
 #if GTK_VERSION == 3
 	g_object_unref(ui->cursor.pointer->cursor);
 #else
 	gdk_cursor_unref(ui->cursor.pointer->cursor);
 #endif
 	ui->cursor.pointer->cursor = NULL;
-	g_cond_signal(rfi->gcond);
-	g_mutex_unlock(rfi->gmutex);
+	g_cond_signal(&rfi->gcond);
+	g_mutex_unlock(&rfi->gmutex);
 }
 
 static void remmina_rdp_event_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
