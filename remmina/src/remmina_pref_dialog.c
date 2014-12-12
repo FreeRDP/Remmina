@@ -356,7 +356,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	/* Create the dialog */
 	gtk_window_set_title(GTK_WINDOW(dialog), _("Remmina Preferences"));
 	gtk_window_set_modal(GTK_WINDOW(dialog), TRUE);
-	widget = gtk_dialog_add_button(GTK_DIALOG(dialog), GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
+	widget = gtk_dialog_add_button(GTK_DIALOG(dialog), _("_Close"), GTK_RESPONSE_CLOSE);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_pref_dialog_on_close_clicked), dialog);
 	gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_CLOSE);
 
