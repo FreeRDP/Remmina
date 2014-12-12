@@ -128,7 +128,7 @@ typedef struct remmina_masterthread_exec_data {
 		struct {
 			VteTerminal *terminal;
 			const char *codeset;
-			VtePty *pty;
+			int slave;
 		} vte_terminal_set_encoding_and_pty;
 #endif
 	} p;
