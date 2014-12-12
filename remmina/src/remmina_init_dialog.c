@@ -642,7 +642,7 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 }
 
 /* NOT TESTED */
-static GtkWidget* remmina_init_dialog_create_file_button(GtkWidget *grid, const gchar *label, gint row, const gchar *filename)
+static GtkWidget* remmina_init_dialog_create_file_button(GtkGrid *grid, const gchar *label, gint row, const gchar *filename)
 {
 	GtkWidget *widget;
 	gchar *pkidir;
