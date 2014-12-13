@@ -258,7 +258,7 @@ void remmina_plugin_manager_show(GtkWindow *parent)
 	GtkTreeViewColumn *column;
 	GtkListStore *store;
 
-	dialog = gtk_dialog_new_with_buttons(_("Plugins"), parent, GTK_DIALOG_MODAL, GTK_STOCK_OK, GTK_RESPONSE_ACCEPT, NULL);
+	dialog = gtk_dialog_new_with_buttons(_("Plugins"), parent, GTK_DIALOG_MODAL, _("_OK"), GTK_RESPONSE_ACCEPT, NULL);
 	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), dialog);
 	gtk_window_set_default_size(GTK_WINDOW(dialog), 500, 350);
 
