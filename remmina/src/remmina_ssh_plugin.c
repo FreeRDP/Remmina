@@ -140,7 +140,7 @@ remmina_plugin_ssh_main_thread (gpointer data)
 	return NULL;
 }
 
-void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal, const char *codeset, VtePty *pty)
+void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal, const char *codeset, int slave)
 {
 	if ( !remmina_masterthread_exec_is_main_thread() ) {
 		/* Allow the execution of this function from a non main thread */
@@ -149,7 +149,7 @@ void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal,
 		d->func = FUNC_VTE_TERMINAL_SET_ENCODING_AND_PTY;
 		d->p.vte_terminal_set_encoding_and_pty.terminal = terminal;
 		d->p.vte_terminal_set_encoding_and_pty.codeset = codeset;
-		d->p.vte_terminal_set_encoding_and_pty.pty = pty;
+		d->p.vte_terminal_set_encoding_and_pty.slave = slave;
 		remmina_masterthread_exec_and_wait(d);
 		g_free(d);
 		return;
@@ -165,9 +165,9 @@ void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal,
 	}
 
 #if !VTE_CHECK_VERSION(0,38,0)
-	vte_terminal_set_pty (terminal, pty);
+	vte_terminal_set_pty (terminal, slave);
 #else
-	vte_terminal_set_pty (terminal, pty);
+	vte_terminal_set_pty (terminal, vte_pty_new_foreign_sync(slave, NULL, NULL));
 #endif
 
 }
@@ -234,11 +234,7 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	gpdata = g_new0 (RemminaPluginSshData, 1);
 	g_object_set_data_full (G_OBJECT(gp), "plugin-data", gpdata, g_free);
 
-#if GTK_VERSION == 3
 	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-#elif GTK_VERSION == 2
-	hbox = gtk_hbox_new (FALSE, 0);
-#endif
 	gtk_widget_show(hbox);
 	gtk_container_add(GTK_CONTAINER (gp), hbox);
 	g_signal_connect(G_OBJECT(hbox), "focus-in-event", G_CALLBACK(remmina_plugin_ssh_on_focus_in), gp);
@@ -254,19 +250,9 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 
 	remmina_plugin_service->protocol_plugin_register_hostkey (gp, vte);
 
-#if GTK_VERSION == 3
-#if VTE_CHECK_VERSION(0, 38, 0)
+
 	vscrollbar = gtk_scrollbar_new (GTK_ORIENTATION_VERTICAL, gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (vte)));
-#else
-	vscrollbar = gtk_scrollbar_new (GTK_ORIENTATION_VERTICAL, vte_terminal_get_adjustment (VTE_TERMINAL (vte)));
-#endif
-#elif GTK_VERSION == 2
-#if VTE_CHECK_VERSION(0, 38, 0)
-	vscrollbar = gtk_vscrollbar_new (gtk_scrollable_get_vadjustment (GTK_SCROLLABLE_TERMINAL (vte)));
-#else
-	vscrollbar = gtk_vscrollbar_new (vte_terminal_get_adjustment (VTE_TERMINAL (vte)));
-#endif
-#endif
+
 	gtk_widget_show(vscrollbar);
 	gtk_box_pack_start (GTK_BOX (hbox), vscrollbar, FALSE, TRUE, 0);
 }
@@ -352,8 +338,8 @@ remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, const RemminaProtoco
 
 static RemminaProtocolFeature remmina_plugin_ssh_features[] =
 {
-	{	REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY, N_("Copy"), GTK_STOCK_COPY, NULL},
-	{	REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE, N_("Paste"), GTK_STOCK_PASTE, NULL},
+	{	REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY, N_("Copy"), N_("_Copy"), NULL},
+	{	REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE, N_("Paste"), N_("_Paste"), NULL},
 	{	REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL}
 };
 
