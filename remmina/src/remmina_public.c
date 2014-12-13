@@ -378,7 +378,7 @@ gboolean remmina_public_get_xauth_cookie(const gchar *display, gchar **msg)
 	gboolean ret;
 
 	if (!display)
-		display = gdk_get_display();
+		display = gdk_display_get_name(gdk_display_get_default());
 
 	g_snprintf(buf, sizeof(buf), "xauth list %s", display);
 	ret = g_spawn_command_line_sync(buf, &out, NULL, NULL, &error);
