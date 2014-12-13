@@ -597,9 +597,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_set_hexpand(widget, TRUE);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 1, 1);
 
@@ -613,9 +613,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_set_hexpand(widget, TRUE);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 1, 1, 1);
 
@@ -629,9 +629,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_set_hexpand(widget, TRUE);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 2, 1, 1);
 
@@ -645,9 +645,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_set_hexpand(widget, TRUE);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 3, 1, 1);
 
@@ -674,9 +674,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_set_hexpand(widget, TRUE);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 4, 1, 1);
 
@@ -690,9 +690,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_set_hexpand(widget, TRUE);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 5, 1, 1);
 
@@ -706,9 +706,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_set_hexpand(widget, TRUE);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 6, 1, 1);
 
@@ -722,9 +722,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_set_hexpand(widget, TRUE);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 7, 1, 1);
 
@@ -738,9 +738,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_widget_set_hexpand(widget, TRUE);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 8, 1, 1);
 
@@ -773,16 +773,22 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 1, 1);
 
 	widget = gtk_check_button_new_with_label(_("Use system default font"));
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
-	gtk_widget_set_margin_right (GTK_CHECK_BUTTON(widget), 40);
+
+#if GTK_CHECK_VERSION(3, 12, 0)
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
+#else
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
+#endif
+
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 0, 2, 1);
 	priv->vte_font_check = widget;
 	if (!(remmina_pref.vte_font && remmina_pref.vte_font[0]))
@@ -794,9 +800,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_FONT_BUTTON(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (GTK_FONT_BUTTON(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 1, 2, 1);
 	priv->vte_font_button = widget;
@@ -816,9 +822,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_CHECK_BUTTON(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (GTK_CHECK_BUTTON(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 2, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.vte_allow_bold_text);
@@ -827,9 +833,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	widget = gtk_label_new(_("Scrollback lines"));
 	gtk_widget_show(widget);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 3, 1, 1);
@@ -838,9 +844,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_ENTRY(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (GTK_ENTRY(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 3, 2, 1);
 	gtk_entry_set_max_length(GTK_ENTRY(widget), 5);
@@ -852,9 +858,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (GTK_MISC(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 4, 1, 1);
 
@@ -881,9 +887,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	widget = remmina_key_chooser_new(remmina_pref.vte_shortcutkey_copy);
 	gtk_widget_show(widget);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (REMMINA_KEY_CHOOSER(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (REMMINA_KEY_CHOOSER(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_box_pack_start(GTK_BOX(hbox), widget, TRUE, TRUE, 0);
 	priv->vte_shortcutkey_copy_chooser = widget;
@@ -910,9 +916,9 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	widget = remmina_key_chooser_new(remmina_pref.vte_shortcutkey_paste);
 	gtk_widget_show(widget);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (REMMINA_KEY_CHOOSER(widget), 40);
+	gtk_widget_set_margin_end (GTK_WIDGET(widget), 40);
 #else
-	gtk_widget_set_margin_right (REMMINA_KEY_CHOOSER(widget), 40);
+	gtk_widget_set_margin_right (GTK_WIDGET(widget), 40);
 #endif
 	gtk_box_pack_start(GTK_BOX(hbox), widget, TRUE, TRUE, 0);
 	priv->vte_shortcutkey_paste_chooser = widget;
