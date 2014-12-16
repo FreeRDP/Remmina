@@ -761,7 +761,7 @@ static void remmina_main_action_tools_export(GtkAction *action, RemminaMain *rem
 	if (plugin)
 	{
 		dialog = gtk_file_chooser_dialog_new(plugin->export_hints, GTK_WINDOW(remminamain),
-				GTK_FILE_CHOOSER_ACTION_SAVE, "document-save", GTK_RESPONSE_ACCEPT, NULL);
+				GTK_FILE_CHOOSER_ACTION_SAVE, _("_Save"), GTK_RESPONSE_ACCEPT, NULL);
 		if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT)
 		{
 			plugin->export_func(remminafile, gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog)));
