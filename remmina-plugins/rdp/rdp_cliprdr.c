@@ -38,8 +38,9 @@
 #include <freerdp/freerdp.h>
 #include <freerdp/channels/channels.h>
 #include <freerdp/client/cliprdr.h>
+#include <sys/time.h>
 
-
+#define CLIPBOARD_TRANSFER_WAIT_TIME 2
 
 UINT32 remmina_rdp_cliprdr_get_format_from_gdkatom(GdkAtom atom)
 {
@@ -350,32 +351,32 @@ static int remmina_rdp_cliprdr_server_format_list(CliprdrClientContext* context,
 			GdkAtom atom = gdk_atom_intern("UTF8_STRING", TRUE);
 			gtk_target_list_add(list, atom, 0, CF_UNICODETEXT);
 		}
-		if (format->formatId == CF_TEXT)
+		else if (format->formatId == CF_TEXT)
 		{
 			GdkAtom atom = gdk_atom_intern("TEXT", TRUE);
 			gtk_target_list_add(list, atom, 0, CF_TEXT);
 		}
-		if (format->formatId == CF_DIB)
+		else if (format->formatId == CF_DIB)
 		{
 			GdkAtom atom = gdk_atom_intern("image/bmp", TRUE);
 			gtk_target_list_add(list, atom, 0, CF_DIB);
 		}
-		if (format->formatId == CF_DIBV5)
+		else if (format->formatId == CF_DIBV5)
 		{
 			GdkAtom atom = gdk_atom_intern("image/bmp", TRUE);
 			gtk_target_list_add(list, atom, 0, CF_DIBV5);
 		}
-		if (format->formatId == CB_FORMAT_JPEG)
+		else if (format->formatId == CB_FORMAT_JPEG)
 		{
 			GdkAtom atom = gdk_atom_intern("image/jpeg", TRUE);
 			gtk_target_list_add(list, atom, 0, CB_FORMAT_JPEG);
 		}
-		if (format->formatId == CB_FORMAT_PNG)
+		else if (format->formatId == CB_FORMAT_PNG)
 		{
 			GdkAtom atom = gdk_atom_intern("image/png", TRUE);
 			gtk_target_list_add(list, atom, 0, CB_FORMAT_PNG);
 		}
-		if (format->formatId == CB_FORMAT_HTML)
+		else if (format->formatId == CB_FORMAT_HTML)
 		{
 			GdkAtom atom = gdk_atom_intern("text/html", TRUE);
 			gtk_target_list_add(list, atom, 0, CB_FORMAT_HTML);
@@ -400,7 +401,6 @@ static int remmina_rdp_cliprdr_server_format_list_response(CliprdrClientContext*
 
 static int remmina_rdp_cliprdr_server_format_data_request(CliprdrClientContext* context, CLIPRDR_FORMAT_DATA_REQUEST* formatDataRequest)
 {
-// void remmina_rdp_cliprdr_process_data_request(RemminaProtocolWidget* gp, RDP_CB_DATA_REQUEST_EVENT* event)
 
 	RemminaPluginRdpUiObject* ui;
 	RemminaProtocolWidget* gp;
@@ -421,8 +421,6 @@ static int remmina_rdp_cliprdr_server_format_data_request(CliprdrClientContext* 
 
 static int remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext* context, CLIPRDR_FORMAT_DATA_RESPONSE* formatDataResponse)
 {
-	// void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB_DATA_RESPONSE_EVENT* event)
-
 	UINT8* data;
 	size_t size;
 	rfContext* rfi;
@@ -430,6 +428,7 @@ static int remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext*
 	rfClipboard* clipboard;
 	GdkPixbufLoader *pixbuf;
 	gpointer output = NULL;
+	RemminaPluginRdpUiObject *ui;
 
 	clipboard = (rfClipboard*)context->custom;
 	gp = clipboard->rfi->protocol_widget;
@@ -438,23 +437,29 @@ static int remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext*
 	data = formatDataResponse->requestedFormatData;
 	size = formatDataResponse->dataLen;
 
+	// formatDataResponse->requestedFormatData is allocated
+	//  by freerdp and freed after returning from this callback function.
+	//  So we must make a copy if we need to preserve it
+
 	if (size > 0)
 	{
 		switch (rfi->clipboard.format)
 		{
 			case CF_UNICODETEXT:
 			{
-				size = ConvertFromUnicode(CP_UTF8, 0, (WCHAR*)data, size / 2, (CHAR**)&data, 0, NULL, NULL);
-				crlf2lf(data, &size);
-				output = data;
+				size = ConvertFromUnicode(CP_UTF8, 0, (WCHAR*)data, size / 2, (CHAR**)&output, 0, NULL, NULL);
+				crlf2lf(output, &size);
 				break;
 			}
 
 			case CF_TEXT:
 			case CB_FORMAT_HTML:
 			{
-				crlf2lf(data, &size);
-				output = data;
+				output = (gpointer)calloc(1, size + 1);
+				if (output) {
+					memcpy(output, data, size);
+					crlf2lf(output, &size);
+				}
 				break;
 			}
 
@@ -497,11 +502,13 @@ static int remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext*
 				pixbuf = gdk_pixbuf_loader_new();
 				perr = NULL;
 				if ( !gdk_pixbuf_loader_write(pixbuf, data, size, &perr) ) {
-						g_print("rdp_cliprdr: gdk_pixbuf_loader_write() returned error %s\n", perr->message);
-				} else {
+						remmina_plugin_service->log_printf("[RDP] rdp_cliprdr: gdk_pixbuf_loader_write() returned error %s\n", perr->message);
+				}
+				else
+				{
 						if ( !gdk_pixbuf_loader_close(pixbuf, &perr) ) {
 								perr = NULL;
-								g_print("rdp_cliprdr: gdk_pixbuf_loader_close() returned error %s\n", perr->message);
+								remmina_plugin_service->log_printf("[RDP] rdp_cliprdr: gdk_pixbuf_loader_close() returned error %s\n", perr->message);
 						}
 						Stream_Free(s, TRUE);
 						output = g_object_ref(gdk_pixbuf_loader_get_pixbuf(pixbuf));
@@ -522,7 +529,29 @@ static int remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext*
 			}
 		}
 	}
-	g_async_queue_push(rfi->clipboard.clipboard_queue, output);
+
+	pthread_mutex_lock(&clipboard->transfer_clip_mutex);
+	pthread_cond_signal(&clipboard->transfer_clip_cond);
+	if ( clipboard->srv_clip_data_wait == SCDW_BUSY_WAIT ) {
+		clipboard->srv_data = output;
+	}
+	else
+	{
+		// Clipboard data arrived from server when we are not busywaiting.
+		// Just put it on the local clipboard
+
+		ui = g_new0(RemminaPluginRdpUiObject, 1);
+		ui->type = REMMINA_RDP_UI_CLIPBOARD;
+		ui->clipboard.clipboard = clipboard;
+		ui->clipboard.type = REMMINA_RDP_UI_CLIPBOARD_SET_CONTENT;
+		ui->clipboard.data = output;
+		ui->clipboard.format = clipboard->format;
+		rf_queue_ui(gp, ui);
+
+		clipboard->srv_clip_data_wait = SCDW_NONE;
+
+	}
+	pthread_mutex_unlock(&clipboard->transfer_clip_mutex);
 
 	return 1;
 }
@@ -533,43 +562,75 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionDa
 	 * We ask to the server the data we need */
 
 	GdkAtom target;
-	gpointer data;
 	CLIPRDR_FORMAT_DATA_REQUEST request;
 	rfClipboard* clipboard;
 	rfContext* rfi;
+	struct timespec to;
+	struct timeval tv;
+	int rc;
+
 
 	rfi = GET_DATA(gp);
 	clipboard = &(rfi->clipboard);
 
+	if ( clipboard->srv_clip_data_wait != SCDW_NONE ) {
+		remmina_plugin_service->log_printf("[RDP] Cannot paste now, I'm transferring clipboard data from server. Try again later\n");
+		return;
+	}
+
+
 	target = gtk_selection_data_get_target(selection_data);
 	// clipboard->format = remmina_rdp_cliprdr_get_format_from_gdkatom(target);
 	clipboard->format = info;
-	clipboard->clipboard_queue = g_async_queue_new();
 
-	/* Request Clipboard data of the server */
+
+	/* Request Clipboard content from the server */
 	ZeroMemory(&request, sizeof(CLIPRDR_FORMAT_DATA_REQUEST));
 	request.requestedFormatId = clipboard->format;
 	request.msgFlags = CB_RESPONSE_OK;
 	request.msgType = CB_FORMAT_DATA_REQUEST;
 
+
+	pthread_mutex_lock(&clipboard->transfer_clip_mutex);
+
+	clipboard->srv_clip_data_wait = SCDW_BUSY_WAIT;
 	clipboard->context->ClientFormatDataRequest(clipboard->context, &request);
 
-	data = g_async_queue_timeout_pop(clipboard->clipboard_queue, 3000000);
-	if (data != NULL)
-	{
-		if (info == CB_FORMAT_PNG || info == CF_DIB || info == CF_DIBV5 || info == CB_FORMAT_JPEG)
+	/* Busy wait clibpoard data for CLIPBOARD_TRANSFER_WAIT_TIME seconds */
+	gettimeofday(&tv, NULL);
+	to.tv_sec = tv.tv_sec + CLIPBOARD_TRANSFER_WAIT_TIME;
+	to.tv_nsec = tv.tv_usec * 1000;
+	rc = pthread_cond_timedwait(&clipboard->transfer_clip_cond,&clipboard->transfer_clip_mutex, &to);
+
+	if ( rc == 0 ) {
+		/* Data has arrived without timeout */
+		if (clipboard->srv_data != NULL)
 		{
-			gtk_selection_data_set_pixbuf(selection_data, data);
-			g_object_unref(data);
+			if (info == CB_FORMAT_PNG || info == CF_DIB || info == CF_DIBV5 || info == CB_FORMAT_JPEG)
+			{
+				gtk_selection_data_set_pixbuf(selection_data, clipboard->srv_data);
+				g_object_unref(clipboard->srv_data);
+			}
+			else
+			{
+				gtk_selection_data_set_text(selection_data, clipboard->srv_data, -1);
+				free(clipboard->srv_data);
+			}
 		}
-		else
-		{
-			gtk_selection_data_set_text(selection_data, data, -1);
+		clipboard->srv_clip_data_wait = SCDW_NONE;
+	} else {
+		clipboard->srv_clip_data_wait = SCDW_ASYNCWAIT;
+		if ( rc == ETIMEDOUT ) {
+			remmina_plugin_service->log_printf("[RDP] Clipboard data has not been transfered from the server in %d seconds. Try to paste later.\n",
+				CLIPBOARD_TRANSFER_WAIT_TIME);
+		}
+		else {
+			remmina_plugin_service->log_printf("[RDP] internal error: pthread_cond_timedwait() returned %d\n",rc);
+			clipboard->srv_clip_data_wait = SCDW_NONE;
 		}
 	}
+	pthread_mutex_unlock(&clipboard->transfer_clip_mutex);
 
-	g_async_queue_unref(clipboard->clipboard_queue);
-	clipboard->clipboard_queue = NULL;
 }
 
 void remmina_rdp_cliprdr_empty_clipboard(GtkClipboard *gtkClipboard, rfClipboard *clipboard)
@@ -775,6 +836,24 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 
 	remmina_rdp_cliprdr_send_data_response(clipboard, outbuf, size);
 }
+void remmina_rdp_cliprdr_set_clipboard_content(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+{
+	GtkClipboard* gtkClipboard;
+	rfContext* rfi = GET_DATA(gp);
+	rfClipboard* clipboard;
+	clipboard = ui->clipboard.clipboard;
+
+	gtkClipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);
+	if (ui->clipboard.format == CB_FORMAT_PNG || ui->clipboard.format == CF_DIB || ui->clipboard.format == CF_DIBV5 || ui->clipboard.format == CB_FORMAT_JPEG) {
+		gtk_clipboard_set_image( gtkClipboard, ui->clipboard.data );
+		g_object_unref(ui->clipboard.data);
+	}
+	else {
+		gtk_clipboard_set_text( gtkClipboard, ui->clipboard.data, -1 );
+		free(ui->clipboard.data);
+	}
+
+}
 
 void remmina_rdp_cliprdr_set_clipboard_data(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
@@ -817,6 +896,11 @@ void remmina_rdp_event_process_clipboard(RemminaProtocolWidget* gp, RemminaPlugi
 		case REMMINA_RDP_UI_CLIPBOARD_SET_DATA:
 			remmina_rdp_cliprdr_set_clipboard_data(gp, ui);
 			break;
+
+		case REMMINA_RDP_UI_CLIPBOARD_SET_CONTENT:
+			remmina_rdp_cliprdr_set_clipboard_content(gp, ui);
+			break;
+
 	}
 }
 
@@ -839,6 +923,9 @@ void remmina_rdp_cliprdr_init(rfContext* rfi, CliprdrClientContext* cliprdr)
 	cliprdr->custom = (void*)clipboard;
 
 	clipboard->context = cliprdr;
+	pthread_mutex_init(&clipboard->transfer_clip_mutex, NULL);
+	pthread_cond_init(&clipboard->transfer_clip_cond,NULL);
+	clipboard->srv_clip_data_wait = SCDW_NONE;
 
 	cliprdr->MonitorReady = remmina_rdp_cliprdr_monitor_ready;
 	cliprdr->ServerCapabilities = remmina_rdp_cliprdr_server_capabilities;
