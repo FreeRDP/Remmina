@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -39,6 +39,75 @@
 #include <freerdp/utils/event.h>
 #include <freerdp/channels/channels.h>
 #include <freerdp/client/cliprdr.h>
+
+#pragma pack(push,1)
+typedef unsigned int wDWORD;
+typedef unsigned short wWORD;
+typedef int wLONG;
+typedef unsigned char wBYTE;
+typedef wLONG FXPT2DOT30;
+typedef struct tagCIEXYZ
+{
+        FXPT2DOT30 ciexyzX;
+        FXPT2DOT30 ciexyzY;
+        FXPT2DOT30 ciexyzZ;
+} CIEXYZ;
+
+typedef struct tagICEXYZTRIPLE
+{
+        CIEXYZ ciexyzRed;
+        CIEXYZ ciexyzGreen;
+        CIEXYZ ciexyzBlue;
+} CIEXYZTRIPLE;
+typedef struct
+{
+        wDWORD bV5Size;
+        wLONG bV5Width;
+        wLONG bV5Height;
+        wWORD bV5Planes;
+        wWORD bV5BitCount;
+        wDWORD bV5Compression;
+        wDWORD bV5SizeImage;
+        wLONG bV5XPelsPerMeter;
+        wLONG bV5YPelsPerMeter;
+        wDWORD bV5ClrUsed;
+        wDWORD bV5ClrImportant;
+        wDWORD bV5RedMask;
+        wDWORD bV5GreenMask;
+        wDWORD bV5BlueMask;
+        wDWORD bV5AlphaMask;
+        wDWORD bV5CSType;
+        CIEXYZTRIPLE bV5Endpoints;
+        wDWORD bV5GammaRed;
+        wDWORD bV5GammaGreen;
+        wDWORD bV5GammaBlue;
+        wDWORD bV5Intent;
+        wDWORD bV5ProfileData;
+        wDWORD bV5ProfileSize;
+        wDWORD bV5Reserved;
+} BITMAPV5HEADER;
+typedef struct tagRGBQUAD
+{
+        wBYTE rgbBlue;
+        wBYTE rgbGreen;
+        wBYTE rgbRed;
+        wBYTE rgbReserved;
+} RGBQUAD;
+typedef struct tagBITMAPINFOHEADER
+{
+        wDWORD biSize;
+        wLONG biWidth;
+        wLONG biHeight;
+        wWORD biPlanes;
+        wWORD biBitCount;
+        wDWORD biCompression;
+        wDWORD biSizeImage;
+        wLONG biXPelsPerMeter;
+        wLONG biYPelsPerMeter;
+        wDWORD biClrUsed;
+        wDWORD biClrImportant;
+} BITMAPINFOHEADER;
+#pragma pack(pop)
 
 
 UINT32 remmina_rdp_cliprdr_get_format_from_gdkatom(GdkAtom atom)
@@ -186,11 +255,14 @@ void remmina_rdp_cliprdr_process_format_list(RemminaProtocolWidget* gp, RDP_CB_F
 			GdkAtom atom = gdk_atom_intern("image/jpeg", TRUE);
 			gtk_target_list_add(list, atom, 0, CB_FORMAT_JPEG);
 		}
+		/* it seems that in freerdp 1.1 PNG images are not correctly
+		 * received from server. So just disable it.
 		if (event->formats[i] == CB_FORMAT_PNG)
 		{
 			GdkAtom atom = gdk_atom_intern("image/png", TRUE);
 			gtk_target_list_add(list, atom, 0, CB_FORMAT_PNG);
 		}
+		*/
 	}
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
@@ -228,33 +300,46 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 		{
 			case CB_FORMAT_UNICODETEXT:
 			{
-				size = ConvertFromUnicode(CP_UTF8, 0, (WCHAR*)data, size / 2, (CHAR**)&data, 0, NULL, NULL);
-				crlf2lf(data, &size);
-				output = data;
+				size = ConvertFromUnicode(CP_UTF8, 0, (WCHAR*)data, size / 2, (CHAR**)&output, 0, NULL, NULL);
+				crlf2lf(output, &size);
 				break;
 			}
 
 			case CB_FORMAT_TEXT:
 			case CB_FORMAT_HTML:
 			{
-				crlf2lf(data, &size);
-				output = data;
+				output = (gpointer)calloc(1, size + 1);
+				if (output) {
+					memcpy(output, data, size);
+					crlf2lf(output, &size);
+				}
 				break;
 			}
 
 			case CB_FORMAT_DIB:
 			{
 				wStream* s;
-				UINT16 bpp;
 				UINT32 offset;
-				UINT32 ncolors;
+				GError *perr;
+				BITMAPINFOHEADER* pbi;
+				BITMAPV5HEADER* pbi5;
 
-				s = Stream_New(data, size);
-				Stream_Seek(s, 14);
-				Stream_Read_UINT16(s, bpp);
-				Stream_Read_UINT32(s, ncolors);
-				offset = 14 + 40 + (bpp <= 8 ? (ncolors == 0 ? (1 << bpp) : ncolors) * 4 : 0);
-				Stream_Free(s, TRUE);
+				pbi = (BITMAPINFOHEADER*)data;
+
+				// offset calculation inspired by http://downloads.poolelan.com/MSDN/MSDNLibrary6/Disk1/Samples/VC/OS/WindowsXP/GetImage/BitmapUtil.cpp
+				offset = 14 + pbi->biSize;
+				if (pbi->biClrUsed != 0)
+					offset += sizeof(RGBQUAD) * pbi->biClrUsed;
+				else if (pbi->biBitCount <= 8)
+					offset += sizeof(RGBQUAD) * (1 << pbi->biBitCount);
+				if (pbi->biSize == sizeof(BITMAPINFOHEADER)) {
+					if (pbi->biCompression == 3) // BI_BITFIELDS is 3
+					offset += 12;
+				} else if (pbi->biSize >= sizeof(BITMAPV5HEADER)) {
+					pbi5 = (BITMAPV5HEADER*)pbi;
+					if (pbi5->bV5ProfileData <= offset)
+						offset += pbi5->bV5ProfileSize;
+				}
 
 				s = Stream_New(NULL, 14 + size);
 				Stream_Write_UINT8(s, 'B');
@@ -263,15 +348,23 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 				Stream_Write_UINT32(s, 0);
 				Stream_Write_UINT32(s, offset);
 				Stream_Write(s, data, size);
-
 				data = Stream_Buffer(s);
 				size = Stream_Length(s);
-
 				pixbuf = gdk_pixbuf_loader_new();
-				gdk_pixbuf_loader_write(pixbuf, data, size, NULL);
-				gdk_pixbuf_loader_close(pixbuf, NULL);
-				Stream_Free(s, TRUE);
-				output = g_object_ref(gdk_pixbuf_loader_get_pixbuf(pixbuf));
+				perr = NULL;
+
+				if ( !gdk_pixbuf_loader_write(pixbuf, data, size, &perr) ) {
+					remmina_plugin_service->log_printf("[RDP] rdp_cliprdr: gdk_pixbuf_loader_write() returned error %s\n", perr->message);
+				}
+				else
+				{
+					if ( !gdk_pixbuf_loader_close(pixbuf, &perr) ) {
+						perr = NULL;
+						remmina_plugin_service->log_printf("[RDP] rdp_cliprdr: gdk_pixbuf_loader_close() returned error %s\n", perr->message);
+					}
+					Stream_Free(s, TRUE);
+					output = g_object_ref(gdk_pixbuf_loader_get_pixbuf(pixbuf));
+				}
 				g_object_unref(pixbuf);
 				break;
 			}
@@ -288,7 +381,11 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 			}
 		}
 	}
-	g_async_queue_push(rfi->clipboard_queue, output);
+
+	if (rfi->clipboard_queue) {
+		g_async_queue_push(rfi->clipboard_queue, output);
+	}
+
 }
 
 void remmina_rdp_channel_cliprdr_process(RemminaProtocolWidget* gp, wMessage* event)
@@ -319,6 +416,10 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *clipboard, GtkSelectionData 
 	gpointer data;
 	RDP_CB_DATA_REQUEST_EVENT* event;
 	rfContext* rfi = GET_DATA(gp);
+	GAsyncQueue* q;
+
+	if (rfi->clipboard_queue != NULL)
+		return;
 
 	target = gtk_selection_data_get_target(selection_data);
 	rfi->format = remmina_rdp_cliprdr_get_format_from_gdkatom(target);
@@ -330,7 +431,7 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *clipboard, GtkSelectionData 
 	event->format = rfi->format;
 	freerdp_channels_send_event(rfi->instance->context->channels, (wMessage*) event);
 
-	data = g_async_queue_timeout_pop(rfi->clipboard_queue, 1000000);
+	data = g_async_queue_timeout_pop(rfi->clipboard_queue, 2000000);
 	if (data != NULL)
 	{
 		if (info == CB_FORMAT_PNG || info == CB_FORMAT_DIB || info == CB_FORMAT_JPEG)
@@ -341,8 +442,14 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *clipboard, GtkSelectionData 
 		else
 		{
 			gtk_selection_data_set_text(selection_data, data, -1);
+			free(data);
 		}
 	}
+
+	q = rfi->clipboard_queue;
+	rfi->clipboard_queue = NULL;
+	g_async_queue_unref(q);
+
 }
 
 void remmina_rdp_cliprdr_empty_clipboard(GtkClipboard *clipboard, RemminaProtocolWidget* gp)
@@ -384,7 +491,7 @@ int remmina_rdp_cliprdr_send_format_list(RemminaProtocolWidget* gp, RemminaPlugi
 	}
 	else
 		event->num_formats = 0;
-	
+
 
 	return freerdp_channels_send_event(rfi->instance->context->channels, (wMessage*) event);
 }
