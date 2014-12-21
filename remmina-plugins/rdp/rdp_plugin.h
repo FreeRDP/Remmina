@@ -77,7 +77,11 @@ struct rf_clipboard
 	UINT32 format;
 	gulong clipboard_handler;
 
-	GAsyncQueue *clipboard_queue;
+
+	pthread_mutex_t transfer_clip_mutex;
+	pthread_cond_t transfer_clip_cond;
+	enum  { SCDW_NONE, SCDW_BUSY_WAIT, SCDW_ASYNCWAIT } srv_clip_data_wait ;
+	gpointer srv_data;
 
 };
 typedef struct rf_clipboard rfClipboard;
@@ -211,7 +215,8 @@ typedef enum
 	REMMINA_RDP_UI_CLIPBOARD_MONITORREADY,
 	REMMINA_RDP_UI_CLIPBOARD_FORMATLIST,
 	REMMINA_RDP_UI_CLIPBOARD_GET_DATA,
-	REMMINA_RDP_UI_CLIPBOARD_SET_DATA
+	REMMINA_RDP_UI_CLIPBOARD_SET_DATA,
+	REMMINA_RDP_UI_CLIPBOARD_SET_CONTENT
 } RemminaPluginRdpUiClipboardType;
 
 typedef enum
@@ -267,7 +272,7 @@ struct remmina_plugin_rdp_ui_object
 			GtkTargetList* targetlist;
 			UINT32 format;
 			rfClipboard* clipboard;
-
+			gpointer data;
 		} clipboard;
 		struct {
 			RemminaPluginRdpUiEeventType type;
