@@ -201,7 +201,7 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	gtk_widget_set_hexpand(frame, TRUE);
 	gtk_widget_set_vexpand(frame, TRUE);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_FRAME(frame), 80);
+	gtk_widget_set_margin_end (GTK_WIDGET(frame), 80);
 #else
 	gtk_widget_set_margin_right (frame, 80);
 #endif
