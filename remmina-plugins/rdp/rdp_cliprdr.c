@@ -506,12 +506,12 @@ static int remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext*
 				}
 				else
 				{
-						if ( !gdk_pixbuf_loader_close(pixbuf, &perr) ) {
-								perr = NULL;
-								remmina_plugin_service->log_printf("[RDP] rdp_cliprdr: gdk_pixbuf_loader_close() returned error %s\n", perr->message);
-						}
-						Stream_Free(s, TRUE);
-						output = g_object_ref(gdk_pixbuf_loader_get_pixbuf(pixbuf));
+					if ( !gdk_pixbuf_loader_close(pixbuf, &perr) ) {
+						remmina_plugin_service->log_printf("[RDP] rdp_cliprdr: gdk_pixbuf_loader_close() returned error %s\n", perr->message);
+						perr = NULL;
+					}
+					Stream_Free(s, TRUE);
+					output = g_object_ref(gdk_pixbuf_loader_get_pixbuf(pixbuf));
 				}
 				g_object_unref(pixbuf);
 				break;
