@@ -491,8 +491,6 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 				scancode = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(event->hardware_keycode);
 				rdp_event.key_event.key_code = scancode & 0xFF;
 				rdp_event.key_event.extended = scancode & 0x100;
-				remmina_plugin_service->log_printf("[RDP]keyval=%02X keycode=%02X scancode=%02X extended=%s\n",
-						event->keyval, event->hardware_keycode, rdp_event.key_event.key_code, rdp_event.key_event.extended ? "true" : "false");
 			}
 			else
 			{
@@ -503,8 +501,6 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 				scancode = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(cooked_keycode);
 				rdp_event.key_event.key_code = scancode & 0xFF;
 				rdp_event.key_event.extended = scancode & 0x100;
-				remmina_plugin_service->log_printf("[RDP]keyval=%02X raw_keycode=%02X cooked_keycode=%02X scancode=%02X extended=%s\n",
-						event->keyval, event->hardware_keycode, cooked_keycode, rdp_event.key_event.key_code, rdp_event.key_event.extended ? "true" : "false");
 			}
 
 			if (rdp_event.key_event.key_code)
