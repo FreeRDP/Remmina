@@ -359,8 +359,8 @@ void remmina_rdp_cliprdr_process_data_response(RemminaProtocolWidget* gp, RDP_CB
 				else
 				{
 					if ( !gdk_pixbuf_loader_close(pixbuf, &perr) ) {
-						perr = NULL;
 						remmina_plugin_service->log_printf("[RDP] rdp_cliprdr: gdk_pixbuf_loader_close() returned error %s\n", perr->message);
+						perr = NULL;
 					}
 					Stream_Free(s, TRUE);
 					output = g_object_ref(gdk_pixbuf_loader_get_pixbuf(pixbuf));
