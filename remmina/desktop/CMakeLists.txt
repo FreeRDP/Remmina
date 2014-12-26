@@ -53,3 +53,4 @@ install(FILES ${ICON48_DATA} DESTINATION ${ICON48_DIR})
 install(FILES ${ICONSVG_DATA} DESTINATION ${ICONSVG_DIR})
 
 install(FILES remmina.desktop DESTINATION "${REMMINA_DATADIR}/applications")
+install(FILES remmina.appdata.xml DESTINATION "${REMMINA_DATADIR}/appdata")
