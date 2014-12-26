@@ -74,15 +74,15 @@ static gchar *remmina_option_icon;
 static GOptionEntry remmina_options[] =
 {
 { "about", 'a', 0, G_OPTION_ARG_NONE, &remmina_option_about, "Show about dialog", NULL },
-{ "connect", 'c', 0, G_OPTION_ARG_FILENAME, &remmina_option_connect, "Connect to a .remmina file F", "F" },
-{ "edit", 'e', 0, G_OPTION_ARG_FILENAME, &remmina_option_edit, "Edit a .remmina file F", "F" },
+{ "connect", 'c', 0, G_OPTION_ARG_FILENAME, &remmina_option_connect, "Connect to a .remmina file", "FILE" },
+{ "edit", 'e', 0, G_OPTION_ARG_FILENAME, &remmina_option_edit, "Edit a .remmina file", "FILE" },
 { "help", '?', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, &remmina_option_help, NULL, NULL },
 { "new", 'n', 0, G_OPTION_ARG_NONE, &remmina_option_new, "Create a new connection profile", NULL },
-{ "pref", 'p', 0, G_OPTION_ARG_STRING, &remmina_option_pref, "Show preference dialog", NULL },
-{ "plugin", 'x', 0, G_OPTION_ARG_STRING, &remmina_option_plugin, "Execute plugin P", "P" },
+{ "pref", 'p', 0, G_OPTION_ARG_STRING, &remmina_option_pref, "Show preferences dialog page", "PAGENR" },
+{ "plugin", 'x', 0, G_OPTION_ARG_STRING, &remmina_option_plugin, "Execute the plugin", "PLUGIN" },
 { "quit", 'q', 0, G_OPTION_ARG_NONE, &remmina_option_quit, "Quit the application", NULL },
-{ "server", 's', 0, G_OPTION_ARG_STRING, &remmina_option_server, "Use default server name S", "S" },
-{ "protocol", 't', 0, G_OPTION_ARG_STRING, &remmina_option_protocol, "Use default protocol T", "T" },
+{ "server", 's', 0, G_OPTION_ARG_STRING, &remmina_option_server, "Use default server name", "SERVER" },
+{ "protocol", 't', 0, G_OPTION_ARG_STRING, &remmina_option_protocol, "Use default protocol", "PROTOCOL" },
 { "icon", 'i', 0, G_OPTION_ARG_NONE, &remmina_option_icon, "Start as tray icon", NULL },
 { NULL } };
 
