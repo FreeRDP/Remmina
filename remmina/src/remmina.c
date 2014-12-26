@@ -206,9 +206,42 @@ static void remmina_on_startup(GApplication *app)
 		REMMINA_DATADIR G_DIR_SEPARATOR_S "icons");
 }
 
+static gboolean remmina_on_local_cmdline (GApplication *app, gchar ***arguments, gint *exit_status)
+{
+	/* Partially unimplemented local command line only used to append the
+	 * command line arguments to the help text and to parse the --help/-h
+	 * arguments locally instead of forwarding them to the remote instance */
+	GOptionContext *context;
+	gint i = 0;
+	gchar **argv;
+
+	context = g_option_context_new("- The GTK+ Remote Desktop Client");
+	g_option_context_add_group(context, gtk_get_option_group(FALSE));
+	g_option_context_set_help_enabled(context, TRUE);
+	g_option_context_add_main_entries(context, remmina_options, GETTEXT_PACKAGE);
+	g_option_context_set_translation_domain(context, GETTEXT_PACKAGE);
+	*exit_status = 0;
+
+	// Parse the command line arguments for --help/-h
+	argv = *arguments;
+	for (i = 0; argv[i] != NULL; i++)
+	{
+		if ((g_strcmp0(argv[i], "--help") == 0 || g_strcmp0(argv[i], "-h") == 0)) {
+			g_print("%s", g_option_context_get_help(context, TRUE, NULL));
+			*exit_status = EXIT_FAILURE;
+		}
+	}
+	g_option_context_free(context);
+	// Exit from the local instance whenever the exit status is not zero
+	if (*exit_status != 0)
+		exit(*exit_status);
+	return FALSE;
+}
+
 int main(int argc, char* argv[])
 {
-	GApplication* app;
+	GApplication *app;
+	GApplicationClass *app_class;
 	int status;
 
 	remmina_masterthread_exec_save_main_thread_id();
@@ -227,6 +260,8 @@ int main(int argc, char* argv[])
 	gtk_init(&argc, &argv);
 
 	app = g_application_new("org.Remmina", G_APPLICATION_HANDLES_COMMAND_LINE);
+	app_class = G_APPLICATION_CLASS(G_OBJECT_GET_CLASS (app));
+	app_class->local_command_line = remmina_on_local_cmdline;
 	g_signal_connect(app, "startup", G_CALLBACK(remmina_on_startup), NULL);
 	g_signal_connect(app, "command-line", G_CALLBACK(remmina_on_command_line), NULL);
 	g_application_set_inactivity_timeout(app, 10000);
@@ -242,4 +277,3 @@ int main(int argc, char* argv[])
 
 	return status;
 }
-
