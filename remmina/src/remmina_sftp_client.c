@@ -975,7 +975,7 @@ remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path
 			GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
 			_("Resume"), GTK_RESPONSE_APPLY,
 			_("Overwrite"), GTK_RESPONSE_ACCEPT,
-			_("Cancel"), GTK_RESPONSE_CANCEL,
+			_("_Cancel"), GTK_RESPONSE_CANCEL,
 			NULL);
 	gtk_container_set_border_width (GTK_CONTAINER (dialog), 4);
 
