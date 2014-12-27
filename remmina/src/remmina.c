@@ -226,7 +226,8 @@ static gboolean remmina_on_local_cmdline (GApplication *app, gchar ***arguments,
 	argv = *arguments;
 	for (i = 0; argv[i] != NULL; i++)
 	{
-		if ((g_strcmp0(argv[i], "--help") == 0 || g_strcmp0(argv[i], "-h") == 0)) {
+		if ((g_strcmp0(argv[i], "--help") == 0 || g_strcmp0(argv[i], "-h") == 0))
+		{
 			g_print("%s", g_option_context_get_help(context, TRUE, NULL));
 			*exit_status = EXIT_FAILURE;
 		}
