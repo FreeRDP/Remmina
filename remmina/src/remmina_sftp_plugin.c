@@ -46,6 +46,9 @@
 #include "remmina_sftp_plugin.h"
 
 #define REMMINA_PLUGIN_SFTP_FEATURE_PREF_SHOW_HIDDEN 1
+#define REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL 2
+
+#define REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY "overwrite_all"
 
 typedef struct _RemminaPluginSftpData
 {
@@ -169,6 +172,10 @@ remmina_plugin_sftp_init (RemminaProtocolWidget *gp)
 	remmina_ftp_client_set_show_hidden (REMMINA_FTP_CLIENT (gpdata->client),
 			remmina_plugin_service->file_get_int (remminafile, "showhidden", FALSE));
 
+	remmina_ftp_client_set_overwrite_status (REMMINA_FTP_CLIENT (gpdata->client),
+			remmina_plugin_service->file_get_int (remminafile, 
+			REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE));
+
 	remmina_plugin_service->protocol_plugin_register_hostkey (gp, gpdata->client);
 
 	g_signal_connect(G_OBJECT(gpdata->client),
@@ -216,6 +223,11 @@ remmina_plugin_sftp_close_connection (RemminaProtocolWidget *gp)
 
 	remmina_ftp_client_save_state (REMMINA_FTP_CLIENT (gpdata->client), remminafile);
 	remmina_plugin_service->protocol_plugin_emit_signal (gp, "disconnect");
+	/* The session preference overwrite_all is always saved to FALSE in order
+	 * to avoid unwanted overwriting.
+	 * If we'd change idea just remove the next line to save the preference. */
+	remmina_file_set_int(remminafile, 
+		REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE);
 	return FALSE;
 }
 
@@ -249,6 +261,11 @@ remmina_plugin_sftp_call_feature (RemminaProtocolWidget *gp, const RemminaProtoc
 		remmina_ftp_client_set_show_hidden (REMMINA_FTP_CLIENT (gpdata->client),
 				remmina_plugin_service->file_get_int (remminafile, "showhidden", FALSE));
 		return;
+		case REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL:
+		remmina_ftp_client_set_overwrite_status (REMMINA_FTP_CLIENT (gpdata->client),
+				remmina_plugin_service->file_get_int (remminafile, 
+				REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE));
+		return;
 	}
 }
 
@@ -256,6 +273,9 @@ static const RemminaProtocolFeature remmina_plugin_sftp_features[] =
 {
 	{	REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SFTP_FEATURE_PREF_SHOW_HIDDEN,
 		GINT_TO_POINTER (REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "showhidden", N_("Show Hidden Files")},
+	{	REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL,
+		GINT_TO_POINTER (REMMINA_PROTOCOL_FEATURE_PREF_CHECK), 
+		REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, N_("Overwrite all")},
 	{	REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL}
 };
 
