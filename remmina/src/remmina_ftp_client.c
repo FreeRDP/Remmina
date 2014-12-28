@@ -145,7 +145,6 @@ struct _RemminaFTPClientPriv
 
 	GtkTreeModel *task_list_model;
 	GtkWidget *task_list_view;
-	GtkWidget *infobar_overwrite_all;
 
 	gchar *current_directory;
 	gchar *working_directory;
@@ -846,20 +845,10 @@ static gboolean remmina_ftp_client_filter_visible_func(GtkTreeModel *model, GtkT
 	return result;
 }
 
-/* Callback for response on the infobar to cancel the overwrite_all status */
-static void remmina_ftp_client_infobar_overwrite_on_response(GtkWidget *widget, gint response_id, RemminaFTPClient *client)
-{
-	remmina_ftp_client_set_overwrite_status(client, FALSE);
-}
-
 /* Set the overwrite_all status */
 void remmina_ftp_client_set_overwrite_status(RemminaFTPClient *client, gboolean status)
 {
 	client->priv->overwrite_all = status;
-	if (client->priv->overwrite_all)
-		gtk_widget_show(client->priv->infobar_overwrite_all);
-	else
-		gtk_widget_hide(client->priv->infobar_overwrite_all);
 }
 
 /* Get the overwrite_all status */
@@ -878,9 +867,6 @@ static void remmina_ftp_client_init(RemminaFTPClient *client)
 	GtkCellRenderer *renderer;
 	GtkTreeViewColumn *column;
 	GtkWidget *vbox;
-	GtkWidget *vbox_infobar;
-	GtkWidget *infobar;
-	GtkWidget *infobar_label;
 
 	priv = g_new0(RemminaFTPClientPriv, 1);
 	client->priv = priv;
@@ -987,26 +973,11 @@ static void remmina_ftp_client_init(RemminaFTPClient *client)
 			GTK_SORT_ASCENDING);
 	gtk_tree_view_set_model(GTK_TREE_VIEW(priv->file_list_view), priv->file_list_sort);
 
-  /* Infobar for overwrite_all */
-	infobar = gtk_info_bar_new_with_buttons(_("_Cancel"), GTK_RESPONSE_CANCEL, NULL);
-	g_signal_connect (infobar, "response", G_CALLBACK (remmina_ftp_client_infobar_overwrite_on_response), client);
-	gtk_info_bar_set_message_type (GTK_INFO_BAR (infobar), GTK_MESSAGE_INFO);
-	infobar_label = gtk_label_new(_("All the existing files will be automatically overwritten"));
-	gtk_widget_show(infobar_label);
-	gtk_box_pack_start(GTK_BOX (gtk_info_bar_get_content_area(GTK_INFO_BAR(infobar))), infobar_label, FALSE, FALSE, 0);
-
-  /* VBox for infobar */
-  vbox_infobar = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-	gtk_widget_show(vbox_infobar);
-	gtk_box_pack_start(GTK_BOX(vbox_infobar), infobar, FALSE, TRUE, 0);
-	priv->infobar_overwrite_all = infobar;
-
 	/* Task List */
 	scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
 	gtk_widget_show(scrolledwindow);
 	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolledwindow), GTK_POLICY_AUTOMATIC, GTK_POLICY_ALWAYS);
-	gtk_box_pack_start(GTK_BOX(vbox_infobar), scrolledwindow, TRUE, TRUE, 0);
-	gtk_paned_pack2(GTK_PANED(vpaned), vbox_infobar, FALSE, TRUE);
+	gtk_paned_pack2(GTK_PANED(vpaned), scrolledwindow, FALSE, TRUE);
 
 	widget = gtk_tree_view_new();
 	gtk_widget_show(widget);
