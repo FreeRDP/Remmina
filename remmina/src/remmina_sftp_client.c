@@ -979,7 +979,6 @@ remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path
 			GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
 			_("Resume"), GTK_RESPONSE_APPLY,
 			_("Overwrite"), GTK_RESPONSE_ACCEPT,
-			_("Overwrite all"), GTK_RESPONSE_OK,
 			_("_Cancel"), GTK_RESPONSE_CANCEL,
 			NULL);
 	gtk_container_set_border_width (GTK_CONTAINER (dialog), 4);
@@ -1017,12 +1016,6 @@ remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path
 
 	response = gtk_dialog_run (GTK_DIALOG(dialog));
 	gtk_widget_destroy (dialog);
-	/* Assume accept as default response for overwrite all */
-	if (response == GTK_RESPONSE_OK)
-	{
-		remmina_ftp_client_set_overwrite_status(REMMINA_FTP_CLIENT(client), TRUE);
-		response = GTK_RESPONSE_ACCEPT;
-	}
 	return response;
 }
 
