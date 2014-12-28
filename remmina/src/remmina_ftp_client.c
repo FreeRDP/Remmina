@@ -871,8 +871,8 @@ static void remmina_ftp_client_init(RemminaFTPClient *client)
 	priv = g_new0(RemminaFTPClientPriv, 1);
 	client->priv = priv;
 	
-  /* Initialize overwrite status to FALSE */
-  client->priv->overwrite_all = FALSE;
+	/* Initialize overwrite status to FALSE */
+	client->priv->overwrite_all = FALSE;
 
 	/* Main container */
 	gtk_widget_set_vexpand(GTK_WIDGET(client), TRUE);
