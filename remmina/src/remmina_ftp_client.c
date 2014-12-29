@@ -151,6 +151,7 @@ struct _RemminaFTPClientPriv
 
 	GtkWidget *file_action_widgets[10];
 	gboolean sensitive;
+	gboolean overwrite_all;
 };
 
 static gint remmina_ftp_client_taskid = 1;
@@ -844,6 +845,18 @@ static gboolean remmina_ftp_client_filter_visible_func(GtkTreeModel *model, GtkT
 	return result;
 }
 
+/* Set the overwrite_all status */
+void remmina_ftp_client_set_overwrite_status(RemminaFTPClient *client, gboolean status)
+{
+	client->priv->overwrite_all = status;
+}
+
+/* Get the overwrite_all status */
+gboolean remmina_ftp_client_get_overwrite_status(RemminaFTPClient *client)
+{
+	return client->priv->overwrite_all;
+}
+
 static void remmina_ftp_client_init(RemminaFTPClient *client)
 {
 	RemminaFTPClientPriv *priv;
@@ -857,6 +870,9 @@ static void remmina_ftp_client_init(RemminaFTPClient *client)
 
 	priv = g_new0(RemminaFTPClientPriv, 1);
 	client->priv = priv;
+	
+	/* Initialize overwrite status to FALSE */
+	client->priv->overwrite_all = FALSE;
 
 	/* Main container */
 	gtk_widget_set_vexpand(GTK_WIDGET(client), TRUE);
