@@ -953,6 +953,10 @@ remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path
 	GtkWidget *widget;
 	const gchar *filename;
 
+	/* Always reply ACCEPT if overwrite_all was already set */
+	if (remmina_ftp_client_get_overwrite_status(REMMINA_FTP_CLIENT(client)))
+		return GTK_RESPONSE_ACCEPT;
+
 	if ( !remmina_masterthread_exec_is_main_thread() ) {
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
