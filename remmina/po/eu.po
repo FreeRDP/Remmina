@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-20 16:53+0200\n"
+"POT-Creation-Date: 2014-12-29 22:34+0100\n"
 "PO-Revision-Date: 2014-03-14 20:21+0000\n"
 "Last-Translator: Ibai Oihanguren Sala <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
@@ -19,25 +19,173 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 "X-Generator: Launchpad (build 16976)\n"
 
-#: remmina/desktop/remmina.desktop.in.h:1
-msgid "Remmina"
-msgstr "Remmina"
+#: remmina/src/remmina_exec.c:125
+#, c-format
+msgid "Plugin %s is not registered."
+msgstr "%s plugina ez dago erregistratuta."
 
-#: remmina/desktop/remmina.desktop.in.h:2
-msgid "Remote Desktop Client"
-msgstr "Urruneko mahaigainaren bezeroa"
+#: remmina/src/remmina_applet_menu_item.c:105
+msgid "Discovered"
+msgstr "Aurkituta"
 
-#: remmina/desktop/remmina.desktop.in.h:3
-msgid "Connect to remote desktops"
-msgstr "Konektatu urruneko mahaigainekin"
+#: remmina/src/remmina_applet_menu_item.c:110
+msgid "New Connection"
+msgstr "Konexio berria"
 
-#: remmina/desktop/remmina.desktop.in.h:4
-msgid "Create a New Connection Profile"
-msgstr "Sortu konexio profil berri bat"
+#: remmina/src/remmina_main.c:464
+#, c-format
+msgid "Total %i item."
+msgid_plural "Total %i items."
+msgstr[0] "Guztira elementu %i."
+msgstr[1] "Guztira %i elementu."
 
-#: remmina/desktop/remmina.desktop.in.h:5
-msgid "Start Remmina Minimized"
-msgstr "Abiatu Remmina minimizatuta"
+#: remmina/src/remmina_main.c:535
+#, c-format
+msgid "Are you sure to delete '%s'"
+msgstr "Ziur zaude '%s' elementua ezabatu nahi duzula?"
+
+#: remmina/src/remmina_main.c:714
+#, c-format
+msgid ""
+"Unable to import:\n"
+"%s"
+msgstr ""
+"Ezin izan da inportatu:\n"
+"%s"
+
+#: remmina/src/remmina_main.c:741 remmina/src/remmina_main.c:894
+msgid "Import"
+msgstr "Inportatu"
+
+#: remmina/src/remmina_main.c:764 remmina/src/remmina_file_editor.c:1235
+msgid "_Save"
+msgstr ""
+
+#: remmina/src/remmina_main.c:774
+msgid "This protocol does not support exporting."
+msgstr "Protokolo honek ez du esportatzerik onartzen."
+
+#: remmina/src/remmina_main.c:880
+msgid "_Connection"
+msgstr "_Konexioa"
+
+#: remmina/src/remmina_main.c:881
+msgid "_Edit"
+msgstr "_Editatu"
+
+#: remmina/src/remmina_main.c:882
+msgid "_View"
+msgstr "_Ikusi"
+
+#: remmina/src/remmina_main.c:883
+msgid "_Tools"
+msgstr "_Tresnak"
+
+#: remmina/src/remmina_main.c:884
+msgid "_Help"
+msgstr "_Laguntza"
+
+#: remmina/src/remmina_main.c:886
+msgid "Create a new remote desktop file"
+msgstr "Sortu urruneko mahaigain fitxategi berri bat"
+
+#: remmina/src/remmina_main.c:889
+msgid "Open the preferences dialog"
+msgstr "Ireki hobespenen elkarrizketa-koadroa"
+
+#: remmina/src/remmina_main.c:896 remmina/src/remmina_plugin_manager.c:261
+msgid "Plugins"
+msgstr "Pluginak"
+
+#: remmina/src/remmina_main.c:898
+msgid "Homepage"
+msgstr "Webgune nagusia"
+
+#: remmina/src/remmina_main.c:900
+msgid "Online Wiki"
+msgstr "Lineako wiki-a"
+
+#: remmina/src/remmina_main.c:902
+msgid "Debug Window"
+msgstr "Arazketa-leihoa"
+
+#: remmina/src/remmina_main.c:908
+msgid "Open the connection to the selected remote desktop file"
+msgstr "Ireki konexioa hautatutako urruneko mahaigain fitxategiarekin"
+
+#: remmina/src/remmina_main.c:911
+msgid "Create a copy of the selected remote desktop file"
+msgstr "Sortu hautatutako urruneko mahaigain fitxategiaren kopia"
+
+#: remmina/src/remmina_main.c:914
+msgid "Edit the selected remote desktop file"
+msgstr "Editatu hautatutako urruneko mahaigain fitxategia"
+
+#: remmina/src/remmina_main.c:917
+msgid "Delete the selected remote desktop file"
+msgstr "Ezabatu hautatutako urruneko mahaigain fitxategia"
+
+#: remmina/src/remmina_main.c:920
+msgid "Export"
+msgstr "Esportatu"
+
+#: remmina/src/remmina_main.c:922
+msgid "External Tools"
+msgstr ""
+
+#: remmina/src/remmina_main.c:929
+msgid "Toolbar"
+msgstr "Tresna-barra"
+
+#: remmina/src/remmina_main.c:931
+msgid "Statusbar"
+msgstr "Egoera-barra"
+
+#: remmina/src/remmina_main.c:933
+msgid "Quick Search"
+msgstr "Bilaketa bizkorra"
+
+#: remmina/src/remmina_main.c:935 remmina/src/remmina_file_editor.c:1365
+msgid "Quick Connect"
+msgstr "Konexio azkarra"
+
+#: remmina/src/remmina_main.c:937
+msgid "Small Toolbar Buttons"
+msgstr "Tresna-barra botoi txikiak"
+
+#: remmina/src/remmina_main.c:942
+msgid "List View"
+msgstr "Zerrenda-ikuspegia"
+
+#: remmina/src/remmina_main.c:943
+msgid "Tree View"
+msgstr "Zuhaitz-ikuspegia"
+
+#: remmina/src/remmina_main.c:1178 remmina/src/remmina_icon.c:418
+#: remmina/src/remmina_icon.c:419
+msgid "Remmina Remote Desktop Client"
+msgstr "Remmina, urruneko mahaigainen bezeroa"
+
+#: remmina/src/remmina_main.c:1284
+msgid "Connect !"
+msgstr ""
+
+#: remmina/src/remmina_main.c:1302 remmina/src/remmina_plugin_manager.c:279
+#: remmina/src/remmina_file_editor.c:1350
+#: remmina-plugins/nx/nx_session_manager.c:199
+msgid "Name"
+msgstr "Izena"
+
+#: remmina/src/remmina_main.c:1315 remmina/src/remmina_ftp_client.c:949
+#: remmina/src/remmina_file_editor.c:1375
+msgid "Group"
+msgstr "Taldea"
+
+#: remmina/src/remmina_main.c:1322 remmina/src/remmina_protocol_widget.c:1037
+#: remmina/src/remmina_file_editor.c:360 remmina/src/remmina_file_editor.c:850
+#: remmina/src/remmina_file_editor.c:863
+msgid "Server"
+msgstr "Zerbitzaria"
 
 #: remmina/src/remmina_key_chooser.c:55
 msgid "<None>"
@@ -47,21 +195,508 @@ msgstr "<Bat ere ez>"
 msgid "Choose a new key"
 msgstr "Aukeratu tekla berri bat"
 
+#: remmina/src/remmina_key_chooser.c:81 remmina/src/remmina_init_dialog.c:82
+#: remmina/src/remmina_sftp_client.c:982 remmina/src/remmina_file_editor.c:138
+#: remmina/src/remmina_file_editor.c:321
+#: remmina/src/remmina_file_editor.c:1242
+#: remmina-plugins/nx/nx_session_manager.c:152
+msgid "_Cancel"
+msgstr ""
+
+#: remmina/src/remmina_key_chooser.c:81
+msgid "_Remove"
+msgstr ""
+
 #: remmina/src/remmina_key_chooser.c:90
 msgid "Please press the new key..."
 msgstr "Mesedez sakatu tekla berria..."
 
-#: remmina/src/remmina_scaler.c:72
-msgid "Fit window size"
-msgstr "Doitu leihoaren tamaina"
+#: remmina/src/remmina_connection_window.c:247
+#, c-format
+msgid ""
+"There are %i active connections in the current window. Are you sure to close?"
+msgstr "Uneko leihoan %i konexio aktibo daude. Ixtea nahi duzu?"
 
-#: remmina/src/remmina_scaler.c:147 remmina/src/remmina_file_editor.c:654
-msgid "Horizontal scale"
-msgstr "Eskala horizontala"
+#: remmina/src/remmina_connection_window.c:667
+msgid "Viewport fullscreen mode"
+msgstr "Pantaila osoko leihatila modua"
 
-#: remmina/src/remmina_scaler.c:158 remmina/src/remmina_file_editor.c:664
-msgid "Vertical scale"
-msgstr "Eskala bertikala"
+#: remmina/src/remmina_connection_window.c:677
+msgid "Scrolled fullscreen mode"
+msgstr "Korritutako pantaila osoa modua"
+
+#: remmina/src/remmina_connection_window.c:1250
+msgid "Resize the window to fit in remote resolution"
+msgstr "Aldatu leihoaren tamaina urruneko bereizmenera doitzeko"
+
+#: remmina/src/remmina_connection_window.c:1260
+#: remmina/src/remmina_pref_dialog.c:611
+msgid "Toggle fullscreen mode"
+msgstr "Txandakatu pantaila osoko modua"
+
+#: remmina/src/remmina_connection_window.c:1298
+#: remmina/src/remmina_pref_dialog.c:643
+msgid "Switch tab pages"
+msgstr "Aldatu fitxak"
+
+#: remmina/src/remmina_connection_window.c:1311
+#: remmina/src/remmina_pref_dialog.c:672
+msgid "Toggle scaled mode"
+msgstr "Txandakatu eskalaren modua"
+
+#: remmina/src/remmina_connection_window.c:1343
+msgid "Grab all keyboard events"
+msgstr "Kapturatu teklatuko gertaera guztiak"
+
+#: remmina/src/remmina_connection_window.c:1352
+msgid "Preferences"
+msgstr "Hobespenak"
+
+#: remmina/src/remmina_connection_window.c:1360
+#: remmina/src/remmina_connection_window.c:1361
+msgid "Tools"
+msgstr "Tresnak"
+
+#: remmina/src/remmina_connection_window.c:1373
+#: remmina/src/remmina_pref_dialog.c:704
+msgid "Minimize window"
+msgstr "Minimizatu leihoa"
+
+#: remmina/src/remmina_connection_window.c:1380
+#: remmina/src/remmina_pref_dialog.c:720
+msgid "Disconnect"
+msgstr "Deskonektatu"
+
+#: remmina/src/remmina_connection_window.c:2605
+#: remmina/src/remmina_file_editor.c:1452
+#: remmina/src/remmina_file_editor.c:1472
+#, c-format
+msgid "File %s not found."
+msgstr "Ez da '%s' fitxategia aurkitu."
+
+#: remmina/src/remmina_plugin_manager.c:56
+#: remmina/src/remmina_file_editor.c:1393
+msgid "Protocol"
+msgstr "Protokoloa"
+
+#: remmina/src/remmina_plugin_manager.c:56
+msgid "Entry"
+msgstr "Sarrera"
+
+#: remmina/src/remmina_plugin_manager.c:56
+msgid "File"
+msgstr "Fitxategia"
+
+#: remmina/src/remmina_plugin_manager.c:56
+msgid "Tool"
+msgstr "Tresna"
+
+#: remmina/src/remmina_plugin_manager.c:56
+msgid "Preference"
+msgstr "Hobespena"
+
+#: remmina/src/remmina_plugin_manager.c:56
+msgid "Secret"
+msgstr "Sekretua"
+
+#: remmina/src/remmina_plugin_manager.c:261
+#: remmina/src/remmina_init_dialog.c:82 remmina/src/remmina_file_editor.c:139
+msgid "_OK"
+msgstr ""
+
+#: remmina/src/remmina_plugin_manager.c:285
+#: remmina-plugins/nx/nx_session_manager.c:178
+msgid "Type"
+msgstr "Mota"
+
+#: remmina/src/remmina_plugin_manager.c:291
+msgid "Description"
+msgstr "Deskribapena"
+
+#: remmina/src/remmina_plugin_manager.c:297
+msgid "Version"
+msgstr "Bertsioa"
+
+#: remmina/src/remmina_icon.c:127
+msgid "Open Main Window"
+msgstr "Ireki leiho nagusia"
+
+#: remmina/src/remmina_icon.c:132
+msgid "_Preferences"
+msgstr ""
+
+#: remmina/src/remmina_icon.c:137
+msgid "_About"
+msgstr ""
+
+#: remmina/src/remmina_icon.c:147
+msgid "Enable Service Discovery"
+msgstr "Gaitu zerbitzu-aurkikuntza"
+
+#: remmina/src/remmina_icon.c:161
+msgid "_Quit"
+msgstr ""
+
+#: remmina/src/remmina_icon.c:391 remmina/src/remmina_icon.c:484
+msgid "Remmina Applet"
+msgstr "Remmina Appleta"
+
+#: remmina/src/remmina_icon.c:393 remmina/src/remmina_icon.c:486
+msgid "Connect to remote desktops through the applet menu"
+msgstr "Konektatu urruneko mahaigainetara miniaplikazioaren menutik"
+
+#: remmina/src/remmina_init_dialog.c:266
+#, c-format
+msgid "Save %s"
+msgstr "Gorde %s"
+
+#: remmina/src/remmina_init_dialog.c:349 remmina/src/remmina_file_editor.c:902
+#: remmina-plugins/rdp/rdp_plugin.c:1122 remmina-plugins/nx/nx_plugin.c:692
+#: remmina-plugins/vnc/vnc_plugin.c:1995 remmina-plugins/vnc/vnc_plugin.c:2009
+msgid "User name"
+msgstr "Erabiltzaile-izena"
+
+#: remmina/src/remmina_init_dialog.c:363
+#: remmina/src/remmina_protocol_widget.c:812
+#: remmina/src/remmina_file_editor.c:405 remmina/src/remmina_file_editor.c:905
+msgid "Password"
+msgstr "Pasahitza"
+
+#: remmina/src/remmina_init_dialog.c:378 remmina-plugins/rdp/rdp_plugin.c:1124
+msgid "Domain"
+msgstr "Domeinua"
+
+#: remmina/src/remmina_init_dialog.c:393
+msgid "Save password"
+msgstr "Gorde pasahitza"
+
+#: remmina/src/remmina_init_dialog.c:465
+msgid "Certificate Details:"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:479 remmina/src/remmina_init_dialog.c:575
+msgid "Subject:"
+msgstr "Gaia:"
+
+#: remmina/src/remmina_init_dialog.c:489 remmina/src/remmina_init_dialog.c:586
+msgid "Issuer:"
+msgstr "Jaulkitzailea:"
+
+#: remmina/src/remmina_init_dialog.c:499
+msgid "Fingerprint:"
+msgstr "Hatz-marka:"
+
+#: remmina/src/remmina_init_dialog.c:510
+msgid "Accept Certificate?"
+msgstr "Ziurtagiria onartu?"
+
+#: remmina/src/remmina_init_dialog.c:561
+msgid "Certificate Changed! Details:"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:596
+msgid "Old Fingerprint:"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:606
+msgid "New Fingerprint:"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:617
+msgid "Accept Changed Certificate?"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:718
+msgid "CA certificate"
+msgstr "ZE ziurtagiria"
+
+#: remmina/src/remmina_init_dialog.c:719
+msgid "CA CRL"
+msgstr "ZE CRL"
+
+#: remmina/src/remmina_init_dialog.c:720
+msgid "Client certificate"
+msgstr "Bezeroaren ziurtagiria"
+
+#: remmina/src/remmina_init_dialog.c:721
+msgid "Client key"
+msgstr "Bezeroaren gakoa"
+
+#: remmina/src/remmina_init_dialog.c:794
+msgid "Do you trust the new public key?"
+msgstr "Gako publiko berriaz fidatzen zara?"
+
+#: remmina/src/remmina_init_dialog.c:820
+msgid "The server is unknown. The public key fingerprint is:"
+msgstr "Zerbitzaria ezezaguna da. Gako publikoaren hatz-marka hau da:"
+
+#: remmina/src/remmina_init_dialog.c:828
+msgid ""
+"WARNING: The server has changed its public key. This means either you are "
+"under attack,\n"
+"or the administrator has changed the key. The new public key fingerprint is:"
+msgstr ""
+"KONTUZ: Zerbitzariak bere gako publikoa aldatu du. Eraso baten aurrean egon "
+"zaitezke\n"
+"edo bestela administratzaileak gakoa aldatu du. Gako publiko berriaren hatz-"
+"marka hau da:"
+
+#: remmina/src/remmina_protocol_widget.c:125
+#, c-format
+msgid "Connecting to '%s'..."
+msgstr "'%s'(r)ekin konektatzen..."
+
+#: remmina/src/remmina_protocol_widget.c:202
+#, c-format
+msgid "Protocol plugin %s is not installed."
+msgstr "%s protokolo plugina ez dago instalatuta"
+
+#: remmina/src/remmina_protocol_widget.c:241
+msgid "Open Secure Shell in New Terminal..."
+msgstr "Ireki Shell segurua terminal berrian..."
+
+#: remmina/src/remmina_protocol_widget.c:247
+msgid "Open Secure File Transfer..."
+msgstr "Ireki fitxategi-transferentzia segurua..."
+
+#: remmina/src/remmina_protocol_widget.c:458
+#, c-format
+msgid "Connecting to SSH server %s..."
+msgstr "%s SSH zerbitzariarekin konektatzen..."
+
+#: remmina/src/remmina_protocol_widget.c:521
+#: remmina/src/remmina_protocol_widget.c:682
+#, c-format
+msgid "Connecting to %s through SSH tunnel..."
+msgstr "%s(r)ekin konektatzen SSH tunelaren bidez..."
+
+#: remmina/src/remmina_protocol_widget.c:562
+#, c-format
+msgid "Waiting for an incoming SSH tunnel at port %i..."
+msgstr "Sarrerako SSH tunel baten zain %i atakan..."
+
+#: remmina/src/remmina_protocol_widget.c:609
+#, c-format
+msgid "Command %s not found on SSH server"
+msgstr "%s komandoa ez da aurkitu SSH zerbitzarian"
+
+#: remmina/src/remmina_protocol_widget.c:613
+#, c-format
+msgid "Command %s failed on SSH server (status = %i)."
+msgstr "%s komandoak huts egin du SSH zerbitzarian (egoera = %i)."
+
+#: remmina/src/remmina_protocol_widget.c:624
+#, c-format
+msgid "Failed to execute command: %s"
+msgstr "%s komandoaren exekuzioak huts egin du"
+
+#: remmina/src/remmina_protocol_widget.c:803
+#, c-format
+msgid "%s password"
+msgstr "%s pasahitza"
+
+#: remmina/src/remmina_protocol_widget.c:806 remmina/src/remmina_ssh.c:326
+msgid "SSH password"
+msgstr "SSH pasahitza"
+
+#: remmina/src/remmina_protocol_widget.c:809 remmina/src/remmina_ssh.c:330
+msgid "SSH private key passphrase"
+msgstr "SSH gako pribatuaren pasaesaldia"
+
+#: remmina/src/remmina_protocol_widget.c:969
+#, c-format
+msgid "Listening on port %i for an incoming %s connection..."
+msgstr "%i atakan entzuten sarrerako %s konexio baten zain..."
+
+#: remmina/src/remmina_protocol_widget.c:976
+msgid "Authentication failed. Trying to reconnect..."
+msgstr "Autentifikazioak huts egin du. Birkonektatzen saiatzen..."
+
+#: remmina/src/remmina_ftp_client.c:407
+msgid "Choose download location"
+msgstr "Aukeratu deskargen kokalekua"
+
+#: remmina/src/remmina_ftp_client.c:545
+msgid "Are you sure to delete the selected files on server?"
+msgstr ""
+"Ziur zaude hautatutako fitxategiak zerbitzaritik ezabatu nahi dituzula?"
+
+#: remmina/src/remmina_ftp_client.c:602
+msgid "Choose a file to upload"
+msgstr "Aukeratu fitxategia igotzeko"
+
+#: remmina/src/remmina_ftp_client.c:610
+msgid "Upload folder"
+msgstr "Igo karpeta"
+
+#: remmina/src/remmina_ftp_client.c:670 remmina/src/remmina_ftp_client.c:793
+msgid "Download"
+msgstr "Deskargatu"
+
+#: remmina/src/remmina_ftp_client.c:677 remmina/src/remmina_ftp_client.c:804
+msgid "Upload"
+msgstr "Igo"
+
+#: remmina/src/remmina_ftp_client.c:684
+msgid "_Delete"
+msgstr ""
+
+#: remmina/src/remmina_ftp_client.c:772
+msgid "Home"
+msgstr ""
+
+#: remmina/src/remmina_ftp_client.c:774
+msgid "Go to home folder"
+msgstr "Joan karpeta nagusira"
+
+#: remmina/src/remmina_ftp_client.c:779
+msgid "Up"
+msgstr ""
+
+#: remmina/src/remmina_ftp_client.c:781
+msgid "Go to parent folder"
+msgstr "Joan karpeta gurasora"
+
+#: remmina/src/remmina_ftp_client.c:786 remmina-plugins/rdp/rdp_plugin.c:1148
+#: remmina-plugins/vnc/vnc_plugin.c:2034
+msgid "Refresh"
+msgstr "Freskatu"
+
+#: remmina/src/remmina_ftp_client.c:788
+msgid "Refresh current folder"
+msgstr "Freskatu uneko karpeta"
+
+#: remmina/src/remmina_ftp_client.c:795
+msgid "Download from server"
+msgstr "Deskargatu zerbitzaritik"
+
+#: remmina/src/remmina_ftp_client.c:806
+msgid "Upload to server"
+msgstr "Igo zerbitzarira"
+
+#: remmina/src/remmina_ftp_client.c:813
+msgid "Delete"
+msgstr ""
+
+#: remmina/src/remmina_ftp_client.c:815
+msgid "Delete files on server"
+msgstr "Ezabatu fitxategiak zerbitzaritik"
+
+#: remmina/src/remmina_ftp_client.c:922 remmina/src/remmina_ftp_client.c:991
+msgid "File Name"
+msgstr "Fitxategi-izena"
+
+#: remmina/src/remmina_ftp_client.c:935 remmina/src/remmina_ftp_client.c:1020
+msgid "Size"
+msgstr "Tamaina"
+
+#: remmina/src/remmina_ftp_client.c:943
+msgid "User"
+msgstr "Erabiltzailea"
+
+#: remmina/src/remmina_ftp_client.c:955
+msgid "Permission"
+msgstr "Baimenak"
+
+#: remmina/src/remmina_ftp_client.c:1007 remmina-plugins/rdp/rdp_plugin.c:1106
+msgid "Remote"
+msgstr "Urrunekoa"
+
+#: remmina/src/remmina_ftp_client.c:1014 remmina-plugins/rdp/rdp_plugin.c:1102
+msgid "Local"
+msgstr "Lokala"
+
+#: remmina/src/remmina_ftp_client.c:1028
+msgid "Progress"
+msgstr "Aurrerapena"
+
+#: remmina/src/remmina_sftp_client.c:168
+#, c-format
+msgid "Error creating directory %s."
+msgstr "Errorea %s direktorioa sortzean."
+
+#: remmina/src/remmina_sftp_client.c:176 remmina/src/remmina_sftp_client.c:199
+#, c-format
+msgid "Error creating file %s."
+msgstr "Errorea %s fitxategia sortzean."
+
+#: remmina/src/remmina_sftp_client.c:217
+#, c-format
+msgid "Error opening file %s on server. %s"
+msgstr "Errorea %s fitxategia irekitzean zerbitzarian. %s"
+
+#: remmina/src/remmina_sftp_client.c:243
+#, c-format
+msgid "Error writing file %s."
+msgstr "Errorea %s fitxategia idaztean."
+
+#: remmina/src/remmina_sftp_client.c:286
+#, c-format
+msgid "Error opening directory %s. %s"
+msgstr "Errorea %s direktorioa irekitzean. %s"
+
+#: remmina/src/remmina_sftp_client.c:407
+#, c-format
+msgid "Error creating folder %s on server. %s"
+msgstr "Errorea %s karpeta sortzean zerbitzarian. %s"
+
+#: remmina/src/remmina_sftp_client.c:435 remmina/src/remmina_sftp_client.c:460
+#, c-format
+msgid "Error creating file %s on server. %s"
+msgstr "Errorea %s fitxategia sortzean zerbitzarian. %s"
+
+#: remmina/src/remmina_sftp_client.c:483
+#, c-format
+msgid "Error opening file %s."
+msgstr "Errorea %s fitxategia irekitzean."
+
+#: remmina/src/remmina_sftp_client.c:507
+#, c-format
+msgid "Error writing file %s on server. %s"
+msgstr "Errorea %s fitxategia irekitzean zerbitzarian. %s"
+
+#: remmina/src/remmina_sftp_client.c:730 remmina/src/remmina_sftp_client.c:801
+#, c-format
+msgid "Failed to open directory %s. %s"
+msgstr "Huts egin du %s direktorioa irekitzean. %s"
+
+#: remmina/src/remmina_sftp_client.c:748
+#, c-format
+msgid "Failed reading directory. %s"
+msgstr "Huts egin du direktorioa irakurtzean. %s"
+
+#: remmina/src/remmina_sftp_client.c:866
+msgid ""
+"File transfer currently in progress.\n"
+"Are you sure to cancel it?"
+msgstr ""
+"Fitxategi-transferentzia egiten ari da oraindik.\n"
+"Ziur zaude bertan behera utzi nahi duzula?"
+
+#: remmina/src/remmina_sftp_client.c:902
+#, c-format
+msgid "Failed to delete '%s'. %s"
+msgstr "Huts egin du '%s' ezabatzean. %s"
+
+#: remmina/src/remmina_sftp_client.c:977
+msgid "File exists"
+msgstr "Fitxategia existitzen da"
+
+#: remmina/src/remmina_sftp_client.c:980
+msgid "Resume"
+msgstr "Berriz ekin"
+
+#: remmina/src/remmina_sftp_client.c:981
+msgid "Overwrite"
+msgstr "Gainidatzi"
+
+#: remmina/src/remmina_sftp_client.c:995
+msgid "Question"
+msgstr ""
+
+#: remmina/src/remmina_sftp_client.c:1007
+msgid "The following file already exists in the target folder:"
+msgstr "Hurrengo fitxategia dagoeneko existitzen da helburuko karpetan:"
 
 #: remmina/src/remmina_pref_dialog.c:51
 msgid "Open connection"
@@ -130,6 +765,10 @@ msgstr "Azken zerrendak garbituta."
 #: remmina/src/remmina_pref_dialog.c:330
 msgid "Remmina Preferences"
 msgstr "Remmina-ren hobespenak"
+
+#: remmina/src/remmina_pref_dialog.c:332
+msgid "_Close"
+msgstr ""
 
 #: remmina/src/remmina_pref_dialog.c:346
 msgid "Options"
@@ -215,46 +854,21 @@ msgstr ""
 msgid "Minimize windows to tray"
 msgstr "Minimizatu leihoak erretilura"
 
-#: remmina/src/remmina_pref_dialog.c:576 remmina/src/remmina_pref_dialog.c:851
+#: remmina/src/remmina_pref_dialog.c:576 remmina/src/remmina_pref_dialog.c:857
 msgid "Keyboard"
 msgstr "Teklatua"
 
-#: remmina/src/remmina_pref_dialog.c:595 remmina/src/remmina_pref_dialog.c:875
+#: remmina/src/remmina_pref_dialog.c:595 remmina/src/remmina_pref_dialog.c:881
 msgid "Host key"
 msgstr "Ostalari gakoa"
-
-#: remmina/src/remmina_pref_dialog.c:611
-#: remmina/src/remmina_connection_window.c:1270
-msgid "Toggle fullscreen mode"
-msgstr "Txandakatu pantaila osoko modua"
 
 #: remmina/src/remmina_pref_dialog.c:627
 msgid "Auto-fit window"
 msgstr "Doitu automatikoki leihoa"
 
-#: remmina/src/remmina_pref_dialog.c:643
-#: remmina/src/remmina_connection_window.c:1308
-msgid "Switch tab pages"
-msgstr "Aldatu fitxak"
-
-#: remmina/src/remmina_pref_dialog.c:672
-#: remmina/src/remmina_connection_window.c:1321
-msgid "Toggle scaled mode"
-msgstr "Txandakatu eskalaren modua"
-
 #: remmina/src/remmina_pref_dialog.c:688
 msgid "Grab keyboard"
 msgstr "Kapturatu teklatua"
-
-#: remmina/src/remmina_pref_dialog.c:704
-#: remmina/src/remmina_connection_window.c:1383
-msgid "Minimize window"
-msgstr "Minimizatu leihoa"
-
-#: remmina/src/remmina_pref_dialog.c:720
-#: remmina/src/remmina_connection_window.c:1390
-msgid "Disconnect"
-msgstr "Deskonektatu"
 
 #: remmina/src/remmina_pref_dialog.c:736
 msgid "Show / hide toolbar"
@@ -272,21 +886,121 @@ msgstr "Letra-tipoa"
 msgid "Use system default font"
 msgstr "Erabili sistemaren letra-tipo lehenetsia"
 
-#: remmina/src/remmina_pref_dialog.c:815
+#: remmina/src/remmina_pref_dialog.c:821
 msgid "Allow bold text"
 msgstr "Onartu testu lodia"
 
-#: remmina/src/remmina_pref_dialog.c:827
+#: remmina/src/remmina_pref_dialog.c:833
 msgid "Scrollback lines"
 msgstr "Atzeranzko lerroak"
 
-#: remmina/src/remmina_pref_dialog.c:869 remmina/src/remmina_ssh_plugin.c:316
+#: remmina/src/remmina_pref_dialog.c:875 remmina/src/remmina_ssh_plugin.c:341
 msgid "Copy"
 msgstr "Kopiatu"
 
-#: remmina/src/remmina_pref_dialog.c:899 remmina/src/remmina_ssh_plugin.c:317
+#: remmina/src/remmina_pref_dialog.c:905 remmina/src/remmina_ssh_plugin.c:342
 msgid "Paste"
 msgstr "Itsatsi"
+
+#: remmina/src/remmina_scaler.c:72
+msgid "Fit window size"
+msgstr "Doitu leihoaren tamaina"
+
+#: remmina/src/remmina_scaler.c:147 remmina/src/remmina_file_editor.c:661
+msgid "Horizontal scale"
+msgstr "Eskala horizontala"
+
+#: remmina/src/remmina_scaler.c:158 remmina/src/remmina_file_editor.c:672
+msgid "Vertical scale"
+msgstr "Eskala bertikala"
+
+#: remmina/src/remmina_sftp_plugin.c:275
+msgid "Show Hidden Files"
+msgstr "Erakutsi ezkutuko fitxategiak"
+
+#: remmina/src/remmina_sftp_plugin.c:278
+msgid "Overwrite all"
+msgstr ""
+
+#: remmina/src/remmina_sftp_plugin.c:286
+msgid "SFTP - Secure File Transfer"
+msgstr "SFTP - Fitxategi-transferentzia segurua"
+
+#: remmina/src/remmina_ssh.c:163
+#, c-format
+msgid "SSH password authentication failed: %s"
+msgstr "SSHko pasahitzaren autentifikazioak huts egin du: %s"
+
+#: remmina/src/remmina_ssh.c:181 remmina/src/remmina_ssh.c:191
+#: remmina/src/remmina_ssh.c:200
+#, c-format
+msgid "SSH public key authentication failed: %s"
+msgstr "SSHko gako publikoaren autentifikazioak huts egin du: %s"
+
+#: remmina/src/remmina_ssh.c:182
+msgid "SSH Key file not yet set."
+msgstr "SSHko gako-fitxategia ez da oraindik ezarri."
+
+#: remmina/src/remmina_ssh.c:216
+#, c-format
+msgid "SSH automatic public key authentication failed: %s"
+msgstr "SSHren gako publikoaren autentifikazio automatikoak huts egin du: %s"
+
+#: remmina/src/remmina_ssh.c:325
+#, c-format
+msgid "Authenticating %s's password to SSH server %s..."
+msgstr "%s(r)en pasahitza autentifikatzen %s SSH zerbitzarian..."
+
+#: remmina/src/remmina_ssh.c:329
+#, c-format
+msgid "Authenticating %s's identity to SSH server %s..."
+msgstr "%s(r)en identitatea autentifikatzen %s SSH zerbitzarian..."
+
+#: remmina/src/remmina_ssh.c:384
+#, c-format
+msgid "Failed to startup SSH session: %s"
+msgstr "Huts egin du SSH saioa abiatzean: %s"
+
+#: remmina/src/remmina_ssh.c:707
+#, c-format
+msgid "Failed to connect to the SSH tunnel destination: %s"
+msgstr "Huts egin du SSH tunelaren helburuarekin konektatzean: %s"
+
+#: remmina/src/remmina_ssh.c:740
+#, c-format
+msgid "Failed to execute %s on SSH server : %%s"
+msgstr "Huts egin du %s exekutatzean SSH zerbitzarian: %%s"
+
+#: remmina/src/remmina_ssh.c:777 remmina/src/remmina_ssh.c:802
+#, c-format
+msgid "Failed to request port forwarding : %s"
+msgstr "Huts egin du ataka birbidaltzea eskatzean: %s"
+
+#: remmina/src/remmina_ssh.c:849
+msgid "No response from the server."
+msgstr "Zerbitzariak ez du erantzun."
+
+#: remmina/src/remmina_ssh.c:1252
+#, c-format
+msgid "Failed to create sftp session: %s"
+msgstr "Huts egin du sftp saioa sortzean: %s"
+
+#: remmina/src/remmina_ssh.c:1257
+#, c-format
+msgid "Failed to initialize sftp session: %s"
+msgstr "Huts egin du sftp saioa hasieratzean: %s"
+
+#: remmina/src/remmina_ssh_plugin.c:341
+msgid "_Copy"
+msgstr ""
+
+#: remmina/src/remmina_ssh_plugin.c:342
+msgid "_Paste"
+msgstr ""
+
+#: remmina/src/remmina_ssh_plugin.c:350
+msgid "SSH - Secure Shell"
+msgstr "SSH - Shell segurua"
 
 #: remmina/src/remmina_file_editor.c:71
 msgid ""
@@ -318,17 +1032,8 @@ msgstr ""
 msgid "Choose a Remote Desktop Server"
 msgstr "Aukeratu urruneko mahaigainaren zerbitzari bat"
 
-#: remmina/src/remmina_file_editor.c:138 remmina/src/remmina_file_editor.c:321
-#: remmina/src/remmina_file_editor.c:1235
-msgid "_Cancel"
-msgstr ""
-
-#: remmina/src/remmina_file_editor.c:139
-msgid "_OK"
-msgstr ""
-
 #: remmina/src/remmina_file_editor.c:313 remmina/src/remmina_file_editor.c:320
-#: remmina-plugins/nx/nx_plugin.c:625
+#: remmina-plugins/nx/nx_plugin.c:691
 msgid "Identity file"
 msgstr "Identitate-fitxategia"
 
@@ -336,109 +1041,87 @@ msgstr "Identitate-fitxategia"
 msgid "_Open"
 msgstr ""
 
-#: remmina/src/remmina_file_editor.c:360 remmina/src/remmina_file_editor.c:843
-#: remmina/src/remmina_file_editor.c:856 remmina/src/remmina_main.c:1300
-#: remmina/src/remmina_protocol_widget.c:1019
-msgid "Server"
-msgstr "Zerbitzaria"
-
-#: remmina/src/remmina_file_editor.c:383
+#: remmina/src/remmina_file_editor.c:384
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Arakatu sarea '%s' zerbitzaria aurkitzeko"
 
-#: remmina/src/remmina_file_editor.c:404 remmina/src/remmina_file_editor.c:898
-#: remmina/src/remmina_protocol_widget.c:819
-#: remmina/src/remmina_init_dialog.c:298
-msgid "Password"
-msgstr "Pasahitza"
-
-#: remmina/src/remmina_file_editor.c:447
+#: remmina/src/remmina_file_editor.c:449
 msgid "Resolution"
 msgstr "Bereizmena"
 
-#: remmina/src/remmina_file_editor.c:452
+#: remmina/src/remmina_file_editor.c:455
 msgid "Use window size"
 msgstr "Erabili leiho-tamaina"
 
-#: remmina/src/remmina_file_editor.c:452
+#: remmina/src/remmina_file_editor.c:455
 msgid "Use client resolution"
 msgstr "Erabili bezeroaren bereizmena"
 
-#: remmina/src/remmina_file_editor.c:465 remmina/src/remmina_file_editor.c:822
+#: remmina/src/remmina_file_editor.c:468 remmina/src/remmina_file_editor.c:829
 msgid "Custom"
 msgstr "Pertsonalizatua"
 
-#: remmina/src/remmina_file_editor.c:647
+#: remmina/src/remmina_file_editor.c:654
 msgid "Keyboard mapping"
 msgstr "Teklatuaren mapa"
 
-#: remmina/src/remmina_file_editor.c:794
+#: remmina/src/remmina_file_editor.c:801
 msgid "Enable SSH tunnel"
 msgstr "Gaitu SSH tunela"
 
-#: remmina/src/remmina_file_editor.c:801
+#: remmina/src/remmina_file_editor.c:808
 msgid "Tunnel via loopback address"
 msgstr "Atzera-begizta helbide bidezko tunela"
 
-#: remmina/src/remmina_file_editor.c:813
+#: remmina/src/remmina_file_editor.c:820
 #, c-format
 msgid "Same server at port %i"
 msgstr "Zerbitzari berdina %i atakan"
 
-#: remmina/src/remmina_file_editor.c:868
+#: remmina/src/remmina_file_editor.c:875
 msgid "Character set"
 msgstr "Karaktere-jokoa"
 
-#: remmina/src/remmina_file_editor.c:874 remmina-plugins/rdp/rdp_plugin.c:1130
-#: remmina-plugins/nx/nx_plugin.c:630 remmina-plugins/xdmcp/xdmcp_plugin.c:349
+#: remmina/src/remmina_file_editor.c:881 remmina-plugins/rdp/rdp_plugin.c:1137
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:340 remmina-plugins/nx/nx_plugin.c:696
 msgid "Startup program"
 msgstr "Abioko programa"
 
-#: remmina/src/remmina_file_editor.c:883 remmina-plugins/rdp/rdp_plugin.c:1131
+#: remmina/src/remmina_file_editor.c:890 remmina-plugins/rdp/rdp_plugin.c:1138
 msgid "Startup path"
 msgstr "Abioko bide-izena"
 
-#: remmina/src/remmina_file_editor.c:891
+#: remmina/src/remmina_file_editor.c:898
 msgid "SSH Authentication"
 msgstr "SSH autentifikazioa"
 
-#: remmina/src/remmina_file_editor.c:895 remmina/src/remmina_init_dialog.c:284
-#: remmina-plugins/vnc/vnc_plugin.c:1927 remmina-plugins/vnc/vnc_plugin.c:1941
-#: remmina-plugins/rdp/rdp_plugin.c:1115 remmina-plugins/nx/nx_plugin.c:626
-msgid "User name"
-msgstr "Erabiltzaile-izena"
-
-#: remmina/src/remmina_file_editor.c:905
+#: remmina/src/remmina_file_editor.c:912
 msgid "Public key (automatic)"
 msgstr "Gako publikoa (automatikoa)"
 
-#: remmina/src/remmina_file_editor.c:961
+#: remmina/src/remmina_file_editor.c:968
 msgid "Basic"
 msgstr "Oinarrizkoa"
 
-#: remmina/src/remmina_file_editor.c:968
+#: remmina/src/remmina_file_editor.c:975
 msgid "Advanced"
 msgstr "Aurreratua"
 
-#: remmina/src/remmina_file_editor.c:1179
+#: remmina/src/remmina_file_editor.c:1186
 msgid "Default settings saved."
 msgstr "Ezarpen lehenetsiak gordeta."
 
-#: remmina/src/remmina_file_editor.c:1226
+#: remmina/src/remmina_file_editor.c:1233
 msgid "Remote Desktop Preference"
 msgstr "Urruneko mahaigainaren hobespenak"
 
-#: remmina/src/remmina_file_editor.c:1228
-msgid "_Save"
-msgstr ""
-
-#: remmina/src/remmina_file_editor.c:1240
+#: remmina/src/remmina_file_editor.c:1246
 msgid "Connect"
 msgstr ""
 
-#: remmina/src/remmina_file_editor.c:1253
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:341
+#: remmina/src/remmina_file_editor.c:1259
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:332
 msgid "Default"
 msgstr "Lehenetsia"
 
@@ -446,92 +1129,10 @@ msgstr "Lehenetsia"
 msgid "Profile"
 msgstr "Profila"
 
-#: remmina/src/remmina_file_editor.c:1350
-#: remmina/src/remmina_plugin_manager.c:275 remmina/src/remmina_main.c:1280
-#: remmina-plugins/nx/nx_session_manager.c:199
-msgid "Name"
-msgstr "Izena"
-
-#: remmina/src/remmina_file_editor.c:1364
-msgid "Quick Connect"
-msgstr "Konexio azkarra"
-
-#: remmina/src/remmina_file_editor.c:1374 remmina/src/remmina_ftp_client.c:940
-#: remmina/src/remmina_main.c:1293
-msgid "Group"
-msgstr "Taldea"
-
-#: remmina/src/remmina_file_editor.c:1386
+#: remmina/src/remmina_file_editor.c:1388
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Erabili '%s' azpitalde mugatzaile gisa"
-
-#: remmina/src/remmina_file_editor.c:1391
-#: remmina/src/remmina_plugin_manager.c:54
-msgid "Protocol"
-msgstr "Protokoloa"
-
-#: remmina/src/remmina_file_editor.c:1449
-#: remmina/src/remmina_file_editor.c:1469
-#: remmina/src/remmina_connection_window.c:2627
-#, c-format
-msgid "File %s not found."
-msgstr "Ez da '%s' fitxategia aurkitu."
-
-#: remmina/src/remmina_about.c:46
-msgid "Maintainers:"
-msgstr "Mantentzaileak:"
-
-#: remmina/src/remmina_about.c:49
-msgid "Contributors:"
-msgstr "Laguntzaileak:"
-
-#: remmina/src/remmina_about.c:65
-msgid ""
-"Remmina is free software; you can redistribute it and/or modify it under the "
-"terms of the GNU General Public License as published by the Free Software "
-"Foundation; either version 2 of the License, or (at your option) any later "
-"version."
-msgstr ""
-"Remmina software librea da; birbana eta/edo alda dezakezu Software "
-"Foundation-ek argitaratutako GNU Lizentzia Publiko Orokorraren 2. bertsioan "
-"edo (nahiago baduzu) beste berriago batean, jasotako baldintzak betez gero."
-
-#: remmina/src/remmina_about.c:69
-msgid ""
-"Remmina is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
-"details."
-msgstr ""
-"Remmina erabilgarria izango delakoan banatzen da, baina INOLAKO BERMERIK "
-"GABE; era berean, ez da bermatzen beraren EGOKITASUNA MERKATURATZEKO edo "
-"HELBURU PARTIKULARRETARAKO ERABILTZEKO. Argibide gehiago nahi izanez gero, "
-"ikus GNU Lizentzia Publiko Orokorra."
-
-#: remmina/src/remmina_about.c:73
-msgid ""
-"You should have received a copy of the GNU General Public License along with "
-"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
-"Place, Suite 330, Boston, MA 02111-1307, USA."
-msgstr ""
-"Programa honekin batera GNU Lizentzia Publiko Orokorraren kopia bat ere jaso "
-"beharko zenuke; horrela ez bada, idatzi helbide honetara: Free Software "
-"Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA."
-
-#: remmina/src/remmina_about.c:87
-msgid "The GTK+ Remote Desktop Client"
-msgstr "GTK+ Urruneko Mahaigainen Bezeroa"
-
-#: remmina/src/remmina_about.c:93
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Asier Iturralde Sarasola https://launchpad.net/~asier-iturralde\n"
-"  Ibai Oihanguren Sala https://launchpad.net/~ibai-oihanguren\n"
-"  Iñaki Larrañaga Murgoitio https://launchpad.net/~dooteo\n"
-"  ST https://launchpad.net/~southterritory\n"
-"  Vic https://launchpad.net/~llyzs"
 
 #: remmina/src/remmina_chat_window.c:178
 #, c-format
@@ -546,855 +1147,203 @@ msgstr "_Bidali"
 msgid "_Clear"
 msgstr "_Garbitu"
 
-#: remmina/src/remmina_ftp_client.c:405
-msgid "Choose download location"
-msgstr "Aukeratu deskargen kokalekua"
+#: remmina/src/remmina_about.c:46
+msgid "Maintainers:"
+msgstr "Mantentzaileak:"
 
-#: remmina/src/remmina_ftp_client.c:543
-msgid "Are you sure to delete the selected files on server?"
-msgstr ""
-"Ziur zaude hautatutako fitxategiak zerbitzaritik ezabatu nahi dituzula?"
+#: remmina/src/remmina_about.c:49
+msgid "Contributors:"
+msgstr "Laguntzaileak:"
 
-#: remmina/src/remmina_ftp_client.c:600
-msgid "Choose a file to upload"
-msgstr "Aukeratu fitxategia igotzeko"
-
-#: remmina/src/remmina_ftp_client.c:608
-msgid "Upload folder"
-msgstr "Igo karpeta"
-
-#: remmina/src/remmina_ftp_client.c:668 remmina/src/remmina_ftp_client.c:796
-msgid "Download"
-msgstr "Deskargatu"
-
-#: remmina/src/remmina_ftp_client.c:675 remmina/src/remmina_ftp_client.c:807
-msgid "Upload"
-msgstr "Igo"
-
-#: remmina/src/remmina_ftp_client.c:683
-msgid "_Delete"
-msgstr ""
-
-#: remmina/src/remmina_ftp_client.c:777
-msgid "Go to home folder"
-msgstr "Joan karpeta nagusira"
-
-#: remmina/src/remmina_ftp_client.c:784
-msgid "Go to parent folder"
-msgstr "Joan karpeta gurasora"
-
-#: remmina/src/remmina_ftp_client.c:791
-msgid "Refresh current folder"
-msgstr "Freskatu uneko karpeta"
-
-#: remmina/src/remmina_ftp_client.c:798
-msgid "Download from server"
-msgstr "Deskargatu zerbitzaritik"
-
-#: remmina/src/remmina_ftp_client.c:809
-msgid "Upload to server"
-msgstr "Igo zerbitzarira"
-
-#: remmina/src/remmina_ftp_client.c:818
-msgid "Delete files on server"
-msgstr "Ezabatu fitxategiak zerbitzaritik"
-
-#: remmina/src/remmina_ftp_client.c:913 remmina/src/remmina_ftp_client.c:982
-msgid "File Name"
-msgstr "Fitxategi-izena"
-
-#: remmina/src/remmina_ftp_client.c:926 remmina/src/remmina_ftp_client.c:1011
-msgid "Size"
-msgstr "Tamaina"
-
-#: remmina/src/remmina_ftp_client.c:934
-msgid "User"
-msgstr "Erabiltzailea"
-
-#: remmina/src/remmina_ftp_client.c:946
-msgid "Permission"
-msgstr "Baimenak"
-
-#: remmina/src/remmina_ftp_client.c:998 remmina-plugins/rdp/rdp_plugin.c:1099
-msgid "Remote"
-msgstr "Urrunekoa"
-
-#: remmina/src/remmina_ftp_client.c:1005 remmina-plugins/rdp/rdp_plugin.c:1095
-msgid "Local"
-msgstr "Lokala"
-
-#: remmina/src/remmina_ftp_client.c:1019
-msgid "Progress"
-msgstr "Aurrerapena"
-
-#: remmina/src/remmina_ssh.c:163
-#, c-format
-msgid "SSH password authentication failed: %s"
-msgstr "SSHko pasahitzaren autentifikazioak huts egin du: %s"
-
-#: remmina/src/remmina_ssh.c:181 remmina/src/remmina_ssh.c:191
-#: remmina/src/remmina_ssh.c:200
-#, c-format
-msgid "SSH public key authentication failed: %s"
-msgstr "SSHko gako publikoaren autentifikazioak huts egin du: %s"
-
-#: remmina/src/remmina_ssh.c:182
-msgid "SSH Key file not yet set."
-msgstr "SSHko gako-fitxategia ez da oraindik ezarri."
-
-#: remmina/src/remmina_ssh.c:216
-#, c-format
-msgid "SSH automatic public key authentication failed: %s"
-msgstr "SSHren gako publikoaren autentifikazio automatikoak huts egin du: %s"
-
-#: remmina/src/remmina_ssh.c:327
-#, c-format
-msgid "Authenticating %s's password to SSH server %s..."
-msgstr "%s(r)en pasahitza autentifikatzen %s SSH zerbitzarian..."
-
-#: remmina/src/remmina_ssh.c:328 remmina/src/remmina_protocol_widget.c:813
-msgid "SSH password"
-msgstr "SSH pasahitza"
-
-#: remmina/src/remmina_ssh.c:331
-#, c-format
-msgid "Authenticating %s's identity to SSH server %s..."
-msgstr "%s(r)en identitatea autentifikatzen %s SSH zerbitzarian..."
-
-#: remmina/src/remmina_ssh.c:332 remmina/src/remmina_protocol_widget.c:816
-msgid "SSH private key passphrase"
-msgstr "SSH gako pribatuaren pasaesaldia"
-
-#: remmina/src/remmina_ssh.c:390
-#, c-format
-msgid "Failed to startup SSH session: %s"
-msgstr "Huts egin du SSH saioa abiatzean: %s"
-
-#: remmina/src/remmina_ssh.c:713
-#, c-format
-msgid "Failed to connect to the SSH tunnel destination: %s"
-msgstr "Huts egin du SSH tunelaren helburuarekin konektatzean: %s"
-
-#: remmina/src/remmina_ssh.c:746
-#, c-format
-msgid "Failed to execute %s on SSH server : %%s"
-msgstr "Huts egin du %s exekutatzean SSH zerbitzarian: %%s"
-
-#: remmina/src/remmina_ssh.c:783 remmina/src/remmina_ssh.c:808
-#, c-format
-msgid "Failed to request port forwarding : %s"
-msgstr "Huts egin du ataka birbidaltzea eskatzean: %s"
-
-#: remmina/src/remmina_ssh.c:855
-msgid "No response from the server."
-msgstr "Zerbitzariak ez du erantzun."
-
-#: remmina/src/remmina_ssh.c:1258
-#, c-format
-msgid "Failed to create sftp session: %s"
-msgstr "Huts egin du sftp saioa sortzean: %s"
-
-#: remmina/src/remmina_ssh.c:1263
-#, c-format
-msgid "Failed to initialize sftp session: %s"
-msgstr "Huts egin du sftp saioa hasieratzean: %s"
-
-#: remmina/src/remmina_applet_menu_item.c:105
-msgid "Discovered"
-msgstr "Aurkituta"
-
-#: remmina/src/remmina_applet_menu_item.c:110
-msgid "New Connection"
-msgstr "Konexio berria"
-
-#: remmina/src/remmina_plugin_manager.c:54
-msgid "Entry"
-msgstr "Sarrera"
-
-#: remmina/src/remmina_plugin_manager.c:54
-msgid "File"
-msgstr "Fitxategia"
-
-#: remmina/src/remmina_plugin_manager.c:54
-msgid "Tool"
-msgstr "Tresna"
-
-#: remmina/src/remmina_plugin_manager.c:54
-msgid "Preference"
-msgstr "Hobespena"
-
-#: remmina/src/remmina_plugin_manager.c:54
-msgid "Secret"
-msgstr "Sekretua"
-
-#: remmina/src/remmina_plugin_manager.c:257 remmina/src/remmina_main.c:875
-msgid "Plugins"
-msgstr "Pluginak"
-
-#: remmina/src/remmina_plugin_manager.c:281
-#: remmina-plugins/nx/nx_session_manager.c:178
-msgid "Type"
-msgstr "Mota"
-
-#: remmina/src/remmina_plugin_manager.c:287
-msgid "Description"
-msgstr "Deskribapena"
-
-#: remmina/src/remmina_plugin_manager.c:293
-msgid "Version"
-msgstr "Bertsioa"
-
-#: remmina/src/remmina_ssh_plugin.c:325
-msgid "SSH - Secure Shell"
-msgstr "SSH - Shell segurua"
-
-#: remmina/src/remmina_main.c:464
-#, c-format
-msgid "Total %i item."
-msgid_plural "Total %i items."
-msgstr[0] "Guztira elementu %i."
-msgstr[1] "Guztira %i elementu."
-
-#: remmina/src/remmina_main.c:535
-#, c-format
-msgid "Are you sure to delete '%s'"
-msgstr "Ziur zaude '%s' elementua ezabatu nahi duzula?"
-
-#: remmina/src/remmina_main.c:694
-#, c-format
+#: remmina/src/remmina_about.c:68
 msgid ""
-"Unable to import:\n"
-"%s"
+"Remmina is free software; you can redistribute it and/or modify it under the "
+"terms of the GNU General Public License as published by the Free Software "
+"Foundation; either version 2 of the License, or (at your option) any later "
+"version."
 msgstr ""
-"Ezin izan da inportatu:\n"
-"%s"
+"Remmina software librea da; birbana eta/edo alda dezakezu Software "
+"Foundation-ek argitaratutako GNU Lizentzia Publiko Orokorraren 2. bertsioan "
+"edo (nahiago baduzu) beste berriago batean, jasotako baldintzak betez gero."
 
-#: remmina/src/remmina_main.c:721 remmina/src/remmina_main.c:873
-msgid "Import"
-msgstr "Inportatu"
-
-#: remmina/src/remmina_main.c:754
-msgid "This protocol does not support exporting."
-msgstr "Protokolo honek ez du esportatzerik onartzen."
-
-#: remmina/src/remmina_main.c:859
-msgid "_Connection"
-msgstr "_Konexioa"
-
-#: remmina/src/remmina_main.c:860
-msgid "_Edit"
-msgstr "_Editatu"
-
-#: remmina/src/remmina_main.c:861
-msgid "_View"
-msgstr "_Ikusi"
-
-#: remmina/src/remmina_main.c:862
-msgid "_Tools"
-msgstr "_Tresnak"
-
-#: remmina/src/remmina_main.c:863
-msgid "_Help"
-msgstr "_Laguntza"
-
-#: remmina/src/remmina_main.c:865
-msgid "Create a new remote desktop file"
-msgstr "Sortu urruneko mahaigain fitxategi berri bat"
-
-#: remmina/src/remmina_main.c:868
-msgid "Open the preferences dialog"
-msgstr "Ireki hobespenen elkarrizketa-koadroa"
-
-#: remmina/src/remmina_main.c:877
-msgid "Homepage"
-msgstr "Webgune nagusia"
-
-#: remmina/src/remmina_main.c:879
-msgid "Online Wiki"
-msgstr "Lineako wiki-a"
-
-#: remmina/src/remmina_main.c:881
-msgid "Debug Window"
-msgstr "Arazketa-leihoa"
-
-#: remmina/src/remmina_main.c:887
-msgid "Open the connection to the selected remote desktop file"
-msgstr "Ireki konexioa hautatutako urruneko mahaigain fitxategiarekin"
-
-#: remmina/src/remmina_main.c:890
-msgid "Create a copy of the selected remote desktop file"
-msgstr "Sortu hautatutako urruneko mahaigain fitxategiaren kopia"
-
-#: remmina/src/remmina_main.c:893
-msgid "Edit the selected remote desktop file"
-msgstr "Editatu hautatutako urruneko mahaigain fitxategia"
-
-#: remmina/src/remmina_main.c:896
-msgid "Delete the selected remote desktop file"
-msgstr "Ezabatu hautatutako urruneko mahaigain fitxategia"
-
-#: remmina/src/remmina_main.c:899
-msgid "Export"
-msgstr "Esportatu"
-
-#: remmina/src/remmina_main.c:901
-msgid "External Tools"
-msgstr ""
-
-#: remmina/src/remmina_main.c:908
-msgid "Toolbar"
-msgstr "Tresna-barra"
-
-#: remmina/src/remmina_main.c:910
-msgid "Statusbar"
-msgstr "Egoera-barra"
-
-#: remmina/src/remmina_main.c:912
-msgid "Quick Search"
-msgstr "Bilaketa bizkorra"
-
-#: remmina/src/remmina_main.c:914
-msgid "Small Toolbar Buttons"
-msgstr "Tresna-barra botoi txikiak"
-
-#: remmina/src/remmina_main.c:919
-msgid "List View"
-msgstr "Zerrenda-ikuspegia"
-
-#: remmina/src/remmina_main.c:920
-msgid "Tree View"
-msgstr "Zuhaitz-ikuspegia"
-
-#: remmina/src/remmina_main.c:1156 remmina/src/remmina_icon.c:422
-#: remmina/src/remmina_icon.c:423
-msgid "Remmina Remote Desktop Client"
-msgstr "Remmina, urruneko mahaigainen bezeroa"
-
-#: remmina/src/remmina_main.c:1262
-msgid "Connect !"
-msgstr ""
-
-#: remmina/src/remmina_sftp_plugin.c:258
-msgid "Show Hidden Files"
-msgstr "Erakutsi ezkutuko fitxategiak"
-
-#: remmina/src/remmina_sftp_plugin.c:266
-msgid "SFTP - Secure File Transfer"
-msgstr "SFTP - Fitxategi-transferentzia segurua"
-
-#: remmina/src/remmina_sftp_client.c:168
-#, c-format
-msgid "Error creating directory %s."
-msgstr "Errorea %s direktorioa sortzean."
-
-#: remmina/src/remmina_sftp_client.c:176 remmina/src/remmina_sftp_client.c:201
-#, c-format
-msgid "Error creating file %s."
-msgstr "Errorea %s fitxategia sortzean."
-
-#: remmina/src/remmina_sftp_client.c:219
-#, c-format
-msgid "Error opening file %s on server. %s"
-msgstr "Errorea %s fitxategia irekitzean zerbitzarian. %s"
-
-#: remmina/src/remmina_sftp_client.c:245
-#, c-format
-msgid "Error writing file %s."
-msgstr "Errorea %s fitxategia idaztean."
-
-#: remmina/src/remmina_sftp_client.c:288
-#, c-format
-msgid "Error opening directory %s. %s"
-msgstr "Errorea %s direktorioa irekitzean. %s"
-
-#: remmina/src/remmina_sftp_client.c:409
-#, c-format
-msgid "Error creating folder %s on server. %s"
-msgstr "Errorea %s karpeta sortzean zerbitzarian. %s"
-
-#: remmina/src/remmina_sftp_client.c:437 remmina/src/remmina_sftp_client.c:465
-#, c-format
-msgid "Error creating file %s on server. %s"
-msgstr "Errorea %s fitxategia sortzean zerbitzarian. %s"
-
-#: remmina/src/remmina_sftp_client.c:488
-#, c-format
-msgid "Error opening file %s."
-msgstr "Errorea %s fitxategia irekitzean."
-
-#: remmina/src/remmina_sftp_client.c:512
-#, c-format
-msgid "Error writing file %s on server. %s"
-msgstr "Errorea %s fitxategia irekitzean zerbitzarian. %s"
-
-#: remmina/src/remmina_sftp_client.c:735 remmina/src/remmina_sftp_client.c:806
-#, c-format
-msgid "Failed to open directory %s. %s"
-msgstr "Huts egin du %s direktorioa irekitzean. %s"
-
-#: remmina/src/remmina_sftp_client.c:753
-#, c-format
-msgid "Failed reading directory. %s"
-msgstr "Huts egin du direktorioa irakurtzean. %s"
-
-#: remmina/src/remmina_sftp_client.c:871
+#: remmina/src/remmina_about.c:72
 msgid ""
-"File transfer currently in progress.\n"
-"Are you sure to cancel it?"
+"Remmina is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+"details."
 msgstr ""
-"Fitxategi-transferentzia egiten ari da oraindik.\n"
-"Ziur zaude bertan behera utzi nahi duzula?"
+"Remmina erabilgarria izango delakoan banatzen da, baina INOLAKO BERMERIK "
+"GABE; era berean, ez da bermatzen beraren EGOKITASUNA MERKATURATZEKO edo "
+"HELBURU PARTIKULARRETARAKO ERABILTZEKO. Argibide gehiago nahi izanez gero, "
+"ikus GNU Lizentzia Publiko Orokorra."
 
-#: remmina/src/remmina_sftp_client.c:907
-#, c-format
-msgid "Failed to delete '%s'. %s"
-msgstr "Huts egin du '%s' ezabatzean. %s"
-
-#: remmina/src/remmina_sftp_client.c:963
-msgid "File exists"
-msgstr "Fitxategia existitzen da"
-
-#: remmina/src/remmina_sftp_client.c:966
-msgid "Resume"
-msgstr "Berriz ekin"
-
-#: remmina/src/remmina_sftp_client.c:967
-msgid "Overwrite"
-msgstr "Gainidatzi"
-
-#: remmina/src/remmina_sftp_client.c:993
-msgid "The following file already exists in the target folder:"
-msgstr "Hurrengo fitxategia dagoeneko existitzen da helburuko karpetan:"
-
-#: remmina/src/remmina_protocol_widget.c:124
-#, c-format
-msgid "Connecting to '%s'..."
-msgstr "'%s'(r)ekin konektatzen..."
-
-#: remmina/src/remmina_protocol_widget.c:201
-#, c-format
-msgid "Protocol plugin %s is not installed."
-msgstr "%s protokolo plugina ez dago instalatuta"
-
-#: remmina/src/remmina_protocol_widget.c:240
-msgid "Open Secure Shell in New Terminal..."
-msgstr "Ireki Shell segurua terminal berrian..."
-
-#: remmina/src/remmina_protocol_widget.c:246
-msgid "Open Secure File Transfer..."
-msgstr "Ireki fitxategi-transferentzia segurua..."
-
-#: remmina/src/remmina_protocol_widget.c:458
-#, c-format
-msgid "Connecting to SSH server %s..."
-msgstr "%s SSH zerbitzariarekin konektatzen..."
-
-#: remmina/src/remmina_protocol_widget.c:523
-#: remmina/src/remmina_protocol_widget.c:688
-#, c-format
-msgid "Connecting to %s through SSH tunnel..."
-msgstr "%s(r)ekin konektatzen SSH tunelaren bidez..."
-
-#: remmina/src/remmina_protocol_widget.c:566
-#, c-format
-msgid "Waiting for an incoming SSH tunnel at port %i..."
-msgstr "Sarrerako SSH tunel baten zain %i atakan..."
-
-#: remmina/src/remmina_protocol_widget.c:614
-#, c-format
-msgid "Command %s not found on SSH server"
-msgstr "%s komandoa ez da aurkitu SSH zerbitzarian"
-
-#: remmina/src/remmina_protocol_widget.c:618
-#, c-format
-msgid "Command %s failed on SSH server (status = %i)."
-msgstr "%s komandoak huts egin du SSH zerbitzarian (egoera = %i)."
-
-#: remmina/src/remmina_protocol_widget.c:629
-#, c-format
-msgid "Failed to execute command: %s"
-msgstr "%s komandoaren exekuzioak huts egin du"
-
-#: remmina/src/remmina_protocol_widget.c:810
-#, c-format
-msgid "%s password"
-msgstr "%s pasahitza"
-
-#: remmina/src/remmina_protocol_widget.c:964
-#, c-format
-msgid "Listening on port %i for an incoming %s connection..."
-msgstr "%i atakan entzuten sarrerako %s konexio baten zain..."
-
-#: remmina/src/remmina_protocol_widget.c:971
-msgid "Authentication failed. Trying to reconnect..."
-msgstr "Autentifikazioak huts egin du. Birkonektatzen saiatzen..."
-
-#: remmina/src/remmina_icon.c:127
-msgid "Open Main Window"
-msgstr "Ireki leiho nagusia"
-
-#: remmina/src/remmina_icon.c:133
-msgid "_Preferences"
-msgstr ""
-
-#: remmina/src/remmina_icon.c:139
-msgid "_About"
-msgstr ""
-
-#: remmina/src/remmina_icon.c:149
-msgid "Enable Service Discovery"
-msgstr "Gaitu zerbitzu-aurkikuntza"
-
-#: remmina/src/remmina_icon.c:164
-msgid "_Quit"
-msgstr ""
-
-#: remmina/src/remmina_icon.c:395 remmina/src/remmina_icon.c:488
-msgid "Remmina Applet"
-msgstr "Remmina Appleta"
-
-#: remmina/src/remmina_icon.c:397 remmina/src/remmina_icon.c:490
-msgid "Connect to remote desktops through the applet menu"
-msgstr "Konektatu urruneko mahaigainetara miniaplikazioaren menutik"
-
-#: remmina/src/remmina_exec.c:125
-#, c-format
-msgid "Plugin %s is not registered."
-msgstr "%s plugina ez dago erregistratuta."
-
-#: remmina/src/remmina_init_dialog.c:220
-#, c-format
-msgid "Save %s"
-msgstr "Gorde %s"
-
-#: remmina/src/remmina_init_dialog.c:313 remmina-plugins/rdp/rdp_plugin.c:1117
-msgid "Domain"
-msgstr "Domeinua"
-
-#: remmina/src/remmina_init_dialog.c:328
-msgid "Save password"
-msgstr "Gorde pasahitza"
-
-#: remmina/src/remmina_init_dialog.c:383
-msgid "Certificate Details:"
-msgstr ""
-
-#: remmina/src/remmina_init_dialog.c:396 remmina/src/remmina_init_dialog.c:473
-msgid "Subject:"
-msgstr "Gaia:"
-
-#: remmina/src/remmina_init_dialog.c:406 remmina/src/remmina_init_dialog.c:484
-msgid "Issuer:"
-msgstr "Jaulkitzailea:"
-
-#: remmina/src/remmina_init_dialog.c:416
-msgid "Fingerprint:"
-msgstr "Hatz-marka:"
-
-#: remmina/src/remmina_init_dialog.c:427
-msgid "Accept Certificate?"
-msgstr "Ziurtagiria onartu?"
-
-#: remmina/src/remmina_init_dialog.c:460
-msgid "Certificate Changed! Details:"
-msgstr ""
-
-#: remmina/src/remmina_init_dialog.c:494
-msgid "Old Fingerprint:"
-msgstr ""
-
-#: remmina/src/remmina_init_dialog.c:504
-msgid "New Fingerprint:"
-msgstr ""
-
-#: remmina/src/remmina_init_dialog.c:515
-msgid "Accept Changed Certificate?"
-msgstr ""
-
-#: remmina/src/remmina_init_dialog.c:596
-msgid "CA certificate"
-msgstr "ZE ziurtagiria"
-
-#: remmina/src/remmina_init_dialog.c:597
-msgid "CA CRL"
-msgstr "ZE CRL"
-
-#: remmina/src/remmina_init_dialog.c:598
-msgid "Client certificate"
-msgstr "Bezeroaren ziurtagiria"
-
-#: remmina/src/remmina_init_dialog.c:599
-msgid "Client key"
-msgstr "Bezeroaren gakoa"
-
-#: remmina/src/remmina_init_dialog.c:655
-msgid "Do you trust the new public key?"
-msgstr "Gako publiko berriaz fidatzen zara?"
-
-#: remmina/src/remmina_init_dialog.c:678
-msgid "The server is unknown. The public key fingerprint is:"
-msgstr "Zerbitzaria ezezaguna da. Gako publikoaren hatz-marka hau da:"
-
-#: remmina/src/remmina_init_dialog.c:684
+#: remmina/src/remmina_about.c:76
 msgid ""
-"WARNING: The server has changed its public key. This means either you are "
-"under attack,\n"
-"or the administrator has changed the key. The new public key fingerprint is:"
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place, Suite 330, Boston, MA 02111-1307, USA."
 msgstr ""
-"KONTUZ: Zerbitzariak bere gako publikoa aldatu du. Eraso baten aurrean egon "
-"zaitezke\n"
-"edo bestela administratzaileak gakoa aldatu du. Gako publiko berriaren hatz-"
-"marka hau da:"
+"Programa honekin batera GNU Lizentzia Publiko Orokorraren kopia bat ere jaso "
+"beharko zenuke; horrela ez bada, idatzi helbide honetara: Free Software "
+"Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA."
 
-#: remmina/src/remmina_connection_window.c:247
-#, c-format
-msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
-msgstr "Uneko leihoan %i konexio aktibo daude. Ixtea nahi duzu?"
+#: remmina/src/remmina_about.c:90
+msgid "The GTK+ Remote Desktop Client"
+msgstr "GTK+ Urruneko Mahaigainen Bezeroa"
 
-#: remmina/src/remmina_connection_window.c:667
-msgid "Viewport fullscreen mode"
-msgstr "Pantaila osoko leihatila modua"
+#: remmina/src/remmina_about.c:96
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Asier Iturralde Sarasola https://launchpad.net/~asier-iturralde\n"
+"  Ibai Oihanguren Sala https://launchpad.net/~ibai-oihanguren\n"
+"  Iñaki Larrañaga Murgoitio https://launchpad.net/~dooteo\n"
+"  ST https://launchpad.net/~southterritory\n"
+"  Vic https://launchpad.net/~llyzs"
 
-#: remmina/src/remmina_connection_window.c:677
-msgid "Scrolled fullscreen mode"
-msgstr "Korritutako pantaila osoa modua"
-
-#: remmina/src/remmina_connection_window.c:1260
-msgid "Resize the window to fit in remote resolution"
-msgstr "Aldatu leihoaren tamaina urruneko bereizmenera doitzeko"
-
-#: remmina/src/remmina_connection_window.c:1353
-msgid "Grab all keyboard events"
-msgstr "Kapturatu teklatuko gertaera guztiak"
-
-#: remmina/src/remmina_connection_window.c:1362
-msgid "Preferences"
-msgstr "Hobespenak"
-
-#: remmina/src/remmina_connection_window.c:1370
-#: remmina/src/remmina_connection_window.c:1371
-msgid "Tools"
-msgstr "Tresnak"
-
-#: remmina-plugins/vnc/vnc_plugin.c:984
-msgid "Unable to connect to VNC server"
-msgstr "Ezin da VNC zerbitzariarekin konektatu"
-
-#: remmina-plugins/vnc/vnc_plugin.c:985
-#, c-format
-msgid "Couldn't convert '%s' to host address"
-msgstr "Ezin izan da '%s' ostalariaren helbide bihurtu"
-
-#: remmina-plugins/vnc/vnc_plugin.c:986
-#, c-format
-msgid "VNC connection failed: %s"
-msgstr "VNC konexioak huts egin du: %s"
-
-#: remmina-plugins/vnc/vnc_plugin.c:987
-msgid "Your connection has been rejected."
-msgstr "Zure konexioa ukatu egin da."
-
-#: remmina-plugins/vnc/vnc_plugin.c:1915
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:341
-msgid "256 colors"
-msgstr "256 kolore"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1915
-msgid "High color (15 bit)"
-msgstr "Kolore altua (15 bit)"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1915
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:341
-msgid "High color (16 bit)"
-msgstr "Kolore altua (16 bit)"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1916
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:342
-msgid "True color (24 bit)"
-msgstr "Benetako kolorea (24 bit)"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1919 remmina-plugins/rdp/rdp_plugin.c:1085
-#: remmina-plugins/rdp/rdp_settings.c:194 remmina-plugins/nx/nx_plugin.c:620
-msgid "Poor (fastest)"
-msgstr "Baxua (azkarrena)"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1919 remmina-plugins/rdp/rdp_plugin.c:1086
-#: remmina-plugins/rdp/rdp_settings.c:196 remmina-plugins/nx/nx_plugin.c:620
-msgid "Medium"
-msgstr "Ertaina"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1919 remmina-plugins/rdp/rdp_plugin.c:1087
-#: remmina-plugins/rdp/rdp_settings.c:198 remmina-plugins/nx/nx_plugin.c:620
-msgid "Good"
-msgstr "Ona"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1919 remmina-plugins/rdp/rdp_plugin.c:1088
-#: remmina-plugins/rdp/rdp_settings.c:200 remmina-plugins/nx/nx_plugin.c:620
-msgid "Best (slowest)"
-msgstr "Onena (motelena)"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1925
-msgid "Repeater"
-msgstr "Errepikatzailea"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1929 remmina-plugins/vnc/vnc_plugin.c:1943
-#: remmina-plugins/rdp/rdp_plugin.c:1119
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:348
-msgid "Color depth"
-msgstr "Kolore-sakonera"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1930 remmina-plugins/vnc/vnc_plugin.c:1944
-#: remmina-plugins/rdp/rdp_plugin.c:1126 remmina-plugins/nx/nx_plugin.c:629
-msgid "Quality"
-msgstr "Kalitatea"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1931 remmina-plugins/vnc/vnc_plugin.c:1945
-msgid "Show remote cursor"
-msgstr "Erakutsi urruneko kurtsorea"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1932 remmina-plugins/vnc/vnc_plugin.c:1946
-#: remmina-plugins/vnc/vnc_plugin.c:1963
-msgid "View only"
-msgstr "Ikusteko soilik"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1933 remmina-plugins/vnc/vnc_plugin.c:1947
-#: remmina-plugins/rdp/rdp_plugin.c:1134 remmina-plugins/nx/nx_plugin.c:635
-msgid "Disable clipboard sync"
-msgstr "Desgaitu arbelaren sinkronizazioa"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1934 remmina-plugins/vnc/vnc_plugin.c:1948
-#: remmina-plugins/nx/nx_plugin.c:636
-msgid "Disable encryption"
-msgstr "Desgaitu enkriptatzea"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1935 remmina-plugins/vnc/vnc_plugin.c:1949
-#: remmina-plugins/vnc/vnc_plugin.c:1965
-msgid "Disable server input"
-msgstr "Desgaitu zerbitzariaren sarrera"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1940
-msgid "Listen on port"
-msgstr "Entzun ataka honetan"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1966 remmina-plugins/rdp/rdp_plugin.c:1141
-msgid "Refresh"
-msgstr "Freskatu"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1967
-msgid "Open Chat..."
-msgstr "Ireki berriketa..."
-
-#: remmina-plugins/vnc/vnc_plugin.c:1973
-msgid "VNC - Virtual Network Computing"
-msgstr "VNC - Sare Birtualeko Konputazioa"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1982
-msgid "VNC - Incoming Connection"
-msgstr "VNC - Sarrerako konexioa"
-
-#: remmina-plugins/rdp/rdp_plugin.c:890
+#: remmina-plugins/rdp/rdp_plugin.c:886
 #, c-format
 msgid ""
 "Authentication to RDP server %s failed.\n"
 "Check username, password and domain."
 msgstr ""
 
-#: remmina-plugins/rdp/rdp_plugin.c:896
+#: remmina-plugins/rdp/rdp_plugin.c:892
 #, c-format
 msgid "Connection to RDP server %s failed."
 msgstr ""
 
-#: remmina-plugins/rdp/rdp_plugin.c:899
+#: remmina-plugins/rdp/rdp_plugin.c:895
 #, c-format
 msgid "Unable to connect to RDP server %s"
 msgstr "Ezin izan da %s RDP zerbitzarira konektatu"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1074
+#: remmina-plugins/rdp/rdp_plugin.c:1081
 msgid "256 colors (8 bpp)"
 msgstr "256 kolore (8 bpp)"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1075
+#: remmina-plugins/rdp/rdp_plugin.c:1082
 msgid "High color (15 bpp)"
 msgstr "Kolore altua (15 bpp)"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1076
+#: remmina-plugins/rdp/rdp_plugin.c:1083
 msgid "High color (16 bpp)"
 msgstr "Kolore altua (16 bpp)"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1077
+#: remmina-plugins/rdp/rdp_plugin.c:1084
 msgid "True color (24 bpp)"
 msgstr "Benetako kolorea (24 bpp)"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1078
+#: remmina-plugins/rdp/rdp_plugin.c:1085
 msgid "True color (32 bpp)"
 msgstr "Benetako kolorea (32 bpp)"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1079
+#: remmina-plugins/rdp/rdp_plugin.c:1086
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
+#: remmina-plugins/rdp/rdp_plugin.c:1092
+#: remmina-plugins/rdp/rdp_settings.c:196 remmina-plugins/nx/nx_plugin.c:686
+#: remmina-plugins/vnc/vnc_plugin.c:1989
+msgid "Poor (fastest)"
+msgstr "Baxua (azkarrena)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1093
+#: remmina-plugins/rdp/rdp_settings.c:198 remmina-plugins/nx/nx_plugin.c:686
+#: remmina-plugins/vnc/vnc_plugin.c:1989
+msgid "Medium"
+msgstr "Ertaina"
+
 #: remmina-plugins/rdp/rdp_plugin.c:1094
+#: remmina-plugins/rdp/rdp_settings.c:200 remmina-plugins/nx/nx_plugin.c:686
+#: remmina-plugins/vnc/vnc_plugin.c:1989
+msgid "Good"
+msgstr "Ona"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1095
+#: remmina-plugins/rdp/rdp_settings.c:202 remmina-plugins/nx/nx_plugin.c:686
+#: remmina-plugins/vnc/vnc_plugin.c:1989
+msgid "Best (slowest)"
+msgstr "Onena (motelena)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1101
 msgid "Off"
 msgstr "Desaktibatu"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1096
+#: remmina-plugins/rdp/rdp_plugin.c:1103
 msgid "Local - low quality"
 msgstr "Lokala - kalitate baxua"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1097
+#: remmina-plugins/rdp/rdp_plugin.c:1104
 msgid "Local - medium quality"
 msgstr "Lokala - kalitate ertaina"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1098
+#: remmina-plugins/rdp/rdp_plugin.c:1105
 msgid "Local - high quality"
 msgstr "Lokala - kalitate altua"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1105
+#: remmina-plugins/rdp/rdp_plugin.c:1112
 msgid "Negotiate"
 msgstr "Negoziatu"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1120
+#: remmina-plugins/rdp/rdp_plugin.c:1126
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:339
+#: remmina-plugins/vnc/vnc_plugin.c:1997 remmina-plugins/vnc/vnc_plugin.c:2011
+msgid "Color depth"
+msgstr "Kolore-sakonera"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1127
 msgid "Share folder"
 msgstr "Partekatu karpeta"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1127
+#: remmina-plugins/rdp/rdp_plugin.c:1133 remmina-plugins/nx/nx_plugin.c:695
+#: remmina-plugins/vnc/vnc_plugin.c:1998 remmina-plugins/vnc/vnc_plugin.c:2012
+msgid "Quality"
+msgstr "Kalitatea"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1134
 msgid "Sound"
 msgstr "Soinua"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1128
+#: remmina-plugins/rdp/rdp_plugin.c:1135
 msgid "Security"
 msgstr "Segurtasuna"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1129
+#: remmina-plugins/rdp/rdp_plugin.c:1136
 msgid "Client name"
 msgstr "Bezeroaren izena"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1132
+#: remmina-plugins/rdp/rdp_plugin.c:1139
 msgid "Share local printers"
 msgstr "Partekatu inprimagailu lokalak"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1133
+#: remmina-plugins/rdp/rdp_plugin.c:1140
 msgid "Share smartcard"
 msgstr ""
 
-#: remmina-plugins/rdp/rdp_plugin.c:1135
+#: remmina-plugins/rdp/rdp_plugin.c:1141 remmina-plugins/nx/nx_plugin.c:701
+#: remmina-plugins/vnc/vnc_plugin.c:2001 remmina-plugins/vnc/vnc_plugin.c:2015
+msgid "Disable clipboard sync"
+msgstr "Desgaitu arbelaren sinkronizazioa"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1142
 msgid "Attach to console (Windows 2003 / 2003 R2)"
 msgstr "Erantsi kontsolari (Windows 2003 / 2003 R2)"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1151
+#: remmina-plugins/rdp/rdp_plugin.c:1158
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Urruneko Mahaigain Protokoloa"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1173
+#: remmina-plugins/rdp/rdp_plugin.c:1180
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP fitxategi  kudeatzailea"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1188
+#: remmina-plugins/rdp/rdp_plugin.c:1195
 msgid "RDP - Preferences"
 msgstr "RDP - Hobespenak"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1206
+#: remmina-plugins/rdp/rdp_plugin.c:1213
 msgid "Export connection in Windows .rdp file format"
 msgstr "Esportatu konexioa Windows-eko .rdp fitxategi formatua erabiliz"
 
@@ -1402,66 +1351,84 @@ msgstr "Esportatu konexioa Windows-eko .rdp fitxategi formatua erabiliz"
 msgid "<Auto detect>"
 msgstr "<Autodetektatu>"
 
-#: remmina-plugins/rdp/rdp_settings.c:280
+#: remmina-plugins/rdp/rdp_settings.c:194
+msgid "<Choose a quality level to edit...>"
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_settings.c:302
 msgid "Keyboard layout"
 msgstr "Teklatuaren diseinua"
 
-#: remmina-plugins/rdp/rdp_settings.c:303
+#: remmina-plugins/rdp/rdp_settings.c:325
 msgid "Use client keyboard mapping"
 msgstr "Erabili bezeroaren teklatu mapeatzea"
 
-#: remmina-plugins/rdp/rdp_settings.c:313
-msgid "Quality option"
-msgstr "Kalitate hobespena"
+#: remmina-plugins/rdp/rdp_settings.c:335
+msgid "Quality settings"
+msgstr ""
 
-#: remmina-plugins/rdp/rdp_settings.c:332
+#: remmina-plugins/rdp/rdp_settings.c:354
 msgid "Wallpaper"
 msgstr "Horma-papera"
 
-#: remmina-plugins/rdp/rdp_settings.c:339
+#: remmina-plugins/rdp/rdp_settings.c:361
 msgid "Window drag"
 msgstr "Leiho arrastatzea"
 
-#: remmina-plugins/rdp/rdp_settings.c:346
+#: remmina-plugins/rdp/rdp_settings.c:368
 msgid "Menu animation"
 msgstr "Menuaren animazioa"
 
-#: remmina-plugins/rdp/rdp_settings.c:353
+#: remmina-plugins/rdp/rdp_settings.c:375
 msgid "Theme"
 msgstr "Gaia"
 
-#: remmina-plugins/rdp/rdp_settings.c:360
+#: remmina-plugins/rdp/rdp_settings.c:382
 msgid "Cursor shadow"
 msgstr "Kurtsorearen itzala"
 
-#: remmina-plugins/rdp/rdp_settings.c:367
+#: remmina-plugins/rdp/rdp_settings.c:389
 msgid "Cursor blinking"
 msgstr "Kurtsorearen keinua"
 
-#: remmina-plugins/rdp/rdp_settings.c:374
+#: remmina-plugins/rdp/rdp_settings.c:396
 msgid "Font smoothing"
 msgstr "Letra-tipoa leuntzea"
 
-#: remmina-plugins/rdp/rdp_settings.c:381
+#: remmina-plugins/rdp/rdp_settings.c:403
 msgid "Composition"
 msgstr "Konposaketa"
 
-#: remmina-plugins/telepathy/telepathy_channel_handler.c:246
-#, c-format
-msgid ""
-"%s wants to share his/her desktop.\n"
-"Do you accept the invitation?"
-msgstr ""
-"%s-k bere mahaigaina partekatu nahi du.\n"
-"Onartzen duzu gonbidapena?"
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:332
+msgid "Grayscale"
+msgstr "Gris-eskala"
 
-#: remmina-plugins/telepathy/telepathy_channel_handler.c:249
-msgid "Desktop sharing invitation"
-msgstr "Mahaigaina partekatzeko gonbidapena"
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:332
+#: remmina-plugins/vnc/vnc_plugin.c:1985
+msgid "256 colors"
+msgstr "256 kolore"
 
-#: remmina-plugins/telepathy/telepathy_plugin.c:51
-msgid "Telepathy - Desktop Sharing"
-msgstr "Telepathy - Mahaigain partekatzea"
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:332
+#: remmina-plugins/vnc/vnc_plugin.c:1985
+msgid "High color (16 bit)"
+msgstr "Kolore altua (16 bit)"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:333
+#: remmina-plugins/vnc/vnc_plugin.c:1986
+msgid "True color (24 bit)"
+msgstr "Benetako kolorea (24 bit)"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:341 remmina-plugins/nx/nx_plugin.c:703
+msgid "Use local cursor"
+msgstr "Erabili kurtsore lokala"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:342
+msgid "Disconnect after one session"
+msgstr "Deskonektatu saio baten ostean"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:346
+msgid "XDMCP - X Remote Session"
+msgstr "XDMCP - X Urruneko Saioa"
 
 #: remmina-plugins/nx/nx_session_manager.c:106
 msgid "Terminating"
@@ -1496,60 +1463,85 @@ msgstr "Pantaila"
 msgid "Status"
 msgstr "Egoera"
 
-#: remmina-plugins/nx/nx_plugin.c:637 remmina-plugins/xdmcp/xdmcp_plugin.c:350
-msgid "Use local cursor"
-msgstr "Erabili kurtsore lokala"
+#: remmina-plugins/nx/nx_plugin.c:702 remmina-plugins/vnc/vnc_plugin.c:2002
+#: remmina-plugins/vnc/vnc_plugin.c:2016
+msgid "Disable encryption"
+msgstr "Desgaitu enkriptatzea"
 
-#: remmina-plugins/nx/nx_plugin.c:641
+#: remmina-plugins/nx/nx_plugin.c:707
 msgid "NX - NX Technology"
 msgstr "NX - NX Teknologia"
 
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:341
-msgid "Grayscale"
-msgstr "Gris-eskala"
+#: remmina-plugins/vnc/vnc_plugin.c:1056
+msgid "Unable to connect to VNC server"
+msgstr "Ezin da VNC zerbitzariarekin konektatu"
 
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:351
-msgid "Disconnect after one session"
-msgstr "Deskonektatu saio baten ostean"
+#: remmina-plugins/vnc/vnc_plugin.c:1057
+#, c-format
+msgid "Couldn't convert '%s' to host address"
+msgstr "Ezin izan da '%s' ostalariaren helbide bihurtu"
 
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:355
-msgid "XDMCP - X Remote Session"
-msgstr "XDMCP - X Urruneko Saioa"
+#: remmina-plugins/vnc/vnc_plugin.c:1058
+#, c-format
+msgid "VNC connection failed: %s"
+msgstr "VNC konexioak huts egin du: %s"
 
-#~ msgid ""
-#~ "You should have received a copy of the GNU General Public License along "
-#~ "with this program; if not, write to the Free Software Foundation, Inc., "
-#~ "59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.In addition, as a "
-#~ "special exception, the copyright holders give permission to link the code "
-#~ "of portions of this program with the OpenSSL library under certain "
-#~ "conditions as described in each individual source file, and distribute "
-#~ "linked combinations including the two. You must obey the GNU General "
-#~ "Public License in all respects for all of the code used other than "
-#~ "OpenSSL. If you modify file(s) with this exception, you may extend this "
-#~ "exception to your version of the file(s), but you are not obligated to do "
-#~ "so. If you do not wish to do so, delete this exception statement from "
-#~ "your version. If you delete this exception statement from all source "
-#~ "files in the program, then also delete it here. "
-#~ msgstr ""
-#~ "Programa honekin batera GNU Lizentzia Publiko Orokorraren kopia bat ere "
-#~ "jaso beharko zenuke; horrela ez bada, idatzi helbide honetara: Free "
-#~ "Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA "
-#~ "02111-1307, USA.In addition, as a special exception, the copyright "
-#~ "holders give permission to link the code of portions of this program with "
-#~ "the OpenSSL library under certain conditions as described in each "
-#~ "individual source file, and distribute linked combinations including the "
-#~ "two. You must obey the GNU General Public License in all respects for all "
-#~ "of the code used other than OpenSSL. If you modify file(s) with this "
-#~ "exception, you may extend this exception to your version of the file(s), "
-#~ "but you are not obligated to do so. If you do not wish to do so, delete "
-#~ "this exception statement from your version. If you delete this exception "
-#~ "statement from all source files in the program, then also delete it here. "
+#: remmina-plugins/vnc/vnc_plugin.c:1059
+msgid "Your connection has been rejected."
+msgstr "Zure konexioa ukatu egin da."
 
-#~ msgid "Invisible floating toolbar"
-#~ msgstr "Tresna-barra mugikorra ikusezina"
+#: remmina-plugins/vnc/vnc_plugin.c:1985
+msgid "High color (15 bit)"
+msgstr "Kolore altua (15 bit)"
 
-#~ msgid "SSH Server"
-#~ msgstr "SSH zerbitzaria"
+#: remmina-plugins/vnc/vnc_plugin.c:1994
+msgid "Repeater"
+msgstr "Errepikatzailea"
 
-msgid "Overwrite all"
+#: remmina-plugins/vnc/vnc_plugin.c:1999 remmina-plugins/vnc/vnc_plugin.c:2013
+msgid "Show remote cursor"
+msgstr "Erakutsi urruneko kurtsorea"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2000 remmina-plugins/vnc/vnc_plugin.c:2014
+#: remmina-plugins/vnc/vnc_plugin.c:2031
+msgid "View only"
+msgstr "Ikusteko soilik"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2003 remmina-plugins/vnc/vnc_plugin.c:2017
+#: remmina-plugins/vnc/vnc_plugin.c:2033
+msgid "Disable server input"
+msgstr "Desgaitu zerbitzariaren sarrera"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2008
+msgid "Listen on port"
+msgstr "Entzun ataka honetan"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2035
+msgid "Open Chat..."
+msgstr "Ireki berriketa..."
+
+#: remmina-plugins/vnc/vnc_plugin.c:2041
+msgid "VNC - Virtual Network Computing"
+msgstr "VNC - Sare Birtualeko Konputazioa"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2050
+msgid "VNC - Incoming Connection"
+msgstr "VNC - Sarrerako konexioa"
+
+#: remmina-plugins/telepathy/telepathy_plugin.c:51
+msgid "Telepathy - Desktop Sharing"
+msgstr "Telepathy - Mahaigain partekatzea"
+
+#: remmina-plugins/telepathy/telepathy_channel_handler.c:246
+#, c-format
+msgid ""
+"%s wants to share his/her desktop.\n"
+"Do you accept the invitation?"
 msgstr ""
+"%s-k bere mahaigaina partekatu nahi du.\n"
+"Onartzen duzu gonbidapena?"
+
+#: remmina-plugins/telepathy/telepathy_channel_handler.c:249
+msgid "Desktop sharing invitation"
+msgstr "Mahaigaina partekatzeko gonbidapena"
+
