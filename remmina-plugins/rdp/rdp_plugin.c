@@ -740,6 +740,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	}
 	g_free(value);
 
+	/* PerformanceFlags bitmask need also to be splitted into BOOL variables
+	 * like rfi->settings->DisableWallpaper, rfi->settings->AllowFontSmoothing...
+	 * or freerdp_get_param_bool() function will return the wrong value
+	*/
+	freerdp_performance_flags_split(rfi->settings);
+
 	rfi->settings->KeyboardLayout = remmina_rdp_settings_get_keyboard_layout();
 
 	if (remmina_plugin_service->file_get_int(remminafile, "console", FALSE))
