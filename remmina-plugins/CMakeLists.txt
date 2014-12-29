@@ -72,7 +72,3 @@ if(ZLIB_FOUND)
 	add_subdirectory(vnc)
 endif()
 
-if(WITH_TRANSLATIONS)
-	add_subdirectory(po)
-endif()
-
