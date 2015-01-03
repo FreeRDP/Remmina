@@ -838,10 +838,8 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 3, 2, 1);
 	priv->vte_system_colors = widget;
 
-	if (remmina_pref.vte_system_colors)
-	{
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), TRUE);
-	}
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), 
+		remmina_pref.vte_system_colors);
 
 	widget = gtk_label_new(_("Scrollback lines"));
 	gtk_widget_show(widget);
