@@ -881,7 +881,7 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 			g_free(s2);
 
 			THREADS_ENTER
-			ret = remmina_plugin_service->protocol_plugin_init_authuserpwd (gp, FALSE);
+			ret = remmina_plugin_service->protocol_plugin_init_authuserpwd (gp, FALSE, FALSE);
 			THREADS_LEAVE
 
 			if (ret == GTK_RESPONSE_OK)
