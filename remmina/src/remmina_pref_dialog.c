@@ -93,6 +93,7 @@ struct _RemminaPrefDialogPriv
 	GtkWidget *vte_font_check;
 	GtkWidget *vte_font_button;
 	GtkWidget *vte_allow_bold_text_check;
+	GtkWidget *vte_system_colors;
 	GtkWidget *vte_lines_entry;
 	GtkWidget *vte_shortcutkey_copy_chooser;
 	GtkWidget *vte_shortcutkey_paste_chooser;
@@ -261,6 +262,7 @@ static void remmina_pref_dialog_destroy(GtkWidget *widget, gpointer data)
 		remmina_pref.vte_font = g_strdup(gtk_font_button_get_font_name(GTK_FONT_BUTTON(priv->vte_font_button)));
 	}
 	remmina_pref.vte_allow_bold_text = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->vte_allow_bold_text_check));
+	remmina_pref.vte_system_colors = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->vte_system_colors));
 	remmina_pref.vte_lines = atoi(gtk_entry_get_text(GTK_ENTRY(priv->vte_lines_entry)));
 	remmina_pref.vte_shortcutkey_copy = REMMINA_KEY_CHOOSER(priv->vte_shortcutkey_copy_chooser)->keyval;
 	remmina_pref.vte_shortcutkey_paste = REMMINA_KEY_CHOOSER(priv->vte_shortcutkey_paste_chooser)->keyval;
@@ -736,11 +738,22 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 2, 1, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.vte_allow_bold_text);
 	priv->vte_allow_bold_text_check = widget;
+	/* Add a checkbox to select where use the system theme colors or
+	 * the Remmina default colors */
+	widget = gtk_check_button_new_with_label (_("Use system theme colors"));
+	gtk_widget_show (widget);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 3, 2, 1);
+	priv->vte_system_colors = widget;
+
+	if (remmina_pref.vte_system_colors)
+	{
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), TRUE);
+	}
 
 	widget = gtk_label_new(_("Scrollback lines"));
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
-	gtk_grid_attach(GTK_GRID(grid), widget, 0, 3, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 4, 1, 1);
 
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
