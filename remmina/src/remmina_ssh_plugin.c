@@ -247,7 +247,7 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	vte_terminal_set_size (VTE_TERMINAL (vte), 80, 25);
 	vte_terminal_set_scroll_on_keystroke (VTE_TERMINAL (vte), TRUE);
 	/* Set default system theme colors instead of the default vte colors */
-	if( remmina_pref.vte_system_colors)
+	if (remmina_pref.vte_system_colors)
 	{
 		style_context = gtk_widget_get_style_context(GTK_WIDGET (vte));
 		gtk_style_context_get_color(style_context, GTK_STATE_FLAG_NORMAL, &foreground_color);
