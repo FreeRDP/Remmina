@@ -129,6 +129,7 @@ typedef struct _RemminaPref
 	/* VTE */
 	gchar *vte_font;
 	gboolean vte_allow_bold_text;
+	gboolean vte_system_colors;
 	gint vte_lines;
 	guint vte_shortcutkey_copy;
 	guint vte_shortcutkey_paste;

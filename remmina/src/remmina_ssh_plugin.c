@@ -230,6 +230,9 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	GtkWidget *hbox;
 	GtkWidget *vscrollbar;
 	GtkWidget *vte;
+	GtkStyleContext *style_context;
+	GdkRGBA foreground_color;
+	GdkRGBA background_color;
 
 	gpdata = g_new0 (RemminaPluginSshData, 1);
 	g_object_set_data_full (G_OBJECT(gp), "plugin-data", gpdata, g_free);
@@ -243,6 +246,15 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	gtk_widget_show(vte);
 	vte_terminal_set_size (VTE_TERMINAL (vte), 80, 25);
 	vte_terminal_set_scroll_on_keystroke (VTE_TERMINAL (vte), TRUE);
+	/* Set default system theme colors instead of the default vte colors */
+	if( remmina_pref.vte_system_colors)
+	{
+		style_context = gtk_widget_get_style_context(GTK_WIDGET (vte));
+		gtk_style_context_get_color(style_context, GTK_STATE_FLAG_NORMAL, &foreground_color);
+		gtk_style_context_get_background_color(style_context, GTK_STATE_FLAG_NORMAL, &background_color);
+		vte_terminal_set_colors (VTE_TERMINAL(vte), &foreground_color, &background_color, NULL, 0);
+	}
+
 	gtk_box_pack_start (GTK_BOX (hbox), vte, TRUE, TRUE, 0);
 	gpdata->vte = vte;
 	remmina_plugin_ssh_set_vte_pref (gp);
