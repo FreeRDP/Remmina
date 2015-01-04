@@ -495,7 +495,6 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	vbox = gtk_vbox_new(FALSE, 2);
 #endif
 	gtk_widget_show(vbox);
-	gtk_container_set_border_width(GTK_CONTAINER(vbox), 8);
 	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, tablabel);
 
 	widget = remmina_string_list_new();
