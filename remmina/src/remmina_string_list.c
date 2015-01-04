@@ -228,6 +228,7 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	/* buttons packed into a vbox */
 	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
 	gtk_widget_show(vbox);
+	gtk_box_set_spacing(GTK_BOX(vbox), 4.0);
 	gtk_grid_attach(GTK_GRID(gsl), vbox, 1, 0, 2, 1);
 
 	image = gtk_image_new_from_icon_name("list-add", GTK_ICON_SIZE_MENU);
