@@ -519,24 +519,28 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_container_set_border_width(GTK_CONTAINER(grid), 8);
 
 	widget = gtk_check_button_new_with_label(_("Show new connection on top of the menu"));
+	gtk_widget_set_hexpand(GTK_WIDGET(widget), TRUE);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.applet_new_ontop);
 	priv->applet_new_ontop_check = widget;
 
 	widget = gtk_check_button_new_with_label(_("Hide total count in group menu"));
+	gtk_widget_set_hexpand(GTK_WIDGET(widget), TRUE);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 1, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.applet_hide_count);
 	priv->applet_hide_count_check = widget;
 
 	widget = gtk_check_button_new_with_label(_("Disable tray icon"));
+	gtk_widget_set_hexpand(GTK_WIDGET(widget), TRUE);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 2, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.disable_tray_icon);
 	priv->disable_tray_icon_check = widget;
 
 	widget = gtk_check_button_new_with_label(_("Start Remmina in tray icon at user logon"));
+	gtk_widget_set_hexpand(GTK_WIDGET(widget), TRUE);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 3, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_icon_is_autostart());
@@ -545,6 +549,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 
 #ifdef ENABLE_MINIMIZE_TO_TRAY
 	widget = gtk_check_button_new_with_label(_("Minimize windows to tray"));
+	gtk_widget_set_hexpand(GTK_WIDGET(widget), TRUE);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 4, 2, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.minimize_to_tray);
