@@ -703,7 +703,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 1, 1);
-
+  /* Use system default font option */
 	widget = gtk_check_button_new_with_label(_("Use system default font"));
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
@@ -714,7 +714,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	{
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
 	}
-
+  /* Customized font option */
 	widget = gtk_font_button_new();
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
@@ -731,28 +731,26 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	}
 	g_signal_connect(G_OBJECT(priv->vte_font_check), "toggled", G_CALLBACK(remmina_pref_dialog_vte_font_on_toggled),
 			dialog);
-
+	/* Allow bold text option */
 	widget = gtk_check_button_new_with_label(_("Allow bold text"));
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 2, 1, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.vte_allow_bold_text);
 	priv->vte_allow_bold_text_check = widget;
-	/* Add a checkbox to select where use the system theme colors or
-	 * the Remmina default colors */
+	/* Use system theme colors option */
 	widget = gtk_check_button_new_with_label (_("Use system theme colors"));
 	gtk_widget_show (widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 3, 1, 1);
 	priv->vte_system_colors = widget;
-
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), 
 		remmina_pref.vte_system_colors);
-
+	/* Scrollback lines label */
 	widget = gtk_label_new(_("Scrollback lines"));
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 4, 1, 1);
-
+	/* Scrollback lines option */
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
@@ -761,7 +759,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.vte_lines);
 	gtk_entry_set_text(GTK_ENTRY(widget), buf);
 	priv->vte_lines_entry = widget;
-
+	/* Keyboard label */
 	widget = gtk_label_new(_("Keyboard"));
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.0);
