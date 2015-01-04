@@ -347,20 +347,12 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(tablabel);
 
 	/* Options body */
-#if GTK_VERSION == 3
-	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-#elif GTK_VERSION == 2
-	vbox = gtk_vbox_new(FALSE, 0);
-#endif
-	gtk_widget_show(vbox);
-	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, tablabel);
-
 	grid = gtk_grid_new();
 	gtk_widget_show(grid);
+	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), grid, tablabel);
 	gtk_grid_set_row_spacing(GTK_GRID(grid), 5);
 	gtk_grid_set_column_spacing(GTK_GRID(grid), 4);
 	gtk_container_set_border_width(GTK_CONTAINER(grid), 8);
-	gtk_box_pack_start(GTK_BOX(vbox), grid, FALSE, FALSE, 0);
 
 	widget = gtk_check_button_new_with_label(_("Remember last view mode for each connection"));
 	gtk_widget_show(widget);
@@ -519,20 +511,12 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(tablabel);
 
 	/* Applet body */
-#if GTK_VERSION == 3
-	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-#elif GTK_VERSION == 2
-	vbox = gtk_vbox_new(FALSE, 0);
-#endif
-	gtk_widget_show(vbox);
-	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, tablabel);
-
 	grid = gtk_grid_new();
 	gtk_widget_show(grid);
+	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), grid, tablabel);
 	gtk_grid_set_row_spacing(GTK_GRID(grid), 4);
 	gtk_grid_set_column_spacing(GTK_GRID(grid), 4);
 	gtk_container_set_border_width(GTK_CONTAINER(grid), 8);
-	gtk_box_pack_start(GTK_BOX(vbox), grid, FALSE, FALSE, 0);
 
 	widget = gtk_check_button_new_with_label(_("Show new connection on top of the menu"));
 	gtk_widget_show(widget);
@@ -577,20 +561,12 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(tablabel);
 
 	/* Keyboard body */
-#if GTK_VERSION == 3
-	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-#elif GTK_VERSION == 2
-	vbox = gtk_vbox_new(FALSE, 0);
-#endif
-	gtk_widget_show(vbox);
-	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, tablabel);
-
 	grid = gtk_grid_new();
 	gtk_widget_show(grid);
+	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), grid, tablabel);
 	gtk_grid_set_row_spacing(GTK_GRID(grid), 4);
 	gtk_grid_set_column_spacing(GTK_GRID(grid), 4);
 	gtk_container_set_border_width(GTK_CONTAINER(grid), 8);
-	gtk_box_pack_start(GTK_BOX(vbox), grid, FALSE, FALSE, 0);
 
 	widget = gtk_label_new(_("Host key"));
 	gtk_widget_show(widget);
@@ -754,20 +730,12 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(tablabel);
 
 	/* Terminal body */
-#if GTK_VERSION == 3
-	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-#elif GTK_VERSION == 2
-	vbox = gtk_vbox_new(FALSE, 0);
-#endif
-	gtk_widget_show(vbox);
-	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, tablabel);
-
 	grid = gtk_grid_new();
 	gtk_widget_show(grid);
+	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), grid, tablabel);
 	gtk_grid_set_row_spacing(GTK_GRID(grid), 4);
 	gtk_grid_set_column_spacing(GTK_GRID(grid), 4);
 	gtk_container_set_border_width(GTK_CONTAINER(grid), 8);
-	gtk_box_pack_start(GTK_BOX(vbox), grid, FALSE, FALSE, 0);
 
 	widget = gtk_label_new(_("Font"));
 	gtk_widget_show(widget);
