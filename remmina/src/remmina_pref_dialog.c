@@ -722,7 +722,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 1, 1);
-  /* Use system default font option */
+	/* Use system default font option */
 	widget = gtk_check_button_new_with_label(_("Use system default font"));
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
@@ -733,7 +733,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	{
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
 	}
-  /* Customized font option */
+	/* Customized font option */
 	widget = gtk_font_button_new();
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
