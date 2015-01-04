@@ -742,7 +742,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	 * the Remmina default colors */
 	widget = gtk_check_button_new_with_label (_("Use system theme colors"));
 	gtk_widget_show (widget);
-	gtk_grid_attach(GTK_GRID(grid), widget, 1, 3, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 3, 1, 1);
 	priv->vte_system_colors = widget;
 
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), 
@@ -756,7 +756,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
-	gtk_grid_attach(GTK_GRID(grid), widget, 1, 3, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 4, 1, 1);
 	gtk_entry_set_max_length(GTK_ENTRY(widget), 5);
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.vte_lines);
 	gtk_entry_set_text(GTK_ENTRY(widget), buf);
@@ -765,13 +765,13 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	widget = gtk_label_new(_("Keyboard"));
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.0);
-	gtk_grid_attach(GTK_GRID(grid), widget, 0, 4, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 5, 1, 1);
 
 	grid_keys = gtk_grid_new();
 	gtk_grid_set_row_spacing(GTK_GRID(grid_keys), 4);
 	gtk_grid_set_column_spacing(GTK_GRID(grid_keys), 4);
 	gtk_widget_show(grid_keys);
-	gtk_grid_attach(GTK_GRID(grid), grid_keys, 1, 4, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), grid_keys, 1, 5, 1, 1);
 
 	widget = gtk_label_new(_("Copy"));
 	gtk_widget_show(widget);
