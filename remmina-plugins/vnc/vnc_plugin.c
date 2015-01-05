@@ -1061,12 +1061,13 @@ N_("Your connection has been rejected.")
 /* TODO: We only store the last message at this moment. */
 #define MAX_ERROR_LENGTH 1000
 static gchar vnc_error[MAX_ERROR_LENGTH + 1];
+static gboolean vnc_encryption_disable_requested;
 
 static void remmina_plugin_vnc_rfb_output(const char *format, ...)
 {
     va_list args;
 	va_start(args, format);
-	gchar *f, *p;
+	gchar *f, *p, *ff;
 
 	/* eliminate the last \n */
 	f = g_strdup (format);
@@ -1076,6 +1077,20 @@ static void remmina_plugin_vnc_rfb_output(const char *format, ...)
 	{
 		p = va_arg (args, gchar*);
 		g_snprintf (vnc_error, MAX_ERROR_LENGTH, _(f), _(p));
+	}
+	else if (g_strcmp0(f, "Unknown authentication scheme from VNC server: %s") == 0)
+	{
+		p = va_arg (args, gchar*);
+		if (vnc_encryption_disable_requested) {
+			ff = g_strconcat(_("Unknown authentication scheme from VNC server: %s"),
+				". ",
+				_("Please retry after enabling encryption on this profile."),
+				NULL);
+			g_snprintf (vnc_error, MAX_ERROR_LENGTH, ff, p);
+			g_free(ff);
+		}
+		else
+			g_snprintf (vnc_error, MAX_ERROR_LENGTH, _(f), p);
 	}
 	else
 	{
@@ -1324,7 +1339,12 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 
 		if (remmina_plugin_service->file_get_int(remminafile, "disableencryption", FALSE))
 		{
+			vnc_encryption_disable_requested = TRUE;
 			SetClientAuthSchemes (cl, remmina_plugin_vnc_no_encrypt_auth_types, -1);
+		}
+		else
+		{
+			vnc_encryption_disable_requested = FALSE;
 		}
 
 		if (rfbInitClient(cl, NULL, NULL))
