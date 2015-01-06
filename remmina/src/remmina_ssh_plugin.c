@@ -246,29 +246,20 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	gtk_widget_show(vte);
 	vte_terminal_set_size (VTE_TERMINAL (vte), 80, 25);
 	vte_terminal_set_scroll_on_keystroke (VTE_TERMINAL (vte), TRUE);
-	/* Set default system theme colors instead of the default vte colors */
 	if (remmina_pref.vte_system_colors)
 	{
+		/* Get default system theme colors */
 		style_context = gtk_widget_get_style_context(GTK_WIDGET (vte));
 		gtk_style_context_get_color(style_context, GTK_STATE_FLAG_NORMAL, &foreground_color);
 		gtk_style_context_get_background_color(style_context, GTK_STATE_FLAG_NORMAL, &background_color);
-		vte_terminal_set_colors (VTE_TERMINAL(vte), &foreground_color, &background_color, NULL, 0);
 	}
 	else
 	{
-		/* Customize vte foreground color */
-		if (remmina_pref.vte_foreground_color)
-		{
-			gdk_rgba_parse(&foreground_color, remmina_pref.vte_foreground_color);
-			vte_terminal_set_color_foreground (VTE_TERMINAL(vte), &foreground_color);
-		}
-		/* Customize vte background color */
-		if (remmina_pref.vte_background_color)
-		{
-			gdk_rgba_parse(&background_color, remmina_pref.vte_background_color);
-			vte_terminal_set_color_background (VTE_TERMINAL(vte), &background_color);
-		}
+		/* Get customized colors */
+		gdk_rgba_parse(&foreground_color, remmina_pref.vte_foreground_color);
+		gdk_rgba_parse(&background_color, remmina_pref.vte_background_color);
 	}
+	vte_terminal_set_colors (VTE_TERMINAL(vte), &foreground_color, &background_color, NULL, 0);
 
 	gtk_box_pack_start (GTK_BOX (hbox), vte, TRUE, TRUE, 0);
 	gpdata->vte = vte;
