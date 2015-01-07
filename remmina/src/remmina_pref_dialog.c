@@ -93,6 +93,11 @@ struct _RemminaPrefDialogPriv
 	GtkWidget *vte_font_check;
 	GtkWidget *vte_font_button;
 	GtkWidget *vte_allow_bold_text_check;
+	GtkWidget *vte_system_colors;
+	GtkWidget *vte_foreground_color_label;
+	GtkWidget *vte_foreground_color;
+	GtkWidget *vte_background_color_label;
+	GtkWidget *vte_background_color;
 	GtkWidget *vte_lines_entry;
 	GtkWidget *vte_shortcutkey_copy_chooser;
 	GtkWidget *vte_shortcutkey_paste_chooser;
@@ -168,6 +173,7 @@ static void remmina_pref_dialog_destroy(GtkWidget *widget, gpointer data)
 {
 	gchar *s;
 	gboolean b;
+	GdkRGBA color;
 
 	RemminaPrefDialogPriv *priv = REMMINA_PREF_DIALOG(widget)->priv;
 
@@ -261,6 +267,11 @@ static void remmina_pref_dialog_destroy(GtkWidget *widget, gpointer data)
 		remmina_pref.vte_font = g_strdup(gtk_font_button_get_font_name(GTK_FONT_BUTTON(priv->vte_font_button)));
 	}
 	remmina_pref.vte_allow_bold_text = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->vte_allow_bold_text_check));
+	remmina_pref.vte_system_colors = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->vte_system_colors));
+	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(priv->vte_foreground_color), &color);
+	remmina_pref.vte_foreground_color = gdk_rgba_to_string(&color);
+	gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER(priv->vte_background_color), &color);
+	remmina_pref.vte_background_color = gdk_rgba_to_string(&color);
 	remmina_pref.vte_lines = atoi(gtk_entry_get_text(GTK_ENTRY(priv->vte_lines_entry)));
 	remmina_pref.vte_shortcutkey_copy = REMMINA_KEY_CHOOSER(priv->vte_shortcutkey_copy_chooser)->keyval;
 	remmina_pref.vte_shortcutkey_paste = REMMINA_KEY_CHOOSER(priv->vte_shortcutkey_paste_chooser)->keyval;
@@ -301,6 +312,15 @@ static void remmina_pref_dialog_vte_font_on_toggled(GtkWidget *widget, RemminaPr
 	gtk_widget_set_sensitive(dialog->priv->vte_font_button, !gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)));
 }
 
+static void remmina_pref_dialog_vte_color_on_toggled(GtkWidget *widget, RemminaPrefDialog *dialog)
+{
+	gboolean status = !gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget));
+	gtk_widget_set_sensitive (dialog->priv->vte_foreground_color_label, status);
+	gtk_widget_set_sensitive (dialog->priv->vte_foreground_color, status);
+	gtk_widget_set_sensitive (dialog->priv->vte_background_color_label, status);
+	gtk_widget_set_sensitive (dialog->priv->vte_background_color, status);
+}
+
 static void remmina_pref_dialog_disable_tray_icon_on_toggled(GtkWidget *widget, RemminaPrefDialog *dialog)
 {
 	gboolean b;
@@ -323,6 +343,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	GtkWidget *widget;
 	GtkWidget *grid_keys;
 	gchar buf[100];
+	GdkRGBA color;
 
 	priv = g_new(RemminaPrefDialogPriv, 1);
 	dialog->priv = priv;
@@ -701,7 +722,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 1, 1);
-
+	/* Use system default font option */
 	widget = gtk_check_button_new_with_label(_("Use system default font"));
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
@@ -712,7 +733,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	{
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
 	}
-
+	/* Customized font option */
 	widget = gtk_font_button_new();
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
@@ -729,38 +750,81 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	}
 	g_signal_connect(G_OBJECT(priv->vte_font_check), "toggled", G_CALLBACK(remmina_pref_dialog_vte_font_on_toggled),
 			dialog);
-
+	/* Allow bold text option */
 	widget = gtk_check_button_new_with_label(_("Allow bold text"));
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 2, 1, 1);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.vte_allow_bold_text);
 	priv->vte_allow_bold_text_check = widget;
-
-	widget = gtk_label_new(_("Scrollback lines"));
+	/* Colors label */
+	widget = gtk_label_new(_("Colors"));
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 3, 1, 1);
+	/* Use system theme colors option */
+	widget = gtk_check_button_new_with_label (_("Use system theme colors"));
+	gtk_widget_show (widget);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 3, 1, 1);
+	priv->vte_system_colors = widget;
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), 
+		remmina_pref.vte_system_colors);
+	g_signal_connect (G_OBJECT (priv->vte_system_colors), "toggled",
+		G_CALLBACK (remmina_pref_dialog_vte_color_on_toggled), dialog);
+	/* Foreground color label */
+	widget = gtk_label_new(_("Foreground color"));
+	gtk_widget_show(widget);
+	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 4, 1, 1);
+	priv->vte_foreground_color_label = widget;
+	/* Foreground color option */
+	gdk_rgba_parse(&color, remmina_pref.vte_foreground_color);
+	widget = gtk_color_button_new_with_rgba(&color);
+	gtk_color_button_set_title (GTK_COLOR_BUTTON (widget), _("Foreground color"));
+	gtk_widget_show (widget);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 4, 1, 1);
+	priv->vte_foreground_color = widget;
+	/* Background color label */
+	widget = gtk_label_new(_("Background color"));
+	gtk_widget_show(widget);
+	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 5, 1, 1);
+	priv->vte_background_color_label = widget;
+	/* Background color option */
+	gdk_rgba_parse(&color, remmina_pref.vte_background_color);
+	widget = gtk_color_button_new_with_rgba(&color);
+	gtk_color_button_set_title (GTK_COLOR_BUTTON (widget), _("Background color"));
+	gtk_widget_show (widget);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 5, 1, 1);
+	priv->vte_background_color = widget;
 
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(priv->vte_system_colors), remmina_pref.vte_system_colors);
+	remmina_pref_dialog_vte_color_on_toggled(priv->vte_system_colors, dialog);
+	/* Scrollback lines label */
+	widget = gtk_label_new(_("Scrollback lines"));
+	gtk_widget_show(widget);
+	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 6, 1, 1);
+	/* Scrollback lines option */
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
 	gtk_widget_set_hexpand(widget, TRUE);
-	gtk_grid_attach(GTK_GRID(grid), widget, 1, 3, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 6, 1, 1);
 	gtk_entry_set_max_length(GTK_ENTRY(widget), 5);
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.vte_lines);
 	gtk_entry_set_text(GTK_ENTRY(widget), buf);
 	priv->vte_lines_entry = widget;
-
+	/* Keyboard label */
 	widget = gtk_label_new(_("Keyboard"));
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.0);
-	gtk_grid_attach(GTK_GRID(grid), widget, 0, 4, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 7, 1, 1);
 
 	grid_keys = gtk_grid_new();
 	gtk_grid_set_row_spacing(GTK_GRID(grid_keys), 4);
 	gtk_grid_set_column_spacing(GTK_GRID(grid_keys), 4);
 	gtk_widget_show(grid_keys);
-	gtk_grid_attach(GTK_GRID(grid), grid_keys, 1, 4, 1, 1);
+	gtk_grid_attach(GTK_GRID(grid), grid_keys, 1, 7, 1, 1);
 
 	widget = gtk_label_new(_("Copy"));
 	gtk_widget_show(widget);
