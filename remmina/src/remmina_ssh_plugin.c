@@ -230,6 +230,13 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	GtkWidget *hbox;
 	GtkWidget *vscrollbar;
 	GtkWidget *vte;
+	GtkStyleContext *style_context;
+	GdkRGBA foreground_color;
+	GdkRGBA background_color;
+#if !VTE_CHECK_VERSION(0,38,0)
+	GdkColor foreground_gdkcolor;
+	GdkColor background_gdkcolor;
+#endif
 
 	gpdata = g_new0 (RemminaPluginSshData, 1);
 	g_object_set_data_full (G_OBJECT(gp), "plugin-data", gpdata, g_free);
@@ -243,6 +250,34 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	gtk_widget_show(vte);
 	vte_terminal_set_size (VTE_TERMINAL (vte), 80, 25);
 	vte_terminal_set_scroll_on_keystroke (VTE_TERMINAL (vte), TRUE);
+	if (remmina_pref.vte_system_colors)
+	{
+		/* Get default system theme colors */
+		style_context = gtk_widget_get_style_context(GTK_WIDGET (vte));
+		gtk_style_context_get_color(style_context, GTK_STATE_FLAG_NORMAL, &foreground_color);
+		gtk_style_context_get_background_color(style_context, GTK_STATE_FLAG_NORMAL, &background_color);
+	}
+	else
+	{
+		/* Get customized colors */
+		gdk_rgba_parse(&foreground_color, remmina_pref.vte_foreground_color);
+		gdk_rgba_parse(&background_color, remmina_pref.vte_background_color);
+	}
+#if !VTE_CHECK_VERSION(0,38,0)
+	/* VTE <= 2.90 doesn't support GdkRGBA so we must convert GdkRGBA to GdkColor */
+	foreground_gdkcolor.red = (guint16)(foreground_color.red * 0xFFFF);
+	foreground_gdkcolor.green = (guint16)(foreground_color.green * 0xFFFF);
+	foreground_gdkcolor.blue = (guint16)(foreground_color.blue * 0xFFFF);
+	background_gdkcolor.red = (guint16)(background_color.red * 0xFFFF);
+	background_gdkcolor.green = (guint16)(background_color.green * 0xFFFF);
+	background_gdkcolor.blue = (guint16)(background_color.blue * 0xFFFF);
+	/* Set colors to GdkColor */
+	vte_terminal_set_colors (VTE_TERMINAL(vte), &foreground_gdkcolor, &background_gdkcolor, NULL, 0);
+#else
+	/* Set colors to GdkRGBA */
+	vte_terminal_set_colors (VTE_TERMINAL(vte), &foreground_color, &background_color, NULL, 0);
+#endif
+
 	gtk_box_pack_start (GTK_BOX (hbox), vte, TRUE, TRUE, 0);
 	gpdata->vte = vte;
 	remmina_plugin_ssh_set_vte_pref (gp);
