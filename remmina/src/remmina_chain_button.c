@@ -34,6 +34,7 @@
 
 #include <gtk/gtk.h>
 #include "remmina_chain_button.h"
+#include "remmina/remmina_trace_calls.h"
 
 G_DEFINE_TYPE (RemminaChainButton, remmina_chain_button, GTK_TYPE_GRID)
 
@@ -161,6 +162,7 @@ static guint remmina_chain_button_signals[LAST_SIGNAL] = { 0 };
 
 static void remmina_chain_button_class_init(RemminaChainButtonClass* klass)
 {
+	TRACE_CALL("remmina_chain_button_class_init");
 	remmina_chain_button_signals[CHAIN_TOGGLED_SIGNAL] = g_signal_new("chain-toggled", G_TYPE_FROM_CLASS(klass),
 			G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaChainButtonClass, chain_toggled), NULL,
 			NULL, g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
@@ -168,6 +170,7 @@ static void remmina_chain_button_class_init(RemminaChainButtonClass* klass)
 
 static void remmina_chain_button_update_chained(RemminaChainButton* cb)
 {
+	TRACE_CALL("remmina_chain_button_update_chained");
 	GdkPixbuf* pixbuf;
 
 	pixbuf = gdk_pixbuf_new_from_xpm_data(cb->chained ? vchain_xpm : vchain_broken_xpm);
@@ -177,6 +180,7 @@ static void remmina_chain_button_update_chained(RemminaChainButton* cb)
 
 static void remmina_chain_button_on_clicked(GtkWidget* widget, RemminaChainButton* cb)
 {
+	TRACE_CALL("remmina_chain_button_on_clicked");
 	cb->chained = !cb->chained;
 	remmina_chain_button_update_chained(cb);
 
@@ -185,6 +189,7 @@ static void remmina_chain_button_on_clicked(GtkWidget* widget, RemminaChainButto
 
 static void remmina_chain_button_init(RemminaChainButton* cb)
 {
+	TRACE_CALL("remmina_chain_button_init");
 	GtkWidget* widget;
 	GtkWidget* image;
 	GdkPixbuf* pixbuf;
@@ -218,11 +223,13 @@ static void remmina_chain_button_init(RemminaChainButton* cb)
 GtkWidget*
 remmina_chain_button_new(void)
 {
+	TRACE_CALL("remmina_chain_button_new");
 	return GTK_WIDGET(g_object_new(REMMINA_TYPE_CHAIN_BUTTON, NULL));
 }
 
 void remmina_chain_button_set(RemminaChainButton* cb, gboolean chained)
 {
+	TRACE_CALL("remmina_chain_button_set");
 	cb->chained = chained;
 	remmina_chain_button_update_chained(cb);
 	g_signal_emit(G_OBJECT(cb), remmina_chain_button_signals[CHAIN_TOGGLED_SIGNAL], 0);

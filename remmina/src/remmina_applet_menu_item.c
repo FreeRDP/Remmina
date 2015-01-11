@@ -37,6 +37,7 @@
 #include <string.h>
 #include <stdarg.h>
 #include "remmina_applet_menu_item.h"
+#include "remmina/remmina_trace_calls.h"
 
 G_DEFINE_TYPE( RemminaAppletMenuItem, remmina_applet_menu_item, GTK_TYPE_MENU_ITEM)
 
@@ -44,6 +45,7 @@ G_DEFINE_TYPE( RemminaAppletMenuItem, remmina_applet_menu_item, GTK_TYPE_MENU_IT
 
 static void remmina_applet_menu_item_destroy(RemminaAppletMenuItem* item, gpointer data)
 {
+	TRACE_CALL("remmina_applet_menu_item_destroy");
 	g_free(item->filename);
 	g_free(item->name);
 	g_free(item->group);
@@ -53,10 +55,12 @@ static void remmina_applet_menu_item_destroy(RemminaAppletMenuItem* item, gpoint
 
 static void remmina_applet_menu_item_class_init(RemminaAppletMenuItemClass* klass)
 {
+	TRACE_CALL("remmina_applet_menu_item_class_init");
 }
 
 static void remmina_applet_menu_item_init(RemminaAppletMenuItem* item)
 {
+	TRACE_CALL("remmina_applet_menu_item_init");
 	item->filename = NULL;
 	item->name = NULL;
 	item->group = NULL;
@@ -68,6 +72,7 @@ static void remmina_applet_menu_item_init(RemminaAppletMenuItem* item)
 
 GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...)
 {
+	TRACE_CALL("remmina_applet_menu_item_new");
 	va_list ap;
 	RemminaAppletMenuItem* item;
 	GKeyFile* gkeyfile;
@@ -171,6 +176,7 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 
 gint remmina_applet_menu_item_compare(gconstpointer a, gconstpointer b, gpointer user_data)
 {
+	TRACE_CALL("remmina_applet_menu_item_compare");
 	gint cmp;
 	RemminaAppletMenuItem* itema;
 	RemminaAppletMenuItem* itemb;

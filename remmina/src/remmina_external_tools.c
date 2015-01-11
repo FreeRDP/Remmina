@@ -5,6 +5,7 @@
 #include "remmina/types.h"
 #include "remmina_public.h"
 #include "remmina_external_tools.h"
+#include "remmina/remmina_trace_calls.h"
 
 typedef struct _RemminaExternalTools
 {
@@ -14,6 +15,7 @@ typedef struct _RemminaExternalTools
 
 void view_popup_menu_onDoSomething (GtkWidget *menuitem, gpointer userdata)
 {
+	TRACE_CALL("view_popup_menu_onDoSomething");
 	/* we passed the view as userdata when we connected the signal */
 	RemminaExternalTools *ret = (RemminaExternalTools *)userdata;
 	//gchar* filename_remmina = ret->remminafilename;
@@ -24,6 +26,7 @@ void view_popup_menu_onDoSomething (GtkWidget *menuitem, gpointer userdata)
 
 gboolean remmina_external_tools_from_filename(RemminaMain *remminamain,gchar* remminafilename)
 {
+	TRACE_CALL("remmina_external_tools_from_filename");
 	GtkWidget *menu, *menuitem;
 	menu = gtk_menu_new();
 	gchar dirname[MAX_PATH_LEN];
@@ -70,6 +73,7 @@ gboolean remmina_external_tools_from_filename(RemminaMain *remminamain,gchar* re
 
 gboolean remmina_external_tools_launcher(const gchar* filename,const gchar* scriptname)
 {
+	TRACE_CALL("remmina_external_tools_launcher");
 	RemminaFile *remminafile;
 	gchar launcher[MAX_PATH_LEN];
 	g_snprintf(launcher, MAX_PATH_LEN, "%s/.remmina/external_tools/launcher.sh", g_get_home_dir());

@@ -36,12 +36,14 @@
 #include "config.h"
 #include "remmina_scrolled_viewport.h"
 #include "remmina_pref.h"
+#include "remmina/remmina_trace_calls.h"
 
 G_DEFINE_TYPE( RemminaScrolledViewport, remmina_scrolled_viewport, GTK_TYPE_EVENT_BOX)
 
 /* Event handler when mouse move on borders */
 static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 {
+	TRACE_CALL("remmina_scrolled_viewport_motion_timeout");
 	RemminaScrolledViewport *gsv;
 	GtkWidget *child;
 	GdkDisplay *display;
@@ -109,12 +111,14 @@ static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 
 static gboolean remmina_scrolled_viewport_enter(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 {
+	TRACE_CALL("remmina_scrolled_viewport_enter");
 	remmina_scrolled_viewport_remove_motion(REMMINA_SCROLLED_VIEWPORT(widget));
 	return FALSE;
 }
 
 static gboolean remmina_scrolled_viewport_leave(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 {
+	TRACE_CALL("remmina_scrolled_viewport_leave");
 	RemminaScrolledViewport *gsv = REMMINA_SCROLLED_VIEWPORT(widget);
 	gsv->viewport_motion = TRUE;
 	gsv->viewport_motion_handler = g_timeout_add(20, remmina_scrolled_viewport_motion_timeout, gsv);
@@ -123,19 +127,23 @@ static gboolean remmina_scrolled_viewport_leave(GtkWidget *widget, GdkEventCross
 
 static void remmina_scrolled_viewport_destroy(GtkWidget *widget, gpointer data)
 {
+	TRACE_CALL("remmina_scrolled_viewport_destroy");
 	remmina_scrolled_viewport_remove_motion(REMMINA_SCROLLED_VIEWPORT(widget));
 }
 
 static void remmina_scrolled_viewport_class_init(RemminaScrolledViewportClass *klass)
 {
+	TRACE_CALL("remmina_scrolled_viewport_class_init");
 }
 
 static void remmina_scrolled_viewport_init(RemminaScrolledViewport *gsv)
 {
+	TRACE_CALL("remmina_scrolled_viewport_init");
 }
 
 void remmina_scrolled_viewport_remove_motion(RemminaScrolledViewport *gsv)
 {
+	TRACE_CALL("remmina_scrolled_viewport_remove_motion");
 	if (gsv->viewport_motion)
 	{
 		gsv->viewport_motion = FALSE;
@@ -147,6 +155,7 @@ void remmina_scrolled_viewport_remove_motion(RemminaScrolledViewport *gsv)
 GtkWidget*
 remmina_scrolled_viewport_new(void)
 {
+	TRACE_CALL("remmina_scrolled_viewport_new");
 	RemminaScrolledViewport *gsv;
 
 	gsv = REMMINA_SCROLLED_VIEWPORT(g_object_new(REMMINA_TYPE_SCROLLED_VIEWPORT, NULL));
