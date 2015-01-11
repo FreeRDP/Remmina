@@ -121,6 +121,22 @@ static void remmina_nx_session_manager_on_response(GtkWidget *dialog, gint respo
 	remmina_nx_session_manager_send_signal(gpdata, event_type);
 }
 
+/* Handle double click on a row in the NX Session manager
+ * Automatically close the dialog using the default response id */
+void remmina_nx_session_manager_on_row_activated(GtkTreeView *tree, GtkTreePath *path, GtkTreeViewColumn *column, RemminaProtocolWidget *gp)
+{
+	TRACE_CALL("remmina_nx_session_manager_row_activated");
+	RemminaPluginNxData *gpdata;
+	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	remmina_plugin_nx_service->log_printf("[NX] Default response_id %d\n", 
+		gpdata->default_response);
+
+	if (gpdata->default_response >= 0)
+	{
+	  gtk_dialog_response(GTK_DIALOG(gpdata->manager_dialog), gpdata->default_response);
+	}
+}
+
 static gboolean remmina_nx_session_manager_main(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_nx_session_manager_main");
@@ -137,6 +153,7 @@ static gboolean remmina_nx_session_manager_main(RemminaProtocolWidget *gp)
 	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_nx_service->protocol_plugin_get_file(gp);
 
+	gpdata->default_response = -1;
 	if (!gpdata->manager_started)
 	{
 		remmina_plugin_nx_service->protocol_plugin_init_hide(gp);
@@ -148,11 +165,15 @@ static gboolean remmina_nx_session_manager_main(RemminaProtocolWidget *gp)
 		if (gpdata->attach_session)
 		{
 			gtk_dialog_add_button(GTK_DIALOG(dialog), _("Attach"), REMMINA_NX_EVENT_ATTACH);
+			/* Set default response id for attach */
+			gpdata->default_response = REMMINA_NX_EVENT_ATTACH;
 		}
 		else
 		{
 			gtk_dialog_add_button(GTK_DIALOG(dialog), _("Restore"), REMMINA_NX_EVENT_RESTORE);
 			gtk_dialog_add_button(GTK_DIALOG(dialog), _("Start"), REMMINA_NX_EVENT_START);
+			/* Set default response id for restore */
+			gpdata->default_response = REMMINA_NX_EVENT_RESTORE;
 		}
 		gtk_dialog_add_button(GTK_DIALOG(dialog), _("_Cancel"), REMMINA_NX_EVENT_CANCEL);
 
@@ -172,6 +193,9 @@ static gboolean remmina_nx_session_manager_main(RemminaProtocolWidget *gp)
 		gtk_container_add(GTK_CONTAINER(scrolledwindow), tree);
 		gtk_widget_show(tree);
 		remmina_nx_session_set_tree_view(gpdata->nx, GTK_TREE_VIEW(tree));
+		/* Handle double click on the row */
+		g_signal_connect(G_OBJECT(tree), "row-activated",
+			G_CALLBACK(remmina_nx_session_manager_on_row_activated), gp);
 
 		renderer = gtk_cell_renderer_text_new();
 		column = gtk_tree_view_column_new_with_attributes("#", renderer, "text", REMMINA_NX_SESSION_COLUMN_ID, NULL);

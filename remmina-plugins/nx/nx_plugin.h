@@ -71,6 +71,7 @@ typedef struct _RemminaPluginNxData
 	guint session_manager_start_handler;
 	gboolean attach_session;
 	GtkTreeIter iter;
+	gint default_response;
 } RemminaPluginNxData;
 
 extern RemminaPluginService *remmina_plugin_nx_service;
