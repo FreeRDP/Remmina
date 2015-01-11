@@ -38,9 +38,11 @@
 #include "config.h"
 #include "remmina_widget_pool.h"
 #include "remmina_about.h"
+#include "remmina/remmina_trace_calls.h"
 
 void remmina_about_open(GtkWindow* parent)
 {
+	TRACE_CALL("remmina_about_open");
 	const gchar* authors[] =
 	{
 		N_("Maintainers:"),

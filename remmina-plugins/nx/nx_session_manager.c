@@ -39,6 +39,7 @@
 
 static void remmina_nx_session_manager_set_sensitive(RemminaProtocolWidget *gp, gboolean sensitive)
 {
+	TRACE_CALL("remmina_nx_session_manager_set_sensitive");
 	RemminaPluginNxData *gpdata;
 
 	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
@@ -57,6 +58,7 @@ static void remmina_nx_session_manager_set_sensitive(RemminaProtocolWidget *gp, 
 static gboolean remmina_nx_session_manager_selection_func(GtkTreeSelection *selection, GtkTreeModel *model, GtkTreePath *path,
 		gboolean path_currently_selected, gpointer user_data)
 {
+	TRACE_CALL("remmina_nx_session_manager_selection_func");
 	RemminaProtocolWidget *gp;
 	RemminaPluginNxData *gpdata;
 
@@ -79,6 +81,7 @@ static gboolean remmina_nx_session_manager_selection_func(GtkTreeSelection *sele
 
 static void remmina_nx_session_manager_send_signal(RemminaPluginNxData *gpdata, gint event_type)
 {
+	TRACE_CALL("remmina_nx_session_manager_send_signal");
 	guchar dummy = (guchar) event_type;
 	/* Signal the NX thread to resume execution */
 	if (write(gpdata->event_pipe[1], &dummy, 1))
@@ -88,6 +91,7 @@ static void remmina_nx_session_manager_send_signal(RemminaPluginNxData *gpdata, 
 
 static void remmina_nx_session_manager_on_response(GtkWidget *dialog, gint response_id, RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_nx_session_manager_on_response");
 	RemminaPluginNxData *gpdata;
 	gint event_type;
 
@@ -119,6 +123,7 @@ static void remmina_nx_session_manager_on_response(GtkWidget *dialog, gint respo
 
 static gboolean remmina_nx_session_manager_main(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_nx_session_manager_main");
 	RemminaPluginNxData *gpdata;
 	RemminaFile *remminafile;
 	GtkWidget *dialog;
@@ -231,6 +236,7 @@ static gboolean remmina_nx_session_manager_main(RemminaProtocolWidget *gp)
 
 void remmina_nx_session_manager_start(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_nx_session_manager_start");
 	RemminaPluginNxData *gpdata;
 
 	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");

@@ -36,6 +36,7 @@
 #define __REMMINA_PLUGIN_H__
 
 #include <remmina/types.h>
+#include "remmina/remmina_trace_calls.h"
 
 G_BEGIN_DECLS
 
