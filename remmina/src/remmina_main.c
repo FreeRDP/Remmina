@@ -1046,6 +1046,26 @@ static gboolean remmina_main_quickconnect_on_key_press(GtkWidget *widget, GdkEve
     return FALSE;
 }
 
+/* Handle double click on a row in the connections list */
+void remmina_main_file_list_on_row_activated(GtkTreeView *tree, GtkTreePath *path, GtkTreeViewColumn *column, RemminaMain *remminamain)
+{
+	TRACE_CALL("remmina_main_file_list_on_row_activated");
+	/* If a connection was selected then execute the default action */
+	if (remminamain->priv->selected_filename)
+	{
+		switch (remmina_pref.default_action)
+		{
+			case REMMINA_ACTION_EDIT:
+				remmina_main_action_connection_edit(NULL, remminamain);
+				break;
+			case REMMINA_ACTION_CONNECT:
+			default:
+				remmina_main_action_connection_connect(NULL, remminamain);
+				break;
+		}
+	}
+}
+
 static gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEventButton *event, RemminaMain *remminamain)
 {
 	TRACE_CALL("remmina_main_file_list_on_button_press");
@@ -1057,42 +1077,6 @@ static gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEve
 		if (popup)
 		{
 			gtk_menu_popup(GTK_MENU(popup), NULL, NULL, NULL, NULL, event->button, event->time);
-		}
-	}
-	else
-		if (event->type == GDK_2BUTTON_PRESS && remminamain->priv->selected_filename)
-		{
-			switch (remmina_pref.default_action)
-			{
-				case REMMINA_ACTION_EDIT:
-					remmina_main_action_connection_edit(NULL, remminamain);
-					break;
-				case REMMINA_ACTION_CONNECT:
-				default:
-					remmina_main_action_connection_connect(NULL, remminamain);
-					break;
-			}
-		}
-	return FALSE;
-}
-static gboolean remmina_main_file_list_on_key_press(GtkWidget *widget, GdkEventKey *event, RemminaMain *remminamain)
-{
-	TRACE_CALL("remmina_main_file_list_on_key_press");
-#if GTK_VERSION == 3
-	if (event->type == GDK_KEY_PRESS && (event->keyval == GDK_KEY_Return || event->keyval == GDK_KEY_KP_Enter) && remminamain->priv->selected_filename)
-#else
-	if (event->type == GDK_KEY_PRESS && (event->keyval == GDK_Return || event->keyval == GDK_KP_Enter) && remminamain->priv->selected_filename)
-#endif
-	{
-		switch (remmina_pref.default_action)
-		{
-			case REMMINA_ACTION_EDIT:
-				remmina_main_action_connection_edit(NULL, remminamain);
-				break;
-			case REMMINA_ACTION_CONNECT:
-			default:
-				remmina_main_action_connection_connect(NULL, remminamain);
-				break;
 		}
 	}
 	return FALSE;
@@ -1387,7 +1371,9 @@ static void remmina_main_init(RemminaMain *remminamain)
 	gtk_tree_selection_set_select_function(gtk_tree_view_get_selection(GTK_TREE_VIEW(tree)), remmina_main_selection_func,
 			remminamain, NULL);
 	g_signal_connect(G_OBJECT(tree), "button-press-event", G_CALLBACK(remmina_main_file_list_on_button_press), remminamain);
-	g_signal_connect(G_OBJECT(tree), "key-press-event", G_CALLBACK(remmina_main_file_list_on_key_press), remminamain);
+	/* Handle double click on the row */
+	g_signal_connect(G_OBJECT(tree), "row-activated",
+		G_CALLBACK(remmina_main_file_list_on_row_activated), remminamain);
 
 	priv->file_list = tree;
 
