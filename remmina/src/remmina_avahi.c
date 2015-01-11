@@ -35,6 +35,7 @@
 #include <gtk/gtk.h>
 #include "config.h"
 #include "remmina_avahi.h"
+#include "remmina/remmina_trace_calls.h"
 
 #ifdef HAVE_LIBAVAHI_CLIENT
 
@@ -69,6 +70,7 @@ remmina_avahi_resolve_callback(
 		AvahiLookupResultFlags flags,
 		AVAHI_GCC_UNUSED void* userdata)
 {
+	TRACE_CALL("remmina_avahi_resolve_callback");
 	gchar* key;
 	gchar* value;
 	RemminaAvahi* ga = (RemminaAvahi*) userdata;
@@ -115,6 +117,7 @@ remmina_avahi_browse_callback(
 		AVAHI_GCC_UNUSED AvahiLookupResultFlags flags,
 		void* userdata)
 {
+	TRACE_CALL("remmina_avahi_browse_callback");
 	gchar* key;
 	RemminaAvahi* ga = (RemminaAvahi*) userdata;
 
@@ -163,6 +166,7 @@ remmina_avahi_browse_callback(
 
 static void remmina_avahi_client_callback(AvahiClient* c, AvahiClientState state, AVAHI_GCC_UNUSED void * userdata)
 {
+	TRACE_CALL("remmina_avahi_client_callback");
 	RemminaAvahi* ga = (RemminaAvahi*) userdata;
 
 	ga->priv->has_event = TRUE;
@@ -175,6 +179,7 @@ static void remmina_avahi_client_callback(AvahiClient* c, AvahiClientState state
 
 static gboolean remmina_avahi_iterate(RemminaAvahi* ga)
 {
+	TRACE_CALL("remmina_avahi_iterate");
 	while (TRUE)
 	{
 		/* Call the iteration until no further events */
@@ -189,6 +194,7 @@ static gboolean remmina_avahi_iterate(RemminaAvahi* ga)
 
 RemminaAvahi* remmina_avahi_new(void)
 {
+	TRACE_CALL("remmina_avahi_new");
 	RemminaAvahi* ga;
 
 	ga = g_new(RemminaAvahi, 1);
@@ -206,6 +212,7 @@ RemminaAvahi* remmina_avahi_new(void)
 
 void remmina_avahi_start(RemminaAvahi* ga)
 {
+	TRACE_CALL("remmina_avahi_start");
 	int error;
 
 	if (ga->started)
@@ -242,6 +249,7 @@ void remmina_avahi_start(RemminaAvahi* ga)
 
 void remmina_avahi_stop(RemminaAvahi* ga)
 {
+	TRACE_CALL("remmina_avahi_stop");
 	g_hash_table_remove_all(ga->discovered_services);
 	if (ga->priv->iterate_handler)
 	{
@@ -268,6 +276,7 @@ void remmina_avahi_stop(RemminaAvahi* ga)
 
 void remmina_avahi_free(RemminaAvahi* ga)
 {
+	TRACE_CALL("remmina_avahi_free");
 	if (ga == NULL)
 		return;
 
@@ -282,19 +291,23 @@ void remmina_avahi_free(RemminaAvahi* ga)
 
 RemminaAvahi* remmina_avahi_new(void)
 {
+	TRACE_CALL("remmina_avahi_new");
 	return NULL;
 }
 
 void remmina_avahi_start(RemminaAvahi* ga)
 {
+	TRACE_CALL("remmina_avahi_start");
 }
 
 void remmina_avahi_stop(RemminaAvahi* ga)
 {
+	TRACE_CALL("remmina_avahi_stop");
 }
 
 void remmina_avahi_free(RemminaAvahi* ga)
 {
+	TRACE_CALL("remmina_avahi_free");
 }
 
 #endif

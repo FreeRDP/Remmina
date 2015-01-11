@@ -72,6 +72,7 @@ struct onMainThread_cb_data {
 
 static gboolean onMainThread_cb(struct onMainThread_cb_data *d)
 {
+	TRACE_CALL("onMainThread_cb");
 	if ( !d->cancelled ) {
 		switch( d->func ) {
 			case FUNC_GTK_SOCKET_ADD_ID:
@@ -89,12 +90,14 @@ static gboolean onMainThread_cb(struct onMainThread_cb_data *d)
 
 static void onMainThread_cleanup_handler( struct onMainThread_cb_data *d )
 {
+	TRACE_CALL("onMainThread_cleanup_handler");
 	d->cancelled = TRUE;
 }
 
 
 static void onMainThread_schedule_callback_and_wait( struct onMainThread_cb_data *d )
 {
+	TRACE_CALL("onMainThread_schedule_callback_and_wait");
 	d->cancelled = FALSE;
 	pthread_cleanup_push( onMainThread_cleanup_handler, (void *)d );
 	pthread_mutex_init( &d->mu, NULL );
@@ -110,6 +113,7 @@ static void onMainThread_schedule_callback_and_wait( struct onMainThread_cb_data
 
 static void onMainThread_gtk_socket_add_id( GtkSocket* sk, Window w)
 {
+	TRACE_CALL("onMainThread_gtk_socket_add_id");
 
 	struct onMainThread_cb_data *d;
 
@@ -129,6 +133,7 @@ static void onMainThread_gtk_socket_add_id( GtkSocket* sk, Window w)
 
 static gboolean remmina_plugin_nx_try_window_id(Window window_id)
 {
+	TRACE_CALL("remmina_plugin_nx_try_window_id");
 	gint i;
 	gboolean found = FALSE;
 
@@ -152,6 +157,7 @@ static gboolean remmina_plugin_nx_try_window_id(Window window_id)
 
 static void remmina_plugin_nx_remove_window_id(Window window_id)
 {
+	TRACE_CALL("remmina_plugin_nx_remove_window_id");
 	gint i;
 	gboolean found = FALSE;
 
@@ -173,16 +179,19 @@ static void remmina_plugin_nx_remove_window_id(Window window_id)
 
 static void remmina_plugin_nx_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_nx_on_plug_added");
 	remmina_plugin_nx_service->protocol_plugin_emit_signal(gp, "connect");
 }
 
 static void remmina_plugin_nx_on_plug_removed(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_nx_on_plug_removed");
 	remmina_plugin_nx_service->protocol_plugin_close_connection(gp);
 }
 
 gboolean remmina_plugin_nx_ssh_auth_callback(gchar **passphrase, gpointer userdata)
 {
+	TRACE_CALL("remmina_plugin_nx_ssh_auth_callback");
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget*) userdata;
 	gint ret;
 
@@ -197,6 +206,7 @@ gboolean remmina_plugin_nx_ssh_auth_callback(gchar **passphrase, gpointer userda
 
 static void remmina_plugin_nx_on_proxy_exit(GPid pid, gint status, gpointer data)
 {
+	TRACE_CALL("remmina_plugin_nx_on_proxy_exit");
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget*) data;
 
 	remmina_plugin_nx_service->protocol_plugin_close_connection(gp);
@@ -204,11 +214,13 @@ static void remmina_plugin_nx_on_proxy_exit(GPid pid, gint status, gpointer data
 
 static int remmina_plugin_nx_dummy_handler(Display *dsp, XErrorEvent *err)
 {
+	TRACE_CALL("remmina_plugin_nx_dummy_handler");
 	return 0;
 }
 
 static gboolean remmina_plugin_nx_start_create_notify(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_nx_start_create_notify");
 	RemminaPluginNxData *gpdata;
 
 	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
@@ -226,6 +238,7 @@ static gboolean remmina_plugin_nx_start_create_notify(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_nx_monitor_create_notify(RemminaProtocolWidget *gp, const gchar *cmd)
 {
+	TRACE_CALL("remmina_plugin_nx_monitor_create_notify");
 	RemminaPluginNxData *gpdata;
 	Atom atom;
 	XEvent xev;
@@ -281,6 +294,7 @@ static gboolean remmina_plugin_nx_monitor_create_notify(RemminaProtocolWidget *g
 
 static gint remmina_plugin_nx_wait_signal(RemminaPluginNxData *gpdata)
 {
+	TRACE_CALL("remmina_plugin_nx_wait_signal");
 	fd_set set;
 	guchar dummy = 0;
 
@@ -295,6 +309,7 @@ static gint remmina_plugin_nx_wait_signal(RemminaPluginNxData *gpdata)
 
 static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_nx_start_session");
 	RemminaPluginNxData *gpdata;
 	RemminaFile *remminafile;
 	RemminaNXSession *nx;
@@ -530,6 +545,7 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_nx_main(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_nx_main");
 	RemminaPluginNxData *gpdata;
 	gboolean ret;
 	const gchar *err;
@@ -553,6 +569,7 @@ static gboolean remmina_plugin_nx_main(RemminaProtocolWidget *gp)
 
 static gpointer remmina_plugin_nx_main_thread(gpointer data)
 {
+	TRACE_CALL("remmina_plugin_nx_main_thread");
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 
 	CANCEL_ASYNC
@@ -565,6 +582,7 @@ static gpointer remmina_plugin_nx_main_thread(gpointer data)
 
 static void remmina_plugin_nx_init(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_nx_init");
 	RemminaPluginNxData *gpdata;
 	gint flags;
 
@@ -593,6 +611,7 @@ static void remmina_plugin_nx_init(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_nx_open_connection");
 	RemminaPluginNxData *gpdata;
 	RemminaFile *remminafile;
 	const gchar *resolution;
@@ -632,6 +651,7 @@ static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_nx_close_connection(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_nx_close_connection");
 	RemminaPluginNxData *gpdata;
 
 	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
@@ -675,11 +695,13 @@ static gboolean remmina_plugin_nx_close_connection(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_nx_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
+	TRACE_CALL("remmina_plugin_nx_query_feature");
 	return FALSE;
 }
 
 static void remmina_plugin_nx_call_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
+	TRACE_CALL("remmina_plugin_nx_call_feature");
 }
 
 static gpointer quality_list[] =
@@ -715,6 +737,7 @@ static RemminaProtocolPlugin remmina_plugin_nx =
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
+	TRACE_CALL("remmina_plugin_entry");
 	Display *dpy;
 	XkbRF_VarDefsRec vd;
 	gchar *s;

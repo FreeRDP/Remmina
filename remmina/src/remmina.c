@@ -48,6 +48,7 @@
 #include "remmina_exec.h"
 #include "remmina_icon.h"
 #include "remmina_masterthread_exec.h"
+#include "remmina/remmina_trace_calls.h"
 
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
@@ -88,6 +89,7 @@ static GOptionEntry remmina_options[] =
 
 static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *cmdline)
 {
+	TRACE_CALL("remmina_on_command_line");
 	gint status = 0;
 	gint argc;
 	gchar **argv;
@@ -191,6 +193,7 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 
 static void remmina_on_startup(GApplication *app)
 {
+	TRACE_CALL("remmina_on_startup");
 	remmina_file_manager_init();
 	remmina_pref_init();
 	remmina_plugin_manager_init();
@@ -208,6 +211,7 @@ static void remmina_on_startup(GApplication *app)
 
 static gboolean remmina_on_local_cmdline (GApplication *app, gchar ***arguments, gint *exit_status)
 {
+	TRACE_CALL("remmina_on_local_cmdline");
 	/* Partially unimplemented local command line only used to append the
 	 * command line arguments to the help text and to parse the --help/-h
 	 * arguments locally instead of forwarding them to the remote instance */
@@ -241,6 +245,7 @@ static gboolean remmina_on_local_cmdline (GApplication *app, gchar ***arguments,
 
 int main(int argc, char* argv[])
 {
+	TRACE_CALL("main");
 	GApplication *app;
 	GApplicationClass *app_class;
 	int status;
