@@ -41,11 +41,13 @@ static guint rdp_keyboard_layout = 0;
 
 static void remmina_rdp_settings_kbd_init(void)
 {
+	TRACE_CALL("remmina_rdp_settings_kbd_init");
 	keyboard_layout = freerdp_keyboard_init(rdp_keyboard_layout);
 }
 
 void remmina_rdp_settings_init(void)
 {
+	TRACE_CALL("remmina_rdp_settings_init");
 	gchar* value;
 
 	value = remmina_plugin_service->pref_get_value("rdp_keyboard_layout");
@@ -60,6 +62,7 @@ void remmina_rdp_settings_init(void)
 
 guint remmina_rdp_settings_get_keyboard_layout(void)
 {
+	TRACE_CALL("remmina_rdp_settings_get_keyboard_layout");
 	return keyboard_layout;
 }
 
@@ -104,10 +107,12 @@ G_DEFINE_TYPE(RemminaPluginRdpsetGrid, remmina_rdp_settings_grid, GTK_TYPE_GRID)
 
 static void remmina_rdp_settings_grid_class_init(RemminaPluginRdpsetGridClass* klass)
 {
+	TRACE_CALL("remmina_rdp_settings_grid_class_init");
 }
 
 static void remmina_rdp_settings_grid_destroy(GtkWidget* widget, gpointer data)
 {
+	TRACE_CALL("remmina_rdp_settings_grid_destroy");
 	gchar* s;
 	guint new_layout;
 	GtkTreeIter iter;
@@ -152,6 +157,7 @@ static void remmina_rdp_settings_grid_destroy(GtkWidget* widget, gpointer data)
 
 static void remmina_rdp_settings_grid_load_layout(RemminaPluginRdpsetGrid* grid)
 {
+	TRACE_CALL("remmina_rdp_settings_grid_load_layout");
 	gint i;
 	gchar* s;
 	GtkTreeIter iter;
@@ -187,6 +193,7 @@ static void remmina_rdp_settings_grid_load_layout(RemminaPluginRdpsetGrid* grid)
 
 static void remmina_rdp_settings_grid_load_quality(RemminaPluginRdpsetGrid* grid)
 {
+	TRACE_CALL("remmina_rdp_settings_grid_load_quality");
 	gchar* value;
 	GtkTreeIter iter;
 
@@ -222,6 +229,7 @@ static void remmina_rdp_settings_grid_load_quality(RemminaPluginRdpsetGrid* grid
 
 static void remmina_rdp_settings_quality_on_changed(GtkComboBox *widget, RemminaPluginRdpsetGrid *grid)
 {
+	TRACE_CALL("remmina_rdp_settings_quality_on_changed");
 	guint v;
 	guint i = 0;
 	GtkTreeIter iter;
@@ -260,6 +268,7 @@ static void remmina_rdp_settings_quality_on_changed(GtkComboBox *widget, Remmina
 
 static void remmina_rdp_settings_quality_option_on_toggled(GtkToggleButton* togglebutton, RemminaPluginRdpsetGrid* grid)
 {
+	TRACE_CALL("remmina_rdp_settings_quality_option_on_toggled");
 	guint v;
 	guint i = 0;
 	GtkTreeIter iter;
@@ -285,6 +294,7 @@ static void remmina_rdp_settings_quality_option_on_toggled(GtkToggleButton* togg
 
 static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 {
+	TRACE_CALL("remmina_rdp_settings_grid_init");
 	gchar* s;
 	GtkWidget* widget;
 	GtkCellRenderer* renderer;
@@ -412,6 +422,7 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 
 GtkWidget* remmina_rdp_settings_new(void)
 {
+	TRACE_CALL("remmina_rdp_settings_new");
 	GtkWidget* widget;
 
 	widget = GTK_WIDGET(g_object_new(REMMINA_TYPE_PLUGIN_RDPSET_GRID, NULL));

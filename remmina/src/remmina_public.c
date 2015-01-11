@@ -54,10 +54,12 @@
 #include <X11/Xatom.h>
 #endif
 #include "remmina_public.h"
+#include "remmina/remmina_trace_calls.h"
 
 GtkWidget*
 remmina_public_create_combo_entry(const gchar *text, const gchar *def, gboolean descending)
 {
+	TRACE_CALL("remmina_public_create_combo_entry");
 	GtkWidget *combo;
 	gboolean found;
 	gchar *buf, *ptr1, *ptr2;
@@ -114,6 +116,7 @@ remmina_public_create_combo_entry(const gchar *text, const gchar *def, gboolean 
 GtkWidget*
 remmina_public_create_combo_text_d(const gchar *text, const gchar *def, const gchar *empty_choice)
 {
+	TRACE_CALL("remmina_public_create_combo_text_d");
 	GtkWidget *combo;
 	GtkListStore *store;
 	GtkCellRenderer *text_renderer;
@@ -132,6 +135,7 @@ remmina_public_create_combo_text_d(const gchar *text, const gchar *def, const gc
 
 void remmina_public_load_combo_text_d(GtkWidget *combo, const gchar *text, const gchar *def, const gchar *empty_choice)
 {
+	TRACE_CALL("remmina_public_load_combo_text_d");
 	GtkListStore *store;
 	GtkTreeIter iter;
 	gint i;
@@ -179,6 +183,7 @@ void remmina_public_load_combo_text_d(GtkWidget *combo, const gchar *text, const
 GtkWidget*
 remmina_public_create_combo(gboolean use_icon)
 {
+	TRACE_CALL("remmina_public_create_combo");
 	GtkWidget *combo;
 	GtkListStore *store;
 	GtkCellRenderer *renderer;
@@ -212,6 +217,7 @@ remmina_public_create_combo(gboolean use_icon)
 GtkWidget*
 remmina_public_create_combo_map(const gpointer *key_value_list, const gchar *def, gboolean use_icon, const gchar *domain)
 {
+	TRACE_CALL("remmina_public_create_combo_map");
 	gint i;
 	GtkWidget *combo;
 	GtkListStore *store;
@@ -246,6 +252,7 @@ remmina_public_create_combo_map(const gpointer *key_value_list, const gchar *def
 GtkWidget*
 remmina_public_create_combo_mapint(const gpointer *key_value_list, gint def, gboolean use_icon, const gchar *domain)
 {
+	TRACE_CALL("remmina_public_create_combo_mapint");
 	gchar buf[20];
 	g_snprintf(buf, sizeof(buf), "%i", def);
 	return remmina_public_create_combo_map(key_value_list, buf, use_icon, domain);
@@ -253,6 +260,7 @@ remmina_public_create_combo_mapint(const gpointer *key_value_list, gint def, gbo
 
 void remmina_public_create_group(GtkGrid *table, const gchar *group, gint row, gint rows, gint cols)
 {
+	TRACE_CALL("remmina_public_create_group");
 	GtkWidget *widget;
 	gchar *str;
 
@@ -272,6 +280,7 @@ void remmina_public_create_group(GtkGrid *table, const gchar *group, gint row, g
 gchar*
 remmina_public_combo_get_active_text(GtkComboBox *combo)
 {
+	TRACE_CALL("remmina_public_combo_get_active_text");
 	GtkTreeModel *model;
 	GtkTreeIter iter;
 	gchar *s;
@@ -292,6 +301,7 @@ remmina_public_combo_get_active_text(GtkComboBox *combo)
 
 void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data)
 {
+	TRACE_CALL("remmina_public_popup_position");
 	GtkWidget *widget;
 	gint tx, ty;
 	GtkAllocation allocation;
@@ -328,6 +338,7 @@ void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *pu
 gchar*
 remmina_public_combine_path(const gchar *path1, const gchar *path2)
 {
+	TRACE_CALL("remmina_public_combine_path");
 	if (!path1 || path1[0] == '\0')
 		return g_strdup(path2);
 	if (path1[strlen(path1) - 1] == '/')
@@ -337,6 +348,7 @@ remmina_public_combine_path(const gchar *path1, const gchar *path2)
 
 void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar **host, gint *port)
 {
+	TRACE_CALL("remmina_public_get_server_port");
 	gchar *str, *ptr, *ptr2;
 
 	str = g_strdup(server);
@@ -379,6 +391,7 @@ void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar
 
 gboolean remmina_public_get_xauth_cookie(const gchar *display, gchar **msg)
 {
+	TRACE_CALL("remmina_public_get_xauth_cookie");
 	gchar buf[200];
 	gchar *out = NULL;
 	gchar *ptr;
@@ -415,6 +428,7 @@ gboolean remmina_public_get_xauth_cookie(const gchar *display, gchar **msg)
 
 gint remmina_public_open_xdisplay(const gchar *disp)
 {
+	TRACE_CALL("remmina_public_open_xdisplay");
 	gchar *display;
 	gchar *ptr;
 	gint port;
@@ -452,6 +466,7 @@ gint remmina_public_open_xdisplay(const gchar *disp)
 /* This function was copied from GEdit (gedit-utils.c). */
 guint remmina_public_get_current_workspace(GdkScreen *screen)
 {
+	TRACE_CALL("remmina_public_get_current_workspace");
 #ifdef GDK_WINDOWING_X11
 	GdkWindow *root_win;
 	GdkDisplay *display;
@@ -493,6 +508,7 @@ guint remmina_public_get_current_workspace(GdkScreen *screen)
 /* This function was copied from GEdit (gedit-utils.c). */
 guint remmina_public_get_window_workspace(GtkWindow *gtkwindow)
 {
+	TRACE_CALL("remmina_public_get_window_workspace");
 #ifdef GDK_WINDOWING_X11
 	GdkWindow *window;
 	GdkDisplay *display;

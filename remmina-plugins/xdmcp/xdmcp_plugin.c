@@ -57,6 +57,7 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 
 static void remmina_plugin_xdmcp_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_xdmcp_on_plug_added");
 	RemminaPluginXdmcpData *gpdata;
 
 	gpdata = (RemminaPluginXdmcpData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
@@ -67,11 +68,13 @@ static void remmina_plugin_xdmcp_on_plug_added(GtkSocket *socket, RemminaProtoco
 
 static void remmina_plugin_xdmcp_on_plug_removed(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_xdmcp_on_plug_removed");
 	remmina_plugin_service->protocol_plugin_close_connection(gp);
 }
 
 static gboolean remmina_plugin_xdmcp_start_xephyr(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_xdmcp_start_xephyr");
 	RemminaPluginXdmcpData *gpdata;
 	RemminaFile *remminafile;
 	gchar *argv[50];
@@ -171,6 +174,7 @@ static gboolean remmina_plugin_xdmcp_start_xephyr(RemminaProtocolWidget *gp)
 static gboolean remmina_plugin_xdmcp_tunnel_init_callback(RemminaProtocolWidget *gp, gint remotedisplay, const gchar *server,
 		gint port)
 {
+	TRACE_CALL("remmina_plugin_xdmcp_tunnel_init_callback");
 	RemminaPluginXdmcpData *gpdata;
 	RemminaFile *remminafile;
 
@@ -198,6 +202,7 @@ static gboolean remmina_plugin_xdmcp_tunnel_init_callback(RemminaProtocolWidget 
 
 static gboolean remmina_plugin_xdmcp_main(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_xdmcp_main");
 	RemminaPluginXdmcpData *gpdata;
 	RemminaFile *remminafile;
 
@@ -229,6 +234,7 @@ static gboolean remmina_plugin_xdmcp_main(RemminaProtocolWidget *gp)
 static gpointer
 remmina_plugin_xdmcp_main_thread (gpointer data)
 {
+	TRACE_CALL("remmina_plugin_xdmcp_main_thread");
 	pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, NULL);
 
 	CANCEL_ASYNC
@@ -242,6 +248,7 @@ remmina_plugin_xdmcp_main_thread (gpointer data)
 
 static void remmina_plugin_xdmcp_init(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_xdmcp_init");
 	RemminaPluginXdmcpData *gpdata;
 
 	gpdata = g_new0(RemminaPluginXdmcpData, 1);
@@ -257,6 +264,7 @@ static void remmina_plugin_xdmcp_init(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_xdmcp_open_connection");
 	RemminaPluginXdmcpData *gpdata;
 	RemminaFile *remminafile;
 	gint width, height;
@@ -296,6 +304,7 @@ static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_xdmcp_close_connection(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_xdmcp_close_connection");
 	RemminaPluginXdmcpData *gpdata;
 
 	gpdata = (RemminaPluginXdmcpData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
@@ -321,11 +330,13 @@ static gboolean remmina_plugin_xdmcp_close_connection(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_xdmcp_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
+	TRACE_CALL("remmina_plugin_xdmcp_query_feature");
 	return FALSE;
 }
 
 static void remmina_plugin_xdmcp_call_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
+	TRACE_CALL("remmina_plugin_xdmcp_call_feature");
 }
 
 static gpointer colordepth_list[] =
@@ -353,6 +364,7 @@ remmina_plugin_xdmcp_init, remmina_plugin_xdmcp_open_connection, remmina_plugin_
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
+	TRACE_CALL("remmina_plugin_entry");
 	remmina_plugin_service = service;
 
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);

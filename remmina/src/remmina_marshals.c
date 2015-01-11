@@ -1,4 +1,5 @@
 #include	<glib-object.h>
+#include "remmina/remmina_trace_calls.h"
 
 #ifdef G_ENABLE_DEBUG
 #define g_marshal_value_peek_boolean(v)  g_value_get_boolean (v)
@@ -53,6 +54,7 @@ remmina_marshal_BOOLEAN__INT (GClosure     *closure,
                            gpointer      invocation_hint G_GNUC_UNUSED,
                            gpointer      marshal_data)
 {
+	TRACE_CALL("remmina_marshal_BOOLEAN__INT");
   typedef gboolean (*GMarshalFunc_BOOLEAN__INT) (gpointer     data1,
                                                  gint         arg_1,
                                                  gpointer     data2);
@@ -93,6 +95,7 @@ const GValue *param_values,
 gpointer invocation_hint G_GNUC_UNUSED,
 gpointer marshal_data)
 {
+	TRACE_CALL("remmina_marshal_BOOLEAN__INT_STRING");
 typedef gboolean (*GMarshalFunc_BOOLEAN__INT_STRING) (gpointer data1,
 gint arg_1,
 gpointer arg_2,

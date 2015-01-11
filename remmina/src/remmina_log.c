@@ -36,6 +36,7 @@
 #include <glib/gi18n.h>
 #include "remmina_public.h"
 #include "remmina_log.h"
+#include "remmina/remmina_trace_calls.h"
 
 /***** Define the log window GUI *****/
 #define REMMINA_TYPE_LOG_WINDOW               (remmina_log_window_get_type ())
@@ -65,10 +66,12 @@ G_DEFINE_TYPE(RemminaLogWindow, remmina_log_window, GTK_TYPE_WINDOW)
 
 static void remmina_log_window_class_init(RemminaLogWindowClass *klass)
 {
+	TRACE_CALL("remmina_log_window_class_init");
 }
 
 static void remmina_log_window_init(RemminaLogWindow *logwin)
 {
+	TRACE_CALL("remmina_log_window_init");
 	GtkWidget *scrolledwindow;
 	GtkWidget *widget;
 
@@ -91,6 +94,7 @@ static void remmina_log_window_init(RemminaLogWindow *logwin)
 static GtkWidget*
 remmina_log_window_new(void)
 {
+	TRACE_CALL("remmina_log_window_new");
 	return GTK_WIDGET(g_object_new(REMMINA_TYPE_LOG_WINDOW, NULL));
 }
 
@@ -99,11 +103,13 @@ static GtkWidget *log_window = NULL;
 
 static void remmina_log_end(GtkWidget *widget, gpointer data)
 {
+	TRACE_CALL("remmina_log_end");
 	log_window = NULL;
 }
 
 void remmina_log_start(void)
 {
+	TRACE_CALL("remmina_log_start");
 	if (log_window)
 	{
 		gtk_window_present(GTK_WINDOW(log_window));
@@ -119,11 +125,13 @@ void remmina_log_start(void)
 
 gboolean remmina_log_running(void)
 {
+	TRACE_CALL("remmina_log_running");
 	return (log_window != NULL);
 }
 
 static gboolean remmina_log_scroll_to_end(gpointer data)
 {
+	TRACE_CALL("remmina_log_scroll_to_end");
 	GtkTextIter iter;
 
 	if (log_window)
@@ -137,6 +145,7 @@ static gboolean remmina_log_scroll_to_end(gpointer data)
 
 static gboolean remmina_log_print_real(gpointer data)
 {
+	TRACE_CALL("remmina_log_print_real");
 	GtkTextIter iter;
 
 	if (log_window)
@@ -151,6 +160,7 @@ static gboolean remmina_log_print_real(gpointer data)
 
 void remmina_log_print(const gchar *text)
 {
+	TRACE_CALL("remmina_log_print");
 	if (!log_window)
 		return;
 
@@ -159,6 +169,7 @@ void remmina_log_print(const gchar *text)
 
 void remmina_log_printf(const gchar *fmt, ...)
 {
+	TRACE_CALL("remmina_log_printf");
 	va_list args;
 	gchar *text;
 

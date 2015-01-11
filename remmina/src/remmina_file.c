@@ -43,6 +43,7 @@
 #include "remmina_plugin_manager.h"
 #include "remmina_file.h"
 #include "remmina_masterthread_exec.h"
+#include "remmina/remmina_trace_calls.h"
 
 #define MIN_WINDOW_WIDTH 10
 #define MIN_WINDOW_HEIGHT 10
@@ -79,6 +80,7 @@ const RemminaSetting remmina_system_settings[] =
 
 static RemminaSettingGroup remmina_setting_get_group(const gchar *setting, gboolean *encrypted)
 {
+	TRACE_CALL("remmina_setting_get_group");
 	gint i;
 
 	for (i = 0; remmina_system_settings[i].setting; i++)
@@ -98,6 +100,7 @@ static RemminaSettingGroup remmina_setting_get_group(const gchar *setting, gbool
 static RemminaFile*
 remmina_file_new_empty(void)
 {
+	TRACE_CALL("remmina_file_new_empty");
 	RemminaFile *remminafile;
 
 	remminafile = g_new0(RemminaFile, 1);
@@ -108,6 +111,7 @@ remmina_file_new_empty(void)
 RemminaFile*
 remmina_file_new(void)
 {
+	TRACE_CALL("remmina_file_new");
 	RemminaFile *remminafile;
 
 	/* Try to load from the preference file for default settings first */
@@ -128,6 +132,7 @@ remmina_file_new(void)
 
 void remmina_file_generate_filename(RemminaFile *remminafile)
 {
+	TRACE_CALL("remmina_file_generate_filename");
 	GTimeVal gtime;
 
 	g_free(remminafile->filename);
@@ -138,6 +143,7 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 
 void remmina_file_set_filename(RemminaFile *remminafile, const gchar *filename)
 {
+	TRACE_CALL("remmina_file_set_filename");
 	g_free(remminafile->filename);
 	remminafile->filename = g_strdup(filename);
 }
@@ -145,12 +151,14 @@ void remmina_file_set_filename(RemminaFile *remminafile, const gchar *filename)
 const gchar*
 remmina_file_get_filename(RemminaFile *remminafile)
 {
+	TRACE_CALL("remmina_file_get_filename");
 	return remminafile->filename;
 }
 
 RemminaFile*
 remmina_file_copy(const gchar *filename)
 {
+	TRACE_CALL("remmina_file_copy");
 	RemminaFile *remminafile;
 
 	remminafile = remmina_file_load(filename);
@@ -162,6 +170,7 @@ remmina_file_copy(const gchar *filename)
 RemminaFile*
 remmina_file_load(const gchar *filename)
 {
+	TRACE_CALL("remmina_file_load");
 	GKeyFile *gkeyfile;
 	RemminaFile *remminafile;
 	gchar **keys;
@@ -222,11 +231,13 @@ remmina_file_load(const gchar *filename)
 
 void remmina_file_set_string(RemminaFile *remminafile, const gchar *setting, const gchar *value)
 {
+	TRACE_CALL("remmina_file_set_string");
 	remmina_file_set_string_ref(remminafile, setting, g_strdup(value));
 }
 
 void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting, gchar *value)
 {
+	TRACE_CALL("remmina_file_set_string_ref");
 	if (value)
 	{
 		g_hash_table_insert(remminafile->settings, g_strdup(setting), value);
@@ -240,6 +251,7 @@ void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting,
 const gchar*
 remmina_file_get_string(RemminaFile *remminafile, const gchar *setting)
 {
+	TRACE_CALL("remmina_file_get_string");
 	gchar *value;
 
 	value = (gchar*) g_hash_table_lookup(remminafile->settings, setting);
@@ -249,6 +261,7 @@ remmina_file_get_string(RemminaFile *remminafile, const gchar *setting)
 gchar*
 remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting)
 {
+	TRACE_CALL("remmina_file_get_secret");
 	/* This function can be called from a non main thread */
 
 	RemminaSecretPlugin *plugin;
@@ -289,11 +302,13 @@ remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting)
 
 void remmina_file_set_int(RemminaFile *remminafile, const gchar *setting, gint value)
 {
+	TRACE_CALL("remmina_file_set_int");
 	g_hash_table_insert(remminafile->settings, g_strdup(setting), g_strdup_printf("%i", value));
 }
 
 gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint default_value)
 {
+	TRACE_CALL("remmina_file_get_int");
 	gchar *value;
 
 	value = g_hash_table_lookup(remminafile->settings, setting);
@@ -302,6 +317,7 @@ gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint d
 
 static void remmina_file_store_group(RemminaFile *remminafile, GKeyFile *gkeyfile, RemminaSettingGroup group)
 {
+	TRACE_CALL("remmina_file_store_group");
 	RemminaSecretPlugin *plugin;
 	GHashTableIter iter;
 	const gchar *key, *value;
@@ -364,6 +380,7 @@ static void remmina_file_store_group(RemminaFile *remminafile, GKeyFile *gkeyfil
 static GKeyFile*
 remmina_file_get_keyfile(RemminaFile *remminafile)
 {
+	TRACE_CALL("remmina_file_get_keyfile");
 	GKeyFile *gkeyfile;
 
 	if (remminafile->filename == NULL)
@@ -378,6 +395,7 @@ remmina_file_get_keyfile(RemminaFile *remminafile)
 
 static void remmina_file_save_flush(RemminaFile *remminafile, GKeyFile *gkeyfile)
 {
+	TRACE_CALL("remmina_file_save_flush");
 	gchar *content;
 	gsize length = 0;
 
@@ -388,6 +406,7 @@ static void remmina_file_save_flush(RemminaFile *remminafile, GKeyFile *gkeyfile
 
 void remmina_file_save_group(RemminaFile *remminafile, RemminaSettingGroup group)
 {
+	TRACE_CALL("remmina_file_save_group");
 	GKeyFile *gkeyfile;
 
 	if ((gkeyfile = remmina_file_get_keyfile(remminafile)) == NULL)
@@ -399,11 +418,13 @@ void remmina_file_save_group(RemminaFile *remminafile, RemminaSettingGroup group
 
 void remmina_file_save_all(RemminaFile *remminafile)
 {
+	TRACE_CALL("remmina_file_save_all");
 	remmina_file_save_group(remminafile, REMMINA_SETTING_GROUP_ALL);
 }
 
 void remmina_file_free(RemminaFile *remminafile)
 {
+	TRACE_CALL("remmina_file_free");
 	if (remminafile == NULL)
 		return;
 
@@ -415,6 +436,7 @@ void remmina_file_free(RemminaFile *remminafile)
 RemminaFile*
 remmina_file_dup(RemminaFile *remminafile)
 {
+	TRACE_CALL("remmina_file_dup");
 	RemminaFile *dupfile;
 	GHashTableIter iter;
 	const gchar *key, *value;
@@ -433,6 +455,7 @@ remmina_file_dup(RemminaFile *remminafile)
 
 void remmina_file_update_screen_resolution(RemminaFile *remminafile)
 {
+	TRACE_CALL("remmina_file_update_screen_resolution");
 #if GTK_VERSION == 3
 	GdkDisplay *display;
 	GdkDeviceManager *device_manager;
@@ -474,6 +497,7 @@ void remmina_file_update_screen_resolution(RemminaFile *remminafile)
 const gchar*
 remmina_file_get_icon_name(RemminaFile *remminafile)
 {
+	TRACE_CALL("remmina_file_get_icon_name");
 	RemminaProtocolPlugin *plugin;
 
 	plugin = (RemminaProtocolPlugin *) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL,
@@ -487,6 +511,7 @@ remmina_file_get_icon_name(RemminaFile *remminafile)
 RemminaFile*
 remmina_file_dup_temp_protocol(RemminaFile *remminafile, const gchar *new_protocol)
 {
+	TRACE_CALL("remmina_file_dup_temp_protocol");
 	RemminaFile *tmp;
 
 	tmp = remmina_file_dup(remminafile);
@@ -498,6 +523,7 @@ remmina_file_dup_temp_protocol(RemminaFile *remminafile, const gchar *new_protoc
 
 void remmina_file_delete(const gchar *filename)
 {
+	TRACE_CALL("remmina_file_delete");
 	RemminaSecretPlugin *plugin;
 	RemminaFile *remminafile;
 	gint i;
@@ -523,6 +549,7 @@ void remmina_file_delete(const gchar *filename)
 
 void remmina_file_unsave_password(RemminaFile *remminafile)
 {
+	TRACE_CALL("remmina_file_unsave_password");
 	remmina_file_set_string(remminafile, "password", NULL);
 	remmina_file_save_group(remminafile, REMMINA_SETTING_GROUP_CREDENTIAL);
 }

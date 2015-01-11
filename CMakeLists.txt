@@ -107,6 +107,11 @@ find_required_package(PTHREAD)
 find_suggested_package(GCRYPT)
 find_suggested_package(AVAHI)
 
+if(WITH_TRACE_CALLS)
+	message(STATUS "Enabling trace calls.")
+	add_definitions(-DWITH_TRACE_CALLS)
+endif()
+
 if(GCRYPT_FOUND)
 	add_definitions(-DHAVE_LIBGCRYPT)
 endif()

@@ -32,40 +32,13 @@
  *
  */
 
-#include "common/remmina_plugin.h"
-#include "telepathy_handler.h"
+#ifndef __REMMINATRACECALLS_H__
+#define __REMMINATRACECALLS_H__
 
-RemminaPluginService *remmina_plugin_telepathy_service = NULL;
+#ifdef  WITH_TRACE_CALLS
+#define TRACE_CALL(text) g_print("Trace calls: %s\n", text)
+#else
+#define TRACE_CALL(text) 
+#endif  /* _WITH_TRACE_CALLS_ */
 
-static RemminaTpHandler *remmina_tp_handler = NULL;
-
-void remmina_plugin_telepathy_entry(void)
-{
-	TRACE_CALL("remmina_plugin_telepathy_entry");
-	if (remmina_tp_handler == NULL)
-	{
-		remmina_tp_handler = remmina_tp_handler_new();
-	}
-}
-
-static RemminaEntryPlugin remmina_plugin_telepathy =
-{ REMMINA_PLUGIN_TYPE_ENTRY, "telepathy", N_("Telepathy - Desktop Sharing"), GETTEXT_PACKAGE, VERSION,
-
-remmina_plugin_telepathy_entry };
-
-G_MODULE_EXPORT gboolean
-remmina_plugin_entry(RemminaPluginService *service)
-{
-	TRACE_CALL("remmina_plugin_entry");
-	remmina_plugin_telepathy_service = service;
-
-	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
-	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
-
-	if (!service->register_plugin((RemminaPlugin *) &remmina_plugin_telepathy))
-	{
-		return FALSE;
-	}
-	return TRUE;
-}
-
+#endif  /* __REMMINATRACECALLS_H__  */

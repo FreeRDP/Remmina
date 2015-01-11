@@ -45,9 +45,11 @@
 #include "remmina_about.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_exec.h"
+#include "remmina/remmina_trace_calls.h"
 
 void remmina_exec_command(RemminaCommandType command, const gchar* data)
 {
+	TRACE_CALL("remmina_exec_command");
 	gchar* s1;
 	gchar* s2;
 	GtkWidget* widget;

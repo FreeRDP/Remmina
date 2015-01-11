@@ -45,6 +45,7 @@
 
 static void rf_desktop_resize(rdpContext* context)
 {
+	TRACE_CALL("rf_desktop_resize");
 	RemminaProtocolWidget* gp;
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi;
@@ -70,60 +71,72 @@ static void rf_desktop_resize(rdpContext* context)
 
 static void rf_gdi_palette(rdpContext* context, PALETTE_UPDATE* palette)
 {
+	TRACE_CALL("rf_gdi_palette");
 	g_print("palette\n");
 }
 
 static void rf_gdi_set_bounds(rdpContext* context, rdpBounds* bounds)
 {
+	TRACE_CALL("rf_gdi_set_bounds");
 }
 
 static void rf_gdi_dstblt(rdpContext* context, DSTBLT_ORDER* dstblt)
 {
+	TRACE_CALL("rf_gdi_dstblt");
 	g_print("dstblt\n");
 }
 
 static void rf_gdi_patblt(rdpContext* context, PATBLT_ORDER* patblt)
 {
+	TRACE_CALL("rf_gdi_patblt");
 	g_print("patblt\n");
 }
 
 static void rf_gdi_scrblt(rdpContext* context, SCRBLT_ORDER* scrblt)
 {
+	TRACE_CALL("rf_gdi_scrblt");
 	g_print("srcblt\n");
 }
 
 static void rf_gdi_opaque_rect(rdpContext* context, OPAQUE_RECT_ORDER* opaque_rect)
 {
+	TRACE_CALL("rf_gdi_opaque_rect");
 	g_print("opaque_rect\n");
 }
 
 static void rf_gdi_multi_opaque_rect(rdpContext* context, MULTI_OPAQUE_RECT_ORDER* multi_opaque_rect)
 {
+	TRACE_CALL("rf_gdi_multi_opaque_rect");
 	g_print("multi_opaque_rect\n");
 }
 
 static void rf_gdi_line_to(rdpContext* context, LINE_TO_ORDER* line_to)
 {
+	TRACE_CALL("rf_gdi_line_to");
 	g_print("line_to\n");
 }
 
 static void rf_gdi_polyline(rdpContext* context, POLYLINE_ORDER* polyline)
 {
+	TRACE_CALL("rf_gdi_polyline");
 	g_print("polyline\n");
 }
 
 static void rf_gdi_memblt(rdpContext* context, MEMBLT_ORDER* memblt)
 {
+	TRACE_CALL("rf_gdi_memblt");
 	g_print("memblt\n");
 }
 
 static void rf_gdi_fast_index(rdpContext* context, FAST_INDEX_ORDER* fast_index)
 {
+	TRACE_CALL("rf_gdi_fast_index");
 	g_print("fast_index\n");
 }
 
 static void rf_gdi_surface_bits(rdpContext* context, SURFACE_BITS_COMMAND* surface_bits_command)
 {
+	TRACE_CALL("rf_gdi_surface_bits");
 	UINT8* bitmap;
 	RFX_MESSAGE* message;
 	RemminaPluginRdpUiObject* ui;
@@ -167,6 +180,7 @@ static void rf_gdi_surface_bits(rdpContext* context, SURFACE_BITS_COMMAND* surfa
 
 void rf_gdi_register_update_callbacks(rdpUpdate* update)
 {
+	TRACE_CALL("rf_gdi_register_update_callbacks");
 	rdpPrimaryUpdate* primary;
 	rdpSecondaryUpdate* secondary;
 
