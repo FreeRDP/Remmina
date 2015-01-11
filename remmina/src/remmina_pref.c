@@ -38,6 +38,7 @@
 #include <string.h>
 #include "remmina_string_array.h"
 #include "remmina_pref.h"
+#include "remmina/remmina_trace_calls.h"
 
 const gchar *default_resolutions = "640x480,800x600,1024x768,1152x864,1280x960,1400x1050";
 
@@ -58,6 +59,7 @@ static const gchar *default_keymap_data = "# Please check gdk/gdkkeysyms.h for a
 
 static void remmina_pref_gen_secret(void)
 {
+	TRACE_CALL("remmina_pref_gen_secret");
 	guchar s[32];
 	gint i;
 	GTimeVal gtime;
@@ -86,6 +88,7 @@ static void remmina_pref_gen_secret(void)
 
 static guint remmina_pref_get_keyval_from_str(const gchar *str)
 {
+	TRACE_CALL("remmina_pref_get_keyval_from_str");
 	guint k;
 
 	if (!str)
@@ -102,6 +105,7 @@ static guint remmina_pref_get_keyval_from_str(const gchar *str)
 
 static void remmina_pref_init_keymap(void)
 {
+	TRACE_CALL("remmina_pref_init_keymap");
 	GKeyFile *gkeyfile;
 	gchar **groups;
 	gchar **gptr;
@@ -160,6 +164,7 @@ static void remmina_pref_init_keymap(void)
 
 void remmina_pref_init(void)
 {
+	TRACE_CALL("remmina_pref_init");
 	GKeyFile *gkeyfile;
 
 	remmina_pref_file = g_strdup_printf("%s/.remmina/remmina.pref", g_get_home_dir());
@@ -443,6 +448,7 @@ void remmina_pref_init(void)
 
 void remmina_pref_save(void)
 {
+	TRACE_CALL("remmina_pref_save");
 	GKeyFile *gkeyfile;
 	gchar *content;
 	gsize length;
@@ -512,6 +518,7 @@ void remmina_pref_save(void)
 
 void remmina_pref_add_recent(const gchar *protocol, const gchar *server)
 {
+	TRACE_CALL("remmina_pref_add_recent");
 	RemminaStringArray *array;
 	GKeyFile *gkeyfile;
 	gchar key[20];
@@ -553,6 +560,7 @@ void remmina_pref_add_recent(const gchar *protocol, const gchar *server)
 gchar*
 remmina_pref_get_recent(const gchar *protocol)
 {
+	TRACE_CALL("remmina_pref_get_recent");
 	GKeyFile *gkeyfile;
 	gchar key[20];
 	gchar *val;
@@ -571,6 +579,7 @@ remmina_pref_get_recent(const gchar *protocol)
 
 void remmina_pref_clear_recent(void)
 {
+	TRACE_CALL("remmina_pref_clear_recent");
 	GKeyFile *gkeyfile;
 	gchar **keys;
 	gint i;
@@ -602,6 +611,7 @@ void remmina_pref_clear_recent(void)
 
 guint remmina_pref_keymap_get_keyval(const gchar *keymap, guint keyval)
 {
+	TRACE_CALL("remmina_pref_keymap_get_keyval");
 	guint *table;
 	gint i;
 
@@ -622,6 +632,7 @@ guint remmina_pref_keymap_get_keyval(const gchar *keymap, guint keyval)
 gchar**
 remmina_pref_keymap_groups(void)
 {
+	TRACE_CALL("remmina_pref_keymap_groups");
 	GList *list;
 	guint len;
 	gchar **keys;
@@ -645,16 +656,19 @@ remmina_pref_keymap_groups(void)
 
 gint remmina_pref_get_scale_quality(void)
 {
+	TRACE_CALL("remmina_pref_get_scale_quality");
 	return remmina_pref.scale_quality;
 }
 
 gint remmina_pref_get_sshtunnel_port(void)
 {
+	TRACE_CALL("remmina_pref_get_sshtunnel_port");
 	return remmina_pref.sshtunnel_port;
 }
 
 void remmina_pref_set_value(const gchar *key, const gchar *value)
 {
+	TRACE_CALL("remmina_pref_set_value");
 	GKeyFile *gkeyfile;
 	gchar *content;
 	gsize length;
@@ -672,6 +686,7 @@ void remmina_pref_set_value(const gchar *key, const gchar *value)
 gchar*
 remmina_pref_get_value(const gchar *key)
 {
+	TRACE_CALL("remmina_pref_get_value");
 	GKeyFile *gkeyfile;
 	gchar *value;
 

@@ -48,6 +48,7 @@ static GnomeKeyringPasswordSchema remmina_file_secret_schema =
 
 void remmina_plugin_gkeyring_store_password(RemminaFile *remminafile, const gchar *key, const gchar *password)
 {
+	TRACE_CALL("remmina_plugin_gkeyring_store_password");
 	GnomeKeyringResult r;
 	const gchar *path;
 	gchar *s;
@@ -71,6 +72,7 @@ void remmina_plugin_gkeyring_store_password(RemminaFile *remminafile, const gcha
 gchar*
 remmina_plugin_gkeyring_get_password(RemminaFile *remminafile, const gchar *key)
 {
+	TRACE_CALL("remmina_plugin_gkeyring_get_password");
 	GnomeKeyringResult r;
 	const gchar *path;
 	gchar *password;
@@ -95,6 +97,7 @@ remmina_plugin_gkeyring_get_password(RemminaFile *remminafile, const gchar *key)
 
 void remmina_plugin_gkeyring_delete_password(RemminaFile *remminafile, const gchar *key)
 {
+	TRACE_CALL("remmina_plugin_gkeyring_delete_password");
 	GnomeKeyringResult r;
 	const gchar *path;
 
@@ -119,6 +122,7 @@ TRUE, remmina_plugin_gkeyring_store_password, remmina_plugin_gkeyring_get_passwo
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
+	TRACE_CALL("remmina_plugin_entry");
 	remmina_plugin_service = service;
 
 	if (!service->register_plugin((RemminaPlugin *) &remmina_plugin_gkeyring))

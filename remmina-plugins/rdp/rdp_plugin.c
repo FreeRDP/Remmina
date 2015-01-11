@@ -61,6 +61,7 @@ static char remmina_rdp_plugin_default_drive_name[]="RemminaDisk";
 
 void rf_get_fds(RemminaProtocolWidget* gp, void** rfds, int* rcount)
 {
+	TRACE_CALL("rf_get_fds");
 	rfContext* rfi;
 
 	rfi = GET_DATA(gp);
@@ -74,6 +75,7 @@ void rf_get_fds(RemminaProtocolWidget* gp, void** rfds, int* rcount)
 
 BOOL rf_check_fds(RemminaProtocolWidget* gp)
 {
+	TRACE_CALL("rf_check_fds");
 	UINT16 flags;
 	gchar buf[100];
 	rdpInput* input;
@@ -115,6 +117,7 @@ BOOL rf_check_fds(RemminaProtocolWidget* gp)
 
 void rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
+	TRACE_CALL("rf_queue_ui");
 	rfContext* rfi;
 	gboolean ui_sync_save;
 
@@ -142,6 +145,7 @@ void rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 
 void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj)
 {
+	TRACE_CALL("rf_object_free");
 	rfContext* rfi;
 
 	rfi = GET_DATA(gp);
@@ -165,6 +169,7 @@ void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj)
 
 void rf_begin_paint(rdpContext* context)
 {
+	TRACE_CALL("rf_begin_paint");
 	rdpGdi* gdi = context->gdi;
 	gdi->primary->hdc->hwnd->invalid->null = 1;
 	gdi->primary->hdc->hwnd->ninvalid = 0;
@@ -172,6 +177,7 @@ void rf_begin_paint(rdpContext* context)
 
 void rf_end_paint(rdpContext* context)
 {
+	TRACE_CALL("rf_end_paint");
 	INT32 x, y;
 	UINT32 w, h;
 	rdpGdi* gdi;
@@ -203,6 +209,7 @@ void rf_end_paint(rdpContext* context)
 
 static void rf_desktop_resize(rdpContext* context)
 {
+	TRACE_CALL("rf_desktop_resize");
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
 	RemminaPluginRdpUiObject* ui;
@@ -230,6 +237,7 @@ static void rf_desktop_resize(rdpContext* context)
 
 static BOOL remmina_rdp_pre_connect(freerdp* instance)
 {
+	TRACE_CALL("remmina_rdp_pre_connect");
 	rfContext* rfi;
 	ALIGN64 rdpSettings* settings;
 	RemminaProtocolWidget* gp;
@@ -295,6 +303,7 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 
 static BOOL remmina_rdp_post_connect(freerdp* instance)
 {
+	TRACE_CALL("remmina_rdp_post_connect");
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
 	RemminaPluginRdpUiObject* ui;
@@ -374,6 +383,7 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 
 static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** password, char** domain)
 {
+	TRACE_CALL("remmina_rdp_authenticate");
 	gchar *s_username, *s_password, *s_domain;
 	gint ret;
 	rfContext* rfi;
@@ -429,6 +439,7 @@ static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** 
 
 static BOOL remmina_rdp_verify_certificate(freerdp* instance, char* subject, char* issuer, char* fingerprint)
 {
+	TRACE_CALL("remmina_rdp_verify_certificate");
 	gint status;
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
@@ -445,6 +456,7 @@ static BOOL remmina_rdp_verify_certificate(freerdp* instance, char* subject, cha
 }
 static BOOL remmina_rdp_verify_changed_certificate(freerdp* instance, char* subject, char* issuer, char* new_fingerprint, char* old_fingerprint)
 {
+	TRACE_CALL("remmina_rdp_verify_changed_certificate");
 	gint status;
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
@@ -462,11 +474,13 @@ static BOOL remmina_rdp_verify_changed_certificate(freerdp* instance, char* subj
 
 static int remmina_rdp_receive_channel_data(freerdp* instance, int channelId, UINT8* data, int size, int flags, int total_size)
 {
+	TRACE_CALL("remmina_rdp_receive_channel_data");
 	return freerdp_channels_data(instance, channelId, data, size, flags, total_size);
 }
 
 static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 {
+	TRACE_CALL("remmina_rdp_main_loop");
 	int i;
 	int fds;
 	int rcount;
@@ -563,6 +577,7 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 
 int remmina_rdp_load_static_channel_addin(rdpChannels* channels, rdpSettings* settings, char* name, void* data)
 {
+	TRACE_CALL("remmina_rdp_load_static_channel_addin");
 	void* entry;
 
 	entry = freerdp_load_channel_addin_entry(name, NULL, NULL, FREERDP_ADDIN_CHANNEL_STATIC);
@@ -581,6 +596,7 @@ int remmina_rdp_load_static_channel_addin(rdpChannels* channels, rdpSettings* se
 
 int remmina_rdp_add_static_channel(rdpSettings* settings, int count, char** params)
 {
+	TRACE_CALL("remmina_rdp_add_static_channel");
 	int index;
 	ADDIN_ARGV* args;
 
@@ -600,6 +616,7 @@ int remmina_rdp_add_static_channel(rdpSettings* settings, int count, char** para
 
 static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 {
+	TRACE_CALL("remmina_rdp_main");
 	gchar* s;
 	gint port;
 	gchar* host;
@@ -910,6 +927,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 static gpointer remmina_rdp_main_thread(gpointer data)
 {
+	TRACE_CALL("remmina_rdp_main_thread");
 	RemminaProtocolWidget* gp;
 	rfContext* rfi;
 
@@ -928,6 +946,7 @@ static gpointer remmina_rdp_main_thread(gpointer data)
 
 static void remmina_rdp_init(RemminaProtocolWidget* gp)
 {
+	TRACE_CALL("remmina_rdp_init");
 	freerdp* instance;
 	rfContext* rfi;
 
@@ -961,6 +980,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 
 static gboolean remmina_rdp_open_connection(RemminaProtocolWidget* gp)
 {
+	TRACE_CALL("remmina_rdp_open_connection");
 
 	rfContext* rfi;
 
@@ -982,6 +1002,7 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget* gp)
 
 static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 {
+	TRACE_CALL("remmina_rdp_close_connection");
 	rfContext* rfi;
 	freerdp* instance;
 
@@ -1043,11 +1064,13 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 
 static gboolean remmina_rdp_query_feature(RemminaProtocolWidget* gp, const RemminaProtocolFeature* feature)
 {
+	TRACE_CALL("remmina_rdp_query_feature");
 	return TRUE;
 }
 
 static void remmina_rdp_call_feature(RemminaProtocolWidget* gp, const RemminaProtocolFeature* feature)
 {
+	TRACE_CALL("remmina_rdp_call_feature");
 	RemminaFile* remminafile;
 	rfContext* rfi;
 
@@ -1202,6 +1225,7 @@ static RemminaPrefPlugin remmina_rdps =
 
 G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService* service)
 {
+	TRACE_CALL("remmina_plugin_entry");
 	remmina_plugin_service = service;
 
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);

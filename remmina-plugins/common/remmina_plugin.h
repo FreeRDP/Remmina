@@ -63,6 +63,7 @@
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
 #endif
+#include "remmina/remmina_trace_calls.h"
 
 typedef void (*PThreadCleanupFunc)(void*);
 

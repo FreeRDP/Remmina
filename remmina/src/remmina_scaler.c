@@ -37,6 +37,7 @@
 #include "config.h"
 #include "remmina_chain_button.h"
 #include "remmina_scaler.h"
+#include "remmina/remmina_trace_calls.h"
 
 G_DEFINE_TYPE( RemminaScaler, remmina_scaler, GTK_TYPE_TABLE)
 
@@ -59,6 +60,7 @@ static guint remmina_scaler_signals[LAST_SIGNAL] =
 
 static void remmina_scaler_class_init(RemminaScalerClass *klass)
 {
+	TRACE_CALL("remmina_scaler_class_init");
 	remmina_scaler_signals[SCALED_SIGNAL] = g_signal_new("scaled", G_TYPE_FROM_CLASS(klass),
 			G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaScalerClass, scaled), NULL, NULL,
 			g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
@@ -67,6 +69,7 @@ static void remmina_scaler_class_init(RemminaScalerClass *klass)
 static gchar*
 remmina_scaler_format_scale_value(GtkScale *scale, gdouble value, gpointer user_data)
 {
+	TRACE_CALL("remmina_scaler_format_scale_value");
 	if (value <= MIN_SCALE_VALUE)
 	{
 		return g_strdup(_("Fit window size"));
@@ -79,6 +82,7 @@ remmina_scaler_format_scale_value(GtkScale *scale, gdouble value, gpointer user_
 
 static void remmina_scaler_on_chain_changed(RemminaChainButton *cb, RemminaScaler *scaler)
 {
+	TRACE_CALL("remmina_scaler_on_chain_changed");
 	scaler->aspectscale = cb->chained;
 	if (cb->chained)
 	{
@@ -90,6 +94,7 @@ static void remmina_scaler_on_chain_changed(RemminaChainButton *cb, RemminaScale
 
 static void remmina_scaler_on_hscale_value_changed(GtkWidget *widget, RemminaScaler *scaler)
 {
+	TRACE_CALL("remmina_scaler_on_hscale_value_changed");
 	gdouble value;
 
 	value = gtk_range_get_value(GTK_RANGE(scaler->priv->hscale_widget));
@@ -106,6 +111,7 @@ static void remmina_scaler_on_hscale_value_changed(GtkWidget *widget, RemminaSca
 
 static void remmina_scaler_on_vscale_value_changed(GtkWidget *widget, RemminaScaler *scaler)
 {
+	TRACE_CALL("remmina_scaler_on_vscale_value_changed");
 	gdouble value;
 
 	value = gtk_range_get_value(GTK_RANGE(scaler->priv->vscale_widget));
@@ -122,11 +128,13 @@ static void remmina_scaler_on_vscale_value_changed(GtkWidget *widget, RemminaSca
 
 static void remmina_scaler_destroy(RemminaScaler *scaler, gpointer data)
 {
+	TRACE_CALL("remmina_scaler_destroy");
 	g_free(scaler->priv);
 }
 
 static void remmina_scaler_init(RemminaScaler *scaler)
 {
+	TRACE_CALL("remmina_scaler_init");
 	RemminaScalerPriv *priv;
 	GtkWidget *widget = NULL;
 
@@ -177,11 +185,13 @@ static void remmina_scaler_init(RemminaScaler *scaler)
 GtkWidget*
 remmina_scaler_new(void)
 {
+	TRACE_CALL("remmina_scaler_new");
 	return GTK_WIDGET(g_object_new(REMMINA_TYPE_SCALER, NULL));
 }
 
 void remmina_scaler_set(RemminaScaler *scaler, gint hscale, gint vscale, gboolean chained)
 {
+	TRACE_CALL("remmina_scaler_set");
 	gtk_range_set_value(GTK_RANGE(scaler->priv->hscale_widget), ((gdouble) hscale) / 100.0);
 	gtk_range_set_value(GTK_RANGE(scaler->priv->vscale_widget), ((gdouble) vscale) / 100.0);
 	remmina_chain_button_set(REMMINA_CHAIN_BUTTON(scaler->priv->aspectscale_button), chained);
@@ -189,6 +199,7 @@ void remmina_scaler_set(RemminaScaler *scaler, gint hscale, gint vscale, gboolea
 
 void remmina_scaler_set_draw_value(RemminaScaler *scaler, gboolean draw_value)
 {
+	TRACE_CALL("remmina_scaler_set_draw_value");
 	gtk_scale_set_draw_value(GTK_SCALE(scaler->priv->hscale_widget), draw_value);
 	gtk_scale_set_draw_value(GTK_SCALE(scaler->priv->vscale_widget), draw_value);
 }

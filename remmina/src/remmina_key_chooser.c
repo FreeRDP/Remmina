@@ -35,15 +35,18 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include "remmina_key_chooser.h"
+#include "remmina/remmina_trace_calls.h"
 
 G_DEFINE_TYPE( RemminaKeyChooser, remmina_key_chooser, GTK_TYPE_BUTTON)
 
 static void remmina_key_chooser_class_init(RemminaKeyChooserClass *klass)
 {
+	TRACE_CALL("remmina_key_chooser_class_init");
 }
 
 static void remmina_key_chooser_update_label(RemminaKeyChooser *kc)
 {
+	TRACE_CALL("remmina_key_chooser_update_label");
 	gchar *s;
 
 	if (kc->keyval)
@@ -59,12 +62,14 @@ static void remmina_key_chooser_update_label(RemminaKeyChooser *kc)
 
 void remmina_key_chooser_set_keyval(RemminaKeyChooser *kc, guint keyval)
 {
+	TRACE_CALL("remmina_key_chooser_set_keyval");
 	kc->keyval = keyval;
 	remmina_key_chooser_update_label(kc);
 }
 
 static gboolean remmina_key_chooser_dialog_on_key_press(GtkWidget *widget, GdkEventKey *event, RemminaKeyChooser *kc)
 {
+	TRACE_CALL("remmina_key_chooser_dialog_on_key_press");
 	remmina_key_chooser_set_keyval(kc, gdk_keyval_to_lower(event->keyval));
 	gtk_dialog_response(GTK_DIALOG(gtk_widget_get_toplevel(widget)), GTK_RESPONSE_OK);
 	return TRUE;
@@ -72,6 +77,7 @@ static gboolean remmina_key_chooser_dialog_on_key_press(GtkWidget *widget, GdkEv
 
 static void remmina_key_chooser_on_clicked(RemminaKeyChooser *kc, gpointer data)
 {
+	TRACE_CALL("remmina_key_chooser_on_clicked");
 	GtkWidget *dialog;
 	GtkWidget *eventbox;
 	GtkWidget *widget;
@@ -106,6 +112,7 @@ static void remmina_key_chooser_on_clicked(RemminaKeyChooser *kc, gpointer data)
 
 static void remmina_key_chooser_init(RemminaKeyChooser *kc)
 {
+	TRACE_CALL("remmina_key_chooser_init");
 	remmina_key_chooser_set_keyval(kc, 0);
 
 	g_signal_connect(G_OBJECT(kc), "clicked", G_CALLBACK(remmina_key_chooser_on_clicked), NULL);
@@ -114,6 +121,7 @@ static void remmina_key_chooser_init(RemminaKeyChooser *kc)
 GtkWidget*
 remmina_key_chooser_new(guint keyval)
 {
+	TRACE_CALL("remmina_key_chooser_new");
 	RemminaKeyChooser *kc;
 
 	kc = REMMINA_KEY_CHOOSER(g_object_new(REMMINA_TYPE_KEY_CHOOSER, NULL));

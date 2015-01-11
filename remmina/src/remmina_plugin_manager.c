@@ -46,6 +46,7 @@
 #include "remmina_plugin_manager.h"
 #include "remmina_public.h"
 #include "remmina_masterthread_exec.h"
+#include "remmina/remmina_trace_calls.h"
 
 static GPtrArray* remmina_plugin_table = NULL;
 
@@ -57,11 +58,13 @@ static const gchar *remmina_plugin_type_name[] =
 
 static gint remmina_plugin_manager_compare_func(RemminaPlugin **a, RemminaPlugin **b)
 {
+	TRACE_CALL("remmina_plugin_manager_compare_func");
 	return g_strcmp0((*a)->name, (*b)->name);
 }
 
 static gboolean remmina_plugin_manager_register_plugin(RemminaPlugin *plugin)
 {
+	TRACE_CALL("remmina_plugin_manager_register_plugin");
 	if (plugin->type == REMMINA_PLUGIN_TYPE_SECRET)
 	{
 		if (remmina_secret_plugin)
@@ -150,6 +153,7 @@ RemminaPluginService remmina_plugin_manager_service =
 
 static void remmina_plugin_manager_load_plugin(const gchar *name)
 {
+	TRACE_CALL("remmina_plugin_manager_load_plugin");
 	GModule *module;
 	RemminaPluginEntryFunc entry;
 
@@ -179,6 +183,7 @@ static void remmina_plugin_manager_load_plugin(const gchar *name)
 
 void remmina_plugin_manager_init(void)
 {
+	TRACE_CALL("remmina_plugin_manager_init");
 	GDir *dir;
 	const gchar *name, *ptr;
 	gchar *fullpath;
@@ -209,6 +214,7 @@ void remmina_plugin_manager_init(void)
 
 RemminaPlugin* remmina_plugin_manager_get_plugin(RemminaPluginType type, const gchar *name)
 {
+	TRACE_CALL("remmina_plugin_manager_get_plugin");
 	RemminaPlugin *plugin;
 	gint i;
 
@@ -226,6 +232,7 @@ RemminaPlugin* remmina_plugin_manager_get_plugin(RemminaPluginType type, const g
 
 void remmina_plugin_manager_for_each_plugin(RemminaPluginType type, RemminaPluginFunc func, gpointer data)
 {
+	TRACE_CALL("remmina_plugin_manager_for_each_plugin");
 	RemminaPlugin *plugin;
 	gint i;
 
@@ -241,6 +248,7 @@ void remmina_plugin_manager_for_each_plugin(RemminaPluginType type, RemminaPlugi
 
 static gboolean remmina_plugin_manager_show_for_each(RemminaPlugin *plugin, GtkListStore *store)
 {
+	TRACE_CALL("remmina_plugin_manager_show_for_each");
 	GtkTreeIter iter;
 
 	gtk_list_store_append(store, &iter);
@@ -251,6 +259,7 @@ static gboolean remmina_plugin_manager_show_for_each(RemminaPlugin *plugin, GtkL
 
 void remmina_plugin_manager_show(GtkWindow *parent)
 {
+	TRACE_CALL("remmina_plugin_manager_show");
 	GtkWidget *dialog;
 	GtkWidget *scrolledwindow;
 	GtkWidget *tree;
@@ -304,6 +313,7 @@ void remmina_plugin_manager_show(GtkWindow *parent)
 
 RemminaFilePlugin* remmina_plugin_manager_get_import_file_handler(const gchar *file)
 {
+	TRACE_CALL("remmina_plugin_manager_get_import_file_handler");
 	RemminaFilePlugin *plugin;
 	gint i;
 
@@ -324,6 +334,7 @@ RemminaFilePlugin* remmina_plugin_manager_get_import_file_handler(const gchar *f
 
 RemminaFilePlugin* remmina_plugin_manager_get_export_file_handler(RemminaFile *remminafile)
 {
+	TRACE_CALL("remmina_plugin_manager_get_export_file_handler");
 	RemminaFilePlugin *plugin;
 	gint i;
 
@@ -342,6 +353,7 @@ RemminaFilePlugin* remmina_plugin_manager_get_export_file_handler(RemminaFile *r
 
 RemminaSecretPlugin* remmina_plugin_manager_get_secret_plugin(void)
 {
+	TRACE_CALL("remmina_plugin_manager_get_secret_plugin");
 	return remmina_secret_plugin;
 }
 
