@@ -41,11 +41,11 @@
 
 #define TRACE_CALL(text) \
 { \
-  GDateTime *datetime = g_date_time_new_now_local(); \
- 	gchar *sfmtdate = g_date_time_format(datetime, "%x %X"); \
-  g_print("%s Trace calls: %s\n", sfmtdate, text); \
-  g_free(sfmtdate); \
-  g_date_time_unref(datetime); \
+	GDateTime *datetime = g_date_time_new_now_local(); \
+	gchar *sfmtdate = g_date_time_format(datetime, "%x %X"); \
+	g_print("%s Trace calls: %s\n", sfmtdate, text); \
+	g_free(sfmtdate); \
+	g_date_time_unref(datetime); \
 }
 
 #else
