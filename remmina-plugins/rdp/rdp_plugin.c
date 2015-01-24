@@ -52,9 +52,9 @@
 #include <freerdp/error.h>
 #include <winpr/memory.h>
 
-#define REMMINA_RDP_FEATURE_TOOL_REFRESH		1
-#define REMMINA_RDP_FEATURE_SCALE			2
-#define REMMINA_RDP_FEATURE_UNFOCUS			3
+#define REMMINA_RDP_FEATURE_TOOL_REFRESH         1
+#define REMMINA_RDP_FEATURE_SCALE                2
+#define REMMINA_RDP_FEATURE_UNFOCUS              3
 
 RemminaPluginService* remmina_plugin_service = NULL;
 static char remmina_rdp_plugin_default_drive_name[]="RemminaDisk";
