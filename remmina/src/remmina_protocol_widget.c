@@ -1113,3 +1113,48 @@ GtkWidget* remmina_protocol_widget_new(void)
 {
 	return GTK_WIDGET(g_object_new(REMMINA_TYPE_PROTOCOL_WIDGET, NULL));
 }
+
+/* Send one or more keystrokes to a specific widget by firing key-press and
+ * key-release events.
+ * GdkEventType action can be GDK_KEY_PRESS or GDK_KEY_RELEASE or both to
+ * press the keys and release them in reversed order. */
+void remmina_protocol_widget_send_keys_signals(GtkWidget *widget, const guint *keyvals, int keyvals_length, GdkEventType action)
+{
+	TRACE_CALL("remmina_protocol_widget_send_keys_signals");
+	int i;
+	GdkEventKey event;
+	GdkKeymap *keymap = gdk_keymap_get_default();
+	gboolean result;
+	
+	event.window = gtk_widget_get_window(widget);
+	event.send_event = TRUE;
+	event.time = GDK_CURRENT_TIME;
+	event.state = 0;
+	event.length = 0;
+	event.string = "";
+	event.group = 0;
+
+	if (action & GDK_KEY_PRESS) {
+		/* Press the requested buttons */
+		event.type = GDK_KEY_PRESS;
+		for (i = 0; i < keyvals_length; i++)
+		{
+			event.keyval = keyvals[i];
+			event.hardware_keycode = remmina_public_get_keycode_for_keyval(keymap, event.keyval);
+			event.is_modifier = (int) remmina_public_get_modifier_for_keycode(keymap, event.hardware_keycode);
+			g_signal_emit_by_name(G_OBJECT(widget), "key-press-event", &event, &result);
+		}
+	}
+
+	if (action & GDK_KEY_RELEASE) {
+		/* Release the requested buttons in reverse order */
+		event.type = GDK_KEY_RELEASE;
+		for (i = (keyvals_length - 1); i >= 0; i--)
+		{
+			event.keyval = keyvals[i];
+			event.hardware_keycode = remmina_public_get_keycode_for_keyval(keymap, event.keyval);
+			event.is_modifier = (int) remmina_public_get_modifier_for_keycode(keymap, event.hardware_keycode);
+			g_signal_emit_by_name(G_OBJECT(widget), "key-release-event", &event, &result);
+		}
+	}
+}
