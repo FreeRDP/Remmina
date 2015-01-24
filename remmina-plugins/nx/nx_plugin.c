@@ -771,10 +771,13 @@ static const RemminaProtocolSetting remmina_plugin_nx_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
+/* Array for available features.
+ * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
 static const RemminaProtocolFeature remmina_plugin_nx_features[] =
 {
-{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_NX_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
-{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL } };
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_NX_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
+};
 
 static RemminaProtocolPlugin remmina_plugin_nx =
 { REMMINA_PLUGIN_TYPE_PROTOCOL, "NX", N_("NX - NX Technology"), GETTEXT_PACKAGE, VERSION,

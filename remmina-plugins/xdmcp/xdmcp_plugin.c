@@ -389,10 +389,13 @@ static const RemminaProtocolSetting remmina_plugin_xdmcp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
+/* Array for available features.
+ * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
 static const RemminaProtocolFeature remmina_plugin_xdmcp_features[] =
 {
-{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_XDMCP_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
-{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL } };
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_XDMCP_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
+};
 
 static RemminaProtocolPlugin remmina_plugin_xdmcp =
 { REMMINA_PLUGIN_TYPE_PROTOCOL, "XDMCP", N_("XDMCP - X Remote Session"), GETTEXT_PACKAGE, VERSION,
