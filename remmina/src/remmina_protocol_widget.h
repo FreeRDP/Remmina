@@ -142,6 +142,7 @@ void remmina_protocol_widget_chat_open(RemminaProtocolWidget *gp, const gchar *n
 		void(*on_send)(RemminaProtocolWidget *gp, const gchar *text), void(*on_destroy)(RemminaProtocolWidget *gp));
 void remmina_protocol_widget_chat_close(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_chat_receive(RemminaProtocolWidget *gp, const gchar *text);
+void remmina_protocol_widget_send_keys_signals(GtkWidget *widget, const guint *keyvals, int length, GdkEventType action);
 
 G_END_DECLS
 
