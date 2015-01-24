@@ -46,6 +46,8 @@
 #include "nx_plugin.h"
 #include "nx_session_manager.h"
 
+#define REMMINA_PLUGIN_NX_FEATURE_TOOL_SENDCTRLALTDEL 1
+
 RemminaPluginService *remmina_plugin_nx_service = NULL;
 
 static gchar *remmina_kbtype = "pc102/us";
@@ -693,15 +695,39 @@ static gboolean remmina_plugin_nx_close_connection(RemminaProtocolWidget *gp)
 	return FALSE;
 }
 
+/* Send CTRL+ALT+DEL keys keystrokes to the plugin socket widget */
+static void remmina_plugin_nx_send_ctrlaltdel(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL("remmina_plugin_xdmcp_send_ctrlaltdel");
+	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_Delete };
+	RemminaPluginNxData *gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+
+	remmina_plugin_nx_service->protocol_plugin_send_keys_signals(gpdata->socket,
+		keys, G_N_ELEMENTS(keys), GDK_KEY_PRESS | GDK_KEY_RELEASE);
+}
+
 static gboolean remmina_plugin_nx_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 	TRACE_CALL("remmina_plugin_nx_query_feature");
-	return FALSE;
+	return TRUE;
 }
 
 static void remmina_plugin_nx_call_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 	TRACE_CALL("remmina_plugin_nx_call_feature");
+	RemminaPluginNxData *gpdata;
+	RemminaFile *remminafile;
+
+	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	remminafile = remmina_plugin_nx_service->protocol_plugin_get_file(gp);
+	switch (feature->id)
+	{
+		case REMMINA_PLUGIN_NX_FEATURE_TOOL_SENDCTRLALTDEL:
+			remmina_plugin_nx_send_ctrlaltdel(gp);
+			break;
+		default:
+			break;
+	}
 }
 
 static gpointer quality_list[] =
@@ -725,11 +751,16 @@ static const RemminaProtocolSetting remmina_plugin_nx_advanced_settings[] =
 { REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Use local cursor"), FALSE, NULL, NULL },
 { REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL } };
 
+static const RemminaProtocolFeature remmina_plugin_nx_features[] =
+{
+{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_NX_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
+{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL } };
+
 static RemminaProtocolPlugin remmina_plugin_nx =
 { REMMINA_PLUGIN_TYPE_PROTOCOL, "NX", N_("NX - NX Technology"), GETTEXT_PACKAGE, VERSION,
 
 "remmina-nx", "remmina-nx", remmina_plugin_nx_basic_settings, remmina_plugin_nx_advanced_settings,
-		REMMINA_PROTOCOL_SSH_SETTING_TUNNEL, NULL,
+		REMMINA_PROTOCOL_SSH_SETTING_TUNNEL, remmina_plugin_nx_features,
 
 		remmina_plugin_nx_init, remmina_plugin_nx_open_connection, remmina_plugin_nx_close_connection,
 		remmina_plugin_nx_query_feature, remmina_plugin_nx_call_feature };
