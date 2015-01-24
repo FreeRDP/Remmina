@@ -382,11 +382,13 @@ remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, const RemminaProtoco
 	}
 }
 
+/* Array for available features.
+ * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
 static RemminaProtocolFeature remmina_plugin_ssh_features[] =
 {
-	{	REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY, N_("Copy"), N_("_Copy"), NULL},
-	{	REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE, N_("Paste"), N_("_Paste"), NULL},
-	{	REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL}
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY, N_("Copy"), N_("_Copy"), NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE, N_("Paste"), N_("_Paste"), NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
 static RemminaProtocolPlugin remmina_plugin_ssh =
