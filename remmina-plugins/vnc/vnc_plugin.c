@@ -41,6 +41,7 @@
 #define REMMINA_PLUGIN_VNC_FEATURE_TOOL_CHAT               5
 #define REMMINA_PLUGIN_VNC_FEATURE_SCALE                   6
 #define REMMINA_PLUGIN_VNC_FEATURE_UNFOCUS                 7
+#define REMMINA_PLUGIN_VNC_FEATURE_TOOL_SENDCTRLALTDEL     8
 
 typedef struct _RemminaPluginVncData
 {
@@ -1148,6 +1149,17 @@ static void remmina_plugin_vnc_chat_on_destroy(RemminaProtocolWidget *gp)
 	remmina_plugin_vnc_event_push(gp, REMMINA_PLUGIN_VNC_EVENT_CHAT_CLOSE, NULL, NULL, NULL);
 }
 
+/* Send CTRL+ALT+DEL keys keystrokes to the plugin drawing_area widget */
+static void remmina_plugin_vnc_send_ctrlaltdel(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL("remmina_plugin_vnc_send_ctrlaltdel");
+	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_Delete };
+	RemminaPluginVncData *gpdata = (RemminaPluginVncData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+
+	remmina_plugin_service->protocol_plugin_send_keys_signals(gpdata->drawing_area,
+		keys, G_N_ELEMENTS(keys), GDK_KEY_PRESS | GDK_KEY_RELEASE);
+}
+
 static gboolean remmina_plugin_vnc_close_chat(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_vnc_close_chat");
@@ -1947,6 +1959,9 @@ static void remmina_plugin_vnc_call_feature(RemminaProtocolWidget *gp, const Rem
 		case REMMINA_PLUGIN_VNC_FEATURE_TOOL_CHAT:
 			remmina_plugin_vnc_open_chat(gp);
 			break;
+		case REMMINA_PLUGIN_VNC_FEATURE_TOOL_SENDCTRLALTDEL:
+			remmina_plugin_vnc_send_ctrlaltdel(gp);
+			break;
 		default:
 			break;
 	}
@@ -2111,6 +2126,7 @@ static const RemminaProtocolFeature remmina_plugin_vnc_features[] =
 		REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "disableserverinput", N_("Disable server input") },
 { REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_VNC_FEATURE_TOOL_REFRESH, N_("Refresh"), NULL, NULL },
 { REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_VNC_FEATURE_TOOL_CHAT, N_("Open Chat..."), "face-smile", NULL },
+{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_VNC_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
 { REMMINA_PROTOCOL_FEATURE_TYPE_SCALE, REMMINA_PLUGIN_VNC_FEATURE_SCALE, NULL, NULL, NULL },
 { REMMINA_PROTOCOL_FEATURE_TYPE_UNFOCUS, REMMINA_PLUGIN_VNC_FEATURE_UNFOCUS, NULL, NULL, NULL },
 { REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL } };
