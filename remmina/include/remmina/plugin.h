@@ -193,6 +193,7 @@ typedef struct _RemminaPluginService
                                                            void(*on_destroy)(RemminaProtocolWidget *gp));
     void         (* protocol_plugin_chat_close)           (RemminaProtocolWidget *gp);
     void         (* protocol_plugin_chat_receive)         (RemminaProtocolWidget *gp, const gchar *text);
+    void         (* protocol_plugin_send_keys_signals)    (GtkWidget *widget, const guint *keyvals, int length, GdkEventType action);
 
     RemminaFile* (* file_new)                             (void);
     const gchar* (* file_get_path)                        (RemminaFile *remminafile);
