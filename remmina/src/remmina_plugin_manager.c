@@ -124,6 +124,7 @@ RemminaPluginService remmina_plugin_manager_service =
 		remmina_protocol_widget_chat_open,
 		remmina_protocol_widget_chat_close,
 		remmina_protocol_widget_chat_receive,
+		remmina_protocol_widget_send_keys_signals,
 
 		remmina_file_new,
 		remmina_file_get_filename,
