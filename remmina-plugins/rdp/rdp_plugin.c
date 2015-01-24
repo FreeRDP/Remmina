@@ -55,6 +55,7 @@
 #define REMMINA_RDP_FEATURE_TOOL_REFRESH         1
 #define REMMINA_RDP_FEATURE_SCALE                2
 #define REMMINA_RDP_FEATURE_UNFOCUS              3
+#define REMMINA_RDP_FEATURE_TOOL_SENDCTRLALTDEL  4
 
 RemminaPluginService* remmina_plugin_service = NULL;
 static char remmina_rdp_plugin_default_drive_name[]="RemminaDisk";
@@ -613,6 +614,16 @@ int remmina_rdp_add_static_channel(rdpSettings* settings, int count, char** para
 	return 0;
 }
 
+/* Send CTRL+ALT+DEL keys keystrokes to the plugin drawing_area widget */
+static void remmina_rdp_send_ctrlaltdel(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL("remmina_rdp_send_ctrlaltdel");
+	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_Delete };
+	rfContext* rfi = GET_DATA(gp);
+
+	remmina_plugin_service->protocol_plugin_send_keys_signals(rfi->drawing_area,
+		keys, G_N_ELEMENTS(keys), GDK_KEY_PRESS | GDK_KEY_RELEASE);
+}
 
 static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 {
@@ -1094,6 +1105,10 @@ static void remmina_rdp_call_feature(RemminaProtocolWidget* gp, const RemminaPro
 				remmina_plugin_service->protocol_plugin_get_height(gp));
 			break;
 
+		case REMMINA_RDP_FEATURE_TOOL_SENDCTRLALTDEL:
+			remmina_rdp_send_ctrlaltdel(gp);
+			break;
+
 		default:
 			break;
 	}
@@ -1170,6 +1185,7 @@ static const RemminaProtocolFeature remmina_rdp_features[] =
 {
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_RDP_FEATURE_TOOL_REFRESH, N_("Refresh"), NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_SCALE, REMMINA_RDP_FEATURE_SCALE, NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_RDP_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_UNFOCUS, REMMINA_RDP_FEATURE_UNFOCUS, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
