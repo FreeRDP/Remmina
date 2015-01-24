@@ -563,3 +563,15 @@ guint16 remmina_public_get_keycode_for_keyval(GdkKeymap *keymap, guint keyval)
 	}
 	return keycode;
 }
+
+/* Check if the requested keycode is a key modifier */
+gboolean remmina_public_get_modifier_for_keycode(GdkKeymap *keymap, guint16 keycode)
+{
+	TRACE_CALL("remmina_public_get_modifier_for_keycode")
+	g_return_val_if_fail(keycode > 0, FALSE);
+#ifdef GDK_WINDOWING_X11
+	return gdk_x11_keymap_key_is_modifier(keymap, keycode);
+#else
+	return FALSE;
+#endif
+}
