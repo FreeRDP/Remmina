@@ -2074,12 +2074,25 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 
 }
 
+/* Array of key/value pairs for color depths */
 static gpointer colordepth_list[] =
-		{ "8", N_("256 colors"), "15", N_("High color (15 bit)"), "16", N_("High color (16 bit)"), "24", N_(
-				"True color (24 bit)"), NULL };
+{
+	"8", N_("256 colors"),
+	"15", N_("High color (15 bit)"),
+	"16", N_("High color (16 bit)"),
+	"24", N_("True color (24 bit)"),
+	NULL
+};
 
+/* Array of key/value pairs for quality selection */
 static gpointer quality_list[] =
-{ "0", N_("Poor (fastest)"), "1", N_("Medium"), "2", N_("Good"), "9", N_("Best (slowest)"), NULL };
+{
+	"0", N_("Poor (fastest)"),
+	"1", N_("Medium"),
+	"2", N_("Good"),
+	"9", N_("Best (slowest)"),
+	NULL
+};
 
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
