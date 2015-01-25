@@ -343,7 +343,6 @@ static gboolean remmina_plugin_xdmcp_query_feature(RemminaProtocolWidget *gp, co
 static void remmina_plugin_xdmcp_call_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 	TRACE_CALL("remmina_plugin_xdmcp_call_feature");
-	RemminaPluginXdmcpData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
