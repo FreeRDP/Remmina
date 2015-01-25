@@ -48,10 +48,16 @@ void remmina_plugin_telepathy_entry(void)
 	}
 }
 
+/* Entry plugin definition and features */
 static RemminaEntryPlugin remmina_plugin_telepathy =
-{ REMMINA_PLUGIN_TYPE_ENTRY, "telepathy", N_("Telepathy - Desktop Sharing"), GETTEXT_PACKAGE, VERSION,
-
-remmina_plugin_telepathy_entry };
+{
+	REMMINA_PLUGIN_TYPE_ENTRY,                    // Type
+	"telepathy",                                  // Name
+	N_("Telepathy - Desktop Sharing"),            // Description
+	GETTEXT_PACKAGE,                              // Translation domain
+	VERSION,                                      // Version number
+	remmina_plugin_telepathy_entry                // Plugin entry function
+};
 
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
