@@ -1,6 +1,7 @@
 # src/remmina - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2011 Marc-Andre Moreau
+# Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,7 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, 
+# Foundation, Inc., 59 Temple Place, Suite 330,
 # Boston, MA 02111-1307, USA.
 #
 # In addition, as a special exception, the copyright holders give
@@ -86,8 +87,6 @@ set(REMMINA_SRCS
 	src/remmina_protocol_widget.h
 	src/remmina_public.c
 	src/remmina_public.h
-	src/remmina_scaler.c
-	src/remmina_scaler.h
 	src/remmina_scrolled_viewport.c
 	src/remmina_scrolled_viewport.h
 	src/remmina_sftp_client.c
