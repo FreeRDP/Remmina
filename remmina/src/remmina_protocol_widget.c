@@ -788,13 +788,15 @@ void remmina_protocol_widget_set_scale(RemminaProtocolWidget* gp, gboolean scale
 gboolean remmina_protocol_widget_get_expand(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_protocol_widget_get_expand");
-	return gp->priv->expand;
+	// Deprecated, no longer in use. Kept here to avoid breaking plugin api
+	return FALSE;
 }
 
 void remmina_protocol_widget_set_expand(RemminaProtocolWidget* gp, gboolean expand)
 {
 	TRACE_CALL("remmina_protocol_widget_set_expand");
-	gp->priv->expand = expand;
+	// Deprecated, no longer in use. Kept here to avoid breaking plugin api
+	return;
 }
 
 gboolean remmina_protocol_widget_has_error(RemminaProtocolWidget* gp)
