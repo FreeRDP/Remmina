@@ -87,8 +87,6 @@ set(REMMINA_SRCS
 	src/remmina_protocol_widget.h
 	src/remmina_public.c
 	src/remmina_public.h
-	src/remmina_scaler.c
-	src/remmina_scaler.h
 	src/remmina_scrolled_viewport.c
 	src/remmina_scrolled_viewport.h
 	src/remmina_sftp_client.c
