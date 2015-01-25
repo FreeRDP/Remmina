@@ -53,7 +53,7 @@ typedef struct rf_context rfContext;
 #define LOCK_BUFFER(t)	  	if (t) {CANCEL_DEFER} pthread_mutex_lock(&rfi->mutex);
 #define UNLOCK_BUFFER(t)	pthread_mutex_unlock(&rfi->mutex); if (t) {CANCEL_ASYNC}
 
-#define GET_DATA(_rfi)		(rfContext*) g_object_get_data(G_OBJECT(_rfi), "plugin-data")
+#define GET_PLUGIN_DATA(gp) (rfContext*) g_object_get_data(G_OBJECT(gp), "plugin-data")
 
 #define DEFAULT_QUALITY_0	0x6f
 #define DEFAULT_QUALITY_1	0x07

@@ -444,7 +444,7 @@ static int remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext*
 
 	clipboard = (rfClipboard*)context->custom;
 	gp = clipboard->rfi->protocol_widget;
-	rfi = GET_DATA(gp);
+	rfi = GET_PLUGIN_DATA(gp);
 
 	data = formatDataResponse->requestedFormatData;
 	size = formatDataResponse->dataLen;
@@ -577,13 +577,11 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionDa
 	GdkAtom target;
 	CLIPRDR_FORMAT_DATA_REQUEST request;
 	rfClipboard* clipboard;
-	rfContext* rfi;
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	struct timespec to;
 	struct timeval tv;
 	int rc;
 
-
-	rfi = GET_DATA(gp);
 	clipboard = &(rfi->clipboard);
 
 	if ( clipboard->srv_clip_data_wait != SCDW_NONE ) {
@@ -677,7 +675,7 @@ int remmina_rdp_cliprdr_mt_send_format_list(RemminaProtocolWidget* gp, RemminaPl
 	TRACE_CALL("remmina_rdp_cliprdr_mt_send_format_list");
 	GtkClipboard* gtkClipboard;
 	rfClipboard* clipboard = ui->clipboard.clipboard;
-	rfContext* rfi = GET_DATA(gp);
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	GdkAtom* targets;
 	gboolean result = 0;
 	gint loccount, srvcount;
@@ -767,9 +765,8 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 	UINT8* outbuf = NULL;
 	GdkPixbuf *image = NULL;
 	int size = 0;
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
-
-	rfContext* rfi = GET_DATA(gp);
 	clipboard = ui->clipboard.clipboard;
 
 	gtkClipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);
@@ -859,7 +856,7 @@ void remmina_rdp_cliprdr_set_clipboard_content(RemminaProtocolWidget* gp, Remmin
 {
 	TRACE_CALL("remmina_rdp_cliprdr_set_clipboard_content");
 	GtkClipboard* gtkClipboard;
-	rfContext* rfi = GET_DATA(gp);
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	rfClipboard* clipboard;
 	clipboard = ui->clipboard.clipboard;
 
@@ -881,7 +878,7 @@ void remmina_rdp_cliprdr_set_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 	GtkClipboard* gtkClipboard;
 	GtkTargetEntry* targets;
 	gint n_targets;
-	rfContext* rfi = GET_DATA(gp);
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	rfClipboard* clipboard;
 
 	clipboard = ui->clipboard.clipboard;
