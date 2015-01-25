@@ -51,6 +51,8 @@
 
 #define REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY "overwrite_all"
 
+#define GET_PLUGIN_DATA(gp) (RemminaPluginSftpData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+
 typedef struct _RemminaPluginSftpData
 {
 	GtkWidget *client;
@@ -76,7 +78,7 @@ remmina_plugin_sftp_main_thread (gpointer data)
 	pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
 
-	gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
+	gpdata = GET_PLUGIN_DATA(gp);
 
 	ssh = g_object_get_data (G_OBJECT(gp), "user-data");
 	if (ssh)
@@ -190,9 +192,7 @@ static gboolean
 remmina_plugin_sftp_open_connection (RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_sftp_open_connection");
-	RemminaPluginSftpData *gpdata;
-
-	gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
+	RemminaPluginSftpData *gpdata = GET_PLUGIN_DATA(gp);
 
 	remmina_plugin_service->protocol_plugin_set_expand (gp, TRUE);
 	remmina_plugin_service->protocol_plugin_set_width (gp, 640);
@@ -216,10 +216,9 @@ static gboolean
 remmina_plugin_sftp_close_connection (RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_sftp_close_connection");
-	RemminaPluginSftpData *gpdata;
+	RemminaPluginSftpData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 
-	gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 	if (gpdata->thread)
 	{
@@ -248,10 +247,9 @@ static void
 remmina_plugin_sftp_call_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 	TRACE_CALL("remmina_plugin_sftp_call_feature");
-	RemminaPluginSftpData *gpdata;
+	RemminaPluginSftpData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 
-	gpdata = (RemminaPluginSftpData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 	switch (feature->id)
 	{

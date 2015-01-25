@@ -51,6 +51,8 @@
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY  1
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE 2
 
+#define GET_PLUGIN_DATA(gp) (RemminaPluginSshData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+
 /***** The SSH plugin implementation *****/
 typedef struct _RemminaPluginSshData
 {
@@ -77,7 +79,7 @@ remmina_plugin_ssh_main_thread (gpointer data)
 	pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
 
-	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
+	gpdata = GET_PLUGIN_DATA(gp);
 
 	ssh = g_object_get_data (G_OBJECT(gp), "user-data");
 	if (ssh)
@@ -180,9 +182,8 @@ static gboolean
 remmina_plugin_ssh_on_focus_in (GtkWidget *widget, GdkEventFocus *event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_ssh_on_focus_in");
-	RemminaPluginSshData *gpdata;
+	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 
-	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 	gtk_widget_grab_focus (gpdata->vte);
 	return TRUE;
 }
@@ -191,12 +192,10 @@ static gboolean
 remmina_plugin_ssh_on_size_allocate (GtkWidget *widget, GtkAllocation *alloc, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_ssh_on_size_allocate");
-	RemminaPluginSshData *gpdata;
+	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 	gint cols, rows;
 
 	if (!gtk_widget_get_mapped (widget)) return FALSE;
-
-	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 
 	cols = vte_terminal_get_column_count (VTE_TERMINAL (widget));
 	rows = vte_terminal_get_row_count (VTE_TERMINAL (widget));
@@ -210,9 +209,8 @@ static void
 remmina_plugin_ssh_set_vte_pref (RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_ssh_set_vte_pref");
-	RemminaPluginSshData *gpdata;
+	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 
-	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 	if (remmina_pref.vte_font && remmina_pref.vte_font[0])
 	{
 #if !VTE_CHECK_VERSION(0,38,0)
@@ -303,9 +301,7 @@ static gboolean
 remmina_plugin_ssh_open_connection (RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_ssh_open_connection");
-	RemminaPluginSshData *gpdata;
-
-	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
+	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 
 	remmina_plugin_service->protocol_plugin_set_expand (gp, TRUE);
 	remmina_plugin_service->protocol_plugin_set_width (gp, 640);
@@ -329,9 +325,8 @@ static gboolean
 remmina_plugin_ssh_close_connection (RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_ssh_close_connection");
-	RemminaPluginSshData *gpdata;
+	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 
-	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 	if (gpdata->thread)
 	{
 		pthread_cancel (gpdata->thread);
@@ -358,9 +353,8 @@ static void
 remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 	TRACE_CALL("remmina_plugin_ssh_call_feature");
-	RemminaPluginSshData *gpdata;
+	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 
-	gpdata = (RemminaPluginSshData*) g_object_get_data (G_OBJECT(gp), "plugin-data");
 	switch (feature->id)
 	{
 		case REMMINA_PROTOCOL_FEATURE_TOOL_SSH:
