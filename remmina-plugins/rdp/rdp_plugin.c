@@ -639,7 +639,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	gint cert_port;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-
 	s = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 3389, FALSE);
 
 	if (s == NULL)
@@ -1006,8 +1005,6 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 	freerdp* instance;
 
 	instance = rfi->instance;
-
-
 	if (rfi->thread)
 	{
 		rfi->thread_cancelled = TRUE;	// Avoid all rf_queue function to run

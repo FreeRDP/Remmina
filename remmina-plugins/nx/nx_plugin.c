@@ -709,10 +709,8 @@ static gboolean remmina_plugin_nx_query_feature(RemminaProtocolWidget *gp, const
 static void remmina_plugin_nx_call_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 	TRACE_CALL("remmina_plugin_nx_call_feature");
-	RemminaPluginNxData *gpdata;
 	RemminaFile *remminafile;
 
-	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_nx_service->protocol_plugin_get_file(gp);
 	switch (feature->id)
 	{

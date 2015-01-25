@@ -583,7 +583,6 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionDa
 	int rc;
 
 	clipboard = &(rfi->clipboard);
-
 	if ( clipboard->srv_clip_data_wait != SCDW_NONE ) {
 		remmina_plugin_service->log_printf("[RDP] Cannot paste now, I'm transferring clipboard data from server. Try again later\n");
 		return;
@@ -674,7 +673,7 @@ int remmina_rdp_cliprdr_mt_send_format_list(RemminaProtocolWidget* gp, RemminaPl
 {
 	TRACE_CALL("remmina_rdp_cliprdr_mt_send_format_list");
 	GtkClipboard* gtkClipboard;
-	rfClipboard* clipboard = ui->clipboard.clipboard;
+	rfClipboard* clipboard;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	GdkAtom* targets;
 	gboolean result = 0;
@@ -683,6 +682,7 @@ int remmina_rdp_cliprdr_mt_send_format_list(RemminaProtocolWidget* gp, RemminaPl
 	CLIPRDR_FORMAT_LIST formatList;
 	CLIPRDR_FORMAT* formats;
 
+	clipboard = ui->clipboard.clipboard;
 	formatList.formats = formats = NULL;
 	formatList.numFormats = 0;
 
@@ -760,7 +760,6 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 	TRACE_CALL("remmina_rdp_cliprdr_get_clipboard_data");
 	GtkClipboard* gtkClipboard;
 	rfClipboard* clipboard;
-
 	UINT8* inbuf = NULL;
 	UINT8* outbuf = NULL;
 	GdkPixbuf *image = NULL;
@@ -768,7 +767,6 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
 	clipboard = ui->clipboard.clipboard;
-
 	gtkClipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);
 	if (gtkClipboard)
 	{
@@ -857,8 +855,6 @@ void remmina_rdp_cliprdr_set_clipboard_content(RemminaProtocolWidget* gp, Remmin
 	TRACE_CALL("remmina_rdp_cliprdr_set_clipboard_content");
 	GtkClipboard* gtkClipboard;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	rfClipboard* clipboard;
-	clipboard = ui->clipboard.clipboard;
 
 	gtkClipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);
 	if (ui->clipboard.format == CB_FORMAT_PNG || ui->clipboard.format == CF_DIB || ui->clipboard.format == CF_DIBV5 || ui->clipboard.format == CB_FORMAT_JPEG) {
@@ -882,7 +878,6 @@ void remmina_rdp_cliprdr_set_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 	rfClipboard* clipboard;
 
 	clipboard = ui->clipboard.clipboard;
-
 	targets = gtk_target_table_new_from_list(ui->clipboard.targetlist, &n_targets);
 	gtkClipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);
 	if (gtkClipboard && targets)
