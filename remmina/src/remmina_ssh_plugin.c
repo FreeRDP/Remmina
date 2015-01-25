@@ -33,6 +33,7 @@
  */
 
 #include "config.h"
+#include "remmina/remmina_trace_calls.h"
 
 #if defined (HAVE_LIBSSH) && defined (HAVE_LIBVTE)
 
@@ -46,7 +47,6 @@
 #include "remmina_pref.h"
 #include "remmina_ssh_plugin.h"
 #include "remmina_masterthread_exec.h"
-#include "remmina/remmina_trace_calls.h"
 
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY  1
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE 2
