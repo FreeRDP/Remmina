@@ -839,7 +839,7 @@ RemminaFile* remmina_protocol_widget_get_file(RemminaProtocolWidget* gp)
 	return gp->priv->remmina_file;
 }
 
-gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget* gp, RemminaAuthpwdType authpwd_type)
+gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget* gp, RemminaAuthpwdType authpwd_type, gboolean allow_password_saving)
 {
 	TRACE_CALL("remmina_protocol_widget_init_authpwd");
 	RemminaFile* remminafile = gp->priv->remmina_file;
@@ -864,22 +864,26 @@ gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget* gp, RemminaAuth
 	ret = remmina_init_dialog_authpwd(
 			REMMINA_INIT_DIALOG(gp->priv->init_dialog),
 			s,
-			remmina_file_get_filename(remminafile) != NULL && authpwd_type != REMMINA_AUTHPWD_TYPE_SSH_PWD
-					&& authpwd_type != REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY);
+			remmina_file_get_filename(remminafile) != NULL &&
+				allow_password_saving &&
+				authpwd_type != REMMINA_AUTHPWD_TYPE_SSH_PWD &&
+				authpwd_type != REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY);
 	g_free(s);
 
 	return ret;
 }
 
-gint remmina_protocol_widget_init_authuserpwd(RemminaProtocolWidget* gp, gboolean want_domain)
+gint remmina_protocol_widget_init_authuserpwd(RemminaProtocolWidget* gp, gboolean want_domain, gboolean allow_password_saving)
 {
 	TRACE_CALL("remmina_protocol_widget_init_authuserpwd");
 	RemminaFile* remminafile = gp->priv->remmina_file;
 
-	return remmina_init_dialog_authuserpwd(REMMINA_INIT_DIALOG(gp->priv->init_dialog), want_domain,
-			remmina_file_get_string(remminafile, "username"),
-			want_domain ? remmina_file_get_string(remminafile, "domain") : NULL,
-			(remmina_file_get_filename(remminafile) != NULL));
+	return remmina_init_dialog_authuserpwd(
+		REMMINA_INIT_DIALOG(gp->priv->init_dialog),
+		want_domain,
+		remmina_file_get_string(remminafile, "username"),
+		want_domain ? remmina_file_get_string(remminafile, "domain") : NULL,
+		(remmina_file_get_filename(remminafile) != NULL) && allow_password_saving);
 }
 
 gint remmina_protocol_widget_init_certificate(RemminaProtocolWidget* gp, const gchar* subject, const gchar* issuer, const gchar* fingerprint)

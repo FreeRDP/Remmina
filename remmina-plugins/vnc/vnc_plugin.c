@@ -902,6 +902,7 @@ remmina_plugin_vnc_rfb_password(rfbClient *cl)
 	RemminaFile *remminafile;
 	gint ret;
 	gchar *pwd = NULL;
+	gboolean disablepasswordstoring;
 
 	gpdata->auth_called = TRUE;
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
@@ -912,7 +913,8 @@ remmina_plugin_vnc_rfb_password(rfbClient *cl)
 	}
 	if (!pwd)
 	{
-		ret = remmina_plugin_service->protocol_plugin_init_authpwd(gp, REMMINA_AUTHPWD_TYPE_PROTOCOL);
+		disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
+		ret = remmina_plugin_service->protocol_plugin_init_authpwd(gp, REMMINA_AUTHPWD_TYPE_PROTOCOL, !disablepasswordstoring);
 
 		if (ret == GTK_RESPONSE_OK)
 		{
@@ -936,6 +938,7 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 	RemminaFile *remminafile;
 	gint ret;
 	gchar *s1, *s2;
+	gboolean disablepasswordstoring;
 
 	gpdata->auth_called = TRUE;
 	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
@@ -961,7 +964,8 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 			g_free(s1);
 			g_free(s2);
 
-			ret = remmina_plugin_service->protocol_plugin_init_authuserpwd (gp, FALSE);
+			disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
+			ret = remmina_plugin_service->protocol_plugin_init_authuserpwd(gp, FALSE, !disablepasswordstoring);
 
 
 			if (ret == GTK_RESPONSE_OK)
@@ -2067,6 +2071,7 @@ static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), TRUE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption", N_("Disable encryption"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverinput", N_("Disable server input"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
@@ -2091,6 +2096,7 @@ static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), TRUE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption", N_("Disable encryption"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverinput", N_("Disable server input"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
