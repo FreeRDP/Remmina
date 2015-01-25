@@ -312,7 +312,7 @@ static gint remmina_plugin_nx_wait_signal(RemminaPluginNxData *gpdata)
 static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_nx_start_session");
-	RemminaPluginNxData *gpdata;
+	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	RemminaNXSession *nx;
 	const gchar *type, *app;
@@ -324,7 +324,6 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 	const gchar *cs;
 	gint i;
 
-	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_nx_service->protocol_plugin_get_file(gp);
 	nx = gpdata->nx;
 
@@ -548,11 +547,9 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 static gboolean remmina_plugin_nx_main(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_nx_main");
-	RemminaPluginNxData *gpdata;
+	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 	gboolean ret;
 	const gchar *err;
-
-	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 
 	gpdata->nx = remmina_nx_session_new();
 	ret = remmina_plugin_nx_start_session(gp);
@@ -614,12 +611,11 @@ static void remmina_plugin_nx_init(RemminaProtocolWidget *gp)
 static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_nx_open_connection");
-	RemminaPluginNxData *gpdata;
+	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	const gchar *resolution;
 	gint width, height;
 
-	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_nx_service->protocol_plugin_get_file(gp);
 
 	resolution = remmina_plugin_nx_service->file_get_string(remminafile, "resolution");
@@ -654,9 +650,7 @@ static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 static gboolean remmina_plugin_nx_close_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_nx_close_connection");
-	RemminaPluginNxData *gpdata;
-
-	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 
 	if (gpdata->thread)
 	{
@@ -700,7 +694,7 @@ static void remmina_plugin_nx_send_ctrlaltdel(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_xdmcp_send_ctrlaltdel");
 	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_Delete };
-	RemminaPluginNxData *gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 
 	remmina_plugin_nx_service->protocol_plugin_send_keys_signals(gpdata->socket,
 		keys, G_N_ELEMENTS(keys), GDK_KEY_PRESS | GDK_KEY_RELEASE);
