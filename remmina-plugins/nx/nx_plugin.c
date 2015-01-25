@@ -223,9 +223,7 @@ static int remmina_plugin_nx_dummy_handler(Display *dsp, XErrorEvent *err)
 static gboolean remmina_plugin_nx_start_create_notify(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_nx_start_create_notify");
-	RemminaPluginNxData *gpdata;
-
-	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 
 	gpdata->display = XOpenDisplay(gdk_display_get_name(gdk_display_get_default()));
 	if (gpdata->display == NULL)
@@ -253,7 +251,7 @@ static gboolean remmina_plugin_nx_monitor_create_notify(RemminaProtocolWidget *g
 
 	CANCEL_DEFER
 
-	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	gpdata = GET_PLUGIN_DATA(gp);
 	atom = XInternAtom(gpdata->display, "WM_COMMAND", True);
 	if (atom == None)
 		return FALSE;
