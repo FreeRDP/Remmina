@@ -35,6 +35,8 @@
 #ifndef __REMMINAPLUGINNX_H__
 #define __REMMINAPLUGINNX_H__
 
+#define GET_PLUGIN_DATA(gp) (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+
 G_BEGIN_DECLS
 
 #include "nx_session.h"
