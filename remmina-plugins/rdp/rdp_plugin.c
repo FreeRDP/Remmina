@@ -1114,6 +1114,7 @@ static void remmina_rdp_call_feature(RemminaProtocolWidget* gp, const RemminaPro
 	}
 }
 
+/* Array of key/value pairs for color depths */
 static gpointer colordepth_list[] =
 {
 	"8", N_("256 colors (8 bpp)"),
@@ -1125,6 +1126,7 @@ static gpointer colordepth_list[] =
 	NULL
 };
 
+/* Array of key/value pairs for quality selection */
 static gpointer quality_list[] =
 {
 	"0", N_("Poor (fastest)"),
@@ -1134,6 +1136,7 @@ static gpointer quality_list[] =
 	NULL
 };
 
+/* Array of key/value pairs for sound options */
 static gpointer sound_list[] =
 {
 	"off", N_("Off"),
@@ -1145,6 +1148,7 @@ static gpointer sound_list[] =
 	NULL
 };
 
+/* Array of key/value pairs for security */
 static gpointer security_list[] =
 {
 	"", N_("Negotiate"),
