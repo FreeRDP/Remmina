@@ -397,14 +397,26 @@ static const RemminaProtocolFeature remmina_plugin_xdmcp_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
+/* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin_xdmcp =
-{ REMMINA_PLUGIN_TYPE_PROTOCOL, "XDMCP", N_("XDMCP - X Remote Session"), GETTEXT_PACKAGE, VERSION,
-
-"remmina-xdmcp", "remmina-xdmcp-ssh", remmina_plugin_xdmcp_basic_settings, NULL, REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,
-remmina_plugin_xdmcp_features,
-
-remmina_plugin_xdmcp_init, remmina_plugin_xdmcp_open_connection, remmina_plugin_xdmcp_close_connection,
-		remmina_plugin_xdmcp_query_feature, remmina_plugin_xdmcp_call_feature };
+{
+	REMMINA_PLUGIN_TYPE_PROTOCOL,                 // Type
+	"XDMCP",                                      // Name
+	N_("XDMCP - X Remote Session"),               // Description
+	GETTEXT_PACKAGE,                              // Translation domain
+	VERSION,                                      // Version number
+	"remmina-xdmcp",                              // Icon for normal connection
+	"remmina-xdmcp-ssh",                          // Icon for SSH connection
+	remmina_plugin_xdmcp_basic_settings,          // Array for basic settings
+	NULL,                                         // Array for advanced settings
+	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,          // SSH settings type
+	remmina_plugin_xdmcp_features,                // Array for available features
+	remmina_plugin_xdmcp_init,                    // Plugin initialization
+	remmina_plugin_xdmcp_open_connection,         // Plugin open connection
+	remmina_plugin_xdmcp_close_connection,        // Plugin close connection
+	remmina_plugin_xdmcp_query_feature,           // Query for available features
+	remmina_plugin_xdmcp_call_feature             // Call a feature
+};
 
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
