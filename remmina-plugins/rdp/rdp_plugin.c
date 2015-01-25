@@ -1246,16 +1246,16 @@ static RemminaFilePlugin remmina_rdpf =
 	NULL
 };
 
+/* Preferences plugin definition and features */
 static RemminaPrefPlugin remmina_rdps =
 {
-	REMMINA_PLUGIN_TYPE_PREF,
-	"RDPS",
-	N_("RDP - Preferences"),
-	GETTEXT_PACKAGE,
-	VERSION,
-
-	"RDP",
-	remmina_rdp_settings_new
+	REMMINA_PLUGIN_TYPE_PREF,                     // Type
+	"RDPS",                                       // Name
+	N_("RDP - Preferences"),                      // Description
+	GETTEXT_PACKAGE,                              // Translation domain
+	VERSION,                                      // Version number
+	"RDP",                                        // Label
+	remmina_rdp_settings_new                      // Preferences body function
 };
 
 G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService* service)
