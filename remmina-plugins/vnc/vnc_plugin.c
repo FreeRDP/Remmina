@@ -318,7 +318,6 @@ static gboolean remmina_plugin_vnc_update_scale_buffer(RemminaProtocolWidget *gp
 	RemminaFile *remminafile;
 	gint width, height;
 	gint gpwidth, gpheight;
-	gint hscale, vscale;
 	gboolean scale;
 	gint x, y, w, h;
 	GdkPixbuf *pixbuf;
@@ -344,10 +343,8 @@ static gboolean remmina_plugin_vnc_update_scale_buffer(RemminaProtocolWidget *gp
 				}
 				gpwidth = remmina_plugin_service->protocol_plugin_get_width(gp);
 				gpheight = remmina_plugin_service->protocol_plugin_get_height(gp);
-				hscale = remmina_plugin_service->file_get_int(remminafile, "hscale", 0);
-				vscale = remmina_plugin_service->file_get_int(remminafile, "vscale", 0);
-				gpdata->scale_width = (hscale > 0 ? MAX(1, gpwidth * hscale / 100) : width);
-				gpdata->scale_height = (vscale > 0 ? MAX(1, gpheight * vscale / 100) : height);
+				gpdata->scale_width = width;
+				gpdata->scale_height = height;
 
 				pixbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, gpdata->scale_width,
 						gpdata->scale_height);
@@ -406,7 +403,6 @@ static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean 
 	RemminaPluginVncData *gpdata;
 	RemminaFile *remminafile;
 	gint width, height;
-	gint hscale, vscale;
 
 	if ( !remmina_plugin_service->is_main_thread() ) {
 		struct onMainThread_cb_data *d;
@@ -426,13 +422,12 @@ static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean 
 	height = remmina_plugin_service->protocol_plugin_get_height(gp);
 	if (scale)
 	{
-		hscale = remmina_plugin_service->file_get_int(remminafile, "hscale", 0);
-		vscale = remmina_plugin_service->file_get_int(remminafile, "vscale", 0);
-		gtk_widget_set_size_request(GTK_WIDGET(gpdata->drawing_area), (hscale > 0 ? width * hscale / 100 : -1),
-		(vscale > 0 ? height * vscale / 100 : -1));
+		/* In scaled mode, drawing_area will get its dimensions from its parent */
+		gtk_widget_set_size_request(GTK_WIDGET(gpdata->drawing_area), -1, -1 );
 	}
 	else
 	{
+		/* In non scaled mode, the plugins forces dimensions of drawing area */
 		gtk_widget_set_size_request (GTK_WIDGET (gpdata->drawing_area), width, height);
 	}
 
@@ -1949,7 +1944,7 @@ static gboolean remmina_plugin_vnc_on_configure(GtkWidget *widget, GdkEventConfi
 	/* We do a delayed reallocating to improve performance */
 	if (gpdata->scale_handler)
 		g_source_remove(gpdata->scale_handler);
-	gpdata->scale_handler = g_timeout_add(1000, (GSourceFunc) remmina_plugin_vnc_update_scale_buffer_main, gp);
+	gpdata->scale_handler = g_timeout_add(300, (GSourceFunc) remmina_plugin_vnc_update_scale_buffer_main, gp);
 	return FALSE;
 }
 

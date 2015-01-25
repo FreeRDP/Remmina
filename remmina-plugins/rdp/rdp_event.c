@@ -221,8 +221,7 @@ static gboolean remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 	TRACE_CALL("remmina_rdp_event_update_scale_factor");
 	GtkAllocation a;
 	gboolean scale;
-	gint width, height;
-	gint hscale, vscale;
+	gint rdwidth, rdheight;
 	gint gpwidth, gpheight;
 	RemminaFile* remminafile;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
@@ -230,26 +229,22 @@ static gboolean remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	gtk_widget_get_allocation(GTK_WIDGET(gp), &a);
-	width = a.width;
-	height = a.height;
+	gpwidth = a.width;
+	gpheight = a.height;
 	scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
 
 	if (scale)
 	{
-		if ((width > 1) && (height > 1))
+		if ((gpwidth > 1) && (gpheight > 1))
 		{
-			gpwidth = remmina_plugin_service->protocol_plugin_get_width(gp);
-			gpheight = remmina_plugin_service->protocol_plugin_get_height(gp);
-			hscale = remmina_plugin_service->file_get_int(remminafile, "hscale", 0);
-			vscale = remmina_plugin_service->file_get_int(remminafile, "vscale", 0);
+			rdwidth = remmina_plugin_service->protocol_plugin_get_width(gp);
+			rdheight = remmina_plugin_service->protocol_plugin_get_height(gp);
 
-			rfi->scale_width = (hscale > 0 ?
-				MAX(1, gpwidth * hscale / 100) : width);
-			rfi->scale_height = (vscale > 0 ?
-				MAX(1, gpheight * vscale / 100) : height);
+			rfi->scale_width = gpwidth;
+			rfi->scale_height = gpheight;
 
-			rfi->scale_x = (gdouble) rfi->scale_width / (gdouble) gpwidth;
-			rfi->scale_y = (gdouble) rfi->scale_height / (gdouble) gpheight;
+			rfi->scale_x = (gdouble) rfi->scale_width / (gdouble) rdwidth;
+			rfi->scale_y = (gdouble) rfi->scale_height / (gdouble) rdheight;
 		}
 	}
 	else
@@ -260,8 +255,10 @@ static gboolean remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 		rfi->scale_y = 0;
 	}
 
-	if ((width > 1) && (height > 1))
-		gtk_widget_queue_draw_area(GTK_WIDGET(gp), 0, 0, width, height);
+	/* Now we have scaling vars calculated, resize drawing_area accordingly */
+
+	if ((gpwidth > 1) && (gpheight > 1))
+			gtk_widget_queue_draw_area(GTK_WIDGET(gp), 0, 0, gpwidth, gpheight);
 
 	rfi->scale_handler = 0;
 
@@ -304,7 +301,7 @@ static gboolean remmina_rdp_event_on_configure(GtkWidget* widget, GdkEventConfig
 	if (rfi->scale_handler)
 		g_source_remove(rfi->scale_handler);
 
-	rfi->scale_handler = g_timeout_add(1000, (GSourceFunc) remmina_rdp_event_update_scale_factor, gp);
+	rfi->scale_handler = g_timeout_add(300, (GSourceFunc) remmina_rdp_event_update_scale_factor, gp);
 
 	return FALSE;
 }
@@ -437,6 +434,14 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 	DWORD scancode;
 
 	if ( !rfi ) return TRUE;
+
+#ifdef ENABLE_GTK_INSPECTOR_KEY
+	/* GTK inspector key is propagated up. Disabled by default.
+	 * enable it by defining ENABLE_GTK_INSPECTOR_KEY */
+	if ( ( event->state & GDK_CONTROL_MASK ) != 0 && ( event->keyval == GDK_KEY_I || event->keyval == GDK_KEY_D ) ) {
+		   return FALSE;
+	}
+#endif
 
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_SCANCODE;
 	rdp_event.key_event.up = (event->type == GDK_KEY_PRESS ? False : True);
@@ -637,7 +642,6 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_rdp_event_update_scale");
 	gint width, height;
-	gint hscale, vscale;
 	RemminaFile* remminafile;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
@@ -645,17 +649,17 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 
 	width = remmina_plugin_service->protocol_plugin_get_width(gp);
 	height = remmina_plugin_service->protocol_plugin_get_height(gp);
-	hscale = remmina_plugin_service->file_get_int(remminafile, "hscale", 0);
-	vscale = remmina_plugin_service->file_get_int(remminafile, "vscale", 0);
+
+	remmina_rdp_event_update_scale_factor(gp);
 
 	if (rfi->scale)
 	{
-		gtk_widget_set_size_request(rfi->drawing_area,
-			(hscale > 0 ? width * hscale / 100 : -1),
-			(vscale > 0 ? height * vscale / 100 : -1));
+		/* In scaled mode, drawing_area will get its dimensions from its parent */
+		gtk_widget_set_size_request(rfi->drawing_area, -1, -1 );
 	}
 	else
 	{
+		/* In non scaled mode, the plugins forces dimensions of drawing area */
 		gtk_widget_set_size_request(rfi->drawing_area, width, height);
 	}
 

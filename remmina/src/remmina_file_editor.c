@@ -47,7 +47,6 @@
 #include "remmina_file.h"
 #include "remmina_file_manager.h"
 #include "remmina_ssh.h"
-#include "remmina_scaler.h"
 #include "remmina_widget_pool.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_icon.h"
@@ -107,7 +106,6 @@ struct _RemminaFileEditorPriv
 	GtkWidget* resolution_custom_radio;
 	GtkWidget* resolution_custom_combo;
 	GtkWidget* keymap_combo;
-	GtkWidget* scaler_widget;
 
 	GtkWidget* ssh_enabled_check;
 	GtkWidget* ssh_loopback_check;
@@ -688,15 +686,6 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 #endif
 				gtk_grid_attach(GTK_GRID(grid), widget, 0, row + 1, 1, row + 2);
 
-				widget = remmina_scaler_new();
-				gtk_widget_show(widget);
-				gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 2, row + 2);
-				remmina_scaler_set(REMMINA_SCALER(widget),
-						remmina_file_get_int(priv->remmina_file, "hscale", 0),
-						remmina_file_get_int(priv->remmina_file, "vscale", 0),
-						remmina_file_get_int(priv->remmina_file, "aspectscale", FALSE));
-				priv->scaler_widget = widget;
-
 				row++;
 				break;
 
@@ -1004,7 +993,6 @@ static void remmina_file_editor_protocol_combo_on_changed(GtkComboBox* combo, Re
 	priv->resolution_custom_radio = NULL;
 	priv->resolution_custom_combo = NULL;
 	priv->keymap_combo = NULL;
-	priv->scaler_widget = NULL;
 
 	priv->ssh_enabled_check = NULL;
 	priv->ssh_loopback_check = NULL;
@@ -1160,13 +1148,6 @@ static void remmina_file_editor_update(RemminaFileEditor* gfe)
 	{
 		remmina_file_set_string_ref(priv->remmina_file, "keymap",
 				remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->keymap_combo)));
-	}
-
-	if (priv->scaler_widget)
-	{
-		remmina_file_set_int(priv->remmina_file, "hscale", REMMINA_SCALER(priv->scaler_widget)->hscale);
-		remmina_file_set_int(priv->remmina_file, "vscale", REMMINA_SCALER(priv->scaler_widget)->vscale);
-		remmina_file_set_int(priv->remmina_file, "aspectscale", REMMINA_SCALER(priv->scaler_widget)->aspectscale);
 	}
 
 	remmina_file_editor_update_ssh(gfe);

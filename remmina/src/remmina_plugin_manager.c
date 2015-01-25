@@ -359,3 +359,23 @@ RemminaSecretPlugin* remmina_plugin_manager_get_secret_plugin(void)
 	return remmina_secret_plugin;
 }
 
+gboolean remmina_plugin_manager_query_feature_by_type(RemminaPluginType ptype, const gchar* name, RemminaProtocolFeatureType ftype)
+{
+	const RemminaProtocolFeature *feature;
+	RemminaProtocolPlugin* plugin;
+
+	plugin = (RemminaProtocolPlugin*) remmina_plugin_manager_get_plugin(ptype, name);
+
+	if (plugin == NULL)
+	{
+		return FALSE;
+	}
+
+	for (feature = plugin->features; feature && feature->type; feature++)
+	{
+		if (feature->type == ftype)
+			return TRUE;
+	}
+	return FALSE;
+}
+
