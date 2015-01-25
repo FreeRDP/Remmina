@@ -515,6 +515,7 @@ static void remmina_main_action_connection_new(GtkAction *action, RemminaMain *r
 
 	widget = remmina_file_editor_new();
 	g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_main_file_editor_destroy), remminamain);
+	gtk_window_set_transient_for(GTK_WINDOW(widget), GTK_WINDOW(remminamain));
 	gtk_widget_show(widget);
 }
 
@@ -530,6 +531,7 @@ static void remmina_main_action_connection_copy(GtkAction *action, RemminaMain *
 	if (widget)
 	{
 		g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_main_file_editor_destroy), remminamain);
+		gtk_window_set_transient_for(GTK_WINDOW(widget), GTK_WINDOW(remminamain));
 		gtk_widget_show(widget);
 	}
 }
@@ -546,6 +548,7 @@ static void remmina_main_action_connection_edit(GtkAction *action, RemminaMain *
 	if (widget)
 	{
 		g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_main_file_editor_destroy), remminamain);
+		gtk_window_set_transient_for(GTK_WINDOW(widget), GTK_WINDOW(remminamain));
 		gtk_widget_show(widget);
 	}
 }
@@ -576,6 +579,7 @@ static void remmina_main_action_edit_preferences(GtkAction *action, RemminaMain 
 	GtkWidget *widget;
 
 	widget = remmina_pref_dialog_new(0);
+	gtk_window_set_transient_for(GTK_WINDOW(widget), GTK_WINDOW(remminamain));
 	gtk_widget_show(widget);
 }
 
