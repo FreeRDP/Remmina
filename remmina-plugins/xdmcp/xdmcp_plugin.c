@@ -365,9 +365,16 @@ static void remmina_plugin_xdmcp_call_feature(RemminaProtocolWidget *gp, const R
 	}
 }
 
+/* Array of key/value pairs for color depths */
 static gpointer colordepth_list[] =
-{ "0", N_("Default"), "2", N_("Grayscale"), "8", N_("256 colors"), "16", N_("High color (16 bit)"), "24", N_(
-		"True color (24 bit)"), NULL };
+{
+	"0", N_("Default"),
+	"2", N_("Grayscale"),
+	"8", N_("256 colors"),
+	"16", N_("High color (16 bit)"),
+	"24", N_("True color (24 bit)"),
+	NULL
+};
 
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
