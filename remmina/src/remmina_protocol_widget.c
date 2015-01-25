@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1125,7 +1126,7 @@ void remmina_protocol_widget_send_keys_signals(GtkWidget *widget, const guint *k
 	GdkEventKey event;
 	GdkKeymap *keymap = gdk_keymap_get_default();
 	gboolean result;
-	
+
 	event.window = gtk_widget_get_window(widget);
 	event.send_event = TRUE;
 	event.time = GDK_CURRENT_TIME;

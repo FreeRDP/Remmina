@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2010 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -179,7 +180,7 @@ remmina_plugin_sftp_init (RemminaProtocolWidget *gp)
 			remmina_plugin_service->file_get_int (remminafile, "showhidden", FALSE));
 
 	remmina_ftp_client_set_overwrite_status (REMMINA_FTP_CLIENT (gpdata->client),
-			remmina_plugin_service->file_get_int (remminafile, 
+			remmina_plugin_service->file_get_int (remminafile,
 			REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE));
 
 	remmina_plugin_service->protocol_plugin_register_hostkey (gp, gpdata->client);
@@ -231,7 +232,7 @@ remmina_plugin_sftp_close_connection (RemminaProtocolWidget *gp)
 	/* The session preference overwrite_all is always saved to FALSE in order
 	 * to avoid unwanted overwriting.
 	 * If we'd change idea just remove the next line to save the preference. */
-	remmina_file_set_int(remminafile, 
+	remmina_file_set_int(remminafile,
 		REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE);
 	return FALSE;
 }
@@ -269,7 +270,7 @@ remmina_plugin_sftp_call_feature (RemminaProtocolWidget *gp, const RemminaProtoc
 		return;
 		case REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL:
 		remmina_ftp_client_set_overwrite_status (REMMINA_FTP_CLIENT (gpdata->client),
-				remmina_plugin_service->file_get_int (remminafile, 
+				remmina_plugin_service->file_get_int (remminafile,
 				REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE));
 		return;
 	}
