@@ -33,6 +33,7 @@
  */
 
 #include "config.h"
+#include "remmina/remmina_trace_calls.h"
 
 #ifdef HAVE_LIBSSH
 
@@ -44,7 +45,6 @@
 #include "remmina_ssh.h"
 #include "remmina_protocol_widget.h"
 #include "remmina_sftp_plugin.h"
-#include "remmina/remmina_trace_calls.h"
 
 #define REMMINA_PLUGIN_SFTP_FEATURE_PREF_SHOW_HIDDEN   1
 #define REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL 2
