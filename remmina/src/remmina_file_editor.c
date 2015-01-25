@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,7 +47,6 @@
 #include "remmina_file.h"
 #include "remmina_file_manager.h"
 #include "remmina_ssh.h"
-#include "remmina_scaler.h"
 #include "remmina_widget_pool.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_icon.h"
@@ -106,7 +106,6 @@ struct _RemminaFileEditorPriv
 	GtkWidget* resolution_custom_radio;
 	GtkWidget* resolution_custom_combo;
 	GtkWidget* keymap_combo;
-	GtkWidget* scaler_widget;
 
 	GtkWidget* ssh_enabled_check;
 	GtkWidget* ssh_loopback_check;
@@ -221,11 +220,7 @@ static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe
 	GtkWidget* grid;
 	GtkWidget* widget;
 
-#if GTK_VERSION == 3
 	tablabel = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
-#elif GTK_VERSION == 2
-	tablabel = gtk_hbox_new(FALSE, 0);
-#endif
 	gtk_widget_show(tablabel);
 
 	widget = gtk_image_new_from_icon_name(stock_id, GTK_ICON_SIZE_MENU);
@@ -236,11 +231,7 @@ static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe
 	gtk_box_pack_start(GTK_BOX(tablabel), widget, FALSE, FALSE, 0);
 	gtk_widget_show(widget);
 
-#if GTK_VERSION == 3
 	tabbody = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-#elif GTK_VERSION == 2
-	tabbody = gtk_vbox_new(FALSE, 0);
-#endif
 	gtk_widget_show(tabbody);
 	gtk_notebook_append_page(GTK_NOTEBOOK(gfe->priv->config_container), tabbody, tablabel);
 
@@ -474,11 +465,7 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 1, 1);
 	gfe->priv->resolution_auto_radio = widget;
 
-#if GTK_VERSION == 3
 	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
-#elif GTK_VERSION == 2
-	hbox = gtk_hbox_new (FALSE, 0);
-#endif
 	gtk_widget_show(hbox);
 	gtk_grid_attach(GTK_GRID(grid), hbox, 1, row + 1, 1, 1);
 
@@ -611,11 +598,7 @@ remmina_file_editor_create_chooser(RemminaFileEditor* gfe, GtkWidget* grid, gint
 	gtk_widget_set_halign (widget, GTK_ALIGN_START);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
 
-#if GTK_VERSION == 3
 	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
-#elif GTK_VERSION == 2
-	hbox = gtk_hbox_new(FALSE, 0);
-#endif
 	gtk_widget_show(hbox);
 	gtk_grid_attach(GTK_GRID(grid), hbox, 1, row, 1, 1);
 
@@ -702,15 +685,6 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				gtk_widget_set_margin_right (widget, 40);
 #endif
 				gtk_grid_attach(GTK_GRID(grid), widget, 0, row + 1, 1, row + 2);
-
-				widget = remmina_scaler_new();
-				gtk_widget_show(widget);
-				gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 2, row + 2);
-				remmina_scaler_set(REMMINA_SCALER(widget),
-						remmina_file_get_int(priv->remmina_file, "hscale", 0),
-						remmina_file_get_int(priv->remmina_file, "vscale", 0),
-						remmina_file_get_int(priv->remmina_file, "aspectscale", FALSE));
-				priv->scaler_widget = widget;
 
 				row++;
 				break;
@@ -813,11 +787,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		grid = remmina_file_editor_create_notebook_tab (gfe, "dialog-password",
 				"SSH", 9, 3);
 
-#if GTK_VERSION == 3
 		hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-#elif GTK_VERSION == 2
-		hbox = gtk_hbox_new(FALSE, 0);
-#endif
 		gtk_widget_show(hbox);
 		gtk_grid_attach (GTK_GRID(grid), hbox, 0, 0, 3, 1);
 		row++;
@@ -1023,7 +993,6 @@ static void remmina_file_editor_protocol_combo_on_changed(GtkComboBox* combo, Re
 	priv->resolution_custom_radio = NULL;
 	priv->resolution_custom_combo = NULL;
 	priv->keymap_combo = NULL;
-	priv->scaler_widget = NULL;
 
 	priv->ssh_enabled_check = NULL;
 	priv->ssh_loopback_check = NULL;
@@ -1179,13 +1148,6 @@ static void remmina_file_editor_update(RemminaFileEditor* gfe)
 	{
 		remmina_file_set_string_ref(priv->remmina_file, "keymap",
 				remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->keymap_combo)));
-	}
-
-	if (priv->scaler_widget)
-	{
-		remmina_file_set_int(priv->remmina_file, "hscale", REMMINA_SCALER(priv->scaler_widget)->hscale);
-		remmina_file_set_int(priv->remmina_file, "vscale", REMMINA_SCALER(priv->scaler_widget)->vscale);
-		remmina_file_set_int(priv->remmina_file, "aspectscale", REMMINA_SCALER(priv->scaler_widget)->aspectscale);
 	}
 
 	remmina_file_editor_update_ssh(gfe);

@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -283,18 +284,16 @@ void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp, RemminaF
 gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_protocol_widget_close_connection");
-#if GTK_VERSION == 3
 	GdkDisplay *display;
 	GdkDeviceManager *manager;
 	GdkDevice *device = NULL;
-#endif
 	gboolean retval;
 
 	if (!GTK_IS_WIDGET(gp) || gp->priv->closed)
 		return FALSE;
 
 	gp->priv->closed = TRUE;
-#if GTK_VERSION == 3
+
 	display = gtk_widget_get_display(GTK_WIDGET(gp));
 	manager = gdk_display_get_device_manager(display);
 	device = gdk_device_manager_get_client_pointer(manager);
@@ -302,9 +301,6 @@ gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 	{
 		gdk_device_ungrab(device, GDK_CURRENT_TIME);
 	}
-#elif GTK_VERSION == 2
-	gdk_keyboard_ungrab(GDK_CURRENT_TIME);
-#endif
 
 	if (gp->priv->chat_window)
 	{
@@ -792,13 +788,15 @@ void remmina_protocol_widget_set_scale(RemminaProtocolWidget* gp, gboolean scale
 gboolean remmina_protocol_widget_get_expand(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_protocol_widget_get_expand");
-	return gp->priv->expand;
+	// Deprecated, no longer in use. Kept here to avoid breaking plugin api
+	return FALSE;
 }
 
 void remmina_protocol_widget_set_expand(RemminaProtocolWidget* gp, gboolean expand)
 {
 	TRACE_CALL("remmina_protocol_widget_set_expand");
-	gp->priv->expand = expand;
+	// Deprecated, no longer in use. Kept here to avoid breaking plugin api
+	return;
 }
 
 gboolean remmina_protocol_widget_has_error(RemminaProtocolWidget* gp)
@@ -1129,7 +1127,7 @@ void remmina_protocol_widget_send_keys_signals(GtkWidget *widget, const guint *k
 	GdkEventKey event;
 	GdkKeymap *keymap = gdk_keymap_get_default();
 	gboolean result;
-	
+
 	event.window = gtk_widget_get_window(widget);
 	event.send_event = TRUE;
 	event.time = GDK_CURRENT_TIME;

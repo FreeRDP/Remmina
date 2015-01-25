@@ -3,6 +3,7 @@
  * Copyright (C) 2010 Jay Sorg
  * Copyright (C) 2010-2011 Vic Lee
  * Copyright (C) 2011 Marc-Andre Moreau <marcandre.moreau@gmail.com>
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,10 +50,8 @@ static void remmina_rdp_event_on_focus_in(GtkWidget* widget, GdkEventKey* event,
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	rdpInput* input;
 	GdkModifierType state;
-#if GTK_VERSION == 3
 	GdkDeviceManager *manager;
 	GdkDevice *keyboard = NULL;
-#endif
 
 	if ( !rfi )
 		return;
@@ -60,13 +59,9 @@ static void remmina_rdp_event_on_focus_in(GtkWidget* widget, GdkEventKey* event,
 	input = rfi->instance->input;
 	UINT32 toggle_keys_state = 0;
 
-#if GTK_VERSION == 3
 	manager = gdk_display_get_device_manager(gdk_display_get_default());
 	keyboard = gdk_device_manager_get_client_pointer(manager);
 	gdk_window_get_device_position(gdk_get_default_root_window(), keyboard, NULL, NULL, &state);
-#else
-	gdk_window_get_pointer(gdk_get_default_root_window(), NULL, NULL, &state);
-#endif
 
 	if (state & GDK_LOCK_MASK)
 	{
@@ -226,8 +221,7 @@ static gboolean remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 	TRACE_CALL("remmina_rdp_event_update_scale_factor");
 	GtkAllocation a;
 	gboolean scale;
-	gint width, height;
-	gint hscale, vscale;
+	gint rdwidth, rdheight;
 	gint gpwidth, gpheight;
 	RemminaFile* remminafile;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
@@ -235,26 +229,22 @@ static gboolean remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	gtk_widget_get_allocation(GTK_WIDGET(gp), &a);
-	width = a.width;
-	height = a.height;
+	gpwidth = a.width;
+	gpheight = a.height;
 	scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
 
 	if (scale)
 	{
-		if ((width > 1) && (height > 1))
+		if ((gpwidth > 1) && (gpheight > 1))
 		{
-			gpwidth = remmina_plugin_service->protocol_plugin_get_width(gp);
-			gpheight = remmina_plugin_service->protocol_plugin_get_height(gp);
-			hscale = remmina_plugin_service->file_get_int(remminafile, "hscale", 0);
-			vscale = remmina_plugin_service->file_get_int(remminafile, "vscale", 0);
+			rdwidth = remmina_plugin_service->protocol_plugin_get_width(gp);
+			rdheight = remmina_plugin_service->protocol_plugin_get_height(gp);
 
-			rfi->scale_width = (hscale > 0 ?
-				MAX(1, gpwidth * hscale / 100) : width);
-			rfi->scale_height = (vscale > 0 ?
-				MAX(1, gpheight * vscale / 100) : height);
+			rfi->scale_width = gpwidth;
+			rfi->scale_height = gpheight;
 
-			rfi->scale_x = (gdouble) rfi->scale_width / (gdouble) gpwidth;
-			rfi->scale_y = (gdouble) rfi->scale_height / (gdouble) gpheight;
+			rfi->scale_x = (gdouble) rfi->scale_width / (gdouble) rdwidth;
+			rfi->scale_y = (gdouble) rfi->scale_height / (gdouble) rdheight;
 		}
 	}
 	else
@@ -265,31 +255,21 @@ static gboolean remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 		rfi->scale_y = 0;
 	}
 
-	if ((width > 1) && (height > 1))
-		gtk_widget_queue_draw_area(GTK_WIDGET(gp), 0, 0, width, height);
+	/* Now we have scaling vars calculated, resize drawing_area accordingly */
+
+	if ((gpwidth > 1) && (gpheight > 1))
+			gtk_widget_queue_draw_area(GTK_WIDGET(gp), 0, 0, gpwidth, gpheight);
 
 	rfi->scale_handler = 0;
 
 	return FALSE;
 }
 
-#if GTK_VERSION == 2
-static gboolean remmina_rdp_event_on_expose(GtkWidget *widget, GdkEventExpose *event, RemminaProtocolWidget *gp)
-#else
 static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, RemminaProtocolWidget* gp)
-#endif
 {
-#if GTK_VERSION == 2
-	TRACE_CALL("remmina_rdp_event_on_expose");
-#else
 	TRACE_CALL("remmina_rdp_event_on_draw");
-#endif
 	gboolean scale;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
-#if GTK_VERSION == 2
-	gint x, y;
-	cairo_t *context;
-#endif
 
 	if (!rfi) return FALSE;
 
@@ -298,26 +278,13 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 
 	scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
 
-#if GTK_VERSION == 2
-	x = event->area.x;
-	y = event->area.y;
-
-	context = gdk_cairo_create(gtk_widget_get_window (rfi->drawing_area));
-	cairo_rectangle(context, x, y, event->area.width, event->area.height);
-#endif
-
 	if (scale)
 		cairo_scale(context, rfi->scale_x, rfi->scale_y);
 
 	cairo_set_source_surface(context, rfi->surface, 0, 0);
 
-#if GTK_VERSION == 2
-	cairo_fill(context);
-	cairo_destroy(context);
-#else
 	cairo_set_operator (context, CAIRO_OPERATOR_SOURCE);	// Ignore alpha channel from FreeRDP
 	cairo_paint(context);
-#endif
 
 	return TRUE;
 }
@@ -334,7 +301,7 @@ static gboolean remmina_rdp_event_on_configure(GtkWidget* widget, GdkEventConfig
 	if (rfi->scale_handler)
 		g_source_remove(rfi->scale_handler);
 
-	rfi->scale_handler = g_timeout_add(1000, (GSourceFunc) remmina_rdp_event_update_scale_factor, gp);
+	rfi->scale_handler = g_timeout_add(300, (GSourceFunc) remmina_rdp_event_update_scale_factor, gp);
 
 	return FALSE;
 }
@@ -468,6 +435,14 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 
 	if ( !rfi ) return TRUE;
 
+#ifdef ENABLE_GTK_INSPECTOR_KEY
+	/* GTK inspector key is propagated up. Disabled by default.
+	 * enable it by defining ENABLE_GTK_INSPECTOR_KEY */
+	if ( ( event->state & GDK_CONTROL_MASK ) != 0 && ( event->keyval == GDK_KEY_I || event->keyval == GDK_KEY_D ) ) {
+		   return FALSE;
+	}
+#endif
+
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_SCANCODE;
 	rdp_event.key_event.up = (event->type == GDK_KEY_PRESS ? False : True);
 	rdp_event.key_event.extended = False;
@@ -570,13 +545,8 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 	rfi->use_client_keymap = (s && s[0] == '1' ? TRUE : FALSE);
 	g_free(s);
 
-#if GTK_VERSION == 3
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "draw",
 		G_CALLBACK(remmina_rdp_event_on_draw), gp);
-#elif GTK_VERSION == 2
-	g_signal_connect(G_OBJECT(rfi->drawing_area), "expose-event",
-		G_CALLBACK(remmina_rdp_event_on_expose), gp);
-#endif
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "configure-event",
 		G_CALLBACK(remmina_rdp_event_on_configure), gp);
 	g_signal_connect(G_OBJECT(rfi->drawing_area), "motion-notify-event",
@@ -672,7 +642,6 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_rdp_event_update_scale");
 	gint width, height;
-	gint hscale, vscale;
 	RemminaFile* remminafile;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
@@ -680,17 +649,17 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 
 	width = remmina_plugin_service->protocol_plugin_get_width(gp);
 	height = remmina_plugin_service->protocol_plugin_get_height(gp);
-	hscale = remmina_plugin_service->file_get_int(remminafile, "hscale", 0);
-	vscale = remmina_plugin_service->file_get_int(remminafile, "vscale", 0);
+
+	remmina_rdp_event_update_scale_factor(gp);
 
 	if (rfi->scale)
 	{
-		gtk_widget_set_size_request(rfi->drawing_area,
-			(hscale > 0 ? width * hscale / 100 : -1),
-			(vscale > 0 ? height * vscale / 100 : -1));
+		/* In scaled mode, drawing_area will get its dimensions from its parent */
+		gtk_widget_set_size_request(rfi->drawing_area, -1, -1 );
 	}
 	else
 	{
+		/* In non scaled mode, the plugins forces dimensions of drawing area */
 		gtk_widget_set_size_request(rfi->drawing_area, width, height);
 	}
 
@@ -722,32 +691,20 @@ static void remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPl
 	GdkPixbuf* pixbuf;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	rdpPointer* pointer = (rdpPointer*)ui->cursor.pointer;
-#if GTK_VERSION == 3
 	cairo_surface_t* surface;
 	UINT8* data = malloc(pointer->width * pointer->height * 4);
-#else
-	guchar *data = g_malloc0(pointer->width * pointer->height * 4);
-#endif
 
 	freerdp_alpha_cursor_convert(data, pointer->xorMaskData, pointer->andMaskData, pointer->width, pointer->height, pointer->xorBpp, rfi->clrconv);
-#if GTK_VERSION == 3
 	surface = cairo_image_surface_create_for_data(data, CAIRO_FORMAT_ARGB32, pointer->width, pointer->height, cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, pointer->width));
 	pixbuf = gdk_pixbuf_get_from_surface(surface, 0, 0, pointer->width, pointer->height);
 	cairo_surface_destroy(surface);
-#else
-	pixbuf = gdk_pixbuf_new_from_data(data, GDK_COLORSPACE_RGB, TRUE, 8, pointer->width, pointer->height, (pointer->width * 4), NULL, NULL);
-#endif
 	((rfPointer*)ui->cursor.pointer)->cursor = gdk_cursor_new_from_pixbuf(rfi->display, pixbuf, pointer->xPos, pointer->yPos);
 }
 
 static void remmina_rdp_event_free_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
 	TRACE_CALL("remmina_rdp_event_free_cursor");
-#if GTK_VERSION == 3
 	g_object_unref(ui->cursor.pointer->cursor);
-#else
-	gdk_cursor_unref(ui->cursor.pointer->cursor);
-#endif
 	ui->cursor.pointer->cursor = NULL;
 }
 
