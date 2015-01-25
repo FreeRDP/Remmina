@@ -222,11 +222,7 @@ static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe
 	GtkWidget* grid;
 	GtkWidget* widget;
 
-#if GTK_VERSION == 3
 	tablabel = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
-#elif GTK_VERSION == 2
-	tablabel = gtk_hbox_new(FALSE, 0);
-#endif
 	gtk_widget_show(tablabel);
 
 	widget = gtk_image_new_from_icon_name(stock_id, GTK_ICON_SIZE_MENU);
@@ -237,11 +233,7 @@ static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe
 	gtk_box_pack_start(GTK_BOX(tablabel), widget, FALSE, FALSE, 0);
 	gtk_widget_show(widget);
 
-#if GTK_VERSION == 3
 	tabbody = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-#elif GTK_VERSION == 2
-	tabbody = gtk_vbox_new(FALSE, 0);
-#endif
 	gtk_widget_show(tabbody);
 	gtk_notebook_append_page(GTK_NOTEBOOK(gfe->priv->config_container), tabbody, tablabel);
 
@@ -475,11 +467,7 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 1, 1);
 	gfe->priv->resolution_auto_radio = widget;
 
-#if GTK_VERSION == 3
 	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
-#elif GTK_VERSION == 2
-	hbox = gtk_hbox_new (FALSE, 0);
-#endif
 	gtk_widget_show(hbox);
 	gtk_grid_attach(GTK_GRID(grid), hbox, 1, row + 1, 1, 1);
 
@@ -612,11 +600,7 @@ remmina_file_editor_create_chooser(RemminaFileEditor* gfe, GtkWidget* grid, gint
 	gtk_widget_set_halign (widget, GTK_ALIGN_START);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
 
-#if GTK_VERSION == 3
 	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
-#elif GTK_VERSION == 2
-	hbox = gtk_hbox_new(FALSE, 0);
-#endif
 	gtk_widget_show(hbox);
 	gtk_grid_attach(GTK_GRID(grid), hbox, 1, row, 1, 1);
 
@@ -814,11 +798,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		grid = remmina_file_editor_create_notebook_tab (gfe, "dialog-password",
 				"SSH", 9, 3);
 
-#if GTK_VERSION == 3
 		hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-#elif GTK_VERSION == 2
-		hbox = gtk_hbox_new(FALSE, 0);
-#endif
 		gtk_widget_show(hbox);
 		gtk_grid_attach (GTK_GRID(grid), hbox, 0, 0, 3, 1);
 		row++;
