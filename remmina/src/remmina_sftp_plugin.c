@@ -286,26 +286,25 @@ static const RemminaProtocolFeature remmina_plugin_sftp_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
+/* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin_sftp =
 {
-	REMMINA_PLUGIN_TYPE_PROTOCOL,
-	"SFTP",
-	N_("SFTP - Secure File Transfer"),
-	GETTEXT_PACKAGE,
-	VERSION,
-
-	"remmina-sftp",
-	"remmina-sftp",
-	NULL,
-	NULL,
-	REMMINA_PROTOCOL_SSH_SETTING_SFTP,
-	remmina_plugin_sftp_features,
-
-	remmina_plugin_sftp_init,
-	remmina_plugin_sftp_open_connection,
-	remmina_plugin_sftp_close_connection,
-	remmina_plugin_sftp_query_feature,
-	remmina_plugin_sftp_call_feature
+	REMMINA_PLUGIN_TYPE_PROTOCOL,                 // Type
+	"SFTP",                                       // Name
+	N_("SFTP - Secure File Transfer"),            // Description
+	GETTEXT_PACKAGE,                              // Translation domain
+	VERSION,                                      // Version number
+	"remmina-sftp",                               // Icon for normal connection
+	"remmina-sftp",                               // Icon for SSH connection
+	NULL,                                         // Array for basic settings
+	NULL,                                         // Array for advanced settings
+	REMMINA_PROTOCOL_SSH_SETTING_SFTP,            // SSH settings type
+	remmina_plugin_sftp_features,                 // Array for available features
+	remmina_plugin_sftp_init,                     // Plugin initialization
+	remmina_plugin_sftp_open_connection,          // Plugin open connection
+	remmina_plugin_sftp_close_connection,         // Plugin close connection
+	remmina_plugin_sftp_query_feature,            // Query for available features
+	remmina_plugin_sftp_call_feature              // Call a feature
 };
 
 void
