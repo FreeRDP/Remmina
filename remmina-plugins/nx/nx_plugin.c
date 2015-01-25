@@ -779,14 +779,26 @@ static const RemminaProtocolFeature remmina_plugin_nx_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
+/* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin_nx =
-{ REMMINA_PLUGIN_TYPE_PROTOCOL, "NX", N_("NX - NX Technology"), GETTEXT_PACKAGE, VERSION,
-
-"remmina-nx", "remmina-nx", remmina_plugin_nx_basic_settings, remmina_plugin_nx_advanced_settings,
-		REMMINA_PROTOCOL_SSH_SETTING_TUNNEL, remmina_plugin_nx_features,
-
-		remmina_plugin_nx_init, remmina_plugin_nx_open_connection, remmina_plugin_nx_close_connection,
-		remmina_plugin_nx_query_feature, remmina_plugin_nx_call_feature };
+{
+	REMMINA_PLUGIN_TYPE_PROTOCOL,                 // Type
+	"NX",                                         // Name
+	N_("NX - NX Technology"),                     // Description
+	GETTEXT_PACKAGE,                              // Translation domain
+	VERSION,                                      // Version number
+	"remmina-nx",                                 // Icon for normal connection
+	"remmina-nx",                                 // Icon for SSH connection
+	remmina_plugin_nx_basic_settings,             // Array for basic settings
+	remmina_plugin_nx_advanced_settings,          // Array for advanced settings
+	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,          // SSH settings type
+	remmina_plugin_nx_features,                   // Array for available features
+	remmina_plugin_nx_init,                       // Plugin initialization
+	remmina_plugin_nx_open_connection,            // Plugin open connection
+	remmina_plugin_nx_close_connection,           // Plugin close connection
+	remmina_plugin_nx_query_feature,              // Query for available features
+	remmina_plugin_nx_call_feature                // Call a feature
+};
 
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)

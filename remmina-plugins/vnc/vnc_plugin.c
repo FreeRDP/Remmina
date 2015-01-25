@@ -2161,23 +2161,47 @@ static const RemminaProtocolFeature remmina_plugin_vnc_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
+/* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin_vnc =
-{ REMMINA_PLUGIN_TYPE_PROTOCOL, "VNC", N_("VNC - Virtual Network Computing"), GETTEXT_PACKAGE, VERSION,
+{
+	REMMINA_PLUGIN_TYPE_PROTOCOL,                 // Type
+	"VNC",                                        // Name
+	N_("VNC - Virtual Network Computing"),        // Description
+	GETTEXT_PACKAGE,                              // Translation domain
+	VERSION,                                      // Version number
+	"remmina-vnc",                                // Icon for normal connection
+	"remmina-vnc-ssh",                            // Icon for SSH connection
+	remmina_plugin_vnc_basic_settings,            // Array for basic settings
+	remmina_plugin_vnc_advanced_settings,         // Array for advanced settings
+	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,          // SSH settings type
+	remmina_plugin_vnc_features,                  // Array for available features
+	remmina_plugin_vnc_init,                      // Plugin initialization
+	remmina_plugin_vnc_open_connection,           // Plugin open connection
+	remmina_plugin_vnc_close_connection,          // Plugin close connection
+	remmina_plugin_vnc_query_feature,             // Query for available features
+	remmina_plugin_vnc_call_feature               // Call a feature
+};
 
-"remmina-vnc", "remmina-vnc-ssh", remmina_plugin_vnc_basic_settings, remmina_plugin_vnc_advanced_settings,
-		REMMINA_PROTOCOL_SSH_SETTING_TUNNEL, remmina_plugin_vnc_features,
-
-		remmina_plugin_vnc_init, remmina_plugin_vnc_open_connection, remmina_plugin_vnc_close_connection,
-		remmina_plugin_vnc_query_feature, remmina_plugin_vnc_call_feature };
-
+/* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin_vnci =
-{ REMMINA_PLUGIN_TYPE_PROTOCOL, "VNCI", N_("VNC - Incoming Connection"), GETTEXT_PACKAGE, VERSION,
-
-"remmina-vnc", "remmina-vnc-ssh", remmina_plugin_vnci_basic_settings, remmina_plugin_vnc_advanced_settings,
-		REMMINA_PROTOCOL_SSH_SETTING_REVERSE_TUNNEL, remmina_plugin_vnc_features,
-
-		remmina_plugin_vnc_init, remmina_plugin_vnc_open_connection, remmina_plugin_vnc_close_connection,
-		remmina_plugin_vnc_query_feature, remmina_plugin_vnc_call_feature };
+{
+	REMMINA_PLUGIN_TYPE_PROTOCOL,                 // Type
+	"VNCI",                                       // Name
+	N_("VNC - Incoming Connection"),              // Description
+	GETTEXT_PACKAGE,                              // Translation domain
+	VERSION,                                      // Version number
+	"remmina-vnc",                                // Icon for normal connection
+	"remmina-vnc-ssh",                            // Icon for SSH connection
+	remmina_plugin_vnci_basic_settings,           // Array for basic settings
+	remmina_plugin_vnc_advanced_settings,         // Array for advanced settings
+	REMMINA_PROTOCOL_SSH_SETTING_REVERSE_TUNNEL,  // SSH settings type
+	remmina_plugin_vnc_features,                  // Array for available features
+	remmina_plugin_vnc_init,                      // Plugin initialization
+	remmina_plugin_vnc_open_connection,           // Plugin open connection
+	remmina_plugin_vnc_close_connection,          // Plugin close connection
+	remmina_plugin_vnc_query_feature,             // Query for available features
+	remmina_plugin_vnc_call_feature               // Call a feature
+};
 
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)

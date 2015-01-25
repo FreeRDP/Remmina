@@ -1210,26 +1210,25 @@ static const RemminaProtocolFeature remmina_rdp_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
+/* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_rdp =
 {
-	REMMINA_PLUGIN_TYPE_PROTOCOL,
-	"RDP",
-	N_("RDP - Remote Desktop Protocol"),
-	GETTEXT_PACKAGE,
-	VERSION,
-
-	"remmina-rdp",
-	"remmina-rdp-ssh",
-	remmina_rdp_basic_settings,
-	remmina_rdp_advanced_settings,
-	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,
-	remmina_rdp_features,
-
-	remmina_rdp_init,
-	remmina_rdp_open_connection,
-	remmina_rdp_close_connection,
-	remmina_rdp_query_feature,
-	remmina_rdp_call_feature
+	REMMINA_PLUGIN_TYPE_PROTOCOL,                 // Type
+	"RDP",                                        // Name
+	N_("RDP - Remote Desktop Protocol"),          // Description
+	GETTEXT_PACKAGE,                              // Translation domain
+	VERSION,                                      // Version number
+	"remmina-rdp",                                // Icon for normal connection
+	"remmina-rdp-ssh",                            // Icon for SSH connection
+	remmina_rdp_basic_settings,                   // Array for basic settings
+	remmina_rdp_advanced_settings,                // Array for advanced settings
+	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,          // SSH settings type
+	remmina_rdp_features,                         // Array for available features
+	remmina_rdp_init,                             // Plugin initialization
+	remmina_rdp_open_connection,                  // Plugin open connection
+	remmina_rdp_close_connection,                 // Plugin close connection
+	remmina_rdp_query_feature,                    // Query for available features
+	remmina_rdp_call_feature                      // Call a feature
 };
 
 static RemminaFilePlugin remmina_rdpf =

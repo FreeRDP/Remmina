@@ -391,26 +391,25 @@ static RemminaProtocolFeature remmina_plugin_ssh_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
+/* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin_ssh =
 {
-	REMMINA_PLUGIN_TYPE_PROTOCOL,
-	"SSH",
-	N_("SSH - Secure Shell"),
-	GETTEXT_PACKAGE,
-	VERSION,
-
-	"utilities-terminal",
-	"utilities-terminal",
-	NULL,
-	NULL,
-	REMMINA_PROTOCOL_SSH_SETTING_SSH,
-	remmina_plugin_ssh_features,
-
-	remmina_plugin_ssh_init,
-	remmina_plugin_ssh_open_connection,
-	remmina_plugin_ssh_close_connection,
-	remmina_plugin_ssh_query_feature,
-	remmina_plugin_ssh_call_feature
+	REMMINA_PLUGIN_TYPE_PROTOCOL,                 // Type
+	"SSH",                                        // Name
+	N_("SSH - Secure Shell"),                     // Description
+	GETTEXT_PACKAGE,                              // Translation domain
+	VERSION,                                      // Version number
+	"utilities-terminal",                         // Icon for normal connection
+	"utilities-terminal",                         // Icon for SSH connection
+	NULL,                                         // Array for basic settings
+	NULL,                                         // Array for advanced settings
+	REMMINA_PROTOCOL_SSH_SETTING_SSH,             // SSH settings type
+	remmina_plugin_ssh_features,                  // Array for available features
+	remmina_plugin_ssh_init,                      // Plugin initialization
+	remmina_plugin_ssh_open_connection,           // Plugin open connection
+	remmina_plugin_ssh_close_connection,          // Plugin close connection
+	remmina_plugin_ssh_query_feature,             // Query for available features
+	remmina_plugin_ssh_call_feature               // Call a feature
 };
 
 void
