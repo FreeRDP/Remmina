@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010-2011 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -317,7 +318,6 @@ static gboolean remmina_plugin_vnc_update_scale_buffer(RemminaProtocolWidget *gp
 	RemminaFile *remminafile;
 	gint width, height;
 	gint gpwidth, gpheight;
-	gint hscale, vscale;
 	gboolean scale;
 	gint x, y, w, h;
 	GdkPixbuf *pixbuf;
@@ -343,10 +343,8 @@ static gboolean remmina_plugin_vnc_update_scale_buffer(RemminaProtocolWidget *gp
 				}
 				gpwidth = remmina_plugin_service->protocol_plugin_get_width(gp);
 				gpheight = remmina_plugin_service->protocol_plugin_get_height(gp);
-				hscale = remmina_plugin_service->file_get_int(remminafile, "hscale", 0);
-				vscale = remmina_plugin_service->file_get_int(remminafile, "vscale", 0);
-				gpdata->scale_width = (hscale > 0 ? MAX(1, gpwidth * hscale / 100) : width);
-				gpdata->scale_height = (vscale > 0 ? MAX(1, gpheight * vscale / 100) : height);
+				gpdata->scale_width = width;
+				gpdata->scale_height = height;
 
 				pixbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, gpdata->scale_width,
 						gpdata->scale_height);
@@ -405,7 +403,6 @@ static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean 
 	RemminaPluginVncData *gpdata;
 	RemminaFile *remminafile;
 	gint width, height;
-	gint hscale, vscale;
 
 	if ( !remmina_plugin_service->is_main_thread() ) {
 		struct onMainThread_cb_data *d;
@@ -425,13 +422,12 @@ static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean 
 	height = remmina_plugin_service->protocol_plugin_get_height(gp);
 	if (scale)
 	{
-		hscale = remmina_plugin_service->file_get_int(remminafile, "hscale", 0);
-		vscale = remmina_plugin_service->file_get_int(remminafile, "vscale", 0);
-		gtk_widget_set_size_request(GTK_WIDGET(gpdata->drawing_area), (hscale > 0 ? width * hscale / 100 : -1),
-		(vscale > 0 ? height * vscale / 100 : -1));
+		/* In scaled mode, drawing_area will get its dimensions from its parent */
+		gtk_widget_set_size_request(GTK_WIDGET(gpdata->drawing_area), -1, -1 );
 	}
 	else
 	{
+		/* In non scaled mode, the plugins forces dimensions of drawing area */
 		gtk_widget_set_size_request (GTK_WIDGET (gpdata->drawing_area), width, height);
 	}
 
@@ -452,11 +448,7 @@ gboolean remmina_plugin_vnc_setcursor(RemminaProtocolWidget *gp)
 		cur = gdk_cursor_new_from_pixbuf(gdk_display_get_default(), gpdata->queuecursor_pixbuf, gpdata->queuecursor_x,
 				gpdata->queuecursor_y);
 		gdk_window_set_cursor(gtk_widget_get_window(gpdata->drawing_area), cur);
-#if GTK_VERSION == 3
 		g_object_unref(cur);
-#else
-		gdk_cursor_unref(cur);
-#endif
 		g_object_unref(gpdata->queuecursor_pixbuf);
 		gpdata->queuecursor_pixbuf = NULL;
 	}
@@ -1721,11 +1713,7 @@ static void remmina_plugin_vnc_on_realize(RemminaProtocolWidget *gp, gpointer da
 		cursor = gdk_cursor_new_from_pixbuf(gdk_display_get_default(), pixbuf, dot_cursor_x_hot, dot_cursor_y_hot);
 		g_object_unref(pixbuf);
 		gdk_window_set_cursor(gtk_widget_get_window(GTK_WIDGET(gp)), cursor);
-#if GTK_VERSION == 3
 		g_object_unref(cursor);
-#else
-		gdk_cursor_unref(cursor);
-#endif
 	}
 }
 
@@ -1925,24 +1913,13 @@ static void remmina_plugin_vnc_call_feature(RemminaProtocolWidget *gp, const Rem
 	}
 }
 
-#if GTK_VERSION == 2
-static gboolean remmina_plugin_vnc_on_expose(GtkWidget *widget, GdkEventExpose *event, RemminaProtocolWidget *gp)
-#else
+
 static gboolean remmina_plugin_vnc_on_draw(GtkWidget *widget, cairo_t *context, RemminaProtocolWidget *gp)
-#endif
 {
-#if GTK_VERSION == 2
-	TRACE_CALL("remmina_plugin_vnc_on_expose");
-#else
 	TRACE_CALL("remmina_plugin_vnc_on_draw");
-#endif
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	GdkPixbuf *buffer;
 	gboolean scale;
-#if GTK_VERSION == 2
-	gint x, y;
-	cairo_t *context;
-#endif
 
 	LOCK_BUFFER (FALSE)
 
@@ -1954,20 +1931,10 @@ static gboolean remmina_plugin_vnc_on_draw(GtkWidget *widget, cairo_t *context, 
 		UNLOCK_BUFFER (FALSE)
 		return FALSE;
 	}
-#if GTK_VERSION == 2
-	x = event->area.x;
-	y = event->area.y;
-
-	context = gdk_cairo_create(gtk_widget_get_window (gpdata->drawing_area));
-	cairo_rectangle(context, x, y, event->area.width, event->area.height);
-#else
 	cairo_rectangle(context, 0, 0, gtk_widget_get_allocated_width(widget), gtk_widget_get_allocated_height(widget));
-#endif
+
 	gdk_cairo_set_source_pixbuf(context, buffer, 0, 0);
 	cairo_fill(context);
-#if GTK_VERSION == 2
-	cairo_destroy(context);
-#endif
 
 	UNLOCK_BUFFER (FALSE)
 	return TRUE;
@@ -1981,7 +1948,7 @@ static gboolean remmina_plugin_vnc_on_configure(GtkWidget *widget, GdkEventConfi
 	/* We do a delayed reallocating to improve performance */
 	if (gpdata->scale_handler)
 		g_source_remove(gpdata->scale_handler);
-	gpdata->scale_handler = g_timeout_add(1000, (GSourceFunc) remmina_plugin_vnc_update_scale_buffer_main, gp);
+	gpdata->scale_handler = g_timeout_add(300, (GSourceFunc) remmina_plugin_vnc_update_scale_buffer_main, gp);
 	return FALSE;
 }
 
@@ -2004,11 +1971,8 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 					| GDK_KEY_RELEASE_MASK | GDK_SCROLL_MASK);
 	gtk_widget_set_can_focus(gpdata->drawing_area, TRUE);
 
-#if GTK_VERSION == 3
+
 	g_signal_connect(G_OBJECT(gpdata->drawing_area), "draw", G_CALLBACK(remmina_plugin_vnc_on_draw), gp);
-#elif GTK_VERSION == 2
-	g_signal_connect(G_OBJECT(gpdata->drawing_area), "expose-event", G_CALLBACK(remmina_plugin_vnc_on_expose), gp);
-#endif
 	g_signal_connect(G_OBJECT(gpdata->drawing_area), "configure_event", G_CALLBACK(remmina_plugin_vnc_on_configure), gp);
 
 	gpdata->auth_first = TRUE;
