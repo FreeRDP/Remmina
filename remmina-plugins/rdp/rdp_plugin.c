@@ -1231,18 +1231,18 @@ static RemminaProtocolPlugin remmina_rdp =
 	remmina_rdp_call_feature                      // Call a feature
 };
 
+/* File plugin definition and features */
 static RemminaFilePlugin remmina_rdpf =
 {
-	REMMINA_PLUGIN_TYPE_FILE,
-	"RDPF",
-	N_("RDP - RDP File Handler"),
-	GETTEXT_PACKAGE,
-	VERSION,
-
-	remmina_rdp_file_import_test,
-	remmina_rdp_file_import,
-	remmina_rdp_file_export_test,
-	remmina_rdp_file_export,
+	REMMINA_PLUGIN_TYPE_FILE,                     // Type
+	"RDPF",                                       // Name
+	N_("RDP - RDP File Handler"),                 // Description
+	GETTEXT_PACKAGE,                              // Translation domain
+	VERSION,                                      // Version number
+	remmina_rdp_file_import_test,                 // Test import function
+	remmina_rdp_file_import,                      // Import function
+	remmina_rdp_file_export_test,                 // Test export function
+	remmina_rdp_file_export,                      // Export function
 	NULL
 };
 
