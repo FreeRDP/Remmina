@@ -197,7 +197,8 @@ gboolean remmina_plugin_nx_ssh_auth_callback(gchar **passphrase, gpointer userda
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget*) userdata;
 	gint ret;
 
-	ret = remmina_plugin_nx_service->protocol_plugin_init_authpwd(gp, REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY);
+	/* SSH passwords must not be saved */
+	ret = remmina_plugin_nx_service->protocol_plugin_init_authpwd(gp, REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY, FALSE);
 
 	if (ret != GTK_RESPONSE_OK)
 		return FALSE;
@@ -321,6 +322,7 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 	gint event_type = 0;
 	const gchar *cs;
 	gint i;
+	gboolean disablepasswordstoring;
 
 	remminafile = remmina_plugin_nx_service->protocol_plugin_get_file(gp);
 	nx = gpdata->nx;
@@ -362,7 +364,8 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 		g_free(s1);
 		g_free(s2);
 
-		ret = remmina_plugin_nx_service->protocol_plugin_init_authuserpwd(gp, FALSE);
+		disablepasswordstoring = remmina_plugin_nx_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
+		ret = remmina_plugin_nx_service->protocol_plugin_init_authuserpwd(gp, FALSE, !disablepasswordstoring);
 
 		if (ret != GTK_RESPONSE_OK)
 			return FALSE;
@@ -765,6 +768,7 @@ static const RemminaProtocolSetting remmina_plugin_nx_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption", N_("Disable encryption"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Use local cursor"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
