@@ -663,32 +663,6 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				row++;
 				break;
 
-			case REMMINA_PROTOCOL_SETTING_TYPE_SCALE:
-				widget = gtk_label_new(_("Horizontal scale"));
-				gtk_widget_show(widget);
-				gtk_widget_set_valign (widget, GTK_ALIGN_START);
-				gtk_widget_set_halign (widget, GTK_ALIGN_START);
-#if GTK_CHECK_VERSION(3, 12, 0)
-				gtk_widget_set_margin_end (widget, 40);
-#else
-				gtk_widget_set_margin_right (widget, 40);
-#endif
-				gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, row + 1);
-
-				widget = gtk_label_new(_("Vertical scale"));
-				gtk_widget_show(widget);
-				gtk_widget_set_valign (widget, GTK_ALIGN_START);
-				gtk_widget_set_halign (widget, GTK_ALIGN_START);
-#if GTK_CHECK_VERSION(3, 12, 0)
-				gtk_widget_set_margin_end (widget, 40);
-#else
-				gtk_widget_set_margin_right (widget, 40);
-#endif
-				gtk_grid_attach(GTK_GRID(grid), widget, 0, row + 1, 1, row + 2);
-
-				row++;
-				break;
-
 			case REMMINA_PROTOCOL_SETTING_TYPE_TEXT:
 				widget = remmina_file_editor_create_text(gfe, grid, row, 0,
 						g_dgettext(priv->plugin->domain, settings->label),
