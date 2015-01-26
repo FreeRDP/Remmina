@@ -2075,7 +2075,6 @@ static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
  */
 static const RemminaProtocolSetting remmina_plugin_vnc_advanced_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SCALE, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
