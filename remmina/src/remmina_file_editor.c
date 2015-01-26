@@ -626,7 +626,6 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 {
 	TRACE_CALL("remmina_file_editor_create_settings");
 	RemminaFileEditorPriv* priv = gfe->priv;
-	GtkWidget* hbox = NULL;
 	GtkWidget* widget;
 	gint row = 0;
 	gint top = 0;
@@ -646,7 +645,6 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD:
 				remmina_file_editor_create_password(gfe, grid, row);
-				row++;
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION:
@@ -696,13 +694,12 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 					ccount = 1;
 				}
 				widget = remmina_file_editor_create_check(gfe, grid, row, top,
-				g_dgettext (priv->plugin->domain, settings->label),
-				remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
-				(ccount ? 1 : row++);
+					g_dgettext (priv->plugin->domain, settings->label),
+					remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
 				break;
 
-				case REMMINA_PROTOCOL_SETTING_TYPE_FILE:
+			case REMMINA_PROTOCOL_SETTING_TYPE_FILE:
 				widget = remmina_file_editor_create_chooser (gfe, grid, row, 0,
 						g_dgettext (priv->plugin->domain, settings->label),
 						remmina_file_get_string (priv->remmina_file, settings->name),
@@ -710,7 +707,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
 				break;
 
-				case REMMINA_PROTOCOL_SETTING_TYPE_FOLDER:
+			case REMMINA_PROTOCOL_SETTING_TYPE_FOLDER:
 				widget = remmina_file_editor_create_chooser (gfe, grid, row, 0,
 						g_dgettext (priv->plugin->domain, settings->label),
 						remmina_file_get_string (priv->remmina_file, settings->name),
@@ -718,13 +715,12 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
 				break;
 
-				default:
+			default:
 				break;
-			}
+		}
 
 		if (!settings->compact)
 		{
-			hbox = NULL;
 			(ccount ? 1 : row++);
 		}
 
