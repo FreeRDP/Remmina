@@ -576,3 +576,13 @@ gboolean remmina_public_get_modifier_for_keycode(GdkKeymap *keymap, guint16 keyc
 	return FALSE;
 #endif
 }
+
+/* Load a GtkBuilder object from a filename */
+GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename)
+{
+	TRACE_CALL("remmina_public_gtk_builder_new_from_file")
+	gchar *ui_path = g_strconcat(REMMINA_UIDIR, G_DIR_SEPARATOR_S, filename, NULL);
+	GtkBuilder *builder = gtk_builder_new_from_file(ui_path);
+	g_free(ui_path);
+	return builder;
+}
