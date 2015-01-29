@@ -31,3 +31,4 @@
 # files in the program, then also delete it here.
 
 
+install(FILES remmina_about.glade DESTINATION "${REMMINA_UIDIR}")
