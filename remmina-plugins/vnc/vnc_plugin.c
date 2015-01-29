@@ -2030,12 +2030,7 @@ static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color depth"), FALSE, colordepth_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "quality", N_("Quality"), FALSE, quality_list, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Show remote cursor"), TRUE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly", N_("View only"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), TRUE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption", N_("Disable encryption"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverinput", N_("Disable server input"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
@@ -2055,12 +2050,7 @@ static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color depth"), FALSE, colordepth_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "quality", N_("Quality"), FALSE, quality_list, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Show remote cursor"), TRUE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly", N_("View only"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), TRUE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption", N_("Disable encryption"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverinput", N_("Disable server input"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
@@ -2075,7 +2065,12 @@ static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
  */
 static const RemminaProtocolSetting remmina_plugin_vnc_advanced_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP, NULL, NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Show remote cursor"), TRUE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly", N_("View only"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), TRUE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption", N_("Disable encryption"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverinput", N_("Disable server input"), TRUE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
