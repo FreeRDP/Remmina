@@ -175,6 +175,7 @@ endif()
 add_subdirectory(icons)
 add_subdirectory(desktop)
 add_subdirectory(external_tools)
+add_subdirectory(ui)
 
 install(TARGETS remmina DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(DIRECTORY include/remmina/ DESTINATION include/remmina FILES_MATCHING PATTERN "*.h")
