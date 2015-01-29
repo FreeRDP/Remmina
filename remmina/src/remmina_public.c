@@ -586,3 +586,14 @@ GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename)
 	g_free(ui_path);
 	return builder;
 }
+
+/* Change parent container for a widget
+ * If possible use this function instead of the deprecated gtk_widget_reparent */
+void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *container)
+{
+	TRACE_CALL("remmina_public_gtk_widget_reparent")
+	g_object_ref(widget);
+	gtk_container_remove(GTK_CONTAINER(gtk_widget_get_parent(widget)), widget);
+	gtk_container_add(container, widget);
+	g_object_unref(widget);
+}
