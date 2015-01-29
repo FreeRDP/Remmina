@@ -627,49 +627,46 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 	TRACE_CALL("remmina_file_editor_create_settings");
 	RemminaFileEditorPriv* priv = gfe->priv;
 	GtkWidget* widget;
-	gint row = 0;
-	gint top = 0;
-	gint ccount = 0;
+	gint grid_row = 0;
+	gint grid_column = 0;
 	gchar** strarr;
 
 	while (settings->type != REMMINA_PROTOCOL_SETTING_TYPE_END)
 	{
-		if (settings->compact)
-		{
-		}
 		switch (settings->type)
 		{
 			case REMMINA_PROTOCOL_SETTING_TYPE_SERVER:
-				remmina_file_editor_create_server(gfe, settings, grid, row);
+				remmina_file_editor_create_server(gfe, settings, grid, grid_row);
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD:
-				remmina_file_editor_create_password(gfe, grid, row);
+				remmina_file_editor_create_password(gfe, grid, grid_row);
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION:
-				remmina_file_editor_create_resolution(gfe, settings, grid, row);
-				row++;
+				remmina_file_editor_create_resolution(gfe, settings, grid, grid_row);
+				grid_row++;
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP:
 				strarr = remmina_pref_keymap_groups();
-				priv->keymap_combo = remmina_file_editor_create_select(gfe, grid, row + 1, 0,
-						_("Keyboard mapping"), (const gpointer*) strarr,
-						remmina_file_get_string(priv->remmina_file, "keymap"));
+				priv->keymap_combo = remmina_file_editor_create_select(gfe, grid,
+					grid_row + 1, 0,
+					_("Keyboard mapping"), (const gpointer*) strarr,
+					remmina_file_get_string(priv->remmina_file, "keymap"));
 				g_strfreev(strarr);
-				row++;
+				grid_row++;
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_TEXT:
-				widget = remmina_file_editor_create_text(gfe, grid, row, 0,
+				widget = remmina_file_editor_create_text(gfe, grid, grid_row, 0,
 						g_dgettext(priv->plugin->domain, settings->label),
 						remmina_file_get_string(priv->remmina_file, settings->name));
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_SELECT:
-				widget = remmina_file_editor_create_select(gfe, grid, row, 0,
+				widget = remmina_file_editor_create_select(gfe, grid, grid_row, 0,
 						g_dgettext(priv->plugin->domain, settings->label),
 						(const gpointer*) settings->opt1,
 						remmina_file_get_string(priv->remmina_file, settings->name));
@@ -677,7 +674,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_COMBO:
-				widget = remmina_file_editor_create_combo(gfe, grid, row, 0,
+				widget = remmina_file_editor_create_combo(gfe, grid, grid_row, 0,
 						g_dgettext(priv->plugin->domain, settings->label),
 						(const gchar*) settings->opt1,
 						remmina_file_get_string(priv->remmina_file, settings->name));
@@ -685,22 +682,14 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_CHECK:
-				/* with top e count we manage to distribute the check boxes on two columns */
-				if (ccount > 0) {
-					top = 1;
-					ccount = 0;
-				} else {
-					top = 0;
-					ccount = 1;
-				}
-				widget = remmina_file_editor_create_check(gfe, grid, row, top,
+				widget = remmina_file_editor_create_check(gfe, grid, grid_row, grid_column,
 					g_dgettext (priv->plugin->domain, settings->label),
 					remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_FILE:
-				widget = remmina_file_editor_create_chooser (gfe, grid, row, 0,
+				widget = remmina_file_editor_create_chooser (gfe, grid, grid_row, 0,
 						g_dgettext (priv->plugin->domain, settings->label),
 						remmina_file_get_string (priv->remmina_file, settings->name),
 						GTK_FILE_CHOOSER_ACTION_OPEN);
@@ -708,7 +697,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_FOLDER:
-				widget = remmina_file_editor_create_chooser (gfe, grid, row, 0,
+				widget = remmina_file_editor_create_chooser (gfe, grid, grid_row, 0,
 						g_dgettext (priv->plugin->domain, settings->label),
 						remmina_file_get_string (priv->remmina_file, settings->name),
 						GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
@@ -718,12 +707,19 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 			default:
 				break;
 		}
-
-		if (!settings->compact)
+		/* If the setting wants compactness, move to the next column */
+		if (settings->compact)
 		{
-			(ccount ? 1 : row++);
+			grid_column++;
 		}
-
+		/* Add a new settings row and move to the first column
+		 * if the setting doesn't want the compactness
+		 * or we already have two columns */
+		if (!settings->compact || grid_column > 1)
+		{
+			grid_row++;
+			grid_column = 0;
+		}
 		settings++;
 	}
 
