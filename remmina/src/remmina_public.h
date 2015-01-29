@@ -90,6 +90,8 @@ guint16 remmina_public_get_keycode_for_keyval(GdkKeymap *keymap, guint keyval);
 gboolean remmina_public_get_modifier_for_keycode(GdkKeymap *keymap, guint16 keycode);
 /* Load a GtkBuilder object from a filename */
 GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename);
+/* Change parent container for a widget */
+void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *container);
 
 #endif  /* __REMMINAPUBLIC_H__  */
 
