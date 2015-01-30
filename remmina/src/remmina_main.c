@@ -448,8 +448,7 @@ static void remmina_main_load_files(RemminaMain *remminamain, gboolean refresh)
 		case REMMINA_VIEW_FILE_TREE:
 			gtk_tree_view_column_set_visible(remminamain->priv->group_column, FALSE);
 			remminamain->priv->file_model = GTK_TREE_MODEL(
-					gtk_tree_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING,
-							G_TYPE_STRING, G_TYPE_STRING));
+				gtk_builder_get_object(remminamain->priv->builder_models, "treestore_files_list"));
 			remmina_main_load_file_tree_group(GTK_TREE_STORE(remminamain->priv->file_model));
 			n = remmina_file_manager_iterate(remmina_main_load_file_tree_callback, remminamain);
 			break;
