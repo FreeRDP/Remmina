@@ -138,6 +138,7 @@ static gboolean remmina_main_on_delete_event(GtkWidget *widget, GdkEvent *event,
 static void remmina_main_destroy(GtkWidget *widget, gpointer data)
 {
 	TRACE_CALL("remmina_main_destroy");
+	g_object_unref(G_OBJECT(REMMINA_MAIN(widget)->priv->builder_models));
 	g_free(REMMINA_MAIN(widget)->priv->selected_filename);
 	g_free(REMMINA_MAIN(widget)->priv->selected_name);
 	g_free(REMMINA_MAIN(widget)->priv);
@@ -457,8 +458,7 @@ static void remmina_main_load_files(RemminaMain *remminamain, gboolean refresh)
 		default:
 			gtk_tree_view_column_set_visible(remminamain->priv->group_column, TRUE);
 			remminamain->priv->file_model = GTK_TREE_MODEL(
-					gtk_list_store_new(N_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING,
-							G_TYPE_STRING, G_TYPE_STRING));
+				gtk_builder_get_object(remminamain->priv->builder_models, "liststore_files_list"));
 			n = remmina_file_manager_iterate(remmina_main_load_file_list_callback, remminamain);
 			break;
 	}
@@ -1350,6 +1350,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 	gtk_widget_show(priv->statusbar);
 
 	/* Prepare the data */
+	remminamain->priv->builder_models = remmina_public_gtk_builder_new_from_file("remmina_main_files_list.glade");
 	remmina_main_load_files(remminamain, FALSE);
 
 	/* Load the preferences */
