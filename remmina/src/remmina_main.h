@@ -59,6 +59,7 @@ typedef struct _RemminaMain
 struct _RemminaMainPriv
 {
 	GtkWidget *file_list;
+	GtkBuilder *builder_models;
 	GtkTreeModel *file_model;
 	GtkTreeModel *file_model_filter;
 	GtkTreeModel *file_model_sort;
