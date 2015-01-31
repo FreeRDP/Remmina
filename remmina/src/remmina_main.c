@@ -1324,11 +1324,11 @@ static void remmina_main_init(RemminaMain *remminamain)
 	/* Handle signal for double click on the row */
 	g_signal_connect(G_OBJECT(priv->file_list), "row-activated",
 		G_CALLBACK(remmina_main_file_list_on_row_activated), remminamain);
-
-	/* Create statusbar */
-	priv->statusbar = gtk_statusbar_new();
-	gtk_box_pack_start(GTK_BOX(vbox), priv->statusbar, FALSE, FALSE, 0);
-	gtk_widget_show(priv->statusbar);
+	/* Add a StatusBar for selected connection or items count */
+	builder = remmina_public_gtk_builder_new_from_file("remmina_main_statusbar.glade");
+	priv->statusbar = GTK_WIDGET(gtk_builder_get_object(builder, "statusbar_main"));
+	remmina_public_gtk_widget_reparent(priv->statusbar, GTK_CONTAINER(vbox));
+	g_object_unref(G_OBJECT(builder));
 
 	/* Load the files list */
 	remmina_main_load_files(remminamain, FALSE);
