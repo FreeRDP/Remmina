@@ -1289,12 +1289,12 @@ static void remmina_main_init(RemminaMain *remminamain)
 	/* Add a Quick Connection box */
 	builder = remmina_public_gtk_builder_new_from_file("remmina_main_quick_connect.glade");
 	priv->quickconnect_box = GTK_WIDGET(gtk_builder_get_object(builder, "box_quick_connect"));
-	remmina_public_gtk_widget_reparent(priv->quickconnect_box, vbox);
+	remmina_public_gtk_widget_reparent(priv->quickconnect_box, GTK_CONTAINER(vbox));
 	priv->quickconnect_server = GTK_WIDGET(gtk_builder_get_object(builder, "entry_quick_connect_server"));
 	priv->quickconnect_protocol = GTK_WIDGET(gtk_builder_get_object(builder, "combo_quick_connect_protocol"));
 	button_quick_connect = GTK_BUTTON(gtk_builder_get_object(builder, "button_quick_connect"));
 	gtk_entry_set_activates_default(GTK_ENTRY(priv->quickconnect_server), TRUE);
-	gtk_widget_grab_default(button_quick_connect);
+	gtk_widget_grab_default(GTK_WIDGET(button_quick_connect));
 	g_signal_connect(G_OBJECT(button_quick_connect), "clicked", G_CALLBACK(remmina_main_quickconnect_on_click), remminamain);
 	g_object_unref(G_OBJECT(builder));
 
