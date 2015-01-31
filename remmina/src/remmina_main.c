@@ -446,7 +446,8 @@ static void remmina_main_load_files(RemminaMain *remminamain, gboolean refresh)
 	{
 
 		case REMMINA_VIEW_FILE_TREE:
-			gtk_tree_view_column_set_visible(remminamain->priv->group_column, FALSE);
+			gtk_tree_view_column_set_visible(GTK_TREE_VIEW_COLUMN(gtk_builder_get_object(
+				remminamain->priv->builder_models, "column_files_list_group")), FALSE);
 			remminamain->priv->file_model = GTK_TREE_MODEL(
 				gtk_builder_get_object(remminamain->priv->builder_models, "treestore_files_list"));
 			gtk_tree_store_clear(GTK_TREE_STORE(remminamain->priv->file_model));
@@ -456,7 +457,8 @@ static void remmina_main_load_files(RemminaMain *remminamain, gboolean refresh)
 
 		case REMMINA_VIEW_FILE_LIST:
 		default:
-			gtk_tree_view_column_set_visible(remminamain->priv->group_column, TRUE);
+			gtk_tree_view_column_set_visible(GTK_TREE_VIEW_COLUMN(gtk_builder_get_object(
+				remminamain->priv->builder_models, "column_files_list_group")), TRUE);
 			remminamain->priv->file_model = GTK_TREE_MODEL(
 				gtk_builder_get_object(remminamain->priv->builder_models, "liststore_files_list"));
 			gtk_list_store_clear(GTK_LIST_STORE(remminamain->priv->file_model));
@@ -1195,7 +1197,6 @@ static void remmina_main_init(RemminaMain *remminamain)
 	GtkUIManager *uimanager;
 	GtkActionGroup *action_group;
 	GtkWidget *scrolledwindow;
-	GtkWidget *tree;
 	GtkCellRenderer *renderer;
 	GtkTreeViewColumn *column;
 	GError *error;
@@ -1301,52 +1302,18 @@ static void remmina_main_init(RemminaMain *remminamain)
 	/* Load the GtkBuilder for the TreeModels and leave it in memory as it's used
 	 * by the TreeModels and it will be needed again during the view mode change */
 	remminamain->priv->builder_models = remmina_public_gtk_builder_new_from_file("remmina_main_files_list.glade");
-	/* Create the scrolled window for the file list */
-	scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
-	gtk_widget_show(scrolledwindow);
-	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolledwindow), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
-	gtk_box_pack_start(GTK_BOX(vbox), scrolledwindow, TRUE, TRUE, 0);
-
-	/* Create the remmina file list */
-	tree = gtk_tree_view_new();
-
-	column = gtk_tree_view_column_new();
-	gtk_tree_view_column_set_title(column, _("Name"));
-	gtk_tree_view_column_set_resizable(column, TRUE);
-	gtk_tree_view_column_set_sort_column_id(column, NAME_COLUMN);
-	renderer = gtk_cell_renderer_pixbuf_new();
-	gtk_tree_view_column_pack_start(column, renderer, FALSE);
-	gtk_tree_view_column_add_attribute(column, renderer, "icon-name", PROTOCOL_COLUMN);
-	g_object_set(G_OBJECT(renderer), "stock-size", GTK_ICON_SIZE_LARGE_TOOLBAR, NULL);
-	renderer = gtk_cell_renderer_text_new();
-	gtk_tree_view_column_pack_start(column, renderer, FALSE);
-	gtk_tree_view_column_add_attribute(column, renderer, "text", NAME_COLUMN);
-	gtk_tree_view_append_column(GTK_TREE_VIEW(tree), column);
-
-	renderer = gtk_cell_renderer_text_new();
-	column = gtk_tree_view_column_new_with_attributes(_("Group"), renderer, "text", GROUP_COLUMN, NULL);
-	gtk_tree_view_column_set_resizable(column, TRUE);
-	gtk_tree_view_column_set_sort_column_id(column, GROUP_COLUMN);
-	gtk_tree_view_append_column(GTK_TREE_VIEW(tree), column);
-	priv->group_column = column;
-
-	renderer = gtk_cell_renderer_text_new();
-	column = gtk_tree_view_column_new_with_attributes(_("Server"), renderer, "text", SERVER_COLUMN, NULL);
-	gtk_tree_view_column_set_resizable(column, TRUE);
-	gtk_tree_view_column_set_sort_column_id(column, SERVER_COLUMN);
-	gtk_tree_view_append_column(GTK_TREE_VIEW(tree), column);
-
-	gtk_container_add(GTK_CONTAINER(scrolledwindow), tree);
-	gtk_widget_show(tree);
-
-	gtk_tree_selection_set_select_function(gtk_tree_view_get_selection(GTK_TREE_VIEW(tree)), remmina_main_selection_func,
+	/* Add the ScrolledWindow */
+	scrolledwindow = GTK_WIDGET(gtk_builder_get_object(remminamain->priv->builder_models, "scrolled_files_list"));
+	remmina_public_gtk_widget_reparent(scrolledwindow, GTK_CONTAINER(vbox));
+	gtk_box_set_child_packing(GTK_BOX(vbox), scrolledwindow, TRUE, TRUE, 0, GTK_PACK_START);
+	/* Add the TreeView for the files list */
+	priv->file_list = GTK_WIDGET(gtk_builder_get_object(remminamain->priv->builder_models, "tree_files_list"));
+	gtk_tree_selection_set_select_function(gtk_tree_view_get_selection(GTK_TREE_VIEW(priv->file_list)), remmina_main_selection_func,
 			remminamain, NULL);
-	g_signal_connect(G_OBJECT(tree), "button-press-event", G_CALLBACK(remmina_main_file_list_on_button_press), remminamain);
+	g_signal_connect(G_OBJECT(priv->file_list), "button-press-event", G_CALLBACK(remmina_main_file_list_on_button_press), remminamain);
 	/* Handle double click on the row */
-	g_signal_connect(G_OBJECT(tree), "row-activated",
+	g_signal_connect(G_OBJECT(priv->file_list), "row-activated",
 		G_CALLBACK(remmina_main_file_list_on_row_activated), remminamain);
-
-	priv->file_list = tree;
 
 	/* Create statusbar */
 	priv->statusbar = gtk_statusbar_new();
