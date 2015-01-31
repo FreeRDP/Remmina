@@ -446,22 +446,31 @@ static void remmina_main_load_files(RemminaMain *remminamain, gboolean refresh)
 	{
 
 		case REMMINA_VIEW_FILE_TREE:
+			/* Hide the Group column in the tree view mode */
 			gtk_tree_view_column_set_visible(GTK_TREE_VIEW_COLUMN(gtk_builder_get_object(
 				remminamain->priv->builder_models, "column_files_list_group")), FALSE);
+			/* Use the TreeStore model to store data */
 			remminamain->priv->file_model = GTK_TREE_MODEL(
 				gtk_builder_get_object(remminamain->priv->builder_models, "treestore_files_list"));
+			/* Clear any previous data in the model */
 			gtk_tree_store_clear(GTK_TREE_STORE(remminamain->priv->file_model));
+			/* Load groups first */
 			remmina_main_load_file_tree_group(GTK_TREE_STORE(remminamain->priv->file_model));
+			/* Load files list */
 			n = remmina_file_manager_iterate(remmina_main_load_file_tree_callback, remminamain);
 			break;
 
 		case REMMINA_VIEW_FILE_LIST:
 		default:
+			/* Show the Group column in the list view mode */
 			gtk_tree_view_column_set_visible(GTK_TREE_VIEW_COLUMN(gtk_builder_get_object(
 				remminamain->priv->builder_models, "column_files_list_group")), TRUE);
+			/* Use the ListStore model to store data */
 			remminamain->priv->file_model = GTK_TREE_MODEL(
 				gtk_builder_get_object(remminamain->priv->builder_models, "liststore_files_list"));
+			/* Clear any previous data in the model */
 			gtk_list_store_clear(GTK_LIST_STORE(remminamain->priv->file_model));
+			/* Load files list */
 			n = remmina_file_manager_iterate(remmina_main_load_file_list_callback, remminamain);
 			break;
 	}
@@ -1310,8 +1319,9 @@ static void remmina_main_init(RemminaMain *remminamain)
 	priv->file_list = GTK_WIDGET(gtk_builder_get_object(remminamain->priv->builder_models, "tree_files_list"));
 	gtk_tree_selection_set_select_function(gtk_tree_view_get_selection(GTK_TREE_VIEW(priv->file_list)), remmina_main_selection_func,
 			remminamain, NULL);
+	/* Handle signal for mouse buttons in order to show the popup menu */
 	g_signal_connect(G_OBJECT(priv->file_list), "button-press-event", G_CALLBACK(remmina_main_file_list_on_button_press), remminamain);
-	/* Handle double click on the row */
+	/* Handle signal for double click on the row */
 	g_signal_connect(G_OBJECT(priv->file_list), "row-activated",
 		G_CALLBACK(remmina_main_file_list_on_row_activated), remminamain);
 
@@ -1320,7 +1330,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 	gtk_box_pack_start(GTK_BOX(vbox), priv->statusbar, FALSE, FALSE, 0);
 	gtk_widget_show(priv->statusbar);
 
-	/* Prepare the data */
+	/* Load the files list */
 	remmina_main_load_files(remminamain, FALSE);
 
 	/* Load the preferences */
