@@ -34,3 +34,4 @@
 install(FILES remmina_about.glade DESTINATION "${REMMINA_UIDIR}")
 install(FILES remmina_main_quick_connect.glade DESTINATION "${REMMINA_UIDIR}")
 install(FILES remmina_main_files_list.glade DESTINATION "${REMMINA_UIDIR}")
+install(FILES remmina_main_statusbar.glade DESTINATION "${REMMINA_UIDIR}")
