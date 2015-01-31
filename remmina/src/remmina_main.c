@@ -449,6 +449,7 @@ static void remmina_main_load_files(RemminaMain *remminamain, gboolean refresh)
 			gtk_tree_view_column_set_visible(remminamain->priv->group_column, FALSE);
 			remminamain->priv->file_model = GTK_TREE_MODEL(
 				gtk_builder_get_object(remminamain->priv->builder_models, "treestore_files_list"));
+			gtk_tree_store_clear(GTK_TREE_STORE(remminamain->priv->file_model));
 			remmina_main_load_file_tree_group(GTK_TREE_STORE(remminamain->priv->file_model));
 			n = remmina_file_manager_iterate(remmina_main_load_file_tree_callback, remminamain);
 			break;
@@ -458,6 +459,7 @@ static void remmina_main_load_files(RemminaMain *remminamain, gboolean refresh)
 			gtk_tree_view_column_set_visible(remminamain->priv->group_column, TRUE);
 			remminamain->priv->file_model = GTK_TREE_MODEL(
 				gtk_builder_get_object(remminamain->priv->builder_models, "liststore_files_list"));
+			gtk_list_store_clear(GTK_LIST_STORE(remminamain->priv->file_model));
 			n = remmina_file_manager_iterate(remmina_main_load_file_list_callback, remminamain);
 			break;
 	}
