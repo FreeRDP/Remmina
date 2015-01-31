@@ -58,30 +58,29 @@ gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 	GDir* dir;
 	const gchar* name;
 	RemminaFile* remminafile;
-	gint n;
+	gint items_count = 0;
 
 	g_snprintf(dirname, MAX_PATH_LEN, "%s/.remmina", g_get_home_dir());
 	dir = g_dir_open(dirname, 0, NULL);
 
-	if (dir == NULL)
-		return 0;
-
-	n = 0;
-	while ((name = g_dir_read_name(dir)) != NULL)
+	if (dir)
 	{
-		if (!g_str_has_suffix(name, ".remmina"))
-			continue;
-		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", dirname, name);
-		remminafile = remmina_file_load(filename);
-		if (remminafile)
+		while ((name = g_dir_read_name(dir)) != NULL)
 		{
-			(*func)(remminafile, user_data);
-			remmina_file_free(remminafile);
-			n++;
+			if (!g_str_has_suffix(name, ".remmina"))
+				continue;
+			g_snprintf(filename, MAX_PATH_LEN, "%s/%s", dirname, name);
+			remminafile = remmina_file_load(filename);
+			if (remminafile)
+			{
+				(*func)(remminafile, user_data);
+				remmina_file_free(remminafile);
+				items_count++;
+			}
 		}
+		g_dir_close(dir);
 	}
-	g_dir_close(dir);
-	return n;
+	return items_count;
 }
 
 gchar* remmina_file_manager_get_groups(void)
