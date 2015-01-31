@@ -433,7 +433,7 @@ static void remmina_main_load_files(RemminaMain *remminamain, gboolean refresh)
 	TRACE_CALL("remmina_main_load_files");
 	GtkTreeModel *filter;
 	GtkTreeModel *sort;
-	gint n;
+	gint items_count;
 	gchar buf[200];
 	guint context_id;
 
@@ -457,7 +457,7 @@ static void remmina_main_load_files(RemminaMain *remminamain, gboolean refresh)
 			/* Load groups first */
 			remmina_main_load_file_tree_group(GTK_TREE_STORE(remminamain->priv->file_model));
 			/* Load files list */
-			n = remmina_file_manager_iterate(remmina_main_load_file_tree_callback, remminamain);
+			items_count = remmina_file_manager_iterate(remmina_main_load_file_tree_callback, remminamain);
 			break;
 
 		case REMMINA_VIEW_FILE_LIST:
@@ -471,7 +471,7 @@ static void remmina_main_load_files(RemminaMain *remminamain, gboolean refresh)
 			/* Clear any previous data in the model */
 			gtk_list_store_clear(GTK_LIST_STORE(remminamain->priv->file_model));
 			/* Load files list */
-			n = remmina_file_manager_iterate(remmina_main_load_file_list_callback, remminamain);
+			items_count = remmina_file_manager_iterate(remmina_main_load_file_list_callback, remminamain);
 			break;
 	}
 
@@ -488,13 +488,13 @@ static void remmina_main_load_files(RemminaMain *remminamain, gboolean refresh)
 			remmina_pref.main_sort_order);
 	g_signal_connect(G_OBJECT(sort), "sort-column-changed", G_CALLBACK(remmina_main_file_model_on_sort), remminamain);
 	remmina_main_expand_group(remminamain);
-
+	/* Select the file previously selected */
 	if (remminamain->priv->selected_filename)
 	{
 		remmina_main_select_file(remminamain, remminamain->priv->selected_filename);
 	}
-
-	g_snprintf(buf, 200, ngettext("Total %i item.", "Total %i items.", n), n);
+	/* Show in the status bar the total number of connections found */
+	g_snprintf(buf, 200, ngettext("Total %i item.", "Total %i items.", items_count), items_count);
 	context_id = gtk_statusbar_get_context_id(GTK_STATUSBAR(remminamain->priv->statusbar), "status");
 	gtk_statusbar_pop(GTK_STATUSBAR(remminamain->priv->statusbar), context_id);
 	gtk_statusbar_push(GTK_STATUSBAR(remminamain->priv->statusbar), context_id, buf);
