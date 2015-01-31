@@ -1298,6 +1298,9 @@ static void remmina_main_init(RemminaMain *remminamain)
 	g_signal_connect(G_OBJECT(button_quick_connect), "clicked", G_CALLBACK(remmina_main_quickconnect_on_click), remminamain);
 	g_object_unref(G_OBJECT(builder));
 
+	/* Load the GtkBuilder for the TreeModels and leave it in memory as it's used
+	 * by the TreeModels and it will be needed again during the view mode change */
+	remminamain->priv->builder_models = remmina_public_gtk_builder_new_from_file("remmina_main_files_list.glade");
 	/* Create the scrolled window for the file list */
 	scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
 	gtk_widget_show(scrolledwindow);
@@ -1351,7 +1354,6 @@ static void remmina_main_init(RemminaMain *remminamain)
 	gtk_widget_show(priv->statusbar);
 
 	/* Prepare the data */
-	remminamain->priv->builder_models = remmina_public_gtk_builder_new_from_file("remmina_main_files_list.glade");
 	remmina_main_load_files(remminamain, FALSE);
 
 	/* Load the preferences */
