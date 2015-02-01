@@ -1213,6 +1213,12 @@ static void remmina_main_init(RemminaMain *remminamain)
 			GTK_TOGGLE_ACTION(gtk_builder_get_object(priv->builder_actions, "action_view_small_toolbar_buttons")),
 			TRUE);
 	}
+	if (remmina_pref.view_file_mode)
+	{
+		gtk_toggle_action_set_active(
+			GTK_TOGGLE_ACTION(gtk_builder_get_object(priv->builder_actions, "action_view_mode_tree")),
+			TRUE);
+	}
 	/* Drag-n-drop support */
 	gtk_drag_dest_set(GTK_WIDGET(remminamain), GTK_DEST_DEFAULT_ALL, remmina_drop_types, 1, GDK_ACTION_COPY);
 	g_signal_connect(G_OBJECT(remminamain), "drag-data-received", G_CALLBACK(remmina_main_on_drag_data_received), NULL);
