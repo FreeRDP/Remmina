@@ -139,6 +139,7 @@ static void remmina_main_destroy(GtkWidget *widget, gpointer data)
 {
 	TRACE_CALL("remmina_main_destroy");
 	g_object_unref(G_OBJECT(REMMINA_MAIN(widget)->priv->builder_models));
+	g_object_unref(G_OBJECT(REMMINA_MAIN(widget)->priv->builder_actions));
 	g_free(REMMINA_MAIN(widget)->priv->selected_filename);
 	g_free(REMMINA_MAIN(widget)->priv->selected_name);
 	g_free(REMMINA_MAIN(widget)->priv);
@@ -717,12 +718,19 @@ static void remmina_main_action_view_small_toolbutton(GtkToggleAction *action, R
 	}
 }
 
-static void remmina_main_action_view_file_mode(GtkRadioAction *action, GtkRadioAction *current, RemminaMain *remminamain)
+static void remmina_main_action_view_file_mode(GtkRadioAction *action, RemminaMain *remminamain)
 {
 	TRACE_CALL("remmina_main_action_view_file_mode");
-	remmina_pref.view_file_mode = gtk_radio_action_get_current_value(action);
-	remmina_pref_save();
-	remmina_main_load_files(remminamain, TRUE);
+	static GtkRadioAction *previous_action;
+	if (!previous_action)
+		previous_action = action;
+	if (action != previous_action)
+	{
+		remmina_pref.view_file_mode = gtk_radio_action_get_current_value(action);
+		remmina_pref_save();
+		remmina_main_load_files(remminamain, TRUE);
+	}
+	previous_action = action;
 }
 
 static void remmina_main_import_file_list(RemminaMain *remminamain, GSList *files)
@@ -874,135 +882,7 @@ static void remmina_main_action_help_about(GtkAction *action, RemminaMain *remmi
 {
 	TRACE_CALL("remmina_main_action_help_about");
 	remmina_about_open(GTK_WINDOW(remminamain));
-}
-
-static const gchar *remmina_main_ui_xml = "<ui>"
-		"  <menubar name='MenuBar'>"
-		"    <menu name='ConnectionMenu' action='Connection'>"
-		"      <menuitem name='ConnectionConnectMenu' action='ConnectionConnect'/>"
-		"      <separator/>"
-		"      <menuitem name='ConnectionNewMenu' action='ConnectionNew'/>"
-		"      <menuitem name='ConnectionCopyMenu' action='ConnectionCopy'/>"
-		"      <menuitem name='ConnectionEditMenu' action='ConnectionEdit'/>"
-		"      <menuitem name='ConnectionDeleteMenu' action='ConnectionDelete'/>"
-		"      <separator/>"
-		"      <menuitem name='ConnectionCloseMenu' action='ConnectionClose'/>"
-		"    </menu>"
-		"    <menu name='EditMenu' action='Edit'>"
-		"      <menuitem name='EditPreferencesMenu' action='EditPreferences'/>"
-		"    </menu>"
-		"    <menu name='ViewMenu' action='View'>"
-		"      <menuitem name='ViewToolbarMenu' action='ViewToolbar'/>"
-		"      <menuitem name='ViewStatusbarMenu' action='ViewStatusbar'/>"
-		"      <menuitem name='ViewQuickSearchMenu' action='ViewQuickSearch'/>"
-		"      <menuitem name='ViewQuickConnect' action='ViewQuickConnect'/>"
-		"      <separator/>"
-		"      <menuitem name='ViewSmallToolbuttonMenu' action='ViewSmallToolbutton'/>"
-		"      <separator/>"
-		"      <menuitem name='ViewFileListMenu' action='ViewFileList'/>"
-		"      <menuitem name='ViewFileTreeMenu' action='ViewFileTree'/>"
-		"    </menu>"
-		"    <menu name='ToolsMenu' action='Tools'>"
-		"      <menuitem name='ToolsImportMenu' action='ToolsImport'/>"
-		"      <menuitem name='ToolsExportMenu' action='ToolsExport'/>"
-		"      <placeholder name='ToolsAdditions'/>"
-		"      <separator/>"
-		"      <menuitem name='ToolsPluginsMenu' action='ToolsPlugins'/>"
-		"    </menu>"
-		"    <menu name='HelpMenu' action='Help'>"
-		"      <menuitem name='HelpHomepageMenu' action='HelpHomepage'/>"
-		"      <menuitem name='HelpWikiMenu' action='HelpWiki'/>"
-		"      <menuitem name='HelpDebugMenu' action='HelpDebug'/>"
-		"      <separator/>"
-		"      <menuitem name='HelpAboutMenu' action='HelpAbout'/>"
-		"    </menu>"
-		"  </menubar>"
-		"  <toolbar name='ToolBar'>"
-		"    <toolitem action='ConnectionConnect'/>"
-		"    <separator/>"
-		"    <toolitem action='ConnectionNew'/>"
-		"    <toolitem action='ConnectionCopy'/>"
-		"    <toolitem action='ConnectionEdit'/>"
-		"    <toolitem action='ConnectionDelete'/>"
-		"    <separator/>"
-		"    <toolitem action='EditPreferences'/>"
-		"  </toolbar>"
-		"  <popup name='PopupMenu'>"
-		"    <menuitem action='ConnectionConnect'/>"
-		"    <separator/>"
-		"    <menuitem action='ConnectionCopy'/>"
-		"    <menuitem action='ConnectionEdit'/>"
-		"    <menuitem action='ConnectionDelete'/>"
-		"    <menuitem action='ConnectionExternalTools'/>"
-		"  </popup>"
-		"</ui>";
-
-static const GtkActionEntry remmina_main_ui_menu_entries[] =
-{
-{ "Connection", NULL, N_("_Connection") },
-{ "Edit", NULL, N_("_Edit") },
-{ "View", NULL, N_("_View") },
-{ "Tools", NULL, N_("_Tools") },
-{ "Help", NULL, N_("_Help") },
-
-{ "ConnectionNew", "gtk-new", NULL, "<control>N", N_("Create a new remote desktop file"), G_CALLBACK(
-		remmina_main_action_connection_new) },
-
-{ "EditPreferences", "gtk-preferences", NULL, "<control>P", N_("Open the preferences dialog"), G_CALLBACK(
-		remmina_main_action_edit_preferences) },
-
-{ "ConnectionClose", "gtk-close", NULL, "<control>X", NULL, G_CALLBACK(remmina_main_action_connection_close) },
-
-{ "ToolsImport", NULL, N_("Import"), NULL, NULL, G_CALLBACK(remmina_main_action_tools_import) },
-
-{ "ToolsPlugins", NULL, N_("Plugins"), NULL, NULL, G_CALLBACK(remmina_main_action_tools_plugins) },
-
-{ "HelpHomepage", NULL, N_("Homepage"), NULL, NULL, G_CALLBACK(remmina_main_action_help_homepage) },
-
-{ "HelpWiki", NULL, N_("Online Wiki"), NULL, NULL, G_CALLBACK(remmina_main_action_help_wiki) },
-
-{ "HelpDebug", NULL, N_("Debug Window"), NULL, NULL, G_CALLBACK(remmina_main_action_help_debug) },
-
-{ "HelpAbout", "gtk-about", NULL, NULL, NULL, G_CALLBACK(remmina_main_action_help_about) } };
-
-static const GtkActionEntry remmina_main_ui_file_sensitive_menu_entries[] =
-{
-{ "ConnectionConnect", "gtk-connect", NULL, "<control>O", N_("Open the connection to the selected remote desktop file"),
-		G_CALLBACK(remmina_main_action_connection_connect) },
-
-{ "ConnectionCopy", "gtk-copy", NULL, "<control>C", N_("Create a copy of the selected remote desktop file"), G_CALLBACK(
-		remmina_main_action_connection_copy) },
-
-{ "ConnectionEdit", "gtk-edit", NULL, "<control>E", N_("Edit the selected remote desktop file"), G_CALLBACK(
-		remmina_main_action_connection_edit) },
-
-{ "ConnectionDelete", "gtk-delete", NULL, "<control>D", N_("Delete the selected remote desktop file"), G_CALLBACK(
-		remmina_main_action_connection_delete) },
-
-{ "ToolsExport", NULL, N_("Export"), NULL, NULL, G_CALLBACK(remmina_main_action_tools_export) },
-
-{ "ConnectionExternalTools", NULL, N_("External Tools"), "<control>T", NULL,
-		G_CALLBACK(remmina_main_action_connection_external_tools) }
-
 };
-
-static const GtkToggleActionEntry remmina_main_ui_toggle_menu_entries[] =
-{
-{ "ViewToolbar", NULL, N_("Toolbar"), NULL, NULL, G_CALLBACK(remmina_main_action_view_toolbar), TRUE },
-
-{ "ViewStatusbar", NULL, N_("Statusbar"), NULL, NULL, G_CALLBACK(remmina_main_action_view_statusbar), TRUE },
-
-{ "ViewQuickSearch", NULL, N_("Quick Search"), NULL, NULL, G_CALLBACK(remmina_main_action_view_quick_search), FALSE },
-
-{ "ViewQuickConnect", NULL, N_("Quick Connect"), NULL, NULL, G_CALLBACK(remmina_main_action_view_quick_connect), TRUE },
-
-{ "ViewSmallToolbutton", NULL, N_("Small Toolbar Buttons"), NULL, NULL, G_CALLBACK(remmina_main_action_view_small_toolbutton),
-		FALSE } };
-
-static const GtkRadioActionEntry remmina_main_ui_view_file_mode_entries[] =
-{
-{ "ViewFileList", NULL, N_("List View"), NULL, NULL, REMMINA_VIEW_FILE_LIST },
-{ "ViewFileTree", NULL, N_("Tree View"), NULL, NULL, REMMINA_VIEW_FILE_TREE } };
 
 static gboolean remmina_main_quickconnect(RemminaMain *remminamain)
 {
@@ -1078,7 +958,7 @@ static gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEve
 
 	if (event->button == 3)
 	{
-		popup = gtk_ui_manager_get_widget(remminamain->priv->uimanager, "/PopupMenu");
+		popup = GTK_WIDGET(gtk_builder_get_object(remminamain->priv->builder_actions, "menu_popup"));
 		if (popup)
 		{
 			gtk_menu_popup(GTK_MENU(popup), NULL, NULL, NULL, NULL, event->button, event->time);
@@ -1156,19 +1036,20 @@ static void remmina_main_on_drag_data_received(RemminaMain *remminamain, GdkDrag
 static gboolean remmina_main_add_tool_plugin(gchar *name, RemminaPlugin *plugin, gpointer data)
 {
 	TRACE_CALL("remmina_main_add_tool_plugin");
+/*
 	RemminaMain *remminamain = REMMINA_MAIN(data);
 	guint merge_id;
 	GtkAction *action;
 
 	merge_id = gtk_ui_manager_new_merge_id(remminamain->priv->uimanager);
 	action = gtk_action_new(name, plugin->description, NULL, NULL);
-	gtk_action_group_add_action(remminamain->priv->main_group, action);
+	gtk_action_group_add_action(remminamain->priv->main_view_group, action);
 	g_signal_connect(G_OBJECT(action), "activate", G_CALLBACK(remmina_main_action_tools_addition), remminamain);
 	g_object_unref(action);
 
 	gtk_ui_manager_add_ui(remminamain->priv->uimanager, merge_id, "/MenuBar/ToolsMenu/ToolsAdditions", name, name,
 			GTK_UI_MANAGER_MENUITEM, FALSE);
-
+*/
 	return FALSE;
 }
 
@@ -1199,14 +1080,8 @@ static void remmina_main_init(RemminaMain *remminamain)
 	TRACE_CALL("remmina_main_init");
 	RemminaMainPriv *priv;
 	GtkWidget *vbox;
-	GtkWidget *menubar;
 	GtkButton *button_quick_connect;
-	GtkWidget *tool_item;
-	GtkUIManager *uimanager;
-	GtkActionGroup *action_group;
 	GtkWidget *scrolledwindow;
-	GtkTreeViewColumn *column;
-	GError *error;
 	GtkBuilder *builder;
 
 	priv = g_new0(RemminaMainPriv, 1);
@@ -1232,63 +1107,87 @@ static void remmina_main_init(RemminaMain *remminamain)
 	gtk_container_add(GTK_CONTAINER(remminamain), vbox);
 	gtk_widget_show(vbox);
 
-	/* Create the menubar and toolbar */
-	uimanager = gtk_ui_manager_new();
-	priv->uimanager = uimanager;
-
-	action_group = gtk_action_group_new("RemminaMainActions");
-	gtk_action_group_set_translation_domain(action_group, NULL);
-	gtk_action_group_add_actions(action_group, remmina_main_ui_menu_entries, G_N_ELEMENTS(remmina_main_ui_menu_entries),
-			remminamain);
-	gtk_action_group_add_toggle_actions(action_group, remmina_main_ui_toggle_menu_entries,
-			G_N_ELEMENTS(remmina_main_ui_toggle_menu_entries), remminamain);
-	gtk_action_group_add_radio_actions(action_group, remmina_main_ui_view_file_mode_entries,
-			G_N_ELEMENTS(remmina_main_ui_view_file_mode_entries), remmina_pref.view_file_mode,
-			G_CALLBACK(remmina_main_action_view_file_mode), remminamain);
-
-	gtk_ui_manager_insert_action_group(uimanager, action_group, 0);
-	g_object_unref(action_group);
-	priv->main_group = action_group;
-
-	action_group = gtk_action_group_new("RemminaMainFileSensitiveActions");
-	gtk_action_group_set_translation_domain(action_group, NULL);
-	gtk_action_group_add_actions(action_group, remmina_main_ui_file_sensitive_menu_entries,
-			G_N_ELEMENTS(remmina_main_ui_file_sensitive_menu_entries), remminamain);
-
-	gtk_ui_manager_insert_action_group(uimanager, action_group, 0);
-	g_object_unref(action_group);
-	priv->file_sensitive_group = action_group;
-
-	error = NULL;
-	gtk_ui_manager_add_ui_from_string(uimanager, remmina_main_ui_xml, -1, &error);
-	if (error)
-	{
-		g_message("building menus failed: %s", error->message);
-		g_error_free(error);
-	}
-
-	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
-
-	menubar = gtk_ui_manager_get_widget(uimanager, "/MenuBar");
-	gtk_box_pack_start(GTK_BOX(vbox), menubar, FALSE, FALSE, 0);
-
-	priv->toolbar = gtk_ui_manager_get_widget(uimanager, "/ToolBar");
-#if GTK_VERSION == 3
-	gtk_style_context_add_class(gtk_widget_get_style_context(priv->toolbar), GTK_STYLE_CLASS_PRIMARY_TOOLBAR);
-#endif
-	gtk_box_pack_start(GTK_BOX(vbox), priv->toolbar, FALSE, FALSE, 0);
-
-	tool_item = gtk_ui_manager_get_widget(uimanager, "/ToolBar/ConnectionConnect");
-	gtk_tool_item_set_is_important (GTK_TOOL_ITEM(tool_item), TRUE);
-
-	tool_item = gtk_ui_manager_get_widget(uimanager, "/ToolBar/ConnectionNew");
-	gtk_tool_item_set_is_important (GTK_TOOL_ITEM(tool_item), TRUE);
-
+	priv->builder_actions = remmina_public_gtk_builder_new_from_file("remmina_main_actions.glade");
+	/* Add the Menubar */
+	remmina_public_gtk_widget_reparent(
+		GTK_WIDGET(gtk_builder_get_object(priv->builder_actions, "menubar_main")),
+		GTK_CONTAINER(vbox));
+	/* Add the Toolbar */
+	priv->toolbar = GTK_WIDGET(gtk_builder_get_object(priv->builder_actions, "toolbar_main"));
+	remmina_public_gtk_widget_reparent(priv->toolbar, GTK_CONTAINER(vbox));
+//	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
 	remmina_main_create_quick_search(remminamain);
 
-	gtk_window_add_accel_group(GTK_WINDOW(remminamain), gtk_ui_manager_get_accel_group(uimanager));
-
-	// DPRECATED gtk_action_group_set_sensitive(priv->file_sensitive_group, FALSE);
+	/* Add the actions and connect signals */
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_connection_connect")),
+		"activate", G_CALLBACK(remmina_main_action_connection_connect), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_connection_new")),
+		"activate", G_CALLBACK(remmina_main_action_connection_new), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_connection_edit")),
+		"activate", G_CALLBACK(remmina_main_action_connection_edit), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_connection_copy")),
+		"activate", G_CALLBACK(remmina_main_action_connection_copy), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_connection_delete")),
+		"activate", G_CALLBACK(remmina_main_action_connection_delete), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_application_preferences")),
+		"activate", G_CALLBACK(remmina_main_action_edit_preferences), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_application_about")),
+		"activate", G_CALLBACK(remmina_main_action_help_about), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_application_plugins")),
+		"activate", G_CALLBACK(remmina_main_action_tools_plugins), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_application_quit")),
+		"activate", G_CALLBACK(remmina_main_action_connection_close), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_view_toolbar")),
+		"toggled", G_CALLBACK(remmina_main_action_view_toolbar), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_view_statusbar")),
+		"toggled", G_CALLBACK(remmina_main_action_view_statusbar), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_view_quick_search")),
+		"toggled", G_CALLBACK(remmina_main_action_view_quick_search), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_view_quick_connect")),
+		"toggled", G_CALLBACK(remmina_main_action_view_quick_connect), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_view_small_toolbar_buttons")),
+		"toggled", G_CALLBACK(remmina_main_action_view_small_toolbutton), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_view_mode_list")),
+		"toggled", G_CALLBACK(remmina_main_action_view_file_mode), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_view_mode_tree")),
+		"toggled", G_CALLBACK(remmina_main_action_view_file_mode), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_tools_import")),
+		"activate", G_CALLBACK(remmina_main_action_tools_import), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_tools_export")),
+		"activate", G_CALLBACK(remmina_main_action_tools_export), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_tools_externaltools")),
+		"activate", G_CALLBACK(remmina_main_action_connection_external_tools), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_help_homepage")),
+		"activate", G_CALLBACK(remmina_main_action_help_homepage), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_help_wiki")),
+		"activate", G_CALLBACK(remmina_main_action_help_wiki), remminamain);
+	g_signal_connect(
+		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_help_debug")),
+		"activate", G_CALLBACK(remmina_main_action_help_debug), remminamain);
+	/* Connect the group accelerators to the GtkWindow */
+	gtk_window_add_accel_group(GTK_WINDOW(remminamain),
+		gtk_builder_get_object(priv->builder_actions, "accelgroup_shortcuts"));
 
 	/* Add a Quick Connection box */
 	builder = remmina_public_gtk_builder_new_from_file("remmina_main_quick_connect.glade");
@@ -1330,29 +1229,34 @@ static void remmina_main_init(RemminaMain *remminamain)
 	/* Load the preferences */
 	if (remmina_pref.hide_toolbar)
 	{
-		gtk_toggle_action_set_active(GTK_TOGGLE_ACTION(gtk_action_group_get_action(priv->main_group, "ViewToolbar")),
-				FALSE);
+		gtk_toggle_action_set_active(
+			GTK_TOGGLE_ACTION(gtk_builder_get_object(priv->builder_actions, "action_view_toolbar")),
+			FALSE);
 	}
 	if (remmina_pref.hide_statusbar)
 	{
-		gtk_toggle_action_set_active(GTK_TOGGLE_ACTION(gtk_action_group_get_action(priv->main_group, "ViewStatusbar")),
-				FALSE);
+		gtk_toggle_action_set_active(
+			GTK_TOGGLE_ACTION(gtk_builder_get_object(priv->builder_actions, "action_view_statusbar")),
+			FALSE);
 	}
 	if (remmina_pref.show_quick_search)
 	{
 		gtk_toggle_action_set_active(
-				GTK_TOGGLE_ACTION(gtk_action_group_get_action(priv->main_group, "ViewQuickSearch")), TRUE);
+			GTK_TOGGLE_ACTION(gtk_builder_get_object(priv->builder_actions, "action_view_quick_search")),
+			TRUE);
 	}
 	if (remmina_pref.hide_quick_connect)
 	{
 		gtk_toggle_action_set_active(
-        GTK_TOGGLE_ACTION(gtk_action_group_get_action(priv->main_group, "ViewQuickConnect")),
-				FALSE);
+			GTK_TOGGLE_ACTION(
+			gtk_builder_get_object(priv->builder_actions, "action_view_quick_connect")),
+			FALSE);
 	}
 	if (remmina_pref.small_toolbutton)
 	{
 		gtk_toggle_action_set_active(
-				GTK_TOGGLE_ACTION(gtk_action_group_get_action(priv->main_group, "ViewSmallToolbutton")), TRUE);
+			GTK_TOGGLE_ACTION(gtk_builder_get_object(priv->builder_actions, "action_view_small_toolbar_buttons")),
+			TRUE);
 	}
 	/* Drag-n-drop support */
 	gtk_drag_dest_set(GTK_WIDGET(remminamain), GTK_DEST_DEFAULT_ALL, remmina_drop_types, 1, GDK_ACTION_COPY);
