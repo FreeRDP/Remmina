@@ -635,7 +635,7 @@ static void remmina_main_action_view_quick_search(GtkToggleAction *action, Remmi
 		gtk_entry_set_text(remminamain->priv->quick_search_entry, "");
 		gtk_widget_show(GTK_WIDGET(remminamain->priv->quick_search_separator));
 		gtk_widget_show(GTK_WIDGET(remminamain->priv->quick_search_item));
-		gtk_widget_grab_focus(remminamain->priv->quick_search_entry);
+		gtk_widget_grab_focus(GTK_WIDGET(remminamain->priv->quick_search_entry));
 	}
 	else
 	{
@@ -851,9 +851,8 @@ static void remmina_main_action_tools_plugins(GtkAction *action, RemminaMain *re
 static void remmina_main_action_tools_addition(GtkAction *action, RemminaMain *remminamain)
 {
 	TRACE_CALL("remmina_main_action_tools_addition");
-	RemminaToolPlugin *plugin;
-
-	plugin = (RemminaToolPlugin *) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_TOOL, g_action_get_name(action));
+	RemminaToolPlugin *plugin = (RemminaToolPlugin*) remmina_plugin_manager_get_plugin(
+		REMMINA_PLUGIN_TYPE_TOOL, gtk_action_get_name(action));
 	if (plugin)
 	{
 		plugin->exec_func();
@@ -1049,7 +1048,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 {
 	TRACE_CALL("remmina_main_init");
 	RemminaMainPriv *priv;
-	GtkWidget *vbox;
+	GtkBox *remmina_main_container;
 	GtkButton *button_quick_connect;
 	GtkWidget *scrolledwindow;
 	GtkBuilder *builder;
@@ -1074,20 +1073,20 @@ static void remmina_main_init(RemminaMain *remminamain)
 	}
 
 	/* Create the main container */
-	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-	gtk_container_add(GTK_CONTAINER(remminamain), vbox);
-	gtk_widget_show(vbox);
+	remmina_main_container = GTK_BOX(gtk_box_new(GTK_ORIENTATION_VERTICAL, 0));
+	gtk_container_add(GTK_CONTAINER(remminamain), GTK_WIDGET(remmina_main_container));
+	gtk_widget_show(GTK_WIDGET(remmina_main_container));
 
 	priv->builder_actions = remmina_public_gtk_builder_new_from_file("remmina_main_actions.glade");
 
 	/* Add the Menubar */
 	remmina_public_gtk_widget_reparent(
 		GTK_WIDGET(gtk_builder_get_object(priv->builder_actions, "menubar_main")),
-		GTK_CONTAINER(vbox));
+		GTK_CONTAINER(remmina_main_container));
 
 	/* Add the Toolbar */
 	priv->toolbar = GTK_WIDGET(gtk_builder_get_object(priv->builder_actions, "toolbar_main"));
-	remmina_public_gtk_widget_reparent(priv->toolbar, GTK_CONTAINER(vbox));
+	remmina_public_gtk_widget_reparent(priv->toolbar, GTK_CONTAINER(remmina_main_container));
 //	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
 
 	/* Add the actions and connect signals */
@@ -1125,7 +1124,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 
 	/* Connect the group accelerators to the GtkWindow */
 	gtk_window_add_accel_group(GTK_WINDOW(remminamain),
-		gtk_builder_get_object(priv->builder_actions, "accelgroup_shortcuts"));
+		GTK_ACCEL_GROUP(gtk_builder_get_object(priv->builder_actions, "accelgroup_shortcuts")));
 
 	/* Add the Quick Search box */
 	builder = remmina_public_gtk_builder_new_from_file("remmina_main_quick_search.glade");
@@ -1145,7 +1144,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 	/* Add a Quick Connection box */
 	builder = remmina_public_gtk_builder_new_from_file("remmina_main_quick_connect.glade");
 	priv->quickconnect_box = GTK_WIDGET(gtk_builder_get_object(builder, "box_quick_connect"));
-	remmina_public_gtk_widget_reparent(priv->quickconnect_box, GTK_CONTAINER(vbox));
+	remmina_public_gtk_widget_reparent(priv->quickconnect_box, GTK_CONTAINER(remmina_main_container));
 	priv->quickconnect_server = GTK_WIDGET(gtk_builder_get_object(builder, "entry_quick_connect_server"));
 	priv->quickconnect_protocol = GTK_WIDGET(gtk_builder_get_object(builder, "combo_quick_connect_protocol"));
 	button_quick_connect = GTK_BUTTON(gtk_builder_get_object(builder, "button_quick_connect"));
@@ -1160,8 +1159,8 @@ static void remmina_main_init(RemminaMain *remminamain)
 
 	/* Add the ScrolledWindow */
 	scrolledwindow = GTK_WIDGET(gtk_builder_get_object(remminamain->priv->builder_models, "scrolled_files_list"));
-	remmina_public_gtk_widget_reparent(scrolledwindow, GTK_CONTAINER(vbox));
-	gtk_box_set_child_packing(GTK_BOX(vbox), scrolledwindow, TRUE, TRUE, 0, GTK_PACK_START);
+	remmina_public_gtk_widget_reparent(scrolledwindow, GTK_CONTAINER(remmina_main_container));
+	gtk_box_set_child_packing(remmina_main_container, scrolledwindow, TRUE, TRUE, 0, GTK_PACK_START);
 
 	/* Add the TreeView for the files list */
 	priv->file_list = GTK_WIDGET(gtk_builder_get_object(remminamain->priv->builder_models, "tree_files_list"));
@@ -1176,7 +1175,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 	/* Add a StatusBar for selected connection or items count */
 	builder = remmina_public_gtk_builder_new_from_file("remmina_main_statusbar.glade");
 	priv->statusbar = GTK_WIDGET(gtk_builder_get_object(builder, "statusbar_main"));
-	remmina_public_gtk_widget_reparent(priv->statusbar, GTK_CONTAINER(vbox));
+	remmina_public_gtk_widget_reparent(priv->statusbar, GTK_CONTAINER(remmina_main_container));
 	g_object_unref(G_OBJECT(builder));
 
 	/* Load the files list */
