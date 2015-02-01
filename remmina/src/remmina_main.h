@@ -65,22 +65,22 @@ typedef struct _RemminaMain
 
 struct _RemminaMainPriv
 {
-	GtkWidget *file_list;
+	GtkTreeView *file_list;
 	GtkBuilder *builder_models;
 	GtkBuilder *builder_actions;
 	GtkTreeModel *file_model;
 	GtkTreeModel *file_model_filter;
 	GtkTreeModel *file_model_sort;
-	GtkWidget *toolbar;
-	GtkWidget *statusbar;
+	GtkToolbar *toolbar;
+	GtkStatusbar *statusbar;
 
 	GtkToolItem *quick_search_separator;
 	GtkToolItem *quick_search_item;
 	GtkEntry *quick_search_entry;
 
-	GtkWidget *quickconnect_box;
-	GtkWidget *quickconnect_protocol;
-	GtkWidget *quickconnect_server;
+	GtkBox *quickconnect_box;
+	GtkComboBoxText *quickconnect_protocol;
+	GtkEntry *quickconnect_server;
 
 	GtkTreeViewColumn *group_column;
 
