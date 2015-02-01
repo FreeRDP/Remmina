@@ -372,7 +372,7 @@ static gboolean remmina_main_filter_visible_func(GtkTreeModel *model, GtkTreeIte
 	if (!remmina_pref.show_quick_search)
 		return TRUE;
 
-	text = g_ascii_strdown(gtk_entry_get_text(GTK_ENTRY(remminamain->priv->quick_search_entry)), -1);
+	text = g_ascii_strdown(gtk_entry_get_text(remminamain->priv->quick_search_entry), -1);
 	if (text && text[0])
 	{
 		gtk_tree_model_get(model, iter, PROTOCOL_COLUMN, &protocol, NAME_COLUMN, &name, GROUP_COLUMN, &group,
@@ -632,7 +632,7 @@ static void remmina_main_action_view_quick_search(GtkToggleAction *action, Remmi
 	toggled = gtk_toggle_action_get_active(action);
 	if (toggled)
 	{
-		gtk_entry_set_text(GTK_ENTRY(remminamain->priv->quick_search_entry), "");
+		gtk_entry_set_text(remminamain->priv->quick_search_entry, "");
 		gtk_widget_show(GTK_WIDGET(remminamain->priv->quick_search_separator));
 		gtk_widget_show(GTK_WIDGET(remminamain->priv->quick_search_item));
 		gtk_widget_grab_focus(remminamain->priv->quick_search_entry);
@@ -1109,10 +1109,12 @@ static void remmina_main_init(RemminaMain *remminamain)
 	gtk_widget_show(vbox);
 
 	priv->builder_actions = remmina_public_gtk_builder_new_from_file("remmina_main_actions.glade");
+
 	/* Add the Menubar */
 	remmina_public_gtk_widget_reparent(
 		GTK_WIDGET(gtk_builder_get_object(priv->builder_actions, "menubar_main")),
 		GTK_CONTAINER(vbox));
+
 	/* Add the Toolbar */
 	priv->toolbar = GTK_WIDGET(gtk_builder_get_object(priv->builder_actions, "toolbar_main"));
 	remmina_public_gtk_widget_reparent(priv->toolbar, GTK_CONTAINER(vbox));
@@ -1151,6 +1153,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 			G_OBJECT(gtk_builder_get_object(priv->builder_actions, action_maps[i].action_name)),
 			"activate", G_CALLBACK(action_maps[i].callback), remminamain);
 	};
+
 	/* Connect the group accelerators to the GtkWindow */
 	gtk_window_add_accel_group(GTK_WINDOW(remminamain),
 		gtk_builder_get_object(priv->builder_actions, "accelgroup_shortcuts"));
@@ -1170,10 +1173,12 @@ static void remmina_main_init(RemminaMain *remminamain)
 	/* Load the GtkBuilder for the TreeModels and leave it in memory as it's used
 	 * by the TreeModels and it will be needed again during the view mode change */
 	remminamain->priv->builder_models = remmina_public_gtk_builder_new_from_file("remmina_main_files_list.glade");
+
 	/* Add the ScrolledWindow */
 	scrolledwindow = GTK_WIDGET(gtk_builder_get_object(remminamain->priv->builder_models, "scrolled_files_list"));
 	remmina_public_gtk_widget_reparent(scrolledwindow, GTK_CONTAINER(vbox));
 	gtk_box_set_child_packing(GTK_BOX(vbox), scrolledwindow, TRUE, TRUE, 0, GTK_PACK_START);
+
 	/* Add the TreeView for the files list */
 	priv->file_list = GTK_WIDGET(gtk_builder_get_object(remminamain->priv->builder_models, "tree_files_list"));
 	gtk_tree_selection_set_select_function(gtk_tree_view_get_selection(GTK_TREE_VIEW(priv->file_list)), remmina_main_selection_func,
@@ -1183,6 +1188,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 	/* Handle signal for double click on the row */
 	g_signal_connect(G_OBJECT(priv->file_list), "row-activated",
 		G_CALLBACK(remmina_main_file_list_on_row_activated), remminamain);
+
 	/* Add a StatusBar for selected connection or items count */
 	builder = remmina_public_gtk_builder_new_from_file("remmina_main_statusbar.glade");
 	priv->statusbar = GTK_WIDGET(gtk_builder_get_object(builder, "statusbar_main"));
@@ -1195,8 +1201,8 @@ static void remmina_main_init(RemminaMain *remminamain)
 	/* Load the preferences */
 	if (remmina_pref.hide_toolbar)
 	{
-		gtk_toggle_action_set_active(
-			GTK_TOGGLE_ACTION(gtk_builder_get_object(priv->builder_actions, "action_view_toolbar")),
+		gtk_toggle_action_set_active(GTK_TOGGLE_ACTION(
+			gtk_builder_get_object(priv->builder_actions, "action_view_toolbar")),
 			FALSE);
 	}
 	if (remmina_pref.hide_statusbar)
