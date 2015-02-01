@@ -683,11 +683,11 @@ static void remmina_main_action_view_quick_connect(GtkToggleAction *action, Remm
 	toggled = gtk_toggle_action_get_active(action);
 	if (toggled)
 	{
-		gtk_widget_show(GTK_WIDGET(remminamain->priv->quickconnect_box));
+		gtk_widget_show(remminamain->priv->quickconnect_box);
 	}
 	else
 	{
-		gtk_widget_hide(GTK_WIDGET(remminamain->priv->quickconnect_box));
+		gtk_widget_hide(remminamain->priv->quickconnect_box);
 	}
 	if (remminamain->priv->initialized)
 	{
@@ -1108,8 +1108,7 @@ static void remmina_main_create_quick_search(RemminaMain *remminamain)
 {
 	TRACE_CALL("remmina_main_create_quick_search");
 	GtkWidget *widget;
-	GValue val =
-	{ 0 };
+	GValue val = { 0 };
 
 	remminamain->priv->quick_search_separator = gtk_separator_tool_item_new();
 	gtk_toolbar_insert(GTK_TOOLBAR(remminamain->priv->toolbar), remminamain->priv->quick_search_separator, -1);
@@ -1190,8 +1189,8 @@ static gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWi
 		gtk_widget_hide(widget);
 		return TRUE;
 	}
-	return FALSE;
 #endif
+	return FALSE;
 }
 
 
@@ -1206,7 +1205,6 @@ static void remmina_main_init(RemminaMain *remminamain)
 	GtkUIManager *uimanager;
 	GtkActionGroup *action_group;
 	GtkWidget *scrolledwindow;
-	GtkCellRenderer *renderer;
 	GtkTreeViewColumn *column;
 	GError *error;
 	GtkBuilder *builder;
@@ -1230,11 +1228,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 	}
 
 	/* Create the main container */
-#if GTK_VERSION == 3
 	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-#elif GTK_VERSION == 2
-	vbox = gtk_vbox_new(FALSE, 0);
-#endif
 	gtk_container_add(GTK_CONTAINER(remminamain), vbox);
 	gtk_widget_show(vbox);
 
@@ -1360,7 +1354,6 @@ static void remmina_main_init(RemminaMain *remminamain)
 		gtk_toggle_action_set_active(
 				GTK_TOGGLE_ACTION(gtk_action_group_get_action(priv->main_group, "ViewSmallToolbutton")), TRUE);
 	}
-
 	/* Drag-n-drop support */
 	gtk_drag_dest_set(GTK_WIDGET(remminamain), GTK_DEST_DEFAULT_ALL, remmina_drop_types, 1, GDK_ACTION_COPY);
 	g_signal_connect(G_OBJECT(remminamain), "drag-data-received", G_CALLBACK(remmina_main_on_drag_data_received), NULL);
