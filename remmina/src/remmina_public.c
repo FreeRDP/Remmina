@@ -582,7 +582,12 @@ GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename)
 {
 	TRACE_CALL("remmina_public_gtk_builder_new_from_file")
 	gchar *ui_path = g_strconcat(REMMINA_UIDIR, G_DIR_SEPARATOR_S, filename, NULL);
+#if GTK_CHECK_VERSION(3, 10, 0)
 	GtkBuilder *builder = gtk_builder_new_from_file(ui_path);
+#else
+	GtkBuilder *builder = gtk_builder_new();
+	gtk_builder_add_from_file(builder, ui_path, NULL);
+#endif
 	g_free(ui_path);
 	return builder;
 }
