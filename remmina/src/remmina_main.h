@@ -76,7 +76,7 @@ struct _RemminaMainPriv
 
 	GtkToolItem *quick_search_separator;
 	GtkToolItem *quick_search_item;
-	GtkWidget *quick_search_entry;
+	GtkEntry *quick_search_entry;
 
 	GtkWidget *quickconnect_box;
 	GtkWidget *quickconnect_protocol;
