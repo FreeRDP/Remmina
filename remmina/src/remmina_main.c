@@ -432,8 +432,6 @@ static void remmina_main_select_file(RemminaMain *remminamain, const gchar *file
 static void remmina_main_load_files(RemminaMain *remminamain, gboolean refresh)
 {
 	TRACE_CALL("remmina_main_load_files");
-	GtkTreeModel *filter;
-	GtkTreeModel *sort;
 	gint items_count;
 	gchar buf[200];
 	guint context_id;
@@ -445,7 +443,6 @@ static void remmina_main_load_files(RemminaMain *remminamain, gboolean refresh)
 
 	switch (remmina_pref.view_file_mode)
 	{
-
 		case REMMINA_VIEW_FILE_TREE:
 			/* Hide the Group column in the tree view mode */
 			gtk_tree_view_column_set_visible(GTK_TREE_VIEW_COLUMN(gtk_builder_get_object(
@@ -475,19 +472,18 @@ static void remmina_main_load_files(RemminaMain *remminamain, gboolean refresh)
 			items_count = remmina_file_manager_iterate(remmina_main_load_file_list_callback, remminamain);
 			break;
 	}
-
-	filter = gtk_tree_model_filter_new(remminamain->priv->file_model, NULL);
-	gtk_tree_model_filter_set_visible_func(GTK_TREE_MODEL_FILTER(filter),
+	/* Apply sorted filtered model to the TreeView */
+	remminamain->priv->file_model_filter = gtk_tree_model_filter_new(remminamain->priv->file_model, NULL);
+	gtk_tree_model_filter_set_visible_func(GTK_TREE_MODEL_FILTER(remminamain->priv->file_model_filter),
 			(GtkTreeModelFilterVisibleFunc) remmina_main_filter_visible_func, remminamain, NULL);
-	remminamain->priv->file_model_filter = filter;
-
-	sort = gtk_tree_model_sort_new_with_model(filter);
-	remminamain->priv->file_model_sort = sort;
-
-	gtk_tree_view_set_model(GTK_TREE_VIEW(remminamain->priv->file_list), sort);
-	gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(sort), remmina_pref.main_sort_column_id,
-			remmina_pref.main_sort_order);
-	g_signal_connect(G_OBJECT(sort), "sort-column-changed", G_CALLBACK(remmina_main_file_model_on_sort), remminamain);
+	remminamain->priv->file_model_sort = gtk_tree_model_sort_new_with_model(remminamain->priv->file_model_filter);
+	gtk_tree_view_set_model(GTK_TREE_VIEW(remminamain->priv->file_list), remminamain->priv->file_model_sort);
+	gtk_tree_sortable_set_sort_column_id(
+		GTK_TREE_SORTABLE(remminamain->priv->file_model_sort),
+		remmina_pref.main_sort_column_id,
+		remmina_pref.main_sort_order);
+	g_signal_connect(G_OBJECT(remminamain->priv->file_model_sort), "sort-column-changed",
+		G_CALLBACK(remmina_main_file_model_on_sort), remminamain);
 	remmina_main_expand_group(remminamain);
 	/* Select the file previously selected */
 	if (remminamain->priv->selected_filename)
