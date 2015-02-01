@@ -1083,6 +1083,7 @@ static void remmina_main_init(RemminaMain *remminamain)
 	GtkButton *button_quick_connect;
 	GtkWidget *scrolledwindow;
 	GtkBuilder *builder;
+	gint i;
 
 	priv = g_new0(RemminaMainPriv, 1);
 	remminamain->priv = priv;
@@ -1119,72 +1120,37 @@ static void remmina_main_init(RemminaMain *remminamain)
 	remmina_main_create_quick_search(remminamain);
 
 	/* Add the actions and connect signals */
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_connection_connect")),
-		"activate", G_CALLBACK(remmina_main_action_connection_connect), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_connection_new")),
-		"activate", G_CALLBACK(remmina_main_action_connection_new), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_connection_edit")),
-		"activate", G_CALLBACK(remmina_main_action_connection_edit), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_connection_copy")),
-		"activate", G_CALLBACK(remmina_main_action_connection_copy), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_connection_delete")),
-		"activate", G_CALLBACK(remmina_main_action_connection_delete), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_application_preferences")),
-		"activate", G_CALLBACK(remmina_main_action_edit_preferences), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_application_about")),
-		"activate", G_CALLBACK(remmina_main_action_help_about), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_application_plugins")),
-		"activate", G_CALLBACK(remmina_main_action_tools_plugins), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_application_quit")),
-		"activate", G_CALLBACK(remmina_main_action_connection_close), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_view_toolbar")),
-		"toggled", G_CALLBACK(remmina_main_action_view_toolbar), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_view_statusbar")),
-		"toggled", G_CALLBACK(remmina_main_action_view_statusbar), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_view_quick_search")),
-		"toggled", G_CALLBACK(remmina_main_action_view_quick_search), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_view_quick_connect")),
-		"toggled", G_CALLBACK(remmina_main_action_view_quick_connect), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_view_small_toolbar_buttons")),
-		"toggled", G_CALLBACK(remmina_main_action_view_small_toolbutton), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_view_mode_list")),
-		"toggled", G_CALLBACK(remmina_main_action_view_file_mode), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_view_mode_tree")),
-		"toggled", G_CALLBACK(remmina_main_action_view_file_mode), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_tools_import")),
-		"activate", G_CALLBACK(remmina_main_action_tools_import), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_tools_export")),
-		"activate", G_CALLBACK(remmina_main_action_tools_export), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_tools_externaltools")),
-		"activate", G_CALLBACK(remmina_main_action_connection_external_tools), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_help_homepage")),
-		"activate", G_CALLBACK(remmina_main_action_help_homepage), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_help_wiki")),
-		"activate", G_CALLBACK(remmina_main_action_help_wiki), remminamain);
-	g_signal_connect(
-		G_OBJECT(gtk_builder_get_object(priv->builder_actions, "action_help_debug")),
-		"activate", G_CALLBACK(remmina_main_action_help_debug), remminamain);
+	ActionsCallbackMap action_maps[] = {
+		{ "action_connection_connect", remmina_main_action_connection_connect },
+		{ "action_connection_new", remmina_main_action_connection_new },
+		{ "action_connection_edit", remmina_main_action_connection_edit },
+		{ "action_connection_copy", remmina_main_action_connection_copy },
+		{ "action_connection_delete", remmina_main_action_connection_delete },
+		{ "action_application_preferences", remmina_main_action_edit_preferences },
+		{ "action_application_about", remmina_main_action_help_about },
+		{ "action_application_plugins", remmina_main_action_tools_plugins },
+		{ "action_application_quit", remmina_main_action_connection_close },
+		{ "action_view_toolbar", remmina_main_action_view_toolbar },
+		{ "action_view_statusbar", remmina_main_action_view_statusbar },
+		{ "action_view_quick_search", remmina_main_action_view_quick_search },
+		{ "action_view_quick_connect", remmina_main_action_view_quick_connect },
+		{ "action_view_small_toolbar_buttons", remmina_main_action_view_small_toolbutton },
+		{ "action_view_mode_list", remmina_main_action_view_file_mode },
+		{ "action_view_mode_tree", remmina_main_action_view_file_mode },
+		{ "action_tools_import", remmina_main_action_tools_import },
+		{ "action_tools_export", remmina_main_action_tools_export },
+		{ "action_tools_externaltools", remmina_main_action_connection_external_tools },
+		{ "action_help_homepage", remmina_main_action_help_homepage },
+		{ "action_help_wiki", remmina_main_action_help_wiki },
+		{ "action_help_debug", remmina_main_action_help_debug },
+		{ NULL, NULL }
+	};
+	for (i = 0; action_maps[i].action_name; i++)
+	{
+		g_signal_connect(
+			G_OBJECT(gtk_builder_get_object(priv->builder_actions, action_maps[i].action_name)),
+			"activate", G_CALLBACK(action_maps[i].callback), remminamain);
+	};
 	/* Connect the group accelerators to the GtkWindow */
 	gtk_window_add_accel_group(GTK_WINDOW(remminamain),
 		gtk_builder_get_object(priv->builder_actions, "accelgroup_shortcuts"));

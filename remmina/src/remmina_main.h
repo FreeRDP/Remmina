@@ -38,6 +38,13 @@
 #ifndef __REMMINAMAIN_H__
 #define __REMMINAMAIN_H__
 
+/* Defines the association between an Action and its callback for activation */
+typedef struct _ActionsCallbackMap
+{
+	gchar *action_name;
+	gpointer callback;
+} ActionsCallbackMap;
+
 G_BEGIN_DECLS
 
 #define REMMINA_TYPE_MAIN               (remmina_main_get_type ())
