@@ -152,8 +152,6 @@ static void remmina_main_clear_selection_data(RemminaMain *remminamain)
 	g_free(remminamain->priv->selected_name);
 	remminamain->priv->selected_filename = NULL;
 	remminamain->priv->selected_name = NULL;
-
-	// DEPRECATED gtk_action_group_set_sensitive(remminamain->priv->file_sensitive_group, FALSE);
 }
 
 static gboolean remmina_main_selection_func(GtkTreeSelection *selection, GtkTreeModel *model, GtkTreePath *path,
@@ -181,7 +179,6 @@ static gboolean remmina_main_selection_func(GtkTreeSelection *selection, GtkTree
 	gtk_statusbar_pop(GTK_STATUSBAR(remminamain->priv->statusbar), context_id);
 	if (remminamain->priv->selected_filename)
 	{
-		// DEPRECATED gtk_action_group_set_sensitive(remminamain->priv->file_sensitive_group, TRUE);
 		g_snprintf(buf, sizeof(buf), "%s (%s)", remminamain->priv->selected_name, remminamain->priv->selected_filename);
 		gtk_statusbar_push(GTK_STATUSBAR(remminamain->priv->statusbar), context_id, buf);
 	}
