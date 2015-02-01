@@ -984,36 +984,6 @@ static void remmina_main_quick_search_on_changed(GtkEditable *editable, RemminaM
 	gtk_tree_view_expand_all(GTK_TREE_VIEW(remminamain->priv->file_list));
 }
 
-static void remmina_main_create_quick_search(RemminaMain *remminamain)
-{
-	TRACE_CALL("remmina_main_create_quick_search");
-	GtkWidget *widget;
-	GValue val = { 0 };
-
-	remminamain->priv->quick_search_separator = gtk_separator_tool_item_new();
-	gtk_toolbar_insert(GTK_TOOLBAR(remminamain->priv->toolbar), remminamain->priv->quick_search_separator, -1);
-
-	remminamain->priv->quick_search_item = gtk_tool_item_new();
-	gtk_toolbar_insert(GTK_TOOLBAR(remminamain->priv->toolbar), remminamain->priv->quick_search_item, -1);
-
-	widget = gtk_entry_new();
-	gtk_widget_show(widget);
-	gtk_entry_set_icon_from_stock(GTK_ENTRY(widget), GTK_ENTRY_ICON_PRIMARY, "gtk-find");
-	gtk_entry_set_icon_from_stock(GTK_ENTRY(widget), GTK_ENTRY_ICON_SECONDARY, "gtk-clear");
-	gtk_entry_set_width_chars(GTK_ENTRY(widget), 25);
-	gtk_container_add(GTK_CONTAINER(remminamain->priv->quick_search_item), widget);
-
-	g_value_init(&val, G_TYPE_BOOLEAN);
-	g_value_set_boolean(&val, FALSE);
-	g_object_set_property(G_OBJECT(widget), "primary-icon-activatable", &val);
-	g_value_unset(&val);
-
-	g_signal_connect(G_OBJECT(widget), "icon-press", G_CALLBACK(remmina_main_quick_search_on_icon_press), remminamain);
-	g_signal_connect(G_OBJECT(widget), "changed", G_CALLBACK(remmina_main_quick_search_on_changed), remminamain);
-
-	remminamain->priv->quick_search_entry = widget;
-}
-
 static void remmina_main_on_drag_data_received(RemminaMain *remminamain, GdkDragContext *drag_context, gint x, gint y,
 		GtkSelectionData *data, guint info, guint time, gpointer user_data)
 {
@@ -1119,7 +1089,6 @@ static void remmina_main_init(RemminaMain *remminamain)
 	priv->toolbar = GTK_WIDGET(gtk_builder_get_object(priv->builder_actions, "toolbar_main"));
 	remmina_public_gtk_widget_reparent(priv->toolbar, GTK_CONTAINER(vbox));
 //	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
-	remmina_main_create_quick_search(remminamain);
 
 	/* Add the actions and connect signals */
 	ActionsCallbackMap action_maps[] = {
@@ -1157,6 +1126,21 @@ static void remmina_main_init(RemminaMain *remminamain)
 	/* Connect the group accelerators to the GtkWindow */
 	gtk_window_add_accel_group(GTK_WINDOW(remminamain),
 		gtk_builder_get_object(priv->builder_actions, "accelgroup_shortcuts"));
+
+	/* Add the Quick Search box */
+	builder = remmina_public_gtk_builder_new_from_file("remmina_main_quick_search.glade");
+	remminamain->priv->quick_search_entry = GTK_ENTRY(
+		gtk_builder_get_object(builder, "entry_quick_search"));
+	remminamain->priv->quick_search_separator = GTK_TOOL_ITEM(
+		gtk_builder_get_object(remminamain->priv->builder_actions, "toolbutton_separator_quick_search"));
+	remminamain->priv->quick_search_item = GTK_TOOL_ITEM(
+		gtk_builder_get_object(remminamain->priv->builder_actions, "toolbutton_quick_search"));
+	remmina_public_gtk_widget_reparent(GTK_WIDGET(gtk_builder_get_object(builder, "box_quick_search")),
+		GTK_CONTAINER(remminamain->priv->quick_search_item));
+	g_signal_connect(G_OBJECT(remminamain->priv->quick_search_entry), "icon-press",
+		G_CALLBACK(remmina_main_quick_search_on_icon_press), remminamain);
+	g_signal_connect(G_OBJECT(remminamain->priv->quick_search_entry), "changed",
+		G_CALLBACK(remmina_main_quick_search_on_changed), remminamain);
 
 	/* Add a Quick Connection box */
 	builder = remmina_public_gtk_builder_new_from_file("remmina_main_quick_connect.glade");
