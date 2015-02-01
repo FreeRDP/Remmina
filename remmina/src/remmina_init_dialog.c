@@ -136,7 +136,6 @@ static void remmina_init_dialog_connecting(RemminaInitDialog *dialog)
 {
 	TRACE_CALL("remmina_init_dialog_connecting");
 	gtk_label_set_text(GTK_LABEL(dialog->status_label), (dialog->status ? dialog->status : dialog->title));
-	// DEPRECATED gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_INFO, GTK_ICON_SIZE_DIALOG);
 	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-information", GTK_ICON_SIZE_DIALOG);
 	gtk_dialog_set_response_sensitive(GTK_DIALOG(dialog), GTK_RESPONSE_OK, FALSE);
 
@@ -353,7 +352,6 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 	gtk_grid_set_column_homogeneous (GTK_GRID(grid), TRUE);
 
 	/* Icon */
-	// DEPRECATED gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
 	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-password", GTK_ICON_SIZE_DIALOG);
 
 	/* Entries */
@@ -484,7 +482,6 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 	//gtk_grid_set_column_homogeneous (GTK_GRID(grid), TRUE);
 
 	/* Icon */
-	// DEPRECATED gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
 	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-password", GTK_ICON_SIZE_DIALOG);
 
 	/* Entries */
@@ -580,7 +577,6 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 	gtk_grid_set_column_spacing(GTK_GRID(grid), 8);
 
 	/* Icon */
-	// DEPRECATED gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
 	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-password", GTK_ICON_SIZE_DIALOG);
 
 	/* Entries */
@@ -726,7 +722,6 @@ gint remmina_init_dialog_authx509(RemminaInitDialog *dialog, const gchar *cacert
 	gtk_grid_set_column_spacing(GTK_GRID(grid), 8);
 
 	/* Icon */
-	// DEPRECATED gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_AUTHENTICATION, GTK_ICON_SIZE_DIALOG);
 	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-password", GTK_ICON_SIZE_DIALOG);
 
 	/* Buttons for choosing the certificates */
@@ -793,7 +788,6 @@ gint remmina_init_dialog_serverkey_confirm(RemminaInitDialog *dialog, const gcha
 	gtk_widget_show(vbox);
 
 	/* Icon */
-	// DEPRECATED gtk_image_set_from_stock(GTK_IMAGE(dialog->image), GTK_STOCK_DIALOG_WARNING, GTK_ICON_SIZE_DIALOG);
 	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-warning", GTK_ICON_SIZE_DIALOG);
 
 	/* Entries */
