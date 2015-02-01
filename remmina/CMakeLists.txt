@@ -44,8 +44,6 @@ set(REMMINA_SRCS
 	src/remmina_avahi.c
 	src/remmina_avahi.h
 	src/remmina.c
-	src/remmina_chain_button.c
-	src/remmina_chain_button.h
 	src/remmina_chat_window.c
 	src/remmina_chat_window.h
 	src/remmina_connection_window.c
