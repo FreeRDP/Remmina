@@ -880,37 +880,16 @@ static gboolean remmina_main_quickconnect(RemminaMain *remminamain)
 {
 	TRACE_CALL("remmina_main_quickconnect");
 	RemminaFile* remminafile;
-	gint index;
 	gchar* server;
-	gchar* protocol;
 
 	remminafile = remmina_file_new();
 	server = strdup(gtk_entry_get_text(GTK_ENTRY(remminamain->priv->quickconnect_server)));
-	index = gtk_combo_box_get_active(GTK_COMBO_BOX(remminamain->priv->quickconnect_protocol));
-
-	switch (index)
-	{
-		case 0:
-			protocol = "RDP";
-			break;
-		case 1:
-			protocol = "VNC";
-			break;
-		case 2:
-			protocol = "NX";
-			break;
-		case 3:
-			protocol = "SSH";
-			break;
-		default:
-			protocol = "RDP";
-			break;
-	}
 
 	remmina_file_set_string(remminafile, "sound", "off");
 	remmina_file_set_string(remminafile, "server", server);
 	remmina_file_set_string(remminafile, "name", server);
-	remmina_file_set_string(remminafile, "protocol", protocol);
+	remmina_file_set_string(remminafile, "protocol", 
+		gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(remminamain->priv->quickconnect_protocol)));
 
 	remmina_connection_window_open_from_file(remminafile);
 
