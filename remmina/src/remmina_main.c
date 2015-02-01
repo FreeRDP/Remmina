@@ -841,6 +841,7 @@ static void remmina_main_action_tools_plugins(GtkAction *action, RemminaMain *re
 	remmina_plugin_manager_show(GTK_WINDOW(remminamain));
 }
 
+/* Activate a GtkAction from a RemminaToolPlugin */
 static void remmina_main_action_tools_addition(GtkAction *action, RemminaMain *remminamain)
 {
 	TRACE_CALL("remmina_main_action_tools_addition");
@@ -974,23 +975,20 @@ static void remmina_main_on_drag_data_received(RemminaMain *remminamain, GdkDrag
 	remmina_main_import_file_list(remminamain, files);
 }
 
+/* Add a new menuitem to the Tools menu */
 static gboolean remmina_main_add_tool_plugin(gchar *name, RemminaPlugin *plugin, gpointer data)
 {
 	TRACE_CALL("remmina_main_add_tool_plugin");
-/*
 	RemminaMain *remminamain = REMMINA_MAIN(data);
-	guint merge_id;
-	GtkAction *action;
+	GtkWidget *menuitem = gtk_menu_item_new_with_label(plugin->name);
+	GtkAction *action = gtk_action_new(name, plugin->description, NULL, NULL);
 
-	merge_id = gtk_ui_manager_new_merge_id(remminamain->priv->uimanager);
-	action = gtk_action_new(name, plugin->description, NULL, NULL);
-	gtk_action_group_add_action(remminamain->priv->main_view_group, action);
+	gtk_widget_show(menuitem);
+	gtk_menu_shell_append(GTK_MENU_SHELL(gtk_builder_get_object(remminamain->priv->builder_actions, "menu_tools")), menuitem);
+	gtk_activatable_set_related_action(GTK_ACTIVATABLE(menuitem), action);
 	g_signal_connect(G_OBJECT(action), "activate", G_CALLBACK(remmina_main_action_tools_addition), remminamain);
 	g_object_unref(action);
 
-	gtk_ui_manager_add_ui(remminamain->priv->uimanager, merge_id, "/MenuBar/ToolsMenu/ToolsAdditions", name, name,
-			GTK_UI_MANAGER_MENUITEM, FALSE);
-*/
 	return FALSE;
 }
 
@@ -1056,11 +1054,13 @@ static void remmina_main_init(RemminaMain *remminamain)
 		GTK_WIDGET(gtk_builder_get_object(priv->builder_actions, "menubar_main")),
 		GTK_CONTAINER(remmina_main_container));
 
+	/* Add a GtkMenuItem to the Tools menu for each plugin of type REMMINA_PLUGIN_TYPE_TOOL */
+	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
+
 	/* Add the Toolbar */
 	priv->toolbar = GTK_TOOLBAR(gtk_builder_get_object(priv->builder_actions, "toolbar_main"));
 	remmina_public_gtk_widget_reparent(GTK_WIDGET(priv->toolbar), GTK_CONTAINER(remmina_main_container));
-//	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
-
+	
 	/* Add the actions and connect signals */
 	ActionsCallbackMap action_maps[] = {
 		{ "action_connection_connect", remmina_main_action_connection_connect },
