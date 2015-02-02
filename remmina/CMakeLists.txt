@@ -170,6 +170,10 @@ endif()
 if(WITH_TRANSLATIONS)
 	add_subdirectory(po)
 endif()
+
+set(REMMINA_EXTERNAL_TOOLS_DIR "${CMAKE_INSTALL_FULL_DATADIR}/remmina/external_tools")
+add_definitions( -DREMMINA_EXTERNAL_TOOLS_DIR="${REMMINA_EXTERNAL_TOOLS_DIR}" )
+
 add_subdirectory(icons)
 add_subdirectory(desktop)
 add_subdirectory(external_tools)
@@ -180,3 +184,5 @@ install(DIRECTORY include/remmina/ DESTINATION include/remmina FILES_MATCHING PA
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina.pc.in ${CMAKE_CURRENT_BINARY_DIR}/remmina.pc @ONLY)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+
+
