@@ -9,3 +9,9 @@ pause ()
  dd count=1 2>/dev/null
  stty $OLDCONFIG
 }
+
+# set terminal title for gnome-terminal and many others
+settitle() {
+  echo -ne "\033]0;${remmina_term_title}\007"
+}
+
