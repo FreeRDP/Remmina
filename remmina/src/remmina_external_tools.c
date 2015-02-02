@@ -45,7 +45,10 @@ typedef struct _RemminaExternalTools
 {
 	gchar remminafilename[MAX_PATH_LEN];
 	gchar scriptfilename[MAX_PATH_LEN];
+	gchar scriptshortname[MAX_PATH_LEN];
 } RemminaExternalTools;
+
+static gboolean remmina_external_tools_launcher(const gchar* filename, const gchar* scriptname, const gchar* shortname);
 
 void view_popup_menu_onDoSomething (GtkWidget *menuitem, gpointer userdata)
 {
@@ -55,7 +58,7 @@ void view_popup_menu_onDoSomething (GtkWidget *menuitem, gpointer userdata)
 	//gchar* filename_remmina = ret->remminafilename;
 	//gchar* filename_script = ret->scriptfilename;
 
-	remmina_external_tools_launcher(ret->remminafilename,ret->scriptfilename);
+	remmina_external_tools_launcher(ret->remminafilename, ret->scriptfilename, ret->scriptshortname);
 }
 
 gboolean remmina_external_tools_from_filename(RemminaMain *remminamain,gchar* remminafilename)
@@ -70,7 +73,7 @@ gboolean remmina_external_tools_from_filename(RemminaMain *remminamain,gchar* re
 	GNode* root;
 	root = g_node_new(NULL);
 
-	g_snprintf(dirname, MAX_PATH_LEN, "%s/.remmina/external_tools", g_get_home_dir());
+	strcpy(dirname, REMMINA_EXTERNAL_TOOLS_DIR);
 	dir = g_dir_open(dirname, 0, NULL);
 
 	if (dir == NULL)
@@ -85,6 +88,7 @@ gboolean remmina_external_tools_from_filename(RemminaMain *remminamain,gchar* re
 		ret = (RemminaExternalTools *)malloc(sizeof(RemminaExternalTools));
 		strcpy(ret->remminafilename,remminafilename);
 		strcpy(ret->scriptfilename,filename);
+		strcpy(ret->scriptshortname,name);
 		menuitem = gtk_menu_item_new_with_label(strndup(name + 8, strlen(name) -8));
 		g_signal_connect(menuitem, "activate", (GCallback) view_popup_menu_onDoSomething, ret);
 
@@ -105,12 +109,16 @@ gboolean remmina_external_tools_from_filename(RemminaMain *remminamain,gchar* re
 	return TRUE;
 }
 
-gboolean remmina_external_tools_launcher(const gchar* filename,const gchar* scriptname)
+static gboolean remmina_external_tools_launcher(const gchar* filename, const gchar* scriptname, const gchar* shortname)
 {
 	TRACE_CALL("remmina_external_tools_launcher");
 	RemminaFile *remminafile;
+	const char *env_format = "%s=%s";
+	char *env;
+	size_t envstrlen;
 	gchar launcher[MAX_PATH_LEN];
-	g_snprintf(launcher, MAX_PATH_LEN, "%s/.remmina/external_tools/launcher.sh", g_get_home_dir());
+
+	g_snprintf(launcher, MAX_PATH_LEN, "%s/launcher.sh", REMMINA_EXTERNAL_TOOLS_DIR);
 
 	remminafile = remmina_file_load(filename);
 	GHashTableIter iter;
@@ -118,30 +126,47 @@ gboolean remmina_external_tools_launcher(const gchar* filename,const gchar* scri
 	g_hash_table_iter_init(&iter, remminafile->settings);
 	while (g_hash_table_iter_next(&iter, (gpointer*) &key, (gpointer*) &value))
 	{
-		const char *env_format = "%s=%s";
-		const size_t len = strlen(key) +strlen(value) + strlen(env_format);
-		char *env = (char *) malloc(len);
+		envstrlen = strlen(key) +strlen(value) + strlen(env_format) + 1;
+		env = (char *) malloc(envstrlen);
 		if (env == NULL)
 		{
 			return -1;
 		}
 
-		int retval = snprintf(env, len, env_format, key,value);
-		if (retval < 0 || (size_t) retval >= len)
+		int retval = snprintf(env, envstrlen, env_format, key,value);
+		if (retval > 0 && (size_t) retval <= envstrlen)
 		{
-			/* Handle error */
-		}
-
-		if (putenv(env) != 0)
-		{
-			free(env);
+			if (putenv(env) !=0)
+			{
+				/* If putenv fails, we must free the unused space */
+				free(env);
+			}
 		}
 	}
+	/* Adds the window title for the terminal window */
+	const char *term_title_key = "remmina_term_title";
+	const char *term_title_val_prefix = "Remmina external tool";
+	envstrlen = strlen(term_title_key) + strlen(term_title_val_prefix) + strlen(shortname) + 7;
+	env = (char *) malloc(envstrlen);
+	if (env != NULL)
+	{
+		if (snprintf(env, envstrlen, "%s=%s: %s", term_title_key, term_title_val_prefix, shortname) )
+		{
+			if (putenv(env) != 0)
+			{
+				/* If putenv fails, we must free the unused space */
+				free(env);
+			}
+		}
+	}
+
 	const size_t cmdlen = strlen(launcher) +strlen(scriptname) + 2;
 	gchar *cmd = (gchar *)malloc(cmdlen);
 	g_snprintf(cmd, cmdlen, "%s %s", launcher, scriptname);
 	system(cmd);
 	free(cmd);
+
+	remmina_file_free(remminafile);
 
 	return TRUE;
 }
