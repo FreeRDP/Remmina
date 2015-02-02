@@ -1,6 +1,7 @@
 #!/bin/sh
 
-. $(dirname $0)/pause.sh
+. $(dirname $0)/functions.sh
+settitle
 
 filezilla sftp://$ssh_username:$password@$server 
 
