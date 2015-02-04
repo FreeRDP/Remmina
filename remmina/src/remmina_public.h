@@ -54,6 +54,10 @@
 
 #define STRING_DELIMITOR ','
 
+#define MOUSE_BUTTON_LEFT 1
+#define MOUSE_BUTTON_MIDDLE 2
+#define MOUSE_BUTTON_RIGHT 3
+
 G_BEGIN_DECLS
 
 /* items is separated by STRING_DELIMTOR */
