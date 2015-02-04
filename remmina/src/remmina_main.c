@@ -497,12 +497,18 @@ static void remmina_main_load_files(RemminaMain *remminamain, gboolean refresh)
 static void remmina_main_action_connection_connect(GtkAction *action, RemminaMain *remminamain)
 {
 	TRACE_CALL("remmina_main_action_connection_connect");
+	if (!remminamain->priv->selected_filename)
+		return;
+
 	remmina_connection_window_open_from_filename(remminamain->priv->selected_filename);
 }
 
 static void remmina_main_action_connection_external_tools(GtkAction *action, RemminaMain *remminamain)
 {
 	TRACE_CALL("remmina_main_action_connection_external_tools");
+	if (!remminamain->priv->selected_filename)
+		return;
+
 	remmina_external_tools_from_filename(remminamain, remminamain->priv->selected_filename);
 }
 
@@ -531,7 +537,7 @@ static void remmina_main_action_connection_copy(GtkAction *action, RemminaMain *
 	TRACE_CALL("remmina_main_action_connection_copy");
 	GtkWidget *widget;
 
-	if (remminamain->priv->selected_filename == NULL)
+	if (!remminamain->priv->selected_filename)
 		return;
 
 	widget = remmina_file_editor_new_copy(remminamain->priv->selected_filename);
@@ -548,7 +554,7 @@ static void remmina_main_action_connection_edit(GtkAction *action, RemminaMain *
 	TRACE_CALL("remmina_main_action_connection_edit");
 	GtkWidget *widget;
 
-	if (remminamain->priv->selected_filename == NULL)
+	if (!remminamain->priv->selected_filename)
 		return;
 
 	widget = remmina_file_editor_new_from_filename(remminamain->priv->selected_filename);
@@ -565,7 +571,7 @@ static void remmina_main_action_connection_delete(GtkAction *action, RemminaMain
 	TRACE_CALL("remmina_main_action_connection_delete");
 	GtkWidget *dialog;
 
-	if (remminamain->priv->selected_filename == NULL)
+	if (!remminamain->priv->selected_filename)
 		return;
 
 	dialog = gtk_message_dialog_new(GTK_WINDOW(remminamain), GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
@@ -808,7 +814,7 @@ static void remmina_main_action_tools_export(GtkAction *action, RemminaMain *rem
 	RemminaFile *remminafile;
 	GtkWidget *dialog;
 
-	if (remminamain->priv->selected_filename == NULL)
+	if (!remminamain->priv->selected_filename)
 		return;
 
 	remminafile = remmina_file_load(remminamain->priv->selected_filename);
