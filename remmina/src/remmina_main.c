@@ -928,7 +928,7 @@ static gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEve
 	TRACE_CALL("remmina_main_file_list_on_button_press");
 	GtkMenu *popup;
 
-	if (event->button == 3)
+	if (event->button == MOUSE_BUTTON_RIGHT)
 	{
 		popup = GTK_MENU(gtk_builder_get_object(remminamain->priv->builder_actions, "menu_popup"));
 		if (popup)
