@@ -1,4 +1,4 @@
-# remmina-plugin-xdmcp - The GTK+ Remote Desktop Client
+# remmina-plugin-tool_hello_world - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
 #
@@ -32,6 +32,7 @@
 
 
 set(REMMINA_PLUGIN_SRCS
+	plugin.h
 	plugin.c
 	)
 
