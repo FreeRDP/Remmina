@@ -137,5 +137,31 @@ GtkWidget* remmina_main_new(void);
 
 G_END_DECLS
 
-#endif  /* __REMMINAMAIN_H__  */
+/* Callbacks for actions from the application ActionGroup */
+static void remmina_main_on_action_application_quit();
+static void remmina_main_on_action_application_preferences();
+static void remmina_main_on_action_application_about();
+static void remmina_main_on_action_application_plugins();
+/* Callbacks for actions from the connection ActionGroup */
+static void remmina_main_on_action_connection_connect();
+static void remmina_main_on_action_connection_new();
+static void remmina_main_on_action_connection_edit();
+static void remmina_main_on_action_connection_copy();
+static void remmina_main_on_action_connection_delete();
+/* Callbacks for actions from the view ActionGroup */
+static void remmina_main_on_action_view_toolbar();
+static void remmina_main_on_action_view_statusbar();
+static void remmina_main_on_action_view_quick_search();
+static void remmina_main_on_action_view_quick_connect();
+static void remmina_main_on_action_view_small_toolbar_buttons();
+static void remmina_main_on_action_view_file_mode();
+/* Callbacks for actions from the tools ActionGroup */
+static void remmina_main_on_action_tools_import();
+static void remmina_main_on_action_tools_export();
+static void remmina_main_on_action_tools_externaltools();
+/* Callbacks for actions from the help ActionGroup */
+static void remmina_main_on_action_help_homepage();
+static void remmina_main_on_action_help_wiki();
+static void remmina_main_on_action_help_debug();
 
+#endif  /* __REMMINAMAIN_H__  */
