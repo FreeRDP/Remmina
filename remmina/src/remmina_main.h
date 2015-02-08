@@ -41,7 +41,7 @@
 /* Defines the association between an Action and its callback for activation */
 typedef struct _ActionsCallbackMap
 {
-	gchar *action_name;
+	GtkAction *action;
 	gpointer callback;
 } ActionsCallbackMap;
 
@@ -59,30 +59,63 @@ typedef struct _RemminaMainPriv RemminaMainPriv;
 typedef struct _RemminaMain
 {
 	GtkWindow window;
+	/* Menu widgets */
+	GtkMenu *menu_popup;
+	GtkMenu *menu_tools;
+	/* Toolbar widgets */
+	GtkToolbar *toolbar_main;
+	GtkToolItem *toolbutton_separator_quick_search;
+	GtkToolItem *toolbutton_quick_search;
+	GtkEntry *entry_quick_search;
+	/* Quick connect objects */
+	GtkBox *box_quick_connect;
+	GtkComboBoxText *combo_quick_connect_protocol;
+	GtkEntry *entry_quick_connect_server;
+	GtkButton *button_quick_connect;
+	/* Other widgets */
+	GtkTreeView *tree_files_list;
+	GtkTreeViewColumn *column_files_list_group;
+	GtkStatusbar *statusbar_main;
+	/* Non widget objects */
+	GtkAccelGroup *accelgroup_shortcuts;
+	GtkListStore *liststore_files_list;
+	GtkTreeStore *treestore_files_list;
+	/* Actions from the application ActionGroup */
+	GtkAction *action_application_about;
+	GtkAction *action_application_plugins;
+	GtkAction *action_application_preferences;
+	GtkAction *action_application_quit;
+	/* Actions from the connection ActionGroup */
+	GtkAction *action_connection_connect;
+	GtkAction *action_connection_new;
+	GtkAction *action_connection_edit;
+	GtkAction *action_connection_copy;
+	GtkAction *action_connection_delete;
+	/* Actions from the view ActionGroup */
+	GtkToggleAction *action_view_toolbar;
+	GtkToggleAction *action_view_statusbar;
+	GtkToggleAction *action_view_quick_search;
+	GtkToggleAction *action_view_quick_connect;
+	GtkToggleAction *action_view_small_toolbar_buttons;
+	GtkToggleAction *action_view_mode_list;
+	GtkToggleAction *action_view_mode_tree;
+	/* Actions from the tools ActionGroup */
+	GtkAction *action_tools_import;
+	GtkAction *action_tools_export;
+	GtkAction *action_tools_externaltools;
+	/* Actions from the help ActionGroup */
+	GtkAction *action_help_homepage;
+	GtkAction *action_help_wiki;
+	GtkAction *action_help_debug;
 
 	RemminaMainPriv *priv;
 } RemminaMain;
 
 struct _RemminaMainPriv
 {
-	GtkTreeView *file_list;
-	GtkBuilder *builder_models;
-	GtkBuilder *builder_actions;
 	GtkTreeModel *file_model;
 	GtkTreeModel *file_model_filter;
 	GtkTreeModel *file_model_sort;
-	GtkToolbar *toolbar;
-	GtkStatusbar *statusbar;
-
-	GtkToolItem *quick_search_separator;
-	GtkToolItem *quick_search_item;
-	GtkEntry *quick_search_entry;
-
-	GtkBox *quickconnect_box;
-	GtkComboBoxText *quickconnect_protocol;
-	GtkEntry *quickconnect_server;
-
-	GtkTreeViewColumn *group_column;
 
 	gboolean initialized;
 
