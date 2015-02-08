@@ -63,61 +63,63 @@ static void remmina_main_class_init(RemminaMainClass *klass)
 	gchar *buffer;
 	gsize size;
 	GBytes *bytes;
+	GtkWidgetClass *wclass = GTK_WIDGET_CLASS(klass);
 	/* Load the user interface .glade file as a template */
-	g_file_get_contents(g_strconcat(REMMINA_UIDIR, G_DIR_SEPARATOR_S, "remmina_main.glade", NULL),
+	g_file_get_contents(
+		g_strconcat(REMMINA_UIDIR, G_DIR_SEPARATOR_S, "remmina_main.glade", NULL),
 		&buffer, &size, NULL);
 	bytes = g_bytes_new_static(buffer, size);
-	gtk_widget_class_set_template(GTK_WIDGET_CLASS(klass), bytes);
+	gtk_widget_class_set_template(wclass, bytes);
 	g_bytes_unref (bytes);
 	/* Assign private members to the template widgets */
 	/* Menu widgets */
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, menu_popup);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, menu_tools);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, menu_popup);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, menu_tools);
 	/* Toolbar widgets */
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, toolbar_main);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, toolbutton_separator_quick_search);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, toolbutton_quick_search);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, entry_quick_search);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, toolbar_main);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, toolbutton_separator_quick_search);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, toolbutton_quick_search);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, entry_quick_search);
 	/* Quick connect objects */
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, box_quick_connect);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, combo_quick_connect_protocol);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, entry_quick_connect_server);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, button_quick_connect);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, box_quick_connect);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, combo_quick_connect_protocol);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, entry_quick_connect_server);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, button_quick_connect);
 	/* Other widgets */
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, tree_files_list);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, column_files_list_group);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, statusbar_main);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, tree_files_list);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, column_files_list_group);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, statusbar_main);
 	/* Non widget objects */
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, accelgroup_shortcuts);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, liststore_files_list);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, treestore_files_list);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, accelgroup_shortcuts);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, liststore_files_list);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, treestore_files_list);
 	/* Actions from the application ActionGroup */
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_application_about);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_application_plugins);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_application_preferences);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_application_quit);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_application_about);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_application_plugins);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_application_preferences);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_application_quit);
 	/* Actions from the connection ActionGroup */
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_connection_connect);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_connection_new);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_connection_edit);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_connection_copy);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_connection_delete);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_connection_connect);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_connection_new);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_connection_edit);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_connection_copy);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_connection_delete);
 	/* Actions from the view ActionGroup */
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_view_toolbar);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_view_statusbar);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_view_quick_search);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_view_quick_connect);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_view_small_toolbar_buttons);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_view_mode_list);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_view_mode_tree);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_view_toolbar);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_view_statusbar);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_view_quick_search);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_view_quick_connect);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_view_small_toolbar_buttons);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_view_mode_list);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_view_mode_tree);
 	/* Actions from the tools ActionGroup */
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_tools_import);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_tools_export);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_tools_externaltools);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_tools_import);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_tools_export);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_tools_externaltools);
 	/* Actions from the help ActionGroup */
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_help_homepage);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_help_wiki);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RemminaMain, action_help_debug);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_help_homepage);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_help_wiki);
+	gtk_widget_class_bind_template_child(wclass, RemminaMain, action_help_debug);
 }
 
 enum
