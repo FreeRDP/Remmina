@@ -58,6 +58,11 @@
 #define MOUSE_BUTTON_MIDDLE 2
 #define MOUSE_BUTTON_RIGHT 3
 
+/* Bind a template widget to its class member and callback */
+#define BIND_TEMPLATE_CHILD(wc, type, action, callback) \
+	gtk_widget_class_bind_template_child(wc, type, action); \
+	gtk_widget_class_bind_template_callback(wc, callback);
+
 G_BEGIN_DECLS
 
 /* items is separated by STRING_DELIMTOR */
@@ -96,6 +101,5 @@ gboolean remmina_public_get_modifier_for_keycode(GdkKeymap *keymap, guint16 keyc
 GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename);
 /* Change parent container for a widget */
 void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *container);
-
 #endif  /* __REMMINAPUBLIC_H__  */
 
