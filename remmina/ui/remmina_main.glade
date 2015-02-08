@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.18.3 -->
+<interface domain="remmina">
+  <requires lib="gtk+" version="3.0"/>
+  <template class="RemminaMain" parent="GtkWindow">
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkBox" id="box_main">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkMenuBar" id="menubar_main">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkMenuItem" id="menuitem_connection">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">_Connection</property>
+                <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu" id="menu_connection">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_connection_connect">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_connection_connect</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="menuitem_connection_separator1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_connection_new">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_connection_new</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_connection_copy">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_connection_copy</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_connection_edit">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_connection_edit</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_connection_delete">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_connection_delete</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="menuitem_connection_separator2">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_connection_quit">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_application_quit</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuItem" id="menuitem_edit">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">_Edit</property>
+                <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu" id="menu_edit">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_edit_preferences">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_application_preferences</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuItem" id="menuitem_view">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">_View</property>
+                <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu" id="menu_view">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkCheckMenuItem" id="menuitem_view_toolbar">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_view_toolbar</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="active">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkCheckMenuItem" id="menuitem_view_statusbar">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_view_statusbar</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="active">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkCheckMenuItem" id="menuitem_view_quick_search">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_view_quick_search</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkCheckMenuItem" id="menuitem_view_quick_connect">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_view_quick_connect</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="active">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="menuitem_view_separator1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkCheckMenuItem" id="menuitem_view_small_toolbar_buttons">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_view_small_toolbar_buttons</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="menuitem_view_separator2">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkRadioMenuItem" id="menuitem_view_mode_list">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_view_mode_list</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="active">True</property>
+                        <property name="draw_as_radio">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkRadioMenuItem" id="menuitem_view_mode_tree">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_view_mode_tree</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="active">True</property>
+                        <property name="draw_as_radio">True</property>
+                        <property name="group">menuitem_view_mode_list</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuItem" id="menuitem_tools">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">_Tools</property>
+                <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu" id="menu_tools">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_tools_import">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_tools_import</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Import</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_tools_export">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_tools_export</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Export</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="menuitem_tools_separator1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_tools_plugins">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_application_plugins</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Plugins</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuItem" id="menuitem_help">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">_Help</property>
+                <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu" id="menu_help">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_help_homepage">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_help_homepage</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Homepage</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_help_wiki">
+                        <property name="related_action">action_help_wiki</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Online Wiki</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_help_debug">
+                        <property name="related_action">action_help_debug</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Debug Window</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="menuitem_help_separator1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_help_about">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_application_about</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuItem" id="menuitem_popup">
+                <property name="can_focus">False</property>
+                <property name="label">Popup menu</property>
+                <child type="submenu">
+                  <object class="GtkMenu" id="menu_popup">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_popup_connect">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_connection_connect</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_popup_copy">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_connection_copy</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_popup_edit">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_connection_edit</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuitem_popup_delete">
+                        <property name="related_action">action_connection_delete</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_popup_externaltools">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_tools_externaltools</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">External Tools</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToolbar" id="toolbar_main">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkToolButton" id="toolbutton_connect">
+                <property name="use_action_appearance">True</property>
+                <property name="related_action">action_connection_connect</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Connect</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-connect</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparatorToolItem" id="toolbutton_separator1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="toolbutton_new">
+                <property name="use_action_appearance">True</property>
+                <property name="related_action">action_connection_new</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">_New</property>
+                <property name="use_underline">True</property>
+                <property name="icon_name">document-new</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="toolbutton_copy">
+                <property name="use_action_appearance">True</property>
+                <property name="related_action">action_connection_copy</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Copy</property>
+                <property name="use_underline">True</property>
+                <property name="icon_name">edit-copy</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="toolbutton_edit">
+                <property name="use_action_appearance">True</property>
+                <property name="related_action">action_connection_edit</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">_Edit</property>
+                <property name="use_underline">True</property>
+                <property name="icon_name">document-properties</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="toolbutton_delete">
+                <property name="use_action_appearance">True</property>
+                <property name="related_action">action_connection_delete</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">_Delete</property>
+                <property name="use_underline">True</property>
+                <property name="icon_name">edit-delete</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparatorToolItem" id="toolbutton_separator2">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="toolbutton_preferences">
+                <property name="use_action_appearance">True</property>
+                <property name="related_action">action_application_preferences</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Preferences</property>
+                <property name="use_underline">True</property>
+                <property name="icon_name">preferences-desktop</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparatorToolItem" id="toolbutton_separator_quick_search">
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolItem" id="toolbutton_quick_search">
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkBox" id="box_quick_search">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="spacing">10</property>
+                    <child>
+                      <object class="GtkLabel" id="label_quick_search">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Quick Search</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="entry_quick_search">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="width_chars">25</property>
+                        <property name="primary_icon_name">edit-find</property>
+                        <property name="secondary_icon_name">edit-clear</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">False</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox" id="box_content">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_left">7</property>
+            <property name="margin_right">7</property>
+            <property name="orientation">vertical</property>
+            <property name="spacing">5</property>
+            <child>
+              <object class="GtkBox" id="box_quick_connect">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="spacing">10</property>
+                <child>
+                  <object class="GtkLabel" id="label_quick_connect_protocol">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Protocol</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="combo_quick_connect_protocol">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="active">0</property>
+                    <items>
+                      <item id="RDP" translatable="yes">RDP</item>
+                      <item id="VNC" translatable="yes">VNC</item>
+                      <item id="NX" translatable="yes">NX</item>
+                      <item id="SSH" translatable="yes">SSH</item>
+                    </items>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label_quick_connect_server">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Server</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_quick_connect_server">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="width_chars">25</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="button_quick_connect">
+                    <property name="label" translatable="yes">Quick Connect</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="can_default">True</property>
+                    <property name="has_default">True</property>
+                    <property name="receives_default">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolled_files_list">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">in</property>
+                <child>
+                  <object class="GtkTreeView" id="tree_files_list">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="model">liststore_files_list</property>
+                    <property name="search_column">0</property>
+                    <child internal-child="selection">
+                      <object class="GtkTreeSelection" id="treeview-selection3"/>
+                    </child>
+                    <child>
+                      <object class="GtkTreeViewColumn" id="column_files_list_name">
+                        <property name="resizable">True</property>
+                        <property name="title" translatable="yes">Name</property>
+                        <property name="clickable">True</property>
+                        <property name="sort_column_id">1</property>
+                        <child>
+                          <object class="GtkCellRendererPixbuf" id="renderer_files_list_icon">
+                            <property name="stock_size">3</property>
+                          </object>
+                          <attributes>
+                            <attribute name="icon-name">0</attribute>
+                          </attributes>
+                        </child>
+                        <child>
+                          <object class="GtkCellRendererText" id="renderer_files_list_name"/>
+                          <attributes>
+                            <attribute name="text">1</attribute>
+                          </attributes>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkTreeViewColumn" id="column_files_list_group">
+                        <property name="resizable">True</property>
+                        <property name="title" translatable="yes">Group</property>
+                        <property name="clickable">True</property>
+                        <property name="sort_column_id">2</property>
+                        <child>
+                          <object class="GtkCellRendererText" id="renderer_files_list_group"/>
+                          <attributes>
+                            <attribute name="text">2</attribute>
+                          </attributes>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkTreeViewColumn" id="column_files_list_server">
+                        <property name="resizable">True</property>
+                        <property name="title" translatable="yes">Server</property>
+                        <property name="clickable">True</property>
+                        <property name="sort_column_id">3</property>
+                        <child>
+                          <object class="GtkCellRendererText" id="renderer_files_list_server"/>
+                          <attributes>
+                            <attribute name="text">3</attribute>
+                          </attributes>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkStatusbar" id="statusbar_main">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_start">10</property>
+                <property name="margin_end">10</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </template>
+  <object class="GtkAccelGroup" id="accelgroup_shortcuts"/>
+  <object class="GtkActionGroup" id="actiongroup_application">
+    <property name="accel_group">accelgroup_shortcuts</property>
+    <child>
+      <object class="GtkAction" id="action_application_quit">
+        <property name="label" translatable="yes">_Quit</property>
+        <property name="short_label" translatable="yes">_Quit</property>
+        <property name="icon_name">application-exit</property>
+      </object>
+      <accelerator key="q" modifiers="GDK_CONTROL_MASK"/>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_application_preferences">
+        <property name="label" translatable="yes">Preferences</property>
+        <property name="short_label" translatable="yes">Preferences</property>
+        <property name="tooltip" translatable="yes">Open the preferences dialog</property>
+        <property name="icon_name">preferences-desktop</property>
+      </object>
+      <accelerator key="p" modifiers="GDK_CONTROL_MASK"/>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_application_about">
+        <property name="label" translatable="yes">_About</property>
+        <property name="short_label" translatable="yes">_About</property>
+        <property name="icon_name">help-about</property>
+      </object>
+      <accelerator key="F1"/>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_application_plugins">
+        <property name="label" translatable="yes">Plugins</property>
+        <property name="short_label" translatable="yes">Plugins</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkActionGroup" id="actiongroup_connection">
+    <property name="accel_group">accelgroup_shortcuts</property>
+    <child>
+      <object class="GtkAction" id="action_connection_connect">
+        <property name="label" translatable="yes">Connect</property>
+        <property name="short_label" translatable="yes">Connect</property>
+        <property name="tooltip" translatable="yes">Open the connection to the selected remote desktop file</property>
+        <property name="stock_id">gtk-connect</property>
+        <property name="is_important">True</property>
+      </object>
+      <accelerator key="o" modifiers="GDK_CONTROL_MASK"/>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_connection_new">
+        <property name="label" translatable="yes">_New</property>
+        <property name="short_label" translatable="yes">_New</property>
+        <property name="tooltip" translatable="yes">Create a new remote desktop file</property>
+        <property name="icon_name">document-new</property>
+        <property name="is_important">True</property>
+      </object>
+      <accelerator key="n" modifiers="GDK_CONTROL_MASK"/>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_connection_edit">
+        <property name="label" translatable="yes">_Edit</property>
+        <property name="short_label" translatable="yes">_Edit</property>
+        <property name="tooltip" translatable="yes">Edit the selected remote desktop file</property>
+        <property name="icon_name">document-properties</property>
+      </object>
+      <accelerator key="e" modifiers="GDK_CONTROL_MASK"/>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_connection_copy">
+        <property name="label" translatable="yes">Copy</property>
+        <property name="short_label" translatable="yes">Copy</property>
+        <property name="tooltip" translatable="yes">Create a copy of the selected remote desktop file</property>
+        <property name="icon_name">edit-copy</property>
+      </object>
+      <accelerator key="c" modifiers="GDK_CONTROL_MASK"/>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_connection_delete">
+        <property name="label" translatable="yes">_Delete</property>
+        <property name="short_label" translatable="yes">_Delete</property>
+        <property name="tooltip" translatable="yes">Delete the selected remote desktop file</property>
+        <property name="icon_name">edit-delete</property>
+      </object>
+      <accelerator key="d" modifiers="GDK_CONTROL_MASK"/>
+    </child>
+  </object>
+  <object class="GtkActionGroup" id="actiongroup_help">
+    <property name="accel_group">accelgroup_shortcuts</property>
+    <child>
+      <object class="GtkAction" id="action_help_homepage">
+        <property name="label" translatable="yes">Homepage</property>
+        <property name="short_label" translatable="yes">Homepage</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_help_wiki">
+        <property name="label" translatable="yes">Online Wiki</property>
+        <property name="short_label" translatable="yes">Online Wiki</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_help_debug">
+        <property name="label" translatable="yes">Debug Window</property>
+        <property name="short_label" translatable="yes">Debug Window</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkActionGroup" id="actiongroup_tools">
+    <property name="accel_group">accelgroup_shortcuts</property>
+    <child>
+      <object class="GtkAction" id="action_tools_import">
+        <property name="label" translatable="yes">Import</property>
+        <property name="short_label" translatable="yes">Import</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_tools_export">
+        <property name="label" translatable="yes">Export</property>
+        <property name="short_label" translatable="yes">Export</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_tools_externaltools">
+        <property name="label" translatable="yes">External Tools</property>
+        <property name="short_label" translatable="yes">External Tools</property>
+      </object>
+      <accelerator key="t" modifiers="GDK_CONTROL_MASK"/>
+    </child>
+  </object>
+  <object class="GtkActionGroup" id="actiongroup_view">
+    <property name="accel_group">accelgroup_shortcuts</property>
+    <child>
+      <object class="GtkToggleAction" id="action_view_toolbar">
+        <property name="label" translatable="yes">Toolbar</property>
+        <property name="short_label" translatable="yes">Toolbar</property>
+        <property name="active">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkToggleAction" id="action_view_statusbar">
+        <property name="label" translatable="yes">Statusbar</property>
+        <property name="short_label" translatable="yes">Statusbar</property>
+        <property name="active">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkToggleAction" id="action_view_quick_search">
+        <property name="label" translatable="yes">Quick Search</property>
+        <property name="short_label" translatable="yes">Quick Search</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkToggleAction" id="action_view_quick_connect">
+        <property name="label" translatable="yes">Quick Connect</property>
+        <property name="short_label" translatable="yes">Quick Connect</property>
+        <property name="active">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkToggleAction" id="action_view_small_toolbar_buttons">
+        <property name="label" translatable="yes">Small Toolbar Buttons</property>
+        <property name="short_label" translatable="yes">Small Toolbar Buttons</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkRadioAction" id="action_view_mode_list">
+        <property name="label" translatable="yes">List View</property>
+        <property name="short_label" translatable="yes">List View</property>
+        <property name="draw_as_radio">True</property>
+        <property name="active">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkRadioAction" id="action_view_mode_tree">
+        <property name="label" translatable="yes">Tree View</property>
+        <property name="short_label" translatable="yes">Tree View</property>
+        <property name="draw_as_radio">True</property>
+        <property name="value">1</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkListStore" id="liststore_files_list">
+    <columns>
+      <!-- column-name Protocol -->
+      <column type="gchararray"/>
+      <!-- column-name Name -->
+      <column type="gchararray"/>
+      <!-- column-name Group -->
+      <column type="gchararray"/>
+      <!-- column-name Server -->
+      <column type="gchararray"/>
+      <!-- column-name Filename -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkTreeStore" id="treestore_files_list">
+    <columns>
+      <!-- column-name Protocol -->
+      <column type="gchararray"/>
+      <!-- column-name Name -->
+      <column type="gchararray"/>
+      <!-- column-name Group -->
+      <column type="gchararray"/>
+      <!-- column-name Server -->
+      <column type="gchararray"/>
+      <!-- column-name Filename -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+</interface>
