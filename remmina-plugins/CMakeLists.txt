@@ -1,6 +1,7 @@
 # Remmina - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2011 Marc-Andre Moreau
+# Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -72,7 +73,6 @@ if(ZLIB_FOUND)
 	add_subdirectory(vnc)
 endif()
 
-if(WITH_TRANSLATIONS)
-	add_subdirectory(po)
+if(WITH_EXAMPLES)
+  add_subdirectory(tool_hello_world)
 endif()
-

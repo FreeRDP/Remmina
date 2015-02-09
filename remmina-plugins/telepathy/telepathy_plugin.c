@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,20 +42,28 @@ static RemminaTpHandler *remmina_tp_handler = NULL;
 
 void remmina_plugin_telepathy_entry(void)
 {
+	TRACE_CALL("remmina_plugin_telepathy_entry");
 	if (remmina_tp_handler == NULL)
 	{
 		remmina_tp_handler = remmina_tp_handler_new();
 	}
 }
 
+/* Entry plugin definition and features */
 static RemminaEntryPlugin remmina_plugin_telepathy =
-{ REMMINA_PLUGIN_TYPE_ENTRY, "telepathy", N_("Telepathy - Desktop Sharing"), GETTEXT_PACKAGE, VERSION,
-
-remmina_plugin_telepathy_entry };
+{
+	REMMINA_PLUGIN_TYPE_ENTRY,                    // Type
+	"telepathy",                                  // Name
+	N_("Telepathy - Desktop Sharing"),            // Description
+	GETTEXT_PACKAGE,                              // Translation domain
+	VERSION,                                      // Version number
+	remmina_plugin_telepathy_entry                // Plugin entry function
+};
 
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
+	TRACE_CALL("remmina_plugin_entry");
 	remmina_plugin_telepathy_service = service;
 
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);

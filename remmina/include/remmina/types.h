@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -74,7 +75,6 @@ typedef enum
     REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,
     REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION,
     REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP,
-    REMMINA_PROTOCOL_SETTING_TYPE_SCALE,
 
     REMMINA_PROTOCOL_SETTING_TYPE_TEXT,
     REMMINA_PROTOCOL_SETTING_TYPE_SELECT,

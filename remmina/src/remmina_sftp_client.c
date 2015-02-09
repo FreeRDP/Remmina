@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -48,6 +49,8 @@
 #include "remmina_pref.h"
 #include "remmina_ssh.h"
 #include "remmina_sftp_client.h"
+#include "remmina_masterthread_exec.h"
+#include "remmina/remmina_trace_calls.h"
 
 G_DEFINE_TYPE (RemminaSFTPClient, remmina_sftp_client, REMMINA_TYPE_FTP_CLIENT)
 
@@ -60,6 +63,7 @@ G_DEFINE_TYPE (RemminaSFTPClient, remmina_sftp_client, REMMINA_TYPE_FTP_CLIENT)
 static void
 remmina_sftp_client_class_init (RemminaSFTPClientClass *klass)
 {
+	TRACE_CALL("remmina_sftp_client_class_init");
 }
 
 #define GET_SFTPATTR_TYPE(a,type) \
@@ -75,25 +79,28 @@ remmina_sftp_client_class_init (RemminaSFTPClientClass *klass)
 /* ------------------------ The Task Thread routines ----------------------------- */
 
 static gboolean remmina_sftp_client_refresh (RemminaSFTPClient *client);
-static gint remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path);
+static void onMainThread_remmina_ftp_client_update_task( RemminaFTPClient *client, RemminaFTPTask* task );
 
 #define THREAD_CHECK_EXIT \
     (!client->taskid || client->thread_abort)
 
+
+
 static gboolean
 remmina_sftp_client_thread_update_task (RemminaSFTPClient *client, RemminaFTPTask *task)
 {
+	TRACE_CALL("remmina_sftp_client_thread_update_task");
 	if (THREAD_CHECK_EXIT) return FALSE;
 
-	THREADS_ENTER
 	remmina_ftp_client_update_task (REMMINA_FTP_CLIENT (client), task);
-	THREADS_LEAVE
+
 	return TRUE;
 }
 
 static void
 remmina_sftp_client_thread_set_error (RemminaSFTPClient *client, RemminaFTPTask *task, const gchar *error_format, ...)
 {
+	TRACE_CALL("remmina_sftp_client_thread_set_error");
 	va_list args;
 
 	task->status = REMMINA_FTP_TASK_STATUS_ERROR;
@@ -115,6 +122,7 @@ remmina_sftp_client_thread_set_error (RemminaSFTPClient *client, RemminaFTPTask 
 static void
 remmina_sftp_client_thread_set_finish (RemminaSFTPClient *client, RemminaFTPTask *task)
 {
+	TRACE_CALL("remmina_sftp_client_thread_set_finish");
 	task->status = REMMINA_FTP_TASK_STATUS_FINISH;
 	g_free(task->tooltip);
 	task->tooltip = NULL;
@@ -125,11 +133,11 @@ remmina_sftp_client_thread_set_finish (RemminaSFTPClient *client, RemminaFTPTask
 static RemminaFTPTask*
 remmina_sftp_client_thread_get_task (RemminaSFTPClient *client)
 {
+	TRACE_CALL("remmina_sftp_client_thread_get_task");
 	RemminaFTPTask *task;
 
 	if (client->thread_abort) return NULL;
 
-	THREADS_ENTER
 	task = remmina_ftp_client_get_waiting_task (REMMINA_FTP_CLIENT (client));
 	if (task)
 	{
@@ -138,7 +146,6 @@ remmina_sftp_client_thread_get_task (RemminaSFTPClient *client)
 		task->status = REMMINA_FTP_TASK_STATUS_RUN;
 		remmina_ftp_client_update_task (REMMINA_FTP_CLIENT (client), task);
 	}
-	THREADS_LEAVE
 
 	return task;
 }
@@ -147,6 +154,7 @@ static gboolean
 remmina_sftp_client_thread_download_file (RemminaSFTPClient *client, RemminaSFTP *sftp, RemminaFTPTask *task,
 		const gchar *remote_path, const gchar *local_path, guint64 *donesize)
 {
+	TRACE_CALL("remmina_sftp_client_thread_download_file");
 	sftp_file remote_file;
 	FILE *local_file;
 	gchar *tmp;
@@ -181,9 +189,7 @@ remmina_sftp_client_thread_download_file (RemminaSFTPClient *client, RemminaSFTP
 	size = ftello (local_file);
 	if (size > 0)
 	{
-		THREADS_ENTER
 		response = remmina_sftp_client_confirm_resume (client, local_path);
-		THREADS_LEAVE
 
 		switch (response)
 		{
@@ -261,6 +267,7 @@ static gboolean
 remmina_sftp_client_thread_recursive_dir (RemminaSFTPClient *client, RemminaSFTP *sftp, RemminaFTPTask *task,
 		const gchar *rootdir_path, const gchar *subdir_path, GPtrArray *array)
 {
+	TRACE_CALL("remmina_sftp_client_thread_recursive_dir");
 	sftp_dir sftpdir;
 	sftp_attributes sftpattr;
 	gchar *tmp;
@@ -346,6 +353,7 @@ static gboolean
 remmina_sftp_client_thread_recursive_localdir (RemminaSFTPClient *client, RemminaFTPTask *task,
 		const gchar *rootdir_path, const gchar *subdir_path, GPtrArray *array)
 {
+	TRACE_CALL("remmina_sftp_client_thread_recursive_localdir");
 	GDir *dir;
 	gchar *path;
 	const gchar *name;
@@ -396,6 +404,7 @@ remmina_sftp_client_thread_recursive_localdir (RemminaSFTPClient *client, Remmin
 static gboolean
 remmina_sftp_client_thread_mkdir (RemminaSFTPClient *client, RemminaSFTP *sftp, RemminaFTPTask *task, const gchar *path)
 {
+	TRACE_CALL("remmina_sftp_client_thread_mkdir");
 	sftp_attributes sftpattr;
 
 	sftpattr = sftp_stat (sftp->sftp_sess, path);
@@ -417,6 +426,7 @@ static gboolean
 remmina_sftp_client_thread_upload_file (RemminaSFTPClient *client, RemminaSFTP *sftp, RemminaFTPTask *task,
 		const gchar *remote_path, const gchar *local_path, guint64 *donesize)
 {
+	TRACE_CALL("remmina_sftp_client_thread_upload_file");
 	sftp_file remote_file;
 	FILE *local_file;
 	gchar *tmp;
@@ -443,10 +453,7 @@ remmina_sftp_client_thread_upload_file (RemminaSFTPClient *client, RemminaSFTP *
 	sftp_attributes_free (attr);
 	if (size > 0)
 	{
-		THREADS_ENTER
 		response = remmina_sftp_client_confirm_resume (client, remote_path);
-		THREADS_LEAVE
-
 		switch (response)
 		{
 			case GTK_RESPONSE_CANCEL:
@@ -528,6 +535,7 @@ remmina_sftp_client_thread_upload_file (RemminaSFTPClient *client, RemminaSFTP *
 static gpointer
 remmina_sftp_client_thread_main (gpointer data)
 {
+	TRACE_CALL("remmina_sftp_client_thread_main");
 	RemminaSFTPClient *client = REMMINA_SFTP_CLIENT (data);
 	RemminaSFTP *sftp = NULL;
 	RemminaFTPTask *task;
@@ -706,6 +714,7 @@ remmina_sftp_client_thread_main (gpointer data)
 static void
 remmina_sftp_client_destroy (RemminaSFTPClient *client, gpointer data)
 {
+	TRACE_CALL("remmina_sftp_client_destroy");
 	if (client->sftp)
 	{
 		remmina_sftp_free (client->sftp);
@@ -715,15 +724,16 @@ remmina_sftp_client_destroy (RemminaSFTPClient *client, gpointer data)
 	/* We will wait for the thread to quit itself, and hopefully the thread is handling things correctly */
 	while (client->thread)
 	{
-		gdk_threads_leave ();
+		/* gdk_threads_leave (); */
 		sleep (1);
-		gdk_threads_enter ();
+		/* gdk_threads_enter (); */
 	}
 }
 
 static sftp_dir
 remmina_sftp_client_sftp_session_opendir (RemminaSFTPClient *client, const gchar *dir)
 {
+	TRACE_CALL("remmina_sftp_client_sftp_session_opendir");
 	sftp_dir sftpdir;
 	GtkWidget *dialog;
 
@@ -744,6 +754,7 @@ remmina_sftp_client_sftp_session_opendir (RemminaSFTPClient *client, const gchar
 static gboolean
 remmina_sftp_client_sftp_session_closedir (RemminaSFTPClient *client, sftp_dir sftpdir)
 {
+	TRACE_CALL("remmina_sftp_client_sftp_session_closedir");
 	GtkWidget *dialog;
 
 	if (!sftp_dir_eof (sftpdir))
@@ -762,6 +773,7 @@ remmina_sftp_client_sftp_session_closedir (RemminaSFTPClient *client, sftp_dir s
 static void
 remmina_sftp_client_on_opendir (RemminaSFTPClient *client, gchar *dir, gpointer data)
 {
+	TRACE_CALL("remmina_sftp_client_on_opendir");
 	sftp_dir sftpdir;
 	sftp_attributes sftpattr;
 	GtkWidget *dialog;
@@ -850,6 +862,7 @@ remmina_sftp_client_on_opendir (RemminaSFTPClient *client, gchar *dir, gpointer 
 static void
 remmina_sftp_client_on_newtask (RemminaSFTPClient *client, gpointer data)
 {
+	TRACE_CALL("remmina_sftp_client_on_newtask");
 	if (client->thread) return;
 
 	if (pthread_create (&client->thread, NULL, remmina_sftp_client_thread_main, client))
@@ -861,6 +874,7 @@ remmina_sftp_client_on_newtask (RemminaSFTPClient *client, gpointer data)
 static gboolean
 remmina_sftp_client_on_canceltask (RemminaSFTPClient *client, gint taskid, gpointer data)
 {
+	TRACE_CALL("remmina_sftp_client_on_canceltask");
 	GtkWidget *dialog;
 	gint ret;
 
@@ -883,6 +897,7 @@ remmina_sftp_client_on_canceltask (RemminaSFTPClient *client, gint taskid, gpoin
 static gboolean
 remmina_sftp_client_on_deletefile (RemminaSFTPClient *client, gint type, gchar *name, gpointer data)
 {
+	TRACE_CALL("remmina_sftp_client_on_deletefile");
 	GtkWidget *dialog;
 	gint ret = 0;
 	gchar *tmp;
@@ -916,6 +931,7 @@ remmina_sftp_client_on_deletefile (RemminaSFTPClient *client, gint type, gchar *
 static void
 remmina_sftp_client_init (RemminaSFTPClient *client)
 {
+	TRACE_CALL("remmina_sftp_client_init");
 	client->sftp = NULL;
 	client->thread = 0;
 	client->taskid = 0;
@@ -937,6 +953,7 @@ remmina_sftp_client_init (RemminaSFTPClient *client)
 static gboolean
 remmina_sftp_client_refresh (RemminaSFTPClient *client)
 {
+	TRACE_CALL("remmina_sftp_client_refresh");
 	SET_CURSOR (gdk_cursor_new (GDK_WATCH));
 	gdk_flush ();
 
@@ -947,15 +964,35 @@ remmina_sftp_client_refresh (RemminaSFTPClient *client)
 	return FALSE;
 }
 
-static gint
+gint
 remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path)
 {
+	TRACE_CALL("remmina_sftp_client_confirm_resume");
+
 	GtkWidget *dialog;
 	gint response;
 	GtkWidget *hbox;
 	GtkWidget *vbox;
 	GtkWidget *widget;
 	const gchar *filename;
+
+	/* Always reply ACCEPT if overwrite_all was already set */
+	if (remmina_ftp_client_get_overwrite_status(REMMINA_FTP_CLIENT(client)))
+		return GTK_RESPONSE_ACCEPT;
+
+	if ( !remmina_masterthread_exec_is_main_thread() ) {
+		/* Allow the execution of this function from a non main thread */
+		RemminaMTExecData *d;
+		gint retval;
+		d = (RemminaMTExecData*)g_malloc( sizeof(RemminaMTExecData) );
+		d->func = FUNC_SFTP_CLIENT_CONFIRM_RESUME;
+		d->p.sftp_client_confirm_resume.client = client;
+		d->p.sftp_client_confirm_resume.path = path;
+		remmina_masterthread_exec_and_wait(d);
+		retval = d->p.sftp_client_confirm_resume.retval;
+		g_free(d);
+		return retval;
+	}
 
 	filename = strrchr (path, '/');
 	filename = filename ? filename + 1 : path;
@@ -965,7 +1002,7 @@ remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path
 			GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
 			_("Resume"), GTK_RESPONSE_APPLY,
 			_("Overwrite"), GTK_RESPONSE_ACCEPT,
-			GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+			_("_Cancel"), GTK_RESPONSE_CANCEL,
 			NULL);
 	gtk_container_set_border_width (GTK_CONTAINER (dialog), 4);
 
@@ -978,7 +1015,7 @@ remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path
 	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG(dialog))),
 			hbox, TRUE, TRUE, 4);
 
-	widget = gtk_image_new_from_icon_name (GTK_STOCK_DIALOG_QUESTION, GTK_ICON_SIZE_DIALOG);
+	widget = gtk_image_new_from_icon_name (_("Question"), GTK_ICON_SIZE_DIALOG);
 	gtk_widget_show(widget);
 	gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 4);
 
@@ -1008,12 +1045,14 @@ remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path
 GtkWidget*
 remmina_sftp_client_new (void)
 {
+	TRACE_CALL("remmina_sftp_client_new");
 	return GTK_WIDGET (g_object_new (REMMINA_TYPE_SFTP_CLIENT, NULL));
 }
 
 void
 remmina_sftp_client_open (RemminaSFTPClient *client, RemminaSFTP *sftp)
 {
+	TRACE_CALL("remmina_sftp_client_open");
 	client->sftp = sftp;
 
 	g_idle_add ((GSourceFunc) remmina_sftp_client_refresh, client);
@@ -1022,6 +1061,7 @@ remmina_sftp_client_open (RemminaSFTPClient *client, RemminaSFTP *sftp)
 GtkWidget*
 remmina_sftp_client_new_init (RemminaSFTP *sftp)
 {
+	TRACE_CALL("remmina_sftp_client_new_init");
 	GtkWidget *client;
 	GtkWidget *dialog;
 
@@ -1050,4 +1090,3 @@ remmina_sftp_client_new_init (RemminaSFTP *sftp)
 }
 
 #endif
-

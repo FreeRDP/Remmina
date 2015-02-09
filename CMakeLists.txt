@@ -1,6 +1,7 @@
 # Remmina - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2011 Marc-Andre Moreau
+# Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,7 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, 
+# Foundation, Inc., 59 Temple Place, Suite 330,
 # Boston, MA 02111-1307, USA.
 #
 # In addition, as a special exception, the copyright holders give
@@ -93,22 +94,24 @@ include_directories(remmina/include)
 # Versioning
 set(WITH_LIBRARY_VERSIONING "ON")
 set(REMMINA_VERSION_MAJOR "1")
-set(REMMINA_VERSION_MINOR "1")
+set(REMMINA_VERSION_MINOR "2")
 set(REMMINA_VERSION_REVISION "0")
-#^set(REMMINA_VERSION_SUFFIX "")
-set(REMMINA_VERSION "${REMMINA_VERSION_MAJOR}.${REMMINA_VERSION_MINOR}.${REMMINA_VERSION_REVISION}")
+set(REMMINA_VERSION_SUFFIX "rcgit.2")
+set(REMMINA_VERSION "${REMMINA_VERSION_MAJOR}.${REMMINA_VERSION_MINOR}.${REMMINA_VERSION_REVISION}-${REMMINA_VERSION_SUFFIX}")
 
 set(REMMINA_DATADIR "${CMAKE_INSTALL_FULL_DATADIR}")
 set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_FULL_DATADIR}/locale")
 set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/remmina/plugins")
+set(REMMINA_UIDIR "${CMAKE_INSTALL_FULL_DATADIR}/remmina/ui")
 
 find_required_package(GTK)
-find_suggested_package(PTHREAD)
+find_required_package(PTHREAD)
 find_suggested_package(GCRYPT)
 find_suggested_package(AVAHI)
 
-if(PTHREAD_FOUND)
-	add_definitions(-DHAVE_PTHREAD)
+if(WITH_TRACE_CALLS)
+	message(STATUS "Enabling trace calls.")
+	add_definitions(-DWITH_TRACE_CALLS)
 endif()
 
 if(GCRYPT_FOUND)
@@ -126,6 +129,9 @@ if(GTK_FOUND)
 	add_subdirectory(remmina-plugins-gnome)
 endif()
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
+if(WITH_EXAMPLES)
+	message(STATUS "Enabling examples and test plugins.")
+	add_definitions(-DWITH_EXAMPLES)
+endif()
 
-install(DIRECTORY include/remmina DESTINATION include/remmina FILES_MATCHING PATTERN "*.h")
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)

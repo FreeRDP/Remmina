@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -35,15 +36,18 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include "remmina_key_chooser.h"
+#include "remmina/remmina_trace_calls.h"
 
 G_DEFINE_TYPE( RemminaKeyChooser, remmina_key_chooser, GTK_TYPE_BUTTON)
 
 static void remmina_key_chooser_class_init(RemminaKeyChooserClass *klass)
 {
+	TRACE_CALL("remmina_key_chooser_class_init");
 }
 
 static void remmina_key_chooser_update_label(RemminaKeyChooser *kc)
 {
+	TRACE_CALL("remmina_key_chooser_update_label");
 	gchar *s;
 
 	if (kc->keyval)
@@ -59,12 +63,14 @@ static void remmina_key_chooser_update_label(RemminaKeyChooser *kc)
 
 void remmina_key_chooser_set_keyval(RemminaKeyChooser *kc, guint keyval)
 {
+	TRACE_CALL("remmina_key_chooser_set_keyval");
 	kc->keyval = keyval;
 	remmina_key_chooser_update_label(kc);
 }
 
 static gboolean remmina_key_chooser_dialog_on_key_press(GtkWidget *widget, GdkEventKey *event, RemminaKeyChooser *kc)
 {
+	TRACE_CALL("remmina_key_chooser_dialog_on_key_press");
 	remmina_key_chooser_set_keyval(kc, gdk_keyval_to_lower(event->keyval));
 	gtk_dialog_response(GTK_DIALOG(gtk_widget_get_toplevel(widget)), GTK_RESPONSE_OK);
 	return TRUE;
@@ -72,13 +78,14 @@ static gboolean remmina_key_chooser_dialog_on_key_press(GtkWidget *widget, GdkEv
 
 static void remmina_key_chooser_on_clicked(RemminaKeyChooser *kc, gpointer data)
 {
+	TRACE_CALL("remmina_key_chooser_on_clicked");
 	GtkWidget *dialog;
 	GtkWidget *eventbox;
 	GtkWidget *widget;
 	gint ret;
 
 	dialog = gtk_dialog_new_with_buttons(_("Choose a new key"), GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(kc))),
-			GTK_DIALOG_MODAL, GTK_STOCK_CANCEL, _("_Cancel"), _("_Remove"), GTK_RESPONSE_REJECT, NULL);
+			GTK_DIALOG_MODAL, _("_Cancel"), GTK_RESPONSE_CANCEL, _("_Remove"), GTK_RESPONSE_REJECT, NULL);
 
 	eventbox = gtk_event_box_new();
 	gtk_widget_show(eventbox);
@@ -106,6 +113,7 @@ static void remmina_key_chooser_on_clicked(RemminaKeyChooser *kc, gpointer data)
 
 static void remmina_key_chooser_init(RemminaKeyChooser *kc)
 {
+	TRACE_CALL("remmina_key_chooser_init");
 	remmina_key_chooser_set_keyval(kc, 0);
 
 	g_signal_connect(G_OBJECT(kc), "clicked", G_CALLBACK(remmina_key_chooser_on_clicked), NULL);
@@ -114,6 +122,7 @@ static void remmina_key_chooser_init(RemminaKeyChooser *kc)
 GtkWidget*
 remmina_key_chooser_new(guint keyval)
 {
+	TRACE_CALL("remmina_key_chooser_new");
 	RemminaKeyChooser *kc;
 
 	kc = REMMINA_KEY_CHOOSER(g_object_new(REMMINA_TYPE_KEY_CHOOSER, NULL));

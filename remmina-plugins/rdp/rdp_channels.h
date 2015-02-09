@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2012-2012 Jean-Louis Dupond
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -32,48 +32,25 @@
  *
  */
 
-#ifndef __REMMINASCALER_H__
-#define __REMMINASCALER_H__
+
+#ifndef __REMMINA_RDP_CHANNELS_H
+#define __REMMINA_RDP_CHANNELS_H
+
+#include <freerdp/freerdp.h>
+#include <freerdp/client/channels.h>
+#include <freerdp/client/rdpei.h>
+#include <freerdp/client/tsmf.h>
+#include <freerdp/client/rail.h>
+#include <freerdp/client/cliprdr.h>
+#include <freerdp/client/rdpgfx.h>
+#include <freerdp/client/encomsp.h>
 
 G_BEGIN_DECLS
 
-#define REMMINA_TYPE_SCALER               (remmina_scaler_get_type ())
-#define REMMINA_SCALER(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_SCALER, RemminaScaler))
-#define REMMINA_SCALER_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_SCALER, RemminaScalerClass))
-#define REMMINA_IS_SCALER(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_SCALER))
-#define REMMINA_IS_SCALER_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_SCALER))
-#define REMMINA_SCALER_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_SCALER, RemminaScalerClass))
+void remmina_rdp_OnChannelConnectedEventHandler(rdpContext* context, ChannelConnectedEventArgs* e);
+void remmina_rdp_OnChannelDisconnectedEventHandler(rdpContext* context, ChannelConnectedEventArgs* e);
 
-typedef struct _RemminaScalerPriv RemminaScalerPriv;
-
-typedef struct _RemminaScaler
-{
-	GtkTable table;
-
-	gint hscale;
-	gint vscale;
-	gboolean aspectscale;
-
-	RemminaScalerPriv *priv;
-} RemminaScaler;
-
-typedef struct _RemminaScalerClass
-{
-	GtkTableClass parent_class;
-
-	void (*scaled)(RemminaScaler *scaler);
-} RemminaScalerClass;
-
-GType remmina_scaler_get_type(void)
-G_GNUC_CONST;
-
-GtkWidget* remmina_scaler_new(void);
-
-void remmina_scaler_set(RemminaScaler *scaler, gint hscale, gint vscale, gboolean chained);
-
-void remmina_scaler_set_draw_value(RemminaScaler *scaler, gboolean draw_value);
 
 G_END_DECLS
 
-#endif  /* __REMMINASCALER_H__  */
-
+#endif

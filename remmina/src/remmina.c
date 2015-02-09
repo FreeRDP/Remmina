@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -47,13 +48,13 @@
 #include "remmina_ssh_plugin.h"
 #include "remmina_exec.h"
 #include "remmina_icon.h"
+#include "remmina_masterthread_exec.h"
+#include "remmina/remmina_trace_calls.h"
 
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
 #endif
-#ifdef HAVE_PTHREAD
 #include <pthread.h>
-#endif
 #ifdef HAVE_LIBGCRYPT
 #include <gcrypt.h>
 GCRY_THREAD_OPTION_PTHREAD_IMPL;
@@ -71,23 +72,26 @@ static gchar *remmina_option_server;
 static gchar *remmina_option_protocol;
 static gchar *remmina_option_icon;
 
+
 static GOptionEntry remmina_options[] =
 {
-{ "about", 'a', 0, G_OPTION_ARG_NONE, &remmina_option_about, "Show about dialog", NULL },
-{ "connect", 'c', 0, G_OPTION_ARG_FILENAME, &remmina_option_connect, "Connect to a .remmina file F", "F" },
-{ "edit", 'e', 0, G_OPTION_ARG_FILENAME, &remmina_option_edit, "Edit a .remmina file F", "F" },
-{ "help", '?', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, &remmina_option_help, NULL, NULL },
-{ "new", 'n', 0, G_OPTION_ARG_NONE, &remmina_option_new, "Create a new connection profile", NULL },
-{ "pref", 'p', 0, G_OPTION_ARG_STRING, &remmina_option_pref, "Show preference dialog", NULL },
-{ "plugin", 'x', 0, G_OPTION_ARG_STRING, &remmina_option_plugin, "Execute plugin P", "P" },
-{ "quit", 'q', 0, G_OPTION_ARG_NONE, &remmina_option_quit, "Quit the application", NULL },
-{ "server", 's', 0, G_OPTION_ARG_STRING, &remmina_option_server, "Use default server name S", "S" },
-{ "protocol", 't', 0, G_OPTION_ARG_STRING, &remmina_option_protocol, "Use default protocol T", "T" },
-{ "icon", 'i', 0, G_OPTION_ARG_NONE, &remmina_option_icon, "Start as tray icon", NULL },
-{ NULL } };
+	{ "about", 'a', 0, G_OPTION_ARG_NONE, &remmina_option_about, "Show about dialog", NULL },
+	{ "connect", 'c', 0, G_OPTION_ARG_FILENAME, &remmina_option_connect, "Connect to a .remmina file", "FILE" },
+	{ "edit", 'e', 0, G_OPTION_ARG_FILENAME, &remmina_option_edit, "Edit a .remmina file", "FILE" },
+	{ "help", '?', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, &remmina_option_help, NULL, NULL },
+	{ "new", 'n', 0, G_OPTION_ARG_NONE, &remmina_option_new, "Create a new connection profile", NULL },
+	{ "pref", 'p', 0, G_OPTION_ARG_STRING, &remmina_option_pref, "Show preferences dialog page", "PAGENR" },
+	{ "plugin", 'x', 0, G_OPTION_ARG_STRING, &remmina_option_plugin, "Execute the plugin", "PLUGIN" },
+	{ "quit", 'q', 0, G_OPTION_ARG_NONE, &remmina_option_quit, "Quit the application", NULL },
+	{ "server", 's', 0, G_OPTION_ARG_STRING, &remmina_option_server, "Use default server name", "SERVER" },
+	{ "protocol", 't', 0, G_OPTION_ARG_STRING, &remmina_option_protocol, "Use default protocol", "PROTOCOL" },
+	{ "icon", 'i', 0, G_OPTION_ARG_NONE, &remmina_option_icon, "Start as tray icon", NULL },
+	{ NULL }
+};
 
 static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *cmdline)
 {
+	TRACE_CALL("remmina_on_command_line");
 	gint status = 0;
 	gint argc;
 	gchar **argv;
@@ -191,6 +195,7 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 
 static void remmina_on_startup(GApplication *app)
 {
+	TRACE_CALL("remmina_on_startup");
 	remmina_file_manager_init();
 	remmina_pref_init();
 	remmina_plugin_manager_init();
@@ -202,23 +207,56 @@ static void remmina_on_startup(GApplication *app)
 	g_set_application_name("Remmina");
 	gtk_window_set_default_icon_name("remmina");
 
-gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
+	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
 		REMMINA_DATADIR G_DIR_SEPARATOR_S "icons");
+}
+
+static gboolean remmina_on_local_cmdline (GApplication *app, gchar ***arguments, gint *exit_status)
+{
+	TRACE_CALL("remmina_on_local_cmdline");
+	/* Partially unimplemented local command line only used to append the
+	 * command line arguments to the help text and to parse the --help/-h
+	 * arguments locally instead of forwarding them to the remote instance */
+	GOptionContext *context;
+	gint i = 0;
+	gchar **argv;
+
+	context = g_option_context_new("- The GTK+ Remote Desktop Client");
+	g_option_context_add_group(context, gtk_get_option_group(FALSE));
+	g_option_context_set_help_enabled(context, TRUE);
+	g_option_context_add_main_entries(context, remmina_options, GETTEXT_PACKAGE);
+	g_option_context_set_translation_domain(context, GETTEXT_PACKAGE);
+	*exit_status = 0;
+
+	// Parse the command line arguments for --help/-h
+	argv = *arguments;
+	for (i = 0; argv[i] != NULL; i++)
+	{
+		if ((g_strcmp0(argv[i], "--help") == 0 || g_strcmp0(argv[i], "-h") == 0))
+		{
+			g_print("%s", g_option_context_get_help(context, TRUE, NULL));
+			*exit_status = EXIT_FAILURE;
+		}
+	}
+	g_option_context_free(context);
+	// Exit from the local instance whenever the exit status is not zero
+	if (*exit_status != 0)
+		exit(*exit_status);
+	return FALSE;
 }
 
 int main(int argc, char* argv[])
 {
-	GApplication* app;
+	TRACE_CALL("main");
+	GApplication *app;
+	GApplicationClass *app_class;
 	int status;
+
+	remmina_masterthread_exec_save_main_thread_id();
 
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 	textdomain(GETTEXT_PACKAGE);
-
-#ifdef HAVE_PTHREAD
-	g_type_init ();
-	gdk_threads_init ();
-#endif
 
 #ifdef HAVE_LIBGCRYPT
 	gcry_control (GCRYCTL_SET_THREAD_CBS, &gcry_threads_pthread);
@@ -230,6 +268,8 @@ int main(int argc, char* argv[])
 	gtk_init(&argc, &argv);
 
 	app = g_application_new("org.Remmina", G_APPLICATION_HANDLES_COMMAND_LINE);
+	app_class = G_APPLICATION_CLASS(G_OBJECT_GET_CLASS (app));
+	app_class->local_command_line = remmina_on_local_cmdline;
 	g_signal_connect(app, "startup", G_CALLBACK(remmina_on_startup), NULL);
 	g_signal_connect(app, "command-line", G_CALLBACK(remmina_on_command_line), NULL);
 	g_application_set_inactivity_timeout(app, 10000);
@@ -238,13 +278,10 @@ int main(int argc, char* argv[])
 
 	if (status == 0 && !g_application_get_is_remote(app))
 	{
-		THREADS_ENTER
 		gtk_main();
-		THREADS_LEAVE
 	}
 
 	g_object_unref(app);
 
 	return status;
 }
-

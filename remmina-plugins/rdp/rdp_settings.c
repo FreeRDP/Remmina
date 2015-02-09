@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010-2011 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,11 +42,13 @@ static guint rdp_keyboard_layout = 0;
 
 static void remmina_rdp_settings_kbd_init(void)
 {
+	TRACE_CALL("remmina_rdp_settings_kbd_init");
 	keyboard_layout = freerdp_keyboard_init(rdp_keyboard_layout);
 }
 
 void remmina_rdp_settings_init(void)
 {
+	TRACE_CALL("remmina_rdp_settings_init");
 	gchar* value;
 
 	value = remmina_plugin_service->pref_get_value("rdp_keyboard_layout");
@@ -60,6 +63,7 @@ void remmina_rdp_settings_init(void)
 
 guint remmina_rdp_settings_get_keyboard_layout(void)
 {
+	TRACE_CALL("remmina_rdp_settings_get_keyboard_layout");
 	return keyboard_layout;
 }
 
@@ -104,10 +108,12 @@ G_DEFINE_TYPE(RemminaPluginRdpsetGrid, remmina_rdp_settings_grid, GTK_TYPE_GRID)
 
 static void remmina_rdp_settings_grid_class_init(RemminaPluginRdpsetGridClass* klass)
 {
+	TRACE_CALL("remmina_rdp_settings_grid_class_init");
 }
 
 static void remmina_rdp_settings_grid_destroy(GtkWidget* widget, gpointer data)
 {
+	TRACE_CALL("remmina_rdp_settings_grid_destroy");
 	gchar* s;
 	guint new_layout;
 	GtkTreeIter iter;
@@ -152,6 +158,7 @@ static void remmina_rdp_settings_grid_destroy(GtkWidget* widget, gpointer data)
 
 static void remmina_rdp_settings_grid_load_layout(RemminaPluginRdpsetGrid* grid)
 {
+	TRACE_CALL("remmina_rdp_settings_grid_load_layout");
 	gint i;
 	gchar* s;
 	GtkTreeIter iter;
@@ -187,9 +194,12 @@ static void remmina_rdp_settings_grid_load_layout(RemminaPluginRdpsetGrid* grid)
 
 static void remmina_rdp_settings_grid_load_quality(RemminaPluginRdpsetGrid* grid)
 {
+	TRACE_CALL("remmina_rdp_settings_grid_load_quality");
 	gchar* value;
 	GtkTreeIter iter;
 
+	gtk_list_store_append(grid->quality_store, &iter);
+	gtk_list_store_set(grid->quality_store, &iter, 0, -1, 1, _("<Choose a quality level to edit...>"), -1);
 	gtk_list_store_append(grid->quality_store, &iter);
 	gtk_list_store_set(grid->quality_store, &iter, 0, 0, 1, _("Poor (fastest)"), -1);
 	gtk_list_store_append(grid->quality_store, &iter);
@@ -220,14 +230,22 @@ static void remmina_rdp_settings_grid_load_quality(RemminaPluginRdpsetGrid* grid
 
 static void remmina_rdp_settings_quality_on_changed(GtkComboBox *widget, RemminaPluginRdpsetGrid *grid)
 {
+	TRACE_CALL("remmina_rdp_settings_quality_on_changed");
 	guint v;
 	guint i = 0;
 	GtkTreeIter iter;
+	gboolean sensitive;
 
 	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX (grid->quality_combo), &iter))
 	{
 		gtk_tree_model_get(GTK_TREE_MODEL(grid->quality_store), &iter, 0, &i, -1);
-		v = grid->quality_values[i];
+		sensitive = ( i != -1 );
+
+		if (sensitive)
+			v = grid->quality_values[i];
+		else
+			v = 0x3f;	/* All checkboxes disabled */
+
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(grid->wallpaper_check), (v & 1) == 0);
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(grid->windowdrag_check), (v & 2) == 0);
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(grid->menuanimation_check), (v & 4) == 0);
@@ -236,11 +254,22 @@ static void remmina_rdp_settings_quality_on_changed(GtkComboBox *widget, Remmina
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(grid->cursorblinking_check), (v & 0x40) == 0);
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(grid->fontsmoothing_check), (v & 0x80) != 0);
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(grid->composition_check), (v & 0x100) != 0);
+
+
+		gtk_widget_set_sensitive(GTK_WIDGET(grid->wallpaper_check), sensitive);
+		gtk_widget_set_sensitive(GTK_WIDGET(grid->windowdrag_check), sensitive);
+		gtk_widget_set_sensitive(GTK_WIDGET(grid->menuanimation_check), sensitive);
+		gtk_widget_set_sensitive(GTK_WIDGET(grid->theme_check), sensitive);
+		gtk_widget_set_sensitive(GTK_WIDGET(grid->cursorshadow_check), sensitive);
+		gtk_widget_set_sensitive(GTK_WIDGET(grid->cursorblinking_check), sensitive);
+		gtk_widget_set_sensitive(GTK_WIDGET(grid->fontsmoothing_check), sensitive);
+		gtk_widget_set_sensitive(GTK_WIDGET(grid->composition_check), sensitive);
 	}
 }
 
 static void remmina_rdp_settings_quality_option_on_toggled(GtkToggleButton* togglebutton, RemminaPluginRdpsetGrid* grid)
 {
+	TRACE_CALL("remmina_rdp_settings_quality_option_on_toggled");
 	guint v;
 	guint i = 0;
 	GtkTreeIter iter;
@@ -248,21 +277,25 @@ static void remmina_rdp_settings_quality_option_on_toggled(GtkToggleButton* togg
 	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(grid->quality_combo), &iter))
 	{
 		gtk_tree_model_get(GTK_TREE_MODEL(grid->quality_store), &iter, 0, &i, -1);
-		v = 0;
-		v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->wallpaper_check)) ? 0 : 1);
-		v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->windowdrag_check)) ? 0 : 2);
-		v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->menuanimation_check)) ? 0 : 4);
-		v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->theme_check)) ? 0 : 8);
-		v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->cursorshadow_check)) ? 0 : 0x20);
-		v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->cursorblinking_check)) ? 0 : 0x40);
-		v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->fontsmoothing_check)) ? 0x80 : 0);
-		v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->composition_check)) ? 0x100 : 0);
-		grid->quality_values[i] = v;
+		if (i != -1)
+		{
+			v = 0;
+			v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->wallpaper_check)) ? 0 : 1);
+			v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->windowdrag_check)) ? 0 : 2);
+			v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->menuanimation_check)) ? 0 : 4);
+			v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->theme_check)) ? 0 : 8);
+			v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->cursorshadow_check)) ? 0 : 0x20);
+			v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->cursorblinking_check)) ? 0 : 0x40);
+			v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->fontsmoothing_check)) ? 0x80 : 0);
+			v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->composition_check)) ? 0x100 : 0);
+			grid->quality_values[i] = v;
+		}
 	}
 }
 
 static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 {
+	TRACE_CALL("remmina_rdp_settings_grid_init");
 	gchar* s;
 	GtkWidget* widget;
 	GtkCellRenderer* renderer;
@@ -310,7 +343,7 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 		s && s[0] == '1' ? TRUE : FALSE);
 	g_free(s);
 
-	widget = gtk_label_new(_("Quality option"));
+	widget = gtk_label_new(_("Quality settings"));
 	gtk_widget_show(widget);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 6, 1, 4);
@@ -390,6 +423,7 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 
 GtkWidget* remmina_rdp_settings_new(void)
 {
+	TRACE_CALL("remmina_rdp_settings_new");
 	GtkWidget* widget;
 
 	widget = GTK_WIDGET(g_object_new(REMMINA_TYPE_PLUGIN_RDPSET_GRID, NULL));

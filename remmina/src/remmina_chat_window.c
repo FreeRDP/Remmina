@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,6 +37,7 @@
 #include <glib/gi18n.h>
 #include <gdk/gdkkeysyms.h>
 #include "remmina_chat_window.h"
+#include "remmina/remmina_trace_calls.h"
 
 G_DEFINE_TYPE( RemminaChatWindow, remmina_chat_window, GTK_TYPE_WINDOW)
 
@@ -49,6 +51,7 @@ static guint remmina_chat_window_signals[LAST_SIGNAL] = { 0 };
 
 static void remmina_chat_window_class_init(RemminaChatWindowClass* klass)
 {
+	TRACE_CALL("remmina_chat_window_class_init");
 	remmina_chat_window_signals[SEND_SIGNAL] = g_signal_new("send", G_TYPE_FROM_CLASS(klass),
 			G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaChatWindowClass, send), NULL, NULL,
 			g_cclosure_marshal_VOID__STRING, G_TYPE_NONE, 1, G_TYPE_STRING);
@@ -56,12 +59,14 @@ static void remmina_chat_window_class_init(RemminaChatWindowClass* klass)
 
 static void remmina_chat_window_init(RemminaChatWindow* window)
 {
+	TRACE_CALL("remmina_chat_window_init");
 	window->history_text = NULL;
 	window->send_text = NULL;
 }
 
 static void remmina_chat_window_clear_send_text(GtkWidget* widget, RemminaChatWindow* window)
 {
+	TRACE_CALL("remmina_chat_window_clear_send_text");
 	GtkTextBuffer* buffer;
 
 	buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(window->send_text));
@@ -71,6 +76,7 @@ static void remmina_chat_window_clear_send_text(GtkWidget* widget, RemminaChatWi
 
 static gboolean remmina_chat_window_scroll_proc(RemminaChatWindow* window)
 {
+	TRACE_CALL("remmina_chat_window_scroll_proc");
 	GtkTextBuffer* buffer;
 	GtkTextIter iter;
 
@@ -84,6 +90,7 @@ static gboolean remmina_chat_window_scroll_proc(RemminaChatWindow* window)
 static void remmina_chat_window_append_text(RemminaChatWindow* window, const gchar* name, const gchar* tagname,
 		const gchar* text)
 {
+	TRACE_CALL("remmina_chat_window_append_text");
 	GtkTextBuffer* buffer;
 	GtkTextIter iter;
 	gchar* ptr;
@@ -126,6 +133,7 @@ static void remmina_chat_window_append_text(RemminaChatWindow* window, const gch
 
 static void remmina_chat_window_send(GtkWidget* widget, RemminaChatWindow* window)
 {
+	TRACE_CALL("remmina_chat_window_send");
 	GtkTextBuffer* buffer;
 	GtkTextIter start, end;
 	gchar* text;
@@ -148,6 +156,7 @@ static void remmina_chat_window_send(GtkWidget* widget, RemminaChatWindow* windo
 
 static gboolean remmina_chat_window_send_text_on_key(GtkWidget* widget, GdkEventKey* event, RemminaChatWindow* window)
 {
+	TRACE_CALL("remmina_chat_window_send_text_on_key");
 	if (event->keyval == GDK_KEY_Return)
 	{
 		remmina_chat_window_send(widget, window);
@@ -159,6 +168,7 @@ static gboolean remmina_chat_window_send_text_on_key(GtkWidget* widget, GdkEvent
 GtkWidget*
 remmina_chat_window_new(GtkWindow* parent, const gchar* chat_with)
 {
+	TRACE_CALL("remmina_chat_window_new");
 	RemminaChatWindow* window;
 	gchar buf[100];
 	GtkWidget* grid;
@@ -246,6 +256,7 @@ remmina_chat_window_new(GtkWindow* parent, const gchar* chat_with)
 
 void remmina_chat_window_receive(RemminaChatWindow* window, const gchar* name, const gchar* text)
 {
+	TRACE_CALL("remmina_chat_window_receive");
 	remmina_chat_window_append_text(window, name, "receiver-foreground", text);
 }
 

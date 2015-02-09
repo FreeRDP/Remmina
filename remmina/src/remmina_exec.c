@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,9 +46,11 @@
 #include "remmina_about.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_exec.h"
+#include "remmina/remmina_trace_calls.h"
 
 void remmina_exec_command(RemminaCommandType command, const gchar* data)
 {
+	TRACE_CALL("remmina_exec_command");
 	gchar* s1;
 	gchar* s2;
 	GtkWidget* widget;

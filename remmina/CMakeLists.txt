@@ -1,6 +1,7 @@
 # src/remmina - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2011 Marc-Andre Moreau
+# Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,7 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, 
+# Foundation, Inc., 59 Temple Place, Suite 330,
 # Boston, MA 02111-1307, USA.
 #
 # In addition, as a special exception, the copyright holders give
@@ -43,8 +44,6 @@ set(REMMINA_SRCS
 	src/remmina_avahi.c
 	src/remmina_avahi.h
 	src/remmina.c
-	src/remmina_chain_button.c
-	src/remmina_chain_button.h
 	src/remmina_chat_window.c
 	src/remmina_chat_window.h
 	src/remmina_connection_window.c
@@ -74,6 +73,8 @@ set(REMMINA_SRCS
 	src/remmina_marshals.c
 	src/remmina_marshals.h
 	src/remmina_marshals.list
+	src/remmina_masterthread_exec.c
+	src/remmina_masterthread_exec.h
 	src/remmina_plugin_manager.c
 	src/remmina_plugin_manager.h
 	src/remmina_pref.c
@@ -84,8 +85,6 @@ set(REMMINA_SRCS
 	src/remmina_protocol_widget.h
 	src/remmina_public.c
 	src/remmina_public.h
-	src/remmina_scaler.c
-	src/remmina_scaler.h
 	src/remmina_scrolled_viewport.c
 	src/remmina_scrolled_viewport.h
 	src/remmina_sftp_client.c
@@ -137,17 +136,26 @@ if(AVAHI_FOUND)
 	target_link_libraries(remmina ${AVAHI_LIBRARIES})
 endif()
 
-if(GTK3_FOUND)
-	set(_VTE_VERSION_NUM 2.90)
-else()
+option(WITH_VTE "Build with support for VTE" ON)
+if(GTK3_FOUND AND WITH_VTE)
+	set(_VTE_VERSION_NUMS 2.91 2.90)
+	foreach(__VTE_VERSION ${_VTE_VERSION_NUMS})
+		set(_VTE_VERSION_NUM ${__VTE_VERSION})
+		find_package(VTE)
+		if(VTE_FOUND)
+			break()
+		endif()
+		message(STATUS "VTE ${__VTE_VERSION} not found")
+	endforeach(__VTE_VERSION)
+elseif(WITH_VTE)
 	set(_VTE_VERSION_NUM)
+	find_package(VTE)
 endif()
 
-find_suggested_package(VTE _VTE_VERSION_NUM)
-if(VTE_FOUND)
-	add_definitions(-DHAVE_LIBVTE)
-	include_directories(${VTE_INCLUDE_DIRS})
-	target_link_libraries(remmina ${VTE_LIBRARIES})
+if (VTE_FOUND)
+        add_definitions(-DHAVE_LIBVTE)
+        include_directories(${VTE_INCLUDE_DIRS})
+        target_link_libraries(remmina ${VTE_LIBRARIES})
 endif()
 
 if(GTK3_FOUND)
@@ -162,12 +170,19 @@ endif()
 if(WITH_TRANSLATIONS)
 	add_subdirectory(po)
 endif()
+
+set(REMMINA_EXTERNAL_TOOLS_DIR "${CMAKE_INSTALL_FULL_DATADIR}/remmina/external_tools")
+add_definitions( -DREMMINA_EXTERNAL_TOOLS_DIR="${REMMINA_EXTERNAL_TOOLS_DIR}" )
+
 add_subdirectory(icons)
 add_subdirectory(desktop)
 add_subdirectory(external_tools)
+add_subdirectory(ui)
 
 install(TARGETS remmina DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(DIRECTORY include/remmina/ DESTINATION include/remmina FILES_MATCHING PATTERN "*.h")
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina.pc.in ${CMAKE_CURRENT_BINARY_DIR}/remmina.pc @ONLY)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+
 

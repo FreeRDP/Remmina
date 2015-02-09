@@ -1,6 +1,7 @@
 #!/bin/sh
 
-. $(dirname $0)/pause.sh
+. $(dirname $0)/functions.sh
+settitle
 
 traceroute $server
 

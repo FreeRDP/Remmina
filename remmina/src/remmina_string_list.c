@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2009 - Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -37,10 +38,12 @@
 #include "config.h"
 #include "remmina_public.h"
 #include "remmina_string_list.h"
+#include "remmina/remmina_trace_calls.h"
 
 G_DEFINE_TYPE( RemminaStringList, remmina_string_list, GTK_TYPE_GRID)
 
 #define ERROR_COLOR "red"
+const GdkRGBA ErrorColor = { 1.0, 0.0, 0.0, 1.0 };
 
 enum
 {
@@ -51,21 +54,21 @@ enum
 
 static void remmina_string_list_status_error(RemminaStringList *gsl, const gchar *error)
 {
-	GdkColor color;
-
-	gdk_color_parse(ERROR_COLOR, &color);
-	gtk_widget_modify_fg(gsl->status_label, GTK_STATE_NORMAL, &color);
+	TRACE_CALL("remmina_string_list_status_error");
+	gtk_widget_override_color(gsl->status_label, GTK_STATE_FLAG_NORMAL, &ErrorColor);
 	gtk_label_set_text(GTK_LABEL(gsl->status_label), error);
 }
 
 static void remmina_string_list_status_hints(RemminaStringList *gsl)
 {
-	gtk_widget_modify_fg(gsl->status_label, GTK_STATE_NORMAL, NULL);
+	TRACE_CALL("remmina_string_list_status_hints");
+	gtk_widget_override_color(gsl->status_label, GTK_STATE_NORMAL, NULL);
 	gtk_label_set_text(GTK_LABEL(gsl->status_label), gsl->hints);
 }
 
 static void remmina_string_list_add(GtkWidget *widget, RemminaStringList *gsl)
 {
+	TRACE_CALL("remmina_string_list_add");
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 	GtkTreePath *path;
@@ -83,6 +86,7 @@ static void remmina_string_list_add(GtkWidget *widget, RemminaStringList *gsl)
 
 static void remmina_string_list_remove(GtkWidget *widget, RemminaStringList *gsl)
 {
+	TRACE_CALL("remmina_string_list_remove");
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 
@@ -96,6 +100,7 @@ static void remmina_string_list_remove(GtkWidget *widget, RemminaStringList *gsl
 
 static void remmina_string_list_move(RemminaStringList *gsl, GtkTreeIter *from, GtkTreeIter *to)
 {
+	TRACE_CALL("remmina_string_list_move");
 	GtkTreePath *path;
 
 	gtk_list_store_swap(gsl->store, from, to);
@@ -106,6 +111,7 @@ static void remmina_string_list_move(RemminaStringList *gsl, GtkTreeIter *from, 
 
 static void remmina_string_list_down(GtkWidget *widget, RemminaStringList *gsl)
 {
+	TRACE_CALL("remmina_string_list_down");
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 	GtkTreeIter target_iter;
@@ -123,6 +129,7 @@ static void remmina_string_list_down(GtkWidget *widget, RemminaStringList *gsl)
 
 static void remmina_string_list_up(GtkWidget *widget, RemminaStringList *gsl)
 {
+	TRACE_CALL("remmina_string_list_up");
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 	GtkTreeIter target_iter;
@@ -145,6 +152,7 @@ static void remmina_string_list_up(GtkWidget *widget, RemminaStringList *gsl)
 static void remmina_string_list_cell_edited(GtkCellRendererText *cell, const gchar *path_string, const gchar *new_text,
 		RemminaStringList *gsl)
 {
+	TRACE_CALL("remmina_string_list_cell_edited");
 	gchar *text, *ptr, *error;
 	GtkTreePath *path = gtk_tree_path_new_from_string(path_string);
 	GtkTreeIter iter;
@@ -183,10 +191,12 @@ static void remmina_string_list_cell_edited(GtkCellRendererText *cell, const gch
 
 static void remmina_string_list_class_init(RemminaStringListClass *klass)
 {
+	TRACE_CALL("remmina_string_list_class_init");
 }
 
 static void remmina_string_list_init(RemminaStringList *gsl)
 {
+	TRACE_CALL("remmina_string_list_init");
 	GtkWidget *widget;
 	GtkWidget *image;
 	GtkWidget *scrolled_window;
@@ -203,9 +213,9 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	gtk_widget_set_hexpand(frame, TRUE);
 	gtk_widget_set_vexpand(frame, TRUE);
 #if GTK_CHECK_VERSION(3, 12, 0)
-	gtk_widget_set_margin_end (GTK_FRAME(frame), 80);
+	gtk_widget_set_margin_end (GTK_WIDGET(frame), 80);
 #else
-	gtk_widget_set_margin_right (GTK_FRAME(frame), 80);
+	gtk_widget_set_margin_right (frame, 80);
 #endif
 	gtk_grid_attach(GTK_GRID(gsl), frame, 0, 0, 1, 1);
 
@@ -228,12 +238,9 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 	gtk_tree_view_append_column(GTK_TREE_VIEW(gsl->list), column);
 
 	/* buttons packed into a vbox */
-#if GTK_VERSION == 3
 	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-#elif GTK_VERSION == 2
-	vbox = gtk_vbox_new(FALSE, 0);
-#endif
 	gtk_widget_show(vbox);
+	gtk_box_set_spacing(GTK_BOX(vbox), 4.0);
 	gtk_grid_attach(GTK_GRID(gsl), vbox, 1, 0, 2, 1);
 
 	image = gtk_image_new_from_icon_name("list-add", GTK_ICON_SIZE_MENU);
@@ -284,11 +291,13 @@ static void remmina_string_list_init(RemminaStringList *gsl)
 GtkWidget*
 remmina_string_list_new(void)
 {
+	TRACE_CALL("remmina_string_list_new");
 	return GTK_WIDGET(g_object_new(REMMINA_TYPE_STRING_LIST, NULL));
 }
 
 void remmina_string_list_set_auto_sort(RemminaStringList *gsl, gboolean auto_sort)
 {
+	TRACE_CALL("remmina_string_list_set_auto_sort");
 	if (auto_sort)
 	{
 		gtk_widget_hide(gsl->up_button);
@@ -306,12 +315,14 @@ void remmina_string_list_set_auto_sort(RemminaStringList *gsl, gboolean auto_sor
 
 void remmina_string_list_set_hints(RemminaStringList *gsl, const gchar *hints)
 {
+	TRACE_CALL("remmina_string_list_set_hints");
 	gsl->hints = hints;
 	remmina_string_list_status_hints(gsl);
 }
 
 void remmina_string_list_set_text(RemminaStringList *gsl, const gchar *text)
 {
+	TRACE_CALL("remmina_string_list_set_text");
 	GtkTreeIter iter;
 	gchar *buf, *ptr1, *ptr2;
 
@@ -337,6 +348,7 @@ void remmina_string_list_set_text(RemminaStringList *gsl, const gchar *text)
 gchar*
 remmina_string_list_get_text(RemminaStringList *gsl)
 {
+	TRACE_CALL("remmina_string_list_get_text");
 	GString *str;
 	GtkTreeIter iter;
 	gboolean first, ret;
@@ -379,6 +391,7 @@ remmina_string_list_get_text(RemminaStringList *gsl)
 
 void remmina_string_list_set_validation_func(RemminaStringList *gsl, RemminaStringListValidationFunc func)
 {
+	TRACE_CALL("remmina_string_list_set_validation_func");
 	gsl->validation_func = func;
 }
 

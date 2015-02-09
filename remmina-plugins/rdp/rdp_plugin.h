@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010-2011 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,14 +44,17 @@
 #include <freerdp/gdi/gdi.h>
 #include <freerdp/gdi/dc.h>
 #include <freerdp/gdi/region.h>
+#include <freerdp/client/cliprdr.h>
 #include <gdk/gdkx.h>
+
+#include <winpr/clipboard.h>
 
 typedef struct rf_context rfContext;
 
 #define LOCK_BUFFER(t)	  	if (t) {CANCEL_DEFER} pthread_mutex_lock(&rfi->mutex);
 #define UNLOCK_BUFFER(t)	pthread_mutex_unlock(&rfi->mutex); if (t) {CANCEL_ASYNC}
 
-#define GET_DATA(_rfi)		(rfContext*) g_object_get_data(G_OBJECT(_rfi), "plugin-data")
+#define GET_PLUGIN_DATA(gp) (rfContext*) g_object_get_data(G_OBJECT(gp), "plugin-data")
 
 #define DEFAULT_QUALITY_0	0x6f
 #define DEFAULT_QUALITY_1	0x07
@@ -58,6 +62,30 @@ typedef struct rf_context rfContext;
 #define DEFAULT_QUALITY_9	0x80
 
 extern RemminaPluginService* remmina_plugin_service;
+
+
+
+
+struct rf_clipboard
+{
+	rfContext* rfi;
+	CliprdrClientContext* context;
+	BOOL sync;
+	wClipboard* system;
+	int requestedFormatId;
+
+	gboolean clipboard_wait;
+	UINT32 format;
+	gulong clipboard_handler;
+
+
+	pthread_mutex_t transfer_clip_mutex;
+	pthread_cond_t transfer_clip_cond;
+	enum  { SCDW_NONE, SCDW_BUSY_WAIT, SCDW_ASYNCWAIT } srv_clip_data_wait ;
+	gpointer srv_data;
+
+};
+typedef struct rf_clipboard rfClipboard;
 
 struct rf_pointer
 {
@@ -90,15 +118,14 @@ struct rf_context
 	/* main */
 	rdpSettings* settings;
 	freerdp* instance;
-	// rdpChannels* channels;
 
 	pthread_t thread;
 	pthread_mutex_t mutex;
 	gboolean scale;
 	gboolean user_cancelled;
+	gboolean thread_cancelled;
 
-	GMutex* gmutex;
-	GCond* gcond;
+	CliprdrClientContext* cliprdr;
 
 	RDP_PLUGIN_DATA rdpdr_data[5];
 	RDP_PLUGIN_DATA drdynvc_data[5];
@@ -137,14 +164,13 @@ struct rf_context
 	GAsyncQueue* ui_queue;
 	guint ui_handler;
 
+
+
 	GArray* pressed_keys;
 	GAsyncQueue* event_queue;
 	gint event_pipe[2];
 
-	GAsyncQueue* clipboard_queue;
-	UINT32 format;
-	gboolean clipboard_wait;
-	gulong clipboard_handler;
+	rfClipboard clipboard;
 };
 
 typedef enum
@@ -181,14 +207,17 @@ typedef enum
 	REMMINA_RDP_UI_CURSOR,
 	REMMINA_RDP_UI_RFX,
 	REMMINA_RDP_UI_NOCODEC,
-	REMMINA_RDP_UI_CLIPBOARD
+	REMMINA_RDP_UI_CLIPBOARD,
+	REMMINA_RDP_UI_EVENT
 } RemminaPluginRdpUiType;
 
 typedef enum
 {
+	REMMINA_RDP_UI_CLIPBOARD_MONITORREADY,
 	REMMINA_RDP_UI_CLIPBOARD_FORMATLIST,
 	REMMINA_RDP_UI_CLIPBOARD_GET_DATA,
-	REMMINA_RDP_UI_CLIPBOARD_SET_DATA
+	REMMINA_RDP_UI_CLIPBOARD_SET_DATA,
+	REMMINA_RDP_UI_CLIPBOARD_SET_CONTENT
 } RemminaPluginRdpUiClipboardType;
 
 typedef enum
@@ -200,9 +229,16 @@ typedef enum
 	REMMINA_RDP_POINTER_DEFAULT
 } RemminaPluginRdpUiPointerType;
 
+typedef enum
+{
+	REMMINA_RDP_UI_EVENT_UPDATE_SCALE
+} RemminaPluginRdpUiEeventType;
+
 struct remmina_plugin_rdp_ui_object
 {
 	RemminaPluginRdpUiType type;
+	gboolean sync;
+	pthread_mutex_t sync_wait_mutex;
 	union
 	{
 		struct
@@ -236,7 +272,12 @@ struct remmina_plugin_rdp_ui_object
 			RemminaPluginRdpUiClipboardType type;
 			GtkTargetList* targetlist;
 			UINT32 format;
+			rfClipboard* clipboard;
+			gpointer data;
 		} clipboard;
+		struct {
+			RemminaPluginRdpUiEeventType type;
+		} event;
 	};
 };
 typedef struct remmina_plugin_rdp_ui_object RemminaPluginRdpUiObject;

@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,42 +32,48 @@
  *  files in the program, then also delete it here.
  *
  */
- 
 
-#ifndef __REMMINACHAINBUTTON_H__
-#define __REMMINACHAINBUTTON_H__
+#include "common/remmina_plugin.h"
+#if GTK_VERSION == 3
+#  include <gtk/gtkx.h>
+#endif
+#include "plugin.h"
 
-G_BEGIN_DECLS
+static RemminaPluginService *remmina_plugin_service = NULL;
 
-#define REMMINA_TYPE_CHAIN_BUTTON               (remmina_chain_button_get_type ())
-#define REMMINA_CHAIN_BUTTON(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_CHAIN_BUTTON, RemminaChainButton))
-#define REMMINA_CHAIN_BUTTON_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_CHAIN_BUTTON, RemminaChainButtonClass))
-#define REMMINA_IS_CHAIN_BUTTON(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_CHAIN_BUTTON))
-#define REMMINA_IS_CHAIN_BUTTON_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_CHAIN_BUTTON))
-#define REMMINA_CHAIN_BUTTON_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_CHAIN_BUTTON, RemminaChainButtonClass))
-
-typedef struct _RemminaChainButton
+/* Protocol plugin definition and features */
+static RemminaToolPlugin remmina_plugin_tool =
 {
-    GtkGrid table;
+	REMMINA_PLUGIN_TYPE_TOOL,                     // Type
+	"HELLO",                                      // Name
+	"Hello world!",                               // Description
+	GETTEXT_PACKAGE,                              // Translation domain
+	VERSION,                                      // Version number
+	remmina_plugin_tool_activate                  // Plugin activation callback
+};
 
-    gboolean chained;
-    GtkWidget* chain_image;
-} RemminaChainButton;
-
-typedef struct _RemminaChainButtonClass
+/* Tool plugin activation */
+static void remmina_plugin_tool_activate(void)
 {
-    GtkGridClass parent_class;
+	GtkDialog *dialog;
+	dialog = GTK_DIALOG(gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL | GTK_DIALOG_USE_HEADER_BAR,
+		GTK_MESSAGE_INFO, GTK_BUTTONS_OK, remmina_plugin_tool.description));
+	gtk_dialog_run(dialog);
+	gtk_widget_destroy(GTK_WIDGET(dialog));
+}
 
-    void (* chain_toggled) (RemminaChainButton* cb);
-} RemminaChainButtonClass;
+G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
+{
+	TRACE_CALL("remmina_plugin_entry");
+	remmina_plugin_service = service;
 
-GType remmina_chain_button_get_type(void) G_GNUC_CONST;
+	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
+	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 
-GtkWidget* remmina_chain_button_new(void);
+	if (!service->register_plugin((RemminaPlugin *) &remmina_plugin_tool))
+	{
+		return FALSE;
+	}
 
-void remmina_chain_button_set (RemminaChainButton* cb, gboolean chained);
-
-G_END_DECLS
-
-#endif  /* __REMMINACHAINBUTTON_H__  */
-
+	return TRUE;
+}

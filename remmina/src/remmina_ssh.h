@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -87,7 +88,7 @@ gboolean remmina_ssh_init_session (RemminaSSH *ssh);
 gint remmina_ssh_auth (RemminaSSH *ssh, const gchar *password);
 
 /* -1: Cancelled; 0: Failed; 1: Succeeded */
-gint remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, gboolean threaded);
+gint remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog);
 
 /* Error handling */
 #define remmina_ssh_has_error(ssh) (((RemminaSSH*)ssh)->error!=NULL)

@@ -3,6 +3,7 @@
  * Copyright (C) 2010 Jay Sorg
  * Copyright (C) 2010-2011 Vic Lee
  * Copyright (C) 2011 Marc-Andre Moreau <marcandre.moreau@gmail.com>
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +17,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -49,6 +50,7 @@
 
 void rf_Bitmap_New(rdpContext* context, rdpBitmap* bitmap)
 {
+	TRACE_CALL("rf_Bitmap_New");
 #ifdef RF_BITMAP
 	UINT8* data;
 	Pixmap pixmap;
@@ -89,6 +91,7 @@ void rf_Bitmap_New(rdpContext* context, rdpBitmap* bitmap)
 
 void rf_Bitmap_Free(rdpContext* context, rdpBitmap* bitmap)
 {
+	TRACE_CALL("rf_Bitmap_Free");
 #ifdef RF_BITMAP
 	rfContext* rfi = (rfContext*) context;
 
@@ -101,6 +104,7 @@ void rf_Bitmap_Free(rdpContext* context, rdpBitmap* bitmap)
 
 void rf_Bitmap_Paint(rdpContext* context, rdpBitmap* bitmap)
 {
+	TRACE_CALL("rf_Bitmap_Paint");
 #ifdef RF_BITMAP
 	XImage* image;
 	int width, height;
@@ -131,6 +135,7 @@ void rf_Bitmap_Paint(rdpContext* context, rdpBitmap* bitmap)
 void rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
 	BYTE* data, int width, int height, int bpp, int length, BOOL compressed, int codec_id)
 {
+	TRACE_CALL("rf_Bitmap_Decompress");
 #ifdef RF_BITMAP
 	UINT16 size;
 
@@ -167,6 +172,7 @@ void rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
 
 void rf_Bitmap_SetSurface(rdpContext* context, rdpBitmap* bitmap, BOOL primary)
 {
+	TRACE_CALL("rf_Bitmap_SetSurface");
 #ifdef RF_BITMAP
 	rfContext* rfi = (rfContext*) context;
 
@@ -181,6 +187,7 @@ void rf_Bitmap_SetSurface(rdpContext* context, rdpBitmap* bitmap, BOOL primary)
 
 void rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 {
+	TRACE_CALL("rf_Pointer_New");
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 
@@ -188,6 +195,7 @@ void rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 	{
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_CURSOR;
+		ui->sync = TRUE;	// Also wait for completion
 		ui->cursor.pointer = (rfPointer*) pointer;
 		ui->cursor.type = REMMINA_RDP_POINTER_NEW;
 
@@ -197,6 +205,7 @@ void rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 
 void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 {
+	TRACE_CALL("rf_Pointer_Free");
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 
@@ -208,31 +217,23 @@ void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 	{
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_CURSOR;
+		ui->sync = TRUE;	// Also wait for completion
 		ui->cursor.pointer = (rfPointer*) pointer;
 		ui->cursor.type = REMMINA_RDP_POINTER_FREE;
 
 		rf_queue_ui(rfi->protocol_widget, ui);
-
-		g_mutex_lock(rfi->gmutex);
-#if GTK_VERSION == 2
-		while (((rfPointer*) pointer)->cursor != NULL)
-#else	
-		while (G_IS_OBJECT(((rfPointer*) pointer)->cursor))
-#endif
-		{
-			g_cond_wait(rfi->gcond, rfi->gmutex);
-		}
-		g_mutex_unlock(rfi->gmutex);
 	}
 }
 
 void rf_Pointer_Set(rdpContext* context, rdpPointer* pointer)
 {
+	TRACE_CALL("rf_Pointer_Set");
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CURSOR;
+	ui->sync = TRUE;	// Also wait for completion
 	ui->cursor.pointer = (rfPointer*) pointer;
 	ui->cursor.type = REMMINA_RDP_POINTER_SET;
 
@@ -241,11 +242,13 @@ void rf_Pointer_Set(rdpContext* context, rdpPointer* pointer)
 
 void rf_Pointer_SetNull(rdpContext* context)
 {
+	TRACE_CALL("rf_Pointer_SetNull");
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CURSOR;
+	ui->sync = TRUE;	// Also wait for completion
 	ui->cursor.type = REMMINA_RDP_POINTER_NULL;
 
 	rf_queue_ui(rfi->protocol_widget, ui);
@@ -253,11 +256,13 @@ void rf_Pointer_SetNull(rdpContext* context)
 
 void rf_Pointer_SetDefault(rdpContext* context)
 {
+	TRACE_CALL("rf_Pointer_SetDefault");
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CURSOR;
+	ui->sync = TRUE;	// Also wait for completion
 	ui->cursor.type = REMMINA_RDP_POINTER_DEFAULT;
 
 	rf_queue_ui(rfi->protocol_widget, ui);
@@ -267,6 +272,7 @@ void rf_Pointer_SetDefault(rdpContext* context)
 
 void rf_Glyph_New(rdpContext* context, rdpGlyph* glyph)
 {
+	TRACE_CALL("rf_Glyph_New");
 #ifdef RF_GLYPH
 	int scanline;
 	XImage* image;
@@ -294,6 +300,7 @@ void rf_Glyph_New(rdpContext* context, rdpGlyph* glyph)
 
 void rf_Glyph_Free(rdpContext* context, rdpGlyph* glyph)
 {
+	TRACE_CALL("rf_Glyph_Free");
 #ifdef RF_GLYPH
 	rfContext* rfi = (rfContext*) context;
 
@@ -304,6 +311,7 @@ void rf_Glyph_Free(rdpContext* context, rdpGlyph* glyph)
 
 void rf_Glyph_Draw(rdpContext* context, rdpGlyph* glyph, int x, int y)
 {
+	TRACE_CALL("rf_Glyph_Draw");
 #ifdef RF_GLYPH
 	rfGlyph* rf_glyph;
 	rfContext* rfi = (rfContext*) context;
@@ -317,8 +325,9 @@ void rf_Glyph_Draw(rdpContext* context, rdpGlyph* glyph, int x, int y)
 #endif
 }
 
-void rf_Glyph_BeginDraw(rdpContext* context, int x, int y, int width, int height, UINT32 bgcolor, UINT32 fgcolor)
+void rf_Glyph_BeginDraw(rdpContext* context, int x, int y, int width, int height, UINT32 bgcolor, UINT32 fgcolor, BOOL fOpRedundant)
 {
+	TRACE_CALL("rf_Glyph_BeginDraw");
 #ifdef RF_GLYPH
 	rfContext* rfi = (rfContext*) context;
 
@@ -343,6 +352,7 @@ void rf_Glyph_BeginDraw(rdpContext* context, int x, int y, int width, int height
 
 void rf_Glyph_EndDraw(rdpContext* context, int x, int y, int width, int height, UINT32 bgcolor, UINT32 fgcolor)
 {
+	TRACE_CALL("rf_Glyph_EndDraw");
 #ifdef RF_GLYPH
 	rfContext* rfi = (rfContext*) context;
 
@@ -358,6 +368,7 @@ void rf_Glyph_EndDraw(rdpContext* context, int x, int y, int width, int height, 
 
 void rf_register_graphics(rdpGraphics* graphics)
 {
+	TRACE_CALL("rf_register_graphics");
 	rdpBitmap* bitmap;
 	rdpPointer* pointer;
 	rdpGlyph* glyph;

@@ -1,6 +1,7 @@
 # desktop/remmina - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2011 Marc-Andre Moreau
+# Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -53,3 +54,4 @@ install(FILES ${ICON48_DATA} DESTINATION ${ICON48_DIR})
 install(FILES ${ICONSVG_DATA} DESTINATION ${ICONSVG_DIR})
 
 install(FILES remmina.desktop DESTINATION "${REMMINA_DATADIR}/applications")
+install(FILES remmina.appdata.xml DESTINATION "${REMMINA_DATADIR}/appdata")

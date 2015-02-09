@@ -1,6 +1,6 @@
-# po/remmina-plugins - The GTK+ Remote Desktop Client
+# desktop/remmina - The GTK+ Remote Desktop Client
 #
-# Copyright (C) 2011 Marc-Andre Moreau
+# Copyright (C) 2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, 
+# Foundation, Inc., 59 Temple Place, Suite 330,
 # Boston, MA 02111-1307, USA.
 #
 # In addition, as a special exception, the copyright holders give
@@ -31,6 +31,5 @@
 # files in the program, then also delete it here.
 
 
-include(GETTEXT)
-gettext(${CMAKE_CURRENT_SOURCE_DIR} "remmina-plugins")
-
+install(FILES remmina_about.glade DESTINATION "${REMMINA_UIDIR}")
+install(FILES remmina_main.glade DESTINATION "${REMMINA_UIDIR}")

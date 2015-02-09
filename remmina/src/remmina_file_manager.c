@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,9 +39,11 @@
 #include "remmina_string_array.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_file_manager.h"
+#include "remmina/remmina_trace_calls.h"
 
 void remmina_file_manager_init(void)
 {
+	TRACE_CALL("remmina_file_manager_init");
 	gchar dirname[MAX_PATH_LEN];
 
 	g_snprintf(dirname, MAX_PATH_LEN, "%s/.remmina", g_get_home_dir());
@@ -49,39 +52,40 @@ void remmina_file_manager_init(void)
 
 gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 {
+	TRACE_CALL("remmina_file_manager_iterate");
 	gchar dirname[MAX_PATH_LEN];
 	gchar filename[MAX_PATH_LEN];
 	GDir* dir;
 	const gchar* name;
 	RemminaFile* remminafile;
-	gint n;
+	gint items_count = 0;
 
 	g_snprintf(dirname, MAX_PATH_LEN, "%s/.remmina", g_get_home_dir());
 	dir = g_dir_open(dirname, 0, NULL);
 
-	if (dir == NULL)
-		return 0;
-
-	n = 0;
-	while ((name = g_dir_read_name(dir)) != NULL)
+	if (dir)
 	{
-		if (!g_str_has_suffix(name, ".remmina"))
-			continue;
-		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", dirname, name);
-		remminafile = remmina_file_load(filename);
-		if (remminafile)
+		while ((name = g_dir_read_name(dir)) != NULL)
 		{
-			(*func)(remminafile, user_data);
-			remmina_file_free(remminafile);
-			n++;
+			if (!g_str_has_suffix(name, ".remmina"))
+				continue;
+			g_snprintf(filename, MAX_PATH_LEN, "%s/%s", dirname, name);
+			remminafile = remmina_file_load(filename);
+			if (remminafile)
+			{
+				(*func)(remminafile, user_data);
+				remmina_file_free(remminafile);
+				items_count++;
+			}
 		}
+		g_dir_close(dir);
 	}
-	g_dir_close(dir);
-	return n;
+	return items_count;
 }
 
 gchar* remmina_file_manager_get_groups(void)
 {
+	TRACE_CALL("remmina_file_manager_get_groups");
 	gchar dirname[MAX_PATH_LEN];
 	gchar filename[MAX_PATH_LEN];
 	GDir* dir;
@@ -119,6 +123,7 @@ gchar* remmina_file_manager_get_groups(void)
 
 static void remmina_file_manager_add_group(GNode* node, const gchar* group)
 {
+	TRACE_CALL("remmina_file_manager_add_group");
 	gint cmp;
 	gchar* p1;
 	gchar* p2;
@@ -182,6 +187,7 @@ static void remmina_file_manager_add_group(GNode* node, const gchar* group)
 
 GNode* remmina_file_manager_get_group_tree(void)
 {
+	TRACE_CALL("remmina_file_manager_get_group_tree");
 	gchar dirname[MAX_PATH_LEN];
 	gchar filename[MAX_PATH_LEN];
 	GDir* dir;
@@ -212,6 +218,7 @@ GNode* remmina_file_manager_get_group_tree(void)
 
 void remmina_file_manager_free_group_tree(GNode* node)
 {
+	TRACE_CALL("remmina_file_manager_free_group_tree");
 	RemminaGroupData* data;
 	GNode* child;
 
@@ -234,6 +241,7 @@ void remmina_file_manager_free_group_tree(GNode* node)
 
 RemminaFile* remmina_file_manager_load_file(const gchar* filename)
 {
+	TRACE_CALL("remmina_file_manager_load_file");
 	RemminaFile* remminafile = NULL;
 	RemminaFilePlugin* plugin;
 	gchar* p;

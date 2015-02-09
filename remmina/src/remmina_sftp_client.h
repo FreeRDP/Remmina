@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -74,6 +75,7 @@ GType remmina_sftp_client_get_type (void) G_GNUC_CONST;
 GtkWidget* remmina_sftp_client_new (void);
 
 void remmina_sftp_client_open (RemminaSFTPClient *client, RemminaSFTP *sftp);
+gint remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path);
 
 G_END_DECLS
 

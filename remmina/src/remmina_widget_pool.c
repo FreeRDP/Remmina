@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009 - Vic Lee 
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,6 +36,7 @@
 #include <gtk/gtk.h>
 #include "remmina_public.h"
 #include "remmina_widget_pool.h"
+#include "remmina/remmina_trace_calls.h"
 
 static GPtrArray *remmina_widget_pool = NULL;
 
@@ -44,6 +46,7 @@ static gboolean remmina_widget_pool_on_hold = FALSE;
 
 static gboolean remmina_widget_pool_try_quit(gpointer data)
 {
+	TRACE_CALL("remmina_widget_pool_try_quit");
 	if (remmina_widget_pool->len == 0 && !remmina_widget_pool_on_hold)
 	{
 		gtk_main_quit();
@@ -54,12 +57,14 @@ static gboolean remmina_widget_pool_try_quit(gpointer data)
 
 void remmina_widget_pool_init(void)
 {
+	TRACE_CALL("remmina_widget_pool_init");
 	remmina_widget_pool = g_ptr_array_new();
 	remmina_widget_pool_try_quit_handler = g_timeout_add(15000, remmina_widget_pool_try_quit, NULL);
 }
 
 static void remmina_widget_pool_on_widget_destroy(GtkWidget *widget, gpointer data)
 {
+	TRACE_CALL("remmina_widget_pool_on_widget_destroy");
 	g_ptr_array_remove(remmina_widget_pool, widget);
 	if (remmina_widget_pool->len == 0 && remmina_widget_pool_try_quit_handler == 0)
 	{
@@ -70,6 +75,7 @@ static void remmina_widget_pool_on_widget_destroy(GtkWidget *widget, gpointer da
 
 void remmina_widget_pool_register(GtkWidget *widget)
 {
+	TRACE_CALL("remmina_widget_pool_register");
 	g_ptr_array_add(remmina_widget_pool, widget);
 	g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_widget_pool_on_widget_destroy), NULL);
 	if (remmina_widget_pool_try_quit_handler)
@@ -82,6 +88,7 @@ void remmina_widget_pool_register(GtkWidget *widget)
 GtkWidget*
 remmina_widget_pool_find(GType type, const gchar *tag)
 {
+	TRACE_CALL("remmina_widget_pool_find");
 	GtkWidget *widget;
 	gint i;
 	GdkScreen *screen;
@@ -114,6 +121,7 @@ remmina_widget_pool_find(GType type, const gchar *tag)
 GtkWidget*
 remmina_widget_pool_find_by_window(GType type, GdkWindow *window)
 {
+	TRACE_CALL("remmina_widget_pool_find_by_window");
 	GtkWidget *widget;
 	gint i;
 	GdkWindow *parent;
@@ -138,6 +146,7 @@ remmina_widget_pool_find_by_window(GType type, GdkWindow *window)
 
 void remmina_widget_pool_hold(gboolean hold)
 {
+	TRACE_CALL("remmina_widget_pool_hold");
 	remmina_widget_pool_on_hold = hold;
 	if (!hold && remmina_widget_pool_try_quit_handler == 0)
 	{
@@ -147,6 +156,7 @@ void remmina_widget_pool_hold(gboolean hold)
 
 gint remmina_widget_pool_foreach(RemminaWidgetPoolForEachFunc callback, gpointer data)
 {
+	TRACE_CALL("remmina_widget_pool_foreach");
 	GtkWidget *widget;
 	gint i;
 	gint n = 0;

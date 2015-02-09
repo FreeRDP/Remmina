@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -53,16 +54,19 @@ G_DEFINE_TYPE_WITH_CODE (RemminaTpHandler, remmina_tp_handler, G_TYPE_OBJECT,
 
 		static void remmina_tp_handler_class_init(RemminaTpHandlerClass *klass)
 		{
+			TRACE_CALL("remmina_tp_handler_class_init");
 		}
 
 		static void remmina_tp_handler_init(RemminaTpHandler *handler)
 		{
+			TRACE_CALL("remmina_tp_handler_init");
 		}
 
 		static void remmina_tp_handler_handle_channels(TpSvcClientHandler *handler, const char *account_path,
 				const char *connection_path, const GPtrArray *channels, const GPtrArray *requests_satisfied,
 				guint64 user_action_time, GHashTable *handler_info, DBusGMethodInvocation *context)
 		{
+			TRACE_CALL("remmina_tp_handler_handle_channels");
 			gint i;
 			GValueArray *array;
 
@@ -77,6 +81,7 @@ G_DEFINE_TYPE_WITH_CODE (RemminaTpHandler, remmina_tp_handler, G_TYPE_OBJECT,
 
 		static void remmina_tp_handler_iface_init(gpointer g_iface, gpointer iface_data)
 		{
+			TRACE_CALL("remmina_tp_handler_iface_init");
 			TpSvcClientHandlerClass *klass = (TpSvcClientHandlerClass *) g_iface;
 
 #define IMPLEMENT(x) tp_svc_client_handler_implement_##x (klass, remmina_tp_handler_##x)
@@ -86,6 +91,7 @@ G_DEFINE_TYPE_WITH_CODE (RemminaTpHandler, remmina_tp_handler, G_TYPE_OBJECT,
 
 		static gboolean remmina_tp_handler_register(RemminaTpHandler *handler)
 		{
+			TRACE_CALL("remmina_tp_handler_register");
 			TpDBusDaemon *bus;
 			GError *error = NULL;
 
@@ -112,6 +118,7 @@ G_DEFINE_TYPE_WITH_CODE (RemminaTpHandler, remmina_tp_handler, G_TYPE_OBJECT,
 		RemminaTpHandler*
 		remmina_tp_handler_new(void)
 		{
+			TRACE_CALL("remmina_tp_handler_new");
 			RemminaTpHandler *handler;
 
 			handler = REMMINA_TP_HANDLER(g_object_new(REMMINA_TYPE_TP_HANDLER, NULL));

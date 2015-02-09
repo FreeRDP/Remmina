@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -91,9 +92,6 @@ typedef struct _RemminaPref
 	gboolean applet_hide_count;
 	gboolean applet_enable_avahi;
 	gboolean disable_tray_icon;
-#ifdef ENABLE_MINIMIZE_TO_TRAY
-	gboolean minimize_to_tray;
-#endif
 
 	guint hostkey;
 	guint shortcutkey_fullscreen;
@@ -110,6 +108,7 @@ typedef struct _RemminaPref
 	gboolean hide_toolbar;
 	gboolean hide_statusbar;
 	gboolean show_quick_search;
+	gboolean hide_quick_connect;
 	gboolean small_toolbutton;
 	gint view_file_mode;
 
@@ -128,6 +127,9 @@ typedef struct _RemminaPref
 	/* VTE */
 	gchar *vte_font;
 	gboolean vte_allow_bold_text;
+	gboolean vte_system_colors;
+	gchar *vte_foreground_color;
+	gchar *vte_background_color;
 	gint vte_lines;
 	guint vte_shortcutkey_copy;
 	guint vte_shortcutkey_paste;

@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -37,22 +38,14 @@
 
 #include "config.h"
 
-/* Wrapper marcos to make the compiler happy on both signle/multi-threaded mode */
-#ifdef HAVE_PTHREAD
 #define IDLE_ADD        gdk_threads_add_idle
 #define TIMEOUT_ADD     gdk_threads_add_timeout
 #define CANCEL_ASYNC    pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS,NULL);pthread_testcancel();
 #define CANCEL_DEFER    pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED,NULL);
-#define THREADS_ENTER   gdk_threads_enter();pthread_cleanup_push(remmina_public_threads_leave,NULL);
-#define THREADS_LEAVE   pthread_cleanup_pop(TRUE);
-#else
-#define IDLE_ADD        g_idle_add
-#define TIMEOUT_ADD     g_timeout_add
-#define CANCEL_ASYNC
-#define CANCEL_DEFER
-#define THREADS_ENTER
-#define THREADS_LEAVE
-#endif
+
+#define THREADS_ENTER _Pragma("GCC error \"THREADS_ENTER has been deprecated in Remmina 1.2\"")
+#define THREADS_LEAVE _Pragma("GCC error \"THREADS_LEAVE has been deprecated in Remmina 1.2\"")
+
 
 #define MAX_PATH_LEN 255
 
@@ -60,6 +53,15 @@
 #define X_UNIX_SOCKET "/tmp/.X11-unix/X%d"
 
 #define STRING_DELIMITOR ','
+
+#define MOUSE_BUTTON_LEFT 1
+#define MOUSE_BUTTON_MIDDLE 2
+#define MOUSE_BUTTON_RIGHT 3
+
+/* Bind a template widget to its class member and callback */
+#define BIND_TEMPLATE_CHILD(wc, type, action, callback) \
+	gtk_widget_class_bind_template_child(wc, type, action); \
+	gtk_widget_class_bind_template_callback(wc, callback);
 
 G_BEGIN_DECLS
 
@@ -91,9 +93,13 @@ gint remmina_public_open_xdisplay(const gchar *disp);
 guint remmina_public_get_current_workspace(GdkScreen *screen);
 guint remmina_public_get_window_workspace(GtkWindow *gtkwindow);
 
-void remmina_public_threads_leave(void* data);
-
-G_END_DECLS
-
+/* Find hardware keycode for the requested keyval */
+guint16 remmina_public_get_keycode_for_keyval(GdkKeymap *keymap, guint keyval);
+/* Check if the requested keycode is a key modifier */
+gboolean remmina_public_get_modifier_for_keycode(GdkKeymap *keymap, guint16 keycode);
+/* Load a GtkBuilder object from a filename */
+GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename);
+/* Change parent container for a widget */
+void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *container);
 #endif  /* __REMMINAPUBLIC_H__  */
 

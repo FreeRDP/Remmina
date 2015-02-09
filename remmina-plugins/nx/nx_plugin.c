@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010-2011 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,6 +47,8 @@
 #include "nx_plugin.h"
 #include "nx_session_manager.h"
 
+#define REMMINA_PLUGIN_NX_FEATURE_TOOL_SENDCTRLALTDEL 1
+
 RemminaPluginService *remmina_plugin_nx_service = NULL;
 
 static gchar *remmina_kbtype = "pc102/us";
@@ -56,8 +59,84 @@ static gchar *remmina_kbtype = "pc102/us";
 static pthread_mutex_t remmina_nx_init_mutex;
 static GArray *remmina_nx_window_id_array;
 
+/* --------- Support for execution on main thread of GTK functions -------------- */
+
+struct onMainThread_cb_data {
+	enum { FUNC_GTK_SOCKET_ADD_ID } func;
+
+	GtkSocket* sk;
+	Window w;
+
+	/* Mutex for thread synchronization */
+	pthread_mutex_t mu;
+	/* Flag to catch cancellations */
+	gboolean cancelled;
+};
+
+static gboolean onMainThread_cb(struct onMainThread_cb_data *d)
+{
+	TRACE_CALL("onMainThread_cb");
+	if ( !d->cancelled ) {
+		switch( d->func ) {
+			case FUNC_GTK_SOCKET_ADD_ID:
+				gtk_socket_add_id( d->sk, d->w );
+				break;
+		}
+		pthread_mutex_unlock( &d->mu );
+	} else {
+		/* thread has been cancelled, so we must free d memory here */
+		g_free( d );
+	}
+	return G_SOURCE_REMOVE;
+}
+
+
+static void onMainThread_cleanup_handler( struct onMainThread_cb_data *d )
+{
+	TRACE_CALL("onMainThread_cleanup_handler");
+	d->cancelled = TRUE;
+}
+
+
+static void onMainThread_schedule_callback_and_wait( struct onMainThread_cb_data *d )
+{
+	TRACE_CALL("onMainThread_schedule_callback_and_wait");
+	d->cancelled = FALSE;
+	pthread_cleanup_push( onMainThread_cleanup_handler, (void *)d );
+	pthread_mutex_init( &d->mu, NULL );
+	pthread_mutex_lock( &d->mu );
+	gdk_threads_add_idle( (GSourceFunc)onMainThread_cb, (gpointer) d );
+
+	pthread_mutex_lock( &d->mu );
+
+	pthread_cleanup_pop(0);
+	pthread_mutex_unlock( &d->mu );
+	pthread_mutex_destroy( &d->mu );
+}
+
+static void onMainThread_gtk_socket_add_id( GtkSocket* sk, Window w)
+{
+	TRACE_CALL("onMainThread_gtk_socket_add_id");
+
+	struct onMainThread_cb_data *d;
+
+	d = (struct onMainThread_cb_data *)g_malloc( sizeof(struct onMainThread_cb_data) );
+	d->func = FUNC_GTK_SOCKET_ADD_ID;
+	d->sk = sk;
+	d->w = w;
+
+	onMainThread_schedule_callback_and_wait( d );
+	g_free(d);
+
+}
+
+
+/* --------------------------------------- */
+
+
 static gboolean remmina_plugin_nx_try_window_id(Window window_id)
 {
+	TRACE_CALL("remmina_plugin_nx_try_window_id");
 	gint i;
 	gboolean found = FALSE;
 
@@ -81,6 +160,7 @@ static gboolean remmina_plugin_nx_try_window_id(Window window_id)
 
 static void remmina_plugin_nx_remove_window_id(Window window_id)
 {
+	TRACE_CALL("remmina_plugin_nx_remove_window_id");
 	gint i;
 	gboolean found = FALSE;
 
@@ -102,21 +182,24 @@ static void remmina_plugin_nx_remove_window_id(Window window_id)
 
 static void remmina_plugin_nx_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_nx_on_plug_added");
 	remmina_plugin_nx_service->protocol_plugin_emit_signal(gp, "connect");
 }
 
 static void remmina_plugin_nx_on_plug_removed(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_nx_on_plug_removed");
 	remmina_plugin_nx_service->protocol_plugin_close_connection(gp);
 }
 
 gboolean remmina_plugin_nx_ssh_auth_callback(gchar **passphrase, gpointer userdata)
 {
+	TRACE_CALL("remmina_plugin_nx_ssh_auth_callback");
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget*) userdata;
 	gint ret;
 
-	THREADS_ENTER ret = remmina_plugin_nx_service->protocol_plugin_init_authpwd(gp, REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY);
-	THREADS_LEAVE
+	/* SSH passwords must not be saved */
+	ret = remmina_plugin_nx_service->protocol_plugin_init_authpwd(gp, REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY, FALSE);
 
 	if (ret != GTK_RESPONSE_OK)
 		return FALSE;
@@ -127,6 +210,7 @@ gboolean remmina_plugin_nx_ssh_auth_callback(gchar **passphrase, gpointer userda
 
 static void remmina_plugin_nx_on_proxy_exit(GPid pid, gint status, gpointer data)
 {
+	TRACE_CALL("remmina_plugin_nx_on_proxy_exit");
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget*) data;
 
 	remmina_plugin_nx_service->protocol_plugin_close_connection(gp);
@@ -134,14 +218,14 @@ static void remmina_plugin_nx_on_proxy_exit(GPid pid, gint status, gpointer data
 
 static int remmina_plugin_nx_dummy_handler(Display *dsp, XErrorEvent *err)
 {
+	TRACE_CALL("remmina_plugin_nx_dummy_handler");
 	return 0;
 }
 
 static gboolean remmina_plugin_nx_start_create_notify(RemminaProtocolWidget *gp)
 {
-	RemminaPluginNxData *gpdata;
-
-	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	TRACE_CALL("remmina_plugin_nx_start_create_notify");
+	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 
 	gpdata->display = XOpenDisplay(gdk_display_get_name(gdk_display_get_default()));
 	if (gpdata->display == NULL)
@@ -156,6 +240,7 @@ static gboolean remmina_plugin_nx_start_create_notify(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_nx_monitor_create_notify(RemminaProtocolWidget *gp, const gchar *cmd)
 {
+	TRACE_CALL("remmina_plugin_nx_monitor_create_notify");
 	RemminaPluginNxData *gpdata;
 	Atom atom;
 	XEvent xev;
@@ -168,7 +253,7 @@ static gboolean remmina_plugin_nx_monitor_create_notify(RemminaProtocolWidget *g
 
 	CANCEL_DEFER
 
-	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	gpdata = GET_PLUGIN_DATA(gp);
 	atom = XInternAtom(gpdata->display, "WM_COMMAND", True);
 	if (atom == None)
 		return FALSE;
@@ -211,6 +296,7 @@ static gboolean remmina_plugin_nx_monitor_create_notify(RemminaProtocolWidget *g
 
 static gint remmina_plugin_nx_wait_signal(RemminaPluginNxData *gpdata)
 {
+	TRACE_CALL("remmina_plugin_nx_wait_signal");
 	fd_set set;
 	guchar dummy = 0;
 
@@ -225,7 +311,8 @@ static gint remmina_plugin_nx_wait_signal(RemminaPluginNxData *gpdata)
 
 static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 {
-	RemminaPluginNxData *gpdata;
+	TRACE_CALL("remmina_plugin_nx_start_session");
+	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	RemminaNXSession *nx;
 	const gchar *type, *app;
@@ -236,8 +323,8 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 	gint event_type = 0;
 	const gchar *cs;
 	gint i;
+	gboolean disablepasswordstoring;
 
-	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_nx_service->protocol_plugin_get_file(gp);
 	nx = gpdata->nx;
 
@@ -267,8 +354,8 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 	/* Login */
 
 	s1 = g_strdup(remmina_plugin_nx_service->file_get_string(remminafile, "username"));
-	THREADS_ENTER s2 = remmina_plugin_nx_service->file_get_secret(remminafile, "password");
-	THREADS_LEAVE
+	s2 = remmina_plugin_nx_service->file_get_secret(remminafile, "password");
+
 	if (s1 && s2)
 	{
 		ret = remmina_nx_session_login(nx, s1, s2);
@@ -278,8 +365,8 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 		g_free(s1);
 		g_free(s2);
 
-		THREADS_ENTER ret = remmina_plugin_nx_service->protocol_plugin_init_authuserpwd(gp, FALSE);
-		THREADS_LEAVE
+		disablepasswordstoring = remmina_plugin_nx_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
+		ret = remmina_plugin_nx_service->protocol_plugin_init_authuserpwd(gp, FALSE, !disablepasswordstoring);
 
 		if (ret != GTK_RESPONSE_OK)
 			return FALSE;
@@ -294,9 +381,7 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 	if (!ret)
 		return FALSE;
 
-	THREADS_ENTER
 	remmina_plugin_nx_service->protocol_plugin_init_save_cred(gp);
-	THREADS_LEAVE
 
 	/* Prepare the session type and application */
 	cs = remmina_plugin_nx_service->file_get_string(remminafile, "exec");
@@ -455,20 +540,18 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 		return FALSE;
 
 	/* embed it */
-	THREADS_ENTER
-	gtk_socket_add_id(GTK_SOCKET(gpdata->socket), gpdata->window_id);
-	THREADS_LEAVE
+	onMainThread_gtk_socket_add_id(GTK_SOCKET(gpdata->socket), gpdata->window_id);
+
 
 	return TRUE;
 }
 
 static gboolean remmina_plugin_nx_main(RemminaProtocolWidget *gp)
 {
-	RemminaPluginNxData *gpdata;
+	TRACE_CALL("remmina_plugin_nx_main");
+	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 	gboolean ret;
 	const gchar *err;
-
-	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 
 	gpdata->nx = remmina_nx_session_new();
 	ret = remmina_plugin_nx_start_session(gp);
@@ -487,6 +570,7 @@ static gboolean remmina_plugin_nx_main(RemminaProtocolWidget *gp)
 
 static gpointer remmina_plugin_nx_main_thread(gpointer data)
 {
+	TRACE_CALL("remmina_plugin_nx_main_thread");
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 
 	CANCEL_ASYNC
@@ -499,6 +583,7 @@ static gpointer remmina_plugin_nx_main_thread(gpointer data)
 
 static void remmina_plugin_nx_init(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_nx_init");
 	RemminaPluginNxData *gpdata;
 	gint flags;
 
@@ -527,12 +612,12 @@ static void remmina_plugin_nx_init(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 {
-	RemminaPluginNxData *gpdata;
+	TRACE_CALL("remmina_plugin_nx_open_connection");
+	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	const gchar *resolution;
 	gint width, height;
 
-	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_nx_service->protocol_plugin_get_file(gp);
 
 	resolution = remmina_plugin_nx_service->file_get_string(remminafile, "resolution");
@@ -566,9 +651,8 @@ static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_nx_close_connection(RemminaProtocolWidget *gp)
 {
-	RemminaPluginNxData *gpdata;
-
-	gpdata = (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	TRACE_CALL("remmina_plugin_nx_close_connection");
+	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 
 	if (gpdata->thread)
 	{
@@ -607,48 +691,121 @@ static gboolean remmina_plugin_nx_close_connection(RemminaProtocolWidget *gp)
 	return FALSE;
 }
 
+/* Send CTRL+ALT+DEL keys keystrokes to the plugin socket widget */
+static void remmina_plugin_nx_send_ctrlaltdel(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL("remmina_plugin_xdmcp_send_ctrlaltdel");
+	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_Delete };
+	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
+
+	remmina_plugin_nx_service->protocol_plugin_send_keys_signals(gpdata->socket,
+		keys, G_N_ELEMENTS(keys), GDK_KEY_PRESS | GDK_KEY_RELEASE);
+}
+
 static gboolean remmina_plugin_nx_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-	return FALSE;
+	TRACE_CALL("remmina_plugin_nx_query_feature");
+	return TRUE;
 }
 
 static void remmina_plugin_nx_call_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
+	TRACE_CALL("remmina_plugin_nx_call_feature");
+	RemminaFile *remminafile;
+
+	remminafile = remmina_plugin_nx_service->protocol_plugin_get_file(gp);
+	switch (feature->id)
+	{
+		case REMMINA_PLUGIN_NX_FEATURE_TOOL_SENDCTRLALTDEL:
+			remmina_plugin_nx_send_ctrlaltdel(gp);
+			break;
+		default:
+			break;
+	}
 }
 
+/* Array of key/value pairs for quality selection */
 static gpointer quality_list[] =
-{ "0", N_("Poor (fastest)"), "1", N_("Medium"), "2", N_("Good"), "9", N_("Best (slowest)"), NULL };
+{
+	"0", N_("Poor (fastest)"),
+	"1", N_("Medium"),
+	"2", N_("Good"),
+	"9", N_("Best (slowest)"),
+	NULL
+};
 
+/* Array of RemminaProtocolSetting for basic settings.
+ * Each item is composed by:
+ * a) RemminaProtocolSettingType for setting type
+ * b) Setting name
+ * c) Setting description
+ * d) Compact disposition
+ * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
+ * f) Unused pointer
+ */
 static const RemminaProtocolSetting remmina_plugin_nx_basic_settings[] =
 {
-{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
-{ REMMINA_PROTOCOL_SETTING_TYPE_FILE, "nx_privatekey", N_("Identity file"), FALSE, NULL, NULL },
-{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
-{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
-{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, GINT_TO_POINTER(1), NULL },
-{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "quality", N_("Quality"), FALSE, quality_list, NULL },
-{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "exec", N_("Startup program"), FALSE, "GNOME,KDE,Xfce,Shadow", NULL },
-{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL } };
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE, "nx_privatekey", N_("Identity file"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, GINT_TO_POINTER(1), NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "quality", N_("Quality"), FALSE, quality_list, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "exec", N_("Startup program"), FALSE, "GNOME,KDE,Xfce,Shadow", NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
+};
 
+/* Array of RemminaProtocolSetting for advanced settings.
+ * Each item is composed by:
+ * a) RemminaProtocolSettingType for setting type
+ * b) Setting name
+ * c) Setting description
+ * d) Compact disposition
+ * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
+ * f) Unused pointer
+ */
 static const RemminaProtocolSetting remmina_plugin_nx_advanced_settings[] =
 {
-{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), FALSE, NULL, NULL },
-{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption", N_("Disable encryption"), FALSE, NULL, NULL },
-{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Use local cursor"), FALSE, NULL, NULL },
-{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL } };
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption", N_("Disable encryption"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Use local cursor"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
+};
 
+/* Array for available features.
+ * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
+static const RemminaProtocolFeature remmina_plugin_nx_features[] =
+{
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_NX_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
+};
+
+/* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin_nx =
-{ REMMINA_PLUGIN_TYPE_PROTOCOL, "NX", N_("NX - NX Technology"), GETTEXT_PACKAGE, VERSION,
-
-"remmina-nx", "remmina-nx", remmina_plugin_nx_basic_settings, remmina_plugin_nx_advanced_settings,
-		REMMINA_PROTOCOL_SSH_SETTING_TUNNEL, NULL,
-
-		remmina_plugin_nx_init, remmina_plugin_nx_open_connection, remmina_plugin_nx_close_connection,
-		remmina_plugin_nx_query_feature, remmina_plugin_nx_call_feature };
+{
+	REMMINA_PLUGIN_TYPE_PROTOCOL,                 // Type
+	"NX",                                         // Name
+	N_("NX - NX Technology"),                     // Description
+	GETTEXT_PACKAGE,                              // Translation domain
+	VERSION,                                      // Version number
+	"remmina-nx",                                 // Icon for normal connection
+	"remmina-nx",                                 // Icon for SSH connection
+	remmina_plugin_nx_basic_settings,             // Array for basic settings
+	remmina_plugin_nx_advanced_settings,          // Array for advanced settings
+	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,          // SSH settings type
+	remmina_plugin_nx_features,                   // Array for available features
+	remmina_plugin_nx_init,                       // Plugin initialization
+	remmina_plugin_nx_open_connection,            // Plugin open connection
+	remmina_plugin_nx_close_connection,           // Plugin close connection
+	remmina_plugin_nx_query_feature,              // Query for available features
+	remmina_plugin_nx_call_feature                // Call a feature
+};
 
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
+	TRACE_CALL("remmina_plugin_entry");
 	Display *dpy;
 	XkbRF_VarDefsRec vd;
 	gchar *s;

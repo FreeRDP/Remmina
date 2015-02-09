@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -54,10 +55,12 @@
 #include <X11/Xatom.h>
 #endif
 #include "remmina_public.h"
+#include "remmina/remmina_trace_calls.h"
 
 GtkWidget*
 remmina_public_create_combo_entry(const gchar *text, const gchar *def, gboolean descending)
 {
+	TRACE_CALL("remmina_public_create_combo_entry");
 	GtkWidget *combo;
 	gboolean found;
 	gchar *buf, *ptr1, *ptr2;
@@ -114,6 +117,7 @@ remmina_public_create_combo_entry(const gchar *text, const gchar *def, gboolean 
 GtkWidget*
 remmina_public_create_combo_text_d(const gchar *text, const gchar *def, const gchar *empty_choice)
 {
+	TRACE_CALL("remmina_public_create_combo_text_d");
 	GtkWidget *combo;
 	GtkListStore *store;
 	GtkCellRenderer *text_renderer;
@@ -132,6 +136,7 @@ remmina_public_create_combo_text_d(const gchar *text, const gchar *def, const gc
 
 void remmina_public_load_combo_text_d(GtkWidget *combo, const gchar *text, const gchar *def, const gchar *empty_choice)
 {
+	TRACE_CALL("remmina_public_load_combo_text_d");
 	GtkListStore *store;
 	GtkTreeIter iter;
 	gint i;
@@ -179,6 +184,7 @@ void remmina_public_load_combo_text_d(GtkWidget *combo, const gchar *text, const
 GtkWidget*
 remmina_public_create_combo(gboolean use_icon)
 {
+	TRACE_CALL("remmina_public_create_combo");
 	GtkWidget *combo;
 	GtkListStore *store;
 	GtkCellRenderer *renderer;
@@ -212,6 +218,7 @@ remmina_public_create_combo(gboolean use_icon)
 GtkWidget*
 remmina_public_create_combo_map(const gpointer *key_value_list, const gchar *def, gboolean use_icon, const gchar *domain)
 {
+	TRACE_CALL("remmina_public_create_combo_map");
 	gint i;
 	GtkWidget *combo;
 	GtkListStore *store;
@@ -246,6 +253,7 @@ remmina_public_create_combo_map(const gpointer *key_value_list, const gchar *def
 GtkWidget*
 remmina_public_create_combo_mapint(const gpointer *key_value_list, gint def, gboolean use_icon, const gchar *domain)
 {
+	TRACE_CALL("remmina_public_create_combo_mapint");
 	gchar buf[20];
 	g_snprintf(buf, sizeof(buf), "%i", def);
 	return remmina_public_create_combo_map(key_value_list, buf, use_icon, domain);
@@ -253,6 +261,7 @@ remmina_public_create_combo_mapint(const gpointer *key_value_list, gint def, gbo
 
 void remmina_public_create_group(GtkGrid *table, const gchar *group, gint row, gint rows, gint cols)
 {
+	TRACE_CALL("remmina_public_create_group");
 	GtkWidget *widget;
 	gchar *str;
 
@@ -272,6 +281,7 @@ void remmina_public_create_group(GtkGrid *table, const gchar *group, gint row, g
 gchar*
 remmina_public_combo_get_active_text(GtkComboBox *combo)
 {
+	TRACE_CALL("remmina_public_combo_get_active_text");
 	GtkTreeModel *model;
 	GtkTreeIter iter;
 	gchar *s;
@@ -292,6 +302,7 @@ remmina_public_combo_get_active_text(GtkComboBox *combo)
 
 void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data)
 {
+	TRACE_CALL("remmina_public_popup_position");
 	GtkWidget *widget;
 	gint tx, ty;
 	GtkAllocation allocation;
@@ -306,7 +317,15 @@ void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *pu
 	}
 	gdk_window_get_origin(gtk_widget_get_window(widget), &tx, &ty);
 	gtk_widget_get_allocation(widget, &allocation);
-	if (gtk_widget_get_has_window(widget))
+	/* I'm unsure why the author made the check about a GdkWindow inside the 
+	 * widget argument. This function generally is called passing by a ToolButton
+	 * which hasn't any GdkWindow, therefore the positioning is wrong
+	 * I think the gtk_widget_get_has_window() check should be removed
+	 * 
+	 * While leaving the previous check intact I'm checking also if the provided
+	 * widget is a GtkToggleToolButton and position the menu accordingly. */
+	if (gtk_widget_get_has_window(widget) || 
+		g_strcmp0(gtk_widget_get_name(widget), "GtkToggleToolButton") == 0)
 	{
 		tx += allocation.x;
 		ty += allocation.y;
@@ -320,6 +339,7 @@ void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *pu
 gchar*
 remmina_public_combine_path(const gchar *path1, const gchar *path2)
 {
+	TRACE_CALL("remmina_public_combine_path");
 	if (!path1 || path1[0] == '\0')
 		return g_strdup(path2);
 	if (path1[strlen(path1) - 1] == '/')
@@ -327,13 +347,9 @@ remmina_public_combine_path(const gchar *path1, const gchar *path2)
 	return g_strdup_printf("%s/%s", path1, path2);
 }
 
-void remmina_public_threads_leave(void* data)
-{
-	gdk_threads_leave();
-}
-
 void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar **host, gint *port)
 {
+	TRACE_CALL("remmina_public_get_server_port");
 	gchar *str, *ptr, *ptr2;
 
 	str = g_strdup(server);
@@ -376,6 +392,7 @@ void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar
 
 gboolean remmina_public_get_xauth_cookie(const gchar *display, gchar **msg)
 {
+	TRACE_CALL("remmina_public_get_xauth_cookie");
 	gchar buf[200];
 	gchar *out = NULL;
 	gchar *ptr;
@@ -383,7 +400,7 @@ gboolean remmina_public_get_xauth_cookie(const gchar *display, gchar **msg)
 	gboolean ret;
 
 	if (!display)
-		display = gdk_get_display();
+		display = gdk_display_get_name(gdk_display_get_default());
 
 	g_snprintf(buf, sizeof(buf), "xauth list %s", display);
 	ret = g_spawn_command_line_sync(buf, &out, NULL, NULL, &error);
@@ -412,6 +429,7 @@ gboolean remmina_public_get_xauth_cookie(const gchar *display, gchar **msg)
 
 gint remmina_public_open_xdisplay(const gchar *disp)
 {
+	TRACE_CALL("remmina_public_open_xdisplay");
 	gchar *display;
 	gchar *ptr;
 	gint port;
@@ -449,6 +467,7 @@ gint remmina_public_open_xdisplay(const gchar *disp)
 /* This function was copied from GEdit (gedit-utils.c). */
 guint remmina_public_get_current_workspace(GdkScreen *screen)
 {
+	TRACE_CALL("remmina_public_get_current_workspace");
 #ifdef GDK_WINDOWING_X11
 	GdkWindow *root_win;
 	GdkDisplay *display;
@@ -490,6 +509,7 @@ guint remmina_public_get_current_workspace(GdkScreen *screen)
 /* This function was copied from GEdit (gedit-utils.c). */
 guint remmina_public_get_window_workspace(GtkWindow *gtkwindow)
 {
+	TRACE_CALL("remmina_public_get_window_workspace");
 #ifdef GDK_WINDOWING_X11
 	GdkWindow *window;
 	GdkDisplay *display;
@@ -529,3 +549,56 @@ guint remmina_public_get_window_workspace(GtkWindow *gtkwindow)
 #endif
 }
 
+/* Find hardware keycode for the requested keyval */
+guint16 remmina_public_get_keycode_for_keyval(GdkKeymap *keymap, guint keyval)
+{
+	TRACE_CALL("remmina_public_get_keycode_for_keyval")
+	GdkKeymapKey *keys = NULL;
+	gint length = 0;
+	guint16 keycode = 0;
+
+	if (gdk_keymap_get_entries_for_keyval(keymap, keyval, &keys, &length))
+	{
+		keycode = keys[0].keycode;
+		g_free(keys);
+	}
+	return keycode;
+}
+
+/* Check if the requested keycode is a key modifier */
+gboolean remmina_public_get_modifier_for_keycode(GdkKeymap *keymap, guint16 keycode)
+{
+	TRACE_CALL("remmina_public_get_modifier_for_keycode")
+	g_return_val_if_fail(keycode > 0, FALSE);
+#ifdef GDK_WINDOWING_X11
+	return gdk_x11_keymap_key_is_modifier(keymap, keycode);
+#else
+	return FALSE;
+#endif
+}
+
+/* Load a GtkBuilder object from a filename */
+GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename)
+{
+	TRACE_CALL("remmina_public_gtk_builder_new_from_file")
+	gchar *ui_path = g_strconcat(REMMINA_UIDIR, G_DIR_SEPARATOR_S, filename, NULL);
+#if GTK_CHECK_VERSION(3, 10, 0)
+	GtkBuilder *builder = gtk_builder_new_from_file(ui_path);
+#else
+	GtkBuilder *builder = gtk_builder_new();
+	gtk_builder_add_from_file(builder, ui_path, NULL);
+#endif
+	g_free(ui_path);
+	return builder;
+}
+
+/* Change parent container for a widget
+ * If possible use this function instead of the deprecated gtk_widget_reparent */
+void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *container)
+{
+	TRACE_CALL("remmina_public_gtk_widget_reparent")
+	g_object_ref(widget);
+	gtk_container_remove(GTK_CONTAINER(gtk_widget_get_parent(widget)), widget);
+	gtk_container_add(container, widget);
+	g_object_unref(widget);
+}

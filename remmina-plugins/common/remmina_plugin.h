@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,9 +45,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <signal.h>
-#ifdef HAVE_PTHREAD
 #include <pthread.h>
-#endif
 #ifdef HAVE_NETDB_H
 #include <netdb.h>
 #endif
@@ -65,25 +64,18 @@
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
 #endif
+#include "remmina/remmina_trace_calls.h"
 
 typedef void (*PThreadCleanupFunc)(void*);
 
-/* Wrapper macros to make the compiler happy on both signle/multi-threaded mode */
-#ifdef HAVE_PTHREAD
+
 #define IDLE_ADD        gdk_threads_add_idle
 #define TIMEOUT_ADD     gdk_threads_add_timeout
 #define CANCEL_ASYNC    pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS,NULL);pthread_testcancel();
 #define CANCEL_DEFER    pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED,NULL);
-#define THREADS_ENTER   gdk_threads_enter();pthread_cleanup_push((PThreadCleanupFunc)gdk_threads_leave,NULL);
-#define THREADS_LEAVE   pthread_cleanup_pop(TRUE);
-#else
-#define IDLE_ADD        g_idle_add
-#define TIMEOUT_ADD     g_timeout_add
-#define CANCEL_ASYNC
-#define CANCEL_DEFER
-#define THREADS_ENTER
-#define THREADS_LEAVE
-#endif
+
+#define THREADS_ENTER _Pragma("GCC error \"THREADS_ENTER has been deprecated in Remmina 1.2\"")
+#define THREADS_LEAVE _Pragma("GCC error \"THREADS_LEAVE has been deprecated in Remmina 1.2\"")
 
 #define MAX_X_DISPLAY_NUMBER 99
 #define X_UNIX_SOCKET "/tmp/.X11-unix/X%d"
