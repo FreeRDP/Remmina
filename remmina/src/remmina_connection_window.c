@@ -1589,21 +1589,6 @@ static void remmina_connection_window_init(RemminaConnectionWindow* cnnwin)
 static gboolean remmina_connection_window_state_event(GtkWidget* widget, GdkEventWindowState* event, gpointer user_data)
 {
 	TRACE_CALL("remmina_connection_window_state_event");
-#ifdef ENABLE_MINIMIZE_TO_TRAY
-	GdkScreen* screen;
-
-	screen = gdk_screen_get_default();
-	if (remmina_pref.minimize_to_tray && (event->changed_mask & GDK_WINDOW_STATE_ICONIFIED) != 0
-			&& (event->new_window_state & GDK_WINDOW_STATE_ICONIFIED) != 0
-			&& remmina_public_get_current_workspace(screen)
-					== remmina_public_get_window_workspace(GTK_WINDOW(widget))
-			&& gdk_screen_get_number(screen) == gdk_screen_get_number(gtk_widget_get_screen(widget)))
-	{
-		gtk_widget_hide(widget);
-		return TRUE;
-	}
-    //return FALSE; uncomment if next one gives trouble
-#endif
     return FALSE; // moved here because a function should return a value. Should be correct
 }
 
