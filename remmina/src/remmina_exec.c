@@ -59,7 +59,8 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 	switch (command)
 	{
 		case REMMINA_COMMAND_MAIN:
-			widget = remmina_widget_pool_find(REMMINA_TYPE_MAIN, NULL);
+			/* FIX ME: restore window opening from a previous instance */
+			widget = NULL;
 			if (widget)
 			{
 				gtk_window_present(GTK_WINDOW(widget));

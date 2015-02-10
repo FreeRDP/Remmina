@@ -45,20 +45,12 @@ typedef struct _ActionsCallbackMap
 	gpointer callback;
 } ActionsCallbackMap;
 
-G_BEGIN_DECLS
-
-#define REMMINA_TYPE_MAIN               (remmina_main_get_type ())
-#define REMMINA_MAIN(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_MAIN, RemminaMain))
-#define REMMINA_MAIN_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_MAIN, RemminaMainClass))
-#define REMMINA_IS_MAIN(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_MAIN))
-#define REMMINA_IS_MAIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_MAIN))
-#define REMMINA_MAIN_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_MAIN, RemminaMainClass))
-
 typedef struct _RemminaMainPriv RemminaMainPriv;
 
 typedef struct _RemminaMain
 {
-	GtkWindow window;
+	GtkBuilder *builder;
+	GtkWindow *window;
 	/* Menu widgets */
 	GtkMenu *menu_popup;
 	GtkMenu *menu_tools;
@@ -124,18 +116,8 @@ struct _RemminaMainPriv
 	RemminaStringArray *expanded_group;
 };
 
-typedef struct _RemminaMainClass
-{
-	GtkWindowClass parent_class;
-} RemminaMainClass;
-
-GType remmina_main_get_type(void)
-G_GNUC_CONST;
-
 /* Create the main Remmina window */
 GtkWidget* remmina_main_new(void);
-
-G_END_DECLS
 
 /* Callbacks for actions from the application ActionGroup */
 static void remmina_main_on_action_application_quit();
