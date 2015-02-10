@@ -957,7 +957,7 @@ static gboolean remmina_main_quickconnect(RemminaMain *remminamain)
 	remmina_file_set_string(remminafile, "sound", "off");
 	remmina_file_set_string(remminafile, "server", server);
 	remmina_file_set_string(remminafile, "name", server);
-	remmina_file_set_string(remminafile, "protocol", 
+	remmina_file_set_string(remminafile, "protocol",
 		gtk_combo_box_text_get_active_text(remminamain->combo_quick_connect_protocol));
 
 	remmina_connection_window_open_from_file(remminafile);
@@ -1054,24 +1054,9 @@ static gboolean remmina_main_add_tool_plugin(gchar *name, RemminaPlugin *plugin,
 	return FALSE;
 }
 
-
 static gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWindowState *event, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_window_state_event");
-#ifdef ENABLE_MINIMIZE_TO_TRAY
-	GdkScreen *screen;
-
-	screen = gdk_screen_get_default();
-	if (remmina_pref.minimize_to_tray && (event->changed_mask & GDK_WINDOW_STATE_ICONIFIED) != 0
-			&& (event->new_window_state & GDK_WINDOW_STATE_ICONIFIED) != 0
-			&& remmina_public_get_current_workspace(screen)
-					== remmina_public_get_window_workspace(GTK_WINDOW(widget))
-			&& gdk_screen_get_number(screen) == gdk_screen_get_number(gtk_widget_get_screen(widget)))
-	{
-		gtk_widget_hide(widget);
-		return TRUE;
-	}
-#endif
 	return FALSE;
 }
 
