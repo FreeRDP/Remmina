@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -307,13 +307,6 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.disable_tray_icon = FALSE;
 
-#ifdef ENABLE_MINIMIZE_TO_TRAY
-	if (g_key_file_has_key(gkeyfile, "remmina_pref", "minimize_to_tray", NULL))
-		remmina_pref.minimize_to_tray = g_key_file_get_boolean(gkeyfile, "remmina_pref", "minimize_to_tray", NULL);
-	else
-		remmina_pref.minimize_to_tray = FALSE;
-#endif
-
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "recent_maximum", NULL))
 		remmina_pref.recent_maximum = g_key_file_get_integer(gkeyfile, "remmina_pref", "recent_maximum", NULL);
 	else
@@ -484,11 +477,6 @@ void remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "applet_hide_count", remmina_pref.applet_hide_count);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "applet_enable_avahi", remmina_pref.applet_enable_avahi);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "disable_tray_icon", remmina_pref.disable_tray_icon);
-#ifdef ENABLE_MINIMIZE_TO_TRAY
-	g_key_file_set_boolean(gkeyfile, "remmina_pref", "minimize_to_tray", remmina_pref.minimize_to_tray);
-#else
-	g_key_file_set_boolean(gkeyfile, "remmina_pref", "minimize_to_tray", FALSE);
-#endif
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "recent_maximum", remmina_pref.recent_maximum);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "default_mode", remmina_pref.default_mode);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "tab_mode", remmina_pref.tab_mode);
