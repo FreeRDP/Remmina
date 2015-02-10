@@ -233,16 +233,6 @@ static void remmina_pref_dialog_destroy(GtkWidget *widget, gpointer data)
 		remmina_pref.disable_tray_icon = b;
 		remmina_icon_init();
 	}
-#ifdef ENABLE_MINIMIZE_TO_TRAY
-	if (b)
-	{
-		remmina_pref.minimize_to_tray = FALSE;
-	}
-	else
-	{
-		remmina_pref.minimize_to_tray = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->minimize_to_tray_check));
-	}
-#endif
 	if (b)
 	{
 		b = FALSE;
@@ -338,9 +328,6 @@ static void remmina_pref_dialog_disable_tray_icon_on_toggled(GtkWidget *widget, 
 
 	b = !gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
 	gtk_widget_set_sensitive(dialog->priv->autostart_tray_icon_check, b);
-#ifdef ENABLE_MINIMIZE_TO_TRAY
-	gtk_widget_set_sensitive(dialog->priv->minimize_to_tray_check, b);
-#endif
 }
 
 static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
@@ -580,16 +567,6 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_set_sensitive(widget, !remmina_pref.disable_tray_icon);
 	priv->autostart_tray_icon_check = widget;
 
-#ifdef ENABLE_MINIMIZE_TO_TRAY
-	widget = gtk_check_button_new_with_label(_("Minimize windows to tray"));
-	gtk_widget_set_hexpand(GTK_WIDGET(widget), TRUE);
-	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(grid), widget, 0, 4, 2, 1);
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), remmina_pref.minimize_to_tray);
-	gtk_widget_set_sensitive(widget, !remmina_pref.disable_tray_icon);
-	priv->minimize_to_tray_check = widget;
-#endif
-
 	g_signal_connect(G_OBJECT(priv->disable_tray_icon_check), "toggled",
 			G_CALLBACK(remmina_pref_dialog_disable_tray_icon_on_toggled), dialog);
 
@@ -779,7 +756,7 @@ static void remmina_pref_dialog_init(RemminaPrefDialog *dialog)
 	gtk_widget_show (widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 3, 1, 1);
 	priv->vte_system_colors = widget;
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), 
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget),
 		remmina_pref.vte_system_colors);
 	g_signal_connect (G_OBJECT (priv->vte_system_colors), "toggled",
 		G_CALLBACK (remmina_pref_dialog_vte_color_on_toggled), dialog);
