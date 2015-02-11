@@ -61,7 +61,7 @@ void view_popup_menu_onDoSomething (GtkWidget *menuitem, gpointer userdata)
 	remmina_external_tools_launcher(ret->remminafilename, ret->scriptfilename, ret->scriptshortname);
 }
 
-gboolean remmina_external_tools_from_filename(RemminaMain *remminamain,gchar* remminafilename)
+gboolean remmina_external_tools_from_filename(RemminaMain *remminamain, gchar* remminafilename)
 {
 	TRACE_CALL("remmina_external_tools_from_filename");
 	GtkWidget *menu, *menuitem;
