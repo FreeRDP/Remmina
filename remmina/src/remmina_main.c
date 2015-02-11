@@ -178,14 +178,11 @@ static gboolean remmina_main_selection_func(GtkTreeSelection *selection, GtkTree
 	return TRUE;
 }
 
-static void remmina_main_load_file_list_callback(gpointer data, gpointer user_data)
+static void remmina_main_load_file_list_callback(RemminaFile *remminafile, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_load_file_list_callback");
 	GtkTreeIter iter;
 	GtkListStore *store;
-	RemminaFile *remminafile;
-
-	remminafile = (RemminaFile*) data;
 	store = GTK_LIST_STORE(remminamain->priv->file_model);
 
 	gtk_list_store_append(store, &iter);
@@ -311,15 +308,13 @@ static gboolean remmina_main_load_file_tree_find(GtkTreeModel *tree, GtkTreeIter
 	return match;
 }
 
-static void remmina_main_load_file_tree_callback(gpointer data, gpointer user_data)
+static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_load_file_tree_callback");
 	GtkTreeIter iter, child;
 	GtkTreeStore *store;
-	RemminaFile *remminafile;
 	gboolean found;
 
-	remminafile = (RemminaFile*) data;
 	store = GTK_TREE_STORE(remminamain->priv->file_model);
 
 	found = FALSE;
