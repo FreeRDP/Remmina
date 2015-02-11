@@ -988,7 +988,7 @@ static gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWi
 	return FALSE;
 }
 
-/* RemminaMain initialization */
+/* Remmina main window initialization */
 static void remmina_main_init()
 {
 	TRACE_CALL("remmina_main_init");
