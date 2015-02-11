@@ -586,7 +586,7 @@ static void remmina_main_on_action_application_preferences(GtkAction *action, gp
 static void remmina_main_on_action_application_quit(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_application_quit");
-	gtk_widget_destroy(remminamain->window);
+	gtk_widget_destroy(GTK_WIDGET(remminamain->window));
 }
 
 static void remmina_main_on_action_view_toolbar(GtkToggleAction *action, gpointer user_data)
