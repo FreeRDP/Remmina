@@ -441,7 +441,7 @@ static void remmina_main_load_files(gboolean refresh)
 			/* Load groups first */
 			remmina_main_load_file_tree_group(GTK_TREE_STORE(remminamain->priv->file_model));
 			/* Load files list */
-			items_count = remmina_file_manager_iterate(remmina_main_load_file_tree_callback, NULL);
+			items_count = remmina_file_manager_iterate((GFunc) remmina_main_load_file_tree_callback, NULL);
 			break;
 
 		case REMMINA_VIEW_FILE_LIST:
@@ -453,7 +453,7 @@ static void remmina_main_load_files(gboolean refresh)
 			/* Clear any previous data in the model */
 			gtk_list_store_clear(GTK_LIST_STORE(remminamain->priv->file_model));
 			/* Load files list */
-			items_count = remmina_file_manager_iterate(remmina_main_load_file_list_callback, NULL);
+			items_count = remmina_file_manager_iterate((GFunc) remmina_main_load_file_list_callback, NULL);
 			break;
 	}
 	/* Apply sorted filtered model to the TreeView */
