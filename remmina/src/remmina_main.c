@@ -502,10 +502,7 @@ static void remmina_main_on_action_tools_externaltools(GtkAction *action, gpoint
 static void remmina_main_file_editor_destroy(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_file_editor_destroy");
-	if (GTK_IS_WIDGET(remminamain))
-	{
-		remmina_main_load_files(TRUE);
-	}
+    remmina_main_load_files(TRUE);
 }
 
 static void remmina_main_on_action_connection_new(GtkAction *action, gpointer user_data)
@@ -528,12 +525,9 @@ static void remmina_main_on_action_connection_copy(GtkAction *action, gpointer u
 		return;
 
 	widget = remmina_file_editor_new_copy(remminamain->priv->selected_filename);
-	if (widget)
-	{
-		g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_main_file_editor_destroy), remminamain);
-		gtk_window_set_transient_for(GTK_WINDOW(widget), remminamain->window);
-		gtk_widget_show(widget);
-	}
+    g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_main_file_editor_destroy), remminamain);
+    gtk_window_set_transient_for(GTK_WINDOW(widget), remminamain->window);
+    gtk_widget_show(widget);
 }
 
 static void remmina_main_on_action_connection_edit(GtkAction *action, gpointer user_data)
@@ -545,12 +539,9 @@ static void remmina_main_on_action_connection_edit(GtkAction *action, gpointer u
 		return;
 
 	widget = remmina_file_editor_new_from_filename(remminamain->priv->selected_filename);
-	if (widget)
-	{
-		g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_main_file_editor_destroy), remminamain);
-		gtk_window_set_transient_for(GTK_WINDOW(widget), remminamain->window);
-		gtk_widget_show(widget);
-	}
+    g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_main_file_editor_destroy), remminamain);
+    gtk_window_set_transient_for(GTK_WINDOW(widget), remminamain->window);
+    gtk_widget_show(widget);
 }
 
 static void remmina_main_on_action_connection_delete(GtkAction *action, gpointer user_data)
