@@ -38,13 +38,6 @@
 #ifndef __REMMINAMAIN_H__
 #define __REMMINAMAIN_H__
 
-/* Defines the association between an Action and its callback for activation */
-typedef struct _ActionsCallbackMap
-{
-	GtkAction *action;
-	gpointer callback;
-} ActionsCallbackMap;
-
 typedef struct _RemminaMainPriv RemminaMainPriv;
 
 typedef struct _RemminaMain

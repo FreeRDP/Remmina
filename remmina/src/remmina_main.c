@@ -112,7 +112,7 @@ static void remmina_main_save_expanded_group()
 	}
 }
 
-static gboolean remmina_main_on_delete_event(GtkWidget *widget, GdkEvent *event, gpointer user_data)
+gboolean remmina_main_on_delete_event(GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_delete_event");
 	remmina_main_save_size();
@@ -126,7 +126,7 @@ static gboolean remmina_main_on_delete_event(GtkWidget *widget, GdkEvent *event,
 	return FALSE;
 }
 
-static void remmina_main_destroy(GtkWidget *widget, gpointer user_data)
+void remmina_main_destroy(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_destroy");
 	g_object_unref(G_OBJECT(remminamain->builder));
@@ -481,7 +481,7 @@ static void remmina_main_load_files(gboolean refresh)
 	gtk_statusbar_push(remminamain->statusbar_main, context_id, buf);
 }
 
-static void remmina_main_on_action_connection_connect(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_connection_connect(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_connection_connect");
 	if (!remminamain->priv->selected_filename)
@@ -490,7 +490,7 @@ static void remmina_main_on_action_connection_connect(GtkAction *action, gpointe
 	remmina_connection_window_open_from_filename(remminamain->priv->selected_filename);
 }
 
-static void remmina_main_on_action_tools_externaltools(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_tools_externaltools(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_tools_externaltools");
 	if (!remminamain->priv->selected_filename)
@@ -508,7 +508,7 @@ static void remmina_main_file_editor_destroy(GtkWidget *widget, gpointer user_da
 	}
 }
 
-static void remmina_main_on_action_connection_new(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_connection_new(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_connection_new");
 	GtkWidget *widget;
@@ -519,7 +519,7 @@ static void remmina_main_on_action_connection_new(GtkAction *action, gpointer us
 	gtk_widget_show(widget);
 }
 
-static void remmina_main_on_action_connection_copy(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_connection_copy(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_connection_copy");
 	GtkWidget *widget;
@@ -536,7 +536,7 @@ static void remmina_main_on_action_connection_copy(GtkAction *action, gpointer u
 	}
 }
 
-static void remmina_main_on_action_connection_edit(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_connection_edit(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_connection_edit");
 	GtkWidget *widget;
@@ -553,7 +553,7 @@ static void remmina_main_on_action_connection_edit(GtkAction *action, gpointer u
 	}
 }
 
-static void remmina_main_on_action_connection_delete(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_connection_delete(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_connection_delete");
 	GtkWidget *dialog;
@@ -573,7 +573,7 @@ static void remmina_main_on_action_connection_delete(GtkAction *action, gpointer
 	remmina_main_clear_selection_data();
 }
 
-static void remmina_main_on_action_application_preferences(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_application_preferences(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_application_preferences");
 	GtkWidget *widget;
@@ -583,13 +583,13 @@ static void remmina_main_on_action_application_preferences(GtkAction *action, gp
 	gtk_widget_show(widget);
 }
 
-static void remmina_main_on_action_application_quit(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_application_quit(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_application_quit");
 	gtk_widget_destroy(GTK_WIDGET(remminamain->window));
 }
 
-static void remmina_main_on_action_view_toolbar(GtkToggleAction *action, gpointer user_data)
+void remmina_main_on_action_view_toolbar(GtkToggleAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_view_toolbar");
 	gboolean toggled;
@@ -610,7 +610,7 @@ static void remmina_main_on_action_view_toolbar(GtkToggleAction *action, gpointe
 	}
 }
 
-static void remmina_main_on_action_view_quick_search(GtkToggleAction *action, gpointer user_data)
+void remmina_main_on_action_view_quick_search(GtkToggleAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_view_quick_search");
 	gboolean toggled;
@@ -641,7 +641,7 @@ static void remmina_main_on_action_view_quick_search(GtkToggleAction *action, gp
 	}
 }
 
-static void remmina_main_on_action_view_statusbar(GtkToggleAction *action, gpointer user_data)
+void remmina_main_on_action_view_statusbar(GtkToggleAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_view_statusbar");
 	gboolean toggled;
@@ -662,7 +662,7 @@ static void remmina_main_on_action_view_statusbar(GtkToggleAction *action, gpoin
 	}
 }
 
-static void remmina_main_on_action_view_quick_connect(GtkToggleAction *action, gpointer user_data)
+void remmina_main_on_action_view_quick_connect(GtkToggleAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_view_quick_connect");
 	gboolean toggled;
@@ -683,7 +683,7 @@ static void remmina_main_on_action_view_quick_connect(GtkToggleAction *action, g
 	}
 }
 
-static void remmina_main_on_action_view_small_toolbar_buttons(GtkToggleAction *action, gpointer user_data)
+void remmina_main_on_action_view_small_toolbar_buttons(GtkToggleAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_view_small_toolbar_buttons");
 	gboolean toggled;
@@ -704,7 +704,7 @@ static void remmina_main_on_action_view_small_toolbar_buttons(GtkToggleAction *a
 	}
 }
 
-static void remmina_main_on_action_view_file_mode(GtkRadioAction *action, gpointer user_data)
+void remmina_main_on_action_view_file_mode(GtkRadioAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_view_file_mode");
 	static GtkRadioAction *previous_action;
@@ -782,7 +782,7 @@ static void remmina_main_action_tools_import_on_response(GtkDialog *dialog, gint
 	gtk_widget_destroy(GTK_WIDGET(dialog));
 }
 
-static void remmina_main_on_action_tools_import(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_tools_import(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_tools_import");
 	GtkWidget *dialog;
@@ -794,7 +794,7 @@ static void remmina_main_on_action_tools_import(GtkAction *action, gpointer user
 	gtk_widget_show(dialog);
 }
 
-static void remmina_main_on_action_tools_export(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_tools_export(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_tools_export");
 	RemminaFilePlugin *plugin;
@@ -828,7 +828,7 @@ static void remmina_main_on_action_tools_export(GtkAction *action, gpointer user
 	remmina_file_free(remminafile);
 }
 
-static void remmina_main_on_action_application_plugins(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_application_plugins(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_application_plugins");
 	remmina_plugin_manager_show(remminamain->window);
@@ -846,25 +846,25 @@ static void remmina_main_action_tools_addition(GtkAction *action, gpointer user_
 	}
 }
 
-static void remmina_main_on_action_help_homepage(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_help_homepage(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_help_homepage");
 	g_app_info_launch_default_for_uri("http://remmina.sourceforge.net", NULL, NULL);
 }
 
-static void remmina_main_on_action_help_wiki(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_help_wiki(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_help_wiki");
 	g_app_info_launch_default_for_uri("http://sourceforge.net/apps/mediawiki/remmina/", NULL, NULL);
 }
 
-static void remmina_main_on_action_help_debug(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_help_debug(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_help_debug");
 	remmina_log_start();
 }
 
-static void remmina_main_on_action_application_about(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_application_about(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_application_about");
 	remmina_about_open(remminamain->window);
@@ -890,7 +890,7 @@ static gboolean remmina_main_quickconnect()
 	return FALSE;
 }
 
-static gboolean remmina_main_quickconnect_on_click(GtkWidget *widget, gpointer user_data)
+gboolean remmina_main_quickconnect_on_click(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_quickconnect_on_click");
 	return remmina_main_quickconnect();
@@ -916,7 +916,7 @@ void remmina_main_file_list_on_row_activated(GtkTreeView *tree, GtkTreePath *pat
 	}
 }
 
-static gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEventButton *event, gpointer user_data)
+gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEventButton *event, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_file_list_on_button_press");
 	if (event->button == MOUSE_BUTTON_RIGHT)
@@ -926,7 +926,7 @@ static gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEve
 	return FALSE;
 }
 
-static void remmina_main_quick_search_on_icon_press(GtkEntry *entry, GtkEntryIconPosition icon_pos, GdkEvent *event, gpointer user_data)
+void remmina_main_quick_search_on_icon_press(GtkEntry *entry, GtkEntryIconPosition icon_pos, GdkEvent *event, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_quick_search_on_icon_press");
 	if (icon_pos == GTK_ENTRY_ICON_SECONDARY)
@@ -935,14 +935,14 @@ static void remmina_main_quick_search_on_icon_press(GtkEntry *entry, GtkEntryIco
 	}
 }
 
-static void remmina_main_quick_search_on_changed(GtkEditable *editable, gpointer user_data)
+void remmina_main_quick_search_on_changed(GtkEditable *editable, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_quick_search_on_changed");
 	gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(remminamain->priv->file_model_filter));
 	gtk_tree_view_expand_all(remminamain->tree_files_list);
 }
 
-static void remmina_main_on_drag_data_received(GtkWidget *widget, GdkDragContext *drag_context, gint x, gint y,
+void remmina_main_on_drag_data_received(GtkWidget *widget, GdkDragContext *drag_context, gint x, gint y,
 		GtkSelectionData *data, guint info, guint time, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_drag_data_received");
@@ -977,7 +977,7 @@ static gboolean remmina_main_add_tool_plugin(gchar *name, RemminaPlugin *plugin,
 	return FALSE;
 }
 
-static gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWindowState *event, gpointer user_data)
+gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWindowState *event, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_window_state_event");
 	return FALSE;
@@ -990,9 +990,6 @@ static void remmina_main_init()
 	/* Initialize RemminaMain data */
 	remminamain->priv = g_new0(RemminaMainPriv, 1);
 	remminamain->priv->expanded_group = remmina_string_array_new_from_string(remmina_pref.expanded_group);
-	g_signal_connect(G_OBJECT(remminamain->window), "delete-event", G_CALLBACK(remmina_main_on_delete_event), NULL);
-	g_signal_connect(G_OBJECT(remminamain->window), "destroy", G_CALLBACK(remmina_main_destroy), NULL);
-	g_signal_connect(G_OBJECT(remminamain->window), "window-state-event", G_CALLBACK(remmina_main_on_window_state_event), NULL);
 	gtk_window_set_title(remminamain->window, _("Remmina Remote Desktop Client"));
 	gtk_window_set_default_size(remminamain->window, remmina_pref.main_width, remmina_pref.main_height);
 	gtk_window_set_position(remminamain->window, GTK_WIN_POS_CENTER);
@@ -1004,27 +1001,14 @@ static void remmina_main_init()
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
 	/* Connect the group accelerators to the GtkWindow */
 	gtk_window_add_accel_group(remminamain->window, remminamain->accelgroup_shortcuts);
-	/* Set the Quick Search */
-	g_signal_connect(G_OBJECT(remminamain->entry_quick_search), "icon-press",
-		G_CALLBACK(remmina_main_quick_search_on_icon_press), NULL);
-	g_signal_connect(G_OBJECT(remminamain->entry_quick_search), "changed",
-		G_CALLBACK(remmina_main_quick_search_on_changed), NULL);
 	/* Set the Quick Connection */
 	gtk_entry_set_activates_default(remminamain->entry_quick_connect_server, TRUE);
 	gtk_widget_grab_default(GTK_WIDGET(remminamain->button_quick_connect));
-	g_signal_connect(G_OBJECT(remminamain->button_quick_connect), "clicked",
-		G_CALLBACK(remmina_main_quickconnect_on_click), NULL);
 	/* Set the TreeView for the files list */
 	gtk_tree_selection_set_select_function(
 		gtk_tree_view_get_selection(remminamain->tree_files_list),
 		remmina_main_selection_func,
 		NULL, NULL);
-	/* Handle signal for mouse buttons in order to show the popup menu */
-	g_signal_connect(G_OBJECT(remminamain->tree_files_list), "button-press-event",
-		G_CALLBACK(remmina_main_file_list_on_button_press), NULL);
-	/* Handle signal for double click on the row */
-	g_signal_connect(G_OBJECT(remminamain->tree_files_list), "row-activated",
-		G_CALLBACK(remmina_main_file_list_on_row_activated), NULL);
 	/* Load the files list */
 	remmina_main_load_files(FALSE);
 	/* Load the preferences */
@@ -1054,8 +1038,6 @@ static void remmina_main_init()
 	}
 	/* Drag-n-drop support */
 	gtk_drag_dest_set(GTK_WIDGET(remminamain->window), GTK_DEST_DEFAULT_ALL, remmina_drop_types, 1, GDK_ACTION_COPY);
-	g_signal_connect(G_OBJECT(remminamain->window), "drag-data-received",
-		G_CALLBACK(remmina_main_on_drag_data_received), NULL);
 	/* Finish initialization */
 	remminamain->priv->initialized = TRUE;
 	remmina_widget_pool_register(GTK_WIDGET(remminamain->window));
@@ -1065,7 +1047,6 @@ static void remmina_main_init()
 GtkWidget* remmina_main_new(void)
 {
 	TRACE_CALL("remmina_main_new");
-	gint i;
 	remminamain = g_new0(RemminaMain, 1);
 	/* Assign UI widgets to the private members */
 	remminamain->builder = remmina_public_gtk_builder_new_from_file("remmina_main.glade");
@@ -1118,37 +1099,8 @@ GtkWidget* remmina_main_new(void)
 	remminamain->action_help_homepage = GTK_ACTION(GET_OBJECT("action_help_homepage"));
 	remminamain->action_help_wiki = GTK_ACTION(GET_OBJECT("action_help_wiki"));
 	remminamain->action_help_debug = GTK_ACTION(GET_OBJECT("action_help_debug"));
-	/* Connect the GtkAction signals */
-	ActionsCallbackMap action_maps[] = {
-		{ remminamain->action_connection_connect, remmina_main_on_action_connection_connect },
-		{ remminamain->action_connection_new, remmina_main_on_action_connection_new },
-		{ remminamain->action_connection_edit, remmina_main_on_action_connection_edit },
-		{ remminamain->action_connection_copy, remmina_main_on_action_connection_copy },
-		{ remminamain->action_connection_delete, remmina_main_on_action_connection_delete },
-		{ remminamain->action_application_preferences, remmina_main_on_action_application_preferences },
-		{ remminamain->action_application_about, remmina_main_on_action_application_about },
-		{ remminamain->action_application_plugins, remmina_main_on_action_application_plugins },
-		{ remminamain->action_application_quit, remmina_main_on_action_application_quit },
-		{ GTK_ACTION(remminamain->action_view_toolbar), remmina_main_on_action_view_toolbar },
-		{ GTK_ACTION(remminamain->action_view_statusbar), remmina_main_on_action_view_statusbar },
-		{ GTK_ACTION(remminamain->action_view_quick_search), remmina_main_on_action_view_quick_search },
-		{ GTK_ACTION(remminamain->action_view_quick_connect), remmina_main_on_action_view_quick_connect },
-		{ GTK_ACTION(remminamain->action_view_small_toolbar_buttons), remmina_main_on_action_view_small_toolbar_buttons },
-		{ GTK_ACTION(remminamain->action_view_mode_list), remmina_main_on_action_view_file_mode },
-		{ GTK_ACTION(remminamain->action_view_mode_tree), remmina_main_on_action_view_file_mode },
-		{ remminamain->action_tools_import, remmina_main_on_action_tools_import },
-		{ remminamain->action_tools_export, remmina_main_on_action_tools_export },
-		{ remminamain->action_tools_externaltools, remmina_main_on_action_tools_externaltools },
-		{ remminamain->action_help_homepage, remmina_main_on_action_help_homepage },
-		{ remminamain->action_help_wiki, remmina_main_on_action_help_wiki },
-		{ remminamain->action_help_debug, remmina_main_on_action_help_debug },
-		{ NULL, NULL }
-	};
-	for (i = 0; action_maps[i].action; i++)
-	{
-		g_signal_connect(G_OBJECT(action_maps[i].action), "activate",
-			G_CALLBACK(action_maps[i].callback), NULL);
-	};
 	remmina_main_init();
+	/* Connect signals */
+	gtk_builder_connect_signals(remminamain->builder, NULL);
 	return GTK_WIDGET(remminamain->window);
 }
