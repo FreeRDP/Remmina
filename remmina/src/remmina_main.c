@@ -502,7 +502,7 @@ static void remmina_main_on_action_tools_externaltools(GtkAction *action, gpoint
 static void remmina_main_file_editor_destroy(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_file_editor_destroy");
-    remmina_main_load_files(TRUE);
+	remmina_main_load_files(TRUE);
 }
 
 static void remmina_main_on_action_connection_new(GtkAction *action, gpointer user_data)
