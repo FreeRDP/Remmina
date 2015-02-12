@@ -1007,8 +1007,7 @@ static void remmina_main_init()
 	/* Set the TreeView for the files list */
 	gtk_tree_selection_set_select_function(
 		gtk_tree_view_get_selection(remminamain->tree_files_list),
-		remmina_main_selection_func,
-		NULL, NULL);
+		remmina_main_selection_func, NULL, NULL);
 	/* Load the files list */
 	remmina_main_load_files(FALSE);
 	/* Load the preferences */
