@@ -547,7 +547,7 @@ static void remmina_main_on_action_connection_edit(GtkAction *action, gpointer u
 	widget = remmina_file_editor_new_from_filename(remminamain->priv->selected_filename);
 	if (widget)
 	{
-		g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_main_file_editor_destroy), remminamain);
+		g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_main_file_editor_destroy), NULL);
 		gtk_window_set_transient_for(GTK_WINDOW(widget), remminamain->window);
 		gtk_widget_show(widget);
 	}
@@ -790,7 +790,7 @@ static void remmina_main_on_action_tools_import(GtkAction *action, gpointer user
 	dialog = gtk_file_chooser_dialog_new(_("Import"), remminamain->window, GTK_FILE_CHOOSER_ACTION_OPEN, "document-open",
 			GTK_RESPONSE_ACCEPT, NULL);
 	gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(dialog), TRUE);
-	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(remmina_main_action_tools_import_on_response), remminamain);
+	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(remmina_main_action_tools_import_on_response), NULL);
 	gtk_widget_show(dialog);
 }
 
@@ -906,11 +906,11 @@ void remmina_main_file_list_on_row_activated(GtkTreeView *tree, GtkTreePath *pat
 		switch (remmina_pref.default_action)
 		{
 			case REMMINA_ACTION_EDIT:
-				remmina_main_on_action_connection_edit(NULL, remminamain);
+				remmina_main_on_action_connection_edit(NULL, NULL);
 				break;
 			case REMMINA_ACTION_CONNECT:
 			default:
-				remmina_main_on_action_connection_connect(NULL, remminamain);
+				remmina_main_on_action_connection_connect(NULL, NULL);
 				break;
 		}
 	}
@@ -971,7 +971,7 @@ static gboolean remmina_main_add_tool_plugin(gchar *name, RemminaPlugin *plugin,
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(remminamain->menu_tools), menuitem);
 	gtk_activatable_set_related_action(GTK_ACTIVATABLE(menuitem), action);
-	g_signal_connect(G_OBJECT(action), "activate", G_CALLBACK(remmina_main_action_tools_addition), remminamain);
+	g_signal_connect(G_OBJECT(action), "activate", G_CALLBACK(remmina_main_action_tools_addition), NULL);
 	g_object_unref(action);
 
 	return FALSE;
@@ -1018,7 +1018,7 @@ static void remmina_main_init()
 	gtk_tree_selection_set_select_function(
 		gtk_tree_view_get_selection(remminamain->tree_files_list),
 		remmina_main_selection_func,
-		remminamain, NULL);
+		NULL, NULL);
 	/* Handle signal for mouse buttons in order to show the popup menu */
 	g_signal_connect(G_OBJECT(remminamain->tree_files_list), "button-press-event",
 		G_CALLBACK(remmina_main_file_list_on_button_press), NULL);
