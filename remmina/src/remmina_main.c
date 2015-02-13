@@ -1040,7 +1040,7 @@ static void remmina_main_init()
 }
 
 /* RemminaMain instance */
-GtkWidget* remmina_main_new(void)
+GtkWidget* remmina_main_new()
 {
 	TRACE_CALL("remmina_main_new");
 	remminamain = g_new0(RemminaMain, 1);
