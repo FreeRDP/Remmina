@@ -109,4 +109,11 @@ struct _RemminaMainPriv
 	RemminaStringArray *expanded_group;
 };
 
+G_BEGIN_DECLS
+
+/* Create the main Remmina window */
+GtkWidget* remmina_main_new();
+
+G_END_DECLS
+
 #endif  /* __REMMINAMAIN_H__  */
