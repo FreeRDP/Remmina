@@ -505,9 +505,9 @@ static void remmina_main_file_editor_destroy(GtkWidget *widget, gpointer user_da
 	remmina_main_load_files(TRUE);
 }
 
-void remmina_main_on_action_connection_new(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_connections_new(GtkAction *action, gpointer user_data)
 {
-	TRACE_CALL("remmina_main_on_action_connection_new");
+	TRACE_CALL("remmina_main_on_action_connections_new");
 	GtkWidget *widget;
 
 	widget = remmina_file_editor_new();
@@ -1072,9 +1072,10 @@ GtkWidget* remmina_main_new()
 	remminamain->action_application_plugins = GTK_ACTION(GET_OBJECT("action_application_plugins"));
 	remminamain->action_application_preferences = GTK_ACTION(GET_OBJECT("action_application_preferences"));
 	remminamain->action_application_quit = GTK_ACTION(GET_OBJECT("action_application_quit"));
+	/* Actions from the connections ActionGroup */
+	remminamain->action_connections_new = GTK_ACTION(GET_OBJECT("action_connections_new"));
 	/* Actions from the connection ActionGroup */
 	remminamain->action_connection_connect = GTK_ACTION(GET_OBJECT("action_connection_connect"));
-	remminamain->action_connection_new = GTK_ACTION(GET_OBJECT("action_connection_new"));
 	remminamain->action_connection_edit = GTK_ACTION(GET_OBJECT("action_connection_edit"));
 	remminamain->action_connection_copy = GTK_ACTION(GET_OBJECT("action_connection_copy"));
 	remminamain->action_connection_delete = GTK_ACTION(GET_OBJECT("action_connection_delete"));
