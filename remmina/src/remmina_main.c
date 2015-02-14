@@ -478,7 +478,7 @@ static void remmina_main_load_files(gboolean refresh)
 		remmina_main_select_file(remminamain->priv->selected_filename);
 	}
 	/* Show in the status bar the total number of connections found */
-	g_snprintf(buf, 200, ngettext("Total %i item.", "Total %i items.", items_count), items_count);
+	g_snprintf(buf, sizeof(buf), ngettext("Total %i item.", "Total %i items.", items_count), items_count);
 	context_id = gtk_statusbar_get_context_id(remminamain->statusbar_main, "status");
 	gtk_statusbar_pop(remminamain->statusbar_main, context_id);
 	gtk_statusbar_push(remminamain->statusbar_main, context_id, buf);
