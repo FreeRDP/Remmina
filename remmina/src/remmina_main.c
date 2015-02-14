@@ -1095,8 +1095,9 @@ GtkWidget* remmina_main_new()
 	remminamain->action_help_homepage = GTK_ACTION(GET_OBJECT("action_help_homepage"));
 	remminamain->action_help_wiki = GTK_ACTION(GET_OBJECT("action_help_wiki"));
 	remminamain->action_help_debug = GTK_ACTION(GET_OBJECT("action_help_debug"));
-	remmina_main_init();
 	/* Connect signals */
 	gtk_builder_connect_signals(remminamain->builder, NULL);
+	/* Initialize the window and load the preferences */
+	remmina_main_init();
 	return GTK_WIDGET(remminamain->window);
 }
