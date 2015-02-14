@@ -490,9 +490,9 @@ void remmina_main_on_action_connection_connect(GtkAction *action, gpointer user_
 	remmina_connection_window_open_from_filename(remminamain->priv->selected_filename);
 }
 
-void remmina_main_on_action_tools_externaltools(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_connection_external_tools(GtkAction *action, gpointer user_data)
 {
-	TRACE_CALL("remmina_main_on_action_tools_externaltools");
+	TRACE_CALL("remmina_main_on_action_connection_external_tools");
 	if (!remminamain->priv->selected_filename)
 		return;
 
@@ -1079,6 +1079,7 @@ GtkWidget* remmina_main_new()
 	remminamain->action_connection_edit = GTK_ACTION(GET_OBJECT("action_connection_edit"));
 	remminamain->action_connection_copy = GTK_ACTION(GET_OBJECT("action_connection_copy"));
 	remminamain->action_connection_delete = GTK_ACTION(GET_OBJECT("action_connection_delete"));
+	remminamain->action_connection_external_tools = GTK_ACTION(GET_OBJECT("action_connection_external_tools"));
 	/* Actions from the view ActionGroup */
 	remminamain->action_view_toolbar = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_toolbar"));
 	remminamain->action_view_statusbar = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_statusbar"));
@@ -1090,7 +1091,6 @@ GtkWidget* remmina_main_new()
 	/* Actions from the tools ActionGroup */
 	remminamain->action_tools_import = GTK_ACTION(GET_OBJECT("action_tools_import"));
 	remminamain->action_tools_export = GTK_ACTION(GET_OBJECT("action_tools_export"));
-	remminamain->action_tools_externaltools = GTK_ACTION(GET_OBJECT("action_tools_externaltools"));
 	/* Actions from the help ActionGroup */
 	remminamain->action_help_homepage = GTK_ACTION(GET_OBJECT("action_help_homepage"));
 	remminamain->action_help_wiki = GTK_ACTION(GET_OBJECT("action_help_wiki"));
