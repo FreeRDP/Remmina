@@ -55,17 +55,6 @@
       <accelerator key="o" modifiers="GDK_CONTROL_MASK"/>
     </child>
     <child>
-      <object class="GtkAction" id="action_connection_new">
-        <property name="label" translatable="yes">_New</property>
-        <property name="short_label" translatable="yes">_New</property>
-        <property name="tooltip" translatable="yes">Create a new remote desktop file</property>
-        <property name="icon_name">document-new</property>
-        <property name="is_important">True</property>
-        <signal name="activate" handler="remmina_main_on_action_connection_new" swapped="no"/>
-      </object>
-      <accelerator key="n" modifiers="GDK_CONTROL_MASK"/>
-    </child>
-    <child>
       <object class="GtkAction" id="action_connection_edit">
         <property name="label" translatable="yes">_Edit</property>
         <property name="short_label" translatable="yes">_Edit</property>
@@ -94,6 +83,19 @@
         <signal name="activate" handler="remmina_main_on_action_connection_delete" swapped="no"/>
       </object>
       <accelerator key="d" modifiers="GDK_CONTROL_MASK"/>
+    </child>
+  </object>
+  <object class="GtkActionGroup" id="actiongroup_connections">
+    <property name="accel_group">accelgroup_shortcuts</property>
+    <child>
+      <object class="GtkAction" id="action_connections_new">
+        <property name="label" translatable="yes">_New</property>
+        <property name="short_label" translatable="yes">_New</property>
+        <property name="tooltip" translatable="yes">Create a new remote desktop file</property>
+        <property name="icon_name">document-new</property>
+        <signal name="activate" handler="remmina_main_on_action_connections_new" swapped="no"/>
+      </object>
+      <accelerator key="n" modifiers="GDK_CONTROL_MASK"/>
     </child>
   </object>
   <object class="GtkActionGroup" id="actiongroup_help">
@@ -262,7 +264,7 @@
                     <child>
                       <object class="GtkImageMenuItem" id="menuitem_connection_new">
                         <property name="use_action_appearance">True</property>
-                        <property name="related_action">action_connection_new</property>
+                        <property name="related_action">action_connections_new</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
@@ -649,7 +651,7 @@
             <child>
               <object class="GtkToolButton" id="toolbutton_new">
                 <property name="use_action_appearance">True</property>
-                <property name="related_action">action_connection_new</property>
+                <property name="related_action">action_connections_new</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">_New</property>

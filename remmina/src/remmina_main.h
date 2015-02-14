@@ -70,9 +70,10 @@ typedef struct _RemminaMain
 	GtkAction *action_application_plugins;
 	GtkAction *action_application_preferences;
 	GtkAction *action_application_quit;
+	/* Actions from the connections ActionGroup */
+	GtkAction *action_connections_new;
 	/* Actions from the connection ActionGroup */
 	GtkAction *action_connection_connect;
-	GtkAction *action_connection_new;
 	GtkAction *action_connection_edit;
 	GtkAction *action_connection_copy;
 	GtkAction *action_connection_delete;
