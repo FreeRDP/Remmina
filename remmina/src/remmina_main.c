@@ -984,8 +984,6 @@ gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWindowSta
 static void remmina_main_init()
 {
 	TRACE_CALL("remmina_main_init");
-	/* Initialize RemminaMain data */
-	remminamain->priv = g_new0(RemminaMainPriv, 1);
 	remminamain->priv->expanded_group = remmina_string_array_new_from_string(remmina_pref.expanded_group);
 	gtk_window_set_title(remminamain->window, _("Remmina Remote Desktop Client"));
 	gtk_window_set_default_size(remminamain->window, remmina_pref.main_width, remmina_pref.main_height);
@@ -1044,6 +1042,7 @@ GtkWidget* remmina_main_new()
 {
 	TRACE_CALL("remmina_main_new");
 	remminamain = g_new0(RemminaMain, 1);
+	remminamain->priv = g_new0(RemminaMainPriv, 1);
 	/* Assign UI widgets to the private members */
 	remminamain->builder = remmina_public_gtk_builder_new_from_file("remmina_main.glade");
 	remminamain->window = GTK_WINDOW(gtk_builder_get_object(remminamain->builder, "RemminaMain"));
