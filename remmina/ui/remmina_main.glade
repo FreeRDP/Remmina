@@ -88,6 +88,7 @@
       <object class="GtkAction" id="action_connection_external_tools">
         <property name="label" translatable="yes">External Tools</property>
         <property name="short_label" translatable="yes">External Tools</property>
+        <property name="icon_name">system-run</property>
         <signal name="activate" handler="remmina_main_on_action_connection_external_tools" swapped="no"/>
       </object>
       <accelerator key="t" modifiers="GDK_CONTROL_MASK"/>
@@ -289,6 +290,15 @@
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_connection_external_tools">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_connection_external_tools</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
                       </object>
                     </child>
                     <child>
@@ -687,6 +697,19 @@
                 <property name="label" translatable="yes">_Edit</property>
                 <property name="use_underline">True</property>
                 <property name="icon_name">document-properties</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="toolbutton_external_tools">
+                <property name="use_action_appearance">True</property>
+                <property name="related_action">action_connection_external_tools</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
