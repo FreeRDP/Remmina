@@ -65,6 +65,7 @@ typedef struct _RemminaMain
 	GtkAccelGroup *accelgroup_shortcuts;
 	GtkListStore *liststore_files_list;
 	GtkTreeStore *treestore_files_list;
+	GtkActionGroup *actiongroup_connection;
 	/* Actions from the application ActionGroup */
 	GtkAction *action_application_about;
 	GtkAction *action_application_plugins;
