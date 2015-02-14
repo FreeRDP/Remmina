@@ -77,6 +77,7 @@ typedef struct _RemminaMain
 	GtkAction *action_connection_edit;
 	GtkAction *action_connection_copy;
 	GtkAction *action_connection_delete;
+	GtkAction *action_connection_external_tools;
 	/* Actions from the view ActionGroup */
 	GtkToggleAction *action_view_toolbar;
 	GtkToggleAction *action_view_statusbar;
@@ -88,7 +89,6 @@ typedef struct _RemminaMain
 	/* Actions from the tools ActionGroup */
 	GtkAction *action_tools_import;
 	GtkAction *action_tools_export;
-	GtkAction *action_tools_externaltools;
 	/* Actions from the help ActionGroup */
 	GtkAction *action_help_homepage;
 	GtkAction *action_help_wiki;
