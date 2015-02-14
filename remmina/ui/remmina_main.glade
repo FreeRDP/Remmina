@@ -601,6 +601,7 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="menuitem_popup_delete">
+                        <property name="use_action_appearance">True</property>
                         <property name="related_action">action_connection_delete</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -639,7 +640,6 @@
                 <property name="related_action">action_connection_connect</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Connect</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-connect</property>
               </object>
@@ -664,7 +664,6 @@
                 <property name="related_action">action_connections_new</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_New</property>
                 <property name="use_underline">True</property>
                 <property name="icon_name">document-new</property>
               </object>
@@ -679,7 +678,6 @@
                 <property name="related_action">action_connection_copy</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Copy</property>
                 <property name="use_underline">True</property>
                 <property name="icon_name">edit-copy</property>
               </object>
@@ -694,7 +692,6 @@
                 <property name="related_action">action_connection_edit</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Edit</property>
                 <property name="use_underline">True</property>
                 <property name="icon_name">document-properties</property>
               </object>
@@ -722,7 +719,6 @@
                 <property name="related_action">action_connection_delete</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Delete</property>
                 <property name="use_underline">True</property>
                 <property name="icon_name">edit-delete</property>
               </object>
@@ -747,7 +743,6 @@
                 <property name="related_action">action_application_preferences</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Preferences</property>
                 <property name="use_underline">True</property>
                 <property name="icon_name">preferences-desktop</property>
               </object>
