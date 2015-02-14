@@ -143,6 +143,7 @@ static void remmina_main_clear_selection_data()
 	g_free(remminamain->priv->selected_name);
 	remminamain->priv->selected_filename = NULL;
 	remminamain->priv->selected_name = NULL;
+	gtk_action_group_set_sensitive(remminamain->actiongroup_connection, FALSE);
 }
 
 static gboolean remmina_main_selection_func(GtkTreeSelection *selection, GtkTreeModel *model, GtkTreePath *path,
@@ -170,10 +171,12 @@ static gboolean remmina_main_selection_func(GtkTreeSelection *selection, GtkTree
 	{
 		g_snprintf(buf, sizeof(buf), "%s (%s)", remminamain->priv->selected_name, remminamain->priv->selected_filename);
 		gtk_statusbar_push(remminamain->statusbar_main, context_id, buf);
+		gtk_action_group_set_sensitive(remminamain->actiongroup_connection, TRUE);
 	}
 	else
 	{
 		gtk_statusbar_push(remminamain->statusbar_main, context_id, remminamain->priv->selected_name);
+		gtk_action_group_set_sensitive(remminamain->actiongroup_connection, FALSE);
 	}
 	return TRUE;
 }
@@ -1067,6 +1070,7 @@ GtkWidget* remmina_main_new()
 	remminamain->accelgroup_shortcuts = GTK_ACCEL_GROUP(GET_OBJECT("accelgroup_shortcuts"));
 	remminamain->liststore_files_list = GTK_LIST_STORE(GET_OBJECT("liststore_files_list"));
 	remminamain->treestore_files_list = GTK_TREE_STORE(GET_OBJECT("treestore_files_list"));
+	remminamain->actiongroup_connection = GTK_ACTION_GROUP(GET_OBJECT("actiongroup_connection"));
 	/* Actions from the application ActionGroup */
 	remminamain->action_application_about = GTK_ACTION(GET_OBJECT("action_application_about"));
 	remminamain->action_application_plugins = GTK_ACTION(GET_OBJECT("action_application_plugins"));
