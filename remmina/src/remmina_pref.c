@@ -395,7 +395,7 @@ void remmina_pref_init(void)
 		remmina_pref.vte_font = NULL;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_allow_bold_text", NULL))
-		remmina_pref.vte_allow_bold_text = g_key_file_get_integer(gkeyfile, "remmina_pref", "vte_allow_bold_text",
+		remmina_pref.vte_allow_bold_text = g_key_file_get_boolean(gkeyfile, "remmina_pref", "vte_allow_bold_text",
 				NULL);
 	else
 		remmina_pref.vte_allow_bold_text = TRUE;
