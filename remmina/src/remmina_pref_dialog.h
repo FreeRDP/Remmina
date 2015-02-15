@@ -36,41 +36,75 @@
 #define __REMMINAPREFDIALOG_H__
 
 /*
- * Remmina Perference Dialog
+ * Remmina Preferences Dialog
  */
 
-G_BEGIN_DECLS
-
-#define REMMINA_TYPE_PREF_DIALOG               (remmina_pref_dialog_get_type ())
-#define REMMINA_PREF_DIALOG(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_PREF_DIALOG, RemminaPrefDialog))
-#define REMMINA_PREF_DIALOG_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_PREF_DIALOG, RemminaPrefDialogClass))
-#define REMMINA_IS_PREF_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_PREF_DIALOG))
-#define REMMINA_IS_PREF_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_PREF_DIALOG))
-#define REMMINA_PREF_DIALOG_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_PREF_DIALOG, RemminaPrefDialogClass))
-
-typedef struct _RemminaPrefDialogPriv RemminaPrefDialogPriv;
+typedef struct _RemminaPrefDialogPriv
+{
+	GtkWidget *resolutions_list;
+} RemminaPrefDialogPriv;
 
 typedef struct _RemminaPrefDialog
 {
-	GtkDialog dialog;
-
+	GtkBuilder *builder;
+	GtkDialog *dialog;
+	GtkNotebook *notebook_preferences;
+	
+	GtkCheckButton *checkbutton_options_remember_last_view_mode;
+	GtkCheckButton *checkbutton_options_save_settings;
+	GtkCheckButton *checkbutton_options_invisible_toolbar;
+	GtkCheckButton *checkbutton_options_show_tabs;
+	GtkCheckButton *checkbutton_options_hide_toolbar;
+	GtkComboBox *comboboxtext_options_double_click;
+	GtkComboBox *comboboxtext_options_view_mode;
+	GtkComboBox *comboboxtext_options_tab_interface;
+	GtkComboBox *comboboxtext_options_scale_quality;
+	GtkEntry *entry_options_ssh_port;
+	GtkEntry *entry_options_scroll;
+	GtkEntry *entry_options_recent_items;
+	GtkButton *button_options_recent_items_clear;
+	GtkButton *button_options_resolutions;
+	
+	GtkCheckButton *checkbutton_applet_new_connection_on_top;
+	GtkCheckButton *checkbutton_applet_hide_totals;
+	GtkCheckButton *checkbutton_applet_disable_tray;
+	GtkCheckButton *checkbutton_applet_start_in_tray;
+	
+	GtkButton *button_keyboard_host_key;
+	GtkButton *button_keyboard_fullscreen;
+	GtkButton *button_keyboard_auto_fit;
+	GtkButton *button_keyboard_switch_tab_left;
+	GtkButton *button_keyboard_switch_tab_right;
+	GtkButton *button_keyboard_scaled;
+	GtkButton *button_keyboard_grab_keyboard;
+	GtkButton *button_keyboard_minimize;
+	GtkButton *button_keyboard_disconnect;
+	GtkButton *button_keyboard_toolbar;
+	
+	GtkCheckButton *checkbutton_terminal_font_system;
+	GtkFontButton *fontbutton_terminal_font;
+	GtkCheckButton *checkbutton_terminal_bold;
+	GtkCheckButton *checkbutton_terminal_system_colors;
+	GtkLabel *label_terminal_foreground;
+	GtkColorButton *colorbutton_foreground;
+	GtkLabel *label_terminal_background;
+	GtkColorButton *colorbutton_background;
+	GtkEntry *entry_scrollback_lines;
+	GtkButton *button_keyboard_copy;
+	GtkButton *button_keyboard_paste;
+	
 	RemminaPrefDialogPriv *priv;
 } RemminaPrefDialog;
 
-typedef struct _RemminaPrefDialogClass
-{
-	GtkDialogClass parent_class;
-} RemminaPrefDialogClass;
-
-GType remmina_pref_dialog_get_type(void)
-G_GNUC_CONST;
-
 enum
 {
-	REMMINA_PREF_OPTIONS_TAB = 0, REMMINA_PREF_RESOLUTIONS_TAB = 1, REMMINA_PREF_APPLET_TAB = 2
+	REMMINA_PREF_OPTIONS_TAB = 0, REMMINA_PREF_APPLET_TAB = 1
 };
 
-GtkWidget* remmina_pref_dialog_new(gint default_tab);
+G_BEGIN_DECLS
+
+/* RemminaPrefDialog instance */
+GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent);
 
 G_END_DECLS
 

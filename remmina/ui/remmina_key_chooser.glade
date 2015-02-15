@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.18.3 -->
+<interface>
+  <requires lib="gtk+" version="3.0"/>
+  <object class="GtkActionGroup" id="actiongroup_key_chooser">
+    <child>
+      <object class="GtkAction" id="action_cancel">
+        <property name="label" translatable="yes">_Cancel</property>
+        <property name="short_label" translatable="yes">_Cancel</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_remove">
+        <property name="label" translatable="yes">_Remove</property>
+        <property name="short_label" translatable="yes">_Remove</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkDialog" id="KeyChooserDialog">
+    <property name="width_request">250</property>
+    <property name="height_request">100</property>
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Choose a new key</property>
+    <property name="resizable">False</property>
+    <property name="modal">True</property>
+    <property name="type_hint">dialog</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="dialog-vbox1">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="dialog-action_area1">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="button_remove">
+                <property name="label" translatable="yes">button</property>
+                <property name="use_action_appearance">True</property>
+                <property name="related_action">action_remove</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button_cancel">
+                <property name="label" translatable="yes">button</property>
+                <property name="use_action_appearance">True</property>
+                <property name="related_action">action_cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEventBox" id="eventbox_key_chooser">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="events">GDK_KEY_PRESS_MASK | GDK_STRUCTURE_MASK</property>
+            <child>
+              <object class="GtkLabel" id="label_title">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Please press the new key...</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="-2">button_remove</action-widget>
+      <action-widget response="-6">button_cancel</action-widget>
+    </action-widgets>
+  </object>
+</interface>

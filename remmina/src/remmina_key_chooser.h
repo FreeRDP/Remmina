@@ -35,32 +35,29 @@
 #ifndef __REMMINAKEYCHOOSER_H__
 #define __REMMINAKEYCHOOSER_H__
 
+#define KEY_MODIFIER_SHIFT _("Shift+")
+#define KEY_MODIFIER_CTRL _("Ctrl+")
+#define KEY_MODIFIER_ALT _("Alt+")
+#define KEY_MODIFIER_SUPER _("Super+")
+#define KEY_MODIFIER_HYPER _("Hyper+")
+#define KEY_MODIFIER_META _("Meta+")
+#define KEY_CHOOSER_NONE _("<None>")
+
+typedef struct _RemminaKeyChooserArguments
+{
+	guint keyval;
+	guint state;
+	gboolean use_modifiers;
+} RemminaKeyChooserArguments;
+
 G_BEGIN_DECLS
 
-#define REMMINA_TYPE_KEY_CHOOSER               (remmina_key_chooser_get_type ())
-#define REMMINA_KEY_CHOOSER(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_KEY_CHOOSER, RemminaKeyChooser))
-#define REMMINA_KEY_CHOOSER_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_KEY_CHOOSER, RemminaKeyChooserClass))
-#define REMMINA_IS_KEY_CHOOSER(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_KEY_CHOOSER))
-#define REMMINA_IS_KEY_CHOOSER_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_KEY_CHOOSER))
-#define REMMINA_KEY_CHOOSER_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_KEY_CHOOSER, RemminaKeyChooserClass))
-
-typedef struct _RemminaKeyChooser
-{
-	GtkButton button;
-
-	guint keyval;
-} RemminaKeyChooser;
-
-typedef struct _RemminaKeyChooserClass
-{
-	GtkButtonClass parent_class;
-} RemminaKeyChooserClass;
-
-GType remmina_key_chooser_get_type(void)
-G_GNUC_CONST;
-
-GtkWidget* remmina_key_chooser_new(guint keyval);
-void remmina_key_chooser_set_keyval(RemminaKeyChooser *kc, guint keyval);
+/* Show a key chooser dialog and return the keyval for the selected key */
+RemminaKeyChooserArguments* remmina_key_chooser_new(GtkWindow *parent_window, gint default_keyval, gboolean use_modifiers);
+/* Get the uppercase character value of a keyval */
+gchar* remmina_key_chooser_get_value(guint keyval, guint state);
+/* Get the keyval of a (lowercase) character value */
+guint remmina_key_chooser_get_keyval(const gchar *value);
 
 G_END_DECLS
 
