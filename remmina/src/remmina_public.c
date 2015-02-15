@@ -76,7 +76,7 @@ remmina_public_create_combo_entry(const gchar *text, const gchar *def, gboolean 
 		i = 0;
 		while (ptr1 && *ptr1 != '\0')
 		{
-			ptr2 = strchr(ptr1, STRING_DELIMITOR);
+			ptr2 = strchr(ptr1, CHAR_DELIMITOR);
 			if (ptr2)
 				*ptr2++ = '\0';
 
@@ -162,7 +162,7 @@ void remmina_public_load_combo_text_d(GtkWidget *combo, const gchar *text, const
 	ptr1 = buf;
 	while (ptr1 && *ptr1 != '\0')
 	{
-		ptr2 = strchr(ptr1, STRING_DELIMITOR);
+		ptr2 = strchr(ptr1, CHAR_DELIMITOR);
 		if (ptr2)
 			*ptr2++ = '\0';
 
