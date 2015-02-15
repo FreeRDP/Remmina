@@ -50,7 +50,7 @@ static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 	GdkDisplay *display;
 #if GTK_VERSION == 3
 	GdkDeviceManager *device_manager;
-	GdkDevice  *pointer;
+	GdkDevice *pointer;
 #endif
 	GdkScreen *screen;
 	gint x, y, mx, my, w, h;

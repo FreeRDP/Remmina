@@ -74,5 +74,5 @@ if(ZLIB_FOUND)
 endif()
 
 if(WITH_EXAMPLES)
-  add_subdirectory(tool_hello_world)
+	add_subdirectory(tool_hello_world)
 endif()
