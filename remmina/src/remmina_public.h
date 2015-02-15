@@ -101,5 +101,7 @@ gboolean remmina_public_get_modifier_for_keycode(GdkKeymap *keymap, guint16 keyc
 GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename);
 /* Change parent container for a widget */
 void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *container);
+/* Replaces all occurences of search in a new copy of string by replacement. */
+gchar* remmina_public_str_replace(const gchar *string, const gchar *search, const gchar *replacement);
 #endif  /* __REMMINAPUBLIC_H__  */
 
