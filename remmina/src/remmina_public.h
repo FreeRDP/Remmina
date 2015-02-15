@@ -53,6 +53,7 @@
 #define X_UNIX_SOCKET "/tmp/.X11-unix/X%d"
 
 #define CHAR_DELIMITOR ','
+#define STRING_DELIMITOR ","
 
 #define MOUSE_BUTTON_LEFT 1
 #define MOUSE_BUTTON_MIDDLE 2
