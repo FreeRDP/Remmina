@@ -1065,7 +1065,7 @@ static gboolean vnc_encryption_disable_requested;
 static void remmina_plugin_vnc_rfb_output(const char *format, ...)
 {
 	TRACE_CALL("remmina_plugin_vnc_rfb_output");
-    va_list args;
+	va_list args;
 	va_start(args, format);
 	gchar *f, *p, *ff;
 

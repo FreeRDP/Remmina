@@ -65,7 +65,7 @@ UINT32 remmina_rdp_cliprdr_get_format_from_gdkatom(GdkAtom atom)
 	}
 	if (g_strcmp0("image/jpeg", name) == 0)
 	{
-	   return CB_FORMAT_JPEG;
+		return CB_FORMAT_JPEG;
 	}
 	if (g_strcmp0("image/bmp", name) == 0)
 	{
@@ -98,60 +98,59 @@ void remmina_rdp_cliprdr_get_target_types(UINT32** formats, UINT16* size, GdkAto
 static UINT8* lf2crlf(UINT8* data, int* size)
 {
 	TRACE_CALL("lf2crlf");
-        UINT8 c;
-        UINT8* outbuf;
-        UINT8* out;
-        UINT8* in_end;
-        UINT8* in;
-        int out_size;
+	UINT8 c;
+	UINT8* outbuf;
+	UINT8* out;
+	UINT8* in_end;
+	UINT8* in;
+	int out_size;
 
-        out_size = (*size) * 2 + 1;
-        outbuf = (UINT8*) malloc(out_size);
-        out = outbuf;
-        in = data;
-        in_end = data + (*size);
+	out_size = (*size) * 2 + 1;
+	outbuf = (UINT8*) malloc(out_size);
+	out = outbuf;
+	in = data;
+	in_end = data + (*size);
 
-        while (in < in_end)
-        {
-                c = *in++;
-                if (c == '\n')
-                {
-                        *out++ = '\r';
-                        *out++ = '\n';
-                }
-                else
-                {
-                        *out++ = c;
-                }
-        }
+	while (in < in_end)
+	{
+		c = *in++;
+		if (c == '\n')
+		{
+			*out++ = '\r';
+			*out++ = '\n';
+		}
+		else
+		{
+			*out++ = c;
+		}
+	}
 
-        *out++ = 0;
-        *size = out - outbuf;
+	*out++ = 0;
+	*size = out - outbuf;
 
-        return outbuf;
+	return outbuf;
 }
 
 static void crlf2lf(UINT8* data, size_t* size)
 {
 	TRACE_CALL("crlf2lf");
-        UINT8 c;
-        UINT8* out;
-        UINT8* in;
-        UINT8* in_end;
+	UINT8 c;
+	UINT8* out;
+	UINT8* in;
+	UINT8* in_end;
 
-        out = data;
-        in = data;
-        in_end = data + (*size);
+	out = data;
+	in = data;
+	in_end = data + (*size);
 
-        while (in < in_end)
-        {
-                c = *in++;
+	while (in < in_end)
+	{
+		c = *in++;
+		if (c != '\r')
+			*out++ = c;
+	}
 
-                if (c != '\r')
-                        *out++ = c;
-        }
-
-        *size = out - data;
+	*size = out - data;
 }
 
 int remmina_rdp_cliprdr_server_file_contents_request(CliprdrClientContext* context, CLIPRDR_FILE_CONTENTS_REQUEST* fileContentsRequest)
