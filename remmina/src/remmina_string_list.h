@@ -36,54 +36,46 @@
 #ifndef __REMMINASTRINGLIST_H__
 #define __REMMINASTRINGLIST_H__
 
-G_BEGIN_DECLS
-
-#define REMMINA_TYPE_STRING_LIST               (remmina_string_list_get_type ())
-#define REMMINA_STRING_LIST(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_STRING_LIST, RemminaStringList))
-#define REMMINA_STRING_LIST_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_STRING_LIST, RemminaStringListClass))
-#define REMMINA_IS_STRING_LIST(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_STRING_LIST))
-#define REMMINA_IS_STRING_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_STRING_LIST))
-#define REMMINA_STRING_LIST_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_STRING_LIST, RemminaStringListClass))
-
 typedef gboolean (*RemminaStringListValidationFunc)(const gchar *new_str, gchar **error);
+
+typedef struct _RemminaStringListPriv
+{
+	RemminaStringListValidationFunc validation_func;
+} RemminaStringListPriv;
 
 typedef struct _RemminaStringList
 {
-	GtkGrid table;
+	GtkBuilder *builder;
+	GtkDialog *dialog;
 
-	GtkListStore *store;
-	GtkWidget *list;
-	GtkWidget *status_label;
-	const gchar *hints;
+	GtkListStore *liststore_items;
+	GtkTreeView *treeview_items;
+	GtkTreeSelection *treeview_selection;
 
-	GtkWidget *up_button;
-	GtkWidget *down_button;
+	GtkButton *button_add;
+	GtkButton *button_remove;
+	GtkButton *button_up;
+	GtkButton *button_down;
 
-	RemminaStringListValidationFunc validation_func;
+	GtkLabel *label_title;
+	GtkLabel *label_status;
+
+	RemminaStringListPriv *priv;
 } RemminaStringList;
 
-typedef struct _RemminaStringListClass
-{
-	GtkGridClass parent_class;
-} RemminaStringListClass;
+G_BEGIN_DECLS
 
-GType remmina_string_list_get_type(void)
-G_GNUC_CONST;
-
-GtkWidget* remmina_string_list_new(void);
-
-void remmina_string_list_set_auto_sort(RemminaStringList *gsl, gboolean auto_sort);
-
-void remmina_string_list_set_hints(RemminaStringList *gsl, const gchar *hints);
-
-void remmina_string_list_set_text(RemminaStringList *gsl, const gchar *text);
-
-void remmina_string_list_set_validation_func(RemminaStringList *gsl, RemminaStringListValidationFunc func);
-
-/* The returned text is newly allocated */
-gchar* remmina_string_list_get_text(RemminaStringList *gsl);
+/* RemminaStringList instance */
+GtkDialog* remmina_string_list_new(void);
+/* Load a string list by splitting a string value */
+void remmina_string_list_set_text(const gchar *text, const gboolean clear_data);
+/* Get a string value representing the string list */
+gchar* remmina_string_list_get_text(void);
+/* Set the dialog titles */
+void remmina_string_list_set_titles(gchar *title1, gchar *title2);
+/* Set a function that will be used to validate the new rows */
+void remmina_string_list_set_validation_func(RemminaStringListValidationFunc func);
 
 G_END_DECLS
 
 #endif  /* __REMMINASTRINGLIST_H__  */
-

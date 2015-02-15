@@ -576,11 +576,9 @@ void remmina_main_on_action_connection_delete(GtkAction *action, gpointer user_d
 void remmina_main_on_action_application_preferences(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_application_preferences");
-	GtkWidget *widget;
-
-	widget = remmina_pref_dialog_new(0);
-	gtk_window_set_transient_for(GTK_WINDOW(widget), remminamain->window);
-	gtk_widget_show(widget);
+	GtkDialog *dialog = remmina_pref_dialog_new(0, remminamain->window);
+	gtk_dialog_run(dialog);
+	gtk_widget_destroy(GTK_WIDGET(dialog));
 }
 
 void remmina_main_on_action_application_quit(GtkAction *action, gpointer user_data)
