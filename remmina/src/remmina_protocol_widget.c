@@ -627,35 +627,36 @@ gboolean remmina_protocol_widget_ssh_exec(RemminaProtocolWidget* gp, gboolean wa
 				switch (status)
 				{
 					case 0:
-					ret = TRUE;
-					break;
+						ret = TRUE;
+						break;
 					case 127:
-					remmina_ssh_set_application_error (REMMINA_SSH (tunnel),
-							_("Command %s not found on SSH server"), cmd);
-					break;
+						remmina_ssh_set_application_error (REMMINA_SSH (tunnel),
+								_("Command %s not found on SSH server"), cmd);
+						break;
 					default:
-					remmina_ssh_set_application_error (REMMINA_SSH (tunnel),
-							_("Command %s failed on SSH server (status = %i)."), cmd,status);
-                break;
-            }
-        }
-        else
-        {
-            ret = TRUE;
-        }
-    }
-    else
-    {
-        remmina_ssh_set_error (REMMINA_SSH (tunnel), _("Failed to execute command: %s"));
-    }
-    g_free(cmd);
-    if (wait) channel_close (channel);
-    channel_free (channel);
-    return ret;
+						remmina_ssh_set_application_error (REMMINA_SSH (tunnel),
+								_("Command %s failed on SSH server (status = %i)."), cmd,status);
+						break;
+				}
+			}
+			else
+			{
+				ret = TRUE;
+			}
+		}
+		else
+		{
+			remmina_ssh_set_error (REMMINA_SSH (tunnel), _("Failed to execute command: %s"));
+		}
+		g_free(cmd);
+		if (wait)
+			channel_close (channel);
+		channel_free (channel);
+		return ret;
 
 #else
 
-    return FALSE;
+		return FALSE;
 
 #endif
 }
