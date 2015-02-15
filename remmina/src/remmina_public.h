@@ -52,7 +52,7 @@
 #define MAX_X_DISPLAY_NUMBER 99
 #define X_UNIX_SOCKET "/tmp/.X11-unix/X%d"
 
-#define STRING_DELIMITOR ','
+#define CHAR_DELIMITOR ','
 
 #define MOUSE_BUTTON_LEFT 1
 #define MOUSE_BUTTON_MIDDLE 2
