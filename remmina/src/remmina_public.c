@@ -602,3 +602,25 @@ void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *contain
 	gtk_container_add(container, widget);
 	g_object_unref(widget);
 }
+
+/* Replaces all occurences of search in a new copy of string by replacement. */
+gchar* remmina_public_str_replace(const gchar *string, const gchar *search, const gchar *replacement)
+{
+	TRACE_CALL("remmina_public_str_replace")
+	gchar *str, **arr;
+
+	g_return_val_if_fail (string != NULL, NULL);
+	g_return_val_if_fail (search != NULL, NULL);
+
+	if (replacement == NULL)
+		replacement = "";
+
+	arr = g_strsplit (string, search, -1);
+	if (arr != NULL && arr[0] != NULL)
+		str = g_strjoinv (replacement, arr);
+	else
+		str = g_strdup (string);
+
+	g_strfreev (arr);
+	return str;
+}
