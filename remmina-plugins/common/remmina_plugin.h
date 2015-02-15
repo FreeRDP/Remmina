@@ -83,19 +83,19 @@ typedef void (*PThreadCleanupFunc)(void*);
 #define INCLUDE_GET_AVAILABLE_XDISPLAY static gint \
 remmina_get_available_xdisplay (void) \
 { \
-    gint i; \
-    gint display = 0; \
-    gchar fn[200]; \
-    for (i = 1; i < MAX_X_DISPLAY_NUMBER; i++) \
-    { \
-        g_snprintf (fn, sizeof (fn), X_UNIX_SOCKET, i); \
-        if (!g_file_test (fn, G_FILE_TEST_EXISTS)) \
-        { \
-            display = i; \
-            break; \
-        } \
-    } \
-    return display; \
+	gint i; \
+	gint display = 0; \
+	gchar fn[200]; \
+	for (i = 1; i < MAX_X_DISPLAY_NUMBER; i++) \
+	{ \
+		g_snprintf (fn, sizeof (fn), X_UNIX_SOCKET, i); \
+		if (!g_file_test (fn, G_FILE_TEST_EXISTS)) \
+		{ \
+			display = i; \
+			break; \
+		} \
+	} \
+	return display; \
 }
 
 #endif /* __REMMINAPLUGINCOMMON_H__ */
