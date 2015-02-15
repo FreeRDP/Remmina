@@ -440,7 +440,7 @@ static void remmina_file_editor_browse_resolution(GtkWidget* button, RemminaFile
 	TRACE_CALL("remmina_file_editor_browse_resolution");
 	GtkWidget* widget;
 
-	widget = remmina_pref_dialog_new(REMMINA_PREF_RESOLUTIONS_TAB);
+	widget = remmina_pref_dialog_new(REMMINA_PREF_OPTIONS_TAB, GTK_WINDOW(gfe));
 	gtk_widget_show(widget);
 
 	g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_file_editor_update_resolution), gfe);

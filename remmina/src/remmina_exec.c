@@ -82,7 +82,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 			}
 			else
 			{
-				widget = remmina_pref_dialog_new(atoi(data));
+				widget = GTK_WIDGET(remmina_pref_dialog_new(atoi(data), NULL));
 				gtk_widget_show(widget);
 			}
 			break;

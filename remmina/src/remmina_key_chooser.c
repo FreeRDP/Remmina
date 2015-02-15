@@ -36,98 +36,104 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include "remmina_key_chooser.h"
+#include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"
 
-G_DEFINE_TYPE( RemminaKeyChooser, remmina_key_chooser, GTK_TYPE_BUTTON)
-
-static void remmina_key_chooser_class_init(RemminaKeyChooserClass *klass)
-{
-	TRACE_CALL("remmina_key_chooser_class_init");
-}
-
-static void remmina_key_chooser_update_label(RemminaKeyChooser *kc)
-{
-	TRACE_CALL("remmina_key_chooser_update_label");
-	gchar *s;
-
-	if (kc->keyval)
-	{
-		s = gdk_keyval_name(gdk_keyval_to_upper(kc->keyval));
-	}
-	else
-	{
-		s = _("<None>");
-	}
-	gtk_button_set_label(GTK_BUTTON(kc), s);
-}
-
-void remmina_key_chooser_set_keyval(RemminaKeyChooser *kc, guint keyval)
-{
-	TRACE_CALL("remmina_key_chooser_set_keyval");
-	kc->keyval = keyval;
-	remmina_key_chooser_update_label(kc);
-}
-
-static gboolean remmina_key_chooser_dialog_on_key_press(GtkWidget *widget, GdkEventKey *event, RemminaKeyChooser *kc)
+/* Handle key-presses on the GtkEventBox */
+static gboolean remmina_key_chooser_dialog_on_key_press(GtkWidget *widget, GdkEventKey *event, RemminaKeyChooserArguments *arguments)
 {
 	TRACE_CALL("remmina_key_chooser_dialog_on_key_press");
-	remmina_key_chooser_set_keyval(kc, gdk_keyval_to_lower(event->keyval));
-	gtk_dialog_response(GTK_DIALOG(gtk_widget_get_toplevel(widget)), GTK_RESPONSE_OK);
+	if (!arguments->use_modifiers || !event->is_modifier)
+	{
+		arguments->state = event->state;
+		arguments->keyval = gdk_keyval_to_lower(event->keyval);
+		gtk_dialog_response(GTK_DIALOG(gtk_widget_get_toplevel(widget)),
+			event->keyval == GDK_KEY_Escape ? GTK_RESPONSE_CANCEL : GTK_RESPONSE_OK);
+	}
 	return TRUE;
 }
 
-static void remmina_key_chooser_on_clicked(RemminaKeyChooser *kc, gpointer data)
-{
-	TRACE_CALL("remmina_key_chooser_on_clicked");
-	GtkWidget *dialog;
-	GtkWidget *eventbox;
-	GtkWidget *widget;
-	gint ret;
-
-	dialog = gtk_dialog_new_with_buttons(_("Choose a new key"), GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(kc))),
-			GTK_DIALOG_MODAL, _("_Cancel"), GTK_RESPONSE_CANCEL, _("_Remove"), GTK_RESPONSE_REJECT, NULL);
-
-	eventbox = gtk_event_box_new();
-	gtk_widget_show(eventbox);
-	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dialog))), eventbox, TRUE, TRUE, 0);
-	gtk_widget_add_events(eventbox, GDK_KEY_PRESS_MASK);
-	g_signal_connect(G_OBJECT(eventbox), "key-press-event", G_CALLBACK(remmina_key_chooser_dialog_on_key_press), kc);
-	gtk_widget_set_can_focus(eventbox, TRUE);
-
-	widget = gtk_label_new(_("Please press the new key..."));
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.5, 0.5);
-	gtk_widget_set_size_request(widget, 250, 150);
-	gtk_widget_show(widget);
-	gtk_container_add(GTK_CONTAINER(eventbox), widget);
-
-	gtk_widget_grab_focus(eventbox);
-
-	ret = gtk_dialog_run(GTK_DIALOG(dialog));
-	gtk_widget_destroy(dialog);
-
-	if (ret == GTK_RESPONSE_REJECT)
-	{
-		remmina_key_chooser_set_keyval(kc, 0);
-	}
-}
-
-static void remmina_key_chooser_init(RemminaKeyChooser *kc)
-{
-	TRACE_CALL("remmina_key_chooser_init");
-	remmina_key_chooser_set_keyval(kc, 0);
-
-	g_signal_connect(G_OBJECT(kc), "clicked", G_CALLBACK(remmina_key_chooser_on_clicked), NULL);
-}
-
-GtkWidget*
-remmina_key_chooser_new(guint keyval)
+/* Show a key chooser dialog and return the keyval for the selected key */
+RemminaKeyChooserArguments* remmina_key_chooser_new(GtkWindow *parent_window, gint default_keyval, gboolean use_modifiers)
 {
 	TRACE_CALL("remmina_key_chooser_new");
-	RemminaKeyChooser *kc;
+	gint response;
+	GtkBuilder *builder = remmina_public_gtk_builder_new_from_file("remmina_key_chooser.glade");
+	GtkDialog *dialog;
+	GtkEventBox *event_box;
+	RemminaKeyChooserArguments *arguments;
+	arguments = g_new0(RemminaKeyChooserArguments, 1);
+	arguments->keyval = default_keyval;
+	arguments->state = 0;
+	arguments->use_modifiers = use_modifiers;
 
-	kc = REMMINA_KEY_CHOOSER(g_object_new(REMMINA_TYPE_KEY_CHOOSER, NULL));
-	remmina_key_chooser_set_keyval(kc, keyval);
-
-	return GTK_WIDGET(kc);
+	/* Setup the dialog */
+	dialog = GTK_DIALOG(gtk_builder_get_object(builder, "KeyChooserDialog"));
+	gtk_window_set_transient_for(GTK_WINDOW(dialog), parent_window);
+	/* Setup the GtkEventBox */
+	event_box = GTK_EVENT_BOX(gtk_builder_get_object(builder, "eventbox_key_chooser"));
+	g_signal_connect(G_OBJECT(event_box), "key-press-event",
+		G_CALLBACK(remmina_key_chooser_dialog_on_key_press), arguments);
+	/* Show the dialog and destroy it after the use */
+	response = gtk_dialog_run(dialog);
+	gtk_widget_destroy(GTK_WIDGET(dialog));
+	/* Get selected keyval */
+	if (response == GTK_RESPONSE_REJECT)
+		arguments->keyval = 0;
+	else if (response == GTK_RESPONSE_CANCEL)
+		arguments->keyval = default_keyval;
+	return arguments;
 }
 
+/* Get the uppercase character value of a keyval */
+gchar* remmina_key_chooser_get_value(guint keyval, guint state)
+{
+	TRACE_CALL("remmina_key_chooser_get_value");
+
+	if (!keyval)
+		return KEY_CHOOSER_NONE;
+
+	return g_strdup_printf("%s%s%s%s%s%s%s",
+		state & GDK_SHIFT_MASK ? KEY_MODIFIER_SHIFT : "",
+		state & GDK_CONTROL_MASK ? KEY_MODIFIER_CTRL : "",
+		state & GDK_MOD1_MASK ? KEY_MODIFIER_ALT : "",
+		state & GDK_SUPER_MASK ? KEY_MODIFIER_SUPER : "",
+		state & GDK_HYPER_MASK ? KEY_MODIFIER_HYPER : "",
+		state & GDK_META_MASK ? KEY_MODIFIER_META : "",
+		gdk_keyval_name(gdk_keyval_to_upper(keyval)));
+}
+
+/* Get the keyval of a (lowercase) character value */
+guint remmina_key_chooser_get_keyval(const gchar *value)
+{
+	TRACE_CALL("remmina_key_chooser_get_keyval");
+	gchar *patterns[] = {
+			KEY_MODIFIER_SHIFT,
+			KEY_MODIFIER_CTRL,
+			KEY_MODIFIER_ALT,
+			KEY_MODIFIER_SUPER,
+			KEY_MODIFIER_HYPER,
+			KEY_MODIFIER_META,
+			NULL
+	};
+	gint i;
+	gchar *tmpvalue;
+	gchar *newvalue;
+	guint keyval;
+
+	if (g_strcmp0(value, KEY_CHOOSER_NONE) == 0)
+		return 0;
+		
+	/* Remove any modifier text before to get the keyval */
+	newvalue = g_strdup(value);
+	for (i = 0; i < g_strv_length(patterns); i++)
+	{
+		tmpvalue = remmina_public_str_replace(newvalue, patterns[i], "");
+		g_free(newvalue);
+		newvalue = g_strdup(tmpvalue);
+		g_free(tmpvalue);
+	}
+	keyval = gdk_keyval_to_lower(gdk_keyval_from_name(newvalue));
+	g_free(newvalue);
+	return keyval;
+}
