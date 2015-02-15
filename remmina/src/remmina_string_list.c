@@ -164,7 +164,7 @@ static void remmina_string_list_cell_edited(GtkCellRendererText *cell, const gch
 	/* Eliminate delimitors... */
 	for (ptr = text; *ptr; ptr++)
 	{
-		if (*ptr == STRING_DELIMITOR)
+		if (*ptr == CHAR_DELIMITOR)
 			*ptr = ' ';
 	}
 
@@ -332,7 +332,7 @@ void remmina_string_list_set_text(RemminaStringList *gsl, const gchar *text)
 	ptr1 = buf;
 	while (ptr1 && *ptr1 != '\0')
 	{
-		ptr2 = strchr(ptr1, STRING_DELIMITOR);
+		ptr2 = strchr(ptr1, CHAR_DELIMITOR);
 		if (ptr2)
 			*ptr2++ = '\0';
 
@@ -372,7 +372,7 @@ remmina_string_list_get_text(RemminaStringList *gsl)
 			{
 				if (!first)
 				{
-					g_string_append_c(str, STRING_DELIMITOR);
+					g_string_append_c(str, CHAR_DELIMITOR);
 				}
 				else
 				{
