@@ -276,7 +276,7 @@ void remmina_pref_dialog_disable_tray_icon_on_toggled(GtkWidget *widget, Remmina
 }
 
 /* Remmina preferences initialization */
-static void remmina_pref_dialog_init()
+static void remmina_pref_dialog_init(void)
 {
 	TRACE_CALL("remmina_pref_dialog_init");
 	gchar buf[100];
