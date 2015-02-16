@@ -435,7 +435,6 @@ void remmina_protocol_widget_emit_signal(RemminaProtocolWidget* gp, const gchar*
 {
 	TRACE_CALL("remmina_protocol_widget_emit_signal");
 	RemminaProtocolWidgetSignalData* data;
-
 	data = g_new(RemminaProtocolWidgetSignalData, 1);
 	data->gp = gp;
 	data->signal_name = signal_name;
