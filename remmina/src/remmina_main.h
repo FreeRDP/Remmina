@@ -114,7 +114,7 @@ struct _RemminaMainPriv
 G_BEGIN_DECLS
 
 /* Create the main Remmina window */
-GtkWidget* remmina_main_new();
+GtkWidget* remmina_main_new(void);
 
 G_END_DECLS
 

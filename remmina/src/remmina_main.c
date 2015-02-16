@@ -68,7 +68,7 @@ static GtkTargetEntry remmina_drop_types[] =
 	{ "text/uri-list", 0, 1 }
 };
 
-static void remmina_main_save_size()
+static void remmina_main_save_size(void)
 {
 	TRACE_CALL("remmina_main_save_size");
 	if ((gdk_window_get_state(gtk_widget_get_window(GTK_WIDGET(remminamain->window))) & GDK_WINDOW_STATE_MAXIMIZED) == 0)
@@ -97,7 +97,7 @@ static void remmina_main_save_expanded_group_func(GtkTreeView *tree_view, GtkTre
 	}
 }
 
-static void remmina_main_save_expanded_group()
+static void remmina_main_save_expanded_group(void)
 {
 	TRACE_CALL("remmina_main_save_expanded_group");
 	if (GTK_IS_TREE_STORE(remminamain->priv->file_model))
@@ -136,7 +136,7 @@ void remmina_main_destroy(GtkWidget *widget, gpointer user_data)
 	g_free(remminamain);
 }
 
-static void remmina_main_clear_selection_data()
+static void remmina_main_clear_selection_data(void)
 {
 	TRACE_CALL("remmina_main_clear_selection_data");
 	g_free(remminamain->priv->selected_filename);
@@ -269,7 +269,7 @@ static void remmina_main_expand_group_traverse(GtkTreeIter *iter)
 	}
 }
 
-static void remmina_main_expand_group()
+static void remmina_main_expand_group(void)
 {
 	TRACE_CALL("remmina_main_expand_group");
 	GtkTreeIter iter;
@@ -868,7 +868,7 @@ void remmina_main_on_action_application_about(GtkAction *action, gpointer user_d
 	remmina_about_open(remminamain->window);
 };
 
-static gboolean remmina_main_quickconnect()
+static gboolean remmina_main_quickconnect(void)
 {
 	TRACE_CALL("remmina_main_quickconnect");
 	RemminaFile* remminafile;
@@ -982,7 +982,7 @@ gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWindowSta
 }
 
 /* Remmina main window initialization */
-static void remmina_main_init()
+static void remmina_main_init(void)
 {
 	TRACE_CALL("remmina_main_init");
 	remminamain->priv->expanded_group = remmina_string_array_new_from_string(remmina_pref.expanded_group);
@@ -1039,7 +1039,7 @@ static void remmina_main_init()
 }
 
 /* RemminaMain instance */
-GtkWidget* remmina_main_new()
+GtkWidget* remmina_main_new(void)
 {
 	TRACE_CALL("remmina_main_new");
 	remminamain = g_new0(RemminaMain, 1);
