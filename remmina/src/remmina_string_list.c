@@ -239,7 +239,7 @@ void remmina_string_list_set_titles(gchar *title1, gchar *title2)
 }
 
 /* RemminaStringList initialization */
-static void remmina_string_list_init()
+static void remmina_string_list_init(void)
 {
 	TRACE_CALL("remmina_string_list_init");
 	string_list->priv->validation_func = NULL;
