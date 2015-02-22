@@ -35,6 +35,7 @@
  */
 
 #include <gtk/gtk.h>
+#include <glib/gi18n.h>
 #include "remmina_about.h"
 #include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"
@@ -47,6 +48,8 @@ void remmina_about_open(GtkWindow *parent)
 	GtkDialog *dialog = GTK_DIALOG (gtk_builder_get_object(builder, "dialog_remmina_about"));
 
 	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), VERSION);
+	gtk_about_dialog_set_translator_credits(GTK_ABOUT_DIALOG(dialog), _("translator-credits"));
+
 	if (parent)
 	{
 		gtk_window_set_transient_for(GTK_WINDOW(dialog), parent);
