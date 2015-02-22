@@ -915,6 +915,7 @@
                 <property name="model">liststore_files_list</property>
                 <property name="search_column">0</property>
                 <signal name="button-press-event" handler="remmina_main_file_list_on_button_press" swapped="no"/>
+                <signal name="key-press-event" handler="remmina_main_file_list_on_key_press" swapped="no"/>
                 <signal name="row-activated" handler="remmina_main_file_list_on_row_activated" swapped="no"/>
                 <child internal-child="selection">
                   <object class="GtkTreeSelection" id="treeview-selection3"/>
