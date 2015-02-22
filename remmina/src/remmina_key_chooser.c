@@ -54,7 +54,7 @@ static gboolean remmina_key_chooser_dialog_on_key_press(GtkWidget *widget, GdkEv
 }
 
 /* Show a key chooser dialog and return the keyval for the selected key */
-RemminaKeyChooserArguments* remmina_key_chooser_new(GtkWindow *parent_window, gint default_keyval, gboolean use_modifiers)
+RemminaKeyChooserArguments* remmina_key_chooser_new(GtkWindow *parent_window, gboolean use_modifiers)
 {
 	TRACE_CALL("remmina_key_chooser_new");
 	GtkBuilder *builder = remmina_public_gtk_builder_new_from_file("remmina_key_chooser.glade");
@@ -62,7 +62,6 @@ RemminaKeyChooserArguments* remmina_key_chooser_new(GtkWindow *parent_window, gi
 	GtkEventBox *event_box;
 	RemminaKeyChooserArguments *arguments;
 	arguments = g_new0(RemminaKeyChooserArguments, 1);
-	arguments->keyval = default_keyval;
 	arguments->state = 0;
 	arguments->use_modifiers = use_modifiers;
 
@@ -76,11 +75,9 @@ RemminaKeyChooserArguments* remmina_key_chooser_new(GtkWindow *parent_window, gi
 	/* Show the dialog and destroy it after the use */
 	arguments->response = gtk_dialog_run(dialog);
 	gtk_widget_destroy(GTK_WIDGET(dialog));
-	/* Get selected keyval */
+	/* The delete button set the keyval 0 */
 	if (arguments->response == GTK_RESPONSE_REJECT)
 		arguments->keyval = 0;
-	else if (arguments->response == GTK_RESPONSE_CANCEL)
-		arguments->keyval = default_keyval;
 	return arguments;
 }
 
