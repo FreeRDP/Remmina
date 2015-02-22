@@ -57,7 +57,6 @@ static gboolean remmina_key_chooser_dialog_on_key_press(GtkWidget *widget, GdkEv
 RemminaKeyChooserArguments* remmina_key_chooser_new(GtkWindow *parent_window, gint default_keyval, gboolean use_modifiers)
 {
 	TRACE_CALL("remmina_key_chooser_new");
-	gint response;
 	GtkBuilder *builder = remmina_public_gtk_builder_new_from_file("remmina_key_chooser.glade");
 	GtkDialog *dialog;
 	GtkEventBox *event_box;
@@ -75,12 +74,12 @@ RemminaKeyChooserArguments* remmina_key_chooser_new(GtkWindow *parent_window, gi
 	g_signal_connect(G_OBJECT(event_box), "key-press-event",
 		G_CALLBACK(remmina_key_chooser_dialog_on_key_press), arguments);
 	/* Show the dialog and destroy it after the use */
-	response = gtk_dialog_run(dialog);
+	arguments->response = gtk_dialog_run(dialog);
 	gtk_widget_destroy(GTK_WIDGET(dialog));
 	/* Get selected keyval */
-	if (response == GTK_RESPONSE_REJECT)
+	if (arguments->response == GTK_RESPONSE_REJECT)
 		arguments->keyval = 0;
-	else if (response == GTK_RESPONSE_CANCEL)
+	else if (arguments->response == GTK_RESPONSE_CANCEL)
 		arguments->keyval = default_keyval;
 	return arguments;
 }
