@@ -143,7 +143,9 @@ static void remmina_main_clear_selection_data(void)
 	g_free(remminamain->priv->selected_name);
 	remminamain->priv->selected_filename = NULL;
 	remminamain->priv->selected_name = NULL;
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	gtk_action_group_set_sensitive(remminamain->actiongroup_connection, FALSE);
+	G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static gboolean remmina_main_selection_func(GtkTreeSelection *selection, GtkTreeModel *model, GtkTreePath *path,
@@ -171,12 +173,16 @@ static gboolean remmina_main_selection_func(GtkTreeSelection *selection, GtkTree
 	{
 		g_snprintf(buf, sizeof(buf), "%s (%s)", remminamain->priv->selected_name, remminamain->priv->selected_filename);
 		gtk_statusbar_push(remminamain->statusbar_main, context_id, buf);
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		gtk_action_group_set_sensitive(remminamain->actiongroup_connection, TRUE);
+		G_GNUC_END_IGNORE_DEPRECATIONS
 	}
 	else
 	{
 		gtk_statusbar_push(remminamain->statusbar_main, context_id, remminamain->priv->selected_name);
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		gtk_action_group_set_sensitive(remminamain->actiongroup_connection, FALSE);
+		G_GNUC_END_IGNORE_DEPRECATIONS
 	}
 	return TRUE;
 }
@@ -592,7 +598,9 @@ void remmina_main_on_action_view_toolbar(GtkToggleAction *action, gpointer user_
 	TRACE_CALL("remmina_main_on_action_view_toolbar");
 	gboolean toggled;
 
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	toggled = gtk_toggle_action_get_active(action);
+	G_GNUC_END_IGNORE_DEPRECATIONS
 	if (toggled)
 	{
 		gtk_widget_show(GTK_WIDGET(remminamain->toolbar_main));
@@ -613,7 +621,9 @@ void remmina_main_on_action_view_quick_search(GtkToggleAction *action, gpointer 
 	TRACE_CALL("remmina_main_on_action_view_quick_search");
 	gboolean toggled;
 
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	toggled = gtk_toggle_action_get_active(action);
+	G_GNUC_END_IGNORE_DEPRECATIONS
 	if (toggled)
 	{
 		gtk_entry_set_text(remminamain->entry_quick_search, "");
@@ -644,7 +654,9 @@ void remmina_main_on_action_view_statusbar(GtkToggleAction *action, gpointer use
 	TRACE_CALL("remmina_main_on_action_view_statusbar");
 	gboolean toggled;
 
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	toggled = gtk_toggle_action_get_active(action);
+	G_GNUC_END_IGNORE_DEPRECATIONS
 	if (toggled)
 	{
 		gtk_widget_show(GTK_WIDGET(remminamain->statusbar_main));
@@ -665,7 +677,9 @@ void remmina_main_on_action_view_quick_connect(GtkToggleAction *action, gpointer
 	TRACE_CALL("remmina_main_on_action_view_quick_connect");
 	gboolean toggled;
 
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	toggled = gtk_toggle_action_get_active(action);
+	G_GNUC_END_IGNORE_DEPRECATIONS
 	if (toggled)
 	{
 		gtk_widget_show(GTK_WIDGET(remminamain->box_quick_connect));
@@ -686,7 +700,9 @@ void remmina_main_on_action_view_small_toolbar_buttons(GtkToggleAction *action, 
 	TRACE_CALL("remmina_main_on_action_view_small_toolbar_buttons");
 	gboolean toggled;
 
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	toggled = gtk_toggle_action_get_active(action);
+	G_GNUC_END_IGNORE_DEPRECATIONS
 	if (toggled)
 	{
 		gtk_toolbar_set_icon_size(GTK_TOOLBAR(remminamain->toolbar_main), GTK_ICON_SIZE_MENU);
@@ -710,7 +726,9 @@ void remmina_main_on_action_view_file_mode(GtkRadioAction *action, gpointer user
 		previous_action = action;
 	if (action != previous_action)
 	{
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		remmina_pref.view_file_mode = gtk_radio_action_get_current_value(action);
+		G_GNUC_END_IGNORE_DEPRECATIONS
 		remmina_pref_save();
 		remmina_main_load_files(TRUE);
 	}
@@ -1006,27 +1024,39 @@ static void remmina_main_init(void)
 	/* Load the preferences */
 	if (remmina_pref.hide_toolbar)
 	{
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		gtk_toggle_action_set_active(remminamain->action_view_toolbar, FALSE);
+		G_GNUC_END_IGNORE_DEPRECATIONS
 	}
 	if (remmina_pref.hide_statusbar)
 	{
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		gtk_toggle_action_set_active(remminamain->action_view_statusbar, FALSE);
+		G_GNUC_END_IGNORE_DEPRECATIONS
 	}
 	if (remmina_pref.show_quick_search)
 	{
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		gtk_toggle_action_set_active(remminamain->action_view_quick_search, TRUE);
+		G_GNUC_END_IGNORE_DEPRECATIONS
 	}
 	if (remmina_pref.hide_quick_connect)
 	{
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		gtk_toggle_action_set_active(remminamain->action_view_quick_connect, FALSE);
+		G_GNUC_END_IGNORE_DEPRECATIONS
 	}
 	if (remmina_pref.small_toolbutton)
 	{
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		gtk_toggle_action_set_active(remminamain->action_view_small_toolbar_buttons, TRUE);
+		G_GNUC_END_IGNORE_DEPRECATIONS
 	}
 	if (remmina_pref.view_file_mode)
 	{
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		gtk_toggle_action_set_active(remminamain->action_view_mode_tree, TRUE);
+		G_GNUC_END_IGNORE_DEPRECATIONS
 	}
 	/* Drag-n-drop support */
 	gtk_drag_dest_set(GTK_WIDGET(remminamain->window), GTK_DEST_DEFAULT_ALL, remmina_drop_types, 1, GDK_ACTION_COPY);
@@ -1065,6 +1095,7 @@ GtkWidget* remmina_main_new(void)
 	remminamain->accelgroup_shortcuts = GTK_ACCEL_GROUP(GET_OBJECT("accelgroup_shortcuts"));
 	remminamain->liststore_files_list = GTK_LIST_STORE(GET_OBJECT("liststore_files_list"));
 	remminamain->treestore_files_list = GTK_TREE_STORE(GET_OBJECT("treestore_files_list"));
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	remminamain->actiongroup_connection = GTK_ACTION_GROUP(GET_OBJECT("actiongroup_connection"));
 	/* Actions from the application ActionGroup */
 	remminamain->action_application_about = GTK_ACTION(GET_OBJECT("action_application_about"));
@@ -1094,6 +1125,7 @@ GtkWidget* remmina_main_new(void)
 	remminamain->action_help_homepage = GTK_ACTION(GET_OBJECT("action_help_homepage"));
 	remminamain->action_help_wiki = GTK_ACTION(GET_OBJECT("action_help_wiki"));
 	remminamain->action_help_debug = GTK_ACTION(GET_OBJECT("action_help_debug"));
+	G_GNUC_END_IGNORE_DEPRECATIONS
 	/* Connect signals */
 	gtk_builder_connect_signals(remminamain->builder, NULL);
 	/* Initialize the window and load the preferences */
