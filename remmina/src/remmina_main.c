@@ -914,12 +914,24 @@ void remmina_main_file_list_on_row_activated(GtkTreeView *tree, GtkTreePath *pat
 	}
 }
 
+/* Show the popup menu by the right button mouse click */
 gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEventButton *event, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_file_list_on_button_press");
 	if (event->button == MOUSE_BUTTON_RIGHT)
 	{
 		gtk_menu_popup(remminamain->menu_popup, NULL, NULL, NULL, NULL, event->button, event->time);
+	}
+	return FALSE;
+}
+
+/* Show the popup menu by the menu key */
+gboolean remmina_main_file_list_on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer user_data)
+{
+	TRACE_CALL("remmina_main_file_list_on_key_press");
+	if (event->keyval == GDK_KEY_Menu)
+	{
+		gtk_menu_popup(remminamain->menu_popup, NULL, NULL, NULL, NULL, 0, event->time);
 	}
 	return FALSE;
 }
