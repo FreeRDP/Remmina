@@ -59,7 +59,6 @@ RemminaKeyChooserArguments* remmina_key_chooser_new(GtkWindow *parent_window, gb
 	TRACE_CALL("remmina_key_chooser_new");
 	GtkBuilder *builder = remmina_public_gtk_builder_new_from_file("remmina_key_chooser.glade");
 	GtkDialog *dialog;
-	GtkEventBox *event_box;
 	RemminaKeyChooserArguments *arguments;
 	arguments = g_new0(RemminaKeyChooserArguments, 1);
 	arguments->state = 0;
@@ -68,9 +67,8 @@ RemminaKeyChooserArguments* remmina_key_chooser_new(GtkWindow *parent_window, gb
 	/* Setup the dialog */
 	dialog = GTK_DIALOG(gtk_builder_get_object(builder, "KeyChooserDialog"));
 	gtk_window_set_transient_for(GTK_WINDOW(dialog), parent_window);
-	/* Setup the GtkEventBox */
-	event_box = GTK_EVENT_BOX(gtk_builder_get_object(builder, "eventbox_key_chooser"));
-	g_signal_connect(G_OBJECT(event_box), "key-press-event",
+	/* Connect the GtkEventBox signal */
+	g_signal_connect(gtk_builder_get_object(builder, "eventbox_key_chooser"), "key-press-event",
 		G_CALLBACK(remmina_key_chooser_dialog_on_key_press), arguments);
 	/* Show the dialog and destroy it after the use */
 	arguments->response = gtk_dialog_run(dialog);
