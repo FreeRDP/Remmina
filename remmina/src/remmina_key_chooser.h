@@ -54,7 +54,7 @@ typedef struct _RemminaKeyChooserArguments
 G_BEGIN_DECLS
 
 /* Show a key chooser dialog and return the keyval for the selected key */
-RemminaKeyChooserArguments* remmina_key_chooser_new(GtkWindow *parent_window, gint default_keyval, gboolean use_modifiers);
+RemminaKeyChooserArguments* remmina_key_chooser_new(GtkWindow *parent_window, gboolean use_modifiers);
 /* Get the uppercase character value of a keyval */
 gchar* remmina_key_chooser_get_value(guint keyval, guint state);
 /* Get the keyval of a (lowercase) character value */
