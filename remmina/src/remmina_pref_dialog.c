@@ -218,9 +218,17 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	}
 	remmina_pref.vte_allow_bold_text = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_bold));
 	remmina_pref.vte_system_colors = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_system_colors));
+#if GTK_CHECK_VERSION(3, 4, 0)
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_foreground), &color);
+#else
+	gtk_color_button_get_rgba(remmina_pref_dialog->colorbutton_foreground, &color);
+#endif
 	remmina_pref.vte_foreground_color = gdk_rgba_to_string(&color);
+#if GTK_CHECK_VERSION(3, 4, 0)
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_background), &color);
+#else
+	gtk_color_button_get_rgba(remmina_pref_dialog->colorbutton_background, &color);
+#endif
 	remmina_pref.vte_background_color = gdk_rgba_to_string(&color);
 	remmina_pref.vte_lines = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_scrollback_lines));
 	remmina_pref.vte_shortcutkey_copy = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_copy));
@@ -333,10 +341,18 @@ static void remmina_pref_dialog_init(void)
 
 	/* Foreground color option */
 	gdk_rgba_parse(&color, remmina_pref.vte_foreground_color);
+#if GTK_CHECK_VERSION(3, 4, 0)
+	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_foreground), &color);
+#else
 	gtk_color_button_set_rgba(remmina_pref_dialog->colorbutton_foreground, &color);
+#endif
 	/* Background color option */
 	gdk_rgba_parse(&color, remmina_pref.vte_background_color);
+#if GTK_CHECK_VERSION(3, 4, 0)
+	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_background), &color);
+#else
 	gtk_color_button_set_rgba(remmina_pref_dialog->colorbutton_background, &color);
+#endif
 
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_system_colors), remmina_pref.vte_system_colors);
 	remmina_pref_dialog_vte_color_on_toggled(GTK_WIDGET(remmina_pref_dialog->checkbutton_terminal_system_colors), NULL);
