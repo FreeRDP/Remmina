@@ -45,6 +45,17 @@ static RemminaStringList *string_list;
 #define COLUMN_TEXT 0
 #define GET_OBJECT(object_name) gtk_builder_get_object(string_list->builder, object_name)
 
+/* Update the buttons state on the items in the TreeModel */
+void remmina_string_list_update_buttons_state(void)
+{
+	gint items_count = gtk_tree_model_iter_n_children(
+		GTK_TREE_MODEL(string_list->liststore_items), NULL);
+	
+	gtk_widget_set_sensitive(GTK_WIDGET(string_list->button_remove), items_count > 0);
+	gtk_widget_set_sensitive(GTK_WIDGET(string_list->button_up), items_count > 1);
+	gtk_widget_set_sensitive(GTK_WIDGET(string_list->button_down), items_count > 1);
+}
+
 /* Check the text inserted in the list */
 void remmina_string_list_on_cell_edited(GtkCellRendererText *cell, const gchar *path_string, const gchar *new_text)
 {
@@ -142,6 +153,7 @@ void remmina_string_list_on_action_add(GtkWidget *widget, gpointer user_data)
 	gtk_tree_view_set_cursor(string_list->treeview_items, path,
 			gtk_tree_view_get_column(string_list->treeview_items, COLUMN_TEXT), TRUE);
 	gtk_tree_path_free(path);
+	remmina_string_list_update_buttons_state();
 }
 
 /* Remove the selected TreeRow from the list */
@@ -155,6 +167,7 @@ void remmina_string_list_on_action_remove(GtkWidget *widget, gpointer user_data)
 		gtk_list_store_remove(string_list->liststore_items, &iter);
 	}
 	gtk_widget_hide(GTK_WIDGET(string_list->label_status));
+	remmina_string_list_update_buttons_state();
 }
 
 /* Load a string list by splitting a string value */
@@ -175,6 +188,7 @@ void remmina_string_list_set_text(const gchar *text, const gboolean clear_data)
 		gtk_list_store_set(string_list->liststore_items, &iter, COLUMN_TEXT, items[i], -1);
 	}
 	g_strfreev(items);
+	remmina_string_list_update_buttons_state();
 }
 
 /* Get a string value representing the string list */
@@ -243,6 +257,7 @@ static void remmina_string_list_init(void)
 {
 	TRACE_CALL("remmina_string_list_init");
 	string_list->priv->validation_func = NULL;
+	remmina_string_list_update_buttons_state();
 }
 
 /* RemminaStringList instance */
