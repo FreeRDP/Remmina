@@ -832,18 +832,6 @@ void remmina_main_on_action_application_plugins(GtkAction *action, gpointer user
 	remmina_plugin_manager_show(remminamain->window);
 }
 
-/* Activate a GtkAction from a RemminaToolPlugin */
-static void remmina_main_action_tools_addition(GtkAction *action, gpointer user_data)
-{
-	TRACE_CALL("remmina_main_action_tools_addition");
-	RemminaToolPlugin *plugin = (RemminaToolPlugin*) remmina_plugin_manager_get_plugin(
-		REMMINA_PLUGIN_TYPE_TOOL, gtk_action_get_name(action));
-	if (plugin)
-	{
-		plugin->exec_func();
-	}
-}
-
 void remmina_main_on_action_help_homepage(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_help_homepage");
@@ -975,15 +963,12 @@ void remmina_main_on_drag_data_received(GtkWidget *widget, GdkDragContext *drag_
 static gboolean remmina_main_add_tool_plugin(gchar *name, RemminaPlugin *plugin, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_add_tool_plugin");
-	GtkWidget *menuitem = gtk_menu_item_new_with_label(plugin->name);
-	GtkAction *action = gtk_action_new(name, plugin->description, NULL, NULL);
+	RemminaToolPlugin *tool_plugin = (RemminaToolPlugin*) plugin;
+	GtkWidget *menuitem = gtk_menu_item_new_with_label(plugin->description);
 
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(remminamain->menu_tools), menuitem);
-	gtk_activatable_set_related_action(GTK_ACTIVATABLE(menuitem), action);
-	g_signal_connect(G_OBJECT(action), "activate", G_CALLBACK(remmina_main_action_tools_addition), NULL);
-	g_object_unref(action);
-
+	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(tool_plugin->exec_func), NULL);
 	return FALSE;
 }
 
