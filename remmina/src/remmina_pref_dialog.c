@@ -108,7 +108,8 @@ void remmina_pref_dialog_on_key_chooser(GtkWidget *widget, gpointer user_data)
 	g_return_if_fail(GTK_IS_BUTTON(widget));
 	
 	arguments = remmina_key_chooser_new(GTK_WINDOW(remmina_pref_dialog->dialog), 0, FALSE);
-	gtk_button_set_label(GTK_BUTTON(widget), remmina_key_chooser_get_value(arguments->keyval, arguments->state));
+	if (arguments->response != GTK_RESPONSE_CANCEL && arguments->response != GTK_RESPONSE_DELETE_EVENT)
+		gtk_button_set_label(GTK_BUTTON(widget), remmina_key_chooser_get_value(arguments->keyval, arguments->state));
 	g_free(arguments);
 }
 
