@@ -48,6 +48,7 @@ typedef struct _RemminaKeyChooserArguments
 	guint keyval;
 	guint state;
 	gboolean use_modifiers;
+	gint response;
 } RemminaKeyChooserArguments;
 
 G_BEGIN_DECLS
