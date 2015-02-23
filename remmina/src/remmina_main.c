@@ -644,7 +644,6 @@ void remmina_main_on_action_view_quick_search(GtkToggleAction *action, gpointer 
 		if (!toggled)
 		{
 			gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(remminamain->priv->file_model_filter));
-			gtk_tree_view_expand_all(remminamain->tree_files_list);
 		}
 	}
 }
@@ -728,6 +727,7 @@ void remmina_main_on_action_view_file_mode(GtkRadioAction *action, gpointer user
 	{
 		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		remmina_pref.view_file_mode = gtk_radio_action_get_current_value(action);
+		remminamain->priv->previous_file_mode = remmina_pref.view_file_mode;
 		G_GNUC_END_IGNORE_DEPRECATIONS
 		remmina_pref_save();
 		remmina_main_load_files(TRUE);
@@ -954,8 +954,11 @@ void remmina_main_quick_search_on_icon_press(GtkEntry *entry, GtkEntryIconPositi
 void remmina_main_quick_search_on_changed(GtkEditable *editable, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_quick_search_on_changed");
+	/* If a search text was input then temporary set the file mode to list */
+	remmina_pref.view_file_mode = gtk_entry_get_text_length(remminamain->entry_quick_search) ?
+		REMMINA_VIEW_FILE_LIST : remminamain->priv->previous_file_mode;
+	remmina_main_load_files(FALSE);
 	gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(remminamain->priv->file_model_filter));
-	gtk_tree_view_expand_all(remminamain->tree_files_list);
 }
 
 void remmina_main_on_drag_data_received(GtkWidget *widget, GdkDragContext *drag_context, gint x, gint y,
