@@ -108,6 +108,8 @@ struct _RemminaMainPriv
 
 	gchar *selected_filename;
 	gchar *selected_name;
+	/* The file_mode previously selected before the quick search */
+	gint previous_file_mode;
 	RemminaStringArray *expanded_group;
 };
 
