@@ -563,6 +563,7 @@ static void remmina_nx_session_send_command(RemminaNXSession *nx, const gchar *c
 
 	ssh_set_fd_towrite (nx->session);
 	ssh_channel_write (nx->channel, "\n", 1);
+	va_end(args);
 }
 
 gboolean remmina_nx_session_open(RemminaNXSession *nx, const gchar *server, guint port, const gchar *private_key_file,
@@ -692,6 +693,7 @@ void remmina_nx_session_add_parameter(RemminaNXSession *nx, const gchar *name, c
 	va_start (args, valuefmt);
 	value = g_strdup_vprintf (valuefmt, args);
 	g_hash_table_insert(nx->session_parameters, g_strdup (name), value);
+	va_end(args);
 }
 
 static gboolean remmina_nx_session_send_session_command(RemminaNXSession *nx, const gchar *cmd_type, gint response)
