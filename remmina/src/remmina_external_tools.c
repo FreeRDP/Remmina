@@ -70,8 +70,6 @@ gboolean remmina_external_tools_from_filename(RemminaMain *remminamain, gchar* r
 	gchar filename[MAX_PATH_LEN];
 	GDir* dir;
 	const gchar* name;
-	GNode* root;
-	root = g_node_new(NULL);
 
 	strcpy(dirname, REMMINA_EXTERNAL_TOOLS_DIR);
 	dir = g_dir_open(dirname, 0, NULL);
