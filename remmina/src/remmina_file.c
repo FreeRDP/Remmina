@@ -183,7 +183,10 @@ remmina_file_load(const gchar *filename)
 	gkeyfile = g_key_file_new();
 
 	if (!g_key_file_load_from_file(gkeyfile, filename, G_KEY_FILE_NONE, NULL))
+	{
+		g_key_file_free(gkeyfile);
 		return NULL;
+	}
 
 	if (g_key_file_has_key(gkeyfile, "remmina", "name", NULL))
 	{
