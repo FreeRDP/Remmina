@@ -87,6 +87,8 @@ typedef struct _RemminaPref
 	gint default_mode;
 	gint tab_mode;
 	gint auto_scroll_step;
+	
+	gint show_buttons_icons;
 
 	gboolean applet_new_ontop;
 	gboolean applet_hide_count;
