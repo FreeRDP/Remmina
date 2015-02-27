@@ -73,37 +73,47 @@ enum
 
 typedef struct _RemminaPref
 {
-	/* In RemminaPrefDialog */
+	/* In RemminaPrefDialog options tab */
 	gboolean save_view_mode;
 	gboolean save_when_connect;
+	gint default_action;
+	gint scale_quality;
+	gint sshtunnel_port;
+	gint auto_scroll_step;
+	gint recent_maximum;
+	gchar *resolutions;
+	/* In RemminaPrefDialog appearance tab */
 	gboolean invisible_toolbar;
 	gboolean always_show_tab;
 	gboolean hide_connection_toolbar;
-	gint default_action;
-	gint scale_quality;
-	gchar *resolutions;
-	gint sshtunnel_port;
-	gint recent_maximum;
 	gint default_mode;
 	gint tab_mode;
-	gint auto_scroll_step;
-
+	gint show_buttons_icons;
+	gint show_menu_icons;
+	/* In RemminaPrefDialog applet tab */
 	gboolean applet_new_ontop;
 	gboolean applet_hide_count;
-	gboolean applet_enable_avahi;
 	gboolean disable_tray_icon;
-
+	/* In RemminaPrefDialog keyboard tab */
 	guint hostkey;
 	guint shortcutkey_fullscreen;
 	guint shortcutkey_autofit;
-	guint shortcutkey_nexttab;
 	guint shortcutkey_prevtab;
+	guint shortcutkey_nexttab;
 	guint shortcutkey_scale;
 	guint shortcutkey_grab;
 	guint shortcutkey_minimize;
 	guint shortcutkey_disconnect;
 	guint shortcutkey_toolbar;
-
+	/* In RemminaPrefDialog terminal tab */
+	gchar *vte_font;
+	gboolean vte_allow_bold_text;
+	gboolean vte_system_colors;
+	gchar *vte_foreground_color;
+	gchar *vte_background_color;
+	gint vte_lines;
+	guint vte_shortcutkey_copy;
+	guint vte_shortcutkey_paste;
 	/* In View menu */
 	gboolean hide_toolbar;
 	gboolean hide_statusbar;
@@ -111,7 +121,8 @@ typedef struct _RemminaPref
 	gboolean hide_quick_connect;
 	gboolean small_toolbutton;
 	gint view_file_mode;
-
+	/* In tray icon */
+	gboolean applet_enable_avahi;
 	/* Auto */
 	gint main_width;
 	gint main_height;
@@ -123,16 +134,6 @@ typedef struct _RemminaPref
 
 	/* Crypto */
 	gchar *secret;
-
-	/* VTE */
-	gchar *vte_font;
-	gboolean vte_allow_bold_text;
-	gboolean vte_system_colors;
-	gchar *vte_foreground_color;
-	gchar *vte_background_color;
-	gint vte_lines;
-	guint vte_shortcutkey_copy;
-	guint vte_shortcutkey_paste;
 } RemminaPref;
 
 #define DEFAULT_SSHTUNNEL_PORT 4732
