@@ -54,6 +54,7 @@
 
 #define CHAR_DELIMITOR ','
 #define STRING_DELIMITOR ","
+#define STRING_DELIMITOR2 "§"
 
 #define MOUSE_BUTTON_LEFT 1
 #define MOUSE_BUTTON_MIDDLE 2
