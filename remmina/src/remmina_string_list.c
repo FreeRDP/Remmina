@@ -42,7 +42,8 @@
 
 static RemminaStringList *string_list;
 
-#define COLUMN_TEXT 0
+#define COLUMN_DESCRIPTION 0
+#define COLUMN_VALUE 1
 #define GET_OBJECT(object_name) gtk_builder_get_object(string_list->builder, object_name)
 
 /* Update the buttons state on the items in the TreeModel */
@@ -68,22 +69,28 @@ void remmina_string_list_on_cell_edited(GtkCellRendererText *cell, const gchar *
 	gtk_tree_model_get_iter(GTK_TREE_MODEL(string_list->liststore_items), &iter, path);
 	/* Remove delimitors from the string */
 	text = remmina_public_str_replace(new_text, STRING_DELIMITOR, " ");
-	/* Check for validation */
-	if (string_list->priv->validation_func)
+	if (cell == string_list->cellrenderertext_item1)
 	{
-		if (!((*string_list->priv->validation_func)(text, &error)))
-		{
-			gtk_label_set_text(string_list->label_status, error);
-			gtk_widget_show(GTK_WIDGET(string_list->label_status));
-			g_free(error);
-		}
-		else
-		{
-			gtk_widget_hide(GTK_WIDGET(string_list->label_status));
-		}
+		gtk_list_store_set(string_list->liststore_items, &iter, COLUMN_DESCRIPTION, text, -1);
 	}
-
-	gtk_list_store_set(string_list->liststore_items, &iter, COLUMN_TEXT, text, -1);
+	else
+	{
+		/* Check for validation only in second field */
+		if (string_list->priv->validation_func)
+		{
+			if (!((*string_list->priv->validation_func)(text, &error)))
+			{
+				gtk_label_set_text(string_list->label_status, error);
+				gtk_widget_show(GTK_WIDGET(string_list->label_status));
+				g_free(error);
+			}
+			else
+			{
+				gtk_widget_hide(GTK_WIDGET(string_list->label_status));
+			}
+		}
+		gtk_list_store_set(string_list->liststore_items, &iter, COLUMN_VALUE, text, -1);
+	}
 	gtk_tree_path_free(path);
 	g_free(text);
 }
@@ -150,8 +157,10 @@ void remmina_string_list_on_action_add(GtkWidget *widget, gpointer user_data)
 	gtk_tree_selection_select_iter(string_list->treeview_selection, &iter);
 
 	path = gtk_tree_model_get_path(GTK_TREE_MODEL(string_list->liststore_items), &iter);
-	gtk_tree_view_set_cursor(string_list->treeview_items, path,
-			gtk_tree_view_get_column(string_list->treeview_items, COLUMN_TEXT), TRUE);
+	gtk_tree_view_set_cursor_on_cell(string_list->treeview_items, path,
+			string_list->treeviewcolumn_item,
+			GTK_CELL_RENDERER(string_list->priv->two_columns ? string_list->cellrenderertext_item1 : string_list->cellrenderertext_item2),
+			TRUE);
 	gtk_tree_path_free(path);
 	remmina_string_list_update_buttons_state();
 }
@@ -176,6 +185,7 @@ void remmina_string_list_set_text(const gchar *text, const gboolean clear_data)
 	TRACE_CALL("remmina_string_list_set_text");
 	GtkTreeIter iter;
 	gchar **items;
+	gchar **values;
 	gint i;
 	/* Clear the data before to load new items */
 	if (clear_data)
@@ -184,8 +194,24 @@ void remmina_string_list_set_text(const gchar *text, const gboolean clear_data)
 	items = g_strsplit(text, STRING_DELIMITOR, -1);
 	for (i = 0; i < g_strv_length(items); i++)
 	{
+		values = g_strsplit(items[i], string_list->priv->fields_separator, -1);
 		gtk_list_store_append(string_list->liststore_items, &iter);
-		gtk_list_store_set(string_list->liststore_items, &iter, COLUMN_TEXT, items[i], -1);
+		if (g_strv_length(values) > 1)
+		{
+			/* Two columns data */
+			gtk_list_store_set(string_list->liststore_items, &iter,
+				COLUMN_DESCRIPTION, values[0],
+				COLUMN_VALUE, values[1],
+				-1);
+		}
+		else
+		{
+			/* Single column data */
+			gtk_list_store_set(string_list->liststore_items, &iter,
+				COLUMN_VALUE, values[0],
+				-1);
+		}
+		g_strfreev(values);
 	}
 	g_strfreev(items);
 	remmina_string_list_update_buttons_state();
@@ -199,7 +225,8 @@ gchar* remmina_string_list_get_text(void)
 	GtkTreeIter iter;
 	gboolean first;
 	gboolean ret;
-	const gchar *value;
+	const gchar *item_description;
+	const gchar *item_value;
 
 	str = g_string_new(NULL);
 	first = TRUE;
@@ -207,8 +234,13 @@ gchar* remmina_string_list_get_text(void)
 	ret = gtk_tree_model_get_iter_first(GTK_TREE_MODEL(string_list->liststore_items), &iter);
 	while (ret)
 	{
-		gtk_tree_model_get(GTK_TREE_MODEL(string_list->liststore_items), &iter, COLUMN_TEXT, &value, -1);
-		if (value && strlen(value) > 0)
+		gtk_tree_model_get(GTK_TREE_MODEL(string_list->liststore_items), &iter,
+			COLUMN_DESCRIPTION, &item_description,
+			COLUMN_VALUE, &item_value,
+			-1);
+		if (!item_description)
+			item_description = "";
+		if (item_value && strlen(item_value) > 0)
 		{
 			/* Add a delimitor after the first element */
 			if (!first)
@@ -219,8 +251,14 @@ gchar* remmina_string_list_get_text(void)
 			{
 				first = FALSE;
 			}
+			/* Add the description for two columns list */
+			if (string_list->priv->two_columns)
+			{
+				g_string_append(str, item_description);
+				g_string_append(str, string_list->priv->fields_separator);
+			}
 			/* Add the element to the string */
-			g_string_append(str, value);
+			g_string_append(str, item_value);
 		}
 		ret = gtk_tree_model_iter_next(GTK_TREE_MODEL(string_list->liststore_items), &iter);
 	}
@@ -257,11 +295,14 @@ static void remmina_string_list_init(void)
 {
 	TRACE_CALL("remmina_string_list_init");
 	string_list->priv->validation_func = NULL;
+	/* When two columns are requested, show also the first column */
+	if (string_list->priv->two_columns)
+		gtk_cell_renderer_set_visible(GTK_CELL_RENDERER(string_list->cellrenderertext_item1), TRUE);
 	remmina_string_list_update_buttons_state();
 }
 
 /* RemminaStringList instance */
-GtkDialog* remmina_string_list_new(void)
+GtkDialog* remmina_string_list_new(gboolean two_columns, const gchar *fields_separator)
 {
 	TRACE_CALL("remmina_string_list_new");
 	string_list = g_new0(RemminaStringList, 1);
@@ -272,7 +313,10 @@ GtkDialog* remmina_string_list_new(void)
 
 	string_list->liststore_items = GTK_LIST_STORE(GET_OBJECT("liststore_items"));
 	string_list->treeview_items = GTK_TREE_VIEW(GET_OBJECT("treeview_items"));
+	string_list->treeviewcolumn_item = GTK_TREE_VIEW_COLUMN(GET_OBJECT("treeviewcolumn_item"));
 	string_list->treeview_selection = GTK_TREE_SELECTION(GET_OBJECT("treeview_selection"));
+	string_list->cellrenderertext_item1 = GTK_CELL_RENDERER_TEXT(GET_OBJECT("cellrenderertext_item1"));
+	string_list->cellrenderertext_item2 = GTK_CELL_RENDERER_TEXT(GET_OBJECT("cellrenderertext_item2"));
 	string_list->button_add = GTK_BUTTON(GET_OBJECT("button_add"));
 	string_list->button_remove = GTK_BUTTON(GET_OBJECT("button_remove"));
 	string_list->button_up = GTK_BUTTON(GET_OBJECT("button_up"));
@@ -283,6 +327,10 @@ GtkDialog* remmina_string_list_new(void)
 	/* Connect signals */
 	gtk_builder_connect_signals(string_list->builder, NULL);
 	/* Initialize the window and load the values */
+	if (!fields_separator)
+		fields_separator = STRING_DELIMITOR2;
+	string_list->priv->fields_separator = fields_separator;
+	string_list->priv->two_columns = two_columns;
 	remmina_string_list_init();
 
 	return string_list->dialog;

@@ -117,7 +117,7 @@ void remmina_pref_dialog_on_key_chooser(GtkWidget *widget, gpointer user_data)
 void remmina_pref_on_button_resolutions_clicked(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL("remmina_pref_on_button_resolutions_clicked");
-	GtkDialog *dialog = remmina_string_list_new();
+	GtkDialog *dialog = remmina_string_list_new(FALSE, NULL);
 	remmina_string_list_set_validation_func(remmina_pref_resolution_validation_func);
 	remmina_string_list_set_text(remmina_pref.resolutions, TRUE);
 	remmina_string_list_set_titles(_("Resolutions"), _("Configure the available resolutions"));
