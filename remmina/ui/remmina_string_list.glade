@@ -36,7 +36,9 @@
   </object>
   <object class="GtkListStore" id="liststore_items">
     <columns>
-      <!-- column-name Item -->
+      <!-- column-name Item 1 -->
+      <column type="gchararray"/>
+      <!-- column-name Item 2 -->
       <column type="gchararray"/>
     </columns>
   </object>
@@ -187,14 +189,25 @@
                     </child>
                     <child>
                       <object class="GtkTreeViewColumn" id="treeviewcolumn_item">
+                        <property name="spacing">10</property>
                         <property name="title">Information</property>
                         <child>
-                          <object class="GtkCellRendererText" id="cellrenderertext_item">
+                          <object class="GtkCellRendererText" id="cellrenderertext_item1">
+                            <property name="visible">False</property>
                             <property name="editable">True</property>
                             <signal name="edited" handler="remmina_string_list_on_cell_edited" swapped="no"/>
                           </object>
                           <attributes>
                             <attribute name="text">0</attribute>
+                          </attributes>
+                        </child>
+                        <child>
+                          <object class="GtkCellRendererText" id="cellrenderertext_item2">
+                            <property name="editable">True</property>
+                            <signal name="edited" handler="remmina_string_list_on_cell_edited" swapped="no"/>
+                          </object>
+                          <attributes>
+                            <attribute name="text">1</attribute>
                           </attributes>
                         </child>
                       </object>
