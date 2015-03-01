@@ -404,7 +404,8 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 	remmina_plugin_ssh_open_connection,           // Plugin open connection
 	remmina_plugin_ssh_close_connection,          // Plugin close connection
 	remmina_plugin_ssh_query_feature,             // Query for available features
-	remmina_plugin_ssh_call_feature               // Call a feature
+	remmina_plugin_ssh_call_feature,              // Call a feature
+	NULL                                          // Send a keystroke
 };
 
 void
