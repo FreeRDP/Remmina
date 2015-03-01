@@ -1000,8 +1000,12 @@ static void remmina_connection_holder_toolbar_tools(GtkWidget* widget, RemminaCo
 	const RemminaProtocolFeature* feature;
 	GtkWidget* menu;
 	GtkWidget* menuitem;
+	GtkMenu *submenu_keystrokes;
 	const gchar* domain;
 	gboolean enabled;
+	gchar **keystrokes;
+	gchar **keystroke_values;
+	gint i;
 
 	if (!gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(widget)))
 		return;
@@ -1042,6 +1046,41 @@ static void remmina_connection_holder_toolbar_tools(GtkWidget* widget, RemminaCo
 	}
 
 	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(remmina_connection_holder_toolbar_tools_popdown), cnnhld);
+
+	/* If the plugin accepts keystrokes include the keystrokes menu */
+	if (remmina_protocol_widget_plugin_receives_keystrokes(REMMINA_PROTOCOL_WIDGET(cnnobj->proto)))
+	{
+		/* Get the registered keystrokes list */
+		keystrokes = g_strsplit(remmina_pref.keystrokes, STRING_DELIMITOR, -1);
+		if (g_strv_length(keystrokes))
+		{
+			/* Add a keystrokes submenu */
+			menuitem = gtk_menu_item_new_with_label(_("Keystrokes"));
+			submenu_keystrokes = GTK_MENU(gtk_menu_new());
+			gtk_menu_item_set_submenu(GTK_MENU_ITEM(menuitem), GTK_WIDGET(submenu_keystrokes));
+			gtk_widget_show(menuitem);
+			gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
+			/* Add each registered keystroke */
+			for (i = 0; i < g_strv_length(keystrokes); i++)
+			{
+				keystroke_values = g_strsplit(keystrokes[i], STRING_DELIMITOR2, -1);
+				if (g_strv_length(keystroke_values) > 1)
+				{
+					/* Add the keystroke if no description was available */
+					menuitem = gtk_menu_item_new_with_label(
+						g_strdup(keystroke_values[strlen(keystroke_values[0]) ? 0 : 1]));
+					g_object_set_data(G_OBJECT(menuitem), "keystrokes", g_strdup(keystroke_values[1]));
+					g_signal_connect_swapped(G_OBJECT(menuitem), "activate", 
+						G_CALLBACK(remmina_protocol_widget_send_keystrokes),
+						REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
+					gtk_widget_show(menuitem);
+					gtk_menu_shell_append(GTK_MENU_SHELL(submenu_keystrokes), menuitem);
+				}
+				g_strfreev(keystroke_values);
+			}
+		}
+		g_strfreev(keystrokes);
+	}
 
 	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, remmina_public_popup_position, widget, 0, gtk_get_current_event_time());
 }
