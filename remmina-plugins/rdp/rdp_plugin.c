@@ -748,6 +748,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	if (rfi->settings->GatewayEnabled)
 		freerdp_set_gateway_usage_method(rfi->settings, 
 			remmina_plugin_service->file_get_int(remminafile, "gateway_usage", FALSE) ? TSC_PROXY_MODE_DETECT : TSC_PROXY_MODE_DIRECT);
+	/* Certificate ignore */
+	rfi->settings->IgnoreCertificate = remmina_plugin_service->file_get_int(remminafile, "cert_ignore", 0);
 
 	if (remmina_plugin_service->file_get_string(remminafile, "clientname"))
 	{
@@ -1233,6 +1235,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "console", N_("Attach to console (Windows 2003 / 2003 R2)"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "gateway_usage", N_("Use RD Gateway server for server detection"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "cert_ignore", N_("Ignore certificate"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
