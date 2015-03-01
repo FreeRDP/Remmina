@@ -414,7 +414,8 @@ static RemminaProtocolPlugin remmina_plugin_xdmcp =
 	remmina_plugin_xdmcp_open_connection,         // Plugin open connection
 	remmina_plugin_xdmcp_close_connection,        // Plugin close connection
 	remmina_plugin_xdmcp_query_feature,           // Query for available features
-	remmina_plugin_xdmcp_call_feature             // Call a feature
+	remmina_plugin_xdmcp_call_feature,            // Call a feature
+	NULL                                          // Send a keystroke
 };
 
 G_MODULE_EXPORT gboolean
