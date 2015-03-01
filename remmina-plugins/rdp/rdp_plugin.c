@@ -745,8 +745,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->GatewayPassword = g_strdup(rfi->settings->Password);
 	}
 	/* Remote Desktop Gateway usage */
-	freerdp_set_gateway_usage_method(rfi->settings, 
-		remmina_plugin_service->file_get_int(remminafile, "gateway_usage", FALSE) ? TSC_PROXY_MODE_DETECT : TSC_PROXY_MODE_DIRECT);
+	if (rfi->settings->GatewayEnabled)
+		freerdp_set_gateway_usage_method(rfi->settings, 
+			remmina_plugin_service->file_get_int(remminafile, "gateway_usage", FALSE) ? TSC_PROXY_MODE_DETECT : TSC_PROXY_MODE_DIRECT);
 
 	if (remmina_plugin_service->file_get_string(remminafile, "clientname"))
 	{
