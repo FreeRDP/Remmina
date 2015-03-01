@@ -82,6 +82,7 @@ typedef struct _RemminaPref
 	gint auto_scroll_step;
 	gint recent_maximum;
 	gchar *resolutions;
+	gchar *keystrokes;
 	/* In RemminaPrefDialog appearance tab */
 	gboolean invisible_toolbar;
 	gboolean always_show_tab;
