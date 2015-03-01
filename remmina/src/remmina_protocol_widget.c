@@ -364,8 +364,8 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget* gp, GtkMenuI
 		{ "\\\\", "\\", GDK_KEY_backslash },
 		{ NULL, NULL, 0 }
 	};
-
-	if (gp->priv->plugin->send_keystrokes)
+	/* Keystrokes can be sent only to plugins that accepts them */
+	if (remmina_protocol_widget_plugin_receives_keystrokes(gp))
 	{
 		/* Replace special characters */
 		for (i = 0; keystrokes_replaces[i].replace; i++)
