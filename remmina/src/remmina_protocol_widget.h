@@ -144,6 +144,8 @@ void remmina_protocol_widget_chat_open(RemminaProtocolWidget *gp, const gchar *n
 void remmina_protocol_widget_chat_close(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_chat_receive(RemminaProtocolWidget *gp, const gchar *text);
 void remmina_protocol_widget_send_keys_signals(GtkWidget *widget, const guint *keyvals, int length, GdkEventType action);
+/* Check if the plugin accepts keystrokes */
+gboolean remmina_protocol_widget_plugin_receives_keystrokes(RemminaProtocolWidget* gp);
 
 G_END_DECLS
 
