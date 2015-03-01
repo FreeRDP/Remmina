@@ -80,6 +80,7 @@ typedef struct _RemminaProtocolPlugin
     gboolean (* close_connection) (RemminaProtocolWidget *gp);
     gboolean (* query_feature) (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature);
     void (* call_feature) (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature);
+    void (* send_keystrokes) (RemminaProtocolWidget *gp, const guint keystrokes[], const gint keylen);
 } RemminaProtocolPlugin;
 
 typedef struct _RemminaEntryPlugin

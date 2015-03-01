@@ -1268,7 +1268,8 @@ static RemminaProtocolPlugin remmina_rdp =
 	remmina_rdp_open_connection,                  // Plugin open connection
 	remmina_rdp_close_connection,                 // Plugin close connection
 	remmina_rdp_query_feature,                    // Query for available features
-	remmina_rdp_call_feature                      // Call a feature
+	remmina_rdp_call_feature,                     // Call a feature
+	NULL                                          // Send a keystroke
 };
 
 /* File plugin definition and features */
