@@ -327,6 +327,12 @@ gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 	return retval;
 }
 
+/* Check if the plugin accepts keystrokes */
+gboolean remmina_protocol_widget_plugin_receives_keystrokes(RemminaProtocolWidget* gp)
+{
+	return gp->priv->plugin->send_keystrokes ? TRUE : FALSE;
+}
+
 static gboolean remmina_protocol_widget_emit_signal_timeout(gpointer user_data)
 {
 	TRACE_CALL("remmina_protocol_widget_emit_signal_timeout");
