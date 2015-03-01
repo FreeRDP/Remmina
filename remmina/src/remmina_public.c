@@ -628,3 +628,14 @@ gchar* remmina_public_str_replace(const gchar *string, const gchar *search, cons
 	g_strfreev (arr);
 	return str;
 }
+
+/* Replaces all occurences of search in a new copy of string by replacement 
+ * and overwrites the original string */
+void remmina_public_str_replace_in_place(gchar *string, const gchar *search, const gchar *replacement)
+{
+	TRACE_CALL("remmina_public_str_replace_in_place")
+	gchar *new_string = remmina_public_str_replace(string, search, replacement);
+	g_free(string);
+	string = g_strdup(new_string);
+	return;
+}
