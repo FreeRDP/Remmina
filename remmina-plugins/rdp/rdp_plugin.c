@@ -1146,6 +1146,16 @@ static void remmina_rdp_call_feature(RemminaProtocolWidget* gp, const RemminaPro
 	}
 }
 
+/* Send a keystroke to the plugin window */
+static void remmina_rdp_keystroke(RemminaProtocolWidget *gp, const guint keystrokes[], const gint keylen)
+{
+	TRACE_CALL("remmina_rdp_keystroke");
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	remmina_plugin_service->protocol_plugin_send_keys_signals(rfi->drawing_area,
+		keystrokes, keylen, GDK_KEY_PRESS | GDK_KEY_RELEASE);
+	return;
+}
+
 /* Array of key/value pairs for color depths */
 static gpointer colordepth_list[] =
 {
@@ -1269,7 +1279,7 @@ static RemminaProtocolPlugin remmina_rdp =
 	remmina_rdp_close_connection,                 // Plugin close connection
 	remmina_rdp_query_feature,                    // Query for available features
 	remmina_rdp_call_feature,                     // Call a feature
-	NULL                                          // Send a keystroke
+	remmina_rdp_keystroke                         // Send a keystroke
 };
 
 /* File plugin definition and features */
