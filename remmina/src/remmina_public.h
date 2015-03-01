@@ -105,5 +105,8 @@ GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename);
 void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *container);
 /* Replaces all occurences of search in a new copy of string by replacement. */
 gchar* remmina_public_str_replace(const gchar *string, const gchar *search, const gchar *replacement);
+/* Replaces all occurences of search in a new copy of string by replacement 
+ * and overwrites the original string */
+void remmina_public_str_replace_in_place(gchar *string, const gchar *search, const gchar *replacement);
 #endif  /* __REMMINAPUBLIC_H__  */
 
