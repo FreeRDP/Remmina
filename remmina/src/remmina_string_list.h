@@ -41,6 +41,8 @@ typedef gboolean (*RemminaStringListValidationFunc)(const gchar *new_str, gchar 
 typedef struct _RemminaStringListPriv
 {
 	RemminaStringListValidationFunc validation_func;
+	const gchar *fields_separator;
+	gboolean two_columns;
 } RemminaStringListPriv;
 
 typedef struct _RemminaStringList
@@ -50,7 +52,10 @@ typedef struct _RemminaStringList
 
 	GtkListStore *liststore_items;
 	GtkTreeView *treeview_items;
+	GtkTreeViewColumn *treeviewcolumn_item;
 	GtkTreeSelection *treeview_selection;
+	GtkCellRendererText *cellrenderertext_item1;
+	GtkCellRendererText *cellrenderertext_item2;
 
 	GtkButton *button_add;
 	GtkButton *button_remove;
@@ -66,7 +71,7 @@ typedef struct _RemminaStringList
 G_BEGIN_DECLS
 
 /* RemminaStringList instance */
-GtkDialog* remmina_string_list_new(void);
+GtkDialog* remmina_string_list_new(gboolean two_columns, const gchar *fields_separator);
 /* Load a string list by splitting a string value */
 void remmina_string_list_set_text(const gchar *text, const gboolean clear_data);
 /* Get a string value representing the string list */

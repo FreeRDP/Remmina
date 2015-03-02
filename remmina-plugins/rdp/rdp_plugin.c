@@ -639,6 +639,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	const gchar *cert_hostport;
 	gchar *cert_host;
 	gint cert_port;
+	gchar *gateway_host;
+	gint gateway_port;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 	s = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 3389, FALSE);
@@ -702,6 +704,52 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->AutoLogonEnabled = 1;
 		g_free(s);
 	}
+	/* Remote Desktop Gateway server address */
+	rfi->settings->GatewayEnabled = FALSE;
+	s = (gchar *) remmina_plugin_service->file_get_string(remminafile, "gateway_server");
+	if (s)
+	{
+		remmina_plugin_service->get_server_port(s, 443, &gateway_host, &gateway_port);
+		rfi->settings->GatewayHostname = gateway_host;
+		rfi->settings->GatewayPort = gateway_port;
+		rfi->settings->GatewayEnabled = TRUE;
+		rfi->settings->GatewayUseSameCredentials = TRUE;
+	}
+	/* Remote Desktop Gateway domain */
+	if (remmina_plugin_service->file_get_string(remminafile, "gateway_domain"))
+	{
+		rfi->settings->GatewayDomain = strdup(remmina_plugin_service->file_get_string(remminafile, "gateway_domain"));
+		rfi->settings->GatewayUseSameCredentials = FALSE;
+	}
+	/* Remote Desktop Gateway username */
+	if (remmina_plugin_service->file_get_string(remminafile, "gateway_username"))
+	{
+		rfi->settings->GatewayUsername = strdup(remmina_plugin_service->file_get_string(remminafile, "gateway_username"));
+		rfi->settings->GatewayUseSameCredentials = FALSE;
+	}
+	/* Remote Desktop Gateway password */
+	if (remmina_plugin_service->file_get_string(remminafile, "gateway_password"))
+	{
+		rfi->settings->GatewayPassword = strdup(remmina_plugin_service->file_get_string(remminafile, "gateway_password"));
+		rfi->settings->GatewayUseSameCredentials = FALSE;
+	}
+	/* If no different credentials were provided for the Remote Desktop Gateway
+	 * use the same authentication credentials for the host */
+	if (rfi->settings->GatewayEnabled && rfi->settings->GatewayUseSameCredentials)
+	{
+		g_free(rfi->settings->GatewayDomain);
+		rfi->settings->GatewayDomain = g_strdup(rfi->settings->Domain);
+		g_free(rfi->settings->GatewayUsername);
+		rfi->settings->GatewayUsername = g_strdup(rfi->settings->Username);
+		g_free(rfi->settings->GatewayPassword);
+		rfi->settings->GatewayPassword = g_strdup(rfi->settings->Password);
+	}
+	/* Remote Desktop Gateway usage */
+	if (rfi->settings->GatewayEnabled)
+		freerdp_set_gateway_usage_method(rfi->settings, 
+			remmina_plugin_service->file_get_int(remminafile, "gateway_usage", FALSE) ? TSC_PROXY_MODE_DETECT : TSC_PROXY_MODE_DIRECT);
+	/* Certificate ignore */
+	rfi->settings->IgnoreCertificate = remmina_plugin_service->file_get_int(remminafile, "cert_ignore", 0);
 
 	if (remmina_plugin_service->file_get_string(remminafile, "clientname"))
 	{
@@ -1157,6 +1205,7 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "domain", N_("Domain"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "gateway_server", N_("RD Gateway server"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color depth"), FALSE, colordepth_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER, "sharefolder", N_("Share folder"), FALSE, NULL, NULL },
@@ -1185,6 +1234,8 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "console", N_("Attach to console (Windows 2003 / 2003 R2)"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "gateway_usage", N_("Use RD Gateway server for server detection"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "cert_ignore", N_("Ignore certificate"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
