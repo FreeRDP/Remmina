@@ -429,53 +429,6 @@ static void remmina_file_editor_create_password(RemminaFileEditor* gfe, GtkWidge
 	}
 }
 
-/* Validate the inserted value for a new resolution */
-static gboolean remmina_file_editor_resolution_validation_func(const gchar *new_str, gchar **error)
-{
-	TRACE_CALL("remmina_file_editor_resolution_validation_func");
-	gint i;
-	gint width, height;
-	gboolean splitted;
-	gboolean result;
-
-	width = 0;
-	height = 0;
-	splitted = FALSE;
-	result = TRUE;
-	for (i = 0; new_str[i] != '\0'; i++)
-	{
-		if (new_str[i] == 'x')
-		{
-			if (splitted)
-			{
-				result = FALSE;
-				break;
-			}
-			splitted = TRUE;
-			continue;
-		}
-		if (new_str[i] < '0' || new_str[i] > '9')
-		{
-			result = FALSE;
-			break;
-		}
-		if (splitted)
-		{
-			height = 1;
-		}
-		else
-		{
-			width = 1;
-		}
-	}
-
-	if (width == 0 || height == 0)
-		result = FALSE;
-
-	if (!result)
-		*error = g_strdup(_("Please enter format 'widthxheight'."));
-	return result;
-}
 static void remmina_file_editor_update_resolution(GtkWidget* widget, RemminaFileEditor* gfe)
 {
 	TRACE_CALL("remmina_file_editor_update_resolution");
@@ -487,8 +440,8 @@ static void remmina_file_editor_browse_resolution(GtkWidget* button, RemminaFile
 {
 	TRACE_CALL("remmina_file_editor_browse_resolution");
 
-	GtkDialog *dialog = remmina_string_list_new();
-	remmina_string_list_set_validation_func(remmina_file_editor_resolution_validation_func);
+	GtkDialog *dialog = remmina_string_list_new(FALSE, NULL);
+	remmina_string_list_set_validation_func(remmina_public_resolution_validation_func);
 	remmina_string_list_set_text(remmina_pref.resolutions, TRUE);
 	remmina_string_list_set_titles(_("Resolutions"), _("Configure the available resolutions"));
 	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(gfe));
@@ -505,7 +458,7 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 {
 	TRACE_CALL("remmina_file_editor_create_resolution");
 	GtkWidget* widget;
-	GtkWidget* combo;
+	//GtkWidget* combo;
 	GtkWidget* hbox;
 	const gchar* resolution;
 
@@ -531,10 +484,10 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 
 	resolution = remmina_file_get_string(gfe->priv->remmina_file, "resolution");
 
-	combo = remmina_public_create_combo_text_d(remmina_pref.resolutions, resolution, NULL);
-	gtk_widget_show(combo);
-	gtk_box_pack_start(GTK_BOX(hbox), combo, TRUE, TRUE, 0);
-	gfe->priv->resolution_custom_combo = combo;
+	widget = remmina_public_create_combo_text_d(remmina_pref.resolutions, resolution, NULL);
+	gtk_widget_show(widget);
+	gtk_box_pack_start(GTK_BOX(hbox), widget, TRUE, TRUE, 0);
+	gfe->priv->resolution_custom_combo = widget;
 
 	widget = gtk_button_new_with_label("...");
 	gtk_widget_show(widget);
