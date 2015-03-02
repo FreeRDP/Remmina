@@ -361,9 +361,11 @@ void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar
 		ptr++;
 		ptr2 = strchr(ptr, ']');
 		if (ptr2)
+		{
 			*ptr2++ = '\0';
-		if (*ptr2 == ':')
-			defaultport = atoi(ptr2 + 1);
+			if (*ptr2 == ':')
+				defaultport = atoi(ptr2 + 1);
+		}
 		if (host)
 			*host = g_strdup(ptr);
 		if (port)
@@ -386,6 +388,8 @@ void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar
 	}
 	if (host)
 		*host = str;
+	else
+		g_free(str);
 	if (port)
 		*port = defaultport;
 }
