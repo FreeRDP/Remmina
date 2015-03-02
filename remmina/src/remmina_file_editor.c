@@ -458,7 +458,6 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 {
 	TRACE_CALL("remmina_file_editor_create_resolution");
 	GtkWidget* widget;
-	//GtkWidget* combo;
 	GtkWidget* hbox;
 	const gchar* resolution;
 
