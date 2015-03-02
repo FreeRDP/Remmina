@@ -51,54 +51,6 @@ static RemminaPrefDialog *remmina_pref_dialog;
 
 #define GET_OBJECT(object_name) gtk_builder_get_object(remmina_pref_dialog->builder, object_name)
 
-/* Validate the inserted value for a new resolution */
-static gboolean remmina_pref_resolution_validation_func(const gchar *new_str, gchar **error)
-{
-	TRACE_CALL("remmina_pref_resolution_validation_func");
-	gint i;
-	gint width, height;
-	gboolean splitted;
-	gboolean result;
-
-	width = 0;
-	height = 0;
-	splitted = FALSE;
-	result = TRUE;
-	for (i = 0; new_str[i] != '\0'; i++)
-	{
-		if (new_str[i] == 'x')
-		{
-			if (splitted)
-			{
-				result = FALSE;
-				break;
-			}
-			splitted = TRUE;
-			continue;
-		}
-		if (new_str[i] < '0' || new_str[i] > '9')
-		{
-			result = FALSE;
-			break;
-		}
-		if (splitted)
-		{
-			height = 1;
-		}
-		else
-		{
-			width = 1;
-		}
-	}
-
-	if (width == 0 || height == 0)
-		result = FALSE;
-
-	if (!result)
-		*error = g_strdup(_("Please enter format 'widthxheight'."));
-	return result;
-}
-
 /* Show a key chooser dialog */
 void remmina_pref_dialog_on_key_chooser(GtkWidget *widget, gpointer user_data)
 {
@@ -106,7 +58,7 @@ void remmina_pref_dialog_on_key_chooser(GtkWidget *widget, gpointer user_data)
 	RemminaKeyChooserArguments *arguments;
 
 	g_return_if_fail(GTK_IS_BUTTON(widget));
-	
+
 	arguments = remmina_key_chooser_new(GTK_WINDOW(remmina_pref_dialog->dialog), FALSE);
 	if (arguments->response != GTK_RESPONSE_CANCEL && arguments->response != GTK_RESPONSE_DELETE_EVENT)
 		gtk_button_set_label(GTK_BUTTON(widget), remmina_key_chooser_get_value(arguments->keyval, arguments->state));
@@ -118,7 +70,7 @@ void remmina_pref_on_button_resolutions_clicked(GtkWidget *widget, gpointer user
 {
 	TRACE_CALL("remmina_pref_on_button_resolutions_clicked");
 	GtkDialog *dialog = remmina_string_list_new(FALSE, NULL);
-	remmina_string_list_set_validation_func(remmina_pref_resolution_validation_func);
+	remmina_string_list_set_validation_func(remmina_public_resolution_validation_func);
 	remmina_string_list_set_text(remmina_pref.resolutions, TRUE);
 	remmina_string_list_set_titles(_("Resolutions"), _("Configure the available resolutions"));
 	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(remmina_pref_dialog->dialog));
@@ -361,7 +313,7 @@ static void remmina_pref_dialog_init(void)
 
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.vte_lines);
 	gtk_entry_set_text(remmina_pref_dialog->entry_scrollback_lines, buf);
-	
+
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_options_double_click, remmina_pref.default_action);
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_appearance_view_mode, remmina_pref.default_mode);
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_appearance_tab_interface, remmina_pref.tab_mode);
