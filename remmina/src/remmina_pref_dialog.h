@@ -52,12 +52,14 @@ typedef struct _RemminaPrefDialog
 	
 	GtkCheckButton *checkbutton_options_remember_last_view_mode;
 	GtkCheckButton *checkbutton_options_save_settings;
-	GtkCheckButton *checkbutton_options_invisible_toolbar;
-	GtkCheckButton *checkbutton_options_show_tabs;
-	GtkCheckButton *checkbutton_options_hide_toolbar;
+	GtkCheckButton *checkbutton_appearance_invisible_toolbar;
+	GtkCheckButton *checkbutton_appearance_show_tabs;
+	GtkCheckButton *checkbutton_appearance_hide_toolbar;
 	GtkComboBox *comboboxtext_options_double_click;
-	GtkComboBox *comboboxtext_options_view_mode;
-	GtkComboBox *comboboxtext_options_tab_interface;
+	GtkComboBox *comboboxtext_appearance_view_mode;
+	GtkComboBox *comboboxtext_appearance_tab_interface;
+	GtkComboBox *comboboxtext_appearance_show_buttons_icons;
+	GtkComboBox *comboboxtext_appearance_show_menu_icons;
 	GtkComboBox *comboboxtext_options_scale_quality;
 	GtkEntry *entry_options_ssh_port;
 	GtkEntry *entry_options_scroll;
@@ -98,7 +100,9 @@ typedef struct _RemminaPrefDialog
 
 enum
 {
-	REMMINA_PREF_OPTIONS_TAB = 0, REMMINA_PREF_APPLET_TAB = 1
+	REMMINA_PREF_OPTIONS_TAB = 0,
+	REMMINA_PREF_APPEARANCE = 1,
+	REMMINA_PREF_APPLET_TAB = 2
 };
 
 G_BEGIN_DECLS
