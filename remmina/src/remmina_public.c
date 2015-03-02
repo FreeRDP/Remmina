@@ -317,14 +317,14 @@ void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *pu
 	}
 	gdk_window_get_origin(gtk_widget_get_window(widget), &tx, &ty);
 	gtk_widget_get_allocation(widget, &allocation);
-	/* I'm unsure why the author made the check about a GdkWindow inside the 
+	/* I'm unsure why the author made the check about a GdkWindow inside the
 	 * widget argument. This function generally is called passing by a ToolButton
 	 * which hasn't any GdkWindow, therefore the positioning is wrong
 	 * I think the gtk_widget_get_has_window() check should be removed
-	 * 
+	 *
 	 * While leaving the previous check intact I'm checking also if the provided
 	 * widget is a GtkToggleToolButton and position the menu accordingly. */
-	if (gtk_widget_get_has_window(widget) || 
+	if (gtk_widget_get_has_window(widget) ||
 		g_strcmp0(gtk_widget_get_name(widget), "GtkToggleToolButton") == 0)
 	{
 		tx += allocation.x;
@@ -627,4 +627,52 @@ gchar* remmina_public_str_replace(const gchar *string, const gchar *search, cons
 
 	g_strfreev (arr);
 	return str;
+}
+
+/* Validate the inserted value for a new resolution */
+gboolean remmina_public_resolution_validation_func(const gchar *new_str, gchar **error)
+{
+	TRACE_CALL("remmina_public_resolution_validation_func");
+	gint i;
+	gint width, height;
+	gboolean splitted;
+	gboolean result;
+
+	width = 0;
+	height = 0;
+	splitted = FALSE;
+	result = TRUE;
+	for (i = 0; new_str[i] != '\0'; i++)
+	{
+		if (new_str[i] == 'x')
+		{
+			if (splitted)
+			{
+				result = FALSE;
+				break;
+			}
+			splitted = TRUE;
+			continue;
+		}
+		if (new_str[i] < '0' || new_str[i] > '9')
+		{
+			result = FALSE;
+			break;
+		}
+		if (splitted)
+		{
+			height = 1;
+		}
+		else
+		{
+			width = 1;
+		}
+	}
+
+	if (width == 0 || height == 0)
+		result = FALSE;
+
+	if (!result)
+		*error = g_strdup(_("Please enter format 'widthxheight'."));
+	return result;
 }
