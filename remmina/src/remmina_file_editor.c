@@ -43,6 +43,7 @@
 #include "remmina_public.h"
 #include "remmina_pref.h"
 #include "remmina_connection_window.h"
+#include "remmina_string_list.h"
 #include "remmina_pref_dialog.h"
 #include "remmina_file.h"
 #include "remmina_file_manager.h"
@@ -438,12 +439,18 @@ static void remmina_file_editor_update_resolution(GtkWidget* widget, RemminaFile
 static void remmina_file_editor_browse_resolution(GtkWidget* button, RemminaFileEditor* gfe)
 {
 	TRACE_CALL("remmina_file_editor_browse_resolution");
-	GtkWidget* widget;
 
-	widget = remmina_pref_dialog_new(REMMINA_PREF_OPTIONS_TAB, GTK_WINDOW(gfe));
-	gtk_widget_show(widget);
+	GtkDialog *dialog = remmina_string_list_new(FALSE, NULL);
+	remmina_string_list_set_validation_func(remmina_public_resolution_validation_func);
+	remmina_string_list_set_text(remmina_pref.resolutions, TRUE);
+	remmina_string_list_set_titles(_("Resolutions"), _("Configure the available resolutions"));
+	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(gfe));
+	gtk_dialog_run(dialog);
+	g_free(remmina_pref.resolutions);
+	remmina_pref.resolutions = remmina_string_list_get_text();
+	g_signal_connect(G_OBJECT(dialog), "destroy", G_CALLBACK(remmina_file_editor_update_resolution), gfe);
+	gtk_widget_destroy(GTK_WIDGET(dialog));
 
-	g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_file_editor_update_resolution), gfe);
 }
 
 static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const RemminaProtocolSetting* setting,
