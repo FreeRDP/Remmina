@@ -1913,6 +1913,15 @@ static void remmina_plugin_vnc_call_feature(RemminaProtocolWidget *gp, const Rem
 	}
 }
 
+/* Send a keystroke to the plugin window */
+static void remmina_plugin_vnc_keystroke(RemminaProtocolWidget *gp, const guint keystrokes[], const gint keylen)
+{
+	TRACE_CALL("remmina_plugin_vnc_keystroke");
+	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
+	remmina_plugin_service->protocol_plugin_send_keys_signals(gpdata->drawing_area,
+		keystrokes, keylen, GDK_KEY_PRESS | GDK_KEY_RELEASE);
+	return;
+}
 
 static gboolean remmina_plugin_vnc_on_draw(GtkWidget *widget, cairo_t *context, RemminaProtocolWidget *gp)
 {
@@ -2107,7 +2116,8 @@ static RemminaProtocolPlugin remmina_plugin_vnc =
 	remmina_plugin_vnc_open_connection,           // Plugin open connection
 	remmina_plugin_vnc_close_connection,          // Plugin close connection
 	remmina_plugin_vnc_query_feature,             // Query for available features
-	remmina_plugin_vnc_call_feature               // Call a feature
+	remmina_plugin_vnc_call_feature,              // Call a feature
+	remmina_plugin_vnc_keystroke                  // Send a keystroke
 };
 
 /* Protocol plugin definition and features */
@@ -2128,7 +2138,8 @@ static RemminaProtocolPlugin remmina_plugin_vnci =
 	remmina_plugin_vnc_open_connection,           // Plugin open connection
 	remmina_plugin_vnc_close_connection,          // Plugin close connection
 	remmina_plugin_vnc_query_feature,             // Query for available features
-	remmina_plugin_vnc_call_feature               // Call a feature
+	remmina_plugin_vnc_call_feature,              // Call a feature
+	remmina_plugin_vnc_keystroke                  // Send a keystroke
 };
 
 G_MODULE_EXPORT gboolean
