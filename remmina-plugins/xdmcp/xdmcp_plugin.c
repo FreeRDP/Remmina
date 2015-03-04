@@ -131,6 +131,12 @@ static gboolean remmina_plugin_xdmcp_start_xephyr(RemminaProtocolWidget *gp)
 	{
 		argv[argc++] = g_strdup("-once");
 	}
+	/* Listen on protocol TCP */
+	if (remmina_plugin_service->file_get_int(remminafile, "listen_on_tcp", FALSE))
+	{
+		argv[argc++] = g_strdup("-listen");
+		argv[argc++] = g_strdup("tcp");
+	}
 
 	if (!remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE))
 	{
@@ -385,6 +391,7 @@ static const RemminaProtocolSetting remmina_plugin_xdmcp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "exec", N_("Startup program"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Use local cursor"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "once", N_("Disconnect after one session"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "listen_on_tcp", N_("Listening connection on protocol TCP"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
