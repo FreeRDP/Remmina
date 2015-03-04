@@ -42,6 +42,7 @@
 #include "remmina/remmina_trace_calls.h"
 
 const gchar *default_resolutions = "640x480,800x600,1024x768,1152x864,1280x960,1400x1050";
+const gchar *default_keystrokes = "Send hello world§hello world\\n";
 
 gchar *remmina_pref_file;
 RemminaPref remmina_pref;
@@ -244,6 +245,11 @@ void remmina_pref_init(void)
 		remmina_pref.resolutions = g_key_file_get_string(gkeyfile, "remmina_pref", "resolutions", NULL);
 	else
 		remmina_pref.resolutions = g_strdup(default_resolutions);
+
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "keystrokes", NULL))
+		remmina_pref.keystrokes = g_key_file_get_string(gkeyfile, "remmina_pref", "keystrokes", NULL);
+	else
+		remmina_pref.keystrokes = g_strdup(default_keystrokes);
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "main_width", NULL))
 		remmina_pref.main_width = MAX(600, g_key_file_get_integer(gkeyfile, "remmina_pref", "main_width", NULL));
@@ -487,6 +493,7 @@ void remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "small_toolbutton", remmina_pref.small_toolbutton);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "view_file_mode", remmina_pref.view_file_mode);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "resolutions", remmina_pref.resolutions);
+	g_key_file_set_string(gkeyfile, "remmina_pref", "keystrokes", remmina_pref.keystrokes);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "main_width", remmina_pref.main_width);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "main_height", remmina_pref.main_height);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "main_maximize", remmina_pref.main_maximize);

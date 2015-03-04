@@ -93,6 +93,20 @@ void remmina_pref_dialog_clear_recent(GtkWidget *widget, gpointer user_data)
 	gtk_widget_destroy(GTK_WIDGET(dialog));
 }
 
+/* Configure custom keystrokes to send to the plugins */
+void remmina_pref_on_button_keystrokes_clicked(GtkWidget *widget, gpointer user_data)
+{
+	TRACE_CALL("remmina_pref_on_button_keystrokes_clicked");
+	GtkDialog *dialog = remmina_string_list_new(TRUE, STRING_DELIMITOR2);
+	remmina_string_list_set_text(remmina_pref.keystrokes, TRUE);
+	remmina_string_list_set_titles(_("Keystrokes"), _("Configure the keystrokes"));
+	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(remmina_pref_dialog->dialog));
+	gtk_dialog_run(dialog);
+	g_free(remmina_pref.keystrokes);
+	remmina_pref.keystrokes = remmina_string_list_get_text();
+	gtk_widget_destroy(GTK_WIDGET(dialog));
+}
+
 void remmina_pref_dialog_on_close_clicked(GtkWidget *widget, RemminaPrefDialog *dialog)
 {
 	TRACE_CALL("remmina_pref_dialog_on_close_clicked");
