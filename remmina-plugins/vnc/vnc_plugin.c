@@ -83,6 +83,7 @@ typedef struct _RemminaPluginVncData
 
 	GPtrArray *pressed_keys;
 
+	pthread_mutex_t vnc_event_queue_mutex;
 	GQueue *vnc_event_queue;
 	gint vnc_event_pipe[2];
 
@@ -241,7 +242,11 @@ static void remmina_plugin_vnc_event_push(RemminaProtocolWidget *gp, gint event_
 		default:
 			break;
 	}
+
+	pthread_mutex_lock(&gpdata->vnc_event_queue_mutex);
 	g_queue_push_tail(gpdata->vnc_event_queue, event);
+	pthread_mutex_unlock(&gpdata->vnc_event_queue_mutex);
+
 	if (write(gpdata->vnc_event_pipe[1], "\0", 1))
 	{
 		/* Ignore */
@@ -269,6 +274,8 @@ static void remmina_plugin_vnc_event_free_all(RemminaProtocolWidget *gp)
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaPluginVncEvent *event;
 
+	/* This is called from main thread after plugin thread has
+	   been closed, so no queue locking is nessesary here */
 	while ((event = g_queue_pop_head(gpdata->vnc_event_queue)) != NULL)
 	{
 		remmina_plugin_vnc_event_free(event);
@@ -491,6 +498,20 @@ typedef struct _RemminaKeyVal
 static const uint32_t remmina_plugin_vnc_no_encrypt_auth_types[] =
 {	rfbNoAuth, rfbVncAuth, rfbMSLogon, 0};
 
+static RemminaPluginVncEvent *remmina_plugin_vnc_event_queue_pop_head(RemminaPluginVncData *gpdata) {
+	RemminaPluginVncEvent *event;
+
+	CANCEL_DEFER;
+	pthread_mutex_lock(&gpdata->vnc_event_queue_mutex);
+
+	event = g_queue_pop_head(gpdata->vnc_event_queue);
+
+	pthread_mutex_unlock(&gpdata->vnc_event_queue_mutex);
+	CANCEL_ASYNC;
+
+	return event;
+}
+
 static void remmina_plugin_vnc_process_vnc_event(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_vnc_process_vnc_event");
@@ -500,7 +521,7 @@ static void remmina_plugin_vnc_process_vnc_event(RemminaProtocolWidget *gp)
 	gchar buf[100];
 
 	cl = (rfbClient*) gpdata->client;
-	while ((event = g_queue_pop_head(gpdata->vnc_event_queue)) != NULL)
+	while ((event = remmina_plugin_vnc_event_queue_pop_head(gpdata)) != NULL)
 	{
 		if (cl)
 		{
@@ -1821,6 +1842,7 @@ static gboolean remmina_plugin_vnc_close_connection_timeout(RemminaProtocolWidge
 	g_ptr_array_free(gpdata->pressed_keys, TRUE);
 	remmina_plugin_vnc_event_free_all(gp);
 	g_queue_free(gpdata->vnc_event_queue);
+	pthread_mutex_destroy(&gpdata->vnc_event_queue_mutex);
 	close(gpdata->vnc_event_pipe[0]);
 	close(gpdata->vnc_event_pipe[1]);
 
@@ -1989,6 +2011,7 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 	gpdata->listen_sock = -1;
 	gpdata->pressed_keys = g_ptr_array_new();
 	gpdata->vnc_event_queue = g_queue_new();
+	pthread_mutex_init(&gpdata->vnc_event_queue_mutex, NULL);
 	if (pipe(gpdata->vnc_event_pipe))
 	{
 		g_print("Error creating pipes.\n");
