@@ -1793,22 +1793,6 @@ static void remmina_connection_window_initialize_notebook(GtkNotebook* to, GtkNo
 	gint i, n, c;
 	GtkWidget* tab;
 	GtkWidget* widget;
-	GAppInfo *appinfo = NULL;
-	gboolean ret = FALSE;
-	char const *cmd = NULL;
-
-	/* exec precommand before everything else */
-	cmd = remmina_file_get_string(cnnobj->remmina_file, "precommand");
-	appinfo = g_app_info_create_from_commandline(cmd,
-												NULL,
-												G_APP_INFO_CREATE_NEEDS_TERMINAL,
-												NULL);
-	g_assert(appinfo != NULL); // TODO error handling is not implemented.
-	ret = g_app_info_launch(appinfo,
-							NULL,
-							NULL,
-							NULL);
-	g_assert(ret == TRUE); // TODO error handling is not implemented.
 
 	/* Init connection */
 	if (cnnobj)
@@ -2477,11 +2461,23 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 	RemminaConnectionObject* cnnobj;
 	gboolean plugin_can_scale;
 
+	GAppInfo *appinfo = NULL;
+	gboolean ret = FALSE;
+	char const *cmd = NULL;
+
 	remmina_file_update_screen_resolution(remminafile);
 
 	cnnobj = g_new0(RemminaConnectionObject, 1);
 	cnnobj->remmina_file = remminafile;
 
+	/* Exec precommand before everything else */
+	cmd = remmina_file_get_string(cnnobj->remmina_file, "precommand");
+	if (cmd)
+    {
+		appinfo = g_app_info_create_from_commandline(cmd, NULL, G_APP_INFO_CREATE_NEEDS_TERMINAL, NULL);
+		ret = g_app_info_launch(appinfo, NULL, NULL, NULL);
+		/* TODO error handling */
+	}
 	/* Create the RemminaProtocolWidget */
 	cnnobj->proto = remmina_protocol_widget_new();
 	GdkRGBA bkcolor1 = {.0, .0, .0, 1.0};
