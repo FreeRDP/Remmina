@@ -314,6 +314,7 @@ gboolean remmina_rdp_file_export_channel(RemminaFile* remminafile, FILE* fp)
 	fprintf(fp, "gatewayusagemethod:i:4\r\n");
 	fprintf(fp, "gatewaycredentialssource:i:4\r\n");
 	fprintf(fp, "gatewayprofileusagemethod:i:0\r\n");
+	fprintf(fp, "precommand:s:\r\n");
 	fprintf(fp, "promptcredentialonce:i:1\r\n");
 	fprintf(fp, "drivestoredirect:s:\r\n");
 
