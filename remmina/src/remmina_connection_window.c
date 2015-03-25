@@ -1070,7 +1070,7 @@ static void remmina_connection_holder_toolbar_tools(GtkWidget* widget, RemminaCo
 					menuitem = gtk_menu_item_new_with_label(
 						g_strdup(keystroke_values[strlen(keystroke_values[0]) ? 0 : 1]));
 					g_object_set_data(G_OBJECT(menuitem), "keystrokes", g_strdup(keystroke_values[1]));
-					g_signal_connect_swapped(G_OBJECT(menuitem), "activate", 
+					g_signal_connect_swapped(G_OBJECT(menuitem), "activate",
 						G_CALLBACK(remmina_protocol_widget_send_keystrokes),
 						REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
 					gtk_widget_show(menuitem);
@@ -1793,6 +1793,27 @@ static void remmina_connection_window_initialize_notebook(GtkNotebook* to, GtkNo
 	gint i, n, c;
 	GtkWidget* tab;
 	GtkWidget* widget;
+	/* exec precommand init */
+	GAppInfo *appinfo = NULL;
+	gboolean ret = FALSE;
+	char const *cmd = NULL;
+
+	cmd = remmina_file_get_string(cnnobj->remmina_file, "precommand");
+
+
+	//gtk_init(&argc, &argv);// !! HERE is required!
+
+	appinfo = g_app_info_create_from_commandline(cmd,
+												NULL,
+												G_APP_INFO_CREATE_NEEDS_TERMINAL,
+												NULL);
+	g_assert(appinfo != NULL); // TODO error handling is not implemented.
+	ret = g_app_info_launch(appinfo,
+							NULL,
+							NULL,
+							NULL);
+	g_assert(ret == TRUE); // TODO error handling is not implemented.
+
 
 	if (cnnobj)
 	{
