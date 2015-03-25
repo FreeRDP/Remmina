@@ -1793,16 +1793,12 @@ static void remmina_connection_window_initialize_notebook(GtkNotebook* to, GtkNo
 	gint i, n, c;
 	GtkWidget* tab;
 	GtkWidget* widget;
-	/* exec precommand init */
 	GAppInfo *appinfo = NULL;
 	gboolean ret = FALSE;
 	char const *cmd = NULL;
 
+	/* exec precommand before everything else */
 	cmd = remmina_file_get_string(cnnobj->remmina_file, "precommand");
-
-
-	//gtk_init(&argc, &argv);// !! HERE is required!
-
 	appinfo = g_app_info_create_from_commandline(cmd,
 												NULL,
 												G_APP_INFO_CREATE_NEEDS_TERMINAL,
@@ -1814,7 +1810,7 @@ static void remmina_connection_window_initialize_notebook(GtkNotebook* to, GtkNo
 							NULL);
 	g_assert(ret == TRUE); // TODO error handling is not implemented.
 
-
+	/* Init connection */
 	if (cnnobj)
 	{
 		/* Initial connection for a newly created window */
