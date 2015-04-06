@@ -789,12 +789,14 @@ static void remmina_connection_holder_toolbar_fullscreen_option(GtkWidget* widge
 			gtk_get_current_event_time());
 }
 
-static void remmina_protocol_widget_update_alignment(RemminaProtocolWidget* proto, gboolean has_aspectframe)
+static void remmina_protocol_widget_update_alignment(RemminaProtocolWidget* proto, GtkAspectFrame* aspectframe)
 {
 	TRACE_CALL("remmina_protocol_widget_update_alignment");
 	gboolean scaledmode;
+	int rdwidth, rdheight;
+	gfloat aratio;
 
-	if (!has_aspectframe) {
+	if (aspectframe == NULL) {
 		/* If we have a plugin that cannot scale, so it has no cnnobj->aspectframe
 		 * (i.e. SFTP plugin), then we expand proto */
 		gtk_widget_set_halign(GTK_WIDGET(proto),GTK_ALIGN_FILL);
@@ -802,6 +804,12 @@ static void remmina_protocol_widget_update_alignment(RemminaProtocolWidget* prot
 	}
 	else
 	{
+		/* Check for correct aspect ratio on GtkAspectFrame */
+		rdwidth = remmina_protocol_widget_get_width(REMMINA_PROTOCOL_WIDGET(proto));
+		rdheight = remmina_protocol_widget_get_height(REMMINA_PROTOCOL_WIDGET(proto));
+		aratio = (gfloat)rdwidth / (gfloat)rdheight;
+		gtk_aspect_frame_set(GTK_ASPECT_FRAME(aspectframe), 0.5, 0.5, aratio, FALSE);
+
 		/* Our plugin can scale, see if we are in scaled mode */
 		scaledmode = remmina_protocol_widget_get_scale(proto);
 		if (scaledmode) {
@@ -2702,8 +2710,6 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 	TRACE_CALL("remmina_connection_object_on_connect");
 	RemminaConnectionWindow* cnnwin;
 	RemminaConnectionHolder* cnnhld;
-	gfloat aratio;
-	gint rdwidth, rdheight;
 	GtkWidget* tab;
 	gint i;
 
@@ -2763,15 +2769,6 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 
 		gtk_window_present(GTK_WINDOW(cnnhld->cnnwin));
 		gtk_notebook_set_current_page(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook), i);
-	}
-
-	/* We are connected, so we know the remote desktop size.
-	 * Set the aspect ratio of aspectframe accordingly. */
-	if (cnnobj->aspectframe) {
-		rdwidth = remmina_protocol_widget_get_width(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
-		rdheight = remmina_protocol_widget_get_height(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
-		aratio = (gfloat)rdwidth / (gfloat)rdheight;
-		gtk_aspect_frame_set(GTK_ASPECT_FRAME(cnnobj->aspectframe), 0.5, 0.5, aratio, FALSE);
 	}
 
 #if FLOATING_TOOLBAR_WIDGET
@@ -2849,7 +2846,7 @@ static void remmina_connection_object_on_desktop_resize(RemminaProtocolWidget* g
 static void remmina_connection_object_on_update_align(RemminaProtocolWidget* gp, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL("remmina_connection_object_on_update_align");
-	remmina_protocol_widget_update_alignment(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), cnnobj->aspectframe != NULL);
+	remmina_protocol_widget_update_alignment(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), GTK_ASPECT_FRAME(cnnobj->aspectframe));
 }
 
 gboolean remmina_connection_window_open_from_filename(const gchar* filename)
