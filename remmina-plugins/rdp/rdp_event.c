@@ -664,8 +664,8 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 
 	/* See if we also must rellocate rfi->surface with different width and height,
 	 * this usually happens after a DesktopResize RDP event*/
-	if ( width != cairo_image_surface_get_width(rfi->surface) ||
-		height != cairo_image_surface_get_height(rfi->surface) ) {
+	if ( rfi->surface && (width != cairo_image_surface_get_width(rfi->surface) ||
+		height != cairo_image_surface_get_height(rfi->surface) )) {
 		/* Destroys and recreate rfi->surface with new width and height,
 		 * calls gdi_resize and save new gdi->primary buffer pointer */
 		if (rfi->surface) {
