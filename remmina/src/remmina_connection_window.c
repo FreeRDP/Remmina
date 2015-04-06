@@ -157,6 +157,8 @@ static void remmina_connection_holder_create_fullscreen(RemminaConnectionHolder*
 static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp, guint keyval, gboolean release,
 		RemminaConnectionHolder* cnnhld);
 
+static void remmina_connection_holder_grab_focus(GtkNotebook *notebook);
+
 #if FLOATING_TOOLBAR_WIDGET
 static void remmina_connection_window_ftb_drag_begin(GtkWidget *widget, GdkDragContext *context, gpointer user_data);
 #endif
@@ -748,6 +750,7 @@ static void remmina_protocol_widget_update_alignment(RemminaConnectionObject* cn
 				gtk_container_add(GTK_CONTAINER(cnnobj->aspectframe), cnnobj->proto);
 				g_object_unref(cnnobj->proto);
 				gtk_widget_show(cnnobj->aspectframe);
+				remmina_connection_holder_grab_focus(GTK_NOTEBOOK(cnnobj->cnnhld->cnnwin->priv->notebook));
 			}
 			else
 			{
@@ -765,6 +768,7 @@ static void remmina_protocol_widget_update_alignment(RemminaConnectionObject* cn
 				cnnobj->aspectframe = NULL;
 				gtk_container_add(GTK_CONTAINER(cnnobj->viewport), cnnobj->proto);
 				g_object_unref(cnnobj->proto);
+				remmina_connection_holder_grab_focus(GTK_NOTEBOOK(cnnobj->cnnhld->cnnwin->priv->notebook));
 			}
 		}
 
@@ -2056,24 +2060,18 @@ static void remmina_connection_object_create_scrolled_container(RemminaConnectio
 
 }
 
-static gboolean remmina_connection_holder_grab_focus(gpointer data)
+static void remmina_connection_holder_grab_focus(GtkNotebook *notebook)
 {
 	TRACE_CALL("remmina_connection_holder_grab_focus");
 	RemminaConnectionObject* cnnobj;
-	GtkNotebook* notebook;
 	GtkWidget* child;
 
-	if (GTK_IS_WIDGET(data))
+	child = gtk_notebook_get_nth_page(notebook, gtk_notebook_get_current_page(notebook));
+	cnnobj = g_object_get_data(G_OBJECT(child), "cnnobj");
+	if (GTK_IS_WIDGET(cnnobj->proto))
 	{
-		notebook = GTK_NOTEBOOK(data);
-		child = gtk_notebook_get_nth_page(notebook, gtk_notebook_get_current_page(notebook));
-		cnnobj = g_object_get_data(G_OBJECT(child), "cnnobj");
-		if (GTK_IS_WIDGET(cnnobj->proto))
-		{
-			remmina_protocol_widget_grab_focus(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
-		}
+		remmina_protocol_widget_grab_focus(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
 	}
-	return FALSE;
 }
 
 static void remmina_connection_object_on_close_button_clicked(GtkButton* button, RemminaConnectionObject* cnnobj)
@@ -2222,7 +2220,7 @@ static gboolean remmina_connection_holder_on_switch_page_real(gpointer data)
 	if (GTK_IS_WIDGET(cnnhld->cnnwin))
 	{
 		remmina_connection_holder_update_toolbar(cnnhld);
-		remmina_connection_holder_grab_focus(priv->notebook);
+		remmina_connection_holder_grab_focus(GTK_NOTEBOOK(priv->notebook));
 		if (cnnhld->cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE)
 		{
 			remmina_connection_holder_check_resize(cnnhld);
@@ -3069,7 +3067,6 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 
 	cnnobj->aspectframe = NULL;
 	gtk_container_add(GTK_CONTAINER(cnnobj->viewport), cnnobj->proto);
-
 
 	cnnobj->window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	gtk_widget_realize(cnnobj->window);
