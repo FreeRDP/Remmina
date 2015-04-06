@@ -746,7 +746,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	}
 	/* Remote Desktop Gateway usage */
 	if (rfi->settings->GatewayEnabled)
-		freerdp_set_gateway_usage_method(rfi->settings, 
+		freerdp_set_gateway_usage_method(rfi->settings,
 			remmina_plugin_service->file_get_int(remminafile, "gateway_usage", FALSE) ? TSC_PROXY_MODE_DETECT : TSC_PROXY_MODE_DIRECT);
 	/* Certificate ignore */
 	rfi->settings->IgnoreCertificate = remmina_plugin_service->file_get_int(remminafile, "cert_ignore", 0);
