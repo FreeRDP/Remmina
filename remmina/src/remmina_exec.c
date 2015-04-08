@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -54,17 +54,18 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 	gchar* s1;
 	gchar* s2;
 	GtkWidget* widget;
+	GtkWindow* mainwindow;
+	GtkDialog* prefdialog;
 	RemminaEntryPlugin* plugin;
 
 	switch (command)
 	{
 		case REMMINA_COMMAND_MAIN:
-			/* FIX ME: restore window opening from a previous instance */
-			widget = NULL;
-			if (widget)
+			mainwindow = remmina_main_get_window();
+			if (mainwindow)
 			{
-				gtk_window_present(GTK_WINDOW(widget));
-				gtk_window_deiconify(GTK_WINDOW(widget));
+				gtk_window_present(mainwindow);
+				gtk_window_deiconify(GTK_WINDOW(mainwindow));
 			}
 			else
 			{
@@ -74,14 +75,13 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 			break;
 
 		case REMMINA_COMMAND_PREF:
-			/* FIX ME: restore window opening from a previous instance */
-			widget = NULL;
-			if (widget)
+			prefdialog = remmina_pref_dialog_get_dialog();
+			if (prefdialog)
 			{
-				gtk_window_present(GTK_WINDOW(widget));
-			}
-			else
-			{
+				gtk_window_present(GTK_WINDOW(prefdialog));
+				gtk_window_deiconify(GTK_WINDOW(prefdialog));
+			} else {
+				/* Create a new preference dialog */
 				widget = GTK_WIDGET(remmina_pref_dialog_new(atoi(data), NULL));
 				gtk_widget_show(widget);
 			}
