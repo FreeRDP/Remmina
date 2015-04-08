@@ -1082,6 +1082,9 @@ static void remmina_main_init(void)
 	gtk_drag_dest_set(GTK_WIDGET(remminamain->window), GTK_DEST_DEFAULT_ALL, remmina_drop_types, 1, GDK_ACTION_COPY);
 	/* Finish initialization */
 	remminamain->priv->initialized = TRUE;
+
+	/* Register the window in remmina_widget_pool with GType=GTK_WINDOW and TAG=remmina-main-window */
+	g_object_set_data(G_OBJECT(remminamain->window), "tag", "remmina-main-window");
 	remmina_widget_pool_register(GTK_WIDGET(remminamain->window));
 }
 
@@ -1152,3 +1155,15 @@ GtkWidget* remmina_main_new(void)
 	remmina_main_init();
 	return GTK_WIDGET(remminamain->window);
 }
+
+GtkWindow* remmina_main_get_window()
+{
+	if (!remminamain)
+		return NULL;
+	if (!remminamain->priv)
+		return NULL;
+	if (!remminamain->priv->initialized)
+		return NULL;
+	return remminamain->window;
+}
+
