@@ -138,6 +138,8 @@ void remmina_main_destroy(GtkWidget *widget, gpointer user_data)
 	g_free(remminamain->priv->selected_name);
 	g_free(remminamain->priv);
 	g_free(remminamain);
+
+	remminamain = NULL;
 }
 
 static void remmina_main_clear_selection_data(void)
