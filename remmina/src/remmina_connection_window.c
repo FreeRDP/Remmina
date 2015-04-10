@@ -346,6 +346,11 @@ static void remmina_connection_window_destroy(GtkWidget* widget, RemminaConnecti
 		priv->switch_page_handler = 0;
 	}
 	g_free(priv);
+
+	if (GTK_WIDGET(cnnhld->cnnwin) == widget) {
+		cnnhld->cnnwin->priv = NULL;
+		cnnhld->cnnwin = NULL;
+	}
 }
 
 static void remmina_connection_holder_update_toolbar_opacity(RemminaConnectionHolder* cnnhld)
@@ -1630,9 +1635,10 @@ static gboolean remmina_connection_holder_floating_toolbar_on_enter(GtkWidget* w
 }
 
 static gboolean remmina_connection_object_enter_protocol_widget(GtkWidget* widget, GdkEventCrossing* event,
-		RemminaConnectionHolder* cnnhld)
+		RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL("remmina_connection_object_enter_protocol_widget");
+	RemminaConnectionHolder* cnnhld = cnnobj->cnnhld;
 	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
 	if (!priv->sticky && event->mode == GDK_CROSSING_NORMAL)
 	{
@@ -2058,7 +2064,7 @@ static void remmina_connection_object_create_scrolled_container(RemminaConnectio
 	gtk_widget_show(container);
 	cnnobj->scrolled_container = container;
 
-	g_signal_connect(G_OBJECT(cnnobj->proto), "enter-notify-event", G_CALLBACK(remmina_connection_object_enter_protocol_widget), cnnobj->cnnhld);
+	g_signal_connect(G_OBJECT(cnnobj->proto), "enter-notify-event", G_CALLBACK(remmina_connection_object_enter_protocol_widget), cnnobj);
 
 }
 
