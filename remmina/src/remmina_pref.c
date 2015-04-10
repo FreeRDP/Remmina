@@ -683,6 +683,11 @@ remmina_pref_keymap_groups(void)
 gint remmina_pref_get_scale_quality(void)
 {
 	TRACE_CALL("remmina_pref_get_scale_quality");
+	/* Paranoid programming */
+	if (remmina_pref.scale_quality < 0)
+	{
+		remmina_pref.scale_quality = 0;
+	}
 	return remmina_pref.scale_quality;
 }
 
