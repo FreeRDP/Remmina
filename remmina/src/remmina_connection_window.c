@@ -2501,7 +2501,7 @@ static void remmina_connection_holder_create_overlay_ftb_overlay(RemminaConnecti
 }
 
 
-static void remmina_connection_window_ftb_drag_drop(GtkWidget *widget, GdkDragContext *context,
+static gboolean remmina_connection_window_ftb_drag_drop(GtkWidget *widget, GdkDragContext *context,
                gint x, gint y, guint time, gpointer user_data)
 {
 	TRACE_CALL("remmina_connection_window_ftb_drag_drop");
@@ -2512,6 +2512,7 @@ static void remmina_connection_window_ftb_drag_drop(GtkWidget *widget, GdkDragCo
 
 	cnnhld = (RemminaConnectionHolder*)user_data;
 	priv = cnnhld->cnnwin->priv;
+
 
 	gtk_widget_get_allocation(widget, &wa);
 
@@ -2524,6 +2525,8 @@ static void remmina_connection_window_ftb_drag_drop(GtkWidget *widget, GdkDragCo
 		new_floating_toolbar_placement = FLOATING_TOOLBAR_PLACEMENT_TOP;
 	}
 
+	gtk_drag_finish(context, TRUE, TRUE, time);
+
 	if (new_floating_toolbar_placement !=  remmina_pref.floating_toolbar_placement)
 	{
 		/* Destroy and recreate the FTB */
@@ -2531,6 +2534,8 @@ static void remmina_connection_window_ftb_drag_drop(GtkWidget *widget, GdkDragCo
 		remmina_pref_save();
 		remmina_connection_holder_create_overlay_ftb_overlay(cnnhld);
 	}
+
+	return TRUE;
 
 }
 
