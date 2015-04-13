@@ -72,8 +72,8 @@ enum
 {
 	REMMINA_TAB_BY_GROUP = 0,
 	REMMINA_TAB_BY_PROTOCOL = 1,
-	REMMINA_TAB_ALL = 8,
-	REMMINA_TAB_NONE = 9
+	REMMINA_TAB_ALL = 2,
+	REMMINA_TAB_NONE = 3
 };
 
 typedef struct _RemminaPref
