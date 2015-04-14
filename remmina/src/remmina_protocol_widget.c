@@ -61,7 +61,7 @@ struct _RemminaProtocolWidgetPriv
 	gint width;
 	gint height;
 	gboolean scale;
-	gboolean expand;
+	gboolean scaler_expand;
 
 	gboolean has_error;
 	gchar* error_message;
@@ -278,6 +278,7 @@ void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp, RemminaF
 	TRACE_CALL("remmina_protocol_widget_open_connection");
 	gp->priv->remmina_file = remminafile;
 	gp->priv->scale = remmina_file_get_int(remminafile, "scale", FALSE);
+	gp->priv->scaler_expand = remmina_file_get_int(remminafile, "scaler_expand", FALSE);
 
 	remmina_protocol_widget_show_init_dialog(gp, remmina_file_get_string(remminafile, "name"));
 
@@ -435,7 +436,6 @@ void remmina_protocol_widget_emit_signal(RemminaProtocolWidget* gp, const gchar*
 {
 	TRACE_CALL("remmina_protocol_widget_emit_signal");
 	RemminaProtocolWidgetSignalData* data;
-
 	data = g_new(RemminaProtocolWidgetSignalData, 1);
 	data->gp = gp;
 	data->signal_name = signal_name;
@@ -884,14 +884,13 @@ void remmina_protocol_widget_set_scale(RemminaProtocolWidget* gp, gboolean scale
 gboolean remmina_protocol_widget_get_expand(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_protocol_widget_get_expand");
-	// Deprecated, no longer in use. Kept here to avoid breaking plugin api
-	return FALSE;
+	return gp->priv->scaler_expand;
 }
 
 void remmina_protocol_widget_set_expand(RemminaProtocolWidget* gp, gboolean expand)
 {
 	TRACE_CALL("remmina_protocol_widget_set_expand");
-	// Deprecated, no longer in use. Kept here to avoid breaking plugin api
+	gp->priv->scaler_expand = expand;
 	return;
 }
 
