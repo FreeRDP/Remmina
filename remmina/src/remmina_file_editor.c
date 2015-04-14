@@ -566,7 +566,7 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWid
 #if GTK_VERSION == 3
 	gtk_grid_attach(GTK_GRID(table), widget, 1, row, 1, 1);
 #elif GTK_VERSION == 2
-	gtk_table_attach(GTK_TABLE(table), widget, col, col + 1, row, row + 1, GTK_FILL, 0, 0, 0);
+	gtk_table_attach(GTK_TABLE(table), widget, col + 1, col + 2, row, row + 1, GTK_FILL, 0, 0, 0);
 #endif
 	gtk_entry_set_max_length(GTK_ENTRY(widget), 300);
 
@@ -636,10 +636,10 @@ static GtkWidget* remmina_file_editor_create_check(RemminaFileEditor* gfe, GtkWi
 
 #if GTK_VERSION == 3
 	gtk_grid_set_row_spacing(GTK_GRID(table), 1);
-	gtk_grid_attach(GTK_GRID(table), widget, col, row , 1, 1);
+	gtk_grid_attach(GTK_GRID(table), widget, col, row, 1, 1);
 #elif GTK_VERSION == 2
 	if (row >= 0)
-		gtk_table_attach_defaults(GTK_TABLE(table), widget, col, col + 2, row, row + 1);
+		gtk_table_attach_defaults(GTK_TABLE(table), widget, col, col + 1, row, row + 1);
 	else
 		gtk_box_pack_start(GTK_BOX(table), widget, TRUE, TRUE, 10);
 #endif
@@ -718,15 +718,12 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 		{
 			case REMMINA_PROTOCOL_SETTING_TYPE_SERVER:
 				remmina_file_editor_create_server(gfe, settings, table, row);
+				row++;
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD:
-#if GTK_VERSION == 3
 				remmina_file_editor_create_password(gfe, table, row);
 				row++;
-#elif GTK_VERSION == 2
-				remmina_file_editor_create_password(gfe, table, row);
-#endif
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION:
@@ -736,11 +733,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP:
 				strarr = remmina_pref_keymap_groups();
-#if GTK_VERSION == 3
 				priv->keymap_combo = remmina_file_editor_create_select(gfe, table, row + 1, 0,
-#elif GTK_VERSION == 2
-				priv->keymap_combo = remmina_file_editor_create_select(gfe, table, row + 1, 0,
-#endif
 						_("Keyboard mapping"), (const gpointer*) strarr,
 						remmina_file_get_string(priv->remmina_file, "keymap"));
 				g_strfreev(strarr);
@@ -781,7 +774,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 #if GTK_VERSION == 3
 				gtk_grid_attach(GTK_GRID(table), widget, 1, row, 2, row + 2);
 #elif GTK_VERSION == 2
-				gtk_table_attach_defaults(GTK_TABLE(table), widget, 1, 2, row, row + 2);
+				gtk_table_attach_defaults(GTK_TABLE(table), widget, 1, 2, row + 1, row + 2);
 #endif
 
 				remmina_scaler_set(REMMINA_SCALER(widget),
@@ -790,42 +783,33 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 						remmina_file_get_int(priv->remmina_file, "aspectscale", FALSE));
 				priv->scaler_widget = widget;
 
-				row++;
+				row+=2;
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_TEXT:
-#if GTK_VERSION == 3
 				widget = remmina_file_editor_create_text(gfe, table, row, 0,
-#elif GTK_VERSION == 2
-				widget = remmina_file_editor_create_text(gfe, table, row + 1, 0,
-#endif
 						g_dgettext(priv->plugin->domain, settings->label),
 						remmina_file_get_string(priv->remmina_file, settings->name));
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
+				row++;
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_SELECT:
-#if GTK_VERSION == 3
 				widget = remmina_file_editor_create_select(gfe, table, row, 0,
-#elif GTK_VERSION == 2
-				widget = remmina_file_editor_create_select(gfe, table, row, 0,
-#endif
 						g_dgettext(priv->plugin->domain, settings->label),
 						(const gpointer*) settings->opt1,
 						remmina_file_get_string(priv->remmina_file, settings->name));
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
+				row++;
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_COMBO:
-#if GTK_VERSION == 3
 				widget = remmina_file_editor_create_combo(gfe, table, row, 0,
-#elif GTK_VERSION == 2
-				widget = remmina_file_editor_create_combo(gfe, table, row, 0,
-#endif
 						g_dgettext(priv->plugin->domain, settings->label),
 						(const gchar*) settings->opt1,
 						remmina_file_get_string(priv->remmina_file, settings->name));
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
+				row++;
 				break;
 
 			case REMMINA_PROTOCOL_SETTING_TYPE_CHECK:
@@ -840,34 +824,28 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 					ccount = 1;
 				}
 				widget = remmina_file_editor_create_check(gfe, table, row, top,
-				g_dgettext (priv->plugin->domain, settings->label),
-				remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
-				(ccount ? 1 : row++);
+						g_dgettext (priv->plugin->domain, settings->label),
+						remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
+						(ccount ? 1 : row++);
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
 				break;
 
 				case REMMINA_PROTOCOL_SETTING_TYPE_FILE:
-#if GTK_VERSION == 3
 				widget = remmina_file_editor_create_chooser (gfe, table, row, 0,
-#elif GTK_VERSION == 2
-				widget = remmina_file_editor_create_chooser (gfe, table, row, 0,
-#endif
 						g_dgettext (priv->plugin->domain, settings->label),
 						remmina_file_get_string (priv->remmina_file, settings->name),
 						GTK_FILE_CHOOSER_ACTION_OPEN);
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
+				row++;
 				break;
 
 				case REMMINA_PROTOCOL_SETTING_TYPE_FOLDER:
-#if GTK_VERSION == 3
 				widget = remmina_file_editor_create_chooser (gfe, table, row, 0,
-#elif GTK_VERSION == 2
-				widget = remmina_file_editor_create_chooser (gfe, table, row, 0,
-#endif
 						g_dgettext (priv->plugin->domain, settings->label),
 						remmina_file_get_string (priv->remmina_file, settings->name),
 						GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
 				g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
+				row++;
 				break;
 
 				default:
@@ -1549,7 +1527,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 #if GTK_VERSION == 3
 	gtk_grid_attach(GTK_GRID(table), widget, 0, 3, 2, 1);
-    gtk_grid_set_column_spacing (GTK_GRID(table), 10);
+	gtk_grid_set_column_spacing (GTK_GRID(table), 10);
 #elif GTK_VERSION == 2
 	gtk_table_attach(GTK_TABLE(table), widget, 1, 2, 1, 2, GTK_FILL, 0, 0, 0);
 #endif
