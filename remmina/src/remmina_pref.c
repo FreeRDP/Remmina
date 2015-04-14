@@ -190,6 +190,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.invisible_toolbar = FALSE;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "floating_toolbar_placement", NULL))
+		remmina_pref.floating_toolbar_placement = g_key_file_get_boolean(gkeyfile, "remmina_pref", "floating_toolbar_placement", NULL);
+	else
+		remmina_pref.floating_toolbar_placement = FLOATING_TOOLBAR_PLACEMENT_TOP;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "always_show_tab", NULL))
 		remmina_pref.always_show_tab = g_key_file_get_boolean(gkeyfile, "remmina_pref", "always_show_tab", NULL);
 	else
@@ -482,6 +487,7 @@ void remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_view_mode", remmina_pref.save_view_mode);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_when_connect", remmina_pref.save_when_connect);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "invisible_toolbar", remmina_pref.invisible_toolbar);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "floating_toolbar_placement", remmina_pref.floating_toolbar_placement);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "always_show_tab", remmina_pref.always_show_tab);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_connection_toolbar", remmina_pref.hide_connection_toolbar);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "default_action", remmina_pref.default_action);
@@ -677,6 +683,11 @@ remmina_pref_keymap_groups(void)
 gint remmina_pref_get_scale_quality(void)
 {
 	TRACE_CALL("remmina_pref_get_scale_quality");
+	/* Paranoid programming */
+	if (remmina_pref.scale_quality < 0)
+	{
+		remmina_pref.scale_quality = 0;
+	}
 	return remmina_pref.scale_quality;
 }
 

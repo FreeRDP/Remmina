@@ -68,6 +68,10 @@ static GtkTargetEntry remmina_drop_types[] =
 	{ "text/uri-list", 0, 1 }
 };
 
+static char *quick_connect_plugin_list[] = {
+	"RDP", "VNC", "SSH", "NX"
+};
+
 static void remmina_main_save_size(void)
 {
 	TRACE_CALL("remmina_main_save_size");
@@ -134,6 +138,8 @@ void remmina_main_destroy(GtkWidget *widget, gpointer user_data)
 	g_free(remminamain->priv->selected_name);
 	g_free(remminamain->priv);
 	g_free(remminamain);
+
+	remminamain = NULL;
 }
 
 static void remmina_main_clear_selection_data(void)
@@ -1003,6 +1009,9 @@ gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWindowSta
 static void remmina_main_init(void)
 {
 	TRACE_CALL("remmina_main_init");
+	int i;
+	char *name;
+
 	remminamain->priv->expanded_group = remmina_string_array_new_from_string(remmina_pref.expanded_group);
 	gtk_window_set_title(remminamain->window, _("Remmina Remote Desktop Client"));
 	gtk_window_set_default_size(remminamain->window, remmina_pref.main_width, remmina_pref.main_height);
@@ -1013,6 +1022,16 @@ static void remmina_main_init(void)
 	}
 	/* Add a GtkMenuItem to the Tools menu for each plugin of type REMMINA_PLUGIN_TYPE_TOOL */
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
+
+	/* Add available quick connect protocols to remminamain->combo_quick_connect_protocol */
+	for(i=0;i<sizeof(quick_connect_plugin_list)/sizeof(quick_connect_plugin_list[0]);i++)
+	{
+		name = quick_connect_plugin_list[i];
+		if (remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL,name))
+			gtk_combo_box_text_append(remminamain->combo_quick_connect_protocol, name, name);
+	}
+	gtk_combo_box_set_active(GTK_COMBO_BOX(remminamain->combo_quick_connect_protocol), 0);
+
 	/* Connect the group accelerators to the GtkWindow */
 	gtk_window_add_accel_group(remminamain->window, remminamain->accelgroup_shortcuts);
 	/* Set the Quick Connection */
@@ -1065,6 +1084,9 @@ static void remmina_main_init(void)
 	gtk_drag_dest_set(GTK_WIDGET(remminamain->window), GTK_DEST_DEFAULT_ALL, remmina_drop_types, 1, GDK_ACTION_COPY);
 	/* Finish initialization */
 	remminamain->priv->initialized = TRUE;
+
+	/* Register the window in remmina_widget_pool with GType=GTK_WINDOW and TAG=remmina-main-window */
+	g_object_set_data(G_OBJECT(remminamain->window), "tag", "remmina-main-window");
 	remmina_widget_pool_register(GTK_WIDGET(remminamain->window));
 }
 
@@ -1135,3 +1157,15 @@ GtkWidget* remmina_main_new(void)
 	remmina_main_init();
 	return GTK_WIDGET(remminamain->window);
 }
+
+GtkWindow* remmina_main_get_window()
+{
+	if (!remminamain)
+		return NULL;
+	if (!remminamain->priv)
+		return NULL;
+	if (!remminamain->priv->initialized)
+		return NULL;
+	return remminamain->window;
+}
+
