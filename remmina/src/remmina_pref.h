@@ -65,10 +65,15 @@ enum
 
 enum
 {
+	FLOATING_TOOLBAR_PLACEMENT_TOP, FLOATING_TOOLBAR_PLACEMENT_BOTTOM
+};
+
+enum
+{
 	REMMINA_TAB_BY_GROUP = 0,
 	REMMINA_TAB_BY_PROTOCOL = 1,
-	REMMINA_TAB_ALL = 8,
-	REMMINA_TAB_NONE = 9
+	REMMINA_TAB_ALL = 2,
+	REMMINA_TAB_NONE = 3
 };
 
 typedef struct _RemminaPref
@@ -85,6 +90,7 @@ typedef struct _RemminaPref
 	gchar *keystrokes;
 	/* In RemminaPrefDialog appearance tab */
 	gboolean invisible_toolbar;
+	gint floating_toolbar_placement;
 	gboolean always_show_tab;
 	gboolean hide_connection_toolbar;
 	gint default_mode;

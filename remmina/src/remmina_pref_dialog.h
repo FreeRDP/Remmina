@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -49,7 +49,7 @@ typedef struct _RemminaPrefDialog
 	GtkBuilder *builder;
 	GtkDialog *dialog;
 	GtkNotebook *notebook_preferences;
-	
+
 	GtkCheckButton *checkbutton_options_remember_last_view_mode;
 	GtkCheckButton *checkbutton_options_save_settings;
 	GtkCheckButton *checkbutton_appearance_invisible_toolbar;
@@ -66,12 +66,12 @@ typedef struct _RemminaPrefDialog
 	GtkEntry *entry_options_recent_items;
 	GtkButton *button_options_recent_items_clear;
 	GtkButton *button_options_resolutions;
-	
+
 	GtkCheckButton *checkbutton_applet_new_connection_on_top;
 	GtkCheckButton *checkbutton_applet_hide_totals;
 	GtkCheckButton *checkbutton_applet_disable_tray;
 	GtkCheckButton *checkbutton_applet_start_in_tray;
-	
+
 	GtkButton *button_keyboard_host_key;
 	GtkButton *button_keyboard_fullscreen;
 	GtkButton *button_keyboard_auto_fit;
@@ -82,7 +82,7 @@ typedef struct _RemminaPrefDialog
 	GtkButton *button_keyboard_minimize;
 	GtkButton *button_keyboard_disconnect;
 	GtkButton *button_keyboard_toolbar;
-	
+
 	GtkCheckButton *checkbutton_terminal_font_system;
 	GtkFontButton *fontbutton_terminal_font;
 	GtkCheckButton *checkbutton_terminal_bold;
@@ -94,7 +94,7 @@ typedef struct _RemminaPrefDialog
 	GtkEntry *entry_scrollback_lines;
 	GtkButton *button_keyboard_copy;
 	GtkButton *button_keyboard_paste;
-	
+
 	RemminaPrefDialogPriv *priv;
 } RemminaPrefDialog;
 
@@ -109,6 +109,8 @@ G_BEGIN_DECLS
 
 /* RemminaPrefDialog instance */
 GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent);
+/* Get the current PrefDialog or NULL if not initialized */
+GtkDialog* remmina_pref_dialog_get_dialog(void);
 
 G_END_DECLS
 

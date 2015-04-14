@@ -203,6 +203,8 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.vte_shortcutkey_paste = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_paste));
 
 	remmina_pref_save();
+
+	remmina_pref_dialog->dialog = NULL;
 }
 
 static gboolean remmina_pref_dialog_add_pref_plugin(gchar *name, RemminaPlugin *plugin, gpointer user_data)
@@ -340,6 +342,7 @@ static void remmina_pref_dialog_init(void)
 
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_PREF, remmina_pref_dialog_add_pref_plugin, remmina_pref_dialog->dialog);
 
+	g_object_set_data(G_OBJECT(remmina_pref_dialog->dialog), "tag", "remmina-pref-dialog");
 	remmina_widget_pool_register(GTK_WIDGET(remmina_pref_dialog->dialog));
 }
 
@@ -410,3 +413,12 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 		gtk_notebook_set_current_page(remmina_pref_dialog->notebook_preferences, default_tab);
 	return remmina_pref_dialog->dialog;
 }
+
+GtkDialog* remmina_pref_dialog_get_dialog()
+{
+	if (!remmina_pref_dialog)
+		return NULL;
+	return remmina_pref_dialog->dialog;
+}
+
+
