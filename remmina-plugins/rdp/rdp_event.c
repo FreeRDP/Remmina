@@ -638,17 +638,47 @@ void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 	close(rfi->event_pipe[1]);
 }
 
+static void remmina_rdp_event_create_cairo_surface(rfContext* rfi)
+{
+	int stride;
+	if (rfi->surface) {
+		cairo_surface_destroy(rfi->surface);
+		rfi->surface = NULL;
+	}
+	stride = cairo_format_stride_for_width(rfi->cairo_format, rfi->width);
+	rfi->surface = cairo_image_surface_create_for_data((unsigned char*) rfi->primary_buffer, rfi->cairo_format, rfi->width, rfi->height, stride);
+}
+
 void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_rdp_event_update_scale");
 	gint width, height;
 	RemminaFile* remminafile;
+	rdpGdi* gdi;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	width = remmina_plugin_service->protocol_plugin_get_width(gp);
 	height = remmina_plugin_service->protocol_plugin_get_height(gp);
+
+	/* See if we also must rellocate rfi->surface with different width and height,
+	 * this usually happens after a DesktopResize RDP event*/
+	if ( rfi->surface && (width != cairo_image_surface_get_width(rfi->surface) ||
+		height != cairo_image_surface_get_height(rfi->surface) )) {
+		/* Destroys and recreate rfi->surface with new width and height,
+		 * calls gdi_resize and save new gdi->primary buffer pointer */
+		if (rfi->surface) {
+			cairo_surface_destroy(rfi->surface);
+			rfi->surface = NULL;
+		}
+		rfi->width = width;
+		rfi->height = height;
+		gdi = ((rdpContext *)rfi)->gdi;
+		gdi_resize(gdi, width, height);
+		rfi->primary_buffer = gdi->primary_buffer;
+		remmina_rdp_event_create_cairo_surface(rfi);
+	}
 
 	remmina_rdp_event_update_scale_factor(gp);
 
@@ -670,12 +700,10 @@ static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPlugin
 {
 	TRACE_CALL("remmina_rdp_event_connected");
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	int stride;
 
 	gtk_widget_realize(rfi->drawing_area);
 
-	stride = cairo_format_stride_for_width(rfi->cairo_format, rfi->width);
-	rfi->surface = cairo_image_surface_create_for_data((unsigned char*) rfi->primary_buffer, rfi->cairo_format, rfi->width, rfi->height, stride);
+	remmina_rdp_event_create_cairo_surface(rfi);
 	gtk_widget_queue_draw_area(rfi->drawing_area, 0, 0, rfi->width, rfi->height);
 
 	if (rfi->clipboard.clipboard_handler)
