@@ -228,7 +228,6 @@ RemminaPlugin* remmina_plugin_manager_get_plugin(RemminaPluginType type, const g
 			return plugin;
 		}
 	}
-	g_print("Plugin not found (type=%s, name=%s)\n", remmina_plugin_type_name[type], name);
 	return NULL;
 }
 

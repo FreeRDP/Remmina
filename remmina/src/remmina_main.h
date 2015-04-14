@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -117,6 +117,8 @@ G_BEGIN_DECLS
 
 /* Create the main Remmina window */
 GtkWidget* remmina_main_new(void);
+/* Get the current main window or NULL if not initialized */
+GtkWindow* remmina_main_get_window(void);
 
 G_END_DECLS
 
