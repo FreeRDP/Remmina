@@ -2154,6 +2154,7 @@ static void remmina_connection_window_initialize_notebook(GtkNotebook* to, GtkNo
 	GtkWidget* widget;
 	RemminaConnectionObject* tc;
 
+	/* Init connection */
 	if (cnnobj)
 	{
 		/* Initial connection for a newly created window */
@@ -3035,11 +3036,23 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 	TRACE_CALL("remmina_connection_window_open_from_file_full");
 	RemminaConnectionObject* cnnobj;
 
+	GAppInfo *appinfo = NULL;
+	gboolean ret = FALSE;
+	char const *cmd = NULL;
+
 	remmina_file_update_screen_resolution(remminafile);
 
 	cnnobj = g_new0(RemminaConnectionObject, 1);
 	cnnobj->remmina_file = remminafile;
 
+	/* Exec precommand before everything else */
+	cmd = remmina_file_get_string(cnnobj->remmina_file, "precommand");
+	if (cmd)
+    {
+		appinfo = g_app_info_create_from_commandline(cmd, NULL, G_APP_INFO_CREATE_NEEDS_TERMINAL, NULL);
+		ret = g_app_info_launch(appinfo, NULL, NULL, NULL);
+		/* TODO error handling */
+	}
 	/* Create the RemminaProtocolWidget */
 	cnnobj->proto = remmina_protocol_widget_new();
 
