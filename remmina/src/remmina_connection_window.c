@@ -3055,8 +3055,9 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 		if (error)
 			g_warning ("%s", error->message);
 		g_app_info_launch(appinfo, NULL, G_APP_LAUNCH_CONTEXT (context), NULL);
+		g_object_unref (context);
 	}
-	g_object_unref (context);
+
 	/* Create the RemminaProtocolWidget */
 	cnnobj->proto = remmina_protocol_widget_new();
 
