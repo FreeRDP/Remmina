@@ -3037,7 +3037,8 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 	RemminaConnectionObject* cnnobj;
 
 	GAppInfo *appinfo = NULL;
-	gboolean ret = FALSE;
+	GdkAppLaunchContext *context;
+	GError *error = NULL;
 	char const *cmd = NULL;
 
 	remmina_file_update_screen_resolution(remminafile);
@@ -3048,11 +3049,14 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 	/* Exec precommand before everything else */
 	cmd = remmina_file_get_string(cnnobj->remmina_file, "precommand");
 	if (cmd)
-    {
-		appinfo = g_app_info_create_from_commandline(cmd, NULL, G_APP_INFO_CREATE_NEEDS_TERMINAL, NULL);
-		ret = g_app_info_launch(appinfo, NULL, NULL, NULL);
-		/* TODO error handling */
+	{
+		context = gdk_display_get_app_launch_context (gdk_display_get_default ());
+		appinfo = g_app_info_create_from_commandline(cmd, NULL, 0, &error);
+		if (error)
+			g_warning ("%s", error->message);
+		g_app_info_launch(appinfo, NULL, G_APP_LAUNCH_CONTEXT (context), NULL);
 	}
+	g_object_unref (context);
 	/* Create the RemminaProtocolWidget */
 	cnnobj->proto = remmina_protocol_widget_new();
 
