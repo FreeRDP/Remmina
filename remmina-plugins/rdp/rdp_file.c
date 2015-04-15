@@ -253,17 +253,19 @@ gboolean remmina_rdp_file_export_channel(RemminaFile* remminafile, FILE* fp)
 	const gchar* cs;
 
 	fprintf(fp, "screen mode id:i:2\r\n");
-	s = g_strdup(remmina_plugin_service->file_get_string(remminafile, "resolution"));
-
-	p = strchr(s, 'x');
-
-	if (p)
+	cs = remmina_plugin_service->file_get_string(remminafile, "resolution");
+	if (cs)
 	{
-		*p++ = '\0';
-		fprintf(fp, "desktopwidth:i:%s\r\n", s);
-		fprintf(fp, "desktopheight:i:%s\r\n", p);
+		s = g_strdup(cs);
+		p = strchr(s, 'x');
+		if (p)
+		{
+			*p++ = '\0';
+			fprintf(fp, "desktopwidth:i:%s\r\n", s);
+			fprintf(fp, "desktopheight:i:%s\r\n", p);
+		}
+		g_free(s);
 	}
-	g_free(s);
 
 	fprintf(fp, "session bpp:i:%i\r\n", remmina_plugin_service->file_get_int(remminafile, "colordepth", 8));
 	//fprintf(fp, "winposstr:s:0,1,123,34,931,661\r\n");
@@ -278,7 +280,8 @@ gboolean remmina_rdp_file_export_channel(RemminaFile* remminafile, FILE* fp)
 	fprintf(fp, "disable themes:i:0\r\n");
 	fprintf(fp, "disable cursor setting:i:0\r\n");
 	fprintf(fp, "bitmapcachepersistenable:i:1\r\n");
-	fprintf(fp, "full address:s:%s\r\n", remmina_plugin_service->file_get_string(remminafile, "server"));
+	cs = remmina_plugin_service->file_get_string(remminafile, "server");
+	fprintf(fp, "full address:s:%s\r\n", cs ? cs : "" );
 	if (g_strcmp0(remmina_plugin_service->file_get_string(remminafile, "sound"), "local") == 0)
 		fprintf(fp, "audiomode:i:0\r\n");
 	else if (g_strcmp0(remmina_plugin_service->file_get_string(remminafile, "sound"), "remote") == 0)

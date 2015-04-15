@@ -139,6 +139,8 @@ struct _RemminaConnectionHolder
 static void remmina_connection_holder_create_scrolled(RemminaConnectionHolder* cnnhld, RemminaConnectionObject* cnnobj);
 static void remmina_connection_holder_create_fullscreen(RemminaConnectionHolder* cnnhld, RemminaConnectionObject* cnnobj,
 		gint view_mode);
+static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp, guint keyval, gboolean release,
+		RemminaConnectionHolder* cnnhld);
 
 #if GTK_VERSION == 3
 static void remmina_connection_window_class_init(RemminaConnectionWindowClass* klass)
@@ -2009,28 +2011,24 @@ static void remmina_connection_window_initialize_notebook(GtkNotebook* to, GtkNo
 	else
 	{
 		/* View mode changed. Migrate all existing connections to the new notebook */
-		c = gtk_notebook_get_current_page(from);
-		n = gtk_notebook_get_n_pages(from);
-		for (i = 0; i < n; i++)
-		{
-			widget = gtk_notebook_get_nth_page(from, i);
-			cnnobj = (RemminaConnectionObject*) g_object_get_data(G_OBJECT(widget), "cnnobj");
+		if (from != NULL && GTK_IS_NOTEBOOK(from)) {
+			c = gtk_notebook_get_current_page(from);
+			n = gtk_notebook_get_n_pages(from);
+			for (i = 0; i < n; i++)
+			{
+				widget = gtk_notebook_get_nth_page(from, i);
+				cnnobj = (RemminaConnectionObject*) g_object_get_data(G_OBJECT(widget), "cnnobj");
 
-			tab = remmina_connection_object_create_tab(cnnobj);
-			remmina_connection_object_append_page(cnnobj, to, tab, view_mode);
+				tab = remmina_connection_object_create_tab(cnnobj);
+				remmina_connection_object_append_page(cnnobj, to, tab, view_mode);
 
-#if GTK_VERSION == 3		
-			/* Reparent cnnobj->viewport */
-			g_object_ref(cnnobj->viewport);
-			gtk_container_remove(GTK_CONTAINER(gtk_widget_get_parent(cnnobj->viewport)), cnnobj->viewport);
-			gtk_container_add(GTK_CONTAINER(cnnobj->scrolled_container), cnnobj->viewport );
-			g_object_unref(cnnobj->viewport);
-#elif GTK_VERSION == 2
-			gtk_widget_reparent(cnnobj->viewport, cnnobj->scrolled_container);
-#endif
-
+				/* Reparent cnnobj->viewport */
+				G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+				gtk_widget_reparent(cnnobj->viewport, cnnobj->scrolled_container);
+				G_GNUC_END_IGNORE_DEPRECATIONS
+			}
+			gtk_notebook_set_current_page(to, c);
 		}
-		gtk_notebook_set_current_page(to, c);
 	}
 }
 
@@ -2123,6 +2121,7 @@ remmina_connection_holder_on_notebook_create_window(GtkNotebook* notebook, GtkWi
 	srccnnwin = REMMINA_CONNECTION_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(notebook)));
 	dstcnnwin = REMMINA_CONNECTION_WINDOW(remmina_widget_pool_find_by_window(REMMINA_TYPE_CONNECTION_WINDOW, window));
 
+
 	if (srccnnwin == dstcnnwin)
 		return NULL;
 
@@ -2139,12 +2138,23 @@ remmina_connection_holder_on_notebook_create_window(GtkNotebook* notebook, GtkWi
 	else
 	{
 		cnnobj->cnnhld = g_new0(RemminaConnectionHolder, 1);
+		if (!cnnobj->cnnhld->cnnwin)
+		{
+			/* Create a new scrolled window to accomodate the dropped connection */
+			remmina_connection_holder_create_scrolled(cnnobj->cnnhld, NULL);
+
+			/* We must resize the new window here: remmina_connection_holder_check_resize() failed
+			 * to set initial size because it has no notebook page on the window. So, we do resize
+			 * manually here */
+			gtk_window_resize( GTK_WINDOW(cnnobj->cnnhld->cnnwin),
+				remmina_file_get_int (cnnobj->remmina_file, "window_width", 640),
+				remmina_file_get_int (cnnobj->remmina_file, "window_height", 480));
+		}
 	}
 
-	g_signal_emit_by_name(cnnobj->proto, "connect", cnnobj);
-	gtk_notebook_remove_page(GTK_NOTEBOOK(srccnnwin->priv->notebook), srcpagenum);
-
-	return NULL;
+	remmina_protocol_widget_set_hostkey_func(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
+			(RemminaHostkeyFunc) remmina_connection_window_hostkey_func, cnnobj->cnnhld);
+	return GTK_NOTEBOOK(cnnobj->cnnhld->cnnwin->priv->notebook);
 }
 
 static GtkWidget*
