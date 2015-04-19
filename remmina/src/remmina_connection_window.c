@@ -44,6 +44,7 @@
 #include "remmina_init_dialog.h"
 #include "remmina_protocol_widget.h"
 #include "remmina_pref.h"
+#include "remmina_preexec.h"
 #include "remmina_scrolled_viewport.h"
 #include "remmina_widget_pool.h"
 #include "remmina_connection_window.h"
@@ -3036,27 +3037,13 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 	TRACE_CALL("remmina_connection_window_open_from_file_full");
 	RemminaConnectionObject* cnnobj;
 
-	GAppInfo *appinfo = NULL;
-	GdkAppLaunchContext *context;
-	GError *error = NULL;
-	char const *cmd = NULL;
-
 	remmina_file_update_screen_resolution(remminafile);
 
 	cnnobj = g_new0(RemminaConnectionObject, 1);
 	cnnobj->remmina_file = remminafile;
 
 	/* Exec precommand before everything else */
-	cmd = remmina_file_get_string(cnnobj->remmina_file, "precommand");
-	if (cmd)
-	{
-		context = gdk_display_get_app_launch_context (gdk_display_get_default ());
-		appinfo = g_app_info_create_from_commandline(cmd, NULL, 0, &error);
-		if (error)
-			g_warning ("%s", error->message);
-		g_app_info_launch(appinfo, NULL, G_APP_LAUNCH_CONTEXT (context), NULL);
-		g_object_unref (context);
-	}
+	remmina_preexec_new(cnnobj->remmina_file);
 
 	/* Create the RemminaProtocolWidget */
 	cnnobj->proto = remmina_protocol_widget_new();
