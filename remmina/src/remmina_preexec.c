@@ -77,7 +77,6 @@ GtkDialog* remmina_preexec_new(RemminaFile* remminafile)
 	cmd = remmina_file_get_string(remminafile, "precommand");
 	ok = g_shell_parse_argv(cmd, &argp, &argv, NULL);
 
-	g_assert(ok==TRUE);
 	if (cmd)
 	{
 		builder = remmina_public_gtk_builder_new_from_file("remmina_spinner.glade");
@@ -100,8 +99,8 @@ GtkDialog* remmina_preexec_new(RemminaFile* remminafile)
 						&error);                      // error
 		if (error)
 			g_warning ("%s", error->message);
+		g_child_watch_add (child_pid, child_watch, "");
 		gtk_spinner_start (GTK_SPINNER (spinner));
-		g_assert(watch==FALSE);
 		gtk_spinner_stop(GTK_SPINNER (spinner));
 		gtk_dialog_run(dialog);
 	}
