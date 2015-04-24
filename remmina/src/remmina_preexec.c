@@ -58,14 +58,7 @@ static void wait_for_child(GPid pid, gint script_retval, gpointer data)
 GtkDialog* remmina_preexec_new(RemminaFile* remminafile)
 {
 	TRACE_CALL("remmina_preexec_new");
-	//Child_Info *info;
 	GtkBuilder *builder;
-	/*
-	GtkDialog *dialog;
-	GtkLabel *label_pleasewait;
-	GtkButton *button_cancel;
-	GtkWidget *spinner;
-	*/
 	PCon_Spinner *pcspinner;
 	GError *error = NULL;
 	char **argv;
@@ -90,14 +83,14 @@ GtkDialog* remmina_preexec_new(RemminaFile* remminafile)
 		gtk_builder_connect_signals(builder, NULL);
 
 		/* Exec a predefined command */
-		retval = g_spawn_async(	NULL,                         // cwd
-								argv,                         // argv
-								NULL,                         // envp
-								G_SPAWN_DO_NOT_REAP_CHILD,    // flags
-								NULL,                         // child_setup
-								NULL,                         // child_setup user data
-								&child_pid,                   // exit status
-								&error);                      // error
+		retval = g_spawn_async(	NULL,                      // cwd
+								argv,                      // argv
+								NULL,                      // envp
+								G_SPAWN_DO_NOT_REAP_CHILD, // flags
+								NULL,                      // child_setup
+								NULL,                      // child_setup user data
+								&child_pid,                // exit status
+								&error);                   // error
 		g_strfreev(argv);
 		if (error)
 			g_warning ("%s", error->message);
