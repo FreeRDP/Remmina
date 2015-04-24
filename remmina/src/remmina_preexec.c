@@ -44,64 +44,67 @@
 
 #define GET_OBJECT(object_name) gtk_builder_get_object(builder, object_name)
 
-void child_watch (GPid pid, gint status, gpointer user_data)
+static void wait_for_child(GPid pid, gint script_retval, gpointer data)
 {
-	gboolean ok;
+	PCon_Spinner *pcspinner = (PCon_Spinner *) data;
 
-	/* Successful program termination is determined by the EXIT_SUCCESS code.
-	 * Otherwise it is considered to have terminated abnormally.
-	 */
-	if (WIFEXITED (status) && WEXITSTATUS (status) == EXIT_SUCCESS)
-		ok = TRUE;
-	else
-		ok = FALSE;
+	gtk_spinner_stop (GTK_SPINNER (pcspinner->spinner));
+	gtk_widget_destroy (GTK_WIDGET (pcspinner->dialog));
+	g_spawn_close_pid(pid);
 
-	g_debug ("client_os_command: child exited %s", ok ? "OK" : "FAIL");
+	g_free(pcspinner);
 }
 
 GtkDialog* remmina_preexec_new(RemminaFile* remminafile)
 {
 	TRACE_CALL("remmina_preexec_new");
+	//Child_Info *info;
 	GtkBuilder *builder;
+	/*
 	GtkDialog *dialog;
 	GtkLabel *label_pleasewait;
-	GtkWidget *spinner;
 	GtkButton *button_cancel;
+	GtkWidget *spinner;
+	*/
+	PCon_Spinner *pcspinner;
 	GError *error = NULL;
 	char **argv;
 	gint argp;
 	char const *cmd = NULL;
-	gboolean ok, watch;
+	gboolean retval;
 	GPid child_pid;
 
 	cmd = remmina_file_get_string(remminafile, "precommand");
-	ok = g_shell_parse_argv(cmd, &argp, &argv, NULL);
+	g_shell_parse_argv(cmd, &argp, &argv, NULL);
 
 	if (cmd)
 	{
+		pcspinner = g_new(PCon_Spinner, 1);
 		builder = remmina_public_gtk_builder_new_from_file("remmina_spinner.glade");
-		dialog = GTK_DIALOG(gtk_builder_get_object(builder, "DialogSpinner"));
-		label_pleasewait = GTK_LABEL(GET_OBJECT("label_pleasewait"));
-		spinner = GTK_WIDGET(GET_OBJECT("spinner"));
-		button_cancel = GTK_BUTTON(GET_OBJECT("button_cancel"));
+		pcspinner->dialog = GTK_DIALOG(gtk_builder_get_object(builder, "DialogSpinner"));
+		pcspinner->label_pleasewait = GTK_LABEL(GET_OBJECT("label_pleasewait"));
+		pcspinner->spinner = GTK_WIDGET(GET_OBJECT("spinner"));
+		pcspinner->button_cancel = GTK_BUTTON(GET_OBJECT("button_cancel"));
 		/*  gtk_window_set_transient_for(GTK_WINDOW(dialog), parent_window); */
 		/* Connect signals */
 		gtk_builder_connect_signals(builder, NULL);
 
 		/* Exec a predefined command */
-		g_spawn_async(	NULL,                         // cwd
-						argv,                         // argv
-						NULL,                         // envp
-						G_SPAWN_DO_NOT_REAP_CHILD,    // flags
-						NULL,                         // child_setup
-						NULL,                         // child_setup user data
-						&child_pid,                   // exit status
-						&error);                      // error
+		retval = g_spawn_async(	NULL,                         // cwd
+								argv,                         // argv
+								NULL,                         // envp
+								G_SPAWN_DO_NOT_REAP_CHILD,    // flags
+								NULL,                         // child_setup
+								NULL,                         // child_setup user data
+								&child_pid,                   // exit status
+								&error);                      // error
+		g_strfreev(argv);
 		if (error)
 			g_warning ("%s", error->message);
-		g_child_watch_add (child_pid, child_watch, "");
-		gtk_spinner_start (GTK_SPINNER (spinner));
-		gtk_spinner_stop(GTK_SPINNER (spinner));
-		gtk_dialog_run(dialog);
+		gtk_spinner_start (GTK_SPINNER (pcspinner->spinner));
+		g_child_watch_add (child_pid, wait_for_child, (gpointer) pcspinner);
+		gtk_dialog_run(pcspinner->dialog);
+
 	}
+	return (pcspinner->dialog);
 }

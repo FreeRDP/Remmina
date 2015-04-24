@@ -1380,8 +1380,8 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL, remmina_file_editor_iterate_protocol, gfe);
 	g_signal_connect(G_OBJECT(widget), "changed", G_CALLBACK(remmina_file_editor_protocol_combo_on_changed), gfe);
 
-	/* Pre command */
-	widget = gtk_label_new(_("Command"));
+	/* Prior Connection Command */
+	widget = gtk_label_new(_("Prior Connection Command"));
 	gtk_widget_show(widget);
 	gtk_widget_set_valign (widget, GTK_ALIGN_START);
 	gtk_widget_set_halign (widget, GTK_ALIGN_START);
