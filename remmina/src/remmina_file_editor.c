@@ -1380,8 +1380,8 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL, remmina_file_editor_iterate_protocol, gfe);
 	g_signal_connect(G_OBJECT(widget), "changed", G_CALLBACK(remmina_file_editor_protocol_combo_on_changed), gfe);
 
-	/* Pre command */
-	widget = gtk_label_new(_("Command"));
+	/* Prior Connection Command */
+	widget = gtk_label_new(_("Pre Command"));
 	gtk_widget_show(widget);
 	gtk_widget_set_valign (widget, GTK_ALIGN_START);
 	gtk_widget_set_halign (widget, GTK_ALIGN_START);
@@ -1391,10 +1391,16 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	widget = gtk_entry_new();
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 12, 3, 1);
-	gtk_entry_set_max_length(GTK_ENTRY(widget), 100);
+	gtk_entry_set_max_length(GTK_ENTRY(widget), 200);
 	priv->precommand_entry = widget;
 	cs = remmina_file_get_string(remminafile, "precommand");
 	gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
+	if (!cs)
+	{
+		s = g_strdup_printf(_("A command or a script name/path."));
+		gtk_widget_set_tooltip_text (widget, s);
+		g_free(s);
+	}
 
 	/* Create the Preference frame */
 	widget = gtk_event_box_new();
