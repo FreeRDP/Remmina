@@ -35,6 +35,7 @@
 
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <glib.h>
 #include <stdlib.h>
 #include <sys/wait.h>
 #include "remmina_file.h"
@@ -62,14 +63,11 @@ GtkDialog* remmina_preexec_new(RemminaFile* remminafile)
 	PCon_Spinner *pcspinner;
 	GError *error = NULL;
 	char **argv;
-	gint argp;
 	char const *cmd = NULL;
-	gboolean retval;
+	//gboolean retval;
 	GPid child_pid;
 
 	cmd = remmina_file_get_string(remminafile, "precommand");
-	g_shell_parse_argv(cmd, &argp, &argv, NULL);
-
 	if (cmd)
 	{
 		pcspinner = g_new(PCon_Spinner, 1);
@@ -83,21 +81,41 @@ GtkDialog* remmina_preexec_new(RemminaFile* remminafile)
 		gtk_builder_connect_signals(builder, NULL);
 
 		/* Exec a predefined command */
-		retval = g_spawn_async(	NULL,                      // cwd
-								argv,                      // argv
-								NULL,                      // envp
-								G_SPAWN_DO_NOT_REAP_CHILD, // flags
-								NULL,                      // child_setup
-								NULL,                      // child_setup user data
-								&child_pid,                // exit status
-								&error);                   // error
-		g_strfreev(argv);
-		if (error)
-			g_warning ("%s", error->message);
-		gtk_spinner_start (GTK_SPINNER (pcspinner->spinner));
-		g_child_watch_add (child_pid, wait_for_child, (gpointer) pcspinner);
-		gtk_dialog_run(pcspinner->dialog);
+#ifdef g_info
+		/* g_info available since glib 2.4 */
+		g_info("Spawning \"%s\"...", cmd);
+#endif
+		g_shell_parse_argv(cmd, NULL, &argv, &error);
 
+		if (error)
+		{
+			g_warning ("%s\n", error->message);
+			g_error_free(error);
+		}
+
+		/* Consider using G_SPAWN_SEARCH_PATH_FROM_ENVP (from glib 2.38)*/
+		g_spawn_async(	NULL,                      // cwd
+						argv,                      // argv
+						NULL,                      // envp
+						G_SPAWN_SEARCH_PATH |
+						G_SPAWN_DO_NOT_REAP_CHILD, // flags
+						NULL,                      // child_setup
+						NULL,                      // child_setup user data
+						&child_pid,                // exit status
+						&error);                   // error
+		if (!error)
+		{
+			gtk_spinner_start (GTK_SPINNER (pcspinner->spinner));
+			g_child_watch_add (child_pid, wait_for_child, (gpointer) pcspinner);
+			gtk_dialog_run(pcspinner->dialog);
+		}
+        else
+		{
+			g_warning ("%s\n", error->message);
+			g_error_free(error);
+		}
+		g_strfreev(argv);
+		return (pcspinner->dialog);
 	}
-	return (pcspinner->dialog);
+	return FALSE;
 }
