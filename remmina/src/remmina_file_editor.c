@@ -396,7 +396,11 @@ static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const Remm
 	{
 		gfe->priv->avahi_service_type = (const gchar*) setting->opt1;
 
+#if GTK_VERSION == 3
 		hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+#elif GTK_VERSION == 2
+		hbox = gtk_hbox_new (FALSE, 0);
+#endif
 		gtk_widget_show(hbox);
 		gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
 
