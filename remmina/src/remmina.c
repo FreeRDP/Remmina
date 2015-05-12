@@ -68,6 +68,7 @@ static gboolean remmina_option_new;
 static gchar *remmina_option_pref;
 static gchar *remmina_option_plugin;
 static gboolean remmina_option_quit;
+static gboolean remmina_option_version;
 static gchar *remmina_option_server;
 static gchar *remmina_option_protocol;
 static gchar *remmina_option_icon;
@@ -75,17 +76,18 @@ static gchar *remmina_option_icon;
 
 static GOptionEntry remmina_options[] =
 {
-	{ "about", 'a', 0, G_OPTION_ARG_NONE, &remmina_option_about, "Show about dialog", NULL },
-	{ "connect", 'c', 0, G_OPTION_ARG_FILENAME, &remmina_option_connect, "Connect to a .remmina file", "FILE" },
-	{ "edit", 'e', 0, G_OPTION_ARG_FILENAME, &remmina_option_edit, "Edit a .remmina file", "FILE" },
+	{ "about", 'a', 0, G_OPTION_ARG_NONE, &remmina_option_about, N_("Show about dialog"), NULL },
+	{ "connect", 'c', 0, G_OPTION_ARG_FILENAME, &remmina_option_connect, N_("Connect to a .remmina file"), "FILE" },
+	{ "edit", 'e', 0, G_OPTION_ARG_FILENAME, &remmina_option_edit, N_("Edit a .remmina file"), "FILE" },
 	{ "help", '?', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, &remmina_option_help, NULL, NULL },
-	{ "new", 'n', 0, G_OPTION_ARG_NONE, &remmina_option_new, "Create a new connection profile", NULL },
-	{ "pref", 'p', 0, G_OPTION_ARG_STRING, &remmina_option_pref, "Show preferences dialog page", "PAGENR" },
-	{ "plugin", 'x', 0, G_OPTION_ARG_STRING, &remmina_option_plugin, "Execute the plugin", "PLUGIN" },
-	{ "quit", 'q', 0, G_OPTION_ARG_NONE, &remmina_option_quit, "Quit the application", NULL },
-	{ "server", 's', 0, G_OPTION_ARG_STRING, &remmina_option_server, "Use default server name", "SERVER" },
-	{ "protocol", 't', 0, G_OPTION_ARG_STRING, &remmina_option_protocol, "Use default protocol", "PROTOCOL" },
-	{ "icon", 'i', 0, G_OPTION_ARG_NONE, &remmina_option_icon, "Start as tray icon", NULL },
+	{ "new", 'n', 0, G_OPTION_ARG_NONE, &remmina_option_new, N_("Create a new connection profile"), NULL },
+	{ "pref", 'p', 0, G_OPTION_ARG_STRING, &remmina_option_pref, N_("Show preferences dialog page"), "PAGENR" },
+	{ "plugin", 'x', 0, G_OPTION_ARG_STRING, &remmina_option_plugin, N_("Execute the plugin"), "PLUGIN" },
+	{ "quit", 'q', 0, G_OPTION_ARG_NONE, &remmina_option_quit, N_("Quit the application"), NULL },
+	{ "server", 's', 0, G_OPTION_ARG_STRING, &remmina_option_server, N_("Use default server name"), "SERVER" },
+	{ "protocol", 't', 0, G_OPTION_ARG_STRING, &remmina_option_protocol, N_("Use default protocol"), "PROTOCOL" },
+	{ "icon", 'i', 0, G_OPTION_ARG_NONE, &remmina_option_icon, N_("Start as tray icon"), NULL },
+	{ "version", 'v', 0, G_OPTION_ARG_NONE, &remmina_option_version, N_("Show the application's version"), NULL },
 	{ NULL }
 };
 
@@ -111,18 +113,28 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 	remmina_option_server = NULL;
 	remmina_option_protocol = NULL;
 	remmina_option_icon = FALSE;
+	remmina_option_version = FALSE;
 
 	argv = g_application_command_line_get_arguments(cmdline, &argc);
 
 	context = g_option_context_new("- The GTK+ Remote Desktop Client");
 	g_option_context_add_main_entries(context, remmina_options, GETTEXT_PACKAGE);
-	g_option_context_set_help_enabled(context, FALSE);
+	g_option_context_add_group(context, gtk_get_option_group(FALSE));
+	g_option_context_set_help_enabled(context, TRUE);
+
 	parsed = g_option_context_parse(context, &argc, &argv, &error);
 	g_strfreev(argv);
 
 	if (!parsed)
 	{
 		g_print("option parsing failed: %s\n", error->message);
+		status = 1;
+	}
+
+	if (remmina_option_version)
+	{
+		g_print ("%s - Version %s\n", g_get_application_name (), VERSION);
+		executed = TRUE;
 		status = 1;
 	}
 
