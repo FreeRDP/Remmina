@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -832,7 +832,7 @@ remmina_plugin_entry(RemminaPluginService *service)
 			s = strchr(remmina_kbtype, ',');
 			if (s)
 				*s = '\0';
-			g_print("NX: detected keyboard type %s\n", remmina_kbtype);
+			/* g_print("NX: detected keyboard type %s\n", remmina_kbtype); */
 		}
 		XCloseDisplay(dpy);
 	}
