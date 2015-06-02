@@ -822,24 +822,33 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "security");
 
+
+
 	if (g_strcmp0(cs, "rdp") == 0)
 	{
 		rfi->settings->RdpSecurity = True;
 		rfi->settings->TlsSecurity = False;
 		rfi->settings->NlaSecurity = False;
+		rfi->settings->ExtSecurity = False;
+		rfi->settings->UseRdpSecurityLayer = True;
 	}
 	else if (g_strcmp0(cs, "tls") == 0)
 	{
 		rfi->settings->RdpSecurity = False;
 		rfi->settings->TlsSecurity = True;
 		rfi->settings->NlaSecurity = False;
+		rfi->settings->ExtSecurity = False;
 	}
 	else if (g_strcmp0(cs, "nla") == 0)
 	{
 		rfi->settings->RdpSecurity = False;
 		rfi->settings->TlsSecurity = False;
 		rfi->settings->NlaSecurity = True;
+		rfi->settings->ExtSecurity = False;
 	}
+
+	/* This is "-nego" switch of xfreerdp */
+	rfi->settings->NegotiateSecurityLayer = True;
 
 	rfi->settings->CompressionEnabled = True;
 	rfi->settings->FastPathInput = True;
@@ -999,8 +1008,6 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	TRACE_CALL("remmina_rdp_init");
 	freerdp* instance;
 	rfContext* rfi;
-
-
 
 	instance = freerdp_new();
 	instance->PreConnect = remmina_rdp_pre_connect;
