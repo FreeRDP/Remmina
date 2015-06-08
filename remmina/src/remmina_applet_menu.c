@@ -281,8 +281,10 @@ void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 			g_snprintf(filename, sizeof(filename), "%s/%s", dirname, name);
 
 			menuitem = remmina_applet_menu_item_new(REMMINA_APPLET_MENU_ITEM_FILE, filename);
-			remmina_applet_menu_add_item(menu, REMMINA_APPLET_MENU_ITEM(menuitem));
-			gtk_widget_show(menuitem);
+			if (menuitem != NULL) {
+				remmina_applet_menu_add_item(menu, REMMINA_APPLET_MENU_ITEM(menuitem));
+				gtk_widget_show(menuitem);
+			}
 		}
 		g_dir_close(dir);
 	}
