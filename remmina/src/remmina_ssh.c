@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -392,6 +392,8 @@ remmina_ssh_init_session (RemminaSSH *ssh)
 	ssh_callbacks_init (ssh->callback);
 	ssh_set_callbacks(ssh->session, ssh->callback);
 
+	/* As the latest parse the ~/.ssh/config file */
+	ssh_options_parse_config(ssh->session, NULL);
 	if (ssh_connect (ssh->session))
 	{
 		remmina_ssh_set_error (ssh, _("Failed to startup SSH session: %s"));
