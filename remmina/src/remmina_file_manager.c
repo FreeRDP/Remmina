@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2010 Vic Lee 
+ * Copyright (C) 2009-2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -35,6 +35,7 @@
 
 #include <gtk/gtk.h>
 #include <string.h>
+#include "config.h"
 #include "remmina_public.h"
 #include "remmina_string_array.h"
 #include "remmina_plugin_manager.h"
@@ -46,7 +47,7 @@ void remmina_file_manager_init(void)
 	TRACE_CALL("remmina_file_manager_init");
 	gchar dirname[MAX_PATH_LEN];
 
-	g_snprintf(dirname, MAX_PATH_LEN, "%s/.remmina", g_get_home_dir());
+	g_snprintf(dirname, MAX_PATH_LEN, "%s/%s", g_get_user_data_dir(), remmina);
 	g_mkdir_with_parents(dirname, 0700);
 }
 
@@ -60,7 +61,7 @@ gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 	RemminaFile* remminafile;
 	gint items_count = 0;
 
-	g_snprintf(dirname, MAX_PATH_LEN, "%s/.remmina", g_get_home_dir());
+	g_snprintf(dirname, MAX_PATH_LEN, "%s/%s", g_get_user_data_dir(), remmina);
 	dir = g_dir_open(dirname, 0, NULL);
 
 	if (dir)
@@ -97,7 +98,7 @@ gchar* remmina_file_manager_get_groups(void)
 
 	array = remmina_string_array_new();
 
-	g_snprintf(dirname, MAX_PATH_LEN, "%s/.remmina", g_get_home_dir());
+	g_snprintf(dirname, MAX_PATH_LEN, "%s/%s", g_get_user_data_dir(), remmina);
 	dir = g_dir_open(dirname, 0, NULL);
 	if (dir == NULL)
 		return 0;
@@ -198,7 +199,7 @@ GNode* remmina_file_manager_get_group_tree(void)
 
 	root = g_node_new(NULL);
 
-	g_snprintf(dirname, MAX_PATH_LEN, "%s/.remmina", g_get_home_dir());
+	g_snprintf(dirname, MAX_PATH_LEN, "%s/%s", g_get_user_data_dir(), remmina);
 	dir = g_dir_open(dirname, 0, NULL);
 	if (dir == NULL)
 		return root;
