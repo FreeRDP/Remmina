@@ -138,7 +138,7 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 
 	g_free(remminafile->filename);
 	g_get_current_time(&gtime);
-	remminafile->filename = g_strdup_printf("%s/.remmina/%li%03li.remmina", g_get_home_dir(), gtime.tv_sec,
+	remminafile->filename = g_strdup_printf("%s/%s/%li%03li.remmina", g_get_user_data_dir(), remmina, gtime.tv_sec,
 			gtime.tv_usec / 1000);
 }
 
