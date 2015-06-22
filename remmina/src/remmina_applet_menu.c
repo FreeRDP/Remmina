@@ -36,6 +36,7 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <string.h>
+#include "config.h"
 #include "remmina_applet_menu_item.h"
 #include "remmina_applet_menu.h"
 #include "remmina/remmina_trace_calls.h"
@@ -269,7 +270,7 @@ void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 	GDir *dir;
 	const gchar *name;
 
-	g_snprintf(dirname, sizeof(dirname), "%s/.remmina", g_get_home_dir());
+	g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_data_dir(), remmina);
 	dir = g_dir_open(dirname, 0, NULL);
 	if (dir != NULL)
 	{
