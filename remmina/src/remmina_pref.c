@@ -171,8 +171,13 @@ void remmina_pref_init(void)
 	TRACE_CALL("remmina_pref_init");
 	GKeyFile *gkeyfile;
 	gchar dirname[MAX_PATH_LEN];
+	GDir *old;
 
-	g_snprintf(dirname, MAX_PATH_LEN, "%s/%s", g_get_user_config_dir(), remmina);
+	g_snprintf(dirname, sizeof(dirname), "%s/.%s", g_get_home_dir(), remmina);
+	old = g_dir_open(dirname, 0, NULL);
+	if (old == NULL)
+		/*  If the XDG directories exist, use them. */
+		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_config_dir(), remmina);
 	g_mkdir_with_parents(dirname, 0700);
 	remmina_pref_file = g_strdup_printf("%s/remmina.pref", dirname);
 	remmina_keymap_file = g_strdup_printf("%s/remmina.keymap", dirname);
