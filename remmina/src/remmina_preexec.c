@@ -64,10 +64,9 @@ GtkDialog* remmina_preexec_new(RemminaFile* remminafile)
 	GError *error = NULL;
 	char **argv;
 	char const *cmd = NULL;
-	//gboolean retval;
 	GPid child_pid;
 
-	cmd = remmina_file_get_string(remminafile, "precommand");
+	cmd = g_shell_quote(remmina_file_get_string(remminafile, "precommand"));
 	if (cmd)
 	{
 		pcspinner = g_new(PCon_Spinner, 1);
@@ -76,7 +75,6 @@ GtkDialog* remmina_preexec_new(RemminaFile* remminafile)
 		pcspinner->label_pleasewait = GTK_LABEL(GET_OBJECT("label_pleasewait"));
 		pcspinner->spinner = GTK_WIDGET(GET_OBJECT("spinner"));
 		pcspinner->button_cancel = GTK_BUTTON(GET_OBJECT("button_cancel"));
-		/*  gtk_window_set_transient_for(GTK_WINDOW(dialog), parent_window); */
 		/* Connect signals */
 		gtk_builder_connect_signals(builder, NULL);
 
@@ -95,14 +93,14 @@ GtkDialog* remmina_preexec_new(RemminaFile* remminafile)
 
 		/* Consider using G_SPAWN_SEARCH_PATH_FROM_ENVP (from glib 2.38)*/
 		g_spawn_async(	NULL,                      // cwd
-						argv,                      // argv
-						NULL,                      // envp
-						G_SPAWN_SEARCH_PATH |
-						G_SPAWN_DO_NOT_REAP_CHILD, // flags
-						NULL,                      // child_setup
-						NULL,                      // child_setup user data
-						&child_pid,                // exit status
-						&error);                   // error
+				argv,                      // argv
+				NULL,                      // envp
+				G_SPAWN_SEARCH_PATH |
+				G_SPAWN_DO_NOT_REAP_CHILD, // flags
+				NULL,                      // child_setup
+				NULL,                      // child_setup user data
+				&child_pid,                // exit status
+				&error);                   // error
 		if (!error)
 		{
 			gtk_spinner_start (GTK_SPINNER (pcspinner->spinner));
