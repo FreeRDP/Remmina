@@ -64,11 +64,13 @@ GtkDialog* remmina_preexec_new(RemminaFile* remminafile)
 	GError *error = NULL;
 	char **argv;
 	char const *cmd = NULL;
+	char const *precmd = NULL;
 	GPid child_pid;
 
-	cmd = g_shell_quote(remmina_file_get_string(remminafile, "precommand"));
-	if (cmd)
+	precmd = remmina_file_get_string(remminafile, "precommand");
+	if (precmd)
 	{
+		cmd = g_shell_quote(remmina_file_get_string(remminafile, "precommand"));
 		pcspinner = g_new(PCon_Spinner, 1);
 		builder = remmina_public_gtk_builder_new_from_file("remmina_spinner.glade");
 		pcspinner->dialog = GTK_DIALOG(gtk_builder_get_object(builder, "DialogSpinner"));
