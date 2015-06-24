@@ -765,13 +765,11 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->ClientHostname = strdup( g_get_host_name() );
 	}
 
-	/* RDP Load Balance */
 	if (remmina_plugin_service->file_get_string(remminafile, "loadbalanceinfo"))
 	{
-		rfi->settings->LoadBalanceInfo = strdup(remmina_plugin_service->file_get_string(remminafile, "loadbalanceinfo"));
-		//rfi->settings->LoadBalanceInfoLength = "";
+		rfi->settings->LoadBalanceInfo = (BYTE*) strdup(remmina_plugin_service->file_get_string(remminafile, "loadbalanceinfo"));
+		rfi->settings->LoadBalanceInfoLength = (UINT32) strlen((char *) rfi->settings->LoadBalanceInfo);
 	}
-
 
 	if (remmina_plugin_service->file_get_string(remminafile, "exec"))
 	{
