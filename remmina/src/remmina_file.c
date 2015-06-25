@@ -135,11 +135,23 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 {
 	TRACE_CALL("remmina_file_generate_filename");
 	GTimeVal gtime;
+	gchar dirname[MAX_PATH_LEN];
+	GDir *old;
+	GDir *dir;
 
 	g_free(remminafile->filename);
 	g_get_current_time(&gtime);
-	remminafile->filename = g_strdup_printf("%s/.remmina/%li%03li.remmina", g_get_home_dir(), gtime.tv_sec,
-			gtime.tv_usec / 1000);
+
+	/* If the old .remmina exists, use it. */
+	g_snprintf(dirname, sizeof(dirname), "%s/.%s", g_get_home_dir(), remmina);
+	old = g_dir_open(dirname, 0, NULL);
+	if (old == NULL)
+		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_data_dir(), remmina);
+	/* If the XDG directories exist, use them. */
+	dir = g_dir_open(dirname, 0, NULL);
+	if (dir != NULL)
+		remminafile->filename = g_strdup_printf("%s/%li%03li.remmina", dirname, gtime.tv_sec,
+				gtime.tv_usec / 1000);
 }
 
 void remmina_file_set_filename(RemminaFile *remminafile, const gchar *filename)

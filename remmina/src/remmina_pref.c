@@ -37,6 +37,8 @@
 #include <gdk/gdkkeysyms.h>
 #include <stdlib.h>
 #include <string.h>
+#include "config.h"
+#include "remmina_public.h"
 #include "remmina_string_array.h"
 #include "remmina_pref.h"
 #include "remmina/remmina_trace_calls.h"
@@ -168,9 +170,17 @@ void remmina_pref_init(void)
 {
 	TRACE_CALL("remmina_pref_init");
 	GKeyFile *gkeyfile;
+	gchar dirname[MAX_PATH_LEN];
+	GDir *old;
 
-	remmina_pref_file = g_strdup_printf("%s/.remmina/remmina.pref", g_get_home_dir());
-	remmina_keymap_file = g_strdup_printf("%s/.remmina/remmina.keymap", g_get_home_dir());
+	g_snprintf(dirname, sizeof(dirname), "%s/.%s", g_get_home_dir(), remmina);
+	old = g_dir_open(dirname, 0, NULL);
+	if (old == NULL)
+		/*  If the XDG directories exist, use them. */
+		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_config_dir(), remmina);
+	g_mkdir_with_parents(dirname, 0700);
+	remmina_pref_file = g_strdup_printf("%s/remmina.pref", dirname);
+	remmina_keymap_file = g_strdup_printf("%s/remmina.keymap", dirname);
 
 	gkeyfile = g_key_file_new();
 	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
