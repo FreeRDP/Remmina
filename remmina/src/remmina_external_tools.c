@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -55,9 +55,6 @@ void view_popup_menu_onDoSomething (GtkWidget *menuitem, gpointer userdata)
 	TRACE_CALL("view_popup_menu_onDoSomething");
 	/* we passed the view as userdata when we connected the signal */
 	RemminaExternalTools *ret = (RemminaExternalTools *)userdata;
-	//gchar* filename_remmina = ret->remminafilename;
-	//gchar* filename_script = ret->scriptfilename;
-
 	remmina_external_tools_launcher(ret->remminafilename, ret->scriptfilename, ret->scriptshortname);
 }
 
@@ -89,9 +86,6 @@ gboolean remmina_external_tools_from_filename(RemminaMain *remminamain, gchar* r
 		strcpy(ret->scriptshortname,name);
 		menuitem = gtk_menu_item_new_with_label(strndup(name + 8, strlen(name) -8));
 		g_signal_connect(menuitem, "activate", (GCallback) view_popup_menu_onDoSomething, ret);
-
-		//g_signal_connect(menuitem, "activate",
-		//                  (GCallback) view_popup_menu_onDoSomething, treeview);
 
 		gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	}
