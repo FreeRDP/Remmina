@@ -1325,8 +1325,25 @@ static RemminaPrefPlugin remmina_rdps =
 
 G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService* service)
 {
+	int vermaj, vermin, verrev;
+
 	TRACE_CALL("remmina_plugin_entry");
 	remmina_plugin_service = service;
+
+	/* Check that we have the correct version of freerdp. In case
+	* of dynamic linking with libfreerdp.so vesions may mismatch */
+
+	freerdp_get_version(&vermaj, &vermin, &verrev);
+
+	if (vermaj < FREERDP_REQUIRED_MAJOR ||
+		(vermaj == FREERDP_REQUIRED_MAJOR && ( vermin < FREERDP_REQUIRED_MINOR ||
+		(vermin == FREERDP_REQUIRED_MINOR && verrev < FREERDP_REQUIRED_REVISION) ) ) ) {
+		g_printf("Unable to load RDP plugin due to bad freerdp library version. Required "
+			"libfreerdp version is at least %d.%d.%d but we found libfreerdp version %d.%d.%d\n",
+			FREERDP_REQUIRED_MAJOR, FREERDP_REQUIRED_MINOR, FREERDP_REQUIRED_REVISION,
+			vermaj, vermin, verrev );
+		return FALSE;
+	}
 
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
