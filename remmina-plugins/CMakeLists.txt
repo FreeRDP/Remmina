@@ -68,6 +68,14 @@ set(FREERDP_REQUIRED_REVISION 0)
 set(FREERDP_REQUIRED_VERSIONSTRING ${FREERDP_REQUIRED_MAJOR}.${FREERDP_REQUIRED_MINOR}.${FREERDP_REQUIRED_REVISION})
 
 if (WITH_EMBEDDED_FREERDP)
+    message(AUTHOR_WARNING "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ The Remmina RDP plugin, is compiled, by default, using an embedded FreeRDP
+ library.
+
+ If you want to use an other FreerDP version, you can set, at build time:
+
+ -DWITH_EMBEDDED_FREERDP=OFF
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 	add_subdirectory(rdp)
 else()
 	find_suggested_package(FREERDP)
