@@ -135,3 +135,16 @@ if(WITH_EXAMPLES)
 endif()
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
+if(WITH_EMBEDDED_FREERDP)
+    add_custom_target(FreeRDPWarning ALL
+		COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --switch="$(COLOR)" --red --bold "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+		COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --switch="$(COLOR)" --red --bold "~                                                                  ~"
+		COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --switch="$(COLOR)" --red --bold "~ Remmina comes with FreeRDP, you can use another version setting: ~"
+		COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --switch="$(COLOR)" --red --bold "~                                                                  ~"
+		COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --switch="$(COLOR)" --red --bold "~   -DWITH_EMBEDDED_FREERDP=OFF                                    ~"
+		COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --switch="$(COLOR)" --red --bold "~                                                                  ~"
+		COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --switch="$(COLOR)" --red --bold "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        COMMENT "Embedded FreeRDP Warning"
+	)
+add_dependencies(FreeRDPWarning remmina-plugin-rdp)
+endif()
