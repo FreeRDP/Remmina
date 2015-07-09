@@ -62,6 +62,12 @@ endif()
 
 add_subdirectory(xdmcp)
 
+find_program(PYHOCA_EXECUTABLE pyhoca-cli)
+
+if(PYHOCA_EXECUTABLE)
+	add_subdirectory(x2go)
+endif(PYHOCA_EXECUTABLE)
+
 find_suggested_package(FREERDP)
 if(FREERDP_FOUND)
 	add_subdirectory(rdp)
