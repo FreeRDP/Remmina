@@ -158,6 +158,10 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 		{
 			iconname = "remmina-nx";
 		}
+		else if (g_strcmp0(item->protocol, "X2GO") == 0)
+		{
+			iconname = "remmina-x2go";
+		}
 		else
 		{
 			iconname = "remmina";
