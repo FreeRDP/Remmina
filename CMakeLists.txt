@@ -32,7 +32,7 @@
 # files in the program, then also delete it here.
 
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.12)
 
 set(CMAKE_COLOR_MAKEFILE ON)
 
@@ -96,7 +96,7 @@ set(WITH_LIBRARY_VERSIONING "ON")
 set(REMMINA_VERSION_MAJOR "1")
 set(REMMINA_VERSION_MINOR "2")
 set(REMMINA_VERSION_REVISION "0")
-set(REMMINA_VERSION_SUFFIX "rcgit.3")
+set(REMMINA_VERSION_SUFFIX "rcgit.4")
 set(REMMINA_VERSION "${REMMINA_VERSION_MAJOR}.${REMMINA_VERSION_MINOR}.${REMMINA_VERSION_REVISION}-${REMMINA_VERSION_SUFFIX}")
 
 set(REMMINA_DATADIR "${CMAKE_INSTALL_FULL_DATADIR}")
@@ -135,3 +135,16 @@ if(WITH_EXAMPLES)
 endif()
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
+if(WITH_EMBEDDED_FREERDP)
+    add_custom_target(FreeRDPWarning ALL
+		COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --switch="$(COLOR)" --red --bold "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+		COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --switch="$(COLOR)" --red --bold "~                                                                  ~"
+		COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --switch="$(COLOR)" --red --bold "~ Remmina comes with FreeRDP, you can use another version setting: ~"
+		COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --switch="$(COLOR)" --red --bold "~                                                                  ~"
+		COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --switch="$(COLOR)" --red --bold "~   -DWITH_EMBEDDED_FREERDP=OFF                                    ~"
+		COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --switch="$(COLOR)" --red --bold "~                                                                  ~"
+		COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --switch="$(COLOR)" --red --bold "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        COMMENT "Embedded FreeRDP Warning"
+	)
+add_dependencies(FreeRDPWarning remmina-plugin-rdp)
+endif()

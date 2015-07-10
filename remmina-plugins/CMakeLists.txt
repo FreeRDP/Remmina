@@ -15,7 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
 #
 # In addition, as a special exception, the copyright holders give
@@ -40,6 +40,9 @@ set(APPICON22_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/22x22/emblems")
 set(REMMINA_COMMON_INCLUDE_DIRS ${GTK_INCLUDE_DIRS})
 set(REMMINA_COMMON_LIBRARIES ${GTK_LIBRARIES})
 
+
+option(WITH_EMBEDDED_FREERDP "WITH_EMBEDDED_FREERDP" ON)
+
 find_suggested_package(LIBSSH)
 if(LIBSSH_FOUND)
 	add_definitions(-DHAVE_LIBSSH)
@@ -57,9 +60,20 @@ endif()
 
 add_subdirectory(xdmcp)
 
-find_suggested_package(FREERDP)
-if(FREERDP_FOUND)
+
+# Needed FreeRDP version
+set(FREERDP_REQUIRED_MAJOR 1)
+set(FREERDP_REQUIRED_MINOR 2)
+set(FREERDP_REQUIRED_REVISION 0)
+set(FREERDP_REQUIRED_VERSIONSTRING ${FREERDP_REQUIRED_MAJOR}.${FREERDP_REQUIRED_MINOR}.${FREERDP_REQUIRED_REVISION})
+
+if (WITH_EMBEDDED_FREERDP)
 	add_subdirectory(rdp)
+else()
+	find_suggested_package(FREERDP)
+	if(FREERDP_FOUND)
+		add_subdirectory(rdp)
+	endif()
 endif()
 
 find_suggested_package(TELEPATHY)
