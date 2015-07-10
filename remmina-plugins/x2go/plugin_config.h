@@ -42,6 +42,6 @@
 
 	#define PLUGIN_NAME        "X2GO"
 	#define PLUGIN_DESCRIPTION "X2GO - Launch a X2Go connection"
-	#define PLUGIN_VERSION     "0.9.0-rc.1"
+	#define PLUGIN_VERSION     VERSION      /* Remmina version */
 	#define PLUGIN_APPICON     "x2goclient"
 #endif
