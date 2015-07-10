@@ -91,6 +91,7 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_close_connection(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_close_connection");
 	remmina_plugin_service->log_printf("[%s] remmina_plugin_close_connection\n", PLUGIN_NAME);
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 	return FALSE;
