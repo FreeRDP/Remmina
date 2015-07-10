@@ -40,14 +40,14 @@
 #include "plugin_config.h"
 #include <common/remmina_plugin.h>
 #if GTK_VERSION == 3
-  # include <gtk/gtkx.h>
+	# include <gtk/gtkx.h>
 #endif
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
 static void remmina_plugin_init(RemminaProtocolWidget *gp)
 {
-  remmina_plugin_service->log_printf("[%s] remmina_plugin_init\n", PLUGIN_NAME);
+	remmina_plugin_service->log_printf("[%s] remmina_plugin_init\n", PLUGIN_NAME);
 }
 
 static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
@@ -108,6 +108,9 @@ static gboolean remmina_plugin_close_connection(RemminaProtocolWidget *gp)
 static const RemminaProtocolSetting remmina_plugin_basic_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "session", N_("Session name"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
 	/* We will add also user, password, servername and command
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
 	*/
@@ -126,7 +129,8 @@ static RemminaProtocolPlugin remmina_plugin =
 	PLUGIN_APPICON,                            // Icon for SSH connection
 	remmina_plugin_basic_settings,             // Array for basic settings
 	NULL,                                      // Array for advanced settings
-	REMMINA_PROTOCOL_SSH_SETTING_NONE,         // SSH settings type
+	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,          // SSH settings type
+	/* REMMINA_PROTOCOL_SSH_SETTING_NONE,         // SSH settings type */
 	NULL,                                      // Array for available features
 	remmina_plugin_init,                       // Plugin initialization
 	remmina_plugin_open_connection,            // Plugin open connection
