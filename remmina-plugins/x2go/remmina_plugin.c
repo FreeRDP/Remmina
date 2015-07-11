@@ -90,6 +90,15 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 		argv[argc++] = g_strdup("-c");
 		option_str = GET_PLUGIN_STRING("command");
 		argv[argc++] = g_strdup(option_str);
+		argv[argc++] = g_strdup("--kbd-layout");
+		option_str = GET_PLUGIN_STRING("kbdlayout");
+		argv[argc++] = g_strdup(option_str);
+		argv[argc++] = g_strdup("--kbd-type");
+		option_str = GET_PLUGIN_STRING("kbdtype");
+		argv[argc++] = g_strdup(option_str);
+		argv[argc++] = g_strdup("-g");
+		option_str = GET_PLUGIN_STRING("resolution");
+		argv[argc++] = g_strdup(option_str);
 	}
 	else
 	{
@@ -139,6 +148,9 @@ static const RemminaProtocolSetting remmina_plugin_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "command", N_("Remote command"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdlayout", N_("Keyboard Layout (us)"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdtype", N_("Keyboard type (pc105/us)"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
