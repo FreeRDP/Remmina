@@ -31,6 +31,11 @@
 # version. If you delete this exception statement from all source
 # files in the program, then also delete it here.
 
+# Needed FreeRDP version to build freerdp plugin
+set(FREERDP_REQUIRED_MAJOR 1)
+set(FREERDP_REQUIRED_MINOR 2)
+set(FREERDP_REQUIRED_REVISION 0)
+set(FREERDP_REQUIRED_VERSIONSTRING ${FREERDP_REQUIRED_MAJOR}.${FREERDP_REQUIRED_MINOR}.${FREERDP_REQUIRED_REVISION})
 
 include_directories(${CMAKE_SOURCE_DIR}/remmina-plugins)
 

@@ -18,7 +18,10 @@
 # Boston, MA  02110-1301, USA.
 
 find_package(PkgConfig)
-pkg_check_modules(PC_FREERDP freerdp>=1.2)
+if(PKG_CONFIG_FOUND)
+	pkg_check_modules(PC_FREERDP freerdp>=${FREERDP_REQUIRED_VERSIONSTRING})
+endif()
+
 set(FREERDP_DEFINITIONS ${PC_FREERDP_CFLAGS_OTHER})
 
 find_path(FREERDP_INCLUDE_DIR NAMES freerdp/freerdp.h
