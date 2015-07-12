@@ -73,40 +73,30 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 
 	argc = 0;
 	argv[argc++] = g_strdup("pyhoca-cli");
-	if(GET_PLUGIN_STRING("server"))
-	{
-		argv[argc++] = g_strdup("--server");
-		option_str = GET_PLUGIN_STRING("server");
-		argv[argc++] = g_strdup(option_str);
-		argv[argc++] = g_strdup("-p");
-		option_str = GET_PLUGIN_STRING("sshport");
-		argv[argc++] = g_strdup(option_str);
-		argv[argc++] = g_strdup("-u");
-		option_str = GET_PLUGIN_STRING("username");
-		argv[argc++] = g_strdup(option_str);
-		argv[argc++] = g_strdup("--password");
-		option_str = GET_PLUGIN_PASSWORD("password");
-		argv[argc++] = g_strdup(option_str);
-		argv[argc++] = g_strdup("-c");
-		option_str = GET_PLUGIN_STRING("command");
-		argv[argc++] = g_strdup(option_str);
-		argv[argc++] = g_strdup("--kbd-layout");
-		option_str = GET_PLUGIN_STRING("kbdlayout");
-		argv[argc++] = g_strdup(option_str);
-		argv[argc++] = g_strdup("--kbd-type");
-		option_str = GET_PLUGIN_STRING("kbdtype");
-		argv[argc++] = g_strdup(option_str);
-		argv[argc++] = g_strdup("-g");
-		option_str = GET_PLUGIN_STRING("resolution");
-		argv[argc++] = g_strdup(option_str);
-	}
-	else
-	{
-		/* If with have a session, everything is stored inside it */
-		argv[argc++] = g_strdup("-P");
-		option_str = GET_PLUGIN_STRING("session");
-		argv[argc++] = g_strdup(option_str);
-	}
+	argv[argc++] = g_strdup("--server");
+	option_str = GET_PLUGIN_STRING("server");
+	argv[argc++] = g_strdup(option_str);
+	argv[argc++] = g_strdup("-p");
+	option_str = GET_PLUGIN_STRING("sshport");
+	argv[argc++] = g_strdup(option_str);
+	argv[argc++] = g_strdup("-u");
+	option_str = GET_PLUGIN_STRING("username");
+	argv[argc++] = g_strdup(option_str);
+	argv[argc++] = g_strdup("--password");
+	option_str = GET_PLUGIN_PASSWORD("password");
+	argv[argc++] = g_strdup(option_str);
+	argv[argc++] = g_strdup("-c");
+	option_str = GET_PLUGIN_STRING("command");
+	argv[argc++] = g_strdup(option_str);
+	argv[argc++] = g_strdup("--kbd-layout");
+	option_str = GET_PLUGIN_STRING("kbdlayout");
+	argv[argc++] = g_strdup(option_str);
+	argv[argc++] = g_strdup("--kbd-type");
+	option_str = GET_PLUGIN_STRING("kbdtype");
+	argv[argc++] = g_strdup(option_str);
+	argv[argc++] = g_strdup("-g");
+	option_str = GET_PLUGIN_STRING("resolution");
+	argv[argc++] = g_strdup(option_str);
 
 	argv[argc++] = NULL;
 
@@ -137,13 +127,11 @@ static gboolean remmina_plugin_close_connection(RemminaProtocolWidget *gp)
  * c) Setting description
  * d) Compact disposition
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
- * f) Unused pointer
+ * f) Unused pointer  --->    TODO: used for sensitive
  */
 static const RemminaProtocolSetting remmina_plugin_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "session", N_("Session name"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
-	/* TODO: Remmina doesn't implement an INT type. Can be used with server PORT */
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "sshport", N_("remote SSH port (default: 22)"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
@@ -166,8 +154,8 @@ static RemminaProtocolPlugin remmina_plugin =
 	PLUGIN_APPICON,                            // Icon for SSH connection
 	remmina_plugin_basic_settings,             // Array for basic settings
 	NULL,                                      // Array for advanced settings
-	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,          // SSH settings type
-	/* REMMINA_PROTOCOL_SSH_SETTING_NONE,         // SSH settings type */
+	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,       // SSH settings type
+	/* REMMINA_PROTOCOL_SSH_SETTING_NONE,      // SSH settings type */
 	NULL,                                      // Array for available features
 	remmina_plugin_init,                       // Plugin initialization
 	remmina_plugin_open_connection,            // Plugin open connection
@@ -183,10 +171,8 @@ remmina_plugin_entry(RemminaPluginService *service)
 	TRACE_CALL("remmina_plugin_entry");
 	remmina_plugin_service = service;
 
-	/*
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
-	*/
 
 	if (!service->register_plugin((RemminaPlugin *) &remmina_plugin))
 	{
