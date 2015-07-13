@@ -43,11 +43,48 @@
 	# include <gtk/gtkx.h>
 #endif
 
+typedef struct _RemminaPluginData
+{
+	GtkWidget *socket;
+	gint socket_id;
+	GPid pid;
+} RemminaPluginData;
+
 static RemminaPluginService *remmina_plugin_service = NULL;
+
+static void remmina_plugin_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
+{
+	TRACE_CALL("remmina_plugin_on_plug_added");
+	RemminaPluginData *gpdata;
+	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	remmina_plugin_service->log_printf("[%s] remmina_plugin_on_plug_added socket %d\n", PLUGIN_NAME, gpdata->socket_id);
+	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
+	return;
+}
+
+static void remmina_plugin_on_plug_removed(GtkSocket *socket, RemminaProtocolWidget *gp)
+{
+	TRACE_CALL("remmina_plugin_on_plug_removed");
+	remmina_plugin_service->log_printf("[%s] remmina_plugin_on_plug_removed\n", PLUGIN_NAME);
+	remmina_plugin_service->protocol_plugin_close_connection(gp);
+}
 
 static void remmina_plugin_init(RemminaProtocolWidget *gp)
 {
+	TRACE_CALL("remmina_plugin_init");
 	remmina_plugin_service->log_printf("[%s] remmina_plugin_init\n", PLUGIN_NAME);
+	remmina_plugin_service->log_printf("[%s] remmina_plugin_init\n", PLUGIN_NAME);
+	RemminaPluginData *gpdata;
+
+	gpdata = g_new0(RemminaPluginData, 1);
+	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
+
+	gpdata->socket = gtk_socket_new();
+	remmina_plugin_service->protocol_plugin_register_hostkey(gp, gpdata->socket);
+	gtk_widget_show(gpdata->socket);
+	g_signal_connect(G_OBJECT(gpdata->socket), "plug-added", G_CALLBACK(remmina_plugin_on_plug_added), gp);
+	g_signal_connect(G_OBJECT(gpdata->socket), "plug-removed", G_CALLBACK(remmina_plugin_on_plug_removed), gp);
+	gtk_container_add(GTK_CONTAINER(gp), gpdata->socket);
 }
 
 static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
@@ -58,10 +95,15 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 		g_strdup(remmina_plugin_service->file_get_string(remminafile, value))
 	#define GET_PLUGIN_PASSWORD(value) \
 		g_strdup(remmina_plugin_service->file_get_secret(remminafile, value));
+	#define GET_PLUGIN_INT(value, default_value) \
+		remmina_plugin_service->file_get_int(remminafile, value, default_value)
+	#define GET_PLUGIN_BOOLEAN(value) \
+		remmina_plugin_service->file_get_int(remminafile, value, FALSE)
 
+	RemminaPluginData *gpdata;
 	RemminaFile *remminafile;
 	gboolean ret;
-	GPid pid;
+	//GPid pid;
 	GError *error = NULL;
 	gchar *argv[50];
 	gint argc;
@@ -69,7 +111,28 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 
 	gchar *option_str;
 
+	gchar *res;
+	gchar **scrsize;
+	gint width, height;
+
+	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	res = GET_PLUGIN_STRING("resolution");
+	if (!res || !strchr(res, 'x'))
+	{
+		remmina_plugin_service->protocol_plugin_set_expand(gp, TRUE);
+		gtk_widget_set_size_request(GTK_WIDGET(gp), 640, 480);
+	}
+	else
+	{
+		scrsize = g_strsplit (res, "x", -1 );
+		width = g_ascii_strtoull(scrsize[0], NULL, 0);
+		height = g_ascii_strtoull(scrsize[1], NULL, 0);
+		remmina_plugin_service->protocol_plugin_set_width(gp, width);
+		remmina_plugin_service->protocol_plugin_set_height(gp, height);
+		gtk_widget_set_size_request(GTK_WIDGET(gp), width, height);
+	}
 
 	argc = 0;
 	argv[argc++] = g_strdup("pyhoca-cli");
@@ -96,12 +159,13 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	argv[argc++] = g_strdup(option_str);
 	argv[argc++] = g_strdup("-g");
 	option_str = GET_PLUGIN_STRING("resolution");
+
 	argv[argc++] = g_strdup(option_str);
 
 	argv[argc++] = NULL;
 
 	ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH,
-		NULL, NULL, &pid, &error);
+		NULL, NULL, &gpdata->pid, &error);
 
 	for (i = 0; i < argc; i++)
 	g_free (argv[i]);
