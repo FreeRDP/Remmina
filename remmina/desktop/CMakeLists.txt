@@ -15,7 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
 #
 # In addition, as a special exception, the copyright holders give
@@ -37,6 +37,10 @@ set(ICON22_DIR "${REMMINA_DATADIR}/icons/hicolor/22x22/apps")
 set(ICON24_DIR "${REMMINA_DATADIR}/icons/hicolor/24x24/apps")
 set(ICON32_DIR "${REMMINA_DATADIR}/icons/hicolor/32x32/apps")
 set(ICON48_DIR "${REMMINA_DATADIR}/icons/hicolor/48x48/apps")
+set(ICON64_DIR "${REMMINA_DATADIR}/icons/hicolor/64x64/apps")
+set(ICON72_DIR "${REMMINA_DATADIR}/icons/hicolor/72x72/apps")
+set(ICON96_DIR "${REMMINA_DATADIR}/icons/hicolor/96x96/apps")
+set(ICON128_DIR "${REMMINA_DATADIR}/icons/hicolor/128x128/apps")
 set(ICONSVG_DIR "${REMMINA_DATADIR}/icons/hicolor/scalable/apps")
 
 set(ICON16_DATA 16x16/apps/remmina.png)
@@ -44,6 +48,10 @@ set(ICON22_DATA 22x22/apps/remmina.png)
 set(ICON24_DATA 24x24/apps/remmina.png)
 set(ICON32_DATA 32x32/apps/remmina.png)
 set(ICON48_DATA 48x48/apps/remmina.png)
+set(ICON64_DATA 64x64/apps/remmina.png)
+set(ICON72_DATA 72x72/apps/remmina.png)
+set(ICON96_DATA 96x96/apps/remmina.png)
+set(ICON128_DATA 128x128/apps/remmina.png)
 set(ICONSVG_DATA scalable/apps/remmina.svg)
 
 install(FILES ${ICON16_DATA} DESTINATION ${ICON16_DIR})
@@ -51,6 +59,10 @@ install(FILES ${ICON22_DATA} DESTINATION ${ICON22_DIR})
 install(FILES ${ICON24_DATA} DESTINATION ${ICON24_DIR})
 install(FILES ${ICON32_DATA} DESTINATION ${ICON32_DIR})
 install(FILES ${ICON48_DATA} DESTINATION ${ICON48_DIR})
+install(FILES ${ICON64_DATA} DESTINATION ${ICON64_DIR})
+install(FILES ${ICON72_DATA} DESTINATION ${ICON72_DIR})
+install(FILES ${ICON96_DATA} DESTINATION ${ICON96_DIR})
+install(FILES ${ICON128_DATA} DESTINATION ${ICON128_DIR})
 install(FILES ${ICONSVG_DATA} DESTINATION ${ICONSVG_DIR})
 
 install(FILES remmina.desktop DESTINATION "${REMMINA_DATADIR}/applications")

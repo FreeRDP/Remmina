@@ -14,7 +14,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
 #
 # In addition, as a special exception, the copyright holders give
@@ -51,3 +51,11 @@ install(TARGETS remmina-plugin-nx DESTINATION ${REMMINA_PLUGINDIR})
 
 install(FILES 16x16/emblems/remmina-nx.png DESTINATION ${APPICON16_EMBLEMS_DIR})
 install(FILES 22x22/emblems/remmina-nx.png DESTINATION ${APPICON22_EMBLEMS_DIR})
+install(FILES 24x24/emblems/remmina-nx.png DESTINATION ${APPICON24_EMBLEMS_DIR})
+install(FILES 32x32/emblems/remmina-nx.png DESTINATION ${APPICON32_EMBLEMS_DIR})
+install(FILES 48x48/emblems/remmina-nx.png DESTINATION ${APPICON48_EMBLEMS_DIR})
+install(FILES 64x64/emblems/remmina-nx.png DESTINATION ${APPICON64_EMBLEMS_DIR})
+install(FILES 72x72/emblems/remmina-nx.png DESTINATION ${APPICON72_EMBLEMS_DIR})
+install(FILES 96x96/emblems/remmina-nx.png DESTINATION ${APPICON96_EMBLEMS_DIR})
+install(FILES 128x128/emblems/remmina-nx.png DESTINATION ${APPICON128_EMBLEMS_DIR})
+install(FILES scalable/emblems/remmina-nx.svg DESTINATION ${APPICONSVG_EMBLEMS_DIR})
