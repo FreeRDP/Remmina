@@ -73,7 +73,6 @@ static void remmina_plugin_init(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_init");
 	remmina_plugin_service->log_printf("[%s] remmina_plugin_init\n", PLUGIN_NAME);
-	remmina_plugin_service->log_printf("[%s] remmina_plugin_init\n", PLUGIN_NAME);
 	RemminaPluginData *gpdata;
 
 	gpdata = g_new0(RemminaPluginData, 1);
