@@ -52,4 +52,5 @@ install(FILES ${ICON32_DATA} DESTINATION ${ICON32_DIR})
 install(FILES ${ICON48_DATA} DESTINATION ${ICON48_DIR})
 install(FILES ${ICONSVG_DATA} DESTINATION ${ICONSVG_DIR})
 
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/remmina.desktop @ONLY)
 install(FILES remmina.desktop DESTINATION "${REMMINA_DATADIR}/applications")
