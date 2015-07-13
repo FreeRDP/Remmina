@@ -65,6 +65,7 @@ install(FILES ${ICON96_DATA} DESTINATION ${ICON96_DIR})
 install(FILES ${ICON128_DATA} DESTINATION ${ICON128_DIR})
 install(FILES ${ICONSVG_DATA} DESTINATION ${ICONSVG_DIR})
 
+SET(bindir ${CMAKE_INSTALL_FULL_BINDIR}) # for following CONFIGURE_FILE
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/remmina.desktop @ONLY)
 install(FILES remmina.desktop DESTINATION "${REMMINA_DATADIR}/applications")
 install(FILES remmina.appdata.xml DESTINATION "${REMMINA_DATADIR}/appdata")
