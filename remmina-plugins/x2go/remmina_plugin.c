@@ -69,6 +69,7 @@ static void remmina_plugin_on_plug_removed(GtkSocket *socket, RemminaProtocolWid
 	remmina_plugin_service->protocol_plugin_close_connection(gp);
 }
 
+
 static void remmina_plugin_init(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_init");
@@ -102,7 +103,6 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	RemminaPluginData *gpdata;
 	RemminaFile *remminafile;
 	gboolean ret;
-	//GPid pid;
 	GError *error = NULL;
 	gchar *argv[50];
 	gint argc;
@@ -118,20 +118,25 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	res = GET_PLUGIN_STRING("resolution");
-	if (!res || !strchr(res, 'x'))
+	if (!GET_PLUGIN_BOOLEAN("detached"))
 	{
-		remmina_plugin_service->protocol_plugin_set_expand(gp, TRUE);
-		gtk_widget_set_size_request(GTK_WIDGET(gp), 640, 480);
+		if (!res || !strchr(res, 'x'))
+		{
+			remmina_plugin_service->protocol_plugin_set_expand(gp, TRUE);
+			gtk_widget_set_size_request(GTK_WIDGET(gp), 640, 480);
+		}
+		else
+		{
+			scrsize = g_strsplit (res, "x", -1 );
+			width = g_ascii_strtoull(scrsize[0], NULL, 0);
+			height = g_ascii_strtoull(scrsize[1], NULL, 0);
+			remmina_plugin_service->protocol_plugin_set_width(gp, width);
+			remmina_plugin_service->protocol_plugin_set_height(gp, height);
+			gtk_widget_set_size_request(GTK_WIDGET(gp), width, height);
+		}
+		gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 	}
-	else
-	{
-		scrsize = g_strsplit (res, "x", -1 );
-		width = g_ascii_strtoull(scrsize[0], NULL, 0);
-		height = g_ascii_strtoull(scrsize[1], NULL, 0);
-		remmina_plugin_service->protocol_plugin_set_width(gp, width);
-		remmina_plugin_service->protocol_plugin_set_height(gp, height);
-		gtk_widget_set_size_request(GTK_WIDGET(gp), width, height);
-	}
+	remmina_plugin_service->log_printf("[%s] Before spawn socket id is %d\n", PLUGIN_NAME, gpdata->socket_id);
 
 	argc = 0;
 	argv[argc++] = g_strdup("pyhoca-cli");
@@ -164,7 +169,7 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	argv[argc++] = NULL;
 
 	ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH,
-		NULL, NULL, &gpdata->pid, &error);
+			NULL, NULL, &gpdata->pid, &error);
 
 	for (i = 0; i < argc; i++)
 	g_free (argv[i]);
@@ -172,7 +177,16 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	if (!ret)
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
 
-	return FALSE;
+	remmina_plugin_service->log_printf("[%s] After spawn socket id is %d\n", PLUGIN_NAME, gpdata->socket_id);
+	if (!GET_PLUGIN_BOOLEAN("detached"))
+	{
+		remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
 }
 
 static gboolean remmina_plugin_close_connection(RemminaProtocolWidget *gp)
@@ -201,6 +215,7 @@ static const RemminaProtocolSetting remmina_plugin_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "command", N_("Remote command"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdlayout", N_("Keyboard Layout (us)"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdtype", N_("Keyboard type (pc105/us)"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "detached", N_("Detached window"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
@@ -225,7 +240,7 @@ static RemminaProtocolPlugin remmina_plugin =
 	remmina_plugin_close_connection,           // Plugin close connection
 	NULL,                                      // Query for available features
 	NULL,                                      // Call a feature
-	/*  remmina_plugin_keystroke               // Send a keystroke    */
+	/*remmina_plugin_keystroke                   // Send a keystroke    */
 };
 
 G_MODULE_EXPORT gboolean
