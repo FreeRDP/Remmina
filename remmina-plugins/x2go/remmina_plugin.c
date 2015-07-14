@@ -43,11 +43,14 @@
 	# include <gtk/gtkx.h>
 #endif
 
+#define GET_PLUGIN_DATA(gp) (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+
 typedef struct _RemminaPluginData
 {
 	GtkWidget *socket;
 	gint socket_id;
 	GPid pid;
+	gboolean ready;
 } RemminaPluginData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
@@ -59,6 +62,7 @@ static void remmina_plugin_on_plug_added(GtkSocket *socket, RemminaProtocolWidge
 	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	remmina_plugin_service->log_printf("[%s] remmina_plugin_on_plug_added socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
+	gpdata->ready = TRUE;
 	return;
 }
 
@@ -118,24 +122,24 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	res = GET_PLUGIN_STRING("resolution");
-	if (!GET_PLUGIN_BOOLEAN("detached"))
+	if (!res || !strchr(res, 'x'))
 	{
-		if (!res || !strchr(res, 'x'))
-		{
-			remmina_plugin_service->protocol_plugin_set_expand(gp, TRUE);
-			gtk_widget_set_size_request(GTK_WIDGET(gp), 640, 480);
-		}
-		else
-		{
-			scrsize = g_strsplit (res, "x", -1 );
-			width = g_ascii_strtoull(scrsize[0], NULL, 0);
-			height = g_ascii_strtoull(scrsize[1], NULL, 0);
-			remmina_plugin_service->protocol_plugin_set_width(gp, width);
-			remmina_plugin_service->protocol_plugin_set_height(gp, height);
-			gtk_widget_set_size_request(GTK_WIDGET(gp), width, height);
-		}
-		gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
+		//remmina_plugin_service->protocol_plugin_set_expand(gp, TRUE);
+		width = 640;
+		height = 480;
+		//gtk_widget_set_size_request(GTK_WIDGET(gp), 640, 480);
 	}
+	else
+	{
+		scrsize = g_strsplit (res, "x", -1 );
+		width = g_ascii_strtoull(scrsize[0], NULL, 0);
+		height = g_ascii_strtoull(scrsize[1], NULL, 0);
+	}
+	remmina_plugin_service->protocol_plugin_set_width(gp, width);
+	remmina_plugin_service->protocol_plugin_set_height(gp, height);
+	gtk_widget_set_size_request(GTK_WIDGET(gp), width, height);
+	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
+
 	remmina_plugin_service->log_printf("[%s] Before spawn socket id is %d\n", PLUGIN_NAME, gpdata->socket_id);
 
 	argc = 0;
@@ -175,18 +179,15 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	g_free (argv[i]);
 
 	if (!ret)
+	{
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
-
-	remmina_plugin_service->log_printf("[%s] After spawn socket id is %d\n", PLUGIN_NAME, gpdata->socket_id);
-	if (!GET_PLUGIN_BOOLEAN("detached"))
-	{
-		remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
-		return TRUE;
-	}
-	else
-	{
 		return FALSE;
 	}
+
+	remmina_plugin_service->log_printf("[%s] After spawn socket id is %d\n", PLUGIN_NAME, gpdata->socket_id);
+
+	remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
+	return TRUE;
 }
 
 static gboolean remmina_plugin_close_connection(RemminaProtocolWidget *gp)
