@@ -124,10 +124,8 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	res = GET_PLUGIN_STRING("resolution");
 	if (!res || !strchr(res, 'x'))
 	{
-		//remmina_plugin_service->protocol_plugin_set_expand(gp, TRUE);
 		width = 640;
 		height = 480;
-		//gtk_widget_set_size_request(GTK_WIDGET(gp), 640, 480);
 	}
 	else
 	{
@@ -143,6 +141,11 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	remmina_plugin_service->log_printf("[%s] Before spawn socket id is %d\n", PLUGIN_NAME, gpdata->socket_id);
 
 	argc = 0;
+	/* pyhoca is not an "xembed aware" application */
+	argv[argc++] = g_strdup("xterm");
+	argv[argc++] = g_strdup("-into");
+	argv[argc++] = g_strdup_printf("%i", gpdata->socket_id);
+	argv[argc++] = g_strdup("-e");
 	argv[argc++] = g_strdup("pyhoca-cli");
 	argv[argc++] = g_strdup("--server");
 	option_str = GET_PLUGIN_STRING("server");
@@ -157,7 +160,7 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	option_str = GET_PLUGIN_PASSWORD("password");
 	argv[argc++] = g_strdup(option_str);
 	argv[argc++] = g_strdup("-c");
-	option_str = GET_PLUGIN_STRING("command");
+	option_str = g_shell_quote(GET_PLUGIN_STRING("command"));
 	argv[argc++] = g_strdup(option_str);
 	argv[argc++] = g_strdup("--kbd-layout");
 	option_str = GET_PLUGIN_STRING("kbdlayout");
@@ -172,8 +175,7 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 
 	argv[argc++] = NULL;
 
-	ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH,
-			NULL, NULL, &gpdata->pid, &error);
+	ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pid, &error);
 
 	for (i = 0; i < argc; i++)
 	g_free (argv[i]);
@@ -183,8 +185,6 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
 		return FALSE;
 	}
-
-	remmina_plugin_service->log_printf("[%s] After spawn socket id is %d\n", PLUGIN_NAME, gpdata->socket_id);
 
 	remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 	return TRUE;
@@ -216,7 +216,6 @@ static const RemminaProtocolSetting remmina_plugin_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "command", N_("Remote command"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdlayout", N_("Keyboard Layout (us)"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdtype", N_("Keyboard type (pc105/us)"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "detached", N_("Detached window"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
