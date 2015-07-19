@@ -279,6 +279,11 @@ struct remmina_plugin_rdp_ui_object
 			RemminaPluginRdpUiEeventType type;
 		} event;
 	};
+	/* We can also return values here, valid only when sync is TRUE */
+	union {
+		int intval;
+		BOOL boolval;
+	} retval;
 };
 typedef struct remmina_plugin_rdp_ui_object RemminaPluginRdpUiObject;
 
