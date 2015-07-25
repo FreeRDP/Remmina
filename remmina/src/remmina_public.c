@@ -473,6 +473,10 @@ guint remmina_public_get_current_workspace(GdkScreen *screen)
 {
 	TRACE_CALL("remmina_public_get_current_workspace");
 #ifdef GDK_WINDOWING_X11
+#if GTK_CHECK_VERSION(3, 10, 0)
+	g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
+	return gdk_x11_screen_get_current_desktop(screen);
+#else
 	GdkWindow *root_win;
 	GdkDisplay *display;
 	Atom type;
@@ -503,6 +507,7 @@ guint remmina_public_get_current_workspace(GdkScreen *screen)
 
 	XFree (current_desktop);
 	return ret;
+#endif
 #else
 	/* FIXME: on mac etc proably there are native APIs
 	 * to get the current workspace etc */
@@ -515,6 +520,13 @@ guint remmina_public_get_window_workspace(GtkWindow *gtkwindow)
 {
 	TRACE_CALL("remmina_public_get_window_workspace");
 #ifdef GDK_WINDOWING_X11
+#if GTK_CHECK_VERSION(3, 10, 0)
+	GdkWindow *window;
+	g_return_val_if_fail (GTK_IS_WINDOW (gtkwindow), 0);
+	g_return_val_if_fail (gtk_widget_get_realized (GTK_WIDGET (gtkwindow)), 0);
+	window = gtk_widget_get_window (GTK_WIDGET (gtkwindow));
+	return gdk_x11_window_get_desktop(window);
+#else
 	GdkWindow *window;
 	GdkDisplay *display;
 	Atom type;
@@ -546,6 +558,7 @@ guint remmina_public_get_window_workspace(GtkWindow *gtkwindow)
 
 	XFree (workspace);
 	return ret;
+#endif
 #else
 	/* FIXME: on mac etc proably there are native APIs
 	 * to get the current workspace etc */
