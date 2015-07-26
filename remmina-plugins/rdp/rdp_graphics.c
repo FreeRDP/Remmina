@@ -48,7 +48,7 @@
 
 /* Bitmap Class */
 
-void rf_Bitmap_New(rdpContext* context, rdpBitmap* bitmap)
+BOOL rf_Bitmap_New(rdpContext* context, rdpBitmap* bitmap)
 {
 	TRACE_CALL("rf_Bitmap_New");
 #ifdef RF_BITMAP
@@ -87,6 +87,7 @@ void rf_Bitmap_New(rdpContext* context, rdpBitmap* bitmap)
 
 	((rfBitmap*) bitmap)->pixmap = pixmap;
 #endif
+	return TRUE;
 }
 
 void rf_Bitmap_Free(rdpContext* context, rdpBitmap* bitmap)
@@ -102,7 +103,7 @@ void rf_Bitmap_Free(rdpContext* context, rdpBitmap* bitmap)
 #endif
 }
 
-void rf_Bitmap_Paint(rdpContext* context, rdpBitmap* bitmap)
+BOOL rf_Bitmap_Paint(rdpContext* context, rdpBitmap* bitmap)
 {
 	TRACE_CALL("rf_Bitmap_Paint");
 #ifdef RF_BITMAP
@@ -130,9 +131,10 @@ void rf_Bitmap_Paint(rdpContext* context, rdpBitmap* bitmap)
 
 	//gdi_InvalidateRegion(rfi->hdc, bitmap->left, bitmap->top, width, height);
 #endif
+	return FALSE;
 }
 
-void rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
+BOOL rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
 	BYTE* data, int width, int height, int bpp, int length, BOOL compressed, int codec_id)
 {
 	TRACE_CALL("rf_Bitmap_Decompress");
@@ -168,9 +170,10 @@ void rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
 	bitmap->length = size;
 	bitmap->bpp = bpp;
 #endif
+	return TRUE;
 }
 
-void rf_Bitmap_SetSurface(rdpContext* context, rdpBitmap* bitmap, BOOL primary)
+BOOL rf_Bitmap_SetSurface(rdpContext* context, rdpBitmap* bitmap, BOOL primary)
 {
 	TRACE_CALL("rf_Bitmap_SetSurface");
 #ifdef RF_BITMAP
@@ -181,6 +184,7 @@ void rf_Bitmap_SetSurface(rdpContext* context, rdpBitmap* bitmap, BOOL primary)
 	else
 		rfi->drawing = ((rfBitmap*) bitmap)->pixmap;
 #endif
+	return TRUE;
 }
 
 /* Pointer Class */
@@ -275,7 +279,7 @@ BOOL rf_Pointer_SetDefault(rdpContext* context)
 	return ui->retval.boolval;
 }
 
-BOOL rf_Pointer_SetPosition(rdpContext* context)
+BOOL rf_Pointer_SetPosition(rdpContext* context, UINT32 x, UINT32 y)
 {
 	TRACE_CALL("rf_Pointer_SePosition");
 
@@ -285,7 +289,7 @@ BOOL rf_Pointer_SetPosition(rdpContext* context)
 
 /* Glyph Class */
 
-void rf_Glyph_New(rdpContext* context, rdpGlyph* glyph)
+BOOL rf_Glyph_New(rdpContext* context, rdpGlyph* glyph)
 {
 	TRACE_CALL("rf_Glyph_New");
 #ifdef RF_GLYPH
@@ -311,6 +315,7 @@ void rf_Glyph_New(rdpContext* context, rdpGlyph* glyph)
 	XPutImage(rfi->display, rf_glyph->pixmap, rfi->gc_mono, image, 0, 0, 0, 0, glyph->cx, glyph->cy);
 	XFree(image);
 #endif
+	return TRUE;
 }
 
 void rf_Glyph_Free(rdpContext* context, rdpGlyph* glyph)
@@ -324,7 +329,7 @@ void rf_Glyph_Free(rdpContext* context, rdpGlyph* glyph)
 #endif
 }
 
-void rf_Glyph_Draw(rdpContext* context, rdpGlyph* glyph, int x, int y)
+BOOL rf_Glyph_Draw(rdpContext* context, rdpGlyph* glyph, int x, int y)
 {
 	TRACE_CALL("rf_Glyph_Draw");
 #ifdef RF_GLYPH
@@ -338,9 +343,10 @@ void rf_Glyph_Draw(rdpContext* context, rdpGlyph* glyph, int x, int y)
 	XFillRectangle(rfi->display, rfi->drawing, rfi->gc, x, y, glyph->cx, glyph->cy);
 	XSetStipple(rfi->display, rfi->gc, rfi->bitmap_mono);
 #endif
+	return TRUE;
 }
 
-void rf_Glyph_BeginDraw(rdpContext* context, int x, int y, int width, int height, UINT32 bgcolor, UINT32 fgcolor, BOOL fOpRedundant)
+BOOL rf_Glyph_BeginDraw(rdpContext* context, int x, int y, int width, int height, UINT32 bgcolor, UINT32 fgcolor, BOOL fOpRedundant)
 {
 	TRACE_CALL("rf_Glyph_BeginDraw");
 #ifdef RF_GLYPH
@@ -363,9 +369,10 @@ void rf_Glyph_BeginDraw(rdpContext* context, int x, int y, int width, int height
 	XSetBackground(rfi->display, rfi->gc, fgcolor);
 	XSetFillStyle(rfi->display, rfi->gc, FillStippled);
 #endif
+	return TRUE;
 }
 
-void rf_Glyph_EndDraw(rdpContext* context, int x, int y, int width, int height, UINT32 bgcolor, UINT32 fgcolor)
+BOOL rf_Glyph_EndDraw(rdpContext* context, int x, int y, int width, int height, UINT32 bgcolor, UINT32 fgcolor)
 {
 	TRACE_CALL("rf_Glyph_EndDraw");
 #ifdef RF_GLYPH
@@ -377,6 +384,7 @@ void rf_Glyph_EndDraw(rdpContext* context, int x, int y, int width, int height, 
 		//gdi_InvalidateRegion(rfi->hdc, x, y, width, height);
 	}
 #endif
+	return TRUE;
 }
 
 /* Graphics Module */
