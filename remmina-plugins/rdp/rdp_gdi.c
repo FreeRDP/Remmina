@@ -44,7 +44,7 @@
 #include <freerdp/constants.h>
 #include <freerdp/cache/cache.h>
 
-static void rf_desktop_resize(rdpContext* context)
+static BOOL rf_desktop_resize(rdpContext* context)
 {
 	TRACE_CALL("rf_desktop_resize");
 	RemminaProtocolWidget* gp;
@@ -68,74 +68,87 @@ static void rf_desktop_resize(rdpContext* context)
 	rf_queue_ui(gp, ui);
 
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "desktop-resize");
+
+	return TRUE;
 }
 
-static void rf_gdi_palette(rdpContext* context, PALETTE_UPDATE* palette)
+static BOOL rf_gdi_palette(rdpContext* context, PALETTE_UPDATE* palette)
 {
 	TRACE_CALL("rf_gdi_palette");
 	g_print("palette\n");
+	return TRUE;
 }
 
-static void rf_gdi_set_bounds(rdpContext* context, rdpBounds* bounds)
+static BOOL rf_gdi_set_bounds(rdpContext* context, rdpBounds* bounds)
 {
 	TRACE_CALL("rf_gdi_set_bounds");
+	return TRUE;
 }
 
-static void rf_gdi_dstblt(rdpContext* context, DSTBLT_ORDER* dstblt)
+static BOOL rf_gdi_dstblt(rdpContext* context, DSTBLT_ORDER* dstblt)
 {
 	TRACE_CALL("rf_gdi_dstblt");
 	g_print("dstblt\n");
+	return TRUE;
 }
 
-static void rf_gdi_patblt(rdpContext* context, PATBLT_ORDER* patblt)
+static BOOL rf_gdi_patblt(rdpContext* context, PATBLT_ORDER* patblt)
 {
 	TRACE_CALL("rf_gdi_patblt");
 	g_print("patblt\n");
+	return TRUE;
 }
 
-static void rf_gdi_scrblt(rdpContext* context, SCRBLT_ORDER* scrblt)
+static BOOL rf_gdi_scrblt(rdpContext* context, SCRBLT_ORDER* scrblt)
 {
 	TRACE_CALL("rf_gdi_scrblt");
 	g_print("srcblt\n");
+	return TRUE;
 }
 
-static void rf_gdi_opaque_rect(rdpContext* context, OPAQUE_RECT_ORDER* opaque_rect)
+static BOOL rf_gdi_opaque_rect(rdpContext* context, OPAQUE_RECT_ORDER* opaque_rect)
 {
 	TRACE_CALL("rf_gdi_opaque_rect");
 	g_print("opaque_rect\n");
+	return TRUE;
 }
 
-static void rf_gdi_multi_opaque_rect(rdpContext* context, MULTI_OPAQUE_RECT_ORDER* multi_opaque_rect)
+static BOOL rf_gdi_multi_opaque_rect(rdpContext* context, MULTI_OPAQUE_RECT_ORDER* multi_opaque_rect)
 {
 	TRACE_CALL("rf_gdi_multi_opaque_rect");
 	g_print("multi_opaque_rect\n");
+	return TRUE;
 }
 
-static void rf_gdi_line_to(rdpContext* context, LINE_TO_ORDER* line_to)
+static BOOL rf_gdi_line_to(rdpContext* context, LINE_TO_ORDER* line_to)
 {
 	TRACE_CALL("rf_gdi_line_to");
 	g_print("line_to\n");
+	return TRUE;
 }
 
-static void rf_gdi_polyline(rdpContext* context, POLYLINE_ORDER* polyline)
+static BOOL rf_gdi_polyline(rdpContext* context, POLYLINE_ORDER* polyline)
 {
 	TRACE_CALL("rf_gdi_polyline");
 	g_print("polyline\n");
+	return TRUE;
 }
 
-static void rf_gdi_memblt(rdpContext* context, MEMBLT_ORDER* memblt)
+static BOOL rf_gdi_memblt(rdpContext* context, MEMBLT_ORDER* memblt)
 {
 	TRACE_CALL("rf_gdi_memblt");
 	g_print("memblt\n");
+	return TRUE;
 }
 
-static void rf_gdi_fast_index(rdpContext* context, FAST_INDEX_ORDER* fast_index)
+static BOOL rf_gdi_fast_index(rdpContext* context, FAST_INDEX_ORDER* fast_index)
 {
 	TRACE_CALL("rf_gdi_fast_index");
 	g_print("fast_index\n");
+	return TRUE;
 }
 
-static void rf_gdi_surface_bits(rdpContext* context, SURFACE_BITS_COMMAND* surface_bits_command)
+static BOOL rf_gdi_surface_bits(rdpContext* context, SURFACE_BITS_COMMAND* surface_bits_command)
 {
 	TRACE_CALL("rf_gdi_surface_bits");
 	UINT8* bitmap;
@@ -177,6 +190,7 @@ static void rf_gdi_surface_bits(rdpContext* context, SURFACE_BITS_COMMAND* surfa
 	{
 		printf("Unsupported codecID %d\n", surface_bits_command->codecID);
 	}
+	return TRUE;
 }
 
 void rf_gdi_register_update_callbacks(rdpUpdate* update)
