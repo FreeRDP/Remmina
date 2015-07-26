@@ -278,19 +278,8 @@ BOOL rf_Pointer_SetDefault(rdpContext* context)
 BOOL rf_Pointer_SetPosition(rdpContext* context)
 {
 	TRACE_CALL("rf_Pointer_SePosition");
-	RemminaPluginRdpUiObject* ui;
-	rfContext* rfi = (rfContext*) context;
 
 	g_printf("WARNING: rf_Pointer_SetPosition unimplemented of graphics.c\n");
-/*
-	ui = g_new0(RemminaPluginRdpUiObject, 1);
-	ui->type = REMMINA_RDP_UI_CURSOR;
-	ui->sync = TRUE;	// Also wait for completion
-	ui->cursor.type = REMMINA_RDP_POINTER_DEFAULT;
-
-	rf_queue_ui(rfi->protocol_widget, ui);
-*/
-	// return ui->retval.boolval;
 	return FALSE;
 }
 
