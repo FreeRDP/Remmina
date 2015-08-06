@@ -282,9 +282,18 @@ BOOL rf_Pointer_SetDefault(rdpContext* context)
 BOOL rf_Pointer_SetPosition(rdpContext* context, UINT32 x, UINT32 y)
 {
 	TRACE_CALL("rf_Pointer_SePosition");
+	RemminaPluginRdpUiObject* ui;
+	rfContext* rfi = (rfContext*) context;
+	ui = g_new0(RemminaPluginRdpUiObject, 1);
+	ui->type = REMMINA_RDP_UI_CURSOR;
+	ui->sync = TRUE;	// Also wait for completion
+	ui->cursor.type = REMMINA_RDP_POINTER_SETPOS;
+	ui->pos.x = x;
+	ui->pos.y = y;
 
-	g_printf("WARNING: rf_Pointer_SetPosition unimplemented of graphics.c\n");
-	return FALSE;
+	rf_queue_ui(rfi->protocol_widget, ui);
+	return ui->retval.boolval;
+
 }
 
 /* Glyph Class */
