@@ -38,7 +38,7 @@ set(REMMINA_PLUGIN_VNC_SRCS
 	vnc_plugin.c
 	)
 
-add_library(remmina-plugin-vnc ${REMMINA_PLUGIN_VNC_SRCS})
+add_library(remmina-plugin-vnc MODULE ${REMMINA_PLUGIN_VNC_SRCS})
 set_target_properties(remmina-plugin-vnc PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-vnc PROPERTIES NO_SONAME 1)
 

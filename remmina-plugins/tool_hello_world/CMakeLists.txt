@@ -36,7 +36,7 @@ set(REMMINA_PLUGIN_SRCS
 	plugin.c
 	)
 
-add_library(remmina-plugin-tool_hello_world ${REMMINA_PLUGIN_SRCS})
+add_library(remmina-plugin-tool_hello_world MODULE ${REMMINA_PLUGIN_SRCS})
 set_target_properties(remmina-plugin-tool_hello_world PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-tool_hello_world PROPERTIES NO_SONAME 1)
 

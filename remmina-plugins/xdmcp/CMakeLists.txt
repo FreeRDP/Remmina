@@ -35,7 +35,7 @@ set(REMMINA_PLUGIN_XDMCP_SRCS
 	xdmcp_plugin.c
 	)
 
-add_library(remmina-plugin-xdmcp ${REMMINA_PLUGIN_XDMCP_SRCS})
+add_library(remmina-plugin-xdmcp MODULE ${REMMINA_PLUGIN_XDMCP_SRCS})
 set_target_properties(remmina-plugin-xdmcp PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-xdmcp PROPERTIES NO_SONAME 1)
 
