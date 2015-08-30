@@ -35,7 +35,7 @@ set(REMMINA_PLUGIN_TELEPATHY_SRCS
 	telepathy_plugin.c
 	)
 
-add_library(remmina-plugin-telepathy ${REMMINA_PLUGIN_TELEPATHY_SRCS})
+add_library(remmina-plugin-telepathy MODULE ${REMMINA_PLUGIN_TELEPATHY_SRCS})
 set_target_properties(remmina-plugin-telepathy PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-telepathy PROPERTIES NO_SONAME 1)
 
