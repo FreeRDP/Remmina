@@ -45,7 +45,7 @@ if(GNOMEKEYRING_FOUND)
 	target_link_libraries(remmina-plugins-gnome ${GTK_LIBRARY_DIRS})
 
 		include_directories(${GNOMEKEYRING_INCLUDE_DIRS})
-		target_link_libraries(remmina-plugins-gnome ${GNOMEKEYRING_LIBRARIES})
+		target_link_libraries(remmina-plugins-gnome ${GNOMEKEYRING_LIBRARIES} ${GLIB2_LIBRARY})
 
 	install(TARGETS remmina-plugins-gnome DESTINATION ${REMMINA_PLUGINDIR})
 endif()
