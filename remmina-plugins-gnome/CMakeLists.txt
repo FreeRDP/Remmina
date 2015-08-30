@@ -37,7 +37,7 @@ if(GNOMEKEYRING_FOUND)
 		src/gkeyring_plugin.c
 		)
 
-	add_library(remmina-plugins-gnome ${REMMINA_PLUGINS_GNOME_SRCS})
+	add_library(remmina-plugins-gnome MODULE ${REMMINA_PLUGINS_GNOME_SRCS})
 	set_target_properties(remmina-plugins-gnome PROPERTIES PREFIX "")
 	set_target_properties(remmina-plugins-gnome PROPERTIES NO_SONAME 1)
 
