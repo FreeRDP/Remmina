@@ -37,7 +37,7 @@ if(GNOMEKEYRING_FOUND)
 		src/gkeyring_plugin.c
 		)
 
-	add_library(remmina-plugins-gnome ${REMMINA_PLUGINS_GNOME_SRCS})
+	add_library(remmina-plugins-gnome MODULE ${REMMINA_PLUGINS_GNOME_SRCS})
 	set_target_properties(remmina-plugins-gnome PROPERTIES PREFIX "")
 	set_target_properties(remmina-plugins-gnome PROPERTIES NO_SONAME 1)
 
@@ -45,7 +45,7 @@ if(GNOMEKEYRING_FOUND)
 	target_link_libraries(remmina-plugins-gnome ${GTK_LIBRARY_DIRS})
 
 		include_directories(${GNOMEKEYRING_INCLUDE_DIRS})
-		target_link_libraries(remmina-plugins-gnome ${GNOMEKEYRING_LIBRARIES})
+		target_link_libraries(remmina-plugins-gnome ${GNOMEKEYRING_LIBRARIES} ${GLIB2_LIBRARY})
 
 	install(TARGETS remmina-plugins-gnome DESTINATION ${REMMINA_PLUGINDIR})
 endif()
