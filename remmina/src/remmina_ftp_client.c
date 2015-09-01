@@ -128,7 +128,7 @@ G_DEFINE_TYPE( RemminaFTPClient, remmina_ftp_client, GTK_TYPE_GRID)
 #define BUSY_CURSOR \
     if (GDK_IS_WINDOW (gtk_widget_get_window (GTK_WIDGET (client)))) \
     { \
-        gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (client)), gdk_cursor_new (GDK_WATCH));\
+        gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (client)), gdk_cursor_new_for_display(gdk_display_get_default(),GDK_WATCH));\
         gdk_flush (); \
     }
 
@@ -909,7 +909,7 @@ static void remmina_ftp_client_init(RemminaFTPClient *client)
 
 	priv = g_new0(RemminaFTPClientPriv, 1);
 	client->priv = priv;
-	
+
 	/* Initialize overwrite status to FALSE */
 	client->priv->overwrite_all = FALSE;
 
