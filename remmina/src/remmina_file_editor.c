@@ -1221,7 +1221,6 @@ static void remmina_file_editor_init(RemminaFileEditor* gfe)
 	gtk_button_box_set_child_secondary(GTK_BUTTON_BOX(gtk_dialog_get_action_area(GTK_DIALOG(gfe))), widget, TRUE);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_file_editor_on_connect), gfe);
 
-	//gtk_dialog_set_alternative_button_order(GTK_DIALOG(gfe), GTK_RESPONSE_OK, GTK_RESPONSE_APPLY, GTK_RESPONSE_CANCEL, -1);
 	gtk_dialog_set_default_response(GTK_DIALOG(gfe), GTK_RESPONSE_OK);
 	gtk_window_set_default_size(GTK_WINDOW(gfe), 450, 500);
 
