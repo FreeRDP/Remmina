@@ -85,7 +85,6 @@ static void remmina_init_dialog_init(RemminaInitDialog *dialog)
 	dialog->clientkey = NULL;
 
 	gtk_dialog_add_buttons(GTK_DIALOG(dialog),  _("_Cancel"), GTK_RESPONSE_CANCEL, _("_OK"), GTK_RESPONSE_OK, NULL);
-	gtk_dialog_set_alternative_button_order(GTK_DIALOG(dialog), GTK_RESPONSE_OK, GTK_RESPONSE_CANCEL, -1);
 
 	gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
 
