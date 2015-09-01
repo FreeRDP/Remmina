@@ -59,12 +59,7 @@ typedef struct _RemminaPluginVncData
 
 	GtkWidget *drawing_area;
 	guchar *vnc_buffer;
-	GdkPixbuf *rgb_buffer;
-
-	GdkPixbuf *scale_buffer;
-	gint scale_width;
-	gint scale_height;
-	guint scale_handler;
+	cairo_surface_t *rgb_buffer;
 
 	gint queuedraw_x, queuedraw_y, queuedraw_w, queuedraw_h;
 	guint queuedraw_handler;
@@ -72,7 +67,7 @@ typedef struct _RemminaPluginVncData
 	gulong clipboard_handler;
 	GTimeVal clipboard_timer;
 
-	GdkPixbuf *queuecursor_pixbuf;
+	cairo_surface_t *queuecursor_surface;
 	gint queuecursor_x, queuecursor_y;
 	guint queuecursor_handler;
 
@@ -136,6 +131,9 @@ typedef struct _RemminaPluginVncEvent
 	} event_data;
 } RemminaPluginVncEvent;
 
+typedef struct _RemminaPluginVncCoordinates {
+	gint x, y;
+} RemminaPluginVncCoordinates;
 
 
 /* --------- Support for execution on main thread of GUI functions -------------- */
@@ -164,7 +162,7 @@ static gboolean onMainThread_cb(struct onMainThread_cb_data *d)
 				gtk_widget_queue_draw_area( d->widget, d->x, d->y, d->width, d->height );
 				break;
 			case FUNC_UPDATE_SCALE:
-				remmina_plugin_vnc_update_scale( d->gp, d->scale );
+				remmina_plugin_vnc_update_scale(d->gp, d->scale);
 				break;
 		}
 		pthread_mutex_unlock( &d->mu );
@@ -286,120 +284,31 @@ static void remmina_plugin_vnc_scale_area(RemminaProtocolWidget *gp, gint *x, gi
 {
 	TRACE_CALL("remmina_plugin_vnc_scale_area");
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
-	gint sx, sy, sw, sh;
+	GtkAllocation widget_allocation;
 	gint width, height;
+	gint sx, sy, sw, sh;
 
-	if (gpdata->rgb_buffer == NULL || gpdata->scale_buffer == NULL)
+	if (gpdata->rgb_buffer == NULL)
 		return;
 
 	width = remmina_plugin_service->protocol_plugin_get_width(gp);
 	height = remmina_plugin_service->protocol_plugin_get_height(gp);
 
-	if (gpdata->scale_width == width && gpdata->scale_height == height)
-	{
-		/* Same size, just copy the pixels */
-		gdk_pixbuf_copy_area(gpdata->rgb_buffer, *x, *y, *w, *h, gpdata->scale_buffer, *x, *y);
-		return;
-	}
+	gtk_widget_get_allocation(GTK_WIDGET(gp), &widget_allocation);
+
+	if (widget_allocation.width == width && widget_allocation.height == height)
+		return; /* Same size, no scaling */
 
 	/* We have to extend the scaled region 2 scaled pixels, to avoid gaps */
-	sx = MIN(MAX(0, (*x) * gpdata->scale_width / width - gpdata->scale_width / width - 2), gpdata->scale_width - 1);
-	sy = MIN(MAX(0, (*y) * gpdata->scale_height / height - gpdata->scale_height / height - 2), gpdata->scale_height - 1);
-	sw = MIN(gpdata->scale_width - sx, (*w) * gpdata->scale_width / width + gpdata->scale_width / width + 4);
-	sh = MIN(gpdata->scale_height - sy, (*h) * gpdata->scale_height / height + gpdata->scale_height / height + 4);
-
-	gdk_pixbuf_scale(gpdata->rgb_buffer, gpdata->scale_buffer, sx, sy, sw, sh, 0, 0,
-			(double) gpdata->scale_width / (double) width, (double) gpdata->scale_height / (double) height,
-			remmina_plugin_service->pref_get_scale_quality());
+	sx = MIN(MAX(0, (*x) * widget_allocation.width / width - widget_allocation.width / width - 2), widget_allocation.width - 1);
+	sy = MIN(MAX(0, (*y) * widget_allocation.height / height - widget_allocation.height / height - 2), widget_allocation.height - 1);
+	sw = MIN(widget_allocation.width - sx, (*w) * widget_allocation.width / width + widget_allocation.width / width + 4);
+	sh = MIN(widget_allocation.height - sy, (*h) * widget_allocation.height / height + widget_allocation.height / height + 4);
 
 	*x = sx;
 	*y = sy;
 	*w = sw;
 	*h = sh;
-}
-
-static gboolean remmina_plugin_vnc_update_scale_buffer(RemminaProtocolWidget *gp, gboolean in_thread)
-{
-	TRACE_CALL("remmina_plugin_vnc_update_scale_buffer");
-	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
-	RemminaFile *remminafile;
-	gint width, height;
-	gint gpwidth, gpheight;
-	gboolean scale;
-	gint x, y, w, h;
-	GdkPixbuf *pixbuf;
-	GtkAllocation a;
-
-	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-
-	if (gpdata->running)
-	{
-		gtk_widget_get_allocation(GTK_WIDGET(gp), &a);
-		width = a.width;
-		height = a.height;
-		scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
-		if (scale)
-		{
-			if (width > 1 && height > 1)
-			{
-				LOCK_BUFFER (in_thread)
-
-				if (gpdata->scale_buffer)
-				{
-					g_object_unref(gpdata->scale_buffer);
-				}
-				gpwidth = remmina_plugin_service->protocol_plugin_get_width(gp);
-				gpheight = remmina_plugin_service->protocol_plugin_get_height(gp);
-				gpdata->scale_width = width;
-				gpdata->scale_height = height;
-
-				pixbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, gpdata->scale_width,
-						gpdata->scale_height);
-				gpdata->scale_buffer = pixbuf;
-
-				x = 0;
-				y = 0;
-				w = gpwidth;
-				h = gpheight;
-				remmina_plugin_vnc_scale_area(gp, &x, &y, &w, &h);
-
-UNLOCK_BUFFER			(in_thread)
-		}
-	}
-	else
-	{
-		LOCK_BUFFER (in_thread)
-
-		if (gpdata->scale_buffer)
-		{
-			g_object_unref (gpdata->scale_buffer);
-			gpdata->scale_buffer = NULL;
-		}
-		gpdata->scale_width = 0;
-		gpdata->scale_height = 0;
-
-		UNLOCK_BUFFER (in_thread)
-	}
-		if (width > 1 && height > 1)
-		{
-			if (in_thread)
-			{
-				onMainThread_gtk_widget_queue_draw_area(GTK_WIDGET(gp), 0, 0, width, height);
-			}
-			else
-			{
-				gtk_widget_queue_draw_area(GTK_WIDGET(gp), 0, 0, width, height);
-			}
-		}
-	}
-	gpdata->scale_handler = 0;
-	return FALSE;
-}
-
-static gboolean remmina_plugin_vnc_update_scale_buffer_main(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL("remmina_plugin_vnc_update_scale_buffer_main");
-	return remmina_plugin_vnc_update_scale_buffer(gp, FALSE);
 }
 
 static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean scale)
@@ -447,37 +356,37 @@ gboolean remmina_plugin_vnc_setcursor(RemminaProtocolWidget *gp)
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	GdkCursor *cur;
 
-	LOCK_BUFFER (FALSE)
+	LOCK_BUFFER(FALSE);
 	gpdata->queuecursor_handler = 0;
 
-	if (gpdata->queuecursor_pixbuf)
+	if (gpdata->queuecursor_surface)
 	{
-		cur = gdk_cursor_new_from_pixbuf(gdk_display_get_default(), gpdata->queuecursor_pixbuf, gpdata->queuecursor_x,
+		cur = gdk_cursor_new_from_surface(gdk_display_get_default(), gpdata->queuecursor_surface, gpdata->queuecursor_x,
 				gpdata->queuecursor_y);
 		gdk_window_set_cursor(gtk_widget_get_window(gpdata->drawing_area), cur);
 		g_object_unref(cur);
-		g_object_unref(gpdata->queuecursor_pixbuf);
-		gpdata->queuecursor_pixbuf = NULL;
+		cairo_surface_destroy(gpdata->queuecursor_surface);
+		gpdata->queuecursor_surface = NULL;
 	}
 	else
 	{
 		gdk_window_set_cursor(gtk_widget_get_window(gpdata->drawing_area), NULL);
 	}
-	UNLOCK_BUFFER (FALSE)
+	UNLOCK_BUFFER(FALSE);
 
 	return FALSE;
 }
 
-static void remmina_plugin_vnc_queuecursor(RemminaProtocolWidget *gp, GdkPixbuf *pixbuf, gint x, gint y)
+static void remmina_plugin_vnc_queuecursor(RemminaProtocolWidget *gp, cairo_surface_t *surface, gint x, gint y)
 {
 	TRACE_CALL("remmina_plugin_vnc_queuecursor");
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 
-	if (gpdata->queuecursor_pixbuf)
+	if (gpdata->queuecursor_surface)
 	{
-		g_object_unref(gpdata->queuecursor_pixbuf);
+		cairo_surface_destroy(gpdata->queuecursor_surface);
 	}
-	gpdata->queuecursor_pixbuf = pixbuf;
+	gpdata->queuecursor_surface = surface;
 	gpdata->queuecursor_x = x;
 	gpdata->queuecursor_y = y;
 	if (!gpdata->queuecursor_handler)
@@ -653,43 +562,37 @@ static rfbBool remmina_plugin_vnc_rfb_allocfb(rfbClient *cl)
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	gint width, height, depth, size;
 	gboolean scale;
-	GdkPixbuf *new_pixbuf, *old_pixbuf;
+	cairo_surface_t *new_surface, *old_surface;
 
 	width = cl->width;
 	height = cl->height;
 	depth = cl->format.bitsPerPixel;
 	size = width * height * (depth / 8);
 
-	/* Putting gdk_pixbuf_new inside a gdk_thread_enter/leave pair could cause dead-lock! */
-	new_pixbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, width, height);
-	if (new_pixbuf == NULL)
+	new_surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, width, height);
+	if (cairo_surface_status(new_surface) != CAIRO_STATUS_SUCCESS)
 		return FALSE;
-	gdk_pixbuf_fill(new_pixbuf, 0);
-	old_pixbuf = gpdata->rgb_buffer;
+	old_surface = gpdata->rgb_buffer;
 
-	LOCK_BUFFER (TRUE)
+	LOCK_BUFFER(TRUE);
 
-	remmina_plugin_service->protocol_plugin_set_width(gp, cl->width);
-	remmina_plugin_service->protocol_plugin_set_height(gp, cl->height);
+	remmina_plugin_service->protocol_plugin_set_width(gp, width);
+	remmina_plugin_service->protocol_plugin_set_height(gp, height);
 
-	gpdata->rgb_buffer = new_pixbuf;
+	gpdata->rgb_buffer = new_surface;
 
 	if (gpdata->vnc_buffer)
 		g_free(gpdata->vnc_buffer);
 	gpdata->vnc_buffer = (guchar*) g_malloc(size);
 	cl->frameBuffer = gpdata->vnc_buffer;
 
-	UNLOCK_BUFFER (TRUE)
+	UNLOCK_BUFFER(TRUE);
 
-	if (old_pixbuf)
-		g_object_unref(old_pixbuf);
+	if (old_surface)
+		cairo_surface_destroy(old_surface);
 
 	scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
-
-	remmina_plugin_vnc_update_scale( gp, scale);
-
-	if (gpdata->scale_handler == 0)
-		remmina_plugin_vnc_update_scale_buffer(gp, TRUE);
+	remmina_plugin_vnc_update_scale(gp, scale);
 
 	/* Notify window of change so that scroll border can be hidden or shown if needed */
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "desktop-resize");
@@ -721,13 +624,13 @@ static gboolean remmina_plugin_vnc_queue_draw_area_real(RemminaProtocolWidget *g
 
 	if (GTK_IS_WIDGET(gp) && gpdata->connected)
 	{
-		LOCK_BUFFER (FALSE)
+		LOCK_BUFFER(FALSE);
 		x = gpdata->queuedraw_x;
 		y = gpdata->queuedraw_y;
 		w = gpdata->queuedraw_w;
 		h = gpdata->queuedraw_h;
 		gpdata->queuedraw_handler = 0;
-		UNLOCK_BUFFER (FALSE)
+		UNLOCK_BUFFER(FALSE);
 
 		gtk_widget_queue_draw_area(GTK_WIDGET(gp), x, y, w, h);
 	}
@@ -740,7 +643,7 @@ static void remmina_plugin_vnc_queue_draw_area(RemminaProtocolWidget *gp, gint x
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	gint nx2, ny2, ox2, oy2;
 
-	LOCK_BUFFER (TRUE)
+	LOCK_BUFFER(TRUE);
 	if (gpdata->queuedraw_handler)
 	{
 		nx2 = x + w;
@@ -760,21 +663,30 @@ static void remmina_plugin_vnc_queue_draw_area(RemminaProtocolWidget *gp, gint x
 		gpdata->queuedraw_h = h;
 		gpdata->queuedraw_handler = IDLE_ADD((GSourceFunc) remmina_plugin_vnc_queue_draw_area_real, gp);
 	}
-UNLOCK_BUFFER (TRUE)
+	UNLOCK_BUFFER(TRUE);
 }
 
 static void remmina_plugin_vnc_rfb_fill_buffer(rfbClient* cl, guchar *dest, gint dest_rowstride, guchar *src,
 		gint src_rowstride, guchar *mask, gint w, gint h)
 {
 	TRACE_CALL("remmina_plugin_vnc_rfb_fill_buffer");
-	guchar *destptr, *srcptr;
+	guchar *srcptr;
 	gint bytesPerPixel;
-	guint32 pixel;
+	guint32 src_pixel;
 	gint ix, iy;
 	gint i;
 	guchar c;
 	gint rs, gs, bs, rm, gm, bm, rl, gl, bl, rr, gr, br;
 	gint r;
+	guint32 *destptr;
+	union
+	{
+		struct
+		{
+			guchar a, r, g, b;
+		} colors;
+		guint32 argb;
+	} dst_pixel;
 
 	bytesPerPixel = cl->format.bitsPerPixel / 8;
 	switch (cl->format.bitsPerPixel)
@@ -783,15 +695,22 @@ static void remmina_plugin_vnc_rfb_fill_buffer(rfbClient* cl, guchar *dest, gint
 			/* The following codes fill in the Alpha channel swap red/green value */
 			for (iy = 0; iy < h; iy++)
 			{
-				destptr = dest + iy * dest_rowstride;
+				destptr = (guint32*)(dest + iy * dest_rowstride);
 				srcptr = src + iy * src_rowstride;
 				for (ix = 0; ix < w; ix++)
 				{
-					*destptr++ = *(srcptr + 2);
-					*destptr++ = *(srcptr + 1);
-					*destptr++ = *srcptr;
-					if (mask)
-						*destptr++ = (*mask++) ? 0xff : 0x00;
+					if(!mask || *mask++)
+					{
+						dst_pixel.colors.a = 0xff;
+						dst_pixel.colors.r = *(srcptr + 2);
+						dst_pixel.colors.g = *(srcptr + 1);
+						dst_pixel.colors.b = *srcptr;
+						*destptr++ = ntohl(dst_pixel.argb);
+					}
+					else
+					{
+						*destptr++ = 0;
+					}
 					srcptr += 4;
 				}
 			}
@@ -811,27 +730,35 @@ static void remmina_plugin_vnc_rfb_fill_buffer(rfbClient* cl, guchar *dest, gint
 			bs = cl->format.blueShift;
 			for (iy = 0; iy < h; iy++)
 			{
-				destptr = dest + iy * dest_rowstride;
+				destptr = (guint32*)(dest + iy * dest_rowstride);
 				srcptr = src + iy * src_rowstride;
 				for (ix = 0; ix < w; ix++)
 				{
-					pixel = 0;
+					src_pixel = 0;
 					for (i = 0; i < bytesPerPixel; i++)
-						pixel += (*srcptr++) << (8 * i);
-					c = (guchar)((pixel >> rs) & rm) << rl;
-					for (r = rr; r < 8; r *= 2)
-						c |= c >> r;
-					*destptr++ = c;
-					c = (guchar)((pixel >> gs) & gm) << gl;
-					for (r = gr; r < 8; r *= 2)
-						c |= c >> r;
-					*destptr++ = c;
-					c = (guchar)((pixel >> bs) & bm) << bl;
-					for (r = br; r < 8; r *= 2)
-						c |= c >> r;
-					*destptr++ = c;
-					if (mask)
-						*destptr++ = (*mask++) ? 0xff : 0x00;
+						src_pixel += (*srcptr++) << (8 * i);
+
+					if(!mask || *mask++)
+					{
+						dst_pixel.colors.a = 0xff;
+						c = (guchar)((src_pixel >> rs) & rm) << rl;
+						for (r = rr; r < 8; r *= 2)
+							c |= c >> r;
+						dst_pixel.colors.r = c;
+						c = (guchar)((src_pixel >> gs) & gm) << gl;
+						for (r = gr; r < 8; r *= 2)
+							c |= c >> r;
+						dst_pixel.colors.g = c;
+						c = (guchar)((src_pixel >> bs) & bm) << bl;
+						for (r = br; r < 8; r *= 2)
+							c |= c >> r;
+						dst_pixel.colors.b = c;
+						*destptr++ = ntohl(dst_pixel.argb);
+					}
+					else
+					{
+						*destptr++ = 0;
+					}
 				}
 			}
 			break;
@@ -847,16 +774,18 @@ static void remmina_plugin_vnc_rfb_updatefb(rfbClient* cl, int x, int y, int w, 
 	gint rowstride;
 	gint width;
 
-	LOCK_BUFFER (TRUE)
+	LOCK_BUFFER(TRUE);
 
 	if (w >= 1 || h >= 1)
 	{
 		width = remmina_plugin_service->protocol_plugin_get_width(gp);
 		bytesPerPixel = cl->format.bitsPerPixel / 8;
-		rowstride = gdk_pixbuf_get_rowstride(gpdata->rgb_buffer);
-		remmina_plugin_vnc_rfb_fill_buffer(cl, gdk_pixbuf_get_pixels(gpdata->rgb_buffer) + y * rowstride + x * 3,
+		rowstride = cairo_image_surface_get_stride(gpdata->rgb_buffer);
+		cairo_surface_flush(gpdata->rgb_buffer);
+		remmina_plugin_vnc_rfb_fill_buffer(cl, cairo_image_surface_get_data(gpdata->rgb_buffer) + y * rowstride + x * 4,
 				rowstride, gpdata->vnc_buffer + ((y * width + x) * bytesPerPixel), width * bytesPerPixel, NULL,
 				w, h);
+		cairo_surface_mark_dirty(gpdata->rgb_buffer);
 	}
 
 	if (remmina_plugin_service->protocol_plugin_get_scale(gp))
@@ -864,7 +793,7 @@ static void remmina_plugin_vnc_rfb_updatefb(rfbClient* cl, int x, int y, int w, 
 		remmina_plugin_vnc_scale_area(gp, &x, &y, &w, &h);
 	}
 
-	UNLOCK_BUFFER (TRUE)
+	UNLOCK_BUFFER(TRUE);
 
 	remmina_plugin_vnc_queue_draw_area(gp, x, y, w, h);
 }
@@ -1038,24 +967,33 @@ static void remmina_plugin_vnc_rfb_cursor_shape(rfbClient *cl, int xhot, int yho
 	TRACE_CALL("remmina_plugin_vnc_rfb_cursor_shape");
 	RemminaProtocolWidget *gp = rfbClientGetClientData(cl, NULL);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
-	guchar *pixbuf_data;
-	GdkPixbuf *pixbuf;
+	int stride;
+	guchar *data;
+	cairo_surface_t *surface;
 
 	if (!gtk_widget_get_window(GTK_WIDGET(gp)))
 		return;
 
 	if (width && height)
 	{
-		pixbuf_data = g_malloc(width * height * 4);
-		remmina_plugin_vnc_rfb_fill_buffer(cl, pixbuf_data, width * 4, cl->rcSource,
+		stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, width);
+		data = g_malloc(stride * height);
+		remmina_plugin_vnc_rfb_fill_buffer(cl, data, stride, cl->rcSource,
 				width * cl->format.bitsPerPixel / 8, cl->rcMask, width, height);
-		pixbuf = gdk_pixbuf_new_from_data(pixbuf_data, GDK_COLORSPACE_RGB, TRUE, 8, width, height, width * 4,
-				(GdkPixbufDestroyNotify) g_free, NULL);
+		surface = cairo_image_surface_create_for_data(data, CAIRO_FORMAT_ARGB32, width, height, stride);
+		if (cairo_surface_status(surface) != CAIRO_STATUS_SUCCESS) {
+			g_free(data);
+			return;
+		}
+		if(cairo_surface_set_user_data(surface, NULL, NULL, g_free) != CAIRO_STATUS_SUCCESS) {
+			g_free(data);
+			return;
+		}
 
-		LOCK_BUFFER (TRUE)
-		remmina_plugin_vnc_queuecursor(gp, pixbuf, xhot, yhot);
-UNLOCK_BUFFER	(TRUE)
-}
+		LOCK_BUFFER(TRUE);
+		remmina_plugin_vnc_queuecursor(gp, surface, xhot, yhot);
+		UNLOCK_BUFFER(TRUE);
+	}
 }
 
 static void remmina_plugin_vnc_rfb_bell(rfbClient *cl)
@@ -1465,12 +1403,31 @@ remmina_plugin_vnc_main_thread (gpointer data)
 }
 
 
+static RemminaPluginVncCoordinates remmina_plugin_vnc_scale_coordinates(GtkWidget *widget, RemminaProtocolWidget *gp, gint x, gint y) {
+	GtkAllocation widget_allocation;
+	RemminaPluginVncCoordinates result;
+
+	if (remmina_plugin_service->protocol_plugin_get_scale(gp))
+	{
+		gtk_widget_get_allocation(widget, &widget_allocation);
+		result.x = x * remmina_plugin_service->protocol_plugin_get_width(gp) / widget_allocation.width;
+		result.y = y * remmina_plugin_service->protocol_plugin_get_height(gp) / widget_allocation.height;
+	}
+	else
+	{
+		result.x = x;
+		result.y = y;
+	}
+
+	return result;
+}
+
 static gboolean remmina_plugin_vnc_on_motion(GtkWidget *widget, GdkEventMotion *event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_vnc_on_motion");
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
-	gint x, y;
+	RemminaPluginVncCoordinates coordinates;
 
 	if (!gpdata->connected || !gpdata->client)
 		return FALSE;
@@ -1478,17 +1435,8 @@ static gboolean remmina_plugin_vnc_on_motion(GtkWidget *widget, GdkEventMotion *
 	if (remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE))
 		return FALSE;
 
-	if (remmina_plugin_service->protocol_plugin_get_scale(gp))
-	{
-		x = event->x * remmina_plugin_service->protocol_plugin_get_width(gp) / gpdata->scale_width;
-		y = event->y * remmina_plugin_service->protocol_plugin_get_height(gp) / gpdata->scale_height;
-	}
-	else
-	{
-		x = event->x;
-		y = event->y;
-	}
-	remmina_plugin_vnc_event_push(gp, REMMINA_PLUGIN_VNC_EVENT_POINTER, GINT_TO_POINTER(x), GINT_TO_POINTER(y),
+	coordinates = remmina_plugin_vnc_scale_coordinates(widget, gp, event->x, event->y);
+	remmina_plugin_vnc_event_push(gp, REMMINA_PLUGIN_VNC_EVENT_POINTER, GINT_TO_POINTER(coordinates.x), GINT_TO_POINTER(coordinates.y),
 			GINT_TO_POINTER(gpdata->button_mask));
 	return TRUE;
 }
@@ -1498,7 +1446,7 @@ static gboolean remmina_plugin_vnc_on_button(GtkWidget *widget, GdkEventButton *
 	TRACE_CALL("remmina_plugin_vnc_on_button");
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
-	gint x, y;
+	RemminaPluginVncCoordinates coordinates;
 	gint mask;
 
 	if (!gpdata->connected || !gpdata->client)
@@ -1516,18 +1464,10 @@ static gboolean remmina_plugin_vnc_on_button(GtkWidget *widget, GdkEventButton *
 
 	mask = (1 << (event->button - 1));
 	gpdata->button_mask = (event->type == GDK_BUTTON_PRESS ? (gpdata->button_mask | mask) :
-	(gpdata->button_mask & (0xff - mask)))
-;	if (remmina_plugin_service->protocol_plugin_get_scale(gp))
-	{
-		x = event->x * remmina_plugin_service->protocol_plugin_get_width(gp) / gpdata->scale_width;
-		y = event->y * remmina_plugin_service->protocol_plugin_get_height(gp) / gpdata->scale_height;
-	}
-	else
-	{
-		x = event->x;
-		y = event->y;
-	}
-	remmina_plugin_vnc_event_push(gp, REMMINA_PLUGIN_VNC_EVENT_POINTER, GINT_TO_POINTER(x), GINT_TO_POINTER(y),
+	(gpdata->button_mask & (0xff - mask)));
+
+	coordinates = remmina_plugin_vnc_scale_coordinates(widget, gp, event->x, event->y);
+	remmina_plugin_vnc_event_push(gp, REMMINA_PLUGIN_VNC_EVENT_POINTER, GINT_TO_POINTER(coordinates.x), GINT_TO_POINTER(coordinates.y),
 			GINT_TO_POINTER(gpdata->button_mask));
 	return TRUE;
 }
@@ -1537,7 +1477,7 @@ static gboolean remmina_plugin_vnc_on_scroll(GtkWidget *widget, GdkEventScroll *
 	TRACE_CALL("remmina_plugin_vnc_on_scroll");
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
-	gint x, y;
+	RemminaPluginVncCoordinates coordinates;
 	gint mask;
 
 	if (!gpdata->connected || !gpdata->client)
@@ -1578,19 +1518,10 @@ static gboolean remmina_plugin_vnc_on_scroll(GtkWidget *widget, GdkEventScroll *
 			return FALSE;
 	}
 
-	if (remmina_plugin_service->protocol_plugin_get_scale(gp))
-	{
-		x = event->x * remmina_plugin_service->protocol_plugin_get_width(gp) / gpdata->scale_width;
-		y = event->y * remmina_plugin_service->protocol_plugin_get_height(gp) / gpdata->scale_height;
-	}
-	else
-	{
-		x = event->x;
-		y = event->y;
-	}
-	remmina_plugin_vnc_event_push(gp, REMMINA_PLUGIN_VNC_EVENT_POINTER, GINT_TO_POINTER(x), GINT_TO_POINTER(y),
+	coordinates = remmina_plugin_vnc_scale_coordinates(widget, gp, event->x, event->y);
+	remmina_plugin_vnc_event_push(gp, REMMINA_PLUGIN_VNC_EVENT_POINTER, GINT_TO_POINTER(coordinates.x), GINT_TO_POINTER(coordinates.y),
 			GINT_TO_POINTER(mask | gpdata->button_mask));
-	remmina_plugin_vnc_event_push(gp, REMMINA_PLUGIN_VNC_EVENT_POINTER, GINT_TO_POINTER(x), GINT_TO_POINTER(y),
+	remmina_plugin_vnc_event_push(gp, REMMINA_PLUGIN_VNC_EVENT_POINTER, GINT_TO_POINTER(coordinates.x), GINT_TO_POINTER(coordinates.y),
 			GINT_TO_POINTER(gpdata->button_mask));
 
 	return TRUE;
@@ -1799,21 +1730,16 @@ static gboolean remmina_plugin_vnc_close_connection_timeout(RemminaProtocolWidge
 		g_source_remove(gpdata->queuecursor_handler);
 		gpdata->queuecursor_handler = 0;
 	}
-	if (gpdata->queuecursor_pixbuf)
+	if (gpdata->queuecursor_surface)
 	{
-		g_object_unref(gpdata->queuecursor_pixbuf);
-		gpdata->queuecursor_pixbuf = NULL;
+		cairo_surface_destroy(gpdata->queuecursor_surface);
+		gpdata->queuecursor_surface = NULL;
 	}
 
 	if (gpdata->queuedraw_handler)
 	{
 		g_source_remove(gpdata->queuedraw_handler);
 		gpdata->queuedraw_handler = 0;
-	}
-	if (gpdata->scale_handler)
-	{
-		g_source_remove(gpdata->scale_handler);
-		gpdata->scale_handler = 0;
 	}
 	if (gpdata->listen_sock >= 0)
 	{
@@ -1826,18 +1752,13 @@ static gboolean remmina_plugin_vnc_close_connection_timeout(RemminaProtocolWidge
 	}
 	if (gpdata->rgb_buffer)
 	{
-		g_object_unref(gpdata->rgb_buffer);
+		cairo_surface_destroy(gpdata->rgb_buffer);
 		gpdata->rgb_buffer = NULL;
 	}
 	if (gpdata->vnc_buffer)
 	{
 		g_free(gpdata->vnc_buffer);
 		gpdata->vnc_buffer = NULL;
-	}
-	if (gpdata->scale_buffer)
-	{
-		g_object_unref(gpdata->scale_buffer);
-		gpdata->scale_buffer = NULL;
 	}
 	g_ptr_array_free(gpdata->pressed_keys, TRUE);
 	remmina_plugin_vnc_event_free_all(gp);
@@ -1949,38 +1870,35 @@ static gboolean remmina_plugin_vnc_on_draw(GtkWidget *widget, cairo_t *context, 
 {
 	TRACE_CALL("remmina_plugin_vnc_on_draw");
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
-	GdkPixbuf *buffer;
-	gboolean scale;
+	cairo_surface_t *surface;
+	gint width, height;
+	GtkAllocation widget_allocation;
 
-	LOCK_BUFFER (FALSE)
+	LOCK_BUFFER(FALSE);
 
-	scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
-	/* widget == gpdata->drawing_area */
-	buffer = (scale ? gpdata->scale_buffer : gpdata->rgb_buffer);
-	if (!buffer)
+	surface = gpdata->rgb_buffer;
+	if (!surface)
 	{
-		UNLOCK_BUFFER (FALSE)
+		UNLOCK_BUFFER(FALSE);
 		return FALSE;
 	}
-	cairo_rectangle(context, 0, 0, gtk_widget_get_allocated_width(widget), gtk_widget_get_allocated_height(widget));
 
-	gdk_cairo_set_source_pixbuf(context, buffer, 0, 0);
+	width = remmina_plugin_service->protocol_plugin_get_width(gp);
+	height = remmina_plugin_service->protocol_plugin_get_height(gp);
+
+	if(remmina_plugin_service->protocol_plugin_get_scale(gp)) {
+		gtk_widget_get_allocation(widget, &widget_allocation);
+		cairo_scale(context,
+			    (double) widget_allocation.width / width,
+			    (double) widget_allocation.height / height);
+	}
+
+	cairo_rectangle(context, 0, 0, width, height);
+	cairo_set_source_surface(context, surface, 0, 0);
 	cairo_fill(context);
 
-	UNLOCK_BUFFER (FALSE)
+	UNLOCK_BUFFER(FALSE);
 	return TRUE;
-}
-
-static gboolean remmina_plugin_vnc_on_configure(GtkWidget *widget, GdkEventConfigure *event, RemminaProtocolWidget *gp)
-{
-	TRACE_CALL("remmina_plugin_vnc_on_configure");
-	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
-
-	/* We do a delayed reallocating to improve performance */
-	if (gpdata->scale_handler)
-		g_source_remove(gpdata->scale_handler);
-	gpdata->scale_handler = g_timeout_add(300, (GSourceFunc) remmina_plugin_vnc_update_scale_buffer_main, gp);
-	return FALSE;
 }
 
 static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
@@ -2004,7 +1922,6 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 
 
 	g_signal_connect(G_OBJECT(gpdata->drawing_area), "draw", G_CALLBACK(remmina_plugin_vnc_on_draw), gp);
-	g_signal_connect(G_OBJECT(gpdata->drawing_area), "configure_event", G_CALLBACK(remmina_plugin_vnc_on_configure), gp);
 
 	gpdata->auth_first = TRUE;
 	g_get_current_time(&gpdata->clipboard_timer);
