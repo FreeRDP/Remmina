@@ -1434,7 +1434,11 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	}
 	gtk_container_add(GTK_CONTAINER(toolitem), widget);
 
-	arrow = gtk_image_new_from_icon_name("go-down", GTK_ICON_SIZE_BUTTON);
+#if GTK_CHECK_VERSION(3, 16, 0)
+	arrow = gtk_image_new_from_icon_name("pan-down-symbolic", GTK_ICON_SIZE_BUTTON);
+#else
+	arrow = gtk_arrow_new(GTK_ARROW_DOWN, GTK_SHADOW_NONE);
+#endif
 	gtk_widget_show(arrow);
 	gtk_container_add(GTK_CONTAINER(widget), arrow);
 	g_signal_connect(G_OBJECT(widget), "toggled", G_CALLBACK(remmina_connection_holder_toolbar_fullscreen_option), cnnhld);
@@ -1481,7 +1485,11 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 		gtk_widget_set_name(widget, "remmina-small-button");
 	}
 	gtk_container_add(GTK_CONTAINER(toolitem), widget);
-	arrow = gtk_image_new_from_icon_name("go-down", GTK_ICON_SIZE_BUTTON);
+#if GTK_CHECK_VERSION(3, 16, 0)
+	arrow = gtk_image_new_from_icon_name("pan-down-symbolic", GTK_ICON_SIZE_BUTTON);
+#else
+	arrow = gtk_arrow_new(GTK_ARROW_DOWN, GTK_SHADOW_NONE);
+#endif
 	gtk_widget_show(arrow);
 	gtk_container_add(GTK_CONTAINER(widget), arrow);
 	g_signal_connect(G_OBJECT(widget), "toggled", G_CALLBACK(remmina_connection_holder_toolbar_scaler_option), cnnhld);
