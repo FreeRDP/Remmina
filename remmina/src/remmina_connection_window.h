@@ -49,15 +49,13 @@ G_BEGIN_DECLS
 
 typedef struct _RemminaConnectionWindowPriv RemminaConnectionWindowPriv;
 
-typedef struct _RemminaConnectionWindow
-{
+typedef struct _RemminaConnectionWindow {
 	GtkWindow window;
 
 	RemminaConnectionWindowPriv* priv;
 } RemminaConnectionWindow;
 
-typedef struct _RemminaConnectionWindowClass
-{
+typedef struct _RemminaConnectionWindowClass {
 	GtkWindowClass parent_class;
 } RemminaConnectionWindowClass;
 

@@ -166,8 +166,7 @@ void remmina_init_dialog_set_status(RemminaInitDialog *dialog, const gchar *stat
 
 	va_list args;
 
-	if (status_format)
-	{
+	if (status_format) {
 		if (dialog->status)
 			g_free(dialog->status);
 
@@ -198,8 +197,7 @@ void remmina_init_dialog_set_status_temp(RemminaInitDialog *dialog, const gchar 
 	gchar* s;
 	va_list args;
 
-	if (status_format)
-	{
+	if (status_format) {
 		va_start(args, status_format);
 		s = g_strdup_vprintf(status_format, args);
 		va_end(args);
@@ -274,15 +272,12 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 	s = g_strdup_printf(_("Save %s"), label);
 	save_password_check = gtk_check_button_new_with_label(s);
 	g_free(s);
-	if (allow_save)
-	{
+	if (allow_save) {
 		gtk_widget_show(save_password_check);
 		gtk_grid_attach(GTK_GRID(grid), save_password_check, 0, 1, 2, 1);
 		if (dialog->save_password)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(save_password_check), TRUE);
-	}
-	else
-	{
+	} else {
 		gtk_widget_set_sensitive(save_password_check, FALSE);
 	}
 
@@ -298,8 +293,7 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 	/* Now run it */
 	ret = gtk_dialog_run(GTK_DIALOG(dialog));
 
-	if (ret == GTK_RESPONSE_OK)
-	{
+	if (ret == GTK_RESPONSE_OK) {
 		dialog->password = g_strdup(gtk_entry_get_text(GTK_ENTRY(password_entry)));
 		dialog->save_password = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(save_password_check));
 	}
@@ -312,7 +306,7 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 }
 
 gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_domain, const gchar *default_username,
-		const gchar *default_domain, gboolean allow_save)
+									 const gchar *default_domain, gboolean allow_save)
 {
 	TRACE_CALL("remmina_init_dialog_authuserpwd");
 
@@ -363,8 +357,7 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 	gtk_widget_show(username_entry);
 	gtk_grid_attach(GTK_GRID(grid), username_entry, 1, 0, 2, 1);
 	gtk_entry_set_max_length(GTK_ENTRY(username_entry), 100);
-	if (default_username && default_username[0] != '\0')
-	{
+	if (default_username && default_username[0] != '\0') {
 		gtk_entry_set_text(GTK_ENTRY(username_entry), default_username);
 	}
 
@@ -381,8 +374,7 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 	gtk_entry_set_activates_default(GTK_ENTRY(password_entry), TRUE);
 
 
-	if (want_domain)
-	{
+	if (want_domain) {
 		widget = gtk_label_new(_("Domain"));
 		gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 		gtk_widget_show(widget);
@@ -392,22 +384,18 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 		gtk_widget_show(domain_entry);
 		gtk_grid_attach(GTK_GRID(grid), domain_entry, 1, 3, 2, 1);
 		gtk_entry_set_max_length(GTK_ENTRY(domain_entry), 100);
-		if (default_domain && default_domain[0] != '\0')
-		{
+		if (default_domain && default_domain[0] != '\0') {
 			gtk_entry_set_text(GTK_ENTRY(domain_entry), default_domain);
 		}
 	}
 
 	save_password_check = gtk_check_button_new_with_label(_("Save password"));
-	if (allow_save)
-	{
+	if (allow_save) {
 		gtk_widget_show(save_password_check);
 		gtk_grid_attach(GTK_GRID(grid), save_password_check, 0, 4, 2, 3);
 		if (dialog->save_password)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(save_password_check), TRUE);
-	}
-	else
-	{
+	} else {
 		gtk_widget_set_sensitive(save_password_check, FALSE);
 	}
 
@@ -416,12 +404,9 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 
 	gtk_dialog_set_response_sensitive(GTK_DIALOG(dialog), GTK_RESPONSE_OK, TRUE);
 
-	if (default_username && default_username[0] != '\0')
-	{
+	if (default_username && default_username[0] != '\0') {
 		gtk_widget_grab_focus(password_entry);
-	}
-	else
-	{
+	} else {
 		gtk_widget_grab_focus(username_entry);
 	}
 
@@ -429,8 +414,7 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 
 	/* Now run it */
 	ret = gtk_dialog_run(GTK_DIALOG(dialog));
-	if (ret == GTK_RESPONSE_OK)
-	{
+	if (ret == GTK_RESPONSE_OK) {
 		dialog->username = g_strdup(gtk_entry_get_text(GTK_ENTRY(username_entry)));
 		dialog->password = g_strdup(gtk_entry_get_text(GTK_ENTRY(password_entry)));
 		dialog->save_password = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(save_password_check));
@@ -532,8 +516,7 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 	/* Now run it */
 	status = gtk_dialog_run(GTK_DIALOG(dialog));
 
-	if (status == GTK_RESPONSE_OK)
-	{
+	if (status == GTK_RESPONSE_OK) {
 
 	}
 
@@ -639,8 +622,7 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 	/* Now run it */
 	status = gtk_dialog_run(GTK_DIALOG(dialog));
 
-	if (status == GTK_RESPONSE_OK)
-	{
+	if (status == GTK_RESPONSE_OK) {
 
 	}
 
@@ -665,15 +647,11 @@ static GtkWidget* remmina_init_dialog_create_file_button(GtkGrid *grid, const gc
 	gtk_file_chooser_button_set_width_chars(GTK_FILE_CHOOSER_BUTTON(widget), 25);
 	gtk_widget_show(widget);
 	gtk_grid_attach(grid, widget, 1, row, 2, row + 1);
-	if (filename && filename[0] != '\0')
-	{
+	if (filename && filename[0] != '\0') {
 		gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(widget), filename);
-	}
-	else
-	{
+	} else {
 		pkidir = g_strdup_printf("%s/.pki", g_get_home_dir());
-		if (g_file_test(pkidir, G_FILE_TEST_IS_DIR))
-		{
+		if (g_file_test(pkidir, G_FILE_TEST_IS_DIR)) {
 			gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(widget), pkidir);
 		}
 		g_free(pkidir);
@@ -683,7 +661,7 @@ static GtkWidget* remmina_init_dialog_create_file_button(GtkGrid *grid, const gc
 }
 
 gint remmina_init_dialog_authx509(RemminaInitDialog *dialog, const gchar *cacert, const gchar *cacrl, const gchar *clientcert,
-		const gchar *clientkey)
+								  const gchar *clientkey)
 {
 	TRACE_CALL("remmina_init_dialog_authx509");
 
@@ -738,8 +716,7 @@ gint remmina_init_dialog_authx509(RemminaInitDialog *dialog, const gchar *cacert
 
 	/* Now run it */
 	ret = gtk_dialog_run(GTK_DIALOG(dialog));
-	if (ret == GTK_RESPONSE_OK)
-	{
+	if (ret == GTK_RESPONSE_OK) {
 		dialog->cacert = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(cacert_button));
 		dialog->cacrl = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(cacrl_button));
 		dialog->clientcert = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(clientcert_button));
@@ -837,6 +814,6 @@ gint remmina_init_dialog_serverkey_changed(RemminaInitDialog *dialog, const gcha
 
 	return remmina_init_dialog_serverkey_confirm(dialog, serverkey,
 			_("WARNING: The server has changed its public key. This means either you are under attack,\n"
-					"or the administrator has changed the key. The new public key fingerprint is:"));
+			  "or the administrator has changed the key. The new public key fingerprint is:"));
 }
 
