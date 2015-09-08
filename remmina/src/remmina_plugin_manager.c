@@ -140,6 +140,7 @@ RemminaPluginService remmina_plugin_manager_service =
 		remmina_pref_get_value,
 		remmina_pref_get_scale_quality,
 		remmina_pref_get_sshtunnel_port,
+		remmina_pref_get_ssh_loglevel,
 		remmina_pref_keymap_get_keyval,
 
 		remmina_log_print,
