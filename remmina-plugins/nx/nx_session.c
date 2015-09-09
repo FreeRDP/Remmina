@@ -50,12 +50,10 @@ static gboolean remmina_get_keytype(const gchar *private_key_file, gint *keytype
 	FILE *fp;
 	gchar buf1[100], buf2[100];
 
-	if ((fp = g_fopen(private_key_file, "r")) == NULL)
-	{
+	if ((fp = g_fopen(private_key_file, "r")) == NULL) {
 		return FALSE;
 	}
-	if (!fgets(buf1, sizeof(buf1), fp) || !fgets(buf2, sizeof(buf2), fp))
-	{
+	if (!fgets(buf1, sizeof(buf1), fp) || !fgets(buf2, sizeof(buf2), fp)) {
 		fclose(fp);
 		return FALSE;
 	}
@@ -63,11 +61,10 @@ static gboolean remmina_get_keytype(const gchar *private_key_file, gint *keytype
 
 	if (strstr(buf1, "BEGIN RSA"))
 		*keytype = REMMINA_SSH_TYPE_RSA;
+	else if (strstr(buf1, "BEGIN DSA"))
+		*keytype = REMMINA_SSH_TYPE_DSS;
 	else
-		if (strstr(buf1, "BEGIN DSA"))
-			*keytype = REMMINA_SSH_TYPE_DSS;
-		else
-			return FALSE;
+		return FALSE;
 
 	*encrypted = (strstr(buf2, "ENCRYPTED") ? TRUE : FALSE);
 
@@ -91,8 +88,7 @@ static const gchar nx_default_private_key[] = "-----BEGIN DSA PRIVATE KEY-----\n
 
 static const gchar nx_hello_server_msg[] = "hello nxserver - version ";
 
-struct _RemminaNXSession
-{
+struct _RemminaNXSession {
 	/* Common SSH members */
 	ssh_session session;
 	ssh_channel channel;
@@ -149,32 +145,27 @@ void remmina_nx_session_free(RemminaNXSession *nx)
 	TRACE_CALL("remmina_nx_session_free");
 	pthread_t thread;
 
-	if (nx->proxy_watch_source)
-	{
+	if (nx->proxy_watch_source) {
 		g_source_remove(nx->proxy_watch_source);
 		nx->proxy_watch_source = 0;
 	}
-	if (nx->proxy_pid)
-	{
+	if (nx->proxy_pid) {
 		kill(nx->proxy_pid, SIGTERM);
 		g_spawn_close_pid(nx->proxy_pid);
 		nx->proxy_pid = 0;
 	}
 	thread = nx->thread;
-	if (thread)
-	{
+	if (thread) {
 		nx->running = FALSE;
 		pthread_cancel(thread);
 		pthread_join(thread, NULL);
 		nx->thread = 0;
 	}
-	if (nx->channel)
-	{
+	if (nx->channel) {
 		ssh_channel_close(nx->channel);
 		ssh_channel_free(nx->channel);
 	}
-	if (nx->server_sock >= 0)
-	{
+	if (nx->server_sock >= 0) {
 		close(nx->server_sock);
 		nx->server_sock = -1;
 	}
@@ -187,13 +178,11 @@ void remmina_nx_session_free(RemminaNXSession *nx)
 	g_free(nx->session_id);
 	g_free(nx->proxy_cookie);
 
-	if (nx->session_list)
-	{
+	if (nx->session_list) {
 		g_object_unref(nx->session_list);
 		nx->session_list = NULL;
 	}
-	if (nx->session)
-	{
+	if (nx->session) {
 		ssh_free(nx->session);
 		nx->session = NULL;
 	}
@@ -238,8 +227,7 @@ remmina_nx_session_get_error(RemminaNXSession *nx)
 void remmina_nx_session_clear_error(RemminaNXSession *nx)
 {
 	TRACE_CALL("remmina_nx_session_clear_error");
-	if (nx->error)
-	{
+	if (nx->error) {
 		g_free(nx->error);
 		nx->error = NULL;
 	}
@@ -276,14 +264,12 @@ static gboolean remmina_nx_session_get_response(RemminaNXSession *nx)
 	timeout.tv_usec = 0;
 	ch[0] = nx->channel;
 	ch[1] = NULL;
-	channel_select(ch, NULL, NULL, &timeout);
+	ssh_channel_select(ch, NULL, NULL, &timeout);
 
 	is_stderr = 0;
-	while (is_stderr <= 1)
-	{
-		len = channel_poll(nx->channel, is_stderr);
-		if (len == SSH_ERROR)
-		{
+	while (is_stderr <= 1) {
+		len = ssh_channel_poll(nx->channel, is_stderr);
+		if (len == SSH_ERROR) {
 			remmina_nx_session_set_error(nx, "Error reading channel: %s");
 			return FALSE;
 		}
@@ -295,14 +281,12 @@ static gboolean remmina_nx_session_get_response(RemminaNXSession *nx)
 		return FALSE;
 
 	buffer = buffer_new();
-	len = channel_read_buffer(nx->channel, buffer, len, is_stderr);
-	if (len <= 0)
-	{
+	len = ssh_channel_read_buffer(nx->channel, buffer, len, is_stderr);
+	if (len <= 0) {
 		remmina_nx_session_set_application_error(nx, "Channel closed.");
 		return FALSE;
 	}
-	if (len > 0)
-	{
+	if (len > 0) {
 		g_string_append_len(nx->response, (const gchar*) buffer_get(buffer), len);
 	}
 
@@ -327,28 +311,26 @@ static void remmina_nx_session_parse_session_list_line(RemminaNXSession *nx, con
 	gtk_list_store_append(nx->session_list, &iter);
 
 	p1 = (char*) line;
-	for (i = 0; i < 7; i++)
-	{
+	for (i = 0; i < 7; i++) {
 		p2 = strchr(p1, ' ');
 		if (!p2)
 			return;
 		val = g_strndup(p1, (gint)(p2 - p1));
-		switch (i)
-		{
-			case 0:
-				gtk_list_store_set(nx->session_list, &iter, REMMINA_NX_SESSION_COLUMN_DISPLAY, val, -1);
-				break;
-			case 1:
-				gtk_list_store_set(nx->session_list, &iter, REMMINA_NX_SESSION_COLUMN_TYPE, val, -1);
-				break;
-			case 2:
-				gtk_list_store_set(nx->session_list, &iter, REMMINA_NX_SESSION_COLUMN_ID, val, -1);
-				break;
-			case 6:
-				gtk_list_store_set(nx->session_list, &iter, REMMINA_NX_SESSION_COLUMN_STATUS, val, -1);
-				break;
-			default:
-				break;
+		switch (i) {
+		case 0:
+			gtk_list_store_set(nx->session_list, &iter, REMMINA_NX_SESSION_COLUMN_DISPLAY, val, -1);
+			break;
+		case 1:
+			gtk_list_store_set(nx->session_list, &iter, REMMINA_NX_SESSION_COLUMN_TYPE, val, -1);
+			break;
+		case 2:
+			gtk_list_store_set(nx->session_list, &iter, REMMINA_NX_SESSION_COLUMN_ID, val, -1);
+			break;
+		case 6:
+			gtk_list_store_set(nx->session_list, &iter, REMMINA_NX_SESSION_COLUMN_STATUS, val, -1);
+			break;
+		default:
+			break;
 		}
 		g_free(val);
 
@@ -378,17 +360,13 @@ static gint remmina_nx_session_parse_line(RemminaNXSession *nx, const gchar *lin
 	*valueptr = NULL;
 
 	/* Get the server version from the initial line */
-	if (!nx->version)
-	{
+	if (!nx->version) {
 		s = g_ascii_strdown(line, -1);
 		ptr = strstr(s, nx_hello_server_msg);
-		if (!ptr)
-		{
+		if (!ptr) {
 			/* Try to use a default version */
 			nx->version = g_strdup("3.3.0");
-		}
-		else
-		{
+		} else {
 			nx->version = g_strdup(ptr + strlen(nx_hello_server_msg));
 			ptr = strchr(nx->version, ' ');
 			if (ptr)
@@ -402,19 +380,13 @@ static gint remmina_nx_session_parse_line(RemminaNXSession *nx, const gchar *lin
 		return nx->status;
 	}
 
-	if (sscanf(line, "NX> %i ", &status) < 1)
-	{
-		if (nx->session_list_state && nx->session_list)
-		{
-			if (nx->session_list_state == 1 && strncmp(line, "----", 4) == 0)
-			{
+	if (sscanf(line, "NX> %i ", &status) < 1) {
+		if (nx->session_list_state && nx->session_list) {
+			if (nx->session_list_state == 1 && strncmp(line, "----", 4) == 0) {
 				nx->session_list_state = 2;
+			} else if (nx->session_list_state == 2) {
+				remmina_nx_session_parse_session_list_line(nx, line);
 			}
-			else
-				if (nx->session_list_state == 2)
-				{
-					remmina_nx_session_parse_session_list_line(nx, line);
-				}
 			return -1;
 		}
 		return nx->status;
@@ -449,8 +421,7 @@ remmina_nx_session_get_line(RemminaNXSession *nx)
 	line = g_strndup(pos, len - 1);
 
 	l = strlen(line);
-	if (l > 0 && line[l - 1] == '\r')
-	{
+	if (l > 0 && line[l - 1] == '\r') {
 		line[l - 1] = '\0';
 	}
 
@@ -469,55 +440,44 @@ static gint remmina_nx_session_parse_response(RemminaNXSession *nx)
 	if (nx->response_pos >= nx->response->len)
 		return -1;
 
-	while ((line = remmina_nx_session_get_line(nx)) != NULL)
-	{
+	while ((line = remmina_nx_session_get_line(nx)) != NULL) {
 		if (nx->log_callback)
 			nx->log_callback("[NX] %s\n", line);
 
 		status = remmina_nx_session_parse_line(nx, line, &p);
-		if (status == 500)
-		{
+		if (status == 500) {
 			/* 500: Last operation failed. Should be ignored. */
+		} else if (status >= 400 && status <= 599) {
+			remmina_nx_session_set_application_error(nx, "%s", line);
+		} else {
+			switch (status) {
+			case 127: /* Session list */
+				nx->session_list_state = 1;
+				break;
+			case 148: /* Server capacity not reached for user xxx */
+				nx->session_list_state = 0;
+				nx->allow_start = TRUE;
+				break;
+			case 700:
+				nx->session_id = g_strdup(p);
+				break;
+			case 705:
+				nx->session_display = atoi(p);
+				break;
+			case 701:
+				nx->proxy_cookie = g_strdup(p);
+				break;
+			}
 		}
-		else
-			if (status >= 400 && status <= 599)
-			{
-				remmina_nx_session_set_application_error(nx, "%s", line);
-			}
-			else
-			{
-				switch (status)
-				{
-					case 127: /* Session list */
-						nx->session_list_state = 1;
-						break;
-					case 148: /* Server capacity not reached for user xxx */
-						nx->session_list_state = 0;
-						nx->allow_start = TRUE;
-						break;
-					case 700:
-						nx->session_id = g_strdup(p);
-						break;
-					case 705:
-						nx->session_display = atoi(p);
-						break;
-					case 701:
-						nx->proxy_cookie = g_strdup(p);
-						break;
-				}
-			}
 		g_free(line);
 
 		nx->status = status;
 	}
 
 	pos = nx->response->str + nx->response_pos;
-	if (sscanf(pos, "NX> %i ", &status) < 1)
-	{
+	if (sscanf(pos, "NX> %i ", &status) < 1) {
 		status = nx->status;
-	}
-	else
-	{
+	} else {
 		if (nx->log_callback)
 			nx->log_callback("[NX] %s\n", pos);
 		nx->response_pos += 8;
@@ -531,8 +491,7 @@ static gint remmina_nx_session_expect_status2(RemminaNXSession *nx, gint status,
 	TRACE_CALL("remmina_nx_session_expect_status2");
 	gint response;
 
-	while ((response = remmina_nx_session_parse_response(nx)) != status && response != status2)
-	{
+	while ((response = remmina_nx_session_parse_response(nx)) != status && response != status2) {
 		if (response == 999)
 			break;
 		if (!remmina_nx_session_get_response(nx))
@@ -567,7 +526,7 @@ static void remmina_nx_session_send_command(RemminaNXSession *nx, const gchar *c
 }
 
 gboolean remmina_nx_session_open(RemminaNXSession *nx, const gchar *server, guint port, const gchar *private_key_file,
-		RemminaNXPassphraseCallback passphrase_func, gpointer userdata)
+								 RemminaNXPassphraseCallback passphrase_func, gpointer userdata)
 {
 	TRACE_CALL("remmina_nx_session_open");
 	gint ret;
@@ -581,15 +540,12 @@ gboolean remmina_nx_session_open(RemminaNXSession *nx, const gchar *server, guin
 	ssh_options_set(nx->session, SSH_OPTIONS_PORT, &port);
 	ssh_options_set(nx->session, SSH_OPTIONS_USER, "nx");
 
-	if (private_key_file && private_key_file[0])
-	{
-		if (!remmina_get_keytype(private_key_file, &keytype, &encrypted))
-		{
+	if (private_key_file && private_key_file[0]) {
+		if (!remmina_get_keytype(private_key_file, &keytype, &encrypted)) {
 			remmina_nx_session_set_application_error(nx, "Invalid private key file.");
 			return FALSE;
 		}
-		if (encrypted && !passphrase_func(&passphrase, userdata))
-		{
+		if (encrypted && !passphrase_func(&passphrase, userdata)) {
 			return FALSE;
 		}
 		if ( ssh_pki_import_privkey_file(private_key_file, (passphrase ? passphrase : ""), NULL, NULL, &priv_key) != SSH_OK ) {
@@ -598,9 +554,7 @@ gboolean remmina_nx_session_open(RemminaNXSession *nx, const gchar *server, guin
 			return FALSE;
 		}
 		g_free(passphrase);
-	}
-	else
-	{
+	} else {
 		/* Use NoMachine's default nx private key */
 		if ( ssh_pki_import_privkey_base64(nx_default_private_key, NULL, NULL, NULL, &priv_key) != SSH_OK ) {
 			remmina_nx_session_set_application_error(nx, "Failed to import NX default private key.");
@@ -608,8 +562,7 @@ gboolean remmina_nx_session_open(RemminaNXSession *nx, const gchar *server, guin
 		}
 	}
 
-	if (ssh_connect(nx->session))
-	{
+	if (ssh_connect(nx->session)) {
 		ssh_key_free(priv_key);
 		remmina_nx_session_set_error(nx, "Failed to startup SSH session: %s");
 		return FALSE;
@@ -619,19 +572,16 @@ gboolean remmina_nx_session_open(RemminaNXSession *nx, const gchar *server, guin
 
 	ssh_key_free(priv_key);
 
-	if (ret != SSH_AUTH_SUCCESS)
-	{
+	if (ret != SSH_AUTH_SUCCESS) {
 		remmina_nx_session_set_error(nx, "NX SSH authentication failed: %s");
 		return FALSE;
 	}
 
-	if ((nx->channel = ssh_channel_new(nx->session)) == NULL || ssh_channel_open_session(nx->channel) != SSH_OK)
-	{
+	if ((nx->channel = ssh_channel_new(nx->session)) == NULL || ssh_channel_open_session(nx->channel) != SSH_OK) {
 		return FALSE;
 	}
 
-	if (ssh_channel_request_shell(nx->channel) != SSH_OK)
-	{
+	if (ssh_channel_request_shell(nx->channel) != SSH_OK) {
 		return FALSE;
 	}
 
@@ -669,17 +619,13 @@ gboolean remmina_nx_session_login(RemminaNXSession *nx, const gchar *username, c
 	remmina_nx_session_send_command(nx, username);
 	/* NoMachine Testdrive does not prompt for password, in which case 105 response is received without 102 */
 	response = remmina_nx_session_expect_status2(nx, 102, 105);
-	if (response == 102)
-	{
+	if (response == 102) {
 		remmina_nx_session_send_command(nx, password);
 		if (!remmina_nx_session_expect_status(nx, 105))
 			return FALSE;
+	} else if (response != 105) {
+		return FALSE;
 	}
-	else
-		if (response != 105)
-		{
-			return FALSE;
-		}
 
 	return TRUE;
 }
@@ -705,8 +651,7 @@ static gboolean remmina_nx_session_send_session_command(RemminaNXSession *nx, co
 
 	cmd = g_string_new(cmd_type);
 	g_hash_table_iter_init(&iter, nx->session_parameters);
-	while (g_hash_table_iter_next(&iter, (gpointer*) &key, (gpointer*) &value))
-	{
+	while (g_hash_table_iter_next(&iter, (gpointer*) &key, (gpointer*) &value)) {
 		g_string_append_printf(cmd, " --%s=\"%s\"", key, value);
 	}
 
@@ -723,13 +668,10 @@ gboolean remmina_nx_session_list(RemminaNXSession *nx)
 	TRACE_CALL("remmina_nx_session_list");
 	gboolean ret;
 
-	if (nx->session_list == NULL)
-	{
+	if (nx->session_list == NULL) {
 		nx->session_list = gtk_list_store_new(REMMINA_NX_SESSION_N_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING,
-				G_TYPE_STRING, G_TYPE_STRING);
-	}
-	else
-	{
+											  G_TYPE_STRING, G_TYPE_STRING);
+	} else {
 		gtk_list_store_clear(nx->session_list);
 	}
 	ret = remmina_nx_session_send_session_command(nx, "listsession", 105);
@@ -849,8 +791,7 @@ static gpointer remmina_nx_session_tunnel_main_thread(gpointer data)
 
 	/* Accept a local connection */
 	sock = accept(nx->server_sock, NULL, NULL);
-	if (sock < 0)
-	{
+	if (sock < 0) {
 		remmina_nx_session_set_application_error(nx, "Failed to accept local socket");
 		nx->thread = 0;
 		return NULL;
@@ -862,8 +803,7 @@ static gpointer remmina_nx_session_tunnel_main_thread(gpointer data)
 	channels[1] = NULL;
 
 	/* Start the tunnel data transmittion */
-	while (nx->running)
-	{
+	while (nx->running) {
 		timeout.tv_sec = 1;
 		timeout.tv_usec = 0;
 
@@ -878,65 +818,49 @@ static gpointer remmina_nx_session_tunnel_main_thread(gpointer data)
 		if (ret == -1)
 			break;
 
-		if (FD_ISSET(sock, &set))
-		{
+		if (FD_ISSET(sock, &set)) {
 			len = read(sock, buffer, sizeof(buffer));
 			if (len == 0)
 				nx->running = FALSE;
-			else
-				if (len > 0)
-				{
-					for (ptr = buffer, lenw = 0; len > 0; len -= lenw, ptr += lenw)
-					{
-						ssh_set_fd_towrite(nx->session);
-						lenw = channel_write(channels[0], (char*) ptr, len);
-						if (lenw <= 0)
-						{
-							nx->running = FALSE;
-							break;
-						}
+			else if (len > 0) {
+				for (ptr = buffer, lenw = 0; len > 0; len -= lenw, ptr += lenw) {
+					ssh_set_fd_towrite(nx->session);
+					lenw = channel_write(channels[0], (char*) ptr, len);
+					if (lenw <= 0) {
+						nx->running = FALSE;
+						break;
 					}
 				}
+			}
 		}
 
 		if (!nx->running)
 			break;
 
-		if (channels_out[0] && socketbuffer_len <= 0)
-		{
+		if (channels_out[0] && socketbuffer_len <= 0) {
 			len = channel_read_nonblocking(channels_out[0], socketbuffer, sizeof(socketbuffer), 0);
-			if (len == SSH_ERROR || len == SSH_EOF)
-			{
+			if (len == SSH_ERROR || len == SSH_EOF) {
 				nx->running = FALSE;
 				break;
+			} else if (len > 0) {
+				socketbuffer_ptr = socketbuffer;
+				socketbuffer_len = len;
+			} else {
+				/* Clean up the stderr buffer in case FreeNX send something there */
+				len = channel_read_nonblocking(channels_out[0], buffer, sizeof(buffer), 1);
 			}
-			else
-				if (len > 0)
-				{
-					socketbuffer_ptr = socketbuffer;
-					socketbuffer_len = len;
-				}
-				else
-				{
-					/* Clean up the stderr buffer in case FreeNX send something there */
-					len = channel_read_nonblocking(channels_out[0], buffer, sizeof(buffer), 1);
-				}
 		}
 
-		if (nx->running && socketbuffer_len > 0)
-		{
-			for (lenw = 0; socketbuffer_len > 0; socketbuffer_len -= lenw, socketbuffer_ptr += lenw)
-			{
+		if (nx->running && socketbuffer_len > 0) {
+			for (lenw = 0; socketbuffer_len > 0; socketbuffer_len -= lenw, socketbuffer_ptr += lenw) {
 				lenw = write(sock, socketbuffer_ptr, socketbuffer_len);
-				if (lenw == -1 && errno == EAGAIN && nx->running)
-				{
+				if (lenw == -1 && errno == EAGAIN && nx->running) {
 					/* Sometimes we cannot write to a socket (always EAGAIN), probably because it's internal
 					 * buffer is full. We need read the pending bytes from the socket first. so here we simply
 					 * break, leave the buffer there, and continue with other data */
 					break;
 				}
-				if (lenw <= 0)
-				{
+				if (lenw <= 0) {
 					nx->running = FALSE;
 					break;
 				}
@@ -961,8 +885,7 @@ gboolean remmina_nx_session_tunnel_open(RemminaNXSession *nx)
 		return TRUE;
 
 	remmina_nx_session_send_command(nx, "bye");
-	if (!remmina_nx_session_expect_status(nx, 999))
-	{
+	if (!remmina_nx_session_expect_status(nx, 999)) {
 		/* Shoud not happen, just in case */
 		remmina_nx_session_set_application_error(nx, "Server won't say bye to us?");
 		return FALSE;
@@ -972,8 +895,7 @@ gboolean remmina_nx_session_tunnel_open(RemminaNXSession *nx)
 
 	/* Create the server socket that listens on the local port */
 	sock = socket(AF_INET, SOCK_STREAM, 0);
-	if (sock < 0)
-	{
+	if (sock < 0) {
 		remmina_nx_session_set_application_error(nx, "Failed to create socket.");
 		return FALSE;
 	}
@@ -983,15 +905,13 @@ gboolean remmina_nx_session_tunnel_open(RemminaNXSession *nx)
 	sin.sin_port = htons(port);
 	sin.sin_addr.s_addr = inet_addr("127.0.0.1");
 
-	if (bind(sock, (struct sockaddr *) &sin, sizeof(sin)))
-	{
+	if (bind(sock, (struct sockaddr *) &sin, sizeof(sin))) {
 		remmina_nx_session_set_application_error(nx, "Failed to bind on local port.");
 		close(sock);
 		return FALSE;
 	}
 
-	if (listen(sock, 1))
-	{
+	if (listen(sock, 1)) {
 		remmina_nx_session_set_application_error(nx, "Failed to listen on local port.");
 		close(sock);
 		return FALSE;
@@ -1000,8 +920,7 @@ gboolean remmina_nx_session_tunnel_open(RemminaNXSession *nx)
 	nx->server_sock = sock;
 	nx->running = TRUE;
 
-	if (pthread_create(&nx->thread, NULL, remmina_nx_session_tunnel_main_thread, nx))
-	{
+	if (pthread_create(&nx->thread, NULL, remmina_nx_session_tunnel_main_thread, nx)) {
 		remmina_nx_session_set_application_error(nx, "Failed to initialize pthread.");
 		nx->thread = 0;
 		return FALSE;
@@ -1013,17 +932,14 @@ static gchar*
 remmina_nx_session_get_proxy_option(RemminaNXSession *nx)
 {
 	TRACE_CALL("remmina_nx_session_get_proxy_option");
-	if (nx->encryption)
-	{
+	if (nx->encryption) {
 		return g_strdup_printf("nx,session=%s,cookie=%s,id=%s,shmem=1,shpix=1,connect=127.0.0.1:%i",
-				(gchar*) g_hash_table_lookup(nx->session_parameters, "session"), nx->proxy_cookie,
-				nx->session_id, (nx->localport ? nx->localport : nx->session_display));
-	}
-	else
-	{
+							   (gchar*) g_hash_table_lookup(nx->session_parameters, "session"), nx->proxy_cookie,
+							   nx->session_id, (nx->localport ? nx->localport : nx->session_display));
+	} else {
 		return g_strdup_printf("nx,session=%s,cookie=%s,id=%s,shmem=1,shpix=1,connect=%s:%i",
-				(gchar*) g_hash_table_lookup(nx->session_parameters, "session"), nx->proxy_cookie,
-				nx->session_id, nx->server, nx->session_display);
+							   (gchar*) g_hash_table_lookup(nx->session_parameters, "session"), nx->proxy_cookie,
+							   nx->session_id, nx->server, nx->session_display);
 	}
 }
 
@@ -1039,25 +955,18 @@ gboolean remmina_nx_session_invoke_proxy(RemminaNXSession *nx, gint display, GCh
 	gint i;
 
 	/* Copy all current environment variable, but change DISPLAY. Assume we should always have DISPLAY... */
-	if (display >= 0)
-	{
+	if (display >= 0) {
 		envp = g_listenv();
-		for (i = 0; envp[i]; i++)
-		{
-			if (g_strcmp0(envp[i], "DISPLAY") == 0)
-			{
+		for (i = 0; envp[i]; i++) {
+			if (g_strcmp0(envp[i], "DISPLAY") == 0) {
 				s = g_strdup_printf("DISPLAY=:%i", display);
-			}
-			else
-			{
+			} else {
 				s = g_strdup_printf("%s=%s", envp[i], g_getenv(envp[i]));
 			}
 			g_free(envp[i]);
 			envp[i] = s;
 		}
-	}
-	else
-	{
+	} else {
 		envp = NULL;
 	}
 
@@ -1068,19 +977,17 @@ gboolean remmina_nx_session_invoke_proxy(RemminaNXSession *nx, gint display, GCh
 	argv[argc++] = NULL;
 
 	ret = g_spawn_async(NULL, argv, envp, G_SPAWN_SEARCH_PATH | G_SPAWN_DO_NOT_REAP_CHILD, NULL, NULL, &nx->proxy_pid,
-			&error);
+						&error);
 	g_strfreev(envp);
 	for (i = 0; i < argc; i++)
 		g_free(argv[i]);
 
-	if (!ret)
-	{
+	if (!ret) {
 		remmina_nx_session_set_application_error(nx, "%s", error->message);
 		return FALSE;
 	}
 
-	if (exit_func)
-	{
+	if (exit_func) {
 		nx->proxy_watch_source = g_child_watch_add(nx->proxy_pid, exit_func, user_data);
 	}
 
