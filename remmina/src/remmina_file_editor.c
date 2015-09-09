@@ -1405,4 +1405,3 @@ GtkWidget* remmina_file_editor_new_from_filename(const gchar* filename)
 		return NULL;
 	}
 }
-// vim:noet:ci:pi:sts=0:sw=4:ts=4
