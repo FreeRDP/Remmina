@@ -308,7 +308,7 @@ int remmina_rdp_cliprdr_server_file_contents_response(CliprdrClientContext* cont
 }
 
 
-static int remmina_rdp_cliprdr_monitor_ready(CliprdrClientContext* context, CLIPRDR_MONITOR_READY* monitorReady)
+static UINT remmina_rdp_cliprdr_monitor_ready(CliprdrClientContext* context, CLIPRDR_MONITOR_READY* monitorReady)
 {
 	TRACE_CALL("remmina_rdp_cliprdr_monitor_ready");
 	RemminaPluginRdpUiObject* ui;
@@ -323,17 +323,17 @@ static int remmina_rdp_cliprdr_monitor_ready(CliprdrClientContext* context, CLIP
 	ui->clipboard.type = REMMINA_RDP_UI_CLIPBOARD_MONITORREADY;
 	rf_queue_ui(gp, ui);
 
-	return 1;
+	return CHANNEL_RC_OK;
 }
 
-static int remmina_rdp_cliprdr_server_capabilities(CliprdrClientContext* context, CLIPRDR_CAPABILITIES* capabilities)
+static UINT remmina_rdp_cliprdr_server_capabilities(CliprdrClientContext* context, CLIPRDR_CAPABILITIES* capabilities)
 {
 	TRACE_CALL("remmina_rdp_cliprdr_server_capabilities");
-	return 1;
+	return CHANNEL_RC_OK;
 }
 
 
-static int remmina_rdp_cliprdr_server_format_list(CliprdrClientContext* context, CLIPRDR_FORMAT_LIST* formatList)
+static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext* context, CLIPRDR_FORMAT_LIST* formatList)
 {
 	TRACE_CALL("remmina_rdp_cliprdr_server_format_list");
 
@@ -399,17 +399,17 @@ static int remmina_rdp_cliprdr_server_format_list(CliprdrClientContext* context,
 	ui->clipboard.targetlist = list;
 	rf_queue_ui(gp, ui);
 
-	return 1;
+	return CHANNEL_RC_OK;
 }
 
-static int remmina_rdp_cliprdr_server_format_list_response(CliprdrClientContext* context, CLIPRDR_FORMAT_LIST_RESPONSE* formatListResponse)
+static UINT remmina_rdp_cliprdr_server_format_list_response(CliprdrClientContext* context, CLIPRDR_FORMAT_LIST_RESPONSE* formatListResponse)
 {
 	TRACE_CALL("remmina_rdp_cliprdr_server_format_list_response");
-	return 1;
+	return CHANNEL_RC_OK;
 }
 
 
-static int remmina_rdp_cliprdr_server_format_data_request(CliprdrClientContext* context, CLIPRDR_FORMAT_DATA_REQUEST* formatDataRequest)
+static UINT remmina_rdp_cliprdr_server_format_data_request(CliprdrClientContext* context, CLIPRDR_FORMAT_DATA_REQUEST* formatDataRequest)
 {
 	TRACE_CALL("remmina_rdp_cliprdr_server_format_data_request");
 
@@ -427,12 +427,13 @@ static int remmina_rdp_cliprdr_server_format_data_request(CliprdrClientContext* 
 	ui->clipboard.format = formatDataRequest->requestedFormatId;
 	rf_queue_ui(gp, ui);
 
-	return 1;
+	return CHANNEL_RC_OK;
 }
 
-static int remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext* context, CLIPRDR_FORMAT_DATA_RESPONSE* formatDataResponse)
+static UINT remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext* context, CLIPRDR_FORMAT_DATA_RESPONSE* formatDataResponse)
 {
 	TRACE_CALL("remmina_rdp_cliprdr_server_format_data_response");
+
 	UINT8* data;
 	size_t size;
 	rfContext* rfi;
@@ -565,7 +566,7 @@ static int remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext*
 	}
 	pthread_mutex_unlock(&clipboard->transfer_clip_mutex);
 
-	return 1;
+	return CHANNEL_RC_OK;
 }
 
 void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionData *selection_data, guint info, RemminaProtocolWidget* gp )
@@ -933,6 +934,7 @@ void remmina_rdp_clipboard_free(rfContext *rfi)
 void remmina_rdp_cliprdr_init(rfContext* rfi, CliprdrClientContext* cliprdr)
 {
 	TRACE_CALL("remmina_rdp_cliprdr_init");
+
 	rfClipboard* clipboard;
 	clipboard = &(rfi->clipboard);
 
