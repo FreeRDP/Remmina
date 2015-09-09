@@ -276,12 +276,12 @@ static gboolean remmina_nx_session_get_response(RemminaNXSession *nx)
 	timeout.tv_usec = 0;
 	ch[0] = nx->channel;
 	ch[1] = NULL;
-	channel_select(ch, NULL, NULL, &timeout);
+	ssh_channel_select(ch, NULL, NULL, &timeout);
 
 	is_stderr = 0;
 	while (is_stderr <= 1)
 	{
-		len = channel_poll(nx->channel, is_stderr);
+		len = ssh_channel_poll(nx->channel, is_stderr);
 		if (len == SSH_ERROR)
 		{
 			remmina_nx_session_set_error(nx, "Error reading channel: %s");
@@ -295,7 +295,7 @@ static gboolean remmina_nx_session_get_response(RemminaNXSession *nx)
 		return FALSE;
 
 	buffer = buffer_new();
-	len = channel_read_buffer(nx->channel, buffer, len, is_stderr);
+	len = ssh_channel_read_buffer(nx->channel, buffer, len, is_stderr);
 	if (len <= 0)
 	{
 		remmina_nx_session_set_application_error(nx, "Channel closed.");

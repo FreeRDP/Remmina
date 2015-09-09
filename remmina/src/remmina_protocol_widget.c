@@ -701,7 +701,7 @@ gboolean remmina_protocol_widget_ssh_exec(RemminaProtocolWidget* gp, gboolean wa
 		gchar *cmd, *ptr;
 		va_list args;
 
-		if ((channel = channel_new (REMMINA_SSH (tunnel)->session)) == NULL)
+		if ((channel = ssh_channel_new (REMMINA_SSH (tunnel)->session)) == NULL)
 		{
 			return FALSE;
 		}
@@ -710,13 +710,13 @@ gboolean remmina_protocol_widget_ssh_exec(RemminaProtocolWidget* gp, gboolean wa
 		cmd = g_strdup_vprintf (fmt, args);
 		va_end (args);
 
-		if (channel_open_session (channel) == SSH_OK &&
-				channel_request_exec (channel, cmd) == SSH_OK)
+		if (ssh_channel_open_session (channel) == SSH_OK &&
+				ssh_channel_request_exec (channel, cmd) == SSH_OK)
 		{
 			if (wait)
 			{
-				channel_send_eof (channel);
-				status = channel_get_exit_status (channel);
+				ssh_channel_send_eof (channel);
+				status = ssh_channel_get_exit_status (channel);
 				ptr = strchr (cmd, ' ');
 				if (ptr) *ptr = '\0';
 				switch (status)
@@ -745,8 +745,8 @@ gboolean remmina_protocol_widget_ssh_exec(RemminaProtocolWidget* gp, gboolean wa
 		}
 		g_free(cmd);
 		if (wait)
-			channel_close (channel);
-		channel_free (channel);
+			ssh_channel_close (channel);
+		ssh_channel_free (channel);
 		return ret;
 
 #else
