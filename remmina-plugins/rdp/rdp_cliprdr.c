@@ -321,6 +321,7 @@ static UINT remmina_rdp_cliprdr_monitor_ready(CliprdrClientContext* context, CLI
 	ui->type = REMMINA_RDP_UI_CLIPBOARD;
 	ui->clipboard.clipboard = clipboard;
 	ui->clipboard.type = REMMINA_RDP_UI_CLIPBOARD_MONITORREADY;
+	ui->sync = TRUE;
 	rf_queue_ui(gp, ui);
 
 	return CHANNEL_RC_OK;
@@ -397,6 +398,7 @@ static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext* context
 	ui->clipboard.clipboard = clipboard;
 	ui->clipboard.type = REMMINA_RDP_UI_CLIPBOARD_SET_DATA;
 	ui->clipboard.targetlist = list;
+	ui->sync = TRUE;
 	rf_queue_ui(gp, ui);
 
 	return CHANNEL_RC_OK;
@@ -425,6 +427,7 @@ static UINT remmina_rdp_cliprdr_server_format_data_request(CliprdrClientContext*
 	ui->clipboard.clipboard = clipboard;
 	ui->clipboard.type = REMMINA_RDP_UI_CLIPBOARD_GET_DATA;
 	ui->clipboard.format = formatDataRequest->requestedFormatId;
+	ui->sync = TRUE;
 	rf_queue_ui(gp, ui);
 
 	return CHANNEL_RC_OK;
