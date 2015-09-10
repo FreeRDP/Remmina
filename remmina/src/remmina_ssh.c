@@ -622,15 +622,15 @@ remmina_ssh_tunnel_add_channel (RemminaSSHTunnel *tunnel, ssh_channel channel, g
 	if (tunnel->num_channels > tunnel->max_channels) {
 		/* Allocate an extra NULL pointer in channels for ssh_select */
 		tunnel->channels = (ssh_channel*) g_realloc (tunnel->channels,
-						   sizeof (ssh_channel) * (tunnel->num_channels + 1));
+				sizeof (ssh_channel) * (tunnel->num_channels + 1));
 		tunnel->sockets = (gint*) g_realloc (tunnel->sockets,
-											 sizeof (gint) * tunnel->num_channels);
+				sizeof (gint) * tunnel->num_channels);
 		tunnel->socketbuffers = (RemminaSSHTunnelBuffer**) g_realloc (tunnel->socketbuffers,
-								sizeof (RemminaSSHTunnelBuffer*) * tunnel->num_channels);
+				sizeof (RemminaSSHTunnelBuffer*) * tunnel->num_channels);
 		tunnel->max_channels = tunnel->num_channels;
 
 		tunnel->channels_out = (ssh_channel*) g_realloc (tunnel->channels_out,
-							   sizeof (ssh_channel) * (tunnel->num_channels + 1));
+				sizeof (ssh_channel) * (tunnel->num_channels + 1));
 	}
 	tunnel->channels[i] = channel;
 	tunnel->channels[i + 1] = NULL;
@@ -706,7 +706,7 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 		}
 		if (ssh_channel_open_session (tunnel->x11_channel) ||
 				ssh_channel_request_x11 (tunnel->x11_channel, TRUE, NULL, ptr,
-										 gdk_screen_get_number (gdk_screen_get_default ()))) {
+					gdk_screen_get_number (gdk_screen_get_default ()))) {
 			g_free(ptr);
 			remmina_ssh_set_error (REMMINA_SSH (tunnel), "Failed to open channel : %s");
 			tunnel->thread = 0;
@@ -840,7 +840,7 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 					sock = socket (AF_INET, SOCK_STREAM, 0);
 					if (connect (sock, (struct sockaddr *) &sin, sizeof (sin)) < 0) {
 						remmina_ssh_set_application_error (REMMINA_SSH (tunnel),
-														   "Cannot connect to local port %i.", tunnel->localport);
+								"Cannot connect to local port %i.", tunnel->localport);
 						close (sock);
 						sock = -1;
 					}
@@ -1105,8 +1105,7 @@ remmina_ssh_tunnel_free (RemminaSSHTunnel* tunnel)
 	}
 
 	if (tunnel->tunnel_type == REMMINA_SSH_TUNNEL_XPORT && tunnel->remotedisplay > 0) {
-		ssh_forward_cancel (REMMINA_SSH (tunnel)->session,
-									NULL, 6000 + tunnel->remotedisplay);
+		ssh_forward_cancel (REMMINA_SSH (tunnel)->session, NULL, 6000 + tunnel->remotedisplay);
 	}
 	if (tunnel->server_sock >= 0) {
 		close (tunnel->server_sock);
