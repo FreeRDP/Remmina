@@ -281,7 +281,7 @@ static gboolean remmina_nx_session_get_response(RemminaNXSession *nx)
 		return FALSE;
 
 	buffer = buffer_new();
-	len = ssh_channel_read_buffer(nx->channel, buffer, len, is_stderr);
+	len = channel_read_buffer(nx->channel, buffer, len, is_stderr);
 	if (len <= 0) {
 		remmina_nx_session_set_application_error(nx, "Channel closed.");
 		return FALSE;
