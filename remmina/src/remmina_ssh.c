@@ -76,7 +76,9 @@
 #include "remmina_pref.h"
 #include "remmina/remmina_trace_calls.h"
 
-/*************************** SSH Base *********************************/
+/*-----------------------------------------------------------------------------*
+ *                           SSH Base                                          *
+ *-----------------------------------------------------------------------------*/
 
 #define LOCK_SSH(ssh) pthread_mutex_lock (&REMMINA_SSH (ssh)->ssh_mutex);
 #define UNLOCK_SSH(ssh) pthread_mutex_unlock (&REMMINA_SSH (ssh)->ssh_mutex);
@@ -486,6 +488,7 @@ remmina_ssh_free (RemminaSSH *ssh)
 {
 	TRACE_CALL("remmina_ssh_free");
 	if (ssh->session) {
+		ssh_disconnect (ssh->session);
 		ssh_free (ssh->session);
 		ssh->session = NULL;
 	}
@@ -500,7 +503,9 @@ remmina_ssh_free (RemminaSSH *ssh)
 	g_free(ssh);
 }
 
-/*************************** SSH Tunnel *********************************/
+/*-----------------------------------------------------------------------------*
+ *                           SSH Tunnel                                        *
+ *-----------------------------------------------------------------------------*/
 struct _RemminaSSHTunnelBuffer {
 	gchar *data;
 	gchar *ptr;
@@ -1121,7 +1126,9 @@ remmina_ssh_tunnel_free (RemminaSSHTunnel* tunnel)
 	remmina_ssh_free (REMMINA_SSH (tunnel));
 }
 
-/*************************** SFTP *********************************/
+/*-----------------------------------------------------------------------------*
+ *                           SSH sFTP                                          *
+ *-----------------------------------------------------------------------------*/
 
 RemminaSFTP*
 remmina_sftp_new_from_file (RemminaFile *remminafile)
@@ -1180,7 +1187,9 @@ remmina_sftp_free (RemminaSFTP *sftp)
 	remmina_ssh_free (REMMINA_SSH (sftp));
 }
 
-/*************************** SSH Shell *********************************/
+/*-----------------------------------------------------------------------------*
+ *                           SSH Shell                                         *
+ *-----------------------------------------------------------------------------*/
 
 RemminaSSHShell*
 remmina_ssh_shell_new_from_file (RemminaFile *remminafile)

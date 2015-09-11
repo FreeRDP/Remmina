@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -49,7 +49,9 @@
 
 G_BEGIN_DECLS
 
-/* ----------------- SSH Base --------------- */
+/*-----------------------------------------------------------------------------*
+ *                           SSH Base                                          *
+ *-----------------------------------------------------------------------------*/
 
 #define REMMINA_SSH(a) ((RemminaSSH*)a)
 
@@ -101,7 +103,9 @@ gchar* remmina_ssh_unconvert (RemminaSSH *ssh, const gchar *from);
 
 void remmina_ssh_free (RemminaSSH *ssh);
 
-/* ------------------- SSH Tunnel ---------------------- */
+/*-----------------------------------------------------------------------------*
+ *                           SSH Tunnel                                        *
+ *-----------------------------------------------------------------------------*/
 typedef struct _RemminaSSHTunnel RemminaSSHTunnel;
 typedef struct _RemminaSSHTunnelBuffer RemminaSSHTunnelBuffer;
 
@@ -187,7 +191,9 @@ gboolean remmina_ssh_tunnel_terminated (RemminaSSHTunnel *tunnel);
 /* Free the tunnel */
 void remmina_ssh_tunnel_free (RemminaSSHTunnel *tunnel);
 
-/*----------------------- SFTP ------------------------*/
+/*-----------------------------------------------------------------------------*
+ *                           SSH sFTP                                          *
+ *-----------------------------------------------------------------------------*/
 
 typedef struct _RemminaSFTP
 {
@@ -208,7 +214,9 @@ gboolean remmina_sftp_open (RemminaSFTP *sftp);
 /* Free the SFTP session */
 void remmina_sftp_free (RemminaSFTP *sftp);
 
-/*----------------------- SSH Shell ------------------------*/
+/*-----------------------------------------------------------------------------*
+ *                           SSH Shell                                         *
+ *-----------------------------------------------------------------------------*/
 typedef void (*RemminaSSHExitFunc) (gpointer data);
 
 typedef struct _RemminaSSHShell
