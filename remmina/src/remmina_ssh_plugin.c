@@ -41,6 +41,8 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <vte/vte.h>
+#include <locale.h>
+#include <langinfo.h>
 #include "remmina_public.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_ssh.h"
@@ -89,7 +91,8 @@ remmina_plugin_ssh_main_thread (gpointer data)
 		shell = remmina_ssh_shell_new_from_ssh (ssh);
 		if (remmina_ssh_init_session (REMMINA_SSH (shell)) &&
 				remmina_ssh_auth (REMMINA_SSH (shell), NULL) > 0 &&
-				remmina_ssh_shell_open (shell, (RemminaSSHExitFunc) remmina_plugin_service->protocol_plugin_close_connection, gp))
+				remmina_ssh_shell_open (shell, (RemminaSSHExitFunc)
+					remmina_plugin_service->protocol_plugin_close_connection, gp))
 		{
 			cont = TRUE;
 		}
@@ -118,7 +121,8 @@ remmina_plugin_ssh_main_thread (gpointer data)
 			}
 			if (ret <= 0) break;
 
-			if (!remmina_ssh_shell_open (shell, (RemminaSSHExitFunc) remmina_plugin_service->protocol_plugin_close_connection, gp))
+			if (!remmina_ssh_shell_open (shell, (RemminaSSHExitFunc)
+						remmina_plugin_service->protocol_plugin_close_connection, gp))
 			{
 				remmina_plugin_service->protocol_plugin_set_error (gp, "%s", REMMINA_SSH (shell)->error);
 				break;
@@ -161,14 +165,19 @@ void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal,
 		return;
 	}
 
+	setlocale(LC_ALL, "");
 	if (codeset && codeset[0] != '\0')
 	{
 #if !VTE_CHECK_VERSION(0,38,0)
+		vte_terminal_set_emulation(terminal, "xterm")
 		vte_terminal_set_encoding (terminal, codeset);
 #else
 		vte_terminal_set_encoding (terminal, codeset, NULL);
 #endif
 	}
+
+	vte_terminal_set_backspace_binding(terminal, VTE_ERASE_ASCII_DELETE);
+	vte_terminal_set_delete_binding(terminal, VTE_ERASE_DELETE_SEQUENCE);
 
 #if !VTE_CHECK_VERSION(0,38,0)
 	vte_terminal_set_pty (terminal, slave);
