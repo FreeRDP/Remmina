@@ -40,6 +40,7 @@
 /* Define this before stdlib.h to have posix_openpt */
 #define _XOPEN_SOURCE 600
 
+#define LIBSSH_STATIC 1
 #include <libssh/libssh.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
