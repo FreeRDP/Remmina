@@ -40,6 +40,7 @@
 
 #ifdef HAVE_LIBSSH
 
+#define LIBSSH_STATIC 1
 #include <libssh/libssh.h>
 #include <libssh/callbacks.h>
 #include <libssh/sftp.h>

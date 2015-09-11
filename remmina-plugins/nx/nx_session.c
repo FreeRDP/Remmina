@@ -37,6 +37,7 @@
 #include <pthread.h>
 #include "common/remmina_plugin.h"
 #include <glib/gstdio.h>
+#define LIBSSH_STATIC 1
 #include <libssh/libssh.h>
 #include "nx_session.h"
 
