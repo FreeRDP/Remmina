@@ -182,7 +182,7 @@ remmina_ssh_auth_pubkey (RemminaSSH *ssh)
 
 	if (ssh->privkeyfile == NULL) {
 		ssh->error = g_strdup_printf(_("SSH public key authentication failed: %s"),
-									 _("SSH Key file not yet set."));
+				_("SSH Key file not yet set."));
 		return 0;
 	}
 
@@ -269,10 +269,11 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog)
 	ret = ssh_is_server_known (ssh->session);
 	switch (ret) {
 	case SSH_SERVER_KNOWN_OK:
-		break;
+		break;                          /* ok */
 
-	case SSH_SERVER_NOT_KNOWN:
 	case SSH_SERVER_FILE_NOT_FOUND:
+		      /*  fallback to SSH_SERVER_NOT_KNOWN behavior */
+	case SSH_SERVER_NOT_KNOWN:
 	case SSH_SERVER_KNOWN_CHANGED:
 	case SSH_SERVER_FOUND_OTHER:
 		if ( ssh_get_publickey(ssh->session, &server_pubkey) != SSH_OK ) {
