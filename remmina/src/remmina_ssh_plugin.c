@@ -169,7 +169,7 @@ void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal,
 	if (codeset && codeset[0] != '\0')
 	{
 #if !VTE_CHECK_VERSION(0,38,0)
-		vte_terminal_set_emulation(terminal, "xterm")
+		vte_terminal_set_emulation(terminal, "xterm");
 		vte_terminal_set_encoding (terminal, codeset);
 #else
 		vte_terminal_set_encoding (terminal, codeset, NULL);
