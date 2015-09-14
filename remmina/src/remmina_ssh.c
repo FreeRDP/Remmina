@@ -223,6 +223,22 @@ remmina_ssh_auth_auto_pubkey (RemminaSSH* ssh)
 	return 1;
 }
 
+static gint
+remmina_ssh_auth_agent (RemminaSSH* ssh)
+{
+	TRACE_CALL("remmina_ssh_auth_agent");
+	gint ret;
+	ret = ssh_userauth_agent (ssh->session, NULL);
+
+	if (ret != SSH_AUTH_SUCCESS) {
+		remmina_ssh_set_error (ssh, _("SSH public key authentication with ssh agent failed: %s"));
+		return 0;
+	}
+
+	ssh->authenticated = TRUE;
+	return 1;
+}
+
 gint
 remmina_ssh_auth (RemminaSSH *ssh, const gchar *password)
 {
@@ -246,6 +262,9 @@ remmina_ssh_auth (RemminaSSH *ssh, const gchar *password)
 
 	case SSH_AUTH_PUBLICKEY:
 		return remmina_ssh_auth_pubkey (ssh);
+
+	case SSH_AUTH_AGENT:
+		return remmina_ssh_auth_agent (ssh);
 
 	case SSH_AUTH_AUTO_PUBLICKEY:
 		return remmina_ssh_auth_auto_pubkey (ssh);
