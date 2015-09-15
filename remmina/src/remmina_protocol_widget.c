@@ -77,13 +77,13 @@ struct _RemminaProtocolWidgetPriv {
 
 G_DEFINE_TYPE(RemminaProtocolWidget, remmina_protocol_widget, GTK_TYPE_EVENT_BOX)
 
-enum {
-	CONNECT_SIGNAL,
-	DISCONNECT_SIGNAL,
-	DESKTOP_RESIZE_SIGNAL,
-	UPDATE_ALIGN_SIGNAL,
-	LAST_SIGNAL
-};
+	enum {
+		CONNECT_SIGNAL,
+		DISCONNECT_SIGNAL,
+		DESKTOP_RESIZE_SIGNAL,
+		UPDATE_ALIGN_SIGNAL,
+		LAST_SIGNAL
+	};
 
 typedef struct _RemminaProtocolWidgetSignalData {
 	RemminaProtocolWidget* gp;
@@ -203,11 +203,11 @@ void remmina_protocol_widget_open_connection_real(gpointer data)
 
 	/* Locate the protocol plugin */
 	plugin = (RemminaProtocolPlugin*) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL,
-			 remmina_file_get_string(remminafile, "protocol"));
+			remmina_file_get_string(remminafile, "protocol"));
 
 	if (!plugin || !plugin->init || !plugin->open_connection) {
 		remmina_protocol_widget_set_error(gp, _("Protocol plugin %s is not installed."),
-										  remmina_file_get_string(remminafile, "protocol"));
+				remmina_file_get_string(remminafile, "protocol"));
 		remmina_protocol_widget_close_connection(gp);
 		return;
 	}
@@ -350,8 +350,8 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget* gp, GtkMenuI
 		/* Replace special characters */
 		for (i = 0; keystrokes_replaces[i].replace; i++) {
 			remmina_public_str_replace_in_place(keystrokes,
-												keystrokes_replaces[i].search,
-												keystrokes_replaces[i].replace);
+					keystrokes_replaces[i].search,
+					keystrokes_replaces[i].replace);
 		}
 		keyvals = (guint *) g_malloc(strlen(keystrokes));
 		while(TRUE) {
@@ -471,24 +471,24 @@ void remmina_protocol_widget_call_feature_by_ref(RemminaProtocolWidget* gp, cons
 	TRACE_CALL("remmina_protocol_widget_call_feature_by_ref");
 	switch (feature->id) {
 #ifdef HAVE_LIBSSH
-	case REMMINA_PROTOCOL_FEATURE_TOOL_SSH:
-		if (gp->priv->ssh_tunnel) {
-			remmina_connection_window_open_from_file_full (
-				remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SSH"), NULL, gp->priv->ssh_tunnel, NULL);
-			return;
-		}
-		break;
+		case REMMINA_PROTOCOL_FEATURE_TOOL_SSH:
+			if (gp->priv->ssh_tunnel) {
+				remmina_connection_window_open_from_file_full (
+						remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SSH"), NULL, gp->priv->ssh_tunnel, NULL);
+				return;
+			}
+			break;
 
-	case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
-		if (gp->priv->ssh_tunnel) {
-			remmina_connection_window_open_from_file_full (
-				remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SFTP"), NULL, gp->priv->ssh_tunnel, NULL);
-			return;
-		}
-		break;
+		case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
+			if (gp->priv->ssh_tunnel) {
+				remmina_connection_window_open_from_file_full (
+						remmina_file_dup_temp_protocol (gp->priv->remmina_file, "SFTP"), NULL, gp->priv->ssh_tunnel, NULL);
+				return;
+			}
+			break;
 #endif
-	default:
-		break;
+		default:
+			break;
 	}
 	gp->priv->plugin->call_feature(gp, feature);
 }
@@ -537,7 +537,7 @@ static gboolean remmina_protocol_widget_init_tunnel (RemminaProtocolWidget* gp)
 		tunnel = remmina_ssh_tunnel_new_from_file (gp->priv->remmina_file);
 
 		remmina_init_dialog_set_status (REMMINA_INIT_DIALOG (gp->priv->init_dialog),
-										_("Connecting to SSH server %s..."), REMMINA_SSH (tunnel)->server);
+				_("Connecting to SSH server %s..."), REMMINA_SSH (tunnel)->server);
 
 		if (!remmina_ssh_init_session (REMMINA_SSH (tunnel))) {
 			remmina_protocol_widget_set_error (gp, REMMINA_SSH (tunnel)->error);
@@ -594,7 +594,7 @@ gchar* remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget* gp, gi
 	}
 
 	remmina_init_dialog_set_status (REMMINA_INIT_DIALOG (gp->priv->init_dialog),
-									_("Connecting to %s through SSH tunnel..."), server);
+			_("Connecting to %s through SSH tunnel..."), server);
 
 	if (remmina_file_get_int (gp->priv->remmina_file, "ssh_loopback", FALSE)) {
 		g_free(host);
@@ -632,7 +632,7 @@ gboolean remmina_protocol_widget_start_reverse_tunnel(RemminaProtocolWidget* gp,
 	}
 
 	remmina_init_dialog_set_status (REMMINA_INIT_DIALOG (gp->priv->init_dialog),
-									_("Waiting for an incoming SSH tunnel at port %i..."), remmina_file_get_int (gp->priv->remmina_file, "listenport", 0));
+			_("Waiting for an incoming SSH tunnel at port %i..."), remmina_file_get_int (gp->priv->remmina_file, "listenport", 0));
 
 	if (!remmina_ssh_tunnel_reverse (gp->priv->ssh_tunnel, remmina_file_get_int (gp->priv->remmina_file, "listenport", 0), local_port)) {
 		remmina_protocol_widget_set_error (gp, REMMINA_SSH (gp->priv->ssh_tunnel)->error);
@@ -670,17 +670,17 @@ gboolean remmina_protocol_widget_ssh_exec(RemminaProtocolWidget* gp, gboolean wa
 			ptr = strchr (cmd, ' ');
 			if (ptr) *ptr = '\0';
 			switch (status) {
-			case 0:
-				ret = TRUE;
-				break;
-			case 127:
-				remmina_ssh_set_application_error (REMMINA_SSH (tunnel),
-												   _("Command %s not found on SSH server"), cmd);
-				break;
-			default:
-				remmina_ssh_set_application_error (REMMINA_SSH (tunnel),
-												   _("Command %s failed on SSH server (status = %i)."), cmd,status);
-				break;
+				case 0:
+					ret = TRUE;
+					break;
+				case 127:
+					remmina_ssh_set_application_error (REMMINA_SSH (tunnel),
+							_("Command %s not found on SSH server"), cmd);
+					break;
+				default:
+					remmina_ssh_set_application_error (REMMINA_SSH (tunnel),
+							_("Command %s failed on SSH server (status = %i)."), cmd,status);
+					break;
 			}
 		} else {
 			ret = TRUE;
@@ -748,7 +748,7 @@ gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget* gp, R
 	if (!remmina_protocol_widget_init_tunnel (gp)) return FALSE;
 
 	remmina_init_dialog_set_status (REMMINA_INIT_DIALOG (gp->priv->init_dialog),
-									_("Connecting to %s through SSH tunnel..."), remmina_file_get_string (gp->priv->remmina_file, "server"));
+			_("Connecting to %s through SSH tunnel..."), remmina_file_get_string (gp->priv->remmina_file, "server"));
 
 	gp->priv->init_func = init_func;
 	gp->priv->ssh_tunnel->init_func = remmina_protocol_widget_tunnel_init_callback;
@@ -762,7 +762,7 @@ gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget* gp, R
 
 	if (!remmina_ssh_tunnel_xport (gp->priv->ssh_tunnel, bindlocalhost)) {
 		remmina_protocol_widget_set_error (gp, "Failed to open channel : %s",
-										   ssh_get_error (REMMINA_SSH (gp->priv->ssh_tunnel)->session));
+				ssh_get_error (REMMINA_SSH (gp->priv->ssh_tunnel)->session));
 		return FALSE;
 	}
 
@@ -883,26 +883,26 @@ gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget* gp, RemminaAuth
 	gint ret;
 
 	switch (authpwd_type) {
-	case REMMINA_AUTHPWD_TYPE_PROTOCOL:
-		s = g_strdup_printf(_("%s password"), remmina_file_get_string(remminafile, "protocol"));
-		break;
-	case REMMINA_AUTHPWD_TYPE_SSH_PWD:
-		s = g_strdup(_("SSH password"));
-		break;
-	case REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY:
-		s = g_strdup(_("SSH private key passphrase"));
-		break;
-	default:
-		s = g_strdup(_("Password"));
-		break;
+		case REMMINA_AUTHPWD_TYPE_PROTOCOL:
+			s = g_strdup_printf(_("%s password"), remmina_file_get_string(remminafile, "protocol"));
+			break;
+		case REMMINA_AUTHPWD_TYPE_SSH_PWD:
+			s = g_strdup(_("SSH password"));
+			break;
+		case REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY:
+			s = g_strdup(_("SSH private key passphrase"));
+			break;
+		default:
+			s = g_strdup(_("Password"));
+			break;
 	}
 	ret = remmina_init_dialog_authpwd(
-			  REMMINA_INIT_DIALOG(gp->priv->init_dialog),
-			  s,
-			  remmina_file_get_filename(remminafile) != NULL &&
-			  allow_password_saving &&
-			  authpwd_type != REMMINA_AUTHPWD_TYPE_SSH_PWD &&
-			  authpwd_type != REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY);
+			REMMINA_INIT_DIALOG(gp->priv->init_dialog),
+			s,
+			remmina_file_get_filename(remminafile) != NULL &&
+			allow_password_saving &&
+			authpwd_type != REMMINA_AUTHPWD_TYPE_SSH_PWD &&
+			authpwd_type != REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY);
 	g_free(s);
 
 	return ret;
@@ -914,11 +914,11 @@ gint remmina_protocol_widget_init_authuserpwd(RemminaProtocolWidget* gp, gboolea
 	RemminaFile* remminafile = gp->priv->remmina_file;
 
 	return remmina_init_dialog_authuserpwd(
-			   REMMINA_INIT_DIALOG(gp->priv->init_dialog),
-			   want_domain,
-			   remmina_file_get_string(remminafile, "username"),
-			   want_domain ? remmina_file_get_string(remminafile, "domain") : NULL,
-			   (remmina_file_get_filename(remminafile) != NULL) && allow_password_saving);
+			REMMINA_INIT_DIALOG(gp->priv->init_dialog),
+			want_domain,
+			remmina_file_get_string(remminafile, "username"),
+			want_domain ? remmina_file_get_string(remminafile, "domain") : NULL,
+			(remmina_file_get_filename(remminafile) != NULL) && allow_password_saving);
 }
 
 gint remmina_protocol_widget_init_certificate(RemminaProtocolWidget* gp, const gchar* subject, const gchar* issuer, const gchar* fingerprint)
@@ -962,8 +962,8 @@ gint remmina_protocol_widget_init_authx509(RemminaProtocolWidget* gp)
 	RemminaFile* remminafile = gp->priv->remmina_file;
 
 	return remmina_init_dialog_authx509(REMMINA_INIT_DIALOG(gp->priv->init_dialog),
-										remmina_file_get_string(remminafile, "cacert"), remmina_file_get_string(remminafile, "cacrl"),
-										remmina_file_get_string(remminafile, "clientcert"), remmina_file_get_string(remminafile, "clientkey"));
+			remmina_file_get_string(remminafile, "cacert"), remmina_file_get_string(remminafile, "cacrl"),
+			remmina_file_get_string(remminafile, "clientcert"), remmina_file_get_string(remminafile, "clientkey"));
 }
 
 gchar* remmina_protocol_widget_init_get_cacert(RemminaProtocolWidget* gp)
@@ -1061,15 +1061,15 @@ void remmina_protocol_widget_init_show_listen(RemminaProtocolWidget* gp, gint po
 {
 	TRACE_CALL("remmina_protocol_widget_init_show_listen");
 	remmina_init_dialog_set_status(REMMINA_INIT_DIALOG(gp->priv->init_dialog),
-								   _("Listening on port %i for an incoming %s connection..."), port,
-								   remmina_file_get_string(gp->priv->remmina_file, "protocol"));
+			_("Listening on port %i for an incoming %s connection..."), port,
+			remmina_file_get_string(gp->priv->remmina_file, "protocol"));
 }
 
 void remmina_protocol_widget_init_show_retry(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_protocol_widget_init_show_retry");
 	remmina_init_dialog_set_status_temp(REMMINA_INIT_DIALOG(gp->priv->init_dialog),
-										_("Authentication failed. Trying to reconnect..."));
+			_("Authentication failed. Trying to reconnect..."));
 }
 
 void remmina_protocol_widget_init_show(RemminaProtocolWidget* gp)
@@ -1091,7 +1091,7 @@ static void remmina_protocol_widget_chat_on_destroy(RemminaProtocolWidget* gp)
 }
 
 void remmina_protocol_widget_chat_open(RemminaProtocolWidget* gp, const gchar *name,
-									   void(*on_send)(RemminaProtocolWidget* gp, const gchar *text), void(*on_destroy)(RemminaProtocolWidget* gp))
+		void(*on_send)(RemminaProtocolWidget* gp, const gchar *text), void(*on_destroy)(RemminaProtocolWidget* gp))
 {
 	TRACE_CALL("remmina_protocol_widget_chat_open");
 	if (gp->priv->chat_window) {
@@ -1100,7 +1100,7 @@ void remmina_protocol_widget_chat_open(RemminaProtocolWidget* gp, const gchar *n
 		gp->priv->chat_window = remmina_chat_window_new(GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(gp))), name);
 		g_signal_connect_swapped(G_OBJECT(gp->priv->chat_window), "send", G_CALLBACK(on_send), gp);
 		g_signal_connect_swapped(G_OBJECT(gp->priv->chat_window), "destroy",
-								 G_CALLBACK(remmina_protocol_widget_chat_on_destroy), gp);
+				G_CALLBACK(remmina_protocol_widget_chat_on_destroy), gp);
 		g_signal_connect_swapped(G_OBJECT(gp->priv->chat_window), "destroy", G_CALLBACK(on_destroy), gp);
 		gtk_widget_show(gp->priv->chat_window);
 	}
