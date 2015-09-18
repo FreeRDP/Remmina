@@ -220,7 +220,7 @@ static void remmina_on_startup(GApplication *app)
 	gtk_window_set_default_icon_name("remmina");
 
 	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
-		REMMINA_DATADIR G_DIR_SEPARATOR_S "icons");
+	                                   REMMINA_DATADIR G_DIR_SEPARATOR_S "icons");
 }
 
 static gboolean remmina_on_local_cmdline (GApplication *app, gchar ***arguments, gint *exit_status)

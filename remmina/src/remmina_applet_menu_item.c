@@ -88,37 +88,37 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 
 	switch (item_type)
 	{
-		case REMMINA_APPLET_MENU_ITEM_FILE:
-			item->filename = g_strdup(va_arg(ap, const gchar*));
+	case REMMINA_APPLET_MENU_ITEM_FILE:
+		item->filename = g_strdup(va_arg(ap, const gchar*));
 
-			/* Load the file */
-			gkeyfile = g_key_file_new();
+		/* Load the file */
+		gkeyfile = g_key_file_new();
 
-			if (!g_key_file_load_from_file(gkeyfile, item->filename, G_KEY_FILE_NONE, NULL))
-			{
-				g_key_file_free(gkeyfile);
-				va_end(ap);
-				return NULL;
-			}
-
-			item->name = g_key_file_get_string(gkeyfile, "remmina", "name", NULL);
-			item->group = g_key_file_get_string(gkeyfile, "remmina", "group", NULL);
-			item->protocol = g_key_file_get_string(gkeyfile, "remmina", "protocol", NULL);
-			item->server = g_key_file_get_string(gkeyfile, "remmina", "server", NULL);
-			item->ssh_enabled = g_key_file_get_boolean(gkeyfile, "remmina", "ssh_enabled", NULL);
-
+		if (!g_key_file_load_from_file(gkeyfile, item->filename, G_KEY_FILE_NONE, NULL))
+		{
 			g_key_file_free(gkeyfile);
-			break;
+			va_end(ap);
+			return NULL;
+		}
 
-		case REMMINA_APPLET_MENU_ITEM_DISCOVERED:
-			item->name = g_strdup(va_arg(ap, const gchar *));
-			item->group = g_strdup(_("Discovered"));
-			item->protocol = g_strdup("VNC");
-			break;
+		item->name = g_key_file_get_string(gkeyfile, "remmina", "name", NULL);
+		item->group = g_key_file_get_string(gkeyfile, "remmina", "group", NULL);
+		item->protocol = g_key_file_get_string(gkeyfile, "remmina", "protocol", NULL);
+		item->server = g_key_file_get_string(gkeyfile, "remmina", "server", NULL);
+		item->ssh_enabled = g_key_file_get_boolean(gkeyfile, "remmina", "ssh_enabled", NULL);
 
-		case REMMINA_APPLET_MENU_ITEM_NEW:
-			item->name = g_strdup(_("New Connection"));
-			break;
+		g_key_file_free(gkeyfile);
+		break;
+
+	case REMMINA_APPLET_MENU_ITEM_DISCOVERED:
+		item->name = g_strdup(va_arg(ap, const gchar *));
+		item->group = g_strdup(_("Discovered"));
+		item->protocol = g_strdup("VNC");
+		break;
+
+	case REMMINA_APPLET_MENU_ITEM_NEW:
+		item->name = g_strdup(_("New Connection"));
+		break;
 	}
 
 	va_end(ap);

@@ -47,13 +47,15 @@ G_BEGIN_DECLS
 
 typedef struct _RemminaFTPClientPriv RemminaFTPClientPriv;
 
-typedef struct _RemminaFTPClient {
+typedef struct _RemminaFTPClient
+{
 	GtkVBox vbox;
 
 	RemminaFTPClientPriv *priv;
 } RemminaFTPClient;
 
-typedef struct _RemminaFTPClientClass {
+typedef struct _RemminaFTPClientClass
+{
 	GtkVBoxClass parent_class;
 
 	void (*open_dir)(RemminaFTPClient *client);
@@ -65,11 +67,13 @@ typedef struct _RemminaFTPClientClass {
 GType remmina_ftp_client_get_type(void)
 G_GNUC_CONST;
 
-enum {
+enum
+{
 	REMMINA_FTP_FILE_TYPE_DIR, REMMINA_FTP_FILE_TYPE_FILE, REMMINA_FTP_FILE_N_TYPES,
 };
 
-enum {
+enum
+{
 	REMMINA_FTP_FILE_COLUMN_TYPE,
 	REMMINA_FTP_FILE_COLUMN_NAME,
 	REMMINA_FTP_FILE_COLUMN_SIZE,
@@ -80,11 +84,13 @@ enum {
 	REMMINA_FTP_FILE_N_COLUMNS
 };
 
-enum {
+enum
+{
 	REMMINA_FTP_TASK_TYPE_DOWNLOAD, REMMINA_FTP_TASK_TYPE_UPLOAD, REMMINA_FTP_TASK_N_TYPES
 };
 
-enum {
+enum
+{
 	REMMINA_FTP_TASK_STATUS_WAIT,
 	REMMINA_FTP_TASK_STATUS_RUN,
 	REMMINA_FTP_TASK_STATUS_FINISH,
@@ -92,7 +98,8 @@ enum {
 	REMMINA_FTP_TASK_N_STATUSES
 };
 
-enum {
+enum
+{
 	REMMINA_FTP_TASK_COLUMN_TYPE,
 	REMMINA_FTP_TASK_COLUMN_NAME,
 	REMMINA_FTP_TASK_COLUMN_SIZE,
@@ -106,7 +113,8 @@ enum {
 	REMMINA_FTP_TASK_N_COLUMNS
 };
 
-typedef struct _RemminaFTPTask {
+typedef struct _RemminaFTPTask
+{
 	/* Read-only */
 	gint type;
 	gchar *name;

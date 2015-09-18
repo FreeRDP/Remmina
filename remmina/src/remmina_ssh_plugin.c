@@ -62,7 +62,7 @@ typedef struct _RemminaPluginSshData
 	RemminaSSHShell *shell;
 	GtkWidget *vte;
 	pthread_t thread;
-}RemminaPluginSshData;
+} RemminaPluginSshData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
@@ -90,9 +90,9 @@ remmina_plugin_ssh_main_thread (gpointer data)
 		/* Create SSH Shell connection based on existing SSH session */
 		shell = remmina_ssh_shell_new_from_ssh (ssh);
 		if (remmina_ssh_init_session (REMMINA_SSH (shell)) &&
-				remmina_ssh_auth (REMMINA_SSH (shell), NULL) > 0 &&
-				remmina_ssh_shell_open (shell, (RemminaSSHExitFunc)
-					remmina_plugin_service->protocol_plugin_close_connection, gp))
+		        remmina_ssh_auth (REMMINA_SSH (shell), NULL) > 0 &&
+		        remmina_ssh_shell_open (shell, (RemminaSSHExitFunc)
+		                                remmina_plugin_service->protocol_plugin_close_connection, gp))
 		{
 			cont = TRUE;
 		}
@@ -102,7 +102,7 @@ remmina_plugin_ssh_main_thread (gpointer data)
 		/* New SSH Shell connection */
 		remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 		remmina_plugin_service->file_set_string (remminafile, "ssh_server",
-				remmina_plugin_service->file_get_string (remminafile, "server"));
+		        remmina_plugin_service->file_get_string (remminafile, "server"));
 
 		shell = remmina_ssh_shell_new_from_file (remminafile);
 		while (1)
@@ -114,7 +114,7 @@ remmina_plugin_ssh_main_thread (gpointer data)
 			}
 
 			ret = remmina_ssh_auth_gui (REMMINA_SSH (shell),
-					REMMINA_INIT_DIALOG (remmina_protocol_widget_get_init_dialog (gp)));
+			                            REMMINA_INIT_DIALOG (remmina_protocol_widget_get_init_dialog (gp)));
 			if (ret == 0)
 			{
 				remmina_plugin_service->protocol_plugin_set_error (gp, "%s", REMMINA_SSH (shell)->error);
@@ -122,7 +122,7 @@ remmina_plugin_ssh_main_thread (gpointer data)
 			if (ret <= 0) break;
 
 			if (!remmina_ssh_shell_open (shell, (RemminaSSHExitFunc)
-						remmina_plugin_service->protocol_plugin_close_connection, gp))
+			                             remmina_plugin_service->protocol_plugin_close_connection, gp))
 			{
 				remmina_plugin_service->protocol_plugin_set_error (gp, "%s", REMMINA_SSH (shell)->error);
 				break;
@@ -152,7 +152,8 @@ remmina_plugin_ssh_main_thread (gpointer data)
 void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal, const char *codeset, int slave)
 {
 	TRACE_CALL("remmina_plugin_ssh_vte_terminal_set_encoding_and_pty");
-	if ( !remmina_masterthread_exec_is_main_thread() ) {
+	if ( !remmina_masterthread_exec_is_main_thread() )
+	{
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
 		d = (RemminaMTExecData*)g_malloc( sizeof(RemminaMTExecData) );
@@ -227,7 +228,7 @@ remmina_plugin_ssh_set_vte_pref (RemminaProtocolWidget *gp)
 		vte_terminal_set_font_from_string (VTE_TERMINAL (gpdata->vte), remmina_pref.vte_font);
 #else
 		vte_terminal_set_font (VTE_TERMINAL (gpdata->vte),
-							   pango_font_description_from_string (remmina_pref.vte_font));
+		                       pango_font_description_from_string (remmina_pref.vte_font));
 #endif
 	}
 	vte_terminal_set_allow_bold (VTE_TERMINAL (gpdata->vte), remmina_pref.vte_allow_bold_text);
@@ -320,7 +321,7 @@ remmina_plugin_ssh_open_connection (RemminaProtocolWidget *gp)
 	if (pthread_create (&gpdata->thread, NULL, remmina_plugin_ssh_main_thread, gp))
 	{
 		remmina_plugin_service->protocol_plugin_set_error (gp,
-				"Failed to initialize pthread. Falling back to non-thread mode...");
+		        "Failed to initialize pthread. Falling back to non-thread mode...");
 		gpdata->thread = 0;
 		return FALSE;
 	}
@@ -367,20 +368,20 @@ remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, const RemminaProtoco
 
 	switch (feature->id)
 	{
-		case REMMINA_PROTOCOL_FEATURE_TOOL_SSH:
+	case REMMINA_PROTOCOL_FEATURE_TOOL_SSH:
 		remmina_plugin_service->open_connection (
-				remmina_file_dup_temp_protocol (remmina_plugin_service->protocol_plugin_get_file (gp), "SSH"),
-				NULL, gpdata->shell, NULL);
+		    remmina_file_dup_temp_protocol (remmina_plugin_service->protocol_plugin_get_file (gp), "SSH"),
+		    NULL, gpdata->shell, NULL);
 		return;
-		case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
+	case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
 		remmina_plugin_service->open_connection (
-				remmina_file_dup_temp_protocol (remmina_plugin_service->protocol_plugin_get_file (gp), "SFTP"),
-				NULL, gpdata->shell, NULL);
+		    remmina_file_dup_temp_protocol (remmina_plugin_service->protocol_plugin_get_file (gp), "SFTP"),
+		    NULL, gpdata->shell, NULL);
 		return;
-		case REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY:
+	case REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY:
 		vte_terminal_copy_clipboard (VTE_TERMINAL (gpdata->vte));
 		return;
-		case REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE:
+	case REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE:
 		vte_terminal_paste_clipboard (VTE_TERMINAL (gpdata->vte));
 		return;
 	}

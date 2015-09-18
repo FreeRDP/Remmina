@@ -140,7 +140,7 @@ void remmina_protocol_widget_init_show(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_init_hide(RemminaProtocolWidget *gp);
 
 void remmina_protocol_widget_chat_open(RemminaProtocolWidget *gp, const gchar *name,
-		void(*on_send)(RemminaProtocolWidget *gp, const gchar *text), void(*on_destroy)(RemminaProtocolWidget *gp));
+                                       void(*on_send)(RemminaProtocolWidget *gp, const gchar *text), void(*on_destroy)(RemminaProtocolWidget *gp));
 void remmina_protocol_widget_chat_close(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_chat_receive(RemminaProtocolWidget *gp, const gchar *text);
 void remmina_protocol_widget_send_keys_signals(GtkWidget *widget, const guint *keyvals, int length, GdkEventType action);

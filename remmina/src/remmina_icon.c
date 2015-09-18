@@ -179,17 +179,17 @@ static void remmina_icon_on_launch_item(RemminaAppletMenu *menu, RemminaAppletMe
 
 	switch (menuitem->item_type)
 	{
-		case REMMINA_APPLET_MENU_ITEM_NEW:
-			remmina_exec_command(REMMINA_COMMAND_NEW, NULL);
-			break;
-		case REMMINA_APPLET_MENU_ITEM_FILE:
-			remmina_exec_command(REMMINA_COMMAND_CONNECT, menuitem->filename);
-			break;
-		case REMMINA_APPLET_MENU_ITEM_DISCOVERED:
-			s = g_strdup_printf("%s,%s", menuitem->protocol, menuitem->name);
-			remmina_exec_command(REMMINA_COMMAND_NEW, s);
-			g_free(s);
-			break;
+	case REMMINA_APPLET_MENU_ITEM_NEW:
+		remmina_exec_command(REMMINA_COMMAND_NEW, NULL);
+		break;
+	case REMMINA_APPLET_MENU_ITEM_FILE:
+		remmina_exec_command(REMMINA_COMMAND_CONNECT, menuitem->filename);
+		break;
+	case REMMINA_APPLET_MENU_ITEM_DISCOVERED:
+		s = g_strdup_printf("%s,%s", menuitem->protocol, menuitem->name);
+		remmina_exec_command(REMMINA_COMMAND_NEW, s);
+		g_free(s);
+		break;
 	}
 }
 
@@ -200,17 +200,17 @@ static void remmina_icon_on_edit_item(RemminaAppletMenu *menu, RemminaAppletMenu
 
 	switch (menuitem->item_type)
 	{
-		case REMMINA_APPLET_MENU_ITEM_NEW:
-			remmina_exec_command(REMMINA_COMMAND_NEW, NULL);
-			break;
-		case REMMINA_APPLET_MENU_ITEM_FILE:
-			remmina_exec_command(REMMINA_COMMAND_EDIT, menuitem->filename);
-			break;
-		case REMMINA_APPLET_MENU_ITEM_DISCOVERED:
-			s = g_strdup_printf("%s,%s", menuitem->protocol, menuitem->name);
-			remmina_exec_command(REMMINA_COMMAND_NEW, s);
-			g_free(s);
-			break;
+	case REMMINA_APPLET_MENU_ITEM_NEW:
+		remmina_exec_command(REMMINA_COMMAND_NEW, NULL);
+		break;
+	case REMMINA_APPLET_MENU_ITEM_FILE:
+		remmina_exec_command(REMMINA_COMMAND_EDIT, menuitem->filename);
+		break;
+	case REMMINA_APPLET_MENU_ITEM_DISCOVERED:
+		s = g_strdup_printf("%s,%s", menuitem->protocol, menuitem->name);
+		remmina_exec_command(REMMINA_COMMAND_NEW, s);
+		g_free(s);
+		break;
 	}
 }
 
@@ -395,7 +395,7 @@ static void remmina_icon_create_autostart_file(void)
 		g_key_file_set_string(gkeyfile, "Desktop Entry", "Version", "1.0");
 		g_key_file_set_string(gkeyfile, "Desktop Entry", "Name", _("Remmina Applet"));
 		g_key_file_set_string(gkeyfile, "Desktop Entry", "Comment",
-				_("Connect to remote desktops through the applet menu"));
+		                      _("Connect to remote desktops through the applet menu"));
 		g_key_file_set_string(gkeyfile, "Desktop Entry", "Icon", "remmina");
 		g_key_file_set_string(gkeyfile, "Desktop Entry", "Exec", "remmina -i");
 		g_key_file_set_boolean(gkeyfile, "Desktop Entry", "Terminal", FALSE);
@@ -429,17 +429,16 @@ void remmina_icon_init(void)
 #endif
 		remmina_widget_pool_hold(TRUE);
 	}
-	else
-		if (remmina_icon.icon)
-		{
+	else if (remmina_icon.icon)
+	{
 #ifdef HAVE_LIBAPPINDICATOR
-			app_indicator_set_status (remmina_icon.icon, remmina_pref.disable_tray_icon ?
-					APP_INDICATOR_STATUS_PASSIVE : APP_INDICATOR_STATUS_ACTIVE);
+		app_indicator_set_status (remmina_icon.icon, remmina_pref.disable_tray_icon ?
+		                          APP_INDICATOR_STATUS_PASSIVE : APP_INDICATOR_STATUS_ACTIVE);
 #else
-			gtk_status_icon_set_visible(remmina_icon.icon, !remmina_pref.disable_tray_icon);
+		gtk_status_icon_set_visible(remmina_icon.icon, !remmina_pref.disable_tray_icon);
 #endif
-			remmina_widget_pool_hold(!remmina_pref.disable_tray_icon);
-		}
+		remmina_widget_pool_hold(!remmina_pref.disable_tray_icon);
+	}
 	if (!remmina_icon.avahi)
 	{
 		remmina_icon.avahi = remmina_avahi_new();
@@ -491,7 +490,7 @@ void remmina_icon_set_autostart(gboolean autostart)
 		/* Refresh it in case translation is updated */
 		g_key_file_set_string(gkeyfile, "Desktop Entry", "Name", _("Remmina Applet"));
 		g_key_file_set_string(gkeyfile, "Desktop Entry", "Comment",
-				_("Connect to remote desktops through the applet menu"));
+		                      _("Connect to remote desktops through the applet menu"));
 		remmina_icon_save_autostart_file(gkeyfile);
 	}
 	g_key_file_free(gkeyfile);

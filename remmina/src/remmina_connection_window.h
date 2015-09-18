@@ -49,13 +49,15 @@ G_BEGIN_DECLS
 
 typedef struct _RemminaConnectionWindowPriv RemminaConnectionWindowPriv;
 
-typedef struct _RemminaConnectionWindow {
+typedef struct _RemminaConnectionWindow
+{
 	GtkWindow window;
 
 	RemminaConnectionWindowPriv* priv;
 } RemminaConnectionWindow;
 
-typedef struct _RemminaConnectionWindowClass {
+typedef struct _RemminaConnectionWindowClass
+{
 	GtkWindowClass parent_class;
 } RemminaConnectionWindowClass;
 
@@ -67,7 +69,7 @@ gboolean remmina_connection_window_open_from_filename(const gchar* filename);
 /* Open a new connection window for a given RemminaFile struct. The struct will be freed after the call */
 void remmina_connection_window_open_from_file(RemminaFile* remminafile);
 GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallback disconnect_cb, gpointer data,
-		guint* handler);
+        guint* handler);
 
 G_END_DECLS
 
