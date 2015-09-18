@@ -50,8 +50,8 @@ static RemminaStringList *string_list;
 void remmina_string_list_update_buttons_state(void)
 {
 	gint items_count = gtk_tree_model_iter_n_children(
-		GTK_TREE_MODEL(string_list->liststore_items), NULL);
-	
+	                       GTK_TREE_MODEL(string_list->liststore_items), NULL);
+
 	gtk_widget_set_sensitive(GTK_WIDGET(string_list->button_remove), items_count > 0);
 	gtk_widget_set_sensitive(GTK_WIDGET(string_list->button_up), items_count > 1);
 	gtk_widget_set_sensitive(GTK_WIDGET(string_list->button_down), items_count > 1);
@@ -158,9 +158,9 @@ void remmina_string_list_on_action_add(GtkWidget *widget, gpointer user_data)
 
 	path = gtk_tree_model_get_path(GTK_TREE_MODEL(string_list->liststore_items), &iter);
 	gtk_tree_view_set_cursor_on_cell(string_list->treeview_items, path,
-			string_list->treeviewcolumn_item,
-			GTK_CELL_RENDERER(string_list->priv->two_columns ? string_list->cellrenderertext_item1 : string_list->cellrenderertext_item2),
-			TRUE);
+	                                 string_list->treeviewcolumn_item,
+	                                 GTK_CELL_RENDERER(string_list->priv->two_columns ? string_list->cellrenderertext_item1 : string_list->cellrenderertext_item2),
+	                                 TRUE);
 	gtk_tree_path_free(path);
 	remmina_string_list_update_buttons_state();
 }
@@ -200,16 +200,16 @@ void remmina_string_list_set_text(const gchar *text, const gboolean clear_data)
 		{
 			/* Two columns data */
 			gtk_list_store_set(string_list->liststore_items, &iter,
-				COLUMN_DESCRIPTION, values[0],
-				COLUMN_VALUE, values[1],
-				-1);
+			                   COLUMN_DESCRIPTION, values[0],
+			                   COLUMN_VALUE, values[1],
+			                   -1);
 		}
 		else
 		{
 			/* Single column data */
 			gtk_list_store_set(string_list->liststore_items, &iter,
-				COLUMN_VALUE, values[0],
-				-1);
+			                   COLUMN_VALUE, values[0],
+			                   -1);
 		}
 		g_strfreev(values);
 	}
@@ -235,9 +235,9 @@ gchar* remmina_string_list_get_text(void)
 	while (ret)
 	{
 		gtk_tree_model_get(GTK_TREE_MODEL(string_list->liststore_items), &iter,
-			COLUMN_DESCRIPTION, &item_description,
-			COLUMN_VALUE, &item_value,
-			-1);
+		                   COLUMN_DESCRIPTION, &item_description,
+		                   COLUMN_VALUE, &item_value,
+		                   -1);
 		if (!item_description)
 			item_description = "";
 		if (item_value && strlen(item_value) > 0)
@@ -277,7 +277,7 @@ void remmina_string_list_set_titles(gchar *title1, gchar *title2)
 {
 	/* Set dialog titlebar */
 	gtk_window_set_title(GTK_WINDOW(string_list->dialog),
-		(title1 && strlen(title1) > 0) ? title1 : "");
+	                     (title1 && strlen(title1) > 0) ? title1 : "");
 	/* Set title label */
 	if (title2 && strlen(title2) > 0)
 	{

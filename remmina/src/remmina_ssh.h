@@ -73,7 +73,7 @@ typedef struct _RemminaSSH
 	gchar *error;
 
 	pthread_mutex_t ssh_mutex;
-}RemminaSSH;
+} RemminaSSH;
 
 gchar* remmina_ssh_identity_path (const gchar *id);
 
@@ -201,7 +201,7 @@ typedef struct _RemminaSFTP
 	RemminaSSH ssh;
 
 	sftp_session sftp_sess;
-}RemminaSFTP;
+} RemminaSFTP;
 
 /* Create a new SFTP session object from RemminaFile */
 RemminaSFTP* remmina_sftp_new_from_file (RemminaFile *remminafile);
@@ -232,7 +232,7 @@ typedef struct _RemminaSSHShell
 	gboolean closed;
 	RemminaSSHExitFunc exit_callback;
 	gpointer user_data;
-}RemminaSSHShell;
+} RemminaSSHShell;
 
 /* Create a new SSH Shell session object from RemminaFile */
 RemminaSSHShell* remmina_ssh_shell_new_from_file (RemminaFile *remminafile);
