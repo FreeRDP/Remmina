@@ -14,21 +14,38 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
 
+include(LibFindMacros)
+
+# Dependencies
 find_package(PkgConfig)
-pkg_check_modules(PC_LIBSSH libssh>=0.6)
+
+# Use pkg-config to get hints about paths
+libfind_pkg_check_modules(PC_LIBSSH libssh>=0.6)
+
+
 set(LIBSSH_DEFINITIONS ${PC_LIBSSH_CFLAGS_OTHER})
 
-find_path(LIBSSH_INCLUDE_DIR NAMES libssh/libssh.h
-	HINTS ${PC_LIBSSH_INCLUDEDIR} ${PC_LIBSSH_INCLUDE_DIRS})
+# Include dir
+find_path(LIBSSH_INCLUDE_DIR
+	NAMES libssh/libssh.h
+	#HINTS ${PC_LIBSSH_INCLUDEDIR} ${PC_LIBSSH_INCLUDE_DIRS}
+	PATHS ${PC_LIBSSH_PKGCONF_INCLUDE_DIRS}
+)
 
-find_library(LIBSSH_LIBRARY NAMES ssh
-	HINTS ${PC_LIBSSH_LIBDIR} ${PC_LIBSSH_LIBRARY_DIRS})
+# The library itself
+find_library(LIBSSH_LIBRARY
+	NAMES ssh
+	#HINTS ${PC_LIBSSH_LIBDIR} ${PC_LIBSSH_LIBRARY_DIRS}
+	PATHS ${PC_LIBSSH_PKGCONF_LIBRARY_DIRS}
+)
 
-find_library(LIBSSH_THREADS_LIBRARY NAMES ssh_threads
-	HINTS ${PC_LIBSSH_LIBDIR} ${PC_LIBSSH_LIBRARY_DIRS})
+find_library(LIBSSH_THREADS_LIBRARY
+	NAMES ssh_threads
+	PATHS ${PC_LIBSSH_LIBDIR} ${PC_LIBSSH_LIBRARY_DIRS}
+)
 
 include(FindPackageHandleStandardArgs)
 
