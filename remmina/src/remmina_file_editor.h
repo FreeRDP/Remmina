@@ -47,13 +47,15 @@ G_BEGIN_DECLS
 
 typedef struct _RemminaFileEditorPriv RemminaFileEditorPriv;
 
-typedef struct _RemminaFileEditor {
+typedef struct _RemminaFileEditor
+{
 	GtkDialog dialog;
 
 	RemminaFileEditorPriv* priv;
 } RemminaFileEditor;
 
-typedef struct _RemminaFileEditorClass {
+typedef struct _RemminaFileEditorClass
+{
 	GtkDialogClass parent_class;
 } RemminaFileEditorClass;
 

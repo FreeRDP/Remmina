@@ -40,6 +40,7 @@
 #  include <gtk/gtkx.h>
 #endif
 #include <time.h>
+#define LIBSSH_STATIC 1
 #include <libssh/libssh.h>
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>

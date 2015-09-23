@@ -198,7 +198,7 @@ remmina_public_create_combo(gboolean use_icon)
 		store = gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_STRING);
 	}
 	combo = gtk_combo_box_new_with_model(GTK_TREE_MODEL(store));
-    gtk_widget_set_hexpand(combo, TRUE);
+	gtk_widget_set_hexpand(combo, TRUE);
 
 	if (use_icon)
 	{
@@ -231,13 +231,13 @@ remmina_public_create_combo_map(const gpointer *key_value_list, const gchar *def
 	{
 		gtk_list_store_append(store, &iter);
 		gtk_list_store_set(
-				store,
-				&iter,
-				0,
-				key_value_list[i],
-				1,
-				key_value_list[i + 1] && ((char*) key_value_list[i + 1])[0] ?
-						g_dgettext(domain, key_value_list[i + 1]) : "", -1);
+		    store,
+		    &iter,
+		    0,
+		    key_value_list[i],
+		    1,
+		    key_value_list[i + 1] && ((char*) key_value_list[i + 1])[0] ?
+		    g_dgettext(domain, key_value_list[i + 1]) : "", -1);
 		if (use_icon)
 		{
 			gtk_list_store_set(store, &iter, 2, key_value_list[i + 2], -1);
@@ -325,7 +325,7 @@ void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *pu
 	 * While leaving the previous check intact I'm checking also if the provided
 	 * widget is a GtkToggleToolButton and position the menu accordingly. */
 	if (gtk_widget_get_has_window(widget) ||
-		g_strcmp0(gtk_widget_get_name(widget), "GtkToggleToolButton") == 0)
+	        g_strcmp0(gtk_widget_get_name(widget), "GtkToggleToolButton") == 0)
 	{
 		tx += allocation.x;
 		ty += allocation.y;
@@ -494,16 +494,16 @@ guint remmina_public_get_current_workspace(GdkScreen *screen)
 
 	gdk_error_trap_push ();
 	result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (root_win),
-			gdk_x11_get_xatom_by_name_for_display (display, "_NET_CURRENT_DESKTOP"),
-			0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
-			&bytes_after, (gpointer) &current_desktop);
+	                             gdk_x11_get_xatom_by_name_for_display (display, "_NET_CURRENT_DESKTOP"),
+	                             0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
+	                             &bytes_after, (gpointer) &current_desktop);
 	err = gdk_error_trap_pop ();
 
 	if (err != Success || result != Success)
-	return ret;
+		return ret;
 
 	if (type == XA_CARDINAL && format == 32 && nitems > 0)
-	ret = current_desktop[0];
+		ret = current_desktop[0];
 
 	XFree (current_desktop);
 	return ret;
@@ -545,16 +545,16 @@ guint remmina_public_get_window_workspace(GtkWindow *gtkwindow)
 
 	gdk_error_trap_push ();
 	result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (window),
-			gdk_x11_get_xatom_by_name_for_display (display, "_NET_WM_DESKTOP"),
-			0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
-			&bytes_after, (gpointer) &workspace);
+	                             gdk_x11_get_xatom_by_name_for_display (display, "_NET_WM_DESKTOP"),
+	                             0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
+	                             &bytes_after, (gpointer) &workspace);
 	err = gdk_error_trap_pop ();
 
 	if (err != Success || result != Success)
-	return ret;
+		return ret;
 
 	if (type == XA_CARDINAL && format == 32 && nitems > 0)
-	ret = workspace[0];
+		ret = workspace[0];
 
 	XFree (workspace);
 	return ret;
@@ -690,7 +690,7 @@ gboolean remmina_public_resolution_validation_func(const gchar *new_str, gchar *
 	return result;
 }
 
-/* Replaces all occurences of search in a new copy of string by replacement 
+/* Replaces all occurences of search in a new copy of string by replacement
  * and overwrites the original string */
 void remmina_public_str_replace_in_place(gchar *string, const gchar *search, const gchar *replacement)
 {

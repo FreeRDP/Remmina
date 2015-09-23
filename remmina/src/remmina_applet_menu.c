@@ -67,11 +67,11 @@ static void remmina_applet_menu_class_init(RemminaAppletMenuClass *klass)
 {
 	TRACE_CALL("remmina_applet_menu_class_init");
 	remmina_applet_menu_signals[LAUNCH_ITEM_SIGNAL] = g_signal_new("launch-item", G_TYPE_FROM_CLASS(klass),
-			G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaAppletMenuClass, launch_item), NULL, NULL,
-			g_cclosure_marshal_VOID__OBJECT, G_TYPE_NONE, 1, G_TYPE_OBJECT);
+	        G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaAppletMenuClass, launch_item), NULL, NULL,
+	        g_cclosure_marshal_VOID__OBJECT, G_TYPE_NONE, 1, G_TYPE_OBJECT);
 	remmina_applet_menu_signals[EDIT_ITEM_SIGNAL] = g_signal_new("edit-item", G_TYPE_FROM_CLASS(klass),
-			G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaAppletMenuClass, edit_item), NULL, NULL,
-			g_cclosure_marshal_VOID__OBJECT, G_TYPE_NONE, 1, G_TYPE_OBJECT);
+	        G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaAppletMenuClass, edit_item), NULL, NULL,
+	        g_cclosure_marshal_VOID__OBJECT, G_TYPE_NONE, 1, G_TYPE_OBJECT);
 }
 
 static void remmina_applet_menu_init(RemminaAppletMenu *menu)
@@ -90,7 +90,7 @@ static void remmina_applet_menu_on_item_activate(RemminaAppletMenuItem *menuitem
 
 static GtkWidget*
 remmina_applet_menu_add_group(GtkWidget *menu, const gchar *group, gint position, RemminaAppletMenuItem *menuitem,
-		GtkWidget **groupmenuitem)
+                              GtkWidget **groupmenuitem)
 {
 	TRACE_CALL("remmina_applet_menu_add_group");
 	GtkWidget *widget;
@@ -101,9 +101,9 @@ remmina_applet_menu_add_group(GtkWidget *menu, const gchar *group, gint position
 	gtk_widget_show(widget);
 
 	image =
-			gtk_image_new_from_icon_name(
-					(menuitem->item_type == REMMINA_APPLET_MENU_ITEM_DISCOVERED ?
-							"folder-remote" : "folder"), GTK_ICON_SIZE_MENU);
+	    gtk_image_new_from_icon_name(
+	        (menuitem->item_type == REMMINA_APPLET_MENU_ITEM_DISCOVERED ?
+	         "folder-remote" : "folder"), GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
 
 	g_object_set_data_full(G_OBJECT(widget), "group", g_strdup(group), g_free);
@@ -191,7 +191,7 @@ void remmina_applet_menu_add_item(RemminaAppletMenu *menu, RemminaAppletMenuItem
 					if (strcoll(p1, mstr) < 0)
 					{
 						submenu = remmina_applet_menu_add_group(submenu, p1, position, menuitem,
-								&groupmenuitem);
+						                                        &groupmenuitem);
 						break;
 					}
 				}
@@ -289,7 +289,8 @@ void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 			g_snprintf(filename, sizeof(filename), "%s/%s", dirname, name);
 
 			menuitem = remmina_applet_menu_item_new(REMMINA_APPLET_MENU_ITEM_FILE, filename);
-			if (menuitem != NULL) {
+			if (menuitem != NULL)
+			{
 				remmina_applet_menu_add_item(menu, REMMINA_APPLET_MENU_ITEM(menuitem));
 				gtk_widget_show(menuitem);
 			}
