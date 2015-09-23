@@ -226,7 +226,8 @@ typedef enum
 	REMMINA_RDP_POINTER_FREE,
 	REMMINA_RDP_POINTER_SET,
 	REMMINA_RDP_POINTER_NULL,
-	REMMINA_RDP_POINTER_DEFAULT
+	REMMINA_RDP_POINTER_DEFAULT,
+	REMMINA_RDP_POINTER_SETPOS
 } RemminaPluginRdpUiPointerType;
 
 typedef enum
@@ -278,7 +279,16 @@ struct remmina_plugin_rdp_ui_object
 		struct {
 			RemminaPluginRdpUiEeventType type;
 		} event;
+		struct {
+			gint x;
+			gint y;
+		} pos;
 	};
+	/* We can also return values here, valid only when sync is TRUE */
+	union {
+		int intval;
+		BOOL boolval;
+	} retval;
 };
 typedef struct remmina_plugin_rdp_ui_object RemminaPluginRdpUiObject;
 

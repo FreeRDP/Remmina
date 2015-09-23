@@ -71,7 +71,7 @@ static gboolean remmina_plugin_manager_register_plugin(RemminaPlugin *plugin)
 		if (remmina_secret_plugin)
 		{
 			g_print("Remmina plugin %s (type=%s) bypassed.\n", plugin->name,
-					_(remmina_plugin_type_name[plugin->type]));
+			        _(remmina_plugin_type_name[plugin->type]));
 			return FALSE;
 		}
 		remmina_secret_plugin = (RemminaSecretPlugin*) plugin;
@@ -84,72 +84,73 @@ static gboolean remmina_plugin_manager_register_plugin(RemminaPlugin *plugin)
 
 RemminaPluginService remmina_plugin_manager_service =
 {
-		remmina_plugin_manager_register_plugin,
-		remmina_protocol_widget_get_width,
-		remmina_protocol_widget_set_width,
-		remmina_protocol_widget_get_height,
-		remmina_protocol_widget_set_height,
-		remmina_protocol_widget_get_scale,
-		remmina_protocol_widget_get_expand,
-		remmina_protocol_widget_set_expand,
-		remmina_protocol_widget_has_error,
-		remmina_protocol_widget_set_error,
-		remmina_protocol_widget_is_closed,
-		remmina_protocol_widget_get_file,
-		remmina_protocol_widget_emit_signal,
-		remmina_protocol_widget_register_hostkey,
-		remmina_protocol_widget_start_direct_tunnel,
-		remmina_protocol_widget_start_reverse_tunnel,
-		remmina_protocol_widget_start_xport_tunnel,
-		remmina_protocol_widget_set_display,
-		remmina_protocol_widget_close_connection,
-		remmina_protocol_widget_init_authpwd,
-		remmina_protocol_widget_init_authuserpwd,
-		remmina_protocol_widget_init_certificate,
-		remmina_protocol_widget_changed_certificate,
-		remmina_protocol_widget_init_get_username,
-		remmina_protocol_widget_init_get_password,
-		remmina_protocol_widget_init_get_domain,
-		remmina_protocol_widget_init_get_savepassword,
-		remmina_protocol_widget_init_authx509,
-		remmina_protocol_widget_init_get_cacert,
-		remmina_protocol_widget_init_get_cacrl,
-		remmina_protocol_widget_init_get_clientcert,
-		remmina_protocol_widget_init_get_clientkey,
-		remmina_protocol_widget_init_save_cred,
-		remmina_protocol_widget_init_show_listen,
-		remmina_protocol_widget_init_show_retry,
-		remmina_protocol_widget_init_show,
-		remmina_protocol_widget_init_hide,
-		remmina_protocol_widget_ssh_exec,
-		remmina_protocol_widget_chat_open,
-		remmina_protocol_widget_chat_close,
-		remmina_protocol_widget_chat_receive,
-		remmina_protocol_widget_send_keys_signals,
+	remmina_plugin_manager_register_plugin,
+	remmina_protocol_widget_get_width,
+	remmina_protocol_widget_set_width,
+	remmina_protocol_widget_get_height,
+	remmina_protocol_widget_set_height,
+	remmina_protocol_widget_get_scale,
+	remmina_protocol_widget_get_expand,
+	remmina_protocol_widget_set_expand,
+	remmina_protocol_widget_has_error,
+	remmina_protocol_widget_set_error,
+	remmina_protocol_widget_is_closed,
+	remmina_protocol_widget_get_file,
+	remmina_protocol_widget_emit_signal,
+	remmina_protocol_widget_register_hostkey,
+	remmina_protocol_widget_start_direct_tunnel,
+	remmina_protocol_widget_start_reverse_tunnel,
+	remmina_protocol_widget_start_xport_tunnel,
+	remmina_protocol_widget_set_display,
+	remmina_protocol_widget_close_connection,
+	remmina_protocol_widget_init_authpwd,
+	remmina_protocol_widget_init_authuserpwd,
+	remmina_protocol_widget_init_certificate,
+	remmina_protocol_widget_changed_certificate,
+	remmina_protocol_widget_init_get_username,
+	remmina_protocol_widget_init_get_password,
+	remmina_protocol_widget_init_get_domain,
+	remmina_protocol_widget_init_get_savepassword,
+	remmina_protocol_widget_init_authx509,
+	remmina_protocol_widget_init_get_cacert,
+	remmina_protocol_widget_init_get_cacrl,
+	remmina_protocol_widget_init_get_clientcert,
+	remmina_protocol_widget_init_get_clientkey,
+	remmina_protocol_widget_init_save_cred,
+	remmina_protocol_widget_init_show_listen,
+	remmina_protocol_widget_init_show_retry,
+	remmina_protocol_widget_init_show,
+	remmina_protocol_widget_init_hide,
+	remmina_protocol_widget_ssh_exec,
+	remmina_protocol_widget_chat_open,
+	remmina_protocol_widget_chat_close,
+	remmina_protocol_widget_chat_receive,
+	remmina_protocol_widget_send_keys_signals,
 
-		remmina_file_new,
-		remmina_file_get_filename,
-		remmina_file_set_string,
-		remmina_file_get_string,
-		remmina_file_get_secret,
-		remmina_file_set_int,
-		remmina_file_get_int,
-		remmina_file_unsave_password,
+	remmina_file_new,
+	remmina_file_get_filename,
+	remmina_file_set_string,
+	remmina_file_get_string,
+	remmina_file_get_secret,
+	remmina_file_set_int,
+	remmina_file_get_int,
+	remmina_file_unsave_password,
 
-		remmina_pref_set_value,
-		remmina_pref_get_value,
-		remmina_pref_get_scale_quality,
-		remmina_pref_get_sshtunnel_port,
-		remmina_pref_keymap_get_keyval,
+	remmina_pref_set_value,
+	remmina_pref_get_value,
+	remmina_pref_get_scale_quality,
+	remmina_pref_get_sshtunnel_port,
+	remmina_pref_get_ssh_loglevel,
+	remmina_pref_keymap_get_keyval,
 
-		remmina_log_print,
-		remmina_log_printf,
+	remmina_log_print,
+	remmina_log_printf,
 
-		remmina_widget_pool_register,
+	remmina_widget_pool_register,
 
-		remmina_connection_window_open_from_file_full,
-		remmina_public_get_server_port,
-		remmina_masterthread_exec_is_main_thread
+	remmina_connection_window_open_from_file_full,
+	remmina_public_get_server_port,
+	remmina_masterthread_exec_is_main_thread
 
 };
 
@@ -207,7 +208,8 @@ void remmina_plugin_manager_init(void)
 			continue;
 		ptr++;
 		if (g_strcmp0(ptr, G_MODULE_SUFFIX) != 0)
-			continue; fullpath = g_strdup_printf(REMMINA_PLUGINDIR "/%s", name);
+			continue;
+		fullpath = g_strdup_printf(REMMINA_PLUGINDIR "/%s", name);
 		remmina_plugin_manager_load_plugin(fullpath);
 		g_free(fullpath);
 	}
@@ -254,7 +256,7 @@ static gboolean remmina_plugin_manager_show_for_each(RemminaPlugin *plugin, GtkL
 
 	gtk_list_store_append(store, &iter);
 	gtk_list_store_set(store, &iter, 0, plugin->name, 1, _(remmina_plugin_type_name[plugin->type]), 2,
-			g_dgettext(plugin->domain, plugin->description), 3, plugin->version, -1);
+	                   g_dgettext(plugin->domain, plugin->description), 3, plugin->version, -1);
 	return FALSE;
 }
 

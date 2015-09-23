@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -210,6 +210,7 @@ typedef struct _RemminaPluginService
     gchar*       (* pref_get_value)                       (const gchar *key);
     gint         (* pref_get_scale_quality)               (void);
     gint         (* pref_get_sshtunnel_port)              (void);
+    gint         (* pref_get_ssh_loglevel)                (void);
     guint        (* pref_keymap_get_keyval)               (const gchar *keymap, guint keyval);
 
     void         (* log_print)                            (const gchar *text);
@@ -218,7 +219,7 @@ typedef struct _RemminaPluginService
     void         (* ui_register)                          (GtkWidget *widget);
 
     GtkWidget*   (* open_connection)                      (RemminaFile *remminafile, GCallback disconnect_cb, gpointer data, guint *handler);
-    void         (* get_server_port)                      (const gchar *server, gint defaultport, gchar **host, gint *port);  
+    void         (* get_server_port)                      (const gchar *server, gint defaultport, gchar **host, gint *port);
     gboolean     (* is_main_thread)                       (void);
 
 } RemminaPluginService;

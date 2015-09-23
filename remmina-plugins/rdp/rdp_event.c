@@ -311,6 +311,11 @@ static void remmina_rdp_event_translate_pos(RemminaProtocolWidget* gp, int ix, i
 	TRACE_CALL("remmina_rdp_event_translate_pos");
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
+	/*
+	 * Translate a position from local window coordinates (ix,iy) to
+	 * RDP coordinates and put result on (*ox,*uy)
+	 * */
+
 	if (!rfi) return;
 
 	if ((rfi->scale) && (rfi->scale_width >= 1) && (rfi->scale_height >= 1))
@@ -322,6 +327,30 @@ static void remmina_rdp_event_translate_pos(RemminaProtocolWidget* gp, int ix, i
 	{
 		*ox = (UINT16) ix;
 		*oy = (UINT16) iy;
+	}
+}
+
+static void remmina_rdp_event_reverse_translate_pos_reverse(RemminaProtocolWidget* gp, int ix, int iy, int* ox, int* oy)
+{
+	TRACE_CALL("remmina_rdp_event_reverse_translate_pos_reverse");
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
+
+	/*
+	 * Translate a position from RDP coordinates (ix,iy) to
+	 * local window coordinates and put result on (*ox,*uy)
+	 * */
+
+	if (!rfi) return;
+
+	if ((rfi->scale) && (rfi->scale_width >= 1) && (rfi->scale_height >= 1))
+	{
+		*ox = (ix * rfi->scale_width) / remmina_plugin_service->protocol_plugin_get_width(gp);
+		*oy = (iy * rfi->scale_height) / remmina_plugin_service->protocol_plugin_get_height(gp);
+	}
+	else
+	{
+		*ox = ix;
+		*oy = iy;
 	}
 }
 
@@ -713,7 +742,7 @@ static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPlugin
 	remmina_rdp_event_update_scale(gp);
 }
 
-static void remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+static BOOL remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
 	TRACE_CALL("remmina_rdp_event_create_cursor");
 	GdkPixbuf* pixbuf;
@@ -727,6 +756,8 @@ static void remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPl
 	pixbuf = gdk_pixbuf_get_from_surface(surface, 0, 0, pointer->width, pointer->height);
 	cairo_surface_destroy(surface);
 	((rfPointer*)ui->cursor.pointer)->cursor = gdk_cursor_new_from_pixbuf(rfi->display, pixbuf, pointer->xPos, pointer->yPos);
+
+	return TRUE;
 }
 
 static void remmina_rdp_event_free_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
@@ -734,6 +765,31 @@ static void remmina_rdp_event_free_cursor(RemminaProtocolWidget* gp, RemminaPlug
 	TRACE_CALL("remmina_rdp_event_free_cursor");
 	g_object_unref(ui->cursor.pointer->cursor);
 	ui->cursor.pointer->cursor = NULL;
+}
+
+static BOOL remmina_rdp_event_set_pointer_position(RemminaProtocolWidget *gp, gint x, gint y)
+{
+	TRACE_CALL("remmina_rdp_event_set_pointer_position");
+	GdkWindow *w, *nw;
+	gint nx, ny, wx, wy;
+	GdkDeviceManager *manager;
+	GdkDevice *dev;
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
+
+	if (rfi == NULL)
+		return FALSE;
+
+	w = gtk_widget_get_window(rfi->drawing_area);
+	manager = gdk_display_get_device_manager(gdk_display_get_default());
+	dev = gdk_device_manager_get_client_pointer(manager);
+	nw = gdk_device_get_window_at_position(dev, NULL, NULL);
+
+	if (nw == w) {
+		remmina_rdp_event_reverse_translate_pos_reverse(gp, x, y, &nx, &ny);
+		gdk_window_get_root_coords(w, nx, ny, &wx, &wy);
+		gdk_device_warp(dev, gdk_window_get_screen(w), wx, wy);
+	}
+	return TRUE;
 }
 
 static void remmina_rdp_event_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
@@ -744,7 +800,7 @@ static void remmina_rdp_event_cursor(RemminaProtocolWidget* gp, RemminaPluginRdp
 	switch (ui->cursor.type)
 	{
 		case REMMINA_RDP_POINTER_NEW:
-			remmina_rdp_event_create_cursor(gp, ui);
+			ui->retval.boolval = remmina_rdp_event_create_cursor(gp, ui);
 			break;
 
 		case REMMINA_RDP_POINTER_FREE:
@@ -753,14 +809,21 @@ static void remmina_rdp_event_cursor(RemminaProtocolWidget* gp, RemminaPluginRdp
 
 		case REMMINA_RDP_POINTER_SET:
 			gdk_window_set_cursor(gtk_widget_get_window(rfi->drawing_area), ui->cursor.pointer->cursor);
+			ui->retval.boolval = TRUE;
+			break;
+
+		case REMMINA_RDP_POINTER_SETPOS:
+			ui->retval.boolval = remmina_rdp_event_set_pointer_position(gp, ui->pos.x, ui->pos.y);
 			break;
 
 		case REMMINA_RDP_POINTER_NULL:
 			gdk_window_set_cursor(gtk_widget_get_window(rfi->drawing_area), gdk_cursor_new(GDK_BLANK_CURSOR));
+			ui->retval.boolval = TRUE;
 			break;
 
 		case REMMINA_RDP_POINTER_DEFAULT:
 			gdk_window_set_cursor(gtk_widget_get_window(rfi->drawing_area), NULL);
+			ui->retval.boolval = TRUE;
 			break;
 	}
 }

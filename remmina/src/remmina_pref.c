@@ -54,12 +54,12 @@ static GHashTable *remmina_keymap_table = NULL;
 
 /* We could customize this further if there are more requirements */
 static const gchar *default_keymap_data = "# Please check gdk/gdkkeysyms.h for a full list of all key names or hex key values\n"
-		"\n"
-		"[Map Meta Keys]\n"
-		"Super_L = Meta_L\n"
-		"Super_R = Meta_R\n"
-		"Meta_L = Super_L\n"
-		"Meta_R = Super_R\n";
+        "\n"
+        "[Map Meta Keys]\n"
+        "Super_L = Meta_L\n"
+        "Super_R = Meta_R\n"
+        "Meta_L = Super_L\n"
+        "Meta_R = Super_R\n";
 
 static void remmina_pref_gen_secret(void)
 {
@@ -129,7 +129,7 @@ static void remmina_pref_init_keymap(void)
 	if (!g_key_file_load_from_file(gkeyfile, remmina_keymap_file, G_KEY_FILE_NONE, NULL))
 	{
 		if (!g_key_file_load_from_data(gkeyfile, default_keymap_data, strlen(default_keymap_data), G_KEY_FILE_NONE,
-				NULL))
+		                               NULL))
 		{
 			g_print("Failed to initialize keymap table\n");
 			g_key_file_free(gkeyfile);
@@ -212,7 +212,7 @@ void remmina_pref_init(void)
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "hide_connection_toolbar", NULL))
 		remmina_pref.hide_connection_toolbar = g_key_file_get_boolean(gkeyfile, "remmina_pref",
-				"hide_connection_toolbar", NULL);
+		                                       "hide_connection_toolbar", NULL);
 	else
 		remmina_pref.hide_connection_toolbar = FALSE;
 
@@ -283,7 +283,7 @@ void remmina_pref_init(void)
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "main_sort_column_id", NULL))
 		remmina_pref.main_sort_column_id = g_key_file_get_integer(gkeyfile, "remmina_pref", "main_sort_column_id",
-				NULL);
+		                                   NULL);
 	else
 		remmina_pref.main_sort_column_id = 1;
 
@@ -302,6 +302,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.toolbar_pin_down = FALSE;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "ssh_loglevel", NULL))
+		remmina_pref.ssh_loglevel = g_key_file_get_integer(gkeyfile, "remmina_pref", "ssh_loglevel", NULL);
+	else
+		remmina_pref.ssh_loglevel = DEFAULT_SSH_LOGLEVEL;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "sshtunnel_port", NULL))
 		remmina_pref.sshtunnel_port = g_key_file_get_integer(gkeyfile, "remmina_pref", "sshtunnel_port", NULL);
 	else
@@ -319,7 +324,7 @@ void remmina_pref_init(void)
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "applet_enable_avahi", NULL))
 		remmina_pref.applet_enable_avahi = g_key_file_get_boolean(gkeyfile, "remmina_pref", "applet_enable_avahi",
-				NULL);
+		                                   NULL);
 	else
 		remmina_pref.applet_enable_avahi = FALSE;
 
@@ -377,25 +382,25 @@ void remmina_pref_init(void)
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_fullscreen", NULL))
 		remmina_pref.shortcutkey_fullscreen = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_fullscreen",
-				NULL);
+		                                      NULL);
 	else
 		remmina_pref.shortcutkey_fullscreen = GDK_KEY_f;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_autofit", NULL))
 		remmina_pref.shortcutkey_autofit = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_autofit",
-				NULL);
+		                                   NULL);
 	else
 		remmina_pref.shortcutkey_autofit = GDK_KEY_1;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_nexttab", NULL))
 		remmina_pref.shortcutkey_nexttab = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_nexttab",
-				NULL);
+		                                   NULL);
 	else
 		remmina_pref.shortcutkey_nexttab = GDK_KEY_Right;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_prevtab", NULL))
 		remmina_pref.shortcutkey_prevtab = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_prevtab",
-				NULL);
+		                                   NULL);
 	else
 		remmina_pref.shortcutkey_prevtab = GDK_KEY_Left;
 
@@ -411,19 +416,19 @@ void remmina_pref_init(void)
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_minimize", NULL))
 		remmina_pref.shortcutkey_minimize = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_minimize",
-				NULL);
+		                                    NULL);
 	else
 		remmina_pref.shortcutkey_minimize = GDK_KEY_F9;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_disconnect", NULL))
 		remmina_pref.shortcutkey_disconnect = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_disconnect",
-				NULL);
+		                                      NULL);
 	else
 		remmina_pref.shortcutkey_disconnect = GDK_KEY_F4;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_toolbar", NULL))
 		remmina_pref.shortcutkey_toolbar = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_toolbar",
-				NULL);
+		                                   NULL);
 	else
 		remmina_pref.shortcutkey_toolbar = GDK_KEY_t;
 
@@ -439,7 +444,7 @@ void remmina_pref_init(void)
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_allow_bold_text", NULL))
 		remmina_pref.vte_allow_bold_text = g_key_file_get_boolean(gkeyfile, "remmina_pref", "vte_allow_bold_text",
-				NULL);
+		                                   NULL);
 	else
 		remmina_pref.vte_allow_bold_text = TRUE;
 	/* Default system theme colors or default vte colors */
@@ -465,13 +470,13 @@ void remmina_pref_init(void)
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_shortcutkey_copy", NULL))
 		remmina_pref.vte_shortcutkey_copy = g_key_file_get_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_copy",
-				NULL);
+		                                    NULL);
 	else
 		remmina_pref.vte_shortcutkey_copy = GDK_KEY_c;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_shortcutkey_paste", NULL))
 		remmina_pref.vte_shortcutkey_paste = g_key_file_get_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_paste",
-				NULL);
+		                                     NULL);
 	else
 		remmina_pref.vte_shortcutkey_paste = GDK_KEY_v;
 
@@ -502,6 +507,7 @@ void remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_connection_toolbar", remmina_pref.hide_connection_toolbar);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "default_action", remmina_pref.default_action);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "scale_quality", remmina_pref.scale_quality);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "ssh_loglevel", remmina_pref.ssh_loglevel);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_toolbar", remmina_pref.hide_toolbar);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_statusbar", remmina_pref.hide_statusbar);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "show_quick_search", remmina_pref.show_quick_search);
@@ -699,6 +705,12 @@ gint remmina_pref_get_scale_quality(void)
 		remmina_pref.scale_quality = 0;
 	}
 	return remmina_pref.scale_quality;
+}
+
+gint remmina_pref_get_ssh_loglevel(void)
+{
+	TRACE_CALL("remmina_pref_get_ssh_loglevel");
+	return remmina_pref.ssh_loglevel;
 }
 
 gint remmina_pref_get_sshtunnel_port(void)

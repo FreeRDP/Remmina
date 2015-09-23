@@ -162,15 +162,16 @@ void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj)
 	g_free(obj);
 }
 
-void rf_begin_paint(rdpContext* context)
+BOOL rf_begin_paint(rdpContext* context)
 {
 	TRACE_CALL("rf_begin_paint");
 	rdpGdi* gdi = context->gdi;
 	gdi->primary->hdc->hwnd->invalid->null = 1;
 	gdi->primary->hdc->hwnd->ninvalid = 0;
+	return TRUE;
 }
 
-void rf_end_paint(rdpContext* context)
+BOOL rf_end_paint(rdpContext* context)
 {
 	TRACE_CALL("rf_end_paint");
 	INT32 x, y;
@@ -185,7 +186,7 @@ void rf_end_paint(rdpContext* context)
 	gp = rfi->protocol_widget;
 
 	if (gdi->primary->hdc->hwnd->invalid->null)
-		return;
+		return FALSE;
 
 	x = gdi->primary->hdc->hwnd->invalid->x;
 	y = gdi->primary->hdc->hwnd->invalid->y;
@@ -200,9 +201,11 @@ void rf_end_paint(rdpContext* context)
 	ui->region.height = h;
 
 	rf_queue_ui(rfi->protocol_widget, ui);
+
+	return TRUE;
 }
 
-static void rf_desktop_resize(rdpContext* context)
+static BOOL rf_desktop_resize(rdpContext* context)
 {
 	TRACE_CALL("rf_desktop_resize");
 	rfContext* rfi;
@@ -228,6 +231,8 @@ static void rf_desktop_resize(rdpContext* context)
 	rf_queue_ui(gp, ui);
 
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "desktop-resize");
+
+	return TRUE;
 }
 
 static BOOL remmina_rdp_pre_connect(freerdp* instance)

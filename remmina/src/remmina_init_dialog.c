@@ -85,7 +85,6 @@ static void remmina_init_dialog_init(RemminaInitDialog *dialog)
 	dialog->clientkey = NULL;
 
 	gtk_dialog_add_buttons(GTK_DIALOG(dialog),  _("_Cancel"), GTK_RESPONSE_CANCEL, _("_OK"), GTK_RESPONSE_OK, NULL);
-	gtk_dialog_set_alternative_button_order(GTK_DIALOG(dialog), GTK_RESPONSE_OK, GTK_RESPONSE_CANCEL, -1);
 
 	gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
 
@@ -176,9 +175,12 @@ void remmina_init_dialog_set_status(RemminaInitDialog *dialog, const gchar *stat
 		dialog->status = g_strdup_vprintf(status_format, args);
 		va_end(args);
 
-		if ( remmina_masterthread_exec_is_main_thread() ) {
+		if ( remmina_masterthread_exec_is_main_thread() )
+		{
 			gtk_label_set_text(GTK_LABEL(dialog->status_label), dialog->status);
-		} else {
+		}
+		else
+		{
 			RemminaMTExecData *d;
 			d = (RemminaMTExecData*)g_malloc( sizeof(RemminaMTExecData) );
 			d->func = FUNC_GTK_LABEL_SET_TEXT;
@@ -205,9 +207,12 @@ void remmina_init_dialog_set_status_temp(RemminaInitDialog *dialog, const gchar 
 		s = g_strdup_vprintf(status_format, args);
 		va_end(args);
 
-		if ( remmina_masterthread_exec_is_main_thread() ) {
+		if ( remmina_masterthread_exec_is_main_thread() )
+		{
 			gtk_label_set_text(GTK_LABEL(dialog->status_label), dialog->status);
-		} else {
+		}
+		else
+		{
 			RemminaMTExecData *d;
 			d = (RemminaMTExecData*)g_malloc( sizeof(RemminaMTExecData) );
 			d->func = FUNC_GTK_LABEL_SET_TEXT;
@@ -232,7 +237,8 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 	gint ret;
 	gchar *s;
 
-	if ( !remmina_masterthread_exec_is_main_thread() ) {
+	if ( !remmina_masterthread_exec_is_main_thread() )
+	{
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
 		gint retval;
@@ -313,7 +319,7 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 }
 
 gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_domain, const gchar *default_username,
-		const gchar *default_domain, gboolean allow_save)
+                                     const gchar *default_domain, gboolean allow_save)
 {
 	TRACE_CALL("remmina_init_dialog_authuserpwd");
 
@@ -325,7 +331,8 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 	GtkWidget *widget;
 	gint ret;
 
-	if ( !remmina_masterthread_exec_is_main_thread() ) {
+	if ( !remmina_masterthread_exec_is_main_thread() )
+	{
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
 		gint retval;
@@ -456,7 +463,8 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 	GtkWidget* widget;
 	gchar* s;
 
-	if ( !remmina_masterthread_exec_is_main_thread() ) {
+	if ( !remmina_masterthread_exec_is_main_thread() )
+	{
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
 		gint retval;
@@ -551,7 +559,8 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 	GtkWidget* widget;
 	gchar* s;
 
-	if ( !remmina_masterthread_exec_is_main_thread() ) {
+	if ( !remmina_masterthread_exec_is_main_thread() )
+	{
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
 		gint retval;
@@ -684,7 +693,7 @@ static GtkWidget* remmina_init_dialog_create_file_button(GtkGrid *grid, const gc
 }
 
 gint remmina_init_dialog_authx509(RemminaInitDialog *dialog, const gchar *cacert, const gchar *cacrl, const gchar *clientcert,
-		const gchar *clientkey)
+                                  const gchar *clientkey)
 {
 	TRACE_CALL("remmina_init_dialog_authx509");
 
@@ -696,7 +705,8 @@ gint remmina_init_dialog_authx509(RemminaInitDialog *dialog, const gchar *cacert
 	gint ret;
 
 
-	if ( !remmina_masterthread_exec_is_main_thread() ) {
+	if ( !remmina_masterthread_exec_is_main_thread() )
+	{
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
 		gint retval;
@@ -762,7 +772,8 @@ gint remmina_init_dialog_serverkey_confirm(RemminaInitDialog *dialog, const gcha
 	GtkWidget *widget;
 	gint ret;
 
-	if ( !remmina_masterthread_exec_is_main_thread() ) {
+	if ( !remmina_masterthread_exec_is_main_thread() )
+	{
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
 		gint retval;
@@ -828,7 +839,7 @@ gint remmina_init_dialog_serverkey_unknown(RemminaInitDialog *dialog, const gcha
 	/* This function can be called from a non main thread */
 
 	return remmina_init_dialog_serverkey_confirm(dialog, serverkey,
-			_("The server is unknown. The public key fingerprint is:"));
+	        _("The server is unknown. The public key fingerprint is:"));
 }
 
 gint remmina_init_dialog_serverkey_changed(RemminaInitDialog *dialog, const gchar *serverkey)
@@ -837,7 +848,7 @@ gint remmina_init_dialog_serverkey_changed(RemminaInitDialog *dialog, const gcha
 	/* This function can be called from a non main thread */
 
 	return remmina_init_dialog_serverkey_confirm(dialog, serverkey,
-			_("WARNING: The server has changed its public key. This means either you are under attack,\n"
-					"or the administrator has changed the key. The new public key fingerprint is:"));
+	        _("WARNING: The server has changed its public key. This means either you are under attack,\n"
+	          "or the administrator has changed the key. The new public key fingerprint is:"));
 }
 

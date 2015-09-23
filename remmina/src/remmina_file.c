@@ -58,25 +58,26 @@ typedef struct _RemminaSetting
 
 const RemminaSetting remmina_system_settings[] =
 {
-{ "resolution_width", REMMINA_SETTING_GROUP_NONE, FALSE },
-{ "resolution_height", REMMINA_SETTING_GROUP_NONE, FALSE },
+	{ "resolution_width", REMMINA_SETTING_GROUP_NONE, FALSE },
+	{ "resolution_height", REMMINA_SETTING_GROUP_NONE, FALSE },
 
-{ "username", REMMINA_SETTING_GROUP_CREDENTIAL, FALSE },
-{ "password", REMMINA_SETTING_GROUP_CREDENTIAL, TRUE },
-{ "cacert", REMMINA_SETTING_GROUP_CREDENTIAL, FALSE },
-{ "cacrl", REMMINA_SETTING_GROUP_CREDENTIAL, FALSE },
-{ "clientcert", REMMINA_SETTING_GROUP_CREDENTIAL, FALSE },
-{ "clientkey", REMMINA_SETTING_GROUP_CREDENTIAL, FALSE },
+	{ "username", REMMINA_SETTING_GROUP_CREDENTIAL, FALSE },
+	{ "password", REMMINA_SETTING_GROUP_CREDENTIAL, TRUE },
+	{ "cacert", REMMINA_SETTING_GROUP_CREDENTIAL, FALSE },
+	{ "cacrl", REMMINA_SETTING_GROUP_CREDENTIAL, FALSE },
+	{ "clientcert", REMMINA_SETTING_GROUP_CREDENTIAL, FALSE },
+	{ "clientkey", REMMINA_SETTING_GROUP_CREDENTIAL, FALSE },
 
-{ "viewmode", REMMINA_SETTING_GROUP_RUNTIME, FALSE },
-{ "scale", REMMINA_SETTING_GROUP_RUNTIME, FALSE },
-{ "keyboard_grab", REMMINA_SETTING_GROUP_RUNTIME, FALSE },
-{ "window_width", REMMINA_SETTING_GROUP_RUNTIME, FALSE },
-{ "window_height", REMMINA_SETTING_GROUP_RUNTIME, FALSE },
-{ "window_maximize", REMMINA_SETTING_GROUP_RUNTIME, FALSE },
-{ "toolbar_opacity", REMMINA_SETTING_GROUP_RUNTIME, FALSE },
+	{ "viewmode", REMMINA_SETTING_GROUP_RUNTIME, FALSE },
+	{ "scale", REMMINA_SETTING_GROUP_RUNTIME, FALSE },
+	{ "keyboard_grab", REMMINA_SETTING_GROUP_RUNTIME, FALSE },
+	{ "window_width", REMMINA_SETTING_GROUP_RUNTIME, FALSE },
+	{ "window_height", REMMINA_SETTING_GROUP_RUNTIME, FALSE },
+	{ "window_maximize", REMMINA_SETTING_GROUP_RUNTIME, FALSE },
+	{ "toolbar_opacity", REMMINA_SETTING_GROUP_RUNTIME, FALSE },
 
-{ NULL, 0, FALSE } };
+	{ NULL, 0, FALSE }
+};
 
 
 static RemminaSettingGroup remmina_setting_get_group(const gchar *setting, gboolean *encrypted)
@@ -151,7 +152,7 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	dir = g_dir_open(dirname, 0, NULL);
 	if (dir != NULL)
 		remminafile->filename = g_strdup_printf("%s/%li%03li.remmina", dirname, gtime.tv_sec,
-				gtime.tv_usec / 1000);
+		                                        gtime.tv_usec / 1000);
 }
 
 void remmina_file_set_filename(RemminaFile *remminafile, const gchar *filename)
@@ -229,7 +230,7 @@ remmina_file_load(const gchar *filename)
 				else
 				{
 					remmina_file_set_string_ref(remminafile, key,
-							g_key_file_get_string(gkeyfile, "remmina", key, NULL));
+					                            g_key_file_get_string(gkeyfile, "remmina", key, NULL));
 				}
 			}
 			g_strfreev(keys);
@@ -283,7 +284,8 @@ remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting)
 	RemminaSecretPlugin *plugin;
 	const gchar *cs;
 
-	if ( !remmina_masterthread_exec_is_main_thread() ) {
+	if ( !remmina_masterthread_exec_is_main_thread() )
+	{
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
 		gchar *retval;
@@ -517,7 +519,7 @@ remmina_file_get_icon_name(RemminaFile *remminafile)
 	RemminaProtocolPlugin *plugin;
 
 	plugin = (RemminaProtocolPlugin *) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL,
-			remmina_file_get_string(remminafile, "protocol"));
+	         remmina_file_get_string(remminafile, "protocol"));
 	if (!plugin)
 		return "remmina";
 
