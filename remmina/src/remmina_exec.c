@@ -60,82 +60,84 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 
 	switch (command)
 	{
-		case REMMINA_COMMAND_MAIN:
-			mainwindow = remmina_main_get_window();
-			if (mainwindow)
-			{
-				gtk_window_present(mainwindow);
-				gtk_window_deiconify(GTK_WINDOW(mainwindow));
-			}
-			else
-			{
-				widget = remmina_main_new();
-				gtk_widget_show(widget);
-			}
-			break;
-
-		case REMMINA_COMMAND_PREF:
-			prefdialog = remmina_pref_dialog_get_dialog();
-			if (prefdialog)
-			{
-				gtk_window_present(GTK_WINDOW(prefdialog));
-				gtk_window_deiconify(GTK_WINDOW(prefdialog));
-			} else {
-				/* Create a new preference dialog */
-				widget = GTK_WIDGET(remmina_pref_dialog_new(atoi(data), NULL));
-				gtk_widget_show(widget);
-			}
-			break;
-
-		case REMMINA_COMMAND_NEW:
-			s1 = (data ? strchr(data, ',') : NULL);
-			if (s1)
-			{
-				s1 = g_strdup(data);
-				s2 = strchr(s1, ',');
-				*s2++ = '\0';
-				widget = remmina_file_editor_new_full(s2, s1);
-				g_free(s1);
-			}
-			else
-			{
-				widget = remmina_file_editor_new_full(NULL, data);
-			}
+	case REMMINA_COMMAND_MAIN:
+		mainwindow = remmina_main_get_window();
+		if (mainwindow)
+		{
+			gtk_window_present(mainwindow);
+			gtk_window_deiconify(GTK_WINDOW(mainwindow));
+		}
+		else
+		{
+			widget = remmina_main_new();
 			gtk_widget_show(widget);
-			break;
+		}
+		break;
 
-		case REMMINA_COMMAND_CONNECT:
-			remmina_connection_window_open_from_filename(data);
-			break;
+	case REMMINA_COMMAND_PREF:
+		prefdialog = remmina_pref_dialog_get_dialog();
+		if (prefdialog)
+		{
+			gtk_window_present(GTK_WINDOW(prefdialog));
+			gtk_window_deiconify(GTK_WINDOW(prefdialog));
+		}
+		else
+		{
+			/* Create a new preference dialog */
+			widget = GTK_WIDGET(remmina_pref_dialog_new(atoi(data), NULL));
+			gtk_widget_show(widget);
+		}
+		break;
 
-		case REMMINA_COMMAND_EDIT:
-			widget = remmina_file_editor_new_from_filename(data);
-			if (widget)
-				gtk_widget_show(widget);
-			break;
+	case REMMINA_COMMAND_NEW:
+		s1 = (data ? strchr(data, ',') : NULL);
+		if (s1)
+		{
+			s1 = g_strdup(data);
+			s2 = strchr(s1, ',');
+			*s2++ = '\0';
+			widget = remmina_file_editor_new_full(s2, s1);
+			g_free(s1);
+		}
+		else
+		{
+			widget = remmina_file_editor_new_full(NULL, data);
+		}
+		gtk_widget_show(widget);
+		break;
 
-		case REMMINA_COMMAND_ABOUT:
-			remmina_about_open(NULL);
-			break;
+	case REMMINA_COMMAND_CONNECT:
+		remmina_connection_window_open_from_filename(data);
+		break;
 
-		case REMMINA_COMMAND_PLUGIN:
-			plugin = (RemminaEntryPlugin*) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_ENTRY, data);
-			if (plugin)
-			{
-				plugin->entry_func();
-			}
-			else
-			{
-				widget = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-						_("Plugin %s is not registered."), data);
-				g_signal_connect(G_OBJECT(widget), "response", G_CALLBACK(gtk_widget_destroy), NULL);
-				gtk_widget_show(widget);
-				remmina_widget_pool_register(widget);
-			}
-			break;
+	case REMMINA_COMMAND_EDIT:
+		widget = remmina_file_editor_new_from_filename(data);
+		if (widget)
+			gtk_widget_show(widget);
+		break;
 
-		default:
-			break;
+	case REMMINA_COMMAND_ABOUT:
+		remmina_about_open(NULL);
+		break;
+
+	case REMMINA_COMMAND_PLUGIN:
+		plugin = (RemminaEntryPlugin*) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_ENTRY, data);
+		if (plugin)
+		{
+			plugin->entry_func();
+		}
+		else
+		{
+			widget = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+			                                _("Plugin %s is not registered."), data);
+			g_signal_connect(G_OBJECT(widget), "response", G_CALLBACK(gtk_widget_destroy), NULL);
+			gtk_widget_show(widget);
+			remmina_widget_pool_register(widget);
+		}
+		break;
+
+	default:
+		break;
 	}
 }
 

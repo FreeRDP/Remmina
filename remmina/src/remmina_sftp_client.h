@@ -62,13 +62,13 @@ typedef struct _RemminaSFTPClient
 	pthread_t thread;
 	gint taskid;
 	gboolean thread_abort;
-}RemminaSFTPClient;
+} RemminaSFTPClient;
 
 typedef struct _RemminaSFTPClientClass
 {
 	RemminaFTPClientClass parent_class;
 
-}RemminaSFTPClientClass;
+} RemminaSFTPClientClass;
 
 GType remmina_sftp_client_get_type (void) G_GNUC_CONST;
 

@@ -73,7 +73,7 @@ GtkWidget* remmina_public_create_combo_text_d(const gchar *text, const gchar *de
 void remmina_public_load_combo_text_d(GtkWidget *combo, const gchar *text, const gchar *def, const gchar *empty_choice);
 GtkWidget* remmina_public_create_combo(gboolean use_icon);
 GtkWidget* remmina_public_create_combo_map(const gpointer *key_value_list, const gchar *def, gboolean use_icon,
-		const gchar *domain);
+        const gchar *domain);
 GtkWidget* remmina_public_create_combo_mapint(const gpointer *key_value_list, gint def, gboolean use_icon, const gchar *domain);
 
 void remmina_public_create_group(GtkGrid *table, const gchar *group, gint row, gint rows, gint cols);
@@ -107,7 +107,7 @@ void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *contain
 gchar* remmina_public_str_replace(const gchar *string, const gchar *search, const gchar *replacement);
 /* Validate the inserted value for a new resolution */
 gboolean remmina_public_resolution_validation_func(const gchar *new_str, gchar **error);
-/* Replaces all occurences of search in a new copy of string by replacement 
+/* Replaces all occurences of search in a new copy of string by replacement
  * and overwrites the original string */
 void remmina_public_str_replace_in_place(gchar *string, const gchar *search, const gchar *replacement);
 #endif  /* __REMMINAPUBLIC_H__  */

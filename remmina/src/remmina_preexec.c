@@ -95,21 +95,21 @@ GtkDialog* remmina_preexec_new(RemminaFile* remminafile)
 
 		/* Consider using G_SPAWN_SEARCH_PATH_FROM_ENVP (from glib 2.38)*/
 		g_spawn_async(	NULL,                      // cwd
-				argv,                      // argv
-				NULL,                      // envp
-				G_SPAWN_SEARCH_PATH |
-				G_SPAWN_DO_NOT_REAP_CHILD, // flags
-				NULL,                      // child_setup
-				NULL,                      // child_setup user data
-				&child_pid,                // exit status
-				&error);                   // error
+		                argv,                      // argv
+		                NULL,                      // envp
+		                G_SPAWN_SEARCH_PATH |
+		                G_SPAWN_DO_NOT_REAP_CHILD, // flags
+		                NULL,                      // child_setup
+		                NULL,                      // child_setup user data
+		                &child_pid,                // exit status
+		                &error);                   // error
 		if (!error)
 		{
 			gtk_spinner_start (GTK_SPINNER (pcspinner->spinner));
 			g_child_watch_add (child_pid, wait_for_child, (gpointer) pcspinner);
 			gtk_dialog_run(pcspinner->dialog);
 		}
-        else
+		else
 		{
 			g_warning ("%s\n", error->message);
 			g_error_free(error);
