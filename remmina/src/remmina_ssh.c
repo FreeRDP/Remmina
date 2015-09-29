@@ -420,7 +420,10 @@ remmina_ssh_init_session (RemminaSSH *ssh)
 	ssh_set_callbacks(ssh->session, ssh->callback);
 
 	/* As the latest parse the ~/.ssh/config file */
-	ssh_options_parse_config(ssh->session, NULL);
+	if (remmina_pref.ssh_parseconfig) {
+		ssh_options_parse_config(ssh->session, NULL);
+	}
+
 	if (ssh_connect (ssh->session))
 	{
 		remmina_ssh_set_error (ssh, _("Failed to startup SSH session: %s"));
