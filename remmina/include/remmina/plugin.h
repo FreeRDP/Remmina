@@ -211,6 +211,7 @@ typedef struct _RemminaPluginService
     gint         (* pref_get_scale_quality)               (void);
     gint         (* pref_get_sshtunnel_port)              (void);
     gint         (* pref_get_ssh_loglevel)                (void);
+    gboolean     (* pref_get_ssh_parseconfig)             (void);
     guint        (* pref_keymap_get_keyval)               (const gchar *keymap, guint keyval);
 
     void         (* log_print)                            (const gchar *text);
