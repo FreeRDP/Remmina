@@ -102,7 +102,6 @@ static void remmina_plugin_on_plug_removed(GtkSocket *socket, RemminaProtocolWid
 	remmina_plugin_service->protocol_plugin_close_connection(gp);
 }
 
-
 static void remmina_plugin_init(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_init");
@@ -216,12 +215,12 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	gtk_container_add(GTK_CONTAINER(gp), gpdata->socket);
 
 	//TEMP:for (i = 0; i < argc; i++)
-		//TEMP:g_free (argv[i]);
+	//TEMP:g_free (argv[i]);
 
 	//TEMP:if (!ret)
 	//TEMP:{
-		//TEMP:remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
-		//TEMP:return FALSE;
+	//TEMP:remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
+	//TEMP:return FALSE;
 	//TEMP:}
 
 	remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
