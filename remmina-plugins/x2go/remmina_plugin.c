@@ -2,7 +2,6 @@
  *     Project: Remmina Plugin X2Go
  * Description: Remmina protocol plugin to connect via X2Go using PyHoca
  *              Based on Fabio Castelli Team Viewer Plugin
- *              Copyright: 2013-2014 Fabio Castelli (Muflone)
  *      Author: Antenore Gatta <antenore@simbiosi.org>
  *   Copyright: 2015 Antenore Gatta
  *     License: GPL-2+
@@ -40,8 +39,12 @@
 #include "plugin_config.h"
 #include <common/remmina_plugin.h>
 #if GTK_VERSION == 3
-	# include <gtk/gtkx.h>
+# include <gtk/gtkx.h>
 #endif
+#include <X11/Xlib.h>
+#include <X11/XKBlib.h>
+#include <X11/extensions/XKBrules.h>
+
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 
@@ -54,6 +57,32 @@ typedef struct _RemminaPluginData
 } RemminaPluginData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
+
+static gboolean remmina_plugin_exec_xephyr(gint socket_id, gint pid, gint width, gint height)
+{
+	TRACE_CALL("remmina_plugin_exec_xephyr");
+	GError *error = NULL;
+	gboolean ret;
+	gchar *argv[50];
+	gint argc;
+	gint i;
+	argc = 0;
+	argv[argc++] = g_strdup("Xephyr");
+	argv[argc++] = g_strdup("-parent");
+	argv[argc++] = g_strdup_printf("%d", socket_id);
+	argv[argc++] = g_strdup("-screen");
+	argv[argc++] = g_strdup_printf ("%dx%d", width, height);
+	argv[argc++] = g_strdup(":3");
+	argv[argc++] = NULL;
+	ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &pid, &error);
+	for (i = 0; i < argc; i++)
+		g_free (argv[i]);
+	if (!ret)
+	{
+		return FALSE;
+	}
+	return TRUE;
+}
 
 static void remmina_plugin_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
@@ -95,13 +124,13 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_open_connection");
 	remmina_plugin_service->log_printf("[%s] remmina_plugin_open_connection\n", PLUGIN_NAME);
-	#define GET_PLUGIN_STRING(value) \
+#define GET_PLUGIN_STRING(value) \
 		g_strdup(remmina_plugin_service->file_get_string(remminafile, value))
-	#define GET_PLUGIN_PASSWORD(value) \
+#define GET_PLUGIN_PASSWORD(value) \
 		g_strdup(remmina_plugin_service->file_get_secret(remminafile, value));
-	#define GET_PLUGIN_INT(value, default_value) \
+#define GET_PLUGIN_INT(value, default_value) \
 		remmina_plugin_service->file_get_int(remminafile, value, default_value)
-	#define GET_PLUGIN_BOOLEAN(value) \
+#define GET_PLUGIN_BOOLEAN(value) \
 		remmina_plugin_service->file_get_int(remminafile, value, FALSE)
 
 	RemminaPluginData *gpdata;
@@ -140,51 +169,60 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 
 	remmina_plugin_service->log_printf("[%s] Before spawn socket id is %d\n", PLUGIN_NAME, gpdata->socket_id);
 
-	argc = 0;
+	//TEMP: argc = 0;
 	/* pyhoca is not an "xembed aware" application */
-	argv[argc++] = g_strdup("xterm");
-	argv[argc++] = g_strdup("-into");
-	argv[argc++] = g_strdup_printf("%i", gpdata->socket_id);
-	argv[argc++] = g_strdup("-e");
-	argv[argc++] = g_strdup("pyhoca-cli");
-	argv[argc++] = g_strdup("--server");
-	option_str = GET_PLUGIN_STRING("server");
-	argv[argc++] = g_strdup(option_str);
-	argv[argc++] = g_strdup("-p");
-	option_str = GET_PLUGIN_STRING("sshport");
-	argv[argc++] = g_strdup(option_str);
-	argv[argc++] = g_strdup("-u");
-	option_str = GET_PLUGIN_STRING("username");
-	argv[argc++] = g_strdup(option_str);
-	argv[argc++] = g_strdup("--password");
-	option_str = GET_PLUGIN_PASSWORD("password");
-	argv[argc++] = g_strdup(option_str);
-	argv[argc++] = g_strdup("-c");
-	option_str = g_shell_quote(GET_PLUGIN_STRING("command"));
-	argv[argc++] = g_strdup(option_str);
-	argv[argc++] = g_strdup("--kbd-layout");
-	option_str = GET_PLUGIN_STRING("kbdlayout");
-	argv[argc++] = g_strdup(option_str);
-	argv[argc++] = g_strdup("--kbd-type");
-	option_str = GET_PLUGIN_STRING("kbdtype");
-	argv[argc++] = g_strdup(option_str);
-	argv[argc++] = g_strdup("-g");
-	option_str = GET_PLUGIN_STRING("resolution");
+	//TEMP: argv[argc++] = g_strdup("xterm");
+	//TEMP: argv[argc++] = g_strdup("-into");
+	//TEMP: argv[argc++] = g_strdup_printf("%i", gpdata->socket_id);
+	//TEMP: argv[argc++] = g_strdup("-e");
+	//TEMP: argv[argc++] = g_strdup("pyhoca-cli");
+	//TEMP: argv[argc++] = g_strdup("--server");
+	//TEMP: option_str = GET_PLUGIN_STRING("server");
+	//TEMP: argv[argc++] = g_strdup(option_str);
+	//TEMP: argv[argc++] = g_strdup("-p");
+	//TEMP: option_str = GET_PLUGIN_STRING("sshport");
+	//TEMP: argv[argc++] = g_strdup(option_str);
+	//TEMP: argv[argc++] = g_strdup("-u");
+	//TEMP: option_str = GET_PLUGIN_STRING("username");
+	//TEMP: argv[argc++] = g_strdup(option_str);
+	//TEMP: argv[argc++] = g_strdup("--password");
+	//TEMP: option_str = GET_PLUGIN_PASSWORD("password");
+	//TEMP: argv[argc++] = g_strdup(option_str);
+	//TEMP: argv[argc++] = g_strdup("-c");
+	//TEMP: option_str = g_shell_quote(GET_PLUGIN_STRING("command"));
+	//TEMP: argv[argc++] = g_strdup(option_str);
+	//TEMP: argv[argc++] = g_strdup("--kbd-layout");
+	//TEMP: option_str = GET_PLUGIN_STRING("kbdlayout");
+	//TEMP: argv[argc++] = g_strdup(option_str);
+	//TEMP: argv[argc++] = g_strdup("--kbd-type");
+	//TEMP: option_str = GET_PLUGIN_STRING("kbdtype");
+	//TEMP: argv[argc++] = g_strdup(option_str);
+	//TEMP: argv[argc++] = g_strdup("-g");
+	//TEMP: option_str = GET_PLUGIN_STRING("resolution");
+	//TEMP: argv[argc++] = g_strdup(option_str);
 
-	argv[argc++] = g_strdup(option_str);
 
-	argv[argc++] = NULL;
 
-	ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pid, &error);
+	//TEMP: argv[argc++] = NULL;
 
-	for (i = 0; i < argc; i++)
-	g_free (argv[i]);
-
-	if (!ret)
+	//TEMP:ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pid, &error);
+	if (!remmina_plugin_exec_xephyr(gpdata->socket_id, gpdata->pid, width, height))
 	{
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
 		return FALSE;
 	}
+
+	remmina_plugin_service->log_printf("[%s] After spawn socket id is %d\n", PLUGIN_NAME, gpdata->socket_id);
+	gtk_container_add(GTK_CONTAINER(gp), gpdata->socket);
+
+	//TEMP:for (i = 0; i < argc; i++)
+		//TEMP:g_free (argv[i]);
+
+	//TEMP:if (!ret)
+	//TEMP:{
+		//TEMP:remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
+		//TEMP:return FALSE;
+	//TEMP:}
 
 	remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 	return TRUE;
