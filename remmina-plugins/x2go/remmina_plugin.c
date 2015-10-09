@@ -147,11 +147,11 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	gint width, height;
 
 	gchar **const envp = g_environ_setenv (
-	                         g_get_environ (),
-	                         g_strdup ("DISPLAY"),
-	                         g_strdup (":3"),        /* TODO: parameter or settings or random, or? */
-	                         TRUE
-	                     );
+			g_get_environ (),
+			g_strdup ("DISPLAY"),
+			g_strdup (":3"),        /* TODO: parameter or settings or random, or? */
+			TRUE
+			);
 
 	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
@@ -188,6 +188,8 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 
 	argc = 0;
 	/* pyhoca is not an "xembed aware" application */
+	argv[argc++] = g_strdup("xterm");
+	argv[argc++] = g_strdup("-e");
 	argv[argc++] = g_strdup("pyhoca-cli");
 	argv[argc++] = g_strdup("--server");
 	option_str = GET_PLUGIN_STRING("server");
@@ -218,12 +220,12 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	ret = g_spawn_async (NULL, argv, envp, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pid, &error);
 
 	for (i = 0; i < argc; i++)
-		g_free (argv[i]);
+	g_free (argv[i]);
 
 	if (!ret)
 	{
-		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
-		return FALSE;
+	remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
+	return FALSE;
 	}
 
 	remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
