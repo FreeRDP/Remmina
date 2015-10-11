@@ -48,8 +48,7 @@
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 
-typedef struct _RemminaPluginData
-{
+typedef struct _RemminaPluginData {
 	GtkWidget *socket;
 	gint socket_id;
 	gint width;
@@ -83,8 +82,7 @@ static gboolean remmina_plugin_exec_xephyr(RemminaProtocolWidget *gp)
 	ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pidxe, &error);
 	for (i = 0; i < argc; i++)
 		g_free (argv[i]);
-	if (!ret)
-	{
+	if (!ret) {
 		return FALSE;
 	}
 	return TRUE;
@@ -116,20 +114,17 @@ static gboolean remmina_plugin_exec_x2go(gchar *host, gint sshport, gchar *usern
 	argv[argc++] = g_strdup_printf ("%d", sshport);
 	argv[argc++] = g_strdup("-u");
 	argv[argc++] = g_strdup_printf ("%s", username);
-	if (password)
-	{
+	if (password) {
 		argv[argc++] = g_strdup("--password");
 		argv[argc++] = g_strdup_printf ("%s", password);
 	}
 	argv[argc++] = g_strdup("-c");
 	argv[argc++] = g_strdup_printf ("%s", g_shell_quote(command));
-	if (kbdlayout)
-	{
+	if (kbdlayout) {
 		argv[argc++] = g_strdup("--kbd-layout");
 		argv[argc++] = g_strdup_printf ("%s", kbdlayout);
 	}
-	if (kbdtype)
-	{
+	if (kbdtype) {
 		argv[argc++] = g_strdup("--kbd-type");
 		argv[argc++] = g_strdup_printf ("%s", kbdtype);
 	}
@@ -140,18 +135,17 @@ static gboolean remmina_plugin_exec_x2go(gchar *host, gint sshport, gchar *usern
 	argv[argc++] = NULL;
 
 	envp = g_environ_setenv (
-			g_get_environ (),
-			g_strdup ("DISPLAY"),
-			g_strdup_printf (":%d", gpdata->socket_id),
-			TRUE
-			);
+			   g_get_environ (),
+			   g_strdup ("DISPLAY"),
+			   g_strdup_printf (":%d", gpdata->socket_id),
+			   TRUE
+		   );
 
 	ret = g_spawn_async (NULL, argv, envp, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pidx2go, &error);
 
 	for (i = 0; i < argc; i++)
 		g_free (argv[i]);
-	if (!ret)
-	{
+	if (!ret) {
 		return FALSE;
 	}
 	return TRUE;
@@ -237,13 +231,10 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	kbdlayout = GET_PLUGIN_STRING("kbdlayout");
 	kbdtype = GET_PLUGIN_STRING("kbdtype");
 	res = GET_PLUGIN_STRING("resolution");
-	if (!res || !strchr(res, 'x'))
-	{
+	if (!res || !strchr(res, 'x')) {
 		gpdata->width = 640;
 		gpdata->height = 480;
-	}
-	else
-	{
+	} else {
 		scrsize = g_strsplit (res, "x", -1 );
 		gpdata->width = g_ascii_strtoull(scrsize[0], NULL, 0);
 		gpdata->height = g_ascii_strtoull(scrsize[1], NULL, 0);
@@ -254,8 +245,7 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 
 
-	if (!remmina_plugin_exec_xephyr(gp))
-	{
+	if (!remmina_plugin_exec_xephyr(gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
 		return FALSE;
 	}
@@ -272,7 +262,8 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	remmina_plugin_service->log_printf("[%s] res: %s\n", PLUGIN_NAME, res);
 	while ( g_stat(g_strdup_printf("/tmp/.X11-unix/X%d", gpdata->socket_id), &st) < 0 )
 		sleep(1);
-	if (!remmina_plugin_exec_x2go(
+	if (!remmina_plugin_exec_x2go
+			(
 				host,
 				sshport,
 				username,
@@ -282,8 +273,7 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 				kbdtype,
 				res,
 				gp
-				))
-	{
+			)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
 		return FALSE;
 	}
@@ -296,14 +286,12 @@ static gboolean remmina_plugin_close_connection(RemminaProtocolWidget *gp)
 	TRACE_CALL("remmina_plugin_close_connection");
 	RemminaPluginData *gpdata;
 	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
-	if (gpdata->pidx2go)
-	{
+	if (gpdata->pidx2go) {
 		kill(gpdata->pidx2go, SIGTERM);
 		g_spawn_close_pid(gpdata->pidx2go);
 		gpdata->pidx2go = 0;
 	}
-	if (gpdata->pidxe)
-	{
+	if (gpdata->pidxe) {
 		kill(gpdata->pidxe, SIGTERM);
 		g_spawn_close_pid(gpdata->pidxe);
 		gpdata->pidxe = 0;
@@ -322,8 +310,7 @@ static gboolean remmina_plugin_close_connection(RemminaProtocolWidget *gp)
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
  * f) Unused pointer  --->    TODO: used for sensitive
  */
-static const RemminaProtocolSetting remmina_plugin_basic_settings[] =
-{
+static const RemminaProtocolSetting remmina_plugin_basic_settings[] = {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
 	//{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "sshport", N_("remote SSH port (default: 22)"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
@@ -336,8 +323,7 @@ static const RemminaProtocolSetting remmina_plugin_basic_settings[] =
 };
 
 /* Protocol plugin definition and features */
-static RemminaProtocolPlugin remmina_plugin =
-{
+static RemminaProtocolPlugin remmina_plugin = {
 	REMMINA_PLUGIN_TYPE_PROTOCOL,              // Type
 	PLUGIN_NAME,                               // Name
 	PLUGIN_DESCRIPTION,                        // Description
@@ -367,8 +353,7 @@ remmina_plugin_entry(RemminaPluginService *service)
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 
-	if (!service->register_plugin((RemminaPlugin *) &remmina_plugin))
-	{
+	if (!service->register_plugin((RemminaPlugin *) &remmina_plugin)) {
 		return FALSE;
 	}
 
