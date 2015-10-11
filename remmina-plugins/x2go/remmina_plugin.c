@@ -52,15 +52,20 @@ typedef struct _RemminaPluginData
 {
 	GtkWidget *socket;
 	gint socket_id;
-	GPid pid;
+	gint width;
+	gint height;
+	GPid pidxe;
+	GPid pidx2go;
 	gboolean ready;
 } RemminaPluginData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
-static gboolean remmina_plugin_exec_xephyr(gint socket_id, gint pid, gint width, gint height)
+static gboolean remmina_plugin_exec_xephyr(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_exec_xephyr");
+	RemminaPluginData *gpdata;
+	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	GError *error = NULL;
 	gboolean ret;
 	gchar *argv[50];
@@ -68,13 +73,14 @@ static gboolean remmina_plugin_exec_xephyr(gint socket_id, gint pid, gint width,
 	gint i;
 	argc = 0;
 	argv[argc++] = g_strdup("Xephyr");
+	argv[argc++] = g_strdup_printf(":%d", gpdata->socket_id);	/* We use the window id as our display number */
 	argv[argc++] = g_strdup("-parent");
-	argv[argc++] = g_strdup_printf("%d", socket_id);
+	argv[argc++] = g_strdup_printf("%d", gpdata->socket_id);
 	argv[argc++] = g_strdup("-screen");
-	argv[argc++] = g_strdup_printf ("%dx%d", width, height);
-	argv[argc++] = g_strdup(":3");
+	argv[argc++] = g_strdup_printf ("%dx%d", gpdata->width, gpdata->height);
+	argv[argc++] = g_strdup("-resizeable");
 	argv[argc++] = NULL;
-	ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &pid, &error);
+	ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pidxe, &error);
 	for (i = 0; i < argc; i++)
 		g_free (argv[i]);
 	if (!ret)
@@ -82,6 +88,74 @@ static gboolean remmina_plugin_exec_xephyr(gint socket_id, gint pid, gint width,
 		return FALSE;
 	}
 	return TRUE;
+}
+
+static gboolean remmina_plugin_exec_x2go(gchar *host, gint sshport, gchar *username, gchar *password,
+		gchar *command, gchar *kbdlayout, gchar *kbdtype, gchar *resolution, RemminaProtocolWidget *gp)
+{
+	TRACE_CALL("remmina_plugin_exec_x2go");
+	RemminaPluginData *gpdata;
+	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	GError *error = NULL;
+	gboolean ret;
+
+	gchar **envp;
+
+	gchar *argv[50];
+	gint argc;
+	gint i;
+
+	argc = 0;
+
+	//argv[argc++] = g_strdup("xterm");
+	//argv[argc++] = g_strdup("-e");
+	argv[argc++] = g_strdup("pyhoca-cli");
+	argv[argc++] = g_strdup("--server");
+	argv[argc++] = g_strdup_printf ("%s", host);
+	argv[argc++] = g_strdup("-p");
+	argv[argc++] = g_strdup_printf ("%d", sshport);
+	argv[argc++] = g_strdup("-u");
+	argv[argc++] = g_strdup_printf ("%s", username);
+	if (password)
+	{
+		argv[argc++] = g_strdup("--password");
+		argv[argc++] = g_strdup_printf ("%s", password);
+	}
+	argv[argc++] = g_strdup("-c");
+	argv[argc++] = g_strdup_printf ("%s", g_shell_quote(command));
+	if (kbdlayout)
+	{
+		argv[argc++] = g_strdup("--kbd-layout");
+		argv[argc++] = g_strdup_printf ("%s", kbdlayout);
+	}
+	if (kbdtype)
+	{
+		argv[argc++] = g_strdup("--kbd-type");
+		argv[argc++] = g_strdup_printf ("%s", kbdtype);
+	}
+	if (!resolution)
+		resolution = "800x600";
+	argv[argc++] = g_strdup("-g");
+	argv[argc++] = g_strdup_printf ("%s", resolution);
+	argv[argc++] = NULL;
+
+	envp = g_environ_setenv (
+			g_get_environ (),
+			g_strdup ("DISPLAY"),
+			g_strdup_printf (":%d", gpdata->socket_id),
+			TRUE
+			);
+
+	ret = g_spawn_async (NULL, argv, envp, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pidx2go, &error);
+
+	for (i = 0; i < argc; i++)
+		g_free (argv[i]);
+	if (!ret)
+	{
+		return FALSE;
+	}
+	return TRUE;
+
 }
 
 static void remmina_plugin_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
@@ -134,105 +208,106 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 
 	RemminaPluginData *gpdata;
 	RemminaFile *remminafile;
-	gboolean ret;
 	GError *error = NULL;
-	gchar *argv[50];
-	gint argc;
-	gint i;
 
-	gchar *option_str;
-
-	gchar *res;
+	gchar *servstr, *host, *username, *password, *command, *kbdlayout, *kbdtype, *res;
+	gint sshport;
 	gchar **scrsize;
-	gint width, height;
 
-	gchar **const envp = g_environ_setenv (
-	                         g_get_environ (),
-	                         g_strdup ("DISPLAY"),
-	                         g_strdup (":3"),        /* TODO: parameter or settings or random, or? */
-	                         TRUE
-	                     );
+	struct stat st;
 
 	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
+	servstr = GET_PLUGIN_STRING("server");
+	if ( servstr ) {
+		remmina_plugin_service->get_server_port(servstr, 22, &host, &sshport);
+	} else {
+		return FALSE;
+	}
+	if (!sshport)
+		sshport=22;
+	username = GET_PLUGIN_STRING("username");
+	if (!username)
+		username = g_get_user_name();
+	password = GET_PLUGIN_PASSWORD("password");
+	command = GET_PLUGIN_STRING("command");
+	if (!command)
+		command = "xterm";
+	kbdlayout = GET_PLUGIN_STRING("kbdlayout");
+	kbdtype = GET_PLUGIN_STRING("kbdtype");
 	res = GET_PLUGIN_STRING("resolution");
 	if (!res || !strchr(res, 'x'))
 	{
-		width = 640;
-		height = 480;
+		gpdata->width = 640;
+		gpdata->height = 480;
 	}
 	else
 	{
 		scrsize = g_strsplit (res, "x", -1 );
-		width = g_ascii_strtoull(scrsize[0], NULL, 0);
-		height = g_ascii_strtoull(scrsize[1], NULL, 0);
+		gpdata->width = g_ascii_strtoull(scrsize[0], NULL, 0);
+		gpdata->height = g_ascii_strtoull(scrsize[1], NULL, 0);
 	}
-	remmina_plugin_service->protocol_plugin_set_width(gp, width);
-	remmina_plugin_service->protocol_plugin_set_height(gp, height);
-	gtk_widget_set_size_request(GTK_WIDGET(gp), width, height);
+	remmina_plugin_service->protocol_plugin_set_width(gp, gpdata->width);
+	remmina_plugin_service->protocol_plugin_set_height(gp, gpdata->height);
+	gtk_widget_set_size_request(GTK_WIDGET(gp), gpdata->width, gpdata->height);
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 
-	remmina_plugin_service->log_printf("[%s] Before spawn socket id is %d\n", PLUGIN_NAME, gpdata->socket_id);
 
-
-	//TEMP:ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pid, &error);
-	if (!remmina_plugin_exec_xephyr(gpdata->socket_id, gpdata->pid, width, height))
+	if (!remmina_plugin_exec_xephyr(gp))
 	{
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
 		return FALSE;
 	}
 
-	remmina_plugin_service->log_printf("[%s] After spawn socket id is %d\n", PLUGIN_NAME, gpdata->socket_id);
 	gtk_container_add(GTK_CONTAINER(gp), gpdata->socket);
+	remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 
-	argc = 0;
-	/* pyhoca is not an "xembed aware" application */
-	argv[argc++] = g_strdup("pyhoca-cli");
-	argv[argc++] = g_strdup("--server");
-	option_str = GET_PLUGIN_STRING("server");
-	argv[argc++] = g_strdup(option_str);
-	argv[argc++] = g_strdup("-p");
-	option_str = GET_PLUGIN_STRING("sshport");
-	argv[argc++] = g_strdup(option_str);
-	argv[argc++] = g_strdup("-u");
-	option_str = GET_PLUGIN_STRING("username");
-	argv[argc++] = g_strdup(option_str);
-	argv[argc++] = g_strdup("--password");
-	option_str = GET_PLUGIN_PASSWORD("password");
-	argv[argc++] = g_strdup(option_str);
-	argv[argc++] = g_strdup("-c");
-	option_str = g_shell_quote(GET_PLUGIN_STRING("command"));
-	argv[argc++] = g_strdup(option_str);
-	argv[argc++] = g_strdup("--kbd-layout");
-	option_str = GET_PLUGIN_STRING("kbdlayout");
-	argv[argc++] = g_strdup(option_str);
-	argv[argc++] = g_strdup("--kbd-type");
-	option_str = GET_PLUGIN_STRING("kbdtype");
-	argv[argc++] = g_strdup(option_str);
-	argv[argc++] = g_strdup("-g");
-	option_str = GET_PLUGIN_STRING("resolution");
-	argv[argc++] = g_strdup(option_str);
-	argv[argc++] = NULL;
-
-	ret = g_spawn_async (NULL, argv, envp, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pid, &error);
-
-	for (i = 0; i < argc; i++)
-		g_free (argv[i]);
-
-	if (!ret)
+	remmina_plugin_service->log_printf("[%s] username: %s\n", PLUGIN_NAME, username);
+	remmina_plugin_service->log_printf("[%s] host: %s\n", PLUGIN_NAME, host);
+	remmina_plugin_service->log_printf("[%s] sshport: %d", PLUGIN_NAME, sshport);
+	remmina_plugin_service->log_printf("[%s] command: %s\n", PLUGIN_NAME, command);
+	remmina_plugin_service->log_printf("[%s] kbdlayout: %s\n", PLUGIN_NAME, kbdlayout);
+	remmina_plugin_service->log_printf("[%s] kbdtype: %s\n", PLUGIN_NAME, kbdtype);
+	remmina_plugin_service->log_printf("[%s] res: %s\n", PLUGIN_NAME, res);
+	while ( g_stat(g_strdup_printf("/tmp/.X11-unix/X%d", gpdata->socket_id), &st) < 0 )
+		sleep(1);
+	if (!remmina_plugin_exec_x2go(
+				host,
+				sshport,
+				username,
+				password,
+				command,
+				kbdlayout,
+				kbdtype,
+				res,
+				gp
+				))
 	{
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
 		return FALSE;
 	}
 
-	remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 	return TRUE;
 }
 
 static gboolean remmina_plugin_close_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_close_connection");
+	RemminaPluginData *gpdata;
+	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	if (gpdata->pidx2go)
+	{
+		kill(gpdata->pidx2go, SIGTERM);
+		g_spawn_close_pid(gpdata->pidx2go);
+		gpdata->pidx2go = 0;
+	}
+	if (gpdata->pidxe)
+	{
+		kill(gpdata->pidxe, SIGTERM);
+		g_spawn_close_pid(gpdata->pidxe);
+		gpdata->pidxe = 0;
+	}
 	remmina_plugin_service->log_printf("[%s] remmina_plugin_close_connection\n", PLUGIN_NAME);
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 	return FALSE;
@@ -250,7 +325,7 @@ static gboolean remmina_plugin_close_connection(RemminaProtocolWidget *gp)
 static const RemminaProtocolSetting remmina_plugin_basic_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "sshport", N_("remote SSH port (default: 22)"), FALSE, NULL, NULL },
+	//{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "sshport", N_("remote SSH port (default: 22)"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "command", N_("Remote command"), FALSE, NULL, NULL },
