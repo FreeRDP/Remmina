@@ -78,6 +78,8 @@ static gboolean remmina_plugin_exec_xephyr(RemminaProtocolWidget *gp)
 	argv[argc++] = g_strdup("-screen");
 	argv[argc++] = g_strdup_printf ("%dx%d", gpdata->width, gpdata->height);
 	argv[argc++] = g_strdup("-resizeable");
+	argv[argc++] = g_strdup("-nolisten");
+	argv[argc++] = g_strdup("tcp");
 	argv[argc++] = NULL;
 	ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pidxe, &error);
 	for (i = 0; i < argc; i++)
@@ -113,7 +115,11 @@ static gboolean remmina_plugin_exec_x2go(gchar *host, gint sshport, gchar *usern
 	argv[argc++] = g_strdup("-p");
 	argv[argc++] = g_strdup_printf ("%d", sshport);
 	argv[argc++] = g_strdup("-u");
-	argv[argc++] = g_strdup_printf ("%s", username);
+	if (!username){
+		argv[argc++] = g_strdup_printf ("%s", g_get_user_name());
+	}else{
+		argv[argc++] = g_strdup_printf ("%s", username);
+	}
 	if (password) {
 		argv[argc++] = g_strdup("--password");
 		argv[argc++] = g_strdup_printf ("%s", password);
@@ -222,8 +228,6 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	if (!sshport)
 		sshport=22;
 	username = GET_PLUGIN_STRING("username");
-	if (!username)
-		username = g_get_user_name();
 	password = GET_PLUGIN_PASSWORD("password");
 	command = GET_PLUGIN_STRING("command");
 	if (!command)
@@ -250,7 +254,6 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 		return FALSE;
 	}
 
-	gtk_container_add(GTK_CONTAINER(gp), gpdata->socket);
 	remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 
 	remmina_plugin_service->log_printf("[%s] username: %s\n", PLUGIN_NAME, username);
