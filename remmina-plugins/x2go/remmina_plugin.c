@@ -107,8 +107,6 @@ static gboolean remmina_plugin_exec_x2go(gchar *host, gint sshport, gchar *usern
 
 	argc = 0;
 
-	//argv[argc++] = g_strdup("xterm");
-	//argv[argc++] = g_strdup("-e");
 	argv[argc++] = g_strdup("pyhoca-cli");
 	argv[argc++] = g_strdup("--server");
 	argv[argc++] = g_strdup_printf ("%s", host);
@@ -212,9 +210,15 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 
 	gchar *servstr, *host, *username, *password, *command, *kbdlayout, *kbdtype, *res;
 	gint sshport;
+	GdkDisplay *default_dsp;
 	gchar **scrsize;
 
 	struct stat st;
+
+	/* We save the X Display name (:0) as we will need to synchronize the clipboard */
+	default_dsp = gdk_display_get_default();
+	const gchar *default_dsp_name = gdk_display_get_name(default_dsp);
+	remmina_plugin_service->log_printf("[%s] Default display is %s\n", PLUGIN_NAME, default_dsp_name);
 
 	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
@@ -258,7 +262,7 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 
 	remmina_plugin_service->log_printf("[%s] username: %s\n", PLUGIN_NAME, username);
 	remmina_plugin_service->log_printf("[%s] host: %s\n", PLUGIN_NAME, host);
-	remmina_plugin_service->log_printf("[%s] sshport: %d", PLUGIN_NAME, sshport);
+	remmina_plugin_service->log_printf("[%s] sshport: %d\n", PLUGIN_NAME, sshport);
 	remmina_plugin_service->log_printf("[%s] command: %s\n", PLUGIN_NAME, command);
 	remmina_plugin_service->log_printf("[%s] kbdlayout: %s\n", PLUGIN_NAME, kbdlayout);
 	remmina_plugin_service->log_printf("[%s] kbdtype: %s\n", PLUGIN_NAME, kbdtype);
