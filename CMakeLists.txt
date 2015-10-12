@@ -104,6 +104,14 @@ set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_FULL_DATADIR}/locale")
 set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/remmina/plugins")
 set(REMMINA_UIDIR "${CMAKE_INSTALL_FULL_DATADIR}/remmina/ui")
 
+# Uninstall support
+configure_file(
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+	"${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+	IMMEDIATE @ONLY)
+add_custom_target(uninstall
+	"${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
+
 find_required_package(GTK)
 find_required_package(PTHREAD)
 find_suggested_package(GCRYPT)
