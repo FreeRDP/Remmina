@@ -136,6 +136,7 @@ static gboolean remmina_plugin_exec_x2go(gchar *host, gint sshport, gchar *usern
 		resolution = "800x600";
 	argv[argc++] = g_strdup("-g");
 	argv[argc++] = g_strdup_printf ("%s", resolution);
+	argv[argc++] = g_strdup("--clean-sessions");
 	argv[argc++] = NULL;
 
 	envp = g_environ_setenv (
