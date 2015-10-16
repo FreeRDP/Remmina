@@ -36,6 +36,7 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <gio/gio.h>
 #include <stdlib.h>
 #include "config.h"
 #include "remmina_public.h"
