@@ -136,6 +136,7 @@ static gboolean remmina_plugin_exec_x2go(gchar *host, gint sshport, gchar *usern
 		resolution = "800x600";
 	argv[argc++] = g_strdup("-g");
 	argv[argc++] = g_strdup_printf ("%s", resolution);
+	argv[argc++] = g_strdup("--clean-sessions");
 	argv[argc++] = NULL;
 
 	envp = g_environ_setenv (
@@ -215,7 +216,7 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 
 	struct stat st;
 
-	/* We save the X Display name (:0) as we will need to synchronize the clipboard */
+	/* We save the X Display name (:0) as we will need to synchronize the clipboards */
 	default_dsp = gdk_display_get_default();
 	const gchar *default_dsp_name = gdk_display_get_name(default_dsp);
 	remmina_plugin_service->log_printf("[%s] Default display is %s\n", PLUGIN_NAME, default_dsp_name);
@@ -260,27 +261,9 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 
 	remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 
-	remmina_plugin_service->log_printf("[%s] username: %s\n", PLUGIN_NAME, username);
-	remmina_plugin_service->log_printf("[%s] host: %s\n", PLUGIN_NAME, host);
-	remmina_plugin_service->log_printf("[%s] sshport: %d\n", PLUGIN_NAME, sshport);
-	remmina_plugin_service->log_printf("[%s] command: %s\n", PLUGIN_NAME, command);
-	remmina_plugin_service->log_printf("[%s] kbdlayout: %s\n", PLUGIN_NAME, kbdlayout);
-	remmina_plugin_service->log_printf("[%s] kbdtype: %s\n", PLUGIN_NAME, kbdtype);
-	remmina_plugin_service->log_printf("[%s] res: %s\n", PLUGIN_NAME, res);
 	while ( g_stat(g_strdup_printf("/tmp/.X11-unix/X%d", gpdata->socket_id), &st) < 0 )
 		sleep(1);
-	if (!remmina_plugin_exec_x2go
-			(
-				host,
-				sshport,
-				username,
-				password,
-				command,
-				kbdlayout,
-				kbdtype,
-				res,
-				gp
-			)) {
+	if (!remmina_plugin_exec_x2go(host, sshport, username, password, command, kbdlayout, kbdtype, res, gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
 		return FALSE;
 	}
