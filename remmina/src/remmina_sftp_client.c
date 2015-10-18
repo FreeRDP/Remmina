@@ -1030,12 +1030,14 @@ remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path
 
 	widget = gtk_label_new(_("The following file already exists in the target folder:"));
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment (GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_box_pack_start (GTK_BOX (vbox), widget, TRUE, TRUE, 4);
 
 	widget = gtk_label_new(filename);
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment (GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_box_pack_start (GTK_BOX (vbox), widget, TRUE, TRUE, 4);
 
 	response = gtk_dialog_run (GTK_DIALOG(dialog));

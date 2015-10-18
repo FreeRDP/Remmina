@@ -267,7 +267,8 @@ void remmina_public_create_group(GtkGrid *table, const gchar *group, gint row, g
 
 	widget = gtk_label_new(NULL);
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	str = g_markup_printf_escaped("<b>%s</b>", group);
 	gtk_label_set_markup(GTK_LABEL(widget), str);
 	g_free(str);
