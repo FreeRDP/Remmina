@@ -308,11 +308,11 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 	gtk_grid_set_row_spacing(GTK_GRID(grid), 4);
 	gtk_grid_set_column_spacing(GTK_GRID(grid), 4);
 
-    //gtk_grid_attach (GtkGrid *grid, GtkWidget *child, gint left, gint top, gint width, gint height);
 	/* Create the content */
 	widget = gtk_label_new(_("Keyboard layout"));
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 1, 1);
 
 	grid->keyboard_layout_store = gtk_list_store_new(2, G_TYPE_UINT, G_TYPE_STRING);
@@ -327,7 +327,8 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 
 	widget = gtk_label_new("-");
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 1, 4, 2);
 	grid->keyboard_layout_label = widget;
 
@@ -345,7 +346,8 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 
 	widget = gtk_label_new(_("Quality settings"));
 	gtk_widget_show(widget);
-	gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
+	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 6, 1, 4);
 
 	grid->quality_store = gtk_list_store_new(2, G_TYPE_UINT, G_TYPE_STRING);

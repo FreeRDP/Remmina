@@ -58,7 +58,9 @@
 #include <pthread.h>
 #ifdef HAVE_LIBGCRYPT
 #include <gcrypt.h>
+# if GCRYPT_VERSION_NUMBER < 0x010600
 GCRY_THREAD_OPTION_PTHREAD_IMPL;
+# endif
 #endif
 
 static gboolean remmina_option_about;
@@ -272,7 +274,9 @@ int main(int argc, char* argv[])
 	textdomain(GETTEXT_PACKAGE);
 
 #ifdef HAVE_LIBGCRYPT
+# if GCRYPT_VERSION_NUMBER < 0x010600
 	gcry_control (GCRYCTL_SET_THREAD_CBS, &gcry_threads_pthread);
+# endif
 	gcry_check_version (NULL);
 	gcry_control (GCRYCTL_DISABLE_SECMEM, 0);
 	gcry_control (GCRYCTL_INITIALIZATION_FINISHED, 0);
