@@ -40,6 +40,8 @@ set(REMMINA_PLUGIN_SRCS
 )
 add_library(remmina-plugin-x2go ${REMMINA_PLUGIN_SRCS})
 set_target_properties(remmina-plugin-x2go PROPERTIES PREFIX "")
+set_target_properties(remmina-plugin-x2go PROPERTIES NO_SONAME 1)
+
 include_directories(${REMMINA_COMMON_INCLUDE_DIRS})
 include_directories(${GTK_INCLUDE_DIRS})
 include_directories(${CMAKE_SOURCE_DIR}/remmina-plugins)

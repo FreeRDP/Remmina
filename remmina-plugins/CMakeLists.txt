@@ -66,6 +66,8 @@ find_program(PYHOCA_EXECUTABLE pyhoca-cli)
 
 if(PYHOCA_EXECUTABLE)
 	add_subdirectory(x2go)
+else()
+	message(WARNING "WITH_X2GO was set, but pyhoca-cli was not found. The X2Go plugin won't be installed")
 endif(PYHOCA_EXECUTABLE)
 
 find_suggested_package(FREERDP)
