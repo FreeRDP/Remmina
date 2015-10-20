@@ -1,7 +1,6 @@
 /*
  *     Project: Remmina Plugin X2Go
  * Description: Remmina protocol plugin to connect via X2Go using PyHoca
- *              Based on Fabio Castelli Team Viewer Plugin
  *      Author: Antenore Gatta <antenore@simbiosi.org>
  *   Copyright: 2015 Antenore Gatta
  *     License: GPL-2+
@@ -131,6 +130,9 @@ static gboolean remmina_plugin_exec_x2go(gchar *host, gint sshport, gchar *usern
 	if (kbdtype) {
 		argv[argc++] = g_strdup("--kbd-type");
 		argv[argc++] = g_strdup_printf ("%s", kbdtype);
+	}else{
+		argv[argc++] = g_strdup("--kbd-type");
+		argv[argc++] = g_strdup("auto");
 	}
 	if (!resolution)
 		resolution = "800x600";
