@@ -35,7 +35,7 @@
  *
  */
 
-#include "plugin_config.h"
+#include "x2go_plugin.h"
 #include <common/remmina_plugin.h>
 #if GTK_VERSION == 3
 # include <gtk/gtkx.h>
@@ -59,9 +59,9 @@ typedef struct _RemminaPluginData {
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
-static gboolean remmina_plugin_exec_xephyr(RemminaProtocolWidget *gp)
+static gboolean remmina_plugin_x2go_exec_xephyr(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_exec_xephyr");
+	TRACE_CALL("remmina_plugin_x2go_exec_xephyr");
 	RemminaPluginData *gpdata;
 	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	GError *error = NULL;
@@ -89,10 +89,10 @@ static gboolean remmina_plugin_exec_xephyr(RemminaProtocolWidget *gp)
 	return TRUE;
 }
 
-static gboolean remmina_plugin_exec_x2go(gchar *host, gint sshport, gchar *username, gchar *password,
+static gboolean remmina_plugin_x2go_exec_x2go(gchar *host, gint sshport, gchar *username, gchar *password,
 		gchar *command, gchar *kbdlayout, gchar *kbdtype, gchar *resolution, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_exec_x2go");
+	TRACE_CALL("remmina_plugin_x2go_exec_x2go");
 	RemminaPluginData *gpdata;
 	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	GError *error = NULL;
@@ -159,28 +159,28 @@ static gboolean remmina_plugin_exec_x2go(gchar *host, gint sshport, gchar *usern
 
 }
 
-static void remmina_plugin_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
+static void remmina_plugin_x2go_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_on_plug_added");
+	TRACE_CALL("remmina_plugin_x2go_on_plug_added");
 	RemminaPluginData *gpdata;
 	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
-	remmina_plugin_service->log_printf("[%s] remmina_plugin_on_plug_added socket %d\n", PLUGIN_NAME, gpdata->socket_id);
+	remmina_plugin_service->log_printf("[%s] remmina_plugin_x2go_on_plug_added socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 	gpdata->ready = TRUE;
 	return;
 }
 
-static void remmina_plugin_on_plug_removed(GtkSocket *socket, RemminaProtocolWidget *gp)
+static void remmina_plugin_x2go_on_plug_removed(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_on_plug_removed");
-	remmina_plugin_service->log_printf("[%s] remmina_plugin_on_plug_removed\n", PLUGIN_NAME);
+	TRACE_CALL("remmina_plugin_x2go_on_plug_removed");
+	remmina_plugin_service->log_printf("[%s] remmina_plugin_x2go_on_plug_removed\n", PLUGIN_NAME);
 	remmina_plugin_service->protocol_plugin_close_connection(gp);
 }
 
-static void remmina_plugin_init(RemminaProtocolWidget *gp)
+static void remmina_plugin_x2go_init(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_init");
-	remmina_plugin_service->log_printf("[%s] remmina_plugin_init\n", PLUGIN_NAME);
+	TRACE_CALL("remmina_plugin_x2go_init");
+	remmina_plugin_service->log_printf("[%s] remmina_plugin_x2go_init\n", PLUGIN_NAME);
 	RemminaPluginData *gpdata;
 
 	gpdata = g_new0(RemminaPluginData, 1);
@@ -189,15 +189,15 @@ static void remmina_plugin_init(RemminaProtocolWidget *gp)
 	gpdata->socket = gtk_socket_new();
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, gpdata->socket);
 	gtk_widget_show(gpdata->socket);
-	g_signal_connect(G_OBJECT(gpdata->socket), "plug-added", G_CALLBACK(remmina_plugin_on_plug_added), gp);
-	g_signal_connect(G_OBJECT(gpdata->socket), "plug-removed", G_CALLBACK(remmina_plugin_on_plug_removed), gp);
+	g_signal_connect(G_OBJECT(gpdata->socket), "plug-added", G_CALLBACK(remmina_plugin_x2go_on_plug_added), gp);
+	g_signal_connect(G_OBJECT(gpdata->socket), "plug-removed", G_CALLBACK(remmina_plugin_x2go_on_plug_removed), gp);
 	gtk_container_add(GTK_CONTAINER(gp), gpdata->socket);
 }
 
-static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
+static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_open_connection");
-	remmina_plugin_service->log_printf("[%s] remmina_plugin_open_connection\n", PLUGIN_NAME);
+	TRACE_CALL("remmina_plugin_x2go_open_connection");
+	remmina_plugin_service->log_printf("[%s] remmina_plugin_x2go_open_connection\n", PLUGIN_NAME);
 #define GET_PLUGIN_STRING(value) \
 		g_strdup(remmina_plugin_service->file_get_string(remminafile, value))
 #define GET_PLUGIN_PASSWORD(value) \
@@ -256,7 +256,7 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 
 
-	if (!remmina_plugin_exec_xephyr(gp)) {
+	if (!remmina_plugin_x2go_exec_xephyr(gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
 		return FALSE;
 	}
@@ -265,7 +265,7 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 
 	while ( g_stat(g_strdup_printf("/tmp/.X11-unix/X%d", gpdata->socket_id), &st) < 0 )
 		sleep(1);
-	if (!remmina_plugin_exec_x2go(host, sshport, username, password, command, kbdlayout, kbdtype, res, gp)) {
+	if (!remmina_plugin_x2go_exec_x2go(host, sshport, username, password, command, kbdlayout, kbdtype, res, gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
 		return FALSE;
 	}
@@ -273,9 +273,9 @@ static gboolean remmina_plugin_open_connection(RemminaProtocolWidget *gp)
 	return TRUE;
 }
 
-static gboolean remmina_plugin_close_connection(RemminaProtocolWidget *gp)
+static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_close_connection");
+	TRACE_CALL("remmina_plugin_x2go_close_connection");
 	RemminaPluginData *gpdata;
 	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	if (gpdata->pidx2go) {
@@ -288,7 +288,7 @@ static gboolean remmina_plugin_close_connection(RemminaProtocolWidget *gp)
 		g_spawn_close_pid(gpdata->pidxe);
 		gpdata->pidxe = 0;
 	}
-	remmina_plugin_service->log_printf("[%s] remmina_plugin_close_connection\n", PLUGIN_NAME);
+	remmina_plugin_service->log_printf("[%s] remmina_plugin_x2go_close_connection\n", PLUGIN_NAME);
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 	return FALSE;
 }
@@ -302,7 +302,7 @@ static gboolean remmina_plugin_close_connection(RemminaProtocolWidget *gp)
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
  * f) Unused pointer  --->    TODO: used for sensitive
  */
-static const RemminaProtocolSetting remmina_plugin_basic_settings[] = {
+static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
 	//{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "sshport", N_("remote SSH port (default: 22)"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
@@ -316,24 +316,24 @@ static const RemminaProtocolSetting remmina_plugin_basic_settings[] = {
 
 /* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin = {
-	REMMINA_PLUGIN_TYPE_PROTOCOL,              // Type
-	PLUGIN_NAME,                               // Name
-	PLUGIN_DESCRIPTION,                        // Description
-	GETTEXT_PACKAGE,                           // Translation domain
-	PLUGIN_VERSION,                            // Version number
-	PLUGIN_APPICON,                            // Icon for normal connection
-	PLUGIN_APPICON,                            // Icon for SSH connection
-	remmina_plugin_basic_settings,             // Array for basic settings
-	NULL,                                      // Array for advanced settings
-	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,       // SSH settings type
-	/* REMMINA_PROTOCOL_SSH_SETTING_NONE,      // SSH settings type */
-	NULL,                                      // Array for available features
-	remmina_plugin_init,                       // Plugin initialization
-	remmina_plugin_open_connection,            // Plugin open connection
-	remmina_plugin_close_connection,           // Plugin close connection
-	NULL,                                      // Query for available features
-	NULL,                                      // Call a feature
-	/*remmina_plugin_keystroke                   // Send a keystroke    */
+	REMMINA_PLUGIN_TYPE_PROTOCOL,      // Type
+	PLUGIN_NAME,                            // Name
+	PLUGIN_DESCRIPTION,                     // Description
+	GETTEXT_PACKAGE,                        // Translation domain
+	PLUGIN_VERSION,                         // Version number
+	PLUGIN_APPICON,                         // Icon for normal connection
+	PLUGIN_APPICON,                         // Icon for SSH connection
+	remmina_plugin_x2go_basic_settings,     // Array for basic settings
+	NULL,                                   // Array for advanced settings
+	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,    // SSH settings type
+	/* REMMINA_PROTOCOL_SSH_SETTING_NONE,   // SSH settings type */
+	NULL,                                   // Array for available features
+	remmina_plugin_x2go_init,               // Plugin initialization
+	remmina_plugin_x2go_open_connection,    // Plugin open connection
+	remmina_plugin_x2go_close_connection,   // Plugin close connection
+	NULL,                                   // Query for available features
+	NULL,                                   // Call a feature
+	/*remmina_plugin_x2go_keystroke         // Send a keystroke    */
 };
 
 G_MODULE_EXPORT gboolean

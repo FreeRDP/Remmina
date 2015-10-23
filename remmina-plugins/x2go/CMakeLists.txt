@@ -35,10 +35,10 @@
 #  version. *  If you delete this exception statement from all source
 #  files in the program, then also delete it here.
 
-set(REMMINA_PLUGIN_SRCS
-  remmina_plugin.c
+set(REMMINA_PLUGIN_X2GO_SRCS
+	x2go_plugin.c
 )
-add_library(remmina-plugin-x2go ${REMMINA_PLUGIN_SRCS})
+add_library(remmina-plugin-x2go ${REMMINA_PLUGIN_X2GO_SRCS})
 set_target_properties(remmina-plugin-x2go PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-x2go PROPERTIES NO_SONAME 1)
 
