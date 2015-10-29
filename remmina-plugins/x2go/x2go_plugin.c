@@ -71,7 +71,6 @@ static gboolean remmina_plugin_x2go_exec_xephyr(RemminaProtocolWidget *gp)
 	gint i;
 	argc = 0;
 	argv[argc++] = g_strdup("Xephyr");
-	argv[argc++] = g_strdup_printf(":%d", gpdata->socket_id);	/* We use the window id as our display number */
 	argv[argc++] = g_strdup("-parent");
 	argv[argc++] = g_strdup_printf("%d", gpdata->socket_id);
 	argv[argc++] = g_strdup("-screen");
@@ -79,6 +78,9 @@ static gboolean remmina_plugin_x2go_exec_xephyr(RemminaProtocolWidget *gp)
 	argv[argc++] = g_strdup("-resizeable");
 	argv[argc++] = g_strdup("-nolisten");
 	argv[argc++] = g_strdup("tcp");
+	argv[argc++] = g_strdup("-ac");
+	argv[argc++] = g_strdup("-br");
+	argv[argc++] = g_strdup_printf(":%d", gpdata->socket_id);	/* We use the window id as our display number */
 	argv[argc++] = NULL;
 	ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pidxe, &error);
 	for (i = 0; i < argc; i++)
@@ -139,6 +141,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host, gint sshport, gchar *
 	argv[argc++] = g_strdup("-g");
 	argv[argc++] = g_strdup_printf ("%s", resolution);
 	argv[argc++] = g_strdup("--clean-sessions");
+	argv[argc++] = g_strdup("--terminate-on-ctrl-c");
 	argv[argc++] = NULL;
 
 	envp = g_environ_setenv (
