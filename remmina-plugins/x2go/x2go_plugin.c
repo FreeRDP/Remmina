@@ -333,7 +333,7 @@ static RemminaProtocolPlugin remmina_plugin = {
 	remmina_plugin_x2go_close_connection,   // Plugin close connection
 	NULL,                                   // Query for available features
 	NULL,                                   // Call a feature
-	/*remmina_plugin_x2go_keystroke         // Send a keystroke    */
+	/*remmina_plugin_keystroke              // Send a keystroke    */
 };
 
 G_MODULE_EXPORT gboolean
