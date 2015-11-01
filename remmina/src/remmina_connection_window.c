@@ -2274,18 +2274,23 @@ static void remmina_connection_holder_on_switch_page(GtkNotebook* notebook, GtkW
 	}
 }
 
+
 static void remmina_connection_holder_on_page_added(GtkNotebook* notebook, GtkWidget* child, guint page_num,
         RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_holder_on_page_added");
+	remmina_connection_holder_update_notebook(cnnhld);
+}
+
+static void remmina_connection_holder_on_page_removed(GtkNotebook* notebook, GtkWidget* child, guint page_num,
+        RemminaConnectionHolder* cnnhld)
+{
+	TRACE_CALL("remmina_connection_holder_on_page_removed");
 	if (gtk_notebook_get_n_pages(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook)) <= 0)
 	{
 		gtk_widget_destroy(GTK_WIDGET(cnnhld->cnnwin));
+		cnnhld->cnnwin = NULL;
 		g_free(cnnhld);
-	}
-	else
-	{
-		remmina_connection_holder_update_notebook(cnnhld);
 	}
 }
 
@@ -2359,7 +2364,7 @@ remmina_connection_holder_create_notebook(RemminaConnectionHolder* cnnhld)
 	                 cnnhld);
 	g_signal_connect(G_OBJECT(notebook), "switch-page", G_CALLBACK(remmina_connection_holder_on_switch_page), cnnhld);
 	g_signal_connect(G_OBJECT(notebook), "page-added", G_CALLBACK(remmina_connection_holder_on_page_added), cnnhld);
-	g_signal_connect(G_OBJECT(notebook), "page-removed", G_CALLBACK(remmina_connection_holder_on_page_added), cnnhld);
+	g_signal_connect(G_OBJECT(notebook), "page-removed", G_CALLBACK(remmina_connection_holder_on_page_removed), cnnhld);
 	gtk_widget_set_can_focus(notebook, FALSE);
 
 	return notebook;
