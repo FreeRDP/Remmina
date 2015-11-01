@@ -71,6 +71,14 @@ enum
 
 enum
 {
+	TOOLBAR_PLACEMENT_TOP = 0,
+	TOOLBAR_PLACEMENT_RIGHT = 1,
+	TOOLBAR_PLACEMENT_BOTTOM = 2,
+	TOOLBAR_PLACEMENT_LEFT = 3
+ };
+
+enum
+{
 	REMMINA_TAB_BY_GROUP = 0,
 	REMMINA_TAB_BY_PROTOCOL = 1,
 	REMMINA_TAB_ALL = 2,
@@ -141,6 +149,7 @@ typedef struct _RemminaPref
 	gchar *expanded_group;
 	gboolean toolbar_pin_down;
 	gint floating_toolbar_placement;
+	gint toolbar_placement;
 
 	/* Crypto */
 	gchar *secret;
