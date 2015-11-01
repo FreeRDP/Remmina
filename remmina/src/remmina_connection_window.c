@@ -209,6 +209,7 @@ static void remmina_connection_window_class_init(RemminaConnectionWindowClass* k
 	                                 "GtkViewport, GtkAspectFrame {\n"
 	                                 "  padding:0;\n"
 	                                 "  border:0;\n"
+	                                 "  background-color: black;\n"
 	                                 "}\n"
 	                                 "GtkToolbar {\n"
 	                                 "  -GtkWidget-window-dragging: 0;\n"
