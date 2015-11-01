@@ -87,6 +87,7 @@ struct _RemminaConnectionWindowPriv
 	guint go_fullscreen_eventsource;
 
 	GtkWidget* toolbar;
+	GtkWidget* grid;
 
 	/* Toolitems that need to be handled */
 	GtkToolItem* toolitem_autofit;
@@ -140,6 +141,15 @@ struct _RemminaConnectionHolder
 	gboolean hostkey_used;
 };
 
+enum
+{
+	TOOLBARPLACE_SIGNAL,
+	LAST_SIGNAL
+};
+
+static guint remmina_connection_window_signals[LAST_SIGNAL] =
+{ 0 };
+
 #define DECLARE_CNNOBJ \
     if (!cnnhld || !cnnhld->cnnwin || gtk_notebook_get_current_page (GTK_NOTEBOOK (cnnhld->cnnwin->priv->notebook)) < 0) return; \
     RemminaConnectionObject* cnnobj = (RemminaConnectionObject*) g_object_get_data ( \
@@ -159,13 +169,15 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
         RemminaConnectionHolder* cnnhld);
 
 static void remmina_connection_holder_grab_focus(GtkNotebook *notebook);
+static GtkWidget* remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint mode);
+static void remmina_connection_holder_place_toolbar(GtkToolbar *toolbar, GtkGrid *grid, GtkWidget *sibling, int toolbar_placement);
 
 #if FLOATING_TOOLBAR_WIDGET
 static void remmina_connection_window_ftb_drag_begin(GtkWidget *widget, GdkDragContext *context, gpointer user_data);
 #endif
 
 
-static const GtkTargetEntry dnd_targets[] =
+static const GtkTargetEntry dnd_targets_ftb[] =
 {
 	{
 		(char *)"text/x-remmina-ftb",
@@ -174,6 +186,14 @@ static const GtkTargetEntry dnd_targets[] =
 	},
 };
 
+static const GtkTargetEntry dnd_targets_tb[] =
+{
+	{
+		(char *)"text/x-remmina-tb",
+		GTK_TARGET_SAME_APP,
+		0
+	},
+};
 
 static void remmina_connection_window_class_init(RemminaConnectionWindowClass* klass)
 {
@@ -189,6 +209,9 @@ static void remmina_connection_window_class_init(RemminaConnectionWindowClass* k
 	                                 "GtkViewport, GtkAspectFrame {\n"
 	                                 "  padding:0;\n"
 	                                 "  border:0;\n"
+	                                 "}\n"
+	                                 "GtkToolbar {\n"
+	                                 "  -GtkWidget-window-dragging: 0;\n"
 	                                 "}\n"
 	                                 "#remmina-connection-window-fullscreen {\n"
 	                                 "  background-color: black;\n"
@@ -232,6 +255,12 @@ static void remmina_connection_window_class_init(RemminaConnectionWindowClass* k
 	        GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
 	g_object_unref(provider);
+
+	/* Define a signal used to notify all remmina_connection_windows of toolbar move */
+	remmina_connection_window_signals[TOOLBARPLACE_SIGNAL] = g_signal_new("toolbar-place", G_TYPE_FROM_CLASS(klass),
+		G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaConnectionWindowClass, toolbar_place), NULL, NULL,
+		g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
+
 }
 
 static void remmina_connection_holder_disconnect(RemminaConnectionHolder* cnnhld)
@@ -354,6 +383,112 @@ static void remmina_connection_window_destroy(GtkWidget* widget, RemminaConnecti
 		cnnhld->cnnwin->priv = NULL;
 		cnnhld->cnnwin = NULL;
 	}
+}
+
+gboolean remmina_connection_window_notify_widget_toolbar_placement(GtkWidget *widget, gpointer data)
+{
+	TRACE_CALL("remmina_connection_window_notify_widget_toolbar_placement");
+	GType rcwtype;
+	rcwtype = remmina_connection_window_get_type();
+	if (G_TYPE_CHECK_INSTANCE_TYPE(widget, rcwtype)) {
+		g_signal_emit_by_name(G_OBJECT(widget), "toolbar-place");
+		return TRUE;
+	}
+	return FALSE;
+}
+
+static gboolean remmina_connection_window_tb_drag_failed(GtkWidget *widget, GdkDragContext *context,
+        GtkDragResult result, gpointer user_data)
+{
+	TRACE_CALL("remmina_connection_window_tb_drag_failed");
+	RemminaConnectionHolder* cnnhld;
+	RemminaConnectionWindowPriv* priv;
+
+	cnnhld = (RemminaConnectionHolder*)user_data;
+	priv = cnnhld->cnnwin->priv;
+
+	if (priv->toolbar)
+		gtk_widget_show(GTK_WIDGET(priv->toolbar));
+
+	return TRUE;
+}
+
+static gboolean remmina_connection_window_tb_drag_drop(GtkWidget *widget, GdkDragContext *context,
+        gint x, gint y, guint time, gpointer user_data)
+{
+	TRACE_CALL("remmina_connection_window_tb_drag_drop");
+	GtkAllocation wa;
+	gint new_toolbar_placement;
+	RemminaConnectionHolder* cnnhld;
+	RemminaConnectionWindowPriv* priv;
+
+	cnnhld = (RemminaConnectionHolder*)user_data;
+	priv = cnnhld->cnnwin->priv;
+
+	gtk_widget_get_allocation(widget, &wa);
+
+	if (wa.width * y >= wa.height * x) {
+		if (wa.width * y > wa.height * ( wa.width - x) )
+			new_toolbar_placement = TOOLBAR_PLACEMENT_BOTTOM;
+		else
+			new_toolbar_placement = TOOLBAR_PLACEMENT_LEFT;
+	}
+	else
+	{
+		if (wa.width * y > wa.height * ( wa.width - x) )
+			new_toolbar_placement = TOOLBAR_PLACEMENT_RIGHT;
+		else
+			new_toolbar_placement = TOOLBAR_PLACEMENT_TOP;
+	}
+
+	gtk_drag_finish(context, TRUE, TRUE, time);
+
+	if (new_toolbar_placement !=  remmina_pref.toolbar_placement)
+	{
+		/* Save new position */
+		remmina_pref.toolbar_placement = new_toolbar_placement;
+		remmina_pref_save();
+
+		/* Signal all windows that the toolbar must be moved */
+		remmina_widget_pool_foreach(remmina_connection_window_notify_widget_toolbar_placement, NULL);
+
+	}
+	if (priv->toolbar)
+		gtk_widget_show(GTK_WIDGET(priv->toolbar));
+
+	return TRUE;
+
+}
+
+static void remmina_connection_window_tb_drag_begin(GtkWidget *widget, GdkDragContext *context, gpointer user_data)
+{
+	TRACE_CALL("remmina_connection_window_tb_drag_begin");
+
+	RemminaConnectionHolder* cnnhld;
+	RemminaConnectionWindowPriv* priv;
+	cairo_surface_t *surface;
+	cairo_t *cr;
+	GtkAllocation wa;
+	double dashes[] = { 10 };
+
+	cnnhld = (RemminaConnectionHolder*)user_data;
+	priv = cnnhld->cnnwin->priv;
+
+	gtk_widget_get_allocation(widget, &wa);
+
+	surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, 16, 16);
+	cr = cairo_create(surface);
+	cairo_set_source_rgb(cr, 0.6, 0.6, 0.6);
+	cairo_set_line_width(cr, 4);
+	cairo_set_dash(cr, dashes, 1, 0 );
+	cairo_rectangle(cr, 0, 0, 16, 16);
+	cairo_stroke(cr);
+	cairo_destroy(cr);
+
+	gtk_widget_hide(widget);
+
+	gtk_drag_set_icon_surface(context, surface);
+
 }
 
 static void remmina_connection_holder_update_toolbar_opacity(RemminaConnectionHolder* cnnhld)
@@ -560,17 +695,26 @@ static gboolean remmina_connection_holder_toolbar_autofit_restore(RemminaConnect
 	TRACE_CALL("remmina_connection_holder_toolbar_autofit_restore");
 	DECLARE_CNNOBJ_WITH_RETURN(FALSE)
 	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
-	gint width, height;
-	GtkAllocation na, ca, ta;
+	gint dwidth, dheight;
+	GtkAllocation nba, ca, ta;
 
 	if (cnnobj->connected && GTK_IS_SCROLLED_WINDOW(cnnobj->scrolled_container))
 	{
-		remmina_connection_holder_get_desktop_size(cnnhld, &width, &height);
-		gtk_widget_get_allocation(priv->notebook, &na);
+		remmina_connection_holder_get_desktop_size(cnnhld, &dwidth, &dheight);
+		gtk_widget_get_allocation(priv->notebook, &nba);
 		gtk_widget_get_allocation(cnnobj->scrolled_container, &ca);
 		gtk_widget_get_allocation(priv->toolbar, &ta);
-		gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), MAX(1, width + na.width - ca.width),
-		                  MAX(1, height + ta.height + na.height - ca.height));
+		if (remmina_pref.toolbar_placement == TOOLBAR_PLACEMENT_LEFT ||
+			remmina_pref.toolbar_placement == TOOLBAR_PLACEMENT_RIGHT)
+		{
+			gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), MAX(1, dwidth + ta.width + nba.width - ca.width),
+		                  MAX(1, dheight + nba.height - ca.height));
+		}
+		else
+		{
+			gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), MAX(1, dwidth + nba.width - ca.width),
+		                  MAX(1, dheight + ta.height + nba.height - ca.height));
+		}
 		gtk_container_check_resize(GTK_CONTAINER(cnnhld->cnnwin));
 	}
 	if (GTK_IS_SCROLLED_WINDOW(cnnobj->scrolled_container))
@@ -1552,6 +1696,43 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	return toolbar;
 }
 
+static void remmina_connection_holder_place_toolbar(GtkToolbar *toolbar, GtkGrid *grid, GtkWidget *sibling, int toolbar_placement)
+{
+	/* Place the toolbar inside the grid and set its orientation */
+
+	if ( toolbar_placement == TOOLBAR_PLACEMENT_LEFT || toolbar_placement == TOOLBAR_PLACEMENT_RIGHT)
+		gtk_orientable_set_orientation(GTK_ORIENTABLE(toolbar), GTK_ORIENTATION_VERTICAL);
+	else
+		gtk_orientable_set_orientation(GTK_ORIENTABLE(toolbar), GTK_ORIENTATION_HORIZONTAL);
+
+
+	switch(toolbar_placement)
+	{
+		case TOOLBAR_PLACEMENT_TOP:
+			gtk_widget_set_hexpand(GTK_WIDGET(toolbar), TRUE);
+			gtk_widget_set_vexpand(GTK_WIDGET(toolbar), FALSE);
+			gtk_grid_attach_next_to(GTK_GRID(grid), GTK_WIDGET(toolbar), sibling, GTK_POS_TOP, 1, 1);
+			break;
+		case TOOLBAR_PLACEMENT_RIGHT:
+			gtk_widget_set_vexpand(GTK_WIDGET(toolbar), TRUE);
+			gtk_widget_set_hexpand(GTK_WIDGET(toolbar), FALSE);
+			gtk_grid_attach_next_to(GTK_GRID(grid), GTK_WIDGET(toolbar), sibling, GTK_POS_RIGHT, 1, 1);
+			break;
+		case TOOLBAR_PLACEMENT_BOTTOM:
+			gtk_widget_set_hexpand(GTK_WIDGET(toolbar), TRUE);
+			gtk_widget_set_vexpand(GTK_WIDGET(toolbar), FALSE);
+			gtk_grid_attach_next_to(GTK_GRID(grid), GTK_WIDGET(toolbar), sibling, GTK_POS_BOTTOM, 1, 1);
+			break;
+		case TOOLBAR_PLACEMENT_LEFT:
+			gtk_widget_set_vexpand(GTK_WIDGET(toolbar), TRUE);
+			gtk_widget_set_hexpand(GTK_WIDGET(toolbar), FALSE);
+			gtk_grid_attach_next_to(GTK_GRID(grid), GTK_WIDGET(toolbar), sibling, GTK_POS_LEFT, 1, 1);
+			break;
+	}
+
+
+}
+
 static void remmina_connection_holder_update_toolbar(RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_holder_update_toolbar");
@@ -1979,6 +2160,22 @@ static void remmina_connection_holder_create_floating_toolbar(RemminaConnectionH
 #endif
 }
 
+static void remmina_connection_window_toolbar_place_signal(RemminaConnectionWindow* cnnwin, gpointer data)
+{
+	TRACE_CALL("remmina_connection_window_toolbar_place_signal");
+	RemminaConnectionWindowPriv* priv;
+
+	priv = cnnwin->priv;
+	/* Detach old toolbar widget and reattach in new position in the grid */
+	if (priv->toolbar && priv->grid) {
+		g_object_ref(priv->toolbar);
+		gtk_container_remove(GTK_CONTAINER(priv->grid), priv->toolbar);
+		remmina_connection_holder_place_toolbar(GTK_TOOLBAR(priv->toolbar), GTK_GRID(priv->grid), priv->notebook, remmina_pref.toolbar_placement);
+		g_object_unref(priv->toolbar);
+	}
+}
+
+
 static void remmina_connection_window_init(RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL("remmina_connection_window_init");
@@ -1994,6 +2191,8 @@ static void remmina_connection_window_init(RemminaConnectionWindow* cnnwin)
 	gtk_container_set_border_width(GTK_CONTAINER(cnnwin), 0);
 
 	remmina_widget_pool_register(GTK_WIDGET(cnnwin));
+
+	g_signal_connect(G_OBJECT(cnnwin), "toolbar-place", G_CALLBACK(remmina_connection_window_toolbar_place_signal), NULL);
 }
 
 static gboolean remmina_connection_window_state_event(GtkWidget* widget, GdkEventWindowState* event, gpointer user_data)
@@ -2278,8 +2477,8 @@ static void remmina_connection_holder_on_switch_page(GtkNotebook* notebook, GtkW
 static void remmina_connection_holder_on_page_added(GtkNotebook* notebook, GtkWidget* child, guint page_num,
         RemminaConnectionHolder* cnnhld)
 {
-	TRACE_CALL("remmina_connection_holder_on_page_added");
-	remmina_connection_holder_update_notebook(cnnhld);
+	if (gtk_notebook_get_n_pages(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook)) > 0)
+		remmina_connection_holder_update_notebook(cnnhld);
 }
 
 static void remmina_connection_holder_on_page_removed(GtkNotebook* notebook, GtkWidget* child, guint page_num,
@@ -2357,6 +2556,7 @@ remmina_connection_holder_create_notebook(RemminaConnectionHolder* cnnhld)
 	GtkWidget* notebook;
 
 	notebook = gtk_notebook_new();
+
 	gtk_notebook_set_scrollable(GTK_NOTEBOOK(notebook), TRUE);
 	gtk_widget_show(notebook);
 
@@ -2376,7 +2576,7 @@ static void remmina_connection_holder_create_scrolled(RemminaConnectionHolder* c
 	TRACE_CALL("remmina_connection_holder_create_scrolled");
 	GtkWidget* window;
 	GtkWidget* oldwindow;
-	GtkWidget* vbox;
+	GtkWidget* grid;
 	GtkWidget* toolbar;
 	GtkWidget* notebook;
 	gchar* tag;
@@ -2386,22 +2586,42 @@ static void remmina_connection_holder_create_scrolled(RemminaConnectionHolder* c
 	gtk_widget_realize(window);
 	cnnhld->cnnwin = REMMINA_CONNECTION_WINDOW(window);
 
-	/* Create the vbox container */
-	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-	gtk_widget_show(vbox);
-	gtk_container_add(GTK_CONTAINER(window), vbox);
 
 	/* Create the toolbar */
 	toolbar = remmina_connection_holder_create_toolbar(cnnhld, SCROLLED_WINDOW_MODE);
-	gtk_box_pack_start(GTK_BOX(vbox), toolbar, FALSE, FALSE, 0);
 
 	/* Create the notebook */
 	notebook = remmina_connection_holder_create_notebook(cnnhld);
-	gtk_box_pack_start(GTK_BOX(vbox), notebook, TRUE, TRUE, 0);
-	gtk_container_set_focus_chain(GTK_CONTAINER(vbox), g_list_append(NULL, notebook));
+
+	/* Create the grid container for toolbars+notebook and populate it */
+	grid = gtk_grid_new();
+	gtk_grid_attach(GTK_GRID(grid), notebook, 0, 0, 1, 1);
+
+	gtk_widget_set_hexpand(notebook, TRUE);
+	gtk_widget_set_vexpand(notebook, TRUE);
+
+	remmina_connection_holder_place_toolbar(GTK_TOOLBAR(toolbar), GTK_GRID(grid), notebook, remmina_pref.toolbar_placement);
+
+
+	gtk_container_add(GTK_CONTAINER(window), grid);
+
+	gtk_container_set_focus_chain(GTK_CONTAINER(grid), g_list_append(NULL, notebook));
+
+	/* Add drag capabilities to the toolbar */
+	gtk_drag_source_set(GTK_WIDGET(toolbar), GDK_BUTTON1_MASK,
+	                    dnd_targets_tb, sizeof dnd_targets_tb / sizeof *dnd_targets_tb, GDK_ACTION_MOVE);
+	g_signal_connect_after(GTK_WIDGET(toolbar), "drag-begin", G_CALLBACK(remmina_connection_window_tb_drag_begin), cnnhld);
+	g_signal_connect(GTK_WIDGET(toolbar), "drag-failed", G_CALLBACK(remmina_connection_window_tb_drag_failed), cnnhld);
+
+	/* Add drop capabilities to the drop/dest target for the toolbar (the notebook) */
+	gtk_drag_dest_set(GTK_WIDGET(notebook), GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT,
+	                  dnd_targets_tb, sizeof dnd_targets_tb / sizeof *dnd_targets_tb, GDK_ACTION_MOVE);
+	gtk_drag_dest_set_track_motion(GTK_WIDGET(notebook), TRUE);
+	g_signal_connect(GTK_WIDGET(notebook), "drag-drop", G_CALLBACK(remmina_connection_window_tb_drag_drop), cnnhld);
 
 	cnnhld->cnnwin->priv->view_mode = SCROLLED_WINDOW_MODE;
 	cnnhld->cnnwin->priv->toolbar = toolbar;
+	cnnhld->cnnwin->priv->grid = grid;
 	cnnhld->cnnwin->priv->notebook = notebook;
 
 	remmina_connection_window_initialize_notebook(GTK_NOTEBOOK(notebook),
@@ -2429,6 +2649,7 @@ static void remmina_connection_holder_create_scrolled(RemminaConnectionHolder* c
 	remmina_connection_holder_check_resize(cnnhld);
 
 	gtk_widget_show(GTK_WIDGET(cnnhld->cnnwin));
+	gtk_widget_show(grid);
 }
 
 static gboolean remmina_connection_window_go_fullscreen(gpointer data)
@@ -2528,10 +2749,8 @@ static void remmina_connection_holder_create_overlay_ftb_overlay(RemminaConnecti
 	gtk_widget_add_events(GTK_WIDGET(priv->overlay_ftb_overlay), GDK_SCROLL_MASK);
 
 	/* Add drag and drop capabilities to the source */
-
 	gtk_drag_source_set(GTK_WIDGET(priv->overlay_ftb_overlay), GDK_BUTTON1_MASK,
-	                    dnd_targets, sizeof dnd_targets / sizeof *dnd_targets, GDK_ACTION_MOVE);
-
+	                    dnd_targets_ftb, sizeof dnd_targets_ftb / sizeof *dnd_targets_ftb, GDK_ACTION_MOVE);
 	g_signal_connect_after(GTK_WIDGET(priv->overlay_ftb_overlay), "drag-begin", G_CALLBACK(remmina_connection_window_ftb_drag_begin), cnnhld);
 }
 
@@ -2604,7 +2823,6 @@ static void remmina_connection_window_ftb_drag_begin(GtkWidget *widget, GdkDragC
 }
 
 
-
 #endif
 
 static void remmina_connection_holder_create_fullscreen(RemminaConnectionHolder* cnnhld, RemminaConnectionObject* cnnobj,
@@ -2660,22 +2878,13 @@ static void remmina_connection_holder_create_fullscreen(RemminaConnectionHolder*
 	}
 
 	/* Create the floating toolbar */
-
 #if FLOATING_TOOLBAR_WIDGET
-
 	remmina_connection_holder_create_overlay_ftb_overlay(cnnhld);
-
-
-	/* Add drag and drop capabilities to the drop/dest target */
-
+	/* Add drag and drop capabilities to the drop/dest target for floating toolbar */
 	gtk_drag_dest_set(GTK_WIDGET(priv->overlay), GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT,
-	                  dnd_targets, sizeof dnd_targets / sizeof *dnd_targets, GDK_ACTION_MOVE);
-
+	                  dnd_targets_ftb, sizeof dnd_targets_ftb / sizeof *dnd_targets_ftb, GDK_ACTION_MOVE);
 	gtk_drag_dest_set_track_motion(GTK_WIDGET(priv->notebook), TRUE);
-
 	g_signal_connect(GTK_WIDGET(priv->overlay), "drag-drop", G_CALLBACK(remmina_connection_window_ftb_drag_drop), cnnhld);
-
-
 #else
 
 	remmina_connection_holder_create_floating_toolbar(cnnhld, view_mode);
