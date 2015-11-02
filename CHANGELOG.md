@@ -1,12 +1,12 @@
 # Change Log
 
-## [Unreleased](https://github.com/FreeRDP/remmina/tree/HEAD)
-
-[Full Changelog](https://github.com/FreeRDP/remmina/compare/v1.2.0-rcgit.4...HEAD)
+## [1.2.0-rcgit.5](https://github.com/FreeRDP/remmina/tree/1.2.0-rcgit.5) (2015-11-02)
+[Full Changelog](https://github.com/FreeRDP/remmina/compare/v1.2.0-rcgit.4...1.2.0-rcgit.5)
 
 **Implemented enhancements:**
 
 - Feature request: Provide a way to disable parsing of .ssh/config [\#648](https://github.com/FreeRDP/Remmina/issues/648)
+- Toolbar drag and drop, for issue \#661 [\#668](https://github.com/FreeRDP/Remmina/pull/668) ([giox069](https://github.com/giox069))
 
 **Closed issues:**
 
@@ -22,7 +22,6 @@
 
 **Merged pull requests:**
 
-- Toolbar drag and drop, for issue \#661 [\#668](https://github.com/FreeRDP/Remmina/pull/668) ([giox069](https://github.com/giox069))
 - Makes parsing of ~/.ssh/config optional closes \#648 [\#650](https://github.com/FreeRDP/Remmina/pull/650) ([antenore](https://github.com/antenore))
 
 ## [v1.2.0-rcgit.4](https://github.com/FreeRDP/remmina/tree/v1.2.0-rcgit.4) (2015-09-23)
