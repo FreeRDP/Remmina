@@ -1,5 +1,30 @@
 # Change Log
 
+## [Unreleased](https://github.com/FreeRDP/remmina/tree/HEAD)
+
+[Full Changelog](https://github.com/FreeRDP/remmina/compare/v1.2.0-rcgit.4...HEAD)
+
+**Implemented enhancements:**
+
+- Feature request: Provide a way to disable parsing of .ssh/config [\#648](https://github.com/FreeRDP/Remmina/issues/648)
+
+**Closed issues:**
+
+- rdp plugin does not load [\#667](https://github.com/FreeRDP/Remmina/issues/667)
+- Remmina crashed with core dump while sharing RDP folder [\#659](https://github.com/FreeRDP/Remmina/issues/659)
+- High DPI display scaling [\#654](https://github.com/FreeRDP/Remmina/issues/654)
+- RDP Plugin Issue on Raspberry PI \(ARMv7\) [\#651](https://github.com/FreeRDP/Remmina/issues/651)
+- Moving to an embedded version of FreeRDP [\#599](https://github.com/FreeRDP/Remmina/issues/599)
+- please add support multi-hop ssh tunnels / read .ssh/config [\#302](https://github.com/FreeRDP/Remmina/issues/302)
+- ForwardAgent [\#267](https://github.com/FreeRDP/Remmina/issues/267)
+- SSH Tunneling [\#96](https://github.com/FreeRDP/Remmina/issues/96)
+- Feature Request: SSH Tunnel with no authentication [\#83](https://github.com/FreeRDP/Remmina/issues/83)
+
+**Merged pull requests:**
+
+- Toolbar drag and drop, for issue \#661 [\#668](https://github.com/FreeRDP/Remmina/pull/668) ([giox069](https://github.com/giox069))
+- Makes parsing of ~/.ssh/config optional closes \#648 [\#650](https://github.com/FreeRDP/Remmina/pull/650) ([antenore](https://github.com/antenore))
+
 ## [v1.2.0-rcgit.4](https://github.com/FreeRDP/remmina/tree/v1.2.0-rcgit.4) (2015-09-23)
 [Full Changelog](https://github.com/FreeRDP/remmina/compare/v1.2.0-rcgit.3...v1.2.0-rcgit.4)
 
@@ -54,7 +79,6 @@
 - ssh key selection overwritten on edit [\#271](https://github.com/FreeRDP/Remmina/issues/271)
 - VNC over SSH - Support for multiple keys for SSH authentication [\#256](https://github.com/FreeRDP/Remmina/issues/256)
 - RDP: No caret on explorer address bar and white squares instead of small icons [\#251](https://github.com/FreeRDP/Remmina/issues/251)
-- Remmina doesn't respect ssh config files... [\#235](https://github.com/FreeRDP/Remmina/issues/235)
 - It does not move the text to scroll [\#208](https://github.com/FreeRDP/Remmina/issues/208)
 - Crash in BitBlt\_SRCAND\_32bpp, BitBlt\_32bpp [\#186](https://github.com/FreeRDP/Remmina/issues/186)
 - Can't attach to Windows console [\#177](https://github.com/FreeRDP/Remmina/issues/177)
