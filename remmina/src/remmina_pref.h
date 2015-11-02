@@ -65,8 +65,17 @@ enum
 
 enum
 {
-	FLOATING_TOOLBAR_PLACEMENT_TOP, FLOATING_TOOLBAR_PLACEMENT_BOTTOM
+	FLOATING_TOOLBAR_PLACEMENT_TOP = 0,
+	FLOATING_TOOLBAR_PLACEMENT_BOTTOM = 1
 };
+
+enum
+{
+	TOOLBAR_PLACEMENT_TOP = 0,
+	TOOLBAR_PLACEMENT_RIGHT = 1,
+	TOOLBAR_PLACEMENT_BOTTOM = 2,
+	TOOLBAR_PLACEMENT_LEFT = 3
+ };
 
 enum
 {
@@ -92,7 +101,6 @@ typedef struct _RemminaPref
 	gchar *keystrokes;
 	/* In RemminaPrefDialog appearance tab */
 	gboolean invisible_toolbar;
-	gint floating_toolbar_placement;
 	gboolean always_show_tab;
 	gboolean hide_connection_toolbar;
 	gint default_mode;
@@ -140,6 +148,8 @@ typedef struct _RemminaPref
 	gint main_sort_order;
 	gchar *expanded_group;
 	gboolean toolbar_pin_down;
+	gint floating_toolbar_placement;
+	gint toolbar_placement;
 
 	/* Crypto */
 	gchar *secret;
