@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -34,91 +34,91 @@
  */
 
 #include "config.h"
+#include "glibsecret_plugin.h"
 #include <gtk/gtk.h>
-#include <gnome-keyring.h>
+#include <glib.h>
+#include <libsecret/secret.h>
 #include <remmina/plugin.h>
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
-static GnomeKeyringPasswordSchema remmina_file_secret_schema =
-{ GNOME_KEYRING_ITEM_GENERIC_SECRET,
+static SecretSchema remmina_file_secret_schema =
+{ "org.remmina.Password", SECRET_SCHEMA_NONE,
 {
-{ "filename", GNOME_KEYRING_ATTRIBUTE_TYPE_STRING },
-{ "key", GNOME_KEYRING_ATTRIBUTE_TYPE_STRING },
+{ "filename", SECRET_SCHEMA_ATTRIBUTE_STRING },
+{ "key", SECRET_SCHEMA_ATTRIBUTE_STRING },
 { NULL, 0 } } };
 
-void remmina_plugin_gkeyring_store_password(RemminaFile *remminafile, const gchar *key, const gchar *password)
+void remmina_plugin_glibsecret_store_password(RemminaFile *remminafile, const gchar *key, const gchar *password)
 {
-	TRACE_CALL("remmina_plugin_gkeyring_store_password");
-	GnomeKeyringResult r;
+	TRACE_CALL("remmina_plugin_glibsecret_store_password");
+	GError *r = NULL;
 	const gchar *path;
 	gchar *s;
 
 	path = remmina_plugin_service->file_get_path(remminafile);
 	s = g_strdup_printf("Remmina: %s - %s", remmina_plugin_service->file_get_string(remminafile, "name"), key);
-	r = gnome_keyring_store_password_sync(&remmina_file_secret_schema, GNOME_KEYRING_DEFAULT, s, password, "filename", path,
-			"key", key, NULL);
+	secret_password_store_sync(&remmina_file_secret_schema, SECRET_COLLECTION_DEFAULT, s, password,
+			NULL, &r, "filename", path, "key", key, NULL);
 	g_free(s);
-	if (r == GNOME_KEYRING_RESULT_OK)
+	if (r == NULL)
 	{
-		remmina_plugin_service->log_printf("[GKEYRING] password saved for file %s\n", path);
+		remmina_plugin_service->log_printf("[glibsecret] password saved for file %s\n", path);
 	}
 	else
 	{
-		remmina_plugin_service->log_printf("[GKEYRING] password cannot be saved for file %s: %s\n", path,
-				gnome_keyring_result_to_message(r));
+		remmina_plugin_service->log_printf("[glibsecret] password cannot be saved for file %s\n", path);
+		g_error_free (r);
 	}
 }
 
 gchar*
-remmina_plugin_gkeyring_get_password(RemminaFile *remminafile, const gchar *key)
+remmina_plugin_glibsecret_get_password(RemminaFile *remminafile, const gchar *key)
 {
-	TRACE_CALL("remmina_plugin_gkeyring_get_password");
-	GnomeKeyringResult r;
+	TRACE_CALL("remmina_plugin_glibsecret_get_password");
+	GError *r = NULL;
 	const gchar *path;
 	gchar *password;
 	gchar *p;
 
 	path = remmina_plugin_service->file_get_path(remminafile);
-	r = gnome_keyring_find_password_sync(&remmina_file_secret_schema, &password, "filename", path, "key", key, NULL);
-	if (r == GNOME_KEYRING_RESULT_OK)
+	password = secret_password_lookup_sync(&remmina_file_secret_schema, NULL, &r, "filename", path, "key", key, NULL);
+	if (r == NULL)
 	{
-		remmina_plugin_service->log_printf("[GKEYRING] found password for file %s\n", path);
+		remmina_plugin_service->log_printf("[glibsecret] found password for file %s\n", path);
 		p = g_strdup(password);
-		gnome_keyring_free_password(password);
+		secret_password_free(password);
 		return p;
 	}
 	else
 	{
-		remmina_plugin_service->log_printf("[GKEYRING] password cannot be found for file %s: %s\n", path,
-				gnome_keyring_result_to_message(r));
+		remmina_plugin_service->log_printf("[glibsecret] password cannot be found for file %s\n", path);
 		return NULL;
 	}
 }
 
-void remmina_plugin_gkeyring_delete_password(RemminaFile *remminafile, const gchar *key)
+void remmina_plugin_glibsecret_delete_password(RemminaFile *remminafile, const gchar *key)
 {
-	TRACE_CALL("remmina_plugin_gkeyring_delete_password");
-	GnomeKeyringResult r;
+	TRACE_CALL("remmina_plugin_glibsecret_delete_password");
+	GError *r = NULL;
 	const gchar *path;
 
 	path = remmina_plugin_service->file_get_path(remminafile);
-	r = gnome_keyring_delete_password_sync(&remmina_file_secret_schema, "filename", path, "key", key, NULL);
-	if (r == GNOME_KEYRING_RESULT_OK)
+	secret_password_clear_sync(&remmina_file_secret_schema, NULL, &r, "filename", path, "key", key, NULL);
+	if (r == NULL)
 	{
-		remmina_plugin_service->log_printf("[GKEYRING] password deleted for file %s\n", path);
+		remmina_plugin_service->log_printf("[glibsecret] password deleted for file %s\n", path);
 	}
 	else
 	{
-		remmina_plugin_service->log_printf("[GKEYRING] password cannot be deleted for file %s: %s\n", path,
-				gnome_keyring_result_to_message(r));
+		remmina_plugin_service->log_printf("[glibsecret] password cannot be deleted for file %s\n", path);
 	}
 }
 
-static RemminaSecretPlugin remmina_plugin_gkeyring =
-{ REMMINA_PLUGIN_TYPE_SECRET, "GKEYRING", "GNOME Keyring", NULL, VERSION,
+static RemminaSecretPlugin remmina_plugin_glibsecret =
+{ REMMINA_PLUGIN_TYPE_SECRET, "glibsecret", "GNOME libsecret", NULL, VERSION,
 
-TRUE, remmina_plugin_gkeyring_store_password, remmina_plugin_gkeyring_get_password, remmina_plugin_gkeyring_delete_password };
+TRUE, remmina_plugin_glibsecret_store_password, remmina_plugin_glibsecret_get_password, remmina_plugin_glibsecret_delete_password };
 
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
@@ -126,7 +126,7 @@ remmina_plugin_entry(RemminaPluginService *service)
 	TRACE_CALL("remmina_plugin_entry");
 	remmina_plugin_service = service;
 
-	if (!service->register_plugin((RemminaPlugin *) &remmina_plugin_gkeyring))
+	if (!service->register_plugin((RemminaPlugin *) &remmina_plugin_glibsecret))
 	{
 		return FALSE;
 	}
