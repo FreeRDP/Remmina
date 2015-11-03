@@ -39,6 +39,7 @@
 #include <common/remmina_plugin.h>
 #if GTK_VERSION == 3
 # include <gtk/gtkx.h>
+# include <gdk/gdkx.h>
 #endif
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
@@ -62,8 +63,8 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 static gboolean remmina_plugin_x2go_exec_xephyr(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_x2go_exec_xephyr");
-	RemminaPluginData *gpdata;
-	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	RemminaPluginData *gpdata = GET_PLUGIN_DATA(gp);
+	XID const window_xid = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 	GError *error = NULL;
 	gboolean ret;
 	gchar *argv[50];
@@ -72,7 +73,7 @@ static gboolean remmina_plugin_x2go_exec_xephyr(RemminaProtocolWidget *gp)
 	argc = 0;
 	argv[argc++] = g_strdup("Xephyr");
 	argv[argc++] = g_strdup("-parent");
-	argv[argc++] = g_strdup_printf("%d", gpdata->socket_id);
+	argv[argc++] = g_strdup_printf("%lu", window_xid);
 	argv[argc++] = g_strdup("-screen");
 	argv[argc++] = g_strdup_printf ("%dx%d", gpdata->width, gpdata->height);
 	argv[argc++] = g_strdup("-resizeable");
@@ -80,14 +81,15 @@ static gboolean remmina_plugin_x2go_exec_xephyr(RemminaProtocolWidget *gp)
 	argv[argc++] = g_strdup("tcp");
 	argv[argc++] = g_strdup("-ac");
 	argv[argc++] = g_strdup("-br");
-	argv[argc++] = g_strdup_printf(":%d", gpdata->socket_id);	/* We use the window id as our display number */
+	argv[argc++] = g_strdup_printf(":%lu", window_xid);	/* We use the window id as our display number */
 	argv[argc++] = NULL;
 	ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pidxe, &error);
-	for (i = 0; i < argc; i++)
-		g_free (argv[i]);
-	if (!ret) {
+	if (error) {
+		g_printf ("failed to start Xephyr: %s\n", error->message);
 		return FALSE;
 	}
+	for (i = 0; i < argc; i++)
+		g_free (argv[i]);
 	return TRUE;
 }
 
@@ -95,8 +97,8 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host, gint sshport, gchar *
 		gchar *command, gchar *kbdlayout, gchar *kbdtype, gchar *resolution, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_x2go_exec_x2go");
-	RemminaPluginData *gpdata;
-	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	RemminaPluginData *gpdata = GET_PLUGIN_DATA(gp);
+	XID const window_xid = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 	GError *error = NULL;
 	gboolean ret;
 
@@ -147,17 +149,18 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host, gint sshport, gchar *
 	envp = g_environ_setenv (
 			   g_get_environ (),
 			   g_strdup ("DISPLAY"),
-			   g_strdup_printf (":%d", gpdata->socket_id),
+			   g_strdup_printf (":%lu", window_xid),
 			   TRUE
 		   );
 
 	ret = g_spawn_async (NULL, argv, envp, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pidx2go, &error);
 
-	for (i = 0; i < argc; i++)
-		g_free (argv[i]);
-	if (!ret) {
+	if (error) {
+		g_printf ("failed to start Pyhoca-cli: %s\n", error->message);
 		return FALSE;
 	}
+	for (i = 0; i < argc; i++)
+		g_free (argv[i]);
 	return TRUE;
 
 }
@@ -165,8 +168,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host, gint sshport, gchar *
 static void remmina_plugin_x2go_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_x2go_on_plug_added");
-	RemminaPluginData *gpdata;
-	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	RemminaPluginData *gpdata = GET_PLUGIN_DATA(gp);
 	remmina_plugin_service->log_printf("[%s] remmina_plugin_x2go_on_plug_added socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 	gpdata->ready = TRUE;
@@ -185,6 +187,7 @@ static void remmina_plugin_x2go_init(RemminaProtocolWidget *gp)
 	TRACE_CALL("remmina_plugin_x2go_init");
 	remmina_plugin_service->log_printf("[%s] remmina_plugin_x2go_init\n", PLUGIN_NAME);
 	RemminaPluginData *gpdata;
+	GError *error = NULL;
 
 	gpdata = g_new0(RemminaPluginData, 1);
 	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
@@ -210,7 +213,7 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 #define GET_PLUGIN_BOOLEAN(value) \
 		remmina_plugin_service->file_get_int(remminafile, value, FALSE)
 
-	RemminaPluginData *gpdata;
+	RemminaPluginData *gpdata = GET_PLUGIN_DATA(gp);;
 	RemminaFile *remminafile;
 	GError *error = NULL;
 
@@ -226,7 +229,6 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 	const gchar *default_dsp_name = gdk_display_get_name(default_dsp);
 	remmina_plugin_service->log_printf("[%s] Default display is %s\n", PLUGIN_NAME, default_dsp_name);
 
-	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	servstr = GET_PLUGIN_STRING("server");
@@ -256,8 +258,8 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 	remmina_plugin_service->protocol_plugin_set_width(gp, gpdata->width);
 	remmina_plugin_service->protocol_plugin_set_height(gp, gpdata->height);
 	gtk_widget_set_size_request(GTK_WIDGET(gp), gpdata->width, gpdata->height);
-	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 
+	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 
 	if (!remmina_plugin_x2go_exec_xephyr(gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
@@ -279,8 +281,7 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_x2go_close_connection");
-	RemminaPluginData *gpdata;
-	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+	RemminaPluginData *gpdata = GET_PLUGIN_DATA(gp);
 	if (gpdata->pidx2go) {
 		kill(gpdata->pidx2go, SIGTERM);
 		g_spawn_close_pid(gpdata->pidx2go);
