@@ -46,9 +46,9 @@
 #include <X11/extensions/XKBrules.h>
 
 
-#define GET_PLUGIN_DATA(gp) (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+#define GET_PLUGIN_DATA(gp) (RemminaPluginX2goData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 
-typedef struct _RemminaPluginData {
+typedef struct _RemminaPluginX2goData {
 	GtkWidget *socket;
 	gint socket_id;
 	gint width;
@@ -56,33 +56,45 @@ typedef struct _RemminaPluginData {
 	GPid pidxe;
 	GPid pidx2go;
 	gboolean ready;
-} RemminaPluginData;
+} RemminaPluginX2goData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
 static gboolean remmina_plugin_x2go_exec_xephyr(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_x2go_exec_xephyr");
-	RemminaPluginData *gpdata = GET_PLUGIN_DATA(gp);
-	XID const window_xid = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
+	RemminaPluginX2goData *gpdata = GET_PLUGIN_DATA(gp);
+	RemminaFile *remminafile;
 	GError *error = NULL;
 	gboolean ret;
 	gchar *argv[50];
 	gint argc;
 	gint i;
+
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
 	argc = 0;
 	argv[argc++] = g_strdup("Xephyr");
+	argv[argc++] = g_strdup_printf(":%i", gpdata->socket_id);	/* We use the window id as our display number */
 	argv[argc++] = g_strdup("-parent");
-	argv[argc++] = g_strdup_printf("%lu", window_xid);
+	argv[argc++] = g_strdup_printf("%i", gpdata->socket_id);
 	argv[argc++] = g_strdup("-screen");
 	argv[argc++] = g_strdup_printf ("%dx%d", gpdata->width, gpdata->height);
 	argv[argc++] = g_strdup("-resizeable");
+	if (remmina_plugin_service->file_get_int(remminafile, "showcursor", FALSE))
+	{
+		argv[argc++] = g_strdup("-host-cursor");
+	}
+	if (remmina_plugin_service->file_get_int(remminafile, "once", FALSE))
+	{
+		argv[argc++] = g_strdup("-once");
+	}
 	argv[argc++] = g_strdup("-nolisten");
 	argv[argc++] = g_strdup("tcp");
 	argv[argc++] = g_strdup("-ac");
-	argv[argc++] = g_strdup("-br");
-	argv[argc++] = g_strdup_printf(":%lu", window_xid);	/* We use the window id as our display number */
+
 	argv[argc++] = NULL;
+
 	ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pidxe, &error);
 	if (error) {
 		g_printf ("failed to start Xephyr: %s\n", error->message);
@@ -97,7 +109,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host, gint sshport, gchar *
 		gchar *command, gchar *kbdlayout, gchar *kbdtype, gchar *resolution, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_x2go_exec_x2go");
-	RemminaPluginData *gpdata = GET_PLUGIN_DATA(gp);
+	RemminaPluginX2goData *gpdata = GET_PLUGIN_DATA(gp);
 	XID const window_xid = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 	GError *error = NULL;
 	gboolean ret;
@@ -168,7 +180,7 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host, gint sshport, gchar *
 static void remmina_plugin_x2go_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_x2go_on_plug_added");
-	RemminaPluginData *gpdata = GET_PLUGIN_DATA(gp);
+	RemminaPluginX2goData *gpdata = GET_PLUGIN_DATA(gp);
 	remmina_plugin_service->log_printf("[%s] remmina_plugin_x2go_on_plug_added socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 	gpdata->ready = TRUE;
@@ -186,15 +198,15 @@ static void remmina_plugin_x2go_init(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_x2go_init");
 	remmina_plugin_service->log_printf("[%s] remmina_plugin_x2go_init\n", PLUGIN_NAME);
-	RemminaPluginData *gpdata;
-	GError *error = NULL;
+	RemminaPluginX2goData *gpdata;
 
-	gpdata = g_new0(RemminaPluginData, 1);
+	gpdata = g_new0(RemminaPluginX2goData, 1);
 	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
 
 	gpdata->socket = gtk_socket_new();
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, gpdata->socket);
 	gtk_widget_show(gpdata->socket);
+
 	g_signal_connect(G_OBJECT(gpdata->socket), "plug-added", G_CALLBACK(remmina_plugin_x2go_on_plug_added), gp);
 	g_signal_connect(G_OBJECT(gpdata->socket), "plug-removed", G_CALLBACK(remmina_plugin_x2go_on_plug_removed), gp);
 	gtk_container_add(GTK_CONTAINER(gp), gpdata->socket);
@@ -213,7 +225,7 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 #define GET_PLUGIN_BOOLEAN(value) \
 		remmina_plugin_service->file_get_int(remminafile, value, FALSE)
 
-	RemminaPluginData *gpdata = GET_PLUGIN_DATA(gp);;
+	RemminaPluginX2goData *gpdata = GET_PLUGIN_DATA(gp);;
 	RemminaFile *remminafile;
 	GError *error = NULL;
 
@@ -268,7 +280,7 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 
 	remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 
-	while ( g_stat(g_strdup_printf("/tmp/.X11-unix/X%d", gpdata->socket_id), &st) < 0 )
+	while ( g_stat(g_strdup_printf(X_UNIX_SOCKET, gpdata->socket_id), &st) < 0 )
 		sleep(1);
 	if (!remmina_plugin_x2go_exec_x2go(host, sshport, username, password, command, kbdlayout, kbdtype, res, gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
@@ -281,7 +293,7 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_x2go_close_connection");
-	RemminaPluginData *gpdata = GET_PLUGIN_DATA(gp);
+	RemminaPluginX2goData *gpdata = GET_PLUGIN_DATA(gp);
 	if (gpdata->pidx2go) {
 		kill(gpdata->pidx2go, SIGTERM);
 		g_spawn_close_pid(gpdata->pidx2go);
@@ -308,7 +320,6 @@ static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
  */
 static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
-	//{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "sshport", N_("remote SSH port (default: 22)"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "command", N_("Startup program"), FALSE,
@@ -316,6 +327,8 @@ static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdlayout", N_("Keyboard Layout (us)"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdtype", N_("Keyboard type (pc105/us)"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Use local cursor"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "once", N_("Disconnect after one session"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
