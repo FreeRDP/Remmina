@@ -267,6 +267,8 @@ int main(int argc, char* argv[])
 	GApplicationClass *app_class;
 	int status;
 
+	gdk_set_allowed_backends("x11,broadway,quartz");
+
 	remmina_masterthread_exec_save_main_thread_id();
 
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
