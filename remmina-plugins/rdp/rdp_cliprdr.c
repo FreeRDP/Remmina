@@ -811,7 +811,7 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 			{
 				size = strlen((char*)inbuf);
 				inbuf = lf2crlf(inbuf, &size);
-				size = (ConvertToUnicode(CP_UTF8, 0, (CHAR*)inbuf, -1, (WCHAR**)&outbuf, 0) + 1) * 2;
+				size = (ConvertToUnicode(CP_UTF8, 0, (CHAR*)inbuf, -1, (WCHAR**)&outbuf, 0) ) * sizeof(WCHAR);
 				g_free(inbuf);
 				break;
 			}
@@ -851,7 +851,6 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 			}
 		}
 	}
-
 	remmina_rdp_cliprdr_send_data_response(clipboard, outbuf, size);
 }
 void remmina_rdp_cliprdr_set_clipboard_content(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
