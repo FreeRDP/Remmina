@@ -1022,7 +1022,7 @@ static void remmina_main_init(void)
 	{
 		gtk_window_maximize(remminamain->window);
 	}
-	/* Start the first survey form */
+	/* Dialog message used to notify the user about the survey */
 	remmina_survey_on_startup(remminamain->window);
 	/* Add a GtkMenuItem to the Tools menu for each plugin of type REMMINA_PLUGIN_TYPE_TOOL */
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
