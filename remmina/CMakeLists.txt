@@ -101,6 +101,8 @@ set(REMMINA_SRCS
 	src/remmina_string_array.h
 	src/remmina_string_list.c
 	src/remmina_string_list.h
+	src/remmina_survey.c
+	src/remmina_survey.h
 	src/remmina_widget_pool.c
 	src/remmina_widget_pool.h
 	src/remmina_external_tools.c

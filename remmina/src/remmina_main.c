@@ -44,6 +44,7 @@
 #include "remmina_file_editor.h"
 #include "remmina_connection_window.h"
 #include "remmina_about.h"
+#include "remmina_survey.h"
 #include "remmina_pref.h"
 #include "remmina_pref_dialog.h"
 #include "remmina_widget_pool.h"
@@ -1021,6 +1022,8 @@ static void remmina_main_init(void)
 	{
 		gtk_window_maximize(remminamain->window);
 	}
+	/* Start the first survey form */
+	remmina_survey_on_startup(remminamain->window);
 	/* Add a GtkMenuItem to the Tools menu for each plugin of type REMMINA_PLUGIN_TYPE_TOOL */
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
 
