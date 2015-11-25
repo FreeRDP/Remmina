@@ -63,7 +63,11 @@ void remmina_survey_dialog_on_submit_clicked(GtkWidget *widget, RemminaSurveyDia
 	TRACE_CALL("remmina_survey_dialog_on_submit_clicked");
 }
 
-
+/* Place holder, NULL is obviously wrong */
+//static void remmina_survey_submit_form_callback(WebKitWebView*, WebKitFormSubmissionRequest* request, NULL)
+//{
+	//TRACE_CALL("remmina_survey_submit_form_callback");
+//}
 
 /* Show the preliminary survey dialog when remmina start */
 void remmina_survey_on_startup(GtkWindow *parent)
@@ -119,7 +123,6 @@ void remmina_survey_start(GtkWindow *parent)
 	/* Connect signals */
 	gtk_builder_connect_signals(remmina_survey->builder, NULL);
 
-
 	web_view = WEBKIT_WEB_VIEW(webkit_web_view_new());
 
 	WebKitSettings *web_view_settings
@@ -134,6 +137,8 @@ void remmina_survey_start(GtkWindow *parent)
 						     NULL);
 
 	webkit_web_view_set_settings(web_view, web_view_settings);
+
+	//g_signal_connect(web_view, "submit-form", G_CALLBACK(remmina_survey_submit_form_callback), NULL);
 
 	if (parent)
 	{
