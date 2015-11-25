@@ -35,6 +35,14 @@
 #ifndef __REMMINASURVEY_H__
 #define __REMMINASURVEY_H__
 
+
+typedef struct _RemminaSurveyDialog
+{
+	GtkBuilder *builder;
+	GtkDialog *dialog;
+	GtkScrolledWindow *scrolledwindow;
+} RemminaSurveyDialog;
+
 G_BEGIN_DECLS
 
 void remmina_survey_on_startup(GtkWindow *parent);

@@ -46,7 +46,22 @@
 
 static gchar* survey_uri = REMMINA_SURVEY_URI;
 
+static RemminaSurveyDialog *remmina_survey;
+
 static WebKitWebView* web_view;
+
+#define GET_OBJECT(object_name) gtk_builder_get_object(remmina_survey->builder, object_name)
+
+void remmina_survey_dialog_on_close_clicked(GtkWidget *widget, RemminaSurveyDialog *dialog)
+{
+	TRACE_CALL("remmina_survey_dialog_on_close_clicked");
+	gtk_widget_destroy(GTK_WIDGET(remmina_survey->dialog));
+}
+
+void remmina_survey_dialog_on_submit_clicked(GtkWidget *widget, RemminaSurveyDialog *dialog)
+{
+	TRACE_CALL("remmina_survey_dialog_on_submit_clicked");
+}
 
 /* Show the preliminary survey dialog when remmina start */
 void remmina_survey_on_startup(GtkWindow *parent)
@@ -87,31 +102,31 @@ void remmina_survey_on_startup(GtkWindow *parent)
 	}
 
 	gtk_widget_destroy(dialog);
-	//g_signal_connect(dialog, "response", G_CALLBACK(gtk_widget_destroy), NULL);
-	//gtk_window_present(GTK_WINDOW(dialog));
 }
 
 void remmina_survey_start(GtkWindow *parent)
 {
 	TRACE_CALL("remmina_survey_start");
-	GtkBuilder *builder = remmina_public_gtk_builder_new_from_file("remmina_survey.glade");
-	GtkDialog *dialog
-		= GTK_DIALOG (gtk_builder_get_object(builder, "dialog_remmina_survey"));
-	GtkScrolledWindow *scrolledwindow
-		= GTK_SCROLLED_WINDOW (gtk_builder_get_object(builder, "scrolledwindow"));
+	remmina_survey = g_new0(RemminaSurveyDialog, 1);
+
+	remmina_survey->builder = remmina_public_gtk_builder_new_from_file("remmina_survey.glade");
+	remmina_survey->dialog
+		= GTK_DIALOG (gtk_builder_get_object(remmina_survey->builder, "dialog_remmina_survey"));
+	remmina_survey->scrolledwindow
+		= GTK_SCROLLED_WINDOW(GET_OBJECT("scrolledwindow"));
 	web_view = WEBKIT_WEB_VIEW(webkit_web_view_new());
 
 	if (parent)
 	{
-		gtk_window_set_transient_for(GTK_WINDOW(dialog), parent);
-		gtk_window_set_destroy_with_parent(GTK_WINDOW(dialog), TRUE);
+		gtk_window_set_transient_for(GTK_WINDOW(remmina_survey->dialog), parent);
+		gtk_window_set_destroy_with_parent(GTK_WINDOW(remmina_survey->dialog), TRUE);
 	}
 
-	g_signal_connect(dialog, "response", G_CALLBACK(gtk_widget_destroy), NULL);
-	gtk_window_present(GTK_WINDOW(dialog));
+	g_signal_connect(remmina_survey->dialog, "response", G_CALLBACK(gtk_widget_destroy), NULL);
+	gtk_window_present(GTK_WINDOW(remmina_survey->dialog));
 
-	gtk_container_add(GTK_CONTAINER(scrolledwindow), GTK_WIDGET(web_view));
+	gtk_container_add(GTK_CONTAINER(remmina_survey->scrolledwindow), GTK_WIDGET(web_view));
 	gtk_widget_show(GTK_WIDGET(web_view));
 	webkit_web_view_load_uri(web_view, survey_uri);
-	g_object_unref(G_OBJECT(builder));
+	g_object_unref(G_OBJECT(remmina_survey->builder));
 }
