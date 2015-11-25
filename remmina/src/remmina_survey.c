@@ -114,6 +114,9 @@ void remmina_survey_start(GtkWindow *parent)
 		= GTK_DIALOG (gtk_builder_get_object(remmina_survey->builder, "dialog_remmina_survey"));
 	remmina_survey->scrolledwindow
 		= GTK_SCROLLED_WINDOW(GET_OBJECT("scrolledwindow"));
+	/* Connect signals */
+	gtk_builder_connect_signals(remmina_survey->builder, NULL);
+
 	web_view = WEBKIT_WEB_VIEW(webkit_web_view_new());
 
 	if (parent)
