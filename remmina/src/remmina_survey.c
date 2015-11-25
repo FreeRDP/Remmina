@@ -68,7 +68,7 @@ void remmina_survey_on_startup(GtkWindow *parent)
 
 	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
 	{
-		remmina_survey_start();
+		remmina_survey_start(parent);
 	}
 
 	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check)))
@@ -83,7 +83,20 @@ void remmina_survey_on_startup(GtkWindow *parent)
 	//gtk_window_present(GTK_WINDOW(dialog));
 }
 
-void remmina_survey_start()
+void remmina_survey_start(GtkWindow *parent)
 {
 	TRACE_CALL("remmina_survey_start");
+	GtkBuilder *builder = remmina_public_gtk_builder_new_from_file("remmina_survey.glade");
+	GtkDialog *dialog = GTK_DIALOG (gtk_builder_get_object(builder, "dialog_remmina_survey"));
+
+	if (parent)
+	{
+		gtk_window_set_transient_for(GTK_WINDOW(dialog), parent);
+		gtk_window_set_destroy_with_parent(GTK_WINDOW(dialog), TRUE);
+	}
+
+	g_signal_connect(dialog, "response", G_CALLBACK(gtk_widget_destroy), NULL);
+	gtk_window_present(GTK_WINDOW(dialog));
+
+	g_object_unref(G_OBJECT(builder));
 }

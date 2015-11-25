@@ -879,7 +879,7 @@ void remmina_main_on_action_help_debug(GtkAction *action, gpointer user_data)
 void remmina_main_on_action_help_survey(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_help_survey");
-	remmina_survey_start();
+	remmina_survey_start(remminamain->window);
 }
 
 void remmina_main_on_action_application_about(GtkAction *action, gpointer user_data)
