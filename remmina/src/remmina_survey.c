@@ -35,7 +35,7 @@
 
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
-#include <webkit/webkit.h>
+#include <webkit2/webkit2.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include "config.h"
@@ -62,6 +62,8 @@ void remmina_survey_dialog_on_submit_clicked(GtkWidget *widget, RemminaSurveyDia
 {
 	TRACE_CALL("remmina_survey_dialog_on_submit_clicked");
 }
+
+
 
 /* Show the preliminary survey dialog when remmina start */
 void remmina_survey_on_startup(GtkWindow *parent)
@@ -117,7 +119,21 @@ void remmina_survey_start(GtkWindow *parent)
 	/* Connect signals */
 	gtk_builder_connect_signals(remmina_survey->builder, NULL);
 
+
 	web_view = WEBKIT_WEB_VIEW(webkit_web_view_new());
+
+	WebKitSettings *web_view_settings
+		= webkit_settings_new_with_settings ("enable-caret-browsing", TRUE,
+						     "enable-fullscreen", TRUE,
+						     "enable-java", FALSE,
+						     "enable-media-stream", FALSE,
+						     "enable-plugins", FALSE,
+						     "enable-private-browsing", TRUE,
+						     "enable-offline-web-application-cache", FALSE,
+						     "enable-page-cache", FALSE,
+						     NULL);
+
+	webkit_web_view_set_settings(web_view, web_view_settings);
 
 	if (parent)
 	{
