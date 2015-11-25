@@ -35,10 +35,18 @@
 
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <webkit/webkit.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include "config.h"
 #include "remmina_survey.h"
 #include "remmina_pref.h"
 #include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"
+
+static gchar* survey_uri = REMMINA_SURVEY_URI;
+
+static WebKitWebView* web_view;
 
 /* Show the preliminary survey dialog when remmina start */
 void remmina_survey_on_startup(GtkWindow *parent)
@@ -87,7 +95,11 @@ void remmina_survey_start(GtkWindow *parent)
 {
 	TRACE_CALL("remmina_survey_start");
 	GtkBuilder *builder = remmina_public_gtk_builder_new_from_file("remmina_survey.glade");
-	GtkDialog *dialog = GTK_DIALOG (gtk_builder_get_object(builder, "dialog_remmina_survey"));
+	GtkDialog *dialog
+		= GTK_DIALOG (gtk_builder_get_object(builder, "dialog_remmina_survey"));
+	GtkScrolledWindow *scrolledwindow
+		= GTK_SCROLLED_WINDOW (gtk_builder_get_object(builder, "scrolledwindow"));
+	web_view = WEBKIT_WEB_VIEW(webkit_web_view_new());
 
 	if (parent)
 	{
@@ -98,5 +110,8 @@ void remmina_survey_start(GtkWindow *parent)
 	g_signal_connect(dialog, "response", G_CALLBACK(gtk_widget_destroy), NULL);
 	gtk_window_present(GTK_WINDOW(dialog));
 
+	gtk_container_add(GTK_CONTAINER(scrolledwindow), GTK_WIDGET(web_view));
+	gtk_widget_show(GTK_WIDGET(web_view));
+	webkit_web_view_load_uri(web_view, survey_uri);
 	g_object_unref(G_OBJECT(builder));
 }

@@ -107,6 +107,7 @@ set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_FULL_DATADIR}/locale")
 set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/remmina/plugins")
 set(REMMINA_UIDIR "${CMAKE_INSTALL_FULL_DATADIR}/remmina/ui")
 
+
 # Uninstall support
 configure_file(
 	"${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
@@ -119,6 +120,11 @@ find_required_package(GTK)
 find_required_package(PTHREAD)
 find_suggested_package(GCRYPT)
 find_suggested_package(AVAHI)
+
+IF (NOT DEFINED REMMINA_SURVEY_URI)
+    SET(REMMINA_SURVEY_URI "http://www.remmina.org/")
+ENDIF()
+ADD_DEFINITIONS(-DREMMINA_SURVEY_URI=${REMMINA_SURVEY_URI})
 
 if(WITH_TRACE_CALLS)
 	message(STATUS "Enabling trace calls.")

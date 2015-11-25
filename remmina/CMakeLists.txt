@@ -114,6 +114,10 @@ add_executable(remmina ${REMMINA_SRCS})
 include_directories(${GTK_INCLUDE_DIRS})
 target_link_libraries(remmina ${GTK_LIBRARIES})
 
+pkg_check_modules(WEBKIT REQUIRED webkitgtk-3.0)
+target_link_libraries(remmina ${WEBKIT_LIBRARIES})
+include_directories(${WEBKIT_INCLUDE_DIRS})
+
 find_package(X11)
 include_directories(${X11_INCLUDE_DIR})
 target_link_libraries(remmina ${X11_LIBRARIES})
