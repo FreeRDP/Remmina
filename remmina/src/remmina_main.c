@@ -876,6 +876,12 @@ void remmina_main_on_action_help_debug(GtkAction *action, gpointer user_data)
 	remmina_log_start();
 }
 
+void remmina_main_on_action_help_survey(GtkAction *action, gpointer user_data)
+{
+	TRACE_CALL("remmina_main_on_action_help_survey");
+	remmina_survey_start();
+}
+
 void remmina_main_on_action_application_about(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_application_about");
@@ -1022,8 +1028,7 @@ static void remmina_main_init(void)
 	{
 		gtk_window_maximize(remminamain->window);
 	}
-	/* Dialog message used to notify the user about the survey */
-	remmina_survey_on_startup(remminamain->window);
+
 	/* Add a GtkMenuItem to the Tools menu for each plugin of type REMMINA_PLUGIN_TYPE_TOOL */
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
 
@@ -1092,6 +1097,10 @@ static void remmina_main_init(void)
 	/* Register the window in remmina_widget_pool with GType=GTK_WINDOW and TAG=remmina-main-window */
 	g_object_set_data(G_OBJECT(remminamain->window), "tag", "remmina-main-window");
 	remmina_widget_pool_register(GTK_WIDGET(remminamain->window));
+	/* Dialog message used to notify the user about the survey */
+	if (remmina_pref.survey) {
+		remmina_survey_on_startup(remminamain->window);
+	}
 }
 
 /* RemminaMain instance */
@@ -1154,6 +1163,7 @@ GtkWidget* remmina_main_new(void)
 	remminamain->action_help_homepage = GTK_ACTION(GET_OBJECT("action_help_homepage"));
 	remminamain->action_help_wiki = GTK_ACTION(GET_OBJECT("action_help_wiki"));
 	remminamain->action_help_debug = GTK_ACTION(GET_OBJECT("action_help_debug"));
+	remminamain->action_help_survey = GTK_ACTION(GET_OBJECT("action_help_survey"));
 	G_GNUC_END_IGNORE_DEPRECATIONS
 	/* Connect signals */
 	gtk_builder_connect_signals(remminamain->builder, NULL);

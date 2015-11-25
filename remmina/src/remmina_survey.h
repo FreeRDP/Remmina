@@ -38,6 +38,7 @@
 G_BEGIN_DECLS
 
 void remmina_survey_on_startup(GtkWindow *parent);
+void remmina_survey_start();
 
 G_END_DECLS
 

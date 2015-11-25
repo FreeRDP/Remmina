@@ -94,6 +94,7 @@ typedef struct _RemminaMain
 	GtkAction *action_help_homepage;
 	GtkAction *action_help_wiki;
 	GtkAction *action_help_debug;
+	GtkAction *action_help_survey;
 
 	RemminaMainPriv *priv;
 } RemminaMain;

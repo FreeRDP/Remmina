@@ -36,37 +36,54 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include "remmina_survey.h"
+#include "remmina_pref.h"
 #include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"
 
 /* Show the preliminary survey dialog when remmina start */
 void remmina_survey_on_startup(GtkWindow *parent)
 {
-    TRACE_CALL("remmina_survey");
+	TRACE_CALL("remmina_survey");
 
-    GtkWidget *dialog, *check;
+	GtkWidget *dialog, *check;
 
-    dialog = gtk_message_dialog_new (GTK_WINDOW (parent),
-                                     GTK_DIALOG_DESTROY_WITH_PARENT,
-                                     GTK_MESSAGE_QUESTION,
-                                     GTK_BUTTONS_YES_NO,
-                                     "%s",
-                                     /* translators: Primary message of a dialog used to notify the user about the survey */
-                                     _("We are conducting a user survey\n would you like to take it now?"));
+	dialog = gtk_message_dialog_new(GTK_WINDOW (parent),
+					GTK_DIALOG_DESTROY_WITH_PARENT,
+					GTK_MESSAGE_QUESTION,
+					GTK_BUTTONS_YES_NO,
+					"%s",
+					/* translators: Primary message of a dialog used to notify the user about the survey */
+					_("We are conducting a user survey\n would you like to take it now?"));
 
-    gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), "%s",
-            /* translators: Secondary text of a dialog used to notify the user about the survey */
-            _("If not, you can always find it in the Help menu."));
+	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), "%s",
+			/* translators: Secondary text of a dialog used to notify the user about the survey */
+			_("If not, you can always find it in the Help menu."));
 
-    check = gtk_check_button_new_with_mnemonic (_("_Do not show this dialog again"));
-    gtk_box_pack_end (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))),
-            check, FALSE, FALSE, 0);
-    gtk_widget_set_halign (check, GTK_ALIGN_START);
-    gtk_widget_set_margin_start (check, 6);
-    gtk_widget_show (check);
+	check = gtk_check_button_new_with_mnemonic (_("_Do not show this dialog again"));
+	gtk_box_pack_end (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))),
+			check, FALSE, FALSE, 0);
+	gtk_widget_set_halign (check, GTK_ALIGN_START);
+	gtk_widget_set_margin_start (check, 6);
+	gtk_widget_show (check);
 
-    printf("Survey\n");
+	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
+	{
+		remmina_survey_start();
+	}
 
-    g_signal_connect(dialog, "response", G_CALLBACK(gtk_widget_destroy), NULL);
-    gtk_window_present(GTK_WINDOW(dialog));
+	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check)))
+	{
+		/* Save survey option */
+		remmina_pref.survey = FALSE;
+		remmina_pref_save();
+	}
+
+	gtk_widget_destroy(dialog);
+	//g_signal_connect(dialog, "response", G_CALLBACK(gtk_widget_destroy), NULL);
+	//gtk_window_present(GTK_WINDOW(dialog));
+}
+
+void remmina_survey_start()
+{
+	TRACE_CALL("remmina_survey_start");
 }

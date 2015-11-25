@@ -90,6 +90,7 @@ typedef struct _RemminaPref
 	/* In RemminaPrefDialog options tab */
 	gboolean save_view_mode;
 	gboolean save_when_connect;
+	gboolean survey;
 	gint default_action;
 	gint scale_quality;
 	gint ssh_loglevel;
@@ -166,6 +167,8 @@ extern RemminaPref remmina_pref;
 
 void remmina_pref_init(void);
 void remmina_pref_save(void);
+
+gboolean remmina_pref_get_survey(void);
 
 void remmina_pref_add_recent(const gchar *protocol, const gchar *server);
 gchar* remmina_pref_get_recent(const gchar *protocol);
