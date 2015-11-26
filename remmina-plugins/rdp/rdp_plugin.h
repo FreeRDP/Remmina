@@ -164,7 +164,7 @@ struct rf_context
 	GAsyncQueue* ui_queue;
 	guint ui_handler;
 
-
+	int sockfd;
 
 	GArray* pressed_keys;
 	GAsyncQueue* event_queue;
