@@ -52,6 +52,9 @@
 #include <freerdp/client/cmdline.h>
 #include <freerdp/error.h>
 #include <winpr/memory.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/tcp.h>
 
 #define REMMINA_RDP_FEATURE_TOOL_REFRESH         1
 #define REMMINA_RDP_FEATURE_SCALE                2
@@ -63,6 +66,8 @@
 
 RemminaPluginService* remmina_plugin_service = NULL;
 static char remmina_rdp_plugin_default_drive_name[]="RemminaDisk";
+
+static gboolean use_remmina_socket;
 
 void rf_get_fds(RemminaProtocolWidget* gp, void** rfds, int* rcount)
 {
@@ -965,29 +970,96 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*) smartcard);
 	}
 
+	/* Connect to the remote server */
+	if (use_remmina_socket) {
+
+		struct addrinfo hints;
+		struct addrinfo* result = NULL, *rp;
+		char *newServerHostname;
+		int status;
+		int sfd;
+		socklen_t optlen;
+		UINT32 optval;
+		char service[16];
+
+		memset(&hints, 0, sizeof(struct addrinfo));
+		hints.ai_family = AF_UNSPEC;
+		hints.ai_socktype = SOCK_STREAM;
+		hints.ai_flags = 0;
+		hints.ai_protocol = 0;
+
+		sprintf(service, "%d", rfi->settings->ServerPort);
+		status = getaddrinfo(rfi->settings->ServerHostname, service, &hints, &result);
+
+		if (status != 0) {
+			remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to find the address of RDP server %s."),
+				rfi->settings->ServerHostname);
+			return FALSE;
+		}
+
+		for (rp = result; rp != NULL; rp = rp->ai_next) {
+			sfd = socket(rp->ai_family, rp->ai_socktype, rp->ai_protocol);
+			if (sfd == -1)
+				continue;
+			if (connect(sfd, rp->ai_addr, rp->ai_addrlen) != -1)
+				break;
+			close(sfd);
+		}
+
+		if (rp == NULL) {
+			/* connect error */
+			gchar *msg = g_strdup_printf("%s. %s", _("Unable to connect to RDP server %s"), strerror(errno));
+			remmina_plugin_service->protocol_plugin_set_error(gp, msg, rfi->settings->ServerHostname );
+			g_free(msg);
+			freeaddrinfo(result);
+			return FALSE;
+		}
+		freeaddrinfo(result);
+
+		optval = 1;
+		optlen = sizeof(optval);
+		if (setsockopt(sfd, IPPROTO_TCP, TCP_NODELAY, (void*) &optval, optlen) < 0)
+			g_printf("WARNING: unable to set TCP_NODELAY\n");
+
+		rfi->sockfd = sfd;
+
+		newServerHostname = strdup("|");
+		free(rfi->settings->ServerHostname);
+		rfi->settings->ServerHostname = newServerHostname;
+
+		rfi->settings->ServerPort = sfd;
+
+	}
+
+
 	if (!freerdp_connect(rfi->instance))
 	{
 		if (!rfi->user_cancelled)
 		{
 			UINT32 e;
+			const char *server;
 
 			e = freerdp_get_last_error(rfi->instance->context);
+			server = remmina_plugin_service->file_get_string(remminafile, "server");
 			switch(e) {
 				case FREERDP_ERROR_AUTHENTICATION_FAILED:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Authentication to RDP server %s failed.\nCheck username, password and domain."),
-						rfi->settings->ServerHostname );
+						server );
 					// Invalidate the saved password, so the user will be re-asked at next logon
 					remmina_plugin_service->file_unsave_password(remminafile);
 					break;
 				case FREERDP_ERROR_CONNECT_FAILED:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to RDP server %s failed."), rfi->settings->ServerHostname );
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to RDP server %s failed."), server);
 					break;
 				default:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), server);
 					break;
 			}
 
 		}
+
+		if (use_remmina_socket)
+			close(rfi->sockfd);
 
 		return FALSE;
 	}
@@ -995,6 +1067,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 
 	remmina_rdp_main_loop(gp);
+
+	if (use_remmina_socket)
+		close(rfi->sockfd);
 
 	return TRUE;
 }
@@ -1352,6 +1427,10 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService* service)
 			vermaj, vermin, verrev );
 		return FALSE;
 	}
+
+	/* Very inaccurate way to determine whether to use our socket or libfreerdp socket */
+	if (vermaj >= 2)
+		use_remmina_socket = TRUE;
 
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
