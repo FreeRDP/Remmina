@@ -58,16 +58,27 @@ void remmina_survey_dialog_on_close_clicked(GtkWidget *widget, RemminaSurveyDial
 	gtk_widget_destroy(GTK_WIDGET(remmina_survey->dialog));
 }
 
-void remmina_survey_dialog_on_submit_clicked(GtkWidget *widget, RemminaSurveyDialog *dialog)
+static void remmina_survey_submit_form_callback(WebKitWebView *web_view, WebKitFormSubmissionRequest *request, gpointer user_data)
 {
-	TRACE_CALL("remmina_survey_dialog_on_submit_clicked");
-}
+	TRACE_CALL("remmina_survey_submit_form_callback");
 
-/* Place holder, NULL is obviously wrong */
-//static void remmina_survey_submit_form_callback(WebKitWebView*, WebKitFormSubmissionRequest* request, NULL)
-//{
-	//TRACE_CALL("remmina_survey_submit_form_callback");
-//}
+	/* CLEAN: just for test */
+	gchar *name, *mail;
+
+	/* This function return only html text fields (no textarea for instance) */
+	GHashTable *formsdata = webkit_form_submission_request_get_text_fields (request);
+
+	/* CLEAN: just for test */
+	name = g_hash_table_lookup (formsdata, "name");
+	mail = g_hash_table_lookup (formsdata, "email");
+
+	/* CLEAN: just for test */
+	printf ("name: %s\nmail: %s\n", name, mail);
+
+	/* Finally we submit the form */
+	webkit_form_submission_request_submit(request);
+
+}
 
 /* Show the preliminary survey dialog when remmina start */
 void remmina_survey_on_startup(GtkWindow *parent)
@@ -138,7 +149,8 @@ void remmina_survey_start(GtkWindow *parent)
 
 	webkit_web_view_set_settings(web_view, web_view_settings);
 
-	//g_signal_connect(web_view, "submit-form", G_CALLBACK(remmina_survey_submit_form_callback), NULL);
+	/* Intercept submit signal from WebKitWebView keeping the data so that we can deal with it */
+	g_signal_connect(web_view, "submit-form", G_CALLBACK(remmina_survey_submit_form_callback), NULL);
 
 	if (parent)
 	{

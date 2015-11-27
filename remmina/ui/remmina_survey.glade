@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3
+<!-- Generated with glade 3.19.0 
 
 -
 Copyright (C) 2014-2015 Antenore Gatta
@@ -34,13 +34,6 @@ Author: Antenore Gatta
         <signal name="activate" handler="remmina_survey_dialog_on_close_clicked" swapped="no"/>
       </object>
     </child>
-    <child>
-      <object class="GtkAction" id="action_survey_submit">
-        <property name="label" translatable="yes">Submit</property>
-        <property name="stock_id">gtk-ok</property>
-        <signal name="activate" handler="remmina_survey_dialog_on_submit_clicked" swapped="no"/>
-      </object>
-    </child>
   </object>
   <object class="GtkDialog" id="dialog_remmina_survey">
     <property name="can_focus">False</property>
@@ -72,23 +65,6 @@ Author: Antenore Gatta
                 <property name="expand">True</property>
                 <property name="fill">True</property>
                 <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="button_send_survey">
-                <property name="label">gtk-ok</property>
-                <property name="use_action_appearance">True</property>
-                <property name="related_action">action_survey_submit</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_stock">True</property>
-                <property name="yalign">0.56000000238418579</property>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
               </packing>
             </child>
           </object>

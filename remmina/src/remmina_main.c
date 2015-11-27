@@ -1097,10 +1097,6 @@ static void remmina_main_init(void)
 	/* Register the window in remmina_widget_pool with GType=GTK_WINDOW and TAG=remmina-main-window */
 	g_object_set_data(G_OBJECT(remminamain->window), "tag", "remmina-main-window");
 	remmina_widget_pool_register(GTK_WIDGET(remminamain->window));
-	/* Dialog message used to notify the user about the survey */
-	if (remmina_pref.survey) {
-		remmina_survey_on_startup(remminamain->window);
-	}
 }
 
 /* RemminaMain instance */
