@@ -2625,6 +2625,11 @@ static void remmina_connection_holder_create_scrolled(RemminaConnectionHolder* c
 	cnnhld->cnnwin->priv->grid = grid;
 	cnnhld->cnnwin->priv->notebook = notebook;
 
+	/* The notebook and all its child must be realized now, or a reparent will
+	 * call unrealize() and will destroy a GtkSocket */
+	gtk_widget_show(grid);
+	gtk_widget_show(GTK_WIDGET(cnnhld->cnnwin));
+
 	remmina_connection_window_initialize_notebook(GTK_NOTEBOOK(notebook),
 	        (oldwindow ? GTK_NOTEBOOK(REMMINA_CONNECTION_WINDOW(oldwindow)->priv->notebook) : NULL), cnnobj,
 	        SCROLLED_WINDOW_MODE);
@@ -2649,8 +2654,7 @@ static void remmina_connection_holder_create_scrolled(RemminaConnectionHolder* c
 	remmina_connection_holder_showhide_toolbar(cnnhld, FALSE);
 	remmina_connection_holder_check_resize(cnnhld);
 
-	gtk_widget_show(GTK_WIDGET(cnnhld->cnnwin));
-	gtk_widget_show(grid);
+
 }
 
 static gboolean remmina_connection_window_go_fullscreen(gpointer data)
