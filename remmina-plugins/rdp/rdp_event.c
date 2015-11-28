@@ -755,6 +755,7 @@ static BOOL remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPl
 	surface = cairo_image_surface_create_for_data(data, CAIRO_FORMAT_ARGB32, pointer->width, pointer->height, cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, pointer->width));
 	pixbuf = gdk_pixbuf_get_from_surface(surface, 0, 0, pointer->width, pointer->height);
 	cairo_surface_destroy(surface);
+	free(data);
 	((rfPointer*)ui->cursor.pointer)->cursor = gdk_cursor_new_from_pixbuf(rfi->display, pixbuf, pointer->xPos, pointer->yPos);
 
 	return TRUE;
@@ -850,6 +851,7 @@ static void remmina_rdp_event_process_event(RemminaProtocolWidget* gp, RemminaPl
 gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_rdp_event_queue_ui");
+
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpUiObject* ui;
 
