@@ -68,9 +68,8 @@ static GtkTargetEntry remmina_drop_types[] =
 	{ "text/uri-list", 0, 1 }
 };
 
-static char *quick_connect_plugin_list[] =
-{
-	"RDP", "VNC", "SSH", "NX"
+static char *quick_connect_plugin_list[] = {
+	"RDP", "VNC", "SSH", "NX", "X2GO"
 };
 
 static void remmina_main_save_size(void)

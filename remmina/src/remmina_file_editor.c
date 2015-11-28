@@ -523,6 +523,7 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWid
 #else
 	gtk_widget_set_margin_right (widget, 40);
 #endif
+	gtk_widget_set_hexpand(widget, TRUE);
 	gtk_widget_set_valign (widget, GTK_ALIGN_START);
 	gtk_widget_set_halign (widget, GTK_ALIGN_START);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
