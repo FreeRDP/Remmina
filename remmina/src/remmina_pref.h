@@ -65,8 +65,17 @@ enum
 
 enum
 {
-	FLOATING_TOOLBAR_PLACEMENT_TOP, FLOATING_TOOLBAR_PLACEMENT_BOTTOM
+	FLOATING_TOOLBAR_PLACEMENT_TOP = 0,
+	FLOATING_TOOLBAR_PLACEMENT_BOTTOM = 1
 };
+
+enum
+{
+	TOOLBAR_PLACEMENT_TOP = 0,
+	TOOLBAR_PLACEMENT_RIGHT = 1,
+	TOOLBAR_PLACEMENT_BOTTOM = 2,
+	TOOLBAR_PLACEMENT_LEFT = 3
+ };
 
 enum
 {
@@ -84,6 +93,7 @@ typedef struct _RemminaPref
 	gint default_action;
 	gint scale_quality;
 	gint ssh_loglevel;
+	gboolean ssh_parseconfig;
 	gint sshtunnel_port;
 	gint auto_scroll_step;
 	gint recent_maximum;
@@ -91,7 +101,6 @@ typedef struct _RemminaPref
 	gchar *keystrokes;
 	/* In RemminaPrefDialog appearance tab */
 	gboolean invisible_toolbar;
-	gint floating_toolbar_placement;
 	gboolean always_show_tab;
 	gboolean hide_connection_toolbar;
 	gint default_mode;
@@ -139,11 +148,14 @@ typedef struct _RemminaPref
 	gint main_sort_order;
 	gchar *expanded_group;
 	gboolean toolbar_pin_down;
+	gint floating_toolbar_placement;
+	gint toolbar_placement;
 
 	/* Crypto */
 	gchar *secret;
 } RemminaPref;
 
+#define DEFAULT_SSH_PARSECONFIG TRUE
 #define DEFAULT_SSHTUNNEL_PORT 4732
 #define DEFAULT_SSH_PORT 22
 #define DEFAULT_SSH_LOGLEVEL 1
@@ -164,6 +176,7 @@ gchar** remmina_pref_keymap_groups(void);
 
 gint remmina_pref_get_scale_quality(void);
 gint remmina_pref_get_ssh_loglevel(void);
+gboolean remmina_pref_get_ssh_parseconfig(void);
 gint remmina_pref_get_sshtunnel_port(void);
 
 void remmina_pref_set_value(const gchar *key, const gchar *value);

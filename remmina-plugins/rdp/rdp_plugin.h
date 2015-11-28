@@ -284,11 +284,8 @@ struct remmina_plugin_rdp_ui_object
 			gint y;
 		} pos;
 	};
-	/* We can also return values here, valid only when sync is TRUE */
-	union {
-		int intval;
-		BOOL boolval;
-	} retval;
+	/* We can also return values here, only integer, and -1 is reserved for rf_queue_ui own error */
+	int retval;
 };
 typedef struct remmina_plugin_rdp_ui_object RemminaPluginRdpUiObject;
 
@@ -296,7 +293,7 @@ void rf_init(RemminaProtocolWidget* gp);
 void rf_uninit(RemminaProtocolWidget* gp);
 void rf_get_fds(RemminaProtocolWidget* gp, void** rfds, int* rcount);
 BOOL rf_check_fds(RemminaProtocolWidget* gp);
-void rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui);
+int rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui);
 void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj);
 
 #endif

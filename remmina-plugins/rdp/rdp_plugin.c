@@ -61,6 +61,9 @@
 #define REMMINA_RDP_FEATURE_UNFOCUS              3
 #define REMMINA_RDP_FEATURE_TOOL_SENDCTRLALTDEL  4
 
+/* Some string settings of freerdp are preallocated buffers of N bytes */
+#define FREERDP_CLIENTHOSTNAME_LEN	32
+
 RemminaPluginService* remmina_plugin_service = NULL;
 static char remmina_rdp_plugin_default_drive_name[]="RemminaDisk";
 
@@ -118,11 +121,12 @@ BOOL rf_check_fds(RemminaProtocolWidget* gp)
 	return True;
 }
 
-void rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+int rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
 	TRACE_CALL("rf_queue_ui");
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	gboolean ui_sync_save;
+	int rc;
 
 	ui_sync_save = ui->sync;
 
@@ -141,8 +145,11 @@ void rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 		/* Wait for main thread function completion before returning */
 		pthread_mutex_lock(&ui->sync_wait_mutex);
 		pthread_mutex_unlock(&ui->sync_wait_mutex);
+		rc = ui->retval;
 		rf_object_free(gp, ui);
+		return rc;
 	}
+	return 0;
 }
 
 void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj)
@@ -761,19 +768,16 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	/* Certificate ignore */
 	rfi->settings->IgnoreCertificate = remmina_plugin_service->file_get_int(remminafile, "cert_ignore", 0);
 
-	if (remmina_plugin_service->file_get_string(remminafile, "clientname"))
+	/* ClientHostname is internally preallocated to 32 bytes by libfreerdp */
+	if ((cs=remmina_plugin_service->file_get_string(remminafile, "clientname")))
 	{
-		cs = remmina_plugin_service->file_get_string(remminafile, "clientname");
-		if ( cs ) {
-			free( rfi->settings->ClientHostname );
-			rfi->settings->ClientHostname = strdup(cs);
-		}
+		strncpy(rfi->settings->ClientHostname, cs, FREERDP_CLIENTHOSTNAME_LEN-1);
 	}
 	else
 	{
-		free( rfi->settings->ClientHostname );
-		rfi->settings->ClientHostname = strdup( g_get_host_name() );
+		strncpy(rfi->settings->ClientHostname, g_get_host_name(), FREERDP_CLIENTHOSTNAME_LEN-1);
 	}
+	rfi->settings->ClientHostname[FREERDP_CLIENTHOSTNAME_LEN-1]=0;
 
 	if (remmina_plugin_service->file_get_string(remminafile, "loadbalanceinfo"))
 	{
@@ -1192,8 +1196,9 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 		}
 
 		freerdp_context_free(instance); /* context is rfContext* rfi */
-		freerdp_free(instance);
-		rfi->instance = NULL;
+		freerdp_free(instance); /* This implicitly frees instance->context and rfi is no longer valid */
+		g_object_set_data(G_OBJECT(gp), "plugin-data", NULL);	/* Removes rfi */
+
 	}
 
 	return FALSE;

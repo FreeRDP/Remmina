@@ -36,6 +36,7 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <gio/gio.h>
 #include <stdlib.h>
 #include "config.h"
 #include "remmina_public.h"
@@ -57,7 +58,9 @@
 #include <pthread.h>
 #ifdef HAVE_LIBGCRYPT
 #include <gcrypt.h>
+# if GCRYPT_VERSION_NUMBER < 0x010600
 GCRY_THREAD_OPTION_PTHREAD_IMPL;
+# endif
 #endif
 
 static gboolean remmina_option_about;
@@ -264,6 +267,8 @@ int main(int argc, char* argv[])
 	GApplicationClass *app_class;
 	int status;
 
+	gdk_set_allowed_backends("x11,broadway,quartz");
+
 	remmina_masterthread_exec_save_main_thread_id();
 
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
@@ -271,7 +276,9 @@ int main(int argc, char* argv[])
 	textdomain(GETTEXT_PACKAGE);
 
 #ifdef HAVE_LIBGCRYPT
+# if GCRYPT_VERSION_NUMBER < 0x010600
 	gcry_control (GCRYCTL_SET_THREAD_CBS, &gcry_threads_pthread);
+# endif
 	gcry_check_version (NULL);
 	gcry_control (GCRYCTL_DISABLE_SECMEM, 0);
 	gcry_control (GCRYCTL_INITIALIZATION_FINISHED, 0);

@@ -60,6 +60,9 @@ endif()
 if(CMAKE_COMPILER_IS_GNUCC)
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+	if(WITH_GCC_SANITIZE_ADDRESS)
+		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
+	endif()
 	if(WITH_SSE2)
 		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2")
 	endif()
@@ -96,13 +99,21 @@ set(WITH_LIBRARY_VERSIONING "ON")
 set(REMMINA_VERSION_MAJOR "1")
 set(REMMINA_VERSION_MINOR "2")
 set(REMMINA_VERSION_REVISION "0")
-set(REMMINA_VERSION_SUFFIX "rcgit.4")
+set(REMMINA_VERSION_SUFFIX "rcgit.5")
 set(REMMINA_VERSION "${REMMINA_VERSION_MAJOR}.${REMMINA_VERSION_MINOR}.${REMMINA_VERSION_REVISION}-${REMMINA_VERSION_SUFFIX}")
 
 set(REMMINA_DATADIR "${CMAKE_INSTALL_FULL_DATADIR}")
 set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_FULL_DATADIR}/locale")
 set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/remmina/plugins")
 set(REMMINA_UIDIR "${CMAKE_INSTALL_FULL_DATADIR}/remmina/ui")
+
+# Uninstall support
+configure_file(
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+	"${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+	IMMEDIATE @ONLY)
+add_custom_target(uninstall
+	"${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
 
 find_required_package(GTK)
 find_required_package(PTHREAD)

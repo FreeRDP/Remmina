@@ -123,7 +123,7 @@ void remmina_nx_session_manager_on_row_activated(GtkTreeView *tree, GtkTreePath 
 {
 	TRACE_CALL("remmina_nx_session_manager_row_activated");
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
-	remmina_plugin_nx_service->log_printf("[NX] Default response_id %d\n", 
+	remmina_plugin_nx_service->log_printf("[NX] Default response_id %d\n",
 		gpdata->default_response);
 
 	if (gpdata->default_response >= 0)
@@ -172,8 +172,6 @@ static gboolean remmina_nx_session_manager_main(RemminaProtocolWidget *gp)
 		gtk_dialog_add_button(GTK_DIALOG(dialog), _("_Cancel"), REMMINA_NX_EVENT_CANCEL);
 
 		widget = gtk_dialog_add_button(GTK_DIALOG(dialog), _("Terminate"), REMMINA_NX_EVENT_TERMINATE);
-		gtk_button_box_set_child_secondary(GTK_BUTTON_BOX(gtk_dialog_get_action_area(GTK_DIALOG(dialog))), widget,
-				TRUE);
 
 		gtk_window_set_default_size(GTK_WINDOW(dialog), 640, 300);
 		gpdata->manager_dialog = dialog;
