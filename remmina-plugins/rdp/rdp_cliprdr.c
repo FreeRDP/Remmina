@@ -718,9 +718,11 @@ int remmina_rdp_cliprdr_mt_send_format_list(RemminaProtocolWidget* gp, RemminaPl
 		formatList.numFormats = srvcount;
 	}
 
-
 	formatList.msgFlags = CB_RESPONSE_OK;
 	clipboard->context->ClientFormatList(clipboard->context, &formatList);
+
+	if (formats)
+		free(formats);
 
 	return 1;
 }
