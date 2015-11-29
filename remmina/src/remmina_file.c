@@ -343,7 +343,6 @@ static void remmina_file_store_group(RemminaFile *remminafile, GKeyFile *gkeyfil
 	gboolean encrypted;
 	RemminaSettingGroup g;
 
-
 	plugin = remmina_plugin_manager_get_secret_plugin();
 	g_hash_table_iter_init(&iter, remminafile->settings);
 	while (g_hash_table_iter_next(&iter, (gpointer*) &key, (gpointer*) &value))
