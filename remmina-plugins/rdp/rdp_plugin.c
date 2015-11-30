@@ -137,9 +137,17 @@ int rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 
 	LOCK_BUFFER(TRUE)
 	g_async_queue_push(rfi->ui_queue, ui);
-	if (!rfi->ui_handler)
-		rfi->ui_handler = IDLE_ADD((GSourceFunc) remmina_rdp_event_queue_ui, gp);
-	UNLOCK_BUFFER(TRUE)
+
+	if (remmina_plugin_service->is_main_thread()) {
+		/* in main thread we call directly */
+		UNLOCK_BUFFER(TRUE)
+		remmina_rdp_event_queue_ui(gp);
+	} else {
+		/* in a subthread, we schedule the call, if not already scheduled */
+		if (!rfi->ui_handler)
+			rfi->ui_handler = IDLE_ADD((GSourceFunc) remmina_rdp_event_queue_ui, gp);
+		UNLOCK_BUFFER(TRUE)
+	}
 
 	if (ui_sync_save) {
 		/* Wait for main thread function completion before returning */
@@ -1162,9 +1170,7 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 
 	}
 
-	pthread_mutex_destroy(&rfi->mutex);
 
-	remmina_rdp_event_uninit(gp);
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 
 	if (instance)
@@ -1177,29 +1183,47 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 		}
 	}
 
-	remmina_rdp_clipboard_free(rfi);
+	if (rfi->hdc) {
+		gdi_DeleteDC(rfi->hdc);
+		rfi->hdc = NULL;
+	}
 
+	remmina_rdp_clipboard_free(rfi);
 	if (rfi->rfx_context)
 	{
 		rfx_context_free(rfi->rfx_context);
 		rfi->rfx_context = NULL;
 	}
 
+	/* We allocated CertificateName with strdup, so we must free it */
+	if (rfi->settings->CertificateName)
+		free(rfi->settings->CertificateName);
+
 	if (instance)
 	{
-		/* Remove instance->context from gp object data to avoid double free */
-		g_object_steal_data(G_OBJECT(gp), "plugin-data");
-
+		gdi_free(instance);
+		cache_free(instance->context->cache);
+		instance->context->cache = NULL;
+		freerdp_clrconv_free(rfi->clrconv);
+		rfi->clrconv = NULL;
 		if (instance->context->channels) {
 			freerdp_channels_free(instance->context->channels);
 			instance->context->channels = NULL;
 		}
+	}
 
+	pthread_mutex_destroy(&rfi->mutex);
+
+	/* Destroy event queue. Pending async events will be discarded. Should we flush it ? */
+	remmina_rdp_event_uninit(gp);
+
+	if (instance) {
 		freerdp_context_free(instance); /* context is rfContext* rfi */
 		freerdp_free(instance); /* This implicitly frees instance->context and rfi is no longer valid */
-		g_object_set_data(G_OBJECT(gp), "plugin-data", NULL);	/* Removes rfi */
-
 	}
+
+	/* Remove instance->context from gp object data to avoid double free */
+	g_object_steal_data(G_OBJECT(gp), "plugin-data");
 
 	return FALSE;
 }
