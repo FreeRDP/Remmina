@@ -138,7 +138,7 @@ void remmina_survey_start(GtkWindow *parent)
 
 	WebKitSettings *web_view_settings
 		= webkit_settings_new_with_settings ("enable-caret-browsing", TRUE,
-						     "enable-fullscreen", TRUE,
+						     "enable-fullscreen", FALSE,
 						     "enable-java", FALSE,
 						     "enable-media-stream", FALSE,
 						     "enable-plugins", FALSE,
