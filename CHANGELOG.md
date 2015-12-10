@@ -1,5 +1,38 @@
 # Change Log
 
+## [1.2.0-rcgit.6](https://github.com/FreeRDP/remmina/tree/1.2.0-rcgit.6) (2015-12-10)
+[Full Changelog](https://github.com/FreeRDP/remmina/compare/1.2.0-rcgit.5...1.2.0-rcgit.6)
+
+**Implemented enhancements:**
+
+- Migrate from libgnome-keyring to libsecret [\#652](https://github.com/FreeRDP/Remmina/issues/652)
+- Move ~/.remmina to a proper place \(follow XDG standards\) [\#197](https://github.com/FreeRDP/Remmina/issues/197)
+- X2goplugin refactoring closes \#603 [\#655](https://github.com/FreeRDP/Remmina/pull/655) ([antenore](https://github.com/antenore))
+
+**Closed issues:**
+
+- Remmina windows open behind other desktop windows [\#691](https://github.com/FreeRDP/Remmina/issues/691)
+- Indicator menu gone? [\#688](https://github.com/FreeRDP/Remmina/issues/688)
+- fatal error: gst/gstconfig.h: No such file or directory [\#678](https://github.com/FreeRDP/Remmina/issues/678)
+- remmina in gnome wayland \_XInternAtom\(\): remmina killed by SIGSEGV [\#677](https://github.com/FreeRDP/Remmina/issues/677)
+- remmina\_rdp\_cliprdr\_monitor\_ready\(\): remmina killed by SIGSEGV [\#676](https://github.com/FreeRDP/Remmina/issues/676)
+- remmina\_rdp\_event\_release\_key\(\): remmina killed by SIGSEGV [\#675](https://github.com/FreeRDP/Remmina/issues/675)
+- remmina: remmina\_rdp\_event\_update\_scale\_factor\(\): remmina killed by SIGSEGV [\#674](https://github.com/FreeRDP/Remmina/issues/674)
+- remmina: ringbuffer\_destroy\(\): remmina killed by SIGSEGV [\#673](https://github.com/FreeRDP/Remmina/issues/673)
+- remmina: remmina\_connection\_holder\_toolbar\_preferences\_popdown\(\): remmina killed by SIGSEGV [\#672](https://github.com/FreeRDP/Remmina/issues/672)
+- remmina: \_g\_log\_abort\(\): remmina killed by SIGTRAP [\#671](https://github.com/FreeRDP/Remmina/issues/671)
+- Concurrent  remote desktop sessions on Win XP Pro [\#670](https://github.com/FreeRDP/Remmina/issues/670)
+- Optimize screen space usage [\#661](https://github.com/FreeRDP/Remmina/issues/661)
+- clipboard not synchonizing between RDP sessions and host [\#556](https://github.com/FreeRDP/Remmina/issues/556)
+- FTBS 1.0.0 :  ld - undefined reference to symbol 'g\_module\_symbol' -- links.txt missing necessary libraries [\#182](https://github.com/FreeRDP/Remmina/issues/182)
+
+**Merged pull requests:**
+
+- Avoiding conditional directives that break statements [\#698](https://github.com/FreeRDP/Remmina/pull/698) ([RomeroMalaquias](https://github.com/RomeroMalaquias))
+- Fix memory leaks in RDP plugin, fix window width in remmina\_connection\_window [\#690](https://github.com/FreeRDP/Remmina/pull/690) ([giox069](https://github.com/giox069))
+- Disable wayland backend  [\#680](https://github.com/FreeRDP/Remmina/pull/680) ([antenore](https://github.com/antenore))
+- Migrate from libgnome-keyring to libsecret \#652 - Inital import [\#653](https://github.com/FreeRDP/Remmina/pull/653) ([antenore](https://github.com/antenore))
+
 ## [1.2.0-rcgit.5](https://github.com/FreeRDP/remmina/tree/1.2.0-rcgit.5) (2015-11-02)
 [Full Changelog](https://github.com/FreeRDP/remmina/compare/v1.2.0-rcgit.4...1.2.0-rcgit.5)
 
