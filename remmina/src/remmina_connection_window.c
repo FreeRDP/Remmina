@@ -1738,6 +1738,7 @@ static void remmina_connection_holder_update_toolbar(RemminaConnectionHolder* cn
 	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
 	GtkToolItem* toolitem;
 	gboolean bval;
+	gboolean test_floating_toolbar;
 
 	remmina_connection_holder_update_toolbar_autofit_button(cnnhld);
 
@@ -1771,10 +1772,11 @@ static void remmina_connection_holder_update_toolbar(RemminaConnectionHolder* cn
 	gtk_window_set_title(GTK_WINDOW(cnnhld->cnnwin), remmina_file_get_string(cnnobj->remmina_file, "name"));
 
 #if FLOATING_TOOLBAR_WIDGET
-	if (priv->floating_toolbar_widget)
+	test_floating_toolbar = (priv->floating_toolbar_widget);
 #else
-	if (priv->floating_toolbar_window)
+	test_floating_toolbar = (priv->floating_toolbar_window);
 #endif
+	if (test_floating_toolbar)
 	{
 		gtk_label_set_text(GTK_LABEL(priv->floating_toolbar_label),
 		                   remmina_file_get_string(cnnobj->remmina_file, "name"));
