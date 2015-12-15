@@ -384,9 +384,6 @@ void remmina_survey_on_startup(GtkWindow *parent)
 		remmina_pref_save();
 	}
 
-	gtk_window_set_transient_for(GTK_WINDOW(dialog), parent);
-	gtk_window_set_destroy_with_parent(GTK_WINDOW(dialog), TRUE);
-
 	gtk_widget_destroy(dialog);
 }
 
