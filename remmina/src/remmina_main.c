@@ -440,6 +440,7 @@ static void remmina_main_load_files(gboolean refresh)
 	gint items_count;
 	gchar buf[200];
 	guint context_id;
+	static gboolean remmina_survey = TRUE;
 
 	if (refresh)
 	{
@@ -496,6 +497,12 @@ static void remmina_main_load_files(gboolean refresh)
 	context_id = gtk_statusbar_get_context_id(remminamain->statusbar_main, "status");
 	gtk_statusbar_pop(remminamain->statusbar_main, context_id);
 	gtk_statusbar_push(remminamain->statusbar_main, context_id, buf);
+	/* Remmina survey reminder popup */
+	if ( items_count > 5 && remmina_survey )
+	{
+		remmina_survey_on_startup(remminamain->window);
+		remmina_survey = FALSE;
+	}
 }
 
 void remmina_main_on_action_connection_connect(GtkAction *action, gpointer user_data)
