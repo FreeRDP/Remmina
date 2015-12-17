@@ -515,42 +515,47 @@ static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 
 	switch (colordepth)
 	{
-		case 24:
-			cl->format.bitsPerPixel = 32;
-			cl->format.redMax = 0xff;
-			cl->format.greenMax = 0xff;
-			cl->format.blueMax = 0xff;
-			cl->format.redShift = 16;
-			cl->format.greenShift = 8;
-			cl->format.blueShift = 0;
+		case 8:
+			cl->format.depth        = 8;
+			cl->format.bitsPerPixel = 8;
+			cl->format.blueMax      = 3;
+			cl->format.blueShift    = 6;
+			cl->format.greenMax     = 7;
+			cl->format.greenShift   = 3;
+			cl->format.redMax       = 7;
+			cl->format.redShift     = 0;
 			break;
 		case 16:
+			cl->format.depth        = 16;
 			cl->format.bitsPerPixel = 16;
-			cl->format.redMax = 0x1f;
-			cl->format.greenMax = 0x3f;
-			cl->format.blueMax = 0x1f;
-			cl->format.redShift = 11;
-			cl->format.greenShift = 5;
-			cl->format.blueShift = 0;
+			cl->format.blueMax      = 0x1f;
+			cl->format.blueShift    = 0;
+			cl->format.greenMax     = 0x3f;
+			cl->format.greenShift   = 5;
+			cl->format.redMax       = 0x1f;
+			cl->format.redShift     = 11;
 			break;
 		case 15:
+			cl->format.depth        = 15;
 			cl->format.bitsPerPixel = 16;
-			cl->format.redMax = 0x1f;
-			cl->format.greenMax = 0x1f;
-			cl->format.blueMax = 0x1f;
-			cl->format.redShift = 10;
-			cl->format.greenShift = 5;
-			cl->format.blueShift = 0;
+			cl->format.blueMax      = 0x1f;
+			cl->format.blueShift    = 0;
+			cl->format.greenMax     = 0x1f;
+			cl->format.greenShift   = 5;
+			cl->format.redMax       = 0x1f;
+			cl->format.redShift     = 10;
 			break;
-		case 8:
+		case 24:
+		case 32:
 		default:
-			cl->format.bitsPerPixel = 8;
-			cl->format.redMax = 7;
-			cl->format.greenMax = 7;
-			cl->format.blueMax = 3;
-			cl->format.redShift = 0;
-			cl->format.greenShift = 3;
-			cl->format.blueShift = 6;
+			cl->format.depth        = 24;
+			cl->format.bitsPerPixel = 32;
+			cl->format.blueShift    = 0;
+			cl->format.redShift     = 16;
+			cl->format.greenShift   = 8;
+			cl->format.blueMax      = 0xff;
+			cl->format.redMax       = 0xff;
+			cl->format.greenMax     = 0xff;
 			break;
 	}
 }
@@ -1306,7 +1311,6 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 				remmina_plugin_service->file_get_int(remminafile, "showcursor", FALSE) ? FALSE : TRUE);
 
 		remmina_plugin_vnc_update_quality(cl, remmina_plugin_service->file_get_int(remminafile, "quality", 0));
-		/* Issue #699 - With color depth 8 vnc exit as JPEG does not support 8bpp mode */
 		remmina_plugin_vnc_update_colordepth(cl, remmina_plugin_service->file_get_int(remminafile, "colordepth", 15));
 		SetFormatAndEncodings(cl);
 
@@ -1827,6 +1831,8 @@ static void remmina_plugin_vnc_call_feature(RemminaProtocolWidget *gp, const Rem
 		case REMMINA_PLUGIN_VNC_FEATURE_PREF_QUALITY:
 			remmina_plugin_vnc_update_quality((rfbClient*) (gpdata->client),
 					remmina_plugin_service->file_get_int(remminafile, "quality", 0));
+			remmina_plugin_vnc_update_colordepth((rfbClient*) (gpdata->client),
+					remmina_plugin_service->file_get_int(remminafile, "colordepth", 15));
 			SetFormatAndEncodings((rfbClient*) (gpdata->client));
 			break;
 		case REMMINA_PLUGIN_VNC_FEATURE_PREF_VIEWONLY:
@@ -1946,11 +1952,11 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 /* Array of key/value pairs for color depths */
 static gpointer colordepth_list[] =
 {
-	/* Issue #699 - With color depth 8 vnc exit as JPEG does not support 8bpp mode */
-	//"8", N_("256 colors"),
-	"15", N_("High color (15 bit)"),
-	"16", N_("High color (16 bit)"),
-	"24", N_("True color (24 bit)"),
+	 "8", N_("256 colors (8 bpp)"),
+	"15", N_("High color (15 bpp)"),
+	"16", N_("High color (16 bpp)"),
+	"24", N_("True color (24 bpp)"),
+	"32", N_("True color (32 bpp)"),
 	NULL
 };
 
