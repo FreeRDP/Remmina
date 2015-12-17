@@ -1311,7 +1311,6 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 				remmina_plugin_service->file_get_int(remminafile, "showcursor", FALSE) ? FALSE : TRUE);
 
 		remmina_plugin_vnc_update_quality(cl, remmina_plugin_service->file_get_int(remminafile, "quality", 0));
-		/* Issue #699 - With color depth 8 vnc exit as JPEG does not support 8bpp mode */
 		remmina_plugin_vnc_update_colordepth(cl, remmina_plugin_service->file_get_int(remminafile, "colordepth", 15));
 		SetFormatAndEncodings(cl);
 
@@ -1832,7 +1831,6 @@ static void remmina_plugin_vnc_call_feature(RemminaProtocolWidget *gp, const Rem
 		case REMMINA_PLUGIN_VNC_FEATURE_PREF_QUALITY:
 			remmina_plugin_vnc_update_quality((rfbClient*) (gpdata->client),
 					remmina_plugin_service->file_get_int(remminafile, "quality", 0));
-			/* Issue #699 - With color depth 8 vnc exit as JPEG does not support 8bpp mode */
 			remmina_plugin_vnc_update_colordepth((rfbClient*) (gpdata->client),
 					remmina_plugin_service->file_get_int(remminafile, "colordepth", 15));
 			SetFormatAndEncodings((rfbClient*) (gpdata->client));
@@ -1954,7 +1952,6 @@ static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 /* Array of key/value pairs for color depths */
 static gpointer colordepth_list[] =
 {
-	/* Issue #699 - With color depth 8 vnc exit as JPEG does not support 8bpp mode */
 	 "8", N_("256 colors (8 bpp)"),
 	"15", N_("High color (15 bpp)"),
 	"16", N_("High color (16 bpp)"),
