@@ -1,5 +1,23 @@
 # Change Log
 
+## [1.2.0-rcgit.7](https://github.com/FreeRDP/remmina/tree/1.2.0-rcgit.7) (2015-12-17)
+[Full Changelog](https://github.com/FreeRDP/remmina/compare/1.2.0-rcgit.6...1.2.0-rcgit.7)
+
+**Implemented enhancements:**
+
+- Icons not shown at the correct size in the main window's listview/treeview [\#701](https://github.com/FreeRDP/Remmina/issues/701)
+- Reduce main window icons size fixes \#701 [\#702](https://github.com/FreeRDP/Remmina/pull/702) ([antenore](https://github.com/antenore))
+
+**Closed issues:**
+
+- VNC window immediately closes after connection attempt [\#699](https://github.com/FreeRDP/Remmina/issues/699)
+
+**Merged pull requests:**
+
+- Moved to markdown and updated text. [\#705](https://github.com/FreeRDP/Remmina/pull/705) ([antenore](https://github.com/antenore))
+- Vnc exit with 8bpp issue699 [\#704](https://github.com/FreeRDP/Remmina/pull/704) ([antenore](https://github.com/antenore))
+- Temporay fixes \#699 - Set default color depth to 15 \(high colors\) [\#703](https://github.com/FreeRDP/Remmina/pull/703) ([antenore](https://github.com/antenore))
+
 ## [1.2.0-rcgit.6](https://github.com/FreeRDP/remmina/tree/1.2.0-rcgit.6) (2015-12-10)
 [Full Changelog](https://github.com/FreeRDP/remmina/compare/1.2.0-rcgit.5...1.2.0-rcgit.6)
 
