@@ -441,6 +441,6 @@ void remmina_survey_start(GtkWindow *parent)
 	gtk_container_add(GTK_CONTAINER(remmina_survey->scrolledwindow), GTK_WIDGET(web_view));
 	gtk_widget_show(GTK_WIDGET(web_view));
 	g_snprintf(localurl, PATH_MAX, "%s%s/%s", "file://", dirname, "local_remmina_form.html");
-	webkit_web_view_load_uri(web_view, "file:///home/tmow/.remmina/local_remmina_form.html");
+	webkit_web_view_load_uri(web_view, localurl);
 	g_object_unref(G_OBJECT(remmina_survey->builder));
 }
