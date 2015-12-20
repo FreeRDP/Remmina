@@ -105,6 +105,8 @@ set(REMMINA_SRCS
 	src/remmina_widget_pool.h
 	src/remmina_external_tools.c
 	src/remmina_external_tools.h
+	src/remmina_sysinfo.h
+	src/remmina_sysinfo.c
 	)
 
 add_executable(remmina ${REMMINA_SRCS})
