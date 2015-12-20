@@ -46,7 +46,31 @@
 #include "remmina_about.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_exec.h"
+#include "remmina_icon.h"
 #include "remmina/remmina_trace_calls.h"
+
+
+static gboolean cb_closewidget(GtkWidget *widget, gpointer data)
+{
+	gtk_widget_destroy(widget);
+	return TRUE;
+}
+
+void remmina_exec_exitremmina()
+{
+	TRACE_CALL("remmina_exec_exitremmina");
+
+	int n;
+
+	/* Destroy all widgets, main window included */
+	n = remmina_widget_pool_foreach(cb_closewidget, NULL);
+
+	/* Remove systray menu */
+	remmina_icon_destroy();
+
+	/* Exit from Remmina */
+	gtk_main_quit();
+}
 
 void remmina_exec_command(RemminaCommandType command, const gchar* data)
 {
@@ -134,6 +158,10 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 			gtk_widget_show(widget);
 			remmina_widget_pool_register(widget);
 		}
+		break;
+
+	case REMMINA_COMMAND_EXIT:
+		remmina_exec_exitremmina();
 		break;
 
 	default:
