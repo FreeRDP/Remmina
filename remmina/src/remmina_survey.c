@@ -232,17 +232,21 @@ static gchar *remmina_survey_files_iter_setting()
 			return FALSE;
 		count_file++;
 		for (i = 0; i < count_name; i++) {
-			name = g_key_file_get_string(gkeyfile,
-			                             "remmina",
-			                             g_strdup_printf("%s", setting_name[i]),
-			                             NULL);
+			if (setting_name[i])
+				name = g_key_file_get_string(gkeyfile,
+							     "remmina",
+							     g_strdup_printf("%s\0", setting_name[i]),
+							     NULL);
 			/* Some settings exists only for certain plugin */
-			if (!name)
-				continue;
-			remmina_survey_return_stat_from_setting(hash_table,
-			                                 g_strdup_printf("%s_%s",
-			                                                 setting_name[i],
-			                                                 name));
+			//g_print ("iter: %d - setting = %s and name = %s \n", i, setting_name[i], name);
+			if (name && !(*name == 0)){
+				remmina_survey_return_stat_from_setting(hash_table,
+						g_strdup_printf("%s_%s",
+							setting_name[i],
+							name));
+				//g_print ("iter: %d - hastable = %s_%s\n", i, setting_name[i], name);
+				g_free(name);
+			}
 		}
 	}
 	ret = g_strjoin(NULL,
@@ -259,7 +263,6 @@ static gchar *remmina_survey_files_iter_setting()
 		//g_print("%s\n%s: %d\n", ret, (gchar *)key, GPOINTER_TO_INT(value));
 	}
 	g_key_file_free(gkeyfile);
-	g_free(name);
 	g_hash_table_destroy(hash_table);
 	g_dir_close(dir);
 	return ret;
