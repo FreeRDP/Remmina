@@ -282,17 +282,11 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 	s = g_strdup_printf(_("Save %s"), label);
 	save_password_check = gtk_check_button_new_with_label(s);
 	g_free(s);
-	if (allow_save)
-	{
-		gtk_widget_show(save_password_check);
-		gtk_grid_attach(GTK_GRID(grid), save_password_check, 0, 1, 2, 1);
-		if (dialog->save_password)
-			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(save_password_check), TRUE);
-	}
-	else
-	{
-		gtk_widget_set_sensitive(save_password_check, FALSE);
-	}
+	gtk_widget_show(save_password_check);
+	gtk_grid_attach(GTK_GRID(grid), save_password_check, 0, 1, 2, 1);
+	if (dialog->save_password)
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(save_password_check), TRUE);
+	gtk_widget_set_sensitive(save_password_check, allow_save);
 
 	/* Pack it into the dialog */
 	gtk_box_pack_start(GTK_BOX(dialog->content_vbox), grid, TRUE, TRUE, 4);
@@ -312,7 +306,7 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 		dialog->save_password = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(save_password_check));
 	}
 
-	gtk_container_remove(GTK_CONTAINER(dialog->content_vbox), grid);
+	gtk_widget_destroy(grid);
 
 	remmina_init_dialog_connecting(dialog);
 
@@ -451,7 +445,7 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 			dialog->domain = g_strdup(gtk_entry_get_text(GTK_ENTRY(domain_entry)));
 	}
 
-	gtk_container_remove(GTK_CONTAINER(dialog->content_vbox), grid);
+	gtk_widget_destroy(grid);
 
 	remmina_init_dialog_connecting(dialog);
 
@@ -557,7 +551,7 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 
 	}
 
-	gtk_container_remove(GTK_CONTAINER(dialog->content_vbox), grid);
+	gtk_widget_destroy(grid);
 
 	return status;
 }
@@ -674,7 +668,7 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 
 	}
 
-	gtk_container_remove(GTK_CONTAINER(dialog->content_vbox), grid);
+	gtk_widget_destroy(grid);
 
 	return status;
 }
@@ -776,7 +770,7 @@ gint remmina_init_dialog_authx509(RemminaInitDialog *dialog, const gchar *cacert
 		dialog->clientkey = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(clientkey_button));
 	}
 
-	gtk_container_remove(GTK_CONTAINER(dialog->content_vbox), grid);
+	gtk_widget_destroy(grid);
 
 	remmina_init_dialog_connecting(dialog);
 
@@ -848,7 +842,7 @@ gint remmina_init_dialog_serverkey_confirm(RemminaInitDialog *dialog, const gcha
 
 	/* Now run it */
 	ret = gtk_dialog_run(GTK_DIALOG(dialog));
-	gtk_container_remove(GTK_CONTAINER(dialog->content_vbox), vbox);
+	gtk_widget_destroy(vbox);
 	remmina_init_dialog_connecting(dialog);
 
 	return ret;

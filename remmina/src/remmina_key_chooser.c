@@ -85,7 +85,7 @@ gchar* remmina_key_chooser_get_value(guint keyval, guint state)
 	TRACE_CALL("remmina_key_chooser_get_value");
 
 	if (!keyval)
-		return KEY_CHOOSER_NONE;
+		return g_strdup(KEY_CHOOSER_NONE);
 
 	return g_strdup_printf("%s%s%s%s%s%s%s",
 	                       state & GDK_SHIFT_MASK ? KEY_MODIFIER_SHIFT : "",

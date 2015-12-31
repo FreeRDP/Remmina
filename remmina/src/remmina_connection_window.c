@@ -2592,6 +2592,7 @@ static void remmina_connection_holder_create_scrolled(RemminaConnectionHolder* c
 	GtkWidget* grid;
 	GtkWidget* toolbar;
 	GtkWidget* notebook;
+	GList *chain;
 	gchar* tag;
 	int newwin_width, newwin_height;
 
@@ -2640,7 +2641,9 @@ static void remmina_connection_holder_create_scrolled(RemminaConnectionHolder* c
 
 	gtk_container_add(GTK_CONTAINER(window), grid);
 
-	gtk_container_set_focus_chain(GTK_CONTAINER(grid), g_list_append(NULL, notebook));
+	chain = g_list_append(NULL, notebook);
+	gtk_container_set_focus_chain(GTK_CONTAINER(grid), chain);
+	g_list_free(chain);
 
 	/* Add drag capabilities to the toolbar */
 	gtk_drag_source_set(GTK_WIDGET(toolbar), GDK_BUTTON1_MASK,

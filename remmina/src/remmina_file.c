@@ -148,11 +148,16 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	old = g_dir_open(dirname, 0, NULL);
 	if (old == NULL)
 		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_data_dir(), remmina);
+	g_dir_close(old);
+
 	/* If the XDG directories exist, use them. */
 	dir = g_dir_open(dirname, 0, NULL);
 	if (dir != NULL)
 		remminafile->filename = g_strdup_printf("%s/%li%03li.remmina", dirname, gtime.tv_sec,
 		                                        gtime.tv_usec / 1000);
+	else
+		remminafile->filename = NULL;
+	g_dir_close(dir);
 }
 
 void remmina_file_set_filename(RemminaFile *remminafile, const gchar *filename)

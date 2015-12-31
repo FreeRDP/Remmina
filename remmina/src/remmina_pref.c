@@ -164,6 +164,7 @@ static void remmina_pref_init_keymap(void)
 		gptr++;
 	}
 	g_strfreev(groups);
+	g_key_file_free(gkeyfile);
 }
 
 void remmina_pref_init(void)
@@ -178,6 +179,8 @@ void remmina_pref_init(void)
 	if (old == NULL)
 		/*  If the XDG directories exist, use them. */
 		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_config_dir(), remmina);
+	else
+		g_dir_close(old);
 	g_mkdir_with_parents(dirname, 0700);
 	remmina_pref_file = g_strdup_printf("%s/remmina.pref", dirname);
 	remmina_keymap_file = g_strdup_printf("%s/remmina.keymap", dirname);

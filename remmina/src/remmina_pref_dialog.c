@@ -61,7 +61,11 @@ void remmina_pref_dialog_on_key_chooser(GtkWidget *widget, gpointer user_data)
 
 	arguments = remmina_key_chooser_new(GTK_WINDOW(remmina_pref_dialog->dialog), FALSE);
 	if (arguments->response != GTK_RESPONSE_CANCEL && arguments->response != GTK_RESPONSE_DELETE_EVENT)
-		gtk_button_set_label(GTK_BUTTON(widget), remmina_key_chooser_get_value(arguments->keyval, arguments->state));
+	{
+		gchar *val = remmina_key_chooser_get_value(arguments->keyval, arguments->state);
+		gtk_button_set_label(GTK_BUTTON(widget), val);
+		g_free(val);
+	}
 	g_free(arguments);
 }
 
@@ -256,6 +260,16 @@ void remmina_pref_dialog_disable_tray_icon_on_toggled(GtkWidget *widget, Remmina
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->checkbutton_applet_start_in_tray), b);
 }
 
+/* Helper function for remmina_pref_dialog_init() */
+static void remmina_pref_dialog_set_button_label(GtkButton *button, guint keyval)
+{
+	gchar *val;
+
+	val = remmina_key_chooser_get_value(keyval, 0);
+	gtk_button_set_label(button, val);
+	g_free(val);
+}
+
 /* Remmina preferences initialization */
 static void remmina_pref_dialog_init(void)
 {
@@ -284,16 +298,16 @@ static void remmina_pref_dialog_init(void)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_start_in_tray), remmina_icon_is_autostart());
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->checkbutton_applet_start_in_tray), !remmina_pref.disable_tray_icon);
 
-	gtk_button_set_label(remmina_pref_dialog->button_keyboard_host_key, remmina_key_chooser_get_value(remmina_pref.hostkey, 0));
-	gtk_button_set_label(remmina_pref_dialog->button_keyboard_fullscreen, remmina_key_chooser_get_value(remmina_pref.shortcutkey_fullscreen, 0));
-	gtk_button_set_label(remmina_pref_dialog->button_keyboard_auto_fit, remmina_key_chooser_get_value(remmina_pref.shortcutkey_autofit, 0));
-	gtk_button_set_label(remmina_pref_dialog->button_keyboard_switch_tab_left, remmina_key_chooser_get_value(remmina_pref.shortcutkey_prevtab, 0));
-	gtk_button_set_label(remmina_pref_dialog->button_keyboard_switch_tab_right, remmina_key_chooser_get_value(remmina_pref.shortcutkey_nexttab, 0));
-	gtk_button_set_label(remmina_pref_dialog->button_keyboard_scaled, remmina_key_chooser_get_value(remmina_pref.shortcutkey_scale, 0));
-	gtk_button_set_label(remmina_pref_dialog->button_keyboard_grab_keyboard, remmina_key_chooser_get_value(remmina_pref.shortcutkey_grab, 0));
-	gtk_button_set_label(remmina_pref_dialog->button_keyboard_minimize, remmina_key_chooser_get_value(remmina_pref.shortcutkey_minimize, 0));
-	gtk_button_set_label(remmina_pref_dialog->button_keyboard_disconnect, remmina_key_chooser_get_value(remmina_pref.shortcutkey_disconnect, 0));
-	gtk_button_set_label(remmina_pref_dialog->button_keyboard_toolbar, remmina_key_chooser_get_value(remmina_pref.shortcutkey_toolbar, 0));
+	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_host_key, remmina_pref.hostkey);
+	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_fullscreen, remmina_pref.shortcutkey_fullscreen);
+	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_auto_fit, remmina_pref.shortcutkey_autofit);
+	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_switch_tab_left, remmina_pref.shortcutkey_prevtab);
+	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_switch_tab_right, remmina_pref.shortcutkey_nexttab);
+	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_scaled, remmina_pref.shortcutkey_scale);
+	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_grab_keyboard, remmina_pref.shortcutkey_grab);
+	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_minimize, remmina_pref.shortcutkey_minimize);
+	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_disconnect, remmina_pref.shortcutkey_disconnect);
+	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_toolbar, remmina_pref.shortcutkey_toolbar);
 
 	if (!(remmina_pref.vte_font && remmina_pref.vte_font[0]))
 	{
@@ -341,8 +355,8 @@ static void remmina_pref_dialog_init(void)
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_options_ssh_loglevel, remmina_pref.ssh_loglevel);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_options_ssh_parseconfig), remmina_pref.ssh_parseconfig);
 
-	gtk_button_set_label(remmina_pref_dialog->button_keyboard_copy, remmina_key_chooser_get_value(remmina_pref.vte_shortcutkey_copy, 0));
-	gtk_button_set_label(remmina_pref_dialog->button_keyboard_paste, remmina_key_chooser_get_value(remmina_pref.vte_shortcutkey_paste, 0));
+	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_copy, remmina_pref.vte_shortcutkey_copy);
+	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_paste, remmina_pref.vte_shortcutkey_paste);
 
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_PREF, remmina_pref_dialog_add_pref_plugin, remmina_pref_dialog->dialog);
 
