@@ -216,6 +216,7 @@ static gchar *remmina_survey_files_iter_setting()
 		return FALSE;
 	gkeyfile = g_key_file_new();
 	hash_table = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, NULL);
+
 	while ((dir_entry = g_dir_read_name(dir)) != NULL) {
 		/* Olny *.remmina files */
 		if (!g_str_has_suffix(dir_entry, ".remmina\0"))
@@ -235,7 +236,7 @@ static gchar *remmina_survey_files_iter_setting()
 			if (setting_name[i])
 				name = g_key_file_get_string(gkeyfile,
 							     "remmina",
-							     g_strdup_printf("%s\0", setting_name[i]),
+							     g_strdup_printf("%s", setting_name[i]),
 							     NULL);
 			/* Some settings exists only for certain plugin */
 			//g_print ("iter: %d - setting = %s and name = %s \n", i, setting_name[i], name);
