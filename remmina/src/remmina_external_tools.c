@@ -41,28 +41,22 @@
 #include "remmina_external_tools.h"
 #include "remmina/remmina_trace_calls.h"
 
-typedef struct _RemminaExternalTools
-{
-	gchar remminafilename[MAX_PATH_LEN];
-	gchar scriptfilename[MAX_PATH_LEN];
-	gchar scriptshortname[MAX_PATH_LEN];
-} RemminaExternalTools;
-
 static gboolean remmina_external_tools_launcher(const gchar* filename, const gchar* scriptname, const gchar* shortname);
 
-void view_popup_menu_onDoSomething (GtkWidget *menuitem, gpointer userdata)
+static void view_popup_menu_onDoSomething (GtkWidget *menuitem, gpointer userdata)
 {
 	TRACE_CALL("view_popup_menu_onDoSomething");
-	/* we passed the view as userdata when we connected the signal */
-	RemminaExternalTools *ret = (RemminaExternalTools *)userdata;
-	remmina_external_tools_launcher(ret->remminafilename, ret->scriptfilename, ret->scriptshortname);
+	gchar *remminafilename = g_object_get_data(G_OBJECT(menuitem), "remminafilename");
+	gchar *scriptfilename = g_object_get_data(G_OBJECT(menuitem), "scriptfilename");
+	gchar *scriptshortname = g_object_get_data(G_OBJECT(menuitem), "scriptshortname");
+
+	remmina_external_tools_launcher(remminafilename, scriptfilename, scriptshortname);
 }
 
 gboolean remmina_external_tools_from_filename(RemminaMain *remminamain, gchar* remminafilename)
 {
 	TRACE_CALL("remmina_external_tools_from_filename");
 	GtkWidget *menu, *menuitem;
-	menu = gtk_menu_new();
 	gchar dirname[MAX_PATH_LEN];
 	gchar filename[MAX_PATH_LEN];
 	GDir* dir;
@@ -74,19 +68,19 @@ gboolean remmina_external_tools_from_filename(RemminaMain *remminamain, gchar* r
 	if (dir == NULL)
 		return FALSE;
 
+	menu = gtk_menu_new();
+
 	while ((name = g_dir_read_name(dir)) != NULL)
 	{
 		if (!g_str_has_prefix(name, "remmina_"))
 			continue;
 		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", dirname, name);
-		RemminaExternalTools *ret;
-		ret = (RemminaExternalTools *)malloc(sizeof(RemminaExternalTools));
-		strcpy(ret->remminafilename,remminafilename);
-		strcpy(ret->scriptfilename,filename);
-		strcpy(ret->scriptshortname,name);
-		menuitem = gtk_menu_item_new_with_label(strndup(name + 8, strlen(name) -8));
-		g_signal_connect(menuitem, "activate", (GCallback) view_popup_menu_onDoSomething, ret);
 
+		menuitem = gtk_menu_item_new_with_label(name + 8);
+		g_object_set_data_full(G_OBJECT(menuitem), "remminafilename", g_strdup(remminafilename), g_free);
+		g_object_set_data_full(G_OBJECT(menuitem), "scriptfilename", g_strdup(filename), g_free);
+		g_object_set_data_full(G_OBJECT(menuitem), "scriptshortname", g_strdup(name), g_free);
+		g_signal_connect(menuitem, "activate", (GCallback) view_popup_menu_onDoSomething, NULL);
 		gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	}
 	g_dir_close(dir);
