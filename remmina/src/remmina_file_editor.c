@@ -968,7 +968,7 @@ static void remmina_file_editor_protocol_combo_on_changed(GtkComboBox* combo, Re
 
 	if (priv->config_container)
 	{
-		gtk_container_remove(GTK_CONTAINER(priv->config_box), priv->config_container);
+		gtk_widget_destroy(priv->config_container);
 		priv->config_container = NULL;
 	}
 

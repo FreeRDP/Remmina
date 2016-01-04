@@ -54,6 +54,9 @@ void remmina_file_manager_init(void)
 	if (old == NULL)
 		/* If the XDG directories exist, use them. */
 		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_data_dir(), remmina);
+	else
+		g_dir_close(old);
+
 	g_mkdir_with_parents(dirname, 0700);
 }
 
@@ -72,9 +75,12 @@ gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 	g_snprintf(dirname, sizeof(dirname), "%s/.%s", g_get_home_dir(), remmina);
 	old = g_dir_open(dirname, 0, NULL);
 	if (old == NULL)
+	{
 		/* If the XDG directories exist, use them. */
 		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_data_dir(), remmina);
-	dir = g_dir_open(dirname, 0, NULL);
+		dir = g_dir_open(dirname, 0, NULL);
+	} else
+		dir = old;
 
 	if (dir)
 	{
@@ -115,9 +121,12 @@ gchar* remmina_file_manager_get_groups(void)
 	g_snprintf(dirname, sizeof(dirname), "%s/.%s", g_get_home_dir(), remmina);
 	old = g_dir_open(dirname, 0, NULL);
 	if (old == NULL)
+	{
 		/* If the XDG directories exist, use them. */
 		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_data_dir(), remmina);
-	dir = g_dir_open(dirname, 0, NULL);
+		dir = g_dir_open(dirname, 0, NULL);
+	} else
+		dir = old;
 
 	if (dir == NULL)
 		return 0;
@@ -223,9 +232,13 @@ GNode* remmina_file_manager_get_group_tree(void)
 	g_snprintf(dirname, sizeof(dirname), "%s/.%s", g_get_home_dir(), remmina);
 	old = g_dir_open(dirname, 0, NULL);
 	if (old == NULL)
+	{
 		/* If the XDG directories exist, use them. */
 		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_data_dir(), remmina);
-	dir = g_dir_open(dirname, 0, NULL);
+		dir = g_dir_open(dirname, 0, NULL);
+	} else
+		dir = old;
+
 	if (dir == NULL)
 		return root;
 	while ((name = g_dir_read_name(dir)) != NULL)
