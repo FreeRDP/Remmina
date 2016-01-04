@@ -1,7 +1,19 @@
 # Change Log
 
-## [1.2.0-rcgit.7](https://github.com/FreeRDP/remmina/tree/1.2.0-rcgit.7) (2015-12-17)
-[Full Changelog](https://github.com/FreeRDP/remmina/compare/1.2.0-rcgit.6...1.2.0-rcgit.7)
+## [1.2.0-rcgit.8](https://github.com/FreeRDP/Remmina/tree/1.2.0-rcgit.8) (2016-01-04)
+
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0-rcgit.7...1.2.0-rcgit.8)
+
+**Closed issues:**
+
+- tot remmina crashes when marking text in the client iff clipboard sync is disabled [\#695](https://github.com/FreeRDP/Remmina/issues/695)
+
+**Merged pull requests:**
+
+- Fix a bunch of memleaks [\#712](https://github.com/FreeRDP/Remmina/pull/712) ([jviksell](https://github.com/jviksell))
+
+## [1.2.0-rcgit.7](https://github.com/FreeRDP/Remmina/tree/1.2.0-rcgit.7) (2015-12-17)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0-rcgit.6...1.2.0-rcgit.7)
 
 **Implemented enhancements:**
 
@@ -18,8 +30,8 @@
 - Vnc exit with 8bpp issue699 [\#704](https://github.com/FreeRDP/Remmina/pull/704) ([antenore](https://github.com/antenore))
 - Temporay fixes \#699 - Set default color depth to 15 \(high colors\) [\#703](https://github.com/FreeRDP/Remmina/pull/703) ([antenore](https://github.com/antenore))
 
-## [1.2.0-rcgit.6](https://github.com/FreeRDP/remmina/tree/1.2.0-rcgit.6) (2015-12-10)
-[Full Changelog](https://github.com/FreeRDP/remmina/compare/1.2.0-rcgit.5...1.2.0-rcgit.6)
+## [1.2.0-rcgit.6](https://github.com/FreeRDP/Remmina/tree/1.2.0-rcgit.6) (2015-12-10)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0-rcgit.5...1.2.0-rcgit.6)
 
 **Implemented enhancements:**
 
@@ -51,8 +63,8 @@
 - Disable wayland backend  [\#680](https://github.com/FreeRDP/Remmina/pull/680) ([antenore](https://github.com/antenore))
 - Migrate from libgnome-keyring to libsecret \#652 - Inital import [\#653](https://github.com/FreeRDP/Remmina/pull/653) ([antenore](https://github.com/antenore))
 
-## [1.2.0-rcgit.5](https://github.com/FreeRDP/remmina/tree/1.2.0-rcgit.5) (2015-11-02)
-[Full Changelog](https://github.com/FreeRDP/remmina/compare/v1.2.0-rcgit.4...1.2.0-rcgit.5)
+## [1.2.0-rcgit.5](https://github.com/FreeRDP/Remmina/tree/1.2.0-rcgit.5) (2015-11-02)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.4...1.2.0-rcgit.5)
 
 **Implemented enhancements:**
 
@@ -75,8 +87,8 @@
 
 - Makes parsing of ~/.ssh/config optional closes \#648 [\#650](https://github.com/FreeRDP/Remmina/pull/650) ([antenore](https://github.com/antenore))
 
-## [v1.2.0-rcgit.4](https://github.com/FreeRDP/remmina/tree/v1.2.0-rcgit.4) (2015-09-23)
-[Full Changelog](https://github.com/FreeRDP/remmina/compare/v1.2.0-rcgit.3...v1.2.0-rcgit.4)
+## [v1.2.0-rcgit.4](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.4) (2015-09-23)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.3...v1.2.0-rcgit.4)
 
 **Implemented enhancements:**
 
@@ -163,8 +175,8 @@
 - Update Uzbek translation [\#561](https://github.com/FreeRDP/Remmina/pull/561) ([ozbek](https://github.com/ozbek))
 - Update for GTK+2 port [\#555](https://github.com/FreeRDP/Remmina/pull/555) ([repzilon](https://github.com/repzilon))
 
-## [v1.2.0-rcgit.3](https://github.com/FreeRDP/remmina/tree/v1.2.0-rcgit.3) (2015-04-14)
-[Full Changelog](https://github.com/FreeRDP/remmina/compare/v1.2.0-rcgit.2...v1.2.0-rcgit.3)
+## [v1.2.0-rcgit.3](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.3) (2015-04-14)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.2...v1.2.0-rcgit.3)
 
 **Implemented enhancements:**
 
@@ -285,8 +297,8 @@
 - SSH terminal color customization [\#432](https://github.com/FreeRDP/Remmina/pull/432) ([muflone](https://github.com/muflone))
 - remmina: Actually install its headers. [\#428](https://github.com/FreeRDP/Remmina/pull/428) ([rakuco](https://github.com/rakuco))
 
-## [v1.2.0-rcgit.2](https://github.com/FreeRDP/remmina/tree/v1.2.0-rcgit.2) (2014-12-30)
-[Full Changelog](https://github.com/FreeRDP/remmina/compare/v1.1.2...v1.2.0-rcgit.2)
+## [v1.2.0-rcgit.2](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.2) (2014-12-30)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.1.2...v1.2.0-rcgit.2)
 
 **Fixed bugs:**
 
@@ -321,8 +333,8 @@
 -  GTK3 migration of remmina\_ftp\_client, fixes \#365 [\#408](https://github.com/FreeRDP/Remmina/pull/408) ([giox069](https://github.com/giox069))
 - Update Remmina GTK+2 branch to 1.1.2 [\#405](https://github.com/FreeRDP/Remmina/pull/405) ([repzilon](https://github.com/repzilon))
 
-## [v1.1.2](https://github.com/FreeRDP/remmina/tree/v1.1.2) (2014-12-08)
-[Full Changelog](https://github.com/FreeRDP/remmina/compare/v1.1.1-gtk2...v1.1.2)
+## [v1.1.2](https://github.com/FreeRDP/Remmina/tree/v1.1.2) (2014-12-08)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.1.1-gtk2...v1.1.2)
 
 **Fixed bugs:**
 
@@ -340,8 +352,8 @@
 - Merge pull request \#396 from FreeRDP/issue366 [\#397](https://github.com/FreeRDP/Remmina/pull/397) ([muflone](https://github.com/muflone))
 - Issue \#366 [\#396](https://github.com/FreeRDP/Remmina/pull/396) ([muflone](https://github.com/muflone))
 
-## [v1.1.1-gtk2](https://github.com/FreeRDP/remmina/tree/v1.1.1-gtk2) (2014-12-07)
-[Full Changelog](https://github.com/FreeRDP/remmina/compare/v1.1.1...v1.1.1-gtk2)
+## [v1.1.1-gtk2](https://github.com/FreeRDP/Remmina/tree/v1.1.1-gtk2) (2014-12-07)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.1.1...v1.1.1-gtk2)
 
 **Closed issues:**
 
@@ -374,8 +386,8 @@
 - Screenshots page with real screenshots! [\#355](https://github.com/FreeRDP/Remmina/pull/355) ([ic3d](https://github.com/ic3d))
 - Good News!  [\#354](https://github.com/FreeRDP/Remmina/pull/354) ([ic3d](https://github.com/ic3d))
 
-## [v1.1.1](https://github.com/FreeRDP/remmina/tree/v1.1.1) (2014-10-10)
-[Full Changelog](https://github.com/FreeRDP/remmina/compare/v1.2.0-rcgit.1...v1.1.1)
+## [v1.1.1](https://github.com/FreeRDP/Remmina/tree/v1.1.1) (2014-10-10)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.1...v1.1.1)
 
 **Fixed bugs:**
 
@@ -418,8 +430,8 @@
 - Fix issue with invisible toolbar in fullscreen. [\#275](https://github.com/FreeRDP/Remmina/pull/275) ([jerrido](https://github.com/jerrido))
 - Fix for issue \#251 [\#253](https://github.com/FreeRDP/Remmina/pull/253) ([giox069](https://github.com/giox069))
 
-## [v1.2.0-rcgit.1](https://github.com/FreeRDP/remmina/tree/v1.2.0-rcgit.1) (2014-10-08)
-[Full Changelog](https://github.com/FreeRDP/remmina/compare/v1.1.0...v1.2.0-rcgit.1)
+## [v1.2.0-rcgit.1](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.1) (2014-10-08)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.1.0...v1.2.0-rcgit.1)
 
 **Closed issues:**
 
@@ -434,8 +446,8 @@
 - Changed links [\#348](https://github.com/FreeRDP/Remmina/pull/348) ([ic3d](https://github.com/ic3d))
 - Remove call to freerdp\_get\_last\_error [\#346](https://github.com/FreeRDP/Remmina/pull/346) ([dktrkranz](https://github.com/dktrkranz))
 
-## [v1.1.0](https://github.com/FreeRDP/remmina/tree/v1.1.0) (2014-10-03)
-[Full Changelog](https://github.com/FreeRDP/remmina/compare/1.0.0...v1.1.0)
+## [v1.1.0](https://github.com/FreeRDP/Remmina/tree/v1.1.0) (2014-10-03)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.0.0...v1.1.0)
 
 **Fixed bugs:**
 
@@ -605,7 +617,7 @@
 - Do not use convenience copy of libvncserver [\#22](https://github.com/FreeRDP/Remmina/pull/22) ([dktrkranz](https://github.com/dktrkranz))
 - remmina: install .desktop file [\#20](https://github.com/FreeRDP/Remmina/pull/20) ([jbicha](https://github.com/jbicha))
 
-## [1.0.0](https://github.com/FreeRDP/remmina/tree/1.0.0) (2012-02-10)
+## [1.0.0](https://github.com/FreeRDP/Remmina/tree/1.0.0) (2012-02-10)
 **Closed issues:**
 
 - Can't compile with GTK+ [\#3](https://github.com/FreeRDP/Remmina/issues/3)
