@@ -122,8 +122,9 @@ static gboolean remmina_masterthread_exec_callback(RemminaMTExecData *d)
 	return G_SOURCE_REMOVE;
 }
 
-static void remmina_masterthread_exec_cleanup_handler(RemminaMTExecData *d)
+static void remmina_masterthread_exec_cleanup_handler(gpointer data)
 {
+	RemminaMTExecData *d = data;
 	d->cancelled = TRUE;
 }
 
