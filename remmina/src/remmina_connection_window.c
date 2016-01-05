@@ -1421,7 +1421,7 @@ static void remmina_connection_holder_toolbar_tools(GtkWidget* widget, RemminaCo
 	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
 	const RemminaProtocolFeature* feature;
 	GtkWidget* menu;
-	GtkWidget* menuitem;
+	GtkWidget* menuitem = NULL;
 	GtkMenu *submenu_keystrokes;
 	const gchar* domain;
 	gboolean enabled;
@@ -1772,9 +1772,9 @@ static void remmina_connection_holder_update_toolbar(RemminaConnectionHolder* cn
 	gtk_window_set_title(GTK_WINDOW(cnnhld->cnnwin), remmina_file_get_string(cnnobj->remmina_file, "name"));
 
 #if FLOATING_TOOLBAR_WIDGET
-	test_floating_toolbar = (priv->floating_toolbar_widget);
+	test_floating_toolbar = (priv->floating_toolbar_widget != NULL);
 #else
-	test_floating_toolbar = (priv->floating_toolbar_window);
+	test_floating_toolbar = (priv->floating_toolbar_window != NULL);
 #endif
 	if (test_floating_toolbar)
 	{
