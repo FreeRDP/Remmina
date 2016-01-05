@@ -92,9 +92,10 @@ static gboolean onMainThread_cb(struct onMainThread_cb_data *d)
 }
 
 
-static void onMainThread_cleanup_handler( struct onMainThread_cb_data *d )
+static void onMainThread_cleanup_handler(gpointer data)
 {
 	TRACE_CALL("onMainThread_cleanup_handler");
+	struct onMainThread_cb_data *d = data;
 	d->cancelled = TRUE;
 }
 
@@ -103,7 +104,7 @@ static void onMainThread_schedule_callback_and_wait( struct onMainThread_cb_data
 {
 	TRACE_CALL("onMainThread_schedule_callback_and_wait");
 	d->cancelled = FALSE;
-	pthread_cleanup_push( onMainThread_cleanup_handler, (void *)d );
+	pthread_cleanup_push( onMainThread_cleanup_handler, d );
 	pthread_mutex_init( &d->mu, NULL );
 	pthread_mutex_lock( &d->mu );
 	gdk_threads_add_idle( (GSourceFunc)onMainThread_cb, (gpointer) d );
