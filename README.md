@@ -79,7 +79,13 @@ If you want to contribute with code:
 
 If you want to contribute in other ways, drop us an email using the form provided in our web site.
 
-Soon you will be able to support us with a donation if you like.
+### Donations
+
+If you rather prefer to contribute to Remmina with money your are more than welcome.
+
+For more informations See the [Remmina web site donation page](http://remmina.org/donations).
+
+[![paypal](https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZBD87JG52PTZC)
 
 ## Authors
 
