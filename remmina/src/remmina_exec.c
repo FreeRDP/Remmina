@@ -46,6 +46,7 @@
 #include "remmina_about.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_exec.h"
+#include "remmina_survey.h"
 #include "remmina/remmina_trace_calls.h"
 
 void remmina_exec_command(RemminaCommandType command, const gchar* data)
@@ -57,6 +58,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 	GtkWindow* mainwindow;
 	GtkDialog* prefdialog;
 	RemminaEntryPlugin* plugin;
+	static gboolean remmina_survey = TRUE;
 
 	switch (command)
 	{
@@ -71,6 +73,13 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		{
 			widget = remmina_main_new();
 			gtk_widget_show(widget);
+			/* Remmina survey reminder popup */
+			mainwindow = remmina_main_get_window();
+			if ( remmina_survey )
+			{
+				remmina_survey_on_startup(GTK_WINDOW(mainwindow));
+				remmina_survey = FALSE;
+			}
 		}
 		break;
 
