@@ -37,6 +37,7 @@
 #include <gdk/gdkkeysyms.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/utsname.h>
 #include "config.h"
 #include "remmina_public.h"
 #include "remmina_string_array.h"
@@ -45,9 +46,6 @@
 
 const gchar *default_resolutions = "640x480,800x600,1024x768,1152x864,1280x960,1400x1050";
 const gchar *default_keystrokes = "Send hello world§hello world\\n";
-
-gchar *remmina_pref_file;
-RemminaPref remmina_pref;
 
 gchar *remmina_keymap_file;
 static GHashTable *remmina_keymap_table = NULL;
@@ -88,6 +86,44 @@ static void remmina_pref_gen_secret(void)
 
 	g_key_file_free(gkeyfile);
 	g_free(content);
+}
+
+/* This function will generate a unique string to identify a remmina installation
+ * in a form like Linux+4.2.5-1-ARCH+x86_64+38637228 */
+static void remmina_pref_gen_uid(void)
+{
+	TRACE_CALL("remmina_pref_gen_uid");
+
+	GKeyFile *gkeyfile;
+	gchar uid[64];
+	gchar *content;
+	gsize length;
+
+	struct utsname name;
+	uname(&name);
+
+	g_snprintf (uid, sizeof(uid), "%s+%s+%s+%x%x%x%x%x%x%x%x",
+			name.sysname, name.release, name.machine,
+			g_random_int_range(0,9),
+			g_random_int_range(0,9),
+			g_random_int_range(0,9),
+			g_random_int_range(0,9),
+			g_random_int_range(0,9),
+			g_random_int_range(0,9),
+			g_random_int_range(0,9),
+			g_random_int_range(0,9));
+
+	remmina_pref.uid = uid;
+
+	gkeyfile = g_key_file_new();
+	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
+	g_key_file_set_string(gkeyfile, "remmina_pref", "uid", remmina_pref.uid);
+	content = g_key_file_to_data(gkeyfile, &length, NULL);
+	g_file_set_contents(remmina_pref_file, content, length, NULL);
+
+	g_key_file_free(gkeyfile);
+	g_free(content);
+
 }
 
 static guint remmina_pref_get_keyval_from_str(const gchar *str)
@@ -455,6 +491,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.secret = NULL;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "uid", NULL))
+		remmina_pref.uid = g_key_file_get_string(gkeyfile, "remmina_pref", "uid", NULL);
+	else
+		remmina_pref.uid = NULL;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_font", NULL))
 		remmina_pref.vte_font = g_key_file_get_string(gkeyfile, "remmina_pref", "vte_font", NULL);
 	else
@@ -502,6 +543,9 @@ void remmina_pref_init(void)
 
 	if (remmina_pref.secret == NULL)
 		remmina_pref_gen_secret();
+
+	if (remmina_pref.uid == NULL)
+		remmina_pref_gen_uid();
 
 	remmina_pref_init_keymap();
 }

@@ -45,9 +45,10 @@
 #include <stdlib.h>
 #include <webkit2/webkit2.h>
 #include "config.h"
-#include "remmina_survey.h"
+#include "remmina_file.h"
 #include "remmina_pref.h"
 #include "remmina_public.h"
+#include "remmina_survey.h"
 #include "remmina/remmina_trace_calls.h"
 
 static gchar* templateuri = REMMINA_SURVEY_URI;
@@ -55,6 +56,9 @@ static gchar* templateuri = REMMINA_SURVEY_URI;
 static RemminaSurveyDialog *remmina_survey;
 
 static WebKitWebView* web_view;
+
+gchar *remmina_pref_file;
+RemminaPref remmina_pref;
 
 #define GET_OBJECT(object_name) gtk_builder_get_object(remmina_survey->builder, object_name)
 
@@ -250,6 +254,14 @@ static gchar *remmina_survey_files_iter_setting()
 			}
 		}
 	}
+
+	ret = g_strjoin(NULL,
+			g_strdup_printf("ID: %s\n",
+					//remmina_file_get_string(remmina_pref_file,
+					remmina_pref.uid),
+					ret,
+					NULL);
+
 	ret = g_strjoin(NULL,
 			g_strdup_printf("Number of profiles: %d\n", count_file),
 			ret,

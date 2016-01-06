@@ -154,6 +154,9 @@ typedef struct _RemminaPref
 
 	/* Crypto */
 	gchar *secret;
+
+	/* UID */
+	gchar *uid;
 } RemminaPref;
 
 #define DEFAULT_SSH_PARSECONFIG TRUE
