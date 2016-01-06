@@ -440,7 +440,6 @@ static void remmina_main_load_files(gboolean refresh)
 	gint items_count;
 	gchar buf[200];
 	guint context_id;
-	static gboolean remmina_survey = TRUE;
 
 	if (refresh)
 	{
