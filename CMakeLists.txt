@@ -121,10 +121,8 @@ find_required_package(PTHREAD)
 find_suggested_package(GCRYPT)
 find_suggested_package(AVAHI)
 
-IF (NOT DEFINED REMMINA_SURVEY_URI)
-    SET(REMMINA_SURVEY_URI "http://www.remmina.org/")
-ENDIF()
-ADD_DEFINITIONS(-DREMMINA_SURVEY_URI=${REMMINA_SURVEY_URI})
+# Survey URI
+set(REMMINA_SURVEY_URI "http://www.remmina.org/survey/survey.tpl")
 
 if(WITH_TRACE_CALLS)
 	message(STATUS "Enabling trace calls.")
