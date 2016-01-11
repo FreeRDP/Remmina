@@ -458,7 +458,8 @@ static BOOL remmina_rdp_verify_certificate(freerdp* instance, char* subject, cha
 
 	return False;
 }
-static BOOL remmina_rdp_verify_changed_certificate(freerdp* instance, char* subject, char* issuer, char* new_fingerprint, char* old_fingerprint)
+static BOOL remmina_rdp_verify_changed_certificate(freerdp* instance, char* subject, char* issuer,
+	char* new_fingerprint, char* old_subject, char* old_issuer, char* old_fingerprint)
 {
 	TRACE_CALL("remmina_rdp_verify_changed_certificate");
 	gint status;
