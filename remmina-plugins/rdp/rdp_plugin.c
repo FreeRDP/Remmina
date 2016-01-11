@@ -368,17 +368,6 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 
 	pointer_cache_register_callbacks(instance->update);
 
-/*
-	if (rfi->sw_gdi != TRUE)
-	{
-		glyph_cache_register_callbacks(instance->update);
-		brush_cache_register_callbacks(instance->update);
-		bitmap_cache_register_callbacks(instance->update);
-		offscreen_cache_register_callbacks(instance->update);
-		palette_cache_register_callbacks(instance->update);
-	}
-*/
-
 	instance->update->BeginPaint = rf_begin_paint;
 	instance->update->EndPaint = rf_end_paint;
 	instance->update->DesktopResize = rf_desktop_resize;
@@ -427,10 +416,9 @@ static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** 
 		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
 		if (save)
 		{
-			// User has requested to save password. We put all the new cretentials
-			// into remminafile->settings. They will be saved later, when disconnecting, by
-			// remmina_connection_object_on_disconnect of remmina_connection_window.c
-			// (this operation should be called "save credentials" and not "save password")
+			// User has requested to save credentials. We put all the new cretentials
+			// into remminafile->settings. They will be saved later, on successful connection, by
+			// remmina_connection_window.c
 
 			remmina_plugin_service->file_set_string( remminafile, "username", s_username );
 			remmina_plugin_service->file_set_string( remminafile, "password", s_password );
