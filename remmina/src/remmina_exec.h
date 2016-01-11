@@ -46,10 +46,12 @@ typedef enum
 	REMMINA_COMMAND_CONNECT = 4,
 	REMMINA_COMMAND_EDIT = 5,
 	REMMINA_COMMAND_ABOUT = 6,
-	REMMINA_COMMAND_PLUGIN = 7
+	REMMINA_COMMAND_PLUGIN = 7,
+	REMMINA_COMMAND_EXIT = 8
 } RemminaCommandType;
 
 void remmina_exec_command(RemminaCommandType command, const gchar* data);
+void remmina_exec_exitremmina(void);
 
 G_END_DECLS
 

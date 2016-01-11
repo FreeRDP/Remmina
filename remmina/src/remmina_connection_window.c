@@ -3136,6 +3136,9 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 	GtkWidget* tab;
 	gint i;
 
+	/* This signal handler is called by a plugin where it's correctly connected
+	 * (and authenticated) */
+
 	if (!cnnobj->cnnhld)
 	{
 		cnnwin = remmina_connection_window_find(cnnobj->remmina_file);
@@ -3165,6 +3168,9 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 		remmina_pref_add_recent(remmina_file_get_string(cnnobj->remmina_file, "protocol"),
 		                        remmina_file_get_string(cnnobj->remmina_file, "server"));
 	}
+
+	/* Save credentials */
+	remmina_file_save_group(cnnobj->remmina_file, REMMINA_SETTING_GROUP_CREDENTIAL);
 
 	if (!cnnhld->cnnwin)
 	{
