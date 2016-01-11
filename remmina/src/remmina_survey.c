@@ -51,7 +51,7 @@
 #include "remmina_survey.h"
 #include "remmina/remmina_trace_calls.h"
 
-static gchar* templateuri = REMMINA_SURVEY_URI;
+//static gchar* templateuri = REMMINA_SURVEY_URI;
 
 static RemminaSurveyDialog *remmina_survey;
 

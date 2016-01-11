@@ -95,14 +95,14 @@ static void remmina_pref_gen_uid(void)
 	TRACE_CALL("remmina_pref_gen_uid");
 
 	GKeyFile *gkeyfile;
-	gchar uid[64];
+	gchar buf[64];
 	gchar *content;
 	gsize length;
 
 	struct utsname name;
 	uname(&name);
 
-	g_snprintf (uid, sizeof(uid), "%s+%s+%s+%x%x%x%x%x%x%x%x",
+	g_snprintf (buf, sizeof(buf), "%s+%s+%s+%x%x%x%x%x%x%x%x",
 			name.sysname, name.release, name.machine,
 			g_random_int_range(0,9),
 			g_random_int_range(0,9),
@@ -113,7 +113,7 @@ static void remmina_pref_gen_uid(void)
 			g_random_int_range(0,9),
 			g_random_int_range(0,9));
 
-	remmina_pref.uid = uid;
+	remmina_pref.uid = g_strdup(buf);
 
 	gkeyfile = g_key_file_new();
 	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
