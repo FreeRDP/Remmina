@@ -143,7 +143,8 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 
 	if (remmina_option_quit)
 	{
-		gtk_main_quit();
+		remmina_exec_command(REMMINA_COMMAND_EXIT, NULL);
+		executed = TRUE;
 		status = 1;
 	}
 

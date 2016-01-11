@@ -40,37 +40,16 @@
 
 static GPtrArray *remmina_widget_pool = NULL;
 
-static guint remmina_widget_pool_try_quit_handler = 0;
-
-static gboolean remmina_widget_pool_on_hold = FALSE;
-
-static gboolean remmina_widget_pool_try_quit(gpointer data)
-{
-	TRACE_CALL("remmina_widget_pool_try_quit");
-	if (remmina_widget_pool->len == 0 && !remmina_widget_pool_on_hold)
-	{
-		gtk_main_quit();
-	}
-	remmina_widget_pool_try_quit_handler = 0;
-	return FALSE;
-}
-
 void remmina_widget_pool_init(void)
 {
 	TRACE_CALL("remmina_widget_pool_init");
 	remmina_widget_pool = g_ptr_array_new();
-	remmina_widget_pool_try_quit_handler = g_timeout_add(15000, remmina_widget_pool_try_quit, NULL);
 }
 
 static void remmina_widget_pool_on_widget_destroy(GtkWidget *widget, gpointer data)
 {
 	TRACE_CALL("remmina_widget_pool_on_widget_destroy");
 	g_ptr_array_remove(remmina_widget_pool, widget);
-	if (remmina_widget_pool->len == 0 && remmina_widget_pool_try_quit_handler == 0)
-	{
-		/* Wait for a while to make sure no more windows will open before we quit the application */
-		remmina_widget_pool_try_quit_handler = g_timeout_add(10000, remmina_widget_pool_try_quit, NULL);
-	}
 }
 
 void remmina_widget_pool_register(GtkWidget *widget)
@@ -78,11 +57,6 @@ void remmina_widget_pool_register(GtkWidget *widget)
 	TRACE_CALL("remmina_widget_pool_register");
 	g_ptr_array_add(remmina_widget_pool, widget);
 	g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_widget_pool_on_widget_destroy), NULL);
-	if (remmina_widget_pool_try_quit_handler)
-	{
-		g_source_remove(remmina_widget_pool_try_quit_handler);
-		remmina_widget_pool_try_quit_handler = 0;
-	}
 }
 
 GtkWidget*
@@ -142,16 +116,6 @@ remmina_widget_pool_find_by_window(GType type, GdkWindow *window)
 		}
 	}
 	return NULL;
-}
-
-void remmina_widget_pool_hold(gboolean hold)
-{
-	TRACE_CALL("remmina_widget_pool_hold");
-	remmina_widget_pool_on_hold = hold;
-	if (!hold && remmina_widget_pool_try_quit_handler == 0)
-	{
-		remmina_widget_pool_try_quit_handler = g_timeout_add(10000, remmina_widget_pool_try_quit, NULL);
-	}
 }
 
 gint remmina_widget_pool_foreach(RemminaWidgetPoolForEachFunc callback, gpointer data)

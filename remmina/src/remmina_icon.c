@@ -45,6 +45,7 @@
 #include "remmina_connection_window.h"
 #include "remmina_icon.h"
 #include "remmina/remmina_trace_calls.h"
+#include "remmina_sysinfo.h"
 
 #ifdef HAVE_LIBAPPINDICATOR
 #include <libappindicator/app-indicator.h>
@@ -65,7 +66,7 @@ typedef struct _RemminaIcon
 static RemminaIcon remmina_icon =
 { 0 };
 
-static void remmina_icon_destroy(void)
+void remmina_icon_destroy(void)
 {
 	TRACE_CALL("remmina_icon_destroy");
 	if (remmina_icon.icon)
@@ -75,7 +76,7 @@ static void remmina_icon_destroy(void)
 #else
 		gtk_status_icon_set_visible(remmina_icon.icon, FALSE);
 #endif
-		remmina_widget_pool_hold(FALSE);
+		remmina_icon.icon = NULL;
 	}
 	if (remmina_icon.avahi)
 	{
@@ -169,7 +170,7 @@ static void remmina_icon_populate_additional_menu_item(GtkWidget *menu)
 	menuitem = gtk_menu_item_new_with_mnemonic(_("_Quit"));
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
-	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_destroy), NULL);
+	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_exec_exitremmina), NULL);
 }
 
 static void remmina_icon_on_launch_item(RemminaAppletMenu *menu, RemminaAppletMenuItem *menuitem, gpointer data)
@@ -406,9 +407,41 @@ static void remmina_icon_create_autostart_file(void)
 	}
 }
 
+gboolean remmina_icon_is_available(void)
+{
+	/* Return TRUE if a remmina_icon (status indicator/systray menu) is
+	 * available and shown to the user, so the user can continue
+	 * its work without the remmina main window */
+
+	TRACE_CALL("remmina_icon_is_available");
+	if (!remmina_icon.icon)
+		return FALSE;
+	if (remmina_pref.disable_tray_icon)
+		return FALSE;
+
+	/* Special treatmen under Gnome Shell */
+	if (remmina_sysinfo_get_gnome_shell_version() != NULL)
+	{
+#ifdef HAVE_LIBAPPINDICATOR
+		/* Gnome Shell with compiled in LIBAPPINDICATOR: no systray icon,
+		 * ensure have also a working appindicator extension available */
+		if (!remmina_sysinfo_is_appindicator_available())
+		{
+			/* No libappindicator extension for gnome shell, no remmina_icon */
+			return FALSE;
+		}
+#else
+		/* Gnome Shell without compiled in LIBAPPINDICATOR: no systray icon. */
+		return FALSE;
+#endif
+	}
+	return TRUE;
+}
+
 void remmina_icon_init(void)
 {
 	TRACE_CALL("remmina_icon_init");
+
 	if (!remmina_icon.icon && !remmina_pref.disable_tray_icon)
 	{
 #ifdef HAVE_LIBAPPINDICATOR
@@ -427,7 +460,6 @@ void remmina_icon_init(void)
 		g_signal_connect(G_OBJECT(remmina_icon.icon), "popup-menu", G_CALLBACK(remmina_icon_on_popup_menu), NULL);
 		g_signal_connect(G_OBJECT(remmina_icon.icon), "activate", G_CALLBACK(remmina_icon_on_activate), NULL);
 #endif
-		remmina_widget_pool_hold(TRUE);
 	}
 	else if (remmina_icon.icon)
 	{
@@ -437,7 +469,6 @@ void remmina_icon_init(void)
 #else
 		gtk_status_icon_set_visible(remmina_icon.icon, !remmina_pref.disable_tray_icon);
 #endif
-		remmina_widget_pool_hold(!remmina_pref.disable_tray_icon);
 	}
 	if (!remmina_icon.avahi)
 	{
