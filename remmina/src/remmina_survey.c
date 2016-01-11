@@ -51,8 +51,6 @@
 #include "remmina_survey.h"
 #include "remmina/remmina_trace_calls.h"
 
-//static gchar* templateuri = REMMINA_SURVEY_URI;
-
 static RemminaSurveyDialog *remmina_survey;
 
 static WebKitWebView* web_view;
@@ -163,9 +161,9 @@ static const gchar *remmina_get_datadir()
 }
 
 /* Insert setting name and its count in an hashtable */
-static void remmina_survey_return_stat_from_setting(GHashTable *hash_table, gchar *name)
+static void remmina_survey_ret_stat_from_setting(GHashTable *hash_table, gchar *name)
 {
-	TRACE_CALL("remmina_survey_return_stat_from_setting");
+	TRACE_CALL("remmina_survey_ret_stat_from_setting");
 	gint count_name;
 
 	count_name = GPOINTER_TO_INT(g_hash_table_lookup(hash_table, name));
@@ -173,25 +171,20 @@ static void remmina_survey_return_stat_from_setting(GHashTable *hash_table, gcha
 	if (count_name)
 	{
 		count_name++;
-		//g_print("name/count after lookup: %s/%d\n", name, count_name);
 		g_hash_table_replace(hash_table,
 		                     g_strdup(name),
 		                     GINT_TO_POINTER(count_name));
-		//g_print("name/count after replace: %s/%d\n", name, count_name);
 	} else {
 		count_name = 1;
 		g_hash_table_replace(hash_table,
 		                     g_strdup(name),
 		                     GINT_TO_POINTER(count_name));
-		//g_print("Found name: %s %d times\n", name, count_name);
 	}
 }
 
 static gchar *remmina_survey_files_iter_setting()
 {
 	TRACE_CALL("remmina_survey_files_iter_setting");
-
-	//GError *gerror = NULL;
 
 	GDir *dir;
 	gchar *dirname;
@@ -227,10 +220,7 @@ static gchar *remmina_survey_files_iter_setting()
 			continue;
 		g_snprintf(filename, PATH_MAX, "%s/%s", dirname, dir_entry);
 
-		if (!g_key_file_load_from_file(gkeyfile,
-		                               filename,
-		                               G_KEY_FILE_NONE,
-		                               NULL))
+		if (!g_key_file_load_from_file(gkeyfile, filename, G_KEY_FILE_NONE, NULL))
 			g_key_file_free(gkeyfile);
 
 		if (!g_key_file_has_key(gkeyfile, "remmina", "name", NULL))
@@ -243,13 +233,11 @@ static gchar *remmina_survey_files_iter_setting()
 							     g_strdup_printf("%s", setting_name[i]),
 							     NULL);
 			/* Some settings exists only for certain plugin */
-			//g_print ("iter: %d - setting = %s and name = %s \n", i, setting_name[i], name);
 			if (name && !(*name == 0)){
-				remmina_survey_return_stat_from_setting(hash_table,
+				remmina_survey_ret_stat_from_setting(hash_table,
 						g_strdup_printf("%s_%s",
-							setting_name[i],
-							name));
-				//g_print ("iter: %d - hastable = %s_%s\n", i, setting_name[i], name);
+								setting_name[i],
+								name));
 				g_free(name);
 			}
 		}
@@ -257,7 +245,6 @@ static gchar *remmina_survey_files_iter_setting()
 
 	ret = g_strjoin(NULL,
 			g_strdup_printf("ID: %s\n",
-					//remmina_file_get_string(remmina_pref_file,
 					remmina_pref.uid),
 					ret,
 					NULL);
@@ -266,14 +253,12 @@ static gchar *remmina_survey_files_iter_setting()
 			g_strdup_printf("Number of profiles: %d\n", count_file),
 			ret,
 			NULL);
-	//g_print ("Number of profiles: %d\n", count_file);
 	g_hash_table_iter_init (&iter, hash_table);
 	while (g_hash_table_iter_next (&iter, &key, &value)) {
 		ret = g_strjoin(NULL,
 				g_strdup_printf("%s: %d\n", (gchar *)key, GPOINTER_TO_INT(value)),
 				ret,
 				NULL);
-		//g_print("%s\n%s: %d\n", ret, (gchar *)key, GPOINTER_TO_INT(value));
 	}
 	g_key_file_free(gkeyfile);
 	g_hash_table_destroy(hash_table);
@@ -286,7 +271,6 @@ static void remmina_survey_stats_create_html_form()
 {
 	TRACE_CALL("remmina_survey_stats_create_html_form");
 
-	//GDir *dir;
 	gchar *dirname = NULL;
 	const gchar *templateuri = REMMINA_SURVEY_URI;
 	const gchar *output_file_name = "local_remmina_form.html";
