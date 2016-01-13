@@ -39,6 +39,7 @@
 #include <stdlib.h>
 #include "remmina_main.h"
 #include "remmina_widget_pool.h"
+#include "remmina_pref.h"
 #include "remmina_pref_dialog.h"
 #include "remmina_file.h"
 #include "remmina_file_editor.h"
@@ -62,11 +63,13 @@ void remmina_exec_exitremmina()
 
 	int n;
 
-	/* Destroy all widgets, main window included */
-	n = remmina_widget_pool_foreach(cb_closewidget, NULL);
-
-	/* Remove systray menu */
-	remmina_icon_destroy();
+	if (!remmina_pref.exit_keep_sessions_open) {
+		/* Destroy all widgets, main window included */
+		n = remmina_widget_pool_foreach(cb_closewidget, NULL);
+	
+		/* Remove systray menu */
+		remmina_icon_destroy();
+	}
 
 	/* Exit from Remmina */
 	gtk_main_quit();

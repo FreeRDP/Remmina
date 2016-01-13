@@ -198,6 +198,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.save_when_connect = TRUE;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "exit_keep_sessions_open", NULL))
+		remmina_pref.exit_keep_sessions_open = g_key_file_get_boolean(gkeyfile, "remmina_pref", "exit_keep_sessions_open", NULL);
+	else
+		remmina_pref.exit_keep_sessions_open = FALSE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "invisible_toolbar", NULL))
 		remmina_pref.invisible_toolbar = g_key_file_get_boolean(gkeyfile, "remmina_pref", "invisible_toolbar", NULL);
 	else
