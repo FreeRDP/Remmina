@@ -881,13 +881,19 @@ void remmina_main_on_action_application_plugins(GtkAction *action, gpointer user
 void remmina_main_on_action_help_homepage(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_help_homepage");
-	g_app_info_launch_default_for_uri("http://remmina.sourceforge.net", NULL, NULL);
+	g_app_info_launch_default_for_uri("http://www.remmina.org", NULL, NULL);
 }
 
 void remmina_main_on_action_help_wiki(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_help_wiki");
-	g_app_info_launch_default_for_uri("http://sourceforge.net/apps/mediawiki/remmina/", NULL, NULL);
+	g_app_info_launch_default_for_uri("https://github.com/FreeRDP/Remmina/wiki", NULL, NULL);
+}
+
+void remmina_main_on_action_help_donations(GtkAction *action, gpointer user_data)
+{
+	TRACE_CALL("remmina_main_on_action_help_donations");
+	g_app_info_launch_default_for_uri("http://www.remmina.org/wp/donations", NULL, NULL);
 }
 
 void remmina_main_on_action_help_debug(GtkAction *action, gpointer user_data)

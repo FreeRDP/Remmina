@@ -124,6 +124,13 @@
       </object>
     </child>
     <child>
+      <object class="GtkAction" id="action_help_donations">
+        <property name="label" translatable="yes">Donations</property>
+        <property name="short_label" translatable="yes">Donations</property>
+        <signal name="activate" handler="remmina_main_on_action_help_donations" swapped="no"/>
+      </object>
+    </child>
+    <child>
       <object class="GtkAction" id="action_help_debug">
         <property name="label" translatable="yes">Debug Window</property>
         <property name="short_label" translatable="yes">Debug Window</property>
@@ -532,6 +539,15 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Online Wiki</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_help_donations">
+                        <property name="related_action">action_help_donations</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Donations</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>
