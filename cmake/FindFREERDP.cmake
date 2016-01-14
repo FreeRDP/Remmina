@@ -24,7 +24,7 @@ endif()
 
 set(FREERDP_DEFINITIONS ${PC_FREERDP_CFLAGS_OTHER})
 
-find_path(FREERDP_INCLUDE_DIR NAMES freerdp/freerdp.h
+find_path(FREERDP_INCLUDE_DIR NAMES freerdp2/freerdp/freerdp.h
 	HINTS ${PC_FREERDP_INCLUDEDIR} ${PC_FREERDP_INCLUDE_DIRS})
 
 find_library(FREERDP_LIBRARY NAMES freerdp2
