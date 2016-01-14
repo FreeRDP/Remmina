@@ -90,6 +90,7 @@ typedef struct _RemminaPref
 	/* In RemminaPrefDialog options tab */
 	gboolean save_view_mode;
 	gboolean save_when_connect;
+	gboolean exit_keep_sessions_open;
 	gint default_action;
 	gint scale_quality;
 	gint ssh_loglevel;
