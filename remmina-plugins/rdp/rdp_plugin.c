@@ -904,6 +904,17 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	}
 
+	if ( remmina_plugin_service->file_get_int(remminafile, "microphone", FALSE) ? FALSE: TRUE )
+	{
+		char* p[1];
+		int count;
+
+		count = 1;
+		p[0] = "audin";
+
+		freerdp_client_add_dynamic_channel(rfi->settings, count, p);
+	}
+
 	rfi->settings->RedirectClipboard = ( remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE) ? FALSE: TRUE );
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "sharefolder");
@@ -1276,6 +1287,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "exec", N_("Startup program"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "execpath", N_("Startup path"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "loadbalanceinfo", N_("Load Balance Info"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "microphone", N_("Redirect local microphone"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "shareprinter", N_("Share local printers"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "sharesmartcard", N_("Share smartcard"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), FALSE, NULL, NULL },
