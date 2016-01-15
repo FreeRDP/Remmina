@@ -486,94 +486,32 @@ static int remmina_rdp_receive_channel_data(freerdp* instance, int channelId, UI
 static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_rdp_main_loop");
-	int i;
-	int fds;
-	int rcount;
-	int wcount;
-	int max_fds;
-	void *rfds[32];
-	void *wfds[32];
-	fd_set rfds_set;
-	fd_set wfds_set;
+	DWORD nCount;
+	DWORD status;
+	HANDLE handles[64];
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
-
-	rdpChannels *channels;
-
-	memset(rfds, 0, sizeof(rfds));
-	memset(wfds, 0, sizeof(wfds));
-
-	channels = rfi->instance->context->channels;
 
 	while (!freerdp_shall_disconnect(rfi->instance))
 	{
-		rcount = 0;
-		wcount = 0;
+		nCount = freerdp_get_event_handles(rfi->instance->context, &handles[0], 64);
 
-		if (!freerdp_get_fds(rfi->instance, rfds, &rcount, wfds, &wcount))
+		if (nCount == 0)
 		{
-			break;
-		}
-		if (!freerdp_channels_get_fds(channels, rfi->instance, rfds, &rcount, wfds, &wcount))
-		{
-			break;
-		}
-		rf_get_fds(gp, rfds, &rcount);
-
-		max_fds = 0;
-		FD_ZERO(&rfds_set);
-		for (i = 0; i < rcount; i++)
-		{
-			fds = (int) (UINT64) (rfds[i]);
-
-			if (fds > max_fds)
-				max_fds = fds;
-
-			FD_SET(fds, &rfds_set);
-		}
-
-		FD_ZERO(&wfds_set);
-		for (i = 0; i < wcount; i++)
-		{
-			fds = GPOINTER_TO_INT(wfds[i]);
-
-			if (fds > max_fds)
-				max_fds = fds;
-
-			FD_SET(fds, &wfds_set);
-		}
-
-		/* exit if nothing to do */
-		if (max_fds == 0)
-		{
-			break;
-		}
-
-		/* do the wait */
-		if (select(max_fds + 1, &rfds_set, &wfds_set, NULL, NULL) == -1)
-		{
-			/* these are not really errors */
-			if (!((errno == EAGAIN) ||
-				(errno == EWOULDBLOCK) ||
-				(errno == EINPROGRESS) ||
-				(errno == EINTR))) /* signal occurred */
-			{
+				fprintf(stderr, "freerdp_get_event_handles failed");
 				break;
-			}
 		}
 
-		/* check the libfreerdp fds */
-		if (!freerdp_check_fds(rfi->instance))
+		status = WaitForMultipleObjects(nCount, handles, FALSE, 100);
+
+		if (status == WAIT_FAILED)
 		{
-			break;
+				fprintf(stderr, "WaitForMultipleObjects failed with %lu", (unsigned long)status);
+				break;
 		}
-		/* check channel fds */
-		if (!freerdp_channels_check_fds(channels, rfi->instance))
+
+		if (!freerdp_check_event_handles(rfi->instance->context))
 		{
-			break;
-		}
-		/* check ui */
-		if (!rf_check_fds(gp))
-		{
+			fprintf(stderr, "Failed to check FreeRDP event handles");
 			break;
 		}
 	}
