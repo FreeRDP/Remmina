@@ -64,23 +64,10 @@
 RemminaPluginService* remmina_plugin_service = NULL;
 static char remmina_rdp_plugin_default_drive_name[]="RemminaDisk";
 
-void rf_get_fds(RemminaProtocolWidget* gp, void** rfds, int* rcount)
+static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("rf_get_fds");
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-
-	if (rfi->event_pipe[0] != -1)
-	{
-		rfds[*rcount] = GINT_TO_POINTER(rfi->event_pipe[0]);
-		(*rcount)++;
-	}
-}
-
-BOOL rf_check_fds(RemminaProtocolWidget* gp)
-{
-	TRACE_CALL("rf_check_fds");
+	TRACE_CALL("rf_process_event_queue");
 	UINT16 flags;
-	gchar buf[100];
 	rdpInput* input;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent* event;
@@ -107,10 +94,6 @@ BOOL rf_check_fds(RemminaProtocolWidget* gp)
 		}
 
 		g_free(event);
-	}
-
-	if (read(rfi->event_pipe[0], buf, sizeof (buf)))
-	{
 	}
 
 	return True;
@@ -489,29 +472,47 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 	DWORD nCount;
 	DWORD status;
 	HANDLE handles[64];
+	gchar buf[100];
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
+
+
 
 	while (!freerdp_shall_disconnect(rfi->instance))
 	{
 		nCount = freerdp_get_event_handles(rfi->instance->context, &handles[0], 64);
+		if (rfi->event_handle)
+		{
+			handles[nCount++] = rfi->event_handle;
+		}
 
 		if (nCount == 0)
 		{
-				fprintf(stderr, "freerdp_get_event_handles failed");
-				break;
+			fprintf(stderr, "freerdp_get_event_handles failed\n");
+			break;
 		}
 
 		status = WaitForMultipleObjects(nCount, handles, FALSE, 100);
 
 		if (status == WAIT_FAILED)
 		{
-				fprintf(stderr, "WaitForMultipleObjects failed with %lu", (unsigned long)status);
+			fprintf(stderr, "WaitForMultipleObjects failed with %lu\n", (unsigned long)status);
+			break;
+		}
+
+		if (rfi->event_handle && WaitForSingleObject(rfi->event_handle, 0) == WAIT_OBJECT_0) {
+			if (!rf_process_event_queue(gp))
+			{
+				fprintf(stderr, "Failed to process local kb/mouse event queue\n");
 				break;
+			}
+			if (read(rfi->event_pipe[0], buf, sizeof (buf)))
+			{
+			}
 		}
 
 		if (!freerdp_check_event_handles(rfi->instance->context))
 		{
-			fprintf(stderr, "Failed to check FreeRDP event handles");
+			fprintf(stderr, "Failed to check FreeRDP event handles\n");
 			break;
 		}
 	}
