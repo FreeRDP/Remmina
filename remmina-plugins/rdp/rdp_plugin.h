@@ -169,6 +169,7 @@ struct rf_context
 	GArray* pressed_keys;
 	GAsyncQueue* event_queue;
 	gint event_pipe[2];
+	HANDLE event_handle;
 
 	rfClipboard clipboard;
 };

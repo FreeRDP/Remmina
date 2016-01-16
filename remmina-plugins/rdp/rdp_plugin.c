@@ -69,23 +69,10 @@ static char remmina_rdp_plugin_default_drive_name[]="RemminaDisk";
 
 static gboolean use_remmina_socket;
 
-void rf_get_fds(RemminaProtocolWidget* gp, void** rfds, int* rcount)
+static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("rf_get_fds");
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-
-	if (rfi->event_pipe[0] != -1)
-	{
-		rfds[*rcount] = GINT_TO_POINTER(rfi->event_pipe[0]);
-		(*rcount)++;
-	}
-}
-
-BOOL rf_check_fds(RemminaProtocolWidget* gp)
-{
-	TRACE_CALL("rf_check_fds");
+	TRACE_CALL("rf_process_event_queue");
 	UINT16 flags;
-	gchar buf[100];
 	rdpInput* input;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent* event;
@@ -112,10 +99,6 @@ BOOL rf_check_fds(RemminaProtocolWidget* gp)
 		}
 
 		g_free(event);
-	}
-
-	if (read(rfi->event_pipe[0], buf, sizeof (buf)))
-	{
 	}
 
 	return True;
@@ -491,94 +474,50 @@ static int remmina_rdp_receive_channel_data(freerdp* instance, int channelId, UI
 static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_rdp_main_loop");
-	int i;
-	int fds;
-	int rcount;
-	int wcount;
-	int max_fds;
-	void *rfds[32];
-	void *wfds[32];
-	fd_set rfds_set;
-	fd_set wfds_set;
+	DWORD nCount;
+	DWORD status;
+	HANDLE handles[64];
+	gchar buf[100];
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
-	rdpChannels *channels;
 
-	memset(rfds, 0, sizeof(rfds));
-	memset(wfds, 0, sizeof(wfds));
-
-	channels = rfi->instance->context->channels;
 
 	while (!freerdp_shall_disconnect(rfi->instance))
 	{
-		rcount = 0;
-		wcount = 0;
-
-		if (!freerdp_get_fds(rfi->instance, rfds, &rcount, wfds, &wcount))
+		nCount = freerdp_get_event_handles(rfi->instance->context, &handles[0], 64);
+		if (rfi->event_handle)
 		{
-			break;
-		}
-		if (!freerdp_channels_get_fds(channels, rfi->instance, rfds, &rcount, wfds, &wcount))
-		{
-			break;
-		}
-		rf_get_fds(gp, rfds, &rcount);
-
-		max_fds = 0;
-		FD_ZERO(&rfds_set);
-		for (i = 0; i < rcount; i++)
-		{
-			fds = (int) (UINT64) (rfds[i]);
-
-			if (fds > max_fds)
-				max_fds = fds;
-
-			FD_SET(fds, &rfds_set);
+			handles[nCount++] = rfi->event_handle;
 		}
 
-		FD_ZERO(&wfds_set);
-		for (i = 0; i < wcount; i++)
+		if (nCount == 0)
 		{
-			fds = GPOINTER_TO_INT(wfds[i]);
-
-			if (fds > max_fds)
-				max_fds = fds;
-
-			FD_SET(fds, &wfds_set);
-		}
-
-		/* exit if nothing to do */
-		if (max_fds == 0)
-		{
+			fprintf(stderr, "freerdp_get_event_handles failed\n");
 			break;
 		}
 
-		/* do the wait */
-		if (select(max_fds + 1, &rfds_set, &wfds_set, NULL, NULL) == -1)
+		status = WaitForMultipleObjects(nCount, handles, FALSE, 100);
+
+		if (status == WAIT_FAILED)
 		{
-			/* these are not really errors */
-			if (!((errno == EAGAIN) ||
-				(errno == EWOULDBLOCK) ||
-				(errno == EINPROGRESS) ||
-				(errno == EINTR))) /* signal occurred */
+			fprintf(stderr, "WaitForMultipleObjects failed with %lu\n", (unsigned long)status);
+			break;
+		}
+
+		if (rfi->event_handle && WaitForSingleObject(rfi->event_handle, 0) == WAIT_OBJECT_0) {
+			if (!rf_process_event_queue(gp))
 			{
+				fprintf(stderr, "Failed to process local kb/mouse event queue\n");
 				break;
+			}
+			if (read(rfi->event_pipe[0], buf, sizeof (buf)))
+			{
 			}
 		}
 
-		/* check the libfreerdp fds */
-		if (!freerdp_check_fds(rfi->instance))
+		if (!freerdp_check_event_handles(rfi->instance->context))
 		{
-			break;
-		}
-		/* check channel fds */
-		if (!freerdp_channels_check_fds(channels, rfi->instance))
-		{
-			break;
-		}
-		/* check ui */
-		if (!rf_check_fds(gp))
-		{
+			fprintf(stderr, "Failed to check FreeRDP event handles\n");
 			break;
 		}
 	}

@@ -609,11 +609,17 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 		g_print("Error creating pipes.\n");
 		rfi->event_pipe[0] = -1;
 		rfi->event_pipe[1] = -1;
+		rfi->event_handle = NULL;
 	}
 	else
 	{
 		flags = fcntl(rfi->event_pipe[0], F_GETFL, 0);
 		fcntl(rfi->event_pipe[0], F_SETFL, flags | O_NONBLOCK);
+		rfi->event_handle = CreateFileDescriptorEvent(NULL, FALSE, FALSE, rfi->event_pipe[0], WINPR_FD_READ);
+		if (!rfi->event_handle)
+		{
+			g_print("CreateFileDescriptorEvent() failed\n");
+		}
 	}
 
 	rfi->object_table = g_hash_table_new_full(NULL, NULL, NULL, g_free);
@@ -628,7 +634,7 @@ void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpUiObject* ui;
 
-	if ( !rfi ) return;
+	if (!rfi) return;
 
 	/* unregister the clipboard monitor */
 	if (rfi->clipboard.clipboard_handler)
@@ -663,6 +669,13 @@ void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 	rfi->event_queue = NULL;
 	g_async_queue_unref(rfi->ui_queue);
 	rfi->ui_queue = NULL;
+
+	if (rfi->event_handle)
+	{
+		CloseHandle(rfi->event_handle);
+		rfi->event_handle = NULL;
+	}
+
 	close(rfi->event_pipe[0]);
 	close(rfi->event_pipe[1]);
 }
