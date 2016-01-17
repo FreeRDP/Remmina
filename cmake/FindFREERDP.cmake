@@ -19,7 +19,7 @@
 
 find_package(PkgConfig)
 if(PKG_CONFIG_FOUND)
-	pkg_check_modules(PC_FREERDP freerdp2>=${FREERDP_REQUIRED_VERSIONSTRING})
+	pkg_check_modules(PC_FREERDP freerdp>=${FREERDP_REQUIRED_VERSIONSTRING})
 endif()
 
 set(FREERDP_DEFINITIONS ${PC_FREERDP_CFLAGS_OTHER})
@@ -30,13 +30,13 @@ find_path(FREERDP_INCLUDE_DIR NAMES freerdp/freerdp.h
 find_path(WINPR_INCLUDE_DIR NAMES winpr/winpr.h
 	HINTS ${PC_FREERDP_INCLUDEDIR} ${PC_FREERDP_INCLUDE_DIRS} ${CMAKE_PREFIX_PATH}/include/winpr1/)
 
-find_library(FREERDP_LIBRARY NAMES freerdp2
+find_library(FREERDP_LIBRARY NAMES freerdp
 	HINTS ${PC_FREERDP_LIBDIR} ${PC_FREERDP_LIBRARY_DIRS})
 
-find_library(FREERDP_CLIENT_LIBRARY NAMES freerdp-client2
+find_library(FREERDP_CLIENT_LIBRARY NAMES freerdp-client
 	HINTS ${PC_FREERDP_LIBDIR} ${PC_FREERDP_LIBRARY_DIRS})
 
-find_library(FREERDP_WINPR_LIBRARY NAMES winpr1
+find_library(FREERDP_WINPR_LIBRARY NAMES winpr
 	HINTS ${PC_FREERDP_LIBDIR} ${PC_FREERDP_LIBRARY_DIRS})
 
 include(FindPackageHandleStandardArgs)
