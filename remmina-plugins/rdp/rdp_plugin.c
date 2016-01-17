@@ -230,44 +230,50 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 	settings = instance->settings;
 	channels = instance->context->channels;
 
-	settings->BitmapCacheEnabled = True;
-	settings->OffscreenSupportLevel = True;
+	settings->OsMajorType = OSMAJORTYPE_UNIX;
+	settings->OsMinorType = OSMINORTYPE_NATIVE_XSERVER;
 
 	ZeroMemory(settings->OrderSupport, 32);
-	settings->OrderSupport[NEG_DSTBLT_INDEX] = True;
-	settings->OrderSupport[NEG_PATBLT_INDEX] = True;
-	settings->OrderSupport[NEG_SCRBLT_INDEX] = True;
-	settings->OrderSupport[NEG_OPAQUE_RECT_INDEX] = True;
-	settings->OrderSupport[NEG_DRAWNINEGRID_INDEX] = False;
-	settings->OrderSupport[NEG_MULTIDSTBLT_INDEX] = False;
-	settings->OrderSupport[NEG_MULTIPATBLT_INDEX] = False;
-	settings->OrderSupport[NEG_MULTISCRBLT_INDEX] = False;
-	settings->OrderSupport[NEG_MULTIOPAQUERECT_INDEX] = True;
-	settings->OrderSupport[NEG_MULTI_DRAWNINEGRID_INDEX] = False;
-	settings->OrderSupport[NEG_LINETO_INDEX] = True;
-	settings->OrderSupport[NEG_POLYLINE_INDEX] = True;
+	settings->OrderSupport[NEG_DSTBLT_INDEX] = TRUE;
+	settings->OrderSupport[NEG_PATBLT_INDEX] = TRUE;
+	settings->OrderSupport[NEG_SCRBLT_INDEX] = TRUE;
+	settings->OrderSupport[NEG_OPAQUE_RECT_INDEX] = TRUE;
+	settings->OrderSupport[NEG_DRAWNINEGRID_INDEX] = FALSE;
+	settings->OrderSupport[NEG_MULTIDSTBLT_INDEX] = FALSE;
+	settings->OrderSupport[NEG_MULTIPATBLT_INDEX] = FALSE;
+	settings->OrderSupport[NEG_MULTISCRBLT_INDEX] = FALSE;
+	settings->OrderSupport[NEG_MULTIOPAQUERECT_INDEX] = TRUE;
+	settings->OrderSupport[NEG_MULTI_DRAWNINEGRID_INDEX] = FALSE;
+	settings->OrderSupport[NEG_LINETO_INDEX] = TRUE;
+	settings->OrderSupport[NEG_POLYLINE_INDEX] = TRUE;
 	settings->OrderSupport[NEG_MEMBLT_INDEX] = settings->BitmapCacheEnabled;
-	settings->OrderSupport[NEG_MEM3BLT_INDEX] = True;
+	settings->OrderSupport[NEG_MEM3BLT_INDEX] = (settings->SoftwareGdi) ? TRUE : FALSE;
 	settings->OrderSupport[NEG_MEMBLT_V2_INDEX] = settings->BitmapCacheEnabled;
-	settings->OrderSupport[NEG_MEM3BLT_V2_INDEX] = False;
-	settings->OrderSupport[NEG_SAVEBITMAP_INDEX] = False;
-	settings->OrderSupport[NEG_GLYPH_INDEX_INDEX] = True;
-	settings->OrderSupport[NEG_FAST_INDEX_INDEX] = True;
-	settings->OrderSupport[NEG_FAST_GLYPH_INDEX] = True;
-	settings->OrderSupport[NEG_POLYGON_SC_INDEX] = False;
-	settings->OrderSupport[NEG_POLYGON_CB_INDEX] = False;
-	settings->OrderSupport[NEG_ELLIPSE_SC_INDEX] = False;
-	settings->OrderSupport[NEG_ELLIPSE_CB_INDEX] = False;
+	settings->OrderSupport[NEG_MEM3BLT_V2_INDEX] = FALSE;
+	settings->OrderSupport[NEG_SAVEBITMAP_INDEX] = FALSE;
+	settings->OrderSupport[NEG_GLYPH_INDEX_INDEX] = TRUE;
+	settings->OrderSupport[NEG_FAST_INDEX_INDEX] = TRUE;
+	settings->OrderSupport[NEG_FAST_GLYPH_INDEX] = TRUE;
+	settings->OrderSupport[NEG_POLYGON_SC_INDEX] = (settings->SoftwareGdi) ? FALSE : TRUE;
+	settings->OrderSupport[NEG_POLYGON_CB_INDEX] = (settings->SoftwareGdi) ? FALSE : TRUE;
+	settings->OrderSupport[NEG_ELLIPSE_SC_INDEX] = FALSE;
+	settings->OrderSupport[NEG_ELLIPSE_CB_INDEX] = FALSE;
 
 	PubSub_SubscribeChannelConnected(instance->context->pubSub,
 		(pChannelConnectedEventHandler)remmina_rdp_OnChannelConnectedEventHandler);
 	PubSub_SubscribeChannelDisconnected(instance->context->pubSub,
 		(pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
 
-	freerdp_client_load_addins(channels, instance->settings);
-	freerdp_channels_pre_connect(channels, instance);
+	if (freerdp_client_load_addins(channels, instance->settings) < 0)
+		return FALSE;
 
-	return True;
+	if (freerdp_channels_pre_connect(channels, instance) < 0)
+		return FALSE;
+
+	if (!(instance->context->cache = cache_new(instance->settings)))
+		return FALSE;
+
+	return TRUE;
 }
 
 
@@ -290,9 +296,6 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 
 	flags = CLRCONV_ALPHA;
 
-	if (!(instance->context->cache = cache_new(rfi->settings)))
-		return FALSE;
-
 	if (rfi->settings->ColorDepth == 32)
 	{
 		flags |= CLRBUF_32BPP;
@@ -304,6 +307,9 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 		rfi->cairo_format = CAIRO_FORMAT_RGB16_565;
 	}
 
+	if (!rfi->settings->SoftwareGdi)
+		return FALSE;
+
 	if (!gdi_init(instance, flags, NULL))
 		return FALSE;
 
@@ -314,7 +320,9 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	pointer_cache_register_callbacks(instance->update);
 
 	remmina_rdp_clipboard_init(rfi);
-	freerdp_channels_post_connect(instance->context->channels, instance);
+	if (freerdp_channels_post_connect(instance->context->channels, instance) < 0)
+		return FALSE;
+
 	rfi->connected = True;
 
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
@@ -331,7 +339,13 @@ static void remmina_rdp_post_disconnect(freerdp* instance)
 	rfContext* rfi = (rfContext*) instance->context;
 
 	gdi_free(instance);
-	cache_free(instance->context->cache);
+
+	if (instance->context->cache)
+	{
+		cache_free(instance->context->cache);
+		instance->context->cache = NULL;
+	}
+
 	freerdp_clrconv_free(rfi->clrconv);
 }
 
@@ -577,7 +591,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		return FALSE;
 
 	remmina_plugin_service->get_server_port(s, 3389, &host, &port);
-	argc = add_argv(argc, &argv, "remmina", "");
+	argc = add_argv(argc, &argv, "remmina", ""); /* Dummy entry for command name */
+	argc = add_argv(argc, &argv, "/codec-cache:", "nsc");
+
 	argc = add_argv(argc, &argv, "/v:", host);
 	tmp = g_strdup_printf("%d", port);
 	argc = add_argv(argc, &argv, "/port:", tmp);
@@ -619,6 +635,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		argc = add_argv(argc, &argv, "/gfx", "");
 	case 0:
 		argc = add_argv(argc, &argv, "/rfx", "");
+		argc = add_argv(argc, &argv, "/codec-cache:", "rfx");
 		ColorDepth = 32;
 	default:
 		tmp = g_strdup_printf("%d", ColorDepth);
@@ -953,7 +970,13 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	instance->ContextNew = remmina_rdp_context_new;
 	instance->ContextFree = remmina_rdp_context_free;
 	instance->ContextSize = sizeof(rfContext);
-	freerdp_context_new(instance);
+	
+	if (!freerdp_context_new(instance))
+		return;
+
+	if (freerdp_register_addin_provider(freerdp_channels_load_static_addin_entry, 0) != 0)
+		return;
+
 	rfi = (rfContext*) instance->context;
 
 	g_object_set_data_full(G_OBJECT(gp), "plugin-data", rfi, free);
