@@ -131,11 +131,8 @@ struct rf_context
 	RDP_PLUGIN_DATA drdynvc_data[5];
 	gchar rdpsnd_options[20];
 
-	RFX_CONTEXT* rfx_context;
-
 	gboolean connected;
 
-	gboolean sw_gdi;
 	GtkWidget* drawing_area;
 	gint scale_width;
 	gint scale_height;
@@ -156,7 +153,6 @@ struct rf_context
 	gint scanline_pad;
 	gint* colormap;
 	HCLRCONV clrconv;
-	UINT8* primary_buffer;
 
 	guint object_id_seq;
 	GHashTable* object_table;

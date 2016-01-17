@@ -34,10 +34,9 @@
  */
 
 #include "rdp_plugin.h"
-#include "rdp_gdi.h"
 #include "rdp_event.h"
-#include "rdp_graphics.h"
 #include "rdp_file.h"
+#include "rdp_graphics.h"
 #include "rdp_settings.h"
 #include "rdp_cliprdr.h"
 #include "rdp_channels.h"
@@ -141,21 +140,6 @@ int rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj)
 {
 	TRACE_CALL("rf_object_free");
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-
-	switch (obj->type)
-	{
-		case REMMINA_RDP_UI_RFX:
-			rfx_message_free(rfi->rfx_context, obj->rfx.message);
-			break;
-
-		case REMMINA_RDP_UI_NOCODEC:
-			free(obj->nocodec.bitmap);
-			break;
-
-		default:
-			break;
-	}
 
 	g_free(obj);
 }
@@ -172,8 +156,8 @@ BOOL rf_begin_paint(rdpContext* context)
 BOOL rf_end_paint(rdpContext* context)
 {
 	TRACE_CALL("rf_end_paint");
-	INT32 x, y;
-	UINT32 w, h;
+	INT32 x1 = INT_MAX, y1 = INT_MAX, x2 = 0, y2 = 0, i, ninvalid;
+	HGDI_RGN cinvalid;
 	rdpGdi* gdi;
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
@@ -186,17 +170,23 @@ BOOL rf_end_paint(rdpContext* context)
 	if (gdi->primary->hdc->hwnd->invalid->null)
 		return FALSE;
 
-	x = gdi->primary->hdc->hwnd->invalid->x;
-	y = gdi->primary->hdc->hwnd->invalid->y;
-	w = gdi->primary->hdc->hwnd->invalid->w;
-	h = gdi->primary->hdc->hwnd->invalid->h;
+	ninvalid = gdi->primary->hdc->hwnd->ninvalid;
+	cinvalid = gdi->primary->hdc->hwnd->cinvalid;
+
+	for (i=0; i < ninvalid; i++)
+	{
+		x1 = MIN(x1, cinvalid[i].x);
+		y1 = MIN(x1, cinvalid[i].y);
+		x2 = MAX(x2, cinvalid[i].x + cinvalid[i].w);
+		y2 = MAX(y2, cinvalid[i].y + cinvalid[i].h);
+	}
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_UPDATE_REGION;
-	ui->region.x = x;
-	ui->region.y = y;
-	ui->region.width = w;
-	ui->region.height = h;
+	ui->region.x = x1;
+	ui->region.y = y1;
+	ui->region.width = x2 - x1;
+	ui->region.height = y2 - y1;
 
 	rf_queue_ui(rfi->protocol_widget, ui);
 
@@ -238,17 +228,16 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 	TRACE_CALL("remmina_rdp_pre_connect");
 	rfContext* rfi;
 	ALIGN64 rdpSettings* settings;
-	RemminaProtocolWidget* gp;
 	rdpChannels *channels;
 
 	rfi = (rfContext*) instance->context;
 	settings = instance->settings;
-	gp = rfi->protocol_widget;
 	channels = instance->context->channels;
 
 	settings->BitmapCacheEnabled = True;
 	settings->OffscreenSupportLevel = True;
 
+	ZeroMemory(settings->OrderSupport, 32);
 	settings->OrderSupport[NEG_DSTBLT_INDEX] = True;
 	settings->OrderSupport[NEG_PATBLT_INDEX] = True;
 	settings->OrderSupport[NEG_SCRBLT_INDEX] = True;
@@ -274,26 +263,13 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 	settings->OrderSupport[NEG_ELLIPSE_SC_INDEX] = False;
 	settings->OrderSupport[NEG_ELLIPSE_CB_INDEX] = False;
 
-	if (settings->RemoteFxCodec == True)
-	{
-		settings->FrameAcknowledge = False;
-		settings->LargePointerFlag = True;
-		settings->PerformanceFlags = PERF_FLAG_NONE;
-
-		rfi->rfx_context = rfx_context_new(FALSE);
-	}
-
 	PubSub_SubscribeChannelConnected(instance->context->pubSub,
 		(pChannelConnectedEventHandler)remmina_rdp_OnChannelConnectedEventHandler);
 	PubSub_SubscribeChannelDisconnected(instance->context->pubSub,
 		(pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
 
-	freerdp_client_load_addins(instance->context->channels, instance->settings);
-	freerdp_channels_pre_connect(instance->context->channels, instance);
-
-	rfi->clrconv = freerdp_clrconv_new(CLRCONV_ALPHA);
-
-	instance->context->cache = cache_new(instance->settings);
+	freerdp_client_load_addins(channels, instance->settings);
+	freerdp_channels_pre_connect(channels, instance);
 
 	return True;
 }
@@ -305,7 +281,6 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
 	RemminaPluginRdpUiObject* ui;
-	rdpGdi* gdi;
 	UINT32 flags;
 
 	rfi = (rfContext*) instance->context;
@@ -315,14 +290,17 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	rfi->height = rfi->settings->DesktopHeight;
 	rfi->srcBpp = rfi->settings->ColorDepth;
 
-	if (rfi->settings->RemoteFxCodec == FALSE)
-		rfi->sw_gdi = TRUE;
+	rfi->settings->SoftwareGdi = TRUE;
 
+	rfi->clrconv = freerdp_clrconv_new(CLRCONV_ALPHA);
 	rf_register_graphics(instance->context->graphics);
 
 	flags = CLRCONV_ALPHA;
 
-	if (rfi->bpp == 32)
+	if (!(instance->context->cache = cache_new(rfi->settings)))
+		return FALSE;
+
+	if (rfi->settings->ColorDepth == 32)
 	{
 		flags |= CLRBUF_32BPP;
 		rfi->cairo_format = CAIRO_FORMAT_ARGB32;
@@ -333,27 +311,14 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 		rfi->cairo_format = CAIRO_FORMAT_RGB16_565;
 	}
 
-	gdi_init(instance, flags, NULL);
-	gdi = instance->context->gdi;
-	rfi->primary_buffer = gdi->primary_buffer;
-
-	rfi->hdc = gdi_GetDC();
-	rfi->hdc->bitsPerPixel = rfi->bpp;
-	rfi->hdc->bytesPerPixel = rfi->bpp / 8;
-
-	rfi->hdc->hwnd = (HGDI_WND) malloc(sizeof(GDI_WND));
-	rfi->hdc->hwnd->invalid = gdi_CreateRectRgn(0, 0, 0, 0);
-	rfi->hdc->hwnd->invalid->null = 1;
-
-	rfi->hdc->hwnd->count = 32;
-	rfi->hdc->hwnd->cinvalid = (HGDI_RGN) malloc(sizeof(GDI_RGN) * rfi->hdc->hwnd->count);
-	rfi->hdc->hwnd->ninvalid = 0;
-
-	pointer_cache_register_callbacks(instance->update);
+	if (!gdi_init(instance, flags, NULL))
+		return FALSE;
 
 	instance->update->BeginPaint = rf_begin_paint;
 	instance->update->EndPaint = rf_end_paint;
 	instance->update->DesktopResize = rf_desktop_resize;
+
+	pointer_cache_register_callbacks(instance->update);
 
 	remmina_rdp_clipboard_init(rfi);
 	freerdp_channels_post_connect(instance->context->channels, instance);
@@ -365,7 +330,16 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	ui->type = REMMINA_RDP_UI_CONNECTED;
 	rf_queue_ui(gp, ui);
 
-	return True;
+	return TRUE;
+}
+
+static void remmina_rdp_post_disconnect(freerdp* instance)
+{
+	rfContext* rfi = (rfContext*) instance->context;
+
+	gdi_free(instance);
+	cache_free(instance->context->cache);
+	freerdp_clrconv_free(rfi->clrconv);
 }
 
 static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** password, char** domain)
@@ -627,10 +601,21 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	rfi->settings->ServerPort = port;
 	rfi->settings->ColorDepth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 0);
 
-	if (rfi->settings->ColorDepth == 0)
+	switch (rfi->settings->ColorDepth)
 	{
-		rfi->settings->RemoteFxCodec = True;
+	case 2:
+		rfi->settings->GfxH264 = TRUE;
+	case 1:
+		rfi->settings->SupportGraphicsPipeline = TRUE;
+	case 0:
+		rfi->settings->RemoteFxCodec = TRUE;
+		rfi->settings->FastPathOutput = TRUE;
 		rfi->settings->ColorDepth = 32;
+		rfi->settings->LargePointerFlag = TRUE;
+		rfi->settings->FrameMarkerCommandEnabled = TRUE;
+		break;
+	default:
+		break;
 	}
 
 	rfi->settings->DesktopWidth = remmina_plugin_service->file_get_int(remminafile, "resolution_width", 1024);
@@ -974,6 +959,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	instance = freerdp_new();
 	instance->PreConnect = remmina_rdp_pre_connect;
 	instance->PostConnect = remmina_rdp_post_connect;
+	instance->PostDisconnect = remmina_rdp_post_disconnect;
 	instance->Authenticate = remmina_rdp_authenticate;
 	instance->VerifyCertificate = remmina_rdp_verify_certificate;
 	instance->VerifyChangedCertificate = remmina_rdp_verify_changed_certificate;
@@ -991,8 +977,6 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	rfi->connected = False;
 
 	pthread_mutex_init(&rfi->mutex, NULL);
-
-	freerdp_register_addin_provider(freerdp_channels_load_static_addin_entry, 0);
 
 	remmina_rdp_event_init(gp);
 }
@@ -1053,11 +1037,6 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 	}
 
 	remmina_rdp_clipboard_free(rfi);
-	if (rfi->rfx_context)
-	{
-		rfx_context_free(rfi->rfx_context);
-		rfi->rfx_context = NULL;
-	}
 
 	/* We allocated CertificateName with strdup, so we must free it */
 	if (rfi->settings->CertificateName)
@@ -1065,11 +1044,6 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 
 	if (instance)
 	{
-		gdi_free(instance);
-		cache_free(instance->context->cache);
-		instance->context->cache = NULL;
-		freerdp_clrconv_free(rfi->clrconv);
-		rfi->clrconv = NULL;
 		if (instance->context->channels) {
 			freerdp_channels_free(instance->context->channels);
 			instance->context->channels = NULL;
@@ -1151,6 +1125,8 @@ static gpointer colordepth_list[] =
 	"24", N_("True color (24 bpp)"),
 	"32", N_("True color (32 bpp)"),
 	"0", N_("RemoteFX (32 bpp)"),
+	"1", N_("RemoteFX [GFX] (32 bpp)"),
+	"2", N_("H264 [GFX] (32 bpp)"),
 	NULL
 };
 

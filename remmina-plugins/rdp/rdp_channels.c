@@ -37,6 +37,7 @@
 #include "rdp_channels.h"
 
 #include <freerdp/freerdp.h>
+#include <freerdp/gdi/gfx.h>
 #include <freerdp/channels/channels.h>
 #include <freerdp/client/cliprdr.h>
 
@@ -56,13 +57,10 @@ void remmina_rdp_OnChannelConnectedEventHandler(rdpContext* context, ChannelConn
 	}
 	else if (g_strcmp0(e->name, RDPGFX_DVC_CHANNEL_NAME) == 0)
 	{
-		g_print("Unimplemented: channel %s connected but we can't use it\n", e->name);
-		/*
-		if (settings->SoftwareGdi)
+		if (rfi->settings->SoftwareGdi)
 			gdi_graphics_pipeline_init(context->gdi, (RdpgfxClientContext*) e->pInterface);
 		else
-			xf_graphics_pipeline_init(xfc, (RdpgfxClientContext*) e->pInterface);
-		*/
+		    g_print("Unimplemented: channel %s connected but we can't use it\n", e->name);
 	}
 	else if (g_strcmp0(e->name, RAIL_SVC_CHANNEL_NAME) == 0)
 	{
@@ -82,5 +80,13 @@ void remmina_rdp_OnChannelConnectedEventHandler(rdpContext* context, ChannelConn
 
 void remmina_rdp_OnChannelDisconnectedEventHandler(rdpContext* context, ChannelConnectedEventArgs* e)
 {
+	rfContext* rfi = (rfContext*) context;
 
+	if (g_strcmp0(e->name, RDPGFX_DVC_CHANNEL_NAME) == 0)
+	{
+		if (rfi->settings->SoftwareGdi)
+			gdi_graphics_pipeline_uninit(context->gdi, (RdpgfxClientContext*) e->pInterface);
+		else
+		    g_print("Unimplemented: channel %s connected but we can't use it\n", e->name);
+	}
 }
