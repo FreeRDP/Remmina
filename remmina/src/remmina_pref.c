@@ -98,12 +98,18 @@ static void remmina_pref_gen_uid(void)
 	gchar buf[64];
 	gchar *content;
 	gsize length;
+	const char *env_lang;
+
+	env_lang = g_getenv ("LANG");
+	if (env_lang == NULL)
+		env_lang = "NA";
 
 	struct utsname name;
 	uname(&name);
 
-	g_snprintf (buf, sizeof(buf), "%s+%s+%s+%x%x%x%x%x%x%x%x",
+	g_snprintf (buf, sizeof(buf), "%s+%s+%s+%s+%x%x%x%x%x%x%x%x",
 			name.sysname, name.release, name.machine,
+			env_lang,
 			g_random_int_range(0,9),
 			g_random_int_range(0,9),
 			g_random_int_range(0,9),
