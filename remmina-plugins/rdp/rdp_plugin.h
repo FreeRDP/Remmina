@@ -142,7 +142,6 @@ struct rf_context
 	gboolean use_client_keymap;
 
 	HGDI_DC hdc;
-	gint srcBpp;
 	GdkDisplay* display;
 	GdkVisual* visual;
 	cairo_surface_t* surface;
