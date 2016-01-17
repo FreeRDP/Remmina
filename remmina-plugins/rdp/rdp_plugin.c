@@ -904,7 +904,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	}
 
-	if ( remmina_plugin_service->file_get_int(remminafile, "microphone", FALSE) ? FALSE: TRUE )
+	if ( remmina_plugin_service->file_get_int(remminafile, "microphone", FALSE) ? TRUE : FALSE )
 	{
 		char* p[1];
 		int count;

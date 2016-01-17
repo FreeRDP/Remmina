@@ -93,6 +93,10 @@ static void remmina_rdp_file_import_field(RemminaFile* remminafile, const gchar*
 				break;
 		}
 	}
+	else if (g_strcmp0(key, "microphone") == 0)
+	{
+		remmina_plugin_service->file_set_int(remminafile, "microphone", (atoi (value) == 1));
+    }
 	else if (g_strcmp0(key, "redirectprinters") == 0)
 	{
 		remmina_plugin_service->file_set_int(remminafile, "shareprinter", (atoi (value) == 1));
@@ -295,6 +299,7 @@ gboolean remmina_rdp_file_export_channel(RemminaFile* remminafile, FILE* fp)
 		fprintf(fp, "audiomode:i:1\r\n");
 	else
 		fprintf(fp, "audiomode:i:2\r\n");
+	fprintf(fp, "microphone:i:%i\r\n", remmina_plugin_service->file_get_int(remminafile, "microphone", FALSE) ? 1 : 0);
 	fprintf(fp, "redirectprinters:i:%i\r\n", remmina_plugin_service->file_get_int(remminafile, "shareprinter", FALSE) ? 1 : 0);
 	fprintf(fp, "redirectsmartcard:i:%i\r\n", remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE) ? 1 : 0);
 	fprintf(fp, "redirectcomports:i:0\r\n");
