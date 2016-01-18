@@ -101,7 +101,8 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 			mainwindow = remmina_main_get_window();
 			if ( remmina_survey )
 			{
-				remmina_survey_on_startup(GTK_WINDOW(mainwindow));
+				/* test if network is up and start survey */
+				remmina_survey_cb(GTK_WINDOW(mainwindow));
 				remmina_survey = FALSE;
 			}
 		}

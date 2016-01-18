@@ -138,6 +138,40 @@ end_repl_str:
 	return ret;
 }
 
+static void remmina_survey_connect_done_cb(GObject *source_object, GAsyncResult *result, gpointer user_data)
+{
+	TRACE_CALL("remmina_survey_connect_done_cb");
+	GError * error = NULL;
+	GSocketConnection * connection = NULL;
+	GSocketClient *client = G_SOCKET_CLIENT (source_object);
+
+	connection = g_socket_client_connect_to_host_finish (client, result, &error);
+
+	if (connection == NULL) {
+		//g_print ("\nConnection NOT successful!\n");
+		return;
+	}
+	else {
+		//g_print ("\nConnection successful!\n");
+		remmina_survey_on_startup(user_data);
+	}
+}
+
+gboolean remmina_survey_cb(gpointer data)
+{
+	TRACE_CALL("remmina_survey_cb");
+	/* create a new connection */
+	GSocketClient * client = g_socket_client_new();
+
+	/* connect to the host */
+	g_socket_client_connect_to_host_async (client,
+			(gchar*)"www.remmina.org",
+			80, /* your port goes here */
+			NULL,
+			remmina_survey_connect_done_cb, data);
+	return TRUE;
+}
+
 /* Get the dirname where remmina files are stored TODO: fix xdg in all files */
 static const gchar *remmina_get_datadir()
 {
