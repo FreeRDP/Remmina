@@ -138,40 +138,6 @@ end_repl_str:
 	return ret;
 }
 
-static void remmina_survey_connect_done_cb(GObject *source_object, GAsyncResult *result, gpointer user_data)
-{
-	TRACE_CALL("remmina_survey_connect_done_cb");
-	GError * error = NULL;
-	GSocketConnection * connection = NULL;
-	GSocketClient *client = G_SOCKET_CLIENT (source_object);
-
-	connection = g_socket_client_connect_to_host_finish (client, result, &error);
-
-	if (connection == NULL) {
-		//g_print ("\nConnection NOT successful!\n");
-		return;
-	}
-	else {
-		//g_print ("\nConnection successful!\n");
-		remmina_survey_on_startup(user_data);
-	}
-}
-
-gboolean remmina_survey_cb(gpointer data)
-{
-	TRACE_CALL("remmina_survey_cb");
-	/* create a new connection */
-	GSocketClient * client = g_socket_client_new();
-
-	/* connect to the host */
-	g_socket_client_connect_to_host_async (client,
-			(gchar*)"www.remmina.org",
-			80, /* your port goes here */
-			NULL,
-			remmina_survey_connect_done_cb, data);
-	return TRUE;
-}
-
 /* Get the dirname where remmina files are stored TODO: fix xdg in all files */
 static const gchar *remmina_get_datadir()
 {
@@ -380,47 +346,6 @@ static void remmina_survey_submit_form_callback(WebKitWebView *web_view, WebKitF
 
 }
 
-/* Show the preliminary survey dialog when remmina start */
-void remmina_survey_on_startup(GtkWindow *parent)
-{
-	TRACE_CALL("remmina_survey");
-
-	GtkWidget *dialog, *check;
-
-	dialog = gtk_message_dialog_new(GTK_WINDOW (parent),
-					GTK_DIALOG_DESTROY_WITH_PARENT,
-					GTK_MESSAGE_QUESTION,
-					GTK_BUTTONS_YES_NO,
-					"%s",
-					/* translators: Primary message of a dialog used to notify the user about the survey */
-					_("We are conducting a user survey\n would you like to take it now?"));
-
-	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), "%s",
-			/* translators: Secondary text of a dialog used to notify the user about the survey */
-			_("If not, you can always find it in the Help menu."));
-
-	check = gtk_check_button_new_with_mnemonic (_("_Do not show this dialog again"));
-	gtk_box_pack_end (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))),
-			check, FALSE, FALSE, 0);
-	gtk_widget_set_halign (check, GTK_ALIGN_START);
-	gtk_widget_set_margin_start (check, 6);
-	gtk_widget_show (check);
-
-	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
-	{
-		remmina_survey_start(parent);
-	}
-
-	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check)))
-	{
-		/* Save survey option */
-		remmina_pref.survey = FALSE;
-		remmina_pref_save();
-	}
-
-	gtk_widget_destroy(dialog);
-}
-
 void remmina_survey_start(GtkWindow *parent)
 {
 	TRACE_CALL("remmina_survey_start");
@@ -478,3 +403,79 @@ void remmina_survey_start(GtkWindow *parent)
 	webkit_web_view_load_uri(web_view, localurl);
 	g_object_unref(G_OBJECT(remmina_survey->builder));
 }
+
+/* Show the preliminary survey dialog when remmina start */
+void remmina_survey_on_startup(GtkWindow *parent)
+{
+	TRACE_CALL("remmina_survey");
+
+	GtkWidget *dialog, *check;
+
+	dialog = gtk_message_dialog_new(GTK_WINDOW (parent),
+					GTK_DIALOG_DESTROY_WITH_PARENT,
+					GTK_MESSAGE_QUESTION,
+					GTK_BUTTONS_YES_NO,
+					"%s",
+					/* translators: Primary message of a dialog used to notify the user about the survey */
+					_("Do you agree to share some usage statistics with us?"));
+
+	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), "%s",
+			/* translators: Secondary text of a dialog used to notify the user about the survey */
+			_("By pressing the yes button, you're not yet sending any data."));
+
+	check = gtk_check_button_new_with_mnemonic (_("_Do not show this dialog again"));
+	gtk_box_pack_end (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))),
+			check, FALSE, FALSE, 0);
+	gtk_widget_set_halign (check, GTK_ALIGN_START);
+	gtk_widget_set_margin_start (check, 6);
+	gtk_widget_show (check);
+
+	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
+	{
+		remmina_survey_start(parent);
+	}
+
+	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check)))
+	{
+		/* Save survey option */
+		remmina_pref.survey = FALSE;
+		remmina_pref_save();
+	}
+
+	gtk_widget_destroy(dialog);
+}
+
+static void remmina_survey_connect_done_cb(GObject *source_object, GAsyncResult *result, gpointer user_data)
+{
+	TRACE_CALL("remmina_survey_connect_done_cb");
+	GError * error = NULL;
+	GSocketConnection * connection = NULL;
+	GSocketClient *client = G_SOCKET_CLIENT (source_object);
+
+	connection = g_socket_client_connect_to_host_finish (client, result, &error);
+
+	if (connection == NULL) {
+		//g_print ("\nConnection NOT successful!\n");
+		return;
+	}
+	else {
+		//g_print ("\nConnection successful!\n");
+		remmina_survey_on_startup(user_data);
+	}
+}
+
+gboolean remmina_survey_cb(gpointer data)
+{
+	TRACE_CALL("remmina_survey_cb");
+	/* create a new connection */
+	GSocketClient * client = g_socket_client_new();
+
+	/* connect to the host */
+	g_socket_client_connect_to_host_async (client,
+			(gchar*)"www.remmina.org",
+			80, /* your port goes here */
+			NULL,
+			remmina_survey_connect_done_cb, data);
+	return TRUE;
+}
+
