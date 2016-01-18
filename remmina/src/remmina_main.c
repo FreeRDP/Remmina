@@ -890,6 +890,12 @@ void remmina_main_on_action_help_wiki(GtkAction *action, gpointer user_data)
 	g_app_info_launch_default_for_uri("https://github.com/FreeRDP/Remmina/wiki", NULL, NULL);
 }
 
+void remmina_main_on_action_help_gplus(GtkAction *action, gpointer user_data)
+{
+	TRACE_CALL("remmina_main_on_action_help_gplus");
+	g_app_info_launch_default_for_uri("https://plus.google.com/communities/106276095923371962010", NULL, NULL);
+}
+
 void remmina_main_on_action_help_donations(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_help_donations");
