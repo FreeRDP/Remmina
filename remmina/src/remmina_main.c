@@ -915,7 +915,7 @@ static gboolean remmina_main_quickconnect(void)
 	remmina_file_set_string(remminafile, "name", server);
 	remmina_file_set_string(remminafile, "protocol",
 	                        gtk_combo_box_text_get_active_text(remminamain->combo_quick_connect_protocol));
-
+    g_free(server);
 	remmina_connection_window_open_from_file(remminafile);
 
 	return FALSE;

@@ -100,9 +100,12 @@ static gboolean remmina_external_tools_launcher(const gchar* filename, const gch
 	TRACE_CALL("remmina_external_tools_launcher");
 	RemminaFile *remminafile;
 	const char *env_format = "%s=%s";
-	char *env;
+	char **env1 = NULL, *env2 = NULL;
 	size_t envstrlen;
 	gchar launcher[MAX_PATH_LEN];
+    gboolean rc = FALSE;
+    size_t i = 0, envvars = 0, alloc = 0;
+    gchar *cmd = NULL;
 
 	g_snprintf(launcher, MAX_PATH_LEN, "%s/launcher.sh", REMMINA_EXTERNAL_TOOLS_DIR);
 
@@ -112,47 +115,60 @@ static gboolean remmina_external_tools_launcher(const gchar* filename, const gch
 	g_hash_table_iter_init(&iter, remminafile->settings);
 	while (g_hash_table_iter_next(&iter, (gpointer*) &key, (gpointer*) &value))
 	{
-		envstrlen = strlen(key) +strlen(value) + strlen(env_format) + 1;
-		env = (char *) malloc(envstrlen);
-		if (env == NULL)
-		{
-			return -1;
-		}
+        char **tmp = realloc(env1, (alloc + 10) * sizeof(char*));
+        if (!tmp)
+            goto cleanup;
 
-		int retval = snprintf(env, envstrlen, env_format, key,value);
-		if (retval > 0 && (size_t) retval <= envstrlen)
-		{
-			if (putenv(env) !=0)
-			{
-				/* If putenv fails, we must free the unused space */
-				free(env);
-			}
-		}
+        env1 = tmp;
+        memset(&env1[alloc], 0, 10 * sizeof(char*));
+        alloc += 10;
+
+        i = envvars++;
+		envstrlen = strlen(key) +strlen(value) + strlen(env_format) + 1;
+		env1[i] = (char *) malloc(envstrlen);
+		if (env1[i] == NULL)
+            goto cleanup;
+
+		int retval = snprintf(env1[i], envstrlen, env_format, key,value);
+		if (retval <= 0 || (size_t) retval > envstrlen)
+            goto cleanup;
+
+        if (putenv(env1[i]) != 0)
+            goto cleanup;
 	}
 	/* Adds the window title for the terminal window */
 	const char *term_title_key = "remmina_term_title";
 	const char *term_title_val_prefix = "Remmina external tool";
 	envstrlen = strlen(term_title_key) + strlen(term_title_val_prefix) + strlen(shortname) + 7;
-	env = (char *) malloc(envstrlen);
-	if (env != NULL)
-	{
-		if (snprintf(env, envstrlen, "%s=%s: %s", term_title_key, term_title_val_prefix, shortname) )
-		{
-			if (putenv(env) != 0)
-			{
-				/* If putenv fails, we must free the unused space */
-				free(env);
-			}
-		}
-	}
+    if (envstrlen)
+    {
+        env2 = (char *) malloc(envstrlen);
+        if (env2 == NULL)
+            goto cleanup;
+
+        if (snprintf(env2, envstrlen, "%s=%s: %s", term_title_key, term_title_val_prefix, shortname) == 0)
+            goto cleanup;
+            
+        if (putenv(env2) != 0)
+            goto cleanup;
+    }
 
 	const size_t cmdlen = strlen(launcher) +strlen(scriptname) + 2;
-	gchar *cmd = (gchar *)malloc(cmdlen);
+	cmd = (gchar *)malloc(cmdlen);
+    if (!cmd)
+        goto cleanup;
 	g_snprintf(cmd, cmdlen, "%s %s", launcher, scriptname);
 	system(cmd);
+
+    rc = TRUE;
+
+cleanup:
+	remmina_file_free(remminafile);
+    for (i=0; i<envvars; i++)
+        free(env1[i]);
+    free(env1);
+    free(env2);
 	free(cmd);
 
-	remmina_file_free(remminafile);
-
-	return TRUE;
+	return rc;
 }
