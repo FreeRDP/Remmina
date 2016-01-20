@@ -338,15 +338,23 @@ static void remmina_rdp_post_disconnect(freerdp* instance)
 {
 	rfContext* rfi = (rfContext*) instance->context;
 
-	gdi_free(instance);
-
-	if (instance->context->cache)
-	{
-		cache_free(instance->context->cache);
-		instance->context->cache = NULL;
+	if (rfi->hdc) {
+		gdi_DeleteDC(rfi->hdc);
+		rfi->hdc = NULL;
 	}
 
-	freerdp_clrconv_free(rfi->clrconv);
+	if (instance) {
+        gdi_free(instance);
+
+        if (instance->context->cache)
+        {
+            cache_free(instance->context->cache);
+            instance->context->cache = NULL;
+        }
+
+        freerdp_clrconv_free(rfi->clrconv);
+	}
+
 }
 
 static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** password, char** domain)
@@ -495,6 +503,8 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 			break;
 		}
 	}
+
+	freerdp_disconnect(rfi->instance);
 }
 
 /* Send CTRL+ALT+DEL keys keystrokes to the plugin drawing_area widget */
@@ -1018,46 +1028,30 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 	freerdp* instance;
 
 	instance = rfi->instance;
-	if (rfi->thread)
-	{
-		rfi->thread_cancelled = TRUE;	// Avoid all rf_queue function to run
-		pthread_cancel(rfi->thread);
-
-		if (rfi->thread)
-			pthread_join(rfi->thread, NULL);
-
-	}
-
-
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
-
 	if (instance)
 	{
+		freerdp_abort_connect(instance);
 		if ( rfi->connected ) {
-			freerdp_disconnect(instance);
 			rfi->connected = False;
 		}
 	}
-
-	if (rfi->hdc) {
-		gdi_DeleteDC(rfi->hdc);
-		rfi->hdc = NULL;
-	}
+	
+	if (rfi->thread)
+		pthread_join(rfi->thread, NULL);
 
 	remmina_rdp_clipboard_free(rfi);
 
 	pthread_mutex_destroy(&rfi->mutex);
 
+	
+	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 	/* Destroy event queue. Pending async events will be discarded. Should we flush it ? */
 	remmina_rdp_event_uninit(gp);
-
-	if (instance) {
-		freerdp_context_free(instance); /* context is rfContext* rfi */
-		freerdp_free(instance); /* This implicitly frees instance->context and rfi is no longer valid */
-	}
-
 	/* Remove instance->context from gp object data to avoid double free */
 	g_object_steal_data(G_OBJECT(gp), "plugin-data");
+
+	freerdp_context_free(instance); /* context is rfContext* rfi */
+	freerdp_free(instance); /* This implicitly frees instance->context and rfi is no longer valid */
 
 	return FALSE;
 }
