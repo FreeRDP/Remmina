@@ -110,4 +110,5 @@ gboolean remmina_public_resolution_validation_func(const gchar *new_str, gchar *
 /* Replaces all occurences of search in a new copy of string by replacement
  * and overwrites the original string */
 void remmina_public_str_replace_in_place(gchar *string, const gchar *search, const gchar *replacement);
+gint remmina_public_count_profile();
 #endif  /* __REMMINAPUBLIC_H__  */

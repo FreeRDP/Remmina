@@ -191,6 +191,7 @@ static gchar *remmina_survey_files_iter_setting()
 	gchar filename[PATH_MAX];
 	const gchar *dir_entry;
 
+	/* TODO: Substitute with remmina_public_count_profile() */
 	gint count_file=0;
 
 	gchar *name;
