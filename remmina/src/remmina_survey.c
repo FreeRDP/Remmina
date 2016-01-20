@@ -33,6 +33,8 @@
  *
  */
 
+#include "config.h"
+
 #include <ctype.h>
 #include <errno.h>
 #include <gio/gio.h>
@@ -44,7 +46,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <webkit2/webkit2.h>
-#include "config.h"
+
 #include "remmina_file.h"
 #include "remmina_pref.h"
 #include "remmina_public.h"
