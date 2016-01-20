@@ -225,6 +225,9 @@ static gboolean remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 	RemminaFile* remminafile;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
+	if (!rfi)
+		return False;
+
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	gtk_widget_get_allocation(GTK_WIDGET(gp), &a);
@@ -686,7 +689,12 @@ void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 static void remmina_rdp_event_create_cairo_surface(rfContext* rfi)
 {
 	int stride;
-	rdpGdi* gdi = ((rdpContext *)rfi)->gdi;
+	rdpGdi* gdi;
+    
+    gdi = ((rdpContext *)rfi)->gdi;
+    if (!rfi || !gdi)
+        return;
+
 	if (rfi->surface) {
 		cairo_surface_destroy(rfi->surface);
 		rfi->surface = NULL;

@@ -151,6 +151,7 @@ static void remmina_protocol_widget_destroy(RemminaProtocolWidget* gp, gpointer 
 	g_free(gp->priv->features);
 	g_free(gp->priv->error_message);
 	g_free(gp->priv);
+	gp->priv = NULL;
 }
 
 static void remmina_protocol_widget_connect(RemminaProtocolWidget* gp, gpointer data)
@@ -933,6 +934,9 @@ gboolean remmina_protocol_widget_is_closed(RemminaProtocolWidget* gp)
 RemminaFile* remmina_protocol_widget_get_file(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_protocol_widget_get_file");
+	if (!gp || !gp->priv)
+		return NULL;
+
 	return gp->priv->remmina_file;
 }
 
