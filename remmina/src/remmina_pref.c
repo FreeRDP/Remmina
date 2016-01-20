@@ -33,12 +33,15 @@
  *
  */
 
-#include <gtk/gtk.h>
-#include <gdk/gdkkeysyms.h>
+#include "config.h"
+
 #include <stdlib.h>
 #include <string.h>
 #include <sys/utsname.h>
-#include "config.h"
+
+#include <gdk/gdkkeysyms.h>
+#include <gtk/gtk.h>
+
 #include "remmina_public.h"
 #include "remmina_string_array.h"
 #include "remmina_pref.h"
