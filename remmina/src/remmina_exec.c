@@ -154,6 +154,18 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		remmina_about_open(NULL);
 		break;
 
+	case REMMINA_COMMAND_VERSION:
+		mainwindow = remmina_main_get_window();
+		if (mainwindow)
+		{
+			remmina_about_open(NULL);
+		}
+		else
+		{
+			g_print ("%s - Version %s (git %s)\n", g_get_application_name (), VERSION, GIT_REVISION);
+		}
+		break;
+
 	case REMMINA_COMMAND_PLUGIN:
 		plugin = (RemminaEntryPlugin*) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_ENTRY, data);
 		if (plugin)

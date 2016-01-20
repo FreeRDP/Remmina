@@ -137,7 +137,8 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 
 	if (remmina_option_version)
 	{
-		g_print ("%s - Version %s (git %s)\n", g_get_application_name (), VERSION, GIT_REVISION);
+		//g_print ("%s - Version %s (git %s)\n", g_get_application_name (), VERSION, GIT_REVISION);
+		remmina_exec_command(REMMINA_COMMAND_VERSION, NULL);
 		executed = TRUE;
 		status = 1;
 	}
