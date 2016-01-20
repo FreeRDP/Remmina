@@ -45,6 +45,7 @@ typedef struct _RemminaSurveyDialog
 
 G_BEGIN_DECLS
 
+gboolean remmina_survey_valid_profile();
 void remmina_survey_on_startup(GtkWindow *parent);
 gboolean remmina_survey_cb(gpointer data);
 void remmina_survey_start();

@@ -160,6 +160,43 @@ static const gchar *remmina_get_datadir()
 	return remdir;
 }
 
+/* At least one .remmina file */
+gboolean remmina_survey_valid_profile()
+{
+	TRACE_CALL("remmina_public_count_profile");
+
+	GDir *dir;
+	static gchar remdir[PATH_MAX];
+	GError *gerror = NULL;
+	gchar filename[PATH_MAX];
+	const gchar *dir_entry;
+	gint count_profile=0;
+	gint min_profiles=1;	/* Use a constant */
+
+	g_snprintf(remdir, sizeof(remdir), "%s/.%s", g_get_home_dir(), "remmina");
+	dir = g_dir_open(remdir, 0, &gerror);
+	if (gerror != NULL)
+	{
+		g_message("Cannot open %s, with error: %s", remdir, gerror->message);
+		g_error_free(gerror);
+		g_snprintf(remdir, sizeof(remdir),
+				"%s/%s", g_get_user_data_dir(), "remmina");
+	}else{
+
+		while ((dir_entry = g_dir_read_name(dir)) != NULL) {
+			/* Olny *.remmina files */
+			if (!g_str_has_suffix(dir_entry, ".remmina\0"))
+				continue;
+			g_snprintf(filename, PATH_MAX, "%s/%s", remdir, dir_entry);
+
+			if (filename != NULL)
+				count_profile++;
+		}
+		g_dir_close(dir);
+	}
+	return (count_profile >= min_profiles);
+}
+
 /* Insert setting name and its count in an hashtable */
 static void remmina_survey_ret_stat_from_setting(GHashTable *hash_table, gchar *name)
 {

@@ -45,7 +45,6 @@
 #include "remmina_connection_window.h"
 #include "remmina_about.h"
 #include "remmina_plugin_manager.h"
-#include "remmina_public.h"
 #include "remmina_exec.h"
 #include "remmina_survey.h"
 #include "remmina_icon.h"
@@ -100,7 +99,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 			gtk_widget_show(widget);
 			/* Remmina survey reminder popup */
 			mainwindow = remmina_main_get_window();
-			if ( remmina_survey && remmina_public_count_profile() >= 1)
+			if ( remmina_survey && remmina_survey_valid_profile())
 			{
 				/* test if network is up and start survey */
 				remmina_survey_cb(GTK_WINDOW(mainwindow));
