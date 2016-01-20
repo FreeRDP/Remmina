@@ -44,8 +44,6 @@ set(REMMINA_PLUGIN_RDP_SRCS
 	rdp_file.h
 	rdp_settings.c
 	rdp_settings.h
-	rdp_gdi.c
-	rdp_gdi.h
 	rdp_graphics.c
 	rdp_graphics.h
 	rdp_cliprdr.c
