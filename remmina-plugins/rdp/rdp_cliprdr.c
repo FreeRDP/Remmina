@@ -43,7 +43,7 @@
 
 #define CLIPBOARD_TRANSFER_WAIT_TIME 2
 
-UINT32 remmina_rdp_cliprdr_get_format_from_gdkatom(GdkAtom atom)
+static UINT32 remmina_rdp_cliprdr_get_format_from_gdkatom(GdkAtom atom)
 {
 	TRACE_CALL("remmina_rdp_cliprdr_get_format_from_gdkatom");
 	gchar* name = gdk_atom_name(atom);
