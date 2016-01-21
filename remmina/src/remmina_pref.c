@@ -142,23 +142,18 @@ static void remmina_pref_birthday(void)
 {
 	TRACE_CALL("remmina_pref_birthday");
 	GKeyFile *gkeyfile;
-	gchar *bdate;
 	gchar *content;
 	gsize length;
 
 	GDate *today = g_date_new();
 	g_date_set_time_t(today, time(NULL));
-	bdate = g_strdup_printf ( "%d/%d/%d",
-			g_date_get_year  (today),
-			g_date_get_month (today),
-			g_date_get_day   (today));
-	g_date_free(today);
+	remmina_pref.bdate = g_date_get_julian(today);
 
-	remmina_pref.bdate = g_strdup(bdate);
+	g_date_free(today);
 
 	gkeyfile = g_key_file_new();
 	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
-	g_key_file_set_string(gkeyfile, "remmina_pref", "bdate", remmina_pref.bdate);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "bdate", remmina_pref.bdate);
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
 	g_file_set_contents(remmina_pref_file, content, length, NULL);
 
@@ -537,14 +532,14 @@ void remmina_pref_init(void)
 		remmina_pref.uid = NULL;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "bdate", NULL))
-		remmina_pref.bdate = g_key_file_get_string(gkeyfile, "remmina_pref", "bdate", NULL);
+		remmina_pref.bdate = g_key_file_get_integer(gkeyfile, "remmina_pref", "bdate", NULL);
 	else
-		remmina_pref.bdate = NULL;
+		remmina_pref.bdate = 0;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_font", NULL))
 		remmina_pref.vte_font = g_key_file_get_string(gkeyfile, "remmina_pref", "vte_font", NULL);
 	else
-		remmina_pref.vte_font = NULL;
+		remmina_pref.vte_font = 0;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_allow_bold_text", NULL))
 		remmina_pref.vte_allow_bold_text = g_key_file_get_boolean(gkeyfile, "remmina_pref", "vte_allow_bold_text",
@@ -592,7 +587,7 @@ void remmina_pref_init(void)
 	if (remmina_pref.uid == NULL)
 		remmina_pref_gen_uid();
 
-	if (remmina_pref.bdate == NULL)
+	if (remmina_pref.bdate == 0)
 		remmina_pref_birthday();
 
 	remmina_pref_init_keymap();

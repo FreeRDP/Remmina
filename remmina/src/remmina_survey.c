@@ -187,7 +187,7 @@ gboolean remmina_survey_valid_profile()
 	GError *gerror = NULL;
 	gchar filename[PATH_MAX];
 	const gchar *dir_entry;
-	GDate *date = g_date_new();
+	GDate *date;
 	gboolean ismature = FALSE;
 
 	gint count_profile=0;
@@ -216,9 +216,10 @@ gboolean remmina_survey_valid_profile()
 		g_dir_close(dir);
 	}
 
-	g_date_set_parse(date, g_strdup_printf("%s", remmina_pref.bdate));
+
+	date = g_date_new_julian(remmina_pref.bdate);
 	if (!g_date_valid(date))
-		g_print("%s failed.\n", remmina_pref.bdate);
+		g_print("%d failed.\n", remmina_pref.bdate);
 
 	if (remmina_survey_diff_date(date) >= min_days)
 		ismature=TRUE;
