@@ -342,8 +342,6 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	instance->update->EndPaint = rf_end_paint;
 	instance->update->DesktopResize = rf_desktop_resize;
 
-	pointer_cache_register_callbacks(instance->update);
-
 	remmina_rdp_clipboard_init(rfi);
 	if (freerdp_channels_post_connect(instance->context->channels, instance) < 0)
 		return FALSE;
@@ -362,6 +360,8 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 static void remmina_rdp_post_disconnect(freerdp* instance)
 {
 	rfContext* rfi = (rfContext*) instance->context;
+
+	freerdp_channels_disconnect(instance->context, instance);
 
 	if (rfi->hdc) {
 		gdi_DeleteDC(rfi->hdc);
@@ -614,6 +614,7 @@ static gboolean remmina_rdp_load_settings(RemminaProtocolWidget* gp)
 	UINT32 DesktopHeight;
 	UINT32 DesktopWidth;
 	DWORD status;
+	BOOL rc = TRUE;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 	s = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 3389, FALSE);
@@ -908,14 +909,14 @@ static gboolean remmina_rdp_load_settings(RemminaProtocolWidget* gp)
 
 	if ((status = freerdp_client_settings_parse_command_line_arguments(rfi->settings, argc, argv, FALSE)) != 0)
 	{
-		freerdp_client_settings_command_line_status_print(rfi->settings, status, argc, argv);
-		clear_argv(argc, argv);
-		return FALSE;
+
+		rc = FALSE;
 	}
 
+	freerdp_client_settings_command_line_status_print(rfi->settings, status, argc, argv);
 	clear_argv(argc, argv);
 
-	return TRUE;
+	return rc;
 }
 
 static gpointer remmina_rdp_main_thread(gpointer data)
@@ -933,6 +934,8 @@ static gpointer remmina_rdp_main_thread(gpointer data)
 	/* Parse command line. */
 	if (!remmina_rdp_load_settings(gp))
 		return NULL;
+
+	IDLE_ADD((GSourceFunc) remmina_plugin_service->protocol_plugin_close_connection, gp);
 
 	/* Try to establish an RDP connection */
 	if (!freerdp_connect(rfi->instance))
@@ -972,8 +975,6 @@ static gpointer remmina_rdp_main_thread(gpointer data)
 
 	/* Cleanup connection. */
 	freerdp_disconnect(rfi->instance);
-
-	IDLE_ADD((GSourceFunc) remmina_plugin_service->protocol_plugin_close_connection, gp);
 
 	return NULL;
 }

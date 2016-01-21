@@ -62,8 +62,9 @@ static BOOL enqueue(RemminaProtocolWidget *widget,
 
 	va_start(ap, ptype);
 	switch(ptype) {
-		case REMMINA_RDP_POINTER_NEW:
 		case REMMINA_RDP_POINTER_FREE:
+	        ui->sync = FALSE;	// Do not wait, cleanup deadlock.
+		case REMMINA_RDP_POINTER_NEW:
 		case REMMINA_RDP_POINTER_SET:
 			ui->cursor.pointer = va_arg(ap, rfPointer*);
 			break;
