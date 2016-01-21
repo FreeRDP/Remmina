@@ -343,6 +343,7 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	instance->update->DesktopResize = rf_desktop_resize;
 
 	remmina_rdp_clipboard_init(rfi);
+	pointer_cache_register_callbacks(instance->update);
 	if (freerdp_channels_post_connect(instance->context->channels, instance) < 0)
 		return FALSE;
 
@@ -1055,8 +1056,10 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget* gp)
 	return TRUE;
 }
 
-static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
+static void *remmina_rdp_wait_for_close(void *arg)
 {
+	RemminaProtocolWidget* gp = (RemminaProtocolWidget*)arg;
+
 	TRACE_CALL("remmina_rdp_close_connection");
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	freerdp* instance;
@@ -1071,7 +1074,9 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 	}
 	
 	if (rfi->thread)
+	{
 		pthread_join(rfi->thread, NULL);
+	}
 
 	pthread_mutex_destroy(&rfi->mutex);
 	
@@ -1084,8 +1089,24 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 	freerdp_context_free(instance); /* context is rfContext* rfi */
 	freerdp_free(instance); /* This implicitly frees instance->context and rfi is no longer valid */
 
-	return FALSE;
+	pthread_exit(NULL);
+	return NULL;
 }
+
+static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
+{
+	pthread_t thread;
+
+	/* Run cleanup code in seperate thread to avoid deadlocks. */
+	if (pthread_create(&thread, NULL, remmina_rdp_wait_for_close, gp) != 0)
+		return False;
+
+	if (pthread_detach(thread) != 0)
+		return False;
+
+	return False;
+}
+
 
 static gboolean remmina_rdp_query_feature(RemminaProtocolWidget* gp, const RemminaProtocolFeature* feature)
 {
