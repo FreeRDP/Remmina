@@ -43,105 +43,132 @@
 #include <freerdp/codec/bitmap.h>
 #include <winpr/memory.h>
 
+/* Helper function */
+static BOOL enqueue(RemminaProtocolWidget *widget,
+					RemminaPluginRdpUiPointerType ptype, ...)
+{
+	va_list ap;
+	RemminaPluginRdpUiObject* ui;
+
+	ui = g_new0(RemminaPluginRdpUiObject, 1);
+	if (!ui || !widget) {
+		return FALSE;
+	}
+
+	memset(ui, 0, sizeof(RemminaPluginRdpUiObject));
+	ui->type = REMMINA_RDP_UI_CURSOR;
+	ui->sync = TRUE;	// Also wait for completion
+	ui->cursor.type = ptype;
+
+	va_start(ap, ptype);
+	switch(ptype) {
+		case REMMINA_RDP_POINTER_NEW:
+		case REMMINA_RDP_POINTER_FREE:
+		case REMMINA_RDP_POINTER_SET:
+			ui->cursor.pointer = va_arg(ap, rfPointer*);
+			break;
+		case REMMINA_RDP_POINTER_SETPOS:
+			ui->pos.x = va_arg(ap, UINT32);
+			ui->pos.y = va_arg(ap, UINT32);
+			break;
+		default:
+			ui->cursor.pointer = NULL;
+			break;
+	}
+	va_end(ap);
+
+	return rf_queue_ui(widget, ui) ? TRUE : FALSE;
+}
+
 /* Pointer Class */
 
-BOOL rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
+static BOOL rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 {
 	TRACE_CALL("rf_Pointer_New");
-	RemminaPluginRdpUiObject* ui;
+
 	rfContext* rfi = (rfContext*) context;
 
+	if (!rfi || !pointer) {
+		return FALSE;
+	}
 	if ((pointer->andMaskData != 0) && (pointer->xorMaskData != 0))
 	{
-		ui = g_new0(RemminaPluginRdpUiObject, 1);
-		ui->type = REMMINA_RDP_UI_CURSOR;
-		ui->sync = TRUE;	// Also wait for completion
-		ui->cursor.pointer = (rfPointer*) pointer;
-		ui->cursor.type = REMMINA_RDP_POINTER_NEW;
-		return rf_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
+		return enqueue(rfi->protocol_widget,
+					   REMMINA_RDP_POINTER_NEW, pointer);
 	}
+
 	return FALSE;
 }
 
-void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
+static void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 {
 	TRACE_CALL("rf_Pointer_Free");
-	RemminaPluginRdpUiObject* ui;
-	rfContext* rfi = (rfContext*) context;
 
+	rfContext* rfi = (rfContext*) context;
+	if (!rfi || !pointer) {
+		return;
+	}
 #if GTK_VERSION == 2
 	if (((rfPointer*) pointer)->cursor != NULL)
 #else
 	if (G_IS_OBJECT(((rfPointer*) pointer)->cursor))
 #endif
 	{
-		ui = g_new0(RemminaPluginRdpUiObject, 1);
-		ui->type = REMMINA_RDP_UI_CURSOR;
-		ui->sync = TRUE;	// Also wait for completion
-		ui->cursor.pointer = (rfPointer*) pointer;
-		ui->cursor.type = REMMINA_RDP_POINTER_FREE;
-
-		rf_queue_ui(rfi->protocol_widget, ui);
+		enqueue(rfi->protocol_widget,
+				REMMINA_RDP_POINTER_FREE, pointer);
 	}
 }
 
-BOOL rf_Pointer_Set(rdpContext* context, rdpPointer* pointer)
+static BOOL rf_Pointer_Set(rdpContext* context, rdpPointer* pointer)
 {
 	TRACE_CALL("rf_Pointer_Set");
-	RemminaPluginRdpUiObject* ui;
+
 	rfContext* rfi = (rfContext*) context;
+	if (!rfi || !pointer) {
+		return FALSE;
+	}
 
-	ui = g_new0(RemminaPluginRdpUiObject, 1);
-	ui->type = REMMINA_RDP_UI_CURSOR;
-	ui->sync = TRUE;	// Also wait for completion
-	ui->cursor.pointer = (rfPointer*) pointer;
-	ui->cursor.type = REMMINA_RDP_POINTER_SET;
-
-	return rf_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
-
+	return enqueue(rfi->protocol_widget,
+				   REMMINA_RDP_POINTER_SET, pointer);
 }
 
-BOOL rf_Pointer_SetNull(rdpContext* context)
+static BOOL rf_Pointer_SetNull(rdpContext* context)
 {
 	TRACE_CALL("rf_Pointer_SetNull");
-	RemminaPluginRdpUiObject* ui;
+
 	rfContext* rfi = (rfContext*) context;
+	if (!rfi) {
+		return FALSE;
+	}
 
-	ui = g_new0(RemminaPluginRdpUiObject, 1);
-	ui->type = REMMINA_RDP_UI_CURSOR;
-	ui->sync = TRUE;	// Also wait for completion
-	ui->cursor.type = REMMINA_RDP_POINTER_NULL;
-
-	return rf_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
+	return enqueue(rfi->protocol_widget,
+				   REMMINA_RDP_POINTER_NULL);
 }
 
-BOOL rf_Pointer_SetDefault(rdpContext* context)
+static BOOL rf_Pointer_SetDefault(rdpContext* context)
 {
 	TRACE_CALL("rf_Pointer_SetDefault");
-	RemminaPluginRdpUiObject* ui;
+
 	rfContext* rfi = (rfContext*) context;
+	if (!rfi) {
+		return FALSE;
+	}
 
-	ui = g_new0(RemminaPluginRdpUiObject, 1);
-	ui->type = REMMINA_RDP_UI_CURSOR;
-	ui->sync = TRUE;	// Also wait for completion
-	ui->cursor.type = REMMINA_RDP_POINTER_DEFAULT;
-
-	return rf_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
+	return enqueue(rfi->protocol_widget,
+				   REMMINA_RDP_POINTER_DEFAULT);
 }
 
-BOOL rf_Pointer_SetPosition(rdpContext* context, UINT32 x, UINT32 y)
+static BOOL rf_Pointer_SetPosition(rdpContext* context, UINT32 x, UINT32 y)
 {
 	TRACE_CALL("rf_Pointer_SePosition");
-	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
-	ui = g_new0(RemminaPluginRdpUiObject, 1);
-	ui->type = REMMINA_RDP_UI_CURSOR;
-	ui->sync = TRUE;	// Also wait for completion
-	ui->cursor.type = REMMINA_RDP_POINTER_SETPOS;
-	ui->pos.x = x;
-	ui->pos.y = y;
 
-	return rf_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
+	if (!rfi) {
+		return FALSE;
+	}
+
+	return enqueue(rfi->protocol_widget,
+				   REMMINA_RDP_POINTER_SETPOS, x, y);
 }
 
 /* Graphics Module */
@@ -149,21 +176,17 @@ BOOL rf_Pointer_SetPosition(rdpContext* context, UINT32 x, UINT32 y)
 void rf_register_graphics(rdpGraphics* graphics)
 {
 	TRACE_CALL("rf_register_graphics");
-	rdpPointer* pointer;
+	rdpPointer pointer;
 
-	pointer = (rdpPointer*) malloc(sizeof(rdpPointer));
-	ZeroMemory(pointer, sizeof(rdpPointer));
+	memset(&pointer, 0, sizeof(pointer));
+	pointer.size = sizeof(rfPointer);
 
-	pointer->size = sizeof(rfPointer);
+	pointer.New = rf_Pointer_New;
+	pointer.Free = rf_Pointer_Free;
+	pointer.Set = rf_Pointer_Set;
+	pointer.SetNull = rf_Pointer_SetNull;
+	pointer.SetDefault = rf_Pointer_SetDefault;
+	pointer.SetPosition = rf_Pointer_SetPosition;
 
-	pointer->New = rf_Pointer_New;
-	pointer->Free = rf_Pointer_Free;
-	pointer->Set = rf_Pointer_Set;
-	pointer->SetNull = rf_Pointer_SetNull;
-	pointer->SetDefault = rf_Pointer_SetDefault;
-	pointer->SetPosition = rf_Pointer_SetPosition;
-
-	graphics_register_pointer(graphics, pointer);
-
-	free(pointer);
+	graphics_register_pointer(graphics, &pointer);
 }
