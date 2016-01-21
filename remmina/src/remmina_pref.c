@@ -142,13 +142,16 @@ static void remmina_pref_birthday(void)
 {
 	TRACE_CALL("remmina_pref_birthday");
 	GKeyFile *gkeyfile;
-	gchar bdate[11];
+	gchar *bdate;
 	gchar *content;
 	gsize length;
 
 	GDate *today = g_date_new();
 	g_date_set_time_t(today, time(NULL));
-	g_date_strftime(bdate, sizeof(bdate), "%d/%m/%Y", today);
+	bdate = g_strdup_printf ( "%d/%d/%d",
+			g_date_get_year  (today),
+			g_date_get_month (today),
+			g_date_get_day   (today));
 	g_date_free(today);
 
 	remmina_pref.bdate = g_strdup(bdate);

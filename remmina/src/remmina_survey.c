@@ -43,6 +43,7 @@
 #include <glib/gstdio.h>
 #include <gtk/gtk.h>
 #include <inttypes.h>
+#include <locale.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
@@ -215,19 +216,17 @@ gboolean remmina_survey_valid_profile()
 		g_dir_close(dir);
 	}
 
-	g_date_set_parse(date, remmina_pref.bdate);
+	g_date_set_parse(date, g_strdup_printf("%s", remmina_pref.bdate));
 	if (!g_date_valid(date))
-	{
 		g_print("%s failed.\n", remmina_pref.bdate);
-	}
 
 	if (remmina_survey_diff_date(date) >= min_days)
 		ismature=TRUE;
 
 	g_free(date);
 
-	//return (count_profile >= min_profiles && ismature);
-	return (count_profile >= min_profiles);
+	return (count_profile >= min_profiles && ismature);
+	//return (count_profile >= min_profiles);
 }
 
 /* Insert setting name and its count in an hashtable */
