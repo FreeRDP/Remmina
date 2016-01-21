@@ -43,7 +43,7 @@
 
 #define CLIPBOARD_TRANSFER_WAIT_TIME 2
 
-UINT32 remmina_rdp_cliprdr_get_format_from_gdkatom(GdkAtom atom)
+static UINT32 remmina_rdp_cliprdr_get_format_from_gdkatom(GdkAtom atom)
 {
 	TRACE_CALL("remmina_rdp_cliprdr_get_format_from_gdkatom");
 	gchar* name = gdk_atom_name(atom);
@@ -685,6 +685,7 @@ int remmina_rdp_cliprdr_mt_send_format_list(RemminaProtocolWidget* gp, RemminaPl
 	gint formatId, i;
 	CLIPRDR_FORMAT_LIST formatList;
 	CLIPRDR_FORMAT* formats;
+	CLIPRDR_FORMAT* tmp;
 
 	clipboard = ui->clipboard.clipboard;
 	formatList.formats = formats = NULL;
@@ -711,8 +712,17 @@ int remmina_rdp_cliprdr_mt_send_format_list(RemminaProtocolWidget* gp, RemminaPl
 				srvcount ++;
 			}
 		}
-		formats = (CLIPRDR_FORMAT*)realloc(formats, srvcount * sizeof(CLIPRDR_FORMAT));
 		g_free(targets);
+		if (srvcount)
+		{
+			tmp = (CLIPRDR_FORMAT*)realloc(formats, srvcount * sizeof(CLIPRDR_FORMAT));
+			if (!tmp)
+			{
+				free(formats);
+				return 0;
+			}
+			formats = tmp;
+		}
 
 		formatList.formats = formats;
 		formatList.numFormats = srvcount;
