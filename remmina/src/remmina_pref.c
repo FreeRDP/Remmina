@@ -37,6 +37,8 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <sys/time.h>
 #include <sys/utsname.h>
 
 #include <gdk/gdkkeysyms.h>
@@ -133,6 +135,32 @@ static void remmina_pref_gen_uid(void)
 	g_key_file_free(gkeyfile);
 	g_free(content);
 
+}
+
+/* used to save the current date the first time we execute remmina */
+static void remmina_pref_birthday(void)
+{
+	TRACE_CALL("remmina_pref_birthday");
+	GKeyFile *gkeyfile;
+	gchar bdate[11];
+	gchar *content;
+	gsize length;
+
+	GDate *today = g_date_new();
+	g_date_set_time_t(today, time(NULL));
+	g_date_strftime(bdate, sizeof(bdate), "%d/%m/%Y", today);
+	g_date_free(today);
+
+	remmina_pref.bdate = g_strdup(bdate);
+
+	gkeyfile = g_key_file_new();
+	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
+	g_key_file_set_string(gkeyfile, "remmina_pref", "bdate", remmina_pref.bdate);
+	content = g_key_file_to_data(gkeyfile, &length, NULL);
+	g_file_set_contents(remmina_pref_file, content, length, NULL);
+
+	g_key_file_free(gkeyfile);
+	g_free(content);
 }
 
 static guint remmina_pref_get_keyval_from_str(const gchar *str)
@@ -505,6 +533,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.uid = NULL;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "bdate", NULL))
+		remmina_pref.bdate = g_key_file_get_string(gkeyfile, "remmina_pref", "bdate", NULL);
+	else
+		remmina_pref.bdate = NULL;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_font", NULL))
 		remmina_pref.vte_font = g_key_file_get_string(gkeyfile, "remmina_pref", "vte_font", NULL);
 	else
@@ -555,6 +588,9 @@ void remmina_pref_init(void)
 
 	if (remmina_pref.uid == NULL)
 		remmina_pref_gen_uid();
+
+	if (remmina_pref.bdate == NULL)
+		remmina_pref_birthday();
 
 	remmina_pref_init_keymap();
 }

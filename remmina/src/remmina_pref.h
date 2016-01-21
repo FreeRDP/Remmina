@@ -157,6 +157,9 @@ typedef struct _RemminaPref
 
 	/* UID */
 	gchar *uid;
+
+	/* Remmina birthday */
+	const gchar *bdate;
 } RemminaPref;
 
 #define DEFAULT_SSH_PARSECONFIG TRUE

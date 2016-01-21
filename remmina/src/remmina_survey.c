@@ -45,6 +45,9 @@
 #include <inttypes.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/time.h>
+#include <unistd.h>
 #include <webkit2/webkit2.h>
 
 #include "remmina_file.h"
@@ -162,6 +165,17 @@ static const gchar *remmina_get_datadir()
 	return remdir;
 }
 
+gint remmina_survey_diff_date(GDate *date)
+{
+	GDate *today = g_date_new();
+	g_date_set_time_t(today, time(NULL));
+
+	int days_diff = g_date_days_between(date, today);
+	g_date_free(today);
+
+	return days_diff;
+}
+
 /* At least one .remmina file */
 gboolean remmina_survey_valid_profile()
 {
@@ -172,8 +186,12 @@ gboolean remmina_survey_valid_profile()
 	GError *gerror = NULL;
 	gchar filename[PATH_MAX];
 	const gchar *dir_entry;
+	GDate *date = g_date_new();
+	gboolean ismature = FALSE;
+
 	gint count_profile=0;
-	gint min_profiles=1;	/* Use a constant */
+	gint min_profiles=1;    /* TODO: Use a constant */
+	gint min_days = 30;     /* TODO: Use a constant */
 
 	g_snprintf(remdir, sizeof(remdir), "%s/.%s", g_get_home_dir(), "remmina");
 	dir = g_dir_open(remdir, 0, &gerror);
@@ -196,6 +214,19 @@ gboolean remmina_survey_valid_profile()
 		}
 		g_dir_close(dir);
 	}
+
+	g_date_set_parse(date, remmina_pref.bdate);
+	if (!g_date_valid(date))
+	{
+		g_print("%s failed.\n", remmina_pref.bdate);
+	}
+
+	if (remmina_survey_diff_date(date) >= min_days)
+		ismature=TRUE;
+
+	g_free(date);
+
+	//return (count_profile >= min_profiles && ismature);
 	return (count_profile >= min_profiles);
 }
 
