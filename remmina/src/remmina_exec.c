@@ -82,7 +82,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 	GtkWindow* mainwindow;
 	GtkDialog* prefdialog;
 	RemminaEntryPlugin* plugin;
-	static gboolean remmina_survey = TRUE;
+	static gboolean remmina_survey = FALSE;
 
 	switch (command)
 	{
