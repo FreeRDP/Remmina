@@ -32,7 +32,7 @@
 
 
 set(REMMINA_PLUGIN_SRCS
-	plugin.h
+	plugin_config.h
 	plugin.c
 )
 
