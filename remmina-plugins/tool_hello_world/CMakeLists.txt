@@ -14,7 +14,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
 #
 # In addition, as a special exception, the copyright holders give
@@ -34,13 +34,17 @@
 set(REMMINA_PLUGIN_SRCS
 	plugin.h
 	plugin.c
-	)
+)
 
 add_library(remmina-plugin-tool_hello_world MODULE ${REMMINA_PLUGIN_SRCS})
 set_target_properties(remmina-plugin-tool_hello_world PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-tool_hello_world PROPERTIES NO_SONAME 1)
 
 include_directories(${REMMINA_COMMON_INCLUDE_DIRS})
-target_link_libraries(remmina-plugin-tool_hello_world ${REMMINA_COMMON_LIBRARIES})
+include_directories(${GTK_INCLUDE_DIRS})
+include_directories(${CMAKE_SOURCE_DIR}/remmina-plugins)
 
 install(TARGETS remmina-plugin-tool_hello_world DESTINATION ${REMMINA_PLUGINDIR})
+
+install(FILES 16x16/emblems/remmina-tool.png 16x16/emblems/remmina-tool.png DESTINATION ${APPICON16_EMBLEMS_DIR})
+install(FILES 22x22/emblems/remmina-tool.png 22x22/emblems/remmina-tool.png DESTINATION ${APPICON22_EMBLEMS_DIR})
