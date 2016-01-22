@@ -271,7 +271,7 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 		/* Get default system theme colors */
 		style_context = gtk_widget_get_style_context(GTK_WIDGET (vte));
 		gtk_style_context_get_color(style_context, GTK_STATE_FLAG_NORMAL, &foreground_color);
-		gtk_style_context_get_background_color(style_context, GTK_STATE_FLAG_NORMAL, &background_color);
+		gtk_style_context_get(style_context, GTK_STATE_FLAG_NORMAL, "background-color", &background_color, NULL);
 	}
 	else
 	{
