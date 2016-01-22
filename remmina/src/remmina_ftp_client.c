@@ -35,6 +35,7 @@
 
 #define _FILE_OFFSET_BITS 64
 
+#include <gdk/gdk.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>

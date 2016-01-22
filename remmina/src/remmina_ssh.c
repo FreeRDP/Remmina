@@ -870,6 +870,7 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 			tunnel->thread = 0;
 			return NULL;
 		}
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 		if (tunnel->init_func &&
 		        ! (*tunnel->init_func) (tunnel, tunnel->callback_data))
@@ -925,6 +926,7 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 				{
 					G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 					/* For reverse tunnel, we only need one connection. */
+					G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 					ssh_forward_cancel (REMMINA_SSH (tunnel)->session, NULL, tunnel->port);
 					G_GNUC_END_IGNORE_DEPRECATIONS
 				}
