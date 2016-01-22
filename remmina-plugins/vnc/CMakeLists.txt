@@ -14,7 +14,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
 #
 # In addition, as a special exception, the copyright holders give
@@ -49,3 +49,11 @@ install(TARGETS remmina-plugin-vnc DESTINATION ${REMMINA_PLUGINDIR})
 
 install(FILES 16x16/emblems/remmina-vnc-ssh.png 16x16/emblems/remmina-vnc.png DESTINATION ${APPICON16_EMBLEMS_DIR})
 install(FILES 22x22/emblems/remmina-vnc-ssh.png 22x22/emblems/remmina-vnc.png DESTINATION ${APPICON22_EMBLEMS_DIR})
+install(FILES 24x24/emblems/remmina-vnc-ssh.png 24x24/emblems/remmina-vnc.png DESTINATION ${APPICON24_EMBLEMS_DIR})
+install(FILES 32x32/emblems/remmina-vnc-ssh.png 32x32/emblems/remmina-vnc.png DESTINATION ${APPICON32_EMBLEMS_DIR})
+install(FILES 48x48/emblems/remmina-vnc-ssh.png 48x48/emblems/remmina-vnc.png DESTINATION ${APPICON48_EMBLEMS_DIR})
+install(FILES 64x64/emblems/remmina-vnc-ssh.png 64x64/emblems/remmina-vnc.png DESTINATION ${APPICON64_EMBLEMS_DIR})
+install(FILES 72x72/emblems/remmina-vnc-ssh.png 72x72/emblems/remmina-vnc.png DESTINATION ${APPICON72_EMBLEMS_DIR})
+install(FILES 96x96/emblems/remmina-vnc-ssh.png 96x96/emblems/remmina-vnc.png DESTINATION ${APPICON96_EMBLEMS_DIR})
+install(FILES 128x128/emblems/remmina-vnc-ssh.png 128x128/emblems/remmina-vnc.png DESTINATION ${APPICON128_EMBLEMS_DIR})
+install(FILES scalable/emblems/remmina-vnc-ssh.svg scalable/emblems/remmina-vnc.svg DESTINATION ${APPICONSVG_EMBLEMS_DIR})
