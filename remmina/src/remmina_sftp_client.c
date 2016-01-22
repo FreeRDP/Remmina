@@ -954,7 +954,7 @@ static gboolean
 remmina_sftp_client_refresh (RemminaSFTPClient *client)
 {
 	TRACE_CALL("remmina_sftp_client_refresh");
-	SET_CURSOR (gdk_cursor_new (GDK_WATCH));
+	SET_CURSOR (gdk_cursor_new_for_display(gdk_display_get_default(), GDK_WATCH));
 	gdk_flush ();
 
 	remmina_sftp_client_on_opendir (client, ".", NULL);
@@ -1070,7 +1070,7 @@ remmina_sftp_client_new_init (RemminaSFTP *sftp)
 
 	client = remmina_sftp_client_new ();
 
-	SET_CURSOR (gdk_cursor_new (GDK_WATCH));
+	SET_CURSOR (gdk_cursor_new_for_display(gdk_display_get_default(), GDK_WATCH));
 	gdk_flush ();
 
 	if (!remmina_ssh_init_session (REMMINA_SSH (sftp)) ||

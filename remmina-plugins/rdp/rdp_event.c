@@ -831,7 +831,7 @@ static void remmina_rdp_event_cursor(RemminaProtocolWidget* gp, RemminaPluginRdp
 			break;
 
 		case REMMINA_RDP_POINTER_NULL:
-			gdk_window_set_cursor(gtk_widget_get_window(rfi->drawing_area), gdk_cursor_new(GDK_BLANK_CURSOR));
+			gdk_window_set_cursor(gtk_widget_get_window(rfi->drawing_area), gdk_cursor_new_for_display(gdk_display_get_default(), GDK_BLANK_CURSOR));
 			ui->retval = 1;
 			break;
 
