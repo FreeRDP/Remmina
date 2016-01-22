@@ -861,6 +861,7 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		if (ssh_forward_listen (REMMINA_SSH (tunnel)->session, NULL, tunnel->port, NULL))
 		{
+			G_GNUC_END_IGNORE_DEPRECATIONS
 			remmina_ssh_set_error (REMMINA_SSH (tunnel), _("Failed to request port forwarding : %s"));
 			if (tunnel->disconnect_func)
 			{
@@ -923,6 +924,7 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 				}
 				if (tunnel->tunnel_type == REMMINA_SSH_TUNNEL_REVERSE)
 				{
+					G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 					/* For reverse tunnel, we only need one connection. */
 					G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 					ssh_forward_cancel (REMMINA_SSH (tunnel)->session, NULL, tunnel->port);

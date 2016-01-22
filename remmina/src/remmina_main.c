@@ -44,6 +44,7 @@
 #include "remmina_file_editor.h"
 #include "remmina_connection_window.h"
 #include "remmina_about.h"
+#include "remmina_survey.h"
 #include "remmina_pref.h"
 #include "remmina_pref_dialog.h"
 #include "remmina_widget_pool.h"
@@ -880,19 +881,37 @@ void remmina_main_on_action_application_plugins(GtkAction *action, gpointer user
 void remmina_main_on_action_help_homepage(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_help_homepage");
-	g_app_info_launch_default_for_uri("http://remmina.sourceforge.net", NULL, NULL);
+	g_app_info_launch_default_for_uri("http://www.remmina.org", NULL, NULL);
 }
 
 void remmina_main_on_action_help_wiki(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_help_wiki");
-	g_app_info_launch_default_for_uri("http://sourceforge.net/apps/mediawiki/remmina/", NULL, NULL);
+	g_app_info_launch_default_for_uri("https://github.com/FreeRDP/Remmina/wiki", NULL, NULL);
+}
+
+void remmina_main_on_action_help_gplus(GtkAction *action, gpointer user_data)
+{
+	TRACE_CALL("remmina_main_on_action_help_gplus");
+	g_app_info_launch_default_for_uri("https://plus.google.com/communities/106276095923371962010", NULL, NULL);
+}
+
+void remmina_main_on_action_help_donations(GtkAction *action, gpointer user_data)
+{
+	TRACE_CALL("remmina_main_on_action_help_donations");
+	g_app_info_launch_default_for_uri("http://www.remmina.org/wp/donations", NULL, NULL);
 }
 
 void remmina_main_on_action_help_debug(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_help_debug");
 	remmina_log_start();
+}
+
+void remmina_main_on_action_help_survey(GtkAction *action, gpointer user_data)
+{
+	TRACE_CALL("remmina_main_on_action_help_survey");
+	remmina_survey_start(remminamain->window);
 }
 
 void remmina_main_on_action_application_about(GtkAction *action, gpointer user_data)
@@ -1041,6 +1060,7 @@ static void remmina_main_init(void)
 	{
 		gtk_window_maximize(remminamain->window);
 	}
+
 	/* Add a GtkMenuItem to the Tools menu for each plugin of type REMMINA_PLUGIN_TYPE_TOOL */
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
 
@@ -1171,6 +1191,7 @@ GtkWidget* remmina_main_new(void)
 	remminamain->action_help_homepage = GTK_ACTION(GET_OBJECT("action_help_homepage"));
 	remminamain->action_help_wiki = GTK_ACTION(GET_OBJECT("action_help_wiki"));
 	remminamain->action_help_debug = GTK_ACTION(GET_OBJECT("action_help_debug"));
+	remminamain->action_help_survey = GTK_ACTION(GET_OBJECT("action_help_survey"));
 	G_GNUC_END_IGNORE_DEPRECATIONS
 	/* Connect signals */
 	gtk_builder_connect_signals(remminamain->builder, NULL);

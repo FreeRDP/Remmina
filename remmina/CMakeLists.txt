@@ -101,6 +101,8 @@ set(REMMINA_SRCS
 	src/remmina_string_array.h
 	src/remmina_string_list.c
 	src/remmina_string_list.h
+	src/remmina_survey.c
+	src/remmina_survey.h
 	src/remmina_widget_pool.c
 	src/remmina_widget_pool.h
 	src/remmina_external_tools.c
@@ -113,6 +115,10 @@ add_executable(remmina ${REMMINA_SRCS})
 
 include_directories(${GTK_INCLUDE_DIRS})
 target_link_libraries(remmina ${GTK_LIBRARIES})
+
+pkg_check_modules(WEBKIT REQUIRED webkit2gtk-4.0)
+target_link_libraries(remmina ${WEBKIT_LIBRARIES})
+include_directories(${WEBKIT_INCLUDE_DIRS})
 
 find_package(X11)
 include_directories(${X11_INCLUDE_DIR})

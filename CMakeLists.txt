@@ -102,10 +102,18 @@ set(REMMINA_VERSION_REVISION "0")
 set(REMMINA_VERSION_SUFFIX "rcgit.8")
 set(REMMINA_VERSION "${REMMINA_VERSION_MAJOR}.${REMMINA_VERSION_MINOR}.${REMMINA_VERSION_REVISION}-${REMMINA_VERSION_SUFFIX}")
 
+include(GetGitRevisionDescription)
+git_get_exact_tag(GIT_REVISION --tags --always)
+if (${GIT_REVISION} STREQUAL "n/a")
+  git_rev_parse(GIT_REVISION --short)
+endif()
+message(STATUS "Git Revision ${GIT_REVISION}")
+
 set(REMMINA_DATADIR "${CMAKE_INSTALL_FULL_DATADIR}")
 set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_FULL_DATADIR}/locale")
 set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/remmina/plugins")
 set(REMMINA_UIDIR "${CMAKE_INSTALL_FULL_DATADIR}/remmina/ui")
+
 
 # Uninstall support
 configure_file(
@@ -119,6 +127,9 @@ find_required_package(GTK)
 find_required_package(PTHREAD)
 find_suggested_package(GCRYPT)
 find_suggested_package(AVAHI)
+
+# Survey URI
+set(REMMINA_SURVEY_URI "http://www.remmina.org/survey/survey.tpl")
 
 if(WITH_TRACE_CALLS)
 	message(STATUS "Enabling trace calls.")

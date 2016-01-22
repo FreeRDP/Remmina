@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,29 +32,25 @@
  *
  */
 
-#ifndef __REMMINAEXEC_H__
-#define __REMMINAEXEC_H__
+#ifndef __REMMINASURVEY_H__
+#define __REMMINASURVEY_H__
+
+
+typedef struct _RemminaSurveyDialog
+{
+	GtkBuilder *builder;
+	GtkDialog *dialog;
+	GtkScrolledWindow *scrolledwindow;
+} RemminaSurveyDialog;
 
 G_BEGIN_DECLS
 
-typedef enum
-{
-	REMMINA_COMMAND_NONE    = 0,
-	REMMINA_COMMAND_MAIN    = 1,
-	REMMINA_COMMAND_PREF    = 2,
-	REMMINA_COMMAND_NEW     = 3,
-	REMMINA_COMMAND_CONNECT = 4,
-	REMMINA_COMMAND_EDIT    = 5,
-	REMMINA_COMMAND_ABOUT   = 6,
-	REMMINA_COMMAND_VERSION = 7,
-	REMMINA_COMMAND_PLUGIN  = 8,
-	REMMINA_COMMAND_EXIT    = 9
-} RemminaCommandType;
-
-void remmina_exec_command(RemminaCommandType command, const gchar* data);
-void remmina_exec_exitremmina(void);
+gboolean remmina_survey_valid_profile();
+void remmina_survey_on_startup(GtkWindow *parent);
+gboolean remmina_survey_cb(gpointer data);
+void remmina_survey_start();
 
 G_END_DECLS
 
-#endif  /* __REMMINAEXEC_H__  */
+#endif  /* __REMMINASURVEY_H__  */
 

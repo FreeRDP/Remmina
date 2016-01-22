@@ -124,10 +124,31 @@
       </object>
     </child>
     <child>
+      <object class="GtkAction" id="action_help_gplus">
+        <property name="label" translatable="yes">G+ Remmina Community</property>
+        <property name="short_label" translatable="yes">G+ Remmina Community</property>
+        <signal name="activate" handler="remmina_main_on_action_help_gplus" swapped="no"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_help_donations">
+        <property name="label" translatable="yes">Donations</property>
+        <property name="short_label" translatable="yes">Donations</property>
+        <signal name="activate" handler="remmina_main_on_action_help_donations" swapped="no"/>
+      </object>
+    </child>
+    <child>
       <object class="GtkAction" id="action_help_debug">
         <property name="label" translatable="yes">Debug Window</property>
         <property name="short_label" translatable="yes">Debug Window</property>
         <signal name="activate" handler="remmina_main_on_action_help_debug" swapped="no"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkAction" id="action_help_survey">
+        <property name="label" translatable="yes">Survey</property>
+        <property name="short_label" translatable="yes">Survey</property>
+        <signal name="activate" handler="remmina_main_on_action_help_survey" swapped="no"/>
       </object>
     </child>
   </object>
@@ -529,11 +550,38 @@
                       </object>
                     </child>
                     <child>
+                      <object class="GtkMenuItem" id="menuitem_help_gplus">
+                        <property name="related_action">action_help_gplus</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">G+ Remmina Community</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_help_donations">
+                        <property name="related_action">action_help_donations</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Donations</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
                       <object class="GtkMenuItem" id="menuitem_help_debug">
                         <property name="related_action">action_help_debug</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Debug Window</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_help_survey">
+                        <property name="related_action">action_help_survey</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Survey</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>

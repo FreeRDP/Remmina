@@ -2694,6 +2694,7 @@ static void remmina_connection_holder_create_scrolled(RemminaConnectionHolder* c
 	remmina_connection_holder_showhide_toolbar(cnnhld, FALSE);
 	remmina_connection_holder_check_resize(cnnhld);
 
+
 }
 
 static gboolean remmina_connection_window_go_fullscreen(gpointer data)

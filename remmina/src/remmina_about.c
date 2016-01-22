@@ -44,10 +44,13 @@
 void remmina_about_open(GtkWindow *parent)
 {
 	TRACE_CALL("remmina_about_open");
+	static gchar version[32];
+
+	g_snprintf(version, sizeof(version), "%s (git %s)", VERSION, GIT_REVISION);
 	GtkBuilder *builder = remmina_public_gtk_builder_new_from_file("remmina_about.glade");
 	GtkDialog *dialog = GTK_DIALOG (gtk_builder_get_object(builder, "dialog_remmina_about"));
 
-	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), VERSION);
+	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), version);
 	gtk_about_dialog_set_translator_credits(GTK_ABOUT_DIALOG(dialog), _("translator-credits"));
 
 	if (parent)

@@ -34,22 +34,23 @@
  */
 
 #include <gdk/gdkx.h>
-#include <gtk/gtk.h>
-#include <glib/gi18n.h>
 #include <gio/gio.h>
+#include <glib/gi18n.h>
+#include <gtk/gtk.h>
 #include <stdlib.h>
+
 #include "config.h"
-#include "remmina_public.h"
-#include "remmina_main.h"
+#include "remmina_exec.h"
 #include "remmina_file_manager.h"
-#include "remmina_pref.h"
-#include "remmina_widget_pool.h"
+#include "remmina_icon.h"
+#include "remmina_main.h"
+#include "remmina_masterthread_exec.h"
 #include "remmina_plugin_manager.h"
+#include "remmina_pref.h"
+#include "remmina_public.h"
 #include "remmina_sftp_plugin.h"
 #include "remmina_ssh_plugin.h"
-#include "remmina_exec.h"
-#include "remmina_icon.h"
-#include "remmina_masterthread_exec.h"
+#include "remmina_widget_pool.h"
 #include "remmina/remmina_trace_calls.h"
 
 #ifdef HAVE_ERRNO_H
@@ -136,7 +137,8 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 
 	if (remmina_option_version)
 	{
-		g_print ("%s - Version %s\n", g_get_application_name (), VERSION);
+		//g_print ("%s - Version %s (git %s)\n", g_get_application_name (), VERSION, GIT_REVISION);
+		remmina_exec_command(REMMINA_COMMAND_VERSION, NULL);
 		executed = TRUE;
 		status = 1;
 	}
