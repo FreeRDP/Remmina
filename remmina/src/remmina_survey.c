@@ -498,7 +498,13 @@ void remmina_survey_on_startup(GtkWindow *parent)
 	gtk_box_pack_end (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))),
 			check, FALSE, FALSE, 0);
 	gtk_widget_set_halign (check, GTK_ALIGN_START);
+
+#if GTK_CHECK_VERSION(3, 12, 0)
 	gtk_widget_set_margin_start (check, 6);
+#else
+	gtk_widget_set_margin_left (check, 6);
+#endif
+
 	gtk_widget_show (check);
 
 	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
