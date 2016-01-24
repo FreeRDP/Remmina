@@ -51,7 +51,7 @@
 #include <unistd.h>
 #include <webkit2/webkit2.h>
 
-#include "remmina_file.h"
+#include "remmina_file_manager.h"
 #include "remmina_pref.h"
 #include "remmina_public.h"
 #include "remmina_survey.h"
@@ -62,6 +62,7 @@ static RemminaSurveyDialog *remmina_survey;
 static WebKitWebView* web_view;
 
 gchar *remmina_pref_file;
+gchar remminadir[MAX_PATH_LEN];
 RemminaPref remmina_pref;
 
 #define GET_OBJECT(object_name) gtk_builder_get_object(remmina_survey->builder, object_name)
@@ -144,28 +145,6 @@ end_repl_str:
 	return ret;
 }
 
-/* Get the dirname where remmina files are stored TODO: fix xdg in all files */
-static const gchar *remmina_get_datadir()
-{
-	TRACE_CALL("remmina_get_datadir");
-	GDir *dir;
-	static gchar remdir[PATH_MAX];
-	GError *gerror = NULL;
-
-	g_snprintf(remdir, sizeof(remdir), "%s/.%s", g_get_home_dir(), "remmina");
-	dir = g_dir_open(remdir, 0, &gerror);
-	if (gerror != NULL)
-	{
-		g_message("Cannot open %s, with error: %s", remdir, gerror->message);
-		g_error_free(gerror);
-		g_snprintf(remdir, sizeof(remdir),
-				"%s/%s", g_get_user_data_dir(), "remmina");
-	}else{
-		g_dir_close(dir);
-	}
-	return remdir;
-}
-
 gint remmina_survey_diff_date(GDate *date)
 {
 	GDate *today = g_date_new();
@@ -183,7 +162,6 @@ gboolean remmina_survey_valid_profile()
 	TRACE_CALL("remmina_public_count_profile");
 
 	GDir *dir;
-	static gchar remdir[PATH_MAX];
 	GError *gerror = NULL;
 	gchar filename[PATH_MAX];
 	const gchar *dir_entry;
@@ -194,13 +172,13 @@ gboolean remmina_survey_valid_profile()
 	gint min_profiles=1;    /* TODO: Use a constant */
 	gint min_days = 30;     /* TODO: Use a constant */
 
-	g_snprintf(remdir, sizeof(remdir), "%s/.%s", g_get_home_dir(), "remmina");
-	dir = g_dir_open(remdir, 0, &gerror);
+	dir = g_dir_open(remminadir, 0, &gerror);
 	if (gerror != NULL)
 	{
-		g_message("Cannot open %s, with error: %s", remdir, gerror->message);
+		/* This should not happen */
+		g_message("Cannot open %s, with error: %s", remminadir, gerror->message);
 		g_error_free(gerror);
-		g_snprintf(remdir, sizeof(remdir),
+		g_snprintf(remminadir, sizeof(remminadir),
 				"%s/%s", g_get_user_data_dir(), "remmina");
 	}else{
 
@@ -208,7 +186,7 @@ gboolean remmina_survey_valid_profile()
 			/* Olny *.remmina files */
 			if (!g_str_has_suffix(dir_entry, ".remmina\0"))
 				continue;
-			g_snprintf(filename, PATH_MAX, "%s/%s", remdir, dir_entry);
+			g_snprintf(filename, PATH_MAX, "%s/%s", remminadir, dir_entry);
 
 			if (filename != NULL)
 				count_profile++;
@@ -257,7 +235,6 @@ static gchar *remmina_survey_files_iter_setting()
 	TRACE_CALL("remmina_survey_files_iter_setting");
 
 	GDir *dir;
-	gchar *dirname;
 	gchar filename[PATH_MAX];
 	const gchar *dir_entry;
 
@@ -277,8 +254,7 @@ static gchar *remmina_survey_files_iter_setting()
 	GHashTableIter iter;
 	gpointer key, value;
 
-	dirname = g_strdup_printf("%s", remmina_get_datadir());
-	dir = g_dir_open(dirname, 0, NULL);
+	dir = g_dir_open(remminadir, 0, NULL);
 
 	if (!dir)
 		return FALSE;
@@ -289,7 +265,7 @@ static gchar *remmina_survey_files_iter_setting()
 		/* Olny *.remmina files */
 		if (!g_str_has_suffix(dir_entry, ".remmina\0"))
 			continue;
-		g_snprintf(filename, PATH_MAX, "%s/%s", dirname, dir_entry);
+		g_snprintf(filename, PATH_MAX, "%s/%s", remminadir, dir_entry);
 
 		if (!g_key_file_load_from_file(gkeyfile, filename, G_KEY_FILE_NONE, NULL))
 			g_key_file_free(gkeyfile);
@@ -342,7 +318,6 @@ static void remmina_survey_stats_create_html_form()
 {
 	TRACE_CALL("remmina_survey_stats_create_html_form");
 
-	gchar *dirname = NULL;
 	const gchar *templateuri = REMMINA_SURVEY_URI;
 	const gchar *output_file_name = "local_remmina_form.html";
 	gchar *output_file_path = NULL;
@@ -356,9 +331,7 @@ static void remmina_survey_stats_create_html_form()
 	const gchar old[] = "<!-- STATS HOLDER -->";
 	gchar *new;
 
-	dirname = g_strdup_printf("%s", remmina_get_datadir());
-
-	output_file_path = g_strdup_printf("%s/%s", dirname, output_file_name);
+	output_file_path = g_strdup_printf("%s/%s", remminadir, output_file_name);
 
 	template = g_file_new_for_uri(templateuri);
 	output_file = g_file_new_for_path(output_file_path);
@@ -422,11 +395,9 @@ void remmina_survey_start(GtkWindow *parent)
 	TRACE_CALL("remmina_survey_start");
 
 	GDir *dir;
-	gchar *dirname;
 	gchar localurl[PATH_MAX];
 
-	dirname = g_strdup_printf("%s", remmina_get_datadir());
-	dir = g_dir_open(dirname, 0, NULL);
+	dir = g_dir_open(remminadir, 0, NULL);
 
 	remmina_survey = g_new0(RemminaSurveyDialog, 1);
 
@@ -470,7 +441,7 @@ void remmina_survey_start(GtkWindow *parent)
 
 	gtk_container_add(GTK_CONTAINER(remmina_survey->scrolledwindow), GTK_WIDGET(web_view));
 	gtk_widget_show(GTK_WIDGET(web_view));
-	g_snprintf(localurl, PATH_MAX, "%s%s/%s", "file://", dirname, "local_remmina_form.html");
+	g_snprintf(localurl, PATH_MAX, "%s%s/%s", "file://", remminadir, "local_remmina_form.html");
 	webkit_web_view_load_uri(web_view, localurl);
 	g_object_unref(G_OBJECT(remmina_survey->builder));
 }
