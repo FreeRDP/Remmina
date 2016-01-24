@@ -104,12 +104,12 @@ set(REMMINA_VERSION "${REMMINA_VERSION_MAJOR}.${REMMINA_VERSION_MINOR}.${REMMINA
 
 include(GetGitRevisionDescription)
 git_get_exact_tag(GIT_REVISION --tags --always)
-if (${GIT_REVISION} STREQUAL "rcgit.8")
+if (${GIT_REVISION} STREQUAL ${REMMINA_VERSION_SUFFIX})
 	git_rev_parse(GIT_REVISION --short)
 endif()
 
 if(NOT GIT_REVISION)
-    set(GIT_REVISION "rcgit.8")
+    set(GIT_REVISION ${REMMINA_VERSION_SUFFIX})
 endif()
 message(STATUS "Git Revision ${GIT_REVISION}")
 
