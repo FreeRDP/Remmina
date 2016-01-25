@@ -197,6 +197,8 @@ typedef struct _RemminaPluginService
     void         (* protocol_plugin_chat_receive)         (RemminaProtocolWidget *gp, const gchar *text);
     void         (* protocol_plugin_send_keys_signals)    (GtkWidget *widget, const guint *keyvals, int length, GdkEventType action);
 
+    gchar*       (* file_get_user_datadir)                (void);
+
     RemminaFile* (* file_new)                             (void);
     const gchar* (* file_get_path)                        (RemminaFile *remminafile);
     void         (* file_set_string)                      (RemminaFile *remminafile, const gchar *setting, const gchar *value);

@@ -33,54 +33,51 @@
  *
  */
 
+#include "config.h"
+
 #include <gtk/gtk.h>
 #include <string.h>
-#include "config.h"
+
 #include "remmina_public.h"
 #include "remmina_string_array.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_file_manager.h"
 #include "remmina/remmina_trace_calls.h"
 
-void remmina_file_manager_init(void)
+
+gchar* remmina_file_get_user_datadir(void)
 {
-	TRACE_CALL("remmina_file_manager_init");
-	gchar dirname[MAX_PATH_LEN];
+	gchar remminadir[MAX_PATH_LEN];
+	TRACE_CALL("remmina_file_get_user_datadir");
 	GDir *old;
 
 	/* If the old .remmina exists, use it. */
-	g_snprintf(dirname, sizeof(dirname), "%s/.%s", g_get_home_dir(), remmina);
-	old = g_dir_open(dirname, 0, NULL);
+	g_snprintf(remminadir, sizeof(remminadir), "%s/.%s", g_get_home_dir(), remmina);
+	old = g_dir_open(remminadir, 0, NULL);
 	if (old == NULL)
 		/* If the XDG directories exist, use them. */
-		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_data_dir(), remmina);
+		g_snprintf(remminadir, sizeof(remminadir), "%s/%s", g_get_user_data_dir(), remmina);
 	else
 		g_dir_close(old);
+	return g_strdup(remminadir);
+}
 
-	g_mkdir_with_parents(dirname, 0700);
+void remmina_file_manager_init(void)
+{
+	TRACE_CALL("remmina_file_manager_init");
+	g_mkdir_with_parents(remmina_file_get_user_datadir(), 0700);
 }
 
 gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 {
 	TRACE_CALL("remmina_file_manager_iterate");
-	gchar dirname[MAX_PATH_LEN];
 	gchar filename[MAX_PATH_LEN];
-	GDir *old;
 	GDir* dir;
 	const gchar* name;
 	RemminaFile* remminafile;
 	gint items_count = 0;
 
-	/* If the old .remmina exists, use it. */
-	g_snprintf(dirname, sizeof(dirname), "%s/.%s", g_get_home_dir(), remmina);
-	old = g_dir_open(dirname, 0, NULL);
-	if (old == NULL)
-	{
-		/* If the XDG directories exist, use them. */
-		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_data_dir(), remmina);
-		dir = g_dir_open(dirname, 0, NULL);
-	} else
-		dir = old;
+	dir = g_dir_open(remmina_file_get_user_datadir(), 0, NULL);
 
 	if (dir)
 	{
@@ -88,7 +85,8 @@ gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 		{
 			if (!g_str_has_suffix(name, ".remmina"))
 				continue;
-			g_snprintf(filename, MAX_PATH_LEN, "%s/%s", dirname, name);
+			g_snprintf(filename, MAX_PATH_LEN, "%s/%s",
+					remmina_file_get_user_datadir(), name);
 			remminafile = remmina_file_load(filename);
 			if (remminafile)
 			{
@@ -105,10 +103,8 @@ gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 gchar* remmina_file_manager_get_groups(void)
 {
 	TRACE_CALL("remmina_file_manager_get_groups");
-	gchar dirname[MAX_PATH_LEN];
 	gchar filename[MAX_PATH_LEN];
 	GDir* dir;
-	GDir* old;
 	const gchar* name;
 	RemminaFile* remminafile;
 	RemminaStringArray* array;
@@ -117,16 +113,7 @@ gchar* remmina_file_manager_get_groups(void)
 
 	array = remmina_string_array_new();
 
-	/* If the old .remmina exists, use it. */
-	g_snprintf(dirname, sizeof(dirname), "%s/.%s", g_get_home_dir(), remmina);
-	old = g_dir_open(dirname, 0, NULL);
-	if (old == NULL)
-	{
-		/* If the XDG directories exist, use them. */
-		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_data_dir(), remmina);
-		dir = g_dir_open(dirname, 0, NULL);
-	} else
-		dir = old;
+	dir = g_dir_open(remmina_file_get_user_datadir(), 0, NULL);
 
 	if (dir == NULL)
 		return 0;
@@ -134,7 +121,7 @@ gchar* remmina_file_manager_get_groups(void)
 	{
 		if (!g_str_has_suffix(name, ".remmina"))
 			continue;
-		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", dirname, name);
+		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", remmina_file_get_user_datadir(), name);
 		remminafile = remmina_file_load(filename);
 		group = remmina_file_get_string(remminafile, "group");
 		if (group && remmina_string_array_find(array, group) < 0)
@@ -217,10 +204,8 @@ static void remmina_file_manager_add_group(GNode* node, const gchar* group)
 GNode* remmina_file_manager_get_group_tree(void)
 {
 	TRACE_CALL("remmina_file_manager_get_group_tree");
-	gchar dirname[MAX_PATH_LEN];
 	gchar filename[MAX_PATH_LEN];
 	GDir* dir;
-	GDir* old;
 	const gchar* name;
 	RemminaFile* remminafile;
 	const gchar* group;
@@ -228,16 +213,7 @@ GNode* remmina_file_manager_get_group_tree(void)
 
 	root = g_node_new(NULL);
 
-	/* If the old .remmina exists, use it. */
-	g_snprintf(dirname, sizeof(dirname), "%s/.%s", g_get_home_dir(), remmina);
-	old = g_dir_open(dirname, 0, NULL);
-	if (old == NULL)
-	{
-		/* If the XDG directories exist, use them. */
-		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_data_dir(), remmina);
-		dir = g_dir_open(dirname, 0, NULL);
-	} else
-		dir = old;
+	dir = g_dir_open(remmina_file_get_user_datadir(), 0, NULL);
 
 	if (dir == NULL)
 		return root;
@@ -245,7 +221,7 @@ GNode* remmina_file_manager_get_group_tree(void)
 	{
 		if (!g_str_has_suffix(name, ".remmina"))
 			continue;
-		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", dirname, name);
+		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", remmina_file_get_user_datadir(), name);
 		remminafile = remmina_file_load(filename);
 		group = remmina_file_get_string(remminafile, "group");
 		remmina_file_manager_add_group(root, group);

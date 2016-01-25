@@ -46,6 +46,7 @@ typedef struct _RemminaGroupData
 } RemminaGroupData;
 
 /* Initialize */
+gchar* remmina_file_get_user_datadir(void);
 void remmina_file_manager_init(void);
 /* Iterate all .remmina connections in the home directory */
 gint remmina_file_manager_iterate(GFunc func, gpointer user_data);

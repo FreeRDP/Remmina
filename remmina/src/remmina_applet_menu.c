@@ -33,13 +33,16 @@
  *
  */
 
+#include "config.h"
+
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <string.h>
-#include "config.h"
+
 #include "remmina_public.h"
 #include "remmina_applet_menu_item.h"
 #include "remmina_applet_menu.h"
+#include "remmina_file_manager.h"
 #include "remmina/remmina_trace_calls.h"
 
 G_DEFINE_TYPE( RemminaAppletMenu, remmina_applet_menu, GTK_TYPE_MENU)
@@ -266,19 +269,11 @@ void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 {
 	TRACE_CALL("remmina_applet_menu_populate");
 	GtkWidget *menuitem;
-	gchar dirname[MAX_PATH_LEN];
 	gchar filename[MAX_PATH_LEN];
-	GDir *old;
 	GDir *dir;
 	const gchar *name;
 
-	/* If the old .remmina exists, use it. */
-	g_snprintf(dirname, sizeof(dirname), "%s/.%s", g_get_home_dir(), remmina);
-	old = g_dir_open(dirname, 0, NULL);
-	if (old == NULL)
-		/* If the XDG directories exist, use them. */
-		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_data_dir(), remmina);
-	dir = g_dir_open(dirname, 0, NULL);
+	dir = g_dir_open(remmina_file_get_user_datadir(), 0, NULL);
 	if (dir != NULL)
 	{
 		/* Iterate all remote desktop profiles */
@@ -286,7 +281,7 @@ void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 		{
 			if (!g_str_has_suffix(name, ".remmina"))
 				continue;
-			g_snprintf(filename, sizeof(filename), "%s/%s", dirname, name);
+			g_snprintf(filename, sizeof(filename), "%s/%s", remmina_file_get_user_datadir(), name);
 
 			menuitem = remmina_applet_menu_item_new(REMMINA_APPLET_MENU_ITEM_FILE, filename);
 			if (menuitem != NULL)

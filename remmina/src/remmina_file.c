@@ -33,16 +33,18 @@
  *
  */
 
+#include "config.h"
+
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <stdlib.h>
-#include "config.h"
+
 #include "remmina_public.h"
-#include "remmina_pref.h"
 #include "remmina_crypt.h"
+#include "remmina_file_manager.h"
 #include "remmina_plugin_manager.h"
-#include "remmina_file.h"
+#include "remmina_pref.h"
 #include "remmina_masterthread_exec.h"
 #include "remmina/remmina_trace_calls.h"
 
@@ -78,7 +80,6 @@ const RemminaSetting remmina_system_settings[] =
 
 	{ NULL, 0, FALSE }
 };
-
 
 static RemminaSettingGroup remmina_setting_get_group(const gchar *setting, gboolean *encrypted)
 {
@@ -136,24 +137,14 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 {
 	TRACE_CALL("remmina_file_generate_filename");
 	GTimeVal gtime;
-	gchar dirname[MAX_PATH_LEN];
-	GDir *old;
 	GDir *dir;
 
 	g_free(remminafile->filename);
 	g_get_current_time(&gtime);
 
-	/* If the old .remmina exists, use it. */
-	g_snprintf(dirname, sizeof(dirname), "%s/.%s", g_get_home_dir(), remmina);
-	old = g_dir_open(dirname, 0, NULL);
-	if (old == NULL)
-		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_data_dir(), remmina);
-	g_dir_close(old);
-
-	/* If the XDG directories exist, use them. */
-	dir = g_dir_open(dirname, 0, NULL);
+	dir = g_dir_open(remmina_file_get_user_datadir(), 0, NULL);
 	if (dir != NULL)
-		remminafile->filename = g_strdup_printf("%s/%li%03li.remmina", dirname, gtime.tv_sec,
+		remminafile->filename = g_strdup_printf("%s/%li%03li.remmina", remmina_file_get_user_datadir(), gtime.tv_sec,
 		                                        gtime.tv_usec / 1000);
 	else
 		remminafile->filename = NULL;

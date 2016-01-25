@@ -107,7 +107,6 @@ static RemminaProtocolPlugin remmina_plugin = {
 	NULL,                                    // Send a keystroke    */
 };
 
-
 G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
 {
 	TRACE_CALL("remmina_plugin_entry");
