@@ -255,7 +255,7 @@ static gchar *remmina_survey_files_iter_setting()
 
 	dir = g_dir_open(remmina_file_get_user_datadir(), 0, NULL);
 
-	if (!dir)
+	if (dir == NULL)
 		return FALSE;
 	gkeyfile = g_key_file_new();
 	hash_table = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, NULL);
