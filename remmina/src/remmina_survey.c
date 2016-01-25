@@ -298,18 +298,19 @@ static gchar *remmina_survey_files_iter_setting()
 			return FALSE;
 		count_file++;
 		for (i = 0; i < count_name; i++) {
-			if (setting_name[i])
+			if (setting_name[i]) {
 				name = g_key_file_get_string(gkeyfile,
 							     "remmina",
 							     g_strdup_printf("%s", setting_name[i]),
 							     NULL);
-			/* Some settings exists only for certain plugin */
-			if (name && !(*name == 0)){
-				remmina_survey_ret_stat_from_setting(hash_table,
-						g_strdup_printf("%s_%s",
-								setting_name[i],
-								name));
-				g_free(name);
+				/* Some settings exists only for certain plugin */
+				if (name && !(*name == 0)){
+					remmina_survey_ret_stat_from_setting(hash_table,
+							g_strdup_printf("%s_%s",
+									setting_name[i],
+									name));
+					g_free(name);
+				}
 			}
 		}
 	}
