@@ -44,11 +44,11 @@
 #include "remmina_file_manager.h"
 #include "remmina/remmina_trace_calls.h"
 
-gchar remminadir[MAX_PATH_LEN];
 
-void remmina_file_manager_init(void)
+gchar* remmina_file_get_user_datadir(void)
 {
-	TRACE_CALL("remmina_file_manager_init");
+	gchar remminadir[MAX_PATH_LEN];
+	TRACE_CALL("remmina_file_get_user_datadir");
 	GDir *old;
 
 	/* If the old .remmina exists, use it. */
@@ -59,8 +59,13 @@ void remmina_file_manager_init(void)
 		g_snprintf(remminadir, sizeof(remminadir), "%s/%s", g_get_user_data_dir(), remmina);
 	else
 		g_dir_close(old);
+	return g_strdup(remminadir);
+}
 
-	g_mkdir_with_parents(remminadir, 0700);
+void remmina_file_manager_init(void)
+{
+	TRACE_CALL("remmina_file_manager_init");
+	g_mkdir_with_parents(remmina_file_get_user_datadir(), 0700);
 }
 
 gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
@@ -72,7 +77,7 @@ gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 	RemminaFile* remminafile;
 	gint items_count = 0;
 
-	dir = g_dir_open(remminadir, 0, NULL);
+	dir = g_dir_open(remmina_file_get_user_datadir(), 0, NULL);
 
 	if (dir)
 	{
@@ -80,7 +85,8 @@ gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 		{
 			if (!g_str_has_suffix(name, ".remmina"))
 				continue;
-			g_snprintf(filename, MAX_PATH_LEN, "%s/%s", remminadir, name);
+			g_snprintf(filename, MAX_PATH_LEN, "%s/%s",
+					remmina_file_get_user_datadir(), name);
 			remminafile = remmina_file_load(filename);
 			if (remminafile)
 			{
@@ -107,7 +113,7 @@ gchar* remmina_file_manager_get_groups(void)
 
 	array = remmina_string_array_new();
 
-	dir = g_dir_open(remminadir, 0, NULL);
+	dir = g_dir_open(remmina_file_get_user_datadir(), 0, NULL);
 
 	if (dir == NULL)
 		return 0;
@@ -115,7 +121,7 @@ gchar* remmina_file_manager_get_groups(void)
 	{
 		if (!g_str_has_suffix(name, ".remmina"))
 			continue;
-		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", remminadir, name);
+		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", remmina_file_get_user_datadir(), name);
 		remminafile = remmina_file_load(filename);
 		group = remmina_file_get_string(remminafile, "group");
 		if (group && remmina_string_array_find(array, group) < 0)
@@ -207,7 +213,7 @@ GNode* remmina_file_manager_get_group_tree(void)
 
 	root = g_node_new(NULL);
 
-	dir = g_dir_open(remminadir, 0, NULL);
+	dir = g_dir_open(remmina_file_get_user_datadir(), 0, NULL);
 
 	if (dir == NULL)
 		return root;
@@ -215,7 +221,7 @@ GNode* remmina_file_manager_get_group_tree(void)
 	{
 		if (!g_str_has_suffix(name, ".remmina"))
 			continue;
-		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", remminadir, name);
+		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", remmina_file_get_user_datadir(), name);
 		remminafile = remmina_file_load(filename);
 		group = remmina_file_get_string(remminafile, "group");
 		remmina_file_manager_add_group(root, group);

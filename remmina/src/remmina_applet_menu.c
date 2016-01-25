@@ -60,8 +60,6 @@ enum
 static guint remmina_applet_menu_signals[LAST_SIGNAL] =
 { 0 };
 
-gchar remminadir[MAX_PATH_LEN];
-
 static void remmina_applet_menu_destroy(RemminaAppletMenu *menu, gpointer data)
 {
 	TRACE_CALL("remmina_applet_menu_destroy");
@@ -275,7 +273,7 @@ void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 	GDir *dir;
 	const gchar *name;
 
-	dir = g_dir_open(remminadir, 0, NULL);
+	dir = g_dir_open(remmina_file_get_user_datadir(), 0, NULL);
 	if (dir != NULL)
 	{
 		/* Iterate all remote desktop profiles */
@@ -283,7 +281,7 @@ void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 		{
 			if (!g_str_has_suffix(name, ".remmina"))
 				continue;
-			g_snprintf(filename, sizeof(filename), "%s/%s", remminadir, name);
+			g_snprintf(filename, sizeof(filename), "%s/%s", remmina_file_get_user_datadir(), name);
 
 			menuitem = remmina_applet_menu_item_new(REMMINA_APPLET_MENU_ITEM_FILE, filename);
 			if (menuitem != NULL)
