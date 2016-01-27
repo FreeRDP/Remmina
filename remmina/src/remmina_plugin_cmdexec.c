@@ -39,7 +39,7 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 #include "remmina_file.h"
-#include "remmina_preexec.h"
+#include "remmina_plugin_cmdexec.h"
 #include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"
 
@@ -56,21 +56,34 @@ static void wait_for_child(GPid pid, gint script_retval, gpointer data)
 	g_free(pcspinner);
 }
 
-GtkDialog* remmina_preexec_new(RemminaFile* remminafile)
+GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remmina_plugin_cmdexec_type)
 {
-	TRACE_CALL("remmina_preexec_new");
+	TRACE_CALL("remmina_plugin_cmdexec_new");
 	GtkBuilder *builder;
 	PCon_Spinner *pcspinner;
 	GError *error = NULL;
 	char **argv;
+	char const *plugin_cmd = NULL;
+	gchar pre[9];
+	gchar post[9];
 	char const *cmd = NULL;
-	char const *precmd = NULL;
 	GPid child_pid;
 
-	precmd = remmina_file_get_string(remminafile, "precommand");
-	if (precmd)
+	strcpy(pre, "precommand");
+	strcpy(post, "postcommand");
+
+	if (remmina_plugin_cmdexec_type != NULL && (
+				strcmp(remmina_plugin_cmdexec_type, pre) |
+				strcmp(remmina_plugin_cmdexec_type, post) ))
 	{
-		cmd = g_shell_quote(remmina_file_get_string(remminafile, "precommand"));
+		plugin_cmd = remmina_file_get_string(remminafile, remmina_plugin_cmdexec_type);
+	}else{
+		return FALSE;
+	}
+
+	if (plugin_cmd != NULL)
+	{
+		cmd = g_shell_quote(remmina_file_get_string(remminafile, remmina_plugin_cmdexec_type));
 		pcspinner = g_new(PCon_Spinner, 1);
 		builder = remmina_public_gtk_builder_new_from_file("remmina_spinner.glade");
 		pcspinner->dialog = GTK_DIALOG(gtk_builder_get_object(builder, "DialogSpinner"));

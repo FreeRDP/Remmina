@@ -33,21 +33,24 @@
  *
  */
 
+#include "config.h"
+
 #include <gtk/gtk.h>
 #if GTK_VERSION == 3
 #  include <gtk/gtkx.h>
 #endif
 #include <glib/gi18n.h>
 #include <stdlib.h>
-#include "config.h"
-#include "remmina_public.h"
-#include "remmina_pref.h"
-#include "remmina_ssh.h"
+
 #include "remmina_chat_window.h"
-#include "remmina_plugin_manager.h"
 #include "remmina_connection_window.h"
-#include "remmina_protocol_widget.h"
 #include "remmina_masterthread_exec.h"
+#include "remmina_plugin_cmdexec.h"
+#include "remmina_plugin_manager.h"
+#include "remmina_pref.h"
+#include "remmina_protocol_widget.h"
+#include "remmina_public.h"
+#include "remmina_ssh.h"
 #include "remmina/remmina_trace_calls.h"
 
 struct _RemminaProtocolWidgetPriv
@@ -328,6 +331,8 @@ gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 	}
 #endif
 
+	/* Exec postcommand before to close the connection */
+	remmina_plugin_cmdexec_new(gp->priv->remmina_file, "postcommand");
 	return retval;
 }
 

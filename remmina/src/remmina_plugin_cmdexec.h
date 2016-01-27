@@ -46,7 +46,7 @@ typedef struct
 	GtkWidget *spinner;
 } PCon_Spinner;
 
-GtkDialog* remmina_preexec_new(RemminaFile* remminafile);
+GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remmina_plugin_cmdexec_type);
 
 G_END_DECLS
 

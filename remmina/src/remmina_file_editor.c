@@ -97,6 +97,7 @@ struct _RemminaFileEditorPriv
 	GtkWidget* group_combo;
 	GtkWidget* protocol_combo;
 	GtkWidget* precommand_entry;
+	GtkWidget* postcommand_entry;
 	GtkWidget* save_button;
 
 	GtkWidget* config_box;
@@ -1115,6 +1116,7 @@ static void remmina_file_editor_update(RemminaFileEditor* gfe)
 	                            remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->protocol_combo)));
 
 	remmina_file_set_string(priv->remmina_file, "precommand", gtk_entry_get_text(GTK_ENTRY(priv->precommand_entry)));
+	remmina_file_set_string(priv->remmina_file, "postcommand", gtk_entry_get_text(GTK_ENTRY(priv->postcommand_entry)));
 
 	remmina_file_set_string_ref(priv->remmina_file, "server",
 	                            (priv->server_combo ? remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->server_combo)) : NULL));
@@ -1160,6 +1162,7 @@ static void remmina_file_editor_on_default(GtkWidget* button, RemminaFileEditor*
 	remmina_file_set_string(gf, "server", NULL);
 	remmina_file_set_string(gf, "password", NULL);
 	remmina_file_set_string(gf, "precommand", NULL);
+	remmina_file_set_string(gf, "postcommand", NULL);
 
 	remmina_file_save_all(gf);
 	remmina_file_free(gf);
@@ -1401,6 +1404,28 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	gtk_entry_set_max_length(GTK_ENTRY(widget), 200);
 	priv->precommand_entry = widget;
 	cs = remmina_file_get_string(remminafile, "precommand");
+	gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
+	if (!cs)
+	{
+		s = g_strdup_printf(_("A command or a script name/path."));
+		gtk_widget_set_tooltip_text (widget, s);
+		g_free(s);
+	}
+
+	/* POST Connection Command */
+	widget = gtk_label_new(_("Post Command"));
+	gtk_widget_show(widget);
+	gtk_widget_set_valign (widget, GTK_ALIGN_START);
+	gtk_widget_set_halign (widget, GTK_ALIGN_START);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, 15, 3, 1);
+	gtk_grid_set_column_spacing (GTK_GRID(grid), 10);
+
+	widget = gtk_entry_new();
+	gtk_widget_show(widget);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 15, 3, 1);
+	gtk_entry_set_max_length(GTK_ENTRY(widget), 200);
+	priv->postcommand_entry = widget;
+	cs = remmina_file_get_string(remminafile, "postcommand");
 	gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
 	if (!cs)
 	{
