@@ -359,8 +359,6 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	freerdp_channels_post_connect(instance->context->channels, instance);
 	rfi->connected = True;
 
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
-
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CONNECTED;
 	rf_queue_ui(gp, ui);
@@ -474,8 +472,6 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 	HANDLE handles[64];
 	gchar buf[100];
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
-
-
 
 	while (!freerdp_shall_disconnect(rfi->instance))
 	{
@@ -960,7 +956,9 @@ static gpointer remmina_rdp_main_thread(gpointer data)
 	remmina_rdp_main(gp);
 	rfi->thread = 0;
 
-	IDLE_ADD((GSourceFunc) remmina_plugin_service->protocol_plugin_close_connection, gp);
+	/* Signal main thread that we closed the connection. But wait 200ms, because we may
+	 * have outstaiding events to process in the meanwhile */
+	g_timeout_add(200, ((GSourceFunc) remmina_plugin_service->protocol_plugin_close_connection), gp);
 
 	return NULL;
 }
@@ -1034,9 +1032,6 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 
 	}
 
-
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
-
 	if (instance)
 	{
 		if ( rfi->connected ) {
@@ -1088,6 +1083,9 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 
 	/* Remove instance->context from gp object data to avoid double free */
 	g_object_steal_data(G_OBJECT(gp), "plugin-data");
+
+	/* Now let remmina to complete its disconnection tasks */
+	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 
 	return FALSE;
 }

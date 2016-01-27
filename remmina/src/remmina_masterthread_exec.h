@@ -49,6 +49,7 @@ typedef struct remmina_masterthread_exec_data
 	       FUNC_DIALOG_CERT, FUNC_DIALOG_CERTCHANGED, FUNC_DIALOG_AUTHX509,
 	       FUNC_FTP_CLIENT_UPDATE_TASK, FUNC_FTP_CLIENT_GET_WAITING_TASK,
 	       FUNC_SFTP_CLIENT_CONFIRM_RESUME,
+	       FUNC_PROTOCOLWIDGET_EMIT_SIGNAL,
 	       FUNC_VTE_TERMINAL_SET_ENCODING_AND_PTY
 	     } func;
 
@@ -133,6 +134,11 @@ typedef struct remmina_masterthread_exec_data
 			RemminaFTPClient *client;
 			RemminaFTPTask* retval;
 		} ftp_client_get_waiting_task;
+		struct
+		{
+			RemminaProtocolWidget* gp;
+			const gchar* signal_name;
+		} protocolwidget_emit_signal;
 #if defined (HAVE_LIBSSH) && defined (HAVE_LIBVTE)
 		struct
 		{

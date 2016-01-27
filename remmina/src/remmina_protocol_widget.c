@@ -149,8 +149,11 @@ static void remmina_protocol_widget_destroy(RemminaProtocolWidget* gp, gpointer 
 	TRACE_CALL("remmina_protocol_widget_destroy");
 	remmina_protocol_widget_hide_init_dialog(gp);
 	g_free(gp->priv->features);
+	gp->priv->features = NULL;
 	g_free(gp->priv->error_message);
+	gp->priv->error_message = NULL;
 	g_free(gp->priv);
+	gp->priv = NULL;
 }
 
 static void remmina_protocol_widget_connect(RemminaProtocolWidget* gp, gpointer data)
@@ -427,23 +430,25 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget* gp, GtkMenuI
 	return;
 }
 
-static gboolean remmina_protocol_widget_emit_signal_timeout(gpointer user_data)
-{
-	TRACE_CALL("remmina_protocol_widget_emit_signal_timeout");
-	RemminaProtocolWidgetSignalData* data = (RemminaProtocolWidgetSignalData*) user_data;
-	g_signal_emit_by_name(G_OBJECT(data->gp), data->signal_name);
-	g_free(data);
-	return FALSE;
-}
 
 void remmina_protocol_widget_emit_signal(RemminaProtocolWidget* gp, const gchar* signal_name)
 {
 	TRACE_CALL("remmina_protocol_widget_emit_signal");
-	RemminaProtocolWidgetSignalData* data;
-	data = g_new(RemminaProtocolWidgetSignalData, 1);
-	data->gp = gp;
-	data->signal_name = signal_name;
-	TIMEOUT_ADD(0, remmina_protocol_widget_emit_signal_timeout, data);
+
+	if ( !remmina_masterthread_exec_is_main_thread() )
+	{
+		/* Allow the execution of this function from a non main thread */
+		RemminaMTExecData *d;
+		d = (RemminaMTExecData*)g_malloc( sizeof(RemminaMTExecData) );
+		d->func = FUNC_PROTOCOLWIDGET_EMIT_SIGNAL;
+		d->p.protocolwidget_emit_signal.signal_name = signal_name;
+		d->p.protocolwidget_emit_signal.gp = gp;
+		remmina_masterthread_exec_and_wait(d);
+		g_free(d);
+		return;
+	}
+	g_signal_emit_by_name(G_OBJECT(gp), signal_name);
+
 }
 
 const RemminaProtocolFeature* remmina_protocol_widget_get_features(RemminaProtocolWidget* gp)

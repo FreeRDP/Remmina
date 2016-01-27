@@ -124,16 +124,29 @@ gint remmina_widget_pool_foreach(RemminaWidgetPoolForEachFunc callback, gpointer
 	GtkWidget *widget;
 	gint i;
 	gint n = 0;
+	GPtrArray *wpcpy = NULL;
 
 	if (remmina_widget_pool == NULL)
 		return 0;
 
+	/* Make a copy of remmina_widget_pool, so we can survive when callback()
+	 * remove an element from remmina_widget_pool */
+
+	wpcpy = g_ptr_array_sized_new(remmina_widget_pool->len);
+
 	for (i = 0; i < remmina_widget_pool->len; i++)
+		g_ptr_array_add(wpcpy, g_ptr_array_index(remmina_widget_pool, i));
+
+	/* Scan the remmina_widget_pool and call callbac() on every element */
+	for (i = 0; i < wpcpy->len; i++)
 	{
-		widget = GTK_WIDGET(g_ptr_array_index(remmina_widget_pool, i));
+		widget = GTK_WIDGET(g_ptr_array_index(wpcpy, i));
 		if (callback(widget, data))
 			n++;
 	}
+
+	/* Free the copy */
+	g_ptr_array_unref(wpcpy);
 	return n;
 }
 
