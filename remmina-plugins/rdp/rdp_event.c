@@ -457,7 +457,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 {
 	TRACE_CALL("remmina_rdp_event_on_key");
 	GdkDisplay* display;
-	guint16 cooked_keycode;
+	KeyCode cooked_keycode;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent rdp_event;
 	DWORD scancode;
@@ -799,6 +799,8 @@ static BOOL remmina_rdp_event_set_pointer_position(RemminaProtocolWidget *gp, gi
 	nw = gdk_device_get_window_at_position(dev, NULL, NULL);
 
 	if (nw == w) {
+		nx = 0;
+		ny = 0;
 		remmina_rdp_event_reverse_translate_pos_reverse(gp, x, y, &nx, &ny);
 		gdk_window_get_root_coords(w, nx, ny, &wx, &wy);
 		gdk_device_warp(dev, gdk_window_get_screen(w), wx, wy);
