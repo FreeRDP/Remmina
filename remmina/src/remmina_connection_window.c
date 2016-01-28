@@ -33,23 +33,25 @@
  *
  */
 
+#include "config.h"
+
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
 #include <stdlib.h>
-#include "config.h"
-#include "remmina_public.h"
+
+#include "remmina_connection_window.h"
 #include "remmina_file.h"
 #include "remmina_file_manager.h"
 #include "remmina_init_dialog.h"
-#include "remmina_protocol_widget.h"
+#include "remmina_plugin_cmdexec.h"
+#include "remmina_plugin_manager.h"
 #include "remmina_pref.h"
-#include "remmina_preexec.h"
+#include "remmina_protocol_widget.h"
+#include "remmina_public.h"
 #include "remmina_scrolled_viewport.h"
 #include "remmina_widget_pool.h"
-#include "remmina_connection_window.h"
 #include "remmina/remmina_trace_calls.h"
-#include "remmina_plugin_manager.h"
 
 G_DEFINE_TYPE( RemminaConnectionWindow, remmina_connection_window, GTK_TYPE_WINDOW)
 
@@ -3319,7 +3321,7 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 	cnnobj->remmina_file = remminafile;
 
 	/* Exec precommand before everything else */
-	remmina_preexec_new(cnnobj->remmina_file);
+	remmina_plugin_cmdexec_new(cnnobj->remmina_file, "precommand");
 
 	/* Create the RemminaProtocolWidget */
 	cnnobj->proto = remmina_protocol_widget_new();

@@ -77,8 +77,8 @@ set(REMMINA_SRCS
 	src/remmina_masterthread_exec.h
 	src/remmina_plugin_manager.c
 	src/remmina_plugin_manager.h
-	src/remmina_preexec.c
-	src/remmina_preexec.h
+	src/remmina_plugin_cmdexec.c
+	src/remmina_plugin_cmdexec.h
 	src/remmina_pref.c
 	src/remmina_pref_dialog.c
 	src/remmina_pref_dialog.h
