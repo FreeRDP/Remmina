@@ -64,8 +64,8 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 	GError *error = NULL;
 	char **argv;
 	char const *plugin_cmd = NULL;
-	gchar pre[9];
-	gchar post[9];
+	gchar pre[11];
+	gchar post[12];
 	char const *cmd = NULL;
 	GPid child_pid;
 
