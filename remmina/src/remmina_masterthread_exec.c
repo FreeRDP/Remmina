@@ -99,6 +99,9 @@ static gboolean remmina_masterthread_exec_callback(RemminaMTExecData *d)
 		case FUNC_FTP_CLIENT_GET_WAITING_TASK:
 			d->p.ftp_client_get_waiting_task.retval = remmina_ftp_client_get_waiting_task( d->p.ftp_client_get_waiting_task.client );
 			break;
+		case FUNC_PROTOCOLWIDGET_EMIT_SIGNAL:
+			remmina_protocol_widget_emit_signal(d->p.protocolwidget_emit_signal.gp, d->p.protocolwidget_emit_signal.signal_name);
+			break;
 		case FUNC_SFTP_CLIENT_CONFIRM_RESUME:
 #ifdef HAVE_LIBSSH
 			d->p.sftp_client_confirm_resume.retval = remmina_sftp_client_confirm_resume( d->p.sftp_client_confirm_resume.client,
