@@ -3270,8 +3270,6 @@ static void remmina_connection_object_on_disconnect(RemminaProtocolWidget* gp, R
 			remmina_file_save_group(cnnobj->remmina_file, REMMINA_SETTING_GROUP_RUNTIME);
 		}
 	}
-	remmina_file_free(cnnobj->remmina_file);
-	cnnobj->remmina_file = NULL;
 
 	if (remmina_protocol_widget_has_error(gp))
 	{
@@ -3289,6 +3287,8 @@ static void remmina_connection_object_on_disconnect(RemminaProtocolWidget* gp, R
 		    gtk_notebook_page_num(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook),
 		                          cnnobj->scrolled_container));
 	}
+
+	cnnobj->remmina_file = NULL;
 	g_free(cnnobj);
 }
 

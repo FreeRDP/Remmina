@@ -155,6 +155,8 @@ static void remmina_protocol_widget_destroy(RemminaProtocolWidget* gp, gpointer 
 	gp->priv->features = NULL;
 	g_free(gp->priv->error_message);
 	gp->priv->error_message = NULL;
+	g_free(gp->priv->remmina_file);
+	gp->priv->remmina_file = NULL;
 	g_free(gp->priv);
 	gp->priv = NULL;
 }
