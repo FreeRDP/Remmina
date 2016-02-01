@@ -330,31 +330,41 @@ static void remmina_connection_window_close_all_connections(RemminaConnectionWin
 
 }
 
-static gboolean remmina_connection_window_delete_event(GtkWidget* widget, GdkEvent* event, gpointer data)
+void remmina_connection_window_delete(RemminaConnectionWindow* cnnwin)
 {
-	TRACE_CALL("remmina_connection_window_delete_event");
-	RemminaConnectionHolder* cnnhld = (RemminaConnectionHolder*) data;
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	TRACE_CALL("remmina_connection_window_delete");
+	RemminaConnectionWindowPriv* priv = cnnwin->priv;
+	RemminaConnectionHolder *cnnhld = cnnwin->priv->cnnhld;
 	GtkNotebook* notebook = GTK_NOTEBOOK(priv->notebook);
 	GtkWidget* dialog;
 	gint i, n;
 
+	if (!REMMINA_IS_CONNECTION_WINDOW(cnnwin))
+		return;
+
 	n = gtk_notebook_get_n_pages(notebook);
 	if (n > 1)
 	{
-		dialog = gtk_message_dialog_new(GTK_WINDOW(cnnhld->cnnwin), GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION,
+		dialog = gtk_message_dialog_new(GTK_WINDOW(cnnwin), GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION,
 		                                GTK_BUTTONS_YES_NO,
 		                                _("There are %i active connections in the current window. Are you sure to close?"), n);
 		i = gtk_dialog_run(GTK_DIALOG(dialog));
 		gtk_widget_destroy(dialog);
 		if (i != GTK_RESPONSE_YES)
-			return TRUE;
+			return;
 	}
-	remmina_connection_window_close_all_connections(cnnhld->cnnwin);
+	remmina_connection_window_close_all_connections(cnnwin);
 
-	gtk_widget_destroy(GTK_WIDGET(cnnhld->cnnwin));
+	if (GTK_IS_WIDGET(cnnwin))
+		gtk_widget_destroy(GTK_WIDGET(cnnwin));
 	cnnhld->cnnwin = NULL;
 
+}
+
+static gboolean remmina_connection_window_delete_event(GtkWidget* widget, GdkEvent* event, gpointer data)
+{
+	TRACE_CALL("remmina_connection_window_delete_event");
+	remmina_connection_window_delete(REMMINA_CONNECTION_WINDOW(widget));
 	return TRUE;
 }
 
