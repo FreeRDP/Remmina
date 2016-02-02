@@ -355,8 +355,11 @@ void remmina_connection_window_delete(RemminaConnectionWindow* cnnwin)
 	}
 	remmina_connection_window_close_all_connections(cnnwin);
 
-	if (GTK_IS_WIDGET(cnnwin))
-		gtk_widget_destroy(GTK_WIDGET(cnnwin));
+	/* After remmina_connection_window_close_all_connections() call, cnnwin
+	 * has been already destroyed during a last page of notebook removal.
+	 * So we must rely on cnnhld */
+	if (cnnhld->cnnwin != NULL && GTK_IS_WIDGET(cnnhld->cnnwin))
+		gtk_widget_destroy(GTK_WIDGET(cnnhld->cnnwin));
 	cnnhld->cnnwin = NULL;
 
 }
