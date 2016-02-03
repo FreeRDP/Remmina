@@ -200,8 +200,10 @@ remmina_chat_window_new(GtkWindow* parent, const gchar* chat_with)
 	/* Chat history */
 	scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
 	gtk_widget_show(scrolledwindow);
+	gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW(scrolledwindow), 100);
+	gtk_widget_set_hexpand(GTK_WIDGET(scrolledwindow), TRUE);
 	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolledwindow), GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
-	gtk_grid_attach(GTK_GRID(grid), scrolledwindow, 0, 0, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), scrolledwindow, 0, 0, 3, 1);
 
 	widget = gtk_text_view_new();
 	gtk_widget_show(widget);
@@ -218,8 +220,10 @@ remmina_chat_window_new(GtkWindow* parent, const gchar* chat_with)
 	/* Chat message to be sent */
 	scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
 	gtk_widget_show(scrolledwindow);
+	gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW(scrolledwindow), 100);
 	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolledwindow), GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
-	gtk_grid_attach(GTK_GRID(grid), scrolledwindow, 0, 1, 1, 3);
+	gtk_widget_set_hexpand(GTK_WIDGET(scrolledwindow), TRUE);
+	gtk_grid_attach(GTK_GRID(grid), scrolledwindow, 0, 1, 3, 1);
 
 	widget = gtk_text_view_new();
 	gtk_widget_show(widget);
@@ -236,7 +240,7 @@ remmina_chat_window_new(GtkWindow* parent, const gchar* chat_with)
 	widget = gtk_button_new_with_mnemonic(_("_Send"));
 	gtk_widget_show(widget);
 	gtk_button_set_image(GTK_BUTTON(widget), image);
-	gtk_grid_attach(GTK_GRID(grid), widget, 1, 1, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 2, 2, 1, 1);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_chat_window_send), window);
 
 	/* Clear button */
@@ -246,7 +250,7 @@ remmina_chat_window_new(GtkWindow* parent, const gchar* chat_with)
 	widget = gtk_button_new_with_mnemonic(_("_Clear"));
 	gtk_widget_show(widget);
 	gtk_button_set_image(GTK_BUTTON(widget), image);
-	gtk_grid_attach(GTK_GRID(grid), widget, 1, 2, 2, 1);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, 2, 1, 1);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_chat_window_clear_send_text), window);
 
 	gtk_widget_grab_focus(window->send_text);
