@@ -134,6 +134,9 @@ struct rf_context
 	RFX_CONTEXT* rfx_context;
 
 	gboolean connected;
+	gboolean is_reconnecting;
+	int reconnect_maxattempts;
+	int reconnect_nattempt;
 
 	gboolean sw_gdi;
 	GtkWidget* drawing_area;
@@ -203,6 +206,7 @@ typedef enum
 {
 	REMMINA_RDP_UI_UPDATE_REGION = 0,
 	REMMINA_RDP_UI_CONNECTED,
+	REMMINA_RDP_UI_RECONNECT_PROGRESS,
 	REMMINA_RDP_UI_CURSOR,
 	REMMINA_RDP_UI_RFX,
 	REMMINA_RDP_UI_NOCODEC,

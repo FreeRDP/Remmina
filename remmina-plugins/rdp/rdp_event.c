@@ -53,7 +53,7 @@ static void remmina_rdp_event_on_focus_in(GtkWidget* widget, GdkEventKey* event,
 	GdkDeviceManager *manager;
 	GdkDevice *keyboard = NULL;
 
-	if ( !rfi )
+	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return;
 
 	input = rfi->instance->input;
@@ -86,7 +86,9 @@ static void remmina_rdp_event_event_push(RemminaProtocolWidget* gp, const Remmin
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent* event;
 
-	if ( !rfi )
+	/* Here we push mouse/keyboard events in the event_queue */
+
+	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return;
 
 	if (rfi->event_queue)
@@ -149,7 +151,7 @@ static void remmina_rdp_event_scale_area(RemminaProtocolWidget* gp, gint* x, gin
 	gint sx, sy, sw, sh;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
-	if (!rfi->surface)
+	if (!rfi || !rfi->connected || rfi->is_reconnecting || !rfi->surface)
 		return;
 
 	width = remmina_plugin_service->protocol_plugin_get_width(gp);
@@ -276,21 +278,48 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 	TRACE_CALL("remmina_rdp_event_on_draw");
 	gboolean scale;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	guint width, height;
+	gchar *msg;
+	cairo_text_extents_t extents;
 
-	if (!rfi) return FALSE;
-
-	if (!rfi->surface)
+	if (!rfi || !rfi->connected)
 		return FALSE;
 
-	scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
 
-	if (scale)
-		cairo_scale(context, rfi->scale_x, rfi->scale_y);
+	if (rfi->is_reconnecting)
+	{
+		/* freerdp is reconnecting, just show a message to the user */
 
-	cairo_set_source_surface(context, rfi->surface, 0, 0);
+		width = gtk_widget_get_allocated_width(widget);
+		height = gtk_widget_get_allocated_height (widget);
 
-	cairo_set_operator (context, CAIRO_OPERATOR_SOURCE);	// Ignore alpha channel from FreeRDP
-	cairo_paint(context);
+		/* Draw text */
+		msg = g_strdup_printf(_("Reconnection in progress. Attempt %d of %d..."),
+			rfi->reconnect_nattempt, rfi->reconnect_maxattempts);
+
+		cairo_set_source_rgb(context, 0.9, 0.9, 0.9);
+		cairo_text_extents(context, msg, &extents);
+		cairo_move_to(context, (width - (extents.width + extents.x_bearing)) / 2, (height - (extents.height + extents.y_bearing)) / 2);
+		cairo_show_text(context, msg);
+
+	}
+	else
+	{
+		/* Standard drawing: we copy the surface from RDP */
+
+		if (!rfi->surface)
+			return FALSE;
+
+		scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
+
+		if (scale)
+			cairo_scale(context, rfi->scale_x, rfi->scale_y);
+
+		cairo_set_source_surface(context, rfi->surface, 0, 0);
+
+		cairo_set_operator(context, CAIRO_OPERATOR_SOURCE);	// Ignore alpha channel from FreeRDP
+		cairo_paint(context);
+	}
 
 	return TRUE;
 }
@@ -300,7 +329,8 @@ static gboolean remmina_rdp_event_on_configure(GtkWidget* widget, GdkEventConfig
 	TRACE_CALL("remmina_rdp_event_on_configure");
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
-	if (!rfi) return FALSE;
+	if (!rfi || !rfi->connected || rfi->is_reconnecting)
+		return FALSE;
 
 	/* We do a delayed reallocating to improve performance */
 
@@ -322,7 +352,8 @@ static void remmina_rdp_event_translate_pos(RemminaProtocolWidget* gp, int ix, i
 	 * RDP coordinates and put result on (*ox,*uy)
 	 * */
 
-	if (!rfi) return;
+	if (!rfi || !rfi->connected || rfi->is_reconnecting)
+		return;
 
 	if ((rfi->scale) && (rfi->scale_width >= 1) && (rfi->scale_height >= 1))
 	{
@@ -346,7 +377,8 @@ static void remmina_rdp_event_reverse_translate_pos_reverse(RemminaProtocolWidge
 	 * local window coordinates and put result on (*ox,*uy)
 	 * */
 
-	if (!rfi) return;
+	if (!rfi || !rfi->connected || rfi->is_reconnecting)
+		return;
 
 	if ((rfi->scale) && (rfi->scale_width >= 1) && (rfi->scale_height >= 1))
 	{
@@ -468,7 +500,8 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 	RemminaPluginRdpEvent rdp_event;
 	DWORD scancode;
 
-	if ( !rfi ) return TRUE;
+	if (!rfi || !rfi->connected || rfi->is_reconnecting)
+		return FALSE;
 
 #ifdef ENABLE_GTK_INSPECTOR_KEY
 	/* GTK inspector key is propagated up. Disabled by default.
@@ -542,7 +575,9 @@ gboolean remmina_rdp_event_on_clipboard(GtkClipboard *gtkClipboard, GdkEvent *ev
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	rfClipboard* clipboard;
 
-	if ( !rfi ) return TRUE;
+	if (!rfi || !rfi->connected || rfi->is_reconnecting)
+		return FALSE;
+
 	clipboard = &(rfi->clipboard);
 
 	if ( clipboard->sync ) {
@@ -564,7 +599,7 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	GtkClipboard* clipboard;
 
-	if ( !rfi ) return;
+	if (!rfi) return;
 
 	rfi->drawing_area = gtk_drawing_area_new();
 	gtk_widget_show(rfi->drawing_area);
@@ -763,6 +798,13 @@ static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPlugin
 	remmina_rdp_event_update_scale(gp);
 }
 
+static void remmina_rdp_event_reconnect_progress(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+{
+	TRACE_CALL("remmina_rdp_event_reconnect_progress");
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	gdk_window_invalidate_rect(gtk_widget_get_window(rfi->drawing_area), NULL, TRUE);
+}
+
 static BOOL remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
 	TRACE_CALL("remmina_rdp_event_create_cursor");
@@ -895,6 +937,10 @@ gboolean remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp)
 
 				case REMMINA_RDP_UI_CONNECTED:
 					remmina_rdp_event_connected(gp, ui);
+					break;
+
+				case REMMINA_RDP_UI_RECONNECT_PROGRESS:
+					remmina_rdp_event_reconnect_progress(gp, ui);
 					break;
 
 				case REMMINA_RDP_UI_CURSOR:

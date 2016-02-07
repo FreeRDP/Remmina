@@ -160,6 +160,76 @@ void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj)
 	g_free(obj);
 }
 
+BOOL rf_auto_reconnect(rfContext* rfi)
+{
+	TRACE_CALL("rf_auto_reconnect");
+	rdpSettings* settings = rfi->instance->settings;
+	RemminaPluginRdpUiObject* ui;
+
+	rfi->is_reconnecting = TRUE;
+	rfi->reconnect_maxattempts = settings->AutoReconnectMaxRetries;
+	rfi->reconnect_nattempt = 0;
+
+	/* Only auto reconnect on network disconnects. */
+	if (freerdp_error_info(rfi->instance) != 0)
+		return FALSE;
+
+	if (!settings->AutoReconnectionEnabled)
+	{
+		/* No auto-reconnect - just quit */
+		return FALSE;
+	}
+
+	/* A network disconnect was detected and we should try to reconnect */
+	remmina_plugin_service->log_printf("[RDP][%s] network disconnection detected, initiating reconnection attempt\n",
+		rfi->settings->ServerHostname);
+
+	ui = g_new0(RemminaPluginRdpUiObject, 1);
+	ui->type = REMMINA_RDP_UI_RECONNECT_PROGRESS;
+	rf_queue_ui(rfi->protocol_widget, ui);
+
+	/* Sleep half a second to allow:
+	 *  - processing of the ui event we just pushed on the queue
+	 *  - better network conditions
+	 *  Remember: we hare on a thread, so the main gui won't lock */
+
+	usleep(500000);
+
+	/* Perform an auto-reconnect. */
+	while (TRUE)
+	{
+		/* Quit retrying if max retries has been exceeded */
+		if (rfi->reconnect_nattempt++ >= rfi->reconnect_maxattempts)
+		{
+			return FALSE;
+		}
+
+		/* Attempt the next reconnect */
+		remmina_plugin_service->log_printf("[RDP][%s] attempting reconnection, attempt #%d of %d\n",
+			rfi->settings->ServerHostname, rfi->reconnect_nattempt, rfi->reconnect_maxattempts);
+
+		ui = g_new0(RemminaPluginRdpUiObject, 1);
+		ui->type = REMMINA_RDP_UI_RECONNECT_PROGRESS;
+		rf_queue_ui(rfi->protocol_widget, ui);
+
+		if (freerdp_reconnect(rfi->instance))
+		{
+			/* Reconnection is successful */
+			remmina_plugin_service->log_printf("[RDP][%s] reconnection successful.\n",
+				rfi->settings->ServerHostname);
+			rfi->is_reconnecting = FALSE;
+			return TRUE;
+		}
+
+		sleep(1);
+	}
+
+	remmina_plugin_service->log_printf("[RDP][%s] maximum number of reconnection attempts exceeded.\n",
+			rfi->settings->ServerHostname);
+
+	return FALSE;
+}
+
 BOOL rf_begin_paint(rdpContext* context)
 {
 	TRACE_CALL("rf_begin_paint");
@@ -508,6 +578,8 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 
 		if (!freerdp_check_event_handles(rfi->instance->context))
 		{
+			if (rf_auto_reconnect(rfi))
+				continue;
 			fprintf(stderr, "Failed to check FreeRDP event handles\n");
 			break;
 		}
@@ -563,6 +635,34 @@ static void remmina_rdp_send_ctrlaltdel(RemminaProtocolWidget *gp)
 		keys, G_N_ELEMENTS(keys), GDK_KEY_PRESS | GDK_KEY_RELEASE);
 }
 
+static gboolean remmina_rdp_check_host_resolution(RemminaProtocolWidget *gp, char *hostname, int tcpport)
+{
+	TRACE_CALL("remmina_rdp_check_host_resolution");
+	struct addrinfo hints;
+	struct addrinfo* result = NULL;
+	int status;
+	char service[16];
+
+	memset(&hints, 0, sizeof(struct addrinfo));
+	hints.ai_family = AF_UNSPEC;
+	hints.ai_socktype = SOCK_STREAM;
+	hints.ai_flags = 0;
+	hints.ai_protocol = 0;
+
+	sprintf(service, "%d", tcpport);
+	status = getaddrinfo(hostname, service, &hints, &result);
+	if (status != 0) {
+		remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to find the address of RDP server %s."),
+			hostname);
+		freeaddrinfo(result);
+		return FALSE;
+	}
+
+	freeaddrinfo(result);
+	return TRUE;
+
+}
+
 static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_rdp_main");
@@ -595,6 +695,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	remmina_plugin_service->get_server_port(s, 3389, &host, &port);
 	rfi->settings->ServerHostname = strdup(host);
 
+	rfi->settings->AutoReconnectionEnabled = TRUE;
+
 	cert_host = host;
 	cert_port = port;
 
@@ -603,6 +705,11 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		if ( cert_hostport ) {
 			remmina_plugin_service->get_server_port(cert_hostport, 3389, &cert_host, &cert_port);
 		}
+	} else {
+		/* When SSH tunnel is not enabled, we can verify that ServerHostname
+		 * resolves correctly via DNS */
+		if (!remmina_rdp_check_host_resolution(gp, host, port))
+			return FALSE;
 	}
 
 	if (cert_port == 3389)
@@ -987,6 +1094,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	rfi->settings = instance->settings;
 	rfi->instance->context->channels = freerdp_channels_new();
 	rfi->connected = False;
+	rfi->is_reconnecting = False;
 
 	pthread_mutex_init(&rfi->mutex, NULL);
 
