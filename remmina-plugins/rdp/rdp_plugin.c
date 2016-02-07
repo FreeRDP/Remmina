@@ -44,6 +44,7 @@
 
 #include <errno.h>
 #include <pthread.h>
+#include <time.h>
 #include <cairo/cairo-xlib.h>
 #include <freerdp/freerdp.h>
 #include <freerdp/constants.h>
@@ -165,6 +166,7 @@ BOOL rf_auto_reconnect(rfContext* rfi)
 	TRACE_CALL("rf_auto_reconnect");
 	rdpSettings* settings = rfi->instance->settings;
 	RemminaPluginRdpUiObject* ui;
+	time_t treconn;
 
 	rfi->is_reconnecting = TRUE;
 	rfi->reconnect_maxattempts = settings->AutoReconnectMaxRetries;
@@ -212,6 +214,7 @@ BOOL rf_auto_reconnect(rfContext* rfi)
 		ui->type = REMMINA_RDP_UI_RECONNECT_PROGRESS;
 		rf_queue_ui(rfi->protocol_widget, ui);
 
+		treconn = time(NULL);
 		if (freerdp_reconnect(rfi->instance))
 		{
 			/* Reconnection is successful */
@@ -221,7 +224,9 @@ BOOL rf_auto_reconnect(rfContext* rfi)
 			return TRUE;
 		}
 
-		sleep(1);
+		/* Wait until 5 secs have elapsed from last reconnect attempt */
+		while (time(NULL) - treconn < 5)
+			sleep(1);
 	}
 
 	remmina_plugin_service->log_printf("[RDP][%s] maximum number of reconnection attempts exceeded.\n",
