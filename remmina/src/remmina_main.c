@@ -464,6 +464,7 @@ static void remmina_main_load_files(gboolean refresh)
 	if (refresh)
 	{
 		remmina_main_save_expanded_group();
+		remminamain->priv->selected_filename = NULL;
 	}
 
 	switch (remmina_pref.view_file_mode)
@@ -581,7 +582,6 @@ void remmina_main_on_action_connection_edit(GtkAction *action, gpointer user_dat
 	widget = remmina_file_editor_new_from_filename(remminamain->priv->selected_filename);
 	if (widget)
 	{
-		g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_main_file_editor_destroy), NULL);
 		gtk_window_set_transient_for(GTK_WINDOW(widget), remminamain->window);
 		gtk_widget_show(widget);
 	}
