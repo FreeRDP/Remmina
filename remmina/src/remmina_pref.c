@@ -272,7 +272,7 @@ void remmina_pref_init(void)
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "survey", NULL))
 		remmina_pref.survey = g_key_file_get_boolean(gkeyfile, "remmina_pref", "survey", NULL);
 	else
-		remmina_pref.survey = FALSE;
+		remmina_pref.survey = TRUE;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "invisible_toolbar", NULL))
 		remmina_pref.invisible_toolbar = g_key_file_get_boolean(gkeyfile, "remmina_pref", "invisible_toolbar", NULL);
