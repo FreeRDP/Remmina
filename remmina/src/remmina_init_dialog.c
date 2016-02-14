@@ -167,6 +167,9 @@ void remmina_init_dialog_set_status(RemminaInitDialog *dialog, const gchar *stat
 
 	va_list args;
 
+	if (!dialog)
+		return;
+
 	if (status_format)
 	{
 		if (dialog->status)

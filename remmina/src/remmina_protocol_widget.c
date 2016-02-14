@@ -645,6 +645,13 @@ gchar* remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget* gp, gi
 		return dest;
 	}
 
+	/* If we have a previous ssh tunnel, destroy it */
+	if (gp->priv->ssh_tunnel)
+	{
+		remmina_ssh_tunnel_free(gp->priv->ssh_tunnel);
+		gp->priv->ssh_tunnel = NULL;
+	}
+
 	if (!remmina_protocol_widget_init_tunnel (gp))
 	{
 		g_free(host);
@@ -652,7 +659,7 @@ gchar* remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget* gp, gi
 	}
 
 	remmina_init_dialog_set_status (REMMINA_INIT_DIALOG (gp->priv->init_dialog),
-	                                _("Connecting to %s through SSH tunnel..."), server);
+					_("Connecting to %s through SSH tunnel..."), server);
 
 	if (remmina_file_get_int (gp->priv->remmina_file, "ssh_loopback", FALSE))
 	{
