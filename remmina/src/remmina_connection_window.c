@@ -254,6 +254,9 @@ static void remmina_connection_window_class_init(RemminaConnectionWindowClass* k
 	                                 "  padding: 0px;\n"
 	                                 "  background-color: #f0f0f0;\n"
 	                                 "}\n"
+	                                 "#ftb-handle {\n"
+	                                 "  background-color: #f0f0f0;\n"
+	                                 "}\n"
 
 	                                 ,-1, NULL);
 
@@ -2776,6 +2779,7 @@ static void remmina_connection_holder_create_overlay_ftb_overlay(RemminaConnecti
 
 	GtkWidget* handle = gtk_drawing_area_new();
 	gtk_widget_set_size_request(handle, 4, 4);
+	gtk_widget_set_name(handle, "ftb-handle");
 
 	revealer = gtk_revealer_new();
 
