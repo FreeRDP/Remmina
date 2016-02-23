@@ -41,6 +41,7 @@
 #include "remmina_widget_pool.h"
 #include "remmina_pref_dialog.h"
 #include "remmina_file.h"
+#include "remmina_pref.h"
 #include "remmina_file_editor.h"
 #include "remmina_connection_window.h"
 #include "remmina_about.h"
@@ -86,7 +87,6 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 	GtkWindow* mainwindow;
 	GtkDialog* prefdialog;
 	RemminaEntryPlugin* plugin;
-	static gboolean remmina_survey = TRUE;
 
 	switch (command)
 	{
@@ -103,11 +103,10 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 			gtk_widget_show(widget);
 			/* Remmina survey reminder popup */
 			mainwindow = remmina_main_get_window();
-			if ( remmina_survey && remmina_survey_valid_profile())
+			if ( remmina_pref.survey && remmina_survey_valid_profile())
 			{
 				/* test if network is up and start survey */
 				remmina_survey_cb(GTK_WINDOW(mainwindow));
-				remmina_survey = FALSE;
 			}
 		}
 		break;
