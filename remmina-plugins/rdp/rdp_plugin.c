@@ -610,7 +610,8 @@ static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** 
 	return True;
 }
 
-static BOOL remmina_rdp_verify_certificate(freerdp* instance, char* subject, char* issuer, char* fingerprint)
+static DWORD remmina_rdp_verify_certificate(freerdp* instance, const char *common_name, const char* subject,
+	const char* issuer, const char* fingerprint, BOOL host_mismatch)
 {
 	TRACE_CALL("remmina_rdp_verify_certificate");
 	gint status;
@@ -625,10 +626,11 @@ static BOOL remmina_rdp_verify_certificate(freerdp* instance, char* subject, cha
 	if (status == GTK_RESPONSE_OK)
 		return True;
 
-	return False;
+	return 1;
 }
-static BOOL remmina_rdp_verify_changed_certificate(freerdp* instance, char* subject, char* issuer,
-	char* new_fingerprint, char* old_subject, char* old_issuer, char* old_fingerprint)
+static DWORD remmina_rdp_verify_changed_certificate(freerdp* instance,
+	const char* common_name, const char* subject, const char* issuer,
+	const char* new_fingerprint, const char* old_subject, const char* old_issuer, const char* old_fingerprint)
 {
 	TRACE_CALL("remmina_rdp_verify_changed_certificate");
 	gint status;
@@ -643,7 +645,7 @@ static BOOL remmina_rdp_verify_changed_certificate(freerdp* instance, char* subj
 	if (status == GTK_RESPONSE_OK)
 		return True;
 
-	return False;
+	return 1;
 }
 
 static int remmina_rdp_receive_channel_data(freerdp* instance, int channelId, UINT8* data, int size, int flags, int total_size)
@@ -1093,8 +1095,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 		return FALSE;
 	}
-
-
 
 	remmina_rdp_main_loop(gp);
 
