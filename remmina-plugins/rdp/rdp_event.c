@@ -297,6 +297,8 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 		msg = g_strdup_printf(_("Reconnection in progress. Attempt %d of %d..."),
 			rfi->reconnect_nattempt, rfi->reconnect_maxattempts);
 
+		cairo_select_font_face(context, "Sans", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_BOLD);
+		cairo_set_font_size(context, 24);
 		cairo_set_source_rgb(context, 0.9, 0.9, 0.9);
 		cairo_text_extents(context, msg, &extents);
 		cairo_move_to(context, (width - (extents.width + extents.x_bearing)) / 2, (height - (extents.height + extents.y_bearing)) / 2);
