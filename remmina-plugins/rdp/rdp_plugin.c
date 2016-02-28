@@ -775,7 +775,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	if (!remmina_rdp_tunnel_init(gp))
 		return FALSE;
 
-	rfi->settings->AutoReconnectionEnabled = TRUE;
+	/* Enable by default RDP AutoReconnection, only when ssh tunnel is not enabled */
+	 if (!remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
+		rfi->settings->AutoReconnectionEnabled = TRUE;
+	}
 
 	rfi->settings->ColorDepth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 0);
 
