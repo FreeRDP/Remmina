@@ -44,6 +44,7 @@
 
 #include <errno.h>
 #include <pthread.h>
+#include <time.h>
 #include <cairo/cairo-xlib.h>
 #include <freerdp/freerdp.h>
 #include <freerdp/constants.h>
@@ -158,6 +159,193 @@ void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj)
 	}
 
 	g_free(obj);
+}
+
+static gboolean remmina_rdp_check_host_resolution(RemminaProtocolWidget *gp, char *hostname, int tcpport)
+{
+	TRACE_CALL("remmina_rdp_check_host_resolution");
+	struct addrinfo hints;
+	struct addrinfo* result = NULL;
+	int status;
+	char service[16];
+
+	memset(&hints, 0, sizeof(struct addrinfo));
+	hints.ai_family = AF_UNSPEC;
+	hints.ai_socktype = SOCK_STREAM;
+	hints.ai_flags = 0;
+	hints.ai_protocol = 0;
+
+	sprintf(service, "%d", tcpport);
+	status = getaddrinfo(hostname, service, &hints, &result);
+	if (status != 0) {
+		remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to find the address of RDP server %s."),
+			hostname);
+		freeaddrinfo(result);
+		return FALSE;
+	}
+
+	freeaddrinfo(result);
+	return TRUE;
+
+}
+
+static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget* gp)
+{
+	TRACE_CALL("remmina_rdp_tunnel_init");
+
+	/* Opens the optional SSH tunnel if needed.
+	 * Used also when reopening the same tunnel for a freerdp reconnect.
+	 * Returns TRUE if all OK, and setups correct rfi->Settings values
+	 * with connection and certificate parameters */
+
+	gchar* hostport;
+	gchar* s;
+	gchar* host;
+	gchar *cert_host;
+	gint cert_port;
+	gint port;
+	const gchar *cert_hostport;
+
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	RemminaFile* remminafile;
+
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 3389, FALSE);
+	if (hostport == NULL) {
+		return FALSE;
+	}
+
+	remmina_plugin_service->get_server_port(hostport, 3389, &host, &port);
+
+	cert_host = host;
+	cert_port = port;
+
+	if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
+		cert_hostport = remmina_plugin_service->file_get_string(remminafile, "server");
+		if ( cert_hostport ) {
+			remmina_plugin_service->get_server_port(cert_hostport, 3389, &cert_host, &cert_port);
+		}
+
+	} else {
+		/* When SSH tunnel is not enabled, we can verify that host
+		 * resolves correctly via DNS */
+		if (!remmina_rdp_check_host_resolution(gp, host, port)) {
+			g_free(host);
+			g_free(hostport);
+			return FALSE;
+		}
+	}
+
+	if (!rfi->is_reconnecting) {
+		/* settings->CertificateName and settings->ServerHostname is created
+		 * only on 1st connect, not on reconnections */
+
+		rfi->settings->ServerHostname = strdup(host);
+
+		if (cert_port == 3389)
+		{
+			rfi->settings->CertificateName = strdup(cert_host);
+		}
+		else
+		{
+			s = g_strdup_printf("%s:%d", cert_host, cert_port);
+			rfi->settings->CertificateName = strdup(s);
+			g_free(s);
+		}
+	}
+
+	if (cert_host != host) g_free(cert_host);
+	g_free(host);
+	g_free(hostport);
+
+	rfi->settings->ServerPort = port;
+
+	return TRUE;
+}
+
+BOOL rf_auto_reconnect(rfContext* rfi)
+{
+	TRACE_CALL("rf_auto_reconnect");
+	rdpSettings* settings = rfi->instance->settings;
+	RemminaPluginRdpUiObject* ui;
+	time_t treconn;
+
+	rfi->is_reconnecting = TRUE;
+	rfi->reconnect_maxattempts = settings->AutoReconnectMaxRetries;
+	rfi->reconnect_nattempt = 0;
+
+	/* Only auto reconnect on network disconnects. */
+	if (freerdp_error_info(rfi->instance) != 0) {
+		rfi->is_reconnecting = FALSE;
+		return FALSE;
+	}
+
+	if (!settings->AutoReconnectionEnabled)
+	{
+		/* No auto-reconnect - just quit */
+		rfi->is_reconnecting = FALSE;
+		return FALSE;
+	}
+
+	/* A network disconnect was detected and we should try to reconnect */
+	remmina_plugin_service->log_printf("[RDP][%s] network disconnection detected, initiating reconnection attempt\n",
+		rfi->settings->ServerHostname);
+
+	ui = g_new0(RemminaPluginRdpUiObject, 1);
+	ui->type = REMMINA_RDP_UI_RECONNECT_PROGRESS;
+	rf_queue_ui(rfi->protocol_widget, ui);
+
+	/* Sleep half a second to allow:
+	 *  - processing of the ui event we just pushed on the queue
+	 *  - better network conditions
+	 *  Remember: we hare on a thread, so the main gui won't lock */
+
+	usleep(500000);
+
+	/* Perform an auto-reconnect. */
+	while (TRUE)
+	{
+		/* Quit retrying if max retries has been exceeded */
+		if (rfi->reconnect_nattempt++ >= rfi->reconnect_maxattempts)
+		{
+			remmina_plugin_service->log_printf("[RDP][%s] maximum number of reconnection attempts exceeded.\n",
+				rfi->settings->ServerHostname);
+			break;
+		}
+
+		/* Attempt the next reconnect */
+		remmina_plugin_service->log_printf("[RDP][%s] attempting reconnection, attempt #%d of %d\n",
+			rfi->settings->ServerHostname, rfi->reconnect_nattempt, rfi->reconnect_maxattempts);
+
+		ui = g_new0(RemminaPluginRdpUiObject, 1);
+		ui->type = REMMINA_RDP_UI_RECONNECT_PROGRESS;
+		rf_queue_ui(rfi->protocol_widget, ui);
+
+		treconn = time(NULL);
+
+		/* Reconnect the SSH tunnel, if needed */
+		if (!remmina_rdp_tunnel_init(rfi->protocol_widget)) {
+			remmina_plugin_service->log_printf("[RDP][%s] unable to recreate tunnel with remmina_rdp_tunnel_init.\n",
+				rfi->settings->ServerHostname);
+		} else {
+			if (freerdp_reconnect(rfi->instance))
+			{
+				/* Reconnection is successful */
+				remmina_plugin_service->log_printf("[RDP][%s] reconnection successful.\n",
+					rfi->settings->ServerHostname);
+				rfi->is_reconnecting = FALSE;
+				return TRUE;
+			}
+		}
+
+		/* Wait until 5 secs have elapsed from last reconnect attempt */
+		while (time(NULL) - treconn < 5)
+			sleep(1);
+	}
+
+	rfi->is_reconnecting = FALSE;
+	return FALSE;
 }
 
 BOOL rf_begin_paint(rdpContext* context)
@@ -508,6 +696,8 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 
 		if (!freerdp_check_event_handles(rfi->instance->context))
 		{
+			if (rf_auto_reconnect(rfi))
+				continue;
 			fprintf(stderr, "Failed to check FreeRDP event handles\n");
 			break;
 		}
@@ -567,10 +757,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_rdp_main");
 	gchar* s;
-	gint port;
-	gchar* host;
 	gchar* value;
-	gchar* hostport;
 	gint rdpsnd_rate;
 	gint rdpsnd_channel;
 	char *rdpsnd_params[3];
@@ -580,47 +767,19 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	const gchar* cs;
 	RemminaFile* remminafile;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	const gchar *cert_hostport;
-	gchar *cert_host;
-	gint cert_port;
 	gchar *gateway_host;
 	gint gateway_port;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-	s = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 3389, FALSE);
 
-	if (s == NULL)
+	if (!remmina_rdp_tunnel_init(gp))
 		return FALSE;
 
-	remmina_plugin_service->get_server_port(s, 3389, &host, &port);
-	rfi->settings->ServerHostname = strdup(host);
-
-	cert_host = host;
-	cert_port = port;
-
-	if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
-		cert_hostport = remmina_plugin_service->file_get_string(remminafile, "server");
-		if ( cert_hostport ) {
-			remmina_plugin_service->get_server_port(cert_hostport, 3389, &cert_host, &cert_port);
-		}
+	/* Enable by default RDP AutoReconnection, only when ssh tunnel is not enabled */
+	 if (!remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
+		rfi->settings->AutoReconnectionEnabled = TRUE;
 	}
 
-	if (cert_port == 3389)
-	{
-		rfi->settings->CertificateName = strdup(cert_host);
-	}
-	else
-	{
-		hostport = g_strdup_printf("%s:%d", cert_host, cert_port);
-		rfi->settings->CertificateName = strdup(hostport);
-		g_free(hostport);
-	}
-
-	if (cert_host != host) g_free(cert_host);
-	g_free(host);
-	g_free(s);
-
-	rfi->settings->ServerPort = port;
 	rfi->settings->ColorDepth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 0);
 
 	if (rfi->settings->ColorDepth == 0)
@@ -987,6 +1146,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	rfi->settings = instance->settings;
 	rfi->instance->context->channels = freerdp_channels_new();
 	rfi->connected = False;
+	rfi->is_reconnecting = False;
 
 	pthread_mutex_init(&rfi->mutex, NULL);
 

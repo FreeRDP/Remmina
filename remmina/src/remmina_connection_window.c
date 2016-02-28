@@ -214,6 +214,9 @@ static void remmina_connection_window_class_init(RemminaConnectionWindowClass* k
 	                                 "  border:0;\n"
 	                                 "  background-color: black;\n"
 	                                 "}\n"
+	                                 "GtkDrawingArea {\n"
+	                                 "  background-color: black;\n"
+	                                 "}\n"
 	                                 "GtkToolbar {\n"
 	                                 "  -GtkWidget-window-dragging: 0;\n"
 	                                 "}\n"
@@ -252,6 +255,9 @@ static void remmina_connection_window_class_init(RemminaConnectionWindowClass* k
 	                                 "  border-radius: 4px;\n"
 	                                 "  border-color: #808080;\n"
 	                                 "  padding: 0px;\n"
+	                                 "  background-color: #f0f0f0;\n"
+	                                 "}\n"
+	                                 "#ftb-handle {\n"
 	                                 "  background-color: #f0f0f0;\n"
 	                                 "}\n"
 
@@ -2776,6 +2782,7 @@ static void remmina_connection_holder_create_overlay_ftb_overlay(RemminaConnecti
 
 	GtkWidget* handle = gtk_drawing_area_new();
 	gtk_widget_set_size_request(handle, 4, 4);
+	gtk_widget_set_name(handle, "ftb-handle");
 
 	revealer = gtk_revealer_new();
 

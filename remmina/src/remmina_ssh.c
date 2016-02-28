@@ -77,6 +77,16 @@
 #include "remmina_pref.h"
 #include "remmina/remmina_trace_calls.h"
 
+#ifdef HAVE_NETINET_TCP_H
+#include <netinet/tcp.h>
+#define SSH_SOCKET_TCP_KEEPIDLE 5
+#define SSH_SOCKET_TCP_KEEPCNT 3
+#define SSH_SOCKET_TCP_KEEPINTVL 3
+/* Remember to lower SSH_SOCKET_TCP_USER_TIMEOUT to 4 when kernel bug 108191 will be fixed */
+#define SSH_SOCKET_TCP_USER_TIMEOUT 9
+#endif
+
+
 /*-----------------------------------------------------------------------------*
  *                           SSH Base                                          *
  *-----------------------------------------------------------------------------*/
@@ -401,22 +411,29 @@ remmina_ssh_init_session (RemminaSSH *ssh)
 {
 	TRACE_CALL("remmina_ssh_init_session");
 	gint verbosity;
+#ifdef HAVE_NETINET_TCP_H
+	socket_t sshsock;
+	gint optval;
+#endif
 
 	ssh->callback = g_new0 (struct ssh_callbacks_struct, 1);
-	ssh->callback->userdata = ssh;
 
 	/* Init & startup the SSH session */
 	ssh->session = ssh_new ();
 	ssh_options_set (ssh->session, SSH_OPTIONS_HOST, ssh->server);
 	ssh_options_set (ssh->session, SSH_OPTIONS_PORT, &ssh->port);
 	ssh_options_set (ssh->session, SSH_OPTIONS_USER, ssh->user);
+
+	ssh_callbacks_init(ssh->callback);
 	if (remmina_log_running ())
 	{
 		verbosity = remmina_pref.ssh_loglevel;
 		ssh_options_set (ssh->session, SSH_OPTIONS_LOG_VERBOSITY, &verbosity);
 		ssh->callback->log_function = remmina_ssh_log_callback;
+		/* Reset libssh legacy userdata. This is a workaround for a libssh bug */
+		ssh_set_log_userdata(ssh->session);
 	}
-	ssh_callbacks_init (ssh->callback);
+	ssh->callback->userdata = ssh;
 	ssh_set_callbacks(ssh->session, ssh->callback);
 
 	/* As the latest parse the ~/.ssh/config file */
@@ -429,6 +446,34 @@ remmina_ssh_init_session (RemminaSSH *ssh)
 		remmina_ssh_set_error (ssh, _("Failed to startup SSH session: %s"));
 		return FALSE;
 	}
+
+#ifdef HAVE_NETINET_TCP_H
+	/* Set keepalive on ssh socket, so we can keep firewalls awaken and detect
+	 * when we loss the tunnel */
+	sshsock = ssh_get_fd(ssh->session);
+	if (sshsock >= 0) {
+		optval = 1;
+		if(setsockopt (sshsock, SOL_SOCKET, SO_KEEPALIVE, &optval, sizeof (optval)) < 0){
+			remmina_log_printf ("[SSH] TCP KeepAlive not set\n");
+		}
+		optval = SSH_SOCKET_TCP_KEEPIDLE;
+		if (setsockopt(sshsock, IPPROTO_TCP, TCP_KEEPIDLE,  &optval, sizeof (optval)) < 0) {
+			remmina_log_printf ("[SSH] TCP_KEEPIDLE not set\n");
+		}
+		optval = SSH_SOCKET_TCP_KEEPCNT;
+		if (setsockopt(sshsock, IPPROTO_TCP, TCP_KEEPCNT,  &optval, sizeof (optval)) < 0) {
+			remmina_log_printf ("[SSH] TCP_KEEPCNT not set\n");
+		}
+		optval = SSH_SOCKET_TCP_KEEPINTVL;
+		if (setsockopt(sshsock, IPPROTO_TCP, TCP_KEEPINTVL,  &optval, sizeof (optval)) < 0) {
+			remmina_log_printf ("[SSH] TCP_KEEPINTVL not set\n");
+		}
+		optval = SSH_SOCKET_TCP_USER_TIMEOUT;
+		if (setsockopt(sshsock, IPPROTO_TCP, TCP_USER_TIMEOUT,  &optval, sizeof (optval)) < 0) {
+			remmina_log_printf ("[SSH] TCP_USER_TIMEOUT not set\n");
+		}
+	}
+#endif
 
 	/* Try the "none" authentication */
 	if (ssh_userauth_none (ssh->session, NULL) == SSH_AUTH_SUCCESS)
@@ -1028,14 +1073,19 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 						if (lenw <= 0)
 						{
 							disconnected = TRUE;
+							remmina_ssh_set_error (REMMINA_SSH (tunnel), "ssh_channel_write() returned an error: %s");
 							break;
 						}
 					}
 				}
-				if (len == 0) disconnected = TRUE;
+				if (len == 0) {
+					remmina_ssh_set_error (REMMINA_SSH (tunnel), "read on tunnel listening socket returned an error: %s");
+					disconnected = TRUE;
+				}
 			}
 			if (disconnected)
 			{
+				remmina_log_printf("[SSH] tunnel has been disconnected. Reason: %s\n", REMMINA_SSH(tunnel)->error);
 				remmina_ssh_tunnel_remove_channel (tunnel, i);
 				continue;
 			}
@@ -1053,6 +1103,7 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 				len = ssh_channel_poll (tunnel->channels[i], 0);
 				if (len == SSH_ERROR || len == SSH_EOF)
 				{
+					remmina_ssh_set_error (REMMINA_SSH (tunnel), "ssh_channel_poll() returned an error : %s");
 					disconnected = TRUE;
 				}
 				else if (len > 0)
@@ -1061,6 +1112,7 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 					len = ssh_channel_read_nonblocking (tunnel->channels[i], tunnel->socketbuffers[i]->data, len, 0);
 					if (len <= 0)
 					{
+						remmina_ssh_set_error (REMMINA_SSH (tunnel), "ssh_channel_read_nonblocking() returned an error : %s");
 						disconnected = TRUE;
 					}
 					else
@@ -1085,6 +1137,7 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 					}
 					if (lenw <= 0)
 					{
+						remmina_ssh_set_error (REMMINA_SSH (tunnel), "write on tunnel listening socket returned an error: %s");
 						disconnected = TRUE;
 						break;
 					}
@@ -1098,6 +1151,7 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 
 			if (disconnected)
 			{
+				remmina_log_printf("[SSH] tunnel has been disconnected. Reason: %s\n", REMMINA_SSH(tunnel)->error);
 				remmina_ssh_tunnel_remove_channel (tunnel, i);
 				continue;
 			}
