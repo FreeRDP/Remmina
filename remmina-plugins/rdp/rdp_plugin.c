@@ -724,26 +724,6 @@ int remmina_rdp_load_static_channel_addin(rdpChannels* channels, rdpSettings* se
 	return -1;
 }
 
-
-int remmina_rdp_add_static_channel(rdpSettings* settings, int count, char** params)
-{
-	TRACE_CALL("remmina_rdp_add_static_channel");
-	int index;
-	ADDIN_ARGV* args;
-
-	args = (ADDIN_ARGV*) malloc(sizeof(ADDIN_ARGV));
-
-	args->argc = count;
-	args->argv = (char**) malloc(sizeof(char*) * args->argc);
-
-	for (index = 0; index < args->argc; index++)
-		args->argv[index] = _strdup(params[index]);
-
-	freerdp_static_channel_collection_add(settings, args);
-
-	return 0;
-}
-
 /* Send CTRL+ALT+DEL keys keystrokes to the plugin drawing_area widget */
 static void remmina_rdp_send_ctrlaltdel(RemminaProtocolWidget *gp)
 {
@@ -996,7 +976,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 			}
 		}
 
-		remmina_rdp_add_static_channel(rfi->settings, rdpsnd_nparams, (char**) rdpsnd_params);
+		freerdp_client_add_static_channel(rfi->settings, rdpsnd_nparams, (char**) rdpsnd_params);
 
 	}
 
