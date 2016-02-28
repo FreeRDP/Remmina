@@ -37,7 +37,6 @@
 
 #include "rdp_plugin.h"
 #include "rdp_event.h"
-#include "rdp_gdi.h"
 #include "rdp_cliprdr.h"
 #include <gdk/gdkkeysyms.h>
 #include <cairo/cairo-xlib.h>
