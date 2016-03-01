@@ -81,7 +81,7 @@ If you want to contribute in other ways, drop us an email using the form provide
 
 ### Donations
 
-If you rather prefer to contribute to Remmina with money your are more than welcome.
+If you rather prefer to contribute to Remmina with money you are more than welcome.
 
 For more informations See the [Remmina web site donation page](http://remmina.org/wp/donations).
 
