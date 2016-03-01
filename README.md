@@ -85,6 +85,8 @@ If you rather prefer to contribute to Remmina with money your are more than welc
 
 For more informations See the [Remmina web site donation page](http://remmina.org/wp/donations).
 
+See the [THANKS.md](https://raw.githubusercontent.com/FreeRDP/Remmina/next/THANKS.md) file for an exaustive list of saupporters.
+
 [![paypal](https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZBD87JG52PTZC)
 
 ## Authors
