@@ -1,7 +1,60 @@
 # Change Log
 
-## [1.2.0-rcgit.8](https://github.com/FreeRDP/Remmina/tree/1.2.0-rcgit.8) (2016-01-04)
+## [1.2.0-rcgit.9](https://github.com/FreeRDP/Remmina/tree/1.2.0-rcgit.9) (2016-02-28)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0-rcgit.8...1.2.0-rcgit.9)
 
+**Fixed bugs:**
+
+- Num lock off [\#389](https://github.com/FreeRDP/Remmina/issues/389)
+
+**Closed issues:**
+
+- Share some usage statistics dialog cannot be disabled!!! [\#772](https://github.com/FreeRDP/Remmina/issues/772)
+- vnc plugin not found [\#768](https://github.com/FreeRDP/Remmina/issues/768)
+- Selected file after editing is wrong [\#761](https://github.com/FreeRDP/Remmina/issues/761)
+- SSH cursor and scrolling / display issues [\#760](https://github.com/FreeRDP/Remmina/issues/760)
+- NumLock in RDP sessions [\#758](https://github.com/FreeRDP/Remmina/issues/758)
+- Buttons not shown inside RDP Advanced tab on smal screens [\#757](https://github.com/FreeRDP/Remmina/issues/757)
+- Can't SSH tunnel over Remmina \(RDP\) [\#756](https://github.com/FreeRDP/Remmina/issues/756)
+- Remmina closes unexpectedly [\#753](https://github.com/FreeRDP/Remmina/issues/753)
+- Feature Request: After Command \(opposite to precommand\) [\#746](https://github.com/FreeRDP/Remmina/issues/746)
+- mistake. [\#739](https://github.com/FreeRDP/Remmina/issues/739)
+- Currently rdp\_event.c.o can not be built [\#732](https://github.com/FreeRDP/Remmina/issues/732)
+- Scrolled fullscreen mode does not work [\#729](https://github.com/FreeRDP/Remmina/issues/729)
+- RDP session is dropped from time to time, reproducible situation. [\#723](https://github.com/FreeRDP/Remmina/issues/723)
+- RDP plugin fails to load [\#721](https://github.com/FreeRDP/Remmina/issues/721)
+- \[Info Req\] RDP v7  [\#719](https://github.com/FreeRDP/Remmina/issues/719)
+- Suddenly fails to RDP to any server  [\#717](https://github.com/FreeRDP/Remmina/issues/717)
+- Constantly and often breaks the connection. It started about 1-2 months ago. [\#710](https://github.com/FreeRDP/Remmina/issues/710)
+- No RDP connection after latest update Ubuntu [\#657](https://github.com/FreeRDP/Remmina/issues/657)
+- Fullscreen windows open on the monitor next to them [\#580](https://github.com/FreeRDP/Remmina/issues/580)
+- fullscreen multiple screens [\#577](https://github.com/FreeRDP/Remmina/issues/577)
+- Missing controls tab from top/center of window in Gnome [\#481](https://github.com/FreeRDP/Remmina/issues/481)
+- ALT + F4 closes Remina remote Window [\#125](https://github.com/FreeRDP/Remmina/issues/125)
+
+**Merged pull requests:**
+
+- Autoreconnect [\#776](https://github.com/FreeRDP/Remmina/pull/776) ([giox069](https://github.com/giox069))
+- Fix for a black border \(GTK undershoot\) appering from GTK 3.18 [\#767](https://github.com/FreeRDP/Remmina/pull/767) ([giox069](https://github.com/giox069))
+- Using compact settings for RDP plugin closes Issue 757 [\#759](https://github.com/FreeRDP/Remmina/pull/759) ([antenore](https://github.com/antenore))
+- Fixes for issue \#744 [\#752](https://github.com/FreeRDP/Remmina/pull/752) ([giox069](https://github.com/giox069))
+- adjust lenght of strings [\#749](https://github.com/FreeRDP/Remmina/pull/749) ([weberhofer](https://github.com/weberhofer))
+- Feature Request: After Command \#746 [\#748](https://github.com/FreeRDP/Remmina/pull/748) ([antenore](https://github.com/antenore))
+- Fix compiler warnings [\#743](https://github.com/FreeRDP/Remmina/pull/743) ([weberhofer](https://github.com/weberhofer))
+- rdp-plugin requires x11 libraries [\#742](https://github.com/FreeRDP/Remmina/pull/742) ([weberhofer](https://github.com/weberhofer))
+- Match remmina\_survey\_start declarations [\#741](https://github.com/FreeRDP/Remmina/pull/741) ([weberhofer](https://github.com/weberhofer))
+- Exec if only when "name" has been initialized [\#740](https://github.com/FreeRDP/Remmina/pull/740) ([weberhofer](https://github.com/weberhofer))
+- XDG - make remmina user data dir global [\#738](https://github.com/FreeRDP/Remmina/pull/738) ([antenore](https://github.com/antenore))
+- Fixes for Ubuntu 14.04 compatibility [\#737](https://github.com/FreeRDP/Remmina/pull/737) ([giox069](https://github.com/giox069))
+- Make tool\_hello\_world compliant with our plugins model [\#735](https://github.com/FreeRDP/Remmina/pull/735) ([antenore](https://github.com/antenore))
+- Added user survey, community links and fixed all deprecations warnings [\#734](https://github.com/FreeRDP/Remmina/pull/734) ([antenore](https://github.com/antenore))
+- Align library name with latest freerdp master [\#731](https://github.com/FreeRDP/Remmina/pull/731) ([weberhofer](https://github.com/weberhofer))
+- Added microphone redirection [\#727](https://github.com/FreeRDP/Remmina/pull/727) ([akallabeth](https://github.com/akallabeth))
+- RDP plugin update client main loop to new API [\#726](https://github.com/FreeRDP/Remmina/pull/726) ([akallabeth](https://github.com/akallabeth))
+- Make Remmina really exit when you choose Exit or Quit [\#720](https://github.com/FreeRDP/Remmina/pull/720) ([giox069](https://github.com/giox069))
+- Remove some compiler warnings [\#716](https://github.com/FreeRDP/Remmina/pull/716) ([jviksell](https://github.com/jviksell))
+
+## [1.2.0-rcgit.8](https://github.com/FreeRDP/Remmina/tree/1.2.0-rcgit.8) (2016-01-04)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0-rcgit.7...1.2.0-rcgit.8)
 
 **Closed issues:**
