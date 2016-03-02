@@ -168,6 +168,11 @@ static gboolean remmina_rdp_check_host_resolution(RemminaProtocolWidget *gp, cha
 	int status;
 	char service[16];
 
+	if (hostname[0] == 0) {
+		remmina_plugin_service->protocol_plugin_set_error(gp, _("The server name cannot be blank."));
+		return FALSE;
+	}
+
 	memset(&hints, 0, sizeof(struct addrinfo));
 	hints.ai_family = AF_UNSPEC;
 	hints.ai_socktype = SOCK_STREAM;
@@ -179,7 +184,8 @@ static gboolean remmina_rdp_check_host_resolution(RemminaProtocolWidget *gp, cha
 	if (status != 0) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to find the address of RDP server %s."),
 			hostname);
-		freeaddrinfo(result);
+		if (result)
+			freeaddrinfo(result);
 		return FALSE;
 	}
 
