@@ -117,12 +117,15 @@ include_directories(${GTK_INCLUDE_DIRS})
 target_link_libraries(remmina ${GTK_LIBRARIES})
 
 # either of webkitpackages would do
-pkg_check_modules(WEBKIT2 REQUIRED webkit2gtk-3.0)
+pkg_check_modules(WEBKIT2 REQUIRED
+	webkit2gtk-4.0
+	webkit2gtk-3.0
+)
 include_directories(
-    ${WEBKIT2_INCLUDE_DIRS}
+	${WEBKIT2_INCLUDE_DIRS}
 )
 link_directories(
-    ${WEBKIT2_LIBRARY_DIRS}
+	${WEBKIT2_LIBRARY_DIRS}
 )
 
 add_definitions(${WEBKIT2_CFLAGS_OTHER})

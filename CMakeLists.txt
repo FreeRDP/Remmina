@@ -98,6 +98,7 @@ include_directories(remmina/include)
 # FreeBSD
 
 if(CMAKE_SYSTEM_NAME MATCHES "FreeBSD")
+	set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "-rdynamic")
 	include_directories(/usr/local/include)
 	link_directories(/usr/local/lib)
 	set(CMAKE_REQUIRED_INCLUDES /usr/local/include)
