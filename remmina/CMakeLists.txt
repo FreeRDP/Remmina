@@ -117,13 +117,18 @@ include_directories(${GTK_INCLUDE_DIRS})
 target_link_libraries(remmina ${GTK_LIBRARIES})
 
 # either of webkitpackages would do
-pkg_check_modules(WEBKIT2 REQUIRED
+pkg_search_module(WEBKIT2 REQUIRED
 	webkit2gtk-4.0
 	webkit2gtk-3.0
 )
 include_directories(
 	${WEBKIT2_INCLUDE_DIRS}
 )
+if(WEBKIT2_FOUND)
+    message(STATUS "Found Webkit2gtk ${WEBKIT2_VERSION}")
+else()
+    message(ERROR "Weki2gtk-4.0 is required")
+endif()
 link_directories(
 	${WEBKIT2_LIBRARY_DIRS}
 )
