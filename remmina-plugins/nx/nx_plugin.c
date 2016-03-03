@@ -713,9 +713,6 @@ static gboolean remmina_plugin_nx_query_feature(RemminaProtocolWidget *gp, const
 static void remmina_plugin_nx_call_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 	TRACE_CALL("remmina_plugin_nx_call_feature");
-	RemminaFile *remminafile;
-
-	remminafile = remmina_plugin_nx_service->protocol_plugin_get_file(gp);
 	switch (feature->id)
 	{
 		case REMMINA_PLUGIN_NX_FEATURE_TOOL_SENDCTRLALTDEL:

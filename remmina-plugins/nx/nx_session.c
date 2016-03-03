@@ -848,7 +848,7 @@ static gpointer remmina_nx_session_tunnel_main_thread(gpointer data)
 
 		if (channels_out[0] && socketbuffer_len <= 0) {
 			G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-			len = channel_read_nonblocking(channels_out[0], socketbuffer, sizeof(socketbuffer), 0);
+				len = channel_read_nonblocking(channels_out[0], socketbuffer, sizeof(socketbuffer), 0);
 			G_GNUC_END_IGNORE_DEPRECATIONS
 			if (len == SSH_ERROR || len == SSH_EOF) {
 				nx->running = FALSE;
@@ -859,7 +859,11 @@ static gpointer remmina_nx_session_tunnel_main_thread(gpointer data)
 			} else {
 				/* Clean up the stderr buffer in case FreeNX send something there */
 				G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-				len = channel_read_nonblocking(channels_out[0], buffer, sizeof(buffer), 1);
+					len = channel_read_nonblocking(channels_out[0], buffer, sizeof(buffer), 1);
+					if (len == SSH_ERROR || len == SSH_EOF) {
+						nx->running = FALSE;
+						break;
+					}
 				G_GNUC_END_IGNORE_DEPRECATIONS
 			}
 		}

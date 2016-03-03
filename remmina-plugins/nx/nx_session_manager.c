@@ -138,7 +138,6 @@ static gboolean remmina_nx_session_manager_main(RemminaProtocolWidget *gp)
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	GtkWidget *dialog;
-	GtkWidget *widget;
 	gchar *s;
 	GtkWidget *scrolledwindow;
 	GtkWidget *tree;
@@ -171,7 +170,7 @@ static gboolean remmina_nx_session_manager_main(RemminaProtocolWidget *gp)
 		}
 		gtk_dialog_add_button(GTK_DIALOG(dialog), _("_Cancel"), REMMINA_NX_EVENT_CANCEL);
 
-		widget = gtk_dialog_add_button(GTK_DIALOG(dialog), _("Terminate"), REMMINA_NX_EVENT_TERMINATE);
+		gtk_dialog_add_button(GTK_DIALOG(dialog), _("Terminate"), REMMINA_NX_EVENT_TERMINATE);
 
 		gtk_window_set_default_size(GTK_WINDOW(dialog), 640, 300);
 		gpdata->manager_dialog = dialog;
