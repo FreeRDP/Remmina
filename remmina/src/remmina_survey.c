@@ -91,9 +91,11 @@ static char *repl_str(const char *str, const char *old, const char *new)
 		/* Increase the cache size when necessary. */
 		if (cache_sz < count) {
 			cache_sz += cache_sz_inc;
-			pos_cache = realloc(pos_cache, sizeof(*pos_cache) * cache_sz);
-			if (pos_cache == NULL) {
+			pos_cache_new = realloc(pos_cache, sizeof(*pos_cache) * cache_sz);
+			if (pos_cache_new == NULL) {
 				goto end_repl_str;
+			} else {
+				pos_cache = pos_cache_new;
 			}
 			cache_sz_inc *= cache_sz_inc_factor;
 			if (cache_sz_inc > cache_sz_inc_max) {
