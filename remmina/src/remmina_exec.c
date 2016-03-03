@@ -66,10 +66,9 @@ static gboolean cb_closewidget(GtkWidget *widget, gpointer data)
 void remmina_exec_exitremmina()
 {
 	TRACE_CALL("remmina_exec_exitremmina");
-	int n;
 
 	/* Destroy all widgets, main window included */
-	n = remmina_widget_pool_foreach(cb_closewidget, NULL);
+	remmina_widget_pool_foreach(cb_closewidget, NULL);
 
 	/* Remove systray menu */
 	remmina_icon_destroy();
