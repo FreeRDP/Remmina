@@ -162,6 +162,7 @@ typedef struct remmina_masterthread_exec_data
 	pthread_cond_t pt_cond;
 	/* Flag to catch cancellations */
 	gboolean cancelled;
+	gboolean complete;
 
 } RemminaMTExecData;
 
