@@ -685,6 +685,7 @@ int remmina_rdp_cliprdr_mt_send_format_list(RemminaProtocolWidget* gp, RemminaPl
 	gint formatId, i;
 	CLIPRDR_FORMAT_LIST formatList;
 	CLIPRDR_FORMAT* formats;
+	CLIPRDR_FORMAT* formats_new;
 
 	clipboard = ui->clipboard.clipboard;
 	formatList.formats = formats = NULL;

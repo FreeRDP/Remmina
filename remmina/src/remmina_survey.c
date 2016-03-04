@@ -81,6 +81,7 @@ static char *repl_str(const char *str, const char *old, const char *new)
 	const char *pstr2, *pstr = str;
 	size_t i, count = 0;
 	ptrdiff_t *pos_cache = NULL;
+	ptrdiff_t *pos_cache_new = NULL;
 	size_t cache_sz = 0;
 	size_t cpylen, orglen, retlen, newlen, oldlen = strlen(old);
 
