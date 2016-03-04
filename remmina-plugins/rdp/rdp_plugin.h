@@ -51,9 +51,6 @@
 
 typedef struct rf_context rfContext;
 
-#define LOCK_BUFFER(t)	  	if (t) {CANCEL_DEFER} pthread_mutex_lock(&rfi->mutex);
-#define UNLOCK_BUFFER(t)	pthread_mutex_unlock(&rfi->mutex); if (t) {CANCEL_ASYNC}
-
 #define GET_PLUGIN_DATA(gp) (rfContext*) g_object_get_data(G_OBJECT(gp), "plugin-data")
 
 #define DEFAULT_QUALITY_0	0x6f
@@ -62,9 +59,6 @@ typedef struct rf_context rfContext;
 #define DEFAULT_QUALITY_9	0x80
 
 extern RemminaPluginService* remmina_plugin_service;
-
-
-
 
 struct rf_clipboard
 {
@@ -86,6 +80,7 @@ struct rf_clipboard
 
 };
 typedef struct rf_clipboard rfClipboard;
+
 
 struct rf_pointer
 {
@@ -109,71 +104,6 @@ struct rf_glyph
 };
 typedef struct rf_glyph rfGlyph;
 
-struct rf_context
-{
-	rdpContext _p;
-
-	RemminaProtocolWidget* protocol_widget;
-
-	/* main */
-	rdpSettings* settings;
-	freerdp* instance;
-
-	pthread_t thread;
-	pthread_mutex_t mutex;
-	gboolean scale;
-	gboolean user_cancelled;
-	gboolean thread_cancelled;
-
-	CliprdrClientContext* cliprdr;
-
-	RDP_PLUGIN_DATA rdpdr_data[5];
-	RDP_PLUGIN_DATA drdynvc_data[5];
-	gchar rdpsnd_options[20];
-
-	RFX_CONTEXT* rfx_context;
-
-	gboolean connected;
-	gboolean is_reconnecting;
-	int reconnect_maxattempts;
-	int reconnect_nattempt;
-
-	gboolean sw_gdi;
-	GtkWidget* drawing_area;
-	gint scale_width;
-	gint scale_height;
-	gdouble scale_x;
-	gdouble scale_y;
-	guint scale_handler;
-	gboolean use_client_keymap;
-
-	HGDI_DC hdc;
-	gint srcBpp;
-	GdkDisplay* display;
-	GdkVisual* visual;
-	cairo_surface_t* surface;
-	cairo_format_t cairo_format;
-	gint bpp;
-	gint width;
-	gint height;
-	gint scanline_pad;
-	gint* colormap;
-	HCLRCONV clrconv;
-	UINT8* primary_buffer;
-
-	guint object_id_seq;
-	GHashTable* object_table;
-
-	GAsyncQueue* ui_queue;
-	guint ui_handler;
-
-	GArray* pressed_keys;
-	GAsyncQueue* event_queue;
-	gint event_pipe[2];
-	HANDLE event_handle;
-
-	rfClipboard clipboard;
-};
 
 typedef enum
 {
@@ -242,7 +172,9 @@ struct remmina_plugin_rdp_ui_object
 {
 	RemminaPluginRdpUiType type;
 	gboolean sync;
+	gboolean complete;
 	pthread_mutex_t sync_wait_mutex;
+	pthread_cond_t sync_wait_cond;
 	union
 	{
 		struct
@@ -290,13 +222,78 @@ struct remmina_plugin_rdp_ui_object
 	/* We can also return values here, only integer, and -1 is reserved for rf_queue_ui own error */
 	int retval;
 };
+
+struct rf_context
+{
+	rdpContext _p;
+
+	RemminaProtocolWidget* protocol_widget;
+
+	/* main */
+	rdpSettings* settings;
+	freerdp* instance;
+
+	pthread_t thread;
+	gboolean scale;
+	gboolean user_cancelled;
+	gboolean thread_cancelled;
+
+	CliprdrClientContext* cliprdr;
+
+	RDP_PLUGIN_DATA rdpdr_data[5];
+	RDP_PLUGIN_DATA drdynvc_data[5];
+	gchar rdpsnd_options[20];
+
+	RFX_CONTEXT* rfx_context;
+
+	gboolean connected;
+	gboolean is_reconnecting;
+	int reconnect_maxattempts;
+	int reconnect_nattempt;
+
+	gboolean sw_gdi;
+	GtkWidget* drawing_area;
+	gint scale_width;
+	gint scale_height;
+	gdouble scale_x;
+	gdouble scale_y;
+	guint scale_handler;
+	gboolean use_client_keymap;
+
+	HGDI_DC hdc;
+	gint srcBpp;
+	GdkDisplay* display;
+	GdkVisual* visual;
+	cairo_surface_t* surface;
+	cairo_format_t cairo_format;
+	gint bpp;
+	gint width;
+	gint height;
+	gint scanline_pad;
+	gint* colormap;
+	HCLRCONV clrconv;
+	UINT8* primary_buffer;
+
+	guint object_id_seq;
+	GHashTable* object_table;
+
+	GAsyncQueue* ui_queue;
+	guint ui_handler;
+
+	GArray* pressed_keys;
+	GAsyncQueue* event_queue;
+	gint event_pipe[2];
+	HANDLE event_handle;
+
+	rfClipboard clipboard;
+};
+
 typedef struct remmina_plugin_rdp_ui_object RemminaPluginRdpUiObject;
 
 void rf_init(RemminaProtocolWidget* gp);
 void rf_uninit(RemminaProtocolWidget* gp);
 void rf_get_fds(RemminaProtocolWidget* gp, void** rfds, int* rcount);
 BOOL rf_check_fds(RemminaProtocolWidget* gp);
-int rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui);
 void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj);
 
 #endif

@@ -202,7 +202,7 @@ BOOL rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 		ui->sync = TRUE;	// Also wait for completion
 		ui->cursor.pointer = (rfPointer*) pointer;
 		ui->cursor.type = REMMINA_RDP_POINTER_NEW;
-		return rf_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
+		return remmina_rdp_event_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
 	}
 	return FALSE;
 }
@@ -225,7 +225,7 @@ void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 		ui->cursor.pointer = (rfPointer*) pointer;
 		ui->cursor.type = REMMINA_RDP_POINTER_FREE;
 
-		rf_queue_ui(rfi->protocol_widget, ui);
+		remmina_rdp_event_queue_ui(rfi->protocol_widget, ui);
 	}
 }
 
@@ -241,7 +241,7 @@ BOOL rf_Pointer_Set(rdpContext* context, rdpPointer* pointer)
 	ui->cursor.pointer = (rfPointer*) pointer;
 	ui->cursor.type = REMMINA_RDP_POINTER_SET;
 
-	return rf_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
+	return remmina_rdp_event_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
 
 }
 
@@ -256,7 +256,7 @@ BOOL rf_Pointer_SetNull(rdpContext* context)
 	ui->sync = TRUE;	// Also wait for completion
 	ui->cursor.type = REMMINA_RDP_POINTER_NULL;
 
-	return rf_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
+	return remmina_rdp_event_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
 }
 
 BOOL rf_Pointer_SetDefault(rdpContext* context)
@@ -270,7 +270,7 @@ BOOL rf_Pointer_SetDefault(rdpContext* context)
 	ui->sync = TRUE;	// Also wait for completion
 	ui->cursor.type = REMMINA_RDP_POINTER_DEFAULT;
 
-	return rf_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
+	return remmina_rdp_event_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
 }
 
 BOOL rf_Pointer_SetPosition(rdpContext* context, UINT32 x, UINT32 y)
@@ -285,7 +285,7 @@ BOOL rf_Pointer_SetPosition(rdpContext* context, UINT32 x, UINT32 y)
 	ui->pos.x = x;
 	ui->pos.y = y;
 
-	return rf_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
+	return remmina_rdp_event_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
 }
 
 /* Glyph Class */
