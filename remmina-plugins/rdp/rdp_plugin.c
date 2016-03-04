@@ -229,10 +229,14 @@ static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget* gp)
 	} else {
 		/* When SSH tunnel is not enabled, we can verify that host
 		 * resolves correctly via DNS */
-		if (!remmina_rdp_check_host_resolution(gp, host, port)) {
-			g_free(host);
-			g_free(hostport);
-			return FALSE;
+		if (!remmina_plugin_service->file_get_string(remminafile, "gateway_server")) {
+			/* When SSH tunnel and gateway are disabled, we can verify that host
+			* resolves correctly via DNS */
+			if (!remmina_rdp_check_host_resolution(gp, host, port)) {
+				g_free(host);
+				g_free(hostport);
+				return FALSE;
+			}
 		}
 	}
 
