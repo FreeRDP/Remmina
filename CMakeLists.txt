@@ -95,6 +95,16 @@ check_include_files(errno.h HAVE_ERRNO_H)
 include_directories(.)
 include_directories(remmina/include)
 
+# FreeBSD
+
+if(CMAKE_SYSTEM_NAME MATCHES "FreeBSD")
+	set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "-rdynamic")
+	include_directories(/usr/local/include /usr/include)
+	link_directories(/usr/local/lib /usr/lib)
+	set(CMAKE_REQUIRED_INCLUDES /usr/local/include)
+	set(CMAKE_SHARED_LIBRARY_PREFIX ${CMAKE_SHARED_LIBRARY_PREFIX} /usr/local/lib)
+endif()
+
 # Versioning
 set(WITH_LIBRARY_VERSIONING "ON")
 set(REMMINA_VERSION_MAJOR "1")

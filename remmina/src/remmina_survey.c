@@ -207,7 +207,6 @@ gboolean remmina_survey_valid_profile()
 	g_free(date);
 
 	return (count_profile >= min_profiles && ismature);
-	//return (count_profile >= min_profiles);
 }
 
 /* Insert setting name and its count in an hashtable */
@@ -378,29 +377,19 @@ static void remmina_survey_submit_form_callback(WebKitWebView *web_view, WebKitF
 {
 	TRACE_CALL("remmina_survey_submit_form_callback");
 
-	/* CLEAN: just for test */
-	gchar *name, *mail;
-
-	/* This function return only html text fields (no textarea for instance) */
+	/* This function return only html text fields (no textarea for instance)
 	GHashTable *formsdata = webkit_form_submission_request_get_text_fields (request);
-
-	/* CLEAN: just for test */
-	name = g_hash_table_lookup (formsdata, "name");
-	mail = g_hash_table_lookup (formsdata, "email");
+	*/
 
 	/* Finally we submit the form */
 	webkit_form_submission_request_submit(request);
-
 }
 
 void remmina_survey_start(GtkWindow *parent)
 {
 	TRACE_CALL("remmina_survey_start");
 
-	GDir *dir;
 	gchar localurl[PATH_MAX];
-
-	dir = g_dir_open(remmina_file_get_user_datadir(), 0, NULL);
 
 	remmina_survey = g_new0(RemminaSurveyDialog, 1);
 

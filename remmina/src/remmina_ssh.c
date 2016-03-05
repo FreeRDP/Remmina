@@ -79,6 +79,13 @@
 
 #ifdef HAVE_NETINET_TCP_H
 #include <netinet/tcp.h>
+
+#if defined(__FreeBSD__) || defined(__OpenBSD__)
+#ifndef SOL_TCP
+#define SOL_TCP	IPPROTO_TCP
+#endif
+#endif
+
 #define SSH_SOCKET_TCP_KEEPIDLE 5
 #define SSH_SOCKET_TCP_KEEPCNT 3
 #define SSH_SOCKET_TCP_KEEPINTVL 3
@@ -456,22 +463,30 @@ remmina_ssh_init_session (RemminaSSH *ssh)
 		if(setsockopt (sshsock, SOL_SOCKET, SO_KEEPALIVE, &optval, sizeof (optval)) < 0){
 			remmina_log_printf ("[SSH] TCP KeepAlive not set\n");
 		}
+#ifdef TCP_KEEPIDLE
 		optval = SSH_SOCKET_TCP_KEEPIDLE;
 		if (setsockopt(sshsock, IPPROTO_TCP, TCP_KEEPIDLE,  &optval, sizeof (optval)) < 0) {
 			remmina_log_printf ("[SSH] TCP_KEEPIDLE not set\n");
 		}
+#endif
+#ifdef TCP_KEEPCNT
 		optval = SSH_SOCKET_TCP_KEEPCNT;
 		if (setsockopt(sshsock, IPPROTO_TCP, TCP_KEEPCNT,  &optval, sizeof (optval)) < 0) {
 			remmina_log_printf ("[SSH] TCP_KEEPCNT not set\n");
 		}
+#endif
+#ifdef TCP_KEEPINTVL
 		optval = SSH_SOCKET_TCP_KEEPINTVL;
 		if (setsockopt(sshsock, IPPROTO_TCP, TCP_KEEPINTVL,  &optval, sizeof (optval)) < 0) {
 			remmina_log_printf ("[SSH] TCP_KEEPINTVL not set\n");
 		}
+#endif
+#ifdef TCP_USER_TIMEOUT
 		optval = SSH_SOCKET_TCP_USER_TIMEOUT;
 		if (setsockopt(sshsock, IPPROTO_TCP, TCP_USER_TIMEOUT,  &optval, sizeof (optval)) < 0) {
 			remmina_log_printf ("[SSH] TCP_USER_TIMEOUT not set\n");
 		}
+#endif
 	}
 #endif
 

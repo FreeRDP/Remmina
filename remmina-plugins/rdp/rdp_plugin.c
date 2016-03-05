@@ -99,67 +99,6 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 	return True;
 }
 
-int rf_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
-{
-	TRACE_CALL("rf_queue_ui");
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	gboolean ui_sync_save;
-	int rc;
-
-	ui_sync_save = ui->sync;
-
-	if (ui_sync_save) {
-		pthread_mutex_init(&ui->sync_wait_mutex,NULL);
-		pthread_mutex_lock(&ui->sync_wait_mutex);
-	}
-
-	LOCK_BUFFER(TRUE)
-	g_async_queue_push(rfi->ui_queue, ui);
-
-	if (remmina_plugin_service->is_main_thread()) {
-		/* in main thread we call directly */
-		UNLOCK_BUFFER(TRUE)
-		remmina_rdp_event_queue_ui(gp);
-	} else {
-		/* in a subthread, we schedule the call, if not already scheduled */
-		if (!rfi->ui_handler)
-			rfi->ui_handler = IDLE_ADD((GSourceFunc) remmina_rdp_event_queue_ui, gp);
-		UNLOCK_BUFFER(TRUE)
-	}
-
-	if (ui_sync_save) {
-		/* Wait for main thread function completion before returning */
-		pthread_mutex_lock(&ui->sync_wait_mutex);
-		pthread_mutex_unlock(&ui->sync_wait_mutex);
-		rc = ui->retval;
-		rf_object_free(gp, ui);
-		return rc;
-	}
-	return 0;
-}
-
-void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj)
-{
-	TRACE_CALL("rf_object_free");
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-
-	switch (obj->type)
-	{
-		case REMMINA_RDP_UI_RFX:
-			rfx_message_free(rfi->rfx_context, obj->rfx.message);
-			break;
-
-		case REMMINA_RDP_UI_NOCODEC:
-			free(obj->nocodec.bitmap);
-			break;
-
-		default:
-			break;
-	}
-
-	g_free(obj);
-}
-
 static gboolean remmina_rdp_check_host_resolution(RemminaProtocolWidget *gp, char *hostname, int tcpport)
 {
 	TRACE_CALL("remmina_rdp_check_host_resolution");
@@ -167,6 +106,11 @@ static gboolean remmina_rdp_check_host_resolution(RemminaProtocolWidget *gp, cha
 	struct addrinfo* result = NULL;
 	int status;
 	char service[16];
+
+	if (hostname[0] == 0) {
+		remmina_plugin_service->protocol_plugin_set_error(gp, _("The server name cannot be blank."));
+		return FALSE;
+	}
 
 	memset(&hints, 0, sizeof(struct addrinfo));
 	hints.ai_family = AF_UNSPEC;
@@ -179,7 +123,8 @@ static gboolean remmina_rdp_check_host_resolution(RemminaProtocolWidget *gp, cha
 	if (status != 0) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to find the address of RDP server %s."),
 			hostname);
-		freeaddrinfo(result);
+		if (result)
+			freeaddrinfo(result);
 		return FALSE;
 	}
 
@@ -297,7 +242,7 @@ BOOL rf_auto_reconnect(rfContext* rfi)
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_RECONNECT_PROGRESS;
-	rf_queue_ui(rfi->protocol_widget, ui);
+	remmina_rdp_event_queue_ui(rfi->protocol_widget, ui);
 
 	/* Sleep half a second to allow:
 	 *  - processing of the ui event we just pushed on the queue
@@ -323,7 +268,7 @@ BOOL rf_auto_reconnect(rfContext* rfi)
 
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_RECONNECT_PROGRESS;
-		rf_queue_ui(rfi->protocol_widget, ui);
+		remmina_rdp_event_queue_ui(rfi->protocol_widget, ui);
 
 		treconn = time(NULL);
 
@@ -389,7 +334,7 @@ BOOL rf_end_paint(rdpContext* context)
 	ui->region.width = w;
 	ui->region.height = h;
 
-	rf_queue_ui(rfi->protocol_widget, ui);
+	remmina_rdp_event_queue_ui(rfi->protocol_widget, ui);
 
 	return TRUE;
 }
@@ -404,12 +349,8 @@ static BOOL rf_desktop_resize(rdpContext* context)
 	rfi = (rfContext*) context;
 	gp = rfi->protocol_widget;
 
-	LOCK_BUFFER(TRUE)
-
 	remmina_plugin_service->protocol_plugin_set_width(gp, rfi->settings->DesktopWidth);
 	remmina_plugin_service->protocol_plugin_set_height(gp, rfi->settings->DesktopHeight);
-
-	UNLOCK_BUFFER(TRUE)
 
 	/* Call to remmina_rdp_event_update_scale(gp) on the main UI thread */
 
@@ -417,7 +358,7 @@ static BOOL rf_desktop_resize(rdpContext* context)
 	ui->sync = TRUE;	// Wait for completion too
 	ui->type = REMMINA_RDP_UI_EVENT;
 	ui->event.type = REMMINA_RDP_UI_EVENT_UPDATE_SCALE;
-	rf_queue_ui(gp, ui);
+	remmina_rdp_event_queue_ui(gp, ui);
 
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "desktop-resize");
 
@@ -552,7 +493,7 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CONNECTED;
-	rf_queue_ui(gp, ui);
+	remmina_rdp_event_queue_ui(gp, ui);
 
 	return True;
 }
@@ -1131,8 +1072,6 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	rfi->connected = False;
 	rfi->is_reconnecting = False;
 
-	pthread_mutex_init(&rfi->mutex, NULL);
-
 	freerdp_register_addin_provider(freerdp_channels_load_static_addin_entry, 0);
 
 	remmina_rdp_event_init(gp);
@@ -1213,8 +1152,6 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 			instance->context->channels = NULL;
 		}
 	}
-
-	pthread_mutex_destroy(&rfi->mutex);
 
 	/* Destroy event queue. Pending async events will be discarded. Should we flush it ? */
 	remmina_rdp_event_uninit(gp);

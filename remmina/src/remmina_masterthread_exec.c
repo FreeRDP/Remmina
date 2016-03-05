@@ -38,10 +38,7 @@
 
 #include <gtk/gtk.h>
 
-
-
 #include "remmina_masterthread_exec.h"
-
 
 static pthread_t gMainThreadID;
 
@@ -115,7 +112,10 @@ static gboolean remmina_masterthread_exec_callback(RemminaMTExecData *d)
 #endif
 			break;
 		}
-		pthread_mutex_unlock(&d->mu);
+		pthread_mutex_lock(&d->pt_mutex);
+		d->complete = TRUE;
+		pthread_cond_signal(&d->pt_cond);
+		pthread_mutex_unlock(&d->pt_mutex);
 	}
 	else
 	{
@@ -134,14 +134,17 @@ static void remmina_masterthread_exec_cleanup_handler(gpointer data)
 void remmina_masterthread_exec_and_wait(RemminaMTExecData *d)
 {
 	d->cancelled = FALSE;
+	d->complete = FALSE;
 	pthread_cleanup_push(remmina_masterthread_exec_cleanup_handler, (void *)d);
-	pthread_mutex_init(&d->mu, NULL);
-	pthread_mutex_lock(&d->mu);
+	pthread_mutex_init(&d->pt_mutex, NULL);
+	pthread_cond_init(&d->pt_cond, NULL);
 	gdk_threads_add_idle((GSourceFunc)remmina_masterthread_exec_callback, (gpointer)d);
-	pthread_mutex_lock(&d->mu);
+	pthread_mutex_lock(&d->pt_mutex);
+	while (!d->complete)
+		pthread_cond_wait(&d->pt_cond, &d->pt_mutex);
 	pthread_cleanup_pop(0);
-	pthread_mutex_unlock(&d->mu);
-	pthread_mutex_destroy(&d->mu);
+	pthread_mutex_destroy(&d->pt_mutex);
+	pthread_cond_destroy(&d->pt_cond);
 }
 
 void remmina_masterthread_exec_save_main_thread_id()

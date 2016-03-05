@@ -158,9 +158,11 @@ typedef struct remmina_masterthread_exec_data
 	} p;
 
 	/* Mutex for thread synchronization */
-	pthread_mutex_t mu;
+	pthread_mutex_t pt_mutex;
+	pthread_cond_t pt_cond;
 	/* Flag to catch cancellations */
 	gboolean cancelled;
+	gboolean complete;
 
 } RemminaMTExecData;
 

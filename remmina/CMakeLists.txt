@@ -117,15 +117,24 @@ include_directories(${GTK_INCLUDE_DIRS})
 target_link_libraries(remmina ${GTK_LIBRARIES})
 
 # either of webkitpackages would do
-pkg_search_module(WEBKIT REQUIRED
+pkg_search_module(WEBKIT2 REQUIRED
 	webkit2gtk-4.0
 	webkit2gtk-3.0
-	webkitgtk-3.0
-	webkit-1.0
 )
-#pkg_check_modules(WEBKIT REQUIRED webkit2gtk-4.0)
-target_link_libraries(remmina ${WEBKIT_LIBRARIES})
-include_directories(${WEBKIT_INCLUDE_DIRS})
+include_directories(
+	${WEBKIT2_INCLUDE_DIRS}
+)
+if(WEBKIT2_FOUND)
+    message(STATUS "Found Webkit2gtk ${WEBKIT2_VERSION}")
+else()
+    message(ERROR "Weki2gtk-4.0 is required")
+endif()
+link_directories(
+	${WEBKIT2_LIBRARY_DIRS}
+)
+
+add_definitions(${WEBKIT2_CFLAGS_OTHER})
+target_link_libraries(remmina ${WEBKIT2_LIBRARIES})
 
 find_package(X11)
 include_directories(${X11_INCLUDE_DIR})
@@ -184,6 +193,12 @@ if(GTK3_FOUND)
 	endif()
 endif()
 
+find_package(Intl)
+if(INTL_FOUND AND "${CMAKE_SYSTEM_NAME}" MATCHES "FreeBSD")
+    message(STATUS "FreeBSD detected, building with Intl")
+    include_directories(${Intl_INCLUDE_DIRS})
+    target_link_libraries(remmina ${Intl_LIBRARIES})
+endif()
 if(WITH_TRANSLATIONS)
 	add_subdirectory(po)
 endif()
