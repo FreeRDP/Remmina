@@ -645,6 +645,7 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 	rfi->pressed_keys = g_array_new(FALSE, TRUE, sizeof (DWORD));
 	rfi->event_queue = g_async_queue_new_full(g_free);
 	rfi->ui_queue = g_async_queue_new();
+	pthread_mutex_init(&rfi->ui_queue_mutex, NULL);
 
 	if (pipe(rfi->event_pipe))
 	{
@@ -736,6 +737,7 @@ void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 	rfi->event_queue = NULL;
 	g_async_queue_unref(rfi->ui_queue);
 	rfi->ui_queue = NULL;
+	pthread_mutex_destroy(&rfi->ui_queue_mutex);
 
 	if (rfi->event_handle)
 	{
@@ -986,27 +988,33 @@ static gboolean remmina_rdp_event_process_ui_queue(RemminaProtocolWidget* gp)
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpUiObject* ui;
 
+	pthread_mutex_lock(&rfi->ui_queue_mutex);
 	ui = (RemminaPluginRdpUiObject*) g_async_queue_try_pop(rfi->ui_queue);
 	if (ui)
 	{
+		pthread_mutex_lock(&ui->sync_wait_mutex);
 		if (!rfi->thread_cancelled)
 		{
 			remmina_rdp_event_process_ui_event(gp, ui);
 		}
 		// Should we signal the subthread to unlock ?
 		if (ui->sync) {
-			pthread_mutex_lock(&ui->sync_wait_mutex);
+
 			ui->complete = TRUE;
 			pthread_cond_signal(&ui->sync_wait_cond);
 			pthread_mutex_unlock(&ui->sync_wait_mutex);
+
 		} else {
 			remmina_rdp_event_free_event(gp, ui);
 		}
+
+		pthread_mutex_unlock(&rfi->ui_queue_mutex);
 
 		return TRUE;
 	}
 	else
 	{
+		pthread_mutex_unlock(&rfi->ui_queue_mutex);
 		rfi->ui_handler = 0;
 		return FALSE;
 	}
@@ -1017,6 +1025,7 @@ int remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObje
 	TRACE_CALL("remmina_rdp_event_queue_ui");
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	gboolean ui_sync_save;
+	int oldcanceltype;
 	int rc;
 
 	if (remmina_plugin_service->is_main_thread()) {
@@ -1027,13 +1036,16 @@ int remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObje
 		return rc;
 	}
 
-
 	if (rfi->thread_cancelled) {
 		remmina_rdp_event_free_event(gp, ui);
 		return 0;
 	}
 
+	pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, &oldcanceltype);
+	pthread_mutex_lock(&rfi->ui_queue_mutex);
+
 	ui_sync_save = ui->sync;
+	ui->complete = FALSE;
 
 	if (ui_sync_save) {
 		pthread_mutex_init(&ui->sync_wait_mutex,NULL);
@@ -1041,6 +1053,7 @@ int remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObje
 	}
 
 	ui->complete = FALSE;
+
 	g_async_queue_push(rfi->ui_queue, ui);
 
 	if (!rfi->ui_handler)
@@ -1049,16 +1062,20 @@ int remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObje
 	if (ui_sync_save) {
 		/* Wait for main thread function completion before returning */
 		pthread_mutex_lock(&ui->sync_wait_mutex);
+		pthread_mutex_unlock(&rfi->ui_queue_mutex);
 		while(!ui->complete) {
 			pthread_cond_wait(&ui->sync_wait_cond, &ui->sync_wait_mutex);
 		}
 		rc = ui->retval;
-		pthread_mutex_destroy(&ui->sync_wait_mutex);
 		pthread_cond_destroy(&ui->sync_wait_cond);
+		pthread_mutex_destroy(&ui->sync_wait_mutex);
 		remmina_rdp_event_free_event(gp, ui);
-		return rc;
+	} else {
+		pthread_mutex_unlock(&rfi->ui_queue_mutex);
+		rc = 0;
 	}
-	return 0;
+	pthread_setcanceltype(oldcanceltype, NULL);
+	return rc;
 }
 
 

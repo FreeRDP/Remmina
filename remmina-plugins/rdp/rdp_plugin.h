@@ -278,6 +278,7 @@ struct rf_context
 	GHashTable* object_table;
 
 	GAsyncQueue* ui_queue;
+	pthread_mutex_t ui_queue_mutex;
 	guint ui_handler;
 
 	GArray* pressed_keys;
