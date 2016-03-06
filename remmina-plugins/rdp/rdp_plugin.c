@@ -1039,6 +1039,7 @@ static gpointer remmina_rdp_main_thread(gpointer data)
 	remmina_rdp_main(gp);
 	rfi->thread = 0;
 
+
 	/* Signal main thread that we closed the connection. But wait 200ms, because we may
 	 * have outstaiding events to process in the meanwhile */
 	g_timeout_add(200, ((GSourceFunc) remmina_plugin_service->protocol_plugin_close_connection), gp);
@@ -1102,6 +1103,7 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 	TRACE_CALL("remmina_rdp_close_connection");
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	freerdp* instance;
+	RemminaPluginRdpUiObject* ui;
 
 	instance = rfi->instance;
 	if (rfi->thread)
@@ -1113,6 +1115,14 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 			pthread_join(rfi->thread, NULL);
 
 	}
+
+	/* Cleanup clipboard: we cannot leave clipboard requesting data to this
+	 * connection */
+	ui = g_new0(RemminaPluginRdpUiObject, 1);
+	ui->sync = TRUE;	// Wait for completion too
+	ui->type = REMMINA_RDP_UI_CLIPBOARD;
+	ui->clipboard.type = REMMINA_RDP_UI_CLIPBOARD_DETACH_OWNER;
+	remmina_rdp_event_queue_ui(gp, ui);
 
 	if (instance)
 	{
