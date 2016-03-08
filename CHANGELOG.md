@@ -1,5 +1,35 @@
 # Change Log
 
+## [1.2.0-rcgit.10](https://github.com/FreeRDP/Remmina/tree/1.2.0-rcgit.10) (2016-03-8)
+
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0.rcgit.10...HEAD)
+
+**Closed issues:**
+
+- Connection search doesn't work [\#773](https://github.com/FreeRDP/Remmina/issues/773)
+
+## [1.2.0.rcgit.10](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.10) (2016-03-08)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0-rcgit.9...1.2.0.rcgit.10)
+
+**Fixed bugs:**
+
+- Selected item in the remmina\_main window is lost after editing a profile [\#786](https://github.com/FreeRDP/Remmina/issues/786)
+- Clipboard + Windows 2008 Server R2 SP1 + Google Chrome [\#583](https://github.com/FreeRDP/Remmina/issues/583)
+
+**Closed issues:**
+
+- Is remmina between Ubuntu and Windows 10 secure? [\#782](https://github.com/FreeRDP/Remmina/issues/782)
+- Latest version of remmina segfaults when closing remmina's main windows while having an open connection [\#744](https://github.com/FreeRDP/Remmina/issues/744)
+- Clipboard doesn't work [\#730](https://github.com/FreeRDP/Remmina/issues/730)
+
+**Merged pull requests:**
+
+- Added ctrl+f to Quick Search to supersed the standard GTK accelerator [\#788](https://github.com/FreeRDP/Remmina/pull/788) ([antenore](https://github.com/antenore))
+- Selected item is lost after editing a profile. Closes \#786 [\#787](https://github.com/FreeRDP/Remmina/pull/787) ([antenore](https://github.com/antenore))
+- formats is not nulled upon failure [\#781](https://github.com/FreeRDP/Remmina/pull/781) ([weberhofer](https://github.com/weberhofer))
+- pos\_cache not nulled upon realloc failure [\#780](https://github.com/FreeRDP/Remmina/pull/780) ([weberhofer](https://github.com/weberhofer))
+- Freebsd support [\#779](https://github.com/FreeRDP/Remmina/pull/779) ([antenore](https://github.com/antenore))
+
 ## [1.2.0-rcgit.9](https://github.com/FreeRDP/Remmina/tree/1.2.0-rcgit.9) (2016-02-28)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0-rcgit.8...1.2.0-rcgit.9)
 
