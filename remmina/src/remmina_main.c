@@ -569,6 +569,11 @@ void remmina_main_on_action_connection_copy(GtkAction *action, gpointer user_dat
 		gtk_window_set_transient_for(GTK_WINDOW(widget), remminamain->window);
 		gtk_widget_show(widget);
 	}
+	/* Select the file previously selected */
+	if (remminamain->priv->selected_filename)
+	{
+		remmina_main_select_file(remminamain->priv->selected_filename);
+	}
 }
 
 void remmina_main_on_action_connection_edit(GtkAction *action, gpointer user_data)
@@ -584,6 +589,11 @@ void remmina_main_on_action_connection_edit(GtkAction *action, gpointer user_dat
 	{
 		gtk_window_set_transient_for(GTK_WINDOW(widget), remminamain->window);
 		gtk_widget_show(widget);
+	}
+	/* Select the file previously selected */
+	if (remminamain->priv->selected_filename)
+	{
+		remmina_main_select_file(remminamain->priv->selected_filename);
 	}
 }
 
