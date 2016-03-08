@@ -189,10 +189,13 @@
     </child>
     <child>
       <object class="GtkToggleAction" id="action_view_quick_search">
-        <property name="label" translatable="yes">Quick Search</property>
-        <property name="short_label" translatable="yes">Quick Search</property>
+        <property name="label" translatable="yes">Quick _Find</property>
+        <property name="short_label" translatable="yes">Quick _Find</property>
+        <property name="tooltip" translatable="yes">Filter profiles by search pattern</property>
+        <property name="icon_name">edit-find</property>
         <signal name="activate" handler="remmina_main_on_action_view_quick_search" swapped="no"/>
       </object>
+      <accelerator key="f" modifiers="GDK_CONTROL_MASK"/>
     </child>
     <child>
       <object class="GtkToggleAction" id="action_view_quick_connect">
@@ -412,6 +415,7 @@
                         <property name="related_action">action_view_quick_search</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="opacity">0.97000000067055225</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>
