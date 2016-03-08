@@ -189,10 +189,13 @@
     </child>
     <child>
       <object class="GtkToggleAction" id="action_view_quick_search">
-        <property name="label" translatable="yes">Quick Search</property>
-        <property name="short_label" translatable="yes">Quick Search</property>
+        <property name="label" translatable="yes">Quick _Find</property>
+        <property name="short_label" translatable="yes">Quick _Find</property>
+        <property name="tooltip" translatable="yes">Filter profiles by search pattern</property>
+        <property name="icon_name">edit-find</property>
         <signal name="activate" handler="remmina_main_on_action_view_quick_search" swapped="no"/>
       </object>
+      <accelerator key="f" modifiers="GDK_CONTROL_MASK"/>
     </child>
     <child>
       <object class="GtkToggleAction" id="action_view_quick_connect">
@@ -412,6 +415,7 @@
                         <property name="related_action">action_view_quick_search</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="opacity">0.97000000067055225</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>
@@ -809,7 +813,7 @@
                       <object class="GtkLabel" id="label_quick_search">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Quick Search</property>
+                        <property name="label" translatable="yes">Quick _Find</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -944,6 +948,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="model">liststore_files_list</property>
+                <property name="enable_search">False</property>
                 <property name="search_column">0</property>
                 <signal name="button-press-event" handler="remmina_main_file_list_on_button_press" swapped="no"/>
                 <signal name="key-press-event" handler="remmina_main_file_list_on_key_press" swapped="no"/>
