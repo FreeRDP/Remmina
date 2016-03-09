@@ -1574,7 +1574,7 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	screenshot = gdk_pixbuf_get_from_window (gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)), x_orig, y_orig, width, height);
 
 	//Prepare the cairo surface.
-	cairo_surface_t *surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, gdk_pixbuf_get_width(screenshot), gdk_pixbuf_get_height(screenshot));
+	cairo_surface_t *surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, gdk_pixbuf_get_width(screenshot), gdk_pixbuf_get_height(screenshot));
 	cr = cairo_create(surface);
 
 	//Copy the pixbuf to the surface and paint it.
