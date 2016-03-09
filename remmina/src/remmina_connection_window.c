@@ -35,10 +35,13 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include <gdk/gdkkeysyms.h>
-#include <glib/gi18n.h>
 #include <stdlib.h>
+#include <cairo/cairo-xlib.h>
+
+#include <glib/gi18n.h>
+#include <gdk/gdk.h>
+#include <gdk/gdkkeysyms.h>
+#include <gtk/gtk.h>
 
 #include "remmina_connection_window.h"
 #include "remmina_file.h"
@@ -99,6 +102,7 @@ struct _RemminaConnectionWindowPriv
 	GtkToolItem* toolitem_grab;
 	GtkToolItem* toolitem_preferences;
 	GtkToolItem* toolitem_tools;
+	GtkToolItem* toolitem_screenshot;
 	GtkWidget* fullscreen_option_button;
 	GtkWidget* fullscreen_scaler_button;
 	GtkWidget* scaler_option_button;
@@ -1547,6 +1551,51 @@ static void remmina_connection_holder_toolbar_tools(GtkWidget* widget, RemminaCo
 	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, remmina_public_popup_position, widget, 0, gtk_get_current_event_time());
 }
 
+static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+{
+	TRACE_CALL("remmina_connection_holder_screenshot");
+	DECLARE_CNNOBJ
+	GdkPixbuf *screenshot;
+	//GdkWindow *active_window;
+	cairo_t *cr;
+	gint x_orig, y_orig;
+	gint width, height;
+	const gchar* remminafile;
+	const gchar* imagedir;
+	gchar* pngname;
+	GDate *date = g_date_new();
+	guint32 pngdate;
+
+	//Get the screenshot.
+	//active_window = GTK_WINDOW(cnnhld->cnnwin);
+	width = gdk_window_get_width (gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
+	height = gdk_window_get_height (gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
+	gdk_window_get_origin (gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)), &x_orig, &y_orig);
+	screenshot = gdk_pixbuf_get_from_window (gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)), x_orig, y_orig, width, height);
+
+	//Prepare the cairo surface.
+	cairo_surface_t *surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, gdk_pixbuf_get_width(screenshot), gdk_pixbuf_get_height(screenshot));
+	cr = cairo_create(surface);
+
+	//Copy the pixbuf to the surface and paint it.
+	gdk_cairo_set_source_pixbuf(cr, screenshot, 0, 0);
+	cairo_paint(cr);
+
+	//Clean up and return.
+	cairo_destroy(cr);
+
+	remminafile = remmina_file_get_filename(cnnobj->remmina_file);
+	imagedir = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
+	g_date_set_time_t(date, time(NULL));
+	pngdate = g_date_get_julian(date);
+	pngname = g_strdup_printf("%s/%s-%d.png", imagedir, g_path_get_basename(remminafile), pngdate);
+	g_print("%s\n",pngname);
+
+	cairo_surface_write_to_png(surface, pngname);
+
+	//return surface;
+}
+
 static void remmina_connection_holder_toolbar_minimize(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_holder_toolbar_minimize");
@@ -1716,6 +1765,13 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	toolitem = gtk_separator_tool_item_new();
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
+
+	toolitem = gtk_tool_button_new(NULL, "_Screenshot");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON (toolitem), "camera-photo");
+	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Screenshot"), remmina_pref.shortcutkey_minimize, 0);
+	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+	gtk_widget_show(GTK_WIDGET(toolitem));
+	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_screenshot), cnnhld);
 
 	toolitem = gtk_tool_button_new(NULL, "_Bottom");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON (toolitem), "go-bottom");
@@ -3107,6 +3163,11 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
 	else if (keyval == remmina_pref.shortcutkey_minimize)
 	{
 		remmina_connection_holder_toolbar_minimize(GTK_WIDGET(gp),
+		        cnnhld);
+	}
+	else if (keyval == remmina_pref.shortcutkey_screenshot)
+	{
+		remmina_connection_holder_toolbar_screenshot(GTK_WIDGET(gp),
 		        cnnhld);
 	}
 	else if (keyval == remmina_pref.shortcutkey_disconnect)
