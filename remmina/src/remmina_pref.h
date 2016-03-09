@@ -120,10 +120,10 @@ typedef struct _RemminaPref
 	guint shortcutkey_nexttab;
 	guint shortcutkey_scale;
 	guint shortcutkey_grab;
+	guint shortcutkey_screenshot;
 	guint shortcutkey_minimize;
 	guint shortcutkey_disconnect;
 	guint shortcutkey_toolbar;
-	guint shortcutkey_screenshot;
 	/* In RemminaPrefDialog terminal tab */
 	gchar *vte_font;
 	gboolean vte_allow_bold_text;

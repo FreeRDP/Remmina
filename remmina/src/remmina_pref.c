@@ -504,10 +504,14 @@ void remmina_pref_init(void)
 		remmina_pref.shortcutkey_grab = GDK_KEY_Control_R;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_minimize", NULL))
-		remmina_pref.shortcutkey_minimize = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_minimize",
-		                                    NULL);
+		remmina_pref.shortcutkey_minimize = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_minimize", NULL);
 	else
 		remmina_pref.shortcutkey_minimize = GDK_KEY_F9;
+
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_screenshot", NULL))
+		remmina_pref.shortcutkey_screenshot = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_screenshot", NULL);
+	else
+		remmina_pref.shortcutkey_screenshot = GDK_KEY_F12;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_disconnect", NULL))
 		remmina_pref.shortcutkey_disconnect = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_disconnect",
@@ -649,6 +653,7 @@ void remmina_pref_save(void)
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_prevtab", remmina_pref.shortcutkey_prevtab);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_scale", remmina_pref.shortcutkey_scale);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_grab", remmina_pref.shortcutkey_grab);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_screenshot", remmina_pref.shortcutkey_screenshot);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_minimize", remmina_pref.shortcutkey_minimize);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_disconnect", remmina_pref.shortcutkey_disconnect);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_toolbar", remmina_pref.shortcutkey_toolbar);

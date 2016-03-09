@@ -856,6 +856,34 @@
                       </packing>
                     </child>
                     <child>
+                      <object class="GtkLabel" id="label_keyboard_screenshot">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="xalign">0</property>
+                        <property name="label" translatable="yes">Window Screenshot</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">6</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="button_keyboard_screenshot">
+                        <property name="label">SCREENSHOT</property>
+                        <property name="width_request">100</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">6</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
+                    <child>
                       <object class="GtkLabel" id="label_keyboard_minimize">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -865,7 +893,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">6</property>
+                        <property name="top_attach">7</property>
                       </packing>
                     </child>
                     <child>
@@ -879,7 +907,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">6</property>
+                        <property name="top_attach">7</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -893,7 +921,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">7</property>
+                        <property name="top_attach">8</property>
                       </packing>
                     </child>
                     <child>
@@ -907,7 +935,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">7</property>
+                        <property name="top_attach">8</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -921,7 +949,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">8</property>
+                        <property name="top_attach">9</property>
                       </packing>
                     </child>
                     <child>
@@ -935,7 +963,7 @@
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">8</property>
+                        <property name="top_attach">9</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
