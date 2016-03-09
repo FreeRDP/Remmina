@@ -36,8 +36,8 @@
 #include "config.h"
 
 #include <stdlib.h>
-#include <cairo/cairo-xlib.h>
 
+#include <cairo/cairo-xlib.h>
 #include <glib/gi18n.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
@@ -1556,7 +1556,7 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	TRACE_CALL("remmina_connection_holder_screenshot");
 	DECLARE_CNNOBJ
 	GdkPixbuf *screenshot;
-	//GdkWindow *active_window;
+	GdkWindow *active_window;
 	cairo_t *cr;
 	gint x_orig, y_orig;
 	gint width, height;
@@ -1567,33 +1567,44 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	guint32 pngdate;
 
 	//Get the screenshot.
-	//active_window = GTK_WINDOW(cnnhld->cnnwin);
-	width = gdk_window_get_width (gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
-	height = gdk_window_get_height (gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
-	gdk_window_get_origin (gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)), &x_orig, &y_orig);
-	screenshot = gdk_pixbuf_get_from_window (gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)), x_orig, y_orig, width, height);
+	active_window = gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin));
+	//width = gdk_window_get_width (gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
+	width = gdk_window_get_width (active_window);
+	//height = gdk_window_get_height (gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
+	height = gdk_window_get_height (active_window);
+	/* TODO: this on multi screen doesn't return the right value */
+	gdk_window_get_origin (active_window, &x_orig, &y_orig);
+	//g_print("x_orig: %d\ny_orig: %d\n", x_orig, y_orig);
+
+	cairo_surface_t *surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, width, height);
+	//screenshot = gdk_pixbuf_get_from_window (gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)), x_orig, y_orig, width, height);
+	/* TODO: find out the x, y coords to get just the container */
+	// screenshot = gdk_pixbuf_get_from_window (active_window, x_orig, y_orig, width, height);
+	screenshot = gdk_pixbuf_get_from_window (active_window, 0, 0, width, height);
+	if (screenshot == NULL)
+		g_print("gdk_pixbuf_get_from_drawable failed\n");
 
 	//Prepare the cairo surface.
-	cairo_surface_t *surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, gdk_pixbuf_get_width(screenshot), gdk_pixbuf_get_height(screenshot));
 	cr = cairo_create(surface);
 
 	//Copy the pixbuf to the surface and paint it.
 	gdk_cairo_set_source_pixbuf(cr, screenshot, 0, 0);
 	cairo_paint(cr);
 
-	//Clean up and return.
-	cairo_destroy(cr);
-
 	remminafile = remmina_file_get_filename(cnnobj->remmina_file);
 	imagedir = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
 	g_date_set_time_t(date, time(NULL));
+	/* TODO: Improve file name + give the user the option */
 	pngdate = g_date_get_julian(date);
 	pngname = g_strdup_printf("%s/%s-%d.png", imagedir, g_path_get_basename(remminafile), pngdate);
 	g_print("%s\n",pngname);
 
 	cairo_surface_write_to_png(surface, pngname);
 
-	//return surface;
+	//Clean up and return.
+	cairo_destroy(cr);
+	cairo_surface_destroy(surface);
+
 }
 
 static void remmina_connection_holder_toolbar_minimize(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
