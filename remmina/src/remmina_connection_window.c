@@ -1563,10 +1563,12 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	const gchar* remminafile;
 	const gchar* imagedir;
 	gchar* pngname;
-	GDate *date = g_date_new();
-	guint32 pngdate;
+	gchar* pngdate;
 	GtkWidget* dialog;
 	RemminaProtocolWidget *gp;
+
+
+	GDateTime *date = g_date_time_new_now_utc ();
 
 	// We will take a screenshot of the currently displayed RemminaProtocolWidget.
 	// DECLARE_CNNOBJ already did part of the job for us.
@@ -1601,10 +1603,19 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 
 	remminafile = remmina_file_get_filename(cnnobj->remmina_file);
 	imagedir = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
-	g_date_set_time_t(date, time(NULL));
+	//g_date_set_time_t(date, time(NULL));
 	/* TODO: Improve file name + give the user the option */
-	pngdate = g_date_get_julian(date);
-	pngname = g_strdup_printf("%s/%s-%d.png", imagedir,
+	pngdate = g_strdup_printf("%d-%d-%d-%d:%d:%f",
+			g_date_time_get_year (date),
+			g_date_time_get_month (date),
+			g_date_time_get_day_of_month (date),
+			g_date_time_get_hour (date),
+			g_date_time_get_minute (date),
+			g_date_time_get_seconds (date));
+
+
+	g_date_time_unref (date);
+	pngname = g_strdup_printf("%s/%s-%s.png", imagedir,
 			g_path_get_basename(remminafile), pngdate);
 	g_print("%s\n",pngname);
 
