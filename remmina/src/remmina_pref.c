@@ -242,6 +242,7 @@ void remmina_pref_init(void)
 {
 	TRACE_CALL("remmina_pref_init");
 	GKeyFile *gkeyfile;
+	GError *gerror = NULL;
 	gchar dirname[MAX_PATH_LEN];
 	GDir *old;
 
@@ -390,6 +391,16 @@ void remmina_pref_init(void)
 		remmina_pref.ssh_loglevel = g_key_file_get_integer(gkeyfile, "remmina_pref", "ssh_loglevel", NULL);
 	else
 		remmina_pref.ssh_loglevel = DEFAULT_SSH_LOGLEVEL;
+
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "screenshot_path", NULL)) {
+		remmina_pref.screenshot_path = g_key_file_get_string(gkeyfile, "remmina_pref", "screenshot_path", &gerror);
+		if(gerror != NULL) {
+			remmina_pref.screenshot_path = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
+			g_error_free(free);
+		}
+	}else{
+		remmina_pref.screenshot_path = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
+	}
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "ssh_parseconfig", NULL))
 		remmina_pref.ssh_parseconfig = g_key_file_get_boolean(gkeyfile, "remmina_pref", "ssh_parseconfig", NULL);
@@ -619,6 +630,7 @@ void remmina_pref_save(void)
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "default_action", remmina_pref.default_action);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "scale_quality", remmina_pref.scale_quality);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "ssh_loglevel", remmina_pref.ssh_loglevel);
+	g_key_file_set_string(gkeyfile, "remmina_pref", "screenshot_path", remmina_pref.screenshot_path);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "ssh_parseconfig", remmina_pref.ssh_parseconfig);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_toolbar", remmina_pref.hide_toolbar);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_statusbar", remmina_pref.hide_statusbar);
@@ -824,6 +836,12 @@ gint remmina_pref_get_ssh_loglevel(void)
 {
 	TRACE_CALL("remmina_pref_get_ssh_loglevel");
 	return remmina_pref.ssh_loglevel;
+}
+
+gchar remmina_pref_get_screenshot_path(void)
+{
+	TRACE_CALL("remmina_pref_get_screenshot_path");
+	return remmina_pref.screenshot_path;
 }
 
 gboolean remmina_pref_get_survey(void)

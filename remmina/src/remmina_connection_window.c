@@ -1561,7 +1561,7 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	gint x_orig, y_orig;
 	gint width, height;
 	const gchar* remminafile;
-	const gchar* imagedir;
+	//const gchar* imagedir;
 	gchar* pngname;
 	gchar* pngdate;
 	GtkWidget* dialog;
@@ -1596,7 +1596,7 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	cairo_paint(cr);
 
 	remminafile = remmina_file_get_filename(cnnobj->remmina_file);
-	imagedir = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
+	//imagedir = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
 	/* TODO: Improve file name (DONE:8743571d) + give the user the option */
 	pngdate = g_strdup_printf("%d-%d-%d-%d:%d:%f",
 			g_date_time_get_year (date),
@@ -1608,7 +1608,7 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 
 
 	g_date_time_unref (date);
-	pngname = g_strdup_printf("%s/%s-%s.png", imagedir,
+	pngname = g_strdup_printf("%s/%s-%s.png", remmina_pref.screenshot_path,
 			g_path_get_basename(remminafile), pngdate);
 	g_print("%s\n",pngname);
 
