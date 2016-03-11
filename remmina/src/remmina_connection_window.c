@@ -1558,7 +1558,6 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	GdkPixbuf *screenshot;
 	GdkWindow *active_window;
 	cairo_t *cr;
-	gint x_orig, y_orig;
 	gint width, height;
 	const gchar* remminafile;
 	//const gchar* imagedir;
