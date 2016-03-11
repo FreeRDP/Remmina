@@ -242,7 +242,6 @@ void remmina_pref_init(void)
 {
 	TRACE_CALL("remmina_pref_init");
 	GKeyFile *gkeyfile;
-	GError *gerror = NULL;
 	gchar dirname[MAX_PATH_LEN];
 	GDir *old;
 
@@ -393,13 +392,15 @@ void remmina_pref_init(void)
 		remmina_pref.ssh_loglevel = DEFAULT_SSH_LOGLEVEL;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "screenshot_path", NULL)) {
-		remmina_pref.screenshot_path = g_key_file_get_string(gkeyfile, "remmina_pref", "screenshot_path", &gerror);
-		if(gerror != NULL) {
-			remmina_pref.screenshot_path = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
-			g_error_free(gerror);
-		}
+		remmina_pref.screenshot_path = g_key_file_get_string(gkeyfile, "remmina_pref", "screenshot_path", NULL);
+		//remmina_pref.screenshot_path = g_key_file_get_string(gkeyfile, "remmina_pref", "screenshot_path", &gerror);
+		//if(gerror != NULL) {
+		//	remmina_pref.screenshot_path = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
+		//	g_error_free(gerror);
+		//}
 	}else{
-		remmina_pref.screenshot_path = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
+		//remmina_pref.screenshot_path = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
+		remmina_pref.screenshot_path = g_strdup("");
 	}
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "ssh_parseconfig", NULL))
@@ -836,12 +837,6 @@ gint remmina_pref_get_ssh_loglevel(void)
 {
 	TRACE_CALL("remmina_pref_get_ssh_loglevel");
 	return remmina_pref.ssh_loglevel;
-}
-
-gchar remmina_pref_get_screenshot_path(void)
-{
-	TRACE_CALL("remmina_pref_get_screenshot_path");
-	return remmina_pref.screenshot_path;
 }
 
 gboolean remmina_pref_get_survey(void)

@@ -1554,23 +1554,21 @@ static void remmina_connection_holder_toolbar_tools(GtkWidget* widget, RemminaCo
 static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_holder_toolbar_screenshot");
-	DECLARE_CNNOBJ
 	GdkPixbuf *screenshot;
 	GdkWindow *active_window;
 	cairo_t *cr;
 	gint width, height;
 	const gchar* remminafile;
-	//const gchar* imagedir;
 	gchar* pngname;
 	gchar* pngdate;
 	GtkWidget* dialog;
 	RemminaProtocolWidget *gp;
 
-
 	GDateTime *date = g_date_time_new_now_utc ();
 
 	// We will take a screenshot of the currently displayed RemminaProtocolWidget.
 	// DECLARE_CNNOBJ already did part of the job for us.
+	DECLARE_CNNOBJ
 	gp = REMMINA_PROTOCOL_WIDGET(cnnobj->proto);
 
 	//Get the screenshot.
@@ -1604,7 +1602,6 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 			g_date_time_get_hour (date),
 			g_date_time_get_minute (date),
 			g_date_time_get_seconds (date));
-
 
 	g_date_time_unref (date);
 	pngname = g_strdup_printf("%s/%s-%s.png", remmina_pref.screenshot_path,
