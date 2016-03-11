@@ -396,7 +396,7 @@ void remmina_pref_init(void)
 		remmina_pref.screenshot_path = g_key_file_get_string(gkeyfile, "remmina_pref", "screenshot_path", &gerror);
 		if(gerror != NULL) {
 			remmina_pref.screenshot_path = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
-			g_error_free(free);
+			g_error_free(gerror);
 		}
 	}else{
 		remmina_pref.screenshot_path = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
