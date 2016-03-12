@@ -50,12 +50,17 @@ static SecretSchema remmina_file_secret_schema =
 { NULL, 0 } } };
 
 
+#ifdef LIBSECRET_VERSION_0_18
 static SecretService* secretservice;
 static SecretCollection* defaultcollection;
+#endif
 
 static void  remmina_plugin_glibsecret_unlock_secret_service()
 {
 	TRACE_CALL("remmina_plugin_glibsecret_unlock_secret_service");
+
+#ifdef LIBSECRET_VERSION_0_18
+
 	GError *error = NULL;
 	GList *l, *ul;
 	gchar* lbl;
@@ -74,6 +79,7 @@ static void  remmina_plugin_glibsecret_unlock_secret_service()
 			g_list_free(ul);
 		}
 	}
+#endif
 	return;
 }
 
@@ -158,7 +164,6 @@ G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
 	TRACE_CALL("remmina_plugin_entry");
-	GError *error;
 
 	remmina_plugin_service = service;
 
@@ -167,6 +172,8 @@ remmina_plugin_entry(RemminaPluginService *service)
 		return FALSE;
 	}
 
+#ifdef LIBSECRET_VERSION_0_18
+	GError *error;
 	error = NULL;
 	secretservice = secret_service_get_sync(SECRET_SERVICE_LOAD_COLLECTIONS, NULL, &error);
 	if (error) {
@@ -179,7 +186,7 @@ remmina_plugin_entry(RemminaPluginService *service)
 		remmina_plugin_service->log_printf("[glibsecret] unable to get secret service default collection: %s\n", error->message);
 		return FALSE;
 	}
-
+#endif
 
 	return TRUE;
 }
