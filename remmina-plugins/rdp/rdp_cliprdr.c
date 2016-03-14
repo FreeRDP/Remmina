@@ -713,11 +713,16 @@ int remmina_rdp_cliprdr_mt_send_format_list(RemminaProtocolWidget* gp, RemminaPl
 				srvcount ++;
 			}
 		}
-		formats_new = (CLIPRDR_FORMAT*)realloc(formats, srvcount * sizeof(CLIPRDR_FORMAT));
-		if (formats_new == NULL) {
-			printf("realloc failure in remmina_rdp_cliprdr_mt_send_format_list\n");
+		if (srvcount > 0) {
+			formats_new = (CLIPRDR_FORMAT*)realloc(formats, srvcount * sizeof(CLIPRDR_FORMAT));
+			if (formats_new == NULL) {
+				printf("realloc failure in remmina_rdp_cliprdr_mt_send_format_list\n");
+			} else {
+				formats = formats_new;
+			}
 		} else {
-			formats = formats_new;
+			free(formats);
+			formats = NULL;
 		}
 		g_free(targets);
 
