@@ -1580,7 +1580,7 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	(gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
 	height = gdk_window_get_height (active_window);
 
-	cairo_surface_t *surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, width, height);
+	cairo_surface_t *surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height);
 	screenshot = gdk_pixbuf_get_from_window (active_window, 0, 0, width, height);
 	if (screenshot == NULL)
 		g_print("gdk_pixbuf_get_from_window failed\n");
@@ -1971,8 +1971,6 @@ static gboolean remmina_connection_object_enter_protocol_widget(GtkWidget* widge
 	}
 	return FALSE;
 }
-
-
 
 static gboolean remmina_connection_window_focus_in(GtkWidget* widget, GdkEventFocus* event, RemminaConnectionHolder* cnnhld)
 {
