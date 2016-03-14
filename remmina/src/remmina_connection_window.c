@@ -1637,7 +1637,7 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 		cairo_paint(cr);
 
 		// Deallocate screenshot pixbuf
-		// g_object_unref(screenshot);
+		g_object_unref(screenshot);
 
 	}
 
