@@ -54,6 +54,7 @@
 #include "remmina_public.h"
 #include "remmina_scrolled_viewport.h"
 #include "remmina_widget_pool.h"
+#include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
 
 G_DEFINE_TYPE( RemminaConnectionWindow, remmina_connection_window, GTK_TYPE_WINDOW)
@@ -1563,6 +1564,11 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	gchar* pngdate;
 	GtkWidget* dialog;
 	RemminaProtocolWidget *gp;
+	RemminaPluginScreenshotData rpsd;
+	cairo_surface_t *srcsurface;
+	cairo_format_t cairo_format;
+	cairo_surface_t *surface;
+	int stride;
 
 	GDateTime *date = g_date_time_new_now_utc ();
 
@@ -1571,26 +1577,69 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	DECLARE_CNNOBJ
 	gp = REMMINA_PROTOCOL_WIDGET(cnnobj->proto);
 
-	//Get the screenshot.
-	active_window = gtk_widget_get_window(GTK_WIDGET(gp));
-	//width = gdk_window_get_width
-	(gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
-	width = gdk_window_get_width (active_window);
-	//height = gdk_window_get_height
-	(gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
-	height = gdk_window_get_height (active_window);
+	// Ask the plugin if it can give us a screenshot
+	if (remmina_protocol_widget_plugin_screenshot(gp, &rpsd)) {
+		// Good, we have a screenshot from the plugin !
 
-	cairo_surface_t *surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height);
-	screenshot = gdk_pixbuf_get_from_window (active_window, 0, 0, width, height);
-	if (screenshot == NULL)
-		g_print("gdk_pixbuf_get_from_window failed\n");
+		remmina_log_printf("Screenshot from plugin: w=%d h=%d bpp=%d bytespp=%d\n",
+			rpsd.width, rpsd.height, rpsd.bitsPerPixel, rpsd.bytesPerPixel);
 
-	//Prepare the cairo surface.
-	cr = cairo_create(surface);
+		width = rpsd.width;
+		height = rpsd.height;
 
-	//Copy the pixbuf to the surface and paint it.
-	gdk_cairo_set_source_pixbuf(cr, screenshot, 0, 0);
-	cairo_paint(cr);
+		if (rpsd.bitsPerPixel == 32)
+			cairo_format = CAIRO_FORMAT_ARGB32;
+		else
+			cairo_format = CAIRO_FORMAT_RGB16_565;
+
+		stride = cairo_format_stride_for_width(cairo_format, width);
+
+		srcsurface = cairo_image_surface_create_for_data(rpsd.buffer, cairo_format, width, height, stride);
+
+		surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height);
+		cr = cairo_create(surface);
+		cairo_set_source_surface(cr, srcsurface, 0, 0);
+		cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
+		cairo_paint(cr);
+		cairo_surface_destroy(srcsurface);
+
+		free(rpsd.buffer);
+
+	} else {
+		// The plugin is not releasing us a screenshot, just try to catch one via GTK
+
+		/* Warn the user if image is distorted */
+		if (cnnobj->plugin_can_scale &&
+				remmina_protocol_widget_get_scale(gp)) {
+			dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_OK,
+					_("Warning: screenshot is scaled or distorted. Disable scaling to have better screenshot."));
+			g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
+			gtk_widget_show(dialog);
+		}
+
+		// Get the screenshot.
+		active_window = gtk_widget_get_window(GTK_WIDGET(gp));
+		// width = gdk_window_get_width(gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
+		width = gdk_window_get_width (active_window);
+		// height = gdk_window_get_height(gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
+		height = gdk_window_get_height (active_window);
+
+		screenshot = gdk_pixbuf_get_from_window (active_window, 0, 0, width, height);
+		if (screenshot == NULL)
+			g_print("gdk_pixbuf_get_from_window failed\n");
+
+		// Prepare the destination cairo surface.
+		surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height);
+		cr = cairo_create(surface);
+
+		// Copy the source pixbuf to the surface and paint it.
+		gdk_cairo_set_source_pixbuf(cr, screenshot, 0, 0);
+		cairo_paint(cr);
+
+		// Deallocate screenshot pixbuf
+		// g_object_unref(screenshot);
+
+	}
 
 	remminafile = remmina_file_get_filename(cnnobj->remmina_file);
 	//imagedir = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
@@ -1614,14 +1663,6 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	cairo_destroy(cr);
 	cairo_surface_destroy(surface);
 
-	/* Warn the user if image is distorted */
-	if (cnnobj->plugin_can_scale &&
-			remmina_protocol_widget_get_scale(gp)) {
-		dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_OK,
-				_("Warning: screenshot is scaled or distorted. Disable scaling to have better screenshot."));
-		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
-		gtk_widget_show(dialog);
-	}
 
 }
 

@@ -1077,6 +1077,3 @@ int remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObje
 	pthread_setcanceltype(oldcanceltype, NULL);
 	return rc;
 }
-
-
-

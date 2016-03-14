@@ -1230,6 +1230,40 @@ static void remmina_rdp_keystroke(RemminaProtocolWidget *gp, const guint keystro
 	return;
 }
 
+static gboolean remmina_rdp_get_screenshot(RemminaProtocolWidget *gp, RemminaPluginScreenshotData *rpsd)
+{
+		rfContext* rfi = GET_PLUGIN_DATA(gp);
+		rdpGdi* gdi;
+		size_t szmem;
+
+		if (!rfi)
+			return FALSE;
+
+		/* ToDo: we should lock freerdp subthread to update rfi->primary_buffer, rfi->gdi and w/h,
+		 * from here to memcpy, but... how ? */
+
+		gdi = ((rdpContext *)rfi)->gdi;
+
+		szmem = gdi->width * gdi->height * rfi->hdc->bytesPerPixel;
+		remmina_plugin_service->log_printf("[RDP] allocating %zu bytes for a full screenshot\n", szmem);
+		rpsd->buffer = malloc(szmem);
+		if (!rpsd->buffer)
+		{
+			remmina_plugin_service->log_printf("[RDP] unable to allocate %zu bytes for a full screenshot\n", szmem);
+			return FALSE;
+		}
+		rpsd->width = gdi->width;
+		rpsd->height = gdi->height;
+		rpsd->bitsPerPixel = rfi->hdc->bitsPerPixel;
+		rpsd->bytesPerPixel = rfi->hdc->bytesPerPixel;
+
+		memcpy(rpsd->buffer, rfi->primary_buffer, szmem);
+
+		/* Returning TRUE instruct also the caller to deallocate rpsd->buffer */
+		return TRUE;
+
+}
+
 /* Array of key/value pairs for color depths */
 static gpointer colordepth_list[] =
 {
@@ -1355,7 +1389,8 @@ static RemminaProtocolPlugin remmina_rdp =
 	remmina_rdp_close_connection,                 // Plugin close connection
 	remmina_rdp_query_feature,                    // Query for available features
 	remmina_rdp_call_feature,                     // Call a feature
-	remmina_rdp_keystroke                         // Send a keystroke
+	remmina_rdp_keystroke,                        // Send a keystroke
+	remmina_rdp_get_screenshot                    // Screenshot
 };
 
 /* File plugin definition and features */

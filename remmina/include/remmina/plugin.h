@@ -81,6 +81,7 @@ typedef struct _RemminaProtocolPlugin
     gboolean (* query_feature) (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature);
     void (* call_feature) (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature);
     void (* send_keystrokes) (RemminaProtocolWidget *gp, const guint keystrokes[], const gint keylen);
+    gboolean (* get_plugin_screenshot)(RemminaProtocolWidget *gp, RemminaPluginScreenshotData *rpsd);
 } RemminaProtocolPlugin;
 
 typedef struct _RemminaEntryPlugin
