@@ -1555,6 +1555,7 @@ static void remmina_connection_holder_toolbar_tools(GtkWidget* widget, RemminaCo
 static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_holder_toolbar_screenshot");
+
 	GdkPixbuf *screenshot;
 	GdkWindow *active_window;
 	cairo_t *cr;
@@ -1655,9 +1656,11 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	g_date_time_unref (date);
 	pngname = g_strdup_printf("%s/%s-%s.png", remmina_pref.screenshot_path,
 			g_path_get_basename(remminafile), pngdate);
-	g_print("%s\n",pngname);
 
 	cairo_surface_write_to_png(surface, pngname);
+
+	/* send a desktop notification */
+	remmina_public_send_notification ("remmina-screenshot-is-ready-id", "Screenshot taken", pngname);
 
 	//Clean up and return.
 	cairo_destroy(cr);
