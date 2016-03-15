@@ -64,7 +64,6 @@ static void  remmina_plugin_glibsecret_unlock_secret_service()
 	GError *error = NULL;
 	GList *objects, *ul;
 	gchar* lbl;
-	gint nu;
 
 	if (secretservice && defaultcollection)
 	{
