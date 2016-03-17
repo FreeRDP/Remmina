@@ -101,6 +101,7 @@ struct _RemminaFileEditorPriv
 	GtkWidget* save_button;
 
 	GtkWidget* config_box;
+	GtkWidget* config_scrollable;
 	GtkWidget* config_container;
 
 	GtkWidget* server_combo;
@@ -210,9 +211,18 @@ static void remmina_file_editor_create_notebook_container(RemminaFileEditor* gfe
 	TRACE_CALL("remmina_file_editor_create_notebook_container");
 	/* Create the notebook */
 	gfe->priv->config_container = gtk_notebook_new();
-	gtk_container_add(GTK_CONTAINER(gfe->priv->config_box), gfe->priv->config_container);
-	gtk_container_set_border_width(GTK_CONTAINER(gfe->priv->config_container), 4);
+
+	gfe->priv->config_scrollable = gtk_scrolled_window_new (NULL, NULL);
+	gtk_container_set_border_width (GTK_CONTAINER (gfe->priv->config_scrollable), 2);
+	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gfe->priv->config_scrollable),
+			GTK_POLICY_AUTOMATIC, GTK_POLICY_ALWAYS);
+	gtk_widget_show (gfe->priv->config_scrollable);
+
+	gtk_container_add (GTK_CONTAINER (gfe->priv->config_scrollable), gfe->priv->config_container);
+	gtk_container_set_border_width(GTK_CONTAINER(gfe->priv->config_container), 2);
 	gtk_widget_show(gfe->priv->config_container);
+
+	gtk_container_add(GTK_CONTAINER(gfe->priv->config_box), gfe->priv->config_scrollable);
 }
 
 static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe,
@@ -971,6 +981,8 @@ static void remmina_file_editor_protocol_combo_on_changed(GtkComboBox* combo, Re
 	{
 		gtk_widget_destroy(priv->config_container);
 		priv->config_container = NULL;
+		gtk_widget_destroy(priv->config_scrollable);
+		priv->config_scrollable = NULL;
 	}
 
 	priv->server_combo = NULL;
@@ -1235,7 +1247,7 @@ static void remmina_file_editor_init(RemminaFileEditor* gfe)
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_file_editor_on_connect), gfe);
 
 	gtk_dialog_set_default_response(GTK_DIALOG(gfe), GTK_RESPONSE_OK);
-	gtk_window_set_default_size(GTK_WINDOW(gfe), 450, 500);
+	gtk_window_set_default_size(GTK_WINDOW(gfe), 800, 600);
 
 	g_signal_connect(G_OBJECT(gfe), "destroy", G_CALLBACK(remmina_file_editor_destroy), NULL);
 	g_signal_connect(G_OBJECT(gfe), "realize", G_CALLBACK(remmina_file_editor_on_realize), NULL);
@@ -1441,6 +1453,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	priv->config_box = widget;
 
 	priv->config_container = NULL;
+	priv->config_scrollable = NULL;
 
 	remmina_file_editor_protocol_combo_on_changed(GTK_COMBO_BOX(priv->protocol_combo), gfe);
 
