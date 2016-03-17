@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -422,7 +422,8 @@ static RemminaProtocolPlugin remmina_plugin_xdmcp =
 	remmina_plugin_xdmcp_close_connection,        // Plugin close connection
 	remmina_plugin_xdmcp_query_feature,           // Query for available features
 	remmina_plugin_xdmcp_call_feature,            // Call a feature
-	NULL                                          // Send a keystroke
+	NULL,                                         // Send a keystroke
+	NULL										  // Screenshot
 };
 
 G_MODULE_EXPORT gboolean

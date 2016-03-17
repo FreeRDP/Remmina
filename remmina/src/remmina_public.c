@@ -621,28 +621,6 @@ void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *contain
 	g_object_unref(widget);
 }
 
-/* Replaces all occurences of search in a new copy of string by replacement. */
-gchar* remmina_public_str_replace(const gchar *string, const gchar *search, const gchar *replacement)
-{
-	TRACE_CALL("remmina_public_str_replace")
-	gchar *str, **arr;
-
-	g_return_val_if_fail (string != NULL, NULL);
-	g_return_val_if_fail (search != NULL, NULL);
-
-	if (replacement == NULL)
-		replacement = "";
-
-	arr = g_strsplit (string, search, -1);
-	if (arr != NULL && arr[0] != NULL)
-		str = g_strjoinv (replacement, arr);
-	else
-		str = g_strdup (string);
-
-	g_strfreev (arr);
-	return str;
-}
-
 /* Validate the inserted value for a new resolution */
 gboolean remmina_public_resolution_validation_func(const gchar *new_str, gchar **error)
 {
@@ -691,6 +669,40 @@ gboolean remmina_public_resolution_validation_func(const gchar *new_str, gchar *
 	return result;
 }
 
+/* Used to send desktop notifications */
+void remmina_public_send_notification (const gchar *notification_id,
+		const gchar *notification_title, const gchar *notification_message)
+{
+	TRACE_CALL("remmina_public_send_notification");
+
+	GNotification *notification = g_notification_new (notification_title);
+	g_notification_set_body (notification, notification_message);
+	g_application_send_notification (g_application_get_default (), notification_id, notification);
+	g_object_unref (notification);
+}
+
+/* Replaces all occurences of search in a new copy of string by replacement. */
+gchar* remmina_public_str_replace(const gchar *string, const gchar *search, const gchar *replacement)
+{
+	TRACE_CALL("remmina_public_str_replace")
+	gchar *str, **arr;
+
+	g_return_val_if_fail (string != NULL, NULL);
+	g_return_val_if_fail (search != NULL, NULL);
+
+	if (replacement == NULL)
+		replacement = "";
+
+	arr = g_strsplit (string, search, -1);
+	if (arr != NULL && arr[0] != NULL)
+		str = g_strjoinv (replacement, arr);
+	else
+		str = g_strdup (string);
+
+	g_strfreev (arr);
+	return str;
+}
+
 /* Replaces all occurences of search in a new copy of string by replacement
  * and overwrites the original string */
 gchar* remmina_public_str_replace_in_place(gchar *string, const gchar *search, const gchar *replacement)
@@ -701,3 +713,4 @@ gchar* remmina_public_str_replace_in_place(gchar *string, const gchar *search, c
 	string = g_strdup(new_string);
 	return string;
 }
+

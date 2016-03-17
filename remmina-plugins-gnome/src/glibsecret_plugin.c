@@ -62,9 +62,8 @@ static void  remmina_plugin_glibsecret_unlock_secret_service()
 #ifdef LIBSECRET_VERSION_0_18
 
 	GError *error = NULL;
-	GList *l, *ul;
+	GList *objects, *ul;
 	gchar* lbl;
-	gint nu;
 
 	if (secretservice && defaultcollection)
 	{
@@ -72,10 +71,9 @@ static void  remmina_plugin_glibsecret_unlock_secret_service()
 		{
 			lbl = secret_collection_get_label(defaultcollection);
 			remmina_plugin_service->log_printf("[glibsecret] requesting unlock of the default '%s' collection\n", lbl);
-			l = NULL;
-			g_list_append(l, defaultcollection);
-			nu = secret_service_unlock_sync(secretservice, l, NULL, &ul, &error);
-			g_list_free(l);
+			objects = g_list_append(NULL, defaultcollection);
+			secret_service_unlock_sync(secretservice, objects, NULL, &ul, &error);
+			g_list_free(objects);
 			g_list_free(ul);
 		}
 	}

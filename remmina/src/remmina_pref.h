@@ -93,9 +93,7 @@ typedef struct _RemminaPref
 	gboolean survey;
 	gint default_action;
 	gint scale_quality;
-	gint ssh_loglevel;
-	gboolean ssh_parseconfig;
-	gint sshtunnel_port;
+	gchar *screenshot_path;
 	gint auto_scroll_step;
 	gint recent_maximum;
 	gchar *resolutions;
@@ -112,6 +110,10 @@ typedef struct _RemminaPref
 	gboolean applet_new_ontop;
 	gboolean applet_hide_count;
 	gboolean disable_tray_icon;
+	/* In RemminaPrefDialog SSH Option tab */
+	gint ssh_loglevel;
+	gboolean ssh_parseconfig;
+	gint sshtunnel_port;
 	/* In RemminaPrefDialog keyboard tab */
 	guint hostkey;
 	guint shortcutkey_fullscreen;
@@ -120,6 +122,7 @@ typedef struct _RemminaPref
 	guint shortcutkey_nexttab;
 	guint shortcutkey_scale;
 	guint shortcutkey_grab;
+	guint shortcutkey_screenshot;
 	guint shortcutkey_minimize;
 	guint shortcutkey_disconnect;
 	guint shortcutkey_toolbar;

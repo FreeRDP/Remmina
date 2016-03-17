@@ -63,6 +63,7 @@ typedef struct _RemminaPrefDialog
 	GtkComboBox *comboboxtext_appearance_show_menu_icons;
 	GtkComboBox *comboboxtext_options_scale_quality;
 	GtkComboBox *comboboxtext_options_ssh_loglevel;
+	GtkFileChooser *filechooserbutton_options_screenshots_path;
 	GtkCheckButton *checkbutton_options_ssh_parseconfig;
 	GtkEntry *entry_options_ssh_port;
 	GtkEntry *entry_options_scroll;
@@ -82,6 +83,7 @@ typedef struct _RemminaPrefDialog
 	GtkButton *button_keyboard_switch_tab_right;
 	GtkButton *button_keyboard_scaled;
 	GtkButton *button_keyboard_grab_keyboard;
+	GtkButton *button_keyboard_screenshot;
 	GtkButton *button_keyboard_minimize;
 	GtkButton *button_keyboard_disconnect;
 	GtkButton *button_keyboard_toolbar;

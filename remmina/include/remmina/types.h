@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -60,6 +60,15 @@ typedef struct _RemminaProtocolFeature
     gpointer opt2;
     gpointer opt3;
 } RemminaProtocolFeature;
+
+typedef struct _RemminaPluginScreenshotData {
+	unsigned char* buffer;
+	int bitsPerPixel;
+	int bytesPerPixel;
+	int width;
+	int height;
+} RemminaPluginScreenshotData;
+
 
 typedef struct _RemminaProtocolWidgetClass RemminaProtocolWidgetClass;
 typedef struct _RemminaProtocolWidget RemminaProtocolWidget;

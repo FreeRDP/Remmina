@@ -51,6 +51,7 @@
 #include "remmina_protocol_widget.h"
 #include "remmina_public.h"
 #include "remmina_ssh.h"
+#include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
 
 struct _RemminaProtocolWidgetPriv
@@ -435,6 +436,17 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget* gp, GtkMenuI
 	}
 	g_free(keystrokes);
 	return;
+}
+
+gboolean remmina_protocol_widget_plugin_screenshot(RemminaProtocolWidget* gp, RemminaPluginScreenshotData *rpsd)
+{
+	if (!gp->priv->plugin->get_plugin_screenshot) {
+		remmina_log_printf("plugin screenshot function is not implemented\n");
+		return FALSE;
+	}
+
+	return gp->priv->plugin->get_plugin_screenshot(gp, rpsd);
+
 }
 
 
