@@ -93,7 +93,7 @@ typedef struct _RemminaPref
 	gboolean survey;
 	gint default_action;
 	gint scale_quality;
-	gchar *screenshot_path;
+	const gchar *screenshot_path;
 	gint auto_scroll_step;
 	gint recent_maximum;
 	gchar *resolutions;
