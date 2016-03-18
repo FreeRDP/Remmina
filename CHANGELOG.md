@@ -1,12 +1,25 @@
 # Change Log
 
-## [1.2.0-rcgit.10](https://github.com/FreeRDP/Remmina/tree/1.2.0-rcgit.10) (2016-03-8)
+## [1.2.0.rcgit.11](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.11) (2016-03-17)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0.rcgit.10...1.2.0.rcgit.11)
 
-[Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0.rcgit.10...HEAD)
+**Implemented enhancements:**
+
+- Scrollable profile editor [\#801](https://github.com/FreeRDP/Remmina/issues/801)
+- Screenshot of remote machine \[feature request\] [\#644](https://github.com/FreeRDP/Remmina/issues/644)
 
 **Closed issues:**
 
+- Remmina is unable to access saved passwords immediately after local PC logon [\#795](https://github.com/FreeRDP/Remmina/issues/795)
+- 1.2.0-rcgit.10 \(git n/a\) vnc connector not installed [\#794](https://github.com/FreeRDP/Remmina/issues/794)
+- \[1.2.0-rcgit.9\] Unable to Compile in Centos 7 [\#793](https://github.com/FreeRDP/Remmina/issues/793)
+- Remmina crash on having files or images in clipboard [\#792](https://github.com/FreeRDP/Remmina/issues/792)
 - Connection search doesn't work [\#773](https://github.com/FreeRDP/Remmina/issues/773)
+
+**Merged pull requests:**
+
+- Remote machine screenshot \[feature request\] \#644 [\#802](https://github.com/FreeRDP/Remmina/pull/802) ([antenore](https://github.com/antenore))
+- Don't unlock keyring when libsecret is \< 0.18 [\#796](https://github.com/FreeRDP/Remmina/pull/796) ([giox069](https://github.com/giox069))
 
 ## [1.2.0.rcgit.10](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.10) (2016-03-08)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0-rcgit.9...1.2.0.rcgit.10)
