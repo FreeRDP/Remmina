@@ -318,7 +318,6 @@ static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean 
 	/* This function can be called from a non main thread */
 
 	RemminaPluginVncData *gpdata;
-	RemminaFile *remminafile;
 	gint width, height;
 
 	if ( !remmina_plugin_service->is_main_thread() ) {
@@ -333,7 +332,6 @@ static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean 
 	}
 
 	gpdata = GET_PLUGIN_DATA(gp);
-	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	width = remmina_plugin_service->protocol_plugin_get_width(gp);
 	height = remmina_plugin_service->protocol_plugin_get_height(gp);
@@ -1181,6 +1179,7 @@ static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 	TRACE_CALL("remmina_plugin_vnc_main_loop");
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	gint ret;
+	gint i;
 	rfbClient *cl;
 	fd_set fds;
 	struct timeval timeout;
@@ -1211,8 +1210,10 @@ static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 	}
 	if (FD_ISSET(cl->sock, &fds))
 	{
-		ret = HandleRFBServerMessage(cl);
-		if (!ret)
+		i = WaitForMessage (cl, 500);
+		if (i < 0)
+			return TRUE;
+		if (!HandleRFBServerMessage(cl))
 		{
 			gpdata->running = FALSE;
 			if (gpdata->connected && !remmina_plugin_service->protocol_plugin_is_closed(gp))
