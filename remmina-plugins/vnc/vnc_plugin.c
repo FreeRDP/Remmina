@@ -1211,8 +1211,7 @@ static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 	}
 	if (FD_ISSET(cl->sock, &fds))
 	{
-		ret = HandleRFBServerMessage(cl);
-		if (!ret)
+		if (!HandleRFBServerMessage(cl))
 		{
 			gpdata->running = FALSE;
 			if (gpdata->connected && !remmina_plugin_service->protocol_plugin_is_closed(gp))
