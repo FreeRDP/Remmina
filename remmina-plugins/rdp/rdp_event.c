@@ -499,7 +499,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 	KeyCode cooked_keycode;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent rdp_event;
-	DWORD scancode;
+	DWORD scancode = 0;
 
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return FALSE;
