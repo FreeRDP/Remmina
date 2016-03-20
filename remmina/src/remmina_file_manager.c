@@ -147,6 +147,9 @@ static void remmina_file_manager_add_group(GNode* node, const gchar* group)
 	gboolean found;
 	RemminaGroupData* data;
 
+	if (node == NULL)
+		return;
+
 	if (group == NULL || group[0] == '\0')
 		return;
 
