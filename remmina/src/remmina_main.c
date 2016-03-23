@@ -552,6 +552,7 @@ void remmina_main_on_action_connections_new(GtkAction *action, gpointer user_dat
 	g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_main_file_editor_destroy), remminamain);
 	gtk_window_set_transient_for(GTK_WINDOW(widget), remminamain->window);
 	gtk_widget_show(widget);
+	remmina_main_load_files(TRUE);
 }
 
 void remmina_main_on_action_connection_copy(GtkAction *action, gpointer user_data)
