@@ -35,13 +35,12 @@
 
 #include "config.h"
 
-#include <stdlib.h>
-
 #include <cairo/cairo-xlib.h>
-#include <glib/gi18n.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
+#include <glib/gi18n.h>
 #include <gtk/gtk.h>
+#include <stdlib.h>
 
 #include "remmina_connection_window.h"
 #include "remmina_file.h"
@@ -56,6 +55,11 @@
 #include "remmina_widget_pool.h"
 #include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
+
+#ifndef WITH_SURVEY
+gchar *remmina_pref_file;
+RemminaPref remmina_pref;
+#endif /* WITH_SURVEY */
 
 G_DEFINE_TYPE( RemminaConnectionWindow, remmina_connection_window, GTK_TYPE_WINDOW)
 

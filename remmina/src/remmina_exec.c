@@ -47,7 +47,9 @@
 #include "remmina_about.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_exec.h"
+#ifdef WITH_SURVEY
 #include "remmina_survey.h"
+#endif /* WITH_SURVEY */
 #include "remmina_icon.h"
 #include "remmina/remmina_trace_calls.h"
 
@@ -100,6 +102,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		{
 			widget = remmina_main_new();
 			gtk_widget_show(widget);
+#ifdef WITH_SURVEY
 			/* Remmina survey reminder popup */
 			mainwindow = remmina_main_get_window();
 			if ( remmina_pref.survey && remmina_survey_valid_profile())
@@ -107,6 +110,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 				/* test if network is up and start survey */
 				remmina_survey_cb(GTK_WINDOW(mainwindow));
 			}
+#endif /* WITH_SURVEY */
 		}
 		break;
 
