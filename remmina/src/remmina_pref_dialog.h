@@ -54,7 +54,7 @@ typedef struct _RemminaPrefDialog
 	GtkCheckButton *checkbutton_options_save_settings;
 #ifdef WITH_SURVEY
 	GtkCheckButton *checkbutton_options_survey;
-#endif
+#endif /* WITH_SURVEY */
 	GtkCheckButton *checkbutton_appearance_invisible_toolbar;
 	GtkCheckButton *checkbutton_appearance_show_tabs;
 	GtkCheckButton *checkbutton_appearance_hide_toolbar;

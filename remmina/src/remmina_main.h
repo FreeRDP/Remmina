@@ -96,7 +96,7 @@ typedef struct _RemminaMain
 	GtkAction *action_help_debug;
 #ifdef WITH_SURVEY
 	GtkAction *action_help_survey;
-#endif
+#endif /* WITH_SURVEY */
 
 	RemminaMainPriv *priv;
 } RemminaMain;

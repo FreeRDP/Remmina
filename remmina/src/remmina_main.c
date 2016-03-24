@@ -44,9 +44,6 @@
 #include "remmina_file_editor.h"
 #include "remmina_connection_window.h"
 #include "remmina_about.h"
-#ifdef WITH_SURVEY
-#include "remmina_survey.h"
-#endif
 #include "remmina_pref.h"
 #include "remmina_pref_dialog.h"
 #include "remmina_widget_pool.h"
@@ -57,6 +54,9 @@
 #include "remmina_exec.h"
 #include "remmina_external_tools.h"
 #include "remmina/remmina_trace_calls.h"
+#ifdef WITH_SURVEY
+#include    "remmina_survey.h"
+#endif /* WITH_SURVEY */
 
 static RemminaMain *remminamain;
 
@@ -936,7 +936,7 @@ void remmina_main_on_action_help_survey(GtkAction *action, gpointer user_data)
 	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 	gtk_widget_show(dialog);
 
-#endif
+#endif /* WITH_SURVEY */
 }
 
 void remmina_main_on_action_application_about(GtkAction *action, gpointer user_data)
@@ -1219,7 +1219,7 @@ GtkWidget* remmina_main_new(void)
 	remminamain->action_help_debug = GTK_ACTION(GET_OBJECT("action_help_debug"));
 #ifdef WITH_SURVEY
 	remminamain->action_help_survey = GTK_ACTION(GET_OBJECT("action_help_survey"));
-#endif
+#endif /* WITH_SURVEY */
 	G_GNUC_END_IGNORE_DEPRECATIONS
 	/* Connect signals */
 	gtk_builder_connect_signals(remminamain->builder, NULL);

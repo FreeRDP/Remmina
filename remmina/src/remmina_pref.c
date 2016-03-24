@@ -274,7 +274,7 @@ void remmina_pref_init(void)
 		remmina_pref.survey = g_key_file_get_boolean(gkeyfile, "remmina_pref", "survey", NULL);
 	else
 		remmina_pref.survey = TRUE;
-#endif
+#endif /* WITH_SURVEY */
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "invisible_toolbar", NULL))
 		remmina_pref.invisible_toolbar = g_key_file_get_boolean(gkeyfile, "remmina_pref", "invisible_toolbar", NULL);
@@ -620,7 +620,7 @@ void remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_when_connect", remmina_pref.save_when_connect);
 #ifdef WITH_SURVEY
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "survey", remmina_pref.survey);
-#endif
+#endif /* WITH_SURVEY */
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "invisible_toolbar", remmina_pref.invisible_toolbar);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "floating_toolbar_placement", remmina_pref.floating_toolbar_placement);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "toolbar_placement", remmina_pref.toolbar_placement);
@@ -843,7 +843,7 @@ gboolean remmina_pref_get_survey(void)
 	TRACE_CALL("remmina_pref_get_survey");
 	return remmina_pref.survey;
 }
-#endif
+#endif /* WITH_SURVEY */
 
 gboolean remmina_pref_get_ssh_parseconfig(void)
 {

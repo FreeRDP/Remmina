@@ -49,7 +49,7 @@
 #include "remmina_exec.h"
 #ifdef WITH_SURVEY
 #include "remmina_survey.h"
-#endif
+#endif /* WITH_SURVEY */
 #include "remmina_icon.h"
 #include "remmina/remmina_trace_calls.h"
 
@@ -110,7 +110,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 				/* test if network is up and start survey */
 				remmina_survey_cb(GTK_WINDOW(mainwindow));
 			}
-#endif
+#endif /* WITH_SURVEY */
 		}
 		break;
 
