@@ -151,6 +151,13 @@ if(WITH_TRACE_CALLS)
 	add_definitions(-DWITH_TRACE_CALLS)
 endif()
 
+if(WITH_SURVEY)
+    message(STATUS "Enabling Survey.")
+    add_definitions(-DWITH_SURVEY)
+else()
+    message(STATUS "Survey disabled")
+endif()
+
 if(GCRYPT_FOUND)
 	add_definitions(-DHAVE_LIBGCRYPT)
 endif()

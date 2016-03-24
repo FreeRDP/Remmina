@@ -101,8 +101,6 @@ set(REMMINA_SRCS
 	src/remmina_string_array.h
 	src/remmina_string_list.c
 	src/remmina_string_list.h
-	src/remmina_survey.c
-	src/remmina_survey.h
 	src/remmina_widget_pool.c
 	src/remmina_widget_pool.h
 	src/remmina_external_tools.c
@@ -111,30 +109,41 @@ set(REMMINA_SRCS
 	src/remmina_sysinfo.c
 	)
 
+if(WITH_SURVEY)
+# either of webkitpackages would do
+    pkg_search_module(WEBKIT2
+            webkit2gtk-4.0
+            webkit2gtk-3.0
+    )
+    if(WEBKIT2_FOUND)
+        set(REMMINA_SRCS
+            ${REMMINA_SRCS}
+            src/remmina_survey.c
+            src/remmina_survey.h
+            )
+    else()
+        message(ERROR "Weki2gtk-4.0 is required")
+    endif()
+endif()
+
 add_executable(remmina ${REMMINA_SRCS})
 
 include_directories(${GTK_INCLUDE_DIRS})
 target_link_libraries(remmina ${GTK_LIBRARIES})
 
-# either of webkitpackages would do
-pkg_search_module(WEBKIT2 REQUIRED
-	webkit2gtk-4.0
-	webkit2gtk-3.0
-)
-include_directories(
-	${WEBKIT2_INCLUDE_DIRS}
-)
-if(WEBKIT2_FOUND)
-    message(STATUS "Found Webkit2gtk ${WEBKIT2_VERSION}")
-else()
-    message(ERROR "Weki2gtk-4.0 is required")
+if(WITH_SURVEY)
+    if(WEBKIT2_FOUND)
+        message(STATUS "Found Webkit2gtk ${WEBKIT2_VERSION}")
+        include_directories(
+            ${WEBKIT2_INCLUDE_DIRS}
+            )
+        link_directories(
+            ${WEBKIT2_LIBRARY_DIRS}
+            )
+        add_definitions(${WEBKIT2_CFLAGS_OTHER})
+        target_link_libraries(remmina ${WEBKIT2_LIBRARIES})
+    endif()
 endif()
-link_directories(
-	${WEBKIT2_LIBRARY_DIRS}
-)
-
-add_definitions(${WEBKIT2_CFLAGS_OTHER})
-target_link_libraries(remmina ${WEBKIT2_LIBRARIES})
 
 find_package(X11)
 include_directories(${X11_INCLUDE_DIR})
