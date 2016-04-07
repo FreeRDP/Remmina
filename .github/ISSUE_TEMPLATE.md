@@ -1,7 +1,7 @@
-We are supporting Remmina 1.2+ versions only.
+We support Remmina 1.2+ versions only.
 Please do not report bugs occurring on older versions!
 
-Please give us some additional details about the systems you are using:
+Please give us some details about the systems you are using:
 * Client (OS name and version): 
 * Remmina version (remmina --version): 
 * Desktop environment (GNOME, Unity, KDE, ..): 
