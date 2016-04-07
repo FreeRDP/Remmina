@@ -1,5 +1,5 @@
-**We are supporting Remmina 1.2+ versions only.
-Please do not bugs occurring on older versions!**
+We are supporting Remmina 1.2+ versions only.
+Please do not bugs occurring on older versions!
 
 Please give us some additional details about the systems you are using:
 * Client (OS name and version): 
