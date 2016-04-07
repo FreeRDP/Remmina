@@ -1081,7 +1081,6 @@ static void remmina_main_init(void)
 	remminamain->priv->expanded_group = remmina_string_array_new_from_string(remmina_pref.expanded_group);
 	gtk_window_set_title(remminamain->window, _("Remmina Remote Desktop Client"));
 	gtk_window_set_default_size(remminamain->window, remmina_pref.main_width, remmina_pref.main_height);
-	gtk_window_set_position(remminamain->window, GTK_WIN_POS_CENTER);
 	if (remmina_pref.main_maximize)
 	{
 		gtk_window_maximize(remminamain->window);
