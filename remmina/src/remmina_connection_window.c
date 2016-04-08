@@ -1961,39 +1961,17 @@ static void remmina_connection_holder_showhide_toolbar(RemminaConnectionHolder* 
 {
 	TRACE_CALL("remmina_connection_holder_showhide_toolbar");
 	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
-	GtkRequisition req;
-	gint width, height;
 
+	/* Here we should threat the resize flag, but we don't */
 	if (priv->view_mode == SCROLLED_WINDOW_MODE)
 	{
-		if (resize
-				&& (gdk_window_get_state(gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)))
-					& GDK_WINDOW_STATE_MAXIMIZED) == 0)
+		if (remmina_pref.hide_connection_toolbar)
 		{
-			gtk_window_get_size(GTK_WINDOW(cnnhld->cnnwin), &width, &height);
-
-			gtk_widget_get_preferred_size(priv->toolbar, &req, NULL);
-			if (remmina_pref.hide_connection_toolbar)
-			{
-				gtk_widget_hide(priv->toolbar);
-				gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), width, height - req.height);
-			}
-			else
-			{
-				gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), width, height + req.height);
-				gtk_widget_show(priv->toolbar);
-			}
+			gtk_widget_hide(priv->toolbar);
 		}
 		else
 		{
-			if (remmina_pref.hide_connection_toolbar)
-			{
-				gtk_widget_hide(priv->toolbar);
-			}
-			else
-			{
-				gtk_widget_show(priv->toolbar);
-			}
+			gtk_widget_show(priv->toolbar);
 		}
 	}
 }
@@ -3254,8 +3232,7 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
 		{
 			remmina_pref.hide_connection_toolbar =
 				!remmina_pref.hide_connection_toolbar;
-			remmina_connection_holder_showhide_toolbar(
-					cnnhld, TRUE);
+			remmina_connection_holder_showhide_toolbar( cnnhld, TRUE);
 		}
 	}
 	else
