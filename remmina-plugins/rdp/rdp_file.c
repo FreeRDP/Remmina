@@ -117,6 +117,10 @@ static void remmina_rdp_file_import_field(RemminaFile* remminafile, const gchar*
 	{
 		remmina_plugin_service->file_set_string(remminafile, "execpath", value);
 	}
+	else if (g_strcmp0(key, "loadbalanceinfo") == 0)
+	{
+		remmina_plugin_service->file_set_string(remminafile, "loadbalanceinfo", value);
+	}
 	/* tsclient fields, import only */
 	else if (g_strcmp0(key, "client hostname") == 0)
 	{
