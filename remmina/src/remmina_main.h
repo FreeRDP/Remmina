@@ -49,9 +49,6 @@ typedef struct _RemminaMain
 	GtkMenu *menu_tools;
 	/* Toolbar widgets */
 	GtkToolbar *toolbar_main;
-	GtkToolItem *toolbutton_separator_quick_search;
-	GtkToolItem *toolbutton_quick_search;
-	GtkEntry *entry_quick_search;
 	/* Quick connect objects */
 	GtkBox *box_quick_connect;
 	GtkComboBoxText *combo_quick_connect_protocol;
@@ -82,7 +79,6 @@ typedef struct _RemminaMain
 	/* Actions from the view ActionGroup */
 	GtkToggleAction *action_view_toolbar;
 	GtkToggleAction *action_view_statusbar;
-	GtkToggleAction *action_view_quick_search;
 	GtkToggleAction *action_view_quick_connect;
 	GtkToggleAction *action_view_small_toolbar_buttons;
 	GtkToggleAction *action_view_mode_list;

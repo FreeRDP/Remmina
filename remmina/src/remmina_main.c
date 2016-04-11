@@ -392,10 +392,7 @@ static gboolean remmina_main_filter_visible_func(GtkTreeModel *model, GtkTreeIte
 	gchar *protocol, *name, *group, *server, *s;
 	gboolean result = TRUE;
 
-	if (!remmina_pref.show_quick_search)
-		return TRUE;
-
-	text = g_ascii_strdown(gtk_entry_get_text(remminamain->entry_quick_search), -1);
+	text = g_ascii_strdown(gtk_entry_get_text(remminamain->entry_quick_connect_server), -1);
 	if (text && text[0])
 	{
 		gtk_tree_model_get(model, iter,
@@ -665,18 +662,8 @@ void remmina_main_on_action_view_quick_search(GtkToggleAction *action, gpointer 
 	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	toggled = gtk_toggle_action_get_active(action);
 	G_GNUC_END_IGNORE_DEPRECATIONS
-	if (toggled)
-	{
-		gtk_entry_set_text(remminamain->entry_quick_search, "");
-		gtk_widget_show(GTK_WIDGET(remminamain->toolbutton_separator_quick_search));
-		gtk_widget_show(GTK_WIDGET(remminamain->toolbutton_quick_search));
-		gtk_widget_grab_focus(GTK_WIDGET(remminamain->entry_quick_search));
-	}
-	else
-	{
-		gtk_widget_hide(GTK_WIDGET(remminamain->toolbutton_separator_quick_search));
-		gtk_widget_hide(GTK_WIDGET(remminamain->toolbutton_quick_search));
-	}
+		gtk_entry_set_text(remminamain->entry_quick_connect_server, "");
+		gtk_widget_grab_focus(GTK_WIDGET(remminamain->entry_quick_connect_server));
 	if (remminamain->priv->initialized)
 	{
 		remmina_pref.show_quick_search = toggled;
@@ -1027,7 +1014,7 @@ void remmina_main_quick_search_on_changed(GtkEditable *editable, gpointer user_d
 {
 	TRACE_CALL("remmina_main_quick_search_on_changed");
 	/* If a search text was input then temporary set the file mode to list */
-	remmina_pref.view_file_mode = gtk_entry_get_text_length(remminamain->entry_quick_search) ?
+	remmina_pref.view_file_mode = gtk_entry_get_text_length(remminamain->entry_quick_connect_server) ?
 	                              REMMINA_VIEW_FILE_LIST : remminamain->priv->previous_file_mode;
 	remmina_main_load_files(FALSE);
 	gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(remminamain->priv->file_model_filter));
@@ -1102,7 +1089,6 @@ static void remmina_main_init(void)
 	gtk_window_add_accel_group(remminamain->window, remminamain->accelgroup_shortcuts);
 	/* Set the Quick Connection */
 	gtk_entry_set_activates_default(remminamain->entry_quick_connect_server, TRUE);
-	gtk_widget_grab_default(GTK_WIDGET(remminamain->button_quick_connect));
 	/* Set the TreeView for the files list */
 	gtk_tree_selection_set_select_function(
 	    gtk_tree_view_get_selection(remminamain->tree_files_list),
@@ -1120,12 +1106,6 @@ static void remmina_main_init(void)
 	{
 		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		gtk_toggle_action_set_active(remminamain->action_view_statusbar, FALSE);
-		G_GNUC_END_IGNORE_DEPRECATIONS
-	}
-	if (remmina_pref.show_quick_search)
-	{
-		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-		gtk_toggle_action_set_active(remminamain->action_view_quick_search, TRUE);
 		G_GNUC_END_IGNORE_DEPRECATIONS
 	}
 	if (remmina_pref.hide_quick_connect)
@@ -1170,14 +1150,10 @@ GtkWidget* remmina_main_new(void)
 	remminamain->menu_tools = GTK_MENU(GET_OBJECT("menu_tools"));
 	/* Toolbar widgets */
 	remminamain->toolbar_main = GTK_TOOLBAR(GET_OBJECT("toolbar_main"));
-	remminamain->toolbutton_separator_quick_search = GTK_TOOL_ITEM(GET_OBJECT("toolbutton_separator_quick_search"));
-	remminamain->toolbutton_quick_search = GTK_TOOL_ITEM(GET_OBJECT("toolbutton_quick_search"));
-	remminamain->entry_quick_search = GTK_ENTRY(GET_OBJECT("entry_quick_search"));
 	/* Quick connect objects */
 	remminamain->box_quick_connect = GTK_BOX(GET_OBJECT("box_quick_connect"));
 	remminamain->combo_quick_connect_protocol = GTK_COMBO_BOX_TEXT(GET_OBJECT("combo_quick_connect_protocol"));
 	remminamain->entry_quick_connect_server = GTK_ENTRY(GET_OBJECT("entry_quick_connect_server"));
-	remminamain->button_quick_connect = GTK_BUTTON(GET_OBJECT("button_quick_connect"));
 	/* Other widgets */
 	remminamain->tree_files_list = GTK_TREE_VIEW(GET_OBJECT("tree_files_list"));
 	remminamain->column_files_list_group = GTK_TREE_VIEW_COLUMN(GET_OBJECT("column_files_list_group"));
@@ -1204,7 +1180,6 @@ GtkWidget* remmina_main_new(void)
 	/* Actions from the view ActionGroup */
 	remminamain->action_view_toolbar = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_toolbar"));
 	remminamain->action_view_statusbar = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_statusbar"));
-	remminamain->action_view_quick_search = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_quick_search"));
 	remminamain->action_view_quick_connect = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_quick_connect"));
 	remminamain->action_view_small_toolbar_buttons = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_small_toolbar_buttons"));
 	remminamain->action_view_mode_list = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_mode_list"));
