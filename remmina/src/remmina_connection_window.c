@@ -218,7 +218,7 @@ static void remmina_connection_window_class_init(RemminaConnectionWindowClass* k
 	 * we will never know its internal area size, because GtkViweport::viewport_get_view_allocation,
 	 * which returns the internal size of the GtkViewport, is private and we cannot access it */
 	gtk_css_provider_load_from_data (provider,
-			"GtkViewport, GtkAspectFrame {\n"
+			"#remmina-cw-viewport, #remmina-cw-aspectframe {\n"
 			"  padding:0;\n"
 			"  border:0;\n"
 			"  background-color: black;\n"
@@ -945,6 +945,7 @@ static void remmina_protocol_widget_update_alignment(RemminaConnectionObject* cn
 			{
 				/* We need a new aspectframe */
 				cnnobj->aspectframe = gtk_aspect_frame_new(NULL, 0.5, 0.5, aratio, FALSE);
+				gtk_widget_set_name(cnnobj->aspectframe, "remmina-cw-aspectframe");
 				gtk_frame_set_shadow_type(GTK_FRAME(cnnobj->aspectframe), GTK_SHADOW_NONE);
 				g_object_ref(cnnobj->proto);
 				gtk_container_remove(GTK_CONTAINER(cnnobj->viewport), cnnobj->proto);
@@ -1961,39 +1962,17 @@ static void remmina_connection_holder_showhide_toolbar(RemminaConnectionHolder* 
 {
 	TRACE_CALL("remmina_connection_holder_showhide_toolbar");
 	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
-	GtkRequisition req;
-	gint width, height;
 
+	/* Here we should threat the resize flag, but we don't */
 	if (priv->view_mode == SCROLLED_WINDOW_MODE)
 	{
-		if (resize
-				&& (gdk_window_get_state(gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)))
-					& GDK_WINDOW_STATE_MAXIMIZED) == 0)
+		if (remmina_pref.hide_connection_toolbar)
 		{
-			gtk_window_get_size(GTK_WINDOW(cnnhld->cnnwin), &width, &height);
-
-			gtk_widget_get_preferred_size(priv->toolbar, &req, NULL);
-			if (remmina_pref.hide_connection_toolbar)
-			{
-				gtk_widget_hide(priv->toolbar);
-				gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), width, height - req.height);
-			}
-			else
-			{
-				gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), width, height + req.height);
-				gtk_widget_show(priv->toolbar);
-			}
+			gtk_widget_hide(priv->toolbar);
 		}
 		else
 		{
-			if (remmina_pref.hide_connection_toolbar)
-			{
-				gtk_widget_hide(priv->toolbar);
-			}
-			else
-			{
-				gtk_widget_show(priv->toolbar);
-			}
+			gtk_widget_show(priv->toolbar);
 		}
 	}
 }
@@ -2358,7 +2337,6 @@ static void remmina_connection_window_init(RemminaConnectionWindow* cnnwin)
 	priv->view_mode = AUTO_MODE;
 	priv->floating_toolbar_opacity = 1.0;
 
-	gtk_window_set_position(GTK_WINDOW(cnnwin), GTK_WIN_POS_CENTER);
 	gtk_container_set_border_width(GTK_CONTAINER(cnnwin), 0);
 
 	remmina_widget_pool_register(GTK_WIDGET(cnnwin));
@@ -3255,8 +3233,7 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
 		{
 			remmina_pref.hide_connection_toolbar =
 				!remmina_pref.hide_connection_toolbar;
-			remmina_connection_holder_showhide_toolbar(
-					cnnhld, TRUE);
+			remmina_connection_holder_showhide_toolbar( cnnhld, TRUE);
 		}
 	}
 	else
@@ -3537,6 +3514,7 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 
 	/* Create the viewport to make the RemminaProtocolWidget scrollable */
 	cnnobj->viewport = gtk_viewport_new(NULL, NULL);
+	gtk_widget_set_name(cnnobj->viewport, "remmina-cw-viewport");
 	gtk_widget_show(cnnobj->viewport);
 	gtk_container_set_border_width(GTK_CONTAINER(cnnobj->viewport), 0);
 	gtk_viewport_set_shadow_type(GTK_VIEWPORT(cnnobj->viewport), GTK_SHADOW_NONE);
