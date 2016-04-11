@@ -237,7 +237,7 @@ static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe
 	tablabel = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_widget_show(tablabel);
 
-	widget = gtk_image_new_from_icon_name(stock_id, GTK_ICON_SIZE_MENU);
+	widget = gtk_image_new_from_icon_name(stock_id, GTK_ICON_SIZE_BUTTON);
 	gtk_box_pack_start(GTK_BOX(tablabel), widget, FALSE, FALSE, 0);
 	gtk_widget_show(widget);
 
@@ -1254,10 +1254,9 @@ static void remmina_file_editor_init(RemminaFileEditor* gfe)
 
 	/* Default button */
 	widget = gtk_dialog_add_button(GTK_DIALOG(gfe), (_("Default")), GTK_RESPONSE_OK);
-	gtk_widget_show(widget);
 	gtk_button_set_image(GTK_BUTTON(widget), gtk_image_new_from_icon_name("preferences-system", GTK_ICON_SIZE_BUTTON));
-
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_file_editor_on_default), gfe);
+	//gtk_widget_show(widget);
 
 	priv->setting_widgets = g_hash_table_new(g_str_hash, g_str_equal);
 
