@@ -631,29 +631,6 @@ void remmina_main_on_action_application_quit(GtkAction *action, gpointer user_da
 	g_idle_add(remmina_main_dexit, NULL);
 }
 
-void remmina_main_on_action_view_toolbar(GtkToggleAction *action, gpointer user_data)
-{
-	TRACE_CALL("remmina_main_on_action_view_toolbar");
-	gboolean toggled;
-
-	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-	toggled = gtk_toggle_action_get_active(action);
-	G_GNUC_END_IGNORE_DEPRECATIONS
-	if (toggled)
-	{
-		gtk_widget_show(GTK_WIDGET(remminamain->toolbar_main));
-	}
-	else
-	{
-		gtk_widget_hide(GTK_WIDGET(remminamain->toolbar_main));
-	}
-	if (remminamain->priv->initialized)
-	{
-		remmina_pref.hide_toolbar = !toggled;
-		remmina_pref_save();
-	}
-}
-
 void remmina_main_on_action_view_quick_search(GtkToggleAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_view_quick_search");
@@ -666,9 +643,6 @@ void remmina_main_on_action_view_quick_search(GtkToggleAction *action, gpointer 
 		gtk_widget_grab_focus(GTK_WIDGET(remminamain->entry_quick_connect_server));
 	if (remminamain->priv->initialized)
 	{
-		remmina_pref.show_quick_search = toggled;
-		remmina_pref_save();
-
 		if (!toggled)
 		{
 			gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(remminamain->priv->file_model_filter));
@@ -718,29 +692,6 @@ void remmina_main_on_action_view_quick_connect(GtkToggleAction *action, gpointer
 	if (remminamain->priv->initialized)
 	{
 		remmina_pref.hide_quick_connect = !toggled;
-		remmina_pref_save();
-	}
-}
-
-void remmina_main_on_action_view_small_toolbar_buttons(GtkToggleAction *action, gpointer user_data)
-{
-	TRACE_CALL("remmina_main_on_action_view_small_toolbar_buttons");
-	gboolean toggled;
-
-	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-	toggled = gtk_toggle_action_get_active(action);
-	G_GNUC_END_IGNORE_DEPRECATIONS
-	if (toggled)
-	{
-		gtk_toolbar_set_icon_size(GTK_TOOLBAR(remminamain->toolbar_main), GTK_ICON_SIZE_MENU);
-	}
-	else
-	{
-		gtk_toolbar_unset_icon_size(GTK_TOOLBAR(remminamain->toolbar_main));
-	}
-	if (remminamain->priv->initialized)
-	{
-		remmina_pref.small_toolbutton = toggled;
 		remmina_pref_save();
 	}
 }
@@ -1096,12 +1047,6 @@ static void remmina_main_init(void)
 	/* Load the files list */
 	remmina_main_load_files(FALSE);
 	/* Load the preferences */
-	if (remmina_pref.hide_toolbar)
-	{
-		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-		gtk_toggle_action_set_active(remminamain->action_view_toolbar, FALSE);
-		G_GNUC_END_IGNORE_DEPRECATIONS
-	}
 	if (remmina_pref.hide_statusbar)
 	{
 		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
@@ -1112,12 +1057,6 @@ static void remmina_main_init(void)
 	{
 		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		gtk_toggle_action_set_active(remminamain->action_view_quick_connect, FALSE);
-		G_GNUC_END_IGNORE_DEPRECATIONS
-	}
-	if (remmina_pref.small_toolbutton)
-	{
-		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-		gtk_toggle_action_set_active(remminamain->action_view_small_toolbar_buttons, TRUE);
 		G_GNUC_END_IGNORE_DEPRECATIONS
 	}
 	if (remmina_pref.view_file_mode)
@@ -1148,8 +1087,6 @@ GtkWidget* remmina_main_new(void)
 	/* Menu widgets */
 	remminamain->menu_popup = GTK_MENU(GET_OBJECT("menu_popup"));
 	remminamain->menu_tools = GTK_MENU(GET_OBJECT("menu_tools"));
-	/* Toolbar widgets */
-	remminamain->toolbar_main = GTK_TOOLBAR(GET_OBJECT("toolbar_main"));
 	/* Quick connect objects */
 	remminamain->box_quick_connect = GTK_BOX(GET_OBJECT("box_quick_connect"));
 	remminamain->combo_quick_connect_protocol = GTK_COMBO_BOX_TEXT(GET_OBJECT("combo_quick_connect_protocol"));
@@ -1178,10 +1115,8 @@ GtkWidget* remmina_main_new(void)
 	remminamain->action_connection_delete = GTK_ACTION(GET_OBJECT("action_connection_delete"));
 	remminamain->action_connection_external_tools = GTK_ACTION(GET_OBJECT("action_connection_external_tools"));
 	/* Actions from the view ActionGroup */
-	remminamain->action_view_toolbar = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_toolbar"));
 	remminamain->action_view_statusbar = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_statusbar"));
 	remminamain->action_view_quick_connect = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_quick_connect"));
-	remminamain->action_view_small_toolbar_buttons = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_small_toolbar_buttons"));
 	remminamain->action_view_mode_list = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_mode_list"));
 	remminamain->action_view_mode_tree = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_mode_tree"));
 	/* Actions from the tools ActionGroup */
