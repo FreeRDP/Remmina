@@ -218,7 +218,7 @@ static void remmina_connection_window_class_init(RemminaConnectionWindowClass* k
 	 * we will never know its internal area size, because GtkViweport::viewport_get_view_allocation,
 	 * which returns the internal size of the GtkViewport, is private and we cannot access it */
 	gtk_css_provider_load_from_data (provider,
-			"GtkViewport, GtkAspectFrame {\n"
+			"#remmina-cw-viewport, #remmina-cw-aspectframe {\n"
 			"  padding:0;\n"
 			"  border:0;\n"
 			"  background-color: black;\n"
@@ -945,6 +945,7 @@ static void remmina_protocol_widget_update_alignment(RemminaConnectionObject* cn
 			{
 				/* We need a new aspectframe */
 				cnnobj->aspectframe = gtk_aspect_frame_new(NULL, 0.5, 0.5, aratio, FALSE);
+				gtk_widget_set_name(cnnobj->aspectframe, "remmina-cw-aspectframe");
 				gtk_frame_set_shadow_type(GTK_FRAME(cnnobj->aspectframe), GTK_SHADOW_NONE);
 				g_object_ref(cnnobj->proto);
 				gtk_container_remove(GTK_CONTAINER(cnnobj->viewport), cnnobj->proto);
@@ -3513,6 +3514,7 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 
 	/* Create the viewport to make the RemminaProtocolWidget scrollable */
 	cnnobj->viewport = gtk_viewport_new(NULL, NULL);
+	gtk_widget_set_name(cnnobj->viewport, "remmina-cw-viewport");
 	gtk_widget_show(cnnobj->viewport);
 	gtk_container_set_border_width(GTK_CONTAINER(cnnobj->viewport), 0);
 	gtk_viewport_set_shadow_type(GTK_VIEWPORT(cnnobj->viewport), GTK_SHADOW_NONE);
