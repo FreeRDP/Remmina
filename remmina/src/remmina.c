@@ -64,6 +64,12 @@ GCRY_THREAD_OPTION_PTHREAD_IMPL;
 # endif
 #endif
 
+# if GCRYPT_VERSION_NUMBER < 0x010600
+#ifdef HAVE_LIBGCRYPT
+static int gcrypt_thread_initialized = 0;
+#endif /* !HAVE_LIBGCRYPT */
+#endif /* !GCRYPT_VERSION_NUMBER */
+
 static gboolean remmina_option_about;
 static gchar *remmina_option_connect;
 static gchar *remmina_option_edit;
@@ -280,12 +286,22 @@ int main(int argc, char* argv[])
 
 #ifdef HAVE_LIBGCRYPT
 # if GCRYPT_VERSION_NUMBER < 0x010600
-	gcry_control (GCRYCTL_SET_THREAD_CBS, &gcry_threads_pthread);
-# endif
+	gcry_error_t e;
+	if (!gcrypt_thread_initialized)
+	{
+		if ((e = gcry_control (GCRYCTL_SET_THREAD_CBS, &gcry_threads_pthread)) != GPG_ERR_NO_ERROR)
+		{
+			ERR_TRACE (gcry_strerror (e), e);
+			SET_ERRNO (_gpg_error_to_errno (e));
+			return (-1);
+		}
+		gcrypt_thread_initialized++;
+	}
+#endif /* !GCRYPT_VERSION_NUMBER */
 	gcry_check_version (NULL);
 	gcry_control (GCRYCTL_DISABLE_SECMEM, 0);
 	gcry_control (GCRYCTL_INITIALIZATION_FINISHED, 0);
-#endif
+#endif /* !HAVE_LIBGCRYPT */
 
 	gtk_init(&argc, &argv);
 
