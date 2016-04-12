@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 
+<!-- Generated with glade 3.19.0 
 
 Remmina - The GTK+ Remmina Remote Desktop Client
 Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2016
@@ -195,14 +195,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
   <object class="GtkActionGroup" id="actiongroup_view">
     <property name="accel_group">accelgroup_shortcuts</property>
     <child>
-      <object class="GtkToggleAction" id="action_view_toolbar">
-        <property name="label" translatable="yes">Toolbar</property>
-        <property name="short_label" translatable="yes">Toolbar</property>
-        <property name="active">True</property>
-        <signal name="activate" handler="remmina_main_on_action_view_toolbar" swapped="no"/>
-      </object>
-    </child>
-    <child>
       <object class="GtkToggleAction" id="action_view_statusbar">
         <property name="label" translatable="yes">Statusbar</property>
         <property name="short_label" translatable="yes">Statusbar</property>
@@ -226,13 +218,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         <property name="short_label" translatable="yes">Quick Connect</property>
         <property name="active">True</property>
         <signal name="activate" handler="remmina_main_on_action_view_quick_connect" swapped="no"/>
-      </object>
-    </child>
-    <child>
-      <object class="GtkToggleAction" id="action_view_small_toolbar_buttons">
-        <property name="label" translatable="yes">Small Toolbar Buttons</property>
-        <property name="short_label" translatable="yes">Small Toolbar Buttons</property>
-        <signal name="activate" handler="remmina_main_on_action_view_small_toolbar_buttons" swapped="no"/>
       </object>
     </child>
     <child>
@@ -434,21 +419,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     </child>
                     <child>
                       <object class="GtkSeparatorMenuItem" id="menuitem_view_separator1">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkCheckMenuItem" id="menuitem_view_small_toolbar_buttons">
-                        <property name="use_action_appearance">True</property>
-                        <property name="related_action">action_view_small_toolbar_buttons</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkSeparatorMenuItem" id="menuitem_view_separator2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                       </object>
@@ -689,16 +659,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           </packing>
         </child>
         <child>
-          <object class="GtkAlignment" id="alignment_quick_connect">
+          <object class="GtkHeaderBar" id="main_headerbar">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="bottom_padding">3</property>
-            <property name="left_padding">5</property>
-            <property name="right_padding">5</property>
+            <property name="hexpand">True</property>
             <child>
               <object class="GtkBox" id="box_quick_connect">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="spacing">7</property>
                 <child>
                   <object class="GtkLabel" id="label_quick_connect_protocol">
@@ -726,10 +696,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                 </child>
                 <child>
                   <object class="GtkEntry" id="entry_quick_connect_server">
+                    <property name="width_request">380</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="width_chars">25</property>
-                    <property name="primary_icon_stock">gtk-find</property>
+                    <property name="primary_icon_stock">gtk-connect</property>
                     <property name="secondary_icon_stock">gtk-clear</property>
                     <signal name="activate" handler="remmina_main_quickconnect_on_click" swapped="no"/>
                     <signal name="changed" handler="remmina_main_quick_search_on_changed" swapped="no"/>
@@ -747,8 +718,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="padding">2</property>
-            <property name="position">2</property>
+            <property name="position">1</property>
           </packing>
         </child>
         <child>
