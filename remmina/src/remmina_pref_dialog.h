@@ -101,6 +101,7 @@ typedef struct _RemminaPrefDialog
 	GtkEntry *entry_scrollback_lines;
 	GtkButton *button_keyboard_copy;
 	GtkButton *button_keyboard_paste;
+	GtkButton *button_keyboard_select_all;
 
 	RemminaPrefDialogPriv *priv;
 } RemminaPrefDialog;

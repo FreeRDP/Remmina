@@ -53,6 +53,7 @@
 
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY  1
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE 2
+#define REMMINA_PLUGIN_SSH_FEATURE_TOOL_SELECT_ALL 3
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginSshData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 
@@ -188,7 +189,6 @@ void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal,
 
 }
 
-
 static gboolean
 remmina_plugin_ssh_on_focus_in (GtkWidget *widget, GdkEventFocus *event, RemminaProtocolWidget *gp)
 {
@@ -237,6 +237,44 @@ remmina_plugin_ssh_set_vte_pref (RemminaProtocolWidget *gp)
 		vte_terminal_set_scrollback_lines (VTE_TERMINAL (gpdata->vte), remmina_pref.vte_lines);
 	}
 }
+
+void
+remmina_plugin_ssh_vte_select_all (GtkMenuItem *menuitem, gpointer user_data)
+{
+	vte_terminal_select_all (VTE_TERMINAL (user_data));
+	/* TODO: we should add the vte_terminal_unselect_all as well */
+}
+
+void
+remmina_plugin_ssh_vte_copy_clipboard (GtkMenuItem *menuitem, gpointer user_data)
+{
+	vte_terminal_copy_clipboard (VTE_TERMINAL (user_data));
+}
+
+void
+remmina_plugin_ssh_vte_paste_clipboard (GtkMenuItem *menuitem, gpointer user_data)
+{
+	vte_terminal_paste_clipboard (VTE_TERMINAL (user_data));
+}
+
+gboolean
+remmina_ssh_plugin_popup_menu(GtkWidget *widget, GdkEvent *event, GtkWidget *menu) {
+
+	if ((event->type == GDK_BUTTON_PRESS) && (((GdkEventButton*)event)->button == 3)) {
+
+		gtk_menu_popup(GTK_MENU(menu),
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				((GdkEventButton*)event)->button,
+				gtk_get_current_event_time());
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
 
 static void
 remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
@@ -301,11 +339,35 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 
 	remmina_plugin_service->protocol_plugin_register_hostkey (gp, vte);
 
-
 	vscrollbar = gtk_scrollbar_new (GTK_ORIENTATION_VERTICAL, gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (vte)));
 
 	gtk_widget_show(vscrollbar);
 	gtk_box_pack_start (GTK_BOX (hbox), vscrollbar, FALSE, TRUE, 0);
+
+	/* Context menu for slection and clipboard */
+	GtkWidget *menu = gtk_menu_new();
+
+	GtkWidget *select_all = gtk_menu_item_new_with_label(_("Select All (Host+a)"));
+	GtkWidget *copy = gtk_menu_item_new_with_label(_("Copy (Host+c)"));
+	GtkWidget *paste = gtk_menu_item_new_with_label(_("Paste (Host+v)"));
+
+	gtk_menu_shell_append(GTK_MENU_SHELL(menu), select_all);
+	gtk_menu_shell_append(GTK_MENU_SHELL(menu), copy);
+	gtk_menu_shell_append(GTK_MENU_SHELL(menu), paste);
+
+	GtkAccelGroup *accel_group;
+
+	gtk_widget_show_all(menu);
+
+	g_signal_connect (G_OBJECT(vte), "button_press_event",
+			G_CALLBACK(remmina_ssh_plugin_popup_menu), menu);
+
+	g_signal_connect(G_OBJECT(select_all), "activate",
+			G_CALLBACK(remmina_plugin_ssh_vte_select_all), vte);
+	g_signal_connect(G_OBJECT(copy), "activate",
+			G_CALLBACK(remmina_plugin_ssh_vte_copy_clipboard), vte);
+	g_signal_connect(G_OBJECT(paste), "activate",
+			G_CALLBACK(remmina_plugin_ssh_vte_paste_clipboard), vte);
 }
 
 static gboolean
@@ -384,6 +446,9 @@ remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, const RemminaProtoco
 	case REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE:
 		vte_terminal_paste_clipboard (VTE_TERMINAL (gpdata->vte));
 		return;
+	case REMMINA_PLUGIN_SSH_FEATURE_TOOL_SELECT_ALL:
+		vte_terminal_select_all (VTE_TERMINAL (gpdata->vte));
+		return;
 	}
 }
 
@@ -393,6 +458,7 @@ static RemminaProtocolFeature remmina_plugin_ssh_features[] =
 {
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY, N_("Copy"), N_("_Copy"), NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE, N_("Paste"), N_("_Paste"), NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_SELECT_ALL, N_("Select all"), N_("_Select all"), NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
@@ -424,6 +490,7 @@ remmina_ssh_plugin_register (void)
 	TRACE_CALL("remmina_ssh_plugin_register");
 	remmina_plugin_ssh_features[0].opt3 = GUINT_TO_POINTER (remmina_pref.vte_shortcutkey_copy);
 	remmina_plugin_ssh_features[1].opt3 = GUINT_TO_POINTER (remmina_pref.vte_shortcutkey_paste);
+	remmina_plugin_ssh_features[2].opt3 = GUINT_TO_POINTER (remmina_pref.vte_shortcutkey_select_all);
 
 	remmina_plugin_service = &remmina_plugin_manager_service;
 	remmina_plugin_service->register_plugin ((RemminaPlugin *) &remmina_plugin_ssh);
