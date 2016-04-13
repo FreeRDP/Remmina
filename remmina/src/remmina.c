@@ -61,14 +61,14 @@
 #include <gcrypt.h>
 # if GCRYPT_VERSION_NUMBER < 0x010600
 GCRY_THREAD_OPTION_PTHREAD_IMPL;
-# endif
-#endif
-
-# if GCRYPT_VERSION_NUMBER < 0x010600
-#ifdef HAVE_LIBGCRYPT
-static int gcrypt_thread_initialized = 0;
-#endif /* !HAVE_LIBGCRYPT */
 #endif /* !GCRYPT_VERSION_NUMBER */
+#endif /* HAVE_LIBGCRYPT */
+
+#ifdef HAVE_LIBGCRYPT
+# if GCRYPT_VERSION_NUMBER < 0x010600
+static int gcrypt_thread_initialized = 0;
+#endif /* !GCRYPT_VERSION_NUMBER */
+#endif /* HAVE_LIBGCRYPT */
 
 static gboolean remmina_option_about;
 static gchar *remmina_option_connect;
@@ -100,6 +100,18 @@ static GOptionEntry remmina_options[] =
 	{ "version", 'v', 0, G_OPTION_ARG_NONE, &remmina_option_version, N_("Show the application's version"), NULL },
 	{ NULL }
 };
+
+#ifdef WITH_LIBGCRYPT
+	static int
+_gpg_error_to_errno (gcry_error_t e)
+{
+	/* be lazy right now */
+	if (e == GPG_ERR_NO_ERROR)
+		return (0);
+	else
+		return (EINVAL);
+}
+#endif /* !WITH_LIBGCRYPT */
 
 static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *cmdline)
 {
