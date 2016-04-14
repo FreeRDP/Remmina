@@ -261,6 +261,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
       <column type="gchararray"/>
     </columns>
   </object>
+  <object class="GtkEntryCompletion" id="entrycompletion1">
+    <property name="model">liststore_files_list</property>
+    <property name="inline_completion">True</property>
+    <property name="inline_selection">True</property>
+  </object>
   <object class="GtkWindow" id="RemminaMain">
     <property name="width_request">700</property>
     <property name="can_focus">False</property>
@@ -328,6 +333,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     <property name="width_chars">25</property>
                     <property name="primary_icon_stock">gtk-connect</property>
                     <property name="secondary_icon_stock">gtk-clear</property>
+                    <property name="completion">entrycompletion1</property>
                     <signal name="activate" handler="remmina_main_quickconnect_on_click" swapped="no"/>
                     <signal name="changed" handler="remmina_main_quick_search_on_changed" swapped="no"/>
                     <signal name="icon-press" handler="remmina_main_quick_search_on_icon_press" swapped="no"/>
