@@ -124,6 +124,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         <property name="label" translatable="yes">_New</property>
         <property name="short_label" translatable="yes">_New</property>
         <property name="tooltip" translatable="yes">Create a new remote desktop file</property>
+        <property name="stock_id">gtk-add</property>
         <property name="icon_name">document-new</property>
         <signal name="activate" handler="remmina_main_on_action_connections_new" swapped="no"/>
       </object>
@@ -244,7 +245,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
   <object class="GtkImage" id="image_new">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-new</property>
+    <property name="stock">gtk-add</property>
     <property name="icon_size">1</property>
   </object>
   <object class="GtkListStore" id="liststore_files_list">
@@ -284,14 +285,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
             <property name="can_focus">False</property>
             <child>
               <object class="GtkButton" id="button_new">
-                <property name="label" translatable="yes">New</property>
-                <property name="related_action">action_connections_new</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="tooltip_text" translatable="yes">Create a new connection profile</property>
+                <property name="halign">start</property>
                 <property name="image">image_new</property>
-                <property name="yalign">0.50999999046325684</property>
                 <property name="always_show_image">True</property>
+                <signal name="activate" handler="remmina_main_on_action_connections_new" swapped="no"/>
+                <signal name="clicked" handler="remmina_main_on_action_connections_new" swapped="no"/>
               </object>
             </child>
             <child>
@@ -301,18 +303,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="spacing">7</property>
-                <child>
-                  <object class="GtkLabel" id="label_quick_connect_protocol">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Protocol</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
                 <child>
                   <object class="GtkComboBoxText" id="combo_quick_connect_protocol">
                     <property name="visible">True</property>
