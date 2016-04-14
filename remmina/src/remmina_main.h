@@ -46,7 +46,7 @@ typedef struct _RemminaMain
 	GtkWindow *window;
 	/* Menu widgets */
 	GtkMenu *menu_popup;
-	GtkMenu *menu_tools;
+	GtkMenu *menu_popup_full;
 	/* Quick connect objects */
 	GtkBox *box_quick_connect;
 	GtkComboBoxText *combo_quick_connect_protocol;

@@ -143,6 +143,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
       <object class="GtkAction" id="action_help_wiki">
         <property name="label" translatable="yes">Online Wiki</property>
         <property name="short_label" translatable="yes">Online Wiki</property>
+        <property name="icon_name">help-contents</property>
         <signal name="activate" handler="remmina_main_on_action_help_wiki" swapped="no"/>
       </object>
     </child>
@@ -164,6 +165,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
       <object class="GtkAction" id="action_help_debug">
         <property name="label" translatable="yes">Debug Window</property>
         <property name="short_label" translatable="yes">Debug Window</property>
+        <property name="icon_name">text-x-generic</property>
         <signal name="activate" handler="remmina_main_on_action_help_debug" swapped="no"/>
       </object>
     </child>
@@ -271,6 +273,121 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkHeaderBar" id="main_headerbar">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkButton" id="button_new">
+                <property name="label" translatable="yes">New</property>
+                <property name="related_action">action_connections_new</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="image">image_new</property>
+                <property name="yalign">0.50999999046325684</property>
+                <property name="always_show_image">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox" id="box_quick_connect">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="spacing">7</property>
+                <child>
+                  <object class="GtkLabel" id="label_quick_connect_protocol">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Protocol</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="combo_quick_connect_protocol">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="active">0</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_quick_connect_server">
+                    <property name="width_request">380</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="width_chars">25</property>
+                    <property name="primary_icon_stock">gtk-connect</property>
+                    <property name="secondary_icon_stock">gtk-clear</property>
+                    <signal name="activate" handler="remmina_main_quickconnect_on_click" swapped="no"/>
+                    <signal name="changed" handler="remmina_main_quick_search_on_changed" swapped="no"/>
+                    <signal name="icon-press" handler="remmina_main_quick_search_on_icon_press" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSeparator" id="separator1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkMenuButton" id="menu_header_button">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="popup">menu_popup_full</property>
+                    <child>
+                      <object class="GtkImage" id="image_menu">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="icon_name">open-menu-symbolic</property>
+                        <property name="icon_size">1</property>
+                      </object>
+                    </child>
+                    <child internal-child="accessible">
+                      <object class="AtkObject" id="menu_header_button-atkobject">
+                        <property name="AtkObject::accessible-name" translatable="yes">Actions</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="pack_type">end</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
         <child>
           <object class="GtkMenuBar" id="menubar_main">
             <property name="can_focus">False</property>
@@ -451,6 +568,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="use_underline">True</property>
                         <property name="active">True</property>
                         <property name="draw_as_radio">True</property>
+                        <property name="group">menuitem_view_mode_tree</property>
                       </object>
                     </child>
                     <child>
@@ -462,6 +580,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="use_underline">True</property>
                         <property name="active">True</property>
                         <property name="draw_as_radio">True</property>
+                        <property name="group">menuitem_view_mode_list</property>
                       </object>
                     </child>
                     <child>
@@ -534,6 +653,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     </child>
                     <child>
                       <object class="GtkMenuItem" id="menuitem_help_wiki">
+                        <property name="use_action_appearance">True</property>
                         <property name="related_action">action_help_wiki</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -561,6 +681,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     </child>
                     <child>
                       <object class="GtkMenuItem" id="menuitem_help_debug">
+                        <property name="use_action_appearance">True</property>
                         <property name="related_action">action_help_debug</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -610,122 +731,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkHeaderBar" id="main_headerbar">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <child>
-              <object class="GtkButton" id="button_new">
-                <property name="label" translatable="yes">New</property>
-                <property name="related_action">action_connections_new</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="image">image_new</property>
-                <property name="yalign">0.50999999046325684</property>
-                <property name="always_show_image">True</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkBox" id="box_quick_connect">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="spacing">7</property>
-                <child>
-                  <object class="GtkLabel" id="label_quick_connect_protocol">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Protocol</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBoxText" id="combo_quick_connect_protocol">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="active">0</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkEntry" id="entry_quick_connect_server">
-                    <property name="width_request">380</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="width_chars">25</property>
-                    <property name="primary_icon_stock">gtk-connect</property>
-                    <property name="secondary_icon_stock">gtk-clear</property>
-                    <signal name="activate" handler="remmina_main_quickconnect_on_click" swapped="no"/>
-                    <signal name="changed" handler="remmina_main_quick_search_on_changed" swapped="no"/>
-                    <signal name="icon-press" handler="remmina_main_quick_search_on_icon_press" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkSeparator" id="separator1">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkMenuButton" id="menu_header_button">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="popup">menu_popup_full</property>
-                    <child>
-                      <object class="GtkImage" id="image_menu">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="icon_name">open-menu-symbolic</property>
-                        <property name="icon_size">1</property>
-                      </object>
-                    </child>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="menu_header_button-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes">Actions</property>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">4</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="pack_type">end</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
+            <property name="fill">False</property>
             <property name="position">1</property>
           </packing>
         </child>

@@ -998,7 +998,7 @@ static gboolean remmina_main_add_tool_plugin(gchar *name, RemminaPlugin *plugin,
 	GtkWidget *menuitem = gtk_menu_item_new_with_label(plugin->description);
 
 	gtk_widget_show(menuitem);
-	gtk_menu_shell_append(GTK_MENU_SHELL(remminamain->menu_tools), menuitem);
+	gtk_menu_shell_append(GTK_MENU_SHELL(remminamain->menu_popup_full), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(tool_plugin->exec_func), NULL);
 	return FALSE;
 }
@@ -1086,7 +1086,7 @@ GtkWidget* remmina_main_new(void)
 	remminamain->window = GTK_WINDOW(gtk_builder_get_object(remminamain->builder, "RemminaMain"));
 	/* Menu widgets */
 	remminamain->menu_popup = GTK_MENU(GET_OBJECT("menu_popup"));
-	remminamain->menu_tools = GTK_MENU(GET_OBJECT("menu_tools"));
+	remminamain->menu_popup_full = GTK_MENU(GET_OBJECT("menu_popup_full"));
 	/* Quick connect objects */
 	remminamain->box_quick_connect = GTK_BOX(GET_OBJECT("box_quick_connect"));
 	remminamain->combo_quick_connect_protocol = GTK_COMBO_BOX_TEXT(GET_OBJECT("combo_quick_connect_protocol"));
