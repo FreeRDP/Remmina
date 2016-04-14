@@ -39,6 +39,8 @@
 
 #include <errno.h>
 #include <fcntl.h>
+#include <locale.h>
+#include <langinfo.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
@@ -581,7 +583,47 @@ void remmina_file_unsave_password(RemminaFile *remminafile)
 
 /* Function used to update the atime and mtime of a given remmina file, partially
  * taken from suckless sbase */
-static void
+const gchar*
+remmina_file_get_datetime(RemminaFile *remminafile)
+{
+	TRACE_CALL("remmina_file_get_datetime");
+
+	GFile *file = g_file_new_for_path (remminafile->filename);
+	GFileInfo *info;
+
+	struct timeval tv;
+	struct tm* ptm;
+	char time_string[256];
+
+	guint64 mtime;
+	gchar *modtime_string;
+
+	info = g_file_query_info (file,
+			G_FILE_ATTRIBUTE_TIME_MODIFIED,
+			G_FILE_QUERY_INFO_NONE,
+			NULL,
+			NULL);
+
+	if (info == NULL) {
+		g_print("couldn't get time info\n");
+		return "26/01/1976 23:30:00";
+	}
+
+	mtime = g_file_info_get_attribute_uint64 (info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+	tv.tv_sec = mtime;
+
+	ptm = localtime(&tv.tv_sec);
+	//strftime(time_string, sizeof(time_string), "%c", ptm);
+	strftime(time_string, sizeof(time_string), nl_langinfo(D_FMT), ptm);
+
+	modtime_string = g_locale_to_utf8(time_string, -1, NULL, NULL, NULL);
+
+	g_object_unref (info);
+
+	return modtime_string;
+}
+
+void
 remmina_file_touch(RemminaFile *remminafile)
 {
 	TRACE_CALL("remmina_file_touch");

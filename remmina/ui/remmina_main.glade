@@ -258,6 +258,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
       <column type="gchararray"/>
       <!-- column-name Server -->
       <column type="gchararray"/>
+      <!-- column-name Date -->
+      <column type="gchararray"/>
       <!-- column-name Filename -->
       <column type="gchararray"/>
     </columns>
@@ -798,6 +800,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     </child>
                   </object>
                 </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="column_files_list_date">
+                    <property name="resizable">True</property>
+                    <property name="title" translatable="yes">Date</property>
+                    <property name="clickable">True</property>
+                    <property name="sort_column_id">3</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="renderer_files_list_date"/>
+                      <attributes>
+                        <attribute name="text">4</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
@@ -830,6 +846,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
       <!-- column-name Group -->
       <column type="gchararray"/>
       <!-- column-name Server -->
+      <column type="gchararray"/>
+      <!-- column-name Date -->
       <column type="gchararray"/>
       <!-- column-name Filename -->
       <column type="gchararray"/>
