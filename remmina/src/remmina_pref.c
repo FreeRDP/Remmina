@@ -586,6 +586,12 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.vte_shortcutkey_paste = GDK_KEY_v;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_shortcutkey_select_all", NULL))
+		remmina_pref.vte_shortcutkey_select_all = g_key_file_get_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_select_all",
+		                                     NULL);
+	else
+		remmina_pref.vte_shortcutkey_select_all = GDK_KEY_a;
+
 	g_key_file_free(gkeyfile);
 
 	if (remmina_pref.secret == NULL)

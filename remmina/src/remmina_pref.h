@@ -135,6 +135,7 @@ typedef struct _RemminaPref
 	gint vte_lines;
 	guint vte_shortcutkey_copy;
 	guint vte_shortcutkey_paste;
+	guint vte_shortcutkey_select_all;
 	/* In View menu */
 	gboolean hide_toolbar;
 	gboolean hide_statusbar;
