@@ -35,12 +35,22 @@
 
 #include "config.h"
 
+#include <sys/stat.h>
+
+#include <errno.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
-#include <stdlib.h>
 
 #include "remmina_public.h"
+#include "remmina_log.h"
 #include "remmina_crypt.h"
 #include "remmina_file_manager.h"
 #include "remmina_plugin_manager.h"
@@ -50,6 +60,8 @@
 
 #define MIN_WINDOW_WIDTH 10
 #define MIN_WINDOW_HEIGHT 10
+
+static struct timespec times[2];
 
 typedef struct _RemminaSetting
 {
@@ -566,3 +578,32 @@ void remmina_file_unsave_password(RemminaFile *remminafile)
 	remmina_file_set_string(remminafile, "password", NULL);
 	remmina_file_save_group(remminafile, REMMINA_SETTING_GROUP_CREDENTIAL);
 }
+
+/* Function used to update the atime and mtime of a given remmina file, partially
+ * taken from suckless sbase */
+static void
+remmina_file_touch(RemminaFile *remminafile)
+{
+	TRACE_CALL("remmina_file_touch");
+	int fd;
+	struct stat st;
+	int r;
+
+	if ((r = stat(remminafile->filename, &st)) < 0) {
+		if (errno != ENOENT)
+			remmina_log_printf("stat %s:", remminafile->filename);
+	} else if (!r) {
+		times[0] = st.st_atim;
+		times[1] = st.st_mtim;
+		if (utimensat(AT_FDCWD, remminafile->filename, times, 0) < 0)
+			remmina_log_printf("utimensat %s:", remminafile->filename);
+		return;
+	}
+
+	if ((fd = open(remminafile->filename, O_CREAT | O_EXCL, 0644)) < 0)
+		remmina_log_printf("open %s:", remminafile->filename);
+	close(fd);
+
+	remmina_file_touch(remminafile);
+}
+
