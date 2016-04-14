@@ -1380,6 +1380,45 @@ Author: Antenore Gatta
                         <property name="top_attach">8</property>
                       </packing>
                     </child>
+                    <child>
+                      <object class="GtkLabel" id="label_keyboard_select_all1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="label" translatable="yes">Select All</property>
+                        <property name="xalign">0</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">9</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="label_keyboard_select_all2">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Host key +</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">9</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="button_keyboard_select_all">
+                        <property name="label">SELECT_ALL</property>
+                        <property name="width_request">100</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="hexpand">False</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left_attach">3</property>
+                        <property name="top_attach">9</property>
+                      </packing>
+                    </child>
                   </object>
                 </child>
               </object>
