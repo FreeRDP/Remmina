@@ -355,8 +355,6 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), copy);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), paste);
 
-	GtkAccelGroup *accel_group;
-
 	gtk_widget_show_all(menu);
 
 	g_signal_connect (G_OBJECT(vte), "button_press_event",
