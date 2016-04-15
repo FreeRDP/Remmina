@@ -581,8 +581,6 @@ void remmina_file_unsave_password(RemminaFile *remminafile)
 	remmina_file_save_group(remminafile, REMMINA_SETTING_GROUP_CREDENTIAL);
 }
 
-/* Function used to update the atime and mtime of a given remmina file, partially
- * taken from suckless sbase */
 const gchar*
 remmina_file_get_datetime(RemminaFile *remminafile)
 {
@@ -613,7 +611,7 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	tv.tv_sec = mtime;
 
 	ptm = localtime(&tv.tv_sec);
-	strftime(time_string, sizeof(time_string), nl_langinfo(D_FMT), ptm);
+	strftime(time_string, sizeof(time_string), "%F - %T", ptm);
 
 	modtime_string = g_locale_to_utf8(time_string, -1, NULL, NULL, NULL);
 
@@ -622,6 +620,8 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	return modtime_string;
 }
 
+/* Function used to update the atime and mtime of a given remmina file, partially
+ * taken from suckless sbase */
 void
 remmina_file_touch(RemminaFile *remminafile)
 {

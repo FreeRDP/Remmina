@@ -407,8 +407,8 @@ static void remmina_main_file_model_on_sort(GtkTreeSortable *sortable, gpointer 
 	GtkSortType order;
 
 	gtk_tree_sortable_get_sort_column_id(sortable, &columnid, &order);
-	gtk_tree_sortable_set_sort_func(sortable, DATE_COLUMN,
-			remmina_main_sortable_cmp_by_date, NULL, NULL);
+	//gtk_tree_sortable_set_sort_func(sortable, DATE_COLUMN,
+			//remmina_main_sortable_cmp_by_date, NULL, NULL);
 	remmina_pref.main_sort_column_id = columnid;
 	remmina_pref.main_sort_order = order;
 	remmina_pref_save();
