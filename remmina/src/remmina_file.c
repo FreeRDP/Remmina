@@ -613,7 +613,6 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	tv.tv_sec = mtime;
 
 	ptm = localtime(&tv.tv_sec);
-	//strftime(time_string, sizeof(time_string), "%c", ptm);
 	strftime(time_string, sizeof(time_string), nl_langinfo(D_FMT), ptm);
 
 	modtime_string = g_locale_to_utf8(time_string, -1, NULL, NULL, NULL);

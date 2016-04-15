@@ -64,7 +64,13 @@ static RemminaMain *remminamain;
 
 enum
 {
-	PROTOCOL_COLUMN, NAME_COLUMN, GROUP_COLUMN, SERVER_COLUMN, DATE_COLUMN, FILENAME_COLUMN, N_COLUMNS
+	PROTOCOL_COLUMN,
+	NAME_COLUMN,
+	GROUP_COLUMN,
+	SERVER_COLUMN,
+	DATE_COLUMN,
+	FILENAME_COLUMN,
+	N_COLUMNS
 };
 
 static GtkTargetEntry remmina_drop_types[] =
@@ -377,6 +383,23 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 			-1);
 }
 
+static gint remmina_main_sortable_cmp_by_date(GtkTreeModel *model,
+				     GtkTreeIter *a, GtkTreeIter *b,
+				     gpointer data)
+{
+	TRACE_CALL("remmina_main_sortable_cmp_by_date");
+	gchar *date_a = NULL, *date_b = NULL;
+
+	gtk_tree_model_get(model, a, DATE_COLUMN, &date_a, -1);
+	gtk_tree_model_get(model, b, DATE_COLUMN, &date_b, -1);
+
+	if (!date_a || !date_b)
+		return 0;
+
+	/* TODO: Convert to date */
+	return date_a - date_b;
+}
+
 static void remmina_main_file_model_on_sort(GtkTreeSortable *sortable, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_file_model_on_sort");
@@ -384,6 +407,9 @@ static void remmina_main_file_model_on_sort(GtkTreeSortable *sortable, gpointer 
 	GtkSortType order;
 
 	gtk_tree_sortable_get_sort_column_id(sortable, &columnid, &order);
+	g_print ("Sorting %d\n", columnid);
+	gtk_tree_sortable_set_sort_func(sortable, DATE_COLUMN,
+			remmina_main_sortable_cmp_by_date, NULL, NULL);
 	remmina_pref.main_sort_column_id = columnid;
 	remmina_pref.main_sort_order = order;
 	remmina_pref_save();
@@ -508,10 +534,9 @@ static void remmina_main_load_files(gboolean refresh)
 	                                       (GtkTreeModelFilterVisibleFunc) remmina_main_filter_visible_func, NULL, NULL);
 	remminamain->priv->file_model_sort = gtk_tree_model_sort_new_with_model(remminamain->priv->file_model_filter);
 	gtk_tree_view_set_model(remminamain->tree_files_list, remminamain->priv->file_model_sort);
-	gtk_tree_sortable_set_sort_column_id(
-	    GTK_TREE_SORTABLE(remminamain->priv->file_model_sort),
-	    remmina_pref.main_sort_column_id,
-	    remmina_pref.main_sort_order);
+	gtk_tree_sortable_set_sort_column_id( GTK_TREE_SORTABLE(remminamain->priv->file_model_sort),
+			remmina_pref.main_sort_column_id,
+			remmina_pref.main_sort_order);
 	g_signal_connect(G_OBJECT(remminamain->priv->file_model_sort), "sort-column-changed",
 	                 G_CALLBACK(remmina_main_file_model_on_sort), NULL);
 	remmina_main_expand_group();
