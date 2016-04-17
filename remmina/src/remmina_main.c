@@ -232,13 +232,13 @@ static void remmina_main_load_file_list_callback(RemminaFile *remminafile, gpoin
 
 	gtk_list_store_append(store, &iter);
 	gtk_list_store_set(store, &iter,
-			PROTOCOL_COLUMN,    remmina_file_get_icon_name(remminafile),
-			NAME_COLUMN,	    remmina_file_get_string(remminafile, "name"),
-			GROUP_COLUMN,	    remmina_file_get_string(remminafile, "group"),
-			SERVER_COLUMN,	    remmina_file_get_string(remminafile, "server"),
-			DATE_COLUMN,	    remmina_file_get_datetime(remminafile),
-			FILENAME_COLUMN,    remmina_file_get_filename(remminafile),
-			-1);
+		PROTOCOL_COLUMN,    remmina_file_get_icon_name(remminafile),
+		NAME_COLUMN,	    remmina_file_get_string(remminafile, "name"),
+		GROUP_COLUMN,	    remmina_file_get_string(remminafile, "group"),
+		SERVER_COLUMN,	    remmina_file_get_string(remminafile, "server"),
+		DATE_COLUMN,	    remmina_file_get_datetime(remminafile),
+		FILENAME_COLUMN,    remmina_file_get_filename(remminafile),
+		-1);
 }
 
 static gboolean remmina_main_load_file_tree_traverse(GNode *node, GtkTreeStore *store, GtkTreeIter *parent)
@@ -255,12 +255,12 @@ static gboolean remmina_main_load_file_tree_traverse(GNode *node, GtkTreeStore *
 		iter = g_new0(GtkTreeIter, 1);
 		gtk_tree_store_append(store, iter, parent);
 		gtk_tree_store_set(store, iter,
-				PROTOCOL_COLUMN, "folder",
-				NAME_COLUMN, data->name,
-				GROUP_COLUMN, data->group,
-				DATE_COLUMN, data->datetime,
-				FILENAME_COLUMN, NULL,
-				-1);
+			PROTOCOL_COLUMN,    "folder",
+			NAME_COLUMN,	    data->name,
+			GROUP_COLUMN,	    data->group,
+			DATE_COLUMN,	    data->datetime,
+			FILENAME_COLUMN,    NULL,
+			-1);
 	}
 	for (child = g_node_first_child(node); child; child = g_node_next_sibling(child))
 	{

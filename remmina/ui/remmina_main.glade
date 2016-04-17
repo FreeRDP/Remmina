@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.19.0 
+<!-- Generated with glade 3.19.0
 
 Remmina - The GTK+ Remmina Remote Desktop Client
 Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2016
@@ -275,6 +275,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     <signal name="delete-event" handler="remmina_main_on_delete_event" swapped="no"/>
     <signal name="destroy" handler="remmina_main_destroy" swapped="no"/>
     <signal name="drag-data-received" handler="remmina_main_on_drag_data_received" swapped="no"/>
+    <signal name="focus-in-event" handler="remmina_main_load_files(TRUE)" swapped="no"/>
     <signal name="window-state-event" handler="remmina_main_on_window_state_event" swapped="no"/>
     <child>
       <object class="GtkBox" id="box_main">
@@ -326,6 +327,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     <property name="primary_icon_stock">gtk-connect</property>
                     <property name="secondary_icon_stock">gtk-clear</property>
                     <property name="completion">entrycompletion1</property>
+                    <property name="input_hints">GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NONE</property>
                     <signal name="activate" handler="remmina_main_quickconnect_on_click" swapped="no"/>
                     <signal name="changed" handler="remmina_main_quick_search_on_changed" swapped="no"/>
                     <signal name="icon-press" handler="remmina_main_quick_search_on_icon_press" swapped="no"/>
