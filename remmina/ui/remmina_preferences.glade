@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3
+<!-- Generated with glade 3.19.0 
 
 Remmina Preferences Dialog -
 Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2016
@@ -1153,7 +1153,7 @@ Author: Antenore Gatta
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label_terminal_keyboard1">
+                      <object class="GtkLabel" id="label_terminal_clipboard">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="hexpand">True</property>
@@ -1166,7 +1166,7 @@ Author: Antenore Gatta
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label_terminal_keyboard2">
+                      <object class="GtkLabel" id="label_terminal_clipboard2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="hexpand">True</property>
@@ -1270,6 +1270,7 @@ Author: Antenore Gatta
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="title" translatable="yes">Foreground color</property>
+                        <property name="rgba">rgb(255,255,255)</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -1416,6 +1417,16 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">3</property>
+                        <property name="top_attach">9</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="label_terminal_clipboard3">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
                         <property name="top_attach">9</property>
                       </packing>
                     </child>
