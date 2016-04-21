@@ -137,7 +137,6 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 
 	if (remmina_option_version)
 	{
-		//g_print ("%s - Version %s (git %s)\n", g_get_application_name (), VERSION, GIT_REVISION);
 		remmina_exec_command(REMMINA_COMMAND_VERSION, NULL);
 		executed = TRUE;
 		status = 1;
@@ -227,6 +226,7 @@ static void remmina_on_startup(GApplication *app)
 
 	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
 	                                   REMMINA_DATADIR G_DIR_SEPARATOR_S "icons");
+	g_application_hold(app);
 }
 
 static gboolean remmina_on_local_cmdline (GApplication *app, gchar ***arguments, gint *exit_status)
@@ -266,7 +266,7 @@ static gboolean remmina_on_local_cmdline (GApplication *app, gchar ***arguments,
 int main(int argc, char* argv[])
 {
 	TRACE_CALL("main");
-	GApplication *app;
+	GtkApplication *app;
 	GApplicationClass *app_class;
 	int status;
 
@@ -287,21 +287,14 @@ int main(int argc, char* argv[])
 	gcry_control (GCRYCTL_INITIALIZATION_FINISHED, 0);
 #endif
 
-	gtk_init(&argc, &argv);
-
-	app = g_application_new("org.Remmina", G_APPLICATION_HANDLES_COMMAND_LINE);
-	app_class = G_APPLICATION_CLASS(G_OBJECT_GET_CLASS (app));
+	app = gtk_application_new("org.Remmina", G_APPLICATION_HANDLES_COMMAND_LINE);
+	app_class = G_APPLICATION_CLASS(G_OBJECT_GET_CLASS (G_APPLICATION(app)));
 	app_class->local_command_line = remmina_on_local_cmdline;
 	g_signal_connect(app, "startup", G_CALLBACK(remmina_on_startup), NULL);
 	g_signal_connect(app, "command-line", G_CALLBACK(remmina_on_command_line), NULL);
-	g_application_set_inactivity_timeout(app, 10000);
+	g_application_set_inactivity_timeout(G_APPLICATION(app), 10000);
 
-	status = g_application_run(app, argc, argv);
-
-	if (status == 0 && !g_application_get_is_remote(app))
-	{
-		gtk_main();
-	}
+	status = g_application_run(G_APPLICATION(app), argc, argv);
 
 	g_object_unref(app);
 
