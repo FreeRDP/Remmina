@@ -337,6 +337,8 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	remmina_plugin_ssh_set_vte_pref (gp);
 	g_signal_connect(G_OBJECT(vte), "size-allocate", G_CALLBACK(remmina_plugin_ssh_on_size_allocate), gp);
 
+	remmina_plugin_ssh_on_size_allocate(GTK_WIDGET (vte), NULL, gp);
+
 	remmina_plugin_service->protocol_plugin_register_hostkey (gp, vte);
 
 	vscrollbar = gtk_scrollbar_new (GTK_ORIENTATION_VERTICAL, gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (vte)));
