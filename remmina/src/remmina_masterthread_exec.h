@@ -152,6 +152,7 @@ typedef struct remmina_masterthread_exec_data
 		{
 			VteTerminal *terminal;
 			const char *codeset;
+			int master;
 			int slave;
 		} vte_terminal_set_encoding_and_pty;
 #endif

@@ -311,14 +311,14 @@ remmina_plugin_ssh_main_thread (gpointer data)
 	gpdata->shell = shell;
 
 	charset = REMMINA_SSH (shell)->charset;
-	remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VTE_TERMINAL (gpdata->vte), charset, shell->slave);
+	remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VTE_TERMINAL (gpdata->vte), charset, shell->master, shell->slave);
 	remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
 
 	gpdata->thread = 0;
 	return NULL;
 }
 
-void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal, const char *codeset, int slave)
+void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal, const char *codeset, int master, int slave)
 {
 	TRACE_CALL("remmina_plugin_ssh_vte_terminal_set_encoding_and_pty");
 	if ( !remmina_masterthread_exec_is_main_thread() )
@@ -329,7 +329,7 @@ void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal,
 		d->func = FUNC_VTE_TERMINAL_SET_ENCODING_AND_PTY;
 		d->p.vte_terminal_set_encoding_and_pty.terminal = terminal;
 		d->p.vte_terminal_set_encoding_and_pty.codeset = codeset;
-		d->p.vte_terminal_set_encoding_and_pty.slave = slave;
+		d->p.vte_terminal_set_encoding_and_pty.master = master;
 		remmina_masterthread_exec_and_wait(d);
 		g_free(d);
 		return;
@@ -350,9 +350,10 @@ void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal,
 	vte_terminal_set_delete_binding(terminal, VTE_ERASE_DELETE_SEQUENCE);
 
 #if VTE_CHECK_VERSION(0,38,0)
-	vte_terminal_set_pty (terminal, vte_pty_new_foreign_sync(slave, NULL, NULL));
+	/* vte_pty_new_foreig expect master FD, see https://bugzilla.gnome.org/show_bug.cgi?id=765382 */
+	vte_terminal_set_pty (terminal, vte_pty_new_foreign_sync(master, NULL, NULL));
 #else
-	vte_terminal_set_pty (terminal, slave);
+	vte_terminal_set_pty (terminal, master);
 #endif
 
 }

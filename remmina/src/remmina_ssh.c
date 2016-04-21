@@ -1531,15 +1531,15 @@ remmina_ssh_shell_thread (gpointer data)
 		timeout.tv_usec = 0;
 
 		FD_ZERO (&fds);
-		FD_SET (shell->master, &fds);
+		FD_SET (shell->slave, &fds);
 
-		ret = ssh_select (ch, chout, shell->master + 1, &fds, &timeout);
+		ret = ssh_select (ch, chout, shell->slave + 1, &fds, &timeout);
 		if (ret == SSH_EINTR) continue;
 		if (ret == -1) break;
 
-		if (FD_ISSET (shell->master, &fds))
+		if (FD_ISSET (shell->slave, &fds))
 		{
-			len = read (shell->master, buf, buf_len);
+			len = read (shell->slave, buf, buf_len);
 			if (len <= 0) break;
 			LOCK_SSH (shell)
 			ssh_channel_write (channel, buf, len);
@@ -1571,7 +1571,7 @@ remmina_ssh_shell_thread (gpointer data)
 			}
 			while (len > 0)
 			{
-				ret = write (shell->master, buf, len);
+				ret = write (shell->slave, buf, len);
 				if (ret <= 0) break;
 				len -= ret;
 			}
