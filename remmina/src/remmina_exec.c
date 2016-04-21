@@ -76,7 +76,7 @@ void remmina_exec_exitremmina()
 	remmina_icon_destroy();
 
 	/* Exit from Remmina */
-	gtk_main_quit();
+	g_application_quit(g_application_get_default());
 }
 
 void remmina_exec_command(RemminaCommandType command, const gchar* data)
