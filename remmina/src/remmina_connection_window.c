@@ -1595,6 +1595,8 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 
 		if (rpsd.bitsPerPixel == 32)
 			cairo_format = CAIRO_FORMAT_ARGB32;
+		else if (rpsd.bitsPerPixel == 24)
+			cairo_format = CAIRO_FORMAT_RGB24;
 		else
 			cairo_format = CAIRO_FORMAT_RGB16_565;
 
