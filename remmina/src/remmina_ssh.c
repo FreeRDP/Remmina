@@ -708,6 +708,7 @@ remmina_ssh_tunnel_close_all_channels (RemminaSSHTunnel *tunnel)
 		close (tunnel->sockets[i]);
 		remmina_ssh_tunnel_buffer_free (tunnel->socketbuffers[i]);
 		ssh_channel_close (tunnel->channels[i]);
+		ssh_channel_send_eof (tunnel->channels[i]);
 		ssh_channel_free (tunnel->channels[i]);
 	}
 
@@ -724,6 +725,7 @@ remmina_ssh_tunnel_close_all_channels (RemminaSSHTunnel *tunnel)
 	if (tunnel->x11_channel)
 	{
 		ssh_channel_close (tunnel->x11_channel);
+		ssh_channel_send_eof (tunnel->x11_channel);
 		ssh_channel_free (tunnel->x11_channel);
 		tunnel->x11_channel = NULL;
 	}
@@ -734,6 +736,7 @@ remmina_ssh_tunnel_remove_channel (RemminaSSHTunnel *tunnel, gint n)
 {
 	TRACE_CALL("remmina_ssh_tunnel_remove_channel");
 	ssh_channel_close (tunnel->channels[n]);
+	ssh_channel_send_eof (tunnel->channels[n]);
 	ssh_channel_free (tunnel->channels[n]);
 	close (tunnel->sockets[n]);
 	remmina_ssh_tunnel_buffer_free (tunnel->socketbuffers[n]);
@@ -823,6 +826,7 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 		{
 			close (sock);
 			ssh_channel_close (channel);
+			ssh_channel_send_eof (channel);
 			ssh_channel_free (channel);
 			remmina_ssh_set_error (REMMINA_SSH (tunnel), _("Failed to connect to the SSH tunnel destination: %s"));
 			tunnel->thread = 0;
@@ -1042,6 +1046,7 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 				{
 					/* Failed to create unix socket. Will this happen? */
 					ssh_channel_close (channel);
+					ssh_channel_send_eof (channel);
 					ssh_channel_free (channel);
 				}
 				channel = NULL;
@@ -1510,6 +1515,7 @@ remmina_ssh_shell_thread (gpointer data)
 		UNLOCK_SSH (shell)
 		remmina_ssh_set_error (REMMINA_SSH (shell), "Failed to request shell : %s");
 		ssh_channel_close (channel);
+		ssh_channel_send_eof (channel);
 		ssh_channel_free (channel);
 		shell->thread = 0;
 		return NULL;
@@ -1531,15 +1537,15 @@ remmina_ssh_shell_thread (gpointer data)
 		timeout.tv_usec = 0;
 
 		FD_ZERO (&fds);
-		FD_SET (shell->master, &fds);
+		FD_SET (shell->slave, &fds);
 
-		ret = ssh_select (ch, chout, shell->master + 1, &fds, &timeout);
+		ret = ssh_select (ch, chout, shell->slave + 1, &fds, &timeout);
 		if (ret == SSH_EINTR) continue;
 		if (ret == -1) break;
 
-		if (FD_ISSET (shell->master, &fds))
+		if (FD_ISSET (shell->slave, &fds))
 		{
-			len = read (shell->master, buf, buf_len);
+			len = read (shell->slave, buf, buf_len);
 			if (len <= 0) break;
 			LOCK_SSH (shell)
 			ssh_channel_write (channel, buf, len);
@@ -1571,7 +1577,7 @@ remmina_ssh_shell_thread (gpointer data)
 			}
 			while (len > 0)
 			{
-				ret = write (shell->master, buf, len);
+				ret = write (shell->slave, buf, len);
 				if (ret <= 0) break;
 				len -= ret;
 			}
@@ -1581,6 +1587,7 @@ remmina_ssh_shell_thread (gpointer data)
 	LOCK_SSH (shell)
 	shell->channel = NULL;
 	ssh_channel_close (channel);
+	ssh_channel_send_eof (channel);
 	ssh_channel_free (channel);
 	UNLOCK_SSH (shell)
 
@@ -1652,7 +1659,7 @@ remmina_ssh_shell_free (RemminaSSHShell *shell)
 		shell->closed = TRUE;
 		pthread_join (thread, NULL);
 	}
-	close (shell->master);
+	close (shell->slave);
 	if (shell->exec)
 	{
 		g_free(shell->exec);

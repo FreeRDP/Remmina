@@ -108,7 +108,9 @@ static gboolean remmina_masterthread_exec_callback(RemminaMTExecData *d)
 		case FUNC_VTE_TERMINAL_SET_ENCODING_AND_PTY:
 #if defined (HAVE_LIBSSH) && defined (HAVE_LIBVTE)
 			remmina_plugin_ssh_vte_terminal_set_encoding_and_pty( d->p.vte_terminal_set_encoding_and_pty.terminal,
-			        d->p.vte_terminal_set_encoding_and_pty.codeset, d->p.vte_terminal_set_encoding_and_pty.slave );
+			        d->p.vte_terminal_set_encoding_and_pty.codeset,
+				d->p.vte_terminal_set_encoding_and_pty.master,
+				d->p.vte_terminal_set_encoding_and_pty.slave);
 #endif
 			break;
 		}

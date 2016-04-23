@@ -2,14 +2,17 @@
 
 ## The Remmina sponsors
 
-### 2015
+### 2016
 
  - Daniel Bolter
- - Richard Pendlebury
- - Michael Gruben
+ - Artur Mroczko
  - Gustavo Uceda
- - Paul Johnson
+ - Lynne Lawrence
+ - Michael Gruben
  - Nic Galler
+ - Paul Johnson
+ - Richard Pendlebury
+ - Troy Lea
  - Viktor Sik
 
 ## The Remmina community
@@ -40,3 +43,8 @@ trust in us (Antenore & Giovanni) to represent Remmina.
 
 Least but not last, the [FreeRDP](https://github.com/FreeRDP/FreeRDP) project the most advanced and updated RDP library
 to date.
+
+## The Gnome VTE project
+
+Particulary **Egmont Koblinger** ([@egmontkob](https://github.com/egmontkob)) and **Christian Persch** for their support.
+
