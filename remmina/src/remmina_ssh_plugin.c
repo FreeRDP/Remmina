@@ -57,13 +57,181 @@
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginSshData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 
+/* Palette colors taken from sakura */
+#define PALETTE_SIZE 16
+
+/* 16 color palettes in GdkRGBA format (red, green, blue, alpha)
+ * Text displayed in the first 8 colors (0-7) is meek (uses thin strokes).
+ * Text displayed in the second 8 colors (8-15) is bold (uses thick strokes). */
+
+const GdkRGBA gruvbox_palette[PALETTE_SIZE] = {
+        {0.156863, 0.156863, 0.156863, 1.000000},
+        {0.800000, 0.141176, 0.113725, 1.000000},
+        {0.596078, 0.592157, 0.101961, 1.000000},
+        {0.843137, 0.600000, 0.129412, 1.000000},
+        {0.270588, 0.521569, 0.533333, 1.000000},
+        {0.694118, 0.384314, 0.525490, 1.000000},
+        {0.407843, 0.615686, 0.415686, 1.000000},
+        {0.658824, 0.600000, 0.517647, 1.000000},
+        {0.572549, 0.513725, 0.454902, 1.000000},
+        {0.984314, 0.286275, 0.203922, 1.000000},
+        {0.721569, 0.733333, 0.149020, 1.000000},
+        {0.980392, 0.741176, 0.184314, 1.000000},
+        {0.513725, 0.647059, 0.596078, 1.000000},
+        {0.827451, 0.525490, 0.607843, 1.000000},
+        {0.556863, 0.752941, 0.486275, 1.000000},
+        {0.921569, 0.858824, 0.698039, 1.000000},
+};
+
+const GdkRGBA tango_palette[PALETTE_SIZE] = {
+	{0,        0,        0,        1},
+	{0.8,      0,        0,        1},
+	{0.305882, 0.603922, 0.023529, 1},
+	{0.768627, 0.627451, 0,        1},
+	{0.203922, 0.396078, 0.643137, 1},
+	{0.458824, 0.313725, 0.482353, 1},
+	{0.0235294,0.596078, 0.603922, 1},
+	{0.827451, 0.843137, 0.811765, 1},
+	{0.333333, 0.341176, 0.32549,  1},
+	{0.937255, 0.160784, 0.160784, 1},
+	{0.541176, 0.886275, 0.203922, 1},
+	{0.988235, 0.913725, 0.309804, 1},
+	{0.447059, 0.623529, 0.811765, 1},
+	{0.678431, 0.498039, 0.658824, 1},
+	{0.203922, 0.886275, 0.886275, 1},
+	{0.933333, 0.933333, 0.92549,  1}
+};
+
+const GdkRGBA linux_palette[PALETTE_SIZE] = {
+	{0,        0,        0,        1},
+	{0.666667, 0,        0,        1},
+	{0,        0.666667, 0,        1},
+	{0.666667, 0.333333, 0,        1},
+	{0,        0,        0.666667, 1},
+	{0.666667, 0,        0.666667, 1},
+	{0,        0.666667, 0.666667, 1},
+	{0.666667, 0.666667, 0.666667, 1},
+	{0.333333, 0.333333, 0.333333, 1},
+	{1,        0.333333, 0.333333, 1},
+	{0.333333, 1,        0.333333, 1},
+	{1,        1,        0.333333, 1},
+	{0.333333, 0.333333, 1,        1},
+	{1,        0.333333, 1,        1},
+	{0.333333, 1,        1,        1},
+	{1,        1,        1,        1}
+};
+
+const GdkRGBA solarized_dark_palette[PALETTE_SIZE] = {
+	{0.027451, 0.211765, 0.258824, 1},
+	{0.862745, 0.196078, 0.184314, 1},
+	{0.521569, 0.600000, 0.000000, 1},
+	{0.709804, 0.537255, 0.000000, 1},
+	{0.149020, 0.545098, 0.823529, 1},
+	{0.827451, 0.211765, 0.509804, 1},
+	{0.164706, 0.631373, 0.596078, 1},
+	{0.933333, 0.909804, 0.835294, 1},
+	{0.000000, 0.168627, 0.211765, 1},
+	{0.796078, 0.294118, 0.086275, 1},
+	{0.345098, 0.431373, 0.458824, 1},
+	{0.396078, 0.482353, 0.513725, 1},
+	{0.513725, 0.580392, 0.588235, 1},
+	{0.423529, 0.443137, 0.768627, 1},
+	{0.576471, 0.631373, 0.631373, 1},
+	{0.992157, 0.964706, 0.890196, 1}
+#if 0
+    { 0, 0x0707, 0x3636, 0x4242 }, // 0  base02 black (used as background color)
+    { 0, 0xdcdc, 0x3232, 0x2f2f }, // 1  red
+    { 0, 0x8585, 0x9999, 0x0000 }, // 2  green
+    { 0, 0xb5b5, 0x8989, 0x0000 }, // 3  yellow
+    { 0, 0x2626, 0x8b8b, 0xd2d2 }, // 4  blue
+    { 0, 0xd3d3, 0x3636, 0x8282 }, // 5  magenta
+    { 0, 0x2a2a, 0xa1a1, 0x9898 }, // 6  cyan
+    { 0, 0xeeee, 0xe8e8, 0xd5d5 }, // 7  base2 white (used as foreground color)
+    { 0, 0x0000, 0x2b2b, 0x3636 }, // 8  base3 bright black
+    { 0, 0xcbcb, 0x4b4B, 0x1616 }, // 9  orange
+    { 0, 0x5858, 0x6e6e, 0x7575 }, // 10 base01 bright green
+    { 0, 0x6565, 0x7b7b, 0x8383 }, // 11 base00 bright yellow
+    { 0, 0x8383, 0x9494, 0x9696 }, // 12 base0 brigth blue
+    { 0, 0x6c6c, 0x7171, 0xc4c4 }, // 13 violet
+    { 0, 0x9393, 0xa1a1, 0xa1a1 }, // 14 base1 cyan
+    { 0, 0xfdfd, 0xf6f6, 0xe3e3 }  // 15 base3 white
+#endif
+};
+
+const GdkRGBA solarized_light_palette[PALETTE_SIZE] = {
+	{0.933333, 0.909804, 0.835294, 1},
+	{0.862745, 0.196078, 0.184314, 1},
+	{0.521569, 0.600000, 0.000000, 1},
+	{0.709804, 0.537255, 0.000000, 1},
+	{0.149020, 0.545098, 0.823529, 1},
+	{0.827451, 0.211765, 0.509804, 1},
+	{0.164706, 0.631373, 0.596078, 1},
+	{0.027451, 0.211765, 0.258824, 1},
+	{0.992157, 0.964706, 0.890196, 1},
+	{0.796078, 0.294118, 0.086275, 1},
+	{0.576471, 0.631373, 0.631373, 1},
+	{0.513725, 0.580392, 0.588235, 1},
+	{0.396078, 0.482353, 0.513725, 1},
+	{0.423529, 0.443137, 0.768627, 1},
+	{0.345098, 0.431373, 0.458824, 1},
+	{0.000000, 0.168627, 0.211765, 1}
+#if 0
+	{ 0, 0xeeee, 0xe8e8, 0xd5d5 }, // 0 S_base2
+	{ 0, 0xdcdc, 0x3232, 0x2f2f }, // 1 S_red
+	{ 0, 0x8585, 0x9999, 0x0000 }, // 2 S_green
+	{ 0, 0xb5b5, 0x8989, 0x0000 }, // 3 S_yellow
+	{ 0, 0x2626, 0x8b8b, 0xd2d2 }, // 4 S_blue
+	{ 0, 0xd3d3, 0x3636, 0x8282 }, // 5 S_magenta
+	{ 0, 0x2a2a, 0xa1a1, 0x9898 }, // 6 S_cyan
+	{ 0, 0x0707, 0x3636, 0x4242 }, // 7 S_base02
+	{ 0, 0xfdfd, 0xf6f6, 0xe3e3 }, // 8 S_base3
+	{ 0, 0xcbcb, 0x4b4B, 0x1616 }, // 9 S_orange
+	{ 0, 0x9393, 0xa1a1, 0xa1a1 }, // 10 S_base1
+	{ 0, 0x8383, 0x9494, 0x9696 }, // 11 S_base0
+	{ 0, 0x6565, 0x7b7b, 0x8383 }, // 12 S_base00
+	{ 0, 0x6c6c, 0x7171, 0xc4c4 }, // 13 S_violet
+	{ 0, 0x5858, 0x6e6e, 0x7575 }, // 14 S_base01
+	{ 0, 0x0000, 0x2b2b, 0x3636 } // 15 S_base03
+#endif
+};
+
+
+const GdkRGBA xterm_palette[PALETTE_SIZE] = {
+    {0,        0,        0,        1},
+    {0.803922, 0,        0,        1},
+    {0,        0.803922, 0,        1},
+    {0.803922, 0.803922, 0,        1},
+    {0.117647, 0.564706, 1,        1},
+    {0.803922, 0,        0.803922, 1},
+    {0,        0.803922, 0.803922, 1},
+    {0.898039, 0.898039, 0.898039, 1},
+    {0.298039, 0.298039, 0.298039, 1},
+    {1,        0,        0,        1},
+    {0,        1,        0,        1},
+    {1,        1,        0,        1},
+    {0.27451,  0.509804, 0.705882, 1},
+    {1,        0,        1,        1},
+    {0,        1,        1,        1},
+    {1,        1,        1,        1}
+};
+
+static struct {
+	const GdkRGBA *palette;
+} remminavte;
+#define DEFAULT_PALETTE "linux_palette"
+
+
 /***** The SSH plugin implementation *****/
 typedef struct _RemminaPluginSshData
 {
 	RemminaSSHShell *shell;
 	GtkWidget *vte;
+
+	const GdkRGBA *palette;
+
 	pthread_t thread;
 } RemminaPluginSshData;
+
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
@@ -143,14 +311,14 @@ remmina_plugin_ssh_main_thread (gpointer data)
 	gpdata->shell = shell;
 
 	charset = REMMINA_SSH (shell)->charset;
-	remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VTE_TERMINAL (gpdata->vte), charset, shell->slave);
+	remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VTE_TERMINAL (gpdata->vte), charset, shell->master, shell->slave);
 	remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
 
 	gpdata->thread = 0;
 	return NULL;
 }
 
-void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal, const char *codeset, int slave)
+void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal, const char *codeset, int master, int slave)
 {
 	TRACE_CALL("remmina_plugin_ssh_vte_terminal_set_encoding_and_pty");
 	if ( !remmina_masterthread_exec_is_main_thread() )
@@ -161,7 +329,7 @@ void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal,
 		d->func = FUNC_VTE_TERMINAL_SET_ENCODING_AND_PTY;
 		d->p.vte_terminal_set_encoding_and_pty.terminal = terminal;
 		d->p.vte_terminal_set_encoding_and_pty.codeset = codeset;
-		d->p.vte_terminal_set_encoding_and_pty.slave = slave;
+		d->p.vte_terminal_set_encoding_and_pty.master = master;
 		remmina_masterthread_exec_and_wait(d);
 		g_free(d);
 		return;
@@ -170,21 +338,22 @@ void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal,
 	setlocale(LC_ALL, "");
 	if (codeset && codeset[0] != '\0')
 	{
-#if !VTE_CHECK_VERSION(0,38,0)
+#if VTE_CHECK_VERSION(0,38,0)
+		vte_terminal_set_encoding (terminal, codeset, NULL);
+#else
 		vte_terminal_set_emulation(terminal, "xterm");
 		vte_terminal_set_encoding (terminal, codeset);
-#else
-		vte_terminal_set_encoding (terminal, codeset, NULL);
 #endif
 	}
 
 	vte_terminal_set_backspace_binding(terminal, VTE_ERASE_ASCII_DELETE);
 	vte_terminal_set_delete_binding(terminal, VTE_ERASE_DELETE_SEQUENCE);
 
-#if !VTE_CHECK_VERSION(0,38,0)
-	vte_terminal_set_pty (terminal, slave);
+#if VTE_CHECK_VERSION(0,38,0)
+	/* vte_pty_new_foreig expect master FD, see https://bugzilla.gnome.org/show_bug.cgi?id=765382 */
+	vte_terminal_set_pty (terminal, vte_pty_new_foreign_sync(master, NULL, NULL));
 #else
-	vte_terminal_set_pty (terminal, vte_pty_new_foreign_sync(slave, NULL, NULL));
+	vte_terminal_set_pty (terminal, master);
 #endif
 
 }
@@ -275,6 +444,33 @@ remmina_ssh_plugin_popup_menu(GtkWidget *widget, GdkEvent *event, GtkWidget *men
 	return FALSE;
 }
 
+void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL("remmina_plugin_ssh_popup_ui");
+	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
+	/* Context menu for slection and clipboard */
+	GtkWidget *menu = gtk_menu_new();
+
+	GtkWidget *select_all = gtk_menu_item_new_with_label(_("Select All (Host+a)"));
+	GtkWidget *copy = gtk_menu_item_new_with_label(_("Copy (Host+c)"));
+	GtkWidget *paste = gtk_menu_item_new_with_label(_("Paste (Host+v)"));
+
+	gtk_menu_shell_append(GTK_MENU_SHELL(menu), select_all);
+	gtk_menu_shell_append(GTK_MENU_SHELL(menu), copy);
+	gtk_menu_shell_append(GTK_MENU_SHELL(menu), paste);
+
+	g_signal_connect (G_OBJECT(gpdata->vte), "button_press_event",
+			G_CALLBACK(remmina_ssh_plugin_popup_menu), menu);
+
+	g_signal_connect(G_OBJECT(select_all), "activate",
+			G_CALLBACK(remmina_plugin_ssh_vte_select_all), gpdata->vte);
+	g_signal_connect(G_OBJECT(copy), "activate",
+			G_CALLBACK(remmina_plugin_ssh_vte_copy_clipboard), gpdata->vte);
+	g_signal_connect(G_OBJECT(paste), "activate",
+			G_CALLBACK(remmina_plugin_ssh_vte_paste_clipboard), gpdata->vte);
+
+	gtk_widget_show_all(menu);
+}
 
 static void
 remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
@@ -282,15 +478,17 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	TRACE_CALL("remmina_plugin_ssh_init");
 	RemminaPluginSshData *gpdata;
 	GtkWidget *hbox;
+	GtkAdjustment *vadjustment;
 	GtkWidget *vscrollbar;
 	GtkWidget *vte;
 	GtkStyleContext *style_context;
+#if VTE_CHECK_VERSION(0,38,0)
 	GdkRGBA foreground_color;
 	GdkRGBA background_color;
-#if !VTE_CHECK_VERSION(0,38,0)
+#else /* VTE_CHECK_VERSION(0,38,0) */
 	GdkColor foreground_gdkcolor;
 	GdkColor background_gdkcolor;
-#endif
+#endif /* VTE_CHECK_VERSION(0,38,0) */
 
 	gpdata = g_new0 (RemminaPluginSshData, 1);
 	g_object_set_data_full (G_OBJECT(gp), "plugin-data", gpdata, g_free);
@@ -317,7 +515,11 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 		gdk_rgba_parse(&foreground_color, remmina_pref.vte_foreground_color);
 		gdk_rgba_parse(&background_color, remmina_pref.vte_background_color);
 	}
-#if !VTE_CHECK_VERSION(0,38,0)
+#if VTE_CHECK_VERSION(0,38,0)
+	/* Set colors to GdkRGBA */
+	remminavte.palette = linux_palette;
+	vte_terminal_set_colors (VTE_TERMINAL(vte), &foreground_color, &background_color, remminavte.palette, PALETTE_SIZE);
+#else
 	/* VTE <= 2.90 doesn't support GdkRGBA so we must convert GdkRGBA to GdkColor */
 	foreground_gdkcolor.red = (guint16)(foreground_color.red * 0xFFFF);
 	foreground_gdkcolor.green = (guint16)(foreground_color.green * 0xFFFF);
@@ -327,9 +529,6 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	background_gdkcolor.blue = (guint16)(background_color.blue * 0xFFFF);
 	/* Set colors to GdkColor */
 	vte_terminal_set_colors (VTE_TERMINAL(vte), &foreground_gdkcolor, &background_gdkcolor, NULL, 0);
-#else
-	/* Set colors to GdkRGBA */
-	vte_terminal_set_colors (VTE_TERMINAL(vte), &foreground_color, &background_color, NULL, 0);
 #endif
 
 	gtk_box_pack_start (GTK_BOX (hbox), vte, TRUE, TRUE, 0);
@@ -341,33 +540,18 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 
 	remmina_plugin_service->protocol_plugin_register_hostkey (gp, vte);
 
-	vscrollbar = gtk_scrollbar_new (GTK_ORIENTATION_VERTICAL, gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (vte)));
+#if VTE_CHECK_VERSION(0, 28, 0) && GTK_CHECK_VERSION(3, 0, 0)
+	vadjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (vte));
+#else
+	vadjustment = vte_terminal_get_adjustment(VTE_TERMINAL(vc->vte.terminal));
+#endif
+
+	vscrollbar = gtk_scrollbar_new(GTK_ORIENTATION_VERTICAL, vadjustment);
 
 	gtk_widget_show(vscrollbar);
 	gtk_box_pack_start (GTK_BOX (hbox), vscrollbar, FALSE, TRUE, 0);
 
-	/* Context menu for slection and clipboard */
-	GtkWidget *menu = gtk_menu_new();
-
-	GtkWidget *select_all = gtk_menu_item_new_with_label(_("Select All (Host+a)"));
-	GtkWidget *copy = gtk_menu_item_new_with_label(_("Copy (Host+c)"));
-	GtkWidget *paste = gtk_menu_item_new_with_label(_("Paste (Host+v)"));
-
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu), select_all);
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu), copy);
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu), paste);
-
-	gtk_widget_show_all(menu);
-
-	g_signal_connect (G_OBJECT(vte), "button_press_event",
-			G_CALLBACK(remmina_ssh_plugin_popup_menu), menu);
-
-	g_signal_connect(G_OBJECT(select_all), "activate",
-			G_CALLBACK(remmina_plugin_ssh_vte_select_all), vte);
-	g_signal_connect(G_OBJECT(copy), "activate",
-			G_CALLBACK(remmina_plugin_ssh_vte_copy_clipboard), vte);
-	g_signal_connect(G_OBJECT(paste), "activate",
-			G_CALLBACK(remmina_plugin_ssh_vte_paste_clipboard), vte);
+	remmina_plugin_ssh_popup_ui(gp);
 }
 
 static gboolean
