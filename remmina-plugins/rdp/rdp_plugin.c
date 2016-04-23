@@ -439,6 +439,7 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	RemminaPluginRdpUiObject* ui;
 	rdpGdi* gdi;
 	UINT32 flags;
+	int hdcBytesPerPixel, hdcBitsPerPixel;
 
 	rfi = (rfContext*) instance->context;
 	gp = rfi->protocol_widget;
@@ -457,11 +458,22 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	if (rfi->bpp == 32)
 	{
 		flags |= CLRBUF_32BPP;
+		hdcBytesPerPixel = 4;
+		hdcBitsPerPixel = 32;
 		rfi->cairo_format = CAIRO_FORMAT_ARGB32;
+	}
+	else if (rfi->bpp == 24)
+	{
+		flags |= CLRBUF_32BPP;
+		hdcBytesPerPixel = 4;
+		hdcBitsPerPixel = 32;
+		rfi->cairo_format = CAIRO_FORMAT_RGB24;
 	}
 	else
 	{
 		flags |= CLRBUF_16BPP;
+		hdcBytesPerPixel = 2;
+		hdcBitsPerPixel = 16;
 		rfi->cairo_format = CAIRO_FORMAT_RGB16_565;
 	}
 
@@ -470,8 +482,8 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	rfi->primary_buffer = gdi->primary_buffer;
 
 	rfi->hdc = gdi_GetDC();
-	rfi->hdc->bitsPerPixel = rfi->bpp;
-	rfi->hdc->bytesPerPixel = rfi->bpp / 8;
+	rfi->hdc->bitsPerPixel = hdcBitsPerPixel;
+	rfi->hdc->bytesPerPixel = hdcBytesPerPixel;
 
 	rfi->hdc->hwnd = (HGDI_WND) malloc(sizeof(GDI_WND));
 	rfi->hdc->hwnd->invalid = gdi_CreateRectRgn(0, 0, 0, 0);
@@ -1244,7 +1256,8 @@ static gboolean remmina_rdp_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 
 		gdi = ((rdpContext *)rfi)->gdi;
 
-		szmem = gdi->width * gdi->height * rfi->hdc->bytesPerPixel;
+		szmem = gdi->width * gdi->height * gdi->bytesPerPixel;
+
 		remmina_plugin_service->log_printf("[RDP] allocating %zu bytes for a full screenshot\n", szmem);
 		rpsd->buffer = malloc(szmem);
 		if (!rpsd->buffer)
@@ -1255,9 +1268,9 @@ static gboolean remmina_rdp_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 		rpsd->width = gdi->width;
 		rpsd->height = gdi->height;
 		rpsd->bitsPerPixel = rfi->hdc->bitsPerPixel;
-		rpsd->bytesPerPixel = rfi->hdc->bytesPerPixel;
+		rpsd->bytesPerPixel = gdi->bytesPerPixel;
 
-		memcpy(rpsd->buffer, rfi->primary_buffer, szmem);
+		memcpy(rpsd->buffer, gdi->primary_buffer, szmem);
 
 		/* Returning TRUE instruct also the caller to deallocate rpsd->buffer */
 		return TRUE;
