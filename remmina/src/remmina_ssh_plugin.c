@@ -215,9 +215,12 @@ const GdkRGBA xterm_palette[PALETTE_SIZE] = {
     {1,        1,        1,        1}
 };
 
+#if VTE_CHECK_VERSION(0,38,0)
 static struct {
 	const GdkRGBA *palette;
 } remminavte;
+#endif
+
 #define DEFAULT_PALETTE "linux_palette"
 
 
@@ -482,10 +485,9 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	GtkWidget *vscrollbar;
 	GtkWidget *vte;
 	GtkStyleContext *style_context;
-#if VTE_CHECK_VERSION(0,38,0)
 	GdkRGBA foreground_color;
 	GdkRGBA background_color;
-#else /* VTE_CHECK_VERSION(0,38,0) */
+#if !VTE_CHECK_VERSION(0,38,0)
 	GdkColor foreground_gdkcolor;
 	GdkColor background_gdkcolor;
 #endif /* VTE_CHECK_VERSION(0,38,0) */
