@@ -180,7 +180,6 @@ static void remmina_file_editor_on_realize(GtkWidget* widget, gpointer user_data
 
 	gfe = REMMINA_FILE_EDITOR(widget);
 
-	//defaultwidget = gfe->priv->name_entry;
 	defaultwidget = gfe->priv->server_combo;
 
 	if (defaultwidget)
