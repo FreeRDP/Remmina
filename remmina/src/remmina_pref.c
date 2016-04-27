@@ -392,6 +392,8 @@ void remmina_pref_init(void)
 		remmina_pref.screenshot_path = g_key_file_get_string(gkeyfile, "remmina_pref", "screenshot_path", NULL);
 	}else{
 		remmina_pref.screenshot_path = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
+		if (remmina_pref.screenshot_path == NULL)
+			remmina_pref.screenshot_path = g_get_home_dir();
 	}
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "ssh_parseconfig", NULL))

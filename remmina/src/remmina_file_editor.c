@@ -180,7 +180,7 @@ static void remmina_file_editor_on_realize(GtkWidget* widget, gpointer user_data
 
 	gfe = REMMINA_FILE_EDITOR(widget);
 
-	defaultwidget = gfe->priv->name_entry;
+	defaultwidget = gfe->priv->server_combo;
 
 	if (defaultwidget)
 	{
@@ -384,6 +384,7 @@ static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const Remm
 
 	s = remmina_pref_get_recent(plugin->name);
 	widget = remmina_public_create_combo_entry(s, remmina_file_get_string(gfe->priv->remmina_file, "server"), TRUE);
+	gtk_widget_set_can_focus (widget, TRUE);
 	gtk_widget_show(widget);
 	gtk_widget_set_tooltip_markup(widget, _(server_tips));
 	gtk_entry_set_activates_default(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(widget))), TRUE);
