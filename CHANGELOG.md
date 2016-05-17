@@ -1,5 +1,64 @@
 # Change Log
 
+## [1.2.0.rcgit.12](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.12) (2016-05-18)
+
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0.rcgit.11...1.2.0.rcgit.12)
+
+**Implemented enhancements:**
+
+- \[Feature Request\] Focus on 'server' box during 'New Connection' [\#838](https://github.com/FreeRDP/Remmina/issues/838)
+- GTK 3.20 VTE3 Remmina shows blank terminal [\#835](https://github.com/FreeRDP/Remmina/issues/835)
+- How do I select all text in SSH terminal session ? [\#833](https://github.com/FreeRDP/Remmina/issues/833)
+- Add a issues-templates to the project [\#822](https://github.com/FreeRDP/Remmina/issues/822)
+- Quick Find cleanups [\#791](https://github.com/FreeRDP/Remmina/issues/791)
+- Remmina crashed when Windows Server TS Session is Remote Controlled [\#621](https://github.com/FreeRDP/Remmina/issues/621)
+- Quickfind fixes - Close \#791 [\#811](https://github.com/FreeRDP/Remmina/pull/811) ([antenore](https://github.com/antenore))
+
+**Fixed bugs:**
+
+- 100% CPU Usage [\#842](https://github.com/FreeRDP/Remmina/issues/842)
+- Screenshot crash under Ubuntu 16.04 [\#836](https://github.com/FreeRDP/Remmina/issues/836)
+- Remmina main connection window loose it's minimum height when the toolbar is hidden [\#829](https://github.com/FreeRDP/Remmina/issues/829)
+- Unable to connect to Win7 PCs via RDESKTOP with Remmina 1.2.0-rcgit.11 [\#823](https://github.com/FreeRDP/Remmina/issues/823)
+- Problem with changing key assignment in the "Keyboard" tab \(rcgit.11\) [\#819](https://github.com/FreeRDP/Remmina/issues/819)
+- Remmina forces its windows to appear at the center of the screen [\#817](https://github.com/FreeRDP/Remmina/issues/817)
+- Quick Find cleanups [\#791](https://github.com/FreeRDP/Remmina/issues/791)
+- Quickfind fixes - Close \\#791 [\#811](https://github.com/FreeRDP/Remmina/pull/811) ([antenore](https://github.com/antenore))
+
+**Closed issues:**
+
+- Can't move tabs between windows [\#861](https://github.com/FreeRDP/Remmina/issues/861)
+- Ctrl + c will not stop processes anymore \(SSH\) [\#858](https://github.com/FreeRDP/Remmina/issues/858)
+- Continual flicker due to redraw \(VNC from Windows to Ubuntu\) [\#857](https://github.com/FreeRDP/Remmina/issues/857)
+- vim doesn't look well in fullscreen mode [\#856](https://github.com/FreeRDP/Remmina/issues/856)
+- Quick find is slow with a lot of profiles [\#852](https://github.com/FreeRDP/Remmina/issues/852)
+- Cannot break from a command using CTRL + C since enhancement 833 was implemented [\#847](https://github.com/FreeRDP/Remmina/issues/847)
+- Cannot redirect microphone to VDI- Win10 HyperV- Raspberry Pi3- Rasbian Jessie [\#846](https://github.com/FreeRDP/Remmina/issues/846)
+- Drop libvte-2.90 support? [\#843](https://github.com/FreeRDP/Remmina/issues/843)
+- Crashing after update [\#840](https://github.com/FreeRDP/Remmina/issues/840)
+- Please make survey & webkit-gtk dependency optional [\#812](https://github.com/FreeRDP/Remmina/issues/812)
+- Japanese keyboard mapping [\#805](https://github.com/FreeRDP/Remmina/issues/805)
+- Remmina crashes taking a screenshot [\#803](https://github.com/FreeRDP/Remmina/issues/803)
+- Remmina crash on start [\#800](https://github.com/FreeRDP/Remmina/issues/800)
+- \\tsclient shares list blank files and folders [\#799](https://github.com/FreeRDP/Remmina/issues/799)
+- Remmina Crashes [\#797](https://github.com/FreeRDP/Remmina/issues/797)
+- Can't hear remote audio \(local\) [\#790](https://github.com/FreeRDP/Remmina/issues/790)
+- RDP Connection fails, but only the first time [\#789](https://github.com/FreeRDP/Remmina/issues/789)
+- Interface bug: edit window [\#491](https://github.com/FreeRDP/Remmina/issues/491)
+
+**Merged pull requests:**
+
+- Fix a few typos in README.md [\#851](https://github.com/FreeRDP/Remmina/pull/851) ([ivuk](https://github.com/ivuk))
+- Focus server box [\#845](https://github.com/FreeRDP/Remmina/pull/845) ([antenore](https://github.com/antenore))
+- Screenshot segfault [\#841](https://github.com/FreeRDP/Remmina/pull/841) ([giox069](https://github.com/giox069))
+- Vte improvements - popup menu and terminal selection [\#834](https://github.com/FreeRDP/Remmina/pull/834) ([antenore](https://github.com/antenore))
+- fix loadbalanceinfo in import [\#828](https://github.com/FreeRDP/Remmina/pull/828) ([koter84](https://github.com/koter84))
+- WM hints and Window positioning [\#827](https://github.com/FreeRDP/Remmina/pull/827) ([antenore](https://github.com/antenore))
+- Added issue-template [\#825](https://github.com/FreeRDP/Remmina/pull/825) ([weberhofer](https://github.com/weberhofer))
+- Update Uzbek translation [\#824](https://github.com/FreeRDP/Remmina/pull/824) ([ozbek](https://github.com/ozbek))
+- Make survey & webkit-gtk dependency optional [\#813](https://github.com/FreeRDP/Remmina/pull/813) ([antenore](https://github.com/antenore))
+- VNC - HandleRFBServerMessage return status [\#804](https://github.com/FreeRDP/Remmina/pull/804) ([antenore](https://github.com/antenore))
+
 ## [1.2.0.rcgit.11](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.11) (2016-03-17)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0.rcgit.10...1.2.0.rcgit.11)
 
