@@ -88,8 +88,12 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 				break;
 
 			case REMMINA_RDP_EVENT_TYPE_MOUSE:
-				input->MouseEvent(input, event->mouse_event.flags,
-						event->mouse_event.x, event->mouse_event.y);
+				if (event->mouse_event.extended)
+					input->ExtendedMouseEvent(input, event->mouse_event.flags,
+							event->mouse_event.x, event->mouse_event.y);
+				else
+					input->MouseEvent(input, event->mouse_event.flags,
+							event->mouse_event.x, event->mouse_event.y);
 				break;
 		}
 
