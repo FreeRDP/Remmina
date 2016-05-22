@@ -756,12 +756,12 @@ void remmina_main_on_action_view_file_mode(GtkRadioAction *action, gpointer user
 	G_GNUC_END_IGNORE_DEPRECATIONS
 
 	if (v == REMMINA_VIEW_FILE_TREE) {
-		gtk_entry_set_text(remminamain->entry_quick_search, "");
+		gtk_entry_set_text(remminamain->entry_quick_connect_server, "");
 	}
 
 	if (remmina_pref.view_file_mode != v) {
 		remmina_pref.view_file_mode = v;
-		gtk_entry_set_text(remminamain->entry_quick_search, "");
+		gtk_entry_set_text(remminamain->entry_quick_connect_server, "");
 		remmina_pref_save();
 		remmina_main_load_files(TRUE);
 	}
@@ -1019,10 +1019,8 @@ void remmina_main_quick_search_on_changed(GtkEditable *editable, gpointer user_d
 {
 	TRACE_CALL("remmina_main_quick_search_on_changed");
 	/* If a search text was input then temporary set the file mode to list */
-	remmina_pref.view_file_mode = gtk_entry_get_text_length(remminamain->entry_quick_connect_server) ?
-	                              REMMINA_VIEW_FILE_LIST : remminamain->priv->previous_file_mode;
 	remmina_main_load_files(FALSE);
-	if (gtk_entry_get_text_length(remminamain->entry_quick_search)) {
+	if (gtk_entry_get_text_length(remminamain->entry_quick_connect_server)) {
 		if (!remminamain->priv->override_view_file_mode_to_list) {
 			/* File view mode changed, put it to override and reload list */
 			remminamain->priv->override_view_file_mode_to_list = TRUE;
