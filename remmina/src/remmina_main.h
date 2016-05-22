@@ -103,8 +103,7 @@ struct _RemminaMainPriv
 
 	gchar *selected_filename;
 	gchar *selected_name;
-	/* The file_mode previously selected before the quick search */
-	gint previous_file_mode;
+	gboolean override_view_file_mode_to_list;
 	RemminaStringArray *expanded_group;
 };
 

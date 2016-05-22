@@ -35,9 +35,12 @@
 
 #include "config.h"
 
+
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <string.h>
+
+#include <gdk/gdkx.h>
 
 #include "remmina_public.h"
 #include "remmina_file_manager.h"
@@ -83,6 +86,29 @@ static gboolean remmina_plugin_manager_register_plugin(RemminaPlugin *plugin)
 	/* g_print("Remmina plugin %s (type=%s) registered.\n", plugin->name, _(remmina_plugin_type_name[plugin->type])); */
 	return TRUE;
 }
+
+static gboolean remmina_gtksocket_available()
+{
+	GdkDisplayManager* dm;
+	GdkDisplay* d;
+	gboolean available;
+
+	dm = gdk_display_manager_get();
+	d = gdk_display_manager_get_default_display(dm);
+	available = FALSE;
+
+#ifdef GDK_WINDOWING_X11
+	if (GDK_IS_X11_DISPLAY(d))
+	{
+		/* GtkSocket support is available only under Xorg */
+		available = TRUE;
+	}
+#endif
+
+	return available;
+
+}
+
 
 RemminaPluginService remmina_plugin_manager_service =
 {
@@ -155,7 +181,8 @@ RemminaPluginService remmina_plugin_manager_service =
 
 	remmina_connection_window_open_from_file_full,
 	remmina_public_get_server_port,
-	remmina_masterthread_exec_is_main_thread
+	remmina_masterthread_exec_is_main_thread,
+	remmina_gtksocket_available
 
 };
 

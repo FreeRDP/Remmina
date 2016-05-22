@@ -50,6 +50,9 @@
 
 #define REMMINA_PLUGIN_NX_FEATURE_TOOL_SENDCTRLALTDEL 1
 
+/* Forward declaration */
+static RemminaProtocolPlugin remmina_plugin_nx;
+
 RemminaPluginService *remmina_plugin_nx_service = NULL;
 
 static gchar *remmina_kbtype = "pc102/us";
@@ -619,6 +622,14 @@ static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 	RemminaFile *remminafile;
 	const gchar *resolution;
 	gint width, height;
+
+	if (!remmina_plugin_nx_service->gtksocket_available())
+	{
+		remmina_plugin_nx_service->protocol_plugin_set_error (gp,
+			_("Protocol %s is unavailable because GtkSocket only works under Xorg"),
+			remmina_plugin_nx.name);
+		return FALSE;
+	}
 
 	remminafile = remmina_plugin_nx_service->protocol_plugin_get_file(gp);
 

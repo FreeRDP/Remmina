@@ -127,6 +127,7 @@ struct remmina_plugin_rdp_event
 			UINT16 flags;
 			UINT16 x;
 			UINT16 y;
+			BOOL extended;
 		} mouse_event;
 	};
 };

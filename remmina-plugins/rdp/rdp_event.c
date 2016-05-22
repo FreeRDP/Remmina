@@ -400,6 +400,7 @@ static gboolean remmina_rdp_event_on_motion(GtkWidget* widget, GdkEventMotion* e
 
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_MOUSE;
 	rdp_event.mouse_event.flags = PTR_FLAGS_MOVE;
+	rdp_event.mouse_event.extended = FALSE;
 
 	remmina_rdp_event_translate_pos(gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
 	remmina_rdp_event_event_push(gp, &rdp_event);
@@ -411,23 +412,14 @@ static gboolean remmina_rdp_event_on_button(GtkWidget* widget, GdkEventButton* e
 {
 	TRACE_CALL("remmina_rdp_event_on_button");
 	gint flag;
+	gboolean extended = FALSE;
 	RemminaPluginRdpEvent rdp_event = { 0 };
-
-	/* We only accept 3 buttons */
-	if ((event->button < 1) || (event->button > 3))
-		return FALSE;
 
 	/* We bypass 2button-press and 3button-press events */
 	if ((event->type != GDK_BUTTON_PRESS) && (event->type != GDK_BUTTON_RELEASE))
 		return TRUE;
 
-	rdp_event.type = REMMINA_RDP_EVENT_TYPE_MOUSE;
-	remmina_rdp_event_translate_pos(gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
-
 	flag = 0;
-
-	if (event->type == GDK_BUTTON_PRESS)
-		flag = PTR_FLAGS_DOWN;
 
 	switch (event->button)
 	{
@@ -440,11 +432,35 @@ static gboolean remmina_rdp_event_on_button(GtkWidget* widget, GdkEventButton* e
 		case 3:
 			flag |= PTR_FLAGS_BUTTON2;
 			break;
+		case 8:		/* back */
+		case 97:	/* Xming */
+			extended = TRUE;
+			flag |= PTR_XFLAGS_BUTTON1;
+			break;
+		case 9:		/* forward */
+		case 112:	/* Xming */
+			extended = TRUE;
+			flag |= PTR_XFLAGS_BUTTON2;
+			break;
+		default:
+			return FALSE;
 	}
+
+	if (event->type == GDK_BUTTON_PRESS)
+	{
+		if (extended)
+			flag |= PTR_XFLAGS_DOWN;
+		else
+			flag |= PTR_FLAGS_DOWN;
+	}
+
+	rdp_event.type = REMMINA_RDP_EVENT_TYPE_MOUSE;
+	remmina_rdp_event_translate_pos(gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
 
 	if (flag != 0)
 	{
 		rdp_event.mouse_event.flags = flag;
+		rdp_event.mouse_event.extended = extended;
 		remmina_rdp_event_event_push(gp, &rdp_event);
 	}
 
@@ -486,6 +502,7 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget* widget, GdkEventScroll* e
 	}
 
 	rdp_event.mouse_event.flags = flag;
+	rdp_event.mouse_event.extended = FALSE;
 	remmina_rdp_event_translate_pos(gp, event->x, event->y, &rdp_event.mouse_event.x, &rdp_event.mouse_event.y);
 	remmina_rdp_event_event_push(gp, &rdp_event);
 

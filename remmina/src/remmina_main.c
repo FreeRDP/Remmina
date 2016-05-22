@@ -493,6 +493,7 @@ static void remmina_main_load_files(gboolean refresh)
 	gint items_count;
 	gchar buf[200];
 	guint context_id;
+	gint view_file_mode;
 
 	if (refresh)
 	{
@@ -500,7 +501,11 @@ static void remmina_main_load_files(gboolean refresh)
 		remminamain->priv->selected_filename = NULL;
 	}
 
-	switch (remmina_pref.view_file_mode)
+	view_file_mode = remmina_pref.view_file_mode;
+	if (remminamain->priv->override_view_file_mode_to_list)
+		view_file_mode = REMMINA_VIEW_FILE_LIST;
+
+	switch (view_file_mode)
 	{
 	case REMMINA_VIEW_FILE_TREE:
 		/* Hide the Group column in the tree view mode */
@@ -549,6 +554,7 @@ static void remmina_main_load_files(gboolean refresh)
 	context_id = gtk_statusbar_get_context_id(remminamain->statusbar_main, "status");
 	gtk_statusbar_pop(remminamain->statusbar_main, context_id);
 	gtk_statusbar_push(remminamain->statusbar_main, context_id, buf);
+
 }
 
 void remmina_main_on_action_connection_connect(GtkAction *action, gpointer user_data)
@@ -743,19 +749,23 @@ void remmina_main_on_action_view_quick_connect(GtkToggleAction *action, gpointer
 void remmina_main_on_action_view_file_mode(GtkRadioAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_view_file_mode");
-	static GtkRadioAction *previous_action;
-	if (!previous_action)
-		previous_action = action;
-	if (action != previous_action)
-	{
-		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-		remmina_pref.view_file_mode = gtk_radio_action_get_current_value(action);
-		remminamain->priv->previous_file_mode = remmina_pref.view_file_mode;
-		G_GNUC_END_IGNORE_DEPRECATIONS
+	gint v;
+
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+	v = gtk_radio_action_get_current_value(action);
+	G_GNUC_END_IGNORE_DEPRECATIONS
+
+	if (v == REMMINA_VIEW_FILE_TREE) {
+		gtk_entry_set_text(remminamain->entry_quick_search, "");
+	}
+
+	if (remmina_pref.view_file_mode != v) {
+		remmina_pref.view_file_mode = v;
+		gtk_entry_set_text(remminamain->entry_quick_search, "");
 		remmina_pref_save();
 		remmina_main_load_files(TRUE);
 	}
-	previous_action = action;
+
 }
 
 static void remmina_main_import_file_list(GSList *files)
@@ -1012,6 +1022,19 @@ void remmina_main_quick_search_on_changed(GtkEditable *editable, gpointer user_d
 	remmina_pref.view_file_mode = gtk_entry_get_text_length(remminamain->entry_quick_connect_server) ?
 	                              REMMINA_VIEW_FILE_LIST : remminamain->priv->previous_file_mode;
 	remmina_main_load_files(FALSE);
+	if (gtk_entry_get_text_length(remminamain->entry_quick_search)) {
+		if (!remminamain->priv->override_view_file_mode_to_list) {
+			/* File view mode changed, put it to override and reload list */
+			remminamain->priv->override_view_file_mode_to_list = TRUE;
+			remmina_main_load_files(FALSE);
+		}
+	} else {
+		if (remminamain->priv->override_view_file_mode_to_list) {
+			/* File view mode changed, put it to default (disable override) and reload list */
+			remminamain->priv->override_view_file_mode_to_list = FALSE;
+			remmina_main_load_files(FALSE);
+		}
+	}
 	gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(remminamain->priv->file_model_filter));
 }
 
@@ -1109,8 +1132,10 @@ static void remmina_main_init(void)
 		gtk_toggle_action_set_active(remminamain->action_view_mode_tree, TRUE);
 		G_GNUC_END_IGNORE_DEPRECATIONS
 	}
+
 	/* Drag-n-drop support */
 	gtk_drag_dest_set(GTK_WIDGET(remminamain->window), GTK_DEST_DEFAULT_ALL, remmina_drop_types, 1, GDK_ACTION_COPY);
+
 	/* Finish initialization */
 	remminamain->priv->initialized = TRUE;
 
