@@ -60,9 +60,14 @@ static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
 
-	spice_session_disconnect(gpdata->session);
+	if (gpdata->session)
+	{
+		spice_session_disconnect(gpdata->session);
+		g_object_unref(gpdata->session);
+		gpdata->session = NULL;
+		remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+	}
 
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 	return FALSE;
 }
 
@@ -77,6 +82,14 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 			break;
 		case SPICE_CHANNEL_OPENED:
 			remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
+			break;
+		case SPICE_CHANNEL_ERROR_AUTH:
+			remmina_plugin_service->protocol_plugin_set_error(gp, _("Invalid password."));
+			remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+			break;
+		case SPICE_CHANNEL_ERROR_CONNECT:
+			remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to SPICE server failed."));
+			remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 			break;
 		default:
 			break;
