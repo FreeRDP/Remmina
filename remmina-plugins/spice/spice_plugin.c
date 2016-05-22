@@ -33,7 +33,12 @@
  */
 
 #include "common/remmina_plugin.h"
-#include <spice-client-gtk.h>
+#include <spice-client.h>
+#if SPICE_GTK_CHECK_VERSION(0, 31, 0)
+#  include <spice-client-gtk.h>
+#else
+#  include <spice-widget.h>
+#endif
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginSpiceData*) g_object_get_data(G_OBJECT(gp), "plugin-data")
 
