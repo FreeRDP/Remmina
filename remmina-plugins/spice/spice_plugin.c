@@ -83,6 +83,10 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 		case SPICE_CHANNEL_OPENED:
 			remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 			break;
+		case SPICE_CHANNEL_ERROR_CONNECT:
+			remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to SPICE server failed."));
+			remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+			break;
 		default:
 			break;
 	}
