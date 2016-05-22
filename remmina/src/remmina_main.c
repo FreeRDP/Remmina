@@ -558,7 +558,7 @@ static void remmina_main_load_files(gboolean refresh)
 }
 
 /* Called whenever the selection has (possibly) changed. */
-static void remmina_main_load_files_cb()
+void remmina_main_load_files_cb()
 {
 	TRACE_CALL("remmina_main_load_files_cb");
 	remmina_main_load_files(TRUE);
