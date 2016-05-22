@@ -151,6 +151,7 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget* gp, GtkMenuI
 /* Take screenshot of plugin */
 gboolean remmina_protocol_widget_plugin_screenshot(RemminaProtocolWidget* gp, RemminaPluginScreenshotData *rpsd);
 
+
 G_END_DECLS
 
 #endif  /* __REMMINAPROTOCOLWIDGET_H__  */

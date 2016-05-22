@@ -449,7 +449,6 @@ gboolean remmina_protocol_widget_plugin_screenshot(RemminaProtocolWidget* gp, Re
 
 }
 
-
 void remmina_protocol_widget_emit_signal(RemminaProtocolWidget* gp, const gchar* signal_name)
 {
 	TRACE_CALL("remmina_protocol_widget_emit_signal");
