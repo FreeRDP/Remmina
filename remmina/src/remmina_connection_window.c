@@ -3481,6 +3481,7 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 {
 	TRACE_CALL("remmina_connection_window_open_from_file_full");
 	RemminaConnectionObject* cnnobj;
+	GtkWidget* protocolwidget;
 
 	remmina_file_update_screen_resolution(remminafile);
 
@@ -3491,7 +3492,7 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 	remmina_plugin_cmdexec_new(cnnobj->remmina_file, "precommand");
 
 	/* Create the RemminaProtocolWidget */
-	cnnobj->proto = remmina_protocol_widget_new();
+	protocolwidget = cnnobj->proto = remmina_protocol_widget_new();
 
 	/* Set a name for the widget, for CSS selector */
 	gtk_widget_set_name(GTK_WIDGET(cnnobj->proto),"remmina-protocol-widget");
@@ -3541,7 +3542,7 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 
 	remmina_protocol_widget_open_connection(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), remminafile);
 
-	return cnnobj->proto;
+	return protocolwidget;
 
 }
 

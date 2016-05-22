@@ -44,6 +44,9 @@ INCLUDE_GET_AVAILABLE_XDISPLAY
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginXdmcpData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 
+/* Forward declaration */
+static RemminaProtocolPlugin remmina_plugin_xdmcp;
+
 typedef struct _RemminaPluginXdmcpData
 {
 	GtkWidget *socket;
@@ -59,6 +62,7 @@ typedef struct _RemminaPluginXdmcpData
 } RemminaPluginXdmcpData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
+
 
 static void remmina_plugin_xdmcp_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
@@ -92,7 +96,7 @@ static gboolean remmina_plugin_xdmcp_start_xephyr(RemminaProtocolWidget *gp)
 	gpdata->display = remmina_get_available_xdisplay();
 	if (gpdata->display == 0)
 	{
-		remmina_plugin_service->protocol_plugin_set_error(gp, "Run out of available local X display number.");
+		remmina_plugin_service->protocol_plugin_set_error(gp, _("Run out of available local X display number."));
 		return FALSE;
 	}
 
@@ -236,7 +240,6 @@ static gboolean remmina_plugin_xdmcp_main(RemminaProtocolWidget *gp)
 	return TRUE;
 }
 
-
 static gpointer
 remmina_plugin_xdmcp_main_thread (gpointer data)
 {
@@ -250,7 +253,6 @@ remmina_plugin_xdmcp_main_thread (gpointer data)
 	}
 	return NULL;
 }
-
 
 static void remmina_plugin_xdmcp_init(RemminaProtocolWidget *gp)
 {
@@ -266,7 +268,10 @@ static void remmina_plugin_xdmcp_init(RemminaProtocolWidget *gp)
 	g_signal_connect(G_OBJECT(gpdata->socket), "plug-added", G_CALLBACK(remmina_plugin_xdmcp_on_plug_added), gp);
 	g_signal_connect(G_OBJECT(gpdata->socket), "plug-removed", G_CALLBACK(remmina_plugin_xdmcp_on_plug_removed), gp);
 	gtk_container_add(GTK_CONTAINER(gp), gpdata->socket);
+
 }
+
+
 
 static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 {
@@ -274,6 +279,14 @@ static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 	RemminaPluginXdmcpData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	gint width, height;
+
+	if (!remmina_plugin_service->gtksocket_available())
+	{
+		remmina_plugin_service->protocol_plugin_set_error (gp,
+			_("Protocol %s is unavailable because GtkSocket only works under Xorg"),
+			remmina_plugin_xdmcp.name);
+		return FALSE;
+	}
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
@@ -283,7 +296,6 @@ static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 	remmina_plugin_service->protocol_plugin_set_height(gp, height);
 	gtk_widget_set_size_request(GTK_WIDGET(gp), width, height);
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
-
 
 
 	if (remmina_plugin_service->file_get_int (remminafile, "ssh_enabled", FALSE))

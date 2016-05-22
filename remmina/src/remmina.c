@@ -206,7 +206,7 @@ int main(int argc, char* argv[])
 	GtkApplication *app;
 	int status;
 
-	gdk_set_allowed_backends("x11,broadway,quartz");
+	gdk_set_allowed_backends("x11,broadway,quartz,wayland,mir");
 
 	remmina_masterthread_exec_save_main_thread_id();
 
@@ -231,9 +231,7 @@ int main(int argc, char* argv[])
 	g_application_add_main_option_entries(G_APPLICATION(app), remmina_options);
 
 	g_application_set_inactivity_timeout(G_APPLICATION(app), 10000);
-
 	status = g_application_run(G_APPLICATION(app), argc, argv);
-
 	g_object_unref(app);
 
 	return status;
