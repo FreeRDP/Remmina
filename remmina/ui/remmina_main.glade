@@ -749,7 +749,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                 <signal name="key-press-event" handler="remmina_main_file_list_on_key_press" swapped="no"/>
                 <signal name="row-activated" handler="remmina_main_file_list_on_row_activated" swapped="no"/>
                 <child internal-child="selection">
-                  <object class="GtkTreeSelection" id="treeview-selection3"/>
+                  <object class="GtkTreeSelection" id="treeview-selection3">
+                    <signal name="changed" handler="remmina_main_load_files_cb" swapped="no"/>
+                  </object>
                 </child>
                 <child>
                   <object class="GtkTreeViewColumn" id="column_files_list_name">
