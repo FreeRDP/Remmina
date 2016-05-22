@@ -55,12 +55,26 @@ typedef struct _RemminaPluginSpiceData
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
+static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
+
+	spice_session_disconnect(gpdata->session);
+
+	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+	return FALSE;
+}
+
 static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, SpiceChannelEvent event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 
 	switch (event)
 	{
+		case SPICE_CHANNEL_CLOSED:
+			remmina_plugin_spice_close_connection(gp);
+			break;
 		case SPICE_CHANNEL_OPENED:
 			remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 			break;
@@ -143,17 +157,6 @@ static gboolean remmina_plugin_spice_open_connection(RemminaProtocolWidget *gp)
 	 * otherwise FALSE should be returned.
 	 */
 	return TRUE;
-}
-
-static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
-
-	spice_session_disconnect(gpdata->session);
-
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
-	return FALSE;
 }
 
 static gboolean remmina_plugin_spice_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
