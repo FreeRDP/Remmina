@@ -78,6 +78,11 @@ if(ZLIB_FOUND)
 	add_subdirectory(vnc)
 endif()
 
+find_suggested_package(SPICE)
+if(SPICE_FOUND)
+	add_subdirectory(spice)
+endif()
+
 if(WITH_EXAMPLES)
 	add_subdirectory(tool_hello_world)
 endif()
