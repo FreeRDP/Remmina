@@ -7,7 +7,7 @@ Initially developed by [Vic Lee](https://github.com/llyzs)
 system administrators and travellers, who need to work with lots of remote
 computers in front of either large monitors or tiny netbooks. Remmina supports
 multiple network protocols in an integrated and consistant user interface.
-Currently RDP, VNC, NX, XDMCP and SSH are supported.
+Currently RDP, VNC, SPICE, NX, XDMCP and SSH are supported.
 
 Remmina is released in separated source packages:
 * "remmina", the main GTK+ application
