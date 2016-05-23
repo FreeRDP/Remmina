@@ -50,7 +50,7 @@ script:
   - git clean -f
   - mkdir build
   - cd build
-  - cmake -DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON -DWITH_APPINDICATOR=OFF -DWITH_LIBGCRYPT=OFF --build=build ..
+  - cmake -DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON -DWITH_APPINDICATOR=OFF --build=build ..
   - make VERBOSE=1
 
 # EOF #

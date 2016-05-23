@@ -239,8 +239,6 @@ int main(int argc, char* argv[])
 	{
 		if ((e = gcry_control (GCRYCTL_SET_THREAD_CBS, &gcry_threads_pthread)) != GPG_ERR_NO_ERROR)
 		{
-			ERR_TRACE (gcry_strerror (e), e);
-			SET_ERRNO (_gpg_error_to_errno (e));
 			return (-1);
 		}
 		gcrypt_thread_initialized++;
