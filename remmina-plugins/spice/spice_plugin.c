@@ -55,6 +55,8 @@ typedef struct _RemminaPluginSpiceData
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
+static gboolean remmina_plugin_spice_open_connection(RemminaProtocolWidget *gp);
+
 static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -71,6 +73,34 @@ static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 	return FALSE;
 }
 
+static gboolean remmina_plugin_spice_ask_auth(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+
+	gint ret;
+	gboolean disablepasswordstoring;
+
+	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
+	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
+	ret = remmina_plugin_service->protocol_plugin_init_authpwd(gp, REMMINA_AUTHPWD_TYPE_PROTOCOL, !disablepasswordstoring);
+
+	if (ret == GTK_RESPONSE_OK)
+	{
+		g_object_set(gpdata->session,
+		             "password",
+		             remmina_plugin_service->protocol_plugin_init_get_password(gp),
+		             NULL);
+
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
+
 static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, SpiceChannelEvent event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -84,12 +114,19 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 			remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 			break;
 		case SPICE_CHANNEL_ERROR_AUTH:
-			remmina_plugin_service->protocol_plugin_set_error(gp, _("Invalid password."));
-			remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+			if (remmina_plugin_spice_ask_auth(gp))
+			{
+				remmina_plugin_spice_open_connection(gp);
+			}
+			else
+			{
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Invalid password."));
+				remmina_plugin_spice_close_connection(gp);
+			}
 			break;
 		case SPICE_CHANNEL_ERROR_CONNECT:
 			remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to SPICE server failed."));
-			remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+			remmina_plugin_spice_close_connection(gp);
 			break;
 		default:
 			break;
@@ -226,6 +263,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly", N_("View only"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
