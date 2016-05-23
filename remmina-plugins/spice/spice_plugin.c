@@ -85,11 +85,11 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 			break;
 		case SPICE_CHANNEL_ERROR_AUTH:
 			remmina_plugin_service->protocol_plugin_set_error(gp, _("Invalid password."));
-			remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+			remmina_plugin_spice_close_connection(gp);
 			break;
 		case SPICE_CHANNEL_ERROR_CONNECT:
 			remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to SPICE server failed."));
-			remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+			remmina_plugin_spice_close_connection(gp);
 			break;
 		default:
 			break;
