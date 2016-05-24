@@ -45,6 +45,7 @@
 enum
 {
 	REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY = 1,
+	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL,
 	REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD
 };
 
@@ -226,6 +227,31 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 	}
 }
 
+/* Send a keystroke to the plugin window */
+static void remmina_plugin_spice_keystroke(RemminaProtocolWidget *gp, const guint keystrokes[], const gint keylen)
+{
+	TRACE_CALL(__func__);
+	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
+
+	if (gpdata->display)
+	{
+		spice_display_send_keys(gpdata->display,
+		                        keystrokes,
+		                        keylen,
+		                        SPICE_DISPLAY_KEY_EVENT_CLICK);
+	}
+}
+
+/* Send CTRL+ALT+DEL keys keystrokes to the plugin socket widget */
+static void remmina_plugin_spice_send_ctrlaltdel(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+
+	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_Delete };
+
+	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
+}
+
 static gboolean remmina_plugin_spice_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 	TRACE_CALL(__func__);
@@ -246,6 +272,9 @@ static void remmina_plugin_spice_call_feature(RemminaProtocolWidget *gp, const R
 			             "read-only",
 			             remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
 			             NULL);
+			break;
+		case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL:
+			remmina_plugin_spice_send_ctrlaltdel(gp);
 			break;
 		case REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD:
 			g_object_set(gpdata->gtk_session,
@@ -296,6 +325,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 static const RemminaProtocolFeature remmina_plugin_spice_features[] =
 {
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly", N_("View only") },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "disableclipboard", N_("Disable clipboard sync") },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
@@ -318,7 +348,7 @@ static RemminaProtocolPlugin remmina_plugin_spice =
 	remmina_plugin_spice_close_connection,                                // Plugin close connection
 	remmina_plugin_spice_query_feature,                                   // Query for available features
 	remmina_plugin_spice_call_feature,                                    // Call a feature
-	NULL,                                                                 // Send a keystroke
+	remmina_plugin_spice_keystroke,                                       // Send a keystroke
 	NULL                                                                  // Screenshot
 };
 
