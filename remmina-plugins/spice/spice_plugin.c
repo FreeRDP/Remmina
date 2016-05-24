@@ -44,12 +44,14 @@
 
 enum
 {
-	REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY = 1
+	REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY = 1,
+	REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD
 };
 
 typedef struct _RemminaPluginSpiceData
 {
 	SpiceDisplay *display;
+	SpiceGtkSession *gtk_session;
 	SpiceSession *session;
 } RemminaPluginSpiceData;
 
@@ -87,6 +89,12 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 	             "port", g_strdup_printf("%i", port),
 	             "password", remmina_plugin_service->file_get_secret(remminafile, "password"),
 	             "read-only", remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
+	             NULL);
+
+	gpdata->gtk_session = spice_gtk_session_get(gpdata->session);
+	g_object_set(gpdata->gtk_session,
+	             "auto-clipboard",
+	             !remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE),
 	             NULL);
 }
 
@@ -239,6 +247,12 @@ static void remmina_plugin_spice_call_feature(RemminaProtocolWidget *gp, const R
 			             remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
 			             NULL);
 			break;
+		case REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD:
+			g_object_set(gpdata->gtk_session,
+			             "auto-clipboard",
+			             !remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE),
+			             NULL);
+			break;
 		default:
 			break;
 	}
@@ -272,6 +286,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly", N_("View only"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
@@ -281,6 +296,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 static const RemminaProtocolFeature remmina_plugin_spice_features[] =
 {
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly", N_("View only") },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "disableclipboard", N_("Disable clipboard sync") },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
