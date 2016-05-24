@@ -182,15 +182,11 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 	                                        &host,
 	                                        &port);
 
-	g_object_set(gpdata->session, "host", host, NULL);
-	g_object_set(gpdata->session, "port", g_strdup_printf("%i", port), NULL);
 	g_object_set(gpdata->session,
-	             "password",
-	             remmina_plugin_service->file_get_secret(remminafile, "password"),
-	             NULL);
-	g_object_set(gpdata->session,
-	             "read-only",
-	             remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
+	             "host", host,
+	             "port", g_strdup_printf("%i", port),
+	             "password", remmina_plugin_service->file_get_secret(remminafile, "password"),
+	             "read-only", remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
 	             NULL);
 }
 
