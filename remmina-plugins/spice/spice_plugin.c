@@ -112,6 +112,9 @@ static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 
 	if (gpdata->session)
 	{
+		g_signal_handlers_disconnect_by_func(gpdata,
+		                                     G_CALLBACK(remmina_plugin_spice_main_channel_event_cb),
+		                                     gp);
 		spice_session_disconnect(gpdata->session);
 		g_object_unref(gpdata->session);
 		gpdata->session = NULL;
@@ -178,9 +181,18 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 {
 	TRACE_CALL(__func__);
 
+	gchar *server;
+	gint port;
+	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
 	switch (event)
 	{
 		case SPICE_CHANNEL_CLOSED:
+			remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
+			                                        5900,
+			                                        &server,
+			                                        &port);
+			remmina_plugin_service->protocol_plugin_set_error(gp, _("Disconnected from SPICE server %s."), server);
 			remmina_plugin_spice_close_connection(gp);
 			break;
 		case SPICE_CHANNEL_OPENED:
