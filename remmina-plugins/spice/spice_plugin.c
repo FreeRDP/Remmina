@@ -44,18 +44,75 @@
 
 enum
 {
-	REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY = 1
+	REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY = 1,
+	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL,
+	REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD
 };
 
 typedef struct _RemminaPluginSpiceData
 {
 	SpiceDisplay *display;
+	SpiceGtkSession *gtk_session;
 	SpiceSession *session;
 } RemminaPluginSpiceData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
-static gboolean remmina_plugin_spice_open_connection(RemminaProtocolWidget *gp);
+static void remmina_plugin_spice_channel_new_cb(SpiceSession *, SpiceChannel *, RemminaProtocolWidget *);
+static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *, SpiceChannelEvent, RemminaProtocolWidget *);
+
+static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+
+	gchar *host;
+	gint port;
+	RemminaPluginSpiceData *gpdata;
+	RemminaFile *remminafile;
+
+	gpdata = g_new0(RemminaPluginSpiceData, 1);
+	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
+
+	gpdata->session = spice_session_new();
+	g_signal_connect(gpdata->session,
+	                 "channel-new",
+	                 G_CALLBACK(remmina_plugin_spice_channel_new_cb),
+	                 gp);
+
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
+	                                        5900,
+	                                        &host,
+	                                        &port);
+
+	g_object_set(gpdata->session,
+	             "host", host,
+	             "port", g_strdup_printf("%i", port),
+	             "password", remmina_plugin_service->file_get_secret(remminafile, "password"),
+	             "read-only", remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
+	             NULL);
+
+	gpdata->gtk_session = spice_gtk_session_get(gpdata->session);
+	g_object_set(gpdata->gtk_session,
+	             "auto-clipboard",
+	             !remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE),
+	             NULL);
+}
+
+static gboolean remmina_plugin_spice_open_connection(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
+
+	spice_session_connect(gpdata->session);
+
+	/*
+	 * FIXME: Add a waiting loop until the g_signal "channel-event" occurs.
+	 * If the event is SPICE_CHANNEL_OPENED, TRUE should be returned,
+	 * otherwise FALSE should be returned.
+	 */
+	return TRUE;
+}
 
 static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 {
@@ -64,6 +121,9 @@ static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 
 	if (gpdata->session)
 	{
+		g_signal_handlers_disconnect_by_func(gpdata,
+		                                     G_CALLBACK(remmina_plugin_spice_main_channel_event_cb),
+		                                     gp);
 		spice_session_disconnect(gpdata->session);
 		g_object_unref(gpdata->session);
 		gpdata->session = NULL;
@@ -71,6 +131,31 @@ static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 	}
 
 	return FALSE;
+}
+
+static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChannel *channel, RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+
+	gint id;
+	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
+
+	g_object_get(channel, "channel-id", &id, NULL);
+
+	if (SPICE_IS_MAIN_CHANNEL(channel))
+	{
+		g_signal_connect(channel,
+		                 "channel-event",
+		                 G_CALLBACK(remmina_plugin_spice_main_channel_event_cb),
+		                 gp);
+	}
+
+	if (SPICE_IS_DISPLAY_CHANNEL(channel))
+	{
+		gpdata->display = spice_display_new(gpdata->session, id);
+		gtk_container_add(GTK_CONTAINER(gp), GTK_WIDGET(gpdata->display));
+		gtk_widget_show(GTK_WIDGET(gpdata->display));
+	}
 }
 
 static gboolean remmina_plugin_spice_ask_auth(RemminaProtocolWidget *gp)
@@ -105,9 +190,18 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 {
 	TRACE_CALL(__func__);
 
+	gchar *server;
+	gint port;
+	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
 	switch (event)
 	{
 		case SPICE_CHANNEL_CLOSED:
+			remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
+			                                        5900,
+			                                        &server,
+			                                        &port);
+			remmina_plugin_service->protocol_plugin_set_error(gp, _("Disconnected from SPICE server %s."), server);
 			remmina_plugin_spice_close_connection(gp);
 			break;
 		case SPICE_CHANNEL_OPENED:
@@ -133,80 +227,29 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 	}
 }
 
-static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChannel *channel, RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	gint id;
-	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
-
-	g_object_get(channel, "channel-id", &id, NULL);
-
-	if (SPICE_IS_MAIN_CHANNEL(channel))
-	{
-		g_signal_connect(channel,
-		                 "channel-event",
-		                 G_CALLBACK(remmina_plugin_spice_main_channel_event_cb),
-		                 gp);
-	}
-
-	if (SPICE_IS_DISPLAY_CHANNEL(channel))
-	{
-		gpdata->display = spice_display_new(gpdata->session, id);
-		gtk_container_add(GTK_CONTAINER(gp), GTK_WIDGET(gpdata->display));
-		gtk_widget_show(GTK_WIDGET(gpdata->display));
-	}
-}
-
-static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	gchar *host;
-	gint port;
-	RemminaPluginSpiceData *gpdata;
-	RemminaFile *remminafile;
-
-	gpdata = g_new0(RemminaPluginSpiceData, 1);
-	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
-
-	gpdata->session = spice_session_new();
-	g_signal_connect(gpdata->session,
-	                 "channel-new",
-	                 G_CALLBACK(remmina_plugin_spice_channel_new_cb),
-	                 gp);
-
-	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-	remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
-	                                        5900,
-	                                        &host,
-	                                        &port);
-
-	g_object_set(gpdata->session, "host", host, NULL);
-	g_object_set(gpdata->session, "port", g_strdup_printf("%i", port), NULL);
-	g_object_set(gpdata->session,
-	             "password",
-	             remmina_plugin_service->file_get_secret(remminafile, "password"),
-	             NULL);
-	g_object_set(gpdata->session,
-	             "read-only",
-	             remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
-	             NULL);
-}
-
-static gboolean remmina_plugin_spice_open_connection(RemminaProtocolWidget *gp)
+/* Send a keystroke to the plugin window */
+static void remmina_plugin_spice_keystroke(RemminaProtocolWidget *gp, const guint keystrokes[], const gint keylen)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
 
-	spice_session_connect(gpdata->session);
+	if (gpdata->display)
+	{
+		spice_display_send_keys(gpdata->display,
+		                        keystrokes,
+		                        keylen,
+		                        SPICE_DISPLAY_KEY_EVENT_CLICK);
+	}
+}
 
-	/*
-	 * FIXME: Add a waiting loop until the g_signal "channel-event" occurs.
-	 * If the event is SPICE_CHANNEL_OPENED, TRUE should be returned,
-	 * otherwise FALSE should be returned.
-	 */
-	return TRUE;
+/* Send CTRL+ALT+DEL keys keystrokes to the plugin socket widget */
+static void remmina_plugin_spice_send_ctrlaltdel(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+
+	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_Delete };
+
+	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
 }
 
 static gboolean remmina_plugin_spice_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
@@ -228,6 +271,15 @@ static void remmina_plugin_spice_call_feature(RemminaProtocolWidget *gp, const R
 			g_object_set(gpdata->session,
 			             "read-only",
 			             remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
+			             NULL);
+			break;
+		case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL:
+			remmina_plugin_spice_send_ctrlaltdel(gp);
+			break;
+		case REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD:
+			g_object_set(gpdata->gtk_session,
+			             "auto-clipboard",
+			             !remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE),
 			             NULL);
 			break;
 		default:
@@ -263,6 +315,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly", N_("View only"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
@@ -272,6 +325,8 @@ static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 static const RemminaProtocolFeature remmina_plugin_spice_features[] =
 {
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly", N_("View only") },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "disableclipboard", N_("Disable clipboard sync") },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
@@ -293,7 +348,7 @@ static RemminaProtocolPlugin remmina_plugin_spice =
 	remmina_plugin_spice_close_connection,                                // Plugin close connection
 	remmina_plugin_spice_query_feature,                                   // Query for available features
 	remmina_plugin_spice_call_feature,                                    // Call a feature
-	NULL,                                                                 // Send a keystroke
+	remmina_plugin_spice_keystroke,                                       // Send a keystroke
 	NULL                                                                  // Screenshot
 };
 
