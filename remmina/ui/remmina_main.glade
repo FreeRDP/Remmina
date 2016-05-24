@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.19.0 
+<!-- Generated with glade 3.19.0
 
 Remmina - The GTK+ Remmina Remote Desktop Client
 Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2016
@@ -203,24 +203,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         <property name="short_label" translatable="yes">Statusbar</property>
         <property name="active">True</property>
         <signal name="activate" handler="remmina_main_on_action_view_statusbar" swapped="no"/>
-      </object>
-    </child>
-    <child>
-      <object class="GtkToggleAction" id="action_view_quick_search">
-        <property name="label" translatable="yes">Quick _Find</property>
-        <property name="short_label" translatable="yes">Quick _Find</property>
-        <property name="tooltip" translatable="yes">Filter profiles by search pattern</property>
-        <property name="icon_name">edit-find</property>
-        <signal name="activate" handler="remmina_main_on_action_view_quick_search" swapped="no"/>
-      </object>
-      <accelerator key="f" modifiers="GDK_CONTROL_MASK"/>
-    </child>
-    <child>
-      <object class="GtkToggleAction" id="action_view_quick_connect">
-        <property name="label" translatable="yes">Quick Connect</property>
-        <property name="short_label" translatable="yes">Quick Connect</property>
-        <property name="active">True</property>
-        <signal name="activate" handler="remmina_main_on_action_view_quick_connect" swapped="no"/>
       </object>
     </child>
     <child>
@@ -543,16 +525,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkCheckMenuItem" id="menuitem_view_statusbar">
                         <property name="use_action_appearance">True</property>
                         <property name="related_action">action_view_statusbar</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="active">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkCheckMenuItem" id="menuitem_view_quick_connect">
-                        <property name="use_action_appearance">True</property>
-                        <property name="related_action">action_view_quick_connect</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>

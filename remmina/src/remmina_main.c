@@ -688,25 +688,6 @@ void remmina_main_on_action_application_quit(GtkAction *action, gpointer user_da
 	g_idle_add(remmina_main_dexit, NULL);
 }
 
-void remmina_main_on_action_view_quick_search(GtkToggleAction *action, gpointer user_data)
-{
-	TRACE_CALL("remmina_main_on_action_view_quick_search");
-	gboolean toggled;
-
-	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-	toggled = gtk_toggle_action_get_active(action);
-	G_GNUC_END_IGNORE_DEPRECATIONS
-		gtk_entry_set_text(remminamain->entry_quick_connect_server, "");
-		gtk_widget_grab_focus(GTK_WIDGET(remminamain->entry_quick_connect_server));
-	if (remminamain->priv->initialized)
-	{
-		if (!toggled)
-		{
-			gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(remminamain->priv->file_model_filter));
-		}
-	}
-}
-
 void remmina_main_on_action_view_statusbar(GtkToggleAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_view_statusbar");
@@ -726,29 +707,6 @@ void remmina_main_on_action_view_statusbar(GtkToggleAction *action, gpointer use
 	if (remminamain->priv->initialized)
 	{
 		remmina_pref.hide_statusbar = !toggled;
-		remmina_pref_save();
-	}
-}
-
-void remmina_main_on_action_view_quick_connect(GtkToggleAction *action, gpointer user_data)
-{
-	TRACE_CALL("remmina_main_on_action_view_quick_connect");
-	gboolean toggled;
-
-	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-	toggled = gtk_toggle_action_get_active(action);
-	G_GNUC_END_IGNORE_DEPRECATIONS
-	if (toggled)
-	{
-		gtk_widget_show(GTK_WIDGET(remminamain->box_quick_connect));
-	}
-	else
-	{
-		gtk_widget_hide(GTK_WIDGET(remminamain->box_quick_connect));
-	}
-	if (remminamain->priv->initialized)
-	{
-		remmina_pref.hide_quick_connect = !toggled;
 		remmina_pref_save();
 	}
 }
@@ -1125,12 +1083,6 @@ static void remmina_main_init(void)
 		gtk_toggle_action_set_active(remminamain->action_view_statusbar, FALSE);
 		G_GNUC_END_IGNORE_DEPRECATIONS
 	}
-	if (remmina_pref.hide_quick_connect)
-	{
-		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-		gtk_toggle_action_set_active(remminamain->action_view_quick_connect, FALSE);
-		G_GNUC_END_IGNORE_DEPRECATIONS
-	}
 	if (remmina_pref.view_file_mode)
 	{
 		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
@@ -1190,7 +1142,6 @@ GtkWidget* remmina_main_new(void)
 	remminamain->action_connection_external_tools = GTK_ACTION(GET_OBJECT("action_connection_external_tools"));
 	/* Actions from the view ActionGroup */
 	remminamain->action_view_statusbar = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_statusbar"));
-	remminamain->action_view_quick_connect = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_quick_connect"));
 	remminamain->action_view_mode_list = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_mode_list"));
 	remminamain->action_view_mode_tree = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_mode_tree"));
 	/* Actions from the tools ActionGroup */
