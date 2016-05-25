@@ -53,6 +53,7 @@ typedef struct _RemminaPluginSpiceData
 {
 	SpiceDisplay *display;
 	SpiceGtkSession *gtk_session;
+	SpiceMainChannel *main_channel;
 	SpiceSession *session;
 } RemminaPluginSpiceData;
 
@@ -123,7 +124,7 @@ static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 
 	if (gpdata->session)
 	{
-		g_signal_handlers_disconnect_by_func(gpdata,
+		g_signal_handlers_disconnect_by_func(gpdata->main_channel,
 		                                     G_CALLBACK(remmina_plugin_spice_main_channel_event_cb),
 		                                     gp);
 		spice_session_disconnect(gpdata->session);
@@ -146,6 +147,7 @@ static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChan
 
 	if (SPICE_IS_MAIN_CHANNEL(channel))
 	{
+		gpdata->main_channel = SPICE_MAIN_CHANNEL(channel);
 		g_signal_connect(channel,
 		                 "channel-event",
 		                 G_CALLBACK(remmina_plugin_spice_main_channel_event_cb),
