@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.19.0 
+<!-- Generated with glade 3.19.0
 
 Remmina - The GTK+ Remmina Remote Desktop Client
 Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2016
@@ -449,73 +449,37 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="menuitem_connection_connect">
+                      <object class="GtkMenuItem" id="menuitem_tools_import">
                         <property name="use_action_appearance">True</property>
-                        <property name="related_action">action_connection_connect</property>
+                        <property name="related_action">action_tools_import</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Import</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="menuitem_connection_separator3">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="menuitem_connection_new">
+                      <object class="GtkMenuItem" id="menuitem_tools_export">
                         <property name="use_action_appearance">True</property>
-                        <property name="related_action">action_connections_new</property>
+                        <property name="related_action">action_tools_export</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Export</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="menuitem_connection_edit">
+                      <object class="GtkMenuItem" id="menuitem_tools_plugins">
                         <property name="use_action_appearance">True</property>
-                        <property name="related_action">action_connection_edit</property>
+                        <property name="related_action">action_application_plugins</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Plugins</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="menuitem_connection_copy">
-                        <property name="use_action_appearance">True</property>
-                        <property name="related_action">action_connection_copy</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="menuitem_connection_delete">
-                        <property name="use_action_appearance">True</property>
-                        <property name="related_action">action_connection_delete</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="menuitem_connection_external_tools">
-                        <property name="use_action_appearance">True</property>
-                        <property name="related_action">action_connection_external_tools</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkSeparatorMenuItem" id="menuitem_view_separator1">
+                      <object class="GtkSeparatorMenuItem" id="menuitem_tools_separator1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                       </object>
@@ -552,42 +516,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="active">True</property>
                         <property name="draw_as_radio">True</property>
                         <property name="group">menuitem_view_mode_list</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkSeparatorMenuItem" id="menuitem_tools_separator1">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkMenuItem" id="menuitem_tools_import">
-                        <property name="use_action_appearance">True</property>
-                        <property name="related_action">action_tools_import</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Import</property>
-                        <property name="use_underline">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkMenuItem" id="menuitem_tools_export">
-                        <property name="use_action_appearance">True</property>
-                        <property name="related_action">action_tools_export</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Export</property>
-                        <property name="use_underline">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkMenuItem" id="menuitem_tools_plugins">
-                        <property name="use_action_appearance">True</property>
-                        <property name="related_action">action_application_plugins</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Plugins</property>
-                        <property name="use_underline">True</property>
                       </object>
                     </child>
                     <child>
