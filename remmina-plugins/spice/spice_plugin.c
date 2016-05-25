@@ -45,8 +45,8 @@
 enum
 {
 	REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY = 1,
-	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL,
-	REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD
+	REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD,
+	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL
 };
 
 typedef struct _RemminaPluginSpiceData
@@ -280,14 +280,14 @@ static void remmina_plugin_spice_call_feature(RemminaProtocolWidget *gp, const R
 			             remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
 			             NULL);
 			break;
-		case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL:
-			remmina_plugin_spice_send_ctrlaltdel(gp);
-			break;
 		case REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD:
 			g_object_set(gpdata->gtk_session,
 			             "auto-clipboard",
 			             !remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE),
 			             NULL);
+			break;
+		case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL:
+			remmina_plugin_spice_send_ctrlaltdel(gp);
 			break;
 		default:
 			break;
@@ -332,8 +332,8 @@ static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 static const RemminaProtocolFeature remmina_plugin_spice_features[] =
 {
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly", N_("View only") },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "disableclipboard", N_("Disable clipboard sync") },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
