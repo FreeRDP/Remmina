@@ -223,6 +223,8 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 				remmina_plugin_spice_close_connection(gp);
 			}
 			break;
+		case SPICE_CHANNEL_ERROR_TLS:
+		case SPICE_CHANNEL_ERROR_LINK:
 		case SPICE_CHANNEL_ERROR_CONNECT:
 			remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to SPICE server failed."));
 			remmina_plugin_spice_close_connection(gp);
