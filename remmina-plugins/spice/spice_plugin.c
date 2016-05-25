@@ -97,6 +97,8 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 	             "auto-clipboard",
 	             !remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE),
 	             NULL);
+
+	g_free(host);
 }
 
 static gboolean remmina_plugin_spice_open_connection(RemminaProtocolWidget *gp)
@@ -202,6 +204,7 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 			                                        &server,
 			                                        &port);
 			remmina_plugin_service->protocol_plugin_set_error(gp, _("Disconnected from SPICE server %s."), server);
+			g_free(server);
 			remmina_plugin_spice_close_connection(gp);
 			break;
 		case SPICE_CHANNEL_OPENED:
