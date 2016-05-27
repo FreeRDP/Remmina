@@ -139,6 +139,7 @@ typedef struct _RemminaPref
 	/* In View menu */
 	gboolean hide_toolbar;
 	gboolean hide_statusbar;
+	gboolean hide_searchbar;
 	gboolean small_toolbutton;
 	gint view_file_mode;
 	/* In tray icon */

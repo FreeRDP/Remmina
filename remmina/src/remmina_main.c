@@ -711,6 +711,29 @@ void remmina_main_on_action_view_statusbar(GtkToggleAction *action, gpointer use
 	}
 }
 
+void remmina_main_on_action_view_searchbar(GtkToggleAction *action, gpointer user_data)
+{
+	TRACE_CALL("remmina_main_on_action_view_searchbar");
+	gboolean toggled;
+
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+	toggled = gtk_toggle_action_get_active(action);
+	G_GNUC_END_IGNORE_DEPRECATIONS
+	if (toggled)
+	{
+		gtk_widget_show(GTK_WIDGET(remminamain->searchbar_main));
+	}
+	else
+	{
+		gtk_widget_hide(GTK_WIDGET(remminamain->searchbar_main));
+	}
+	if (remminamain->priv->initialized)
+	{
+		remmina_pref.hide_searchbar = !toggled;
+		remmina_pref_save();
+	}
+}
+
 void remmina_main_on_action_view_file_mode(GtkRadioAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_view_file_mode");
@@ -1085,6 +1108,12 @@ static void remmina_main_init(void)
 		gtk_toggle_action_set_active(remminamain->action_view_statusbar, FALSE);
 		G_GNUC_END_IGNORE_DEPRECATIONS
 	}
+	if (remmina_pref.hide_searchbar)
+	{
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+		gtk_toggle_action_set_active(remminamain->action_view_searchbar, FALSE);
+		G_GNUC_END_IGNORE_DEPRECATIONS
+	}
 	if (remmina_pref.view_file_mode)
 	{
 		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
@@ -1123,6 +1152,7 @@ GtkWidget* remmina_main_new(void)
 	remminamain->tree_files_list = GTK_TREE_VIEW(GET_OBJECT("tree_files_list"));
 	remminamain->column_files_list_group = GTK_TREE_VIEW_COLUMN(GET_OBJECT("column_files_list_group"));
 	remminamain->statusbar_main = GTK_STATUSBAR(GET_OBJECT("statusbar_main"));
+	remminamain->searchbar_main = GTK_SEARCH_BAR(GET_OBJECT("searchbar_main"));
 	/* Non widget objects */
 	remminamain->accelgroup_shortcuts = GTK_ACCEL_GROUP(GET_OBJECT("accelgroup_shortcuts"));
 	remminamain->liststore_files_list = GTK_LIST_STORE(GET_OBJECT("liststore_files_list"));
@@ -1144,6 +1174,7 @@ GtkWidget* remmina_main_new(void)
 	remminamain->action_connection_external_tools = GTK_ACTION(GET_OBJECT("action_connection_external_tools"));
 	/* Actions from the view ActionGroup */
 	remminamain->action_view_statusbar = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_statusbar"));
+	remminamain->action_view_searchbar = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_searchbar"));
 	remminamain->action_view_mode_list = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_mode_list"));
 	remminamain->action_view_mode_tree = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_mode_tree"));
 	/* Actions from the tools ActionGroup */

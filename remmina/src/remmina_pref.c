@@ -322,6 +322,12 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.hide_statusbar = FALSE;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "hide_searchbar", NULL))
+		remmina_pref.hide_searchbar = g_key_file_get_boolean(gkeyfile, "remmina_pref", "hide_searchbar", NULL);
+	else
+		remmina_pref.hide_searchbar = FALSE;
+
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "small_toolbutton", NULL))
 		remmina_pref.small_toolbutton = g_key_file_get_boolean(gkeyfile, "remmina_pref", "small_toolbutton", NULL);
 	else
@@ -631,6 +637,7 @@ void remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "ssh_parseconfig", remmina_pref.ssh_parseconfig);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_toolbar", remmina_pref.hide_toolbar);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_statusbar", remmina_pref.hide_statusbar);
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_searchbar", remmina_pref.hide_searchbar);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "small_toolbutton", remmina_pref.small_toolbutton);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "view_file_mode", remmina_pref.view_file_mode);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "resolutions", remmina_pref.resolutions);

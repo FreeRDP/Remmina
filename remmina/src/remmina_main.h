@@ -56,6 +56,7 @@ typedef struct _RemminaMain
 	GtkTreeView *tree_files_list;
 	GtkTreeViewColumn *column_files_list_group;
 	GtkStatusbar *statusbar_main;
+	GtkSearchBar *searchbar_main;
 	/* Non widget objects */
 	GtkAccelGroup *accelgroup_shortcuts;
 	GtkListStore *liststore_files_list;
@@ -76,6 +77,7 @@ typedef struct _RemminaMain
 	GtkAction *action_connection_external_tools;
 	/* Actions from the view ActionGroup */
 	GtkToggleAction *action_view_statusbar;
+	GtkToggleAction *action_view_searchbar;
 	GtkToggleAction *action_view_quick_connect;
 	GtkToggleAction *action_view_mode_list;
 	GtkToggleAction *action_view_mode_tree;
