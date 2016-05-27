@@ -95,6 +95,7 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 	             "password", remmina_plugin_service->file_get_secret(remminafile, "password"),
 	             "read-only", remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
 	             "enable-audio", remmina_plugin_service->file_get_int(remminafile, "enableaudio", FALSE),
+	             "enable-smartcard", remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE),
 	             NULL);
 
 	gpdata->gtk_session = spice_gtk_session_get(gpdata->session);
@@ -373,6 +374,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enableaudio", N_("Enable audio channel"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "sharesmartcard", N_("Share smartcard"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
