@@ -52,6 +52,7 @@ enum
 
 typedef struct _RemminaPluginSpiceData
 {
+	SpiceAudio *audio;
 	SpiceDisplay *display;
 	SpiceDisplayChannel *display_channel;
 	SpiceGtkSession *gtk_session;
@@ -93,6 +94,7 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 	             "port", g_strdup_printf("%i", port),
 	             "password", remmina_plugin_service->file_get_secret(remminafile, "password"),
 	             "read-only", remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
+	             "enable-audio", remmina_plugin_service->file_get_int(remminafile, "enableaudio", FALSE),
 	             NULL);
 
 	gpdata->gtk_session = spice_gtk_session_get(gpdata->session);
@@ -144,6 +146,7 @@ static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChan
 
 	gint id;
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
+	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	g_object_get(channel, "channel-id", &id, NULL);
 
@@ -165,6 +168,14 @@ static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChan
 		             NULL);
 		gtk_container_add(GTK_CONTAINER(gp), GTK_WIDGET(gpdata->display));
 		gtk_widget_show(GTK_WIDGET(gpdata->display));
+	}
+
+	if (SPICE_IS_PLAYBACK_CHANNEL(channel))
+	{
+		if (remmina_plugin_service->file_get_int(remminafile, "enableaudio", FALSE))
+		{
+			gpdata->audio = spice_audio_get(gpdata->session, NULL);
+		}
 	}
 }
 
@@ -361,6 +372,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "viewonly", N_("View only"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableclipboard", N_("Disable clipboard sync"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enableaudio", N_("Enable audio channel"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
