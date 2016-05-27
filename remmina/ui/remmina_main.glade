@@ -228,7 +228,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-add</property>
-    <property name="icon_size">1</property>
   </object>
   <object class="GtkListStore" id="liststore_files_list">
     <columns>
@@ -276,6 +275,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                 <property name="halign">start</property>
                 <property name="image">image_new</property>
                 <property name="always_show_image">True</property>
+                <signal name="clicked" handler="remmina_main_on_action_connections_new" swapped="no"/>
               </object>
             </child>
             <child type="title">
