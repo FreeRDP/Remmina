@@ -139,7 +139,7 @@ typedef struct remmina_masterthread_exec_data
 			RemminaProtocolWidget* gp;
 			const gchar* signal_name;
 		} protocolwidget_emit_signal;
-#if defined (HAVE_LIBSSH) && defined (HAVE_LIBVTE)
+#ifdef HAVE_LIBSSH
 		struct
 		{
 			RemminaSFTPClient *client;
