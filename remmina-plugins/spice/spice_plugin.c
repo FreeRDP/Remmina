@@ -40,6 +40,8 @@
 #  include <spice-widget.h>
 #endif
 
+#define XSPICE_DEFAULT_PORT 5900
+
 #define GET_PLUGIN_DATA(gp) (RemminaPluginSpiceData*) g_object_get_data(G_OBJECT(gp), "plugin-data")
 
 enum
@@ -84,7 +86,7 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 	remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
-	                                        5900,
+	                                        XSPICE_DEFAULT_PORT,
 	                                        &host,
 	                                        &port);
 
@@ -208,7 +210,7 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 	{
 		case SPICE_CHANNEL_CLOSED:
 			remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
-			                                        5900,
+			                                        XSPICE_DEFAULT_PORT,
 			                                        &server,
 			                                        &port);
 			remmina_plugin_service->protocol_plugin_set_error(gp, _("Disconnected from SPICE server %s."), server);
