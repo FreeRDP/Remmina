@@ -38,6 +38,7 @@
 #  include <spice-client-gtk.h>
 #else
 #  include <spice-widget.h>
+#  include <usb-device-widget.h>
 #endif
 
 #define XSPICE_DEFAULT_PORT 5900
@@ -49,6 +50,7 @@ enum
 	REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY = 1,
 	REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD,
 	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL,
+	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_USBREDIR,
 	REMMINA_PLUGIN_SPICE_FEATURE_SCALE
 };
 
@@ -294,6 +296,70 @@ static void remmina_plugin_spice_update_scale(RemminaProtocolWidget *gp)
 	}
 }
 
+static void remmina_plugin_spice_usb_connect_failed_cb(GObject *object, SpiceUsbDevice *usb_device, GError *error, RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+
+	GtkWidget *dialog;
+
+	if (error->domain == G_IO_ERROR && error->code == G_IO_ERROR_CANCELLED)
+	{
+		return;
+	}
+
+	/*
+	 * FIXME: Use the RemminaConnectionWindow as transient parent widget
+	 * (and add the GTK_DIALOG_DESTROY_WITH_PARENT flag) if it becomes
+	 * accessible from the Remmina plugin API.
+	 */
+	dialog = gtk_message_dialog_new(NULL,
+	                                GTK_DIALOG_MODAL,
+	                                GTK_MESSAGE_ERROR,
+	                                GTK_BUTTONS_CLOSE,
+	                                _("USB redirection error"));
+	gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
+	                                         "%s",
+	                                         error->message);
+	gtk_dialog_run(GTK_DIALOG(dialog));
+	gtk_widget_destroy(dialog);
+}
+
+static void remmina_plugin_spice_select_usb_devices(RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+
+	GtkWidget *dialog, *usb_device_widget;
+	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
+
+	/*
+	 * FIXME: Use the RemminaConnectionWindow as transient parent widget
+	 * (and add the GTK_DIALOG_DESTROY_WITH_PARENT flag) if it becomes
+	 * accessible from the Remmina plugin API.
+	 */
+	dialog = gtk_dialog_new_with_buttons(_("Select USB devices for redirection"),
+	                                     NULL,
+	                                     GTK_DIALOG_MODAL,
+	                                     _("_Close"),
+	                                     GTK_RESPONSE_ACCEPT,
+	                                     NULL);
+	gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT);
+
+	usb_device_widget = spice_usb_device_widget_new(gpdata->session, NULL);
+	g_signal_connect(usb_device_widget,
+	                 "connect-failed",
+	                 G_CALLBACK(remmina_plugin_spice_usb_connect_failed_cb),
+	                 gp);
+
+	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
+			   usb_device_widget,
+			   TRUE,
+			   TRUE,
+			   0);
+	gtk_widget_show_all(dialog);
+	gtk_dialog_run(GTK_DIALOG(dialog));
+	gtk_widget_destroy(dialog);
+}
+
 static gboolean remmina_plugin_spice_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 	TRACE_CALL(__func__);
@@ -327,6 +393,9 @@ static void remmina_plugin_spice_call_feature(RemminaProtocolWidget *gp, const R
 			break;
 		case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL:
 			remmina_plugin_spice_send_ctrlaltdel(gp);
+			break;
+		case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_USBREDIR:
+			remmina_plugin_spice_select_usb_devices(gp);
 			break;
 		default:
 			break;
@@ -373,6 +442,7 @@ static const RemminaProtocolFeature remmina_plugin_spice_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly", N_("View only") },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "disableclipboard", N_("Disable clipboard sync") },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SPICE_FEATURE_TOOL_USBREDIR, N_("Select USB devices for redirection"), NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_SCALE, REMMINA_PLUGIN_SPICE_FEATURE_SCALE, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
