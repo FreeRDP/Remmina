@@ -557,13 +557,6 @@ static void remmina_main_load_files(gboolean refresh)
 
 }
 
-/* Called whenever the selection has (possibly) changed. */
-void remmina_main_load_files_cb()
-{
-	TRACE_CALL("remmina_main_load_files_cb");
-	remmina_main_load_files(TRUE);
-}
-
 void remmina_main_on_action_connection_connect(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_connection_connect");
@@ -984,7 +977,6 @@ void remmina_main_quick_search_on_changed(GtkEditable *editable, gpointer user_d
 {
 	TRACE_CALL("remmina_main_quick_search_on_changed");
 	/* If a search text was input then temporary set the file mode to list */
-	remmina_main_load_files(FALSE);
 	if (gtk_entry_get_text_length(remminamain->entry_quick_connect_server)) {
 		if (!remminamain->priv->override_view_file_mode_to_list) {
 			/* File view mode changed, put it to override and reload list */
