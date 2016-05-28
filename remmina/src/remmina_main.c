@@ -229,16 +229,19 @@ static void remmina_main_load_file_list_callback(RemminaFile *remminafile, gpoin
 	GtkTreeIter iter;
 	GtkListStore *store;
 	store = GTK_LIST_STORE(remminamain->priv->file_model);
+	gchar* datetime;
 
+	datetime = remmina_file_get_datetime(remminafile);
 	gtk_list_store_append(store, &iter);
 	gtk_list_store_set(store, &iter,
 		PROTOCOL_COLUMN,    remmina_file_get_icon_name(remminafile),
 		NAME_COLUMN,	    remmina_file_get_string(remminafile, "name"),
 		GROUP_COLUMN,	    remmina_file_get_string(remminafile, "group"),
 		SERVER_COLUMN,	    remmina_file_get_string(remminafile, "server"),
-		DATE_COLUMN,	    remmina_file_get_datetime(remminafile),
+		DATE_COLUMN,	    datetime,
 		FILENAME_COLUMN,    remmina_file_get_filename(remminafile),
 		-1);
+	g_free(datetime);
 }
 
 static gboolean remmina_main_load_file_tree_traverse(GNode *node, GtkTreeStore *store, GtkTreeIter *parent)
@@ -362,7 +365,7 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 	GtkTreeIter iter, child;
 	GtkTreeStore *store;
 	gboolean found;
-	const gchar* datetime;
+	gchar* datetime;
 
 	store = GTK_TREE_STORE(remminamain->priv->file_model);
 

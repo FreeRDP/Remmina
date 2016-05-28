@@ -581,7 +581,7 @@ void remmina_file_unsave_password(RemminaFile *remminafile)
 	remmina_file_save_group(remminafile, REMMINA_SETTING_GROUP_CREDENTIAL);
 }
 
-const gchar*
+gchar*
 remmina_file_get_datetime(RemminaFile *remminafile)
 {
 	TRACE_CALL("remmina_file_get_datetime");
