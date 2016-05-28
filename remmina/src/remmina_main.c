@@ -163,6 +163,7 @@ void remmina_main_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_string_array_free(remminamain->priv->expanded_group);
 	remminamain->priv->expanded_group = NULL;
 
+	g_object_unref(G_OBJECT(remminamain->priv->file_model_filter));
 	g_object_unref(G_OBJECT(remminamain->builder));
 	g_free(remminamain->priv->selected_filename);
 	g_free(remminamain->priv->selected_name);
@@ -500,11 +501,12 @@ static void remmina_main_load_files(gboolean refresh)
 	gchar buf[200];
 	guint context_id;
 	gint view_file_mode;
+	char *save_selected_filename;
 
+	save_selected_filename = g_strdup(remminamain->priv->selected_filename);
 	if (refresh)
 	{
 		remmina_main_save_expanded_group();
-		remminamain->priv->selected_filename = NULL;
 	}
 
 	view_file_mode = remmina_pref.view_file_mode;
@@ -557,9 +559,10 @@ static void remmina_main_load_files(gboolean refresh)
 	                 G_CALLBACK(remmina_main_file_model_on_sort), NULL);
 	remmina_main_expand_group();
 	/* Select the file previously selected */
-	if (remminamain->priv->selected_filename)
+	if (save_selected_filename)
 	{
-		remmina_main_select_file(remminamain->priv->selected_filename);
+		remmina_main_select_file(save_selected_filename);
+		g_free(save_selected_filename);
 	}
 	/* Show in the status bar the total number of connections found */
 	g_snprintf(buf, sizeof(buf), ngettext("Total %i item.", "Total %i items.", items_count), items_count);
@@ -1179,3 +1182,9 @@ GtkWindow* remmina_main_get_window()
 	return remminamain->window;
 }
 
+void remmina_main_update_file_datetime(RemminaFile *file)
+{
+	if (!remminamain)
+		return;
+	remmina_main_load_files(TRUE);
+}

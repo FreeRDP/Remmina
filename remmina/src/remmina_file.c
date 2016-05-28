@@ -57,6 +57,7 @@
 #include "remmina_file_manager.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_pref.h"
+#include "remmina_main.h"
 #include "remmina_masterthread_exec.h"
 #include "remmina/remmina_trace_calls.h"
 
@@ -429,6 +430,8 @@ static void remmina_file_save_flush(RemminaFile *remminafile, GKeyFile *gkeyfile
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
 	g_file_set_contents(remminafile->filename, content, length, NULL);
 	g_free(content);
+
+	remmina_main_update_file_datetime(remminafile);
 }
 
 void remmina_file_save_group(RemminaFile *remminafile, RemminaSettingGroup group)

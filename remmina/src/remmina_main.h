@@ -38,6 +38,8 @@
 #ifndef __REMMINAMAIN_H__
 #define __REMMINAMAIN_H__
 
+#include "remmina_file.h"
+
 typedef struct _RemminaMainPriv RemminaMainPriv;
 
 typedef struct _RemminaMain
@@ -113,6 +115,8 @@ G_BEGIN_DECLS
 GtkWidget* remmina_main_new(void);
 /* Get the current main window or NULL if not initialized */
 GtkWindow* remmina_main_get_window(void);
+
+void remmina_main_update_file_datetime(RemminaFile *file);
 
 G_END_DECLS
 
