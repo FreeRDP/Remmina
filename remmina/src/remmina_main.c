@@ -362,6 +362,7 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 	GtkTreeIter iter, child;
 	GtkTreeStore *store;
 	gboolean found;
+	const gchar* datetime;
 
 	store = GTK_TREE_STORE(remminamain->priv->file_model);
 
@@ -372,15 +373,17 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 		        remmina_file_get_string(remminafile, "group"));
 	}
 
+	datetime = remmina_file_get_datetime(remminafile);
 	gtk_tree_store_append(store, &child, (found ? &iter : NULL));
 	gtk_tree_store_set(store, &child,
 			PROTOCOL_COLUMN, remmina_file_get_icon_name(remminafile),
 			NAME_COLUMN,     remmina_file_get_string(remminafile, "name"),
 			GROUP_COLUMN,    remmina_file_get_string(remminafile, "group"),
 			SERVER_COLUMN,   remmina_file_get_string(remminafile, "server"),
-			DATE_COLUMN,     remmina_file_get_datetime(remminafile),
+			DATE_COLUMN,     datetime,
 			FILENAME_COLUMN, remmina_file_get_filename(remminafile),
 			-1);
+	g_free(datetime);
 }
 
 static gint remmina_main_sortable_cmp_by_date(GtkTreeModel *model,
@@ -510,26 +513,32 @@ static void remmina_main_load_files(gboolean refresh)
 	case REMMINA_VIEW_FILE_TREE:
 		/* Hide the Group column in the tree view mode */
 		gtk_tree_view_column_set_visible(remminamain->column_files_list_group, FALSE);
-		/* Use the TreeStore model to store data */
-		remminamain->priv->file_model = GTK_TREE_MODEL(remminamain->treestore_files_list);
-		/* Clear any previous data in the model */
-		gtk_tree_store_clear(GTK_TREE_STORE(remminamain->priv->file_model));
-		/* Load groups first */
-		remmina_main_load_file_tree_group(GTK_TREE_STORE(remminamain->priv->file_model));
-		/* Load files list */
-		items_count = remmina_file_manager_iterate((GFunc) remmina_main_load_file_tree_callback, NULL);
+		if (refresh || remminamain->priv->file_model != GTK_TREE_MODEL(remminamain->treestore_files_list))
+		{
+			/* Use the TreeStore model to store data */
+			remminamain->priv->file_model = GTK_TREE_MODEL(remminamain->treestore_files_list);
+			/* Clear any previous data in the model */
+			gtk_tree_store_clear(GTK_TREE_STORE(remminamain->priv->file_model));
+			/* Load groups first */
+			remmina_main_load_file_tree_group(GTK_TREE_STORE(remminamain->priv->file_model));
+			/* Load files list */
+			items_count = remmina_file_manager_iterate((GFunc) remmina_main_load_file_tree_callback, NULL);
+		}
 		break;
 
 	case REMMINA_VIEW_FILE_LIST:
 	default:
 		/* Show the Group column in the list view mode */
 		gtk_tree_view_column_set_visible(remminamain->column_files_list_group, TRUE);
-		/* Use the ListStore model to store data */
-		remminamain->priv->file_model = GTK_TREE_MODEL(remminamain->liststore_files_list);
-		/* Clear any previous data in the model */
-		gtk_list_store_clear(GTK_LIST_STORE(remminamain->priv->file_model));
-		/* Load files list */
-		items_count = remmina_file_manager_iterate((GFunc) remmina_main_load_file_list_callback, NULL);
+		if (refresh || remminamain->priv->file_model != GTK_TREE_MODEL(remminamain->liststore_files_list))
+		{
+			/* Use the ListStore model to store data */
+			remminamain->priv->file_model = GTK_TREE_MODEL(remminamain->liststore_files_list);
+			/* Clear any previous data in the model */
+			gtk_list_store_clear(GTK_LIST_STORE(remminamain->priv->file_model));
+			/* Load files list */
+			items_count = remmina_file_manager_iterate((GFunc) remmina_main_load_file_list_callback, NULL);
+		}
 		break;
 	}
 	/* Apply sorted filtered model to the TreeView */
