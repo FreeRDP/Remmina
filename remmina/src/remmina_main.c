@@ -163,6 +163,8 @@ void remmina_main_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_string_array_free(remminamain->priv->expanded_group);
 	remminamain->priv->expanded_group = NULL;
 
+	if (remminamain->priv->file_model)
+		g_object_unref(G_OBJECT(remminamain->priv->file_model));
 	g_object_unref(G_OBJECT(remminamain->priv->file_model_filter));
 	g_object_unref(G_OBJECT(remminamain->builder));
 	g_free(remminamain->priv->selected_filename);
@@ -229,7 +231,7 @@ static void remmina_main_load_file_list_callback(RemminaFile *remminafile, gpoin
 	TRACE_CALL("remmina_main_load_file_list_callback");
 	GtkTreeIter iter;
 	GtkListStore *store;
-	store = GTK_LIST_STORE(remminamain->priv->file_model);
+	store = GTK_LIST_STORE(user_data);
 	gchar* datetime;
 
 	datetime = remmina_file_get_datetime(remminafile);
@@ -368,7 +370,7 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 	gboolean found;
 	gchar* datetime;
 
-	store = GTK_TREE_STORE(remminamain->priv->file_model);
+	store = GTK_TREE_STORE(user_data);
 
 	found = FALSE;
 	if (gtk_tree_model_get_iter_first(GTK_TREE_MODEL(store), &iter))
@@ -494,7 +496,7 @@ static void remmina_main_select_file(const gchar *filename)
 	}
 }
 
-static void remmina_main_load_files(gboolean refresh)
+static void remmina_main_load_files()
 {
 	TRACE_CALL("remmina_main_load_files");
 	gint items_count;
@@ -502,12 +504,10 @@ static void remmina_main_load_files(gboolean refresh)
 	guint context_id;
 	gint view_file_mode;
 	char *save_selected_filename;
+	GtkTreeModel *newmodel;
 
 	save_selected_filename = g_strdup(remminamain->priv->selected_filename);
-	if (refresh)
-	{
-		remmina_main_save_expanded_group();
-	}
+	remmina_main_save_expanded_group();
 
 	view_file_mode = remmina_pref.view_file_mode;
 	if (remminamain->priv->override_view_file_mode_to_list)
@@ -516,36 +516,33 @@ static void remmina_main_load_files(gboolean refresh)
 	switch (view_file_mode)
 	{
 	case REMMINA_VIEW_FILE_TREE:
+		/* Create new GtkTreeStore model */
+		newmodel = GTK_TREE_MODEL(gtk_tree_store_new(6, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
 		/* Hide the Group column in the tree view mode */
 		gtk_tree_view_column_set_visible(remminamain->column_files_list_group, FALSE);
-		if (refresh || remminamain->priv->file_model != GTK_TREE_MODEL(remminamain->treestore_files_list))
-		{
-			/* Use the TreeStore model to store data */
-			remminamain->priv->file_model = GTK_TREE_MODEL(remminamain->treestore_files_list);
-			/* Clear any previous data in the model */
-			gtk_tree_store_clear(GTK_TREE_STORE(remminamain->priv->file_model));
-			/* Load groups first */
-			remmina_main_load_file_tree_group(GTK_TREE_STORE(remminamain->priv->file_model));
-			/* Load files list */
-			items_count = remmina_file_manager_iterate((GFunc) remmina_main_load_file_tree_callback, NULL);
-		}
+		/* Load groups first */
+		remmina_main_load_file_tree_group(GTK_TREE_STORE(newmodel));
+		/* Load files list */
+		items_count = remmina_file_manager_iterate((GFunc) remmina_main_load_file_tree_callback, (gpointer)newmodel);
 		break;
 
 	case REMMINA_VIEW_FILE_LIST:
 	default:
+		/* Create new GtkListStore model */
+		newmodel = GTK_TREE_MODEL(gtk_list_store_new(6, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING));
 		/* Show the Group column in the list view mode */
 		gtk_tree_view_column_set_visible(remminamain->column_files_list_group, TRUE);
-		if (refresh || remminamain->priv->file_model != GTK_TREE_MODEL(remminamain->liststore_files_list))
-		{
-			/* Use the ListStore model to store data */
-			remminamain->priv->file_model = GTK_TREE_MODEL(remminamain->liststore_files_list);
-			/* Clear any previous data in the model */
-			gtk_list_store_clear(GTK_LIST_STORE(remminamain->priv->file_model));
-			/* Load files list */
-			items_count = remmina_file_manager_iterate((GFunc) remmina_main_load_file_list_callback, NULL);
-		}
+		/* Load files list */
+		items_count = remmina_file_manager_iterate((GFunc) remmina_main_load_file_list_callback, (gpointer)newmodel);
 		break;
 	}
+
+	/* Activate the new model, destroy the old one and save the new */
+	gtk_tree_view_set_model(remminamain->tree_files_list, newmodel);
+	if (remminamain->priv->file_model)
+		g_object_unref(G_OBJECT(remminamain->priv->file_model));
+	remminamain->priv->file_model = newmodel;
+
 	/* Apply sorted filtered model to the TreeView */
 	remminamain->priv->file_model_filter = gtk_tree_model_filter_new(remminamain->priv->file_model, NULL);
 	gtk_tree_model_filter_set_visible_func(GTK_TREE_MODEL_FILTER(remminamain->priv->file_model_filter),
@@ -569,7 +566,12 @@ static void remmina_main_load_files(gboolean refresh)
 	context_id = gtk_statusbar_get_context_id(remminamain->statusbar_main, "status");
 	gtk_statusbar_pop(remminamain->statusbar_main, context_id);
 	gtk_statusbar_push(remminamain->statusbar_main, context_id, buf);
+}
 
+void remmina_main_load_files_cb()
+{
+	TRACE_CALL("remmina_main_load_files_cb");
+	remmina_main_load_files(TRUE);
 }
 
 void remmina_main_on_action_connection_connect(GtkAction *action, gpointer user_data)
@@ -604,7 +606,7 @@ void remmina_main_on_action_connection_external_tools(GtkAction *action, gpointe
 static void remmina_main_file_editor_destroy(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_file_editor_destroy");
-	remmina_main_load_files(TRUE);
+	remmina_main_load_files();
 }
 
 void remmina_main_on_action_connections_new(GtkAction *action, gpointer user_data)
@@ -616,7 +618,7 @@ void remmina_main_on_action_connections_new(GtkAction *action, gpointer user_dat
 	g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_main_file_editor_destroy), remminamain);
 	gtk_window_set_transient_for(GTK_WINDOW(widget), remminamain->window);
 	gtk_widget_show(widget);
-	remmina_main_load_files(TRUE);
+	remmina_main_load_files();
 }
 
 void remmina_main_on_action_connection_copy(GtkAction *action, gpointer user_data)
@@ -676,7 +678,7 @@ void remmina_main_on_action_connection_delete(GtkAction *action, gpointer user_d
 	{
 		remmina_file_delete(remminamain->priv->selected_filename);
 		remmina_icon_populate_menu();
-		remmina_main_load_files(TRUE);
+		remmina_main_load_files();
 	}
 	gtk_widget_destroy(dialog);
 	remmina_main_clear_selection_data();
@@ -736,7 +738,7 @@ void remmina_main_on_action_view_file_mode(GtkRadioAction *action, gpointer user
 		remmina_pref.view_file_mode = v;
 		gtk_entry_set_text(remminamain->entry_quick_connect_server, "");
 		remmina_pref_save();
-		remmina_main_load_files(TRUE);
+		remmina_main_load_files();
 	}
 
 }
@@ -787,7 +789,7 @@ static void remmina_main_import_file_list(GSList *files)
 	g_string_free(err, TRUE);
 	if (imported)
 	{
-		remmina_main_load_files(TRUE);
+		remmina_main_load_files();
 	}
 }
 
@@ -993,16 +995,16 @@ void remmina_main_quick_search_on_changed(GtkEditable *editable, gpointer user_d
 	TRACE_CALL("remmina_main_quick_search_on_changed");
 	/* If a search text was input then temporary set the file mode to list */
 	if (gtk_entry_get_text_length(remminamain->entry_quick_connect_server)) {
-		if (!remminamain->priv->override_view_file_mode_to_list) {
+		if (GTK_IS_TREE_STORE(remminamain->priv->file_model)) {
 			/* File view mode changed, put it to override and reload list */
 			remminamain->priv->override_view_file_mode_to_list = TRUE;
-			remmina_main_load_files(FALSE);
+			remmina_main_load_files();
 		}
 	} else {
 		if (remminamain->priv->override_view_file_mode_to_list) {
 			/* File view mode changed, put it to default (disable override) and reload list */
 			remminamain->priv->override_view_file_mode_to_list = FALSE;
-			remmina_main_load_files(FALSE);
+			remmina_main_load_files();
 		}
 	}
 	gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(remminamain->priv->file_model_filter));
@@ -1084,7 +1086,7 @@ static void remmina_main_init(void)
 	/* TODO: Set entry_quick_connect_server as default search entry. Weirdly. This does not work yet. */
 	gtk_tree_view_set_search_entry(remminamain->tree_files_list, GTK_ENTRY(remminamain->entry_quick_connect_server));
 	/* Load the files list */
-	remmina_main_load_files(FALSE);
+	remmina_main_load_files();
 	/* Load the preferences */
 	if (remmina_pref.hide_statusbar)
 	{
@@ -1132,8 +1134,9 @@ GtkWidget* remmina_main_new(void)
 	remminamain->statusbar_main = GTK_STATUSBAR(GET_OBJECT("statusbar_main"));
 	/* Non widget objects */
 	remminamain->accelgroup_shortcuts = GTK_ACCEL_GROUP(GET_OBJECT("accelgroup_shortcuts"));
-	remminamain->liststore_files_list = GTK_LIST_STORE(GET_OBJECT("liststore_files_list"));
+/*	remminamain->liststore_files_list = GTK_LIST_STORE(GET_OBJECT("liststore_files_list"));
 	remminamain->treestore_files_list = GTK_TREE_STORE(GET_OBJECT("treestore_files_list"));
+*/
 	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	remminamain->actiongroup_connection = GTK_ACTION_GROUP(GET_OBJECT("actiongroup_connection"));
 	/* Actions from the application ActionGroup */
@@ -1186,5 +1189,5 @@ void remmina_main_update_file_datetime(RemminaFile *file)
 {
 	if (!remminamain)
 		return;
-	remmina_main_load_files(TRUE);
+	remmina_main_load_files();
 }

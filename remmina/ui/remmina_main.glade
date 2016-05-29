@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.19.0 
+<!-- Generated with glade 3.20.0 
 
 Remmina - The GTK+ Remmina Remote Desktop Client
 Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2016
@@ -224,31 +224,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
       </object>
     </child>
   </object>
+  <object class="GtkEntryCompletion" id="entrycompletion">
+    <property name="inline_completion">True</property>
+    <property name="inline_selection">True</property>
+  </object>
   <object class="GtkImage" id="image_new">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-add</property>
-  </object>
-  <object class="GtkListStore" id="liststore_files_list">
-    <columns>
-      <!-- column-name Protocol -->
-      <column type="gchararray"/>
-      <!-- column-name Name -->
-      <column type="gchararray"/>
-      <!-- column-name Group -->
-      <column type="gchararray"/>
-      <!-- column-name Server -->
-      <column type="gchararray"/>
-      <!-- column-name Date -->
-      <column type="gchararray"/>
-      <!-- column-name Filename -->
-      <column type="gchararray"/>
-    </columns>
-  </object>
-  <object class="GtkEntryCompletion" id="entrycompletion">
-    <property name="model">liststore_files_list</property>
-    <property name="inline_completion">True</property>
-    <property name="inline_selection">True</property>
   </object>
   <object class="GtkWindow" id="RemminaMain">
     <property name="can_focus">False</property>
@@ -638,7 +621,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
               <object class="GtkTreeView" id="tree_files_list">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="model">liststore_files_list</property>
                 <property name="search_column">3</property>
                 <signal name="button-press-event" handler="remmina_main_file_list_on_button_press" swapped="no"/>
                 <signal name="key-press-event" handler="remmina_main_file_list_on_key_press" swapped="no"/>
@@ -735,21 +717,5 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkTreeStore" id="treestore_files_list">
-    <columns>
-      <!-- column-name Protocol -->
-      <column type="gchararray"/>
-      <!-- column-name Name -->
-      <column type="gchararray"/>
-      <!-- column-name Group -->
-      <column type="gchararray"/>
-      <!-- column-name Server -->
-      <column type="gchararray"/>
-      <!-- column-name Date -->
-      <column type="gchararray"/>
-      <!-- column-name Filename -->
-      <column type="gchararray"/>
-    </columns>
   </object>
 </interface>
