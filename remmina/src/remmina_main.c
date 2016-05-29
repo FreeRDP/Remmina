@@ -513,6 +513,17 @@ static void remmina_main_load_files()
 	if (remminamain->priv->override_view_file_mode_to_list)
 		view_file_mode = REMMINA_VIEW_FILE_LIST;
 
+	switch(remmina_pref.view_file_mode)
+	{
+		case REMMINA_VIEW_FILE_TREE:
+			gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(remminamain->menuitem_view_mode_tree), TRUE);
+			break;
+		case REMMINA_VIEW_FILE_LIST:
+		default:
+			gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(remminamain->menuitem_view_mode_list), TRUE);
+			break;
+	}
+
 	switch (view_file_mode)
 	{
 	case REMMINA_VIEW_FILE_TREE:
@@ -741,6 +752,16 @@ void remmina_main_on_action_view_file_mode(GtkRadioAction *action, gpointer user
 		remmina_main_load_files();
 	}
 
+}
+
+void remmina_main_on_date_column_sort_clicked()
+{
+	if (remmina_pref.view_file_mode != REMMINA_VIEW_FILE_LIST) {
+		remmina_pref.view_file_mode = REMMINA_VIEW_FILE_LIST;
+		gtk_entry_set_text(remminamain->entry_quick_connect_server, "");
+		remmina_pref_save();
+		remmina_main_load_files();
+	}
 }
 
 static void remmina_main_import_file_list(GSList *files)
@@ -1124,6 +1145,9 @@ GtkWidget* remmina_main_new(void)
 	/* Menu widgets */
 	remminamain->menu_popup = GTK_MENU(GET_OBJECT("menu_popup"));
 	remminamain->menu_popup_full = GTK_MENU(GET_OBJECT("menu_popup_full"));
+	/* View mode radios */
+	remminamain->menuitem_view_mode_list = GTK_RADIO_MENU_ITEM(GET_OBJECT("menuitem_view_mode_list"));
+	remminamain->menuitem_view_mode_tree = GTK_RADIO_MENU_ITEM(GET_OBJECT("menuitem_view_mode_tree"));
 	/* Quick connect objects */
 	remminamain->box_quick_connect = GTK_BOX(GET_OBJECT("box_quick_connect"));
 	remminamain->combo_quick_connect_protocol = GTK_COMBO_BOX_TEXT(GET_OBJECT("combo_quick_connect_protocol"));
@@ -1134,9 +1158,6 @@ GtkWidget* remmina_main_new(void)
 	remminamain->statusbar_main = GTK_STATUSBAR(GET_OBJECT("statusbar_main"));
 	/* Non widget objects */
 	remminamain->accelgroup_shortcuts = GTK_ACCEL_GROUP(GET_OBJECT("accelgroup_shortcuts"));
-/*	remminamain->liststore_files_list = GTK_LIST_STORE(GET_OBJECT("liststore_files_list"));
-	remminamain->treestore_files_list = GTK_TREE_STORE(GET_OBJECT("treestore_files_list"));
-*/
 	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	remminamain->actiongroup_connection = GTK_ACTION_GROUP(GET_OBJECT("actiongroup_connection"));
 	/* Actions from the application ActionGroup */
