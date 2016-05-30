@@ -38,6 +38,8 @@
 #ifndef __REMMINAMAIN_H__
 #define __REMMINAMAIN_H__
 
+#include "remmina_file.h"
+
 typedef struct _RemminaMainPriv RemminaMainPriv;
 
 typedef struct _RemminaMain
@@ -46,12 +48,9 @@ typedef struct _RemminaMain
 	GtkWindow *window;
 	/* Menu widgets */
 	GtkMenu *menu_popup;
-	GtkMenu *menu_tools;
-	/* Toolbar widgets */
-	GtkToolbar *toolbar_main;
-	GtkToolItem *toolbutton_separator_quick_search;
-	GtkToolItem *toolbutton_quick_search;
-	GtkEntry *entry_quick_search;
+	GtkMenu *menu_popup_full;
+	GtkRadioMenuItem *menuitem_view_mode_list;
+	GtkRadioMenuItem *menuitem_view_mode_tree;
 	/* Quick connect objects */
 	GtkBox *box_quick_connect;
 	GtkComboBoxText *combo_quick_connect_protocol;
@@ -63,8 +62,6 @@ typedef struct _RemminaMain
 	GtkStatusbar *statusbar_main;
 	/* Non widget objects */
 	GtkAccelGroup *accelgroup_shortcuts;
-	GtkListStore *liststore_files_list;
-	GtkTreeStore *treestore_files_list;
 	GtkActionGroup *actiongroup_connection;
 	/* Actions from the application ActionGroup */
 	GtkAction *action_application_about;
@@ -80,11 +77,8 @@ typedef struct _RemminaMain
 	GtkAction *action_connection_delete;
 	GtkAction *action_connection_external_tools;
 	/* Actions from the view ActionGroup */
-	GtkToggleAction *action_view_toolbar;
 	GtkToggleAction *action_view_statusbar;
-	GtkToggleAction *action_view_quick_search;
 	GtkToggleAction *action_view_quick_connect;
-	GtkToggleAction *action_view_small_toolbar_buttons;
 	GtkToggleAction *action_view_mode_list;
 	GtkToggleAction *action_view_mode_tree;
 	/* Actions from the tools ActionGroup */
@@ -121,6 +115,8 @@ G_BEGIN_DECLS
 GtkWidget* remmina_main_new(void);
 /* Get the current main window or NULL if not initialized */
 GtkWindow* remmina_main_get_window(void);
+
+void remmina_main_update_file_datetime(RemminaFile *file);
 
 G_END_DECLS
 

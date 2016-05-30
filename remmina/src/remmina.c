@@ -61,8 +61,14 @@
 #include <gcrypt.h>
 # if GCRYPT_VERSION_NUMBER < 0x010600
 GCRY_THREAD_OPTION_PTHREAD_IMPL;
-# endif
-#endif
+#endif /* !GCRYPT_VERSION_NUMBER */
+#endif /* HAVE_LIBGCRYPT */
+
+#ifdef HAVE_LIBGCRYPT
+# if GCRYPT_VERSION_NUMBER < 0x010600
+static int gcrypt_thread_initialized = 0;
+#endif /* !GCRYPT_VERSION_NUMBER */
+#endif /* HAVE_LIBGCRYPT */
 
 static GOptionEntry remmina_options[] =
 {
@@ -80,6 +86,18 @@ static GOptionEntry remmina_options[] =
 	{ "version", 'v', 0, G_OPTION_ARG_NONE, NULL, N_("Show the application's version"), NULL },
 	{ NULL }
 };
+
+#ifdef WITH_LIBGCRYPT
+	static int
+_gpg_error_to_errno (gcry_error_t e)
+{
+	/* be lazy right now */
+	if (e == GPG_ERR_NO_ERROR)
+		return (0);
+	else
+		return (EINVAL);
+}
+#endif /* !WITH_LIBGCRYPT */
 
 static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *cmdline)
 {
@@ -216,12 +234,20 @@ int main(int argc, char* argv[])
 
 #ifdef HAVE_LIBGCRYPT
 # if GCRYPT_VERSION_NUMBER < 0x010600
-	gcry_control (GCRYCTL_SET_THREAD_CBS, &gcry_threads_pthread);
-# endif
+	gcry_error_t e;
+	if (!gcrypt_thread_initialized)
+	{
+		if ((e = gcry_control (GCRYCTL_SET_THREAD_CBS, &gcry_threads_pthread)) != GPG_ERR_NO_ERROR)
+		{
+			return (-1);
+		}
+		gcrypt_thread_initialized++;
+	}
+#endif /* !GCRYPT_VERSION_NUMBER */
 	gcry_check_version (NULL);
 	gcry_control (GCRYCTL_DISABLE_SECMEM, 0);
 	gcry_control (GCRYCTL_INITIALIZATION_FINISHED, 0);
-#endif
+#endif /* !HAVE_LIBGCRYPT */
 
 	app = gtk_application_new("org.Remmina", G_APPLICATION_HANDLES_COMMAND_LINE);
 	g_signal_connect(app, "startup", G_CALLBACK(remmina_on_startup), NULL);

@@ -35,21 +35,36 @@
 
 #include "config.h"
 
+#include <sys/stat.h>
+
+#include <errno.h>
+#include <fcntl.h>
+#include <locale.h>
+#include <langinfo.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
-#include <stdlib.h>
 
 #include "remmina_public.h"
+#include "remmina_log.h"
 #include "remmina_crypt.h"
 #include "remmina_file_manager.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_pref.h"
+#include "remmina_main.h"
 #include "remmina_masterthread_exec.h"
 #include "remmina/remmina_trace_calls.h"
 
 #define MIN_WINDOW_WIDTH 10
 #define MIN_WINDOW_HEIGHT 10
+
+static struct timespec times[2];
 
 typedef struct _RemminaSetting
 {
@@ -415,6 +430,8 @@ static void remmina_file_save_flush(RemminaFile *remminafile, GKeyFile *gkeyfile
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
 	g_file_set_contents(remminafile->filename, content, length, NULL);
 	g_free(content);
+
+	remmina_main_update_file_datetime(remminafile);
 }
 
 void remmina_file_save_group(RemminaFile *remminafile, RemminaSettingGroup group)
@@ -566,3 +583,71 @@ void remmina_file_unsave_password(RemminaFile *remminafile)
 	remmina_file_set_string(remminafile, "password", NULL);
 	remmina_file_save_group(remminafile, REMMINA_SETTING_GROUP_CREDENTIAL);
 }
+
+gchar*
+remmina_file_get_datetime(RemminaFile *remminafile)
+{
+	TRACE_CALL("remmina_file_get_datetime");
+
+	GFile *file = g_file_new_for_path (remminafile->filename);
+	GFileInfo *info;
+
+	struct timeval tv;
+	struct tm* ptm;
+	char time_string[256];
+
+	guint64 mtime;
+	gchar *modtime_string;
+
+	info = g_file_query_info (file,
+			G_FILE_ATTRIBUTE_TIME_MODIFIED,
+			G_FILE_QUERY_INFO_NONE,
+			NULL,
+			NULL);
+
+	if (info == NULL) {
+		g_print("couldn't get time info\n");
+		return "26/01/1976 23:30:00";
+	}
+
+	mtime = g_file_info_get_attribute_uint64 (info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+	tv.tv_sec = mtime;
+
+	ptm = localtime(&tv.tv_sec);
+	strftime(time_string, sizeof(time_string), "%F - %T", ptm);
+
+	modtime_string = g_locale_to_utf8(time_string, -1, NULL, NULL, NULL);
+
+	g_object_unref (info);
+
+	return modtime_string;
+}
+
+/* Function used to update the atime and mtime of a given remmina file, partially
+ * taken from suckless sbase */
+void
+remmina_file_touch(RemminaFile *remminafile)
+{
+	TRACE_CALL("remmina_file_touch");
+	int fd;
+	struct stat st;
+	int r;
+
+	if ((r = stat(remminafile->filename, &st)) < 0) {
+		if (errno != ENOENT)
+			remmina_log_printf("stat %s:", remminafile->filename);
+	} else if (!r) {
+		times[0] = st.st_atim;
+		times[1] = st.st_mtim;
+		if (utimensat(AT_FDCWD, remminafile->filename, times, 0) < 0)
+			remmina_log_printf("utimensat %s:", remminafile->filename);
+		return;
+	}
+
+	if ((fd = open(remminafile->filename, O_CREAT | O_EXCL, 0644)) < 0)
+		remmina_log_printf("open %s:", remminafile->filename);
+	close(fd);
+
+	remmina_file_touch(remminafile);
+}
+

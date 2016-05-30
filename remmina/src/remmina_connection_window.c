@@ -3129,30 +3129,36 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
 			cnnhld->hostkey_activated = FALSE;
 			if (cnnhld->hostkey_used)
 			{
+				/* hostkey pressed + something else */
 				return TRUE;
 			}
-			/* If hostkey is released without pressing other keys, we should execute the
-			 * shortcut key which is the same as hostkey. Be default, this is grab/ungrab
-			 * keyboard */
 		}
+		/* If hostkey is released without pressing other keys, we should execute the
+		 * shortcut key which is the same as hostkey. Be default, this is grab/ungrab
+		 * keyboard */
 		else if (cnnhld->hostkey_activated)
 		{
 			/* Trap all key releases when hostkey is pressed */
+			/* hostkey pressed + something else */
 			return TRUE;
+
 		}
 		else
 		{
+			/* Any key pressed, no hostkey */
 			return FALSE;
 		}
 	}
 	else if (remmina_pref.hostkey && keyval == remmina_pref.hostkey)
 	{
+		/* TODO: Add callback for hostname transparent overlay #832 */
 		cnnhld->hostkey_activated = TRUE;
 		cnnhld->hostkey_used = FALSE;
 		return TRUE;
 	}
 	else if (!cnnhld->hostkey_activated)
 	{
+		/* Any key pressed, no hostkey */
 		return FALSE;
 	}
 
