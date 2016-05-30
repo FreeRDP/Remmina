@@ -121,7 +121,7 @@ if(WITH_SURVEY)
             "src/remmina_survey.h"
             )
     else(WEBKIT2_FOUND)
-        message(ERROR "Weki2gtk-4.0 is required")
+        message(FATAL_ERROR "Either webkit2gtk-4.0 or webkit2gtk-3.0 is required")
     endif(WEBKIT2_FOUND)
 endif(WITH_SURVEY)
 
