@@ -1,7 +1,39 @@
 # Change Log
 
-## [1.2.0.rcgit.12](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.12) (2016-05-18)
+## [1.2.0.rcgit.13](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.13) (2016-05-30)
 
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0.rcgit.12...1.2.0.rcgit.13)
+
+**Implemented enhancements:**
+
+- Move Focus to Quick\_Find search-box Upon Typing [\#837](https://github.com/FreeRDP/Remmina/issues/837)
+- RDP: Fix extended mouse event to register the click for forward/back buttons [\#638](https://github.com/FreeRDP/Remmina/issues/638)
+- Remmina Main Window Refactoring [\#875](https://github.com/FreeRDP/Remmina/pull/875) ([antenore](https://github.com/antenore))
+
+**Fixed bugs:**
+
+- \[remmina\_main\] Quick connect bar not visible [\#878](https://github.com/FreeRDP/Remmina/issues/878)
+- Remmina doesn't support ssh-rsa hostkeys [\#647](https://github.com/FreeRDP/Remmina/issues/647)
+- Toolbar buttons initially enabled in the main window [\#467](https://github.com/FreeRDP/Remmina/issues/467)
+
+**Closed issues:**
+
+- Only access via Administrator account \(Raspbian -\> Windows 10\) [\#880](https://github.com/FreeRDP/Remmina/issues/880)
+- Location of saved connections is wrong in Wiki [\#866](https://github.com/FreeRDP/Remmina/issues/866)
+- Grayed buttons if no entry or if none selected [\#488](https://github.com/FreeRDP/Remmina/issues/488)
+
+**Merged pull requests:**
+
+- Spice plugin: smartcard redirection support [\#882](https://github.com/FreeRDP/Remmina/pull/882) ([larchunix](https://github.com/larchunix))
+- SPICE plugin: USB redirection support + minor fixes [\#881](https://github.com/FreeRDP/Remmina/pull/881) ([larchunix](https://github.com/larchunix))
+- Spice plugin: scaling support  [\#879](https://github.com/FreeRDP/Remmina/pull/879) ([larchunix](https://github.com/larchunix))
+- SPICE plugin improvements \(again\) [\#877](https://github.com/FreeRDP/Remmina/pull/877) ([larchunix](https://github.com/larchunix))
+- More SPICE plugin improvements [\#874](https://github.com/FreeRDP/Remmina/pull/874) ([larchunix](https://github.com/larchunix))
+- SPICE plugin improvements [\#872](https://github.com/FreeRDP/Remmina/pull/872) ([larchunix](https://github.com/larchunix))
+- Initial support for Wayland and Mir [\#871](https://github.com/FreeRDP/Remmina/pull/871) ([giox069](https://github.com/giox069))
+- New plugin with basic support for the SPICE protocol [\#870](https://github.com/FreeRDP/Remmina/pull/870) ([larchunix](https://github.com/larchunix))
+
+## [1.2.0.rcgit.12](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.12) (2016-05-17)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0.rcgit.11...1.2.0.rcgit.12)
 
 **Implemented enhancements:**
