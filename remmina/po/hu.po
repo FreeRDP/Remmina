@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-04 23:18+0100\n"
+"POT-Creation-Date: 2016-05-31 10:23+0200\n"
 "PO-Revision-Date: 2013-04-03 22:14+0000\n"
 "Last-Translator: Gabor Kelemen <kelemeng@openscope.org>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -19,32 +19,373 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 "X-Generator: Launchpad (build 16976)\n"
 
-#: remmina/src/remmina_exec.c:125
+#: remmina/src/remmina_ftp_client.c:427
+msgid "Choose download location"
+msgstr "Válasszon letöltési helyet"
+
+#: remmina/src/remmina_ftp_client.c:572
+msgid "Are you sure to delete the selected files on server?"
+msgstr "Biztosan törölni akarja a kiválasztott fájlokat a kiszolgálóról?"
+
+#: remmina/src/remmina_ftp_client.c:631
+msgid "Choose a file to upload"
+msgstr "Válasszon egy fájlt a feltöltéshez"
+
+#: remmina/src/remmina_ftp_client.c:639
+msgid "Upload folder"
+msgstr "Könyvtár feltöltése"
+
+#: remmina/src/remmina_ftp_client.c:700 remmina/src/remmina_ftp_client.c:825
+msgid "Download"
+msgstr "Letöltés"
+
+#: remmina/src/remmina_ftp_client.c:707 remmina/src/remmina_ftp_client.c:836
+msgid "Upload"
+msgstr "Feltöltés"
+
+#: remmina/src/remmina_ftp_client.c:714 remmina/ui/remmina_main.glade:102
+#: remmina/ui/remmina_main.glade:103
+msgid "_Delete"
+msgstr ""
+
+#: remmina/src/remmina_ftp_client.c:804
+msgid "Home"
+msgstr ""
+
+#: remmina/src/remmina_ftp_client.c:806
+msgid "Go to home folder"
+msgstr "Ugrás a saját mappára"
+
+#: remmina/src/remmina_ftp_client.c:811
+msgid "Up"
+msgstr ""
+
+#: remmina/src/remmina_ftp_client.c:813
+msgid "Go to parent folder"
+msgstr "Ugrás a szülő mappára"
+
+#: remmina/src/remmina_ftp_client.c:818 remmina-plugins/vnc/vnc_plugin.c:2043
+#: remmina-plugins/rdp/rdp_plugin.c:1383
+msgid "Refresh"
+msgstr "Frissítés"
+
+#: remmina/src/remmina_ftp_client.c:820
+msgid "Refresh current folder"
+msgstr "Aktuális mappa frissítése"
+
+#: remmina/src/remmina_ftp_client.c:827
+msgid "Download from server"
+msgstr "Letöltés kiszolgálóról"
+
+#: remmina/src/remmina_ftp_client.c:838
+msgid "Upload to server"
+msgstr "Feltöltés kiszolgálóra"
+
+#: remmina/src/remmina_ftp_client.c:845
+msgid "Delete"
+msgstr ""
+
+#: remmina/src/remmina_ftp_client.c:847
+msgid "Delete files on server"
+msgstr "Fájlok törlése kiszolgálóról"
+
+#: remmina/src/remmina_ftp_client.c:959 remmina/src/remmina_ftp_client.c:1028
+msgid "File Name"
+msgstr "Fájlnév"
+
+#: remmina/src/remmina_ftp_client.c:972 remmina/src/remmina_ftp_client.c:1057
+msgid "Size"
+msgstr "Méret"
+
+#: remmina/src/remmina_ftp_client.c:980
+msgid "User"
+msgstr "Felhasználó"
+
+#: remmina/src/remmina_ftp_client.c:986 remmina/src/remmina_file_editor.c:1374
+#: remmina/ui/remmina_main.glade:656
+msgid "Group"
+msgstr "Csoport"
+
+#: remmina/src/remmina_ftp_client.c:992
+msgid "Permission"
+msgstr "Jogosultság"
+
+#: remmina/src/remmina_ftp_client.c:1044 remmina-plugins/rdp/rdp_plugin.c:1314
+msgid "Remote"
+msgstr "Távoli"
+
+#: remmina/src/remmina_ftp_client.c:1051 remmina-plugins/rdp/rdp_plugin.c:1310
+msgid "Local"
+msgstr "Helyi"
+
+#: remmina/src/remmina_ftp_client.c:1065
+msgid "Progress"
+msgstr "Folyamat"
+
+#: remmina/src/remmina_survey.c:454
+msgid "Do you agree to share some usage statistics with us?"
+msgstr ""
+
+#: remmina/src/remmina_survey.c:458
+msgid "By pressing the yes button, you're not yet sending any data."
+msgstr ""
+
+#: remmina/src/remmina_survey.c:460
+msgid "_Do not show this dialog again"
+msgstr ""
+
+#: remmina/src/remmina_applet_menu_item.c:115
+msgid "Discovered"
+msgstr "Felfedezve"
+
+#: remmina/src/remmina_applet_menu_item.c:120
+msgid "New Connection"
+msgstr "Új kapcsolat"
+
+#: remmina/src/remmina_plugin_manager.c:63
+#: remmina/src/remmina_file_editor.c:1392
+msgid "Protocol"
+msgstr "Protokoll"
+
+#: remmina/src/remmina_plugin_manager.c:63
+msgid "Entry"
+msgstr "Bejegyzés"
+
+#: remmina/src/remmina_plugin_manager.c:63
+msgid "File"
+msgstr "Fájl"
+
+#: remmina/src/remmina_plugin_manager.c:63
+msgid "Tool"
+msgstr "Eszköz"
+
+#: remmina/src/remmina_plugin_manager.c:63
+msgid "Preference"
+msgstr "Beállítás"
+
+#: remmina/src/remmina_plugin_manager.c:63
+msgid "Secret"
+msgstr "Titok"
+
+#: remmina/src/remmina_plugin_manager.c:305 remmina/ui/remmina_main.glade:61
+#: remmina/ui/remmina_main.glade:62 remmina/ui/remmina_main.glade:456
+msgid "Plugins"
+msgstr "Bővítmények"
+
+#: remmina/src/remmina_plugin_manager.c:305
+#: remmina/src/remmina_init_dialog.c:87 remmina/src/remmina_file_editor.c:146
+msgid "_OK"
+msgstr ""
+
+#: remmina/src/remmina_plugin_manager.c:323
+#: remmina/src/remmina_file_editor.c:1349
+#: remmina-plugins/nx/nx_session_manager.c:219
+#: remmina/ui/remmina_main.glade:634
+msgid "Name"
+msgstr "Név"
+
+#: remmina/src/remmina_plugin_manager.c:329
+#: remmina-plugins/nx/nx_session_manager.c:198
+msgid "Type"
+msgstr "Típus"
+
+#: remmina/src/remmina_plugin_manager.c:335
+msgid "Description"
+msgstr "Leírás"
+
+#: remmina/src/remmina_plugin_manager.c:341
+msgid "Version"
+msgstr "Verzió"
+
+#: remmina/src/remmina_exec.c:184
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "A modul (%s) nincs regisztrálva."
 
-#: remmina/src/remmina_applet_menu_item.c:105
-msgid "Discovered"
-msgstr "Felfedezve"
+#: remmina/src/remmina_public.c:672
+msgid "Please enter format 'widthxheight'."
+msgstr "„szélességxmagasság” formátumban adja meg."
 
-#: remmina/src/remmina_applet_menu_item.c:110
-msgid "New Connection"
-msgstr "Új kapcsolat"
+#: remmina/src/remmina_connection_window.c:368
+#, c-format
+msgid ""
+"There are %i active connections in the current window. Are you sure to close?"
+msgstr ""
+"%i nyitott kapcsolat van a jelenlegi ablakban. Biztosan be akarja zárni?"
 
-#: remmina/src/remmina_main.c:464
+#: remmina/src/remmina_connection_window.c:1059
+msgid "Viewport fullscreen mode"
+msgstr "Munkalap teljes képernyős módja"
+
+#: remmina/src/remmina_connection_window.c:1069
+msgid "Scrolled fullscreen mode"
+msgstr "Görgetett teljes képernyős mód"
+
+#: remmina/src/remmina_connection_window.c:1134
+msgid "Keep aspect ratio when scaled"
+msgstr ""
+
+#: remmina/src/remmina_connection_window.c:1144
+msgid "Fill client window when scaled"
+msgstr ""
+
+#: remmina/src/remmina_connection_window.c:1530
+#: remmina/src/remmina_pref_dialog.c:106
+#: remmina/ui/remmina_preferences.glade:276
+msgid "Keystrokes"
+msgstr ""
+
+#: remmina/src/remmina_connection_window.c:1623
+msgid ""
+"Warning: screenshot is scaled or distorted. Disable scaling to have better "
+"screenshot."
+msgstr ""
+
+#: remmina/src/remmina_connection_window.c:1726
+msgid "Resize the window to fit in remote resolution"
+msgstr "Az ablak átméretezése a távoli felbontásnak megfelelően"
+
+#: remmina/src/remmina_connection_window.c:1736
+#: remmina/ui/remmina_preferences.glade:695
+msgid "Toggle fullscreen mode"
+msgstr "Teljes képernyős mód"
+
+#: remmina/src/remmina_connection_window.c:1776
+#: remmina/ui/remmina_preferences.glade:751
+msgid "Switch tab pages"
+msgstr "Lapok váltása"
+
+#: remmina/src/remmina_connection_window.c:1790
+#: remmina/ui/remmina_preferences.glade:792
+msgid "Toggle scaled mode"
+msgstr "Átméretezett mód"
+
+#: remmina/src/remmina_connection_window.c:1823
+msgid "Grab all keyboard events"
+msgstr "Minden billentyűesemény elkapása"
+
+#: remmina/src/remmina_connection_window.c:1832
+#: remmina/ui/remmina_main.glade:42 remmina/ui/remmina_main.glade:43
+msgid "Preferences"
+msgstr "Beállítások"
+
+#: remmina/src/remmina_connection_window.c:1840
+#: remmina/src/remmina_connection_window.c:1841
+msgid "Tools"
+msgstr "Eszközök"
+
+#: remmina/src/remmina_connection_window.c:1853
+#: remmina/ui/remmina_preferences.glade:932
+msgid "Screenshot"
+msgstr ""
+
+#: remmina/src/remmina_connection_window.c:1860
+#: remmina/ui/remmina_preferences.glade:848
+msgid "Minimize window"
+msgstr "Ablak minimalizálása"
+
+#: remmina/src/remmina_connection_window.c:1867
+#: remmina/ui/remmina_preferences.glade:876
+msgid "Disconnect"
+msgstr "Leválasztás"
+
+#: remmina/src/remmina_connection_window.c:3471
+#: remmina/src/remmina_file_editor.c:1499
+#: remmina/src/remmina_file_editor.c:1520
+#, c-format
+msgid "File %s not found."
+msgstr "A fájl (%s) nem található"
+
+#: remmina/src/remmina_ssh.c:192
+#, c-format
+msgid "SSH password authentication failed: %s"
+msgstr "A jelszavas SSH-hitelesítés sikertelen: %s"
+
+#: remmina/src/remmina_ssh.c:211 remmina/src/remmina_ssh.c:221
+#: remmina/src/remmina_ssh.c:230
+#, c-format
+msgid "SSH public key authentication failed: %s"
+msgstr "A nyilvános kulcsos SSH-hitelesítés sikertelen: %s"
+
+#: remmina/src/remmina_ssh.c:212
+msgid "SSH Key file not yet set."
+msgstr "Még nincs beállítva SSH-kulcsfájl."
+
+#: remmina/src/remmina_ssh.c:247
+#, c-format
+msgid "SSH automatic public key authentication failed: %s"
+msgstr "Az automatikus nyilvános kulcsos SSH-hitelesítés sikertelen: %s"
+
+#: remmina/src/remmina_ssh.c:264
+#, c-format
+msgid "SSH public key authentication with ssh agent failed: %s"
+msgstr ""
+
+#: remmina/src/remmina_ssh.c:380
+#, c-format
+msgid "Authenticating %s's password to SSH server %s..."
+msgstr "%s jelszavának hitelesítése %s SSH-kiszolgálón…"
+
+#: remmina/src/remmina_ssh.c:381 remmina/src/remmina_protocol_widget.c:982
+msgid "SSH password"
+msgstr "SSH-jelszó"
+
+#: remmina/src/remmina_ssh.c:384
+#, c-format
+msgid "Authenticating %s's identity to SSH server %s..."
+msgstr "%s személyazonosságának ellenőrzése a(z) %s SSH-kiszolgálón…"
+
+#: remmina/src/remmina_ssh.c:385 remmina/src/remmina_protocol_widget.c:985
+msgid "SSH private key passphrase"
+msgstr "Személyes SSH-kulcs jelszava"
+
+#: remmina/src/remmina_ssh.c:453
+#, c-format
+msgid "Failed to startup SSH session: %s"
+msgstr "Nem sikerült elindítani az SSH-kapcsolatot: %s"
+
+#: remmina/src/remmina_ssh.c:831
+#, c-format
+msgid "Failed to connect to the SSH tunnel destination: %s"
+msgstr "Nem sikerült kapcsolódni az SSH-alagút céljához: %s"
+
+#: remmina/src/remmina_ssh.c:864
+#, c-format
+msgid "Failed to execute %s on SSH server : %%s"
+msgstr "Nem sikerült %s végrehajtása az SSH-kiszolgálón: %%s"
+
+#: remmina/src/remmina_ssh.c:902 remmina/src/remmina_ssh.c:929
+#, c-format
+msgid "Failed to request port forwarding : %s"
+msgstr "Nem sikerült a porttovábbítás kérése: %s"
+
+#: remmina/src/remmina_ssh.c:977
+msgid "No response from the server."
+msgstr "Nincs válasz a kiszolgálótól."
+
+#: remmina/src/remmina_ssh.c:1407
+#, c-format
+msgid "Failed to create sftp session: %s"
+msgstr "Nem sikerült létrehozni az sftp kapcsolatot: %s"
+
+#: remmina/src/remmina_ssh.c:1412
+#, c-format
+msgid "Failed to initialize sftp session: %s"
+msgstr "Nem sikerült előkészíteni az sftp kapcsolatot: %s"
+
+#: remmina/src/remmina_main.c:576
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "Összesen %i elem."
 msgstr[1] "Összesen %i elem."
 
-#: remmina/src/remmina_main.c:535
+#: remmina/src/remmina_main.c:687
 #, c-format
 msgid "Are you sure to delete '%s'"
 msgstr "Biztosan törölni akarja ezt: „%s”?"
 
-#: remmina/src/remmina_main.c:714
+#: remmina/src/remmina_main.c:806
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -53,1151 +394,42 @@ msgstr ""
 "Nem importálható:\n"
 "%s"
 
-#: remmina/src/remmina_main.c:741 remmina/src/remmina_main.c:894
+#: remmina/src/remmina_main.c:835 remmina/ui/remmina_main.glade:185
+#: remmina/ui/remmina_main.glade:186 remmina/ui/remmina_main.glade:436
 msgid "Import"
 msgstr "Importálás"
 
-#: remmina/src/remmina_main.c:764 remmina/src/remmina_file_editor.c:1235
+#: remmina/src/remmina_main.c:859 remmina/src/remmina_file_editor.c:1237
 msgid "_Save"
 msgstr ""
 
-#: remmina/src/remmina_main.c:774
+#: remmina/src/remmina_main.c:869
 msgid "This protocol does not support exporting."
 msgstr "Ez a protokoll nem támogatja az exportálást."
 
-#: remmina/src/remmina_main.c:880
-msgid "_Connection"
-msgstr "_Kapcsolat"
-
-#: remmina/src/remmina_main.c:881
-msgid "_Edit"
-msgstr "S_zerkesztés"
-
-#: remmina/src/remmina_main.c:882
-msgid "_View"
-msgstr "_Nézet"
-
-#: remmina/src/remmina_main.c:883
-msgid "_Tools"
-msgstr "_Eszközök"
-
-#: remmina/src/remmina_main.c:884
-msgid "_Help"
-msgstr "_Súgó"
-
-#: remmina/src/remmina_main.c:886
-msgid "Create a new remote desktop file"
-msgstr "Új távoli asztal fájl létrehozása"
-
-#: remmina/src/remmina_main.c:889
-msgid "Open the preferences dialog"
-msgstr "A beállítások ablak megnyitása"
-
-#: remmina/src/remmina_main.c:896 remmina/src/remmina_plugin_manager.c:261
-msgid "Plugins"
-msgstr "Bővítmények"
-
-#: remmina/src/remmina_main.c:898
-msgid "Homepage"
-msgstr "Honlap"
-
-#: remmina/src/remmina_main.c:900
-msgid "Online Wiki"
-msgstr "Online wiki"
-
-#: remmina/src/remmina_main.c:902
-msgid "Debug Window"
-msgstr "Hibakeresési ablak"
-
-#: remmina/src/remmina_main.c:908
-msgid "Open the connection to the selected remote desktop file"
-msgstr "A kiválasztott távoli asztal fájl kapcsolat megnyitása"
-
-#: remmina/src/remmina_main.c:911
-msgid "Create a copy of the selected remote desktop file"
-msgstr "A kiválasztott távoli asztal fájl kapcsolat másolása"
-
-#: remmina/src/remmina_main.c:914
-msgid "Edit the selected remote desktop file"
-msgstr "A kiválasztott távoli asztal fájl szerkesztése"
-
-#: remmina/src/remmina_main.c:917
-msgid "Delete the selected remote desktop file"
-msgstr "A kiválasztott távoli asztal fájl törlése"
-
-#: remmina/src/remmina_main.c:920
-msgid "Export"
-msgstr "Exportálás"
-
-#: remmina/src/remmina_main.c:922
-msgid "External Tools"
+#: remmina/src/remmina_main.c:923
+msgid "Warning: The survey hasn't been enabled at compile time."
 msgstr ""
 
-#: remmina/src/remmina_main.c:929
-msgid "Toolbar"
-msgstr "Eszköztár"
-
-#: remmina/src/remmina_main.c:931
-msgid "Statusbar"
-msgstr "Állapotsor"
-
-#: remmina/src/remmina_main.c:933
-msgid "Quick Search"
-msgstr "Gyorskereső"
-
-#: remmina/src/remmina_main.c:935 remmina/src/remmina_file_editor.c:1365
-msgid "Quick Connect"
-msgstr "Gyors csatlakozás"
-
-#: remmina/src/remmina_main.c:937
-msgid "Small Toolbar Buttons"
-msgstr "Kicsi eszköztárgombok"
-
-#: remmina/src/remmina_main.c:942
-msgid "List View"
-msgstr "Listanézet"
-
-#: remmina/src/remmina_main.c:943
-msgid "Tree View"
-msgstr "Fanézet"
-
-#: remmina/src/remmina_main.c:1178 remmina/src/remmina_icon.c:418
-#: remmina/src/remmina_icon.c:419
+#: remmina/src/remmina_main.c:1080 remmina/src/remmina_icon.c:457
+#: remmina/src/remmina_icon.c:458
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina távoli asztal kliens"
 
-#: remmina/src/remmina_main.c:1284
-msgid "Connect !"
-msgstr ""
-
-#: remmina/src/remmina_main.c:1302 remmina/src/remmina_plugin_manager.c:279
-#: remmina/src/remmina_file_editor.c:1350
-#: remmina-plugins/nx/nx_session_manager.c:199
-msgid "Name"
-msgstr "Név"
-
-#: remmina/src/remmina_main.c:1315 remmina/src/remmina_ftp_client.c:949
-#: remmina/src/remmina_file_editor.c:1375
-msgid "Group"
-msgstr "Csoport"
-
-#: remmina/src/remmina_main.c:1322 remmina/src/remmina_protocol_widget.c:1037
-#: remmina/src/remmina_file_editor.c:360 remmina/src/remmina_file_editor.c:850
-#: remmina/src/remmina_file_editor.c:863
-msgid "Server"
-msgstr "Kiszolgáló"
-
-#: remmina/src/remmina_key_chooser.c:55
-msgid "<None>"
-msgstr "<Nincs>"
-
-#: remmina/src/remmina_key_chooser.c:80
-msgid "Choose a new key"
-msgstr "Válasszon új billentyűt"
-
-#: remmina/src/remmina_key_chooser.c:81 remmina/src/remmina_init_dialog.c:82
-#: remmina/src/remmina_sftp_client.c:982 remmina/src/remmina_file_editor.c:138
-#: remmina/src/remmina_file_editor.c:321
-#: remmina/src/remmina_file_editor.c:1242
-#: remmina-plugins/nx/nx_session_manager.c:152
-msgid "_Cancel"
-msgstr ""
-
-#: remmina/src/remmina_key_chooser.c:81
-msgid "_Remove"
-msgstr ""
-
-#: remmina/src/remmina_key_chooser.c:90
-msgid "Please press the new key..."
-msgstr "Nyomja le az új billentyűt…"
-
-#: remmina/src/remmina_connection_window.c:247
-#, c-format
-msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
-msgstr ""
-"%i nyitott kapcsolat van a jelenlegi ablakban. Biztosan be akarja zárni?"
-
-#: remmina/src/remmina_connection_window.c:667
-msgid "Viewport fullscreen mode"
-msgstr "Munkalap teljes képernyős módja"
-
-#: remmina/src/remmina_connection_window.c:677
-msgid "Scrolled fullscreen mode"
-msgstr "Görgetett teljes képernyős mód"
-
-#: remmina/src/remmina_connection_window.c:1250
-msgid "Resize the window to fit in remote resolution"
-msgstr "Az ablak átméretezése a távoli felbontásnak megfelelően"
-
-#: remmina/src/remmina_connection_window.c:1260
-#: remmina/src/remmina_pref_dialog.c:608
-msgid "Toggle fullscreen mode"
-msgstr "Teljes képernyős mód"
-
-#: remmina/src/remmina_connection_window.c:1298
-#: remmina/src/remmina_pref_dialog.c:630
-msgid "Switch tab pages"
-msgstr "Lapok váltása"
-
-#: remmina/src/remmina_connection_window.c:1311
-#: remmina/src/remmina_pref_dialog.c:654
-msgid "Toggle scaled mode"
-msgstr "Átméretezett mód"
-
-#: remmina/src/remmina_connection_window.c:1343
-msgid "Grab all keyboard events"
-msgstr "Minden billentyűesemény elkapása"
-
-#: remmina/src/remmina_connection_window.c:1352
-msgid "Preferences"
-msgstr "Beállítások"
-
-#: remmina/src/remmina_connection_window.c:1360
-#: remmina/src/remmina_connection_window.c:1361
-msgid "Tools"
-msgstr "Eszközök"
-
-#: remmina/src/remmina_connection_window.c:1373
-#: remmina/src/remmina_pref_dialog.c:676
-msgid "Minimize window"
-msgstr "Ablak minimalizálása"
-
-#: remmina/src/remmina_connection_window.c:1380
-#: remmina/src/remmina_pref_dialog.c:687
-msgid "Disconnect"
-msgstr "Leválasztás"
-
-#: remmina/src/remmina_connection_window.c:2605
-#: remmina/src/remmina_file_editor.c:1452
-#: remmina/src/remmina_file_editor.c:1472
-#, c-format
-msgid "File %s not found."
-msgstr "A fájl (%s) nem található"
-
-#: remmina/src/remmina_plugin_manager.c:56
-#: remmina/src/remmina_file_editor.c:1393
-msgid "Protocol"
-msgstr "Protokoll"
-
-#: remmina/src/remmina_plugin_manager.c:56
-msgid "Entry"
-msgstr "Bejegyzés"
-
-#: remmina/src/remmina_plugin_manager.c:56
-msgid "File"
-msgstr "Fájl"
-
-#: remmina/src/remmina_plugin_manager.c:56
-msgid "Tool"
-msgstr "Eszköz"
-
-#: remmina/src/remmina_plugin_manager.c:56
-msgid "Preference"
-msgstr "Beállítás"
-
-#: remmina/src/remmina_plugin_manager.c:56
-msgid "Secret"
-msgstr "Titok"
-
-#: remmina/src/remmina_plugin_manager.c:261
-#: remmina/src/remmina_init_dialog.c:82 remmina/src/remmina_file_editor.c:139
-msgid "_OK"
-msgstr ""
-
-#: remmina/src/remmina_plugin_manager.c:285
-#: remmina-plugins/nx/nx_session_manager.c:178
-msgid "Type"
-msgstr "Típus"
-
-#: remmina/src/remmina_plugin_manager.c:291
-msgid "Description"
-msgstr "Leírás"
-
-#: remmina/src/remmina_plugin_manager.c:297
-msgid "Version"
-msgstr "Verzió"
-
-#: remmina/src/remmina_icon.c:127
-msgid "Open Main Window"
-msgstr "Főablak megnyitása"
-
-#: remmina/src/remmina_icon.c:132
-msgid "_Preferences"
-msgstr ""
-
-#: remmina/src/remmina_icon.c:137
-msgid "_About"
-msgstr ""
-
-#: remmina/src/remmina_icon.c:147
-msgid "Enable Service Discovery"
-msgstr "Szolgáltatásfelfedezés engedélyezése"
-
-#: remmina/src/remmina_icon.c:161
-msgid "_Quit"
-msgstr ""
-
-#: remmina/src/remmina_icon.c:391 remmina/src/remmina_icon.c:484
-msgid "Remmina Applet"
-msgstr "Remmina értesítő ikon"
-
-#: remmina/src/remmina_icon.c:393 remmina/src/remmina_icon.c:486
-msgid "Connect to remote desktops through the applet menu"
-msgstr "Kapcsolódás távoli asztalokhoz az értesítő ikon menüjén keresztül"
-
-#: remmina/src/remmina_init_dialog.c:266
-#, c-format
-msgid "Save %s"
-msgstr "%s mentése"
-
-#: remmina/src/remmina_init_dialog.c:349 remmina/src/remmina_file_editor.c:902
-#: remmina-plugins/rdp/rdp_plugin.c:1122 remmina-plugins/nx/nx_plugin.c:692
-#: remmina-plugins/vnc/vnc_plugin.c:1995 remmina-plugins/vnc/vnc_plugin.c:2009
-msgid "User name"
-msgstr "Felhasználónév"
-
-#: remmina/src/remmina_init_dialog.c:363
-#: remmina/src/remmina_protocol_widget.c:812
-#: remmina/src/remmina_file_editor.c:405 remmina/src/remmina_file_editor.c:905
-msgid "Password"
-msgstr "Jelszó"
-
-#: remmina/src/remmina_init_dialog.c:378 remmina-plugins/rdp/rdp_plugin.c:1124
-msgid "Domain"
-msgstr "Tartomány"
-
-#: remmina/src/remmina_init_dialog.c:393
-msgid "Save password"
-msgstr "Jelszó mentése"
-
-#: remmina/src/remmina_init_dialog.c:465
-msgid "Certificate Details:"
-msgstr ""
-
-#: remmina/src/remmina_init_dialog.c:479 remmina/src/remmina_init_dialog.c:575
-msgid "Subject:"
-msgstr "Tárgy:"
-
-#: remmina/src/remmina_init_dialog.c:489 remmina/src/remmina_init_dialog.c:586
-msgid "Issuer:"
-msgstr "Kibocsátó:"
-
-#: remmina/src/remmina_init_dialog.c:499
-msgid "Fingerprint:"
-msgstr "Ujjlenyomat:"
-
-#: remmina/src/remmina_init_dialog.c:510
-msgid "Accept Certificate?"
-msgstr "Elfogadja a tanúsítványt?"
-
-#: remmina/src/remmina_init_dialog.c:561
-msgid "Certificate Changed! Details:"
-msgstr ""
-
-#: remmina/src/remmina_init_dialog.c:596
-msgid "Old Fingerprint:"
-msgstr ""
-
-#: remmina/src/remmina_init_dialog.c:606
-msgid "New Fingerprint:"
-msgstr ""
-
-#: remmina/src/remmina_init_dialog.c:617
-msgid "Accept Changed Certificate?"
-msgstr ""
-
-#: remmina/src/remmina_init_dialog.c:718
-msgid "CA certificate"
-msgstr "CA tanúsítvány"
-
-#: remmina/src/remmina_init_dialog.c:719
-msgid "CA CRL"
-msgstr "CA CRL"
-
-#: remmina/src/remmina_init_dialog.c:720
-msgid "Client certificate"
-msgstr "Klienstanúsítvány"
-
-#: remmina/src/remmina_init_dialog.c:721
-msgid "Client key"
-msgstr "Klienskulcs"
-
-#: remmina/src/remmina_init_dialog.c:794
-msgid "Do you trust the new public key?"
-msgstr "Megbízik az új nyilvános kulcsban?"
-
-#: remmina/src/remmina_init_dialog.c:820
-msgid "The server is unknown. The public key fingerprint is:"
-msgstr "A kiszolgáló ismeretlen. A nyilvános kulcs ujjlenyomata:"
-
-#: remmina/src/remmina_init_dialog.c:828
-msgid ""
-"WARNING: The server has changed its public key. This means either you are "
-"under attack,\n"
-"or the administrator has changed the key. The new public key fingerprint is:"
-msgstr ""
-"FIGYELMEZTETÉS: A kiszolgáló megváltoztatta a nyilvános kulcsot. Ez "
-"jelentheti azt, hogy támadás érte, vagy egy rendszergazda megváltoztatta a "
-"kulcsot. Az új nyilvános kulcs ujjlenyomata:"
-
-#: remmina/src/remmina_protocol_widget.c:125
-#, c-format
-msgid "Connecting to '%s'..."
-msgstr "Csatlakozás ehhez: „%s”…"
-
-#: remmina/src/remmina_protocol_widget.c:202
-#, c-format
-msgid "Protocol plugin %s is not installed."
-msgstr "%s protokollbővítmény nincs telepítve."
-
-#: remmina/src/remmina_protocol_widget.c:241
-msgid "Open Secure Shell in New Terminal..."
-msgstr "SSH megnyitása új terminálban…"
-
-#: remmina/src/remmina_protocol_widget.c:247
-msgid "Open Secure File Transfer..."
-msgstr "Biztonságos fájlátvitel megnyitása…"
-
-#: remmina/src/remmina_protocol_widget.c:458
-#, c-format
-msgid "Connecting to SSH server %s..."
-msgstr "Csatlakozás a(z) %s SSH-kiszolgálóhoz…"
-
-#: remmina/src/remmina_protocol_widget.c:521
-#: remmina/src/remmina_protocol_widget.c:682
-#, c-format
-msgid "Connecting to %s through SSH tunnel..."
-msgstr "Csatlakozás SSH-alagúton keresztül ehhez: %s…"
-
-#: remmina/src/remmina_protocol_widget.c:562
-#, c-format
-msgid "Waiting for an incoming SSH tunnel at port %i..."
-msgstr "Várakozás bejövő SSH-alagútra a(z) %i porton…"
-
-#: remmina/src/remmina_protocol_widget.c:609
-#, c-format
-msgid "Command %s not found on SSH server"
-msgstr "%s parancs nem található az SSH-kiszolgálón"
-
-#: remmina/src/remmina_protocol_widget.c:613
-#, c-format
-msgid "Command %s failed on SSH server (status = %i)."
-msgstr "%s parancs hibát jelzett az SSH-kiszolgálón (állapot = %i)."
-
-#: remmina/src/remmina_protocol_widget.c:624
-#, c-format
-msgid "Failed to execute command: %s"
-msgstr "Parancs végrehajtása sikertelen: %s"
-
-#: remmina/src/remmina_protocol_widget.c:803
-#, c-format
-msgid "%s password"
-msgstr "%s jelszó"
-
-#: remmina/src/remmina_protocol_widget.c:806 remmina/src/remmina_ssh.c:326
-msgid "SSH password"
-msgstr "SSH-jelszó"
-
-#: remmina/src/remmina_protocol_widget.c:809 remmina/src/remmina_ssh.c:330
-msgid "SSH private key passphrase"
-msgstr "Személyes SSH-kulcs jelszava"
-
-#: remmina/src/remmina_protocol_widget.c:969
-#, c-format
-msgid "Listening on port %i for an incoming %s connection..."
-msgstr "Várakozás egy %i porton bejövő %s kapcsolatra…"
-
-#: remmina/src/remmina_protocol_widget.c:976
-msgid "Authentication failed. Trying to reconnect..."
-msgstr "Hitelesítés sikertelen. Kísérlet újracsatlakozásra…"
-
-#: remmina/src/remmina_ftp_client.c:407
-msgid "Choose download location"
-msgstr "Válasszon letöltési helyet"
-
-#: remmina/src/remmina_ftp_client.c:545
-msgid "Are you sure to delete the selected files on server?"
-msgstr "Biztosan törölni akarja a kiválasztott fájlokat a kiszolgálóról?"
-
-#: remmina/src/remmina_ftp_client.c:602
-msgid "Choose a file to upload"
-msgstr "Válasszon egy fájlt a feltöltéshez"
-
-#: remmina/src/remmina_ftp_client.c:610
-msgid "Upload folder"
-msgstr "Könyvtár feltöltése"
-
-#: remmina/src/remmina_ftp_client.c:670 remmina/src/remmina_ftp_client.c:793
-msgid "Download"
-msgstr "Letöltés"
-
-#: remmina/src/remmina_ftp_client.c:677 remmina/src/remmina_ftp_client.c:804
-msgid "Upload"
-msgstr "Feltöltés"
-
-#: remmina/src/remmina_ftp_client.c:684
-msgid "_Delete"
-msgstr ""
-
-#: remmina/src/remmina_ftp_client.c:772
-msgid "Home"
-msgstr ""
-
-#: remmina/src/remmina_ftp_client.c:774
-msgid "Go to home folder"
-msgstr "Ugrás a saját mappára"
-
-#: remmina/src/remmina_ftp_client.c:779
-msgid "Up"
-msgstr ""
-
-#: remmina/src/remmina_ftp_client.c:781
-msgid "Go to parent folder"
-msgstr "Ugrás a szülő mappára"
-
-#: remmina/src/remmina_ftp_client.c:786 remmina-plugins/rdp/rdp_plugin.c:1148
-#: remmina-plugins/vnc/vnc_plugin.c:2034
-msgid "Refresh"
-msgstr "Frissítés"
-
-#: remmina/src/remmina_ftp_client.c:788
-msgid "Refresh current folder"
-msgstr "Aktuális mappa frissítése"
-
-#: remmina/src/remmina_ftp_client.c:795
-msgid "Download from server"
-msgstr "Letöltés kiszolgálóról"
-
-#: remmina/src/remmina_ftp_client.c:806
-msgid "Upload to server"
-msgstr "Feltöltés kiszolgálóra"
-
-#: remmina/src/remmina_ftp_client.c:813
-msgid "Delete"
-msgstr ""
-
-#: remmina/src/remmina_ftp_client.c:815
-msgid "Delete files on server"
-msgstr "Fájlok törlése kiszolgálóról"
-
-#: remmina/src/remmina_ftp_client.c:922 remmina/src/remmina_ftp_client.c:991
-msgid "File Name"
-msgstr "Fájlnév"
-
-#: remmina/src/remmina_ftp_client.c:935 remmina/src/remmina_ftp_client.c:1020
-msgid "Size"
-msgstr "Méret"
-
-#: remmina/src/remmina_ftp_client.c:943
-msgid "User"
-msgstr "Felhasználó"
-
-#: remmina/src/remmina_ftp_client.c:955
-msgid "Permission"
-msgstr "Jogosultság"
-
-#: remmina/src/remmina_ftp_client.c:1007 remmina-plugins/rdp/rdp_plugin.c:1106
-msgid "Remote"
-msgstr "Távoli"
-
-#: remmina/src/remmina_ftp_client.c:1014 remmina-plugins/rdp/rdp_plugin.c:1102
-msgid "Local"
-msgstr "Helyi"
-
-#: remmina/src/remmina_ftp_client.c:1028
-msgid "Progress"
-msgstr "Folyamat"
-
-#: remmina/src/remmina_sftp_client.c:168
-#, c-format
-msgid "Error creating directory %s."
-msgstr "Hiba a könyvtár (%s) létrehozásakor."
-
-#: remmina/src/remmina_sftp_client.c:176 remmina/src/remmina_sftp_client.c:199
-#, c-format
-msgid "Error creating file %s."
-msgstr "Hiba a fájl (%s) létrehozásakor."
-
-#: remmina/src/remmina_sftp_client.c:217
-#, c-format
-msgid "Error opening file %s on server. %s"
-msgstr "Hiba a fájl (%s) megnyitásakor a kiszolgálón. %s"
-
-#: remmina/src/remmina_sftp_client.c:243
-#, c-format
-msgid "Error writing file %s."
-msgstr "Hiba a fájl (%s) írásakor."
-
-#: remmina/src/remmina_sftp_client.c:286
-#, c-format
-msgid "Error opening directory %s. %s"
-msgstr "Hiba a könyvtár (%s) megnyitásakor. %s"
-
-#: remmina/src/remmina_sftp_client.c:407
-#, c-format
-msgid "Error creating folder %s on server. %s"
-msgstr "Hiba a könyvtár (%s) létrehozásakor a kiszolgálón. %s"
-
-#: remmina/src/remmina_sftp_client.c:435 remmina/src/remmina_sftp_client.c:460
-#, c-format
-msgid "Error creating file %s on server. %s"
-msgstr "Hiba a fájl (%s) létrehozásakor a kiszolgálón. %s"
-
-#: remmina/src/remmina_sftp_client.c:483
-#, c-format
-msgid "Error opening file %s."
-msgstr "Hiba a fájl (%s) megnyitásakor."
-
-#: remmina/src/remmina_sftp_client.c:507
-#, c-format
-msgid "Error writing file %s on server. %s"
-msgstr "Hiba a fájl (%s) írásakor a kiszolgálón. %s"
-
-#: remmina/src/remmina_sftp_client.c:730 remmina/src/remmina_sftp_client.c:801
-#, c-format
-msgid "Failed to open directory %s. %s"
-msgstr "Nem sikerült megnyitni a könyvtárat (%s). %s"
-
-#: remmina/src/remmina_sftp_client.c:748
-#, c-format
-msgid "Failed reading directory. %s"
-msgstr "Nem sikerült olvasni a könyvtárat. %s"
-
-#: remmina/src/remmina_sftp_client.c:866
-msgid ""
-"File transfer currently in progress.\n"
-"Are you sure to cancel it?"
-msgstr ""
-"A fájlátvitel folyamatban van.\n"
-"Biztosan meg akarja szakítani?"
-
-#: remmina/src/remmina_sftp_client.c:902
-#, c-format
-msgid "Failed to delete '%s'. %s"
-msgstr "Nem sikerült a(z) „%s” törlése. %s"
-
-#: remmina/src/remmina_sftp_client.c:977
-msgid "File exists"
-msgstr "A fájl már létezik"
-
-#: remmina/src/remmina_sftp_client.c:980
-msgid "Resume"
-msgstr "Folytatás"
-
-#: remmina/src/remmina_sftp_client.c:981
-msgid "Overwrite"
-msgstr "Felülírás"
-
-#: remmina/src/remmina_sftp_client.c:995
-msgid "Question"
-msgstr ""
-
-#: remmina/src/remmina_sftp_client.c:1007
-msgid "The following file already exists in the target folder:"
-msgstr "A következő fájl már létezik a célmappában:"
-
-#: remmina/src/remmina_pref_dialog.c:51
-msgid "Open connection"
-msgstr "Kapcsolat megnyitása"
-
-#: remmina/src/remmina_pref_dialog.c:51
-msgid "Edit settings"
-msgstr "Beállítások szerkesztése"
-
-#: remmina/src/remmina_pref_dialog.c:54
-msgid "Nearest"
-msgstr "Legközelebbi"
-
-#: remmina/src/remmina_pref_dialog.c:54
-msgid "Tiles"
-msgstr "Mozaik"
-
-#: remmina/src/remmina_pref_dialog.c:54
-msgid "Bilinear"
-msgstr "Bilineáris"
-
-#: remmina/src/remmina_pref_dialog.c:54
-msgid "Hyper"
-msgstr "Hiper"
-
-#: remmina/src/remmina_pref_dialog.c:57
-msgid "Automatic"
-msgstr "Automatikus"
-
-#: remmina/src/remmina_pref_dialog.c:57
-msgid "Scrolled window"
-msgstr "Görgetőablak"
-
-#: remmina/src/remmina_pref_dialog.c:57
-msgid "Scrolled fullscreen"
-msgstr "Görgetett teljes képernyő"
-
-#: remmina/src/remmina_pref_dialog.c:57
-msgid "Viewport fullscreen"
-msgstr "Teljes képernyős ablak"
-
-#: remmina/src/remmina_pref_dialog.c:60
-msgid "Tab by groups"
-msgstr "Fülek csoportok alapján"
-
-#: remmina/src/remmina_pref_dialog.c:60
-msgid "Tab by protocols"
-msgstr "Fülek protokoll alapján"
-
-#: remmina/src/remmina_pref_dialog.c:60
-msgid "Tab all connections"
-msgstr "Fül minden kapcsolathoz"
-
-#: remmina/src/remmina_pref_dialog.c:60
-msgid "Do not use tabs"
-msgstr "Ne használjon füleket"
-
-#: remmina/src/remmina_pref_dialog.c:152
-msgid "Please enter format 'widthxheight'."
-msgstr "„szélességxmagasság” formátumban adja meg."
-
-#: remmina/src/remmina_pref_dialog.c:162
-msgid "Recent lists cleared."
-msgstr "Legutóbbiak listája törölve."
-
-#: remmina/src/remmina_pref_dialog.c:352
-msgid "Remmina Preferences"
-msgstr "Remmina beállításai"
-
-#: remmina/src/remmina_pref_dialog.c:354
-msgid "_Close"
-msgstr ""
-
-#: remmina/src/remmina_pref_dialog.c:368
-msgid "Options"
-msgstr "Beállítások"
-
-#: remmina/src/remmina_pref_dialog.c:379
-msgid "Remember last view mode for each connection"
-msgstr "Minden kapcsolatnál jegyezze meg a legutóbbi nézetet"
-
-#: remmina/src/remmina_pref_dialog.c:385
-msgid "Save settings when starting the connection"
-msgstr "A kapcsolat megnyitásakor mentse el a beállításokat"
-
-#: remmina/src/remmina_pref_dialog.c:391
-msgid "Invisible toolbar in fullscreen mode"
-msgstr "Láthatatlan eszköztár teljes képernyős módban"
-
-#: remmina/src/remmina_pref_dialog.c:404
-msgid "Always show tabs"
-msgstr "Mindig jelenjenek meg a fülek"
-
-#: remmina/src/remmina_pref_dialog.c:410
-msgid "Hide toolbar in tabbed interface"
-msgstr "Eszköztár elrejtése fülön lévő felületeken"
-
-#: remmina/src/remmina_pref_dialog.c:416
-msgid "Double-click action"
-msgstr "Dupla kattintás eseménye"
-
-#: remmina/src/remmina_pref_dialog.c:426
-msgid "Default view mode"
-msgstr "Alapértelmezett nézet mód"
-
-#: remmina/src/remmina_pref_dialog.c:436
-msgid "Tab interface"
-msgstr "Füles megjelenítés"
-
-#: remmina/src/remmina_pref_dialog.c:446
-msgid "Scale quality"
-msgstr "Minőség módosítása"
-
-#: remmina/src/remmina_pref_dialog.c:456
-msgid "SSH tunnel local port"
-msgstr "SSH alagút helyi portja"
-
-#: remmina/src/remmina_pref_dialog.c:469
-msgid "Auto scroll step size"
-msgstr "Automatikus görgetés lépésköze"
-
-#: remmina/src/remmina_pref_dialog.c:482
-msgid "Maximum recent items"
-msgstr "Legutóbbi elemek száma"
-
-#: remmina/src/remmina_pref_dialog.c:503
-msgid "Clear"
-msgstr "Törlés"
-
-#: remmina/src/remmina_pref_dialog.c:509
-msgid "Resolutions"
-msgstr "Felbontások"
-
-#: remmina/src/remmina_pref_dialog.c:531
-msgid "Applet"
-msgstr "Értesítő ikon"
-
-#: remmina/src/remmina_pref_dialog.c:542
-msgid "Show new connection on top of the menu"
-msgstr "Új kapcsolat megjelenítése a menü tetején"
-
-#: remmina/src/remmina_pref_dialog.c:549
-msgid "Hide total count in group menu"
-msgstr "Összesített szám elrejtése a csoportmenüben"
-
-#: remmina/src/remmina_pref_dialog.c:556
-msgid "Disable tray icon"
-msgstr "Értesítő ikon letiltása"
-
-#: remmina/src/remmina_pref_dialog.c:563
-msgid "Start Remmina in tray icon at user logon"
-msgstr ""
-
-#: remmina/src/remmina_pref_dialog.c:572
-msgid "Minimize windows to tray"
-msgstr "Ablakok értesítő ikonná kicsinyítése"
-
-#: remmina/src/remmina_pref_dialog.c:586 remmina/src/remmina_pref_dialog.c:818
-msgid "Keyboard"
-msgstr "Billentyűzet"
-
-#: remmina/src/remmina_pref_dialog.c:597 remmina/src/remmina_pref_dialog.c:835
-msgid "Host key"
-msgstr "Távoli gép billentyű"
-
-#: remmina/src/remmina_pref_dialog.c:619
-msgid "Auto-fit window"
-msgstr "Ablak automatikus méretezése"
-
-#: remmina/src/remmina_pref_dialog.c:665
-msgid "Grab keyboard"
-msgstr "Billentyűzet elkapása"
-
-#: remmina/src/remmina_pref_dialog.c:698
-msgid "Show / hide toolbar"
-msgstr "Eszköztár megjelenítése/elrejtése"
-
-#: remmina/src/remmina_pref_dialog.c:710
-msgid "Terminal"
-msgstr "Terminál"
-
-#: remmina/src/remmina_pref_dialog.c:721
-msgid "Font"
-msgstr "Betűkészlet"
-
-#: remmina/src/remmina_pref_dialog.c:726
-msgid "Use system default font"
-msgstr "Alapértelmezett betűkészlet használata"
-
-#: remmina/src/remmina_pref_dialog.c:754
-msgid "Allow bold text"
-msgstr "Félkövér betűk engedélyezése"
-
-#: remmina/src/remmina_pref_dialog.c:761
-msgid "Colors"
-msgstr ""
-
-#: remmina/src/remmina_pref_dialog.c:766
-msgid "Use system theme colors"
-msgstr ""
-
-#: remmina/src/remmina_pref_dialog.c:775 remmina/src/remmina_pref_dialog.c:783
-msgid "Foreground color"
-msgstr ""
-
-#: remmina/src/remmina_pref_dialog.c:788 remmina/src/remmina_pref_dialog.c:796
-msgid "Background color"
-msgstr ""
-
-#: remmina/src/remmina_pref_dialog.c:804
-msgid "Scrollback lines"
-msgstr "Visszagördítés sorai"
-
-#: remmina/src/remmina_pref_dialog.c:829 remmina/src/remmina_ssh_plugin.c:368
-msgid "Copy"
-msgstr "Másolás"
-
-#: remmina/src/remmina_pref_dialog.c:847 remmina/src/remmina_ssh_plugin.c:369
-msgid "Paste"
-msgstr "Beillesztés"
-
-#: remmina/src/remmina_scaler.c:72
-msgid "Fit window size"
-msgstr "Ablakmérethez igazítás"
-
-#: remmina/src/remmina_scaler.c:147 remmina/src/remmina_file_editor.c:661
-msgid "Horizontal scale"
-msgstr "Vízszintes méretezés"
-
-#: remmina/src/remmina_scaler.c:158 remmina/src/remmina_file_editor.c:672
-msgid "Vertical scale"
-msgstr "Függőleges méretezés"
-
-#: remmina/src/remmina_sftp_plugin.c:275
-msgid "Show Hidden Files"
-msgstr "Rejtett fájlok megjelenítése"
-
-#: remmina/src/remmina_sftp_plugin.c:278
-msgid "Overwrite all"
-msgstr ""
-
-#: remmina/src/remmina_sftp_plugin.c:286
-msgid "SFTP - Secure File Transfer"
-msgstr "SFTP - Biztonságos fájlátvitel"
-
-#: remmina/src/remmina_ssh.c:163
-#, c-format
-msgid "SSH password authentication failed: %s"
-msgstr "A jelszavas SSH-hitelesítés sikertelen: %s"
-
-#: remmina/src/remmina_ssh.c:181 remmina/src/remmina_ssh.c:191
-#: remmina/src/remmina_ssh.c:200
-#, c-format
-msgid "SSH public key authentication failed: %s"
-msgstr "A nyilvános kulcsos SSH-hitelesítés sikertelen: %s"
-
-#: remmina/src/remmina_ssh.c:182
-msgid "SSH Key file not yet set."
-msgstr "Még nincs beállítva SSH-kulcsfájl."
-
-#: remmina/src/remmina_ssh.c:216
-#, c-format
-msgid "SSH automatic public key authentication failed: %s"
-msgstr "Az automatikus nyilvános kulcsos SSH-hitelesítés sikertelen: %s"
-
-#: remmina/src/remmina_ssh.c:325
-#, c-format
-msgid "Authenticating %s's password to SSH server %s..."
-msgstr "%s jelszavának hitelesítése %s SSH-kiszolgálón…"
-
-#: remmina/src/remmina_ssh.c:329
-#, c-format
-msgid "Authenticating %s's identity to SSH server %s..."
-msgstr "%s személyazonosságának ellenőrzése a(z) %s SSH-kiszolgálón…"
-
-#: remmina/src/remmina_ssh.c:384
-#, c-format
-msgid "Failed to startup SSH session: %s"
-msgstr "Nem sikerült elindítani az SSH-kapcsolatot: %s"
-
-#: remmina/src/remmina_ssh.c:707
-#, c-format
-msgid "Failed to connect to the SSH tunnel destination: %s"
-msgstr "Nem sikerült kapcsolódni az SSH-alagút céljához: %s"
-
-#: remmina/src/remmina_ssh.c:740
-#, c-format
-msgid "Failed to execute %s on SSH server : %%s"
-msgstr "Nem sikerült %s végrehajtása az SSH-kiszolgálón: %%s"
-
-#: remmina/src/remmina_ssh.c:777 remmina/src/remmina_ssh.c:802
-#, c-format
-msgid "Failed to request port forwarding : %s"
-msgstr "Nem sikerült a porttovábbítás kérése: %s"
-
-#: remmina/src/remmina_ssh.c:849
-msgid "No response from the server."
-msgstr "Nincs válasz a kiszolgálótól."
-
-#: remmina/src/remmina_ssh.c:1252
-#, c-format
-msgid "Failed to create sftp session: %s"
-msgstr "Nem sikerült létrehozni az sftp kapcsolatot: %s"
-
-#: remmina/src/remmina_ssh.c:1257
-#, c-format
-msgid "Failed to initialize sftp session: %s"
-msgstr "Nem sikerült előkészíteni az sftp kapcsolatot: %s"
-
-#: remmina/src/remmina_ssh_plugin.c:368
-msgid "_Copy"
-msgstr ""
-
-#: remmina/src/remmina_ssh_plugin.c:369
-msgid "_Paste"
-msgstr ""
-
-#: remmina/src/remmina_ssh_plugin.c:377
-msgid "SSH - Secure Shell"
-msgstr "SSH - Biztonságos parancsértelmező"
-
-#: remmina/src/remmina_file_editor.c:71
-msgid ""
-"<tt><big>Supported formats\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port</big></tt>"
-msgstr ""
-"<tt><big>Támogatott formátumok\n"
-"* kiszolgáló\n"
-"* kiszolgáló:port\n"
-"* [kiszolgáló]:port</big></tt>"
-
-#: remmina/src/remmina_file_editor.c:79
-msgid ""
-"<tt><big>Supported formats\n"
-"* :port\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port</big></tt>"
-msgstr ""
-"<tt><big>Támogatott formátumok\n"
-"* :port\n"
-"* kiszolgáló\n"
-"* kiszolgáló:port\n"
-"* [kiszolgáló]:port</big></tt>"
-
-#: remmina/src/remmina_file_editor.c:136
-msgid "Choose a Remote Desktop Server"
-msgstr "Válasszon egy távoli asztal kiszolgálót"
-
-#: remmina/src/remmina_file_editor.c:313 remmina/src/remmina_file_editor.c:320
-#: remmina-plugins/nx/nx_plugin.c:691
-msgid "Identity file"
-msgstr "Személyazonosító fájl"
-
-#: remmina/src/remmina_file_editor.c:322
-msgid "_Open"
-msgstr ""
-
-#: remmina/src/remmina_file_editor.c:384
-#, c-format
-msgid "Browse the network to find a %s server"
-msgstr "Hálózat böngészése egy %s kiszolgáló kereséséhez"
-
-#: remmina/src/remmina_file_editor.c:449
-msgid "Resolution"
-msgstr "Felbontás"
-
-#: remmina/src/remmina_file_editor.c:455
-msgid "Use window size"
-msgstr "Ablak méretének használata"
-
-#: remmina/src/remmina_file_editor.c:455
-msgid "Use client resolution"
-msgstr "Kliens felbontásának használata"
-
-#: remmina/src/remmina_file_editor.c:468 remmina/src/remmina_file_editor.c:829
-msgid "Custom"
-msgstr "Egyéni"
-
-#: remmina/src/remmina_file_editor.c:654
-msgid "Keyboard mapping"
-msgstr "Billentyűzetkiosztás"
-
-#: remmina/src/remmina_file_editor.c:801
-msgid "Enable SSH tunnel"
-msgstr "SSH alagút engedélyezése"
-
-#: remmina/src/remmina_file_editor.c:808
-msgid "Tunnel via loopback address"
-msgstr "Alagút a loopback címen keresztül"
-
-#: remmina/src/remmina_file_editor.c:820
-#, c-format
-msgid "Same server at port %i"
-msgstr "Ugyanazon kiszolgáló a(z) %i porton"
-
-#: remmina/src/remmina_file_editor.c:875
-msgid "Character set"
-msgstr "Karakterkészlet"
-
-#: remmina/src/remmina_file_editor.c:881 remmina-plugins/rdp/rdp_plugin.c:1137
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:340 remmina-plugins/nx/nx_plugin.c:696
-msgid "Startup program"
-msgstr "Induló program"
-
-#: remmina/src/remmina_file_editor.c:890 remmina-plugins/rdp/rdp_plugin.c:1138
-msgid "Startup path"
-msgstr "Induló útvonal"
-
-#: remmina/src/remmina_file_editor.c:898
-msgid "SSH Authentication"
-msgstr "SSH-azonosítás"
-
-#: remmina/src/remmina_file_editor.c:912
-msgid "Public key (automatic)"
-msgstr "Nyilvános kulcs (automatikus)"
-
-#: remmina/src/remmina_file_editor.c:968
-msgid "Basic"
-msgstr "Alap"
-
-#: remmina/src/remmina_file_editor.c:975
-msgid "Advanced"
-msgstr "Speciális"
-
-#: remmina/src/remmina_file_editor.c:1186
-msgid "Default settings saved."
-msgstr "Alapértelmezett beállítások mentve."
-
-#: remmina/src/remmina_file_editor.c:1233
-msgid "Remote Desktop Preference"
-msgstr "Távoli asztal beállításai"
-
-#: remmina/src/remmina_file_editor.c:1246
-msgid "Connect"
-msgstr ""
-
-#: remmina/src/remmina_file_editor.c:1259
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:332
-msgid "Default"
-msgstr "Alapértelmezett"
-
-#: remmina/src/remmina_file_editor.c:1347
-msgid "Profile"
-msgstr "Profil"
-
-#: remmina/src/remmina_file_editor.c:1388
-#, c-format
-msgid "Use '%s' as subgroup delimiter"
-msgstr "„%s” használata alcsoportelválasztóként"
-
-#: remmina/src/remmina_chat_window.c:178
+#: remmina/src/remmina_chat_window.c:188
 #, c-format
 msgid "Chat with %s"
 msgstr "Csevegés vele: %s"
 
-#: remmina/src/remmina_chat_window.c:226
+#: remmina/src/remmina_chat_window.c:240
 msgid "_Send"
 msgstr "_Küldés"
 
-#: remmina/src/remmina_chat_window.c:236
+#: remmina/src/remmina_chat_window.c:250
 msgid "_Clear"
 msgstr "_Törlés"
 
-#: remmina/src/remmina_about.c:46
-msgid "Maintainers:"
-msgstr "Karbantartók:"
-
-#: remmina/src/remmina_about.c:49
-msgid "Contributors:"
-msgstr "Közreműködők:"
-
-#: remmina/src/remmina_about.c:68
-msgid ""
-"Remmina is free software; you can redistribute it and/or modify it under the "
-"terms of the GNU General Public License as published by the Free Software "
-"Foundation; either version 2 of the License, or (at your option) any later "
-"version."
-msgstr ""
-"A Remmina szabad szoftver, terjesztheti és/vagy módosíthatja a Free Software "
-"Foundation által kiadott GNU General Public License második (vagy bármely "
-"későbbi) változatában foglaltak alapján."
-
-#: remmina/src/remmina_about.c:72
-msgid ""
-"Remmina is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
-"details."
-msgstr ""
-"A Remmina programot abban a reményben terjesztjük, hogy hasznos lesz, de nem "
-"vállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program "
-"alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE. További "
-"részletekért tanulmányozza a GNU GPL licencet."
-
-#: remmina/src/remmina_about.c:90
-msgid "The GTK+ Remote Desktop Client"
-msgstr "A GTK+ távoli asztal kliens"
-
-#: remmina/src/remmina_about.c:96
+#: remmina/src/remmina_about.c:54
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1207,337 +439,994 @@ msgstr ""
 "  Vic https://launchpad.net/~llyzs\n"
 "  kilo aka Gabor Kmetyko https://launchpad.net/~kg.kilo"
 
-#: remmina-plugins/rdp/rdp_plugin.c:886
+#: remmina/src/remmina_icon.c:136
+msgid "Open Main Window"
+msgstr "Főablak megnyitása"
+
+#: remmina/src/remmina_icon.c:141
+msgid "_Preferences"
+msgstr ""
+
+#: remmina/src/remmina_icon.c:146 remmina/ui/remmina_main.glade:52
+#: remmina/ui/remmina_main.glade:53
+msgid "_About"
+msgstr ""
+
+#: remmina/src/remmina_icon.c:156
+msgid "Enable Service Discovery"
+msgstr "Szolgáltatásfelfedezés engedélyezése"
+
+#: remmina/src/remmina_icon.c:170 remmina/ui/remmina_main.glade:33
+#: remmina/ui/remmina_main.glade:34
+msgid "_Quit"
+msgstr ""
+
+#: remmina/src/remmina_icon.c:397 remmina/src/remmina_icon.c:522
+msgid "Remmina Applet"
+msgstr "Remmina értesítő ikon"
+
+#: remmina/src/remmina_icon.c:399 remmina/src/remmina_icon.c:524
+msgid "Connect to remote desktops through the applet menu"
+msgstr "Kapcsolódás távoli asztalokhoz az értesítő ikon menüjén keresztül"
+
+#: remmina/src/remmina_init_dialog.c:87 remmina/src/remmina_file_editor.c:145
+#: remmina/src/remmina_file_editor.c:339 remmina/src/remmina_file_editor.c:1243
+#: remmina/src/remmina_sftp_client.c:1006
+#: remmina-plugins/nx/nx_session_manager.c:171
+#: remmina/ui/remmina_spinner.glade:8 remmina/ui/remmina_spinner.glade:9
+#: remmina/ui/remmina_key_chooser.glade:8
+#: remmina/ui/remmina_key_chooser.glade:9
+msgid "_Cancel"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:284
+#, c-format
+msgid "Save %s"
+msgstr "%s mentése"
+
+#: remmina/src/remmina_init_dialog.c:362 remmina/src/remmina_file_editor.c:884
+#: remmina-plugins/vnc/vnc_plugin.c:1988 remmina-plugins/vnc/vnc_plugin.c:2008
+#: remmina-plugins/nx/nx_plugin.c:760 remmina-plugins/rdp/rdp_plugin.c:1340
+msgid "User name"
+msgstr "Felhasználónév"
+
+#: remmina/src/remmina_init_dialog.c:377
+#: remmina/src/remmina_protocol_widget.c:988
+#: remmina/src/remmina_file_editor.c:426 remmina/src/remmina_file_editor.c:894
+msgid "Password"
+msgstr "Jelszó"
+
+#: remmina/src/remmina_init_dialog.c:393 remmina-plugins/rdp/rdp_plugin.c:1342
+msgid "Domain"
+msgstr "Tartomány"
+
+#: remmina/src/remmina_init_dialog.c:409
+msgid "Save password"
+msgstr "Jelszó mentése"
+
+#: remmina/src/remmina_init_dialog.c:483
+msgid "Certificate Details:"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:496 remmina/src/remmina_init_dialog.c:600
+msgid "Subject:"
+msgstr "Tárgy:"
+
+#: remmina/src/remmina_init_dialog.c:508 remmina/src/remmina_init_dialog.c:613
+msgid "Issuer:"
+msgstr "Kibocsátó:"
+
+#: remmina/src/remmina_init_dialog.c:520
+msgid "Fingerprint:"
+msgstr "Ujjlenyomat:"
+
+#: remmina/src/remmina_init_dialog.c:533
+msgid "Accept Certificate?"
+msgstr "Elfogadja a tanúsítványt?"
+
+#: remmina/src/remmina_init_dialog.c:587
+msgid "Certificate Changed! Details:"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:625
+msgid "Old Fingerprint:"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:637
+msgid "New Fingerprint:"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:650
+msgid "Accept Changed Certificate?"
+msgstr ""
+
+#: remmina/src/remmina_init_dialog.c:753
+msgid "CA certificate"
+msgstr "CA tanúsítvány"
+
+#: remmina/src/remmina_init_dialog.c:754
+msgid "CA CRL"
+msgstr "CA CRL"
+
+#: remmina/src/remmina_init_dialog.c:755
+msgid "Client certificate"
+msgstr "Klienstanúsítvány"
+
+#: remmina/src/remmina_init_dialog.c:756
+msgid "Client key"
+msgstr "Klienskulcs"
+
+#: remmina/src/remmina_init_dialog.c:832
+msgid "Do you trust the new public key?"
+msgstr "Megbízik az új nyilvános kulcsban?"
+
+#: remmina/src/remmina_init_dialog.c:860
+msgid "The server is unknown. The public key fingerprint is:"
+msgstr "A kiszolgáló ismeretlen. A nyilvános kulcs ujjlenyomata:"
+
+#: remmina/src/remmina_init_dialog.c:869
+msgid ""
+"WARNING: The server has changed its public key. This means either you are "
+"under attack,\n"
+"or the administrator has changed the key. The new public key fingerprint is:"
+msgstr ""
+"FIGYELMEZTETÉS: A kiszolgáló megváltoztatta a nyilvános kulcsot. Ez "
+"jelentheti azt, hogy támadás érte, vagy egy rendszergazda megváltoztatta a "
+"kulcsot. Az új nyilvános kulcs ujjlenyomata:"
+
+#: remmina/src/remmina_protocol_widget.c:137
+#, c-format
+msgid "Connecting to '%s'..."
+msgstr "Csatlakozás ehhez: „%s”…"
+
+#: remmina/src/remmina_protocol_widget.c:226
+#, c-format
+msgid "Protocol plugin %s is not installed."
+msgstr "%s protokollbővítmény nincs telepítve."
+
+#: remmina/src/remmina_protocol_widget.c:265
+msgid "Open Secure Shell in New Terminal..."
+msgstr "SSH megnyitása új terminálban…"
+
+#: remmina/src/remmina_protocol_widget.c:271
+msgid "Open Secure File Transfer..."
+msgstr "Biztonságos fájlátvitel megnyitása…"
+
+#: remmina/src/remmina_protocol_widget.c:602
+#, c-format
+msgid "Connecting to SSH server %s..."
+msgstr "Csatlakozás a(z) %s SSH-kiszolgálóhoz…"
+
+#: remmina/src/remmina_protocol_widget.c:673
+#: remmina/src/remmina_protocol_widget.c:841
+#, c-format
+msgid "Connecting to %s through SSH tunnel..."
+msgstr "Csatlakozás SSH-alagúton keresztül ehhez: %s…"
+
+#: remmina/src/remmina_protocol_widget.c:715
+#, c-format
+msgid "Waiting for an incoming SSH tunnel at port %i..."
+msgstr "Várakozás bejövő SSH-alagútra a(z) %i porton…"
+
+#: remmina/src/remmina_protocol_widget.c:763
+#, c-format
+msgid "Command %s not found on SSH server"
+msgstr "%s parancs nem található az SSH-kiszolgálón"
+
+#: remmina/src/remmina_protocol_widget.c:767
+#, c-format
+msgid "Command %s failed on SSH server (status = %i)."
+msgstr "%s parancs hibát jelzett az SSH-kiszolgálón (állapot = %i)."
+
+#: remmina/src/remmina_protocol_widget.c:778
+#, c-format
+msgid "Failed to execute command: %s"
+msgstr "Parancs végrehajtása sikertelen: %s"
+
+#: remmina/src/remmina_protocol_widget.c:979
+#, c-format
+msgid "%s password"
+msgstr "%s jelszó"
+
+#: remmina/src/remmina_protocol_widget.c:1164
+#, c-format
+msgid "Listening on port %i for an incoming %s connection..."
+msgstr "Várakozás egy %i porton bejövő %s kapcsolatra…"
+
+#: remmina/src/remmina_protocol_widget.c:1172
+msgid "Authentication failed. Trying to reconnect..."
+msgstr "Hitelesítés sikertelen. Kísérlet újracsatlakozásra…"
+
+#: remmina/src/remmina_protocol_widget.c:1240
+#: remmina/src/remmina_file_editor.c:379 remmina/src/remmina_file_editor.c:832
+#: remmina/src/remmina_file_editor.c:845 remmina/ui/remmina_main.glade:670
+msgid "Server"
+msgstr "Kiszolgáló"
+
+#: remmina/src/remmina_file_editor.c:73
+msgid ""
+"<tt><big>Supported formats\n"
+"* server\n"
+"* server:port\n"
+"* [server]:port</big></tt>"
+msgstr ""
+"<tt><big>Támogatott formátumok\n"
+"* kiszolgáló\n"
+"* kiszolgáló:port\n"
+"* [kiszolgáló]:port</big></tt>"
+
+#: remmina/src/remmina_file_editor.c:81
+msgid ""
+"<tt><big>Supported formats\n"
+"* :port\n"
+"* server\n"
+"* server:port\n"
+"* [server]:port</big></tt>"
+msgstr ""
+"<tt><big>Támogatott formátumok\n"
+"* :port\n"
+"* kiszolgáló\n"
+"* kiszolgáló:port\n"
+"* [kiszolgáló]:port</big></tt>"
+
+#: remmina/src/remmina_file_editor.c:143
+msgid "Choose a Remote Desktop Server"
+msgstr "Válasszon egy távoli asztal kiszolgálót"
+
+#: remmina/src/remmina_file_editor.c:331 remmina/src/remmina_file_editor.c:338
+#: remmina-plugins/nx/nx_plugin.c:759
+msgid "Identity file"
+msgstr "Személyazonosító fájl"
+
+#: remmina/src/remmina_file_editor.c:340
+msgid "_Open"
+msgstr ""
+
+#: remmina/src/remmina_file_editor.c:404
+#, c-format
+msgid "Browse the network to find a %s server"
+msgstr "Hálózat böngészése egy %s kiszolgáló kereséséhez"
+
+#: remmina/src/remmina_file_editor.c:461 remmina/src/remmina_pref_dialog.c:79
+#: remmina/ui/remmina_preferences.glade:250
+msgid "Resolutions"
+msgstr "Felbontások"
+
+#: remmina/src/remmina_file_editor.c:461 remmina/src/remmina_pref_dialog.c:79
+msgid "Configure the available resolutions"
+msgstr ""
+
+#: remmina/src/remmina_file_editor.c:479
+msgid "Resolution"
+msgstr "Felbontás"
+
+#: remmina/src/remmina_file_editor.c:485
+msgid "Use window size"
+msgstr "Ablak méretének használata"
+
+#: remmina/src/remmina_file_editor.c:485
+msgid "Use client resolution"
+msgstr "Kliens felbontásának használata"
+
+#: remmina/src/remmina_file_editor.c:494 remmina/src/remmina_file_editor.c:811
+msgid "Custom"
+msgstr "Egyéni"
+
+#: remmina/src/remmina_file_editor.c:677
+msgid "Keyboard mapping"
+msgstr "Billentyűzetkiosztás"
+
+#: remmina/src/remmina_file_editor.c:783
+msgid "Enable SSH tunnel"
+msgstr "SSH alagút engedélyezése"
+
+#: remmina/src/remmina_file_editor.c:790
+msgid "Tunnel via loopback address"
+msgstr "Alagút a loopback címen keresztül"
+
+#: remmina/src/remmina_file_editor.c:802
+#, c-format
+msgid "Same server at port %i"
+msgstr "Ugyanazon kiszolgáló a(z) %i porton"
+
+#: remmina/src/remmina_file_editor.c:857
+msgid "Character set"
+msgstr "Karakterkészlet"
+
+#: remmina/src/remmina_file_editor.c:863
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:403 remmina-plugins/nx/nx_plugin.c:764
+#: remmina-plugins/rdp/rdp_plugin.c:1365
+msgid "Startup program"
+msgstr "Induló program"
+
+#: remmina/src/remmina_file_editor.c:872 remmina-plugins/rdp/rdp_plugin.c:1366
+msgid "Startup path"
+msgstr "Induló útvonal"
+
+#: remmina/src/remmina_file_editor.c:880
+msgid "SSH Authentication"
+msgstr "SSH-azonosítás"
+
+#: remmina/src/remmina_file_editor.c:887
+msgid "SSH Agent (automatic)"
+msgstr ""
+
+#: remmina/src/remmina_file_editor.c:901
+msgid "Public key (automatic)"
+msgstr "Nyilvános kulcs (automatikus)"
+
+#: remmina/src/remmina_file_editor.c:960
+msgid "Basic"
+msgstr "Alap"
+
+#: remmina/src/remmina_file_editor.c:967
+msgid "Advanced"
+msgstr "Speciális"
+
+#: remmina/src/remmina_file_editor.c:1184
+msgid "Default settings saved."
+msgstr "Alapértelmezett beállítások mentve."
+
+#: remmina/src/remmina_file_editor.c:1235
+msgid "Remote Desktop Preference"
+msgstr "Távoli asztal beállításai"
+
+#: remmina/src/remmina_file_editor.c:1246 remmina/ui/remmina_main.glade:71
+#: remmina/ui/remmina_main.glade:72
+msgid "Connect"
+msgstr ""
+
+#: remmina/src/remmina_file_editor.c:1257
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:381
+msgid "Default"
+msgstr "Alapértelmezett"
+
+#: remmina/src/remmina_file_editor.c:1346
+msgid "Profile"
+msgstr "Profil"
+
+#: remmina/src/remmina_file_editor.c:1364
+msgid "Quick Connect"
+msgstr "Gyors csatlakozás"
+
+#: remmina/src/remmina_file_editor.c:1387
+#, c-format
+msgid "Use '%s' as subgroup delimiter"
+msgstr "„%s” használata alcsoportelválasztóként"
+
+#: remmina/src/remmina_file_editor.c:1406
+msgid "Pre Command"
+msgstr ""
+
+#: remmina/src/remmina_file_editor.c:1422
+#: remmina/src/remmina_file_editor.c:1444
+msgid "A command or a script name/path."
+msgstr ""
+
+#: remmina/src/remmina_file_editor.c:1428
+msgid "Post Command"
+msgstr ""
+
+#: remmina/src/remmina_sftp_client.c:176
+#, c-format
+msgid "Error creating directory %s."
+msgstr "Hiba a könyvtár (%s) létrehozásakor."
+
+#: remmina/src/remmina_sftp_client.c:184 remmina/src/remmina_sftp_client.c:207
+#, c-format
+msgid "Error creating file %s."
+msgstr "Hiba a fájl (%s) létrehozásakor."
+
+#: remmina/src/remmina_sftp_client.c:225
+#, c-format
+msgid "Error opening file %s on server. %s"
+msgstr "Hiba a fájl (%s) megnyitásakor a kiszolgálón. %s"
+
+#: remmina/src/remmina_sftp_client.c:251
+#, c-format
+msgid "Error writing file %s."
+msgstr "Hiba a fájl (%s) írásakor."
+
+#: remmina/src/remmina_sftp_client.c:295
+#, c-format
+msgid "Error opening directory %s. %s"
+msgstr "Hiba a könyvtár (%s) megnyitásakor. %s"
+
+#: remmina/src/remmina_sftp_client.c:418
+#, c-format
+msgid "Error creating folder %s on server. %s"
+msgstr "Hiba a könyvtár (%s) létrehozásakor a kiszolgálón. %s"
+
+#: remmina/src/remmina_sftp_client.c:447 remmina/src/remmina_sftp_client.c:472
+#, c-format
+msgid "Error creating file %s on server. %s"
+msgstr "Hiba a fájl (%s) létrehozásakor a kiszolgálón. %s"
+
+#: remmina/src/remmina_sftp_client.c:495
+#, c-format
+msgid "Error opening file %s."
+msgstr "Hiba a fájl (%s) megnyitásakor."
+
+#: remmina/src/remmina_sftp_client.c:519
+#, c-format
+msgid "Error writing file %s on server. %s"
+msgstr "Hiba a fájl (%s) írásakor a kiszolgálón. %s"
+
+#: remmina/src/remmina_sftp_client.c:745 remmina/src/remmina_sftp_client.c:818
+#, c-format
+msgid "Failed to open directory %s. %s"
+msgstr "Nem sikerült megnyitni a könyvtárat (%s). %s"
+
+#: remmina/src/remmina_sftp_client.c:764
+#, c-format
+msgid "Failed reading directory. %s"
+msgstr "Nem sikerült olvasni a könyvtárat. %s"
+
+#: remmina/src/remmina_sftp_client.c:885
+msgid ""
+"File transfer currently in progress.\n"
+"Are you sure to cancel it?"
+msgstr ""
+"A fájlátvitel folyamatban van.\n"
+"Biztosan meg akarja szakítani?"
+
+#: remmina/src/remmina_sftp_client.c:922
+#, c-format
+msgid "Failed to delete '%s'. %s"
+msgstr "Nem sikerült a(z) „%s” törlése. %s"
+
+#: remmina/src/remmina_sftp_client.c:1001
+msgid "File exists"
+msgstr "A fájl már létezik"
+
+#: remmina/src/remmina_sftp_client.c:1004
+msgid "Resume"
+msgstr "Folytatás"
+
+#: remmina/src/remmina_sftp_client.c:1005
+msgid "Overwrite"
+msgstr "Felülírás"
+
+#: remmina/src/remmina_sftp_client.c:1019
+msgid "Question"
+msgstr ""
+
+#: remmina/src/remmina_sftp_client.c:1031
+msgid "The following file already exists in the target folder:"
+msgstr "A következő fájl már létezik a célmappában:"
+
+#: remmina/src/remmina_pref_dialog.c:95
+msgid "Recent lists cleared."
+msgstr "Legutóbbiak listája törölve."
+
+#: remmina/src/remmina_pref_dialog.c:106
+#: remmina/ui/remmina_preferences.glade:286
+msgid "Configure the keystrokes"
+msgstr ""
+
+#: remmina/src/remmina_sftp_plugin.c:283
+msgid "Show Hidden Files"
+msgstr "Rejtett fájlok megjelenítése"
+
+#: remmina/src/remmina_sftp_plugin.c:284
+msgid "Overwrite all"
+msgstr ""
+
+#: remmina/src/remmina_sftp_plugin.c:293
+msgid "SFTP - Secure File Transfer"
+msgstr "SFTP - Biztonságos fájlátvitel"
+
+#: remmina/src/remmina_ssh_plugin.c:457
+msgid "Select All (Host+a)"
+msgstr ""
+
+#: remmina/src/remmina_ssh_plugin.c:458
+msgid "Copy (Host+c)"
+msgstr ""
+
+#: remmina/src/remmina_ssh_plugin.c:459
+msgid "Paste (Host+v)"
+msgstr ""
+
+#: remmina/src/remmina_ssh_plugin.c:645 remmina/ui/remmina_main.glade:92
+#: remmina/ui/remmina_main.glade:93 remmina/ui/remmina_preferences.glade:1311
+msgid "Copy"
+msgstr "Másolás"
+
+#: remmina/src/remmina_ssh_plugin.c:645
+msgid "_Copy"
+msgstr ""
+
+#: remmina/src/remmina_ssh_plugin.c:646
+#: remmina/ui/remmina_preferences.glade:1350
+msgid "Paste"
+msgstr "Beillesztés"
+
+#: remmina/src/remmina_ssh_plugin.c:646
+msgid "_Paste"
+msgstr ""
+
+#: remmina/src/remmina_ssh_plugin.c:647
+msgid "Select all"
+msgstr ""
+
+#: remmina/src/remmina_ssh_plugin.c:647
+msgid "_Select all"
+msgstr ""
+
+#: remmina/src/remmina_ssh_plugin.c:656
+msgid "SSH - Secure Shell"
+msgstr "SSH - Biztonságos parancsértelmező"
+
+#: remmina/src/remmina.c:75
+msgid "Show about dialog"
+msgstr ""
+
+#: remmina/src/remmina.c:76
+msgid "Connect to a .remmina file"
+msgstr ""
+
+#: remmina/src/remmina.c:77
+msgid "Edit a .remmina file"
+msgstr ""
+
+#: remmina/src/remmina.c:79 remmina/ui/remmina_main.glade:257
+msgid "Create a new connection profile"
+msgstr ""
+
+#: remmina/src/remmina.c:80
+msgid "Show preferences dialog page"
+msgstr ""
+
+#: remmina/src/remmina.c:81
+msgid "Execute the plugin"
+msgstr ""
+
+#: remmina/src/remmina.c:82
+msgid "Quit the application"
+msgstr ""
+
+#: remmina/src/remmina.c:83
+msgid "Use default server name (for --new)"
+msgstr ""
+
+#: remmina/src/remmina.c:84
+msgid "Use default protocol (for --new)"
+msgstr ""
+
+#: remmina/src/remmina.c:85
+msgid "Start as tray icon"
+msgstr ""
+
+#: remmina/src/remmina.c:86
+msgid "Show the application's version"
+msgstr ""
+
+#: remmina-plugins/vnc/vnc_plugin.c:1018
+msgid "Unable to connect to VNC server"
+msgstr "Nem lehet csatlakozni a VNC-kiszolgálóhoz"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1019
+#, c-format
+msgid "Couldn't convert '%s' to host address"
+msgstr "„%s” kiszolgálócímmé alakítása sikertelen"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1020
+#, c-format
+msgid "VNC connection failed: %s"
+msgstr "A VNC-kapcsolódás sikertelen: %s"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1021
+msgid "Your connection has been rejected."
+msgstr "Kapcsolódását visszautasították."
+
+#: remmina-plugins/vnc/vnc_plugin.c:1048
+#, c-format
+msgid "Unknown authentication scheme from VNC server: %s"
+msgstr ""
+
+#: remmina-plugins/vnc/vnc_plugin.c:1050
+msgid "Please retry after enabling encryption on this profile."
+msgstr ""
+
+#: remmina-plugins/vnc/vnc_plugin.c:1957 remmina-plugins/rdp/rdp_plugin.c:1287
+msgid "256 colors (8 bpp)"
+msgstr "256 szín"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1958 remmina-plugins/rdp/rdp_plugin.c:1288
+msgid "High color (15 bpp)"
+msgstr "15 bites színmélység"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1959 remmina-plugins/rdp/rdp_plugin.c:1289
+msgid "High color (16 bpp)"
+msgstr "16 bites színmélység"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1960 remmina-plugins/rdp/rdp_plugin.c:1290
+msgid "True color (24 bpp)"
+msgstr "24 bites színmélység"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1961 remmina-plugins/rdp/rdp_plugin.c:1291
+msgid "True color (32 bpp)"
+msgstr "32 bites színmélység"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1968 remmina-plugins/nx/nx_plugin.c:740
+#: remmina-plugins/rdp/rdp_plugin.c:1299 remmina-plugins/rdp/rdp_settings.c:204
+msgid "Poor (fastest)"
+msgstr "Gyenge (leggyorsabb)"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1969 remmina-plugins/nx/nx_plugin.c:741
+#: remmina-plugins/rdp/rdp_plugin.c:1300 remmina-plugins/rdp/rdp_settings.c:206
+msgid "Medium"
+msgstr "Közepes"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1970 remmina-plugins/nx/nx_plugin.c:742
+#: remmina-plugins/rdp/rdp_plugin.c:1301 remmina-plugins/rdp/rdp_settings.c:208
+msgid "Good"
+msgstr "Jó"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1971 remmina-plugins/nx/nx_plugin.c:743
+#: remmina-plugins/rdp/rdp_plugin.c:1302 remmina-plugins/rdp/rdp_settings.c:210
+msgid "Best (slowest)"
+msgstr "Legjobb (leglassabb)"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1987
+msgid "Repeater"
+msgstr "Ismétlő"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1990 remmina-plugins/vnc/vnc_plugin.c:2010
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:402
+#: remmina-plugins/rdp/rdp_plugin.c:1345
+msgid "Color depth"
+msgstr "Színmélység"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1991 remmina-plugins/vnc/vnc_plugin.c:2011
+#: remmina-plugins/nx/nx_plugin.c:763 remmina-plugins/rdp/rdp_plugin.c:1361
+msgid "Quality"
+msgstr "Minőség"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2007
+msgid "Listen on port"
+msgstr "Port figyelése"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2027
+msgid "Show remote cursor"
+msgstr "Távoli kurzor megjelenítése"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2028 remmina-plugins/vnc/vnc_plugin.c:2041
+#: remmina-plugins/spice/spice_plugin.c:444
+#: remmina-plugins/spice/spice_plugin.c:456
+msgid "View only"
+msgstr "Csak megtekintés"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2029 remmina-plugins/nx/nx_plugin.c:779
+#: remmina-plugins/rdp/rdp_plugin.c:1373
+#: remmina-plugins/spice/spice_plugin.c:445
+#: remmina-plugins/spice/spice_plugin.c:457
+msgid "Disable clipboard sync"
+msgstr "Vágólap-szinkronizálás tiltása"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2030 remmina-plugins/nx/nx_plugin.c:780
+msgid "Disable encryption"
+msgstr "Titkosítás tiltása"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2031 remmina-plugins/vnc/vnc_plugin.c:2042
+msgid "Disable server input"
+msgstr "Kiszolgálóbemenet letiltása"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2032 remmina-plugins/nx/nx_plugin.c:782
+#: remmina-plugins/rdp/rdp_plugin.c:1372
+#: remmina-plugins/spice/spice_plugin.c:446
+msgid "Disable password storing"
+msgstr ""
+
+#: remmina-plugins/vnc/vnc_plugin.c:2044
+msgid "Open Chat..."
+msgstr "Csevegés megnyitása…"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2045
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:414 remmina-plugins/nx/nx_plugin.c:790
+#: remmina-plugins/rdp/rdp_plugin.c:1385
+#: remmina-plugins/spice/spice_plugin.c:458
+msgid "Send Ctrl+Alt+Delete"
+msgstr ""
+
+#: remmina-plugins/vnc/vnc_plugin.c:2056
+msgid "VNC - Virtual Network Computing"
+msgstr "VNC – Virtual Network Computing"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2078
+msgid "VNC - Incoming Connection"
+msgstr "VNC – Bejövő kapcsolat"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:99
+msgid "Run out of available local X display number."
+msgstr ""
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:286 remmina-plugins/nx/nx_plugin.c:629
+#, c-format
+msgid "Protocol %s is unavailable because GtkSocket only works under Xorg"
+msgstr ""
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:382
+msgid "Grayscale"
+msgstr "Szürkeárnyalatos"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:383
+msgid "256 colors"
+msgstr "256 szín"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:384
+msgid "High color (16 bit)"
+msgstr "16 bites színmélység"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:385
+msgid "True color (24 bit)"
+msgstr "24 bites színmélység"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:404 remmina-plugins/nx/nx_plugin.c:781
+msgid "Use local cursor"
+msgstr "Helyi kurzor használata"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:405
+msgid "Disconnect after one session"
+msgstr "Bontás egy munkamenet után"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:406
+msgid "Listening connection on protocol TCP"
+msgstr ""
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:423
+msgid "XDMCP - X Remote Session"
+msgstr "XDMCP - Távoli X-kapcsolat"
+
+#: remmina-plugins/nx/nx_plugin.c:799
+msgid "NX - NX Technology"
+msgstr "NX - NX technológia"
+
+#: remmina-plugins/nx/nx_session_manager.c:106
+msgid "Terminating"
+msgstr "Befejezés"
+
+#: remmina-plugins/nx/nx_session_manager.c:155
+#, c-format
+msgid "NX Sessions on %s"
+msgstr "NX kapcsolatok ezen: %s"
+
+#: remmina-plugins/nx/nx_session_manager.c:160
+msgid "Attach"
+msgstr "Kapcsolódás"
+
+#: remmina-plugins/nx/nx_session_manager.c:166
+msgid "Restore"
+msgstr "Visszaállítás"
+
+#: remmina-plugins/nx/nx_session_manager.c:167
+msgid "Start"
+msgstr "Indítás"
+
+#: remmina-plugins/nx/nx_session_manager.c:173
+msgid "Terminate"
+msgstr "Bezárás"
+
+#: remmina-plugins/nx/nx_session_manager.c:205
+msgid "Display"
+msgstr "Kijelző"
+
+#: remmina-plugins/nx/nx_session_manager.c:212
+msgid "Status"
+msgstr "Állapot"
+
+#: remmina-plugins/rdp/rdp_plugin.c:115
+msgid "The server name cannot be blank."
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_plugin.c:128
+#, c-format
+msgid "Unable to find the address of RDP server %s."
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_plugin.c:1021
 #, c-format
 msgid ""
 "Authentication to RDP server %s failed.\n"
 "Check username, password and domain."
 msgstr ""
 
-#: remmina-plugins/rdp/rdp_plugin.c:892
+#: remmina-plugins/rdp/rdp_plugin.c:1027
 #, c-format
 msgid "Connection to RDP server %s failed."
 msgstr ""
 
-#: remmina-plugins/rdp/rdp_plugin.c:895
+#: remmina-plugins/rdp/rdp_plugin.c:1030
 #, c-format
 msgid "Unable to connect to RDP server %s"
 msgstr "%s RDP-kiszolgálóhoz való kapcsolódás sikertelen"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1081
-msgid "256 colors (8 bpp)"
-msgstr "256 szín"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1082
-msgid "High color (15 bpp)"
-msgstr "15 bites színmélység"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1083
-msgid "High color (16 bpp)"
-msgstr "16 bites színmélység"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1084
-msgid "True color (24 bpp)"
-msgstr "24 bites színmélység"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1085
-msgid "True color (32 bpp)"
-msgstr "32 bites színmélység"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1086
+#: remmina-plugins/rdp/rdp_plugin.c:1292
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1092
-#: remmina-plugins/rdp/rdp_settings.c:196 remmina-plugins/nx/nx_plugin.c:686
-#: remmina-plugins/vnc/vnc_plugin.c:1989
-msgid "Poor (fastest)"
-msgstr "Gyenge (leggyorsabb)"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1093
-#: remmina-plugins/rdp/rdp_settings.c:198 remmina-plugins/nx/nx_plugin.c:686
-#: remmina-plugins/vnc/vnc_plugin.c:1989
-msgid "Medium"
-msgstr "Közepes"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1094
-#: remmina-plugins/rdp/rdp_settings.c:200 remmina-plugins/nx/nx_plugin.c:686
-#: remmina-plugins/vnc/vnc_plugin.c:1989
-msgid "Good"
-msgstr "Jó"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1095
-#: remmina-plugins/rdp/rdp_settings.c:202 remmina-plugins/nx/nx_plugin.c:686
-#: remmina-plugins/vnc/vnc_plugin.c:1989
-msgid "Best (slowest)"
-msgstr "Legjobb (leglassabb)"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1101
+#: remmina-plugins/rdp/rdp_plugin.c:1309
 msgid "Off"
 msgstr "Ki"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1103
+#: remmina-plugins/rdp/rdp_plugin.c:1311
 msgid "Local - low quality"
 msgstr "Helyi – alacsony minőség"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1104
+#: remmina-plugins/rdp/rdp_plugin.c:1312
 msgid "Local - medium quality"
 msgstr "Helyi – közepes minőség"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1105
+#: remmina-plugins/rdp/rdp_plugin.c:1313
 msgid "Local - high quality"
 msgstr "Helyi – magas minőség"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1112
+#: remmina-plugins/rdp/rdp_plugin.c:1321
 msgid "Negotiate"
 msgstr "Tárgyalás"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1126
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:339
-#: remmina-plugins/vnc/vnc_plugin.c:1997 remmina-plugins/vnc/vnc_plugin.c:2011
-msgid "Color depth"
-msgstr "Színmélység"
+#: remmina-plugins/rdp/rdp_plugin.c:1343
+msgid "RD Gateway server"
+msgstr ""
 
-#: remmina-plugins/rdp/rdp_plugin.c:1127
+#: remmina-plugins/rdp/rdp_plugin.c:1346
 msgid "Share folder"
 msgstr "Mappa megosztása"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1133 remmina-plugins/nx/nx_plugin.c:695
-#: remmina-plugins/vnc/vnc_plugin.c:1998 remmina-plugins/vnc/vnc_plugin.c:2012
-msgid "Quality"
-msgstr "Minőség"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1134
+#: remmina-plugins/rdp/rdp_plugin.c:1362
 msgid "Sound"
 msgstr "Hang"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1135
+#: remmina-plugins/rdp/rdp_plugin.c:1363
 msgid "Security"
 msgstr "Biztonság"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1136
+#: remmina-plugins/rdp/rdp_plugin.c:1364
 msgid "Client name"
 msgstr "Kliensnév"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1139
-msgid "Share local printers"
-msgstr "Helyi nyomtatók megosztása"
+#: remmina-plugins/rdp/rdp_plugin.c:1367
+msgid "Load Balance Info"
+msgstr ""
 
-#: remmina-plugins/rdp/rdp_plugin.c:1140
+#: remmina-plugins/rdp/rdp_plugin.c:1368
+msgid "Ignore certificate"
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_plugin.c:1369
+msgid "Redirect local microphone"
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_plugin.c:1370
+#: remmina-plugins/spice/spice_plugin.c:448
 msgid "Share smartcard"
 msgstr ""
 
-#: remmina-plugins/rdp/rdp_plugin.c:1141 remmina-plugins/nx/nx_plugin.c:701
-#: remmina-plugins/vnc/vnc_plugin.c:2001 remmina-plugins/vnc/vnc_plugin.c:2015
-msgid "Disable clipboard sync"
-msgstr "Vágólap-szinkronizálás tiltása"
+#: remmina-plugins/rdp/rdp_plugin.c:1371
+msgid "Share local printers"
+msgstr "Helyi nyomtatók megosztása"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1142
+#: remmina-plugins/rdp/rdp_plugin.c:1374
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Csatolás konzolhoz (Windows 2003 / 2003 R2)"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1158
+#: remmina-plugins/rdp/rdp_plugin.c:1375
+msgid "Server detection using RD Gateway"
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_plugin.c:1395
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP – Távoli asztal protokoll"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1180
+#: remmina-plugins/rdp/rdp_plugin.c:1418
 msgid "RDP - RDP File Handler"
 msgstr "RDP - RDP fájlleíró"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1195
+#: remmina-plugins/rdp/rdp_plugin.c:1433
 msgid "RDP - Preferences"
 msgstr "RDP – Beállítások"
 
-#: remmina-plugins/rdp/rdp_plugin.c:1213
+#: remmina-plugins/rdp/rdp_plugin.c:1466
 msgid "Export connection in Windows .rdp file format"
 msgstr "Kapcsolat exportálása Windows .rdp fájlformátumba"
 
-#: remmina-plugins/rdp/rdp_settings.c:161
+#: remmina-plugins/rdp/rdp_event.c:296
+#, c-format
+msgid "Reconnection in progress. Attempt %d of %d..."
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_settings.c:168
 msgid "<Auto detect>"
 msgstr "<Automatikus felismerés>"
 
-#: remmina-plugins/rdp/rdp_settings.c:194
+#: remmina-plugins/rdp/rdp_settings.c:202
 msgid "<Choose a quality level to edit...>"
 msgstr ""
 
-#: remmina-plugins/rdp/rdp_settings.c:302
+#: remmina-plugins/rdp/rdp_settings.c:312
 msgid "Keyboard layout"
 msgstr "Billentyűzetkiosztás"
 
-#: remmina-plugins/rdp/rdp_settings.c:325
+#: remmina-plugins/rdp/rdp_settings.c:337
 msgid "Use client keyboard mapping"
 msgstr "Kliens billentyűkiosztásának használata"
 
-#: remmina-plugins/rdp/rdp_settings.c:335
+#: remmina-plugins/rdp/rdp_settings.c:347
 msgid "Quality settings"
 msgstr ""
 
-#: remmina-plugins/rdp/rdp_settings.c:354
+#: remmina-plugins/rdp/rdp_settings.c:367
 msgid "Wallpaper"
 msgstr "Háttér"
 
-#: remmina-plugins/rdp/rdp_settings.c:361
+#: remmina-plugins/rdp/rdp_settings.c:374
 msgid "Window drag"
 msgstr "Ablak mozgatása"
 
-#: remmina-plugins/rdp/rdp_settings.c:368
+#: remmina-plugins/rdp/rdp_settings.c:381
 msgid "Menu animation"
 msgstr "Menüanimáció"
 
-#: remmina-plugins/rdp/rdp_settings.c:375
+#: remmina-plugins/rdp/rdp_settings.c:388
 msgid "Theme"
 msgstr "Téma"
 
-#: remmina-plugins/rdp/rdp_settings.c:382
+#: remmina-plugins/rdp/rdp_settings.c:395
 msgid "Cursor shadow"
 msgstr "Kurzorárnyék"
 
-#: remmina-plugins/rdp/rdp_settings.c:389
+#: remmina-plugins/rdp/rdp_settings.c:402
 msgid "Cursor blinking"
 msgstr "Kurzorvillogás"
 
-#: remmina-plugins/rdp/rdp_settings.c:396
+#: remmina-plugins/rdp/rdp_settings.c:409
 msgid "Font smoothing"
 msgstr "Betűtípus simítása"
 
-#: remmina-plugins/rdp/rdp_settings.c:403
+#: remmina-plugins/rdp/rdp_settings.c:416
 msgid "Composition"
 msgstr "Kompozitálás"
 
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:332
-msgid "Grayscale"
-msgstr "Szürkeárnyalatos"
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:332
-#: remmina-plugins/vnc/vnc_plugin.c:1985
-msgid "256 colors"
-msgstr "256 szín"
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:332
-#: remmina-plugins/vnc/vnc_plugin.c:1985
-msgid "High color (16 bit)"
-msgstr "16 bites színmélység"
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:333
-#: remmina-plugins/vnc/vnc_plugin.c:1986
-msgid "True color (24 bit)"
-msgstr "24 bites színmélység"
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:341 remmina-plugins/nx/nx_plugin.c:703
-msgid "Use local cursor"
-msgstr "Helyi kurzor használata"
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:342
-msgid "Disconnect after one session"
-msgstr "Bontás egy munkamenet után"
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:346
-msgid "XDMCP - X Remote Session"
-msgstr "XDMCP - Távoli X-kapcsolat"
-
-#: remmina-plugins/nx/nx_session_manager.c:106
-msgid "Terminating"
-msgstr "Befejezés"
-
-#: remmina-plugins/nx/nx_session_manager.c:140
+#: remmina-plugins/spice/spice_plugin.c:230
 #, c-format
-msgid "NX Sessions on %s"
-msgstr "NX kapcsolatok ezen: %s"
+msgid "Disconnected from SPICE server %s."
+msgstr ""
 
-#: remmina-plugins/nx/nx_session_manager.c:145
-msgid "Attach"
-msgstr "Kapcsolódás"
+#: remmina-plugins/spice/spice_plugin.c:244
+msgid "Invalid password."
+msgstr ""
 
-#: remmina-plugins/nx/nx_session_manager.c:149
-msgid "Restore"
-msgstr "Visszaállítás"
+#: remmina-plugins/spice/spice_plugin.c:251
+msgid "Connection to SPICE server failed."
+msgstr ""
 
-#: remmina-plugins/nx/nx_session_manager.c:150
-msgid "Start"
-msgstr "Indítás"
+#: remmina-plugins/spice/spice_plugin.c:331
+msgid "USB redirection error"
+msgstr ""
 
-#: remmina-plugins/nx/nx_session_manager.c:154
-msgid "Terminate"
-msgstr "Bezárás"
+#: remmina-plugins/spice/spice_plugin.c:351
+#: remmina-plugins/spice/spice_plugin.c:459
+msgid "Select USB devices for redirection"
+msgstr ""
 
-#: remmina-plugins/nx/nx_session_manager.c:185
-msgid "Display"
-msgstr "Kijelző"
+#: remmina-plugins/spice/spice_plugin.c:354
+msgid "_Close"
+msgstr ""
 
-#: remmina-plugins/nx/nx_session_manager.c:192
-msgid "Status"
-msgstr "Állapot"
+#: remmina-plugins/spice/spice_plugin.c:447
+msgid "Enable audio channel"
+msgstr ""
 
-#: remmina-plugins/nx/nx_plugin.c:702 remmina-plugins/vnc/vnc_plugin.c:2002
-#: remmina-plugins/vnc/vnc_plugin.c:2016
-msgid "Disable encryption"
-msgstr "Titkosítás tiltása"
+#: remmina-plugins/spice/spice_plugin.c:468
+msgid "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr ""
 
-#: remmina-plugins/nx/nx_plugin.c:707
-msgid "NX - NX Technology"
-msgstr "NX - NX technológia"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1056
-msgid "Unable to connect to VNC server"
-msgstr "Nem lehet csatlakozni a VNC-kiszolgálóhoz"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1057
-#, c-format
-msgid "Couldn't convert '%s' to host address"
-msgstr "„%s” kiszolgálócímmé alakítása sikertelen"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1058
-#, c-format
-msgid "VNC connection failed: %s"
-msgstr "A VNC-kapcsolódás sikertelen: %s"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1059
-msgid "Your connection has been rejected."
-msgstr "Kapcsolódását visszautasították."
-
-#: remmina-plugins/vnc/vnc_plugin.c:1985
-msgid "High color (15 bit)"
-msgstr "15 bites színmélység"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1994
-msgid "Repeater"
-msgstr "Ismétlő"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1999 remmina-plugins/vnc/vnc_plugin.c:2013
-msgid "Show remote cursor"
-msgstr "Távoli kurzor megjelenítése"
-
-#: remmina-plugins/vnc/vnc_plugin.c:2000 remmina-plugins/vnc/vnc_plugin.c:2014
-#: remmina-plugins/vnc/vnc_plugin.c:2031
-msgid "View only"
-msgstr "Csak megtekintés"
-
-#: remmina-plugins/vnc/vnc_plugin.c:2003 remmina-plugins/vnc/vnc_plugin.c:2017
-#: remmina-plugins/vnc/vnc_plugin.c:2033
-msgid "Disable server input"
-msgstr "Kiszolgálóbemenet letiltása"
-
-#: remmina-plugins/vnc/vnc_plugin.c:2008
-msgid "Listen on port"
-msgstr "Port figyelése"
-
-#: remmina-plugins/vnc/vnc_plugin.c:2035
-msgid "Open Chat..."
-msgstr "Csevegés megnyitása…"
-
-#: remmina-plugins/vnc/vnc_plugin.c:2041
-msgid "VNC - Virtual Network Computing"
-msgstr "VNC – Virtual Network Computing"
-
-#: remmina-plugins/vnc/vnc_plugin.c:2050
-msgid "VNC - Incoming Connection"
-msgstr "VNC – Bejövő kapcsolat"
-
-#: remmina-plugins/telepathy/telepathy_plugin.c:51
+#: remmina-plugins/telepathy/telepathy_plugin.c:57
 msgid "Telepathy - Desktop Sharing"
 msgstr "Telepathy – Asztalmegosztás"
 
-#: remmina-plugins/telepathy/telepathy_channel_handler.c:246
+#: remmina-plugins/telepathy/telepathy_channel_handler.c:255
 #, c-format
 msgid ""
 "%s wants to share his/her desktop.\n"
@@ -1546,6 +1435,458 @@ msgstr ""
 "%s meg akarja osztani az asztalát.\n"
 "Elfogadja a meghívást?"
 
-#: remmina-plugins/telepathy/telepathy_channel_handler.c:249
+#: remmina-plugins/telepathy/telepathy_channel_handler.c:258
 msgid "Desktop sharing invitation"
 msgstr "Felkérés asztal megosztására"
+
+#: remmina/ui/remmina_survey.glade:32 remmina/ui/remmina_string_list.glade:8
+#: remmina/ui/remmina_string_list.glade:9
+#: remmina/ui/remmina_string_list.glade:63
+#: remmina/ui/remmina_preferences.glade:33
+#: remmina/ui/remmina_preferences.glade:34
+#: remmina/ui/remmina_preferences.glade:57
+msgid "Close"
+msgstr ""
+
+#: remmina/ui/remmina_survey.glade:40 remmina/ui/remmina_survey.glade:87
+msgid "Remmina User Survey"
+msgstr ""
+
+#: remmina/ui/remmina_string_list.glade:14
+#: remmina/ui/remmina_string_list.glade:158
+msgid "Add"
+msgstr ""
+
+#: remmina/ui/remmina_string_list.glade:20
+#: remmina/ui/remmina_string_list.glade:137
+msgid "Remove"
+msgstr ""
+
+#: remmina/ui/remmina_string_list.glade:26
+#: remmina/ui/remmina_string_list.glade:116
+msgid "Move up"
+msgstr ""
+
+#: remmina/ui/remmina_string_list.glade:32
+#: remmina/ui/remmina_string_list.glade:95
+msgid "Move down"
+msgstr ""
+
+#: remmina/ui/remmina_spinner.glade:29 remmina/ui/remmina_key_chooser.glade:38
+#: remmina/ui/remmina_key_chooser.glade:53
+msgid "button"
+msgstr ""
+
+#: remmina/ui/remmina_spinner.glade:54
+msgid "PLEASE WAIT ..."
+msgstr ""
+
+#: remmina/ui/remmina_key_chooser.glade:14
+#: remmina/ui/remmina_key_chooser.glade:15
+msgid "_Remove"
+msgstr ""
+
+#: remmina/ui/remmina_key_chooser.glade:23
+msgid "Choose a new key"
+msgstr "Válasszon új billentyűt"
+
+#: remmina/ui/remmina_key_chooser.glade:82
+msgid "Please press the new key..."
+msgstr "Nyomja le az új billentyűt…"
+
+#: remmina/ui/remmina_about.glade:30
+msgid "About Remmina"
+msgstr ""
+
+#: remmina/ui/remmina_about.glade:40
+msgid "Remmina Web Site"
+msgstr ""
+
+#: remmina/ui/remmina_main.glade:44
+msgid "Open the preferences dialog"
+msgstr "A beállítások ablak megnyitása"
+
+#: remmina/ui/remmina_main.glade:73
+msgid "Open the connection to the selected remote desktop file"
+msgstr "A kiválasztott távoli asztal fájl kapcsolat megnyitása"
+
+#: remmina/ui/remmina_main.glade:82 remmina/ui/remmina_main.glade:83
+msgid "_Edit"
+msgstr "S_zerkesztés"
+
+#: remmina/ui/remmina_main.glade:84
+msgid "Edit the selected remote desktop file"
+msgstr "A kiválasztott távoli asztal fájl szerkesztése"
+
+#: remmina/ui/remmina_main.glade:94
+msgid "Create a copy of the selected remote desktop file"
+msgstr "A kiválasztott távoli asztal fájl kapcsolat másolása"
+
+#: remmina/ui/remmina_main.glade:104
+msgid "Delete the selected remote desktop file"
+msgstr "A kiválasztott távoli asztal fájl törlése"
+
+#: remmina/ui/remmina_main.glade:112 remmina/ui/remmina_main.glade:113
+msgid "External Tools"
+msgstr ""
+
+#: remmina/ui/remmina_main.glade:124 remmina/ui/remmina_main.glade:125
+msgid "_New"
+msgstr ""
+
+#: remmina/ui/remmina_main.glade:126
+msgid "Create a new remote desktop file"
+msgstr "Új távoli asztal fájl létrehozása"
+
+#: remmina/ui/remmina_main.glade:138 remmina/ui/remmina_main.glade:139
+#: remmina/ui/remmina_main.glade:528
+msgid "Homepage"
+msgstr "Honlap"
+
+#: remmina/ui/remmina_main.glade:145 remmina/ui/remmina_main.glade:146
+#: remmina/ui/remmina_main.glade:538
+msgid "Online Wiki"
+msgstr "Online wiki"
+
+#: remmina/ui/remmina_main.glade:153 remmina/ui/remmina_main.glade:154
+#: remmina/ui/remmina_main.glade:547
+msgid "G+ Remmina Community"
+msgstr ""
+
+#: remmina/ui/remmina_main.glade:160 remmina/ui/remmina_main.glade:161
+#: remmina/ui/remmina_main.glade:556
+msgid "Donations"
+msgstr ""
+
+#: remmina/ui/remmina_main.glade:167 remmina/ui/remmina_main.glade:168
+#: remmina/ui/remmina_main.glade:566
+msgid "Debug Window"
+msgstr "Hibakeresési ablak"
+
+#: remmina/ui/remmina_main.glade:175 remmina/ui/remmina_main.glade:176
+#: remmina/ui/remmina_main.glade:585
+msgid "Survey"
+msgstr ""
+
+#: remmina/ui/remmina_main.glade:192 remmina/ui/remmina_main.glade:193
+#: remmina/ui/remmina_main.glade:446
+msgid "Export"
+msgstr "Exportálás"
+
+#: remmina/ui/remmina_main.glade:202 remmina/ui/remmina_main.glade:203
+msgid "Statusbar"
+msgstr "Állapotsor"
+
+#: remmina/ui/remmina_main.glade:210 remmina/ui/remmina_main.glade:211
+msgid "List View"
+msgstr "Listanézet"
+
+#: remmina/ui/remmina_main.glade:219 remmina/ui/remmina_main.glade:220
+msgid "Tree View"
+msgstr "Fanézet"
+
+#: remmina/ui/remmina_main.glade:288
+msgid "search string or server name/ip address for quick connect"
+msgstr ""
+
+#: remmina/ui/remmina_main.glade:335
+msgid "Actions"
+msgstr ""
+
+#: remmina/ui/remmina_main.glade:684
+msgid "Last time used"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:41
+msgid "Remmina Preferences"
+msgstr "Remmina beállításai"
+
+#: remmina/ui/remmina_preferences.glade:99
+msgid "Remember last view mode for each connection"
+msgstr "Minden kapcsolatnál jegyezze meg a legutóbbi nézetet"
+
+#: remmina/ui/remmina_preferences.glade:114
+msgid "Save settings when starting the connection"
+msgstr "A kapcsolat megnyitásakor mentse el a beállításokat"
+
+#: remmina/ui/remmina_preferences.glade:131
+msgid "Double-click action"
+msgstr "Dupla kattintás eseménye"
+
+#: remmina/ui/remmina_preferences.glade:145
+msgid "Open connection"
+msgstr "Kapcsolat megnyitása"
+
+#: remmina/ui/remmina_preferences.glade:146
+msgid "Edit settings"
+msgstr "Beállítások szerkesztése"
+
+#: remmina/ui/remmina_preferences.glade:159
+msgid "Scale quality"
+msgstr "Minőség módosítása"
+
+#: remmina/ui/remmina_preferences.glade:173
+msgid "Nearest"
+msgstr "Legközelebbi"
+
+#: remmina/ui/remmina_preferences.glade:174
+msgid "Tiles"
+msgstr "Mozaik"
+
+#: remmina/ui/remmina_preferences.glade:175
+msgid "Bilinear"
+msgstr "Bilineáris"
+
+#: remmina/ui/remmina_preferences.glade:176
+msgid "Hyper"
+msgstr "Hiper"
+
+#: remmina/ui/remmina_preferences.glade:189
+msgid "Auto scroll step size"
+msgstr "Automatikus görgetés lépésköze"
+
+#: remmina/ui/remmina_preferences.glade:213
+msgid "Maximum recent items"
+msgstr "Legutóbbi elemek száma"
+
+#: remmina/ui/remmina_preferences.glade:235
+msgid "Clear"
+msgstr "Törlés"
+
+#: remmina/ui/remmina_preferences.glade:260
+msgid "Configure resolutions"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:300
+msgid "Activate survey dialog on startup"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:317
+msgid "Screenshots folder"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:329
+msgid "Choose the directory where you want to save Remmina screenshots."
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:332
+msgid "Select a Directory"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:348
+msgid "Options"
+msgstr "Beállítások"
+
+#: remmina/ui/remmina_preferences.glade:370
+msgid "Invisible toolbar in fullscreen mode"
+msgstr "Láthatatlan eszköztár teljes képernyős módban"
+
+#: remmina/ui/remmina_preferences.glade:385
+msgid "Always show tabs"
+msgstr "Mindig jelenjenek meg a fülek"
+
+#: remmina/ui/remmina_preferences.glade:400
+msgid "Hide toolbar in tabbed interface"
+msgstr "Eszköztár elrejtése fülön lévő felületeken"
+
+#: remmina/ui/remmina_preferences.glade:417
+msgid "Default view mode"
+msgstr "Alapértelmezett nézet mód"
+
+#: remmina/ui/remmina_preferences.glade:431
+msgid "Automatic"
+msgstr "Automatikus"
+
+#: remmina/ui/remmina_preferences.glade:432
+msgid "Scrolled window"
+msgstr "Görgetőablak"
+
+#: remmina/ui/remmina_preferences.glade:433
+msgid "Scrolled fullscreen"
+msgstr "Görgetett teljes képernyő"
+
+#: remmina/ui/remmina_preferences.glade:434
+msgid "Viewport fullscreen"
+msgstr "Teljes képernyős ablak"
+
+#: remmina/ui/remmina_preferences.glade:447
+msgid "Tab interface"
+msgstr "Füles megjelenítés"
+
+#: remmina/ui/remmina_preferences.glade:461
+msgid "Tab by groups"
+msgstr "Fülek csoportok alapján"
+
+#: remmina/ui/remmina_preferences.glade:462
+msgid "Tab by protocols"
+msgstr "Fülek protokoll alapján"
+
+#: remmina/ui/remmina_preferences.glade:463
+msgid "Tab all connections"
+msgstr "Fül minden kapcsolathoz"
+
+#: remmina/ui/remmina_preferences.glade:464
+msgid "Do not use tabs"
+msgstr "Ne használjon füleket"
+
+#: remmina/ui/remmina_preferences.glade:477
+msgid "Show buttons icons"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:489
+#: remmina/ui/remmina_preferences.glade:519
+msgid "This setting will be active after the application restart"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:492
+#: remmina/ui/remmina_preferences.glade:522
+msgid "Use system theme preferences"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:493
+#: remmina/ui/remmina_preferences.glade:523
+msgid "Show always"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:494
+#: remmina/ui/remmina_preferences.glade:524
+msgid "Hide always"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:507
+msgid "Show menu icons"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:544
+msgid "Appearance"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:567
+msgid "Show new connection on top of the menu"
+msgstr "Új kapcsolat megjelenítése a menü tetején"
+
+#: remmina/ui/remmina_preferences.glade:583
+msgid "Hide total count in group menu"
+msgstr "Összesített szám elrejtése a csoportmenüben"
+
+#: remmina/ui/remmina_preferences.glade:599
+msgid "Disable tray icon"
+msgstr "Értesítő ikon letiltása"
+
+#: remmina/ui/remmina_preferences.glade:616
+msgid "Start Remmina in tray icon at user logon"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:641
+msgid "Applet"
+msgstr "Értesítő ikon"
+
+#: remmina/ui/remmina_preferences.glade:667
+msgid "Host key"
+msgstr "Távoli gép billentyű"
+
+#: remmina/ui/remmina_preferences.glade:723
+msgid "Auto-fit window"
+msgstr "Ablak automatikus méretezése"
+
+#: remmina/ui/remmina_preferences.glade:820
+msgid "Grab keyboard"
+msgstr "Billentyűzet elkapása"
+
+#: remmina/ui/remmina_preferences.glade:904
+msgid "Show / hide toolbar"
+msgstr "Eszköztár megjelenítése/elrejtése"
+
+#: remmina/ui/remmina_preferences.glade:943
+msgid "SCREENSHOT"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:967
+#: remmina/ui/remmina_preferences.glade:1160
+msgid "Keyboard"
+msgstr "Billentyűzet"
+
+#: remmina/ui/remmina_preferences.glade:992
+msgid "SSH tunnel local port"
+msgstr "SSH alagút helyi portja"
+
+#: remmina/ui/remmina_preferences.glade:1014
+msgid "Parse ~/.ssh/config"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:1033
+msgid "SSH_LOG_NOLOG"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:1034
+msgid "SSH_LOG_RARE"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:1035
+msgid "SSH_LOG_ENTRY"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:1036
+msgid "SSH_LOG_PACKET"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:1037
+msgid "SSH_LOG_FUNCTIONS"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:1050
+msgid "SSH log level"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:1069
+msgid "SSH Options"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:1095
+msgid "Font"
+msgstr "Betűkészlet"
+
+#: remmina/ui/remmina_preferences.glade:1108
+msgid "Colors"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:1121
+#: remmina/ui/remmina_preferences.glade:1272
+msgid "Foreground color"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:1134
+#: remmina/ui/remmina_preferences.glade:1286
+msgid "Background color"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:1147
+msgid "Scrollback lines"
+msgstr "Visszagördítés sorai"
+
+#: remmina/ui/remmina_preferences.glade:1182
+msgid "Use system default font"
+msgstr "Alapértelmezett betűkészlet használata"
+
+#: remmina/ui/remmina_preferences.glade:1237
+msgid "Allow bold text"
+msgstr "Félkövér betűk engedélyezése"
+
+#: remmina/ui/remmina_preferences.glade:1253
+msgid "Use system theme colors"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:1323
+#: remmina/ui/remmina_preferences.glade:1362
+#: remmina/ui/remmina_preferences.glade:1401
+msgid "Host key +"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:1389
+msgid "Select All"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:1444
+msgid "Terminal"
+msgstr "Terminál"
+
