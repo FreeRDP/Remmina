@@ -48,6 +48,7 @@
 enum
 {
 	REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY = 1,
+	REMMINA_PLUGIN_SPICE_FEATURE_PREF_RESIZEGUEST,
 	REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD,
 	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL,
 	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_USBREDIR,
@@ -170,6 +171,7 @@ static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChan
 		gpdata->display = spice_display_new(gpdata->session, id);
 		g_object_set(gpdata->display,
 		             "scaling", remmina_plugin_service->protocol_plugin_get_scale(gp),
+		             "resize-guest", remmina_plugin_service->file_get_int(remminafile, "resizeguest", FALSE),
 		             NULL);
 		gtk_container_add(GTK_CONTAINER(gp), GTK_WIDGET(gpdata->display));
 		gtk_widget_show(GTK_WIDGET(gpdata->display));
@@ -394,6 +396,12 @@ static void remmina_plugin_spice_call_feature(RemminaProtocolWidget *gp, const R
 			             remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
 			             NULL);
 			break;
+		case REMMINA_PLUGIN_SPICE_FEATURE_PREF_RESIZEGUEST:
+			g_object_set(gpdata->display,
+			             "resize-guest",
+			             remmina_plugin_service->file_get_int(remminafile, "resizeguest", TRUE),
+			             NULL);
+			break;
 		case REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD:
 			g_object_set(gpdata->gtk_session,
 			             "auto-clipboard",
@@ -427,6 +435,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "resizeguest", N_("Resize guest to match window size"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
@@ -454,6 +463,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_advanced_settings[] =
 static const RemminaProtocolFeature remmina_plugin_spice_features[] =
 {
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SPICE_FEATURE_PREF_VIEWONLY, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "viewonly", N_("View only") },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SPICE_FEATURE_PREF_RESIZEGUEST, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "resizeguest", N_("Resize guest to match window size") },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "disableclipboard", N_("Disable clipboard sync") },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SPICE_FEATURE_TOOL_USBREDIR, N_("Select USB devices for redirection"), NULL, NULL },
