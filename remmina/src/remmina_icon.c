@@ -414,14 +414,17 @@ gboolean remmina_icon_is_available(void)
 	 * its work without the remmina main window */
 
 	TRACE_CALL("remmina_icon_is_available");
+	gchar *gsversion;
+
 	if (!remmina_icon.icon)
 		return FALSE;
 	if (remmina_pref.disable_tray_icon)
 		return FALSE;
 
 	/* Special treatmen under Gnome Shell */
-	if (remmina_sysinfo_get_gnome_shell_version() != NULL)
+	if ((gsversion=remmina_sysinfo_get_gnome_shell_version()) != NULL)
 	{
+		g_free(gsversion);
 #ifdef HAVE_LIBAPPINDICATOR
 		/* Gnome Shell with compiled in LIBAPPINDICATOR: no systray icon,
 		 * ensure have also a working appindicator extension available */
