@@ -47,32 +47,35 @@
 UINT32 remmina_rdp_cliprdr_get_format_from_gdkatom(GdkAtom atom)
 {
 	TRACE_CALL("remmina_rdp_cliprdr_get_format_from_gdkatom");
+	UINT32 rc;
 	gchar* name = gdk_atom_name(atom);
+	rc = 0;
 	if (g_strcmp0("UTF8_STRING", name) == 0 || g_strcmp0("text/plain;charset=utf-8", name) == 0)
 	{
-		return CF_UNICODETEXT;
+		rc = CF_UNICODETEXT;
 	}
 	if (g_strcmp0("TEXT", name) == 0 || g_strcmp0("text/plain", name) == 0)
 	{
-		return CF_TEXT;
+		rc =  CF_TEXT;
 	}
 	if (g_strcmp0("text/html", name) == 0)
 	{
-		return CB_FORMAT_HTML;
+		rc =  CB_FORMAT_HTML;
 	}
 	if (g_strcmp0("image/png", name) == 0)
 	{
-		return CB_FORMAT_PNG;
+		rc =  CB_FORMAT_PNG;
 	}
 	if (g_strcmp0("image/jpeg", name) == 0)
 	{
-		return CB_FORMAT_JPEG;
+		rc =  CB_FORMAT_JPEG;
 	}
 	if (g_strcmp0("image/bmp", name) == 0)
 	{
-		return CF_DIB;
+		rc =  CF_DIB;
 	}
-	return 0;
+	g_free(name);
+	return rc;
 }
 
 void remmina_rdp_cliprdr_get_target_types(UINT32** formats, UINT16* size, GdkAtom* types, int count)

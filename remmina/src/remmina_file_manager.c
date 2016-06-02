@@ -44,22 +44,25 @@
 #include "remmina_file_manager.h"
 #include "remmina/remmina_trace_calls.h"
 
+static gchar remminadir[MAX_PATH_LEN];
 
 gchar* remmina_file_get_user_datadir(void)
 {
-	gchar remminadir[MAX_PATH_LEN];
+
 	TRACE_CALL("remmina_file_get_user_datadir");
 	GDir *old;
 
-	/* If the old .remmina exists, use it. */
-	g_snprintf(remminadir, sizeof(remminadir), "%s/.%s", g_get_home_dir(), remmina);
-	old = g_dir_open(remminadir, 0, NULL);
-	if (old == NULL)
-		/* If the XDG directories exist, use them. */
-		g_snprintf(remminadir, sizeof(remminadir), "%s/%s", g_get_user_data_dir(), remmina);
-	else
-		g_dir_close(old);
-	return g_strdup(remminadir);
+	if (remminadir[0] == '\0') {
+		/* If the old .remmina exists, use it. */
+		g_snprintf(remminadir, sizeof(remminadir), "%s/.%s", g_get_home_dir(), remmina);
+		old = g_dir_open(remminadir, 0, NULL);
+		if (old == NULL)
+			/* If the XDG directories exist, use them. */
+			g_snprintf(remminadir, sizeof(remminadir), "%s/%s", g_get_user_data_dir(), remmina);
+		else
+			g_dir_close(old);
+	}
+	return remminadir;
 }
 
 void remmina_file_manager_init(void)
