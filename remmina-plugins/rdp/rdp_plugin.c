@@ -1162,10 +1162,6 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 		rfi->rfx_context = NULL;
 	}
 
-	/* We allocated CertificateName with strdup, so we must free it */
-	if (rfi->settings->CertificateName)
-		free(rfi->settings->CertificateName);
-
 	if (instance)
 	{
 		gdi_free(instance);
