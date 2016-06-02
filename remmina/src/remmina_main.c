@@ -1039,7 +1039,7 @@ void remmina_main_on_drag_data_received(GtkWidget *widget, GdkDragContext *drag_
 	GSList *files = NULL;
 	gint i;
 
-	uris = g_uri_list_extract_uris((const gchar *) gtk_selection_data_get_data(user_data));
+	uris = g_uri_list_extract_uris((const gchar *) gtk_selection_data_get_data(data));
 	for (i = 0; uris[i]; i++)
 	{
 		if (strncmp(uris[i], "file://", 7) != 0)
