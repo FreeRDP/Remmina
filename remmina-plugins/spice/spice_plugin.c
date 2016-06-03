@@ -69,6 +69,8 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 
 static void remmina_plugin_spice_channel_new_cb(SpiceSession *, SpiceChannel *, RemminaProtocolWidget *);
 static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *, SpiceChannelEvent, RemminaProtocolWidget *);
+static void remmina_plugin_spice_display_ready_cb(GObject *, GParamSpec *, RemminaProtocolWidget *);
+static void remmina_plugin_spice_update_scale(RemminaProtocolWidget *);
 
 static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 {
@@ -173,12 +175,10 @@ static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChan
 	{
 		gpdata->display_channel = SPICE_DISPLAY_CHANNEL(channel);
 		gpdata->display = spice_display_new(gpdata->session, id);
-		g_object_set(gpdata->display,
-		             "scaling", remmina_plugin_service->protocol_plugin_get_scale(gp),
-		             "resize-guest", remmina_plugin_service->file_get_int(remminafile, "resizeguest", FALSE),
-		             NULL);
-		gtk_container_add(GTK_CONTAINER(gp), GTK_WIDGET(gpdata->display));
-		gtk_widget_show(GTK_WIDGET(gpdata->display));
+		g_signal_connect(gpdata->display,
+		                 "notify::ready",
+		                 G_CALLBACK(remmina_plugin_spice_display_ready_cb),
+		                 gp);
 	}
 
 	if (SPICE_IS_PLAYBACK_CHANNEL(channel))
@@ -238,7 +238,6 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 			remmina_plugin_spice_close_connection(gp);
 			break;
 		case SPICE_CHANNEL_OPENED:
-			remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 			break;
 		case SPICE_CHANNEL_ERROR_AUTH:
 			if (remmina_plugin_spice_ask_auth(gp))
@@ -259,6 +258,32 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 			break;
 		default:
 			break;
+	}
+}
+
+static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *param_spec, RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+
+	gboolean ready;
+	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	g_object_get(display, "ready", &ready, NULL);
+
+	if (ready)
+	{
+		g_signal_handlers_disconnect_by_func(display,
+		                                     G_CALLBACK(remmina_plugin_spice_display_ready_cb),
+		                                     gp);
+
+		g_object_set(display,
+		             "scaling", remmina_plugin_service->protocol_plugin_get_scale(gp),
+		             "resize-guest", remmina_plugin_service->file_get_int(remminafile, "resizeguest", FALSE),
+		             NULL);
+		gtk_container_add(GTK_CONTAINER(gp), GTK_WIDGET(display));
+		gtk_widget_show(GTK_WIDGET(display));
+
+		remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 	}
 }
 
