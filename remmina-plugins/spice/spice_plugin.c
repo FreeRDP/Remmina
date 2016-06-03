@@ -132,11 +132,15 @@ static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
 
-	if (gpdata->session)
+	if (gpdata->main_channel)
 	{
 		g_signal_handlers_disconnect_by_func(gpdata->main_channel,
 		                                     G_CALLBACK(remmina_plugin_spice_main_channel_event_cb),
 		                                     gp);
+	}
+
+	if (gpdata->session)
+	{
 		spice_session_disconnect(gpdata->session);
 		g_object_unref(gpdata->session);
 		gpdata->session = NULL;
