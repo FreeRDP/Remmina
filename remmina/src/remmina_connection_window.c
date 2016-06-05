@@ -348,7 +348,7 @@ static void remmina_connection_window_close_all_connections(RemminaConnectionWin
 
 }
 
-void remmina_connection_window_delete(RemminaConnectionWindow* cnnwin)
+gboolean remmina_connection_window_delete(RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL("remmina_connection_window_delete");
 	RemminaConnectionWindowPriv* priv = cnnwin->priv;
@@ -358,7 +358,7 @@ void remmina_connection_window_delete(RemminaConnectionWindow* cnnwin)
 	gint i, n;
 
 	if (!REMMINA_IS_CONNECTION_WINDOW(cnnwin))
-		return;
+		return TRUE;
 
 	n = gtk_notebook_get_n_pages(notebook);
 	if (n > 1)
@@ -369,7 +369,7 @@ void remmina_connection_window_delete(RemminaConnectionWindow* cnnwin)
 		i = gtk_dialog_run(GTK_DIALOG(dialog));
 		gtk_widget_destroy(dialog);
 		if (i != GTK_RESPONSE_YES)
-			return;
+			return FALSE;
 	}
 	remmina_connection_window_close_all_connections(cnnwin);
 
@@ -380,6 +380,7 @@ void remmina_connection_window_delete(RemminaConnectionWindow* cnnwin)
 		gtk_widget_destroy(GTK_WIDGET(cnnhld->cnnwin));
 	cnnhld->cnnwin = NULL;
 
+	return TRUE;
 }
 
 static gboolean remmina_connection_window_delete_event(GtkWidget* widget, GdkEvent* event, gpointer data)

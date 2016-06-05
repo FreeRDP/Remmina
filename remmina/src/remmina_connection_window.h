@@ -69,7 +69,7 @@ G_GNUC_CONST;
 gboolean remmina_connection_window_open_from_filename(const gchar* filename);
 /* Open a new connection window for a given RemminaFile struct. The struct will be freed after the call */
 void remmina_connection_window_open_from_file(RemminaFile* remminafile);
-void remmina_connection_window_delete(RemminaConnectionWindow* cnnwin);
+gboolean remmina_connection_window_delete(RemminaConnectionWindow* cnnwin);
 GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallback disconnect_cb, gpointer data,
         guint* handler);
 
