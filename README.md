@@ -87,7 +87,11 @@ For more informations See the [Remmina web site donation page](http://remmina.or
 
 See the [THANKS.md](https://raw.githubusercontent.com/FreeRDP/Remmina/next/THANKS.md) file for an exhaustive list of supporters.
 
+#### Paypal
+
 [![paypal](https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZBD87JG52PTZC) 
+
+#### Bitcoin
 
 [![bitcoin](http://www.remmina.org/wp/wp-content/uploads/2016/06/bitcoin_1298H2vaxcbDQRuR-e1465504491655.png)](bitcoin:1298H2vaxcbDQRuRYkDjfFbvGEgxE1CNjk?label=Remmina%20Donation)
 
