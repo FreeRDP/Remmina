@@ -87,15 +87,14 @@ For more informations See the [Remmina web site donation page](http://remmina.or
 
 See the [THANKS.md](https://raw.githubusercontent.com/FreeRDP/Remmina/next/THANKS.md) file for an exhaustive list of supporters.
 
-Click [here](bitcoin:1298H2vaxcbDQRuRYkDjfFbvGEgxE1CNjk?label=Remmina%20Donation) for a donation in Bitcoins. 
+[![paypal](https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZBD87JG52PTZC)
+
+[![bitcoin](http://www.remmina.org/wp/wp-content/uploads/2016/06/bitcoin_1298H2vaxcbDQRuR.png)](bitcoin:1298H2vaxcbDQRuRYkDjfFbvGEgxE1CNjk?label=Remmina%20Donation)
 
 If clicking on the line above does not work, use this payment info: 
 
-Pay to:  1298H2vaxcbDQRuRYkDjfFbvGEgxE1CNjk 
-
-Message: Remmina Donation 
-
-[![paypal](https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZBD87JG52PTZC)
+- Remmina bitcoin address:  1298H2vaxcbDQRuRYkDjfFbvGEgxE1CNjk  
+- Message: Remmina Donation  
 
 ## Authors
 
