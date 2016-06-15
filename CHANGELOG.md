@@ -1,13 +1,39 @@
 # Change Log
 
-## [1.2.0.rcgit.13](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.13) (2016-05-30)
+## [1.2.0.rcgit.14](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.14) (2016-06-16)
 
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0.rcgit.13...1.2.0.rcgit.1)
+
+**Implemented enhancements:**
+
+- No more keyboard shortcuts for quick search [\#887](https://github.com/FreeRDP/Remmina/issues/887)
+- Support opening rdp files [\#47](https://github.com/FreeRDP/Remmina/issues/47)
+
+**Fixed bugs:**
+
+- Remmina closes even if I press "No" when it asks if I'm sure [\#888](https://github.com/FreeRDP/Remmina/issues/888)
+
+**Closed issues:**
+
+- RemoteApp support [\#898](https://github.com/FreeRDP/Remmina/issues/898)
+- I do not see the button "Creane a new connection profile" [\#897](https://github.com/FreeRDP/Remmina/issues/897)
+- Error when compiling Remmina [\#848](https://github.com/FreeRDP/Remmina/issues/848)
+
+**Merged pull requests:**
+
+- Adds monochrome tray icons [\#901](https://github.com/FreeRDP/Remmina/pull/901) ([wa4557](https://github.com/wa4557))
+- Don't quit Remmina if the user denies closing the connection window [\#895](https://github.com/FreeRDP/Remmina/pull/895) ([larchunix](https://github.com/larchunix))
+- Adds support for themable panel icons [\#894](https://github.com/FreeRDP/Remmina/pull/894) ([wa4557](https://github.com/wa4557))
+- added \n in the credits [\#893](https://github.com/FreeRDP/Remmina/pull/893) ([jgjimenez](https://github.com/jgjimenez))
+
+## [1.2.0.rcgit.13](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.13) (2016-06-02)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0.rcgit.12...1.2.0.rcgit.13)
 
 **Implemented enhancements:**
 
 - Move Focus to Quick\_Find search-box Upon Typing [\#837](https://github.com/FreeRDP/Remmina/issues/837)
 - RDP: Fix extended mouse event to register the click for forward/back buttons [\#638](https://github.com/FreeRDP/Remmina/issues/638)
+- Remmina main fixes [\#891](https://github.com/FreeRDP/Remmina/pull/891) ([antenore](https://github.com/antenore))
 - Remmina Main Window Refactoring [\#875](https://github.com/FreeRDP/Remmina/pull/875) ([antenore](https://github.com/antenore))
 
 **Fixed bugs:**
@@ -18,12 +44,20 @@
 
 **Closed issues:**
 
+- Remmina SPICE doesn't show the connections anymore [\#885](https://github.com/FreeRDP/Remmina/issues/885)
 - Only access via Administrator account \(Raspbian -\> Windows 10\) [\#880](https://github.com/FreeRDP/Remmina/issues/880)
+- rdp attempt from ubuntu xenial to win 10 [\#868](https://github.com/FreeRDP/Remmina/issues/868)
 - Location of saved connections is wrong in Wiki [\#866](https://github.com/FreeRDP/Remmina/issues/866)
+- compile remmina not working [\#771](https://github.com/FreeRDP/Remmina/issues/771)
 - Grayed buttons if no entry or if none selected [\#488](https://github.com/FreeRDP/Remmina/issues/488)
+- Hide quick connect bar by default [\#421](https://github.com/FreeRDP/Remmina/issues/421)
+- Can't execute the last GIT with GTK2 \(undefined symbol: gdk\_pixbuf\_get\_from\_surface\) [\#220](https://github.com/FreeRDP/Remmina/issues/220)
 
 **Merged pull requests:**
 
+- Fix some memory leaks [\#890](https://github.com/FreeRDP/Remmina/pull/890) ([giox069](https://github.com/giox069))
+- Translations ready [\#889](https://github.com/FreeRDP/Remmina/pull/889) ([jgjimenez](https://github.com/jgjimenez))
+- Translations [\#884](https://github.com/FreeRDP/Remmina/pull/884) ([antenore](https://github.com/antenore))
 - Spice plugin: smartcard redirection support [\#882](https://github.com/FreeRDP/Remmina/pull/882) ([larchunix](https://github.com/larchunix))
 - SPICE plugin: USB redirection support + minor fixes [\#881](https://github.com/FreeRDP/Remmina/pull/881) ([larchunix](https://github.com/larchunix))
 - Spice plugin: scaling support  [\#879](https://github.com/FreeRDP/Remmina/pull/879) ([larchunix](https://github.com/larchunix))
