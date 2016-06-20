@@ -468,8 +468,6 @@ void remmina_icon_init(void)
 #else
 		remmina_icon.icon = gtk_status_icon_new_from_icon_name(remmina_panel);
 
-		g_free(remmina_panel);
-
 		gtk_status_icon_set_title(remmina_icon.icon, _("Remmina Remote Desktop Client"));
 		gtk_status_icon_set_tooltip_text(remmina_icon.icon, _("Remmina Remote Desktop Client"));
 
