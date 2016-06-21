@@ -88,6 +88,7 @@ static void remmina_init_dialog_init(RemminaInitDialog *dialog)
 
 	gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
 
+	gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER_ALWAYS);
 	gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
 
 	/**** Create the dialog content from here ****/
