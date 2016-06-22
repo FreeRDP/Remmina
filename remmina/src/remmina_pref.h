@@ -110,7 +110,7 @@ typedef struct _RemminaPref
 	gboolean applet_new_ontop;
 	gboolean applet_hide_count;
 	gboolean disable_tray_icon;
-	gboolean tray_icon_light;
+	gboolean dark_tray_icon;
 	/* In RemminaPrefDialog SSH Option tab */
 	gint ssh_loglevel;
 	gboolean ssh_parseconfig;

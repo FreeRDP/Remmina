@@ -447,7 +447,7 @@ void remmina_icon_init(void)
 
 	gchar remmina_panel[23];
 
-	if (remmina_pref.tray_icon_light)
+	if (remmina_pref.dark_tray_icon)
 	{
 		g_stpcpy(remmina_panel, "remmina-panel-inverted");
 	}
