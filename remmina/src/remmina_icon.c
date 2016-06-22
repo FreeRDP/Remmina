@@ -445,17 +445,28 @@ void remmina_icon_init(void)
 {
 	TRACE_CALL("remmina_icon_init");
 
+	gchar remmina_panel[23];
+
+	if (remmina_pref.dark_tray_icon)
+	{
+		g_stpcpy(remmina_panel, "remmina-panel-inverted");
+	}
+	else
+	{
+		g_stpcpy(remmina_panel, "remmina-panel");
+	}
+
 	if (!remmina_icon.icon && !remmina_pref.disable_tray_icon)
 	{
 #ifdef HAVE_LIBAPPINDICATOR
-		remmina_icon.icon = app_indicator_new ("remmina-icon", "remmina-panel", APP_INDICATOR_CATEGORY_OTHER);
+		remmina_icon.icon = app_indicator_new ("remmina-icon", remmina_panel, APP_INDICATOR_CATEGORY_OTHER);
 		app_indicator_set_icon_theme_path (remmina_icon.icon, REMMINA_DATADIR G_DIR_SEPARATOR_S "icons");
 
 		app_indicator_set_status (remmina_icon.icon, APP_INDICATOR_STATUS_ACTIVE);
 		app_indicator_set_title (remmina_icon.icon, "Remmina");
 		remmina_icon_populate_menu ();
 #else
-		remmina_icon.icon = gtk_status_icon_new_from_icon_name("remmina-panel");
+		remmina_icon.icon = gtk_status_icon_new_from_icon_name(remmina_panel);
 
 		gtk_status_icon_set_title(remmina_icon.icon, _("Remmina Remote Desktop Client"));
 		gtk_status_icon_set_tooltip_text(remmina_icon.icon, _("Remmina Remote Desktop Client"));
