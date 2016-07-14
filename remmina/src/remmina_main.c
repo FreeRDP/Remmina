@@ -548,21 +548,21 @@ static void remmina_main_load_files()
 		break;
 	}
 
-	/* Activate the new model, destroy the old one and save the new */
-	gtk_tree_view_set_model(remminamain->tree_files_list, newmodel);
-	if (remminamain->priv->file_model)
-		g_object_unref(G_OBJECT(remminamain->priv->file_model));
+	/* Unset old model */
+	gtk_tree_view_set_model(remminamain->tree_files_list, NULL);
+
+	/* Destroy the old model and save the new one */
 	remminamain->priv->file_model = newmodel;
 
-	/* Apply sorted filtered model to the TreeView */
+	/* Create a sorted filtered model based on newmodel and apply it to the TreeView */
 	remminamain->priv->file_model_filter = gtk_tree_model_filter_new(remminamain->priv->file_model, NULL);
 	gtk_tree_model_filter_set_visible_func(GTK_TREE_MODEL_FILTER(remminamain->priv->file_model_filter),
 	                                       (GtkTreeModelFilterVisibleFunc) remmina_main_filter_visible_func, NULL, NULL);
 	remminamain->priv->file_model_sort = gtk_tree_model_sort_new_with_model(remminamain->priv->file_model_filter);
-	gtk_tree_view_set_model(remminamain->tree_files_list, remminamain->priv->file_model_sort);
 	gtk_tree_sortable_set_sort_column_id( GTK_TREE_SORTABLE(remminamain->priv->file_model_sort),
 			remmina_pref.main_sort_column_id,
 			remmina_pref.main_sort_order);
+	gtk_tree_view_set_model(remminamain->tree_files_list, remminamain->priv->file_model_sort);
 	g_signal_connect(G_OBJECT(remminamain->priv->file_model_sort), "sort-column-changed",
 	                 G_CALLBACK(remmina_main_file_model_on_sort), NULL);
 	remmina_main_expand_group();
