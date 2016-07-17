@@ -658,8 +658,11 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 
 		if (!freerdp_check_event_handles(rfi->instance->context))
 		{
-			if (rf_auto_reconnect(rfi))
+			if (rf_auto_reconnect(rfi)) {
+				/* Reset the possible reason/error which made us doing many reconnection reattempts and continue */
+				remmina_plugin_service->protocol_plugin_set_error(gp, NULL);
 				continue;
+			}
 			fprintf(stderr, "Failed to check FreeRDP event handles\n");
 			break;
 		}

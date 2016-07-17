@@ -947,6 +947,12 @@ void remmina_protocol_widget_set_error(RemminaProtocolWidget* gp, const gchar *f
 
 	if (gp->priv->error_message) g_free(gp->priv->error_message);
 
+	if (fmt == NULL) {
+		gp->priv->has_error = FALSE;
+		gp->priv->error_message = NULL;
+		return;
+	}
+
 	va_start (args, fmt);
 	gp->priv->error_message = g_strdup_vprintf (fmt, args);
 	va_end (args);
