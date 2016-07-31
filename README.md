@@ -36,11 +36,8 @@ By default the RDP, SSH and SFTP plugins are installed. You can view a list of a
 
 ### From the source code
 
-Follow the following guides:
-
-* How to compile "next" branch on Ubuntu 14.04 and 14.10: [Compile-on-Ubuntu-14.04-and-14.10](Compile-on-Ubuntu-14.04-and-14.10)
-* How to compile "next" branch on Fedora 20: [Compile-on-Fedora-20](Compile-on-Fedora-20)
-* For Debian 7.6 you can use the Ubuntu guide, but you must disable SSH with -DWITH_LIBSSH=OFF when executing cmake. libssh provided with debian 7 (v 5.4) is older than the needed version 6.x.
+Follow the guides available on the wiki:
+* [Wiki and compilation instructions](https://github.com/FreeRDP/Remmina/wiki)
 
 ## Usage
 
