@@ -3165,6 +3165,77 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
 
 	cnnhld->hostkey_used = TRUE;
 	keyval = gdk_keyval_to_lower(keyval);
+        if (keyval == GDK_KEY_Up || keyval == GDK_KEY_Down
+            || keyval == GDK_KEY_Left || keyval == GDK_KEY_Right) {
+            DECLARE_CNNOBJ_WITH_RETURN(FALSE);
+            GtkAdjustment *adjust;
+            int pos;
+
+            if (cnnobj->connected && GTK_IS_SCROLLED_WINDOW(cnnobj->scrolled_container)) {
+                if (keyval == GDK_KEY_Up || keyval == GDK_KEY_Down)
+                    adjust = gtk_scrolled_window_get_vadjustment(GTK_SCROLLED_WINDOW(cnnobj->scrolled_container));
+                else
+                    adjust = gtk_scrolled_window_get_hadjustment(GTK_SCROLLED_WINDOW(cnnobj->scrolled_container));
+
+                if (keyval == GDK_KEY_Up || keyval == GDK_KEY_Left)
+                    pos = 0;
+                else
+                    pos = gtk_adjustment_get_upper(adjust);
+
+                gtk_adjustment_set_value (adjust, pos);
+                if (keyval == GDK_KEY_Up || keyval == GDK_KEY_Down)
+                    gtk_scrolled_window_set_vadjustment (GTK_SCROLLED_WINDOW(cnnobj->scrolled_container), adjust);
+                else
+                    gtk_scrolled_window_set_hadjustment (GTK_SCROLLED_WINDOW(cnnobj->scrolled_container), adjust);
+            }
+            else if (REMMINA_IS_SCROLLED_VIEWPORT(cnnobj->scrolled_container)) {
+                RemminaScrolledViewport *gsv;
+                GtkWidget *child;
+                GdkWindow *gsvwin;
+                gint sz;
+                GtkAdjustment *adj;
+                gdouble value;
+
+                if (!GTK_IS_BIN(cnnobj->scrolled_container))
+                    return FALSE;
+
+                gsv = REMMINA_SCROLLED_VIEWPORT(cnnobj->scrolled_container);
+                child = gtk_bin_get_child(GTK_BIN(gsv));
+                if (!GTK_IS_VIEWPORT(child))
+                    return FALSE;
+
+                gsvwin = gtk_widget_get_window(GTK_WIDGET(gsv));
+                if (!gsv)
+                    return FALSE;
+
+                if (keyval == GDK_KEY_Up || keyval == GDK_KEY_Down) {
+                    sz = gdk_window_get_height(gsvwin) + 2;	// Add 2px of black scroll border
+#if GTK_VERSION == 3
+                    adj = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(child));
+#elif GTK_VERSION == 2
+                    adj = gtk_viewport_get_vadjustment(GTK_VIEWPORT(child));
+#endif
+                }
+                else {
+                    sz = gdk_window_get_width(gsvwin) + 2;	// Add 2px of black scroll border
+#if GTK_VERSION == 3
+                    adj = gtk_scrollable_get_hadjustment(GTK_SCROLLABLE(child));
+#elif GTK_VERSION == 2
+                    adj = gtk_viewport_get_hadjustment(GTK_VIEWPORT(child));
+#endif
+                }
+
+                if (keyval == GDK_KEY_Up || keyval == GDK_KEY_Left) {
+                    value = 0;
+                }
+                else {
+                    value = gtk_adjustment_get_upper(GTK_ADJUSTMENT(adj)) - (gdouble) sz + 2.0;
+                }
+
+                gtk_adjustment_set_value(GTK_ADJUSTMENT(adj), value);
+            }
+        }
+
 	if (keyval == remmina_pref.shortcutkey_fullscreen)
 	{
 		switch (priv->view_mode)
