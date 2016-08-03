@@ -31,7 +31,7 @@
 # files in the program, then also delete it here.
 
 
-find_package(Libsecret)
+find_suggested_package(Libsecret)
 if(LIBSECRET_FOUND)
 	set(REMMINA_PLUGINS_GNOME_SRCS
 		src/glibsecret_plugin.c
