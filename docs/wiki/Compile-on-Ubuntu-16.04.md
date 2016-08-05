@@ -2,7 +2,7 @@
 
 These are instructions for people or software developers who want to contribute to the latest version of Remmina on Ubuntu 16.04.
 
-If you are an end user and you want to install the latest version of remmina, please use the "Remmina Team Ubuntu PPA - next branch", as explained on the [homepage of the wiki](https://github.com/FreeRDP/Remmina/wiki).
+If you are an end user and you want to install the latest version of remmina, please use the "Remmina Team Ubuntu PPA - next branch", as explained on the [homepage of the wiki](Home.md).
 
 By following these instructions, you will get Remmina and FreeRDP compiled under the /opt/remmina_devel/ subdir, so they will not mess up your system too much. This is ideal for testing remmina.
 
