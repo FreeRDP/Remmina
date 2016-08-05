@@ -31,8 +31,8 @@ Here, on github, we have three official branches:
 
 ### REMMINA COMPILATION GUIDES ###
 
-* How to compile "next" branch on [Ubuntu 14.04](Compile-on-Ubuntu-14.04) and [Ubuntu 16.04](Compile-on-Ubuntu-16.04).
-* How to compile "next" branch on [Fedora 20](Compile-on-Fedora-20).
+* How to compile "next" branch on [Ubuntu 14.04.md](Compile-on-Ubuntu-14.04) and [Ubuntu 16.04.md](Compile-on-Ubuntu-16.04).
+* How to compile "next" branch on [Fedora 20.md](Compile-on-Fedora-20).
 * For Debian 7.6 you can use the Ubuntu guide, but you must disable SSH with -DWITH_LIBSSH=OFF when executing cmake. libssh provided with debian 7 (v 5.4) is older than the needed version 6.x.
 
 ### Links ###
