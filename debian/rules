@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+LDFLAGS += -Wl,--as-needed
+
+%:
+	dh $@ --dbg-package=remmina-dbg
+
+override_dh_install:
+	dh_install
+	[ -d debian/remmina-common ] && \
+		find $(CURDIR)/debian/remmina-common -name "*remmina.desktop" -delete && \
+		find $(CURDIR)/debian/remmina-common -type d -empty -delete || true
+
+override_dh_installchangelogs:
+	dh_installchangelogs ChangeLog
