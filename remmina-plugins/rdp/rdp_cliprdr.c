@@ -350,6 +350,7 @@ static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext* context
 	RemminaProtocolWidget* gp;
 	rfClipboard* clipboard;
 	CLIPRDR_FORMAT* format;
+	CLIPRDR_FORMAT_LIST_RESPONSE formatListResponse;
 
 	int i;
 
@@ -405,7 +406,14 @@ static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext* context
 	ui->sync = TRUE;
 	remmina_rdp_event_queue_ui(gp, ui);
 
-	return CHANNEL_RC_OK;
+	/* Send FormatListResponse to server */
+
+	formatListResponse.msgType = CB_FORMAT_LIST_RESPONSE;
+	formatListResponse.msgFlags = CB_RESPONSE_OK; // Can be CB_RESPONSE_FAIL in case of error
+	formatListResponse.dataLen = 0;
+
+	return clipboard->context->ClientFormatListResponse(clipboard->context, &formatListResponse);
+
 }
 
 static UINT remmina_rdp_cliprdr_server_format_list_response(CliprdrClientContext* context, CLIPRDR_FORMAT_LIST_RESPONSE* formatListResponse)
@@ -605,9 +613,6 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionDa
 	/* Request Clipboard content from the server */
 	ZeroMemory(&request, sizeof(CLIPRDR_FORMAT_DATA_REQUEST));
 	request.requestedFormatId = clipboard->format;
-	request.msgFlags = CB_RESPONSE_OK;
-	request.msgType = CB_FORMAT_DATA_REQUEST;
-
 
 	pthread_mutex_lock(&clipboard->transfer_clip_mutex);
 
