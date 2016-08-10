@@ -34,8 +34,13 @@
 
 #include "common/remmina_plugin.h"
 #include <spice-client.h>
-#if SPICE_GTK_CHECK_VERSION(0, 31, 0)
-#  include <spice-client-gtk.h>
+#ifdef SPICE_GTK_CHECK_VERSION
+#  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
+#    include <spice-client-gtk.h>
+#  else
+#    include <spice-widget.h>
+#    include <usb-device-widget.h>
+#  endif
 #else
 #  include <spice-widget.h>
 #  include <usb-device-widget.h>

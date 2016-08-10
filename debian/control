@@ -126,6 +126,13 @@ Description: GNOME plugin for remmina remote desktop client
  This package contains the GNOME Keyring plugin for Remmina, which allows one
  to store and retrieve passwords from GNOME Keyring.
 
+Package: remmina-plugin-spice
+Architecture: any
+Depends: ${shlibs:Depends},
+ ${misc:Depends},
+ remmina (= ${binary:Version})
+Description: plugin for remmina FIXME: NO IDEA WHAT IS SPICE
+
 Package: remmina-dbg
 Section: debug
 Priority: extra
