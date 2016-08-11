@@ -73,7 +73,7 @@ git --no-pager log --format="%ai %aN (%h) %n%n%x09*%w(68,0,10) %s%d%n" > "${BDIR
 
 
 if [ "$IS_DEV_RELEASE" = "y" ]; then
-    cat <<EOF > ${BDIR}/release.template
+    cat <<EOF > ${BDIR}/release.tmpl
 ${PKG_NAME} (${PKG_VER}-1#SeRiE#${SER_SFX}) #SeRiE#; urgency=medium
 
   * New upstream release.
@@ -83,22 +83,27 @@ ${PKG_NAME} (${PKG_VER}-1#SeRiE#${SER_SFX}) #SeRiE#; urgency=medium
 EOF
 fi
 
-cat ${BDIR}/${PKG_DIR}/debian/changelog >> ${BDIR}/release.template
+cat ${BDIR}/${PKG_DIR}/debian/changelog >> ${BDIR}/release.tmpl
 cd ${BDIR}/${PKG_DIR}/
 tar zcvf "../${PKG_NAME}_${PKG_VER}.orig.tar.gz" .
-cp debian/control ../debian_control_orig
+cp debian/control ../debian_control.tmpl
 for serie in yakkety wily xenial trusty; do
     if [ "$serie" = "trusty" ]; then
         remmina_plugin_spice_architectures="amd64 i386"
+        remmina_plugin_spice_builddeps_archs="[!armhf]"
     else
         remmina_plugin_spice_architectures="amd64 i386 armhf"
+        remmina_plugin_spice_builddeps_archs=""
     fi
-    sed "s/#REMMINA_PLUGIN_SPICE_ARCHITECTURES#/$remmina_plugin_spice_architectures/g" <../debian_control_orig >debian/control
-    sed "s/#SeRiE#/$serie/g" < ../release.template >debian/changelog
+    sed "s/#REMMINA_PLUGIN_SPICE_ARCHITECTURES#/$remmina_plugin_spice_architectures/g;"\
+"s/#REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS#/$remmina_plugin_spice_builddeps_archs/g;" <../debian_control.tmpl >debian/control
+    sed "s/#SeRiE#/$serie/g" < ../release.tmpl >debian/changelog
     debuild -S -sa
 done
 cd -
-rm ${BDIR}/release.template
+rm ${BDIR}/release.tmpl
+rm ${BDIR}/debian_control.tmpl
+
 
 echo "now cd in ${BDIR} directory and run:"
 echo "dput <your-ppa-address> *.changes"
