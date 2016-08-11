@@ -110,8 +110,9 @@ If you are not listed and you have contributed, feel free to update that file.
 ## Resources
 
  * [Wiki and compilation instructions](https://github.com/FreeRDP/Remmina/wiki)
- * [Mailing List](https://lists.sourceforge.net/mailman/listinfo/remmina-common)
+ * [G+ Remmina community](https://plus.google.com/communities/106276095923371962010)
  * [Website](http://www.remmina.org)
+ * IRC we are on freenode.net , in the channel #remmina, you can also use a [web client](https://webchat.freenode.net/) in case
 
 ## License
 
