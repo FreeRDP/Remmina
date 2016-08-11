@@ -45,7 +45,7 @@ Description: remote desktop client for GNOME desktop environment
  interface. Currently RDP, VNC, NX, XDMCP and SSH protocols are supported.
 
 Package: remmina-common
-Architecture: any
+Architecture: all
 Depends: ${misc:Depends}
 Recommends: remmina
 Breaks: remmina (<< 1.0.0),
@@ -129,7 +129,7 @@ Description: GNOME plugin for remmina remote desktop client
  to store and retrieve passwords from GNOME Keyring.
 
 Package: remmina-plugin-spice
-Architecture: ${dist:PluginSpiceArchs},
+Architecture: any
 Depends: ${shlibs:Depends},
  ${misc:Depends},
  remmina (= ${binary:Version})

@@ -2,16 +2,6 @@
 
 LDFLAGS += -Wl,--as-needed
 
-DEFAULT_PLUGIN_SPICE_ARCHS = amd64 i386 armhf
-TRUSTY_PLUGIN_SPICE_ARCHS = amd64 i386
-
-ifeq ($(shell lsb_release --codename --short),trusty)
-        DEPENDS = -Vdist:PluginSpiceArchs="$(TRUSTY_PLUGIN_SPICE_ARCHS)"
-else
-        DEPENDS = -Vdist:PluginSpiceArchs="$(DEFAULT_PLUGIN_SPICE_ARCHS)"
-endif
-
-
 %:
 	dh $@ --dbg-package=remmina-dbg
 
