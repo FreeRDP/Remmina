@@ -19,7 +19,9 @@ Build-Depends: debhelper (>= 9~),
  libvncserver-dev,
  libappindicator3-dev,
  libsecret-1-dev,
- libwebkit2gtk-4.0-dev | libwebkit2gtk-3.0-dev
+ libwebkit2gtk-4.0-dev | libwebkit2gtk-3.0-dev,
+ libspice-protocol-dev,
+ libspice-client-gtk-3.0-dev | libspice-client-gtk-2.0-dev
 Standards-Version: 3.9.6
 Homepage: http://remmina.sourceforge.net/
 Vcs-Git: git://anonscm.debian.org/collab-maint/remmina.git
@@ -131,7 +133,7 @@ Architecture: any
 Depends: ${shlibs:Depends},
  ${misc:Depends},
  remmina (= ${binary:Version})
-Description: plugin for remmina FIXME: NO IDEA WHAT IS SPICE
+Description: plugin for remmina FIXME: NO IDEA WHAT IS SPICE ;)
 
 Package: remmina-dbg
 Section: debug
