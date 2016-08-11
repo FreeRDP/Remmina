@@ -129,7 +129,9 @@ Description: GNOME plugin for remmina remote desktop client
  to store and retrieve passwords from GNOME Keyring.
 
 Package: remmina-plugin-spice
-Architecture: any
+# Architecture is valorized automatically by ubuntu-build.sh script, in other cases
+# must be modified manually
+Architecture: #REMMINA_PLUGIN_SPICE_ARCHITECTURES#
 Depends: ${shlibs:Depends},
  ${misc:Depends},
  remmina (= ${binary:Version})
