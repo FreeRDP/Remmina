@@ -1,6 +1,10 @@
 #!/bin/bash
-# set -x
+set -x
 set -e
+
+echo $0 $@
+exit 123
+
 usage () {
     echo "$0 [<-s|--sersfx> <numerical_series_suffix>] [-d|--dev]"
     exit $1
