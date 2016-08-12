@@ -2,7 +2,7 @@
 
 LDFLAGS += -Wl,--as-needed
 
-UBUNTU_SERIE:=$(shell lsb_release --codename --short)
+UBUNTU_SERIE=$(shell lsb_release --codename --short)
 
 ifeq ($(shell lsb_release --codename --short),trusty)
 	REMMINA_PLUGIN_SPICE_ARCHITECTURES=amd64 i386
@@ -27,9 +27,10 @@ debian/%: debian/%.in
 %:
 	dh $@ --dbg-package=remmina-dbg
 
-clean:: debian/control
+clean:: debian/control debian/changelog
         # gross kludge to force control generation with the %.in target
 	touch debian/control.in
+	touch debian/changelog.in
 	rm -f $(call dh_subst_files,$(DEB_ALL_PACKAGES))
 
 # Add dependencies to generate files from the debian/*.in ones
