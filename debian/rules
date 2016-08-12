@@ -26,7 +26,6 @@ debian/control: debian/control.in debian/changelog
 	sed \
 		-e "s#@REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS@#$(REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS)#g" \
 		-e "s#@REMMINA_PLUGIN_SPICE_ARCHITECTURES@#$(REMMINA_PLUGIN_SPICE_ARCHITECTURES)#g" \
-		-e "s#@UBUNTU_SERIE@#$(UBUNTU_SERIE)#g" \
 		$@.in > $@
 
 %:
