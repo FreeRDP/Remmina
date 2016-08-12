@@ -2863,9 +2863,16 @@ static gboolean remmina_connection_window_go_fullscreen(gpointer data)
 
 	cnnhld = (RemminaConnectionHolder*)data;
 	priv = cnnhld->cnnwin->priv;
+	DECLARE_CNNOBJ_WITH_RETURN(FALSE)
 
-	gtk_window_fullscreen(GTK_WINDOW(cnnhld->cnnwin));
-	priv->go_fullscreen_eventsource = 0;
+	if (remmina_file_get_int(cnnobj->remmina_file, "multimonitor", FALSE))
+	{
+		GdkFullscreenMode mode = GDK_FULLSCREEN_ON_ALL_MONITORS;
+		gdk_window_set_fullscreen_mode (gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)), mode);
+		gdk_window_fullscreen (gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
+	}
+		gtk_window_fullscreen(GTK_WINDOW(cnnhld->cnnwin));
+		priv->go_fullscreen_eventsource = 0;
 	return FALSE;
 }
 
