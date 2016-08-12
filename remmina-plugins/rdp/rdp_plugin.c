@@ -1022,6 +1022,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 			e = freerdp_get_last_error(rfi->instance->context);
 			switch(e) {
 				case FREERDP_ERROR_AUTHENTICATION_FAILED:
+				case STATUS_LOGON_FAILURE:	// wrong return code from FreeRDP introduced at the end of July 2016 ?
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Authentication to RDP server %s failed.\nCheck username, password and domain."),
 							rfi->settings->ServerHostname );
 					// Invalidate the saved password, so the user will be re-asked at next logon
@@ -1032,6 +1033,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 					break;
 				default:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
+
 					break;
 			}
 
