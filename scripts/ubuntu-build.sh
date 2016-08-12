@@ -90,18 +90,7 @@ fi
 cat ${BDIR}/${PKG_DIR}/debian/changelog >> ${BDIR}/release.tmpl
 cd ${BDIR}/${PKG_DIR}/
 tar zcvf "../${PKG_NAME}_${PKG_VER}.orig.tar.gz" .
-cp debian/control ../debian_control.tmpl
 for serie in yakkety wily xenial trusty; do
-    if [ "$serie" = "trusty" ]; then
-        remmina_plugin_spice_architectures="amd64 i386"
-        remmina_plugin_spice_builddeps_archs="[!armhf]"
-    else
-        remmina_plugin_spice_architectures="amd64 i386 armhf"
-        remmina_plugin_spice_builddeps_archs=""
-    fi
-    sed "s/#REMMINA_PLUGIN_SPICE_ARCHITECTURES#/$remmina_plugin_spice_architectures/g;"\
-"s/#REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS#/$remmina_plugin_spice_builddeps_archs/g;" <../debian_control.tmpl >debian/control
-    sed "s/#SeRiE#/$serie/g" < ../release.tmpl >debian/changelog
     debuild -S -sa
 done
 cd -
