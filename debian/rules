@@ -2,8 +2,27 @@
 
 LDFLAGS += -Wl,--as-needed
 
+ifeq ($(shell lsb_release --codename --short),trusty)
+	REMMINA_PLUGIN_SPICE_ARCHITECTURES=amd64 i386
+        REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS=[!armhf]
+else
+	REMMINA_PLUGIN_SPICE_ARCHITECTURES=amd64 i386 armhf
+        REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS=
+endif
+
+debian/%: debian/%.in
+        dh_testdir
+        sed \
+                -e "s#@REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS@#$(REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS)#g" \
+                -e "s#@REMMINA_PLUGIN_SPICE_ARCHITECTURES@#$(REMMINA_PLUGIN_SPICE_ARCHITECTURES)#g" \
+                $@.in > $@
+
 %:
 	dh $@ --dbg-package=remmina-dbg
+
+clean:: debian/control
+        # gross kludge to force control generation with the %.in target
+        touch debian/control.in
 
 override_dh_install:
 	dh_install
