@@ -17,9 +17,7 @@ endif
 dh_subst_files = $(patsubst %.in,%,$(wildcard $(addprefix debian/, $(addsuffix *.in, $(1)))))
 
 debian/changelog: debian/changelog.in
-	sed \
-		-e "s#@UBUNTU_SERIE@#$(UBUNTU_SERIE)#g" \
-		$@.in > $@
+	touch debian changelog
 
 debian/control: debian/control.in debian/changelog
 	dh_testdir
