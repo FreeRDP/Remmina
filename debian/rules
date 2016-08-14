@@ -16,7 +16,12 @@ endif
 # corresponding ".in" file; pass the list of packages in $(1)
 dh_subst_files = $(patsubst %.in,%,$(wildcard $(addprefix debian/, $(addsuffix *.in, $(1)))))
 
-debian/control: debian/control.in
+debian/changelog: debian/changelog.in
+	sed \
+		-e "s#@UBUNTU_SERIE@#$(UBUNTU_SERIE)#g" \
+		$@.in > $@
+
+debian/control: debian/control.in debian/changelog
 	dh_testdir
 	sed \
 		-e "s#@REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS@#$(REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS)#g" \
@@ -26,9 +31,10 @@ debian/control: debian/control.in
 %:
 	dh $@ --dbg-package=remmina-dbg
 
-clean:: debian/control
+clean:: debian/control debian/changelog
         # gross kludge to force control generation with the %.in target
 	touch debian/control.in
+	touch debian/changelog.in
 	rm -f $(call dh_subst_files,$(DEB_ALL_PACKAGES))
 
 # Add dependencies to generate files from the debian/*.in ones

@@ -1,0 +1,394 @@
+remmina (1.2.0~rcgit-14) @UBUNTU_SERIE@; urgency=low
+
+  * Auto build.
+
+ -- Launchpad Package Builder <noreply@launchpad.net>  Sat, 06 Aug 2016 18:01:34 +0000
+
+remmina (1.2.0~rcgit-11) unstable; urgency=medium
+
+  * PPA version.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Tue, 18 Aug 2015 10:10:01 +0200
+
+remmina (1.1.1-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Fix load of RDP plugin when FreeRDP is compiled with
+      -DSTATIC_CHANNELS=off (Closes: #764142).
+  * debian/patches/freerdp_get_last_error.patch:
+    - Removed, applied upstream.
+  * debian/README.NX, debian/remmina-plugin-nx.docs:
+    - Add a short notice about NX security implications (Closes: #714778).
+  * debian/watch:
+    - Adjust GitHub link to look for all releases.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Mon, 13 Oct 2014 16:57:50 +0200
+
+remmina (1.0.0+git20141003-1) unstable; urgency=medium
+
+  * New upstream snapshot.
+  * Provide a debug package (Closes: #763533).
+  * debian/patches/freerdp_get_last_error.patch:
+    - Remove call to freerdp_get_last_error, available on FreeRDP trunk
+      only, FreeRDP Debian package does not ship it yet.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 05 Oct 2014 14:18:20 +0200
+
+remmina (1.0.0+git20140930-1) unstable; urgency=medium
+
+  * New upstream snapshot.
+    - Fix segfault with RDP plugin (Closes: #763529).
+  * debian/patches/CLIENT_TLS.patch:
+    - Removed, applied upstream.
+  * debian/patches/rfx_context_new.patch.
+    - Removed, applied upstream.
+  * debian/patches/shebang.patch.
+    - Removed, applied upstream.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Wed, 01 Oct 2014 08:02:35 +0200
+
+remmina (1.0.0+git20140913-2) unstable; urgency=medium
+
+  * debian/patches/external_tools.patch:
+    - Look for external tools into a system directory, instead of user's
+      home. Current default makes Debian buildds to fail (Closes: #763280).
+  * debian/patches/shebang.patch:
+    - Add shebangs to external tool scripts.
+  * debian/patches/CLIENT_TLS.patch:
+    - Drop LIBVNCSERVER_WITH_CLIENT_TLS ifdef's to enable GNUTLS support,
+      which got disabled after using system libvncserver (Closes: #741524).
+  * debian/remmina-common.install:
+    - Install external tools under /usr/share.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Mon, 29 Sep 2014 08:11:58 +0200
+
+remmina (1.0.0+git20140913-1) unstable; urgency=medium
+
+  * New upstream snapshot.
+    - Fixed numlock on RDP connections (Closes: #663714).
+    - Colours are no longer swapped on Sun Ray terminal (Closes: #673416).
+    - Notify user when host key changed (Closes: #674407).
+    - Windows no longer disappears when minimized (Closes: #674535).
+    - Add cursor support (Closes: #676654).
+    - OpenSSL license exception granted (Closes: #750870).
+  * debian/patches/*.patch:
+    - All patches integrated upstream.
+  * debian/patches/rfx_context_new.patch:
+    . rfx_context_new does not take any parameter, fix FTBFS.
+  * debian/control:
+    - Bump libfreerdp-dev dependency to 1.1.0 (Closes: #757605, 757821).
+    - Build-depends on libgcrypt20-dev and libgnutls28-dev (Closes: #759000).
+    - Downgrade libfreerdp-plugins-standard to Recommends for the RDP
+      plugin, as the provided features are optional.
+    - Bump Standards-Version to 3.9.6.
+  * debian/copyright:
+    - Update copyright information, drop removed licenses.
+  * debian/remmina-plugin-*.install:
+    - Install plugins in multiarch library directories.
+  * debian/rules:
+    - remmina/ChangeLog moved to ChangeLog.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 28 Sep 2014 10:10:16 +0200
+
+remmina (1.0.0-6) unstable; urgency=low
+
+  * Upload to unstable.
+  * debian/patches/missing_libraries.patch:
+    - Add missing libraries to target_link_libraries to fix FTBFS,
+      thanks to Daniel T. Chen for the patch (Closes: #713470).
+  * debian/remmina-plugin-*.lintian-overrides:
+    - Removed lintian overrides, not needed anymore.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 23 Jun 2013 14:48:57 +0200
+
+remmina (1.0.0-5) experimental; urgency=low
+
+  [ Luca Falavigna ]
+  * debian/patches/NO_SONAME.patch:
+    - Do not define any SONAME for the plugins.
+  * debian/control:
+    - Fix URL of Vcs-Browser field.
+    - Bump Standards-Version to 3.9.4.
+    - Fix typo in package description.
+  * debian/copyright:
+    - Adjust copyright years.
+  * debian/docs:
+    - Install README.
+  * debian/remmina-plugin-{nx,vnc}.lintian-overrides:
+    - hardening-check discovers unprotected functions only.
+  * debian/rules:
+    - Pass "-Wl,--as-needed" to LDFLAGS.
+    - Install upstream changelog.
+    - Overriding dh_makeshlibs is no longer required.
+
+  [ Jonathan McCrohan ]
+  * debian/watch:
+    - Update watchfile to fix Github breakage (Closes: #693515).
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 02 Feb 2013 01:06:23 +0100
+
+remmina (1.0.0-4+deb7u1) unstable; urgency=low
+
+  [ Bernhard Schmidt ]
+  * Cherry-pick commit 9243d35 from upstream Git repository to fix a
+    crash when resizing window to fit remote resolution (Closes: #668020).
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 17 Mar 2013 14:37:39 +0100
+
+remmina (1.0.0-4) unstable; urgency=low
+
+  [ Martijn van Brummelen ]
+  * debian/patches/clipboard.patch:
+    - Clipboard support (Closes: #659755).
+
+  [ Luca Falavigna ]
+  * debian/patches/fullname.patch:
+    - Use X-GNOME-FullName in .desktop file (Closes: #625939).
+  * debian/patches/scroll.patch:
+    - Fix some issues with scrolling (Closes: #670535).
+  * debian/patches/systray.patch:
+    - Implement --icon/-i option (Closes: #661893).
+  * debian/control:
+    - Add dbus-x11 to remmina Depends field (Closes: #668018).
+    - Add Jean-Louis to Uploaders field.
+    - Move VCS repository under collab-maint.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Thu, 24 May 2012 22:37:09 +0200
+
+remmina (1.0.0-3) unstable; urgency=low
+
+  * debian/patches/desktop_file.patch:
+    - Fix installation path of the desktop file.
+  * debian/rules:
+    - Check for existence of remmina-common directory before trying
+      to access it, fix FTBFS.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 25 Feb 2012 10:16:51 +0100
+
+remmina (1.0.0-2) unstable; urgency=low
+
+  * debian/patches/desktop_file.patch:
+    - Restore installation of the .desktop file (Closes: #659542).
+  * debian/patches/toolbar.patch:
+    - Mark main toolbar as a primary toolbar (Closes: #659781).
+  * debian/patches/datadir.patch:
+    - Adjust location of REMMINA_DATADIR to allow install of icons
+      in the correct location.
+  * debian/control:
+    - Improve description of the remmina-plugin-gnome package.
+    - Bump Standards-Version to 3.9.3.
+  * debian/copyright:
+    - Format now points to copyright-format site.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 25 Feb 2012 01:21:41 +0100
+
+remmina (1.0.0-1) unstable; urgency=low
+
+  * New upstream release.
+    - Compatible with FreeRDP 1.0 (Closes: #658363).
+    - Ported to GTK3, this also fixes an incompatibility with
+      GTK2 and recent Avahi with GTK3 support, which lead to
+      crashes when scanning network services (Closes: #626499).
+  * debian/patches/libvncserver.patch:
+    - Do not use convenience copy of libvncserver.
+  * debian/patches/g_thread_init.patch:
+    - Do not use deprecated g_thread_init function.
+  * debian/patches/REMMINA_COMMAND_NONE.patch:
+    - Removed, obsoleted by GApplication port.
+  * debian/clean:
+    - Remove spurious files created at build-time.
+  * debian/compat:
+    - Bump compatibility level to 9.
+  * debian/control:
+    - Refresh build-dependencies to match new structure.
+    - Drop remmina-dev package, no longer used.
+    - Build packages once provided by remmina-plugins.
+    - Provide remmina-common package.
+    - Provide remmina-plugin-gnome package.
+  * debian/copyright:
+    - Refresh copyright information.
+  * debian/docs:
+    - Documentation is no longer accurate, do not ship it anymore.
+  * debian/remmina-dev.install:
+    - Drop remmina-dev package, no longer used.
+  * debian/remmina-plugin-telepathy.install:
+    - Adjust location for Remmina.client.
+    - Disable D-BUS support for now.
+  * debian/rules:
+    - Compile with -DWITH_APPINDICATOR=OFF.
+    - Do not treat plugins as shared libraries.
+  * debian/watch:
+    - Adjust watch file to match new download location.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 11 Feb 2012 17:28:48 +0100
+
+remmina (0.9.3-3) unstable; urgency=low
+
+  * debian/patches/REMMINA_COMMAND_NONE.patch:
+    - Adjust REMMINA_COMMAND_NONE value to match libunique command ID
+      to avoid launching a second instance when an existing remmina
+      process is already running (Closes: #640291).
+  * debian/control:
+    - 0.9 series replaces remmina-gnome and remmina-xfce packages, which
+      have been removed from Debian. Add Replaces field to handle removal
+      of the obsolete packages (Closes: #616289).
+    - Bump Standards-Version to 3.9.2, no changes required.
+  * debian/copyright:
+    - Use DEP-5 syntax.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 01 Oct 2011 23:25:51 +0200
+
+remmina (0.9.3-2) unstable; urgency=low
+
+  * Upload to unstable.
+  * debian/copyright:
+    - Update copyright years.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 06 Feb 2011 19:05:31 +0100
+
+remmina (0.9.3-1) experimental; urgency=low
+
+  * New upstream bugfix release.
+  * debian/control:
+    - Add Breaks: remmina-plugin-data (<= 0.9) field to make sure plugins
+      are compatible with current version (Closes: #610443).
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 22 Jan 2011 14:36:56 +0100
+
+remmina (0.9.2-1) experimental; urgency=low
+
+  * New upstream bugfix release.
+  * debian/control:
+    - Remove transitional grdc package, now obsolete.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Tue, 28 Dec 2010 12:05:08 +0100
+
+remmina (0.9.0-1) experimental; urgency=low
+
+  * New upstream release.
+    - Quick connect menu removed and consolidated with Connection -> New;
+      other Edit menu items moved under Connection menu (Closes: #591755).
+    - New resolution button to easily adjust or add screen resolutions
+      without passing for Preferences dialog (Closes: #595102).
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 12 Dec 2010 18:35:18 +0100
+
+remmina (0.8.3-1) unstable; urgency=low
+
+  * New upstream bugfix release.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Tue, 26 Oct 2010 22:40:18 +0200
+
+remmina (0.8.2-1) unstable; urgency=low
+
+  * New upstream bugfix release.
+    - Fix segfault which prevented display of a warning when a saved
+      connection requires a missing plugin (Closes: #590540).
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Wed, 01 Sep 2010 22:11:34 +0200
+
+remmina (0.8.1-1) unstable; urgency=low
+
+  * New upstream bugfix release.
+  * debian/control:
+    - Bump Standards-Version to 3.9.1, no changes required.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 31 Jul 2010 13:05:22 +0200
+
+remmina (0.8.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    - Bump Standards-Version to 3.9.0, no changes required.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 11 Jul 2010 23:40:47 +0200
+
+remmina (0.7.99.1-1) experimental; urgency=low
+
+  * New upstream beta release.
+    - Add IPv6 support (Closes: #580456).
+  * debian/control:
+    - No longer build-depend on libvncserver-dev and libgnutls-dev.
+    - Add remmina-dev package to provide development headers.
+    - Drop rdesktop from Depends, add most commonly used plugins to
+      Recommends, due to new plugin design.
+  * debian/copyright:
+    - Adjust copyright information, drop older entries.
+  * debian/remmina-dev.install:
+    - Install remmina-dev files into correct package.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 26 Jun 2010 10:29:52 +0200
+
+remmina (0.7.5-1) unstable; urgency=low
+
+  * New upstream release.
+  * Switch to forma 3.0 (quilt).
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Tue, 04 May 2010 21:15:46 +0200
+
+remmina (0.7.4-1) unstable; urgency=low
+
+  * New upstream release.
+  * Bump Standards-Version to 3.8.4, no changes required.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sat, 20 Feb 2010 19:12:35 +0100
+
+remmina (0.7.3-1) unstable; urgency=low
+
+  * New upstream release.
+    - Allow connecting to a VNC server via SSH tunnel by specifying
+      display number instead of TCP port (Closes: #563969).
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Tue, 26 Jan 2010 20:17:14 +0100
+
+remmina (0.7.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Fri, 08 Jan 2010 19:26:38 +0100
+
+remmina (0.7.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Mon, 28 Dec 2009 15:48:13 +0100
+
+remmina (0.7.0-2) unstable; urgency=low
+
+  * debian/copyright:
+    - Add missing copyright holders.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Wed, 16 Dec 2009 20:06:01 +0100
+
+remmina (0.7.0-1) unstable; urgency=low
+
+  * Grdc is now Remmina.
+  * New upstream release.
+  * debian/patches/desktop_file.patch:
+    - Removed, fixed upstream.
+  * debian/control:
+    - Refresh build-dependencies.
+    - Move rdesktop to Depends.
+    - Improve long descrription adding new supported protocols.
+  * debian/copyright:
+    - Adjust copyright informations.
+  * debian/rules:
+    - Generate po/POTFILES.skip at runtime to avoid generating po files
+      for unneeded elements.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Mon, 14 Dec 2009 20:24:43 +0100
+
+grdc (0.6.0-2) unstable; urgency=low
+
+  * Add libgcrypt-dev to Build-Depends.
+  * Build-depend on libssh-dev instead of libssh-2-dev.
+  * Switch to Section: gnome to match override.
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Tue, 27 Oct 2009 20:14:12 +0100
+
+grdc (0.6.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #537292).
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Tue, 25 Aug 2009 23:59:55 +0200
+
