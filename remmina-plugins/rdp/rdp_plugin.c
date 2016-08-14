@@ -720,9 +720,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	if (!remmina_rdp_tunnel_init(gp))
 		return FALSE;
 
-	/* Enable by default RDP AutoReconnection, only when ssh tunnel is not enabled */
-	 if (!remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
-		rfi->settings->AutoReconnectionEnabled = TRUE;
+	rfi->settings->AutoReconnectionEnabled = ( remmina_plugin_service->file_get_int(remminafile, "disableautoreconnect", FALSE) ? FALSE : TRUE );
+	/* Disable RDP auto reconnection when ssh tunnel is enabled */
+	if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
+		rfi->settings->AutoReconnectionEnabled = FALSE;
 	}
 
 	rfi->settings->ColorDepth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 0);
@@ -1021,6 +1022,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 			e = freerdp_get_last_error(rfi->instance->context);
 			switch(e) {
 				case FREERDP_ERROR_AUTHENTICATION_FAILED:
+				case STATUS_LOGON_FAILURE:	// wrong return code from FreeRDP introduced at the end of July 2016 ?
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Authentication to RDP server %s failed.\nCheck username, password and domain."),
 							rfi->settings->ServerHostname );
 					// Invalidate the saved password, so the user will be re-asked at next logon
@@ -1031,6 +1033,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 					break;
 				default:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
+
 					break;
 			}
 
@@ -1343,6 +1346,7 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color depth"), FALSE, colordepth_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER, "sharefolder", N_("Share folder"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableautoreconnect", N_("Disable automatic reconnection"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
