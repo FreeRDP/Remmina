@@ -81,13 +81,12 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 
-	gchar *host;
-	gint port;
 	RemminaPluginSpiceData *gpdata;
 	RemminaFile *remminafile;
 
 	gpdata = g_new0(RemminaPluginSpiceData, 1);
 	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	gpdata->session = spice_session_new();
 	g_signal_connect(gpdata->session,
@@ -95,15 +94,7 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 	                 G_CALLBACK(remmina_plugin_spice_channel_new_cb),
 	                 gp);
 
-	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-	remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
-	                                        XSPICE_DEFAULT_PORT,
-	                                        &host,
-	                                        &port);
-
 	g_object_set(gpdata->session,
-	             "host", host,
-	             "port", g_strdup_printf("%i", port),
 	             "password", remmina_plugin_service->file_get_secret(remminafile, "password"),
 	             "read-only", remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
 	             "enable-audio", remmina_plugin_service->file_get_int(remminafile, "enableaudio", FALSE),
@@ -115,14 +106,42 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 	             "auto-clipboard",
 	             !remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE),
 	             NULL);
-
-	g_free(host);
 }
 
 static gboolean remmina_plugin_spice_open_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
+
+	gint port;
+	gchar *host, *cacert;
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
+	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
+	                                        XSPICE_DEFAULT_PORT,
+	                                        &host,
+	                                        &port);
+
+	g_object_set(gpdata->session, "host", host, NULL);
+	g_free(host);
+
+	/* Unencrypted connection */
+	if (!remmina_plugin_service->file_get_int(remminafile, "usetls", FALSE))
+	{
+		g_object_set(gpdata->session, "port", g_strdup_printf("%i", port), NULL);
+	}
+	/* TLS encrypted connection */
+	else
+	{
+		g_object_set(gpdata->session, "tls_port", g_strdup_printf("%i", port), NULL);
+
+		/* Server CA certificate */
+		cacert = remmina_plugin_service->file_get_string(remminafile, "cacert");
+		if (cacert)
+		{
+			g_object_set(gpdata->session, "ca-file", cacert, NULL);
+		}
+	}
 
 	spice_session_connect(gpdata->session);
 
@@ -256,6 +275,9 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 			}
 			break;
 		case SPICE_CHANNEL_ERROR_TLS:
+			remmina_plugin_service->protocol_plugin_set_error(gp, _("TLS connection error."));
+			remmina_plugin_spice_close_connection(gp);
+			break;
 		case SPICE_CHANNEL_ERROR_LINK:
 		case SPICE_CHANNEL_ERROR_CONNECT:
 			remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to SPICE server failed."));
@@ -470,6 +492,8 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "resizeguest", N_("Resize guest to match window size"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "usetls", N_("Use TLS encryption"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,  "cacert", N_("Server CA certificate"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
