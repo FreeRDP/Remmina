@@ -2,13 +2,13 @@
 
 LDFLAGS += -Wl,--as-needed
 
-UBUNTU_SERIE=$(shell grep '^VERSION=' /etc/os-release | sed 's/^[^"]*"//g;s/".*//g;s/^[^,]*, *//g;s/ .*//g;s/\(.*\)/\L\1/g')
+UBUNTU_SERIE ?= $(shell echo "ZORRO" >&2 ; grep '^VERSION=' /etc/os-release | sed 's/^[^"]*"//g;s/".*//g;s/^[^,]*, *//g;s/ .*//g;s/\(.*\)/\L\1/g')
 
 ifeq ($(UBUNTU_SERIE),trusty)
         REMMINA_PLUGIN_SPICE_ARCHITECTURES=amd64 i386
         REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS=[!armhf]
 else
-        REMMINA_PLUGIN_SPICE_ARCHITECTURES=amd64 i386 armhf
+        REMMINA_PLUGIN_SPICE_ARCHITECTURES=any
         REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS=
 endif
 

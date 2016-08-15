@@ -1,10 +1,6 @@
 #!/bin/bash
-set -x
+# set -x
 set -e
-
-echo $0 $@
-exit 123
-
 usage () {
     echo "$0 [<-s|--sersfx> <numerical_series_suffix>] [-d|--dev]"
     exit $1
@@ -76,27 +72,31 @@ git --no-pager log --format="%ai %aN (%h) %n%n%x09*%w(68,0,10) %s%d%n" > "${BDIR
 # NOTE: artificially files date reconstruction is skipped
 
 
-if [ "$IS_DEV_RELEASE" = "y" ]; then
-    cat <<EOF > ${BDIR}/release.tmpl
-${PKG_NAME} (${PKG_VER}-1#SeRiE#${SER_SFX}) #SeRiE#; urgency=medium
+mv ${BDIR}/${PKG_DIR}/debian/changelog ${BDIR}/changelog.orig
+cd ${BDIR}/${PKG_DIR}/
+tar zcvf "../${PKG_NAME}_${PKG_VER}.orig.tar.gz" .
+for serie in yakkety wily xenial trusty; do
+    if [ "$IS_DEV_RELEASE" = "y" ]; then
+        cat <<EOF >debian/changelog
+${PKG_NAME} (${PKG_VER}-1${serie}${SER_SFX}) ${serie}; urgency=medium
 
   * New upstream release.
 
  -- ${DEBFULLNAME} <${DEBEMAIL}>  ${PKG_DATE}
 
 EOF
-fi
+    else
+        rm -f debian/changelog
+        touch debian/changelog
+    fi
 
-cat ${BDIR}/${PKG_DIR}/debian/changelog >> ${BDIR}/release.tmpl
-cd ${BDIR}/${PKG_DIR}/
-tar zcvf "../${PKG_NAME}_${PKG_VER}.orig.tar.gz" .
-for serie in yakkety wily xenial trusty; do
-    debuild -S -sa
+    cat ../changelog.orig >>debian/changelog
+    debuild -eUBUNTU_SERIE="$serie" -S -sa # add ' -us -uc' flags to avoid signing
+    rm -rf *
+    tar zxf "../${PKG_NAME}_${PKG_VER}.orig.tar.gz"
 done
 cd -
-rm ${BDIR}/release.tmpl
-rm ${BDIR}/debian_control.tmpl
-
+mv ${BDIR}/changelog.orig ${BDIR}/${PKG_DIR}/debian/changelog
 
 echo "now cd in ${BDIR} directory and run:"
 echo "dput <your-ppa-address> *.changes"
