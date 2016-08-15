@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/FreeRDP/Remmina.png)](https://travis-ci.org/FreeRDP/Remmina)
+
 # Remmina: The GTK+ Remote Desktop Client
 
 Initially developed by [Vic Lee](https://github.com/llyzs)
