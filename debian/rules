@@ -1,0 +1,45 @@
+#!/usr/bin/make -f
+
+LDFLAGS += -Wl,--as-needed
+
+UBUNTU_SERIE ?= $(shell echo "ZORRO" >&2 ; grep '^VERSION=' /etc/os-release | sed 's/^[^"]*"//g;s/".*//g;s/^[^,]*, *//g;s/ .*//g;s/\(.*\)/\L\1/g')
+
+ifeq ($(UBUNTU_SERIE),trusty)
+        REMMINA_PLUGIN_SPICE_ARCHITECTURES=amd64 i386
+        REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS=[!armhf]
+else
+        REMMINA_PLUGIN_SPICE_ARCHITECTURES=any
+        REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS=
+endif
+
+# macro computing the list of 'debian/<pkg>.*" files which have a
+# corresponding ".in" file; pass the list of packages in $(1)
+dh_subst_files = $(patsubst %.in,%,$(wildcard $(addprefix debian/, $(addsuffix *.in, $(1)))))
+
+debian/control::
+	dh_testdir
+	sed \
+		-e "s#@REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS@#$(REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS)#g" \
+		-e "s#@REMMINA_PLUGIN_SPICE_ARCHITECTURES@#$(REMMINA_PLUGIN_SPICE_ARCHITECTURES)#g" \
+		$@.in > $@
+
+%:
+	dh $@ --dbg-package=remmina-dbg
+
+clean:: debian/control
+        # gross kludge to force control generation with the %.in target
+	touch debian/control.in
+	rm -f $(call dh_subst_files,$(DEB_ALL_PACKAGES))
+
+# Add dependencies to generate files from the debian/*.in ones
+build-indep: $(call dh_subst_files,$(DEB_INDEP_PACKAGES))
+build-arch: $(call dh_subst_files,$(DEB_ARCH_PACKAGES))
+
+override_dh_install:
+	dh_install
+	[ -d debian/remmina-common ] && \
+		find $(CURDIR)/debian/remmina-common -name "*remmina.desktop" -delete && \
+		find $(CURDIR)/debian/remmina-common -type d -empty -delete || true
+
+override_dh_installchangelogs:
+	dh_installchangelogs ChangeLog
