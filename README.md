@@ -36,6 +36,30 @@ sudo apt-get install remmina remmina-plugin-rdp libfreerdp-plugins-standard
 ```
 By default the RDP, SSH and SFTP plugins are installed. You can view a list of available plugins with `apt-cache search remmina-plugin`
 
+### Fedora
+
+[Hubbitus](https://github.com/Hubbitus) (Pavel Alexeev) provided us a copr, to install just execute as root:
+
+```sh
+# dnf copr enable hubbitus/remmina-next
+# dnf upgrade --refresh 'remmina*' 'freerdp*'
+```
+
+### Arch Linux based
+
+Install [remmina-git](https://aur.archlinux.org/packages/remmina-git) from [AUR](https://aur.archlinux.org/)
+
+There are also some external, not supported plugins provided by [Muflone](https://github.com/muflone) :
+
+    [remmina-plugin-exec](https://aur.archlinux.org/packages/remmina-plugin-exec/) A protocol plugin for Remmina to execute an external process.
+    [remmina-plugin-folder](https://aur.archlinux.org/packages/remmina-plugin-folder/) A protocol plugin for Remmina to open a folder.
+    [remmina-plugin-open](https://aur.archlinux.org/packages/remmina-plugin-open/) A protocol plugin for Remmina to open a document with its associated application.
+    [remmina-plugin-rdesktop](https://aur.archlinux.org/packages/remmina-plugin-rdesktop/) A protocol plugin for Remmina to open a RDP connection with rdesktop.
+    [remmina-plugin-teamviewer](https://aur.archlinux.org/packages/remmina-plugin-teamviewer/) A protocol plugin for Remmina to launch a TeamViewer connection.
+    [remmina-plugin-ultravnc](https://aur.archlinux.org/packages/remmina-plugin-ultravnc/) A protocol plugin for Remmina to connect via VNC using UltraVNC viewer.
+    [remmina-plugin-url](https://aur.archlinux.org/packages/remmina-plugin-url/) A protocol plugin for Remmina to open an URL in an external browser.
+    [remmina-plugin-webkit](https://aur.archlinux.org/packages/remmina-plugin-webkit/) A protocol plugin for Remmina to launch a GTK+ Webkit browser.
+
 ### From the source code
 
 Follow the guides available on the wiki:
