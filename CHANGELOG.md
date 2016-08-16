@@ -1,8 +1,50 @@
 # Change Log
 
-## [1.2.0.rcgit.14](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.14) (2016-06-16)
+## [v1.2.0-rcgit.15](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.15) (2016-08-16)
 
-[Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0.rcgit.13...1.2.0.rcgit.1)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.14...v1.2.0-rcgit.14)
+
+**Implemented enhancements:**
+
+- No dark tray icon [\#905](https://github.com/FreeRDP/Remmina/issues/905)
+
+**Closed issues:**
+
+- Remmina can no longer detect bad RDP credentials [\#960](https://github.com/FreeRDP/Remmina/issues/960)
+- Import Plugin Dialog [\#954](https://github.com/FreeRDP/Remmina/issues/954)
+- SSH does not try IPv4 after IPv6 fails \(when DNS has addresses for both\) [\#953](https://github.com/FreeRDP/Remmina/issues/953)
+- Systray does not show the remmina applet icon in Plasma 5.7 - therefore no connect menu [\#944](https://github.com/FreeRDP/Remmina/issues/944)
+- RDP reconnect extra warning at the end [\#929](https://github.com/FreeRDP/Remmina/issues/929)
+- Invisible Add-Button due to color [\#924](https://github.com/FreeRDP/Remmina/issues/924)
+- View bug [\#920](https://github.com/FreeRDP/Remmina/issues/920)
+- SSH - Blank Window After Upgrading Fedora 23 to 24 [\#913](https://github.com/FreeRDP/Remmina/issues/913)
+- Don't compile on FreeBSD [\#911](https://github.com/FreeRDP/Remmina/issues/911)
+- missing remmina settings icon ubuntu 14.04 [\#906](https://github.com/FreeRDP/Remmina/issues/906)
+- apt-get fresh install error on Ubuntu MATE 15.10 [\#903](https://github.com/FreeRDP/Remmina/issues/903)
+- remmina-1.2 SSH support in Fedora-24beta totally broken [\#899](https://github.com/FreeRDP/Remmina/issues/899)
+- Segmentation Fault on FreeBSD using SPICE [\#876](https://github.com/FreeRDP/Remmina/issues/876)
+- Error when using clipboard sync wiht windows 2012R2 [\#821](https://github.com/FreeRDP/Remmina/issues/821)
+- RDP Clipboard issue with 1.2.0-rcgit.10 [\#809](https://github.com/FreeRDP/Remmina/issues/809)
+- FreeBSD - error: no member named 'sftp\_client\_confirm\_res ume' in 'union remmina\_masterthread\_exec\_data [\#431](https://github.com/FreeRDP/Remmina/issues/431)
+
+**Merged pull requests:**
+
+- Spice package and integrated debian packaging. [\#964](https://github.com/FreeRDP/Remmina/pull/964) ([nastasi](https://github.com/nastasi))
+- .travis.yml: Add a missing dependency [\#963](https://github.com/FreeRDP/Remmina/pull/963) ([dshcherb](https://github.com/dshcherb))
+- spice: add support for tls encrypted connections [\#962](https://github.com/FreeRDP/Remmina/pull/962) ([larchunix](https://github.com/larchunix))
+- Update AUTHORS [\#959](https://github.com/FreeRDP/Remmina/pull/959) ([antenore](https://github.com/antenore))
+- Fix import label [\#957](https://github.com/FreeRDP/Remmina/pull/957) ([Justinzobel](https://github.com/Justinzobel))
+- Updated Hungarian translation [\#949](https://github.com/FreeRDP/Remmina/pull/949) ([meskobalazs](https://github.com/meskobalazs))
+- Add missing ClientFormatListResponse\(\) call in RDP plugin clipboard, … [\#948](https://github.com/FreeRDP/Remmina/pull/948) ([giox069](https://github.com/giox069))
+- RDP: allow disabling auto reconnection in .remmina file [\#947](https://github.com/FreeRDP/Remmina/pull/947) ([xhaakon](https://github.com/xhaakon))
+- Embed docs [\#945](https://github.com/FreeRDP/Remmina/pull/945) ([nastasi](https://github.com/nastasi))
+- Allow disabling libsecret dependency [\#942](https://github.com/FreeRDP/Remmina/pull/942) ([diogocp](https://github.com/diogocp))
+- add shortcuts to show remote desktop edges [\#940](https://github.com/FreeRDP/Remmina/pull/940) ([nastasi](https://github.com/nastasi))
+- Fix a possible crash when changing gtk\_tree\_model [\#928](https://github.com/FreeRDP/Remmina/pull/928) ([giox069](https://github.com/giox069))
+- Inverted tray icon for light theme [\#907](https://github.com/FreeRDP/Remmina/pull/907) ([antenore](https://github.com/antenore))
+
+## [v1.2.0-rcgit.14](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.14) (2016-06-15)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0.rcgit.13...v1.2.0-rcgit.14)
 
 **Implemented enhancements:**
 
