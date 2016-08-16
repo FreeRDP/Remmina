@@ -2,7 +2,7 @@
 
 ## [v1.2.0-rcgit.15](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.15) (2016-08-16)
 
-[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.14...v1.2.0-rcgit.14)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.14...v1.2.0-rcgit.15)
 
 **Implemented enhancements:**
 
