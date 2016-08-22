@@ -1362,6 +1362,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	if (remmina_file_get_filename(remminafile) == NULL)
 	{
 		gtk_entry_set_text(GTK_ENTRY(widget), _("Quick Connect"));
+		gtk_entry_grab_focus_without_selecting(GTK_ENTRY(widget));
 		g_signal_connect(G_OBJECT(widget), "changed", G_CALLBACK(remmina_file_editor_name_on_changed), gfe);
 	}
 	else
