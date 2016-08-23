@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010-2011 Vic Lee 
+ * Copyright (C) 2010-2011 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -40,6 +40,8 @@ G_BEGIN_DECLS
 void remmina_rdp_settings_init(void);
 guint remmina_rdp_settings_get_keyboard_layout(void);
 GtkWidget* remmina_rdp_settings_new(void);
+
+void remmina_rdp_settings_get_orientation_scale_prefs(int *desktopOrientation, int *desktopScaleFactor, int *deviceScaleFactor);
 
 G_END_DECLS
 

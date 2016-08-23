@@ -714,6 +714,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	gchar *gateway_host;
 	gint gateway_port;
+	gint desktopOrientation, desktopScaleFactor, deviceScaleFactor;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
@@ -906,6 +907,15 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	rfi->settings->FastPathInput = True;
 	rfi->settings->FastPathOutput = True;
 
+	/* Orientation and scaling settings */
+	remmina_rdp_settings_get_orientation_scale_prefs(&desktopOrientation, &desktopScaleFactor, &deviceScaleFactor);
+
+	rfi->settings->DesktopOrientation = desktopOrientation;
+	if (desktopScaleFactor != 0 && deviceScaleFactor != 0)
+	{
+		rfi->settings->DesktopScaleFactor = desktopScaleFactor;
+		rfi->settings->DeviceScaleFactor = deviceScaleFactor;
+	}
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "sound");
 
