@@ -113,7 +113,8 @@ static gboolean remmina_plugin_spice_open_connection(RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 
 	gint port;
-	gchar *host, *cacert;
+	const gchar *cacert;
+	gchar *host;
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
