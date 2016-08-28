@@ -204,6 +204,7 @@ static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChan
 		                 "notify::ready",
 		                 G_CALLBACK(remmina_plugin_spice_display_ready_cb),
 		                 gp);
+		remmina_plugin_spice_display_ready_cb(G_OBJECT(gpdata->display), NULL, gp);
 	}
 
 	if (SPICE_IS_PLAYBACK_CHANNEL(channel))
@@ -422,10 +423,10 @@ static void remmina_plugin_spice_select_usb_devices(RemminaProtocolWidget *gp)
 	                 gp);
 
 	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
-			   usb_device_widget,
-			   TRUE,
-			   TRUE,
-			   0);
+	                   usb_device_widget,
+	                   TRUE,
+	                   TRUE,
+	                   0);
 	gtk_widget_show_all(dialog);
 	gtk_dialog_run(GTK_DIALOG(dialog));
 	gtk_widget_destroy(dialog);
