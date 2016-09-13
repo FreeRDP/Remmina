@@ -54,6 +54,11 @@ static void remmina_plugin_spice_display_ready_cb(GObject *, GParamSpec *, Remmi
 static void remmina_plugin_spice_update_scale(RemminaProtocolWidget *);
 
 void remmina_plugin_spice_select_usb_devices(RemminaProtocolWidget *);
+#ifdef SPICE_GTK_CHECK_VERSION
+#  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
+void remmina_plugin_spice_file_transfer_new_cb(SpiceMainChannel *, SpiceFileTransferTask *, RemminaProtocolWidget *);
+#  endif /* SPICE_GTK_CHECK_VERSION(0, 31, 0) */
+#endif /* SPICE_GTK_CHECK_VERSION */
 
 static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 {
@@ -152,6 +157,15 @@ static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 		remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 	}
 
+#ifdef SPICE_GTK_CHECK_VERSION
+#  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
+	if (gpdata->file_transfers)
+	{
+		g_hash_table_unref(gpdata->file_transfers);
+	}
+#  endif /* SPICE_GTK_CHECK_VERSION(0, 31, 0) */
+#endif /* SPICE_GTK_CHECK_VERSION */
+
 	return FALSE;
 }
 
@@ -172,6 +186,14 @@ static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChan
 		                 "channel-event",
 		                 G_CALLBACK(remmina_plugin_spice_main_channel_event_cb),
 		                 gp);
+#ifdef SPICE_GTK_CHECK_VERSION
+#  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
+		g_signal_connect(channel,
+		                 "new-file-transfer",
+		                 G_CALLBACK(remmina_plugin_spice_file_transfer_new_cb),
+		                 gp);
+#  endif /* SPICE_GTK_CHECK_VERSION(0, 31, 0) */
+#endif /* SPICE_GTK_CHECK_VERSION */
 	}
 
 	if (SPICE_IS_DISPLAY_CHANNEL(channel))

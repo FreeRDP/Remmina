@@ -59,6 +59,14 @@ typedef struct _RemminaPluginSpiceData
 	SpiceGtkSession *gtk_session;
 	SpiceMainChannel *main_channel;
 	SpiceSession *session;
+
+#ifdef SPICE_GTK_CHECK_VERSION
+#  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
+	/* key: SpiceFileTransferTask, value: RemminaPluginSpiceXferWidgets */
+	GHashTable *file_transfers;
+	GtkWidget  *file_transfer_dialog;
+#  endif /* SPICE_GTK_CHECK_VERSION(0, 31, 0) */
+#endif /* SPICE_GTK_CHECK_VERSION */
 } RemminaPluginSpiceData;
 
 
