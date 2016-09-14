@@ -52,9 +52,9 @@ VER_SFX="$(grep 'set('"${PKG_NAME^^}"'_VERSION_SUFFIX' CMakeLists.txt \
                | sed 's/set('"${PKG_NAME^^}"'_VERSION_[^"]*"//g;s/".*//g')"
 VER_BRANCH="$(git branch | grep '^\*' | cut -c 3-)"
 test "$VER_BRANCH" && VER_BRANCH="+${VER_BRANCH}"
-VER_DATE="$(date +%Y%m%d%H%M)"
+VER_DATE="$(date -u -d "$(git log -1 --date=iso  | grep '^Date:' | sed 's/^Date: *//g')" "+%Y%m%d%H%M")"
 
-PKG_VER="${VER_MAJ}.${VER_MIN}.${VER_REV}~${VER_SFX}${VER_BRANCH}+${VER_DATE}"
+PKG_VER="${VER_MAJ}.${VER_MIN}.${VER_REV}${VER_SFX}${VER_BRANCH}+${VER_DATE}"
 PKG_DIR="${PKG_NAME}_${PKG_VER}"
 
 echo $PKG_VER
@@ -74,7 +74,7 @@ git --no-pager log --format="%ai %aN (%h) %n%n%x09*%w(68,0,10) %s%d%n" > "${BDIR
 
 mv ${BDIR}/${PKG_DIR}/debian/changelog ${BDIR}/changelog.orig
 cd ${BDIR}/${PKG_DIR}/
-tar zcvf "../${PKG_NAME}_${PKG_VER}.orig.tar.gz" .
+tar zcvf "../${PKG_NAME}_${PKG_VER}.orig" .
 for serie in yakkety wily xenial trusty; do
     if [ "$IS_DEV_RELEASE" = "y" ]; then
         cat <<EOF >debian/changelog
