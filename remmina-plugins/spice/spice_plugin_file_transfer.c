@@ -210,7 +210,33 @@ static void remmina_plugin_spice_file_transfer_finished_cb(SpiceFileTransferTask
 {
 	TRACE_CALL(__func__);
 
+	gchar *filename, *notification_message;
+	GNotification *notification;
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
+
+	/*
+	 * Send a desktop notification to inform about the outcome of
+	 * the file transfer.
+	 */
+	filename = spice_file_transfer_task_get_filename(task);
+
+	if (error)
+	{
+		notification = g_notification_new(_("Transfer error"));
+		notification_message = g_strdup_printf(_("%s: %s"),
+		                                       filename, error->message);
+	}
+	else
+	{
+		notification = g_notification_new(_("Transfer complete"));
+		notification_message = g_strdup_printf(_("File %s transfered succesfully"),
+		                                       filename);
+	}
+
+	g_notification_set_body(notification, notification_message);
+	g_application_send_notification(g_application_get_default(),
+	                                "remmina-plugin-spice-file-transfer-finished",
+	                                notification);
 
 	g_hash_table_remove(gpdata->file_transfers, task);
 
@@ -218,6 +244,10 @@ static void remmina_plugin_spice_file_transfer_finished_cb(SpiceFileTransferTask
 	{
 		gtk_widget_hide(gpdata->file_transfer_dialog);
 	}
+
+	g_free(filename);
+	g_free(notification_message);
+	g_object_unref(notification);
 }
 #  endif /* SPICE_GTK_CHECK_VERSION(0, 31, 0) */
 #endif /* SPICE_GTK_CHECK_VERSION */
