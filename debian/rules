@@ -17,10 +17,10 @@ endif
 dh_subst_files = $(patsubst %.in,%,$(wildcard $(addprefix debian/, $(addsuffix *.in, $(1)))))
 
 debian/changelog::
-        sed \
-                -e "s#@REMMINA_SOURCE_DATE@#$(shell date -d "\$(git log --date=rfc --pretty=format:%ad -1)" +%Y%m%d%H%M)@g" \
-                -e "s#@REMMINA_SOURCE_HASH@#$(shell git log --pretty=format:'%h' -n 1)@g" \
-                $@.in > $@
+	sed \
+		-e "s#@REMMINA_SOURCE_DATE@#$(shell date -d "$$(git log --date=rfc --pretty=format:%ad -1)" +%Y%m%d%H%M)#g" \
+		-e "s#@REMMINA_SOURCE_HASH@#$(shell git log --pretty=format:'%h' -n 1)#g" \
+		$@.in > $@
 
 debian/control::
 	dh_testdir
@@ -35,7 +35,7 @@ debian/control::
 clean:: debian/control debian/changelog
         # gross kludge to force control generation with the %.in target
 	touch debian/control.in
-        touch debian/changelog.in
+	touch debian/changelog.in
 	rm -f $(call dh_subst_files,$(DEB_ALL_PACKAGES))
 
 # Add dependencies to generate files from the debian/*.in ones
