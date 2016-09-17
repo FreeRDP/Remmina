@@ -12,15 +12,20 @@ else
         REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS=
 endif
 
+REMMINA_SOURCE_DATE=$(shell date -d "$$(git log --date=rfc --pretty=format:%ad -1)" +%Y%m%d%H%M)
+REMMINA_SOURCE_HASH=$(shell git log -1 | grep "^commit" | sed "s/^commit *\(.......\).*/\1/g")
+
 # macro computing the list of 'debian/<pkg>.*" files which have a
 # corresponding ".in" file; pass the list of packages in $(1)
 dh_subst_files = $(patsubst %.in,%,$(wildcard $(addprefix debian/, $(addsuffix *.in, $(1)))))
 
 debian/changelog::
 	sed \
-		-e "s#@REMMINA_SOURCE_DATE@#$(shell date -d "$$(git log --date=rfc --pretty=format:%ad -1)" +%Y%m%d%H%M)#g" \
-		-e "s#@REMMINA_SOURCE_HASH@#$(shell git log -1 | grep "^commit" | sed "s/^commit *\(.......\).*/\1/g")#g" \
+		-e "s#@REMMINA_SOURCE_DATE@#$(REMMINA_SOURCE_DATE)#g" \
+		-e "s#@REMMINA_SOURCE_HASH@#$(REMMINA_SOURCE_HASH)#g" \
 		$@.in > $@
+	echo "$(REMMINA_SOURCE_DATE)" > debian/remmina_commit_date.log
+	echo "$(REMMINA_SOURCE_HASH)" > debian/remmina_commit_hash.log
 
 debian/control::
 	dh_testdir
