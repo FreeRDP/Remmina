@@ -18,7 +18,7 @@ dh_subst_files = $(patsubst %.in,%,$(wildcard $(addprefix debian/, $(addsuffix *
 
 debian/changelog::
 	sed \
-		-e "s#@REMMINA_SOURCE_DATE@#$(shell date -d "$$(git log --date=rfc --pretty=format:%ad -1)" +%Y%m%d)#g" \
+		-e "s#@REMMINA_SOURCE_DATE@#$(shell date -d "$$(git log --date=rfc --pretty=format:%ad -1)" +%Y%m%d%H%M)#g" \
 		-e "s#@REMMINA_SOURCE_HASH@#$(shell git log -1 | grep "^commit" | sed "s/^commit *\(.......\).*/\1/g")#g" \
 		$@.in > $@
 
