@@ -57,6 +57,9 @@ VER_DATE="$(date -u -d "$(git log -1 --date=iso  | grep '^Date:' | sed 's/^Date:
 PKG_VER="${VER_MAJ}.${VER_MIN}.${VER_REV}${VER_SFX}${VER_BRANCH}+${VER_DATE}"
 PKG_DIR="${PKG_NAME}_${PKG_VER}"
 
+REMMINA_SOURCE_DATE=$(date -d "$(git log --date=rfc --pretty=format:%ad -1)" +%Y%m%d%H%M)
+REMMINA_SOURCE_HASH=$(git log -1 | grep "^commit" | sed "s/^commit *\(.......\).*/\1/g")
+
 echo $PKG_VER
 
 mkdir -p ${BDIR}
@@ -72,12 +75,12 @@ git --no-pager log --format="%ai %aN (%h) %n%n%x09*%w(68,0,10) %s%d%n" > "${BDIR
 # NOTE: artificially files date reconstruction is skipped
 
 
-mv ${BDIR}/${PKG_DIR}/debian/changelog ${BDIR}/changelog.orig
+mv ${BDIR}/${PKG_DIR}/debian/changelog.in ${BDIR}/changelog.in.orig
 cd ${BDIR}/${PKG_DIR}/
-tar zcvf "../${PKG_NAME}_${PKG_VER}.orig" .
+tar zcvf "../${PKG_NAME}_${PKG_VER}.orig.tar.gz" .
 for serie in yakkety wily xenial trusty; do
     if [ "$IS_DEV_RELEASE" = "y" ]; then
-        cat <<EOF >debian/changelog
+        cat <<EOF >debian/changelog.in
 ${PKG_NAME} (${PKG_VER}-1${serie}${SER_SFX}) ${serie}; urgency=medium
 
   * New upstream release.
@@ -86,17 +89,19 @@ ${PKG_NAME} (${PKG_VER}-1${serie}${SER_SFX}) ${serie}; urgency=medium
 
 EOF
     else
-        rm -f debian/changelog
-        touch debian/changelog
+        rm -f debian/changelog.in
+        touch debian/changelog.in
     fi
 
-    cat ../changelog.orig >>debian/changelog
-    debuild -eUBUNTU_SERIE="$serie" -S -sa # add ' -us -uc' flags to avoid signing
+    cat ../changelog.in.orig >>debian/changelog.in
+    ./debian/rules debian/changelog REMMINA_SOURCE_DATE=$REMMINA_SOURCE_DATE REMMINA_SOURCE_HASH=$REMMINA_SOURCE_HASH
+
+    debuild -eUBUNTU_SERIE="$serie" -us -uc -S -sa # add ' -us -uc' flags to avoid signing
     rm -rf *
     tar zxf "../${PKG_NAME}_${PKG_VER}.orig.tar.gz"
 done
 cd -
-mv ${BDIR}/changelog.orig ${BDIR}/${PKG_DIR}/debian/changelog
+mv ${BDIR}/changelog.in.orig ${BDIR}/${PKG_DIR}/debian/changelog.in
 
 echo "now cd in ${BDIR} directory and run:"
 echo "dput <your-ppa-address> *.changes"

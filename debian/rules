@@ -12,8 +12,8 @@ else
         REMMINA_PLUGIN_SPICE_BUILDDEPS_ARCHS=
 endif
 
-REMMINA_SOURCE_DATE=$(shell date -d "$$(git log --date=rfc --pretty=format:%ad -1)" +%Y%m%d%H%M)
-REMMINA_SOURCE_HASH=$(shell git log -1 | grep "^commit" | sed "s/^commit *\(.......\).*/\1/g")
+REMMINA_SOURCE_DATE?=$(shell date -d "$$(git log --date=rfc --pretty=format:%ad -1)" +%Y%m%d%H%M)
+REMMINA_SOURCE_HASH?=$(shell git log -1 | grep "^commit" | sed "s/^commit *\(.......\).*/\1/g")
 
 # macro computing the list of 'debian/<pkg>.*" files which have a
 # corresponding ".in" file; pass the list of packages in $(1)
