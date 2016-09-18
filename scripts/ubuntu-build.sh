@@ -78,6 +78,7 @@ git --no-pager log --format="%ai %aN (%h) %n%n%x09*%w(68,0,10) %s%d%n" > "${BDIR
 mv ${BDIR}/${PKG_DIR}/debian/changelog.in ${BDIR}/changelog.in.orig
 cd ${BDIR}/${PKG_DIR}/
 tar zcvf "../${PKG_NAME}_${PKG_VER}.orig.tar.gz" .
+ORIG_SERIE=trusty
 for serie in yakkety wily xenial trusty; do
     if [ "$IS_DEV_RELEASE" = "y" ]; then
         cat <<EOF >debian/changelog.in
@@ -88,12 +89,12 @@ ${PKG_NAME} (${PKG_VER}-1${serie}${SER_SFX}) ${serie}; urgency=medium
  -- ${DEBFULLNAME} <${DEBEMAIL}>  ${PKG_DATE}
 
 EOF
+        cat ../changelog.in.orig >>debian/changelog.in
     else
         rm -f debian/changelog.in
         touch debian/changelog.in
+        sed "1 s/$ORIG_SERIE/$serie/g" < ../changelog.in.orig >debian/changelog.in
     fi
-
-    cat ../changelog.in.orig >>debian/changelog.in
     ./debian/rules debian/changelog REMMINA_SOURCE_DATE=$REMMINA_SOURCE_DATE REMMINA_SOURCE_HASH=$REMMINA_SOURCE_HASH
 
     debuild -eUBUNTU_SERIE="$serie" -us -uc -S -sa # add ' -us -uc' flags to avoid signing
