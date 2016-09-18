@@ -50,15 +50,18 @@ VER_REV="$(grep 'set('"${PKG_NAME^^}"'_VERSION_REVISION' CMakeLists.txt \
                | sed 's/set('"${PKG_NAME^^}"'_VERSION_[^"]*"//g;s/".*//g')"
 VER_SFX="$(grep 'set('"${PKG_NAME^^}"'_VERSION_SUFFIX' CMakeLists.txt \
                | sed 's/set('"${PKG_NAME^^}"'_VERSION_[^"]*"//g;s/".*//g')"
-VER_BRANCH="$(git branch | grep '^\*' | cut -c 3-)"
-test "$VER_BRANCH" && VER_BRANCH="+${VER_BRANCH}"
-VER_DATE="$(date -u -d "$(git log -1 --date=iso  | grep '^Date:' | sed 's/^Date: *//g')" "+%Y%m%d%H%M")"
+# VER_BRANCH="$(git branch | grep '^\*' | cut -c 3-)"
+# test "$VER_BRANCH" && VER_BRANCH="+${VER_BRANCH}"
 
-PKG_VER="${VER_MAJ}.${VER_MIN}.${VER_REV}${VER_SFX}${VER_BRANCH}+${VER_DATE}"
+PKG_VER="${VER_MAJ}.${VER_MIN}.${VER_REV}${VER_SFX}"
+if [ "$IS_DEV_RELEASE" = "y" ]; then
+    VER_DATE="$(date -u -d "$(git log -1 --date=iso  | grep '^Date:' | sed 's/^Date: *//g')" "+%Y%m%d%H%M")"
+    PKG_VER="${PKG_VER}~dev${VER_DATE}"
+fi
 PKG_DIR="${PKG_NAME}_${PKG_VER}"
 
-REMMINA_SOURCE_DATE=$(date -d "$(git log --date=rfc --pretty=format:%ad -1)" +%Y%m%d%H%M)
-REMMINA_SOURCE_HASH=$(git log -1 | grep "^commit" | sed "s/^commit *\(.......\).*/\1/g")
+SOURCE_DATE="$(date -u -d "$(git log -1 --date=iso  | grep '^Date:' | sed 's/^Date: *//g')" "+%Y%m%d%H%M")"
+SOURCE_HASH=$(git log -1 | grep "^commit" | sed "s/^commit *\(.......\).*/\1/g")
 
 echo $PKG_VER
 
@@ -82,7 +85,7 @@ ORIG_SERIE=trusty
 for serie in yakkety wily xenial trusty; do
     if [ "$IS_DEV_RELEASE" = "y" ]; then
         cat <<EOF >debian/changelog.in
-${PKG_NAME} (${PKG_VER}-1${serie}${SER_SFX}) ${serie}; urgency=medium
+${PKG_NAME} (${PKG_VER}-0ubuntu0~git${SOURCE_HASH}~${serie}) ${serie}; urgency=medium
 
   * New upstream release.
 
@@ -95,9 +98,9 @@ EOF
         touch debian/changelog.in
         sed "1 s/$ORIG_SERIE/$serie/g" < ../changelog.in.orig >debian/changelog.in
     fi
-    ./debian/rules debian/changelog REMMINA_SOURCE_DATE=$REMMINA_SOURCE_DATE REMMINA_SOURCE_HASH=$REMMINA_SOURCE_HASH
+    ./debian/rules debian/changelog REMMINA_SOURCE_DATE=$SOURCE_DATE REMMINA_SOURCE_HASH=$SOURCE_HASH
 
-    debuild -eUBUNTU_SERIE="$serie" -us -uc -S -sa # add ' -us -uc' flags to avoid signing
+    debuild -eUBUNTU_SERIE="$serie" -S -sa # add ' -us -uc' flags to avoid signing
     rm -rf *
     tar zxf "../${PKG_NAME}_${PKG_VER}.orig.tar.gz"
 done
