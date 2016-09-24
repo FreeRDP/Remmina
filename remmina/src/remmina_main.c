@@ -960,6 +960,12 @@ gboolean remmina_main_quickconnect_on_click(GtkWidget *widget, gpointer user_dat
 	return remmina_main_quickconnect();
 }
 
+void remmina_main_quick_search_enter(GtkWidget *widget, gpointer user_data)
+{
+	if (gtk_entry_get_text(remminamain->entry_quick_connect_server))
+	gtk_editable_select_region(GTK_EDITABLE(remminamain->entry_quick_connect_server), 0, -1);
+}
+
 /* Handle double click on a row in the connections list */
 void remmina_main_file_list_on_row_activated(GtkTreeView *tree, GtkTreePath *path, GtkTreeViewColumn *column, gpointer user_data)
 {

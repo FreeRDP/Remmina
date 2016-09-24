@@ -297,6 +297,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     <property name="input_hints">GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NONE</property>
                     <signal name="activate" handler="remmina_main_quickconnect_on_click" swapped="no"/>
                     <signal name="changed" handler="remmina_main_quick_search_on_changed" swapped="no"/>
+                    <signal name="focus-in-event" handler="remmina_main_quick_search_enter" swapped="no"/>
                     <signal name="icon-press" handler="remmina_main_quick_search_on_icon_press" swapped="no"/>
                     <signal name="insert-at-cursor" handler="remmina_main_load_files_cb" swapped="no"/>
                     <accelerator key="f" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
