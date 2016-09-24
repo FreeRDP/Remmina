@@ -960,6 +960,7 @@ gboolean remmina_main_quickconnect_on_click(GtkWidget *widget, gpointer user_dat
 	return remmina_main_quickconnect();
 }
 
+/* Select all the text inside the quick search box if there is anything */
 void remmina_main_quick_search_enter(GtkWidget *widget, gpointer user_data)
 {
 	if (gtk_entry_get_text(remminamain->entry_quick_connect_server))
