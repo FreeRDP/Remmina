@@ -50,17 +50,17 @@ gchar* remmina_file_get_user_datadir(void)
 {
 
 	TRACE_CALL("remmina_file_get_user_datadir");
-	GDir *old;
+	GDir *dir;
 
 	if (remminadir[0] == '\0') {
-		/* If the old .remmina exists, use it. */
+		/* If the old ~/.remmina exists, use it. */
 		g_snprintf(remminadir, sizeof(remminadir), "%s/.%s", g_get_home_dir(), remmina);
-		old = g_dir_open(remminadir, 0, NULL);
-		if (old == NULL)
+		dir = g_dir_open(remminadir, 0, NULL);
+		if (dir == NULL)
 			/* If the XDG directories exist, use them. */
 			g_snprintf(remminadir, sizeof(remminadir), "%s/%s", g_get_user_data_dir(), remmina);
 		else
-			g_dir_close(old);
+			g_dir_close(dir);
 	}
 	return remminadir;
 }
