@@ -44,24 +44,46 @@
 #include "remmina_file_manager.h"
 #include "remmina/remmina_trace_calls.h"
 
-static gchar remminadir[MAX_PATH_LEN];
+//static gchar remminadir[MAX_PATH_LEN];
+static gchar *remminadir;
 
-gchar* remmina_file_get_user_datadir(void)
+gchar *remmina_file_get_user_datadir(void)
 {
 
 	TRACE_CALL("remmina_file_get_user_datadir");
-	GDir *dir;
+	gchar *dir = g_strdup_printf (".%s", g_get_prgname ());
+	gchar *ret = NULL;
+	int i;
 
-	if (remminadir[0] == '\0') {
-		/* If the old ~/.remmina exists, use it. */
-		g_snprintf(remminadir, sizeof(remminadir), "%s/.%s", g_get_home_dir(), remmina);
-		dir = g_dir_open(remminadir, 0, NULL);
-		if (dir == NULL)
-			/* If the XDG directories exist, use them. */
-			g_snprintf(remminadir, sizeof(remminadir), "%s/%s", g_get_user_data_dir(), remmina);
-		else
-			g_dir_close(dir);
+	/* Legacy ~/.remmina */
+	remminadir = g_build_path ("/", g_get_home_dir(), dir, NULL);
+	printf ("%s\n", remminadir);
+	if (g_file_test (remminadir, G_FILE_TEST_IS_DIR))
+		return remminadir;
+	g_free (remminadir), remminadir = NULL;
+
+	/* ~/.local/share/remmina */
+	remminadir = g_build_path ( "/", g_get_user_data_dir (), g_get_prgname (), NULL);
+	printf ("%s\n", remminadir);
+	if (g_file_test (remminadir, G_FILE_TEST_IS_DIR))
+		 return remminadir;
+	g_free (remminadir), remminadir = NULL;
+
+	/* /usr/local/share/remmina */
+	const gchar * const *dirs = g_get_system_data_dirs ();
+	g_free (remminadir), remminadir = NULL;
+	for (i = 0; dirs[i] != NULL; ++i)
+	{
+		remminadir = g_build_path ( "/", dirs[i], g_get_prgname (), NULL);
+		printf ("%s\n", remminadir);
+		if (g_file_test (remminadir, G_FILE_TEST_IS_DIR))
+			return remminadir;
+		g_free (remminadir), remminadir = NULL;
 	}
+
+	/* The last case we use  the home ~/.local/share/remmina */
+	remminadir = g_build_path ( "/", g_get_user_data_dir (), g_get_prgname (), NULL);
+	printf ("Finallly choosen: %s\n", remminadir);
 	return remminadir;
 }
 
