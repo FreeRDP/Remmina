@@ -57,14 +57,12 @@ gchar *remmina_file_get_user_datadir(void)
 
 	/* Legacy ~/.remmina */
 	remminadir = g_build_path ("/", g_get_home_dir(), dir, NULL);
-	printf ("%s\n", remminadir);
 	if (g_file_test (remminadir, G_FILE_TEST_IS_DIR))
 		return remminadir;
 	g_free (remminadir), remminadir = NULL;
 
 	/* ~/.local/share/remmina */
 	remminadir = g_build_path ( "/", g_get_user_data_dir (), g_get_prgname (), NULL);
-	printf ("%s\n", remminadir);
 	if (g_file_test (remminadir, G_FILE_TEST_IS_DIR))
 		 return remminadir;
 	g_free (remminadir), remminadir = NULL;
@@ -75,7 +73,6 @@ gchar *remmina_file_get_user_datadir(void)
 	for (i = 0; dirs[i] != NULL; ++i)
 	{
 		remminadir = g_build_path ( "/", dirs[i], g_get_prgname (), NULL);
-		printf ("%s\n", remminadir);
 		if (g_file_test (remminadir, G_FILE_TEST_IS_DIR))
 			return remminadir;
 		g_free (remminadir), remminadir = NULL;
@@ -83,7 +80,6 @@ gchar *remmina_file_get_user_datadir(void)
 
 	/* The last case we use  the home ~/.local/share/remmina */
 	remminadir = g_build_path ( "/", g_get_user_data_dir (), g_get_prgname (), NULL);
-	printf ("Finallly choosen: %s\n", remminadir);
 	return remminadir;
 }
 
