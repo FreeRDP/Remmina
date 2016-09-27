@@ -44,7 +44,6 @@
 #include "remmina_file_manager.h"
 #include "remmina/remmina_trace_calls.h"
 
-//static gchar remminadir[MAX_PATH_LEN];
 static gchar *remminadir;
 
 gchar *remmina_file_get_user_datadir(void)
