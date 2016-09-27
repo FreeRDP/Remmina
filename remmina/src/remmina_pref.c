@@ -242,19 +242,40 @@ void remmina_pref_init(void)
 {
 	TRACE_CALL("remmina_pref_init");
 	GKeyFile *gkeyfile;
-	gchar dirname[MAX_PATH_LEN];
-	GDir *dir;
+	gchar *remminadir;
+	gchar *dir = g_strdup_printf (".%s", g_get_prgname ());
+	gchar *ret = NULL;
+	int i;
 
-	g_snprintf(dirname, sizeof(dirname), "%s/.%s", g_get_home_dir(), remmina);
-	dir = g_dir_open(dirname, 0, NULL);
-	if (dir == NULL)
-		/*  If the XDG directories exist, use them. */
-		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_config_dir(), remmina);
-	else
-		g_dir_close(dir);
-	g_mkdir_with_parents(dirname, 0700);
-	remmina_pref_file = g_strdup_printf("%s/remmina.pref", dirname);
-	remmina_keymap_file = g_strdup_printf("%s/remmina.keymap", dirname);
+	/* Legacy ~/.remmina */
+	remminadir = g_build_path ("/", g_get_home_dir(), dir, NULL);
+	if (!g_file_test (remminadir, G_FILE_TEST_IS_DIR))
+		g_free (remminadir), remminadir = NULL;
+
+	/* ~/.config/remmina */
+	remminadir = g_build_path ( "/", g_get_user_config_dir (), g_get_prgname (), NULL);
+	if (!g_file_test (remminadir, G_FILE_TEST_IS_DIR))
+		g_free (remminadir), remminadir = NULL;
+
+	/* /usr/local/etc/remmina */
+	const gchar * const *dirs = g_get_system_config_dirs ();
+	g_free (remminadir), remminadir = NULL;
+	for (i = 0; dirs[i] != NULL; ++i)
+	{
+		remminadir = g_build_path ( "/", dirs[i], g_get_prgname (), NULL);
+		if (g_file_test (remminadir, G_FILE_TEST_IS_DIR))
+			break;
+		g_free (remminadir), remminadir = NULL;
+	}
+
+	/* The last case we use  the home ~/.config/remmina */
+	if (remminadir == NULL)
+		remminadir = g_build_path ( "/", g_get_user_config_dir (),
+				g_get_prgname (), NULL);
+
+	g_mkdir_with_parents(remminadir, 0700);
+	remmina_pref_file = g_strdup_printf("%s/remmina.pref", remminadir);
+	remmina_keymap_file = g_strdup_printf("%s/remmina.keymap", remminadir);
 
 	gkeyfile = g_key_file_new();
 	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
