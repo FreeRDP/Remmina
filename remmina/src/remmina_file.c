@@ -157,9 +157,9 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	g_free(remminafile->filename);
 	g_get_current_time(&gtime);
 
-	dir = g_dir_open(remmina_file_get_user_datadir(), 0, NULL);
+	dir = g_dir_open(remmina_file_get_datadir(), 0, NULL);
 	if (dir != NULL)
-		remminafile->filename = g_strdup_printf("%s/%li%03li.remmina", remmina_file_get_user_datadir(), gtime.tv_sec,
+		remminafile->filename = g_strdup_printf("%s/%li%03li.remmina", remmina_file_get_datadir(), gtime.tv_sec,
 		                                        gtime.tv_usec / 1000);
 	else
 		remminafile->filename = NULL;
