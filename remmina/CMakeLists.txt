@@ -219,7 +219,7 @@ add_subdirectory(external_tools)
 add_subdirectory(ui)
 
 install(TARGETS remmina DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(DIRECTORY include/remmina/ DESTINATION include/remmina FILES_MATCHING PATTERN "*.h")
+install(DIRECTORY include/remmina/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/remmina FILES_MATCHING PATTERN "*.h")
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina.pc.in ${CMAKE_CURRENT_BINARY_DIR}/remmina.pc @ONLY)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
