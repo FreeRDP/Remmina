@@ -78,9 +78,11 @@ gchar *remmina_file_get_datadir(void)
 	return remminadir;
 }
 
+/* TODO: remmina_pref_file_do_copy and remmina_file_manager_do_copy to remmina_files_copy */
 static gboolean remmina_file_manager_do_copy(const char *src_path, const char *dst_path)
 {
 	GFile *src = g_file_new_for_path(src_path), *dst = g_file_new_for_path(dst_path);
+	/* We don't overwrite the target if it exists */
 	const gboolean ok = g_file_copy(src, dst, G_FILE_COPY_NONE, NULL, NULL, NULL, NULL);
 	g_object_unref(dst);
 	g_object_unref(src);
@@ -92,15 +94,30 @@ void remmina_file_manager_init(void)
 {
 	TRACE_CALL("remmina_file_manager_init");
 	GDir *dir;
+	gchar *legacy = g_strdup_printf (".%s", g_get_prgname ());
 	gchar *ret = NULL;
 	const gchar *filename;
 	int i;
 
 	remminadir = g_build_path ( "/", g_get_user_data_dir (), g_get_prgname (), NULL);
-	/* Create the XDG_USER_DATA dorectory */
+	/* Create the XDG_USER_DATA directory */
 	g_mkdir_with_parents (remminadir, 0750);
 
-	/* /usr/local/share/remmina */
+	g_free (remminadir), remminadir = NULL;
+	/* Empty legacy ~/.remmina */
+	remminadir = g_build_path ("/", g_get_home_dir(), legacy, NULL);
+	if (g_file_test (remminadir, G_FILE_TEST_IS_DIR))
+	{
+		dir = g_dir_open(remminadir, 0, NULL);
+		while ((filename = g_dir_read_name (dir)) != NULL) {
+			remmina_file_manager_do_copy(
+					g_build_path ( "/", remminadir, filename, NULL),
+					g_build_path ( "/", g_get_user_data_dir (),
+						g_get_prgname (), filename, NULL));
+		}
+	}
+
+	/* XDG_DATA_DIRS, i.e. /usr/local/share/remmina */
 	const gchar * const *dirs = g_get_system_data_dirs ();
 	g_free (remminadir), remminadir = NULL;
 	for (i = 0; dirs[i] != NULL; ++i)
@@ -115,9 +132,15 @@ void remmina_file_manager_init(void)
 					g_build_path ( "/", g_get_user_data_dir (),
 						g_get_prgname (), filename, NULL));
 			}
+			break;
 		}
 		g_free (remminadir), remminadir = NULL;
 	}
+	/* At last we make sure we use XDG_USER_DATA */
+	if (remminadir != NULL)
+		g_free (remminadir), remminadir = NULL;
+	remminadir = g_build_path ( "/", g_get_user_data_dir (),
+			g_get_prgname (), NULL);
 }
 
 gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
@@ -129,6 +152,7 @@ gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 	RemminaFile* remminafile;
 	gint items_count = 0;
 
+	/* It should always return XDG_DATA_HOME */
 	dir = g_dir_open(remmina_file_get_datadir(), 0, NULL);
 
 	if (dir)
