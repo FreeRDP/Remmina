@@ -258,7 +258,6 @@ void remmina_pref_init(void)
 	const gchar *filename = g_strdup_printf("%s.pref", g_get_prgname());
 	GDir *dir;
 	gchar *legacy = g_strdup_printf (".%s", g_get_prgname ());
-	gchar *ret = NULL;
 	int i;
 
 	remmina_dir = g_build_path ( "/", g_get_user_config_dir (), g_get_prgname (), NULL);

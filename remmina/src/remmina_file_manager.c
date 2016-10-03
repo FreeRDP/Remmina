@@ -51,7 +51,6 @@ gchar *remmina_file_get_datadir(void)
 {
 	TRACE_CALL("remmina_file_get_datadir");
 	gchar *dir = g_strdup_printf (".%s", g_get_prgname ());
-	gchar *ret = NULL;
 	int i;
 	/* Legacy ~/.remmina */
 	remminadir = g_build_path ("/", g_get_home_dir(), dir, NULL);
@@ -95,7 +94,6 @@ void remmina_file_manager_init(void)
 	TRACE_CALL("remmina_file_manager_init");
 	GDir *dir;
 	gchar *legacy = g_strdup_printf (".%s", g_get_prgname ());
-	gchar *ret = NULL;
 	const gchar *filename;
 	int i;
 
