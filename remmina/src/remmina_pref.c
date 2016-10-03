@@ -291,7 +291,6 @@ void remmina_pref_init(void)
 						g_build_path ( "/", remmina_dir, filename, NULL),
 						g_build_path ( "/", g_get_user_config_dir (),
 							g_get_prgname (), filename, NULL));
-				break;
 			}
 			g_free (remmina_dir), remmina_dir = NULL;
 		}

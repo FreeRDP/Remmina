@@ -130,7 +130,6 @@ void remmina_file_manager_init(void)
 					g_build_path ( "/", g_get_user_data_dir (),
 						g_get_prgname (), filename, NULL));
 			}
-			break;
 		}
 		g_free (remminadir), remminadir = NULL;
 	}
