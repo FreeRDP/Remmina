@@ -24,20 +24,26 @@ This special place is reserved to who have donated the hisghest amount of money 
 
 These donors are listed in first name alphabetical order.
 
+- Allen Smith
+- Антонов Иван
 - Artur Mroczko
+- Bruce Cran
 - Cesar Reza
 - Christian Uceda
 - Dietmar Wolf
 - Gustavo Uceda
 - Ivan Antonov
 - Ivan Dobrianov
+- Jamison Guyton
 - Lars Povlsen
 - Lynne Lawrence
 - Michael Gruben
 - Michael Schneider
 - Nic Galler
-- Patrick SW
+- Patrick Saccani-Williams
 - Paul Johnson
+- Paul Zoulin
+- Richard Lees
 - Richard Pendlebury
 - Stepan Naumov
 - Troy Lea
