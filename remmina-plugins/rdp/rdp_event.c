@@ -853,13 +853,25 @@ static void remmina_rdp_event_reconnect_progress(RemminaProtocolWidget* gp, Remm
 static BOOL remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
 	TRACE_CALL("remmina_rdp_event_create_cursor");
+	printf("GIO: remmina_rdp_event_create_cursor REMMINA_RDP_UI_CURSOR\n");
 	GdkPixbuf* pixbuf;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	rdpPointer* pointer = (rdpPointer*)ui->cursor.pointer;
 	cairo_surface_t* surface;
 	UINT8* data = malloc(pointer->width * pointer->height * 4);
 
-	freerdp_alpha_cursor_convert(data, pointer->xorMaskData, pointer->andMaskData, pointer->width, pointer->height, pointer->xorBpp, rfi->clrconv);
+	if (freerdp_image_copy_from_pointer_data(
+			(BYTE*) data, PIXEL_FORMAT_ARGB32,
+			pointer->width * 4, 0, 0, pointer->width, pointer->height,
+			pointer->xorMaskData, pointer->lengthXorMask,
+			pointer->andMaskData, pointer->lengthAndMask,
+			pointer->xorBpp, &(ui->cursor.context->gdi->palette)) < 0)
+	{
+		free(data);
+		return FALSE;
+	}
+
+	// freerdp_alpha_cursor_convert(data, pointer->xorMaskData, pointer->andMaskData, pointer->width, pointer->height, pointer->xorBpp, rfi->clrconv);
 	surface = cairo_image_surface_create_for_data(data, CAIRO_FORMAT_ARGB32, pointer->width, pointer->height, cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, pointer->width));
 	pixbuf = gdk_pixbuf_get_from_surface(surface, 0, 0, pointer->width, pointer->height);
 	cairo_surface_destroy(surface);

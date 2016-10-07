@@ -375,15 +375,18 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 	rfContext* rfi;
 	ALIGN64 rdpSettings* settings;
 	RemminaProtocolWidget* gp;
-	rdpChannels *channels;
 
 	rfi = (rfContext*) instance->context;
 	settings = instance->settings;
 	gp = rfi->protocol_widget;
-	channels = instance->context->channels;
+
+	settings->OsMajorType = OSMAJORTYPE_UNIX;
+	settings->OsMinorType = OSMINORTYPE_UNSPECIFIED;
+	ZeroMemory(settings->OrderSupport, 32);
 
 	settings->BitmapCacheEnabled = True;
 	settings->OffscreenSupportLevel = True;
+
 
 	settings->OrderSupport[NEG_DSTBLT_INDEX] = True;
 	settings->OrderSupport[NEG_PATBLT_INDEX] = True;
@@ -398,15 +401,15 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 	settings->OrderSupport[NEG_LINETO_INDEX] = True;
 	settings->OrderSupport[NEG_POLYLINE_INDEX] = True;
 	settings->OrderSupport[NEG_MEMBLT_INDEX] = settings->BitmapCacheEnabled;
-	settings->OrderSupport[NEG_MEM3BLT_INDEX] = True;
+	settings->OrderSupport[NEG_MEM3BLT_INDEX] = settings->BitmapCacheEnabled;
 	settings->OrderSupport[NEG_MEMBLT_V2_INDEX] = settings->BitmapCacheEnabled;
-	settings->OrderSupport[NEG_MEM3BLT_V2_INDEX] = False;
+	settings->OrderSupport[NEG_MEM3BLT_V2_INDEX] = settings->BitmapCacheEnabled;
 	settings->OrderSupport[NEG_SAVEBITMAP_INDEX] = False;
 	settings->OrderSupport[NEG_GLYPH_INDEX_INDEX] = True;
 	settings->OrderSupport[NEG_FAST_INDEX_INDEX] = True;
 	settings->OrderSupport[NEG_FAST_GLYPH_INDEX] = True;
-	settings->OrderSupport[NEG_POLYGON_SC_INDEX] = False;
-	settings->OrderSupport[NEG_POLYGON_CB_INDEX] = False;
+	settings->OrderSupport[NEG_POLYGON_SC_INDEX] = True;
+	settings->OrderSupport[NEG_POLYGON_CB_INDEX] = True;
 	settings->OrderSupport[NEG_ELLIPSE_SC_INDEX] = False;
 	settings->OrderSupport[NEG_ELLIPSE_CB_INDEX] = False;
 
@@ -425,13 +428,37 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 		(pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
 
 	freerdp_client_load_addins(instance->context->channels, instance->settings);
-	freerdp_channels_pre_connect(instance->context->channels, instance);
-
-	rfi->clrconv = freerdp_clrconv_new(CLRCONV_ALPHA);
 
 	instance->context->cache = cache_new(instance->settings);
 
 	return True;
+}
+
+static UINT32 rf_get_local_color_format(rfContext* rfi, BOOL aligned)
+{
+	UINT32 DstFormat;
+	BOOL invert = !(aligned);
+
+	if (!rfi)
+		return 0;
+
+	if (rfi->bpp == 32)
+		DstFormat = (!invert) ? PIXEL_FORMAT_RGBA32 : PIXEL_FORMAT_BGRA32;
+	else if (rfi->bpp == 24)
+	{
+		if (aligned)
+			DstFormat = (!invert) ? PIXEL_FORMAT_RGBX32 : PIXEL_FORMAT_BGRX32;
+		else
+			DstFormat = (!invert) ? PIXEL_FORMAT_RGB24 : PIXEL_FORMAT_BGR24;
+	}
+	else if (rfi->bpp == 16)
+			DstFormat = (!invert) ? PIXEL_FORMAT_RGB16 : PIXEL_FORMAT_BGR16;
+	else if (rfi->bpp == 15)
+			DstFormat = (!invert) ? PIXEL_FORMAT_RGB16 : PIXEL_FORMAT_BGR16;
+	else
+			DstFormat = (!invert) ? PIXEL_FORMAT_RGBX32 : PIXEL_FORMAT_BGRX32;
+
+	return DstFormat;
 }
 
 
@@ -442,7 +469,6 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	RemminaProtocolWidget* gp;
 	RemminaPluginRdpUiObject* ui;
 	rdpGdi* gdi;
-	UINT32 flags;
 	int hdcBytesPerPixel, hdcBitsPerPixel;
 
 	rfi = (rfContext*) instance->context;
@@ -457,35 +483,30 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 
 	rf_register_graphics(instance->context->graphics);
 
-	flags = CLRCONV_ALPHA;
-
 	if (rfi->bpp == 32)
 	{
-		flags |= CLRBUF_32BPP;
 		hdcBytesPerPixel = 4;
 		hdcBitsPerPixel = 32;
 		rfi->cairo_format = CAIRO_FORMAT_ARGB32;
 	}
 	else if (rfi->bpp == 24)
 	{
-		flags |= CLRBUF_32BPP;
 		hdcBytesPerPixel = 4;
 		hdcBitsPerPixel = 32;
 		rfi->cairo_format = CAIRO_FORMAT_RGB24;
 	}
 	else
 	{
-		flags |= CLRBUF_16BPP;
 		hdcBytesPerPixel = 2;
 		hdcBitsPerPixel = 16;
 		rfi->cairo_format = CAIRO_FORMAT_RGB16_565;
 	}
 
-	gdi_init(instance, flags, NULL);
+	gdi_init(instance, rf_get_local_color_format(rfi, TRUE));
 	gdi = instance->context->gdi;
 	rfi->primary_buffer = gdi->primary_buffer;
 
-	rfi->hdc = gdi_GetDC();
+/*	rfi->hdc = gdi_GetDC();
 	rfi->hdc->bitsPerPixel = hdcBitsPerPixel;
 	rfi->hdc->bytesPerPixel = hdcBytesPerPixel;
 
@@ -496,6 +517,8 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	rfi->hdc->hwnd->count = 32;
 	rfi->hdc->hwnd->cinvalid = (HGDI_RGN) malloc(sizeof(GDI_RGN) * rfi->hdc->hwnd->count);
 	rfi->hdc->hwnd->ninvalid = 0;
+	*
+*/
 
 	pointer_cache_register_callbacks(instance->update);
 
@@ -504,7 +527,6 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	instance->update->DesktopResize = rf_desktop_resize;
 
 	remmina_rdp_clipboard_init(rfi);
-	freerdp_channels_post_connect(instance->context->channels, instance);
 	rfi->connected = True;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
@@ -1101,7 +1123,6 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	rfi->protocol_widget = gp;
 	rfi->instance = instance;
 	rfi->settings = instance->settings;
-	rfi->instance->context->channels = freerdp_channels_new();
 	rfi->connected = False;
 	rfi->is_reconnecting = False;
 
@@ -1159,8 +1180,6 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 	if (instance)
 	{
 		if ( rfi->connected ) {
-			if (instance->context->channels)
-				freerdp_channels_close(instance->context->channels, instance);
 			freerdp_disconnect(instance);
 			rfi->connected = False;
 		}
@@ -1183,12 +1202,6 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 		gdi_free(instance);
 		cache_free(instance->context->cache);
 		instance->context->cache = NULL;
-		freerdp_clrconv_free(rfi->clrconv);
-		rfi->clrconv = NULL;
-		if (instance->context->channels) {
-			freerdp_channels_free(instance->context->channels);
-			instance->context->channels = NULL;
-		}
 	}
 
 	/* Destroy event queue. Pending async events will be discarded. Should we flush it ? */
@@ -1264,15 +1277,21 @@ static gboolean remmina_rdp_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 		rdpGdi* gdi;
 		size_t szmem;
 
+		UINT32 bytesPerPixel;
+		UINT32 bitsPerPixel;
+
 		if (!rfi)
 			return FALSE;
+
+		gdi = ((rdpContext *)rfi)->gdi;
+
+		bytesPerPixel = GetBytesPerPixel(gdi->hdc->format);
+		bitsPerPixel = GetBitsPerPixel(gdi->hdc->format);
 
 		/* ToDo: we should lock freerdp subthread to update rfi->primary_buffer, rfi->gdi and w/h,
 		 * from here to memcpy, but... how ? */
 
-		gdi = ((rdpContext *)rfi)->gdi;
-
-		szmem = gdi->width * gdi->height * gdi->bytesPerPixel;
+		szmem = gdi->width * gdi->height * bytesPerPixel;
 
 		remmina_plugin_service->log_printf("[RDP] allocating %zu bytes for a full screenshot\n", szmem);
 		rpsd->buffer = malloc(szmem);
@@ -1283,8 +1302,8 @@ static gboolean remmina_rdp_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 		}
 		rpsd->width = gdi->width;
 		rpsd->height = gdi->height;
-		rpsd->bitsPerPixel = rfi->hdc->bitsPerPixel;
-		rpsd->bytesPerPixel = gdi->bytesPerPixel;
+		rpsd->bitsPerPixel = bitsPerPixel;
+		rpsd->bytesPerPixel = bytesPerPixel;
 
 		memcpy(rpsd->buffer, gdi->primary_buffer, szmem);
 

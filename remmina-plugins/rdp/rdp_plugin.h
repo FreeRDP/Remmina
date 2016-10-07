@@ -188,6 +188,7 @@ struct remmina_plugin_rdp_ui_object
 		} region;
 		struct
 		{
+			rdpContext* context;
 			rfPointer* pointer;
 			RemminaPluginRdpUiPointerType type;
 		} cursor;
@@ -273,7 +274,6 @@ struct rf_context
 	gint height;
 	gint scanline_pad;
 	gint* colormap;
-	HCLRCONV clrconv;
 	UINT8* primary_buffer;
 
 	guint object_id_seq;
