@@ -437,7 +437,7 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 static UINT32 rf_get_local_color_format(rfContext* rfi, BOOL aligned)
 {
 	UINT32 DstFormat;
-	BOOL invert = !(aligned);
+	BOOL invert = aligned;
 
 	if (!rfi)
 		return 0;
