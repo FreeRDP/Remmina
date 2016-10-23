@@ -36,6 +36,12 @@ sudo apt-get install remmina remmina-plugin-rdp libfreerdp-plugins-standard
 ```
 By default the RDP, SSH and SFTP plugins are installed. You can view a list of available plugins with `apt-cache search remmina-plugin`
 
+If you want to connect to more securely configured SSH servers on Ubuntu 16.04 and below, you have to upgrade libssh to 0.7.X. This can be archived by adding the following PPA containing libssh 0.7.X by David Kedves and upgrading your packages:
+```sh
+sudo add-apt-repository ppa:kedazo/libssh-0.7.x
+sudo apt-get update
+```
+
 ### Fedora
 
 [Hubbitus](https://github.com/Hubbitus) (Pavel Alexeev) provided us a copr, to install just execute as root:
