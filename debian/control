@@ -20,8 +20,8 @@ Build-Depends: debhelper (>= 9~),
  libappindicator3-dev,
  libsecret-1-dev,
  libwebkit2gtk-4.0-dev | libwebkit2gtk-3.0-dev,
- libspice-protocol-dev,
- libspice-client-gtk-3.0-dev | libspice-client-gtk-2.0-dev
+ libspice-protocol-dev [!armhf],
+ libspice-client-gtk-3.0-dev [!armhf] | libspice-client-gtk-2.0-dev [!armhf]
 Standards-Version: 3.9.6
 Homepage: http://remmina.sourceforge.net/
 Vcs-Git: git://anonscm.debian.org/collab-maint/remmina.git
@@ -135,7 +135,11 @@ Architecture: amd64 i386
 Depends: ${shlibs:Depends},
  ${misc:Depends},
  remmina (= ${binary:Version})
-Description: plugin for remmina FIXME: NO IDEA WHAT IS SPICE ;)
+Description: Spice plugin for remmina remote desktop client
+ Remmina is a remote desktop connection client able to display and control a
+ remote desktop session.
+ .
+ This package contains the Spice plugin for Remmina.
 
 Package: remmina-dbg
 Section: debug

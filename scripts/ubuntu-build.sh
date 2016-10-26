@@ -50,12 +50,18 @@ VER_REV="$(grep 'set('"${PKG_NAME^^}"'_VERSION_REVISION' CMakeLists.txt \
                | sed 's/set('"${PKG_NAME^^}"'_VERSION_[^"]*"//g;s/".*//g')"
 VER_SFX="$(grep 'set('"${PKG_NAME^^}"'_VERSION_SUFFIX' CMakeLists.txt \
                | sed 's/set('"${PKG_NAME^^}"'_VERSION_[^"]*"//g;s/".*//g')"
-VER_BRANCH="$(git branch | grep '^\*' | cut -c 3-)"
-test "$VER_BRANCH" && VER_BRANCH="+${VER_BRANCH}"
-VER_DATE="$(date +%Y%m%d%H%M)"
+# VER_BRANCH="$(git branch | grep '^\*' | cut -c 3-)"
+# test "$VER_BRANCH" && VER_BRANCH="+${VER_BRANCH}"
 
-PKG_VER="${VER_MAJ}.${VER_MIN}.${VER_REV}~${VER_SFX}${VER_BRANCH}+${VER_DATE}"
+PKG_VER="${VER_MAJ}.${VER_MIN}.${VER_REV}${VER_SFX}"
+if [ "$IS_DEV_RELEASE" = "y" ]; then
+    VER_DATE="$(date -u -d "$(git log -1 --date=iso  | grep '^Date:' | sed 's/^Date: *//g')" "+%Y%m%d%H%M")"
+    PKG_VER="${PKG_VER}~dev${VER_DATE}"
+fi
 PKG_DIR="${PKG_NAME}_${PKG_VER}"
+
+SOURCE_DATE="$(date -u -d "$(git log -1 --date=iso  | grep '^Date:' | sed 's/^Date: *//g')" "+%Y%m%d%H%M")"
+SOURCE_HASH=$(git log -1 | grep "^commit" | sed "s/^commit *\(.......\).*/\1/g")
 
 echo $PKG_VER
 
@@ -72,31 +78,34 @@ git --no-pager log --format="%ai %aN (%h) %n%n%x09*%w(68,0,10) %s%d%n" > "${BDIR
 # NOTE: artificially files date reconstruction is skipped
 
 
-mv ${BDIR}/${PKG_DIR}/debian/changelog ${BDIR}/changelog.orig
+mv ${BDIR}/${PKG_DIR}/debian/changelog.in ${BDIR}/changelog.in.orig
 cd ${BDIR}/${PKG_DIR}/
 tar zcvf "../${PKG_NAME}_${PKG_VER}.orig.tar.gz" .
+ORIG_SERIE=trusty
 for serie in yakkety wily xenial trusty; do
     if [ "$IS_DEV_RELEASE" = "y" ]; then
-        cat <<EOF >debian/changelog
-${PKG_NAME} (${PKG_VER}-1${serie}${SER_SFX}) ${serie}; urgency=medium
+        cat <<EOF >debian/changelog.in
+${PKG_NAME} (${PKG_VER}-0ubuntu0~git${SOURCE_HASH}~${serie}) ${serie}; urgency=medium
 
   * New upstream release.
 
  -- ${DEBFULLNAME} <${DEBEMAIL}>  ${PKG_DATE}
 
 EOF
+        cat ../changelog.in.orig >>debian/changelog.in
     else
-        rm -f debian/changelog
-        touch debian/changelog
+        rm -f debian/changelog.in
+        touch debian/changelog.in
+        sed "1 s/$ORIG_SERIE/$serie/g" < ../changelog.in.orig >debian/changelog.in
     fi
+    ./debian/rules debian/changelog REMMINA_SOURCE_DATE=$SOURCE_DATE REMMINA_SOURCE_HASH=$SOURCE_HASH
 
-    cat ../changelog.orig >>debian/changelog
     debuild -eUBUNTU_SERIE="$serie" -S -sa # add ' -us -uc' flags to avoid signing
     rm -rf *
     tar zxf "../${PKG_NAME}_${PKG_VER}.orig.tar.gz"
 done
 cd -
-mv ${BDIR}/changelog.orig ${BDIR}/${PKG_DIR}/debian/changelog
+mv ${BDIR}/changelog.in.orig ${BDIR}/${PKG_DIR}/debian/changelog.in
 
 echo "now cd in ${BDIR} directory and run:"
 echo "dput <your-ppa-address> *.changes"
