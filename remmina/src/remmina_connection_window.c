@@ -326,6 +326,28 @@ static void remmina_connection_holder_keyboard_grab(RemminaConnectionHolder* cnn
 	}
 }
 
+static void remmina_connection_holder_keyboard_ungrab(RemminaConnectionHolder* cnnhld)
+{
+	TRACE_CALL("remmina_connection_holder_keyboard_ungrab");
+	GdkDisplay *display;
+	GdkDeviceManager *manager;
+	GdkDevice *keyboard = NULL;
+
+	display = gtk_widget_get_display(GTK_WIDGET(cnnhld->cnnwin));
+	manager = gdk_display_get_device_manager(display);
+	keyboard = gdk_device_manager_get_client_pointer(manager);
+
+	if (keyboard != NULL)
+	{
+		if ( gdk_device_get_source(keyboard) != GDK_SOURCE_KEYBOARD )
+		{
+			keyboard = gdk_device_get_associated_device(keyboard);
+		}
+		gdk_device_ungrab(keyboard, GDK_CURRENT_TIME);
+	}
+
+}
+
 static void remmina_connection_window_close_all_connections(RemminaConnectionWindow* cnnwin)
 {
 	RemminaConnectionWindowPriv* priv = cnnwin->priv;
@@ -2004,7 +2026,7 @@ static gboolean remmina_connection_object_enter_protocol_widget(GtkWidget* widge
 	return FALSE;
 }
 
-static gboolean remmina_connection_window_focus_in(GtkWidget* widget, GdkEventFocus* event, RemminaConnectionHolder* cnnhld)
+static void remmina_connection_window_focus_in(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_window_focus_in");
 #if !FLOATING_TOOLBAR_WIDGET
@@ -2015,17 +2037,18 @@ static gboolean remmina_connection_window_focus_in(GtkWidget* widget, GdkEventFo
 		remmina_connection_holder_floating_toolbar_visible(cnnhld, TRUE);
 	}
 #endif
-	return FALSE;
+	remmina_connection_holder_keyboard_grab(cnnhld);
 }
 
-static gboolean remmina_connection_window_focus_out(GtkWidget* widget, GdkEventFocus* event, RemminaConnectionHolder* cnnhld)
+static void remmina_connection_window_focus_out(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_window_focus_out");
-DECLARE_CNNOBJ_WITH_RETURN(FALSE)
+	DECLARE_CNNOBJ
 #if !FLOATING_TOOLBAR_WIDGET
 		RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
 #endif
 
+	remmina_connection_holder_keyboard_ungrab(cnnhld);
 	cnnhld->hostkey_activated = FALSE;
 
 #if !FLOATING_TOOLBAR_WIDGET
@@ -2041,17 +2064,18 @@ DECLARE_CNNOBJ_WITH_RETURN(FALSE)
 	remmina_protocol_widget_call_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
 			REMMINA_PROTOCOL_FEATURE_TYPE_UNFOCUS, 0);
 
-	return FALSE;
 }
 
 static gboolean remmina_connection_window_on_enter(GtkWidget* widget, GdkEventCrossing* event, RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_window_on_enter");
+	/*
 	if (event->detail == GDK_NOTIFY_VIRTUAL || event->detail == GDK_NOTIFY_NONLINEAR
 			|| event->detail == GDK_NOTIFY_NONLINEAR_VIRTUAL)
 	{
 		remmina_connection_holder_keyboard_grab(cnnhld);
 	}
+	*/
 	return FALSE;
 }
 
@@ -2059,25 +2083,13 @@ static gboolean remmina_connection_window_on_enter(GtkWidget* widget, GdkEventCr
 static gboolean remmina_connection_window_on_leave(GtkWidget* widget, GdkEventCrossing* event, RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_window_on_leave");
-	GdkDisplay *display;
-	GdkDeviceManager *manager;
-	GdkDevice *device = NULL;
-
+	/*
 	if (event->detail == GDK_NOTIFY_VIRTUAL || event->detail == GDK_NOTIFY_NONLINEAR
 			|| event->detail == GDK_NOTIFY_NONLINEAR_VIRTUAL)
 	{
-		display = gtk_widget_get_display(widget);
-		manager = gdk_display_get_device_manager(display);
-		device = gdk_device_manager_get_client_pointer(manager);
-		if (device != NULL)
-		{
-			if ( gdk_device_get_source (device) != GDK_SOURCE_KEYBOARD )
-			{
-				device = gdk_device_get_associated_device (device);
-			}
-			gdk_device_ungrab(device, GDK_CURRENT_TIME);
-		}
+		remmina_connection_holder_keyboard_ungrab(cnnhld);
 	}
+	*/
 	return FALSE;
 }
 
@@ -2352,6 +2364,14 @@ static void remmina_connection_window_init(RemminaConnectionWindow* cnnwin)
 static gboolean remmina_connection_window_state_event(GtkWidget* widget, GdkEventWindowState* event, gpointer user_data)
 {
 	TRACE_CALL("remmina_connection_window_state_event");
+
+	if (event->changed_mask & GDK_WINDOW_STATE_FOCUSED) {
+		if (event->new_window_state & GDK_WINDOW_STATE_FOCUSED)
+			remmina_connection_window_focus_in(widget, user_data);
+		else
+			remmina_connection_window_focus_out(widget, user_data);
+	}
+
 #ifdef ENABLE_MINIMIZE_TO_TRAY
 	GdkScreen* screen;
 
@@ -2380,10 +2400,10 @@ remmina_connection_window_new_from_holder(RemminaConnectionHolder* cnnhld)
 
 	g_signal_connect(G_OBJECT(cnnwin), "delete-event", G_CALLBACK(remmina_connection_window_delete_event), cnnhld);
 	g_signal_connect(G_OBJECT(cnnwin), "destroy", G_CALLBACK(remmina_connection_window_destroy), cnnhld);
-	g_signal_connect(G_OBJECT(cnnwin), "window-state-event", G_CALLBACK(remmina_connection_window_state_event), cnnhld);
 
-	g_signal_connect(G_OBJECT(cnnwin), "focus-in-event", G_CALLBACK(remmina_connection_window_focus_in), cnnhld);
-	g_signal_connect(G_OBJECT(cnnwin), "focus-out-event", G_CALLBACK(remmina_connection_window_focus_out), cnnhld);
+	/* focus-in-event and focus-out-event don't work when keyboard is grabbed
+	 * via gdk_device_grab. So we listen for window-state-event to detect focus in and focus out */
+	g_signal_connect(G_OBJECT(cnnwin), "window-state-event", G_CALLBACK(remmina_connection_window_state_event), cnnhld);
 
 	g_signal_connect(G_OBJECT(cnnwin), "enter-notify-event", G_CALLBACK(remmina_connection_window_on_enter), cnnhld);
 	g_signal_connect(G_OBJECT(cnnwin), "leave-notify-event", G_CALLBACK(remmina_connection_window_on_leave), cnnhld);
@@ -3451,6 +3471,8 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 		gtk_widget_show(cnnhld->cnnwin->priv->floating_toolbar_window);
 	}
 #endif
+
+	remmina_connection_holder_keyboard_grab(cnnhld);
 }
 
 static void remmina_connection_object_on_disconnect(RemminaProtocolWidget* gp, RemminaConnectionObject* cnnobj)
