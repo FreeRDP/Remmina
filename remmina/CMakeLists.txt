@@ -143,6 +143,10 @@ if(WITH_SURVEY)
     endif(WEBKIT2_FOUND)
 endif(WITH_SURVEY)
 
+if(WITH_MANPAGES)
+    install (FILES src/remmina.1 DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1)
+endif(WITH_MANPAGES)
+
 find_package(X11)
 include_directories(${X11_INCLUDE_DIR})
 target_link_libraries(remmina ${X11_LIBRARIES})
