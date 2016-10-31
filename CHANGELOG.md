@@ -1,19 +1,93 @@
 # Change Log
 
-## [v1.2.0-rcgit.15](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.15) (2016-08-16)
+## [v1.2.0-rcgit.16](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.16) (2016-11-01)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.15...v1.2.0-rcgit.16)
 
+**Implemented enhancements:**
+
+- Add RDP scaling factor as implemented by FreeRDP  [\#969](https://github.com/FreeRDP/Remmina/issues/969)
+- Please add man pages for remmina. [\#952](https://github.com/FreeRDP/Remmina/issues/952)
+- Please support XDG base directory spec [\#818](https://github.com/FreeRDP/Remmina/issues/818)
+- Auto-Highlight Quick Search Text Upon Each Remote Session Launch [\#544](https://github.com/FreeRDP/Remmina/issues/544)
+- spice support [\#117](https://github.com/FreeRDP/Remmina/issues/117)
+- CMAKE: fix GNUInstallDirs usage [\#1004](https://github.com/FreeRDP/Remmina/pull/1004) ([hasufell](https://github.com/hasufell))
+- XDG base directory spec [\#1003](https://github.com/FreeRDP/Remmina/pull/1003) ([antenore](https://github.com/antenore))
+- When focus-in inside the quick search, select the whole text as per \#544 [\#1001](https://github.com/FreeRDP/Remmina/pull/1001) ([antenore](https://github.com/antenore))
+- spice: send a notification at the end of file transfers [\#994](https://github.com/FreeRDP/Remmina/pull/994) ([larchunix](https://github.com/larchunix))
+- spice: show progress of drag & drop file transfers [\#993](https://github.com/FreeRDP/Remmina/pull/993) ([larchunix](https://github.com/larchunix))
+
+**Fixed bugs:**
+
+- SSH - Secure Shell Issue [\#936](https://github.com/FreeRDP/Remmina/issues/936)
+- Auto-highlighted "Quick Connect" connection name within new connection dialog copies the words "Quick Connect" into PRIMARY selection [\#263](https://github.com/FreeRDP/Remmina/issues/263)
+- can't connect to 2008r2 when set "negotiation" security mode [\#202](https://github.com/FreeRDP/Remmina/issues/202)
+- crash of remmina when terminal bell rings [\#163](https://github.com/FreeRDP/Remmina/issues/163)
+- Support for left-handed mouse [\#136](https://github.com/FreeRDP/Remmina/issues/136)
+
+**Closed issues:**
+
+- Segmentation error on Gnome Desktop with Wayland  [\#1034](https://github.com/FreeRDP/Remmina/issues/1034)
+- untranslated lines missed  [\#1029](https://github.com/FreeRDP/Remmina/issues/1029)
+- Security Issue? [\#1027](https://github.com/FreeRDP/Remmina/issues/1027)
+- remmina fails to compile against freerdp [\#1015](https://github.com/FreeRDP/Remmina/issues/1015)
+- VNC connection doesn't work if color is set to 256 colors \(8 bpp\) [\#989](https://github.com/FreeRDP/Remmina/issues/989)
+- remmina.org down [\#988](https://github.com/FreeRDP/Remmina/issues/988)
+- Random remmina exits \(no crash, just plain close\) [\#978](https://github.com/FreeRDP/Remmina/issues/978)
+- spice plugin missing on Ubuntu PPA [\#958](https://github.com/FreeRDP/Remmina/issues/958)
+- Arch Linux: Unable to load RDP plugin [\#931](https://github.com/FreeRDP/Remmina/issues/931)
+- Not work Copy&paste between Keepass2 and Remmina [\#900](https://github.com/FreeRDP/Remmina/issues/900)
+- Can't connect to certain hosts after update [\#855](https://github.com/FreeRDP/Remmina/issues/855)
+- Huge icons in toolbar in some desktop environments [\#826](https://github.com/FreeRDP/Remmina/issues/826)
+- Regression in RDP plugin - no ipv6 support [\#528](https://github.com/FreeRDP/Remmina/issues/528)
+- RDP on Custom Port [\#237](https://github.com/FreeRDP/Remmina/issues/237)
+- Provide a different icon for the tray icon [\#225](https://github.com/FreeRDP/Remmina/issues/225)
+- Segfault after login by rdp [\#200](https://github.com/FreeRDP/Remmina/issues/200)
+- Remmina in Fullscreen does hide Panels on other unused monitors in gnome [\#188](https://github.com/FreeRDP/Remmina/issues/188)
+- Regression: Connections scrolling dissapeared [\#185](https://github.com/FreeRDP/Remmina/issues/185)
+- Remmina Hangs/Stucks at second login to RD Server [\#179](https://github.com/FreeRDP/Remmina/issues/179)
+- Cant see the Windows login screen while RDPing to a machine [\#174](https://github.com/FreeRDP/Remmina/issues/174)
+- LIBVNCSERVER\_WITH\_CLIENT\_TLS is never defined [\#173](https://github.com/FreeRDP/Remmina/issues/173)
+- Cannot connect to VNC servers using IPv6 [\#170](https://github.com/FreeRDP/Remmina/issues/170)
+- Connection window disappears when minimized  [\#155](https://github.com/FreeRDP/Remmina/issues/155)
+- build fails with -DWITH\_GETTEXT=OFF [\#142](https://github.com/FreeRDP/Remmina/issues/142)
+- remmina rdp session freeze or hide [\#137](https://github.com/FreeRDP/Remmina/issues/137)
+- Cut & Paste [\#106](https://github.com/FreeRDP/Remmina/issues/106)
+- Vertical resolution of RDP host not being determined correctly [\#81](https://github.com/FreeRDP/Remmina/issues/81)
+- Regression: In remmina 1.0 tray menu right click editing broken [\#61](https://github.com/FreeRDP/Remmina/issues/61)
+- do ssh server host key check with the NX plugin [\#18](https://github.com/FreeRDP/Remmina/issues/18)
+
+**Merged pull requests:**
+
+- Fixes workspace detection outside X11 backend. [\#1036](https://github.com/FreeRDP/Remmina/pull/1036) ([giox069](https://github.com/giox069))
+- Man Pages as per \#952 request [\#1033](https://github.com/FreeRDP/Remmina/pull/1033) ([antenore](https://github.com/antenore))
+- Updated Hungarian translation [\#1032](https://github.com/FreeRDP/Remmina/pull/1032) ([meskobalazs](https://github.com/meskobalazs))
+- updated german translation [\#1031](https://github.com/FreeRDP/Remmina/pull/1031) ([morph027](https://github.com/morph027))
+- New gettext strings, closes \#1029 [\#1030](https://github.com/FreeRDP/Remmina/pull/1030) ([antenore](https://github.com/antenore))
+- Improves focus in/out detection when keyboard is captured [\#1025](https://github.com/FreeRDP/Remmina/pull/1025) ([giox069](https://github.com/giox069))
+- Show information on upgrade libssh to 0.7.X [\#1017](https://github.com/FreeRDP/Remmina/pull/1017) ([e-alfred](https://github.com/e-alfred))
+- Update French translation [\#1014](https://github.com/FreeRDP/Remmina/pull/1014) ([DevDef](https://github.com/DevDef))
+- Implementing RDP remote scaling and orientation [\#979](https://github.com/FreeRDP/Remmina/pull/979) ([giox069](https://github.com/giox069))
+- Grab focus without selecting text in the remmina file editor [\#976](https://github.com/FreeRDP/Remmina/pull/976) ([antenore](https://github.com/antenore))
+- make gettext \*really\* behave correctly [\#972](https://github.com/FreeRDP/Remmina/pull/972) ([diogocp](https://github.com/diogocp))
+- Update name [\#971](https://github.com/FreeRDP/Remmina/pull/971) ([qwertos](https://github.com/qwertos))
+
+## [v1.2.0-rcgit.15](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.15) (2016-08-17)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.14...v1.2.0-rcgit.15)
 
 **Implemented enhancements:**
 
 - No dark tray icon [\#905](https://github.com/FreeRDP/Remmina/issues/905)
 
+**Fixed bugs:**
+
+- Systray does not show the remmina applet icon in Plasma 5.7 - therefore no connect menu [\#944](https://github.com/FreeRDP/Remmina/issues/944)
+
 **Closed issues:**
 
+- Unicode copy leads to crash [\#967](https://github.com/FreeRDP/Remmina/issues/967)
 - Remmina can no longer detect bad RDP credentials [\#960](https://github.com/FreeRDP/Remmina/issues/960)
 - Import Plugin Dialog [\#954](https://github.com/FreeRDP/Remmina/issues/954)
 - SSH does not try IPv4 after IPv6 fails \(when DNS has addresses for both\) [\#953](https://github.com/FreeRDP/Remmina/issues/953)
-- Systray does not show the remmina applet icon in Plasma 5.7 - therefore no connect menu [\#944](https://github.com/FreeRDP/Remmina/issues/944)
 - RDP reconnect extra warning at the end [\#929](https://github.com/FreeRDP/Remmina/issues/929)
 - Invisible Add-Button due to color [\#924](https://github.com/FreeRDP/Remmina/issues/924)
 - View bug [\#920](https://github.com/FreeRDP/Remmina/issues/920)
@@ -464,7 +538,6 @@
 - The search shouldn't show every group in the list [\#471](https://github.com/FreeRDP/Remmina/issues/471)
 - Enable the use of the menu key [\#470](https://github.com/FreeRDP/Remmina/issues/470)
 - Connections list is not refreshed upon update or copy \(duplicate an existing connection\) [\#460](https://github.com/FreeRDP/Remmina/issues/460)
-- Auto-highlighted "Quick Connect" connection name within new connection dialog copies the words "Quick Connect" into PRIMARY selection [\#263](https://github.com/FreeRDP/Remmina/issues/263)
 - Double-clicking a column header to sort list of saved connections actually attempts connection [\#250](https://github.com/FreeRDP/Remmina/issues/250)
 - Fix small memory leaks and a NULL ptr dereference. [\#500](https://github.com/FreeRDP/Remmina/pull/500) ([KyleSanderson](https://github.com/KyleSanderson))
 - Show the popup menu by pressing the menu key [\#495](https://github.com/FreeRDP/Remmina/pull/495) ([muflone](https://github.com/muflone))
