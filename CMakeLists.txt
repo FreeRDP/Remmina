@@ -124,6 +124,10 @@ if(NOT GIT_REVISION)
 endif()
 message(STATUS "Git Revision ${GIT_REVISION}")
 
+if(NOT UNIQUE_APPNAME)
+    set(UNIQUE_APPNAME "org.Remmina")
+endif()
+
 if(NOT REMMINA_DATADIR)
     set(REMMINA_DATADIR "${CMAKE_INSTALL_FULL_DATADIR}")
 endif()

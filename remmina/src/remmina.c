@@ -222,6 +222,7 @@ int main(int argc, char* argv[])
 {
 	TRACE_CALL("main");
 	GtkApplication *app;
+	const gchar *app_id;
 	int status;
 
 	gdk_set_allowed_backends("x11,broadway,quartz,wayland,mir");
@@ -249,7 +250,8 @@ int main(int argc, char* argv[])
 	gcry_control (GCRYCTL_INITIALIZATION_FINISHED, 0);
 #endif /* !HAVE_LIBGCRYPT */
 
-	app = gtk_application_new("org.Remmina", G_APPLICATION_HANDLES_COMMAND_LINE);
+	app_id = g_application_id_is_valid(UNIQUE_APPNAME) ? UNIQUE_APPNAME : NULL;
+	app = gtk_application_new(app_id, G_APPLICATION_HANDLES_COMMAND_LINE);
 	g_signal_connect(app, "startup", G_CALLBACK(remmina_on_startup), NULL);
 	g_signal_connect(app, "command-line", G_CALLBACK(remmina_on_command_line), NULL);
 	g_signal_connect(app, "handle-local-options", G_CALLBACK(remmina_on_local_cmdline), NULL);
