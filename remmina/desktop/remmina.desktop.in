@@ -71,7 +71,7 @@ Icon=remmina
 Terminal=false
 Type=Application
 Categories=GTK;GNOME;X-GNOME-NetworkSettings;Network;
-Actions=Profile;Tray;
+Actions=Profile;Tray;Quit;
 
 [Desktop Action Profile]
 Name=Create a New Connection Profile
@@ -118,3 +118,8 @@ Name[tr]=Remmina'yı Küçültülmüş Başlat
 Name[uk]=Запустити Rammina у системному лотку
 Name[zh_CN]=启动后自动最小化
 Exec=@CMAKE_INSTALL_FULL_BINDIR@/remmina --icon
+
+[Desktop Action Quit]
+Name=Quit
+Exec=@CMAKE_INSTALL_FULL_BINDIR@/remmina --quit
+OnlyShowIn=Unity;
