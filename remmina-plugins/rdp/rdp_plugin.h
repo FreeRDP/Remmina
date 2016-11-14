@@ -222,8 +222,10 @@ struct remmina_plugin_rdp_ui_object
 			gint y;
 		} pos;
 	};
-	/* We can also return values here, only integer, and -1 is reserved for rf_queue_ui own error */
+	/* We can also return values here, usually integers*/
 	int retval;
+	/* Some functions also may return a pointer. */
+	void *retptr;
 };
 
 struct rf_context

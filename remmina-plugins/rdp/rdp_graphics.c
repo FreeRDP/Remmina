@@ -199,11 +199,10 @@ BOOL rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 	{
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_CURSOR;
-		ui->sync = TRUE;	// Also wait for completion
 		ui->cursor.context = context;
 		ui->cursor.pointer = (rfPointer*) pointer;
 		ui->cursor.type = REMMINA_RDP_POINTER_NEW;
-		return remmina_rdp_event_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
+		return remmina_rdp_event_queue_ui_sync_retint(rfi->protocol_widget, ui) ? TRUE : FALSE;
 	}
 	return FALSE;
 }
@@ -222,12 +221,10 @@ void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 	{
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_CURSOR;
-		ui->sync = TRUE;	// Also wait for completion
 		ui->cursor.context = context;
 		ui->cursor.pointer = (rfPointer*) pointer;
 		ui->cursor.type = REMMINA_RDP_POINTER_FREE;
-
-		remmina_rdp_event_queue_ui(rfi->protocol_widget, ui);
+		remmina_rdp_event_queue_ui_sync_retint(rfi->protocol_widget, ui);
 	}
 }
 
@@ -239,11 +236,10 @@ BOOL rf_Pointer_Set(rdpContext* context, const rdpPointer* pointer)
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CURSOR;
-	ui->sync = TRUE;	// Also wait for completion
 	ui->cursor.pointer = (rfPointer*) pointer;
 	ui->cursor.type = REMMINA_RDP_POINTER_SET;
 
-	return remmina_rdp_event_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
+	return remmina_rdp_event_queue_ui_sync_retint(rfi->protocol_widget, ui) ? TRUE : FALSE;
 
 }
 
@@ -255,10 +251,9 @@ BOOL rf_Pointer_SetNull(rdpContext* context)
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CURSOR;
-	ui->sync = TRUE;	// Also wait for completion
 	ui->cursor.type = REMMINA_RDP_POINTER_NULL;
 
-	return remmina_rdp_event_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
+	return remmina_rdp_event_queue_ui_sync_retint(rfi->protocol_widget, ui) ? TRUE : FALSE;
 }
 
 BOOL rf_Pointer_SetDefault(rdpContext* context)
@@ -269,10 +264,9 @@ BOOL rf_Pointer_SetDefault(rdpContext* context)
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CURSOR;
-	ui->sync = TRUE;	// Also wait for completion
 	ui->cursor.type = REMMINA_RDP_POINTER_DEFAULT;
 
-	return remmina_rdp_event_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
+	return remmina_rdp_event_queue_ui_sync_retint(rfi->protocol_widget, ui) ? TRUE : FALSE;
 }
 
 BOOL rf_Pointer_SetPosition(rdpContext* context, UINT32 x, UINT32 y)
@@ -282,12 +276,11 @@ BOOL rf_Pointer_SetPosition(rdpContext* context, UINT32 x, UINT32 y)
 	rfContext* rfi = (rfContext*) context;
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CURSOR;
-	ui->sync = TRUE;	// Also wait for completion
 	ui->cursor.type = REMMINA_RDP_POINTER_SETPOS;
 	ui->pos.x = x;
 	ui->pos.y = y;
 
-	return remmina_rdp_event_queue_ui(rfi->protocol_widget, ui) ? TRUE : FALSE;
+	return remmina_rdp_event_queue_ui_sync_retint(rfi->protocol_widget, ui) ? TRUE : FALSE;
 }
 
 /* Glyph Class */

@@ -246,7 +246,7 @@ BOOL rf_auto_reconnect(rfContext* rfi)
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_RECONNECT_PROGRESS;
-	remmina_rdp_event_queue_ui(rfi->protocol_widget, ui);
+	remmina_rdp_event_queue_ui_async(rfi->protocol_widget, ui);
 
 	/* Sleep half a second to allow:
 	 *  - processing of the ui event we just pushed on the queue
@@ -272,7 +272,7 @@ BOOL rf_auto_reconnect(rfContext* rfi)
 
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_RECONNECT_PROGRESS;
-		remmina_rdp_event_queue_ui(rfi->protocol_widget, ui);
+		remmina_rdp_event_queue_ui_async(rfi->protocol_widget, ui);
 
 		treconn = time(NULL);
 
@@ -338,7 +338,7 @@ BOOL rf_end_paint(rdpContext* context)
 	ui->region.width = w;
 	ui->region.height = h;
 
-	remmina_rdp_event_queue_ui(rfi->protocol_widget, ui);
+	remmina_rdp_event_queue_ui_async(rfi->protocol_widget, ui);
 
 	return TRUE;
 }
@@ -359,10 +359,9 @@ static BOOL rf_desktop_resize(rdpContext* context)
 	/* Call to remmina_rdp_event_update_scale(gp) on the main UI thread */
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
-	ui->sync = TRUE;	// Wait for completion too
 	ui->type = REMMINA_RDP_UI_EVENT;
 	ui->event.type = REMMINA_RDP_UI_EVENT_UPDATE_SCALE;
-	remmina_rdp_event_queue_ui(gp, ui);
+	remmina_rdp_event_queue_ui_sync_retint(gp, ui);
 
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "desktop-resize");
 
@@ -531,7 +530,7 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CONNECTED;
-	remmina_rdp_event_queue_ui(gp, ui);
+	remmina_rdp_event_queue_ui_async(gp, ui);
 
 	return True;
 }
@@ -1172,10 +1171,9 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 	/* Cleanup clipboard: we cannot leave clipboard requesting data to this
 	 * connection */
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
-	ui->sync = TRUE;	// Wait for completion too
 	ui->type = REMMINA_RDP_UI_CLIPBOARD;
 	ui->clipboard.type = REMMINA_RDP_UI_CLIPBOARD_DETACH_OWNER;
-	remmina_rdp_event_queue_ui(gp, ui);
+	remmina_rdp_event_queue_ui_sync_retint(gp, ui);
 
 	if (instance)
 	{
