@@ -72,6 +72,7 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent* event;
 
+
 	if (rfi->event_queue == NULL)
 		return True;
 
@@ -95,6 +96,24 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 					input->MouseEvent(input, event->mouse_event.flags,
 							event->mouse_event.x, event->mouse_event.y);
 				break;
+
+			case REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_LIST:
+				rfi->clipboard.context->ClientFormatList(rfi->clipboard.context, event->clipboard_formatlist.pFormatList);
+				free(event->clipboard_formatlist.pFormatList);
+				break;
+
+			case REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_DATA_RESPONSE:
+				rfi->clipboard.context->ClientFormatDataResponse(rfi->clipboard.context, event->clipboard_formatdataresponse.pFormatDataResponse);
+				if (event->clipboard_formatdataresponse.pFormatDataResponse->requestedFormatData)
+					free(event->clipboard_formatdataresponse.pFormatDataResponse->requestedFormatData);
+				free(event->clipboard_formatdataresponse.pFormatDataResponse);
+				break;
+
+			case REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_DATA_REQUEST:
+				rfi->clipboard.context->ClientFormatDataRequest(rfi->clipboard.context, event->clipboard_formatdatarequest.pFormatDataRequest);
+				free(event->clipboard_formatdatarequest.pFormatDataRequest);
+				break;
+
 		}
 
 		g_free(event);
@@ -427,8 +446,6 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 		(pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
 
 	freerdp_client_load_addins(instance->context->channels, instance->settings);
-
-	instance->context->cache = cache_new(instance->settings);
 
 	return True;
 }
