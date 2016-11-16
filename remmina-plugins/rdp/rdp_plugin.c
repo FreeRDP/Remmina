@@ -426,8 +426,8 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 	settings->OrderSupport[NEG_GLYPH_INDEX_INDEX] = True;
 	settings->OrderSupport[NEG_FAST_INDEX_INDEX] = True;
 	settings->OrderSupport[NEG_FAST_GLYPH_INDEX] = True;
-	settings->OrderSupport[NEG_POLYGON_SC_INDEX] = True;
-	settings->OrderSupport[NEG_POLYGON_CB_INDEX] = True;
+	settings->OrderSupport[NEG_POLYGON_SC_INDEX] = False;
+	settings->OrderSupport[NEG_POLYGON_CB_INDEX] = False;
 	settings->OrderSupport[NEG_ELLIPSE_SC_INDEX] = False;
 	settings->OrderSupport[NEG_ELLIPSE_CB_INDEX] = False;
 
