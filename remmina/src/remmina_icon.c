@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -473,7 +474,7 @@ void remmina_icon_init(void)
 #ifdef HAVE_LIBAPPINDICATOR
 		strcat(msg, "not supported by desktop. libappindicator will try to fallback to GtkStatusIcon/xembed");
 #else
-		stracat(msg,"not supported by desktop. Remmina will try to fallback to GtkStatusIcon/xembed");
+		strcat(msg,"not supported by desktop. Remmina will try to fallback to GtkStatusIcon/xembed");
 #endif
 	}
 	strcat(msg, "\n");
