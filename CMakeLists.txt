@@ -158,20 +158,9 @@ find_required_package(PTHREAD)
 find_suggested_package(GCRYPT)
 find_suggested_package(AVAHI)
 
-# Survey URI
-set(REMMINA_SURVEY_URI "http://www.remmina.org/survey/survey.tpl")
-
 if(WITH_TRACE_CALLS)
         message(STATUS "Enabling trace calls.")
         add_definitions(-DWITH_TRACE_CALLS)
-endif()
-
-option(WITH_SURVEY "Build with SURVEY" ON)
-if(WITH_SURVEY)
-    message(STATUS "Enabling Survey.")
-    add_definitions(-DWITH_SURVEY)
-else()
-    message(STATUS "Survey disabled")
 endif()
 
 option(WITH_MANPAGES "Build with MANPAGES" ON)

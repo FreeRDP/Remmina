@@ -54,9 +54,6 @@
 #include "remmina_exec.h"
 #include "remmina_external_tools.h"
 #include "remmina/remmina_trace_calls.h"
-#ifdef WITH_SURVEY
-#include    "remmina_survey.h"
-#endif /* WITH_SURVEY */
 
 static RemminaMain *remminamain;
 
@@ -909,24 +906,6 @@ void remmina_main_on_action_help_debug(GtkAction *action, gpointer user_data)
 	remmina_log_start();
 }
 
-void remmina_main_on_action_help_survey(GtkAction *action, gpointer user_data)
-{
-	TRACE_CALL("remmina_main_on_action_help_survey");
-#ifdef WITH_SURVEY
-	remmina_survey_start(remminamain->window);
-#else
-	GtkWidget* dialog;
-	dialog = gtk_message_dialog_new(NULL,
-			GTK_DIALOG_MODAL,
-			GTK_MESSAGE_WARNING,
-			GTK_BUTTONS_OK,
-			_("Warning: The survey hasn't been enabled at compile time."));
-	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
-	gtk_widget_show(dialog);
-
-#endif /* WITH_SURVEY */
-}
-
 void remmina_main_on_action_application_about(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_application_about");
@@ -1191,9 +1170,6 @@ GtkWidget* remmina_main_new(void)
 	remminamain->action_help_homepage = GTK_ACTION(GET_OBJECT("action_help_homepage"));
 	remminamain->action_help_wiki = GTK_ACTION(GET_OBJECT("action_help_wiki"));
 	remminamain->action_help_debug = GTK_ACTION(GET_OBJECT("action_help_debug"));
-#ifdef WITH_SURVEY
-	remminamain->action_help_survey = GTK_ACTION(GET_OBJECT("action_help_survey"));
-#endif /* WITH_SURVEY */
 	G_GNUC_END_IGNORE_DEPRECATIONS
 	/* Connect signals */
 	gtk_builder_connect_signals(remminamain->builder, NULL);

@@ -56,10 +56,8 @@
 #include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
 
-#ifndef WITH_SURVEY
 gchar *remmina_pref_file;
 RemminaPref remmina_pref;
-#endif /* WITH_SURVEY */
 
 G_DEFINE_TYPE( RemminaConnectionWindow, remmina_connection_window, GTK_TYPE_WINDOW)
 

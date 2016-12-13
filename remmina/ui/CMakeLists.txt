@@ -32,7 +32,6 @@
 
 
 install(FILES remmina_about.glade DESTINATION "${REMMINA_UIDIR}")
-install(FILES remmina_survey.glade DESTINATION "${REMMINA_UIDIR}")
 install(FILES remmina_main.glade DESTINATION "${REMMINA_UIDIR}")
 install(FILES remmina_spinner.glade DESTINATION "${REMMINA_UIDIR}")
 install(FILES remmina_preferences.glade DESTINATION "${REMMINA_UIDIR}")

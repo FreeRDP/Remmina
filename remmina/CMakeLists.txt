@@ -109,39 +109,9 @@ list(APPEND REMMINA_SRCS
     "src/remmina_connection_window.h"
     )
 
-if(WITH_SURVEY)
-# either of webkitpackages would do
-    pkg_search_module(WEBKIT2
-            webkit2gtk-4.0
-            webkit2gtk-3.0
-    )
-    if(WEBKIT2_FOUND)
-        list(APPEND REMMINA_SRCS
-            "src/remmina_survey.c"
-            "src/remmina_survey.h"
-            )
-    else(WEBKIT2_FOUND)
-        message(FATAL_ERROR "Either webkit2gtk-4.0 or webkit2gtk-3.0 is required")
-    endif(WEBKIT2_FOUND)
-endif(WITH_SURVEY)
-
 add_executable(remmina ${REMMINA_SRCS})
 include_directories(${GTK_INCLUDE_DIRS})
 target_link_libraries(remmina ${GTK_LIBRARIES})
-
-if(WITH_SURVEY)
-    if(WEBKIT2_FOUND)
-        message(STATUS "Found Webkit2gtk ${WEBKIT2_VERSION}")
-        include_directories(
-            ${WEBKIT2_INCLUDE_DIRS}
-            )
-        link_directories(
-            ${WEBKIT2_LIBRARY_DIRS}
-            )
-        add_definitions(${WEBKIT2_CFLAGS_OTHER})
-        target_link_libraries(remmina ${WEBKIT2_LIBRARIES})
-    endif(WEBKIT2_FOUND)
-endif(WITH_SURVEY)
 
 if(WITH_MANPAGES)
     install (FILES src/remmina.1 DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1)
