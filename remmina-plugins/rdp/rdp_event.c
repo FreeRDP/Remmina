@@ -42,6 +42,7 @@
 #include <cairo/cairo-xlib.h>
 #include <freerdp/locale/keyboard.h>
 #include <X11/XKBlib.h>
+#include <execinfo.h>
 
 static void remmina_rdp_event_on_focus_in(GtkWidget* widget, GdkEventKey* event, RemminaProtocolWidget* gp)
 {
@@ -79,13 +80,13 @@ static void remmina_rdp_event_on_focus_in(GtkWidget* widget, GdkEventKey* event,
 	input->KeyboardEvent(input, KBD_FLAGS_RELEASE, 0x0F);
 }
 
-static void remmina_rdp_event_event_push(RemminaProtocolWidget* gp, const RemminaPluginRdpEvent* e)
+void remmina_rdp_event_event_push(RemminaProtocolWidget* gp, const RemminaPluginRdpEvent* e)
 {
 	TRACE_CALL("remmina_rdp_event_event_push");
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent* event;
 
-	/* Here we push mouse/keyboard events in the event_queue */
+	/* Called by the main GTK thread to send an event to the libfreerdp thread */
 
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return;
@@ -588,24 +589,22 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 
 gboolean remmina_rdp_event_on_clipboard(GtkClipboard *gtkClipboard, GdkEvent *event, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_rdp_event_on_clipboard");
-	RemminaPluginRdpUiObject* ui;
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	rfClipboard* clipboard;
+	/* Signal handler for GTK clipboard owner-change */
+	TRACE_CALL("remmina_rdp_event_on_clipboard")
+	RemminaPluginRdpEvent rdp_event = { 0 };
+	CLIPRDR_FORMAT_LIST* pFormatList;
 
-	if (!rfi || !rfi->connected || rfi->is_reconnecting)
-		return FALSE;
+	/* Usually "owner-change" is fired when a user pres "COPY" on the client
+	 * OR when this plugin calls gtk_clipboard_set_with_owner()
+	 * after receivina a RDP server format list in remmina_rdp_cliprdr_server_format_list()
+	 * In the latter case, we must ignore owner change */
 
-	clipboard = &(rfi->clipboard);
-
-	if ( clipboard->sync ) {
-		ui = g_new0(RemminaPluginRdpUiObject, 1);
-		ui->type = REMMINA_RDP_UI_CLIPBOARD;
-		ui->clipboard.clipboard = clipboard;
-		ui->clipboard.type = REMMINA_RDP_UI_CLIPBOARD_FORMATLIST;
-		remmina_rdp_event_queue_ui(gp, ui);
+	if (gtk_clipboard_get_owner(gtkClipboard) != (GObject*)gp) {
+		pFormatList = remmina_rdp_cliprdr_get_client_format_list(gp);
+		rdp_event.type = REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_LIST;
+		rdp_event.clipboard_formatlist.pFormatList = pFormatList;
+		remmina_rdp_event_event_push(gp, &rdp_event);
 	}
-
 	return TRUE;
 }
 
@@ -830,16 +829,11 @@ static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPlugin
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
-
 	gtk_widget_realize(rfi->drawing_area);
 
 	remmina_rdp_event_create_cairo_surface(rfi);
 	gtk_widget_queue_draw_area(rfi->drawing_area, 0, 0, rfi->width, rfi->height);
 
-	if (rfi->clipboard.clipboard_handler)
-	{
-		remmina_rdp_event_on_clipboard(NULL, NULL, gp);
-	}
 	remmina_rdp_event_update_scale(gp);
 }
 
@@ -859,7 +853,17 @@ static BOOL remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPl
 	cairo_surface_t* surface;
 	UINT8* data = malloc(pointer->width * pointer->height * 4);
 
-	freerdp_alpha_cursor_convert(data, pointer->xorMaskData, pointer->andMaskData, pointer->width, pointer->height, pointer->xorBpp, rfi->clrconv);
+	if (freerdp_image_copy_from_pointer_data(
+			(BYTE*) data, PIXEL_FORMAT_BGRA32,
+			pointer->width * 4, 0, 0, pointer->width, pointer->height,
+			pointer->xorMaskData, pointer->lengthXorMask,
+			pointer->andMaskData, pointer->lengthAndMask,
+			pointer->xorBpp, &(ui->cursor.context->gdi->palette)) < 0)
+	{
+		free(data);
+		return FALSE;
+	}
+
 	surface = cairo_image_surface_create_for_data(data, CAIRO_FORMAT_ARGB32, pointer->width, pointer->height, cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, pointer->width));
 	pixbuf = gdk_pixbuf_get_from_surface(surface, 0, 0, pointer->width, pointer->height);
 	cairo_surface_destroy(surface);
@@ -1014,9 +1018,8 @@ static gboolean remmina_rdp_event_process_ui_queue(RemminaProtocolWidget* gp)
 		{
 			remmina_rdp_event_process_ui_event(gp, ui);
 		}
-		// Should we signal the subthread to unlock ?
+		// Should we signal the caller thread to unlock ?
 		if (ui->sync) {
-
 			ui->complete = TRUE;
 			pthread_cond_signal(&ui->sync_wait_cond);
 			pthread_mutex_unlock(&ui->sync_wait_mutex);
@@ -1026,39 +1029,34 @@ static gboolean remmina_rdp_event_process_ui_queue(RemminaProtocolWidget* gp)
 		}
 
 		pthread_mutex_unlock(&rfi->ui_queue_mutex);
-
 		return TRUE;
 	}
 	else
 	{
-		pthread_mutex_unlock(&rfi->ui_queue_mutex);
 		rfi->ui_handler = 0;
+		pthread_mutex_unlock(&rfi->ui_queue_mutex);
 		return FALSE;
 	}
 }
 
-int remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+static void remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
 	TRACE_CALL("remmina_rdp_event_queue_ui");
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	gboolean ui_sync_save;
 	int oldcanceltype;
-	int rc;
-
-	if (remmina_plugin_service->is_main_thread()) {
-		/* Direct call */
-		remmina_rdp_event_process_ui_event(gp, ui);
-		rc = ui->retval;
-		remmina_rdp_event_free_event(gp, ui);
-		return rc;
-	}
 
 	if (rfi->thread_cancelled) {
-		remmina_rdp_event_free_event(gp, ui);
-		return 0;
+		return;
+	}
+
+	if(remmina_plugin_service->is_main_thread()) {
+		remmina_rdp_event_process_ui_event(gp, ui);
+		return;
 	}
 
 	pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, &oldcanceltype);
+
 	pthread_mutex_lock(&rfi->ui_queue_mutex);
 
 	ui_sync_save = ui->sync;
@@ -1073,8 +1071,9 @@ int remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObje
 
 	g_async_queue_push(rfi->ui_queue, ui);
 
-	if (!rfi->ui_handler)
+	if (!rfi->ui_handler) {
 		rfi->ui_handler = IDLE_ADD((GSourceFunc) remmina_rdp_event_process_ui_queue, gp);
+	}
 
 	if (ui_sync_save) {
 		/* Wait for main thread function completion before returning */
@@ -1083,14 +1082,38 @@ int remmina_rdp_event_queue_ui(RemminaProtocolWidget* gp, RemminaPluginRdpUiObje
 		while(!ui->complete) {
 			pthread_cond_wait(&ui->sync_wait_cond, &ui->sync_wait_mutex);
 		}
-		rc = ui->retval;
 		pthread_cond_destroy(&ui->sync_wait_cond);
 		pthread_mutex_destroy(&ui->sync_wait_mutex);
-		remmina_rdp_event_free_event(gp, ui);
 	} else {
 		pthread_mutex_unlock(&rfi->ui_queue_mutex);
-		rc = 0;
 	}
 	pthread_setcanceltype(oldcanceltype, NULL);
-	return rc;
+}
+
+void remmina_rdp_event_queue_ui_async(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+{
+	ui->sync = FALSE;
+	remmina_rdp_event_queue_ui(gp, ui);
+}
+
+int remmina_rdp_event_queue_ui_sync_retint(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+{
+	TRACE_CALL("remmina_rdp_event_queue_ui_sync_retint");
+	int retval;
+	ui->sync = TRUE;
+	remmina_rdp_event_queue_ui(gp, ui);
+	retval = ui->retval;
+	remmina_rdp_event_free_event(gp, ui);
+	return retval;
+}
+
+void *remmina_rdp_event_queue_ui_sync_retptr(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+{
+	TRACE_CALL("remmina_rdp_event_queue_ui_sync_retptr");
+	void *rp;
+	ui->sync = TRUE;
+	remmina_rdp_event_queue_ui(gp, ui);
+	rp = ui->retptr;
+	remmina_rdp_event_free_event(gp, ui);
+	return rp;
 }

@@ -64,14 +64,11 @@ struct rf_clipboard
 {
 	rfContext* rfi;
 	CliprdrClientContext* context;
-	BOOL sync;
 	wClipboard* system;
 	int requestedFormatId;
 
-	gboolean clipboard_wait;
 	UINT32 format;
 	gulong clipboard_handler;
-
 
 	pthread_mutex_t transfer_clip_mutex;
 	pthread_cond_t transfer_clip_cond;
@@ -108,7 +105,10 @@ typedef struct rf_glyph rfGlyph;
 typedef enum
 {
 	REMMINA_RDP_EVENT_TYPE_SCANCODE,
-	REMMINA_RDP_EVENT_TYPE_MOUSE
+	REMMINA_RDP_EVENT_TYPE_MOUSE,
+	REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_LIST,
+	REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_DATA_RESPONSE,
+	REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_DATA_REQUEST
 } RemminaPluginRdpEventType;
 
 struct remmina_plugin_rdp_event
@@ -129,6 +129,18 @@ struct remmina_plugin_rdp_event
 			UINT16 y;
 			BOOL extended;
 		} mouse_event;
+		struct
+		{
+			CLIPRDR_FORMAT_LIST* pFormatList;
+		} clipboard_formatlist;
+		struct
+		{
+			CLIPRDR_FORMAT_DATA_RESPONSE* pFormatDataResponse;
+		} clipboard_formatdataresponse;
+		struct
+		{
+			CLIPRDR_FORMAT_DATA_REQUEST* pFormatDataRequest;
+		} clipboard_formatdatarequest;
 	};
 };
 typedef struct remmina_plugin_rdp_event RemminaPluginRdpEvent;
@@ -147,7 +159,6 @@ typedef enum
 
 typedef enum
 {
-	REMMINA_RDP_UI_CLIPBOARD_MONITORREADY,
 	REMMINA_RDP_UI_CLIPBOARD_FORMATLIST,
 	REMMINA_RDP_UI_CLIPBOARD_GET_DATA,
 	REMMINA_RDP_UI_CLIPBOARD_SET_DATA,
@@ -188,6 +199,7 @@ struct remmina_plugin_rdp_ui_object
 		} region;
 		struct
 		{
+			rdpContext* context;
 			rfPointer* pointer;
 			RemminaPluginRdpUiPointerType type;
 		} cursor;
@@ -221,8 +233,10 @@ struct remmina_plugin_rdp_ui_object
 			gint y;
 		} pos;
 	};
-	/* We can also return values here, only integer, and -1 is reserved for rf_queue_ui own error */
+	/* We can also return values here, usually integers*/
 	int retval;
+	/* Some functions also may return a pointer. */
+	void *retptr;
 };
 
 struct rf_context
@@ -273,7 +287,6 @@ struct rf_context
 	gint height;
 	gint scanline_pad;
 	gint* colormap;
-	HCLRCONV clrconv;
 	UINT8* primary_buffer;
 
 	guint object_id_seq;
@@ -298,6 +311,8 @@ void rf_uninit(RemminaProtocolWidget* gp);
 void rf_get_fds(RemminaProtocolWidget* gp, void** rfds, int* rcount);
 BOOL rf_check_fds(RemminaProtocolWidget* gp);
 void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj);
+
+void remmina_rdp_event_event_push(RemminaProtocolWidget* gp, const RemminaPluginRdpEvent* e);
 
 #endif
 
