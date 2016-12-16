@@ -170,13 +170,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         <signal name="activate" handler="remmina_main_on_action_help_debug" swapped="no"/>
       </object>
     </child>
-    <child>
-      <object class="GtkAction" id="action_help_survey">
-        <property name="label" translatable="yes">Survey</property>
-        <property name="short_label" translatable="yes">Survey</property>
-        <signal name="activate" handler="remmina_main_on_action_help_survey" swapped="no"/>
-      </object>
-    </child>
   </object>
   <object class="GtkActionGroup" id="actiongroup_tools">
     <property name="accel_group">accelgroup_shortcuts</property>
@@ -580,15 +573,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkMenuItem" id="menuitem_help_survey">
-                        <property name="related_action">action_help_survey</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Survey</property>
-                        <property name="use_underline">True</property>
                       </object>
                     </child>
                     <child>
