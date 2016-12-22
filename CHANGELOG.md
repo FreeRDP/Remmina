@@ -1,6 +1,50 @@
 # Change Log
 
-## [v1.2.0-rcgit.16](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.16) (2016-11-01)
+## [v1.2.0-rcgit.17](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.17) (2016-12-22)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.16...v1.2.0-rcgit.17)
+
+**Implemented enhancements:**
+
+- Remove survey as too bloated.  [\#1064](https://github.com/FreeRDP/Remmina/issues/1064)
+- Cannot connect to neoma-bs RDP server [\#1056](https://github.com/FreeRDP/Remmina/issues/1056)
+- Import gateay values from rdp files - \#1056 [\#1068](https://github.com/FreeRDP/Remmina/pull/1068) ([antenore](https://github.com/antenore))
+- No debian/ubuntu distributions files included. [\#1062](https://github.com/FreeRDP/Remmina/pull/1062) ([nastasi](https://github.com/nastasi))
+- Fix fullscreen window position \(\#873\) [\#1060](https://github.com/FreeRDP/Remmina/pull/1060) ([spasche](https://github.com/spasche))
+
+**Fixed bugs:**
+
+- When "Server" GtkComboBox is selected, TAB key doesn't work [\#1049](https://github.com/FreeRDP/Remmina/issues/1049)
+
+**Closed issues:**
+
+- Advanced Settings for RDP connections [\#1043](https://github.com/FreeRDP/Remmina/issues/1043)
+- error: ‘rdpGdi {aka struct rdp\_gdi}’ has no member named ‘bytesPerPixel’ [\#1028](https://github.com/FreeRDP/Remmina/issues/1028)
+- Remmina crashes attempting VNC connection to Mac OS X Yosemite [\#517](https://github.com/FreeRDP/Remmina/issues/517)
+- Remmina can no longer recognize RDP authentication failure [\#507](https://github.com/FreeRDP/Remmina/issues/507)
+- SSH-Tunneled VNC connection randomly hangs [\#480](https://github.com/FreeRDP/Remmina/issues/480)
+- Long connection times when forwarding RDP connections through SSH [\#452](https://github.com/FreeRDP/Remmina/issues/452)
+- Issue with PPA mentioned in Wiki [\#439](https://github.com/FreeRDP/Remmina/issues/439)
+- Remmina crashes copying from remoted computer and pasting into remoting one [\#411](https://github.com/FreeRDP/Remmina/issues/411)
+- font smoothing - some fonts are not smoothed [\#382](https://github.com/FreeRDP/Remmina/issues/382)
+- Remmina blocks and I have to disconnect every 20 minutes [\#332](https://github.com/FreeRDP/Remmina/issues/332)
+- Keyboard Mapping  [\#261](https://github.com/FreeRDP/Remmina/issues/261)
+- Remmina crash when running towards server with xrdp 0.7.0 [\#234](https://github.com/FreeRDP/Remmina/issues/234)
+- Resolution of Client Viewport not functioning correct [\#205](https://github.com/FreeRDP/Remmina/issues/205)
+
+**Merged pull requests:**
+
+- Updated Russian translations [\#1070](https://github.com/FreeRDP/Remmina/pull/1070) ([antenore](https://github.com/antenore))
+- Libfreerdp updates [\#1067](https://github.com/FreeRDP/Remmina/pull/1067) ([giox069](https://github.com/giox069))
+- Removed survey to clean up the code - API CHANGE [\#1065](https://github.com/FreeRDP/Remmina/pull/1065) ([antenore](https://github.com/antenore))
+- Updated German translation [\#1063](https://github.com/FreeRDP/Remmina/pull/1063) ([theraser](https://github.com/theraser))
+- When 'Server' GtkComboBox is selected, TAB doesn't work [\#1050](https://github.com/FreeRDP/Remmina/pull/1050) ([antenore](https://github.com/antenore))
+- Customizable app name and locations [\#1046](https://github.com/FreeRDP/Remmina/pull/1046) ([3v1n0](https://github.com/3v1n0))
+- remmina.desktop: add Quit desktop action for Unity [\#1045](https://github.com/FreeRDP/Remmina/pull/1045) ([3v1n0](https://github.com/3v1n0))
+- Update Spanish Translation [\#1044](https://github.com/FreeRDP/Remmina/pull/1044) ([jgjimenez](https://github.com/jgjimenez))
+- Update fr.po [\#1038](https://github.com/FreeRDP/Remmina/pull/1038) ([DevDef](https://github.com/DevDef))
+- Uzbek cyrillic: update translations [\#1037](https://github.com/FreeRDP/Remmina/pull/1037) ([ozbek](https://github.com/ozbek))
+
+## [v1.2.0-rcgit.16](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.16) (2016-10-31)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.15...v1.2.0-rcgit.16)
 
 **Implemented enhancements:**
