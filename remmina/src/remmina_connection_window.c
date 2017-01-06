@@ -2876,7 +2876,10 @@ static gboolean remmina_connection_window_go_fullscreen(GtkWidget *widget, GdkEv
 	cnnhld = (RemminaConnectionHolder*)data;
 	priv = cnnhld->cnnwin->priv;
 
-	gtk_window_fullscreen(GTK_WINDOW(cnnhld->cnnwin));
+	gtk_window_fullscreen_on_monitor(GTK_WINDOW(cnnhld->cnnwin),
+			gdk_screen_get_default (),
+			gdk_screen_get_monitor_at_window (gdk_screen_get_default (),
+				GDK_WINDOW(cnnhld->cnnwin)));
 	return FALSE;
 }
 
