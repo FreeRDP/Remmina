@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-31 10:23+0200\n"
+"POT-Creation-Date: 2016-12-13 22:10+0100\n"
 "PO-Revision-Date: 2013-01-18 05:37+0000\n"
 "Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
@@ -19,131 +19,586 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
-#: remmina/src/remmina_ftp_client.c:427
-msgid "Choose download location"
-msgstr "Pilih lokasi muat turun"
-
-#: remmina/src/remmina_ftp_client.c:572
-msgid "Are you sure to delete the selected files on server?"
-msgstr "Anda pasti hendak memadam fail terpilih dalam pelayan?"
-
-#: remmina/src/remmina_ftp_client.c:631
-msgid "Choose a file to upload"
-msgstr "Pilih fail untuk dimuat naik"
-
-#: remmina/src/remmina_ftp_client.c:639
-msgid "Upload folder"
-msgstr "Muat naik folder"
-
-#: remmina/src/remmina_ftp_client.c:700 remmina/src/remmina_ftp_client.c:825
-msgid "Download"
-msgstr "Muat Turun"
-
-#: remmina/src/remmina_ftp_client.c:707 remmina/src/remmina_ftp_client.c:836
-msgid "Upload"
-msgstr "Muat Naik"
-
-#: remmina/src/remmina_ftp_client.c:714 remmina/ui/remmina_main.glade:102
-#: remmina/ui/remmina_main.glade:103
-msgid "_Delete"
+#: remmina-plugins/spice/spice_plugin_usb.c:51
+#: remmina-plugins/spice/spice_plugin.c:466
+msgid "Select USB devices for redirection"
 msgstr ""
 
-#: remmina/src/remmina_ftp_client.c:804
-msgid "Home"
+#: remmina-plugins/spice/spice_plugin_usb.c:54
+msgid "_Close"
 msgstr ""
 
-#: remmina/src/remmina_ftp_client.c:806
-msgid "Go to home folder"
-msgstr "Pergi ke folder rumah"
-
-#: remmina/src/remmina_ftp_client.c:811
-msgid "Up"
+#: remmina-plugins/spice/spice_plugin_usb.c:95
+msgid "USB redirection error"
 msgstr ""
 
-#: remmina/src/remmina_ftp_client.c:813
-msgid "Go to parent folder"
-msgstr "Pergi ke folder induk"
+#: remmina-plugins/spice/spice_plugin.c:262
+#, c-format
+msgid "Disconnected from SPICE server %s."
+msgstr ""
 
-#: remmina/src/remmina_ftp_client.c:818 remmina-plugins/vnc/vnc_plugin.c:2043
+#: remmina-plugins/spice/spice_plugin.c:275
+msgid "Invalid password."
+msgstr ""
+
+#: remmina-plugins/spice/spice_plugin.c:280
+msgid "TLS connection error."
+msgstr ""
+
+#: remmina-plugins/spice/spice_plugin.c:286
+msgid "Connection to SPICE server failed."
+msgstr ""
+
+#: remmina-plugins/spice/spice_plugin.c:433
+#: remmina-plugins/spice/spice_plugin.c:463
+msgid "Resize guest to match window size"
+msgstr ""
+
+#: remmina-plugins/spice/spice_plugin.c:434
+msgid "Use TLS encryption"
+msgstr ""
+
+#: remmina-plugins/spice/spice_plugin.c:435
+msgid "Server CA certificate"
+msgstr ""
+
+#: remmina-plugins/spice/spice_plugin.c:450
+#: remmina-plugins/spice/spice_plugin.c:462
+#: remmina-plugins/vnc/vnc_plugin.c:2028 remmina-plugins/vnc/vnc_plugin.c:2041
+msgid "View only"
+msgstr "Papar sahaja"
+
+#: remmina-plugins/spice/spice_plugin.c:451
+#: remmina-plugins/spice/spice_plugin.c:464
+#: remmina-plugins/rdp/rdp_plugin.c:1386 remmina-plugins/nx/nx_plugin.c:779
+#: remmina-plugins/vnc/vnc_plugin.c:2029
+msgid "Disable clipboard sync"
+msgstr "Lumpuhkan segerakan papan keratan"
+
+#: remmina-plugins/spice/spice_plugin.c:452
+#: remmina-plugins/rdp/rdp_plugin.c:1385 remmina-plugins/nx/nx_plugin.c:782
+#: remmina-plugins/vnc/vnc_plugin.c:2032
+msgid "Disable password storing"
+msgstr ""
+
+#: remmina-plugins/spice/spice_plugin.c:453
+msgid "Enable audio channel"
+msgstr ""
+
+#: remmina-plugins/spice/spice_plugin.c:454
 #: remmina-plugins/rdp/rdp_plugin.c:1383
-msgid "Refresh"
-msgstr "Segar Semula"
-
-#: remmina/src/remmina_ftp_client.c:820
-msgid "Refresh current folder"
-msgstr "Segar semula folder semasa"
-
-#: remmina/src/remmina_ftp_client.c:827
-msgid "Download from server"
-msgstr "Muat turun dari pelayan"
-
-#: remmina/src/remmina_ftp_client.c:838
-msgid "Upload to server"
-msgstr "Muat naik ke pelayan"
-
-#: remmina/src/remmina_ftp_client.c:845
-msgid "Delete"
+msgid "Share smartcard"
 msgstr ""
 
-#: remmina/src/remmina_ftp_client.c:847
-msgid "Delete files on server"
-msgstr "Padam fail pada pelayan"
+#: remmina-plugins/spice/spice_plugin.c:465
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:414
+#: remmina-plugins/rdp/rdp_plugin.c:1398 remmina-plugins/nx/nx_plugin.c:790
+#: remmina-plugins/vnc/vnc_plugin.c:2045
+msgid "Send Ctrl+Alt+Delete"
+msgstr ""
 
-#: remmina/src/remmina_ftp_client.c:959 remmina/src/remmina_ftp_client.c:1028
-msgid "File Name"
-msgstr "Nama Fail"
+#: remmina-plugins/spice/spice_plugin.c:475
+msgid "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr ""
 
-#: remmina/src/remmina_ftp_client.c:972 remmina/src/remmina_ftp_client.c:1057
-msgid "Size"
-msgstr "Saiz"
+#: remmina-plugins/spice/spice_plugin_file_transfer.c:84
+msgid "File Transfers"
+msgstr ""
 
-#: remmina/src/remmina_ftp_client.c:980
-msgid "User"
-msgstr "Pengguna"
+#: remmina-plugins/spice/spice_plugin_file_transfer.c:86
+#: remmina-plugins/nx/nx_session_manager.c:171
+#: remmina/src/remmina_sftp_client.c:1006 remmina/src/remmina_init_dialog.c:87
+#: remmina/src/remmina_file_editor.c:145 remmina/src/remmina_file_editor.c:339
+#: remmina/src/remmina_file_editor.c:1242
+#: remmina/ui/remmina_key_chooser.glade:8
+#: remmina/ui/remmina_key_chooser.glade:9 remmina/ui/remmina_spinner.glade:8
+#: remmina/ui/remmina_spinner.glade:9
+msgid "_Cancel"
+msgstr ""
 
-#: remmina/src/remmina_ftp_client.c:986 remmina/src/remmina_file_editor.c:1374
-#: remmina/ui/remmina_main.glade:656
-msgid "Group"
-msgstr "Kumpulan"
+#: remmina-plugins/spice/spice_plugin_file_transfer.c:225
+msgid "Transfer error"
+msgstr ""
 
-#: remmina/src/remmina_ftp_client.c:992
-msgid "Permission"
-msgstr "Keizinan"
+#: remmina-plugins/spice/spice_plugin_file_transfer.c:226
+#, c-format
+msgid "%s: %s"
+msgstr ""
 
-#: remmina/src/remmina_ftp_client.c:1044 remmina-plugins/rdp/rdp_plugin.c:1314
-msgid "Remote"
-msgstr "Jauh"
+#: remmina-plugins/spice/spice_plugin_file_transfer.c:231
+msgid "Transfer complete"
+msgstr ""
 
-#: remmina/src/remmina_ftp_client.c:1051 remmina-plugins/rdp/rdp_plugin.c:1310
+#: remmina-plugins/spice/spice_plugin_file_transfer.c:232
+#, c-format
+msgid "File %s transfered succesfully"
+msgstr ""
+
+#: remmina-plugins/telepathy/telepathy_plugin.c:57
+msgid "Telepathy - Desktop Sharing"
+msgstr "Telepathy - Perkongsian Desktop"
+
+#: remmina-plugins/telepathy/telepathy_channel_handler.c:255
+#, c-format
+msgid ""
+"%s wants to share his/her desktop.\n"
+"Do you accept the invitation?"
+msgstr ""
+"%s ingin berkongsi desktopnya.\n"
+"Anda terima jemputan?"
+
+#: remmina-plugins/telepathy/telepathy_channel_handler.c:258
+msgid "Desktop sharing invitation"
+msgstr "Jemputan perkongsian desktop"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:99
+msgid "Run out of available local X display number."
+msgstr ""
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:286 remmina-plugins/nx/nx_plugin.c:629
+#, c-format
+msgid "Protocol %s is unavailable because GtkSocket only works under Xorg"
+msgstr ""
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:381
+#: remmina/src/remmina_file_editor.c:1256
+msgid "Default"
+msgstr "Lalai"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:382
+msgid "Grayscale"
+msgstr "Skala kelabu"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:383
+msgid "256 colors"
+msgstr "Warna 256"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:384
+msgid "High color (16 bit)"
+msgstr "Warna tinggi (16 bit)"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:385
+msgid "True color (24 bit)"
+msgstr "Warna sebenar (24 bit)"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:402
+#: remmina-plugins/rdp/rdp_plugin.c:1357 remmina-plugins/vnc/vnc_plugin.c:1990
+#: remmina-plugins/vnc/vnc_plugin.c:2010
+msgid "Color depth"
+msgstr "Kedalaman warna"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:403
+#: remmina-plugins/rdp/rdp_plugin.c:1378 remmina-plugins/nx/nx_plugin.c:764
+#: remmina/src/remmina_file_editor.c:862
+msgid "Startup program"
+msgstr "Program permulaan"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:404 remmina-plugins/nx/nx_plugin.c:781
+msgid "Use local cursor"
+msgstr "Guna kursor setempat"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:405
+msgid "Disconnect after one session"
+msgstr "Putuskan selepas satu sesi"
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:406
+msgid "Listening connection on protocol TCP"
+msgstr ""
+
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:423
+msgid "XDMCP - X Remote Session"
+msgstr "XDMCP - Sesi Jauh X"
+
+#: remmina-plugins/rdp/rdp_settings.c:204
+msgid "<Auto detect>"
+msgstr "<kesan sendiri>"
+
+#: remmina-plugins/rdp/rdp_settings.c:238
+msgid "<Not set>"
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_settings.c:272
+msgid "<Choose a quality level to edit...>"
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_settings.c:274 remmina-plugins/rdp/rdp_plugin.c:1311
+#: remmina-plugins/nx/nx_plugin.c:740 remmina-plugins/vnc/vnc_plugin.c:1968
+msgid "Poor (fastest)"
+msgstr "Teruk (paling pantas)"
+
+#: remmina-plugins/rdp/rdp_settings.c:276 remmina-plugins/rdp/rdp_plugin.c:1312
+#: remmina-plugins/nx/nx_plugin.c:741 remmina-plugins/vnc/vnc_plugin.c:1969
+msgid "Medium"
+msgstr "Sederhana"
+
+#: remmina-plugins/rdp/rdp_settings.c:278 remmina-plugins/rdp/rdp_plugin.c:1313
+#: remmina-plugins/nx/nx_plugin.c:742 remmina-plugins/vnc/vnc_plugin.c:1970
+msgid "Good"
+msgstr "Baik"
+
+#: remmina-plugins/rdp/rdp_settings.c:280 remmina-plugins/rdp/rdp_plugin.c:1314
+#: remmina-plugins/nx/nx_plugin.c:743 remmina-plugins/vnc/vnc_plugin.c:1971
+msgid "Best (slowest)"
+msgstr "Terbaik (paling lambat)"
+
+#: remmina-plugins/rdp/rdp_settings.c:433
+msgid "Keyboard layout"
+msgstr "Bentangan papan kekunci"
+
+#: remmina-plugins/rdp/rdp_settings.c:458
+msgid "Use client keyboard mapping"
+msgstr "Guna pemetaan papan kekunci klien"
+
+#: remmina-plugins/rdp/rdp_settings.c:468
+msgid "Quality settings"
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_settings.c:488
+msgid "Wallpaper"
+msgstr "Kertas Dinding"
+
+#: remmina-plugins/rdp/rdp_settings.c:495
+msgid "Window drag"
+msgstr "Seretan Tetingkap"
+
+#: remmina-plugins/rdp/rdp_settings.c:502
+msgid "Menu animation"
+msgstr "Animasi menu"
+
+#: remmina-plugins/rdp/rdp_settings.c:509
+msgid "Theme"
+msgstr "Tema"
+
+#: remmina-plugins/rdp/rdp_settings.c:516
+msgid "Cursor shadow"
+msgstr "Bayang kursor"
+
+#: remmina-plugins/rdp/rdp_settings.c:523
+msgid "Cursor blinking"
+msgstr "Kelipan kursor"
+
+#: remmina-plugins/rdp/rdp_settings.c:530
+msgid "Font smoothing"
+msgstr "Pelicinan fon"
+
+#: remmina-plugins/rdp/rdp_settings.c:537
+msgid "Composition"
+msgstr "Gubahan"
+
+#: remmina-plugins/rdp/rdp_settings.c:547
+msgid "Remote scale factor"
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_settings.c:560
+msgid "Desktop scale factor %"
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_settings.c:571
+msgid "Device scale factor %"
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_settings.c:593
+msgid "Desktop orientation"
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_plugin.c:115
+msgid "The server name cannot be blank."
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_plugin.c:128
+#, c-format
+msgid "Unable to find the address of RDP server %s."
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_plugin.c:1036
+#, c-format
+msgid ""
+"Authentication to RDP server %s failed.\n"
+"Check username, password and domain."
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_plugin.c:1042
+#, c-format
+msgid "Connection to RDP server %s failed."
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_plugin.c:1045
+#, c-format
+msgid "Unable to connect to RDP server %s"
+msgstr "Tidak boleh sambung ke pelayan RDP %s"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1299 remmina-plugins/vnc/vnc_plugin.c:1957
+msgid "256 colors (8 bpp)"
+msgstr "Warna 256 (8 bpp)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1300 remmina-plugins/vnc/vnc_plugin.c:1958
+msgid "High color (15 bpp)"
+msgstr "Warna Tinggi (15 bpp)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1301 remmina-plugins/vnc/vnc_plugin.c:1959
+msgid "High color (16 bpp)"
+msgstr "Warna Tinggi (16 bpp)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1302 remmina-plugins/vnc/vnc_plugin.c:1960
+msgid "True color (24 bpp)"
+msgstr "Warna sebenar (24 bpp)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1303 remmina-plugins/vnc/vnc_plugin.c:1961
+msgid "True color (32 bpp)"
+msgstr "Warna sebenar (32 bpp)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1304
+msgid "RemoteFX (32 bpp)"
+msgstr "RemoteFX (32 bpp)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1321
+msgid "Off"
+msgstr "Dimatikan"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1322 remmina/src/remmina_ftp_client.c:1051
 msgid "Local"
 msgstr "Setempat"
 
-#: remmina/src/remmina_ftp_client.c:1065
-msgid "Progress"
-msgstr "Kemajuan"
+#: remmina-plugins/rdp/rdp_plugin.c:1323
+msgid "Local - low quality"
+msgstr "Setempat - kualiti rendah"
 
-#: remmina/src/remmina_survey.c:454
-msgid "Do you agree to share some usage statistics with us?"
+#: remmina-plugins/rdp/rdp_plugin.c:1324
+msgid "Local - medium quality"
+msgstr "Setempat - kualiti sederhana"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1325
+msgid "Local - high quality"
+msgstr "Setempat kualiti tinggi"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1326 remmina/src/remmina_ftp_client.c:1044
+msgid "Remote"
+msgstr "Jauh"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1333
+msgid "Negotiate"
+msgstr "Runding"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1352 remmina-plugins/nx/nx_plugin.c:760
+#: remmina-plugins/vnc/vnc_plugin.c:1988 remmina-plugins/vnc/vnc_plugin.c:2008
+#: remmina/src/remmina_init_dialog.c:362 remmina/src/remmina_file_editor.c:883
+msgid "User name"
+msgstr "Nama pengguna"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1354 remmina/src/remmina_init_dialog.c:393
+msgid "Domain"
+msgstr "Domain"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1355
+msgid "RD Gateway server"
 msgstr ""
 
-#: remmina/src/remmina_survey.c:458
-msgid "By pressing the yes button, you're not yet sending any data."
+#: remmina-plugins/rdp/rdp_plugin.c:1358
+msgid "Share folder"
+msgstr "Folder kongsi"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1359
+msgid "Disable automatic reconnection"
 msgstr ""
 
-#: remmina/src/remmina_survey.c:460
-msgid "_Do not show this dialog again"
+#: remmina-plugins/rdp/rdp_plugin.c:1374 remmina-plugins/nx/nx_plugin.c:763
+#: remmina-plugins/vnc/vnc_plugin.c:1991 remmina-plugins/vnc/vnc_plugin.c:2011
+msgid "Quality"
+msgstr "Kualiti"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1375
+msgid "Sound"
+msgstr "Bunyi"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1376
+msgid "Security"
+msgstr "Keselamatan"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1377
+msgid "Client name"
+msgstr "Nama klien"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1379 remmina/src/remmina_file_editor.c:871
+msgid "Startup path"
+msgstr "Laluan permulaan"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1380
+msgid "Load Balance Info"
 msgstr ""
 
-#: remmina/src/remmina_applet_menu_item.c:115
-msgid "Discovered"
-msgstr "Ditemui"
+#: remmina-plugins/rdp/rdp_plugin.c:1381
+msgid "Ignore certificate"
+msgstr ""
 
-#: remmina/src/remmina_applet_menu_item.c:120
-msgid "New Connection"
-msgstr "Sambungan Baru"
+#: remmina-plugins/rdp/rdp_plugin.c:1382
+msgid "Redirect local microphone"
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_plugin.c:1384
+msgid "Share local printers"
+msgstr "Kongsi pencetak setempat"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1387
+msgid "Attach to console (2003/2003 R2)"
+msgstr "Lampir ke konsol (Windows 2003 / 2003 R2)"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1388
+msgid "Server detection using RD Gateway"
+msgstr ""
+
+#: remmina-plugins/rdp/rdp_plugin.c:1396 remmina-plugins/vnc/vnc_plugin.c:2043
+#: remmina/src/remmina_ftp_client.c:818
+msgid "Refresh"
+msgstr "Segar Semula"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1408
+msgid "RDP - Remote Desktop Protocol"
+msgstr "RDP - Protokol Desktop Jauh"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1431
+msgid "RDP - RDP File Handler"
+msgstr "RDP - Pengendali Fail RDP"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1446
+msgid "RDP - Preferences"
+msgstr "RDP - Keutamaan"
+
+#: remmina-plugins/rdp/rdp_plugin.c:1479
+msgid "Export connection in Windows .rdp file format"
+msgstr "Eksport sambungan dalam format fail .drp Windows"
+
+#: remmina-plugins/rdp/rdp_event.c:296
+#, c-format
+msgid "Reconnection in progress. Attempt %d of %d..."
+msgstr ""
+
+#: remmina-plugins/nx/nx_plugin.c:759 remmina/src/remmina_file_editor.c:331
+#: remmina/src/remmina_file_editor.c:338
+msgid "Identity file"
+msgstr "Fail identiti"
+
+#: remmina-plugins/nx/nx_plugin.c:780 remmina-plugins/vnc/vnc_plugin.c:2030
+msgid "Disable encryption"
+msgstr "Lumpuhkan penyulitan"
+
+#: remmina-plugins/nx/nx_plugin.c:799
+msgid "NX - NX Technology"
+msgstr "NX - Teknologi NX"
+
+#: remmina-plugins/nx/nx_session_manager.c:106
+msgid "Terminating"
+msgstr "Hentikan"
+
+#: remmina-plugins/nx/nx_session_manager.c:155
+#, c-format
+msgid "NX Sessions on %s"
+msgstr "Sesi NX pada %s"
+
+#: remmina-plugins/nx/nx_session_manager.c:160
+msgid "Attach"
+msgstr "Lampirkan"
+
+#: remmina-plugins/nx/nx_session_manager.c:166
+msgid "Restore"
+msgstr "Pulihkan"
+
+#: remmina-plugins/nx/nx_session_manager.c:167
+msgid "Start"
+msgstr "Mula"
+
+#: remmina-plugins/nx/nx_session_manager.c:173
+msgid "Terminate"
+msgstr "Hentikan"
+
+#: remmina-plugins/nx/nx_session_manager.c:198
+#: remmina/src/remmina_plugin_manager.c:329
+msgid "Type"
+msgstr "Jenis"
+
+#: remmina-plugins/nx/nx_session_manager.c:205
+msgid "Display"
+msgstr "Papar"
+
+#: remmina-plugins/nx/nx_session_manager.c:212
+msgid "Status"
+msgstr "Status"
+
+#: remmina-plugins/nx/nx_session_manager.c:219
+#: remmina/src/remmina_plugin_manager.c:323
+#: remmina/src/remmina_file_editor.c:1348 remmina/ui/remmina_main.glade:623
+msgid "Name"
+msgstr "Nama"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1018
+msgid "Unable to connect to VNC server"
+msgstr "Tidak boleh sambung ke pelayan VNC"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1019
+#, c-format
+msgid "Couldn't convert '%s' to host address"
+msgstr "Tidak dapat tukar '%s' ke alamat hos"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1020
+#, c-format
+msgid "VNC connection failed: %s"
+msgstr "Sambungan VNC gagal: %s"
+
+#: remmina-plugins/vnc/vnc_plugin.c:1021
+msgid "Your connection has been rejected."
+msgstr "Sambungan anda telah ditolak."
+
+#: remmina-plugins/vnc/vnc_plugin.c:1048
+#, c-format
+msgid "Unknown authentication scheme from VNC server: %s"
+msgstr ""
+
+#: remmina-plugins/vnc/vnc_plugin.c:1050
+msgid "Please retry after enabling encryption on this profile."
+msgstr ""
+
+#: remmina-plugins/vnc/vnc_plugin.c:1987
+msgid "Repeater"
+msgstr "Pengulang"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2007
+msgid "Listen on port"
+msgstr "Dengar pada port"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2027
+msgid "Show remote cursor"
+msgstr "Papar kursor jauh"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2031 remmina-plugins/vnc/vnc_plugin.c:2042
+msgid "Disable server input"
+msgstr "Lumpuhkan input pelayan"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2044
+msgid "Open Chat..."
+msgstr "Buka Sembang..."
+
+#: remmina-plugins/vnc/vnc_plugin.c:2056
+msgid "VNC - Virtual Network Computing"
+msgstr "VNC - Pengkomputeran Rangkaian Maya"
+
+#: remmina-plugins/vnc/vnc_plugin.c:2078
+msgid "VNC - Incoming Connection"
+msgstr "VNC - Sambungan Masuk"
+
+#: remmina/src/remmina_chat_window.c:188
+#, c-format
+msgid "Chat with %s"
+msgstr "Sembang dengan %s"
+
+#: remmina/src/remmina_chat_window.c:240
+msgid "_Send"
+msgstr "_Hantar"
+
+#: remmina/src/remmina_chat_window.c:250
+msgid "_Clear"
+msgstr "_Kosongkan"
 
 #: remmina/src/remmina_plugin_manager.c:63
-#: remmina/src/remmina_file_editor.c:1392
+#: remmina/src/remmina_file_editor.c:1394
 msgid "Protocol"
 msgstr "Protokol"
 
@@ -168,7 +623,7 @@ msgid "Secret"
 msgstr "Rahsia"
 
 #: remmina/src/remmina_plugin_manager.c:305 remmina/ui/remmina_main.glade:61
-#: remmina/ui/remmina_main.glade:62 remmina/ui/remmina_main.glade:456
+#: remmina/ui/remmina_main.glade:62 remmina/ui/remmina_main.glade:454
 msgid "Plugins"
 msgstr "Pemalam"
 
@@ -176,18 +631,6 @@ msgstr "Pemalam"
 #: remmina/src/remmina_init_dialog.c:87 remmina/src/remmina_file_editor.c:146
 msgid "_OK"
 msgstr ""
-
-#: remmina/src/remmina_plugin_manager.c:323
-#: remmina/src/remmina_file_editor.c:1349
-#: remmina-plugins/nx/nx_session_manager.c:219
-#: remmina/ui/remmina_main.glade:634
-msgid "Name"
-msgstr "Nama"
-
-#: remmina/src/remmina_plugin_manager.c:329
-#: remmina-plugins/nx/nx_session_manager.c:198
-msgid "Type"
-msgstr "Jenis"
 
 #: remmina/src/remmina_plugin_manager.c:335
 msgid "Description"
@@ -197,196 +640,212 @@ msgstr "Keterangan"
 msgid "Version"
 msgstr "Versi"
 
-#: remmina/src/remmina_exec.c:184
-#, c-format
-msgid "Plugin %s is not registered."
-msgstr "Pemalam %s tidak berdaftar."
+#: remmina/src/remmina_about.c:54
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  abuyop https://launchpad.net/~abuyop"
 
-#: remmina/src/remmina_public.c:672
-msgid "Please enter format 'widthxheight'."
-msgstr "Sila masukkan format 'lebarxtinggi'."
+#: remmina/src/remmina.c:75
+msgid "Show about dialog"
+msgstr ""
 
-#: remmina/src/remmina_connection_window.c:368
+#: remmina/src/remmina.c:76
+msgid "Connect to a .remmina file"
+msgstr ""
+
+#: remmina/src/remmina.c:77
+msgid "Edit a .remmina file"
+msgstr ""
+
+#: remmina/src/remmina.c:79 remmina/ui/remmina_main.glade:250
+msgid "Create a new connection profile"
+msgstr ""
+
+#: remmina/src/remmina.c:80
+msgid "Show preferences dialog page"
+msgstr ""
+
+#: remmina/src/remmina.c:81
+msgid "Execute the plugin"
+msgstr ""
+
+#: remmina/src/remmina.c:82
+msgid "Quit the application"
+msgstr ""
+
+#: remmina/src/remmina.c:83
+msgid "Use default server name (for --new)"
+msgstr ""
+
+#: remmina/src/remmina.c:84
+msgid "Use default protocol (for --new)"
+msgstr ""
+
+#: remmina/src/remmina.c:85
+msgid "Start as tray icon"
+msgstr ""
+
+#: remmina/src/remmina.c:86
+msgid "Show the application's version"
+msgstr ""
+
+#: remmina/src/remmina_sftp_client.c:176
 #, c-format
+msgid "Error creating directory %s."
+msgstr "Ralat mencipta direktori %s."
+
+#: remmina/src/remmina_sftp_client.c:184 remmina/src/remmina_sftp_client.c:207
+#, c-format
+msgid "Error creating file %s."
+msgstr "Ralat mencipta fail %s."
+
+#: remmina/src/remmina_sftp_client.c:225
+#, c-format
+msgid "Error opening file %s on server. %s"
+msgstr "Ralat membuka fail %s pada pelayan. %s"
+
+#: remmina/src/remmina_sftp_client.c:251
+#, c-format
+msgid "Error writing file %s."
+msgstr "Ralat menulis fail %s."
+
+#: remmina/src/remmina_sftp_client.c:295
+#, c-format
+msgid "Error opening directory %s. %s"
+msgstr "Ralat membuka direktori %s. %s"
+
+#: remmina/src/remmina_sftp_client.c:418
+#, c-format
+msgid "Error creating folder %s on server. %s"
+msgstr "Ralat mencipta folder %s pada pelayan. %s"
+
+#: remmina/src/remmina_sftp_client.c:447 remmina/src/remmina_sftp_client.c:472
+#, c-format
+msgid "Error creating file %s on server. %s"
+msgstr "Ralat mencipta fail %s pada pelayan. %s"
+
+#: remmina/src/remmina_sftp_client.c:495
+#, c-format
+msgid "Error opening file %s."
+msgstr "Ralat membuka fail %s"
+
+#: remmina/src/remmina_sftp_client.c:519
+#, c-format
+msgid "Error writing file %s on server. %s"
+msgstr "Ralat menulis fail %s pada pelayan. %s"
+
+#: remmina/src/remmina_sftp_client.c:745 remmina/src/remmina_sftp_client.c:818
+#, c-format
+msgid "Failed to open directory %s. %s"
+msgstr "Gagal membuka direktori %s. %s"
+
+#: remmina/src/remmina_sftp_client.c:764
+#, c-format
+msgid "Failed reading directory. %s"
+msgstr "Gagal membaca direktori. %s"
+
+#: remmina/src/remmina_sftp_client.c:885
 msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
+"File transfer currently in progress.\n"
+"Are you sure to cancel it?"
 msgstr ""
-"Terdapat %i sambungan aktif dalam tetingkap semasa. Anda pasti hendak "
-"menutupnya?"
+"Pemindahan fail kini dalam proses.\n"
+"Anda pasti hendak membatalnya?"
 
-#: remmina/src/remmina_connection_window.c:1059
-msgid "Viewport fullscreen mode"
-msgstr "Mod skrin penuh port pandang"
+#: remmina/src/remmina_sftp_client.c:922
+#, c-format
+msgid "Failed to delete '%s'. %s"
+msgstr "Gagal memadam '%s'. %s"
 
-#: remmina/src/remmina_connection_window.c:1069
-msgid "Scrolled fullscreen mode"
-msgstr "Mod skrin penuh bertatal"
+#: remmina/src/remmina_sftp_client.c:1001
+msgid "File exists"
+msgstr "Fail telah wujud"
 
-#: remmina/src/remmina_connection_window.c:1134
-msgid "Keep aspect ratio when scaled"
-msgstr ""
+#: remmina/src/remmina_sftp_client.c:1004
+msgid "Resume"
+msgstr "Sambung Semula"
 
-#: remmina/src/remmina_connection_window.c:1144
-msgid "Fill client window when scaled"
-msgstr ""
+#: remmina/src/remmina_sftp_client.c:1005
+msgid "Overwrite"
+msgstr "Tulis-Ganti"
 
-#: remmina/src/remmina_connection_window.c:1530
-#: remmina/src/remmina_pref_dialog.c:106
-#: remmina/ui/remmina_preferences.glade:276
-msgid "Keystrokes"
-msgstr ""
-
-#: remmina/src/remmina_connection_window.c:1623
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
+#: remmina/src/remmina_sftp_client.c:1019
+msgid "Question"
 msgstr ""
 
-#: remmina/src/remmina_connection_window.c:1726
-msgid "Resize the window to fit in remote resolution"
-msgstr "Saiz semula tetingkap untuk muatkannya dalam resolusi jauh"
+#: remmina/src/remmina_sftp_client.c:1031
+msgid "The following file already exists in the target folder:"
+msgstr "Fail berikut telah wujud dalam folder sasaran:"
 
-#: remmina/src/remmina_connection_window.c:1736
-#: remmina/ui/remmina_preferences.glade:695
-msgid "Toggle fullscreen mode"
-msgstr "Togol mod skrin penuh"
+#: remmina/src/remmina_sftp_plugin.c:283
+msgid "Show Hidden Files"
+msgstr "Papar Fail Tersembunyi"
 
-#: remmina/src/remmina_connection_window.c:1776
-#: remmina/ui/remmina_preferences.glade:751
-msgid "Switch tab pages"
-msgstr "Tukar  halaman tab"
-
-#: remmina/src/remmina_connection_window.c:1790
-#: remmina/ui/remmina_preferences.glade:792
-msgid "Toggle scaled mode"
-msgstr "Togol mod berskala"
-
-#: remmina/src/remmina_connection_window.c:1823
-msgid "Grab all keyboard events"
-msgstr "Cekau semua peristiwa papan kekunci"
-
-#: remmina/src/remmina_connection_window.c:1832
-#: remmina/ui/remmina_main.glade:42 remmina/ui/remmina_main.glade:43
-msgid "Preferences"
-msgstr "Keutamaan"
-
-#: remmina/src/remmina_connection_window.c:1840
-#: remmina/src/remmina_connection_window.c:1841
-msgid "Tools"
-msgstr "Alatan"
-
-#: remmina/src/remmina_connection_window.c:1853
-#: remmina/ui/remmina_preferences.glade:932
-msgid "Screenshot"
+#: remmina/src/remmina_sftp_plugin.c:284
+msgid "Overwrite all"
 msgstr ""
 
-#: remmina/src/remmina_connection_window.c:1860
-#: remmina/ui/remmina_preferences.glade:848
-msgid "Minimize window"
-msgstr "Minimunkan window"
+#: remmina/src/remmina_sftp_plugin.c:293
+msgid "SFTP - Secure File Transfer"
+msgstr "SFTP - Pemindahan Fail Selamat"
 
-#: remmina/src/remmina_connection_window.c:1867
-#: remmina/ui/remmina_preferences.glade:876
-msgid "Disconnect"
-msgstr "Putuskan"
-
-#: remmina/src/remmina_connection_window.c:3471
-#: remmina/src/remmina_file_editor.c:1499
-#: remmina/src/remmina_file_editor.c:1520
-#, c-format
-msgid "File %s not found."
-msgstr "Fail %s tidak ditemui."
-
-#: remmina/src/remmina_ssh.c:192
-#, c-format
-msgid "SSH password authentication failed: %s"
-msgstr "Pengesahihan kata laluan SSH gagal: %s"
-
-#: remmina/src/remmina_ssh.c:211 remmina/src/remmina_ssh.c:221
-#: remmina/src/remmina_ssh.c:230
-#, c-format
-msgid "SSH public key authentication failed: %s"
-msgstr "Pengesahihan kunci awam SSH gagal: %s"
-
-#: remmina/src/remmina_ssh.c:212
-msgid "SSH Key file not yet set."
-msgstr "Fail Kunci SSh belum lagi ditetapkan."
-
-#: remmina/src/remmina_ssh.c:247
-#, c-format
-msgid "SSH automatic public key authentication failed: %s"
-msgstr "Pengesahihan kunci awam automatik SSH gagal: %s"
-
-#: remmina/src/remmina_ssh.c:264
-#, c-format
-msgid "SSH public key authentication with ssh agent failed: %s"
+#: remmina/src/remmina_ssh_plugin.c:457
+msgid "Select All (Host+a)"
 msgstr ""
 
-#: remmina/src/remmina_ssh.c:380
-#, c-format
-msgid "Authenticating %s's password to SSH server %s..."
-msgstr "Mengesahihkan kata laluan %s ke pelayan SSH %s..."
+#: remmina/src/remmina_ssh_plugin.c:458
+msgid "Copy (Host+c)"
+msgstr ""
 
-#: remmina/src/remmina_ssh.c:381 remmina/src/remmina_protocol_widget.c:982
-msgid "SSH password"
-msgstr "Kata laluan SSH"
+#: remmina/src/remmina_ssh_plugin.c:459
+msgid "Paste (Host+v)"
+msgstr ""
 
-#: remmina/src/remmina_ssh.c:384
-#, c-format
-msgid "Authenticating %s's identity to SSH server %s..."
-msgstr "Mengesahihkan identiti %s ke pelayan SSH %s..."
+#: remmina/src/remmina_ssh_plugin.c:645
+#: remmina/ui/remmina_preferences.glade:1313 remmina/ui/remmina_main.glade:92
+#: remmina/ui/remmina_main.glade:93
+msgid "Copy"
+msgstr "Salin"
 
-#: remmina/src/remmina_ssh.c:385 remmina/src/remmina_protocol_widget.c:985
-msgid "SSH private key passphrase"
-msgstr "Frasa laluan kunci peribadi SSH"
+#: remmina/src/remmina_ssh_plugin.c:645
+msgid "_Copy"
+msgstr ""
 
-#: remmina/src/remmina_ssh.c:453
-#, c-format
-msgid "Failed to startup SSH session: %s"
-msgstr "Gagal memulakan sesi SSH: %s"
+#: remmina/src/remmina_ssh_plugin.c:646
+#: remmina/ui/remmina_preferences.glade:1352
+msgid "Paste"
+msgstr "Tampal"
 
-#: remmina/src/remmina_ssh.c:831
-#, c-format
-msgid "Failed to connect to the SSH tunnel destination: %s"
-msgstr "Gagal menyambung ke destinasi terowong SSH: %s"
+#: remmina/src/remmina_ssh_plugin.c:646
+msgid "_Paste"
+msgstr ""
 
-#: remmina/src/remmina_ssh.c:864
-#, c-format
-msgid "Failed to execute %s on SSH server : %%s"
-msgstr "Gagal lakukan %s pada pelayan SSH: %%s"
+#: remmina/src/remmina_ssh_plugin.c:647
+msgid "Select all"
+msgstr ""
 
-#: remmina/src/remmina_ssh.c:902 remmina/src/remmina_ssh.c:929
-#, c-format
-msgid "Failed to request port forwarding : %s"
-msgstr "Gagal meminta pemajuan port: %s"
+#: remmina/src/remmina_ssh_plugin.c:647
+msgid "_Select all"
+msgstr ""
 
-#: remmina/src/remmina_ssh.c:977
-msgid "No response from the server."
-msgstr "Tiada balasan dari pelayan."
+#: remmina/src/remmina_ssh_plugin.c:656
+msgid "SSH - Secure Shell"
+msgstr "SSH - Shell Selamat"
 
-#: remmina/src/remmina_ssh.c:1407
-#, c-format
-msgid "Failed to create sftp session: %s"
-msgstr "Gagal mencipta sesi sftp: %s"
-
-#: remmina/src/remmina_ssh.c:1412
-#, c-format
-msgid "Failed to initialize sftp session: %s"
-msgstr "Gagal awalkan sesi sftp: %s"
-
-#: remmina/src/remmina_main.c:576
+#: remmina/src/remmina_main.c:573
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "Sejumlah %i item."
 msgstr[1] "Sejumlah %i item."
 
-#: remmina/src/remmina_main.c:687
+#: remmina/src/remmina_main.c:684
 #, c-format
 msgid "Are you sure to delete '%s'"
 msgstr "Anda pasti hendak memadam '%s'"
 
-#: remmina/src/remmina_main.c:806
+#: remmina/src/remmina_main.c:803
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -395,107 +854,34 @@ msgstr ""
 "Tidak boleh import:\n"
 "%s"
 
-#: remmina/src/remmina_main.c:835 remmina/ui/remmina_main.glade:185
-#: remmina/ui/remmina_main.glade:186 remmina/ui/remmina_main.glade:436
+#: remmina/src/remmina_main.c:832 remmina/ui/remmina_main.glade:178
+#: remmina/ui/remmina_main.glade:179 remmina/ui/remmina_main.glade:434
 msgid "Import"
 msgstr "Import"
 
-#: remmina/src/remmina_main.c:859 remmina/src/remmina_file_editor.c:1237
+#: remmina/src/remmina_main.c:856 remmina/src/remmina_file_editor.c:1236
 msgid "_Save"
 msgstr ""
 
-#: remmina/src/remmina_main.c:869
+#: remmina/src/remmina_main.c:866
 msgid "This protocol does not support exporting."
 msgstr "Protokol ini tidak menyokong pengeksportan."
 
-#: remmina/src/remmina_main.c:923
-msgid "Warning: The survey hasn't been enabled at compile time."
-msgstr ""
-
-#: remmina/src/remmina_main.c:1080 remmina/src/remmina_icon.c:457
-#: remmina/src/remmina_icon.c:458
+#: remmina/src/remmina_main.c:1066 remmina/src/remmina_icon.c:471
+#: remmina/src/remmina_icon.c:472
 msgid "Remmina Remote Desktop Client"
 msgstr "Klien Desktop Jauh Remmina"
-
-#: remmina/src/remmina_chat_window.c:188
-#, c-format
-msgid "Chat with %s"
-msgstr "Sembang dengan %s"
-
-#: remmina/src/remmina_chat_window.c:240
-msgid "_Send"
-msgstr "_Hantar"
-
-#: remmina/src/remmina_chat_window.c:250
-msgid "_Clear"
-msgstr "_Kosongkan"
-
-#: remmina/src/remmina_about.c:54
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  abuyop https://launchpad.net/~abuyop"
-
-#: remmina/src/remmina_icon.c:136
-msgid "Open Main Window"
-msgstr "Buka Tetingkap Utama"
-
-#: remmina/src/remmina_icon.c:141
-msgid "_Preferences"
-msgstr ""
-
-#: remmina/src/remmina_icon.c:146 remmina/ui/remmina_main.glade:52
-#: remmina/ui/remmina_main.glade:53
-msgid "_About"
-msgstr ""
-
-#: remmina/src/remmina_icon.c:156
-msgid "Enable Service Discovery"
-msgstr "Benarkan Penemuan Perkhidmatan"
-
-#: remmina/src/remmina_icon.c:170 remmina/ui/remmina_main.glade:33
-#: remmina/ui/remmina_main.glade:34
-msgid "_Quit"
-msgstr ""
-
-#: remmina/src/remmina_icon.c:397 remmina/src/remmina_icon.c:522
-msgid "Remmina Applet"
-msgstr "Aplet Remmina"
-
-#: remmina/src/remmina_icon.c:399 remmina/src/remmina_icon.c:524
-msgid "Connect to remote desktops through the applet menu"
-msgstr "Sambung ke desktop jauh melalui menu aplet"
-
-#: remmina/src/remmina_init_dialog.c:87 remmina/src/remmina_file_editor.c:145
-#: remmina/src/remmina_file_editor.c:339 remmina/src/remmina_file_editor.c:1243
-#: remmina/src/remmina_sftp_client.c:1006
-#: remmina-plugins/nx/nx_session_manager.c:171
-#: remmina/ui/remmina_spinner.glade:8 remmina/ui/remmina_spinner.glade:9
-#: remmina/ui/remmina_key_chooser.glade:8
-#: remmina/ui/remmina_key_chooser.glade:9
-msgid "_Cancel"
-msgstr ""
 
 #: remmina/src/remmina_init_dialog.c:284
 #, c-format
 msgid "Save %s"
 msgstr "Simpan %s"
 
-#: remmina/src/remmina_init_dialog.c:362 remmina/src/remmina_file_editor.c:884
-#: remmina-plugins/vnc/vnc_plugin.c:1988 remmina-plugins/vnc/vnc_plugin.c:2008
-#: remmina-plugins/nx/nx_plugin.c:760 remmina-plugins/rdp/rdp_plugin.c:1340
-msgid "User name"
-msgstr "Nama pengguna"
-
 #: remmina/src/remmina_init_dialog.c:377
-#: remmina/src/remmina_protocol_widget.c:988
-#: remmina/src/remmina_file_editor.c:426 remmina/src/remmina_file_editor.c:894
+#: remmina/src/remmina_protocol_widget.c:994
+#: remmina/src/remmina_file_editor.c:425 remmina/src/remmina_file_editor.c:893
 msgid "Password"
 msgstr "Kata laluan"
-
-#: remmina/src/remmina_init_dialog.c:393 remmina-plugins/rdp/rdp_plugin.c:1342
-msgid "Domain"
-msgstr "Domain"
 
 #: remmina/src/remmina_init_dialog.c:409
 msgid "Save password"
@@ -620,23 +1006,31 @@ msgstr "Perintah %s gagal pada pelayan SSH (status = %i)."
 msgid "Failed to execute command: %s"
 msgstr "Gagal lakukan perinah: %s"
 
-#: remmina/src/remmina_protocol_widget.c:979
+#: remmina/src/remmina_protocol_widget.c:985
 #, c-format
 msgid "%s password"
 msgstr "Kata laluan %s"
 
-#: remmina/src/remmina_protocol_widget.c:1164
+#: remmina/src/remmina_protocol_widget.c:988 remmina/src/remmina_ssh.c:381
+msgid "SSH password"
+msgstr "Kata laluan SSH"
+
+#: remmina/src/remmina_protocol_widget.c:991 remmina/src/remmina_ssh.c:385
+msgid "SSH private key passphrase"
+msgstr "Frasa laluan kunci peribadi SSH"
+
+#: remmina/src/remmina_protocol_widget.c:1170
 #, c-format
 msgid "Listening on port %i for an incoming %s connection..."
 msgstr "Mendengat pada port %i untuk sambungan %s masuk..."
 
-#: remmina/src/remmina_protocol_widget.c:1172
+#: remmina/src/remmina_protocol_widget.c:1178
 msgid "Authentication failed. Trying to reconnect..."
 msgstr "Pengesahihan gagal. Cuba menyambung semula..."
 
-#: remmina/src/remmina_protocol_widget.c:1240
-#: remmina/src/remmina_file_editor.c:379 remmina/src/remmina_file_editor.c:832
-#: remmina/src/remmina_file_editor.c:845 remmina/ui/remmina_main.glade:670
+#: remmina/src/remmina_protocol_widget.c:1246
+#: remmina/src/remmina_file_editor.c:379 remmina/src/remmina_file_editor.c:831
+#: remmina/src/remmina_file_editor.c:844 remmina/ui/remmina_main.glade:659
 msgid "Server"
 msgstr "Pelayan"
 
@@ -670,813 +1064,425 @@ msgstr ""
 msgid "Choose a Remote Desktop Server"
 msgstr "Pilih Pelayan Desktop Jauh"
 
-#: remmina/src/remmina_file_editor.c:331 remmina/src/remmina_file_editor.c:338
-#: remmina-plugins/nx/nx_plugin.c:759
-msgid "Identity file"
-msgstr "Fail identiti"
-
 #: remmina/src/remmina_file_editor.c:340
 msgid "_Open"
 msgstr ""
 
-#: remmina/src/remmina_file_editor.c:404
+#: remmina/src/remmina_file_editor.c:403
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Layar rangkaian untuk mencari pelayan %s"
 
-#: remmina/src/remmina_file_editor.c:461 remmina/src/remmina_pref_dialog.c:79
+#: remmina/src/remmina_file_editor.c:460 remmina/src/remmina_pref_dialog.c:79
 #: remmina/ui/remmina_preferences.glade:250
 msgid "Resolutions"
 msgstr "Resolusi"
 
-#: remmina/src/remmina_file_editor.c:461 remmina/src/remmina_pref_dialog.c:79
+#: remmina/src/remmina_file_editor.c:460 remmina/src/remmina_pref_dialog.c:79
 msgid "Configure the available resolutions"
 msgstr ""
 
-#: remmina/src/remmina_file_editor.c:479
+#: remmina/src/remmina_file_editor.c:478
 msgid "Resolution"
 msgstr "Resolusi"
 
-#: remmina/src/remmina_file_editor.c:485
+#: remmina/src/remmina_file_editor.c:484
 msgid "Use window size"
 msgstr "Guna saiz tetingkap"
 
-#: remmina/src/remmina_file_editor.c:485
+#: remmina/src/remmina_file_editor.c:484
 msgid "Use client resolution"
 msgstr "Guna resolusi klien"
 
-#: remmina/src/remmina_file_editor.c:494 remmina/src/remmina_file_editor.c:811
+#: remmina/src/remmina_file_editor.c:493 remmina/src/remmina_file_editor.c:810
 msgid "Custom"
 msgstr "Suai"
 
-#: remmina/src/remmina_file_editor.c:677
+#: remmina/src/remmina_file_editor.c:676
 msgid "Keyboard mapping"
 msgstr "Pemetaan papan kekunci"
 
-#: remmina/src/remmina_file_editor.c:783
+#: remmina/src/remmina_file_editor.c:782
 msgid "Enable SSH tunnel"
 msgstr "Benarkan terowong SSH"
 
-#: remmina/src/remmina_file_editor.c:790
+#: remmina/src/remmina_file_editor.c:789
 msgid "Tunnel via loopback address"
 msgstr "Terowong melalui alamat gelung balik"
 
-#: remmina/src/remmina_file_editor.c:802
+#: remmina/src/remmina_file_editor.c:801
 #, c-format
 msgid "Same server at port %i"
 msgstr "Pelayan yang sama pada port %i"
 
-#: remmina/src/remmina_file_editor.c:857
+#: remmina/src/remmina_file_editor.c:856
 msgid "Character set"
 msgstr "Set aksara"
 
-#: remmina/src/remmina_file_editor.c:863
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:403 remmina-plugins/nx/nx_plugin.c:764
-#: remmina-plugins/rdp/rdp_plugin.c:1365
-msgid "Startup program"
-msgstr "Program permulaan"
-
-#: remmina/src/remmina_file_editor.c:872 remmina-plugins/rdp/rdp_plugin.c:1366
-msgid "Startup path"
-msgstr "Laluan permulaan"
-
-#: remmina/src/remmina_file_editor.c:880
+#: remmina/src/remmina_file_editor.c:879
 msgid "SSH Authentication"
 msgstr "Pengesahihan SSH"
 
-#: remmina/src/remmina_file_editor.c:887
+#: remmina/src/remmina_file_editor.c:886
 msgid "SSH Agent (automatic)"
 msgstr ""
 
-#: remmina/src/remmina_file_editor.c:901
+#: remmina/src/remmina_file_editor.c:900
 msgid "Public key (automatic)"
 msgstr "Kunci awam (automatik)"
 
-#: remmina/src/remmina_file_editor.c:960
+#: remmina/src/remmina_file_editor.c:959
 msgid "Basic"
 msgstr "Asas"
 
-#: remmina/src/remmina_file_editor.c:967
+#: remmina/src/remmina_file_editor.c:966
 msgid "Advanced"
 msgstr "Lanjutan"
 
-#: remmina/src/remmina_file_editor.c:1184
+#: remmina/src/remmina_file_editor.c:1183
 msgid "Default settings saved."
 msgstr "Tetapan lalai disimpan."
 
-#: remmina/src/remmina_file_editor.c:1235
+#: remmina/src/remmina_file_editor.c:1234
 msgid "Remote Desktop Preference"
 msgstr "Keutamaan Desktop Jauh"
 
-#: remmina/src/remmina_file_editor.c:1246 remmina/ui/remmina_main.glade:71
+#: remmina/src/remmina_file_editor.c:1245 remmina/ui/remmina_main.glade:71
 #: remmina/ui/remmina_main.glade:72
 msgid "Connect"
 msgstr ""
 
-#: remmina/src/remmina_file_editor.c:1257
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:381
-msgid "Default"
-msgstr "Lalai"
-
-#: remmina/src/remmina_file_editor.c:1346
+#: remmina/src/remmina_file_editor.c:1345
 msgid "Profile"
 msgstr "Profil"
 
-#: remmina/src/remmina_file_editor.c:1364
+#: remmina/src/remmina_file_editor.c:1363
 msgid "Quick Connect"
 msgstr "Sambung Pantas"
 
-#: remmina/src/remmina_file_editor.c:1387
+#: remmina/src/remmina_file_editor.c:1376 remmina/src/remmina_ftp_client.c:986
+#: remmina/ui/remmina_main.glade:645
+msgid "Group"
+msgstr "Kumpulan"
+
+#: remmina/src/remmina_file_editor.c:1389
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Guna '%s' sebagai pembatas sub-kumpulan"
 
-#: remmina/src/remmina_file_editor.c:1406
+#: remmina/src/remmina_file_editor.c:1408
 msgid "Pre Command"
 msgstr ""
 
-#: remmina/src/remmina_file_editor.c:1422
-#: remmina/src/remmina_file_editor.c:1444
+#: remmina/src/remmina_file_editor.c:1424
+#: remmina/src/remmina_file_editor.c:1446
 msgid "A command or a script name/path."
 msgstr ""
 
-#: remmina/src/remmina_file_editor.c:1428
+#: remmina/src/remmina_file_editor.c:1430
 msgid "Post Command"
 msgstr ""
 
-#: remmina/src/remmina_sftp_client.c:176
+#: remmina/src/remmina_file_editor.c:1501
+#: remmina/src/remmina_file_editor.c:1522
+#: remmina/src/remmina_connection_window.c:3546
 #, c-format
-msgid "Error creating directory %s."
-msgstr "Ralat mencipta direktori %s."
+msgid "File %s not found."
+msgstr "Fail %s tidak ditemui."
 
-#: remmina/src/remmina_sftp_client.c:184 remmina/src/remmina_sftp_client.c:207
+#: remmina/src/remmina_ssh.c:192
 #, c-format
-msgid "Error creating file %s."
-msgstr "Ralat mencipta fail %s."
+msgid "SSH password authentication failed: %s"
+msgstr "Pengesahihan kata laluan SSH gagal: %s"
 
-#: remmina/src/remmina_sftp_client.c:225
+#: remmina/src/remmina_ssh.c:211 remmina/src/remmina_ssh.c:221
+#: remmina/src/remmina_ssh.c:230
 #, c-format
-msgid "Error opening file %s on server. %s"
-msgstr "Ralat membuka fail %s pada pelayan. %s"
+msgid "SSH public key authentication failed: %s"
+msgstr "Pengesahihan kunci awam SSH gagal: %s"
 
-#: remmina/src/remmina_sftp_client.c:251
+#: remmina/src/remmina_ssh.c:212
+msgid "SSH Key file not yet set."
+msgstr "Fail Kunci SSh belum lagi ditetapkan."
+
+#: remmina/src/remmina_ssh.c:247
 #, c-format
-msgid "Error writing file %s."
-msgstr "Ralat menulis fail %s."
+msgid "SSH automatic public key authentication failed: %s"
+msgstr "Pengesahihan kunci awam automatik SSH gagal: %s"
 
-#: remmina/src/remmina_sftp_client.c:295
+#: remmina/src/remmina_ssh.c:264
 #, c-format
-msgid "Error opening directory %s. %s"
-msgstr "Ralat membuka direktori %s. %s"
-
-#: remmina/src/remmina_sftp_client.c:418
-#, c-format
-msgid "Error creating folder %s on server. %s"
-msgstr "Ralat mencipta folder %s pada pelayan. %s"
-
-#: remmina/src/remmina_sftp_client.c:447 remmina/src/remmina_sftp_client.c:472
-#, c-format
-msgid "Error creating file %s on server. %s"
-msgstr "Ralat mencipta fail %s pada pelayan. %s"
-
-#: remmina/src/remmina_sftp_client.c:495
-#, c-format
-msgid "Error opening file %s."
-msgstr "Ralat membuka fail %s"
-
-#: remmina/src/remmina_sftp_client.c:519
-#, c-format
-msgid "Error writing file %s on server. %s"
-msgstr "Ralat menulis fail %s pada pelayan. %s"
-
-#: remmina/src/remmina_sftp_client.c:745 remmina/src/remmina_sftp_client.c:818
-#, c-format
-msgid "Failed to open directory %s. %s"
-msgstr "Gagal membuka direktori %s. %s"
-
-#: remmina/src/remmina_sftp_client.c:764
-#, c-format
-msgid "Failed reading directory. %s"
-msgstr "Gagal membaca direktori. %s"
-
-#: remmina/src/remmina_sftp_client.c:885
-msgid ""
-"File transfer currently in progress.\n"
-"Are you sure to cancel it?"
-msgstr ""
-"Pemindahan fail kini dalam proses.\n"
-"Anda pasti hendak membatalnya?"
-
-#: remmina/src/remmina_sftp_client.c:922
-#, c-format
-msgid "Failed to delete '%s'. %s"
-msgstr "Gagal memadam '%s'. %s"
-
-#: remmina/src/remmina_sftp_client.c:1001
-msgid "File exists"
-msgstr "Fail telah wujud"
-
-#: remmina/src/remmina_sftp_client.c:1004
-msgid "Resume"
-msgstr "Sambung Semula"
-
-#: remmina/src/remmina_sftp_client.c:1005
-msgid "Overwrite"
-msgstr "Tulis-Ganti"
-
-#: remmina/src/remmina_sftp_client.c:1019
-msgid "Question"
+msgid "SSH public key authentication with ssh agent failed: %s"
 msgstr ""
 
-#: remmina/src/remmina_sftp_client.c:1031
-msgid "The following file already exists in the target folder:"
-msgstr "Fail berikut telah wujud dalam folder sasaran:"
+#: remmina/src/remmina_ssh.c:380
+#, c-format
+msgid "Authenticating %s's password to SSH server %s..."
+msgstr "Mengesahihkan kata laluan %s ke pelayan SSH %s..."
+
+#: remmina/src/remmina_ssh.c:384
+#, c-format
+msgid "Authenticating %s's identity to SSH server %s..."
+msgstr "Mengesahihkan identiti %s ke pelayan SSH %s..."
+
+#: remmina/src/remmina_ssh.c:453
+#, c-format
+msgid "Failed to startup SSH session: %s"
+msgstr "Gagal memulakan sesi SSH: %s"
+
+#: remmina/src/remmina_ssh.c:831
+#, c-format
+msgid "Failed to connect to the SSH tunnel destination: %s"
+msgstr "Gagal menyambung ke destinasi terowong SSH: %s"
+
+#: remmina/src/remmina_ssh.c:864
+#, c-format
+msgid "Failed to execute %s on SSH server : %%s"
+msgstr "Gagal lakukan %s pada pelayan SSH: %%s"
+
+#: remmina/src/remmina_ssh.c:902 remmina/src/remmina_ssh.c:929
+#, c-format
+msgid "Failed to request port forwarding : %s"
+msgstr "Gagal meminta pemajuan port: %s"
+
+#: remmina/src/remmina_ssh.c:977
+msgid "No response from the server."
+msgstr "Tiada balasan dari pelayan."
+
+#: remmina/src/remmina_ssh.c:1407
+#, c-format
+msgid "Failed to create sftp session: %s"
+msgstr "Gagal mencipta sesi sftp: %s"
+
+#: remmina/src/remmina_ssh.c:1412
+#, c-format
+msgid "Failed to initialize sftp session: %s"
+msgstr "Gagal awalkan sesi sftp: %s"
 
 #: remmina/src/remmina_pref_dialog.c:95
 msgid "Recent lists cleared."
 msgstr "Senarai terkini dikosongkan."
 
 #: remmina/src/remmina_pref_dialog.c:106
+#: remmina/src/remmina_connection_window.c:1542
+#: remmina/ui/remmina_preferences.glade:276
+msgid "Keystrokes"
+msgstr ""
+
+#: remmina/src/remmina_pref_dialog.c:106
 #: remmina/ui/remmina_preferences.glade:286
 msgid "Configure the keystrokes"
 msgstr ""
 
-#: remmina/src/remmina_sftp_plugin.c:283
-msgid "Show Hidden Files"
-msgstr "Papar Fail Tersembunyi"
+#: remmina/src/remmina_icon.c:136
+msgid "Open Main Window"
+msgstr "Buka Tetingkap Utama"
 
-#: remmina/src/remmina_sftp_plugin.c:284
-msgid "Overwrite all"
+#: remmina/src/remmina_icon.c:141
+msgid "_Preferences"
 msgstr ""
 
-#: remmina/src/remmina_sftp_plugin.c:293
-msgid "SFTP - Secure File Transfer"
-msgstr "SFTP - Pemindahan Fail Selamat"
-
-#: remmina/src/remmina_ssh_plugin.c:457
-msgid "Select All (Host+a)"
+#: remmina/src/remmina_icon.c:146 remmina/ui/remmina_main.glade:52
+#: remmina/ui/remmina_main.glade:53
+msgid "_About"
 msgstr ""
 
-#: remmina/src/remmina_ssh_plugin.c:458
-msgid "Copy (Host+c)"
+#: remmina/src/remmina_icon.c:156
+msgid "Enable Service Discovery"
+msgstr "Benarkan Penemuan Perkhidmatan"
+
+#: remmina/src/remmina_icon.c:170 remmina/ui/remmina_main.glade:33
+#: remmina/ui/remmina_main.glade:34
+msgid "_Quit"
 msgstr ""
 
-#: remmina/src/remmina_ssh_plugin.c:459
-msgid "Paste (Host+v)"
+#: remmina/src/remmina_icon.c:397 remmina/src/remmina_icon.c:536
+msgid "Remmina Applet"
+msgstr "Aplet Remmina"
+
+#: remmina/src/remmina_icon.c:399 remmina/src/remmina_icon.c:538
+msgid "Connect to remote desktops through the applet menu"
+msgstr "Sambung ke desktop jauh melalui menu aplet"
+
+#: remmina/src/remmina_public.c:679
+msgid "Please enter format 'widthxheight'."
+msgstr "Sila masukkan format 'lebarxtinggi'."
+
+#: remmina/src/remmina_applet_menu_item.c:115
+msgid "Discovered"
+msgstr "Ditemui"
+
+#: remmina/src/remmina_applet_menu_item.c:120
+msgid "New Connection"
+msgstr "Sambungan Baru"
+
+#: remmina/src/remmina_ftp_client.c:427
+msgid "Choose download location"
+msgstr "Pilih lokasi muat turun"
+
+#: remmina/src/remmina_ftp_client.c:572
+msgid "Are you sure to delete the selected files on server?"
+msgstr "Anda pasti hendak memadam fail terpilih dalam pelayan?"
+
+#: remmina/src/remmina_ftp_client.c:631
+msgid "Choose a file to upload"
+msgstr "Pilih fail untuk dimuat naik"
+
+#: remmina/src/remmina_ftp_client.c:639
+msgid "Upload folder"
+msgstr "Muat naik folder"
+
+#: remmina/src/remmina_ftp_client.c:700 remmina/src/remmina_ftp_client.c:825
+msgid "Download"
+msgstr "Muat Turun"
+
+#: remmina/src/remmina_ftp_client.c:707 remmina/src/remmina_ftp_client.c:836
+msgid "Upload"
+msgstr "Muat Naik"
+
+#: remmina/src/remmina_ftp_client.c:714 remmina/ui/remmina_main.glade:102
+#: remmina/ui/remmina_main.glade:103
+msgid "_Delete"
 msgstr ""
 
-#: remmina/src/remmina_ssh_plugin.c:645 remmina/ui/remmina_main.glade:92
-#: remmina/ui/remmina_main.glade:93 remmina/ui/remmina_preferences.glade:1311
-msgid "Copy"
-msgstr "Salin"
-
-#: remmina/src/remmina_ssh_plugin.c:645
-msgid "_Copy"
+#: remmina/src/remmina_ftp_client.c:804
+msgid "Home"
 msgstr ""
 
-#: remmina/src/remmina_ssh_plugin.c:646
-#: remmina/ui/remmina_preferences.glade:1350
-msgid "Paste"
-msgstr "Tampal"
+#: remmina/src/remmina_ftp_client.c:806
+msgid "Go to home folder"
+msgstr "Pergi ke folder rumah"
 
-#: remmina/src/remmina_ssh_plugin.c:646
-msgid "_Paste"
+#: remmina/src/remmina_ftp_client.c:811
+msgid "Up"
 msgstr ""
 
-#: remmina/src/remmina_ssh_plugin.c:647
-msgid "Select all"
+#: remmina/src/remmina_ftp_client.c:813
+msgid "Go to parent folder"
+msgstr "Pergi ke folder induk"
+
+#: remmina/src/remmina_ftp_client.c:820
+msgid "Refresh current folder"
+msgstr "Segar semula folder semasa"
+
+#: remmina/src/remmina_ftp_client.c:827
+msgid "Download from server"
+msgstr "Muat turun dari pelayan"
+
+#: remmina/src/remmina_ftp_client.c:838
+msgid "Upload to server"
+msgstr "Muat naik ke pelayan"
+
+#: remmina/src/remmina_ftp_client.c:845
+msgid "Delete"
 msgstr ""
 
-#: remmina/src/remmina_ssh_plugin.c:647
-msgid "_Select all"
-msgstr ""
+#: remmina/src/remmina_ftp_client.c:847
+msgid "Delete files on server"
+msgstr "Padam fail pada pelayan"
 
-#: remmina/src/remmina_ssh_plugin.c:656
-msgid "SSH - Secure Shell"
-msgstr "SSH - Shell Selamat"
+#: remmina/src/remmina_ftp_client.c:959 remmina/src/remmina_ftp_client.c:1028
+msgid "File Name"
+msgstr "Nama Fail"
 
-#: remmina/src/remmina.c:75
-msgid "Show about dialog"
-msgstr ""
+#: remmina/src/remmina_ftp_client.c:972 remmina/src/remmina_ftp_client.c:1057
+msgid "Size"
+msgstr "Saiz"
 
-#: remmina/src/remmina.c:76
-msgid "Connect to a .remmina file"
-msgstr ""
+#: remmina/src/remmina_ftp_client.c:980
+msgid "User"
+msgstr "Pengguna"
 
-#: remmina/src/remmina.c:77
-msgid "Edit a .remmina file"
-msgstr ""
+#: remmina/src/remmina_ftp_client.c:992
+msgid "Permission"
+msgstr "Keizinan"
 
-#: remmina/src/remmina.c:79 remmina/ui/remmina_main.glade:257
-msgid "Create a new connection profile"
-msgstr ""
+#: remmina/src/remmina_ftp_client.c:1065
+msgid "Progress"
+msgstr "Kemajuan"
 
-#: remmina/src/remmina.c:80
-msgid "Show preferences dialog page"
-msgstr ""
-
-#: remmina/src/remmina.c:81
-msgid "Execute the plugin"
-msgstr ""
-
-#: remmina/src/remmina.c:82
-msgid "Quit the application"
-msgstr ""
-
-#: remmina/src/remmina.c:83
-msgid "Use default server name (for --new)"
-msgstr ""
-
-#: remmina/src/remmina.c:84
-msgid "Use default protocol (for --new)"
-msgstr ""
-
-#: remmina/src/remmina.c:85
-msgid "Start as tray icon"
-msgstr ""
-
-#: remmina/src/remmina.c:86
-msgid "Show the application's version"
-msgstr ""
-
-#: remmina-plugins/vnc/vnc_plugin.c:1018
-msgid "Unable to connect to VNC server"
-msgstr "Tidak boleh sambung ke pelayan VNC"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1019
+#: remmina/src/remmina_exec.c:180
 #, c-format
-msgid "Couldn't convert '%s' to host address"
-msgstr "Tidak dapat tukar '%s' ke alamat hos"
+msgid "Plugin %s is not registered."
+msgstr "Pemalam %s tidak berdaftar."
 
-#: remmina-plugins/vnc/vnc_plugin.c:1020
-#, c-format
-msgid "VNC connection failed: %s"
-msgstr "Sambungan VNC gagal: %s"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1021
-msgid "Your connection has been rejected."
-msgstr "Sambungan anda telah ditolak."
-
-#: remmina-plugins/vnc/vnc_plugin.c:1048
-#, c-format
-msgid "Unknown authentication scheme from VNC server: %s"
-msgstr ""
-
-#: remmina-plugins/vnc/vnc_plugin.c:1050
-msgid "Please retry after enabling encryption on this profile."
-msgstr ""
-
-#: remmina-plugins/vnc/vnc_plugin.c:1957 remmina-plugins/rdp/rdp_plugin.c:1287
-msgid "256 colors (8 bpp)"
-msgstr "Warna 256 (8 bpp)"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1958 remmina-plugins/rdp/rdp_plugin.c:1288
-msgid "High color (15 bpp)"
-msgstr "Warna Tinggi (15 bpp)"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1959 remmina-plugins/rdp/rdp_plugin.c:1289
-msgid "High color (16 bpp)"
-msgstr "Warna Tinggi (16 bpp)"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1960 remmina-plugins/rdp/rdp_plugin.c:1290
-msgid "True color (24 bpp)"
-msgstr "Warna sebenar (24 bpp)"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1961 remmina-plugins/rdp/rdp_plugin.c:1291
-msgid "True color (32 bpp)"
-msgstr "Warna sebenar (32 bpp)"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1968 remmina-plugins/nx/nx_plugin.c:740
-#: remmina-plugins/rdp/rdp_plugin.c:1299 remmina-plugins/rdp/rdp_settings.c:204
-msgid "Poor (fastest)"
-msgstr "Teruk (paling pantas)"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1969 remmina-plugins/nx/nx_plugin.c:741
-#: remmina-plugins/rdp/rdp_plugin.c:1300 remmina-plugins/rdp/rdp_settings.c:206
-msgid "Medium"
-msgstr "Sederhana"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1970 remmina-plugins/nx/nx_plugin.c:742
-#: remmina-plugins/rdp/rdp_plugin.c:1301 remmina-plugins/rdp/rdp_settings.c:208
-msgid "Good"
-msgstr "Baik"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1971 remmina-plugins/nx/nx_plugin.c:743
-#: remmina-plugins/rdp/rdp_plugin.c:1302 remmina-plugins/rdp/rdp_settings.c:210
-msgid "Best (slowest)"
-msgstr "Terbaik (paling lambat)"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1987
-msgid "Repeater"
-msgstr "Pengulang"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1990 remmina-plugins/vnc/vnc_plugin.c:2010
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:402
-#: remmina-plugins/rdp/rdp_plugin.c:1345
-msgid "Color depth"
-msgstr "Kedalaman warna"
-
-#: remmina-plugins/vnc/vnc_plugin.c:1991 remmina-plugins/vnc/vnc_plugin.c:2011
-#: remmina-plugins/nx/nx_plugin.c:763 remmina-plugins/rdp/rdp_plugin.c:1361
-msgid "Quality"
-msgstr "Kualiti"
-
-#: remmina-plugins/vnc/vnc_plugin.c:2007
-msgid "Listen on port"
-msgstr "Dengar pada port"
-
-#: remmina-plugins/vnc/vnc_plugin.c:2027
-msgid "Show remote cursor"
-msgstr "Papar kursor jauh"
-
-#: remmina-plugins/vnc/vnc_plugin.c:2028 remmina-plugins/vnc/vnc_plugin.c:2041
-#: remmina-plugins/spice/spice_plugin.c:444
-#: remmina-plugins/spice/spice_plugin.c:456
-msgid "View only"
-msgstr "Papar sahaja"
-
-#: remmina-plugins/vnc/vnc_plugin.c:2029 remmina-plugins/nx/nx_plugin.c:779
-#: remmina-plugins/rdp/rdp_plugin.c:1373
-#: remmina-plugins/spice/spice_plugin.c:445
-#: remmina-plugins/spice/spice_plugin.c:457
-msgid "Disable clipboard sync"
-msgstr "Lumpuhkan segerakan papan keratan"
-
-#: remmina-plugins/vnc/vnc_plugin.c:2030 remmina-plugins/nx/nx_plugin.c:780
-msgid "Disable encryption"
-msgstr "Lumpuhkan penyulitan"
-
-#: remmina-plugins/vnc/vnc_plugin.c:2031 remmina-plugins/vnc/vnc_plugin.c:2042
-msgid "Disable server input"
-msgstr "Lumpuhkan input pelayan"
-
-#: remmina-plugins/vnc/vnc_plugin.c:2032 remmina-plugins/nx/nx_plugin.c:782
-#: remmina-plugins/rdp/rdp_plugin.c:1372
-#: remmina-plugins/spice/spice_plugin.c:446
-msgid "Disable password storing"
-msgstr ""
-
-#: remmina-plugins/vnc/vnc_plugin.c:2044
-msgid "Open Chat..."
-msgstr "Buka Sembang..."
-
-#: remmina-plugins/vnc/vnc_plugin.c:2045
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:414 remmina-plugins/nx/nx_plugin.c:790
-#: remmina-plugins/rdp/rdp_plugin.c:1385
-#: remmina-plugins/spice/spice_plugin.c:458
-msgid "Send Ctrl+Alt+Delete"
-msgstr ""
-
-#: remmina-plugins/vnc/vnc_plugin.c:2056
-msgid "VNC - Virtual Network Computing"
-msgstr "VNC - Pengkomputeran Rangkaian Maya"
-
-#: remmina-plugins/vnc/vnc_plugin.c:2078
-msgid "VNC - Incoming Connection"
-msgstr "VNC - Sambungan Masuk"
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:99
-msgid "Run out of available local X display number."
-msgstr ""
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:286 remmina-plugins/nx/nx_plugin.c:629
-#, c-format
-msgid "Protocol %s is unavailable because GtkSocket only works under Xorg"
-msgstr ""
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:382
-msgid "Grayscale"
-msgstr "Skala kelabu"
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:383
-msgid "256 colors"
-msgstr "Warna 256"
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:384
-msgid "High color (16 bit)"
-msgstr "Warna tinggi (16 bit)"
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:385
-msgid "True color (24 bit)"
-msgstr "Warna sebenar (24 bit)"
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:404 remmina-plugins/nx/nx_plugin.c:781
-msgid "Use local cursor"
-msgstr "Guna kursor setempat"
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:405
-msgid "Disconnect after one session"
-msgstr "Putuskan selepas satu sesi"
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:406
-msgid "Listening connection on protocol TCP"
-msgstr ""
-
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:423
-msgid "XDMCP - X Remote Session"
-msgstr "XDMCP - Sesi Jauh X"
-
-#: remmina-plugins/nx/nx_plugin.c:799
-msgid "NX - NX Technology"
-msgstr "NX - Teknologi NX"
-
-#: remmina-plugins/nx/nx_session_manager.c:106
-msgid "Terminating"
-msgstr "Hentikan"
-
-#: remmina-plugins/nx/nx_session_manager.c:155
-#, c-format
-msgid "NX Sessions on %s"
-msgstr "Sesi NX pada %s"
-
-#: remmina-plugins/nx/nx_session_manager.c:160
-msgid "Attach"
-msgstr "Lampirkan"
-
-#: remmina-plugins/nx/nx_session_manager.c:166
-msgid "Restore"
-msgstr "Pulihkan"
-
-#: remmina-plugins/nx/nx_session_manager.c:167
-msgid "Start"
-msgstr "Mula"
-
-#: remmina-plugins/nx/nx_session_manager.c:173
-msgid "Terminate"
-msgstr "Hentikan"
-
-#: remmina-plugins/nx/nx_session_manager.c:205
-msgid "Display"
-msgstr "Papar"
-
-#: remmina-plugins/nx/nx_session_manager.c:212
-msgid "Status"
-msgstr "Status"
-
-#: remmina-plugins/rdp/rdp_plugin.c:115
-msgid "The server name cannot be blank."
-msgstr ""
-
-#: remmina-plugins/rdp/rdp_plugin.c:128
-#, c-format
-msgid "Unable to find the address of RDP server %s."
-msgstr ""
-
-#: remmina-plugins/rdp/rdp_plugin.c:1021
+#: remmina/src/remmina_connection_window.c:384
 #, c-format
 msgid ""
-"Authentication to RDP server %s failed.\n"
-"Check username, password and domain."
+"There are %i active connections in the current window. Are you sure to close?"
+msgstr ""
+"Terdapat %i sambungan aktif dalam tetingkap semasa. Anda pasti hendak "
+"menutupnya?"
+
+#: remmina/src/remmina_connection_window.c:1071
+msgid "Viewport fullscreen mode"
+msgstr "Mod skrin penuh port pandang"
+
+#: remmina/src/remmina_connection_window.c:1081
+msgid "Scrolled fullscreen mode"
+msgstr "Mod skrin penuh bertatal"
+
+#: remmina/src/remmina_connection_window.c:1146
+msgid "Keep aspect ratio when scaled"
 msgstr ""
 
-#: remmina-plugins/rdp/rdp_plugin.c:1027
-#, c-format
-msgid "Connection to RDP server %s failed."
+#: remmina/src/remmina_connection_window.c:1156
+msgid "Fill client window when scaled"
 msgstr ""
 
-#: remmina-plugins/rdp/rdp_plugin.c:1030
-#, c-format
-msgid "Unable to connect to RDP server %s"
-msgstr "Tidak boleh sambung ke pelayan RDP %s"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1292
-msgid "RemoteFX (32 bpp)"
-msgstr "RemoteFX (32 bpp)"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1309
-msgid "Off"
-msgstr "Dimatikan"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1311
-msgid "Local - low quality"
-msgstr "Setempat - kualiti rendah"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1312
-msgid "Local - medium quality"
-msgstr "Setempat - kualiti sederhana"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1313
-msgid "Local - high quality"
-msgstr "Setempat kualiti tinggi"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1321
-msgid "Negotiate"
-msgstr "Runding"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1343
-msgid "RD Gateway server"
-msgstr ""
-
-#: remmina-plugins/rdp/rdp_plugin.c:1346
-msgid "Share folder"
-msgstr "Folder kongsi"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1362
-msgid "Sound"
-msgstr "Bunyi"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1363
-msgid "Security"
-msgstr "Keselamatan"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1364
-msgid "Client name"
-msgstr "Nama klien"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1367
-msgid "Load Balance Info"
-msgstr ""
-
-#: remmina-plugins/rdp/rdp_plugin.c:1368
-msgid "Ignore certificate"
-msgstr ""
-
-#: remmina-plugins/rdp/rdp_plugin.c:1369
-msgid "Redirect local microphone"
-msgstr ""
-
-#: remmina-plugins/rdp/rdp_plugin.c:1370
-#: remmina-plugins/spice/spice_plugin.c:448
-msgid "Share smartcard"
-msgstr ""
-
-#: remmina-plugins/rdp/rdp_plugin.c:1371
-msgid "Share local printers"
-msgstr "Kongsi pencetak setempat"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1374
-msgid "Attach to console (2003/2003 R2)"
-msgstr "Lampir ke konsol (Windows 2003 / 2003 R2)"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1375
-msgid "Server detection using RD Gateway"
-msgstr ""
-
-#: remmina-plugins/rdp/rdp_plugin.c:1395
-msgid "RDP - Remote Desktop Protocol"
-msgstr "RDP - Protokol Desktop Jauh"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1418
-msgid "RDP - RDP File Handler"
-msgstr "RDP - Pengendali Fail RDP"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1433
-msgid "RDP - Preferences"
-msgstr "RDP - Keutamaan"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1466
-msgid "Export connection in Windows .rdp file format"
-msgstr "Eksport sambungan dalam format fail .drp Windows"
-
-#: remmina-plugins/rdp/rdp_event.c:296
-#, c-format
-msgid "Reconnection in progress. Attempt %d of %d..."
-msgstr ""
-
-#: remmina-plugins/rdp/rdp_settings.c:168
-msgid "<Auto detect>"
-msgstr "<kesan sendiri>"
-
-#: remmina-plugins/rdp/rdp_settings.c:202
-msgid "<Choose a quality level to edit...>"
-msgstr ""
-
-#: remmina-plugins/rdp/rdp_settings.c:312
-msgid "Keyboard layout"
-msgstr "Bentangan papan kekunci"
-
-#: remmina-plugins/rdp/rdp_settings.c:337
-msgid "Use client keyboard mapping"
-msgstr "Guna pemetaan papan kekunci klien"
-
-#: remmina-plugins/rdp/rdp_settings.c:347
-msgid "Quality settings"
-msgstr ""
-
-#: remmina-plugins/rdp/rdp_settings.c:367
-msgid "Wallpaper"
-msgstr "Kertas Dinding"
-
-#: remmina-plugins/rdp/rdp_settings.c:374
-msgid "Window drag"
-msgstr "Seretan Tetingkap"
-
-#: remmina-plugins/rdp/rdp_settings.c:381
-msgid "Menu animation"
-msgstr "Animasi menu"
-
-#: remmina-plugins/rdp/rdp_settings.c:388
-msgid "Theme"
-msgstr "Tema"
-
-#: remmina-plugins/rdp/rdp_settings.c:395
-msgid "Cursor shadow"
-msgstr "Bayang kursor"
-
-#: remmina-plugins/rdp/rdp_settings.c:402
-msgid "Cursor blinking"
-msgstr "Kelipan kursor"
-
-#: remmina-plugins/rdp/rdp_settings.c:409
-msgid "Font smoothing"
-msgstr "Pelicinan fon"
-
-#: remmina-plugins/rdp/rdp_settings.c:416
-msgid "Composition"
-msgstr "Gubahan"
-
-#: remmina-plugins/spice/spice_plugin.c:230
-#, c-format
-msgid "Disconnected from SPICE server %s."
-msgstr ""
-
-#: remmina-plugins/spice/spice_plugin.c:244
-msgid "Invalid password."
-msgstr ""
-
-#: remmina-plugins/spice/spice_plugin.c:251
-msgid "Connection to SPICE server failed."
-msgstr ""
-
-#: remmina-plugins/spice/spice_plugin.c:331
-msgid "USB redirection error"
-msgstr ""
-
-#: remmina-plugins/spice/spice_plugin.c:351
-#: remmina-plugins/spice/spice_plugin.c:459
-msgid "Select USB devices for redirection"
-msgstr ""
-
-#: remmina-plugins/spice/spice_plugin.c:354
-msgid "_Close"
-msgstr ""
-
-#: remmina-plugins/spice/spice_plugin.c:447
-msgid "Enable audio channel"
-msgstr ""
-
-#: remmina-plugins/spice/spice_plugin.c:468
-msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr ""
-
-#: remmina-plugins/telepathy/telepathy_plugin.c:57
-msgid "Telepathy - Desktop Sharing"
-msgstr "Telepathy - Perkongsian Desktop"
-
-#: remmina-plugins/telepathy/telepathy_channel_handler.c:255
-#, c-format
+#: remmina/src/remmina_connection_window.c:1635
 msgid ""
-"%s wants to share his/her desktop.\n"
-"Do you accept the invitation?"
-msgstr ""
-"%s ingin berkongsi desktopnya.\n"
-"Anda terima jemputan?"
-
-#: remmina-plugins/telepathy/telepathy_channel_handler.c:258
-msgid "Desktop sharing invitation"
-msgstr "Jemputan perkongsian desktop"
-
-#: remmina/ui/remmina_survey.glade:32 remmina/ui/remmina_string_list.glade:8
-#: remmina/ui/remmina_string_list.glade:9
-#: remmina/ui/remmina_string_list.glade:63
-#: remmina/ui/remmina_preferences.glade:33
-#: remmina/ui/remmina_preferences.glade:34
-#: remmina/ui/remmina_preferences.glade:57
-msgid "Close"
+"Warning: screenshot is scaled or distorted. Disable scaling to have better "
+"screenshot."
 msgstr ""
 
-#: remmina/ui/remmina_survey.glade:40 remmina/ui/remmina_survey.glade:87
-msgid "Remmina User Survey"
+#: remmina/src/remmina_connection_window.c:1738
+msgid "Resize the window to fit in remote resolution"
+msgstr "Saiz semula tetingkap untuk muatkannya dalam resolusi jauh"
+
+#: remmina/src/remmina_connection_window.c:1748
+#: remmina/ui/remmina_preferences.glade:697
+msgid "Toggle fullscreen mode"
+msgstr "Togol mod skrin penuh"
+
+#: remmina/src/remmina_connection_window.c:1788
+#: remmina/ui/remmina_preferences.glade:753
+msgid "Switch tab pages"
+msgstr "Tukar  halaman tab"
+
+#: remmina/src/remmina_connection_window.c:1802
+#: remmina/ui/remmina_preferences.glade:794
+msgid "Toggle scaled mode"
+msgstr "Togol mod berskala"
+
+#: remmina/src/remmina_connection_window.c:1835
+msgid "Grab all keyboard events"
+msgstr "Cekau semua peristiwa papan kekunci"
+
+#: remmina/src/remmina_connection_window.c:1844
+#: remmina/ui/remmina_main.glade:42 remmina/ui/remmina_main.glade:43
+msgid "Preferences"
+msgstr "Keutamaan"
+
+#: remmina/src/remmina_connection_window.c:1852
+#: remmina/src/remmina_connection_window.c:1853
+msgid "Tools"
+msgstr "Alatan"
+
+#: remmina/src/remmina_connection_window.c:1865
+#: remmina/ui/remmina_preferences.glade:934
+msgid "Screenshot"
 msgstr ""
 
-#: remmina/ui/remmina_string_list.glade:14
-#: remmina/ui/remmina_string_list.glade:158
-msgid "Add"
-msgstr ""
+#: remmina/src/remmina_connection_window.c:1872
+#: remmina/ui/remmina_preferences.glade:850
+msgid "Minimize window"
+msgstr "Minimunkan window"
 
-#: remmina/ui/remmina_string_list.glade:20
-#: remmina/ui/remmina_string_list.glade:137
-msgid "Remove"
-msgstr ""
-
-#: remmina/ui/remmina_string_list.glade:26
-#: remmina/ui/remmina_string_list.glade:116
-msgid "Move up"
-msgstr ""
-
-#: remmina/ui/remmina_string_list.glade:32
-#: remmina/ui/remmina_string_list.glade:95
-msgid "Move down"
-msgstr ""
-
-#: remmina/ui/remmina_spinner.glade:29 remmina/ui/remmina_key_chooser.glade:38
-#: remmina/ui/remmina_key_chooser.glade:53
-msgid "button"
-msgstr ""
-
-#: remmina/ui/remmina_spinner.glade:54
-msgid "PLEASE WAIT ..."
-msgstr ""
+#: remmina/src/remmina_connection_window.c:1879
+#: remmina/ui/remmina_preferences.glade:878
+msgid "Disconnect"
+msgstr "Putuskan"
 
 #: remmina/ui/remmina_key_chooser.glade:14
 #: remmina/ui/remmina_key_chooser.glade:15
@@ -1487,111 +1493,22 @@ msgstr ""
 msgid "Choose a new key"
 msgstr "Pilih kunci baru"
 
+#: remmina/ui/remmina_key_chooser.glade:38
+#: remmina/ui/remmina_key_chooser.glade:53 remmina/ui/remmina_spinner.glade:29
+msgid "button"
+msgstr ""
+
 #: remmina/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key..."
 msgstr "Sila tekan kunci baru..."
 
-#: remmina/ui/remmina_about.glade:30
-msgid "About Remmina"
-msgstr ""
-
-#: remmina/ui/remmina_about.glade:40
-msgid "Remmina Web Site"
-msgstr ""
-
-#: remmina/ui/remmina_main.glade:44
-msgid "Open the preferences dialog"
-msgstr "Buka dialog keutamaan"
-
-#: remmina/ui/remmina_main.glade:73
-msgid "Open the connection to the selected remote desktop file"
-msgstr "Buka sambungan ke fail desktop jauh terpilih"
-
-#: remmina/ui/remmina_main.glade:82 remmina/ui/remmina_main.glade:83
-msgid "_Edit"
-msgstr "_Sunting"
-
-#: remmina/ui/remmina_main.glade:84
-msgid "Edit the selected remote desktop file"
-msgstr "Sunting fail desktop jauh terpilih"
-
-#: remmina/ui/remmina_main.glade:94
-msgid "Create a copy of the selected remote desktop file"
-msgstr "Cipta salinan bagi fail desktop jauh terpilih"
-
-#: remmina/ui/remmina_main.glade:104
-msgid "Delete the selected remote desktop file"
-msgstr "Padam fail desktop jauh terpilih"
-
-#: remmina/ui/remmina_main.glade:112 remmina/ui/remmina_main.glade:113
-msgid "External Tools"
-msgstr ""
-
-#: remmina/ui/remmina_main.glade:124 remmina/ui/remmina_main.glade:125
-msgid "_New"
-msgstr ""
-
-#: remmina/ui/remmina_main.glade:126
-msgid "Create a new remote desktop file"
-msgstr "Cipta fail desktop jauh baru"
-
-#: remmina/ui/remmina_main.glade:138 remmina/ui/remmina_main.glade:139
-#: remmina/ui/remmina_main.glade:528
-msgid "Homepage"
-msgstr "Laman Sesawang"
-
-#: remmina/ui/remmina_main.glade:145 remmina/ui/remmina_main.glade:146
-#: remmina/ui/remmina_main.glade:538
-msgid "Online Wiki"
-msgstr "Wiki Atas Talian"
-
-#: remmina/ui/remmina_main.glade:153 remmina/ui/remmina_main.glade:154
-#: remmina/ui/remmina_main.glade:547
-msgid "G+ Remmina Community"
-msgstr ""
-
-#: remmina/ui/remmina_main.glade:160 remmina/ui/remmina_main.glade:161
-#: remmina/ui/remmina_main.glade:556
-msgid "Donations"
-msgstr ""
-
-#: remmina/ui/remmina_main.glade:167 remmina/ui/remmina_main.glade:168
-#: remmina/ui/remmina_main.glade:566
-msgid "Debug Window"
-msgstr "Tetingkap Nyahpepijat"
-
-#: remmina/ui/remmina_main.glade:175 remmina/ui/remmina_main.glade:176
-#: remmina/ui/remmina_main.glade:585
-msgid "Survey"
-msgstr ""
-
-#: remmina/ui/remmina_main.glade:192 remmina/ui/remmina_main.glade:193
-#: remmina/ui/remmina_main.glade:446
-msgid "Export"
-msgstr "Eksport"
-
-#: remmina/ui/remmina_main.glade:202 remmina/ui/remmina_main.glade:203
-msgid "Statusbar"
-msgstr "Palang Status"
-
-#: remmina/ui/remmina_main.glade:210 remmina/ui/remmina_main.glade:211
-msgid "List View"
-msgstr "Paparan Senarai"
-
-#: remmina/ui/remmina_main.glade:219 remmina/ui/remmina_main.glade:220
-msgid "Tree View"
-msgstr "Paparan Pepohon"
-
-#: remmina/ui/remmina_main.glade:288
-msgid "search string or server name/ip address for quick connect"
-msgstr ""
-
-#: remmina/ui/remmina_main.glade:335
-msgid "Actions"
-msgstr ""
-
-#: remmina/ui/remmina_main.glade:684
-msgid "Last time used"
+#: remmina/ui/remmina_preferences.glade:33
+#: remmina/ui/remmina_preferences.glade:34
+#: remmina/ui/remmina_preferences.glade:57
+#: remmina/ui/remmina_string_list.glade:8
+#: remmina/ui/remmina_string_list.glade:9
+#: remmina/ui/remmina_string_list.glade:63
+msgid "Close"
 msgstr ""
 
 #: remmina/ui/remmina_preferences.glade:41
@@ -1654,236 +1571,375 @@ msgstr "Kosongkan"
 msgid "Configure resolutions"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:300
-msgid "Activate survey dialog on startup"
-msgstr ""
-
-#: remmina/ui/remmina_preferences.glade:317
+#: remmina/ui/remmina_preferences.glade:302
 msgid "Screenshots folder"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:329
+#: remmina/ui/remmina_preferences.glade:314
 msgid "Choose the directory where you want to save Remmina screenshots."
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:332
+#: remmina/ui/remmina_preferences.glade:317
 msgid "Select a Directory"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:348
+#: remmina/ui/remmina_preferences.glade:333
 msgid "Options"
 msgstr "Pilihan"
 
-#: remmina/ui/remmina_preferences.glade:370
+#: remmina/ui/remmina_preferences.glade:355
 msgid "Invisible toolbar in fullscreen mode"
 msgstr "Palat alat halimunan dalam mod skrin penuh"
 
-#: remmina/ui/remmina_preferences.glade:385
+#: remmina/ui/remmina_preferences.glade:370
 msgid "Always show tabs"
 msgstr "Sentiasa papar tab"
 
-#: remmina/ui/remmina_preferences.glade:400
+#: remmina/ui/remmina_preferences.glade:385
 msgid "Hide toolbar in tabbed interface"
 msgstr "Sembunyi palang alat dalam antaramuka bertab"
 
-#: remmina/ui/remmina_preferences.glade:417
+#: remmina/ui/remmina_preferences.glade:402
 msgid "Default view mode"
 msgstr "Mod paparan lalai"
 
-#: remmina/ui/remmina_preferences.glade:431
+#: remmina/ui/remmina_preferences.glade:416
 msgid "Automatic"
 msgstr "Automatik"
 
-#: remmina/ui/remmina_preferences.glade:432
+#: remmina/ui/remmina_preferences.glade:417
 msgid "Scrolled window"
 msgstr "Tetingkap tertatal"
 
-#: remmina/ui/remmina_preferences.glade:433
+#: remmina/ui/remmina_preferences.glade:418
 msgid "Scrolled fullscreen"
 msgstr "Skrin penuh tertatal"
 
-#: remmina/ui/remmina_preferences.glade:434
+#: remmina/ui/remmina_preferences.glade:419
 msgid "Viewport fullscreen"
 msgstr "Skrin penuh port pandang"
 
-#: remmina/ui/remmina_preferences.glade:447
+#: remmina/ui/remmina_preferences.glade:432
 msgid "Tab interface"
 msgstr "Antaramuka tab"
 
-#: remmina/ui/remmina_preferences.glade:461
+#: remmina/ui/remmina_preferences.glade:446
 msgid "Tab by groups"
 msgstr "Tab mengikut kumpulan"
 
-#: remmina/ui/remmina_preferences.glade:462
+#: remmina/ui/remmina_preferences.glade:447
 msgid "Tab by protocols"
 msgstr "Tab mengikut protokol"
 
-#: remmina/ui/remmina_preferences.glade:463
+#: remmina/ui/remmina_preferences.glade:448
 msgid "Tab all connections"
 msgstr "Tab semua sambungan"
 
-#: remmina/ui/remmina_preferences.glade:464
+#: remmina/ui/remmina_preferences.glade:449
 msgid "Do not use tabs"
 msgstr "Jangan guna tab"
 
-#: remmina/ui/remmina_preferences.glade:477
+#: remmina/ui/remmina_preferences.glade:462
 msgid "Show buttons icons"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:489
-#: remmina/ui/remmina_preferences.glade:519
+#: remmina/ui/remmina_preferences.glade:474
+#: remmina/ui/remmina_preferences.glade:504
 msgid "This setting will be active after the application restart"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:492
-#: remmina/ui/remmina_preferences.glade:522
+#: remmina/ui/remmina_preferences.glade:477
+#: remmina/ui/remmina_preferences.glade:507
 msgid "Use system theme preferences"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:493
-#: remmina/ui/remmina_preferences.glade:523
+#: remmina/ui/remmina_preferences.glade:478
+#: remmina/ui/remmina_preferences.glade:508
 msgid "Show always"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:494
-#: remmina/ui/remmina_preferences.glade:524
+#: remmina/ui/remmina_preferences.glade:479
+#: remmina/ui/remmina_preferences.glade:509
 msgid "Hide always"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:507
+#: remmina/ui/remmina_preferences.glade:492
 msgid "Show menu icons"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:544
+#: remmina/ui/remmina_preferences.glade:529
 msgid "Appearance"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:567
+#: remmina/ui/remmina_preferences.glade:552
 msgid "Show new connection on top of the menu"
 msgstr "Papar sambungna baru pada bahagian atas menu"
 
-#: remmina/ui/remmina_preferences.glade:583
+#: remmina/ui/remmina_preferences.glade:568
 msgid "Hide total count in group menu"
 msgstr "Sembunyi jumlah kiraan dalam menu kumpulan"
 
-#: remmina/ui/remmina_preferences.glade:599
+#: remmina/ui/remmina_preferences.glade:584
 msgid "Disable tray icon"
 msgstr "Lumpuhksn ikon talam"
 
-#: remmina/ui/remmina_preferences.glade:616
+#: remmina/ui/remmina_preferences.glade:601
 msgid "Start Remmina in tray icon at user logon"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:641
+#: remmina/ui/remmina_preferences.glade:617
+msgid "Dark Tray Icon"
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:618
+msgid "Choose this if your theme panel is light."
+msgstr ""
+
+#: remmina/ui/remmina_preferences.glade:643
 msgid "Applet"
 msgstr "Aplet"
 
-#: remmina/ui/remmina_preferences.glade:667
+#: remmina/ui/remmina_preferences.glade:669
 msgid "Host key"
 msgstr "Kunci hos"
 
-#: remmina/ui/remmina_preferences.glade:723
+#: remmina/ui/remmina_preferences.glade:725
 msgid "Auto-fit window"
 msgstr "Tetingkap muat-sendiri"
 
-#: remmina/ui/remmina_preferences.glade:820
+#: remmina/ui/remmina_preferences.glade:822
 msgid "Grab keyboard"
 msgstr "Cekau papan kekunci"
 
-#: remmina/ui/remmina_preferences.glade:904
+#: remmina/ui/remmina_preferences.glade:906
 msgid "Show / hide toolbar"
 msgstr "Papar / sembunyi palang alat"
 
-#: remmina/ui/remmina_preferences.glade:943
+#: remmina/ui/remmina_preferences.glade:945
 msgid "SCREENSHOT"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:967
-#: remmina/ui/remmina_preferences.glade:1160
+#: remmina/ui/remmina_preferences.glade:969
+#: remmina/ui/remmina_preferences.glade:1162
 msgid "Keyboard"
 msgstr "Papan Kekunci"
 
-#: remmina/ui/remmina_preferences.glade:992
+#: remmina/ui/remmina_preferences.glade:994
 msgid "SSH tunnel local port"
 msgstr "Port setempat terowong SSH"
 
-#: remmina/ui/remmina_preferences.glade:1014
+#: remmina/ui/remmina_preferences.glade:1016
 msgid "Parse ~/.ssh/config"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:1033
+#: remmina/ui/remmina_preferences.glade:1035
 msgid "SSH_LOG_NOLOG"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:1034
+#: remmina/ui/remmina_preferences.glade:1036
 msgid "SSH_LOG_RARE"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:1035
+#: remmina/ui/remmina_preferences.glade:1037
 msgid "SSH_LOG_ENTRY"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:1036
+#: remmina/ui/remmina_preferences.glade:1038
 msgid "SSH_LOG_PACKET"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:1037
+#: remmina/ui/remmina_preferences.glade:1039
 msgid "SSH_LOG_FUNCTIONS"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:1050
+#: remmina/ui/remmina_preferences.glade:1052
 msgid "SSH log level"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:1069
+#: remmina/ui/remmina_preferences.glade:1071
 msgid "SSH Options"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:1095
+#: remmina/ui/remmina_preferences.glade:1097
 msgid "Font"
 msgstr "Fon"
 
-#: remmina/ui/remmina_preferences.glade:1108
+#: remmina/ui/remmina_preferences.glade:1110
 msgid "Colors"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:1121
-#: remmina/ui/remmina_preferences.glade:1272
+#: remmina/ui/remmina_preferences.glade:1123
+#: remmina/ui/remmina_preferences.glade:1274
 msgid "Foreground color"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:1134
-#: remmina/ui/remmina_preferences.glade:1286
+#: remmina/ui/remmina_preferences.glade:1136
+#: remmina/ui/remmina_preferences.glade:1288
 msgid "Background color"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:1147
+#: remmina/ui/remmina_preferences.glade:1149
 msgid "Scrollback lines"
 msgstr "Baris tatal balik"
 
-#: remmina/ui/remmina_preferences.glade:1182
+#: remmina/ui/remmina_preferences.glade:1184
 msgid "Use system default font"
 msgstr "Guna fon lalai sistem"
 
-#: remmina/ui/remmina_preferences.glade:1237
+#: remmina/ui/remmina_preferences.glade:1239
 msgid "Allow bold text"
 msgstr "Benarkan teks tebal"
 
-#: remmina/ui/remmina_preferences.glade:1253
+#: remmina/ui/remmina_preferences.glade:1255
 msgid "Use system theme colors"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:1323
-#: remmina/ui/remmina_preferences.glade:1362
-#: remmina/ui/remmina_preferences.glade:1401
+#: remmina/ui/remmina_preferences.glade:1325
+#: remmina/ui/remmina_preferences.glade:1364
+#: remmina/ui/remmina_preferences.glade:1403
 msgid "Host key +"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:1389
+#: remmina/ui/remmina_preferences.glade:1391
 msgid "Select All"
 msgstr ""
 
-#: remmina/ui/remmina_preferences.glade:1444
+#: remmina/ui/remmina_preferences.glade:1446
 msgid "Terminal"
 msgstr "Terminal"
 
+#: remmina/ui/remmina_about.glade:30
+msgid "About Remmina"
+msgstr ""
+
+#: remmina/ui/remmina_about.glade:40
+msgid "Remmina Web Site"
+msgstr ""
+
+#: remmina/ui/remmina_about.glade:108
+msgid ""
+"Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
+"Antenore Gatta <antenore@simbiosi.org>\n"
+"Emmanuel Grognet <emmanuel@grognet.fr>\n"
+"Giovanni Panozzo <giovanni@panozzo.it>\n"
+"Jean-Louis Dupond <jean-louis@dupond.be>\n"
+"Jose Gregorio Jimenez Sanchez <josegjimenez@gmail.com>\n"
+"Fabio Castelli (muflone) <muflone@vbsimple.net>\n"
+"Shuhrat Dehkanov <k@efir.uz>\n"
+"llyzs <llyzs.vic@gmail.com>\n"
+"Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
+msgstr ""
+
+#: remmina/ui/remmina_spinner.glade:54
+msgid "PLEASE WAIT ..."
+msgstr ""
+
+#: remmina/ui/remmina_string_list.glade:14
+#: remmina/ui/remmina_string_list.glade:158
+msgid "Add"
+msgstr ""
+
+#: remmina/ui/remmina_string_list.glade:20
+#: remmina/ui/remmina_string_list.glade:137
+msgid "Remove"
+msgstr ""
+
+#: remmina/ui/remmina_string_list.glade:26
+#: remmina/ui/remmina_string_list.glade:116
+msgid "Move up"
+msgstr ""
+
+#: remmina/ui/remmina_string_list.glade:32
+#: remmina/ui/remmina_string_list.glade:95
+msgid "Move down"
+msgstr ""
+
+#: remmina/ui/remmina_main.glade:44
+msgid "Open the preferences dialog"
+msgstr "Buka dialog keutamaan"
+
+#: remmina/ui/remmina_main.glade:73
+msgid "Open the connection to the selected remote desktop file"
+msgstr "Buka sambungan ke fail desktop jauh terpilih"
+
+#: remmina/ui/remmina_main.glade:82 remmina/ui/remmina_main.glade:83
+msgid "_Edit"
+msgstr "_Sunting"
+
+#: remmina/ui/remmina_main.glade:84
+msgid "Edit the selected remote desktop file"
+msgstr "Sunting fail desktop jauh terpilih"
+
+#: remmina/ui/remmina_main.glade:94
+msgid "Create a copy of the selected remote desktop file"
+msgstr "Cipta salinan bagi fail desktop jauh terpilih"
+
+#: remmina/ui/remmina_main.glade:104
+msgid "Delete the selected remote desktop file"
+msgstr "Padam fail desktop jauh terpilih"
+
+#: remmina/ui/remmina_main.glade:112 remmina/ui/remmina_main.glade:113
+msgid "External Tools"
+msgstr ""
+
+#: remmina/ui/remmina_main.glade:124 remmina/ui/remmina_main.glade:125
+msgid "_New"
+msgstr ""
+
+#: remmina/ui/remmina_main.glade:126
+msgid "Create a new remote desktop file"
+msgstr "Cipta fail desktop jauh baru"
+
+#: remmina/ui/remmina_main.glade:138 remmina/ui/remmina_main.glade:139
+#: remmina/ui/remmina_main.glade:526
+msgid "Homepage"
+msgstr "Laman Sesawang"
+
+#: remmina/ui/remmina_main.glade:145 remmina/ui/remmina_main.glade:146
+#: remmina/ui/remmina_main.glade:536
+msgid "Online Wiki"
+msgstr "Wiki Atas Talian"
+
+#: remmina/ui/remmina_main.glade:153 remmina/ui/remmina_main.glade:154
+#: remmina/ui/remmina_main.glade:545
+msgid "G+ Remmina Community"
+msgstr ""
+
+#: remmina/ui/remmina_main.glade:160 remmina/ui/remmina_main.glade:161
+#: remmina/ui/remmina_main.glade:554
+msgid "Donations"
+msgstr ""
+
+#: remmina/ui/remmina_main.glade:167 remmina/ui/remmina_main.glade:168
+#: remmina/ui/remmina_main.glade:564
+msgid "Debug Window"
+msgstr "Tetingkap Nyahpepijat"
+
+#: remmina/ui/remmina_main.glade:185 remmina/ui/remmina_main.glade:186
+#: remmina/ui/remmina_main.glade:444
+msgid "Export"
+msgstr "Eksport"
+
+#: remmina/ui/remmina_main.glade:195 remmina/ui/remmina_main.glade:196
+msgid "Statusbar"
+msgstr "Palang Status"
+
+#: remmina/ui/remmina_main.glade:203 remmina/ui/remmina_main.glade:204
+msgid "List View"
+msgstr "Paparan Senarai"
+
+#: remmina/ui/remmina_main.glade:212 remmina/ui/remmina_main.glade:213
+msgid "Tree View"
+msgstr "Paparan Pepohon"
+
+#: remmina/ui/remmina_main.glade:284
+msgid "search string or server name/ip address for quick connect"
+msgstr ""
+
+#: remmina/ui/remmina_main.glade:333
+msgid "Actions"
+msgstr ""
+
+#: remmina/ui/remmina_main.glade:673
+msgid "Last time used"
+msgstr ""

@@ -32,18 +32,9 @@
  *
  */
 
-#include "common/remmina_plugin.h"
-#include <spice-client.h>
-#if SPICE_GTK_CHECK_VERSION(0, 31, 0)
-#  include <spice-client-gtk.h>
-#else
-#  include <spice-widget.h>
-#  include <usb-device-widget.h>
-#endif
+#include "spice_plugin.h"
 
 #define XSPICE_DEFAULT_PORT 5900
-
-#define GET_PLUGIN_DATA(gp) (RemminaPluginSpiceData*) g_object_get_data(G_OBJECT(gp), "plugin-data")
 
 enum
 {
@@ -55,16 +46,6 @@ enum
 	REMMINA_PLUGIN_SPICE_FEATURE_SCALE
 };
 
-typedef struct _RemminaPluginSpiceData
-{
-	SpiceAudio *audio;
-	SpiceDisplay *display;
-	SpiceDisplayChannel *display_channel;
-	SpiceGtkSession *gtk_session;
-	SpiceMainChannel *main_channel;
-	SpiceSession *session;
-} RemminaPluginSpiceData;
-
 static RemminaPluginService *remmina_plugin_service = NULL;
 
 static void remmina_plugin_spice_channel_new_cb(SpiceSession *, SpiceChannel *, RemminaProtocolWidget *);
@@ -72,17 +53,23 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *, SpiceChan
 static void remmina_plugin_spice_display_ready_cb(GObject *, GParamSpec *, RemminaProtocolWidget *);
 static void remmina_plugin_spice_update_scale(RemminaProtocolWidget *);
 
+void remmina_plugin_spice_select_usb_devices(RemminaProtocolWidget *);
+#ifdef SPICE_GTK_CHECK_VERSION
+#  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
+void remmina_plugin_spice_file_transfer_new_cb(SpiceMainChannel *, SpiceFileTransferTask *, RemminaProtocolWidget *);
+#  endif /* SPICE_GTK_CHECK_VERSION(0, 31, 0) */
+#endif /* SPICE_GTK_CHECK_VERSION */
+
 static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 
-	gchar *host;
-	gint port;
 	RemminaPluginSpiceData *gpdata;
 	RemminaFile *remminafile;
 
 	gpdata = g_new0(RemminaPluginSpiceData, 1);
 	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	gpdata->session = spice_session_new();
 	g_signal_connect(gpdata->session,
@@ -90,15 +77,7 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 	                 G_CALLBACK(remmina_plugin_spice_channel_new_cb),
 	                 gp);
 
-	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-	remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
-	                                        XSPICE_DEFAULT_PORT,
-	                                        &host,
-	                                        &port);
-
 	g_object_set(gpdata->session,
-	             "host", host,
-	             "port", g_strdup_printf("%i", port),
 	             "password", remmina_plugin_service->file_get_secret(remminafile, "password"),
 	             "read-only", remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
 	             "enable-audio", remmina_plugin_service->file_get_int(remminafile, "enableaudio", FALSE),
@@ -110,14 +89,43 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 	             "auto-clipboard",
 	             !remmina_plugin_service->file_get_int(remminafile, "disableclipboard", FALSE),
 	             NULL);
-
-	g_free(host);
 }
 
 static gboolean remmina_plugin_spice_open_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
+
+	gint port;
+	const gchar *cacert;
+	gchar *host;
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
+	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
+	                                        XSPICE_DEFAULT_PORT,
+	                                        &host,
+	                                        &port);
+
+	g_object_set(gpdata->session, "host", host, NULL);
+	g_free(host);
+
+	/* Unencrypted connection */
+	if (!remmina_plugin_service->file_get_int(remminafile, "usetls", FALSE))
+	{
+		g_object_set(gpdata->session, "port", g_strdup_printf("%i", port), NULL);
+	}
+	/* TLS encrypted connection */
+	else
+	{
+		g_object_set(gpdata->session, "tls_port", g_strdup_printf("%i", port), NULL);
+
+		/* Server CA certificate */
+		cacert = remmina_plugin_service->file_get_string(remminafile, "cacert");
+		if (cacert)
+		{
+			g_object_set(gpdata->session, "ca-file", cacert, NULL);
+		}
+	}
 
 	spice_session_connect(gpdata->session);
 
@@ -149,6 +157,15 @@ static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 		remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 	}
 
+#ifdef SPICE_GTK_CHECK_VERSION
+#  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
+	if (gpdata->file_transfers)
+	{
+		g_hash_table_unref(gpdata->file_transfers);
+	}
+#  endif /* SPICE_GTK_CHECK_VERSION(0, 31, 0) */
+#endif /* SPICE_GTK_CHECK_VERSION */
+
 	return FALSE;
 }
 
@@ -169,6 +186,14 @@ static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChan
 		                 "channel-event",
 		                 G_CALLBACK(remmina_plugin_spice_main_channel_event_cb),
 		                 gp);
+#ifdef SPICE_GTK_CHECK_VERSION
+#  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
+		g_signal_connect(channel,
+		                 "new-file-transfer",
+		                 G_CALLBACK(remmina_plugin_spice_file_transfer_new_cb),
+		                 gp);
+#  endif /* SPICE_GTK_CHECK_VERSION(0, 31, 0) */
+#endif /* SPICE_GTK_CHECK_VERSION */
 	}
 
 	if (SPICE_IS_DISPLAY_CHANNEL(channel))
@@ -179,6 +204,7 @@ static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChan
 		                 "notify::ready",
 		                 G_CALLBACK(remmina_plugin_spice_display_ready_cb),
 		                 gp);
+		remmina_plugin_spice_display_ready_cb(G_OBJECT(gpdata->display), NULL, gp);
 	}
 
 	if (SPICE_IS_PLAYBACK_CHANNEL(channel))
@@ -251,6 +277,10 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 			}
 			break;
 		case SPICE_CHANNEL_ERROR_TLS:
+			remmina_plugin_service->protocol_plugin_set_error(gp, _("TLS connection error."));
+			remmina_plugin_spice_close_connection(gp);
+			break;
+		case SPICE_CHANNEL_ERROR_IO:
 		case SPICE_CHANNEL_ERROR_LINK:
 		case SPICE_CHANNEL_ERROR_CONNECT:
 			remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to SPICE server failed."));
@@ -339,70 +369,6 @@ static void remmina_plugin_spice_update_scale(RemminaProtocolWidget *gp)
 	}
 }
 
-static void remmina_plugin_spice_usb_connect_failed_cb(GObject *object, SpiceUsbDevice *usb_device, GError *error, RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	GtkWidget *dialog;
-
-	if (error->domain == G_IO_ERROR && error->code == G_IO_ERROR_CANCELLED)
-	{
-		return;
-	}
-
-	/*
-	 * FIXME: Use the RemminaConnectionWindow as transient parent widget
-	 * (and add the GTK_DIALOG_DESTROY_WITH_PARENT flag) if it becomes
-	 * accessible from the Remmina plugin API.
-	 */
-	dialog = gtk_message_dialog_new(NULL,
-	                                GTK_DIALOG_MODAL,
-	                                GTK_MESSAGE_ERROR,
-	                                GTK_BUTTONS_CLOSE,
-	                                _("USB redirection error"));
-	gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
-	                                         "%s",
-	                                         error->message);
-	gtk_dialog_run(GTK_DIALOG(dialog));
-	gtk_widget_destroy(dialog);
-}
-
-static void remmina_plugin_spice_select_usb_devices(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	GtkWidget *dialog, *usb_device_widget;
-	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
-
-	/*
-	 * FIXME: Use the RemminaConnectionWindow as transient parent widget
-	 * (and add the GTK_DIALOG_DESTROY_WITH_PARENT flag) if it becomes
-	 * accessible from the Remmina plugin API.
-	 */
-	dialog = gtk_dialog_new_with_buttons(_("Select USB devices for redirection"),
-	                                     NULL,
-	                                     GTK_DIALOG_MODAL,
-	                                     _("_Close"),
-	                                     GTK_RESPONSE_ACCEPT,
-	                                     NULL);
-	gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT);
-
-	usb_device_widget = spice_usb_device_widget_new(gpdata->session, NULL);
-	g_signal_connect(usb_device_widget,
-	                 "connect-failed",
-	                 G_CALLBACK(remmina_plugin_spice_usb_connect_failed_cb),
-	                 gp);
-
-	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
-			   usb_device_widget,
-			   TRUE,
-			   TRUE,
-			   0);
-	gtk_widget_show_all(dialog);
-	gtk_dialog_run(GTK_DIALOG(dialog));
-	gtk_widget_destroy(dialog);
-}
-
 static gboolean remmina_plugin_spice_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 	TRACE_CALL(__func__);
@@ -465,6 +431,8 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "resizeguest", N_("Resize guest to match window size"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "usetls", N_("Use TLS encryption"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,  "cacert", N_("Server CA certificate"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 

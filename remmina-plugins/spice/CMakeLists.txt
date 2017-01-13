@@ -32,6 +32,8 @@
 
 set(REMMINA_PLUGIN_SPICE_SRCS
 	spice_plugin.c
+	spice_plugin_file_transfer.c
+	spice_plugin_usb.c
 	)
 
 add_library(remmina-plugin-spice ${REMMINA_PLUGIN_SPICE_SRCS})

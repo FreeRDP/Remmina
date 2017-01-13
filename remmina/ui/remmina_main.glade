@@ -170,13 +170,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         <signal name="activate" handler="remmina_main_on_action_help_debug" swapped="no"/>
       </object>
     </child>
-    <child>
-      <object class="GtkAction" id="action_help_survey">
-        <property name="label" translatable="yes">Survey</property>
-        <property name="short_label" translatable="yes">Survey</property>
-        <signal name="activate" handler="remmina_main_on_action_help_survey" swapped="no"/>
-      </object>
-    </child>
   </object>
   <object class="GtkActionGroup" id="actiongroup_tools">
     <property name="accel_group">accelgroup_shortcuts</property>
@@ -297,6 +290,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     <property name="input_hints">GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NONE</property>
                     <signal name="activate" handler="remmina_main_quickconnect_on_click" swapped="no"/>
                     <signal name="changed" handler="remmina_main_quick_search_on_changed" swapped="no"/>
+                    <signal name="focus-in-event" handler="remmina_main_quick_search_enter" swapped="no"/>
                     <signal name="icon-press" handler="remmina_main_quick_search_on_icon_press" swapped="no"/>
                     <signal name="insert-at-cursor" handler="remmina_main_load_files_cb" swapped="no"/>
                     <accelerator key="f" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
@@ -579,15 +573,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkMenuItem" id="menuitem_help_survey">
-                        <property name="related_action">action_help_survey</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Survey</property>
-                        <property name="use_underline">True</property>
                       </object>
                     </child>
                     <child>

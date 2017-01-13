@@ -121,6 +121,22 @@ static void remmina_rdp_file_import_field(RemminaFile* remminafile, const gchar*
 	{
 		remmina_plugin_service->file_set_string(remminafile, "loadbalanceinfo", value);
 	}
+	else if (g_strcmp0(key, "gatewayhostname") == 0)
+	{
+		remmina_plugin_service->file_set_string(remminafile, "gateway_server", value);
+	}
+	else if (g_strcmp0(key, "gatewayusagemethod") == 0)
+	{
+		remmina_plugin_service->file_set_string(remminafile, "gatewayusagemethod", value);
+	}
+	else if (g_strcmp0(key, "gatewaycredentialssource") == 0)
+	{
+		remmina_plugin_service->file_set_string(remminafile, "gatewaycredentialssource", value);
+	}
+	else if (g_strcmp0(key, "gatewayprofileusagemethod") == 0)
+	{
+		remmina_plugin_service->file_set_string(remminafile, "gatewayprofileusagemethod", value);
+	}
 	/* tsclient fields, import only */
 	else if (g_strcmp0(key, "client hostname") == 0)
 	{

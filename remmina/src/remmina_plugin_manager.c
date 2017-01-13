@@ -155,7 +155,7 @@ RemminaPluginService remmina_plugin_manager_service =
 	remmina_protocol_widget_chat_receive,
 	remmina_protocol_widget_send_keys_signals,
 
-	remmina_file_get_user_datadir,
+	remmina_file_get_datadir,
 
 	remmina_file_new,
 	remmina_file_get_filename,

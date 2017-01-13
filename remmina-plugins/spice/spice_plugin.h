@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2014-2015 Antenore Gatta
+ * Copyright (C) 2016 Denis Ollier
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,25 +32,42 @@
  *
  */
 
-#ifndef __REMMINASURVEY_H__
-#define __REMMINASURVEY_H__
+#ifndef __REMMINA_SPICE_PLUGIN_H__
+#define __REMMINA_SPICE_PLUGIN_H__
 
+#include "common/remmina_plugin.h"
+#include <spice-client.h>
+#ifdef SPICE_GTK_CHECK_VERSION
+#  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
+#    include <spice-client-gtk.h>
+#  else
+#    include <spice-widget.h>
+#    include <usb-device-widget.h>
+#  endif
+#else
+#  include <spice-widget.h>
+#  include <usb-device-widget.h>
+#endif
 
-typedef struct _RemminaSurveyDialog
+#define GET_PLUGIN_DATA(gp) (RemminaPluginSpiceData*) g_object_get_data(G_OBJECT(gp), "plugin-data")
+
+typedef struct _RemminaPluginSpiceData
 {
-	GtkBuilder *builder;
-	GtkDialog *dialog;
-	GtkScrolledWindow *scrolledwindow;
-} RemminaSurveyDialog;
+	SpiceAudio *audio;
+	SpiceDisplay *display;
+	SpiceDisplayChannel *display_channel;
+	SpiceGtkSession *gtk_session;
+	SpiceMainChannel *main_channel;
+	SpiceSession *session;
 
-G_BEGIN_DECLS
+#ifdef SPICE_GTK_CHECK_VERSION
+#  if SPICE_GTK_CHECK_VERSION(0, 31, 0)
+	/* key: SpiceFileTransferTask, value: RemminaPluginSpiceXferWidgets */
+	GHashTable *file_transfers;
+	GtkWidget  *file_transfer_dialog;
+#  endif /* SPICE_GTK_CHECK_VERSION(0, 31, 0) */
+#endif /* SPICE_GTK_CHECK_VERSION */
+} RemminaPluginSpiceData;
 
-gboolean remmina_survey_valid_profile();
-void remmina_survey_on_startup(GtkWindow *parent);
-gboolean remmina_survey_cb(gpointer data);
-void remmina_survey_start(GtkWindow *parent);
 
-G_END_DECLS
-
-#endif  /* __REMMINASURVEY_H__  */
-
+#endif /* __REMMINA_SPICE_PLUGIN_H__ */

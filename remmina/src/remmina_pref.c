@@ -93,74 +93,6 @@ static void remmina_pref_gen_secret(void)
 	g_free(content);
 }
 
-/* This function will generate a unique string to identify a remmina installation
- * in a form like Linux+4.2.5-1-ARCH+x86_64+38637228 */
-static void remmina_pref_gen_uid(void)
-{
-	TRACE_CALL("remmina_pref_gen_uid");
-
-	GKeyFile *gkeyfile;
-	gchar buf[64];
-	gchar *content;
-	gsize length;
-	const char *env_lang;
-
-	env_lang = g_getenv ("LANG");
-	if (env_lang == NULL)
-		env_lang = "NA";
-
-	struct utsname name;
-	uname(&name);
-
-	g_snprintf (buf, sizeof(buf), "%s+%s+%s+%s+%x%x%x%x%x%x%x%x",
-			name.sysname, name.release, name.machine,
-			env_lang,
-			g_random_int_range(0,9),
-			g_random_int_range(0,9),
-			g_random_int_range(0,9),
-			g_random_int_range(0,9),
-			g_random_int_range(0,9),
-			g_random_int_range(0,9),
-			g_random_int_range(0,9),
-			g_random_int_range(0,9));
-
-	remmina_pref.uid = g_strdup(buf);
-
-	gkeyfile = g_key_file_new();
-	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
-	g_key_file_set_string(gkeyfile, "remmina_pref", "uid", remmina_pref.uid);
-	content = g_key_file_to_data(gkeyfile, &length, NULL);
-	g_file_set_contents(remmina_pref_file, content, length, NULL);
-
-	g_key_file_free(gkeyfile);
-	g_free(content);
-
-}
-
-/* used to save the current date the first time we execute remmina */
-static void remmina_pref_birthday(void)
-{
-	TRACE_CALL("remmina_pref_birthday");
-	GKeyFile *gkeyfile;
-	gchar *content;
-	gsize length;
-
-	GDate *today = g_date_new();
-	g_date_set_time_t(today, time(NULL));
-	remmina_pref.bdate = g_date_get_julian(today);
-
-	g_date_free(today);
-
-	gkeyfile = g_key_file_new();
-	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
-	g_key_file_set_integer(gkeyfile, "remmina_pref", "bdate", remmina_pref.bdate);
-	content = g_key_file_to_data(gkeyfile, &length, NULL);
-	g_file_set_contents(remmina_pref_file, content, length, NULL);
-
-	g_key_file_free(gkeyfile);
-	g_free(content);
-}
-
 static guint remmina_pref_get_keyval_from_str(const gchar *str)
 {
 	TRACE_CALL("remmina_pref_get_keyval_from_str");
@@ -238,23 +170,72 @@ static void remmina_pref_init_keymap(void)
 	g_key_file_free(gkeyfile);
 }
 
+/* TODO: remmina_pref_file_do_copy and remmina_file_manager_do_copy to remmina_files_copy */
+static gboolean remmina_pref_file_do_copy(const char *src_path, const char *dst_path)
+{
+	GFile *src = g_file_new_for_path(src_path), *dst = g_file_new_for_path(dst_path);
+	/* We don't overwrite the target if it exists, because overwrite is not set */
+	const gboolean ok = g_file_copy(src, dst, G_FILE_COPY_NONE, NULL, NULL, NULL, NULL);
+	g_object_unref(dst);
+	g_object_unref(src);
+
+	return ok;
+}
+
 void remmina_pref_init(void)
 {
 	TRACE_CALL("remmina_pref_init");
 	GKeyFile *gkeyfile;
-	gchar dirname[MAX_PATH_LEN];
-	GDir *old;
+	gchar *remmina_dir;
+	const gchar *filename = g_strdup_printf("%s.pref", g_get_prgname());
+	GDir *dir;
+	gchar *legacy = g_strdup_printf (".%s", g_get_prgname ());
+	int i;
 
-	g_snprintf(dirname, sizeof(dirname), "%s/.%s", g_get_home_dir(), remmina);
-	old = g_dir_open(dirname, 0, NULL);
-	if (old == NULL)
-		/*  If the XDG directories exist, use them. */
-		g_snprintf(dirname, sizeof(dirname), "%s/%s", g_get_user_config_dir(), remmina);
-	else
-		g_dir_close(old);
-	g_mkdir_with_parents(dirname, 0700);
-	remmina_pref_file = g_strdup_printf("%s/remmina.pref", dirname);
-	remmina_keymap_file = g_strdup_printf("%s/remmina.keymap", dirname);
+	remmina_dir = g_build_path ( "/", g_get_user_config_dir (), g_get_prgname (), NULL);
+	/* Create the XDG_CONFIG_HOME directory */
+	g_mkdir_with_parents (remmina_dir, 0750);
+
+	g_free (remmina_dir), remmina_dir = NULL;
+	/* Legacy ~/.remmina we copy the existing remmina.pref file inside
+	 * XDG_CONFIG_HOME */
+	remmina_dir = g_build_path ("/", g_get_home_dir(), legacy, NULL);
+	if (g_file_test (remmina_dir, G_FILE_TEST_IS_DIR))
+	{
+		dir = g_dir_open(remmina_dir, 0, NULL);
+		remmina_pref_file_do_copy(
+				g_build_path ( "/", remmina_dir, filename, NULL),
+				g_build_path ( "/", g_get_user_config_dir (),
+					g_get_prgname (), filename, NULL));
+	}
+
+	/* /usr/local/etc/remmina */
+	const gchar * const *dirs = g_get_system_config_dirs ();
+	g_free (remmina_dir), remmina_dir = NULL;
+	for (i = 0; dirs[i] != NULL; ++i)
+	{
+		remmina_dir = g_build_path ( "/", dirs[i], g_get_prgname (), NULL);
+		if (g_file_test (remmina_dir, G_FILE_TEST_IS_DIR))
+		{
+			dir = g_dir_open(remmina_dir, 0, NULL);
+			while ((filename = g_dir_read_name (dir)) != NULL) {
+				remmina_pref_file_do_copy (
+						g_build_path ( "/", remmina_dir, filename, NULL),
+						g_build_path ( "/", g_get_user_config_dir (),
+							g_get_prgname (), filename, NULL));
+			}
+			g_free (remmina_dir), remmina_dir = NULL;
+		}
+	}
+
+	/* The last case we use  the home ~/.config/remmina */
+	if (remmina_dir != NULL)
+		g_free (remmina_dir), remmina_dir = NULL;
+	remmina_dir = g_build_path ( "/", g_get_user_config_dir (),
+			g_get_prgname (), NULL);
+
+	remmina_pref_file = g_strdup_printf("%s/remmina.pref", remmina_dir);
+	remmina_keymap_file = g_strdup_printf("%s/remmina.keymap", remmina_dir);
 
 	gkeyfile = g_key_file_new();
 	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
@@ -268,13 +249,6 @@ void remmina_pref_init(void)
 		remmina_pref.save_when_connect = g_key_file_get_boolean(gkeyfile, "remmina_pref", "save_when_connect", NULL);
 	else
 		remmina_pref.save_when_connect = TRUE;
-
-#ifdef WITH_SURVEY
-	if (g_key_file_has_key(gkeyfile, "remmina_pref", "survey", NULL))
-		remmina_pref.survey = g_key_file_get_boolean(gkeyfile, "remmina_pref", "survey", NULL);
-	else
-		remmina_pref.survey = TRUE;
-#endif /* WITH_SURVEY */
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "invisible_toolbar", NULL))
 		remmina_pref.invisible_toolbar = g_key_file_get_boolean(gkeyfile, "remmina_pref", "invisible_toolbar", NULL);
@@ -599,12 +573,6 @@ void remmina_pref_init(void)
 	if (remmina_pref.secret == NULL)
 		remmina_pref_gen_secret();
 
-	if (remmina_pref.uid == NULL)
-		remmina_pref_gen_uid();
-
-	if (remmina_pref.bdate == 0)
-		remmina_pref_birthday();
-
 	remmina_pref_init_keymap();
 }
 
@@ -621,9 +589,6 @@ void remmina_pref_save(void)
 
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_view_mode", remmina_pref.save_view_mode);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_when_connect", remmina_pref.save_when_connect);
-#ifdef WITH_SURVEY
-	g_key_file_set_boolean(gkeyfile, "remmina_pref", "survey", remmina_pref.survey);
-#endif /* WITH_SURVEY */
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "invisible_toolbar", remmina_pref.invisible_toolbar);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "floating_toolbar_placement", remmina_pref.floating_toolbar_placement);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "toolbar_placement", remmina_pref.toolbar_placement);
@@ -838,14 +803,6 @@ gint remmina_pref_get_ssh_loglevel(void)
 	TRACE_CALL("remmina_pref_get_ssh_loglevel");
 	return remmina_pref.ssh_loglevel;
 }
-
-#ifdef WITH_SURVEY
-gboolean remmina_pref_get_survey(void)
-{
-	TRACE_CALL("remmina_pref_get_survey");
-	return remmina_pref.survey;
-}
-#endif /* WITH_SURVEY */
 
 gboolean remmina_pref_get_ssh_parseconfig(void)
 {

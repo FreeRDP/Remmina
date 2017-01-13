@@ -19,27 +19,18 @@
 
 find_suggested_package(Gettext)
 
-
 function(gettext po_dir package_name)
-	# check if LINGUAS env var is unset
-	execute_process(COMMAND sh -c "echo -n \${LINGUAS+x}"
-		OUTPUT_VARIABLE UNSETLINGUAS)
 	set(mo_files)
 	file(GLOB po_files ${po_dir}/*.po)
 	foreach(po_file ${po_files})
 		get_filename_component(lang ${po_file} NAME_WE)
-		set(mo_file ${CMAKE_CURRENT_BINARY_DIR}/${lang}.mo)
-		if($ENV{LINGUAS} MATCHES "^.*${lang}.*$" OR "${UNSETLINGUAS}" STREQUAL "")
+		if(("$ENV{LINGUAS}" MATCHES "(^| )${lang}( |$)") OR (NOT DEFINED ENV{LINGUAS}))
 			set(mo_file ${CMAKE_CURRENT_BINARY_DIR}/${lang}.mo)
 			add_custom_command(OUTPUT ${mo_file} COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${mo_file} ${po_file} DEPENDS ${po_file})
-			install(FILES ${mo_file} DESTINATION share/locale/${lang}/LC_MESSAGES RENAME ${package_name}.mo)
+			install(FILES ${mo_file} DESTINATION ${CMAKE_INSTALL_LOCALEDIR}/${lang}/LC_MESSAGES RENAME ${package_name}.mo)
 			set(mo_files ${mo_files} ${mo_file})
 		endif()
-		add_custom_command(OUTPUT ${mo_file} COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${mo_file} ${po_file} DEPENDS ${po_file})
-		install(FILES ${mo_file} DESTINATION share/locale/${lang}/LC_MESSAGES RENAME ${package_name}.mo)
-		set(mo_files ${mo_files} ${mo_file})
 	endforeach()
 	set(translations-target "${package_name}-translations")
 	add_custom_target(${translations-target} ALL DEPENDS ${mo_files})
 endfunction()
-

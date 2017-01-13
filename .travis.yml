@@ -44,7 +44,7 @@ before_install:
     - sudo apt-add-repository ppa:remmina-ppa-team/remmina-next -y
     - sudo apt-get update -qq
     - sudo apt-get install freerdp-x11 libfreerdp-dev libfreerdp-plugins-standard libfreerdp1 -y
-    - sudo apt-get install build-essential libssl-dev libx11-dev libxext-dev libxinerama-dev libxcursor-dev libxdamage-dev libxv-dev libxkbfile-dev libasound2-dev libxml2 libxml2-dev libxrandr-dev libxi-dev libxtst-dev libgtk-3-dev libgcrypt11-dev libssh-dev libpulse-dev libvte-2.90-dev libxkbfile-dev libtelepathy-glib-dev libjpeg-dev libgnutls-dev libgnome-keyring-dev libavahi-ui-gtk3-dev libvncserver-dev intltool -y
+    - sudo aptitude install build-essential git-core cmake libssl-dev libx11-dev libxext-dev libxinerama-dev libxcursor-dev libxdamage-dev libxv-dev libxkbfile-dev libasound2-dev libcups2-dev libxml2 libxml2-dev libxrandr-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libxi-dev libavutil-dev libavcodec-dev libxtst-dev libgtk-3-dev libgcrypt11-dev libssh-dev libpulse-dev libvte-2.90-dev libxkbfile-dev libfreerdp-dev libtelepathy-glib-dev libjpeg-dev libgnutls-dev libgnome-keyring-dev libavahi-ui-gtk3-dev libvncserver-dev libappindicator3-dev intltool libsecret-1-dev libwebkit2gtk-3.0-dev libspice-protocol-dev libspice-client-gtk-3.0-dev -y
 
 script:
   - git clean -f
@@ -52,5 +52,5 @@ script:
   - cd build
   - cmake -DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON -DWITH_APPINDICATOR=OFF --build=build ..
   - make VERBOSE=1
-
+ 
 # EOF #

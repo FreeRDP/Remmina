@@ -384,7 +384,6 @@ static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const Remm
 
 	s = remmina_pref_get_recent(plugin->name);
 	widget = remmina_public_create_combo_entry(s, remmina_file_get_string(gfe->priv->remmina_file, "server"), TRUE);
-	gtk_widget_set_can_focus (widget, TRUE);
 	gtk_widget_show(widget);
 	gtk_widget_set_tooltip_markup(widget, _(server_tips));
 	gtk_entry_set_activates_default(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(widget))), TRUE);
@@ -1362,6 +1361,9 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	if (remmina_file_get_filename(remminafile) == NULL)
 	{
 		gtk_entry_set_text(GTK_ENTRY(widget), _("Quick Connect"));
+#if GTK_CHECK_VERSION(3, 16, 0)
+		gtk_entry_grab_focus_without_selecting(GTK_ENTRY(widget));
+#endif
 		g_signal_connect(G_OBJECT(widget), "changed", G_CALLBACK(remmina_file_editor_name_on_changed), gfe);
 	}
 	else

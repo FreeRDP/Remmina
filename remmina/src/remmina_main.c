@@ -54,9 +54,6 @@
 #include "remmina_exec.h"
 #include "remmina_external_tools.h"
 #include "remmina/remmina_trace_calls.h"
-#ifdef WITH_SURVEY
-#include    "remmina_survey.h"
-#endif /* WITH_SURVEY */
 
 static RemminaMain *remminamain;
 
@@ -832,7 +829,7 @@ void remmina_main_on_action_tools_import(GtkAction *action, gpointer user_data)
 	TRACE_CALL("remmina_main_on_action_tools_import");
 	GtkWidget *dialog;
 
-	dialog = gtk_file_chooser_dialog_new(_("Import"), remminamain->window, GTK_FILE_CHOOSER_ACTION_OPEN, "document-open",
+	dialog = gtk_file_chooser_dialog_new(_("Import"), remminamain->window, GTK_FILE_CHOOSER_ACTION_OPEN, "Import",
 	                                     GTK_RESPONSE_ACCEPT, NULL);
 	gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(dialog), TRUE);
 	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(remmina_main_action_tools_import_on_response), NULL);
@@ -909,24 +906,6 @@ void remmina_main_on_action_help_debug(GtkAction *action, gpointer user_data)
 	remmina_log_start();
 }
 
-void remmina_main_on_action_help_survey(GtkAction *action, gpointer user_data)
-{
-	TRACE_CALL("remmina_main_on_action_help_survey");
-#ifdef WITH_SURVEY
-	remmina_survey_start(remminamain->window);
-#else
-	GtkWidget* dialog;
-	dialog = gtk_message_dialog_new(NULL,
-			GTK_DIALOG_MODAL,
-			GTK_MESSAGE_WARNING,
-			GTK_BUTTONS_OK,
-			_("Warning: The survey hasn't been enabled at compile time."));
-	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
-	gtk_widget_show(dialog);
-
-#endif /* WITH_SURVEY */
-}
-
 void remmina_main_on_action_application_about(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL("remmina_main_on_action_application_about");
@@ -958,6 +937,13 @@ gboolean remmina_main_quickconnect_on_click(GtkWidget *widget, gpointer user_dat
 {
 	TRACE_CALL("remmina_main_quickconnect_on_click");
 	return remmina_main_quickconnect();
+}
+
+/* Select all the text inside the quick search box if there is anything */
+void remmina_main_quick_search_enter(GtkWidget *widget, gpointer user_data)
+{
+	if (gtk_entry_get_text(remminamain->entry_quick_connect_server))
+	gtk_editable_select_region(GTK_EDITABLE(remminamain->entry_quick_connect_server), 0, -1);
 }
 
 /* Handle double click on a row in the connections list */
@@ -1184,9 +1170,6 @@ GtkWidget* remmina_main_new(void)
 	remminamain->action_help_homepage = GTK_ACTION(GET_OBJECT("action_help_homepage"));
 	remminamain->action_help_wiki = GTK_ACTION(GET_OBJECT("action_help_wiki"));
 	remminamain->action_help_debug = GTK_ACTION(GET_OBJECT("action_help_debug"));
-#ifdef WITH_SURVEY
-	remminamain->action_help_survey = GTK_ACTION(GET_OBJECT("action_help_survey"));
-#endif /* WITH_SURVEY */
 	G_GNUC_END_IGNORE_DEPRECATIONS
 	/* Connect signals */
 	gtk_builder_connect_signals(remminamain->builder, NULL);
