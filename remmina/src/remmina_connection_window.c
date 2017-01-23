@@ -3487,10 +3487,14 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 	remmina_connection_holder_keyboard_grab(cnnhld);
 }
 
-static void cb_autoclose_widget(GtkWidget *widget)
+static gboolean cb_autoclose_widget(GtkWidget *widget)
 {
-	gtk_widget_destroy(widget);	  
+	if (widget != NULL)
+	{
+		gtk_widget_destroy(GTK_WIDGET(widget));
+	}
 	remmina_application_exitremmina();
+  	return FALSE;
 }
 
 static void remmina_connection_object_on_disconnect(RemminaProtocolWidget* gp, RemminaConnectionObject* cnnobj)
@@ -3536,6 +3540,8 @@ static void remmina_connection_object_on_disconnect(RemminaProtocolWidget* gp, R
 		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(cb_autoclose_widget), NULL);
 		gtk_widget_show(dialog);
 		remmina_widget_pool_register(dialog);
+
+		g_timeout_add(5000, (GSourceFunc)cb_autoclose_widget, G_OBJECT(dialog));
 	}
 
 	if (cnnhld && cnnhld->cnnwin && cnnobj->scrolled_container)
