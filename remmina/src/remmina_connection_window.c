@@ -56,6 +56,8 @@
 #include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
 
+#include "remmina_exec.h"
+
 gchar *remmina_pref_file;
 RemminaPref remmina_pref;
 
@@ -3485,6 +3487,12 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 	remmina_connection_holder_keyboard_grab(cnnhld);
 }
 
+static void cb_autoclose_widget(GtkWidget *widget)
+{
+	gtk_widget_destroy(widget);	  
+	remmina_application_exitremmina();
+}
+
 static void remmina_connection_object_on_disconnect(RemminaProtocolWidget* gp, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL("remmina_connection_object_on_disconnect");
@@ -3525,7 +3533,7 @@ static void remmina_connection_object_on_disconnect(RemminaProtocolWidget* gp, R
 	{
 		dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 				remmina_protocol_widget_get_error_message(gp), NULL);
-		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
+		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(cb_autoclose_widget), NULL);
 		gtk_widget_show(dialog);
 		remmina_widget_pool_register(dialog);
 	}
@@ -3540,6 +3548,8 @@ static void remmina_connection_object_on_disconnect(RemminaProtocolWidget* gp, R
 
 	cnnobj->remmina_file = NULL;
 	g_free(cnnobj);
+
+	remmina_application_exitremmina();
 }
 
 static void remmina_connection_object_on_desktop_resize(RemminaProtocolWidget* gp, RemminaConnectionObject* cnnobj)

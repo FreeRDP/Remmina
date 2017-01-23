@@ -134,7 +134,7 @@ static void remmina_main_save_before_destroy()
 static gboolean remmina_main_dexit(gpointer data)
 {
 	TRACE_CALL("remmina_main_dexit");
-	remmina_exec_exitremmina();
+	remmina_application_exitremmina();
 	return FALSE;
 }
 
