@@ -1167,7 +1167,7 @@ static void remmina_connection_holder_toolbar_scaler_option(GtkWidget* widget, R
 
 	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(remmina_connection_holder_scaler_option_popdown), cnnhld);
 
-	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, remmina_public_popup_position, priv->toolitem_fullscreen, 0,
+	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, remmina_public_popup_position, priv->toolitem_scale, 0,
 			gtk_get_current_event_time());
 }
 
@@ -1746,6 +1746,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_widget_show(GTK_WIDGET(toolitem));
 
 	/* Fullscreen toggle */
+	/*
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-fullscreen");
 	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Toggle fullscreen mode"),
@@ -1754,9 +1755,11 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	priv->toolitem_fullscreen = toolitem;
 	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem), mode != SCROLLED_WINDOW_MODE);
-	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_fullscreen), cnnhld);
+	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_fullscreen), cnnhld); 
+	*/
 
 	/* Fullscreen drop-down options */
+	/*
 	toolitem = gtk_tool_item_new();
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
@@ -1784,8 +1787,10 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	{
 		gtk_widget_set_sensitive(GTK_WIDGET(widget), FALSE);
 	}
-
+	*/
+    
 	/* Switch tabs */
+	/* 
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-switch-page");
 	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Switch tab pages"), remmina_pref.shortcutkey_prevtab,
@@ -1794,10 +1799,13 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(remmina_connection_holder_toolbar_switch_page), cnnhld);
 	priv->toolitem_switch_page = toolitem;
+	*/
 
+    /*
 	toolitem = gtk_separator_tool_item_new();
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
-	gtk_widget_show(GTK_WIDGET(toolitem));
+	gtk_widget_show(GTK_WIDGET(toolitem)); 
+	*/
 
 	/* Scaler button */
 	toolitem = gtk_toggle_tool_button_new();
@@ -1833,6 +1841,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	priv->scaler_option_button = widget;
 
 	/* Grab keyboard button */
+	/*
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "input-keyboard");
 	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Grab all keyboard events"),
@@ -1841,7 +1850,9 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(remmina_connection_holder_toolbar_grab), cnnhld);
 	priv->toolitem_grab = toolitem;
-
+	*/
+    
+    /*
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (toolitem), "preferences-system");
 	gtk_tool_item_set_tooltip_text(toolitem, _("Preferences"));
@@ -1849,6 +1860,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(remmina_connection_holder_toolbar_preferences), cnnhld);
 	priv->toolitem_preferences = toolitem;
+	*/
 
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (toolitem), "system-run");
@@ -1863,13 +1875,15 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
 
-	toolitem = gtk_tool_button_new(NULL, "_Screenshot");
+    /*
+    toolitem = gtk_tool_button_new(NULL, "_Screenshot");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON (toolitem), "camera-photo");
 	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Screenshot"), remmina_pref.shortcutkey_screenshot, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
-	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_screenshot), cnnhld);
-
+	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_screenshot), cnnhld); 
+	*/
+    
 	toolitem = gtk_tool_button_new(NULL, "_Bottom");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON (toolitem), "go-bottom");
 	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Minimize window"), remmina_pref.shortcutkey_minimize, 0);
@@ -1877,12 +1891,14 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_minimize), cnnhld);
 
+	/* 
 	toolitem = gtk_tool_button_new(NULL, "_Disconnect");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON (toolitem), "gtk-disconnect");
 	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Disconnect"), remmina_pref.shortcutkey_disconnect, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
-	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_disconnect), cnnhld);
+	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_disconnect), cnnhld); 
+	*/
 
 	return toolbar;
 }
@@ -2219,7 +2235,7 @@ static void remmina_connection_holder_create_floating_toolbar(RemminaConnectionH
 	GtkWidget* vbox;
 	GtkWidget* hbox;
 	GtkWidget* label;
-	GtkWidget* pinbutton;
+	/* GtkWidget* pinbutton; */
 	GtkWidget* tb;
 
 
@@ -2247,6 +2263,7 @@ static void remmina_connection_holder_create_floating_toolbar(RemminaConnectionH
 
 
 	/* The pin button */
+	/*
 	pinbutton = gtk_button_new();
 	gtk_widget_show(pinbutton);
 	gtk_box_pack_start(GTK_BOX(hbox), pinbutton, FALSE, FALSE, 0);
@@ -2257,7 +2274,7 @@ static void remmina_connection_holder_create_floating_toolbar(RemminaConnectionH
 	priv->pin_button = pinbutton;
 	priv->pin_down = remmina_pref.toolbar_pin_down;
 	remmina_connection_holder_update_pin(cnnhld);
-
+	*/
 
 	label = gtk_label_new(remmina_file_get_string(cnnobj->remmina_file, "name"));
 	gtk_label_set_max_width_chars(GTK_LABEL(label), 50);
