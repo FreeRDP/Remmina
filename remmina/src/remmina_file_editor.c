@@ -1419,12 +1419,9 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	priv->precommand_entry = widget;
 	cs = remmina_file_get_string(remminafile, "precommand");
 	gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
-	if (!cs)
-	{
-		s = g_strdup_printf(_("A command or a script name/path."));
-		gtk_widget_set_tooltip_text (widget, s);
-		g_free(s);
-	}
+	s = g_strdup_printf(_("Script/command full path w/o arguments"));
+	gtk_widget_set_tooltip_text (widget, s);
+	g_free(s);
 
 	/* POST Connection Command */
 	widget = gtk_label_new(_("Post Command"));
@@ -1441,12 +1438,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	priv->postcommand_entry = widget;
 	cs = remmina_file_get_string(remminafile, "postcommand");
 	gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
-	if (!cs)
-	{
-		s = g_strdup_printf(_("A command or a script name/path."));
-		gtk_widget_set_tooltip_text (widget, s);
-		g_free(s);
-	}
+	s = g_strdup_printf(_("Script/command full path w/o arguments"));
 
 	/* Create the Preference frame */
 	widget = gtk_event_box_new();
