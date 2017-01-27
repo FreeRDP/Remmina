@@ -145,6 +145,35 @@ if(NOT REMMINA_UIDIR)
     set(REMMINA_UIDIR "${REMMINA_DATADIR}/remmina/ui")
 endif()
 
+set(SNAP_VERSION ${REMMINA_VERSION})
+option(SNAP_BUILD_ONLY "SNAP_BUILD_ONLY" OFF)
+
+if (NOT ${GIT_REVISION} STREQUAL ${REMMINA_VERSION_SUFFIX} AND
+    NOT ${GIT_REVISION} MATCHES "^rcgit-[0-9]*")
+    set(SNAP_VERSION ${SNAP_VERSION}+git${GIT_REVISION})
+endif()
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/snapcraft.yaml.in
+               ${CMAKE_CURRENT_SOURCE_DIR}/snapcraft.yaml)
+
+find_program(SNAPCRAFT "snapcraft")
+if(SNAPCRAFT)
+    add_custom_target("snap"
+        COMMAND ${SNAPCRAFT}
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+        DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/snapcraft.yaml"
+        COMMENT "Create snap package ${SNAP_VERSION}"
+        VERBATIM
+    )
+endif()
+
+if(SNAP_BUILD_ONLY)
+    if (NOT SNAPCRAFT)
+        message(FATAL_ERROR "snapcraft not found, impossible to create only snap target")
+    endif()
+    return()
+endif()
+
 # Uninstall support
 configure_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"

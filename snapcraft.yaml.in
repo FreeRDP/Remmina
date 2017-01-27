@@ -1,0 +1,122 @@
+name: remmina
+version: ${SNAP_VERSION}
+summary: The GTK+ Remote Desktop Client
+icon: remmina/desktop/scalable/apps/remmina.svg
+description: |
+  Remmina is a remote desktop client written in GTK+, aiming to be useful for
+  system administrators and travellers, who need to work with lots of remote
+  computers in front of either large monitors or tiny netbooks. Remmina supports
+  multiple network protocols in an integrated and consistant user interface.
+  Currently RDP, VNC, SPICE, NX, XDMCP and SSH are supported.
+
+  Remmina is free and open-source software, released under GNU GPL license.
+
+grade: stable
+confinement: strict
+
+parts:
+  freerdp:
+    plugin: cmake
+    source: https://github.com/FreeRDP/FreeRDP.git
+    source-commit: refs/heads/master
+    source-depth: 1
+    build-packages:
+      - build-essential
+      - libasound2-dev
+      - libcups2-dev
+      - libjpeg-dev
+      - libpcsclite-dev
+      - libpulse-dev
+      - libssl-dev
+      - libx11-dev
+      - libxcursor-dev
+      - libxdamage-dev
+      - libxext-dev
+      - libxi-dev
+      - libxinerama-dev
+      - libxkbfile-dev
+      - libxrandr-dev
+      - libxv-dev
+    configflags:
+      - -DWITH_WAYLAND=off
+      - -DWITH_CLIENT=off
+      - -DWITH_SERVER=off
+      - -DWITH_PULSE=on
+      - -DWITH_GSTREAMER=off
+      - -DWITH_GSTREAMER_1_0=off
+      - -DWITH_GSTREAMER_0_10=off
+      - -DWITH_FFMPEG=off
+      - -DWITH_CHANNELS=on
+      - -DSTATIC_CHANNELS=off
+      - -DWITH_CUPS=on
+      - -DWITH_PCSC=on
+      - -DWITH_JPEG=on
+
+    # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
+      - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
+    organize:
+      snap/remmina/current: .
+
+    prime:
+      - -usr/include
+      - -usr/lib/cmake
+      - -usr/lib/pkgconfig
+
+  remmina:
+    plugin: cmake
+    source: ${CMAKE_SOURCE_DIR}
+    stage-packages:
+      - xauth
+    build-packages:
+      - intltool
+      - libappindicator3-dev
+      - libavahi-ui-gtk3-dev
+      - libgcrypt20-dev
+      - libgnome-keyring-dev
+      - libgnutls28-dev
+      - libgtk-3-dev
+      - libjpeg-dev
+      - libssh-dev
+      - libtelepathy-glib-dev
+      - libvncserver-dev
+      - libvte-2.91-dev
+      - libxkbfile-dev
+    configflags:
+      - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
+      - -DWITH_SURVEY=off
+
+    # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
+      - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
+    organize:
+      snap/remmina/current: .
+
+    after:
+      - freerdp
+      - desktop-gtk3
+      - indicator-gtk3
+
+apps:
+  remmina:
+    command: desktop-launch remmina
+    plugs:
+      - avahi-observe
+      - cups-control
+      - gsettings
+      - home
+      - mount-observe
+      - network
+      - network-bind
+      - pulseaudio
+      - unity7
+
+  winpr-makecert:
+    command: winpr-makecert
+
+  winpr-hash:
+    command: winpr-hash
+
+slots:
+  remmina-gapp:
+    interface: dbus
+    bus: session
+    name: ${UNIQUE_APPNAME}
