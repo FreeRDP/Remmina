@@ -51,6 +51,10 @@ set(REMMINA_ICON "\${SNAP}/meta/gui/icon.svg")
 configure_file(${CMAKE_SOURCE_DIR}/remmina/desktop/remmina.desktop.in
                ${SNAP_GUI_DIR}/remmina.desktop @ONLY)
 
+# Remove when https://github.com/snapcore/snapcraft/pull/1092 is merged
+configure_file(${CMAKE_SOURCE_DIR}/remmina/desktop/scalable/apps/remmina.svg
+               ${SNAP_GUI_DIR}/icon.svg COPYONLY)
+
 configure_file(${CMAKE_SOURCE_DIR}/LICENSE
                ${SNAP_SETUP_DIR}/license.txt COPYONLY)
 
