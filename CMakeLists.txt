@@ -153,15 +153,22 @@ if (NOT ${GIT_REVISION} STREQUAL ${REMMINA_VERSION_SUFFIX} AND
     set(SNAP_VERSION ${SNAP_VERSION}+git${GIT_REVISION})
 endif()
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/snapcraft.yaml.in
-               ${CMAKE_CURRENT_SOURCE_DIR}/snapcraft.yaml)
-
 find_program(SNAPCRAFT "snapcraft")
 if(SNAPCRAFT)
+    file(RELATIVE_PATH CMAKE_SOURCE_DIR_RELATIVE ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR})
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/snapcraft.yaml.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/snapcraft.yaml)
+
+    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/snap-setup
+         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+    file(REMOVE_RECURSE ${CMAKE_CURRENT_BINARY_DIR}/setup)
+    file(RENAME ${CMAKE_CURRENT_BINARY_DIR}/snap-setup
+         ${CMAKE_CURRENT_BINARY_DIR}/setup)
+
     add_custom_target("snap"
         COMMAND ${SNAPCRAFT}
-        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
-        DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/snapcraft.yaml"
+        WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
+        DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/snapcraft.yaml"
         COMMENT "Create snap package ${SNAP_VERSION}"
         VERBATIM
     )
