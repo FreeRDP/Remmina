@@ -19,15 +19,19 @@ parts:
   freerdp:
     plugin: cmake
     source: https://github.com/FreeRDP/FreeRDP.git
-    source-commit: refs/heads/master
     source-depth: 1
     build-packages:
       - build-essential
       - libasound2-dev
+      - libavcodec-dev
+      - libavutil-dev
       - libcups2-dev
+      - libgnutls-dev
+      - libgnutls28-dev
       - libjpeg-dev
       - libpcsclite-dev
       - libpulse-dev
+      - libsecret-1-dev
       - libssl-dev
       - libx11-dev
       - libxcursor-dev
@@ -36,7 +40,9 @@ parts:
       - libxi-dev
       - libxinerama-dev
       - libxkbfile-dev
+      - libxml2-dev
       - libxrandr-dev
+      - libxtst-dev
       - libxv-dev
     configflags:
       - -DWITH_WAYLAND=off
@@ -44,9 +50,7 @@ parts:
       - -DWITH_SERVER=off
       - -DWITH_PULSE=on
       - -DWITH_GSTREAMER=off
-      - -DWITH_GSTREAMER_1_0=off
-      - -DWITH_GSTREAMER_0_10=off
-      - -DWITH_FFMPEG=off
+      - -DWITH_FFMPEG=on
       - -DWITH_CHANNELS=on
       - -DSTATIC_CHANNELS=off
       - -DWITH_CUPS=on
@@ -74,9 +78,9 @@ parts:
       - libavahi-ui-gtk3-dev
       - libgcrypt20-dev
       - libgnome-keyring-dev
-      - libgnutls28-dev
       - libgtk-3-dev
-      - libjpeg-dev
+      - libspice-client-gtk-3.0-dev
+      - libspice-protocol-dev
       - libssh-dev
       - libtelepathy-glib-dev
       - libvncserver-dev
@@ -84,7 +88,6 @@ parts:
       - libxkbfile-dev
     configflags:
       - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
-      - -DWITH_SURVEY=off
 
     # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
