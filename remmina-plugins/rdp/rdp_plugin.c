@@ -1076,6 +1076,22 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 					// Invalidate the saved password, so the user will be re-asked at next logon
 					remmina_plugin_service->file_unsave_password(remminafile);
 					break;
+				case STATUS_ACCOUNT_LOCKED_OUT:
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount is locked out."),
+							rfi->settings->ServerHostname );
+					break;
+				case STATUS_ACCOUNT_EXPIRED:
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount is expired."),
+							rfi->settings->ServerHostname );
+					break;;
+				case STATUS_ACCOUNT_DISABLED:
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount is disabled."),
+							rfi->settings->ServerHostname );
+					break;
+				case STATUS_ACCOUNT_RESTRICTION:
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount has restrictions."),
+							rfi->settings->ServerHostname );
+					break;
 				case FREERDP_ERROR_CONNECT_FAILED:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to RDP server %s failed."), rfi->settings->ServerHostname );
 					break;
