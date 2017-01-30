@@ -58,7 +58,6 @@ configure_file(${CMAKE_SOURCE_DIR}/remmina/desktop/scalable/apps/remmina.svg
 configure_file(${CMAKE_SOURCE_DIR}/LICENSE
                ${SNAP_SETUP_DIR}/license.txt COPYONLY)
 
-
 add_custom_target("snap"
     COMMAND ${SNAPCRAFT}
     WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
@@ -66,3 +65,14 @@ add_custom_target("snap"
     COMMENT "Create snap package ${SNAP_VERSION}"
     VERBATIM
 )
+
+foreach(channel stable candidate beta edge)
+  add_custom_target("snap-push-${channel}"
+      COMMAND bash -c "${SNAPCRAFT} push --release ${channel} *.snap"
+      WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
+      DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/snapcraft.yaml"
+      COMMENT "Create snap package ${SNAP_VERSION}"
+      VERBATIM
+  )
+  add_dependencies("snap-push-${channel}" "snap")
+endforeach(channel)
