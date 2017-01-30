@@ -145,35 +145,15 @@ if(NOT REMMINA_UIDIR)
     set(REMMINA_UIDIR "${REMMINA_DATADIR}/remmina/ui")
 endif()
 
-set(SNAP_VERSION ${REMMINA_VERSION})
+# Snap package generation support
+if(NOT DEFINED ENV{SNAPCRAFT_PROJECT_NAME})
+    find_program(SNAPCRAFT "snapcraft")
+    if(SNAPCRAFT)
+        add_subdirectory(snap)
+    endif()
+endif()
+
 option(SNAP_BUILD_ONLY "SNAP_BUILD_ONLY" OFF)
-
-if (NOT ${GIT_REVISION} STREQUAL ${REMMINA_VERSION_SUFFIX} AND
-    NOT ${GIT_REVISION} MATCHES "^rcgit-[0-9]*")
-    set(SNAP_VERSION ${SNAP_VERSION}+git${GIT_REVISION})
-endif()
-
-find_program(SNAPCRAFT "snapcraft")
-if(SNAPCRAFT)
-    file(RELATIVE_PATH CMAKE_SOURCE_DIR_RELATIVE ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR})
-    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/snapcraft.yaml.in
-                   ${CMAKE_CURRENT_BINARY_DIR}/snapcraft.yaml)
-
-    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/snap-setup
-         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-    file(REMOVE_RECURSE ${CMAKE_CURRENT_BINARY_DIR}/setup)
-    file(RENAME ${CMAKE_CURRENT_BINARY_DIR}/snap-setup
-         ${CMAKE_CURRENT_BINARY_DIR}/setup)
-
-    add_custom_target("snap"
-        COMMAND ${SNAPCRAFT}
-        WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
-        DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/snapcraft.yaml"
-        COMMENT "Create snap package ${SNAP_VERSION}"
-        VERBATIM
-    )
-endif()
-
 if(SNAP_BUILD_ONLY)
     if (NOT SNAPCRAFT)
         message(FATAL_ERROR "snapcraft not found, impossible to create only snap target")
