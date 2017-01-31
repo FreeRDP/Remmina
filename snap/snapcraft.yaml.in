@@ -1,4 +1,4 @@
-name: remmina
+name: ${SNAP_NAME}
 version: ${SNAP_VERSION}
 summary: The GTK+ Remote Desktop Client
 # Enable this when https://github.com/snapcore/snapcraft/pull/1092 is merged
@@ -60,7 +60,7 @@ parts:
     # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
     organize:
-      snap/remmina/current: .
+      snap/${SNAP_NAME}/current: .
 
     prime:
       - -usr/include
@@ -92,7 +92,7 @@ parts:
     # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
     organize:
-      snap/remmina/current: .
+      snap/${SNAP_NAME}/current: .
 
     after:
       - freerdp

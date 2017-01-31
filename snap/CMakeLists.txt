@@ -30,6 +30,7 @@
 # version. If you delete this exception statement from all source
 # files in the program, then also delete it here.
 
+set(SNAP_NAME "remmina")
 set(SNAP_VERSION ${REMMINA_VERSION})
 if (NOT ${GIT_REVISION} STREQUAL ${REMMINA_VERSION_SUFFIX} AND
     NOT ${GIT_REVISION} MATCHES "^rcgit-[0-9]*")
