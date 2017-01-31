@@ -145,6 +145,22 @@ if(NOT REMMINA_UIDIR)
     set(REMMINA_UIDIR "${REMMINA_DATADIR}/remmina/ui")
 endif()
 
+# Snap package generation support
+if(NOT DEFINED ENV{SNAPCRAFT_PROJECT_NAME})
+    find_program(SNAPCRAFT "snapcraft")
+    if(SNAPCRAFT)
+        add_subdirectory(snap)
+    endif()
+endif()
+
+option(SNAP_BUILD_ONLY "SNAP_BUILD_ONLY" OFF)
+if(SNAP_BUILD_ONLY)
+    if (NOT SNAPCRAFT)
+        message(FATAL_ERROR "snapcraft not found, impossible to create only snap target")
+    endif()
+    return()
+endif()
+
 # Uninstall support
 configure_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"

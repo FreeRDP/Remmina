@@ -65,9 +65,9 @@ Comment[th]=เชื่อมต่อไปยังพื้นโต๊ะ�
 Comment[tr]=Uzak masaüstlerine bağlan
 Comment[uk]=Приєднатися до віддаленого комп’ютера
 Comment[zh_CN]=连接到远程桌面
-TryExec=@CMAKE_INSTALL_FULL_BINDIR@/remmina
-Exec=@CMAKE_INSTALL_FULL_BINDIR@/remmina
-Icon=remmina
+TryExec=@REMMINA_BINARY_PATH@
+Exec=@REMMINA_BINARY_PATH@
+Icon=@REMMINA_ICON@
 Terminal=false
 Type=Application
 Categories=GTK;GNOME;X-GNOME-NetworkSettings;Network;
@@ -94,7 +94,7 @@ Name[sv]=Skapa en ny anslutningsprofil
 Name[tr]=Yeni Bir Bağlantı Profili Oluştur
 Name[uk]=Створити новий профіль з’єднання
 Name[zh_CN]=新建连接配置
-Exec=@CMAKE_INSTALL_FULL_BINDIR@/remmina --new
+Exec=@REMMINA_BINARY_PATH@ --new
 
 [Desktop Action Tray]
 Name=Start Remmina Minimized
@@ -117,9 +117,9 @@ Name[sv]=Starta Remmina minimerat
 Name[tr]=Remmina'yı Küçültülmüş Başlat
 Name[uk]=Запустити Rammina у системному лотку
 Name[zh_CN]=启动后自动最小化
-Exec=@CMAKE_INSTALL_FULL_BINDIR@/remmina --icon
+Exec=@REMMINA_BINARY_PATH@ --icon
 
 [Desktop Action Quit]
 Name=Quit
-Exec=@CMAKE_INSTALL_FULL_BINDIR@/remmina --quit
+Exec=@REMMINA_BINARY_PATH@ --quit
 OnlyShowIn=Unity;
