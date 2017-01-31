@@ -45,7 +45,7 @@ file(MAKE_DIRECTORY ${SNAP_GUI_DIR})
 file(RELATIVE_PATH CMAKE_SOURCE_DIR_RELATIVE ${SNAP_BUILD_DIR} ${CMAKE_SOURCE_DIR})
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/snapcraft.yaml.in
-               ${SNAP_BUILD_DIR}/snapcraft.yaml)
+               ${SNAP_BUILD_DIR}/snapcraft.yaml @ONLY)
 
 set(REMMINA_BINARY_PATH "remmina")
 set(REMMINA_ICON "\${SNAP}/meta/gui/icon.svg")

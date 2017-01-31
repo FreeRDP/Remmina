@@ -1,8 +1,8 @@
-name: ${SNAP_NAME}
-version: ${SNAP_VERSION}
+name: @SNAP_NAME@
+version: @SNAP_VERSION@
 summary: The GTK+ Remote Desktop Client
 # Enable this when https://github.com/snapcore/snapcraft/pull/1092 is merged
-# icon: ${CMAKE_SOURCE_DIR_RELATIVE}/remmina/desktop/scalable/apps/remmina.svg
+# icon: @CMAKE_SOURCE_DIR_RELATIVE@/remmina/desktop/scalable/apps/remmina.svg
 description: |
   Remmina is a remote desktop client written in GTK+, aiming to be useful for
   system administrators and travellers, who need to work with lots of remote
@@ -60,7 +60,7 @@ parts:
     # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
     organize:
-      snap/${SNAP_NAME}/current: .
+      snap/@SNAP_NAME@/current: .
 
     prime:
       - -usr/include
@@ -69,7 +69,7 @@ parts:
 
   remmina:
     plugin: cmake
-    source: ${CMAKE_SOURCE_DIR_RELATIVE}
+    source: @CMAKE_SOURCE_DIR_RELATIVE@
     stage-packages:
       - xauth
     build-packages:
@@ -92,7 +92,7 @@ parts:
     # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
     organize:
-      snap/${SNAP_NAME}/current: .
+      snap/@SNAP_NAME@/current: .
 
     after:
       - freerdp
@@ -123,4 +123,4 @@ slots:
   remmina-gapp:
     interface: dbus
     bus: session
-    name: ${UNIQUE_APPNAME}
+    name: @UNIQUE_APPNAME@
