@@ -123,7 +123,7 @@ if (${GIT_REVISION} STREQUAL "n/a")
         git_rev_parse(GIT_REVISION --short)
 endif()
 
-if(NOT GIT_REVISION)
+if(NOT GIT_REVISION OR ${GIT_REVISION} STREQUAL "n/a")
     set(GIT_REVISION ${REMMINA_VERSION_SUFFIX})
 endif()
 message(STATUS "Git Revision ${GIT_REVISION}")
