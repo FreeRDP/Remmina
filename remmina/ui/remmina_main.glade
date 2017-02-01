@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.19.0
+<!-- Generated with glade 3.20.0 
 
 Remmina - The GTK+ Remmina Remote Desktop Client
-Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2016
+Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2017
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
   <!-- interface-license-type gplv2 -->
   <!-- interface-name Remmina -->
   <!-- interface-description The GTK+ Remmina Remote Desktop Client -->
-  <!-- interface-copyright Antenore Gatta & Giovanni Panozzo 2014-2016 -->
+  <!-- interface-copyright Antenore Gatta & Giovanni Panozzo 2014-2017 -->
   <object class="GtkAccelGroup" id="accelgroup_shortcuts"/>
   <object class="GtkActionGroup" id="actiongroup_application">
     <property name="accel_group">accelgroup_shortcuts</property>
@@ -286,6 +286,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     <property name="width_chars">25</property>
                     <property name="primary_icon_stock">gtk-connect</property>
                     <property name="secondary_icon_stock">gtk-clear</property>
+                    <property name="primary_icon_tooltip_text" translatable="yes">Server name or IP address</property>
+                    <property name="secondary_icon_tooltip_text" translatable="yes">Clear</property>
                     <property name="completion">entrycompletion</property>
                     <property name="input_hints">GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NONE</property>
                     <signal name="activate" handler="remmina_main_quickconnect_on_click" swapped="no"/>
@@ -705,6 +707,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           </packing>
         </child>
       </object>
+    </child>
+    <child type="titlebar">
+      <placeholder/>
     </child>
   </object>
 </interface>
