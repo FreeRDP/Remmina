@@ -45,10 +45,6 @@ function docker_exec() {
     docker exec -i $DOCKER_BUILDER_NAME $*
 }
 
-function docker_bash() {
-    docker_exec bash -c "$*"
-}
-
 if [ "$BUILD_TYPE" == "deb" ]; then
     if [ "$TRAVIS_BUILD_STEP" == "before_install" ]; then
         apt-add-repository $DEB_PPA -y
@@ -81,11 +77,12 @@ elif [ "$BUILD_TYPE" == "snap" ]; then
             echo -e "architectures:\n  - $ARCH" >> build/snap/snapcraft.yaml
         fi
 
-        if [ -n "$TRAVIS_TAG" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-            docker_exec make snap -C build
-        else
-            docker exec -i $DOCKER_BUILDER_NAME bash -c 'cd build/snap && snapcraft prime'
+        make_target='snap'
+        if [ -z "$TRAVIS_TAG" ] || [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+            make_target='snap-prime'
         fi
+
+        docker_exec make $make_target -C build
     fi
 else
     echo 'No $BUILD_TYPE defined'

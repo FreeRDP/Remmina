@@ -59,6 +59,14 @@ configure_file(${CMAKE_SOURCE_DIR}/remmina/desktop/scalable/apps/remmina.svg
 configure_file(${CMAKE_SOURCE_DIR}/LICENSE
                ${SNAP_SETUP_DIR}/license.txt COPYONLY)
 
+add_custom_target("snap-prime"
+    COMMAND ${SNAPCRAFT} prime
+    WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
+    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/snapcraft.yaml"
+    COMMENT "Priming snap package ${SNAP_VERSION}"
+    VERBATIM
+)
+
 add_custom_target("snap"
     COMMAND ${SNAPCRAFT}
     WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
