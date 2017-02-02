@@ -47,6 +47,8 @@ env:
   - SNAP_PRIME_ON_PULL_REQUEST=true
   - SNAP_UNSTABLE_CHANNEL=edge
   - SNAP_RELEASE_CHANNEL=stable
+  - SNAPCRAFT_CONFIG_KEY=$encrypted_4e0819dd114c_key
+  - SNAPCRAFT_CONFIG_IV=$encrypted_4e0819dd114c_iv
   matrix:
   - BUILD_TYPE=deb
   - BUILD_TYPE=snap
@@ -54,18 +56,16 @@ env:
 
 
 before_install:
-  - sudo scripts/travis-build.sh before_install
+  - scripts/travis-build.sh before_install
 
 install:
-  - sudo scripts/travis-build.sh install
+  - scripts/travis-build.sh install
 
 script:
-  - sudo scripts/travis-build.sh script
+  - scripts/travis-build.sh script
 
 after_success:
-- mkdir -p $BUILD_FOLDER/snap/.snapcraft
-- openssl aes-256-cbc -K $encrypted_4e0819dd114c_key -iv $encrypted_4e0819dd114c_iv
-  -in snap/.snapcraft/travis_snapcraft.cfg -out $BUILD_FOLDER/snap/.snapcraft/snapcraft.cfg -d
+  - scripts/travis-build.sh after_success
 
 deploy:
   - provider: script

@@ -47,13 +47,13 @@ function docker_exec() {
 
 if [ "$BUILD_TYPE" == "deb" ]; then
     if [ "$TRAVIS_BUILD_STEP" == "before_install" ]; then
-        apt-add-repository $DEB_PPA -y
-        apt-get update -q
-        apt-get install -y devscripts equivs
+        sudo apt-add-repository $DEB_PPA -y
+        sudo apt-get update -q
+        sudo apt-get install -y devscripts equivs
     elif [ "$TRAVIS_BUILD_STEP" == "install" ]; then
-        mk-build-deps -ir remmina
+        sudo mk-build-deps -ir remmina
         if [ -n "$DEB_EXTRA_DEPS" ]; then
-            apt-get install -y $DEB_EXTRA_DEPS
+            sudo apt-get install -y $DEB_EXTRA_DEPS
         fi
     elif [ "$TRAVIS_BUILD_STEP" == "script" ]; then
         git clean -f
@@ -72,6 +72,12 @@ elif [ "$BUILD_TYPE" == "snap" ]; then
     if [ "$TRAVIS_BUILD_STEP" == "before_install" ]; then
         if [ -n "$ARCH" ]; then DOCKER_IMAGE="$ARCH/$DOCKER_IMAGE"; fi
         docker run --name $DOCKER_BUILDER_NAME -v $PWD:$PWD -w $PWD -td $DOCKER_IMAGE
+
+        # Sometimes the arch isn't properly recognized by snapcraft
+        # Fixed in https://github.com/snapcore/snapcraft/pull/1060
+        if [ -n "$ARCH" ]; then
+            echo -e "architectures:\n  - $ARCH" >> snap/snapcraft.yaml.in
+        fi
     elif [ "$TRAVIS_BUILD_STEP" == "install" ]; then
         docker_exec apt-get update -q
         docker_exec apt-get install cmake git-core snapcraft -y
@@ -80,17 +86,19 @@ elif [ "$BUILD_TYPE" == "snap" ]; then
         mkdir $BUILD_FOLDER
         docker_exec cmake -B$BUILD_FOLDER -H. -DSNAP_BUILD_ONLY=ON
 
-        # Sometimes the arch isn't properly recognized by snapcraft
-        if [ -n "$ARCH" ]; then
-            echo -e "architectures:\n  - $ARCH" >> $BUILD_FOLDER/snap/snapcraft.yaml
-        fi
-
         make_target='snap'
         if [ -z "$TRAVIS_TAG" ] || [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
             make_target='snap-prime'
         fi
 
         docker_exec make $make_target -C $BUILD_FOLDER
+    elif [ "$TRAVIS_BUILD_STEP" == "after_success" ]; then
+        sudo mkdir -p $BUILD_FOLDER/snap/.snapcraft -m 777
+        set +x
+        openssl aes-256-cbc -K $SNAPCRAFT_CONFIG_KEY \
+            -iv $SNAPCRAFT_CONFIG_IV \
+            -in snap/.snapcraft/travis_snapcraft.cfg \
+            -out $BUILD_FOLDER/snap/.snapcraft/snapcraft.cfg -d
     elif [ "$TRAVIS_BUILD_STEP" == "deploy-unstable" ]; then
         docker_exec make snap-push-$SNAP_UNSTABLE_CHANNEL -C $BUILD_FOLDER
     elif [ "$TRAVIS_BUILD_STEP" == "deploy-release" ]; then
