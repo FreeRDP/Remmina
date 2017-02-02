@@ -1,5 +1,5 @@
 # Remmina - The GTK+ Remote Desktop Client
-# Copyright (C) 2014-2016 Antenore Gatta, Giovanni Panozzo
+# Copyright (C) 2014-2017 Antenore Gatta, Giovanni Panozzo
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -31,26 +31,56 @@
 #
 #
 
-language: c
-
 sudo: required
-dist: trusty
+language: generic
 
-compiler:
-    - gcc
-    # - clang
+services:
+- docker
+
+env:
+  global:
+  - BUILD_FOLDER=build
+  - DEB_PPA='ppa:remmina-ppa-team/remmina-next'
+  - DEB_EXTRA_DEPS='libspice-protocol-dev libspice-client-gtk-3.0-dev'
+  - DEB_BUILD_OPTIONS='-DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON -DWITH_APPINDICATOR=OFF'
+  - DOCKER_IMAGE=ubuntu:xenial
+  - SNAP_PRIME_ON_PULL_REQUEST=true
+  - SNAP_UNSTABLE_CHANNEL=edge
+  - SNAP_RELEASE_CHANNEL=stable
+  - SNAPCRAFT_CONFIG_KEY=$encrypted_8816994192a9_key
+  - SNAPCRAFT_CONFIG_IV=$encrypted_8816994192a9_iv
+  matrix:
+  - BUILD_TYPE=deb
+  - BUILD_TYPE=snap
+  - BUILD_TYPE=snap ARCH=i386
+
 
 before_install:
-    - sudo apt-add-repository ppa:remmina-ppa-team/remmina-next -y
-    - sudo apt-get update -qq
-    - sudo apt-get install freerdp-x11 libfreerdp-dev libfreerdp-plugins-standard libfreerdp1 -y
-    - sudo aptitude install build-essential git-core cmake libssl-dev libx11-dev libxext-dev libxinerama-dev libxcursor-dev libxdamage-dev libxv-dev libxkbfile-dev libasound2-dev libcups2-dev libxml2 libxml2-dev libxrandr-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libxi-dev libavutil-dev libavcodec-dev libxtst-dev libgtk-3-dev libgcrypt11-dev libssh-dev libpulse-dev libvte-2.90-dev libxkbfile-dev libfreerdp-dev libtelepathy-glib-dev libjpeg-dev libgnutls-dev libgnome-keyring-dev libavahi-ui-gtk3-dev libvncserver-dev libappindicator3-dev intltool libsecret-1-dev libwebkit2gtk-3.0-dev libspice-protocol-dev libspice-client-gtk-3.0-dev -y
+  - scripts/travis-build.sh before_install
+
+install:
+  - scripts/travis-build.sh install
 
 script:
-  - git clean -f
-  - mkdir build
-  - cd build
-  - cmake -DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON -DWITH_APPINDICATOR=OFF --build=build ..
-  - make VERBOSE=1
- 
+  - scripts/travis-build.sh script
+
+after_success:
+  - scripts/travis-build.sh after_success
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: scripts/travis-build.sh deploy-unstable
+    on:
+      condition: $BUILD_TYPE = snap
+      branch: next
+
+  - provider: script
+    skip_cleanup: true
+    script: scripts/travis-build.sh deploy-release
+    on:
+      condition: $BUILD_TYPE = snap
+      branch: next
+      tags: true
+
 # EOF #
