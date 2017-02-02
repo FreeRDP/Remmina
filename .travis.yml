@@ -39,8 +39,11 @@ services:
 
 env:
   global:
-  - DOCKER_IMAGE=ubuntu:xenial
+  - BUILD_FOLDER=build
   - DEB_PPA='ppa:remmina-ppa-team/remmina-next'
+  - DEB_EXTRA_DEPS='libspice-protocol-dev libspice-client-gtk-3.0-dev'
+  - DEB_BUILD_OPTIONS='-DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON -DWITH_APPINDICATOR=OFF'
+  - DOCKER_IMAGE=ubuntu:xenial
   - SNAP_PRIME_ON_PULL_REQUEST=true
   - SNAP_UNSTABLE_CHANNEL=edge
   - SNAP_RELEASE_CHANNEL=stable
@@ -60,9 +63,9 @@ script:
   - sudo scripts/travis-build.sh script
 
 after_success:
-- mkdir -p build/snap/.snapcraft
+- mkdir -p $BUILD_FOLDER/snap/.snapcraft
 - openssl aes-256-cbc -K $encrypted_4e0819dd114c_key -iv $encrypted_4e0819dd114c_iv
-  -in snap/.snapcraft/travis_snapcraft.cfg -out build/snap/.snapcraft/snapcraft.cfg -d
+  -in snap/.snapcraft/travis_snapcraft.cfg -out $BUILD_FOLDER/snap/.snapcraft/snapcraft.cfg -d
 
 deploy:
   - provider: script

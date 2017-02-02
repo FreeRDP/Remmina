@@ -52,13 +52,14 @@ if [ "$BUILD_TYPE" == "deb" ]; then
         apt-get install -y devscripts equivs
     elif [ "$TRAVIS_BUILD_STEP" == "install" ]; then
         mk-build-deps -ir remmina
-        apt-get install -y libspice-protocol-dev libspice-client-gtk-3.0-dev
+        if [ -n "$DEB_EXTRA_DEPS" ]; then
+            apt-get install -y $DEB_EXTRA_DEPS
+        fi
     elif [ "$TRAVIS_BUILD_STEP" == "script" ]; then
         git clean -f
-        mkdir build
-        cd build
-        cmake -DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON -DWITH_APPINDICATOR=OFF --build=build ..
-        make VERBOSE=1
+        mkdir $BUILD_FOLDER
+        cmake -B$BUILD_FOLDER -H. $DEB_BUILD_OPTIONS
+        make VERBOSE=1 -C $BUILD_FOLDER
     fi
 elif [ "$BUILD_TYPE" == "snap" ]; then
     if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
@@ -76,12 +77,12 @@ elif [ "$BUILD_TYPE" == "snap" ]; then
         docker_exec apt-get install cmake git-core snapcraft -y
     elif [ "$TRAVIS_BUILD_STEP" == "script" ]; then
         git clean -f
-        mkdir build
-        docker_exec cmake -Bbuild -H. -DSNAP_BUILD_ONLY=ON
+        mkdir $BUILD_FOLDER
+        docker_exec cmake -B$BUILD_FOLDER -H. -DSNAP_BUILD_ONLY=ON
 
         # Sometimes the arch isn't properly recognized by snapcraft
         if [ -n "$ARCH" ]; then
-            echo -e "architectures:\n  - $ARCH" >> build/snap/snapcraft.yaml
+            echo -e "architectures:\n  - $ARCH" >> $BUILD_FOLDER/snap/snapcraft.yaml
         fi
 
         make_target='snap'
@@ -89,11 +90,11 @@ elif [ "$BUILD_TYPE" == "snap" ]; then
             make_target='snap-prime'
         fi
 
-        docker_exec make $make_target -C build
+        docker_exec make $make_target -C $BUILD_FOLDER
     elif [ "$TRAVIS_BUILD_STEP" == "deploy-unstable" ]; then
-        docker_exec make snap-push-$SNAP_UNSTABLE_CHANNEL -C build
+        docker_exec make snap-push-$SNAP_UNSTABLE_CHANNEL -C $BUILD_FOLDER
     elif [ "$TRAVIS_BUILD_STEP" == "deploy-release" ]; then
-        docker_exec make snap-push-$SNAP_RELEASE_CHANNEL -C build
+        docker_exec make snap-push-$SNAP_RELEASE_CHANNEL -C $BUILD_FOLDER
     fi
 else
     echo 'No $BUILD_TYPE defined'
