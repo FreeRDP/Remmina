@@ -61,6 +61,13 @@ if [ "$BUILD_TYPE" == "deb" ]; then
         make VERBOSE=1
     fi
 elif [ "$BUILD_TYPE" == "snap" ]; then
+    if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+        if [ "$SNAP_PRIME_ON_PULL_REQUEST" != "true" ]; then
+            echo '$SNAP_PRIME_ON_PULL_REQUEST is not set to true, thus we skip this now'
+            exit 0
+        fi
+    fi
+
     if [ "$TRAVIS_BUILD_STEP" == "before_install" ]; then
         if [ -n "$ARCH" ]; then DOCKER_IMAGE="$ARCH/$DOCKER_IMAGE"; fi
         docker run --name $DOCKER_BUILDER_NAME -v $PWD:$PWD -w $PWD -td $DOCKER_IMAGE
