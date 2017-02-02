@@ -90,6 +90,10 @@ elif [ "$BUILD_TYPE" == "snap" ]; then
         fi
 
         docker_exec make $make_target -C build
+    elif [ "$TRAVIS_BUILD_STEP" == "deploy-unstable" ]; then
+        docker_exec make snap-push-$SNAP_UNSTABLE_CHANNEL -C build
+    elif [ "$TRAVIS_BUILD_STEP" == "deploy-release" ]; then
+        docker_exec make snap-push-$SNAP_RELEASE_CHANNEL -C build
     fi
 else
     echo 'No $BUILD_TYPE defined'

@@ -59,4 +59,25 @@ install:
 script:
   - sudo scripts/travis-build.sh script
 
+after_success:
+- mkdir -p build/snap/.snapcraft
+- openssl aes-256-cbc -K $encrypted_4e0819dd114c_key -iv $encrypted_4e0819dd114c_iv
+  -in snap/.snapcraft/travis_snapcraft.cfg -out build/snap/.snapcraft/snapcraft.cfg -d
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: scripts/travis-build.sh deploy-unstable
+    on:
+      condition: $BUILD_TYPE = snap
+      branch: next
+
+  - provider: script
+    skip_cleanup: true
+    script: scripts/travis-build.sh deploy-release
+    on:
+      condition: $BUILD_TYPE = snap
+      branch: next
+      tags: true
+
 # EOF #
