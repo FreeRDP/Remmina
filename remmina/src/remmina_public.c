@@ -480,7 +480,11 @@ guint remmina_public_get_current_workspace(GdkScreen *screen)
 #ifdef GDK_WINDOWING_X11
 #if GTK_CHECK_VERSION(3, 10, 0)
 	g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
-	return gdk_x11_screen_get_current_desktop(screen);
+	if (GDK_IS_X11_DISPLAY(gdk_screen_get_display(screen)))
+		return gdk_x11_screen_get_current_desktop(screen);
+	else
+		return 0;
+
 #else
 	GdkWindow *root_win;
 	GdkDisplay *display;
@@ -530,7 +534,10 @@ guint remmina_public_get_window_workspace(GtkWindow *gtkwindow)
 	g_return_val_if_fail (GTK_IS_WINDOW (gtkwindow), 0);
 	g_return_val_if_fail (gtk_widget_get_realized (GTK_WIDGET (gtkwindow)), 0);
 	window = gtk_widget_get_window (GTK_WIDGET (gtkwindow));
-	return gdk_x11_window_get_desktop(window);
+	if (GDK_IS_X11_DISPLAY(gdk_window_get_display(window)))
+		return gdk_x11_window_get_desktop(window);
+	else
+		return 0;
 #else
 	GdkWindow *window;
 	GdkDisplay *display;

@@ -228,8 +228,8 @@ static void remmina_plugin_spice_file_transfer_finished_cb(SpiceFileTransferTask
 	}
 	else
 	{
-		notification = g_notification_new(_("Transfer complete"));
-		notification_message = g_strdup_printf(_("File %s transfered succesfully"),
+		notification = g_notification_new(_("Transfer completed"));
+		notification_message = g_strdup_printf(_("File %s transfered successfully"),
 		                                       filename);
 	}
 

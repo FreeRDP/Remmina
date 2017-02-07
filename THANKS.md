@@ -37,6 +37,7 @@ These donors are listed in first name alphabetical order.
 - Jamison Guyton
 - Lars Povlsen
 - Lynne Lawrence
+- Mikhail Blinkov
 - Michael Gruben
 - Michael Schneider
 - Nic Galler
@@ -46,6 +47,7 @@ These donors are listed in first name alphabetical order.
 - Richard Lees
 - Richard Pendlebury
 - Stepan Naumov
+- Tim Richardson
 - Troy Lea
 - Viktor Sik
 

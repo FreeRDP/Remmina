@@ -90,7 +90,6 @@ typedef struct _RemminaPref
 	/* In RemminaPrefDialog options tab */
 	gboolean save_view_mode;
 	gboolean save_when_connect;
-	gboolean survey;
 	gint default_action;
 	gint scale_quality;
 	const gchar *screenshot_path;
@@ -176,10 +175,6 @@ extern RemminaPref remmina_pref;
 
 void remmina_pref_init(void);
 void remmina_pref_save(void);
-
-#ifdef WITH_SURVEY
-gboolean remmina_pref_get_survey(void);
-#endif /* WITH_SURVEY */
 
 void remmina_pref_add_recent(const gchar *protocol, const gchar *server);
 gchar* remmina_pref_get_recent(const gchar *protocol);

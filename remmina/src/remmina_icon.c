@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -446,6 +447,8 @@ void remmina_icon_init(void)
 	TRACE_CALL("remmina_icon_init");
 
 	gchar remmina_panel[23];
+	gboolean sni_supported;
+	char msg[200];
 
 	if (remmina_pref.dark_tray_icon)
 	{
@@ -455,6 +458,27 @@ void remmina_icon_init(void)
 	{
 		g_stpcpy(remmina_panel, "remmina-panel");
 	}
+
+	/* Print on stdout the availability of appindicators on DBUS */
+	sni_supported = remmina_sysinfo_is_appindicator_available();
+
+	strcpy(msg, "StatusNotifier/Appindicator support: ");
+	if (sni_supported) {
+		strcat(msg, "your desktop does support it");
+#ifdef HAVE_LIBAPPINDICATOR
+		strcat(msg, " and libappindicator is compiled in remmina. Good!");
+#else
+		strcat(msg, ", but you did not compile remmina with cmake's -DWITH_APPINDICATOR=on");
+#endif
+	} else {
+#ifdef HAVE_LIBAPPINDICATOR
+		strcat(msg, "not supported by desktop. libappindicator will try to fallback to GtkStatusIcon/xembed");
+#else
+		strcat(msg,"not supported by desktop. Remmina will try to fallback to GtkStatusIcon/xembed");
+#endif
+	}
+	strcat(msg, "\n");
+	fputs(msg, stdout);
 
 	if (!remmina_icon.icon && !remmina_pref.disable_tray_icon)
 	{

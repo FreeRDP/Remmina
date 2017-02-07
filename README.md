@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/FreeRDP/Remmina.png)](https://travis-ci.org/FreeRDP/Remmina)
+[![Build Status](https://travis-ci.org/FreeRDP/Remmina.png)](https://travis-ci.org/FreeRDP/Remmina) [![Bountysource](https://img.shields.io/bountysource/team/remmina/activity.svg)]()
 
 # Remmina: The GTK+ Remote Desktop Client
 
@@ -26,6 +26,38 @@ This is a development site.
 
 ### Ubuntu
 
+#### Using Snap Package (also for other [supported distros](https://snapcraft.io/docs/core/install))
+
+You can install the last release from the Ubuntu Software center, looking for `remmina`, otherwise you can install it from terminal with:
+
+```sh
+sudo snap install remmina
+```
+
+If you want to install latest git revision of remmina, you can use it from the `edge` channel:
+
+```sh
+sudo snap install remmina  --edge
+```
+
+Or update the current installed version with the selected channel:
+
+```sh
+sudo snap refresh remmina --channel=edge # use --channel=stable otherwise
+```
+
+To enable some advanced features such as `mount-control` (to manage mount positions), `avahi-observer` (to automatically look for local servers to connect to), `cups-control` (to manage printing) you should run something like:
+
+```sh
+sudo snap connect remmina:avahi-observe :avahi-observe # servers discovery
+sudo snap connect remmina:cups-control :cups-control # printing
+sudo snap connect remmina:mount-observe :mount-observe # mount management
+```
+
+Snap packages will be updated automatically and will include both latest `FreeRDP` git and latest `libssh 0.7` release (for better security).
+
+#### From PPA
+
 [Ubuntu ppa:remmina-ppa-team/remmina-next](https://launchpad.net/~remmina-ppa-team/+archive/ubuntu/remmina-next)
 
 To install it, just copy and paste the following three lines on a terminal window
@@ -35,6 +67,12 @@ sudo apt-get update
 sudo apt-get install remmina remmina-plugin-rdp libfreerdp-plugins-standard
 ```
 By default the RDP, SSH and SFTP plugins are installed. You can view a list of available plugins with `apt-cache search remmina-plugin`
+
+If you want to connect to more securely configured SSH servers on Ubuntu 16.04 and below, you have to upgrade libssh to 0.7.X. This can be achieved by adding the following PPA containing libssh 0.7.X by David Kedves and upgrading your packages:
+```sh
+sudo add-apt-repository ppa:kedazo/libssh-0.7.x
+sudo apt-get update
+```
 
 ### Fedora
 
