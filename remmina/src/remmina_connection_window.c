@@ -2877,11 +2877,17 @@ static gboolean remmina_connection_window_go_fullscreen(GtkWidget *widget, GdkEv
 	priv = cnnhld->cnnwin->priv;
 
 #if GTK_CHECK_VERSION(3, 18, 0)
-	gtk_window_fullscreen_on_monitor(GTK_WINDOW(cnnhld->cnnwin),
-			gdk_screen_get_default (),
-			gdk_screen_get_monitor_at_window
-			(gdk_screen_get_default (), gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin))
-			));
+	if (remmina_pref.fullscreen_on_auto)
+	{
+		gtk_window_fullscreen_on_monitor(GTK_WINDOW(cnnhld->cnnwin),
+				gdk_screen_get_default (),
+				gdk_screen_get_monitor_at_window
+				(gdk_screen_get_default (), gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin))
+				));
+	} else {
+		remmina_log_print("Fullscreen managed by WM or by the user, as per settings");
+		gtk_window_fullscreen(GTK_WINDOW(cnnhld->cnnwin));
+	}
 #else
 	remmina_log_print("Cannot fullscreen on a specific monitor, feature available from GTK 3.18");
 	gtk_window_fullscreen(GTK_WINDOW(cnnhld->cnnwin));
