@@ -3229,19 +3229,11 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
 
                 if (keyval == GDK_KEY_Up || keyval == GDK_KEY_Down) {
                     sz = gdk_window_get_height(gsvwin) + 2;	// Add 2px of black scroll border
-#if GTK_VERSION == 3
                     adj = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(child));
-#elif GTK_VERSION == 2
-                    adj = gtk_viewport_get_vadjustment(GTK_VIEWPORT(child));
-#endif
                 }
                 else {
                     sz = gdk_window_get_width(gsvwin) + 2;	// Add 2px of black scroll border
-#if GTK_VERSION == 3
                     adj = gtk_scrollable_get_hadjustment(GTK_SCROLLABLE(child));
-#elif GTK_VERSION == 2
-                    adj = gtk_viewport_get_hadjustment(GTK_VIEWPORT(child));
-#endif
                 }
 
                 if (keyval == GDK_KEY_Up || keyval == GDK_KEY_Left) {
