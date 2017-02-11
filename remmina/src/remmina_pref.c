@@ -255,6 +255,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.invisible_toolbar = FALSE;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "fullscreen_on_auto", NULL))
+		remmina_pref.fullscreen_on_auto = g_key_file_get_boolean(gkeyfile, "remmina_pref", "fullscreen_on_auto", NULL);
+	else
+		remmina_pref.fullscreen_on_auto = TRUE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "floating_toolbar_placement", NULL))
 		remmina_pref.floating_toolbar_placement = g_key_file_get_integer(gkeyfile, "remmina_pref", "floating_toolbar_placement", NULL);
 	else

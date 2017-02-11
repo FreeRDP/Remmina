@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.19.0
+<!-- Generated with glade 3.20.0 
 
 Remmina Preferences Dialog -
-Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2016
+Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2017
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -25,7 +25,7 @@ Author: Antenore Gatta
   <requires lib="gtk+" version="3.4"/>
   <!-- interface-license-type gplv2 -->
   <!-- interface-name Remmina Preferences Dialog -->
-  <!-- interface-copyright Antenore Gatta & Giovanni Panozzo 2014-2016 -->
+  <!-- interface-copyright Antenore Gatta & Giovanni Panozzo 2014-2017 -->
   <!-- interface-authors Antenore Gatta -->
   <object class="GtkActionGroup" id="actiongroup_preferences">
     <child>
@@ -322,6 +322,15 @@ Author: Antenore Gatta
                         <property name="width">2</property>
                       </packing>
                     </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -376,7 +385,7 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">2</property>
                         <property name="width">3</property>
                       </packing>
                     </child>
@@ -391,7 +400,7 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
+                        <property name="top_attach">3</property>
                         <property name="width">3</property>
                       </packing>
                     </child>
@@ -404,7 +413,7 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">3</property>
+                        <property name="top_attach">4</property>
                       </packing>
                     </child>
                     <child>
@@ -421,7 +430,7 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">3</property>
+                        <property name="top_attach">4</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -434,7 +443,7 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">4</property>
+                        <property name="top_attach">5</property>
                       </packing>
                     </child>
                     <child>
@@ -451,7 +460,7 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">4</property>
+                        <property name="top_attach">5</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -464,7 +473,7 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">5</property>
+                        <property name="top_attach">6</property>
                       </packing>
                     </child>
                     <child>
@@ -481,7 +490,7 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">5</property>
+                        <property name="top_attach">6</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -494,7 +503,7 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">6</property>
+                        <property name="top_attach">7</property>
                       </packing>
                     </child>
                     <child>
@@ -511,8 +520,24 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">6</property>
+                        <property name="top_attach">7</property>
                         <property name="width">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="checkbutton_appearance_fullscreen_on_auto">
+                        <property name="label" translatable="yes">Fullscreen in the same monitor of the connection window</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="xalign">0</property>
+                        <property name="active">True</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">1</property>
+                        <property name="width">3</property>
                       </packing>
                     </child>
                   </object>
@@ -615,10 +640,10 @@ Author: Antenore Gatta
                     <child>
                       <object class="GtkCheckButton" id="checkbutton_applet_light_tray">
                         <property name="label" translatable="yes">Dark Tray Icon</property>
-                        <property name="tooltip_text" translatable="yes">Choose this if your theme panel is light.</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
+                        <property name="tooltip_text" translatable="yes">Choose this if your theme panel is light.</property>
                         <property name="hexpand">True</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
@@ -1458,6 +1483,9 @@ Author: Antenore Gatta
           </packing>
         </child>
       </object>
+    </child>
+    <child>
+      <placeholder/>
     </child>
   </object>
 </interface>

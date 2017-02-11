@@ -109,11 +109,7 @@ static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 	if (mx != 0)
 	{
 		gint step = MAX(10, MIN(remmina_pref.auto_scroll_step, w / 5));
-#if GTK_VERSION == 3
 		adj = gtk_scrollable_get_hadjustment(GTK_SCROLLABLE(child));
-#elif GTK_VERSION == 2
-		adj = gtk_viewport_get_hadjustment(GTK_VIEWPORT(child));
-#endif
 		value = gtk_adjustment_get_value(GTK_ADJUSTMENT(adj)) + (gdouble)(mx * step);
 		value = MAX(0, MIN(value, gtk_adjustment_get_upper(GTK_ADJUSTMENT(adj)) - (gdouble) w + 2.0));
 		gtk_adjustment_set_value(GTK_ADJUSTMENT(adj), value);
@@ -121,11 +117,7 @@ static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 	if (my != 0)
 	{
 		gint step = MAX(10, MIN(remmina_pref.auto_scroll_step, h / 5));
-#if GTK_VERSION == 3
 		adj = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(child));
-#elif GTK_VERSION == 2
-		adj = gtk_viewport_get_vadjustment(GTK_VIEWPORT(child));
-#endif
 		value = gtk_adjustment_get_value(GTK_ADJUSTMENT(adj)) + (gdouble)(my * step);
 		value = MAX(0, MIN(value, gtk_adjustment_get_upper(GTK_ADJUSTMENT(adj)) - (gdouble) h + 2.0));
 		gtk_adjustment_set_value(GTK_ADJUSTMENT(adj), value);
