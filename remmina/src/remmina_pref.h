@@ -99,6 +99,7 @@ typedef struct _RemminaPref
 	gchar *keystrokes;
 	/* In RemminaPrefDialog appearance tab */
 	gboolean invisible_toolbar;
+	gboolean fullscreen_on_auto;
 	gboolean always_show_tab;
 	gboolean hide_connection_toolbar;
 	gint default_mode;

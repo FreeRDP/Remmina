@@ -2877,11 +2877,17 @@ static gboolean remmina_connection_window_go_fullscreen(GtkWidget *widget, GdkEv
 	priv = cnnhld->cnnwin->priv;
 
 #if GTK_CHECK_VERSION(3, 18, 0)
-	gtk_window_fullscreen_on_monitor(GTK_WINDOW(cnnhld->cnnwin),
-			gdk_screen_get_default (),
-			gdk_screen_get_monitor_at_window
-			(gdk_screen_get_default (), gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin))
-			));
+	if (remmina_pref.fullscreen_on_auto)
+	{
+		gtk_window_fullscreen_on_monitor(GTK_WINDOW(cnnhld->cnnwin),
+				gdk_screen_get_default (),
+				gdk_screen_get_monitor_at_window
+				(gdk_screen_get_default (), gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin))
+				));
+	} else {
+		remmina_log_print("Fullscreen managed by WM or by the user, as per settings");
+		gtk_window_fullscreen(GTK_WINDOW(cnnhld->cnnwin));
+	}
 #else
 	remmina_log_print("Cannot fullscreen on a specific monitor, feature available from GTK 3.18");
 	gtk_window_fullscreen(GTK_WINDOW(cnnhld->cnnwin));
@@ -3223,19 +3229,11 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
 
                 if (keyval == GDK_KEY_Up || keyval == GDK_KEY_Down) {
                     sz = gdk_window_get_height(gsvwin) + 2;	// Add 2px of black scroll border
-#if GTK_VERSION == 3
                     adj = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(child));
-#elif GTK_VERSION == 2
-                    adj = gtk_viewport_get_vadjustment(GTK_VIEWPORT(child));
-#endif
                 }
                 else {
                     sz = gdk_window_get_width(gsvwin) + 2;	// Add 2px of black scroll border
-#if GTK_VERSION == 3
                     adj = gtk_scrollable_get_hadjustment(GTK_SCROLLABLE(child));
-#elif GTK_VERSION == 2
-                    adj = gtk_viewport_get_hadjustment(GTK_VIEWPORT(child));
-#endif
                 }
 
                 if (keyval == GDK_KEY_Up || keyval == GDK_KEY_Left) {
