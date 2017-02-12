@@ -2170,7 +2170,13 @@ static gboolean remmina_connection_window_on_leave(GtkWidget* widget, GdkEventCr
 	printf("  focus=%s\n", event->focus ? "yes":"no");
 	printf("\n");
 #endif
-	if (event->detail == GDK_NOTIFY_VIRTUAL || event->detail == GDK_NOTIFY_ANCESTOR || event->detail == GDK_NOTIFY_NONLINEAR_VIRTUAL) {
+	/*
+	 * Unity: we leave windows with GDK_NOTIFY_VIRTUAL or GDK_NOTIFY_NONLINEAR_VIRTUAL
+	 * Gnome shell: we leave windows with both GDK_NOTIFY_VIRTUAL or GDK_NOTIFY_ANCESTOR
+	 * Xfce: we cannot drag this window when grabbed, so we need to ungrab in response to GDK_NOTIFY_NONLINEAR
+	 */
+	if (event->detail == GDK_NOTIFY_VIRTUAL || event->detail == GDK_NOTIFY_ANCESTOR ||
+		event->detail == GDK_NOTIFY_NONLINEAR_VIRTUAL || event->detail == GDK_NOTIFY_NONLINEAR) {
 		cnnhld->cnnwin->priv->mouse_pointer_entered = FALSE;
 		remmina_connection_holder_keyboard_ungrab(cnnhld);
 	}
