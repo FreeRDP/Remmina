@@ -54,6 +54,8 @@ typedef enum
 void remmina_exec_command(RemminaCommandType command, const gchar* data);
 void remmina_exec_exitremmina(void);
 
+void remmina_application_exitremmina(void);
+
 G_END_DECLS
 
 #endif  /* __REMMINAEXEC_H__  */
