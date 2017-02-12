@@ -56,6 +56,8 @@
 #include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
 
+#define DEBUG_KB_GRABBING 0
+
 gchar *remmina_pref_file;
 RemminaPref remmina_pref;
 
@@ -317,6 +319,9 @@ static void remmina_connection_holder_keyboard_ungrab(RemminaConnectionHolder* c
 		{
 			keyboard = gdk_device_get_associated_device(keyboard);
 		}
+#if DEBUG_KB_GRABBING
+		printf("DEBUG_KB_GRABBING: --- ungrabbing\n");
+#endif
 
 #if GTK_CHECK_VERSION(3, 20, 0)
 		gdk_seat_ungrab(gdk_device_get_seat(keyboard));
@@ -355,6 +360,9 @@ static void remmina_connection_holder_keyboard_grab(RemminaConnectionHolder* cnn
 
 		if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE))
 		{
+#if DEBUG_KB_GRABBING
+			printf("DEBUG_KB_GRABBING: +++ grabbing\n");
+#endif
 #if GTK_CHECK_VERSION(3, 20, 0)
 			if (gdk_seat_grab(gdk_device_get_seat(keyboard), gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)),
 				GDK_SEAT_CAPABILITY_KEYBOARD, FALSE, NULL, NULL, NULL, NULL) == GDK_GRAB_SUCCESS)
@@ -1747,6 +1755,9 @@ static void remmina_connection_holder_toolbar_grab(GtkWidget* widget, RemminaCon
 	remmina_file_set_int(cnnobj->remmina_file, "keyboard_grab", capture);
 	if (capture)
 	{
+#if DEBUG_KB_GRABBING
+		printf("DEBUG_KB_GRABBING: Grabbing for button\n");
+#endif
 		remmina_connection_holder_keyboard_grab(cnnhld);
 	}
 	else
@@ -2101,6 +2112,9 @@ static void remmina_connection_window_focus_out(GtkWidget* widget, RemminaConnec
 static gboolean remmina_connection_window_focus_out_event(GtkWidget* widget, GdkEvent* event, RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_window_focus_out_event");
+#if DEBUG_KB_GRABBING
+	printf("DEBUG_KB_GRABBING: focus out and mouse_pointer_entered is %s\n", cnnhld->cnnwin->priv->mouse_pointer_entered ? "true":"false");
+#endif
 	remmina_connection_holder_keyboard_ungrab(cnnhld);
 	return FALSE;
 }
@@ -2108,6 +2122,9 @@ static gboolean remmina_connection_window_focus_out_event(GtkWidget* widget, Gdk
 static gboolean remmina_connection_window_focus_in_event(GtkWidget* widget, GdkEvent* event, RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_window_focus_in_event");
+#if DEBUG_KB_GRABBING
+	printf("DEBUG_KB_GRABBING: focus in and mouse_pointer_entered is %s\n", cnnhld->cnnwin->priv->mouse_pointer_entered ? "true":"false");
+#endif
 	remmina_connection_holder_keyboard_grab(cnnhld);
 	return FALSE;
 }
@@ -2116,6 +2133,18 @@ static gboolean remmina_connection_window_on_enter(GtkWidget* widget, GdkEventCr
 {
 	TRACE_CALL("remmina_connection_window_on_enter");
 	cnnhld->cnnwin->priv->mouse_pointer_entered = TRUE;
+#if DEBUG_KB_GRABBING
+	printf("DEBUG_KB_GRABBING: enter detail=");
+	switch(event->detail) {
+		case GDK_NOTIFY_ANCESTOR: printf("GDK_NOTIFY_ANCESTOR"); break;
+		case GDK_NOTIFY_VIRTUAL: printf("GDK_NOTIFY_VIRTUAL"); break;
+		case GDK_NOTIFY_NONLINEAR: printf("GDK_NOTIFY_NONLINEAR"); break;
+		case GDK_NOTIFY_NONLINEAR_VIRTUAL: printf("GDK_NOTIFY_NONLINEAR_VIRTUAL"); break;
+		case GDK_NOTIFY_UNKNOWN: printf("GDK_NOTIFY_UNKNOWN"); break;
+		case GDK_NOTIFY_INFERIOR: printf("GDK_NOTIFY_INFERIOR"); break;
+	}
+	printf("\n");
+#endif
 	if (gtk_window_is_active(GTK_WINDOW(cnnhld->cnnwin)))
 	{
 		remmina_connection_holder_keyboard_grab(cnnhld);
@@ -2127,6 +2156,20 @@ static gboolean remmina_connection_window_on_enter(GtkWidget* widget, GdkEventCr
 static gboolean remmina_connection_window_on_leave(GtkWidget* widget, GdkEventCrossing* event, RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_window_on_leave");
+#if DEBUG_KB_GRABBING
+	printf("DEBUG_KB_GRABBING: leave detail=");
+	switch(event->detail) {
+		case GDK_NOTIFY_ANCESTOR: printf("GDK_NOTIFY_ANCESTOR"); break;
+		case GDK_NOTIFY_VIRTUAL: printf("GDK_NOTIFY_VIRTUAL"); break;
+		case GDK_NOTIFY_NONLINEAR: printf("GDK_NOTIFY_NONLINEAR"); break;
+		case GDK_NOTIFY_NONLINEAR_VIRTUAL: printf("GDK_NOTIFY_NONLINEAR_VIRTUAL"); break;
+		case GDK_NOTIFY_UNKNOWN: printf("GDK_NOTIFY_UNKNOWN"); break;
+		case GDK_NOTIFY_INFERIOR: printf("GDK_NOTIFY_INFERIOR"); break;
+	}
+	printf("  x=%f y=%f\n", event->x, event->y);
+	printf("  focus=%s\n", event->focus ? "yes":"no");
+	printf("\n");
+#endif
 	if (event->detail == GDK_NOTIFY_VIRTUAL || event->detail == GDK_NOTIFY_ANCESTOR || event->detail == GDK_NOTIFY_NONLINEAR_VIRTUAL) {
 		cnnhld->cnnwin->priv->mouse_pointer_entered = FALSE;
 		remmina_connection_holder_keyboard_ungrab(cnnhld);
