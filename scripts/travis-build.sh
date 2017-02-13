@@ -72,12 +72,6 @@ elif [ "$BUILD_TYPE" == "snap" ]; then
     if [ "$TRAVIS_BUILD_STEP" == "before_install" ]; then
         if [ -n "$ARCH" ]; then DOCKER_IMAGE="$ARCH/$DOCKER_IMAGE"; fi
         docker run --name $DOCKER_BUILDER_NAME -v $PWD:$PWD -w $PWD -td $DOCKER_IMAGE
-
-        # Sometimes the arch isn't properly recognized by snapcraft
-        # Fixed in https://github.com/snapcore/snapcraft/pull/1060
-        if [ -n "$ARCH" ]; then
-            echo -e "architectures:\n  - $ARCH" >> snap/snapcraft.yaml.in
-        fi
     elif [ "$TRAVIS_BUILD_STEP" == "install" ]; then
         docker_exec apt-get update -q
         docker_exec apt-get install cmake git-core snapcraft -y
