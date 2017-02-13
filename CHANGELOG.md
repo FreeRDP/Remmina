@@ -1,5 +1,51 @@
 # Change Log
 
+## [Unreleased](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.18) (2017-02.14)
+
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.17...v1.2.0-rcgit.18)
+
+**Implemented enhancements:**
+
+- No prompt information while another login using the same account  [\#1114](https://github.com/FreeRDP/Remmina/pull/1114) ([nanxiongchao](https://github.com/nanxiongchao))
+- snap: add CMake generated snapcraft.yaml and `make snap` [\#1102](https://github.com/FreeRDP/Remmina/pull/1102) ([3v1n0](https://github.com/3v1n0))
+
+**Fixed bugs:**
+
+-
+full screen window placement with multiple monitors [\#124](https://github.com/FreeRDP/Remmina/issues/124)
+
+**Closed issues:**
+
+- Auto-Reconnect function [\#1099](https://github.com/FreeRDP/Remmina/issues/1099)
+- RDP Plugin not found after Update [\#1094](https://github.com/FreeRDP/Remmina/issues/1094)
+- Remmina-1.2.0-rcgit.17 build error [\#1090](https://github.com/FreeRDP/Remmina/issues/1090)
+- Remote Windows program crashes when accessed by Remmina RDP [\#1083](https://github.com/FreeRDP/Remmina/issues/1083)
+- Crashing since upgraded to 1.2.0-rcgit-17 [\#1077](https://github.com/FreeRDP/Remmina/issues/1077)
+- Remmina windows unmovable/unresizable [\#1073](https://github.com/FreeRDP/Remmina/issues/1073)
+- Russian translation fixes [\#1071](https://github.com/FreeRDP/Remmina/issues/1071)
+- English fixes [\#1040](https://github.com/FreeRDP/Remmina/issues/1040)
+- Compile failed on Archlinux [\#1012](https://github.com/FreeRDP/Remmina/issues/1012)
+- RDP connections or whole Remmina are crashing regularly [\#778](https://github.com/FreeRDP/Remmina/issues/778)
+- xfce4 applet gone? [\#609](https://github.com/FreeRDP/Remmina/issues/609)
+- Bad port stored into known\_hosts2 [\#604](https://github.com/FreeRDP/Remmina/issues/604)
+- no puedo ver la impresora por remmnia [\#578](https://github.com/FreeRDP/Remmina/issues/578)
+- Uzbek language support [\#560](https://github.com/FreeRDP/Remmina/issues/560)
+- Getting message that VNC plugin is not installed even though it is [\#559](https://github.com/FreeRDP/Remmina/issues/559)
+
+**Merged pull requests:**
+
+- snap: use snapcraft 2.26 features [\#1115](https://github.com/FreeRDP/Remmina/pull/1115) ([3v1n0](https://github.com/3v1n0))
+- Keyboard capture fixes, \#1087 \#1096 \#1111 [\#1113](https://github.com/FreeRDP/Remmina/pull/1113) ([giox069](https://github.com/giox069))
+- Keyboard capture changes, \#1087 \#1096 \#1111 [\#1112](https://github.com/FreeRDP/Remmina/pull/1112) ([giox069](https://github.com/giox069))
+- travis: add parallel builds to build from debs and generate snap packages [\#1104](https://github.com/FreeRDP/Remmina/pull/1104) ([3v1n0](https://github.com/3v1n0))
+- GUI enhancements  [\#1103](https://github.com/FreeRDP/Remmina/pull/1103) ([antenore](https://github.com/antenore))
+- Add descriptions for some freerdp exit status code [\#1101](https://github.com/FreeRDP/Remmina/pull/1101) ([giox069](https://github.com/giox069))
+- FindFREERDP.cmake: update library names to match upstream [\#1095](https://github.com/FreeRDP/Remmina/pull/1095) ([3v1n0](https://github.com/3v1n0))
+- Update fr.po [\#1089](https://github.com/FreeRDP/Remmina/pull/1089) ([DevDef](https://github.com/DevDef))
+- Fix english typos as per \#1040 [\#1088](https://github.com/FreeRDP/Remmina/pull/1088) ([antenore](https://github.com/antenore))
+- Make full screen in the same monitor where the connection window reside [\#1084](https://github.com/FreeRDP/Remmina/pull/1084) ([antenore](https://github.com/antenore))
+- Fix russian translations as per \#1070 [\#1072](https://github.com/FreeRDP/Remmina/pull/1072) ([antenore](https://github.com/antenore))
+
 ## [v1.2.0-rcgit.17](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.17) (2016-12-22)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.16...v1.2.0-rcgit.17)
 
@@ -439,7 +485,7 @@
 
 **Merged pull requests:**
 
-- Avoiding conditional directives that break statements [\#698](https://github.com/FreeRDP/Remmina/pull/698) ([RomeroMalaquias](https://github.com/RomeroMalaquias))
+- Avoiding conditional directives that break statements [\#698](https://github.com/FreeRDP/Remmina/pull/698) ([Barhul](https://github.com/Barhul))
 - Fix memory leaks in RDP plugin, fix window width in remmina\_connection\_window [\#690](https://github.com/FreeRDP/Remmina/pull/690) ([giox069](https://github.com/giox069))
 - Disable wayland backend  [\#680](https://github.com/FreeRDP/Remmina/pull/680) ([antenore](https://github.com/antenore))
 - Migrate from libgnome-keyring to libsecret \#652 - Inital import [\#653](https://github.com/FreeRDP/Remmina/pull/653) ([antenore](https://github.com/antenore))
