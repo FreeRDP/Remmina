@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.18) (2017-02.14)
+## [v1.2.0-rcgit.17](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.18) (2017-02.14)
 
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.17...v1.2.0-rcgit.18)
 
