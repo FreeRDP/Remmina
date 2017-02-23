@@ -74,7 +74,7 @@ elif [ "$BUILD_TYPE" == "snap" ]; then
         docker run --name $DOCKER_BUILDER_NAME -v $PWD:$PWD -w $PWD -td $DOCKER_IMAGE
     elif [ "$TRAVIS_BUILD_STEP" == "install" ]; then
         docker_exec apt-get update -q
-        docker_exec apt-get install cmake git-core snapcraft -y
+        docker_exec apt-get install -y cmake git-core snapcraft
     elif [ "$TRAVIS_BUILD_STEP" == "script" ]; then
         git clean -f
         mkdir $BUILD_FOLDER
@@ -87,12 +87,21 @@ elif [ "$BUILD_TYPE" == "snap" ]; then
 
         docker_exec make $make_target -C $BUILD_FOLDER
     elif [ "$TRAVIS_BUILD_STEP" == "after_success" ]; then
-        sudo mkdir -p $BUILD_FOLDER/snap/.snapcraft -m 777
         set +x
-        openssl aes-256-cbc -K $SNAPCRAFT_CONFIG_KEY \
-            -iv $SNAPCRAFT_CONFIG_IV \
-            -in snap/.snapcraft/travis_snapcraft.cfg \
-            -out $BUILD_FOLDER/snap/.snapcraft/snapcraft.cfg -d
+        if [ -n "$SNAPCRAFT_CONFIG_KEY" ] && [ -n "$SNAPCRAFT_CONFIG_IV" ]; then
+            sudo mkdir -p $BUILD_FOLDER/snap/.snapcraft -m 777
+            openssl aes-256-cbc -K $SNAPCRAFT_CONFIG_KEY \
+                -iv $SNAPCRAFT_CONFIG_IV \
+                -in snap/.snapcraft/travis_snapcraft.cfg \
+                -out $BUILD_FOLDER/snap/.snapcraft/snapcraft.cfg -d
+        fi
+        set -x
+
+        if [ "$TRAVIS_PULL_REQUEST" != "false" ] &&
+           [ "$SNAP_TRANSFER_SH_UPLOAD_ON_PULL_REQUEST" == "true" ]; then
+            docker_exec apt-get install -y curl
+            docker_exec make snap-push-transfer.sh -C $BUILD_FOLDER
+        fi
     elif [ "$TRAVIS_BUILD_STEP" == "deploy-unstable" ]; then
         docker_exec make snap-push-$SNAP_UNSTABLE_CHANNEL -C $BUILD_FOLDER
     elif [ "$TRAVIS_BUILD_STEP" == "deploy-release" ]; then

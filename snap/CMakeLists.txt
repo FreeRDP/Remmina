@@ -81,3 +81,14 @@ foreach(channel stable candidate beta edge)
   )
   add_dependencies("snap-push-${channel}" "snap")
 endforeach(channel)
+
+add_custom_target("snap-push-transfer.sh"
+      COMMAND bash -c "snap=$(ls *.snap -1 | head -n1); \
+                       curl --upload-file $snap \
+                       https://transfer.sh/$(basename $snap)"
+      WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
+      DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/snapcraft.yaml"
+      COMMENT "Create snap package ${SNAP_VERSION}"
+      VERBATIM
+  )
+add_dependencies("snap-push-transfer.sh" "snap")
