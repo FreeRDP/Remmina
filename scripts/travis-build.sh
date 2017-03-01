@@ -77,8 +77,15 @@ elif [ "$BUILD_TYPE" == "snap" ]; then
         docker_exec apt-get install -y cmake git-core snapcraft
     elif [ "$TRAVIS_BUILD_STEP" == "script" ]; then
         git clean -f
-        mkdir $BUILD_FOLDER
-        docker_exec cmake -B$BUILD_FOLDER -H. -DSNAP_BUILD_ONLY=ON
+        cmake_buld_type="Release"
+
+        if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+            cmake_buld_type="Debug"
+        fi
+
+        mkdir -p $BUILD_FOLDER
+        docker_exec cmake -B$BUILD_FOLDER -H. -DSNAP_BUILD_ONLY=ON \
+                          -DCMAKE_BUILD_TYPE=$cmake_buld_type
 
         make_target='snap'
         if [ -z "$TRAVIS_TAG" ] || [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
