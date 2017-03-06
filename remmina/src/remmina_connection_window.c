@@ -56,6 +56,8 @@
 #include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
 
+#define DEBUG_KB_GRABBING 0
+
 gchar *remmina_pref_file;
 RemminaPref remmina_pref;
 
@@ -115,6 +117,9 @@ G_DEFINE_TYPE( RemminaConnectionWindow, remmina_connection_window, GTK_TYPE_WIND
 	gboolean sticky;
 
 	gint view_mode;
+
+	gboolean kbcaptured;
+	gboolean mouse_pointer_entered;
 
 };
 
@@ -292,6 +297,42 @@ static void remmina_connection_holder_disconnect_current_page(RemminaConnectionH
 	remmina_protocol_widget_close_connection(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
 }
 
+static void remmina_connection_holder_keyboard_ungrab(RemminaConnectionHolder* cnnhld)
+{
+	TRACE_CALL("remmina_connection_holder_keyboard_ungrab");
+	GdkDisplay *display;
+	GdkDeviceManager *manager;
+	GdkDevice *keyboard = NULL;
+
+	display = gtk_widget_get_display(GTK_WIDGET(cnnhld->cnnwin));
+	manager = gdk_display_get_device_manager(display);
+	keyboard = gdk_device_manager_get_client_pointer(manager);
+
+	if (!cnnhld->cnnwin->priv->kbcaptured)
+	{
+		return;
+	}
+
+	if (keyboard != NULL)
+	{
+		if ( gdk_device_get_source(keyboard) != GDK_SOURCE_KEYBOARD )
+		{
+			keyboard = gdk_device_get_associated_device(keyboard);
+		}
+#if DEBUG_KB_GRABBING
+		printf("DEBUG_KB_GRABBING: --- ungrabbing\n");
+#endif
+
+#if GTK_CHECK_VERSION(3, 20, 0)
+		gdk_seat_ungrab(gdk_device_get_seat(keyboard));
+#else
+		gdk_device_ungrab(keyboard, GDK_CURRENT_TIME);
+#endif
+		cnnhld->cnnwin->priv->kbcaptured = FALSE;
+
+	}
+}
+
 static void remmina_connection_holder_keyboard_grab(RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_holder_keyboard_grab");
@@ -299,6 +340,11 @@ static void remmina_connection_holder_keyboard_grab(RemminaConnectionHolder* cnn
 	GdkDisplay *display;
 	GdkDeviceManager *manager;
 	GdkDevice *keyboard = NULL;
+
+	if (cnnhld->cnnwin->priv->kbcaptured || !cnnhld->cnnwin->priv->mouse_pointer_entered)
+	{
+		return;
+	}
 
 	display = gtk_widget_get_display(GTK_WIDGET(cnnhld->cnnwin));
 	manager = gdk_display_get_device_manager(display);
@@ -314,35 +360,25 @@ static void remmina_connection_holder_keyboard_grab(RemminaConnectionHolder* cnn
 
 		if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE))
 		{
-			gdk_device_grab(keyboard, gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)), GDK_OWNERSHIP_WINDOW, TRUE, GDK_KEY_PRESS | GDK_KEY_RELEASE, NULL, GDK_CURRENT_TIME);
+#if DEBUG_KB_GRABBING
+			printf("DEBUG_KB_GRABBING: +++ grabbing\n");
+#endif
+#if GTK_CHECK_VERSION(3, 20, 0)
+			if (gdk_seat_grab(gdk_device_get_seat(keyboard), gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)),
+				GDK_SEAT_CAPABILITY_KEYBOARD, FALSE, NULL, NULL, NULL, NULL) == GDK_GRAB_SUCCESS)
+#else
+			if (gdk_device_grab(keyboard, gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)), GDK_OWNERSHIP_WINDOW,
+				TRUE, GDK_KEY_PRESS | GDK_KEY_RELEASE, NULL, GDK_CURRENT_TIME) == GDK_GRAB_SUCCESS)
+#endif
+			{
+				cnnhld->cnnwin->priv->kbcaptured = TRUE;
+			}
 		}
 		else
 		{
-			gdk_device_ungrab(keyboard, GDK_CURRENT_TIME);
+			remmina_connection_holder_keyboard_ungrab(cnnhld);
 		}
 	}
-}
-
-static void remmina_connection_holder_keyboard_ungrab(RemminaConnectionHolder* cnnhld)
-{
-	TRACE_CALL("remmina_connection_holder_keyboard_ungrab");
-	GdkDisplay *display;
-	GdkDeviceManager *manager;
-	GdkDevice *keyboard = NULL;
-
-	display = gtk_widget_get_display(GTK_WIDGET(cnnhld->cnnwin));
-	manager = gdk_display_get_device_manager(display);
-	keyboard = gdk_device_manager_get_client_pointer(manager);
-
-	if (keyboard != NULL)
-	{
-		if ( gdk_device_get_source(keyboard) != GDK_SOURCE_KEYBOARD )
-		{
-			keyboard = gdk_device_get_associated_device(keyboard);
-		}
-		gdk_device_ungrab(keyboard, GDK_CURRENT_TIME);
-	}
-
 }
 
 static void remmina_connection_window_close_all_connections(RemminaConnectionWindow* cnnwin)
@@ -413,6 +449,9 @@ static void remmina_connection_window_destroy(GtkWidget* widget, RemminaConnecti
 {
 	TRACE_CALL("remmina_connection_window_destroy");
 	RemminaConnectionWindowPriv* priv = REMMINA_CONNECTION_WINDOW(widget)->priv;
+
+	if (priv->kbcaptured)
+		remmina_connection_holder_keyboard_ungrab(cnnhld);
 
 	if (priv->floating_toolbar_motion_handler)
 	{
@@ -1710,10 +1749,19 @@ static void remmina_connection_holder_toolbar_grab(GtkWidget* widget, RemminaCon
 {
 	TRACE_CALL("remmina_connection_holder_toolbar_grab");
 	DECLARE_CNNOBJ
+	gboolean capture;
 
-	remmina_file_set_int(cnnobj->remmina_file, "keyboard_grab",
-			gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(widget)));
-	remmina_connection_holder_keyboard_grab(cnnhld);
+	capture = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(widget));
+	remmina_file_set_int(cnnobj->remmina_file, "keyboard_grab", capture);
+	if (capture)
+	{
+#if DEBUG_KB_GRABBING
+		printf("DEBUG_KB_GRABBING: Grabbing for button\n");
+#endif
+		remmina_connection_holder_keyboard_grab(cnnhld);
+	}
+	else
+		remmina_connection_holder_keyboard_ungrab(cnnhld);
 }
 
 	static GtkWidget*
@@ -2021,6 +2069,7 @@ static gboolean remmina_connection_object_enter_protocol_widget(GtkWidget* widge
 static void remmina_connection_window_focus_in(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_window_focus_in");
+
 #if !FLOATING_TOOLBAR_WIDGET
 	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
 
@@ -2029,6 +2078,7 @@ static void remmina_connection_window_focus_in(GtkWidget* widget, RemminaConnect
 		remmina_connection_holder_floating_toolbar_visible(cnnhld, TRUE);
 	}
 #endif
+
 	remmina_connection_holder_keyboard_grab(cnnhld);
 }
 
@@ -2036,6 +2086,7 @@ static void remmina_connection_window_focus_out(GtkWidget* widget, RemminaConnec
 {
 	TRACE_CALL("remmina_connection_window_focus_out");
 	DECLARE_CNNOBJ
+
 #if !FLOATING_TOOLBAR_WIDGET
 		RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
 #endif
@@ -2058,16 +2109,46 @@ static void remmina_connection_window_focus_out(GtkWidget* widget, RemminaConnec
 
 }
 
+static gboolean remmina_connection_window_focus_out_event(GtkWidget* widget, GdkEvent* event, RemminaConnectionHolder* cnnhld)
+{
+	TRACE_CALL("remmina_connection_window_focus_out_event");
+#if DEBUG_KB_GRABBING
+	printf("DEBUG_KB_GRABBING: focus out and mouse_pointer_entered is %s\n", cnnhld->cnnwin->priv->mouse_pointer_entered ? "true":"false");
+#endif
+	remmina_connection_holder_keyboard_ungrab(cnnhld);
+	return FALSE;
+}
+
+static gboolean remmina_connection_window_focus_in_event(GtkWidget* widget, GdkEvent* event, RemminaConnectionHolder* cnnhld)
+{
+	TRACE_CALL("remmina_connection_window_focus_in_event");
+#if DEBUG_KB_GRABBING
+	printf("DEBUG_KB_GRABBING: focus in and mouse_pointer_entered is %s\n", cnnhld->cnnwin->priv->mouse_pointer_entered ? "true":"false");
+#endif
+	remmina_connection_holder_keyboard_grab(cnnhld);
+	return FALSE;
+}
+
 static gboolean remmina_connection_window_on_enter(GtkWidget* widget, GdkEventCrossing* event, RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_window_on_enter");
-	/*
-	if (event->detail == GDK_NOTIFY_VIRTUAL || event->detail == GDK_NOTIFY_NONLINEAR
-			|| event->detail == GDK_NOTIFY_NONLINEAR_VIRTUAL)
+	cnnhld->cnnwin->priv->mouse_pointer_entered = TRUE;
+#if DEBUG_KB_GRABBING
+	printf("DEBUG_KB_GRABBING: enter detail=");
+	switch(event->detail) {
+		case GDK_NOTIFY_ANCESTOR: printf("GDK_NOTIFY_ANCESTOR"); break;
+		case GDK_NOTIFY_VIRTUAL: printf("GDK_NOTIFY_VIRTUAL"); break;
+		case GDK_NOTIFY_NONLINEAR: printf("GDK_NOTIFY_NONLINEAR"); break;
+		case GDK_NOTIFY_NONLINEAR_VIRTUAL: printf("GDK_NOTIFY_NONLINEAR_VIRTUAL"); break;
+		case GDK_NOTIFY_UNKNOWN: printf("GDK_NOTIFY_UNKNOWN"); break;
+		case GDK_NOTIFY_INFERIOR: printf("GDK_NOTIFY_INFERIOR"); break;
+	}
+	printf("\n");
+#endif
+	if (gtk_window_is_active(GTK_WINDOW(cnnhld->cnnwin)))
 	{
 		remmina_connection_holder_keyboard_grab(cnnhld);
 	}
-	*/
 	return FALSE;
 }
 
@@ -2075,13 +2156,30 @@ static gboolean remmina_connection_window_on_enter(GtkWidget* widget, GdkEventCr
 static gboolean remmina_connection_window_on_leave(GtkWidget* widget, GdkEventCrossing* event, RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_window_on_leave");
+#if DEBUG_KB_GRABBING
+	printf("DEBUG_KB_GRABBING: leave detail=");
+	switch(event->detail) {
+		case GDK_NOTIFY_ANCESTOR: printf("GDK_NOTIFY_ANCESTOR"); break;
+		case GDK_NOTIFY_VIRTUAL: printf("GDK_NOTIFY_VIRTUAL"); break;
+		case GDK_NOTIFY_NONLINEAR: printf("GDK_NOTIFY_NONLINEAR"); break;
+		case GDK_NOTIFY_NONLINEAR_VIRTUAL: printf("GDK_NOTIFY_NONLINEAR_VIRTUAL"); break;
+		case GDK_NOTIFY_UNKNOWN: printf("GDK_NOTIFY_UNKNOWN"); break;
+		case GDK_NOTIFY_INFERIOR: printf("GDK_NOTIFY_INFERIOR"); break;
+	}
+	printf("  x=%f y=%f\n", event->x, event->y);
+	printf("  focus=%s\n", event->focus ? "yes":"no");
+	printf("\n");
+#endif
 	/*
-	if (event->detail == GDK_NOTIFY_VIRTUAL || event->detail == GDK_NOTIFY_NONLINEAR
-			|| event->detail == GDK_NOTIFY_NONLINEAR_VIRTUAL)
-	{
+	 * Unity: we leave windows with GDK_NOTIFY_VIRTUAL or GDK_NOTIFY_NONLINEAR_VIRTUAL
+	 * Gnome shell: we leave windows with both GDK_NOTIFY_VIRTUAL or GDK_NOTIFY_ANCESTOR
+	 * Xfce: we cannot drag this window when grabbed, so we need to ungrab in response to GDK_NOTIFY_NONLINEAR
+	 */
+	if (event->detail == GDK_NOTIFY_VIRTUAL || event->detail == GDK_NOTIFY_ANCESTOR ||
+		event->detail == GDK_NOTIFY_NONLINEAR_VIRTUAL || event->detail == GDK_NOTIFY_NONLINEAR) {
+		cnnhld->cnnwin->priv->mouse_pointer_entered = FALSE;
 		remmina_connection_holder_keyboard_ungrab(cnnhld);
 	}
-	*/
 	return FALSE;
 }
 
@@ -2345,6 +2443,8 @@ static void remmina_connection_window_init(RemminaConnectionWindow* cnnwin)
 
 	priv->view_mode = AUTO_MODE;
 	priv->floating_toolbar_opacity = 1.0;
+	priv->kbcaptured = FALSE;
+	priv->mouse_pointer_entered = FALSE;
 
 	gtk_container_set_border_width(GTK_CONTAINER(cnnwin), 0);
 
@@ -2396,6 +2496,9 @@ remmina_connection_window_new_from_holder(RemminaConnectionHolder* cnnhld)
 	/* focus-in-event and focus-out-event don't work when keyboard is grabbed
 	 * via gdk_device_grab. So we listen for window-state-event to detect focus in and focus out */
 	g_signal_connect(G_OBJECT(cnnwin), "window-state-event", G_CALLBACK(remmina_connection_window_state_event), cnnhld);
+
+	g_signal_connect(G_OBJECT(cnnwin), "focus-in-event", G_CALLBACK(remmina_connection_window_focus_in_event), cnnhld);
+	g_signal_connect(G_OBJECT(cnnwin), "focus-out-event", G_CALLBACK(remmina_connection_window_focus_out_event), cnnhld);
 
 	g_signal_connect(G_OBJECT(cnnwin), "enter-notify-event", G_CALLBACK(remmina_connection_window_on_enter), cnnhld);
 	g_signal_connect(G_OBJECT(cnnwin), "leave-notify-event", G_CALLBACK(remmina_connection_window_on_leave), cnnhld);
@@ -2877,11 +2980,17 @@ static gboolean remmina_connection_window_go_fullscreen(GtkWidget *widget, GdkEv
 	priv = cnnhld->cnnwin->priv;
 
 #if GTK_CHECK_VERSION(3, 18, 0)
-	gtk_window_fullscreen_on_monitor(GTK_WINDOW(cnnhld->cnnwin),
-			gdk_screen_get_default (),
-			gdk_screen_get_monitor_at_window
-			(gdk_screen_get_default (), gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin))
-			));
+	if (remmina_pref.fullscreen_on_auto)
+	{
+		gtk_window_fullscreen_on_monitor(GTK_WINDOW(cnnhld->cnnwin),
+				gdk_screen_get_default (),
+				gdk_screen_get_monitor_at_window
+				(gdk_screen_get_default (), gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin))
+				));
+	} else {
+		remmina_log_print("Fullscreen managed by WM or by the user, as per settings");
+		gtk_window_fullscreen(GTK_WINDOW(cnnhld->cnnwin));
+	}
 #else
 	remmina_log_print("Cannot fullscreen on a specific monitor, feature available from GTK 3.18");
 	gtk_window_fullscreen(GTK_WINDOW(cnnhld->cnnwin));
@@ -3223,19 +3332,11 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
 
                 if (keyval == GDK_KEY_Up || keyval == GDK_KEY_Down) {
                     sz = gdk_window_get_height(gsvwin) + 2;	// Add 2px of black scroll border
-#if GTK_VERSION == 3
                     adj = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(child));
-#elif GTK_VERSION == 2
-                    adj = gtk_viewport_get_vadjustment(GTK_VIEWPORT(child));
-#endif
                 }
                 else {
                     sz = gdk_window_get_width(gsvwin) + 2;	// Add 2px of black scroll border
-#if GTK_VERSION == 3
                     adj = gtk_scrollable_get_hadjustment(GTK_SCROLLABLE(child));
-#elif GTK_VERSION == 2
-                    adj = gtk_viewport_get_hadjustment(GTK_VIEWPORT(child));
-#endif
                 }
 
                 if (keyval == GDK_KEY_Up || keyval == GDK_KEY_Left) {
@@ -3465,7 +3566,6 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 	}
 #endif
 
-	remmina_connection_holder_keyboard_grab(cnnhld);
 }
 
 static void remmina_connection_object_on_disconnect(RemminaProtocolWidget* gp, RemminaConnectionObject* cnnobj)
@@ -3638,4 +3738,3 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 	return protocolwidget;
 
 }
-

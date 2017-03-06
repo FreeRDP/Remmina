@@ -303,6 +303,7 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 		cairo_text_extents(context, msg, &extents);
 		cairo_move_to(context, (width - (extents.width + extents.x_bearing)) / 2, (height - (extents.height + extents.y_bearing)) / 2);
 		cairo_show_text(context, msg);
+		g_free(msg);
 
 	}
 	else

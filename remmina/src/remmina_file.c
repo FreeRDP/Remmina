@@ -486,31 +486,46 @@ remmina_file_dup(RemminaFile *remminafile)
 void remmina_file_update_screen_resolution(RemminaFile *remminafile)
 {
 	TRACE_CALL("remmina_file_update_screen_resolution");
-#if GTK_VERSION == 3
 	GdkDisplay *display;
+#if GTK_CHECK_VERSION(3, 20, 0)
+	/* TODO: rename to "seat" */
+	GdkSeat *seat;
+	GdkDevice *device;
+#else
 	GdkDeviceManager *device_manager;
 	GdkDevice *device;
 #endif
 	GdkScreen *screen;
+#if GTK_CHECK_VERSION(3, 22, 0)
+	GdkMonitor *monitor;
+#else
+	gint monitor;
+#endif
 	gchar *pos;
 	gchar *resolution;
 	gint x, y;
-	gint monitor;
 	GdkRectangle rect;
 
 	resolution = g_strdup(remmina_file_get_string(remminafile, "resolution"));
 	if (resolution == NULL || strchr(resolution, 'x') == NULL)
 	{
-#if GTK_VERSION == 3
 		display = gdk_display_get_default();
+		/* gdk_display_get_device_manager deprecated since 3.20, Use gdk_display_get_default_seat */
+#if GTK_CHECK_VERSION(3, 20, 0)
+		seat = gdk_display_get_default_seat(display);
+		device = gdk_seat_get_pointer(seat);
+#else
 		device_manager = gdk_display_get_device_manager(display);
 		device = gdk_device_manager_get_client_pointer(device_manager);
-		gdk_device_get_position(device, &screen, &x, &y);
-#elif GTK_VERSION == 2
-		gdk_display_get_pointer(gdk_display_get_default(), &screen, &x, &y, NULL);
 #endif
+		gdk_device_get_position(device, &screen, &x, &y);
+#if GTK_CHECK_VERSION(3, 22, 0)
+		monitor = gdk_display_get_monitor_at_point(display, x, y);
+		gdk_monitor_get_geometry(monitor, &rect);
+#else
 		monitor = gdk_screen_get_monitor_at_point(screen, x, y);
 		gdk_screen_get_monitor_geometry(screen, monitor, &rect);
+#endif
 		remmina_file_set_int(remminafile, "resolution_width", rect.width);
 		remmina_file_set_int(remminafile, "resolution_height", rect.height);
 	}
