@@ -3455,6 +3455,7 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
 			}
 		}
 	}
+	cnnhld->hostkey_activated = FALSE;
 	/* Trap all key presses when hostkey is pressed */
 	return TRUE;
 }
