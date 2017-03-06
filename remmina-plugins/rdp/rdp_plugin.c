@@ -1190,11 +1190,9 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 	freerdp* instance;
 	RemminaPluginRdpUiObject* ui;
 
-	gchar buf[1024];
-	if (freerdp_get_last_error(rfi->instance->context) == ((FREERDP_ERROR_ERRINFO_CLASS << 16) | ERRINFO_DISCONNECTED_BY_OTHER_CONNECTION))
+	if (freerdp_get_last_error(rfi->instance->context) == 0x10005)
 	{
-		sprintf(buf, "ERRINFO_DISCONNECTED_BY_OTHER_CONNECTION (0x%08"PRIX32") %s", ((FREERDP_ERROR_ERRINFO_CLASS << 16) | ERRINFO_DISCONNECTED_BY_OTHER_CONNECTION), freerdp_get_error_info_string(ERRINFO_DISCONNECTED_BY_OTHER_CONNECTION));
-		remmina_plugin_service->protocol_plugin_set_error(gp, buf);
+		remmina_plugin_service->protocol_plugin_set_error(gp, "Another user connected to the server, forcing the disconnection of the current connection.");
 	}
 	instance = rfi->instance;
 	if (rfi->thread)
