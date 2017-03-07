@@ -163,6 +163,8 @@ typedef struct _RemminaPref
 
 	/* Remmina birthday julian format*/
 	guint32 bdate;
+
+	gboolean disable_floating_toolbar;
 } RemminaPref;
 
 #define DEFAULT_SSH_PARSECONFIG TRUE
@@ -195,4 +197,3 @@ gchar* remmina_pref_get_value(const gchar *key);
 G_END_DECLS
 
 #endif  /* __REMMINAPREF_H__  */
-
