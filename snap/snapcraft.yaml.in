@@ -78,7 +78,6 @@ parts:
       - -DWITH_STATIC_LIB=ON
       - -DWITH_GSSAPI=ON
       - -DWITH_NACL=0
-      - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
 
     # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
