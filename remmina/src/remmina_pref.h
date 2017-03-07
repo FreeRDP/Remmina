@@ -142,6 +142,7 @@ typedef struct _RemminaPref
 	gboolean hide_statusbar;
 	gboolean small_toolbutton;
 	gint view_file_mode;
+	gboolean disable_floating_toolbar;
 	/* In tray icon */
 	gboolean applet_enable_avahi;
 	/* Auto */
@@ -195,4 +196,3 @@ gchar* remmina_pref_get_value(const gchar *key);
 G_END_DECLS
 
 #endif  /* __REMMINAPREF_H__  */
-
