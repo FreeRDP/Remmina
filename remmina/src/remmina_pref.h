@@ -85,6 +85,13 @@ enum
 	REMMINA_TAB_NONE = 3
 };
 
+enum
+{
+	FLOATING_TOOLBAR_VISIBILITY_PEEKING = 0,
+	FLOATING_TOOLBAR_VISIBILITY_INVISIBLE = 1, //"Invisible" corresponds to the "Hidden" option in the drop-down
+	FLOATING_TOOLBAR_VISIBILITY_DISABLE = 2
+};
+
 typedef struct _RemminaPref
 {
 	/* In RemminaPrefDialog options tab */
@@ -98,12 +105,12 @@ typedef struct _RemminaPref
 	gchar *resolutions;
 	gchar *keystrokes;
 	/* In RemminaPrefDialog appearance tab */
-	gboolean invisible_toolbar;
 	gboolean fullscreen_on_auto;
 	gboolean always_show_tab;
 	gboolean hide_connection_toolbar;
 	gint default_mode;
 	gint tab_mode;
+	gint fullscreen_toolbar_visibility;
 	gint show_buttons_icons;
 	gint show_menu_icons;
 	/* In RemminaPrefDialog applet tab */
@@ -195,4 +202,3 @@ gchar* remmina_pref_get_value(const gchar *key);
 G_END_DECLS
 
 #endif  /* __REMMINAPREF_H__  */
-

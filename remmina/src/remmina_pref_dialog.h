@@ -52,7 +52,6 @@ typedef struct _RemminaPrefDialog
 
 	GtkCheckButton *checkbutton_options_remember_last_view_mode;
 	GtkCheckButton *checkbutton_options_save_settings;
-	GtkCheckButton *checkbutton_appearance_invisible_toolbar;
 	GtkCheckButton *checkbutton_appearance_fullscreen_on_auto;
 	GtkCheckButton *checkbutton_appearance_show_tabs;
 	GtkCheckButton *checkbutton_appearance_hide_toolbar;
@@ -63,6 +62,7 @@ typedef struct _RemminaPrefDialog
 	GtkComboBox *comboboxtext_appearance_show_menu_icons;
 	GtkComboBox *comboboxtext_options_scale_quality;
 	GtkComboBox *comboboxtext_options_ssh_loglevel;
+	GtkComboBox *comboboxtext_appearance_fullscreen_toolbar_visibility;
 	GtkFileChooser *filechooserbutton_options_screenshots_path;
 	GtkCheckButton *checkbutton_options_ssh_parseconfig;
 	GtkEntry *entry_options_ssh_port;
@@ -122,4 +122,3 @@ GtkDialog* remmina_pref_dialog_get_dialog(void);
 G_END_DECLS
 
 #endif  /* __REMMINAPREFDIALOG_H__  */
-

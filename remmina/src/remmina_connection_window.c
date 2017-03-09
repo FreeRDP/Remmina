@@ -657,7 +657,7 @@ static gboolean remmina_connection_holder_floating_toolbar_motion(RemminaConnect
 			y = t;
 
 		gtk_window_move(GTK_WINDOW(priv->floating_toolbar_window), x + cnnwin_x, y + cnnwin_y);
-		if (remmina_pref.invisible_toolbar && !priv->pin_down)
+		if (remmina_pref.fullscreen_toolbar_visibility == FLOATING_TOOLBAR_VISIBILITY_INVISIBLE && !priv->pin_down)
 		{
 #if GTK_CHECK_VERSION(3, 8, 0)
 			gtk_widget_set_opacity(GTK_WIDGET(priv->floating_toolbar_window),
@@ -740,7 +740,7 @@ static void remmina_connection_holder_floating_toolbar_show(RemminaConnectionHol
 	{
 		/* If we are hiding and the toolbar must be made invisible, schedule
 		 * a later toolbar hide */
-		if (remmina_pref.invisible_toolbar)
+		if (remmina_pref.fullscreen_toolbar_visibility == FLOATING_TOOLBAR_VISIBILITY_INVISIBLE)
 		{
 			if (priv->ftb_hide_eventsource == 0)
 				priv->ftb_hide_eventsource = g_timeout_add(1000, remmina_connection_holder_floating_toolbar_make_invisible, priv);
@@ -2403,7 +2403,7 @@ static void remmina_connection_holder_create_floating_toolbar(RemminaConnectionH
 	priv->floating_toolbar_window = ftb_popup_window;
 
 	remmina_connection_holder_update_toolbar_opacity(cnnhld);
-	if (remmina_pref.invisible_toolbar && !priv->pin_down)
+	if (remmina_pref.fullscreen_toolbar_visibility == FLOATING_TOOLBAR_VISIBILITY_INVISIBLE && !priv->pin_down)
 	{
 #if GTK_CHECK_VERSION(3, 8, 0)
 		gtk_widget_set_opacity(GTK_WIDGET(ftb_popup_window), 0.0);
@@ -3212,20 +3212,25 @@ static void remmina_connection_holder_create_fullscreen(RemminaConnectionHolder*
 
 	/* Create the floating toolbar */
 #if FLOATING_TOOLBAR_WIDGET
-	remmina_connection_holder_create_overlay_ftb_overlay(cnnhld);
-	/* Add drag and drop capabilities to the drop/dest target for floating toolbar */
-	gtk_drag_dest_set(GTK_WIDGET(priv->overlay), GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT,
-			dnd_targets_ftb, sizeof dnd_targets_ftb / sizeof *dnd_targets_ftb, GDK_ACTION_MOVE);
-	gtk_drag_dest_set_track_motion(GTK_WIDGET(priv->notebook), TRUE);
-	g_signal_connect(GTK_WIDGET(priv->overlay), "drag-drop", G_CALLBACK(remmina_connection_window_ftb_drag_drop), cnnhld);
+	if (remmina_pref.fullscreen_toolbar_visibility != FLOATING_TOOLBAR_VISIBILITY_DISABLE)
+	{
+		remmina_connection_holder_create_overlay_ftb_overlay(cnnhld);
+		/* Add drag and drop capabilities to the drop/dest target for floating toolbar */
+		gtk_drag_dest_set(GTK_WIDGET(priv->overlay), GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT,
+				dnd_targets_ftb, sizeof dnd_targets_ftb / sizeof *dnd_targets_ftb, GDK_ACTION_MOVE);
+		gtk_drag_dest_set_track_motion(GTK_WIDGET(priv->notebook), TRUE);
+		g_signal_connect(GTK_WIDGET(priv->overlay), "drag-drop", G_CALLBACK(remmina_connection_window_ftb_drag_drop), cnnhld);
+	}
 #else
+	if (remmina_pref.fullscreen_toolbar_visibility != FLOATING_TOOLBAR_VISIBILITY_DISABLE)
+	{
+		remmina_connection_holder_create_floating_toolbar(cnnhld, view_mode);
+		remmina_connection_holder_update_toolbar(cnnhld);
 
-	remmina_connection_holder_create_floating_toolbar(cnnhld, view_mode);
-	remmina_connection_holder_update_toolbar(cnnhld);
-
-	g_signal_connect(G_OBJECT(priv->floating_toolbar_window), "enter-notify-event", G_CALLBACK(remmina_connection_holder_floating_toolbar_on_enter), cnnhld);
-	g_signal_connect(G_OBJECT(priv->floating_toolbar_window), "scroll-event", G_CALLBACK(remmina_connection_holder_floating_toolbar_on_scroll), cnnhld);
-	gtk_widget_add_events(GTK_WIDGET(priv->floating_toolbar_window), GDK_SCROLL_MASK);
+		g_signal_connect(G_OBJECT(priv->floating_toolbar_window), "enter-notify-event", G_CALLBACK(remmina_connection_holder_floating_toolbar_on_enter), cnnhld);
+		g_signal_connect(G_OBJECT(priv->floating_toolbar_window), "scroll-event", G_CALLBACK(remmina_connection_holder_floating_toolbar_on_scroll), cnnhld);
+		gtk_widget_add_events(GTK_WIDGET(priv->floating_toolbar_window), GDK_SCROLL_MASK);
+	}
 #endif
 
 	remmina_connection_holder_check_resize(cnnhld);
