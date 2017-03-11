@@ -14,7 +14,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
 #
 # In addition, as a special exception, the copyright holders give
@@ -37,28 +37,28 @@ set(APPICON22_ACTIONS_DIR "${REMMINA_DATADIR}/icons/hicolor/22x22/actions")
 set(APPICON22_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/22x22/emblems")
 
 set(APPICON16_ACTIONS_DATA
-	16x16/actions/remmina-fit-window.png
-	16x16/actions/remmina-scale.png
-	16x16/actions/remmina-fullscreen.png
-	16x16/actions/remmina-switch-page.png
-	16x16/actions/remmina-pin-up.png
-	16x16/actions/remmina-pin-down.png
-	)
+        16x16/actions/remmina-fit-window.png
+        16x16/actions/remmina-scale.png
+        16x16/actions/remmina-fullscreen.png
+        16x16/actions/remmina-switch-page.png
+        16x16/actions/remmina-pin-up.png
+        16x16/actions/remmina-pin-down.png
+        )
 
 set(APPICON16_EMBLEMS_DATA
-	16x16/emblems/remmina-sftp.png
-	)
+        16x16/emblems/remmina-sftp.png
+        )
 
 set(APPICON22_ACTIONS_DATA
-	22x22/actions/remmina-fit-window.png
-	22x22/actions/remmina-scale.png
-	22x22/actions/remmina-fullscreen.png
-	22x22/actions/remmina-switch-page.png
-	)
+        22x22/actions/remmina-fit-window.png
+        22x22/actions/remmina-scale.png
+        22x22/actions/remmina-fullscreen.png
+        22x22/actions/remmina-switch-page.png
+        )
 
 set(APPICON22_EMBLEMS_DATA
-	22x22/emblems/remmina-sftp.png
-	)
+        22x22/emblems/remmina-sftp.png
+        )
 
 install(FILES ${APPICON16_ACTIONS_DATA} DESTINATION ${APPICON16_ACTIONS_DIR})
 install(FILES ${APPICON16_EMBLEMS_DATA} DESTINATION ${APPICON16_EMBLEMS_DIR})
