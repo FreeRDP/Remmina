@@ -14,7 +14,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
 #
 # In addition, as a special exception, the copyright holders give
@@ -32,13 +32,13 @@
 
 
 set(REMMINA_PLUGIN_NX_SRCS
-	nx_session.c
-	nx_session.h
-	nx_session_manager.c
-	nx_session_manager.h
-	nx_plugin.c
-	nx_plugin.h
-	)
+        nx_session.c
+        nx_session.h
+        nx_session_manager.c
+        nx_session_manager.h
+        nx_plugin.c
+        nx_plugin.h
+        )
 
 add_library(remmina-plugin-nx ${REMMINA_PLUGIN_NX_SRCS})
 set_target_properties(remmina-plugin-nx PROPERTIES PREFIX "")
@@ -46,10 +46,19 @@ set_target_properties(remmina-plugin-nx PROPERTIES NO_SONAME 1)
 
 find_package(X11)
 
-include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${XKBFILE_INCLUDE_DIRS} ${LIBSSH_INCLUDE_DIRS})
-target_link_libraries(remmina-plugin-nx ${REMMINA_COMMON_LIBRARIES} ${XKBFILE_LIBRARIES} ${LIBSSH_LIBRARIES} ${X11_X11_LIB})
+include_directories(${REMMINA_COMMON_INCLUDE_DIRS}
+    ${XKBFILE_INCLUDE_DIRS} ${LIBSSH_INCLUDE_DIRS})
+target_link_libraries(remmina-plugin-nx
+    ${REMMINA_COMMON_LIBRARIES}
+    ${XKBFILE_LIBRARIES}
+    ${LIBSSH_LIBRARIES}
+    ${X11_X11_LIB})
 
 install(TARGETS remmina-plugin-nx DESTINATION ${REMMINA_PLUGINDIR})
 
-install(FILES 16x16/emblems/remmina-nx.png DESTINATION ${APPICON16_EMBLEMS_DIR})
-install(FILES 22x22/emblems/remmina-nx.png DESTINATION ${APPICON22_EMBLEMS_DIR})
+install(FILES
+    16x16/emblems/remmina-nx.png
+    DESTINATION ${APPICON16_EMBLEMS_DIR})
+install(FILES
+    22x22/emblems/remmina-nx.png
+    DESTINATION ${APPICON22_EMBLEMS_DIR})
