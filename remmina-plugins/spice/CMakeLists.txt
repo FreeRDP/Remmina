@@ -31,10 +31,10 @@
 #  files in the program, then also delete it here.
 
 set(REMMINA_PLUGIN_SPICE_SRCS
-	spice_plugin.c
-	spice_plugin_file_transfer.c
-	spice_plugin_usb.c
-	)
+        spice_plugin.c
+        spice_plugin_file_transfer.c
+        spice_plugin_usb.c
+        )
 
 add_library(remmina-plugin-spice ${REMMINA_PLUGIN_SPICE_SRCS})
 set_target_properties(remmina-plugin-spice PROPERTIES PREFIX "")
