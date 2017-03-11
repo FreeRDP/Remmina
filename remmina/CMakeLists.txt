@@ -114,8 +114,8 @@ include_directories(${GTK_INCLUDE_DIRS})
 target_link_libraries(remmina ${GTK_LIBRARIES})
 
 if(WITH_MANPAGES)
-    install (FILES src/remmina.1 DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1)
-endif(WITH_MANPAGES)
+    install(FILES src/remmina.1 DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1)
+endif()
 
 find_package(X11)
 include_directories(${X11_INCLUDE_DIR})
@@ -153,13 +153,13 @@ if(GTK3_FOUND AND WITH_VTE)
                         break()
                 endif()
                 message(STATUS "VTE ${__VTE_VERSION} not found")
-        endforeach(__VTE_VERSION)
+        endforeach()
 elseif(WITH_VTE)
         set(_VTE_VERSION_NUM)
         find_package(VTE)
 endif()
 
-if (VTE_FOUND)
+if(VTE_FOUND)
         add_definitions(-DHAVE_LIBVTE)
         include_directories(${VTE_INCLUDE_DIRS})
         target_link_libraries(remmina ${VTE_LIBRARIES})
@@ -193,9 +193,10 @@ add_subdirectory(external_tools)
 add_subdirectory(ui)
 
 install(TARGETS remmina DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(DIRECTORY include/remmina/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/remmina FILES_MATCHING PATTERN "*.h")
+install(DIRECTORY include/remmina/
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/remmina
+    FILES_MATCHING PATTERN "*.h")
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina.pc.in ${CMAKE_CURRENT_BINARY_DIR}/remmina.pc @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina.pc.in
+    ${CMAKE_CURRENT_BINARY_DIR}/remmina.pc @ONLY)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
-
-
