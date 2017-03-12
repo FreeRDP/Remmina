@@ -63,6 +63,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         <signal name="activate" handler="remmina_main_on_action_application_plugins" swapped="no"/>
       </object>
     </child>
+    <child>
+      <object class="GtkAction" id="action_application_mpchange">
+        <property name="label" translatable="yes">Multi password changer</property>
+        <property name="short_label" translatable="yes">MPChange</property>
+        <signal name="activate" handler="remmina_main_on_action_application_mpchange" swapped="no"/>
+      </object>
+    </child>
   </object>
   <object class="GtkActionGroup" id="actiongroup_connection">
     <property name="accel_group">accelgroup_shortcuts</property>
@@ -454,6 +461,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Plugins</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_tools_mpchange">
+                        <property name="use_action_appearance">True</property>
+                        <property name="related_action">action_application_mpchange</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Multi password changer</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>

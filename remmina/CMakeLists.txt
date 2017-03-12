@@ -107,6 +107,8 @@ list(APPEND REMMINA_SRCS
     "src/remmina_sysinfo.c"
     "src/remmina_connection_window.c"
     "src/remmina_connection_window.h"
+    "src/remmina_mpchange.c"
+    "src/remmina_mpchange.h"
     )
 
 add_executable(remmina ${REMMINA_SRCS})
