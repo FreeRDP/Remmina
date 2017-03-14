@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/FreeRDP/Remmina.png)](https://travis-ci.org/FreeRDP/Remmina) [![Bountysource](https://img.shields.io/bountysource/team/remmina/activity.svg)]()
+[![Build Status](https://travis-ci.org/FreeRDP/Remmina.png)](https://travis-ci.org/FreeRDP/Remmina) [![Bountysource](https://img.shields.io/bountysource/team/remmina/activity.svg)]() [![CodeTriage](https://www.codetriage.com/freerdp/remmina/badges/users.svg)]()
 
 # Remmina: The GTK+ Remote Desktop Client
 
