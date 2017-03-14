@@ -89,14 +89,14 @@ Install [remmina-git](https://aur.archlinux.org/packages/remmina-git) from [AUR]
 
 There are also some external, not supported plugins provided by [Muflone](https://github.com/muflone) :
 
-* [remmina-plugin-exec](https://aur.archlinux.org/packages/remmina-plugin-exec/) A protocol plugin for Remmina to execute an external process. 
-* [remmina-plugin-folder](https://aur.archlinux.org/packages/remmina-plugin-folder/) A protocol plugin for Remmina to open a folder. 
-* [remmina-plugin-open](https://aur.archlinux.org/packages/remmina-plugin-open/) A protocol plugin for Remmina to open a document with its associated application. 
-* [remmina-plugin-rdesktop](https://aur.archlinux.org/packages/remmina-plugin-rdesktop/) A protocol plugin for Remmina to open a RDP connection with rdesktop.  
-* [remmina-plugin-teamviewer](https://aur.archlinux.org/packages/remmina-plugin-teamviewer/) A protocol plugin for Remmina to launch a TeamViewer connection.  
-* [remmina-plugin-ultravnc](https://aur.archlinux.org/packages/remmina-plugin-ultravnc/) A protocol plugin for Remmina to connect via VNC using UltraVNC viewer.  
-* [remmina-plugin-url](https://aur.archlinux.org/packages/remmina-plugin-url/) A protocol plugin for Remmina to open an URL in an external browser.  
-* [remmina-plugin-webkit](https://aur.archlinux.org/packages/remmina-plugin-webkit/) A protocol plugin for Remmina to launch a GTK+ Webkit browser.  
+* [remmina-plugin-exec](https://aur.archlinux.org/packages/remmina-plugin-exec/) A protocol plugin for Remmina to execute an external process.
+* [remmina-plugin-folder](https://aur.archlinux.org/packages/remmina-plugin-folder/) A protocol plugin for Remmina to open a folder.
+* [remmina-plugin-open](https://aur.archlinux.org/packages/remmina-plugin-open/) A protocol plugin for Remmina to open a document with its associated application.
+* [remmina-plugin-rdesktop](https://aur.archlinux.org/packages/remmina-plugin-rdesktop/) A protocol plugin for Remmina to open a RDP connection with rdesktop.
+* [remmina-plugin-teamviewer](https://aur.archlinux.org/packages/remmina-plugin-teamviewer/) A protocol plugin for Remmina to launch a TeamViewer connection.
+* [remmina-plugin-ultravnc](https://aur.archlinux.org/packages/remmina-plugin-ultravnc/) A protocol plugin for Remmina to connect via VNC using UltraVNC viewer.
+* [remmina-plugin-url](https://aur.archlinux.org/packages/remmina-plugin-url/) A protocol plugin for Remmina to open an URL in an external browser.
+* [remmina-plugin-webkit](https://aur.archlinux.org/packages/remmina-plugin-webkit/) A protocol plugin for Remmina to launch a GTK+ Webkit browser.
 
 ### From the source code
 
@@ -126,9 +126,11 @@ Remmina support also the following options:
 
 ## Configuration
 
-You can configure everything from the graphical interface or editing by hand the files under $HOME/.remmina or $HOME/.config/remmina 
+You can configure everything from the graphical interface or editing by hand the files under $HOME/.remmina or $HOME/.config/remmina
 
 ## Contributing
+
+See [CONTRIBUTING.md](https://raw.githubusercontent.com/FreeRDP/Remmina/next/CONTRIBUTING.md) for a better overview.
 
 If you want to contribute with code:
 
@@ -150,16 +152,16 @@ See the [THANKS.md](https://raw.githubusercontent.com/FreeRDP/Remmina/next/THANK
 
 #### Paypal
 
-[![paypal](https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZBD87JG52PTZC) 
+[![paypal](https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZBD87JG52PTZC)
 
 #### Bitcoin
 
 [![bitcoin](http://www.remmina.org/wp/wp-content/uploads/2016/06/bitcoin_1298H2vaxcbDQRuR-e1465504491655.png)](bitcoin:1298H2vaxcbDQRuRYkDjfFbvGEgxE1CNjk?label=Remmina%20Donation)
 
-If clicking on the line above does not work, use this payment info: 
+If clicking on the line above does not work, use this payment info:
 
-- Remmina bitcoin address:  1298H2vaxcbDQRuRYkDjfFbvGEgxE1CNjk  
-- Message: Remmina Donation  
+- Remmina bitcoin address:  1298H2vaxcbDQRuRYkDjfFbvGEgxE1CNjk
+- Message: Remmina Donation
 
 ## Authors
 
