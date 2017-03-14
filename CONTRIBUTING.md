@@ -30,20 +30,20 @@ To see all the issues already labeled as bug, you can use [this query](https://g
 
 Some exemples are:
 
-- #146 : XFCE intercepts shortcuts no matter of "Grab all keyboard events" button
-- #190 : Modifier keys (alt) are wrongly mapped across a Ubuntu -> Mac remote session
-- #380 : Segfault on apparently invalid pixel data  bug   unconfirmed
-- #246 : Clipboard Sync from Mac OS X to Linux over VNC Not Working
+- [#146](https://github.com/FreeRDP/Remmina/issues/146) : XFCE intercepts shortcuts no matter of "Grab all keyboard events" button
+- [#190](https://github.com/FreeRDP/Remmina/issues/190) : Modifier keys (alt) are wrongly mapped across a Ubuntu -> Mac remote session
+- [#380](https://github.com/FreeRDP/Remmina/issues/380) : Segfault on apparently invalid pixel data  bug   unconfirmed
+- [#246](https://github.com/FreeRDP/Remmina/issues/246) : Clipboard Sync from Mac OS X to Linux over VNC Not Working
 
 ### Implement most wanted features and fixes (_bounty $240_)
 
 Similarly, we have a quite important list of feature requests, that are labeled as [enhancement](https://github.com/FreeRDP/Remmina/issues?milestone=none&state=open&sort=created&labels=enhancement&direction=asc),
 of which some that have a [bounty](https://github.com/FreeRDP/Remmina/issues?milestone=none&state=open&sort=created&labels=enhancement%2Cbounty&direction=asc) for those that will be able to implement them.
 
-- #6: New resolution setting "fit to window" [$220]
-- #323: File transfer in RDP plugin [$10]
-- #476: Favorite and recent connections [$5]
-- #815: Feature request - Option - Floating Desktop Name [$5]
+- [#6](https://github.com/FreeRDP/Remmina/issues/6) : New resolution setting "fit to window" [$220]
+- [#323](https://github.com/FreeRDP/Remmina/issues/323) : File transfer in RDP plugin [$10]
+- [#476](https://github.com/FreeRDP/Remmina/issues/476) : Favorite and recent connections [$5]
+- [#815](https://github.com/FreeRDP/Remmina/issues/815) : Feature request - Option - Floating Desktop Name [$5]
 
 ### Internal projects
 
@@ -91,4 +91,3 @@ If clicking on the line above does not work, use this payment info:
 
 - Remmina bitcoin address:  1298H2vaxcbDQRuRYkDjfFbvGEgxE1CNjk
 - Message: Remmina Donation
-
