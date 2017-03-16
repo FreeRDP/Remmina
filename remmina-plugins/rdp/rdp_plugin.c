@@ -1192,7 +1192,7 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 
 	if (freerdp_get_last_error(rfi->instance->context) == 0x10005)
 	{
-		remmina_plugin_service->protocol_plugin_set_error(gp, "Another user connected to the server, forcing the disconnection of the current connection.");
+		remmina_plugin_service->protocol_plugin_set_error(gp, "Another user connected to the server (%s), forcing the disconnection of the current connection.", rfi->settings->ServerHostname);
 	}
 	instance = rfi->instance;
 	if (rfi->thread)
