@@ -37,21 +37,21 @@ find_package(Threads)
 find_package(X11)
 
 set(REMMINA_PLUGIN_RDP_SRCS
-	rdp_plugin.c
-	rdp_plugin.h
-	rdp_event.c
-	rdp_event.h
-	rdp_file.c
-	rdp_file.h
-	rdp_settings.c
-	rdp_settings.h
-	rdp_graphics.c
-	rdp_graphics.h
-	rdp_cliprdr.c
-	rdp_cliprdr.h
-	rdp_channels.c
-	rdp_channels.h
-	)
+        rdp_plugin.c
+        rdp_plugin.h
+        rdp_event.c
+        rdp_event.h
+        rdp_file.c
+        rdp_file.h
+        rdp_settings.c
+        rdp_settings.h
+        rdp_graphics.c
+        rdp_graphics.h
+        rdp_cliprdr.c
+        rdp_cliprdr.h
+        rdp_channels.c
+        rdp_channels.h
+        )
 
 add_definitions(-DFREERDP_REQUIRED_MAJOR=${FREERDP_REQUIRED_MAJOR})
 add_definitions(-DFREERDP_REQUIRED_MINOR=${FREERDP_REQUIRED_MINOR})
@@ -62,9 +62,16 @@ set_target_properties(remmina-plugin-rdp PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-rdp PROPERTIES NO_SONAME 1)
 
 include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${FREERDP_INCLUDE_DIRS} ${X11_INCLUDE_DIR})
-target_link_libraries(remmina-plugin-rdp ${REMMINA_COMMON_LIBRARIES} ${FREERDP_LIBRARIES} ${X11_LIBRARIES})
+target_link_libraries(remmina-plugin-rdp
+    ${REMMINA_COMMON_LIBRARIES} ${FREERDP_LIBRARIES} ${X11_LIBRARIES})
 
 install(TARGETS remmina-plugin-rdp DESTINATION ${REMMINA_PLUGINDIR})
 
-install(FILES 16x16/emblems/remmina-rdp-ssh.png 16x16/emblems/remmina-rdp.png DESTINATION ${APPICON16_EMBLEMS_DIR})
-install(FILES 22x22/emblems/remmina-rdp-ssh.png 22x22/emblems/remmina-rdp.png DESTINATION ${APPICON22_EMBLEMS_DIR})
+install(FILES
+    16x16/emblems/remmina-rdp-ssh.png
+    16x16/emblems/remmina-rdp.png
+    DESTINATION ${APPICON16_EMBLEMS_DIR})
+install(FILES
+    22x22/emblems/remmina-rdp-ssh.png
+    22x22/emblems/remmina-rdp.png
+    DESTINATION ${APPICON22_EMBLEMS_DIR})

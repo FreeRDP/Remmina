@@ -30,6 +30,14 @@
 # version. If you delete this exception statement from all source
 # files in the program, then also delete it here.
 
-INSTALL(PROGRAMS launcher.sh functions.sh remmina_filezilla_sftp.sh remmina_filezilla_sftp_pki.sh remmina_nslookup.sh remmina_ping.sh remmina_traceroute.sh DESTINATION ${REMMINA_EXTERNAL_TOOLS_DIR})
+INSTALL(PROGRAMS
+    launcher.sh
+    functions.sh
+    remmina_filezilla_sftp.sh
+    remmina_filezilla_sftp_pki.sh
+    remmina_nslookup.sh
+    remmina_ping.sh
+    remmina_traceroute.sh
+    DESTINATION ${REMMINA_EXTERNAL_TOOLS_DIR})
 
 

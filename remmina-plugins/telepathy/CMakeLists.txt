@@ -14,7 +14,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
 #
 # In addition, as a special exception, the copyright holders give
@@ -32,8 +32,8 @@
 
 
 set(REMMINA_PLUGIN_TELEPATHY_SRCS
-	telepathy_plugin.c
-	)
+        telepathy_plugin.c
+        )
 
 add_library(remmina-plugin-telepathy MODULE ${REMMINA_PLUGIN_TELEPATHY_SRCS})
 set_target_properties(remmina-plugin-telepathy PROPERTIES PREFIX "")
@@ -42,6 +42,7 @@ set_target_properties(remmina-plugin-telepathy PROPERTIES NO_SONAME 1)
 find_required_package(GTK3)
 
 include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${TELEPATHY_INCLUDE_DIRS})
-target_link_libraries(remmina-plugin-telepathy ${REMMINA_COMMON_LIBRARIES} ${TELEPATHY_LIBRARIES})
+target_link_libraries(remmina-plugin-telepathy ${REMMINA_COMMON_LIBRARIES}
+    ${TELEPATHY_LIBRARIES})
 
 install(TARGETS remmina-plugin-telepathy DESTINATION ${REMMINA_PLUGINDIR})

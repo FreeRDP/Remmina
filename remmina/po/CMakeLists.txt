@@ -14,7 +14,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
 #
 # In addition, as a special exception, the copyright holders give
@@ -30,7 +30,5 @@
 # version. If you delete this exception statement from all source
 # files in the program, then also delete it here.
 
-
 include(GETTEXT)
 gettext(${CMAKE_CURRENT_SOURCE_DIR} "remmina")
-

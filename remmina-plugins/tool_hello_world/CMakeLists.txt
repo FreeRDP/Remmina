@@ -32,8 +32,8 @@
 
 
 set(REMMINA_PLUGIN_SRCS
-	plugin_config.h
-	plugin.c
+        plugin_config.h
+        plugin.c
 )
 
 add_library(remmina-plugin-tool_hello_world MODULE ${REMMINA_PLUGIN_SRCS})
@@ -46,5 +46,11 @@ include_directories(${CMAKE_SOURCE_DIR}/remmina-plugins)
 
 install(TARGETS remmina-plugin-tool_hello_world DESTINATION ${REMMINA_PLUGINDIR})
 
-install(FILES 16x16/emblems/remmina-tool.png 16x16/emblems/remmina-tool.png DESTINATION ${APPICON16_EMBLEMS_DIR})
-install(FILES 22x22/emblems/remmina-tool.png 22x22/emblems/remmina-tool.png DESTINATION ${APPICON22_EMBLEMS_DIR})
+install(FILES
+    16x16/emblems/remmina-tool.png
+    16x16/emblems/remmina-tool.png
+    DESTINATION ${APPICON16_EMBLEMS_DIR})
+install(FILES
+    22x22/emblems/remmina-tool.png
+    22x22/emblems/remmina-tool.png
+    DESTINATION ${APPICON22_EMBLEMS_DIR})
