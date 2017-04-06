@@ -42,7 +42,7 @@
 #include <freerdp/client/cliprdr.h>
 #include <sys/time.h>
 
-#define CLIPBOARD_TRANSFER_WAIT_TIME 2
+#define CLIPBOARD_TRANSFER_WAIT_TIME 0
 
 UINT32 remmina_rdp_cliprdr_get_format_from_gdkatom(GdkAtom atom)
 {
