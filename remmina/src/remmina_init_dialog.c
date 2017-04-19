@@ -88,6 +88,7 @@ static void remmina_init_dialog_init(RemminaInitDialog *dialog)
 
 	gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
 
+	gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER_ALWAYS);
 	gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
 
 	/**** Create the dialog content from here ****/
@@ -838,7 +839,6 @@ gint remmina_init_dialog_serverkey_confirm(RemminaInitDialog *dialog, const gcha
 	return ret;
 }
 
-
 gint remmina_init_dialog_serverkey_unknown(RemminaInitDialog *dialog, const gchar *serverkey)
 {
 	TRACE_CALL("remmina_init_dialog_serverkey_unknown");
@@ -857,4 +857,3 @@ gint remmina_init_dialog_serverkey_changed(RemminaInitDialog *dialog, const gcha
 	        _("WARNING: The server has changed its public key. This means either you are under attack,\n"
 	          "or the administrator has changed the key. The new public key fingerprint is:"));
 }
-

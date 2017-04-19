@@ -2446,6 +2446,7 @@ static void remmina_connection_window_init(RemminaConnectionWindow* cnnwin)
 	priv->kbcaptured = FALSE;
 	priv->mouse_pointer_entered = FALSE;
 
+	gtk_window_set_position (GTK_WINDOW(cnnwin), GTK_WIN_POS_CENTER_ALWAYS);
 	gtk_container_set_border_width(GTK_CONTAINER(cnnwin), 0);
 
 	remmina_widget_pool_register(GTK_WIDGET(cnnwin));
