@@ -105,7 +105,6 @@ parts:
     after:
       - libssh-0.7
       - freerdp
-      - desktop-gtk3
       - indicator-gtk3
       - snapcraft-preload
 
@@ -117,27 +116,25 @@ parts:
       - gcc-multilib
       - g++-multilib
 
-  desktop-integration:
-    plugin: nil
+  desktop-gtk3:
     install: |
       set -x
-      SNAPCRAFT_PRIME=$SNAPCRAFT_STAGE/../prime
-      export XDG_DATA_DIRS=$SNAPCRAFT_PRIME/usr/share:$XDG_DATA_DIRS
-      $SNAPCRAFT_STAGE/usr/bin/update-mime-database $SNAPCRAFT_PRIME/usr/share/mime
-      $SNAPCRAFT_STAGE/usr/bin/gio-querymodules $SNAPCRAFT_PRIME/usr/lib/*/gio/modules
-      $SNAPCRAFT_STAGE/usr/bin/glib-compile-schemas $SNAPCRAFT_PRIME/usr/share/glib-2.0/schemas
+      export XDG_DATA_DIRS=$SNAPCRAFT_PART_INSTALL/usr/share:$XDG_DATA_DIRS
+      $SNAPCRAFT_PART_INSTALL/usr/bin/update-mime-database $SNAPCRAFT_PART_INSTALL/usr/share/mime
+      $SNAPCRAFT_PART_INSTALL/usr/bin/gio-querymodules $SNAPCRAFT_PART_INSTALL/usr/lib/*/gio/modules
+      $SNAPCRAFT_PART_INSTALL/usr/bin/glib-compile-schemas $SNAPCRAFT_PART_INSTALL/usr/share/glib-2.0/schemas
 
-      loaders_dir=$(ls -d $SNAPCRAFT_PRIME/usr/lib/*/gdk-pixbuf-2.0/[0-9]*)
+      loaders_dir=$(ls -d $SNAPCRAFT_PART_INSTALL/usr/lib/*/gdk-pixbuf-2.0/[0-9]*)
       export GDK_PIXBUF_MODULEDIR=$loaders_dir/loaders
-      $SNAPCRAFT_STAGE/usr/lib/*/gdk-pixbuf-2.0/gdk-pixbuf-query-loaders > $loaders_dir/loaders.cache
-      sed -i s,$SNAPCRAFT_PRIME,,g $loaders_dir/loaders.cache
+      $SNAPCRAFT_PART_INSTALL/usr/lib/*/gdk-pixbuf-2.0/gdk-pixbuf-query-loaders > $loaders_dir/loaders.cache
+      sed -i s,$SNAPCRAFT_PART_INSTALL,,g $loaders_dir/loaders.cache
 
-      for theme_dir in $SNAPCRAFT_PRIME/usr/share/icons/*; do
-        if [ -f $SNAPCRAFT_STAGE/usr/sbin/update-icon-caches ]; then
-          $SNAPCRAFT_STAGE/usr/sbin/update-icon-caches "$theme_dir"
+      for theme_dir in $SNAPCRAFT_PART_INSTALL/usr/share/icons/*; do
+        if [ -f $SNAPCRAFT_PART_INSTALL/usr/sbin/update-icon-caches ]; then
+          $SNAPCRAFT_PART_INSTALL/usr/sbin/update-icon-caches "$theme_dir"
         fi
-        if [ -f $SNAPCRAFT_STAGE/usr/sbin/update-icon-cache.gtk2 ]; then
-          $SNAPCRAFT_STAGE/usr/sbin/update-icon-cache.gtk2 "$theme_dir"
+        if [ -f $SNAPCRAFT_PART_INSTALL/usr/sbin/update-icon-cache.gtk2 ]; then
+          $SNAPCRAFT_PART_INSTALL/usr/sbin/update-icon-cache.gtk2 "$theme_dir"
         fi
       done
     after:
