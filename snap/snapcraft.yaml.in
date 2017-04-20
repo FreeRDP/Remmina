@@ -45,6 +45,7 @@ parts:
       - libxv-dev
     configflags:
       - -DCMAKE_BUILD_TYPE=@CMAKE_BUILD_TYPE@
+      - -DCMAKE_INSTALL_PREFIX=/usr
       - -DWITH_WAYLAND=off
       - -DWITH_CLIENT=off
       - -DWITH_SERVER=off
@@ -56,11 +57,6 @@ parts:
       - -DWITH_CUPS=on
       - -DWITH_PCSC=on
       - -DWITH_JPEG=on
-
-    # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
-      - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
-    organize:
-      snap/@SNAP_NAME@/current: .
 
     prime:
       - -usr/include
@@ -75,14 +71,10 @@ parts:
     source-branch: v0-7
     configflags:
       - -DCMAKE_BUILD_TYPE=@CMAKE_BUILD_TYPE@
+      - -DCMAKE_INSTALL_PREFIX=/usr
       - -DWITH_STATIC_LIB=ON
       - -DWITH_GSSAPI=ON
       - -DWITH_NACL=0
-
-    # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
-      - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
-    organize:
-      snap/@SNAP_NAME@/current: .
 
     prime:
       - ./**/libssh*.so.*
@@ -107,22 +99,53 @@ parts:
       - libxkbfile-dev
     configflags:
       - -DCMAKE_BUILD_TYPE=@CMAKE_BUILD_TYPE@
+      - -DCMAKE_INSTALL_PREFIX=/usr
       - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
-
-    # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
-      - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
-    organize:
-      snap/@SNAP_NAME@/current: .
 
     after:
       - libssh-0.7
       - freerdp
       - desktop-gtk3
       - indicator-gtk3
+      - snapcraft-preload
+
+  snapcraft-preload:
+    source: https://github.com/3v1n0/snapcraft-preload.git
+    source-branch: getpwd-support
+    plugin: cmake
+    build-packages:
+      - gcc-multilib
+      - g++-multilib
+
+  desktop-integration:
+    plugin: nil
+    install: |
+      set -x
+      SNAPCRAFT_PRIME=$SNAPCRAFT_STAGE/../prime
+      export XDG_DATA_DIRS=$SNAPCRAFT_PRIME/usr/share:$XDG_DATA_DIRS
+      $SNAPCRAFT_STAGE/usr/bin/update-mime-database $SNAPCRAFT_PRIME/usr/share/mime
+      $SNAPCRAFT_STAGE/usr/bin/gio-querymodules $SNAPCRAFT_PRIME/usr/lib/*/gio/modules
+      $SNAPCRAFT_STAGE/usr/bin/glib-compile-schemas $SNAPCRAFT_PRIME/usr/share/glib-2.0/schemas
+
+      loaders_dir=$(ls -d $SNAPCRAFT_PRIME/usr/lib/*/gdk-pixbuf-2.0/[0-9]*)
+      export GDK_PIXBUF_MODULEDIR=$loaders_dir/loaders
+      $SNAPCRAFT_STAGE/usr/lib/*/gdk-pixbuf-2.0/gdk-pixbuf-query-loaders > $loaders_dir/loaders.cache
+      sed -i s,$SNAPCRAFT_PRIME,,g $loaders_dir/loaders.cache
+
+      for theme_dir in $SNAPCRAFT_PRIME/usr/share/icons/*; do
+        if [ -f $SNAPCRAFT_STAGE/usr/sbin/update-icon-caches ]; then
+          $SNAPCRAFT_STAGE/usr/sbin/update-icon-caches "$theme_dir"
+        fi
+        if [ -f $SNAPCRAFT_STAGE/usr/sbin/update-icon-cache.gtk2 ]; then
+          $SNAPCRAFT_STAGE/usr/sbin/update-icon-cache.gtk2 "$theme_dir"
+        fi
+      done
+    after:
+      - remmina
 
 apps:
   remmina:
-    command: desktop-launch remmina
+    command: snapcraft-preload remmina
     plugs:
       - avahi-observe
       - cups-control
@@ -135,10 +158,10 @@ apps:
       - unity7
 
   winpr-makecert:
-    command: winpr-makecert
+    command: snapcraft-preload winpr-makecert
 
   winpr-hash:
-    command: winpr-hash
+    command: snapcraft-preload winpr-hash
 
 slots:
   remmina-gapp:
