@@ -392,6 +392,7 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 		gtk_widget_show(domain_entry);
 		gtk_grid_attach(GTK_GRID(grid), domain_entry, 1, 3, 2, 1);
 		gtk_entry_set_max_length(GTK_ENTRY(domain_entry), 100);
+		gtk_entry_set_activates_default(GTK_ENTRY(domain_entry), TRUE);
 		if (default_domain && default_domain[0] != '\0')
 		{
 			gtk_entry_set_text(GTK_ENTRY(domain_entry), default_domain);
