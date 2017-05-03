@@ -1180,12 +1180,16 @@ GtkWidget* remmina_main_new(void)
 
 GtkWindow* remmina_main_get_window()
 {
+	printf("Sono in remmina_main_get_window\n");
 	if (!remminamain)
 		return NULL;
+	printf("Sono ancora in remmina_main_get_window, prima di priv\n");
 	if (!remminamain->priv)
 		return NULL;
+	printf("Sono ancora in remmina_main_get_window, dopo priv, prima di initialized\n");
 	if (!remminamain->priv->initialized)
 		return NULL;
+	printf("Sono ancora in remmina_main_get_window, dopo initialized\n");
 	return remminamain->window;
 }
 
