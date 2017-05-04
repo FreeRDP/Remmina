@@ -32,7 +32,7 @@
 # files in the program, then also delete it here.
 
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.2)
 
 set(CMAKE_COLOR_MAKEFILE ON)
 
@@ -117,16 +117,19 @@ if(NOT ${REMMINA_VERSION_SUFFIX} STREQUAL "")
 endif()
 
 
-include(GetGitRevisionDescription)
-git_get_exact_tag(GIT_REVISION --tags --always)
-if(${GIT_REVISION} STREQUAL "n/a")
-        git_rev_parse(GIT_REVISION --short)
+find_package(Git)
+if(GIT_FOUND)
+    include(GetGitRevisionDescription)
+    git_get_exact_tag(REMMINA_GIT_REVISION --tags --always)
+    if(${REMMINA_GIT_REVISION} STREQUAL "n/a")
+        git_rev_parse(REMMINA_GIT_REVISION --short)
+    endif()
 endif()
 
-if(NOT GIT_REVISION OR ${GIT_REVISION} STREQUAL "n/a")
-    set(GIT_REVISION ${REMMINA_VERSION_SUFFIX})
+if(NOT REMMINA_GIT_REVISION OR ${REMMINA_GIT_REVISION} STREQUAL "n/a")
+    set(REMMINA_GIT_REVISION ${REMMINA_VERSION_SUFFIX})
 endif()
-message(STATUS "Git Revision ${GIT_REVISION}")
+message(STATUS "Git Revision ${REMMINA_GIT_REVISION}")
 
 if(NOT UNIQUE_APPNAME)
     set(UNIQUE_APPNAME "org.Remmina")

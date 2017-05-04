@@ -38,6 +38,7 @@
 
 #include "common/remmina_plugin.h"
 #include <freerdp/freerdp.h>
+#include <freerdp/version.h>
 #include <freerdp/channels/channels.h>
 #include <freerdp/codec/color.h>
 #include <freerdp/codec/rfx.h>
@@ -58,7 +59,8 @@ typedef struct rf_context rfContext;
 #define DEFAULT_QUALITY_2	0x01
 #define DEFAULT_QUALITY_9	0x80
 
-#define REMMINA_PLUGIN_RDP_VERSION  "Remmina RDP: 1.2.0-rcgit-18 (git d34dbbe), FreeRDP: 2.0.0-dev (git 8d0809cf2)"
+#define REMMINA_PLUGIN_RDP_VERSION  "Remmina: " VERSION " (git " REMMINA_GIT_REVISION \
+	                         "), FreeRDP: " FREERDP_VERSION_FULL " (git " GIT_REVISION ")"
 
 extern RemminaPluginService* remmina_plugin_service;
 
