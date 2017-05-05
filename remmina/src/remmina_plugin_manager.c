@@ -281,6 +281,32 @@ void remmina_plugin_manager_for_each_plugin(RemminaPluginType type, RemminaPlugi
 	}
 }
 
+/* A copy of remmina_plugin_manager_show and remmina_plugin_manager_show_for_each
+ * that uses GListStore instead of GtkListStore.
+ * This is because we want to print the list of plugins, and their versions, to the standard output
+ * with the remmina command line option --full-version
+ * TODO: Investigate to use only GListStore and than pass the elements to be shown to 2 separate
+ *       functions */
+static gboolean remmina_plugin_manager_show_for_each_stdout(RemminaPlugin *plugin, GListStore *store)
+{
+	TRACE_CALL("remmina_plugin_manager_show_for_each_stdout");
+
+	g_print("%-20s%-16s%-10s\n", plugin->name,
+			_(remmina_plugin_type_name[plugin->type]),
+			g_dgettext(plugin->domain, plugin->version));
+	return FALSE;
+}
+
+void remmina_plugin_manager_show_stdout()
+{
+	TRACE_CALL("remmina_plugin_manager_show_stdout");
+	GListStore *store;
+
+	g_print("%-20s%-16s%-10s\n", "NAME", "TYPE", "PLUGIN AND LIBRARY VERSION");
+	store = g_list_store_new(G_TYPE_OBJECT);
+	g_ptr_array_foreach(remmina_plugin_table, (GFunc) remmina_plugin_manager_show_for_each_stdout, store);
+}
+
 static gboolean remmina_plugin_manager_show_for_each(RemminaPlugin *plugin, GtkListStore *store)
 {
 	TRACE_CALL("remmina_plugin_manager_show_for_each");

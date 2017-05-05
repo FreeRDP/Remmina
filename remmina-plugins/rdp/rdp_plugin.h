@@ -59,8 +59,8 @@ typedef struct rf_context rfContext;
 #define DEFAULT_QUALITY_2	0x01
 #define DEFAULT_QUALITY_9	0x80
 
-#define REMMINA_PLUGIN_RDP_VERSION  "Remmina: " VERSION " (git " REMMINA_GIT_REVISION \
-	                         "), FreeRDP: " FREERDP_VERSION_FULL " (git " GIT_REVISION ")"
+#define REMMINA_PLUGIN_RDP_VERSION  "RDP Plugin: " VERSION " (git " REMMINA_GIT_REVISION \
+	                         "), FreeRDP lib: " FREERDP_VERSION_FULL " (git " GIT_REVISION ")"
 
 extern RemminaPluginService* remmina_plugin_service;
 

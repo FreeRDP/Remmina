@@ -180,7 +180,9 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		}
 		else
 		{
-			g_print ("%s - Version %s (git %s)\n", g_get_application_name (), VERSION, REMMINA_GIT_REVISION);
+			g_print("\n%s - Version %s (git %s)\n\n", g_get_application_name (), VERSION, REMMINA_GIT_REVISION);
+
+			remmina_plugin_manager_show_stdout();
 			remmina_exec_command(REMMINA_COMMAND_EXIT, NULL);
 		}
 
