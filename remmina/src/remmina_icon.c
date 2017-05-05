@@ -478,7 +478,7 @@ void remmina_icon_init(void)
 #endif
 	}
 	strcat(msg, "\n");
-	fputs(msg, stdout);
+	fputs(msg, stderr);
 
 	if (!remmina_icon.icon && !remmina_pref.disable_tray_icon)
 	{

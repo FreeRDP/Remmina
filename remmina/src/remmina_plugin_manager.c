@@ -291,9 +291,10 @@ static gboolean remmina_plugin_manager_show_for_each_stdout(RemminaPlugin *plugi
 {
 	TRACE_CALL("remmina_plugin_manager_show_for_each_stdout");
 
-	g_print("%-20s%-16s%-10s\n", plugin->name,
+	g_print("%-20s%-16s%-64s%-10s\n", plugin->name,
 			_(remmina_plugin_type_name[plugin->type]),
-			g_dgettext(plugin->domain, plugin->version));
+			g_dgettext(plugin->domain, plugin->description),
+			plugin->version);
 	return FALSE;
 }
 
@@ -302,7 +303,7 @@ void remmina_plugin_manager_show_stdout()
 	TRACE_CALL("remmina_plugin_manager_show_stdout");
 	GListStore *store;
 
-	g_print("%-20s%-16s%-10s\n", "NAME", "TYPE", "PLUGIN AND LIBRARY VERSION");
+	g_print("%-20s%-16s%-64s%-10s\n", "NAME", "TYPE", "DESCRIPTION", "PLUGIN AND LIBRARY VERSION");
 	store = g_list_store_new(G_TYPE_OBJECT);
 	g_ptr_array_foreach(remmina_plugin_table, (GFunc) remmina_plugin_manager_show_for_each_stdout, store);
 }
