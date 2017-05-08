@@ -1083,7 +1083,11 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 				case STATUS_ACCOUNT_EXPIRED:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount is expired."),
 							rfi->settings->ServerHostname );
-					break;;
+					break;
+				case STATUS_PASSWORD_EXPIRED:
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nPassword expired."),
+							rfi->settings->ServerHostname );
+					break;
 				case STATUS_ACCOUNT_DISABLED:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount is disabled."),
 							rfi->settings->ServerHostname );
@@ -1097,7 +1101,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 					break;
 				default:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
-
 					break;
 			}
 
