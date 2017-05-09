@@ -282,11 +282,39 @@ void remmina_plugin_manager_for_each_plugin(RemminaPluginType type, RemminaPlugi
 	}
 }
 
+/* A copy of remmina_plugin_manager_show and remmina_plugin_manager_show_for_each
+ * This is because we want to print the list of plugins, and their versions, to the standard output
+ * with the remmina command line option --full-version instead of using the plugins widget
+ * TODO: Investigate to use only GListStore and than pass the elements to be shown to 2 separate
+ *       functions
+ * WARNING: GListStore is supported only from GLib 2.44 */
+static gboolean remmina_plugin_manager_show_for_each_stdout(RemminaPlugin *plugin)
+{
+	TRACE_CALL("remmina_plugin_manager_show_for_each_stdout");
+
+	g_print("%-20s%-16s%-64s%-10s\n", plugin->name,
+			_(remmina_plugin_type_name[plugin->type]),
+			g_dgettext(plugin->domain, plugin->description),
+			plugin->version);
+	return FALSE;
+}
+
 void remmina_plugin_manager_show_stdout()
 {
 	TRACE_CALL("remmina_plugin_manager_show_stdout");
 	g_print("%-20s%-16s%-64s%-10s\n", "NAME", "TYPE", "DESCRIPTION", "PLUGIN AND LIBRARY VERSION");
 	g_ptr_array_foreach(remmina_plugin_table, (GFunc) remmina_plugin_manager_show_for_each_stdout, NULL);
+}
+
+static gboolean remmina_plugin_manager_show_for_each(RemminaPlugin *plugin, GtkListStore *store)
+{
+	TRACE_CALL("remmina_plugin_manager_show_for_each");
+	GtkTreeIter iter;
+
+	gtk_list_store_append(store, &iter);
+	gtk_list_store_set(store, &iter, 0, plugin->name, 1, _(remmina_plugin_type_name[plugin->type]), 2,
+	                   g_dgettext(plugin->domain, plugin->description), 3, plugin->version, -1);
+	return FALSE;
 }
 
 void remmina_plugin_manager_show(GtkWindow *parent)
@@ -341,34 +369,6 @@ void remmina_plugin_manager_show(GtkWindow *parent)
 	gtk_tree_view_append_column(GTK_TREE_VIEW(tree), column);
 
 	gtk_widget_show(dialog);
-}
-
-/* A copy of remmina_plugin_manager_show and remmina_plugin_manager_show_for_each
- * This is because we want to print the list of plugins, and their versions, to the standard output
- * with the remmina command line option --full-version, instead of using the plugin widget
- * TODO: Investigate to use only GListStore and than pass the elements to be shown to 2 separate
- *       functions
- * WARNING: GListStore is supported only from GLib 2.44 */
-static gboolean remmina_plugin_manager_show_for_each_stdout(RemminaPlugin *plugin)
-{
-	TRACE_CALL("remmina_plugin_manager_show_for_each_stdout");
-
-	g_print("%-20s%-16s%-64s%-10s\n", plugin->name,
-			_(remmina_plugin_type_name[plugin->type]),
-			g_dgettext(plugin->domain, plugin->description),
-			plugin->version);
-	return FALSE;
-}
-
-static gboolean remmina_plugin_manager_show_for_each(RemminaPlugin *plugin, GtkListStore *store)
-{
-	TRACE_CALL("remmina_plugin_manager_show_for_each");
-	GtkTreeIter iter;
-
-	gtk_list_store_append(store, &iter);
-	gtk_list_store_set(store, &iter, 0, plugin->name, 1, _(remmina_plugin_type_name[plugin->type]), 2,
-	                   g_dgettext(plugin->domain, plugin->description), 3, plugin->version, -1);
-	return FALSE;
 }
 
 RemminaFilePlugin* remmina_plugin_manager_get_import_file_handler(const gchar *file)
