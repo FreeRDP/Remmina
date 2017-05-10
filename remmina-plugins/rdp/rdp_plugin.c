@@ -1464,7 +1464,7 @@ static RemminaProtocolPlugin remmina_rdp =
 	"RDP",                                        // Name
 	N_("RDP - Remote Desktop Protocol"),          // Description
 	GETTEXT_PACKAGE,                              // Translation domain
-	VERSION,                                      // Version number
+	REMMINA_PLUGIN_RDP_VERSION,                   // Version number
 	"remmina-rdp",                                // Icon for normal connection
 	"remmina-rdp-ssh",                            // Icon for SSH connection
 	remmina_rdp_basic_settings,                   // Array for basic settings
@@ -1487,7 +1487,7 @@ static RemminaFilePlugin remmina_rdpf =
 	"RDPF",                                       // Name
 	N_("RDP - RDP File Handler"),                 // Description
 	GETTEXT_PACKAGE,                              // Translation domain
-	VERSION,                                      // Version number
+	REMMINA_PLUGIN_RDP_VERSION,                                      // Version number
 	remmina_rdp_file_import_test,                 // Test import function
 	remmina_rdp_file_import,                      // Import function
 	remmina_rdp_file_export_test,                 // Test export function
@@ -1502,7 +1502,7 @@ static RemminaPrefPlugin remmina_rdps =
 	"RDPS",                                       // Name
 	N_("RDP - Preferences"),                      // Description
 	GETTEXT_PACKAGE,                              // Translation domain
-	VERSION,                                      // Version number
+	REMMINA_PLUGIN_RDP_VERSION,                                      // Version number
 	"RDP",                                        // Label
 	remmina_rdp_settings_new                      // Preferences body function
 };

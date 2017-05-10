@@ -84,6 +84,7 @@ static GOptionEntry remmina_options[] =
 	{ "protocol", 't', 0, G_OPTION_ARG_STRING, NULL, N_("Use default protocol (for --new)"), "PROTOCOL" },
 	{ "icon", 'i', 0, G_OPTION_ARG_NONE, NULL, N_("Start as tray icon"), NULL },
 	{ "version", 'v', 0, G_OPTION_ARG_NONE, NULL, N_("Show the application's version"), NULL },
+	{ "full-version", 'V', 0, G_OPTION_ARG_NONE, NULL, N_("Show the application's version, including the pulgin versions"), NULL },
 	{ NULL }
 };
 
@@ -176,6 +177,18 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 		executed = TRUE;
 	}
 
+	if (g_variant_dict_lookup_value(opts, "version", NULL))
+	{
+		remmina_exec_command(REMMINA_COMMAND_VERSION, NULL);
+		executed = TRUE;
+	}
+
+	if (g_variant_dict_lookup_value(opts, "full-version", NULL))
+	{
+		remmina_exec_command(REMMINA_COMMAND_FULL_VERSION, NULL);
+		executed = TRUE;
+	}
+
 	if (!executed)
 	{
 		remmina_exec_command(REMMINA_COMMAND_MAIN, NULL);
@@ -209,11 +222,8 @@ static gint remmina_on_local_cmdline (GApplication *app, GVariantDict *options, 
 
 	int status = -1;
 
-	if (g_variant_dict_lookup_value(options, "version", NULL))
-	{
-		remmina_exec_command(REMMINA_COMMAND_VERSION, NULL);
-		status = 1;
-	}
+	/* Here you handle any command line options that you want to be executed
+	 * from command line, one time, and than exit */
 
 	return status;
 }

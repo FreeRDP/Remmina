@@ -164,9 +164,30 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		}
 		else
 		{
-			g_print ("%s - Version %s (git %s)\n", g_get_application_name (), VERSION, GIT_REVISION);
+			g_print ("%s - Version %s (git %s)\n", g_get_application_name (), VERSION, REMMINA_GIT_REVISION);
+			/* As we do not use the "handle-local-options" signal, we have to exit Remmina */
+			remmina_exec_command(REMMINA_COMMAND_EXIT, NULL);
 		}
+
 		break;
+
+	case REMMINA_COMMAND_FULL_VERSION:
+		mainwindow = remmina_main_get_window();
+		if (mainwindow)
+		{
+			/* Show th widget with the list of plugins and versions */
+			remmina_plugin_manager_show(mainwindow);
+		}
+		else
+		{
+			g_print("\n%s - Version %s (git %s)\n\n", g_get_application_name (), VERSION, REMMINA_GIT_REVISION);
+
+			remmina_plugin_manager_show_stdout();
+			remmina_exec_command(REMMINA_COMMAND_EXIT, NULL);
+		}
+
+		break;
+
 
 	case REMMINA_COMMAND_PLUGIN:
 		plugin = (RemminaEntryPlugin*) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_ENTRY, data);
