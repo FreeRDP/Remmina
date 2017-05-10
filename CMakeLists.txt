@@ -116,14 +116,10 @@ if(NOT ${REMMINA_VERSION_SUFFIX} STREQUAL "")
         set(REMMINA_VERSION "${REMMINA_VERSION}-${REMMINA_VERSION_SUFFIX}")
 endif()
 
-
-find_package(Git)
-if(GIT_FOUND)
-    include(GetGitRevisionDescription)
-    git_get_exact_tag(REMMINA_GIT_REVISION --tags --always)
-    if(${REMMINA_GIT_REVISION} STREQUAL "n/a")
-        git_rev_parse(REMMINA_GIT_REVISION --short)
-    endif()
+include(GetGitRevisionDescription)
+git_get_exact_tag(REMMINA_GIT_REVISION --tags --always)
+if(${REMMINA_GIT_REVISION} STREQUAL "n/a")
+    git_rev_parse(REMMINA_GIT_REVISION --short)
 endif()
 
 if(NOT REMMINA_GIT_REVISION OR ${REMMINA_GIT_REVISION} STREQUAL "n/a")
