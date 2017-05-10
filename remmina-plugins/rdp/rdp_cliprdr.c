@@ -546,7 +546,7 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionDa
 	} else {
 		clipboard->srv_clip_data_wait = SCDW_ASYNCWAIT;
 		if ( rc == ETIMEDOUT ) {
-			remmina_plugin_service->log_printf("[RDP] Clipboard data has not been transfered from the server in %d seconds. Try to paste later.\n",
+			remmina_plugin_service->log_printf("[RDP] Clipboard data has not been transferred from the server in %d seconds. Try to paste later.\n",
 				CLIPBOARD_TRANSFER_WAIT_TIME);
 		}
 		else {
