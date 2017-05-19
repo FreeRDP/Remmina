@@ -444,6 +444,41 @@ static void remmina_file_editor_create_password(RemminaFileEditor* gfe, GtkWidge
 	}
 }
 
+static GtkWidget* remmina_file_editor_create_cus_password(RemminaFileEditor* gfe, GtkWidget* grid,
+        gint row, gint col, const gchar* label, const gchar* value)
+{
+	TRACE_CALL("remmina_file_editor_create_custom_pwd");
+	GtkWidget* widget;
+	gchar* s;
+
+	widget = gtk_label_new(label);
+	gtk_widget_show(widget);
+#if GTK_CHECK_VERSION(3, 12, 0)
+	gtk_widget_set_margin_end (widget, 40);
+#else
+	gtk_widget_set_margin_right (widget, 40);
+#endif
+	gtk_widget_set_valign (widget, GTK_ALIGN_START);
+	gtk_widget_set_halign (widget, GTK_ALIGN_START);
+	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
+
+	widget = gtk_entry_new();
+	gtk_widget_show(widget);
+	gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 1, 1);
+	gtk_entry_set_max_length(GTK_ENTRY(widget), 100);
+	gtk_entry_set_visibility(GTK_ENTRY(widget), FALSE);
+	gfe->priv->password_entry = widget;
+
+	s = remmina_file_get_secret(gfe->priv->remmina_file, value);
+	if (s)
+	{
+		gtk_entry_set_text(GTK_ENTRY(widget), value);
+		g_free(s);
+	}
+
+	return widget;
+}
+
 static void remmina_file_editor_update_resolution(GtkWidget* widget, RemminaFileEditor* gfe)
 {
 	TRACE_CALL("remmina_file_editor_update_resolution");
@@ -665,6 +700,14 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 			remmina_file_editor_create_password(gfe, grid, grid_row);
 			break;
 
+		case REMMINA_PROTOCOL_SETTING_TYPE_CUS_PASSWORD:
+			widget = remmina_file_editor_create_cus_password(gfe, grid, grid_row, 0,
+			         g_dgettext(priv->plugin->domain, settings->label),
+			         remmina_file_get_string(priv->remmina_file, settings->name));
+			g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
+			grid_row++;
+			break;
+
 		case REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION:
 			remmina_file_editor_create_resolution(gfe, settings, grid, grid_row);
 			grid_row++;
@@ -682,8 +725,8 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 
 		case REMMINA_PROTOCOL_SETTING_TYPE_TEXT:
 			widget = remmina_file_editor_create_text(gfe, grid, grid_row, 0,
-			         g_dgettext(priv->plugin->domain, settings->label),
-			         remmina_file_get_string(priv->remmina_file, settings->name));
+					g_dgettext(priv->plugin->domain, settings->label),
+					remmina_file_get_string(priv->remmina_file, settings->name));
 			g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
 			break;
 
