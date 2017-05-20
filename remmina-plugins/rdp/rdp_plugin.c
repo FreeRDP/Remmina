@@ -802,6 +802,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->GatewayPort = gateway_port;
 		rfi->settings->GatewayEnabled = TRUE;
 		rfi->settings->GatewayUseSameCredentials = TRUE;
+		g_free(s);
 	}
 	/* Remote Desktop Gateway domain */
 	if (remmina_plugin_service->file_get_string(remminafile, "gateway_domain"))
@@ -818,7 +819,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	/* Remote Desktop Gateway password */
 	if (remmina_plugin_service->file_get_string(remminafile, "gateway_password"))
 	{
-		rfi->settings->GatewayPassword = strdup(remmina_plugin_service->file_get_string(remminafile, "gateway_password"));
+		s = remmina_plugin_service->file_get_secret(remminafile, "gateway_password");
+		if (s)
+		{
+			rfi->settings->GatewayPassword = strdup(s);
+			g_free(s);
+		}
 		rfi->settings->GatewayUseSameCredentials = FALSE;
 	}
 	/* If no different credentials were provided for the Remote Desktop Gateway
@@ -835,7 +841,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	/* Remote Desktop Gateway usage */
 	if (rfi->settings->GatewayEnabled)
 		freerdp_set_gateway_usage_method(rfi->settings,
-			remmina_plugin_service->file_get_int(remminafile, "gateway_usage", FALSE) ? TSC_PROXY_MODE_DETECT : TSC_PROXY_MODE_DIRECT);
+				remmina_plugin_service->file_get_int(remminafile, "gateway_usage", FALSE) ? TSC_PROXY_MODE_DETECT : TSC_PROXY_MODE_DIRECT);
 	/* Certificate ignore */
 	rfi->settings->IgnoreCertificate = remmina_plugin_service->file_get_int(remminafile, "cert_ignore", 0);
 

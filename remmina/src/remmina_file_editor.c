@@ -472,7 +472,7 @@ static GtkWidget* remmina_file_editor_create_cus_password(RemminaFileEditor* gfe
 	s = remmina_file_get_secret(gfe->priv->remmina_file, value);
 	if (s)
 	{
-		gtk_entry_set_text(GTK_ENTRY(widget), value);
+		gtk_entry_set_text(GTK_ENTRY(widget), strdup(s));
 		g_free(s);
 	}
 
