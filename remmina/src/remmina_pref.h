@@ -170,6 +170,8 @@ typedef struct _RemminaPref
 
 	/* Remmina birthday julian format*/
 	guint32 bdate;
+
+	gboolean disable_floating_toolbar;
 } RemminaPref;
 
 #define DEFAULT_SSH_PARSECONFIG TRUE

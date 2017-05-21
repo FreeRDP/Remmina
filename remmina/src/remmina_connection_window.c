@@ -3004,6 +3004,11 @@ static void remmina_connection_holder_create_overlay_ftb_overlay(RemminaConnecti
 {
 	TRACE_CALL("remmina_connection_holder_create_overlay_ftb_overlay");
 
+	if (remmina_pref.disable_floating_toolbar)
+	{
+		return;
+	}
+
 	GtkWidget* revealer;
 	RemminaConnectionWindowPriv* priv;
 	priv = cnnhld->cnnwin->priv;

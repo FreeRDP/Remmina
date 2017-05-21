@@ -291,6 +291,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.hide_toolbar = FALSE;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "disable_floating_toolbar", NULL))
+		remmina_pref.disable_floating_toolbar = g_key_file_get_boolean(gkeyfile, "remmina_pref", "disable_floating_toolbar", NULL);
+	else
+		remmina_pref.disable_floating_toolbar = FALSE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "hide_statusbar", NULL))
 		remmina_pref.hide_statusbar = g_key_file_get_boolean(gkeyfile, "remmina_pref", "hide_statusbar", NULL);
 	else
@@ -646,6 +651,7 @@ void remmina_pref_save(void)
 	g_key_file_set_boolean (gkeyfile, "remmina_pref", "vte_system_colors", remmina_pref.vte_system_colors);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "vte_foreground_color", remmina_pref.vte_foreground_color ? remmina_pref.vte_foreground_color : "");
 	g_key_file_set_string(gkeyfile, "remmina_pref", "vte_background_color", remmina_pref.vte_background_color ? remmina_pref.vte_background_color : "");
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "disable_floating_toolbar", remmina_pref.disable_floating_toolbar);
 
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
 	g_file_set_contents(remmina_pref_file, content, length, NULL);
