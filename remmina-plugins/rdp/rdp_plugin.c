@@ -817,15 +817,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->GatewayUseSameCredentials = FALSE;
 	}
 	/* Remote Desktop Gateway password */
-	if (remmina_plugin_service->file_get_string(remminafile, "gateway_password"))
+	s = remmina_plugin_service->file_get_secret(remminafile, "gateway_password");
+	if(s)
 	{
-		s = remmina_plugin_service->file_get_secret(remminafile, "gateway_password");
-		if (s)
-		{
-			rfi->settings->GatewayPassword = strdup(s);
-			g_free(s);
-		}
+		rfi->settings->GatewayPassword = strdup(s);
 		rfi->settings->GatewayUseSameCredentials = FALSE;
+		g_free(s);
 	}
 	/* If no different credentials were provided for the Remote Desktop Gateway
 	 * use the same authentication credentials for the host */
