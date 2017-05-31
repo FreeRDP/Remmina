@@ -1371,7 +1371,7 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "domain", N_("Domain"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "gateway_server", N_("RD Gateway server"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "gateway_username", N_("RD Gateway username"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CUS_PASSWORD, "gateway_password",  N_("RD Gaeteway password"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CUS_PASSWORD, "gateway_password",  N_("RD Gateway password"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "gateway_domain", N_("RD Gateway domain"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color depth"), FALSE, colordepth_list, NULL },
