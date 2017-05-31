@@ -475,7 +475,6 @@ static GtkWidget* remmina_file_editor_create_cus_password(RemminaFileEditor* gfe
 		gtk_entry_set_text(GTK_ENTRY(widget), strdup(s));
 		g_free(s);
 	}
-
 	return widget;
 }
 
@@ -703,8 +702,8 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 
 		case REMMINA_PROTOCOL_SETTING_TYPE_CUS_PASSWORD:
 			widget = remmina_file_editor_create_cus_password(gfe, grid, grid_row, 0,
-			         g_dgettext(priv->plugin->domain, settings->label),
-			         settings->name);
+					g_dgettext(priv->plugin->domain, settings->label),
+					remmina_file_get_string(priv->remmina_file, settings->name));
 			g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
 			grid_row++;
 			break;
@@ -729,6 +728,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 					g_dgettext(priv->plugin->domain, settings->label),
 					remmina_file_get_string(priv->remmina_file, settings->name));
 			g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
+			grid_row++;
 			break;
 
 		case REMMINA_PROTOCOL_SETTING_TYPE_SELECT:
