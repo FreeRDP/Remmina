@@ -122,40 +122,6 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 	return True;
 }
 
-static gboolean remmina_rdp_check_host_resolution(RemminaProtocolWidget *gp, char *hostname, int tcpport)
-{
-	TRACE_CALL("remmina_rdp_check_host_resolution");
-	struct addrinfo hints;
-	struct addrinfo* result = NULL;
-	int status;
-	char service[16];
-
-	if (hostname[0] == 0) {
-		remmina_plugin_service->protocol_plugin_set_error(gp, _("The server name cannot be blank."));
-		return FALSE;
-	}
-
-	memset(&hints, 0, sizeof(struct addrinfo));
-	hints.ai_family = AF_UNSPEC;
-	hints.ai_socktype = SOCK_STREAM;
-	hints.ai_flags = 0;
-	hints.ai_protocol = 0;
-
-	sprintf(service, "%d", tcpport);
-	status = getaddrinfo(hostname, service, &hints, &result);
-	if (status != 0) {
-		remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to find the address of RDP server %s."),
-			hostname);
-		if (result)
-			freeaddrinfo(result);
-		return FALSE;
-	}
-
-	freeaddrinfo(result);
-	return TRUE;
-
-}
-
 static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_rdp_tunnel_init");
@@ -194,18 +160,6 @@ static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget* gp)
 			remmina_plugin_service->get_server_port(cert_hostport, 3389, &cert_host, &cert_port);
 		}
 
-	} else {
-		/* When SSH tunnel is not enabled, we can verify that host
-		 * resolves correctly via DNS */
-		if (!remmina_plugin_service->file_get_string(remminafile, "gateway_server")) {
-			/* When SSH tunnel and gateway are disabled, we can verify that host
-			* resolves correctly via DNS */
-			if (!remmina_rdp_check_host_resolution(gp, host, port)) {
-				g_free(host);
-				g_free(hostport);
-				return FALSE;
-			}
-		}
 	}
 
 	if (!rfi->is_reconnecting) {
@@ -1098,6 +1052,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 					break;
 				case FREERDP_ERROR_CONNECT_FAILED:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to RDP server %s failed."), rfi->settings->ServerHostname );
+					break;
+				case FREERDP_ERROR_DNS_NAME_NOT_FOUND:
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to find the address of RDP server %s."), rfi->settings->ServerHostname );
 					break;
 				default:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
