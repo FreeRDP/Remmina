@@ -445,7 +445,7 @@ static void remmina_file_editor_create_password(RemminaFileEditor* gfe, GtkWidge
 }
 
 static GtkWidget* remmina_file_editor_create_cus_password(RemminaFileEditor* gfe, GtkWidget* grid,
-        gint row, gint col, const gchar* label, const gchar* setting)
+        gint row, gint col, const gchar* label, const gchar* value)
 {
 	TRACE_CALL("remmina_file_editor_create_custom_pwd");
 	GtkWidget* widget;
@@ -469,11 +469,14 @@ static GtkWidget* remmina_file_editor_create_cus_password(RemminaFileEditor* gfe
 	gtk_entry_set_visibility(GTK_ENTRY(widget), FALSE);
 	gfe->priv->password_entry = widget;
 
-	s = remmina_file_get_secret(gfe->priv->remmina_file, setting);
-	if (s)
+	if (value)
 	{
-		gtk_entry_set_text(GTK_ENTRY(widget), strdup(s));
-		g_free(s);
+		s = remmina_file_get_secret(gfe->priv->remmina_file, value);
+		if (s)
+		{
+			gtk_entry_set_text(GTK_ENTRY(widget), strdup(s));
+			g_free(s);
+		}
 	}
 	return widget;
 }
