@@ -78,7 +78,7 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 	                 gp);
 
 	g_object_set(gpdata->session,
-	             "password", remmina_plugin_service->file_get_secret(remminafile, "password"),
+	             "password", g_strdup(remmina_plugin_service->file_get_string(remminafile, "password")),
 	             "read-only", remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
 	             "enable-audio", remmina_plugin_service->file_get_int(remminafile, "enableaudio", FALSE),
 	             "enable-smartcard", remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE),

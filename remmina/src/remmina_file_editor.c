@@ -106,7 +106,6 @@ struct _RemminaFileEditorPriv
 	GtkWidget* config_container;
 
 	GtkWidget* server_combo;
-	GtkWidget* password_entry;
 	GtkWidget* resolution_auto_radio;
 	GtkWidget* resolution_custom_radio;
 	GtkWidget* resolution_custom_combo;
@@ -417,39 +416,11 @@ static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const Remm
 	}
 }
 
-static void remmina_file_editor_create_password(RemminaFileEditor* gfe, GtkWidget* grid, gint row)
-{
-	TRACE_CALL("remmina_file_editor_create_password");
-	GtkWidget* widget;
-	gchar* s;
-
-	widget = gtk_label_new(_("Password"));
-	gtk_widget_show(widget);
-	gtk_widget_set_valign (widget, GTK_ALIGN_START);
-	gtk_widget_set_halign (widget, GTK_ALIGN_START);
-	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
-
-	widget = gtk_entry_new();
-	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 1, 1);
-	gtk_entry_set_max_length(GTK_ENTRY(widget), 100);
-	gtk_entry_set_visibility(GTK_ENTRY(widget), FALSE);
-	gfe->priv->password_entry = widget;
-
-	s = remmina_file_get_secret(gfe->priv->remmina_file, "password");
-	if (s)
-	{
-		gtk_entry_set_text(GTK_ENTRY(widget), s);
-		g_free(s);
-	}
-}
-
-static GtkWidget* remmina_file_editor_create_cus_password(RemminaFileEditor* gfe, GtkWidget* grid,
+static GtkWidget* remmina_file_editor_create_password(RemminaFileEditor* gfe, GtkWidget* grid,
         gint row, gint col, const gchar* label, const gchar* value)
 {
 	TRACE_CALL("remmina_file_editor_create_custom_pwd");
 	GtkWidget* widget;
-	gchar* s;
 
 	widget = gtk_label_new(label);
 	gtk_widget_show(widget);
@@ -467,16 +438,10 @@ static GtkWidget* remmina_file_editor_create_cus_password(RemminaFileEditor* gfe
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 1, 1);
 	gtk_entry_set_max_length(GTK_ENTRY(widget), 100);
 	gtk_entry_set_visibility(GTK_ENTRY(widget), FALSE);
-	gfe->priv->password_entry = widget;
 
 	if (value)
 	{
-		s = remmina_file_get_secret(gfe->priv->remmina_file, value);
-		if (s)
-		{
-			gtk_entry_set_text(GTK_ENTRY(widget), strdup(s));
-			g_free(s);
-		}
+		gtk_entry_set_text(GTK_ENTRY(widget), value);
 	}
 	return widget;
 }
@@ -689,10 +654,12 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 	gint grid_row = 0;
 	gint grid_column = 0;
 	gchar** strarr;
+	gchar* setting_name;
 
 
 	while (settings->type != REMMINA_PROTOCOL_SETTING_TYPE_END)
 	{
+		setting_name = (gchar *)(remmina_plugin_manager_get_canonical_setting_name(settings));
 		switch (settings->type)
 		{
 		case REMMINA_PROTOCOL_SETTING_TYPE_SERVER:
@@ -700,14 +667,10 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 			break;
 
 		case REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD:
-			remmina_file_editor_create_password(gfe, grid, grid_row);
-			break;
-
-		case REMMINA_PROTOCOL_SETTING_TYPE_CUS_PASSWORD:
-			widget = remmina_file_editor_create_cus_password(gfe, grid, grid_row, 0,
+			widget = remmina_file_editor_create_password(gfe, grid, grid_row, 0,
 					g_dgettext(priv->plugin->domain, settings->label),
-					remmina_file_get_string(priv->remmina_file, settings->name));
-			g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
+					remmina_file_get_string(priv->remmina_file, setting_name));
+			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			grid_row++;
 			break;
 
@@ -729,8 +692,8 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 		case REMMINA_PROTOCOL_SETTING_TYPE_TEXT:
 			widget = remmina_file_editor_create_text(gfe, grid, grid_row, 0,
 					g_dgettext(priv->plugin->domain, settings->label),
-					remmina_file_get_string(priv->remmina_file, settings->name));
-			g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
+					remmina_file_get_string(priv->remmina_file, setting_name));
+			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			grid_row++;
 			break;
 
@@ -738,39 +701,39 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 			widget = remmina_file_editor_create_select(gfe, grid, grid_row, 0,
 			         g_dgettext(priv->plugin->domain, settings->label),
 			         (const gpointer*) settings->opt1,
-			         remmina_file_get_string(priv->remmina_file, settings->name));
-			g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
+			         remmina_file_get_string(priv->remmina_file, setting_name));
+			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			break;
 
 		case REMMINA_PROTOCOL_SETTING_TYPE_COMBO:
 			widget = remmina_file_editor_create_combo(gfe, grid, grid_row, 0,
 			         g_dgettext(priv->plugin->domain, settings->label),
 			         (const gchar*) settings->opt1,
-			         remmina_file_get_string(priv->remmina_file, settings->name));
-			g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
+			         remmina_file_get_string(priv->remmina_file, setting_name));
+			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			break;
 
 		case REMMINA_PROTOCOL_SETTING_TYPE_CHECK:
 			widget = remmina_file_editor_create_check(gfe, grid, grid_row, grid_column,
 			         g_dgettext (priv->plugin->domain, settings->label),
-			         remmina_file_get_int (priv->remmina_file, (gchar*) settings->name, FALSE));
-			g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
+			         remmina_file_get_int (priv->remmina_file, setting_name, FALSE));
+			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			break;
 
 		case REMMINA_PROTOCOL_SETTING_TYPE_FILE:
 			widget = remmina_file_editor_create_chooser (gfe, grid, grid_row, 0,
 			         g_dgettext (priv->plugin->domain, settings->label),
-			         remmina_file_get_string (priv->remmina_file, settings->name),
+			         remmina_file_get_string (priv->remmina_file, setting_name),
 			         GTK_FILE_CHOOSER_ACTION_OPEN);
-			g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
+			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			break;
 
 		case REMMINA_PROTOCOL_SETTING_TYPE_FOLDER:
 			widget = remmina_file_editor_create_chooser (gfe, grid, grid_row, 0,
 			         g_dgettext (priv->plugin->domain, settings->label),
-			         remmina_file_get_string (priv->remmina_file, settings->name),
+			         remmina_file_get_string (priv->remmina_file, setting_name),
 			         GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
-			g_hash_table_insert(priv->setting_widgets, (gchar*) settings->name, widget);
+			g_hash_table_insert(priv->setting_widgets, setting_name, widget);
 			break;
 
 		default:
@@ -1034,7 +997,6 @@ static void remmina_file_editor_protocol_combo_on_changed(GtkComboBox* combo, Re
 	}
 
 	priv->server_combo = NULL;
-	priv->password_entry = NULL;
 	priv->resolution_auto_radio = NULL;
 	priv->resolution_custom_radio = NULL;
 	priv->resolution_custom_combo = NULL;
@@ -1181,9 +1143,6 @@ static void remmina_file_editor_update(RemminaFileEditor* gfe)
 	remmina_file_set_string_ref(priv->remmina_file, "server",
 	                            (priv->server_combo ? remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->server_combo)) : NULL));
 
-	remmina_file_set_string(priv->remmina_file, "password",
-	                        (priv->password_entry ? gtk_entry_get_text(GTK_ENTRY(priv->password_entry)) : NULL));
-
 	if (priv->resolution_auto_radio)
 	{
 		remmina_file_set_string_ref(
@@ -1224,7 +1183,7 @@ static void remmina_file_editor_on_default(GtkWidget* button, RemminaFileEditor*
 	remmina_file_set_string(gf, "precommand", NULL);
 	remmina_file_set_string(gf, "postcommand", NULL);
 
-	remmina_file_save_all(gf);
+	remmina_file_save(gf);
 	remmina_file_free(gf);
 
 	dialog = gtk_message_dialog_new(GTK_WINDOW(gfe), GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_OK,
@@ -1237,7 +1196,7 @@ static void remmina_file_editor_on_save(GtkWidget* button, RemminaFileEditor* gf
 {
 	TRACE_CALL("remmina_file_editor_on_save");
 	remmina_file_editor_update(gfe);
-	remmina_file_save_all(gfe->priv->remmina_file);
+	remmina_file_save(gfe->priv->remmina_file);
 	remmina_icon_populate_menu();
 	gtk_widget_destroy(GTK_WIDGET(gfe));
 }
@@ -1248,11 +1207,10 @@ static void remmina_file_editor_on_connect(GtkWidget* button, RemminaFileEditor*
 	RemminaFile* gf;
 
 	remmina_file_editor_update(gfe);
-	if (remmina_pref.save_when_connect)
-	{
-		remmina_file_save_all(gfe->priv->remmina_file);
-		remmina_icon_populate_menu();
-	}
+
+	remmina_file_save(gfe->priv->remmina_file);
+	remmina_icon_populate_menu();
+
 	gf = remmina_file_dup(gfe->priv->remmina_file);
 	/* Put server into name for Quick Connect */
 	if (remmina_file_get_filename(gf) == NULL)

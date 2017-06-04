@@ -1158,7 +1158,7 @@ void remmina_protocol_widget_init_save_cred(RemminaProtocolWidget* gp)
 	}
 	if (save)
 	{
-		remmina_file_save_group(remminafile, REMMINA_SETTING_GROUP_CREDENTIAL);
+		remmina_file_save(remminafile);
 	}
 }
 

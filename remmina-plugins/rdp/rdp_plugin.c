@@ -693,7 +693,8 @@ static void remmina_rdp_send_ctrlaltdel(RemminaProtocolWidget *gp)
 static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_rdp_main");
-	gchar* s;
+	const gchar* s;
+	gchar *sm;
 	gchar* value;
 	gint rdpsnd_rate;
 	gint rdpsnd_channel;
@@ -738,17 +739,16 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	if (remmina_plugin_service->file_get_string(remminafile, "domain"))
 		rfi->settings->Domain = strdup(remmina_plugin_service->file_get_string(remminafile, "domain"));
 
-	s = remmina_plugin_service->file_get_secret(remminafile, "password");
+	s = remmina_plugin_service->file_get_string(remminafile, "password");
 
 	if (s)
 	{
 		rfi->settings->Password = strdup(s);
 		rfi->settings->AutoLogonEnabled = 1;
-		g_free(s);
 	}
 	/* Remote Desktop Gateway server address */
 	rfi->settings->GatewayEnabled = FALSE;
-	s = (gchar *) remmina_plugin_service->file_get_string(remminafile, "gateway_server");
+	s = remmina_plugin_service->file_get_string(remminafile, "gateway_server");
 	if (s)
 	{
 		remmina_plugin_service->get_server_port(s, 443, &gateway_host, &gateway_port);
@@ -756,7 +756,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->GatewayPort = gateway_port;
 		rfi->settings->GatewayEnabled = TRUE;
 		rfi->settings->GatewayUseSameCredentials = TRUE;
-		g_free(s);
 	}
 	/* Remote Desktop Gateway domain */
 	if (remmina_plugin_service->file_get_string(remminafile, "gateway_domain"))
@@ -771,12 +770,11 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->GatewayUseSameCredentials = FALSE;
 	}
 	/* Remote Desktop Gateway password */
-	s = remmina_plugin_service->file_get_secret(remminafile, "gateway_password");
+	s = remmina_plugin_service->file_get_string(remminafile, "gateway_password");
 	if(s)
 	{
 		rfi->settings->GatewayPassword = strdup(s);
 		rfi->settings->GatewayUseSameCredentials = FALSE;
-		g_free(s);
 	}
 	/* If no different credentials were provided for the Remote Desktop Gateway
 	 * use the same authentication credentials for the host */
@@ -823,9 +821,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->ShellWorkingDirectory = strdup(remmina_plugin_service->file_get_string(remminafile, "execpath"));
 	}
 
-	s = g_strdup_printf("rdp_quality_%i", remmina_plugin_service->file_get_int(remminafile, "quality", DEFAULT_QUALITY_0));
-	value = remmina_plugin_service->pref_get_value(s);
-	g_free(s);
+	sm = g_strdup_printf("rdp_quality_%i", remmina_plugin_service->file_get_int(remminafile, "quality", DEFAULT_QUALITY_0));
+	value = remmina_plugin_service->pref_get_value(sm);
+	g_free(sm);
 
 	if (value && value[0])
 	{
@@ -977,12 +975,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 			s = remmina_rdp_plugin_default_drive_name;
 		else
 			s++;
-		s = g_convert_with_fallback(s, -1, "ascii", "utf-8", "_", NULL, &sz, NULL);
+		sm = g_convert_with_fallback(s, -1, "ascii", "utf-8", "_", NULL, &sz, NULL);
 
 		drive->Type = RDPDR_DTYP_FILESYSTEM;
-		drive->Name = _strdup(s);
+		drive->Name = _strdup(sm);
 		drive->Path = _strdup(cs);
-		g_free(s);
+		g_free(sm);
 
 		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*) drive);
 		rfi->settings->DeviceRedirection = TRUE;
@@ -1371,7 +1369,7 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "domain", N_("Domain"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "gateway_server", N_("RD Gateway server"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "gateway_username", N_("RD Gateway username"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CUS_PASSWORD, "gateway_password",  N_("RD Gateway password"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "gateway_password",  N_("RD Gateway password"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "gateway_domain", N_("RD Gateway domain"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color depth"), FALSE, colordepth_list, NULL },

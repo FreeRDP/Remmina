@@ -855,7 +855,7 @@ remmina_plugin_vnc_rfb_password(rfbClient *cl)
 
 	if (gpdata->auth_first)
 	{
-		pwd = remmina_plugin_service->file_get_secret(remminafile, "password");
+		pwd = g_strdup(remmina_plugin_service->file_get_string(remminafile, "password"));
 	}
 	if (!pwd)
 	{
@@ -898,7 +898,7 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 
 		s1 = g_strdup (remmina_plugin_service->file_get_string (remminafile, "username"));
 
-		s2 = remmina_plugin_service->file_get_secret (remminafile, "password");
+		s2 = g_strdup (remmina_plugin_service->file_get_string (remminafile, "password"));
 
 		if (gpdata->auth_first && s1 && s2)
 		{

@@ -359,7 +359,7 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 	/* Login */
 
 	s1 = g_strdup(remmina_plugin_nx_service->file_get_string(remminafile, "username"));
-	s2 = remmina_plugin_nx_service->file_get_secret(remminafile, "password");
+	s2 = g_strdup(remmina_plugin_nx_service->file_get_string(remminafile, "password"));
 
 	if (s1 && s2)
 	{

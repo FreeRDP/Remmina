@@ -96,7 +96,6 @@ typedef struct _RemminaPref
 {
 	/* In RemminaPrefDialog options tab */
 	gboolean save_view_mode;
-	gboolean save_when_connect;
 	gint default_action;
 	gint scale_quality;
 	const gchar *screenshot_path;
