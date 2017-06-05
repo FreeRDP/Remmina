@@ -429,7 +429,7 @@ static void remmina_plugin_spice_call_feature(RemminaProtocolWidget *gp, const R
 static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password", N_("User password"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "resizeguest", N_("Resize guest to match window size"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "usetls", N_("Use TLS encryption"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,  "cacert", N_("Server CA certificate"), FALSE, NULL, NULL },
