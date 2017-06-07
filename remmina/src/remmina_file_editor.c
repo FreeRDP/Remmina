@@ -103,6 +103,7 @@ struct _RemminaFileEditorPriv
 
 	GtkWidget* config_box;
 	GtkWidget* config_scrollable;
+	GtkWidget* config_viewport;
 	GtkWidget* config_container;
 
 	GtkWidget* server_combo;
@@ -211,14 +212,17 @@ static void remmina_file_editor_create_notebook_container(RemminaFileEditor* gfe
 	TRACE_CALL("remmina_file_editor_create_notebook_container");
 	/* Create the notebook */
 	gfe->priv->config_container = gtk_notebook_new();
-
+	gfe->priv->config_viewport = gtk_viewport_new(NULL, NULL);
 	gfe->priv->config_scrollable = gtk_scrolled_window_new (NULL, NULL);
 	gtk_container_set_border_width (GTK_CONTAINER (gfe->priv->config_scrollable), 2);
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (gfe->priv->config_scrollable),
 			GTK_POLICY_AUTOMATIC, GTK_POLICY_ALWAYS);
 	gtk_widget_show (gfe->priv->config_scrollable);
 
-	gtk_container_add (GTK_CONTAINER (gfe->priv->config_scrollable), gfe->priv->config_container);
+	gtk_container_add (GTK_CONTAINER (gfe->priv->config_viewport), gfe->priv->config_container);
+	gtk_container_set_border_width(GTK_CONTAINER(gfe->priv->config_viewport), 2);
+	gtk_widget_show(gfe->priv->config_viewport);
+	gtk_container_add (GTK_CONTAINER (gfe->priv->config_scrollable), gfe->priv->config_viewport);
 	gtk_container_set_border_width(GTK_CONTAINER(gfe->priv->config_container), 2);
 	gtk_widget_show(gfe->priv->config_container);
 
@@ -992,6 +996,8 @@ static void remmina_file_editor_protocol_combo_on_changed(GtkComboBox* combo, Re
 	{
 		gtk_widget_destroy(priv->config_container);
 		priv->config_container = NULL;
+		gtk_widget_destroy(priv->config_viewport);
+		priv->config_viewport = NULL;
 		gtk_widget_destroy(priv->config_scrollable);
 		priv->config_scrollable = NULL;
 	}
