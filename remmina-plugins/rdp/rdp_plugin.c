@@ -122,40 +122,6 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 	return True;
 }
 
-static gboolean remmina_rdp_check_host_resolution(RemminaProtocolWidget *gp, char *hostname, int tcpport)
-{
-	TRACE_CALL("remmina_rdp_check_host_resolution");
-	struct addrinfo hints;
-	struct addrinfo* result = NULL;
-	int status;
-	char service[16];
-
-	if (hostname[0] == 0) {
-		remmina_plugin_service->protocol_plugin_set_error(gp, _("The server name cannot be blank."));
-		return FALSE;
-	}
-
-	memset(&hints, 0, sizeof(struct addrinfo));
-	hints.ai_family = AF_UNSPEC;
-	hints.ai_socktype = SOCK_STREAM;
-	hints.ai_flags = 0;
-	hints.ai_protocol = 0;
-
-	sprintf(service, "%d", tcpport);
-	status = getaddrinfo(hostname, service, &hints, &result);
-	if (status != 0) {
-		remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to find the address of RDP server %s."),
-			hostname);
-		if (result)
-			freeaddrinfo(result);
-		return FALSE;
-	}
-
-	freeaddrinfo(result);
-	return TRUE;
-
-}
-
 static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_rdp_tunnel_init");
@@ -194,18 +160,6 @@ static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget* gp)
 			remmina_plugin_service->get_server_port(cert_hostport, 3389, &cert_host, &cert_port);
 		}
 
-	} else {
-		/* When SSH tunnel is not enabled, we can verify that host
-		 * resolves correctly via DNS */
-		if (!remmina_plugin_service->file_get_string(remminafile, "gateway_server")) {
-			/* When SSH tunnel and gateway are disabled, we can verify that host
-			* resolves correctly via DNS */
-			if (!remmina_rdp_check_host_resolution(gp, host, port)) {
-				g_free(host);
-				g_free(hostport);
-				return FALSE;
-			}
-		}
 	}
 
 	if (!rfi->is_reconnecting) {
@@ -739,7 +693,8 @@ static void remmina_rdp_send_ctrlaltdel(RemminaProtocolWidget *gp)
 static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_rdp_main");
-	gchar* s;
+	const gchar* s;
+	gchar *sm;
 	gchar* value;
 	gint rdpsnd_rate;
 	gint rdpsnd_channel;
@@ -784,17 +739,16 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	if (remmina_plugin_service->file_get_string(remminafile, "domain"))
 		rfi->settings->Domain = strdup(remmina_plugin_service->file_get_string(remminafile, "domain"));
 
-	s = remmina_plugin_service->file_get_secret(remminafile, "password");
+	s = remmina_plugin_service->file_get_string(remminafile, "password");
 
 	if (s)
 	{
 		rfi->settings->Password = strdup(s);
 		rfi->settings->AutoLogonEnabled = 1;
-		g_free(s);
 	}
 	/* Remote Desktop Gateway server address */
 	rfi->settings->GatewayEnabled = FALSE;
-	s = (gchar *) remmina_plugin_service->file_get_string(remminafile, "gateway_server");
+	s = remmina_plugin_service->file_get_string(remminafile, "gateway_server");
 	if (s)
 	{
 		remmina_plugin_service->get_server_port(s, 443, &gateway_host, &gateway_port);
@@ -816,9 +770,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->GatewayUseSameCredentials = FALSE;
 	}
 	/* Remote Desktop Gateway password */
-	if (remmina_plugin_service->file_get_string(remminafile, "gateway_password"))
+	s = remmina_plugin_service->file_get_string(remminafile, "gateway_password");
+	if(s)
 	{
-		rfi->settings->GatewayPassword = strdup(remmina_plugin_service->file_get_string(remminafile, "gateway_password"));
+		rfi->settings->GatewayPassword = strdup(s);
 		rfi->settings->GatewayUseSameCredentials = FALSE;
 	}
 	/* If no different credentials were provided for the Remote Desktop Gateway
@@ -835,7 +790,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	/* Remote Desktop Gateway usage */
 	if (rfi->settings->GatewayEnabled)
 		freerdp_set_gateway_usage_method(rfi->settings,
-			remmina_plugin_service->file_get_int(remminafile, "gateway_usage", FALSE) ? TSC_PROXY_MODE_DETECT : TSC_PROXY_MODE_DIRECT);
+				remmina_plugin_service->file_get_int(remminafile, "gateway_usage", FALSE) ? TSC_PROXY_MODE_DETECT : TSC_PROXY_MODE_DIRECT);
 	/* Certificate ignore */
 	rfi->settings->IgnoreCertificate = remmina_plugin_service->file_get_int(remminafile, "cert_ignore", 0);
 
@@ -866,9 +821,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->ShellWorkingDirectory = strdup(remmina_plugin_service->file_get_string(remminafile, "execpath"));
 	}
 
-	s = g_strdup_printf("rdp_quality_%i", remmina_plugin_service->file_get_int(remminafile, "quality", DEFAULT_QUALITY_0));
-	value = remmina_plugin_service->pref_get_value(s);
-	g_free(s);
+	sm = g_strdup_printf("rdp_quality_%i", remmina_plugin_service->file_get_int(remminafile, "quality", DEFAULT_QUALITY_0));
+	value = remmina_plugin_service->pref_get_value(sm);
+	g_free(sm);
 
 	if (value && value[0])
 	{
@@ -1020,12 +975,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 			s = remmina_rdp_plugin_default_drive_name;
 		else
 			s++;
-		s = g_convert_with_fallback(s, -1, "ascii", "utf-8", "_", NULL, &sz, NULL);
+		sm = g_convert_with_fallback(s, -1, "ascii", "utf-8", "_", NULL, &sz, NULL);
 
 		drive->Type = RDPDR_DTYP_FILESYSTEM;
-		drive->Name = _strdup(s);
+		drive->Name = _strdup(sm);
 		drive->Path = _strdup(cs);
-		g_free(s);
+		g_free(sm);
 
 		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*) drive);
 		rfi->settings->DeviceRedirection = TRUE;
@@ -1098,6 +1053,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 					break;
 				case FREERDP_ERROR_CONNECT_FAILED:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to RDP server %s failed."), rfi->settings->ServerHostname );
+					break;
+				case FREERDP_ERROR_DNS_NAME_NOT_FOUND:
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to find the address of RDP server %s."), rfi->settings->ServerHostname );
 					break;
 				default:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
@@ -1405,12 +1363,11 @@ static gpointer security_list[] =
  */
 static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, "server", NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password", N_("User password"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "domain", N_("Domain"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "gateway_server", N_("RD Gateway server"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL, NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution", NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color depth"), FALSE, colordepth_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER, "sharefolder", N_("Share folder"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableautoreconnect", N_("Disable automatic reconnection"), FALSE, NULL, NULL },
@@ -1431,6 +1388,10 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "quality", N_("Quality"), FALSE, quality_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "sound", N_("Sound"), FALSE, sound_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "security", N_("Security"), FALSE, security_list, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "gateway_server", N_("RD Gateway server"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "gateway_username", N_("RD Gateway username"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "gateway_password",  N_("RD Gateway password"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "gateway_domain", N_("RD Gateway domain"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "clientname", N_("Client name"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "exec", N_("Startup program"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "execpath", N_("Startup path"), FALSE, NULL, NULL },

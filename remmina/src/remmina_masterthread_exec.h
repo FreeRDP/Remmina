@@ -44,7 +44,7 @@ typedef struct remmina_masterthread_exec_data
 {
 
 	enum { FUNC_GTK_LABEL_SET_TEXT,
-	       FUNC_INIT_SAVE_CRED, FUNC_CHAT_RECEIVE, FUNC_FILE_GET_SECRET,
+	       FUNC_INIT_SAVE_CRED, FUNC_CHAT_RECEIVE, FUNC_FILE_GET_STRING,
 	       FUNC_DIALOG_SERVERKEY_CONFIRM, FUNC_DIALOG_AUTHPWD, FUNC_DIALOG_AUTHUSERPWD,
 	       FUNC_DIALOG_CERT, FUNC_DIALOG_CERTCHANGED, FUNC_DIALOG_AUTHX509,
 	       FUNC_FTP_CLIENT_UPDATE_TASK, FUNC_FTP_CLIENT_GET_WAITING_TASK,
@@ -73,8 +73,8 @@ typedef struct remmina_masterthread_exec_data
 		{
 			RemminaFile *remminafile;
 			const gchar *setting;
-			gchar* retval;
-		} file_get_secret;
+			const gchar* retval;
+		} file_get_string;
 		struct
 		{
 			RemminaInitDialog *dialog;

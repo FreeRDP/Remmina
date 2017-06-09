@@ -245,11 +245,6 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.save_view_mode = TRUE;
 
-	if (g_key_file_has_key(gkeyfile, "remmina_pref", "save_when_connect", NULL))
-		remmina_pref.save_when_connect = g_key_file_get_boolean(gkeyfile, "remmina_pref", "save_when_connect", NULL);
-	else
-		remmina_pref.save_when_connect = TRUE;
-
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "fullscreen_on_auto", NULL))
 		remmina_pref.fullscreen_on_auto = g_key_file_get_boolean(gkeyfile, "remmina_pref", "fullscreen_on_auto", NULL);
 	else
@@ -593,7 +588,6 @@ void remmina_pref_save(void)
 	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
 
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_view_mode", remmina_pref.save_view_mode);
-	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_when_connect", remmina_pref.save_when_connect);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "floating_toolbar_placement", remmina_pref.floating_toolbar_placement);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "toolbar_placement", remmina_pref.toolbar_placement);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "always_show_tab", remmina_pref.always_show_tab);

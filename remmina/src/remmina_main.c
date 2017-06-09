@@ -676,6 +676,7 @@ void remmina_main_on_action_connection_delete(GtkAction *action, gpointer user_d
 {
 	TRACE_CALL("remmina_main_on_action_connection_delete");
 	GtkWidget *dialog;
+	gchar *delfilename;
 
 	if (!remminamain->priv->selected_filename)
 		return;
@@ -684,7 +685,9 @@ void remmina_main_on_action_connection_delete(GtkAction *action, gpointer user_d
 	                                _("Are you sure to delete '%s'"), remminamain->priv->selected_name);
 	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES)
 	{
-		remmina_file_delete(remminamain->priv->selected_filename);
+		delfilename = g_strdup(remminamain->priv->selected_filename);
+		remmina_file_delete(delfilename);
+		g_free(delfilename);
 		remmina_icon_populate_menu();
 		remmina_main_load_files();
 	}
@@ -781,7 +784,7 @@ static void remmina_main_import_file_list(GSList *files)
 		if (plugin && (remminafile = plugin->import_func(path)) != NULL && remmina_file_get_string(remminafile, "name"))
 		{
 			remmina_file_generate_filename(remminafile);
-			remmina_file_save_all(remminafile);
+			remmina_file_save(remminafile);
 			imported = TRUE;
 		}
 		else

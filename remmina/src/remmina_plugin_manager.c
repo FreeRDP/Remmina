@@ -266,6 +266,20 @@ RemminaPlugin* remmina_plugin_manager_get_plugin(RemminaPluginType type, const g
 	return NULL;
 }
 
+const gchar *remmina_plugin_manager_get_canonical_setting_name(const RemminaProtocolSetting* setting)
+{
+	if (setting->name == NULL) {
+		if (setting->type == REMMINA_PROTOCOL_SETTING_TYPE_SERVER)
+			return "server";
+		if (setting->type == REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD)
+			return "password";
+		if (setting->type == REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION)
+			return "resolution";
+		return "missing_setting_name_into_plugin_RemminaProtocolSetting";
+	}
+	return setting->name;
+}
+
 void remmina_plugin_manager_for_each_plugin(RemminaPluginType type, RemminaPluginFunc func, gpointer data)
 {
 	TRACE_CALL("remmina_plugin_manager_for_each_plugin");

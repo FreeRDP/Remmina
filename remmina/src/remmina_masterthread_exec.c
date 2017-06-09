@@ -58,8 +58,8 @@ static gboolean remmina_masterthread_exec_callback(RemminaMTExecData *d)
 		case FUNC_CHAT_RECEIVE:
 			remmina_protocol_widget_chat_receive(d->p.chat_receive.gp, d->p.chat_receive.text);
 			break;
-		case FUNC_FILE_GET_SECRET:
-			d->p.file_get_secret.retval = remmina_file_get_secret( d->p.file_get_secret.remminafile, d->p.file_get_secret.setting );
+		case FUNC_FILE_GET_STRING:
+			d->p.file_get_string.retval = remmina_file_get_string( d->p.file_get_string.remminafile, d->p.file_get_string.setting );
 			break;
 		case FUNC_DIALOG_SERVERKEY_CONFIRM:
 			d->p.dialog_serverkey_confirm.retval = remmina_init_dialog_serverkey_confirm( d->p.dialog_serverkey_confirm.dialog,

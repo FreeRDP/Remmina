@@ -855,7 +855,7 @@ remmina_plugin_vnc_rfb_password(rfbClient *cl)
 
 	if (gpdata->auth_first)
 	{
-		pwd = remmina_plugin_service->file_get_secret(remminafile, "password");
+		pwd = g_strdup(remmina_plugin_service->file_get_string(remminafile, "password"));
 	}
 	if (!pwd)
 	{
@@ -898,7 +898,7 @@ remmina_plugin_vnc_rfb_credential (rfbClient *cl, int credentialType)
 
 		s1 = g_strdup (remmina_plugin_service->file_get_string (remminafile, "username"));
 
-		s2 = remmina_plugin_service->file_get_secret (remminafile, "password");
+		s2 = g_strdup (remmina_plugin_service->file_get_string (remminafile, "password"));
 
 		if (gpdata->auth_first && s1 && s2)
 		{
@@ -1983,10 +1983,10 @@ static gpointer quality_list[] =
  */
 static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, "_rfb._tcp", NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, "server", NULL, FALSE, "_rfb._tcp", NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "proxy", N_("Repeater"), FALSE, NULL, NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password", N_("User password"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color depth"), FALSE, colordepth_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "quality", N_("Quality"), FALSE, quality_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP, NULL, NULL, FALSE, NULL, NULL },
@@ -2006,7 +2006,7 @@ static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "listenport", N_("Listen on port"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, NULL, NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password", N_("User password"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "colordepth", N_("Color depth"), FALSE, colordepth_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "quality", N_("Quality"), FALSE, quality_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP, NULL, NULL, FALSE, NULL, NULL },

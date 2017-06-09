@@ -3530,7 +3530,7 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 	}
 
 	/* Save credentials */
-	remmina_file_save_group(cnnobj->remmina_file, REMMINA_SETTING_GROUP_CREDENTIAL);
+	remmina_file_save(cnnobj->remmina_file);
 
 	if (!cnnhld->cnnwin)
 	{
@@ -3600,14 +3600,7 @@ static void remmina_connection_object_on_disconnect(RemminaProtocolWidget* gp, R
 		{
 			remmina_file_set_int(cnnobj->remmina_file, "viewmode", cnnhld->cnnwin->priv->view_mode);
 		}
-		if (remmina_pref.save_when_connect)
-		{
-			remmina_file_save_all(cnnobj->remmina_file);
-		}
-		else
-		{
-			remmina_file_save_group(cnnobj->remmina_file, REMMINA_SETTING_GROUP_RUNTIME);
-		}
+		remmina_file_save(cnnobj->remmina_file);
 	}
 
 	if (remmina_protocol_widget_has_error(gp))
