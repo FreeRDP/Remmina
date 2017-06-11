@@ -239,13 +239,25 @@ static gint
 remmina_ssh_auth_auto_pubkey (RemminaSSH* ssh)
 {
 	TRACE_CALL("remmina_ssh_auth_auto_pubkey");
-	gint ret;
-	ret = ssh_userauth_autopubkey (ssh->session, "");
+	gint ret = ssh_userauth_autopubkey (ssh->session, NULL);
+
+	if(ret == SSH_AUTH_ERROR)
+	{
+		remmina_ssh_set_error (ssh, _("[SSH] automatic public key authentication failed: %s"));
+		return ret;
+	}
 
 	if (ret != SSH_AUTH_SUCCESS)
 	{
-		remmina_ssh_set_error (ssh, _("SSH automatic public key authentication failed: %s"));
-		return 0;
+		remmina_ssh_set_error (ssh, _("[SSH] automatic public key authentication failed: %s"));
+		return ret;
+	}
+
+	if (ret != SSH_AUTH_PARTIAL)
+	{
+		remmina_ssh_set_error (ssh, _("[SSH] automatic public key authentication partially failed: %s"));
+		/* We should call remmina_ssh_auth_gui */
+		return ret;
 	}
 
 	ssh->authenticated = TRUE;
@@ -290,20 +302,20 @@ remmina_ssh_auth (RemminaSSH *ssh, const gchar *password)
 	switch (ssh->auth)
 	{
 
-	case SSH_AUTH_PASSWORD:
-		return remmina_ssh_auth_password (ssh);
+		case SSH_AUTH_PASSWORD:
+			return remmina_ssh_auth_password (ssh);
 
-	case SSH_AUTH_PUBLICKEY:
-		return remmina_ssh_auth_pubkey (ssh);
+		case SSH_AUTH_PUBLICKEY:
+			return remmina_ssh_auth_pubkey (ssh);
 
-	case SSH_AUTH_AGENT:
-		return remmina_ssh_auth_agent (ssh);
+		case SSH_AUTH_AGENT:
+			return remmina_ssh_auth_agent (ssh);
 
-	case SSH_AUTH_AUTO_PUBLICKEY:
-		return remmina_ssh_auth_auto_pubkey (ssh);
+		case SSH_AUTH_AUTO_PUBLICKEY:
+			return remmina_ssh_auth_auto_pubkey (ssh);
 
-	default:
-		return 0;
+		default:
+			return 0;
 	}
 }
 
