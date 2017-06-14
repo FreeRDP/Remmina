@@ -286,7 +286,8 @@ remmina_plugin_ssh_main_thread (gpointer data)
 			}
 
 			ret = remmina_ssh_auth_gui (REMMINA_SSH (shell),
-			                            REMMINA_INIT_DIALOG (remmina_protocol_widget_get_init_dialog (gp)));
+			                            REMMINA_INIT_DIALOG (remmina_protocol_widget_get_init_dialog (gp)),
+						    remminafile);
 			if (ret == 0)
 			{
 				remmina_plugin_service->protocol_plugin_set_error (gp, "%s", REMMINA_SSH (shell)->error);

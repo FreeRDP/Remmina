@@ -72,9 +72,10 @@
 #include <termios.h>
 #endif
 #include "remmina_public.h"
+#include "remmina_file.h"
 #include "remmina_log.h"
-#include "remmina_ssh.h"
 #include "remmina_pref.h"
+#include "remmina_ssh.h"
 #include "remmina/remmina_trace_calls.h"
 
 #ifdef HAVE_NETINET_TCP_H
@@ -320,7 +321,7 @@ remmina_ssh_auth (RemminaSSH *ssh, const gchar *password)
 }
 
 gint
-remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog)
+remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, RemminaFile *remminafile)
 {
 	TRACE_CALL("remmina_ssh_auth_gui");
 	gchar *tips;
@@ -403,9 +404,16 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog)
 		if (ssh->auth != SSH_AUTH_AUTO_PUBLICKEY)
 		{
 			remmina_init_dialog_set_status (dialog, tips, ssh->user, ssh->server);
-			ret = remmina_init_dialog_authpwd (dialog, keyname, FALSE);
+			ret = remmina_init_dialog_authpwd (dialog, keyname, TRUE);
 
-			if (ret != GTK_RESPONSE_OK) return -1;
+			if (ret == GTK_RESPONSE_OK)
+			{
+				remmina_file_set_string( remminafile, "ssh_password", dialog->password);
+			}
+			else
+			{
+				return -1;
+			}
 		}
 		ret = remmina_ssh_auth (ssh, dialog->password);
 	}
