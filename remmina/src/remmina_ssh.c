@@ -379,7 +379,7 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, RemminaFile *r
 	}
 
 	/* Try empty password or existing password first */
-	ret = remmina_ssh_auth (ssh, NULL);
+	ret = remmina_ssh_auth (ssh, remmina_file_get_string(remminafile, "ssh_password"));
 	if (ret > 0) return 1;
 
 	/* Requested for a non-empty password */
