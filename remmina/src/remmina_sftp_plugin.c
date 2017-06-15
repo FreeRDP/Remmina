@@ -285,6 +285,23 @@ static const RemminaProtocolFeature remmina_plugin_sftp_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
+/* Array of RemminaProtocolSetting for basic settings.
+ * Each item is composed by:
+ * a) RemminaProtocolSettingType for setting type
+ * b) Setting name
+ * c) Setting description
+ * d) Compact disposition
+ * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
+ * f) Unused pointer
+ */
+static const RemminaProtocolSetting remmina_sftp_basic_settings[] =
+{
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, "ssh_server", NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "ssh_username", N_("User name"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password", N_("User password"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
+};
+
 /* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin_sftp =
 {
@@ -295,7 +312,7 @@ static RemminaProtocolPlugin remmina_plugin_sftp =
 	VERSION,                                      // Version number
 	"remmina-sftp",                               // Icon for normal connection
 	"remmina-sftp",                               // Icon for SSH connection
-	NULL,                                         // Array for basic settings
+	remmina_sftp_basic_settings,                  // Array for basic settings
 	NULL,                                         // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_SFTP,            // SSH settings type
 	remmina_plugin_sftp_features,                 // Array for available features

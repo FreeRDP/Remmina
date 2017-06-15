@@ -649,6 +649,24 @@ static RemminaProtocolFeature remmina_plugin_ssh_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
+/* Array of RemminaProtocolSetting for basic settings.
+ * Each item is composed by:
+ * a) RemminaProtocolSettingType for setting type
+ * b) Setting name
+ * c) Setting description
+ * d) Compact disposition
+ * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
+ * f) Unused pointer
+ */
+static const RemminaProtocolSetting remmina_ssh_basic_settings[] =
+{
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, "ssh_server", NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "ssh_username", N_("User name"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password", N_("User password"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
+};
+
+
 /* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin_ssh =
 {
@@ -659,7 +677,7 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 	VERSION,                                      // Version number
 	"utilities-terminal",                         // Icon for normal connection
 	"utilities-terminal",                         // Icon for SSH connection
-	NULL,                                         // Array for basic settings
+	remmina_ssh_basic_settings,                   // Array for basic settings
 	NULL,                                         // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_SSH,             // SSH settings type
 	remmina_plugin_ssh_features,                  // Array for available features
