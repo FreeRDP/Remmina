@@ -242,27 +242,22 @@ remmina_ssh_auth_auto_pubkey (RemminaSSH* ssh)
 	TRACE_CALL("remmina_ssh_auth_auto_pubkey");
 	gint ret = ssh_userauth_autopubkey (ssh->session, NULL);
 
-	if(ret == SSH_AUTH_ERROR)
+	switch (ret)
 	{
-		remmina_ssh_set_error (ssh, _("[SSH] automatic public key authentication failed: %s"));
-		return ret;
+		case SSH_AUTH_ERROR:
+			remmina_ssh_set_error (ssh, _("[SSH] automatic public key authentication failed: %s"));
+			return 0;
+		case SSH_AUTH_SUCCESS:
+			remmina_log_printf ("[SSH] automatic public key succesfully authenticated");
+			ssh->authenticated = TRUE;
+			return 1;
+		case SSH_AUTH_PARTIAL:
+			remmina_ssh_set_error (ssh, _("[SSH] automatic public key authentication partially failed: %s"));
+			return 0;
+		default:
+			remmina_ssh_set_error (ssh, _("[SSH] automatic public key unknown error: %s"));
+			return 0;
 	}
-
-	if (ret != SSH_AUTH_SUCCESS)
-	{
-		remmina_ssh_set_error (ssh, _("[SSH] automatic public key authentication failed: %s"));
-		return ret;
-	}
-
-	if (ret != SSH_AUTH_PARTIAL)
-	{
-		remmina_ssh_set_error (ssh, _("[SSH] automatic public key authentication partially failed: %s"));
-		/* We should call remmina_ssh_auth_gui */
-		return ret;
-	}
-
-	ssh->authenticated = TRUE;
-	return 1;
 }
 
 static gint
