@@ -253,11 +253,11 @@ remmina_ssh_auth_auto_pubkey (RemminaSSH* ssh)
 			return 1;
 		case SSH_AUTH_PARTIAL:
 			remmina_ssh_set_error (ssh, _("[SSH] automatic public key authentication partially failed: %s"));
-			// TODO: Test and eventually implement a dialog for the second authentication
+			/* TODO: Test and eventually implement a dialog for the second authenticatio */
 			return 1;
 		case SSH_AUTH_DENIED:
 			remmina_ssh_set_error (ssh, _("[SSH] automatic public key access denied: %s"));
-			// TODO: implement a dialog for the second authentication
+			/* TODO: implement a dialog for the second authentication */
 			return 0;
 		default:
 			remmina_ssh_set_error (ssh, _("[SSH] automatic public key unknown error: %s"));

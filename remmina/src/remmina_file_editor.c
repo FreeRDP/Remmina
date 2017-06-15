@@ -854,15 +854,6 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		priv->ssh_server_custom_radio = NULL;
 		priv->ssh_server_entry = NULL;
 
-/*
-		s = remmina_pref_get_recent ("SFTP");
-		priv->server_combo = remmina_file_editor_create_combo (gfe, grid, row + 1, 1,
-		                     _("Server"), s, remmina_file_get_string (priv->remmina_file, "server"));
-		gtk_widget_set_tooltip_markup (priv->server_combo, _(server_tips));
-		gtk_entry_set_activates_default (GTK_ENTRY(gtk_bin_get_child (GTK_BIN (priv->server_combo))), TRUE);
-		g_free(s);
-		row++;
-*/
 		break;
 
 	default:
@@ -951,8 +942,6 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 		                   cs ? cs : "");
 	}
 
-	//cs = remmina_file_get_string (priv->remmina_file, "ssh_username");
-	//gtk_entry_set_text(GTK_ENTRY(priv->ssh_username_entry), cs ? cs : "");
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(
 	                                  remmina_file_get_int (priv->remmina_file, "ssh_auth", 0) == SSH_AUTH_PUBLICKEY ?
 	                                  priv->ssh_auth_publickey_radio :
@@ -1274,7 +1263,6 @@ static void remmina_file_editor_init(RemminaFileEditor* gfe)
 	widget = gtk_dialog_add_button(GTK_DIALOG(gfe), (_("Default")), GTK_RESPONSE_OK);
 	gtk_button_set_image(GTK_BUTTON(widget), gtk_image_new_from_icon_name("preferences-system", GTK_ICON_SIZE_BUTTON));
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_file_editor_on_default), gfe);
-	//gtk_widget_show(widget);
 
 	priv->setting_widgets = g_hash_table_new(g_str_hash, g_str_equal);
 
