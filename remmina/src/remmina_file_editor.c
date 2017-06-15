@@ -777,36 +777,25 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 	if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_NONE) return;
 
 	/* The SSH tab (implementation) */
-	if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SSH ||
-	        ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SFTP)
-	{
-		s = remmina_public_combo_get_active_text (GTK_COMBO_BOX (priv->protocol_combo));
-		grid = remmina_file_editor_create_notebook_tab (gfe, "dialog-password",
-		        (s ? s : "SSH Settings"), 8, 3);
-		g_free(s);
-	}
-	else
-	{
-		grid = remmina_file_editor_create_notebook_tab (gfe, "dialog-password",
-		        "SSH Settings", 9, 3);
+	grid = remmina_file_editor_create_notebook_tab (gfe, "dialog-password",
+		"SSH Settings", 9, 3);
 
-		hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-		gtk_widget_show(hbox);
-		gtk_grid_attach (GTK_GRID(grid), hbox, 0, 0, 3, 1);
-		row++;
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+	gtk_widget_show(hbox);
+	gtk_grid_attach (GTK_GRID(grid), hbox, 0, 0, 3, 1);
+	row++;
 
-		widget = gtk_check_button_new_with_label (_("Enable SSH tunnel"));
-		gtk_widget_show(widget);
-		gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
-		g_signal_connect(G_OBJECT(widget), "toggled",
-		                 G_CALLBACK(remmina_file_editor_ssh_enabled_check_on_toggled), gfe);
-		priv->ssh_enabled_check = widget;
+	widget = gtk_check_button_new_with_label (_("Enable SSH tunnel"));
+	gtk_widget_show(widget);
+	gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
+	g_signal_connect(G_OBJECT(widget), "toggled",
+			 G_CALLBACK(remmina_file_editor_ssh_enabled_check_on_toggled), gfe);
+	priv->ssh_enabled_check = widget;
 
-		widget = gtk_check_button_new_with_label (_("Tunnel via loopback address"));
-		gtk_widget_show(widget);
-		gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
-		priv->ssh_loopback_check = widget;
-	}
+	widget = gtk_check_button_new_with_label (_("Tunnel via loopback address"));
+	gtk_widget_show(widget);
+	gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
+	priv->ssh_loopback_check = widget;
 
 	/* SSH Server group */
 	row++;
