@@ -105,6 +105,7 @@
 
 static const gchar *common_identities[] =
 {
+	".ssh/id_ed25519",
 	".ssh/id_rsa",
 	".ssh/id_dsa",
 	".ssh/identity",
