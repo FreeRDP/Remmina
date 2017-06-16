@@ -312,10 +312,22 @@ remmina_ssh_auth (RemminaSSH *ssh, const gchar *password)
 			return remmina_ssh_auth_pubkey (ssh);
 
 		case SSH_AUTH_AGENT:
-			return remmina_ssh_auth_agent (ssh);
+			if (!remmina_ssh_auth_agent (ssh))
+			{
+				if (!remmina_ssh_auth_auto_pubkey (ssh))
+				{
+					return remmina_ssh_auth_password (ssh);
+				}
+				return 1;
+			}
+			return 1;
 
 		case SSH_AUTH_AUTO_PUBLICKEY:
-			return remmina_ssh_auth_auto_pubkey (ssh);
+			if (!remmina_ssh_auth_auto_pubkey (ssh))
+			{
+				return remmina_ssh_auth_password (ssh);
+			}
+			return 1;
 
 		default:
 			return 0;
