@@ -431,6 +431,16 @@ remmina_plugin_ssh_vte_paste_clipboard (GtkMenuItem *menuitem, gpointer user_dat
 	vte_terminal_paste_clipboard (VTE_TERMINAL (user_data));
 }
 
+/* Send a keystroke to the plugin window */
+static void remmina_ssh_keystroke(RemminaProtocolWidget *gp, const guint keystrokes[], const gint keylen)
+{
+	TRACE_CALL("remmina_rdp_keystroke");
+	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
+	remmina_plugin_service->protocol_plugin_send_keys_signals(gpdata->vte,
+		keystrokes, keylen, GDK_KEY_PRESS | GDK_KEY_RELEASE);
+	return;
+}
+
 gboolean
 remmina_ssh_plugin_popup_menu(GtkWidget *widget, GdkEvent *event, GtkWidget *menu) {
 
@@ -687,7 +697,7 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 	remmina_plugin_ssh_close_connection,          // Plugin close connection
 	remmina_plugin_ssh_query_feature,             // Query for available features
 	remmina_plugin_ssh_call_feature,              // Call a feature
-	NULL                                          // Send a keystroke
+	remmina_ssh_keystroke                         // Send a keystroke
 };
 
 void
