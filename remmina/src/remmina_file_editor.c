@@ -345,7 +345,11 @@ static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor* gfe, Gt
 	                                      NULL);
 
 	widget = gtk_file_chooser_button_new_with_dialog (dialog);
+#ifdef SNAP_BUILD
+	s = g_strdup_printf("%s/.ssh", g_getenv ("SNAP_USER_COMMON"));
+#else
 	s = g_strdup_printf("%s/.ssh", g_get_home_dir ());
+#endif
 	if (g_file_test (s, G_FILE_TEST_IS_DIR))
 	{
 		gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (widget), s);

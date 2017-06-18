@@ -108,6 +108,7 @@ parts:
     configflags:
       - -DCMAKE_BUILD_TYPE=@CMAKE_BUILD_TYPE@
       - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
+      - -DSNAP_BUILD=on
 
     # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr

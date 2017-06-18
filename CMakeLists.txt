@@ -160,6 +160,10 @@ if(SNAP_BUILD_ONLY)
     return()
 endif()
 
+if(SNAP_BUILD)
+    add_definitions(-DSNAP_BUILD)
+endif()
+
 # Uninstall support
 configure_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
