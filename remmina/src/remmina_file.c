@@ -177,6 +177,7 @@ static const RemminaProtocolSetting* find_protocol_setting(const gchar *name, Re
 
 static gboolean is_encrypted_setting(const RemminaProtocolSetting* setting)
 {
+	TRACE_CALL("is_encrypted_setting");
 	if (setting != NULL &&
 		(setting->type == REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD) )
 	{
@@ -187,8 +188,13 @@ static gboolean is_encrypted_setting(const RemminaProtocolSetting* setting)
 
 static gboolean is_encrypted_setting_by_name(const gchar *setting_name, RemminaProtocolPlugin* protocol_plugin)
 {
-	TRACE_CALL("is_encrypted_setting");
+	TRACE_CALL("is_encrypted_setting_by_name");
 	const RemminaProtocolSetting* setting;
+
+	if (strcmp(setting_name, "ssh_password") == 0)
+	{
+		return TRUE;
+	}
 
 	setting = find_protocol_setting(setting_name, protocol_plugin);
 	return is_encrypted_setting(setting);
