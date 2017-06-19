@@ -382,10 +382,10 @@ remmina_plugin_ssh_on_size_allocate (GtkWidget *widget, GtkAllocation *alloc, Re
 
 	if (!gtk_widget_get_mapped (widget)) return FALSE;
 
-	cols = vte_terminal_get_column_count (VTE_TERMINAL (widget));
-	rows = vte_terminal_get_row_count (VTE_TERMINAL (widget));
+		cols = vte_terminal_get_column_count (VTE_TERMINAL (widget));
+		rows = vte_terminal_get_row_count (VTE_TERMINAL (widget));
 
-	remmina_ssh_shell_set_size (gpdata->shell, cols, rows);
+		remmina_ssh_shell_set_size (gpdata->shell, cols, rows);
 
 	return FALSE;
 }
