@@ -1654,10 +1654,13 @@ remmina_ssh_shell_open (RemminaSSHShell *shell, RemminaSSHExitFunc exit_callback
 		return FALSE;
 	}
 
-	/* These settings works fine with OpenSSH... */
+	/* As per libssh documentation */
 	tcgetattr (shell->slave, &stermios);
-	stermios.c_lflag &= ~(ECHO | ECHOE | ECHOK | ECHONL | ICANON | ISIG);
-	stermios.c_iflag &= ~(ICRNL);
+	stermios.c_iflag &= ~(IGNBRK|BRKINT|PARMRK|ISTRIP|INLCR|IGNCR|ICRNL|IXON);
+	stermios.c_oflag &= ~OPOST;
+	stermios.c_lflag &= ~(ECHO|ECHONL|ICANON|ISIG|IEXTEN);
+	stermios.c_cflag &= ~(CSIZE|PARENB);
+	stermios.c_cflag |= CS8;
 	tcsetattr (shell->slave, TCSANOW, &stermios);
 
 	shell->exit_callback = exit_callback;
