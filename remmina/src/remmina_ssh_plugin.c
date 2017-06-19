@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -286,7 +287,8 @@ remmina_plugin_ssh_main_thread (gpointer data)
 			}
 
 			ret = remmina_ssh_auth_gui (REMMINA_SSH (shell),
-			                            REMMINA_INIT_DIALOG (remmina_protocol_widget_get_init_dialog (gp)));
+			                            REMMINA_INIT_DIALOG (remmina_protocol_widget_get_init_dialog (gp)),
+						    remminafile);
 			if (ret == 0)
 			{
 				remmina_plugin_service->protocol_plugin_set_error (gp, "%s", REMMINA_SSH (shell)->error);
@@ -427,6 +429,16 @@ void
 remmina_plugin_ssh_vte_paste_clipboard (GtkMenuItem *menuitem, gpointer user_data)
 {
 	vte_terminal_paste_clipboard (VTE_TERMINAL (user_data));
+}
+
+/* Send a keystroke to the plugin window */
+static void remmina_ssh_keystroke(RemminaProtocolWidget *gp, const guint keystrokes[], const gint keylen)
+{
+	TRACE_CALL("remmina_ssh_keystroke");
+	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
+	remmina_plugin_service->protocol_plugin_send_keys_signals(gpdata->vte,
+		keystrokes, keylen, GDK_KEY_PRESS | GDK_KEY_RELEASE);
+	return;
 }
 
 gboolean
@@ -648,6 +660,24 @@ static RemminaProtocolFeature remmina_plugin_ssh_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
+/* Array of RemminaProtocolSetting for basic settings.
+ * Each item is composed by:
+ * a) RemminaProtocolSettingType for setting type
+ * b) Setting name
+ * c) Setting description
+ * d) Compact disposition
+ * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
+ * f) Unused pointer
+ */
+static const RemminaProtocolSetting remmina_ssh_basic_settings[] =
+{
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, "ssh_server", NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "ssh_username", N_("User name"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password", N_("User password"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
+};
+
+
 /* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin_ssh =
 {
@@ -658,7 +688,7 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 	VERSION,                                      // Version number
 	"utilities-terminal",                         // Icon for normal connection
 	"utilities-terminal",                         // Icon for SSH connection
-	NULL,                                         // Array for basic settings
+	remmina_ssh_basic_settings,                   // Array for basic settings
 	NULL,                                         // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_SSH,             // SSH settings type
 	remmina_plugin_ssh_features,                  // Array for available features
@@ -667,7 +697,7 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 	remmina_plugin_ssh_close_connection,          // Plugin close connection
 	remmina_plugin_ssh_query_feature,             // Query for available features
 	remmina_plugin_ssh_call_feature,              // Call a feature
-	NULL                                          // Send a keystroke
+	remmina_ssh_keystroke                         // Send a keystroke
 };
 
 void

@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -72,9 +73,10 @@
 #include <termios.h>
 #endif
 #include "remmina_public.h"
+#include "remmina_file.h"
 #include "remmina_log.h"
-#include "remmina_ssh.h"
 #include "remmina_pref.h"
+#include "remmina_ssh.h"
 #include "remmina/remmina_trace_calls.h"
 
 #ifdef HAVE_NETINET_TCP_H
@@ -103,6 +105,7 @@
 
 static const gchar *common_identities[] =
 {
+	".ssh/id_ed25519",
 	".ssh/id_rsa",
 	".ssh/id_dsa",
 	".ssh/identity",
@@ -239,17 +242,29 @@ static gint
 remmina_ssh_auth_auto_pubkey (RemminaSSH* ssh)
 {
 	TRACE_CALL("remmina_ssh_auth_auto_pubkey");
-	gint ret;
-	ret = ssh_userauth_autopubkey (ssh->session, "");
+	gint ret = ssh_userauth_autopubkey (ssh->session, NULL);
 
-	if (ret != SSH_AUTH_SUCCESS)
+	switch (ret)
 	{
-		remmina_ssh_set_error (ssh, _("SSH automatic public key authentication failed: %s"));
-		return 0;
+		case SSH_AUTH_ERROR:
+			remmina_ssh_set_error (ssh, _("[SSH] automatic public key error: %s"));
+			return 0;
+		case SSH_AUTH_SUCCESS:
+			remmina_log_printf ("[SSH] automatic public key succesfully authenticated");
+			ssh->authenticated = TRUE;
+			return 1;
+		case SSH_AUTH_PARTIAL:
+			remmina_ssh_set_error (ssh, _("[SSH] automatic public key authentication partially failed: %s"));
+			/* TODO: Test and eventually implement a dialog for the second authenticatio */
+			return 1;
+		case SSH_AUTH_DENIED:
+			remmina_ssh_set_error (ssh, _("[SSH] automatic public key access denied: %s"));
+			/* TODO: implement a dialog for the second authentication */
+			return 0;
+		default:
+			remmina_ssh_set_error (ssh, _("[SSH] automatic public key unknown error: %s"));
+			return 0;
 	}
-
-	ssh->authenticated = TRUE;
-	return 1;
 }
 
 static gint
@@ -290,25 +305,37 @@ remmina_ssh_auth (RemminaSSH *ssh, const gchar *password)
 	switch (ssh->auth)
 	{
 
-	case SSH_AUTH_PASSWORD:
-		return remmina_ssh_auth_password (ssh);
+		case SSH_AUTH_PASSWORD:
+			return remmina_ssh_auth_password (ssh);
 
-	case SSH_AUTH_PUBLICKEY:
-		return remmina_ssh_auth_pubkey (ssh);
+		case SSH_AUTH_PUBLICKEY:
+			return remmina_ssh_auth_pubkey (ssh);
 
-	case SSH_AUTH_AGENT:
-		return remmina_ssh_auth_agent (ssh);
+		case SSH_AUTH_AGENT:
+			if (!remmina_ssh_auth_agent (ssh))
+			{
+				if (!remmina_ssh_auth_auto_pubkey (ssh))
+				{
+					return remmina_ssh_auth_password (ssh);
+				}
+				return 1;
+			}
+			return 1;
 
-	case SSH_AUTH_AUTO_PUBLICKEY:
-		return remmina_ssh_auth_auto_pubkey (ssh);
+		case SSH_AUTH_AUTO_PUBLICKEY:
+			if (!remmina_ssh_auth_auto_pubkey (ssh))
+			{
+				return remmina_ssh_auth_password (ssh);
+			}
+			return 1;
 
-	default:
-		return 0;
+		default:
+			return 0;
 	}
 }
 
 gint
-remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog)
+remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, RemminaFile *remminafile)
 {
 	TRACE_CALL("remmina_ssh_auth_gui");
 	gchar *tips;
@@ -366,7 +393,7 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog)
 	}
 
 	/* Try empty password or existing password first */
-	ret = remmina_ssh_auth (ssh, NULL);
+	ret = remmina_ssh_auth (ssh, remmina_file_get_string(remminafile, "ssh_password"));
 	if (ret > 0) return 1;
 
 	/* Requested for a non-empty password */
@@ -391,9 +418,16 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog)
 		if (ssh->auth != SSH_AUTH_AUTO_PUBLICKEY)
 		{
 			remmina_init_dialog_set_status (dialog, tips, ssh->user, ssh->server);
-			ret = remmina_init_dialog_authpwd (dialog, keyname, FALSE);
+			ret = remmina_init_dialog_authpwd (dialog, keyname, TRUE);
 
-			if (ret != GTK_RESPONSE_OK) return -1;
+			if (ret == GTK_RESPONSE_OK)
+			{
+				remmina_file_set_string( remminafile, "ssh_password", dialog->password);
+			}
+			else
+			{
+				return -1;
+			}
 		}
 		ret = remmina_ssh_auth (ssh, dialog->password);
 	}

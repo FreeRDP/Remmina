@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -110,7 +111,7 @@ remmina_plugin_sftp_main_thread (gpointer data)
 			}
 
 			ret = remmina_ssh_auth_gui (REMMINA_SSH (sftp),
-			                            REMMINA_INIT_DIALOG (remmina_protocol_widget_get_init_dialog (gp)));
+			                            REMMINA_INIT_DIALOG (remmina_protocol_widget_get_init_dialog (gp)), remminafile);
 			if (ret == 0)
 			{
 				remmina_plugin_service->protocol_plugin_set_error (gp, "%s", REMMINA_SSH (sftp)->error);
@@ -285,6 +286,23 @@ static const RemminaProtocolFeature remmina_plugin_sftp_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 
+/* Array of RemminaProtocolSetting for basic settings.
+ * Each item is composed by:
+ * a) RemminaProtocolSettingType for setting type
+ * b) Setting name
+ * c) Setting description
+ * d) Compact disposition
+ * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
+ * f) Unused pointer
+ */
+static const RemminaProtocolSetting remmina_sftp_basic_settings[] =
+{
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, "ssh_server", NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "ssh_username", N_("User name"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password", N_("User password"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
+};
+
 /* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin_sftp =
 {
@@ -295,7 +313,7 @@ static RemminaProtocolPlugin remmina_plugin_sftp =
 	VERSION,                                      // Version number
 	"remmina-sftp",                               // Icon for normal connection
 	"remmina-sftp",                               // Icon for SSH connection
-	NULL,                                         // Array for basic settings
+	remmina_sftp_basic_settings,                  // Array for basic settings
 	NULL,                                         // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_SFTP,            // SSH settings type
 	remmina_plugin_sftp_features,                 // Array for available features
