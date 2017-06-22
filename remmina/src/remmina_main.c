@@ -629,6 +629,7 @@ void remmina_main_on_action_application_mpchange(GtkAction *action, gpointer use
 	
 	username = domain = group = "";
 
+	remminafile = NULL;
 	if (remminamain->priv->selected_filename)
 	{
 		remminafile = remmina_file_load(remminamain->priv->selected_filename);
@@ -637,11 +638,13 @@ void remmina_main_on_action_application_mpchange(GtkAction *action, gpointer use
 			username = remmina_file_get_string(remminafile, "username");
 			domain = remmina_file_get_string(remminafile, "domain");
 			group = remmina_file_get_string(remminafile, "group");
-			remmina_file_free(remminafile);
 		}
 	}
 
 	remmina_mpchange_schedule(TRUE, group, domain, username, "");
+
+	if (remminafile != NULL)
+		remmina_file_free(remminafile);
 	
 }
 

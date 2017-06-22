@@ -428,7 +428,7 @@ remmina_mpchange_schedule(gboolean has_domain, const gchar *group, const gchar *
 
 	TRACE_CALL("remmina_mpchange_schedule");
 	struct mpchanger_params *mpcp;
-	
+
 	mpcp = g_malloc0(sizeof(struct mpchanger_params));
 	mpcp->username = g_strdup(username);
 	mpcp->password = g_strdup(password);
