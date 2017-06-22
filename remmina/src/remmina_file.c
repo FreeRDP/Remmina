@@ -74,6 +74,10 @@ remmina_file_new_empty(void)
 
 	remminafile = g_new0(RemminaFile, 1);
 	remminafile->settings = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
+	/* spsettings contains settings that are loaded from the secure_plugin.
+	 * it's used by remmina_file_store_secret_plugin_password() to know
+	 * where to change */
+	remminafile->spsettings = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 	return remminafile;
 }
 
@@ -253,6 +257,8 @@ remmina_file_load(const gchar *filename)
 						{
 							sec = secret_plugin->get_password(remminafile, key);
 							remmina_file_set_string(remminafile, key, sec);
+							/* Annotate in spsettings that this value comes from secret_plugin */
+							g_hash_table_insert(remminafile->spsettings, g_strdup(key), NULL);
 							g_free(sec);
 						}
 						else
@@ -355,6 +361,7 @@ gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint d
 	value = g_hash_table_lookup(remminafile->settings, setting);
 	return value == NULL ? default_value : (value[0] == 't' ? TRUE : atoi(value));
 }
+
 static GKeyFile*
 remmina_file_get_keyfile(RemminaFile *remminafile)
 {
@@ -379,6 +386,7 @@ void remmina_file_free(RemminaFile *remminafile)
 
 	g_free(remminafile->filename);
 	g_hash_table_destroy(remminafile->settings);
+	g_hash_table_destroy(remminafile->spsettings);
 	g_free(remminafile);
 }
 
@@ -461,6 +469,24 @@ void remmina_file_save(RemminaFile *remminafile)
 	g_key_file_free(gkeyfile);
 
 	remmina_main_update_file_datetime(remminafile);
+}
+
+void remmina_file_store_secret_plugin_password(RemminaFile *remminafile, const gchar* key, const gchar* value)
+{
+	TRACE_CALL("remmina_file_store_secret_plugin_password");
+
+	/* Only change the password in the keyring. This function
+	 * is a shortcut which avoids updating of date/time of .pref file
+	 * when possible, and is used by the mpchanger */
+	RemminaSecretPlugin* plugin;
+
+	if (g_hash_table_lookup_extended(remminafile->spsettings, g_strdup(key), NULL, NULL)) {
+		plugin = remmina_plugin_manager_get_secret_plugin();
+		plugin->store_password(remminafile, key, value);
+	} else {
+		remmina_file_set_string(remminafile, key, value);
+		remmina_file_save(remminafile);
+	}
 }
 
 RemminaFile*

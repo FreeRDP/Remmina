@@ -44,6 +44,7 @@ struct _RemminaFile
 {
 	gchar *filename;
 	GHashTable *settings;
+	GHashTable *spsettings;
 };
 
 enum
@@ -70,6 +71,7 @@ const gchar* remmina_file_get_string(RemminaFile *remminafile, const gchar *sett
 gchar* remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting);
 void remmina_file_set_int(RemminaFile *remminafile, const gchar *setting, gint value);
 gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint default_value);
+void remmina_file_store_secret_plugin_password(RemminaFile *remminafile, const gchar* key, const gchar* value);
 /* Create or overwrite the .remmina file */
 void remmina_file_save(RemminaFile *remminafile);
 /* Free the RemminaFile object */

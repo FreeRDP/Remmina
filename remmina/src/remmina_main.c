@@ -52,6 +52,7 @@
 #include "remmina_icon.h"
 #include "remmina_main.h"
 #include "remmina_exec.h"
+#include "remmina_mpchange.h"
 #include "remmina_external_tools.h"
 #include "remmina/remmina_trace_calls.h"
 
@@ -615,6 +616,33 @@ static void remmina_main_file_editor_destroy(GtkWidget *widget, gpointer user_da
 {
 	TRACE_CALL("remmina_main_file_editor_destroy");
 	remmina_main_load_files();
+}
+
+void remmina_main_on_action_application_mpchange(GtkAction *action, gpointer user_data)
+{
+	TRACE_CALL("remmina_main_on_action_application_mpchange");
+	RemminaFile *remminafile;
+
+	const gchar *username;
+	const gchar *domain;
+	const gchar *group;
+	
+	username = domain = group = "";
+
+	if (remminamain->priv->selected_filename)
+	{
+		remminafile = remmina_file_load(remminamain->priv->selected_filename);
+		if (remminafile != NULL)
+		{
+			username = remmina_file_get_string(remminafile, "username");
+			domain = remmina_file_get_string(remminafile, "domain");
+			group = remmina_file_get_string(remminafile, "group");
+			remmina_file_free(remminafile);
+		}
+	}
+
+	remmina_mpchange_schedule(TRUE, group, domain, username, "");
+	
 }
 
 void remmina_main_on_action_connections_new(GtkAction *action, gpointer user_data)
