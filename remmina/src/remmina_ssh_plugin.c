@@ -60,7 +60,6 @@
 
 /* Palette colors taken from sakura */
 #define PALETTE_SIZE 16
-
 /* 16 color palettes in GdkRGBA format (red, green, blue, alpha)
  * Text displayed in the first 8 colors (0-7) is meek (uses thin strokes).
  * Text displayed in the second 8 colors (8-15) is bold (uses thick strokes). */
@@ -650,6 +649,69 @@ remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, const RemminaProtoco
 	}
 }
 
+/* Array of key/value pairs for ssh auth type*/
+static gpointer ssh_auth_type[] =
+{
+	"password", N_("Password"),
+	"ssh_agent", N_("SSH agent"),
+	"ssh_pubkey_auto", N_("Public key (automatic)"),
+	"ssh_identity", N_("SSH identfy file"),
+	NULL
+};
+
+/* Charset list */
+static gpointer ssh_charset_list[] =
+{
+	"", "",
+	"", "ASCII",
+	"", "BIG5",
+	"", "CP437",
+	"", "CP720",
+	"", "CP737",
+	"", "CP775",
+	"", "CP850",
+	"", "CP852",
+	"", "CP855",
+	"", "CP857",
+	"", "CP858",
+	"", "CP862",
+	"", "CP866",
+	"", "CP874",
+	"", "CP1125",
+	"", "CP1250",
+	"", "CP1251",
+	"", "CP1252",
+	"", "CP1253",
+	"", "CP1254",
+	"", "CP1255",
+	"", "CP1256",
+	"", "CP1257",
+	"", "CP1258",
+	"", "EUC-JP",
+	"", "EUC-KR",
+	"", "GBK",
+	"", "ISO-8859-1",
+	"", "ISO-8859-2",
+	"", "ISO-8859-3",
+	"", "ISO-8859-4",
+	"", "ISO-8859-5",
+	"", "ISO-8859-6",
+	"", "ISO-8859-7",
+	"", "ISO-8859-8",
+	"", "ISO-8859-9",
+	"", "ISO-8859-10",
+	"", "ISO-8859-11",
+	"", "ISO-8859-12",
+	"", "ISO-8859-13",
+	"", "ISO-8859-14",
+	"", "ISO-8859-15",
+	"", "ISO-8859-16",
+	"", "KOI8-R",
+	"", "SJIS",
+	"", "UTF-8",
+	NULL
+};
+
 /* Array for available features.
  * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
 static RemminaProtocolFeature remmina_plugin_ssh_features[] =
@@ -674,9 +736,26 @@ static const RemminaProtocolSetting remmina_ssh_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, "ssh_server", NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "ssh_username", N_("User name"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password", N_("User password"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_auth_type", N_("Authentication type"), FALSE, ssh_auth_type, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE, "ssh_privatekey", N_("Identity file"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
+/* Array of RemminaProtocolSetting for advanced settings.
+ * Each item is composed by:
+ * a) RemminaProtocolSettingType for setting type
+ * b) Setting name
+ * c) Setting description
+ * d) Compact disposition
+ * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
+ * f) Unused pointer
+ */
+static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
+{
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_charset", N_("Character set"), FALSE, ssh_charset_list, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "exec", N_("Startup program"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
+};
 
 /* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin_ssh =
@@ -689,8 +768,8 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 	"utilities-terminal",                         // Icon for normal connection
 	"utilities-terminal",                         // Icon for SSH connection
 	remmina_ssh_basic_settings,                   // Array for basic settings
-	NULL,                                         // Array for advanced settings
-	REMMINA_PROTOCOL_SSH_SETTING_SSH,             // SSH settings type
+	remmina_ssh_advanced_settings,                // Array for advanced settings
+	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,          // SSH settings type
 	remmina_plugin_ssh_features,                  // Array for available features
 	remmina_plugin_ssh_init,                      // Plugin initialization
 	remmina_plugin_ssh_open_connection,           // Plugin open connection
@@ -713,7 +792,6 @@ remmina_ssh_plugin_register (void)
 
 	ssh_threads_set_callbacks(ssh_threads_get_pthread());
 	ssh_init();
-
 }
 
 #else

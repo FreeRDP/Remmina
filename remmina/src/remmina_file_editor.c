@@ -57,20 +57,6 @@
 
 G_DEFINE_TYPE( RemminaFileEditor, remmina_file_editor, GTK_TYPE_DIALOG)
 
-#ifdef HAVE_LIBSSH
-static const gchar* charset_list = "ASCII,BIG5,"
-                                   "CP437,CP720,CP737,CP775,CP850,CP852,CP855,"
-                                   "CP857,CP858,CP862,CP866,CP874,CP1125,CP1250,"
-                                   "CP1251,CP1252,CP1253,CP1254,CP1255,CP1256,"
-                                   "CP1257,CP1258,"
-                                   "EUC-JP,EUC-KR,GBK,"
-                                   "ISO-8859-1,ISO-8859-2,ISO-8859-3,ISO-8859-4,"
-                                   "ISO-8859-5,ISO-8859-6,ISO-8859-7,ISO-8859-8,"
-                                   "ISO-8859-9,ISO-8859-10,ISO-8859-11,ISO-8859-12,"
-                                   "ISO-8859-13,ISO-8859-14,ISO-8859-15,ISO-8859-16,"
-                                   "KOI8-R,SJIS,UTF-8";
-#endif
-
 static const gchar* server_tips = N_(	 "<tt><big>"
                                   "Supported formats\n"
                                   "* server\n"
@@ -300,16 +286,7 @@ static void remmina_file_editor_ssh_enabled_check_on_toggled(GtkToggleButton* to
 
 	if (gfe->priv->ssh_enabled_check)
 	{
-		if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SSH ||
-				ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SFTP)
-		{
-			gtk_widget_set_sensitive(gfe->priv->ssh_enabled_check, 1);
-			gtk_widget_set_sensitive(gfe->priv->ssh_loopback_check, 1);
-		}
-		else
-		{
-			enabled = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_enabled_check));
-		}
+		enabled = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_enabled_check));
 		if (gfe->priv->ssh_loopback_check)
 			gtk_widget_set_sensitive(gfe->priv->ssh_loopback_check, enabled);
 		if (gfe->priv->ssh_server_default_radio)
@@ -795,95 +772,77 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 
 	/* The SSH tab (implementation) */
 	grid = remmina_file_editor_create_notebook_tab (gfe, "dialog-password",
-		"SSH Settings", 9, 3);
+		"SSH Tunnel", 9, 3);
 
 	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_widget_show(hbox);
 	gtk_grid_attach (GTK_GRID(grid), hbox, 0, 0, 3, 1);
 	row++;
 
-	if (!(ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SSH ||
-				ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SFTP))
-	{
-		widget = gtk_check_button_new_with_label (_("Enable SSH tunnel"));
-		gtk_widget_show(widget);
-		gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
-		g_signal_connect(G_OBJECT(widget), "toggled",
-				G_CALLBACK(remmina_file_editor_ssh_enabled_check_on_toggled), gfe);
-		priv->ssh_enabled_check = widget;
+	widget = gtk_check_button_new_with_label (_("Enable SSH tunnel"));
+	gtk_widget_show(widget);
+	gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
+	g_signal_connect(G_OBJECT(widget), "toggled",
+			G_CALLBACK(remmina_file_editor_ssh_enabled_check_on_toggled), gfe);
+	priv->ssh_enabled_check = widget;
 
-		widget = gtk_check_button_new_with_label (_("Tunnel via loopback address"));
-		gtk_widget_show(widget);
-		gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
-		priv->ssh_loopback_check = widget;
+	widget = gtk_check_button_new_with_label (_("Tunnel via loopback address"));
+	gtk_widget_show(widget);
+	gtk_box_pack_start (GTK_BOX (hbox), widget, TRUE, TRUE, 0);
+	priv->ssh_loopback_check = widget;
 
-		row++;
-	}
-	/* SSH Server group */
+	row++;
 
 	switch (ssh_setting)
 	{
-	case REMMINA_PROTOCOL_SSH_SETTING_TUNNEL:
-		s = g_strdup_printf(_("Same server at port %i"), DEFAULT_SSH_PORT);
-		widget = gtk_radio_button_new_with_label (NULL, s);
-		g_free(s);
-		gtk_widget_show(widget);
-		gtk_grid_attach (GTK_GRID(grid), widget, 0, row, 3, 1);
-		priv->ssh_server_default_radio = widget;
-		row++;
+		case REMMINA_PROTOCOL_SSH_SETTING_TUNNEL:
+			s = g_strdup_printf(_("Same server at port %i"), DEFAULT_SSH_PORT);
+			widget = gtk_radio_button_new_with_label (NULL, s);
+			g_free(s);
+			gtk_widget_show(widget);
+			gtk_grid_attach (GTK_GRID(grid), widget, 0, row, 3, 1);
+			priv->ssh_server_default_radio = widget;
+			row++;
 
-		widget = gtk_radio_button_new_with_label_from_widget (
-		             GTK_RADIO_BUTTON(priv->ssh_server_default_radio), _("Custom"));
-		gtk_widget_show(widget);
-		gtk_grid_attach (GTK_GRID(grid), widget, 0, row, 1, 1);
-		g_signal_connect(G_OBJECT(widget), "toggled",
-		                 G_CALLBACK(remmina_file_editor_ssh_server_custom_radio_on_toggled), gfe);
-		priv->ssh_server_custom_radio = widget;
+			widget = gtk_radio_button_new_with_label_from_widget (
+					GTK_RADIO_BUTTON(priv->ssh_server_default_radio), _("Custom"));
+			gtk_widget_show(widget);
+			gtk_grid_attach (GTK_GRID(grid), widget, 0, row, 1, 1);
+			g_signal_connect(G_OBJECT(widget), "toggled",
+					G_CALLBACK(remmina_file_editor_ssh_server_custom_radio_on_toggled), gfe);
+			priv->ssh_server_custom_radio = widget;
 
-		widget = gtk_entry_new ();
-		gtk_widget_show(widget);
-		gtk_entry_set_max_length (GTK_ENTRY(widget), 100);
-		gtk_widget_set_tooltip_markup (widget, _(server_tips2));
-		gtk_grid_attach (GTK_GRID(grid), widget, 1, row, 2, 1);
-		priv->ssh_server_entry = widget;
-		row++;
-		break;
+			widget = gtk_entry_new ();
+			gtk_widget_show(widget);
+			gtk_entry_set_max_length (GTK_ENTRY(widget), 100);
+			gtk_widget_set_tooltip_markup (widget, _(server_tips2));
+			gtk_grid_attach (GTK_GRID(grid), widget, 1, row, 2, 1);
+			priv->ssh_server_entry = widget;
+			row++;
+			break;
 
-	case REMMINA_PROTOCOL_SSH_SETTING_REVERSE_TUNNEL:
-		priv->ssh_server_default_radio = NULL;
-		priv->ssh_server_custom_radio = NULL;
+		case REMMINA_PROTOCOL_SSH_SETTING_REVERSE_TUNNEL:
+			priv->ssh_server_default_radio = NULL;
+			priv->ssh_server_custom_radio = NULL;
 
-		priv->ssh_server_entry = remmina_file_editor_create_text (gfe, grid, 1, 0,
-		                         _("Server"), NULL);
-		gtk_widget_set_tooltip_markup (priv->ssh_server_entry, _(server_tips));
-		row++;
-		break;
-	case REMMINA_PROTOCOL_SSH_SETTING_SSH:
-	case REMMINA_PROTOCOL_SSH_SETTING_SFTP:
-		priv->ssh_server_default_radio = NULL;
-		priv->ssh_server_custom_radio = NULL;
-		priv->ssh_server_entry = NULL;
+			priv->ssh_server_entry = remmina_file_editor_create_text (gfe, grid, 1, 0,
+					_("Server"), NULL);
+			gtk_widget_set_tooltip_markup (priv->ssh_server_entry, _(server_tips));
+			row++;
+			break;
+		case REMMINA_PROTOCOL_SSH_SETTING_SSH:
+		case REMMINA_PROTOCOL_SSH_SETTING_SFTP:
+			priv->ssh_server_default_radio = NULL;
+			priv->ssh_server_custom_radio = NULL;
+			priv->ssh_server_entry = NULL;
 
-		break;
+			break;
 
-	default:
-		break;
+		default:
+			break;
 	}
 
-	priv->ssh_charset_combo = remmina_file_editor_create_combo (gfe, grid, row + 3, 0,
-	                          _("Character set"), charset_list, remmina_file_get_string (priv->remmina_file, "ssh_charset"));
-	row++;
-
-	if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SSH)
-	{
-		widget = remmina_file_editor_create_text (gfe, grid, row + 7, 1,
-		         _("Startup program"), NULL);
-		cs = remmina_file_get_string (priv->remmina_file, "exec");
-		gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
-		g_hash_table_insert(priv->setting_widgets, "exec", widget);
-		row++;
-	}
-	else if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SFTP)
+	if (ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_SFTP)
 	{
 		widget = remmina_file_editor_create_text (gfe, grid, row + 8, 1,
 		         _("Startup path"), NULL);
