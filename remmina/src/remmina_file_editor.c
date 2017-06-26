@@ -856,13 +856,8 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 
 	/* SSH Authentication frame */
 	p = remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->protocol_combo));
-	g_print("p = %s\n", p);
-	gint n;
-	n = g_strcmp0(p, "SSH");
-	g_print("Comp  of p = %d\n", n);
 	if (!(g_strcmp0(p, "SFTP") == 0 || g_strcmp0(p, "SSH") == 0))
 	{
-		g_print("p is %s, quindi visualizzo\n", p);
 		remmina_public_create_group (GTK_GRID(grid), _("SSH Authentication"), row + 8, 6, 1);
 		row++;
 
@@ -1020,22 +1015,13 @@ static void remmina_file_editor_update_ssh(RemminaFileEditor* gfe)
 		                            remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->ssh_charset_combo)));
 	}
 
-	if (g_strcmp0(remmina_file_get_string(priv->remmina_file, "protocol"), "SFTP") == 0
-	        || g_strcmp0(remmina_file_get_string(priv->remmina_file, "protocol"), "SSH") == 0)
-	{
-		ssh_enabled = TRUE;
-	}
-	else
-	{
-		ssh_enabled = (priv->ssh_enabled_check ?
-		               gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->ssh_enabled_check)) : FALSE);
-		remmina_file_set_int(
-		    priv->remmina_file,
-		    "ssh_loopback",
-		    (priv->ssh_loopback_check ?
-		     gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->ssh_loopback_check)) :
-		     FALSE));
-	}
+	ssh_enabled = (priv->ssh_enabled_check ?
+			gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->ssh_enabled_check)) : FALSE);
+	remmina_file_set_int( priv->remmina_file,
+			"ssh_loopback",
+			(priv->ssh_loopback_check ?
+			 gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->ssh_loopback_check)) :
+			 FALSE));
 	remmina_file_set_int(priv->remmina_file, "ssh_enabled", ssh_enabled);
 	remmina_file_set_string(priv->remmina_file, "ssh_username",
 	                        (ssh_enabled ? gtk_entry_get_text(GTK_ENTRY(priv->ssh_username_entry)) : NULL));

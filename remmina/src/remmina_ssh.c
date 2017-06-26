@@ -302,6 +302,7 @@ remmina_ssh_auth (RemminaSSH *ssh, const gchar *password)
 		ssh->password = g_strdup (password);
 	}
 
+g_print ("Sono dentro remmina_ssh_auth e auth vale %d\n", ssh->auth);
 	switch (ssh->auth)
 	{
 

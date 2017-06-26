@@ -650,12 +650,12 @@ remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, const RemminaProtoco
 }
 
 /* Array of key/value pairs for ssh auth type*/
-static gpointer ssh_auth_type[] =
+static gpointer ssh_auth[] =
 {
-	"password", N_("Password"),
-	"ssh_agent", N_("SSH agent"),
-	"ssh_pubkey_auto", N_("Public key (automatic)"),
-	"ssh_identity", N_("SSH identfy file"),
+	"0", N_("Password"),
+	"1", N_("SSH agent"),
+	"2", N_("Public key (automatic)"),
+	"3", N_("SSH identfy file"),
 	NULL
 };
 
@@ -736,7 +736,7 @@ static const RemminaProtocolSetting remmina_ssh_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, "ssh_server", NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "ssh_username", N_("User name"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password", N_("User password"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_auth_type", N_("Authentication type"), FALSE, ssh_auth_type, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_auth", N_("Authentication type"), FALSE, ssh_auth, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE, "ssh_privatekey", N_("Identity file"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
