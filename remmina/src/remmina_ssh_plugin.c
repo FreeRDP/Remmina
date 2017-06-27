@@ -653,9 +653,9 @@ remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, const RemminaProtoco
 static gpointer ssh_auth[] =
 {
 	"0", N_("Password"),
-	"1", N_("SSH agent"),
-	"2", N_("Public key (automatic)"),
-	"3", N_("SSH identfy file"),
+	"1", N_("SSH identfy file"),
+	"2", N_("SSH agent"),
+	"3", N_("Public key (automatic)"),
 	NULL
 };
 
