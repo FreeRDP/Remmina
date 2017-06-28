@@ -216,10 +216,10 @@ remmina_ssh_auth_pubkey (RemminaSSH *ssh)
 		return 0;
 	}
 
-	if ( ssh_pki_import_privkey_file( ssh->privkeyfile, (ssh->password ? ssh->password : ""),
+	if ( ssh_pki_import_privkey_file( ssh->privkeyfile, (ssh->passphrase ? ssh->passphrase : ""),
 	                                  NULL, NULL, &priv_key ) != SSH_OK )
 	{
-		if (ssh->password == NULL || ssh->password[0] == '\0') return -1;
+		if (ssh->passphrase == NULL || ssh->passphrase[0] == '\0') return -1;
 
 		remmina_ssh_set_error (ssh, _("SSH public key authentication failed: %s"));
 		return 0;
@@ -243,8 +243,8 @@ remmina_ssh_auth_auto_pubkey (RemminaSSH* ssh)
 {
 	TRACE_CALL("remmina_ssh_auth_auto_pubkey");
 	/* ssh->password should be ssh->passphrase, TODO */
-	if (ssh->password == NULL  || ssh->password[0] == '\0') return -1;
-	gint ret = ssh_userauth_publickey_auto (ssh->session, ssh->user, ssh->password);
+	if (ssh->passphrase == NULL  || ssh->passphrase[0] == '\0') return -1;
+	gint ret = ssh_userauth_publickey_auto (ssh->session, ssh->user, ssh->passphrase);
 
 	if (ret != SSH_AUTH_SUCCESS)
 	{
@@ -288,7 +288,9 @@ remmina_ssh_auth (RemminaSSH *ssh, const gchar *password)
 	if (password)
 	{
 		g_free(ssh->password);
+		g_free(ssh->passphrase);
 		ssh->password = g_strdup (password);
+		ssh->passphrase = g_strdup (password);
 	}
 
 	switch (ssh->auth)
@@ -317,6 +319,7 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, RemminaFile *r
 	TRACE_CALL("remmina_ssh_auth_gui");
 	gchar *tips;
 	gchar *keyname;
+	gchar *pwdtype;
 	gint ret;
 	size_t len;
 	guchar *pubkey;
@@ -369,8 +372,24 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, RemminaFile *r
 		return 0;
 	}
 
-	/* Try empty password or existing password first */
-	ret = remmina_ssh_auth (ssh, remmina_file_get_string(remminafile, "ssh_password"));
+	switch (ssh->auth)
+	{
+	case SSH_AUTH_PASSWORD:
+		tips = _("Authenticating %s's password to SSH server %s...");
+		keyname = _("SSH password");
+		pwdtype = "ssh_password";
+		break;
+	case SSH_AUTH_PUBLICKEY:
+	case SSH_AUTH_AUTO_PUBLICKEY:
+		tips = _("Authenticating %s's identity to SSH server %s...");
+		keyname = _("SSH private key passphrase");
+		pwdtype = "ssh_passphrase";
+		break;
+	default:
+		return FALSE;
+	}
+	/* Try empty password or existing password/passphrase first */
+	ret = remmina_ssh_auth (ssh, remmina_file_get_string(remminafile, pwdtype));
 	if (ret > 0) return 1;
 
 	/* Requested for a non-empty password */
@@ -378,27 +397,12 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, RemminaFile *r
 	{
 		if (!dialog) return -1;
 
-		switch (ssh->auth)
-		{
-		case SSH_AUTH_PASSWORD:
-			tips = _("Authenticating %s's password to SSH server %s...");
-			keyname = _("SSH password");
-			break;
-		case SSH_AUTH_PUBLICKEY:
-		case SSH_AUTH_AUTO_PUBLICKEY:
-			tips = _("Authenticating %s's identity to SSH server %s...");
-			keyname = _("SSH private key passphrase");
-			break;
-		default:
-			return FALSE;
-		}
-
 		remmina_init_dialog_set_status (dialog, tips, ssh->user, ssh->server);
 		ret = remmina_init_dialog_authpwd (dialog, keyname, TRUE);
 
 		if (ret == GTK_RESPONSE_OK)
 		{
-			remmina_file_set_string( remminafile, "ssh_password", dialog->password);
+			remmina_file_set_string( remminafile, pwdtype, dialog->password);
 		}
 		else
 		{

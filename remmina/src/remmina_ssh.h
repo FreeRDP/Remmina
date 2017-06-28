@@ -74,6 +74,8 @@ typedef struct _RemminaSSH
 	gchar *error;
 
 	pthread_mutex_t ssh_mutex;
+
+	gchar *passphrase;
 } RemminaSSH;
 
 gchar* remmina_ssh_identity_path (const gchar *id);

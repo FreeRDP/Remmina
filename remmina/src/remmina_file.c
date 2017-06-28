@@ -199,6 +199,10 @@ static gboolean is_encrypted_setting_by_name(const gchar *setting_name, RemminaP
 	{
 		return TRUE;
 	}
+	if (strcmp(setting_name, "ssh_passphrase") == 0)
+	{
+		return TRUE;
+	}
 
 	setting = find_protocol_setting(setting_name, protocol_plugin);
 	return is_encrypted_setting(setting);
