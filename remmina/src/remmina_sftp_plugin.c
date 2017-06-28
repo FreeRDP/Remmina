@@ -277,6 +277,16 @@ remmina_plugin_sftp_call_feature (RemminaProtocolWidget *gp, const RemminaProtoc
 	}
 }
 
+/* Array of key/value pairs for ssh auth type*/
+static gpointer ssh_auth_type[] =
+{
+	"password", N_("Password"),
+	"ssh_agent", N_("SSH agent"),
+	"ssh_pubkey_auto", N_("Public key (automatic)"),
+	"ssh_identity", N_("SSH identfy file"),
+	NULL
+};
+
 /* Array for available features.
  * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
 static const RemminaProtocolFeature remmina_plugin_sftp_features[] =
@@ -300,6 +310,8 @@ static const RemminaProtocolSetting remmina_sftp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, "ssh_server", NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "ssh_username", N_("User name"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password", N_("User password"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_auth_type", N_("Authentication type"), FALSE, ssh_auth_type, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE, "ssh_privatekey", N_("Identity file"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
@@ -315,7 +327,7 @@ static RemminaProtocolPlugin remmina_plugin_sftp =
 	"remmina-sftp",                               // Icon for SSH connection
 	remmina_sftp_basic_settings,                  // Array for basic settings
 	NULL,                                         // Array for advanced settings
-	REMMINA_PROTOCOL_SSH_SETTING_SFTP,            // SSH settings type
+	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,          // SSH settings type
 	remmina_plugin_sftp_features,                 // Array for available features
 	remmina_plugin_sftp_init,                     // Plugin initialization
 	remmina_plugin_sftp_open_connection,          // Plugin open connection
