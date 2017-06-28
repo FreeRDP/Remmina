@@ -60,6 +60,8 @@
 
 /* Palette colors taken from sakura */
 #define PALETTE_SIZE 16
+
+enum color_schemes { GRUVBOX, TANGO, LINUX, SOLARIZED_DARK, SOLARIZED_LIGHT, XTERM };
 /* 16 color palettes in GdkRGBA format (red, green, blue, alpha)
  * Text displayed in the first 8 colors (0-7) is meek (uses thin strokes).
  * Text displayed in the second 8 colors (8-15) is bold (uses thick strokes). */
@@ -491,6 +493,7 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 {
 	TRACE_CALL("remmina_plugin_ssh_init");
 	RemminaPluginSshData *gpdata;
+	RemminaFile *remminafile;
 	GtkWidget *hbox;
 	GtkAdjustment *vadjustment;
 	GtkWidget *vscrollbar;
@@ -498,6 +501,7 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	GtkStyleContext *style_context;
 	GdkRGBA foreground_color;
 	GdkRGBA background_color;
+	GdkRGBA cursor_color;
 #if !VTE_CHECK_VERSION(0,38,0)
 	GdkColor foreground_gdkcolor;
 	GdkColor background_gdkcolor;
@@ -528,20 +532,57 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 		gdk_rgba_parse(&foreground_color, remmina_pref.vte_foreground_color);
 		gdk_rgba_parse(&background_color, remmina_pref.vte_background_color);
 	}
+	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
+
 #if VTE_CHECK_VERSION(0,38,0)
-	/* Set colors to GdkRGBA */
-	remminavte.palette = linux_palette;
-	vte_terminal_set_colors (VTE_TERMINAL(vte), &foreground_color, &background_color, remminavte.palette, PALETTE_SIZE);
+		/* Set colors to GdkRGBA */
+		switch (remmina_plugin_service->file_get_int (remminafile, "ssh_color_scheme", FALSE))
+		{
+			case GRUVBOX:
+				remminavte.palette = gruvbox_palette;
+				gdk_rgba_parse(&foreground_color, "#ebdbb2");
+				gdk_rgba_parse(&background_color, "#282828");
+				gdk_rgba_parse(&cursor_color, "#d3869b");
+				break;
+			case TANGO:
+				remminavte.palette = tango_palette;
+				break;
+			case LINUX:
+				remminavte.palette = linux_palette;
+				break;
+			case SOLARIZED_DARK:
+				remminavte.palette = solarized_dark_palette;
+				gdk_rgba_parse(&foreground_color, "#839496");
+				gdk_rgba_parse(&background_color, "#002b36");
+				gdk_rgba_parse(&cursor_color, "#93a1a1");
+				break;
+			case SOLARIZED_LIGHT:
+				remminavte.palette = solarized_light_palette;
+				gdk_rgba_parse(&foreground_color, "#657b83");
+				gdk_rgba_parse(&background_color, "#fdf6e3");
+				gdk_rgba_parse(&cursor_color, "#586e75");
+				break;
+			case XTERM:
+				remminavte.palette = xterm_palette;
+				break;
+			default:
+				remminavte.palette = linux_palette;
+				break;
+		}
+		vte_terminal_set_colors (VTE_TERMINAL(vte), &foreground_color, &background_color, remminavte.palette, PALETTE_SIZE);
+		vte_terminal_set_color_foreground (VTE_TERMINAL(vte), &foreground_color);
+		vte_terminal_set_color_background (VTE_TERMINAL(vte), &background_color);
+		vte_terminal_set_color_cursor (VTE_TERMINAL(vte), &cursor_color);
 #else
-	/* VTE <= 2.90 doesn't support GdkRGBA so we must convert GdkRGBA to GdkColor */
-	foreground_gdkcolor.red = (guint16)(foreground_color.red * 0xFFFF);
-	foreground_gdkcolor.green = (guint16)(foreground_color.green * 0xFFFF);
-	foreground_gdkcolor.blue = (guint16)(foreground_color.blue * 0xFFFF);
-	background_gdkcolor.red = (guint16)(background_color.red * 0xFFFF);
-	background_gdkcolor.green = (guint16)(background_color.green * 0xFFFF);
-	background_gdkcolor.blue = (guint16)(background_color.blue * 0xFFFF);
-	/* Set colors to GdkColor */
-	vte_terminal_set_colors (VTE_TERMINAL(vte), &foreground_gdkcolor, &background_gdkcolor, NULL, 0);
+		/* VTE <= 2.90 doesn't support GdkRGBA so we must convert GdkRGBA to GdkColor */
+		foreground_gdkcolor.red = (guint16)(foreground_color.red * 0xFFFF);
+		foreground_gdkcolor.green = (guint16)(foreground_color.green * 0xFFFF);
+		foreground_gdkcolor.blue = (guint16)(foreground_color.blue * 0xFFFF);
+		background_gdkcolor.red = (guint16)(background_color.red * 0xFFFF);
+		background_gdkcolor.green = (guint16)(background_color.green * 0xFFFF);
+		background_gdkcolor.blue = (guint16)(background_color.blue * 0xFFFF);
+		/* Set colors to GdkColor */
+		vte_terminal_set_colors (VTE_TERMINAL(vte), &foreground_gdkcolor, &background_gdkcolor, NULL, 0);
 #endif
 
 	gtk_box_pack_start (GTK_BOX (hbox), vte, TRUE, TRUE, 0);
@@ -712,6 +753,17 @@ static gpointer ssh_charset_list[] =
 	NULL
 };
 
+static gpointer ssh_terminal_palette[] =
+{
+	"0", "Gruvbox",
+	"1", "Tango",
+	"2", "Linux",
+	"3", "Solarized Dark",
+	"4", "Solarized Light",
+	"5", "XTerm",
+	NULL
+};
+
 /* Array for available features.
  * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
 static RemminaProtocolFeature remmina_plugin_ssh_features[] =
@@ -753,6 +805,7 @@ static const RemminaProtocolSetting remmina_ssh_basic_settings[] =
 static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_charset", N_("Character set"), FALSE, ssh_charset_list, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_color_scheme", N_("Terminal color scheme"), FALSE, ssh_terminal_palette, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "exec", N_("Startup program"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
