@@ -135,7 +135,7 @@ static void remmina_main_save_before_destroy()
 static gboolean remmina_main_dexit(gpointer data)
 {
 	TRACE_CALL("remmina_main_dexit");
-	remmina_exec_exitremmina();
+	remmina_application_cond_exitremmina();
 	return FALSE;
 }
 
@@ -626,7 +626,7 @@ void remmina_main_on_action_application_mpchange(GtkAction *action, gpointer use
 	const gchar *username;
 	const gchar *domain;
 	const gchar *group;
-	
+
 	username = domain = group = "";
 
 	remminafile = NULL;
@@ -645,7 +645,7 @@ void remmina_main_on_action_application_mpchange(GtkAction *action, gpointer use
 
 	if (remminafile != NULL)
 		remmina_file_free(remminafile);
-	
+
 }
 
 void remmina_main_on_action_connections_new(GtkAction *action, gpointer user_data)

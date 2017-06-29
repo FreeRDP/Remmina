@@ -84,6 +84,27 @@ void remmina_exec_exitremmina()
 	g_application_quit(g_application_get_default());
 }
 
+static gboolean cb_counter_widgets(GtkWidget *widget, gpointer data)
+{
+	TRACE_CALL("cb_counter_widgets");
+	return TRUE;
+}
+
+void remmina_application_cond_exitremmina()
+{
+	TRACE_CALL("remmina_application_check_exitremmina");
+
+	/* Exit remmina only if there are no interesting windows left:
+	 * no main window, no systray menu, no connection window.
+	 * This function is usually called after a disconnection */
+
+	gint windows_counter = remmina_widget_pool_foreach(cb_counter_widgets, NULL);
+	if (windows_counter < 1 && !remmina_main_get_window() && !remmina_icon_is_available())
+	{
+		remmina_exec_exitremmina();
+	}
+}
+
 void remmina_exec_command(RemminaCommandType command, const gchar* data)
 {
 	TRACE_CALL("remmina_exec_command");
