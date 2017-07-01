@@ -528,6 +528,7 @@ remmina_ssh_init_from_file (RemminaSSH *ssh, RemminaFile *remminafile)
 	ssh->callback = NULL;
 	ssh->authenticated = FALSE;
 	ssh->error = NULL;
+	ssh->passphrase = NULL;
 	pthread_mutex_init (&ssh->ssh_mutex, NULL);
 
 	/* Parse the address and port */
