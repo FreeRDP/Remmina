@@ -84,6 +84,20 @@ void remmina_exec_exitremmina()
 	g_application_quit(g_application_get_default());
 }
 
+void remmina_application_cond_exitremmina()
+{
+	TRACE_CALL("remmina_application_check_exitremmina");
+
+	/* Exit remmina only if there are no interesting windows left:
+	 * no main window, no systray menu, no connection window.
+	 * This function is usually called after a disconnection */
+
+	if (remmina_widget_pool_count() < 1 && !remmina_main_get_window() && !remmina_icon_is_available())
+	{
+		remmina_exec_exitremmina();
+	}
+}
+
 void remmina_exec_command(RemminaCommandType command, const gchar* data)
 {
 	TRACE_CALL("remmina_exec_command");
