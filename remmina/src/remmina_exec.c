@@ -84,7 +84,7 @@ void remmina_exec_exitremmina()
 	g_application_quit(g_application_get_default());
 }
 
-void remmina_application_cond_exitremmina()
+void remmina_application_condexit(RemminaCondExitType why)
 {
 	TRACE_CALL("remmina_application_check_exitremmina");
 
@@ -92,9 +92,22 @@ void remmina_application_cond_exitremmina()
 	 * no main window, no systray menu, no connection window.
 	 * This function is usually called after a disconnection */
 
-	if (remmina_widget_pool_count() < 1 && !remmina_main_get_window() && !remmina_icon_is_available())
-	{
-		remmina_exec_exitremmina();
+	switch(why) {
+		case REMMINA_CONDEXIT_ONDISCONNECT:
+			// A connection has disconnected, should we exit remmina ?
+			if (remmina_widget_pool_count() < 1 && !remmina_main_get_window() && !remmina_icon_is_available())
+				remmina_exec_exitremmina();
+			break;
+		case REMMINA_CONDEXIT_ONMAINWINDELETE:
+			// Main window has been deleted
+			if (remmina_widget_pool_count() < 1 && !remmina_icon_is_available())
+				remmina_exec_exitremmina();
+			break;
+		case REMMINA_CONDEXIT_ONQUIT:
+			// Quit command has been sent from main window or appindicator/systray menu
+			// quit means QUIT.
+			remmina_exec_exitremmina();
+			break;
 	}
 }
 

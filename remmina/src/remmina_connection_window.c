@@ -3578,7 +3578,7 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 static void cb_autoclose_widget(GtkWidget *widget)
 {
 	gtk_widget_destroy(widget);
-	remmina_application_cond_exitremmina();
+	remmina_application_condexit(REMMINA_CONDEXIT_ONDISCONNECT);
 }
 
 static void remmina_connection_object_on_disconnect(RemminaProtocolWidget* gp, RemminaConnectionObject* cnnobj)
@@ -3630,7 +3630,7 @@ static void remmina_connection_object_on_disconnect(RemminaProtocolWidget* gp, R
 	cnnobj->remmina_file = NULL;
 	g_free(cnnobj);
 
-	remmina_application_cond_exitremmina();
+	remmina_application_condexit(REMMINA_CONDEXIT_ONDISCONNECT);
 }
 
 static void remmina_connection_object_on_desktop_resize(RemminaProtocolWidget* gp, RemminaConnectionObject* cnnobj)

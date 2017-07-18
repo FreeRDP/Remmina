@@ -134,8 +134,9 @@ static void remmina_main_save_before_destroy()
 
 static gboolean remmina_main_dexit(gpointer data)
 {
+	/* Try to exit remmina after a delete window event */
 	TRACE_CALL("remmina_main_dexit");
-	remmina_application_cond_exitremmina();
+	remmina_application_condexit(REMMINA_CONDEXIT_ONMAINWINDELETE);
 	return FALSE;
 }
 
@@ -144,11 +145,10 @@ gboolean remmina_main_on_delete_event(GtkWidget *widget, GdkEvent *event, gpoint
 	TRACE_CALL("remmina_main_on_delete_event");
 	remmina_main_save_before_destroy();
 
-	/* Exit immediately if there is no systray icon */
-	if (!remmina_icon_is_available()) {
-		remminamain->window = NULL;
-		g_idle_add(remmina_main_dexit, NULL);
-	}
+	// Forget the main window: it has been deleted
+	remminamain->window = NULL;
+	g_idle_add(remmina_main_dexit, NULL);
+
 	return FALSE;
 }
 
@@ -736,8 +736,9 @@ void remmina_main_on_action_application_preferences(GtkAction *action, gpointer 
 
 void remmina_main_on_action_application_quit(GtkAction *action, gpointer user_data)
 {
+	// Called by quit signal in remmina_main.glade
 	TRACE_CALL("remmina_main_on_action_application_quit");
-	g_idle_add(remmina_main_dexit, NULL);
+	remmina_application_condexit(REMMINA_CONDEXIT_ONQUIT);
 }
 
 void remmina_main_on_action_view_statusbar(GtkToggleAction *action, gpointer user_data)
