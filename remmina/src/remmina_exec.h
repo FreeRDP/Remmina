@@ -52,9 +52,16 @@ typedef enum
 	REMMINA_COMMAND_EXIT         = 10
 } RemminaCommandType;
 
+typedef enum
+{
+	REMMINA_CONDEXIT_ONDISCONNECT = 0,
+	REMMINA_CONDEXIT_ONQUIT = 1,
+	REMMINA_CONDEXIT_ONMAINWINDELETE = 2
+} RemminaCondExitType;
+
 void remmina_exec_command(RemminaCommandType command, const gchar* data);
 void remmina_exec_exitremmina(void);
-void remmina_application_cond_exitremmina(void);
+void remmina_application_condexit(RemminaCondExitType why);
 
 G_END_DECLS
 

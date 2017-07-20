@@ -68,9 +68,10 @@ G_DEFINE_TYPE( RemminaConnectionWindow, remmina_connection_window, GTK_TYPE_WIND
 
 #define FLOATING_TOOLBAR_WIDGET (GTK_CHECK_VERSION(3, 10, 0))
 
-	typedef struct _RemminaConnectionHolder RemminaConnectionHolder;
+typedef struct _RemminaConnectionHolder RemminaConnectionHolder;
 
-	struct _RemminaConnectionWindowPriv
+
+struct _RemminaConnectionWindowPriv
 {
 	RemminaConnectionHolder* cnnhld;
 
@@ -121,6 +122,8 @@ G_DEFINE_TYPE( RemminaConnectionWindow, remmina_connection_window, GTK_TYPE_WIND
 
 	gboolean kbcaptured;
 	gboolean mouse_pointer_entered;
+
+	RemminaConnectionWindowOnDeleteConfirmMode on_delete_confirm_mode;
 
 };
 
@@ -416,16 +419,18 @@ gboolean remmina_connection_window_delete(RemminaConnectionWindow* cnnwin)
 	if (!REMMINA_IS_CONNECTION_WINDOW(cnnwin))
 		return TRUE;
 
-	n = gtk_notebook_get_n_pages(notebook);
-	if (n > 1)
-	{
-		dialog = gtk_message_dialog_new(GTK_WINDOW(cnnwin), GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION,
-				GTK_BUTTONS_YES_NO,
-				_("There are %i active connections in the current window. Are you sure to close?"), n);
-		i = gtk_dialog_run(GTK_DIALOG(dialog));
-		gtk_widget_destroy(dialog);
-		if (i != GTK_RESPONSE_YES)
-			return FALSE;
+	if (cnnwin->priv->on_delete_confirm_mode != REMMINA_CONNECTION_WINDOW_ONDELETE_NOCONFIRM) {
+		n = gtk_notebook_get_n_pages(notebook);
+		if (n > 1)
+		{
+			dialog = gtk_message_dialog_new(GTK_WINDOW(cnnwin), GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION,
+					GTK_BUTTONS_YES_NO,
+					_("There are %i active connections in the current window. Are you sure to close?"), n);
+			i = gtk_dialog_run(GTK_DIALOG(dialog));
+			gtk_widget_destroy(dialog);
+			if (i != GTK_RESPONSE_YES)
+				return FALSE;
+		}
 	}
 	remmina_connection_window_close_all_connections(cnnwin);
 
@@ -2490,6 +2495,7 @@ remmina_connection_window_new_from_holder(RemminaConnectionHolder* cnnhld)
 
 	cnnwin = REMMINA_CONNECTION_WINDOW(g_object_new(REMMINA_TYPE_CONNECTION_WINDOW, NULL));
 	cnnwin->priv->cnnhld = cnnhld;
+	cnnwin->priv->on_delete_confirm_mode = REMMINA_CONNECTION_WINDOW_ONDELETE_CONFIRM_IF_2_OR_MORE;
 
 	g_signal_connect(G_OBJECT(cnnwin), "delete-event", G_CALLBACK(remmina_connection_window_delete_event), cnnhld);
 	g_signal_connect(G_OBJECT(cnnwin), "destroy", G_CALLBACK(remmina_connection_window_destroy), cnnhld);
@@ -3578,7 +3584,7 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 static void cb_autoclose_widget(GtkWidget *widget)
 {
 	gtk_widget_destroy(widget);
-	remmina_application_cond_exitremmina();
+	remmina_application_condexit(REMMINA_CONDEXIT_ONDISCONNECT);
 }
 
 static void remmina_connection_object_on_disconnect(RemminaProtocolWidget* gp, RemminaConnectionObject* cnnobj)
@@ -3630,7 +3636,7 @@ static void remmina_connection_object_on_disconnect(RemminaProtocolWidget* gp, R
 	cnnobj->remmina_file = NULL;
 	g_free(cnnobj);
 
-	remmina_application_cond_exitremmina();
+	remmina_application_condexit(REMMINA_CONDEXIT_ONDISCONNECT);
 }
 
 static void remmina_connection_object_on_desktop_resize(RemminaProtocolWidget* gp, RemminaConnectionObject* cnnobj)
@@ -3744,5 +3750,12 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 	remmina_protocol_widget_open_connection(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), remminafile);
 
 	return protocolwidget;
-
 }
+
+void remmina_connection_window_set_delete_confirm_mode(RemminaConnectionWindow* cnnwin, RemminaConnectionWindowOnDeleteConfirmMode mode)
+{
+	cnnwin->priv->on_delete_confirm_mode = mode;
+}
+
+
+
