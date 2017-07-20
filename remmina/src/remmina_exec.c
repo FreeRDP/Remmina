@@ -84,6 +84,18 @@ void remmina_exec_exitremmina()
 	g_application_quit(g_application_get_default());
 }
 
+static gboolean disable_remmina_connection_window_delete_confirm_cb(GtkWidget *widget, gpointer data)
+{
+	TRACE_CALL("disable_remmina_connection_window_delete_confirm_cb");
+	RemminaConnectionWindow *rcw;
+
+	if (REMMINA_IS_CONNECTION_WINDOW(widget)) {
+		rcw = (RemminaConnectionWindow*)widget;
+		remmina_connection_window_set_delete_confirm_mode(rcw, REMMINA_CONNECTION_WINDOW_ONDELETE_NOCONFIRM);
+	}
+	return TRUE;
+}
+
 void remmina_application_condexit(RemminaCondExitType why)
 {
 	TRACE_CALL("remmina_application_check_exitremmina");
@@ -106,6 +118,7 @@ void remmina_application_condexit(RemminaCondExitType why)
 		case REMMINA_CONDEXIT_ONQUIT:
 			// Quit command has been sent from main window or appindicator/systray menu
 			// quit means QUIT.
+			remmina_widget_pool_foreach(disable_remmina_connection_window_delete_confirm_cb, NULL);
 			remmina_exec_exitremmina();
 			break;
 	}
@@ -233,6 +246,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		break;
 
 	case REMMINA_COMMAND_EXIT:
+		remmina_widget_pool_foreach(disable_remmina_connection_window_delete_confirm_cb, NULL);
 		remmina_exec_exitremmina();
 		break;
 
