@@ -12,9 +12,34 @@ This special place is reserved to who have donated the hisghest amount of money 
 
 - Daniel Bolter
 
+## 2017 Sponsors
+
+### Donors of the Year 2017
+
+These donors have contributed with an important amount of money during the year 2017
+
+### Year 2017 donors
+
+- Andre Bultmann
+- Daniel Platteau
+- Jakub Kubień
+- Jonathan Nicol
+- Kirk Sullivan
+- Leigh Mutimer
+- Luca Menini
+- Michael Williams
+- Mike Hwang
+- Paul Walker
+- Pavel Zaitsev
+- Roberto Resoli
+- Samuel Gyger
+- Vince Patron
+
 ## 2016 Sponsors
 
 ### Donors of the Year 2016
+
+These donors have contributed with an important amount of money during the year 2016
 
 - Daniel Bolter
 - Bruce Cran
