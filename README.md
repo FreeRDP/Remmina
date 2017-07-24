@@ -79,8 +79,8 @@ sudo apt-get update
 [Hubbitus](https://github.com/Hubbitus) (Pavel Alexeev) provided us a copr, to install just execute as root:
 
 ```sh
-# dnf copr enable hubbitus/remmina-next
-# dnf upgrade --refresh 'remmina*' 'freerdp*'
+dnf copr enable hubbitus/remmina-next
+dnf upgrade --refresh 'remmina*' 'freerdp*'
 ```
 
 ### Arch Linux based
