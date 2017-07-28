@@ -416,6 +416,7 @@ gboolean remmina_icon_is_available(void)
 
 	TRACE_CALL("remmina_icon_is_available");
 	gchar *gsversion;
+	unsigned int gsv_maj, gsv_min, gsv_seq;
 
 	if (!remmina_icon.icon)
 		return FALSE;
@@ -425,19 +426,31 @@ gboolean remmina_icon_is_available(void)
 	/* Special treatmen under Gnome Shell */
 	if ((gsversion=remmina_sysinfo_get_gnome_shell_version()) != NULL)
 	{
+		if (sscanf(gsversion, "%u.%u", &gsv_maj, &gsv_min) == 2)
+			gsv_seq = gsv_maj << 16 | gsv_min << 8;
+		else
+			gsv_seq = 0x030000;
 		g_free(gsversion);
 #ifdef HAVE_LIBAPPINDICATOR
-		/* Gnome Shell with compiled in LIBAPPINDICATOR: no systray icon,
+		/* Gnome Shell with compiled in LIBAPPINDICATOR:
 		 * ensure have also a working appindicator extension available */
-		if (!remmina_sysinfo_is_appindicator_available())
+		if (remmina_sysinfo_is_appindicator_available())
 		{
 			/* No libappindicator extension for gnome shell, no remmina_icon */
+			return TRUE;
+		}
+#endif
+		/* Gnome Shell without LIBAPPINDICATOR */
+		if (gsv_seq >= 0x030A00) {
+			/* Gnome shell >= 3.16, Status Icon (GtkStatusIcon) is visible on the drawer
+			 * at the bottom left of the screen */
+			return TRUE;
+		}
+		else {
+			/* Gnome shell < 3.16, Status Icon (GtkStatusIcon) is hidden
+			 * on the message tray */
 			return FALSE;
 		}
-#else
-		/* Gnome Shell without compiled in LIBAPPINDICATOR: no systray icon. */
-		return FALSE;
-#endif
 	}
 	return TRUE;
 }
