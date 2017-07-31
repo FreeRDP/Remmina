@@ -42,7 +42,7 @@ of which some that have a [bounty](https://github.com/FreeRDP/Remmina/issues?mil
 
 - [#6](https://github.com/FreeRDP/Remmina/issues/6) : New resolution setting "fit to window" [$250]
 - [#323](https://github.com/FreeRDP/Remmina/issues/323) : File transfer in RDP plugin [$25]
-- [#376](https://github.com/FreeRDP/Remmina/issues/3376) : RDP: Multi monitor support [$15]
+- [#376](https://github.com/FreeRDP/Remmina/issues/376) : RDP: Multi monitor support [$15]
 - [#476](https://github.com/FreeRDP/Remmina/issues/476) : Favorite and recent connections [$5]
 - [#815](https://github.com/FreeRDP/Remmina/issues/815) : Feature request - Option - Floating Desktop Name [$5]
 - [#1195](https://github.com/FreeRDP/Remmina/issues/1195) : support for CredSSP [$10]
