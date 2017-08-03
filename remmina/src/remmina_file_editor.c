@@ -436,7 +436,7 @@ static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const Remm
 static GtkWidget* remmina_file_editor_create_password(RemminaFileEditor* gfe, GtkWidget* grid,
         gint row, gint col, const gchar* label, const gchar* value)
 {
-	TRACE_CALL("remmina_file_editor_create_custom_pwd");
+	TRACE_CALL("remmina_file_editor_create_password");
 	GtkWidget* widget;
 
 	widget = gtk_label_new(label);
