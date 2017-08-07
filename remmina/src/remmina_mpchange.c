@@ -403,7 +403,7 @@ static gboolean remmina_file_multipasswd_changer_mt(gpointer d)
                                  GTK_DIALOG_DESTROY_WITH_PARENT,
                                  GTK_MESSAGE_INFO,
                                  GTK_BUTTONS_OK,
-                                 _("%d password changed."), mpcp->changed_passwords_count);
+                                 ngettext("%d password changed.", "%d passwords changed.", mpcp->changed_passwords_count), mpcp->changed_passwords_count);
 		gtk_dialog_run(GTK_DIALOG (msgDialog));
 		gtk_widget_destroy(msgDialog);
 	}

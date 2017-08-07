@@ -283,7 +283,7 @@ static gpointer ssh_auth_type[] =
 	"password", N_("Password"),
 	"ssh_agent", N_("SSH agent"),
 	"ssh_pubkey_auto", N_("Public key (automatic)"),
-	"ssh_identity", N_("SSH identfy file"),
+	"ssh_identity", N_("SSH identity file"),
 	NULL
 };
 
