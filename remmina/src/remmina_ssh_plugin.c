@@ -197,7 +197,6 @@ const GdkRGBA solarized_light_palette[PALETTE_SIZE] = {
 #endif
 };
 
-
 const GdkRGBA xterm_palette[PALETTE_SIZE] = {
     {0,        0,        0,        1},
     {0.803922, 0,        0,        1},
@@ -546,8 +545,14 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 				break;
 			case TANGO:
 				remminavte.palette = tango_palette;
+				gdk_rgba_parse(&foreground_color, "#eeeeec");
+				gdk_rgba_parse(&background_color, "#2e3436");
+				gdk_rgba_parse(&cursor_color, "#8ae234");
 				break;
 			case LINUX:
+				gdk_rgba_parse(&foreground_color, "#ffffff");
+				gdk_rgba_parse(&background_color, "#000000");
+				gdk_rgba_parse(&cursor_color, "#ffffff");
 				remminavte.palette = linux_palette;
 				break;
 			case SOLARIZED_DARK:
@@ -563,6 +568,9 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 				gdk_rgba_parse(&cursor_color, "#586e75");
 				break;
 			case XTERM:
+				gdk_rgba_parse(&foreground_color, "#000000");
+				gdk_rgba_parse(&background_color, "#ffffff");
+				gdk_rgba_parse(&cursor_color, "#000000");
 				remminavte.palette = xterm_palette;
 				break;
 			default:
