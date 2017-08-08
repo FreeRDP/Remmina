@@ -456,7 +456,7 @@ static GtkWidget* remmina_file_editor_create_password(RemminaFileEditor* gfe, Gt
 	gtk_entry_set_max_length(GTK_ENTRY(widget), 100);
 	gtk_entry_set_visibility(GTK_ENTRY(widget), FALSE);
 	gtk_widget_set_hexpand (widget, TRUE);
-	gtk_entry_set_activates_default(GTK_ENTRY(widget),TRUE);
+	gtk_entry_set_activates_default(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(widget))), TRUE);
 
 	if (value)
 	{
