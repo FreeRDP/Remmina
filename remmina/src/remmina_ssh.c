@@ -261,7 +261,7 @@ remmina_ssh_auth_agent (RemminaSSH* ssh)
 {
 	TRACE_CALL("remmina_ssh_auth_agent");
 	gint ret;
-	ret = ssh_userauth_agent (ssh->session, NULL);
+	ret = ssh_userauth_agent (ssh->session, ssh->user);
 
 	if (ret != SSH_AUTH_SUCCESS)
 	{
@@ -403,6 +403,7 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, RemminaFile *r
 		pwdtype = "ssh_password";
 		break;
 	case SSH_AUTH_PUBLICKEY:
+	case SSH_AUTH_AGENT:
 	case SSH_AUTH_AUTO_PUBLICKEY:
 		tips = _("Authenticating %s's identity to SSH server %s...");
 		keyname = _("SSH private key passphrase");
