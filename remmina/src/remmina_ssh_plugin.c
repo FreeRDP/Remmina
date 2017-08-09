@@ -764,9 +764,9 @@ static gpointer ssh_charset_list[] =
 
 static gpointer ssh_terminal_palette[] =
 {
-	"0", "Gruvbox",
+	"0", "Linux",
 	"1", "Tango",
-	"2", "Linux",
+	"2", "Gruvbox",
 	"3", "Solarized Dark",
 	"4", "Solarized Light",
 	"5", "XTerm",
