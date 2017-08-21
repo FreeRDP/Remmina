@@ -667,7 +667,6 @@ remmina_ssh_free (RemminaSSH *ssh)
 	g_free(ssh->server);
 	g_free(ssh->user);
 	g_free(ssh->password);
-	g_free(ssh->passphrase);
 	g_free(ssh->privkeyfile);
 	g_free(ssh->charset);
 	g_free(ssh->error);
