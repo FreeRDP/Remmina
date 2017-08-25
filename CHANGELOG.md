@@ -1,6 +1,41 @@
 # Change Log
 
-## [v1.2.0-rcgit.19](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.19) (2017-07-20)
+## [v1.2.0-rcgit.20](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.20) (2017-08-25)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.19...v1.2.0-rcgit.20)
+
+**Implemented enhancements:**
+
+- Enter key doesn't "Connect" when in Edit menu and password field is in focus [\#1233](https://github.com/FreeRDP/Remmina/issues/1233)
+- Set Linux as the default terminal color scheme. Fixes \#1238 [\#1243](https://github.com/FreeRDP/Remmina/pull/1243) ([antenore](https://github.com/antenore))
+
+**Fixed bugs:**
+
+- Remmina crashes each time I use FTP transfer [\#1257](https://github.com/FreeRDP/Remmina/issues/1257)
+- Problems with some color schemes [\#1225](https://github.com/FreeRDP/Remmina/issues/1225)
+
+**Closed issues:**
+
+- Color on SSH terminal window being applied [\#1238](https://github.com/FreeRDP/Remmina/issues/1238)
+- Tray applet closing when last window gets closed [\#1236](https://github.com/FreeRDP/Remmina/issues/1236)
+- Systray icon closes when closing 'Main Window' or RDP connection [\#1229](https://github.com/FreeRDP/Remmina/issues/1229)
+- SSH Tunneling is broken with SSH Agent with public key [\#1228](https://github.com/FreeRDP/Remmina/issues/1228)
+- Missing icons after compiling latest Git release [\#1221](https://github.com/FreeRDP/Remmina/issues/1221)
+- RDP quality settings not saved [\#1216](https://github.com/FreeRDP/Remmina/issues/1216)
+- Cannot connect after upgrading Ubuntu to 16.04 [\#946](https://github.com/FreeRDP/Remmina/issues/946)
+
+**Merged pull requests:**
+
+- passphrase not yet used in sftp connection - closes \#1257 [\#1259](https://github.com/FreeRDP/Remmina/pull/1259) ([antenore](https://github.com/antenore))
+- Added ssh\_agent in the list of authorized method, fixes \#1228 [\#1246](https://github.com/FreeRDP/Remmina/pull/1246) ([antenore](https://github.com/antenore))
+- Connect when pressing enter in the password field [\#1242](https://github.com/FreeRDP/Remmina/pull/1242) ([antenore](https://github.com/antenore))
+- Fixed terminal color palettes [\#1240](https://github.com/FreeRDP/Remmina/pull/1240) ([antenore](https://github.com/antenore))
+- French translation update and other po files update with new strings to be translated [\#1239](https://github.com/FreeRDP/Remmina/pull/1239) ([DevDef](https://github.com/DevDef))
+- SSH Kerberos GSSAPI Auth [\#1237](https://github.com/FreeRDP/Remmina/pull/1237) ([giox069](https://github.com/giox069))
+- Enter key doesn't "Connect" when in Edit menu and password field is in focus  - \#1233 [\#1234](https://github.com/FreeRDP/Remmina/pull/1234) ([erichoog](https://github.com/erichoog))
+- Fix link for issue \#367 [\#1232](https://github.com/FreeRDP/Remmina/pull/1232) ([erichoog](https://github.com/erichoog))
+- Change Status Icon availability for gnome 3.16 [\#1230](https://github.com/FreeRDP/Remmina/pull/1230) ([giox069](https://github.com/giox069))
+
+## [v1.2.0-rcgit.19](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.19) (2017-07-24)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.18...v1.2.0-rcgit.19)
 
 **Implemented enhancements:**
@@ -12,6 +47,7 @@
 - RD Gateway authentication doesn't work [\#511](https://github.com/FreeRDP/Remmina/issues/511)
 - Allow the user to hide the toolbar inside a remmina connection window [\#413](https://github.com/FreeRDP/Remmina/issues/413)
 - Support for RDP Gateway [\#347](https://github.com/FreeRDP/Remmina/issues/347)
+- Feature request: Implement "Credential Groups" [\#82](https://github.com/FreeRDP/Remmina/issues/82)
 - Ssh improvements [\#1196](https://github.com/FreeRDP/Remmina/pull/1196) ([antenore](https://github.com/antenore))
 - Implementing separate user and password for RD Gateway [\#1193](https://github.com/FreeRDP/Remmina/pull/1193) ([antenore](https://github.com/antenore))
 - RDP: remove server hostname DNS check [\#1190](https://github.com/FreeRDP/Remmina/pull/1190) ([giox069](https://github.com/giox069))
@@ -32,6 +68,7 @@
 
 **Closed issues:**
 
+- Invalid \(too large\) file size in rdp shared folder [\#1220](https://github.com/FreeRDP/Remmina/issues/1220)
 - RDP to Win10 makes ToolBar clear [\#1209](https://github.com/FreeRDP/Remmina/issues/1209)
 - Upgrading to 1.2 failed [\#1202](https://github.com/FreeRDP/Remmina/issues/1202)
 - Multiple NICs [\#1188](https://github.com/FreeRDP/Remmina/issues/1188)
