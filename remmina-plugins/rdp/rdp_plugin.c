@@ -88,6 +88,14 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 				input->KeyboardEvent(input, flags, event->key_event.key_code);
 				break;
 
+			case REMMINA_RDP_EVENT_TYPE_SCANCODE_UNICODE:
+				/*
+				 * TS_UNICODE_KEYBOARD_EVENT RDP message, see https://msdn.microsoft.com/en-us/library/cc240585.aspx
+				 */
+				flags = event->key_event.up ? KBD_FLAGS_RELEASE : KBD_FLAGS_DOWN;
+				input->UnicodeKeyboardEvent(input, flags, event->key_event.unicode_code);
+				break;
+
 			case REMMINA_RDP_EVENT_TYPE_MOUSE:
 				if (event->mouse_event.extended)
 					input->ExtendedMouseEvent(input, event->mouse_event.flags,

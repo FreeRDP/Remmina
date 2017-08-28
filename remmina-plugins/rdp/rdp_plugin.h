@@ -109,6 +109,7 @@ typedef struct rf_glyph rfGlyph;
 typedef enum
 {
 	REMMINA_RDP_EVENT_TYPE_SCANCODE,
+	REMMINA_RDP_EVENT_TYPE_SCANCODE_UNICODE,
 	REMMINA_RDP_EVENT_TYPE_MOUSE,
 	REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_LIST,
 	REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_DATA_RESPONSE,
@@ -125,6 +126,7 @@ struct remmina_plugin_rdp_event
 			BOOL up;
 			BOOL extended;
 			UINT8 key_code;
+			UINT32 unicode_code;
 		} key_event;
 		struct
 		{
