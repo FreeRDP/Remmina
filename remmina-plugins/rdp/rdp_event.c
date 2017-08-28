@@ -593,12 +593,19 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 			}
 			else
 			{
-				display = gtk_widget_get_display(widget); // ToDo: get correct display for this window!
+				display = gtk_widget_get_display(widget);
 				unicode_keyval = gdk_keyval_to_unicode(event->keyval);
-				if (unicode_keyval == 0 || unicode_keyval == 0x0D) {
-					// When unicode_keyval == 0 (unknown unicode char, i.e. shift or alt o ctrl key)
-					// or unicode_keyval == Enter
-					// we fallback to not locally-map the key
+				/* Decide when whe should send a keycode or a unicode character.
+				 * - All non char keys (shift, alt, win) should be sent as keycode
+				 * - All special keys (F1-F10, numeric pad, home/end/arrows/pgup/pgdn/ins/del) keycode
+				 * - All key pressed while CTRL or ALT or WIN is down are not decoded by gdk_keyval_to_unicode(), so send it as keycode
+				 * - All keycodes not translatable to unicode chars, as keycode
+				 * - The rest as unicode char
+				 */
+				if (event->keyval >= 0xfe00 || // arrows, shift, alt, Fn, num keypad...
+					unicode_keyval == 0 ||		// impossible to translate
+					(event->state & (GDK_MOD1_MASK | GDK_CONTROL_MASK | GDK_SUPER_MASK)) != 0 // a modifier not recognized by gdk_keyval_to_unicode()
+					) {
 					scancode = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(event->hardware_keycode);
 					rdp_event.key_event.key_code = scancode & 0xFF;
 					rdp_event.key_event.extended = scancode & 0x100;
