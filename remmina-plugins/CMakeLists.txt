@@ -53,8 +53,6 @@ if(LIBSSH_FOUND)
         target_link_libraries(remmina ${SSH_LIBRARIES})
 endif()
 
-find_required_package(LIBVNCSERVER)
-
 find_required_package(XKBFILE)
 
 if(LIBSSH_FOUND AND XKBFILE_FOUND)
@@ -73,9 +71,8 @@ if(TELEPATHY_FOUND)
         add_subdirectory(telepathy)
 endif()
 
-find_suggested_package(ZLIB)
-
-if(ZLIB_FOUND)
+find_suggested_package(LIBVNCSERVER)
+if(LIBVNCSERVER_FOUND)
         add_subdirectory(vnc)
 endif()
 
