@@ -326,7 +326,8 @@ static void remmina_file_editor_ssh_enabled_check_on_toggled(GtkToggleButton* to
 	if (gfe->priv->ssh_username_entry)
 	if (enabled && gtk_entry_get_text(GTK_ENTRY(gfe->priv->ssh_username_entry)) [0] == '\0')
 	{
-		gtk_entry_set_text(GTK_ENTRY(gfe->priv->ssh_username_entry), g_get_user_name());
+		gtk_entry_set_text(GTK_ENTRY(gfe->priv->ssh_username_entry),
+				remmina_file_get_string(priv->remmina_file, "ssh_username"));
 	}
 }
 
