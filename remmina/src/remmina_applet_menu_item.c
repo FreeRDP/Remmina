@@ -35,6 +35,7 @@
 
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <glib/gprintf.h>
 #include <string.h>
 #include <stdarg.h>
 #include "remmina_applet_menu_item.h"
@@ -108,6 +109,13 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 		item->ssh_enabled = g_key_file_get_boolean(gkeyfile, "remmina", "ssh_enabled", NULL);
 
 		g_key_file_free(gkeyfile);
+
+		if (item->name == NULL) {
+			g_printf("WARNING: missing name= line in file %s. Skipping.\n", item->filename);
+			va_end(ap);
+			return NULL;
+		}
+
 		break;
 
 	case REMMINA_APPLET_MENU_ITEM_DISCOVERED:
