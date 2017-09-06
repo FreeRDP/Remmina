@@ -169,6 +169,28 @@ typedef struct _RemminaPref
 
 	/* Remmina birthday julian format*/
 	guint32 bdate;
+
+	/* Color palette for VTE terminal */
+	gchar *background;
+	gchar *cursor;
+	gchar *foreground;
+	gchar *color0;
+	gchar *color1;
+	gchar *color2;
+	gchar *color3;
+	gchar *color4;
+	gchar *color5;
+	gchar *color6;
+	gchar *color7;
+	gchar *color8;
+	gchar *color9;
+	gchar *color10;
+	gchar *color11;
+	gchar *color12;
+	gchar *color13;
+	gchar *color14;
+	gchar *color15;
+
 } RemminaPref;
 
 #define DEFAULT_SSH_PARSECONFIG TRUE
