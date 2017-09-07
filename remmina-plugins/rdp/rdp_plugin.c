@@ -1496,7 +1496,7 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService* service)
 		return FALSE;
 	}
 
-	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
+	bindtextdomain(GETTEXT_PACKAGE, REMMINA_RUNTIME_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 
 	if (! service->register_plugin((RemminaPlugin*) &remmina_rdp))

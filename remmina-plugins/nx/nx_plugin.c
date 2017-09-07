@@ -824,7 +824,7 @@ remmina_plugin_entry(RemminaPluginService *service)
 
 	remmina_plugin_nx_service = service;
 
-	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
+	bindtextdomain(GETTEXT_PACKAGE, REMMINA_RUNTIME_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 
 	if ((dpy = XkbOpenDisplay(NULL, NULL, NULL, NULL, NULL, NULL)) != NULL)

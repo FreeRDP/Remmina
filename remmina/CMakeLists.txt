@@ -186,9 +186,6 @@ if(WITH_TRANSLATIONS)
         add_subdirectory(po)
 endif()
 
-set(REMMINA_EXTERNAL_TOOLS_DIR "${CMAKE_INSTALL_FULL_DATADIR}/remmina/external_tools")
-add_definitions( -DREMMINA_EXTERNAL_TOOLS_DIR="${REMMINA_EXTERNAL_TOOLS_DIR}" )
-
 add_subdirectory(icons)
 add_subdirectory(desktop)
 add_subdirectory(external_tools)

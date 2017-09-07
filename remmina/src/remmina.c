@@ -212,7 +212,7 @@ static void remmina_on_startup(GApplication *app)
 	gtk_window_set_default_icon_name("remmina");
 
 	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
-	                                   REMMINA_DATADIR G_DIR_SEPARATOR_S "icons");
+	                                   REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons");
 	g_application_hold(app);
 }
 
@@ -239,7 +239,7 @@ int main(int argc, char* argv[])
 
 	remmina_masterthread_exec_save_main_thread_id();
 
-	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
+	bindtextdomain(GETTEXT_PACKAGE, REMMINA_RUNTIME_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 	textdomain(GETTEXT_PACKAGE);
 

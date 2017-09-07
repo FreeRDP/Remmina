@@ -232,7 +232,7 @@ void remmina_plugin_manager_init(void)
 		return;
 	}
 
-	dir = g_dir_open(REMMINA_PLUGINDIR, 0, NULL);
+	dir = g_dir_open(REMMINA_RUNTIME_PLUGINDIR, 0, NULL);
 	if (dir == NULL)
 		return;
 	while ((name = g_dir_read_name(dir)) != NULL)
@@ -242,7 +242,7 @@ void remmina_plugin_manager_init(void)
 		ptr++;
 		if (g_strcmp0(ptr, G_MODULE_SUFFIX) != 0)
 			continue;
-		fullpath = g_strdup_printf(REMMINA_PLUGINDIR "/%s", name);
+		fullpath = g_strdup_printf(REMMINA_RUNTIME_PLUGINDIR "/%s", name);
 		remmina_plugin_manager_load_plugin(fullpath);
 		g_free(fullpath);
 	}
