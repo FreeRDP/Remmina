@@ -610,7 +610,7 @@ gboolean remmina_public_get_modifier_for_keycode(GdkKeymap *keymap, guint16 keyc
 GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename)
 {
 	TRACE_CALL("remmina_public_gtk_builder_new_from_file")
-	gchar *ui_path = g_strconcat(REMMINA_UIDIR, G_DIR_SEPARATOR_S, filename, NULL);
+	gchar *ui_path = g_strconcat(REMMINA_RUNTIME_UIDIR, G_DIR_SEPARATOR_S, filename, NULL);
 #if GTK_CHECK_VERSION(3, 10, 0)
 	GtkBuilder *builder = gtk_builder_new_from_file(ui_path);
 #else
