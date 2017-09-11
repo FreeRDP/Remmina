@@ -534,16 +534,6 @@ void remmina_pref_init(void)
 		remmina_pref.vte_system_colors = g_key_file_get_boolean(gkeyfile, "remmina_pref", "vte_system_colors", NULL);
 	else
 		remmina_pref.vte_system_colors = FALSE;
-	/* Customized vte foreground color */
-	if (g_key_file_has_key (gkeyfile, "remmina_pref", "vte_foreground_color", NULL))
-		remmina_pref.vte_foreground_color = g_key_file_get_string (gkeyfile, "remmina_pref", "vte_foreground_color", NULL);
-	else
-		remmina_pref.vte_foreground_color = "rgb(192,192,192)";
-	/* Customized vte background color */
-	if (g_key_file_has_key (gkeyfile, "remmina_pref", "vte_background_color", NULL))
-		remmina_pref.vte_background_color = g_key_file_get_string (gkeyfile, "remmina_pref", "vte_background_color", NULL);
-	else
-		remmina_pref.vte_background_color = "rgb(0,0,0)";
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_lines", NULL))
 		remmina_pref.vte_lines = g_key_file_get_integer(gkeyfile, "remmina_pref", "vte_lines", NULL);
@@ -753,8 +743,6 @@ void remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "vte_allow_bold_text", remmina_pref.vte_allow_bold_text);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "vte_lines", remmina_pref.vte_lines);
 	g_key_file_set_boolean (gkeyfile, "remmina_pref", "vte_system_colors", remmina_pref.vte_system_colors);
-	g_key_file_set_string(gkeyfile, "remmina_pref", "vte_foreground_color", remmina_pref.vte_foreground_color ? remmina_pref.vte_foreground_color : "");
-	g_key_file_set_string(gkeyfile, "remmina_pref", "vte_background_color", remmina_pref.vte_background_color ? remmina_pref.vte_background_color : "");
 	g_key_file_set_string(gkeyfile, "ssh_colors", "background", remmina_pref.background ? remmina_pref.background : "");
 	g_key_file_set_string(gkeyfile, "ssh_colors", "cursor", remmina_pref.cursor ? remmina_pref.cursor : "");
 	g_key_file_set_string(gkeyfile, "ssh_colors", "foreground", remmina_pref.foreground ? remmina_pref.foreground : "");

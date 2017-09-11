@@ -495,8 +495,8 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	else
 	{
 		/* Get customized colors */
-		gdk_rgba_parse(&foreground_color, remmina_pref.vte_foreground_color);
-		gdk_rgba_parse(&background_color, remmina_pref.vte_background_color);
+		gdk_rgba_parse(&foreground_color, remmina_pref.foreground);
+		gdk_rgba_parse(&background_color, remmina_pref.background);
 	}
 	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 

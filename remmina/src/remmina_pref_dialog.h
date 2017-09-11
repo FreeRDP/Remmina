@@ -101,6 +101,26 @@ typedef struct _RemminaPrefDialog
 	GtkButton *button_keyboard_copy;
 	GtkButton *button_keyboard_paste;
 	GtkButton *button_keyboard_select_all;
+	GtkLabel *label_terminal_cursor_color;
+	GtkLabel *label_terminal_normal_colors;
+	GtkLabel *label_terminal_bright_colors;
+	GtkColorButton *colorbutton_cursor;
+	GtkColorButton *colorbutton_color0;
+	GtkColorButton *colorbutton_color1;
+	GtkColorButton *colorbutton_color2;
+	GtkColorButton *colorbutton_color3;
+	GtkColorButton *colorbutton_color4;
+	GtkColorButton *colorbutton_color5;
+	GtkColorButton *colorbutton_color6;
+	GtkColorButton *colorbutton_color7;
+	GtkColorButton *colorbutton_color8;
+	GtkColorButton *colorbutton_color9;
+	GtkColorButton *colorbutton_color10;
+	GtkColorButton *colorbutton_color11;
+	GtkColorButton *colorbutton_color12;
+	GtkColorButton *colorbutton_color13;
+	GtkColorButton *colorbutton_color14;
+	GtkColorButton *colorbutton_color15;
 
 	RemminaPrefDialogPriv *priv;
 } RemminaPrefDialog;
