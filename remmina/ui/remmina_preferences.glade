@@ -126,7 +126,6 @@ Author: Antenore Gatta
                       <object class="GtkComboBoxText" id="comboboxtext_options_double_click">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">baseline</property>
                         <property name="hexpand">True</property>
                         <items>
                           <item translatable="yes">Open connection</item>
@@ -155,7 +154,6 @@ Author: Antenore Gatta
                       <object class="GtkComboBoxText" id="comboboxtext_options_scale_quality">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">baseline</property>
                         <property name="hexpand">True</property>
                         <items>
                           <item translatable="yes">Nearest</item>
@@ -186,7 +184,6 @@ Author: Antenore Gatta
                       <object class="GtkEntry" id="entry_options_scroll">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="halign">baseline</property>
                         <property name="max_length">3</property>
                       </object>
                       <packing>
@@ -211,7 +208,6 @@ Author: Antenore Gatta
                       <object class="GtkEntry" id="entry_options_recent_items">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="halign">baseline</property>
                         <property name="hexpand">True</property>
                         <property name="max_length">2</property>
                       </object>
@@ -226,7 +222,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="halign">baseline</property>
                         <signal name="clicked" handler="remmina_pref_dialog_clear_recent" swapped="no"/>
                       </object>
                       <packing>
@@ -265,7 +260,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="halign">baseline</property>
                         <signal name="clicked" handler="remmina_pref_on_button_keystrokes_clicked" swapped="no"/>
                       </object>
                       <packing>
@@ -291,7 +285,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="tooltip_text" translatable="yes">Choose the directory where you want to save Remmina screenshots.</property>
-                        <property name="halign">baseline</property>
                         <property name="hexpand">True</property>
                         <property name="action">select-folder</property>
                         <property name="title" translatable="yes">Select a Directory</property>
@@ -308,7 +301,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="halign">baseline</property>
                         <signal name="clicked" handler="remmina_pref_on_button_resolutions_clicked" swapped="no"/>
                       </object>
                       <packing>
@@ -393,7 +385,6 @@ Author: Antenore Gatta
                       <object class="GtkComboBoxText" id="comboboxtext_appearance_view_mode">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">baseline</property>
                         <property name="hexpand">True</property>
                         <items>
                           <item translatable="yes">Automatic</item>
@@ -424,7 +415,6 @@ Author: Antenore Gatta
                       <object class="GtkComboBoxText" id="comboboxtext_appearance_tab_interface">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">baseline</property>
                         <property name="hexpand">True</property>
                         <items>
                           <item id="0" translatable="yes">Tab by groups</item>
@@ -457,7 +447,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="tooltip_text" translatable="yes">This setting will be active after the application restart</property>
-                        <property name="halign">baseline</property>
                         <property name="hexpand">True</property>
                         <items>
                           <item translatable="yes">Use system theme preferences</item>
@@ -488,7 +477,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="tooltip_text" translatable="yes">This setting will be active after the application restart</property>
-                        <property name="halign">baseline</property>
                         <property name="hexpand">True</property>
                         <items>
                           <item translatable="yes">Use system theme preferences</item>
@@ -523,7 +511,6 @@ Author: Antenore Gatta
                       <object class="GtkComboBoxText" id="comboboxtext_appearance_fullscreen_toolbar_visibility">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">baseline</property>
                         <property name="active_id">0</property>
                         <items>
                           <item id="0" translatable="yes">Peeking</item>
@@ -699,7 +686,8 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_keyboard_host_key">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">end</property>
+                        <property name="halign">start</property>
+                        <property name="hexpand">True</property>
                         <property name="label" translatable="yes">Host key</property>
                       </object>
                       <packing>
@@ -714,7 +702,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="halign">baseline</property>
                         <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
@@ -727,7 +714,8 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_keyboard_fullscreen">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">end</property>
+                        <property name="halign">start</property>
+                        <property name="hexpand">True</property>
                         <property name="label" translatable="yes">Toggle fullscreen mode</property>
                       </object>
                       <packing>
@@ -742,7 +730,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="halign">baseline</property>
                         <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
@@ -755,7 +742,8 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_keyboard_auto_fit">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">end</property>
+                        <property name="halign">start</property>
+                        <property name="hexpand">True</property>
                         <property name="label" translatable="yes">Auto-fit window</property>
                       </object>
                       <packing>
@@ -770,7 +758,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="halign">baseline</property>
                         <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
@@ -783,7 +770,8 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_keyboard_switch_tab">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">end</property>
+                        <property name="halign">start</property>
+                        <property name="hexpand">True</property>
                         <property name="label" translatable="yes">Switch tab pages</property>
                       </object>
                       <packing>
@@ -798,7 +786,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="halign">baseline</property>
                         <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
@@ -813,7 +800,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="halign">baseline</property>
                         <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
@@ -825,7 +811,8 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_keyboard_scaled">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">end</property>
+                        <property name="halign">start</property>
+                        <property name="hexpand">True</property>
                         <property name="label" translatable="yes">Toggle scaled mode</property>
                       </object>
                       <packing>
@@ -840,7 +827,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="halign">baseline</property>
                         <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
@@ -853,7 +839,8 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_keyboard_grab_keyboard">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">end</property>
+                        <property name="halign">start</property>
+                        <property name="hexpand">True</property>
                         <property name="label" translatable="yes">Grab keyboard</property>
                       </object>
                       <packing>
@@ -868,7 +855,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="halign">baseline</property>
                         <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
@@ -881,7 +867,8 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_keyboard_minimize">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">end</property>
+                        <property name="halign">start</property>
+                        <property name="hexpand">True</property>
                         <property name="label" translatable="yes">Minimize window</property>
                       </object>
                       <packing>
@@ -896,7 +883,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="halign">baseline</property>
                         <property name="valign">start</property>
                         <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
@@ -910,7 +896,8 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_keyboard_disconnect">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">end</property>
+                        <property name="halign">start</property>
+                        <property name="hexpand">True</property>
                         <property name="label" translatable="yes">Disconnect</property>
                       </object>
                       <packing>
@@ -925,7 +912,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="halign">baseline</property>
                         <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
@@ -938,7 +924,8 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_keyboard_toolbar">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">end</property>
+                        <property name="halign">start</property>
+                        <property name="hexpand">True</property>
                         <property name="label" translatable="yes">Show / hide toolbar</property>
                       </object>
                       <packing>
@@ -953,7 +940,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="halign">baseline</property>
                         <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
@@ -966,7 +952,8 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_keyboard_screenshot">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">end</property>
+                        <property name="halign">start</property>
+                        <property name="hexpand">True</property>
                         <property name="label" translatable="yes">Screenshot</property>
                         <property name="ellipsize">start</property>
                       </object>
@@ -982,7 +969,6 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="halign">baseline</property>
                         <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                       </object>
                       <packing>
@@ -1027,7 +1013,7 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_options_ssh_port">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">end</property>
+                        <property name="halign">start</property>
                         <property name="label" translatable="yes">SSH tunnel local port</property>
                       </object>
                       <packing>
@@ -1039,7 +1025,6 @@ Author: Antenore Gatta
                       <object class="GtkEntry" id="entry_options_ssh_port">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="halign">baseline</property>
                         <property name="hexpand">True</property>
                         <property name="max_length">5</property>
                       </object>
@@ -1069,7 +1054,6 @@ Author: Antenore Gatta
                       <object class="GtkComboBoxText" id="comboboxtext_options_ssh_loglevel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">baseline</property>
                         <property name="hexpand">True</property>
                         <items>
                           <item id="0" translatable="yes">SSH_LOG_NOLOG</item>
@@ -1089,7 +1073,7 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_options_ssh_loglevel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">end</property>
+                        <property name="halign">start</property>
                         <property name="label" translatable="yes">SSH log level</property>
                       </object>
                       <packing>
@@ -1182,7 +1166,6 @@ Author: Antenore Gatta
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="halign">baseline</property>
                             <property name="font">Sans 12</property>
                             <property name="preview_text"/>
                           </object>
@@ -1250,7 +1233,6 @@ Author: Antenore Gatta
                           <object class="GtkEntry" id="entry_scrollback_lines">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="halign">baseline</property>
                             <property name="max_length">5</property>
                           </object>
                           <packing>
@@ -1292,7 +1274,6 @@ Author: Antenore Gatta
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="halign">baseline</property>
                             <property name="hexpand">True</property>
                             <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                           </object>
@@ -1334,7 +1315,6 @@ Author: Antenore Gatta
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="halign">baseline</property>
                             <property name="hexpand">True</property>
                             <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                           </object>
@@ -1376,7 +1356,6 @@ Author: Antenore Gatta
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="halign">baseline</property>
                             <property name="hexpand">True</property>
                             <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                           </object>
