@@ -188,7 +188,10 @@ void remmina_pref_init(void)
 	GKeyFile *gkeyfile;
 	gchar *remmina_dir;
 	const gchar *filename = g_strdup_printf("%s.pref", g_get_prgname());
+	const gchar *colors_filename = g_strdup_printf("%s.colors", g_get_prgname());
+	gchar *remmina_colors_file;
 	GDir *dir;
+	GFile *path;
 	gchar *legacy = g_strdup_printf (".%s", g_get_prgname ());
 	int i;
 
@@ -235,6 +238,10 @@ void remmina_pref_init(void)
 			g_get_prgname (), NULL);
 
 	remmina_pref_file = g_strdup_printf("%s/remmina.pref", remmina_dir);
+	/* remmina.colors */
+	remmina_colors_file = g_strdup_printf("%s/%s", remmina_dir, colors_filename);
+	path = g_file_new_for_path(remmina_colors_file);
+
 	remmina_keymap_file = g_strdup_printf("%s/remmina.keymap", remmina_dir);
 
 	gkeyfile = g_key_file_new();
@@ -558,6 +565,16 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.vte_shortcutkey_select_all = GDK_KEY_a;
 
+	/* If we have a color scheme file, we switch to it, GIO will merge it in the
+	 * remmina.pref file */
+	if (g_file_test (remmina_colors_file, G_FILE_TEST_IS_REGULAR))
+	{
+		remmina_pref_save();
+		//g_free(gkeyfile);
+		gkeyfile = g_key_file_new();
+		g_key_file_load_from_file(gkeyfile, remmina_colors_file, G_KEY_FILE_NONE, NULL);
+	}
+
 	if (g_key_file_has_key(gkeyfile, "ssh_colors", "background", NULL))
 		remmina_pref.background = g_key_file_get_string(gkeyfile, "ssh_colors", "background",
 						     NULL);
@@ -672,13 +689,19 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.color15 = "#d5ccba";
 
-
 	g_key_file_free(gkeyfile);
+
+	/* We delete the colorscheme file because we save its content in the remmina.pref */
+	if (g_file_test (remmina_colors_file, G_FILE_TEST_IS_REGULAR))
+	{
+		g_file_delete (path, NULL, NULL);
+	}
 
 	if (remmina_pref.secret == NULL)
 		remmina_pref_gen_secret();
 
 	remmina_pref_init_keymap();
+	remmina_pref_save();
 }
 
 void remmina_pref_save(void)

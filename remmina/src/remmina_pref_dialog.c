@@ -84,6 +84,38 @@ void remmina_pref_on_button_resolutions_clicked(GtkWidget *widget, gpointer user
 	gtk_widget_destroy(GTK_WIDGET(dialog));
 }
 
+/* Re-initialize the remmina_pref_init to reload the color scheme when a color scheme
+ * file is selected*/
+void remmina_pref_on_color_scheme_selected(GtkWidget *widget, gpointer user_data)
+{
+	TRACE_CALL("remmina_pref_on_color_scheme_selected");
+	gchar *sourcepath;
+	gchar *remmina_dir;
+	gchar *destpath;
+	GFile *source;
+	GFile *destination;
+
+	sourcepath = gtk_file_chooser_get_filename(remmina_pref_dialog->filechooserbutton_terminal_color_scheme);
+	source = g_file_new_for_path (sourcepath);
+
+	remmina_dir = g_build_path ( "/", g_get_user_config_dir (), g_get_prgname (), NULL);
+	/* /home/foo/.config/remmina */
+	destpath = g_strdup_printf("%s/remmina.colors", remmina_dir);
+	destination = g_file_new_for_path (destpath);
+
+	if (g_file_test (sourcepath, G_FILE_TEST_IS_REGULAR))
+	{
+		g_file_copy (   source,
+				destination,
+				G_FILE_COPY_OVERWRITE,
+				NULL,
+				NULL,
+				NULL,
+				NULL);
+		/* Here we should reinitialize the widget */
+	}
+}
+
 void remmina_pref_dialog_clear_recent(GtkWidget *widget, gpointer user_data)
 {
 	TRACE_CALL("remmina_pref_dialog_clear_recent");
@@ -516,6 +548,7 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->colorbutton_color13 = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_color13"));
 	remmina_pref_dialog->colorbutton_color14 = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_color14"));
 	remmina_pref_dialog->colorbutton_color15 = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_color15"));
+	remmina_pref_dialog->filechooserbutton_terminal_color_scheme = GTK_FILE_CHOOSER(GET_OBJECT("filechooserbutton_terminal_color_scheme"));
 
 	/* Connect signals */
 	gtk_builder_connect_signals(remmina_pref_dialog->builder, NULL);
