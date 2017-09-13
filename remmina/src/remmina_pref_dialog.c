@@ -271,7 +271,8 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.vte_shortcutkey_paste = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_paste));
 	remmina_pref.vte_shortcutkey_select_all = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_select_all));
 
-	remmina_pref_save();
+	/* We do this to reload immediately whatever we have changed in the remmina preferences */
+	remmina_pref_init();
 
 	remmina_pref_dialog->dialog = NULL;
 }
@@ -341,10 +342,6 @@ static void remmina_pref_dialog_init(void)
 	gchar buf[100];
 	GdkRGBA color;
 
-	/* We reinitialize the remmina_pref to load anything has changed.
-	 * This is needed when we change anything while remmina is running.
-	 * TODO: We should not call this the first time as it is rendundant */
-	remmina_pref_init();
 	gtk_dialog_set_default_response(GTK_DIALOG(remmina_pref_dialog->dialog), GTK_RESPONSE_CLOSE);
 
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_options_remember_last_view_mode), remmina_pref.save_view_mode);
