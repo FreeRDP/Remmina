@@ -191,7 +191,13 @@ add_custom_target(uninstall
         "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
 
 find_required_package(GTK)
-find_required_package(PTHREAD)
+
+set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+find_package(Threads REQUIRED)
+if(NOT CMAKE_USE_PTHREADS_INIT)
+        message(FATAL_ERROR "pthreads thread library not found")
+endif()
+
 find_suggested_package(GCRYPT)
 find_suggested_package(AVAHI)
 
