@@ -341,6 +341,10 @@ static void remmina_pref_dialog_init(void)
 	gchar buf[100];
 	GdkRGBA color;
 
+	/* We reinitialize the remmina_pref to load anything has changed.
+	 * This is needed when we change anything while remmina is running.
+	 * TODO: We should not call this the first time as it is rendundant */
+	remmina_pref_init();
 	gtk_dialog_set_default_response(GTK_DIALOG(remmina_pref_dialog->dialog), GTK_RESPONSE_CLOSE);
 
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_options_remember_last_view_mode), remmina_pref.save_view_mode);

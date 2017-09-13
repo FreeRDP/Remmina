@@ -570,7 +570,6 @@ void remmina_pref_init(void)
 	if (g_file_test (remmina_colors_file, G_FILE_TEST_IS_REGULAR))
 	{
 		remmina_pref_save();
-		//g_free(gkeyfile);
 		gkeyfile = g_key_file_new();
 		g_key_file_load_from_file(gkeyfile, remmina_colors_file, G_KEY_FILE_NONE, NULL);
 	}
