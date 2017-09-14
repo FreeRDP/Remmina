@@ -32,8 +32,8 @@
 # files in the program, then also delete it here.
 
 
-set(CMAKE_THREAD_PREFER_PTHREAD)
-find_package(Threads)
+set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+find_package(Threads REQUIRED)
 find_package(X11)
 
 set(REMMINA_PLUGIN_RDP_SRCS
