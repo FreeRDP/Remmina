@@ -780,7 +780,7 @@ static gpointer ssh_terminal_palette[] =
 	"3", "Solarized Dark",
 	"4", "Solarized Light",
 	"5", "XTerm",
-	"6", "Custom",
+	"6", "Custom (Configured in Remmina preferences)",
 	NULL
 };
 

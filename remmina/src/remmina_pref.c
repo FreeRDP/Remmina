@@ -689,11 +689,13 @@ void remmina_pref_init(void)
 
 	g_key_file_free(gkeyfile);
 
+#if 0
 	/* We delete the colorscheme file because we save its content in the remmina.pref */
 	if (g_file_test (remmina_colors_file, G_FILE_TEST_IS_REGULAR))
 	{
 		g_file_delete (path, NULL, NULL);
 	}
+#endif
 
 	if (remmina_pref.secret == NULL)
 		remmina_pref_gen_secret();
