@@ -188,7 +188,10 @@ void remmina_pref_init(void)
 	GKeyFile *gkeyfile;
 	gchar *remmina_dir;
 	const gchar *filename = g_strdup_printf("%s.pref", g_get_prgname());
+	const gchar *colors_filename = g_strdup_printf("%s.colors", g_get_prgname());
+	gchar *remmina_colors_file;
 	GDir *dir;
+	GFile *path;
 	gchar *legacy = g_strdup_printf (".%s", g_get_prgname ());
 	int i;
 
@@ -235,6 +238,10 @@ void remmina_pref_init(void)
 			g_get_prgname (), NULL);
 
 	remmina_pref_file = g_strdup_printf("%s/remmina.pref", remmina_dir);
+	/* remmina.colors */
+	remmina_colors_file = g_strdup_printf("%s/%s", remmina_dir, colors_filename);
+	path = g_file_new_for_path(remmina_colors_file);
+
 	remmina_keymap_file = g_strdup_printf("%s/remmina.keymap", remmina_dir);
 
 	gkeyfile = g_key_file_new();
@@ -534,16 +541,6 @@ void remmina_pref_init(void)
 		remmina_pref.vte_system_colors = g_key_file_get_boolean(gkeyfile, "remmina_pref", "vte_system_colors", NULL);
 	else
 		remmina_pref.vte_system_colors = FALSE;
-	/* Customized vte foreground color */
-	if (g_key_file_has_key (gkeyfile, "remmina_pref", "vte_foreground_color", NULL))
-		remmina_pref.vte_foreground_color = g_key_file_get_string (gkeyfile, "remmina_pref", "vte_foreground_color", NULL);
-	else
-		remmina_pref.vte_foreground_color = "rgb(192,192,192)";
-	/* Customized vte background color */
-	if (g_key_file_has_key (gkeyfile, "remmina_pref", "vte_background_color", NULL))
-		remmina_pref.vte_background_color = g_key_file_get_string (gkeyfile, "remmina_pref", "vte_background_color", NULL);
-	else
-		remmina_pref.vte_background_color = "rgb(0,0,0)";
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_lines", NULL))
 		remmina_pref.vte_lines = g_key_file_get_integer(gkeyfile, "remmina_pref", "vte_lines", NULL);
@@ -568,7 +565,137 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.vte_shortcutkey_select_all = GDK_KEY_a;
 
+	/* If we have a color scheme file, we switch to it, GIO will merge it in the
+	 * remmina.pref file */
+	if (g_file_test (remmina_colors_file, G_FILE_TEST_IS_REGULAR))
+	{
+		gkeyfile = g_key_file_new();
+		g_key_file_load_from_file(gkeyfile, remmina_colors_file, G_KEY_FILE_NONE, NULL);
+	}
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "background", NULL))
+		remmina_pref.background = g_key_file_get_string(gkeyfile, "ssh_colors", "background",
+						     NULL);
+	else
+		remmina_pref.background = "#d5ccba";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "cursor", NULL))
+		remmina_pref.cursor = g_key_file_get_string(gkeyfile, "ssh_colors", "cursor",
+						     NULL);
+	else
+		remmina_pref.cursor = "#45373c";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "foreground", NULL))
+		remmina_pref.foreground = g_key_file_get_string(gkeyfile, "ssh_colors", "foreground",
+						     NULL);
+	else
+		remmina_pref.foreground = "#45373c";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color0", NULL))
+		remmina_pref.color0 = g_key_file_get_string(gkeyfile, "ssh_colors", "color0",
+						     NULL);
+	else
+		remmina_pref.color0 = "#20111b";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color1", NULL))
+		remmina_pref.color1 = g_key_file_get_string(gkeyfile, "ssh_colors", "color1",
+						     NULL);
+	else
+		remmina_pref.color1 = "#be100e";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color2", NULL))
+		remmina_pref.color2 = g_key_file_get_string(gkeyfile, "ssh_colors", "color2",
+						     NULL);
+	else
+		remmina_pref.color2 = "#858162";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color3", NULL))
+		remmina_pref.color3 = g_key_file_get_string(gkeyfile, "ssh_colors", "color3",
+						     NULL);
+	else
+		remmina_pref.color3 = "#eaa549";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color4", NULL))
+		remmina_pref.color4 = g_key_file_get_string(gkeyfile, "ssh_colors", "color4",
+						     NULL);
+	else
+		remmina_pref.color4 = "#426a79";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color5", NULL))
+		remmina_pref.color5 = g_key_file_get_string(gkeyfile, "ssh_colors", "color5",
+						     NULL);
+	else
+		remmina_pref.color5 = "#97522c";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color6", NULL))
+		remmina_pref.color6 = g_key_file_get_string(gkeyfile, "ssh_colors", "color6",
+						     NULL);
+	else
+		remmina_pref.color6 = "#989a9c";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color7", NULL))
+		remmina_pref.color7 = g_key_file_get_string(gkeyfile, "ssh_colors", "color7",
+						     NULL);
+	else
+		remmina_pref.color7 = "#968c83";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color8", NULL))
+		remmina_pref.color8 = g_key_file_get_string(gkeyfile, "ssh_colors", "color8",
+						     NULL);
+	else
+		remmina_pref.color8 = "#5e5252";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color9", NULL))
+		remmina_pref.color9 = g_key_file_get_string(gkeyfile, "ssh_colors", "color9",
+						     NULL);
+	else
+		remmina_pref.color9 = "#be100e";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color10", NULL))
+		remmina_pref.color10 = g_key_file_get_string(gkeyfile, "ssh_colors", "color10",
+						     NULL);
+	else
+		remmina_pref.color10 = "#858162";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color11", NULL))
+		remmina_pref.color11 = g_key_file_get_string(gkeyfile, "ssh_colors", "color11",
+						     NULL);
+	else
+		remmina_pref.color11 = "#eaa549";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color12", NULL))
+		remmina_pref.color12 = g_key_file_get_string(gkeyfile, "ssh_colors", "color12",
+						     NULL);
+	else
+		remmina_pref.color12 = "#426a79";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color13", NULL))
+		remmina_pref.color13 = g_key_file_get_string(gkeyfile, "ssh_colors", "color13",
+						     NULL);
+	else
+		remmina_pref.color13 = "#97522c";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color14", NULL))
+		remmina_pref.color14 = g_key_file_get_string(gkeyfile, "ssh_colors", "color14",
+						     NULL);
+	else
+		remmina_pref.color14 = "#989a9c";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color15", NULL))
+		remmina_pref.color15 = g_key_file_get_string(gkeyfile, "ssh_colors", "color15",
+						     NULL);
+	else
+		remmina_pref.color15 = "#d5ccba";
+
 	g_key_file_free(gkeyfile);
+
+#if 0
+	/* We delete the colorscheme file because we save its content in the remmina.pref */
+	if (g_file_test (remmina_colors_file, G_FILE_TEST_IS_REGULAR))
+	{
+		g_file_delete (path, NULL, NULL);
+	}
+#endif
 
 	if (remmina_pref.secret == NULL)
 		remmina_pref_gen_secret();
@@ -638,8 +765,25 @@ void remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "vte_allow_bold_text", remmina_pref.vte_allow_bold_text);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "vte_lines", remmina_pref.vte_lines);
 	g_key_file_set_boolean (gkeyfile, "remmina_pref", "vte_system_colors", remmina_pref.vte_system_colors);
-	g_key_file_set_string(gkeyfile, "remmina_pref", "vte_foreground_color", remmina_pref.vte_foreground_color ? remmina_pref.vte_foreground_color : "");
-	g_key_file_set_string(gkeyfile, "remmina_pref", "vte_background_color", remmina_pref.vte_background_color ? remmina_pref.vte_background_color : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "background", remmina_pref.background ? remmina_pref.background : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "cursor", remmina_pref.cursor ? remmina_pref.cursor : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "foreground", remmina_pref.foreground ? remmina_pref.foreground : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color0", remmina_pref.color0 ? remmina_pref.color0 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color1", remmina_pref.color1 ? remmina_pref.color1 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color2", remmina_pref.color2 ? remmina_pref.color2 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color3", remmina_pref.color3 ? remmina_pref.color3 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color4", remmina_pref.color4 ? remmina_pref.color4 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color5", remmina_pref.color5 ? remmina_pref.color5 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color6", remmina_pref.color6 ? remmina_pref.color6 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color7", remmina_pref.color7 ? remmina_pref.color7 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color8", remmina_pref.color8 ? remmina_pref.color8 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color9", remmina_pref.color9 ? remmina_pref.color9 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color10", remmina_pref.color10 ? remmina_pref.color10 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color11", remmina_pref.color11 ? remmina_pref.color11 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color12", remmina_pref.color12 ? remmina_pref.color12 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color13", remmina_pref.color13 ? remmina_pref.color13 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color14", remmina_pref.color14 ? remmina_pref.color14 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color15", remmina_pref.color15 ? remmina_pref.color15 : "");
 
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
 	g_file_set_contents(remmina_pref_file, content, length, NULL);

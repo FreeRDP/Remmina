@@ -137,8 +137,6 @@ typedef struct _RemminaPref
 	gchar *vte_font;
 	gboolean vte_allow_bold_text;
 	gboolean vte_system_colors;
-	gchar *vte_foreground_color;
-	gchar *vte_background_color;
 	gint vte_lines;
 	guint vte_shortcutkey_copy;
 	guint vte_shortcutkey_paste;
@@ -169,6 +167,28 @@ typedef struct _RemminaPref
 
 	/* Remmina birthday julian format*/
 	guint32 bdate;
+
+	/* Color palette for VTE terminal */
+	gchar *background;
+	gchar *cursor;
+	gchar *foreground;
+	gchar *color0;
+	gchar *color1;
+	gchar *color2;
+	gchar *color3;
+	gchar *color4;
+	gchar *color5;
+	gchar *color6;
+	gchar *color7;
+	gchar *color8;
+	gchar *color9;
+	gchar *color10;
+	gchar *color11;
+	gchar *color12;
+	gchar *color13;
+	gchar *color14;
+	gchar *color15;
+
 } RemminaPref;
 
 #define DEFAULT_SSH_PARSECONFIG TRUE
@@ -178,6 +198,7 @@ typedef struct _RemminaPref
 
 extern const gchar *default_resolutions;
 extern gchar *remmina_pref_file;
+extern gchar *remmina_colors_file;
 extern RemminaPref remmina_pref;
 
 void remmina_pref_init(void);
