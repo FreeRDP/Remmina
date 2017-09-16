@@ -129,6 +129,7 @@ typedef struct _RemminaPref
 	guint shortcutkey_nexttab;
 	guint shortcutkey_scale;
 	guint shortcutkey_grab;
+	guint shortcutkey_viewonly;
 	guint shortcutkey_screenshot;
 	guint shortcutkey_minimize;
 	guint shortcutkey_disconnect;
