@@ -3426,6 +3426,12 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
 		remmina_connection_holder_toolbar_minimize(GTK_WIDGET(gp),
 				cnnhld);
 	}
+	else if (keyval == remmina_pref.shortcutkey_viewonly)
+	{
+		remmina_file_set_int(cnnobj->remmina_file, "viewonly",
+				( remmina_file_get_int(cnnobj->remmina_file, "viewonly", 0 )
+				 == 0  ) ? 1 : 0 );     
+	}
 	else if (keyval == remmina_pref.shortcutkey_screenshot)
 	{
 		remmina_connection_holder_toolbar_screenshot(GTK_WIDGET(gp),
