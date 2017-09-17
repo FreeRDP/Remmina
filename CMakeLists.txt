@@ -201,9 +201,6 @@ if(CMAKE_COMPILER_IS_GNUCC AND WITH_GCC_SANITIZE_ADDRESS)
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
 endif()
 
-
-message(STATUS "GIO: ${CMAKE_THREAD_LIBS_INIT}")
-
 find_suggested_package(GCRYPT)
 find_suggested_package(AVAHI)
 
