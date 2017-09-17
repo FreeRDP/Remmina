@@ -60,9 +60,6 @@ endif()
 if(CMAKE_COMPILER_IS_GNUCC)
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
-        if(WITH_GCC_SANITIZE_ADDRESS)
-                set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
-        endif()
         if(WITH_SSE2)
                 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2")
         endif()
@@ -197,6 +194,15 @@ find_package(Threads REQUIRED)
 if(NOT CMAKE_USE_PTHREADS_INIT)
         message(FATAL_ERROR "pthreads thread library not found")
 endif()
+
+# Add GCC sanitizer options, must be done after pthreads detection
+# see remmina issue #1276
+if(CMAKE_COMPILER_IS_GNUCC AND WITH_GCC_SANITIZE_ADDRESS)
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
+endif()
+
+
+message(STATUS "GIO: ${CMAKE_THREAD_LIBS_INIT}")
 
 find_suggested_package(GCRYPT)
 find_suggested_package(AVAHI)
