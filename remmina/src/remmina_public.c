@@ -301,6 +301,7 @@ remmina_public_combo_get_active_text(GtkComboBox *combo)
 	return s;
 }
 
+#if !GTK_CHECK_VERSION(3, 22, 0)
 void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data)
 {
 	TRACE_CALL("remmina_public_popup_position");
@@ -336,6 +337,7 @@ void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *pu
 	*y = ty + allocation.height - 1;
 	*push_in = TRUE;
 }
+#endif
 
 gchar*
 remmina_public_combine_path(const gchar *path1, const gchar *path2)

@@ -710,7 +710,11 @@ static void remmina_ftp_client_popup_menu(RemminaFTPClient *client, GdkEventButt
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_ftp_client_action_delete), client);
 
+#if GTK_CHECK_VERSION(3, 22, 0)
+	gtk_menu_popup_at_pointer(GTK_MENU(menu), (GdkEvent *)event);
+#else
 	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, event->button, event->time);
+#endif
 }
 
 static gboolean remmina_ftp_client_file_list_on_button_press(GtkWidget *widget, GdkEventButton *event, RemminaFTPClient *client)

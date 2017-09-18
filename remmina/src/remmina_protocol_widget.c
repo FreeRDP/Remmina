@@ -299,7 +299,11 @@ gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_protocol_widget_close_connection");
 	GdkDisplay *display;
+#if GTK_CHECK_VERSION(3, 20, 0)
+	GdkSeat *seat;
+#else
 	GdkDeviceManager *manager;
+#endif
 	GdkDevice *device = NULL;
 	gboolean retval;
 
@@ -309,11 +313,20 @@ gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 	gp->priv->closed = TRUE;
 
 	display = gtk_widget_get_display(GTK_WIDGET(gp));
+#if GTK_CHECK_VERSION(3, 20, 0)
+	seat = gdk_display_get_default_seat(display);
+	device = gdk_seat_get_pointer(seat);
+#else
 	manager = gdk_display_get_device_manager(display);
 	device = gdk_device_manager_get_client_pointer(manager);
+#endif
 	if (device != NULL)
 	{
+#if GTK_CHECK_VERSION(3, 20, 0)
+		gdk_seat_ungrab(seat);
+#else
 		gdk_device_ungrab(device, GDK_CURRENT_TIME);
+#endif
 	}
 
 	if (gp->priv->chat_window)

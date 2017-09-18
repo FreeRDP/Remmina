@@ -66,7 +66,11 @@ static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 	RemminaScrolledViewport *gsv;
 	GtkWidget *child;
 	GdkDisplay *display;
+#if GTK_CHECK_VERSION(3, 20, 0)
+	GdkSeat *seat;
+#else
 	GdkDeviceManager *device_manager;
+#endif
 	GdkDevice *pointer;
 	GdkScreen *screen;
 	GdkWindow *gsvwin;
@@ -92,8 +96,13 @@ static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 	display = gdk_display_get_default();
 	if (!display)
 		return FALSE;
+#if GTK_CHECK_VERSION(3, 20, 0)
+	seat = gdk_display_get_default_seat(display);
+	pointer = gdk_seat_get_pointer(seat);
+#else
 	device_manager = gdk_display_get_device_manager (display);
 	pointer = gdk_device_manager_get_client_pointer (device_manager);
+#endif
 	gdk_device_get_position(pointer, &screen, &x, &y);
 
 	w = gdk_window_get_width(gsvwin) + 2;	// Add 2px of black scroll border

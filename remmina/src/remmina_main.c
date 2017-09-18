@@ -1007,7 +1007,13 @@ gboolean remmina_main_file_list_on_button_press(GtkWidget *widget, GdkEventButto
 	TRACE_CALL("remmina_main_file_list_on_button_press");
 	if (event->button == MOUSE_BUTTON_RIGHT)
 	{
+#if GTK_CHECK_VERSION(3, 22, 0)
+		gtk_menu_popup_at_pointer(GTK_MENU(remminamain->menu_popup), (GdkEvent *)event);
+#else
 		gtk_menu_popup(remminamain->menu_popup, NULL, NULL, NULL, NULL, event->button, event->time);
+#endif
+
+
 	}
 	return FALSE;
 }
@@ -1018,7 +1024,13 @@ gboolean remmina_main_file_list_on_key_press(GtkWidget *widget, GdkEventKey *eve
 	TRACE_CALL("remmina_main_file_list_on_key_press");
 	if (event->keyval == GDK_KEY_Menu)
 	{
+#if GTK_CHECK_VERSION(3, 22, 0)
+		gtk_menu_popup_at_widget(GTK_MENU(remminamain->menu_popup), widget,
+			GDK_GRAVITY_CENTER, GDK_GRAVITY_CENTER,
+			(GdkEvent *)event);
+#else
 		gtk_menu_popup(remminamain->menu_popup, NULL, NULL, NULL, NULL, 0, event->time);
+#endif
 	}
 	return FALSE;
 }
