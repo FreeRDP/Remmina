@@ -49,7 +49,11 @@ static void remmina_rdp_event_on_focus_in(GtkWidget* widget, GdkEventKey* event,
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	rdpInput* input;
 	GdkModifierType state;
+#if GTK_CHECK_VERSION(3, 20, 0)
+	GdkSeat *seat;
+#else
 	GdkDeviceManager *manager;
+#endif
 	GdkDevice *keyboard = NULL;
 
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
@@ -58,8 +62,13 @@ static void remmina_rdp_event_on_focus_in(GtkWidget* widget, GdkEventKey* event,
 	input = rfi->instance->input;
 	UINT32 toggle_keys_state = 0;
 
+#if GTK_CHECK_VERSION(3, 20, 0)
+	seat = gdk_display_get_default_seat(gdk_display_get_default());
+	keyboard = gdk_seat_get_pointer(seat);
+#else
 	manager = gdk_display_get_device_manager(gdk_display_get_default());
 	keyboard = gdk_device_manager_get_client_pointer(manager);
+#endif
 	gdk_window_get_device_position(gdk_get_default_root_window(), keyboard, NULL, NULL, &state);
 
 	if (state & GDK_LOCK_MASK)
@@ -925,7 +934,11 @@ static BOOL remmina_rdp_event_set_pointer_position(RemminaProtocolWidget *gp, gi
 	TRACE_CALL("remmina_rdp_event_set_pointer_position");
 	GdkWindow *w, *nw;
 	gint nx, ny, wx, wy;
+#if GTK_CHECK_VERSION(3, 20, 0)
+	GdkSeat *seat;
+#else
 	GdkDeviceManager *manager;
+#endif
 	GdkDevice *dev;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
@@ -933,8 +946,14 @@ static BOOL remmina_rdp_event_set_pointer_position(RemminaProtocolWidget *gp, gi
 		return FALSE;
 
 	w = gtk_widget_get_window(rfi->drawing_area);
+#if GTK_CHECK_VERSION(3, 20, 0)
+	seat = gdk_display_get_default_seat(gdk_display_get_default());
+	dev = gdk_seat_get_pointer(seat);
+#else
 	manager = gdk_display_get_device_manager(gdk_display_get_default());
 	dev = gdk_device_manager_get_client_pointer(manager);
+#endif
+
 	nw = gdk_device_get_window_at_position(dev, NULL, NULL);
 
 	if (nw == w) {

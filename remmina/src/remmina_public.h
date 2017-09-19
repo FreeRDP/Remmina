@@ -80,8 +80,10 @@ void remmina_public_create_group(GtkGrid *table, const gchar *group, gint row, g
 
 gchar* remmina_public_combo_get_active_text(GtkComboBox *combo);
 
+#if !GTK_CHECK_VERSION(3, 22, 0)
 /* A function for gtk_menu_popup to get the position right below the widget specified by user_data */
 void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data);
+#endif
 
 /* Combine two paths into one by correctly handling trailing slash. Return newly allocated string */
 gchar* remmina_public_combine_path(const gchar *path1, const gchar *path2);

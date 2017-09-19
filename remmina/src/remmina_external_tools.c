@@ -90,7 +90,11 @@ gboolean remmina_external_tools_from_filename(RemminaMain *remminamain, gchar* r
 	/* Note: event can be NULL here when called from view_onPopupMenu;
 	*  gdk_event_get_time() accepts a NULL argument
 	*/
+#if GTK_CHECK_VERSION(3, 22, 0)
+	gtk_menu_popup_at_pointer(GTK_MENU(menu), NULL);
+#else
 	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,0,0);
+#endif
 
 	return TRUE;
 }
