@@ -65,13 +65,6 @@ remmina_widget_pool_find(GType type, const gchar *tag)
 	TRACE_CALL("remmina_widget_pool_find");
 	GtkWidget *widget;
 	gint i;
-	GdkScreen *screen;
-	gint screen_number;
-	guint workspace;
-
-	screen = gdk_screen_get_default();
-	screen_number = gdk_screen_get_number(screen);
-	workspace = remmina_public_get_current_workspace(screen);
 
 	if (remmina_widget_pool == NULL)
 		return NULL;
@@ -80,10 +73,6 @@ remmina_widget_pool_find(GType type, const gchar *tag)
 	{
 		widget = GTK_WIDGET(g_ptr_array_index(remmina_widget_pool, i));
 		if (!G_TYPE_CHECK_INSTANCE_TYPE(widget, type))
-			continue;
-		if (screen_number != gdk_screen_get_number(gtk_window_get_screen(GTK_WINDOW(widget))))
-			continue;
-		if (workspace != remmina_public_get_window_workspace(GTK_WINDOW(widget)))
 			continue;
 		if (tag && g_strcmp0((const gchar*) g_object_get_data(G_OBJECT(widget), "tag"), tag) != 0)
 			continue;
