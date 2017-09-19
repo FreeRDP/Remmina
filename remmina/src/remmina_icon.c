@@ -226,30 +226,6 @@ static void remmina_icon_on_activate_window(GtkMenuItem *menuitem, GtkWidget *wi
 	}
 }
 
-static gboolean remmina_icon_foreach_window(GtkWidget *widget, gpointer data)
-{
-	TRACE_CALL("remmina_icon_foreach_window");
-	GtkWidget *popup_menu = GTK_WIDGET(data);
-	GtkWidget *menuitem;
-	GdkScreen *screen;
-	gint screen_number;
-
-	if (G_TYPE_CHECK_INSTANCE_TYPE(widget, REMMINA_TYPE_CONNECTION_WINDOW))
-	{
-		screen = gdk_screen_get_default();
-		screen_number = gdk_screen_get_number(screen);
-		if (screen_number == gdk_screen_get_number(gtk_window_get_screen(GTK_WINDOW(widget))))
-		{
-			menuitem = gtk_menu_item_new_with_label(gtk_window_get_title(GTK_WINDOW(widget)));
-			gtk_widget_show(menuitem);
-			gtk_menu_shell_prepend(GTK_MENU_SHELL(popup_menu), menuitem);
-			g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_icon_on_activate_window), widget);
-			return TRUE;
-		}
-	}
-	return FALSE;
-}
-
 static void remmina_icon_populate_extra_menu_item(GtkWidget *menu)
 {
 	TRACE_CALL("remmina_icon_populate_extra_menu_item");
