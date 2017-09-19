@@ -65,14 +65,6 @@ static gboolean cb_closewidget(GtkWidget *widget, gpointer data)
 void remmina_exec_exitremmina()
 {
 	TRACE_CALL("remmina_exec_exitremmina");
-	GtkWidget* widget = NULL;
-
-	widget = remmina_widget_pool_find(REMMINA_TYPE_CONNECTION_WINDOW, NULL);
-
-	/* Don't quit Remmina if the user refuses to close the connection
-	 * window when multiple tabs are opened */
-	if (widget && !remmina_connection_window_delete(REMMINA_CONNECTION_WINDOW(widget)))
-		return;
 
 	/* Destroy all widgets, main window included */
 	remmina_widget_pool_foreach(cb_closewidget, NULL);
