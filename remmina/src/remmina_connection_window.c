@@ -223,6 +223,64 @@ static void remmina_connection_window_class_init(RemminaConnectionWindowClass* k
 	/* It's important to remove padding, border and shadow from GtkViewport or
 	 * we will never know its internal area size, because GtkViweport::viewport_get_view_allocation,
 	 * which returns the internal size of the GtkViewport, is private and we cannot access it */
+
+#if GTK_CHECK_VERSION(3, 14, 0)
+	gtk_css_provider_load_from_data (provider,
+			"#remmina-cw-viewport, #remmina-cw-aspectframe {\n"
+			"  padding:0;\n"
+			"  border:0;\n"
+			"  background-color: black;\n"
+			"}\n"
+			"GtkDrawingArea {\n"
+			"  background-color: black;\n"
+			"}\n"
+			"GtkToolbar {\n"
+			"  -GtkWidget-window-dragging: 0;\n"
+			"}\n"
+			"#remmina-connection-window-fullscreen {\n"
+			"  background-color: black;\n"
+			"}\n"
+			"#remmina-small-button {\n"
+			"  outline-offset: 0;\n"
+			"  outline-width: 0;\n"
+			"  padding: 0;\n"
+			"  border: 0;\n"
+			"}\n"
+			"#remmina-pin-button {\n"
+			"  outline-offset: 0;\n"
+			"  outline-width: 0;\n"
+			"  padding: 2px;\n"
+			"  border: 0;\n"
+			"}\n"
+			"#remmina-scrolled-container {\n"
+			"  background-color: black;\n"
+			"}\n"
+			"#remmina-scrolled-container.undershoot {\n"
+			"  background: none\n"
+			"}\n"
+			"#ftbbox-upper {\n"
+			"  border-style: none solid solid solid;\n"
+			"  border-width: 1px;\n"
+			"  border-radius: 4px;\n"
+			"  border-color: #808080;\n"
+			"  padding: 0px;\n"
+			"  background-color: #f0f0f0;\n"
+			"}\n"
+			"#ftbbox-lower {\n"
+			"  border-style: solid solid none solid;\n"
+			"  border-width: 1px;\n"
+			"  border-radius: 4px;\n"
+			"  border-color: #808080;\n"
+			"  padding: 0px;\n"
+			"  background-color: #f0f0f0;\n"
+			"}\n"
+			"#ftb-handle {\n"
+			"  background-color: #f0f0f0;\n"
+			"}\n"
+
+			,-1, NULL);
+
+#else
 	gtk_css_provider_load_from_data (provider,
 			"#remmina-cw-viewport, #remmina-cw-aspectframe {\n"
 			"  padding:0;\n"
@@ -277,6 +335,7 @@ static void remmina_connection_window_class_init(RemminaConnectionWindowClass* k
 			"}\n"
 
 			,-1, NULL);
+#endif
 
 	gtk_style_context_add_provider_for_screen (gdk_screen_get_default(),
 			GTK_STYLE_PROVIDER (provider),
@@ -2681,7 +2740,7 @@ static GtkWidget* remmina_connection_object_create_tab(RemminaConnectionObject* 
 	gtk_widget_show(widget);
 	gtk_box_pack_start(GTK_BOX(hbox), widget, TRUE, TRUE, 0);
 
-	button = gtk_button_new();
+	button = gtk_button_new();	// The "x" to close the tab
 	gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
 #if GTK_CHECK_VERSION(3, 20, 0)
 	gtk_widget_set_focus_on_click(GTK_WIDGET(widget), FALSE);
