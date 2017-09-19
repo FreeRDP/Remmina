@@ -41,6 +41,7 @@
 #include <sys/time.h>
 #include <sys/utsname.h>
 
+#include <glib/gstdio.h>
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 
@@ -571,6 +572,7 @@ void remmina_pref_init(void)
 	{
 		gkeyfile = g_key_file_new();
 		g_key_file_load_from_file(gkeyfile, remmina_colors_file, G_KEY_FILE_NONE, NULL);
+		g_remove(remmina_colors_file);
 	}
 
 	if (g_key_file_has_key(gkeyfile, "ssh_colors", "background", NULL))

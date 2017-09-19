@@ -591,10 +591,7 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 			break;
 	}
 		vte_terminal_set_colors (VTE_TERMINAL(vte), &foreground_color, &background_color, remminavte.palette, PALETTE_SIZE);
-		vte_terminal_set_color_foreground (VTE_TERMINAL(vte), &foreground_color);
-		vte_terminal_set_color_background (VTE_TERMINAL(vte), &background_color);
-		vte_terminal_set_cursor_shape (VTE_TERMINAL(vte), VTE_CURSOR_SHAPE_BLOCK);
-		vte_terminal_set_color_cursor (VTE_TERMINAL(vte), &foreground_color);
+		vte_terminal_set_color_cursor (VTE_TERMINAL(vte), &cursor_color);
 #else
 		/* VTE <= 2.90 doesn't support GdkRGBA so we must convert GdkRGBA to GdkColor */
 		foreground_gdkcolor.red = (guint16)(foreground_color.red * 0xFFFF);
