@@ -226,7 +226,6 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 		remmina_pref.vte_font = g_strdup(gtk_font_button_get_font_name(remmina_pref_dialog->fontbutton_terminal_font));
 	}
 	remmina_pref.vte_allow_bold_text = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_bold));
-	remmina_pref.vte_system_colors = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_system_colors));
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_foreground), &color);
 	remmina_pref.foreground = gdk_rgba_to_string(&color);
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_background), &color);
@@ -388,7 +387,6 @@ static void remmina_pref_dialog_init(void)
 		gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->fontbutton_terminal_font), FALSE);
 	}
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_bold), remmina_pref.vte_allow_bold_text);
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_system_colors), remmina_pref.vte_system_colors);
 
 	/* Foreground color option */
 	gdk_rgba_parse(&color, remmina_pref.foreground);
@@ -432,10 +430,6 @@ static void remmina_pref_dialog_init(void)
 	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_color14), &color);
 	gdk_rgba_parse(&color, remmina_pref.color15);
 	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_color15), &color);
-
-
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_system_colors), remmina_pref.vte_system_colors);
-	remmina_pref_dialog_vte_color_on_toggled(GTK_WIDGET(remmina_pref_dialog->checkbutton_terminal_system_colors), NULL);
 
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.vte_lines);
 	gtk_entry_set_text(remmina_pref_dialog->entry_scrollback_lines, buf);
@@ -524,7 +518,6 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->button_keyboard_copy = GTK_BUTTON(GET_OBJECT("button_keyboard_copy"));
 	remmina_pref_dialog->button_keyboard_paste = GTK_BUTTON(GET_OBJECT("button_keyboard_paste"));
 	remmina_pref_dialog->button_keyboard_select_all = GTK_BUTTON(GET_OBJECT("button_keyboard_select_all"));
-	remmina_pref_dialog->checkbutton_terminal_system_colors = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_terminal_system_colors"));
 	remmina_pref_dialog->label_terminal_foreground = GTK_LABEL(GET_OBJECT("label_terminal_foreground"));
 	remmina_pref_dialog->colorbutton_foreground = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_foreground"));
 	remmina_pref_dialog->label_terminal_background = GTK_LABEL(GET_OBJECT("label_terminal_background"));

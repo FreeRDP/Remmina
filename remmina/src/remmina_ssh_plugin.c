@@ -465,7 +465,6 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	GtkAdjustment *vadjustment;
 	GtkWidget *vscrollbar;
 	GtkWidget *vte;
-	GtkStyleContext *style_context;
 	GdkRGBA foreground_color;
 	GdkRGBA background_color;
 	GdkRGBA cursor_color;
@@ -489,19 +488,6 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	gtk_widget_show(vte);
 	vte_terminal_set_size (VTE_TERMINAL (vte), 80, 25);
 	vte_terminal_set_scroll_on_keystroke (VTE_TERMINAL (vte), TRUE);
-	if (remmina_pref.vte_system_colors)
-	{
-		/* Get default system theme colors */
-		style_context = gtk_widget_get_style_context(GTK_WIDGET (vte));
-		gtk_style_context_get_color(style_context, GTK_STATE_FLAG_NORMAL, &foreground_color);
-		gtk_style_context_get(style_context, GTK_STATE_FLAG_NORMAL, "background-color", &background_color, NULL);
-	}
-	else
-	{
-		/* Get customized colors */
-		gdk_rgba_parse(&foreground_color, remmina_pref.foreground);
-		gdk_rgba_parse(&background_color, remmina_pref.background);
-	}
 	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
 #if VTE_CHECK_VERSION(0,38,0)

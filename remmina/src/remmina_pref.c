@@ -537,11 +537,6 @@ void remmina_pref_init(void)
 		                                   NULL);
 	else
 		remmina_pref.vte_allow_bold_text = TRUE;
-	/* Default system theme colors or default vte colors */
-	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_system_colors", NULL))
-		remmina_pref.vte_system_colors = g_key_file_get_boolean(gkeyfile, "remmina_pref", "vte_system_colors", NULL);
-	else
-		remmina_pref.vte_system_colors = FALSE;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_lines", NULL))
 		remmina_pref.vte_lines = g_key_file_get_integer(gkeyfile, "remmina_pref", "vte_lines", NULL);
@@ -766,7 +761,6 @@ void remmina_pref_save(void)
 	g_key_file_set_string(gkeyfile, "remmina_pref", "vte_font", remmina_pref.vte_font ? remmina_pref.vte_font : "");
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "vte_allow_bold_text", remmina_pref.vte_allow_bold_text);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "vte_lines", remmina_pref.vte_lines);
-	g_key_file_set_boolean (gkeyfile, "remmina_pref", "vte_system_colors", remmina_pref.vte_system_colors);
 	g_key_file_set_string(gkeyfile, "ssh_colors", "background", remmina_pref.background ? remmina_pref.background : "");
 	g_key_file_set_string(gkeyfile, "ssh_colors", "cursor", remmina_pref.cursor ? remmina_pref.cursor : "");
 	g_key_file_set_string(gkeyfile, "ssh_colors", "foreground", remmina_pref.foreground ? remmina_pref.foreground : "");
