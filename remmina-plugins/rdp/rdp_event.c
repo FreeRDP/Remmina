@@ -289,20 +289,6 @@ static void remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 		rfi->scale_y = 0;
 	}
 
-	/* Now we have scaling vars calculated, resize drawing_area accordingly */
-
-	if ((gpwidth > 1) && (gpheight > 1))
-			gtk_widget_queue_draw_area(GTK_WIDGET(gp), 0, 0, gpwidth, gpheight);
-
-}
-
-static gboolean remmina_rdp_event_update_scale_factor_async(RemminaProtocolWidget* gp)
-{
-	TRACE_CALL("remmina_rdp_event_update_scale_factor_async");
-	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	rfi->scale_handler = 0;
-	remmina_rdp_event_update_scale_factor(gp);
-	return FALSE;
 }
 
 static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, RemminaProtocolWidget* gp)
@@ -345,6 +331,9 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 		if (!rfi->surface)
 			return FALSE;
 
+		GtkAllocation a;
+		gtk_widget_get_allocation(GTK_WIDGET(gp), &a);
+
 		scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
 
 		if (scale)
@@ -367,12 +356,7 @@ static gboolean remmina_rdp_event_on_configure(GtkWidget* widget, GdkEventConfig
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return FALSE;
 
-	/* We do a delayed reallocating to improve performance */
-
-	if (rfi->scale_handler)
-		g_source_remove(rfi->scale_handler);
-
-	rfi->scale_handler = g_timeout_add(300, (GSourceFunc) remmina_rdp_event_update_scale_factor_async, gp);
+	remmina_rdp_event_update_scale_factor(gp);
 
 	return FALSE;
 }
@@ -639,7 +623,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 gboolean remmina_rdp_event_on_clipboard(GtkClipboard *gtkClipboard, GdkEvent *event, RemminaProtocolWidget *gp)
 {
 	/* Signal handler for GTK clipboard owner-change */
-	TRACE_CALL("remmina_rdp_event_on_clipboard")
+	TRACE_CALL("remmina_rdp_event_on_clipboard");
 	RemminaPluginRdpEvent rdp_event = { 0 };
 	CLIPRDR_FORMAT_LIST* pFormatList;
 
@@ -868,7 +852,6 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 		/* In non scaled mode, the plugins forces dimensions of drawing area */
 		gtk_widget_set_size_request(rfi->drawing_area, width, height);
 	}
-
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "update-align");
 }
 
