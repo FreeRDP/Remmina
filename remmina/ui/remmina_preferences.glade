@@ -977,6 +977,35 @@ Author: Antenore Gatta
                         <property name="width">2</property>
                       </packing>
                     </child>
+                    <child>
+                      <object class="GtkLabel" id="label_keyboard_viewonly">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="hexpand">True</property>
+                        <property name="label" translatable="yes">View-only mode</property>
+                        <property name="ellipsize">start</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">10</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="button_keyboard_viewonly">
+                        <property name="label" translatable="yes">VIEW-ONLY MODE</property>
+                        <property name="width_request">100</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">10</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
                   </object>
                 </child>
               </object>

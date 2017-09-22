@@ -3574,7 +3574,7 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
 	{
 		remmina_file_set_int(cnnobj->remmina_file, "viewonly",
 				( remmina_file_get_int(cnnobj->remmina_file, "viewonly", 0 )
-				 == 0  ) ? 1 : 0 );     
+				 == 0  ) ? 1 : 0 );
 	}
 	else if (keyval == remmina_pref.shortcutkey_screenshot)
 	{
