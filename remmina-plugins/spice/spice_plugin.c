@@ -313,6 +313,7 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 		gtk_container_add(GTK_CONTAINER(gp), GTK_WIDGET(display));
 		gtk_widget_show(GTK_WIDGET(display));
 
+		remmina_plugin_service->protocol_plugin_register_hostkey(gp, GTK_WIDGET(display));
 		remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 	}
 }

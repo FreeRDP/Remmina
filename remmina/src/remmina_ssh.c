@@ -43,6 +43,7 @@
 
 #define LIBSSH_STATIC 1
 #include <libssh/libssh.h>
+#include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <stdlib.h>
@@ -897,7 +898,7 @@ remmina_ssh_tunnel_main_thread_proc (gpointer data)
 		}
 		if (ssh_channel_open_session (tunnel->x11_channel) ||
 		        ssh_channel_request_x11 (tunnel->x11_channel, TRUE, NULL, ptr,
-		                                 gdk_screen_get_number (gdk_screen_get_default ())))
+		                                 gdk_x11_screen_get_screen_number (gdk_screen_get_default ())))
 		{
 			g_free(ptr);
 			remmina_ssh_set_error (REMMINA_SSH (tunnel), "Failed to open channel : %s");

@@ -62,6 +62,7 @@ typedef struct _RemminaIcon
 	RemminaAvahi *avahi;
 	guint32 popup_time;
 	gchar *autostart_file;
+	gchar *gsversion;	// GnomeShell version string, or null if not available
 } RemminaIcon;
 
 static RemminaIcon remmina_icon =
@@ -88,6 +89,11 @@ void remmina_icon_destroy(void)
 	{
 		g_free(remmina_icon.autostart_file);
 		remmina_icon.autostart_file = NULL;
+	}
+	if (remmina_icon.gsversion)
+	{
+		g_free(remmina_icon.gsversion);
+		remmina_icon.gsversion = NULL;
 	}
 }
 
@@ -393,6 +399,7 @@ gboolean remmina_icon_is_available(void)
 	TRACE_CALL("remmina_icon_is_available");
 	gchar *gsversion;
 	unsigned int gsv_maj, gsv_min, gsv_seq;
+	gboolean gshell_has_legacyTray;
 
 	if (!remmina_icon.icon)
 		return FALSE;
@@ -407,6 +414,15 @@ gboolean remmina_icon_is_available(void)
 		else
 			gsv_seq = 0x030000;
 		g_free(gsversion);
+
+		gshell_has_legacyTray = FALSE;
+		if (gsv_seq >= 0x031000 && gsv_seq <= 0x031800) {
+			/* Gnome shell from 3.16 to 3.24, Status Icon (GtkStatusIcon) is visible on the drawer
+			 * at the bottom left of the screen */
+			gshell_has_legacyTray = TRUE;
+		}
+
+
 #ifdef HAVE_LIBAPPINDICATOR
 		/* Gnome Shell with compiled in LIBAPPINDICATOR:
 		 * ensure have also a working appindicator extension available */
@@ -414,12 +430,14 @@ gboolean remmina_icon_is_available(void)
 		{
 			/* No libappindicator extension for gnome shell, no remmina_icon */
 			return TRUE;
+		} else if (gshell_has_legacyTray) {
+			return TRUE;
+		} else {
+			return FALSE;
 		}
 #endif
 		/* Gnome Shell without LIBAPPINDICATOR */
-		if (gsv_seq >= 0x030A00) {
-			/* Gnome shell >= 3.16, Status Icon (GtkStatusIcon) is visible on the drawer
-			 * at the bottom left of the screen */
+		if (gshell_has_legacyTray) {
 			return TRUE;
 		}
 		else {
@@ -468,6 +486,11 @@ void remmina_icon_init(void)
 	}
 	strcat(msg, "\n");
 	fputs(msg, stderr);
+
+	remmina_icon.gsversion = remmina_sysinfo_get_gnome_shell_version();
+	if (remmina_icon.gsversion != NULL) {
+		printf("Running under Gnome Shell version %s\n", remmina_icon.gsversion);
+	}
 
 	if (!remmina_icon.icon && !remmina_pref.disable_tray_icon)
 	{
