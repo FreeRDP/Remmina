@@ -38,6 +38,7 @@
 #include "rdp_plugin.h"
 #include "rdp_event.h"
 #include "rdp_cliprdr.h"
+#include "rdp_settings.h"
 #include <gdk/gdkkeysyms.h>
 #include <cairo/cairo-xlib.h>
 #include <freerdp/locale/keyboard.h>
@@ -233,7 +234,7 @@ void remmina_rdp_event_update_region(RemminaProtocolWidget* gp, RemminaPluginRdp
 	w = ui->region.width;
 	h = ui->region.height;
 
-	if (remmina_plugin_service->protocol_plugin_get_scale(gp))
+	if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED)
 		remmina_rdp_event_scale_area(gp, &x, &y, &w, &h);
 
 	gtk_widget_queue_draw_area(rfi->drawing_area, x, y, w, h);
@@ -244,7 +245,7 @@ void remmina_rdp_event_update_rect(RemminaProtocolWidget* gp, gint x, gint y, gi
 	TRACE_CALL("remmina_rdp_event_update_rect");
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
-	if (remmina_plugin_service->protocol_plugin_get_scale(gp))
+	if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED)
 		remmina_rdp_event_scale_area(gp, &x, &y, &w, &h);
 
 	gtk_widget_queue_draw_area(rfi->drawing_area, x, y, w, h);
@@ -254,7 +255,6 @@ static void remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_rdp_event_update_scale_factor");
 	GtkAllocation a;
-	gboolean scale;
 	gint rdwidth, rdheight;
 	gint gpwidth, gpheight;
 	RemminaFile* remminafile;
@@ -265,9 +265,8 @@ static void remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 	gtk_widget_get_allocation(GTK_WIDGET(gp), &a);
 	gpwidth = a.width;
 	gpheight = a.height;
-	scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
 
-	if (scale)
+	if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED)
 	{
 		if ((gpwidth > 1) && (gpheight > 1))
 		{
@@ -294,7 +293,6 @@ static void remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_rdp_event_on_draw");
-	gboolean scale;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	guint width, height;
 	gchar *msg;
@@ -334,9 +332,7 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 		GtkAllocation a;
 		gtk_widget_get_allocation(GTK_WIDGET(gp), &a);
 
-		scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
-
-		if (scale)
+		if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED)
 			cairo_scale(context, rfi->scale_x, rfi->scale_y);
 
 		cairo_set_source_surface(context, rfi->surface, 0, 0);
@@ -348,15 +344,83 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 	return TRUE;
 }
 
-static gboolean remmina_rdp_event_on_configure(GtkWidget* widget, GdkEventConfigure* event, RemminaProtocolWidget* gp)
+static gboolean remmina_rdp_event_delayed_monitor_layout(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_rdp_event_on_configure");
+	TRACE_CALL("remmina_rdp_event_delayed_monitor_layout");
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	RemminaPluginRdpEvent rdp_event = { 0 };
+	GtkAllocation a;
+	RemminaFile* remminafile;
+	gint desktopOrientation, desktopScaleFactor, deviceScaleFactor;
 
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return FALSE;
 
+	if (rfi->scale != REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES)
+		return FALSE;
+
+	rfi->delayed_monitor_layout_handler = 0;
+	gint gpwidth, gpheight, prevwidth, prevheight;
+
+	if (rfi->dispcontext && rfi->dispcontext->SendMonitorLayout) {
+		remmina_rdp_settings_get_orientation_scale_prefs(&desktopOrientation, &desktopScaleFactor, &deviceScaleFactor);
+		gtk_widget_get_allocation(GTK_WIDGET(gp), &a);
+		gpwidth = a.width;
+		gpheight = a.height;
+		prevwidth = remmina_plugin_service->protocol_plugin_get_width(gp);
+		prevheight = remmina_plugin_service->protocol_plugin_get_height(gp);
+		remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+		if ((gpwidth != prevwidth || gpheight != prevheight) &&
+			gpwidth >= 200 && gpwidth < 8192 &&
+				gpheight >= 200 && gpheight < 8192
+		) {
+			rdp_event.type = REMMINA_RDP_EVENT_TYPE_SEND_MONITOR_LAYOUT;
+			rdp_event.monitor_layout.width = gpwidth;
+			rdp_event.monitor_layout.height = gpheight;
+			rdp_event.monitor_layout.desktopOrientation = desktopOrientation;
+			rdp_event.monitor_layout.desktopScaleFactor = desktopScaleFactor;
+			rdp_event.monitor_layout.deviceScaleFactor = deviceScaleFactor;
+			remmina_rdp_event_event_push(gp, &rdp_event);
+			remmina_plugin_service->file_set_int(remminafile, "dynamic_resolution_width", gpwidth);
+			remmina_plugin_service->file_set_int(remminafile, "dynamic_resolution_height", gpheight);
+		}
+	}
+
+	return FALSE;
+}
+
+void remmina_rdp_event_send_delayed_monitor_layout(RemminaProtocolWidget* gp)
+{
+	TRACE_CALL("remmina_rdp_event_send_delayed_monitor_layout");
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	if (!rfi || !rfi->connected || rfi->is_reconnecting)
+		return;
+	if (rfi->delayed_monitor_layout_handler) {
+		g_source_remove(rfi->delayed_monitor_layout_handler);
+		rfi->delayed_monitor_layout_handler = 0;
+	}
+	if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
+		rfi->delayed_monitor_layout_handler = g_timeout_add(500, (GSourceFunc) remmina_rdp_event_delayed_monitor_layout, gp);
+	}
+
+}
+
+static gboolean remmina_rdp_event_on_configure(GtkWidget* widget, GdkEventConfigure* event, RemminaProtocolWidget* gp)
+{
+	TRACE_CALL("remmina_rdp_event_on_configure");
+
+	/* Called when gp changes its size or position */
+
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	if (!rfi || !rfi->connected || rfi->is_reconnecting)
+		return FALSE;
+
 	remmina_rdp_event_update_scale_factor(gp);
+
+	/* If the scaler is not active, schedule a delayed remote resolution change */
+	remmina_rdp_event_send_delayed_monitor_layout(gp);
+
 
 	return FALSE;
 }
@@ -374,7 +438,7 @@ static void remmina_rdp_event_translate_pos(RemminaProtocolWidget* gp, int ix, i
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return;
 
-	if ((rfi->scale) && (rfi->scale_width >= 1) && (rfi->scale_height >= 1))
+	if ((rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED) && (rfi->scale_width >= 1) && (rfi->scale_height >= 1))
 	{
 		*ox = (UINT16) (ix * remmina_plugin_service->protocol_plugin_get_width(gp) / rfi->scale_width);
 		*oy = (UINT16) (iy * remmina_plugin_service->protocol_plugin_get_height(gp) / rfi->scale_height);
@@ -399,7 +463,7 @@ static void remmina_rdp_event_reverse_translate_pos_reverse(RemminaProtocolWidge
 	if (!rfi || !rfi->connected || rfi->is_reconnecting)
 		return;
 
-	if ((rfi->scale) && (rfi->scale_width >= 1) && (rfi->scale_height >= 1))
+	if ((rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED) && (rfi->scale_width >= 1) && (rfi->scale_height >= 1))
 	{
 		*ox = (ix * rfi->scale_width) / remmina_plugin_service->protocol_plugin_get_width(gp);
 		*oy = (iy * rfi->scale_height) / remmina_plugin_service->protocol_plugin_get_height(gp);
@@ -759,10 +823,10 @@ void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 		g_signal_handler_disconnect(G_OBJECT(gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD)), rfi->clipboard.clipboard_handler);
 		rfi->clipboard.clipboard_handler = 0;
 	}
-	if (rfi->scale_handler)
+	if (rfi->delayed_monitor_layout_handler)
 	{
-		g_source_remove(rfi->scale_handler);
-		rfi->scale_handler = 0;
+		g_source_remove(rfi->delayed_monitor_layout_handler);
+		rfi->delayed_monitor_layout_handler = 0;
 	}
 	if (rfi->ui_handler)
 	{
@@ -818,9 +882,10 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-
 	width = remmina_plugin_service->protocol_plugin_get_width(gp);
 	height = remmina_plugin_service->protocol_plugin_get_height(gp);
+
+	rfi->scale = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
 
 	/* See if we also must rellocate rfi->surface with different width and height,
 	 * this usually happens after a DesktopResize RDP event*/
@@ -842,9 +907,9 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 
 	remmina_rdp_event_update_scale_factor(gp);
 
-	if (rfi->scale)
+	if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED || rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES)
 	{
-		/* In scaled mode, drawing_area will get its dimensions from its parent */
+		/* In scaled mode and autores mode, drawing_area will get its dimensions from its parent */
 		gtk_widget_set_size_request(rfi->drawing_area, -1, -1 );
 	}
 	else

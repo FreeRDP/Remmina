@@ -57,6 +57,7 @@
 #define REMMINA_RDP_FEATURE_SCALE                2
 #define REMMINA_RDP_FEATURE_UNFOCUS              3
 #define REMMINA_RDP_FEATURE_TOOL_SENDCTRLALTDEL  4
+#define REMMINA_RDP_FEATURE_DYNRESUPDATE		 5
 
 /* Some string settings of freerdp are preallocated buffers of N bytes */
 #define FREERDP_CLIENTHOSTNAME_LEN	32
@@ -71,7 +72,7 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 	rdpInput* input;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent* event;
-
+	DISPLAY_CONTROL_MONITOR_LAYOUT* dcml;
 
 	if (rfi->event_queue == NULL)
 		return True;
@@ -122,6 +123,19 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 				free(event->clipboard_formatdatarequest.pFormatDataRequest);
 				break;
 
+			case REMMINA_RDP_EVENT_TYPE_SEND_MONITOR_LAYOUT:
+				dcml = g_malloc0(sizeof(DISPLAY_CONTROL_MONITOR_LAYOUT));
+				if (dcml) {
+					dcml->Flags = DISPLAY_CONTROL_MONITOR_PRIMARY;
+					dcml->Width = event->monitor_layout.width;
+					dcml->Height = event->monitor_layout.height;
+					dcml->Orientation = event->monitor_layout.desktopOrientation;
+					dcml->DesktopScaleFactor = event->monitor_layout.desktopScaleFactor;
+					dcml->DeviceScaleFactor = event->monitor_layout.deviceScaleFactor;
+					rfi->dispcontext->SendMonitorLayout(rfi->dispcontext, 1, dcml);
+					g_free(dcml);
+				}
+				break;
 		}
 
 		g_free(event);
@@ -716,6 +730,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	gchar *gateway_host;
 	gint gateway_port;
 	gint desktopOrientation, desktopScaleFactor, deviceScaleFactor;
+	gint dynresw, dynresh;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
@@ -738,6 +753,13 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	rfi->settings->DesktopWidth = remmina_plugin_service->file_get_int(remminafile, "resolution_width", 1024);
 	rfi->settings->DesktopHeight = remmina_plugin_service->file_get_int(remminafile, "resolution_height", 768);
+	dynresw = remmina_plugin_service->file_get_int(remminafile, "dynamic_resolution_width", 0);
+	dynresh = remmina_plugin_service->file_get_int(remminafile, "dynamic_resolution_height", 0);
+
+	if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES && dynresh != 0 && dynresw != 0) {
+		rfi->settings->DesktopWidth = dynresw;
+		rfi->settings->DesktopHeight = dynresh;
+	}
 	remmina_plugin_service->protocol_plugin_set_width(gp, rfi->settings->DesktopWidth);
 	remmina_plugin_service->protocol_plugin_set_height(gp, rfi->settings->DesktopHeight);
 
@@ -917,6 +939,11 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->DesktopScaleFactor = desktopScaleFactor;
 		rfi->settings->DeviceScaleFactor = deviceScaleFactor;
 	}
+
+	/* Try to enable "Display Control Virtual Channel Extension", needed to
+	 * dynamically resize remote desktop. This will automatically open
+	 * the "disp" dynamic channel, if available */
+	rfi->settings->SupportDisplayControl = TRUE;
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "sound");
 
@@ -1137,7 +1164,7 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget* gp)
 	TRACE_CALL("remmina_rdp_open_connection");
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
-	rfi->scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
+	rfi->scale = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
 
 	if (pthread_create(&rfi->thread, NULL, remmina_rdp_main_thread, gp))
 	{
@@ -1246,8 +1273,11 @@ static void remmina_rdp_call_feature(RemminaProtocolWidget* gp, const RemminaPro
 			break;
 
 		case REMMINA_RDP_FEATURE_SCALE:
-			rfi->scale = remmina_plugin_service->file_get_int(remminafile, "scale", FALSE);
+			rfi->scale = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
 			remmina_rdp_event_update_scale(gp);
+			break;
+
+		case REMMINA_RDP_FEATURE_DYNRESUPDATE:
 			break;
 
 		case REMMINA_RDP_FEATURE_TOOL_REFRESH:
@@ -1421,6 +1451,7 @@ static const RemminaProtocolFeature remmina_rdp_features[] =
 {
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_RDP_FEATURE_TOOL_REFRESH, N_("Refresh"), NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_SCALE, REMMINA_RDP_FEATURE_SCALE, NULL, NULL, NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_DYNRESUPDATE, REMMINA_RDP_FEATURE_DYNRESUPDATE, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_RDP_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_UNFOCUS, REMMINA_RDP_FEATURE_UNFOCUS, NULL, NULL, NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }

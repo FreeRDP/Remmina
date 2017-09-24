@@ -39,6 +39,7 @@ set(APPICON22_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/22x22/emblems")
 set(APPICON16_ACTIONS_DATA
         16x16/actions/remmina-fit-window.png
         16x16/actions/remmina-scale.png
+        16x16/actions/remmina-dynres.png
         16x16/actions/remmina-fullscreen.png
         16x16/actions/remmina-switch-page.png
         16x16/actions/remmina-pin-up.png
@@ -52,6 +53,7 @@ set(APPICON16_EMBLEMS_DATA
 set(APPICON22_ACTIONS_DATA
         22x22/actions/remmina-fit-window.png
         22x22/actions/remmina-scale.png
+        22x22/actions/remmina-dynres.png
         22x22/actions/remmina-fullscreen.png
         22x22/actions/remmina-switch-page.png
         )

@@ -158,7 +158,7 @@ typedef struct _RemminaPluginService
     void         (* protocol_plugin_set_width)            (RemminaProtocolWidget *gp, gint width);
     gint         (* protocol_plugin_get_height)           (RemminaProtocolWidget *gp);
     void         (* protocol_plugin_set_height)           (RemminaProtocolWidget *gp, gint height);
-    gboolean     (* protocol_plugin_get_scale)            (RemminaProtocolWidget *gp);
+    RemminaScaleMode     (* remmina_protocol_widget_get_current_scale_mode)            (RemminaProtocolWidget *gp);
     gboolean     (* protocol_plugin_get_expand)           (RemminaProtocolWidget *gp);
     void         (* protocol_plugin_set_expand)           (RemminaProtocolWidget *gp, gboolean expand);
     gboolean     (* protocol_plugin_has_error)            (RemminaProtocolWidget *gp);

@@ -65,7 +65,7 @@ struct _RemminaProtocolWidgetPriv
 
 	gint width;
 	gint height;
-	gboolean scale;
+	RemminaScaleMode scalemode;
 	gboolean scaler_expand;
 
 	gboolean has_error;
@@ -89,6 +89,7 @@ enum
 	DISCONNECT_SIGNAL,
 	DESKTOP_RESIZE_SIGNAL,
 	UPDATE_ALIGN_SIGNAL,
+	UNLOCK_DYNRES_SIGNAL,
 	LAST_SIGNAL
 };
 
@@ -115,6 +116,9 @@ static void remmina_protocol_widget_class_init(RemminaProtocolWidgetClass *klass
 	        g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 	remmina_protocol_widget_signals[UPDATE_ALIGN_SIGNAL] = g_signal_new("update-align", G_TYPE_FROM_CLASS(klass),
 	        G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaProtocolWidgetClass, update_align), NULL, NULL,
+	        g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
+	remmina_protocol_widget_signals[UNLOCK_DYNRES_SIGNAL] = g_signal_new("unlock-dynres", G_TYPE_FROM_CLASS(klass),
+	        G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaProtocolWidgetClass, unlock_dynres), NULL, NULL,
 	        g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 }
 
@@ -287,7 +291,7 @@ void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp, RemminaF
 {
 	TRACE_CALL("remmina_protocol_widget_open_connection");
 	gp->priv->remmina_file = remminafile;
-	gp->priv->scale = remmina_file_get_int(remminafile, "scale", FALSE);
+	gp->priv->scalemode = remmina_file_get_int(remminafile, "scale", FALSE);
 	gp->priv->scaler_expand = remmina_file_get_int(remminafile, "scaler_expand", FALSE);
 
 	remmina_protocol_widget_show_init_dialog(gp, remmina_file_get_string(remminafile, "name"));
@@ -917,16 +921,16 @@ void remmina_protocol_widget_set_height(RemminaProtocolWidget* gp, gint height)
 	gp->priv->height = height;
 }
 
-gboolean remmina_protocol_widget_get_scale(RemminaProtocolWidget* gp)
+RemminaScaleMode remmina_protocol_widget_get_current_scale_mode(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_protocol_widget_get_scale");
-	return gp->priv->scale;
+	TRACE_CALL("remmina_protocol_widget_get_current_scale_mode");
+	return gp->priv->scalemode;
 }
 
-void remmina_protocol_widget_set_scale(RemminaProtocolWidget* gp, gboolean scale)
+void remmina_protocol_widget_set_current_scale_mode(RemminaProtocolWidget *gp, RemminaScaleMode scalemode)
 {
-	TRACE_CALL("remmina_protocol_widget_set_scale");
-	gp->priv->scale = scale;
+	TRACE_CALL("remmina_protocol_widget_set_current_scale_mode");
+	gp->priv->scalemode = scalemode;
 }
 
 gboolean remmina_protocol_widget_get_expand(RemminaProtocolWidget* gp)

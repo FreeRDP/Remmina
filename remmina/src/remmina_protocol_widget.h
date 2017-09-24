@@ -69,6 +69,7 @@ struct _RemminaProtocolWidgetClass
 	void (*disconnect)(RemminaProtocolWidget *gp);
 	void (*desktop_resize)(RemminaProtocolWidget *gp);
 	void (*update_align)(RemminaProtocolWidget *gp);
+	void (*unlock_dynres)(RemminaProtocolWidget *gp);
 };
 
 GType remmina_protocol_widget_get_type(void)
@@ -82,8 +83,8 @@ gint remmina_protocol_widget_get_width(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_width(RemminaProtocolWidget *gp, gint width);
 gint remmina_protocol_widget_get_height(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_height(RemminaProtocolWidget *gp, gint height);
-gboolean remmina_protocol_widget_get_scale(RemminaProtocolWidget *gp);
-void remmina_protocol_widget_set_scale(RemminaProtocolWidget *gp, gboolean scale);
+RemminaScaleMode remmina_protocol_widget_get_current_scale_mode(RemminaProtocolWidget *gp);
+void remmina_protocol_widget_set_current_scale_mode(RemminaProtocolWidget *gp, RemminaScaleMode scalemode);
 gboolean remmina_protocol_widget_get_expand(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_expand(RemminaProtocolWidget *gp, gboolean expand);
 gboolean remmina_protocol_widget_has_error(RemminaProtocolWidget *gp);

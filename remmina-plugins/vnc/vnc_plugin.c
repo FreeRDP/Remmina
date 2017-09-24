@@ -595,7 +595,7 @@ static rfbBool remmina_plugin_vnc_rfb_allocfb(rfbClient *cl)
 	if (old_surface)
 		cairo_surface_destroy(old_surface);
 
-	scale = remmina_plugin_service->protocol_plugin_get_scale(gp);
+	scale = (remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp) != REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE);
 	remmina_plugin_vnc_update_scale(gp, scale);
 
 	/* Notify window of change so that scroll border can be hidden or shown if needed */
@@ -792,7 +792,7 @@ static void remmina_plugin_vnc_rfb_updatefb(rfbClient* cl, int x, int y, int w, 
 		cairo_surface_mark_dirty(gpdata->rgb_buffer);
 	}
 
-	if (remmina_plugin_service->protocol_plugin_get_scale(gp))
+	if ((remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp) != REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE))
 	{
 		remmina_plugin_vnc_scale_area(gp, &x, &y, &w, &h);
 	}
@@ -1414,7 +1414,7 @@ static RemminaPluginVncCoordinates remmina_plugin_vnc_scale_coordinates(GtkWidge
 	GtkAllocation widget_allocation;
 	RemminaPluginVncCoordinates result;
 
-	if (remmina_plugin_service->protocol_plugin_get_scale(gp))
+	if ((remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp) != REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE))
 	{
 		gtk_widget_get_allocation(widget, &widget_allocation);
 		result.x = x * remmina_plugin_service->protocol_plugin_get_width(gp) / widget_allocation.width;
@@ -1895,7 +1895,7 @@ static gboolean remmina_plugin_vnc_on_draw(GtkWidget *widget, cairo_t *context, 
 	width = remmina_plugin_service->protocol_plugin_get_width(gp);
 	height = remmina_plugin_service->protocol_plugin_get_height(gp);
 
-	if(remmina_plugin_service->protocol_plugin_get_scale(gp)) {
+	if((remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp) != REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE)) {
 		gtk_widget_get_allocation(widget, &widget_allocation);
 		cairo_scale(context,
 			    (double) widget_allocation.width / width,
