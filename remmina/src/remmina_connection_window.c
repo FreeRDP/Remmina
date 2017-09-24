@@ -1847,7 +1847,7 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	cairo_surface_write_to_png(surface, pngname);
 
 	/* send a desktop notification */
-	remmina_public_send_notification ("remmina-screenshot-is-ready-id", "Screenshot taken", pngname);
+	remmina_public_send_notification ("remmina-screenshot-is-ready-id", _("Screenshot taken"), pngname);
 
 	//Clean up and return.
 	cairo_destroy(cr);
@@ -2874,10 +2874,21 @@ static gboolean remmina_connection_holder_on_switch_page_real(gpointer data)
 {
 	TRACE_CALL("remmina_connection_holder_on_switch_page_real");
 	RemminaConnectionHolder* cnnhld = (RemminaConnectionHolder*) data;
+	RemminaConnectionObject* currentpage_cnnobj;
+	int np;
+	GtkWidget* page;
 	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
 
 	if (GTK_IS_WIDGET(cnnhld->cnnwin))
 	{
+
+		np = gtk_notebook_get_current_page(GTK_NOTEBOOK (priv->notebook));
+		page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (priv->notebook), np);
+		currentpage_cnnobj = (RemminaConnectionObject*) g_object_get_data(G_OBJECT(page),"cnnobj");
+		/* send a desktop notification each time we switch to a new tab*/
+		remmina_public_send_notification ("remmina-proto-widget-enter-id",
+				_("Connected to: "),
+				remmina_file_get_string(currentpage_cnnobj->remmina_file, "server"));
 		remmina_connection_holder_update_toolbar(cnnhld);
 		remmina_connection_holder_grab_focus(GTK_NOTEBOOK(priv->notebook));
 		if (cnnhld->cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE)
