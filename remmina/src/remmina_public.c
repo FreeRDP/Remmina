@@ -690,6 +690,9 @@ void remmina_public_send_notification (const gchar *notification_id,
 
 	GNotification *notification = g_notification_new (notification_title);
 	g_notification_set_body (notification, notification_message);
+#if GLIB_CHECK_VERSION(2,42,0)
+	g_notification_set_priority (notification, G_NOTIFICATION_PRIORITY_NORMAL);
+#endif
 	g_application_send_notification (g_application_get_default (), notification_id, notification);
 	g_object_unref (notification);
 }
