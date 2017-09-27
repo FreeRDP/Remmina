@@ -465,6 +465,13 @@ void remmina_file_save(RemminaFile *remminafile)
 		}
 	}
 
+	/* Merge resolution_width and resolution_height into resolution */
+	s = g_strdup_printf("%dx%d", remmina_file_get_int(remminafile, "resolution_width", 800), remmina_file_get_int(remminafile, "resolution_height", 600));
+	g_key_file_set_string(gkeyfile, "remmina", "resolution", s);
+	g_free(s);
+	g_key_file_remove_key(gkeyfile, "remmina", "resolution_width", NULL);
+	g_key_file_remove_key(gkeyfile, "remmina", "resolution_height", NULL);
+
 	/* Store gkeyfile to disk (password are already sent to keyring) */
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
 	g_file_set_contents(remminafile->filename, content, length, NULL);

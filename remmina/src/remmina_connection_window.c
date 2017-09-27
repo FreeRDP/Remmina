@@ -104,6 +104,7 @@ struct _RemminaConnectionWindowPriv
 	GtkToolItem* toolitem_autofit;
 	GtkToolItem* toolitem_fullscreen;
 	GtkToolItem* toolitem_switch_page;
+	GtkToolItem* toolitem_dynres;
 	GtkToolItem* toolitem_scale;
 	GtkToolItem* toolitem_grab;
 	GtkToolItem* toolitem_preferences;
@@ -147,6 +148,8 @@ typedef struct _RemminaConnectionObject
 	gboolean plugin_can_scale;
 
 	gboolean connected;
+	gboolean dynres_unlocked;
+
 } RemminaConnectionObject;
 
 struct _RemminaConnectionHolder
@@ -347,6 +350,36 @@ static void remmina_connection_window_class_init(RemminaConnectionWindowClass* k
 	remmina_connection_window_signals[TOOLBARPLACE_SIGNAL] = g_signal_new("toolbar-place", G_TYPE_FROM_CLASS(klass),
 			G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaConnectionWindowClass, toolbar_place), NULL, NULL,
 			g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
+
+}
+
+static RemminaScaleMode get_current_allowed_scale_mode(RemminaConnectionObject* cnnobj, gboolean *dynres_avail, gboolean *scale_avail)
+{
+	RemminaScaleMode scalemode;
+	gboolean plugin_has_dynres, plugin_can_scale;
+
+	scalemode = remmina_protocol_widget_get_current_scale_mode(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
+
+	plugin_has_dynres = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
+			REMMINA_PROTOCOL_FEATURE_TYPE_SCALE);
+
+	plugin_can_scale = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
+			REMMINA_PROTOCOL_FEATURE_TYPE_SCALE);
+
+	/* forbid scalemode REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES when not possible */
+	if ((!plugin_has_dynres || !cnnobj->dynres_unlocked) && scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES)
+		scalemode = REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE;
+
+	/* forbid scalemode REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED when not possible */
+	if (!plugin_can_scale && scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED)
+		scalemode = REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE;
+
+	if (scale_avail)
+		*scale_avail = plugin_can_scale;
+	if (dynres_avail)
+		*dynres_avail = (plugin_has_dynres && cnnobj->dynres_unlocked);
+
+	return scalemode;
 
 }
 
@@ -872,10 +905,11 @@ static void remmina_connection_holder_get_desktop_size(RemminaConnectionHolder* 
 static void remmina_connection_object_set_scrolled_policy(RemminaConnectionObject* cnnobj, GtkScrolledWindow* scrolled_window)
 {
 	TRACE_CALL("remmina_connection_object_set_scrolled_policy");
-	gboolean scale;
-	scale = remmina_protocol_widget_get_scale(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
-	gtk_scrolled_window_set_policy(scrolled_window, scale ? GTK_POLICY_NEVER : GTK_POLICY_AUTOMATIC,
-			scale ? GTK_POLICY_NEVER : GTK_POLICY_AUTOMATIC);
+	RemminaScaleMode scalemode;
+	scalemode = get_current_allowed_scale_mode(cnnobj, NULL, NULL);
+	gtk_scrolled_window_set_policy(scrolled_window,
+		scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED ? GTK_POLICY_NEVER : GTK_POLICY_AUTOMATIC,
+		scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED ? GTK_POLICY_NEVER : GTK_POLICY_AUTOMATIC);
 }
 
 static gboolean remmina_connection_holder_toolbar_autofit_restore(RemminaConnectionHolder* cnnhld)
@@ -1066,7 +1100,7 @@ static void remmina_connection_holder_set_tooltip(GtkWidget* item, const gchar* 
 static void remmina_protocol_widget_update_alignment(RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL("remmina_protocol_widget_update_alignment");
-	gboolean scaledmode;
+	RemminaScaleMode scalemode;
 	gboolean scaledexpandedmode;
 	int rdwidth, rdheight;
 	gfloat aratio;
@@ -1082,11 +1116,11 @@ static void remmina_protocol_widget_update_alignment(RemminaConnectionObject* cn
 	{
 		/* Plugin can scale */
 
-		scaledmode = remmina_protocol_widget_get_scale(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
+		scalemode = get_current_allowed_scale_mode(cnnobj, NULL, NULL);
 		scaledexpandedmode = remmina_protocol_widget_get_expand(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
 
 		/* Check if we need aspectframe and create/destroy it accordingly */
-		if (scaledmode && !scaledexpandedmode)
+		if (scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED && !scaledexpandedmode)
 		{
 			/* We need an aspectframe as a parent of proto */
 			rdwidth = remmina_protocol_widget_get_width(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
@@ -1131,7 +1165,7 @@ static void remmina_protocol_widget_update_alignment(RemminaConnectionObject* cn
 			}
 		}
 
-		if (scaledmode)
+		if (scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED || scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES)
 		{
 			/* We have a plugin that can be scaled, and the scale button
 			 * has been pressed. Give it the correct WxH maintaining aspect
@@ -1398,7 +1432,7 @@ static void remmina_connection_holder_update_toolbar_autofit_button(RemminaConne
 	DECLARE_CNNOBJ
 	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
 	GtkToolItem* toolitem;
-	gboolean bval;
+	RemminaScaleMode sc;
 
 	toolitem = priv->toolitem_autofit;
 	if (toolitem)
@@ -1409,27 +1443,38 @@ static void remmina_connection_holder_update_toolbar_autofit_button(RemminaConne
 		}
 		else
 		{
-			bval = remmina_protocol_widget_get_scale(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
-			gtk_widget_set_sensitive(GTK_WIDGET(toolitem), !bval);
+			sc = get_current_allowed_scale_mode(cnnobj, NULL, NULL);
+			gtk_widget_set_sensitive(GTK_WIDGET(toolitem), sc == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE);
 		}
 	}
 }
 
-static void remmina_connection_holder_toolbar_scaled_mode(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void remmina_connection_holder_change_scalemode(RemminaConnectionHolder* cnnhld, gboolean bdyn, gboolean bscale)
 {
-	TRACE_CALL("remmina_connection_holder_toolbar_scaled_mode");
+	RemminaScaleMode scalemode;
 	DECLARE_CNNOBJ
-	gboolean scale;
 	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
 
-	scale = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(widget));
-	remmina_protocol_widget_set_scale(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), scale);
-	remmina_file_set_int(cnnobj->remmina_file, "scale", scale);
+	if (bdyn && cnnobj->dynres_unlocked)
+		scalemode = REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES;
+	else if (bscale)
+		scalemode = REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED;
+	else
+		scalemode = REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE;
 
-	gtk_widget_set_sensitive(GTK_WIDGET(priv->scaler_option_button), scale);
+	if (scalemode != REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
+		remmina_file_set_int(cnnobj->remmina_file, "dynamic_resolution_width", 0);
+		remmina_file_set_int(cnnobj->remmina_file, "dynamic_resolution_height", 0);
+	}
+
+	remmina_protocol_widget_set_current_scale_mode(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), scalemode);
+	remmina_file_set_int(cnnobj->remmina_file, "scale", scalemode);
+	gtk_widget_set_sensitive(GTK_WIDGET(priv->scaler_option_button), scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED);
+	remmina_connection_holder_update_toolbar_autofit_button(cnnhld);
 
 	remmina_protocol_widget_call_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
 			REMMINA_PROTOCOL_FEATURE_TYPE_SCALE, 0);
+
 	if (cnnhld->cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE)
 	{
 		remmina_connection_holder_check_resize(cnnhld);
@@ -1438,7 +1483,42 @@ static void remmina_connection_holder_toolbar_scaled_mode(GtkWidget* widget, Rem
 	{
 		remmina_connection_object_set_scrolled_policy(cnnobj, GTK_SCROLLED_WINDOW(cnnobj->scrolled_container));
 	}
-	remmina_connection_holder_update_toolbar_autofit_button(cnnhld);
+
+}
+
+static void remmina_connection_holder_toolbar_dynres(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+{
+	TRACE_CALL("remmina_connection_holder_toolbar_dynres");
+	gboolean bdyn, bscale;
+	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+
+	bdyn = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(widget));
+	bscale = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_scale));
+
+	if (bdyn && bscale) {
+		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_scale), FALSE);
+		bscale = FALSE;
+	}
+
+	remmina_connection_holder_change_scalemode(cnnhld, bdyn, bscale);
+}
+
+
+static void remmina_connection_holder_toolbar_scaled_mode(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+{
+	TRACE_CALL("remmina_connection_holder_toolbar_scaled_mode");
+	gboolean bdyn, bscale;
+	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+
+	bdyn = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_dynres));
+	bscale = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(widget));
+
+	if (bdyn && bscale) {
+		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_dynres), FALSE);
+		bdyn = FALSE;
+	}
+
+	remmina_connection_holder_change_scalemode(cnnhld, bdyn, bscale);
 }
 
 
@@ -1796,7 +1876,7 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 
 		/* Warn the user if image is distorted */
 		if (cnnobj->plugin_can_scale &&
-				remmina_protocol_widget_get_scale(gp)) {
+				get_current_allowed_scale_mode(cnnobj,NULL,NULL) == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED) {
 			dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_OK,
 					_("Warning: screenshot is scaled or distorted. Disable scaling to have better screenshot."));
 			g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
@@ -1975,6 +2055,16 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
 
+	/* Dynamic Resolution Update */
+	toolitem = gtk_toggle_tool_button_new();
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-dynres");
+	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Toggle dynamic resolution update"),
+			remmina_pref.shortcutkey_dynres, 0);
+	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+	gtk_widget_show(GTK_WIDGET(toolitem));
+	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(remmina_connection_holder_toolbar_dynres), cnnhld);
+	priv->toolitem_dynres = toolitem;
+
 	/* Scaler button */
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-scale");
@@ -2101,17 +2191,17 @@ static void remmina_connection_holder_place_toolbar(GtkToolbar *toolbar, GtkGrid
 			break;
 	}
 
-
 }
 
 static void remmina_connection_holder_update_toolbar(RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_holder_update_toolbar");
 	DECLARE_CNNOBJ
-		RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
 	GtkToolItem* toolitem;
-	gboolean bval;
+	gboolean bval, dynres_avail, scale_avail;
 	gboolean test_floating_toolbar;
+	RemminaScaleMode scalemode;
 
 	remmina_connection_holder_update_toolbar_autofit_button(cnnhld);
 
@@ -2119,14 +2209,27 @@ static void remmina_connection_holder_update_toolbar(RemminaConnectionHolder* cn
 	bval = (gtk_notebook_get_n_pages(GTK_NOTEBOOK(priv->notebook)) > 1);
 	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), bval);
 
-	toolitem = priv->toolitem_scale;
-	bval = remmina_protocol_widget_get_scale(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
-	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem), bval);
-	gtk_widget_set_sensitive(GTK_WIDGET(priv->scaler_option_button), bval);
+	scalemode = get_current_allowed_scale_mode(cnnobj, &dynres_avail, &scale_avail);
+	gtk_widget_set_sensitive(GTK_WIDGET(priv->toolitem_dynres), dynres_avail);
+	gtk_widget_set_sensitive(GTK_WIDGET(priv->toolitem_scale), scale_avail);
 
-	bval = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
-			REMMINA_PROTOCOL_FEATURE_TYPE_SCALE);
-	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), bval);
+	switch(scalemode) {
+		case REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE:
+			gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_dynres), FALSE);
+			gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_scale), FALSE);
+			gtk_widget_set_sensitive(GTK_WIDGET(priv->scaler_option_button), FALSE);
+			break;
+		case REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED:
+			gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_dynres), FALSE);
+			gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_scale), TRUE);
+			gtk_widget_set_sensitive(GTK_WIDGET(priv->scaler_option_button), TRUE);
+			break;
+		case REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES:
+			gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_dynres), TRUE);
+			gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_scale), FALSE);
+			gtk_widget_set_sensitive(GTK_WIDGET(priv->scaler_option_button), FALSE);
+			break;
+	}
 
 	toolitem = priv->toolitem_grab;
 	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem),
@@ -3815,6 +3918,13 @@ static void remmina_connection_object_on_update_align(RemminaProtocolWidget* gp,
 	remmina_protocol_widget_update_alignment(cnnobj);
 }
 
+static void remmina_connection_object_on_unlock_dynres(RemminaProtocolWidget* gp, RemminaConnectionObject* cnnobj)
+{
+	TRACE_CALL("remmina_connection_object_on_update_align");
+	cnnobj->dynres_unlocked = TRUE;
+	remmina_connection_holder_update_toolbar(cnnobj->cnnhld);
+}
+
 gboolean remmina_connection_window_open_from_filename(const gchar* filename)
 {
 	TRACE_CALL("remmina_connection_window_open_from_filename");
@@ -3844,8 +3954,7 @@ void remmina_connection_window_open_from_file(RemminaFile* remminafile)
 	remmina_connection_window_open_from_file_full(remminafile, NULL, NULL, NULL);
 }
 
-	GtkWidget*
-remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallback disconnect_cb, gpointer data, guint* handler)
+GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallback disconnect_cb, gpointer data, guint* handler)
 {
 	TRACE_CALL("remmina_connection_window_open_from_file_full");
 	RemminaConnectionObject* cnnobj;
@@ -3884,6 +3993,8 @@ remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallbac
 			cnnobj);
 	g_signal_connect(G_OBJECT(cnnobj->proto), "update-align", G_CALLBACK(remmina_connection_object_on_update_align),
 			cnnobj);
+	g_signal_connect(G_OBJECT(cnnobj->proto), "unlock-dynres", G_CALLBACK(remmina_connection_object_on_unlock_dynres),
+			cnnobj);
 
 	/* Create the viewport to make the RemminaProtocolWidget scrollable */
 	cnnobj->viewport = gtk_viewport_new(NULL, NULL);
@@ -3917,6 +4028,3 @@ void remmina_connection_window_set_delete_confirm_mode(RemminaConnectionWindow* 
 {
 	cnnwin->priv->on_delete_confirm_mode = mode;
 }
-
-
-

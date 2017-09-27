@@ -307,7 +307,7 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 		                                     gp);
 
 		g_object_set(display,
-		             "scaling", remmina_plugin_service->protocol_plugin_get_scale(gp),
+		             "scaling", (remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp) != REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE),
 		             "resize-guest", remmina_plugin_service->file_get_int(remminafile, "resizeguest", FALSE),
 		             NULL);
 		gtk_container_add(GTK_CONTAINER(gp), GTK_WIDGET(display));
