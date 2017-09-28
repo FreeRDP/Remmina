@@ -279,6 +279,12 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.hide_connection_toolbar = FALSE;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "enable_notifications", NULL))
+		remmina_pref.enable_notifications = g_key_file_get_boolean(gkeyfile, "remmina_pref",
+		                                       "enable_notifications", NULL);
+	else
+		remmina_pref.enable_notifications = FALSE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "default_action", NULL))
 		remmina_pref.default_action = g_key_file_get_integer(gkeyfile, "remmina_pref", "default_action", NULL);
 	else
@@ -721,6 +727,7 @@ void remmina_pref_save(void)
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "toolbar_placement", remmina_pref.toolbar_placement);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "always_show_tab", remmina_pref.always_show_tab);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_connection_toolbar", remmina_pref.hide_connection_toolbar);
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "enable_notifications", remmina_pref.enable_notifications);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "default_action", remmina_pref.default_action);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "scale_quality", remmina_pref.scale_quality);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "ssh_loglevel", remmina_pref.ssh_loglevel);
