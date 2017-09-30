@@ -56,7 +56,6 @@
 #endif
 #include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"
-#include "remmina_pref.h"
 
 GtkWidget*
 remmina_public_create_combo_entry(const gchar *text, const gchar *def, gboolean descending)
@@ -688,9 +687,6 @@ void remmina_public_send_notification (const gchar *notification_id,
 		const gchar *notification_title, const gchar *notification_message)
 {
 	TRACE_CALL("remmina_public_send_notification");
-
-	if (!remmina_pref.enable_notifications)
-		return;
 
 	GNotification *notification = g_notification_new (notification_title);
 	g_notification_set_body (notification, notification_message);

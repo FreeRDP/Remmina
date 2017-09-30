@@ -107,7 +107,6 @@ typedef struct _RemminaPref
 	gboolean fullscreen_on_auto;
 	gboolean always_show_tab;
 	gboolean hide_connection_toolbar;
-	gboolean enable_notifications;
 	gint default_mode;
 	gint tab_mode;
 	gint fullscreen_toolbar_visibility;
