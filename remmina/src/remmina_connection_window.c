@@ -3003,12 +3003,17 @@ static gboolean remmina_connection_holder_on_switch_page_real(gpointer data)
 
 	if (GTK_IS_WIDGET(cnnhld->cnnwin))
 	{
+		remmina_connection_holder_floating_toolbar_show (cnnhld, TRUE);
+		if (!priv->hidetb_timer)
+			priv->hidetb_timer = g_timeout_add(TB_HIDE_TIME_TIME, (GSourceFunc)
+					remmina_connection_holder_floating_toolbar_hide, cnnhld);
 		remmina_connection_holder_update_toolbar(cnnhld);
 		remmina_connection_holder_grab_focus(GTK_NOTEBOOK(priv->notebook));
 		if (cnnhld->cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE)
 		{
 			remmina_connection_holder_check_resize(cnnhld);
 		}
+
 	}
 	priv->switch_page_handler = 0;
 	return FALSE;
