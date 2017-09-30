@@ -1274,6 +1274,7 @@ static void remmina_file_editor_init(RemminaFileEditor* gfe)
 
 	widget = gtk_dialog_add_button(GTK_DIALOG(gfe), (_("_Save and Connect")), GTK_RESPONSE_OK);
 	gtk_button_set_image(GTK_BUTTON(widget), gtk_image_new_from_icon_name("document-save-as", GTK_ICON_SIZE_BUTTON));
+	gtk_widget_set_can_default (widget, TRUE);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_file_editor_on_save_connect), gfe);
 
 	gtk_dialog_set_default_response(GTK_DIALOG(gfe), GTK_RESPONSE_OK);
