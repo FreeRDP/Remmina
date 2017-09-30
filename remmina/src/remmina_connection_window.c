@@ -66,6 +66,9 @@ G_DEFINE_TYPE( RemminaConnectionWindow, remmina_connection_window, GTK_TYPE_WIND
 
 #define MOTION_TIME 100
 
+/* default timeout used to hide the floating toolbar wen switching profile */
+#define TB_HIDE_TIME_TIME 1000
+
 #define FLOATING_TOOLBAR_WIDGET (GTK_CHECK_VERSION(3, 10, 0))
 
 typedef struct _RemminaConnectionHolder RemminaConnectionHolder;
@@ -96,6 +99,9 @@ struct _RemminaConnectionWindowPriv
 	guint floating_toolbar_motion_handler;
 	/* Other event sources to remove when deleting the object */
 	guint ftb_hide_eventsource;
+	/* Timer to hide the toolbar */
+	guint hidetb_timer;
+
 
 	GtkWidget* toolbar;
 	GtkWidget* grid;
@@ -591,6 +597,12 @@ static void remmina_connection_window_destroy(GtkWidget* widget, RemminaConnecti
 		priv->floating_toolbar_window = NULL;
 	}
 #endif
+	/* Timer used to hide the toolbar */
+	if (priv->hidetb_timer)
+	{
+		g_source_remove(priv->hidetb_timer);
+		priv->hidetb_timer= 0;
+	}
 	if (priv->switch_page_handler)
 	{
 		g_source_remove(priv->switch_page_handler);
@@ -2418,6 +2430,16 @@ static gboolean remmina_connection_window_on_leave(GtkWidget* widget, GdkEventCr
 	return FALSE;
 }
 
+static gboolean
+remmina_connection_holder_floating_toolbar_hide(RemminaConnectionHolder* cnnhld)
+{
+	TRACE_CALL("remmina_connection_holder_floating_toolbar_hide");
+	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	priv->hidetb_timer = 0;
+	remmina_connection_holder_floating_toolbar_show (cnnhld, FALSE);
+	return FALSE;
+}
+
 static gboolean remmina_connection_holder_floating_toolbar_on_scroll(GtkWidget* widget, GdkEventScroll* event,
 		RemminaConnectionHolder* cnnhld)
 {
@@ -2981,12 +3003,17 @@ static gboolean remmina_connection_holder_on_switch_page_real(gpointer data)
 
 	if (GTK_IS_WIDGET(cnnhld->cnnwin))
 	{
+		remmina_connection_holder_floating_toolbar_show (cnnhld, TRUE);
+		if (!priv->hidetb_timer)
+			priv->hidetb_timer = g_timeout_add(TB_HIDE_TIME_TIME, (GSourceFunc)
+					remmina_connection_holder_floating_toolbar_hide, cnnhld);
 		remmina_connection_holder_update_toolbar(cnnhld);
 		remmina_connection_holder_grab_focus(GTK_NOTEBOOK(priv->notebook));
 		if (cnnhld->cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE)
 		{
 			remmina_connection_holder_check_resize(cnnhld);
 		}
+
 	}
 	priv->switch_page_handler = 0;
 	return FALSE;
