@@ -125,7 +125,8 @@ endif()
 message(STATUS "Git Revision ${REMMINA_GIT_REVISION}")
 
 if(NOT UNIQUE_APPNAME)
-    set(UNIQUE_APPNAME "org.Remmina")
+    # UNIQUE_APPNAME should follow Gnome Application ID rules
+    set(UNIQUE_APPNAME "org.remmina.Remmina")
 endif()
 
 if(NOT REMMINA_DATADIR)
