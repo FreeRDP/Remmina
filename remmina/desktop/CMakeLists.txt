@@ -84,7 +84,7 @@ set(REMMINA_ICON "remmina")
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/remmina.desktop @ONLY)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina.desktop
-    RENAME ${UNIQUE_APPNAME}.destkop
+    RENAME ${UNIQUE_APPNAME}.desktop
     DESTINATION "${REMMINA_DATADIR}/applications")
 install(FILES appdata.xml
     RENAME ${UNIQUE_APPNAME}.appdata.xml
