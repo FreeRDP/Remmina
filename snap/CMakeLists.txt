@@ -51,7 +51,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/snapcraft.yaml.in
 set(REMMINA_BINARY_PATH "remmina")
 set(REMMINA_ICON "\${SNAP}/meta/gui/icon.svg")
 configure_file(${CMAKE_SOURCE_DIR}/remmina/desktop/remmina.desktop.in
-    ${SNAP_GUI_DIR}/org.Remmina.desktop @ONLY)
+    ${SNAP_GUI_DIR}/${UNIQUE_APPNAME}.desktop @ONLY)
 
 configure_file(${CMAKE_SOURCE_DIR}/LICENSE
     ${SNAP_SETUP_DIR}/license.txt COPYONLY)
