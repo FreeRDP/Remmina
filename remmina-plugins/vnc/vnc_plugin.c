@@ -809,6 +809,10 @@ static gboolean remmina_plugin_vnc_queue_cuttext(RemminaPluginVncCuttextParam *p
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	GTimeVal t;
 	glong diff;
+	const char *cur_charset;
+	gchar *text;
+	gsize br, bw;
+
 
 	if (GTK_IS_WIDGET(gp) && gpdata->connected)
 	{
@@ -818,7 +822,11 @@ static gboolean remmina_plugin_vnc_queue_cuttext(RemminaPluginVncCuttextParam *p
 		if (diff >= 10)
 		{
 			gpdata->clipboard_timer = t;
-			gtk_clipboard_set_text(gtk_clipboard_get(GDK_SELECTION_CLIPBOARD), param->text, param->textlen);
+			/* Convert text from VNC latin-1 to current GTK charset (usually UTF-8) */
+			g_get_charset(&cur_charset);
+			text = g_convert_with_fallback(param->text, -1, cur_charset, "ISO-8859-1" ,"?", &br, &bw, NULL);
+			gtk_clipboard_set_text(gtk_clipboard_get(GDK_SELECTION_CLIPBOARD), text, bw);
+			g_free(text);
 		}
 	}
 	g_free(param->text);
@@ -1626,6 +1634,9 @@ static void remmina_plugin_vnc_on_cuttext_request(GtkClipboard *clipboard, const
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	GTimeVal t;
 	glong diff;
+	gsize br, bw;
+	gchar *latin1_text;
+	const char *cur_charset;
 
 	if (text)
 	{
@@ -1637,7 +1648,12 @@ static void remmina_plugin_vnc_on_cuttext_request(GtkClipboard *clipboard, const
 			return;
 
 		gpdata->clipboard_timer = t;
-		remmina_plugin_vnc_event_push(gp, REMMINA_PLUGIN_VNC_EVENT_CUTTEXT, (gpointer) text, NULL, NULL);
+		/* Convert text from current charset to latin-1 before sending to remote server.
+		 * See RFC6143 7.5.6 */
+		g_get_charset(&cur_charset);
+		latin1_text = g_convert_with_fallback(text, -1, "ISO-8859-1", cur_charset ,"?", &br, &bw, NULL);
+		remmina_plugin_vnc_event_push(gp, REMMINA_PLUGIN_VNC_EVENT_CUTTEXT, (gpointer) latin1_text, NULL, NULL);
+		g_free(latin1_text);
 	}
 }
 
