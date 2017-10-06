@@ -348,6 +348,7 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, RemminaFile *r
 	size_t len;
 	guchar *pubkey;
 	ssh_key server_pubkey;
+	gboolean disablepasswordstoring;
 
 	/* Check if the server's public key is known */
 	ret = ssh_is_server_known (ssh->session);
@@ -428,7 +429,8 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, RemminaFile *r
 		if (!dialog) return -1;
 
 		remmina_init_dialog_set_status (dialog, tips, ssh->user, ssh->server);
-		ret = remmina_init_dialog_authpwd (dialog, keyname, TRUE);
+		disablepasswordstoring = remmina_file_get_int(remminafile, "disablepasswordstoring", FALSE);
+		ret = remmina_init_dialog_authpwd (dialog, keyname, !disablepasswordstoring);
 
 		if (ret == GTK_RESPONSE_OK)
 		{

@@ -815,6 +815,7 @@ static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_charset", N_("Character set"), FALSE, ssh_charset_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "ssh_color_scheme", N_("Terminal color scheme"), FALSE, ssh_terminal_palette, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "exec", N_("Startup program"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
