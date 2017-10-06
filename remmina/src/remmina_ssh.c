@@ -432,7 +432,8 @@ remmina_ssh_auth_gui (RemminaSSH *ssh, RemminaInitDialog *dialog, RemminaFile *r
 
 		if (ret == GTK_RESPONSE_OK)
 		{
-			remmina_file_set_string( remminafile, pwdtype, dialog->password);
+			if (dialog->save_password)
+				remmina_file_set_string(remminafile, pwdtype, dialog->password);
 		}
 		else
 		{
