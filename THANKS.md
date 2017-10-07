@@ -20,20 +20,14 @@ These donors have contributed with an important amount of money during the year 
 
 ### Year 2017 donors
 
-- Andre Bultmann
+- Anonymous (13)
 - Daniel Platteau
+- Dmitry Yudin
 - Jakub Kubień
-- Jonathan Nicol
-- Kirk Sullivan
 - Leigh Mutimer
-- Luca Menini
-- Michael Williams
-- Mike Hwang
+- luca menini
 - Paul Walker
-- Pavel Zaitsev
-- Roberto Resoli
-- Samuel Gyger
-- Vince Patron
+- Tomasz Kubacki
 
 ## 2016 Sponsors
 
