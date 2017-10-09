@@ -121,6 +121,7 @@ Remmina support also the following options:
   -t, --protocol=PROTOCOL     Use default protocol
   -i, --icon                  Start as tray icon
   -v, --version               Show the application's version
+  -V, --full-version          Show the application's version, including the pulgin versions
   --display=DISPLAY           X display to use
 ```
 
@@ -169,6 +170,7 @@ Remmina is maintained by:
 
  * [Antenore Gatta](https://github.com/antenore)
  * [Giovanni Panozzo](https://github.com/giox069)
+ * [Dario Cavedon](https://github.com/ic3d)
 
 See the [AUTHORS](https://raw.githubusercontent.com/FreeRDP/Remmina/next/AUTHORS) for an exhaustive list.
 If you are not listed and you have contributed, feel free to update that file.
