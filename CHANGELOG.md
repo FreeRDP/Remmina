@@ -1,6 +1,6 @@
 # Change Log
 
-## [v1.2.0-rcgit.21](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.21) (2017-10-14)
+## [v1.2.0-rcgit.21](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.21) (2017-10-08)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.20...v1.2.0-rcgit.21)
 
 **Implemented enhancements:**
