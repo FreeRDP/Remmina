@@ -25,7 +25,7 @@ These donors have contributed with an important amount of money during the year 
 - Dmitry Yudin
 - Jakub Kubień
 - Leigh Mutimer
-- luca menini
+- Luca Menini
 - Paul Walker
 - Tomasz Kubacki
 
