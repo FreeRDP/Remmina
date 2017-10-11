@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINAAVAHI_H__
-#define __REMMINAAVAHI_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -54,5 +53,4 @@ void remmina_avahi_free(RemminaAvahi* ga);
 
 G_END_DECLS
 
-#endif  /* __REMMINAAVAHI_H__  */
 

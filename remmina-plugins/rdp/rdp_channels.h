@@ -33,8 +33,7 @@
  */
 
 
-#ifndef __REMMINA_RDP_CHANNELS_H
-#define __REMMINA_RDP_CHANNELS_H
+#pragma once
 
 #include <freerdp/freerdp.h>
 #include <freerdp/client/channels.h>
@@ -53,4 +52,3 @@ void remmina_rdp_OnChannelDisconnectedEventHandler(rdpContext* context, ChannelC
 
 G_END_DECLS
 
-#endif

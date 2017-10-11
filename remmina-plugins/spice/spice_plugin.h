@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINA_SPICE_PLUGIN_H__
-#define __REMMINA_SPICE_PLUGIN_H__
+#pragma once
 
 #include "common/remmina_plugin.h"
 #include <spice-client.h>
@@ -70,4 +69,3 @@ typedef struct _RemminaPluginSpiceData
 } RemminaPluginSpiceData;
 
 
-#endif /* __REMMINA_SPICE_PLUGIN_H__ */

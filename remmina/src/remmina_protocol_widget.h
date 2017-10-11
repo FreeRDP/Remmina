@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINAPROTOCOLWIDGET_H__
-#define __REMMINAPROTOCOLWIDGET_H__
+#pragma once
 
 #include "remmina_init_dialog.h"
 #include "remmina_file.h"
@@ -155,5 +154,4 @@ gboolean remmina_protocol_widget_plugin_screenshot(RemminaProtocolWidget* gp, Re
 
 G_END_DECLS
 
-#endif  /* __REMMINAPROTOCOLWIDGET_H__  */
 

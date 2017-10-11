@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINAFILEMANAGER_H__
-#define __REMMINAFILEMANAGER_H__
+#pragma once
 
 #include "remmina_file.h"
 
@@ -60,5 +59,4 @@ RemminaFile* remmina_file_manager_load_file(const gchar *filename);
 
 G_END_DECLS
 
-#endif  /* __REMMINAFILEMANAGER_H__  */
 

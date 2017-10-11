@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINA_RDP_SETTINGS_H__
-#define __REMMINA_RDP_SETTINGS_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -44,6 +43,4 @@ GtkWidget* remmina_rdp_settings_new(void);
 void remmina_rdp_settings_get_orientation_scale_prefs(int *desktopOrientation, int *desktopScaleFactor, int *deviceScaleFactor);
 
 G_END_DECLS
-
-#endif
 

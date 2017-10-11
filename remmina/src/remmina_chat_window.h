@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINACHATWINDOW_H__
-#define __REMMINACHATWINDOW_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -67,5 +66,4 @@ void remmina_chat_window_receive(RemminaChatWindow *window, const gchar *name, c
 
 G_END_DECLS
 
-#endif  /* __REMMINACHATWINDOW_H__  */
 

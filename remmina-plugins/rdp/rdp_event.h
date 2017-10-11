@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINA_RDP_EVENT_H__
-#define __REMMINA_RDP_EVENT_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -49,6 +48,4 @@ int remmina_rdp_event_queue_ui_sync_retint(RemminaProtocolWidget* gp, RemminaPlu
 void *remmina_rdp_event_queue_ui_sync_retptr(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui);
 
 G_END_DECLS
-
-#endif
 

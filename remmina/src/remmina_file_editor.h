@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINAFILEEDITOR_H__
-#define __REMMINAFILEEDITOR_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -73,5 +72,4 @@ GtkWidget* remmina_file_editor_new_from_filename(const gchar* filename);
 
 G_END_DECLS
 
-#endif  /* __REMMINAFILEEDITOR_H__  */
 

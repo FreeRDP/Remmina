@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINATRACECALLS_H__
-#define __REMMINATRACECALLS_H__
+#pragma once
 
 #ifdef  WITH_TRACE_CALLS
 
@@ -52,4 +51,3 @@
 #define TRACE_CALL(text) 
 #endif  /* _WITH_TRACE_CALLS_ */
 
-#endif  /* __REMMINATRACECALLS_H__  */

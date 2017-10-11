@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINASTRINGARRAY_H__
-#define __REMMINASTRINGARRAY_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -54,5 +53,4 @@ void remmina_string_array_free(RemminaStringArray *array);
 
 G_END_DECLS
 
-#endif  /* __REMMINASTRINGARRAY_H__  */
 

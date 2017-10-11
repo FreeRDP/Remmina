@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINAPREEXEC_H__
-#define __REMMINAPREEXEC_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -50,4 +49,3 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 
 G_END_DECLS
 
-#endif  /* __REMMINAPREEXEC_H__  */

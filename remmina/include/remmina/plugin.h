@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINA_PLUGIN_H__
-#define __REMMINA_PLUGIN_H__
+#pragma once
 
 #include <remmina/types.h>
 #include "remmina/remmina_trace_calls.h"
@@ -234,5 +233,4 @@ typedef gboolean (*RemminaPluginEntryFunc) (RemminaPluginService *service);
 
 G_END_DECLS
 
-#endif /* __REMMINA_PLUGIN_H__ */
 

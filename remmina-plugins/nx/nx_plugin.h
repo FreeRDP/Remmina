@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINAPLUGINNX_H__
-#define __REMMINAPLUGINNX_H__
+#pragma once
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 
@@ -80,6 +79,4 @@ typedef struct _RemminaPluginNxData
 extern RemminaPluginService *remmina_plugin_nx_service;
 
 G_END_DECLS
-
-#endif
 

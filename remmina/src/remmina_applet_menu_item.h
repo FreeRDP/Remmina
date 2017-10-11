@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINAAPPLETMENUITEM_H__
-#define __REMMINAAPPLETMENUITEM_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -75,5 +74,4 @@ gint remmina_applet_menu_item_compare(gconstpointer a, gconstpointer b, gpointer
 
 G_END_DECLS
 
-#endif  /* __REMMINAAPPLETMENUITEM_H__  */
 

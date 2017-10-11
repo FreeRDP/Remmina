@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINAPLUGINCOMMON_H__
-#define __REMMINAPLUGINCOMMON_H__
+#pragma once
 
 #include "config.h"
 #include <gtk/gtk.h>
@@ -98,5 +97,4 @@ remmina_get_available_xdisplay (void) \
 	return display; \
 }
 
-#endif /* __REMMINAPLUGINCOMMON_H__ */
 

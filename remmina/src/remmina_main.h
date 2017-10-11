@@ -35,8 +35,7 @@
 
 #include "remmina_string_array.h"
 
-#ifndef __REMMINAMAIN_H__
-#define __REMMINAMAIN_H__
+#pragma once
 
 #include "remmina_file.h"
 
@@ -116,4 +115,3 @@ void remmina_main_update_file_datetime(RemminaFile *file);
 
 G_END_DECLS
 
-#endif  /* __REMMINAMAIN_H__  */

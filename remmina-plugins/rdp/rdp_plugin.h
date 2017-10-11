@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINA_RDP_H__
-#define __REMMINA_RDP_H__
+#pragma once
 
 #include "common/remmina_plugin.h"
 #include <freerdp/freerdp.h>
@@ -329,6 +328,4 @@ BOOL rf_check_fds(RemminaProtocolWidget* gp);
 void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj);
 
 void remmina_rdp_event_event_push(RemminaProtocolWidget* gp, const RemminaPluginRdpEvent* e);
-
-#endif
 

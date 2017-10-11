@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINASSHPLUGIN_H__
-#define __REMMINASSHPLUGIN_H__
+#pragma once
 
 #ifdef HAVE_LIBVTE
 #include <vte/vte.h>
@@ -55,5 +54,4 @@ gboolean remmina_ssh_plugin_popup_menu(GtkWidget *widget, GdkEvent  *event, GtkW
 
 G_END_DECLS
 
-#endif /* __REMMINASSHPLUGIN_H__ */
 

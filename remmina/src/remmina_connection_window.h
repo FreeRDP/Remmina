@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINACONNECTIONWINDOW_H__
-#define __REMMINACONNECTIONWINDOW_H__
+#pragma once
 
 #include "remmina_file.h"
 
@@ -81,5 +80,4 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 
 G_END_DECLS
 
-#endif  /* __REMMINACONNECTIONWINDOW_H__  */
 

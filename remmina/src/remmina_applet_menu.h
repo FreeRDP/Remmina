@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINAAPPLETMENU_H__
-#define __REMMINAAPPLETMENU_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -79,5 +78,4 @@ void remmina_applet_menu_populate(RemminaAppletMenu* menu);
 
 G_END_DECLS
 
-#endif  /* __REMMINAAPPLETMENU_H__  */
 

@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINAFTPCLIENT_H__
-#define __REMMINAFTPCLIENT_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -155,5 +154,4 @@ gboolean remmina_ftp_client_get_overwrite_status(RemminaFTPClient *client);
 
 G_END_DECLS
 
-#endif  /* __REMMINAFTPCLIENT_H__  */
 

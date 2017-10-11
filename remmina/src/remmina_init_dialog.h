@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINAINITDIALG_H__
-#define __REMMINAINITDIALG_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -102,5 +101,4 @@ gint remmina_init_dialog_serverkey_confirm(RemminaInitDialog *dialog, const gcha
 
 G_END_DECLS
 
-#endif  /* __REMMINAINITDIALG_H__  */
 

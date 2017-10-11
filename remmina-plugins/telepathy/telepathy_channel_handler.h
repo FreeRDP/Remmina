@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINATPCHANNELHANDLER_H__
-#define __REMMINATPCHANNELHANDLER_H__
+#pragma once
 
 G_BEGIN_DECLS
 

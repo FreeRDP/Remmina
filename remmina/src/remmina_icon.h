@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINAICON_H__
-#define __REMMINAICON_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -46,5 +45,4 @@ gboolean remmina_icon_is_available(void);
 
 G_END_DECLS
 
-#endif  /* __REMMINAICON_H__  */
 

@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINASTRINGLIST_H__
-#define __REMMINASTRINGLIST_H__
+#pragma once
 
 typedef gboolean (*RemminaStringListValidationFunc)(const gchar *new_str, gchar **error);
 
@@ -83,4 +82,3 @@ void remmina_string_list_set_validation_func(RemminaStringListValidationFunc fun
 
 G_END_DECLS
 
-#endif  /* __REMMINASTRINGLIST_H__  */

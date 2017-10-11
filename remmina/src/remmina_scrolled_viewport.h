@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINASCROLLEDVIEWPORT_H__
-#define __REMMINASCROLLEDVIEWPORT_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -73,5 +72,4 @@ void remmina_scrolled_viewport_remove_motion(RemminaScrolledViewport *gsv);
 
 G_END_DECLS
 
-#endif  /* __REMMINASCROLLEDVIEWPORT_H__  */
 

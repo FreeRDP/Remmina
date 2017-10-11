@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINAPREFDIALOG_H__
-#define __REMMINAPREFDIALOG_H__
+#pragma once
 
 /*
  * Remmina Preferences Dialog
@@ -143,4 +142,3 @@ GtkDialog* remmina_pref_dialog_get_dialog(void);
 
 G_END_DECLS
 
-#endif  /* __REMMINAPREFDIALOG_H__  */

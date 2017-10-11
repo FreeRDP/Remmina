@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINAWIDGETPOOL_H__
-#define __REMMINAWIDGETPOOL_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -48,5 +47,4 @@ gint remmina_widget_pool_count(void);
 
 G_END_DECLS
 
-#endif  /* __REMMINAWIDGETPOOL_H__  */
 

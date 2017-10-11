@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINANXSESSION_H__
-#define __REMMINANXSESSION_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -105,5 +104,4 @@ void remmina_nx_session_bye(RemminaNXSession *nx);
 
 G_END_DECLS
 
-#endif  /* __REMMINANXSESSION_H__  */
 

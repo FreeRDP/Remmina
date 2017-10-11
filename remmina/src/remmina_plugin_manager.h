@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINAPLUGINMANAGER_H__
-#define __REMMINAPLUGINMANAGER_H__
+#pragma once
 
 #include "remmina/plugin.h"
 
@@ -58,5 +57,4 @@ extern RemminaPluginService remmina_plugin_manager_service;
 
 G_END_DECLS
 
-#endif /* __REMMINAPLUGINMANAGER_H__ */
 

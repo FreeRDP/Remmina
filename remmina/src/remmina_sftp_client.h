@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINASFTPCLIENT_H__
-#define __REMMINASFTPCLIENT_H__
+#pragma once
 
 #include "config.h"
 
@@ -81,5 +80,4 @@ G_END_DECLS
 
 #endif  /* HAVE_LIBSSH */
 
-#endif  /* __REMMINASFTPCLIENT_H__  */
 

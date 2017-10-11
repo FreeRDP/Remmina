@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINAPREF_H__
-#define __REMMINAPREF_H__
+#pragma once
 
 /*
  * Remmina Perference Loader
@@ -223,4 +222,3 @@ gchar* remmina_pref_get_value(const gchar *key);
 
 G_END_DECLS
 
-#endif  /* __REMMINAPREF_H__  */

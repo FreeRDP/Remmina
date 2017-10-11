@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINAKEYCHOOSER_H__
-#define __REMMINAKEYCHOOSER_H__
+#pragma once
 
 #define KEY_MODIFIER_SHIFT _("Shift+")
 #define KEY_MODIFIER_CTRL _("Ctrl+")
@@ -62,5 +61,4 @@ guint remmina_key_chooser_get_keyval(const gchar *value);
 
 G_END_DECLS
 
-#endif  /* __REMMINAKEYCHOOSER_H__  */
 

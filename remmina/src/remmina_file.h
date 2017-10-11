@@ -35,8 +35,7 @@
 
 #include "remmina/types.h"
 
-#ifndef __REMMINAFILE_H__
-#define __REMMINAFILE_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -96,5 +95,4 @@ void remmina_file_touch(RemminaFile *remminafilefile);
 
 G_END_DECLS
 
-#endif  /* __REMMINAFILE_H__  */
 

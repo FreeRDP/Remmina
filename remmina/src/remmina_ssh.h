@@ -34,8 +34,7 @@
  *
  */
 
-#ifndef __REMMINASSH_H__
-#define __REMMINASSH_H__
+#pragma once
 
 #include "config.h"
 
@@ -264,5 +263,4 @@ typedef void (*RemminaSSHTunnelCallback)(void);
 
 #endif /* HAVE_LIBSSH */
 
-#endif  /* __REMMINASSH_H__  */
 

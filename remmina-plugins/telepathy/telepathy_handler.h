@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2010 Vic Lee
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINATPHANDLER_H__
-#define __REMMINATPHANDLER_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -57,6 +56,4 @@ typedef struct _RemminaTpHandlerClass
 RemminaTpHandler* remmina_tp_handler_new(void);
 
 G_END_DECLS
-
-#endif
 

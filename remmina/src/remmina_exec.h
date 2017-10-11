@@ -32,8 +32,7 @@
  *
  */
 
-#ifndef __REMMINAEXEC_H__
-#define __REMMINAEXEC_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -65,5 +64,4 @@ void remmina_application_condexit(RemminaCondExitType why);
 
 G_END_DECLS
 
-#endif  /* __REMMINAEXEC_H__  */
 

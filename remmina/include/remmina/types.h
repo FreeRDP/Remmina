@@ -33,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINA_TYPES_H__
-#define __REMMINA_TYPES_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -128,5 +127,4 @@ typedef enum {
 
 G_END_DECLS
 
-#endif /* __REMMINA_TYPES_H__ */
 
