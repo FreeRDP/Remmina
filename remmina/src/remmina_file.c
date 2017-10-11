@@ -304,8 +304,24 @@ void remmina_file_set_string(RemminaFile *remminafile, const gchar *setting, con
 void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting, gchar *value)
 {
 	TRACE_CALL("remmina_file_set_string_ref");
+	gint n, w, h;
+
 	if (value)
 	{
+		/* As special case here, the "resolution" field is split into two
+		 * extra fields "resolution_width" and "resolution_height".
+		 * The "resolution" field is left here for compatibility,
+		 * and will never be saved on new files.
+		 * This code is useful when loading files with only "resolution" field set */
+		if (strcmp(setting, "resolution") == 0) {
+			n = sscanf(value, "%dx%d", &w, &h);
+			if (n < 2)
+				h = 600;
+			if (n < 1)
+				w = 800;
+			g_hash_table_insert(remminafile->settings, g_strdup("resolution_width"), g_strdup_printf("%i", w));
+			g_hash_table_insert(remminafile->settings, g_strdup("resolution_height"), g_strdup_printf("%i", h));
+		}
 		g_hash_table_insert(remminafile->settings, g_strdup(setting), value);
 	}
 	else
@@ -318,7 +334,7 @@ const gchar*
 remmina_file_get_string(RemminaFile *remminafile, const gchar *setting)
 {
 	TRACE_CALL("remmina_file_get_string");
-	gchar *value;
+	gchar *value, *w, *h;
 
 	if ( !remmina_masterthread_exec_is_main_thread() )
 	{
@@ -334,6 +350,19 @@ remmina_file_get_string(RemminaFile *remminafile, const gchar *setting)
 		retval = d->p.file_get_string.retval;
 		g_free(d);
 		return retval;
+	}
+
+	/* For backward compatibility with old code that needs to read the
+	 * "resolution" preference setting*/
+	if (strcmp(setting, "resolution") == 0) {
+		w = (gchar*) g_hash_table_lookup(remminafile->settings, "resolution_width");
+		h = (gchar*) g_hash_table_lookup(remminafile->settings, "resolution_height");
+		if (w == NULL)
+			w = "800";
+		if (h == NULL)
+			h = "600";
+		value = g_strdup_printf("%sx%s", w, h);
+		g_hash_table_insert(remminafile->settings, g_strdup("resolution"), value);
 	}
 
 	value = (gchar*) g_hash_table_lookup(remminafile->settings, setting);
@@ -465,12 +494,8 @@ void remmina_file_save(RemminaFile *remminafile)
 		}
 	}
 
-	/* Merge resolution_width and resolution_height into resolution */
-	s = g_strdup_printf("%dx%d", remmina_file_get_int(remminafile, "resolution_width", 800), remmina_file_get_int(remminafile, "resolution_height", 600));
-	g_key_file_set_string(gkeyfile, "remmina", "resolution", s);
-	g_free(s);
-	g_key_file_remove_key(gkeyfile, "remmina", "resolution_width", NULL);
-	g_key_file_remove_key(gkeyfile, "remmina", "resolution_height", NULL);
+	/* Avoid storing redundant and deprecated "resolution" field */
+	g_key_file_remove_key(gkeyfile, "remmina", "resolution", NULL);
 
 	/* Store gkeyfile to disk (password are already sent to keyring) */
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
