@@ -47,7 +47,7 @@ G_DEFINE_TYPE( RemminaAppletMenuItem, remmina_applet_menu_item, GTK_TYPE_MENU_IT
 
 static void remmina_applet_menu_item_destroy(RemminaAppletMenuItem* item, gpointer data)
 {
-	TRACE_CALL("remmina_applet_menu_item_destroy");
+	TRACE_CALL("__func__");
 	g_free(item->filename);
 	g_free(item->name);
 	g_free(item->group);
@@ -57,12 +57,12 @@ static void remmina_applet_menu_item_destroy(RemminaAppletMenuItem* item, gpoint
 
 static void remmina_applet_menu_item_class_init(RemminaAppletMenuItemClass* klass)
 {
-	TRACE_CALL("remmina_applet_menu_item_class_init");
+	TRACE_CALL("__func__");
 }
 
 static void remmina_applet_menu_item_init(RemminaAppletMenuItem* item)
 {
-	TRACE_CALL("remmina_applet_menu_item_init");
+	TRACE_CALL("__func__");
 	item->filename = NULL;
 	item->name = NULL;
 	item->group = NULL;
@@ -74,7 +74,7 @@ static void remmina_applet_menu_item_init(RemminaAppletMenuItem* item)
 
 GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...)
 {
-	TRACE_CALL("remmina_applet_menu_item_new");
+	TRACE_CALL("__func__");
 	va_list ap;
 	RemminaAppletMenuItem* item;
 	GKeyFile* gkeyfile;
@@ -189,7 +189,7 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 
 gint remmina_applet_menu_item_compare(gconstpointer a, gconstpointer b, gpointer user_data)
 {
-	TRACE_CALL("remmina_applet_menu_item_compare");
+	TRACE_CALL("__func__");
 	gint cmp;
 	RemminaAppletMenuItem* itema;
 	RemminaAppletMenuItem* itemb;

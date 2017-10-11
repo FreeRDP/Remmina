@@ -104,7 +104,7 @@ static guint remmina_protocol_widget_signals[LAST_SIGNAL] =
 
 static void remmina_protocol_widget_class_init(RemminaProtocolWidgetClass *klass)
 {
-	TRACE_CALL("remmina_protocol_widget_class_init");
+	TRACE_CALL("__func__");
 	remmina_protocol_widget_signals[CONNECT_SIGNAL] = g_signal_new("connect", G_TYPE_FROM_CLASS(klass),
 	        G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaProtocolWidgetClass, connect), NULL, NULL,
 	        g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
@@ -124,7 +124,7 @@ static void remmina_protocol_widget_class_init(RemminaProtocolWidgetClass *klass
 
 static void remmina_protocol_widget_init_cancel(RemminaInitDialog *dialog, gint response_id, RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init_cancel");
+	TRACE_CALL("__func__");
 	if ((response_id == GTK_RESPONSE_CANCEL || response_id == GTK_RESPONSE_DELETE_EVENT)
 	        && dialog->mode == REMMINA_INIT_MODE_CONNECTING)
 	{
@@ -134,7 +134,7 @@ static void remmina_protocol_widget_init_cancel(RemminaInitDialog *dialog, gint 
 
 static void remmina_protocol_widget_show_init_dialog(RemminaProtocolWidget* gp, const gchar *name)
 {
-	TRACE_CALL("remmina_protocol_widget_show_init_dialog");
+	TRACE_CALL("__func__");
 	if (gp->priv->init_dialog)
 	{
 		gtk_widget_destroy(gp->priv->init_dialog);
@@ -146,7 +146,7 @@ static void remmina_protocol_widget_show_init_dialog(RemminaProtocolWidget* gp, 
 
 static void remmina_protocol_widget_hide_init_dialog(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_hide_init_dialog");
+	TRACE_CALL("__func__");
 	if (gp->priv->init_dialog && GTK_IS_WIDGET(gp->priv->init_dialog))
 		gtk_widget_destroy(gp->priv->init_dialog);
 
@@ -155,7 +155,7 @@ static void remmina_protocol_widget_hide_init_dialog(RemminaProtocolWidget* gp)
 
 static void remmina_protocol_widget_destroy(RemminaProtocolWidget* gp, gpointer data)
 {
-	TRACE_CALL("remmina_protocol_widget_destroy");
+	TRACE_CALL("__func__");
 	remmina_protocol_widget_hide_init_dialog(gp);
 	g_free(gp->priv->features);
 	gp->priv->features = NULL;
@@ -169,7 +169,7 @@ static void remmina_protocol_widget_destroy(RemminaProtocolWidget* gp, gpointer 
 
 static void remmina_protocol_widget_connect(RemminaProtocolWidget* gp, gpointer data)
 {
-	TRACE_CALL("remmina_protocol_widget_connect");
+	TRACE_CALL("__func__");
 #ifdef HAVE_LIBSSH
 	if (gp->priv->ssh_tunnel)
 	{
@@ -181,13 +181,13 @@ static void remmina_protocol_widget_connect(RemminaProtocolWidget* gp, gpointer 
 
 static void remmina_protocol_widget_disconnect(RemminaProtocolWidget* gp, gpointer data)
 {
-	TRACE_CALL("remmina_protocol_widget_disconnect");
+	TRACE_CALL("__func__");
 	remmina_protocol_widget_hide_init_dialog(gp);
 }
 
 void remmina_protocol_widget_grab_focus(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_grab_focus");
+	TRACE_CALL("__func__");
 	GtkWidget* child;
 
 	child = gtk_bin_get_child(GTK_BIN(gp));
@@ -201,7 +201,7 @@ void remmina_protocol_widget_grab_focus(RemminaProtocolWidget* gp)
 
 static void remmina_protocol_widget_init(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init");
+	TRACE_CALL("__func__");
 	RemminaProtocolWidgetPriv *priv;
 
 	priv = g_new0(RemminaProtocolWidgetPriv, 1);
@@ -214,7 +214,7 @@ static void remmina_protocol_widget_init(RemminaProtocolWidget* gp)
 
 void remmina_protocol_widget_open_connection_real(gpointer data)
 {
-	TRACE_CALL("remmina_protocol_widget_open_connection_real");
+	TRACE_CALL("__func__");
 	RemminaProtocolWidget* gp = REMMINA_PROTOCOL_WIDGET(data);
 	RemminaProtocolPlugin* plugin;
 	RemminaFile* remminafile = gp->priv->remmina_file;
@@ -289,7 +289,7 @@ void remmina_protocol_widget_open_connection_real(gpointer data)
 
 void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp, RemminaFile* remminafile)
 {
-	TRACE_CALL("remmina_protocol_widget_open_connection");
+	TRACE_CALL("__func__");
 	gp->priv->remmina_file = remminafile;
 	gp->priv->scalemode = remmina_file_get_int(remminafile, "scale", FALSE);
 	gp->priv->scaler_expand = remmina_file_get_int(remminafile, "scaler_expand", FALSE);
@@ -301,7 +301,7 @@ void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp, RemminaF
 
 gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_close_connection");
+	TRACE_CALL("__func__");
 	GdkDisplay *display;
 #if GTK_CHECK_VERSION(3, 20, 0)
 	GdkSeat *seat;
@@ -369,7 +369,7 @@ gboolean remmina_protocol_widget_plugin_receives_keystrokes(RemminaProtocolWidge
 /* Send to the plugin some keystrokes */
 void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget* gp, GtkMenuItem *widget)
 {
-	TRACE_CALL("remmina_protocol_widget_send_keystrokes");
+	TRACE_CALL("__func__");
 	gchar *keystrokes = g_object_get_data(G_OBJECT(widget), "keystrokes");
 	guint *keyvals;
 	gint i;
@@ -469,7 +469,7 @@ gboolean remmina_protocol_widget_plugin_screenshot(RemminaProtocolWidget* gp, Re
 
 void remmina_protocol_widget_emit_signal(RemminaProtocolWidget* gp, const gchar* signal_name)
 {
-	TRACE_CALL("remmina_protocol_widget_emit_signal");
+	TRACE_CALL("__func__");
 
 	if ( !remmina_masterthread_exec_is_main_thread() )
 	{
@@ -489,19 +489,19 @@ void remmina_protocol_widget_emit_signal(RemminaProtocolWidget* gp, const gchar*
 
 const RemminaProtocolFeature* remmina_protocol_widget_get_features(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_get_features");
+	TRACE_CALL("__func__");
 	return gp->priv->features;
 }
 
 const gchar* remmina_protocol_widget_get_domain(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_get_domain");
+	TRACE_CALL("__func__");
 	return gp->priv->plugin->domain;
 }
 
 gboolean remmina_protocol_widget_query_feature_by_type(RemminaProtocolWidget* gp, RemminaProtocolFeatureType type)
 {
-	TRACE_CALL("remmina_protocol_widget_query_feature_by_type");
+	TRACE_CALL("__func__");
 	const RemminaProtocolFeature *feature;
 
 #ifdef HAVE_LIBSSH
@@ -521,13 +521,13 @@ gboolean remmina_protocol_widget_query_feature_by_type(RemminaProtocolWidget* gp
 
 gboolean remmina_protocol_widget_query_feature_by_ref(RemminaProtocolWidget* gp, const RemminaProtocolFeature *feature)
 {
-	TRACE_CALL("remmina_protocol_widget_query_feature_by_ref");
+	TRACE_CALL("__func__");
 	return gp->priv->plugin->query_feature(gp, feature);
 }
 
 void remmina_protocol_widget_call_feature_by_type(RemminaProtocolWidget* gp, RemminaProtocolFeatureType type, gint id)
 {
-	TRACE_CALL("remmina_protocol_widget_call_feature_by_type");
+	TRACE_CALL("__func__");
 	const RemminaProtocolFeature *feature;
 
 	for (feature = gp->priv->plugin->features; feature && feature->type; feature++)
@@ -542,7 +542,7 @@ void remmina_protocol_widget_call_feature_by_type(RemminaProtocolWidget* gp, Rem
 
 void remmina_protocol_widget_call_feature_by_ref(RemminaProtocolWidget* gp, const RemminaProtocolFeature *feature)
 {
-	TRACE_CALL("remmina_protocol_widget_call_feature_by_ref");
+	TRACE_CALL("__func__");
 	switch (feature->id)
 	{
 #ifdef HAVE_LIBSSH
@@ -572,7 +572,7 @@ void remmina_protocol_widget_call_feature_by_ref(RemminaProtocolWidget* gp, cons
 
 static gboolean remmina_protocol_widget_on_key_press(GtkWidget *widget, GdkEventKey *event, RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_on_key_press");
+	TRACE_CALL("__func__");
 	if (gp->priv->hostkey_func)
 	{
 		return gp->priv->hostkey_func(gp, event->keyval, FALSE, gp->priv->hostkey_func_data);
@@ -582,7 +582,7 @@ static gboolean remmina_protocol_widget_on_key_press(GtkWidget *widget, GdkEvent
 
 static gboolean remmina_protocol_widget_on_key_release(GtkWidget *widget, GdkEventKey *event, RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_on_key_release");
+	TRACE_CALL("__func__");
 	if (gp->priv->hostkey_func)
 	{
 		return gp->priv->hostkey_func(gp, event->keyval, TRUE, gp->priv->hostkey_func_data);
@@ -592,14 +592,14 @@ static gboolean remmina_protocol_widget_on_key_release(GtkWidget *widget, GdkEve
 
 void remmina_protocol_widget_register_hostkey(RemminaProtocolWidget* gp, GtkWidget *widget)
 {
-	TRACE_CALL("remmina_protocol_widget_register_hostkey");
+	TRACE_CALL("__func__");
 	g_signal_connect(G_OBJECT(widget), "key-press-event", G_CALLBACK(remmina_protocol_widget_on_key_press), gp);
 	g_signal_connect(G_OBJECT(widget), "key-release-event", G_CALLBACK(remmina_protocol_widget_on_key_release), gp);
 }
 
 void remmina_protocol_widget_set_hostkey_func(RemminaProtocolWidget* gp, RemminaHostkeyFunc func, gpointer data)
 {
-	TRACE_CALL("remmina_protocol_widget_set_hostkey_func");
+	TRACE_CALL("__func__");
 	gp->priv->hostkey_func = func;
 	gp->priv->hostkey_func_data = data;
 }
@@ -607,7 +607,7 @@ void remmina_protocol_widget_set_hostkey_func(RemminaProtocolWidget* gp, Remmina
 #ifdef HAVE_LIBSSH
 static gboolean remmina_protocol_widget_init_tunnel (RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init_tunnel");
+	TRACE_CALL("__func__");
 	RemminaSSHTunnel *tunnel;
 	gint ret;
 
@@ -646,7 +646,7 @@ static gboolean remmina_protocol_widget_init_tunnel (RemminaProtocolWidget* gp)
 
 gchar* remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget* gp, gint default_port, gboolean port_plus)
 {
-	TRACE_CALL("remmina_protocol_widget_start_direct_tunnel");
+	TRACE_CALL("__func__");
 	const gchar *server;
 	gchar *host, *dest;
 	gint port;
@@ -717,7 +717,7 @@ gchar* remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget* gp, gi
 
 gboolean remmina_protocol_widget_start_reverse_tunnel(RemminaProtocolWidget* gp, gint local_port)
 {
-	TRACE_CALL("remmina_protocol_widget_start_reverse_tunnel");
+	TRACE_CALL("__func__");
 #ifdef HAVE_LIBSSH
 	if (!remmina_file_get_int (gp->priv->remmina_file, "ssh_enabled", FALSE))
 	{
@@ -744,7 +744,7 @@ gboolean remmina_protocol_widget_start_reverse_tunnel(RemminaProtocolWidget* gp,
 
 gboolean remmina_protocol_widget_ssh_exec(RemminaProtocolWidget* gp, gboolean wait, const gchar *fmt, ...)
 {
-	TRACE_CALL("remmina_protocol_widget_ssh_exec");
+	TRACE_CALL("__func__");
 #ifdef HAVE_LIBSSH
 	RemminaSSHTunnel *tunnel = gp->priv->ssh_tunnel;
 	ssh_channel channel;
@@ -811,7 +811,7 @@ gboolean remmina_protocol_widget_ssh_exec(RemminaProtocolWidget* gp, gboolean wa
 #ifdef HAVE_LIBSSH
 static gboolean remmina_protocol_widget_tunnel_init_callback (RemminaSSHTunnel *tunnel, gpointer data)
 {
-	TRACE_CALL("remmina_protocol_widget_tunnel_init_callback");
+	TRACE_CALL("__func__");
 	RemminaProtocolWidget* gp = REMMINA_PROTOCOL_WIDGET (data);
 	gchar *server;
 	gint port;
@@ -827,13 +827,13 @@ static gboolean remmina_protocol_widget_tunnel_init_callback (RemminaSSHTunnel *
 
 static gboolean remmina_protocol_widget_tunnel_connect_callback(RemminaSSHTunnel* tunnel, gpointer data)
 {
-	TRACE_CALL("remmina_protocol_widget_tunnel_connect_callback");
+	TRACE_CALL("__func__");
 	return TRUE;
 }
 
 static gboolean remmina_protocol_widget_tunnel_disconnect_callback(RemminaSSHTunnel* tunnel, gpointer data)
 {
-	TRACE_CALL("remmina_protocol_widget_tunnel_disconnect_callback");
+	TRACE_CALL("__func__");
 	RemminaProtocolWidget* gp = REMMINA_PROTOCOL_WIDGET (data);
 
 	if (REMMINA_SSH (tunnel)->error)
@@ -848,7 +848,7 @@ static gboolean remmina_protocol_widget_tunnel_disconnect_callback(RemminaSSHTun
 
 gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget* gp, RemminaXPortTunnelInitFunc init_func)
 {
-	TRACE_CALL("remmina_protocol_widget_start_xport_tunnel");
+	TRACE_CALL("__func__");
 #ifdef HAVE_LIBSSH
 	gboolean bindlocalhost;
 	gchar *server;
@@ -884,7 +884,7 @@ gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget* gp, R
 
 void remmina_protocol_widget_set_display(RemminaProtocolWidget* gp, gint display)
 {
-	TRACE_CALL("remmina_protocol_widget_set_display");
+	TRACE_CALL("__func__");
 #ifdef HAVE_LIBSSH
 	if (gp->priv->ssh_tunnel->localdisplay) g_free(gp->priv->ssh_tunnel->localdisplay);
 	gp->priv->ssh_tunnel->localdisplay = g_strdup_printf("unix:%i", display);
@@ -893,74 +893,74 @@ void remmina_protocol_widget_set_display(RemminaProtocolWidget* gp, gint display
 
 GtkWidget* remmina_protocol_widget_get_init_dialog(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_get_init_dialog");
+	TRACE_CALL("__func__");
 	return gp->priv->init_dialog;
 }
 
 gint remmina_protocol_widget_get_width(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_get_width");
+	TRACE_CALL("__func__");
 	return gp->priv->width;
 }
 
 void remmina_protocol_widget_set_width(RemminaProtocolWidget* gp, gint width)
 {
-	TRACE_CALL("remmina_protocol_widget_set_width");
+	TRACE_CALL("__func__");
 	gp->priv->width = width;
 }
 
 gint remmina_protocol_widget_get_height(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_get_height");
+	TRACE_CALL("__func__");
 	return gp->priv->height;
 }
 
 void remmina_protocol_widget_set_height(RemminaProtocolWidget* gp, gint height)
 {
-	TRACE_CALL("remmina_protocol_widget_set_height");
+	TRACE_CALL("__func__");
 	gp->priv->height = height;
 }
 
 RemminaScaleMode remmina_protocol_widget_get_current_scale_mode(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_protocol_widget_get_current_scale_mode");
+	TRACE_CALL("__func__");
 	return gp->priv->scalemode;
 }
 
 void remmina_protocol_widget_set_current_scale_mode(RemminaProtocolWidget *gp, RemminaScaleMode scalemode)
 {
-	TRACE_CALL("remmina_protocol_widget_set_current_scale_mode");
+	TRACE_CALL("__func__");
 	gp->priv->scalemode = scalemode;
 }
 
 gboolean remmina_protocol_widget_get_expand(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_get_expand");
+	TRACE_CALL("__func__");
 	return gp->priv->scaler_expand;
 }
 
 void remmina_protocol_widget_set_expand(RemminaProtocolWidget* gp, gboolean expand)
 {
-	TRACE_CALL("remmina_protocol_widget_set_expand");
+	TRACE_CALL("__func__");
 	gp->priv->scaler_expand = expand;
 	return;
 }
 
 gboolean remmina_protocol_widget_has_error(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_has_error");
+	TRACE_CALL("__func__");
 	return gp->priv->has_error;
 }
 
 gchar* remmina_protocol_widget_get_error_message(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_get_error_message");
+	TRACE_CALL("__func__");
 	return gp->priv->error_message;
 }
 
 void remmina_protocol_widget_set_error(RemminaProtocolWidget* gp, const gchar *fmt, ...)
 {
-	TRACE_CALL("remmina_protocol_widget_set_error");
+	TRACE_CALL("__func__");
 	va_list args;
 
 	if (gp->priv->error_message) g_free(gp->priv->error_message);
@@ -980,19 +980,19 @@ void remmina_protocol_widget_set_error(RemminaProtocolWidget* gp, const gchar *f
 
 gboolean remmina_protocol_widget_is_closed(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_is_closed");
+	TRACE_CALL("__func__");
 	return gp->priv->closed;
 }
 
 RemminaFile* remmina_protocol_widget_get_file(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_get_file");
+	TRACE_CALL("__func__");
 	return gp->priv->remmina_file;
 }
 
 gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget* gp, RemminaAuthpwdType authpwd_type, gboolean allow_password_saving)
 {
-	TRACE_CALL("remmina_protocol_widget_init_authpwd");
+	TRACE_CALL("__func__");
 	RemminaFile* remminafile = gp->priv->remmina_file;
 	gchar* s;
 	gint ret;
@@ -1024,7 +1024,7 @@ gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget* gp, RemminaAuth
 
 gint remmina_protocol_widget_init_authuserpwd(RemminaProtocolWidget* gp, gboolean want_domain, gboolean allow_password_saving)
 {
-	TRACE_CALL("remmina_protocol_widget_init_authuserpwd");
+	TRACE_CALL("__func__");
 	RemminaFile* remminafile = gp->priv->remmina_file;
 
 	return remmina_init_dialog_authuserpwd(
@@ -1037,42 +1037,42 @@ gint remmina_protocol_widget_init_authuserpwd(RemminaProtocolWidget* gp, gboolea
 
 gint remmina_protocol_widget_init_certificate(RemminaProtocolWidget* gp, const gchar* subject, const gchar* issuer, const gchar* fingerprint)
 {
-	TRACE_CALL("remmina_protocol_widget_init_certificate");
+	TRACE_CALL("__func__");
 	return remmina_init_dialog_certificate(REMMINA_INIT_DIALOG(gp->priv->init_dialog), subject, issuer, fingerprint);
 }
 gint remmina_protocol_widget_changed_certificate(RemminaProtocolWidget *gp, const gchar* subject, const gchar* issuer, const gchar* new_fingerprint, const gchar* old_fingerprint)
 {
-	TRACE_CALL("remmina_protocol_widget_changed_certificate");
+	TRACE_CALL("__func__");
 	return remmina_init_dialog_certificate_changed(REMMINA_INIT_DIALOG(gp->priv->init_dialog), subject, issuer, new_fingerprint, old_fingerprint);
 }
 
 gchar* remmina_protocol_widget_init_get_username(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init_get_username");
+	TRACE_CALL("__func__");
 	return g_strdup(REMMINA_INIT_DIALOG(gp->priv->init_dialog)->username);
 }
 
 gchar* remmina_protocol_widget_init_get_password(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init_get_password");
+	TRACE_CALL("__func__");
 	return g_strdup(REMMINA_INIT_DIALOG(gp->priv->init_dialog)->password);
 }
 
 gchar* remmina_protocol_widget_init_get_domain(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init_get_domain");
+	TRACE_CALL("__func__");
 	return g_strdup(REMMINA_INIT_DIALOG(gp->priv->init_dialog)->domain);
 }
 
 gboolean remmina_protocol_widget_init_get_savepassword(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init_get_savepassword");
+	TRACE_CALL("__func__");
 	return REMMINA_INIT_DIALOG(gp->priv->init_dialog)->save_password;
 }
 
 gint remmina_protocol_widget_init_authx509(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init_authx509");
+	TRACE_CALL("__func__");
 	RemminaFile* remminafile = gp->priv->remmina_file;
 
 	return remmina_init_dialog_authx509(REMMINA_INIT_DIALOG(gp->priv->init_dialog),
@@ -1082,7 +1082,7 @@ gint remmina_protocol_widget_init_authx509(RemminaProtocolWidget* gp)
 
 gchar* remmina_protocol_widget_init_get_cacert(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init_get_cacert");
+	TRACE_CALL("__func__");
 	gchar* s;
 
 	s = REMMINA_INIT_DIALOG(gp->priv->init_dialog)->cacert;
@@ -1091,7 +1091,7 @@ gchar* remmina_protocol_widget_init_get_cacert(RemminaProtocolWidget* gp)
 
 gchar* remmina_protocol_widget_init_get_cacrl(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init_get_cacrl");
+	TRACE_CALL("__func__");
 	gchar* s;
 
 	s = REMMINA_INIT_DIALOG(gp->priv->init_dialog)->cacrl;
@@ -1100,7 +1100,7 @@ gchar* remmina_protocol_widget_init_get_cacrl(RemminaProtocolWidget* gp)
 
 gchar* remmina_protocol_widget_init_get_clientcert(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init_get_clientcert");
+	TRACE_CALL("__func__");
 	gchar* s;
 
 	s = REMMINA_INIT_DIALOG(gp->priv->init_dialog)->clientcert;
@@ -1109,7 +1109,7 @@ gchar* remmina_protocol_widget_init_get_clientcert(RemminaProtocolWidget* gp)
 
 gchar* remmina_protocol_widget_init_get_clientkey(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init_get_clientkey");
+	TRACE_CALL("__func__");
 	gchar* s;
 
 	s = REMMINA_INIT_DIALOG(gp->priv->init_dialog)->clientkey;
@@ -1118,7 +1118,7 @@ gchar* remmina_protocol_widget_init_get_clientkey(RemminaProtocolWidget* gp)
 
 void remmina_protocol_widget_init_save_cred(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init_save_cred");
+	TRACE_CALL("__func__");
 
 	RemminaFile* remminafile = gp->priv->remmina_file;
 	gchar* s;
@@ -1181,7 +1181,7 @@ void remmina_protocol_widget_init_save_cred(RemminaProtocolWidget* gp)
 
 void remmina_protocol_widget_init_show_listen(RemminaProtocolWidget* gp, gint port)
 {
-	TRACE_CALL("remmina_protocol_widget_init_show_listen");
+	TRACE_CALL("__func__");
 	remmina_init_dialog_set_status(REMMINA_INIT_DIALOG(gp->priv->init_dialog),
 	                               _("Listening on port %i for an incoming %s connection..."), port,
 	                               remmina_file_get_string(gp->priv->remmina_file, "protocol"));
@@ -1189,33 +1189,33 @@ void remmina_protocol_widget_init_show_listen(RemminaProtocolWidget* gp, gint po
 
 void remmina_protocol_widget_init_show_retry(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init_show_retry");
+	TRACE_CALL("__func__");
 	remmina_init_dialog_set_status_temp(REMMINA_INIT_DIALOG(gp->priv->init_dialog),
 	                                    _("Authentication failed. Trying to reconnect..."));
 }
 
 void remmina_protocol_widget_init_show(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init_show");
+	TRACE_CALL("__func__");
 	gtk_widget_show(gp->priv->init_dialog);
 }
 
 void remmina_protocol_widget_init_hide(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_init_hide");
+	TRACE_CALL("__func__");
 	gtk_widget_hide(gp->priv->init_dialog);
 }
 
 static void remmina_protocol_widget_chat_on_destroy(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_chat_on_destroy");
+	TRACE_CALL("__func__");
 	gp->priv->chat_window = NULL;
 }
 
 void remmina_protocol_widget_chat_open(RemminaProtocolWidget* gp, const gchar *name,
                                        void(*on_send)(RemminaProtocolWidget* gp, const gchar *text), void(*on_destroy)(RemminaProtocolWidget* gp))
 {
-	TRACE_CALL("remmina_protocol_widget_chat_open");
+	TRACE_CALL("__func__");
 	if (gp->priv->chat_window)
 	{
 		gtk_window_present(GTK_WINDOW(gp->priv->chat_window));
@@ -1233,7 +1233,7 @@ void remmina_protocol_widget_chat_open(RemminaProtocolWidget* gp, const gchar *n
 
 void remmina_protocol_widget_chat_close(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_protocol_widget_chat_close");
+	TRACE_CALL("__func__");
 	if (gp->priv->chat_window)
 	{
 		gtk_widget_destroy(gp->priv->chat_window);
@@ -1242,7 +1242,7 @@ void remmina_protocol_widget_chat_close(RemminaProtocolWidget* gp)
 
 void remmina_protocol_widget_chat_receive(RemminaProtocolWidget* gp, const gchar* text)
 {
-	TRACE_CALL("remmina_protocol_widget_chat_receive");
+	TRACE_CALL("__func__");
 	/* This function can be called from a non main thread */
 
 	if (gp->priv->chat_window)
@@ -1275,7 +1275,7 @@ GtkWidget* remmina_protocol_widget_new(void)
  * press the keys and release them in reversed order. */
 void remmina_protocol_widget_send_keys_signals(GtkWidget *widget, const guint *keyvals, int keyvals_length, GdkEventType action)
 {
-	TRACE_CALL("remmina_protocol_widget_send_keys_signals");
+	TRACE_CALL("__func__");
 	int i;
 	GdkEventKey event;
 	GdkKeymap *keymap = gdk_keymap_get_default();

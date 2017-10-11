@@ -66,7 +66,7 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 
 static void remmina_plugin_xdmcp_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_xdmcp_on_plug_added");
+	TRACE_CALL("__func__");
 	RemminaPluginXdmcpData *gpdata = GET_PLUGIN_DATA(gp);
 
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
@@ -75,13 +75,13 @@ static void remmina_plugin_xdmcp_on_plug_added(GtkSocket *socket, RemminaProtoco
 
 static void remmina_plugin_xdmcp_on_plug_removed(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_xdmcp_on_plug_removed");
+	TRACE_CALL("__func__");
 	remmina_plugin_service->protocol_plugin_close_connection(gp);
 }
 
 static gboolean remmina_plugin_xdmcp_start_xephyr(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_xdmcp_start_xephyr");
+	TRACE_CALL("__func__");
 	RemminaPluginXdmcpData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	gchar *argv[50];
@@ -186,7 +186,7 @@ static gboolean remmina_plugin_xdmcp_start_xephyr(RemminaProtocolWidget *gp)
 static gboolean remmina_plugin_xdmcp_tunnel_init_callback(RemminaProtocolWidget *gp, gint remotedisplay, const gchar *server,
 		gint port)
 {
-	TRACE_CALL("remmina_plugin_xdmcp_tunnel_init_callback");
+	TRACE_CALL("__func__");
 	RemminaPluginXdmcpData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 
@@ -213,7 +213,7 @@ static gboolean remmina_plugin_xdmcp_tunnel_init_callback(RemminaProtocolWidget 
 
 static gboolean remmina_plugin_xdmcp_main(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_xdmcp_main");
+	TRACE_CALL("__func__");
 	RemminaPluginXdmcpData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 
@@ -243,7 +243,7 @@ static gboolean remmina_plugin_xdmcp_main(RemminaProtocolWidget *gp)
 static gpointer
 remmina_plugin_xdmcp_main_thread (gpointer data)
 {
-	TRACE_CALL("remmina_plugin_xdmcp_main_thread");
+	TRACE_CALL("__func__");
 	pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, NULL);
 
 	CANCEL_ASYNC
@@ -256,7 +256,7 @@ remmina_plugin_xdmcp_main_thread (gpointer data)
 
 static void remmina_plugin_xdmcp_init(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_xdmcp_init");
+	TRACE_CALL("__func__");
 	RemminaPluginXdmcpData *gpdata;
 
 	gpdata = g_new0(RemminaPluginXdmcpData, 1);
@@ -275,7 +275,7 @@ static void remmina_plugin_xdmcp_init(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_xdmcp_open_connection");
+	TRACE_CALL("__func__");
 	RemminaPluginXdmcpData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	gint width, height;
@@ -321,7 +321,7 @@ static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_xdmcp_close_connection(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_xdmcp_close_connection");
+	TRACE_CALL("__func__");
 	RemminaPluginXdmcpData *gpdata = GET_PLUGIN_DATA(gp);
 
 	if (gpdata->thread)
@@ -345,7 +345,7 @@ static gboolean remmina_plugin_xdmcp_close_connection(RemminaProtocolWidget *gp)
 /* Send CTRL+ALT+DEL keys keystrokes to the plugin socket widget */
 static void remmina_plugin_xdmcp_send_ctrlaltdel(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_xdmcp_send_ctrlaltdel");
+	TRACE_CALL("__func__");
 	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_Delete };
 	RemminaPluginXdmcpData *gpdata = GET_PLUGIN_DATA(gp);
 
@@ -355,13 +355,13 @@ static void remmina_plugin_xdmcp_send_ctrlaltdel(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_xdmcp_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-	TRACE_CALL("remmina_plugin_xdmcp_query_feature");
+	TRACE_CALL("__func__");
 	return TRUE;
 }
 
 static void remmina_plugin_xdmcp_call_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-	TRACE_CALL("remmina_plugin_xdmcp_call_feature");
+	TRACE_CALL("__func__");
 	RemminaFile *remminafile;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
@@ -441,7 +441,7 @@ static RemminaProtocolPlugin remmina_plugin_xdmcp =
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
-	TRACE_CALL("remmina_plugin_entry");
+	TRACE_CALL("__func__");
 	remmina_plugin_service = service;
 
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_RUNTIME_LOCALEDIR);

@@ -102,7 +102,7 @@ _gpg_error_to_errno (gcry_error_t e)
 
 static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *cmdline)
 {
-	TRACE_CALL("remmina_on_command_line");
+	TRACE_CALL("__func__");
 
 	gint status = 0;
 	gboolean executed = FALSE;
@@ -199,7 +199,7 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 
 static void remmina_on_startup(GApplication *app)
 {
-	TRACE_CALL("remmina_on_startup");
+	TRACE_CALL("__func__");
 	remmina_file_manager_init();
 	remmina_pref_init();
 	remmina_plugin_manager_init();
@@ -218,7 +218,7 @@ static void remmina_on_startup(GApplication *app)
 
 static gint remmina_on_local_cmdline (GApplication *app, GVariantDict *options, gpointer user_data)
 {
-	TRACE_CALL("remmina_on_local_cmdline");
+	TRACE_CALL("__func__");
 
 	int status = -1;
 
@@ -230,7 +230,7 @@ static gint remmina_on_local_cmdline (GApplication *app, GVariantDict *options, 
 
 int main(int argc, char* argv[])
 {
-	TRACE_CALL("main");
+	TRACE_CALL("__func__");
 	GtkApplication *app;
 	const gchar *app_id;
 	int status;

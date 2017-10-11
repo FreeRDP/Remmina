@@ -43,7 +43,7 @@ G_DEFINE_TYPE( RemminaScrolledViewport, remmina_scrolled_viewport, GTK_TYPE_EVEN
 
 static void remmina_scrolled_viewport_get_preferred_width(GtkWidget* widget, gint* minimum_width, gint* natural_width)
 {
-	TRACE_CALL("remmina_scrolled_viewport_get_preferred_width");
+	TRACE_CALL("__func__");
 	/* Just return a fake small size, so gtk_window_fullscreen() will not fail
 	 * because our content is too big*/
 	if (minimum_width != NULL) *minimum_width = 100;
@@ -52,7 +52,7 @@ static void remmina_scrolled_viewport_get_preferred_width(GtkWidget* widget, gin
 
 static void remmina_scrolled_viewport_get_preferred_height(GtkWidget* widget, gint* minimum_height, gint* natural_height)
 {
-	TRACE_CALL("remmina_scrolled_viewport_get_preferred_height")
+	TRACE_CALL("__func__");
 	/* Just return a fake small size, so gtk_window_fullscreen() will not fail
 	 * because our content is too big*/
 	if (minimum_height != NULL) *minimum_height = 100;
@@ -62,7 +62,7 @@ static void remmina_scrolled_viewport_get_preferred_height(GtkWidget* widget, gi
 /* Event handler when mouse move on borders */
 static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 {
-	TRACE_CALL("remmina_scrolled_viewport_motion_timeout");
+	TRACE_CALL("__func__");
 	RemminaScrolledViewport *gsv;
 	GtkWidget *child;
 	GdkDisplay *display;
@@ -136,14 +136,14 @@ static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 
 static gboolean remmina_scrolled_viewport_enter(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 {
-	TRACE_CALL("remmina_scrolled_viewport_enter");
+	TRACE_CALL("__func__");
 	remmina_scrolled_viewport_remove_motion(REMMINA_SCROLLED_VIEWPORT(widget));
 	return FALSE;
 }
 
 static gboolean remmina_scrolled_viewport_leave(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 {
-	TRACE_CALL("remmina_scrolled_viewport_leave");
+	TRACE_CALL("__func__");
 	RemminaScrolledViewport *gsv = REMMINA_SCROLLED_VIEWPORT(widget);
 	gsv->viewport_motion = TRUE;
 	gsv->viewport_motion_handler = g_timeout_add(20, remmina_scrolled_viewport_motion_timeout, gsv);
@@ -152,13 +152,13 @@ static gboolean remmina_scrolled_viewport_leave(GtkWidget *widget, GdkEventCross
 
 static void remmina_scrolled_viewport_destroy(GtkWidget *widget, gpointer data)
 {
-	TRACE_CALL("remmina_scrolled_viewport_destroy");
+	TRACE_CALL("__func__");
 	remmina_scrolled_viewport_remove_motion(REMMINA_SCROLLED_VIEWPORT(widget));
 }
 
 static void remmina_scrolled_viewport_class_init(RemminaScrolledViewportClass *klass)
 {
-	TRACE_CALL("remmina_scrolled_viewport_class_init");
+	TRACE_CALL("__func__");
 	GtkWidgetClass *widget_class;
 	widget_class = (GtkWidgetClass *) klass;
 
@@ -169,12 +169,12 @@ static void remmina_scrolled_viewport_class_init(RemminaScrolledViewportClass *k
 
 static void remmina_scrolled_viewport_init(RemminaScrolledViewport *gsv)
 {
-	TRACE_CALL("remmina_scrolled_viewport_init");
+	TRACE_CALL("__func__");
 }
 
 void remmina_scrolled_viewport_remove_motion(RemminaScrolledViewport *gsv)
 {
-	TRACE_CALL("remmina_scrolled_viewport_remove_motion");
+	TRACE_CALL("__func__");
 	if (gsv->viewport_motion)
 	{
 		gsv->viewport_motion = FALSE;
@@ -186,7 +186,7 @@ void remmina_scrolled_viewport_remove_motion(RemminaScrolledViewport *gsv)
 GtkWidget*
 remmina_scrolled_viewport_new(void)
 {
-	TRACE_CALL("remmina_scrolled_viewport_new");
+	TRACE_CALL("__func__");
 	RemminaScrolledViewport *gsv;
 
 	gsv = REMMINA_SCROLLED_VIEWPORT(g_object_new(REMMINA_TYPE_SCROLLED_VIEWPORT, NULL));

@@ -70,7 +70,7 @@ typedef struct _RemminaTpChannelHandler
 
 static void remmina_tp_channel_handler_free(RemminaTpChannelHandler *chandler)
 {
-	TRACE_CALL("remmina_tp_channel_handler_free");
+	TRACE_CALL("__func__");
 	if (chandler->disconnect_handler)
 	{
 		g_signal_handler_disconnect(chandler->proto_widget, chandler->disconnect_handler);
@@ -112,7 +112,7 @@ static void remmina_tp_channel_handler_free(RemminaTpChannelHandler *chandler)
 
 static void remmina_tp_channel_handler_channel_closed(TpChannel *channel, gpointer user_data, GObject *self)
 {
-	TRACE_CALL("remmina_tp_channel_handler_channel_closed");
+	TRACE_CALL("__func__");
 	RemminaTpChannelHandler *chandler = (RemminaTpChannelHandler *) user_data;
 
 	g_print("remmina_tp_channel_handler_channel_closed: %s\n", chandler->channel_path);
@@ -121,7 +121,7 @@ static void remmina_tp_channel_handler_channel_closed(TpChannel *channel, gpoint
 
 static void remmina_tp_channel_handler_on_disconnect(GtkWidget *widget, RemminaTpChannelHandler *chandler)
 {
-	TRACE_CALL("remmina_tp_channel_handler_on_disconnect");
+	TRACE_CALL("__func__");
 	g_print("remmina_tp_channel_handler_on_disconnect: %s\n", chandler->channel_path);
 	g_signal_handler_disconnect(widget, chandler->disconnect_handler);
 	chandler->disconnect_handler = 0;
@@ -130,7 +130,7 @@ static void remmina_tp_channel_handler_on_disconnect(GtkWidget *widget, RemminaT
 
 static void remmina_tp_channel_handler_connect(RemminaTpChannelHandler *chandler)
 {
-	TRACE_CALL("remmina_tp_channel_handler_connect");
+	TRACE_CALL("__func__");
 	RemminaFile *remminafile;
 	gchar *s;
 
@@ -154,7 +154,7 @@ static void remmina_tp_channel_handler_connect(RemminaTpChannelHandler *chandler
 static void remmina_tp_channel_handler_get_service(TpProxy *channel, const GValue *service, const GError *error,
 		gpointer user_data, GObject *weak_object)
 {
-	TRACE_CALL("remmina_tp_channel_handler_get_service");
+	TRACE_CALL("__func__");
 	RemminaTpChannelHandler *chandler = (RemminaTpChannelHandler *) user_data;
 	const gchar *svc;
 
@@ -181,7 +181,7 @@ static void remmina_tp_channel_handler_get_service(TpProxy *channel, const GValu
 static void remmina_tp_channel_handler_accept(TpChannel *channel, const GValue *address, const GError *error,
 		gpointer user_data, GObject *weak_object)
 {
-	TRACE_CALL("remmina_tp_channel_handler_accept");
+	TRACE_CALL("__func__");
 	RemminaTpChannelHandler *chandler = (RemminaTpChannelHandler *) user_data;
 
 	if (error != NULL)
@@ -199,7 +199,7 @@ static void remmina_tp_channel_handler_accept(TpChannel *channel, const GValue *
 
 static void remmina_tp_channel_handler_on_response(GtkDialog *dialog, gint response_id, RemminaTpChannelHandler *chandler)
 {
-	TRACE_CALL("remmina_tp_channel_handler_on_response");
+	TRACE_CALL("__func__");
 	GValue noop =
 	{ 0 };
 	GError *error;
@@ -225,7 +225,7 @@ static void remmina_tp_channel_handler_on_response(GtkDialog *dialog, gint respo
 static void remmina_tp_channel_handler_get_contacts(TpConnection *connection, guint n_contacts, TpContact * const *contacts,
 		guint n_failed, const TpHandle *failed, const GError *error, gpointer user_data, GObject *weak_object)
 {
-	TRACE_CALL("remmina_tp_channel_handler_get_contacts");
+	TRACE_CALL("__func__");
 	RemminaTpChannelHandler *chandler = (RemminaTpChannelHandler *) user_data;
 	TpContact *contact;
 	gchar *token;
@@ -290,7 +290,7 @@ static void remmina_tp_channel_handler_get_contacts(TpConnection *connection, gu
 
 static void remmina_tp_channel_handler_channel_ready(TpChannel *channel, const GError *channel_error, gpointer user_data)
 {
-	TRACE_CALL("remmina_tp_channel_handler_channel_ready");
+	TRACE_CALL("__func__");
 	RemminaTpChannelHandler *chandler = (RemminaTpChannelHandler *) user_data;
 	TpHandle handle;
 	GError *error = NULL;
@@ -321,7 +321,7 @@ static void remmina_tp_channel_handler_channel_ready(TpChannel *channel, const G
 static void remmina_tp_channel_handler_connection_ready(TpConnection *connection, const GError *connection_error,
 		gpointer user_data)
 {
-	TRACE_CALL("remmina_tp_channel_handler_connection_ready");
+	TRACE_CALL("__func__");
 	RemminaTpChannelHandler *chandler = (RemminaTpChannelHandler *) user_data;
 	GError *error = NULL;
 
@@ -345,7 +345,7 @@ static void remmina_tp_channel_handler_connection_ready(TpConnection *connection
 
 static void remmina_tp_channel_handler_account_ready(GObject *account, GAsyncResult *res, gpointer user_data)
 {
-	TRACE_CALL("remmina_tp_channel_handler_account_ready");
+	TRACE_CALL("__func__");
 	RemminaTpChannelHandler *chandler = (RemminaTpChannelHandler *) user_data;
 	GError *error = NULL;
 
@@ -369,7 +369,7 @@ static void remmina_tp_channel_handler_account_ready(GObject *account, GAsyncRes
 void remmina_tp_channel_handler_new(const gchar *account_path, const gchar *connection_path, const gchar *channel_path,
 		GHashTable *channel_properties, DBusGMethodInvocation *context)
 {
-	TRACE_CALL("remmina_tp_channel_handler_new");
+	TRACE_CALL("__func__");
 	TpDBusDaemon *bus;
 	TpAccount *account;
 	GError *error = NULL;

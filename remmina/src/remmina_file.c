@@ -69,7 +69,7 @@ static struct timespec times[2];
 static RemminaFile*
 remmina_file_new_empty(void)
 {
-	TRACE_CALL("remmina_file_new_empty");
+	TRACE_CALL("__func__");
 	RemminaFile *remminafile;
 
 	remminafile = g_new0(RemminaFile, 1);
@@ -84,7 +84,7 @@ remmina_file_new_empty(void)
 RemminaFile*
 remmina_file_new(void)
 {
-	TRACE_CALL("remmina_file_new");
+	TRACE_CALL("__func__");
 	RemminaFile *remminafile;
 
 	/* Try to load from the preference file for default settings first */
@@ -105,7 +105,7 @@ remmina_file_new(void)
 
 void remmina_file_generate_filename(RemminaFile *remminafile)
 {
-	TRACE_CALL("remmina_file_generate_filename");
+	TRACE_CALL("__func__");
 	GTimeVal gtime;
 	GDir *dir;
 
@@ -123,7 +123,7 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 
 void remmina_file_set_filename(RemminaFile *remminafile, const gchar *filename)
 {
-	TRACE_CALL("remmina_file_set_filename");
+	TRACE_CALL("__func__");
 	g_free(remminafile->filename);
 	remminafile->filename = g_strdup(filename);
 }
@@ -131,14 +131,14 @@ void remmina_file_set_filename(RemminaFile *remminafile, const gchar *filename)
 const gchar*
 remmina_file_get_filename(RemminaFile *remminafile)
 {
-	TRACE_CALL("remmina_file_get_filename");
+	TRACE_CALL("__func__");
 	return remminafile->filename;
 }
 
 RemminaFile*
 remmina_file_copy(const gchar *filename)
 {
-	TRACE_CALL("remmina_file_copy");
+	TRACE_CALL("__func__");
 	RemminaFile *remminafile;
 
 	remminafile = remmina_file_load(filename);
@@ -149,7 +149,7 @@ remmina_file_copy(const gchar *filename)
 
 static const RemminaProtocolSetting* find_protocol_setting(const gchar *name, RemminaProtocolPlugin* protocol_plugin)
 {
-	TRACE_CALL("find_protocol_setting");
+	TRACE_CALL("__func__");
 	const RemminaProtocolSetting* setting_iter;
 
 	if (protocol_plugin == NULL)
@@ -181,7 +181,7 @@ static const RemminaProtocolSetting* find_protocol_setting(const gchar *name, Re
 
 static gboolean is_encrypted_setting(const RemminaProtocolSetting* setting)
 {
-	TRACE_CALL("is_encrypted_setting");
+	TRACE_CALL("__func__");
 	if (setting != NULL &&
 		(setting->type == REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD) )
 	{
@@ -192,7 +192,7 @@ static gboolean is_encrypted_setting(const RemminaProtocolSetting* setting)
 
 static gboolean is_encrypted_setting_by_name(const gchar *setting_name, RemminaProtocolPlugin* protocol_plugin)
 {
-	TRACE_CALL("is_encrypted_setting_by_name");
+	TRACE_CALL("__func__");
 	const RemminaProtocolSetting* setting;
 
 	if (strcmp(setting_name, "ssh_password") == 0)
@@ -211,7 +211,7 @@ static gboolean is_encrypted_setting_by_name(const gchar *setting_name, RemminaP
 RemminaFile*
 remmina_file_load(const gchar *filename)
 {
-	TRACE_CALL("remmina_file_load");
+	TRACE_CALL("__func__");
 	GKeyFile *gkeyfile;
 	RemminaFile *remminafile;
 	gchar *proto;
@@ -297,13 +297,13 @@ remmina_file_load(const gchar *filename)
 
 void remmina_file_set_string(RemminaFile *remminafile, const gchar *setting, const gchar *value)
 {
-	TRACE_CALL("remmina_file_set_string");
+	TRACE_CALL("__func__");
 	remmina_file_set_string_ref(remminafile, setting, g_strdup(value));
 }
 
 void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting, gchar *value)
 {
-	TRACE_CALL("remmina_file_set_string_ref");
+	TRACE_CALL("__func__");
 	gint n, w, h;
 
 	if (value)
@@ -333,7 +333,7 @@ void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting,
 const gchar*
 remmina_file_get_string(RemminaFile *remminafile, const gchar *setting)
 {
-	TRACE_CALL("remmina_file_get_string");
+	TRACE_CALL("__func__");
 	gchar *value, *w, *h;
 
 	if ( !remmina_masterthread_exec_is_main_thread() )
@@ -372,7 +372,7 @@ remmina_file_get_string(RemminaFile *remminafile, const gchar *setting)
 gchar*
 remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting)
 {
-	TRACE_CALL("remmina_file_get_secret");
+	TRACE_CALL("__func__");
 
 	/* This function is in the RemminaPluginService table, we cannot remove it
 	 * without breaking plugin API */
@@ -382,13 +382,13 @@ remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting)
 
 void remmina_file_set_int(RemminaFile *remminafile, const gchar *setting, gint value)
 {
-	TRACE_CALL("remmina_file_set_int");
+	TRACE_CALL("__func__");
 	g_hash_table_insert(remminafile->settings, g_strdup(setting), g_strdup_printf("%i", value));
 }
 
 gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint default_value)
 {
-	TRACE_CALL("remmina_file_get_int");
+	TRACE_CALL("__func__");
 	gchar *value;
 
 	value = g_hash_table_lookup(remminafile->settings, setting);
@@ -398,7 +398,7 @@ gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint d
 static GKeyFile*
 remmina_file_get_keyfile(RemminaFile *remminafile)
 {
-	TRACE_CALL("remmina_file_get_keyfile");
+	TRACE_CALL("__func__");
 	GKeyFile *gkeyfile;
 
 	if (remminafile->filename == NULL)
@@ -413,7 +413,7 @@ remmina_file_get_keyfile(RemminaFile *remminafile)
 
 void remmina_file_free(RemminaFile *remminafile)
 {
-	TRACE_CALL("remmina_file_free");
+	TRACE_CALL("__func__");
 	if (remminafile == NULL)
 		return;
 
@@ -426,7 +426,7 @@ void remmina_file_free(RemminaFile *remminafile)
 
 void remmina_file_save(RemminaFile *remminafile)
 {
-	TRACE_CALL("remmina_file_save");
+	TRACE_CALL("__func__");
 	RemminaSecretPlugin *secret_plugin;
 	RemminaProtocolPlugin* protocol_plugin;
 	GHashTableIter iter;
@@ -509,7 +509,7 @@ void remmina_file_save(RemminaFile *remminafile)
 
 void remmina_file_store_secret_plugin_password(RemminaFile *remminafile, const gchar* key, const gchar* value)
 {
-	TRACE_CALL("remmina_file_store_secret_plugin_password");
+	TRACE_CALL("__func__");
 
 	/* Only change the password in the keyring. This function
 	 * is a shortcut which avoids updating of date/time of .pref file
@@ -528,7 +528,7 @@ void remmina_file_store_secret_plugin_password(RemminaFile *remminafile, const g
 RemminaFile*
 remmina_file_dup(RemminaFile *remminafile)
 {
-	TRACE_CALL("remmina_file_dup");
+	TRACE_CALL("__func__");
 	RemminaFile *dupfile;
 	GHashTableIter iter;
 	const gchar *key, *value;
@@ -547,7 +547,7 @@ remmina_file_dup(RemminaFile *remminafile)
 
 void remmina_file_update_screen_resolution(RemminaFile *remminafile)
 {
-	TRACE_CALL("remmina_file_update_screen_resolution");
+	TRACE_CALL("__func__");
 	GdkDisplay *display;
 #if GTK_CHECK_VERSION(3, 20, 0)
 	/* TODO: rename to "seat" */
@@ -604,7 +604,7 @@ void remmina_file_update_screen_resolution(RemminaFile *remminafile)
 const gchar*
 remmina_file_get_icon_name(RemminaFile *remminafile)
 {
-	TRACE_CALL("remmina_file_get_icon_name");
+	TRACE_CALL("__func__");
 	RemminaProtocolPlugin *plugin;
 
 	plugin = (RemminaProtocolPlugin *) remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL,
@@ -618,7 +618,7 @@ remmina_file_get_icon_name(RemminaFile *remminafile)
 RemminaFile*
 remmina_file_dup_temp_protocol(RemminaFile *remminafile, const gchar *new_protocol)
 {
-	TRACE_CALL("remmina_file_dup_temp_protocol");
+	TRACE_CALL("__func__");
 	RemminaFile *tmp;
 
 	tmp = remmina_file_dup(remminafile);
@@ -630,7 +630,7 @@ remmina_file_dup_temp_protocol(RemminaFile *remminafile, const gchar *new_protoc
 
 void remmina_file_delete(const gchar *filename)
 {
-	TRACE_CALL("remmina_file_delete");
+	TRACE_CALL("__func__");
 	RemminaFile *remminafile;
 
 	remminafile = remmina_file_load(filename);
@@ -646,7 +646,7 @@ void remmina_file_unsave_password(RemminaFile *remminafile)
 {
 	/* Delete all saved secrets for this profile */
 
-	TRACE_CALL("remmina_file_unsave_password");
+	TRACE_CALL("__func__");
 	const RemminaProtocolSetting* setting_iter;
 	RemminaProtocolPlugin* protocol_plugin;
 	gchar *proto;
@@ -687,7 +687,7 @@ void remmina_file_unsave_password(RemminaFile *remminafile)
 gchar*
 remmina_file_get_datetime(RemminaFile *remminafile)
 {
-	TRACE_CALL("remmina_file_get_datetime");
+	TRACE_CALL("__func__");
 
 	GFile *file = g_file_new_for_path (remminafile->filename);
 	GFileInfo *info;
@@ -728,7 +728,7 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 void
 remmina_file_touch(RemminaFile *remminafile)
 {
-	TRACE_CALL("remmina_file_touch");
+	TRACE_CALL("__func__");
 	int fd;
 	struct stat st;
 	int r;

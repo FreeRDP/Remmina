@@ -70,7 +70,7 @@ static RemminaIcon remmina_icon =
 
 void remmina_icon_destroy(void)
 {
-	TRACE_CALL("remmina_icon_destroy");
+	TRACE_CALL("__func__");
 	if (remmina_icon.icon)
 	{
 #ifdef HAVE_LIBAPPINDICATOR
@@ -99,25 +99,25 @@ void remmina_icon_destroy(void)
 
 static void remmina_icon_main(void)
 {
-	TRACE_CALL("remmina_icon_main");
+	TRACE_CALL("__func__");
 	remmina_exec_command(REMMINA_COMMAND_MAIN, NULL);
 }
 
 static void remmina_icon_preferences(void)
 {
-	TRACE_CALL("remmina_icon_preferences");
+	TRACE_CALL("__func__");
 	remmina_exec_command(REMMINA_COMMAND_PREF, "2");
 }
 
 static void remmina_icon_about(void)
 {
-	TRACE_CALL("remmina_icon_about");
+	TRACE_CALL("__func__");
 	remmina_exec_command(REMMINA_COMMAND_ABOUT, NULL);
 }
 
 static void remmina_icon_enable_avahi(GtkCheckMenuItem *checkmenuitem, gpointer data)
 {
-	TRACE_CALL("remmina_icon_enable_avahi");
+	TRACE_CALL("__func__");
 	if (!remmina_icon.avahi)
 		return;
 
@@ -137,7 +137,7 @@ static void remmina_icon_enable_avahi(GtkCheckMenuItem *checkmenuitem, gpointer 
 
 static void remmina_icon_populate_additional_menu_item(GtkWidget *menu)
 {
-	TRACE_CALL("remmina_icon_populate_additional_menu_item");
+	TRACE_CALL("__func__");
 	GtkWidget *menuitem;
 
 	menuitem = gtk_menu_item_new_with_label(_("Open Main Window"));
@@ -182,7 +182,7 @@ static void remmina_icon_populate_additional_menu_item(GtkWidget *menu)
 
 static void remmina_icon_on_launch_item(RemminaAppletMenu *menu, RemminaAppletMenuItem *menuitem, gpointer data)
 {
-	TRACE_CALL("remmina_icon_on_launch_item");
+	TRACE_CALL("__func__");
 	gchar *s;
 
 	switch (menuitem->item_type)
@@ -203,7 +203,7 @@ static void remmina_icon_on_launch_item(RemminaAppletMenu *menu, RemminaAppletMe
 
 static void remmina_icon_on_edit_item(RemminaAppletMenu *menu, RemminaAppletMenuItem *menuitem, gpointer data)
 {
-	TRACE_CALL("remmina_icon_on_edit_item");
+	TRACE_CALL("__func__");
 	gchar *s;
 
 	switch (menuitem->item_type)
@@ -224,7 +224,7 @@ static void remmina_icon_on_edit_item(RemminaAppletMenu *menu, RemminaAppletMenu
 
 static void remmina_icon_on_activate_window(GtkMenuItem *menuitem, GtkWidget *widget)
 {
-	TRACE_CALL("remmina_icon_on_activate_window");
+	TRACE_CALL("__func__");
 	if (GTK_IS_WINDOW(widget))
 	{
 		gtk_window_present(GTK_WINDOW(widget));
@@ -234,7 +234,7 @@ static void remmina_icon_on_activate_window(GtkMenuItem *menuitem, GtkWidget *wi
 
 static void remmina_icon_populate_extra_menu_item(GtkWidget *menu)
 {
-	TRACE_CALL("remmina_icon_populate_extra_menu_item");
+	TRACE_CALL("__func__");
 	GtkWidget *menuitem;
 	gboolean new_ontop;
 	GHashTableIter iter;
@@ -288,7 +288,7 @@ static void remmina_icon_populate_extra_menu_item(GtkWidget *menu)
 void
 remmina_icon_populate_menu (void)
 {
-	TRACE_CALL("remmina_icon_populate_menu");
+	TRACE_CALL("__func__");
 	GtkWidget *menu;
 	GtkWidget *menuitem;
 
@@ -310,12 +310,12 @@ remmina_icon_populate_menu (void)
 
 void remmina_icon_populate_menu(void)
 {
-	TRACE_CALL("remmina_icon_populate_menu");
+	TRACE_CALL("__func__");
 }
 
 static void remmina_icon_popdown_menu(GtkWidget *widget, gpointer data)
 {
-	TRACE_CALL("remmina_icon_popdown_menu");
+	TRACE_CALL("__func__");
 	if (gtk_get_current_event_time() - remmina_icon.popup_time <= 500)
 	{
 		remmina_exec_command(REMMINA_COMMAND_MAIN, NULL);
@@ -324,7 +324,7 @@ static void remmina_icon_popdown_menu(GtkWidget *widget, gpointer data)
 
 static void remmina_icon_on_activate(GtkStatusIcon *icon, gpointer user_data)
 {
-	TRACE_CALL("remmina_icon_on_activate");
+	TRACE_CALL("__func__");
 	GtkWidget *menu;
 	gint button, event_time;
 
@@ -345,7 +345,7 @@ static void remmina_icon_on_activate(GtkStatusIcon *icon, gpointer user_data)
 
 static void remmina_icon_on_popup_menu(GtkStatusIcon *icon, guint button, guint activate_time, gpointer user_data)
 {
-	TRACE_CALL("remmina_icon_on_popup_menu");
+	TRACE_CALL("__func__");
 	GtkWidget *menu;
 
 	menu = gtk_menu_new();
@@ -359,7 +359,7 @@ static void remmina_icon_on_popup_menu(GtkStatusIcon *icon, guint button, guint 
 
 static void remmina_icon_save_autostart_file(GKeyFile *gkeyfile)
 {
-	TRACE_CALL("remmina_icon_save_autostart_file");
+	TRACE_CALL("__func__");
 	gchar *content;
 	gsize length;
 
@@ -370,7 +370,7 @@ static void remmina_icon_save_autostart_file(GKeyFile *gkeyfile)
 
 static void remmina_icon_create_autostart_file(void)
 {
-	TRACE_CALL("remmina_icon_create_autostart_file");
+	TRACE_CALL("__func__");
 	GKeyFile *gkeyfile;
 
 	if (!g_file_test(remmina_icon.autostart_file, G_FILE_TEST_EXISTS))
@@ -396,7 +396,7 @@ gboolean remmina_icon_is_available(void)
 	 * available and shown to the user, so the user can continue
 	 * its work without the remmina main window */
 
-	TRACE_CALL("remmina_icon_is_available");
+	TRACE_CALL("__func__");
 	gchar *gsversion;
 	unsigned int gsv_maj, gsv_min, gsv_seq;
 	gboolean gshell_has_legacyTray;
@@ -451,7 +451,7 @@ gboolean remmina_icon_is_available(void)
 
 void remmina_icon_init(void)
 {
-	TRACE_CALL("remmina_icon_init");
+	TRACE_CALL("__func__");
 
 	gchar remmina_panel[23];
 	gboolean sni_supported;
@@ -545,7 +545,7 @@ void remmina_icon_init(void)
 
 gboolean remmina_icon_is_autostart(void)
 {
-	TRACE_CALL("remmina_icon_is_autostart");
+	TRACE_CALL("__func__");
 	GKeyFile *gkeyfile;
 	gboolean b;
 
@@ -558,7 +558,7 @@ gboolean remmina_icon_is_autostart(void)
 
 void remmina_icon_set_autostart(gboolean autostart)
 {
-	TRACE_CALL("remmina_icon_set_autostart");
+	TRACE_CALL("__func__");
 	GKeyFile *gkeyfile;
 	gboolean b;
 

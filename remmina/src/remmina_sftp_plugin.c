@@ -67,7 +67,7 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 static gpointer
 remmina_plugin_sftp_main_thread (gpointer data)
 {
-	TRACE_CALL("remmina_plugin_sftp_main_thread");
+	TRACE_CALL("__func__");
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget*) data;
 	RemminaPluginSftpData *gpdata;
 	RemminaFile *remminafile;
@@ -154,7 +154,7 @@ remmina_plugin_sftp_main_thread (gpointer data)
 static void
 remmina_plugin_sftp_client_on_realize (GtkWidget *widget, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_sftp_client_on_realize");
+	TRACE_CALL("__func__");
 	RemminaFile *remminafile;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
@@ -164,7 +164,7 @@ remmina_plugin_sftp_client_on_realize (GtkWidget *widget, RemminaProtocolWidget 
 static void
 remmina_plugin_sftp_init (RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_sftp_init");
+	TRACE_CALL("__func__");
 	RemminaPluginSftpData *gpdata;
 	RemminaFile *remminafile;
 
@@ -193,7 +193,7 @@ remmina_plugin_sftp_init (RemminaProtocolWidget *gp)
 static gboolean
 remmina_plugin_sftp_open_connection (RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_sftp_open_connection");
+	TRACE_CALL("__func__");
 	RemminaPluginSftpData *gpdata = GET_PLUGIN_DATA(gp);
 
 	remmina_plugin_service->protocol_plugin_set_expand (gp, TRUE);
@@ -217,7 +217,7 @@ remmina_plugin_sftp_open_connection (RemminaProtocolWidget *gp)
 static gboolean
 remmina_plugin_sftp_close_connection (RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_sftp_close_connection");
+	TRACE_CALL("__func__");
 	RemminaPluginSftpData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 
@@ -241,14 +241,14 @@ remmina_plugin_sftp_close_connection (RemminaProtocolWidget *gp)
 static gboolean
 remmina_plugin_sftp_query_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-	TRACE_CALL("remmina_plugin_sftp_query_feature");
+	TRACE_CALL("__func__");
 	return TRUE;
 }
 
 static void
 remmina_plugin_sftp_call_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-	TRACE_CALL("remmina_plugin_sftp_call_feature");
+	TRACE_CALL("__func__");
 	RemminaPluginSftpData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 
@@ -340,7 +340,7 @@ static RemminaProtocolPlugin remmina_plugin_sftp =
 void
 remmina_sftp_plugin_register (void)
 {
-	TRACE_CALL("remmina_sftp_plugin_register");
+	TRACE_CALL("__func__");
 	remmina_plugin_service = &remmina_plugin_manager_service;
 	remmina_plugin_service->register_plugin ((RemminaPlugin *) &remmina_plugin_sftp);
 }
@@ -349,7 +349,7 @@ remmina_sftp_plugin_register (void)
 
 void remmina_sftp_plugin_register(void)
 {
-	TRACE_CALL("remmina_sftp_plugin_register");
+	TRACE_CALL("__func__");
 }
 
 #endif

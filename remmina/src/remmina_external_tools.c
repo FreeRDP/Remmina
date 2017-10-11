@@ -45,7 +45,7 @@ static gboolean remmina_external_tools_launcher(const gchar* filename, const gch
 
 static void view_popup_menu_onDoSomething (GtkWidget *menuitem, gpointer userdata)
 {
-	TRACE_CALL("view_popup_menu_onDoSomething");
+	TRACE_CALL("__func__");
 	gchar *remminafilename = g_object_get_data(G_OBJECT(menuitem), "remminafilename");
 	gchar *scriptfilename = g_object_get_data(G_OBJECT(menuitem), "scriptfilename");
 	gchar *scriptshortname = g_object_get_data(G_OBJECT(menuitem), "scriptshortname");
@@ -55,7 +55,7 @@ static void view_popup_menu_onDoSomething (GtkWidget *menuitem, gpointer userdat
 
 gboolean remmina_external_tools_from_filename(RemminaMain *remminamain, gchar* remminafilename)
 {
-	TRACE_CALL("remmina_external_tools_from_filename");
+	TRACE_CALL("__func__");
 	GtkWidget *menu, *menuitem;
 	gchar dirname[MAX_PATH_LEN];
 	gchar filename[MAX_PATH_LEN];
@@ -101,7 +101,7 @@ gboolean remmina_external_tools_from_filename(RemminaMain *remminamain, gchar* r
 
 static gboolean remmina_external_tools_launcher(const gchar* filename, const gchar* scriptname, const gchar* shortname)
 {
-	TRACE_CALL("remmina_external_tools_launcher");
+	TRACE_CALL("__func__");
 	RemminaFile *remminafile;
 	const char *env_format = "%s=%s";
 	char *env;

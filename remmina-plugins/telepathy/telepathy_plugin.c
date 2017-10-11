@@ -42,7 +42,7 @@ static RemminaTpHandler *remmina_tp_handler = NULL;
 
 void remmina_plugin_telepathy_entry(void)
 {
-	TRACE_CALL("remmina_plugin_telepathy_entry");
+	TRACE_CALL("__func__");
 	if (remmina_tp_handler == NULL)
 	{
 		remmina_tp_handler = remmina_tp_handler_new();
@@ -63,7 +63,7 @@ static RemminaEntryPlugin remmina_plugin_telepathy =
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
-	TRACE_CALL("remmina_plugin_entry");
+	TRACE_CALL("__func__");
 	remmina_plugin_telepathy_service = service;
 
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_RUNTIME_LOCALEDIR);

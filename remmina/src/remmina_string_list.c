@@ -60,7 +60,7 @@ void remmina_string_list_update_buttons_state(void)
 /* Check the text inserted in the list */
 void remmina_string_list_on_cell_edited(GtkCellRendererText *cell, const gchar *path_string, const gchar *new_text)
 {
-	TRACE_CALL("remmina_string_list_on_cell_edited");
+	TRACE_CALL("__func__");
 	gchar *text;
 	gchar *error;
 	GtkTreePath *path = gtk_tree_path_new_from_string(path_string);
@@ -98,7 +98,7 @@ void remmina_string_list_on_cell_edited(GtkCellRendererText *cell, const gchar *
 /* Move a TreeIter position */
 static void remmina_string_list_move_iter(GtkTreeIter *from, GtkTreeIter *to)
 {
-	TRACE_CALL("remmina_string_list_move_iter");
+	TRACE_CALL("__func__");
 	GtkTreePath *path;
 
 	gtk_list_store_swap(string_list->liststore_items, from, to);
@@ -110,7 +110,7 @@ static void remmina_string_list_move_iter(GtkTreeIter *from, GtkTreeIter *to)
 /* Move down the selected TreeRow */
 void remmina_string_list_on_action_down(GtkWidget *widget, gpointer user_data)
 {
-	TRACE_CALL("remmina_string_list_on_action_down");
+	TRACE_CALL("__func__");
 	GtkTreeIter iter;
 	GtkTreeIter target_iter;
 
@@ -127,7 +127,7 @@ void remmina_string_list_on_action_down(GtkWidget *widget, gpointer user_data)
 /* Move up the selected TreeRow */
 void remmina_string_list_on_action_up(GtkWidget *widget, gpointer user_data)
 {
-	TRACE_CALL("remmina_string_list_on_action_up");
+	TRACE_CALL("__func__");
 	GtkTreeIter iter;
 	GtkTreeIter target_iter;
 	GtkTreePath *path;
@@ -149,7 +149,7 @@ void remmina_string_list_on_action_up(GtkWidget *widget, gpointer user_data)
 /* Add a new TreeRow to the list */
 void remmina_string_list_on_action_add(GtkWidget *widget, gpointer user_data)
 {
-	TRACE_CALL("remmina_string_list_on_action_add");
+	TRACE_CALL("__func__");
 	GtkTreeIter iter;
 	GtkTreePath *path;
 
@@ -168,7 +168,7 @@ void remmina_string_list_on_action_add(GtkWidget *widget, gpointer user_data)
 /* Remove the selected TreeRow from the list */
 void remmina_string_list_on_action_remove(GtkWidget *widget, gpointer user_data)
 {
-	TRACE_CALL("remmina_string_list_on_action_remove");
+	TRACE_CALL("__func__");
 	GtkTreeIter iter;
 
 	if (gtk_tree_selection_get_selected(string_list->treeview_selection, NULL, &iter))
@@ -182,7 +182,7 @@ void remmina_string_list_on_action_remove(GtkWidget *widget, gpointer user_data)
 /* Load a string list by splitting a string value */
 void remmina_string_list_set_text(const gchar *text, const gboolean clear_data)
 {
-	TRACE_CALL("remmina_string_list_set_text");
+	TRACE_CALL("__func__");
 	GtkTreeIter iter;
 	gchar **items;
 	gchar **values;
@@ -220,7 +220,7 @@ void remmina_string_list_set_text(const gchar *text, const gboolean clear_data)
 /* Get a string value representing the string list */
 gchar* remmina_string_list_get_text(void)
 {
-	TRACE_CALL("remmina_string_list_get_text");
+	TRACE_CALL("__func__");
 	GString *str;
 	GtkTreeIter iter;
 	gboolean first;
@@ -268,7 +268,7 @@ gchar* remmina_string_list_get_text(void)
 /* Set a function that will be used to validate the new rows */
 void remmina_string_list_set_validation_func(RemminaStringListValidationFunc func)
 {
-	TRACE_CALL("remmina_string_list_set_validation_func");
+	TRACE_CALL("__func__");
 	string_list->priv->validation_func = func;
 }
 
@@ -293,7 +293,7 @@ void remmina_string_list_set_titles(gchar *title1, gchar *title2)
 /* RemminaStringList initialization */
 static void remmina_string_list_init(void)
 {
-	TRACE_CALL("remmina_string_list_init");
+	TRACE_CALL("__func__");
 	string_list->priv->validation_func = NULL;
 	/* When two columns are requested, show also the first column */
 	if (string_list->priv->two_columns)
@@ -304,7 +304,7 @@ static void remmina_string_list_init(void)
 /* RemminaStringList instance */
 GtkDialog* remmina_string_list_new(gboolean two_columns, const gchar *fields_separator)
 {
-	TRACE_CALL("remmina_string_list_new");
+	TRACE_CALL("__func__");
 	string_list = g_new0(RemminaStringList, 1);
 	string_list->priv = g_new0(RemminaStringListPriv, 1);
 

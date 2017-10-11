@@ -54,19 +54,19 @@ G_DEFINE_TYPE_WITH_CODE (RemminaTpHandler, remmina_tp_handler, G_TYPE_OBJECT,
 
 		static void remmina_tp_handler_class_init(RemminaTpHandlerClass *klass)
 		{
-			TRACE_CALL("remmina_tp_handler_class_init");
+			TRACE_CALL("__func__");
 		}
 
 		static void remmina_tp_handler_init(RemminaTpHandler *handler)
 		{
-			TRACE_CALL("remmina_tp_handler_init");
+			TRACE_CALL("__func__");
 		}
 
 		static void remmina_tp_handler_handle_channels(TpSvcClientHandler *handler, const char *account_path,
 				const char *connection_path, const GPtrArray *channels, const GPtrArray *requests_satisfied,
 				guint64 user_action_time, GHashTable *handler_info, DBusGMethodInvocation *context)
 		{
-			TRACE_CALL("remmina_tp_handler_handle_channels");
+			TRACE_CALL("__func__");
 			gint i;
 			GValueArray *array;
 
@@ -81,7 +81,7 @@ G_DEFINE_TYPE_WITH_CODE (RemminaTpHandler, remmina_tp_handler, G_TYPE_OBJECT,
 
 		static void remmina_tp_handler_iface_init(gpointer g_iface, gpointer iface_data)
 		{
-			TRACE_CALL("remmina_tp_handler_iface_init");
+			TRACE_CALL("__func__");
 			TpSvcClientHandlerClass *klass = (TpSvcClientHandlerClass *) g_iface;
 
 #define IMPLEMENT(x) tp_svc_client_handler_implement_##x (klass, remmina_tp_handler_##x)
@@ -91,7 +91,7 @@ G_DEFINE_TYPE_WITH_CODE (RemminaTpHandler, remmina_tp_handler, G_TYPE_OBJECT,
 
 		static gboolean remmina_tp_handler_register(RemminaTpHandler *handler)
 		{
-			TRACE_CALL("remmina_tp_handler_register");
+			TRACE_CALL("__func__");
 			TpDBusDaemon *bus;
 			GError *error = NULL;
 
@@ -118,7 +118,7 @@ G_DEFINE_TYPE_WITH_CODE (RemminaTpHandler, remmina_tp_handler, G_TYPE_OBJECT,
 		RemminaTpHandler*
 		remmina_tp_handler_new(void)
 		{
-			TRACE_CALL("remmina_tp_handler_new");
+			TRACE_CALL("__func__");
 			RemminaTpHandler *handler;
 
 			handler = REMMINA_TP_HANDLER(g_object_new(REMMINA_TYPE_TP_HANDLER, NULL));

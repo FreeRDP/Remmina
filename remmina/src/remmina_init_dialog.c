@@ -46,12 +46,12 @@ G_DEFINE_TYPE( RemminaInitDialog, remmina_init_dialog, GTK_TYPE_DIALOG)
 
 static void remmina_init_dialog_class_init(RemminaInitDialogClass *klass)
 {
-	TRACE_CALL("remmina_init_dialog_class_init");
+	TRACE_CALL("__func__");
 }
 
 static void remmina_init_dialog_destroy(RemminaInitDialog *dialog, gpointer data)
 {
-	TRACE_CALL("remmina_init_dialog_destroy");
+	TRACE_CALL("__func__");
 	g_free(dialog->title);
 	g_free(dialog->status);
 	g_free(dialog->username);
@@ -65,7 +65,7 @@ static void remmina_init_dialog_destroy(RemminaInitDialog *dialog, gpointer data
 
 static void remmina_init_dialog_init(RemminaInitDialog *dialog)
 {
-	TRACE_CALL("remmina_init_dialog_init");
+	TRACE_CALL("__func__");
 	GtkWidget *hbox = NULL;
 	GtkWidget *widget;
 
@@ -125,7 +125,7 @@ static void remmina_init_dialog_init(RemminaInitDialog *dialog)
 
 static void remmina_init_dialog_connecting(RemminaInitDialog *dialog)
 {
-	TRACE_CALL("remmina_init_dialog_connecting");
+	TRACE_CALL("__func__");
 	gtk_label_set_text(GTK_LABEL(dialog->status_label), (dialog->status ? dialog->status : dialog->title));
 	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-information", GTK_ICON_SIZE_DIALOG);
 	gtk_dialog_set_response_sensitive(GTK_DIALOG(dialog), GTK_RESPONSE_OK, FALSE);
@@ -135,7 +135,7 @@ static void remmina_init_dialog_connecting(RemminaInitDialog *dialog)
 
 GtkWidget* remmina_init_dialog_new(const gchar *title_format, ...)
 {
-	TRACE_CALL("remmina_init_dialog_new");
+	TRACE_CALL("__func__");
 	RemminaInitDialog *dialog;
 	va_list args;
 
@@ -153,7 +153,7 @@ GtkWidget* remmina_init_dialog_new(const gchar *title_format, ...)
 
 void remmina_init_dialog_set_status(RemminaInitDialog *dialog, const gchar *status_format, ...)
 {
-	TRACE_CALL("remmina_init_dialog_set_status");
+	TRACE_CALL("__func__");
 	/* This function can be called from a non main thread */
 
 	va_list args;
@@ -189,7 +189,7 @@ void remmina_init_dialog_set_status(RemminaInitDialog *dialog, const gchar *stat
 
 void remmina_init_dialog_set_status_temp(RemminaInitDialog *dialog, const gchar *status_format, ...)
 {
-	TRACE_CALL("remmina_init_dialog_set_status_temp");
+	TRACE_CALL("__func__");
 
 	/* This function can be called from a non main thread */
 
@@ -223,7 +223,7 @@ void remmina_init_dialog_set_status_temp(RemminaInitDialog *dialog, const gchar 
 
 gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, gboolean allow_save)
 {
-	TRACE_CALL("remmina_init_dialog_authpwd");
+	TRACE_CALL("__func__");
 
 	GtkWidget *grid;
 	GtkWidget *password_entry;
@@ -310,7 +310,7 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_domain, const gchar *default_username,
                                      const gchar *default_domain, gboolean allow_save)
 {
-	TRACE_CALL("remmina_init_dialog_authuserpwd");
+	TRACE_CALL("__func__");
 
 	GtkWidget *grid;
 	GtkWidget *username_entry;
@@ -449,7 +449,7 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 
 gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* subject, const gchar* issuer, const gchar* fingerprint)
 {
-	TRACE_CALL("remmina_init_dialog_certificate");
+	TRACE_CALL("__func__");
 
 	gint status;
 	GtkWidget* grid;
@@ -552,7 +552,7 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 }
 gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gchar* subject, const gchar* issuer, const gchar* new_fingerprint, const gchar* old_fingerprint)
 {
-	TRACE_CALL("remmina_init_dialog_certificate_changed");
+	TRACE_CALL("__func__");
 
 	gint status;
 	GtkWidget* grid;
@@ -671,7 +671,7 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 /* NOT TESTED */
 static GtkWidget* remmina_init_dialog_create_file_button(GtkGrid *grid, const gchar *label, gint row, const gchar *filename)
 {
-	TRACE_CALL("remmina_init_dialog_create_file_button");
+	TRACE_CALL("__func__");
 	GtkWidget *widget;
 	gchar *pkidir;
 
@@ -703,7 +703,7 @@ static GtkWidget* remmina_init_dialog_create_file_button(GtkGrid *grid, const gc
 gint remmina_init_dialog_authx509(RemminaInitDialog *dialog, const gchar *cacert, const gchar *cacrl, const gchar *clientcert,
                                   const gchar *clientkey)
 {
-	TRACE_CALL("remmina_init_dialog_authx509");
+	TRACE_CALL("__func__");
 
 	GtkWidget *grid;
 	GtkWidget *cacert_button;
@@ -774,7 +774,7 @@ gint remmina_init_dialog_authx509(RemminaInitDialog *dialog, const gchar *cacert
 
 gint remmina_init_dialog_serverkey_confirm(RemminaInitDialog *dialog, const gchar *serverkey, const gchar *prompt)
 {
-	TRACE_CALL("remmina_init_dialog_serverkey_confirm");
+	TRACE_CALL("__func__");
 
 	GtkWidget *vbox = NULL;
 	GtkWidget *widget;
@@ -842,7 +842,7 @@ gint remmina_init_dialog_serverkey_confirm(RemminaInitDialog *dialog, const gcha
 
 gint remmina_init_dialog_serverkey_unknown(RemminaInitDialog *dialog, const gchar *serverkey)
 {
-	TRACE_CALL("remmina_init_dialog_serverkey_unknown");
+	TRACE_CALL("__func__");
 	/* This function can be called from a non main thread */
 
 	return remmina_init_dialog_serverkey_confirm(dialog, serverkey,
@@ -851,7 +851,7 @@ gint remmina_init_dialog_serverkey_unknown(RemminaInitDialog *dialog, const gcha
 
 gint remmina_init_dialog_serverkey_changed(RemminaInitDialog *dialog, const gchar *serverkey)
 {
-	TRACE_CALL("remmina_init_dialog_serverkey_changed");
+	TRACE_CALL("__func__");
 	/* This function can be called from a non main thread */
 
 	return remmina_init_dialog_serverkey_confirm(dialog, serverkey,

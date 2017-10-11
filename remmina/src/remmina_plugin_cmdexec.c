@@ -58,7 +58,7 @@ static void wait_for_child(GPid pid, gint script_retval, gpointer data)
 
 GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remmina_plugin_cmdexec_type)
 {
-	TRACE_CALL("remmina_plugin_cmdexec_new");
+	TRACE_CALL("__func__");
 	GtkBuilder *builder;
 	PCon_Spinner *pcspinner;
 	GError *error = NULL;

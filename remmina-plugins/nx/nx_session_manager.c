@@ -40,7 +40,7 @@
 
 static void remmina_nx_session_manager_set_sensitive(RemminaProtocolWidget *gp, gboolean sensitive)
 {
-	TRACE_CALL("remmina_nx_session_manager_set_sensitive");
+	TRACE_CALL("__func__");
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 
 	if (gpdata->attach_session)
@@ -58,7 +58,7 @@ static void remmina_nx_session_manager_set_sensitive(RemminaProtocolWidget *gp, 
 static gboolean remmina_nx_session_manager_selection_func(GtkTreeSelection *selection, GtkTreeModel *model, GtkTreePath *path,
 		gboolean path_currently_selected, gpointer user_data)
 {
-	TRACE_CALL("remmina_nx_session_manager_selection_func");
+	TRACE_CALL("__func__");
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget*) user_data;
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 
@@ -78,7 +78,7 @@ static gboolean remmina_nx_session_manager_selection_func(GtkTreeSelection *sele
 
 static void remmina_nx_session_manager_send_signal(RemminaPluginNxData *gpdata, gint event_type)
 {
-	TRACE_CALL("remmina_nx_session_manager_send_signal");
+	TRACE_CALL("__func__");
 	guchar dummy = (guchar) event_type;
 	/* Signal the NX thread to resume execution */
 	if (write(gpdata->event_pipe[1], &dummy, 1))
@@ -88,7 +88,7 @@ static void remmina_nx_session_manager_send_signal(RemminaPluginNxData *gpdata, 
 
 static void remmina_nx_session_manager_on_response(GtkWidget *dialog, gint response_id, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_nx_session_manager_on_response");
+	TRACE_CALL("__func__");
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 	gint event_type;
 
@@ -121,7 +121,7 @@ static void remmina_nx_session_manager_on_response(GtkWidget *dialog, gint respo
  * Automatically close the dialog using the default response id */
 void remmina_nx_session_manager_on_row_activated(GtkTreeView *tree, GtkTreePath *path, GtkTreeViewColumn *column, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_nx_session_manager_row_activated");
+	TRACE_CALL("__func__");
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 	remmina_plugin_nx_service->log_printf("[NX] Default response_id %d\n",
 		gpdata->default_response);
@@ -134,7 +134,7 @@ void remmina_nx_session_manager_on_row_activated(GtkTreeView *tree, GtkTreePath 
 
 static gboolean remmina_nx_session_manager_main(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_nx_session_manager_main");
+	TRACE_CALL("__func__");
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	GtkWidget *dialog;
@@ -251,7 +251,7 @@ static gboolean remmina_nx_session_manager_main(RemminaProtocolWidget *gp)
 
 void remmina_nx_session_manager_start(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_nx_session_manager_start");
+	TRACE_CALL("__func__");
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 
 	if (gpdata->session_manager_start_handler == 0)

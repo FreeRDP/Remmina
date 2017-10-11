@@ -79,7 +79,7 @@ struct onMainThread_cb_data {
 
 static gboolean onMainThread_cb(struct onMainThread_cb_data *d)
 {
-	TRACE_CALL("onMainThread_cb");
+	TRACE_CALL("__func__");
 	if ( !d->cancelled ) {
 		switch( d->func ) {
 			case FUNC_GTK_SOCKET_ADD_ID:
@@ -97,7 +97,7 @@ static gboolean onMainThread_cb(struct onMainThread_cb_data *d)
 
 static void onMainThread_cleanup_handler(gpointer data)
 {
-	TRACE_CALL("onMainThread_cleanup_handler");
+	TRACE_CALL("__func__");
 	struct onMainThread_cb_data *d = data;
 	d->cancelled = TRUE;
 }
@@ -105,7 +105,7 @@ static void onMainThread_cleanup_handler(gpointer data)
 
 static void onMainThread_schedule_callback_and_wait( struct onMainThread_cb_data *d )
 {
-	TRACE_CALL("onMainThread_schedule_callback_and_wait");
+	TRACE_CALL("__func__");
 	d->cancelled = FALSE;
 	pthread_cleanup_push( onMainThread_cleanup_handler, d );
 	pthread_mutex_init( &d->mu, NULL );
@@ -121,7 +121,7 @@ static void onMainThread_schedule_callback_and_wait( struct onMainThread_cb_data
 
 static void onMainThread_gtk_socket_add_id( GtkSocket* sk, Window w)
 {
-	TRACE_CALL("onMainThread_gtk_socket_add_id");
+	TRACE_CALL("__func__");
 
 	struct onMainThread_cb_data *d;
 
@@ -141,7 +141,7 @@ static void onMainThread_gtk_socket_add_id( GtkSocket* sk, Window w)
 
 static gboolean remmina_plugin_nx_try_window_id(Window window_id)
 {
-	TRACE_CALL("remmina_plugin_nx_try_window_id");
+	TRACE_CALL("__func__");
 	gint i;
 	gboolean found = FALSE;
 
@@ -165,7 +165,7 @@ static gboolean remmina_plugin_nx_try_window_id(Window window_id)
 
 static void remmina_plugin_nx_remove_window_id(Window window_id)
 {
-	TRACE_CALL("remmina_plugin_nx_remove_window_id");
+	TRACE_CALL("__func__");
 	gint i;
 	gboolean found = FALSE;
 
@@ -187,19 +187,19 @@ static void remmina_plugin_nx_remove_window_id(Window window_id)
 
 static void remmina_plugin_nx_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_nx_on_plug_added");
+	TRACE_CALL("__func__");
 	remmina_plugin_nx_service->protocol_plugin_emit_signal(gp, "connect");
 }
 
 static void remmina_plugin_nx_on_plug_removed(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_nx_on_plug_removed");
+	TRACE_CALL("__func__");
 	remmina_plugin_nx_service->protocol_plugin_close_connection(gp);
 }
 
 gboolean remmina_plugin_nx_ssh_auth_callback(gchar **passphrase, gpointer userdata)
 {
-	TRACE_CALL("remmina_plugin_nx_ssh_auth_callback");
+	TRACE_CALL("__func__");
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget*) userdata;
 	gint ret;
 
@@ -215,7 +215,7 @@ gboolean remmina_plugin_nx_ssh_auth_callback(gchar **passphrase, gpointer userda
 
 static void remmina_plugin_nx_on_proxy_exit(GPid pid, gint status, gpointer data)
 {
-	TRACE_CALL("remmina_plugin_nx_on_proxy_exit");
+	TRACE_CALL("__func__");
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget*) data;
 
 	remmina_plugin_nx_service->protocol_plugin_close_connection(gp);
@@ -223,13 +223,13 @@ static void remmina_plugin_nx_on_proxy_exit(GPid pid, gint status, gpointer data
 
 static int remmina_plugin_nx_dummy_handler(Display *dsp, XErrorEvent *err)
 {
-	TRACE_CALL("remmina_plugin_nx_dummy_handler");
+	TRACE_CALL("__func__");
 	return 0;
 }
 
 static gboolean remmina_plugin_nx_start_create_notify(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_nx_start_create_notify");
+	TRACE_CALL("__func__");
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 
 	gpdata->display = XOpenDisplay(gdk_display_get_name(gdk_display_get_default()));
@@ -245,7 +245,7 @@ static gboolean remmina_plugin_nx_start_create_notify(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_nx_monitor_create_notify(RemminaProtocolWidget *gp, const gchar *cmd)
 {
-	TRACE_CALL("remmina_plugin_nx_monitor_create_notify");
+	TRACE_CALL("__func__");
 	RemminaPluginNxData *gpdata;
 	Atom atom;
 	XEvent xev;
@@ -301,7 +301,7 @@ static gboolean remmina_plugin_nx_monitor_create_notify(RemminaProtocolWidget *g
 
 static gint remmina_plugin_nx_wait_signal(RemminaPluginNxData *gpdata)
 {
-	TRACE_CALL("remmina_plugin_nx_wait_signal");
+	TRACE_CALL("__func__");
 	fd_set set;
 	guchar dummy = 0;
 
@@ -316,7 +316,7 @@ static gint remmina_plugin_nx_wait_signal(RemminaPluginNxData *gpdata)
 
 static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_nx_start_session");
+	TRACE_CALL("__func__");
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	RemminaNXSession *nx;
@@ -553,7 +553,7 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_nx_main(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_nx_main");
+	TRACE_CALL("__func__");
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 	gboolean ret;
 	const gchar *err;
@@ -575,7 +575,7 @@ static gboolean remmina_plugin_nx_main(RemminaProtocolWidget *gp)
 
 static gpointer remmina_plugin_nx_main_thread(gpointer data)
 {
-	TRACE_CALL("remmina_plugin_nx_main_thread");
+	TRACE_CALL("__func__");
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 
 	CANCEL_ASYNC
@@ -588,7 +588,7 @@ static gpointer remmina_plugin_nx_main_thread(gpointer data)
 
 static void remmina_plugin_nx_init(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_nx_init");
+	TRACE_CALL("__func__");
 	RemminaPluginNxData *gpdata;
 	gint flags;
 
@@ -617,7 +617,7 @@ static void remmina_plugin_nx_init(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_nx_open_connection");
+	TRACE_CALL("__func__");
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	const gchar *resolution;
@@ -664,7 +664,7 @@ static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_nx_close_connection(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_nx_close_connection");
+	TRACE_CALL("__func__");
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 
 	if (gpdata->thread)
@@ -707,7 +707,7 @@ static gboolean remmina_plugin_nx_close_connection(RemminaProtocolWidget *gp)
 /* Send CTRL+ALT+DEL keys keystrokes to the plugin socket widget */
 static void remmina_plugin_nx_send_ctrlaltdel(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_xdmcp_send_ctrlaltdel");
+	TRACE_CALL("__func__");
 	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_Delete };
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 
@@ -717,13 +717,13 @@ static void remmina_plugin_nx_send_ctrlaltdel(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_nx_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-	TRACE_CALL("remmina_plugin_nx_query_feature");
+	TRACE_CALL("__func__");
 	return TRUE;
 }
 
 static void remmina_plugin_nx_call_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-	TRACE_CALL("remmina_plugin_nx_call_feature");
+	TRACE_CALL("__func__");
 	switch (feature->id)
 	{
 		case REMMINA_PLUGIN_NX_FEATURE_TOOL_SENDCTRLALTDEL:
@@ -817,7 +817,7 @@ static RemminaProtocolPlugin remmina_plugin_nx =
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
-	TRACE_CALL("remmina_plugin_entry");
+	TRACE_CALL("__func__");
 	Display *dpy;
 	XkbRF_VarDefsRec vd;
 	gchar *s;

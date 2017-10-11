@@ -53,7 +53,7 @@
 
 static gboolean cb_closewidget(GtkWidget *widget, gpointer data)
 {
-	TRACE_CALL("cb_closewidget");
+	TRACE_CALL("__func__");
 	/* The correct way to close a remmina_connection_window is to send
 	 * it a "delete-event" signal. Simply destroying it will not close
 	 * all network connections */
@@ -64,7 +64,7 @@ static gboolean cb_closewidget(GtkWidget *widget, gpointer data)
 
 void remmina_exec_exitremmina()
 {
-	TRACE_CALL("remmina_exec_exitremmina");
+	TRACE_CALL("__func__");
 
 	/* Destroy all widgets, main window included */
 	remmina_widget_pool_foreach(cb_closewidget, NULL);
@@ -78,7 +78,7 @@ void remmina_exec_exitremmina()
 
 static gboolean disable_remmina_connection_window_delete_confirm_cb(GtkWidget *widget, gpointer data)
 {
-	TRACE_CALL("disable_remmina_connection_window_delete_confirm_cb");
+	TRACE_CALL("__func__");
 	RemminaConnectionWindow *rcw;
 
 	if (REMMINA_IS_CONNECTION_WINDOW(widget)) {
@@ -90,7 +90,7 @@ static gboolean disable_remmina_connection_window_delete_confirm_cb(GtkWidget *w
 
 void remmina_application_condexit(RemminaCondExitType why)
 {
-	TRACE_CALL("remmina_application_check_exitremmina");
+	TRACE_CALL("__func__");
 
 	/* Exit remmina only if there are no interesting windows left:
 	 * no main window, no systray menu, no connection window.
@@ -118,7 +118,7 @@ void remmina_application_condexit(RemminaCondExitType why)
 
 void remmina_exec_command(RemminaCommandType command, const gchar* data)
 {
-	TRACE_CALL("remmina_exec_command");
+	TRACE_CALL("__func__");
 	gchar* s1;
 	gchar* s2;
 	GtkWidget* widget;

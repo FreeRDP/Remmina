@@ -90,7 +90,7 @@ remmina_marshal_BOOLEAN__INT (GClosure     *closure,
                               gpointer      invocation_hint G_GNUC_UNUSED,
                               gpointer      marshal_data)
 {
-	TRACE_CALL("remmina_marshal_BOOLEAN__INT");
+	TRACE_CALL("__func__");
 	typedef gboolean (*GMarshalFunc_BOOLEAN__INT) (gpointer     data1,
 	        gint         arg_1,
 	        gpointer     data2);
@@ -131,7 +131,7 @@ remmina_marshal_BOOLEAN__INT_STRING (GClosure *closure,
                                      gpointer invocation_hint G_GNUC_UNUSED,
                                      gpointer marshal_data)
 {
-	TRACE_CALL("remmina_marshal_BOOLEAN__INT_STRING");
+	TRACE_CALL("__func__");
 	typedef gboolean (*GMarshalFunc_BOOLEAN__INT_STRING) (gpointer data1,
 	        gint arg_1,
 	        gpointer arg_2,

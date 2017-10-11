@@ -67,7 +67,7 @@ static char remmina_rdp_plugin_default_drive_name[]="RemminaDisk";
 
 static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("rf_process_event_queue");
+	TRACE_CALL("__func__");
 	UINT16 flags;
 	rdpInput* input;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
@@ -146,7 +146,7 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 
 static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_rdp_tunnel_init");
+	TRACE_CALL("__func__");
 
 	/* Opens the optional SSH tunnel if needed.
 	 * Used also when reopening the same tunnel for a freerdp reconnect.
@@ -213,7 +213,7 @@ static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget* gp)
 
 BOOL rf_auto_reconnect(rfContext* rfi)
 {
-	TRACE_CALL("rf_auto_reconnect");
+	TRACE_CALL("__func__");
 	rdpSettings* settings = rfi->instance->settings;
 	RemminaPluginRdpUiObject* ui;
 	time_t treconn;
@@ -297,7 +297,7 @@ BOOL rf_auto_reconnect(rfContext* rfi)
 
 BOOL rf_begin_paint(rdpContext* context)
 {
-	TRACE_CALL("rf_begin_paint");
+	TRACE_CALL("__func__");
 	rdpGdi* gdi = context->gdi;
 	gdi->primary->hdc->hwnd->invalid->null = 1;
 	gdi->primary->hdc->hwnd->ninvalid = 0;
@@ -306,7 +306,7 @@ BOOL rf_begin_paint(rdpContext* context)
 
 BOOL rf_end_paint(rdpContext* context)
 {
-	TRACE_CALL("rf_end_paint");
+	TRACE_CALL("__func__");
 	INT32 x, y;
 	UINT32 w, h;
 	rdpGdi* gdi;
@@ -340,7 +340,7 @@ BOOL rf_end_paint(rdpContext* context)
 
 static BOOL rf_desktop_resize(rdpContext* context)
 {
-	TRACE_CALL("rf_desktop_resize");
+	TRACE_CALL("__func__");
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
 	RemminaPluginRdpUiObject* ui;
@@ -365,7 +365,7 @@ static BOOL rf_desktop_resize(rdpContext* context)
 
 static BOOL remmina_rdp_pre_connect(freerdp* instance)
 {
-	TRACE_CALL("remmina_rdp_pre_connect");
+	TRACE_CALL("__func__");
 	rfContext* rfi;
 	ALIGN64 rdpSettings* settings;
 	RemminaProtocolWidget* gp;
@@ -456,7 +456,7 @@ static UINT32 rf_get_local_color_format(rfContext* rfi, BOOL aligned)
 
 static BOOL remmina_rdp_post_connect(freerdp* instance)
 {
-	TRACE_CALL("remmina_rdp_post_connect");
+	TRACE_CALL("__func__");
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
 	RemminaPluginRdpUiObject* ui;
@@ -530,7 +530,7 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 
 static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** password, char** domain)
 {
-	TRACE_CALL("remmina_rdp_authenticate");
+	TRACE_CALL("__func__");
 	gchar *s_username, *s_password, *s_domain;
 	gint ret;
 	rfContext* rfi;
@@ -587,7 +587,7 @@ static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** 
 static DWORD remmina_rdp_verify_certificate(freerdp* instance, const char *common_name, const char* subject,
 	const char* issuer, const char* fingerprint, BOOL host_mismatch)
 {
-	TRACE_CALL("remmina_rdp_verify_certificate");
+	TRACE_CALL("__func__");
 	gint status;
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
@@ -606,7 +606,7 @@ static DWORD remmina_rdp_verify_changed_certificate(freerdp* instance,
 	const char* common_name, const char* subject, const char* issuer,
 	const char* new_fingerprint, const char* old_subject, const char* old_issuer, const char* old_fingerprint)
 {
-	TRACE_CALL("remmina_rdp_verify_changed_certificate");
+	TRACE_CALL("__func__");
 	gint status;
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
@@ -624,13 +624,13 @@ static DWORD remmina_rdp_verify_changed_certificate(freerdp* instance,
 
 static int remmina_rdp_receive_channel_data(freerdp* instance, int channelId, UINT8* data, int size, int flags, int total_size)
 {
-	TRACE_CALL("remmina_rdp_receive_channel_data");
+	TRACE_CALL("__func__");
 	return freerdp_channels_data(instance, channelId, data, size, flags, total_size);
 }
 
 static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_rdp_main_loop");
+	TRACE_CALL("__func__");
 	DWORD nCount;
 	DWORD status;
 	HANDLE handles[64];
@@ -685,7 +685,7 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 
 int remmina_rdp_load_static_channel_addin(rdpChannels* channels, rdpSettings* settings, char* name, void* data)
 {
-	TRACE_CALL("remmina_rdp_load_static_channel_addin");
+	TRACE_CALL("__func__");
 	void* entry;
 
 	entry = freerdp_load_channel_addin_entry(name, NULL, NULL, FREERDP_ADDIN_CHANNEL_STATIC);
@@ -704,7 +704,7 @@ int remmina_rdp_load_static_channel_addin(rdpChannels* channels, rdpSettings* se
 /* Send CTRL+ALT+DEL keys keystrokes to the plugin drawing_area widget */
 static void remmina_rdp_send_ctrlaltdel(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_rdp_send_ctrlaltdel");
+	TRACE_CALL("__func__");
 	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_Delete };
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
@@ -714,7 +714,7 @@ static void remmina_rdp_send_ctrlaltdel(RemminaProtocolWidget *gp)
 
 static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_rdp_main");
+	TRACE_CALL("__func__");
 	const gchar* s;
 	gchar *sm;
 	gchar* value;
@@ -1109,7 +1109,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 static gpointer remmina_rdp_main_thread(gpointer data)
 {
-	TRACE_CALL("remmina_rdp_main_thread");
+	TRACE_CALL("__func__");
 	RemminaProtocolWidget* gp;
 	rfContext* rfi;
 
@@ -1131,7 +1131,7 @@ static gpointer remmina_rdp_main_thread(gpointer data)
 
 static void remmina_rdp_init(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_rdp_init");
+	TRACE_CALL("__func__");
 	freerdp* instance;
 	rfContext* rfi;
 
@@ -1161,7 +1161,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 
 static gboolean remmina_rdp_open_connection(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_rdp_open_connection");
+	TRACE_CALL("__func__");
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
 	rfi->scale = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
@@ -1181,7 +1181,7 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget* gp)
 
 static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("remmina_rdp_close_connection");
+	TRACE_CALL("__func__");
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	freerdp* instance;
 	RemminaPluginRdpUiObject* ui;
@@ -1254,13 +1254,13 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 
 static gboolean remmina_rdp_query_feature(RemminaProtocolWidget* gp, const RemminaProtocolFeature* feature)
 {
-	TRACE_CALL("remmina_rdp_query_feature");
+	TRACE_CALL("__func__");
 	return TRUE;
 }
 
 static void remmina_rdp_call_feature(RemminaProtocolWidget* gp, const RemminaProtocolFeature* feature)
 {
-	TRACE_CALL("remmina_rdp_call_feature");
+	TRACE_CALL("__func__");
 	RemminaFile* remminafile;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
@@ -1298,7 +1298,7 @@ static void remmina_rdp_call_feature(RemminaProtocolWidget* gp, const RemminaPro
 /* Send a keystroke to the plugin window */
 static void remmina_rdp_keystroke(RemminaProtocolWidget *gp, const guint keystrokes[], const gint keylen)
 {
-	TRACE_CALL("remmina_rdp_keystroke");
+	TRACE_CALL("__func__");
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	remmina_plugin_service->protocol_plugin_send_keys_signals(rfi->drawing_area,
 		keystrokes, keylen, GDK_KEY_PRESS | GDK_KEY_RELEASE);
@@ -1511,7 +1511,7 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService* service)
 {
 	int vermaj, vermin, verrev;
 
-	TRACE_CALL("remmina_plugin_entry");
+	TRACE_CALL("__func__");
 	remmina_plugin_service = service;
 
 	/* Check that we are linked to the correct version of libfreerdp */

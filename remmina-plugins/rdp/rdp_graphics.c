@@ -50,7 +50,7 @@
 
 BOOL rf_Bitmap_New(rdpContext* context, rdpBitmap* bitmap)
 {
-	TRACE_CALL("rf_Bitmap_New");
+	TRACE_CALL("__func__");
 #ifdef RF_BITMAP
 	UINT8* data;
 	Pixmap pixmap;
@@ -92,7 +92,7 @@ BOOL rf_Bitmap_New(rdpContext* context, rdpBitmap* bitmap)
 
 void rf_Bitmap_Free(rdpContext* context, rdpBitmap* bitmap)
 {
-	TRACE_CALL("rf_Bitmap_Free");
+	TRACE_CALL("__func__");
 #ifdef RF_BITMAP
 	rfContext* rfi = (rfContext*) context;
 
@@ -105,7 +105,7 @@ void rf_Bitmap_Free(rdpContext* context, rdpBitmap* bitmap)
 
 BOOL rf_Bitmap_Paint(rdpContext* context, rdpBitmap* bitmap)
 {
-	TRACE_CALL("rf_Bitmap_Paint");
+	TRACE_CALL("__func__");
 #ifdef RF_BITMAP
 	XImage* image;
 	int width, height;
@@ -137,7 +137,7 @@ BOOL rf_Bitmap_Paint(rdpContext* context, rdpBitmap* bitmap)
 BOOL rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
 	const BYTE* data, UINT32 width, UINT32 height, UINT32 bpp, UINT32 length, BOOL compressed, UINT32 codec_id)
 {
-	TRACE_CALL("rf_Bitmap_Decompress");
+	TRACE_CALL("__func__");
 #ifdef RF_BITMAP
 	UINT16 size;
 
@@ -175,7 +175,7 @@ BOOL rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
 
 BOOL rf_Bitmap_SetSurface(rdpContext* context, rdpBitmap* bitmap, BOOL primary)
 {
-	TRACE_CALL("rf_Bitmap_SetSurface");
+	TRACE_CALL("__func__");
 #ifdef RF_BITMAP
 	rfContext* rfi = (rfContext*) context;
 
@@ -191,7 +191,7 @@ BOOL rf_Bitmap_SetSurface(rdpContext* context, rdpBitmap* bitmap, BOOL primary)
 
 BOOL rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 {
-	TRACE_CALL("rf_Pointer_New");
+	TRACE_CALL("__func__");
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 
@@ -209,7 +209,7 @@ BOOL rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 
 void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 {
-	TRACE_CALL("rf_Pointer_Free");
+	TRACE_CALL("__func__");
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 
@@ -230,7 +230,7 @@ void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 
 BOOL rf_Pointer_Set(rdpContext* context, const rdpPointer* pointer)
 {
-	TRACE_CALL("rf_Pointer_Set");
+	TRACE_CALL("__func__");
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 
@@ -245,7 +245,7 @@ BOOL rf_Pointer_Set(rdpContext* context, const rdpPointer* pointer)
 
 BOOL rf_Pointer_SetNull(rdpContext* context)
 {
-	TRACE_CALL("rf_Pointer_SetNull");
+	TRACE_CALL("__func__");
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 
@@ -258,7 +258,7 @@ BOOL rf_Pointer_SetNull(rdpContext* context)
 
 BOOL rf_Pointer_SetDefault(rdpContext* context)
 {
-	TRACE_CALL("rf_Pointer_SetDefault");
+	TRACE_CALL("__func__");
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 
@@ -271,7 +271,7 @@ BOOL rf_Pointer_SetDefault(rdpContext* context)
 
 BOOL rf_Pointer_SetPosition(rdpContext* context, UINT32 x, UINT32 y)
 {
-	TRACE_CALL("rf_Pointer_SePosition");
+	TRACE_CALL("__func__");
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*) context;
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
@@ -287,7 +287,7 @@ BOOL rf_Pointer_SetPosition(rdpContext* context, UINT32 x, UINT32 y)
 
 BOOL rf_Glyph_New(rdpContext* context, const rdpGlyph* glyph)
 {
-	TRACE_CALL("rf_Glyph_New");
+	TRACE_CALL("__func__");
 #ifdef RF_GLYPH
 	int scanline;
 	XImage* image;
@@ -316,7 +316,7 @@ BOOL rf_Glyph_New(rdpContext* context, const rdpGlyph* glyph)
 
 void rf_Glyph_Free(rdpContext* context, rdpGlyph* glyph)
 {
-	TRACE_CALL("rf_Glyph_Free");
+	TRACE_CALL("__func__");
 #ifdef RF_GLYPH
 	rfContext* rfi = (rfContext*) context;
 
@@ -329,7 +329,7 @@ static BOOL rf_Glyph_Draw(rdpContext* context, const rdpGlyph* glyph, UINT32 x,
 		UINT32 y, UINT32 w, UINT32 h, UINT32 sx, UINT32 sy,
 		BOOL fOpRedundant)
 {
-	TRACE_CALL("rf_Glyph_Draw");
+	TRACE_CALL("__func__");
 #ifdef RF_GLYPH
 	rfGlyph* rf_glyph;
 	rfContext* rfi = (rfContext*) context;
@@ -348,7 +348,7 @@ static BOOL rf_Glyph_BeginDraw(rdpContext* context, UINT32 x, UINT32 y,
                                UINT32 width, UINT32 height, UINT32 bgcolor,
                                UINT32 fgcolor, BOOL fOpRedundant)
 {
-	TRACE_CALL("rf_Glyph_BeginDraw");
+	TRACE_CALL("__func__");
 #ifdef RF_GLYPH
 	rfContext* rfi = (rfContext*) context;
 
@@ -376,7 +376,7 @@ static BOOL rf_Glyph_EndDraw(rdpContext* context, UINT32 x, UINT32 y,
                              UINT32 width, UINT32 height,
                              UINT32 bgcolor, UINT32 fgcolor)
 {
-	TRACE_CALL("rf_Glyph_EndDraw");
+	TRACE_CALL("__func__");
 #ifdef RF_GLYPH
 	rfContext* rfi = (rfContext*) context;
 
@@ -393,7 +393,7 @@ static BOOL rf_Glyph_EndDraw(rdpContext* context, UINT32 x, UINT32 y,
 
 void rf_register_graphics(rdpGraphics* graphics)
 {
-	TRACE_CALL("rf_register_graphics");
+	TRACE_CALL("__func__");
 	rdpBitmap* bitmap;
 	rdpPointer* pointer;
 	rdpGlyph* glyph;

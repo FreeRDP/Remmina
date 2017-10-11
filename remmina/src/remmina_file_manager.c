@@ -49,7 +49,7 @@ static gchar *remminadir;
 /* return first found data dir as per XDG specs */
 gchar *remmina_file_get_datadir(void)
 {
-	TRACE_CALL("remmina_file_get_datadir");
+	TRACE_CALL("__func__");
 	gchar *dir = g_strdup_printf (".%s", g_get_prgname ());
 	int i;
 	/* Legacy ~/.remmina */
@@ -91,7 +91,7 @@ static gboolean remmina_file_manager_do_copy(const char *src_path, const char *d
 
 void remmina_file_manager_init(void)
 {
-	TRACE_CALL("remmina_file_manager_init");
+	TRACE_CALL("__func__");
 	GDir *dir;
 	gchar *legacy = g_strdup_printf (".%s", g_get_prgname ());
 	const gchar *filename;
@@ -142,7 +142,7 @@ void remmina_file_manager_init(void)
 
 gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 {
-	TRACE_CALL("remmina_file_manager_iterate");
+	TRACE_CALL("__func__");
 	gchar filename[MAX_PATH_LEN];
 	GDir* dir;
 	const gchar* name;
@@ -175,7 +175,7 @@ gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 
 gchar* remmina_file_manager_get_groups(void)
 {
-	TRACE_CALL("remmina_file_manager_get_groups");
+	TRACE_CALL("__func__");
 	gchar filename[MAX_PATH_LEN];
 	GDir* dir;
 	const gchar* name;
@@ -212,7 +212,7 @@ gchar* remmina_file_manager_get_groups(void)
 
 static void remmina_file_manager_add_group(GNode* node, const gchar* group)
 {
-	TRACE_CALL("remmina_file_manager_add_group");
+	TRACE_CALL("__func__");
 	gint cmp;
 	gchar* p1;
 	gchar* p2;
@@ -279,7 +279,7 @@ static void remmina_file_manager_add_group(GNode* node, const gchar* group)
 
 GNode* remmina_file_manager_get_group_tree(void)
 {
-	TRACE_CALL("remmina_file_manager_get_group_tree");
+	TRACE_CALL("__func__");
 	gchar filename[MAX_PATH_LEN];
 	GDir* dir;
 	const gchar* name;
@@ -309,7 +309,7 @@ GNode* remmina_file_manager_get_group_tree(void)
 
 void remmina_file_manager_free_group_tree(GNode* node)
 {
-	TRACE_CALL("remmina_file_manager_free_group_tree");
+	TRACE_CALL("__func__");
 	RemminaGroupData* data;
 	GNode* child;
 
@@ -332,7 +332,7 @@ void remmina_file_manager_free_group_tree(GNode* node)
 
 RemminaFile* remmina_file_manager_load_file(const gchar* filename)
 {
-	TRACE_CALL("remmina_file_manager_load_file");
+	TRACE_CALL("__func__");
 	RemminaFile* remminafile = NULL;
 	RemminaFilePlugin* plugin;
 	gchar* p;
