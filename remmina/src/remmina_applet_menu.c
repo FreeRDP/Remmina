@@ -246,6 +246,7 @@ void remmina_applet_menu_add_item(RemminaAppletMenu *menu, RemminaAppletMenuItem
 	{
 		gtk_menu_shell_append(GTK_MENU_SHELL(submenu), GTK_WIDGET(menuitem));
 	}
+	g_list_free(childs);
 	remmina_applet_menu_register_item(menu, menuitem);
 }
 
@@ -272,9 +273,11 @@ void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 	GtkWidget *menuitem;
 	gchar filename[MAX_PATH_LEN];
 	GDir *dir;
+	gchar *remmina_data_dir;
 	const gchar *name;
 
-	dir = g_dir_open(remmina_file_get_datadir(), 0, NULL);
+	remmina_data_dir = remmina_file_get_datadir();
+	dir = g_dir_open(remmina_data_dir, 0, NULL);
 	if (dir != NULL)
 	{
 		/* Iterate all remote desktop profiles */
@@ -282,7 +285,7 @@ void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 		{
 			if (!g_str_has_suffix(name, ".remmina"))
 				continue;
-			g_snprintf(filename, sizeof(filename), "%s/%s", remmina_file_get_datadir(), name);
+			g_snprintf(filename, sizeof(filename), "%s/%s", remmina_data_dir, name);
 
 			menuitem = remmina_applet_menu_item_new(REMMINA_APPLET_MENU_ITEM_FILE, filename);
 			if (menuitem != NULL)
@@ -293,5 +296,6 @@ void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 		}
 		g_dir_close(dir);
 	}
+	g_free(remmina_data_dir);
 }
 
