@@ -98,17 +98,10 @@ remmina_applet_menu_add_group(GtkWidget *menu, const gchar *group, gint position
 {
 	TRACE_CALL("remmina_applet_menu_add_group");
 	GtkWidget *widget;
-	GtkWidget *image;
 	GtkWidget *submenu;
 
 	widget = gtk_menu_item_new_with_label(group);
 	gtk_widget_show(widget);
-
-	image =
-	    gtk_image_new_from_icon_name(
-	        (menuitem->item_type == REMMINA_APPLET_MENU_ITEM_DISCOVERED ?
-	         "folder-remote" : "folder"), GTK_ICON_SIZE_MENU);
-	gtk_widget_show(image);
 
 	g_object_set_data_full(G_OBJECT(widget), "group", g_strdup(group), g_free);
 	g_object_set_data(G_OBJECT(widget), "count", GINT_TO_POINTER(0));
