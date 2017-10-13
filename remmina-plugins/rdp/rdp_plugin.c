@@ -623,12 +623,6 @@ static DWORD remmina_rdp_verify_changed_certificate(freerdp* instance,
 	return 1;
 }
 
-static int remmina_rdp_receive_channel_data(freerdp* instance, int channelId, UINT8* data, int size, int flags, int total_size)
-{
-	TRACE_CALL("__func__");
-	return freerdp_channels_data(instance, channelId, data, size, flags, total_size);
-}
-
 static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("__func__");
