@@ -141,7 +141,6 @@ typedef struct _RemminaPluginVncCoordinates {
 static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean scale);
 
 struct onMainThread_cb_data {
-	enum { FUNC_GTK_WIDGET_QUEUE_DRAW_AREA, FUNC_UPDATE_SCALE } func;
 
 	GtkWidget *widget;
 	gint x, y, width, height;
@@ -159,9 +158,6 @@ static gboolean onMainThread_cb(struct onMainThread_cb_data *d)
 	TRACE_CALL("__func__");
 	if ( !d->cancelled ) {
 		switch( d->func ) {
-			case FUNC_GTK_WIDGET_QUEUE_DRAW_AREA:
-				gtk_widget_queue_draw_area( d->widget, d->x, d->y, d->width, d->height );
-				break;
 			case FUNC_UPDATE_SCALE:
 				remmina_plugin_vnc_update_scale(d->gp, d->scale);
 				break;
