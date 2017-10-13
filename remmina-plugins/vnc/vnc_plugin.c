@@ -142,6 +142,7 @@ static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean 
 
 struct onMainThread_cb_data {
 
+	enum { FUNC_UPDATE_SCALE } func;
 	GtkWidget *widget;
 	gint x, y, width, height;
 	RemminaProtocolWidget* gp;
