@@ -393,23 +393,6 @@ static void remmina_main_load_file_tree_callback(RemminaFile *remminafile, gpoin
 	g_free(datetime);
 }
 
-static gint remmina_main_sortable_cmp_by_date(GtkTreeModel *model,
-				     GtkTreeIter *a, GtkTreeIter *b,
-				     gpointer data)
-{
-	TRACE_CALL("__func__");
-	gchar *date_a = NULL, *date_b = NULL;
-
-	gtk_tree_model_get(model, a, DATE_COLUMN, &date_a, -1);
-	gtk_tree_model_get(model, b, DATE_COLUMN, &date_b, -1);
-
-	if (!date_a || !date_b)
-		return 0;
-
-	/* TODO: Convert to date */
-	return date_a - date_b;
-}
-
 static void remmina_main_file_model_on_sort(GtkTreeSortable *sortable, gpointer user_data)
 {
 	TRACE_CALL("__func__");
@@ -417,8 +400,6 @@ static void remmina_main_file_model_on_sort(GtkTreeSortable *sortable, gpointer 
 	GtkSortType order;
 
 	gtk_tree_sortable_get_sort_column_id(sortable, &columnid, &order);
-	//gtk_tree_sortable_set_sort_func(sortable, DATE_COLUMN,
-			//remmina_main_sortable_cmp_by_date, NULL, NULL);
 	remmina_pref.main_sort_column_id = columnid;
 	remmina_pref.main_sort_order = order;
 	remmina_pref_save();
