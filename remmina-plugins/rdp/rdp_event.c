@@ -967,6 +967,7 @@ static BOOL remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPl
 	cairo_surface_destroy(surface);
 	free(data);
 	((rfPointer*)ui->cursor.pointer)->cursor = gdk_cursor_new_from_pixbuf(rfi->display, pixbuf, pointer->xPos, pointer->yPos);
+	g_object_unref(pixbuf);
 
 	return TRUE;
 }

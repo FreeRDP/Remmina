@@ -320,6 +320,7 @@ static void remmina_file_editor_ssh_enabled_check_on_toggled(GtkToggleButton* to
 			gtk_widget_set_sensitive(gfe->priv->ssh_auth_publickey_radio, enabled);
 			gtk_widget_set_sensitive(gfe->priv->ssh_auth_auto_publickey_radio, enabled);
 		}
+		g_free(p);
 	}
 	remmina_file_editor_ssh_auth_publickey_radio_on_toggled(NULL, gfe);
 
@@ -958,6 +959,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 
 		remmina_file_editor_ssh_enabled_check_on_toggled (NULL, gfe, ssh_setting);
 	}
+	g_free(p);
 #endif
 }
 
@@ -1193,19 +1195,12 @@ static void remmina_file_editor_on_default(GtkWidget* button, RemminaFileEditor*
 static void remmina_file_editor_on_save(GtkWidget* button, RemminaFileEditor* gfe)
 {
 	TRACE_CALL("remmina_file_editor_on_save");
-	RemminaFile* gf;
 
 	remmina_file_editor_update(gfe);
 
 	remmina_file_save(gfe->priv->remmina_file);
 	remmina_icon_populate_menu();
 
-	gf = remmina_file_dup(gfe->priv->remmina_file);
-	/* Put server into name for Quick Connect */
-	if (remmina_file_get_filename(gf) == NULL)
-	{
-		remmina_file_set_string(gf, "name", remmina_file_get_string(gf, "server"));
-	}
 	gtk_widget_destroy(GTK_WIDGET(gfe));
 }
 

@@ -115,6 +115,8 @@ GtkWindow* remmina_main_get_window(void);
 
 void remmina_main_update_file_datetime(RemminaFile *file);
 
+void remmina_main_destroy(void);
+
 G_END_DECLS
 
 #endif  /* __REMMINAMAIN_H__  */

@@ -690,7 +690,7 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 {
 	TRACE_CALL("remmina_file_get_datetime");
 
-	GFile *file = g_file_new_for_path (remminafile->filename);
+	GFile *file;
 	GFileInfo *info;
 
 	struct timeval tv;
@@ -700,11 +700,15 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	guint64 mtime;
 	gchar *modtime_string;
 
+	file = g_file_new_for_path (remminafile->filename);
+
 	info = g_file_query_info (file,
 			G_FILE_ATTRIBUTE_TIME_MODIFIED,
 			G_FILE_QUERY_INFO_NONE,
 			NULL,
 			NULL);
+
+	g_object_unref(file);
 
 	if (info == NULL) {
 		g_print("couldn't get time info\n");
