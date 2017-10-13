@@ -153,7 +153,7 @@ gboolean remmina_main_on_delete_event(GtkWidget *widget, GdkEvent *event, gpoint
 	return FALSE;
 }
 
-void remmina_main_destroy(GtkWidget *widget, gpointer user_data)
+void remmina_main_destroy()
 {
 	TRACE_CALL("__func__");
 
@@ -165,13 +165,15 @@ void remmina_main_destroy(GtkWidget *widget, gpointer user_data)
 	if (remminamain->priv->file_model)
 		g_object_unref(G_OBJECT(remminamain->priv->file_model));
 	g_object_unref(G_OBJECT(remminamain->priv->file_model_filter));
-	g_object_unref(G_OBJECT(remminamain->builder));
+	g_object_unref(remminamain->builder);
 	g_free(remminamain->priv->selected_filename);
 	g_free(remminamain->priv->selected_name);
 	g_free(remminamain->priv);
 	g_free(remminamain);
 
 	remminamain = NULL;
+
+	fflush(stdout);
 }
 
 static void remmina_main_clear_selection_data(void)

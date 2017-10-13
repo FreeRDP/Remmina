@@ -2363,7 +2363,7 @@ static gboolean remmina_connection_window_focus_out_event(GtkWidget* widget, Gdk
 #if DEBUG_KB_GRABBING
 	printf("DEBUG_KB_GRABBING: focus out and mouse_pointer_entered is %s\n", cnnhld->cnnwin->priv->mouse_pointer_entered ? "true":"false");
 #endif
-	remmina_connection_holder_keyboard_ungrab(cnnhld);
+	remmina_connection_window_focus_out(widget, cnnhld);
 	return FALSE;
 }
 
@@ -2373,7 +2373,7 @@ static gboolean remmina_connection_window_focus_in_event(GtkWidget* widget, GdkE
 #if DEBUG_KB_GRABBING
 	printf("DEBUG_KB_GRABBING: focus in and mouse_pointer_entered is %s\n", cnnhld->cnnwin->priv->mouse_pointer_entered ? "true":"false");
 #endif
-	remmina_connection_holder_keyboard_grab(cnnhld);
+	remmina_connection_window_focus_in(widget, cnnhld);
 	return FALSE;
 }
 
