@@ -80,7 +80,6 @@ remmina_sftp_client_class_init (RemminaSFTPClientClass *klass)
 /* ------------------------ The Task Thread routines ----------------------------- */
 
 static gboolean remmina_sftp_client_refresh (RemminaSFTPClient *client);
-static void onMainThread_remmina_ftp_client_update_task( RemminaFTPClient *client, RemminaFTPTask* task );
 
 #define THREAD_CHECK_EXIT \
     (!client->taskid || client->thread_abort)
