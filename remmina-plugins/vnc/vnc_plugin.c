@@ -199,23 +199,6 @@ static void onMainThread_schedule_callback_and_wait( struct onMainThread_cb_data
 	pthread_mutex_destroy( &d->mu );
 }
 
-static void onMainThread_gtk_widget_queue_draw_area(GtkWidget *widget, gint x, gint y, gint width, gint height )
-{
-	TRACE_CALL("__func__");
-	struct onMainThread_cb_data *d;
-	d = (struct onMainThread_cb_data *)g_malloc( sizeof(struct onMainThread_cb_data) );
-	d->func = FUNC_GTK_WIDGET_QUEUE_DRAW_AREA;
-	d->widget = widget;
-	d->x = x; d->y = y; d->width = width; d->height = height;
-	onMainThread_schedule_callback_and_wait( d );
-	g_free(d);
-}
-
-
-/* --------------------------------------- */
-
-
-
 static void remmina_plugin_vnc_event_push(RemminaProtocolWidget *gp, gint event_type, gpointer p1, gpointer p2, gpointer p3)
 {
 	TRACE_CALL("__func__");
