@@ -1534,13 +1534,6 @@ static void remmina_connection_holder_toolbar_scaled_mode(GtkWidget* widget, Rem
 	remmina_connection_holder_change_scalemode(cnnhld, bdyn, bscale);
 }
 
-
-static gboolean remmina_connection_holder_trap_on_button(GtkWidget* widget, GdkEventButton* event, gpointer data)
-{
-	TRACE_CALL("__func__");
-	return TRUE;
-}
-
 static void remmina_connection_holder_toolbar_preferences_popdown(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("__func__");
