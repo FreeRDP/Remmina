@@ -222,16 +222,6 @@ static void remmina_icon_on_edit_item(RemminaAppletMenu *menu, RemminaAppletMenu
 	}
 }
 
-static void remmina_icon_on_activate_window(GtkMenuItem *menuitem, GtkWidget *widget)
-{
-	TRACE_CALL("__func__");
-	if (GTK_IS_WINDOW(widget))
-	{
-		gtk_window_present(GTK_WINDOW(widget));
-		gtk_window_deiconify(GTK_WINDOW(widget));
-	}
-}
-
 static void remmina_icon_populate_extra_menu_item(GtkWidget *menu)
 {
 	TRACE_CALL("__func__");
