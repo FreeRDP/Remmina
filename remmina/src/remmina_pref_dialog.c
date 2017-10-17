@@ -38,6 +38,7 @@
 #include <glib/gi18n.h>
 #include <stdlib.h>
 #include "config.h"
+#include <vte/vte.h>
 #include "remmina_public.h"
 #include "remmina_string_list.h"
 #include "remmina_widget_pool.h"
@@ -266,6 +267,26 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.color14 = gdk_rgba_to_string(&color);
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_color15), &color);
 	remmina_pref.color15 = gdk_rgba_to_string(&color);
+#if !VTE_CHECK_VERSION(0,38,0)
+	/* Disable color scheme buttons if old version of VTE */
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_cursor, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color0, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color1, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color2, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color3, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color4, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color5, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color6, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color7, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color8, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color9, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color10, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color11, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color12, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color13, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color14, FALSE);
+	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color15, FALSE);
+#endif
 	remmina_pref.vte_lines = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_scrollback_lines));
 	remmina_pref.vte_lines = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_scrollback_lines));
 	remmina_pref.vte_shortcutkey_copy = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_copy));
@@ -546,7 +567,9 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->colorbutton_color13 = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_color13"));
 	remmina_pref_dialog->colorbutton_color14 = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_color14"));
 	remmina_pref_dialog->colorbutton_color15 = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_color15"));
+#if VTE_CHECK_VERSION(0,38,0)
 	remmina_pref_dialog->filechooserbutton_terminal_color_scheme = GTK_FILE_CHOOSER(GET_OBJECT("filechooserbutton_terminal_color_scheme"));
+#endif
 
 	/* Connect signals */
 	gtk_builder_connect_signals(remmina_pref_dialog->builder, NULL);
