@@ -267,26 +267,6 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.color14 = gdk_rgba_to_string(&color);
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_color15), &color);
 	remmina_pref.color15 = gdk_rgba_to_string(&color);
-#if !VTE_CHECK_VERSION(0,38,0)
-	/* Disable color scheme buttons if old version of VTE */
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_cursor, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color0, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color1, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color2, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color3, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color4, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color5, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color6, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color7, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color8, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color9, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color10, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color11, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color12, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color13, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color14, FALSE);
-	gtk_widget_set_sensitive (remmina_pref_dialog->colorbutton_color15, FALSE);
-#endif
 	remmina_pref.vte_lines = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_scrollback_lines));
 	remmina_pref.vte_lines = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_scrollback_lines));
 	remmina_pref.vte_shortcutkey_copy = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_copy));
@@ -454,6 +434,26 @@ static void remmina_pref_dialog_init(void)
 	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_color14), &color);
 	gdk_rgba_parse(&color, remmina_pref.color15);
 	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_color15), &color);
+#if !VTE_CHECK_VERSION(0,38,0)
+	/* Disable color scheme buttons if old version of VTE */
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_cursor), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color0), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color1), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color2), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color3), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color4), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color5), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color6), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color7), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color8), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color9), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color10), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color11), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color12), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color13), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color14), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color15), FALSE);
+#endif
 
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.vte_lines);
 	gtk_entry_set_text(remmina_pref_dialog->entry_scrollback_lines, buf);
