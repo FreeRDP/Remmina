@@ -467,8 +467,6 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	GtkWidget *vte;
 	GdkRGBA foreground_color;
 	GdkRGBA background_color;
-	GdkRGBA cursor_color;
-	GdkRGBA cp[PALETTE_SIZE];
 
 
 #if !VTE_CHECK_VERSION(0,38,0)
@@ -488,9 +486,15 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	gtk_widget_show(vte);
 	vte_terminal_set_size (VTE_TERMINAL (vte), 80, 25);
 	vte_terminal_set_scroll_on_keystroke (VTE_TERMINAL (vte), TRUE);
+#if !VTE_CHECK_VERSION(0,38,0)
+	gdk_rgba_parse(&foreground_color, remmina_pref.foreground);
+	gdk_rgba_parse(&background_color, remmina_pref.background);
+#endif
 	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
 
 #if VTE_CHECK_VERSION(0,38,0)
+	GdkRGBA cp[PALETTE_SIZE];
+	GdkRGBA cursor_color;
 	/* Set colors to GdkRGBA */
 	switch (remmina_plugin_service->file_get_int (remminafile, "ssh_color_scheme", FALSE))
 	{
@@ -552,23 +556,10 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 			gdk_rgba_parse(&cp[14], remmina_pref.color14);
 			gdk_rgba_parse(&cp[15], remmina_pref.color15);
 
-			const GdkRGBA custom_palette[PALETTE_SIZE] = {  cp[0] ,
-									cp[1] ,
-									cp[2] ,
-									cp[3] ,
-									cp[4] ,
-									cp[5] ,
-									cp[6] ,
-									cp[7] ,
-									cp[8] ,
-									cp[9] ,
-									cp[10],
-									cp[11],
-									cp[12],
-									cp[13],
-									cp[14],
-									cp[15]
-			};
+			const GdkRGBA custom_palette[PALETTE_SIZE] = {
+				cp[0] , cp[1] , cp[2] , cp[3] , cp[4] , cp[5] ,
+				cp[6] , cp[7] , cp[8] , cp[9] , cp[10], cp[11],
+				cp[12], cp[13], cp[14], cp[15] };
 
 			remminavte.palette = custom_palette;
 			break;
@@ -577,6 +568,8 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 			break;
 	}
 		vte_terminal_set_colors (VTE_TERMINAL(vte), &foreground_color, &background_color, remminavte.palette, PALETTE_SIZE);
+		vte_terminal_set_color_foreground (VTE_TERMINAL(vte), &foreground_color);
+		vte_terminal_set_color_background (VTE_TERMINAL(vte), &background_color);
 		vte_terminal_set_color_cursor (VTE_TERMINAL(vte), &cursor_color);
 #else
 		/* VTE <= 2.90 doesn't support GdkRGBA so we must convert GdkRGBA to GdkColor */
