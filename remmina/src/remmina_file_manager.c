@@ -46,6 +46,7 @@
 #include "remmina/remmina_trace_calls.h"
 
 static gchar *remminadir;
+static gchar *cachedir;
 
 /* return first found data dir as per XDG specs.
  * The returned string must be freed by the caller with g_free */
@@ -103,8 +104,11 @@ void remmina_file_manager_init(void)
 	remminadir = g_build_path ( "/", g_get_user_data_dir (), g_get_prgname (), NULL);
 	/* Create the XDG_USER_DATA directory */
 	g_mkdir_with_parents (remminadir, 0750);
-
 	g_free (remminadir), remminadir = NULL;
+	/* Create the XDG_CACHE_HOME directory */
+	cachedir = g_build_path ( "/", g_get_user_cache_dir (), g_get_prgname (), NULL);
+	g_mkdir_with_parents (cachedir, 0750);
+	g_free (cachedir), cachedir = NULL;
 	/* Empty legacy ~/.remmina */
 	remminadir = g_build_path ("/", g_get_home_dir(), legacy, NULL);
 	if (g_file_test (remminadir, G_FILE_TEST_IS_DIR))
