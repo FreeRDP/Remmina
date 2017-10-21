@@ -103,6 +103,9 @@ struct _RemminaConnectionWindowPriv
 	/* Timer to hide the toolbar */
 	guint hidetb_timer;
 
+	/* Timer to save new window state and wxh */
+	guint savestate_eventsourceid;
+
 
 	GtkWidget* toolbar;
 	GtkWidget* grid;
@@ -586,6 +589,11 @@ static void remmina_connection_window_destroy(GtkWidget* widget, RemminaConnecti
 	{
 		g_source_remove(priv->ftb_hide_eventsource);
 		priv->ftb_hide_eventsource = 0;
+	}
+	if (priv->savestate_eventsourceid)
+	{
+		g_source_remove(priv->savestate_eventsourceid);
+		priv->savestate_eventsourceid = 0;
 	}
 
 #if FLOATING_TOOLBAR_WIDGET
@@ -2489,33 +2497,65 @@ static gboolean remmina_connection_holder_floating_toolbar_on_scroll(GtkWidget* 
 	return FALSE;
 }
 
+static gboolean remmina_connection_window_after_configure_scrolled(gpointer user_data)
+{
+	TRACE_CALL("remmina_connection_window_after_configure_scrolled");
+	gint width, height;
+	GdkWindowState s;
+	gint ipg, npages;
+	RemminaConnectionObject* cnnobj;
+	RemminaConnectionHolder* cnnhld;
+
+	cnnhld = (RemminaConnectionHolder*)user_data;
+
+	s = gdk_window_get_state(gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
+
+	if (!cnnhld || !cnnhld->cnnwin)
+		return FALSE;
+
+	/* Changed window_maximize, window_width and window_height for all
+	 * connections inside the notebook */
+	npages = gtk_notebook_get_n_pages(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook));
+	for(ipg = 0; ipg < npages; ipg ++) {
+		cnnobj = g_object_get_data(
+			G_OBJECT(gtk_notebook_get_nth_page(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook), ipg)),
+			"cnnobj");
+		if (s & GDK_WINDOW_STATE_MAXIMIZED) {
+			remmina_file_set_int(cnnobj->remmina_file, "window_maximize", TRUE);
+		} else {
+			gtk_window_get_size(GTK_WINDOW(cnnhld->cnnwin), &width, &height);
+			remmina_file_set_int(cnnobj->remmina_file, "window_width", width);
+			remmina_file_set_int(cnnobj->remmina_file, "window_height", height);
+			remmina_file_set_int(cnnobj->remmina_file, "window_maximize", FALSE);
+		}
+	}
+	cnnhld->cnnwin->priv->savestate_eventsourceid = 0;
+	return FALSE;
+}
+
 static gboolean remmina_connection_window_on_configure(GtkWidget* widget, GdkEventConfigure* event,
 		RemminaConnectionHolder* cnnhld)
 {
 	TRACE_CALL("remmina_connection_window_on_configure");
 	DECLARE_CNNOBJ_WITH_RETURN(FALSE)
-	gint width, height;
 #if !FLOATING_TOOLBAR_WIDGET
 	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
 	GtkRequisition req;
 	gint y;
 #endif
 
+	if (cnnhld->cnnwin->priv->savestate_eventsourceid) {
+		g_source_remove(cnnhld->cnnwin->priv->savestate_eventsourceid);
+		cnnhld->cnnwin->priv->savestate_eventsourceid = 0;
+	}
+
 	if (cnnhld->cnnwin && gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin))
 			&& cnnhld->cnnwin->priv->view_mode == SCROLLED_WINDOW_MODE)
 	{
-		/* Here we store the window state in real-time */
-		if ((gdk_window_get_state(gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin))) & GDK_WINDOW_STATE_MAXIMIZED) == 0)
-		{
-			gtk_window_get_size(GTK_WINDOW(cnnhld->cnnwin), &width, &height);
-			remmina_file_set_int(cnnobj->remmina_file, "window_width", width);
-			remmina_file_set_int(cnnobj->remmina_file, "window_height", height);
-			remmina_file_set_int(cnnobj->remmina_file, "window_maximize", FALSE);
-		}
-		else
-		{
-			remmina_file_set_int(cnnobj->remmina_file, "window_maximize", TRUE);
-		}
+		/* Under gnome shell we receive this configure_event BEFORE a window
+		 * is really unmaximized, so we must read its new state and dimensions
+		 * later, not now */
+		cnnhld->cnnwin->priv->savestate_eventsourceid = g_timeout_add(500, remmina_connection_window_after_configure_scrolled, cnnhld);
 	}
 
 #if !FLOATING_TOOLBAR_WIDGET
