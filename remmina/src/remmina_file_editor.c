@@ -497,7 +497,8 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 	TRACE_CALL("remmina_file_editor_create_resolution");
 	GtkWidget* widget;
 	GtkWidget* hbox;
-	const gchar* resolution;
+	const gchar *resolution_w, *resolution_h;
+	gchar *res_str;
 
 	widget = gtk_label_new(_("Resolution"));
 	gtk_widget_show(widget);
@@ -519,9 +520,14 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 	gtk_box_pack_start(GTK_BOX(hbox), widget, FALSE, FALSE, 0);
 	gfe->priv->resolution_custom_radio = widget;
 
-	resolution = remmina_file_get_string(gfe->priv->remmina_file, "resolution");
+	resolution_w = remmina_file_get_string(gfe->priv->remmina_file, "resolution_width");
+	resolution_h = remmina_file_get_string(gfe->priv->remmina_file, "resolution_height");
 
-	widget = remmina_public_create_combo_text_d(remmina_pref.resolutions, resolution, NULL);
+	if (resolution_w && resolution_h && resolution_w[0] != 0 && resolution_h[0] != 0)
+		res_str = g_strdup_printf("%sx%s", resolution_w, resolution_h);
+	else
+		res_str = NULL;
+	widget = remmina_public_create_combo_text_d(remmina_pref.resolutions, res_str, NULL);
 	gtk_widget_show(widget);
 	gtk_box_pack_start(GTK_BOX(hbox), widget, TRUE, TRUE, 0);
 	gfe->priv->resolution_custom_combo = widget;
@@ -534,15 +540,17 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 	g_signal_connect(G_OBJECT(gfe->priv->resolution_custom_radio), "toggled",
 	                 G_CALLBACK(remmina_file_editor_button_on_toggled), gfe->priv->resolution_custom_combo);
 
-	if (!resolution || strchr(resolution, 'x') == NULL)
+	if (res_str)
+	{
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gfe->priv->resolution_custom_radio), TRUE);
+	}
+	else
 	{
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gfe->priv->resolution_auto_radio), TRUE);
 		gtk_widget_set_sensitive(gfe->priv->resolution_custom_combo, FALSE);
 	}
-	else
-	{
-		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gfe->priv->resolution_custom_radio), TRUE);
-	}
+
+	g_free(res_str);
 }
 
 static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWidget* grid,
@@ -1127,6 +1135,9 @@ static void remmina_file_editor_update_settings(RemminaFileEditor* gfe)
 static void remmina_file_editor_update(RemminaFileEditor* gfe)
 {
 	TRACE_CALL("remmina_file_editor_update");
+	gchar *custom_resolution, *res_w, *res_h;
+	int w, h;
+
 	RemminaFileEditorPriv* priv = gfe->priv;
 
 	remmina_file_set_string(priv->remmina_file, "name", gtk_entry_get_text(GTK_ENTRY(priv->name_entry)));
@@ -1145,13 +1156,28 @@ static void remmina_file_editor_update(RemminaFileEditor* gfe)
 
 	if (priv->resolution_auto_radio)
 	{
-		remmina_file_set_string_ref(
-		    priv->remmina_file,
-		    "resolution",
-		    (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->resolution_auto_radio)) ?
-		     NULL :
-		     remmina_public_combo_get_active_text(
-		         GTK_COMBO_BOX(priv->resolution_custom_combo))));
+		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->resolution_auto_radio)))
+		{
+			/* Resolution is set to auto */
+			res_w = res_h = NULL;
+		}
+		else
+		{
+			/* Resolution is set to a value from the list */
+			custom_resolution = remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->resolution_custom_combo));
+			if (sscanf(custom_resolution, "%dx%d", &w, &h) >= 2)
+			{
+				res_w = g_strdup_printf("%i", w);
+				res_h = g_strdup_printf("%i", h);
+			}
+			else
+			{
+				res_w = res_h = NULL;
+			}
+			g_free(custom_resolution);
+		}
+		remmina_file_set_string_ref(priv->remmina_file, "resolution_width", res_w);
+		remmina_file_set_string_ref(priv->remmina_file, "resolution_height", res_h);
 	}
 
 	if (priv->keymap_combo)

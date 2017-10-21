@@ -731,3 +731,14 @@ gchar* remmina_public_str_replace_in_place(gchar *string, const gchar *search, c
 	return string;
 }
 
+int remmina_public_split_resolution_string(const char *resolution_string, int *w, int *h)
+{
+	int lw, lh;
+	if (resolution_string == NULL || resolution_string[0] == 0)
+		return 0;
+	if (sscanf(resolution_string, "%dx%d", &lw, &lh) != 2)
+		return 0;
+	*w = lw;
+	*h = lh;
+	return 1;
+}
