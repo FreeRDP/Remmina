@@ -117,6 +117,8 @@ void remmina_main_update_file_datetime(RemminaFile *file);
 
 void remmina_main_destroy(void);
 
+void remmina_main_show_warning_dialog(const gchar* message);
+
 G_END_DECLS
 
 #endif  /* __REMMINAMAIN_H__  */
