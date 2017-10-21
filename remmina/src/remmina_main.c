@@ -126,8 +126,10 @@ static void remmina_main_save_expanded_group(void)
 	}
 }
 
-static void remmina_main_save_before_destroy()
+void remmina_main_save_before_destroy()
 {
+	if (!remminamain || !remminamain->window)
+		return;
 	remmina_main_save_size();
 	remmina_main_save_expanded_group();
 	remmina_pref_save();
@@ -157,7 +159,10 @@ void remmina_main_destroy()
 {
 	TRACE_CALL("remmina_main_destroy");
 
+	/* Called when main window is destroyed via a call of gtk_widget_destroy() */
 	if (remminamain) {
+		if (remminamain->window)
+			remmina_main_save_before_destroy();
 		g_free(remmina_pref.expanded_group);
 		remmina_pref.expanded_group = remmina_string_array_to_string(remminamain->priv->expanded_group);
 		remmina_string_array_free(remminamain->priv->expanded_group);
