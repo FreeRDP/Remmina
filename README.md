@@ -46,12 +46,13 @@ Or update the current installed version with the selected channel:
 sudo snap refresh remmina --channel=edge # use --channel=stable otherwise
 ```
 
-To enable some advanced features such as `mount-control` (to manage mount positions), `avahi-observer` (to automatically look for local servers to connect to), `cups-control` (to manage printing) you should run something like:
+To enable some advanced features such as `mount-control` (to manage mount positions), `avahi-observer` (to automatically look for local servers to connect to), `cups-control` (to manage printing), `password-manager-service` (to use gnome-keyring) you should run something like:
 
 ```sh
 sudo snap connect remmina:avahi-observe :avahi-observe # servers discovery
 sudo snap connect remmina:cups-control :cups-control # printing
 sudo snap connect remmina:mount-observe :mount-observe # mount management
+sudo snap connect remmina:password-manager-service :password-manager-service # gnome-keyring
 ```
 
 Snap packages will be updated automatically and will include both latest `FreeRDP` git and latest `libssh 0.7` release (for better security).

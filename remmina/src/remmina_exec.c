@@ -67,14 +67,14 @@ void remmina_exec_exitremmina()
 {
 	TRACE_CALL("__func__");
 
-	/* Destroy all widgets, main window included */
+	/* Save main window state/position */
+	remmina_main_save_before_destroy();
+
+	/* Delete all widgets, main window not included */
 	remmina_widget_pool_foreach(cb_closewidget, NULL);
 
 	/* Remove systray menu */
 	remmina_icon_destroy();
-
-	/* Destroy main object */
-	remmina_main_destroy();
 
 	/* Exit from Remmina */
 	g_application_quit(g_application_get_default());

@@ -126,8 +126,10 @@ static void remmina_main_save_expanded_group(void)
 	}
 }
 
-static void remmina_main_save_before_destroy()
+void remmina_main_save_before_destroy()
 {
+	if (!remminamain || !remminamain->window)
+		return;
 	remmina_main_save_size();
 	remmina_main_save_expanded_group();
 	remmina_pref_save();
@@ -157,23 +159,26 @@ void remmina_main_destroy()
 {
 	TRACE_CALL("__func__");
 
-	g_free(remmina_pref.expanded_group);
-	remmina_pref.expanded_group = remmina_string_array_to_string(remminamain->priv->expanded_group);
-	remmina_string_array_free(remminamain->priv->expanded_group);
-	remminamain->priv->expanded_group = NULL;
+	/* Called when main window is destroyed via a call of gtk_widget_destroy() */
+	if (remminamain) {
+		if (remminamain->window)
+			remmina_main_save_before_destroy();
+		g_free(remmina_pref.expanded_group);
+		remmina_pref.expanded_group = remmina_string_array_to_string(remminamain->priv->expanded_group);
+		remmina_string_array_free(remminamain->priv->expanded_group);
+		remminamain->priv->expanded_group = NULL;
 
-	if (remminamain->priv->file_model)
-		g_object_unref(G_OBJECT(remminamain->priv->file_model));
-	g_object_unref(G_OBJECT(remminamain->priv->file_model_filter));
-	g_object_unref(remminamain->builder);
-	g_free(remminamain->priv->selected_filename);
-	g_free(remminamain->priv->selected_name);
-	g_free(remminamain->priv);
-	g_free(remminamain);
+		if (remminamain->priv->file_model)
+			g_object_unref(G_OBJECT(remminamain->priv->file_model));
+		g_object_unref(G_OBJECT(remminamain->priv->file_model_filter));
+		g_object_unref(remminamain->builder);
+		g_free(remminamain->priv->selected_filename);
+		g_free(remminamain->priv->selected_name);
+		g_free(remminamain->priv);
+		g_free(remminamain);
 
-	remminamain = NULL;
-
-	fflush(stdout);
+		remminamain = NULL;
+	}
 }
 
 static void remmina_main_clear_selection_data(void)
@@ -1225,4 +1230,15 @@ void remmina_main_update_file_datetime(RemminaFile *file)
 	if (!remminamain)
 		return;
 	remmina_main_load_files();
+}
+
+void remmina_main_show_warning_dialog(const gchar* message)
+{
+	GtkWidget* dialog;
+	if (remminamain->window) {
+		dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE,
+							message, g_get_application_name());
+		gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_widget_destroy (dialog);
+	}
 }
