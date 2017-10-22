@@ -425,7 +425,7 @@ remmina_plugin_ssh_vte_save_session (GtkMenuItem *menuitem, RemminaProtocolWidge
 				VTE_WRITE_DEFAULT, NULL, &err);
 #else
 		vte_terminal_write_contents (VTE_TERMINAL(gpdata->vte), G_OUTPUT_STREAM(stream),
-				VTE_WRITE_DEFAULT, NULL, &err);
+				VTE_TERMINAL_WRITE_DEFAULT, NULL, &err);
 #endif
 
 	if (err == NULL) {
