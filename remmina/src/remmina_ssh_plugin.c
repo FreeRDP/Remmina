@@ -420,8 +420,13 @@ remmina_plugin_ssh_vte_save_session (GtkMenuItem *menuitem, RemminaProtocolWidge
 	}
 
 	if (stream != NULL)
+#if VTE_CHECK_VERSION(0,38,0)
 		vte_terminal_write_contents_sync (VTE_TERMINAL(gpdata->vte), G_OUTPUT_STREAM(stream),
 				VTE_WRITE_DEFAULT, NULL, &err);
+#else
+		vte_terminal_write_contents (VTE_TERMINAL(gpdata->vte), G_OUTPUT_STREAM(stream),
+				VTE_WRITE_DEFAULT, NULL, &err);
+#endif
 
 	if (err == NULL) {
 		remmina_public_send_notification ("remmina-terminal-saved",
