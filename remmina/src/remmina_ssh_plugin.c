@@ -471,7 +471,6 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 	/* Context menu for slection and clipboard */
 	GtkWidget *menu = gtk_menu_new();
-	//GObject *vte_save_data = NULL;
 
 	GtkWidget *select_all = gtk_menu_item_new_with_label(_("Select All (Host+a)"));
 	GtkWidget *copy = gtk_menu_item_new_with_label(_("Copy (Host+c)"));
@@ -654,7 +653,6 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 
 	rf = g_file_new_for_path(remminafile->filename);
 
-	//Condition expression ? if condition TRUE, return value1 : Otherwise, return value2;
 	if (remmina_plugin_service->file_get_string (remminafile, "sshlogfolder") == NULL)
 	{
 		dir = g_build_path ( "/", g_get_user_cache_dir (), g_get_prgname (), NULL);
