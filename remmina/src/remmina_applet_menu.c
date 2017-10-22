@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -97,17 +98,10 @@ remmina_applet_menu_add_group(GtkWidget *menu, const gchar *group, gint position
 {
 	TRACE_CALL("remmina_applet_menu_add_group");
 	GtkWidget *widget;
-	GtkWidget *image;
 	GtkWidget *submenu;
 
 	widget = gtk_menu_item_new_with_label(group);
 	gtk_widget_show(widget);
-
-	image =
-	    gtk_image_new_from_icon_name(
-	        (menuitem->item_type == REMMINA_APPLET_MENU_ITEM_DISCOVERED ?
-	         "folder-remote" : "folder"), GTK_ICON_SIZE_MENU);
-	gtk_widget_show(image);
 
 	g_object_set_data_full(G_OBJECT(widget), "group", g_strdup(group), g_free);
 	g_object_set_data(G_OBJECT(widget), "count", GINT_TO_POINTER(0));
@@ -245,6 +239,7 @@ void remmina_applet_menu_add_item(RemminaAppletMenu *menu, RemminaAppletMenuItem
 	{
 		gtk_menu_shell_append(GTK_MENU_SHELL(submenu), GTK_WIDGET(menuitem));
 	}
+	g_list_free(childs);
 	remmina_applet_menu_register_item(menu, menuitem);
 }
 
@@ -271,9 +266,11 @@ void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 	GtkWidget *menuitem;
 	gchar filename[MAX_PATH_LEN];
 	GDir *dir;
+	gchar *remmina_data_dir;
 	const gchar *name;
 
-	dir = g_dir_open(remmina_file_get_datadir(), 0, NULL);
+	remmina_data_dir = remmina_file_get_datadir();
+	dir = g_dir_open(remmina_data_dir, 0, NULL);
 	if (dir != NULL)
 	{
 		/* Iterate all remote desktop profiles */
@@ -281,7 +278,7 @@ void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 		{
 			if (!g_str_has_suffix(name, ".remmina"))
 				continue;
-			g_snprintf(filename, sizeof(filename), "%s/%s", remmina_file_get_datadir(), name);
+			g_snprintf(filename, sizeof(filename), "%s/%s", remmina_data_dir, name);
 
 			menuitem = remmina_applet_menu_item_new(REMMINA_APPLET_MENU_ITEM_FILE, filename);
 			if (menuitem != NULL)
@@ -292,5 +289,6 @@ void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 		}
 		g_dir_close(dir);
 	}
+	g_free(remmina_data_dir);
 }
 

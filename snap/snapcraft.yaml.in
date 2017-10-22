@@ -45,7 +45,7 @@ parts:
       - libxv-dev
     configflags:
       - -DCMAKE_BUILD_TYPE=@CMAKE_BUILD_TYPE@
-      - -DWITH_WAYLAND=off
+      - -DWITH_WAYLAND=on
       - -DWITH_CLIENT=off
       - -DWITH_SERVER=off
       - -DWITH_PULSE=on
@@ -127,6 +127,8 @@ apps:
     plugs:
       - avahi-observe
       - cups-control
+      - desktop
+      - desktop-legacy
       - gsettings
       - home
       - mount-observe
@@ -135,6 +137,7 @@ apps:
       - pulseaudio
       - unity7
       - password-manager-service
+      - wayland
 
   winpr-makecert:
     command: winpr-makecert

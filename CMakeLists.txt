@@ -2,6 +2,7 @@
 #
 # Copyright (C) 2011 Marc-Andre Moreau
 # Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+# Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -107,7 +108,7 @@ set(WITH_LIBRARY_VERSIONING "ON")
 set(REMMINA_VERSION_MAJOR "1")
 set(REMMINA_VERSION_MINOR "2")
 set(REMMINA_VERSION_REVISION "0")
-set(REMMINA_VERSION_SUFFIX "rcgit-20")
+set(REMMINA_VERSION_SUFFIX "rcgit-22")
 set(REMMINA_VERSION "${REMMINA_VERSION_MAJOR}.${REMMINA_VERSION_MINOR}.${REMMINA_VERSION_REVISION}")
 if(NOT ${REMMINA_VERSION_SUFFIX} STREQUAL "")
         set(REMMINA_VERSION "${REMMINA_VERSION}-${REMMINA_VERSION_SUFFIX}")

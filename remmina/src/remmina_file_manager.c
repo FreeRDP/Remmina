@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,7 +47,8 @@
 
 static gchar *remminadir;
 
-/* return first found data dir as per XDG specs */
+/* return first found data dir as per XDG specs.
+ * The returned string must be freed by the caller with g_free */
 gchar *remmina_file_get_datadir(void)
 {
 	TRACE_CALL("remmina_file_get_datadir");
@@ -54,6 +56,7 @@ gchar *remmina_file_get_datadir(void)
 	int i;
 	/* Legacy ~/.remmina */
 	remminadir = g_build_path ("/", g_get_home_dir(), dir, NULL);
+	g_free(dir);
 	if (g_file_test (remminadir, G_FILE_TEST_IS_DIR))
 		return remminadir;
 	g_free (remminadir), remminadir = NULL;
@@ -136,8 +139,6 @@ void remmina_file_manager_init(void)
 	/* At last we make sure we use XDG_USER_DATA */
 	if (remminadir != NULL)
 		g_free (remminadir), remminadir = NULL;
-	remminadir = g_build_path ( "/", g_get_user_data_dir (),
-			g_get_prgname (), NULL);
 }
 
 gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
@@ -148,9 +149,10 @@ gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 	const gchar* name;
 	RemminaFile* remminafile;
 	gint items_count = 0;
+	gchar* remmina_data_dir;
 
-	/* It should always return XDG_DATA_HOME */
-	dir = g_dir_open(remmina_file_get_datadir(), 0, NULL);
+	remmina_data_dir = remmina_file_get_datadir();
+	dir = g_dir_open(remmina_data_dir, 0, NULL);
 
 	if (dir)
 	{
@@ -159,7 +161,7 @@ gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 			if (!g_str_has_suffix(name, ".remmina"))
 				continue;
 			g_snprintf(filename, MAX_PATH_LEN, "%s/%s",
-					remmina_file_get_datadir(), name);
+					remmina_data_dir, name);
 			remminafile = remmina_file_load(filename);
 			if (remminafile)
 			{
@@ -170,6 +172,7 @@ gint remmina_file_manager_iterate(GFunc func, gpointer user_data)
 		}
 		g_dir_close(dir);
 	}
+	g_free(remmina_data_dir);
 	return items_count;
 }
 
@@ -183,10 +186,12 @@ gchar* remmina_file_manager_get_groups(void)
 	RemminaStringArray* array;
 	const gchar* group;
 	gchar* groups;
+	gchar* remmina_data_dir;
 
+	remmina_data_dir = remmina_file_get_datadir();
 	array = remmina_string_array_new();
 
-	dir = g_dir_open(remmina_file_get_datadir(), 0, NULL);
+	dir = g_dir_open(remmina_data_dir, 0, NULL);
 
 	if (dir == NULL)
 		return 0;
@@ -194,7 +199,7 @@ gchar* remmina_file_manager_get_groups(void)
 	{
 		if (!g_str_has_suffix(name, ".remmina"))
 			continue;
-		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", remmina_file_get_datadir(), name);
+		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", remmina_data_dir, name);
 		remminafile = remmina_file_load(filename);
 		group = remmina_file_get_string(remminafile, "group");
 		if (group && remmina_string_array_find(array, group) < 0)
@@ -207,6 +212,7 @@ gchar* remmina_file_manager_get_groups(void)
 	remmina_string_array_sort(array);
 	groups = remmina_string_array_to_string(array);
 	remmina_string_array_free(array);
+	g_free(remmina_data_dir);
 	return groups;
 }
 

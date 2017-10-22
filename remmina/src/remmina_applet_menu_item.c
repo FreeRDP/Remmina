@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -79,7 +80,6 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 	RemminaAppletMenuItem* item;
 	GKeyFile* gkeyfile;
 	GtkWidget* widget;
-	const gchar* iconname;
 
 	va_start(ap, item_type);
 
@@ -137,47 +137,6 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 	gtk_widget_set_valign (widget, GTK_ALIGN_START);
 	gtk_widget_set_halign (widget, GTK_ALIGN_START);
 	gtk_container_add(GTK_CONTAINER(item), widget);
-
-	/* Create the image */
-
-	if (item_type == REMMINA_APPLET_MENU_ITEM_FILE || item_type == REMMINA_APPLET_MENU_ITEM_DISCOVERED)
-	{
-		if (g_strcmp0(item->protocol, "SFTP") == 0)
-		{
-			iconname = "remmina-sftp";
-		}
-		else if (g_strcmp0(item->protocol, "SSH") == 0)
-		{
-			iconname = "utilities-terminal";
-		}
-		else if (g_strcmp0(item->protocol, "RDP") == 0)
-		{
-			iconname = (item->ssh_enabled ? "remmina-rdp-ssh" : "remmina-rdp");
-		}
-		else if (strncmp (item->protocol, "VNC", 3) == 0)
-		{
-			iconname = (item->ssh_enabled ? "remmina-vnc-ssh" : "remmina-vnc");
-		}
-		else if (g_strcmp0(item->protocol, "XDMCP") == 0)
-		{
-			iconname = (item->ssh_enabled ? "remmina-xdmcp-ssh" : "remmina-xdmcp");
-		}
-		else if (g_strcmp0(item->protocol, "NX") == 0)
-		{
-			iconname = "remmina-nx";
-		}
-		else
-		{
-			iconname = "remmina";
-		}
-		widget = gtk_image_new_from_icon_name(iconname, GTK_ICON_SIZE_MENU);
-	}
-	else
-	{
-		widget = gtk_image_new_from_icon_name("go-jump", GTK_ICON_SIZE_MENU);
-	}
-
-	gtk_widget_show(widget);
 
 	if (item->server)
 	{

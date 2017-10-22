@@ -1137,7 +1137,7 @@ Author: Antenore Gatta
                 <property name="left_padding">7</property>
                 <property name="right_padding">7</property>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="box_terminal">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
@@ -1385,7 +1385,7 @@ Author: Antenore Gatta
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkGrid">
+                      <object class="GtkGrid" id="grid_colors">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
@@ -1682,7 +1682,7 @@ Author: Antenore Gatta
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkLabel">
+                          <object class="GtkLabel" id="label_color_chooser">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>

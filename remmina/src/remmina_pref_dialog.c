@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,6 +38,7 @@
 #include <glib/gi18n.h>
 #include <stdlib.h>
 #include "config.h"
+#include <vte/vte.h>
 #include "remmina_public.h"
 #include "remmina_string_list.h"
 #include "remmina_widget_pool.h"
@@ -432,6 +434,26 @@ static void remmina_pref_dialog_init(void)
 	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_color14), &color);
 	gdk_rgba_parse(&color, remmina_pref.color15);
 	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_color15), &color);
+#if !VTE_CHECK_VERSION(0,38,0)
+	/* Disable color scheme buttons if old version of VTE */
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_cursor), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color0), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color1), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color2), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color3), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color4), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color5), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color6), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color7), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color8), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color9), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color10), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color11), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color12), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color13), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color14), FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color15), FALSE);
+#endif
 
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.vte_lines);
 	gtk_entry_set_text(remmina_pref_dialog->entry_scrollback_lines, buf);
@@ -545,7 +567,9 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->colorbutton_color13 = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_color13"));
 	remmina_pref_dialog->colorbutton_color14 = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_color14"));
 	remmina_pref_dialog->colorbutton_color15 = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_color15"));
+#if VTE_CHECK_VERSION(0,38,0)
 	remmina_pref_dialog->filechooserbutton_terminal_color_scheme = GTK_FILE_CHOOSER(GET_OBJECT("filechooserbutton_terminal_color_scheme"));
+#endif
 
 	/* Connect signals */
 	gtk_builder_connect_signals(remmina_pref_dialog->builder, NULL);

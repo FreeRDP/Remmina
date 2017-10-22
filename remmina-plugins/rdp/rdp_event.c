@@ -4,6 +4,7 @@
  * Copyright (C) 2010-2011 Vic Lee
  * Copyright (C) 2011 Marc-Andre Moreau <marcandre.moreau@gmail.com>
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -966,6 +967,7 @@ static BOOL remmina_rdp_event_create_cursor(RemminaProtocolWidget* gp, RemminaPl
 	cairo_surface_destroy(surface);
 	free(data);
 	((rfPointer*)ui->cursor.pointer)->cursor = gdk_cursor_new_from_pixbuf(rfi->display, pixbuf, pointer->xPos, pointer->yPos);
+	g_object_unref(pixbuf);
 
 	return TRUE;
 }
