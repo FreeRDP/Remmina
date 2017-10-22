@@ -56,7 +56,6 @@
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY  1
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE 2
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_SELECT_ALL 3
-#define REMMINA_PLUGIN_SSH_FEATURE_TOOL_SAVE_SESSION 4
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginSshData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 
@@ -406,21 +405,36 @@ remmina_plugin_ssh_vte_paste_clipboard (GtkMenuItem *menuitem, gpointer vte)
 }
 
 void
-remmina_plugin_ssh_vte_save_session (gpointer vte_save_data)
+remmina_plugin_ssh_vte_save_session (GtkMenuItem *menuitem, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
+	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 
 	GError* err = NULL;
 
-	VteTerminal* vte = g_object_get_data (vte_save_data, "vte");
-	GFile* file = g_object_get_data (vte_save_data, "vte_session_file");
+	GFileOutputStream *stream = g_file_replace(gpdata->vte_session_file, NULL, FALSE, G_FILE_CREATE_NONE, NULL, &err);
 
-	GFileOutputStream *stream = g_file_replace(file, NULL, FALSE, G_FILE_CREATE_NONE, NULL, &err);
-	g_object_unref(file);
+	if (err != NULL) {
+		remmina_plugin_service->protocol_plugin_set_error (gp, "%s", err);
+		return;
+	}
 
 	if (stream != NULL)
-		vte_terminal_write_contents_sync (vte, G_OUTPUT_STREAM(stream),
+		vte_terminal_write_contents_sync (VTE_TERMINAL(gpdata->vte), G_OUTPUT_STREAM(stream),
 				VTE_WRITE_DEFAULT, NULL, &err);
+
+	if (err == NULL) {
+		remmina_public_send_notification ("remmina-terminal-saved",
+				_("Terminal content saved under"),
+				g_file_get_path(gpdata->vte_session_file));
+	}
+	else
+	{
+
+		remmina_plugin_service->protocol_plugin_set_error (gp, "%s", err);
+	}
+
+	g_free(err);
 	g_object_unref(stream);
 }
 
@@ -442,13 +456,8 @@ remmina_ssh_plugin_popup_menu(GtkWidget *widget, GdkEvent *event, GtkWidget *men
 #if GTK_CHECK_VERSION(3, 22, 0)
 		gtk_menu_popup_at_pointer(GTK_MENU(menu), NULL);
 #else
-		gtk_menu_popup(GTK_MENU(menu),
-				NULL,
-				NULL,
-				NULL,
-				NULL,
-				((GdkEventButton*)event)->button,
-				gtk_get_current_event_time());
+		gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
+				((GdkEventButton*)event)->button, gtk_get_current_event_time());
 #endif
 		return TRUE;
 	}
@@ -462,7 +471,7 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 	/* Context menu for slection and clipboard */
 	GtkWidget *menu = gtk_menu_new();
-	GObject *vte_save_data = NULL;
+	//GObject *vte_save_data = NULL;
 
 	GtkWidget *select_all = gtk_menu_item_new_with_label(_("Select All (Host+a)"));
 	GtkWidget *copy = gtk_menu_item_new_with_label(_("Copy (Host+c)"));
@@ -483,11 +492,8 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 			G_CALLBACK(remmina_plugin_ssh_vte_copy_clipboard), gpdata->vte);
 	g_signal_connect (G_OBJECT(paste), "activate",
 			G_CALLBACK(remmina_plugin_ssh_vte_paste_clipboard), gpdata->vte);
-	g_object_set_data (vte_save_data, "vte", gpdata->vte);
-	g_object_set_data (vte_save_data, "file", gpdata->vte_session_file);
-	g_print("gpdata->vte_session_file: %s\n", gpdata->vte_session_file);
 	g_signal_connect (G_OBJECT(save), "activate",
-			G_CALLBACK(remmina_plugin_ssh_vte_save_session), vte_save_data);
+			G_CALLBACK(remmina_plugin_ssh_vte_save_session), gp);
 
 	gtk_widget_show_all(menu);
 }
@@ -594,8 +600,9 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 			gdk_rgba_parse(&cp[15], remmina_pref.color15);
 
 			const GdkRGBA custom_palette[PALETTE_SIZE] = {
-				cp[0] , cp[1] , cp[2] , cp[3] , cp[4] , cp[5] ,
-				cp[6] , cp[7] , cp[8] , cp[9] , cp[10], cp[11],
+				cp[0], cp[1], cp[2], cp[3],
+				cp[4], cp[5], cp[6], cp[7],
+				cp[8], cp[9], cp[10], cp[11],
 				cp[12], cp[13], cp[14], cp[15] };
 
 			remminavte.palette = custom_palette;
@@ -643,6 +650,9 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	const gchar *dir;
 	const gchar *sshlogname;
 	const gchar *fp;
+	GFile *rf;
+
+	rf = g_file_new_for_path(remminafile->filename);
 
 	//Condition expression ? if condition TRUE, return value1 : Otherwise, return value2;
 	if (remmina_plugin_service->file_get_string (remminafile, "sshlogfolder") == NULL)
@@ -653,20 +663,17 @@ remmina_plugin_ssh_init (RemminaProtocolWidget *gp)
 	{
 		dir = remmina_plugin_service->file_get_string (remminafile, "sshlogfolder");
 	}
-	g_print("dir: %s\n", dir);
 
 	if (remmina_plugin_service->file_get_string (remminafile, "sshlogname") == NULL)
 	{
-		g_snprintf ((gchar*)sshlogname, MAX_PATH_LEN, "%s.%s", remminafile->filename, "log");
+		sshlogname = g_strconcat (g_file_get_basename(rf), "." , "log", NULL);
 	}
 	else
 	{
 		sshlogname = remmina_plugin_service->file_get_string (remminafile, "sshlogname");
 	}
-	g_print("sshlogname: %s\n", sshlogname);
 
-	g_snprintf (fp, MAX_PATH_LEN, "%s/%s", dir, sshlogname);
-	g_print("fp: %s\n", fp);
+	fp = g_strconcat (dir, "/" , sshlogname, NULL);
 	gpdata->vte_session_file = g_file_new_for_path (fp);
 
 	remmina_plugin_ssh_popup_ui(gp);
@@ -702,6 +709,14 @@ remmina_plugin_ssh_close_connection (RemminaProtocolWidget *gp)
 	TRACE_CALL("remmina_plugin_ssh_close_connection");
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 
+	RemminaFile *remminafile;
+
+	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
+
+	if (remmina_file_get_int (remminafile, "sshlogenabled", FALSE))
+	{
+		remmina_plugin_ssh_vte_save_session (NULL, gp);
+	}
 	if (gpdata->thread)
 	{
 		pthread_cancel (gpdata->thread);
@@ -729,8 +744,6 @@ remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, const RemminaProtoco
 {
 	TRACE_CALL("remmina_plugin_ssh_call_feature");
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
-	GObject *vte_save_data = NULL;
-	GObject *save = NULL;
 
 	switch (feature->id)
 	{
@@ -756,12 +769,6 @@ remmina_plugin_ssh_call_feature (RemminaProtocolWidget *gp, const RemminaProtoco
 		return;
 	case REMMINA_PLUGIN_SSH_FEATURE_TOOL_SELECT_ALL:
 		vte_terminal_select_all (VTE_TERMINAL (gpdata->vte));
-		return;
-	case REMMINA_PLUGIN_SSH_FEATURE_TOOL_SAVE_SESSION:
-		g_object_set_data (vte_save_data, "vte", gpdata->vte);
-		g_object_set_data (vte_save_data, "file", gpdata->vte_session_file);
-		g_signal_connect (G_OBJECT(save), "activate",
-				G_CALLBACK(remmina_plugin_ssh_vte_save_session), vte_save_data);
 		return;
 	}
 }
@@ -849,7 +856,6 @@ static RemminaProtocolFeature remmina_plugin_ssh_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY, N_("Copy"), N_("_Copy"), NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE, N_("Paste"), N_("_Paste"), NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_SELECT_ALL, N_("Select all"), N_("_Select all"), NULL },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_SAVE_SESSION, N_("Save SSH session to file"), N_("Sa_ve SSH session to file"), NULL },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
 };
 

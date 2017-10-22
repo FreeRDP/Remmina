@@ -38,7 +38,9 @@
 #include <glib/gi18n.h>
 #include <stdlib.h>
 #include "config.h"
+#ifdef HAVE_LIBSSH
 #include <vte/vte.h>
+#endif
 #include "remmina_public.h"
 #include "remmina_string_list.h"
 #include "remmina_widget_pool.h"
