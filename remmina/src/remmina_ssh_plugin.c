@@ -480,7 +480,7 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 	GtkWidget *select_all = gtk_menu_item_new_with_label(_("Select All (Host+a)"));
 	GtkWidget *copy = gtk_menu_item_new_with_label(_("Copy (Host+c)"));
 	GtkWidget *paste = gtk_menu_item_new_with_label(_("Paste (Host+v)"));
-	GtkWidget *save = gtk_menu_item_new_with_label(_("Save session to file (Host+v)"));
+	GtkWidget *save = gtk_menu_item_new_with_label(_("Save session to file"));
 
 	gtk_menu_shell_append (GTK_MENU_SHELL(menu), select_all);
 	gtk_menu_shell_append (GTK_MENU_SHELL(menu), copy);
