@@ -415,7 +415,7 @@ remmina_plugin_ssh_vte_save_session (GtkMenuItem *menuitem, RemminaProtocolWidge
 	GFileOutputStream *stream = g_file_replace(gpdata->vte_session_file, NULL, FALSE, G_FILE_CREATE_NONE, NULL, &err);
 
 	if (err != NULL) {
-		remmina_plugin_service->protocol_plugin_set_error (gp, "%s", err);
+		remmina_plugin_service->protocol_plugin_set_error (gp, "%s", err->message);
 		return;
 	}
 
