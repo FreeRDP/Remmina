@@ -410,12 +410,16 @@ remmina_plugin_ssh_vte_save_session (GtkMenuItem *menuitem, RemminaProtocolWidge
 	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 
+	GtkWidget* widget;
 	GError* err = NULL;
 
 	GFileOutputStream *stream = g_file_replace(gpdata->vte_session_file, NULL, FALSE, G_FILE_CREATE_NONE, NULL, &err);
 
 	if (err != NULL) {
-		remmina_plugin_service->protocol_plugin_set_error (gp, "%s", err);
+		widget = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+						_("%s"), err->message);
+		g_signal_connect(G_OBJECT(widget), "response", G_CALLBACK(gtk_widget_destroy), NULL);
+		gtk_widget_show(widget);
 		return;
 	}
 
@@ -433,14 +437,10 @@ remmina_plugin_ssh_vte_save_session (GtkMenuItem *menuitem, RemminaProtocolWidge
 				_("Terminal content saved under"),
 				g_file_get_path(gpdata->vte_session_file));
 	}
-	else
-	{
 
-		remmina_plugin_service->protocol_plugin_set_error (gp, "%s", err);
-	}
-
-	g_free(err);
 	g_object_unref(stream);
+	g_free(err);
+
 }
 
 /* Send a keystroke to the plugin window */
@@ -480,7 +480,7 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 	GtkWidget *select_all = gtk_menu_item_new_with_label(_("Select All (Host+a)"));
 	GtkWidget *copy = gtk_menu_item_new_with_label(_("Copy (Host+c)"));
 	GtkWidget *paste = gtk_menu_item_new_with_label(_("Paste (Host+v)"));
-	GtkWidget *save = gtk_menu_item_new_with_label(_("Save session to file (Host+v)"));
+	GtkWidget *save = gtk_menu_item_new_with_label(_("Save session to file"));
 
 	gtk_menu_shell_append (GTK_MENU_SHELL(menu), select_all);
 	gtk_menu_shell_append (GTK_MENU_SHELL(menu), copy);

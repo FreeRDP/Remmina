@@ -1,5 +1,20 @@
 # Change Log
 
+## [v1.2.0-rcgit.23](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.23) (2017-10-23)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.22...v1.2.0-rcgit.23)
+
+**Implemented enhancements:**
+
+- Save SSH session to file \#1320  [\#1333](https://github.com/FreeRDP/Remmina/pull/1333) ([antenore](https://github.com/antenore))
+
+**Merged pull requests:**
+
+- Fixes for issue \#1327, optional VTE an SSH [\#1335](https://github.com/FreeRDP/Remmina/pull/1335) ([giox069](https://github.com/giox069))
+- snap: add password-manager-service interface for gnome-keyring [\#1334](https://github.com/FreeRDP/Remmina/pull/1334) ([dfiloni](https://github.com/dfiloni))
+- Fix window state saving for remmina\_connection\_window and main window [\#1331](https://github.com/FreeRDP/Remmina/pull/1331) ([giox069](https://github.com/giox069))
+- Update da.po \(fully translated\) [\#1330](https://github.com/FreeRDP/Remmina/pull/1330) ([scootergrisen](https://github.com/scootergrisen))
+- Fixes for deprecated "resolution" setting, issue \#1323 [\#1329](https://github.com/FreeRDP/Remmina/pull/1329) ([giox069](https://github.com/giox069))
+
 ## [v1.2.0-rcgit.22](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.22) (2017-10-20)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.21...v1.2.0-rcgit.22)
 
@@ -245,7 +260,7 @@
 
 **Fixed bugs:**
 
-- 
+-
 full screen window placement with multiple monitors [\#124](https://github.com/FreeRDP/Remmina/issues/124)
 
 **Closed issues:**
