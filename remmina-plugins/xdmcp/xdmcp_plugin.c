@@ -119,8 +119,8 @@ static gboolean remmina_plugin_xdmcp_start_xephyr(RemminaProtocolWidget *gp)
 	{
 		argv[argc++] = g_strdup("-screen");
 		argv[argc++] = g_strdup_printf("%ix%ix%i",
-				remmina_plugin_service->file_get_int(remminafile, "resolution_width", 640),
-				remmina_plugin_service->file_get_int(remminafile, "resolution_height", 480), i);
+				remmina_plugin_service->get_profile_remote_width(gp),
+				remmina_plugin_service->get_profile_remote_height(gp), i);
 	}
 
 	if (i == 2)
@@ -291,8 +291,8 @@ static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
-	width = remmina_plugin_service->file_get_int(remminafile, "resolution_width", 640);
-	height = remmina_plugin_service->file_get_int(remminafile, "resolution_height", 480);
+	width = remmina_plugin_service->get_profile_remote_width(gp);
+	height = remmina_plugin_service->get_profile_remote_height(gp);
 	remmina_plugin_service->protocol_plugin_set_width(gp, width);
 	remmina_plugin_service->protocol_plugin_set_height(gp, height);
 	gtk_widget_set_size_request(GTK_WIDGET(gp), width, height);

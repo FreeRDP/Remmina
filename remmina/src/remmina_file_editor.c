@@ -470,8 +470,14 @@ static GtkWidget* remmina_file_editor_create_password(RemminaFileEditor* gfe, Gt
 static void remmina_file_editor_update_resolution(GtkWidget* widget, RemminaFileEditor* gfe)
 {
 	TRACE_CALL("remmina_file_editor_update_resolution");
+	gchar* res_str;
+	res_str = g_strdup_printf("%dx%d",
+		remmina_file_get_int(gfe->priv->remmina_file, "resolution_width",0),
+		remmina_file_get_int(gfe->priv->remmina_file, "resolution_height",0)
+		);
 	remmina_public_load_combo_text_d(gfe->priv->resolution_custom_combo, remmina_pref.resolutions,
-	                                 remmina_file_get_string(gfe->priv->remmina_file, "resolution"), NULL);
+		res_str, NULL);
+	g_free(res_str);
 }
 
 static void remmina_file_editor_browse_resolution(GtkWidget* button, RemminaFileEditor* gfe)
@@ -1165,7 +1171,7 @@ static void remmina_file_editor_update(RemminaFileEditor* gfe)
 		{
 			/* Resolution is set to a value from the list */
 			custom_resolution = remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->resolution_custom_combo));
-			if (sscanf(custom_resolution, "%dx%d", &w, &h) >= 2)
+			if (remmina_public_split_resolution_string(custom_resolution, &w, &h))
 			{
 				res_w = g_strdup_printf("%i", w);
 				res_h = g_strdup_printf("%i", h);

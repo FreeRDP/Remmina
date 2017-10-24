@@ -4017,8 +4017,6 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 	RemminaConnectionObject* cnnobj;
 	GtkWidget* protocolwidget;
 
-	remmina_file_update_screen_resolution(remminafile);
-
 	cnnobj = g_new0(RemminaConnectionObject, 1);
 	cnnobj->remmina_file = remminafile;
 
@@ -4027,6 +4025,13 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 
 	/* Create the RemminaProtocolWidget */
 	protocolwidget = cnnobj->proto = remmina_protocol_widget_new();
+
+	/* Set default remote desktop size in the profile, so the plugins can query
+	 * protocolwidget and know WxH that the user put on the profile settings */
+	remmina_protocol_widget_update_remote_resolution((RemminaProtocolWidget*)protocolwidget,
+		remmina_file_get_int(remminafile, "resolution_width", -1),
+		remmina_file_get_int(remminafile, "resolution_height", -1)
+	);
 
 	/* Set a name for the widget, for CSS selector */
 	gtk_widget_set_name(GTK_WIDGET(cnnobj->proto),"remmina-protocol-widget");

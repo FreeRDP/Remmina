@@ -752,8 +752,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->ColorDepth = 32;
 	}
 
-	rfi->settings->DesktopWidth = remmina_plugin_service->file_get_int(remminafile, "resolution_width", 1024);
-	rfi->settings->DesktopHeight = remmina_plugin_service->file_get_int(remminafile, "resolution_height", 768);
+	rfi->settings->DesktopWidth = remmina_plugin_service->get_profile_remote_width(gp);
+	rfi->settings->DesktopHeight = remmina_plugin_service->get_profile_remote_height(gp);
 	dynresw = remmina_plugin_service->file_get_int(remminafile, "dynamic_resolution_width", 0);
 	dynresh = remmina_plugin_service->file_get_int(remminafile, "dynamic_resolution_height", 0);
 
