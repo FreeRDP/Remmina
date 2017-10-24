@@ -230,16 +230,6 @@ static RemminaFile* remmina_rdp_file_import_channel(GIOChannel* channel)
 		g_free(line);
 	}
 
-	if (remmina_plugin_service->file_get_int(remminafile, "resolution_width", 0) > 0 &&
-		remmina_plugin_service->file_get_int(remminafile, "resolution_height", 0) > 0)
-	{
-		p = g_strdup_printf("%ix%i",
-			remmina_plugin_service->file_get_int(remminafile, "resolution_width", 0),
-			remmina_plugin_service->file_get_int(remminafile, "resolution_height", 0));
-		remmina_plugin_service->file_set_string(remminafile, "resolution", p);
-		g_free(p);
-	}
-
 	remmina_plugin_service->file_set_string(remminafile, "name",
 		remmina_plugin_service->file_get_string(remminafile, "server"));
 	remmina_plugin_service->file_set_string(remminafile, "protocol", "RDP");

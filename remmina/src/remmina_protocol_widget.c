@@ -79,6 +79,10 @@ struct _RemminaProtocolWidgetPriv
 
 	RemminaHostkeyFunc hostkey_func;
 	gpointer hostkey_func_data;
+
+	gint profile_remote_width;
+	gint profile_remote_height;
+
 };
 
 G_DEFINE_TYPE(RemminaProtocolWidget, remmina_protocol_widget, GTK_TYPE_EVENT_BOX)
@@ -897,6 +901,21 @@ GtkWidget* remmina_protocol_widget_get_init_dialog(RemminaProtocolWidget* gp)
 	return gp->priv->init_dialog;
 }
 
+gint remmina_protocol_widget_get_profile_remote_width(RemminaProtocolWidget* gp)
+{
+	TRACE_CALL("remmina_protocol_widget_get_profile_remote_width");
+	/* Returns the width of remote desktop as choosen by the user profile */
+	return gp->priv->profile_remote_width;
+}
+
+gint remmina_protocol_widget_get_profile_remote_height(RemminaProtocolWidget* gp)
+{
+	TRACE_CALL("remmina_protocol_widget_get_profile_remote_height");
+	/* Returns the height of remote desktop as choosen by the user profile */
+	return gp->priv->profile_remote_height;
+}
+
+
 gint remmina_protocol_widget_get_width(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL("remmina_protocol_widget_get_width");
@@ -1315,3 +1334,53 @@ void remmina_protocol_widget_send_keys_signals(GtkWidget *widget, const guint *k
 		}
 	}
 }
+
+void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp, gint w, gint h)
+{
+	TRACE_CALL("remmina_file_update_screen_resolution");
+	GdkDisplay *display;
+#if GTK_CHECK_VERSION(3, 20, 0)
+	/* TODO: rename to "seat" */
+	GdkSeat *seat;
+	GdkDevice *device;
+#else
+	GdkDeviceManager *device_manager;
+	GdkDevice *device;
+#endif
+	GdkScreen *screen;
+#if GTK_CHECK_VERSION(3, 22, 0)
+	GdkMonitor *monitor;
+#else
+	gint monitor;
+#endif
+	gint x, y;
+	GdkRectangle rect;
+
+	if (w <= 0 || h <= 0)
+	{
+		display = gdk_display_get_default();
+		/* gdk_display_get_device_manager deprecated since 3.20, Use gdk_display_get_default_seat */
+#if GTK_CHECK_VERSION(3, 20, 0)
+		seat = gdk_display_get_default_seat(display);
+		device = gdk_seat_get_pointer(seat);
+#else
+		device_manager = gdk_display_get_device_manager(display);
+		device = gdk_device_manager_get_client_pointer(device_manager);
+#endif
+		gdk_device_get_position(device, &screen, &x, &y);
+#if GTK_CHECK_VERSION(3, 22, 0)
+		monitor = gdk_display_get_monitor_at_point(display, x, y);
+		gdk_monitor_get_geometry(monitor, &rect);
+#else
+		monitor = gdk_screen_get_monitor_at_point(screen, x, y);
+		gdk_screen_get_monitor_geometry(screen, monitor, &rect);
+#endif
+		w = rect.width;
+		h = rect.height;
+	}
+	gp->priv->profile_remote_width = w;
+	gp->priv->profile_remote_height = h;
+}
+
+
+

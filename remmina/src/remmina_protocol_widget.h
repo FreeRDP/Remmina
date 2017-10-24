@@ -84,6 +84,9 @@ gint remmina_protocol_widget_get_width(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_width(RemminaProtocolWidget *gp, gint width);
 gint remmina_protocol_widget_get_height(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_height(RemminaProtocolWidget *gp, gint height);
+gint remmina_protocol_widget_get_profile_remote_width(RemminaProtocolWidget* gp);
+gint remmina_protocol_widget_get_profile_remote_height(RemminaProtocolWidget* gp);
+
 RemminaScaleMode remmina_protocol_widget_get_current_scale_mode(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_current_scale_mode(RemminaProtocolWidget *gp, RemminaScaleMode scalemode);
 gboolean remmina_protocol_widget_get_expand(RemminaProtocolWidget *gp);
@@ -152,6 +155,8 @@ gboolean remmina_protocol_widget_plugin_receives_keystrokes(RemminaProtocolWidge
 void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget* gp, GtkMenuItem *widget);
 /* Take screenshot of plugin */
 gboolean remmina_protocol_widget_plugin_screenshot(RemminaProtocolWidget* gp, RemminaPluginScreenshotData *rpsd);
+
+void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp, gint w, gint h);
 
 
 G_END_DECLS

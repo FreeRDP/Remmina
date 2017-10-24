@@ -227,6 +227,8 @@ typedef struct _RemminaPluginService
     void         (* get_server_port)                      (const gchar *server, gint defaultport, gchar **host, gint *port);
     gboolean     (* is_main_thread)                       (void);
     gboolean     (* gtksocket_available)                  (void);
+    gint         (* get_profile_remote_width)	(RemminaProtocolWidget *gp);
+	gint         (* get_profile_remote_height)	(RemminaProtocolWidget *gp);
 
 } RemminaPluginService;
 

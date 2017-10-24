@@ -79,8 +79,6 @@ void remmina_file_save(RemminaFile *remminafile);
 void remmina_file_free(RemminaFile *remminafile);
 /* Duplicate a RemminaFile object */
 RemminaFile* remmina_file_dup(RemminaFile *remminafile);
-/* Update the screen width and height members */
-void remmina_file_update_screen_resolution(RemminaFile *remminafile);
 /* Get the protocol icon name */
 const gchar* remmina_file_get_icon_name(RemminaFile *remminafile);
 /* Duplicate a temporary RemminaFile and change the protocol */
