@@ -1093,6 +1093,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 				case FREERDP_ERROR_DNS_NAME_NOT_FOUND:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to find the address of RDP server %s."), rfi->settings->ServerHostname );
 					break;
+				case FREERDP_ERROR_TLS_CONNECT_FAILED:
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Error connecting to RDP server %s. TLS connection failed. Check that client and server support a common TLS version."), rfi->settings->ServerHostname );
+					break;
+				case FREERDP_ERROR_SECURITY_NEGO_CONNECT_FAILED:
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to establish a connection to RDP server %s."), rfi->settings->ServerHostname );
+					break;
 				default:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
 					break;
