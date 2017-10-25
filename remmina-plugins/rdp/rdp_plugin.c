@@ -746,8 +746,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->ColorDepth = 32;
 	}
 
-	rfi->settings->DesktopWidth = remmina_plugin_service->file_get_int(remminafile, "resolution_width", 1024);
-	rfi->settings->DesktopHeight = remmina_plugin_service->file_get_int(remminafile, "resolution_height", 768);
+	rfi->settings->DesktopWidth = remmina_plugin_service->get_profile_remote_width(gp);
+	rfi->settings->DesktopHeight = remmina_plugin_service->get_profile_remote_height(gp);
 	dynresw = remmina_plugin_service->file_get_int(remminafile, "dynamic_resolution_width", 0);
 	dynresh = remmina_plugin_service->file_get_int(remminafile, "dynamic_resolution_height", 0);
 
@@ -1086,6 +1086,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 					break;
 				case FREERDP_ERROR_DNS_NAME_NOT_FOUND:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to find the address of RDP server %s."), rfi->settings->ServerHostname );
+					break;
+				case FREERDP_ERROR_TLS_CONNECT_FAILED:
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Error connecting to RDP server %s. TLS connection failed. Check that client and server support a common TLS version."), rfi->settings->ServerHostname );
+					break;
+				case FREERDP_ERROR_SECURITY_NEGO_CONNECT_FAILED:
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to establish a connection to RDP server %s."), rfi->settings->ServerHostname );
 					break;
 				default:
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);

@@ -1,10 +1,23 @@
 # Change Log
 
+## [v1.2.0-rcgit.24](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.24) (2017-10-25)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.23...v1.2.0-rcgit.24)
+
+**Closed issues:**
+
+- vte no longer optional [\#1327](https://github.com/FreeRDP/Remmina/issues/1327)
+- libwinpr.so.2 dependcy missing [\#1312](https://github.com/FreeRDP/Remmina/issues/1312)
+
+**Merged pull requests:**
+
+- Fix for \#1323 [\#1339](https://github.com/FreeRDP/Remmina/pull/1339) ([giox069](https://github.com/giox069))
+
 ## [v1.2.0-rcgit.23](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.23) (2017-10-23)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.22...v1.2.0-rcgit.23)
 
 **Implemented enhancements:**
 
+- SSH session log to file [\#1320](https://github.com/FreeRDP/Remmina/issues/1320)
 - Save SSH session to file \#1320  [\#1333](https://github.com/FreeRDP/Remmina/pull/1333) ([antenore](https://github.com/antenore))
 
 **Merged pull requests:**
@@ -149,6 +162,7 @@
 - SSH Tunneling is broken with SSH Agent with public key [\#1228](https://github.com/FreeRDP/Remmina/issues/1228)
 - Missing icons after compiling latest Git release [\#1221](https://github.com/FreeRDP/Remmina/issues/1221)
 - RDP quality settings not saved [\#1216](https://github.com/FreeRDP/Remmina/issues/1216)
+- RDP to Win10 makes ToolBar clear [\#1209](https://github.com/FreeRDP/Remmina/issues/1209)
 - Cannot connect after upgrading Ubuntu to 16.04 [\#946](https://github.com/FreeRDP/Remmina/issues/946)
 
 **Merged pull requests:**
@@ -197,7 +211,6 @@
 **Closed issues:**
 
 - Invalid \(too large\) file size in rdp shared folder [\#1220](https://github.com/FreeRDP/Remmina/issues/1220)
-- RDP to Win10 makes ToolBar clear [\#1209](https://github.com/FreeRDP/Remmina/issues/1209)
 - Upgrading to 1.2 failed [\#1202](https://github.com/FreeRDP/Remmina/issues/1202)
 - Multiple NICs [\#1188](https://github.com/FreeRDP/Remmina/issues/1188)
 - "Public Key \(Automatic\)" option does not work with ed25519 keys [\#1187](https://github.com/FreeRDP/Remmina/issues/1187)

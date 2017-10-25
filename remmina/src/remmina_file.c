@@ -79,6 +79,7 @@ remmina_file_new_empty(void)
 	 * it's used by remmina_file_store_secret_plugin_password() to know
 	 * where to change */
 	remminafile->spsettings = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
+	remminafile->prevent_saving = FALSE;
 	return remminafile;
 }
 
@@ -444,6 +445,9 @@ void remmina_file_save(RemminaFile *remminafile)
 	GKeyFile *gkeyfile;
 	gsize length = 0;
 
+	if (remminafile->prevent_saving)
+		return;
+
 	if ((gkeyfile = remmina_file_get_keyfile(remminafile)) == NULL)
 		return;
 
@@ -552,55 +556,6 @@ remmina_file_dup(RemminaFile *remminafile)
 	}
 
 	return dupfile;
-}
-
-void remmina_file_update_screen_resolution(RemminaFile *remminafile)
-{
-	TRACE_CALL("__func__");
-	GdkDisplay *display;
-#if GTK_CHECK_VERSION(3, 20, 0)
-	/* TODO: rename to "seat" */
-	GdkSeat *seat;
-	GdkDevice *device;
-#else
-	GdkDeviceManager *device_manager;
-	GdkDevice *device;
-#endif
-	GdkScreen *screen;
-#if GTK_CHECK_VERSION(3, 22, 0)
-	GdkMonitor *monitor;
-#else
-	gint monitor;
-#endif
-	const gchar *resolution_w, *resolution_h;
-	gint x, y;
-	GdkRectangle rect;
-
-	resolution_w = remmina_file_get_string(remminafile, "resolution_width");
-	resolution_h = remmina_file_get_string(remminafile, "resolution_height");
-
-	if (resolution_w == NULL || resolution_h == NULL || resolution_w[0] == 0 || resolution_h[0] == 0)
-	{
-		display = gdk_display_get_default();
-		/* gdk_display_get_device_manager deprecated since 3.20, Use gdk_display_get_default_seat */
-#if GTK_CHECK_VERSION(3, 20, 0)
-		seat = gdk_display_get_default_seat(display);
-		device = gdk_seat_get_pointer(seat);
-#else
-		device_manager = gdk_display_get_device_manager(display);
-		device = gdk_device_manager_get_client_pointer(device_manager);
-#endif
-		gdk_device_get_position(device, &screen, &x, &y);
-#if GTK_CHECK_VERSION(3, 22, 0)
-		monitor = gdk_display_get_monitor_at_point(display, x, y);
-		gdk_monitor_get_geometry(monitor, &rect);
-#else
-		monitor = gdk_screen_get_monitor_at_point(screen, x, y);
-		gdk_screen_get_monitor_geometry(screen, monitor, &rect);
-#endif
-		remmina_file_set_int(remminafile, "resolution_width", rect.width);
-		remmina_file_set_int(remminafile, "resolution_height", rect.height);
-	}
 }
 
 const gchar*
