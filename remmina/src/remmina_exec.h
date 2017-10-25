@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee
+ * Copyright (C) 2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,31 +33,28 @@
  *
  */
 
-#ifndef __REMMINAEXEC_H__
-#define __REMMINAEXEC_H__
+#pragma once
 
 G_BEGIN_DECLS
 
-typedef enum
-{
-	REMMINA_COMMAND_NONE         =  0,
-	REMMINA_COMMAND_MAIN         =  1,
-	REMMINA_COMMAND_PREF         =  2,
-	REMMINA_COMMAND_NEW          =  3,
-	REMMINA_COMMAND_CONNECT      =  4,
-	REMMINA_COMMAND_EDIT         =  5,
-	REMMINA_COMMAND_ABOUT        =  6,
-	REMMINA_COMMAND_VERSION      =  7,
-	REMMINA_COMMAND_FULL_VERSION =  8,
-	REMMINA_COMMAND_PLUGIN       =  9,
-	REMMINA_COMMAND_EXIT         = 10
+typedef enum {
+	REMMINA_COMMAND_NONE		=  0,
+	REMMINA_COMMAND_MAIN		=  1,
+	REMMINA_COMMAND_PREF		=  2,
+	REMMINA_COMMAND_NEW		=  3,
+	REMMINA_COMMAND_CONNECT		=  4,
+	REMMINA_COMMAND_EDIT		=  5,
+	REMMINA_COMMAND_ABOUT		=  6,
+	REMMINA_COMMAND_VERSION		=  7,
+	REMMINA_COMMAND_FULL_VERSION	=  8,
+	REMMINA_COMMAND_PLUGIN		=  9,
+	REMMINA_COMMAND_EXIT		= 10
 } RemminaCommandType;
 
-typedef enum
-{
-	REMMINA_CONDEXIT_ONDISCONNECT = 0,
-	REMMINA_CONDEXIT_ONQUIT = 1,
-	REMMINA_CONDEXIT_ONMAINWINDELETE = 2
+typedef enum {
+	REMMINA_CONDEXIT_ONDISCONNECT		= 0,
+	REMMINA_CONDEXIT_ONQUIT			= 1,
+	REMMINA_CONDEXIT_ONMAINWINDELETE	= 2
 } RemminaCondExitType;
 
 void remmina_exec_command(RemminaCommandType command, const gchar* data);
@@ -65,5 +63,4 @@ void remmina_application_condexit(RemminaCondExitType why);
 
 G_END_DECLS
 
-#endif  /* __REMMINAEXEC_H__  */
 

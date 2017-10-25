@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2012-2012 Jean-Louis Dupond
+ * Copyright (C) 2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,8 +34,7 @@
  */
 
 
-#ifndef __REMMINA_RDP_CHANNELS_H
-#define __REMMINA_RDP_CHANNELS_H
+#pragma once
 
 #include <freerdp/freerdp.h>
 #include <freerdp/client/channels.h>
@@ -53,4 +53,3 @@ void remmina_rdp_OnChannelDisconnectedEventHandler(rdpContext* context, ChannelC
 
 G_END_DECLS
 
-#endif

@@ -34,8 +34,7 @@
  *
  */
 
-#ifndef __REMMINA_RDP_H__
-#define __REMMINA_RDP_H__
+#pragma once
 
 #include "common/remmina_plugin.h"
 #include <freerdp/freerdp.h>
@@ -54,20 +53,19 @@
 
 typedef struct rf_context rfContext;
 
-#define GET_PLUGIN_DATA(gp) (rfContext*) g_object_get_data(G_OBJECT(gp), "plugin-data")
+#define GET_PLUGIN_DATA(gp) (rfContext*)g_object_get_data(G_OBJECT(gp), "plugin-data")
 
-#define DEFAULT_QUALITY_0	0x6f
-#define DEFAULT_QUALITY_1	0x07
-#define DEFAULT_QUALITY_2	0x01
-#define DEFAULT_QUALITY_9	0x80
+#define DEFAULT_QUALITY_0       0x6f
+#define DEFAULT_QUALITY_1       0x07
+#define DEFAULT_QUALITY_2       0x01
+#define DEFAULT_QUALITY_9       0x80
 
 #define REMMINA_PLUGIN_RDP_VERSION  "RDP Plugin: " VERSION " (git " REMMINA_GIT_REVISION \
-	                         "), FreeRDP lib: " FREERDP_VERSION_FULL " (git " GIT_REVISION ")"
+	"), FreeRDP lib: " FREERDP_VERSION_FULL " (git " GIT_REVISION ")"
 
 extern RemminaPluginService* remmina_plugin_service;
 
-struct rf_clipboard
-{
+struct rf_clipboard {
 	rfContext* rfi;
 	CliprdrClientContext* context;
 	wClipboard* system;
@@ -78,38 +76,34 @@ struct rf_clipboard
 
 	pthread_mutex_t transfer_clip_mutex;
 	pthread_cond_t transfer_clip_cond;
-	enum  { SCDW_NONE, SCDW_BUSY_WAIT, SCDW_ASYNCWAIT } srv_clip_data_wait ;
+	enum  { SCDW_NONE, SCDW_BUSY_WAIT, SCDW_ASYNCWAIT } srv_clip_data_wait;
 	gpointer srv_data;
 
 };
 typedef struct rf_clipboard rfClipboard;
 
 
-struct rf_pointer
-{
+struct rf_pointer {
 	rdpPointer pointer;
 	GdkCursor* cursor;
 };
 typedef struct rf_pointer rfPointer;
 
-struct rf_bitmap
-{
+struct rf_bitmap {
 	rdpBitmap bitmap;
 	Pixmap pixmap;
 	cairo_surface_t* surface;
 };
 typedef struct rf_bitmap rfBitmap;
 
-struct rf_glyph
-{
+struct rf_glyph {
 	rdpGlyph glyph;
 	Pixmap pixmap;
 };
 typedef struct rf_glyph rfGlyph;
 
 
-typedef enum
-{
+typedef enum {
 	REMMINA_RDP_EVENT_TYPE_SCANCODE,
 	REMMINA_RDP_EVENT_TYPE_SCANCODE_UNICODE,
 	REMMINA_RDP_EVENT_TYPE_MOUSE,
@@ -119,35 +113,28 @@ typedef enum
 	REMMINA_RDP_EVENT_TYPE_SEND_MONITOR_LAYOUT
 } RemminaPluginRdpEventType;
 
-struct remmina_plugin_rdp_event
-{
+struct remmina_plugin_rdp_event {
 	RemminaPluginRdpEventType type;
-	union
-	{
-		struct
-		{
+	union {
+		struct {
 			BOOL up;
 			BOOL extended;
 			UINT8 key_code;
 			UINT32 unicode_code;
 		} key_event;
-		struct
-		{
+		struct {
 			UINT16 flags;
 			UINT16 x;
 			UINT16 y;
 			BOOL extended;
 		} mouse_event;
-		struct
-		{
+		struct {
 			CLIPRDR_FORMAT_LIST* pFormatList;
 		} clipboard_formatlist;
-		struct
-		{
+		struct {
 			CLIPRDR_FORMAT_DATA_RESPONSE* pFormatDataResponse;
 		} clipboard_formatdataresponse;
-		struct
-		{
+		struct {
 			CLIPRDR_FORMAT_DATA_REQUEST* pFormatDataRequest;
 		} clipboard_formatdatarequest;
 		struct {
@@ -161,8 +148,7 @@ struct remmina_plugin_rdp_event
 };
 typedef struct remmina_plugin_rdp_event RemminaPluginRdpEvent;
 
-typedef enum
-{
+typedef enum {
 	REMMINA_RDP_UI_UPDATE_REGION = 0,
 	REMMINA_RDP_UI_CONNECTED,
 	REMMINA_RDP_UI_RECONNECT_PROGRESS,
@@ -173,8 +159,7 @@ typedef enum
 	REMMINA_RDP_UI_EVENT
 } RemminaPluginRdpUiType;
 
-typedef enum
-{
+typedef enum {
 	REMMINA_RDP_UI_CLIPBOARD_FORMATLIST,
 	REMMINA_RDP_UI_CLIPBOARD_GET_DATA,
 	REMMINA_RDP_UI_CLIPBOARD_SET_DATA,
@@ -182,8 +167,7 @@ typedef enum
 	REMMINA_RDP_UI_CLIPBOARD_DETACH_OWNER
 } RemminaPluginRdpUiClipboardType;
 
-typedef enum
-{
+typedef enum {
 	REMMINA_RDP_POINTER_NEW,
 	REMMINA_RDP_POINTER_FREE,
 	REMMINA_RDP_POINTER_SET,
@@ -192,49 +176,41 @@ typedef enum
 	REMMINA_RDP_POINTER_SETPOS
 } RemminaPluginRdpUiPointerType;
 
-typedef enum
-{
+typedef enum {
 	REMMINA_RDP_UI_EVENT_UPDATE_SCALE
 } RemminaPluginRdpUiEeventType;
 
-struct remmina_plugin_rdp_ui_object
-{
+struct remmina_plugin_rdp_ui_object {
 	RemminaPluginRdpUiType type;
 	gboolean sync;
 	gboolean complete;
 	pthread_mutex_t sync_wait_mutex;
 	pthread_cond_t sync_wait_cond;
-	union
-	{
-		struct
-		{
+	union {
+		struct {
 			gint x;
 			gint y;
 			gint width;
 			gint height;
 		} region;
-		struct
-		{
+		struct {
 			rdpContext* context;
 			rfPointer* pointer;
 			RemminaPluginRdpUiPointerType type;
 		} cursor;
-		struct
-		{
+		struct {
 			gint left;
 			gint top;
 			RFX_MESSAGE* message;
 		} rfx;
-		struct
-		{
+		struct {
 			gint left;
 			gint top;
 			gint width;
 			gint height;
 			UINT8* bitmap;
 		} nocodec;
-		struct
-		{
+		struct {
 			RemminaPluginRdpUiClipboardType type;
 			GtkTargetList* targetlist;
 			UINT32 format;
@@ -255,8 +231,7 @@ struct remmina_plugin_rdp_ui_object
 	void *retptr;
 };
 
-struct rf_context
-{
+struct rf_context {
 	rdpContext _p;
 
 	RemminaProtocolWidget* protocol_widget;
@@ -330,6 +305,4 @@ BOOL rf_check_fds(RemminaProtocolWidget* gp);
 void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj);
 
 void remmina_rdp_event_event_push(RemminaProtocolWidget* gp, const RemminaPluginRdpEvent* e);
-
-#endif
 

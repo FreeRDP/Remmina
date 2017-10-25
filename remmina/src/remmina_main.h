@@ -36,15 +36,13 @@
 
 #include "remmina_string_array.h"
 
-#ifndef __REMMINAMAIN_H__
-#define __REMMINAMAIN_H__
+#pragma once
 
 #include "remmina_file.h"
 
 typedef struct _RemminaMainPriv RemminaMainPriv;
 
-typedef struct _RemminaMain
-{
+typedef struct _RemminaMain {
 	GtkBuilder *builder;
 	GtkWindow *window;
 	/* Menu widgets */
@@ -92,8 +90,7 @@ typedef struct _RemminaMain
 	RemminaMainPriv *priv;
 } RemminaMain;
 
-struct _RemminaMainPriv
-{
+struct _RemminaMainPriv {
 	GtkTreeModel *file_model;
 	GtkTreeModel *file_model_filter;
 	GtkTreeModel *file_model_sort;
@@ -122,4 +119,3 @@ void remmina_main_show_warning_dialog(const gchar* message);
 
 G_END_DECLS
 
-#endif  /* __REMMINAMAIN_H__  */

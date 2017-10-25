@@ -36,21 +36,18 @@
 
 #include "remmina/types.h"
 
-#ifndef __REMMINAFILE_H__
-#define __REMMINAFILE_H__
+#pragma once
 
 G_BEGIN_DECLS
 
-struct _RemminaFile
-{
+struct _RemminaFile {
 	gchar *filename;
 	GHashTable *settings;
 	GHashTable *spsettings;
 	gboolean prevent_saving;
 };
 
-enum
-{
+enum {
 	SSH_AUTH_PASSWORD, SSH_AUTH_PUBLICKEY, SSH_AUTH_AGENT, SSH_AUTH_AUTO_PUBLICKEY, SSH_AUTH_GSSAPI
 };
 
@@ -96,5 +93,4 @@ void remmina_file_touch(RemminaFile *remminafilefile);
 
 G_END_DECLS
 
-#endif  /* __REMMINAFILE_H__  */
 

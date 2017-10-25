@@ -34,14 +34,12 @@
  *
  */
 
-#ifndef __REMMINASFTPPLUGIN_H__
-#define __REMMINASFTPPLUGIN_H__
+#pragma once
 
 G_BEGIN_DECLS
 
-void remmina_sftp_plugin_register (void);
+void remmina_sftp_plugin_register(void);
 
 G_END_DECLS
 
-#endif /* __REMMINASFTPPLUGIN_H__ */
 

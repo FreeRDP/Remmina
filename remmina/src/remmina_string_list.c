@@ -51,7 +51,7 @@ static RemminaStringList *string_list;
 void remmina_string_list_update_buttons_state(void)
 {
 	gint items_count = gtk_tree_model_iter_n_children(
-	                       GTK_TREE_MODEL(string_list->liststore_items), NULL);
+		GTK_TREE_MODEL(string_list->liststore_items), NULL);
 
 	gtk_widget_set_sensitive(GTK_WIDGET(string_list->button_remove), items_count > 0);
 	gtk_widget_set_sensitive(GTK_WIDGET(string_list->button_up), items_count > 1);
@@ -61,7 +61,7 @@ void remmina_string_list_update_buttons_state(void)
 /* Check the text inserted in the list */
 void remmina_string_list_on_cell_edited(GtkCellRendererText *cell, const gchar *path_string, const gchar *new_text)
 {
-	TRACE_CALL("remmina_string_list_on_cell_edited");
+	TRACE_CALL("__func__");
 	gchar *text;
 	gchar *error;
 	GtkTreePath *path = gtk_tree_path_new_from_string(path_string);
@@ -70,23 +70,16 @@ void remmina_string_list_on_cell_edited(GtkCellRendererText *cell, const gchar *
 	gtk_tree_model_get_iter(GTK_TREE_MODEL(string_list->liststore_items), &iter, path);
 	/* Remove delimitors from the string */
 	text = remmina_public_str_replace(new_text, STRING_DELIMITOR, " ");
-	if (cell == string_list->cellrenderertext_item1)
-	{
+	if (cell == string_list->cellrenderertext_item1) {
 		gtk_list_store_set(string_list->liststore_items, &iter, COLUMN_DESCRIPTION, text, -1);
-	}
-	else
-	{
+	}else  {
 		/* Check for validation only in second field */
-		if (string_list->priv->validation_func)
-		{
-			if (!((*string_list->priv->validation_func)(text, &error)))
-			{
+		if (string_list->priv->validation_func) {
+			if (!((*string_list->priv->validation_func)(text, &error))) {
 				gtk_label_set_text(string_list->label_status, error);
 				gtk_widget_show(GTK_WIDGET(string_list->label_status));
 				g_free(error);
-			}
-			else
-			{
+			}else  {
 				gtk_widget_hide(GTK_WIDGET(string_list->label_status));
 			}
 		}
@@ -99,7 +92,7 @@ void remmina_string_list_on_cell_edited(GtkCellRendererText *cell, const gchar *
 /* Move a TreeIter position */
 static void remmina_string_list_move_iter(GtkTreeIter *from, GtkTreeIter *to)
 {
-	TRACE_CALL("remmina_string_list_move_iter");
+	TRACE_CALL("__func__");
 	GtkTreePath *path;
 
 	gtk_list_store_swap(string_list->liststore_items, from, to);
@@ -111,15 +104,13 @@ static void remmina_string_list_move_iter(GtkTreeIter *from, GtkTreeIter *to)
 /* Move down the selected TreeRow */
 void remmina_string_list_on_action_down(GtkWidget *widget, gpointer user_data)
 {
-	TRACE_CALL("remmina_string_list_on_action_down");
+	TRACE_CALL("__func__");
 	GtkTreeIter iter;
 	GtkTreeIter target_iter;
 
-	if (gtk_tree_selection_get_selected(string_list->treeview_selection, NULL, &iter))
-	{
+	if (gtk_tree_selection_get_selected(string_list->treeview_selection, NULL, &iter)) {
 		gtk_tree_selection_get_selected(string_list->treeview_selection, NULL, &target_iter);
-		if (gtk_tree_model_iter_next(GTK_TREE_MODEL(string_list->liststore_items), &target_iter))
-		{
+		if (gtk_tree_model_iter_next(GTK_TREE_MODEL(string_list->liststore_items), &target_iter)) {
 			remmina_string_list_move_iter(&iter, &target_iter);
 		}
 	}
@@ -128,18 +119,16 @@ void remmina_string_list_on_action_down(GtkWidget *widget, gpointer user_data)
 /* Move up the selected TreeRow */
 void remmina_string_list_on_action_up(GtkWidget *widget, gpointer user_data)
 {
-	TRACE_CALL("remmina_string_list_on_action_up");
+	TRACE_CALL("__func__");
 	GtkTreeIter iter;
 	GtkTreeIter target_iter;
 	GtkTreePath *path;
 
-	if (gtk_tree_selection_get_selected(string_list->treeview_selection, NULL, &iter))
-	{
+	if (gtk_tree_selection_get_selected(string_list->treeview_selection, NULL, &iter)) {
 		gtk_tree_selection_get_selected(string_list->treeview_selection, NULL, &target_iter);
 		path = gtk_tree_model_get_path(GTK_TREE_MODEL(string_list->liststore_items), &target_iter);
 		/* Before moving the TreeRow check if there's a previous item */
-		if (gtk_tree_path_prev(path))
-		{
+		if (gtk_tree_path_prev(path)) {
 			gtk_tree_model_get_iter(GTK_TREE_MODEL(string_list->liststore_items), &target_iter, path);
 			gtk_tree_path_free(path);
 			remmina_string_list_move_iter(&iter, &target_iter);
@@ -150,7 +139,7 @@ void remmina_string_list_on_action_up(GtkWidget *widget, gpointer user_data)
 /* Add a new TreeRow to the list */
 void remmina_string_list_on_action_add(GtkWidget *widget, gpointer user_data)
 {
-	TRACE_CALL("remmina_string_list_on_action_add");
+	TRACE_CALL("__func__");
 	GtkTreeIter iter;
 	GtkTreePath *path;
 
@@ -159,9 +148,9 @@ void remmina_string_list_on_action_add(GtkWidget *widget, gpointer user_data)
 
 	path = gtk_tree_model_get_path(GTK_TREE_MODEL(string_list->liststore_items), &iter);
 	gtk_tree_view_set_cursor_on_cell(string_list->treeview_items, path,
-	                                 string_list->treeviewcolumn_item,
-	                                 GTK_CELL_RENDERER(string_list->priv->two_columns ? string_list->cellrenderertext_item1 : string_list->cellrenderertext_item2),
-	                                 TRUE);
+		string_list->treeviewcolumn_item,
+		GTK_CELL_RENDERER(string_list->priv->two_columns ? string_list->cellrenderertext_item1 : string_list->cellrenderertext_item2),
+		TRUE);
 	gtk_tree_path_free(path);
 	remmina_string_list_update_buttons_state();
 }
@@ -169,11 +158,10 @@ void remmina_string_list_on_action_add(GtkWidget *widget, gpointer user_data)
 /* Remove the selected TreeRow from the list */
 void remmina_string_list_on_action_remove(GtkWidget *widget, gpointer user_data)
 {
-	TRACE_CALL("remmina_string_list_on_action_remove");
+	TRACE_CALL("__func__");
 	GtkTreeIter iter;
 
-	if (gtk_tree_selection_get_selected(string_list->treeview_selection, NULL, &iter))
-	{
+	if (gtk_tree_selection_get_selected(string_list->treeview_selection, NULL, &iter)) {
 		gtk_list_store_remove(string_list->liststore_items, &iter);
 	}
 	gtk_widget_hide(GTK_WIDGET(string_list->label_status));
@@ -183,7 +171,7 @@ void remmina_string_list_on_action_remove(GtkWidget *widget, gpointer user_data)
 /* Load a string list by splitting a string value */
 void remmina_string_list_set_text(const gchar *text, const gboolean clear_data)
 {
-	TRACE_CALL("remmina_string_list_set_text");
+	TRACE_CALL("__func__");
 	GtkTreeIter iter;
 	gchar **items;
 	gchar **values;
@@ -193,24 +181,20 @@ void remmina_string_list_set_text(const gchar *text, const gboolean clear_data)
 		gtk_list_store_clear(string_list->liststore_items);
 	/* Split the string and insert each snippet in the string list */
 	items = g_strsplit(text, STRING_DELIMITOR, -1);
-	for (i = 0; i < g_strv_length(items); i++)
-	{
+	for (i = 0; i < g_strv_length(items); i++) {
 		values = g_strsplit(items[i], string_list->priv->fields_separator, -1);
 		gtk_list_store_append(string_list->liststore_items, &iter);
-		if (g_strv_length(values) > 1)
-		{
+		if (g_strv_length(values) > 1) {
 			/* Two columns data */
 			gtk_list_store_set(string_list->liststore_items, &iter,
-			                   COLUMN_DESCRIPTION, values[0],
-			                   COLUMN_VALUE, values[1],
-			                   -1);
-		}
-		else
-		{
+				COLUMN_DESCRIPTION, values[0],
+				COLUMN_VALUE, values[1],
+				-1);
+		}else  {
 			/* Single column data */
 			gtk_list_store_set(string_list->liststore_items, &iter,
-			                   COLUMN_VALUE, values[0],
-			                   -1);
+				COLUMN_VALUE, values[0],
+				-1);
 		}
 		g_strfreev(values);
 	}
@@ -221,7 +205,7 @@ void remmina_string_list_set_text(const gchar *text, const gboolean clear_data)
 /* Get a string value representing the string list */
 gchar* remmina_string_list_get_text(void)
 {
-	TRACE_CALL("remmina_string_list_get_text");
+	TRACE_CALL("__func__");
 	GString *str;
 	GtkTreeIter iter;
 	gboolean first;
@@ -233,28 +217,22 @@ gchar* remmina_string_list_get_text(void)
 	first = TRUE;
 	/* Cycle each GtkTreeIter in the ListStore */
 	ret = gtk_tree_model_get_iter_first(GTK_TREE_MODEL(string_list->liststore_items), &iter);
-	while (ret)
-	{
+	while (ret) {
 		gtk_tree_model_get(GTK_TREE_MODEL(string_list->liststore_items), &iter,
-		                   COLUMN_DESCRIPTION, &item_description,
-		                   COLUMN_VALUE, &item_value,
-		                   -1);
+			COLUMN_DESCRIPTION, &item_description,
+			COLUMN_VALUE, &item_value,
+			-1);
 		if (!item_description)
 			item_description = "";
-		if (item_value && strlen(item_value) > 0)
-		{
+		if (item_value && strlen(item_value) > 0) {
 			/* Add a delimitor after the first element */
-			if (!first)
-			{
+			if (!first) {
 				g_string_append(str, STRING_DELIMITOR);
-			}
-			else
-			{
+			}else  {
 				first = FALSE;
 			}
 			/* Add the description for two columns list */
-			if (string_list->priv->two_columns)
-			{
+			if (string_list->priv->two_columns) {
 				g_string_append(str, item_description);
 				g_string_append(str, string_list->priv->fields_separator);
 			}
@@ -269,7 +247,7 @@ gchar* remmina_string_list_get_text(void)
 /* Set a function that will be used to validate the new rows */
 void remmina_string_list_set_validation_func(RemminaStringListValidationFunc func)
 {
-	TRACE_CALL("remmina_string_list_set_validation_func");
+	TRACE_CALL("__func__");
 	string_list->priv->validation_func = func;
 }
 
@@ -278,15 +256,12 @@ void remmina_string_list_set_titles(gchar *title1, gchar *title2)
 {
 	/* Set dialog titlebar */
 	gtk_window_set_title(GTK_WINDOW(string_list->dialog),
-	                     (title1 && strlen(title1) > 0) ? title1 : "");
+		(title1 && strlen(title1) > 0) ? title1 : "");
 	/* Set title label */
-	if (title2 && strlen(title2) > 0)
-	{
+	if (title2 && strlen(title2) > 0) {
 		gtk_label_set_text(string_list->label_title, title2);
 		gtk_widget_show(GTK_WIDGET(string_list->label_title));
-	}
-	else
-	{
+	}else  {
 		gtk_widget_hide(GTK_WIDGET(string_list->label_title));
 	}
 }
@@ -294,7 +269,7 @@ void remmina_string_list_set_titles(gchar *title1, gchar *title2)
 /* RemminaStringList initialization */
 static void remmina_string_list_init(void)
 {
-	TRACE_CALL("remmina_string_list_init");
+	TRACE_CALL("__func__");
 	string_list->priv->validation_func = NULL;
 	/* When two columns are requested, show also the first column */
 	if (string_list->priv->two_columns)
@@ -305,7 +280,7 @@ static void remmina_string_list_init(void)
 /* RemminaStringList instance */
 GtkDialog* remmina_string_list_new(gboolean two_columns, const gchar *fields_separator)
 {
-	TRACE_CALL("remmina_string_list_new");
+	TRACE_CALL("__func__");
 	string_list = g_new0(RemminaStringList, 1);
 	string_list->priv = g_new0(RemminaStringListPriv, 1);
 

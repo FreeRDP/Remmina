@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
+ * Copyright (C) 2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,20 +33,17 @@
  *
  */
 
-#ifndef __REMMINAPREFDIALOG_H__
-#define __REMMINAPREFDIALOG_H__
+#pragma once
 
 /*
  * Remmina Preferences Dialog
  */
 
-typedef struct _RemminaPrefDialogPriv
-{
+typedef struct _RemminaPrefDialogPriv {
 	GtkWidget *resolutions_list;
 } RemminaPrefDialogPriv;
 
-typedef struct _RemminaPrefDialog
-{
+typedef struct _RemminaPrefDialog {
 	GtkBuilder *builder;
 	GtkDialog *dialog;
 	GtkNotebook *notebook_preferences;
@@ -127,11 +125,10 @@ typedef struct _RemminaPrefDialog
 	RemminaPrefDialogPriv *priv;
 } RemminaPrefDialog;
 
-enum
-{
-	REMMINA_PREF_OPTIONS_TAB = 0,
-	REMMINA_PREF_APPEARANCE = 1,
-	REMMINA_PREF_APPLET_TAB = 2
+enum {
+	REMMINA_PREF_OPTIONS_TAB	= 0,
+	REMMINA_PREF_APPEARANCE		= 1,
+	REMMINA_PREF_APPLET_TAB		= 2
 };
 
 G_BEGIN_DECLS
@@ -143,4 +140,3 @@ GtkDialog* remmina_pref_dialog_get_dialog(void);
 
 G_END_DECLS
 
-#endif  /* __REMMINAPREFDIALOG_H__  */

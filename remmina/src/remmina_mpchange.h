@@ -36,8 +36,7 @@
 
 #include "remmina/types.h"
 
-#ifndef __REMMINAMPCHANGE_H__
-#define __REMMINAMPCHANGE_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -45,4 +44,3 @@ G_BEGIN_DECLS
 /* Schedule the multipassword change confirmation dialog to be executed ASAP */
 void remmina_mpchange_schedule(gboolean has_domain, const gchar *group, const gchar *domain, const gchar *username, const gchar *password);
 
-#endif

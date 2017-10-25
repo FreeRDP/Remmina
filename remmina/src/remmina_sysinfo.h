@@ -34,8 +34,7 @@
  *
  */
 
-#ifndef __REMMINASYSINFO_H__
-#define __REMMINASYSINFO_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -44,5 +43,4 @@ gchar *remmina_sysinfo_get_gnome_shell_version(void);
 
 G_END_DECLS
 
-#endif  /* __REMMINASYSINFO_H__  */
 

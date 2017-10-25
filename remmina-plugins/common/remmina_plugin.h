@@ -34,8 +34,7 @@
  *
  */
 
-#ifndef __REMMINAPLUGINCOMMON_H__
-#define __REMMINAPLUGINCOMMON_H__
+#pragma once
 
 #include "config.h"
 #include <gtk/gtk.h>
@@ -72,8 +71,8 @@ typedef void (*PThreadCleanupFunc)(void*);
 
 #define IDLE_ADD        gdk_threads_add_idle
 #define TIMEOUT_ADD     gdk_threads_add_timeout
-#define CANCEL_ASYNC    pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS,NULL);pthread_testcancel();
-#define CANCEL_DEFER    pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED,NULL);
+#define CANCEL_ASYNC    pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, NULL); pthread_testcancel();
+#define CANCEL_DEFER    pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED, NULL);
 
 #define THREADS_ENTER _Pragma("GCC error \"THREADS_ENTER has been deprecated in Remmina 1.2\"")
 #define THREADS_LEAVE _Pragma("GCC error \"THREADS_LEAVE has been deprecated in Remmina 1.2\"")
@@ -82,22 +81,21 @@ typedef void (*PThreadCleanupFunc)(void*);
 #define X_UNIX_SOCKET "/tmp/.X11-unix/X%d"
 
 #define INCLUDE_GET_AVAILABLE_XDISPLAY static gint \
-remmina_get_available_xdisplay (void) \
-{ \
-	gint i; \
-	gint display = 0; \
-	gchar fn[200]; \
-	for (i = 1; i < MAX_X_DISPLAY_NUMBER; i++) \
+	remmina_get_available_xdisplay(void) \
 	{ \
-		g_snprintf (fn, sizeof (fn), X_UNIX_SOCKET, i); \
-		if (!g_file_test (fn, G_FILE_TEST_EXISTS)) \
+		gint i; \
+		gint display = 0; \
+		gchar fn[200]; \
+		for (i = 1; i < MAX_X_DISPLAY_NUMBER; i++) \
 		{ \
-			display = i; \
-			break; \
+			g_snprintf(fn, sizeof(fn), X_UNIX_SOCKET, i); \
+			if (!g_file_test(fn, G_FILE_TEST_EXISTS)) \
+			{ \
+				display = i; \
+				break; \
+			} \
 		} \
-	} \
-	return display; \
-}
+		return display; \
+	}
 
-#endif /* __REMMINAPLUGINCOMMON_H__ */
 

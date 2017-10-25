@@ -34,17 +34,15 @@
  *
  */
 
-#ifndef __REMMINAPLUGINNX_H__
-#define __REMMINAPLUGINNX_H__
+#pragma once
 
-#define GET_PLUGIN_DATA(gp) (RemminaPluginNxData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+#define GET_PLUGIN_DATA(gp) (RemminaPluginNxData*)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
 G_BEGIN_DECLS
 
 #include "nx_session.h"
 
-typedef enum
-{
+typedef enum {
 	REMMINA_NX_EVENT_CANCEL,
 	REMMINA_NX_EVENT_START,
 	REMMINA_NX_EVENT_RESTORE,
@@ -52,8 +50,7 @@ typedef enum
 	REMMINA_NX_EVENT_TERMINATE
 } RemminaNXEventType;
 
-typedef struct _RemminaPluginNxData
-{
+typedef struct _RemminaPluginNxData {
 	GtkWidget *socket;
 	gint socket_id;
 
@@ -81,6 +78,4 @@ typedef struct _RemminaPluginNxData
 extern RemminaPluginService *remmina_plugin_nx_service;
 
 G_END_DECLS
-
-#endif
 

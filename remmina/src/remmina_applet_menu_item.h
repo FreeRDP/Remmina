@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2010 Vic Lee
+ * Copyright (C) 2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINAAPPLETMENUITEM_H__
-#define __REMMINAAPPLETMENUITEM_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -44,13 +44,11 @@ G_BEGIN_DECLS
 #define REMMINA_IS_APPLET_MENU_ITEM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), REMMINA_TYPE_APPLET_MENU_ITEM))
 #define REMMINA_APPLET_MENU_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_APPLET_MENU_ITEM, RemminaAppletMenuItemClass))
 
-typedef enum
-{
+typedef enum {
 	REMMINA_APPLET_MENU_ITEM_FILE, REMMINA_APPLET_MENU_ITEM_NEW, REMMINA_APPLET_MENU_ITEM_DISCOVERED
 } RemminaAppletMenuItemType;
 
-typedef struct _RemminaAppletMenuItem
-{
+typedef struct _RemminaAppletMenuItem {
 	GtkImageMenuItem image_menu_item;
 
 	RemminaAppletMenuItemType item_type;
@@ -62,8 +60,7 @@ typedef struct _RemminaAppletMenuItem
 	gboolean ssh_enabled;
 } RemminaAppletMenuItem;
 
-typedef struct _RemminaAppletMenuItemClass
-{
+typedef struct _RemminaAppletMenuItemClass {
 	GtkImageMenuItemClass parent_class;
 } RemminaAppletMenuItemClass;
 
@@ -75,5 +72,4 @@ gint remmina_applet_menu_item_compare(gconstpointer a, gconstpointer b, gpointer
 
 G_END_DECLS
 
-#endif  /* __REMMINAAPPLETMENUITEM_H__  */
 

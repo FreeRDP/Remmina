@@ -58,14 +58,13 @@ static RemminaPrefDialog *remmina_pref_dialog;
 /* Show a key chooser dialog */
 void remmina_pref_dialog_on_key_chooser(GtkWidget *widget, gpointer user_data)
 {
-	TRACE_CALL("remmina_pref_dialog_on_key_chooser");
+	TRACE_CALL("__func__");
 	RemminaKeyChooserArguments *arguments;
 
 	g_return_if_fail(GTK_IS_BUTTON(widget));
 
 	arguments = remmina_key_chooser_new(GTK_WINDOW(remmina_pref_dialog->dialog), FALSE);
-	if (arguments->response != GTK_RESPONSE_CANCEL && arguments->response != GTK_RESPONSE_DELETE_EVENT)
-	{
+	if (arguments->response != GTK_RESPONSE_CANCEL && arguments->response != GTK_RESPONSE_DELETE_EVENT) {
 		gchar *val = remmina_key_chooser_get_value(arguments->keyval, arguments->state);
 		gtk_button_set_label(GTK_BUTTON(widget), val);
 		g_free(val);
@@ -76,7 +75,7 @@ void remmina_pref_dialog_on_key_chooser(GtkWidget *widget, gpointer user_data)
 /* Show the available resolutions list dialog */
 void remmina_pref_on_button_resolutions_clicked(GtkWidget *widget, gpointer user_data)
 {
-	TRACE_CALL("remmina_pref_on_button_resolutions_clicked");
+	TRACE_CALL("__func__");
 	GtkDialog *dialog = remmina_string_list_new(FALSE, NULL);
 	remmina_string_list_set_validation_func(remmina_public_resolution_validation_func);
 	remmina_string_list_set_text(remmina_pref.resolutions, TRUE);
@@ -92,7 +91,7 @@ void remmina_pref_on_button_resolutions_clicked(GtkWidget *widget, gpointer user
  * file is selected*/
 void remmina_pref_on_color_scheme_selected(GtkWidget *widget, gpointer user_data)
 {
-	TRACE_CALL("remmina_pref_on_color_scheme_selected");
+	TRACE_CALL("__func__");
 	gchar *sourcepath;
 	gchar *remmina_dir;
 	gchar *destpath;
@@ -100,35 +99,34 @@ void remmina_pref_on_color_scheme_selected(GtkWidget *widget, gpointer user_data
 	GFile *destination;
 
 	sourcepath = gtk_file_chooser_get_filename(remmina_pref_dialog->filechooserbutton_terminal_color_scheme);
-	source = g_file_new_for_path (sourcepath);
+	source = g_file_new_for_path(sourcepath);
 
-	remmina_dir = g_build_path ( "/", g_get_user_config_dir (), g_get_prgname (), NULL);
+	remmina_dir = g_build_path( "/", g_get_user_config_dir(), g_get_prgname(), NULL);
 	/* /home/foo/.config/remmina */
 	destpath = g_strdup_printf("%s/remmina.colors", remmina_dir);
-	destination = g_file_new_for_path (destpath);
+	destination = g_file_new_for_path(destpath);
 
-	if (g_file_test (sourcepath, G_FILE_TEST_IS_REGULAR))
-	{
-		g_file_copy (   source,
-				destination,
-				G_FILE_COPY_OVERWRITE,
-				NULL,
-				NULL,
-				NULL,
-				NULL);
+	if (g_file_test(sourcepath, G_FILE_TEST_IS_REGULAR)) {
+		g_file_copy(   source,
+			destination,
+			G_FILE_COPY_OVERWRITE,
+			NULL,
+			NULL,
+			NULL,
+			NULL);
 		/* Here we should reinitialize the widget */
 	}
 }
 
 void remmina_pref_dialog_clear_recent(GtkWidget *widget, gpointer user_data)
 {
-	TRACE_CALL("remmina_pref_dialog_clear_recent");
+	TRACE_CALL("__func__");
 	GtkDialog *dialog;
 
 	remmina_pref_clear_recent();
 	dialog = GTK_DIALOG(gtk_message_dialog_new(GTK_WINDOW(remmina_pref_dialog->dialog),
-	                    GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_OK,
-	                    _("Recent lists cleared.")));
+			GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_OK,
+			_("Recent lists cleared.")));
 	gtk_dialog_run(dialog);
 	gtk_widget_destroy(GTK_WIDGET(dialog));
 }
@@ -136,7 +134,7 @@ void remmina_pref_dialog_clear_recent(GtkWidget *widget, gpointer user_data)
 /* Configure custom keystrokes to send to the plugins */
 void remmina_pref_on_button_keystrokes_clicked(GtkWidget *widget, gpointer user_data)
 {
-	TRACE_CALL("remmina_pref_on_button_keystrokes_clicked");
+	TRACE_CALL("__func__");
 	GtkDialog *dialog = remmina_string_list_new(TRUE, STRING_DELIMITOR2);
 	remmina_string_list_set_text(remmina_pref.keystrokes, TRUE);
 	remmina_string_list_set_titles(_("Keystrokes"), _("Configure the keystrokes"));
@@ -149,13 +147,13 @@ void remmina_pref_on_button_keystrokes_clicked(GtkWidget *widget, gpointer user_
 
 void remmina_pref_dialog_on_close_clicked(GtkWidget *widget, RemminaPrefDialog *dialog)
 {
-	TRACE_CALL("remmina_pref_dialog_on_close_clicked");
+	TRACE_CALL("__func__");
 	gtk_widget_destroy(GTK_WIDGET(remmina_pref_dialog->dialog));
 }
 
 void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 {
-	TRACE_CALL("remmina_pref_on_dialog_destroy");
+	TRACE_CALL("__func__");
 	gboolean b;
 	GdkRGBA color;
 
@@ -193,17 +191,13 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.dark_tray_icon = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_light_tray));
 
 	b = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_disable_tray));
-	if (remmina_pref.disable_tray_icon != b)
-	{
+	if (remmina_pref.disable_tray_icon != b) {
 		remmina_pref.disable_tray_icon = b;
 		remmina_icon_init();
 	}
-	if (b)
-	{
+	if (b) {
 		b = FALSE;
-	}
-	else
-	{
+	}else  {
 		b = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_start_in_tray));
 	}
 	remmina_icon_set_autostart(b);
@@ -222,12 +216,9 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.shortcutkey_toolbar = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_toolbar));
 
 	g_free(remmina_pref.vte_font);
-	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_font_system)))
-	{
+	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_font_system))) {
 		remmina_pref.vte_font = NULL;
-	}
-	else
-	{
+	}else  {
 		remmina_pref.vte_font = g_strdup(gtk_font_button_get_font_name(remmina_pref_dialog->fontbutton_terminal_font));
 	}
 	remmina_pref.vte_allow_bold_text = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_bold));
@@ -283,12 +274,12 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 
 static gboolean remmina_pref_dialog_add_pref_plugin(gchar *name, RemminaPlugin *plugin, gpointer user_data)
 {
-	TRACE_CALL("remmina_pref_dialog_add_pref_plugin");
+	TRACE_CALL("__func__");
 	RemminaPrefPlugin *pref_plugin;
 	GtkWidget *vbox;
 	GtkWidget *widget;
 
-	pref_plugin = (RemminaPrefPlugin *) plugin;
+	pref_plugin = (RemminaPrefPlugin*)plugin;
 
 	widget = gtk_label_new(pref_plugin->pref_label);
 	gtk_widget_show(widget);
@@ -305,23 +296,13 @@ static gboolean remmina_pref_dialog_add_pref_plugin(gchar *name, RemminaPlugin *
 
 void remmina_pref_dialog_vte_font_on_toggled(GtkWidget *widget, RemminaPrefDialog *dialog)
 {
-	TRACE_CALL("remmina_pref_dialog_vte_font_on_toggled");
+	TRACE_CALL("__func__");
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->fontbutton_terminal_font), !gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)));
-}
-
-static void remmina_pref_dialog_vte_color_on_toggled(GtkWidget *widget, RemminaPrefDialog *dialog)
-{
-	TRACE_CALL("remmina_pref_dialog_vte_color_on_toggled");
-	gboolean status = !gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget));
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->label_terminal_foreground), status);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_foreground), status);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->label_terminal_background), status);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_background), status);
 }
 
 void remmina_pref_dialog_disable_tray_icon_on_toggled(GtkWidget *widget, RemminaPrefDialog *dialog)
 {
-	TRACE_CALL("remmina_pref_dialog_disable_tray_icon_on_toggled");
+	TRACE_CALL("__func__");
 	gboolean b;
 
 	b = !gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
@@ -342,7 +323,7 @@ static void remmina_pref_dialog_set_button_label(GtkButton *button, guint keyval
 /* Remmina preferences initialization */
 static void remmina_pref_dialog_init(void)
 {
-	TRACE_CALL("remmina_pref_dialog_init");
+	TRACE_CALL("__func__");
 	gchar buf[100];
 	GdkRGBA color;
 
@@ -393,16 +374,12 @@ static void remmina_pref_dialog_init(void)
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_disconnect, remmina_pref.shortcutkey_disconnect);
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_toolbar, remmina_pref.shortcutkey_toolbar);
 
-	if (!(remmina_pref.vte_font && remmina_pref.vte_font[0]))
-	{
+	if (!(remmina_pref.vte_font && remmina_pref.vte_font[0])) {
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_font_system), TRUE);
 	}
-	if (remmina_pref.vte_font && remmina_pref.vte_font[0])
-	{
+	if (remmina_pref.vte_font && remmina_pref.vte_font[0]) {
 		gtk_font_button_set_font_name(remmina_pref_dialog->fontbutton_terminal_font, remmina_pref.vte_font);
-	}
-	else
-	{
+	}else  {
 		gtk_font_button_set_font_name(remmina_pref_dialog->fontbutton_terminal_font, "Monospace 12");
 		gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->fontbutton_terminal_font), FALSE);
 	}
@@ -451,25 +428,25 @@ static void remmina_pref_dialog_init(void)
 	gdk_rgba_parse(&color, remmina_pref.color15);
 	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_color15), &color);
 #if defined (HAVE_LIBSSH) && defined (HAVE_LIBVTE)
-#if !VTE_CHECK_VERSION(0,38,0)
+#if !VTE_CHECK_VERSION(0, 38, 0)
 	/* Disable color scheme buttons if old version of VTE */
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_cursor), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color0), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color1), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color2), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color3), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color4), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color5), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color6), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color7), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color8), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color9), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color10), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color11), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color12), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color13), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color14), FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET(remmina_pref_dialog->colorbutton_color15), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_cursor), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color0), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color1), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color2), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color3), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color4), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color5), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color6), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color7), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color8), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color9), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color10), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color11), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color12), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color13), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color14), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->colorbutton_color15), FALSE);
 #endif
 #endif
 
@@ -484,7 +461,7 @@ static void remmina_pref_dialog_init(void)
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_appearance_show_menu_icons, remmina_pref.show_menu_icons);
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_options_scale_quality, remmina_pref.scale_quality);
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_options_ssh_loglevel, remmina_pref.ssh_loglevel);
-	if (remmina_pref.screenshot_path != NULL){
+	if (remmina_pref.screenshot_path != NULL) {
 		gtk_file_chooser_set_filename(remmina_pref_dialog->filechooserbutton_options_screenshots_path, remmina_pref.screenshot_path);
 	}else{
 		gtk_file_chooser_set_filename(remmina_pref_dialog->filechooserbutton_options_screenshots_path, g_get_home_dir());
@@ -504,7 +481,7 @@ static void remmina_pref_dialog_init(void)
 /* RemminaPrefDialog instance */
 GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 {
-	TRACE_CALL("remmina_pref_dialog_new");
+	TRACE_CALL("__func__");
 
 	remmina_pref_dialog = g_new0(RemminaPrefDialog, 1);
 	remmina_pref_dialog->priv = g_new0(RemminaPrefDialogPriv, 1);
@@ -587,7 +564,7 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->colorbutton_color14 = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_color14"));
 	remmina_pref_dialog->colorbutton_color15 = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_color15"));
 #if defined (HAVE_LIBSSH) && defined (HAVE_LIBVTE)
-#if VTE_CHECK_VERSION(0,38,0)
+#if VTE_CHECK_VERSION(0, 38, 0)
 	remmina_pref_dialog->filechooserbutton_terminal_color_scheme = GTK_FILE_CHOOSER(GET_OBJECT("filechooserbutton_terminal_color_scheme"));
 #endif
 #endif

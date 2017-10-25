@@ -43,19 +43,19 @@ static GPtrArray *remmina_widget_pool = NULL;
 
 void remmina_widget_pool_init(void)
 {
-	TRACE_CALL("remmina_widget_pool_init");
+	TRACE_CALL("__func__");
 	remmina_widget_pool = g_ptr_array_new();
 }
 
 static void remmina_widget_pool_on_widget_destroy(GtkWidget *widget, gpointer data)
 {
-	TRACE_CALL("remmina_widget_pool_on_widget_destroy");
+	TRACE_CALL("__func__");
 	g_ptr_array_remove(remmina_widget_pool, widget);
 }
 
 void remmina_widget_pool_register(GtkWidget *widget)
 {
-	TRACE_CALL("remmina_widget_pool_register");
+	TRACE_CALL("__func__");
 	g_ptr_array_add(remmina_widget_pool, widget);
 	g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_widget_pool_on_widget_destroy), NULL);
 }
@@ -63,19 +63,18 @@ void remmina_widget_pool_register(GtkWidget *widget)
 GtkWidget*
 remmina_widget_pool_find(GType type, const gchar *tag)
 {
-	TRACE_CALL("remmina_widget_pool_find");
+	TRACE_CALL("__func__");
 	GtkWidget *widget;
 	gint i;
 
 	if (remmina_widget_pool == NULL)
 		return NULL;
 
-	for (i = 0; i < remmina_widget_pool->len; i++)
-	{
+	for (i = 0; i < remmina_widget_pool->len; i++) {
 		widget = GTK_WIDGET(g_ptr_array_index(remmina_widget_pool, i));
 		if (!G_TYPE_CHECK_INSTANCE_TYPE(widget, type))
 			continue;
-		if (tag && g_strcmp0((const gchar*) g_object_get_data(G_OBJECT(widget), "tag"), tag) != 0)
+		if (tag && g_strcmp0((const gchar*)g_object_get_data(G_OBJECT(widget), "tag"), tag) != 0)
 			continue;
 		return widget;
 	}
@@ -85,7 +84,7 @@ remmina_widget_pool_find(GType type, const gchar *tag)
 GtkWidget*
 remmina_widget_pool_find_by_window(GType type, GdkWindow *window)
 {
-	TRACE_CALL("remmina_widget_pool_find_by_window");
+	TRACE_CALL("__func__");
 	GtkWidget *widget;
 	gint i;
 	GdkWindow *parent;
@@ -93,14 +92,12 @@ remmina_widget_pool_find_by_window(GType type, GdkWindow *window)
 	if (window == NULL || remmina_widget_pool == NULL)
 		return NULL;
 
-	for (i = 0; i < remmina_widget_pool->len; i++)
-	{
+	for (i = 0; i < remmina_widget_pool->len; i++) {
 		widget = GTK_WIDGET(g_ptr_array_index(remmina_widget_pool, i));
 		if (!G_TYPE_CHECK_INSTANCE_TYPE(widget, type))
 			continue;
 		/* gdk_window_get_toplevel won't work here, if the window is an embedded client. So we iterate the window tree */
-		for (parent = window; parent && parent != GDK_WINDOW_ROOT; parent = gdk_window_get_parent(parent))
-		{
+		for (parent = window; parent && parent != GDK_WINDOW_ROOT; parent = gdk_window_get_parent(parent)) {
 			if (gtk_widget_get_window(widget) == parent)
 				return widget;
 		}
@@ -110,7 +107,7 @@ remmina_widget_pool_find_by_window(GType type, GdkWindow *window)
 
 gint remmina_widget_pool_foreach(RemminaWidgetPoolForEachFunc callback, gpointer data)
 {
-	TRACE_CALL("remmina_widget_pool_foreach");
+	TRACE_CALL("__func__");
 	GtkWidget *widget;
 	gint i;
 	gint n = 0;
@@ -128,8 +125,7 @@ gint remmina_widget_pool_foreach(RemminaWidgetPoolForEachFunc callback, gpointer
 		g_ptr_array_add(wpcpy, g_ptr_array_index(remmina_widget_pool, i));
 
 	/* Scan the remmina_widget_pool and call callbac() on every element */
-	for (i = 0; i < wpcpy->len; i++)
-	{
+	for (i = 0; i < wpcpy->len; i++) {
 		widget = GTK_WIDGET(g_ptr_array_index(wpcpy, i));
 		if (callback(widget, data))
 			n++;
@@ -142,7 +138,7 @@ gint remmina_widget_pool_foreach(RemminaWidgetPoolForEachFunc callback, gpointer
 
 gint remmina_widget_pool_count()
 {
-	TRACE_CALL("remmina_widget_pool_count");
+	TRACE_CALL("__func__");
 	return remmina_widget_pool->len;
 }
 

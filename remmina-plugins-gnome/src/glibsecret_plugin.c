@@ -44,10 +44,11 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 
 static SecretSchema remmina_file_secret_schema =
 { "org.remmina.Password", SECRET_SCHEMA_NONE,
-{
-{ "filename", SECRET_SCHEMA_ATTRIBUTE_STRING },
-{ "key", SECRET_SCHEMA_ATTRIBUTE_STRING },
-{ NULL, 0 } } };
+  {
+	  { "filename",	  SECRET_SCHEMA_ATTRIBUTE_STRING },
+	  { "key",	  SECRET_SCHEMA_ATTRIBUTE_STRING },
+	  { NULL,	  0 }
+  } };
 
 
 #ifdef LIBSECRET_VERSION_0_18
@@ -57,7 +58,7 @@ static SecretCollection* defaultcollection;
 
 static void  remmina_plugin_glibsecret_unlock_secret_service()
 {
-	TRACE_CALL("remmina_plugin_glibsecret_unlock_secret_service");
+	TRACE_CALL("__func__");
 
 #ifdef LIBSECRET_VERSION_0_18
 
@@ -65,10 +66,8 @@ static void  remmina_plugin_glibsecret_unlock_secret_service()
 	GList *objects, *ul;
 	gchar* lbl;
 
-	if (secretservice && defaultcollection)
-	{
-		if (secret_collection_get_locked(defaultcollection))
-		{
+	if (secretservice && defaultcollection) {
+		if (secret_collection_get_locked(defaultcollection)) {
 			lbl = secret_collection_get_label(defaultcollection);
 			remmina_plugin_service->log_printf("[glibsecret] requesting unlock of the default '%s' collection\n", lbl);
 			objects = g_list_append(NULL, defaultcollection);
@@ -83,7 +82,7 @@ static void  remmina_plugin_glibsecret_unlock_secret_service()
 
 void remmina_plugin_glibsecret_store_password(RemminaFile *remminafile, const gchar *key, const gchar *password)
 {
-	TRACE_CALL("remmina_plugin_glibsecret_store_password");
+	TRACE_CALL("__func__");
 	GError *r = NULL;
 	const gchar *path;
 	gchar *s;
@@ -93,23 +92,20 @@ void remmina_plugin_glibsecret_store_password(RemminaFile *remminafile, const gc
 	path = remmina_plugin_service->file_get_path(remminafile);
 	s = g_strdup_printf("Remmina: %s - %s", remmina_plugin_service->file_get_string(remminafile, "name"), key);
 	secret_password_store_sync(&remmina_file_secret_schema, SECRET_COLLECTION_DEFAULT, s, password,
-			NULL, &r, "filename", path, "key", key, NULL);
+		NULL, &r, "filename", path, "key", key, NULL);
 	g_free(s);
-	if (r == NULL)
-	{
+	if (r == NULL) {
 		remmina_plugin_service->log_printf("[glibsecret] password saved for file %s\n", path);
-	}
-	else
-	{
+	}else  {
 		remmina_plugin_service->log_printf("[glibsecret] password cannot be saved for file %s\n", path);
-		g_error_free (r);
+		g_error_free(r);
 	}
 }
 
 gchar*
 remmina_plugin_glibsecret_get_password(RemminaFile *remminafile, const gchar *key)
 {
-	TRACE_CALL("remmina_plugin_glibsecret_get_password");
+	TRACE_CALL("__func__");
 	GError *r = NULL;
 	const gchar *path;
 	gchar *password;
@@ -119,15 +115,12 @@ remmina_plugin_glibsecret_get_password(RemminaFile *remminafile, const gchar *ke
 
 	path = remmina_plugin_service->file_get_path(remminafile);
 	password = secret_password_lookup_sync(&remmina_file_secret_schema, NULL, &r, "filename", path, "key", key, NULL);
-	if (r == NULL)
-	{
+	if (r == NULL) {
 		remmina_plugin_service->log_printf("[glibsecret] found password for file %s\n", path);
 		p = g_strdup(password);
 		secret_password_free(password);
 		return p;
-	}
-	else
-	{
+	}else  {
 		remmina_plugin_service->log_printf("[glibsecret] password cannot be found for file %s\n", path);
 		return NULL;
 	}
@@ -135,7 +128,7 @@ remmina_plugin_glibsecret_get_password(RemminaFile *remminafile, const gchar *ke
 
 void remmina_plugin_glibsecret_delete_password(RemminaFile *remminafile, const gchar *key)
 {
-	TRACE_CALL("remmina_plugin_glibsecret_delete_password");
+	TRACE_CALL("__func__");
 	GError *r = NULL;
 	const gchar *path;
 
@@ -143,30 +136,26 @@ void remmina_plugin_glibsecret_delete_password(RemminaFile *remminafile, const g
 
 	path = remmina_plugin_service->file_get_path(remminafile);
 	secret_password_clear_sync(&remmina_file_secret_schema, NULL, &r, "filename", path, "key", key, NULL);
-	if (r == NULL)
-	{
+	if (r == NULL) {
 		remmina_plugin_service->log_printf("[glibsecret] password deleted for file %s\n", path);
-	}
-	else
-	{
+	}else  {
 		remmina_plugin_service->log_printf("[glibsecret] password cannot be deleted for file %s\n", path);
 	}
 }
 
 static RemminaSecretPlugin remmina_plugin_glibsecret =
-{ REMMINA_PLUGIN_TYPE_SECRET, "glibsecret", "GNOME libsecret", NULL, VERSION,
+{ REMMINA_PLUGIN_TYPE_SECRET, "glibsecret",				"GNOME libsecret",			NULL, VERSION,
 
-TRUE, remmina_plugin_glibsecret_store_password, remmina_plugin_glibsecret_get_password, remmina_plugin_glibsecret_delete_password };
+  TRUE,			      remmina_plugin_glibsecret_store_password, remmina_plugin_glibsecret_get_password, remmina_plugin_glibsecret_delete_password };
 
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
-	TRACE_CALL("remmina_plugin_entry");
+	TRACE_CALL("__func__");
 
 	remmina_plugin_service = service;
 
-	if (!service->register_plugin((RemminaPlugin *) &remmina_plugin_glibsecret))
-	{
+	if (!service->register_plugin((RemminaPlugin*)&remmina_plugin_glibsecret)) {
 		return FALSE;
 	}
 

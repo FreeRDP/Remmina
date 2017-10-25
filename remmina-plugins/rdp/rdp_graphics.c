@@ -51,34 +51,30 @@
 
 BOOL rf_Bitmap_New(rdpContext* context, rdpBitmap* bitmap)
 {
-	TRACE_CALL("rf_Bitmap_New");
+	TRACE_CALL("__func__");
 #ifdef RF_BITMAP
 	UINT8* data;
 	Pixmap pixmap;
 	XImage* image;
-	rfContext* rfi = (rfContext*) context;
+	rfContext* rfi = (rfContext*)context;
 
 	XSetFunction(rfi->display, rfi->gc, GXcopy);
 	pixmap = XCreatePixmap(rfi->display, rfi->drawable, bitmap->width, bitmap->height, rfi->depth);
 
-	if (bitmap->data != NULL)
-	{
+	if (bitmap->data != NULL) {
 		data = freerdp_image_convert(bitmap->data, NULL,
-				bitmap->width, bitmap->height, rfi->srcBpp, rfi->bpp, rfi->clrconv);
+			bitmap->width, bitmap->height, rfi->srcBpp, rfi->bpp, rfi->clrconv);
 
-		if (bitmap->ephemeral != TRUE)
-		{
+		if (bitmap->ephemeral != TRUE) {
 			image = XCreateImage(rfi->display, rfi->visual, rfi->depth,
-				ZPixmap, 0, (char*) data, bitmap->width, bitmap->height, rfi->scanline_pad, 0);
+				ZPixmap, 0, (char*)data, bitmap->width, bitmap->height, rfi->scanline_pad, 0);
 
 			XPutImage(rfi->display, pixmap, rfi->gc, image, 0, 0, 0, 0, bitmap->width, bitmap->height);
 			XFree(image);
 
 			if (data != bitmap->data) && (data != NULL)
 				free(data);
-		}
-		else
-		{
+		}else  {
 			if (data != bitmap->data) && (data != NULL)
 				free(bitmap->data);
 
@@ -86,31 +82,31 @@ BOOL rf_Bitmap_New(rdpContext* context, rdpBitmap* bitmap)
 		}
 	}
 
-	((rfBitmap*) bitmap)->pixmap = pixmap;
+	((rfBitmap*)bitmap)->pixmap = pixmap;
 #endif
 	return TRUE;
 }
 
 void rf_Bitmap_Free(rdpContext* context, rdpBitmap* bitmap)
 {
-	TRACE_CALL("rf_Bitmap_Free");
+	TRACE_CALL("__func__");
 #ifdef RF_BITMAP
-	rfContext* rfi = (rfContext*) context;
+	rfContext* rfi = (rfContext*)context;
 
 	printf("rf_Bitmap_Free\n");
 
-	if (((rfBitmap*) bitmap)->pixmap != 0)
-		XFreePixmap(rfi->display, ((rfBitmap*) bitmap)->pixmap);
+	if (((rfBitmap*)bitmap)->pixmap != 0)
+		XFreePixmap(rfi->display, ((rfBitmap*)bitmap)->pixmap);
 #endif
 }
 
 BOOL rf_Bitmap_Paint(rdpContext* context, rdpBitmap* bitmap)
 {
-	TRACE_CALL("rf_Bitmap_Paint");
+	TRACE_CALL("__func__");
 #ifdef RF_BITMAP
 	XImage* image;
 	int width, height;
-	rfContext* rfi = (rfContext*) context;
+	rfContext* rfi = (rfContext*)context;
 
 	printf("rf_Bitmap_Paint\n");
 
@@ -120,10 +116,10 @@ BOOL rf_Bitmap_Paint(rdpContext* context, rdpBitmap* bitmap)
 	XSetFunction(rfi->display, rfi->gc, GXcopy);
 
 	image = XCreateImage(rfi->display, rfi->visual, rfi->depth,
-			ZPixmap, 0, (char*) bitmap->data, bitmap->width, bitmap->height, rfi->scanline_pad, 0);
+		ZPixmap, 0, (char*)bitmap->data, bitmap->width, bitmap->height, rfi->scanline_pad, 0);
 
 	XPutImage(rfi->display, rfi->primary, rfi->gc,
-			image, 0, 0, bitmap->left, bitmap->top, width, height);
+		image, 0, 0, bitmap->left, bitmap->top, width, height);
 
 	XFree(image);
 
@@ -136,9 +132,9 @@ BOOL rf_Bitmap_Paint(rdpContext* context, rdpBitmap* bitmap)
 }
 
 BOOL rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
-	const BYTE* data, UINT32 width, UINT32 height, UINT32 bpp, UINT32 length, BOOL compressed, UINT32 codec_id)
+			  const BYTE* data, UINT32 width, UINT32 height, UINT32 bpp, UINT32 length, BOOL compressed, UINT32 codec_id)
 {
-	TRACE_CALL("rf_Bitmap_Decompress");
+	TRACE_CALL("__func__");
 #ifdef RF_BITMAP
 	UINT16 size;
 
@@ -147,23 +143,19 @@ BOOL rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
 	size = width * height * (bpp + 7) / 8;
 
 	if (bitmap->data == NULL)
-		bitmap->data = (UINT8*) xmalloc(size);
+		bitmap->data = (UINT8*)xmalloc(size);
 	else
-		bitmap->data = (UINT8*) xrealloc(bitmap->data, size);
+		bitmap->data = (UINT8*)xrealloc(bitmap->data, size);
 
-	if (compressed)
-	{
+	if (compressed) {
 		BOOL status;
 
 		status = bitmap_decompress(data, bitmap->data, width, height, length, bpp, bpp);
 
-		if (status != TRUE)
-		{
+		if (status != TRUE) {
 			printf("Bitmap Decompression Failed\n");
 		}
-	}
-	else
-	{
+	}else  {
 		freerdp_image_flip(data, bitmap->data, width, height, bpp);
 	}
 
@@ -176,14 +168,14 @@ BOOL rf_Bitmap_Decompress(rdpContext* context, rdpBitmap* bitmap,
 
 BOOL rf_Bitmap_SetSurface(rdpContext* context, rdpBitmap* bitmap, BOOL primary)
 {
-	TRACE_CALL("rf_Bitmap_SetSurface");
+	TRACE_CALL("__func__");
 #ifdef RF_BITMAP
-	rfContext* rfi = (rfContext*) context;
+	rfContext* rfi = (rfContext*)context;
 
 	if (primary)
 		rfi->drawing = rfi->primary;
 	else
-		rfi->drawing = ((rfBitmap*) bitmap)->pixmap;
+		rfi->drawing = ((rfBitmap*)bitmap)->pixmap;
 #endif
 	return TRUE;
 }
@@ -192,16 +184,15 @@ BOOL rf_Bitmap_SetSurface(rdpContext* context, rdpBitmap* bitmap, BOOL primary)
 
 BOOL rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 {
-	TRACE_CALL("rf_Pointer_New");
+	TRACE_CALL("__func__");
 	RemminaPluginRdpUiObject* ui;
-	rfContext* rfi = (rfContext*) context;
+	rfContext* rfi = (rfContext*)context;
 
-	if ((pointer->andMaskData != 0) && (pointer->xorMaskData != 0))
-	{
+	if ((pointer->andMaskData != 0) && (pointer->xorMaskData != 0)) {
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_CURSOR;
 		ui->cursor.context = context;
-		ui->cursor.pointer = (rfPointer*) pointer;
+		ui->cursor.pointer = (rfPointer*)pointer;
 		ui->cursor.type = REMMINA_RDP_POINTER_NEW;
 		return remmina_rdp_event_queue_ui_sync_retint(rfi->protocol_widget, ui) ? TRUE : FALSE;
 	}
@@ -210,20 +201,20 @@ BOOL rf_Pointer_New(rdpContext* context, rdpPointer* pointer)
 
 void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 {
-	TRACE_CALL("rf_Pointer_Free");
+	TRACE_CALL("__func__");
 	RemminaPluginRdpUiObject* ui;
-	rfContext* rfi = (rfContext*) context;
+	rfContext* rfi = (rfContext*)context;
 
 #if GTK_VERSION == 2
-	if (((rfPointer*) pointer)->cursor != NULL)
+	if (((rfPointer*)pointer)->cursor != NULL)
 #else
-	if (G_IS_OBJECT(((rfPointer*) pointer)->cursor))
+	if (G_IS_OBJECT(((rfPointer*)pointer)->cursor))
 #endif
 	{
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_CURSOR;
 		ui->cursor.context = context;
-		ui->cursor.pointer = (rfPointer*) pointer;
+		ui->cursor.pointer = (rfPointer*)pointer;
 		ui->cursor.type = REMMINA_RDP_POINTER_FREE;
 		remmina_rdp_event_queue_ui_sync_retint(rfi->protocol_widget, ui);
 	}
@@ -231,13 +222,13 @@ void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 
 BOOL rf_Pointer_Set(rdpContext* context, const rdpPointer* pointer)
 {
-	TRACE_CALL("rf_Pointer_Set");
+	TRACE_CALL("__func__");
 	RemminaPluginRdpUiObject* ui;
-	rfContext* rfi = (rfContext*) context;
+	rfContext* rfi = (rfContext*)context;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CURSOR;
-	ui->cursor.pointer = (rfPointer*) pointer;
+	ui->cursor.pointer = (rfPointer*)pointer;
 	ui->cursor.type = REMMINA_RDP_POINTER_SET;
 
 	return remmina_rdp_event_queue_ui_sync_retint(rfi->protocol_widget, ui) ? TRUE : FALSE;
@@ -246,9 +237,9 @@ BOOL rf_Pointer_Set(rdpContext* context, const rdpPointer* pointer)
 
 BOOL rf_Pointer_SetNull(rdpContext* context)
 {
-	TRACE_CALL("rf_Pointer_SetNull");
+	TRACE_CALL("__func__");
 	RemminaPluginRdpUiObject* ui;
-	rfContext* rfi = (rfContext*) context;
+	rfContext* rfi = (rfContext*)context;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CURSOR;
@@ -259,9 +250,9 @@ BOOL rf_Pointer_SetNull(rdpContext* context)
 
 BOOL rf_Pointer_SetDefault(rdpContext* context)
 {
-	TRACE_CALL("rf_Pointer_SetDefault");
+	TRACE_CALL("__func__");
 	RemminaPluginRdpUiObject* ui;
-	rfContext* rfi = (rfContext*) context;
+	rfContext* rfi = (rfContext*)context;
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CURSOR;
@@ -272,9 +263,9 @@ BOOL rf_Pointer_SetDefault(rdpContext* context)
 
 BOOL rf_Pointer_SetPosition(rdpContext* context, UINT32 x, UINT32 y)
 {
-	TRACE_CALL("rf_Pointer_SePosition");
+	TRACE_CALL("__func__");
 	RemminaPluginRdpUiObject* ui;
-	rfContext* rfi = (rfContext*) context;
+	rfContext* rfi = (rfContext*)context;
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_CURSOR;
 	ui->cursor.type = REMMINA_RDP_POINTER_SETPOS;
@@ -288,22 +279,22 @@ BOOL rf_Pointer_SetPosition(rdpContext* context, UINT32 x, UINT32 y)
 
 BOOL rf_Glyph_New(rdpContext* context, const rdpGlyph* glyph)
 {
-	TRACE_CALL("rf_Glyph_New");
+	TRACE_CALL("__func__");
 #ifdef RF_GLYPH
 	int scanline;
 	XImage* image;
 	rfContext* rfi;
 	rfGlyph* rf_glyph;
 
-	rf_glyph = (rfGlyph*) glyph;
-	rfi = (rfContext*) context;
+	rf_glyph = (rfGlyph*)glyph;
+	rfi = (rfContext*)context;
 
 	scanline = (glyph->cx + 7) / 8;
 
 	rf_glyph->pixmap = XCreatePixmap(rfi->display, rfi->drawing, glyph->cx, glyph->cy, 1);
 
 	image = XCreateImage(rfi->display, rfi->visual, 1,
-			ZPixmap, 0, (char*) glyph->aj, glyph->cx, glyph->cy, 8, scanline);
+		ZPixmap, 0, (char*)glyph->aj, glyph->cx, glyph->cy, 8, scanline);
 
 	image->byte_order = MSBFirst;
 	image->bitmap_bit_order = MSBFirst;
@@ -317,25 +308,25 @@ BOOL rf_Glyph_New(rdpContext* context, const rdpGlyph* glyph)
 
 void rf_Glyph_Free(rdpContext* context, rdpGlyph* glyph)
 {
-	TRACE_CALL("rf_Glyph_Free");
+	TRACE_CALL("__func__");
 #ifdef RF_GLYPH
-	rfContext* rfi = (rfContext*) context;
+	rfContext* rfi = (rfContext*)context;
 
-	if (((rfGlyph*) glyph)->pixmap != 0)
-		XFreePixmap(rfi->display, ((rfGlyph*) glyph)->pixmap);
+	if (((rfGlyph*)glyph)->pixmap != 0)
+		XFreePixmap(rfi->display, ((rfGlyph*)glyph)->pixmap);
 #endif
 }
 
 static BOOL rf_Glyph_Draw(rdpContext* context, const rdpGlyph* glyph, UINT32 x,
-		UINT32 y, UINT32 w, UINT32 h, UINT32 sx, UINT32 sy,
-		BOOL fOpRedundant)
+			  UINT32 y, UINT32 w, UINT32 h, UINT32 sx, UINT32 sy,
+			  BOOL fOpRedundant)
 {
-	TRACE_CALL("rf_Glyph_Draw");
+	TRACE_CALL("__func__");
 #ifdef RF_GLYPH
 	rfGlyph* rf_glyph;
-	rfContext* rfi = (rfContext*) context;
+	rfContext* rfi = (rfContext*)context;
 
-	rf_glyph = (rfGlyph*) glyph;
+	rf_glyph = (rfGlyph*)glyph;
 
 	XSetStipple(rfi->display, rfi->gc, rf_glyph->pixmap);
 	XSetTSOrigin(rfi->display, rfi->gc, x, y);
@@ -346,20 +337,20 @@ static BOOL rf_Glyph_Draw(rdpContext* context, const rdpGlyph* glyph, UINT32 x,
 }
 
 static BOOL rf_Glyph_BeginDraw(rdpContext* context, UINT32 x, UINT32 y,
-                               UINT32 width, UINT32 height, UINT32 bgcolor,
-                               UINT32 fgcolor, BOOL fOpRedundant)
+			       UINT32 width, UINT32 height, UINT32 bgcolor,
+			       UINT32 fgcolor, BOOL fOpRedundant)
 {
-	TRACE_CALL("rf_Glyph_BeginDraw");
+	TRACE_CALL("__func__");
 #ifdef RF_GLYPH
-	rfContext* rfi = (rfContext*) context;
+	rfContext* rfi = (rfContext*)context;
 
-	bgcolor = (rfi->clrconv->invert)?
-		freerdp_color_convert_var_bgr(bgcolor, rfi->srcBpp, 32, rfi->clrconv):
-		freerdp_color_convert_var_rgb(bgcolor, rfi->srcBpp, 32, rfi->clrconv);
+	bgcolor = (rfi->clrconv->invert) ?
+		  freerdp_color_convert_var_bgr(bgcolor, rfi->srcBpp, 32, rfi->clrconv) :
+		  freerdp_color_convert_var_rgb(bgcolor, rfi->srcBpp, 32, rfi->clrconv);
 
-	fgcolor = (rfi->clrconv->invert)?
-		freerdp_color_convert_var_bgr(fgcolor, rfi->srcBpp, 32, rfi->clrconv):
-		freerdp_color_convert_var_rgb(fgcolor, rfi->srcBpp, 32, rfi->clrconv);
+	fgcolor = (rfi->clrconv->invert) ?
+		  freerdp_color_convert_var_bgr(fgcolor, rfi->srcBpp, 32, rfi->clrconv) :
+		  freerdp_color_convert_var_rgb(fgcolor, rfi->srcBpp, 32, rfi->clrconv);
 
 	XSetFunction(rfi->display, rfi->gc, GXcopy);
 	XSetFillStyle(rfi->display, rfi->gc, FillSolid);
@@ -374,15 +365,14 @@ static BOOL rf_Glyph_BeginDraw(rdpContext* context, UINT32 x, UINT32 y,
 }
 
 static BOOL rf_Glyph_EndDraw(rdpContext* context, UINT32 x, UINT32 y,
-                             UINT32 width, UINT32 height,
-                             UINT32 bgcolor, UINT32 fgcolor)
+			     UINT32 width, UINT32 height,
+			     UINT32 bgcolor, UINT32 fgcolor)
 {
-	TRACE_CALL("rf_Glyph_EndDraw");
+	TRACE_CALL("__func__");
 #ifdef RF_GLYPH
-	rfContext* rfi = (rfContext*) context;
+	rfContext* rfi = (rfContext*)context;
 
-	if (rfi->drawing == rfi->primary)
-	{
+	if (rfi->drawing == rfi->primary) {
 		//XCopyArea(rfi->display, rfi->primary, rfi->drawable, rfi->gc, x, y, width, height, x, y);
 		//gdi_InvalidateRegion(rfi->hdc, x, y, width, height);
 	}
@@ -394,12 +384,12 @@ static BOOL rf_Glyph_EndDraw(rdpContext* context, UINT32 x, UINT32 y,
 
 void rf_register_graphics(rdpGraphics* graphics)
 {
-	TRACE_CALL("rf_register_graphics");
+	TRACE_CALL("__func__");
 	rdpBitmap* bitmap;
 	rdpPointer* pointer;
 	rdpGlyph* glyph;
 
-	bitmap = (rdpBitmap*) malloc(sizeof(rdpBitmap));
+	bitmap = (rdpBitmap*)malloc(sizeof(rdpBitmap));
 	ZeroMemory(bitmap, sizeof(rdpBitmap));
 	bitmap->size = sizeof(rfBitmap);
 
@@ -412,7 +402,7 @@ void rf_register_graphics(rdpGraphics* graphics)
 	graphics_register_bitmap(graphics, bitmap);
 	free(bitmap);
 
-	pointer = (rdpPointer*) malloc(sizeof(rdpPointer));
+	pointer = (rdpPointer*)malloc(sizeof(rdpPointer));
 	ZeroMemory(pointer, sizeof(rdpPointer));
 
 	pointer->size = sizeof(rfPointer);
@@ -428,7 +418,7 @@ void rf_register_graphics(rdpGraphics* graphics)
 
 	free(pointer);
 
-	glyph = (rdpGlyph*) malloc(sizeof(rdpGlyph));
+	glyph = (rdpGlyph*)malloc(sizeof(rdpGlyph));
 	ZeroMemory(glyph, sizeof(rdpGlyph));
 
 	glyph->size = sizeof(rfGlyph);

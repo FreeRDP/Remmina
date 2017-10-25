@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010-2011 Vic Lee
+ * Copyright (C) 2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINA_RDP_EVENT_H__
-#define __REMMINA_RDP_EVENT_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -49,6 +49,4 @@ int remmina_rdp_event_queue_ui_sync_retint(RemminaProtocolWidget* gp, RemminaPlu
 void *remmina_rdp_event_queue_ui_sync_retptr(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui);
 
 G_END_DECLS
-
-#endif
 

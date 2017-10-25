@@ -33,13 +33,11 @@
  *
  */
 
-#ifndef __REMMINAPREEXEC_H__
-#define __REMMINAPREEXEC_H__
+#pragma once
 
 G_BEGIN_DECLS
 
-typedef struct
-{
+typedef struct {
 	GtkDialog *dialog;
 	GtkLabel *label_pleasewait;
 	GtkButton *button_cancel;
@@ -50,4 +48,3 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 
 G_END_DECLS
 
-#endif  /* __REMMINAPREEXEC_H__  */

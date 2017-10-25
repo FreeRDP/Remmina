@@ -41,8 +41,7 @@
 #include "remmina_ftp_client.h"
 #include "remmina_ssh_plugin.h"
 
-typedef struct remmina_masterthread_exec_data
-{
+typedef struct remmina_masterthread_exec_data {
 
 	enum { FUNC_GTK_LABEL_SET_TEXT,
 	       FUNC_INIT_SAVE_CRED, FUNC_CHAT_RECEIVE, FUNC_FILE_GET_STRING,
@@ -51,47 +50,38 @@ typedef struct remmina_masterthread_exec_data
 	       FUNC_FTP_CLIENT_UPDATE_TASK, FUNC_FTP_CLIENT_GET_WAITING_TASK,
 	       FUNC_SFTP_CLIENT_CONFIRM_RESUME,
 	       FUNC_PROTOCOLWIDGET_EMIT_SIGNAL,
-	       FUNC_VTE_TERMINAL_SET_ENCODING_AND_PTY
-	     } func;
+	       FUNC_VTE_TERMINAL_SET_ENCODING_AND_PTY } func;
 
-	union
-	{
-		struct
-		{
+	union {
+		struct {
 			GtkLabel *label;
 			const gchar *str;
 		} gtk_label_set_text;
-		struct
-		{
+		struct {
 			RemminaProtocolWidget* gp;
 		} init_save_creds;
-		struct
-		{
+		struct {
 			RemminaProtocolWidget* gp;
 			const gchar *text;
 		} chat_receive;
-		struct
-		{
+		struct {
 			RemminaFile *remminafile;
 			const gchar *setting;
 			const gchar* retval;
 		} file_get_string;
-		struct
-		{
+		struct {
 			RemminaInitDialog *dialog;
 			const gchar *serverkey;
 			const gchar *prompt;
 			gint retval;
 		} dialog_serverkey_confirm;
-		struct
-		{
+		struct {
 			RemminaInitDialog *dialog;
 			gboolean allow_save;
 			const gchar *label;
 			gint retval;
 		} dialog_authpwd;
-		struct
-		{
+		struct {
 			RemminaInitDialog *dialog;
 			gboolean want_domain;
 			gboolean allow_save;
@@ -99,16 +89,14 @@ typedef struct remmina_masterthread_exec_data
 			const gchar *default_domain;
 			gint retval;
 		} dialog_authuserpwd;
-		struct
-		{
+		struct {
 			RemminaInitDialog *dialog;
 			const gchar* subject;
 			const gchar* issuer;
 			const gchar* fingerprint;
 			gint retval;
 		} dialog_certificate;
-		struct
-		{
+		struct {
 			RemminaInitDialog *dialog;
 			const gchar* subject;
 			const gchar* issuer;
@@ -116,8 +104,7 @@ typedef struct remmina_masterthread_exec_data
 			const gchar* old_fingerprint;
 			gint retval;
 		} dialog_certchanged;
-		struct
-		{
+		struct {
 			RemminaInitDialog *dialog;
 			const gchar *cacert;
 			const gchar *cacrl;
@@ -125,32 +112,27 @@ typedef struct remmina_masterthread_exec_data
 			const gchar *clientkey;
 			gint retval;
 		} dialog_authx509;
-		struct
-		{
+		struct {
 			RemminaFTPClient *client;
 			RemminaFTPTask* task;
 		} ftp_client_update_task;
-		struct
-		{
+		struct {
 			RemminaFTPClient *client;
 			RemminaFTPTask* retval;
 		} ftp_client_get_waiting_task;
-		struct
-		{
+		struct {
 			RemminaProtocolWidget* gp;
 			const gchar* signal_name;
 		} protocolwidget_emit_signal;
 #ifdef HAVE_LIBSSH
-		struct
-		{
+		struct {
 			RemminaSFTPClient *client;
 			const gchar *path;
 			gint retval;
 		} sftp_client_confirm_resume;
 #endif
 #ifdef HAVE_LIBVTE
-		struct
-		{
+		struct {
 			VteTerminal *terminal;
 			const char *codeset;
 			int master;
