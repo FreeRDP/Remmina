@@ -1031,11 +1031,12 @@ gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget* gp, RemminaAuth
 		s = g_strdup(_("Password"));
 		break;
 	}
+
 	ret = remmina_init_dialog_authpwd(
 	          REMMINA_INIT_DIALOG(gp->priv->init_dialog),
 	          s,
-	          remmina_file_get_filename(remminafile) != NULL &&
-	          allow_password_saving);
+	          (remmina_file_get_filename(remminafile) != NULL &&
+				!remminafile->prevent_saving && allow_password_saving));
 	g_free(s);
 
 	return ret;
@@ -1051,7 +1052,8 @@ gint remmina_protocol_widget_init_authuserpwd(RemminaProtocolWidget* gp, gboolea
 	           want_domain,
 	           remmina_file_get_string(remminafile, "username"),
 	           want_domain ? remmina_file_get_string(remminafile, "domain") : NULL,
-	           (remmina_file_get_filename(remminafile) != NULL) && allow_password_saving);
+	           (remmina_file_get_filename(remminafile) != NULL &&
+					!remminafile->prevent_saving && allow_password_saving));
 }
 
 gint remmina_protocol_widget_init_certificate(RemminaProtocolWidget* gp, const gchar* subject, const gchar* issuer, const gchar* fingerprint)

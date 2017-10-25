@@ -46,6 +46,7 @@ struct _RemminaFile
 	gchar *filename;
 	GHashTable *settings;
 	GHashTable *spsettings;
+	gboolean prevent_saving;
 };
 
 enum

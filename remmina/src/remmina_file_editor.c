@@ -1250,6 +1250,7 @@ static void remmina_file_editor_on_connect(GtkWidget* button, RemminaFileEditor*
 		remmina_file_set_string(gf, "name", remmina_file_get_string(gf, "server"));
 	}
 	gtk_widget_destroy(GTK_WIDGET(gfe));
+	gf->prevent_saving = TRUE;
 	remmina_connection_window_open_from_file(gf);
 }
 

@@ -79,6 +79,7 @@ remmina_file_new_empty(void)
 	 * it's used by remmina_file_store_secret_plugin_password() to know
 	 * where to change */
 	remminafile->spsettings = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
+	remminafile->prevent_saving = FALSE;
 	return remminafile;
 }
 
@@ -444,6 +445,9 @@ void remmina_file_save(RemminaFile *remminafile)
 	gchar *s, *proto, *content;
 	GKeyFile *gkeyfile;
 	gsize length = 0;
+
+	if (remminafile->prevent_saving)
+		return;
 
 	if ((gkeyfile = remmina_file_get_keyfile(remminafile)) == NULL)
 		return;
