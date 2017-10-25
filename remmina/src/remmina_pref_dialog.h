@@ -39,13 +39,11 @@
  * Remmina Preferences Dialog
  */
 
-typedef struct _RemminaPrefDialogPriv
-{
+typedef struct _RemminaPrefDialogPriv {
 	GtkWidget *resolutions_list;
 } RemminaPrefDialogPriv;
 
-typedef struct _RemminaPrefDialog
-{
+typedef struct _RemminaPrefDialog {
 	GtkBuilder *builder;
 	GtkDialog *dialog;
 	GtkNotebook *notebook_preferences;
@@ -127,11 +125,10 @@ typedef struct _RemminaPrefDialog
 	RemminaPrefDialogPriv *priv;
 } RemminaPrefDialog;
 
-enum
-{
-	REMMINA_PREF_OPTIONS_TAB = 0,
-	REMMINA_PREF_APPEARANCE = 1,
-	REMMINA_PREF_APPLET_TAB = 2
+enum {
+	REMMINA_PREF_OPTIONS_TAB	= 0,
+	REMMINA_PREF_APPEARANCE		= 1,
+	REMMINA_PREF_APPLET_TAB		= 2
 };
 
 G_BEGIN_DECLS

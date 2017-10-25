@@ -70,12 +70,11 @@ remmina_widget_pool_find(GType type, const gchar *tag)
 	if (remmina_widget_pool == NULL)
 		return NULL;
 
-	for (i = 0; i < remmina_widget_pool->len; i++)
-	{
+	for (i = 0; i < remmina_widget_pool->len; i++) {
 		widget = GTK_WIDGET(g_ptr_array_index(remmina_widget_pool, i));
 		if (!G_TYPE_CHECK_INSTANCE_TYPE(widget, type))
 			continue;
-		if (tag && g_strcmp0((const gchar*) g_object_get_data(G_OBJECT(widget), "tag"), tag) != 0)
+		if (tag && g_strcmp0((const gchar*)g_object_get_data(G_OBJECT(widget), "tag"), tag) != 0)
 			continue;
 		return widget;
 	}
@@ -93,14 +92,12 @@ remmina_widget_pool_find_by_window(GType type, GdkWindow *window)
 	if (window == NULL || remmina_widget_pool == NULL)
 		return NULL;
 
-	for (i = 0; i < remmina_widget_pool->len; i++)
-	{
+	for (i = 0; i < remmina_widget_pool->len; i++) {
 		widget = GTK_WIDGET(g_ptr_array_index(remmina_widget_pool, i));
 		if (!G_TYPE_CHECK_INSTANCE_TYPE(widget, type))
 			continue;
 		/* gdk_window_get_toplevel won't work here, if the window is an embedded client. So we iterate the window tree */
-		for (parent = window; parent && parent != GDK_WINDOW_ROOT; parent = gdk_window_get_parent(parent))
-		{
+		for (parent = window; parent && parent != GDK_WINDOW_ROOT; parent = gdk_window_get_parent(parent)) {
 			if (gtk_widget_get_window(widget) == parent)
 				return widget;
 		}
@@ -128,8 +125,7 @@ gint remmina_widget_pool_foreach(RemminaWidgetPoolForEachFunc callback, gpointer
 		g_ptr_array_add(wpcpy, g_ptr_array_index(remmina_widget_pool, i));
 
 	/* Scan the remmina_widget_pool and call callbac() on every element */
-	for (i = 0; i < wpcpy->len; i++)
-	{
+	for (i = 0; i < wpcpy->len; i++) {
 		widget = GTK_WIDGET(g_ptr_array_index(wpcpy, i));
 		if (callback(widget, data))
 			n++;

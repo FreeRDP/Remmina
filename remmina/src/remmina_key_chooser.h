@@ -43,8 +43,7 @@
 #define KEY_MODIFIER_META _("Meta+")
 #define KEY_CHOOSER_NONE _("<None>")
 
-typedef struct _RemminaKeyChooserArguments
-{
+typedef struct _RemminaKeyChooserArguments {
 	guint keyval;
 	guint state;
 	gboolean use_modifiers;

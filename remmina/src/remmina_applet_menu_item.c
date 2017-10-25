@@ -44,7 +44,7 @@
 
 G_DEFINE_TYPE( RemminaAppletMenuItem, remmina_applet_menu_item, GTK_TYPE_MENU_ITEM)
 
-#define IS_EMPTY(s) ((!s)||(s[0]==0))
+#define IS_EMPTY(s) ((!s) || (s[0] == 0))
 
 static void remmina_applet_menu_item_destroy(RemminaAppletMenuItem* item, gpointer data)
 {
@@ -87,16 +87,14 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 
 	item->item_type = item_type;
 
-	switch (item_type)
-	{
+	switch (item_type) {
 	case REMMINA_APPLET_MENU_ITEM_FILE:
 		item->filename = g_strdup(va_arg(ap, const gchar*));
 
 		/* Load the file */
 		gkeyfile = g_key_file_new();
 
-		if (!g_key_file_load_from_file(gkeyfile, item->filename, G_KEY_FILE_NONE, NULL))
-		{
+		if (!g_key_file_load_from_file(gkeyfile, item->filename, G_KEY_FILE_NONE, NULL)) {
 			g_key_file_free(gkeyfile);
 			va_end(ap);
 			return NULL;
@@ -134,12 +132,11 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 	/* Create the label */
 	widget = gtk_label_new(item->name);
 	gtk_widget_show(widget);
-	gtk_widget_set_valign (widget, GTK_ALIGN_START);
-	gtk_widget_set_halign (widget, GTK_ALIGN_START);
+	gtk_widget_set_valign(widget, GTK_ALIGN_START);
+	gtk_widget_set_halign(widget, GTK_ALIGN_START);
 	gtk_container_add(GTK_CONTAINER(item), widget);
 
-	if (item->server)
-	{
+	if (item->server) {
 		gtk_widget_set_tooltip_text(GTK_WIDGET(item), item->server);
 	}
 
@@ -154,8 +151,8 @@ gint remmina_applet_menu_item_compare(gconstpointer a, gconstpointer b, gpointer
 	RemminaAppletMenuItem* itemb;
 
 	/* Passed in parameters are pointers to pointers */
-	itema = REMMINA_APPLET_MENU_ITEM(*((void**) a));
-	itemb = REMMINA_APPLET_MENU_ITEM(*((void**) b));
+	itema = REMMINA_APPLET_MENU_ITEM(*((void**)a));
+	itemb = REMMINA_APPLET_MENU_ITEM(*((void**)b));
 
 	/* Put ungrouped items to the last */
 	if (IS_EMPTY(itema->group) && !IS_EMPTY(itemb->group))
@@ -169,8 +166,7 @@ gint remmina_applet_menu_item_compare(gconstpointer a, gconstpointer b, gpointer
 	if (itema->item_type != REMMINA_APPLET_MENU_ITEM_DISCOVERED && itemb->item_type == REMMINA_APPLET_MENU_ITEM_DISCOVERED)
 		return -1;
 
-	if (itema->item_type != REMMINA_APPLET_MENU_ITEM_DISCOVERED && !IS_EMPTY(itema->group))
-	{
+	if (itema->item_type != REMMINA_APPLET_MENU_ITEM_DISCOVERED && !IS_EMPTY(itema->group)) {
 		cmp = g_strcmp0(itema->group, itemb->group);
 
 		if (cmp != 0)

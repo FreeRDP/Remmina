@@ -37,8 +37,7 @@
 
 G_BEGIN_DECLS
 
-typedef struct
-{
+typedef struct {
 	GtkDialog *dialog;
 	GtkLabel *label_pleasewait;
 	GtkButton *button_cancel;

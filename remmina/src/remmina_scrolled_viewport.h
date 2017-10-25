@@ -38,20 +38,19 @@
 G_BEGIN_DECLS
 
 #define REMMINA_TYPE_SCROLLED_VIEWPORT \
-    (remmina_scrolled_viewport_get_type ())
+	(remmina_scrolled_viewport_get_type())
 #define REMMINA_SCROLLED_VIEWPORT(obj) \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_SCROLLED_VIEWPORT, RemminaScrolledViewport))
+	(G_TYPE_CHECK_INSTANCE_CAST((obj), REMMINA_TYPE_SCROLLED_VIEWPORT, RemminaScrolledViewport))
 #define REMMINA_SCROLLED_VIEWPORT_CLASS(klass) \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_SCROLLED_VIEWPORT, RemminaScrolledViewportClass))
+	(G_TYPE_CHECK_CLASS_CAST((klass), REMMINA_TYPE_SCROLLED_VIEWPORT, RemminaScrolledViewportClass))
 #define REMMINA_IS_SCROLLED_VIEWPORT(obj) \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_SCROLLED_VIEWPORT))
+	(G_TYPE_CHECK_INSTANCE_TYPE((obj), REMMINA_TYPE_SCROLLED_VIEWPORT))
 #define REMMINA_IS_SCROLLED_VIEWPORT_CLASS(klass) \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_SCROLLED_VIEWPORT))
+	(G_TYPE_CHECK_CLASS_TYPE((klass), REMMINA_TYPE_SCROLLED_VIEWPORT))
 #define REMMINA_SCROLLED_VIEWPORT_GET_CLASS(obj) \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_SCROLLED_VIEWPORT, RemminaScrolledViewportClass))
+	(G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_SCROLLED_VIEWPORT, RemminaScrolledViewportClass))
 
-typedef struct _RemminaScrolledViewport
-{
+typedef struct _RemminaScrolledViewport {
 	GtkEventBox event_box;
 
 	/* Motion activates in Viewport Fullscreen mode */
@@ -60,8 +59,7 @@ typedef struct _RemminaScrolledViewport
 
 } RemminaScrolledViewport;
 
-typedef struct _RemminaScrolledViewportClass
-{
+typedef struct _RemminaScrolledViewportClass {
 	GtkEventBoxClass parent_class;
 } RemminaScrolledViewportClass;
 

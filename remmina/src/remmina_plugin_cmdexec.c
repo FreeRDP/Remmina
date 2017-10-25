@@ -47,10 +47,10 @@
 
 static void wait_for_child(GPid pid, gint script_retval, gpointer data)
 {
-	PCon_Spinner *pcspinner = (PCon_Spinner *) data;
+	PCon_Spinner *pcspinner = (PCon_Spinner*)data;
 
-	gtk_spinner_stop (GTK_SPINNER (pcspinner->spinner));
-	gtk_widget_destroy (GTK_WIDGET (pcspinner->dialog));
+	gtk_spinner_stop(GTK_SPINNER(pcspinner->spinner));
+	gtk_widget_destroy(GTK_WIDGET(pcspinner->dialog));
 	g_spawn_close_pid(pid);
 
 	g_free(pcspinner);
@@ -72,16 +72,14 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 	strcpy(post, "postcommand");
 
 	if (remmina_plugin_cmdexec_type != NULL && (
-				strcmp(remmina_plugin_cmdexec_type, pre) |
-				strcmp(remmina_plugin_cmdexec_type, post) ))
-	{
+		    strcmp(remmina_plugin_cmdexec_type, pre) |
+		    strcmp(remmina_plugin_cmdexec_type, post) )) {
 		plugin_cmd = remmina_file_get_string(remminafile, remmina_plugin_cmdexec_type);
 	}else{
 		return FALSE;
 	}
 
-	if (plugin_cmd != NULL)
-	{
+	if (plugin_cmd != NULL) {
 		pcspinner = g_new(PCon_Spinner, 1);
 		builder = remmina_public_gtk_builder_new_from_file("remmina_spinner.glade");
 		pcspinner->dialog = GTK_DIALOG(gtk_builder_get_object(builder, "DialogSpinner"));
@@ -94,32 +92,28 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 		/* Exec a predefined command */
 		g_shell_parse_argv(plugin_cmd, NULL, &argv, &error);
 
-		if (error)
-		{
-			g_warning ("%s\n", error->message);
+		if (error) {
+			g_warning("%s\n", error->message);
 			g_error_free(error);
 		}
 
 		/* Consider using G_SPAWN_SEARCH_PATH_FROM_ENVP (from glib 2.38)*/
-		g_spawn_async(	NULL,                          // cwd
-		                argv,                          // argv
-		                NULL,                          // envp
-				G_SPAWN_SEARCH_PATH|
-		                G_SPAWN_SEARCH_PATH_FROM_ENVP|
-		                G_SPAWN_DO_NOT_REAP_CHILD,     // flags
-		                NULL,                          // child_setup
-		                NULL,                          // child_setup user data
-		                &child_pid,                    // pid location
-		                &error);                       // error
-		if (!error)
-		{
-			gtk_spinner_start (GTK_SPINNER (pcspinner->spinner));
-			g_child_watch_add (child_pid, wait_for_child, (gpointer) pcspinner);
+		g_spawn_async(  NULL,                           // cwd
+			argv,                                   // argv
+			NULL,                                   // envp
+			G_SPAWN_SEARCH_PATH |
+			G_SPAWN_SEARCH_PATH_FROM_ENVP |
+			G_SPAWN_DO_NOT_REAP_CHILD,              // flags
+			NULL,                                   // child_setup
+			NULL,                                   // child_setup user data
+			&child_pid,                             // pid location
+			&error);                                // error
+		if (!error) {
+			gtk_spinner_start(GTK_SPINNER(pcspinner->spinner));
+			g_child_watch_add(child_pid, wait_for_child, (gpointer)pcspinner);
 			gtk_dialog_run(pcspinner->dialog);
-		}
-		else
-		{
-			g_warning ("Command %s exited with error: %s\n", plugin_cmd, error->message);
+		}else  {
+			g_warning("Command %s exited with error: %s\n", plugin_cmd, error->message);
 			g_error_free(error);
 		}
 		g_strfreev(argv);

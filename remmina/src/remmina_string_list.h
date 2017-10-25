@@ -38,15 +38,13 @@
 
 typedef gboolean (*RemminaStringListValidationFunc)(const gchar *new_str, gchar **error);
 
-typedef struct _RemminaStringListPriv
-{
+typedef struct _RemminaStringListPriv {
 	RemminaStringListValidationFunc validation_func;
 	const gchar *fields_separator;
 	gboolean two_columns;
 } RemminaStringListPriv;
 
-typedef struct _RemminaStringList
-{
+typedef struct _RemminaStringList {
 	GtkBuilder *builder;
 	GtkDialog *dialog;
 

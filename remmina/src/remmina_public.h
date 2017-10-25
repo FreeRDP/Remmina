@@ -40,8 +40,8 @@
 
 #define IDLE_ADD        gdk_threads_add_idle
 #define TIMEOUT_ADD     gdk_threads_add_timeout
-#define CANCEL_ASYNC    pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS,NULL);pthread_testcancel();
-#define CANCEL_DEFER    pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED,NULL);
+#define CANCEL_ASYNC    pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, NULL); pthread_testcancel();
+#define CANCEL_DEFER    pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED, NULL);
 
 #define THREADS_ENTER _Pragma("GCC error \"THREADS_ENTER has been deprecated in Remmina 1.2\"")
 #define THREADS_LEAVE _Pragma("GCC error \"THREADS_LEAVE has been deprecated in Remmina 1.2\"")
@@ -73,7 +73,7 @@ GtkWidget* remmina_public_create_combo_text_d(const gchar *text, const gchar *de
 void remmina_public_load_combo_text_d(GtkWidget *combo, const gchar *text, const gchar *def, const gchar *empty_choice);
 GtkWidget* remmina_public_create_combo(gboolean use_icon);
 GtkWidget* remmina_public_create_combo_map(const gpointer *key_value_list, const gchar *def, gboolean use_icon,
-        const gchar *domain);
+					   const gchar *domain);
 GtkWidget* remmina_public_create_combo_mapint(const gpointer *key_value_list, gint def, gboolean use_icon, const gchar *domain);
 
 void remmina_public_create_group(GtkGrid *table, const gchar *group, gint row, gint rows, gint cols);
@@ -106,8 +106,8 @@ GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename);
 /* Change parent container for a widget */
 void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *container);
 /* Used to send desktop notifications */
-void remmina_public_send_notification (const gchar *notification_id,
-		const gchar *notification_title, const gchar *notification_message);
+void remmina_public_send_notification(const gchar *notification_id,
+				      const gchar *notification_title, const gchar *notification_message);
 /* Validate the inserted value for a new resolution */
 gboolean remmina_public_resolution_validation_func(const gchar *new_str, gchar **error);
 /* Replaces all occurences of search in a new copy of string by replacement. */

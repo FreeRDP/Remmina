@@ -73,18 +73,16 @@ static gint remmina_plugin_manager_compare_func(RemminaPlugin **a, RemminaPlugin
 static gboolean remmina_plugin_manager_register_plugin(RemminaPlugin *plugin)
 {
 	TRACE_CALL("__func__");
-	if (plugin->type == REMMINA_PLUGIN_TYPE_SECRET)
-	{
-		if (remmina_secret_plugin)
-		{
+	if (plugin->type == REMMINA_PLUGIN_TYPE_SECRET) {
+		if (remmina_secret_plugin) {
 			g_print("Remmina plugin %s (type=%s) bypassed.\n", plugin->name,
-			        _(remmina_plugin_type_name[plugin->type]));
+				_(remmina_plugin_type_name[plugin->type]));
 			return FALSE;
 		}
-		remmina_secret_plugin = (RemminaSecretPlugin*) plugin;
+		remmina_secret_plugin = (RemminaSecretPlugin*)plugin;
 	}
 	g_ptr_array_add(remmina_plugin_table, plugin);
-	g_ptr_array_sort(remmina_plugin_table, (GCompareFunc) remmina_plugin_manager_compare_func);
+	g_ptr_array_sort(remmina_plugin_table, (GCompareFunc)remmina_plugin_manager_compare_func);
 	/* g_print("Remmina plugin %s (type=%s) registered.\n", plugin->name, _(remmina_plugin_type_name[plugin->type])); */
 	return TRUE;
 }
@@ -100,8 +98,7 @@ static gboolean remmina_gtksocket_available()
 	available = FALSE;
 
 #ifdef GDK_WINDOWING_X11
-	if (GDK_IS_X11_DISPLAY(d))
-	{
+	if (GDK_IS_X11_DISPLAY(d)) {
 		/* GtkSocket support is available only under Xorg */
 		available = TRUE;
 	}
@@ -199,21 +196,18 @@ static void remmina_plugin_manager_load_plugin(const gchar *name)
 
 	module = g_module_open(name, G_MODULE_BIND_LAZY | G_MODULE_BIND_LOCAL);
 
-	if (!module)
-	{
+	if (!module) {
 		g_print("Failed to load plugin: %s.\n", name);
 		g_print("Error: %s\n", g_module_error());
 		return;
 	}
 
-	if (!g_module_symbol(module, "remmina_plugin_entry", (gpointer*) &entry))
-	{
+	if (!g_module_symbol(module, "remmina_plugin_entry", (gpointer*)&entry)) {
 		g_print("Failed to locate plugin entry: %s.\n", name);
 		return;
 	}
 
-	if (!entry(&remmina_plugin_manager_service))
-	{
+	if (!entry(&remmina_plugin_manager_service)) {
 		g_print("Plugin entry returned false: %s.\n", name);
 		return;
 	}
@@ -230,8 +224,7 @@ void remmina_plugin_manager_init(void)
 
 	remmina_plugin_table = g_ptr_array_new();
 
-	if (!g_module_supported())
-	{
+	if (!g_module_supported()) {
 		g_print("Dynamic loading of plugins is not supported in this platform!\n");
 		return;
 	}
@@ -239,8 +232,7 @@ void remmina_plugin_manager_init(void)
 	dir = g_dir_open(REMMINA_RUNTIME_PLUGINDIR, 0, NULL);
 	if (dir == NULL)
 		return;
-	while ((name = g_dir_read_name(dir)) != NULL)
-	{
+	while ((name = g_dir_read_name(dir)) != NULL) {
 		if ((ptr = strrchr(name, '.')) == NULL)
 			continue;
 		ptr++;
@@ -259,11 +251,9 @@ RemminaPlugin* remmina_plugin_manager_get_plugin(RemminaPluginType type, const g
 	RemminaPlugin *plugin;
 	gint i;
 
-	for (i = 0; i < remmina_plugin_table->len; i++)
-	{
-		plugin = (RemminaPlugin *) g_ptr_array_index(remmina_plugin_table, i);
-		if (plugin->type == type && g_strcmp0(plugin->name, name) == 0)
-		{
+	for (i = 0; i < remmina_plugin_table->len; i++) {
+		plugin = (RemminaPlugin*)g_ptr_array_index(remmina_plugin_table, i);
+		if (plugin->type == type && g_strcmp0(plugin->name, name) == 0) {
 			return plugin;
 		}
 	}
@@ -290,12 +280,10 @@ void remmina_plugin_manager_for_each_plugin(RemminaPluginType type, RemminaPlugi
 	RemminaPlugin *plugin;
 	gint i;
 
-	for (i = 0; i < remmina_plugin_table->len; i++)
-	{
-		plugin = (RemminaPlugin *) g_ptr_array_index(remmina_plugin_table, i);
-		if (plugin->type == type)
-		{
-			func((gchar *) plugin->name, plugin, data);
+	for (i = 0; i < remmina_plugin_table->len; i++) {
+		plugin = (RemminaPlugin*)g_ptr_array_index(remmina_plugin_table, i);
+		if (plugin->type == type) {
+			func((gchar*)plugin->name, plugin, data);
 		}
 	}
 }
@@ -311,9 +299,9 @@ static gboolean remmina_plugin_manager_show_for_each_stdout(RemminaPlugin *plugi
 	TRACE_CALL("__func__");
 
 	g_print("%-20s%-16s%-64s%-10s\n", plugin->name,
-			_(remmina_plugin_type_name[plugin->type]),
-			g_dgettext(plugin->domain, plugin->description),
-			plugin->version);
+		_(remmina_plugin_type_name[plugin->type]),
+		g_dgettext(plugin->domain, plugin->description),
+		plugin->version);
 	return FALSE;
 }
 
@@ -321,7 +309,7 @@ void remmina_plugin_manager_show_stdout()
 {
 	TRACE_CALL("__func__");
 	g_print("%-20s%-16s%-64s%-10s\n", "NAME", "TYPE", "DESCRIPTION", "PLUGIN AND LIBRARY VERSION");
-	g_ptr_array_foreach(remmina_plugin_table, (GFunc) remmina_plugin_manager_show_for_each_stdout, NULL);
+	g_ptr_array_foreach(remmina_plugin_table, (GFunc)remmina_plugin_manager_show_for_each_stdout, NULL);
 }
 
 static gboolean remmina_plugin_manager_show_for_each(RemminaPlugin *plugin, GtkListStore *store)
@@ -331,7 +319,7 @@ static gboolean remmina_plugin_manager_show_for_each(RemminaPlugin *plugin, GtkL
 
 	gtk_list_store_append(store, &iter);
 	gtk_list_store_set(store, &iter, 0, plugin->name, 1, _(remmina_plugin_type_name[plugin->type]), 2,
-	                   g_dgettext(plugin->domain, plugin->description), 3, plugin->version, -1);
+		g_dgettext(plugin->domain, plugin->description), 3, plugin->version, -1);
 	return FALSE;
 }
 
@@ -359,7 +347,7 @@ void remmina_plugin_manager_show(GtkWindow *parent)
 	gtk_widget_show(tree);
 
 	store = gtk_list_store_new(4, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
-	g_ptr_array_foreach(remmina_plugin_table, (GFunc) remmina_plugin_manager_show_for_each, store);
+	g_ptr_array_foreach(remmina_plugin_table, (GFunc)remmina_plugin_manager_show_for_each, store);
 	gtk_tree_view_set_model(GTK_TREE_VIEW(tree), GTK_TREE_MODEL(store));
 
 	renderer = gtk_cell_renderer_text_new();
@@ -395,15 +383,13 @@ RemminaFilePlugin* remmina_plugin_manager_get_import_file_handler(const gchar *f
 	RemminaFilePlugin *plugin;
 	gint i;
 
-	for (i = 0; i < remmina_plugin_table->len; i++)
-	{
-		plugin = (RemminaFilePlugin *) g_ptr_array_index(remmina_plugin_table, i);
+	for (i = 0; i < remmina_plugin_table->len; i++) {
+		plugin = (RemminaFilePlugin*)g_ptr_array_index(remmina_plugin_table, i);
 
 		if (plugin->type != REMMINA_PLUGIN_TYPE_FILE)
 			continue;
 
-		if (plugin->import_test_func(file))
-		{
+		if (plugin->import_test_func(file)) {
 			return plugin;
 		}
 	}
@@ -416,13 +402,11 @@ RemminaFilePlugin* remmina_plugin_manager_get_export_file_handler(RemminaFile *r
 	RemminaFilePlugin *plugin;
 	gint i;
 
-	for (i = 0; i < remmina_plugin_table->len; i++)
-	{
-		plugin = (RemminaFilePlugin *) g_ptr_array_index(remmina_plugin_table, i);
+	for (i = 0; i < remmina_plugin_table->len; i++) {
+		plugin = (RemminaFilePlugin*)g_ptr_array_index(remmina_plugin_table, i);
 		if (plugin->type != REMMINA_PLUGIN_TYPE_FILE)
 			continue;
-		if (plugin->export_test_func(remminafile))
-		{
+		if (plugin->export_test_func(remminafile)) {
 			return plugin;
 		}
 	}
@@ -440,15 +424,13 @@ gboolean remmina_plugin_manager_query_feature_by_type(RemminaPluginType ptype, c
 	const RemminaProtocolFeature *feature;
 	RemminaProtocolPlugin* plugin;
 
-	plugin = (RemminaProtocolPlugin*) remmina_plugin_manager_get_plugin(ptype, name);
+	plugin = (RemminaProtocolPlugin*)remmina_plugin_manager_get_plugin(ptype, name);
 
-	if (plugin == NULL)
-	{
+	if (plugin == NULL) {
 		return FALSE;
 	}
 
-	for (feature = plugin->features; feature && feature->type; feature++)
-	{
+	for (feature = plugin->features; feature && feature->type; feature++) {
 		if (feature->type == ftype)
 			return TRUE;
 	}

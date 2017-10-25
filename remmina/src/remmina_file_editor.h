@@ -38,24 +38,22 @@
 
 G_BEGIN_DECLS
 
-#define REMMINA_TYPE_FILE_EDITOR               (remmina_file_editor_get_type ())
-#define REMMINA_FILE_EDITOR(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_FILE_EDITOR, RemminaFileEditor))
-#define REMMINA_FILE_EDITOR_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_FILE_EDITOR, RemminaFileEditorClass))
-#define REMMINA_IS_FILE_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_FILE_EDITOR))
-#define REMMINA_IS_FILE_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_FILE_EDITOR))
-#define REMMINA_FILE_EDITOR_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_FILE_EDITOR, RemminaFileEditorClass))
+#define REMMINA_TYPE_FILE_EDITOR               (remmina_file_editor_get_type())
+#define REMMINA_FILE_EDITOR(obj)               (G_TYPE_CHECK_INSTANCE_CAST((obj), REMMINA_TYPE_FILE_EDITOR, RemminaFileEditor))
+#define REMMINA_FILE_EDITOR_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST((klass), REMMINA_TYPE_FILE_EDITOR, RemminaFileEditorClass))
+#define REMMINA_IS_FILE_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_TYPE((obj), REMMINA_TYPE_FILE_EDITOR))
+#define REMMINA_IS_FILE_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE((klass), REMMINA_TYPE_FILE_EDITOR))
+#define REMMINA_FILE_EDITOR_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_FILE_EDITOR, RemminaFileEditorClass))
 
 typedef struct _RemminaFileEditorPriv RemminaFileEditorPriv;
 
-typedef struct _RemminaFileEditor
-{
+typedef struct _RemminaFileEditor {
 	GtkDialog dialog;
 
 	RemminaFileEditorPriv* priv;
 } RemminaFileEditor;
 
-typedef struct _RemminaFileEditorClass
-{
+typedef struct _RemminaFileEditorClass {
 	GtkDialogClass parent_class;
 } RemminaFileEditorClass;
 

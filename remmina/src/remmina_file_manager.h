@@ -39,8 +39,7 @@
 
 G_BEGIN_DECLS
 
-typedef struct _RemminaGroupData
-{
+typedef struct _RemminaGroupData {
 	gchar *name;
 	gchar *group;
 	gchar *datetime;

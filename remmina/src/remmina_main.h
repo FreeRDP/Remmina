@@ -42,8 +42,7 @@
 
 typedef struct _RemminaMainPriv RemminaMainPriv;
 
-typedef struct _RemminaMain
-{
+typedef struct _RemminaMain {
 	GtkBuilder *builder;
 	GtkWindow *window;
 	/* Menu widgets */
@@ -91,8 +90,7 @@ typedef struct _RemminaMain
 	RemminaMainPriv *priv;
 } RemminaMain;
 
-struct _RemminaMainPriv
-{
+struct _RemminaMainPriv {
 	GtkTreeModel *file_model;
 	GtkTreeModel *file_model_filter;
 	GtkTreeModel *file_model_sort;

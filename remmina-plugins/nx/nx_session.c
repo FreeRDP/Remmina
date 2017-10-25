@@ -76,17 +76,17 @@ static gboolean remmina_get_keytype(const gchar *private_key_file, gint *keytype
 /*****/
 
 static const gchar nx_default_private_key[] = "-----BEGIN DSA PRIVATE KEY-----\n"
-		"MIIBuwIBAAKBgQCXv9AzQXjxvXWC1qu3CdEqskX9YomTfyG865gb4D02ZwWuRU/9\n"
-		"C3I9/bEWLdaWgJYXIcFJsMCIkmWjjeSZyTmeoypI1iLifTHUxn3b7WNWi8AzKcVF\n"
-		"aBsBGiljsop9NiD1mEpA0G+nHHrhvTXz7pUvYrsrXcdMyM6rxqn77nbbnwIVALCi\n"
-		"xFdHZADw5KAVZI7r6QatEkqLAoGBAI4L1TQGFkq5xQ/nIIciW8setAAIyrcWdK/z\n"
-		"5/ZPeELdq70KDJxoLf81NL/8uIc4PoNyTRJjtT3R4f8Az1TsZWeh2+ReCEJxDWgG\n"
-		"fbk2YhRqoQTtXPFsI4qvzBWct42WonWqyyb1bPBHk+JmXFscJu5yFQ+JUVNsENpY\n"
-		"+Gkz3HqTAoGANlgcCuA4wrC+3Cic9CFkqiwO/Rn1vk8dvGuEQqFJ6f6LVfPfRTfa\n"
-		"QU7TGVLk2CzY4dasrwxJ1f6FsT8DHTNGnxELPKRuLstGrFY/PR7KeafeFZDf+fJ3\n"
-		"mbX5nxrld3wi5titTnX+8s4IKv29HJguPvOK/SI7cjzA+SqNfD7qEo8CFDIm1xRf\n"
-		"8xAPsSKs6yZ6j1FNklfu\n"
-		"-----END DSA PRIVATE KEY-----\n";
+					      "MIIBuwIBAAKBgQCXv9AzQXjxvXWC1qu3CdEqskX9YomTfyG865gb4D02ZwWuRU/9\n"
+					      "C3I9/bEWLdaWgJYXIcFJsMCIkmWjjeSZyTmeoypI1iLifTHUxn3b7WNWi8AzKcVF\n"
+					      "aBsBGiljsop9NiD1mEpA0G+nHHrhvTXz7pUvYrsrXcdMyM6rxqn77nbbnwIVALCi\n"
+					      "xFdHZADw5KAVZI7r6QatEkqLAoGBAI4L1TQGFkq5xQ/nIIciW8setAAIyrcWdK/z\n"
+					      "5/ZPeELdq70KDJxoLf81NL/8uIc4PoNyTRJjtT3R4f8Az1TsZWeh2+ReCEJxDWgG\n"
+					      "fbk2YhRqoQTtXPFsI4qvzBWct42WonWqyyb1bPBHk+JmXFscJu5yFQ+JUVNsENpY\n"
+					      "+Gkz3HqTAoGANlgcCuA4wrC+3Cic9CFkqiwO/Rn1vk8dvGuEQqFJ6f6LVfPfRTfa\n"
+					      "QU7TGVLk2CzY4dasrwxJ1f6FsT8DHTNGnxELPKRuLstGrFY/PR7KeafeFZDf+fJ3\n"
+					      "mbX5nxrld3wi5titTnX+8s4IKv29HJguPvOK/SI7cjzA+SqNfD7qEo8CFDIm1xRf\n"
+					      "8xAPsSKs6yZ6j1FNklfu\n"
+					      "-----END DSA PRIVATE KEY-----\n";
 
 static const gchar nx_hello_server_msg[] = "hello nxserver - version ";
 
@@ -208,9 +208,9 @@ static void remmina_nx_session_set_application_error(RemminaNXSession *nx, const
 	va_list args;
 
 	if (nx->error) g_free(nx->error);
-	va_start (args, fmt);
-	nx->error = g_strdup_vprintf (fmt, args);
-	va_end (args);
+	va_start(args, fmt);
+	nx->error = g_strdup_vprintf(fmt, args);
+	va_end(args);
 }
 
 gboolean remmina_nx_session_has_error(RemminaNXSession *nx)
@@ -283,7 +283,7 @@ static gboolean remmina_nx_session_get_response(RemminaNXSession *nx)
 		return FALSE;
 
 	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-	buffer = buffer_new();
+		buffer = buffer_new();
 	len = channel_read_buffer(nx->channel, buffer, len, is_stderr);
 	G_GNUC_END_IGNORE_DEPRECATIONS
 	if (len <= 0) {
@@ -292,7 +292,7 @@ static gboolean remmina_nx_session_get_response(RemminaNXSession *nx)
 	}
 	if (len > 0) {
 		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-		g_string_append_len(nx->response, (const gchar*) buffer_get(buffer), len);
+		g_string_append_len(nx->response, (const gchar*)buffer_get(buffer), len);
 		G_GNUC_END_IGNORE_DEPRECATIONS
 	}
 
@@ -310,7 +310,7 @@ static void remmina_nx_session_parse_session_list_line(RemminaNXSession *nx, con
 	gint i;
 	GtkTreeIter iter;
 
-	p1 = (char*) line;
+	p1 = (char*)line;
 	while (*p1 == ' ')
 		p1++;
 	if (*p1 == '\0')
@@ -318,7 +318,7 @@ static void remmina_nx_session_parse_session_list_line(RemminaNXSession *nx, con
 
 	gtk_list_store_append(nx->session_list, &iter);
 
-	p1 = (char*) line;
+	p1 = (char*)line;
 	for (i = 0; i < 7; i++) {
 		p2 = strchr(p1, ' ');
 		if (!p2)
@@ -523,18 +523,18 @@ static void remmina_nx_session_send_command(RemminaNXSession *nx, const gchar *c
 	va_list args;
 	gchar *cmd;
 
-	va_start (args, cmdfmt);
-	cmd = g_strdup_vprintf (cmdfmt, args);
-	ssh_channel_write (nx->channel, cmd, strlen (cmd));
+	va_start(args, cmdfmt);
+	cmd = g_strdup_vprintf(cmdfmt, args);
+	ssh_channel_write(nx->channel, cmd, strlen(cmd));
 	g_free(cmd);
 
-	ssh_set_fd_towrite (nx->session);
-	ssh_channel_write (nx->channel, "\n", 1);
+	ssh_set_fd_towrite(nx->session);
+	ssh_channel_write(nx->channel, "\n", 1);
 	va_end(args);
 }
 
 gboolean remmina_nx_session_open(RemminaNXSession *nx, const gchar *server, guint port, const gchar *private_key_file,
-								 RemminaNXPassphraseCallback passphrase_func, gpointer userdata)
+				 RemminaNXPassphraseCallback passphrase_func, gpointer userdata)
 {
 	TRACE_CALL("__func__");
 	gint ret;
@@ -644,9 +644,9 @@ void remmina_nx_session_add_parameter(RemminaNXSession *nx, const gchar *name, c
 	va_list args;
 	gchar *value;
 
-	va_start (args, valuefmt);
-	value = g_strdup_vprintf (valuefmt, args);
-	g_hash_table_insert(nx->session_parameters, g_strdup (name), value);
+	va_start(args, valuefmt);
+	value = g_strdup_vprintf(valuefmt, args);
+	g_hash_table_insert(nx->session_parameters, g_strdup(name), value);
 	va_end(args);
 }
 
@@ -659,7 +659,7 @@ static gboolean remmina_nx_session_send_session_command(RemminaNXSession *nx, co
 
 	cmd = g_string_new(cmd_type);
 	g_hash_table_iter_init(&iter, nx->session_parameters);
-	while (g_hash_table_iter_next(&iter, (gpointer*) &key, (gpointer*) &value)) {
+	while (g_hash_table_iter_next(&iter, (gpointer*)&key, (gpointer*)&value)) {
 		g_string_append_printf(cmd, " --%s=\"%s\"", key, value);
 	}
 
@@ -678,7 +678,7 @@ gboolean remmina_nx_session_list(RemminaNXSession *nx)
 
 	if (nx->session_list == NULL) {
 		nx->session_list = gtk_list_store_new(REMMINA_NX_SESSION_N_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING,
-											  G_TYPE_STRING, G_TYPE_STRING);
+			G_TYPE_STRING, G_TYPE_STRING);
 	} else {
 		gtk_list_store_clear(nx->session_list);
 	}
@@ -780,7 +780,7 @@ gboolean remmina_nx_session_terminate(RemminaNXSession *nx)
 static gpointer remmina_nx_session_tunnel_main_thread(gpointer data)
 {
 	TRACE_CALL("__func__");
-	RemminaNXSession *nx = (RemminaNXSession*) data;
+	RemminaNXSession *nx = (RemminaNXSession*)data;
 	gchar *ptr;
 	ssize_t len = 0, lenw = 0;
 	fd_set set;
@@ -834,7 +834,7 @@ static gpointer remmina_nx_session_tunnel_main_thread(gpointer data)
 				for (ptr = buffer, lenw = 0; len > 0; len -= lenw, ptr += lenw) {
 					ssh_set_fd_towrite(nx->session);
 					G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-					lenw = channel_write(channels[0], (char*) ptr, len);
+						lenw = channel_write(channels[0], (char*)ptr, len);
 					G_GNUC_END_IGNORE_DEPRECATIONS
 					if (lenw <= 0) {
 						nx->running = FALSE;
@@ -861,10 +861,10 @@ static gpointer remmina_nx_session_tunnel_main_thread(gpointer data)
 				/* Clean up the stderr buffer in case FreeNX send something there */
 				G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 					len = channel_read_nonblocking(channels_out[0], buffer, sizeof(buffer), 1);
-					if (len == SSH_ERROR || len == SSH_EOF) {
-						nx->running = FALSE;
-						break;
-					}
+				if (len == SSH_ERROR || len == SSH_EOF) {
+					nx->running = FALSE;
+					break;
+				}
 				G_GNUC_END_IGNORE_DEPRECATIONS
 			}
 		}
@@ -923,7 +923,7 @@ gboolean remmina_nx_session_tunnel_open(RemminaNXSession *nx)
 	sin.sin_port = htons(port);
 	sin.sin_addr.s_addr = inet_addr("127.0.0.1");
 
-	if (bind(sock, (struct sockaddr *) &sin, sizeof(sin))) {
+	if (bind(sock, (struct sockaddr *)&sin, sizeof(sin))) {
 		remmina_nx_session_set_application_error(nx, "Failed to bind on local port.");
 		close(sock);
 		return FALSE;
@@ -952,12 +952,12 @@ remmina_nx_session_get_proxy_option(RemminaNXSession *nx)
 	TRACE_CALL("__func__");
 	if (nx->encryption) {
 		return g_strdup_printf("nx,session=%s,cookie=%s,id=%s,shmem=1,shpix=1,connect=127.0.0.1:%i",
-							   (gchar*) g_hash_table_lookup(nx->session_parameters, "session"), nx->proxy_cookie,
-							   nx->session_id, (nx->localport ? nx->localport : nx->session_display));
+			(gchar*)g_hash_table_lookup(nx->session_parameters, "session"), nx->proxy_cookie,
+			nx->session_id, (nx->localport ? nx->localport : nx->session_display));
 	} else {
 		return g_strdup_printf("nx,session=%s,cookie=%s,id=%s,shmem=1,shpix=1,connect=%s:%i",
-							   (gchar*) g_hash_table_lookup(nx->session_parameters, "session"), nx->proxy_cookie,
-							   nx->session_id, nx->server, nx->session_display);
+			(gchar*)g_hash_table_lookup(nx->session_parameters, "session"), nx->proxy_cookie,
+			nx->session_id, nx->server, nx->session_display);
 	}
 }
 
@@ -995,7 +995,7 @@ gboolean remmina_nx_session_invoke_proxy(RemminaNXSession *nx, gint display, GCh
 	argv[argc++] = NULL;
 
 	ret = g_spawn_async(NULL, argv, envp, G_SPAWN_SEARCH_PATH | G_SPAWN_DO_NOT_REAP_CHILD, NULL, NULL, &nx->proxy_pid,
-						&error);
+		&error);
 	g_strfreev(envp);
 	for (i = 0; i < argc; i++)
 		g_free(argv[i]);

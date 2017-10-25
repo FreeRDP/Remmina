@@ -49,10 +49,9 @@
 #  include <usb-device-widget.h>
 #endif
 
-#define GET_PLUGIN_DATA(gp) (RemminaPluginSpiceData*) g_object_get_data(G_OBJECT(gp), "plugin-data")
+#define GET_PLUGIN_DATA(gp) (RemminaPluginSpiceData*)g_object_get_data(G_OBJECT(gp), "plugin-data")
 
-typedef struct _RemminaPluginSpiceData
-{
+typedef struct _RemminaPluginSpiceData {
 	SpiceAudio *audio;
 	SpiceDisplay *display;
 	SpiceDisplayChannel *display_channel;
@@ -65,8 +64,8 @@ typedef struct _RemminaPluginSpiceData
 	/* key: SpiceFileTransferTask, value: RemminaPluginSpiceXferWidgets */
 	GHashTable *file_transfers;
 	GtkWidget  *file_transfer_dialog;
-#  endif /* SPICE_GTK_CHECK_VERSION(0, 31, 0) */
-#endif /* SPICE_GTK_CHECK_VERSION */
+#  endif        /* SPICE_GTK_CHECK_VERSION(0, 31, 0) */
+#endif          /* SPICE_GTK_CHECK_VERSION */
 } RemminaPluginSpiceData;
 
 

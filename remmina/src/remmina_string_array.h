@@ -40,7 +40,7 @@ G_BEGIN_DECLS
 typedef GPtrArray RemminaStringArray;
 
 RemminaStringArray* remmina_string_array_new(void);
-#define remmina_string_array_index(array,i) (gchar*)g_ptr_array_index(array,i)
+#define remmina_string_array_index(array, i) (gchar*)g_ptr_array_index(array, i)
 RemminaStringArray* remmina_string_array_new_from_string(const gchar *strs);
 RemminaStringArray* remmina_string_array_new_from_allocated_string(gchar *strs);
 void remmina_string_array_add(RemminaStringArray *array, const gchar *str);

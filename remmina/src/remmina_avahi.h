@@ -39,8 +39,7 @@ G_BEGIN_DECLS
 
 typedef struct _RemminaAvahiPriv RemminaAvahiPriv;
 
-typedef struct _RemminaAvahi
-{
+typedef struct _RemminaAvahi {
 	GHashTable *discovered_services;
 	gboolean started;
 

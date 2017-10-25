@@ -41,23 +41,21 @@
 #include "remmina/remmina_trace_calls.h"
 
 /***** Define the log window GUI *****/
-#define REMMINA_TYPE_LOG_WINDOW               (remmina_log_window_get_type ())
-#define REMMINA_LOG_WINDOW(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_LOG_WINDOW, RemminaLogWindow))
-#define REMMINA_LOG_WINDOW_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_LOG_WINDOW, RemminaLogWindowClass))
-#define REMMINA_IS_LOG_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_LOG_WINDOW))
-#define REMMINA_IS_LOG_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_LOG_WINDOW))
-#define REMMINA_LOG_WINDOW_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_LOG_WINDOW, RemminaLogWindowClass))
+#define REMMINA_TYPE_LOG_WINDOW               (remmina_log_window_get_type())
+#define REMMINA_LOG_WINDOW(obj)               (G_TYPE_CHECK_INSTANCE_CAST((obj), REMMINA_TYPE_LOG_WINDOW, RemminaLogWindow))
+#define REMMINA_LOG_WINDOW_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST((klass), REMMINA_TYPE_LOG_WINDOW, RemminaLogWindowClass))
+#define REMMINA_IS_LOG_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_TYPE((obj), REMMINA_TYPE_LOG_WINDOW))
+#define REMMINA_IS_LOG_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE((klass), REMMINA_TYPE_LOG_WINDOW))
+#define REMMINA_LOG_WINDOW_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_LOG_WINDOW, RemminaLogWindowClass))
 
-typedef struct _RemminaLogWindow
-{
+typedef struct _RemminaLogWindow {
 	GtkWindow window;
 
 	GtkWidget *log_view;
 	GtkTextBuffer *log_buffer;
 } RemminaLogWindow;
 
-typedef struct _RemminaLogWindowClass
-{
+typedef struct _RemminaLogWindowClass {
 	GtkWindowClass parent_class;
 } RemminaLogWindowClass;
 
@@ -112,12 +110,9 @@ static void remmina_log_end(GtkWidget *widget, gpointer data)
 void remmina_log_start(void)
 {
 	TRACE_CALL("__func__");
-	if (log_window)
-	{
+	if (log_window) {
 		gtk_window_present(GTK_WINDOW(log_window));
-	}
-	else
-	{
+	}else  {
 		log_window = remmina_log_window_new();
 		gtk_window_set_default_size(GTK_WINDOW(log_window), 640, 480);
 		g_signal_connect(G_OBJECT(log_window), "destroy", G_CALLBACK(remmina_log_end), NULL);
@@ -136,11 +131,10 @@ static gboolean remmina_log_scroll_to_end(gpointer data)
 	TRACE_CALL("__func__");
 	GtkTextIter iter;
 
-	if (log_window)
-	{
-		gtk_text_buffer_get_end_iter(REMMINA_LOG_WINDOW (log_window)->log_buffer, &iter);
-		gtk_text_view_scroll_to_iter(GTK_TEXT_VIEW(REMMINA_LOG_WINDOW (log_window)->log_view), &iter, 0.0, FALSE, 0.0,
-		                             0.0);
+	if (log_window) {
+		gtk_text_buffer_get_end_iter(REMMINA_LOG_WINDOW(log_window)->log_buffer, &iter);
+		gtk_text_view_scroll_to_iter(GTK_TEXT_VIEW(REMMINA_LOG_WINDOW(log_window)->log_view), &iter, 0.0, FALSE, 0.0,
+			0.0);
 	}
 	return FALSE;
 }
@@ -150,10 +144,9 @@ static gboolean remmina_log_print_real(gpointer data)
 	TRACE_CALL("__func__");
 	GtkTextIter iter;
 
-	if (log_window)
-	{
-		gtk_text_buffer_get_end_iter(REMMINA_LOG_WINDOW (log_window)->log_buffer, &iter);
-		gtk_text_buffer_insert(REMMINA_LOG_WINDOW (log_window)->log_buffer, &iter, (const gchar*) data, -1);
+	if (log_window) {
+		gtk_text_buffer_get_end_iter(REMMINA_LOG_WINDOW(log_window)->log_buffer, &iter);
+		gtk_text_buffer_insert(REMMINA_LOG_WINDOW(log_window)->log_buffer, &iter, (const gchar*)data, -1);
 		IDLE_ADD(remmina_log_scroll_to_end, NULL);
 	}
 	g_free(data);
@@ -177,10 +170,10 @@ void remmina_log_printf(const gchar *fmt, ...)
 
 	if (!log_window) return;
 
-	va_start (args, fmt);
-	text = g_strdup_vprintf (fmt, args);
-	va_end (args);
+	va_start(args, fmt);
+	text = g_strdup_vprintf(fmt, args);
+	va_end(args);
 
-	IDLE_ADD (remmina_log_print_real, text);
+	IDLE_ADD(remmina_log_print_real, text);
 }
 

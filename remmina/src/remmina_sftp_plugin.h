@@ -38,7 +38,7 @@
 
 G_BEGIN_DECLS
 
-void remmina_sftp_plugin_register (void);
+void remmina_sftp_plugin_register(void);
 
 G_END_DECLS
 

@@ -37,8 +37,7 @@
 
 G_BEGIN_DECLS
 
-enum
-{
+enum {
 	REMMINA_NX_SESSION_COLUMN_DISPLAY,
 	REMMINA_NX_SESSION_COLUMN_TYPE,
 	REMMINA_NX_SESSION_COLUMN_ID,
@@ -69,7 +68,7 @@ void remmina_nx_session_set_localport(RemminaNXSession *nx, gint localport);
 void remmina_nx_session_set_log_callback(RemminaNXSession *nx, RemminaNXLogCallback log_callback);
 
 gboolean remmina_nx_session_open(RemminaNXSession *nx, const gchar *server, guint port, const gchar *private_key_file,
-		RemminaNXPassphraseCallback passphrase_func, gpointer userdata);
+				 RemminaNXPassphraseCallback passphrase_func, gpointer userdata);
 
 gboolean remmina_nx_session_login(RemminaNXSession *nx, const gchar *username, const gchar *password);
 
