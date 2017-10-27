@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,29 +34,26 @@
  *
  */
 
-#ifndef __REMMINAFTPCLIENT_H__
-#define __REMMINAFTPCLIENT_H__
+#pragma once
 
 G_BEGIN_DECLS
 
-#define REMMINA_TYPE_FTP_CLIENT               (remmina_ftp_client_get_type ())
-#define REMMINA_FTP_CLIENT(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_FTP_CLIENT, RemminaFTPClient))
-#define REMMINA_FTP_CLIENT_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_FTP_CLIENT, RemminaFTPClientClass))
-#define REMMINA_IS_FTP_CLIENT(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_FTP_CLIENT))
-#define REMMINA_IS_FTP_CLIENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_FTP_CLIENT))
-#define REMMINA_FTP_CLIENT_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_FTP_CLIENT, RemminaFTPClientClass))
+#define REMMINA_TYPE_FTP_CLIENT               (remmina_ftp_client_get_type())
+#define REMMINA_FTP_CLIENT(obj)               (G_TYPE_CHECK_INSTANCE_CAST((obj), REMMINA_TYPE_FTP_CLIENT, RemminaFTPClient))
+#define REMMINA_FTP_CLIENT_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST((klass), REMMINA_TYPE_FTP_CLIENT, RemminaFTPClientClass))
+#define REMMINA_IS_FTP_CLIENT(obj)            (G_TYPE_CHECK_INSTANCE_TYPE((obj), REMMINA_TYPE_FTP_CLIENT))
+#define REMMINA_IS_FTP_CLIENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE((klass), REMMINA_TYPE_FTP_CLIENT))
+#define REMMINA_FTP_CLIENT_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_FTP_CLIENT, RemminaFTPClientClass))
 
 typedef struct _RemminaFTPClientPriv RemminaFTPClientPriv;
 
-typedef struct _RemminaFTPClient
-{
+typedef struct _RemminaFTPClient {
 	GtkVBox vbox;
 
 	RemminaFTPClientPriv *priv;
 } RemminaFTPClient;
 
-typedef struct _RemminaFTPClientClass
-{
+typedef struct _RemminaFTPClientClass {
 	GtkVBoxClass parent_class;
 
 	void (*open_dir)(RemminaFTPClient *client);
@@ -67,13 +65,11 @@ typedef struct _RemminaFTPClientClass
 GType remmina_ftp_client_get_type(void)
 G_GNUC_CONST;
 
-enum
-{
+enum {
 	REMMINA_FTP_FILE_TYPE_DIR, REMMINA_FTP_FILE_TYPE_FILE, REMMINA_FTP_FILE_N_TYPES,
 };
 
-enum
-{
+enum {
 	REMMINA_FTP_FILE_COLUMN_TYPE,
 	REMMINA_FTP_FILE_COLUMN_NAME,
 	REMMINA_FTP_FILE_COLUMN_SIZE,
@@ -84,13 +80,11 @@ enum
 	REMMINA_FTP_FILE_N_COLUMNS
 };
 
-enum
-{
+enum {
 	REMMINA_FTP_TASK_TYPE_DOWNLOAD, REMMINA_FTP_TASK_TYPE_UPLOAD, REMMINA_FTP_TASK_N_TYPES
 };
 
-enum
-{
+enum {
 	REMMINA_FTP_TASK_STATUS_WAIT,
 	REMMINA_FTP_TASK_STATUS_RUN,
 	REMMINA_FTP_TASK_STATUS_FINISH,
@@ -98,8 +92,7 @@ enum
 	REMMINA_FTP_TASK_N_STATUSES
 };
 
-enum
-{
+enum {
 	REMMINA_FTP_TASK_COLUMN_TYPE,
 	REMMINA_FTP_TASK_COLUMN_NAME,
 	REMMINA_FTP_TASK_COLUMN_SIZE,
@@ -113,8 +106,7 @@ enum
 	REMMINA_FTP_TASK_N_COLUMNS
 };
 
-typedef struct _RemminaFTPTask
-{
+typedef struct _RemminaFTPTask {
 	/* Read-only */
 	gint type;
 	gchar *name;
@@ -155,5 +147,4 @@ gboolean remmina_ftp_client_get_overwrite_status(RemminaFTPClient *client);
 
 G_END_DECLS
 
-#endif  /* __REMMINAFTPCLIENT_H__  */
 

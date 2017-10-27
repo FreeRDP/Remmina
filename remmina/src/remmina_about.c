@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,18 +44,17 @@
 /* Show the about dialog from the file ui/remmina_about.glade */
 void remmina_about_open(GtkWindow *parent)
 {
-	TRACE_CALL("remmina_about_open");
+	TRACE_CALL("__func__");
 	static gchar version[32];
 
-	g_snprintf(version, sizeof(version), "%s (git %s)", VERSION, GIT_REVISION);
+	g_snprintf(version, sizeof(version), "%s (git %s)", VERSION, REMMINA_GIT_REVISION);
 	GtkBuilder *builder = remmina_public_gtk_builder_new_from_file("remmina_about.glade");
-	GtkDialog *dialog = GTK_DIALOG (gtk_builder_get_object(builder, "dialog_remmina_about"));
+	GtkDialog *dialog = GTK_DIALOG(gtk_builder_get_object(builder, "dialog_remmina_about"));
 
 	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), version);
 	gtk_about_dialog_set_translator_credits(GTK_ABOUT_DIALOG(dialog), _("translator-credits"));
 
-	if (parent)
-	{
+	if (parent) {
 		gtk_window_set_transient_for(GTK_WINDOW(dialog), parent);
 		gtk_window_set_destroy_with_parent(GTK_WINDOW(dialog), TRUE);
 	}

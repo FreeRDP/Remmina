@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,19 +42,19 @@
 
 gboolean remmina_sysinfo_is_appindicator_available()
 {
-    /* Check if we have an appindicator available (which uses
-     * DBUS KDE StatusNotifier)
-     */
+	/* Check if we have an appindicator available (which uses
+	 * DBUS KDE StatusNotifier)
+	 */
 
-	TRACE_CALL("remmina_sysinfo_is_appindicator_available");
-    GDBusConnection *con;
-    GVariant *v;
-    GError *error;
-    gboolean available;
+	TRACE_CALL("__func__");
+	GDBusConnection *con;
+	GVariant *v;
+	GError *error;
+	gboolean available;
 
 	available = FALSE;
-    con = g_bus_get_sync(G_BUS_TYPE_SESSION, NULL, NULL);
-    if (con) {
+	con = g_bus_get_sync(G_BUS_TYPE_SESSION, NULL, NULL);
+	if (con) {
 		error = NULL;
 		v = g_dbus_connection_call_sync(con,
 			"org.kde.StatusNotifierWatcher",
@@ -72,27 +73,27 @@ gboolean remmina_sysinfo_is_appindicator_available()
 		}
 		g_object_unref(con);
 	}
-    return available;
+	return available;
 }
 
 gchar *remmina_sysinfo_get_gnome_shell_version()
 {
-    /* Query DBUS to get gnome shell version. Return NULL
-     * if error or no gnome shell found.
-     * The returned string must be freed with g_free */
+	/* Query DBUS to get gnome shell version. Return NULL
+	 * if error or no gnome shell found.
+	 * The returned string must be freed with g_free */
 
-	TRACE_CALL("remmina_sysinfo_get_gnome_shell_version");
-    GDBusConnection *con;
-    GDBusProxy *p;
-    GVariant *v;
-    GError *error;
-    gsize sz;
-    gchar *ret;
+	TRACE_CALL("__func__");
+	GDBusConnection *con;
+	GDBusProxy *p;
+	GVariant *v;
+	GError *error;
+	gsize sz;
+	gchar *ret;
 
-    ret = NULL;
+	ret = NULL;
 
-    con = g_bus_get_sync(G_BUS_TYPE_SESSION, NULL, NULL);
-    if (con) {
+	con = g_bus_get_sync(G_BUS_TYPE_SESSION, NULL, NULL);
+	if (con) {
 		error = NULL;
 		p = g_dbus_proxy_new_sync(con,
 			G_DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS | G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START,
@@ -114,6 +115,6 @@ gchar *remmina_sysinfo_get_gnome_shell_version()
 		}
 		g_object_unref(con);
 	}
-    return ret;
+	return ret;
 }
 

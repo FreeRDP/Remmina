@@ -1,6 +1,7 @@
 # remmina-plugin-tool_hello_world - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+# Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -32,8 +33,8 @@
 
 
 set(REMMINA_PLUGIN_SRCS
-	plugin_config.h
-	plugin.c
+        plugin_config.h
+        plugin.c
 )
 
 add_library(remmina-plugin-tool_hello_world MODULE ${REMMINA_PLUGIN_SRCS})
@@ -46,5 +47,11 @@ include_directories(${CMAKE_SOURCE_DIR}/remmina-plugins)
 
 install(TARGETS remmina-plugin-tool_hello_world DESTINATION ${REMMINA_PLUGINDIR})
 
-install(FILES 16x16/emblems/remmina-tool.png 16x16/emblems/remmina-tool.png DESTINATION ${APPICON16_EMBLEMS_DIR})
-install(FILES 22x22/emblems/remmina-tool.png 22x22/emblems/remmina-tool.png DESTINATION ${APPICON22_EMBLEMS_DIR})
+install(FILES
+    16x16/emblems/remmina-tool.png
+    16x16/emblems/remmina-tool.png
+    DESTINATION ${APPICON16_EMBLEMS_DIR})
+install(FILES
+    22x22/emblems/remmina-tool.png
+    22x22/emblems/remmina-tool.png
+    DESTINATION ${APPICON22_EMBLEMS_DIR})

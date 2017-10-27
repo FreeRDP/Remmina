@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,12 +47,12 @@ G_DEFINE_TYPE( RemminaInitDialog, remmina_init_dialog, GTK_TYPE_DIALOG)
 
 static void remmina_init_dialog_class_init(RemminaInitDialogClass *klass)
 {
-	TRACE_CALL("remmina_init_dialog_class_init");
+	TRACE_CALL("__func__");
 }
 
 static void remmina_init_dialog_destroy(RemminaInitDialog *dialog, gpointer data)
 {
-	TRACE_CALL("remmina_init_dialog_destroy");
+	TRACE_CALL("__func__");
 	g_free(dialog->title);
 	g_free(dialog->status);
 	g_free(dialog->username);
@@ -65,7 +66,7 @@ static void remmina_init_dialog_destroy(RemminaInitDialog *dialog, gpointer data
 
 static void remmina_init_dialog_init(RemminaInitDialog *dialog)
 {
-	TRACE_CALL("remmina_init_dialog_init");
+	TRACE_CALL("__func__");
 	GtkWidget *hbox = NULL;
 	GtkWidget *widget;
 
@@ -112,8 +113,8 @@ static void remmina_init_dialog_init(RemminaInitDialog *dialog)
 
 	/* Entries */
 	widget = gtk_label_new(dialog->title);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_box_pack_start(GTK_BOX(dialog->content_vbox), widget, TRUE, TRUE, 4);
 	dialog->status_label = widget;
@@ -125,7 +126,7 @@ static void remmina_init_dialog_init(RemminaInitDialog *dialog)
 
 static void remmina_init_dialog_connecting(RemminaInitDialog *dialog)
 {
-	TRACE_CALL("remmina_init_dialog_connecting");
+	TRACE_CALL("__func__");
 	gtk_label_set_text(GTK_LABEL(dialog->status_label), (dialog->status ? dialog->status : dialog->title));
 	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-information", GTK_ICON_SIZE_DIALOG);
 	gtk_dialog_set_response_sensitive(GTK_DIALOG(dialog), GTK_RESPONSE_OK, FALSE);
@@ -135,25 +136,25 @@ static void remmina_init_dialog_connecting(RemminaInitDialog *dialog)
 
 GtkWidget* remmina_init_dialog_new(const gchar *title_format, ...)
 {
-	TRACE_CALL("remmina_init_dialog_new");
+	TRACE_CALL("__func__");
 	RemminaInitDialog *dialog;
 	va_list args;
 
-	dialog = REMMINA_INIT_DIALOG (g_object_new (REMMINA_TYPE_INIT_DIALOG, NULL));
+	dialog = REMMINA_INIT_DIALOG(g_object_new(REMMINA_TYPE_INIT_DIALOG, NULL));
 
-	va_start (args, title_format);
-	dialog->title = g_strdup_vprintf (title_format, args);
-	va_end (args);
-	gtk_window_set_title (GTK_WINDOW(dialog), dialog->title);
+	va_start(args, title_format);
+	dialog->title = g_strdup_vprintf(title_format, args);
+	va_end(args);
+	gtk_window_set_title(GTK_WINDOW(dialog), dialog->title);
 
-	remmina_init_dialog_connecting (dialog);
+	remmina_init_dialog_connecting(dialog);
 
-	return GTK_WIDGET (dialog);
+	return GTK_WIDGET(dialog);
 }
 
 void remmina_init_dialog_set_status(RemminaInitDialog *dialog, const gchar *status_format, ...)
 {
-	TRACE_CALL("remmina_init_dialog_set_status");
+	TRACE_CALL("__func__");
 	/* This function can be called from a non main thread */
 
 	va_list args;
@@ -161,8 +162,7 @@ void remmina_init_dialog_set_status(RemminaInitDialog *dialog, const gchar *stat
 	if (!dialog)
 		return;
 
-	if (status_format)
-	{
+	if (status_format) {
 		if (dialog->status)
 			g_free(dialog->status);
 
@@ -170,12 +170,9 @@ void remmina_init_dialog_set_status(RemminaInitDialog *dialog, const gchar *stat
 		dialog->status = g_strdup_vprintf(status_format, args);
 		va_end(args);
 
-		if ( remmina_masterthread_exec_is_main_thread() )
-		{
+		if ( remmina_masterthread_exec_is_main_thread() ) {
 			gtk_label_set_text(GTK_LABEL(dialog->status_label), dialog->status);
-		}
-		else
-		{
+		}else  {
 			RemminaMTExecData *d;
 			d = (RemminaMTExecData*)g_malloc( sizeof(RemminaMTExecData) );
 			d->func = FUNC_GTK_LABEL_SET_TEXT;
@@ -189,25 +186,21 @@ void remmina_init_dialog_set_status(RemminaInitDialog *dialog, const gchar *stat
 
 void remmina_init_dialog_set_status_temp(RemminaInitDialog *dialog, const gchar *status_format, ...)
 {
-	TRACE_CALL("remmina_init_dialog_set_status_temp");
+	TRACE_CALL("__func__");
 
 	/* This function can be called from a non main thread */
 
 	gchar* s;
 	va_list args;
 
-	if (status_format)
-	{
+	if (status_format) {
 		va_start(args, status_format);
 		s = g_strdup_vprintf(status_format, args);
 		va_end(args);
 
-		if ( remmina_masterthread_exec_is_main_thread() )
-		{
+		if ( remmina_masterthread_exec_is_main_thread() ) {
 			gtk_label_set_text(GTK_LABEL(dialog->status_label), dialog->status);
-		}
-		else
-		{
+		}else  {
 			RemminaMTExecData *d;
 			d = (RemminaMTExecData*)g_malloc( sizeof(RemminaMTExecData) );
 			d->func = FUNC_GTK_LABEL_SET_TEXT;
@@ -223,7 +216,7 @@ void remmina_init_dialog_set_status_temp(RemminaInitDialog *dialog, const gchar 
 
 gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, gboolean allow_save)
 {
-	TRACE_CALL("remmina_init_dialog_authpwd");
+	TRACE_CALL("__func__");
 
 	GtkWidget *grid;
 	GtkWidget *password_entry;
@@ -232,8 +225,7 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 	gint ret;
 	gchar *s;
 
-	if ( !remmina_masterthread_exec_is_main_thread() )
-	{
+	if ( !remmina_masterthread_exec_is_main_thread() ) {
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
 		gint retval;
@@ -261,8 +253,8 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 
 	/* Entries */
 	widget = gtk_label_new(label);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 1, 1);
 
@@ -294,8 +286,7 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 	/* Now run it */
 	ret = gtk_dialog_run(GTK_DIALOG(dialog));
 
-	if (ret == GTK_RESPONSE_OK)
-	{
+	if (ret == GTK_RESPONSE_OK) {
 		dialog->password = g_strdup(gtk_entry_get_text(GTK_ENTRY(password_entry)));
 		dialog->save_password = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(save_password_check));
 	}
@@ -308,9 +299,9 @@ gint remmina_init_dialog_authpwd(RemminaInitDialog *dialog, const gchar *label, 
 }
 
 gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_domain, const gchar *default_username,
-                                     const gchar *default_domain, gboolean allow_save)
+				     const gchar *default_domain, gboolean allow_save)
 {
-	TRACE_CALL("remmina_init_dialog_authuserpwd");
+	TRACE_CALL("__func__");
 
 	GtkWidget *grid;
 	GtkWidget *username_entry;
@@ -320,8 +311,7 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 	GtkWidget *widget;
 	gint ret;
 
-	if ( !remmina_masterthread_exec_is_main_thread() )
-	{
+	if ( !remmina_masterthread_exec_is_main_thread() ) {
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
 		gint retval;
@@ -345,15 +335,15 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 	gtk_widget_show(grid);
 	gtk_grid_set_row_spacing(GTK_GRID(grid), 8);
 	gtk_grid_set_column_spacing(GTK_GRID(grid), 8);
-	gtk_grid_set_column_homogeneous (GTK_GRID(grid), TRUE);
+	gtk_grid_set_column_homogeneous(GTK_GRID(grid), TRUE);
 
 	/* Icon */
 	gtk_image_set_from_icon_name(GTK_IMAGE(dialog->image), "dialog-password", GTK_ICON_SIZE_DIALOG);
 
 	/* Entries */
 	widget = gtk_label_new(_("User name"));
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 1, 1);
 
@@ -361,14 +351,13 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 	gtk_widget_show(username_entry);
 	gtk_grid_attach(GTK_GRID(grid), username_entry, 1, 0, 2, 1);
 	gtk_entry_set_max_length(GTK_ENTRY(username_entry), 100);
-	if (default_username && default_username[0] != '\0')
-	{
+	if (default_username && default_username[0] != '\0') {
 		gtk_entry_set_text(GTK_ENTRY(username_entry), default_username);
 	}
 
 	widget = gtk_label_new(_("Password"));
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 2, 1, 1);
 
@@ -380,11 +369,10 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 	gtk_entry_set_activates_default(GTK_ENTRY(password_entry), TRUE);
 
 
-	if (want_domain)
-	{
+	if (want_domain) {
 		widget = gtk_label_new(_("Domain"));
-		gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-		gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+		gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+		gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 		gtk_widget_show(widget);
 		gtk_grid_attach(GTK_GRID(grid), widget, 0, 3, 1, 1);
 
@@ -392,22 +380,19 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 		gtk_widget_show(domain_entry);
 		gtk_grid_attach(GTK_GRID(grid), domain_entry, 1, 3, 2, 1);
 		gtk_entry_set_max_length(GTK_ENTRY(domain_entry), 100);
-		if (default_domain && default_domain[0] != '\0')
-		{
+		gtk_entry_set_activates_default(GTK_ENTRY(domain_entry), TRUE);
+		if (default_domain && default_domain[0] != '\0') {
 			gtk_entry_set_text(GTK_ENTRY(domain_entry), default_domain);
 		}
 	}
 
 	save_password_check = gtk_check_button_new_with_label(_("Save password"));
-	if (allow_save)
-	{
+	if (allow_save) {
 		gtk_widget_show(save_password_check);
 		gtk_grid_attach(GTK_GRID(grid), save_password_check, 0, 4, 2, 3);
 		if (dialog->save_password)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(save_password_check), TRUE);
-	}
-	else
-	{
+	}else  {
 		gtk_widget_set_sensitive(save_password_check, FALSE);
 	}
 
@@ -416,12 +401,9 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 
 	gtk_dialog_set_response_sensitive(GTK_DIALOG(dialog), GTK_RESPONSE_OK, TRUE);
 
-	if (default_username && default_username[0] != '\0')
-	{
+	if (default_username && default_username[0] != '\0') {
 		gtk_widget_grab_focus(password_entry);
-	}
-	else
-	{
+	}else  {
 		gtk_widget_grab_focus(username_entry);
 	}
 
@@ -429,8 +411,7 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 
 	/* Now run it */
 	ret = gtk_dialog_run(GTK_DIALOG(dialog));
-	if (ret == GTK_RESPONSE_OK)
-	{
+	if (ret == GTK_RESPONSE_OK) {
 		dialog->username = g_strdup(gtk_entry_get_text(GTK_ENTRY(username_entry)));
 		dialog->password = g_strdup(gtk_entry_get_text(GTK_ENTRY(password_entry)));
 		dialog->save_password = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(save_password_check));
@@ -448,15 +429,14 @@ gint remmina_init_dialog_authuserpwd(RemminaInitDialog *dialog, gboolean want_do
 
 gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* subject, const gchar* issuer, const gchar* fingerprint)
 {
-	TRACE_CALL("remmina_init_dialog_certificate");
+	TRACE_CALL("__func__");
 
 	gint status;
 	GtkWidget* grid;
 	GtkWidget* widget;
 	gchar* s;
 
-	if ( !remmina_masterthread_exec_is_main_thread() )
-	{
+	if ( !remmina_masterthread_exec_is_main_thread() ) {
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
 		gint retval;
@@ -486,47 +466,47 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 
 	/* Entries */
 	widget = gtk_label_new(_("Subject:"));
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 1, 1);
 
 	widget = gtk_label_new(subject);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 0, 2, 1);
 
 	widget = gtk_label_new(_("Issuer:"));
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 1, 1, 1);
 
 	widget = gtk_label_new(issuer);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 1, 2, 1);
 
 	widget = gtk_label_new(_("Fingerprint:"));
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 2, 1, 1);
 
 	widget = gtk_label_new(fingerprint);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 2, 2, 1);
 
-	widget = gtk_label_new (NULL);
+	widget = gtk_label_new(NULL);
 	s = g_strdup_printf("<span size=\"large\"><b>%s</b></span>", _("Accept Certificate?"));
-	gtk_label_set_markup(GTK_LABEL (widget), s);
+	gtk_label_set_markup(GTK_LABEL(widget), s);
 	g_free(s);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 3, 3, 1);
 
@@ -540,8 +520,7 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 	/* Now run it */
 	status = gtk_dialog_run(GTK_DIALOG(dialog));
 
-	if (status == GTK_RESPONSE_OK)
-	{
+	if (status == GTK_RESPONSE_OK) {
 
 	}
 
@@ -551,15 +530,14 @@ gint remmina_init_dialog_certificate(RemminaInitDialog* dialog, const gchar* sub
 }
 gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gchar* subject, const gchar* issuer, const gchar* new_fingerprint, const gchar* old_fingerprint)
 {
-	TRACE_CALL("remmina_init_dialog_certificate_changed");
+	TRACE_CALL("__func__");
 
 	gint status;
 	GtkWidget* grid;
 	GtkWidget* widget;
 	gchar* s;
 
-	if ( !remmina_masterthread_exec_is_main_thread() )
-	{
+	if ( !remmina_masterthread_exec_is_main_thread() ) {
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
 		gint retval;
@@ -590,60 +568,60 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 	/* Entries */
 	/* Not tested */
 	widget = gtk_label_new(_("Subject:"));
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 1, 1);
 
 
 	widget = gtk_label_new(subject);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 0, 2, 1);
 
 	widget = gtk_label_new(_("Issuer:"));
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 1, 1, 1);
 
 	widget = gtk_label_new(issuer);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 1, 2, 1);
 
 	widget = gtk_label_new(_("Old Fingerprint:"));
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 2, 1, 1);
 
 	widget = gtk_label_new(old_fingerprint);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 2, 2, 1);
 
 	widget = gtk_label_new(_("New Fingerprint:"));
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 3, 1, 1);
 
 	widget = gtk_label_new(new_fingerprint);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 3, 2, 1);
 
-	widget = gtk_label_new (NULL);
+	widget = gtk_label_new(NULL);
 	s = g_strdup_printf("<span size=\"large\"><b>%s</b></span>", _("Accept Changed Certificate?"));
-	gtk_label_set_markup(GTK_LABEL (widget), s);
+	gtk_label_set_markup(GTK_LABEL(widget), s);
 	g_free(s);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 4, 3, 1);
 
@@ -657,8 +635,7 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 	/* Now run it */
 	status = gtk_dialog_run(GTK_DIALOG(dialog));
 
-	if (status == GTK_RESPONSE_OK)
-	{
+	if (status == GTK_RESPONSE_OK) {
 
 	}
 
@@ -670,7 +647,7 @@ gint remmina_init_dialog_certificate_changed(RemminaInitDialog* dialog, const gc
 /* NOT TESTED */
 static GtkWidget* remmina_init_dialog_create_file_button(GtkGrid *grid, const gchar *label, gint row, const gchar *filename)
 {
-	TRACE_CALL("remmina_init_dialog_create_file_button");
+	TRACE_CALL("__func__");
 	GtkWidget *widget;
 	gchar *pkidir;
 
@@ -682,15 +659,11 @@ static GtkWidget* remmina_init_dialog_create_file_button(GtkGrid *grid, const gc
 	gtk_file_chooser_button_set_width_chars(GTK_FILE_CHOOSER_BUTTON(widget), 25);
 	gtk_widget_show(widget);
 	gtk_grid_attach(grid, widget, 1, row, 2, row + 1);
-	if (filename && filename[0] != '\0')
-	{
+	if (filename && filename[0] != '\0') {
 		gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(widget), filename);
-	}
-	else
-	{
+	}else  {
 		pkidir = g_strdup_printf("%s/.pki", g_get_home_dir());
-		if (g_file_test(pkidir, G_FILE_TEST_IS_DIR))
-		{
+		if (g_file_test(pkidir, G_FILE_TEST_IS_DIR)) {
 			gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(widget), pkidir);
 		}
 		g_free(pkidir);
@@ -700,9 +673,9 @@ static GtkWidget* remmina_init_dialog_create_file_button(GtkGrid *grid, const gc
 }
 
 gint remmina_init_dialog_authx509(RemminaInitDialog *dialog, const gchar *cacert, const gchar *cacrl, const gchar *clientcert,
-                                  const gchar *clientkey)
+				  const gchar *clientkey)
 {
-	TRACE_CALL("remmina_init_dialog_authx509");
+	TRACE_CALL("__func__");
 
 	GtkWidget *grid;
 	GtkWidget *cacert_button;
@@ -712,8 +685,7 @@ gint remmina_init_dialog_authx509(RemminaInitDialog *dialog, const gchar *cacert
 	gint ret;
 
 
-	if ( !remmina_masterthread_exec_is_main_thread() )
-	{
+	if ( !remmina_masterthread_exec_is_main_thread() ) {
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
 		gint retval;
@@ -756,8 +728,7 @@ gint remmina_init_dialog_authx509(RemminaInitDialog *dialog, const gchar *cacert
 
 	/* Now run it */
 	ret = gtk_dialog_run(GTK_DIALOG(dialog));
-	if (ret == GTK_RESPONSE_OK)
-	{
+	if (ret == GTK_RESPONSE_OK) {
 		dialog->cacert = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(cacert_button));
 		dialog->cacrl = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(cacrl_button));
 		dialog->clientcert = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(clientcert_button));
@@ -773,14 +744,13 @@ gint remmina_init_dialog_authx509(RemminaInitDialog *dialog, const gchar *cacert
 
 gint remmina_init_dialog_serverkey_confirm(RemminaInitDialog *dialog, const gchar *serverkey, const gchar *prompt)
 {
-	TRACE_CALL("remmina_init_dialog_serverkey_confirm");
+	TRACE_CALL("__func__");
 
 	GtkWidget *vbox = NULL;
 	GtkWidget *widget;
 	gint ret;
 
-	if ( !remmina_masterthread_exec_is_main_thread() )
-	{
+	if ( !remmina_masterthread_exec_is_main_thread() ) {
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
 		gint retval;
@@ -806,20 +776,20 @@ gint remmina_init_dialog_serverkey_confirm(RemminaInitDialog *dialog, const gcha
 
 	/* Entries */
 	widget = gtk_label_new(prompt);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_box_pack_start(GTK_BOX(vbox), widget, TRUE, TRUE, 4);
 
 	widget = gtk_label_new(serverkey);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_box_pack_start(GTK_BOX(vbox), widget, TRUE, TRUE, 4);
 
 	widget = gtk_label_new(_("Do you trust the new public key?"));
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_widget_show(widget);
 	gtk_box_pack_start(GTK_BOX(vbox), widget, TRUE, TRUE, 4);
 
@@ -841,20 +811,20 @@ gint remmina_init_dialog_serverkey_confirm(RemminaInitDialog *dialog, const gcha
 
 gint remmina_init_dialog_serverkey_unknown(RemminaInitDialog *dialog, const gchar *serverkey)
 {
-	TRACE_CALL("remmina_init_dialog_serverkey_unknown");
+	TRACE_CALL("__func__");
 	/* This function can be called from a non main thread */
 
 	return remmina_init_dialog_serverkey_confirm(dialog, serverkey,
-	        _("The server is unknown. The public key fingerprint is:"));
+		_("The server is unknown. The public key fingerprint is:"));
 }
 
 gint remmina_init_dialog_serverkey_changed(RemminaInitDialog *dialog, const gchar *serverkey)
 {
-	TRACE_CALL("remmina_init_dialog_serverkey_changed");
+	TRACE_CALL("__func__");
 	/* This function can be called from a non main thread */
 
 	return remmina_init_dialog_serverkey_confirm(dialog, serverkey,
-	        _("WARNING: The server has changed its public key. This means either you are under attack,\n"
-	          "or the administrator has changed the key. The new public key fingerprint is:"));
+		_("WARNING: The server has changed its public key. This means either you are under attack,\n"
+			"or the administrator has changed the key. The new public key fingerprint is:"));
 }
 

@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009 - Vic Lee
+ * Copyright (C) 2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINAEXTERNALTOOLS_H__
-#define __REMMINAEXTERNALTOOLS_H__
+#pragma once
 
 #include <gtk/gtk.h>
 #include "remmina_file.h"
@@ -46,5 +46,4 @@ gboolean remmina_external_tools_from_filename(RemminaMain *remminamain, gchar* f
 
 G_END_DECLS
 
-#endif  /* __REMMINAEXTERNALTOOLS_H__  */
 

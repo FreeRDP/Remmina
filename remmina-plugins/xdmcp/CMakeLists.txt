@@ -1,6 +1,7 @@
 # remmina-plugin-xdmcp - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2011 Marc-Andre Moreau
+# Copyright (C) 2014-2017 Antenore Gatta, Giovanni Panozzo
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,7 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
 #
 # In addition, as a special exception, the copyright holders give
@@ -31,9 +32,7 @@
 # files in the program, then also delete it here.
 
 
-set(REMMINA_PLUGIN_XDMCP_SRCS
-	xdmcp_plugin.c
-	)
+set(REMMINA_PLUGIN_XDMCP_SRCS xdmcp_plugin.c)
 
 add_library(remmina-plugin-xdmcp MODULE ${REMMINA_PLUGIN_XDMCP_SRCS})
 set_target_properties(remmina-plugin-xdmcp PROPERTIES PREFIX "")
@@ -44,5 +43,11 @@ target_link_libraries(remmina-plugin-xdmcp ${REMMINA_COMMON_LIBRARIES})
 
 install(TARGETS remmina-plugin-xdmcp DESTINATION ${REMMINA_PLUGINDIR})
 
-install(FILES 16x16/emblems/remmina-xdmcp-ssh.png 16x16/emblems/remmina-xdmcp.png DESTINATION ${APPICON16_EMBLEMS_DIR})
-install(FILES 22x22/emblems/remmina-xdmcp-ssh.png 22x22/emblems/remmina-xdmcp.png DESTINATION ${APPICON22_EMBLEMS_DIR})
+install(FILES
+    16x16/emblems/remmina-xdmcp-ssh.png
+    16x16/emblems/remmina-xdmcp.png
+    DESTINATION ${APPICON16_EMBLEMS_DIR})
+install(FILES
+    22x22/emblems/remmina-xdmcp-ssh.png
+    22x22/emblems/remmina-xdmcp.png
+    DESTINATION ${APPICON22_EMBLEMS_DIR})

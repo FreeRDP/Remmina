@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,10 +53,9 @@
 
 #define REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY "overwrite_all"
 
-#define GET_PLUGIN_DATA(gp) (RemminaPluginSftpData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
+#define GET_PLUGIN_DATA(gp) (RemminaPluginSftpData*)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
-typedef struct _RemminaPluginSftpData
-{
+typedef struct _RemminaPluginSftpData {
 	GtkWidget *client;
 	pthread_t thread;
 	RemminaSFTP *sftp;
@@ -64,10 +64,10 @@ typedef struct _RemminaPluginSftpData
 static RemminaPluginService *remmina_plugin_service = NULL;
 
 static gpointer
-remmina_plugin_sftp_main_thread (gpointer data)
+remmina_plugin_sftp_main_thread(gpointer data)
 {
-	TRACE_CALL("remmina_plugin_sftp_main_thread");
-	RemminaProtocolWidget *gp = (RemminaProtocolWidget*) data;
+	TRACE_CALL("__func__");
+	RemminaProtocolWidget *gp = (RemminaProtocolWidget*)data;
 	RemminaPluginSftpData *gpdata;
 	RemminaFile *remminafile;
 	RemminaSSH *ssh;
@@ -76,250 +76,267 @@ remmina_plugin_sftp_main_thread (gpointer data)
 	gint ret;
 	const gchar *cs;
 
-	pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, NULL);
+	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
 
-	gpdata = GET_PLUGIN_DATA(gp);
+		gpdata = GET_PLUGIN_DATA(gp);
 
-	ssh = g_object_get_data (G_OBJECT(gp), "user-data");
-	if (ssh)
-	{
+	ssh = g_object_get_data(G_OBJECT(gp), "user-data");
+	if (ssh) {
 		/* Create SFTP connection based on existing SSH session */
-		sftp = remmina_sftp_new_from_ssh (ssh);
-		if (remmina_ssh_init_session (REMMINA_SSH (sftp)) &&
-		        remmina_ssh_auth (REMMINA_SSH (sftp), NULL) > 0 &&
-		        remmina_sftp_open (sftp))
-		{
+		sftp = remmina_sftp_new_from_ssh(ssh);
+		if (remmina_ssh_init_session(REMMINA_SSH(sftp)) &&
+		    remmina_ssh_auth(REMMINA_SSH(sftp), NULL) > 0 &&
+		    remmina_sftp_open(sftp)) {
 			cont = TRUE;
 		}
-	}
-	else
-	{
+	}else {
 		/* New SFTP connection */
-		remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
-		remmina_plugin_service->file_set_string (remminafile, "ssh_server",
-		        remmina_plugin_service->file_get_string (remminafile, "server"));
+		remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+		remmina_plugin_service->file_set_string(remminafile, "ssh_server",
+			remmina_plugin_service->file_get_string(remminafile, "server"));
 
-		sftp = remmina_sftp_new_from_file (remminafile);
-		while (1)
-		{
-			if (!remmina_ssh_init_session (REMMINA_SSH (sftp)))
-			{
-				remmina_plugin_service->protocol_plugin_set_error (gp, "%s", REMMINA_SSH (sftp)->error);
+		sftp = remmina_sftp_new_from_file(remminafile);
+		while (1) {
+			if (!remmina_ssh_init_session(REMMINA_SSH(sftp))) {
+				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(sftp)->error);
 				break;
 			}
 
-			ret = remmina_ssh_auth_gui (REMMINA_SSH (sftp),
-			                            REMMINA_INIT_DIALOG (remmina_protocol_widget_get_init_dialog (gp)));
-			if (ret == 0)
-			{
-				remmina_plugin_service->protocol_plugin_set_error (gp, "%s", REMMINA_SSH (sftp)->error);
+			ret = remmina_ssh_auth_gui(REMMINA_SSH(sftp),
+				REMMINA_INIT_DIALOG(remmina_protocol_widget_get_init_dialog(gp)), remminafile);
+			if (ret == 0) {
+				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(sftp)->error);
 			}
 			if (ret <= 0) break;
 
-			if (!remmina_sftp_open (sftp))
-			{
-				remmina_plugin_service->protocol_plugin_set_error (gp, "%s", REMMINA_SSH (sftp)->error);
+			if (!remmina_sftp_open(sftp)) {
+				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(sftp)->error);
 				break;
 			}
 
-			cs = remmina_plugin_service->file_get_string (remminafile, "execpath");
-			if (cs && cs[0])
-			{
-				remmina_ftp_client_set_dir (REMMINA_FTP_CLIENT (gpdata->client), cs);
+			cs = remmina_plugin_service->file_get_string(remminafile, "execpath");
+			if (cs && cs[0]) {
+				remmina_ftp_client_set_dir(REMMINA_FTP_CLIENT(gpdata->client), cs);
 			}
 
 			cont = TRUE;
 			break;
 		}
 	}
-	if (!cont)
-	{
-		if (sftp) remmina_sftp_free (sftp);
-		IDLE_ADD ((GSourceFunc) remmina_plugin_service->protocol_plugin_close_connection, gp);
+	if (!cont) {
+		if (sftp) remmina_sftp_free(sftp);
+		IDLE_ADD((GSourceFunc)remmina_plugin_service->protocol_plugin_close_connection, gp);
 		return NULL;
 	}
 
-	remmina_sftp_client_open (REMMINA_SFTP_CLIENT (gpdata->client), sftp);
+	remmina_sftp_client_open(REMMINA_SFTP_CLIENT(gpdata->client), sftp);
 	/* RemminaSFTPClient owns the object, we just take the reference */
 	gpdata->sftp = sftp;
 
-	remmina_plugin_service->protocol_plugin_emit_signal (gp, "connect");
+	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 
 	gpdata->thread = 0;
 	return NULL;
 }
 
 static void
-remmina_plugin_sftp_client_on_realize (GtkWidget *widget, RemminaProtocolWidget *gp)
+remmina_plugin_sftp_client_on_realize(GtkWidget *widget, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_sftp_client_on_realize");
+	TRACE_CALL("__func__");
 	RemminaFile *remminafile;
 
-	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
-	remmina_ftp_client_load_state (REMMINA_FTP_CLIENT (widget), remminafile);
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	remmina_ftp_client_load_state(REMMINA_FTP_CLIENT(widget), remminafile);
 }
 
 static void
-remmina_plugin_sftp_init (RemminaProtocolWidget *gp)
+remmina_plugin_sftp_init(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_sftp_init");
+	TRACE_CALL("__func__");
 	RemminaPluginSftpData *gpdata;
 	RemminaFile *remminafile;
 
-	gpdata = g_new0 (RemminaPluginSftpData, 1);
-	g_object_set_data_full (G_OBJECT(gp), "plugin-data", gpdata, g_free);
+	gpdata = g_new0(RemminaPluginSftpData, 1);
+	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
 
-	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
-	gpdata->client = remmina_sftp_client_new ();
+	gpdata->client = remmina_sftp_client_new();
 	gtk_widget_show(gpdata->client);
-	gtk_container_add(GTK_CONTAINER (gp), gpdata->client);
+	gtk_container_add(GTK_CONTAINER(gp), gpdata->client);
 
-	remmina_ftp_client_set_show_hidden (REMMINA_FTP_CLIENT (gpdata->client),
-	                                    remmina_plugin_service->file_get_int (remminafile, "showhidden", FALSE));
+	remmina_ftp_client_set_show_hidden(REMMINA_FTP_CLIENT(gpdata->client),
+		remmina_plugin_service->file_get_int(remminafile, "showhidden", FALSE));
 
-	remmina_ftp_client_set_overwrite_status (REMMINA_FTP_CLIENT (gpdata->client),
-	        remmina_plugin_service->file_get_int (remminafile,
-	                REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE));
+	remmina_ftp_client_set_overwrite_status(REMMINA_FTP_CLIENT(gpdata->client),
+		remmina_plugin_service->file_get_int(remminafile,
+			REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE));
 
-	remmina_plugin_service->protocol_plugin_register_hostkey (gp, gpdata->client);
+	remmina_plugin_service->protocol_plugin_register_hostkey(gp, gpdata->client);
 
 	g_signal_connect(G_OBJECT(gpdata->client),
-	                 "realize", G_CALLBACK(remmina_plugin_sftp_client_on_realize), gp);
+		"realize", G_CALLBACK(remmina_plugin_sftp_client_on_realize), gp);
 }
 
 static gboolean
-remmina_plugin_sftp_open_connection (RemminaProtocolWidget *gp)
+remmina_plugin_sftp_open_connection(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_sftp_open_connection");
+	TRACE_CALL("__func__");
 	RemminaPluginSftpData *gpdata = GET_PLUGIN_DATA(gp);
 
-	remmina_plugin_service->protocol_plugin_set_expand (gp, TRUE);
-	remmina_plugin_service->protocol_plugin_set_width (gp, 640);
-	remmina_plugin_service->protocol_plugin_set_height (gp, 480);
+	remmina_plugin_service->protocol_plugin_set_expand(gp, TRUE);
+	remmina_plugin_service->protocol_plugin_set_width(gp, 640);
+	remmina_plugin_service->protocol_plugin_set_height(gp, 480);
 
-	if (pthread_create (&gpdata->thread, NULL, remmina_plugin_sftp_main_thread, gp))
-	{
-		remmina_plugin_service->protocol_plugin_set_error (gp,
-		        "Failed to initialize pthread. Falling back to non-thread mode...");
+	if (pthread_create(&gpdata->thread, NULL, remmina_plugin_sftp_main_thread, gp)) {
+		remmina_plugin_service->protocol_plugin_set_error(gp,
+			"Failed to initialize pthread. Falling back to non-thread mode...");
 		gpdata->thread = 0;
 		return FALSE;
-	}
-	else
-	{
+	}else {
 		return TRUE;
 	}
 	return TRUE;
 }
 
 static gboolean
-remmina_plugin_sftp_close_connection (RemminaProtocolWidget *gp)
+remmina_plugin_sftp_close_connection(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_sftp_close_connection");
+	TRACE_CALL("__func__");
 	RemminaPluginSftpData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 
-	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
-	if (gpdata->thread)
-	{
-		pthread_cancel (gpdata->thread);
-		if (gpdata->thread) pthread_join (gpdata->thread, NULL);
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	if (gpdata->thread) {
+		pthread_cancel(gpdata->thread);
+		if (gpdata->thread) pthread_join(gpdata->thread, NULL);
 	}
 
-	remmina_ftp_client_save_state (REMMINA_FTP_CLIENT (gpdata->client), remminafile);
-	remmina_plugin_service->protocol_plugin_emit_signal (gp, "disconnect");
+	remmina_ftp_client_save_state(REMMINA_FTP_CLIENT(gpdata->client), remminafile);
+	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 	/* The session preference overwrite_all is always saved to FALSE in order
 	 * to avoid unwanted overwriting.
 	 * If we'd change idea just remove the next line to save the preference. */
 	remmina_file_set_int(remminafile,
-	                     REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE);
+		REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE);
 	return FALSE;
 }
 
 static gboolean
-remmina_plugin_sftp_query_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
+remmina_plugin_sftp_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-	TRACE_CALL("remmina_plugin_sftp_query_feature");
+	TRACE_CALL("__func__");
 	return TRUE;
 }
 
 static void
-remmina_plugin_sftp_call_feature (RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
+remmina_plugin_sftp_call_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-	TRACE_CALL("remmina_plugin_sftp_call_feature");
+	TRACE_CALL("__func__");
 	RemminaPluginSftpData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 
-	remminafile = remmina_plugin_service->protocol_plugin_get_file (gp);
-	switch (feature->id)
-	{
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	switch (feature->id) {
 	case REMMINA_PROTOCOL_FEATURE_TOOL_SSH:
-		remmina_plugin_service->open_connection (
-		    remmina_file_dup_temp_protocol (remmina_plugin_service->protocol_plugin_get_file (gp), "SSH"),
-		    NULL, gpdata->sftp, NULL);
+		remmina_plugin_service->open_connection(
+			remmina_file_dup_temp_protocol(remmina_plugin_service->protocol_plugin_get_file(gp), "SSH"),
+			NULL, gpdata->sftp, NULL);
 		return;
 	case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
-		remmina_plugin_service->open_connection (
-		    remmina_file_dup_temp_protocol (remmina_plugin_service->protocol_plugin_get_file (gp), "SFTP"),
-		    NULL, gpdata->sftp, NULL);
+		remmina_plugin_service->open_connection(
+			remmina_file_dup_temp_protocol(remmina_plugin_service->protocol_plugin_get_file(gp), "SFTP"),
+			NULL, gpdata->sftp, NULL);
 		return;
 	case REMMINA_PLUGIN_SFTP_FEATURE_PREF_SHOW_HIDDEN:
-		remmina_ftp_client_set_show_hidden (REMMINA_FTP_CLIENT (gpdata->client),
-		                                    remmina_plugin_service->file_get_int (remminafile, "showhidden", FALSE));
+		remmina_ftp_client_set_show_hidden(REMMINA_FTP_CLIENT(gpdata->client),
+			remmina_plugin_service->file_get_int(remminafile, "showhidden", FALSE));
 		return;
 	case REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL:
-		remmina_ftp_client_set_overwrite_status (REMMINA_FTP_CLIENT (gpdata->client),
-		        remmina_plugin_service->file_get_int (remminafile,
-		                REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE));
+		remmina_ftp_client_set_overwrite_status(REMMINA_FTP_CLIENT(gpdata->client),
+			remmina_plugin_service->file_get_int(remminafile,
+				REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE));
 		return;
 	}
 }
+
+/* Array of key/value pairs for ssh auth type*/
+static gpointer ssh_auth_type[] =
+{
+	"password",	   N_("Password"),
+	"ssh_agent",	   N_("SSH agent"),
+	"ssh_pubkey_auto", N_("Public key (automatic)"),
+	"ssh_identity",	   N_("SSH identity file"),
+	NULL
+};
 
 /* Array for available features.
  * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
 static const RemminaProtocolFeature remmina_plugin_sftp_features[] =
 {
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SFTP_FEATURE_PREF_SHOW_HIDDEN, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), "showhidden", N_("Show Hidden Files") },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK), REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, N_("Overwrite all") },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_END, 0, NULL, NULL, NULL }
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SFTP_FEATURE_PREF_SHOW_HIDDEN,   GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),   "showhidden",
+	  N_("Show Hidden Files")						},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF, REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL, GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),
+	  REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY,	 N_("Overwrite all")													},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,  0,					      NULL,						      NULL,
+		NULL														       }
+};
+
+/* Array of RemminaProtocolSetting for basic settings.
+ * Each item is composed by:
+ * a) RemminaProtocolSettingType for setting type
+ * b) Setting name
+ * c) Setting description
+ * d) Compact disposition
+ * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
+ * f) Unused pointer
+ */
+static const RemminaProtocolSetting remmina_sftp_basic_settings[] =
+{
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "ssh_server",		NULL,				FALSE,				 NULL,				      NULL						   },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "ssh_username",	N_("User name"),		FALSE,				 NULL,				      NULL						   },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password",	N_("User password"),		FALSE,				 NULL,				      NULL						   },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth_type",	N_("Authentication type"),	FALSE,				 ssh_auth_type,			      NULL						   },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey",	N_("Identity file"),		FALSE,				 NULL,				      NULL						   },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			NULL,				FALSE,				 NULL,				      NULL						   }
 };
 
 /* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin_sftp =
 {
-	REMMINA_PLUGIN_TYPE_PROTOCOL,                 // Type
-	"SFTP",                                       // Name
-	N_("SFTP - Secure File Transfer"),            // Description
-	GETTEXT_PACKAGE,                              // Translation domain
-	VERSION,                                      // Version number
-	"remmina-sftp",                               // Icon for normal connection
-	"remmina-sftp",                               // Icon for SSH connection
-	NULL,                                         // Array for basic settings
-	NULL,                                         // Array for advanced settings
-	REMMINA_PROTOCOL_SSH_SETTING_SFTP,            // SSH settings type
-	remmina_plugin_sftp_features,                 // Array for available features
-	remmina_plugin_sftp_init,                     // Plugin initialization
-	remmina_plugin_sftp_open_connection,          // Plugin open connection
-	remmina_plugin_sftp_close_connection,         // Plugin close connection
-	remmina_plugin_sftp_query_feature,            // Query for available features
-	remmina_plugin_sftp_call_feature,             // Call a feature
-	NULL                                          // Send a keystroke
+	REMMINA_PLUGIN_TYPE_PROTOCOL,                   // Type
+	"SFTP",                                         // Name
+	N_("SFTP - Secure File Transfer"),              // Description
+	GETTEXT_PACKAGE,                                // Translation domain
+	VERSION,                                        // Version number
+	"remmina-sftp",                                 // Icon for normal connection
+	"remmina-sftp",                                 // Icon for SSH connection
+	remmina_sftp_basic_settings,                    // Array for basic settings
+	NULL,                                           // Array for advanced settings
+	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,            // SSH settings type
+	remmina_plugin_sftp_features,                   // Array for available features
+	remmina_plugin_sftp_init,                       // Plugin initialization
+	remmina_plugin_sftp_open_connection,            // Plugin open connection
+	remmina_plugin_sftp_close_connection,           // Plugin close connection
+	remmina_plugin_sftp_query_feature,              // Query for available features
+	remmina_plugin_sftp_call_feature,               // Call a feature
+	NULL                                            // Send a keystroke
 };
 
 void
-remmina_sftp_plugin_register (void)
+remmina_sftp_plugin_register(void)
 {
-	TRACE_CALL("remmina_sftp_plugin_register");
+	TRACE_CALL("__func__");
 	remmina_plugin_service = &remmina_plugin_manager_service;
-	remmina_plugin_service->register_plugin ((RemminaPlugin *) &remmina_plugin_sftp);
+	remmina_plugin_service->register_plugin((RemminaPlugin*)&remmina_plugin_sftp);
 }
 
 #else
 
 void remmina_sftp_plugin_register(void)
 {
-	TRACE_CALL("remmina_sftp_plugin_register");
+	TRACE_CALL("__func__");
 }
 
 #endif

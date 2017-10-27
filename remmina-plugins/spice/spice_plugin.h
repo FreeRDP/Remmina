@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2016 Denis Ollier
+ * Copyright (C) 2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINA_SPICE_PLUGIN_H__
-#define __REMMINA_SPICE_PLUGIN_H__
+#pragma once
 
 #include "common/remmina_plugin.h"
 #include <spice-client.h>
@@ -49,10 +49,9 @@
 #  include <usb-device-widget.h>
 #endif
 
-#define GET_PLUGIN_DATA(gp) (RemminaPluginSpiceData*) g_object_get_data(G_OBJECT(gp), "plugin-data")
+#define GET_PLUGIN_DATA(gp) (RemminaPluginSpiceData*)g_object_get_data(G_OBJECT(gp), "plugin-data")
 
-typedef struct _RemminaPluginSpiceData
-{
+typedef struct _RemminaPluginSpiceData {
 	SpiceAudio *audio;
 	SpiceDisplay *display;
 	SpiceDisplayChannel *display_channel;
@@ -65,9 +64,8 @@ typedef struct _RemminaPluginSpiceData
 	/* key: SpiceFileTransferTask, value: RemminaPluginSpiceXferWidgets */
 	GHashTable *file_transfers;
 	GtkWidget  *file_transfer_dialog;
-#  endif /* SPICE_GTK_CHECK_VERSION(0, 31, 0) */
-#endif /* SPICE_GTK_CHECK_VERSION */
+#  endif        /* SPICE_GTK_CHECK_VERSION(0, 31, 0) */
+#endif          /* SPICE_GTK_CHECK_VERSION */
 } RemminaPluginSpiceData;
 
 
-#endif /* __REMMINA_SPICE_PLUGIN_H__ */

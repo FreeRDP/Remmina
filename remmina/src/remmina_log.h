@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee
+ * Copyright (C) 2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINALOG_H__
-#define __REMMINALOG_H__
+#pragma once
 
 G_BEGIN_DECLS
 
@@ -44,5 +44,4 @@ void remmina_log_printf(const gchar *fmt, ...);
 
 G_END_DECLS
 
-#endif  /* __REMMINALOG_H__  */
 

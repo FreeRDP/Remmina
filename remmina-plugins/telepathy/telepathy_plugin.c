@@ -1,7 +1,8 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +16,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -42,9 +43,8 @@ static RemminaTpHandler *remmina_tp_handler = NULL;
 
 void remmina_plugin_telepathy_entry(void)
 {
-	TRACE_CALL("remmina_plugin_telepathy_entry");
-	if (remmina_tp_handler == NULL)
-	{
+	TRACE_CALL("__func__");
+	if (remmina_tp_handler == NULL) {
 		remmina_tp_handler = remmina_tp_handler_new();
 	}
 }
@@ -52,25 +52,24 @@ void remmina_plugin_telepathy_entry(void)
 /* Entry plugin definition and features */
 static RemminaEntryPlugin remmina_plugin_telepathy =
 {
-	REMMINA_PLUGIN_TYPE_ENTRY,                    // Type
-	"telepathy",                                  // Name
-	N_("Telepathy - Desktop Sharing"),            // Description
-	GETTEXT_PACKAGE,                              // Translation domain
-	VERSION,                                      // Version number
-	remmina_plugin_telepathy_entry                // Plugin entry function
+	REMMINA_PLUGIN_TYPE_ENTRY,                      // Type
+	"telepathy",                                    // Name
+	N_("Telepathy - Desktop Sharing"),              // Description
+	GETTEXT_PACKAGE,                                // Translation domain
+	VERSION,                                        // Version number
+	remmina_plugin_telepathy_entry                  // Plugin entry function
 };
 
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
-	TRACE_CALL("remmina_plugin_entry");
+	TRACE_CALL("__func__");
 	remmina_plugin_telepathy_service = service;
 
-	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
+	bindtextdomain(GETTEXT_PACKAGE, REMMINA_RUNTIME_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 
-	if (!service->register_plugin((RemminaPlugin *) &remmina_plugin_telepathy))
-	{
+	if (!service->register_plugin((RemminaPlugin*)&remmina_plugin_telepathy)) {
 		return FALSE;
 	}
 	return TRUE;

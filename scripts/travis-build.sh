@@ -71,7 +71,9 @@ elif [ "$BUILD_TYPE" == "snap" ]; then
 
     if [ "$TRAVIS_BUILD_STEP" == "before_install" ]; then
         if [ -n "$ARCH" ]; then DOCKER_IMAGE="$ARCH/$DOCKER_IMAGE"; fi
-        docker run --name $DOCKER_BUILDER_NAME -v $PWD:$PWD -w $PWD -td $DOCKER_IMAGE
+        docker run --name $DOCKER_BUILDER_NAME \
+            -e LC_ALL=C.UTF-8 -e LANG=C.UTF-8 \
+            -v $PWD:$PWD -w $PWD -td $DOCKER_IMAGE
     elif [ "$TRAVIS_BUILD_STEP" == "install" ]; then
         docker_exec apt-get update -q
         docker_exec apt-get install -y cmake git-core snapcraft

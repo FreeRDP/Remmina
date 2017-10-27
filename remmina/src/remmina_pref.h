@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,8 +34,7 @@
  *
  */
 
-#ifndef __REMMINAPREF_H__
-#define __REMMINAPREF_H__
+#pragma once
 
 /*
  * Remmina Perference Loader
@@ -42,54 +42,52 @@
 
 G_BEGIN_DECLS
 
-enum
-{
+enum {
 	REMMINA_VIEW_FILE_LIST,
 	REMMINA_VIEW_FILE_TREE
 };
 
-enum
-{
-	REMMINA_ACTION_CONNECT = 0,
-	REMMINA_ACTION_EDIT = 1
+enum {
+	REMMINA_ACTION_CONNECT	= 0,
+	REMMINA_ACTION_EDIT	= 1
 };
 
-enum
-{
-	AUTO_MODE = 0,
-	SCROLLED_WINDOW_MODE = 1,
-	FULLSCREEN_MODE = 2,
-	SCROLLED_FULLSCREEN_MODE = 3,
-	VIEWPORT_FULLSCREEN_MODE = 4
+enum {
+	AUTO_MODE			= 0,
+	SCROLLED_WINDOW_MODE		= 1,
+	FULLSCREEN_MODE			= 2,
+	SCROLLED_FULLSCREEN_MODE	= 3,
+	VIEWPORT_FULLSCREEN_MODE	= 4
 };
 
-enum
-{
-	FLOATING_TOOLBAR_PLACEMENT_TOP = 0,
-	FLOATING_TOOLBAR_PLACEMENT_BOTTOM = 1
+enum {
+	FLOATING_TOOLBAR_PLACEMENT_TOP		= 0,
+	FLOATING_TOOLBAR_PLACEMENT_BOTTOM	= 1
 };
 
-enum
-{
-	TOOLBAR_PLACEMENT_TOP = 0,
-	TOOLBAR_PLACEMENT_RIGHT = 1,
-	TOOLBAR_PLACEMENT_BOTTOM = 2,
-	TOOLBAR_PLACEMENT_LEFT = 3
- };
+enum {
+	TOOLBAR_PLACEMENT_TOP		= 0,
+	TOOLBAR_PLACEMENT_RIGHT		= 1,
+	TOOLBAR_PLACEMENT_BOTTOM	= 2,
+	TOOLBAR_PLACEMENT_LEFT		= 3
+};
 
-enum
-{
-	REMMINA_TAB_BY_GROUP = 0,
+enum {
+	REMMINA_TAB_BY_GROUP	= 0,
 	REMMINA_TAB_BY_PROTOCOL = 1,
-	REMMINA_TAB_ALL = 2,
-	REMMINA_TAB_NONE = 3
+	REMMINA_TAB_ALL		= 2,
+	REMMINA_TAB_NONE	= 3
 };
 
-typedef struct _RemminaPref
-{
+enum {
+	FLOATING_TOOLBAR_VISIBILITY_PEEKING	= 0,
+	FLOATING_TOOLBAR_VISIBILITY_INVISIBLE	= 1, //"Invisible" corresponds to the "Hidden" option in the drop-down
+	FLOATING_TOOLBAR_VISIBILITY_DISABLE	= 2
+};
+
+typedef struct _RemminaPref {
 	/* In RemminaPrefDialog options tab */
 	gboolean save_view_mode;
-	gboolean save_when_connect;
 	gint default_action;
 	gint scale_quality;
 	const gchar *screenshot_path;
@@ -98,12 +96,12 @@ typedef struct _RemminaPref
 	gchar *resolutions;
 	gchar *keystrokes;
 	/* In RemminaPrefDialog appearance tab */
-	gboolean invisible_toolbar;
 	gboolean fullscreen_on_auto;
 	gboolean always_show_tab;
 	gboolean hide_connection_toolbar;
 	gint default_mode;
 	gint tab_mode;
+	gint fullscreen_toolbar_visibility;
 	gint show_buttons_icons;
 	gint show_menu_icons;
 	/* In RemminaPrefDialog applet tab */
@@ -121,8 +119,10 @@ typedef struct _RemminaPref
 	guint shortcutkey_autofit;
 	guint shortcutkey_prevtab;
 	guint shortcutkey_nexttab;
+	guint shortcutkey_dynres;
 	guint shortcutkey_scale;
 	guint shortcutkey_grab;
+	guint shortcutkey_viewonly;
 	guint shortcutkey_screenshot;
 	guint shortcutkey_minimize;
 	guint shortcutkey_disconnect;
@@ -131,8 +131,6 @@ typedef struct _RemminaPref
 	gchar *vte_font;
 	gboolean vte_allow_bold_text;
 	gboolean vte_system_colors;
-	gchar *vte_foreground_color;
-	gchar *vte_background_color;
 	gint vte_lines;
 	guint vte_shortcutkey_copy;
 	guint vte_shortcutkey_paste;
@@ -163,6 +161,28 @@ typedef struct _RemminaPref
 
 	/* Remmina birthday julian format*/
 	guint32 bdate;
+
+	/* Color palette for VTE terminal */
+	gchar *background;
+	gchar *cursor;
+	gchar *foreground;
+	gchar *color0;
+	gchar *color1;
+	gchar *color2;
+	gchar *color3;
+	gchar *color4;
+	gchar *color5;
+	gchar *color6;
+	gchar *color7;
+	gchar *color8;
+	gchar *color9;
+	gchar *color10;
+	gchar *color11;
+	gchar *color12;
+	gchar *color13;
+	gchar *color14;
+	gchar *color15;
+
 } RemminaPref;
 
 #define DEFAULT_SSH_PARSECONFIG TRUE
@@ -172,6 +192,7 @@ typedef struct _RemminaPref
 
 extern const gchar *default_resolutions;
 extern gchar *remmina_pref_file;
+extern gchar *remmina_colors_file;
 extern RemminaPref remmina_pref;
 
 void remmina_pref_init(void);
@@ -193,6 +214,4 @@ void remmina_pref_set_value(const gchar *key, const gchar *value);
 gchar* remmina_pref_get_value(const gchar *key);
 
 G_END_DECLS
-
-#endif  /* __REMMINAPREF_H__  */
 

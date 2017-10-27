@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,6 +42,7 @@
 #include <sys/time.h>
 #include <sys/utsname.h>
 
+#include <glib/gstdio.h>
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 
@@ -57,16 +59,16 @@ static GHashTable *remmina_keymap_table = NULL;
 
 /* We could customize this further if there are more requirements */
 static const gchar *default_keymap_data = "# Please check gdk/gdkkeysyms.h for a full list of all key names or hex key values\n"
-        "\n"
-        "[Map Meta Keys]\n"
-        "Super_L = Meta_L\n"
-        "Super_R = Meta_R\n"
-        "Meta_L = Super_L\n"
-        "Meta_R = Super_R\n";
+					  "\n"
+					  "[Map Meta Keys]\n"
+					  "Super_L = Meta_L\n"
+					  "Super_R = Meta_R\n"
+					  "Meta_L = Super_L\n"
+					  "Meta_R = Super_R\n";
 
 static void remmina_pref_gen_secret(void)
 {
-	TRACE_CALL("remmina_pref_gen_secret");
+	TRACE_CALL("__func__");
 	guchar s[32];
 	gint i;
 	GTimeVal gtime;
@@ -77,8 +79,7 @@ static void remmina_pref_gen_secret(void)
 	g_get_current_time(&gtime);
 	srand(gtime.tv_sec);
 
-	for (i = 0; i < 32; i++)
-	{
+	for (i = 0; i < 32; i++) {
 		s[i] = (guchar)(rand() % 256);
 	}
 	remmina_pref.secret = g_base64_encode(s, 32);
@@ -95,15 +96,14 @@ static void remmina_pref_gen_secret(void)
 
 static guint remmina_pref_get_keyval_from_str(const gchar *str)
 {
-	TRACE_CALL("remmina_pref_get_keyval_from_str");
+	TRACE_CALL("__func__");
 	guint k;
 
 	if (!str)
 		return 0;
 
 	k = gdk_keyval_from_name(str);
-	if (!k)
-	{
+	if (!k) {
 		if (sscanf(str, "%x", &k) < 1)
 			k = 0;
 	}
@@ -112,7 +112,7 @@ static guint remmina_pref_get_keyval_from_str(const gchar *str)
 
 static void remmina_pref_init_keymap(void)
 {
-	TRACE_CALL("remmina_pref_init_keymap");
+	TRACE_CALL("__func__");
 	GKeyFile *gkeyfile;
 	gchar **groups;
 	gchar **gptr;
@@ -129,11 +129,9 @@ static void remmina_pref_init_keymap(void)
 	remmina_keymap_table = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 
 	gkeyfile = g_key_file_new();
-	if (!g_key_file_load_from_file(gkeyfile, remmina_keymap_file, G_KEY_FILE_NONE, NULL))
-	{
+	if (!g_key_file_load_from_file(gkeyfile, remmina_keymap_file, G_KEY_FILE_NONE, NULL)) {
 		if (!g_key_file_load_from_data(gkeyfile, default_keymap_data, strlen(default_keymap_data), G_KEY_FILE_NONE,
-		                               NULL))
-		{
+			    NULL)) {
 			g_print("Failed to initialize keymap table\n");
 			g_key_file_free(gkeyfile);
 			return;
@@ -142,19 +140,16 @@ static void remmina_pref_init_keymap(void)
 
 	groups = g_key_file_get_groups(gkeyfile, NULL);
 	gptr = groups;
-	while (*gptr)
-	{
+	while (*gptr) {
 		keys = g_key_file_get_keys(gkeyfile, *gptr, &nkeys, NULL);
 		table = g_new0(guint, nkeys * 2 + 1);
 		g_hash_table_insert(remmina_keymap_table, g_strdup(*gptr), table);
 
 		kptr = keys;
 		tableptr = table;
-		while (*kptr)
-		{
+		while (*kptr) {
 			k1 = remmina_pref_get_keyval_from_str(*kptr);
-			if (k1)
-			{
+			if (k1) {
 				value = g_key_file_get_string(gkeyfile, *gptr, *kptr, NULL);
 				k2 = remmina_pref_get_keyval_from_str(value);
 				g_free(value);
@@ -176,6 +171,7 @@ static gboolean remmina_pref_file_do_copy(const char *src_path, const char *dst_
 	GFile *src = g_file_new_for_path(src_path), *dst = g_file_new_for_path(dst_path);
 	/* We don't overwrite the target if it exists, because overwrite is not set */
 	const gboolean ok = g_file_copy(src, dst, G_FILE_COPY_NONE, NULL, NULL, NULL, NULL);
+
 	g_object_unref(dst);
 	g_object_unref(src);
 
@@ -184,57 +180,61 @@ static gboolean remmina_pref_file_do_copy(const char *src_path, const char *dst_
 
 void remmina_pref_init(void)
 {
-	TRACE_CALL("remmina_pref_init");
+	TRACE_CALL("__func__");
 	GKeyFile *gkeyfile;
 	gchar *remmina_dir;
 	const gchar *filename = g_strdup_printf("%s.pref", g_get_prgname());
+	const gchar *colors_filename = g_strdup_printf("%s.colors", g_get_prgname());
+	gchar *remmina_colors_file;
 	GDir *dir;
-	gchar *legacy = g_strdup_printf (".%s", g_get_prgname ());
+	GFile *path;
+	gchar *legacy = g_strdup_printf(".%s", g_get_prgname());
 	int i;
 
-	remmina_dir = g_build_path ( "/", g_get_user_config_dir (), g_get_prgname (), NULL);
+	remmina_dir = g_build_path( "/", g_get_user_config_dir(), g_get_prgname(), NULL);
 	/* Create the XDG_CONFIG_HOME directory */
-	g_mkdir_with_parents (remmina_dir, 0750);
+	g_mkdir_with_parents(remmina_dir, 0750);
 
-	g_free (remmina_dir), remmina_dir = NULL;
+	g_free(remmina_dir), remmina_dir = NULL;
 	/* Legacy ~/.remmina we copy the existing remmina.pref file inside
 	 * XDG_CONFIG_HOME */
-	remmina_dir = g_build_path ("/", g_get_home_dir(), legacy, NULL);
-	if (g_file_test (remmina_dir, G_FILE_TEST_IS_DIR))
-	{
+	remmina_dir = g_build_path("/", g_get_home_dir(), legacy, NULL);
+	if (g_file_test(remmina_dir, G_FILE_TEST_IS_DIR)) {
 		dir = g_dir_open(remmina_dir, 0, NULL);
 		remmina_pref_file_do_copy(
-				g_build_path ( "/", remmina_dir, filename, NULL),
-				g_build_path ( "/", g_get_user_config_dir (),
-					g_get_prgname (), filename, NULL));
+			g_build_path( "/", remmina_dir, filename, NULL),
+			g_build_path( "/", g_get_user_config_dir(),
+				g_get_prgname(), filename, NULL));
 	}
 
 	/* /usr/local/etc/remmina */
-	const gchar * const *dirs = g_get_system_config_dirs ();
-	g_free (remmina_dir), remmina_dir = NULL;
-	for (i = 0; dirs[i] != NULL; ++i)
-	{
-		remmina_dir = g_build_path ( "/", dirs[i], g_get_prgname (), NULL);
-		if (g_file_test (remmina_dir, G_FILE_TEST_IS_DIR))
-		{
+	const gchar * const *dirs = g_get_system_config_dirs();
+	g_free(remmina_dir), remmina_dir = NULL;
+	for (i = 0; dirs[i] != NULL; ++i) {
+		remmina_dir = g_build_path( "/", dirs[i], g_get_prgname(), NULL);
+		if (g_file_test(remmina_dir, G_FILE_TEST_IS_DIR)) {
 			dir = g_dir_open(remmina_dir, 0, NULL);
-			while ((filename = g_dir_read_name (dir)) != NULL) {
-				remmina_pref_file_do_copy (
-						g_build_path ( "/", remmina_dir, filename, NULL),
-						g_build_path ( "/", g_get_user_config_dir (),
-							g_get_prgname (), filename, NULL));
+			while ((filename = g_dir_read_name(dir)) != NULL) {
+				remmina_pref_file_do_copy(
+					g_build_path( "/", remmina_dir, filename, NULL),
+					g_build_path( "/", g_get_user_config_dir(),
+						g_get_prgname(), filename, NULL));
 			}
-			g_free (remmina_dir), remmina_dir = NULL;
+			g_free(remmina_dir), remmina_dir = NULL;
 		}
 	}
 
 	/* The last case we use  the home ~/.config/remmina */
 	if (remmina_dir != NULL)
-		g_free (remmina_dir), remmina_dir = NULL;
-	remmina_dir = g_build_path ( "/", g_get_user_config_dir (),
-			g_get_prgname (), NULL);
+		g_free(remmina_dir), remmina_dir = NULL;
+	remmina_dir = g_build_path( "/", g_get_user_config_dir(),
+		g_get_prgname(), NULL);
 
 	remmina_pref_file = g_strdup_printf("%s/remmina.pref", remmina_dir);
+	/* remmina.colors */
+	remmina_colors_file = g_strdup_printf("%s/%s", remmina_dir, colors_filename);
+	path = g_file_new_for_path(remmina_colors_file);
+
 	remmina_keymap_file = g_strdup_printf("%s/remmina.keymap", remmina_dir);
 
 	gkeyfile = g_key_file_new();
@@ -244,16 +244,6 @@ void remmina_pref_init(void)
 		remmina_pref.save_view_mode = g_key_file_get_boolean(gkeyfile, "remmina_pref", "save_view_mode", NULL);
 	else
 		remmina_pref.save_view_mode = TRUE;
-
-	if (g_key_file_has_key(gkeyfile, "remmina_pref", "save_when_connect", NULL))
-		remmina_pref.save_when_connect = g_key_file_get_boolean(gkeyfile, "remmina_pref", "save_when_connect", NULL);
-	else
-		remmina_pref.save_when_connect = TRUE;
-
-	if (g_key_file_has_key(gkeyfile, "remmina_pref", "invisible_toolbar", NULL))
-		remmina_pref.invisible_toolbar = g_key_file_get_boolean(gkeyfile, "remmina_pref", "invisible_toolbar", NULL);
-	else
-		remmina_pref.invisible_toolbar = FALSE;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "fullscreen_on_auto", NULL))
 		remmina_pref.fullscreen_on_auto = g_key_file_get_boolean(gkeyfile, "remmina_pref", "fullscreen_on_auto", NULL);
@@ -277,7 +267,7 @@ void remmina_pref_init(void)
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "hide_connection_toolbar", NULL))
 		remmina_pref.hide_connection_toolbar = g_key_file_get_boolean(gkeyfile, "remmina_pref",
-		                                       "hide_connection_toolbar", NULL);
+			"hide_connection_toolbar", NULL);
 	else
 		remmina_pref.hide_connection_toolbar = FALSE;
 
@@ -338,7 +328,7 @@ void remmina_pref_init(void)
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "main_sort_column_id", NULL))
 		remmina_pref.main_sort_column_id = g_key_file_get_integer(gkeyfile, "remmina_pref", "main_sort_column_id",
-		                                   NULL);
+			NULL);
 	else
 		remmina_pref.main_sort_column_id = 1;
 
@@ -392,7 +382,7 @@ void remmina_pref_init(void)
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "applet_enable_avahi", NULL))
 		remmina_pref.applet_enable_avahi = g_key_file_get_boolean(gkeyfile, "remmina_pref", "applet_enable_avahi",
-		                                   NULL);
+			NULL);
 	else
 		remmina_pref.applet_enable_avahi = FALSE;
 
@@ -420,27 +410,26 @@ void remmina_pref_init(void)
 		remmina_pref.tab_mode = g_key_file_get_integer(gkeyfile, "remmina_pref", "tab_mode", NULL);
 	else
 		remmina_pref.tab_mode = 0;
+
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "fullscreen_toolbar_visibility", NULL))
+		remmina_pref.fullscreen_toolbar_visibility = g_key_file_get_integer(gkeyfile, "remmina_pref", "fullscreen_toolbar_visibility", NULL);
+	else
+		remmina_pref.fullscreen_toolbar_visibility = FLOATING_TOOLBAR_VISIBILITY_PEEKING;
 	/* Show buttons icons */
-	if (g_key_file_has_key(gkeyfile, "remmina_pref", "show_buttons_icons", NULL))
-	{
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "show_buttons_icons", NULL)) {
 		remmina_pref.show_buttons_icons = g_key_file_get_integer(gkeyfile, "remmina_pref", "show_buttons_icons", NULL);
-		if (remmina_pref.show_buttons_icons)
-		{
+		if (remmina_pref.show_buttons_icons) {
 			g_object_set(gtk_settings_get_default(), "gtk-button-images", remmina_pref.show_buttons_icons == 1, NULL);
 		}
-	}
-	else
+	}else
 		remmina_pref.show_buttons_icons = 0;
 	/* Show menu icons */
-	if (g_key_file_has_key(gkeyfile, "remmina_pref", "show_menu_icons", NULL))
-	{
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "show_menu_icons", NULL)) {
 		remmina_pref.show_menu_icons = g_key_file_get_integer(gkeyfile, "remmina_pref", "show_menu_icons", NULL);
-		if (remmina_pref.show_menu_icons)
-		{
+		if (remmina_pref.show_menu_icons) {
 			g_object_set(gtk_settings_get_default(), "gtk-menu-images", remmina_pref.show_menu_icons == 1, NULL);
 		}
-	}
-	else
+	}else
 		remmina_pref.show_menu_icons = 0;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "auto_scroll_step", NULL))
@@ -455,25 +444,25 @@ void remmina_pref_init(void)
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_fullscreen", NULL))
 		remmina_pref.shortcutkey_fullscreen = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_fullscreen",
-		                                      NULL);
+			NULL);
 	else
 		remmina_pref.shortcutkey_fullscreen = GDK_KEY_f;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_autofit", NULL))
 		remmina_pref.shortcutkey_autofit = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_autofit",
-		                                   NULL);
+			NULL);
 	else
 		remmina_pref.shortcutkey_autofit = GDK_KEY_1;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_nexttab", NULL))
 		remmina_pref.shortcutkey_nexttab = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_nexttab",
-		                                   NULL);
+			NULL);
 	else
 		remmina_pref.shortcutkey_nexttab = GDK_KEY_Right;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_prevtab", NULL))
 		remmina_pref.shortcutkey_prevtab = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_prevtab",
-		                                   NULL);
+			NULL);
 	else
 		remmina_pref.shortcutkey_prevtab = GDK_KEY_Left;
 
@@ -481,6 +470,11 @@ void remmina_pref_init(void)
 		remmina_pref.shortcutkey_scale = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_scale", NULL);
 	else
 		remmina_pref.shortcutkey_scale = GDK_KEY_s;
+
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_viewonly", NULL))
+		remmina_pref.shortcutkey_viewonly = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_viewonly", NULL);
+	else
+		remmina_pref.shortcutkey_viewonly = GDK_KEY_m;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_grab", NULL))
 		remmina_pref.shortcutkey_grab = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_grab", NULL);
@@ -499,13 +493,13 @@ void remmina_pref_init(void)
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_disconnect", NULL))
 		remmina_pref.shortcutkey_disconnect = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_disconnect",
-		                                      NULL);
+			NULL);
 	else
 		remmina_pref.shortcutkey_disconnect = GDK_KEY_F4;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "shortcutkey_toolbar", NULL))
 		remmina_pref.shortcutkey_toolbar = g_key_file_get_integer(gkeyfile, "remmina_pref", "shortcutkey_toolbar",
-		                                   NULL);
+			NULL);
 	else
 		remmina_pref.shortcutkey_toolbar = GDK_KEY_t;
 
@@ -531,24 +525,9 @@ void remmina_pref_init(void)
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_allow_bold_text", NULL))
 		remmina_pref.vte_allow_bold_text = g_key_file_get_boolean(gkeyfile, "remmina_pref", "vte_allow_bold_text",
-		                                   NULL);
+			NULL);
 	else
 		remmina_pref.vte_allow_bold_text = TRUE;
-	/* Default system theme colors or default vte colors */
-	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_system_colors", NULL))
-		remmina_pref.vte_system_colors = g_key_file_get_boolean(gkeyfile, "remmina_pref", "vte_system_colors", NULL);
-	else
-		remmina_pref.vte_system_colors = FALSE;
-	/* Customized vte foreground color */
-	if (g_key_file_has_key (gkeyfile, "remmina_pref", "vte_foreground_color", NULL))
-		remmina_pref.vte_foreground_color = g_key_file_get_string (gkeyfile, "remmina_pref", "vte_foreground_color", NULL);
-	else
-		remmina_pref.vte_foreground_color = "rgb(192,192,192)";
-	/* Customized vte background color */
-	if (g_key_file_has_key (gkeyfile, "remmina_pref", "vte_background_color", NULL))
-		remmina_pref.vte_background_color = g_key_file_get_string (gkeyfile, "remmina_pref", "vte_background_color", NULL);
-	else
-		remmina_pref.vte_background_color = "rgb(0,0,0)";
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_lines", NULL))
 		remmina_pref.vte_lines = g_key_file_get_integer(gkeyfile, "remmina_pref", "vte_lines", NULL);
@@ -557,23 +536,152 @@ void remmina_pref_init(void)
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_shortcutkey_copy", NULL))
 		remmina_pref.vte_shortcutkey_copy = g_key_file_get_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_copy",
-		                                    NULL);
+			NULL);
 	else
 		remmina_pref.vte_shortcutkey_copy = GDK_KEY_c;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_shortcutkey_paste", NULL))
 		remmina_pref.vte_shortcutkey_paste = g_key_file_get_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_paste",
-		                                     NULL);
+			NULL);
 	else
 		remmina_pref.vte_shortcutkey_paste = GDK_KEY_v;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_shortcutkey_select_all", NULL))
 		remmina_pref.vte_shortcutkey_select_all = g_key_file_get_integer(gkeyfile, "remmina_pref", "vte_shortcutkey_select_all",
-		                                     NULL);
+			NULL);
 	else
 		remmina_pref.vte_shortcutkey_select_all = GDK_KEY_a;
 
+	/* If we have a color scheme file, we switch to it, GIO will merge it in the
+	 * remmina.pref file */
+	if (g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
+		gkeyfile = g_key_file_new();
+		g_key_file_load_from_file(gkeyfile, remmina_colors_file, G_KEY_FILE_NONE, NULL);
+		g_remove(remmina_colors_file);
+	}
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "background", NULL))
+		remmina_pref.background = g_key_file_get_string(gkeyfile, "ssh_colors", "background",
+			NULL);
+	else
+		remmina_pref.background = "#d5ccba";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "cursor", NULL))
+		remmina_pref.cursor = g_key_file_get_string(gkeyfile, "ssh_colors", "cursor",
+			NULL);
+	else
+		remmina_pref.cursor = "#45373c";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "foreground", NULL))
+		remmina_pref.foreground = g_key_file_get_string(gkeyfile, "ssh_colors", "foreground",
+			NULL);
+	else
+		remmina_pref.foreground = "#45373c";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color0", NULL))
+		remmina_pref.color0 = g_key_file_get_string(gkeyfile, "ssh_colors", "color0",
+			NULL);
+	else
+		remmina_pref.color0 = "#20111b";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color1", NULL))
+		remmina_pref.color1 = g_key_file_get_string(gkeyfile, "ssh_colors", "color1",
+			NULL);
+	else
+		remmina_pref.color1 = "#be100e";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color2", NULL))
+		remmina_pref.color2 = g_key_file_get_string(gkeyfile, "ssh_colors", "color2",
+			NULL);
+	else
+		remmina_pref.color2 = "#858162";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color3", NULL))
+		remmina_pref.color3 = g_key_file_get_string(gkeyfile, "ssh_colors", "color3",
+			NULL);
+	else
+		remmina_pref.color3 = "#eaa549";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color4", NULL))
+		remmina_pref.color4 = g_key_file_get_string(gkeyfile, "ssh_colors", "color4",
+			NULL);
+	else
+		remmina_pref.color4 = "#426a79";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color5", NULL))
+		remmina_pref.color5 = g_key_file_get_string(gkeyfile, "ssh_colors", "color5",
+			NULL);
+	else
+		remmina_pref.color5 = "#97522c";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color6", NULL))
+		remmina_pref.color6 = g_key_file_get_string(gkeyfile, "ssh_colors", "color6",
+			NULL);
+	else
+		remmina_pref.color6 = "#989a9c";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color7", NULL))
+		remmina_pref.color7 = g_key_file_get_string(gkeyfile, "ssh_colors", "color7",
+			NULL);
+	else
+		remmina_pref.color7 = "#968c83";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color8", NULL))
+		remmina_pref.color8 = g_key_file_get_string(gkeyfile, "ssh_colors", "color8",
+			NULL);
+	else
+		remmina_pref.color8 = "#5e5252";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color9", NULL))
+		remmina_pref.color9 = g_key_file_get_string(gkeyfile, "ssh_colors", "color9",
+			NULL);
+	else
+		remmina_pref.color9 = "#be100e";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color10", NULL))
+		remmina_pref.color10 = g_key_file_get_string(gkeyfile, "ssh_colors", "color10",
+			NULL);
+	else
+		remmina_pref.color10 = "#858162";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color11", NULL))
+		remmina_pref.color11 = g_key_file_get_string(gkeyfile, "ssh_colors", "color11",
+			NULL);
+	else
+		remmina_pref.color11 = "#eaa549";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color12", NULL))
+		remmina_pref.color12 = g_key_file_get_string(gkeyfile, "ssh_colors", "color12",
+			NULL);
+	else
+		remmina_pref.color12 = "#426a79";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color13", NULL))
+		remmina_pref.color13 = g_key_file_get_string(gkeyfile, "ssh_colors", "color13",
+			NULL);
+	else
+		remmina_pref.color13 = "#97522c";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color14", NULL))
+		remmina_pref.color14 = g_key_file_get_string(gkeyfile, "ssh_colors", "color14",
+			NULL);
+	else
+		remmina_pref.color14 = "#989a9c";
+
+	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color15", NULL))
+		remmina_pref.color15 = g_key_file_get_string(gkeyfile, "ssh_colors", "color15",
+			NULL);
+	else
+		remmina_pref.color15 = "#d5ccba";
+
 	g_key_file_free(gkeyfile);
+
+#if 0
+	/* We delete the colorscheme file because we save its content in the remmina.pref */
+	if (g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
+		g_file_delete(path, NULL, NULL);
+	}
+#endif
 
 	if (remmina_pref.secret == NULL)
 		remmina_pref_gen_secret();
@@ -583,7 +691,7 @@ void remmina_pref_init(void)
 
 void remmina_pref_save(void)
 {
-	TRACE_CALL("remmina_pref_save");
+	TRACE_CALL("__func__");
 	GKeyFile *gkeyfile;
 	gchar *content;
 	gsize length;
@@ -593,8 +701,6 @@ void remmina_pref_save(void)
 	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
 
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_view_mode", remmina_pref.save_view_mode);
-	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_when_connect", remmina_pref.save_when_connect);
-	g_key_file_set_boolean(gkeyfile, "remmina_pref", "invisible_toolbar", remmina_pref.invisible_toolbar);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "floating_toolbar_placement", remmina_pref.floating_toolbar_placement);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "toolbar_placement", remmina_pref.toolbar_placement);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "always_show_tab", remmina_pref.always_show_tab);
@@ -626,6 +732,7 @@ void remmina_pref_save(void)
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "recent_maximum", remmina_pref.recent_maximum);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "default_mode", remmina_pref.default_mode);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "tab_mode", remmina_pref.tab_mode);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "fullscreen_toolbar_visibility", remmina_pref.fullscreen_toolbar_visibility);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "show_buttons_icons", remmina_pref.show_buttons_icons);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "show_menu_icons", remmina_pref.show_menu_icons);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "auto_scroll_step", remmina_pref.auto_scroll_step);
@@ -636,6 +743,7 @@ void remmina_pref_save(void)
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_prevtab", remmina_pref.shortcutkey_prevtab);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_scale", remmina_pref.shortcutkey_scale);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_grab", remmina_pref.shortcutkey_grab);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_viewonly", remmina_pref.shortcutkey_viewonly);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_screenshot", remmina_pref.shortcutkey_screenshot);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_minimize", remmina_pref.shortcutkey_minimize);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "shortcutkey_disconnect", remmina_pref.shortcutkey_disconnect);
@@ -643,9 +751,25 @@ void remmina_pref_save(void)
 	g_key_file_set_string(gkeyfile, "remmina_pref", "vte_font", remmina_pref.vte_font ? remmina_pref.vte_font : "");
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "vte_allow_bold_text", remmina_pref.vte_allow_bold_text);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "vte_lines", remmina_pref.vte_lines);
-	g_key_file_set_boolean (gkeyfile, "remmina_pref", "vte_system_colors", remmina_pref.vte_system_colors);
-	g_key_file_set_string(gkeyfile, "remmina_pref", "vte_foreground_color", remmina_pref.vte_foreground_color ? remmina_pref.vte_foreground_color : "");
-	g_key_file_set_string(gkeyfile, "remmina_pref", "vte_background_color", remmina_pref.vte_background_color ? remmina_pref.vte_background_color : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "background", remmina_pref.background ? remmina_pref.background : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "cursor", remmina_pref.cursor ? remmina_pref.cursor : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "foreground", remmina_pref.foreground ? remmina_pref.foreground : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color0", remmina_pref.color0 ? remmina_pref.color0 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color1", remmina_pref.color1 ? remmina_pref.color1 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color2", remmina_pref.color2 ? remmina_pref.color2 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color3", remmina_pref.color3 ? remmina_pref.color3 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color4", remmina_pref.color4 ? remmina_pref.color4 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color5", remmina_pref.color5 ? remmina_pref.color5 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color6", remmina_pref.color6 ? remmina_pref.color6 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color7", remmina_pref.color7 ? remmina_pref.color7 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color8", remmina_pref.color8 ? remmina_pref.color8 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color9", remmina_pref.color9 ? remmina_pref.color9 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color10", remmina_pref.color10 ? remmina_pref.color10 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color11", remmina_pref.color11 ? remmina_pref.color11 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color12", remmina_pref.color12 ? remmina_pref.color12 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color13", remmina_pref.color13 ? remmina_pref.color13 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color14", remmina_pref.color14 ? remmina_pref.color14 : "");
+	g_key_file_set_string(gkeyfile, "ssh_colors", "color15", remmina_pref.color15 ? remmina_pref.color15 : "");
 
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
 	g_file_set_contents(remmina_pref_file, content, length, NULL);
@@ -656,7 +780,7 @@ void remmina_pref_save(void)
 
 void remmina_pref_add_recent(const gchar *protocol, const gchar *server)
 {
-	TRACE_CALL("remmina_pref_add_recent");
+	TRACE_CALL("__func__");
 	RemminaStringArray *array;
 	GKeyFile *gkeyfile;
 	gchar key[20];
@@ -677,8 +801,7 @@ void remmina_pref_add_recent(const gchar *protocol, const gchar *server)
 
 	/* Add the new value */
 	remmina_string_array_remove(array, server);
-	while (array->len >= remmina_pref.recent_maximum)
-	{
+	while (array->len >= remmina_pref.recent_maximum) {
 		remmina_string_array_remove_index(array, 0);
 	}
 	remmina_string_array_add(array, server);
@@ -698,7 +821,7 @@ void remmina_pref_add_recent(const gchar *protocol, const gchar *server)
 gchar*
 remmina_pref_get_recent(const gchar *protocol)
 {
-	TRACE_CALL("remmina_pref_get_recent");
+	TRACE_CALL("__func__");
 	GKeyFile *gkeyfile;
 	gchar key[20];
 	gchar *val;
@@ -717,7 +840,7 @@ remmina_pref_get_recent(const gchar *protocol)
 
 void remmina_pref_clear_recent(void)
 {
-	TRACE_CALL("remmina_pref_clear_recent");
+	TRACE_CALL("__func__");
 	GKeyFile *gkeyfile;
 	gchar **keys;
 	gint i;
@@ -728,12 +851,9 @@ void remmina_pref_clear_recent(void)
 
 	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
 	keys = g_key_file_get_keys(gkeyfile, "remmina_pref", NULL, NULL);
-	if (keys)
-	{
-		for (i = 0; keys[i]; i++)
-		{
-			if (strncmp(keys[i], "recent_", 7) == 0)
-			{
+	if (keys) {
+		for (i = 0; keys[i]; i++) {
+			if (strncmp(keys[i], "recent_", 7) == 0) {
 				g_key_file_set_string(gkeyfile, "remmina_pref", keys[i], "");
 			}
 		}
@@ -749,18 +869,17 @@ void remmina_pref_clear_recent(void)
 
 guint remmina_pref_keymap_get_keyval(const gchar *keymap, guint keyval)
 {
-	TRACE_CALL("remmina_pref_keymap_get_keyval");
+	TRACE_CALL("__func__");
 	guint *table;
 	gint i;
 
 	if (!keymap || keymap[0] == '\0')
 		return keyval;
 
-	table = (guint*) g_hash_table_lookup(remmina_keymap_table, keymap);
+	table = (guint*)g_hash_table_lookup(remmina_keymap_table, keymap);
 	if (!table)
 		return keyval;
-	for (i = 0; table[i] > 0; i += 2)
-	{
+	for (i = 0; table[i] > 0; i += 2) {
 		if (table[i] == keyval)
 			return table[i + 1];
 	}
@@ -770,7 +889,7 @@ guint remmina_pref_keymap_get_keyval(const gchar *keymap, guint keyval)
 gchar**
 remmina_pref_keymap_groups(void)
 {
-	TRACE_CALL("remmina_pref_keymap_groups");
+	TRACE_CALL("__func__");
 	GList *list;
 	guint len;
 	gchar **keys;
@@ -779,13 +898,12 @@ remmina_pref_keymap_groups(void)
 	list = g_hash_table_get_keys(remmina_keymap_table);
 	len = g_list_length(list);
 
-	keys = g_new0 (gchar*, (len + 1) * 2 + 1);
+	keys = g_new0(gchar*, (len + 1) * 2 + 1);
 	keys[0] = g_strdup("");
 	keys[1] = g_strdup("");
-	for (i = 0; i < len; i++)
-	{
-		keys[(i + 1) * 2] = g_strdup((gchar*) g_list_nth_data(list, i));
-		keys[(i + 1) * 2 + 1] = g_strdup((gchar*) g_list_nth_data(list, i));
+	for (i = 0; i < len; i++) {
+		keys[(i + 1) * 2] = g_strdup((gchar*)g_list_nth_data(list, i));
+		keys[(i + 1) * 2 + 1] = g_strdup((gchar*)g_list_nth_data(list, i));
 	}
 	g_list_free(list);
 
@@ -794,10 +912,9 @@ remmina_pref_keymap_groups(void)
 
 gint remmina_pref_get_scale_quality(void)
 {
-	TRACE_CALL("remmina_pref_get_scale_quality");
+	TRACE_CALL("__func__");
 	/* Paranoid programming */
-	if (remmina_pref.scale_quality < 0)
-	{
+	if (remmina_pref.scale_quality < 0) {
 		remmina_pref.scale_quality = 0;
 	}
 	return remmina_pref.scale_quality;
@@ -805,25 +922,25 @@ gint remmina_pref_get_scale_quality(void)
 
 gint remmina_pref_get_ssh_loglevel(void)
 {
-	TRACE_CALL("remmina_pref_get_ssh_loglevel");
+	TRACE_CALL("__func__");
 	return remmina_pref.ssh_loglevel;
 }
 
 gboolean remmina_pref_get_ssh_parseconfig(void)
 {
-	TRACE_CALL("remmina_pref_get_ssh_parseconfig");
+	TRACE_CALL("__func__");
 	return remmina_pref.ssh_parseconfig;
 }
 
 gint remmina_pref_get_sshtunnel_port(void)
 {
-	TRACE_CALL("remmina_pref_get_sshtunnel_port");
+	TRACE_CALL("__func__");
 	return remmina_pref.sshtunnel_port;
 }
 
 void remmina_pref_set_value(const gchar *key, const gchar *value)
 {
-	TRACE_CALL("remmina_pref_set_value");
+	TRACE_CALL("__func__");
 	GKeyFile *gkeyfile;
 	gchar *content;
 	gsize length;
@@ -841,7 +958,7 @@ void remmina_pref_set_value(const gchar *key, const gchar *value)
 gchar*
 remmina_pref_get_value(const gchar *key)
 {
-	TRACE_CALL("remmina_pref_get_value");
+	TRACE_CALL("__func__");
 	GKeyFile *gkeyfile;
 	gchar *value;
 
@@ -852,4 +969,3 @@ remmina_pref_get_value(const gchar *key)
 
 	return value;
 }
-

@@ -2,6 +2,7 @@
 #
 # Copyright (C) 2011 Marc-Andre Moreau
 # Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+# Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -32,7 +33,7 @@
 # files in the program, then also delete it here.
 
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.2)
 
 set(CMAKE_COLOR_MAKEFILE ON)
 
@@ -60,9 +61,6 @@ endif()
 if(CMAKE_COMPILER_IS_GNUCC)
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
-        if(WITH_GCC_SANITIZE_ADDRESS)
-                set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
-        endif()
         if(WITH_SSE2)
                 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2")
         endif()
@@ -110,39 +108,57 @@ set(WITH_LIBRARY_VERSIONING "ON")
 set(REMMINA_VERSION_MAJOR "1")
 set(REMMINA_VERSION_MINOR "2")
 set(REMMINA_VERSION_REVISION "0")
-set(REMMINA_VERSION_SUFFIX "rcgit-18")
+set(REMMINA_VERSION_SUFFIX "rcgit-24")
 set(REMMINA_VERSION "${REMMINA_VERSION_MAJOR}.${REMMINA_VERSION_MINOR}.${REMMINA_VERSION_REVISION}")
-if (NOT ${REMMINA_VERSION_SUFFIX} STREQUAL "")
+if(NOT ${REMMINA_VERSION_SUFFIX} STREQUAL "")
         set(REMMINA_VERSION "${REMMINA_VERSION}-${REMMINA_VERSION_SUFFIX}")
 endif()
 
-
 include(GetGitRevisionDescription)
-git_get_exact_tag(GIT_REVISION --tags --always)
-if (${GIT_REVISION} STREQUAL "n/a")
-        git_rev_parse(GIT_REVISION --short)
+git_get_exact_tag(REMMINA_GIT_REVISION --tags --always)
+if(${REMMINA_GIT_REVISION} STREQUAL "n/a")
+    git_rev_parse(REMMINA_GIT_REVISION --short)
 endif()
 
-if(NOT GIT_REVISION OR ${GIT_REVISION} STREQUAL "n/a")
-    set(GIT_REVISION ${REMMINA_VERSION_SUFFIX})
+if(NOT REMMINA_GIT_REVISION OR ${REMMINA_GIT_REVISION} STREQUAL "n/a")
+    set(REMMINA_GIT_REVISION ${REMMINA_VERSION_SUFFIX})
 endif()
-message(STATUS "Git Revision ${GIT_REVISION}")
+message(STATUS "Git Revision ${REMMINA_GIT_REVISION}")
 
 if(NOT UNIQUE_APPNAME)
-    set(UNIQUE_APPNAME "org.Remmina")
+    # UNIQUE_APPNAME should follow Gnome Application ID rules
+    set(UNIQUE_APPNAME "org.remmina.Remmina")
 endif()
 
 if(NOT REMMINA_DATADIR)
     set(REMMINA_DATADIR "${CMAKE_INSTALL_FULL_DATADIR}")
+    if(NOT REMMINA_RUNTIME_DATADIR)
+        set(REMMINA_RUNTIME_DATADIR "${REMMINA_DATADIR}")
+    endif()
 endif()
 if(NOT REMMINA_LOCALEDIR)
     set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_FULL_LOCALEDIR}")
+    if(NOT REMMINA_RUNTIME_LOCALEDIR)
+        set(REMMINA_RUNTIME_LOCALEDIR "${REMMINA_LOCALEDIR}")
+    endif()
 endif()
 if(NOT REMMINA_PLUGINDIR)
     set(REMMINA_PLUGINDIR "${CMAKE_INSTALL_FULL_LIBDIR}/remmina/plugins")
+    if(NOT REMMINA_RUNTIME_PLUGINDIR)
+        set(REMMINA_RUNTIME_PLUGINDIR "${REMMINA_PLUGINDIR}")
+    endif()
 endif()
 if(NOT REMMINA_UIDIR)
     set(REMMINA_UIDIR "${REMMINA_DATADIR}/remmina/ui")
+    if(NOT REMMINA_RUNTIME_UIDIR)
+        set(REMMINA_RUNTIME_UIDIR "${REMMINA_UIDIR}")
+    endif()
+endif()
+if(NOT REMMINA_EXTERNAL_TOOLS_DIR)
+    set(REMMINA_EXTERNAL_TOOLS_DIR "${REMMINA_DATADIR}/remmina/external_tools")
+    if(NOT REMMINA_RUNTIME_EXTERNAL_TOOLS_DIR)
+        set(REMMINA_RUNTIME_EXTERNAL_TOOLS_DIR "${REMMINA_EXTERNAL_TOOLS_DIR}")
+    endif()
 endif()
 
 # Snap package generation support
@@ -155,10 +171,14 @@ endif()
 
 option(SNAP_BUILD_ONLY "SNAP_BUILD_ONLY" OFF)
 if(SNAP_BUILD_ONLY)
-    if (NOT SNAPCRAFT)
+    if(NOT SNAPCRAFT)
         message(FATAL_ERROR "snapcraft not found, impossible to create only snap target")
     endif()
     return()
+endif()
+
+if(SNAP_BUILD)
+    add_definitions(-DSNAP_BUILD)
 endif()
 
 # Uninstall support
@@ -170,7 +190,19 @@ add_custom_target(uninstall
         "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
 
 find_required_package(GTK)
-find_required_package(PTHREAD)
+
+set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+find_package(Threads REQUIRED)
+if(NOT CMAKE_USE_PTHREADS_INIT)
+        message(FATAL_ERROR "pthreads thread library not found")
+endif()
+
+# Add GCC sanitizer options, must be done after pthreads detection
+# see remmina issue #1276
+if(CMAKE_COMPILER_IS_GNUCC AND WITH_GCC_SANITIZE_ADDRESS)
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
+endif()
+
 find_suggested_package(GCRYPT)
 find_suggested_package(AVAHI)
 
@@ -207,4 +239,5 @@ if(WITH_EXAMPLES)
         add_definitions(-DWITH_EXAMPLES)
 endif()
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/config.h)

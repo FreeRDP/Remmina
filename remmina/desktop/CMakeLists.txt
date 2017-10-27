@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2011 Marc-Andre Moreau
 # Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
-# Copyright (C) 2014-2016 Antenore Gatta, Giovanni Panozzo
+# Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -81,6 +81,17 @@ install(FILES ${ICONSVG_DATA} DESTINATION ${ICONSVG_DIR})
 set(REMMINA_BINARY_PATH ${CMAKE_INSTALL_FULL_BINDIR}/remmina)
 set(REMMINA_ICON "remmina")
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/remmina.desktop @ONLY)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina.desktop DESTINATION "${REMMINA_DATADIR}/applications")
-install(FILES remmina.appdata.xml DESTINATION "${REMMINA_DATADIR}/appdata")
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina.desktop.in
+    ${CMAKE_CURRENT_BINARY_DIR}/remmina.desktop @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina-file.desktop.in
+    ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina.desktop
+    RENAME ${UNIQUE_APPNAME}.desktop
+    DESTINATION "${REMMINA_DATADIR}/applications")
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop
+    DESTINATION "${REMMINA_DATADIR}/applications")
+install(FILES appdata.xml
+    RENAME ${UNIQUE_APPNAME}.appdata.xml
+    DESTINATION "${REMMINA_DATADIR}/metainfo")
+install(FILES remmina-mime.xml DESTINATION "${REMMINA_DATADIR}/mime/packages")
+

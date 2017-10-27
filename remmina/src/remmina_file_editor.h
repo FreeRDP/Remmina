@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,29 +34,26 @@
  *
  */
 
-#ifndef __REMMINAFILEEDITOR_H__
-#define __REMMINAFILEEDITOR_H__
+#pragma once
 
 G_BEGIN_DECLS
 
-#define REMMINA_TYPE_FILE_EDITOR               (remmina_file_editor_get_type ())
-#define REMMINA_FILE_EDITOR(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_FILE_EDITOR, RemminaFileEditor))
-#define REMMINA_FILE_EDITOR_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_FILE_EDITOR, RemminaFileEditorClass))
-#define REMMINA_IS_FILE_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_FILE_EDITOR))
-#define REMMINA_IS_FILE_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_FILE_EDITOR))
-#define REMMINA_FILE_EDITOR_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_FILE_EDITOR, RemminaFileEditorClass))
+#define REMMINA_TYPE_FILE_EDITOR               (remmina_file_editor_get_type())
+#define REMMINA_FILE_EDITOR(obj)               (G_TYPE_CHECK_INSTANCE_CAST((obj), REMMINA_TYPE_FILE_EDITOR, RemminaFileEditor))
+#define REMMINA_FILE_EDITOR_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST((klass), REMMINA_TYPE_FILE_EDITOR, RemminaFileEditorClass))
+#define REMMINA_IS_FILE_EDITOR(obj)            (G_TYPE_CHECK_INSTANCE_TYPE((obj), REMMINA_TYPE_FILE_EDITOR))
+#define REMMINA_IS_FILE_EDITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE((klass), REMMINA_TYPE_FILE_EDITOR))
+#define REMMINA_FILE_EDITOR_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_FILE_EDITOR, RemminaFileEditorClass))
 
 typedef struct _RemminaFileEditorPriv RemminaFileEditorPriv;
 
-typedef struct _RemminaFileEditor
-{
+typedef struct _RemminaFileEditor {
 	GtkDialog dialog;
 
 	RemminaFileEditorPriv* priv;
 } RemminaFileEditor;
 
-typedef struct _RemminaFileEditorClass
-{
+typedef struct _RemminaFileEditorClass {
 	GtkDialogClass parent_class;
 } RemminaFileEditorClass;
 
@@ -73,5 +71,4 @@ GtkWidget* remmina_file_editor_new_from_filename(const gchar* filename);
 
 G_END_DECLS
 
-#endif  /* __REMMINAFILEEDITOR_H__  */
 

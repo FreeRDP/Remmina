@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2010 Vic Lee
+ * Copyright (C) 2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -32,31 +33,26 @@
  *
  */
 
-#ifndef __REMMINATPHANDLER_H__
-#define __REMMINATPHANDLER_H__
+#pragma once
 
 G_BEGIN_DECLS
 
-#define REMMINA_TYPE_TP_HANDLER           (remmina_tp_handler_get_type ())
-#define REMMINA_TP_HANDLER(obj)           (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_TP_HANDLER, RemminaTpHandler))
-#define REMMINA_TP_HANDLER_CLASS(obj)     (G_TYPE_CHECK_CLASS_CAST ((obj), REMMINA_TYPE_TP_HANDLER, RemminaTpHandlerClass))
-#define REMMINA_IS_TP_HANDLER(obj)        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_TP_HANDLER))
-#define REMMINA_IS_TP_HANDLER_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE ((obj), REMMINA_TYPE_TP_HANDLER))
-#define REMMINA_TP_HANDLER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_TP_HANDLER, RemminaTpHandlerClass))
+#define REMMINA_TYPE_TP_HANDLER           (remmina_tp_handler_get_type())
+#define REMMINA_TP_HANDLER(obj)           (G_TYPE_CHECK_INSTANCE_CAST((obj), REMMINA_TYPE_TP_HANDLER, RemminaTpHandler))
+#define REMMINA_TP_HANDLER_CLASS(obj)     (G_TYPE_CHECK_CLASS_CAST((obj), REMMINA_TYPE_TP_HANDLER, RemminaTpHandlerClass))
+#define REMMINA_IS_TP_HANDLER(obj)        (G_TYPE_CHECK_INSTANCE_TYPE((obj), REMMINA_TYPE_TP_HANDLER))
+#define REMMINA_IS_TP_HANDLER_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE((obj), REMMINA_TYPE_TP_HANDLER))
+#define REMMINA_TP_HANDLER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_TP_HANDLER, RemminaTpHandlerClass))
 
-typedef struct _RemminaTpHandler
-{
+typedef struct _RemminaTpHandler {
 	GObject parent;
 } RemminaTpHandler;
 
-typedef struct _RemminaTpHandlerClass
-{
+typedef struct _RemminaTpHandlerClass {
 	GObjectClass parent_class;
 } RemminaTpHandlerClass;
 
 RemminaTpHandler* remmina_tp_handler_new(void);
 
 G_END_DECLS
-
-#endif
 

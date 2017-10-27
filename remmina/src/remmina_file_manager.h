@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2010 Vic Lee
+ * Copyright (C) 2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,15 +33,13 @@
  *
  */
 
-#ifndef __REMMINAFILEMANAGER_H__
-#define __REMMINAFILEMANAGER_H__
+#pragma once
 
 #include "remmina_file.h"
 
 G_BEGIN_DECLS
 
-typedef struct _RemminaGroupData
-{
+typedef struct _RemminaGroupData {
 	gchar *name;
 	gchar *group;
 	gchar *datetime;
@@ -60,5 +59,4 @@ RemminaFile* remmina_file_manager_load_file(const gchar *filename);
 
 G_END_DECLS
 
-#endif  /* __REMMINAFILEMANAGER_H__  */
 

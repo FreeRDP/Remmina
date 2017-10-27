@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009 - Vic Lee
+ * Copyright (C) 2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,15 +33,14 @@
  *
  */
 
-#ifndef __REMMINASTRINGARRAY_H__
-#define __REMMINASTRINGARRAY_H__
+#pragma once
 
 G_BEGIN_DECLS
 
 typedef GPtrArray RemminaStringArray;
 
 RemminaStringArray* remmina_string_array_new(void);
-#define remmina_string_array_index(array,i) (gchar*)g_ptr_array_index(array,i)
+#define remmina_string_array_index(array, i) (gchar*)g_ptr_array_index(array, i)
 RemminaStringArray* remmina_string_array_new_from_string(const gchar *strs);
 RemminaStringArray* remmina_string_array_new_from_allocated_string(gchar *strs);
 void remmina_string_array_add(RemminaStringArray *array, const gchar *str);
@@ -54,5 +54,4 @@ void remmina_string_array_free(RemminaStringArray *array);
 
 G_END_DECLS
 
-#endif  /* __REMMINASTRINGARRAY_H__  */
 
