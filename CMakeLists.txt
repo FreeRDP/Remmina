@@ -231,7 +231,7 @@ endif()
 if(GTK_FOUND)
         add_subdirectory(remmina)
         add_subdirectory(remmina-plugins)
-        add_subdirectory(remmina-plugins-gnome)
+        add_subdirectory(remmina-plugin-secret)
 endif()
 
 if(WITH_EXAMPLES)
