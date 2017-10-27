@@ -43,7 +43,7 @@
 #include <freerdp/client/cliprdr.h>
 #include <sys/time.h>
 
-#define CLIPBOARD_TRANSFER_WAIT_TIME 2
+#define CLIPBOARD_TRANSFER_WAIT_TIME 0
 
 UINT32 remmina_rdp_cliprdr_get_format_from_gdkatom(GdkAtom atom)
 {
@@ -429,7 +429,7 @@ static UINT remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext
 	pthread_cond_signal(&clipboard->transfer_clip_cond);
 	if ( clipboard->srv_clip_data_wait == SCDW_BUSY_WAIT ) {
 		clipboard->srv_data = output;
-	}else  {
+	}/*else  {
 		// Clipboard data arrived from server when we are not busywaiting.
 		// Just put it on the local clipboard
 
@@ -443,7 +443,8 @@ static UINT remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext
 
 		clipboard->srv_clip_data_wait = SCDW_NONE;
 
-	}
+	}*/
+	clipboard->srv_clip_data_wait = SCDW_NONE;
 	pthread_mutex_unlock(&clipboard->transfer_clip_mutex);
 
 	return CHANNEL_RC_OK;
