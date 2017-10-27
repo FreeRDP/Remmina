@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009 - Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,15 +47,14 @@
 
 static gboolean remmina_crypt_init(gcry_cipher_hd_t *phd)
 {
-	TRACE_CALL("remmina_crypt_init");
+	TRACE_CALL("__func__");
 	guchar* secret;
 	gcry_error_t err;
 	gsize secret_len;
 
 	secret = g_base64_decode(remmina_pref.secret, &secret_len);
 
-	if (secret_len < 32)
-	{
+	if (secret_len < 32) {
 		g_print("secret corrupted\n");
 		g_free(secret);
 		return FALSE;
@@ -62,8 +62,7 @@ static gboolean remmina_crypt_init(gcry_cipher_hd_t *phd)
 
 	err = gcry_cipher_open(phd, GCRY_CIPHER_3DES, GCRY_CIPHER_MODE_CBC, 0);
 
-	if (err)
-	{
+	if (err) {
 		g_print("gcry_cipher_open failure: %s\n", gcry_strerror(err));
 		g_free(secret);
 		return FALSE;
@@ -71,8 +70,7 @@ static gboolean remmina_crypt_init(gcry_cipher_hd_t *phd)
 
 	err = gcry_cipher_setkey((*phd), secret, 24);
 
-	if (err)
-	{
+	if (err) {
 		g_print("gcry_cipher_setkey failure: %s\n", gcry_strerror(err));
 		g_free(secret);
 		gcry_cipher_close((*phd));
@@ -81,8 +79,7 @@ static gboolean remmina_crypt_init(gcry_cipher_hd_t *phd)
 
 	err = gcry_cipher_setiv((*phd), secret + 24, 8);
 
-	if (err)
-	{
+	if (err) {
 		g_print("gcry_cipher_setiv failure: %s\n", gcry_strerror(err));
 		g_free(secret);
 		gcry_cipher_close((*phd));
@@ -96,7 +93,7 @@ static gboolean remmina_crypt_init(gcry_cipher_hd_t *phd)
 
 gchar* remmina_crypt_encrypt(const gchar *str)
 {
-	TRACE_CALL("remmina_crypt_encrypt");
+	TRACE_CALL("__func__");
 	guchar* buf;
 	gint buf_len;
 	gchar* result;
@@ -112,14 +109,13 @@ gchar* remmina_crypt_encrypt(const gchar *str)
 	buf_len = strlen(str);
 	/* Pack to 64bit block size, and make sure it's always 0-terminated */
 	buf_len += 8 - buf_len % 8;
-	buf = (guchar*) g_malloc(buf_len);
+	buf = (guchar*)g_malloc(buf_len);
 	memset(buf, 0, buf_len);
 	memcpy(buf, str, strlen(str));
 
 	err = gcry_cipher_encrypt(hd, buf, buf_len, NULL, 0);
 
-	if (err)
-	{
+	if (err) {
 		g_print("gcry_cipher_encrypt failure: %s\n", gcry_strerror(err));
 		g_free(buf);
 		gcry_cipher_close(hd);
@@ -136,7 +132,7 @@ gchar* remmina_crypt_encrypt(const gchar *str)
 
 gchar* remmina_crypt_decrypt(const gchar *str)
 {
-	TRACE_CALL("remmina_crypt_decrypt");
+	TRACE_CALL("__func__");
 	guchar* buf;
 	gsize buf_len;
 	gcry_error_t err;
@@ -152,8 +148,7 @@ gchar* remmina_crypt_decrypt(const gchar *str)
 
 	err = gcry_cipher_decrypt(hd, buf, buf_len, NULL, 0);
 
-	if (err)
-	{
+	if (err) {
 		g_print("gcry_cipher_decrypt failure: %s\n", gcry_strerror(err));
 		g_free(buf);
 		gcry_cipher_close(hd);
@@ -165,20 +160,20 @@ gchar* remmina_crypt_decrypt(const gchar *str)
 	/* Just in case */
 	buf[buf_len - 1] = '\0';
 
-	return (gchar*) buf;
+	return (gchar*)buf;
 }
 
 #else
 
 gchar* remmina_crypt_encrypt(const gchar *str)
 {
-	TRACE_CALL("remmina_crypt_encrypt");
+	TRACE_CALL("__func__");
 	return NULL;
 }
 
 gchar* remmina_crypt_decrypt(const gchar *str)
 {
-	TRACE_CALL("remmina_crypt_decrypt");
+	TRACE_CALL("__func__");
 	return NULL;
 }
 

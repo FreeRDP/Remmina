@@ -1,6 +1,7 @@
 # remmina-plugins-gnome - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2011 Marc-Andre Moreau
+# Copyright (C) 2014-2017 Antenore Gatta, Giovanni Panozzo
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -33,19 +34,19 @@
 
 find_suggested_package(Libsecret)
 if(LIBSECRET_FOUND)
-	set(REMMINA_PLUGINS_GNOME_SRCS
-		src/glibsecret_plugin.c
-		)
+        set(REMMINA_PLUGINS_GNOME_SRCS
+                src/glibsecret_plugin.c
+                )
 
-	add_library(remmina-plugins-gnome MODULE ${REMMINA_PLUGINS_GNOME_SRCS})
-	set_target_properties(remmina-plugins-gnome PROPERTIES PREFIX "")
-	set_target_properties(remmina-plugins-gnome PROPERTIES NO_SONAME 1)
+        add_library(remmina-plugins-gnome MODULE ${REMMINA_PLUGINS_GNOME_SRCS})
+        set_target_properties(remmina-plugins-gnome PROPERTIES PREFIX "")
+        set_target_properties(remmina-plugins-gnome PROPERTIES NO_SONAME 1)
 
-	include_directories(${GTK_INCLUDE_DIRS})
-	target_link_libraries(remmina-plugins-gnome ${GTK_LIBRARY_DIRS})
+        include_directories(${GTK_INCLUDE_DIRS})
+        target_link_libraries(remmina-plugins-gnome ${GTK_LIBRARY_DIRS})
 
-		include_directories(SYSTEM ${LIBSECRET_INCLUDE_DIRS})
-		target_link_libraries(remmina-plugins-gnome ${LIBSECRET_LIBRARIES} ${GLIB2_LIBRARY})
+                include_directories(SYSTEM ${LIBSECRET_INCLUDE_DIRS})
+                target_link_libraries(remmina-plugins-gnome ${LIBSECRET_LIBRARIES} ${GLIB2_LIBRARY})
 
-	install(TARGETS remmina-plugins-gnome DESTINATION ${REMMINA_PLUGINDIR})
+        install(TARGETS remmina-plugins-gnome DESTINATION ${REMMINA_PLUGINDIR})
 endif()

@@ -49,24 +49,24 @@ void remmina_plugin_spice_select_usb_devices(RemminaProtocolWidget *gp)
 	 * accessible from the Remmina plugin API.
 	 */
 	dialog = gtk_dialog_new_with_buttons(_("Select USB devices for redirection"),
-	                                     NULL,
-	                                     GTK_DIALOG_MODAL,
-	                                     _("_Close"),
-	                                     GTK_RESPONSE_ACCEPT,
-	                                     NULL);
+		NULL,
+		GTK_DIALOG_MODAL,
+		_("_Close"),
+		GTK_RESPONSE_ACCEPT,
+		NULL);
 	gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT);
 
 	usb_device_widget = spice_usb_device_widget_new(gpdata->session, NULL);
 	g_signal_connect(usb_device_widget,
-	                 "connect-failed",
-	                 G_CALLBACK(remmina_plugin_spice_usb_connect_failed_cb),
-	                 gp);
+		"connect-failed",
+		G_CALLBACK(remmina_plugin_spice_usb_connect_failed_cb),
+		gp);
 
 	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
-	                   usb_device_widget,
-	                   TRUE,
-	                   TRUE,
-	                   0);
+		usb_device_widget,
+		TRUE,
+		TRUE,
+		0);
 	gtk_widget_show_all(dialog);
 	gtk_dialog_run(GTK_DIALOG(dialog));
 	gtk_widget_destroy(dialog);
@@ -78,8 +78,7 @@ static void remmina_plugin_spice_usb_connect_failed_cb(GObject *object, SpiceUsb
 
 	GtkWidget *dialog;
 
-	if (error->domain == G_IO_ERROR && error->code == G_IO_ERROR_CANCELLED)
-	{
+	if (error->domain == G_IO_ERROR && error->code == G_IO_ERROR_CANCELLED) {
 		return;
 	}
 
@@ -89,13 +88,13 @@ static void remmina_plugin_spice_usb_connect_failed_cb(GObject *object, SpiceUsb
 	 * accessible from the Remmina plugin API.
 	 */
 	dialog = gtk_message_dialog_new(NULL,
-	                                GTK_DIALOG_MODAL,
-	                                GTK_MESSAGE_ERROR,
-	                                GTK_BUTTONS_CLOSE,
-	                                _("USB redirection error"));
+		GTK_DIALOG_MODAL,
+		GTK_MESSAGE_ERROR,
+		GTK_BUTTONS_CLOSE,
+		_("USB redirection error"));
 	gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
-	                                         "%s",
-	                                         error->message);
+		"%s",
+		error->message);
 	gtk_dialog_run(GTK_DIALOG(dialog));
 	gtk_widget_destroy(dialog);
 }

@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,8 +34,7 @@
  *
  */
 
-#ifndef __REMMINAPROTOCOLWIDGET_H__
-#define __REMMINAPROTOCOLWIDGET_H__
+#pragma once
 
 #include "remmina_init_dialog.h"
 #include "remmina_file.h"
@@ -45,30 +45,29 @@ G_BEGIN_DECLS
 #define REMMINA_PROTOCOL_FEATURE_TOOL_SSH  -1
 #define REMMINA_PROTOCOL_FEATURE_TOOL_SFTP -2
 
-#define REMMINA_TYPE_PROTOCOL_WIDGET                  (remmina_protocol_widget_get_type ())
-#define REMMINA_PROTOCOL_WIDGET(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_PROTOCOL_WIDGET, RemminaProtocolWidget))
-#define REMMINA_PROTOCOL_WIDGET_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_PROTOCOL_WIDGET, RemminaProtocolWidgetClass))
-#define REMMINA_IS_PROTOCOL_WIDGET(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_PROTOCOL_WIDGET))
-#define REMMINA_IS_PROTOCOL_WIDGET_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_PROTOCOL_WIDGET))
-#define REMMINA_PROTOCOL_WIDGET_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_PROTOCOL_WIDGET, RemminaProtocolWidgetClass))
+#define REMMINA_TYPE_PROTOCOL_WIDGET                  (remmina_protocol_widget_get_type())
+#define REMMINA_PROTOCOL_WIDGET(obj)                  (G_TYPE_CHECK_INSTANCE_CAST((obj), REMMINA_TYPE_PROTOCOL_WIDGET, RemminaProtocolWidget))
+#define REMMINA_PROTOCOL_WIDGET_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST((klass), REMMINA_TYPE_PROTOCOL_WIDGET, RemminaProtocolWidgetClass))
+#define REMMINA_IS_PROTOCOL_WIDGET(obj)               (G_TYPE_CHECK_INSTANCE_TYPE((obj), REMMINA_TYPE_PROTOCOL_WIDGET))
+#define REMMINA_IS_PROTOCOL_WIDGET_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE((klass), REMMINA_TYPE_PROTOCOL_WIDGET))
+#define REMMINA_PROTOCOL_WIDGET_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_PROTOCOL_WIDGET, RemminaProtocolWidgetClass))
 
 typedef struct _RemminaProtocolWidgetPriv RemminaProtocolWidgetPriv;
 
-struct _RemminaProtocolWidget
-{
+struct _RemminaProtocolWidget {
 	GtkEventBox event_box;
 
 	RemminaProtocolWidgetPriv *priv;
 };
 
-struct _RemminaProtocolWidgetClass
-{
+struct _RemminaProtocolWidgetClass {
 	GtkEventBoxClass parent_class;
 
 	void (*connect)(RemminaProtocolWidget *gp);
 	void (*disconnect)(RemminaProtocolWidget *gp);
 	void (*desktop_resize)(RemminaProtocolWidget *gp);
 	void (*update_align)(RemminaProtocolWidget *gp);
+	void (*unlock_dynres)(RemminaProtocolWidget *gp);
 };
 
 GType remmina_protocol_widget_get_type(void)
@@ -82,8 +81,11 @@ gint remmina_protocol_widget_get_width(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_width(RemminaProtocolWidget *gp, gint width);
 gint remmina_protocol_widget_get_height(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_height(RemminaProtocolWidget *gp, gint height);
-gboolean remmina_protocol_widget_get_scale(RemminaProtocolWidget *gp);
-void remmina_protocol_widget_set_scale(RemminaProtocolWidget *gp, gboolean scale);
+gint remmina_protocol_widget_get_profile_remote_width(RemminaProtocolWidget* gp);
+gint remmina_protocol_widget_get_profile_remote_height(RemminaProtocolWidget* gp);
+
+RemminaScaleMode remmina_protocol_widget_get_current_scale_mode(RemminaProtocolWidget *gp);
+void remmina_protocol_widget_set_current_scale_mode(RemminaProtocolWidget *gp, RemminaScaleMode scalemode);
 gboolean remmina_protocol_widget_get_expand(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_set_expand(RemminaProtocolWidget *gp, gboolean expand);
 gboolean remmina_protocol_widget_has_error(RemminaProtocolWidget *gp);
@@ -140,7 +142,7 @@ void remmina_protocol_widget_init_show(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_init_hide(RemminaProtocolWidget *gp);
 
 void remmina_protocol_widget_chat_open(RemminaProtocolWidget *gp, const gchar *name,
-                                       void(*on_send)(RemminaProtocolWidget *gp, const gchar *text), void(*on_destroy)(RemminaProtocolWidget *gp));
+				       void (*on_send)(RemminaProtocolWidget *gp, const gchar *text), void (*on_destroy)(RemminaProtocolWidget *gp));
 void remmina_protocol_widget_chat_close(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_chat_receive(RemminaProtocolWidget *gp, const gchar *text);
 void remmina_protocol_widget_send_keys_signals(GtkWidget *widget, const guint *keyvals, int length, GdkEventType action);
@@ -151,8 +153,9 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget* gp, GtkMenuI
 /* Take screenshot of plugin */
 gboolean remmina_protocol_widget_plugin_screenshot(RemminaProtocolWidget* gp, RemminaPluginScreenshotData *rpsd);
 
+void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp, gint w, gint h);
+
 
 G_END_DECLS
 
-#endif  /* __REMMINAPROTOCOLWIDGET_H__  */
 

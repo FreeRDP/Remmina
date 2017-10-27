@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/FreeRDP/Remmina.png)](https://travis-ci.org/FreeRDP/Remmina) [![Bountysource](https://img.shields.io/bountysource/team/remmina/activity.svg)]()
+[![Build Status](https://travis-ci.org/FreeRDP/Remmina.png)](https://travis-ci.org/FreeRDP/Remmina) [![Bountysource](https://img.shields.io/bountysource/team/remmina/activity.svg)](https://www.bountysource.com/teams/remmina) [![CodeTriage](https://www.codetriage.com/freerdp/remmina/badges/users.svg)](https://www.codetriage.com/freerdp/remmina)
 
 # Remmina: The GTK+ Remote Desktop Client
 
@@ -46,12 +46,13 @@ Or update the current installed version with the selected channel:
 sudo snap refresh remmina --channel=edge # use --channel=stable otherwise
 ```
 
-To enable some advanced features such as `mount-control` (to manage mount positions), `avahi-observer` (to automatically look for local servers to connect to), `cups-control` (to manage printing) you should run something like:
+To enable some advanced features such as `mount-control` (to manage mount positions), `avahi-observer` (to automatically look for local servers to connect to), `cups-control` (to manage printing), `password-manager-service` (to use gnome-keyring) you should run something like:
 
 ```sh
 sudo snap connect remmina:avahi-observe :avahi-observe # servers discovery
 sudo snap connect remmina:cups-control :cups-control # printing
 sudo snap connect remmina:mount-observe :mount-observe # mount management
+sudo snap connect remmina:password-manager-service :password-manager-service # gnome-keyring
 ```
 
 Snap packages will be updated automatically and will include both latest `FreeRDP` git and latest `libssh 0.7` release (for better security).
@@ -79,8 +80,8 @@ sudo apt-get update
 [Hubbitus](https://github.com/Hubbitus) (Pavel Alexeev) provided us a copr, to install just execute as root:
 
 ```sh
-# dnf copr enable hubbitus/remmina-next
-# dnf upgrade --refresh 'remmina*' 'freerdp*'
+dnf copr enable hubbitus/remmina-next
+dnf upgrade --refresh 'remmina*' 'freerdp*'
 ```
 
 ### Arch Linux based
@@ -89,14 +90,14 @@ Install [remmina-git](https://aur.archlinux.org/packages/remmina-git) from [AUR]
 
 There are also some external, not supported plugins provided by [Muflone](https://github.com/muflone) :
 
-* [remmina-plugin-exec](https://aur.archlinux.org/packages/remmina-plugin-exec/) A protocol plugin for Remmina to execute an external process. 
-* [remmina-plugin-folder](https://aur.archlinux.org/packages/remmina-plugin-folder/) A protocol plugin for Remmina to open a folder. 
-* [remmina-plugin-open](https://aur.archlinux.org/packages/remmina-plugin-open/) A protocol plugin for Remmina to open a document with its associated application. 
-* [remmina-plugin-rdesktop](https://aur.archlinux.org/packages/remmina-plugin-rdesktop/) A protocol plugin for Remmina to open a RDP connection with rdesktop.  
-* [remmina-plugin-teamviewer](https://aur.archlinux.org/packages/remmina-plugin-teamviewer/) A protocol plugin for Remmina to launch a TeamViewer connection.  
-* [remmina-plugin-ultravnc](https://aur.archlinux.org/packages/remmina-plugin-ultravnc/) A protocol plugin for Remmina to connect via VNC using UltraVNC viewer.  
-* [remmina-plugin-url](https://aur.archlinux.org/packages/remmina-plugin-url/) A protocol plugin for Remmina to open an URL in an external browser.  
-* [remmina-plugin-webkit](https://aur.archlinux.org/packages/remmina-plugin-webkit/) A protocol plugin for Remmina to launch a GTK+ Webkit browser.  
+* [remmina-plugin-exec](https://aur.archlinux.org/packages/remmina-plugin-exec/) A protocol plugin for Remmina to execute an external process.
+* [remmina-plugin-folder](https://aur.archlinux.org/packages/remmina-plugin-folder/) A protocol plugin for Remmina to open a folder.
+* [remmina-plugin-open](https://aur.archlinux.org/packages/remmina-plugin-open/) A protocol plugin for Remmina to open a document with its associated application.
+* [remmina-plugin-rdesktop](https://aur.archlinux.org/packages/remmina-plugin-rdesktop/) A protocol plugin for Remmina to open a RDP connection with rdesktop.
+* [remmina-plugin-teamviewer](https://aur.archlinux.org/packages/remmina-plugin-teamviewer/) A protocol plugin for Remmina to launch a TeamViewer connection.
+* [remmina-plugin-ultravnc](https://aur.archlinux.org/packages/remmina-plugin-ultravnc/) A protocol plugin for Remmina to connect via VNC using UltraVNC viewer.
+* [remmina-plugin-url](https://aur.archlinux.org/packages/remmina-plugin-url/) A protocol plugin for Remmina to open an URL in an external browser.
+* [remmina-plugin-webkit](https://aur.archlinux.org/packages/remmina-plugin-webkit/) A protocol plugin for Remmina to launch a GTK+ Webkit browser.
 
 ### From the source code
 
@@ -121,14 +122,17 @@ Remmina support also the following options:
   -t, --protocol=PROTOCOL     Use default protocol
   -i, --icon                  Start as tray icon
   -v, --version               Show the application's version
+  -V, --full-version          Show the application's version, including the pulgin versions
   --display=DISPLAY           X display to use
 ```
 
 ## Configuration
 
-You can configure everything from the graphical interface or editing by hand the files under $HOME/.remmina or $HOME/.config/remmina 
+You can configure everything from the graphical interface or editing by hand the files under $HOME/.remmina or $HOME/.config/remmina
 
 ## Contributing
+
+See [CONTRIBUTING.md](https://raw.githubusercontent.com/FreeRDP/Remmina/next/CONTRIBUTING.md) for a better overview.
 
 If you want to contribute with code:
 
@@ -150,16 +154,16 @@ See the [THANKS.md](https://raw.githubusercontent.com/FreeRDP/Remmina/next/THANK
 
 #### Paypal
 
-[![paypal](https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZBD87JG52PTZC) 
+[![paypal](https://www.paypalobjects.com/en_US/CH/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZBD87JG52PTZC)
 
 #### Bitcoin
 
 [![bitcoin](http://www.remmina.org/wp/wp-content/uploads/2016/06/bitcoin_1298H2vaxcbDQRuR-e1465504491655.png)](bitcoin:1298H2vaxcbDQRuRYkDjfFbvGEgxE1CNjk?label=Remmina%20Donation)
 
-If clicking on the line above does not work, use this payment info: 
+If clicking on the line above does not work, use this payment info:
 
-- Remmina bitcoin address:  1298H2vaxcbDQRuRYkDjfFbvGEgxE1CNjk  
-- Message: Remmina Donation  
+- Remmina bitcoin address:  1298H2vaxcbDQRuRYkDjfFbvGEgxE1CNjk
+- Message: Remmina Donation
 
 ## Authors
 
@@ -167,6 +171,7 @@ Remmina is maintained by:
 
  * [Antenore Gatta](https://github.com/antenore)
  * [Giovanni Panozzo](https://github.com/giox069)
+ * [Dario Cavedon](https://github.com/ic3d)
 
 See the [AUTHORS](https://raw.githubusercontent.com/FreeRDP/Remmina/next/AUTHORS) for an exhaustive list.
 If you are not listed and you have contributed, feel free to update that file.

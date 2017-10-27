@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
+ * Copyright (C) 2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,27 +33,24 @@
  *
  */
 
-#ifndef __REMMINAPREFDIALOG_H__
-#define __REMMINAPREFDIALOG_H__
+#pragma once
 
 /*
  * Remmina Preferences Dialog
  */
 
-typedef struct _RemminaPrefDialogPriv
-{
+typedef struct _RemminaPrefDialogPriv {
 	GtkWidget *resolutions_list;
 } RemminaPrefDialogPriv;
 
-typedef struct _RemminaPrefDialog
-{
+typedef struct _RemminaPrefDialog {
 	GtkBuilder *builder;
 	GtkDialog *dialog;
 	GtkNotebook *notebook_preferences;
 
 	GtkCheckButton *checkbutton_options_remember_last_view_mode;
 	GtkCheckButton *checkbutton_options_save_settings;
-	GtkCheckButton *checkbutton_appearance_invisible_toolbar;
+	GtkCheckButton *checkbutton_appearance_fullscreen_on_auto;
 	GtkCheckButton *checkbutton_appearance_show_tabs;
 	GtkCheckButton *checkbutton_appearance_hide_toolbar;
 	GtkComboBox *comboboxtext_options_double_click;
@@ -62,6 +60,7 @@ typedef struct _RemminaPrefDialog
 	GtkComboBox *comboboxtext_appearance_show_menu_icons;
 	GtkComboBox *comboboxtext_options_scale_quality;
 	GtkComboBox *comboboxtext_options_ssh_loglevel;
+	GtkComboBox *comboboxtext_appearance_fullscreen_toolbar_visibility;
 	GtkFileChooser *filechooserbutton_options_screenshots_path;
 	GtkCheckButton *checkbutton_options_ssh_parseconfig;
 	GtkEntry *entry_options_ssh_port;
@@ -84,6 +83,7 @@ typedef struct _RemminaPrefDialog
 	GtkButton *button_keyboard_scaled;
 	GtkButton *button_keyboard_grab_keyboard;
 	GtkButton *button_keyboard_screenshot;
+	GtkButton *button_keyboard_viewonly;
 	GtkButton *button_keyboard_minimize;
 	GtkButton *button_keyboard_disconnect;
 	GtkButton *button_keyboard_toolbar;
@@ -100,15 +100,35 @@ typedef struct _RemminaPrefDialog
 	GtkButton *button_keyboard_copy;
 	GtkButton *button_keyboard_paste;
 	GtkButton *button_keyboard_select_all;
+	GtkLabel *label_terminal_cursor_color;
+	GtkLabel *label_terminal_normal_colors;
+	GtkLabel *label_terminal_bright_colors;
+	GtkColorButton *colorbutton_cursor;
+	GtkColorButton *colorbutton_color0;
+	GtkColorButton *colorbutton_color1;
+	GtkColorButton *colorbutton_color2;
+	GtkColorButton *colorbutton_color3;
+	GtkColorButton *colorbutton_color4;
+	GtkColorButton *colorbutton_color5;
+	GtkColorButton *colorbutton_color6;
+	GtkColorButton *colorbutton_color7;
+	GtkColorButton *colorbutton_color8;
+	GtkColorButton *colorbutton_color9;
+	GtkColorButton *colorbutton_color10;
+	GtkColorButton *colorbutton_color11;
+	GtkColorButton *colorbutton_color12;
+	GtkColorButton *colorbutton_color13;
+	GtkColorButton *colorbutton_color14;
+	GtkColorButton *colorbutton_color15;
+	GtkFileChooser *filechooserbutton_terminal_color_scheme;
 
 	RemminaPrefDialogPriv *priv;
 } RemminaPrefDialog;
 
-enum
-{
-	REMMINA_PREF_OPTIONS_TAB = 0,
-	REMMINA_PREF_APPEARANCE = 1,
-	REMMINA_PREF_APPLET_TAB = 2
+enum {
+	REMMINA_PREF_OPTIONS_TAB	= 0,
+	REMMINA_PREF_APPEARANCE		= 1,
+	REMMINA_PREF_APPLET_TAB		= 2
 };
 
 G_BEGIN_DECLS
@@ -119,6 +139,4 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent);
 GtkDialog* remmina_pref_dialog_get_dialog(void);
 
 G_END_DECLS
-
-#endif  /* __REMMINAPREFDIALOG_H__  */
 

@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,15 +36,13 @@
 
 #include "remmina_string_array.h"
 
-#ifndef __REMMINAMAIN_H__
-#define __REMMINAMAIN_H__
+#pragma once
 
 #include "remmina_file.h"
 
 typedef struct _RemminaMainPriv RemminaMainPriv;
 
-typedef struct _RemminaMain
-{
+typedef struct _RemminaMain {
 	GtkBuilder *builder;
 	GtkWindow *window;
 	/* Menu widgets */
@@ -91,8 +90,7 @@ typedef struct _RemminaMain
 	RemminaMainPriv *priv;
 } RemminaMain;
 
-struct _RemminaMainPriv
-{
+struct _RemminaMainPriv {
 	GtkTreeModel *file_model;
 	GtkTreeModel *file_model_filter;
 	GtkTreeModel *file_model_sort;
@@ -114,6 +112,10 @@ GtkWindow* remmina_main_get_window(void);
 
 void remmina_main_update_file_datetime(RemminaFile *file);
 
+void remmina_main_destroy(void);
+void remmina_main_save_before_destroy(void);
+
+void remmina_main_show_warning_dialog(const gchar* message);
+
 G_END_DECLS
 
-#endif  /* __REMMINAMAIN_H__  */

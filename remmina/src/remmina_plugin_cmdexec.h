@@ -1,7 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2010 Vic Lee
- * Copyright (C) 2014-2015 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2014-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,13 +33,11 @@
  *
  */
 
-#ifndef __REMMINAPREEXEC_H__
-#define __REMMINAPREEXEC_H__
+#pragma once
 
 G_BEGIN_DECLS
 
-typedef struct
-{
+typedef struct {
 	GtkDialog *dialog;
 	GtkLabel *label_pleasewait;
 	GtkButton *button_cancel;
@@ -50,4 +48,3 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 
 G_END_DECLS
 
-#endif  /* __REMMINAPREEXEC_H__  */

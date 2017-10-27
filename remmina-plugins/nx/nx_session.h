@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2010 Vic Lee 
+ * Copyright (C) 2010 Vic Lee
+ * Copyright (C) 2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301, USA.
  *
  *  In addition, as a special exception, the copyright holders give
@@ -32,13 +33,11 @@
  *
  */
 
-#ifndef __REMMINANXSESSION_H__
-#define __REMMINANXSESSION_H__
+#pragma once
 
 G_BEGIN_DECLS
 
-enum
-{
+enum {
 	REMMINA_NX_SESSION_COLUMN_DISPLAY,
 	REMMINA_NX_SESSION_COLUMN_TYPE,
 	REMMINA_NX_SESSION_COLUMN_ID,
@@ -69,7 +68,7 @@ void remmina_nx_session_set_localport(RemminaNXSession *nx, gint localport);
 void remmina_nx_session_set_log_callback(RemminaNXSession *nx, RemminaNXLogCallback log_callback);
 
 gboolean remmina_nx_session_open(RemminaNXSession *nx, const gchar *server, guint port, const gchar *private_key_file,
-		RemminaNXPassphraseCallback passphrase_func, gpointer userdata);
+				 RemminaNXPassphraseCallback passphrase_func, gpointer userdata);
 
 gboolean remmina_nx_session_login(RemminaNXSession *nx, const gchar *username, const gchar *password);
 
@@ -105,5 +104,4 @@ void remmina_nx_session_bye(RemminaNXSession *nx);
 
 G_END_DECLS
 
-#endif  /* __REMMINANXSESSION_H__  */
 

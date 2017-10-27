@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee
+ * Copyright (C) 2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,8 +33,7 @@
  *
  */
 
-#ifndef __REMMINAKEYCHOOSER_H__
-#define __REMMINAKEYCHOOSER_H__
+#pragma once
 
 #define KEY_MODIFIER_SHIFT _("Shift+")
 #define KEY_MODIFIER_CTRL _("Ctrl+")
@@ -43,8 +43,7 @@
 #define KEY_MODIFIER_META _("Meta+")
 #define KEY_CHOOSER_NONE _("<None>")
 
-typedef struct _RemminaKeyChooserArguments
-{
+typedef struct _RemminaKeyChooserArguments {
 	guint keyval;
 	guint state;
 	gboolean use_modifiers;
@@ -62,5 +61,4 @@ guint remmina_key_chooser_get_keyval(const gchar *value);
 
 G_END_DECLS
 
-#endif  /* __REMMINAKEYCHOOSER_H__  */
 

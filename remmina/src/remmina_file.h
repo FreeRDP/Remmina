@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,30 +36,21 @@
 
 #include "remmina/types.h"
 
-#ifndef __REMMINAFILE_H__
-#define __REMMINAFILE_H__
+#pragma once
 
 G_BEGIN_DECLS
 
-struct _RemminaFile
-{
+struct _RemminaFile {
 	gchar *filename;
 	GHashTable *settings;
+	GHashTable *spsettings;
+	gboolean prevent_saving;
 };
 
-enum
-{
-	SSH_AUTH_PASSWORD, SSH_AUTH_PUBLICKEY, SSH_AUTH_AGENT, SSH_AUTH_AUTO_PUBLICKEY
+enum {
+	SSH_AUTH_PASSWORD, SSH_AUTH_PUBLICKEY, SSH_AUTH_AGENT, SSH_AUTH_AUTO_PUBLICKEY, SSH_AUTH_GSSAPI
 };
 
-typedef enum
-{
-	REMMINA_SETTING_GROUP_NONE,
-	REMMINA_SETTING_GROUP_PROFILE,
-	REMMINA_SETTING_GROUP_CREDENTIAL,
-	REMMINA_SETTING_GROUP_RUNTIME,
-	REMMINA_SETTING_GROUP_ALL
-} RemminaSettingGroup;
 
 #define TOOLBAR_OPACITY_LEVEL 8
 #define TOOLBAR_OPACITY_MIN 0.2
@@ -78,15 +70,13 @@ const gchar* remmina_file_get_string(RemminaFile *remminafile, const gchar *sett
 gchar* remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting);
 void remmina_file_set_int(RemminaFile *remminafile, const gchar *setting, gint value);
 gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint default_value);
+void remmina_file_store_secret_plugin_password(RemminaFile *remminafile, const gchar* key, const gchar* value);
 /* Create or overwrite the .remmina file */
-void remmina_file_save_group(RemminaFile *remminafile, RemminaSettingGroup group);
-void remmina_file_save_all(RemminaFile *remminafile);
+void remmina_file_save(RemminaFile *remminafile);
 /* Free the RemminaFile object */
 void remmina_file_free(RemminaFile *remminafile);
 /* Duplicate a RemminaFile object */
 RemminaFile* remmina_file_dup(RemminaFile *remminafile);
-/* Update the screen width and height members */
-void remmina_file_update_screen_resolution(RemminaFile *remminafile);
 /* Get the protocol icon name */
 const gchar* remmina_file_get_icon_name(RemminaFile *remminafile);
 /* Duplicate a temporary RemminaFile and change the protocol */
@@ -103,5 +93,4 @@ void remmina_file_touch(RemminaFile *remminafilefile);
 
 G_END_DECLS
 
-#endif  /* __REMMINAFILE_H__  */
 

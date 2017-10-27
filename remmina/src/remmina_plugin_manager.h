@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,8 +34,7 @@
  *
  */
 
-#ifndef __REMMINAPLUGINMANAGER_H__
-#define __REMMINAPLUGINMANAGER_H__
+#pragma once
 
 #include "remmina/plugin.h"
 
@@ -47,13 +47,15 @@ RemminaPlugin* remmina_plugin_manager_get_plugin(RemminaPluginType type, const g
 gboolean remmina_plugin_manager_query_feature_by_type(RemminaPluginType ptype, const gchar* name, RemminaProtocolFeatureType ftype);
 void remmina_plugin_manager_for_each_plugin(RemminaPluginType type, RemminaPluginFunc func, gpointer data);
 void remmina_plugin_manager_show(GtkWindow *parent);
+void remmina_plugin_manager_for_each_plugin_stdout(RemminaPluginType type, RemminaPluginFunc func, gpointer data);
+void remmina_plugin_manager_show_stdout();
 RemminaFilePlugin* remmina_plugin_manager_get_import_file_handler(const gchar *file);
 RemminaFilePlugin* remmina_plugin_manager_get_export_file_handler(RemminaFile *remminafile);
 RemminaSecretPlugin* remmina_plugin_manager_get_secret_plugin(void);
+const gchar *remmina_plugin_manager_get_canonical_setting_name(const RemminaProtocolSetting* setting);
 
 extern RemminaPluginService remmina_plugin_manager_service;
 
 G_END_DECLS
 
-#endif /* __REMMINAPLUGINMANAGER_H__ */
 

@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2010-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,13 +43,13 @@ static guint rdp_keyboard_layout = 0;
 
 static void remmina_rdp_settings_kbd_init(void)
 {
-	TRACE_CALL("remmina_rdp_settings_kbd_init");
+	TRACE_CALL("__func__");
 	keyboard_layout = freerdp_keyboard_init(rdp_keyboard_layout);
 }
 
 void remmina_rdp_settings_init(void)
 {
-	TRACE_CALL("remmina_rdp_settings_init");
+	TRACE_CALL("__func__");
 	gchar* value;
 
 	value = remmina_plugin_service->pref_get_value("rdp_keyboard_layout");
@@ -63,19 +64,18 @@ void remmina_rdp_settings_init(void)
 
 guint remmina_rdp_settings_get_keyboard_layout(void)
 {
-	TRACE_CALL("remmina_rdp_settings_get_keyboard_layout");
+	TRACE_CALL("__func__");
 	return keyboard_layout;
 }
 
-#define REMMINA_TYPE_PLUGIN_RDPSET_GRID		(remmina_rdp_settings_grid_get_type())
-#define REMMINA_RDPSET_GRID(obj)			(G_TYPE_CHECK_INSTANCE_CAST((obj), REMMINA_TYPE_PLUGIN_RDPSET_GRID, RemminaPluginRdpsetGrid))
-#define REMMINA_RDPSET_GRID_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST((klass), REMMINA_TYPE_PLUGIN_RDPSET_GRID, RemminaPluginRdpsetGridClass))
-#define REMMINA_IS_PLUGIN_RDPSET_GRID(obj)		(G_TYPE_CHECK_INSTANCE_TYPE((obj), REMMINA_TYPE_PLUGIN_RDPSET_GRID))
-#define REMMINA_IS_PLUGIN_RDPSET_GRID_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE((klass), REMMINA_TYPE_PLUGIN_RDPSET_GRID))
-#define REMMINA_RDPSET_GRID_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_PLUGIN_RDPSET_GRID, RemminaPluginRdpsetGridClass))
+#define REMMINA_TYPE_PLUGIN_RDPSET_GRID         (remmina_rdp_settings_grid_get_type())
+#define REMMINA_RDPSET_GRID(obj)                        (G_TYPE_CHECK_INSTANCE_CAST((obj), REMMINA_TYPE_PLUGIN_RDPSET_GRID, RemminaPluginRdpsetGrid))
+#define REMMINA_RDPSET_GRID_CLASS(klass)                (G_TYPE_CHECK_CLASS_CAST((klass), REMMINA_TYPE_PLUGIN_RDPSET_GRID, RemminaPluginRdpsetGridClass))
+#define REMMINA_IS_PLUGIN_RDPSET_GRID(obj)              (G_TYPE_CHECK_INSTANCE_TYPE((obj), REMMINA_TYPE_PLUGIN_RDPSET_GRID))
+#define REMMINA_IS_PLUGIN_RDPSET_GRID_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE((klass), REMMINA_TYPE_PLUGIN_RDPSET_GRID))
+#define REMMINA_RDPSET_GRID_GET_CLASS(obj)              (G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_PLUGIN_RDPSET_GRID, RemminaPluginRdpsetGridClass))
 
-typedef struct _RemminaPluginRdpsetGrid
-{
+typedef struct _RemminaPluginRdpsetGrid {
 	GtkGrid grid;
 
 	GtkWidget* keyboard_layout_label;
@@ -106,8 +106,7 @@ typedef struct _RemminaPluginRdpsetGrid
 	guint quality_values[10];
 } RemminaPluginRdpsetGrid;
 
-typedef struct _RemminaPluginRdpsetGridClass
-{
+typedef struct _RemminaPluginRdpsetGridClass {
 	GtkGridClass parent_class;
 } RemminaPluginRdpsetGridClass;
 
@@ -117,12 +116,12 @@ G_DEFINE_TYPE(RemminaPluginRdpsetGrid, remmina_rdp_settings_grid, GTK_TYPE_GRID)
 
 static void remmina_rdp_settings_grid_class_init(RemminaPluginRdpsetGridClass* klass)
 {
-	TRACE_CALL("remmina_rdp_settings_grid_class_init");
+	TRACE_CALL("__func__");
 }
 
 static void remmina_rdp_settings_grid_destroy(GtkWidget* widget, gpointer data)
 {
-	TRACE_CALL("remmina_rdp_settings_grid_destroy");
+	TRACE_CALL("__func__");
 	gchar* s;
 	guint new_layout;
 	GtkTreeIter iter;
@@ -131,12 +130,10 @@ static void remmina_rdp_settings_grid_destroy(GtkWidget* widget, gpointer data)
 
 	grid = REMMINA_RDPSET_GRID(widget);
 
-	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(grid->keyboard_layout_combo), &iter))
-	{
+	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(grid->keyboard_layout_combo), &iter)) {
 		gtk_tree_model_get(GTK_TREE_MODEL(grid->keyboard_layout_store), &iter, 0, &new_layout, -1);
 
-		if (new_layout != rdp_keyboard_layout)
-		{
+		if (new_layout != rdp_keyboard_layout) {
 			rdp_keyboard_layout = new_layout;
 			s = g_strdup_printf("%X", new_layout);
 			remmina_plugin_service->pref_set_value("rdp_keyboard_layout", s);
@@ -165,8 +162,7 @@ static void remmina_rdp_settings_grid_destroy(GtkWidget* widget, gpointer data)
 	remmina_plugin_service->pref_set_value("rdp_quality_9", s);
 	g_free(s);
 
-	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(grid->device_scale_factor_combo), &iter))
-	{
+	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(grid->device_scale_factor_combo), &iter)) {
 		gtk_tree_model_get(GTK_TREE_MODEL(grid->device_scale_factor_store), &iter, 0, &val, -1);
 	} else {
 		val = 0;
@@ -180,8 +176,7 @@ static void remmina_rdp_settings_grid_destroy(GtkWidget* widget, gpointer data)
 	remmina_plugin_service->pref_set_value("rdp_desktopScaleFactor", s);
 	g_free(s);
 
-	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(grid->desktop_orientation_combo), &iter))
-	{
+	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(grid->desktop_orientation_combo), &iter)) {
 		gtk_tree_model_get(GTK_TREE_MODEL(grid->desktop_orientation_store), &iter, 0, &val, -1);
 	} else {
 		val = 0;
@@ -194,7 +189,7 @@ static void remmina_rdp_settings_grid_destroy(GtkWidget* widget, gpointer data)
 
 static void remmina_rdp_settings_grid_load_layout(RemminaPluginRdpsetGrid* grid)
 {
-	TRACE_CALL("remmina_rdp_settings_grid_load_layout");
+	TRACE_CALL("__func__");
 	gint i;
 	gchar* s;
 	GtkTreeIter iter;
@@ -210,8 +205,7 @@ static void remmina_rdp_settings_grid_load_layout(RemminaPluginRdpsetGrid* grid)
 
 	layouts = freerdp_keyboard_get_layouts(RDP_KEYBOARD_LAYOUT_TYPE_STANDARD | RDP_KEYBOARD_LAYOUT_TYPE_VARIANT);
 
-	for (i = 0; layouts[i].code; i++)
-	{
+	for (i = 0; layouts[i].code; i++) {
 		s = g_strdup_printf("%08X - %s", layouts[i].code, layouts[i].name);
 		gtk_list_store_append(grid->keyboard_layout_store, &iter);
 		gtk_list_store_set(grid->keyboard_layout_store, &iter, 0, layouts[i].code, 1, s, -1);
@@ -231,7 +225,7 @@ static void remmina_rdp_settings_grid_load_layout(RemminaPluginRdpsetGrid* grid)
 
 static void remmina_rdp_settings_grid_load_devicescalefactor_combo(RemminaPluginRdpsetGrid* grid)
 {
-	TRACE_CALL("remmina_rdp_settings_grid_load_devicescalefactor_combo");
+	TRACE_CALL("__func__");
 	GtkTreeIter iter;
 
 	gtk_list_store_append(grid->device_scale_factor_store, &iter);
@@ -247,7 +241,7 @@ static void remmina_rdp_settings_grid_load_devicescalefactor_combo(RemminaPlugin
 
 static void remmina_rdp_settings_grid_load_desktoporientation_combo(RemminaPluginRdpsetGrid* grid)
 {
-	TRACE_CALL("remmina_rdp_settings_grid_load_desktoporientation_combo");
+	TRACE_CALL("__func__");
 	GtkTreeIter iter;
 
 	gtk_list_store_append(grid->desktop_orientation_store, &iter);
@@ -264,7 +258,7 @@ static void remmina_rdp_settings_grid_load_desktoporientation_combo(RemminaPlugi
 
 static void remmina_rdp_settings_grid_load_quality(RemminaPluginRdpsetGrid* grid)
 {
-	TRACE_CALL("remmina_rdp_settings_grid_load_quality");
+	TRACE_CALL("__func__");
 	gchar* value;
 	GtkTreeIter iter;
 
@@ -279,7 +273,7 @@ static void remmina_rdp_settings_grid_load_quality(RemminaPluginRdpsetGrid* grid
 	gtk_list_store_append(grid->quality_store, &iter);
 	gtk_list_store_set(grid->quality_store, &iter, 0, 9, 1, _("Best (slowest)"), -1);
 
-	memset(grid->quality_values, 0, sizeof (grid->quality_values));
+	memset(grid->quality_values, 0, sizeof(grid->quality_values));
 
 	value = remmina_plugin_service->pref_get_value("rdp_quality_0");
 	grid->quality_values[0] = (value && value[0] ? strtoul(value, NULL, 16) : DEFAULT_QUALITY_0);
@@ -300,22 +294,18 @@ static void remmina_rdp_settings_grid_load_quality(RemminaPluginRdpsetGrid* grid
 
 static void remmina_rdp_settings_appscale_on_changed(GtkComboBox *widget, RemminaPluginRdpsetGrid *grid)
 {
-	TRACE_CALL("remmina_rdp_settings_appscale_on_changed");
+	TRACE_CALL("__func__");
 	GtkTreeIter iter;
 	guint i = 0;
 
-	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(grid->device_scale_factor_combo), &iter))
-	{
+	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(grid->device_scale_factor_combo), &iter)) {
 		gtk_tree_model_get(GTK_TREE_MODEL(grid->device_scale_factor_store), &iter, 0, &i, -1);
 	}
-	if (i == 0)
-	{
+	if (i == 0) {
 		gtk_widget_set_sensitive(GTK_WIDGET(grid->desktop_scale_factor_spin), FALSE);
 		gtk_spin_button_set_range(GTK_SPIN_BUTTON(grid->desktop_scale_factor_spin), 0, 0);
 		gtk_spin_button_set_value(GTK_SPIN_BUTTON(grid->desktop_scale_factor_spin), 0);
-	}
-	else
-	{
+	}else  {
 		gtk_widget_set_sensitive(GTK_WIDGET(grid->desktop_scale_factor_spin), TRUE);
 		gtk_spin_button_set_range(GTK_SPIN_BUTTON(grid->desktop_scale_factor_spin), 100, 500);
 		// gtk_spin_button_set_value(GTK_SPIN_BUTTON(grid->desktop_scale_factor_spin), i);
@@ -324,21 +314,20 @@ static void remmina_rdp_settings_appscale_on_changed(GtkComboBox *widget, Remmin
 
 static void remmina_rdp_settings_quality_on_changed(GtkComboBox *widget, RemminaPluginRdpsetGrid *grid)
 {
-	TRACE_CALL("remmina_rdp_settings_quality_on_changed");
+	TRACE_CALL("__func__");
 	guint v;
 	guint i = 0;
 	GtkTreeIter iter;
 	gboolean sensitive;
 
-	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX (grid->quality_combo), &iter))
-	{
+	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(grid->quality_combo), &iter)) {
 		gtk_tree_model_get(GTK_TREE_MODEL(grid->quality_store), &iter, 0, &i, -1);
 		sensitive = ( i != -1 );
 
 		if (sensitive)
 			v = grid->quality_values[i];
 		else
-			v = 0x3f;	/* All checkboxes disabled */
+			v = 0x3f;       /* All checkboxes disabled */
 
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(grid->wallpaper_check), (v & 1) == 0);
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(grid->windowdrag_check), (v & 2) == 0);
@@ -363,16 +352,14 @@ static void remmina_rdp_settings_quality_on_changed(GtkComboBox *widget, Remmina
 
 static void remmina_rdp_settings_quality_option_on_toggled(GtkToggleButton* togglebutton, RemminaPluginRdpsetGrid* grid)
 {
-	TRACE_CALL("remmina_rdp_settings_quality_option_on_toggled");
+	TRACE_CALL("__func__");
 	guint v;
 	guint i = 0;
 	GtkTreeIter iter;
 
-	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(grid->quality_combo), &iter))
-	{
+	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(grid->quality_combo), &iter)) {
 		gtk_tree_model_get(GTK_TREE_MODEL(grid->quality_store), &iter, 0, &i, -1);
-		if (i != -1)
-		{
+		if (i != -1) {
 			v = 0;
 			v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->wallpaper_check)) ? 0 : 1);
 			v |= (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(grid->windowdrag_check)) ? 0 : 2);
@@ -395,27 +382,24 @@ static void remmina_rdp_settings_set_combo_active_item(GtkComboBox* combo, int i
 	gboolean valid;
 
 	m = gtk_combo_box_get_model(combo);
-	if (!m)
-	{
+	if (!m) {
 		return;
 	}
 
 	valid = gtk_tree_model_get_iter_first(m, &iter);
-	while(valid)
-	{
+	while (valid) {
 		gtk_tree_model_get(m, &iter, 0, &i, -1);
-		if (i == itemval)
-		{
+		if (i == itemval) {
 			gtk_combo_box_set_active_iter(combo, &iter);
 		}
-		valid = gtk_tree_model_iter_next (m, &iter);
+		valid = gtk_tree_model_iter_next(m, &iter);
 	}
 
 }
 
 static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 {
-	TRACE_CALL("remmina_rdp_settings_grid_init");
+	TRACE_CALL("__func__");
 	gchar* s;
 	GtkWidget* widget;
 	GtkCellRenderer* renderer;
@@ -432,8 +416,8 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 	/* Create the content */
 	widget = gtk_label_new(_("Keyboard layout"));
 	gtk_widget_show(widget);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 0, 1, 1);
 
 	grid->keyboard_layout_store = gtk_list_store_new(2, G_TYPE_UINT, G_TYPE_STRING);
@@ -448,8 +432,8 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 
 	widget = gtk_label_new("-");
 	gtk_widget_show(widget);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 1, 4, 2);
 	grid->keyboard_layout_label = widget;
 
@@ -467,8 +451,8 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 
 	widget = gtk_label_new(_("Quality settings"));
 	gtk_widget_show(widget);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 6, 1, 4);
 
 	grid->quality_store = gtk_list_store_new(2, G_TYPE_UINT, G_TYPE_STRING);
@@ -541,13 +525,13 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 		G_CALLBACK(remmina_rdp_settings_quality_option_on_toggled), grid);
 	grid->composition_check = widget;
 
-	gtk_combo_box_set_active(GTK_COMBO_BOX (grid->quality_combo), 0);
+	gtk_combo_box_set_active(GTK_COMBO_BOX(grid->quality_combo), 0);
 
 
 	widget = gtk_label_new(_("Remote scale factor"));
 	gtk_widget_show(widget);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 27, 1, 1);
 
 	grid->device_scale_factor_store = gtk_list_store_new(2, G_TYPE_INT, G_TYPE_STRING);
@@ -559,8 +543,8 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 
 	widget = gtk_label_new(_("Desktop scale factor %"));
 	gtk_widget_show(widget);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 27, 1, 1);
 
 	widget = gtk_spin_button_new_with_range(0, 10000, 1);
@@ -570,8 +554,8 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 
 	widget = gtk_label_new(_("Device scale factor %"));
 	gtk_widget_show(widget);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_grid_attach(GTK_GRID(grid), widget, 1, 28, 1, 1);
 
 	widget = gtk_combo_box_new_with_model(GTK_TREE_MODEL(grid->device_scale_factor_store));
@@ -592,8 +576,8 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 
 	widget = gtk_label_new(_("Desktop orientation"));
 	gtk_widget_show(widget);
-	gtk_widget_set_halign (GTK_WIDGET(widget), GTK_ALIGN_START);
-	gtk_widget_set_valign (GTK_WIDGET(widget), GTK_ALIGN_CENTER);
+	gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, 29, 1, 1);
 
 	widget = gtk_combo_box_new_with_model(GTK_TREE_MODEL(grid->desktop_orientation_store));
@@ -611,7 +595,7 @@ static void remmina_rdp_settings_grid_init(RemminaPluginRdpsetGrid *grid)
 
 GtkWidget* remmina_rdp_settings_new(void)
 {
-	TRACE_CALL("remmina_rdp_settings_new");
+	TRACE_CALL("__func__");
 	GtkWidget* widget;
 
 	widget = GTK_WIDGET(g_object_new(REMMINA_TYPE_PLUGIN_RDPSET_GRID, NULL));
@@ -622,7 +606,7 @@ GtkWidget* remmina_rdp_settings_new(void)
 
 void remmina_rdp_settings_get_orientation_scale_prefs(int *desktopOrientation, int *desktopScaleFactor, int *deviceScaleFactor)
 {
-	TRACE_CALL("remmina_rdp_settings_get_scaling_prefs");
+	TRACE_CALL("__func__");
 
 	/* See https://msdn.microsoft.com/en-us/library/cc240510.aspx */
 

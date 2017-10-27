@@ -34,6 +34,8 @@
 sudo: required
 language: generic
 
+group: edge
+
 services:
 - docker
 
@@ -45,6 +47,7 @@ env:
   - DEB_BUILD_OPTIONS='-DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON -DWITH_APPINDICATOR=OFF'
   - DOCKER_IMAGE=ubuntu:xenial
   - SNAP_PRIME_ON_PULL_REQUEST=true
+  - SNAP_TRANSFER_SH_UPLOAD_ON_PULL_REQUEST=true
   - SNAP_UNSTABLE_CHANNEL=edge
   - SNAP_RELEASE_CHANNEL=stable
   - SNAPCRAFT_CONFIG_KEY=$encrypted_8816994192a9_key
@@ -83,4 +86,15 @@ deploy:
       branch: next
       tags: true
 
+notifications:
+  email:
+    - antenore@simbiosi.org
+    - giovanni@panozzo.it
+  irc:
+      channels:
+          - "chat.freenode.net#remmina"
+      template:
+          - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
+          - "Change view : %{compare_url}"
+          - "Build details : %{build_url}"
 # EOF #

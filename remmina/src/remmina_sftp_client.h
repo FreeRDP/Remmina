@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,8 +34,7 @@
  *
  */
 
-#ifndef __REMMINASFTPCLIENT_H__
-#define __REMMINASFTPCLIENT_H__
+#pragma once
 
 #include "config.h"
 
@@ -46,15 +46,14 @@
 
 G_BEGIN_DECLS
 
-#define REMMINA_TYPE_SFTP_CLIENT               (remmina_sftp_client_get_type ())
-#define REMMINA_SFTP_CLIENT(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), REMMINA_TYPE_SFTP_CLIENT, RemminaSFTPClient))
-#define REMMINA_SFTP_CLIENT_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), REMMINA_TYPE_SFTP_CLIENT, RemminaSFTPClientClass))
-#define REMMINA_IS_SFTP_CLIENT(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), REMMINA_TYPE_SFTP_CLIENT))
-#define REMMINA_IS_SFTP_CLIENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), REMMINA_TYPE_SFTP_CLIENT))
-#define REMMINA_SFTP_CLIENT_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), REMMINA_TYPE_SFTP_CLIENT, RemminaSFTPClientClass))
+#define REMMINA_TYPE_SFTP_CLIENT               (remmina_sftp_client_get_type())
+#define REMMINA_SFTP_CLIENT(obj)               (G_TYPE_CHECK_INSTANCE_CAST((obj), REMMINA_TYPE_SFTP_CLIENT, RemminaSFTPClient))
+#define REMMINA_SFTP_CLIENT_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST((klass), REMMINA_TYPE_SFTP_CLIENT, RemminaSFTPClientClass))
+#define REMMINA_IS_SFTP_CLIENT(obj)            (G_TYPE_CHECK_INSTANCE_TYPE((obj), REMMINA_TYPE_SFTP_CLIENT))
+#define REMMINA_IS_SFTP_CLIENT_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE((klass), REMMINA_TYPE_SFTP_CLIENT))
+#define REMMINA_SFTP_CLIENT_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_SFTP_CLIENT, RemminaSFTPClientClass))
 
-typedef struct _RemminaSFTPClient
-{
+typedef struct _RemminaSFTPClient {
 	RemminaFTPClient client;
 
 	RemminaSFTP *sftp;
@@ -64,22 +63,20 @@ typedef struct _RemminaSFTPClient
 	gboolean thread_abort;
 } RemminaSFTPClient;
 
-typedef struct _RemminaSFTPClientClass
-{
+typedef struct _RemminaSFTPClientClass {
 	RemminaFTPClientClass parent_class;
 
 } RemminaSFTPClientClass;
 
-GType remmina_sftp_client_get_type (void) G_GNUC_CONST;
+GType remmina_sftp_client_get_type(void) G_GNUC_CONST;
 
-GtkWidget* remmina_sftp_client_new (void);
+GtkWidget* remmina_sftp_client_new(void);
 
-void remmina_sftp_client_open (RemminaSFTPClient *client, RemminaSFTP *sftp);
-gint remmina_sftp_client_confirm_resume (RemminaSFTPClient *client, const gchar *path);
+void remmina_sftp_client_open(RemminaSFTPClient *client, RemminaSFTP *sftp);
+gint remmina_sftp_client_confirm_resume(RemminaSFTPClient *client, const gchar *path);
 
 G_END_DECLS
 
 #endif  /* HAVE_LIBSSH */
 
-#endif  /* __REMMINASFTPCLIENT_H__  */
 

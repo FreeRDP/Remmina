@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,15 +34,14 @@
  *
  */
 
-#ifndef __REMMINAPUBLIC_H__
-#define __REMMINAPUBLIC_H__
+#pragma once
 
 #include "config.h"
 
 #define IDLE_ADD        gdk_threads_add_idle
 #define TIMEOUT_ADD     gdk_threads_add_timeout
-#define CANCEL_ASYNC    pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS,NULL);pthread_testcancel();
-#define CANCEL_DEFER    pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED,NULL);
+#define CANCEL_ASYNC    pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, NULL); pthread_testcancel();
+#define CANCEL_DEFER    pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED, NULL);
 
 #define THREADS_ENTER _Pragma("GCC error \"THREADS_ENTER has been deprecated in Remmina 1.2\"")
 #define THREADS_LEAVE _Pragma("GCC error \"THREADS_LEAVE has been deprecated in Remmina 1.2\"")
@@ -73,15 +73,17 @@ GtkWidget* remmina_public_create_combo_text_d(const gchar *text, const gchar *de
 void remmina_public_load_combo_text_d(GtkWidget *combo, const gchar *text, const gchar *def, const gchar *empty_choice);
 GtkWidget* remmina_public_create_combo(gboolean use_icon);
 GtkWidget* remmina_public_create_combo_map(const gpointer *key_value_list, const gchar *def, gboolean use_icon,
-        const gchar *domain);
+					   const gchar *domain);
 GtkWidget* remmina_public_create_combo_mapint(const gpointer *key_value_list, gint def, gboolean use_icon, const gchar *domain);
 
 void remmina_public_create_group(GtkGrid *table, const gchar *group, gint row, gint rows, gint cols);
 
 gchar* remmina_public_combo_get_active_text(GtkComboBox *combo);
 
+#if !GTK_CHECK_VERSION(3, 22, 0)
 /* A function for gtk_menu_popup to get the position right below the widget specified by user_data */
 void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data);
+#endif
 
 /* Combine two paths into one by correctly handling trailing slash. Return newly allocated string */
 gchar* remmina_public_combine_path(const gchar *path1, const gchar *path2);
@@ -104,8 +106,8 @@ GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename);
 /* Change parent container for a widget */
 void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *container);
 /* Used to send desktop notifications */
-void remmina_public_send_notification (const gchar *notification_id,
-		const gchar *notification_title, const gchar *notification_message);
+void remmina_public_send_notification(const gchar *notification_id,
+				      const gchar *notification_title, const gchar *notification_message);
 /* Validate the inserted value for a new resolution */
 gboolean remmina_public_resolution_validation_func(const gchar *new_str, gchar **error);
 /* Replaces all occurences of search in a new copy of string by replacement. */
@@ -113,4 +115,4 @@ gchar* remmina_public_str_replace(const gchar *string, const gchar *search, cons
 /* Replaces all occurences of search in a new copy of string by replacement
  * and overwrites the original string */
 gchar* remmina_public_str_replace_in_place(gchar *string, const gchar *search, const gchar *replacement);
-#endif  /* __REMMINAPUBLIC_H__  */
+int remmina_public_split_resolution_string(const char *resolution_string, int *w, int *h);

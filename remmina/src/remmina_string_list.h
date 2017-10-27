@@ -2,6 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009 - Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,20 +34,17 @@
  *
  */
 
-#ifndef __REMMINASTRINGLIST_H__
-#define __REMMINASTRINGLIST_H__
+#pragma once
 
 typedef gboolean (*RemminaStringListValidationFunc)(const gchar *new_str, gchar **error);
 
-typedef struct _RemminaStringListPriv
-{
+typedef struct _RemminaStringListPriv {
 	RemminaStringListValidationFunc validation_func;
 	const gchar *fields_separator;
 	gboolean two_columns;
 } RemminaStringListPriv;
 
-typedef struct _RemminaStringList
-{
+typedef struct _RemminaStringList {
 	GtkBuilder *builder;
 	GtkDialog *dialog;
 
@@ -83,4 +81,3 @@ void remmina_string_list_set_validation_func(RemminaStringListValidationFunc fun
 
 G_END_DECLS
 
-#endif  /* __REMMINASTRINGLIST_H__  */

@@ -1,8 +1,8 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2016 Antenore Gatta, Giovanni Panozzo
- * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  * Copyright (C) 2010 Vic Lee
+ * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,18 +47,18 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 
 static void remmina_plugin_tool_init(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_exec_init");
+	TRACE_CALL("__func__");
 	remmina_plugin_service->log_printf("[%s] Plugin init\n", PLUGIN_NAME);
 }
 
 static gboolean remmina_plugin_tool_open_connection(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_tool_open_connection");
+	TRACE_CALL("__func__");
 	remmina_plugin_service->log_printf("[%s] Plugin open connection\n", PLUGIN_NAME);
 
 	GtkDialog *dialog;
 	dialog = GTK_DIALOG(gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL | GTK_DIALOG_USE_HEADER_BAR,
-		GTK_MESSAGE_INFO, GTK_BUTTONS_OK, PLUGIN_DESCRIPTION));
+			GTK_MESSAGE_INFO, GTK_BUTTONS_OK, PLUGIN_DESCRIPTION));
 	gtk_dialog_run(dialog);
 	gtk_widget_destroy(GTK_WIDGET(dialog));
 	return FALSE;
@@ -66,7 +66,7 @@ static gboolean remmina_plugin_tool_open_connection(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_tool_close_connection(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("remmina_plugin_tool_close_connection");
+	TRACE_CALL("__func__");
 	remmina_plugin_service->log_printf("[%s] Plugin close connection\n", PLUGIN_NAME);
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 	return FALSE;
@@ -88,35 +88,34 @@ static const RemminaProtocolSetting remmina_plugin_tool_basic_settings[] =
 
 /* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin = {
-	REMMINA_PLUGIN_TYPE_PROTOCOL,            // Type
-	PLUGIN_NAME,                             // Name
-	PLUGIN_DESCRIPTION,                      // Description
-	GETTEXT_PACKAGE,                         // Translation domain
-	PLUGIN_VERSION,                          // Version number
-	PLUGIN_APPICON,                          // Icon for normal connection
-	PLUGIN_APPICON,                          // Icon for SSH connection
-	remmina_plugin_tool_basic_settings,      // Array for basic settings
-	NULL,                                    // Array for advanced settings
-	REMMINA_PROTOCOL_SSH_SETTING_NONE,       // SSH settings type
-	NULL,                                    // Array for available features
-	remmina_plugin_tool_init,                // Plugin initialization
-	remmina_plugin_tool_open_connection,     // Plugin open connection
-	remmina_plugin_tool_close_connection,    // Plugin close connection
-	NULL,                                    // Query for available features
-	NULL,                                    // Call a feature
-	NULL,                                    // Send a keystroke    */
+	REMMINA_PLUGIN_TYPE_PROTOCOL,                   // Type
+	PLUGIN_NAME,                                    // Name
+	PLUGIN_DESCRIPTION,                             // Description
+	GETTEXT_PACKAGE,                                // Translation domain
+	PLUGIN_VERSION,                                 // Version number
+	PLUGIN_APPICON,                                 // Icon for normal connection
+	PLUGIN_APPICON,                                 // Icon for SSH connection
+	remmina_plugin_tool_basic_settings,             // Array for basic settings
+	NULL,                                           // Array for advanced settings
+	REMMINA_PROTOCOL_SSH_SETTING_NONE,              // SSH settings type
+	NULL,                                           // Array for available features
+	remmina_plugin_tool_init,                       // Plugin initialization
+	remmina_plugin_tool_open_connection,            // Plugin open connection
+	remmina_plugin_tool_close_connection,           // Plugin close connection
+	NULL,                                           // Query for available features
+	NULL,                                           // Call a feature
+	NULL,                                           // Send a keystroke    */
 };
 
 G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
 {
-	TRACE_CALL("remmina_plugin_entry");
+	TRACE_CALL("__func__");
 	remmina_plugin_service = service;
 
-	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
+	bindtextdomain(GETTEXT_PACKAGE, REMMINA_RUNTIME_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 
-	if (!service->register_plugin((RemminaPlugin *) &remmina_plugin))
-	{
+	if (!service->register_plugin((RemminaPlugin*)&remmina_plugin)) {
 		return FALSE;
 	}
 
