@@ -47,7 +47,7 @@
 
 UINT32 remmina_rdp_cliprdr_get_format_from_gdkatom(GdkAtom atom)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	UINT32 rc;
 	gchar* name = gdk_atom_name(atom);
 	rc = 0;
@@ -75,7 +75,7 @@ UINT32 remmina_rdp_cliprdr_get_format_from_gdkatom(GdkAtom atom)
 
 void remmina_rdp_cliprdr_get_target_types(UINT32** formats, UINT16* size, GdkAtom* types, int count)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	int i;
 	*size = 1;
 	*formats = (UINT32*)malloc(sizeof(UINT32) * (count + 1));
@@ -94,7 +94,7 @@ void remmina_rdp_cliprdr_get_target_types(UINT32** formats, UINT16* size, GdkAto
 
 static UINT8* lf2crlf(UINT8* data, int* size)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	UINT8 c;
 	UINT8* outbuf;
 	UINT8* out;
@@ -126,7 +126,7 @@ static UINT8* lf2crlf(UINT8* data, int* size)
 
 static void crlf2lf(UINT8* data, size_t* size)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	UINT8 c;
 	UINT8* out;
 	UINT8* in;
@@ -147,18 +147,18 @@ static void crlf2lf(UINT8* data, size_t* size)
 
 int remmina_rdp_cliprdr_server_file_contents_request(CliprdrClientContext* context, CLIPRDR_FILE_CONTENTS_REQUEST* fileContentsRequest)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	return -1;
 }
 int remmina_rdp_cliprdr_server_file_contents_response(CliprdrClientContext* context, CLIPRDR_FILE_CONTENTS_RESPONSE* fileContentsResponse)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	return 1;
 }
 
 void remmina_rdp_cliprdr_send_client_format_list(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	rfClipboard* clipboard;
@@ -184,7 +184,7 @@ void remmina_rdp_cliprdr_send_client_format_list(RemminaProtocolWidget *gp)
 
 static void remmina_rdp_cliprdr_send_client_capabilities(rfClipboard* clipboard)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	CLIPRDR_CAPABILITIES capabilities;
 	CLIPRDR_GENERAL_CAPABILITY_SET generalCapabilitySet;
 
@@ -203,7 +203,7 @@ static void remmina_rdp_cliprdr_send_client_capabilities(rfClipboard* clipboard)
 
 static UINT remmina_rdp_cliprdr_monitor_ready(CliprdrClientContext* context, CLIPRDR_MONITOR_READY* monitorReady)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	rfClipboard* clipboard = (rfClipboard*)context->custom;
 	RemminaProtocolWidget* gp;
 
@@ -216,14 +216,14 @@ static UINT remmina_rdp_cliprdr_monitor_ready(CliprdrClientContext* context, CLI
 
 static UINT remmina_rdp_cliprdr_server_capabilities(CliprdrClientContext* context, CLIPRDR_CAPABILITIES* capabilities)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	return CHANNEL_RC_OK;
 }
 
 
 static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext* context, CLIPRDR_FORMAT_LIST* formatList)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 
 	/* Called when a user do a "Copy" on the server: we collect all formats
 	 * the server send us and then setup the local clipboard with the appropiate
@@ -290,14 +290,14 @@ static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext* context
 
 static UINT remmina_rdp_cliprdr_server_format_list_response(CliprdrClientContext* context, CLIPRDR_FORMAT_LIST_RESPONSE* formatListResponse)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	return CHANNEL_RC_OK;
 }
 
 
 static UINT remmina_rdp_cliprdr_server_format_data_request(CliprdrClientContext* context, CLIPRDR_FORMAT_DATA_REQUEST* formatDataRequest)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 
 	RemminaPluginRdpUiObject* ui;
 	RemminaProtocolWidget* gp;
@@ -318,7 +318,7 @@ static UINT remmina_rdp_cliprdr_server_format_data_request(CliprdrClientContext*
 
 static UINT remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext* context, CLIPRDR_FORMAT_DATA_RESPONSE* formatDataResponse)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 
 	UINT8* data;
 	size_t size;
@@ -451,7 +451,7 @@ static UINT remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext
 
 void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionData *selection_data, guint info, RemminaProtocolWidget* gp )
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 
 	/* Called by GTK when someone press "Paste" on the client side.
 	 * We ask to the server the data we need */
@@ -523,13 +523,13 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionDa
 
 void remmina_rdp_cliprdr_empty_clipboard(GtkClipboard *gtkClipboard, rfClipboard *clipboard)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	/* No need to do anything here */
 }
 
 CLIPRDR_FORMAT_LIST *remmina_rdp_cliprdr_get_client_format_list(RemminaProtocolWidget* gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 
 	GtkClipboard* gtkClipboard;
 	rfClipboard* clipboard;
@@ -592,14 +592,14 @@ CLIPRDR_FORMAT_LIST *remmina_rdp_cliprdr_get_client_format_list(RemminaProtocolW
 
 static void remmina_rdp_cliprdr_mt_get_format_list(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	ui->retptr = (void*)remmina_rdp_cliprdr_get_client_format_list(gp);
 }
 
 
 void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkClipboard* gtkClipboard;
 	rfClipboard* clipboard;
 	UINT8* inbuf = NULL;
@@ -706,7 +706,7 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 
 void remmina_rdp_cliprdr_set_clipboard_content(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkClipboard* gtkClipboard;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
@@ -723,7 +723,7 @@ void remmina_rdp_cliprdr_set_clipboard_content(RemminaProtocolWidget* gp, Remmin
 
 void remmina_rdp_cliprdr_set_clipboard_data(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkClipboard* gtkClipboard;
 	GtkTargetEntry* targets;
 	gint n_targets;
@@ -745,7 +745,7 @@ static void remmina_rdp_cliprdr_detach_owner(RemminaProtocolWidget* gp, RemminaP
 {
 	/* When closing a rdp connection, we should check if gp is a clipboard owner.
 	 * If it's an owner, detach it from the clipboard */
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	GtkClipboard* gtkClipboard;
 
@@ -758,7 +758,7 @@ static void remmina_rdp_cliprdr_detach_owner(RemminaProtocolWidget* gp, RemminaP
 
 void remmina_rdp_event_process_clipboard(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	switch (ui->clipboard.type) {
 
 	case REMMINA_RDP_UI_CLIPBOARD_FORMATLIST:
@@ -786,19 +786,19 @@ void remmina_rdp_event_process_clipboard(RemminaProtocolWidget* gp, RemminaPlugi
 
 void remmina_rdp_clipboard_init(rfContext *rfi)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	// Future: initialize rfi->clipboard
 }
 void remmina_rdp_clipboard_free(rfContext *rfi)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	// Future: deinitialize rfi->clipboard
 }
 
 
 void remmina_rdp_cliprdr_init(rfContext* rfi, CliprdrClientContext* cliprdr)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 
 	rfClipboard* clipboard;
 	clipboard = &(rfi->clipboard);

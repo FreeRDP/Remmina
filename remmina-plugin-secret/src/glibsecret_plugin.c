@@ -58,7 +58,7 @@ static SecretCollection* defaultcollection;
 
 static void  remmina_plugin_glibsecret_unlock_secret_service()
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 
 #ifdef LIBSECRET_VERSION_0_18
 
@@ -82,7 +82,7 @@ static void  remmina_plugin_glibsecret_unlock_secret_service()
 
 void remmina_plugin_glibsecret_store_password(RemminaFile *remminafile, const gchar *key, const gchar *password)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GError *r = NULL;
 	const gchar *path;
 	gchar *s;
@@ -105,7 +105,7 @@ void remmina_plugin_glibsecret_store_password(RemminaFile *remminafile, const gc
 gchar*
 remmina_plugin_glibsecret_get_password(RemminaFile *remminafile, const gchar *key)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GError *r = NULL;
 	const gchar *path;
 	gchar *password;
@@ -128,7 +128,7 @@ remmina_plugin_glibsecret_get_password(RemminaFile *remminafile, const gchar *ke
 
 void remmina_plugin_glibsecret_delete_password(RemminaFile *remminafile, const gchar *key)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GError *r = NULL;
 	const gchar *path;
 
@@ -151,7 +151,7 @@ static RemminaSecretPlugin remmina_plugin_glibsecret =
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 
 	remmina_plugin_service = service;
 

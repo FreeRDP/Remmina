@@ -66,12 +66,12 @@ G_DEFINE_TYPE(RemminaLogWindow, remmina_log_window, GTK_TYPE_WINDOW)
 
 static void remmina_log_window_class_init(RemminaLogWindowClass *klass)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 }
 
 static void remmina_log_window_init(RemminaLogWindow *logwin)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget *scrolledwindow;
 	GtkWidget *widget;
 
@@ -94,7 +94,7 @@ static void remmina_log_window_init(RemminaLogWindow *logwin)
 static GtkWidget*
 remmina_log_window_new(void)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	return GTK_WIDGET(g_object_new(REMMINA_TYPE_LOG_WINDOW, NULL));
 }
 
@@ -103,13 +103,13 @@ static GtkWidget *log_window = NULL;
 
 static void remmina_log_end(GtkWidget *widget, gpointer data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	log_window = NULL;
 }
 
 void remmina_log_start(void)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	if (log_window) {
 		gtk_window_present(GTK_WINDOW(log_window));
 	}else  {
@@ -122,13 +122,13 @@ void remmina_log_start(void)
 
 gboolean remmina_log_running(void)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	return (log_window != NULL);
 }
 
 static gboolean remmina_log_scroll_to_end(gpointer data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkTextIter iter;
 
 	if (log_window) {
@@ -141,7 +141,7 @@ static gboolean remmina_log_scroll_to_end(gpointer data)
 
 static gboolean remmina_log_print_real(gpointer data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkTextIter iter;
 
 	if (log_window) {
@@ -155,7 +155,7 @@ static gboolean remmina_log_print_real(gpointer data)
 
 void remmina_log_print(const gchar *text)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	if (!log_window)
 		return;
 
@@ -164,7 +164,7 @@ void remmina_log_print(const gchar *text)
 
 void remmina_log_printf(const gchar *fmt, ...)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	va_list args;
 	gchar *text;
 

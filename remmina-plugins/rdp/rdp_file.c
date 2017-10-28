@@ -40,7 +40,7 @@
 
 gboolean remmina_rdp_file_import_test(const gchar* from_file)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gchar* ext;
 
 	ext = strrchr(from_file, '.');
@@ -61,7 +61,7 @@ gboolean remmina_rdp_file_import_test(const gchar* from_file)
 
 static void remmina_rdp_file_import_field(RemminaFile* remminafile, const gchar* key, const gchar* value)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	if (g_strcmp0(key, "desktopwidth") == 0) {
 		remmina_plugin_service->file_set_string(remminafile, "resolution_width", value);
 	}else if (g_strcmp0(key, "desktopheight") == 0) {
@@ -118,7 +118,7 @@ static void remmina_rdp_file_import_field(RemminaFile* remminafile, const gchar*
 
 static RemminaFile* remmina_rdp_file_import_channel(GIOChannel* channel)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gchar* p;
 	const gchar* enc;
 	gchar* line = NULL;
@@ -186,7 +186,7 @@ static RemminaFile* remmina_rdp_file_import_channel(GIOChannel* channel)
 
 RemminaFile* remmina_rdp_file_import(const gchar* from_file)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GIOChannel* channel;
 	GError* error = NULL;
 	RemminaFile* remminafile;
@@ -206,7 +206,7 @@ RemminaFile* remmina_rdp_file_import(const gchar* from_file)
 
 gboolean remmina_rdp_file_export_test(RemminaFile* remminafile)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	if (g_strcmp0(remmina_plugin_service->file_get_string(remminafile, "protocol"), "RDP") == 0)
 		return TRUE;
 
@@ -215,7 +215,7 @@ gboolean remmina_rdp_file_export_test(RemminaFile* remminafile)
 
 gboolean remmina_rdp_file_export_channel(RemminaFile* remminafile, FILE* fp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gchar* s;
 	gchar* p;
 	const gchar* cs;
@@ -283,7 +283,7 @@ gboolean remmina_rdp_file_export_channel(RemminaFile* remminafile, FILE* fp)
 
 gboolean remmina_rdp_file_export(RemminaFile* remminafile, const gchar* to_file)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	FILE* fp;
 	gchar* p;
 	gboolean ret;

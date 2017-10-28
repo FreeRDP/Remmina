@@ -149,7 +149,7 @@ struct onMainThread_cb_data {
 
 static gboolean onMainThread_cb(struct onMainThread_cb_data *d)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	if ( !d->cancelled ) {
 		switch ( d->func ) {
 		case FUNC_UPDATE_SCALE:
@@ -167,7 +167,7 @@ static gboolean onMainThread_cb(struct onMainThread_cb_data *d)
 
 static void onMainThread_cleanup_handler( gpointer data )
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	struct onMainThread_cb_data *d = data;
 	d->cancelled = TRUE;
 }
@@ -175,7 +175,7 @@ static void onMainThread_cleanup_handler( gpointer data )
 
 static void onMainThread_schedule_callback_and_wait( struct onMainThread_cb_data *d )
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	d->cancelled = FALSE;
 	pthread_cleanup_push( onMainThread_cleanup_handler, d );
 	pthread_mutex_init( &d->mu, NULL );
@@ -191,7 +191,7 @@ static void onMainThread_schedule_callback_and_wait( struct onMainThread_cb_data
 
 static void remmina_plugin_vnc_event_push(RemminaProtocolWidget *gp, gint event_type, gpointer p1, gpointer p2, gpointer p3)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaPluginVncEvent *event;
 
@@ -226,7 +226,7 @@ static void remmina_plugin_vnc_event_push(RemminaProtocolWidget *gp, gint event_
 
 static void remmina_plugin_vnc_event_free(RemminaPluginVncEvent *event)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	switch (event->event_type) {
 	case REMMINA_PLUGIN_VNC_EVENT_CUTTEXT:
 	case REMMINA_PLUGIN_VNC_EVENT_CHAT_SEND:
@@ -240,7 +240,7 @@ static void remmina_plugin_vnc_event_free(RemminaPluginVncEvent *event)
 
 static void remmina_plugin_vnc_event_free_all(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaPluginVncEvent *event;
 
@@ -253,7 +253,7 @@ static void remmina_plugin_vnc_event_free_all(RemminaProtocolWidget *gp)
 
 static void remmina_plugin_vnc_scale_area(RemminaProtocolWidget *gp, gint *x, gint *y, gint *w, gint *h)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	GtkAllocation widget_allocation;
 	gint width, height;
@@ -284,7 +284,7 @@ static void remmina_plugin_vnc_scale_area(RemminaProtocolWidget *gp, gint *x, gi
 
 static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean scale)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	/* This function can be called from a non main thread */
 
 	RemminaPluginVncData *gpdata;
@@ -318,7 +318,7 @@ static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean 
 
 gboolean remmina_plugin_vnc_setcursor(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	GdkCursor *cur;
 
@@ -342,7 +342,7 @@ gboolean remmina_plugin_vnc_setcursor(RemminaProtocolWidget *gp)
 
 static void remmina_plugin_vnc_queuecursor(RemminaProtocolWidget *gp, cairo_surface_t *surface, gint x, gint y)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 
 	if (gpdata->queuecursor_surface) {
@@ -384,7 +384,7 @@ static RemminaPluginVncEvent *remmina_plugin_vnc_event_queue_pop_head(RemminaPlu
 
 static void remmina_plugin_vnc_process_vnc_event(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncEvent *event;
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	rfbClient *cl;
@@ -431,7 +431,7 @@ typedef struct _RemminaPluginVncCuttextParam {
 
 static void remmina_plugin_vnc_update_quality(rfbClient *cl, gint quality)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	switch (quality) {
 	case 9:
 		cl->appData.useBGR233 = 0;
@@ -463,7 +463,7 @@ static void remmina_plugin_vnc_update_quality(rfbClient *cl, gint quality)
 
 static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	cl->format.depth = colordepth;
 	cl->format.bigEndian = 0;
 	cl->appData.requestedDepth = colordepth;
@@ -516,7 +516,7 @@ static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 
 static rfbBool remmina_plugin_vnc_rfb_allocfb(rfbClient *cl)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = rfbClientGetClientData(cl, NULL);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	gint width, height, depth, size;
@@ -565,7 +565,7 @@ static rfbBool remmina_plugin_vnc_rfb_allocfb(rfbClient *cl)
 
 static gint remmina_plugin_vnc_bits(gint n)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gint b = 0;
 	while (n) {
 		b++;
@@ -576,7 +576,7 @@ static gint remmina_plugin_vnc_bits(gint n)
 
 static gboolean remmina_plugin_vnc_queue_draw_area_real(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	gint x, y, w, h;
 
@@ -596,7 +596,7 @@ static gboolean remmina_plugin_vnc_queue_draw_area_real(RemminaProtocolWidget *g
 
 static void remmina_plugin_vnc_queue_draw_area(RemminaProtocolWidget *gp, gint x, gint y, gint w, gint h)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	gint nx2, ny2, ox2, oy2;
 
@@ -623,7 +623,7 @@ static void remmina_plugin_vnc_queue_draw_area(RemminaProtocolWidget *gp, gint x
 static void remmina_plugin_vnc_rfb_fill_buffer(rfbClient* cl, guchar *dest, gint dest_rowstride, guchar *src,
 					       gint src_rowstride, guchar *mask, gint w, gint h)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	guchar *srcptr;
 	gint bytesPerPixel;
 	guint32 src_pixel;
@@ -708,7 +708,7 @@ static void remmina_plugin_vnc_rfb_fill_buffer(rfbClient* cl, guchar *dest, gint
 
 static void remmina_plugin_vnc_rfb_updatefb(rfbClient* cl, int x, int y, int w, int h)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = rfbClientGetClientData(cl, NULL);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	gint bytesPerPixel;
@@ -739,7 +739,7 @@ static void remmina_plugin_vnc_rfb_updatefb(rfbClient* cl, int x, int y, int w, 
 
 static gboolean remmina_plugin_vnc_queue_cuttext(RemminaPluginVncCuttextParam *param)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = param->gp;
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	GTimeVal t;
@@ -769,7 +769,7 @@ static gboolean remmina_plugin_vnc_queue_cuttext(RemminaPluginVncCuttextParam *p
 
 static void remmina_plugin_vnc_rfb_cuttext(rfbClient* cl, const char *text, int textlen)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncCuttextParam *param;
 
 	param = g_new(RemminaPluginVncCuttextParam, 1);
@@ -783,7 +783,7 @@ static void remmina_plugin_vnc_rfb_cuttext(rfbClient* cl, const char *text, int 
 static char*
 remmina_plugin_vnc_rfb_password(rfbClient *cl)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = rfbClientGetClientData(cl, NULL);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
@@ -813,7 +813,7 @@ remmina_plugin_vnc_rfb_password(rfbClient *cl)
 static rfbCredential*
 remmina_plugin_vnc_rfb_credential(rfbClient *cl, int credentialType)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	rfbCredential *cred;
 	RemminaProtocolWidget *gp = rfbClientGetClientData(cl, NULL);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
@@ -891,7 +891,7 @@ remmina_plugin_vnc_rfb_credential(rfbClient *cl, int credentialType)
 
 static void remmina_plugin_vnc_rfb_cursor_shape(rfbClient *cl, int xhot, int yhot, int width, int height, int bytesPerPixel)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = rfbClientGetClientData(cl, NULL);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	int stride;
@@ -924,7 +924,7 @@ static void remmina_plugin_vnc_rfb_cursor_shape(rfbClient *cl, int xhot, int yho
 
 static void remmina_plugin_vnc_rfb_bell(rfbClient *cl)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp;
 	GdkWindow *window;
 
@@ -949,7 +949,7 @@ static gboolean vnc_encryption_disable_requested;
 
 static void remmina_plugin_vnc_rfb_output(const char *format, ...)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	va_list args;
 	va_start(args, format);
 	gchar *f, *p, *ff;
@@ -983,7 +983,7 @@ static void remmina_plugin_vnc_rfb_output(const char *format, ...)
 
 static void remmina_plugin_vnc_chat_on_send(RemminaProtocolWidget *gp, const gchar *text)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gchar *ptr;
 
 	/* Need to add a line-feed for UltraVNC */
@@ -994,14 +994,14 @@ static void remmina_plugin_vnc_chat_on_send(RemminaProtocolWidget *gp, const gch
 
 static void remmina_plugin_vnc_chat_on_destroy(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	remmina_plugin_vnc_event_push(gp, REMMINA_PLUGIN_VNC_EVENT_CHAT_CLOSE, NULL, NULL, NULL);
 }
 
 /* Send CTRL+ALT+DEL keys keystrokes to the plugin drawing_area widget */
 static void remmina_plugin_vnc_send_ctrlaltdel(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_Delete };
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 
@@ -1011,14 +1011,14 @@ static void remmina_plugin_vnc_send_ctrlaltdel(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_vnc_close_chat(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	remmina_plugin_service->protocol_plugin_chat_close(gp);
 	return FALSE;
 }
 
 static gboolean remmina_plugin_vnc_open_chat(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	rfbClient *cl;
 
@@ -1032,7 +1032,7 @@ static gboolean remmina_plugin_vnc_open_chat(RemminaProtocolWidget *gp)
 
 static void remmina_plugin_vnc_rfb_chat(rfbClient* cl, int value, char *text)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp;
 
 	gp = (RemminaProtocolWidget*)(rfbClientGetClientData(cl, NULL));
@@ -1055,7 +1055,7 @@ static void remmina_plugin_vnc_rfb_chat(rfbClient* cl, int value, char *text)
 
 static gboolean remmina_plugin_vnc_incoming_connection(RemminaProtocolWidget *gp, rfbClient *cl)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	fd_set fds;
 
@@ -1089,7 +1089,7 @@ static gboolean remmina_plugin_vnc_incoming_connection(RemminaProtocolWidget *gp
 
 static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	gint ret;
 	gint i;
@@ -1137,7 +1137,7 @@ static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	rfbClient *cl = NULL;
@@ -1288,7 +1288,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 static gpointer
 remmina_plugin_vnc_main_thread(gpointer data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 
 	CANCEL_ASYNC
@@ -1316,7 +1316,7 @@ static RemminaPluginVncCoordinates remmina_plugin_vnc_scale_coordinates(GtkWidge
 
 static gboolean remmina_plugin_vnc_on_motion(GtkWidget *widget, GdkEventMotion *event, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	RemminaPluginVncCoordinates coordinates;
@@ -1335,7 +1335,7 @@ static gboolean remmina_plugin_vnc_on_motion(GtkWidget *widget, GdkEventMotion *
 
 static gboolean remmina_plugin_vnc_on_button(GtkWidget *widget, GdkEventButton *event, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	RemminaPluginVncCoordinates coordinates;
@@ -1366,7 +1366,7 @@ static gboolean remmina_plugin_vnc_on_button(GtkWidget *widget, GdkEventButton *
 
 static gboolean remmina_plugin_vnc_on_scroll(GtkWidget *widget, GdkEventScroll *event, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	RemminaPluginVncCoordinates coordinates;
@@ -1420,7 +1420,7 @@ static gboolean remmina_plugin_vnc_on_scroll(GtkWidget *widget, GdkEventScroll *
 
 static void remmina_plugin_vnc_release_key(RemminaProtocolWidget *gp, guint16 keycode)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaKeyVal *k;
 	gint i;
@@ -1449,7 +1449,7 @@ static void remmina_plugin_vnc_release_key(RemminaProtocolWidget *gp, guint16 ke
 
 static gboolean remmina_plugin_vnc_on_key(GtkWidget *widget, GdkEventKey *event, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 	RemminaKeyVal *k;
@@ -1497,7 +1497,7 @@ static gboolean remmina_plugin_vnc_on_key(GtkWidget *widget, GdkEventKey *event,
 
 static void remmina_plugin_vnc_on_cuttext_request(GtkClipboard *clipboard, const gchar *text, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	GTimeVal t;
 	glong diff;
@@ -1525,7 +1525,7 @@ static void remmina_plugin_vnc_on_cuttext_request(GtkClipboard *clipboard, const
 
 static void remmina_plugin_vnc_on_cuttext(GtkClipboard *clipboard, GdkEvent *event, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 
@@ -1540,7 +1540,7 @@ static void remmina_plugin_vnc_on_cuttext(GtkClipboard *clipboard, GdkEvent *eve
 
 static void remmina_plugin_vnc_on_realize(RemminaProtocolWidget *gp, gpointer data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFile *remminafile;
 	GdkCursor *cursor;
 	GdkPixbuf *pixbuf;
@@ -1561,7 +1561,7 @@ static void remmina_plugin_vnc_on_realize(RemminaProtocolWidget *gp, gpointer da
 
 static gboolean remmina_plugin_vnc_open_connection(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 
@@ -1597,7 +1597,7 @@ static gboolean remmina_plugin_vnc_open_connection(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_vnc_close_connection_timeout(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 
 	/* wait until the running attribute is set to false by the VNC thread */
@@ -1656,7 +1656,7 @@ static gboolean remmina_plugin_vnc_close_connection_timeout(RemminaProtocolWidge
 
 static gboolean remmina_plugin_vnc_close_connection(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 
 	gpdata->connected = FALSE;
@@ -1675,7 +1675,7 @@ static gboolean remmina_plugin_vnc_close_connection(RemminaProtocolWidget *gp)
 
 static gboolean remmina_plugin_vnc_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 
 	switch (feature->id) {
@@ -1690,7 +1690,7 @@ static gboolean remmina_plugin_vnc_query_feature(RemminaProtocolWidget *gp, cons
 
 static void remmina_plugin_vnc_call_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
 
@@ -1734,7 +1734,7 @@ static void remmina_plugin_vnc_call_feature(RemminaProtocolWidget *gp, const Rem
 /* Send a keystroke to the plugin window */
 static void remmina_plugin_vnc_keystroke(RemminaProtocolWidget *gp, const guint keystrokes[], const gint keylen)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	remmina_plugin_service->protocol_plugin_send_keys_signals(gpdata->drawing_area,
 		keystrokes, keylen, GDK_KEY_PRESS | GDK_KEY_RELEASE);
@@ -1743,7 +1743,7 @@ static void remmina_plugin_vnc_keystroke(RemminaProtocolWidget *gp, const guint 
 
 static gboolean remmina_plugin_vnc_on_draw(GtkWidget *widget, cairo_t *context, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	cairo_surface_t *surface;
 	gint width, height;
@@ -1777,7 +1777,7 @@ static gboolean remmina_plugin_vnc_on_draw(GtkWidget *widget, cairo_t *context, 
 
 static void remmina_plugin_vnc_init(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginVncData *gpdata;
 	gint flags;
 
@@ -1962,7 +1962,7 @@ static RemminaProtocolPlugin remmina_plugin_vnci =
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	remmina_plugin_service = service;
 
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_RUNTIME_LOCALEDIR);
