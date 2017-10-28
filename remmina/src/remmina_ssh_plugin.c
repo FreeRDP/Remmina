@@ -207,7 +207,7 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 static gpointer
 remmina_plugin_ssh_main_thread(gpointer data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget*)data;
 	RemminaPluginSshData *gpdata;
 	RemminaFile *remminafile;
@@ -281,7 +281,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 
 void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal, const char *codeset, int master, int slave)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	if ( !remmina_masterthread_exec_is_main_thread() ) {
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
@@ -320,7 +320,7 @@ void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal,
 static gboolean
 remmina_plugin_ssh_on_focus_in(GtkWidget *widget, GdkEventFocus *event, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 
 	gtk_widget_grab_focus(gpdata->vte);
@@ -330,7 +330,7 @@ remmina_plugin_ssh_on_focus_in(GtkWidget *widget, GdkEventFocus *event, RemminaP
 static gboolean
 remmina_plugin_ssh_on_size_allocate(GtkWidget *widget, GtkAllocation *alloc, RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 	gint cols, rows;
 
@@ -347,7 +347,7 @@ remmina_plugin_ssh_on_size_allocate(GtkWidget *widget, GtkAllocation *alloc, Rem
 static void
 remmina_plugin_ssh_set_vte_pref(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 
 	if (remmina_pref.vte_font && remmina_pref.vte_font[0]) {
@@ -432,7 +432,7 @@ remmina_plugin_ssh_vte_save_session(GtkMenuItem *menuitem, RemminaProtocolWidget
 /* Send a keystroke to the plugin window */
 static void remmina_ssh_keystroke(RemminaProtocolWidget *gp, const guint keystrokes[], const gint keylen)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 	remmina_plugin_service->protocol_plugin_send_keys_signals(gpdata->vte,
 		keystrokes, keylen, GDK_KEY_PRESS | GDK_KEY_RELEASE);
@@ -459,7 +459,7 @@ remmina_ssh_plugin_popup_menu(GtkWidget *widget, GdkEvent *event, GtkWidget *men
 
 void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 	/* Context menu for slection and clipboard */
 	GtkWidget *menu = gtk_menu_new();
@@ -492,7 +492,7 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 static void
 remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata;
 	RemminaFile *remminafile;
 	GtkWidget *hbox;
@@ -666,7 +666,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 static gboolean
 remmina_plugin_ssh_open_connection(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 
 	remmina_plugin_service->protocol_plugin_set_expand(gp, TRUE);
@@ -687,7 +687,7 @@ remmina_plugin_ssh_open_connection(RemminaProtocolWidget *gp)
 static gboolean
 remmina_plugin_ssh_close_connection(RemminaProtocolWidget *gp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 
 	RemminaFile *remminafile;
@@ -713,14 +713,14 @@ remmina_plugin_ssh_close_connection(RemminaProtocolWidget *gp)
 static gboolean
 remmina_plugin_ssh_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	return TRUE;
 }
 
 static void
 remmina_plugin_ssh_call_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 
 	switch (feature->id) {
@@ -902,7 +902,7 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 void
 remmina_ssh_plugin_register(void)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	remmina_plugin_ssh_features[0].opt3 = GUINT_TO_POINTER(remmina_pref.vte_shortcutkey_copy);
 	remmina_plugin_ssh_features[1].opt3 = GUINT_TO_POINTER(remmina_pref.vte_shortcutkey_paste);
 	remmina_plugin_ssh_features[2].opt3 = GUINT_TO_POINTER(remmina_pref.vte_shortcutkey_select_all);
@@ -919,7 +919,7 @@ remmina_ssh_plugin_register(void)
 
 void remmina_ssh_plugin_register(void)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 }
 
 #endif

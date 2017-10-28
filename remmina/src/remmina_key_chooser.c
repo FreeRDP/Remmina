@@ -43,7 +43,7 @@
 /* Handle key-presses on the GtkEventBox */
 static gboolean remmina_key_chooser_dialog_on_key_press(GtkWidget *widget, GdkEventKey *event, RemminaKeyChooserArguments *arguments)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	if (!arguments->use_modifiers || !event->is_modifier) {
 		arguments->state = event->state;
 		arguments->keyval = gdk_keyval_to_lower(event->keyval);
@@ -56,7 +56,7 @@ static gboolean remmina_key_chooser_dialog_on_key_press(GtkWidget *widget, GdkEv
 /* Show a key chooser dialog and return the keyval for the selected key */
 RemminaKeyChooserArguments* remmina_key_chooser_new(GtkWindow *parent_window, gboolean use_modifiers)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkBuilder *builder = remmina_public_gtk_builder_new_from_file("remmina_key_chooser.glade");
 	GtkDialog *dialog;
 	RemminaKeyChooserArguments *arguments;
@@ -82,7 +82,7 @@ RemminaKeyChooserArguments* remmina_key_chooser_new(GtkWindow *parent_window, gb
 /* Get the uppercase character value of a keyval */
 gchar* remmina_key_chooser_get_value(guint keyval, guint state)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 
 	if (!keyval)
 		return g_strdup(KEY_CHOOSER_NONE);
@@ -100,7 +100,7 @@ gchar* remmina_key_chooser_get_value(guint keyval, guint state)
 /* Get the keyval of a (lowercase) character value */
 guint remmina_key_chooser_get_keyval(const gchar *value)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gchar *patterns[] =
 	{
 		KEY_MODIFIER_SHIFT,

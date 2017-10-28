@@ -46,7 +46,7 @@ gboolean remmina_sysinfo_is_appindicator_available()
 	 * DBUS KDE StatusNotifier)
 	 */
 
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GDBusConnection *con;
 	GVariant *v;
 	GError *error;
@@ -82,7 +82,7 @@ gchar *remmina_sysinfo_get_gnome_shell_version()
 	 * if error or no gnome shell found.
 	 * The returned string must be freed with g_free */
 
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GDBusConnection *con;
 	GDBusProxy *p;
 	GVariant *v;

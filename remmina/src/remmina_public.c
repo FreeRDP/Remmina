@@ -61,7 +61,7 @@
 GtkWidget*
 remmina_public_create_combo_entry(const gchar *text, const gchar *def, gboolean descending)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget *combo;
 	gboolean found;
 	gchar *buf, *ptr1, *ptr2;
@@ -110,7 +110,7 @@ remmina_public_create_combo_entry(const gchar *text, const gchar *def, gboolean 
 GtkWidget*
 remmina_public_create_combo_text_d(const gchar *text, const gchar *def, const gchar *empty_choice)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget *combo;
 	GtkListStore *store;
 	GtkCellRenderer *text_renderer;
@@ -129,7 +129,7 @@ remmina_public_create_combo_text_d(const gchar *text, const gchar *def, const gc
 
 void remmina_public_load_combo_text_d(GtkWidget *combo, const gchar *text, const gchar *def, const gchar *empty_choice)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkListStore *store;
 	GtkTreeIter iter;
 	gint i;
@@ -174,7 +174,7 @@ void remmina_public_load_combo_text_d(GtkWidget *combo, const gchar *text, const
 GtkWidget*
 remmina_public_create_combo(gboolean use_icon)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget *combo;
 	GtkListStore *store;
 	GtkCellRenderer *renderer;
@@ -204,7 +204,7 @@ remmina_public_create_combo(gboolean use_icon)
 GtkWidget*
 remmina_public_create_combo_map(const gpointer *key_value_list, const gchar *def, gboolean use_icon, const gchar *domain)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gint i;
 	GtkWidget *combo;
 	GtkListStore *store;
@@ -236,7 +236,7 @@ remmina_public_create_combo_map(const gpointer *key_value_list, const gchar *def
 GtkWidget*
 remmina_public_create_combo_mapint(const gpointer *key_value_list, gint def, gboolean use_icon, const gchar *domain)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gchar buf[20];
 	g_snprintf(buf, sizeof(buf), "%i", def);
 	return remmina_public_create_combo_map(key_value_list, buf, use_icon, domain);
@@ -244,7 +244,7 @@ remmina_public_create_combo_mapint(const gpointer *key_value_list, gint def, gbo
 
 void remmina_public_create_group(GtkGrid *table, const gchar *group, gint row, gint rows, gint cols)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget *widget;
 	gchar *str;
 
@@ -265,7 +265,7 @@ void remmina_public_create_group(GtkGrid *table, const gchar *group, gint row, g
 gchar*
 remmina_public_combo_get_active_text(GtkComboBox *combo)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkTreeModel *model;
 	GtkTreeIter iter;
 	gchar *s;
@@ -286,7 +286,7 @@ remmina_public_combo_get_active_text(GtkComboBox *combo)
 #if !GTK_CHECK_VERSION(3, 22, 0)
 void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget *widget;
 	gint tx, ty;
 	GtkAllocation allocation;
@@ -322,7 +322,7 @@ void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *pu
 gchar*
 remmina_public_combine_path(const gchar *path1, const gchar *path2)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	if (!path1 || path1[0] == '\0')
 		return g_strdup(path2);
 	if (path1[strlen(path1) - 1] == '/')
@@ -332,7 +332,7 @@ remmina_public_combine_path(const gchar *path1, const gchar *path2)
 
 void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar **host, gint *port)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gchar *str, *ptr, *ptr2;
 
 	str = g_strdup(server);
@@ -378,7 +378,7 @@ void remmina_public_get_server_port(const gchar *server, gint defaultport, gchar
 
 gboolean remmina_public_get_xauth_cookie(const gchar *display, gchar **msg)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gchar buf[200];
 	gchar *out = NULL;
 	gchar *ptr;
@@ -409,7 +409,7 @@ gboolean remmina_public_get_xauth_cookie(const gchar *display, gchar **msg)
 
 gint remmina_public_open_xdisplay(const gchar *disp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gchar *display;
 	gchar *ptr;
 	gint port;
@@ -443,7 +443,7 @@ gint remmina_public_open_xdisplay(const gchar *disp)
 /* This function was copied from GEdit (gedit-utils.c). */
 guint remmina_public_get_current_workspace(GdkScreen *screen)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 #ifdef GDK_WINDOWING_X11
 #if GTK_CHECK_VERSION(3, 10, 0)
 	g_return_val_if_fail(GDK_IS_SCREEN(screen), 0);
@@ -494,7 +494,7 @@ guint remmina_public_get_current_workspace(GdkScreen *screen)
 /* This function was copied from GEdit (gedit-utils.c). */
 guint remmina_public_get_window_workspace(GtkWindow *gtkwindow)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 #ifdef GDK_WINDOWING_X11
 #if GTK_CHECK_VERSION(3, 10, 0)
 	GdkWindow *window;
@@ -548,7 +548,7 @@ guint remmina_public_get_window_workspace(GtkWindow *gtkwindow)
 /* Find hardware keycode for the requested keyval */
 guint16 remmina_public_get_keycode_for_keyval(GdkKeymap *keymap, guint keyval)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GdkKeymapKey *keys = NULL;
 	gint length = 0;
 	guint16 keycode = 0;
@@ -563,7 +563,7 @@ guint16 remmina_public_get_keycode_for_keyval(GdkKeymap *keymap, guint keyval)
 /* Check if the requested keycode is a key modifier */
 gboolean remmina_public_get_modifier_for_keycode(GdkKeymap *keymap, guint16 keycode)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	g_return_val_if_fail(keycode > 0, FALSE);
 #ifdef GDK_WINDOWING_X11
 	return gdk_x11_keymap_key_is_modifier(keymap, keycode);
@@ -575,7 +575,7 @@ gboolean remmina_public_get_modifier_for_keycode(GdkKeymap *keymap, guint16 keyc
 /* Load a GtkBuilder object from a filename */
 GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gchar *ui_path = g_strconcat(REMMINA_RUNTIME_UIDIR, G_DIR_SEPARATOR_S, filename, NULL);
 #if GTK_CHECK_VERSION(3, 10, 0)
 	GtkBuilder *builder = gtk_builder_new_from_file(ui_path);
@@ -591,7 +591,7 @@ GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename)
  * If possible use this function instead of the deprecated gtk_widget_reparent */
 void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *container)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	g_object_ref(widget);
 	gtk_container_remove(GTK_CONTAINER(gtk_widget_get_parent(widget)), widget);
 	gtk_container_add(container, widget);
@@ -601,7 +601,7 @@ void remmina_public_gtk_widget_reparent(GtkWidget *widget, GtkContainer *contain
 /* Validate the inserted value for a new resolution */
 gboolean remmina_public_resolution_validation_func(const gchar *new_str, gchar **error)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gint i;
 	gint width, height;
 	gboolean splitted;
@@ -643,7 +643,7 @@ gboolean remmina_public_resolution_validation_func(const gchar *new_str, gchar *
 void remmina_public_send_notification(const gchar *notification_id,
 				      const gchar *notification_title, const gchar *notification_message)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 
 	GNotification *notification = g_notification_new(notification_title);
 	g_notification_set_body(notification, notification_message);
@@ -657,7 +657,7 @@ void remmina_public_send_notification(const gchar *notification_id,
 /* Replaces all occurences of search in a new copy of string by replacement. */
 gchar* remmina_public_str_replace(const gchar *string, const gchar *search, const gchar *replacement)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gchar *str, **arr;
 
 	g_return_val_if_fail(string != NULL, NULL);
@@ -680,7 +680,7 @@ gchar* remmina_public_str_replace(const gchar *string, const gchar *search, cons
  * and overwrites the original string */
 gchar* remmina_public_str_replace_in_place(gchar *string, const gchar *search, const gchar *replacement)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gchar *new_string = remmina_public_str_replace(string, search, replacement);
 	g_free(string);
 	string = g_strdup(new_string);

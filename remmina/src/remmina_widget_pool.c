@@ -43,19 +43,19 @@ static GPtrArray *remmina_widget_pool = NULL;
 
 void remmina_widget_pool_init(void)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	remmina_widget_pool = g_ptr_array_new();
 }
 
 static void remmina_widget_pool_on_widget_destroy(GtkWidget *widget, gpointer data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	g_ptr_array_remove(remmina_widget_pool, widget);
 }
 
 void remmina_widget_pool_register(GtkWidget *widget)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	g_ptr_array_add(remmina_widget_pool, widget);
 	g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_widget_pool_on_widget_destroy), NULL);
 }
@@ -63,7 +63,7 @@ void remmina_widget_pool_register(GtkWidget *widget)
 GtkWidget*
 remmina_widget_pool_find(GType type, const gchar *tag)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget *widget;
 	gint i;
 
@@ -84,7 +84,7 @@ remmina_widget_pool_find(GType type, const gchar *tag)
 GtkWidget*
 remmina_widget_pool_find_by_window(GType type, GdkWindow *window)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget *widget;
 	gint i;
 	GdkWindow *parent;
@@ -107,7 +107,7 @@ remmina_widget_pool_find_by_window(GType type, GdkWindow *window)
 
 gint remmina_widget_pool_foreach(RemminaWidgetPoolForEachFunc callback, gpointer data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget *widget;
 	gint i;
 	gint n = 0;
@@ -138,7 +138,7 @@ gint remmina_widget_pool_foreach(RemminaWidgetPoolForEachFunc callback, gpointer
 
 gint remmina_widget_pool_count()
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	return remmina_widget_pool->len;
 }
 

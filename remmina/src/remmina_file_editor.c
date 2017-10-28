@@ -129,14 +129,14 @@ struct _RemminaFileEditorPriv {
 
 static void remmina_file_editor_class_init(RemminaFileEditorClass* klass)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 }
 
 #ifdef HAVE_LIBAVAHI_UI
 
 static void remmina_file_editor_browse_avahi(GtkWidget* button, RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget* dialog;
 	gchar* host;
 
@@ -170,7 +170,7 @@ static void remmina_file_editor_browse_avahi(GtkWidget* button, RemminaFileEdito
 
 static void remmina_file_editor_on_realize(GtkWidget* widget, gpointer user_data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFileEditor* gfe;
 	GtkWidget* defaultwidget;
 
@@ -188,7 +188,7 @@ static void remmina_file_editor_on_realize(GtkWidget* widget, gpointer user_data
 
 static void remmina_file_editor_destroy(GtkWidget* widget, gpointer data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	remmina_file_free(REMMINA_FILE_EDITOR(widget)->priv->remmina_file);
 	g_hash_table_destroy(REMMINA_FILE_EDITOR(widget)->priv->setting_widgets);
 	g_free(REMMINA_FILE_EDITOR(widget)->priv);
@@ -196,13 +196,13 @@ static void remmina_file_editor_destroy(GtkWidget* widget, gpointer data)
 
 static void remmina_file_editor_button_on_toggled(GtkToggleButton* togglebutton, GtkWidget* widget)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gtk_widget_set_sensitive(widget, gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(togglebutton)));
 }
 
 static void remmina_file_editor_create_notebook_container(RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	/* Create the notebook */
 	gfe->priv->config_container = gtk_notebook_new();
 	gfe->priv->config_viewport = gtk_viewport_new(NULL, NULL);
@@ -225,7 +225,7 @@ static void remmina_file_editor_create_notebook_container(RemminaFileEditor* gfe
 static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe,
 							  const gchar* stock_id, const gchar* label, gint rows, gint cols)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget* tablabel;
 	GtkWidget* tabbody;
 	GtkWidget* grid;
@@ -260,7 +260,7 @@ static GtkWidget* remmina_file_editor_create_notebook_tab(RemminaFileEditor* gfe
 
 static void remmina_file_editor_ssh_server_custom_radio_on_toggled(GtkToggleButton* togglebutton, RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gtk_widget_set_sensitive(gfe->priv->ssh_server_entry,
 		gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_enabled_check)) &&
 		(gfe->priv->ssh_server_custom_radio == NULL ||
@@ -270,7 +270,7 @@ static void remmina_file_editor_ssh_server_custom_radio_on_toggled(GtkToggleButt
 
 static void remmina_file_editor_ssh_auth_publickey_radio_on_toggled(GtkToggleButton* togglebutton, RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gboolean b;
 	const gchar* s;
 
@@ -287,7 +287,7 @@ static void remmina_file_editor_ssh_auth_publickey_radio_on_toggled(GtkToggleBut
 static void remmina_file_editor_ssh_enabled_check_on_toggled(GtkToggleButton* togglebutton,
 							     RemminaFileEditor* gfe, RemminaProtocolSSHSetting ssh_setting)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFileEditorPriv* priv = gfe->priv;
 	gboolean enabled = TRUE;
 	gchar* p;
@@ -323,7 +323,7 @@ static void remmina_file_editor_ssh_enabled_check_on_toggled(GtkToggleButton* to
 
 static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor* gfe, GtkWidget* grid, gint row, gint column)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gchar* s;
 	GtkWidget* widget;
 	GtkWidget* dialog;
@@ -371,7 +371,7 @@ static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor* gfe, Gt
 static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const RemminaProtocolSetting* setting, GtkWidget* grid,
 					      gint row)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaProtocolPlugin* plugin = gfe->priv->plugin;
 	GtkWidget* widget;
 #ifdef HAVE_LIBAVAHI_UI
@@ -421,7 +421,7 @@ static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const Remm
 static GtkWidget* remmina_file_editor_create_password(RemminaFileEditor* gfe, GtkWidget* grid,
 						      gint row, gint col, const gchar* label, const gchar* value)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget* widget;
 
 	widget = gtk_label_new(label);
@@ -451,7 +451,7 @@ static GtkWidget* remmina_file_editor_create_password(RemminaFileEditor* gfe, Gt
 
 static void remmina_file_editor_update_resolution(GtkWidget* widget, RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gchar* res_str;
 	res_str = g_strdup_printf("%dx%d",
 		remmina_file_get_int(gfe->priv->remmina_file, "resolution_width", 0),
@@ -464,7 +464,7 @@ static void remmina_file_editor_update_resolution(GtkWidget* widget, RemminaFile
 
 static void remmina_file_editor_browse_resolution(GtkWidget* button, RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 
 	GtkDialog *dialog = remmina_string_list_new(FALSE, NULL);
 	remmina_string_list_set_validation_func(remmina_public_resolution_validation_func);
@@ -482,7 +482,7 @@ static void remmina_file_editor_browse_resolution(GtkWidget* button, RemminaFile
 static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const RemminaProtocolSetting* setting,
 						  GtkWidget* grid, gint row)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget* widget;
 	GtkWidget* hbox;
 	const gchar *resolution_w, *resolution_h;
@@ -541,7 +541,7 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWidget* grid,
 						  gint row, gint col, const gchar* label, const gchar* value)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget* widget;
 
 	widget = gtk_label_new(label);
@@ -570,7 +570,7 @@ static GtkWidget* remmina_file_editor_create_text(RemminaFileEditor* gfe, GtkWid
 static GtkWidget* remmina_file_editor_create_select(RemminaFileEditor* gfe, GtkWidget* grid,
 						    gint row, gint col, const gchar* label, const gpointer* list, const gchar* value)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget* widget;
 
 	widget = gtk_label_new(label);
@@ -589,7 +589,7 @@ static GtkWidget* remmina_file_editor_create_select(RemminaFileEditor* gfe, GtkW
 static GtkWidget* remmina_file_editor_create_combo(RemminaFileEditor* gfe, GtkWidget* grid,
 						   gint row, gint col, const gchar* label, const gchar* list, const gchar* value)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget* widget;
 
 	widget = gtk_label_new(label);
@@ -609,7 +609,7 @@ static GtkWidget* remmina_file_editor_create_combo(RemminaFileEditor* gfe, GtkWi
 static GtkWidget* remmina_file_editor_create_check(RemminaFileEditor* gfe, GtkWidget* grid,
 						   gint row, gint top, const gchar* label, gboolean value)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget* widget;
 	widget = gtk_check_button_new_with_label(label);
 	gtk_widget_show(widget);
@@ -626,7 +626,7 @@ static GtkWidget*
 remmina_file_editor_create_chooser(RemminaFileEditor* gfe, GtkWidget* grid, gint row, gint col, const gchar* label,
 				   const gchar* value, gint type)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget* check;
 	GtkWidget* widget;
 	GtkWidget* hbox;
@@ -662,7 +662,7 @@ remmina_file_editor_create_chooser(RemminaFileEditor* gfe, GtkWidget* grid, gint
 static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidget* grid,
 						const RemminaProtocolSetting* settings)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFileEditorPriv* priv = gfe->priv;
 	GtkWidget* widget;
 	gint grid_row = 0;
@@ -769,7 +769,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 
 static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaProtocolSSHSetting ssh_setting)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 #ifdef HAVE_LIBSSH
 	RemminaFileEditorPriv* priv = gfe->priv;
 	GtkWidget* grid;
@@ -944,7 +944,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor* gfe, RemminaPr
 
 static void remmina_file_editor_create_all_settings(RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFileEditorPriv* priv = gfe->priv;
 	GtkWidget* grid;
 
@@ -968,7 +968,7 @@ static void remmina_file_editor_create_all_settings(RemminaFileEditor* gfe)
 
 static void remmina_file_editor_protocol_combo_on_changed(GtkComboBox* combo, RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFileEditorPriv* priv = gfe->priv;
 	gchar* protocol;
 
@@ -1013,7 +1013,7 @@ static void remmina_file_editor_protocol_combo_on_changed(GtkComboBox* combo, Re
 
 static void remmina_file_editor_update_ssh(RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFileEditorPriv* priv = gfe->priv;
 	gboolean ssh_enabled;
 
@@ -1064,7 +1064,7 @@ static void remmina_file_editor_update_ssh(RemminaFileEditor* gfe)
 
 static void remmina_file_editor_update_settings(RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFileEditorPriv* priv = gfe->priv;
 	GHashTableIter iter;
 	gpointer key, value;
@@ -1092,7 +1092,7 @@ static void remmina_file_editor_update_settings(RemminaFileEditor* gfe)
 
 static void remmina_file_editor_update(RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gchar *custom_resolution, *res_w, *res_h;
 	int w, h;
 
@@ -1142,7 +1142,7 @@ static void remmina_file_editor_update(RemminaFileEditor* gfe)
 
 static void remmina_file_editor_on_default(GtkWidget* button, RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFile* gf;
 	GtkWidget* dialog;
 
@@ -1170,7 +1170,7 @@ static void remmina_file_editor_on_default(GtkWidget* button, RemminaFileEditor*
 
 static void remmina_file_editor_on_save(GtkWidget* button, RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 
 	remmina_file_editor_update(gfe);
 
@@ -1182,7 +1182,7 @@ static void remmina_file_editor_on_save(GtkWidget* button, RemminaFileEditor* gf
 
 static void remmina_file_editor_on_connect(GtkWidget* button, RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFile* gf;
 
 	remmina_file_editor_update(gfe);
@@ -1199,7 +1199,7 @@ static void remmina_file_editor_on_connect(GtkWidget* button, RemminaFileEditor*
 
 static void remmina_file_editor_on_save_connect(GtkWidget* button, RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	/* TODO: Call remmina_file_editor_on_save */
 	RemminaFile* gf;
 
@@ -1219,13 +1219,13 @@ static void remmina_file_editor_on_save_connect(GtkWidget* button, RemminaFileEd
 
 static void remmina_file_editor_on_cancel(GtkWidget* button, RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gtk_widget_destroy(GTK_WIDGET(gfe));
 }
 
 static void remmina_file_editor_init(RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFileEditorPriv* priv;
 	GtkWidget* widget;
 
@@ -1271,7 +1271,7 @@ static void remmina_file_editor_init(RemminaFileEditor* gfe)
 
 static gboolean remmina_file_editor_iterate_protocol(gchar* protocol, RemminaPlugin* plugin, gpointer data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFileEditor* gfe = REMMINA_FILE_EDITOR(data);
 	GtkListStore* store;
 	GtkTreeIter iter;
@@ -1294,7 +1294,7 @@ static gboolean remmina_file_editor_iterate_protocol(gchar* protocol, RemminaPlu
 
 static void remmina_file_editor_check_profile(RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFileEditorPriv* priv;
 
 	priv = gfe->priv;
@@ -1306,7 +1306,7 @@ static void remmina_file_editor_check_profile(RemminaFileEditor* gfe)
 
 static void remmina_file_editor_name_on_changed(GtkEditable* editable, RemminaFileEditor* gfe)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFileEditorPriv* priv;
 
 	priv = gfe->priv;
@@ -1318,7 +1318,7 @@ static void remmina_file_editor_name_on_changed(GtkEditable* editable, RemminaFi
 
 GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFileEditor* gfe;
 	RemminaFileEditorPriv* priv;
 	GtkWidget* grid;
@@ -1459,13 +1459,13 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 
 GtkWidget* remmina_file_editor_new(void)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	return remmina_file_editor_new_full(NULL, NULL);
 }
 
 GtkWidget* remmina_file_editor_new_full(const gchar* server, const gchar* protocol)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFile* remminafile;
 
 	remminafile = remmina_file_new();
@@ -1479,7 +1479,7 @@ GtkWidget* remmina_file_editor_new_full(const gchar* server, const gchar* protoc
 
 GtkWidget* remmina_file_editor_new_copy(const gchar* filename)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFile* remminafile;
 	GtkWidget* dialog;
 
@@ -1497,7 +1497,7 @@ GtkWidget* remmina_file_editor_new_copy(const gchar* filename)
 
 GtkWidget* remmina_file_editor_new_from_filename(const gchar* filename)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaFile* remminafile;
 	GtkWidget* dialog;
 

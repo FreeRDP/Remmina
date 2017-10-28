@@ -61,13 +61,13 @@ static guint remmina_applet_menu_signals[LAST_SIGNAL] =
 
 static void remmina_applet_menu_destroy(RemminaAppletMenu *menu, gpointer data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	g_free(menu->priv);
 }
 
 static void remmina_applet_menu_class_init(RemminaAppletMenuClass *klass)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	remmina_applet_menu_signals[LAUNCH_ITEM_SIGNAL] = g_signal_new("launch-item", G_TYPE_FROM_CLASS(klass),
 		G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, G_STRUCT_OFFSET(RemminaAppletMenuClass, launch_item), NULL, NULL,
 		g_cclosure_marshal_VOID__OBJECT, G_TYPE_NONE, 1, G_TYPE_OBJECT);
@@ -78,7 +78,7 @@ static void remmina_applet_menu_class_init(RemminaAppletMenuClass *klass)
 
 static void remmina_applet_menu_init(RemminaAppletMenu *menu)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	menu->priv = g_new0(RemminaAppletMenuPriv, 1);
 
 	g_signal_connect(G_OBJECT(menu), "destroy", G_CALLBACK(remmina_applet_menu_destroy), NULL);
@@ -86,7 +86,7 @@ static void remmina_applet_menu_init(RemminaAppletMenu *menu)
 
 static void remmina_applet_menu_on_item_activate(RemminaAppletMenuItem *menuitem, RemminaAppletMenu *menu)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	g_signal_emit(G_OBJECT(menu), remmina_applet_menu_signals[LAUNCH_ITEM_SIGNAL], 0, menuitem);
 }
 
@@ -94,7 +94,7 @@ static GtkWidget*
 remmina_applet_menu_add_group(GtkWidget *menu, const gchar *group, gint position, RemminaAppletMenuItem *menuitem,
 			      GtkWidget **groupmenuitem)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget *widget;
 	GtkWidget *submenu;
 
@@ -121,7 +121,7 @@ remmina_applet_menu_add_group(GtkWidget *menu, const gchar *group, gint position
 
 static void remmina_applet_menu_increase_group_count(GtkWidget *widget)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	gint cnt;
 	gchar *s;
 
@@ -134,13 +134,13 @@ static void remmina_applet_menu_increase_group_count(GtkWidget *widget)
 
 void remmina_applet_menu_register_item(RemminaAppletMenu *menu, RemminaAppletMenuItem *menuitem)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_applet_menu_on_item_activate), menu);
 }
 
 void remmina_applet_menu_add_item(RemminaAppletMenu *menu, RemminaAppletMenuItem *menuitem)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget *submenu;
 	GtkWidget *groupmenuitem;
 	GtkMenuItem *submenuitem;
@@ -226,7 +226,7 @@ void remmina_applet_menu_add_item(RemminaAppletMenu *menu, RemminaAppletMenuItem
 GtkWidget*
 remmina_applet_menu_new(void)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	RemminaAppletMenu *menu;
 
 	menu = REMMINA_APPLET_MENU(g_object_new(REMMINA_TYPE_APPLET_MENU, NULL));
@@ -236,13 +236,13 @@ remmina_applet_menu_new(void)
 
 void remmina_applet_menu_set_hide_count(RemminaAppletMenu *menu, gboolean hide_count)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	menu->priv->hide_count = hide_count;
 }
 
 void remmina_applet_menu_populate(RemminaAppletMenu *menu)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkWidget *menuitem;
 	gchar filename[MAX_PATH_LEN];
 	GDir *dir;

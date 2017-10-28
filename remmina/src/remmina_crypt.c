@@ -47,7 +47,7 @@
 
 static gboolean remmina_crypt_init(gcry_cipher_hd_t *phd)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	guchar* secret;
 	gcry_error_t err;
 	gsize secret_len;
@@ -93,7 +93,7 @@ static gboolean remmina_crypt_init(gcry_cipher_hd_t *phd)
 
 gchar* remmina_crypt_encrypt(const gchar *str)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	guchar* buf;
 	gint buf_len;
 	gchar* result;
@@ -132,7 +132,7 @@ gchar* remmina_crypt_encrypt(const gchar *str)
 
 gchar* remmina_crypt_decrypt(const gchar *str)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	guchar* buf;
 	gsize buf_len;
 	gcry_error_t err;
@@ -167,13 +167,13 @@ gchar* remmina_crypt_decrypt(const gchar *str)
 
 gchar* remmina_crypt_encrypt(const gchar *str)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	return NULL;
 }
 
 gchar* remmina_crypt_decrypt(const gchar *str)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	return NULL;
 }
 

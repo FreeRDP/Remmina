@@ -80,7 +80,7 @@ enum {
 
 static gboolean remmina_mpchange_fieldcompare(const gchar *needle, const gchar *haystack, int *matchcount)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 
 	if (needle[0] == 0) {
 		(*matchcount)++;
@@ -97,7 +97,7 @@ static gboolean remmina_mpchange_fieldcompare(const gchar *needle, const gchar *
 
 static void remmina_mpchange_file_list_callback(RemminaFile *remminafile, gpointer user_data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkListStore* store;
 	GtkTreeIter iter;
 	int matchcount;
@@ -147,7 +147,7 @@ static void remmina_mpchange_file_list_callback(RemminaFile *remminafile, gpoint
 
 static void remmina_mpchange_checkbox_toggle(GtkCellRendererToggle *cell, gchar *path_string, gpointer user_data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	GtkTreeIter iter;
 	struct mpchanger_params* mpcp = (struct mpchanger_params*)user_data;
 	GtkTreePath *path;
@@ -161,7 +161,7 @@ static void remmina_mpchange_checkbox_toggle(GtkCellRendererToggle *cell, gchar 
 
 static void remmina_mpchange_dochange(gchar* fname, struct mpchanger_params* mpcp)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 
 	RemminaFile* remminafile;
 
@@ -185,7 +185,7 @@ static void enable_inputs(struct mpchanger_params* mpcp, gboolean ena)
 
 static gboolean changenext(gpointer user_data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	struct mpchanger_params* mpcp = (struct mpchanger_params*)user_data;
 	gchar* fname;
 	gboolean sel;
@@ -208,7 +208,7 @@ static gboolean changenext(gpointer user_data)
 
 static void remmina_mpchange_dochange_clicked(GtkButton *btn, gpointer user_data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	struct mpchanger_params* mpcp = (struct mpchanger_params*)user_data;
 	const gchar *passwd1, *passwd2;
 
@@ -248,7 +248,7 @@ static void remmina_mpchange_dochange_clicked(GtkButton *btn, gpointer user_data
 
 static gboolean remmina_mpchange_searchfield_changed_to(gpointer user_data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	struct mpchanger_params *mpcp = (struct mpchanger_params *)user_data;
 	const gchar *s;
 
@@ -285,7 +285,7 @@ static gboolean remmina_mpchange_searchfield_changed_to(gpointer user_data)
 
 static void remmina_mpchange_searchfield_changed(GtkSearchEntry *se, gpointer user_data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	struct mpchanger_params *mpcp = (struct mpchanger_params *)user_data;
 
 	if (mpcp->searchentrychange_timeout_source_id) {
@@ -299,7 +299,7 @@ static void remmina_mpchange_searchfield_changed(GtkSearchEntry *se, gpointer us
 
 static void remmina_mpchange_stopsearch(GtkSearchEntry *entry, gpointer user_data)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	/* The stop-search signal is emitted when pressing ESC on a GtkSearchEntry. We end the dialog. */
 	struct mpchanger_params *mpcp = (struct mpchanger_params *)user_data;
 	gtk_dialog_response(mpcp->dialog, 1);
@@ -307,7 +307,7 @@ static void remmina_mpchange_stopsearch(GtkSearchEntry *entry, gpointer user_dat
 
 static gboolean remmina_file_multipasswd_changer_mt(gpointer d)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	struct mpchanger_params *mpcp = d;
 	GtkBuilder* bu;
 	GtkDialog* dialog;
@@ -422,7 +422,7 @@ remmina_mpchange_schedule(gboolean has_domain, const gchar *group, const gchar *
 	// So we just schedule the multipassword changer to be executed on
 	// the main thread
 
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	struct mpchanger_params *mpcp;
 
 	mpcp = g_malloc0(sizeof(struct mpchanger_params));

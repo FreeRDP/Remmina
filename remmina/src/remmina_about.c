@@ -44,7 +44,7 @@
 /* Show the about dialog from the file ui/remmina_about.glade */
 void remmina_about_open(GtkWindow *parent)
 {
-	TRACE_CALL("__func__");
+	TRACE_CALL(__func__);
 	static gchar version[32];
 
 	g_snprintf(version, sizeof(version), "%s (git %s)", VERSION, REMMINA_GIT_REVISION);
