@@ -34,11 +34,11 @@
 
 find_suggested_package(Libsecret)
 if(LIBSECRET_FOUND)
-        set(REMMINA_PLUGINS_GNOME_SRCS
+        set(REMMINA_PLUGIN_SECRET_SRCS
                 src/glibsecret_plugin.c
                 )
 
-        add_library(remmina-plugin-secret MODULE ${REMMINA_PLUGINS_GNOME_SRCS})
+            add_library(remmina-plugin-secret MODULE ${REMMINA_PLUGIN_SECRET_SRCS})
         set_target_properties(remmina-plugin-secret PROPERTIES PREFIX "")
         set_target_properties(remmina-plugin-secret PROPERTIES NO_SONAME 1)
 
