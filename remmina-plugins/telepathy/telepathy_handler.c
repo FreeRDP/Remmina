@@ -105,7 +105,7 @@ static gboolean remmina_tp_handler_register(RemminaTpHandler *handler)
 		g_print("tp_dbus_daemon_request_name: %s", error->message);
 		return FALSE;
 	}
-	dbus_g_connection_register_G_OBJECT(
+	dbus_g_connection_register_g_object(
 		tp_proxy_get_dbus_connection(TP_PROXY(bus)),
 		REMMINA_TP_OBJECT_PATH, G_OBJECT(handler));
 	g_object_unref(bus);
