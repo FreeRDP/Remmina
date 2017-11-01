@@ -42,6 +42,3 @@ remmina_tp_channel_handler_new(const gchar *account_path, const gchar *connectio
 			       GHashTable *channel_properties, DBusGMethodInvocation *context);
 
 G_END_DECLS
-
-#endif
-
