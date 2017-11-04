@@ -50,6 +50,10 @@ target_link_libraries(remmina-plugin-telepathy ${REMMINA_COMMON_LIBRARIES}
 
 install(TARGETS remmina-plugin-telepathy DESTINATION ${REMMINA_PLUGINDIR})
 
+# Telepathy client file
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/Remmina.client
+    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/telepathy/clients)
+
 # DBus activation file
 if(NOT REMMINA_BINARY_PATH)
     set(REMMINA_BINARY_PATH ${CMAKE_INSTALL_FULL_BINDIR}/remmina)
