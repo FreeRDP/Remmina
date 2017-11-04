@@ -107,14 +107,14 @@ static void remmina_tp_channel_handler_channel_closed(TpChannel *channel, gpoint
 	TRACE_CALL(__func__);
 	RemminaTpChannelHandler *chandler = (RemminaTpChannelHandler*)user_data;
 
-	g_print("remmina_tp_channel_handler_channel_closed: %s\n", chandler->channel_path);
+	g_print("%s: %s\n", __func__, chandler->channel_path);
 	remmina_tp_channel_handler_free(chandler);
 }
 
 static void remmina_tp_channel_handler_on_disconnect(GtkWidget *widget, RemminaTpChannelHandler *chandler)
 {
 	TRACE_CALL(__func__);
-	g_print("remmina_tp_channel_handler_on_disconnect: %s\n", chandler->channel_path);
+	g_print("%s: %s\n", __func__, chandler->channel_path);
 	g_signal_handler_disconnect(widget, chandler->disconnect_handler);
 	chandler->disconnect_handler = 0;
 	tp_cli_channel_call_close(chandler->channel, -1, NULL, NULL, NULL, NULL);
@@ -151,12 +151,12 @@ static void remmina_tp_channel_handler_get_service(TpProxy *channel, const GValu
 	const gchar *svc;
 
 	if (error != NULL) {
-		g_print("remmina_tp_channel_handler_get_service: %s", error->message);
+		g_print("%s: %s", __func__, error->message);
 		remmina_tp_channel_handler_free(chandler);
 		return;
 	}
 	svc = g_value_get_string(service);
-	g_print("remmina_tp_channel_handler_get_service: %s %s:%u\n", svc, chandler->host, chandler->port);
+	g_print("%s: %s %s:%u\n", __func__, svc, chandler->host, chandler->port);
 
 	if (g_strcmp0(svc, "rfb") == 0) {
 		chandler->protocol = g_strdup("VNC");
@@ -173,7 +173,7 @@ static void remmina_tp_channel_handler_accept(TpChannel *channel, const GValue *
 	RemminaTpChannelHandler *chandler = (RemminaTpChannelHandler*)user_data;
 
 	if (error != NULL) {
-		g_print("remmina_tp_channel_handler_accept: %s", error->message);
+		g_print("%s: %s", __func__, error->message);
 		remmina_tp_channel_handler_free(chandler);
 		return;
 	}
@@ -221,12 +221,12 @@ static void remmina_tp_channel_handler_get_contacts(TpConnection *connection, gu
 	GtkWidget *dialog;
 
 	if (error != NULL) {
-		g_print("remmina_tp_channel_handler_get_contacts: %s", error->message);
+		g_print("%s: %s", __func__, error->message);
 		remmina_tp_channel_handler_free(chandler);
 		return;
 	}
 	if (n_contacts <= 0) {
-		g_print("remmina_tp_channel_handler_get_contacts: no contacts\n");
+		g_print("%s: no contacts\n", __func__);
 		remmina_tp_channel_handler_free(chandler);
 		return;
 	}
@@ -276,7 +276,7 @@ static void remmina_tp_channel_handler_channel_ready(TpChannel *channel, const G
 	{ TP_CONTACT_FEATURE_ALIAS, TP_CONTACT_FEATURE_AVATAR_TOKEN };
 
 	if (channel_error != NULL) {
-		g_print("remmina_tp_channel_handler_channel_ready: %s\n", channel_error->message);
+		g_print("%s: %s\n", __func__, channel_error->message);
 		remmina_tp_channel_handler_free(chandler);
 		return;
 	}
@@ -287,7 +287,7 @@ static void remmina_tp_channel_handler_channel_ready(TpChannel *channel, const G
 		remmina_tp_channel_handler_free(chandler);
 		return;
 	}
-	g_print("remmina_tp_channel_handler_channel_ready: %s\n", chandler->channel_path);
+	g_print("%s: %s\n", __func__, chandler->channel_path);
 
 	handle = tp_channel_get_handle(channel, NULL);
 	tp_connection_get_contacts_by_handle(chandler->connection, 1, &handle, G_N_ELEMENTS(features), features,
@@ -302,7 +302,7 @@ static void remmina_tp_channel_handler_connection_ready(TpConnection *connection
 	GError *error = NULL;
 
 	if (connection_error != NULL) {
-		g_print("remmina_tp_channel_handler_connection_ready: %s\n", connection_error->message);
+		g_print("%s: %s\n", __func__, connection_error->message);
 		remmina_tp_channel_handler_free(chandler);
 		return;
 	}
