@@ -224,7 +224,7 @@ gboolean remmina_rdp_file_export_channel(RemminaFile* remminafile, FILE* fp)
 	h = remmina_plugin_service->file_get_int(remminafile, "resolution_height", -1);
 	if ( w > 0 && h > 0 ) {
 		fprintf(fp, "desktopwidth:i:%d\r\n", w);
-		fprintf(fp, "desktopheight:i:%s\r\n", h);
+		fprintf(fp, "desktopheight:i:%d\r\n", h);
 	}
 
 	fprintf(fp, "session bpp:i:%i\r\n", remmina_plugin_service->file_get_int(remminafile, "colordepth", 8));
