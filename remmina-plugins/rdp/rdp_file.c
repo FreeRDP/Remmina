@@ -216,22 +216,13 @@ gboolean remmina_rdp_file_export_test(RemminaFile* remminafile)
 gboolean remmina_rdp_file_export_channel(RemminaFile* remminafile, FILE* fp)
 {
 	TRACE_CALL(__func__);
-	gchar* s;
-	gchar* p;
 	const gchar* cs;
 
 	fprintf(fp, "screen mode id:i:2\r\n");
-	cs = remmina_plugin_service->file_get_string(remminafile, "resolution");
-	if (cs) {
-		s = g_strdup(cs);
-		p = strchr(s, 'x');
-		if (p) {
-			*p++ = '\0';
-			fprintf(fp, "desktopwidth:i:%s\r\n", s);
-			fprintf(fp, "desktopheight:i:%s\r\n", p);
-		}
-		g_free(s);
-	}
+	cs = remmina_plugin_service->file_get_string(remminafile, "resolution_width");
+	fprintf(fp, "desktopwidth:i:%s\r\n", cs);
+	cs = remmina_plugin_service->file_get_string(remminafile, "resolution_height");
+	fprintf(fp, "desktopheight:i:%s\r\n", cs);
 
 	fprintf(fp, "session bpp:i:%i\r\n", remmina_plugin_service->file_get_int(remminafile, "colordepth", 8));
 	//fprintf(fp, "winposstr:s:0,1,123,34,931,661\r\n");
