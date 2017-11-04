@@ -112,6 +112,10 @@ list(APPEND REMMINA_SRCS
     "src/remmina_connection_window.h"
     "src/remmina_mpchange.c"
     "src/remmina_mpchange.h"
+    "src/remmina_stats.c"
+    "src/remmina_stats.h"
+    "src/remmina_stats_sender.c"
+    "src/remmina_stats_sender.h"
     )
 
 add_executable(remmina ${REMMINA_SRCS})
@@ -174,6 +178,13 @@ if(GTK3_FOUND)
                 include_directories(${APPINDICATOR_INCLUDE_DIRS})
                 target_link_libraries(remmina ${APPINDICATOR_LIBRARIES})
         endif()
+        find_required_package(JSONGLIB)
+        if (JSONGLIB_FOUND)
+			include_directories(${JSONGLIB_INCLUDE_DIRS})
+			target_link_libraries(remmina ${JSONGLIB_LIBRARIES})
+		else()
+			message(FATAL_ERROR "json-glib library not found")
+		endif()
 endif()
 
 find_package(Intl)

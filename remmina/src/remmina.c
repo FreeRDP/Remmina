@@ -54,6 +54,7 @@
 #include "remmina_widget_pool.h"
 #include "remmina/remmina_trace_calls.h"
 
+
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
 #endif

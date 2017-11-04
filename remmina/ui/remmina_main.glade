@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 
+<!-- Generated with glade 3.20.2 
 
 Remmina - The GTK+ Remmina Remote Desktop Client
 Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2017
@@ -238,6 +238,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     <signal name="delete-event" handler="remmina_main_on_delete_event" swapped="no"/>
     <signal name="destroy" handler="remmina_main_destroy" swapped="no"/>
     <signal name="drag-data-received" handler="remmina_main_on_drag_data_received" swapped="no"/>
+    <signal name="show" handler="remmina_main_on_show" swapped="no"/>
     <signal name="window-state-event" handler="remmina_main_on_window_state_event" swapped="no"/>
     <child>
       <object class="GtkBox" id="box_main">
@@ -618,7 +619,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           <packing>
             <property name="expand">False</property>
             <property name="fill">False</property>
-            <property name="position">2</property>
+            <property name="position">1</property>
           </packing>
         </child>
         <child>
@@ -709,7 +710,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">3</property>
+            <property name="position">2</property>
           </packing>
         </child>
         <child>
@@ -720,6 +721,69 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox" id="box_ustat">
+            <property name="can_focus">False</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">4</property>
+            <property name="margin_top">4</property>
+            <property name="margin_bottom">4</property>
+            <property name="spacing">5</property>
+            <child>
+              <object class="GtkLabel" id="ustat_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Do you allow Remmina to send periodic anonymous usage statistics to its developers?</property>
+                <property name="wrap">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="ustat_no">
+                <property name="label">gtk-no</property>
+                <property name="width_request">60</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="valign">center</property>
+                <property name="use_stock">True</property>
+                <signal name="clicked" handler="remmina_main_on_click_ustat_no" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="ustat_yes">
+                <property name="label">gtk-yes</property>
+                <property name="width_request">70</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="valign">center</property>
+                <property name="use_stock">True</property>
+                <signal name="clicked" handler="remmina_main_on_click_ustat_yes" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="padding">3</property>
             <property name="position">4</property>
           </packing>
         </child>
