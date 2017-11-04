@@ -49,3 +49,13 @@ target_link_libraries(remmina-plugin-telepathy ${REMMINA_COMMON_LIBRARIES}
     ${TELEPATHY_LIBRARIES})
 
 install(TARGETS remmina-plugin-telepathy DESTINATION ${REMMINA_PLUGINDIR})
+
+# DBus activation file
+if(NOT REMMINA_BINARY_PATH)
+    set(REMMINA_BINARY_PATH ${CMAKE_INSTALL_FULL_BINDIR}/remmina)
+endif()
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/org.freedesktop.Telepathy.Client.Remmina.service.in
+    ${CMAKE_CURRENT_BINARY_DIR}/org.freedesktop.Telepathy.Client.Remmina.service @ONLY)
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.freedesktop.Telepathy.Client.Remmina.service
+    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/dbus-1/services)
