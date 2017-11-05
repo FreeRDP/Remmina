@@ -8,7 +8,7 @@ Initially developed by [Vic Lee](https://github.com/llyzs)
 **Remmina** is a remote desktop client written in GTK+, aiming to be useful for
 system administrators and travellers, who need to work with lots of remote
 computers in front of either large monitors or tiny netbooks. Remmina supports
-multiple network protocols in an integrated and consistant user interface.
+multiple network protocols in an integrated and consistent user interface.
 Currently RDP, VNC, SPICE, NX, XDMCP and SSH are supported.
 
 Remmina is released in separated source packages:
