@@ -620,17 +620,19 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 				remmina_rdp_event_event_push(gp, &rdp_event);
 				keypress_list_add(gp, rdp_event);
 			}
-		}else  {
+		} else {
 			display = gtk_widget_get_display(widget);
 			unicode_keyval = gdk_keyval_to_unicode(event->keyval);
 			/* Decide when whe should send a keycode or a unicode character.
 			 * - All non char keys (shift, alt, win) should be sent as keycode
+			 * - Space should be sent as keycode (see issue #1364)
 			 * - All special keys (F1-F10, numeric pad, home/end/arrows/pgup/pgdn/ins/del) keycode
 			 * - All key pressed while CTRL or ALT or WIN is down are not decoded by gdk_keyval_to_unicode(), so send it as keycode
 			 * - All keycodes not translatable to unicode chars, as keycode
 			 * - The rest as unicode char
 			 */
 			if (event->keyval >= 0xfe00 ||                                                  // arrows, shift, alt, Fn, num keypad...
+				event->hardware_keycode == 0x41 ||											// space bar
 			    unicode_keyval == 0 ||                                                      // impossible to translate
 			    (event->state & (GDK_MOD1_MASK | GDK_CONTROL_MASK | GDK_SUPER_MASK)) != 0   // a modifier not recognized by gdk_keyval_to_unicode()
 			    ) {
