@@ -592,17 +592,13 @@ static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 
 	remminafile = remmina_plugin_nx_service->protocol_plugin_get_file(gp);
 
-	resolution = remmina_plugin_nx_service->file_get_string(remminafile, "resolution");
-	if (!resolution || !strchr(resolution, 'x')) {
-		remmina_plugin_nx_service->protocol_plugin_set_expand(gp, TRUE);
-		gtk_widget_set_size_request(GTK_WIDGET(gp), 640, 480);
-	}else  {
-		width = remmina_plugin_nx_service->file_get_int(remminafile, "resolution_width", 640);
-		height = remmina_plugin_nx_service->file_get_int(remminafile, "resolution_height", 480);
-		remmina_plugin_nx_service->protocol_plugin_set_width(gp, width);
-		remmina_plugin_nx_service->protocol_plugin_set_height(gp, height);
-		gtk_widget_set_size_request(GTK_WIDGET(gp), width, height);
-	}
+	width = remmina_plugin_nx_service->get_profile_remote_width(gp);
+	height = remmina_plugin_nx_service->get_profile_remote_height(gp);
+
+	remmina_plugin_nx_service->protocol_plugin_set_width(gp, width);
+	remmina_plugin_nx_service->protocol_plugin_set_height(gp, height);
+	gtk_widget_set_size_request(GTK_WIDGET(gp), width, height);
+
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 
 	if (pthread_create(&gpdata->thread, NULL, remmina_plugin_nx_main_thread, gp)) {
