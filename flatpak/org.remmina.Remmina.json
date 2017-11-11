@@ -1,0 +1,470 @@
+{
+    "app-id": "org.remmina.Remmina",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.26",
+    "sdk": "org.gnome.Sdk",
+    "build-options" : {
+        "cflags": "-O2 -g",
+        "cxxflags": "-O2 -g"
+    },
+    "command": "remmina",
+    "rename-icon": "remmina",
+    "desktop-file-name-prefix": "(Flatpak) ",
+    "cleanup": [
+        "*.a",
+        "*.la",
+        "/build-aux",
+        "/include",
+        "/lib/cmake",
+        "/lib/pkgconfig",
+        "/share/gtk-doc",
+        "/share/man",
+        "/share/pkgconfig"
+    ],
+    "finish-args": [
+        "--own-name=org.remmina.Remmina",
+        /* X11 + XShm access */
+        "--share=ipc", "--socket=x11",
+        /* Needs to talk to the network */
+        "--share=network",
+        /* Play sounds redirected from guests */
+        "--socket=pulseaudio",
+        /* Wayland access */
+        "--socket=wayland",
+        /* File transfer (although limited to user directory) */
+        "--filesystem=home",
+        /* Desktop notifications */
+        "--talk-name=org.freedesktop.Notifications",
+        /* Needed to save login credentials */
+        "--talk-name=org.freedesktop.secrets",
+        /* Appindicator */
+        "--talk-name=org.kde.StatusNotifierWatcher",
+        /* Query GNOME Shell version (to display systray icon if supported) */
+        "--talk-name=org.gnome.Shell",
+        /* Local network host discovery */
+        "--system-talk-name=org.freedesktop.Avahi",
+        /* Needed for dconf to work */
+        "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
+        "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+    ],
+    "modules": [
+        {
+            "name": "libappindicator",
+            "build-options" : {
+                "cflags": "-O2 -g -Wno-error=deprecated-declarations"
+            },
+            "config-opts": [
+                "--disable-gtk-doc",
+                "--disable-introspection",
+                "--disable-tests",
+                "--disable-mono-tests",
+                "--with-gtk=3"
+            ],
+            "rm-configure": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://launchpad.net/libappindicator/12.10/12.10.0/+download/libappindicator-12.10.0.tar.gz",
+                    "sha256": "d5907c1f98084acf28fd19593cb70672caa0ca1cf82d747ba6f4830d4cc3b49f"
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "# Disable python bindings",
+                        "sed -e '/APPINDICATOR_PYTHON/,/\\$PYGTK_CODEGEN/ d' -i configure.ac",
+                        "sed -e '/bindings/ d' -e '/example/ d' -i Makefile.am"
+                    ]
+                }
+            ],
+            "modules": [
+                {
+                    "name": "libdbusmenu",
+                    "build-options" : {
+                        "env": {
+                            "HAVE_VALGRIND_FALSE": "#",
+                            "HAVE_VALGRIND_TRUE": ""
+                        }
+                    },
+                    "cleanup": [
+                        "/libexec",
+                        "/share/doc",
+                        "/share/libdbusmenu"
+                    ],
+                    "config-opts": [
+                        "--disable-gtk-doc",
+                        "--disable-introspection",
+                        "--disable-vala",
+                        "--disable-dumper",
+                        "--disable-tests",
+                        "--with-gtk=3"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://launchpad.net/libdbusmenu/16.04/16.04.0/+download/libdbusmenu-16.04.0.tar.gz",
+                            "sha256": "b9cc4a2acd74509435892823607d966d424bd9ad5d0b00938f27240a1bfa878a"
+                        }
+                    ]
+                },
+                {
+                    "name": "libindicator",
+                    "build-options" : {
+                        "cflags": "-O2 -g -Wno-error=deprecated-declarations"
+                    },
+                    "cleanup": [
+                        "/libexec",
+                        "/share/libindicator"
+                    ],
+                    "config-opts": [
+                        "--disable-tests",
+                        "--with-gtk=3"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://launchpad.net/libindicator/12.10/12.10.1/+download/libindicator-12.10.1.tar.gz",
+                            "sha256": "b2d2e44c10313d5c9cd60db455d520f80b36dc39562df079a3f29495e8f9447f"
+                        },
+                        {
+                            "type": "shell",
+                            "commands": [
+                                "# FTBFS fix",
+                                "sed -e '/LIBINDICATOR_LIBS/ s/\\$LIBM/ $LIBM/' -i configure.ac"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "avahi",
+            "cleanup": [
+                "/bin",
+                "/lib/avahi",
+                "/share/applications/*.desktop",
+                "/share/avahi"
+            ],
+            "config-opts": [
+                "--with-distro=none",
+                "--disable-gobject",
+                "--disable-introspection",
+                "--disable-qt3",
+                "--disable-qt4",
+                "--disable-gtk",
+                "--disable-libdaemon",
+                "--disable-python",
+                "--disable-pygobject",
+                "--disable-mono",
+                "--disable-monodoc",
+                "--disable-autoipd",
+                "--disable-doxygen-doc",
+                "--disable-doxygen-dot",
+                "--disable-doxygen-xml",
+                "--disable-doxygen-html",
+                "--disable-manpages",
+                "--disable-xmltoman"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.avahi.org/download/avahi-0.7.tar.gz",
+                    "sha256": "57a99b5dfe7fdae794e3d1ee7a62973a368e91e414bd0dfa5d84434de5b14804"
+                }
+            ]
+        },
+        {
+            "name": "libxkbfile",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://xorg.freedesktop.org/releases/individual/lib/libxkbfile-1.0.9.tar.bz2",
+                    "sha256": "51817e0530961975d9513b773960b4edd275f7d5c72293d5a151ed4f42aeb16a"
+                }
+            ]
+        },
+        {
+            "name": "nxproxy",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make CONFIGURE='./configure --prefix=/app'",
+                "# Install target does a `gzip /app/share/man/man1/*.1`",
+                "rm -rf /app/share/man",
+                "make PREFIX=/app install",
+                "sed -e 's|/usr/lib/nx|/app/lib/nx|g' -i /app/bin/nxproxy"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://code.x2go.org/releases/source/nx-libs/nx-libs-3.5.0.32-lite.tar.gz",
+                    "sha256": "b5ab9f0ae35cdf6c3e26484d2a2ca55cd0225b6d8693f5544a096b19585bc50a"
+                }
+            ]
+        },
+        {
+            "name": "freerdp",
+            "buildsystem": "cmake",
+            "cleanup": [
+                "/bin",
+                "/lib/libwinpr-tools2.so*",
+                "/lib/libuwac0.so*"
+            ],
+            "config-opts": [
+                "-DCMAKE_INSTALL_LIBDIR:PATH=/app/lib",
+                "-DWITH_CLIENT:BOOL=OFF",
+                "-DWITH_CUPS:BOOL=ON",
+                "-DWITH_JPEG:BOOL=ON",
+                "-DWITH_MANPAGES:BOOL=OFF",
+                "-DWITH_OSS:BOOL=OFF",
+                "-DWITH_PULSE:BOOL=ON",
+                "-DWITH_SERVER:BOOL=OFF"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/FreeRDP/FreeRDP.git",
+                    "tag": "2.0.0-rc0"
+                }
+            ],
+            "modules": [
+                {
+                    /**
+                     * libfreerdp use xprop to try to detect keyboard layout
+                     */
+                    "name": "xprop",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://xorg.freedesktop.org/releases/individual/app/xprop-1.2.2.tar.bz2",
+                            "sha256": "9bee88b1025865ad121f72d32576dd3027af1446774aa8300cce3c261d869bc6"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "spice-gtk",
+            "build-options": {
+                "env": {
+                    "PYTHONPATH": "/app/build-aux"
+                }
+            },
+            "cleanup": [
+                "/bin",
+                "/share/vala"
+            ],
+            "config-opts": [
+                "PYTHON=python3",
+                "--disable-controller",
+                "--disable-introspection",
+                "--disable-vala"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://www.spice-space.org/download/gtk/spice-gtk-0.34.tar.bz2",
+                    "sha256": "e9720e01165f8451c9f3f58ad50e3afb990993b81cc2db86b3661b7ac5b976ee"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "python-pyparsing",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "pip3 install --target=/app/build-aux ./pyparsing-2.2.0-py2.py3-none-any.whl"
+                    ],
+                    "sources": [
+                        {
+                            "type": "file",
+                            "url": "https://pypi.python.org/packages/6a/8a/718fd7d3458f9fab8e67186b00abdd345b639976bc7fb3ae722e1b026a50/pyparsing-2.2.0-py2.py3-none-any.whl",
+                            "sha256": "fee43f17a9c4087e7ed1605bd6df994c6173c1e977d7ade7b651292fab2bd010"
+                        }
+                    ]
+                },
+                {
+                    "name": "python-six",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "pip3 install --target=/app/build-aux ./six-1.11.0-py2.py3-none-any.whl"
+                    ],
+                    "sources": [
+                        {
+                            "type": "file",
+                            "url": "https://pypi.python.org/packages/67/4b/141a581104b1f6397bfa78ac9d43d8ad29a7ca43ea90a2d863fe3056e86a/six-1.11.0-py2.py3-none-any.whl",
+                            "sha256": "832dc0e10feb1aa2c68dcc57dbb658f1c7e65b9b61af69048abc87a2db00a0eb"
+                        }
+                    ]
+                },
+                {
+                    "name": "lz4",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "make -C lib lib",
+                        "make -C lib PREFIX=/app install"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/lz4/lz4/archive/v1.8.0/lz4-1.8.0.tar.gz",
+                            "sha256": "2ca482ea7a9bb103603108b5a7510b7592b90158c151ff50a28f1ca8389fccf6"
+                        }
+                    ]
+                },
+                {
+                    "name": "spice-protocol",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://www.spice-space.org/download/releases/spice-protocol-0.12.13.tar.bz2",
+                            "sha256": "89ee11b202d2268e061788e6ace114e1ff18c7620ae64d1ca3aba252ee7c9933"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "libssh",
+            "buildsystem": "cmake",
+            "builddir": true,
+            "config-opts": [
+                "-DWITH_EXAMPLES:BOOL=OFF"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://red.libssh.org/attachments/download/218/libssh-0.7.5.tar.xz",
+                    "sha256": "54e86dd5dc20e5367e58f3caab337ce37675f863f80df85b6b1614966a337095"
+                }
+            ]
+        },
+        {
+            /**
+             * Telepathy plugin would require the following files to be exported
+             * outside of flatpak:
+             *   - ${XDG_DATA_DIR}//telepathy//clients//Remmina.client
+             *   - ${XDG_DATA_DIR}//dbus-1//services//org.freedesktop.Telepathy.Client.Remmina.service
+             */
+            "name": "telepathy-glib",
+            "disabled": true,
+            "config-opts": [
+                "--disable-introspection"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz",
+                    "sha256": "9e0df1d8f857e0270cf0b32e2d1ca5a24aa7282873361785d573f72ad7f7d5eb"
+                }
+            ]
+        },
+        {
+            "name": "libvncserver",
+            "cleanup": [
+                "/bin",
+                "/lib/libvncserver.so*"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/LibVNC/libvncserver/archive/LibVNCServer-0.9.11.tar.gz",
+                    "sha256": "193d630372722a532136fd25c5326b2ca1a636cbb8bf9bb115ef869c804d2894"
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "sed -e '/AM_PATH_LIBGCRYPT/ s/.*/PKG_CHECK_MODULES([LIBGCRYPT], [libgcrypt >= 1.4.0])/' -i configure.ac"
+                    ]
+                }
+            ]
+        },
+        {
+            /**
+             * Xephyr version 1.17.0 and later don't work fine with GtkSocket,
+             * therefore we remain at version 1.16.4:
+             *   - https://github.com//FreeRDP//Remmina//issues//366
+             *   - https://bugs.freedesktop.org//show_bug.cgi?id=91700
+             */
+            "name": "xephyr",
+            "config-opts": [
+                "--enable-kdrive",
+                "--enable-kdrive-evdev",
+                "--disable-kdrive-kbd",
+                "--disable-kdrive-mouse",
+                "--enable-xephyr",
+                "--disable-xorg",
+                "--disable-xvfb",
+                "--disable-xnest",
+                "--disable-xquartz",
+                "--disable-xwayland",
+                "--disable-standalone-xpbproxy",
+                "--disable-xwin",
+                "--disable-xfake",
+                "--disable-xfbdev",
+                "--disable-dmx",
+                "--with-fontrootdir=/usr/share/fonts",
+                "--with-xkb-path=/usr/share/X11/xkb",
+                "--with-xkb-output=/var/lib/xkb"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.16.4.tar.bz2",
+                    "sha256": "abb6e1cc9213a9915a121f48576ff6739a0b8cdb3d32796f9a7743c9a6efc871"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "libfontenc",
+                    "config-opts": [
+                        "--with-fontrootdir=/usr/share/fonts"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://xorg.freedesktop.org/releases/individual/lib/libfontenc-1.1.3.tar.bz2",
+                            "sha256": "70588930e6fc9542ff38e0884778fbc6e6febf21adbab92fd8f524fe60aefd21"
+                        }
+                    ]
+                },
+                {
+                    "name": "libXfont",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://xorg.freedesktop.org/releases/individual/lib/libXfont-1.5.3.tar.bz2",
+                            "sha256": "ab85c10fd2683481dfef672a77fe60e6a2039558cbc0e9bf56b5e1df471c93d0"
+                        }
+                    ]
+                },
+                {
+                    "name": "xkbcomp",
+                    "config-opts": [
+                        "--with-xkb-config-root=/usr/share/X11/xkb"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://xorg.freedesktop.org/releases/individual/app/xkbcomp-1.4.0.tar.bz2",
+                            "sha256": "bc69c8748c03c5ad9afdc8dff9db11994dd871b614c65f8940516da6bf61ce6b"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "remmina",
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_INSTALL_LIBDIR:PATH=/app/lib",
+                "-DWITH_MANPAGES:BOOL=OFF",
+                "-DWITH_TELEPATHY:BOOL=OFF"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/FreeRDP/Remmina.git",
+                    "branch": "next"
+                }
+            ]
+        }
+    ]
+}
