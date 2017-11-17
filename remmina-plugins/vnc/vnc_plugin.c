@@ -1894,6 +1894,7 @@ static const RemminaProtocolSetting remmina_plugin_vnc_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableencryption",	 N_("Disable encryption"),	       FALSE,				      NULL,				     NULL			      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disableserverinput",	 N_("Disable server input"),	       TRUE,				      NULL,				     NULL			      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring", N_("Disable password storing"),       FALSE,				      NULL,				     NULL			      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "scale",	 N_("Scale"),	       TRUE,				      NULL,				     NULL			      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,   NULL,			 NULL,				       FALSE,				      NULL,				     NULL			      }
 };
 
