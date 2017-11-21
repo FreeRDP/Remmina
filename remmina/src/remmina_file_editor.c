@@ -79,10 +79,12 @@ static const gchar * server_tips = N_(    "<tt><big>"
 	"</big></tt>");
 
 static const gchar * cmd_tips = N_(    "<tt><big>"
-	"Supported formats\n"
-	"* COMMAND ARGS %h\n"
-	"* /PATH/TO/CMD ARGS\n"
-	"* %h is substituted by the server name"
+	"* command in PATH args %h\n"
+	"* /path/to/foo -options %h %u %U %t\n"
+	"* %h is substituted with the server name\n"
+	"* %u is substituted with the user name\n"
+	"* %t is substituted with the ssh tunnel server name\n"
+	"* %U is substituted with the ssh tunnel user name\n"
 	"</big></tt>");
 
 #ifdef HAVE_LIBSSH
@@ -1425,6 +1427,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	priv->precommand_entry = widget;
 	cs = remmina_file_get_string(remminafile, "precommand");
 	gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
+	gtk_entry_set_placeholder_text(GTK_ENTRY(widget), "command %h %u %t %U --option");
 	gtk_widget_set_tooltip_markup(widget, _(cmd_tips));
 
 	/* POST Connection Command */
@@ -1442,6 +1445,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	priv->postcommand_entry = widget;
 	cs = remmina_file_get_string(remminafile, "postcommand");
 	gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
+	gtk_entry_set_placeholder_text(GTK_ENTRY(widget), "/path/to/command -opt1 arg %h %u %t -opt2 %U");
 	gtk_widget_set_tooltip_markup(widget, _(cmd_tips));
 
 	/* Create the Preference frame */

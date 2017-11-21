@@ -79,6 +79,9 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 				strcmp(remmina_plugin_cmdexec_type, post) )) {
 		cmd_str = g_string_new(remmina_file_get_string(remminafile, remmina_plugin_cmdexec_type));
 		remmina_utils_string_replace_all(cmd_str, "%h", remmina_file_get_string(remminafile, "server"));
+		remmina_utils_string_replace_all(cmd_str, "%t", remmina_file_get_string(remminafile, "ssh_server"));
+		remmina_utils_string_replace_all(cmd_str, "%u", remmina_file_get_string(remminafile, "username"));
+		remmina_utils_string_replace_all(cmd_str, "%U", remmina_file_get_string(remminafile, "ssh_username"));
 	}else{
 		return FALSE;
 	}
