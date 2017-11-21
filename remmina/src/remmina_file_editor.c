@@ -78,6 +78,13 @@ static const gchar * server_tips = N_(    "<tt><big>"
 	"* [server]:port"
 	"</big></tt>");
 
+static const gchar * cmd_tips = N_(    "<tt><big>"
+	"Supported formats\n"
+	"* COMMAND ARGS %h\n"
+	"* /PATH/TO/CMD ARGS\n"
+	"* %h is substituted by the server name"
+	"</big></tt>");
+
 #ifdef HAVE_LIBSSH
 static const gchar* server_tips2 = N_(    "<tt><big>"
 	"Supported formats\n"
@@ -1418,9 +1425,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	priv->precommand_entry = widget;
 	cs = remmina_file_get_string(remminafile, "precommand");
 	gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
-	s = g_strdup_printf(_("Script/command with arguments"));
-	gtk_widget_set_tooltip_text(widget, s);
-	g_free(s);
+	gtk_widget_set_tooltip_markup(widget, _(cmd_tips));
 
 	/* POST Connection Command */
 	widget = gtk_label_new(_("Post Command"));
@@ -1437,9 +1442,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	priv->postcommand_entry = widget;
 	cs = remmina_file_get_string(remminafile, "postcommand");
 	gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
-	s = g_strdup_printf(_("Script/command with arguments"));
-	gtk_widget_set_tooltip_text(widget, s);
-	g_free(s);
+	gtk_widget_set_tooltip_markup(widget, _(cmd_tips));
 
 	/* Create the Preference frame */
 	widget = gtk_event_box_new();

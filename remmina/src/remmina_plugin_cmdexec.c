@@ -33,11 +33,13 @@
  *
  */
 
+#include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <glib.h>
 #include <stdlib.h>
 #include <sys/wait.h>
+#include "remmina_utils.h"
 #include "remmina_file.h"
 #include "remmina_plugin_cmdexec.h"
 #include "remmina_public.h"
@@ -63,7 +65,8 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 	PCon_Spinner *pcspinner;
 	GError *error = NULL;
 	char **argv;
-	char const *plugin_cmd = NULL;
+	gchar *cmd = NULL;
+	GString *cmd_str;
 	gchar pre[11];
 	gchar post[12];
 	GPid child_pid;
@@ -72,14 +75,17 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 	strcpy(post, "postcommand");
 
 	if (remmina_plugin_cmdexec_type != NULL && (
-		    strcmp(remmina_plugin_cmdexec_type, pre) |
-		    strcmp(remmina_plugin_cmdexec_type, post) )) {
-		plugin_cmd = remmina_file_get_string(remminafile, remmina_plugin_cmdexec_type);
+				strcmp(remmina_plugin_cmdexec_type, pre) |
+				strcmp(remmina_plugin_cmdexec_type, post) )) {
+		cmd_str = g_string_new(remmina_file_get_string(remminafile, remmina_plugin_cmdexec_type));
+		remmina_utils_string_replace_all(cmd_str, "%h", remmina_file_get_string(remminafile, "server"));
 	}else{
 		return FALSE;
 	}
 
-	if (plugin_cmd != NULL) {
+	cmd = g_string_free(cmd_str, FALSE);
+	if (cmd != NULL) {
+
 		pcspinner = g_new(PCon_Spinner, 1);
 		builder = remmina_public_gtk_builder_new_from_file("remmina_spinner.glade");
 		pcspinner->dialog = GTK_DIALOG(gtk_builder_get_object(builder, "DialogSpinner"));
@@ -90,7 +96,7 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 		gtk_builder_connect_signals(builder, NULL);
 
 		/* Exec a predefined command */
-		g_shell_parse_argv(plugin_cmd, NULL, &argv, &error);
+		g_shell_parse_argv(cmd, NULL, &argv, &error);
 
 		if (error) {
 			g_warning("%s\n", error->message);
@@ -113,7 +119,7 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 			g_child_watch_add(child_pid, wait_for_child, (gpointer)pcspinner);
 			gtk_dialog_run(pcspinner->dialog);
 		}else  {
-			g_warning("Command %s exited with error: %s\n", plugin_cmd, error->message);
+			g_warning("Command %s exited with error: %s\n", cmd, error->message);
 			g_error_free(error);
 		}
 		g_strfreev(argv);
