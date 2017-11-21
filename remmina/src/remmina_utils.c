@@ -32,6 +32,10 @@
  *
  */
 
+/*
+ * General utility functions, non-GTK related.
+ */
+
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <gio/gio.h>
@@ -42,7 +46,6 @@
 /** Returns @c TRUE if @a ptr is @c NULL or @c *ptr is @c FALSE. */
 #define EMPTY(ptr) \
 	(!(ptr) || !*(ptr))
-
 
 gint remmina_utils_strpos(const gchar *haystack, const gchar *needle)
 {
