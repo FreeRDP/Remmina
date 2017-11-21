@@ -32,6 +32,11 @@
  *
  */
 
+/**
+ *  @file: remmina_utils.h
+ *  General utility functions, non-GTK related.
+ */
+
 #pragma once
 
 G_BEGIN_DECLS

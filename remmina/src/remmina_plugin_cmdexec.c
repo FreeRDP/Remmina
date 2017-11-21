@@ -84,7 +84,8 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 	}
 
 	cmd = g_string_free(cmd_str, FALSE);
-	if (cmd != NULL) {
+	if (*cmd != 0) {
+	//if (cmd != NULL) {
 
 		pcspinner = g_new(PCon_Spinner, 1);
 		builder = remmina_public_gtk_builder_new_from_file("remmina_spinner.glade");
