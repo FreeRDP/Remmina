@@ -3756,9 +3756,6 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 	cnnobj = g_new0(RemminaConnectionObject, 1);
 	cnnobj->remmina_file = remminafile;
 
-	/* Exec precommand before everything else */
-	remmina_plugin_cmdexec_new(cnnobj->remmina_file, "precommand");
-
 	/* Create the RemminaProtocolWidget */
 	protocolwidget = cnnobj->proto = remmina_protocol_widget_new();
 

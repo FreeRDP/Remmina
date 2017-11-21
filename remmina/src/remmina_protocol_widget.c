@@ -282,6 +282,9 @@ void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp, RemminaF
 	gp->priv->scalemode = remmina_file_get_int(remminafile, "scale", FALSE);
 	gp->priv->scaler_expand = remmina_file_get_int(remminafile, "scaler_expand", FALSE);
 
+	/* Exec precommand before everything else */
+	remmina_plugin_cmdexec_new(remminafile, "precommand");
+
 	remmina_protocol_widget_show_init_dialog(gp, remmina_file_get_string(remminafile, "name"));
 
 	remmina_protocol_widget_open_connection_real(gp);

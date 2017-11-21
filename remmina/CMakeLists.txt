@@ -100,6 +100,8 @@ list(APPEND REMMINA_SRCS
     "src/remmina_string_array.h"
     "src/remmina_string_list.c"
     "src/remmina_string_list.h"
+    "src/remmina_utils.c"
+    "src/remmina_utils.h"
     "src/remmina_widget_pool.c"
     "src/remmina_widget_pool.h"
     "src/remmina_external_tools.c"
