@@ -446,7 +446,9 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 	ssh->session = ssh_new();
 	ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->server);
 	ssh_options_set(ssh->session, SSH_OPTIONS_PORT, &ssh->port);
-	ssh_options_set(ssh->session, SSH_OPTIONS_USER, ssh->user);
+	/* When SSH_OPTIONS_USER is not set, the local user account is used */
+	if (*ssh->user != 0)
+		ssh_options_set(ssh->session, SSH_OPTIONS_USER, ssh->user);
 #ifdef SNAP_BUILD
 	ssh_options_set(ssh->session, SSH_OPTIONS_SSH_DIR, g_strdup_printf("%s/.ssh", g_getenv("SNAP_USER_COMMON")));
 #endif
