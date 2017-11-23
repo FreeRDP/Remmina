@@ -47,7 +47,6 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <signal.h>
 #include <time.h>
 #include <sys/types.h>
@@ -72,6 +71,12 @@
 #endif
 #ifdef HAVE_TERMIOS_H
 #include <termios.h>
+#endif
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+#ifdef HAVE_PTY_H
+#include <pty.h>
 #endif
 #include "remmina_public.h"
 #include "remmina_file.h"
@@ -161,11 +166,10 @@ remmina_ssh_set_application_error(RemminaSSH *ssh, const gchar *fmt, ...)
 }
 
 static gint
-remmina_ssh_auth_password(RemminaSSH *ssh)
+remmina_ssh_auth_interactive(RemminaSSH *ssh)
 {
 	TRACE_CALL(__func__);
 	gint ret;
-	gint authlist;
 	gint n;
 	gint i;
 
@@ -173,18 +177,33 @@ remmina_ssh_auth_password(RemminaSSH *ssh)
 	if (ssh->authenticated) return 1;
 	if (ssh->password == NULL) return -1;
 
-	authlist = ssh_userauth_list(ssh->session, NULL);
-	if (authlist & SSH_AUTH_METHOD_INTERACTIVE) {
-		while ((ret = ssh_userauth_kbdint(ssh->session, NULL, NULL)) == SSH_AUTH_INFO) {
-			n = ssh_userauth_kbdint_getnprompts(ssh->session);
-			for (i = 0; i < n; i++) {
-				ssh_userauth_kbdint_setanswer(ssh->session, i, ssh->password);
-			}
+	while ((ret = ssh_userauth_kbdint(ssh->session, NULL, NULL)) == SSH_AUTH_INFO) {
+		n = ssh_userauth_kbdint_getnprompts(ssh->session);
+		for (i = 0; i < n; i++) {
+			ssh_userauth_kbdint_setanswer(ssh->session, i, ssh->password);
 		}
 	}
-	if (ret != SSH_AUTH_SUCCESS && authlist & SSH_AUTH_METHOD_PASSWORD) {
-		ret = ssh_userauth_password(ssh->session, NULL, ssh->password);
+
+	if (ret != SSH_AUTH_SUCCESS) {
+		/* We pass the control to remmina_ssh_auth_password */
+		return 0;
 	}
+
+	ssh->authenticated = TRUE;
+	return 1;
+}
+
+static gint
+remmina_ssh_auth_password(RemminaSSH *ssh)
+{
+	TRACE_CALL(__func__);
+	gint ret;
+
+	ret = SSH_AUTH_ERROR;
+	if (ssh->authenticated) return 1;
+	if (ssh->password == NULL) return -1;
+
+	ret = ssh_userauth_password(ssh->session, NULL, ssh->password);
 	if (ret != SSH_AUTH_SUCCESS) {
 		remmina_ssh_set_error(ssh, _("SSH password authentication failed: %s"));
 		return 0;
@@ -233,7 +252,6 @@ static gint
 remmina_ssh_auth_auto_pubkey(RemminaSSH* ssh)
 {
 	TRACE_CALL(__func__);
-	/* ssh->password should be ssh->passphrase, TODO */
 	gint ret = ssh_userauth_publickey_auto(ssh->session, ssh->user, ssh->passphrase);
 
 	if (ret != SSH_AUTH_SUCCESS) {
@@ -284,6 +302,9 @@ gint
 remmina_ssh_auth(RemminaSSH *ssh, const gchar *password)
 {
 	TRACE_CALL(__func__);
+	gint method;
+	gint ret;
+
 	/* Check known host again to ensure it's still the original server when user forks
 	   a new session from existing one */
 	if (ssh_is_server_known(ssh->session) != SSH_SERVER_KNOWN_OK) {
@@ -298,22 +319,44 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password)
 		ssh->passphrase = g_strdup(password);
 	}
 
+	/* TODO: Here we should call
+	 * gint method;
+	 * method = ssh_userauth_list(ssh->session, NULL);
+	 * And than test both the method and the option selected by the user
+	 */
+	method = ssh_userauth_list(ssh->session, NULL);
 	switch (ssh->auth) {
 
 	case SSH_AUTH_PASSWORD:
-		return remmina_ssh_auth_password(ssh);
+		if (method & SSH_AUTH_METHOD_INTERACTIVE || method & SSH_AUTH_METHOD_PASSWORD) {
+			ret = remmina_ssh_auth_interactive(ssh);
+			if (!ssh->authenticated)
+				return remmina_ssh_auth_password(ssh);
+		}
+		return ret;
 
 	case SSH_AUTH_PUBLICKEY:
-		return remmina_ssh_auth_pubkey(ssh);
+		if (method & SSH_AUTH_METHOD_PUBLICKEY)
+			return remmina_ssh_auth_pubkey(ssh);
 
 	case SSH_AUTH_AGENT:
 		return remmina_ssh_auth_agent(ssh);
 
 	case SSH_AUTH_AUTO_PUBLICKEY:
+		/* ssh_agent or none */
 		return remmina_ssh_auth_auto_pubkey(ssh);
 
+#if 0
+	/* Not yet supported by libssh */
+	case SSH_AUTH_HOSTBASED:
+		if (method & SSH_AUTH_METHOD_HOSTBASED)
+			//return remmina_ssh_auth_hostbased;
+			return 0;
+#endif
+
 	case SSH_AUTH_GSSAPI:
-		return remmina_ssh_auth_gssapi(ssh);
+		if (method & SSH_AUTH_METHOD_GSSAPI_MIC)
+			return remmina_ssh_auth_gssapi(ssh);
 
 	default:
 		return 0;
