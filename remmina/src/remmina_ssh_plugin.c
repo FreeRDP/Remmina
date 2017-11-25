@@ -889,7 +889,7 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 	"utilities-terminal",                           // Icon for SSH connection
 	remmina_ssh_basic_settings,                     // Array for basic settings
 	remmina_ssh_advanced_settings,                  // Array for advanced settings
-	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,            // SSH settings type
+	REMMINA_PROTOCOL_SSH_SETTING_NONE,              // SSH settings type
 	remmina_plugin_ssh_features,                    // Array for available features
 	remmina_plugin_ssh_init,                        // Plugin initialization
 	remmina_plugin_ssh_open_connection,             // Plugin open connection
