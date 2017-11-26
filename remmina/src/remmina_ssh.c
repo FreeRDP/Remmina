@@ -860,7 +860,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 
 		if ((channel = ssh_channel_new(tunnel->ssh.session)) == NULL) {
 			close(sock);
-			remmina_ssh_set_error(REMMINA_SSH(tunnel), "Failed to createt channel : %s");
+			remmina_ssh_set_error(REMMINA_SSH(tunnel), "Failed to create channel : %s");
 			tunnel->thread = 0;
 			return NULL;
 		}

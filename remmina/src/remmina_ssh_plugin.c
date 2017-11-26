@@ -216,11 +216,20 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	gboolean cont = FALSE;
 	gint ret;
 	gchar *charset;
+	gchar *hostport;
+	gchar *host;
+	gint port;
 
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
 
-		gpdata = GET_PLUGIN_DATA(gp);
+	gpdata = GET_PLUGIN_DATA(gp);
+
+	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
+	if (hostport == NULL) {
+		return FALSE;
+	}
+	remmina_plugin_service->get_server_port(hostport, 22, &host, &port);
 
 	ssh = g_object_get_data(G_OBJECT(gp), "user-data");
 	if (ssh) {
@@ -235,8 +244,12 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	}else  {
 		/* New SSH Shell connection */
 		remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-		remmina_plugin_service->file_set_string(remminafile, "ssh_server",
-			remmina_plugin_service->file_get_string(remminafile, "server"));
+		if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
+			remmina_plugin_service->file_set_string(remminafile, "ssh_server", g_strdup(hostport));
+		}else {
+			remmina_plugin_service->file_set_string(remminafile, "ssh_server",
+				remmina_plugin_service->file_get_string(remminafile, "server"));
+		}
 
 		shell = remmina_ssh_shell_new_from_file(remminafile);
 		while (1) {
@@ -889,7 +902,7 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 	"utilities-terminal",                           // Icon for SSH connection
 	remmina_ssh_basic_settings,                     // Array for basic settings
 	remmina_ssh_advanced_settings,                  // Array for advanced settings
-	REMMINA_PROTOCOL_SSH_SETTING_NONE,              // SSH settings type
+	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,            // SSH settings type
 	remmina_plugin_ssh_features,                    // Array for available features
 	remmina_plugin_ssh_init,                        // Plugin initialization
 	remmina_plugin_ssh_open_connection,             // Plugin open connection

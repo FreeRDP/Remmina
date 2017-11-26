@@ -39,11 +39,14 @@
 #include <glib.h>
 #include <stdlib.h>
 #include <sys/wait.h>
+#include <unistd.h>
 #include "remmina_utils.h"
 #include "remmina_file.h"
 #include "remmina_plugin_cmdexec.h"
 #include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"
+
+#define SPAWN_TIMEOUT 10
 
 #define GET_OBJECT(object_name) gtk_builder_get_object(builder, object_name)
 
@@ -117,6 +120,8 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 			NULL,                                   // child_setup user data
 			&child_pid,                             // pid location
 			&error);                                // error
+		/* TODO At the moment it's better wait 2 seconds to let background processes to start */
+		sleep(2);
 		if (!error) {
 			gtk_spinner_start(GTK_SPINNER(pcspinner->spinner));
 			g_child_watch_add(child_pid, wait_for_child, (gpointer)pcspinner);
