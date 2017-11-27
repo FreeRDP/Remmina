@@ -57,8 +57,10 @@ static void wait_for_child(GPid pid, gint script_retval, gpointer data)
 	gtk_spinner_stop(GTK_SPINNER(pcspinner->spinner));
 	gtk_widget_destroy(GTK_WIDGET(pcspinner->dialog));
 	g_spawn_close_pid(pid);
-	/* TODO At the moment it's better wait 2 seconds to let background processes to start */
-	sleep(2);
+	/* TODO At the moment background processes will fail to start before the
+	 * remmina connection.
+	 * Adding a delay here could be a (not good) solution, or we should
+	 * monitor each child opened, but it could be quit tricky and messy */
 
 	g_free(pcspinner);
 }
