@@ -85,6 +85,7 @@ static const gchar * cmd_tips = N_(    "<tt><big>"
 	"* %t is substituted with the SSH server name\n"
 	"* %u is substituted with the user name\n"
 	"* %U is substituted with the SSH user name\n"
+	"Do not run in background if you want the command to be executed before connecting.\n"
 	"</big></tt>");
 
 #ifdef HAVE_LIBSSH
