@@ -57,6 +57,8 @@ static void wait_for_child(GPid pid, gint script_retval, gpointer data)
 	gtk_spinner_stop(GTK_SPINNER(pcspinner->spinner));
 	gtk_widget_destroy(GTK_WIDGET(pcspinner->dialog));
 	g_spawn_close_pid(pid);
+	/* TODO At the moment it's better wait 2 seconds to let background processes to start */
+	sleep(2);
 
 	g_free(pcspinner);
 }
@@ -120,9 +122,8 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 			NULL,                                   // child_setup user data
 			&child_pid,                             // pid location
 			&error);                                // error
-		/* TODO At the moment it's better wait 2 seconds to let background processes to start */
-		sleep(2);
 		if (!error) {
+			g_print("spawn eseguito\n");
 			gtk_spinner_start(GTK_SPINNER(pcspinner->spinner));
 			g_child_watch_add(child_pid, wait_for_child, (gpointer)pcspinner);
 			gtk_dialog_run(pcspinner->dialog);
