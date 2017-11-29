@@ -39,11 +39,14 @@
 #include <glib.h>
 #include <stdlib.h>
 #include <sys/wait.h>
+#include <unistd.h>
 #include "remmina_utils.h"
 #include "remmina_file.h"
 #include "remmina_plugin_cmdexec.h"
 #include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"
+
+#define SPAWN_TIMEOUT 10
 
 #define GET_OBJECT(object_name) gtk_builder_get_object(builder, object_name)
 
@@ -54,6 +57,10 @@ static void wait_for_child(GPid pid, gint script_retval, gpointer data)
 	gtk_spinner_stop(GTK_SPINNER(pcspinner->spinner));
 	gtk_widget_destroy(GTK_WIDGET(pcspinner->dialog));
 	g_spawn_close_pid(pid);
+	/* TODO At the moment background processes will fail to start before the
+	 * remmina connection.
+	 * Adding a delay here could be a (not good) solution, or we should
+	 * monitor each child opened, but it could be quit tricky and messy */
 
 	g_free(pcspinner);
 }
@@ -118,6 +125,7 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 			&child_pid,                             // pid location
 			&error);                                // error
 		if (!error) {
+			g_print("spawn eseguito\n");
 			gtk_spinner_start(GTK_SPINNER(pcspinner->spinner));
 			g_child_watch_add(child_pid, wait_for_child, (gpointer)pcspinner);
 			gtk_dialog_run(pcspinner->dialog);

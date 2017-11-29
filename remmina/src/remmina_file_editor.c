@@ -80,11 +80,12 @@ static const gchar * server_tips = N_(    "<tt><big>"
 
 static const gchar * cmd_tips = N_(    "<tt><big>"
 	"* command in PATH args %h\n"
-	"* /path/to/foo -options %h %u %U %t\n"
+	"* /path/to/foo -options %h %u\n"
 	"* %h is substituted with the server name\n"
+	"* %t is substituted with the SSH server name\n"
 	"* %u is substituted with the user name\n"
-	"* %t is substituted with the ssh tunnel server name\n"
-	"* %U is substituted with the ssh tunnel user name\n"
+	"* %U is substituted with the SSH user name\n"
+	"Do not run in background if you want the command to be executed before connecting.\n"
 	"</big></tt>");
 
 #ifdef HAVE_LIBSSH

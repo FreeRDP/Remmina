@@ -216,11 +216,21 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	gboolean cont = FALSE;
 	gint ret;
 	gchar *charset;
+	const gchar *saveserver;
+	gchar *hostport;
+	gchar *host;
+	gint port;
 
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
 
-		gpdata = GET_PLUGIN_DATA(gp);
+	gpdata = GET_PLUGIN_DATA(gp);
+
+	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
+	if (hostport == NULL) {
+		return FALSE;
+	}
+	remmina_plugin_service->get_server_port(hostport, 22, &host, &port);
 
 	ssh = g_object_get_data(G_OBJECT(gp), "user-data");
 	if (ssh) {
@@ -235,8 +245,17 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	}else  {
 		/* New SSH Shell connection */
 		remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-		remmina_plugin_service->file_set_string(remminafile, "ssh_server",
-			remmina_plugin_service->file_get_string(remminafile, "server"));
+		/* We save the ssh server name, so that we can restore it at the end of the connection */
+		saveserver = remmina_plugin_service->file_get_string(remminafile, "ssh_server");
+		remmina_plugin_service->file_set_string(remminafile, "save_ssh_server", g_strdup(saveserver));
+		if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
+			remmina_plugin_service->file_set_string(remminafile, "ssh_server", g_strdup(hostport));
+		}else {
+			remmina_plugin_service->file_set_string(remminafile, "ssh_server",
+				remmina_plugin_service->file_get_string(remminafile, "server"));
+		}
+		g_free(hostport);
+		g_free(host);
 
 		shell = remmina_ssh_shell_new_from_file(remminafile);
 		while (1) {
@@ -262,6 +281,10 @@ remmina_plugin_ssh_main_thread(gpointer data)
 			cont = TRUE;
 			break;
 		}
+
+		/* We restore the ssh_server name */
+		remmina_plugin_service->file_set_string(remminafile, "ssh_server",
+				remmina_plugin_service->file_get_string(remminafile, "save_ssh_server"));
 	}
 	if (!cont) {
 		if (shell) remmina_ssh_shell_free(shell);
