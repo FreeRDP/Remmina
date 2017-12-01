@@ -261,13 +261,13 @@ remmina_plugin_sftp_call_feature(RemminaProtocolWidget *gp, const RemminaProtoco
 	}
 }
 
-/* Array of key/value pairs for ssh auth type*/
-static gpointer ssh_auth_type[] =
+static gpointer ssh_auth[] =
 {
-	"password",	   N_("Password"),
-	"ssh_agent",	   N_("SSH agent"),
-	"ssh_pubkey_auto", N_("Public key (automatic)"),
-	"ssh_identity",	   N_("SSH identity file"),
+	"0", N_("Password"),
+	"1", N_("SSH identity file"),
+	"2", N_("SSH agent"),
+	"3", N_("Public key (automatic)"),
+	"4", N_("Kerberos (GSSAPI)"),
 	NULL
 };
 
@@ -294,12 +294,13 @@ static const RemminaProtocolFeature remmina_plugin_sftp_features[] =
  */
 static const RemminaProtocolSetting remmina_sftp_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "ssh_server",		NULL,				FALSE,				 "_sftp-ssh._tcp",		      NULL						   },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "ssh_username",	N_("User name"),		FALSE,				 NULL,				      NULL						   },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password",	N_("User password"),		FALSE,				 NULL,				      NULL						   },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth_type",	N_("Authentication type"),	FALSE,				 ssh_auth_type,			      NULL						   },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey",	N_("Identity file"),		FALSE,				 NULL,				      NULL						   },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			NULL,				FALSE,				 NULL,				      NULL						   }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,   "ssh_server",	    NULL,			  FALSE, "_sftp-ssh._tcp",  NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "ssh_username",   N_("User name"),		  FALSE, NULL,	   NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password",   N_("User password"),	  FALSE, NULL,	   NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth",	    N_("Authentication type"),	  FALSE, ssh_auth, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey", N_("Identity file"),	  FALSE, NULL,	   NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase", N_("Private key passphrase"), FALSE, NULL,	   NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,			  FALSE, NULL,	   NULL }
 };
 
 /* Protocol plugin definition and features */
