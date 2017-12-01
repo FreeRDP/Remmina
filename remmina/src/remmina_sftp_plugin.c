@@ -75,11 +75,21 @@ remmina_plugin_sftp_main_thread(gpointer data)
 	gboolean cont = FALSE;
 	gint ret;
 	const gchar *cs;
+	const gchar *saveserver;
+	gchar *hostport;
+	gchar *host;
+	gint port;
 
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
 
-		gpdata = GET_PLUGIN_DATA(gp);
+	gpdata = GET_PLUGIN_DATA(gp);
+
+	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
+	if (hostport == NULL) {
+		return FALSE;
+	}
+	remmina_plugin_service->get_server_port(hostport, 22, &host, &port);
 
 	ssh = g_object_get_data(G_OBJECT(gp), "user-data");
 	if (ssh) {
@@ -95,6 +105,17 @@ remmina_plugin_sftp_main_thread(gpointer data)
 		remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 		remmina_plugin_service->file_set_string(remminafile, "ssh_server",
 			remmina_plugin_service->file_get_string(remminafile, "server"));
+		/* We save the ssh server name, so that we can restore it at the end of the connection */
+		saveserver = remmina_plugin_service->file_get_string(remminafile, "ssh_server");
+		remmina_plugin_service->file_set_string(remminafile, "save_ssh_server", g_strdup(saveserver));
+		if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
+			remmina_plugin_service->file_set_string(remminafile, "ssh_server", g_strdup(hostport));
+		}else {
+			remmina_plugin_service->file_set_string(remminafile, "ssh_server",
+				remmina_plugin_service->file_get_string(remminafile, "server"));
+		}
+		g_free(hostport);
+		g_free(host);
 
 		sftp = remmina_sftp_new_from_file(remminafile);
 		while (1) {
@@ -104,7 +125,8 @@ remmina_plugin_sftp_main_thread(gpointer data)
 			}
 
 			ret = remmina_ssh_auth_gui(REMMINA_SSH(sftp),
-				REMMINA_INIT_DIALOG(remmina_protocol_widget_get_init_dialog(gp)), remminafile);
+				REMMINA_INIT_DIALOG(remmina_protocol_widget_get_init_dialog(gp)),
+				remminafile);
 			if (ret == 0) {
 				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(sftp)->error);
 			}
@@ -261,13 +283,13 @@ remmina_plugin_sftp_call_feature(RemminaProtocolWidget *gp, const RemminaProtoco
 	}
 }
 
-/* Array of key/value pairs for ssh auth type*/
-static gpointer ssh_auth_type[] =
+static gpointer ssh_auth[] =
 {
-	"password",	   N_("Password"),
-	"ssh_agent",	   N_("SSH agent"),
-	"ssh_pubkey_auto", N_("Public key (automatic)"),
-	"ssh_identity",	   N_("SSH identity file"),
+	"0", N_("Password"),
+	"1", N_("SSH identity file"),
+	"2", N_("SSH agent"),
+	"3", N_("Public key (automatic)"),
+	"4", N_("Kerberos (GSSAPI)"),
 	NULL
 };
 
@@ -294,12 +316,13 @@ static const RemminaProtocolFeature remmina_plugin_sftp_features[] =
  */
 static const RemminaProtocolSetting remmina_sftp_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "ssh_server",		NULL,				FALSE,				 "_sftp-ssh._tcp",		      NULL						   },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "ssh_username",	N_("User name"),		FALSE,				 NULL,				      NULL						   },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password",	N_("User password"),		FALSE,				 NULL,				      NULL						   },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth_type",	N_("Authentication type"),	FALSE,				 ssh_auth_type,			      NULL						   },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey",	N_("Identity file"),		FALSE,				 NULL,				      NULL						   },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			NULL,				FALSE,				 NULL,				      NULL						   }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,   "ssh_server",	    NULL,			  FALSE, "_sftp-ssh._tcp",  NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "ssh_username",   N_("User name"),		  FALSE, NULL,	   NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password",   N_("User password"),	  FALSE, NULL,	   NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth",	    N_("Authentication type"),	  FALSE, ssh_auth, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey", N_("Identity file"),	  FALSE, NULL,	   NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase", N_("Private key passphrase"), FALSE, NULL,	   NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,			  FALSE, NULL,	   NULL }
 };
 
 /* Protocol plugin definition and features */
