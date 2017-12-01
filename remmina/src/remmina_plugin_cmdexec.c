@@ -125,7 +125,6 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 			&child_pid,                             // pid location
 			&error);                                // error
 		if (!error) {
-			g_print("spawn eseguito\n");
 			gtk_spinner_start(GTK_SPINNER(pcspinner->spinner));
 			g_child_watch_add(child_pid, wait_for_child, (gpointer)pcspinner);
 			gtk_dialog_run(pcspinner->dialog);
