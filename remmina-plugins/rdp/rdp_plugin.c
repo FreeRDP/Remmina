@@ -1328,16 +1328,15 @@ static gpointer security_list[] =
  */
 static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	    "server",			 NULL,					    FALSE,					NULL,
-		NULL								      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "username",			 N_("User name"),			    FALSE,					NULL,						 NULL								       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",			 N_("User password"),			    FALSE,					NULL,						 NULL								       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "domain",			 N_("Domain"),				    FALSE,					NULL,						 NULL								       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",		 NULL,					    FALSE,					NULL,						 NULL								       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",		 N_("Color depth"),			    FALSE,					colordepth_list,				 NULL								       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder",		 N_("Share folder"),			    FALSE,					NULL,						 NULL								       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disableautoreconnect",	 N_("Disable automatic reconnection"),	    FALSE,					NULL,						 NULL								       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			 NULL,					    FALSE,					NULL,						 NULL								       }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	    "server",			NULL,					    FALSE,	NULL,		    NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "username",			N_("User name"),			    FALSE,	NULL,		    NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",			N_("User password"),			    FALSE,	NULL,		    NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "domain",			N_("Domain"),				    FALSE,	NULL,		    NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",		NULL,					    FALSE,	NULL,		    NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",		N_("Color depth"),			    FALSE,	colordepth_list,    NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder",		N_("Share folder"),			    FALSE,	NULL,		    NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disableautoreconnect",	N_("Disable automatic reconnection"),	    FALSE,	NULL,		    NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			NULL,					    FALSE,	NULL,		    NULL}
 };
 
 /* Array of RemminaProtocolSetting for advanced settings.
@@ -1351,38 +1350,38 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
  */
 static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "quality",		       N_("Quality"),						 FALSE,							    quality_list,						    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "sound",		       N_("Sound"),						 FALSE,							    sound_list,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "security",		       N_("Security"),						 FALSE,							    security_list,						    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_server",	       N_("RD Gateway server"),					 FALSE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_username",	       N_("RD Gateway username"),				 FALSE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "gateway_password",	       N_("RD Gateway password"),				 FALSE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_domain",	       N_("RD Gateway domain"),					 FALSE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "clientname",		       N_("Client name"),					 FALSE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "exec",		       N_("Startup program"),					 FALSE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "execpath",		       N_("Startup path"),					 FALSE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "loadbalanceinfo",	       N_("Load Balance Info"),					 FALSE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "cert_ignore",	       N_("Ignore certificate"),				 TRUE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "microphone",		       N_("Redirect local microphone"),				 TRUE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "sharesmartcard",	       N_("Share smartcard"),					 TRUE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareprinter",	       N_("Share local printers"),				 TRUE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disablepasswordstoring",    N_("Disable password storing"),				 TRUE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disableclipboard",	       N_("Disable clipboard sync"),				 TRUE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "console",		       N_("Attach to console (2003/2003 R2)"),			 FALSE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "gateway_usage",	       N_("Server detection using RD Gateway"),			 FALSE,							    NULL,							    NULL							       },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			       NULL,							 FALSE,							    NULL,							    NULL							       }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "quality",		       N_("Quality"),				FALSE,	quality_list,	NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "sound",		       N_("Sound"),				FALSE,	sound_list,	NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "security",		       N_("Security"),				FALSE,	security_list,	NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "gateway_server",	       N_("RD Gateway server"),			FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "gateway_username",	       N_("RD Gateway username"),		FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "gateway_password",	       N_("RD Gateway password"),		FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "gateway_domain",	       N_("RD Gateway domain"),			FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "clientname",	       N_("Client name"),			FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "exec",		       N_("Startup program"),			FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "execpath",		       N_("Startup path"),			FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "loadbalanceinfo",	       N_("Load Balance Info"),			FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "cert_ignore",	       N_("Ignore certificate"),		TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "microphone",	       N_("Redirect local microphone"),		TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "sharesmartcard",	       N_("Share smartcard"),			TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "shareprinter",	       N_("Share local printers"),		TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disablepasswordstoring",  N_("Disable password storing"),		TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disableclipboard",	       N_("Disable clipboard sync"),		TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "console",		       N_("Attach to console (2003/2003 R2)"),	FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "gateway_usage",	       N_("Server detection using RD Gateway"),	FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			NULL,					FALSE,	NULL,		NULL}
 };
 
 /* Array for available features.
  * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
 static const RemminaProtocolFeature remmina_rdp_features[] =
 {
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      REMMINA_RDP_FEATURE_TOOL_REFRESH,		       N_("Refresh"),					   NULL,					       NULL								},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_SCALE,	      REMMINA_RDP_FEATURE_SCALE,		       NULL,						   NULL,					       NULL								},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_DYNRESUPDATE, REMMINA_RDP_FEATURE_DYNRESUPDATE,		       NULL,						   NULL,					       NULL								},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      REMMINA_RDP_FEATURE_TOOL_SENDCTRLALTDEL,	       N_("Send Ctrl+Alt+Delete"),			   NULL,					       NULL								},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_UNFOCUS,      REMMINA_RDP_FEATURE_UNFOCUS,		       NULL,						   NULL,					       NULL								},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,	      0,					       NULL,						   NULL,					       NULL								}
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      REMMINA_RDP_FEATURE_TOOL_REFRESH,		N_("Refresh"),		    NULL,	NULL},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_SCALE,	      REMMINA_RDP_FEATURE_SCALE,		NULL,			    NULL,	NULL},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_DYNRESUPDATE, REMMINA_RDP_FEATURE_DYNRESUPDATE,	    	NULL,			    NULL,	NULL},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	      REMMINA_RDP_FEATURE_TOOL_SENDCTRLALTDEL,	N_("Send Ctrl+Alt+Delete"), NULL,	NULL},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_UNFOCUS,      REMMINA_RDP_FEATURE_UNFOCUS,		NULL,			    NULL,	NULL},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,	      0,					NULL,			    NULL,	NULL}
 };
 
 /* Protocol plugin definition and features */
