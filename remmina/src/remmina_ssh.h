@@ -69,6 +69,12 @@ typedef struct _RemminaSSH {
 	gchar *privkeyfile;
 
 	gchar *charset;
+	gchar *kex_algorithms;
+	gchar *ciphers;
+        gchar *hostkeytypes;
+        gchar *proxycommand;
+        gint stricthostkeycheck;
+
 	gchar *error;
 
 	pthread_mutex_t ssh_mutex;

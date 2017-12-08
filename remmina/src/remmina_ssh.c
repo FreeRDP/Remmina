@@ -101,7 +101,6 @@
 #define SSH_SOCKET_TCP_USER_TIMEOUT 9
 #endif
 
-
 /*-----------------------------------------------------------------------------*
 *                           SSH Base                                          *
 *-----------------------------------------------------------------------------*/
@@ -478,6 +477,7 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 {
 	TRACE_CALL(__func__);
 	gint verbosity;
+	gint rc;
 #ifdef HAVE_NETINET_TCP_H
 	socket_t sshsock;
 	gint optval;
@@ -495,6 +495,36 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 #ifdef SNAP_BUILD
 	ssh_options_set(ssh->session, SSH_OPTIONS_SSH_DIR, g_strdup_printf("%s/.ssh", g_getenv("SNAP_USER_COMMON")));
 #endif
+	rc = ssh_options_set(ssh->session, SSH_OPTIONS_KEY_EXCHANGE, ssh->kex_algorithms);
+	if (rc == 0) {
+		remmina_log_printf("[SSH] SSH_OPTIONS_KEY_EXCHANGE has been set to: %s\n", ssh->kex_algorithms);
+	}else {
+		remmina_log_printf("[SSH] SSH_OPTIONS_KEY_EXCHANGE does not have a valid value: %s\n", ssh->kex_algorithms);
+	}
+	rc = ssh_options_set(ssh->session, SSH_OPTIONS_CIPHERS_C_S, ssh->ciphers);
+	if (rc == 0) {
+		remmina_log_printf("[SSH] SSH_OPTIONS_CIPHERS_C_S has been set to: %s\n", ssh->ciphers);
+	}else {
+		remmina_log_printf("[SSH] SSH_OPTIONS_CIPHERS_C_S does not have a valid value: %s\n", ssh->ciphers);
+	}
+	rc = ssh_options_set(ssh->session, SSH_OPTIONS_HOSTKEYS, ssh->hostkeytypes);
+	if (rc == 0) {
+		remmina_log_printf("[SSH] SSH_OPTIONS_HOSTKEYS has been set to: %s\n", ssh->hostkeytypes);
+	}else {
+		remmina_log_printf("[SSH] SSH_OPTIONS_HOSTKEYS does not have a valid value: %s\n", ssh->hostkeytypes);
+	}
+	rc = ssh_options_set(ssh->session, SSH_OPTIONS_PROXYCOMMAND, ssh->proxycommand);
+	if (rc == 0) {
+		remmina_log_printf("[SSH] SSH_OPTIONS_PROXYCOMMAND has been set to: %s\n", ssh->proxycommand);
+	}else {
+		remmina_log_printf("[SSH] SSH_OPTIONS_PROXYCOMMAND does not have a valid value: %s\n", ssh->proxycommand);
+	}
+	rc = ssh_options_set(ssh->session, SSH_OPTIONS_STRICTHOSTKEYCHECK, &ssh->stricthostkeycheck);
+	if (rc == 0) {
+		remmina_log_printf("[SSH] SSH_OPTIONS_STRICTHOSTKEYCHECK has been set to: %d\n", ssh->stricthostkeycheck);
+	}else {
+		remmina_log_printf("[SSH] SSH_OPTIONS_STRICTHOSTKEYCHECK does not have a valid value: %d\n", ssh->stricthostkeycheck);
+	}
 
 	ssh_callbacks_init(ssh->callback);
 	if (remmina_log_running()) {
@@ -600,6 +630,11 @@ remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile)
 	ssh->password = NULL;
 	ssh->auth = remmina_file_get_int(remminafile, "ssh_auth", 0);
 	ssh->charset = g_strdup(remmina_file_get_string(remminafile, "ssh_charset"));
+	ssh->kex_algorithms = g_strdup(remmina_file_get_string(remminafile, "ssh_kex_algorithms"));
+	ssh->ciphers = g_strdup(remmina_file_get_string(remminafile, "ssh_ciphers"));
+	ssh->hostkeytypes = g_strdup(remmina_file_get_string(remminafile, "ssh_hostkeytypes"));
+	ssh->proxycommand = g_strdup(remmina_file_get_string(remminafile, "ssh_proxycommand"));
+	ssh->stricthostkeycheck = remmina_file_get_int(remminafile, "ssh_stricthostkeycheck", 0);
 
 	/* Public/Private keys */
 	s = (ssh_privatekey ? g_strdup(ssh_privatekey) : remmina_ssh_find_identity());
@@ -629,6 +664,11 @@ remmina_ssh_init_from_ssh(RemminaSSH *ssh, const RemminaSSH *ssh_src)
 	ssh->password = g_strdup(ssh_src->password);
 	ssh->privkeyfile = g_strdup(ssh_src->privkeyfile);
 	ssh->charset = g_strdup(ssh_src->charset);
+	ssh->proxycommand = g_strdup(ssh_src->proxycommand);
+	ssh->kex_algorithms = g_strdup(ssh_src->kex_algorithms);
+	ssh->ciphers = g_strdup(ssh_src->ciphers);
+	ssh->hostkeytypes = g_strdup(ssh_src->hostkeytypes);
+	ssh->stricthostkeycheck = ssh_src->stricthostkeycheck;
 
 	return TRUE;
 }
