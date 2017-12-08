@@ -20,12 +20,16 @@ These donors have contributed with an important amount of money during the year 
 
 ### Year 2017 donors
 
-- Anonymous (13)
+- Anonymous (16)
+- Brad Kulkin
 - Daniel Platteau
 - Dmitry Yudin
+- Fuad kamal
+- František Řezáč
 - Jakub Kubień
 - Leigh Mutimer
 - Luca Menini
+- Mauro Frischherz
 - Paul Walker
 - Tomasz Kubacki
 
