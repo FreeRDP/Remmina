@@ -24,6 +24,20 @@ Usually remmina is included in your linux distribution or in an external reposit
 Do not ask for distribution packages or precompiled binaries here.
 This is a development site.
 
+### Debian ###
+
+Remmina is not available on the default Debian 9 (Stretch) repositories. It can be installed from the Backports repository.
+
+The [Debian Backports](https://backports.debian.org/Instructions/) repository must be enabled to install it, see [this blog post](https://www.remmina.org/wp/debian-the-boys-are-backport-in-town/) for more information.
+
+To install Remmina from Debian Backports, just copy and paste the following lines on a terminal window:
+
+```
+echo 'deb http://ftp.debian.org/debian stretch-backports main' | sudo tee --append /etc/apt/sources.list.d/stretch-backports.list >> /dev/null
+sudo apt update
+sudo apt install -t stretch-backports remmina remmina-plugin-rdp remmina-plugin-gnome libfreerdp-plugins-standard
+```
+
 ### Ubuntu
 
 #### Using Snap Package (also for other [supported distros](https://snapcraft.io/docs/core/install))
