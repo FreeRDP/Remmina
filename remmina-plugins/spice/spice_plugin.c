@@ -81,6 +81,7 @@ static void remmina_plugin_spice_init(RemminaProtocolWidget *gp)
 		"read-only", remmina_plugin_service->file_get_int(remminafile, "viewonly", FALSE),
 		"enable-audio", remmina_plugin_service->file_get_int(remminafile, "enableaudio", FALSE),
 		"enable-smartcard", remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE),
+		"shared-dir", remmina_plugin_service->file_get_string(remminafile, "sharefolder"),
 		NULL);
 
 	gpdata->gtk_session = spice_gtk_session_get(gpdata->session);
@@ -201,6 +202,12 @@ static void remmina_plugin_spice_channel_new_cb(SpiceSession *session, SpiceChan
 	if (SPICE_IS_PLAYBACK_CHANNEL(channel)) {
 		if (remmina_plugin_service->file_get_int(remminafile, "enableaudio", FALSE)) {
 			gpdata->audio = spice_audio_get(gpdata->session, NULL);
+		}
+	}
+
+	if (SPICE_IS_WEBDAV_CHANNEL(channel)) {
+		if (remmina_plugin_service->file_get_string(remminafile, "sharefolder")) {
+			spice_channel_connect(channel);
 		}
 	}
 }
@@ -409,6 +416,7 @@ static const RemminaProtocolSetting remmina_plugin_spice_basic_settings[] =
 		NULL					},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	    N_("User password"),			FALSE,					     NULL,				      NULL				      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "resizeguest",    N_("Resize guest to match window size"),	FALSE,					     NULL,				      NULL				      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	  "sharefolder",    N_("Share folder"),				FALSE,					     NULL,				      NULL				      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "usetls",	    N_("Use TLS encryption"),			FALSE,					     NULL,				      NULL				      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "cacert",	    N_("Server CA certificate"),		FALSE,					     NULL,				      NULL				      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,					FALSE,					     NULL,				      NULL				      }
