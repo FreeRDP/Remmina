@@ -580,7 +580,6 @@ static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile;
-	const gchar *resolution;
 	gint width, height;
 
 	if (!remmina_plugin_nx_service->gtksocket_available()) {

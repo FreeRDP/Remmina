@@ -35,11 +35,7 @@ include(FindPkgConfig)
 if(PKG_CONFIG_FOUND)
 	pkg_check_modules(PC_SPICE_PROTOCOL spice-protocol)
 
-	if(GTK3_FOUND)
-		pkg_check_modules(PC_SPICE_CLIENT spice-client-gtk-3.0)
-	else()
-		pkg_check_modules(PC_SPICE_CLIENT spice-client-gtk-2.0)
-	endif()
+	pkg_check_modules(PC_SPICE_CLIENT spice-client-gtk-3.0)
 endif()
 
 if(PC_SPICE_CLIENT_FOUND)

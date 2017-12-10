@@ -310,6 +310,28 @@
                     ]
                 },
                 {
+                    /**
+                     * For webdav (shared folder) support
+                     */
+                    "name": "phodav",
+                    "cleanup": [
+                        "/bin",
+                        "/sbin",
+                        "/lib/systemd/",
+                        "/lib/udev/"
+                    ],
+                    "config-opts": [
+                        "--disable-gtk-doc"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "http://download.gnome.org/sources/phodav/2.2/phodav-2.2.tar.xz",
+                            "sha256": "080305dc9e804562f200ffc8c7d345c76754fce9cb01489dddb1b2c52c0557c1"
+                        }
+                    ]
+                },
+                {
                     "name": "spice-protocol",
                     "sources": [
                         {
@@ -430,8 +452,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://xorg.freedesktop.org/releases/individual/lib/libXfont-1.5.3.tar.bz2",
-                            "sha256": "ab85c10fd2683481dfef672a77fe60e6a2039558cbc0e9bf56b5e1df471c93d0"
+                            "url": "https://xorg.freedesktop.org/releases/individual/lib/libXfont-1.5.4.tar.bz2",
+                            "sha256": "1a7f7490774c87f2052d146d1e0e64518d32e6848184a18654e8d0bb57883242"
                         }
                     ]
                 },

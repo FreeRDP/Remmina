@@ -109,8 +109,8 @@ static gboolean remmina_tp_handler_register(RemminaTpHandler *handler)
 		tp_proxy_get_dbus_connection(TP_PROXY(bus)),
 		REMMINA_TP_OBJECT_PATH, G_OBJECT(handler));
 	g_object_unref(bus);
-	g_print("remmina_tp_handler_register: bus_name " REMMINA_TP_BUS_NAME
-		" object_path " REMMINA_TP_OBJECT_PATH "\n");
+	g_print("%s: bus_name " REMMINA_TP_BUS_NAME
+		" object_path " REMMINA_TP_OBJECT_PATH "\n", __func__);
 	return TRUE;
 }
 
