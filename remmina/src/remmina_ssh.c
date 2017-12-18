@@ -267,7 +267,7 @@ remmina_ssh_auth_agent(RemminaSSH* ssh)
 {
 	TRACE_CALL(__func__);
 	gint ret;
-	ret = ssh_userauth_agent(ssh->session, ssh->user);
+	ret = ssh_userauth_agent(ssh->session, NULL);
 
 	if (ret != SSH_AUTH_SUCCESS) {
 		remmina_ssh_set_error(ssh, _("SSH public key authentication with ssh agent failed: %s"));
