@@ -51,6 +51,11 @@
 #include "remmina_icon.h"
 #include "remmina/remmina_trace_calls.h"
 
+#ifdef SNAP_BUILD
+#   define ISSNAP "- SNAP Build -"
+#else
+#   define ISSNAP "-"
+#endif
 
 static gboolean cb_closewidget(GtkWidget *widget, gpointer data)
 {
@@ -187,7 +192,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		if (mainwindow) {
 			remmina_about_open(NULL);
 		}else  {
-			g_print("%s - Version %s (git %s)\n", g_get_application_name(), VERSION, REMMINA_GIT_REVISION);
+			g_print("%s %s %s (git %s)\n", g_get_application_name(), ISSNAP, VERSION, REMMINA_GIT_REVISION);
 			/* As we do not use the "handle-local-options" signal, we have to exit Remmina */
 			remmina_exec_command(REMMINA_COMMAND_EXIT, NULL);
 		}
@@ -200,7 +205,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 			/* Show th widget with the list of plugins and versions */
 			remmina_plugin_manager_show(mainwindow);
 		}else  {
-			g_print("\n%s - Version %s (git %s)\n\n", g_get_application_name(), VERSION, REMMINA_GIT_REVISION);
+			g_print("%s %s %s (git %s)\n", g_get_application_name(), ISSNAP, VERSION, REMMINA_GIT_REVISION);
 
 			remmina_plugin_manager_show_stdout();
 			remmina_exec_command(REMMINA_COMMAND_EXIT, NULL);
