@@ -123,8 +123,8 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 	}else {
 		sync_warning =
 			_("WARNING! Executing a command synchronously, may hung Remmina.\r"
-			"Do you really want to continue?");
-		dialog = GTK_DIALOG(gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL | GTK_DIALOG_USE_HEADER_BAR,
+					"Do you really want to continue?");
+		dialog = GTK_DIALOG(gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL,
 					GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO, sync_warning));
 		gint result = gtk_dialog_run (GTK_DIALOG (dialog));
 
