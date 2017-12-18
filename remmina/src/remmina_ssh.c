@@ -251,7 +251,7 @@ static gint
 remmina_ssh_auth_auto_pubkey(RemminaSSH* ssh)
 {
 	TRACE_CALL(__func__);
-	gint ret = ssh_userauth_publickey_auto(ssh->session, ssh->user, ssh->passphrase);
+	gint ret = ssh_userauth_publickey_auto(ssh->session, NULL, ssh->passphrase);
 
 	if (ret != SSH_AUTH_SUCCESS) {
 		remmina_ssh_set_error(ssh, _("SSH automatic public key authentication failed: %s"));
