@@ -46,7 +46,7 @@
 #include "remmina_chat_window.h"
 #include "remmina_connection_window.h"
 #include "remmina_masterthread_exec.h"
-#include "remmina_plugin_cmdexec.h"
+#include "remmina_ext_exec.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_pref.h"
 #include "remmina_protocol_widget.h"
@@ -283,7 +283,7 @@ void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp, RemminaF
 	gp->priv->scaler_expand = remmina_file_get_int(remminafile, "scaler_expand", FALSE);
 
 	/* Exec precommand before everything else */
-	remmina_plugin_cmdexec_new(remminafile, "precommand");
+	remmina_ext_exec_new(remminafile, "precommand");
 
 	remmina_protocol_widget_show_init_dialog(gp, remmina_file_get_string(remminafile, "name"));
 
@@ -343,7 +343,7 @@ gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 #endif
 
 	/* Exec postcommand before to close the connection */
-	remmina_plugin_cmdexec_new(gp->priv->remmina_file, "postcommand");
+	remmina_ext_exec_new(gp->priv->remmina_file, "postcommand");
 	return retval;
 }
 
