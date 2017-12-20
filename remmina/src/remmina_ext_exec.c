@@ -42,7 +42,7 @@
 #include <unistd.h>
 #include "remmina_utils.h"
 #include "remmina_file.h"
-#include "remmina_plugin_cmdexec.h"
+#include "remmina_ext_exec.h"
 #include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"
 
@@ -65,7 +65,7 @@ static void wait_for_child(GPid pid, gint script_retval, gpointer data)
 	g_free(pcspinner);
 }
 
-GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remmina_plugin_cmdexec_type)
+GtkDialog* remmina_ext_exec_new(RemminaFile* remminafile, const char *remmina_ext_exec_type)
 {
 	TRACE_CALL(__func__);
 	GtkBuilder *builder;
@@ -81,10 +81,10 @@ GtkDialog* remmina_plugin_cmdexec_new(RemminaFile* remminafile, const char *remm
 	strcpy(pre, "precommand");
 	strcpy(post, "postcommand");
 
-	if (remmina_plugin_cmdexec_type != NULL && (
-				strcmp(remmina_plugin_cmdexec_type, pre) |
-				strcmp(remmina_plugin_cmdexec_type, post) )) {
-		cmd_str = g_string_new(remmina_file_get_string(remminafile, remmina_plugin_cmdexec_type));
+	if (remmina_ext_exec_type != NULL && (
+				strcmp(remmina_ext_exec_type, pre) |
+				strcmp(remmina_ext_exec_type, post) )) {
+		cmd_str = g_string_new(remmina_file_get_string(remminafile, remmina_ext_exec_type));
 		remmina_utils_string_replace_all(cmd_str, "%h", remmina_file_get_string(remminafile, "server"));
 		remmina_utils_string_replace_all(cmd_str, "%t", remmina_file_get_string(remminafile, "ssh_server"));
 		remmina_utils_string_replace_all(cmd_str, "%u", remmina_file_get_string(remminafile, "username"));

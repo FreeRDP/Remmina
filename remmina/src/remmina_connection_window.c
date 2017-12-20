@@ -47,7 +47,7 @@
 #include "remmina_file.h"
 #include "remmina_file_manager.h"
 #include "remmina_init_dialog.h"
-#include "remmina_plugin_cmdexec.h"
+#include "remmina_ext_exec.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_pref.h"
 #include "remmina_protocol_widget.h"
