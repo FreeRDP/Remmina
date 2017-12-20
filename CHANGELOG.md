@@ -1,15 +1,18 @@
 # Change Log
 
-## [v1.2.0-rcgit.25](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.25) (2017-12-08)
+## [v1.2.0-rcgit.25](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.25) (2017-12-20)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.24...v1.2.0-rcgit.25)
 
 **Implemented enhancements:**
 
+- Allow external commands without protocols in create connection dialog [\#1391](https://github.com/FreeRDP/Remmina/issues/1391)
 - Feature request - Option to completely hide the floating toolbar when in fullscreen. [\#1379](https://github.com/FreeRDP/Remmina/issues/1379)
 - Option to run Pre Command before ANYTHING else [\#1363](https://github.com/FreeRDP/Remmina/issues/1363)
 -  Rename the plugin 'remmina-plugins-gnome' in 'remmina-plugins-secret' [\#1343](https://github.com/FreeRDP/Remmina/issues/1343)
 - Enhancement - Variables for pre- and post-commands [\#849](https://github.com/FreeRDP/Remmina/issues/849)
 - Failed to load plugin: remmina-plugin-telepathy.so - undefined symbol: remmina\_tp\_handler\_new [\#714](https://github.com/FreeRDP/Remmina/issues/714)
+- Implement an exec protocol plugin [\#1406](https://github.com/FreeRDP/Remmina/pull/1406) ([antenore](https://github.com/antenore))
+- Add SPICE Native WebDAV shared folder support [\#1401](https://github.com/FreeRDP/Remmina/pull/1401) ([larchunix](https://github.com/larchunix))
 -  Added encryption algorithms options for SSH  [\#1397](https://github.com/FreeRDP/Remmina/pull/1397) ([antenore](https://github.com/antenore))
 - SSH tunnel and pre/post commands improvements  [\#1385](https://github.com/FreeRDP/Remmina/pull/1385) ([antenore](https://github.com/antenore))
 - Prior commands improvements [\#1378](https://github.com/FreeRDP/Remmina/pull/1378) ([antenore](https://github.com/antenore))
@@ -30,6 +33,7 @@
 
 **Closed issues:**
 
+- The password in the connections is not saved after upgrading Remmina [\#1402](https://github.com/FreeRDP/Remmina/issues/1402)
 - remmina fails to open sftp window, connected to ssh2 server with public key auth [\#1392](https://github.com/FreeRDP/Remmina/issues/1392)
 - Please add hostbased mechanism support for ssh [\#1373](https://github.com/FreeRDP/Remmina/issues/1373)
 - Remmina tray icon not visible anymore [\#1371](https://github.com/FreeRDP/Remmina/issues/1371)
@@ -39,10 +43,12 @@
 - Wrong keyboard layout in VNC [\#1352](https://github.com/FreeRDP/Remmina/issues/1352)
 - remmina shows pop-up notification only for first screenshot [\#1347](https://github.com/FreeRDP/Remmina/issues/1347)
 - SFTP identity File [\#1301](https://github.com/FreeRDP/Remmina/issues/1301)
+- Password not saved [\#1047](https://github.com/FreeRDP/Remmina/issues/1047)
 - minimize button does not function well [\#921](https://github.com/FreeRDP/Remmina/issues/921)
 
 **Merged pull requests:**
 
+- Updated README.MD with Debian install instructions [\#1399](https://github.com/FreeRDP/Remmina/pull/1399) ([MagicFab](https://github.com/MagicFab))
 - update simplified Chinese translations. [\#1367](https://github.com/FreeRDP/Remmina/pull/1367) ([sotux](https://github.com/sotux))
 - Fix 'consistant' -\> 'consistent' typo [\#1362](https://github.com/FreeRDP/Remmina/pull/1362) ([mfvescovi](https://github.com/mfvescovi))
 - ssh\_userauth\_publickey\_auto: should accept empty passphrase [\#1361](https://github.com/FreeRDP/Remmina/pull/1361) ([rayrapetyan](https://github.com/rayrapetyan))
@@ -209,7 +215,6 @@
 - Color on SSH terminal window being applied [\#1238](https://github.com/FreeRDP/Remmina/issues/1238)
 - Tray applet closing when last window gets closed [\#1236](https://github.com/FreeRDP/Remmina/issues/1236)
 - Systray icon closes when closing 'Main Window' or RDP connection [\#1229](https://github.com/FreeRDP/Remmina/issues/1229)
-- SSH Tunneling is broken with SSH Agent with public key [\#1228](https://github.com/FreeRDP/Remmina/issues/1228)
 - Missing icons after compiling latest Git release [\#1221](https://github.com/FreeRDP/Remmina/issues/1221)
 - RDP quality settings not saved [\#1216](https://github.com/FreeRDP/Remmina/issues/1216)
 - Cannot connect after upgrading Ubuntu to 16.04 [\#946](https://github.com/FreeRDP/Remmina/issues/946)
