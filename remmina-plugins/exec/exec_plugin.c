@@ -143,7 +143,6 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 	GPid child_pid;
 	gint child_stdout, child_stderr;
 	GtkDialog *dialog;
-	gchar *sync_warning;
 	GIOChannel *out_ch, *err_ch;
 
 	remmina_plugin_service->log_printf("[%s] Plugin run\n", PLUGIN_NAME);
@@ -197,11 +196,9 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 		g_io_add_watch(err_ch, G_IO_IN | G_IO_HUP, (GIOFunc)cb_err_watch, gp );
 
 	}else {
-		sync_warning =
-			_("WARNING! Executing a command synchronously, may hung Remmina.\r"
-					"Do you really want to continue?");
 		dialog = GTK_DIALOG(gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL,
-					GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO, sync_warning));
+					GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
+			_("WARNING! Executing a command synchronously, may hung Remmina.\rDo you really want to continue?")));
 		gint result = gtk_dialog_run (GTK_DIALOG (dialog));
 
 		switch (result)
