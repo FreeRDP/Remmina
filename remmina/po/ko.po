@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-08 21:42+0100\n"
+"POT-Creation-Date: 2017-12-20 02:35+0100\n"
 "PO-Revision-Date: 2014-09-16 05:27+0000\n"
 "Last-Translator: Kim Boram <boramism@gmail.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -123,7 +123,7 @@ msgstr "자국(Local)"
 msgid "Progress"
 msgstr "진행"
 
-#: remmina/src/remmina_exec.c:218
+#: remmina/src/remmina_exec.c:223
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "%s 부가기능이 없습니다."
@@ -189,7 +189,7 @@ msgstr ""
 
 #: remmina/src/remmina_file_editor.c:344 remmina/src/remmina_file_editor.c:351
 #: remmina/src/remmina_ssh_plugin.c:877 remmina/src/remmina_sftp_plugin.c:323
-#: remmina-plugins/nx/nx_plugin.c:702
+#: remmina-plugins/nx/nx_plugin.c:701
 msgid "Identity file"
 msgstr "확인 파일"
 
@@ -264,7 +264,7 @@ msgstr "SSH 확인"
 #: remmina/src/remmina_file_editor.c:891 remmina/src/remmina_init_dialog.c:344
 #: remmina/src/remmina_ssh_plugin.c:874 remmina/src/remmina_sftp_plugin.c:320
 #: remmina-plugins/vnc/vnc_plugin.c:1852 remmina-plugins/vnc/vnc_plugin.c:1872
-#: remmina-plugins/rdp/rdp_plugin.c:1332 remmina-plugins/nx/nx_plugin.c:703
+#: remmina-plugins/rdp/rdp_plugin.c:1332 remmina-plugins/nx/nx_plugin.c:702
 #: remmina/ui/remmina_mpc.glade:152
 msgid "User name"
 msgstr "사용자 이름"
@@ -686,36 +686,36 @@ msgstr ""
 msgid "SSH Kerberos/GSSAPI"
 msgstr ""
 
-#: remmina/src/remmina_ssh.c:546
+#: remmina/src/remmina_ssh.c:555
 #, c-format
 msgid "Failed to startup SSH session: %s"
 msgstr "SSH 세션 시작 실패: %s"
 
-#: remmina/src/remmina_ssh.c:913
+#: remmina/src/remmina_ssh.c:922
 #, c-format
 msgid "Failed to connect to the SSH tunnel destination: %s"
 msgstr "SSH 터널링을 통한 대상과 연결 실패: %s"
 
-#: remmina/src/remmina_ssh.c:942
+#: remmina/src/remmina_ssh.c:951
 #, c-format
 msgid "Failed to execute %s on SSH server : %%s"
 msgstr "SSH 서버의 %s 실행 실패 : %%s"
 
-#: remmina/src/remmina_ssh.c:973 remmina/src/remmina_ssh.c:996
+#: remmina/src/remmina_ssh.c:982 remmina/src/remmina_ssh.c:1005
 #, c-format
 msgid "Failed to request port forwarding : %s"
 msgstr "포트 포워딩 요청 실패 : %s"
 
-#: remmina/src/remmina_ssh.c:1034
+#: remmina/src/remmina_ssh.c:1043
 msgid "No response from the server."
 msgstr "서버로 부터 응답 없음."
 
-#: remmina/src/remmina_ssh.c:1409
+#: remmina/src/remmina_ssh.c:1418
 #, c-format
 msgid "Failed to create sftp session: %s"
 msgstr "sft 세션 만들기 실패: %s"
 
-#: remmina/src/remmina_ssh.c:1413
+#: remmina/src/remmina_ssh.c:1422
 #, c-format
 msgid "Failed to initialize sftp session: %s"
 msgstr "sftp 세션 초기화 실패: %s"
@@ -835,9 +835,9 @@ msgid "_Select all"
 msgstr ""
 
 #: remmina/src/remmina_ssh_plugin.c:875 remmina/src/remmina_sftp_plugin.c:321
-#: remmina-plugins/spice/spice_plugin.c:410
+#: remmina-plugins/spice/spice_plugin.c:416
 #: remmina-plugins/vnc/vnc_plugin.c:1853 remmina-plugins/vnc/vnc_plugin.c:1873
-#: remmina-plugins/rdp/rdp_plugin.c:1333 remmina-plugins/nx/nx_plugin.c:704
+#: remmina-plugins/rdp/rdp_plugin.c:1333 remmina-plugins/nx/nx_plugin.c:703
 msgid "User password"
 msgstr ""
 
@@ -851,7 +851,7 @@ msgstr ""
 
 #: remmina/src/remmina_ssh_plugin.c:879
 #: remmina-plugins/xdmcp/xdmcp_plugin.c:373
-#: remmina-plugins/rdp/rdp_plugin.c:1361 remmina-plugins/nx/nx_plugin.c:707
+#: remmina-plugins/rdp/rdp_plugin.c:1361 remmina-plugins/nx/nx_plugin.c:706
 msgid "Startup program"
 msgstr "시작 프로그램"
 
@@ -888,9 +888,9 @@ msgid "Enable SSH session logging at exit"
 msgstr ""
 
 #: remmina/src/remmina_ssh_plugin.c:903
-#: remmina-plugins/spice/spice_plugin.c:430
+#: remmina-plugins/spice/spice_plugin.c:435
 #: remmina-plugins/vnc/vnc_plugin.c:1896 remmina-plugins/rdp/rdp_plugin.c:1368
-#: remmina-plugins/nx/nx_plugin.c:725
+#: remmina-plugins/nx/nx_plugin.c:724
 msgid "Disable password storing"
 msgstr ""
 
@@ -1120,71 +1120,76 @@ msgstr "보내기(_S)"
 msgid "_Clear"
 msgstr "지우기(_C)"
 
-#: remmina-plugins/spice/spice_plugin.c:247
+#: remmina-plugins/spice/spice_plugin.c:254
 #, c-format
 msgid "Disconnected from SPICE server %s."
 msgstr ""
 
-#: remmina-plugins/spice/spice_plugin.c:257
+#: remmina-plugins/spice/spice_plugin.c:264
 msgid "Invalid password."
 msgstr ""
 
-#: remmina-plugins/spice/spice_plugin.c:262
+#: remmina-plugins/spice/spice_plugin.c:269
 msgid "TLS connection error."
 msgstr ""
 
-#: remmina-plugins/spice/spice_plugin.c:268
+#: remmina-plugins/spice/spice_plugin.c:275
 msgid "Connection to SPICE server failed."
 msgstr ""
 
-#: remmina-plugins/spice/spice_plugin.c:411
-#: remmina-plugins/spice/spice_plugin.c:442
-msgid "Resize guest to match window size"
-msgstr ""
-
-#: remmina-plugins/spice/spice_plugin.c:412
+#: remmina-plugins/spice/spice_plugin.c:417
 msgid "Use TLS encryption"
 msgstr ""
 
-#: remmina-plugins/spice/spice_plugin.c:413
+#: remmina-plugins/spice/spice_plugin.c:418
 msgid "Server CA certificate"
 msgstr ""
 
-#: remmina-plugins/spice/spice_plugin.c:428
-#: remmina-plugins/spice/spice_plugin.c:441
-#: remmina-plugins/vnc/vnc_plugin.c:1892 remmina-plugins/vnc/vnc_plugin.c:1907
-msgid "View only"
-msgstr "보기만 하기"
+#: remmina-plugins/spice/spice_plugin.c:419
+#: remmina-plugins/rdp/rdp_plugin.c:1337
+msgid "Share folder"
+msgstr "공유 폴더"
 
-#: remmina-plugins/spice/spice_plugin.c:429
-#: remmina-plugins/spice/spice_plugin.c:443
+#: remmina-plugins/spice/spice_plugin.c:434
+#: remmina-plugins/spice/spice_plugin.c:450
 #: remmina-plugins/vnc/vnc_plugin.c:1893 remmina-plugins/rdp/rdp_plugin.c:1369
-#: remmina-plugins/nx/nx_plugin.c:722
+#: remmina-plugins/nx/nx_plugin.c:721
 msgid "Disable clipboard sync"
 msgstr "클립보드 연동 않함"
 
-#: remmina-plugins/spice/spice_plugin.c:431
+#: remmina-plugins/spice/spice_plugin.c:436
 msgid "Enable audio channel"
 msgstr ""
 
-#: remmina-plugins/spice/spice_plugin.c:432
+#: remmina-plugins/spice/spice_plugin.c:437
+#: remmina-plugins/spice/spice_plugin.c:449
+msgid "Resize guest to match window size"
+msgstr ""
+
+#: remmina-plugins/spice/spice_plugin.c:438
 #: remmina-plugins/rdp/rdp_plugin.c:1366
 msgid "Share smartcard"
 msgstr ""
 
-#: remmina-plugins/spice/spice_plugin.c:444
+#: remmina-plugins/spice/spice_plugin.c:439
+#: remmina-plugins/spice/spice_plugin.c:448
+#: remmina-plugins/vnc/vnc_plugin.c:1892 remmina-plugins/vnc/vnc_plugin.c:1907
+msgid "View only"
+msgstr "보기만 하기"
+
+#: remmina-plugins/spice/spice_plugin.c:451
 #: remmina-plugins/vnc/vnc_plugin.c:1911
 #: remmina-plugins/xdmcp/xdmcp_plugin.c:384
-#: remmina-plugins/rdp/rdp_plugin.c:1382 remmina-plugins/nx/nx_plugin.c:733
+#: remmina-plugins/rdp/rdp_plugin.c:1382 remmina-plugins/nx/nx_plugin.c:732
 msgid "Send Ctrl+Alt+Delete"
 msgstr ""
 
-#: remmina-plugins/spice/spice_plugin.c:445
+#: remmina-plugins/spice/spice_plugin.c:452
 #: remmina-plugins/spice/spice_plugin_usb.c:51
 msgid "Select USB devices for redirection"
 msgstr ""
 
-#: remmina-plugins/spice/spice_plugin.c:454
+#: remmina-plugins/spice/spice_plugin.c:461
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr ""
 
@@ -1216,6 +1221,24 @@ msgstr ""
 #: remmina-plugins/spice/spice_plugin_file_transfer.c:224
 #, c-format
 msgid "File %s transferred successfully"
+msgstr ""
+
+#: remmina-plugins/exec/exec_plugin.c:156
+msgid "You did not set any command to be executed"
+msgstr ""
+
+#: remmina-plugins/exec/exec_plugin.c:201
+msgid ""
+"WARNING! Executing a command synchronously, may hung Remmina.\rDo you really "
+"want to continue?"
+msgstr ""
+
+#: remmina-plugins/exec/exec_plugin.c:264
+msgid "Command"
+msgstr ""
+
+#: remmina-plugins/exec/exec_plugin.c:265
+msgid "Asynchrounous execution"
 msgstr ""
 
 #: remmina-plugins/vnc/vnc_plugin.c:940
@@ -1266,22 +1289,22 @@ msgid "True color (32 bpp)"
 msgstr "실제 색감 (32 bpp)"
 
 #: remmina-plugins/vnc/vnc_plugin.c:1832 remmina-plugins/rdp/rdp_plugin.c:1291
-#: remmina-plugins/rdp/rdp_settings.c:268 remmina-plugins/nx/nx_plugin.c:683
+#: remmina-plugins/rdp/rdp_settings.c:268 remmina-plugins/nx/nx_plugin.c:682
 msgid "Poor (fastest)"
 msgstr "낮음 (빠름)"
 
 #: remmina-plugins/vnc/vnc_plugin.c:1833 remmina-plugins/rdp/rdp_plugin.c:1292
-#: remmina-plugins/rdp/rdp_settings.c:270 remmina-plugins/nx/nx_plugin.c:684
+#: remmina-plugins/rdp/rdp_settings.c:270 remmina-plugins/nx/nx_plugin.c:683
 msgid "Medium"
 msgstr "보통"
 
 #: remmina-plugins/vnc/vnc_plugin.c:1834 remmina-plugins/rdp/rdp_plugin.c:1293
-#: remmina-plugins/rdp/rdp_settings.c:272 remmina-plugins/nx/nx_plugin.c:685
+#: remmina-plugins/rdp/rdp_settings.c:272 remmina-plugins/nx/nx_plugin.c:684
 msgid "Good"
 msgstr "좋음"
 
 #: remmina-plugins/vnc/vnc_plugin.c:1835 remmina-plugins/rdp/rdp_plugin.c:1294
-#: remmina-plugins/rdp/rdp_settings.c:274 remmina-plugins/nx/nx_plugin.c:686
+#: remmina-plugins/rdp/rdp_settings.c:274 remmina-plugins/nx/nx_plugin.c:685
 msgid "Best (slowest)"
 msgstr "최고 (느림)"
 
@@ -1296,7 +1319,7 @@ msgid "Color depth"
 msgstr "색 깊이"
 
 #: remmina-plugins/vnc/vnc_plugin.c:1855 remmina-plugins/vnc/vnc_plugin.c:1875
-#: remmina-plugins/rdp/rdp_plugin.c:1353 remmina-plugins/nx/nx_plugin.c:706
+#: remmina-plugins/rdp/rdp_plugin.c:1353 remmina-plugins/nx/nx_plugin.c:705
 msgid "Quality"
 msgstr "품질"
 
@@ -1308,7 +1331,7 @@ msgstr "수신 포트"
 msgid "Show remote cursor"
 msgstr "타국(=원격지) 커서 보이기"
 
-#: remmina-plugins/vnc/vnc_plugin.c:1894 remmina-plugins/nx/nx_plugin.c:723
+#: remmina-plugins/vnc/vnc_plugin.c:1894 remmina-plugins/nx/nx_plugin.c:722
 msgid "Disable encryption"
 msgstr "암호화 않함"
 
@@ -1332,7 +1355,7 @@ msgstr "VNC - 원격지 연결 요청을 받음"
 msgid "Run out of available local X display number."
 msgstr ""
 
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:265 remmina-plugins/nx/nx_plugin.c:588
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:265 remmina-plugins/nx/nx_plugin.c:587
 #, c-format
 msgid "Protocol %s is unavailable because GtkSocket only works under Xorg"
 msgstr ""
@@ -1359,7 +1382,7 @@ msgstr "고화질 (16 비트)"
 msgid "True color (24 bit)"
 msgstr "천연색 (24 비트)"
 
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:374 remmina-plugins/nx/nx_plugin.c:724
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:374 remmina-plugins/nx/nx_plugin.c:723
 msgid "Use local cursor"
 msgstr "로컬지 커서 사용"
 
@@ -1467,10 +1490,6 @@ msgstr "자국(로컬) - 높은 품질"
 #: remmina-plugins/rdp/rdp_plugin.c:1313
 msgid "Negotiate"
 msgstr "조율"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1337
-msgid "Share folder"
-msgstr "공유 폴더"
 
 #: remmina-plugins/rdp/rdp_plugin.c:1338
 msgid "Disable automatic reconnection"
@@ -1654,7 +1673,7 @@ msgstr "화면"
 msgid "Status"
 msgstr "상태"
 
-#: remmina-plugins/nx/nx_plugin.c:742
+#: remmina-plugins/nx/nx_plugin.c:741
 msgid "NX - NX Technology"
 msgstr "NX - NX 기술"
 
@@ -1876,7 +1895,7 @@ msgstr ""
 msgid "Remmina Web Site"
 msgstr ""
 
-#: remmina/ui/remmina_about.glade:124
+#: remmina/ui/remmina_about.glade:135
 msgid ""
 "Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Antenore Gatta <antenore@simbiosi.org>\n"

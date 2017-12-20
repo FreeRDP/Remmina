@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-08 21:42+0100\n"
+"POT-Creation-Date: 2017-12-20 02:35+0100\n"
 "PO-Revision-Date: 2015-02-19 03:22-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -123,7 +123,7 @@ msgstr "Local"
 msgid "Progress"
 msgstr "Progreso"
 
-#: remmina/src/remmina_exec.c:218
+#: remmina/src/remmina_exec.c:223
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "El complemento %s no está registrado."
@@ -188,7 +188,7 @@ msgstr "_Aceptar"
 
 #: remmina/src/remmina_file_editor.c:344 remmina/src/remmina_file_editor.c:351
 #: remmina/src/remmina_ssh_plugin.c:877 remmina/src/remmina_sftp_plugin.c:323
-#: remmina-plugins/nx/nx_plugin.c:702
+#: remmina-plugins/nx/nx_plugin.c:701
 msgid "Identity file"
 msgstr "Archivo de identidad"
 
@@ -263,7 +263,7 @@ msgstr "Autenticación SSH"
 #: remmina/src/remmina_file_editor.c:891 remmina/src/remmina_init_dialog.c:344
 #: remmina/src/remmina_ssh_plugin.c:874 remmina/src/remmina_sftp_plugin.c:320
 #: remmina-plugins/vnc/vnc_plugin.c:1852 remmina-plugins/vnc/vnc_plugin.c:1872
-#: remmina-plugins/rdp/rdp_plugin.c:1332 remmina-plugins/nx/nx_plugin.c:703
+#: remmina-plugins/rdp/rdp_plugin.c:1332 remmina-plugins/nx/nx_plugin.c:702
 #: remmina/ui/remmina_mpc.glade:152
 msgid "User name"
 msgstr "Nombre de usuario"
@@ -699,36 +699,36 @@ msgstr ""
 msgid "SSH Kerberos/GSSAPI"
 msgstr ""
 
-#: remmina/src/remmina_ssh.c:546
+#: remmina/src/remmina_ssh.c:555
 #, c-format
 msgid "Failed to startup SSH session: %s"
 msgstr "Error al iniciar la sesión SSH: %s"
 
-#: remmina/src/remmina_ssh.c:913
+#: remmina/src/remmina_ssh.c:922
 #, c-format
 msgid "Failed to connect to the SSH tunnel destination: %s"
 msgstr "La conexión al túnel SSH ha fallado: %s"
 
-#: remmina/src/remmina_ssh.c:942
+#: remmina/src/remmina_ssh.c:951
 #, c-format
 msgid "Failed to execute %s on SSH server : %%s"
 msgstr "No se pudo ejectuar %s en el servidor SSH: %%s"
 
-#: remmina/src/remmina_ssh.c:973 remmina/src/remmina_ssh.c:996
+#: remmina/src/remmina_ssh.c:982 remmina/src/remmina_ssh.c:1005
 #, c-format
 msgid "Failed to request port forwarding : %s"
 msgstr "Falló la solicitud de redirección de puertos: %s"
 
-#: remmina/src/remmina_ssh.c:1034
+#: remmina/src/remmina_ssh.c:1043
 msgid "No response from the server."
 msgstr "El servidor no responde."
 
-#: remmina/src/remmina_ssh.c:1409
+#: remmina/src/remmina_ssh.c:1418
 #, c-format
 msgid "Failed to create sftp session: %s"
 msgstr "Falló la creación de la sesión SFTP: %s"
 
-#: remmina/src/remmina_ssh.c:1413
+#: remmina/src/remmina_ssh.c:1422
 #, c-format
 msgid "Failed to initialize sftp session: %s"
 msgstr "Fallo al inicializar la sesión SFTP: %s"
@@ -849,9 +849,9 @@ msgid "_Select all"
 msgstr "_Seleccionar todo"
 
 #: remmina/src/remmina_ssh_plugin.c:875 remmina/src/remmina_sftp_plugin.c:321
-#: remmina-plugins/spice/spice_plugin.c:410
+#: remmina-plugins/spice/spice_plugin.c:416
 #: remmina-plugins/vnc/vnc_plugin.c:1853 remmina-plugins/vnc/vnc_plugin.c:1873
-#: remmina-plugins/rdp/rdp_plugin.c:1333 remmina-plugins/nx/nx_plugin.c:704
+#: remmina-plugins/rdp/rdp_plugin.c:1333 remmina-plugins/nx/nx_plugin.c:703
 msgid "User password"
 msgstr ""
 
@@ -865,7 +865,7 @@ msgstr ""
 
 #: remmina/src/remmina_ssh_plugin.c:879
 #: remmina-plugins/xdmcp/xdmcp_plugin.c:373
-#: remmina-plugins/rdp/rdp_plugin.c:1361 remmina-plugins/nx/nx_plugin.c:707
+#: remmina-plugins/rdp/rdp_plugin.c:1361 remmina-plugins/nx/nx_plugin.c:706
 msgid "Startup program"
 msgstr "Programa de inicio"
 
@@ -902,9 +902,9 @@ msgid "Enable SSH session logging at exit"
 msgstr ""
 
 #: remmina/src/remmina_ssh_plugin.c:903
-#: remmina-plugins/spice/spice_plugin.c:430
+#: remmina-plugins/spice/spice_plugin.c:435
 #: remmina-plugins/vnc/vnc_plugin.c:1896 remmina-plugins/rdp/rdp_plugin.c:1368
-#: remmina-plugins/nx/nx_plugin.c:725
+#: remmina-plugins/nx/nx_plugin.c:724
 msgid "Disable password storing"
 msgstr "Desactivar almacenamiento de contraseña"
 
@@ -1135,72 +1135,77 @@ msgstr "_Enviar"
 msgid "_Clear"
 msgstr "_Limpiar"
 
-#: remmina-plugins/spice/spice_plugin.c:247
+#: remmina-plugins/spice/spice_plugin.c:254
 #, c-format
 msgid "Disconnected from SPICE server %s."
 msgstr "Desconectado del servidor SPICE"
 
-#: remmina-plugins/spice/spice_plugin.c:257
+#: remmina-plugins/spice/spice_plugin.c:264
 msgid "Invalid password."
 msgstr "Contraseña invalida."
 
-#: remmina-plugins/spice/spice_plugin.c:262
+#: remmina-plugins/spice/spice_plugin.c:269
 msgid "TLS connection error."
 msgstr "Error de conexión TLS."
 
-#: remmina-plugins/spice/spice_plugin.c:268
+#: remmina-plugins/spice/spice_plugin.c:275
 msgid "Connection to SPICE server failed."
 msgstr "La conexión al servidor SPICE falló."
 
-#: remmina-plugins/spice/spice_plugin.c:411
-#: remmina-plugins/spice/spice_plugin.c:442
+#: remmina-plugins/spice/spice_plugin.c:417
+msgid "Use TLS encryption"
+msgstr "Usar cifrado TLS"
+
+#: remmina-plugins/spice/spice_plugin.c:418
+msgid "Server CA certificate"
+msgstr "Servidor de certificados CA"
+
+#: remmina-plugins/spice/spice_plugin.c:419
+#: remmina-plugins/rdp/rdp_plugin.c:1337
+msgid "Share folder"
+msgstr "Compartir carpeta"
+
+#: remmina-plugins/spice/spice_plugin.c:434
+#: remmina-plugins/spice/spice_plugin.c:450
+#: remmina-plugins/vnc/vnc_plugin.c:1893 remmina-plugins/rdp/rdp_plugin.c:1369
+#: remmina-plugins/nx/nx_plugin.c:721
+msgid "Disable clipboard sync"
+msgstr "Desactivar sincronización entre portapapeles"
+
+#: remmina-plugins/spice/spice_plugin.c:436
+msgid "Enable audio channel"
+msgstr "Habilitar el canal de audio"
+
+#: remmina-plugins/spice/spice_plugin.c:437
+#: remmina-plugins/spice/spice_plugin.c:449
 msgid "Resize guest to match window size"
 msgstr ""
 "Cambiar el tamaño del invitado para que coincida con el tamaño de la ventana"
 
-#: remmina-plugins/spice/spice_plugin.c:412
-msgid "Use TLS encryption"
-msgstr "Usar cifrado TLS"
-
-#: remmina-plugins/spice/spice_plugin.c:413
-msgid "Server CA certificate"
-msgstr "Servidor de certificados CA"
-
-#: remmina-plugins/spice/spice_plugin.c:428
-#: remmina-plugins/spice/spice_plugin.c:441
-#: remmina-plugins/vnc/vnc_plugin.c:1892 remmina-plugins/vnc/vnc_plugin.c:1907
-msgid "View only"
-msgstr "Ver solamente"
-
-#: remmina-plugins/spice/spice_plugin.c:429
-#: remmina-plugins/spice/spice_plugin.c:443
-#: remmina-plugins/vnc/vnc_plugin.c:1893 remmina-plugins/rdp/rdp_plugin.c:1369
-#: remmina-plugins/nx/nx_plugin.c:722
-msgid "Disable clipboard sync"
-msgstr "Desactivar sincronización entre portapapeles"
-
-#: remmina-plugins/spice/spice_plugin.c:431
-msgid "Enable audio channel"
-msgstr "Habilitar el canal de audio"
-
-#: remmina-plugins/spice/spice_plugin.c:432
+#: remmina-plugins/spice/spice_plugin.c:438
 #: remmina-plugins/rdp/rdp_plugin.c:1366
 msgid "Share smartcard"
 msgstr "Compartir tarjeta inteligente"
 
-#: remmina-plugins/spice/spice_plugin.c:444
+#: remmina-plugins/spice/spice_plugin.c:439
+#: remmina-plugins/spice/spice_plugin.c:448
+#: remmina-plugins/vnc/vnc_plugin.c:1892 remmina-plugins/vnc/vnc_plugin.c:1907
+msgid "View only"
+msgstr "Ver solamente"
+
+#: remmina-plugins/spice/spice_plugin.c:451
 #: remmina-plugins/vnc/vnc_plugin.c:1911
 #: remmina-plugins/xdmcp/xdmcp_plugin.c:384
-#: remmina-plugins/rdp/rdp_plugin.c:1382 remmina-plugins/nx/nx_plugin.c:733
+#: remmina-plugins/rdp/rdp_plugin.c:1382 remmina-plugins/nx/nx_plugin.c:732
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Enviar Ctrl+Alt+Supr"
 
-#: remmina-plugins/spice/spice_plugin.c:445
+#: remmina-plugins/spice/spice_plugin.c:452
 #: remmina-plugins/spice/spice_plugin_usb.c:51
 msgid "Select USB devices for redirection"
 msgstr "Seleccione los dispositivos USB para la redirección"
 
-#: remmina-plugins/spice/spice_plugin.c:454
+#: remmina-plugins/spice/spice_plugin.c:461
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr "SPICE - Protocolo simple para entornos de computación independiente"
 
@@ -1233,6 +1238,24 @@ msgstr "Transferencia completada"
 #, c-format
 msgid "File %s transferred successfully"
 msgstr "Archivos %s transferidos con éxito"
+
+#: remmina-plugins/exec/exec_plugin.c:156
+msgid "You did not set any command to be executed"
+msgstr ""
+
+#: remmina-plugins/exec/exec_plugin.c:201
+msgid ""
+"WARNING! Executing a command synchronously, may hung Remmina.\rDo you really "
+"want to continue?"
+msgstr ""
+
+#: remmina-plugins/exec/exec_plugin.c:264
+msgid "Command"
+msgstr ""
+
+#: remmina-plugins/exec/exec_plugin.c:265
+msgid "Asynchrounous execution"
+msgstr ""
 
 #: remmina-plugins/vnc/vnc_plugin.c:940
 msgid "Unable to connect to VNC server"
@@ -1283,22 +1306,22 @@ msgid "True color (32 bpp)"
 msgstr "Color verdadero (32 ppp)"
 
 #: remmina-plugins/vnc/vnc_plugin.c:1832 remmina-plugins/rdp/rdp_plugin.c:1291
-#: remmina-plugins/rdp/rdp_settings.c:268 remmina-plugins/nx/nx_plugin.c:683
+#: remmina-plugins/rdp/rdp_settings.c:268 remmina-plugins/nx/nx_plugin.c:682
 msgid "Poor (fastest)"
 msgstr "Pobre (más rápido)"
 
 #: remmina-plugins/vnc/vnc_plugin.c:1833 remmina-plugins/rdp/rdp_plugin.c:1292
-#: remmina-plugins/rdp/rdp_settings.c:270 remmina-plugins/nx/nx_plugin.c:684
+#: remmina-plugins/rdp/rdp_settings.c:270 remmina-plugins/nx/nx_plugin.c:683
 msgid "Medium"
 msgstr "Medio"
 
 #: remmina-plugins/vnc/vnc_plugin.c:1834 remmina-plugins/rdp/rdp_plugin.c:1293
-#: remmina-plugins/rdp/rdp_settings.c:272 remmina-plugins/nx/nx_plugin.c:685
+#: remmina-plugins/rdp/rdp_settings.c:272 remmina-plugins/nx/nx_plugin.c:684
 msgid "Good"
 msgstr "Buena"
 
 #: remmina-plugins/vnc/vnc_plugin.c:1835 remmina-plugins/rdp/rdp_plugin.c:1294
-#: remmina-plugins/rdp/rdp_settings.c:274 remmina-plugins/nx/nx_plugin.c:686
+#: remmina-plugins/rdp/rdp_settings.c:274 remmina-plugins/nx/nx_plugin.c:685
 msgid "Best (slowest)"
 msgstr "Mejor (más lento)"
 
@@ -1313,7 +1336,7 @@ msgid "Color depth"
 msgstr "Profundidad de color"
 
 #: remmina-plugins/vnc/vnc_plugin.c:1855 remmina-plugins/vnc/vnc_plugin.c:1875
-#: remmina-plugins/rdp/rdp_plugin.c:1353 remmina-plugins/nx/nx_plugin.c:706
+#: remmina-plugins/rdp/rdp_plugin.c:1353 remmina-plugins/nx/nx_plugin.c:705
 msgid "Quality"
 msgstr "Calidad"
 
@@ -1325,7 +1348,7 @@ msgstr "Escuchar en el puerto"
 msgid "Show remote cursor"
 msgstr "Mostrar el cursor remoto"
 
-#: remmina-plugins/vnc/vnc_plugin.c:1894 remmina-plugins/nx/nx_plugin.c:723
+#: remmina-plugins/vnc/vnc_plugin.c:1894 remmina-plugins/nx/nx_plugin.c:722
 msgid "Disable encryption"
 msgstr "Desactivar cifrado"
 
@@ -1349,7 +1372,7 @@ msgstr "VNC - Conexión entrante"
 msgid "Run out of available local X display number."
 msgstr "Sin disposición de número de pantalla X local."
 
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:265 remmina-plugins/nx/nx_plugin.c:588
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:265 remmina-plugins/nx/nx_plugin.c:587
 #, c-format
 msgid "Protocol %s is unavailable because GtkSocket only works under Xorg"
 msgstr ""
@@ -1375,7 +1398,7 @@ msgstr "Alta densidad (16 bit)"
 msgid "True color (24 bit)"
 msgstr "Color verdadero (24 bits)"
 
-#: remmina-plugins/xdmcp/xdmcp_plugin.c:374 remmina-plugins/nx/nx_plugin.c:724
+#: remmina-plugins/xdmcp/xdmcp_plugin.c:374 remmina-plugins/nx/nx_plugin.c:723
 msgid "Use local cursor"
 msgstr "Usar el cursor local"
 
@@ -1485,10 +1508,6 @@ msgstr "Local - calidad alta"
 #: remmina-plugins/rdp/rdp_plugin.c:1313
 msgid "Negotiate"
 msgstr "Negociar"
-
-#: remmina-plugins/rdp/rdp_plugin.c:1337
-msgid "Share folder"
-msgstr "Compartir carpeta"
 
 #: remmina-plugins/rdp/rdp_plugin.c:1338
 msgid "Disable automatic reconnection"
@@ -1672,7 +1691,7 @@ msgstr "Mostrar"
 msgid "Status"
 msgstr "Estado"
 
-#: remmina-plugins/nx/nx_plugin.c:742
+#: remmina-plugins/nx/nx_plugin.c:741
 msgid "NX - NX Technology"
 msgstr "NX - Tecnología NX"
 
@@ -1894,7 +1913,7 @@ msgstr ""
 msgid "Remmina Web Site"
 msgstr ""
 
-#: remmina/ui/remmina_about.glade:124
+#: remmina/ui/remmina_about.glade:135
 msgid ""
 "Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Antenore Gatta <antenore@simbiosi.org>\n"
@@ -2313,4 +2332,3 @@ msgstr ""
 #: remmina/ui/remmina_preferences.glade:1792
 msgid "Terminal"
 msgstr ""
-
