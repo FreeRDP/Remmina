@@ -48,11 +48,60 @@
 typedef struct _RemminaPluginExecData {
 	GtkWidget *log_view;
 	GtkTextBuffer *log_buffer;
+	GtkTextBuffer *err;
 	GtkWidget *sw;
-	//pthread_t thread;
 } RemminaPluginExecData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
+
+	static void
+cb_child_watch( GPid pid, gint status)
+{
+	/* Close pid */
+	g_spawn_close_pid( pid );
+}
+
+	static gboolean
+cb_out_watch (GIOChannel *channel, GIOCondition cond, RemminaProtocolWidget *gp)
+{
+	gchar *string;
+	gsize  size;
+
+	RemminaPluginExecData *gpdata = GET_PLUGIN_DATA(gp);
+
+	if( cond == G_IO_HUP )
+	{
+		g_io_channel_unref( channel );
+		return FALSE;
+	}
+
+	g_io_channel_read_line( channel, &string, &size, NULL, NULL );
+	gtk_text_buffer_insert_at_cursor( gpdata->log_buffer, string, -1 );
+	g_free( string );
+
+	return TRUE;
+}
+
+	static gboolean
+cb_err_watch (GIOChannel *channel, GIOCondition cond, RemminaProtocolWidget *gp)
+{
+	gchar *string;
+	gsize  size;
+
+	RemminaPluginExecData *gpdata = GET_PLUGIN_DATA(gp);
+
+	if( cond == G_IO_HUP )
+	{
+		g_io_channel_unref( channel );
+		return FALSE;
+	}
+
+	g_io_channel_read_line( channel, &string, &size, NULL, NULL );
+	gtk_text_buffer_insert_at_cursor( gpdata->err, string, -1 );
+	g_free( string );
+
+	return TRUE;
+}
 
 static void remmina_plugin_exec_init(RemminaProtocolWidget *gp)
 {
@@ -92,34 +141,61 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 	char **argv;
 	GError *error = NULL;
 	GPid child_pid;
+	gint child_stdout, child_stderr;
 	GtkDialog *dialog;
 	gchar *sync_warning;
+	GIOChannel *out_ch, *err_ch;
 
 	remmina_plugin_service->log_printf("[%s] Plugin run\n", PLUGIN_NAME);
 	RemminaPluginExecData *gpdata = GET_PLUGIN_DATA(gp);
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	cmd = remmina_plugin_service->file_get_string(remminafile, "execcommand");
+	if (!cmd) {
+		gtk_text_buffer_set_text (gpdata->log_buffer,
+				_("You did not set any command to be executed"), -1);
+		remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
+		return TRUE;
+	}
 
 	g_shell_parse_argv(cmd, NULL, &argv, &error);
 	if (error) {
-		g_warning("%s\n", error->message);
+		gtk_text_buffer_set_text (gpdata->log_buffer, error->message, -1);
+		remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
+		return TRUE;
 		g_error_free(error);
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "runasync", FALSE)) {
 		remmina_plugin_service->log_printf("[%s] Run Async\n", PLUGIN_NAME);
-		g_spawn_async(  NULL,                           // cwd
-				argv,                                   // argv
-				NULL,                                   // envp
-				G_SPAWN_SEARCH_PATH |
+		g_spawn_async_with_pipes(   NULL,
+				argv,
+				NULL,
+				G_SPAWN_DO_NOT_REAP_CHILD |
 				G_SPAWN_SEARCH_PATH_FROM_ENVP |
-				G_SPAWN_DO_NOT_REAP_CHILD,              // flags
-				NULL,                                   // child_setup
-				NULL,                                   // child_setup user data
-				&child_pid,                             // pid location
-				&error);                                // error
-		/* We should do something with child_pid */
+				G_SPAWN_SEARCH_PATH,
+				NULL,
+				NULL,
+				&child_pid,
+				NULL,
+				&child_stdout,
+				&child_stderr,
+				&error);
+		if (error != NULL) {
+			gtk_text_buffer_set_text (gpdata->log_buffer, error->message, -1);
+			g_error_free(error);
+			remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
+			return TRUE;
+		}
+		g_child_watch_add(child_pid, (GChildWatchFunc)cb_child_watch, gp );
+
+		/* Create channels that will be used to read data from pipes. */
+		out_ch = g_io_channel_unix_new(child_stdout);
+		err_ch = g_io_channel_unix_new(child_stderr);
+		/* Add watches to channels */
+		g_io_add_watch(out_ch, G_IO_IN | G_IO_HUP, (GIOFunc)cb_out_watch, gp );
+		g_io_add_watch(err_ch, G_IO_IN | G_IO_HUP, (GIOFunc)cb_err_watch, gp );
+
 	}else {
 		sync_warning =
 			_("WARNING! Executing a command synchronously, may hung Remmina.\r"
