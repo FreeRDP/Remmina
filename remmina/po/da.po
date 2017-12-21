@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-21 01:58+0100\n"
-"PO-Revision-Date: 2017-10-21 23:27+0200\n"
+"PO-Revision-Date: 2017-12-21 18:28+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
 "Language: da\n"
@@ -149,6 +149,15 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
+"<tt><big>* kommando i PATH-argumenter %h\n"
+"* /sti/til/eksempel -tilvalg %h %u\n"
+"* %h erstattes med servernavnet\n"
+"* %t erstattes med SSH-servernavnet\n"
+"* %u erstattes med brugernavnet\n"
+"* %U erstattes med SSH-brugernavnet\n"
+"Kør ikke i baggrunden hvis du vil have kommandoen skal udføres inden der "
+"oprettes forbindelse.\n"
+"</big></tt>"
 
 #: remmina/src/remmina_file_editor.c:92
 msgid ""
@@ -299,7 +308,7 @@ msgstr "Præference for fjernskrivebord"
 
 #: remmina/src/remmina_file_editor.c:1252
 msgid "Save as Default"
-msgstr ""
+msgstr "Gem som standard"
 
 #: remmina/src/remmina_file_editor.c:1256 remmina/src/remmina_main.c:832
 msgid "_Save"
@@ -312,7 +321,7 @@ msgstr "Opret forbindelse"
 
 #: remmina/src/remmina_file_editor.c:1266
 msgid "_Save and Connect"
-msgstr ""
+msgstr "_Gem og opret forbindelse"
 
 #: remmina/src/remmina_file_editor.c:1357
 msgid "Profile"
@@ -411,7 +420,7 @@ msgstr ""
 
 #: remmina/src/remmina_connection_window.c:1826
 msgid "Screenshot taken"
-msgstr ""
+msgstr "Skærmbillede taget"
 
 #: remmina/src/remmina_connection_window.c:1886
 msgid "Resize the window to fit in remote resolution"
@@ -429,7 +438,7 @@ msgstr "Skift faneblade"
 
 #: remmina/src/remmina_connection_window.c:1952
 msgid "Toggle dynamic resolution update"
-msgstr ""
+msgstr "Opdatering af dynamisk opløsning til/fra"
 
 #: remmina/src/remmina_connection_window.c:1962
 #: remmina/ui/remmina_preferences.glade:816
@@ -626,7 +635,7 @@ msgstr "Remmina-applet"
 
 #: remmina/src/remmina_icon.c:351 remmina/src/remmina_icon.c:527
 msgid "Connect to remote desktops through the applet menu"
-msgstr "Opret frobindelse til fjernskriveborde gennem applet-menuen"
+msgstr "Opret forbindelse til fjernskriveborde gennem applet-menuen"
 
 #: remmina/src/remmina_icon.c:469 remmina/src/remmina_icon.c:470
 #: remmina/src/remmina_main.c:1045
@@ -780,11 +789,11 @@ msgstr "Version"
 #: remmina/src/remmina_ssh_plugin.c:429
 #, c-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: remmina/src/remmina_ssh_plugin.c:446
 msgid "Terminal content saved under"
-msgstr ""
+msgstr "Terminalens indhold gemt under"
 
 #: remmina/src/remmina_ssh_plugin.c:490
 msgid "Select All (Host+a)"
@@ -800,7 +809,7 @@ msgstr "Indsæt (Vært+v)"
 
 #: remmina/src/remmina_ssh_plugin.c:493
 msgid "Save session to file"
-msgstr ""
+msgstr "Gem session til fil"
 
 #: remmina/src/remmina_ssh_plugin.c:780 remmina/src/remmina_sftp_plugin.c:289
 msgid "SSH identity file"
@@ -866,31 +875,31 @@ msgstr "Terminalens farvetema"
 
 #: remmina/src/remmina_ssh_plugin.c:896
 msgid "SSH Proxy Command"
-msgstr ""
+msgstr "Kommando til SSH-proxy"
 
 #: remmina/src/remmina_ssh_plugin.c:897
 msgid "KEX (Key Exchange) algorithms"
-msgstr ""
+msgstr "KEX-algoritmer (Key Exchange)"
 
 #: remmina/src/remmina_ssh_plugin.c:898
 msgid "Symmetric cipher client to server"
-msgstr ""
+msgstr "Symmetrisk chiffer klient til server"
 
 #: remmina/src/remmina_ssh_plugin.c:899
 msgid "Preferred server host key types"
-msgstr ""
+msgstr "Fortrukne nøgletyper til servervært"
 
 #: remmina/src/remmina_ssh_plugin.c:900
 msgid "SSH session log folder"
-msgstr ""
+msgstr "Mappe til SSH-sessionens log"
 
 #: remmina/src/remmina_ssh_plugin.c:901
 msgid "SSH session log file name"
-msgstr ""
+msgstr "Filnavn til SSH-sessionens log"
 
 #: remmina/src/remmina_ssh_plugin.c:902
 msgid "Enable SSH session logging at exit"
-msgstr ""
+msgstr "Aktivér logning af SSH-session ved afslutning"
 
 #: remmina/src/remmina_ssh_plugin.c:903
 #: remmina-plugins/spice/spice_plugin.c:435
@@ -901,7 +910,7 @@ msgstr "Deaktivér lagring af adgangskode"
 
 #: remmina/src/remmina_ssh_plugin.c:904
 msgid "Strict host key checking"
-msgstr ""
+msgstr "Striks tjek af værtsnøgle"
 
 #: remmina/src/remmina_ssh_plugin.c:913
 msgid "SSH - Secure Shell"
@@ -1231,21 +1240,23 @@ msgstr "Filen %s blev overført"
 
 #: remmina-plugins/exec/exec_plugin.c:155
 msgid "You did not set any command to be executed"
-msgstr ""
+msgstr "Du satte ikke nogen kommando til at blive udført"
 
 #: remmina-plugins/exec/exec_plugin.c:201
 msgid ""
 "WARNING! Executing a command synchronously, may hung Remmina.\rDo you really "
 "want to continue?"
 msgstr ""
+"ADVARSEL! Synkroniseret udførsel af en kommando kan få Remmina til at hænge.\n"
+"Vil du virkelig fortsætte?"
 
 #: remmina-plugins/exec/exec_plugin.c:261
 msgid "Command"
-msgstr ""
+msgstr "Kommando"
 
 #: remmina-plugins/exec/exec_plugin.c:262
 msgid "Asynchrounous execution"
-msgstr ""
+msgstr "Ikke-synkroniseret udførsel"
 
 #: remmina-plugins/vnc/vnc_plugin.c:940
 msgid "Unable to connect to VNC server"
@@ -1473,11 +1484,14 @@ msgid ""
 "Error connecting to RDP server %s. TLS connection failed. Check that client "
 "and server support a common TLS version."
 msgstr ""
+"Fejl ved oprettelse af forbindelse til RDP-serveren %s. TLS-forbindelse "
+"mislykkedes. Tjek at klienten og serveren understøtter den samme TLS-"
+"version."
 
 #: remmina-plugins/rdp/rdp_plugin.c:1028
 #, c-format
 msgid "Unable to establish a connection to RDP server %s."
-msgstr ""
+msgstr "Kan ikke etablere en forbindelse til RDP-serveren %s."
 
 #: remmina-plugins/rdp/rdp_plugin.c:1031
 #, c-format
@@ -2154,11 +2168,11 @@ msgstr "SKÆRMBILLEDE"
 
 #: remmina/ui/remmina_preferences.glade:986
 msgid "View-only mode"
-msgstr ""
+msgstr "Kun visning-tilstand"
 
 #: remmina/ui/remmina_preferences.glade:996
 msgid "VIEW-ONLY MODE"
-msgstr ""
+msgstr "KUN VISNING-TILSTAND"
 
 #: remmina/ui/remmina_preferences.glade:1020
 msgid "Keyboard"
@@ -2202,7 +2216,7 @@ msgstr "SSH-valgmuligheder"
 
 #: remmina/ui/remmina_preferences.glade:1156
 msgid "Terminal font"
-msgstr ""
+msgstr "Terminalens skrifttype"
 
 #: remmina/ui/remmina_preferences.glade:1169
 msgid "Scrollback lines"
@@ -2218,21 +2232,21 @@ msgstr "Tillad fed tekst"
 
 #: remmina/ui/remmina_preferences.glade:1263
 msgid "Clipboard copy shortcut"
-msgstr ""
+msgstr "Udklipsholderens kopiér-genvej"
 
 #: remmina/ui/remmina_preferences.glade:1275
 #: remmina/ui/remmina_preferences.glade:1316
 #: remmina/ui/remmina_preferences.glade:1357
 msgid "(Host key +)"
-msgstr ""
+msgstr "(værtstast +)"
 
 #: remmina/ui/remmina_preferences.glade:1304
 msgid "Clipboard paste shortcut"
-msgstr ""
+msgstr "Udklipsholderens indsæt-genvej"
 
 #: remmina/ui/remmina_preferences.glade:1345
 msgid "Select all shortcut"
-msgstr ""
+msgstr "Vælg alt-genvej"
 
 #: remmina/ui/remmina_preferences.glade:1397
 #: remmina/ui/remmina_preferences.glade:1409
@@ -2246,97 +2260,99 @@ msgstr "Baggrundsfarve"
 
 #: remmina/ui/remmina_preferences.glade:1447
 msgid "Cursor color"
-msgstr ""
+msgstr "Markørfarve"
 
 #: remmina/ui/remmina_preferences.glade:1459
 msgid "Cursor Color"
-msgstr ""
+msgstr "Markørfarve"
 
 #: remmina/ui/remmina_preferences.glade:1472
 msgid "Normal colors"
-msgstr ""
+msgstr "Normale farver"
 
 #: remmina/ui/remmina_preferences.glade:1485
 msgid "Bright colors"
-msgstr ""
+msgstr "Lyse farver"
 
 #: remmina/ui/remmina_preferences.glade:1497
 msgid "Pick a color for black"
-msgstr ""
+msgstr "Vælg en farve til sort"
 
 #: remmina/ui/remmina_preferences.glade:1509
 msgid "Pick a color for bright black"
-msgstr ""
+msgstr "Vælg en farve til lys sort"
 
 #: remmina/ui/remmina_preferences.glade:1521
 msgid "Pick a color for red"
-msgstr ""
+msgstr "Vælg en farve til rød"
 
 #: remmina/ui/remmina_preferences.glade:1533
 msgid "Pick a color for green"
-msgstr ""
+msgstr "Vælg en farve til grøn"
 
 #: remmina/ui/remmina_preferences.glade:1545
 msgid "Pick a color for yellow"
-msgstr ""
+msgstr "Vælg en farve til gul"
 
 #: remmina/ui/remmina_preferences.glade:1557
 msgid "Pick a color for blue"
-msgstr ""
+msgstr "Vælg en farve til blå"
 
 #: remmina/ui/remmina_preferences.glade:1569
 msgid "Pick a color for magenta"
-msgstr ""
+msgstr "Vælg en farve til magenta"
 
 #: remmina/ui/remmina_preferences.glade:1581
 msgid "Pick a color for Cyan"
-msgstr ""
+msgstr "Vælg en farve til cyan"
 
 #: remmina/ui/remmina_preferences.glade:1593
 msgid "Pick a color for white"
-msgstr ""
+msgstr "Vælg en farve til hvid"
 
 #: remmina/ui/remmina_preferences.glade:1605
 msgid "Pick a color for bright red"
-msgstr ""
+msgstr "Vælg en farve til lys rød"
 
 #: remmina/ui/remmina_preferences.glade:1617
 msgid "Pick a color for bright green"
-msgstr ""
+msgstr "Vælg en farve til lys grøn"
 
 #: remmina/ui/remmina_preferences.glade:1629
 msgid "Pick a color for bright yellow"
-msgstr ""
+msgstr "Vælg en farve til lys gul"
 
 #: remmina/ui/remmina_preferences.glade:1641
 msgid "Pick a color for bright blue"
-msgstr ""
+msgstr "Vælg en farve til lys blå"
 
 #: remmina/ui/remmina_preferences.glade:1653
 msgid "Pick a color for bright magenta"
-msgstr ""
+msgstr "Vælg en farve til lys magenta"
 
 #: remmina/ui/remmina_preferences.glade:1665
 msgid "Pick a color for bright Cyan"
-msgstr ""
+msgstr "Vælg en farve til lys cyan"
 
 #: remmina/ui/remmina_preferences.glade:1677
 msgid "Pick a color for bright white"
-msgstr ""
+msgstr "Vælg en farve til lys hvid"
 
 #: remmina/ui/remmina_preferences.glade:1690
 msgid "Load color scheme"
-msgstr ""
+msgstr "Indlæs farveskema"
 
 #: remmina/ui/remmina_preferences.glade:1701
 msgid ""
 "Chose a color scheme file, You can download one from https://github.com/"
 "mbadolato/iTerm2-Color-Schemes."
 msgstr ""
+"Vælg en farveskemafil. Du kan downloade en fra "
+"https://github.com/mbadolato/iTerm2-Color-Schemes."
 
 #: remmina/ui/remmina_preferences.glade:1702
 msgid "Terminal Color Scheme file chooser"
-msgstr ""
+msgstr "Filvælger til terminalens farveskema"
 
 #: remmina/ui/remmina_preferences.glade:1792
 msgid "Terminal"
