@@ -609,6 +609,10 @@ static gboolean remmina_protocol_widget_init_tunnel(RemminaProtocolWidget* gp)
 }
 #endif
 
+/**
+ * @brief
+ *
+ */
 gchar* remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget* gp, gint default_port, gboolean port_plus)
 {
 	TRACE_CALL(__func__);

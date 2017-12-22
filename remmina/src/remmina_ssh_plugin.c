@@ -204,6 +204,10 @@ typedef struct _RemminaPluginSshData {
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
+/**
+ * @brief Remmina Protocol plugin main function.
+ * First it starts the SSH tunnel if needed and than the SSH connection.
+ */
 static gpointer
 remmina_plugin_ssh_main_thread(gpointer data)
 {
@@ -217,7 +221,11 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	gint ret;
 	gchar *charset;
 	const gchar *saveserver;
+	const gchar *saveusername;
 	gchar *hostport;
+	gchar tunneluser[33]; /* On linux a username can have a 32 char lenght */
+	gchar tunnelserver[256]; /* On linux a servername can have a 255 char lenght */
+	gint *tunnelport;
 	gchar *host;
 	gint port;
 
@@ -226,7 +234,34 @@ remmina_plugin_ssh_main_thread(gpointer data)
 
 	gpdata = GET_PLUGIN_DATA(gp);
 
+	/* remmina_plugin_service->protocol_plugin_start_direct_tunnel start the
+	 * SSH Tunnel and return the server + port string
+	 * TODO: Therefore we should set the SSH Tunnel user here, before the tunnel
+	 * is established and than set it back to the destination SSH user.
+	 *
+	 * */
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	/* We save the ssh server name, so that we can restore it at the end of the connection */
+	saveserver = remmina_plugin_service->file_get_string(remminafile, "ssh_server");
+	remmina_plugin_service->file_set_string(remminafile, "save_ssh_server", g_strdup(saveserver));
+	/* We save the ssh username, so that we can restore it at the end of the connection */
+	saveusername = remmina_plugin_service->file_get_string(remminafile, "ssh_username");
+	remmina_plugin_service->file_set_string(remminafile, "save_ssh_username", g_strdup(saveusername));
+
+	if (saveserver) {
+		/* if the server string contains the character @ we extract the user */
+		if (strchr(saveserver, '@')) {
+			sscanf(saveserver, "%32[^@]", tunneluser);
+			sscanf(saveserver, "%*[^@]%63[^:]", tunnelserver);
+			sscanf(saveserver, "%*[^:]%i", tunnelport);
+			gchar tp = tunnelport + '0';
+			remmina_plugin_service->file_set_string(remminafile, "ssh_server",
+					g_strconcat (tunnelserver, tp, NULL));
+		}
+
 	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
+	/* We restore the ssh username as the tunnel is set */
+	remmina_plugin_service->file_set_string(remminafile, "ssh_username", g_strdup(saveusername));
 	if (hostport == NULL) {
 		return FALSE;
 	}
@@ -244,10 +279,6 @@ remmina_plugin_ssh_main_thread(gpointer data)
 		}
 	}else  {
 		/* New SSH Shell connection */
-		remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-		/* We save the ssh server name, so that we can restore it at the end of the connection */
-		saveserver = remmina_plugin_service->file_get_string(remminafile, "ssh_server");
-		remmina_plugin_service->file_set_string(remminafile, "save_ssh_server", g_strdup(saveserver));
 		if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
 			remmina_plugin_service->file_set_string(remminafile, "ssh_server", g_strdup(hostport));
 		}else {
@@ -480,6 +511,19 @@ remmina_ssh_plugin_popup_menu(GtkWidget *widget, GdkEvent *event, GtkWidget *men
 	return FALSE;
 }
 
+/**
+ * @brief Remmina SSH plugin terminal popup menu
+ *
+ * This is the context menu that popup when you right click in a terminal window.
+ * You can than select, copy, paste text and save the whole buffer to a file.
+ * Each menu entry call back the following functions:
+ * - remmina_plugin_ssh_vte_select_all()
+ * - remmina_plugin_ssh_vte_copy_clipboard()
+ * - remmina_plugin_ssh_vte_paste_clipboard()
+ * - remmina_plugin_ssh_vte_save_session()
+ * .
+ *
+ */
 void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -512,6 +556,18 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 	gtk_widget_show_all(menu);
 }
 
+/**
+ * @brief Remmina SSH plugin initialization
+ *
+ * This is the main function used to create the widget that will be embedded in the
+ * Remmina Connection Window.
+ * Initialize the terminal colours based on the user, everything is needed for the
+ * terminal window, the terminal session logging and the terminal popup menu.
+ *
+ * @see remmina_plugin_ssh_popup_ui
+ * @see RemminaProtocolWidget
+ * @see https://github.com/FreeRDP/Remmina/wiki/Remmina-SSH-Terminal-colour-schemes
+ */
 static void
 remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 {
@@ -686,6 +742,12 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	remmina_plugin_ssh_popup_ui(gp);
 }
 
+/**
+ * @brief Initialize the the main window properties and the pthread.
+ * The call of this function is a requirement of remmina_protocol_widget_open_connection_real()
+ * @return TRUE
+ * @return FALSE and remmina_protocol_widget_open_connection_real() will fails.
+ */
 static gboolean
 remmina_plugin_ssh_open_connection(RemminaProtocolWidget *gp)
 {
@@ -733,6 +795,10 @@ remmina_plugin_ssh_close_connection(RemminaProtocolWidget *gp)
 	return FALSE;
 }
 
+/**
+ * @brief Not used by the the plugin
+ * @return Always TRUE
+ */
 static gboolean
 remmina_plugin_ssh_query_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
@@ -740,6 +806,20 @@ remmina_plugin_ssh_query_feature(RemminaProtocolWidget *gp, const RemminaProtoco
 	return TRUE;
 }
 
+/**
+ * @brief Functions to call when an entry in the Tool menu in the Remmina Connection Window is clicked.
+ * In the Remmina Connection Window toolbar, there is a tool menu, this function is used to
+ * call the right function for each entry with its parameters.
+ *
+ * At the moment it's possible to:
+ * - Open a new SSH session.
+ * - Open an SFTP session.
+ * - Select, copy and paste text.
+ * - Send recorded Key Strokes.
+ *
+ * @return the return value of the calling function.
+ *
+ */
 static void
 remmina_plugin_ssh_call_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
@@ -849,8 +929,10 @@ static gpointer ssh_terminal_palette[] =
 	NULL
 };
 
-/* Array for available features.
- * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
+/**
+ * @brief Array for available features.
+ * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END.
+ */
 static RemminaProtocolFeature remmina_plugin_ssh_features[] =
 {
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_SSH_FEATURE_TOOL_COPY,	  N_("Copy"),	    N_("_Copy"),       NULL },
@@ -905,26 +987,30 @@ static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	NULL,			  NULL,					    FALSE, NULL,		 NULL }
 };
 
-/* Protocol plugin definition and features */
+/**
+ * @brief SSH Protocol plugin definition and features.
+ * Array used to define the SSH Protocol plugin Type, name, description, version
+ * Plugin icon, features, initialization and closing functions.
+ */
 static RemminaProtocolPlugin remmina_plugin_ssh =
 {
-	REMMINA_PLUGIN_TYPE_PROTOCOL,                   // Type
-	"SSH",                                          // Name
-	N_("SSH - Secure Shell"),                       // Description
-	GETTEXT_PACKAGE,                                // Translation domain
-	VERSION,                                        // Version number
-	"utilities-terminal",                           // Icon for normal connection
-	"utilities-terminal",                           // Icon for SSH connection
-	remmina_ssh_basic_settings,                     // Array for basic settings
-	remmina_ssh_advanced_settings,                  // Array for advanced settings
-	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,            // SSH settings type
-	remmina_plugin_ssh_features,                    // Array for available features
-	remmina_plugin_ssh_init,                        // Plugin initialization
-	remmina_plugin_ssh_open_connection,             // Plugin open connection
-	remmina_plugin_ssh_close_connection,            // Plugin close connection
-	remmina_plugin_ssh_query_feature,               // Query for available features
-	remmina_plugin_ssh_call_feature,                // Call a feature
-	remmina_ssh_keystroke                           // Send a keystroke
+	REMMINA_PLUGIN_TYPE_PROTOCOL,                   /**< Type  */
+	"SSH",                                          /**< Name  */
+	N_("SSH - Secure Shell"),                       /**< Description  */
+	GETTEXT_PACKAGE,                                /**< Translation domain  */
+	VERSION,                                        /**< Version number  */
+	"utilities-terminal",                           /**< Icon for normal connection  */
+	"utilities-terminal",                           /**< Icon for SSH connection  */
+	remmina_ssh_basic_settings,                     /**< Array for basic settings  */
+	remmina_ssh_advanced_settings,                  /**< Array for advanced settings  */
+	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,            /**< SSH settings type  */
+	remmina_plugin_ssh_features,                    /**< Array for available features  */
+	remmina_plugin_ssh_init,                        /**< Plugin initialization  */
+	remmina_plugin_ssh_open_connection,             /**< Plugin open connection  */
+	remmina_plugin_ssh_close_connection,            /**< Plugin close connection  */
+	remmina_plugin_ssh_query_feature,               /**< Query for available features  */
+	remmina_plugin_ssh_call_feature,                /**< Call a feature  */
+	remmina_ssh_keystroke                           /**< Send a keystroke  */
 };
 
 void
