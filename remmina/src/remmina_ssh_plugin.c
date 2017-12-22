@@ -225,7 +225,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	gchar *hostport;
 	gchar tunneluser[33]; /* On linux a username can have a 32 char lenght */
 	gchar tunnelserver[256]; /* On linux a servername can have a 255 char lenght */
-	gint *tunnelport;
+	gchar tunnelport[6]; /* A TCP port can have a maximum value of 65535 */
 	gchar *host;
 	gint port;
 
@@ -236,7 +236,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 
 	/* remmina_plugin_service->protocol_plugin_start_direct_tunnel start the
 	 * SSH Tunnel and return the server + port string
-	 * TODO: Therefore we should set the SSH Tunnel user here, before the tunnel
+	 * Therefore we set the SSH Tunnel username here, before the tunnel
 	 * is established and than set it back to the destination SSH user.
 	 *
 	 * */
@@ -253,11 +253,11 @@ remmina_plugin_ssh_main_thread(gpointer data)
 		if (strchr(saveserver, '@')) {
 			sscanf(saveserver, "%32[^@]", tunneluser);
 			sscanf(saveserver, "%*[^@]%63[^:]", tunnelserver);
-			sscanf(saveserver, "%*[^:]%i", tunnelport);
-			gchar tp = tunnelport + '0';
+			sscanf(saveserver, "%*[^:]%5s", tunnelport);
 			remmina_plugin_service->file_set_string(remminafile, "ssh_server",
-					g_strconcat (tunnelserver, tp, NULL));
+					g_strconcat (tunnelserver, tunnelport, NULL));
 		}
+        }
 
 	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
 	/* We restore the ssh username as the tunnel is set */
@@ -994,23 +994,23 @@ static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
  */
 static RemminaProtocolPlugin remmina_plugin_ssh =
 {
-	REMMINA_PLUGIN_TYPE_PROTOCOL,                   /**< Type  */
-	"SSH",                                          /**< Name  */
-	N_("SSH - Secure Shell"),                       /**< Description  */
-	GETTEXT_PACKAGE,                                /**< Translation domain  */
-	VERSION,                                        /**< Version number  */
-	"utilities-terminal",                           /**< Icon for normal connection  */
-	"utilities-terminal",                           /**< Icon for SSH connection  */
-	remmina_ssh_basic_settings,                     /**< Array for basic settings  */
-	remmina_ssh_advanced_settings,                  /**< Array for advanced settings  */
-	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,            /**< SSH settings type  */
-	remmina_plugin_ssh_features,                    /**< Array for available features  */
-	remmina_plugin_ssh_init,                        /**< Plugin initialization  */
-	remmina_plugin_ssh_open_connection,             /**< Plugin open connection  */
-	remmina_plugin_ssh_close_connection,            /**< Plugin close connection  */
-	remmina_plugin_ssh_query_feature,               /**< Query for available features  */
-	remmina_plugin_ssh_call_feature,                /**< Call a feature  */
-	remmina_ssh_keystroke                           /**< Send a keystroke  */
+	REMMINA_PLUGIN_TYPE_PROTOCOL,                   // Type
+	"SSH",                                          // Name
+	N_("SSH - Secure Shell"),                       // Description
+	GETTEXT_PACKAGE,                                // Translation domain
+	VERSION,                                        // Version number
+	"utilities-terminal",                           // Icon for normal connection
+	"utilities-terminal",                           // Icon for SSH connection
+	remmina_ssh_basic_settings,                     // Array for basic settings
+	remmina_ssh_advanced_settings,                  // Array for advanced settings
+	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,            // SSH settings type
+	remmina_plugin_ssh_features,                    // Array for available features
+	remmina_plugin_ssh_init,                        // Plugin initialization
+	remmina_plugin_ssh_open_connection,             // Plugin open connection
+	remmina_plugin_ssh_close_connection,            // Plugin close connection
+	remmina_plugin_ssh_query_feature,               // Query for available features
+	remmina_plugin_ssh_call_feature,                // Call a feature
+	remmina_ssh_keystroke                           // Send a keystroke
 };
 
 void

@@ -94,7 +94,7 @@ static const gchar* server_tips2 = N_(    "<tt><big>"
 	"* :port\n"
 	"* server\n"
 	"* server:port\n"
-	"* [server]:port"
+	"* [server]:port\n"
 	"* username@server:port (SSH protocol only)"
 	"</big></tt>");
 #endif
