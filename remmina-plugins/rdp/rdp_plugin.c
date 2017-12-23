@@ -578,9 +578,9 @@ static DWORD remmina_rdp_verify_certificate(freerdp* instance, const char *commo
 	status = remmina_plugin_service->protocol_plugin_init_certificate(gp, subject, issuer, fingerprint);
 
 	if (status == GTK_RESPONSE_OK)
-		return True;
+		return 1;
 
-	return 1;
+	return 0;
 }
 static DWORD remmina_rdp_verify_changed_certificate(freerdp* instance,
 						    const char* common_name, const char* subject, const char* issuer,
@@ -597,9 +597,9 @@ static DWORD remmina_rdp_verify_changed_certificate(freerdp* instance,
 	status = remmina_plugin_service->protocol_plugin_changed_certificate(gp, subject, issuer, new_fingerprint, old_fingerprint);
 
 	if (status == GTK_RESPONSE_OK)
-		return True;
+		return 1;
 
-	return 1;
+	return 0;
 }
 
 static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
