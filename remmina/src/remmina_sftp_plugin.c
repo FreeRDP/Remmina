@@ -76,7 +76,11 @@ remmina_plugin_sftp_main_thread(gpointer data)
 	gint ret;
 	const gchar *cs;
 	const gchar *saveserver;
+	const gchar *saveusername;
 	gchar *hostport;
+	gchar tunneluser[33]; /* On linux a username can have a 32 char lenght */
+	gchar tunnelserver[256]; /* On linux a servername can have a 255 char lenght */
+	gchar tunnelport[6]; /* A TCP port can have a maximum value of 65535 */
 	gchar *host;
 	gint port;
 
@@ -85,7 +89,42 @@ remmina_plugin_sftp_main_thread(gpointer data)
 
 	gpdata = GET_PLUGIN_DATA(gp);
 
+	/* remmina_plugin_service->protocol_plugin_start_direct_tunnel start the
+	 * SSH Tunnel and return the server + port string
+	 * Therefore we set the SSH Tunnel username here, before the tunnel
+	 * is established and than set it back to the destination SSH user.
+	 *
+	 * */
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	/* We save the ssh server name, so that we can restore it at the end of the connection */
+	saveserver = remmina_plugin_service->file_get_string(remminafile, "ssh_server");
+	remmina_plugin_service->file_set_string(remminafile, "save_ssh_server", g_strdup(saveserver));
+	/* We save the ssh username, so that we can restore it at the end of the connection */
+	saveusername = remmina_plugin_service->file_get_string(remminafile, "ssh_username");
+	remmina_plugin_service->file_set_string(remminafile, "save_ssh_username", g_strdup(saveusername));
+
+	if (saveserver) {
+		/* if the server string contains the character @ we extract the user
+		 * and the server string (host:port)
+		 * */
+		if (strchr(saveserver, '@')) {
+			sscanf(saveserver, "%[_a-zA-Z0-9.]@%[_a-zA-Z0-9.]:%[0-9]",
+					tunneluser, tunnelserver, tunnelport);
+			g_print ("Username: %s, tunneluser: %s\n",
+					remmina_plugin_service->file_get_string(remminafile, "ssh_username"), tunneluser);
+			if (saveusername != NULL && tunneluser[0] != '\0') {
+				remmina_plugin_service->file_set_string(remminafile, "ssh_username", NULL);
+			}
+			remmina_plugin_service->file_set_string(remminafile, "ssh_username",
+					g_strdup(tunneluser));
+			remmina_plugin_service->file_set_string(remminafile, "ssh_server",
+					g_strconcat (tunnelserver, ":", tunnelport, NULL));
+		}
+        }
+
 	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
+	/* We restore the ssh username as the tunnel is set */
+	remmina_plugin_service->file_set_string(remminafile, "ssh_username", g_strdup(saveusername));
 	if (hostport == NULL) {
 		return FALSE;
 	}
@@ -102,12 +141,6 @@ remmina_plugin_sftp_main_thread(gpointer data)
 		}
 	}else {
 		/* New SFTP connection */
-		remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-		remmina_plugin_service->file_set_string(remminafile, "ssh_server",
-			remmina_plugin_service->file_get_string(remminafile, "server"));
-		/* We save the ssh server name, so that we can restore it at the end of the connection */
-		saveserver = remmina_plugin_service->file_get_string(remminafile, "ssh_server");
-		remmina_plugin_service->file_set_string(remminafile, "save_ssh_server", g_strdup(saveserver));
 		if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
 			remmina_plugin_service->file_set_string(remminafile, "ssh_server", g_strdup(hostport));
 		}else {
@@ -145,6 +178,10 @@ remmina_plugin_sftp_main_thread(gpointer data)
 			cont = TRUE;
 			break;
 		}
+
+		/* We restore the ssh_server name */
+		remmina_plugin_service->file_set_string(remminafile, "ssh_server",
+				remmina_plugin_service->file_get_string(remminafile, "save_ssh_server"));
 	}
 	if (!cont) {
 		if (sftp) remmina_sftp_free(sftp);

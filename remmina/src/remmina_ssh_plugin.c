@@ -249,13 +249,21 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	remmina_plugin_service->file_set_string(remminafile, "save_ssh_username", g_strdup(saveusername));
 
 	if (saveserver) {
-		/* if the server string contains the character @ we extract the user */
+		/* if the server string contains the character @ we extract the user
+		 * and the server string (host:port)
+		 * */
 		if (strchr(saveserver, '@')) {
-			sscanf(saveserver, "%32[^@]", tunneluser);
-			sscanf(saveserver, "%*[^@]%63[^:]", tunnelserver);
-			sscanf(saveserver, "%*[^:]%5s", tunnelport);
+			sscanf(saveserver, "%[_a-zA-Z0-9.]@%[_a-zA-Z0-9.]:%[0-9]",
+					tunneluser, tunnelserver, tunnelport);
+			g_print ("Username: %s, tunneluser: %s\n",
+					remmina_plugin_service->file_get_string(remminafile, "ssh_username"), tunneluser);
+			if (saveusername != NULL && tunneluser[0] != '\0') {
+				remmina_plugin_service->file_set_string(remminafile, "ssh_username", NULL);
+			}
+			remmina_plugin_service->file_set_string(remminafile, "ssh_username",
+					g_strdup(tunneluser));
 			remmina_plugin_service->file_set_string(remminafile, "ssh_server",
-					g_strconcat (tunnelserver, tunnelport, NULL));
+					g_strconcat (tunnelserver, ":", tunnelport, NULL));
 		}
         }
 
@@ -277,7 +285,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 			    remmina_plugin_service->protocol_plugin_close_connection, gp)) {
 			cont = TRUE;
 		}
-	}else  {
+	}else {
 		/* New SSH Shell connection */
 		if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
 			remmina_plugin_service->file_set_string(remminafile, "ssh_server", g_strdup(hostport));
@@ -834,6 +842,7 @@ remmina_plugin_ssh_call_feature(RemminaProtocolWidget *gp, const RemminaProtocol
 		return;
 	case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
 		remmina_plugin_service->open_connection(
+				/* TODO start the direct tunnel here */
 			remmina_file_dup_temp_protocol(remmina_plugin_service->protocol_plugin_get_file(gp), "SFTP"),
 			NULL, gpdata->shell, NULL);
 		return;
