@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-20 02:35+0100\n"
-"PO-Revision-Date: 2017-08-05 15:32+0200\n"
+"POT-Creation-Date: 2017-12-21 01:58+0100\n"
+"PO-Revision-Date: 2017-12-21 13:27+0100\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: français <fr@li.org>\n"
 "Language: fr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n >= 2;\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Poedit 2.0.2\n"
 
 #: remmina/src/remmina_ftp_client.c:398
 msgid "Choose download location"
@@ -155,6 +155,15 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
+"<tt><big>* commande arguments %h\n"
+"* /chemin/vers/la/commande -options %h %u\n"
+"* %h sera remplacé par le nom du serveur\n"
+"* %t sera remplacé par le nom du serveur SSH\n"
+"* %u sera remplacé par le nom d’utilisateur\n"
+"* %U sera remplacé par le nom d’utilisateur SSH\n"
+"Ne pas exécuter en arrière‐plan si vous voulez que votre commande soit "
+"exécutée avant la connexion.\n"
+"</big></tt>"
 
 #: remmina/src/remmina_file_editor.c:92
 msgid ""
@@ -305,7 +314,7 @@ msgstr "Préférences de bureau distant"
 
 #: remmina/src/remmina_file_editor.c:1252
 msgid "Save as Default"
-msgstr ""
+msgstr "Définir par défaut"
 
 #: remmina/src/remmina_file_editor.c:1256 remmina/src/remmina_main.c:832
 msgid "_Save"
@@ -318,7 +327,7 @@ msgstr "Connexion"
 
 #: remmina/src/remmina_file_editor.c:1266
 msgid "_Save and Connect"
-msgstr ""
+msgstr "_Enregistrer et se connecter"
 
 #: remmina/src/remmina_file_editor.c:1357
 msgid "Profile"
@@ -428,7 +437,7 @@ msgstr ""
 
 #: remmina/src/remmina_connection_window.c:1826
 msgid "Screenshot taken"
-msgstr ""
+msgstr "Capture d’écran effectuée"
 
 #: remmina/src/remmina_connection_window.c:1886
 msgid "Resize the window to fit in remote resolution"
@@ -446,7 +455,7 @@ msgstr "Changer d’onglet"
 
 #: remmina/src/remmina_connection_window.c:1952
 msgid "Toggle dynamic resolution update"
-msgstr ""
+msgstr "Commuter la mise à jour dynamique de la définition"
 
 #: remmina/src/remmina_connection_window.c:1962
 #: remmina/ui/remmina_preferences.glade:816
@@ -797,11 +806,11 @@ msgstr "Version"
 #: remmina/src/remmina_ssh_plugin.c:429
 #, c-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: remmina/src/remmina_ssh_plugin.c:446
 msgid "Terminal content saved under"
-msgstr ""
+msgstr "Contenu du terminal enregistré sous"
 
 #: remmina/src/remmina_ssh_plugin.c:490
 msgid "Select All (Host+a)"
@@ -817,7 +826,7 @@ msgstr "Coller (<hôte> + a)"
 
 #: remmina/src/remmina_ssh_plugin.c:493
 msgid "Save session to file"
-msgstr ""
+msgstr "Enregistrer la session dans un fichier"
 
 #: remmina/src/remmina_ssh_plugin.c:780 remmina/src/remmina_sftp_plugin.c:289
 msgid "SSH identity file"
@@ -883,31 +892,31 @@ msgstr "Palette de couleurs du terminal"
 
 #: remmina/src/remmina_ssh_plugin.c:896
 msgid "SSH Proxy Command"
-msgstr ""
+msgstr "Commande mandataire SSH"
 
 #: remmina/src/remmina_ssh_plugin.c:897
 msgid "KEX (Key Exchange) algorithms"
-msgstr ""
+msgstr "Algorithmes d’échange de clefs (KEX)"
 
 #: remmina/src/remmina_ssh_plugin.c:898
 msgid "Symmetric cipher client to server"
-msgstr ""
+msgstr "Chiffrement symétrique client‐serveur"
 
 #: remmina/src/remmina_ssh_plugin.c:899
 msgid "Preferred server host key types"
-msgstr ""
+msgstr "Types de clef d’hôte préférés"
 
 #: remmina/src/remmina_ssh_plugin.c:900
 msgid "SSH session log folder"
-msgstr ""
+msgstr "Dossier du journal de la session SSH"
 
 #: remmina/src/remmina_ssh_plugin.c:901
 msgid "SSH session log file name"
-msgstr ""
+msgstr "Fichier du journal de la session SSH"
 
 #: remmina/src/remmina_ssh_plugin.c:902
 msgid "Enable SSH session logging at exit"
-msgstr ""
+msgstr "Activer la journalisation de la session SSH en quittant"
 
 #: remmina/src/remmina_ssh_plugin.c:903
 #: remmina-plugins/spice/spice_plugin.c:435
@@ -918,7 +927,7 @@ msgstr "Désactiver l’enregistrement des mots de passe"
 
 #: remmina/src/remmina_ssh_plugin.c:904
 msgid "Strict host key checking"
-msgstr ""
+msgstr "Vérification stricte des clefs d’hôte"
 
 #: remmina/src/remmina_ssh_plugin.c:913
 msgid "SSH - Secure Shell"
@@ -1246,23 +1255,25 @@ msgstr "Transfert effectué"
 msgid "File %s transferred successfully"
 msgstr "Transfert du fichier %s effectué"
 
-#: remmina-plugins/exec/exec_plugin.c:156
+#: remmina-plugins/exec/exec_plugin.c:155
 msgid "You did not set any command to be executed"
-msgstr ""
+msgstr "Vous n’avez indiqué aucune commande à exécuter"
 
 #: remmina-plugins/exec/exec_plugin.c:201
 msgid ""
 "WARNING! Executing a command synchronously, may hung Remmina.\rDo you really "
 "want to continue?"
 msgstr ""
+"ATTENTION ! Exécuter une commande de manière synchrone peut bloquer Remmina\n"
+"Voulez‐vous vraiment continuer ?"
 
-#: remmina-plugins/exec/exec_plugin.c:264
+#: remmina-plugins/exec/exec_plugin.c:261
 msgid "Command"
-msgstr ""
+msgstr "Commande"
 
-#: remmina-plugins/exec/exec_plugin.c:265
+#: remmina-plugins/exec/exec_plugin.c:262
 msgid "Asynchrounous execution"
-msgstr ""
+msgstr "Exécution asynchrone"
 
 #: remmina-plugins/vnc/vnc_plugin.c:940
 msgid "Unable to connect to VNC server"
@@ -1490,11 +1501,14 @@ msgid ""
 "Error connecting to RDP server %s. TLS connection failed. Check that client "
 "and server support a common TLS version."
 msgstr ""
+"Erreur lors de la connexion au serveur RDP  %s. La connexion TLS a échoué. "
+"Veuillez vérifier que client et serveur prennent en charge une version "
+"commune de TLS."
 
 #: remmina-plugins/rdp/rdp_plugin.c:1028
 #, c-format
 msgid "Unable to establish a connection to RDP server %s."
-msgstr ""
+msgstr "Impossible d’établir une connexion RDP avec le serveur %s."
 
 #: remmina-plugins/rdp/rdp_plugin.c:1031
 #, c-format
@@ -2181,11 +2195,11 @@ msgstr "Capture d’écran"
 
 #: remmina/ui/remmina_preferences.glade:986
 msgid "View-only mode"
-msgstr ""
+msgstr "Mode lecture seule"
 
 #: remmina/ui/remmina_preferences.glade:996
 msgid "VIEW-ONLY MODE"
-msgstr ""
+msgstr "MODE LECTURE SEULE"
 
 #: remmina/ui/remmina_preferences.glade:1020
 msgid "Keyboard"
@@ -2229,7 +2243,7 @@ msgstr "Options SSH"
 
 #: remmina/ui/remmina_preferences.glade:1156
 msgid "Terminal font"
-msgstr ""
+msgstr "Police de caractères du terminal"
 
 #: remmina/ui/remmina_preferences.glade:1169
 msgid "Scrollback lines"
@@ -2245,21 +2259,21 @@ msgstr "Autoriser le texte en caractères gras"
 
 #: remmina/ui/remmina_preferences.glade:1263
 msgid "Clipboard copy shortcut"
-msgstr ""
+msgstr "Raccourci clavier pour copier dans le presse‐papiers"
 
 #: remmina/ui/remmina_preferences.glade:1275
 #: remmina/ui/remmina_preferences.glade:1316
 #: remmina/ui/remmina_preferences.glade:1357
 msgid "(Host key +)"
-msgstr ""
+msgstr "(touche hôte +)"
 
 #: remmina/ui/remmina_preferences.glade:1304
 msgid "Clipboard paste shortcut"
-msgstr ""
+msgstr "Raccourci clavier pour coller depuis le presse‐papiers"
 
 #: remmina/ui/remmina_preferences.glade:1345
 msgid "Select all shortcut"
-msgstr ""
+msgstr "Sélectionner tous le raccourcis"
 
 #: remmina/ui/remmina_preferences.glade:1397
 #: remmina/ui/remmina_preferences.glade:1409
@@ -2273,97 +2287,99 @@ msgstr "Couleur de fond"
 
 #: remmina/ui/remmina_preferences.glade:1447
 msgid "Cursor color"
-msgstr ""
+msgstr "Couleur du curseur"
 
 #: remmina/ui/remmina_preferences.glade:1459
 msgid "Cursor Color"
-msgstr ""
+msgstr "Couleur du curseur"
 
 #: remmina/ui/remmina_preferences.glade:1472
 msgid "Normal colors"
-msgstr ""
+msgstr "Couleurs normales"
 
 #: remmina/ui/remmina_preferences.glade:1485
 msgid "Bright colors"
-msgstr ""
+msgstr "Couleurs claires"
 
 #: remmina/ui/remmina_preferences.glade:1497
 msgid "Pick a color for black"
-msgstr ""
+msgstr "Choisissez une couleur pour le noir"
 
 #: remmina/ui/remmina_preferences.glade:1509
 msgid "Pick a color for bright black"
-msgstr ""
+msgstr "Choisissez une couleur pour le noir clair"
 
 #: remmina/ui/remmina_preferences.glade:1521
 msgid "Pick a color for red"
-msgstr ""
+msgstr "Choisissez une couleur pour le rouge"
 
 #: remmina/ui/remmina_preferences.glade:1533
 msgid "Pick a color for green"
-msgstr ""
+msgstr "Choisissez une couleur pour le vert"
 
 #: remmina/ui/remmina_preferences.glade:1545
 msgid "Pick a color for yellow"
-msgstr ""
+msgstr "Choisissez une couleur pour le jaune"
 
 #: remmina/ui/remmina_preferences.glade:1557
 msgid "Pick a color for blue"
-msgstr ""
+msgstr "Choisissez une couleur pour le bleu"
 
 #: remmina/ui/remmina_preferences.glade:1569
 msgid "Pick a color for magenta"
-msgstr ""
+msgstr "Choisissez une couleur pour le magenta"
 
 #: remmina/ui/remmina_preferences.glade:1581
 msgid "Pick a color for Cyan"
-msgstr ""
+msgstr "Choisissez une couleur pour le cyan"
 
 #: remmina/ui/remmina_preferences.glade:1593
 msgid "Pick a color for white"
-msgstr ""
+msgstr "Choisissez une couleur pour le blanc"
 
 #: remmina/ui/remmina_preferences.glade:1605
 msgid "Pick a color for bright red"
-msgstr ""
+msgstr "Choisissez une couleur pour le rouge clair"
 
 #: remmina/ui/remmina_preferences.glade:1617
 msgid "Pick a color for bright green"
-msgstr ""
+msgstr "Choisissez une couleur pour le vert clair"
 
 #: remmina/ui/remmina_preferences.glade:1629
 msgid "Pick a color for bright yellow"
-msgstr ""
+msgstr "Choisissez une couleur pour le jaune clair"
 
 #: remmina/ui/remmina_preferences.glade:1641
 msgid "Pick a color for bright blue"
-msgstr ""
+msgstr "Choisissez une couleur pour le bleu clair"
 
 #: remmina/ui/remmina_preferences.glade:1653
 msgid "Pick a color for bright magenta"
-msgstr ""
+msgstr "Choisissez une couleur pour le magenta clair"
 
 #: remmina/ui/remmina_preferences.glade:1665
 msgid "Pick a color for bright Cyan"
-msgstr ""
+msgstr "Choisissez une couleur pour le cyan clair"
 
 #: remmina/ui/remmina_preferences.glade:1677
 msgid "Pick a color for bright white"
-msgstr ""
+msgstr "Choisissez une couleur pour le blanc clair"
 
 #: remmina/ui/remmina_preferences.glade:1690
 msgid "Load color scheme"
-msgstr ""
+msgstr "Charger un jeu de couleurs"
 
 #: remmina/ui/remmina_preferences.glade:1701
 msgid ""
 "Chose a color scheme file, You can download one from https://github.com/"
 "mbadolato/iTerm2-Color-Schemes."
 msgstr ""
+"Veuillez choisir un fichier définissant un jeu de couleurs. Vous pouvez en "
+"télécharger un sur : https://github.com/mbadolato/iTerm2-Color-Schemes."
 
 #: remmina/ui/remmina_preferences.glade:1702
 msgid "Terminal Color Scheme file chooser"
-msgstr ""
+msgstr "Sélecteur de fichier de jeu de couleurs du terminal"
 
 #: remmina/ui/remmina_preferences.glade:1792
 msgid "Terminal"

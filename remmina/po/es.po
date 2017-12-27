@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-20 02:35+0100\n"
+"POT-Creation-Date: 2017-12-21 01:58+0100\n"
 "PO-Revision-Date: 2015-02-19 03:22-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -25,7 +25,7 @@ msgstr "Seleccionar ubicación de descarga"
 
 #: remmina/src/remmina_ftp_client.c:538
 msgid "Are you sure to delete the selected files on server?"
-msgstr "¿Realmente quiere eliminar los archivos seleccionados en el servidor?"
+msgstr "¿Confirma que quiere eliminar los archivos seleccionados en el servidor?"
 
 #: remmina/src/remmina_ftp_client.c:595
 msgid "Choose a file to upload"
@@ -109,7 +109,7 @@ msgstr "Grupo"
 
 #: remmina/src/remmina_ftp_client.c:946
 msgid "Permission"
-msgstr "Permisos"
+msgstr "Permiso"
 
 #: remmina/src/remmina_ftp_client.c:998 remmina-plugins/rdp/rdp_plugin.c:1306
 msgid "Remote"
@@ -152,6 +152,15 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
+"<tt><big>* orden en argumentos de RUTA %h\n"
+"* /ruta/a/algo -opciones %h %u\n"
+"* %h se sustituye por el nombre del servidor\n"
+"* %t se sustituye por el nombre del servidor SSH\n"
+"* %u se sustituye por el nombre de usuario\n"
+"* %U se sustituye por el nombre de usuario SSH\n"
+"No se ejecute en segundo plano si quiere que la orden se ejecute "
+"antes de la conexión.\n"
+"</big></tt>"
 
 #: remmina/src/remmina_file_editor.c:92
 msgid ""
@@ -301,7 +310,7 @@ msgstr "Preferencias del escritorio remoto"
 
 #: remmina/src/remmina_file_editor.c:1252
 msgid "Save as Default"
-msgstr ""
+msgstr "Guardar como predeterminado"
 
 #: remmina/src/remmina_file_editor.c:1256 remmina/src/remmina_main.c:832
 msgid "_Save"
@@ -314,7 +323,7 @@ msgstr "Conectar"
 
 #: remmina/src/remmina_file_editor.c:1266
 msgid "_Save and Connect"
-msgstr ""
+msgstr "_Guardar y conectar"
 
 #: remmina/src/remmina_file_editor.c:1357
 msgid "Profile"
@@ -343,11 +352,11 @@ msgstr "Protocolo"
 
 #: remmina/src/remmina_file_editor.c:1417
 msgid "Pre Command"
-msgstr "Comando Previo"
+msgstr "Orden previa"
 
 #: remmina/src/remmina_file_editor.c:1435
 msgid "Post Command"
-msgstr "Comando Siguiente"
+msgstr "Orden posterior"
 
 #: remmina/src/remmina_file_editor.c:1499
 #: remmina/src/remmina_file_editor.c:1517
@@ -359,7 +368,7 @@ msgstr "No se encontró el archivo %s."
 #: remmina/src/remmina_about.c:55
 msgid "translator-credits"
 msgstr ""
-"Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2012, 2015\n"
+"Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2012, 2015, 2017\n"
 "Julio Napurí Carlos <julionc@gmail.com>, 2009\n"
 "\n"
 "Y:\n"
@@ -385,7 +394,7 @@ msgstr "Conexión nueva"
 msgid ""
 "There are %i active connections in the current window. Are you sure to close?"
 msgstr ""
-"Hay %i conexiones activas en la ventana actual. ¿Realmente quiere cerrar?"
+"Hay %i conexiones activas en la ventana actual. ¿Confirma que quiere cerrar?"
 
 #: remmina/src/remmina_connection_window.c:1181
 msgid "Viewport fullscreen mode"
@@ -414,12 +423,12 @@ msgid ""
 "Warning: screenshot is scaled or distorted. Disable scaling to have better "
 "screenshot."
 msgstr ""
-"Advertencia: captura de pantalla escalada o distorsionada. Desactivar el "
-"escalado para tener una mejorcaptura de pantalla."
+"Atención: la captura de pantalla está escalada o distorsionada. Desactive el "
+"escalado para mejorar la calidad de la imagen."
 
 #: remmina/src/remmina_connection_window.c:1826
 msgid "Screenshot taken"
-msgstr ""
+msgstr "Captura de pantalla realizada"
 
 #: remmina/src/remmina_connection_window.c:1886
 msgid "Resize the window to fit in remote resolution"
@@ -437,7 +446,7 @@ msgstr "Cambiar entre pestañas"
 
 #: remmina/src/remmina_connection_window.c:1952
 msgid "Toggle dynamic resolution update"
-msgstr ""
+msgstr "Conmutar actualización dinámica de resolución"
 
 #: remmina/src/remmina_connection_window.c:1962
 #: remmina/ui/remmina_preferences.glade:816
@@ -553,26 +562,26 @@ msgid ""
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
-"AVISO: El servidor ha cambiado su clave pública. Esto significa que o está "
+"ATENCIÓN: el servidor ha cambiado su clave pública. Esto significa que o está "
 "bajo un ataque,\n"
 "o el administrador ha cambiado la clave. La nueva huella digital de la clave "
 "pública es:"
 
 #: remmina/src/remmina.c:76
 msgid "Show about dialog"
-msgstr "Mostrar acerca de diálogo"
+msgstr "Mostrar la ventana Acerca de"
 
 #: remmina/src/remmina.c:77
 msgid "Connect to a .remmina file"
-msgstr "Conectar a un archivo .remmina"
+msgstr "Conectar con un archivo .remmina"
 
 #: remmina/src/remmina.c:78
 msgid "Edit a .remmina file"
-msgstr "Editar a un archivo .remmina"
+msgstr "Editar un archivo .remmina"
 
 #: remmina/src/remmina.c:80 remmina/ui/remmina_main.glade:257
 msgid "Create a new connection profile"
-msgstr "Crear un nuevo perfil de conexión"
+msgstr "Crear un perfil de conexión nuevo"
 
 #: remmina/src/remmina.c:81
 msgid "Show preferences dialog page"
@@ -580,7 +589,7 @@ msgstr "Mostrar página de diálogo de preferencias"
 
 #: remmina/src/remmina.c:82
 msgid "Execute the plugin"
-msgstr "Ejecutar el plugin"
+msgstr "Ejecutar el complemento"
 
 #: remmina/src/remmina.c:83
 msgid "Quit the application"
@@ -600,11 +609,11 @@ msgstr "Iniciar como icono de la bandeja"
 
 #: remmina/src/remmina.c:87
 msgid "Show the application's version"
-msgstr "Muestra la versión de la aplicación"
+msgstr "Mostrar la versión de la aplicación"
 
 #: remmina/src/remmina.c:88
 msgid "Show the application's version, including the pulgin versions"
-msgstr ""
+msgstr "Mostrar la versión de la aplicación, incluidas las versiones de los complementos"
 
 #: remmina/src/remmina_icon.c:135
 msgid "Open Main Window"
@@ -670,7 +679,7 @@ msgstr "La autenticación de clave pública SSH con el agente ssh falló: %s"
 #: remmina/src/remmina_ssh.c:292
 #, c-format
 msgid "SSH Kerberos/GSSAPI authentication failed: %s"
-msgstr ""
+msgstr "Falló la autenticación SSH de Kerberos/GSSAPI: %s"
 
 #: remmina/src/remmina_ssh.c:421
 #, c-format
@@ -688,16 +697,16 @@ msgstr "Autenticando la identidad de %s en el servidor SSH %s..."
 
 #: remmina/src/remmina_ssh.c:429 remmina/src/remmina_protocol_widget.c:968
 msgid "SSH private key passphrase"
-msgstr "Clave privada SSH"
+msgstr "Frase de contraseña de clave privada SSH"
 
 #: remmina/src/remmina_ssh.c:433
 #, c-format
 msgid "Authenticating %s's Kerberos to SSH server %s..."
-msgstr ""
+msgstr "Autenticando Kerberos de %s en el servidor SSH %s…"
 
 #: remmina/src/remmina_ssh.c:434
 msgid "SSH Kerberos/GSSAPI"
-msgstr ""
+msgstr "Kerberos/GSSAPI SSH"
 
 #: remmina/src/remmina_ssh.c:555
 #, c-format
@@ -712,7 +721,7 @@ msgstr "La conexión al túnel SSH ha fallado: %s"
 #: remmina/src/remmina_ssh.c:951
 #, c-format
 msgid "Failed to execute %s on SSH server : %%s"
-msgstr "No se pudo ejectuar %s en el servidor SSH: %%s"
+msgstr "No se pudo ejecutar %s en el servidor SSH: %%s"
 
 #: remmina/src/remmina_ssh.c:982 remmina/src/remmina_ssh.c:1005
 #, c-format
@@ -735,18 +744,18 @@ msgstr "Fallo al inicializar la sesión SFTP: %s"
 
 #: remmina/src/remmina_mpchange.c:232
 msgid "The passwords do not match"
-msgstr ""
+msgstr "Las contraseñas no coinciden"
 
 #: remmina/src/remmina_mpchange.c:242
 msgid "Resetting passwords, please wait..."
-msgstr ""
+msgstr "Restableciendo las contraseñas; espere…"
 
 #: remmina/src/remmina_mpchange.c:402
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d contraseña modificada."
+msgstr[1] "%d contraseñas modificadas."
 
 #: remmina/src/remmina_plugin_manager.c:65
 msgid "Entry"
@@ -789,39 +798,39 @@ msgstr "Versión"
 #: remmina/src/remmina_ssh_plugin.c:429
 #, c-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: remmina/src/remmina_ssh_plugin.c:446
 msgid "Terminal content saved under"
-msgstr ""
+msgstr "Contenido de terminal guardado en"
 
 #: remmina/src/remmina_ssh_plugin.c:490
 msgid "Select All (Host+a)"
-msgstr "Seleccionar todo (Host+a)"
+msgstr "Seleccionar todo (Anfitrión+A)"
 
 #: remmina/src/remmina_ssh_plugin.c:491
 msgid "Copy (Host+c)"
-msgstr "Copiar (Host+c)"
+msgstr "Copiar (Anfitrión+C)"
 
 #: remmina/src/remmina_ssh_plugin.c:492
 msgid "Paste (Host+v)"
-msgstr "Pegar (Host+v)"
+msgstr "Pegar (Anfitrión+V)"
 
 #: remmina/src/remmina_ssh_plugin.c:493
 msgid "Save session to file"
-msgstr ""
+msgstr "Guardar la sesión en un archivo"
 
 #: remmina/src/remmina_ssh_plugin.c:780 remmina/src/remmina_sftp_plugin.c:289
 msgid "SSH identity file"
-msgstr ""
+msgstr "Archivo de identidad SSH"
 
 #: remmina/src/remmina_ssh_plugin.c:781 remmina/src/remmina_sftp_plugin.c:290
 msgid "SSH agent"
-msgstr ""
+msgstr "Agente SSH"
 
 #: remmina/src/remmina_ssh_plugin.c:783 remmina/src/remmina_sftp_plugin.c:292
 msgid "Kerberos (GSSAPI)"
-msgstr ""
+msgstr "Kerberos (GSSAPI)"
 
 #: remmina/src/remmina_ssh_plugin.c:856 remmina/ui/remmina_main.glade:99
 #: remmina/ui/remmina_main.glade:100
@@ -853,15 +862,15 @@ msgstr "_Seleccionar todo"
 #: remmina-plugins/vnc/vnc_plugin.c:1853 remmina-plugins/vnc/vnc_plugin.c:1873
 #: remmina-plugins/rdp/rdp_plugin.c:1333 remmina-plugins/nx/nx_plugin.c:703
 msgid "User password"
-msgstr ""
+msgstr "Contraseña de usuario"
 
 #: remmina/src/remmina_ssh_plugin.c:876 remmina/src/remmina_sftp_plugin.c:322
 msgid "Authentication type"
-msgstr ""
+msgstr "Tipo de autenticación"
 
 #: remmina/src/remmina_ssh_plugin.c:878 remmina/src/remmina_sftp_plugin.c:324
 msgid "Private key passphrase"
-msgstr ""
+msgstr "Frase de contraseña de clave privada"
 
 #: remmina/src/remmina_ssh_plugin.c:879
 #: remmina-plugins/xdmcp/xdmcp_plugin.c:373
@@ -871,35 +880,35 @@ msgstr "Programa de inicio"
 
 #: remmina/src/remmina_ssh_plugin.c:894
 msgid "Terminal color scheme"
-msgstr ""
+msgstr "Combinación de colores de terminal"
 
 #: remmina/src/remmina_ssh_plugin.c:896
 msgid "SSH Proxy Command"
-msgstr ""
+msgstr "Orden de proxy SSH"
 
 #: remmina/src/remmina_ssh_plugin.c:897
 msgid "KEX (Key Exchange) algorithms"
-msgstr ""
+msgstr "Algoritmos KEX (intercambio de claves)"
 
 #: remmina/src/remmina_ssh_plugin.c:898
 msgid "Symmetric cipher client to server"
-msgstr ""
+msgstr "Cifrado simétrico cliente-servidor"
 
 #: remmina/src/remmina_ssh_plugin.c:899
 msgid "Preferred server host key types"
-msgstr ""
+msgstr "Tipos de clave preferidos del servidor anfitrión"
 
 #: remmina/src/remmina_ssh_plugin.c:900
 msgid "SSH session log folder"
-msgstr ""
+msgstr "Carpeta de registro de sesiones SSH"
 
 #: remmina/src/remmina_ssh_plugin.c:901
 msgid "SSH session log file name"
-msgstr ""
+msgstr "Nombre de archivo de registro de sesiones SSH"
 
 #: remmina/src/remmina_ssh_plugin.c:902
 msgid "Enable SSH session logging at exit"
-msgstr ""
+msgstr "Activar registro de sesiones SSH al salir"
 
 #: remmina/src/remmina_ssh_plugin.c:903
 #: remmina-plugins/spice/spice_plugin.c:435
@@ -910,11 +919,11 @@ msgstr "Desactivar almacenamiento de contraseña"
 
 #: remmina/src/remmina_ssh_plugin.c:904
 msgid "Strict host key checking"
-msgstr ""
+msgstr "Comprobación estricta de claves de anfitrión"
 
 #: remmina/src/remmina_ssh_plugin.c:913
 msgid "SSH - Secure Shell"
-msgstr "SSH - Shell Seguro"
+msgstr "SSH - intérprete de órdenes seguro"
 
 #: remmina/src/remmina_public.c:638
 msgid "Please enter format 'widthxheight'."
@@ -990,7 +999,7 @@ msgid ""
 "Are you sure to cancel it?"
 msgstr ""
 "Hay transferencias de archivos en proceso.\n"
-"¿Realmente quiere salir?"
+"¿Confirma que quiere salir?"
 
 #: remmina/src/remmina_sftp_client.c:831
 #, c-format
@@ -1039,7 +1048,7 @@ msgstr[1] "Total de %i elementos."
 #: remmina/src/remmina_main.c:671
 #, c-format
 msgid "Are you sure to delete '%s'"
-msgstr "¿Está seguro de que quiere eliminar «%s»?"
+msgstr "¿Confirma que quiere eliminar «%s»?"
 
 #: remmina/src/remmina_main.c:782
 #, c-format
@@ -1057,7 +1066,7 @@ msgstr "Importar"
 
 #: remmina/src/remmina_main.c:839
 msgid "This protocol does not support exporting."
-msgstr "Este protocolo no es compatible con la exportación."
+msgstr "Este protocolo no admite la exportación."
 
 #: remmina/src/remmina_protocol_widget.c:141
 #, c-format
@@ -1133,7 +1142,7 @@ msgstr "_Enviar"
 
 #: remmina/src/remmina_chat_window.c:240
 msgid "_Clear"
-msgstr "_Limpiar"
+msgstr "_Vaciar"
 
 #: remmina-plugins/spice/spice_plugin.c:254
 #, c-format
@@ -1207,7 +1216,7 @@ msgstr "Seleccione los dispositivos USB para la redirección"
 
 #: remmina-plugins/spice/spice_plugin.c:461
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr "SPICE - Protocolo simple para entornos de computación independiente"
+msgstr "SPICE - Protocolo simple para entornos de computación independientes"
 
 #: remmina-plugins/spice/spice_plugin_usb.c:54
 msgid "_Close"
@@ -1239,32 +1248,34 @@ msgstr "Transferencia completada"
 msgid "File %s transferred successfully"
 msgstr "Archivos %s transferidos con éxito"
 
-#: remmina-plugins/exec/exec_plugin.c:156
+#: remmina-plugins/exec/exec_plugin.c:155
 msgid "You did not set any command to be executed"
-msgstr ""
+msgstr "No estableció ninguna orden para su ejecución"
 
 #: remmina-plugins/exec/exec_plugin.c:201
 msgid ""
 "WARNING! Executing a command synchronously, may hung Remmina.\rDo you really "
 "want to continue?"
 msgstr ""
+"¡ATENCIÓN! Ejecutar una orden sincrónicamente puede detener el funcionamiento\r"
+"de Remmina. ¿Quiere continuar?"
 
-#: remmina-plugins/exec/exec_plugin.c:264
+#: remmina-plugins/exec/exec_plugin.c:261
 msgid "Command"
-msgstr ""
+msgstr "Orden"
 
-#: remmina-plugins/exec/exec_plugin.c:265
+#: remmina-plugins/exec/exec_plugin.c:262
 msgid "Asynchrounous execution"
-msgstr ""
+msgstr "Ejecución asíncrona"
 
 #: remmina-plugins/vnc/vnc_plugin.c:940
 msgid "Unable to connect to VNC server"
-msgstr "No se pudo conectar al servidor VNC"
+msgstr "No se pudo conectar con el servidor VNC"
 
 #: remmina-plugins/vnc/vnc_plugin.c:941
 #, c-format
 msgid "Couldn't convert '%s' to host address"
-msgstr "No se pudo convertir '%s' en una dirección de servidor"
+msgstr "No se pudo convertir «%s» en una dirección de anfitrión"
 
 #: remmina-plugins/vnc/vnc_plugin.c:942
 #, c-format
@@ -1282,8 +1293,7 @@ msgstr "Esquema desconocido de autenticación del servidor VNC: %s"
 
 #: remmina-plugins/vnc/vnc_plugin.c:969
 msgid "Please retry after enabling encryption on this profile."
-msgstr ""
-"Por favor, inténtelo de nuevo después de activar el cifrado en este perfil."
+msgstr "Inténtelo de nuevo después de activar el cifrado en este perfil."
 
 #: remmina-plugins/vnc/vnc_plugin.c:1821 remmina-plugins/rdp/rdp_plugin.c:1279
 msgid "256 colors (8 bpp)"
@@ -1376,7 +1386,7 @@ msgstr "Sin disposición de número de pantalla X local."
 #, c-format
 msgid "Protocol %s is unavailable because GtkSocket only works under Xorg"
 msgstr ""
-"Protocolo %s no está disponible debido que GtkSocket sólo funciona bajo Xorg"
+"El protocolo %s no está disponible porque GtkSocket solo funciona en Xorg"
 
 #: remmina-plugins/xdmcp/xdmcp_plugin.c:351
 msgid "Default"
@@ -1392,7 +1402,7 @@ msgstr "256 colores"
 
 #: remmina-plugins/xdmcp/xdmcp_plugin.c:354
 msgid "High color (16 bit)"
-msgstr "Alta densidad (16 bit)"
+msgstr "Alta densidad (16 bits)"
 
 #: remmina-plugins/xdmcp/xdmcp_plugin.c:355
 msgid "True color (24 bit)"
@@ -1429,6 +1439,8 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "Account is locked out."
 msgstr ""
+"Falló el acceso al servidor RDP %s.\n"
+"La cuenta quedó bloqueada."
 
 #: remmina-plugins/rdp/rdp_plugin.c:1002
 #, c-format
@@ -1436,6 +1448,8 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "Account is expired."
 msgstr ""
+"Falló el acceso al servidor RDP %s.\n"
+"La cuenta ha caducado."
 
 #: remmina-plugins/rdp/rdp_plugin.c:1006
 #, c-format
@@ -1443,6 +1457,8 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "Password expired."
 msgstr ""
+"Falló el acceso al servidor RDP %s.\n"
+"La contraseña ha caducado."
 
 #: remmina-plugins/rdp/rdp_plugin.c:1010
 #, c-format
@@ -1450,6 +1466,8 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "Account is disabled."
 msgstr ""
+"Falló el acceso al servidor RDP %s.\n"
+"La cuenta está desactivada."
 
 #: remmina-plugins/rdp/rdp_plugin.c:1014
 #, c-format
@@ -1457,6 +1475,8 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "Account has restrictions."
 msgstr ""
+"Falló el acceso al servidor RDP %s.\n"
+"La cuenta tiene restricciones."
 
 #: remmina-plugins/rdp/rdp_plugin.c:1018
 #, c-format
@@ -1474,11 +1494,13 @@ msgid ""
 "Error connecting to RDP server %s. TLS connection failed. Check that client "
 "and server support a common TLS version."
 msgstr ""
+"Error al conectar con el servidor RDP %s. Falló la conexión TLS. Revise que "
+"el cliente y el servidor admitan la misma versión de TLS."
 
 #: remmina-plugins/rdp/rdp_plugin.c:1028
 #, c-format
 msgid "Unable to establish a connection to RDP server %s."
-msgstr ""
+msgstr "No se pudo establecer una conexión con el servidor RDP %s."
 
 #: remmina-plugins/rdp/rdp_plugin.c:1031
 #, c-format
@@ -1527,15 +1549,15 @@ msgstr "Puerta de enlace"
 
 #: remmina-plugins/rdp/rdp_plugin.c:1357
 msgid "RD Gateway username"
-msgstr ""
+msgstr "Nombre de usuario de puerta de enlace RD"
 
 #: remmina-plugins/rdp/rdp_plugin.c:1358
 msgid "RD Gateway password"
-msgstr ""
+msgstr "Contraseña de puerta de enlace RD"
 
 #: remmina-plugins/rdp/rdp_plugin.c:1359
 msgid "RD Gateway domain"
-msgstr ""
+msgstr "Dominio de puerta de enlace RD"
 
 #: remmina-plugins/rdp/rdp_plugin.c:1360
 msgid "Client name"
@@ -1543,7 +1565,7 @@ msgstr "Nombre del cliente"
 
 #: remmina-plugins/rdp/rdp_plugin.c:1363
 msgid "Load Balance Info"
-msgstr "Informacion Equilibrio de carga"
+msgstr "Información de equilibrio de carga"
 
 #: remmina-plugins/rdp/rdp_plugin.c:1364
 msgid "Ignore certificate"
@@ -1551,11 +1573,11 @@ msgstr "Ignorar certificado"
 
 #: remmina-plugins/rdp/rdp_plugin.c:1365
 msgid "Redirect local microphone"
-msgstr "Redirigir micrófono local"
+msgstr "Redirigir el micrófono local"
 
 #: remmina-plugins/rdp/rdp_plugin.c:1367
 msgid "Share local printers"
-msgstr "Impresoras locales compartidas"
+msgstr "Compartir las impresoras locales"
 
 #: remmina-plugins/rdp/rdp_plugin.c:1370
 msgid "Attach to console (2003/2003 R2)"
@@ -1563,11 +1585,11 @@ msgstr "Anexar a consola (Windows 2003/2003 R2)"
 
 #: remmina-plugins/rdp/rdp_plugin.c:1371
 msgid "Server detection using RD Gateway"
-msgstr "Detección de servidor usando Puerta de enlace"
+msgstr "Detección de servidor con puerta de enlace RD"
 
 #: remmina-plugins/rdp/rdp_plugin.c:1392
 msgid "RDP - Remote Desktop Protocol"
-msgstr "RDP - Protocolo de escritorio remoto (Remote Desktop Protocol)"
+msgstr "RDP - Protocolo de escritorio remoto"
 
 #: remmina-plugins/rdp/rdp_plugin.c:1415
 msgid "RDP - RDP File Handler"
@@ -1588,7 +1610,7 @@ msgstr "Reconexión en curso. Intento %d de %d..."
 
 #: remmina-plugins/rdp/rdp_settings.c:199
 msgid "<Auto detect>"
-msgstr "<Autodetectar>"
+msgstr "<Detectar automáticamente>"
 
 #: remmina-plugins/rdp/rdp_settings.c:232
 msgid "<Not set>"
@@ -1715,24 +1737,24 @@ msgstr "Telepathy - Compartir escritorio"
 #: remmina/ui/remmina_spinner.glade:29 remmina/ui/remmina_key_chooser.glade:38
 #: remmina/ui/remmina_key_chooser.glade:53
 msgid "button"
-msgstr ""
+msgstr "botón"
 
 #: remmina/ui/remmina_spinner.glade:54
 msgid "PLEASE WAIT ..."
-msgstr ""
+msgstr "ESPERE UN MOMENTO…"
 
 #: remmina/ui/remmina_key_chooser.glade:14
 #: remmina/ui/remmina_key_chooser.glade:15
 msgid "_Remove"
-msgstr ""
+msgstr "_Quitar"
 
 #: remmina/ui/remmina_key_chooser.glade:23
 msgid "Choose a new key"
-msgstr ""
+msgstr "Elija una tecla nueva"
 
 #: remmina/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key..."
-msgstr ""
+msgstr "Oprima la tecla nueva…"
 
 #: remmina/ui/remmina_string_list.glade:8
 #: remmina/ui/remmina_string_list.glade:9
@@ -1741,55 +1763,55 @@ msgstr ""
 #: remmina/ui/remmina_preferences.glade:34
 #: remmina/ui/remmina_preferences.glade:57
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
 #: remmina/ui/remmina_string_list.glade:14
 #: remmina/ui/remmina_string_list.glade:158
 msgid "Add"
-msgstr ""
+msgstr "Añadir"
 
 #: remmina/ui/remmina_string_list.glade:20
 #: remmina/ui/remmina_string_list.glade:137
 msgid "Remove"
-msgstr ""
+msgstr "Quitar"
 
 #: remmina/ui/remmina_string_list.glade:26
 #: remmina/ui/remmina_string_list.glade:116
 msgid "Move up"
-msgstr ""
+msgstr "Subir"
 
 #: remmina/ui/remmina_string_list.glade:32
 #: remmina/ui/remmina_string_list.glade:95
 msgid "Move down"
-msgstr ""
+msgstr "Bajar"
 
 #: remmina/ui/remmina_mpc.glade:7
 msgid "Remmina - Multi Password Changer"
-msgstr ""
+msgstr "Remmina - Modificador de contraseñas múltiples"
 
 #: remmina/ui/remmina_mpc.glade:21
 msgid "Change"
-msgstr ""
+msgstr "Modificar"
 
 #: remmina/ui/remmina_mpc.glade:35
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: remmina/ui/remmina_mpc.glade:61
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr ""
+msgstr "<span weight='bold' size='larger'>Modificador de contraseñas múltiples</span>"
 
 #: remmina/ui/remmina_mpc.glade:166
 msgid "Selection criteria"
-msgstr ""
+msgstr "Criterios de selección"
 
 #: remmina/ui/remmina_mpc.glade:195
 msgid "Confirm password"
-msgstr ""
+msgstr "Confirmar contraseña"
 
 #: remmina/ui/remmina_mpc.glade:208
 msgid "Reset to"
-msgstr ""
+msgstr "Restablecer a"
 
 #: remmina/ui/remmina_mpc.glade:302
 msgid "F"
@@ -1797,121 +1819,121 @@ msgstr ""
 
 #: remmina/ui/remmina_mpc.glade:336
 msgid "Domain\\Username"
-msgstr ""
+msgstr "Dominio\\Nombre de usuario"
 
 #: remmina/ui/remmina_main.glade:44
 msgid "Open the preferences dialog"
-msgstr ""
+msgstr "Abrir la ventana Preferencias"
 
 #: remmina/ui/remmina_main.glade:68 remmina/ui/remmina_main.glade:473
 msgid "Multi password changer"
-msgstr ""
+msgstr "Modificador de contraseñas múltiples"
 
 #: remmina/ui/remmina_main.glade:69
 msgid "MPChange"
-msgstr ""
+msgstr "MPChange"
 
 #: remmina/ui/remmina_main.glade:80
 msgid "Open the connection to the selected remote desktop file"
-msgstr ""
+msgstr "Abrir la conexión con el archivo de escritorio remoto seleccionado"
 
 #: remmina/ui/remmina_main.glade:89 remmina/ui/remmina_main.glade:90
 msgid "_Edit"
-msgstr ""
+msgstr "_Editar"
 
 #: remmina/ui/remmina_main.glade:91
 msgid "Edit the selected remote desktop file"
-msgstr ""
+msgstr "Editar el archivo de escritorio remoto seleccionado"
 
 #: remmina/ui/remmina_main.glade:101
 msgid "Create a copy of the selected remote desktop file"
-msgstr ""
+msgstr "Crear una copia del archivo de escritorio remoto seleccionado"
 
 #: remmina/ui/remmina_main.glade:111
 msgid "Delete the selected remote desktop file"
-msgstr ""
+msgstr "Eliminar el archivo de escritorio remoto seleccionado"
 
 #: remmina/ui/remmina_main.glade:119 remmina/ui/remmina_main.glade:120
 msgid "External Tools"
-msgstr ""
+msgstr "Herramientas externas"
 
 #: remmina/ui/remmina_main.glade:131 remmina/ui/remmina_main.glade:132
 msgid "_New"
-msgstr ""
+msgstr "_Nuevo"
 
 #: remmina/ui/remmina_main.glade:133
 msgid "Create a new remote desktop file"
-msgstr ""
+msgstr "Crear un archivo de escritorio remoto"
 
 #: remmina/ui/remmina_main.glade:145 remmina/ui/remmina_main.glade:146
 #: remmina/ui/remmina_main.glade:545
 msgid "Homepage"
-msgstr ""
+msgstr "Sitio web"
 
 #: remmina/ui/remmina_main.glade:152 remmina/ui/remmina_main.glade:153
 #: remmina/ui/remmina_main.glade:555
 msgid "Online Wiki"
-msgstr ""
+msgstr "Wiki en línea"
 
 #: remmina/ui/remmina_main.glade:160 remmina/ui/remmina_main.glade:161
 #: remmina/ui/remmina_main.glade:564
 msgid "G+ Remmina Community"
-msgstr ""
+msgstr "Comunidad de G+ de Remmina"
 
 #: remmina/ui/remmina_main.glade:167 remmina/ui/remmina_main.glade:168
 #: remmina/ui/remmina_main.glade:573
 msgid "Donations"
-msgstr ""
+msgstr "Donaciones"
 
 #: remmina/ui/remmina_main.glade:174 remmina/ui/remmina_main.glade:175
 #: remmina/ui/remmina_main.glade:583
 msgid "Debug Window"
-msgstr ""
+msgstr "Ventana de depuración"
 
 #: remmina/ui/remmina_main.glade:192 remmina/ui/remmina_main.glade:193
 #: remmina/ui/remmina_main.glade:453
 msgid "Export"
-msgstr ""
+msgstr "Exportar"
 
 #: remmina/ui/remmina_main.glade:202 remmina/ui/remmina_main.glade:203
 msgid "Statusbar"
-msgstr ""
+msgstr "Barra de estado"
 
 #: remmina/ui/remmina_main.glade:210 remmina/ui/remmina_main.glade:211
 msgid "List View"
-msgstr ""
+msgstr "Vista de listado"
 
 #: remmina/ui/remmina_main.glade:219 remmina/ui/remmina_main.glade:220
 msgid "Tree View"
-msgstr ""
+msgstr "Vista de árbol"
 
 #: remmina/ui/remmina_main.glade:291
 msgid "search string or server name/ip address for quick connect"
-msgstr ""
+msgstr "término de búsqueda o nombre de servidor/IP para conexión rápida"
 
 #: remmina/ui/remmina_main.glade:296
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Nombre de servidor o dirección IP"
 
 #: remmina/ui/remmina_main.glade:297 remmina/ui/remmina_preferences.glade:221
 msgid "Clear"
-msgstr ""
+msgstr "Vaciar"
 
 #: remmina/ui/remmina_main.glade:342
 msgid "Actions"
-msgstr ""
+msgstr "Acciones"
 
 #: remmina/ui/remmina_main.glade:692
 msgid "Last time used"
-msgstr ""
+msgstr "Última utilización"
 
 #: remmina/ui/remmina_about.glade:30
 msgid "About Remmina"
-msgstr ""
+msgstr "Acerca de Remmina"
 
 #: remmina/ui/remmina_about.glade:40
 msgid "Remmina Web Site"
-msgstr ""
+msgstr "Sitio web de Remmina"
 
 #: remmina/ui/remmina_about.glade:135
 msgid ""
@@ -1929,239 +1951,239 @@ msgstr ""
 
 #: remmina/ui/remmina_preferences.glade:41
 msgid "Remmina Preferences"
-msgstr ""
+msgstr "Preferencias de Remmina"
 
 #: remmina/ui/remmina_preferences.glade:99
 msgid "Remember last view mode for each connection"
-msgstr ""
+msgstr "Recordar último modo de visualización de cada conexión"
 
 #: remmina/ui/remmina_preferences.glade:118
 msgid "Double-click action"
-msgstr ""
+msgstr "Acción al pulsar dos veces con el ratón"
 
 #: remmina/ui/remmina_preferences.glade:131
 msgid "Open connection"
-msgstr ""
+msgstr "Abrir una conexión"
 
 #: remmina/ui/remmina_preferences.glade:132
 msgid "Edit settings"
-msgstr ""
+msgstr "Editar la configuración"
 
 #: remmina/ui/remmina_preferences.glade:146
 msgid "Scale quality"
-msgstr ""
+msgstr "Calidad de escala"
 
 #: remmina/ui/remmina_preferences.glade:159
 msgid "Nearest"
-msgstr ""
+msgstr "Más próximo"
 
 #: remmina/ui/remmina_preferences.glade:160
 msgid "Tiles"
-msgstr ""
+msgstr "Mosaicos"
 
 #: remmina/ui/remmina_preferences.glade:161
 msgid "Bilinear"
-msgstr ""
+msgstr "Bilineal"
 
 #: remmina/ui/remmina_preferences.glade:162
 msgid "Hyper"
-msgstr ""
+msgstr "Híper"
 
 #: remmina/ui/remmina_preferences.glade:176
 msgid "Auto scroll step size"
-msgstr ""
+msgstr "Tamaño de paso de desplazamiento automático"
 
 #: remmina/ui/remmina_preferences.glade:200
 msgid "Maximum recent items"
-msgstr ""
+msgstr "Elementos recientes máximos"
 
 #: remmina/ui/remmina_preferences.glade:276
 msgid "Screenshots folder"
-msgstr ""
+msgstr "Carpeta de capturas de pantalla"
 
 #: remmina/ui/remmina_preferences.glade:287
 msgid "Choose the directory where you want to save Remmina screenshots."
-msgstr ""
+msgstr "Elija la carpeta donde quiera guardar capturas de pantalla de Remmina."
 
 #: remmina/ui/remmina_preferences.glade:290
 msgid "Select a Directory"
-msgstr ""
+msgstr "Seleccione una carpeta"
 
 #: remmina/ui/remmina_preferences.glade:300
 msgid "Configure resolutions"
-msgstr ""
+msgstr "Configurar resoluciones"
 
 #: remmina/ui/remmina_preferences.glade:320
 msgid "Options"
-msgstr ""
+msgstr "Opciones"
 
 #: remmina/ui/remmina_preferences.glade:342
 msgid "Always show tabs"
-msgstr ""
+msgstr "Mostrar siempre las pestañas"
 
 #: remmina/ui/remmina_preferences.glade:358
 msgid "Hide toolbar in tabbed interface"
-msgstr ""
+msgstr "Ocultar barra de herramientas en interfaz con pestañas"
 
 #: remmina/ui/remmina_preferences.glade:377
 msgid "Default view mode"
-msgstr ""
+msgstr "Modo de vista predeterminado"
 
 #: remmina/ui/remmina_preferences.glade:390
 msgid "Automatic"
-msgstr ""
+msgstr "Automático"
 
 #: remmina/ui/remmina_preferences.glade:391
 msgid "Scrolled window"
-msgstr ""
+msgstr "Ventana desplazable"
 
 #: remmina/ui/remmina_preferences.glade:392
 msgid "Scrolled fullscreen"
-msgstr ""
+msgstr "Pantalla completa desplazable"
 
 #: remmina/ui/remmina_preferences.glade:393
 msgid "Viewport fullscreen"
-msgstr ""
+msgstr "Visor a pantalla completa"
 
 #: remmina/ui/remmina_preferences.glade:407
 msgid "Tab interface"
-msgstr ""
+msgstr "Interfaz con pestañas"
 
 #: remmina/ui/remmina_preferences.glade:420
 msgid "Tab by groups"
-msgstr ""
+msgstr "Pestañas por grupos"
 
 #: remmina/ui/remmina_preferences.glade:421
 msgid "Tab by protocols"
-msgstr ""
+msgstr "Pestañas por protocolos"
 
 #: remmina/ui/remmina_preferences.glade:422
 msgid "Tab all connections"
-msgstr ""
+msgstr "Abrir en pestañas todas las conexiones"
 
 #: remmina/ui/remmina_preferences.glade:423
 msgid "Do not use tabs"
-msgstr ""
+msgstr "No utilizar pestañas"
 
 #: remmina/ui/remmina_preferences.glade:437
 msgid "Show buttons icons"
-msgstr ""
+msgstr "Mostrar iconos de botones"
 
 #: remmina/ui/remmina_preferences.glade:449
 #: remmina/ui/remmina_preferences.glade:479
 msgid "This setting will be active after the application restart"
-msgstr ""
+msgstr "Esta opción surtirá efecto al reiniciar la aplicación"
 
 #: remmina/ui/remmina_preferences.glade:452
 #: remmina/ui/remmina_preferences.glade:482
 msgid "Use system theme preferences"
-msgstr ""
+msgstr "Utilizar preferencias de tema del sistema"
 
 #: remmina/ui/remmina_preferences.glade:453
 #: remmina/ui/remmina_preferences.glade:483
 msgid "Show always"
-msgstr ""
+msgstr "Mostrar siempre"
 
 #: remmina/ui/remmina_preferences.glade:454
 #: remmina/ui/remmina_preferences.glade:484
 msgid "Hide always"
-msgstr ""
+msgstr "Ocultar siempre"
 
 #: remmina/ui/remmina_preferences.glade:468
 msgid "Show menu icons"
-msgstr ""
+msgstr "Mostrar iconos de menús"
 
 #: remmina/ui/remmina_preferences.glade:495
 msgid "Fullscreen on the same monitor as the connection window"
-msgstr ""
+msgstr "Pantalla completa en mismo monitor que ventana de conexión"
 
 #: remmina/ui/remmina_preferences.glade:516
 msgid "Peeking"
-msgstr ""
+msgstr "Asomar"
 
 #: remmina/ui/remmina_preferences.glade:517
 msgid "Hidden"
-msgstr ""
+msgstr "Oculta"
 
 #: remmina/ui/remmina_preferences.glade:518
 msgid "Disabled"
-msgstr ""
+msgstr "Desactivada"
 
 #: remmina/ui/remmina_preferences.glade:532
 msgid "Fullscreen toolbar visibility"
-msgstr ""
+msgstr "Visibilidad de barra de herramientas en pantalla completa"
 
 #: remmina/ui/remmina_preferences.glade:550
 msgid "Appearance"
-msgstr ""
+msgstr "Apariencia"
 
 #: remmina/ui/remmina_preferences.glade:573
 msgid "Show new connection on top of the menu"
-msgstr ""
+msgstr "Mostrar conexiones nuevas al principio del menú"
 
 #: remmina/ui/remmina_preferences.glade:589
 msgid "Hide total count in group menu"
-msgstr ""
+msgstr "Ocultar recuento total en el menú de grupo"
 
 #: remmina/ui/remmina_preferences.glade:605
 msgid "Disable tray icon"
-msgstr ""
+msgstr "Desactivar icono de la bandeja"
 
 #: remmina/ui/remmina_preferences.glade:622
 msgid "Start Remmina in tray icon at user logon"
-msgstr ""
+msgstr "Iniciar Remmina minimizado al iniciar la sesión"
 
 #: remmina/ui/remmina_preferences.glade:638
 msgid "Dark Tray Icon"
-msgstr ""
+msgstr "Icono oscuro de bandeja"
 
 #: remmina/ui/remmina_preferences.glade:642
 msgid "Choose this if your theme panel is light."
-msgstr ""
+msgstr "Elija esta opción si el tema del panel es claro."
 
 #: remmina/ui/remmina_preferences.glade:664
 msgid "Applet"
-msgstr ""
+msgstr "Miniaplicación"
 
 #: remmina/ui/remmina_preferences.glade:691
 msgid "Host key"
-msgstr ""
+msgstr "Tecla anfitrión"
 
 #: remmina/ui/remmina_preferences.glade:747
 msgid "Auto-fit window"
-msgstr ""
+msgstr "Ajustar automticamente la ventana"
 
 #: remmina/ui/remmina_preferences.glade:844
 msgid "Grab keyboard"
-msgstr ""
+msgstr "Captar el teclado"
 
 #: remmina/ui/remmina_preferences.glade:929
 msgid "Show / hide toolbar"
-msgstr ""
+msgstr "Mostrar u ocultar barra de herramientas"
 
 #: remmina/ui/remmina_preferences.glade:967
 msgid "SCREENSHOT"
-msgstr ""
+msgstr "CAPTURA DE PANTALLA"
 
 #: remmina/ui/remmina_preferences.glade:986
 msgid "View-only mode"
-msgstr ""
+msgstr "Modo de solo visualización"
 
 #: remmina/ui/remmina_preferences.glade:996
 msgid "VIEW-ONLY MODE"
-msgstr ""
+msgstr "MODO DE SOLO VISUALIZACIÓN"
 
 #: remmina/ui/remmina_preferences.glade:1020
 msgid "Keyboard"
-msgstr ""
+msgstr "Teclado"
 
 #: remmina/ui/remmina_preferences.glade:1046
 msgid "SSH tunnel local port"
-msgstr ""
+msgstr "Puerto de túnel local SSH"
 
 #: remmina/ui/remmina_preferences.glade:1068
 msgid "Parse ~/.ssh/config"
-msgstr ""
+msgstr "Analizar ~/.ssh/config"
 
 #: remmina/ui/remmina_preferences.glade:1088
 msgid "SSH_LOG_NOLOG"
@@ -2185,150 +2207,152 @@ msgstr ""
 
 #: remmina/ui/remmina_preferences.glade:1106
 msgid "SSH log level"
-msgstr ""
+msgstr "Nivel de registro SSH"
 
 #: remmina/ui/remmina_preferences.glade:1124
 msgid "SSH Options"
-msgstr ""
+msgstr "Opciones de SSH"
 
 #: remmina/ui/remmina_preferences.glade:1156
 msgid "Terminal font"
-msgstr ""
+msgstr "Tipo de letra de terminal"
 
 #: remmina/ui/remmina_preferences.glade:1169
 msgid "Scrollback lines"
-msgstr ""
+msgstr "Renglones de retrodesplazamiento"
 
 #: remmina/ui/remmina_preferences.glade:1178
 msgid "Use system default font"
-msgstr ""
+msgstr "Utilizar tipo de letra del sistema"
 
 #: remmina/ui/remmina_preferences.glade:1231
 msgid "Allow bold text"
-msgstr ""
+msgstr "Permitir texto en negrita"
 
 #: remmina/ui/remmina_preferences.glade:1263
 msgid "Clipboard copy shortcut"
-msgstr ""
+msgstr "Atajo de copia de portapapeles"
 
 #: remmina/ui/remmina_preferences.glade:1275
 #: remmina/ui/remmina_preferences.glade:1316
 #: remmina/ui/remmina_preferences.glade:1357
 msgid "(Host key +)"
-msgstr ""
+msgstr "(Tecla anfitrión +)"
 
 #: remmina/ui/remmina_preferences.glade:1304
 msgid "Clipboard paste shortcut"
-msgstr ""
+msgstr "Atajo de pegado de portapapeles"
 
 #: remmina/ui/remmina_preferences.glade:1345
 msgid "Select all shortcut"
-msgstr ""
+msgstr "Atajo de seleccionar todo"
 
 #: remmina/ui/remmina_preferences.glade:1397
 #: remmina/ui/remmina_preferences.glade:1409
 msgid "Foreground color"
-msgstr ""
+msgstr "Color de primer plano"
 
 #: remmina/ui/remmina_preferences.glade:1422
 #: remmina/ui/remmina_preferences.glade:1434
 msgid "Background color"
-msgstr ""
+msgstr "Color de segundo plano"
 
 #: remmina/ui/remmina_preferences.glade:1447
 msgid "Cursor color"
-msgstr ""
+msgstr "Color del cursor"
 
 #: remmina/ui/remmina_preferences.glade:1459
 msgid "Cursor Color"
-msgstr ""
+msgstr "Color del cursor"
 
 #: remmina/ui/remmina_preferences.glade:1472
 msgid "Normal colors"
-msgstr ""
+msgstr "Colores normales"
 
 #: remmina/ui/remmina_preferences.glade:1485
 msgid "Bright colors"
-msgstr ""
+msgstr "Colores brillantes"
 
 #: remmina/ui/remmina_preferences.glade:1497
 msgid "Pick a color for black"
-msgstr ""
+msgstr "Elija el tono de negro"
 
 #: remmina/ui/remmina_preferences.glade:1509
 msgid "Pick a color for bright black"
-msgstr ""
+msgstr "Elija el tono de negro brillante"
 
 #: remmina/ui/remmina_preferences.glade:1521
 msgid "Pick a color for red"
-msgstr ""
+msgstr "Elija el tono de rojo"
 
 #: remmina/ui/remmina_preferences.glade:1533
 msgid "Pick a color for green"
-msgstr ""
+msgstr "Elija el tono de verde"
 
 #: remmina/ui/remmina_preferences.glade:1545
 msgid "Pick a color for yellow"
-msgstr ""
+msgstr "Elija el tono de amarillo"
 
 #: remmina/ui/remmina_preferences.glade:1557
 msgid "Pick a color for blue"
-msgstr ""
+msgstr "Elija el tono de azul"
 
 #: remmina/ui/remmina_preferences.glade:1569
 msgid "Pick a color for magenta"
-msgstr ""
+msgstr "Elija el tono de magenta"
 
 #: remmina/ui/remmina_preferences.glade:1581
 msgid "Pick a color for Cyan"
-msgstr ""
+msgstr "Elija el tono de cian"
 
 #: remmina/ui/remmina_preferences.glade:1593
 msgid "Pick a color for white"
-msgstr ""
+msgstr "Elija el tono de blanco"
 
 #: remmina/ui/remmina_preferences.glade:1605
 msgid "Pick a color for bright red"
-msgstr ""
+msgstr "Elija el tono de rojo brillante"
 
 #: remmina/ui/remmina_preferences.glade:1617
 msgid "Pick a color for bright green"
-msgstr ""
+msgstr "Elija el tono de verde brillante"
 
 #: remmina/ui/remmina_preferences.glade:1629
 msgid "Pick a color for bright yellow"
-msgstr ""
+msgstr "Elija el tono de amarillo brillante"
 
 #: remmina/ui/remmina_preferences.glade:1641
 msgid "Pick a color for bright blue"
-msgstr ""
+msgstr "Elija el tono de azul brillante"
 
 #: remmina/ui/remmina_preferences.glade:1653
 msgid "Pick a color for bright magenta"
-msgstr ""
+msgstr "Elija el tono de magenta brillante"
 
 #: remmina/ui/remmina_preferences.glade:1665
 msgid "Pick a color for bright Cyan"
-msgstr ""
+msgstr "Elija el tono de cian brillante"
 
 #: remmina/ui/remmina_preferences.glade:1677
 msgid "Pick a color for bright white"
-msgstr ""
+msgstr "Elija el tono de blanco brillante"
 
 #: remmina/ui/remmina_preferences.glade:1690
 msgid "Load color scheme"
-msgstr ""
+msgstr "Cargar combinación de colores"
 
 #: remmina/ui/remmina_preferences.glade:1701
 msgid ""
 "Chose a color scheme file, You can download one from https://github.com/"
 "mbadolato/iTerm2-Color-Schemes."
 msgstr ""
+"Elija un archivo de colores. Puede descargar uno de https://github.com/"
+"mbadolato/iTerm2-Color-Schemes."
 
 #: remmina/ui/remmina_preferences.glade:1702
 msgid "Terminal Color Scheme file chooser"
-msgstr ""
+msgstr "Selector de archivo de combinación de colores de terminal"
 
 #: remmina/ui/remmina_preferences.glade:1792
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
