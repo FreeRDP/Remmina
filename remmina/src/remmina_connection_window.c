@@ -934,7 +934,7 @@ static void remmina_connection_holder_toolbar_autofit(GtkWidget* widget, Remmina
 		gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(cnnobj->scrolled_container), GTK_POLICY_NEVER,
 			GTK_POLICY_NEVER);
 
-		/* ToDo: save returned source id in priv->something and then delete when main object is destroyed */
+		/** @todo save returned source id in priv->something and then delete when main object is destroyed */
 		g_timeout_add(200, (GSourceFunc)remmina_connection_holder_toolbar_autofit_restore, cnnhld);
 	}
 
@@ -1805,7 +1805,7 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 
 	remminafile = remmina_file_get_filename(cnnobj->remmina_file);
 	//imagedir = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
-	/* TODO: Improve file name (DONE:8743571d) + give the user the option */
+	/** @todo Improve file name (DONE:8743571d) + give the user the option */
 	pngdate = g_strdup_printf("%d-%d-%d-%d:%d:%f",
 		g_date_time_get_year(date),
 		g_date_time_get_month(date),
@@ -3394,7 +3394,7 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
 			return FALSE;
 		}
 	}else if (remmina_pref.hostkey && keyval == remmina_pref.hostkey) {
-		/* TODO: Add callback for hostname transparent overlay #832 */
+		/** @todo Add callback for hostname transparent overlay #832 */
 		cnnhld->hostkey_activated = TRUE;
 		cnnhld->hostkey_used = FALSE;
 		return TRUE;

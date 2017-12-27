@@ -1211,7 +1211,7 @@ static void remmina_file_editor_on_connect(GtkWidget* button, RemminaFileEditor*
 static void remmina_file_editor_on_save_connect(GtkWidget* button, RemminaFileEditor* gfe)
 {
 	TRACE_CALL(__func__);
-	/* TODO: Call remmina_file_editor_on_save */
+	/** @todo Call remmina_file_editor_on_save */
 	RemminaFile* gf;
 
 	remmina_file_editor_update(gfe);

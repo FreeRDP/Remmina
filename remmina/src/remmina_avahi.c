@@ -227,7 +227,7 @@ void remmina_avahi_start(RemminaAvahi* ga)
 		return;
 	}
 
-	/* TODO: Customize the default domain here */
+	/** @todo Customize the default domain here */
 	ga->priv->sb = avahi_service_browser_new(ga->priv->client, AVAHI_IF_UNSPEC, AVAHI_PROTO_UNSPEC, "_rfb._tcp", NULL, 0,
 		remmina_avahi_browse_callback, ga);
 	if (!ga->priv->sb) {

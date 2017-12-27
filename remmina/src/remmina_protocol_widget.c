@@ -610,7 +610,7 @@ static gboolean remmina_protocol_widget_init_tunnel(RemminaProtocolWidget* gp)
 #endif
 
 /**
- * @brief
+ * Start an SSH tunnel if possible and return the host:port string.
  *
  */
 gchar* remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget* gp, gint default_port, gboolean port_plus)
@@ -1268,7 +1268,7 @@ void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp,
 	TRACE_CALL(__func__);
 	GdkDisplay *display;
 #if GTK_CHECK_VERSION(3, 20, 0)
-	/* TODO: rename to "seat" */
+	/** @todo rename to "seat" */
 	GdkSeat *seat;
 	GdkDevice *device;
 #else

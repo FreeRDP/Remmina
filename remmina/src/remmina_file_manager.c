@@ -80,7 +80,7 @@ gchar *remmina_file_get_datadir(void)
 	return remminadir;
 }
 
-/* TODO: remmina_pref_file_do_copy and remmina_file_manager_do_copy to remmina_files_copy */
+/** @todo remmina_pref_file_do_copy and remmina_file_manager_do_copy to remmina_files_copy */
 static gboolean remmina_file_manager_do_copy(const char *src_path, const char *dst_path)
 {
 	GFile *src = g_file_new_for_path(src_path), *dst = g_file_new_for_path(dst_path);

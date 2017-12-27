@@ -1250,7 +1250,7 @@ static gboolean remmina_rdp_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 	bytesPerPixel = GetBytesPerPixel(gdi->hdc->format);
 	bitsPerPixel = GetBitsPerPixel(gdi->hdc->format);
 
-	/* ToDo: we should lock freerdp subthread to update rfi->primary_buffer, rfi->gdi and w/h,
+	/** @todo we should lock freerdp subthread to update rfi->primary_buffer, rfi->gdi and w/h,
 	 * from here to memcpy, but... how ? */
 
 	szmem = gdi->width * gdi->height * bytesPerPixel;

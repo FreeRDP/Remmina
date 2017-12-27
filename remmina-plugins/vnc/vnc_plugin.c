@@ -942,7 +942,7 @@ N_("Couldn't convert '%s' to host address")
 N_("VNC connection failed: %s")
 N_("Your connection has been rejected.")
 #endif
-/* TODO: We only store the last message at this moment. */
+/** @todo We only store the last message at this moment. */
 #define MAX_ERROR_LENGTH 1000
 static gchar vnc_error[MAX_ERROR_LENGTH + 1];
 static gboolean vnc_encryption_disable_requested;

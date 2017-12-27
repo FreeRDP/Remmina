@@ -318,7 +318,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password)
 		ssh->passphrase = g_strdup(password);
 	}
 
-	/* TODO: Here we should call
+	/** @todo Here we should call
 	 * gint method;
 	 * method = ssh_userauth_list(ssh->session, NULL);
 	 * And than test both the method and the option selected by the user

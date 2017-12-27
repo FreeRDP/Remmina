@@ -291,7 +291,7 @@ void remmina_plugin_manager_for_each_plugin(RemminaPluginType type, RemminaPlugi
 /* A copy of remmina_plugin_manager_show and remmina_plugin_manager_show_for_each
  * This is because we want to print the list of plugins, and their versions, to the standard output
  * with the remmina command line option --full-version instead of using the plugins widget
- * TODO: Investigate to use only GListStore and than pass the elements to be shown to 2 separate
+ ** @todo Investigate to use only GListStore and than pass the elements to be shown to 2 separate
  *       functions
  * WARNING: GListStore is supported only from GLib 2.44 */
 static gboolean remmina_plugin_manager_show_for_each_stdout(RemminaPlugin *plugin)
