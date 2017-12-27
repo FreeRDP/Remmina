@@ -1067,7 +1067,7 @@ static void remmina_main_init(void)
 	gtk_tree_selection_set_select_function(
 		gtk_tree_view_get_selection(remminamain->tree_files_list),
 		remmina_main_selection_func, NULL, NULL);
-	/* TODO: Set entry_quick_connect_server as default search entry. Weirdly. This does not work yet. */
+	/** @todo Set entry_quick_connect_server as default search entry. Weirdly. This does not work yet. */
 	gtk_tree_view_set_search_entry(remminamain->tree_files_list, GTK_ENTRY(remminamain->entry_quick_connect_server));
 	/* Load the files list */
 	remmina_main_load_files();
