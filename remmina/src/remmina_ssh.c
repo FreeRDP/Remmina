@@ -492,12 +492,14 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 	/* When SSH_OPTIONS_USER is not set, the local user account is used */
 	if (*ssh->user != 0)
 		ssh_options_set(ssh->session, SSH_OPTIONS_USER, ssh->user);
-	if (*ssh->privkeyfile != 0) {
-		rc = ssh_options_set(ssh->session, SSH_OPTIONS_IDENTITY, ssh->privkeyfile);
-		if (rc == 0) {
-			remmina_log_printf("[SSH] SSH_OPTIONS_IDENTITY has been set to: %s\n", ssh->privkeyfile);
-		}else {
-			remmina_log_printf("[SSH] SSH_OPTIONS_IDENTITY is not set, by default identity, id_dsa and id_rsa are checked.\n");
+	if (ssh->privkeyfile) {
+		if (*ssh->privkeyfile != 0) {
+			rc = ssh_options_set(ssh->session, SSH_OPTIONS_IDENTITY, ssh->privkeyfile);
+			if (rc == 0) {
+				remmina_log_printf("[SSH] SSH_OPTIONS_IDENTITY has been set to: %s\n", ssh->privkeyfile);
+			}else {
+				remmina_log_printf("[SSH] SSH_OPTIONS_IDENTITY is not set, by default identity, id_dsa and id_rsa are checked.\n");
+			}
 		}
 	}
 
