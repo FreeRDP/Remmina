@@ -1,5 +1,16 @@
 # Change Log
 
+## [v1.2.0-rcgit.26](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.26) (2017-12-28)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.25...v1.2.0-rcgit.26)
+
+**Fixed bugs:**
+
+- SSH not working [\#1418](https://github.com/FreeRDP/Remmina/issues/1418)
+
+**Closed issues:**
+
+- "Segmentation fault" during start at Xubuntu 17.10 [\#1419](https://github.com/FreeRDP/Remmina/issues/1419)
+
 ## [v1.2.0-rcgit.25](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.25) (2017-12-27)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.24...v1.2.0-rcgit.25)
 
@@ -299,7 +310,6 @@
 - Connection Timeout - vfprintf.c no such file or directory - Segfault [\#1080](https://github.com/FreeRDP/Remmina/issues/1080)
 - SSH password can't save , terminal auto disconnection [\#1078](https://github.com/FreeRDP/Remmina/issues/1078)
 - Remmina getting down when used ssh & mc [\#1075](https://github.com/FreeRDP/Remmina/issues/1075)
-- Only stored passwords when connecting via RD-Gateway [\#922](https://github.com/FreeRDP/Remmina/issues/922)
 - VNC over SSH tunnel very slow [\#713](https://github.com/FreeRDP/Remmina/issues/713)
 - Domain/Username/Password database [\#711](https://github.com/FreeRDP/Remmina/issues/711)
 - Remmina RDP hangs after second certificate confirmation when using RD gateway [\#706](https://github.com/FreeRDP/Remmina/issues/706)
