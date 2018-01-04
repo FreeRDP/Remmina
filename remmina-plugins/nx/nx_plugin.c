@@ -596,6 +596,7 @@ static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 
 	remmina_plugin_nx_service->protocol_plugin_set_width(gp, width);
 	remmina_plugin_nx_service->protocol_plugin_set_height(gp, height);
+	remmina_plugin_nx_service->protocol_plugin_set_expand(gp, TRUE);
 	gtk_widget_set_size_request(GTK_WIDGET(gp), width, height);
 
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
