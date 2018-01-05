@@ -327,6 +327,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password)
 	switch (ssh->auth) {
 
 	case SSH_AUTH_PASSWORD:
+		ret = 0;
 		if (method & SSH_AUTH_METHOD_INTERACTIVE || method & SSH_AUTH_METHOD_PASSWORD) {
 			ret = remmina_ssh_auth_interactive(ssh);
 			if (!ssh->authenticated)
