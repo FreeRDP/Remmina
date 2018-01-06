@@ -57,7 +57,7 @@ void remmina_stats_sender_send()
 
 	g_free(s);
 	g_object_unref(g);
-	json_node_unref(n);
+	json_node_free(n);      // Should use json_node_undef, but in ubuntu 14.04 is not available
 
 }
 
