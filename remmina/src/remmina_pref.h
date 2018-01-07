@@ -186,7 +186,7 @@ typedef struct _RemminaPref {
 	/* Usage stats */
 	gboolean periodic_usage_stats_permission_asked;
 	gboolean periodic_usage_stats_permitted;
-	gint64 periodic_usage_stats_last_sent;
+	glong periodic_usage_stats_last_sent;
 
 
 } RemminaPref;

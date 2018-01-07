@@ -37,6 +37,8 @@
 #include "config.h"
 #include <gtk/gtk.h>
 #include <string.h>
+#include "remmina/remmina_trace_calls.h"
+
 #ifdef GDK_WINDOWING_WAYLAND
 	#include <gdk/gdkwayland.h>
 #endif
@@ -47,8 +49,12 @@
 
 JsonNode *remmina_stats_get_gtk_version()
 {
+	TRACE_CALL(__func__);
 	JsonBuilder *b;
 	JsonNode *r;
+
+	/* WARNING: this function is usually executed on a dedicated thread,
+	 * not on the main thread */
 
 	b = json_builder_new();
 	json_builder_begin_object(b);
@@ -67,9 +73,13 @@ JsonNode *remmina_stats_get_gtk_version()
 
 JsonNode *remmina_stats_get_gtk_backend()
 {
+	TRACE_CALL(__func__);
 	JsonNode *r;
 	GdkDisplay *disp;
 	gchar *bkend;
+
+	/* WARNING: this function is usually executed on a dedicated thread,
+	 * not on the main thread */
 
 	disp = gdk_display_get_default();
 
@@ -98,7 +108,11 @@ JsonNode *remmina_stats_get_gtk_backend()
 
 JsonNode *remmina_stats_get_uid()
 {
+	TRACE_CALL(__func__);
 	JsonNode *r;
+
+	/* WARNING: this function is usually executed on a dedicated thread,
+	 * not on the main thread */
 
 	/* ToDo: Improve UID */
 	GChecksum *chs;
@@ -121,8 +135,12 @@ JsonNode *remmina_stats_get_uid()
 
 JsonNode *remmina_stats_get_version()
 {
+	TRACE_CALL(__func__);
 	JsonBuilder *b;
 	JsonNode *r;
+
+	/* WARNING: this function is usually executed on a dedicated thread,
+	 * not on the main thread */
 
 	b = json_builder_new();
 	json_builder_begin_object(b);
@@ -148,6 +166,12 @@ JsonNode *remmina_stats_get_all()
 	/* Get all statistics in json format to send periodically to the PHP server.
 	 * Return a pointer to the JSON string.
 	 * The caller should free the returned buffer with g_free() */
+
+	/* WARNING: this function is usually executed on a dedicated thread,
+	 * not on the main thread */
+
+
+	TRACE_CALL(__func__);
 
 	JsonBuilder *b;
 	JsonNode *n;

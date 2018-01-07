@@ -38,6 +38,9 @@
 
 G_BEGIN_DECLS
 
+void remmina_stats_sender_schedule(void);
+
+/* This is only for testing purposes: force a SEND */
 void remmina_stats_sender_send(void);
 
 G_END_DECLS

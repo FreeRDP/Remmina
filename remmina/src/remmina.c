@@ -202,6 +202,8 @@ static void remmina_on_startup(GApplication *app)
 	gtk_icon_theme_append_search_path(gtk_icon_theme_get_default(),
 		REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons");
 	g_application_hold(app);
+
+	remmina_stats_sender_schedule();
 }
 
 static gint remmina_on_local_cmdline(GApplication *app, GVariantDict *options, gpointer user_data)
