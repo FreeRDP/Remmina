@@ -183,6 +183,12 @@ typedef struct _RemminaPref {
 	gchar *color14;
 	gchar *color15;
 
+	/* Usage stats */
+	gboolean periodic_usage_stats_permission_asked;
+	gboolean periodic_usage_stats_permitted;
+	glong periodic_usage_stats_last_sent;
+
+
 } RemminaPref;
 
 #define DEFAULT_SSH_PARSECONFIG TRUE

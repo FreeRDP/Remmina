@@ -53,6 +53,8 @@
 #include "remmina_ssh_plugin.h"
 #include "remmina_widget_pool.h"
 #include "remmina/remmina_trace_calls.h"
+#include "remmina_stats_sender.h"
+
 
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
@@ -201,6 +203,8 @@ static void remmina_on_startup(GApplication *app)
 	gtk_icon_theme_append_search_path(gtk_icon_theme_get_default(),
 		REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons");
 	g_application_hold(app);
+
+	remmina_stats_sender_schedule();
 }
 
 static gint remmina_on_local_cmdline(GApplication *app, GVariantDict *options, gpointer user_data)
@@ -222,7 +226,7 @@ int main(int argc, char* argv[])
 	const gchar *app_id;
 	int status;
 
-	gdk_set_allowed_backends("x11,broadway,quartz,wayland,mir");
+	gdk_set_allowed_backends("wayland,x11,broadway,quartz,mir");
 
 	remmina_masterthread_exec_save_main_thread_id();
 
