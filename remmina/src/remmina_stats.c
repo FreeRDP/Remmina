@@ -36,6 +36,7 @@
 
 #include "config.h"
 #include <gtk/gtk.h>
+#include <string.h>
 #ifdef GDK_WINDOWING_WAYLAND
 	#include <gdk/gdkwayland.h>
 #endif
@@ -95,6 +96,53 @@ JsonNode *remmina_stats_get_gtk_backend()
 
 }
 
+JsonNode *remmina_stats_get_uid()
+{
+	JsonNode *r;
+
+	/* ToDo: Improve UID */
+	GChecksum *chs;
+	const gchar *uname, *hname;
+	const gchar *chss;
+	uname = g_get_user_name();
+	hname = g_get_host_name();
+	chs = g_checksum_new(G_CHECKSUM_SHA256);
+	g_checksum_update(chs, (const guchar*)uname, strlen(uname));
+	g_checksum_update(chs, (const guchar*)hname, strlen(hname));
+	chss = g_checksum_get_string(chs);
+
+	r = json_node_alloc();
+	json_node_init_string(r, chss);
+	g_checksum_free(chs);
+
+	return r;
+
+}
+
+JsonNode *remmina_stats_get_version()
+{
+	JsonBuilder *b;
+	JsonNode *r;
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+	json_builder_set_member_name(b, "version");
+	json_builder_add_string_value(b, VERSION);
+	json_builder_set_member_name(b, "git_revision");
+	json_builder_add_string_value(b, REMMINA_GIT_REVISION);
+	json_builder_set_member_name(b, "snap_build");
+#ifdef SNAP_BUILD
+	json_builder_add_int_value(b, 1);
+#else
+	json_builder_add_int_value(b, 0);
+#endif
+	json_builder_end_object (b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+	return r;
+
+}
+
 JsonNode *remmina_stats_get_all()
 {
 	/* Get all statistics in json format to send periodically to the PHP server.
@@ -106,12 +154,21 @@ JsonNode *remmina_stats_get_all()
 	b = json_builder_new();
 	json_builder_begin_object(b);
 
+	n = remmina_stats_get_uid();
+	json_builder_set_member_name(b, "UID");
+	json_builder_add_value(b, n);
+
+	n = remmina_stats_get_version();
+	json_builder_set_member_name(b, "REMMINAVERSION");
+	json_builder_add_value(b, n);
+
+
 	n = remmina_stats_get_gtk_version();
-	json_builder_set_member_name(b,"GTKVERSION");
+	json_builder_set_member_name(b, "GTKVERSION");
 	json_builder_add_value(b, n);
 
 	n = remmina_stats_get_gtk_backend();
-	json_builder_set_member_name(b,"GTKBACKEND");
+	json_builder_set_member_name(b, "GTKBACKEND");
 	json_builder_add_value(b, n);
 
 	json_builder_end_object(b);
