@@ -347,13 +347,16 @@ gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 	return retval;
 }
 
-/* Check if the plugin accepts keystrokes */
+/** Check if the plugin accepts keystrokes.
+ */
 gboolean remmina_protocol_widget_plugin_receives_keystrokes(RemminaProtocolWidget* gp)
 {
 	return gp->priv->plugin->send_keystrokes ? TRUE : FALSE;
 }
 
-/* Send to the plugin some keystrokes */
+/**
+ * Send to the plugin some keystrokes.
+ */
 void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget* gp, GtkMenuItem *widget)
 {
 	TRACE_CALL(__func__);

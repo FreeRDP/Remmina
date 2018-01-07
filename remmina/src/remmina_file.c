@@ -95,7 +95,7 @@ remmina_file_new(void)
 	if (remminafile) {
 		g_free(remminafile->filename);
 		remminafile->filename = NULL;
-	}else  {
+	}else {
 		remminafile = remmina_file_new_empty();
 	}
 
@@ -252,14 +252,14 @@ remmina_file_load(const gchar *filename)
 							/* Annotate in spsettings that this value comes from secret_plugin */
 							g_hash_table_insert(remminafile->spsettings, g_strdup(key), NULL);
 							g_free(sec);
-						}else  {
+						}else {
 							remmina_file_set_string(remminafile, key, s);
 						}
-					}else  {
+					}else {
 						remmina_file_set_string_ref(remminafile, key, remmina_crypt_decrypt(s));
 					}
 					g_free(s);
-				}else  {
+				}else {
 					/* If we find "resolution", then we split it in two */
 					if (strcmp(key, "resolution") == 0) {
 						resolution_str = g_key_file_get_string(gkeyfile, "remmina", key, NULL);
@@ -271,7 +271,7 @@ remmina_file_load(const gchar *filename)
 							remmina_file_set_string_ref(remminafile, "resolution_height", NULL);
 						}
 						g_free(resolution_str);
-					}else  {
+					}else {
 						remmina_file_set_string_ref(remminafile, key,
 							g_key_file_get_string(gkeyfile, "remmina", key, NULL));
 					}
@@ -279,7 +279,7 @@ remmina_file_load(const gchar *filename)
 			}
 			g_strfreev(keys);
 		}
-	}else  {
+	}else {
 		remminafile = NULL;
 	}
 
@@ -308,7 +308,7 @@ void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting,
 			return;
 		}
 		g_hash_table_insert(remminafile->settings, g_strdup(setting), value);
-	}else  {
+	}else {
 		g_hash_table_insert(remminafile->settings, g_strdup(setting), g_strdup(""));
 	}
 }
@@ -440,21 +440,21 @@ void remmina_file_save(RemminaFile *remminafile)
 							secret_plugin->store_password(remminafile, key, value);
 						}
 						g_key_file_set_string(gkeyfile, "remmina", key, ".");
-					}else  {
+					}else {
 						g_key_file_set_string(gkeyfile, "remmina", key, "");
 						secret_plugin->delete_password(remminafile, key);
 					}
-				}else  {
+				}else {
 					if (value && value[0]) {
 						s = remmina_crypt_encrypt(value);
 						g_key_file_set_string(gkeyfile, "remmina", key, s);
 						g_free(s);
-					}else  {
+					}else {
 						g_key_file_set_string(gkeyfile, "remmina", key, "");
 					}
 				}
 			}
-		}else  {
+		}else {
 			g_key_file_set_string(gkeyfile, "remmina", key, value);
 		}
 	}
@@ -588,6 +588,16 @@ void remmina_file_unsave_password(RemminaFile *remminafile)
 	remmina_file_save(remminafile);
 }
 
+/**
+ * Return the string date of the last time a file has been modified.
+ *
+ * This is used to return the modification date of a file and it's used
+ * to return the modification date and time of a givwn remmina file.
+ * If it fails it will return "26/01/1976 23:30:00", that is just a date to don't
+ * return an empty string (challenge: what was happened that day at that time?).
+ * @return A date string in the form "%d/%m/%Y %H:%M:%S".
+ * @todo This should be moved to remmina_utils.c
+ */
 gchar*
 remmina_file_get_datetime(RemminaFile *remminafile)
 {
@@ -631,8 +641,13 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	return modtime_string;
 }
 
-/* Function used to update the atime and mtime of a given remmina file, partially
- * taken from suckless sbase */
+/**
+ * Update the atime and mtime of a given filename.
+ * Function used to update the atime and mtime of a given remmina file, partially
+ * taken from suckless sbase
+ * @see https://git.suckless.org/sbase/tree/touch.c
+ * @todo This should be moved to remmina_utils.c
+ */
 void
 remmina_file_touch(RemminaFile *remminafile)
 {
