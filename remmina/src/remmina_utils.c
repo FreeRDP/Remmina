@@ -32,7 +32,7 @@
  *
  */
 
-/*
+/**
  * General utility functions, non-GTK related.
  */
 
