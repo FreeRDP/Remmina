@@ -53,6 +53,7 @@
 #include "remmina_ssh_plugin.h"
 #include "remmina_widget_pool.h"
 #include "remmina/remmina_trace_calls.h"
+#include "remmina_stats_sender.h"
 
 
 #ifdef HAVE_ERRNO_H

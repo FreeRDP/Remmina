@@ -1110,6 +1110,7 @@ void remmina_main_on_click_ustat_yes(GtkWidget *w, gpointer user_data)
 	remmina_pref.periodic_usage_stats_permitted = TRUE;
 	remmina_pref_save();
 	gtk_widget_set_visible(GTK_WIDGET(remminamain->box_ustat), FALSE);
+	remmina_stats_sender_schedule();
 }
 
 void remmina_main_on_click_ustat_no(GtkWidget *w, gpointer user_data)
