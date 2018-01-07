@@ -38,6 +38,10 @@
 #include <gtk/gtk.h>
 #include "remmina_stats.h"
 
+#if !JSON_CHECK_VERSION(1,2,0)
+	#define json_node_unref(x) json_node_free(x)
+#endif
+
 void remmina_stats_sender_send()
 {
 	JsonNode *n;
@@ -57,7 +61,7 @@ void remmina_stats_sender_send()
 
 	g_free(s);
 	g_object_unref(g);
-	json_node_free(n);      // Should use json_node_undef, but in ubuntu 14.04 is not available
+	json_node_unref(n);
 
 }
 
