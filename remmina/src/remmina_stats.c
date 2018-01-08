@@ -53,8 +53,9 @@ JsonNode *remmina_stats_get_gtk_version()
 	JsonBuilder *b;
 	JsonNode *r;
 
-	/* WARNING: this function is usually executed on a dedicated thread,
-	 * not on the main thread */
+	/** @warning this function is usually executed on a dedicated thread,
+	 * not on the main thread
+	 */
 
 	b = json_builder_new();
 	json_builder_begin_object(b);
@@ -78,8 +79,9 @@ JsonNode *remmina_stats_get_gtk_backend()
 	GdkDisplay *disp;
 	gchar *bkend;
 
-	/* WARNING: this function is usually executed on a dedicated thread,
-	 * not on the main thread */
+	/** @warning this function is usually executed on a dedicated thread,
+	 * not on the main thread
+	 */
 
 	disp = gdk_display_get_default();
 
@@ -111,10 +113,11 @@ JsonNode *remmina_stats_get_uid()
 	TRACE_CALL(__func__);
 	JsonNode *r;
 
-	/* WARNING: this function is usually executed on a dedicated thread,
-	 * not on the main thread */
+	/** @warning this function is usually executed on a dedicated thread,
+	 * not on the main thread
+	 */
 
-	/* ToDo: Improve UID */
+	/** @todo Improve UID */
 	GChecksum *chs;
 	const gchar *uname, *hname;
 	const gchar *chss;
@@ -139,7 +142,7 @@ JsonNode *remmina_stats_get_version()
 	JsonBuilder *b;
 	JsonNode *r;
 
-	/* WARNING: this function is usually executed on a dedicated thread,
+	/** @warning this function is usually executed on a dedicated thread,
 	 * not on the main thread */
 
 	b = json_builder_new();
@@ -161,14 +164,15 @@ JsonNode *remmina_stats_get_version()
 
 }
 
+/**
+ * Get all statistics in json format to send periodically to the PHP server.
+ * The caller should free the returned buffer with g_free()
+ * @warning This function is usually executed on a dedicated thread,
+ * not on the main thread.
+ * @return a pointer to the JSON string.
+ */
 JsonNode *remmina_stats_get_all()
 {
-	/* Get all statistics in json format to send periodically to the PHP server.
-	 * Return a pointer to the JSON string.
-	 * The caller should free the returned buffer with g_free() */
-
-	/* WARNING: this function is usually executed on a dedicated thread,
-	 * not on the main thread */
 
 
 	TRACE_CALL(__func__);
