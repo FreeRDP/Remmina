@@ -986,31 +986,38 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 			UINT32 e;
 
 			e = freerdp_get_last_error(rfi->instance->context);
+
 			switch (e) {
 			case FREERDP_ERROR_AUTHENTICATION_FAILED:
 			case STATUS_LOGON_FAILURE:              // wrong return code from FreeRDP introduced at the end of July 2016 ? (fixed with b86c0ba)
+			case FREERDP_ERROR_CONNECT_LOGON_FAILURE:
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Authentication to RDP server %s failed.\nCheck username, password and domain."),
 					rfi->settings->ServerHostname );
 				// Invalidate the saved password, so the user will be re-asked at next logon
 				remmina_plugin_service->file_unsave_password(remminafile);
 				break;
 			case STATUS_ACCOUNT_LOCKED_OUT:
+			case FREERDP_ERROR_CONNECT_ACCOUNT_LOCKED_OUT:
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount is locked out."),
 					rfi->settings->ServerHostname );
 				break;
 			case STATUS_ACCOUNT_EXPIRED:
+			case FREERDP_ERROR_CONNECT_ACCOUNT_EXPIRED:
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount is expired."),
 					rfi->settings->ServerHostname );
 				break;
 			case STATUS_PASSWORD_EXPIRED:
+			case FREERDP_ERROR_CONNECT_PASSWORD_EXPIRED:
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nPassword expired."),
 					rfi->settings->ServerHostname );
 				break;
 			case STATUS_ACCOUNT_DISABLED:
+			case FREERDP_ERROR_CONNECT_ACCOUNT_DISABLED:
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount is disabled."),
 					rfi->settings->ServerHostname );
 				break;
 			case STATUS_ACCOUNT_RESTRICTION:
+			case FREERDP_ERROR_CONNECT_ACCOUNT_RESTRICTION:
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount has restrictions."),
 					rfi->settings->ServerHostname );
 				break;

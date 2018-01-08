@@ -118,7 +118,8 @@ JsonNode *remmina_stats_get_uid()
 	 */
 
 	/** @todo Improve UID */
-	GChecksum *chs;
+
+  GChecksum *chs;
 	const gchar *uname, *hname;
 	const gchar *chss;
 	uname = g_get_user_name();
@@ -142,6 +143,7 @@ JsonNode *remmina_stats_get_version()
 	JsonBuilder *b;
 	JsonNode *r;
 
+
 	/** @warning this function is usually executed on a dedicated thread,
 	 * not on the main thread */
 
@@ -164,6 +166,7 @@ JsonNode *remmina_stats_get_version()
 
 }
 
+
 /**
  * Get all statistics in json format to send periodically to the PHP server.
  * The caller should free the returned buffer with g_free()
@@ -173,7 +176,6 @@ JsonNode *remmina_stats_get_version()
  */
 JsonNode *remmina_stats_get_all()
 {
-
 
 	TRACE_CALL(__func__);
 
