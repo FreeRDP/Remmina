@@ -130,6 +130,7 @@ static gboolean remmina_stats_collector_done(gpointer data)
 	return G_SOURCE_REMOVE;
 }
 
+
 static gpointer remmina_stats_collector(gpointer data)
 {
 	TRACE_CALL(__func__);

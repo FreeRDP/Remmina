@@ -37,6 +37,7 @@
 #include "config.h"
 #include <gtk/gtk.h>
 #include <string.h>
+#include "remmina_pref.h"
 #include "remmina/remmina_trace_calls.h"
 
 #ifdef GDK_WINDOWING_WAYLAND
@@ -108,29 +109,68 @@ JsonNode *remmina_stats_get_gtk_backend()
 
 }
 
+static gchar* remmina_stats_gen_random_uuid_prefix()
+{
+	TRACE_CALL(__func__);
+	GRand *rand;
+	GTimeVal t;
+	gchar *result;
+	int i;
+	static char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+	result = g_malloc0(15);
+
+	g_get_current_time(&t);
+	rand = g_rand_new_with_seed((guint32)t.tv_sec ^ (guint32)t.tv_usec);
+
+	for(i = 0; i < 7; i++) {
+		result[i] = alpha[g_rand_int_range(rand, 0, sizeof(alpha) - 1)];
+	}
+
+	g_rand_set_seed(rand, (guint32)t.tv_usec);
+	for(i = 0; i < 7; i++) {
+		result[i + 7] = alpha[g_rand_int_range(rand, 0, sizeof(alpha) - 1)];
+	}
+	g_rand_free(rand);
+
+	return result;
+}
+
 JsonNode *remmina_stats_get_uid()
 {
 	TRACE_CALL(__func__);
 	JsonNode *r;
+	GChecksum *chs;
+	const gchar *uname, *hname;
+	const gchar *uid_suffix;
+	gchar *uid_prefix;
+	gchar *uid;
 
 	/** @warning this function is usually executed on a dedicated thread,
 	 * not on the main thread
 	 */
 
-	/** @todo Improve UID */
-	GChecksum *chs;
-	const gchar *uname, *hname;
-	const gchar *chss;
+	if (remmina_pref.periodic_usage_stats_uuid_prefix == NULL || remmina_pref.periodic_usage_stats_uuid_prefix[0] == 0) {
+		/* Generate a new UUID_PREFIX for this installation */
+		uid_prefix = remmina_stats_gen_random_uuid_prefix();
+		if (remmina_pref.periodic_usage_stats_uuid_prefix)
+			g_free(remmina_pref.periodic_usage_stats_uuid_prefix);
+		remmina_pref.periodic_usage_stats_uuid_prefix = uid_prefix;
+		remmina_pref_save();
+	}
+
 	uname = g_get_user_name();
 	hname = g_get_host_name();
 	chs = g_checksum_new(G_CHECKSUM_SHA256);
 	g_checksum_update(chs, (const guchar*)uname, strlen(uname));
 	g_checksum_update(chs, (const guchar*)hname, strlen(hname));
-	chss = g_checksum_get_string(chs);
+	uid_suffix = g_checksum_get_string(chs);
+
+	uid = g_strdup_printf("%s-%.10s", remmina_pref.periodic_usage_stats_uuid_prefix, uid_suffix);
+	g_checksum_free(chs);
 
 	r = json_node_alloc();
-	json_node_init_string(r, chss);
-	g_checksum_free(chs);
+	json_node_init_string(r, uid);
 
 	return r;
 
