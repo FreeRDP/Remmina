@@ -394,7 +394,6 @@ void remmina_rdp_event_send_delayed_monitor_layout(RemminaProtocolWidget* gp)
 static gboolean remmina_rdp_event_on_configure(GtkWidget* widget, GdkEventConfigure* event, RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
-
 	/* Called when gp changes its size or position */
 
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
