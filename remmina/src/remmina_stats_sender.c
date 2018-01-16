@@ -39,10 +39,11 @@
 #include <string.h>
 #include <libsoup/soup.h>
 #include "remmina/remmina_trace_calls.h"
+#include "remmina_log.h"
 #include "remmina_stats.h"
 #include "remmina_pref.h"
 
-#if !JSON_CHECK_VERSION(1,2,0)
+#if !JSON_CHECK_VERSION(1, 2, 0)
 	#define json_node_unref(x) json_node_free(x)
 #endif
 
@@ -50,7 +51,7 @@
 #define PERIODIC_CHECK_1ST_MS 60000
 #define PERIODIC_CHECK_INTERVAL_MS 600000
 
-#define PERIODIC_UPLOAD_INTERVAL_SEC	604800
+#define PERIODIC_UPLOAD_INTERVAL_SEC    604800
 
 #define PERIODIC_UPLOAD_URL "http://s1.casa.panozzo.it/remmina/upload_stats.php"
 
@@ -64,7 +65,7 @@ static gint periodic_check_counter;
 static void soup_callback(SoupSession *session, SoupMessage *msg, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	gchar *s = (gchar *)user_data;
+	gchar *s = (gchar*)user_data;
 	SoupBuffer *sb;
 	gboolean passed;
 	GTimeVal t;
@@ -80,7 +81,7 @@ static void soup_callback(SoupSession *session, SoupMessage *msg, gpointer user_
 
 	passed = FALSE;
 	sb = soup_message_body_flatten(msg->response_body);
-	if (strncmp(sb->data,"200 ", 4) != 0) {
+	if (strncmp(sb->data, "200 ", 4) != 0) {
 #ifdef DEBUG_HTTP_SERVER_RESPONSE
 		puts("Error from server side script:");
 		puts(sb->data);
@@ -107,20 +108,21 @@ static gboolean remmina_stats_collector_done(gpointer data)
 	SoupSession *ss;
 	SoupMessage *msg;
 
-	n = (JsonNode *)data;
+	n = (JsonNode*)data;
 	if (n == NULL)
 		return G_SOURCE_REMOVE;
 
 	g = json_generator_new();
 	json_generator_set_root(g, n);
 	s = json_generator_to_data(g, NULL);
+	remmina_log_printf("Remmina stats - JSON data%s\n", s);
 	g_object_unref(g);
 	json_node_unref(n);
 
 	ss = soup_session_new();
 	msg = soup_message_new("POST", PERIODIC_UPLOAD_URL);
 	soup_message_set_request(msg, "application/json",
-		SOUP_MEMORY_COPY, s, strlen (s));
+		SOUP_MEMORY_COPY, s, strlen(s));
 	soup_session_queue_message(ss, msg, soup_callback, s);
 
 #ifdef DEBUG_HTTP_SERVER_RESPONSE
@@ -171,11 +173,11 @@ static gboolean remmina_stats_sender_periodic_check(gpointer user_data)
 		remmina_stats_sender_send();
 	} else {
 #ifdef DEBUG_HTTP_SERVER_RESPONSE
-		printf("Doing nothing: next upload is scheduled in %ld seconds\n", (next-t.tv_sec));
+		printf("Doing nothing: next upload is scheduled in %ld seconds\n", (next - t.tv_sec));
 #endif
 	}
 
-	periodic_check_counter ++;
+	periodic_check_counter++;
 	if (periodic_check_counter <= 1) {
 		/* Reschedule periodic check less frequently after 1st tick.
 		 * Note that PERIODIC_CHECK_INTERVAL_MS becomes also a retry interval in case of

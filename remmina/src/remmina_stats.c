@@ -35,9 +35,12 @@
  */
 
 #include "config.h"
+#include <unistd.h>
+#include <sys/utsname.h>
 #include <gtk/gtk.h>
 #include <string.h>
 #include "remmina_pref.h"
+#include "remmina_utils.h"
 #include "remmina/remmina_trace_calls.h"
 
 #ifdef GDK_WINDOWING_WAYLAND
@@ -48,66 +51,7 @@
 #endif
 #include "remmina_stats.h"
 
-JsonNode *remmina_stats_get_gtk_version()
-{
-	TRACE_CALL(__func__);
-	JsonBuilder *b;
-	JsonNode *r;
-
-	/** @warning this function is usually executed on a dedicated thread,
-	 * not on the main thread
-	 */
-
-	b = json_builder_new();
-	json_builder_begin_object(b);
-	json_builder_set_member_name(b, "major");
-	json_builder_add_int_value(b, gtk_get_major_version());
-	json_builder_set_member_name(b, "minor");
-	json_builder_add_int_value(b, gtk_get_minor_version());
-	json_builder_set_member_name(b, "micro");
-	json_builder_add_int_value(b, gtk_get_micro_version());
-	json_builder_end_object (b);
-	r = json_builder_get_root(b);
-	g_object_unref(b);
-	return r;
-
-}
-
-JsonNode *remmina_stats_get_gtk_backend()
-{
-	TRACE_CALL(__func__);
-	JsonNode *r;
-	GdkDisplay *disp;
-	gchar *bkend;
-
-	/** @warning this function is usually executed on a dedicated thread,
-	 * not on the main thread
-	 */
-
-	disp = gdk_display_get_default();
-
-#ifdef GDK_WINDOWING_WAYLAND
-	if (GDK_IS_WAYLAND_DISPLAY(disp))
-	{
-		bkend = "Wayland";
-	}
-	else
-#endif
-#ifdef GDK_WINDOWING_X11
-	if (GDK_IS_X11_DISPLAY (disp))
-	{
-		bkend = "X11";
-    }
-	else
-#endif
-	bkend = "Unknown";
-
-	r = json_node_alloc();
-	json_node_init_string(r, bkend);
-
-	return r;
-
-}
+struct utsname u;
 
 static gchar* remmina_stats_gen_random_uuid_prefix()
 {
@@ -123,12 +67,12 @@ static gchar* remmina_stats_gen_random_uuid_prefix()
 	g_get_current_time(&t);
 	rand = g_rand_new_with_seed((guint32)t.tv_sec ^ (guint32)t.tv_usec);
 
-	for(i = 0; i < 7; i++) {
+	for (i = 0; i < 7; i++) {
 		result[i] = alpha[g_rand_int_range(rand, 0, sizeof(alpha) - 1)];
 	}
 
 	g_rand_set_seed(rand, (guint32)t.tv_usec);
-	for(i = 0; i < 7; i++) {
+	for (i = 0; i < 7; i++) {
 		result[i + 7] = alpha[g_rand_int_range(rand, 0, sizeof(alpha) - 1)];
 	}
 	g_rand_free(rand);
@@ -176,6 +120,55 @@ JsonNode *remmina_stats_get_uid()
 
 }
 
+JsonNode *remmina_stats_get_os_name()
+{
+	TRACE_CALL(__func__);
+	JsonNode *r;
+	gchar *os_name;
+
+	os_name = g_strdup_printf("%s", remmina_utils_get_os_name());
+	g_print("OS name: %s\n", os_name);
+	if (!os_name || os_name[0] == '\0')
+		os_name = g_strdup_printf("UNKNOWN");
+
+	r = json_node_alloc();
+	json_node_init_string(r, os_name);
+
+	return r;
+}
+
+JsonNode *remmina_stats_get_os_release()
+{
+	TRACE_CALL(__func__);
+	JsonNode *r;
+	gchar *os_release;
+
+	os_release = g_strdup_printf("%s", remmina_utils_get_os_release());
+	if (!os_release || os_release[0] == '\0')
+		os_release = g_strdup_printf("UNKNOWN");
+
+	r = json_node_alloc();
+	json_node_init_string(r, os_release);
+
+	return r;
+}
+
+JsonNode *remmina_stats_get_os_arch()
+{
+	TRACE_CALL(__func__);
+	JsonNode *r;
+	gchar *os_arch;
+
+	os_arch = g_strdup_printf("%s", remmina_utils_get_os_arch());
+	if (!os_arch || os_arch[0] == '\0')
+		os_arch = g_strdup_printf("UNKNOWN");
+
+	r = json_node_alloc();
+	json_node_init_string(r, os_arch);
+
+	return r;
+}
+
 JsonNode *remmina_stats_get_version()
 {
 	TRACE_CALL(__func__);
@@ -197,9 +190,66 @@ JsonNode *remmina_stats_get_version()
 #else
 	json_builder_add_int_value(b, 0);
 #endif
-	json_builder_end_object (b);
+	json_builder_end_object(b);
 	r = json_builder_get_root(b);
 	g_object_unref(b);
+	return r;
+
+}
+
+JsonNode *remmina_stats_get_gtk_version()
+{
+	TRACE_CALL(__func__);
+	JsonBuilder *b;
+	JsonNode *r;
+
+	/** @warning this function is usually executed on a dedicated thread,
+	 * not on the main thread
+	 */
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+	json_builder_set_member_name(b, "major");
+	json_builder_add_int_value(b, gtk_get_major_version());
+	json_builder_set_member_name(b, "minor");
+	json_builder_add_int_value(b, gtk_get_minor_version());
+	json_builder_set_member_name(b, "micro");
+	json_builder_add_int_value(b, gtk_get_micro_version());
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+	return r;
+
+}
+
+JsonNode *remmina_stats_get_gtk_backend()
+{
+	TRACE_CALL(__func__);
+	JsonNode *r;
+	GdkDisplay *disp;
+	gchar *bkend;
+
+	/** @warning this function is usually executed on a dedicated thread,
+	 * not on the main thread
+	 */
+
+	disp = gdk_display_get_default();
+
+#ifdef GDK_WINDOWING_WAYLAND
+	if (GDK_IS_WAYLAND_DISPLAY(disp)) {
+		bkend = "Wayland";
+	}else
+#endif
+#ifdef GDK_WINDOWING_X11
+	if (GDK_IS_X11_DISPLAY(disp)) {
+		bkend = "X11";
+	}   else
+#endif
+	bkend = "Unknown";
+
+	r = json_node_alloc();
+	json_node_init_string(r, bkend);
+
 	return r;
 
 }
@@ -217,6 +267,9 @@ JsonNode *remmina_stats_get_all()
 
 	TRACE_CALL(__func__);
 
+	if (uname(&u) == -1)
+		g_print("uname:");
+
 	JsonBuilder *b;
 	JsonNode *n;
 	b = json_builder_new();
@@ -230,6 +283,17 @@ JsonNode *remmina_stats_get_all()
 	json_builder_set_member_name(b, "REMMINAVERSION");
 	json_builder_add_value(b, n);
 
+	n = remmina_stats_get_os_name();
+	json_builder_set_member_name(b, "OSNAME");
+	json_builder_add_value(b, n);
+
+	n = remmina_stats_get_os_release();
+	json_builder_set_member_name(b, "OSRELEASE");
+	json_builder_add_value(b, n);
+
+	n = remmina_stats_get_os_arch();
+	json_builder_set_member_name(b, "OSARCH");
+	json_builder_add_value(b, n);
 
 	n = remmina_stats_get_gtk_version();
 	json_builder_set_member_name(b, "GTKVERSION");

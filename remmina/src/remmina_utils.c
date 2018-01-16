@@ -36,26 +36,32 @@
  * General utility functions, non-GTK related.
  */
 
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/utsname.h>
+
+#include <glib.h>
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <gio/gio.h>
-#include <glib.h>
-#include <stdlib.h>
 #include "remmina/remmina_trace_calls.h"
 
 /** Returns @c TRUE if @a ptr is @c NULL or @c *ptr is @c FALSE. */
 #define EMPTY(ptr) \
 	(!(ptr) || !*(ptr))
 
+struct utsname u;
+
 gint remmina_utils_strpos(const gchar *haystack, const gchar *needle)
 {
+	TRACE_CALL(__func__);
 	const gchar *sub;
 
-	if (! *needle)
+	if (!*needle)
 		return -1;
 
 	sub = strstr(haystack, needle);
-	if (! sub)
+	if (!sub)
 		return -1;
 
 	return sub - haystack;
@@ -98,9 +104,9 @@ gint remmina_utils_string_find(GString *haystack, gint start, gint end, const gc
  * (C) Taken from geany */
 gint remmina_utils_string_replace(GString *str, gint pos, gint len, const gchar *replace)
 {
+	TRACE_CALL(__func__);
 	g_string_erase(str, pos, len);
-	if (replace)
-	{
+	if (replace) {
 		g_string_insert(str, pos, replace);
 		pos += strlen(replace);
 	}
@@ -118,12 +124,12 @@ gint remmina_utils_string_replace(GString *str, gint pos, gint len, const gchar 
  **/
 guint remmina_utils_string_replace_all(GString *haystack, const gchar *needle, const gchar *replace)
 {
+	TRACE_CALL(__func__);
 	guint count = 0;
 	gint pos = 0;
 	gsize needle_length = strlen(needle);
 
-	while (1)
-	{
+	while (1) {
 		pos = remmina_utils_string_find(haystack, pos, -1, needle);
 
 		if (pos == -1)
@@ -134,4 +140,64 @@ guint remmina_utils_string_replace_all(GString *haystack, const gchar *needle, c
 	}
 	return count;
 }
+
+/** OS related functions */
+
+/**
+ * Return the OS name as in "uname -s".
+ * @return The OS name or NULL.
+ */
+const gchar* remmina_utils_get_os_name()
+{
+	TRACE_CALL(__func__);
+	if (u.sysname)
+		return u.sysname;
+}
+
+const gchar* remmina_utils_get_os_release()
+/**
+ * Return the OS version as in "uname -r".
+ * @return The OS release or NULL.
+ */
+{
+	TRACE_CALL(__func__);
+	if (u.release)
+		return u.release;
+}
+
+/**
+ * Return the machine hardware name as in "uname -m".
+ * @return The machine hardware name or NULL.
+ */
+const gchar* remmina_utils_get_os_arch()
+{
+	TRACE_CALL(__func__);
+	if (u.machine)
+		return u.machine;
+}
+
+/**
+ * A sample function to show how use the other fOS releated functions.
+ * @return a semicolon separated OS data like in "uname -srm".
+ */
+const gchar* remmina_utils_get_os_info()
+{
+	TRACE_CALL(__func__);
+	gchar *os_string;
+
+	if (uname(&u) == -1)
+		g_print("uname:");
+
+	os_string = g_strdup_printf("%s;%s;%s\n",
+		remmina_utils_get_os_name(),
+		remmina_utils_get_os_release(),
+		remmina_utils_get_os_arch());
+	if (!os_string || os_string[0] == '\0')
+		os_string = g_strdup_printf("%s;%s;%s\n",
+			"UNKNOWN",
+			"UNKNOWN",
+			"UNKNOWN");
+	return os_string;
+}
+
 

@@ -46,3 +46,7 @@ gint remmina_utils_string_replace(GString *str, gint pos, gint len, const gchar 
 
 guint remmina_utils_string_replace_all(GString *haystack, const gchar *needle, const gchar *replace);
 
+const gchar* remmina_utils_get_os_name ();
+const gchar* remmina_utils_get_os_release ();
+const gchar* remmina_utils_get_os_arch ();
+const gchar* remmina_utils_get_os_info ();
