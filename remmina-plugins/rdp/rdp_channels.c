@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2012-2012 Jean-Louis Dupond
+ * Copyright (C) 2016-2018 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,6 +44,8 @@
 
 void remmina_rdp_OnChannelConnectedEventHandler(rdpContext* context, ChannelConnectedEventArgs* e)
 {
+	TRACE_CALL(__func__);
+
 	rfContext* rfi = (rfContext*)context;
 
 	if (g_strcmp0(e->name, RDPEI_DVC_CHANNEL_NAME) == 0) {
