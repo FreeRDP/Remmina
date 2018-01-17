@@ -39,8 +39,10 @@
 #include <sys/utsname.h>
 #include <gtk/gtk.h>
 #include <string.h>
+#include "remmina_log.h"
 #include "remmina_pref.h"
 #include "remmina_utils.h"
+#include "remmina_sysinfo.h"
 #include "remmina/remmina_trace_calls.h"
 
 #ifdef GDK_WINDOWING_WAYLAND
@@ -129,10 +131,12 @@ JsonNode *remmina_stats_get_os_name()
 	os_name = g_strdup_printf("%s", remmina_utils_get_os_name());
 	g_print("OS name: %s\n", os_name);
 	if (!os_name || os_name[0] == '\0')
-		os_name = g_strdup_printf("UNKNOWN");
+		os_name = "Unknown";
 
 	r = json_node_alloc();
 	json_node_init_string(r, os_name);
+
+	g_free(os_name);
 
 	return r;
 }
@@ -145,10 +149,12 @@ JsonNode *remmina_stats_get_os_release()
 
 	os_release = g_strdup_printf("%s", remmina_utils_get_os_release());
 	if (!os_release || os_release[0] == '\0')
-		os_release = g_strdup_printf("UNKNOWN");
+		os_release = "Unknown";
 
 	r = json_node_alloc();
 	json_node_init_string(r, os_release);
+
+	g_free(os_release);
 
 	return r;
 }
@@ -161,10 +167,12 @@ JsonNode *remmina_stats_get_os_arch()
 
 	os_arch = g_strdup_printf("%s", remmina_utils_get_os_arch());
 	if (!os_arch || os_arch[0] == '\0')
-		os_arch = g_strdup_printf("UNKNOWN");
+		os_arch = "Unknown";
 
 	r = json_node_alloc();
 	json_node_init_string(r, os_arch);
+
+	g_free(os_arch);
 
 	return r;
 }
@@ -254,6 +262,38 @@ JsonNode *remmina_stats_get_gtk_backend()
 
 }
 
+JsonNode *remmina_stats_get_wm_name()
+{
+	TRACE_CALL(__func__);
+	JsonNode *r;
+	gchar *wmver;
+	gchar *wmname;
+
+	/** We try to get the Gnome SHELL version */
+	wmver = remmina_sysinfo_get_gnome_shell_version();
+	if (!wmver || wmver[0] == '\0') {
+		remmina_log_print("Gnome Shell not found\n");
+	}else {
+		remmina_log_printf("Gnome Shell version: %s\n", wmver);
+		wmname = g_strdup_printf("Gnome Shell version: %s", wmver);
+		goto end;
+	}
+
+	wmname = remmina_sysinfo_get_wm_name();
+	if (!wmname || wmname[0] == '\0') {
+		/** When everything else fails with set the WM name to NULL **/
+		wmver = "Unknown";
+		wmname = g_strdup_printf("%s", wmver);
+	}
+
+end:
+	r = json_node_alloc();
+	json_node_init_string(r, wmname);
+	return r;
+}
+
+
+
 /**
  * Get all statistics in json format to send periodically to the PHP server.
  * The caller should free the returned buffer with g_free()
@@ -263,8 +303,6 @@ JsonNode *remmina_stats_get_gtk_backend()
  */
 JsonNode *remmina_stats_get_all()
 {
-
-
 	TRACE_CALL(__func__);
 
 	if (uname(&u) == -1)
@@ -301,6 +339,10 @@ JsonNode *remmina_stats_get_all()
 
 	n = remmina_stats_get_gtk_backend();
 	json_builder_set_member_name(b, "GTKBACKEND");
+	json_builder_add_value(b, n);
+
+	n = remmina_stats_get_wm_name();
+	json_builder_set_member_name(b, "WMNAME");
 	json_builder_add_value(b, n);
 
 	json_builder_end_object(b);
