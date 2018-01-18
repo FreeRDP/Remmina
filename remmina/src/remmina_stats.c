@@ -35,14 +35,21 @@
  */
 
 #include "config.h"
-#include <unistd.h>
-#include <sys/utsname.h>
-#include <gtk/gtk.h>
 #include <string.h>
+#include <sys/utsname.h>
+#include <unistd.h>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <glib/gstdio.h>
+#include <gtk/gtk.h>
+
+#include "remmina_file.h"
+#include "remmina_file_manager.h"
+#include "remmina_icon.h"
 #include "remmina_log.h"
 #include "remmina_pref.h"
-#include "remmina_utils.h"
 #include "remmina_sysinfo.h"
+#include "remmina_utils.h"
 #include "remmina/remmina_trace_calls.h"
 
 #ifdef GDK_WINDOWING_WAYLAND
@@ -121,6 +128,48 @@ JsonNode *remmina_stats_get_uid()
 	return r;
 
 }
+
+JsonNode *remmina_stats_get_os_info()
+{
+	TRACE_CALL(__func__);
+	JsonBuilder *b;
+	JsonNode *r;
+
+	gchar *os_name;
+	gchar *os_release;
+	gchar *os_arch;
+
+	/** @warning this function is usually executed on a dedicated thread,
+	 * not on the main thread */
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+
+	json_builder_set_member_name(b, "os_name");
+
+	os_name = g_strdup_printf("%s", remmina_utils_get_os_name());
+	if (!os_name || os_name[0] == '\0')
+		os_name = "Unknown";
+	json_builder_add_string_value(b, os_name);
+
+	json_builder_set_member_name(b, "os_release");
+	os_release = g_strdup_printf("%s", remmina_utils_get_os_release());
+	if (!os_release || os_release[0] == '\0')
+		os_release = "Unknown";
+	json_builder_add_string_value(b, os_release);
+
+	json_builder_set_member_name(b, "os_arch");
+	os_arch = g_strdup_printf("%s", remmina_utils_get_os_arch());
+	if (!os_arch || os_arch[0] == '\0')
+		os_arch = "Unknown";
+	json_builder_add_string_value(b, os_arch);
+
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+	return r;
+}
+
 
 JsonNode *remmina_stats_get_os_name()
 {
@@ -201,7 +250,6 @@ JsonNode *remmina_stats_get_version()
 	r = json_builder_get_root(b);
 	g_object_unref(b);
 	return r;
-
 }
 
 JsonNode *remmina_stats_get_gtk_version()
@@ -264,9 +312,15 @@ JsonNode *remmina_stats_get_gtk_backend()
 JsonNode *remmina_stats_get_wm_name()
 {
 	TRACE_CALL(__func__);
+	JsonBuilder *b;
 	JsonNode *r;
 	gchar *wmver;
 	gchar *wmname;
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+
+	json_builder_set_member_name(b, "window_manager");
 
 	/** We try to get the Gnome SHELL version */
 	wmver = remmina_sysinfo_get_gnome_shell_version();
@@ -274,20 +328,104 @@ JsonNode *remmina_stats_get_wm_name()
 		remmina_log_print("Gnome Shell not found\n");
 	}else {
 		remmina_log_printf("Gnome Shell version: %s\n", wmver);
-		wmname = g_strdup_printf("Gnome Shell version: %s", wmver);
+		json_builder_add_string_value(b, "Gnome Shell");
+		json_builder_set_member_name(b, "gnome_shell_ver");
+		json_builder_add_string_value(b,
+				g_strdup_printf("Gnome Shell version: %s", wmver));
 		goto end;
 	}
 
 	wmname = remmina_sysinfo_get_wm_name();
 	if (!wmname || wmname[0] == '\0') {
 		/** When everything else fails with set the WM name to NULL **/
-		wmver = "Unknown";
-		wmname = g_strdup_printf("%s", wmver);
+		remmina_log_print("Cannot determine the Window Manger name\n");
+		json_builder_add_string_value(b, "Unknown");
+	}else {
+		remmina_log_printf("Window Manger names %s\n", wmname);
+		json_builder_add_string_value(b, wmname);
 	}
 
 end:
-	r = json_node_alloc();
-	json_node_init_string(r, wmname);
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+	return r;
+}
+
+JsonNode *remmina_stats_get_indicator()
+{
+	TRACE_CALL(__func__);
+	JsonBuilder *b;
+	JsonNode *r;
+	gboolean sni;           /** Support for StatusNotifier or AppIndicator */
+	gboolean sni_active;    /** remmina_icon_is_available */
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+
+	json_builder_set_member_name(b, "appindicator_supported");
+	sni = remmina_sysinfo_is_appindicator_available();
+	if (sni) {
+		/** StatusNotifier/Appindicator supported by desktop */
+		json_builder_add_int_value(b, 1);
+#ifdef HAVE_LIBAPPINDICATOR
+		/** libappindicator is compiled in remmina. */
+		json_builder_set_member_name(b, "appindicator_compiled");
+		json_builder_add_int_value(b, 1);
+#else
+		/** Remmina not compiled with -DWITH_APPINDICATOR=on */
+		json_builder_add_int_value(b, 0);
+#endif
+	} else {
+		/** StatusNotifier/Appindicator NOT supported by desktop */
+		json_builder_add_int_value(b, 0);
+		json_builder_set_member_name(b, "icon_is_active");
+		sni_active = remmina_icon_is_available();
+		if (remmina_icon_is_available())
+		{
+			/** Remmina icon is active */
+			json_builder_add_int_value(b, 1);
+			json_builder_set_member_name(b, "appindicator_type");
+#ifdef HAVE_LIBAPPINDICATOR
+			/** libappindicator fallback to GtkStatusIcon/xembed"); */
+			json_builder_add_string_value(b, "AppIndicator on GtkStatusIcon/xembed");
+#else
+			/** Remmina fallback to GtkStatusIcon/xembed */
+			json_builder_add_string_value(b, "Remmina icon on GtkStatusIcon/xembed");
+#endif
+		}else {
+			/** Remmina icon is NOT active */
+			json_builder_add_int_value(b, 0);
+		}
+	}
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+	return r;
+}
+
+JsonNode *remmina_stats_get_profiles()
+{
+	TRACE_CALL(__func__);
+
+	JsonBuilder *b;
+	JsonNode *r;
+
+	GDir *dir;
+	gint c;
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+
+	json_builder_set_member_name(b, "profile_count");
+
+	//c = remmina_file_manager_iterate((GFunc)remmina_stats_file_list_cb, (gpointer)stats);
+	c = 2345;
+	json_builder_add_int_value(b, 3456);
+
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
 	return r;
 }
 
@@ -301,12 +439,9 @@ end:
 JsonNode *remmina_stats_get_all()
 {
 	TRACE_CALL(__func__);
-
-	if (uname(&u) == -1)
-		g_print("uname:");
-
 	JsonBuilder *b;
 	JsonNode *n;
+
 	b = json_builder_new();
 	json_builder_begin_object(b);
 
@@ -318,16 +453,11 @@ JsonNode *remmina_stats_get_all()
 	json_builder_set_member_name(b, "REMMINAVERSION");
 	json_builder_add_value(b, n);
 
-	n = remmina_stats_get_os_name();
-	json_builder_set_member_name(b, "OSNAME");
-	json_builder_add_value(b, n);
+	if (uname(&u) == -1)
+		g_print("uname:");
 
-	n = remmina_stats_get_os_release();
-	json_builder_set_member_name(b, "OSRELEASE");
-	json_builder_add_value(b, n);
-
-	n = remmina_stats_get_os_arch();
-	json_builder_set_member_name(b, "OSARCH");
+	n = remmina_stats_get_os_info();
+	json_builder_set_member_name(b, "SYSTEM");
 	json_builder_add_value(b, n);
 
 	n = remmina_stats_get_gtk_version();
@@ -339,7 +469,15 @@ JsonNode *remmina_stats_get_all()
 	json_builder_add_value(b, n);
 
 	n = remmina_stats_get_wm_name();
-	json_builder_set_member_name(b, "WMNAME");
+	json_builder_set_member_name(b, "WINDOWMANAGER");
+	json_builder_add_value(b, n);
+
+	n = remmina_stats_get_indicator();
+	json_builder_set_member_name(b, "APPINDICATOR");
+	json_builder_add_value(b, n);
+
+	n = remmina_stats_get_profiles();
+	json_builder_set_member_name(b, "PROFILES");
 	json_builder_add_value(b, n);
 
 	json_builder_end_object(b);
