@@ -129,7 +129,6 @@ JsonNode *remmina_stats_get_os_name()
 	gchar *os_name;
 
 	os_name = g_strdup_printf("%s", remmina_utils_get_os_name());
-	g_print("OS name: %s\n", os_name);
 	if (!os_name || os_name[0] == '\0')
 		os_name = "Unknown";
 
@@ -291,8 +290,6 @@ end:
 	json_node_init_string(r, wmname);
 	return r;
 }
-
-
 
 /**
  * Get all statistics in json format to send periodically to the PHP server.

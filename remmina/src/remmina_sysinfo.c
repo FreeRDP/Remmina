@@ -149,6 +149,5 @@ gchar *remmina_sysinfo_get_wm_name()
 	}else {
 		ret = g_strdup_printf("%s %s", xdg_current_desktop, gdmsession);
 	}
-	g_print("DEBUG: wm_name = %s\n", ret);
 	return ret;
 }

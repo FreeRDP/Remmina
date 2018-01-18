@@ -359,12 +359,15 @@ static void remmina_icon_create_autostart_file(void)
 	}
 }
 
+/**
+ * Determine whenever the Remmina icon is available.
+ * Return TRUE if a remmina_icon (status indicator/systray menu) is
+ * available and shown to the user, so the user can continue
+ * its work without the remmina main window.
+ * @return TRUE if the Remmina icon is available.
+ */
 gboolean remmina_icon_is_available(void)
 {
-	/* Return TRUE if a remmina_icon (status indicator/systray menu) is
-	 * available and shown to the user, so the user can continue
-	 * its work without the remmina main window */
-
 	TRACE_CALL(__func__);
 	gchar *gsversion;
 	unsigned int gsv_maj, gsv_min, gsv_seq;
@@ -392,8 +395,9 @@ gboolean remmina_icon_is_available(void)
 
 
 #ifdef HAVE_LIBAPPINDICATOR
-		/* Gnome Shell with compiled in LIBAPPINDICATOR:
-		 * ensure have also a working appindicator extension available */
+		/** Gnome Shell with compiled in LIBAPPINDICATOR:
+		 * ensure have also a working appindicator extension available.
+		 */
 		if (remmina_sysinfo_is_appindicator_available()) {
 			/* No libappindicator extension for gnome shell, no remmina_icon */
 			return TRUE;
