@@ -170,61 +170,6 @@ JsonNode *remmina_stats_get_os_info()
 	return r;
 }
 
-
-JsonNode *remmina_stats_get_os_name()
-{
-	TRACE_CALL(__func__);
-	JsonNode *r;
-	gchar *os_name;
-
-	os_name = g_strdup_printf("%s", remmina_utils_get_os_name());
-	if (!os_name || os_name[0] == '\0')
-		os_name = "Unknown";
-
-	r = json_node_alloc();
-	json_node_init_string(r, os_name);
-
-	g_free(os_name);
-
-	return r;
-}
-
-JsonNode *remmina_stats_get_os_release()
-{
-	TRACE_CALL(__func__);
-	JsonNode *r;
-	gchar *os_release;
-
-	os_release = g_strdup_printf("%s", remmina_utils_get_os_release());
-	if (!os_release || os_release[0] == '\0')
-		os_release = "Unknown";
-
-	r = json_node_alloc();
-	json_node_init_string(r, os_release);
-
-	g_free(os_release);
-
-	return r;
-}
-
-JsonNode *remmina_stats_get_os_arch()
-{
-	TRACE_CALL(__func__);
-	JsonNode *r;
-	gchar *os_arch;
-
-	os_arch = g_strdup_printf("%s", remmina_utils_get_os_arch());
-	if (!os_arch || os_arch[0] == '\0')
-		os_arch = "Unknown";
-
-	r = json_node_alloc();
-	json_node_init_string(r, os_arch);
-
-	g_free(os_arch);
-
-	return r;
-}
-
 JsonNode *remmina_stats_get_version()
 {
 	TRACE_CALL(__func__);
