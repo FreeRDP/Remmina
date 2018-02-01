@@ -62,6 +62,16 @@
 
 struct utsname u;
 
+struct ProfilesData {
+	GHashTable *proto_count;
+	GHashTable *proto_date;;
+	const gchar *protocol;
+	gint pcount;
+};
+
+//static ProfilesData *pdata = NULL;
+
+
 static gchar* remmina_stats_gen_random_uuid_prefix()
 {
 	TRACE_CALL(__func__);
@@ -349,6 +359,36 @@ JsonNode *remmina_stats_get_indicator()
 	return r;
 }
 
+/**
+ * Given a remmina file, fills a structure containing profiles keys/value tuples.
+ *
+ * This is used as a callback function with remmina_file_manager_iterate.
+ * @todo Move this in a separate file.
+ */
+static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_data)
+{
+	TRACE_CALL(__func__);
+
+	gint count = 0;
+	gpointer pcount, ko;
+	//gchar* last_used;
+
+	struct ProfilesData* pdata;
+	pdata = (struct ProfilesData*)user_data;
+
+	pdata->protocol = remmina_file_get_string(remminafile, "protocol");
+	if (pdata->protocol && pdata->protocol[0] != '\0') {
+		if (g_hash_table_lookup_extended(pdata->proto_count, pdata->protocol, &ko, &pcount)) {
+			count = GPOINTER_TO_INT(pcount) + 1;
+		}else {
+			count = 0;
+			g_hash_table_insert(pdata->proto_count, g_strdup(pdata->protocol), GINT_TO_POINTER(count));
+		}
+		g_hash_table_replace(pdata->proto_count, g_strdup(pdata->protocol), GINT_TO_POINTER(count));
+	}
+
+}
+
 JsonNode *remmina_stats_get_profiles()
 {
 	TRACE_CALL(__func__);
@@ -356,17 +396,61 @@ JsonNode *remmina_stats_get_profiles()
 	JsonBuilder *b;
 	JsonNode *r;
 
-	GDir *dir;
-	gint c;
+	gint profiles_count;
+	GHashTableIter iter;
+	gchar *protokey;
+	gint protovalue;
+
+	struct ProfilesData *pdata;
+	pdata = g_malloc0(sizeof(struct ProfilesData));
 
 	b = json_builder_new();
 	json_builder_begin_object(b);
 
 	json_builder_set_member_name(b, "profile_count");
 
-	//c = remmina_file_manager_iterate((GFunc)remmina_stats_file_list_cb, (gpointer)stats);
-	c = 2345;
-	json_builder_add_int_value(b, 3456);
+	/** @warning this function is usually executed on a dedicated thread,
+	 * not on the main thread */
+
+	/**
+	 * Data organization
+	 * Protocols vs last time used
+	 *
+	 * PROTO  | LAST USED
+	 * -------|----------
+	 * RDP	  |  20180129
+	 * SPICE  |  20171122
+	 * SSH	  |  20180111
+	 */
+	//pdata->proto_date = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
+	/**
+	 * Profiles count per protocol
+	 *
+	 * PROTO  | PROF COUNT
+	 * -------|----------
+	 * RDP	  |  2560
+	 * SPICE  |  334
+	 * SSH	  |  1540
+	 * VNC	  |  2
+	 *
+	 */
+	pdata->proto_count = g_hash_table_new_full (g_str_hash, g_str_equal,
+			(GDestroyNotify)g_free, NULL);
+
+	profiles_count = remmina_file_manager_iterate(
+			(GFunc)remmina_profiles_get_data,
+			(gpointer)pdata);
+
+	json_builder_add_int_value(b, profiles_count);
+
+	g_hash_table_iter_init (&iter, pdata->proto_count);
+	while (g_hash_table_iter_next (&iter, (gpointer)&protokey, (gpointer)&protovalue))
+	{
+		g_print("protocol: %s\n", protokey);
+		g_print("protocol counter: %d\n", GPOINTER_TO_INT(protovalue));
+		json_builder_set_member_name(b, protokey);
+		json_builder_add_int_value(b, GPOINTER_TO_INT(protovalue));
+	}
 
 	json_builder_end_object(b);
 	r = json_builder_get_root(b);
