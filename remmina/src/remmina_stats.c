@@ -145,9 +145,13 @@ JsonNode *remmina_stats_get_os_info()
 	JsonBuilder *b;
 	JsonNode *r;
 
-	gchar *os_name;
-	gchar *os_release;
-	gchar *os_arch;
+	gchar *kernel_name;
+	gchar *kernel_release;
+	gchar *kernel_arch;
+	gchar *id;
+	gchar *description;
+	gchar *release;
+	gchar *codename;
 
 	/** @warning this function is usually executed on a dedicated thread,
 	 * not on the main thread */
@@ -155,24 +159,56 @@ JsonNode *remmina_stats_get_os_info()
 	b = json_builder_new();
 	json_builder_begin_object(b);
 
-	json_builder_set_member_name(b, "os_name");
+	json_builder_set_member_name(b, "kernel_name");
 
-	os_name = g_strdup_printf("%s", remmina_utils_get_os_name());
-	if (!os_name || os_name[0] == '\0')
-		os_name = "Unknown";
-	json_builder_add_string_value(b, os_name);
+	kernel_name = g_strdup_printf("%s", remmina_utils_get_kernel_name());
+	if (!kernel_name || kernel_name[0] == '\0')
+		kernel_name = "Unknown";
+	json_builder_add_string_value(b, kernel_name);
 
-	json_builder_set_member_name(b, "os_release");
-	os_release = g_strdup_printf("%s", remmina_utils_get_os_release());
-	if (!os_release || os_release[0] == '\0')
-		os_release = "Unknown";
-	json_builder_add_string_value(b, os_release);
+	json_builder_set_member_name(b, "kernel_release");
+	kernel_release = g_strdup_printf("%s", remmina_utils_get_kernel_release());
+	if (!kernel_release || kernel_release[0] == '\0')
+		kernel_release = "Unknown";
+	json_builder_add_string_value(b, kernel_release);
 
-	json_builder_set_member_name(b, "os_arch");
-	os_arch = g_strdup_printf("%s", remmina_utils_get_os_arch());
-	if (!os_arch || os_arch[0] == '\0')
-		os_arch = "Unknown";
-	json_builder_add_string_value(b, os_arch);
+	json_builder_set_member_name(b, "kernel_arch");
+	kernel_arch = g_strdup_printf("%s", remmina_utils_get_kernel_arch());
+	if (!kernel_arch || kernel_arch[0] == '\0')
+		kernel_arch = "Unknown";
+	json_builder_add_string_value(b, kernel_arch);
+
+	id = g_strdup_printf("%s", remmina_utils_get_lsb_id());
+	if (!id || id[0] == '\0') {
+		id = "Unknown";
+		/** @todo Add another way to find the ID */
+	}
+	json_builder_set_member_name(b, "distributor");
+	json_builder_add_string_value(b, id);
+
+	description = g_strdup_printf("%s", remmina_utils_get_lsb_description());
+	if (!description || description[0] == '\0') {
+		description = "Unknown";
+		/** @todo Add another way to find the DESCRIPTION */
+	}
+	json_builder_set_member_name(b, "distro_description");
+	json_builder_add_string_value(b, description);
+
+	release = g_strdup_printf("%s", remmina_utils_get_lsb_release());
+	if (!release || release[0] == '\0') {
+		release = "Unknown";
+		/** @todo Add another way to find the RELEASE */
+	}
+	json_builder_set_member_name(b, "distro_release");
+	json_builder_add_string_value(b, release);
+
+	codename = g_strdup_printf("%s", remmina_utils_get_lsb_codename());
+	if (!codename || codename[0] == '\0') {
+		codename = "Unknown";
+		/** @todo Add another way to find the CODENAME */
+	}
+	json_builder_set_member_name(b, "distro_codename");
+	json_builder_add_string_value(b, codename);
 
 	json_builder_end_object(b);
 	r = json_builder_get_root(b);
@@ -381,7 +417,7 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 		if (g_hash_table_lookup_extended(pdata->proto_count, pdata->protocol, &ko, &pcount)) {
 			count = GPOINTER_TO_INT(pcount) + 1;
 		}else {
-			count = 0;
+			count = 1;
 			g_hash_table_insert(pdata->proto_count, g_strdup(pdata->protocol), GINT_TO_POINTER(count));
 		}
 		g_hash_table_replace(pdata->proto_count, g_strdup(pdata->protocol), GINT_TO_POINTER(count));
@@ -446,8 +482,6 @@ JsonNode *remmina_stats_get_profiles()
 	g_hash_table_iter_init (&iter, pdata->proto_count);
 	while (g_hash_table_iter_next (&iter, (gpointer)&protokey, (gpointer)&protovalue))
 	{
-		g_print("protocol: %s\n", protokey);
-		g_print("protocol counter: %d\n", GPOINTER_TO_INT(protovalue));
 		json_builder_set_member_name(b, protokey);
 		json_builder_add_int_value(b, GPOINTER_TO_INT(protovalue));
 	}
