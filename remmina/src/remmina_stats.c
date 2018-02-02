@@ -35,14 +35,21 @@
  */
 
 #include "config.h"
-#include <unistd.h>
-#include <sys/utsname.h>
-#include <gtk/gtk.h>
 #include <string.h>
+#include <sys/utsname.h>
+#include <unistd.h>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <glib/gstdio.h>
+#include <gtk/gtk.h>
+
+#include "remmina_file.h"
+#include "remmina_file_manager.h"
+#include "remmina_icon.h"
 #include "remmina_log.h"
 #include "remmina_pref.h"
-#include "remmina_utils.h"
 #include "remmina_sysinfo.h"
+#include "remmina_utils.h"
 #include "remmina/remmina_trace_calls.h"
 
 #ifdef GDK_WINDOWING_WAYLAND
@@ -54,6 +61,16 @@
 #include "remmina_stats.h"
 
 struct utsname u;
+
+struct ProfilesData {
+	GHashTable *proto_count;
+	GHashTable *proto_date;;
+	const gchar *protocol;
+	gint pcount;
+};
+
+//static ProfilesData *pdata = NULL;
+
 
 static gchar* remmina_stats_gen_random_uuid_prefix()
 {
@@ -122,58 +139,44 @@ JsonNode *remmina_stats_get_uid()
 
 }
 
-JsonNode *remmina_stats_get_os_name()
+JsonNode *remmina_stats_get_os_info()
 {
 	TRACE_CALL(__func__);
+	JsonBuilder *b;
 	JsonNode *r;
+
 	gchar *os_name;
+	gchar *os_release;
+	gchar *os_arch;
+
+	/** @warning this function is usually executed on a dedicated thread,
+	 * not on the main thread */
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+
+	json_builder_set_member_name(b, "os_name");
 
 	os_name = g_strdup_printf("%s", remmina_utils_get_os_name());
-	g_print("OS name: %s\n", os_name);
 	if (!os_name || os_name[0] == '\0')
 		os_name = "Unknown";
+	json_builder_add_string_value(b, os_name);
 
-	r = json_node_alloc();
-	json_node_init_string(r, os_name);
-
-	g_free(os_name);
-
-	return r;
-}
-
-JsonNode *remmina_stats_get_os_release()
-{
-	TRACE_CALL(__func__);
-	JsonNode *r;
-	gchar *os_release;
-
+	json_builder_set_member_name(b, "os_release");
 	os_release = g_strdup_printf("%s", remmina_utils_get_os_release());
 	if (!os_release || os_release[0] == '\0')
 		os_release = "Unknown";
+	json_builder_add_string_value(b, os_release);
 
-	r = json_node_alloc();
-	json_node_init_string(r, os_release);
-
-	g_free(os_release);
-
-	return r;
-}
-
-JsonNode *remmina_stats_get_os_arch()
-{
-	TRACE_CALL(__func__);
-	JsonNode *r;
-	gchar *os_arch;
-
+	json_builder_set_member_name(b, "os_arch");
 	os_arch = g_strdup_printf("%s", remmina_utils_get_os_arch());
 	if (!os_arch || os_arch[0] == '\0')
 		os_arch = "Unknown";
+	json_builder_add_string_value(b, os_arch);
 
-	r = json_node_alloc();
-	json_node_init_string(r, os_arch);
-
-	g_free(os_arch);
-
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
 	return r;
 }
 
@@ -202,7 +205,6 @@ JsonNode *remmina_stats_get_version()
 	r = json_builder_get_root(b);
 	g_object_unref(b);
 	return r;
-
 }
 
 JsonNode *remmina_stats_get_gtk_version()
@@ -265,9 +267,15 @@ JsonNode *remmina_stats_get_gtk_backend()
 JsonNode *remmina_stats_get_wm_name()
 {
 	TRACE_CALL(__func__);
+	JsonBuilder *b;
 	JsonNode *r;
 	gchar *wmver;
 	gchar *wmname;
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+
+	json_builder_set_member_name(b, "window_manager");
 
 	/** We try to get the Gnome SHELL version */
 	wmver = remmina_sysinfo_get_gnome_shell_version();
@@ -275,24 +283,180 @@ JsonNode *remmina_stats_get_wm_name()
 		remmina_log_print("Gnome Shell not found\n");
 	}else {
 		remmina_log_printf("Gnome Shell version: %s\n", wmver);
-		wmname = g_strdup_printf("Gnome Shell version: %s", wmver);
+		json_builder_add_string_value(b, "Gnome Shell");
+		json_builder_set_member_name(b, "gnome_shell_ver");
+		json_builder_add_string_value(b,
+				g_strdup_printf("Gnome Shell version: %s", wmver));
 		goto end;
 	}
 
 	wmname = remmina_sysinfo_get_wm_name();
 	if (!wmname || wmname[0] == '\0') {
 		/** When everything else fails with set the WM name to NULL **/
-		wmver = "Unknown";
-		wmname = g_strdup_printf("%s", wmver);
+		remmina_log_print("Cannot determine the Window Manger name\n");
+		json_builder_add_string_value(b, "Unknown");
+	}else {
+		remmina_log_printf("Window Manger names %s\n", wmname);
+		json_builder_add_string_value(b, wmname);
 	}
 
 end:
-	r = json_node_alloc();
-	json_node_init_string(r, wmname);
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
 	return r;
 }
 
+JsonNode *remmina_stats_get_indicator()
+{
+	TRACE_CALL(__func__);
+	JsonBuilder *b;
+	JsonNode *r;
+	gboolean sni;           /** Support for StatusNotifier or AppIndicator */
+	gboolean sni_active;    /** remmina_icon_is_available */
 
+	b = json_builder_new();
+	json_builder_begin_object(b);
+
+	json_builder_set_member_name(b, "appindicator_supported");
+	sni = remmina_sysinfo_is_appindicator_available();
+	if (sni) {
+		/** StatusNotifier/Appindicator supported by desktop */
+		json_builder_add_int_value(b, 1);
+#ifdef HAVE_LIBAPPINDICATOR
+		/** libappindicator is compiled in remmina. */
+		json_builder_set_member_name(b, "appindicator_compiled");
+		json_builder_add_int_value(b, 1);
+#else
+		/** Remmina not compiled with -DWITH_APPINDICATOR=on */
+		json_builder_add_int_value(b, 0);
+#endif
+	} else {
+		/** StatusNotifier/Appindicator NOT supported by desktop */
+		json_builder_add_int_value(b, 0);
+		json_builder_set_member_name(b, "icon_is_active");
+		sni_active = remmina_icon_is_available();
+		if (remmina_icon_is_available())
+		{
+			/** Remmina icon is active */
+			json_builder_add_int_value(b, 1);
+			json_builder_set_member_name(b, "appindicator_type");
+#ifdef HAVE_LIBAPPINDICATOR
+			/** libappindicator fallback to GtkStatusIcon/xembed"); */
+			json_builder_add_string_value(b, "AppIndicator on GtkStatusIcon/xembed");
+#else
+			/** Remmina fallback to GtkStatusIcon/xembed */
+			json_builder_add_string_value(b, "Remmina icon on GtkStatusIcon/xembed");
+#endif
+		}else {
+			/** Remmina icon is NOT active */
+			json_builder_add_int_value(b, 0);
+		}
+	}
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+	return r;
+}
+
+/**
+ * Given a remmina file, fills a structure containing profiles keys/value tuples.
+ *
+ * This is used as a callback function with remmina_file_manager_iterate.
+ * @todo Move this in a separate file.
+ */
+static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_data)
+{
+	TRACE_CALL(__func__);
+
+	gint count = 0;
+	gpointer pcount, ko;
+	//gchar* last_used;
+
+	struct ProfilesData* pdata;
+	pdata = (struct ProfilesData*)user_data;
+
+	pdata->protocol = remmina_file_get_string(remminafile, "protocol");
+	if (pdata->protocol && pdata->protocol[0] != '\0') {
+		if (g_hash_table_lookup_extended(pdata->proto_count, pdata->protocol, &ko, &pcount)) {
+			count = GPOINTER_TO_INT(pcount) + 1;
+		}else {
+			count = 0;
+			g_hash_table_insert(pdata->proto_count, g_strdup(pdata->protocol), GINT_TO_POINTER(count));
+		}
+		g_hash_table_replace(pdata->proto_count, g_strdup(pdata->protocol), GINT_TO_POINTER(count));
+	}
+
+}
+
+JsonNode *remmina_stats_get_profiles()
+{
+	TRACE_CALL(__func__);
+
+	JsonBuilder *b;
+	JsonNode *r;
+
+	gint profiles_count;
+	GHashTableIter iter;
+	gchar *protokey;
+	gint protovalue;
+
+	struct ProfilesData *pdata;
+	pdata = g_malloc0(sizeof(struct ProfilesData));
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+
+	json_builder_set_member_name(b, "profile_count");
+
+	/** @warning this function is usually executed on a dedicated thread,
+	 * not on the main thread */
+
+	/**
+	 * Data organization
+	 * Protocols vs last time used
+	 *
+	 * PROTO  | LAST USED
+	 * -------|----------
+	 * RDP	  |  20180129
+	 * SPICE  |  20171122
+	 * SSH	  |  20180111
+	 */
+	//pdata->proto_date = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
+	/**
+	 * Profiles count per protocol
+	 *
+	 * PROTO  | PROF COUNT
+	 * -------|----------
+	 * RDP	  |  2560
+	 * SPICE  |  334
+	 * SSH	  |  1540
+	 * VNC	  |  2
+	 *
+	 */
+	pdata->proto_count = g_hash_table_new_full (g_str_hash, g_str_equal,
+			(GDestroyNotify)g_free, NULL);
+
+	profiles_count = remmina_file_manager_iterate(
+			(GFunc)remmina_profiles_get_data,
+			(gpointer)pdata);
+
+	json_builder_add_int_value(b, profiles_count);
+
+	g_hash_table_iter_init (&iter, pdata->proto_count);
+	while (g_hash_table_iter_next (&iter, (gpointer)&protokey, (gpointer)&protovalue))
+	{
+		g_print("protocol: %s\n", protokey);
+		g_print("protocol counter: %d\n", GPOINTER_TO_INT(protovalue));
+		json_builder_set_member_name(b, protokey);
+		json_builder_add_int_value(b, GPOINTER_TO_INT(protovalue));
+	}
+
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+	return r;
+}
 
 /**
  * Get all statistics in json format to send periodically to the PHP server.
@@ -304,12 +468,9 @@ end:
 JsonNode *remmina_stats_get_all()
 {
 	TRACE_CALL(__func__);
-
-	if (uname(&u) == -1)
-		g_print("uname:");
-
 	JsonBuilder *b;
 	JsonNode *n;
+
 	b = json_builder_new();
 	json_builder_begin_object(b);
 
@@ -321,16 +482,11 @@ JsonNode *remmina_stats_get_all()
 	json_builder_set_member_name(b, "REMMINAVERSION");
 	json_builder_add_value(b, n);
 
-	n = remmina_stats_get_os_name();
-	json_builder_set_member_name(b, "OSNAME");
-	json_builder_add_value(b, n);
+	if (uname(&u) == -1)
+		g_print("uname:");
 
-	n = remmina_stats_get_os_release();
-	json_builder_set_member_name(b, "OSRELEASE");
-	json_builder_add_value(b, n);
-
-	n = remmina_stats_get_os_arch();
-	json_builder_set_member_name(b, "OSARCH");
+	n = remmina_stats_get_os_info();
+	json_builder_set_member_name(b, "SYSTEM");
 	json_builder_add_value(b, n);
 
 	n = remmina_stats_get_gtk_version();
@@ -342,7 +498,15 @@ JsonNode *remmina_stats_get_all()
 	json_builder_add_value(b, n);
 
 	n = remmina_stats_get_wm_name();
-	json_builder_set_member_name(b, "WMNAME");
+	json_builder_set_member_name(b, "WINDOWMANAGER");
+	json_builder_add_value(b, n);
+
+	n = remmina_stats_get_indicator();
+	json_builder_set_member_name(b, "APPINDICATOR");
+	json_builder_add_value(b, n);
+
+	n = remmina_stats_get_profiles();
+	json_builder_set_member_name(b, "PROFILES");
 	json_builder_add_value(b, n);
 
 	json_builder_end_object(b);
