@@ -359,9 +359,9 @@ JsonNode *remmina_stats_get_indicator()
 	if (sni) {
 		/** StatusNotifier/Appindicator supported by desktop */
 		json_builder_add_int_value(b, 1);
+		json_builder_set_member_name(b, "appindicator_compiled");
 #ifdef HAVE_LIBAPPINDICATOR
 		/** libappindicator is compiled in remmina. */
-		json_builder_set_member_name(b, "appindicator_compiled");
 		json_builder_add_int_value(b, 1);
 #else
 		/** Remmina not compiled with -DWITH_APPINDICATOR=on */
