@@ -52,6 +52,69 @@
 
 struct utsname u;
 
+/* Copyright (C) 1998 VMware, Inc. All rights reserved.
+ * Some of the code in this file is taken from the VMware open client.
+ */
+typedef struct lsb_distro_info {
+	gchar *name;
+	gchar *scanstring;
+} LSBDistroInfo;
+
+static LSBDistroInfo lsbFields[] = {
+	{ "DISTRIB_ID=",	  "DISTRIB_ID=%s"		},
+	{ "DISTRIB_RELEASE=",	  "DISTRIB_RELEASE=%s"		},
+	{ "DISTRIB_CODENAME=",	  "DISTRIB_CODENAME=%s"		},
+	{ "DISTRIB_DESCRIPTION=", "DISTRIB_DESCRIPTION=%s"	},
+	{ NULL,			  NULL				},
+};
+
+typedef struct distro_info {
+	gchar *name;
+	gchar *filename;
+} DistroInfo;
+
+static DistroInfo distroArray[] = {
+	{ "RedHat",		"/etc/redhat-release"		},
+	{ "RedHat",		"/etc/redhat_version"		},
+	{ "Sun",		"/etc/sun-release"		},
+	{ "SuSE",		"/etc/SuSE-release"		},
+	{ "SuSE",		"/etc/novell-release"		},
+	{ "SuSE",		"/etc/sles-release"		},
+	{ "Debian",		"/etc/debian_version"		},
+	{ "Debian",		"/etc/debian_release"		},
+	{ "Ubuntu",		"/etc/lsb-release"		},
+	{ "Mandrake",		"/etc/mandrake-release"		},
+	{ "Mandriva",		"/etc/mandriva-release"		},
+	{ "Mandrake",		"/etc/mandrakelinux-release"	},
+	{ "TurboLinux",		"/etc/turbolinux-release"	},
+	{ "Fedora Core",	"/etc/fedora-release"		},
+	{ "Gentoo",		"/etc/gentoo-release"		},
+	{ "Novell",		"/etc/nld-release"		},
+	{ "Annvix",		"/etc/annvix-release"		},
+	{ "Arch",		"/etc/arch-release"		},
+	{ "Arklinux",		"/etc/arklinux-release"		},
+	{ "Aurox",		"/etc/aurox-release"		},
+	{ "BlackCat",		"/etc/blackcat-release"		},
+	{ "Cobalt",		"/etc/cobalt-release"		},
+	{ "Conectiva",		"/etc/conectiva-release"	},
+	{ "Immunix",		"/etc/immunix-release"		},
+	{ "Knoppix",		"/etc/knoppix_version"		},
+	{ "Linux-From-Scratch", "/etc/lfs-release"		},
+	{ "Linux-PPC",		"/etc/linuxppc-release"		},
+	{ "MkLinux",		"/etc/mklinux-release"		},
+	{ "PLD",		"/etc/pld-release"		},
+	{ "Slackware",		"/etc/slackware-version"	},
+	{ "Slackware",		"/etc/slackware-release"	},
+	{ "SMEServer",		"/etc/e-smith-release"		},
+	{ "Solaris",		"/etc/release"			},
+	{ "Tiny Sofa",		"/etc/tinysofa-release"		},
+	{ "UltraPenguin",	"/etc/ultrapenguin-release"	},
+	{ "UnitedLinux",	"/etc/UnitedLinux-release"	},
+	{ "VALinux",		"/etc/va-release"		},
+	{ "Yellow Dog",		"/etc/yellowdog-release"	},
+	{ NULL,			NULL				},
+};
+
 gint remmina_utils_strpos(const gchar *haystack, const gchar *needle)
 {
 	TRACE_CALL(__func__);
@@ -141,20 +204,86 @@ guint remmina_utils_string_replace_all(GString *haystack, const gchar *needle, c
 	return count;
 }
 
+/**
+ * Strip \n, \t and \" from a given string.
+ * This function is particulary useful with g_spawn_command_line_sync that does
+ * not strip control characters from the output.
+ * @warning the result should be freed.
+ * @param a string.
+ * @return a copy of string cleaned by \t, \n and \"
+ */
+gchar *remmina_utils_string_strip(const gchar *s)
+{
+	gchar *p = malloc(strlen(s) + 1);
+
+	if (p) {
+		gchar *p2 = p;
+		while (*s != '\0') {
+			if (*s != '\t' && *s != '\n' && *s != '\"') {
+				*p2++ = *s++;
+			} else {
+				++s;
+			}
+		}
+		*p2 = '\0';
+	}
+	return p;
+}
+
 /** OS related functions */
+
+/**
+ * remmina_utils_read_distrofile.
+ *
+ * Look for a distro version file /etc/xxx-release.
+ * Once found, read the file in and figure out which distribution.
+ *
+ * @param filename The file path of a Linux distribution release file.
+ * @param distroSize The size of the distribition name.
+ * @param distro The full distro name.
+ * @return Returns distro information verbatium from /etc/xxx-release (distro).
+ *
+ */
+const gchar* remmina_utils_read_distrofile(gchar *filename)
+{
+	TRACE_CALL(__func__);
+	gsize file_sz;
+	struct stat st;
+	gchar *distro_desc = NULL;
+	GError *err = NULL;
+
+	if (g_stat(filename, &st) == -1) {
+		g_debug("%s: could not stat the file %s\n", __func__, filename);
+		return NULL;
+	}
+
+	if (!g_file_get_contents(filename, &distro_desc, &file_sz, &err)) {
+		g_debug("%s: could not get the file content%s: %s\n", __func__, filename, err->message);
+		g_error_free(err);
+		return NULL;
+	}
+
+	if (file_sz == 0) {
+		g_debug("%s: Cannot work with empty file.\n", __FUNCTION__);
+		return NULL;
+	}
+
+	g_debug("%s: Distro description %s\n", __func__, distro_desc);
+	return distro_desc;
+}
 
 /**
  * Return the OS name as in "uname -s".
  * @return The OS name or NULL.
  */
-const gchar* remmina_utils_get_os_name()
+const gchar* remmina_utils_get_kernel_name()
 {
 	TRACE_CALL(__func__);
 	if (u.sysname)
 		return u.sysname;
 }
 
-const gchar* remmina_utils_get_os_release()
+const gchar* remmina_utils_get_kernel_release()
 /**
  * Return the OS version as in "uname -r".
  * @return The OS release or NULL.
@@ -169,11 +298,94 @@ const gchar* remmina_utils_get_os_release()
  * Return the machine hardware name as in "uname -m".
  * @return The machine hardware name or NULL.
  */
-const gchar* remmina_utils_get_os_arch()
+const gchar* remmina_utils_get_kernel_arch()
 {
 	TRACE_CALL(__func__);
 	if (u.machine)
 		return u.machine;
+}
+
+/**
+ * Print the Distributor as specified by the lsb_release command.
+ * @return the distributor ID string or NULL.
+ */
+const gchar* remmina_utils_get_lsb_id()
+{
+	TRACE_CALL(__func__);
+	gchar *lsb_id = NULL;
+	if (g_spawn_command_line_sync("/usr/bin/lsb_release -si", &lsb_id, NULL, NULL, NULL))
+		return remmina_utils_string_strip(lsb_id);
+	return NULL;
+}
+
+/**
+ * Print the Distribution description as specified by the lsb_release command.
+ * @return the Distribution description string or NULL.
+ */
+const gchar* remmina_utils_get_lsb_description()
+{
+	TRACE_CALL(__func__);
+	gchar *lsb_description = NULL;
+	GError *err = NULL;
+
+	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sd", &lsb_description, NULL, NULL, &err)) {
+		return remmina_utils_string_strip(lsb_description);
+	}else {
+		g_debug("%s: could not execute lsb_release %s\n", __func__, err->message);
+		g_error_free(err);
+	}
+	g_debug("%s: lsb_release %s\n", __func__, lsb_description);
+	return NULL;
+}
+
+/**
+ * Print the Distribution release name as specified by the lsb_release command.
+ * @return the Distribution release name string or NULL.
+ */
+const gchar* remmina_utils_get_lsb_release()
+{
+	TRACE_CALL(__func__);
+	gchar *lsb_release = NULL;
+	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sr", &lsb_release, NULL, NULL, NULL))
+		return remmina_utils_string_strip(lsb_release);
+	return NULL;
+}
+
+/**
+ * Print the Distribution codename as specified by the lsb_release command.
+ * @return the codename string or NULL.
+ */
+const gchar* remmina_utils_get_lsb_codename()
+{
+	TRACE_CALL(__func__);
+	gchar *lsb_codename = NULL;
+	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sc", &lsb_codename, NULL, NULL, NULL))
+		return remmina_utils_string_strip(lsb_codename);
+	return NULL;
+}
+
+/**
+ * Print the distribution description if found.
+ * Test each known distribution specific information file and print it's content.
+ * @return a string or NULL
+ */
+const gchar* remmina_utils_get_distro_description()
+{
+	TRACE_CALL(__func__);
+	gchar *distro_desc = NULL;
+	gint i;
+
+	for (i = 0; distroArray[i].filename != NULL; i++) {
+		g_debug("%s: File %s\n", __func__, distroArray[i].filename);
+		distro_desc = g_strdup(remmina_utils_read_distrofile(
+				distroArray[i].filename));
+
+		if (distro_desc && distro_desc[0] != '\0') {
+			g_debug("%s: Distro description %s\n", __func__, distro_desc);
+			break;
+		}
+	}
+	return remmina_utils_string_strip(distro_desc);
 }
 
 /**
@@ -183,21 +395,21 @@ const gchar* remmina_utils_get_os_arch()
 const gchar* remmina_utils_get_os_info()
 {
 	TRACE_CALL(__func__);
-	gchar *os_string;
+	gchar *kernel_string;
 
 	if (uname(&u) == -1)
 		g_print("uname:");
 
-	os_string = g_strdup_printf("%s;%s;%s\n",
-		remmina_utils_get_os_name(),
-		remmina_utils_get_os_release(),
-		remmina_utils_get_os_arch());
-	if (!os_string || os_string[0] == '\0')
-		os_string = g_strdup_printf("%s;%s;%s\n",
+	kernel_string = g_strdup_printf("%s;%s;%s\n",
+		remmina_utils_get_kernel_name(),
+		remmina_utils_get_kernel_release(),
+		remmina_utils_get_kernel_arch());
+	if (!kernel_string || kernel_string[0] == '\0')
+		kernel_string = g_strdup_printf("%s;%s;%s\n",
 			"UNKNOWN",
 			"UNKNOWN",
 			"UNKNOWN");
-	return os_string;
+	return kernel_string;
 }
 
 

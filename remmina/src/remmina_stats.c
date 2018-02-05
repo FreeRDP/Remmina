@@ -69,9 +69,6 @@ struct ProfilesData {
 	gint pcount;
 };
 
-//static ProfilesData *pdata = NULL;
-
-
 static gchar* remmina_stats_gen_random_uuid_prefix()
 {
 	TRACE_CALL(__func__);
@@ -145,9 +142,13 @@ JsonNode *remmina_stats_get_os_info()
 	JsonBuilder *b;
 	JsonNode *r;
 
-	gchar *os_name;
-	gchar *os_release;
-	gchar *os_arch;
+	gchar *kernel_name;
+	gchar *kernel_release;
+	gchar *kernel_arch;
+	gchar *id;
+	gchar *description;
+	gchar *release;
+	gchar *codename;
 
 	/** @warning this function is usually executed on a dedicated thread,
 	 * not on the main thread */
@@ -155,24 +156,59 @@ JsonNode *remmina_stats_get_os_info()
 	b = json_builder_new();
 	json_builder_begin_object(b);
 
-	json_builder_set_member_name(b, "os_name");
+	json_builder_set_member_name(b, "kernel_name");
 
-	os_name = g_strdup_printf("%s", remmina_utils_get_os_name());
-	if (!os_name || os_name[0] == '\0')
-		os_name = "Unknown";
-	json_builder_add_string_value(b, os_name);
+	kernel_name = g_strdup_printf("%s", remmina_utils_get_kernel_name());
+	if (!kernel_name || kernel_name[0] == '\0')
+		kernel_name = "n/a";
+	json_builder_add_string_value(b, kernel_name);
 
-	json_builder_set_member_name(b, "os_release");
-	os_release = g_strdup_printf("%s", remmina_utils_get_os_release());
-	if (!os_release || os_release[0] == '\0')
-		os_release = "Unknown";
-	json_builder_add_string_value(b, os_release);
+	json_builder_set_member_name(b, "kernel_release");
+	kernel_release = g_strdup_printf("%s", remmina_utils_get_kernel_release());
+	if (!kernel_release || kernel_release[0] == '\0')
+		kernel_release = "n/a";
+	json_builder_add_string_value(b, kernel_release);
 
-	json_builder_set_member_name(b, "os_arch");
-	os_arch = g_strdup_printf("%s", remmina_utils_get_os_arch());
-	if (!os_arch || os_arch[0] == '\0')
-		os_arch = "Unknown";
-	json_builder_add_string_value(b, os_arch);
+	json_builder_set_member_name(b, "kernel_arch");
+	kernel_arch = g_strdup_printf("%s", remmina_utils_get_kernel_arch());
+	if (!kernel_arch || kernel_arch[0] == '\0')
+		kernel_arch = "n/a";
+	json_builder_add_string_value(b, kernel_arch);
+
+	id = g_strdup(remmina_utils_get_lsb_id());
+	if (!id || id[0] == '\0') {
+		id = "n/a";
+		/** @todo Add another way to find the ID */
+	}
+	json_builder_set_member_name(b, "distributor");
+	json_builder_add_string_value(b, id);
+
+	description = g_strdup(remmina_utils_get_lsb_description());
+	if (!description || description[0] == '\0') {
+		description = g_strdup(remmina_utils_get_distro_description());
+		if (!description || description[0] == '\0') {
+			description = "n/a";
+		}
+		/** @todo Add another way to find the DESCRIPTION */
+	}
+	json_builder_set_member_name(b, "distro_description");
+	json_builder_add_string_value(b, description);
+
+	release = g_strdup(remmina_utils_get_lsb_release());
+	if (!release || release[0] == '\0') {
+		release = "n/a";
+		/** @todo Add another way to find the RELEASE */
+	}
+	json_builder_set_member_name(b, "distro_release");
+	json_builder_add_string_value(b, release);
+
+	codename = g_strdup(remmina_utils_get_lsb_codename());
+	if (!codename || codename[0] == '\0') {
+		codename = "n/a";
+		/** @todo Add another way to find the CODENAME */
+	}
+	json_builder_set_member_name(b, "distro_codename");
+	json_builder_add_string_value(b, codename);
 
 	json_builder_end_object(b);
 	r = json_builder_get_root(b);
@@ -255,7 +291,7 @@ JsonNode *remmina_stats_get_gtk_backend()
 		bkend = "X11";
 	}   else
 #endif
-	bkend = "Unknown";
+	bkend = "n/a";
 
 	r = json_node_alloc();
 	json_node_init_string(r, bkend);
@@ -286,7 +322,7 @@ JsonNode *remmina_stats_get_wm_name()
 		json_builder_add_string_value(b, "Gnome Shell");
 		json_builder_set_member_name(b, "gnome_shell_ver");
 		json_builder_add_string_value(b,
-				g_strdup_printf("Gnome Shell version: %s", wmver));
+			g_strdup_printf("Gnome Shell version: %s", wmver));
 		goto end;
 	}
 
@@ -294,13 +330,13 @@ JsonNode *remmina_stats_get_wm_name()
 	if (!wmname || wmname[0] == '\0') {
 		/** When everything else fails with set the WM name to NULL **/
 		remmina_log_print("Cannot determine the Window Manger name\n");
-		json_builder_add_string_value(b, "Unknown");
+		json_builder_add_string_value(b, "n/a");
 	}else {
 		remmina_log_printf("Window Manger names %s\n", wmname);
 		json_builder_add_string_value(b, wmname);
 	}
 
-end:
+ end:
 	json_builder_end_object(b);
 	r = json_builder_get_root(b);
 	g_object_unref(b);
@@ -323,9 +359,9 @@ JsonNode *remmina_stats_get_indicator()
 	if (sni) {
 		/** StatusNotifier/Appindicator supported by desktop */
 		json_builder_add_int_value(b, 1);
+		json_builder_set_member_name(b, "appindicator_compiled");
 #ifdef HAVE_LIBAPPINDICATOR
 		/** libappindicator is compiled in remmina. */
-		json_builder_set_member_name(b, "appindicator_compiled");
 		json_builder_add_int_value(b, 1);
 #else
 		/** Remmina not compiled with -DWITH_APPINDICATOR=on */
@@ -336,8 +372,7 @@ JsonNode *remmina_stats_get_indicator()
 		json_builder_add_int_value(b, 0);
 		json_builder_set_member_name(b, "icon_is_active");
 		sni_active = remmina_icon_is_available();
-		if (remmina_icon_is_available())
-		{
+		if (remmina_icon_is_available()) {
 			/** Remmina icon is active */
 			json_builder_add_int_value(b, 1);
 			json_builder_set_member_name(b, "appindicator_type");
@@ -381,7 +416,7 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 		if (g_hash_table_lookup_extended(pdata->proto_count, pdata->protocol, &ko, &pcount)) {
 			count = GPOINTER_TO_INT(pcount) + 1;
 		}else {
-			count = 0;
+			count = 1;
 			g_hash_table_insert(pdata->proto_count, g_strdup(pdata->protocol), GINT_TO_POINTER(count));
 		}
 		g_hash_table_replace(pdata->proto_count, g_strdup(pdata->protocol), GINT_TO_POINTER(count));
@@ -398,8 +433,7 @@ JsonNode *remmina_stats_get_profiles()
 
 	gint profiles_count;
 	GHashTableIter iter;
-	gchar *protokey;
-	gint protovalue;
+	gpointer protokey, protovalue;
 
 	struct ProfilesData *pdata;
 	pdata = g_malloc0(sizeof(struct ProfilesData));
@@ -434,21 +468,18 @@ JsonNode *remmina_stats_get_profiles()
 	 * VNC	  |  2
 	 *
 	 */
-	pdata->proto_count = g_hash_table_new_full (g_str_hash, g_str_equal,
-			(GDestroyNotify)g_free, NULL);
+	pdata->proto_count = g_hash_table_new_full(g_str_hash, g_str_equal,
+		(GDestroyNotify)g_free, NULL);
 
 	profiles_count = remmina_file_manager_iterate(
-			(GFunc)remmina_profiles_get_data,
-			(gpointer)pdata);
+		(GFunc)remmina_profiles_get_data,
+		(gpointer)pdata);
 
 	json_builder_add_int_value(b, profiles_count);
 
-	g_hash_table_iter_init (&iter, pdata->proto_count);
-	while (g_hash_table_iter_next (&iter, (gpointer)&protokey, (gpointer)&protovalue))
-	{
-		g_print("protocol: %s\n", protokey);
-		g_print("protocol counter: %d\n", GPOINTER_TO_INT(protovalue));
-		json_builder_set_member_name(b, protokey);
+	g_hash_table_iter_init(&iter, pdata->proto_count);
+	while (g_hash_table_iter_next(&iter, &protokey, &protovalue)) {
+		json_builder_set_member_name(b, (gchar*)protokey);
 		json_builder_add_int_value(b, GPOINTER_TO_INT(protovalue));
 	}
 

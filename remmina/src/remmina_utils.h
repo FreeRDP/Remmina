@@ -41,12 +41,16 @@
 
 G_BEGIN_DECLS
 gint remmina_utils_string_find(GString *haystack, gint start, gint end, const gchar *needle);
-
 gint remmina_utils_string_replace(GString *str, gint pos, gint len, const gchar *replace);
-
 guint remmina_utils_string_replace_all(GString *haystack, const gchar *needle, const gchar *replace);
+gchar *remmina_utils_string_strip(const gchar *s);
 
-const gchar* remmina_utils_get_os_name ();
-const gchar* remmina_utils_get_os_release ();
-const gchar* remmina_utils_get_os_arch ();
-const gchar* remmina_utils_get_os_info ();
+const gchar* remmina_utils_get_kernel_name();
+const gchar* remmina_utils_get_kernel_release();
+const gchar* remmina_utils_get_kernel_arch();
+const gchar* remmina_utils_get_lsb_id();
+const gchar* remmina_utils_get_lsb_description();
+const gchar* remmina_utils_get_lsb_release();
+const gchar* remmina_utils_get_lsb_codename();
+const gchar* remmina_utils_get_distro_description();
+const gchar* remmina_utils_get_os_info();
