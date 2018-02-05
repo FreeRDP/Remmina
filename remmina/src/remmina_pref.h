@@ -159,9 +159,6 @@ typedef struct _RemminaPref {
 	/* UID */
 	gchar *uid;
 
-	/* Remmina birthday julian format*/
-	guint32 bdate;
-
 	/* Color palette for VTE terminal */
 	gchar *background;
 	gchar *cursor;

@@ -513,11 +513,6 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.uid = NULL;
 
-	if (g_key_file_has_key(gkeyfile, "remmina_pref", "bdate", NULL))
-		remmina_pref.bdate = g_key_file_get_integer(gkeyfile, "remmina_pref", "bdate", NULL);
-	else
-		remmina_pref.bdate = 0;
-
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_font", NULL))
 		remmina_pref.vte_font = g_key_file_get_string(gkeyfile, "remmina_pref", "vte_font", NULL);
 	else
