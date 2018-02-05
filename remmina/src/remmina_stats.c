@@ -433,8 +433,7 @@ JsonNode *remmina_stats_get_profiles()
 
 	gint profiles_count;
 	GHashTableIter iter;
-	gchar *protokey;
-	gint protovalue;
+	gpointer protokey, protovalue;
 
 	struct ProfilesData *pdata;
 	pdata = g_malloc0(sizeof(struct ProfilesData));
@@ -479,8 +478,8 @@ JsonNode *remmina_stats_get_profiles()
 	json_builder_add_int_value(b, profiles_count);
 
 	g_hash_table_iter_init(&iter, pdata->proto_count);
-	while (g_hash_table_iter_next(&iter, (gpointer) & protokey, (gpointer) & protovalue)) {
-		json_builder_set_member_name(b, protokey);
+	while (g_hash_table_iter_next(&iter, &protokey, &protovalue)) {
+		json_builder_set_member_name(b, (gchar*)protokey);
 		json_builder_add_int_value(b, GPOINTER_TO_INT(protovalue));
 	}
 
