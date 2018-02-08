@@ -94,9 +94,9 @@
 #endif
 #endif
 
-#define SSH_SOCKET_TCP_KEEPIDLE 5
+#define SSH_SOCKET_TCP_KEEPIDLE 20
 #define SSH_SOCKET_TCP_KEEPCNT 3
-#define SSH_SOCKET_TCP_KEEPINTVL 3
+#define SSH_SOCKET_TCP_KEEPINTVL 10
 /* Remember to lower SSH_SOCKET_TCP_USER_TIMEOUT to 4 when kernel bug 108191 will be fixed */
 #define SSH_SOCKET_TCP_USER_TIMEOUT 9
 #endif
@@ -489,6 +489,7 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 	ssh->session = ssh_new();
 	ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->server);
 	ssh_options_set(ssh->session, SSH_OPTIONS_PORT, &ssh->port);
+	ssh_options_set(ssh->session, SSH_OPTIONS_COMPRESSION, "yes");
 	/* When SSH_OPTIONS_USER is not set, the local user account is used */
 	if (*ssh->user != 0)
 		ssh_options_set(ssh->session, SSH_OPTIONS_USER, ssh->user);
