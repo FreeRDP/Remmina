@@ -149,6 +149,11 @@ if(AVAHI_FOUND)
         target_link_libraries(remmina ${AVAHI_LIBRARIES})
 endif()
 
+if (OPENSSL_FOUND)
+        include_directories(${OPENSSL_INCLUDE_DIRS})
+        target_link_libraries(remmina ${OPENSSL_LIBRARIES})
+endif()
+
 option(WITH_VTE "Build with support for VTE" ON)
 if(GTK3_FOUND AND WITH_VTE)
         set(_VTE_VERSION_NUMS 2.91 2.90)
