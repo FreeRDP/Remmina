@@ -222,7 +222,7 @@ int main(int argc, char* argv[])
 	const gchar *app_id;
 	int status;
 
-	gdk_set_allowed_backends("x11,broadway,quartz,wayland,mir");
+	gdk_set_allowed_backends("wayland,x11,broadway,quartz,mir");
 
 	remmina_masterthread_exec_save_main_thread_id();
 

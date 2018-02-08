@@ -290,9 +290,22 @@ BOOL rf_auto_reconnect(rfContext* rfi)
 BOOL rf_begin_paint(rdpContext* context)
 {
 	TRACE_CALL(__func__);
-	rdpGdi* gdi = context->gdi;
-	gdi->primary->hdc->hwnd->invalid->null = 1;
-	gdi->primary->hdc->hwnd->ninvalid = 0;
+	rdpGdi* gdi;
+	HGDI_WND hwnd;
+
+	if (!context)
+		return FALSE;
+
+	gdi = context->gdi;
+	if (!gdi || !gdi->primary || !gdi->primary->hdc || !gdi->primary->hdc->hwnd)
+		return FALSE;
+
+	hwnd = gdi->primary->hdc->hwnd;
+	if (!hwnd->ninvalid)
+		return FALSE;
+
+	hwnd->invalid->null = 1;
+	hwnd->ninvalid = 0;
 	return TRUE;
 }
 
@@ -708,11 +721,33 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->AutoReconnectionEnabled = FALSE;
 	}
 
-	rfi->settings->ColorDepth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 0);
+	rfi->settings->ColorDepth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 66);
+
+	rfi->settings->SoftwareGdi = TRUE;
 
 	if (rfi->settings->ColorDepth == 0) {
-		rfi->settings->RemoteFxCodec = True;
+		/* RFX (Win7)*/
+		rfi->settings->RemoteFxCodec = TRUE;
+		rfi->settings->SupportGraphicsPipeline = FALSE;
 		rfi->settings->ColorDepth = 32;
+	} else if (rfi->settings->ColorDepth == 64) {
+		/* /gfx:rfx (Win8) */
+		rfi->settings->ColorDepth = 32;
+		rfi->settings->SupportGraphicsPipeline = TRUE;
+		rfi->settings->GfxH264 = TRUE;
+		rfi->settings->GfxAVC444 = FALSE;
+	} else if (rfi->settings->ColorDepth == 65) {
+		/* /gfx:avc420 (Win8.1) */
+		rfi->settings->ColorDepth = 32;
+		rfi->settings->SupportGraphicsPipeline = TRUE;
+		rfi->settings->GfxH264 = TRUE;
+		rfi->settings->GfxAVC444 = FALSE;
+	} else if (rfi->settings->ColorDepth >= 66) {
+		/* /gfx:avc444 (Win10) */
+		rfi->settings->ColorDepth = 32;
+		rfi->settings->SupportGraphicsPipeline = TRUE;
+		rfi->settings->GfxH264 = TRUE;
+		rfi->settings->GfxAVC444 = TRUE;
 	}
 
 	rfi->settings->DesktopWidth = remmina_plugin_service->get_profile_remote_width(gp);
@@ -986,31 +1021,38 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 			UINT32 e;
 
 			e = freerdp_get_last_error(rfi->instance->context);
+
 			switch (e) {
 			case FREERDP_ERROR_AUTHENTICATION_FAILED:
 			case STATUS_LOGON_FAILURE:              // wrong return code from FreeRDP introduced at the end of July 2016 ? (fixed with b86c0ba)
+			case FREERDP_ERROR_CONNECT_LOGON_FAILURE:
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Authentication to RDP server %s failed.\nCheck username, password and domain."),
 					rfi->settings->ServerHostname );
 				// Invalidate the saved password, so the user will be re-asked at next logon
 				remmina_plugin_service->file_unsave_password(remminafile);
 				break;
 			case STATUS_ACCOUNT_LOCKED_OUT:
+			case FREERDP_ERROR_CONNECT_ACCOUNT_LOCKED_OUT:
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount is locked out."),
 					rfi->settings->ServerHostname );
 				break;
 			case STATUS_ACCOUNT_EXPIRED:
+			case FREERDP_ERROR_CONNECT_ACCOUNT_EXPIRED:
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount is expired."),
 					rfi->settings->ServerHostname );
 				break;
 			case STATUS_PASSWORD_EXPIRED:
+			case FREERDP_ERROR_CONNECT_PASSWORD_EXPIRED:
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nPassword expired."),
 					rfi->settings->ServerHostname );
 				break;
 			case STATUS_ACCOUNT_DISABLED:
+			case FREERDP_ERROR_CONNECT_ACCOUNT_DISABLED:
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount is disabled."),
 					rfi->settings->ServerHostname );
 				break;
 			case STATUS_ACCOUNT_RESTRICTION:
+			case FREERDP_ERROR_CONNECT_ACCOUNT_RESTRICTION:
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount has restrictions."),
 					rfi->settings->ServerHostname );
 				break;
@@ -1276,12 +1318,16 @@ static gboolean remmina_rdp_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 /* Array of key/value pairs for color depths */
 static gpointer colordepth_list[] =
 {
-	"8",  N_("256 colors (8 bpp)"),
-	"15", N_("High color (15 bpp)"),
-	"16", N_("High color (16 bpp)"),
-	"24", N_("True color (24 bpp)"),
-	"32", N_("True color (32 bpp)"),
+	/* 1st one is the default in a new install */
+	"66",  N_("GFX AVC444 (32 bpp)"),
+	"65",  N_("GFX AVC420 (32 bpp)"),
+	"64",  N_("GFX RFX (32 bpp)"),
 	"0",  N_("RemoteFX (32 bpp)"),
+	"32", N_("True color (32 bpp)"),
+	"24", N_("True color (24 bpp)"),
+	"16", N_("High color (16 bpp)"),
+	"15", N_("High color (15 bpp)"),
+	"8",  N_("256 colors (8 bpp)"),
 	NULL
 };
 

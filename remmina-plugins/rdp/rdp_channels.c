@@ -1,6 +1,7 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2012-2012 Jean-Louis Dupond
+ * Copyright (C) 2016-2018 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,9 +41,12 @@
 #include <freerdp/freerdp.h>
 #include <freerdp/channels/channels.h>
 #include <freerdp/client/cliprdr.h>
+#include <freerdp/gdi/gfx.h>
 
 void remmina_rdp_OnChannelConnectedEventHandler(rdpContext* context, ChannelConnectedEventArgs* e)
 {
+	TRACE_CALL(__func__);
+
 	rfContext* rfi = (rfContext*)context;
 
 	if (g_strcmp0(e->name, RDPEI_DVC_CHANNEL_NAME) == 0) {
@@ -52,13 +56,10 @@ void remmina_rdp_OnChannelConnectedEventHandler(rdpContext* context, ChannelConn
 		g_print("Unimplemented: channel %s connected but we can't use it\n", e->name);
 		// xf_tsmf_init(xfc, (TsmfClientContext*) e->pInterface);
 	}else if (g_strcmp0(e->name, RDPGFX_DVC_CHANNEL_NAME) == 0) {
-		g_print("Unimplemented: channel %s connected but we can't use it\n", e->name);
-		/*
-		   if (settings->SoftwareGdi)
-		        gdi_graphics_pipeline_init(context->gdi, (RdpgfxClientContext*) e->pInterface);
-		   else
-		        xf_graphics_pipeline_init(xfc, (RdpgfxClientContext*) e->pInterface);
-		 */
+	   if (rfi->settings->SoftwareGdi)
+			gdi_graphics_pipeline_init(context->gdi, (RdpgfxClientContext*) e->pInterface);
+	   else
+			g_print("Unimplemented: channel %s connected but libfreerdp is in HardwareGdi mode\n", e->name);
 	}else if (g_strcmp0(e->name, RAIL_SVC_CHANNEL_NAME) == 0) {
 		g_print("Unimplemented: channel %s connected but we can't use it\n", e->name);
 		// xf_rail_init(xfc, (RailClientContext*) e->pInterface);
@@ -76,9 +77,18 @@ void remmina_rdp_OnChannelConnectedEventHandler(rdpContext* context, ChannelConn
 		if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
 			remmina_rdp_event_send_delayed_monitor_layout(rfi->protocol_widget);
 		}
-	}
+	}remmina_plugin_service->log_printf("Channel %s has been opened\n", e->name);
 }
 
 void remmina_rdp_OnChannelDisconnectedEventHandler(rdpContext* context, ChannelConnectedEventArgs* e)
 {
+	TRACE_CALL(__func__);
+	rfContext* rfi = (rfContext*)context;
+
+	if (strcmp(e->name, RDPGFX_DVC_CHANNEL_NAME) == 0) {
+		if (rfi->settings->SoftwareGdi)
+			gdi_graphics_pipeline_uninit(context->gdi, (RdpgfxClientContext*) e->pInterface);
+	}
+	remmina_plugin_service->log_printf("Channel %s has been closed\n", e->name);
+
 }

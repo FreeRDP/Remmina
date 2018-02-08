@@ -394,7 +394,6 @@ void remmina_rdp_event_send_delayed_monitor_layout(RemminaProtocolWidget* gp)
 static gboolean remmina_rdp_event_on_configure(GtkWidget* widget, GdkEventConfigure* event, RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
-
 	/* Called when gp changes its size or position */
 
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
@@ -826,13 +825,18 @@ void remmina_rdp_event_uninit(RemminaProtocolWidget* gp)
 static void remmina_rdp_event_create_cairo_surface(rfContext* rfi)
 {
 	int stride;
+	rdpGdi* gdi;
+
+	gdi = ((rdpContext *)rfi)->gdi;
+	if (!rfi || !gdi)
+		return;
 
 	if (rfi->surface) {
 		cairo_surface_destroy(rfi->surface);
 		rfi->surface = NULL;
 	}
 	stride = cairo_format_stride_for_width(rfi->cairo_format, rfi->width);
-	rfi->surface = cairo_image_surface_create_for_data((unsigned char*)rfi->primary_buffer, rfi->cairo_format, rfi->width, rfi->height, stride);
+	rfi->surface = cairo_image_surface_create_for_data((unsigned char*)gdi->primary_buffer, rfi->cairo_format, rfi->width, rfi->height, stride);
 }
 
 void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
