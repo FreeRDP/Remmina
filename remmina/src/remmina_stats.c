@@ -406,7 +406,6 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 
 	gint count = 0;
 	gpointer pcount, ko;
-	//gchar* last_used;
 
 	struct ProfilesData* pdata;
 	pdata = (struct ProfilesData*)user_data;
@@ -421,9 +420,22 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 		}
 		g_hash_table_replace(pdata->proto_count, g_strdup(pdata->protocol), GINT_TO_POINTER(count));
 	}
-
 }
 
+/**
+ * Add a json member profile_count with a child for each protocol used by the user.
+ * Count how many profiles are in use and for each protocol in use counts of how many
+ * profiles that uses such protocol.
+ *
+ * The data can be expressed as follows:
+ *
+ * | PROTO  | PROF COUNT |
+ * |:-------|-----------:|
+ * | RDP    |  2560      |
+ * | SPICE  |  334       |
+ * | SSH    |  1540      |
+ * | VNC    |  2         |
+ */
 JsonNode *remmina_stats_get_profiles()
 {
 	TRACE_CALL(__func__);
@@ -460,12 +472,6 @@ JsonNode *remmina_stats_get_profiles()
 	/**
 	 * Profiles count per protocol
 	 *
-	 * PROTO  | PROF COUNT
-	 * -------|----------
-	 * RDP	  |  2560
-	 * SPICE  |  334
-	 * SSH	  |  1540
-	 * VNC	  |  2
 	 *
 	 */
 	pdata->proto_count = g_hash_table_new_full(g_str_hash, g_str_equal,
