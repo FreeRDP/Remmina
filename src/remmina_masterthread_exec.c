@@ -60,34 +60,8 @@ static gboolean remmina_masterthread_exec_callback(RemminaMTExecData *d)
 		case FUNC_FILE_GET_STRING:
 			d->p.file_get_string.retval = remmina_file_get_string( d->p.file_get_string.remminafile, d->p.file_get_string.setting );
 			break;
-		case FUNC_DIALOG_SERVERKEY_CONFIRM:
-			d->p.dialog_serverkey_confirm.retval = remmina_init_dialog_serverkey_confirm( d->p.dialog_serverkey_confirm.dialog,
-				d->p.dialog_serverkey_confirm.serverkey, d->p.dialog_serverkey_confirm.prompt );
-			break;
-		case FUNC_DIALOG_AUTHPWD:
-			d->p.dialog_authpwd.retval = remmina_init_dialog_authpwd(d->p.dialog_authpwd.dialog,
-				d->p.dialog_authpwd.label, d->p.dialog_authpwd.allow_save);
-			break;
 		case FUNC_GTK_LABEL_SET_TEXT:
 			gtk_label_set_text( d->p.gtk_label_set_text.label, d->p.gtk_label_set_text.str );
-			break;
-		case FUNC_DIALOG_AUTHUSERPWD:
-			d->p.dialog_authuserpwd.retval = remmina_init_dialog_authuserpwd( d->p.dialog_authuserpwd.dialog,
-				d->p.dialog_authuserpwd.want_domain, d->p.dialog_authuserpwd.default_username,
-				d->p.dialog_authuserpwd.default_domain, d->p.dialog_authuserpwd.allow_save );
-			break;
-		case FUNC_DIALOG_CERT:
-			d->p.dialog_certificate.retval = remmina_init_dialog_certificate( d->p.dialog_certificate.dialog,
-				d->p.dialog_certificate.subject, d->p.dialog_certificate.issuer, d->p.dialog_certificate.fingerprint );
-			break;
-		case FUNC_DIALOG_CERTCHANGED:
-			d->p.dialog_certchanged.retval = remmina_init_dialog_certificate_changed( d->p.dialog_certchanged.dialog,
-				d->p.dialog_certchanged.subject, d->p.dialog_certchanged.issuer, d->p.dialog_certchanged.new_fingerprint,
-				d->p.dialog_certchanged.old_fingerprint );
-			break;
-		case FUNC_DIALOG_AUTHX509:
-			d->p.dialog_authx509.retval = remmina_init_dialog_authx509( d->p.dialog_authx509.dialog, d->p.dialog_authx509.cacert,
-				d->p.dialog_authx509.cacrl, d->p.dialog_authx509.clientcert, d->p.dialog_authx509.clientkey );
 			break;
 		case FUNC_FTP_CLIENT_UPDATE_TASK:
 			remmina_ftp_client_update_task( d->p.ftp_client_update_task.client, d->p.ftp_client_update_task.task );
@@ -111,6 +85,10 @@ static gboolean remmina_masterthread_exec_callback(RemminaMTExecData *d)
 				d->p.vte_terminal_set_encoding_and_pty.master,
 				d->p.vte_terminal_set_encoding_and_pty.slave);
 #endif
+			break;
+
+		case FUNC_MESSAGE_PANEL_SETUP_AUTH:
+			remmina_message_panel_setup_auth(d->p.message_panel_setup_auth.mp, d->p.message_panel_setup_auth.message, d->p.message_panel_setup_auth.flags);
 			break;
 		}
 		pthread_mutex_lock(&d->pt_mutex);
