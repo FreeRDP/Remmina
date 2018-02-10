@@ -205,6 +205,7 @@ endif()
 
 find_suggested_package(GCRYPT)
 find_suggested_package(AVAHI)
+find_package(OpenSSL)
 
 if(WITH_TRACE_CALLS)
         message(STATUS "Enabling trace calls.")
