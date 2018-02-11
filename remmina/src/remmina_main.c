@@ -62,8 +62,6 @@ static RemminaMain *remminamain;
 
 #define GET_OBJECT(object_name) gtk_builder_get_object(remminamain->builder, object_name)
 
-/* #define DEBUG_STATS to make "Sent tests stats" button visible */
-
 enum {
 	PROTOCOL_COLUMN,
 	NAME_COLUMN,
@@ -1123,13 +1121,6 @@ void remmina_main_on_click_ustat_no(GtkWidget *w, gpointer user_data)
 	gtk_widget_set_visible(GTK_WIDGET(remminamain->box_ustat), FALSE);
 }
 
-#ifdef DEBUG_STATS
-static void remmina_main_on_click_test(GtkWidget *w, gpointer user_data)
-{
-	remmina_stats_sender_send();
-}
-#endif
-
 
 /* RemminaMain instance */
 GtkWidget* remmina_main_new(void)
@@ -1184,16 +1175,6 @@ GtkWidget* remmina_main_new(void)
 	remminamain->action_help_wiki = GTK_ACTION(GET_OBJECT("action_help_wiki"));
 	remminamain->action_help_debug = GTK_ACTION(GET_OBJECT("action_help_debug"));
 	G_GNUC_END_IGNORE_DEPRECATIONS
-
-#ifdef DEBUG_STATS
-	/* Temporary code to test statistics: add a button */
-	GtkHeaderBar *hb = GTK_HEADER_BAR(GET_OBJECT("main_headerbar"));
-	GtkWidget *statbutton = gtk_button_new_with_label("Send test stats");
-	gtk_header_bar_pack_end(hb, statbutton);
-	gtk_widget_show(statbutton);
-	g_signal_connect(G_OBJECT(statbutton), "clicked",
-		G_CALLBACK(remmina_main_on_click_test), NULL);
-#endif
 
 	/* Connect signals */
 	gtk_builder_connect_signals(remminamain->builder, NULL);

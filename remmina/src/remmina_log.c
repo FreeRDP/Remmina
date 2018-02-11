@@ -38,6 +38,7 @@
 #include <glib/gi18n.h>
 #include "remmina_public.h"
 #include "remmina_log.h"
+#include "remmina_stats_sender.h"
 #include "remmina/remmina_trace_calls.h"
 
 /***** Define the log window GUI *****/
@@ -69,6 +70,26 @@ static void remmina_log_window_class_init(RemminaLogWindowClass *klass)
 	TRACE_CALL(__func__);
 }
 
+/* We will always only have one log window per instance */
+static GtkWidget *log_window = NULL;
+
+static gboolean remmina_log_on_keypress(GtkWidget *widget, GdkEvent *event, gpointer user_data)
+{
+	TRACE_CALL(__func__);
+	// RemminaLogWindow *logwin = (RemminaLogWindow*)user_data;
+	GdkEventKey *e = (GdkEventKey *)event;
+
+	if (!log_window)
+		return FALSE;
+
+	if ((e->state & GDK_CONTROL_MASK) == GDK_CONTROL_MASK && e->keyval == GDK_KEY_s) {
+		remmina_stats_sender_send();
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
 static void remmina_log_window_init(RemminaLogWindow *logwin)
 {
 	TRACE_CALL(__func__);
@@ -89,6 +110,8 @@ static void remmina_log_window_init(RemminaLogWindow *logwin)
 	gtk_container_add(GTK_CONTAINER(scrolledwindow), widget);
 	logwin->log_view = widget;
 	logwin->log_buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(widget));
+
+	g_signal_connect(G_OBJECT(logwin->log_view), "key-press-event", G_CALLBACK(remmina_log_on_keypress), (gpointer)logwin);
 }
 
 static GtkWidget*
@@ -97,9 +120,6 @@ remmina_log_window_new(void)
 	TRACE_CALL(__func__);
 	return GTK_WIDGET(g_object_new(REMMINA_TYPE_LOG_WINDOW, NULL));
 }
-
-/* We will always only have one log window per instance */
-static GtkWidget *log_window = NULL;
 
 static void remmina_log_end(GtkWidget *widget, gpointer data)
 {
@@ -118,6 +138,9 @@ void remmina_log_start(void)
 		g_signal_connect(G_OBJECT(log_window), "destroy", G_CALLBACK(remmina_log_end), NULL);
 		gtk_widget_show(log_window);
 	}
+	remmina_log_print("Welcome to the remmina log window\n"
+		"Shortcut keys:\n"
+		"\tCTRL+S: send stats\n");
 }
 
 gboolean remmina_log_running(void)

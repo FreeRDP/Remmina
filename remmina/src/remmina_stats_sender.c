@@ -56,7 +56,7 @@
 
 #define PERIODIC_UPLOAD_INTERVAL_SEC    604800
 
-#define PERIODIC_UPLOAD_URL "http://s1.casa.panozzo.it/remmina/upload_stats.php"
+#define PERIODIC_UPLOAD_URL "http://www.remmina.org/stats/upload_stats.php"
 
 
 static gint periodic_check_source;
@@ -90,6 +90,7 @@ static void soup_callback(SoupSession *session, SoupMessage *msg, gpointer user_
 
 	passed = FALSE;
 	sb = soup_message_body_flatten(msg->response_body);
+	remmina_log_printf("STATS script response: %.40s\n", sb->data);
 	if (strncmp(sb->data, "200 ", 4) != 0) {
 		remmina_log_printf("STATS http upload error from server side script: %s\n", sb->data);
 	} else {
