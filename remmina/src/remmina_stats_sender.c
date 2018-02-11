@@ -223,6 +223,9 @@ static gboolean remmina_stats_collector_done(gpointer data)
 	n = json_builder_get_root(b);
 	g_object_unref(b);
 
+	g_free(uid);
+	g_free(enc_s);
+
 	g = json_generator_new();
 	json_generator_set_root(g, n);
 	enc_s = json_generator_to_data(g, NULL);	// unenc_s=serialized stats

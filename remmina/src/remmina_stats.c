@@ -506,7 +506,7 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 			if (pdata->pdatestr) {
 				g_hash_table_insert(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 			}else {
-				g_hash_table_insert(pdata->proto_date, g_strdup(pdata->protocol), THEDAY);
+				g_hash_table_insert(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(THEDAY));
 			}
 		}
 	}
@@ -541,6 +541,7 @@ JsonNode *remmina_stats_get_profiles()
 
 	JsonBuilder *b;
 	JsonNode *r;
+	gchar *s;
 
 	gint profiles_count;
 	GHashTableIter pcountiter, pdateiter;
@@ -559,7 +560,7 @@ JsonNode *remmina_stats_get_profiles()
 	 * not on the main thread */
 
 	pdata->proto_date = g_hash_table_new_full(g_str_hash, g_str_equal,
-		(GDestroyNotify)g_free, NULL);
+		(GDestroyNotify)g_free, (GDestroyNotify)g_free);
 	pdata->proto_count = g_hash_table_new_full(g_str_hash, g_str_equal,
 		(GDestroyNotify)g_free, NULL);
 
@@ -577,14 +578,23 @@ JsonNode *remmina_stats_get_profiles()
 
 	g_hash_table_iter_init(&pdateiter, pdata->proto_date);
 	while (g_hash_table_iter_next(&pdateiter, &pdatekey, &pdatevalue)) {
-		json_builder_set_member_name(b, g_strdup_printf("DATE_%s", (gchar*)pdatekey));
+		s = g_strdup_printf("DATE_%s", (gchar*)pdatekey);
+		json_builder_set_member_name(b, s);
+		g_free(s);
 		json_builder_add_string_value(b, (gchar*)pdatevalue);
 	}
 
 	json_builder_end_object(b);
 	r = json_builder_get_root(b);
 	g_object_unref(b);
+
+	g_hash_table_remove_all(pdata->proto_date);
+	g_hash_table_unref(pdata->proto_date);
+	g_hash_table_remove_all(pdata->proto_count);
+	g_hash_table_unref(pdata->proto_count);
+
 	g_free(pdata);
+
 	return r;
 }
 
