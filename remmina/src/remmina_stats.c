@@ -136,6 +136,8 @@ JsonNode *remmina_stats_get_uid()
 	r = json_node_alloc();
 	json_node_init_string(r, uid);
 
+	g_free(uid);
+
 	return r;
 
 }
@@ -163,56 +165,82 @@ JsonNode *remmina_stats_get_os_info()
 	json_builder_set_member_name(b, "kernel_name");
 
 	kernel_name = g_strdup_printf("%s", remmina_utils_get_kernel_name());
-	if (!kernel_name || kernel_name[0] == '\0')
+	if (!kernel_name || kernel_name[0] == '\0') {
+		if  (kernel_name)
+			g_free(kernel_name);
 		kernel_name = "n/a";
+	}
 	json_builder_add_string_value(b, kernel_name);
+	g_free(kernel_name);
 
 	json_builder_set_member_name(b, "kernel_release");
 	kernel_release = g_strdup_printf("%s", remmina_utils_get_kernel_release());
-	if (!kernel_release || kernel_release[0] == '\0')
+	if (!kernel_release || kernel_release[0] == '\0') {
+		if (kernel_release)
+			g_free(kernel_release);
 		kernel_release = "n/a";
+	}
 	json_builder_add_string_value(b, kernel_release);
+	g_free(kernel_release);
 
 	json_builder_set_member_name(b, "kernel_arch");
 	kernel_arch = g_strdup_printf("%s", remmina_utils_get_kernel_arch());
-	if (!kernel_arch || kernel_arch[0] == '\0')
+	if (!kernel_arch || kernel_arch[0] == '\0') {
+		if (kernel_arch)
+			g_free(kernel_arch);
 		kernel_arch = "n/a";
+	}
 	json_builder_add_string_value(b, kernel_arch);
+	g_free(kernel_arch);
 
-	id = g_strdup(remmina_utils_get_lsb_id());
+	id = remmina_utils_get_lsb_id();
 	if (!id || id[0] == '\0') {
-		id = "n/a";
+		if (id)
+			g_free(id);
+		id = g_strdup("n/a");
 		/** @todo Add another way to find the ID */
 	}
 	json_builder_set_member_name(b, "distributor");
 	json_builder_add_string_value(b, id);
+	g_free(id);
 
-	description = g_strdup(remmina_utils_get_lsb_description());
+	description = remmina_utils_get_lsb_description();
 	if (!description || description[0] == '\0') {
-		description = g_strdup(remmina_utils_get_distro_description());
+		if (description)
+			g_free(description);
+		description = remmina_utils_get_distro_description();
 		if (!description || description[0] == '\0') {
-			description = "n/a";
+			if (description)
+				g_free(description);
+			description = g_strdup("n/a");
 		}
 		/** @todo Add another way to find the DESCRIPTION */
 	}
 	json_builder_set_member_name(b, "distro_description");
 	json_builder_add_string_value(b, description);
+	g_free(description);
 
-	release = g_strdup(remmina_utils_get_lsb_release());
+	release = remmina_utils_get_lsb_release();
 	if (!release || release[0] == '\0') {
-		release = "n/a";
+		if (release)
+			g_free(release);
+		release = g_strdup("n/a");
 		/** @todo Add another way to find the RELEASE */
 	}
 	json_builder_set_member_name(b, "distro_release");
 	json_builder_add_string_value(b, release);
+	g_free(release);
 
-	codename = g_strdup(remmina_utils_get_lsb_codename());
+	codename = remmina_utils_get_lsb_codename();
 	if (!codename || codename[0] == '\0') {
-		codename = "n/a";
+		if (codename)
+			g_free(codename);
+		codename = g_strdup("n/a");
 		/** @todo Add another way to find the CODENAME */
 	}
 	json_builder_set_member_name(b, "distro_codename");
 	json_builder_add_string_value(b, codename);
+	g_free(codename);
 
 	json_builder_end_object(b);
 	r = json_builder_get_root(b);
@@ -325,10 +353,10 @@ JsonNode *remmina_stats_get_wm_name()
 		remmina_log_printf("Gnome Shell version: %s\n", wmver);
 		json_builder_add_string_value(b, "Gnome Shell");
 		json_builder_set_member_name(b, "gnome_shell_ver");
-		json_builder_add_string_value(b,
-			g_strdup_printf("Gnome Shell version: %s", wmver));
+		json_builder_add_string_value(b, wmver);
 		goto end;
 	}
+	g_free(wmver);
 
 	wmname = remmina_sysinfo_get_wm_name();
 	if (!wmname || wmname[0] == '\0') {
@@ -339,6 +367,7 @@ JsonNode *remmina_stats_get_wm_name()
 		remmina_log_printf("Window Manger names %s\n", wmname);
 		json_builder_add_string_value(b, wmname);
 	}
+	g_free(wmname);
 
  end:
 	json_builder_end_object(b);
@@ -432,14 +461,14 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 		dmonth = g_strdup_printf("%.2s", THEDAY + 4);
 		dday = g_strdup_printf("%.2s", THEDAY + 6);
 	}
-	if (g_str_has_prefix(dmonth, "0\0"))
-		dmonth = g_strdup_printf("%.1s", dmonth + 1);
-	if (g_str_has_prefix(dday, "0\0"))
-		dday = g_strdup_printf("%.1s", dday + 1);
 
 	dd = g_date_time_new_local(g_ascii_strtoll(dyear, NULL, 0),
 		g_ascii_strtoll(dmonth, NULL, 0),
 		g_ascii_strtoll(dday, NULL, 0), 0, 0, 0.0);
+
+	g_free(dyear);
+	g_free(dmonth);
+	g_free(dday);
 
 	if (pdata->protocol && pdata->protocol[0] != '\0') {
 		if (g_hash_table_lookup_extended(pdata->proto_count, pdata->protocol, &kpo, &pcount)) {
@@ -460,13 +489,13 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 				smonth = g_strdup_printf("%.2s", THEDAY + 4);
 				sday = g_strdup_printf("%.2s", THEDAY + 6);
 			}
-			if (g_str_has_prefix(smonth, "0\0"))
-				smonth = g_strdup_printf("%.1s", smonth + 1);
-			if (g_str_has_prefix(sday, "0\0"))
-				sday = g_strdup_printf("%.1s", sday + 1);
 			ds = g_date_time_new_local(g_ascii_strtoll(syear, NULL, 0),
 				g_ascii_strtoll(smonth, NULL, 0),
 				g_ascii_strtoll(sday, NULL, 0), 0, 0, 0.0);
+
+			g_free(syear);
+			g_free(smonth);
+			g_free(sday);
 
 			gint res = g_date_time_compare( ds, dd );
 			if (res < 0 ) {
@@ -555,6 +584,7 @@ JsonNode *remmina_stats_get_profiles()
 	json_builder_end_object(b);
 	r = json_builder_get_root(b);
 	g_object_unref(b);
+	g_free(pdata);
 	return r;
 }
 

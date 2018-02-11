@@ -60,6 +60,7 @@ typedef struct lsb_distro_info {
 	gchar *scanstring;
 } LSBDistroInfo;
 
+/*
 static LSBDistroInfo lsbFields[] = {
 	{ "DISTRIB_ID=",	  "DISTRIB_ID=%s"		},
 	{ "DISTRIB_RELEASE=",	  "DISTRIB_RELEASE=%s"		},
@@ -67,6 +68,7 @@ static LSBDistroInfo lsbFields[] = {
 	{ "DISTRIB_DESCRIPTION=", "DISTRIB_DESCRIPTION=%s"	},
 	{ NULL,			  NULL				},
 };
+*/
 
 typedef struct distro_info {
 	gchar *name;
@@ -210,11 +212,11 @@ guint remmina_utils_string_replace_all(GString *haystack, const gchar *needle, c
  * not strip control characters from the output.
  * @warning the result should be freed.
  * @param a string.
- * @return a copy of string cleaned by \t, \n and \"
+ * @return a newly allocated copy of string cleaned by \t, \n and \"
  */
 gchar *remmina_utils_string_strip(const gchar *s)
 {
-	gchar *p = malloc(strlen(s) + 1);
+	gchar *p = g_malloc(strlen(s) + 1);
 
 	if (p) {
 		gchar *p2 = p;
@@ -307,29 +309,36 @@ const gchar* remmina_utils_get_kernel_arch()
 
 /**
  * Print the Distributor as specified by the lsb_release command.
- * @return the distributor ID string or NULL.
+ * @return the distributor ID string or NULL. Caller must free it with g_free().
  */
-const gchar* remmina_utils_get_lsb_id()
+gchar* remmina_utils_get_lsb_id()
 {
 	TRACE_CALL(__func__);
 	gchar *lsb_id = NULL;
-	if (g_spawn_command_line_sync("/usr/bin/lsb_release -si", &lsb_id, NULL, NULL, NULL))
-		return remmina_utils_string_strip(lsb_id);
+	gchar *s;
+	if (g_spawn_command_line_sync("/usr/bin/lsb_release -si", &lsb_id, NULL, NULL, NULL)) {
+		s = remmina_utils_string_strip(lsb_id);
+		g_free(lsb_id);
+		return s;
+	}
 	return NULL;
 }
 
 /**
  * Print the Distribution description as specified by the lsb_release command.
- * @return the Distribution description string or NULL.
+ * @return the Distribution description string or NULL. Caller must free it with g_free().
  */
-const gchar* remmina_utils_get_lsb_description()
+gchar* remmina_utils_get_lsb_description()
 {
 	TRACE_CALL(__func__);
 	gchar *lsb_description = NULL;
+	gchar *s;
 	GError *err = NULL;
 
 	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sd", &lsb_description, NULL, NULL, &err)) {
-		return remmina_utils_string_strip(lsb_description);
+		s = remmina_utils_string_strip(lsb_description);
+		g_free(lsb_description);
+		return s;
 	}else {
 		g_debug("%s: could not execute lsb_release %s\n", __func__, err->message);
 		g_error_free(err);
@@ -340,36 +349,44 @@ const gchar* remmina_utils_get_lsb_description()
 
 /**
  * Print the Distribution release name as specified by the lsb_release command.
- * @return the Distribution release name string or NULL.
+ * @return the Distribution release name string or NULL. Caller must free it with g_free().
  */
-const gchar* remmina_utils_get_lsb_release()
+gchar* remmina_utils_get_lsb_release()
 {
 	TRACE_CALL(__func__);
 	gchar *lsb_release = NULL;
-	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sr", &lsb_release, NULL, NULL, NULL))
-		return remmina_utils_string_strip(lsb_release);
+	gchar *s;
+	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sr", &lsb_release, NULL, NULL, NULL)) {
+		s = remmina_utils_string_strip(lsb_release);
+		g_free(lsb_release);
+		return s;
+	}
 	return NULL;
 }
 
 /**
  * Print the Distribution codename as specified by the lsb_release command.
- * @return the codename string or NULL.
+ * @return the codename string or NULL. Caller must free it with g_free().
  */
-const gchar* remmina_utils_get_lsb_codename()
+gchar* remmina_utils_get_lsb_codename()
 {
 	TRACE_CALL(__func__);
 	gchar *lsb_codename = NULL;
-	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sc", &lsb_codename, NULL, NULL, NULL))
-		return remmina_utils_string_strip(lsb_codename);
+	gchar *s;
+	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sc", &lsb_codename, NULL, NULL, NULL)) {
+		s = remmina_utils_string_strip(lsb_codename);
+		g_free(lsb_codename);
+		return s;
+	}
 	return NULL;
 }
 
 /**
  * Print the distribution description if found.
  * Test each known distribution specific information file and print it's content.
- * @return a string or NULL
+ * @return a string or NULL. Caller must free it with g_free().
  */
-const gchar* remmina_utils_get_distro_description()
+gchar* remmina_utils_get_distro_description()
 {
 	TRACE_CALL(__func__);
 	gchar *distro_desc = NULL;
