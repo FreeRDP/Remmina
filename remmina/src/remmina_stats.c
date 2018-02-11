@@ -417,7 +417,6 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 	GDateTime *ds;          /** Source date -> from profile */
 	GDateTime *dd;          /** Destination date -> The date in the pdata structure */
 
-
 	struct ProfilesData* pdata;
 	pdata = (struct ProfilesData*)user_data;
 
@@ -475,7 +474,11 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 			}
 			g_date_time_unref(ds);
 		}else {
-			g_hash_table_insert(pdata->proto_date, g_strdup(pdata->protocol), THEDAY);
+			if (pdata->pdatestr) {
+				g_hash_table_insert(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
+			}else {
+				g_hash_table_insert(pdata->proto_date, g_strdup(pdata->protocol), THEDAY);
+			}
 		}
 	}
 	g_date_time_unref(dd);
