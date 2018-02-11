@@ -52,6 +52,8 @@
 #include "remmina_utils.h"
 #include "remmina/remmina_trace_calls.h"
 
+#define THEDAY "19760126"
+
 #ifdef GDK_WINDOWING_WAYLAND
 	#include <gdk/gdkwayland.h>
 #endif
@@ -64,9 +66,11 @@ struct utsname u;
 
 struct ProfilesData {
 	GHashTable *proto_count;
-	GHashTable *proto_date;;
-	const gchar *protocol;
+	GHashTable *proto_date;
+	const gchar *protocol;          /** Key in the proto_count hash table.*/
+	const gchar *pdatestr;          /** Date in string format in the proto_date hash table. */
 	gint pcount;
+	gchar datestr;
 };
 
 static gchar* remmina_stats_gen_random_uuid_prefix()
@@ -405,25 +409,100 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 	TRACE_CALL(__func__);
 
 	gint count = 0;
-	gpointer pcount, ko;
-	//gchar* last_used;
+	gpointer pcount, kpo;
+	gpointer pdate, kdo;
+	gchar *sday, *smonth, *syear;
+	gchar *dday, *dmonth, *dyear;
+
+	GDateTime *ds;          /** Source date -> from profile */
+	GDateTime *dd;          /** Destination date -> The date in the pdata structure */
+
 
 	struct ProfilesData* pdata;
 	pdata = (struct ProfilesData*)user_data;
 
 	pdata->protocol = remmina_file_get_string(remminafile, "protocol");
+	pdata->pdatestr = remmina_file_get_string(remminafile, "last_success");
+
+	if (pdata->pdatestr && pdata->pdatestr[0] != '\0' && strlen(pdata->pdatestr) >= 6) {
+		dyear = g_strdup_printf("%.4s", pdata->pdatestr);
+		dmonth = g_strdup_printf("%.2s", pdata->pdatestr + 4);
+		dday = g_strdup_printf("%.2s", pdata->pdatestr + 6);
+	}else {
+		dyear = g_strdup_printf("%.4s", THEDAY);
+		dmonth = g_strdup_printf("%.2s", THEDAY + 4);
+		dday = g_strdup_printf("%.2s", THEDAY + 6);
+	}
+	if (g_str_has_prefix(dmonth, "0\0"))
+		dmonth = g_strdup_printf("%.1s", dmonth + 1);
+	if (g_str_has_prefix(dday, "0\0"))
+		dday = g_strdup_printf("%.1s", dday + 1);
+
+	dd = g_date_time_new_local(g_ascii_strtoll(dyear, NULL, 0),
+		g_ascii_strtoll(dmonth, NULL, 0),
+		g_ascii_strtoll(dday, NULL, 0), 0, 0, 0.0);
+
 	if (pdata->protocol && pdata->protocol[0] != '\0') {
-		if (g_hash_table_lookup_extended(pdata->proto_count, pdata->protocol, &ko, &pcount)) {
+		if (g_hash_table_lookup_extended(pdata->proto_count, pdata->protocol, &kpo, &pcount)) {
 			count = GPOINTER_TO_INT(pcount) + 1;
 		}else {
 			count = 1;
 			g_hash_table_insert(pdata->proto_count, g_strdup(pdata->protocol), GINT_TO_POINTER(count));
 		}
 		g_hash_table_replace(pdata->proto_count, g_strdup(pdata->protocol), GINT_TO_POINTER(count));
-	}
+		if (g_hash_table_lookup_extended(pdata->proto_date, pdata->protocol, &kdo, &pdate)) {
 
+			if (pdate && strlen(pdate) >= 6) {
+				syear = g_strdup_printf("%.4s", (char*)pdate);
+				smonth = g_strdup_printf("%.2s", (char*)pdate + 4);
+				sday = g_strdup_printf("%.2s", (char*)pdate + 6);
+			}else {
+				syear = g_strdup_printf("%.4s", THEDAY);
+				smonth = g_strdup_printf("%.2s", THEDAY + 4);
+				sday = g_strdup_printf("%.2s", THEDAY + 6);
+			}
+			if (g_str_has_prefix(smonth, "0\0"))
+				smonth = g_strdup_printf("%.1s", smonth + 1);
+			if (g_str_has_prefix(sday, "0\0"))
+				sday = g_strdup_printf("%.1s", sday + 1);
+			ds = g_date_time_new_local(g_ascii_strtoll(syear, NULL, 0),
+				g_ascii_strtoll(smonth, NULL, 0),
+				g_ascii_strtoll(sday, NULL, 0), 0, 0, 0.0);
+
+			gint res = g_date_time_compare( ds, dd );
+			if (res < 0 ) {
+				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
+			}
+			g_date_time_unref(ds);
+		}else {
+			g_hash_table_insert(pdata->proto_date, g_strdup(pdata->protocol), THEDAY);
+		}
+	}
+	g_date_time_unref(dd);
 }
 
+/**
+ * Add a json member profile_count with a child for each protocol used by the user.
+ * Count how many profiles are in use and for each protocol in use counts of how many
+ * profiles that uses such protocol.
+ *
+ * The data can be expressed as follows:
+ *
+ * | PROTO  | PROF COUNT |
+ * |:-------|-----------:|
+ * | RDP    |  2560      |
+ * | SPICE  |  334       |
+ * | SSH    |  1540      |
+ * | VNC    |  2         |
+ *
+ * | PROTO  | LAST USED |
+ * |:-------|----------:|
+ * | RDP    |  20180129 |
+ * | SPICE  |  20171122 |
+ * | SSH    |  20180111 |
+ *
+ *
+ */
 JsonNode *remmina_stats_get_profiles()
 {
 	TRACE_CALL(__func__);
@@ -432,8 +511,9 @@ JsonNode *remmina_stats_get_profiles()
 	JsonNode *r;
 
 	gint profiles_count;
-	GHashTableIter iter;
-	gpointer protokey, protovalue;
+	GHashTableIter pcountiter, pdateiter;
+	gpointer pcountkey, pcountvalue;
+	gpointer pdatekey, pdatevalue;
 
 	struct ProfilesData *pdata;
 	pdata = g_malloc0(sizeof(struct ProfilesData));
@@ -446,28 +526,8 @@ JsonNode *remmina_stats_get_profiles()
 	/** @warning this function is usually executed on a dedicated thread,
 	 * not on the main thread */
 
-	/**
-	 * Data organization
-	 * Protocols vs last time used
-	 *
-	 * PROTO  | LAST USED
-	 * -------|----------
-	 * RDP	  |  20180129
-	 * SPICE  |  20171122
-	 * SSH	  |  20180111
-	 */
-	//pdata->proto_date = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
-	/**
-	 * Profiles count per protocol
-	 *
-	 * PROTO  | PROF COUNT
-	 * -------|----------
-	 * RDP	  |  2560
-	 * SPICE  |  334
-	 * SSH	  |  1540
-	 * VNC	  |  2
-	 *
-	 */
+	pdata->proto_date = g_hash_table_new_full(g_str_hash, g_str_equal,
+		(GDestroyNotify)g_free, NULL);
 	pdata->proto_count = g_hash_table_new_full(g_str_hash, g_str_equal,
 		(GDestroyNotify)g_free, NULL);
 
@@ -477,10 +537,16 @@ JsonNode *remmina_stats_get_profiles()
 
 	json_builder_add_int_value(b, profiles_count);
 
-	g_hash_table_iter_init(&iter, pdata->proto_count);
-	while (g_hash_table_iter_next(&iter, &protokey, &protovalue)) {
-		json_builder_set_member_name(b, (gchar*)protokey);
-		json_builder_add_int_value(b, GPOINTER_TO_INT(protovalue));
+	g_hash_table_iter_init(&pcountiter, pdata->proto_count);
+	while (g_hash_table_iter_next(&pcountiter, &pcountkey, &pcountvalue)) {
+		json_builder_set_member_name(b, (gchar*)pcountkey);
+		json_builder_add_int_value(b, GPOINTER_TO_INT(pcountvalue));
+	}
+
+	g_hash_table_iter_init(&pdateiter, pdata->proto_date);
+	while (g_hash_table_iter_next(&pdateiter, &pdatekey, &pdatevalue)) {
+		json_builder_set_member_name(b, g_strdup_printf("DATE_%s", (gchar*)pdatekey));
+		json_builder_add_string_value(b, (gchar*)pdatevalue);
 	}
 
 	json_builder_end_object(b);
