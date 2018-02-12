@@ -448,23 +448,19 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 	pdata->protocol = remmina_file_get_string(remminafile, "protocol");
 	pdata->pdatestr = remmina_file_get_string(remminafile, "last_success");
 
+	dd = NULL;
 	if (pdata->pdatestr && pdata->pdatestr[0] != '\0' && strlen(pdata->pdatestr) >= 6) {
 		dyear = g_strdup_printf("%.4s", pdata->pdatestr);
 		dmonth = g_strdup_printf("%.2s", pdata->pdatestr + 4);
 		dday = g_strdup_printf("%.2s", pdata->pdatestr + 6);
-	}else {
-		dyear = g_strdup_printf("%.4s", THEDAY);
-		dmonth = g_strdup_printf("%.2s", THEDAY + 4);
-		dday = g_strdup_printf("%.2s", THEDAY + 6);
+		dd = g_date_time_new_local(g_ascii_strtoll(dyear, NULL, 0),
+			g_ascii_strtoll(dmonth, NULL, 0),
+			g_ascii_strtoll(dday, NULL, 0), 0, 0, 0.0);
+		g_free(dyear);
+		g_free(dmonth);
+		g_free(dday);
 	}
 
-	dd = g_date_time_new_local(g_ascii_strtoll(dyear, NULL, 0),
-		g_ascii_strtoll(dmonth, NULL, 0),
-		g_ascii_strtoll(dday, NULL, 0), 0, 0, 0.0);
-
-	g_free(dyear);
-	g_free(dmonth);
-	g_free(dday);
 
 	if (pdata->protocol && pdata->protocol[0] != '\0') {
 		if (g_hash_table_lookup_extended(pdata->proto_count, pdata->protocol, &kpo, &pcount)) {
@@ -476,37 +472,42 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 		g_hash_table_replace(pdata->proto_count, g_strdup(pdata->protocol), GINT_TO_POINTER(count));
 		if (g_hash_table_lookup_extended(pdata->proto_date, pdata->protocol, &kdo, &pdate)) {
 
+			ds = NULL;
 			if (pdate && strlen(pdate) >= 6) {
 				syear = g_strdup_printf("%.4s", (char*)pdate);
 				smonth = g_strdup_printf("%.2s", (char*)pdate + 4);
 				sday = g_strdup_printf("%.2s", (char*)pdate + 6);
-			}else {
-				syear = g_strdup_printf("%.4s", THEDAY);
-				smonth = g_strdup_printf("%.2s", THEDAY + 4);
-				sday = g_strdup_printf("%.2s", THEDAY + 6);
+				ds = g_date_time_new_local(g_ascii_strtoll(syear, NULL, 0),
+					g_ascii_strtoll(smonth, NULL, 0),
+					g_ascii_strtoll(sday, NULL, 0), 0, 0, 0.0);
+				g_free(syear);
+				g_free(smonth);
+				g_free(sday);
 			}
-			ds = g_date_time_new_local(g_ascii_strtoll(syear, NULL, 0),
-				g_ascii_strtoll(smonth, NULL, 0),
-				g_ascii_strtoll(sday, NULL, 0), 0, 0, 0.0);
 
-			g_free(syear);
-			g_free(smonth);
-			g_free(sday);
-
-			gint res = g_date_time_compare( ds, dd );
-			if (res < 0 ) {
+			if (ds && dd) {
+				gint res = g_date_time_compare( ds, dd );
+				if (res < 0 ) {
+					g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
+				}
+				g_date_time_unref(ds);
+			}
+			if (ds && !dd) {
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
+				g_date_time_unref(ds);
 			}
-			g_date_time_unref(ds);
+			if ((!ds && !dd) && pdata->pdatestr)
+				g_hash_table_insert(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 		}else {
 			if (pdata->pdatestr) {
 				g_hash_table_insert(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 			}else {
-				g_hash_table_insert(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(THEDAY));
+				g_hash_table_insert(pdata->proto_date, g_strdup(pdata->protocol), NULL);
 			}
 		}
 	}
-	g_date_time_unref(dd);
+	if (dd)
+		g_date_time_unref(dd);
 }
 
 /**
