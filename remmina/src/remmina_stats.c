@@ -171,7 +171,9 @@ JsonNode *remmina_stats_get_os_info()
 		kernel_name = "n/a";
 	}
 	json_builder_add_string_value(b, kernel_name);
-	g_free(kernel_name);
+	if (!kernel_name || kernel_name[0] == '\0') {
+		g_free(kernel_name);
+	}
 
 	json_builder_set_member_name(b, "kernel_release");
 	kernel_release = g_strdup_printf("%s", remmina_utils_get_kernel_release());
@@ -181,7 +183,9 @@ JsonNode *remmina_stats_get_os_info()
 		kernel_release = "n/a";
 	}
 	json_builder_add_string_value(b, kernel_release);
-	g_free(kernel_release);
+	if (!kernel_release || kernel_release[0] == '\0') {
+		g_free(kernel_release);
+	}
 
 	json_builder_set_member_name(b, "kernel_arch");
 	kernel_arch = g_strdup_printf("%s", remmina_utils_get_kernel_arch());
@@ -191,7 +195,9 @@ JsonNode *remmina_stats_get_os_info()
 		kernel_arch = "n/a";
 	}
 	json_builder_add_string_value(b, kernel_arch);
-	g_free(kernel_arch);
+	if (!kernel_arch || kernel_arch[0] == '\0') {
+		g_free(kernel_arch);
+	}
 
 	id = remmina_utils_get_lsb_id();
 	if (!id || id[0] == '\0') {
