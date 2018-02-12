@@ -388,7 +388,6 @@ JsonNode *remmina_stats_get_indicator()
 	JsonBuilder *b;
 	JsonNode *r;
 	gboolean sni;           /** Support for StatusNotifier or AppIndicator */
-	gboolean sni_active;    /** remmina_icon_is_available */
 
 	b = json_builder_new();
 	json_builder_begin_object(b);
@@ -410,7 +409,6 @@ JsonNode *remmina_stats_get_indicator()
 		/** StatusNotifier/Appindicator NOT supported by desktop */
 		json_builder_add_int_value(b, 0);
 		json_builder_set_member_name(b, "icon_is_active");
-		sni_active = remmina_icon_is_available();
 		if (remmina_icon_is_available()) {
 			/** Remmina icon is active */
 			json_builder_add_int_value(b, 1);
