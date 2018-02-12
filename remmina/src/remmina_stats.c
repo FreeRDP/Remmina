@@ -34,13 +34,13 @@
 
 /**
  * @file remmina_stats.c
- * @author Antenore Gatta and Giovanni Panozzo
- * @date 12/02/2018
  * @brief Remmina usage statistics module.
+ * @author Antenore Gatta and Giovanni Panozzo
+ * @date 12 Feb 2018
  *
  * When Remmina starts asks the user if she/he wants to share some usage statistics
  * with the Remmina developers. As per the opt-in model
- * (https://en.wikipedia.org/wiki/Opt-in_email), without the consent of * user,
+ * (https://en.wikipedia.org/wiki/Opt-in_email), without the consent of the user,
  * none of these data will be collected.
  * Additionally a user can asks, at any moment, that any data linked to his/her
  * profiles to be deleted, and he/she can change the Remmina settings to stop
@@ -109,15 +109,15 @@
  *
  * All of these data are solely transmitted to understand:
  *  - On which type of system Remmina is used
- *	-# Operating System
- *	-# Architecture (32/64bit)
- *	-# Linux distributor or OS vendor
+ *	- Operating System
+ *	- Architecture (32/64bit)
+ *	- Linux distributor or OS vendor
  *  - Desktop Environment type.
  *  - Main library versions installed on the system in use by Remmina.
  *  - Protocols used
  *  - Last time each protocol has been used (globally).
  *
- * @see http://www.remmina.org/wp
+ * @see http://www.remmina.org/wp for more information.
  */
 
 
