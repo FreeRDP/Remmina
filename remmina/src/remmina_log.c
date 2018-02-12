@@ -82,7 +82,7 @@ static gboolean remmina_log_on_keypress(GtkWidget *widget, GdkEvent *event, gpoi
 	if (!log_window)
 		return FALSE;
 
-	if ((e->state & GDK_CONTROL_MASK) == GDK_CONTROL_MASK && e->keyval == GDK_KEY_s) {
+	if ((e->state & GDK_CONTROL_MASK) == GDK_CONTROL_MASK && e->keyval == GDK_KEY_s && remmina_stat_sender_can_send()) {
 		remmina_stats_sender_send();
 		return TRUE;
 	}
@@ -138,9 +138,10 @@ void remmina_log_start(void)
 		g_signal_connect(G_OBJECT(log_window), "destroy", G_CALLBACK(remmina_log_end), NULL);
 		gtk_widget_show(log_window);
 	}
-	remmina_log_print("Welcome to the remmina log window\n"
-		"Shortcut keys:\n"
-		"\tCTRL+S: send stats\n");
+	remmina_log_print("Welcome to the remmina log window\n");
+	if (remmina_stat_sender_can_send())
+		remmina_log_print("Shortcut keys:\n"
+			"\tCTRL+S: send stats\n");
 }
 
 gboolean remmina_log_running(void)

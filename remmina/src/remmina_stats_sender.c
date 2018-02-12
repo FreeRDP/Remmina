@@ -267,6 +267,13 @@ void remmina_stats_sender_send()
 
 }
 
+gboolean remmina_stat_sender_can_send()
+{
+	if (remmina_pref.periodic_usage_stats_permission_asked && remmina_pref.periodic_usage_stats_permitted)
+		return TRUE;
+	else
+		return FALSE;
+}
 
 static gboolean remmina_stats_sender_periodic_check(gpointer user_data)
 {
@@ -274,7 +281,7 @@ static gboolean remmina_stats_sender_periodic_check(gpointer user_data)
 	GTimeVal t;
 	glong next;
 
-	if (!remmina_pref.periodic_usage_stats_permission_asked || !remmina_pref.periodic_usage_stats_permitted)
+	if (!remmina_stat_sender_can_send())
 		return G_SOURCE_REMOVE;
 
 	/* Calculate "next" upload time based on last sent time */
@@ -300,7 +307,7 @@ void remmina_stats_sender_schedule()
 {
 	TRACE_CALL(__func__);
 	/* If permitted, schedule the 1st statistics periodic check */
-	if (remmina_pref.periodic_usage_stats_permission_asked && remmina_pref.periodic_usage_stats_permitted) {
+	if (remmina_stat_sender_can_send()) {
 		periodic_check_counter = 0;
 		periodic_check_source = g_timeout_add_full(G_PRIORITY_LOW, PERIODIC_CHECK_1ST_MS, remmina_stats_sender_periodic_check, NULL, NULL);
 	} else
