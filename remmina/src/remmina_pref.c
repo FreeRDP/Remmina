@@ -513,11 +513,6 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.uid = NULL;
 
-	if (g_key_file_has_key(gkeyfile, "remmina_pref", "bdate", NULL))
-		remmina_pref.bdate = g_key_file_get_integer(gkeyfile, "remmina_pref", "bdate", NULL);
-	else
-		remmina_pref.bdate = 0;
-
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "vte_font", NULL))
 		remmina_pref.vte_font = g_key_file_get_string(gkeyfile, "remmina_pref", "vte_font", NULL);
 	else
@@ -674,6 +669,27 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.color15 = "#d5ccba";
 
+	if (g_key_file_has_key(gkeyfile, "usage_stats", "periodic_usage_stats_permission_asked", NULL))
+		remmina_pref.periodic_usage_stats_permission_asked = g_key_file_get_boolean(gkeyfile, "usage_stats", "periodic_usage_stats_permission_asked", NULL);
+	else
+		remmina_pref.periodic_usage_stats_permission_asked = FALSE;
+
+	if (g_key_file_has_key(gkeyfile, "usage_stats", "periodic_usage_stats_permitted", NULL))
+		remmina_pref.periodic_usage_stats_permitted = g_key_file_get_boolean(gkeyfile, "usage_stats", "periodic_usage_stats_permitted", NULL);
+	else
+		remmina_pref.periodic_usage_stats_permitted = FALSE;
+
+	if (g_key_file_has_key(gkeyfile, "usage_stats", "periodic_usage_stats_last_sent", NULL))
+		remmina_pref.periodic_usage_stats_last_sent = g_key_file_get_int64(gkeyfile, "usage_stats", "periodic_usage_stats_last_sent", NULL);
+	else
+		remmina_pref.periodic_usage_stats_last_sent = 0;
+
+	if (g_key_file_has_key(gkeyfile, "usage_stats", "periodic_usage_stats_uuid_prefix", NULL))
+		remmina_pref.periodic_usage_stats_uuid_prefix = g_key_file_get_string(gkeyfile, "usage_stats", "periodic_usage_stats_uuid_prefix", NULL);
+	else
+		remmina_pref.periodic_usage_stats_uuid_prefix = NULL;
+
+
 	g_key_file_free(gkeyfile);
 
 #if 0
@@ -771,6 +787,11 @@ void remmina_pref_save(void)
 	g_key_file_set_string(gkeyfile, "ssh_colors", "color13", remmina_pref.color13 ? remmina_pref.color13 : "");
 	g_key_file_set_string(gkeyfile, "ssh_colors", "color14", remmina_pref.color14 ? remmina_pref.color14 : "");
 	g_key_file_set_string(gkeyfile, "ssh_colors", "color15", remmina_pref.color15 ? remmina_pref.color15 : "");
+
+	g_key_file_set_boolean(gkeyfile, "usage_stats", "periodic_usage_stats_permission_asked", remmina_pref.periodic_usage_stats_permission_asked);
+	g_key_file_set_boolean(gkeyfile, "usage_stats", "periodic_usage_stats_permitted", remmina_pref.periodic_usage_stats_permitted);
+	g_key_file_set_int64(gkeyfile, "usage_stats", "periodic_usage_stats_last_sent", remmina_pref.periodic_usage_stats_last_sent);
+	g_key_file_set_string(gkeyfile, "usage_stats", "periodic_usage_stats_uuid_prefix", remmina_pref.periodic_usage_stats_uuid_prefix);
 
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
 	g_file_set_contents(remmina_pref_file, content, length, NULL);

@@ -3582,6 +3582,9 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 	GtkWidget* tab;
 	gint i;
 
+	gchar *last_success;
+	GDateTime *date = g_date_time_new_now_utc();
+
 	/* This signal handler is called by a plugin where it's correctly connected
 	 * (and authenticated) */
 
@@ -3602,11 +3605,18 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 	remmina_protocol_widget_set_hostkey_func(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
 		(RemminaHostkeyFunc)remmina_connection_window_hostkey_func, cnnhld);
 
-	/* Remember recent list for quick connect */
+	/** Remember recent list for quick connect, and save the current date
+	 * in the last_used field.
+	 */
+	last_success = g_strdup_printf("%d%02d%02d",
+		g_date_time_get_year(date),
+		g_date_time_get_month(date),
+		g_date_time_get_day_of_month(date));
 	if (remmina_file_get_filename(cnnobj->remmina_file) == NULL) {
 		remmina_pref_add_recent(remmina_file_get_string(cnnobj->remmina_file, "protocol"),
 			remmina_file_get_string(cnnobj->remmina_file, "server"));
 	}
+	remmina_file_set_string (cnnobj->remmina_file, "last_success", last_success);
 
 	/* Save credentials */
 	remmina_file_save(cnnobj->remmina_file);

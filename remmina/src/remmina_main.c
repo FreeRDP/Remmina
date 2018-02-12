@@ -2,7 +2,7 @@
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
- * Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2016-2018 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,6 +56,7 @@
 #include "remmina_mpchange.h"
 #include "remmina_external_tools.h"
 #include "remmina/remmina_trace_calls.h"
+#include "remmina_stats_sender.h"
 
 static RemminaMain *remminamain;
 
@@ -1094,6 +1095,33 @@ static void remmina_main_init(void)
 	remmina_widget_pool_register(GTK_WIDGET(remminamain->window));
 }
 
+/* Signal handler for "show" on remminamain->window */
+void remmina_main_on_show(GtkWidget *w, gpointer user_data)
+{
+	TRACE_CALL(__func__);
+	if (!remmina_pref.periodic_usage_stats_permission_asked) {
+		gtk_widget_set_visible(GTK_WIDGET(remminamain->box_ustat), TRUE);
+	}
+}
+
+void remmina_main_on_click_ustat_yes(GtkWidget *w, gpointer user_data)
+{
+	remmina_pref.periodic_usage_stats_permission_asked = TRUE;
+	remmina_pref.periodic_usage_stats_permitted = TRUE;
+	remmina_pref_save();
+	gtk_widget_set_visible(GTK_WIDGET(remminamain->box_ustat), FALSE);
+	remmina_stats_sender_schedule();
+}
+
+void remmina_main_on_click_ustat_no(GtkWidget *w, gpointer user_data)
+{
+	remmina_pref.periodic_usage_stats_permission_asked = TRUE;
+	remmina_pref.periodic_usage_stats_permitted = FALSE;
+	remmina_pref_save();
+	gtk_widget_set_visible(GTK_WIDGET(remminamain->box_ustat), FALSE);
+}
+
+
 /* RemminaMain instance */
 GtkWidget* remmina_main_new(void)
 {
@@ -1117,6 +1145,7 @@ GtkWidget* remmina_main_new(void)
 	remminamain->tree_files_list = GTK_TREE_VIEW(GET_OBJECT("tree_files_list"));
 	remminamain->column_files_list_group = GTK_TREE_VIEW_COLUMN(GET_OBJECT("column_files_list_group"));
 	remminamain->statusbar_main = GTK_STATUSBAR(GET_OBJECT("statusbar_main"));
+	remminamain->box_ustat = GTK_BOX(GET_OBJECT("box_ustat"));
 	/* Non widget objects */
 	remminamain->accelgroup_shortcuts = GTK_ACCEL_GROUP(GET_OBJECT("accelgroup_shortcuts"));
 	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
@@ -1146,6 +1175,7 @@ GtkWidget* remmina_main_new(void)
 	remminamain->action_help_wiki = GTK_ACTION(GET_OBJECT("action_help_wiki"));
 	remminamain->action_help_debug = GTK_ACTION(GET_OBJECT("action_help_debug"));
 	G_GNUC_END_IGNORE_DEPRECATIONS
+
 	/* Connect signals */
 	gtk_builder_connect_signals(remminamain->builder, NULL);
 	/* Initialize the window and load the preferences */

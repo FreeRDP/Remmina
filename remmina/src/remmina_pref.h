@@ -159,9 +159,6 @@ typedef struct _RemminaPref {
 	/* UID */
 	gchar *uid;
 
-	/* Remmina birthday julian format*/
-	guint32 bdate;
-
 	/* Color palette for VTE terminal */
 	gchar *background;
 	gchar *cursor;
@@ -182,6 +179,14 @@ typedef struct _RemminaPref {
 	gchar *color13;
 	gchar *color14;
 	gchar *color15;
+
+	/* Usage stats */
+	gboolean periodic_usage_stats_permission_asked;
+	gboolean periodic_usage_stats_permitted;
+	glong periodic_usage_stats_last_sent;
+	gchar *periodic_usage_stats_uuid_prefix;
+	gchar *last_success;
+
 
 } RemminaPref;
 

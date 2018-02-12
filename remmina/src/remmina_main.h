@@ -59,6 +59,7 @@ typedef struct _RemminaMain {
 	GtkTreeView *tree_files_list;
 	GtkTreeViewColumn *column_files_list_group;
 	GtkStatusbar *statusbar_main;
+	GtkBox *box_ustat;
 	/* Non widget objects */
 	GtkAccelGroup *accelgroup_shortcuts;
 	GtkActionGroup *actiongroup_connection;

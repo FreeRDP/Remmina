@@ -116,7 +116,7 @@ remmina_plugin_glibsecret_get_password(RemminaFile *remminafile, const gchar *ke
 	path = remmina_plugin_service->file_get_path(remminafile);
 	password = secret_password_lookup_sync(&remmina_file_secret_schema, NULL, &r, "filename", path, "key", key, NULL);
 	if (r == NULL) {
-		remmina_plugin_service->log_printf("[glibsecret] found password for file %s\n", path);
+		// remmina_plugin_service->log_printf("[glibsecret] found password for file %s\n", path);
 		p = g_strdup(password);
 		secret_password_free(password);
 		return p;

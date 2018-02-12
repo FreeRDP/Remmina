@@ -112,6 +112,10 @@ list(APPEND REMMINA_SRCS
     "src/remmina_connection_window.h"
     "src/remmina_mpchange.c"
     "src/remmina_mpchange.h"
+    "src/remmina_stats.c"
+    "src/remmina_stats.h"
+    "src/remmina_stats_sender.c"
+    "src/remmina_stats_sender.h"
     )
 
 add_executable(remmina ${REMMINA_SRCS})
@@ -145,6 +149,11 @@ if(AVAHI_FOUND)
         target_link_libraries(remmina ${AVAHI_LIBRARIES})
 endif()
 
+if (OPENSSL_FOUND)
+        include_directories(${OPENSSL_INCLUDE_DIRS})
+        target_link_libraries(remmina ${OPENSSL_LIBRARIES})
+endif()
+
 option(WITH_VTE "Build with support for VTE" ON)
 if(GTK3_FOUND AND WITH_VTE)
         set(_VTE_VERSION_NUMS 2.91 2.90)
@@ -174,6 +183,20 @@ if(GTK3_FOUND)
                 include_directories(${APPINDICATOR_INCLUDE_DIRS})
                 target_link_libraries(remmina ${APPINDICATOR_LIBRARIES})
         endif()
+        find_required_package(JSONGLIB)
+        if (JSONGLIB_FOUND)
+			include_directories(${JSONGLIB_INCLUDE_DIRS})
+			target_link_libraries(remmina ${JSONGLIB_LIBRARIES})
+		else()
+			message(FATAL_ERROR "json-glib library not found")
+		endif()
+		find_required_package(LIBSOUP24)
+        if (LIBSOUP24_FOUND)
+			include_directories(${LIBSOUP24_INCLUDE_DIRS})
+			target_link_libraries(remmina ${LIBSOUP24_LIBRARIES})
+		else()
+			message(FATAL_ERROR "libsoup 2.4 library not found")
+		endif()
 endif()
 
 find_package(Intl)
