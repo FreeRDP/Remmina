@@ -166,8 +166,7 @@ JsonNode *remmina_stats_get_os_info()
 
 	kernel_name = g_strdup_printf("%s", remmina_utils_get_kernel_name());
 	if (!kernel_name || kernel_name[0] == '\0') {
-		if  (kernel_name)
-			g_free(kernel_name);
+		g_free(kernel_name);
 		kernel_name = "n/a";
 	}
 	json_builder_add_string_value(b, kernel_name);
@@ -178,8 +177,7 @@ JsonNode *remmina_stats_get_os_info()
 	json_builder_set_member_name(b, "kernel_release");
 	kernel_release = g_strdup_printf("%s", remmina_utils_get_kernel_release());
 	if (!kernel_release || kernel_release[0] == '\0') {
-		if (kernel_release)
-			g_free(kernel_release);
+		g_free(kernel_release);
 		kernel_release = "n/a";
 	}
 	json_builder_add_string_value(b, kernel_release);
@@ -190,8 +188,7 @@ JsonNode *remmina_stats_get_os_info()
 	json_builder_set_member_name(b, "kernel_arch");
 	kernel_arch = g_strdup_printf("%s", remmina_utils_get_kernel_arch());
 	if (!kernel_arch || kernel_arch[0] == '\0') {
-		if (kernel_arch)
-			g_free(kernel_arch);
+		g_free(kernel_arch);
 		kernel_arch = "n/a";
 	}
 	json_builder_add_string_value(b, kernel_arch);
@@ -201,8 +198,7 @@ JsonNode *remmina_stats_get_os_info()
 
 	id = remmina_utils_get_lsb_id();
 	if (!id || id[0] == '\0') {
-		if (id)
-			g_free(id);
+		g_free(id);
 		id = g_strdup("n/a");
 		/** @todo Add another way to find the ID */
 	}
@@ -212,12 +208,10 @@ JsonNode *remmina_stats_get_os_info()
 
 	description = remmina_utils_get_lsb_description();
 	if (!description || description[0] == '\0') {
-		if (description)
-			g_free(description);
+		g_free(description);
 		description = remmina_utils_get_distro_description();
 		if (!description || description[0] == '\0') {
-			if (description)
-				g_free(description);
+			g_free(description);
 			description = g_strdup("n/a");
 		}
 		/** @todo Add another way to find the DESCRIPTION */
@@ -228,8 +222,7 @@ JsonNode *remmina_stats_get_os_info()
 
 	release = remmina_utils_get_lsb_release();
 	if (!release || release[0] == '\0') {
-		if (release)
-			g_free(release);
+		g_free(release);
 		release = g_strdup("n/a");
 		/** @todo Add another way to find the RELEASE */
 	}
@@ -239,8 +232,7 @@ JsonNode *remmina_stats_get_os_info()
 
 	codename = remmina_utils_get_lsb_codename();
 	if (!codename || codename[0] == '\0') {
-		if (codename)
-			g_free(codename);
+		g_free(codename);
 		codename = g_strdup("n/a");
 		/** @todo Add another way to find the CODENAME */
 	}
