@@ -386,7 +386,7 @@ gchar* remmina_utils_get_lsb_codename()
  * Test each known distribution specific information file and print it's content.
  * @return a string or NULL. Caller must free it with g_free().
  */
-gchar* remmina_utils_get_distro_description()
+gchar* remmina_utils_get_etc_release()
 {
 	TRACE_CALL(__func__);
 	gchar *distro_desc = NULL;

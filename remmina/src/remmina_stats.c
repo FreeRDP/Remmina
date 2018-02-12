@@ -52,8 +52,6 @@
 #include "remmina_utils.h"
 #include "remmina/remmina_trace_calls.h"
 
-#define THEDAY "19760126"
-
 #ifdef GDK_WINDOWING_WAYLAND
 	#include <gdk/gdkwayland.h>
 #endif
@@ -153,6 +151,7 @@ JsonNode *remmina_stats_get_os_info()
 	gchar *kernel_arch;
 	gchar *id;
 	gchar *description;
+	gchar *etc_release;
 	gchar *release;
 	gchar *codename;
 
@@ -200,23 +199,16 @@ JsonNode *remmina_stats_get_os_info()
 	if (!id || id[0] == '\0') {
 		g_free(id);
 		id = g_strdup("n/a");
-		/** @todo Add another way to find the ID */
 	}
-	json_builder_set_member_name(b, "distributor");
+	json_builder_set_member_name(b, "lsb_distributor");
 	json_builder_add_string_value(b, id);
 	g_free(id);
 
 	description = remmina_utils_get_lsb_description();
 	if (!description || description[0] == '\0') {
 		g_free(description);
-		description = remmina_utils_get_distro_description();
-		if (!description || description[0] == '\0') {
-			g_free(description);
-			description = g_strdup("n/a");
-		}
-		/** @todo Add another way to find the DESCRIPTION */
 	}
-	json_builder_set_member_name(b, "distro_description");
+	json_builder_set_member_name(b, "lsb_distro_description");
 	json_builder_add_string_value(b, description);
 	g_free(description);
 
@@ -224,9 +216,8 @@ JsonNode *remmina_stats_get_os_info()
 	if (!release || release[0] == '\0') {
 		g_free(release);
 		release = g_strdup("n/a");
-		/** @todo Add another way to find the RELEASE */
 	}
-	json_builder_set_member_name(b, "distro_release");
+	json_builder_set_member_name(b, "lsb_distro_release");
 	json_builder_add_string_value(b, release);
 	g_free(release);
 
@@ -234,11 +225,23 @@ JsonNode *remmina_stats_get_os_info()
 	if (!codename || codename[0] == '\0') {
 		g_free(codename);
 		codename = g_strdup("n/a");
-		/** @todo Add another way to find the CODENAME */
 	}
-	json_builder_set_member_name(b, "distro_codename");
+	json_builder_set_member_name(b, "lsb_distro_codename");
 	json_builder_add_string_value(b, codename);
 	g_free(codename);
+
+	etc_release = remmina_utils_get_etc_release();
+	if (!etc_release || etc_release[0] == '\0') {
+		g_free(description);
+		etc_release = g_strdup("n/a");
+	}
+	json_builder_set_member_name(b, "etc_release");
+	json_builder_add_string_value(b, etc_release);
+	g_free(etc_release);
+
+	/** @todo Add other means to identify a release name/description
+	 *        to cover as much OS as possible, like /etc/issue
+	 */
 
 	json_builder_end_object(b);
 	r = json_builder_get_root(b);
