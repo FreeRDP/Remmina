@@ -1,7 +1,5 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2009-2011 Vic Lee
- * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  * Copyright (C) 2016-2018 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
@@ -33,6 +31,95 @@
  *  files in the program, then also delete it here.
  *
  */
+
+/**
+ * @file remmina_stats.c
+ * @author Antenore Gatta and Giovanni Panozzo
+ * @date 12/02/2018
+ * @brief Remmina usage statistics module.
+ *
+ * When Remmina starts asks the user if she/he wants to share some usage statistics
+ * with the Remmina developers. As per the opt-in model
+ * (https://en.wikipedia.org/wiki/Opt-in_email), without the consent of * user,
+ * none of these data will be collected.
+ * Additionally a user can asks, at any moment, that any data linked to his/her
+ * profiles to be deleted, and he/she can change the Remmina settings to stop
+ * collecting and sharing usage statistics.
+ *
+ * All the data are encrypted at client side using RSA, through the OpenSSL
+ * libraries, and decrypted offline to maximize security.
+ *
+ * The following example show which kind of data are collected.
+ *
+ * @code
+ * {
+ *
+ *    "UID": "P0M20TXN03DWF4-9a1e6da2ad"
+ *    "REMMINAVERSION": {
+ *        "version": "1.2.0-rcgit-26"
+ *        "git_revision": "9c5c4805"
+ *        "snap_build": 0
+ *    }
+ *    "SYSTEM": {
+ *        "kernel_name": "Linux"
+ *        "kernel_release": "4.14.11-200.fc26.x86_64"
+ *        "kernel_arch": "x86_64"
+ *        "lsb_distributor": "Fedora"
+ *        "lsb_distro_description": "Fedora release 26 (Twenty Six)"
+ *        "lsb_distro_release": "26"
+ *        "lsb_distro_codename": "TwentySix"
+ *        "etc_release": "Fedora release 26 (Twenty Six)"
+ *    }
+ *    "GTKVERSION": {
+ *        "major": 3
+ *        "minor": 22
+ *        "micro": 21
+ *    }
+ *    "GTKBACKEND": "X11"
+ *    "WINDOWMANAGER": {
+ *        "window_manager": "GNOME i3-gnome"
+ *    }
+ *    "APPINDICATOR": {
+ *        "appindicator_supported": 0
+ *        "icon_is_active": 1
+ *        "appindicator_type": "AppIndicator on GtkStatusIcon/xembed"
+ *    }
+ *    "PROFILES": {
+ *        "profile_count": 457
+ *        "SSH": 431
+ *        "NX": 1
+ *        "RDP": 7
+ *        "TERMINAL": 2
+ *        "X2GO": 5
+ *        "SFTP": 4
+ *        "PYTHON_SIMPLE": 4
+ *        "SPICE": 3
+ *        "DATE_SSH": "20180209"
+ *        "DATE_NX": ""
+ *        "DATE_RDP": "20180208"
+ *        "DATE_TERMINAL": ""
+ *        "DATE_X2GO": ""
+ *        "DATE_SFTP": ""
+ *        "DATE_PYTHON_SIMPLE": ""
+ *        "DATE_SPICE": ""
+ *    }
+ *
+ * }
+ * @endcode
+ *
+ * All of these data are solely transmitted to understand:
+ *  - On which type of system Remmina is used
+ *	-# Operating System
+ *	-# Architecture (32/64bit)
+ *	-# Linux distributor or OS vendor
+ *  - Desktop Environment type.
+ *  - Main library versions installed on the system in use by Remmina.
+ *  - Protocols used
+ *  - Last time each protocol has been used (globally).
+ *
+ * @see http://www.remmina.org/wp
+ */
+
 
 #include "config.h"
 #include <string.h>
