@@ -40,7 +40,7 @@ void remmina_stats_sender_schedule(void);
 gboolean remmina_stat_sender_can_send(void);
 
 /* This is only for testing purposes: force a SEND */
-void remmina_stats_sender_send(void);
+void remmina_stats_sender_send(gboolean show_only);
 
 G_END_DECLS
 

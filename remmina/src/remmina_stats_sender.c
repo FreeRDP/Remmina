@@ -71,6 +71,11 @@ static char *remmina_RSA_PubKey_v1 =
 	"PwIDAQAB\n"
 	"-----END PUBLIC KEY-----\n";
 
+typedef struct {
+	gboolean show_only;
+	JsonNode *statsroot;
+} sc_tdata;
+
 static void soup_callback(SoupSession *session, SoupMessage *msg, gpointer user_data)
 {
 	TRACE_CALL(__func__);
@@ -167,13 +172,22 @@ static gboolean remmina_stats_collector_done(gpointer data)
 	RSA *pubkey;
 	int pksize;
 	gchar *uid;
+	sc_tdata *sctdata;
 
-	n = (JsonNode*)data;
-	if (n == NULL)
+	sctdata = (sc_tdata *)data;
+	if (sctdata == NULL)
 		return G_SOURCE_REMOVE;
 
-	if ((o = json_node_get_object(n)) == NULL)
+	n = sctdata->statsroot;
+	if (n == NULL) {
+		g_free(data);
 		return G_SOURCE_REMOVE;
+	}
+
+	if ((o = json_node_get_object(n)) == NULL) {
+		g_free(data);
+		return G_SOURCE_REMOVE;
+	}
 
 	uid = g_strdup(json_object_get_string_member(o, "UID"));
 
@@ -197,6 +211,7 @@ static gboolean remmina_stats_collector_done(gpointer data)
 		BIO_free(pkbio);
 		g_free(unenc_s);
 		ERR_free_strings();
+		g_free(data);
 		return G_SOURCE_REMOVE;
 	}
 
@@ -224,20 +239,25 @@ static gboolean remmina_stats_collector_done(gpointer data)
 	g_free(uid);
 	g_free(enc_s);
 
-	g = json_generator_new();
-	json_generator_set_root(g, n);
-	enc_s = json_generator_to_data(g, NULL);	// unenc_s=serialized stats
-	g_object_unref(g);
-	json_node_unref(n);
+	if (!sctdata->show_only) {
+
+		g = json_generator_new();
+		json_generator_set_root(g, n);
+		enc_s = json_generator_to_data(g, NULL);	// unenc_s=serialized stats
+		g_object_unref(g);
+		json_node_unref(n);
 
 
-	ss = soup_session_new();
-	msg = soup_message_new("POST", PERIODIC_UPLOAD_URL);
-	soup_message_set_request(msg, "application/json",
-		SOUP_MEMORY_COPY, enc_s, strlen(enc_s));
-	soup_session_queue_message(ss, msg, soup_callback, enc_s);
+		ss = soup_session_new();
+		msg = soup_message_new("POST", PERIODIC_UPLOAD_URL);
+		soup_message_set_request(msg, "application/json",
+			SOUP_MEMORY_COPY, enc_s, strlen(enc_s));
+		soup_session_queue_message(ss, msg, soup_callback, enc_s);
 
-	remmina_log_printf("STATS upload: Starting upload to url %s\n", PERIODIC_UPLOAD_URL);
+		remmina_log_printf("STATS upload: Starting upload to url %s\n", PERIODIC_UPLOAD_URL);
+	}
+
+	g_free(data);
 
 	return G_SOURCE_REMOVE;
 }
@@ -247,20 +267,29 @@ static gpointer remmina_stats_collector(gpointer data)
 {
 	TRACE_CALL(__func__);
 	JsonNode *n;
+	sc_tdata *sctdata;
+
+	sctdata = (sc_tdata *)data;
 	n = remmina_stats_get_all();
 
 	/* stats collecting is done. Notify main thread calling
 	 * remmina_stats_collector_done() */
-	g_idle_add(remmina_stats_collector_done, n);
+	sctdata->statsroot = n;
+	g_idle_add(remmina_stats_collector_done, sctdata);
 
 	return NULL;
 }
 
-void remmina_stats_sender_send()
+void remmina_stats_sender_send(gboolean show_only)
 {
 	TRACE_CALL(__func__);
 
-	g_thread_new("stats_collector", remmina_stats_collector, NULL);
+	sc_tdata *sctdata;
+
+	sctdata = g_malloc(sizeof(sc_tdata));
+	sctdata->show_only = show_only;
+
+	g_thread_new("stats_collector", remmina_stats_collector, (gpointer)sctdata);
 
 
 }
@@ -287,7 +316,7 @@ static gboolean remmina_stats_sender_periodic_check(gpointer user_data)
 	g_get_current_time(&t);
 	/* If current time is after "next" or clock is going back (but > 1/1/2018), then do send stats */
 	if (t.tv_sec > next || (t.tv_sec < remmina_pref.periodic_usage_stats_last_sent && t.tv_sec > 1514764800)) {
-		remmina_stats_sender_send();
+		remmina_stats_sender_send(FALSE);
 	}
 
 	periodic_check_counter++;
