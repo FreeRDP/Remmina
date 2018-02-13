@@ -82,6 +82,7 @@ static DistroInfo distroArray[] = {
 	{ "SuSE",		"/etc/SuSE-release"		},
 	{ "SuSE",		"/etc/novell-release"		},
 	{ "SuSE",		"/etc/sles-release"		},
+	{ "SuSE",		"/etc/os-release"		},
 	{ "Debian",		"/etc/debian_version"		},
 	{ "Debian",		"/etc/debian_release"		},
 	{ "Ubuntu",		"/etc/lsb-release"		},
