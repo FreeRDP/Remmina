@@ -259,6 +259,10 @@ static gchar* remmina_utils_read_distrofile(gchar *filename)
 		return NULL;
 	}
 
+	g_debug("%s: File %s is %lu bytes long\n", __func__, filename, st.st_size);
+	if (st.st_size > 131072)
+		return NULL;
+
 	if (!g_file_get_contents(filename, &distro_desc, &file_sz, &err)) {
 		g_debug("%s: could not get the file content%s: %s\n", __func__, filename, err->message);
 		g_error_free(err);
@@ -315,11 +319,8 @@ gchar* remmina_utils_get_lsb_id()
 {
 	TRACE_CALL(__func__);
 	gchar *lsb_id = NULL;
-	gchar *s;
 	if (g_spawn_command_line_sync("/usr/bin/lsb_release -si", &lsb_id, NULL, NULL, NULL)) {
-		s = remmina_utils_string_strip(lsb_id);
-		g_free(lsb_id);
-		return s;
+		return lsb_id;
 	}
 	return NULL;
 }
@@ -332,13 +333,10 @@ gchar* remmina_utils_get_lsb_description()
 {
 	TRACE_CALL(__func__);
 	gchar *lsb_description = NULL;
-	gchar *s;
 	GError *err = NULL;
 
 	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sd", &lsb_description, NULL, NULL, &err)) {
-		s = remmina_utils_string_strip(lsb_description);
-		g_free(lsb_description);
-		return s;
+		return lsb_description;
 	}else {
 		g_debug("%s: could not execute lsb_release %s\n", __func__, err->message);
 		g_error_free(err);
@@ -355,11 +353,8 @@ gchar* remmina_utils_get_lsb_release()
 {
 	TRACE_CALL(__func__);
 	gchar *lsb_release = NULL;
-	gchar *s;
 	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sr", &lsb_release, NULL, NULL, NULL)) {
-		s = remmina_utils_string_strip(lsb_release);
-		g_free(lsb_release);
-		return s;
+		return lsb_release;
 	}
 	return NULL;
 }
@@ -372,11 +367,8 @@ gchar* remmina_utils_get_lsb_codename()
 {
 	TRACE_CALL(__func__);
 	gchar *lsb_codename = NULL;
-	gchar *s;
 	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sc", &lsb_codename, NULL, NULL, NULL)) {
-		s = remmina_utils_string_strip(lsb_codename);
-		g_free(lsb_codename);
-		return s;
+		return lsb_codename;
 	}
 	return NULL;
 }
@@ -386,24 +378,27 @@ gchar* remmina_utils_get_lsb_codename()
  * Test each known distribution specific information file and print it's content.
  * @return a string or NULL. Caller must free it with g_free().
  */
-gchar* remmina_utils_get_etc_release()
+GHashTable* remmina_utils_get_etc_release()
 {
 	TRACE_CALL(__func__);
-	gchar *distro_desc = NULL;
-	gchar *s;
+	gchar *etc_release = NULL;
 	gint i;
+	GHashTable *r;
+
+	r = g_hash_table_new_full(g_str_hash, g_str_equal, NULL, g_free);
 
 	for (i = 0; distroArray[i].filename != NULL; i++) {
 		g_debug("%s: File %s\n", __func__, distroArray[i].filename);
-		distro_desc = remmina_utils_read_distrofile(distroArray[i].filename);
-		if (distro_desc && distro_desc[0] != '\0') {
-			g_debug("%s: Distro description %s\n", __func__, distro_desc);
-			break;
+		etc_release = remmina_utils_read_distrofile(distroArray[i].filename);
+		if (etc_release) {
+			if (etc_release[0] != '\0') {
+				g_debug("%s: Distro description %s\n", __func__, etc_release);
+				g_hash_table_insert(r, distroArray[i].filename, etc_release);
+			} else
+				g_free(etc_release);
 		}
 	}
-	s = remmina_utils_string_strip(distro_desc);
-	g_free(distro_desc);
-	return s;
+	return r;
 }
 
 /**
@@ -429,5 +424,4 @@ const gchar* remmina_utils_get_os_info()
 			"UNKNOWN");
 	return kernel_string;
 }
-
 

@@ -52,5 +52,5 @@ gchar* remmina_utils_get_lsb_id();
 gchar* remmina_utils_get_lsb_description();
 gchar* remmina_utils_get_lsb_release();
 gchar* remmina_utils_get_lsb_codename();
-gchar* remmina_utils_get_etc_release();
+GHashTable* remmina_utils_get_etc_release();
 const gchar* remmina_utils_get_os_info();

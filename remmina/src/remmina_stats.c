@@ -238,9 +238,11 @@ JsonNode *remmina_stats_get_os_info()
 	gchar *kernel_arch;
 	gchar *id;
 	gchar *description;
-	gchar *etc_release;
+	GHashTable *etc_release;
 	gchar *release;
 	gchar *codename;
+	GHashTableIter iter;
+	gchar *key, *value;
 
 	/** @warning this function is usually executed on a dedicated thread,
 	 * not on the main thread */
@@ -249,77 +251,83 @@ JsonNode *remmina_stats_get_os_info()
 	json_builder_begin_object(b);
 
 	json_builder_set_member_name(b, "kernel_name");
-
 	kernel_name = g_strdup_printf("%s", remmina_utils_get_kernel_name());
 	if (!kernel_name || kernel_name[0] == '\0') {
-		g_free(kernel_name);
-		kernel_name = g_strdup("n/a");
+		json_builder_add_null_value(b);
+	}else {
+		json_builder_add_string_value(b, kernel_name);
 	}
-	json_builder_add_string_value(b, kernel_name);
 	g_free(kernel_name);
 
 	json_builder_set_member_name(b, "kernel_release");
 	kernel_release = g_strdup_printf("%s", remmina_utils_get_kernel_release());
 	if (!kernel_release || kernel_release[0] == '\0') {
-		g_free(kernel_release);
-		kernel_release = g_strdup("n/a");
+		json_builder_add_null_value(b);
+	}else {
+		json_builder_add_string_value(b, kernel_release);
 	}
-	json_builder_add_string_value(b, kernel_release);
 	g_free(kernel_release);
 
 	json_builder_set_member_name(b, "kernel_arch");
 	kernel_arch = g_strdup_printf("%s", remmina_utils_get_kernel_arch());
 	if (!kernel_arch || kernel_arch[0] == '\0') {
-		g_free(kernel_arch);
-		kernel_arch = g_strdup("n/a");
+		json_builder_add_null_value(b);
+	}else {
+		json_builder_add_string_value(b, kernel_arch);
 	}
-	json_builder_add_string_value(b, kernel_arch);
 	g_free(kernel_arch);
 
+	json_builder_set_member_name(b, "lsb_distributor");
 	id = remmina_utils_get_lsb_id();
 	if (!id || id[0] == '\0') {
-		g_free(id);
-		id = g_strdup("n/a");
+		json_builder_add_null_value(b);
+	}else {
+		json_builder_add_string_value(b, id);
 	}
-	json_builder_set_member_name(b, "lsb_distributor");
-	json_builder_add_string_value(b, id);
 	g_free(id);
 
+	json_builder_set_member_name(b, "lsb_distro_description");
 	description = remmina_utils_get_lsb_description();
 	if (!description || description[0] == '\0') {
-		g_free(description);
-		description = g_strdup("n/a");
+		json_builder_add_null_value(b);
+	}else {
+		json_builder_add_string_value(b, description);
 	}
-	json_builder_set_member_name(b, "lsb_distro_description");
-	json_builder_add_string_value(b, description);
 	g_free(description);
 
+	json_builder_set_member_name(b, "lsb_distro_release");
 	release = remmina_utils_get_lsb_release();
 	if (!release || release[0] == '\0') {
-		g_free(release);
-		release = g_strdup("n/a");
+		json_builder_add_null_value(b);
+	}else {
+		json_builder_add_string_value(b, release);
 	}
-	json_builder_set_member_name(b, "lsb_distro_release");
-	json_builder_add_string_value(b, release);
 	g_free(release);
 
+	json_builder_set_member_name(b, "lsb_distro_codename");
 	codename = remmina_utils_get_lsb_codename();
 	if (!codename || codename[0] == '\0') {
-		g_free(codename);
-		codename = g_strdup("n/a");
+		json_builder_add_null_value(b);
+	}else {
+		json_builder_add_string_value(b, codename);
 	}
-	json_builder_set_member_name(b, "lsb_distro_codename");
-	json_builder_add_string_value(b, codename);
 	g_free(codename);
 
 	etc_release = remmina_utils_get_etc_release();
-	if (!etc_release || etc_release[0] == '\0') {
-		g_free(etc_release);
-		etc_release = g_strdup("n/a");
-	}
 	json_builder_set_member_name(b, "etc_release");
-	json_builder_add_string_value(b, etc_release);
-	g_free(etc_release);
+	if (etc_release) {
+		json_builder_begin_object(b);
+		g_hash_table_iter_init (&iter, etc_release);
+		while (g_hash_table_iter_next (&iter, (gpointer)&key, (gpointer)&value)) {
+			json_builder_set_member_name(b, key);
+			json_builder_add_string_value(b, value);
+		}
+		json_builder_end_object(b);
+		g_hash_table_remove_all(etc_release);
+		g_hash_table_unref(etc_release);
+	}else {
+		json_builder_add_null_value(b);
+	}
 
 	/** @todo Add other means to identify a release name/description
 	 *        to cover as much OS as possible, like /etc/issue
