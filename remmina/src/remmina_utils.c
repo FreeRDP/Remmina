@@ -243,10 +243,10 @@ gchar *remmina_utils_string_strip(const gchar *s)
  * @param filename The file path of a Linux distribution release file.
  * @param distroSize The size of the distribition name.
  * @param distro The full distro name.
- * @return Returns distro information verbatium from /etc/xxx-release (distro).
+ * @return Returns a string containing distro information verbatium from /etc/xxx-release (distro). Use g_free to free the string.
  *
  */
-const gchar* remmina_utils_read_distrofile(gchar *filename)
+static gchar* remmina_utils_read_distrofile(gchar *filename)
 {
 	TRACE_CALL(__func__);
 	gsize file_sz;
@@ -390,19 +390,20 @@ gchar* remmina_utils_get_etc_release()
 {
 	TRACE_CALL(__func__);
 	gchar *distro_desc = NULL;
+	gchar *s;
 	gint i;
 
 	for (i = 0; distroArray[i].filename != NULL; i++) {
 		g_debug("%s: File %s\n", __func__, distroArray[i].filename);
-		distro_desc = g_strdup(remmina_utils_read_distrofile(
-				distroArray[i].filename));
-
+		distro_desc = remmina_utils_read_distrofile(distroArray[i].filename);
 		if (distro_desc && distro_desc[0] != '\0') {
 			g_debug("%s: Distro description %s\n", __func__, distro_desc);
 			break;
 		}
 	}
-	return remmina_utils_string_strip(distro_desc);
+	s = remmina_utils_string_strip(distro_desc);
+	g_free(distro_desc);
+	return s;
 }
 
 /**

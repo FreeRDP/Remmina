@@ -253,34 +253,28 @@ JsonNode *remmina_stats_get_os_info()
 	kernel_name = g_strdup_printf("%s", remmina_utils_get_kernel_name());
 	if (!kernel_name || kernel_name[0] == '\0') {
 		g_free(kernel_name);
-		kernel_name = "n/a";
+		kernel_name = g_strdup("n/a");
 	}
 	json_builder_add_string_value(b, kernel_name);
-	if (!kernel_name || kernel_name[0] == '\0') {
-		g_free(kernel_name);
-	}
+	g_free(kernel_name);
 
 	json_builder_set_member_name(b, "kernel_release");
 	kernel_release = g_strdup_printf("%s", remmina_utils_get_kernel_release());
 	if (!kernel_release || kernel_release[0] == '\0') {
 		g_free(kernel_release);
-		kernel_release = "n/a";
+		kernel_release = g_strdup("n/a");
 	}
 	json_builder_add_string_value(b, kernel_release);
-	if (!kernel_release || kernel_release[0] == '\0') {
-		g_free(kernel_release);
-	}
+	g_free(kernel_release);
 
 	json_builder_set_member_name(b, "kernel_arch");
 	kernel_arch = g_strdup_printf("%s", remmina_utils_get_kernel_arch());
 	if (!kernel_arch || kernel_arch[0] == '\0') {
 		g_free(kernel_arch);
-		kernel_arch = "n/a";
+		kernel_arch = g_strdup("n/a");
 	}
 	json_builder_add_string_value(b, kernel_arch);
-	if (!kernel_arch || kernel_arch[0] == '\0') {
-		g_free(kernel_arch);
-	}
+	g_free(kernel_arch);
 
 	id = remmina_utils_get_lsb_id();
 	if (!id || id[0] == '\0') {
@@ -294,6 +288,7 @@ JsonNode *remmina_stats_get_os_info()
 	description = remmina_utils_get_lsb_description();
 	if (!description || description[0] == '\0') {
 		g_free(description);
+		description = g_strdup("n/a");
 	}
 	json_builder_set_member_name(b, "lsb_distro_description");
 	json_builder_add_string_value(b, description);
@@ -319,7 +314,7 @@ JsonNode *remmina_stats_get_os_info()
 
 	etc_release = remmina_utils_get_etc_release();
 	if (!etc_release || etc_release[0] == '\0') {
-		g_free(description);
+		g_free(etc_release);
 		etc_release = g_strdup("n/a");
 	}
 	json_builder_set_member_name(b, "etc_release");
@@ -538,7 +533,7 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 	pdata->protocol = remmina_file_get_string(remminafile, "protocol");
 	pdata->pdatestr = remmina_file_get_string(remminafile, "last_success");
 
-	dd = NULL;
+	ds = dd = NULL;
 	if (pdata->pdatestr && pdata->pdatestr[0] != '\0' && strlen(pdata->pdatestr) >= 6) {
 		dyear = g_strdup_printf("%.4s", pdata->pdatestr);
 		dmonth = g_strdup_printf("%.2s", pdata->pdatestr + 4);

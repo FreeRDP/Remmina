@@ -193,10 +193,10 @@ static gboolean remmina_stats_collector_done(gpointer data)
 
 	g = json_generator_new();
 	json_generator_set_root(g, n);
+	json_node_unref(n);
 	unenc_s = json_generator_to_data(g, NULL);	// unenc_s=serialized stats
 	remmina_log_printf("STATS upload: JSON data%s\n", unenc_s);
 	g_object_unref(g);
-	json_node_unref(n);
 
 	/* Now encrypt "s" with remminastats public key */
 
@@ -245,8 +245,6 @@ static gboolean remmina_stats_collector_done(gpointer data)
 		json_generator_set_root(g, n);
 		enc_s = json_generator_to_data(g, NULL);	// unenc_s=serialized stats
 		g_object_unref(g);
-		json_node_unref(n);
-
 
 		ss = soup_session_new();
 		msg = soup_message_new("POST", PERIODIC_UPLOAD_URL);
@@ -257,6 +255,7 @@ static gboolean remmina_stats_collector_done(gpointer data)
 		remmina_log_printf("STATS upload: Starting upload to url %s\n", PERIODIC_UPLOAD_URL);
 	}
 
+	json_node_unref(n);
 	g_free(data);
 
 	return G_SOURCE_REMOVE;
@@ -290,7 +289,6 @@ void remmina_stats_sender_send(gboolean show_only)
 	sctdata->show_only = show_only;
 
 	g_thread_new("stats_collector", remmina_stats_collector, (gpointer)sctdata);
-
 
 }
 
