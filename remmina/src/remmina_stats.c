@@ -584,17 +584,11 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 					//remmina_log_printf("Date %s is newer than the one inside pdata->protocol for protocol %s\n", g_strdup(pdata->pdatestr), g_strdup(pdata->protocol));
 					g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 				}
-				g_date_time_unref(ds);
-			}
-			/** If the date in the hash is valid and the date in the profile is NULL we keep the first one */
-			if (ds && !dd) {
-				g_date_time_unref(ds);
 			}
 			/** If the date in the hash is NOT valid and the date in the profile is valid we keep the latter */
 			if (!ds && dd) {
 				//remmina_log_printf("Date %s inserted in pdata->protocol for protocol %s\n", g_strdup(pdata->pdatestr), g_strdup(pdata->protocol));
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
-				g_date_time_unref(ds);
 			}
 			/** If both date are NULL, we insert NULL for that protocol */
 			if ((!ds && !dd) && pdata->pdatestr) {
@@ -613,9 +607,11 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), NULL);
 			}
 		}
-		if (dd)
-			g_date_time_unref(dd);
 	}
+	if (dd)
+		g_date_time_unref(dd);
+	if (ds)
+		g_date_time_unref(ds);
 }
 
 /**
