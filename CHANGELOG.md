@@ -1,5 +1,40 @@
 # Change Log
 
+## [v1.2.0-rcgit.27](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.27) (2018-02-13)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.26...v1.2.0-rcgit.27)
+
+**Implemented enhancements:**
+
+- Remmina usage statistics collection. [\#1472](https://github.com/FreeRDP/Remmina/pull/1472) ([antenore](https://github.com/antenore))
+- Remmina stats: Profiles and protocols counter [\#1463](https://github.com/FreeRDP/Remmina/pull/1463) ([antenore](https://github.com/antenore))
+- Updated freerdp on flatpak definition file [\#1451](https://github.com/FreeRDP/Remmina/pull/1451) ([daper](https://github.com/daper))
+
+**Fixed bugs:**
+
+- RDP + DYNRES: Screen is black immediately after connection and becames visible only later when DISP\_DVC\_CHANNEL\_NAME is connected [\#1442](https://github.com/FreeRDP/Remmina/issues/1442)
+
+**Closed issues:**
+
+- Please help, ERRCONNECT\_LOGON\_TYPE\_NOT\_GRANTED [\#1457](https://github.com/FreeRDP/Remmina/issues/1457)
+- Remmina: black flash and connection closed \(cannot connect to Windows 10 17074.1002 with Remmina 1.2.0-rcgit-26 \(git rcgit-26\)\) [\#1456](https://github.com/FreeRDP/Remmina/issues/1456)
+- Artifacts and Glitches with PeopleSoft App Designer [\#1452](https://github.com/FreeRDP/Remmina/issues/1452)
+- Support for AVC 444 mode [\#1449](https://github.com/FreeRDP/Remmina/issues/1449)
+- "save password" option not work [\#1444](https://github.com/FreeRDP/Remmina/issues/1444)
+- Shared clipboard not work both Gnome and Unity [\#1443](https://github.com/FreeRDP/Remmina/issues/1443)
+- segfault [\#1425](https://github.com/FreeRDP/Remmina/issues/1425)
+- Remmina SNAP can't still access keyring to save passwords [\#1404](https://github.com/FreeRDP/Remmina/issues/1404)
+- Remmina 1.2 displays lots artifacts when scrolling/zooming in MS Access print preview, but latest xfreerdp and old Remmina 1.1.2 works correctly [\#1387](https://github.com/FreeRDP/Remmina/issues/1387)
+
+**Merged pull requests:**
+
+- Stats - Bugfixing [\#1471](https://github.com/FreeRDP/Remmina/pull/1471) ([antenore](https://github.com/antenore))
+- Stats - Last time  each protocol has been used.  [\#1470](https://github.com/FreeRDP/Remmina/pull/1470) ([antenore](https://github.com/antenore))
+- Add initial \[MS-RDPEGFX\] software support [\#1468](https://github.com/FreeRDP/Remmina/pull/1468) ([giox069](https://github.com/giox069))
+- Added lsb functions [\#1464](https://github.com/FreeRDP/Remmina/pull/1464) ([antenore](https://github.com/antenore))
+- Permit SCALE\_MODE\_DYNRES before DISP\_DVC\_CHANNEL\_NAME is enabled. [\#1446](https://github.com/FreeRDP/Remmina/pull/1446) ([giox069](https://github.com/giox069))
+- OS stats and code cleaning [\#1445](https://github.com/FreeRDP/Remmina/pull/1445) ([antenore](https://github.com/antenore))
+- Ensure the return value is initialized [\#1433](https://github.com/FreeRDP/Remmina/pull/1433) ([weberhofer](https://github.com/weberhofer))
+
 ## [v1.2.0-rcgit.26](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.26) (2017-12-28)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.25...v1.2.0-rcgit.26)
 
