@@ -544,8 +544,8 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 		dmonth = g_strdup_printf("%.2s", pdata->pdatestr + 4);
 		dday = g_strdup_printf("%.2s", pdata->pdatestr + 6);
 		dd = g_date_time_new_local(g_ascii_strtoll(dyear, NULL, 0),
-			g_ascii_strtoll(dmonth, NULL, 0),
-			g_ascii_strtoll(dday, NULL, 0), 0, 0, 0.0);
+				g_ascii_strtoll(dmonth, NULL, 0),
+				g_ascii_strtoll(dday, NULL, 0), 0, 0, 0.0);
 		g_free(dyear);
 		g_free(dmonth);
 		g_free(dday);
@@ -560,6 +560,7 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 			g_hash_table_insert(pdata->proto_count, g_strdup(pdata->protocol), GINT_TO_POINTER(count));
 		}
 		g_hash_table_replace(pdata->proto_count, g_strdup(pdata->protocol), GINT_TO_POINTER(count));
+		pdate = NULL;
 		if (g_hash_table_lookup_extended(pdata->proto_date, pdata->protocol, &kdo, &pdate)) {
 
 			ds = NULL;
@@ -568,36 +569,53 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 				smonth = g_strdup_printf("%.2s", (char*)pdate + 4);
 				sday = g_strdup_printf("%.2s", (char*)pdate + 6);
 				ds = g_date_time_new_local(g_ascii_strtoll(syear, NULL, 0),
-					g_ascii_strtoll(smonth, NULL, 0),
-					g_ascii_strtoll(sday, NULL, 0), 0, 0, 0.0);
+						g_ascii_strtoll(smonth, NULL, 0),
+						g_ascii_strtoll(sday, NULL, 0), 0, 0, 0.0);
 				g_free(syear);
 				g_free(smonth);
 				g_free(sday);
 			}
 
+			/** When both date in the has and in the profile are valid we compare the date */
 			if (ds && dd) {
 				gint res = g_date_time_compare( ds, dd );
+				/** If the date in the hash less than the date in the profile, we take the latter */
 				if (res < 0 ) {
+					//remmina_log_printf("Date %s is newer than the one inside pdata->protocol for protocol %s\n", g_strdup(pdata->pdatestr), g_strdup(pdata->protocol));
 					g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 				}
 				g_date_time_unref(ds);
 			}
+			/** If the date in the hash is valid and the date in the profile is NULL we keep the first one */
 			if (ds && !dd) {
+				g_date_time_unref(ds);
+			}
+			/** If the date in the hash is NOT valid and the date in the profile is valid we keep the latter */
+			if (!ds && dd) {
+				//remmina_log_printf("Date %s inserted in pdata->protocol for protocol %s\n", g_strdup(pdata->pdatestr), g_strdup(pdata->protocol));
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 				g_date_time_unref(ds);
 			}
-			if ((!ds && !dd) && pdata->pdatestr)
-				g_hash_table_insert(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
+			/** If both date are NULL, we insert NULL for that protocol */
+			if ((!ds && !dd) && pdata->pdatestr) {
+				//remmina_log_printf("Date NULL inserted in pdata->protocol for protocol %s\n", g_strdup(pdata->protocol));
+				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), NULL);
+			}
 		}else {
+			/** If there is not the protocol in the hash, we add it */
+			/** If the date in the profile is not NULL we use it */
 			if (pdata->pdatestr) {
-				g_hash_table_insert(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
+				//remmina_log_printf("Date %s inserted in pdata->protocol for protocol %s\n", g_strdup(pdata->pdatestr), g_strdup(pdata->protocol));
+				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 			}else {
-				g_hash_table_insert(pdata->proto_date, g_strdup(pdata->protocol), NULL);
+				/** Otherwise we set it to NULL */
+				//remmina_log_printf("We set %s protocol date to NULL\n", g_strdup(pdata->protocol));
+				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), NULL);
 			}
 		}
+		if (dd)
+			g_date_time_unref(dd);
 	}
-	if (dd)
-		g_date_time_unref(dd);
 }
 
 /**
