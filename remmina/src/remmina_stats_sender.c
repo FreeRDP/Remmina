@@ -50,9 +50,9 @@
 
 /* Timers */
 #define PERIODIC_CHECK_1ST_MS 60000
-#define PERIODIC_CHECK_INTERVAL_MS 600000
+#define PERIODIC_CHECK_INTERVAL_MS 1200000
 
-#define PERIODIC_UPLOAD_INTERVAL_SEC    604800
+#define PERIODIC_UPLOAD_INTERVAL_SEC    2678400
 
 #define PERIODIC_UPLOAD_URL "http://www.remmina.org/stats/upload_stats.php"
 
