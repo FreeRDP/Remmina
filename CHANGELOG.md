@@ -1,6 +1,6 @@
 # Change Log
 
-## [v1.2.0-rcgit.27](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.27) (2018-02-13)
+## [v1.2.0-rcgit.27](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.27) (2018-02-14)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.26...v1.2.0-rcgit.27)
 
 **Implemented enhancements:**
@@ -27,6 +27,7 @@
 
 **Merged pull requests:**
 
+- Add OS info for Solus [\#1474](https://github.com/FreeRDP/Remmina/pull/1474) ([der-eismann](https://github.com/der-eismann))
 - Stats - Bugfixing [\#1471](https://github.com/FreeRDP/Remmina/pull/1471) ([antenore](https://github.com/antenore))
 - Stats - Last time  each protocol has been used.  [\#1470](https://github.com/FreeRDP/Remmina/pull/1470) ([antenore](https://github.com/antenore))
 - Add initial \[MS-RDPEGFX\] software support [\#1468](https://github.com/FreeRDP/Remmina/pull/1468) ([giox069](https://github.com/giox069))
