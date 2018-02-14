@@ -110,6 +110,7 @@ static DistroInfo distroArray[] = {
 	{ "Slackware",		"/etc/slackware-release"	},
 	{ "SMEServer",		"/etc/e-smith-release"		},
 	{ "Solaris",		"/etc/release"			},
+	{ "Solus",		"/etc/solus-release"		},
 	{ "Tiny Sofa",		"/etc/tinysofa-release"		},
 	{ "UltraPenguin",	"/etc/ultrapenguin-release"	},
 	{ "UnitedLinux",	"/etc/UnitedLinux-release"	},
