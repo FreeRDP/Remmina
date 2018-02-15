@@ -1,6 +1,7 @@
 # Remmina - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2011 Marc-Andre Moreau
+# Copyright (C) 2018 Antenore Gatta, Giovanni Panozzo
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -50,6 +51,12 @@ find_path(GDKPIXBUF_INCLUDE_DIR gdk-pixbuf/gdk-pixbuf.h
 
 find_library(GDKPIXBUF_LIBRARY NAMES gdk_pixbuf-2.0
 	HINTS ${PC_GDKPIXBUF_LIBDIR} ${PC_GDKPIXBUF_LIBRARY_DIRS})
+
+# Wayland client, if GTK3's pkg-config suggests it. We only need
+# the include dir
+
+find_path(WAYLAND_INCLUDE_DIR wayland-client.h
+	PATHS ${PC_GTK3_INCLUDE_DIRS})
 
 # Glib
 
@@ -108,6 +115,9 @@ if(_GTK3_found_all)
 
 	set(GTK3_LIBRARIES ${GTK3_LIBRARY} ${GDK3_LIBRARY} ${GLIB2_LIBRARIES} ${PANGO_LIBRARY} ${CAIRO_LIBRARY} ${GDKPIXBUF_LIBRARY} ${ATK_LIBRARY})
 	set(GTK3_INCLUDE_DIRS ${GTK3_INCLUDE_DIR} ${GLIB2_INCLUDE_DIRS} ${PANGO_INCLUDE_DIR} ${CAIRO_INCLUDE_DIR} ${GDKPIXBUF_INCLUDE_DIR} ${ATK_INCLUDE_DIR})
+	if (WAYLAND_INCLUDE_DIR)
+		set(GTK3_INCLUDE_DIRS ${GTK3_INCLUDE_DIRS} ${WAYLAND_INCLUDE_DIR})
+	endif()
 
 	mark_as_advanced(GTK3_INCLUDE_DIR GTK3_LIBRARY)
 
