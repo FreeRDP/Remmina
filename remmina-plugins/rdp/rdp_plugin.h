@@ -294,6 +294,8 @@ struct rf_context {
 	HANDLE event_handle;
 
 	rfClipboard clipboard;
+
+	enum { REMMINA_POSTCONNECT_ERROR_OK = 0, REMMINA_POSTCONNECT_ERROR_GDI_INIT = 1, REMMINA_POSTCONNECT_ERROR_NO_H264 } postconnect_error;
 };
 
 typedef struct remmina_plugin_rdp_ui_object RemminaPluginRdpUiObject;

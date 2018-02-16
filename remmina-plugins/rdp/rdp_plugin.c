@@ -467,6 +467,7 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 
 	rfi = (rfContext*)instance->context;
 	gp = rfi->protocol_widget;
+	rfi->postconnect_error = REMMINA_POSTCONNECT_ERROR_OK;
 
 	rfi->width = rfi->settings->DesktopWidth;
 	rfi->height = rfi->settings->DesktopHeight;
@@ -491,23 +492,19 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 		rfi->cairo_format = CAIRO_FORMAT_RGB16_565;
 	}
 
-	gdi_init(instance, rf_get_local_color_format(rfi, TRUE));
+	if (!gdi_init(instance, rf_get_local_color_format(rfi, TRUE))) {
+		rfi->postconnect_error = REMMINA_POSTCONNECT_ERROR_GDI_INIT;
+		return FALSE;
+	}
+
+	if (instance->context->codecs->h264 == NULL && rfi->settings->GfxH264) {
+		gdi_free(instance);
+		rfi->postconnect_error = REMMINA_POSTCONNECT_ERROR_NO_H264;
+		return FALSE;
+	}
+
 	gdi = instance->context->gdi;
 	rfi->primary_buffer = gdi->primary_buffer;
-
-/*	rfi->hdc = gdi_GetDC();
-        rfi->hdc->bitsPerPixel = hdcBitsPerPixel;
-        rfi->hdc->bytesPerPixel = hdcBytesPerPixel;
-
-        rfi->hdc->hwnd = (HGDI_WND) malloc(sizeof(GDI_WND));
-        rfi->hdc->hwnd->invalid = gdi_CreateRectRgn(0, 0, 0, 0);
-        rfi->hdc->hwnd->invalid->null = 1;
-
-        rfi->hdc->hwnd->count = 32;
-        rfi->hdc->hwnd->cinvalid = (HGDI_RGN) malloc(sizeof(GDI_RGN) * rfi->hdc->hwnd->count);
-        rfi->hdc->hwnd->ninvalid = 0;
- *
- */
 
 	pointer_cache_register_callbacks(instance->update);
 
@@ -522,7 +519,7 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	ui->type = REMMINA_RDP_UI_CONNECTED;
 	remmina_rdp_event_queue_ui_async(gp, ui);
 
-	return True;
+	return TRUE;
 }
 
 static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** password, char** domain)
@@ -1085,7 +1082,25 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 			case FREERDP_ERROR_SECURITY_NEGO_CONNECT_FAILED:
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to establish a connection to RDP server %s."), rfi->settings->ServerHostname );
 				break;
+#ifdef FREERDP_ERROR_POST_CONNECT_FAILED
+			case FREERDP_ERROR_POST_CONNECT_FAILED:
+				/* remmina_rdp_post_connect() returned FALSE to libfreerdp. We saved the error on rfi->postconnect_error */
+				switch(rfi->postconnect_error) {
+					case REMMINA_POSTCONNECT_ERROR_OK:
+						/* We should never come here */
+						remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s."), rfi->settings->ServerHostname );
+						break;
+					case REMMINA_POSTCONNECT_ERROR_GDI_INIT:
+						remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to initialize libfreerdp gdi") );
+						break;
+					case REMMINA_POSTCONNECT_ERROR_NO_H264:
+						remmina_plugin_service->protocol_plugin_set_error(gp, _("You requested an H264 GFX mode for server %s, but your libfreerdp does not support H264. Please check Color Depth settings."), rfi->settings->ServerHostname);
+						break;
+				}
+				break;
+#endif
 			default:
+				g_printf("%08X %08X\n", e, (unsigned)ERRCONNECT_POST_CONNECT_FAILED);
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
 				break;
 			}
