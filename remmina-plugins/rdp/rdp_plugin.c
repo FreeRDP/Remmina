@@ -734,7 +734,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		/* /gfx:rfx (Win8) */
 		rfi->settings->ColorDepth = 32;
 		rfi->settings->SupportGraphicsPipeline = TRUE;
-		rfi->settings->GfxH264 = TRUE;
+		rfi->settings->GfxH264 = FALSE;
 		rfi->settings->GfxAVC444 = FALSE;
 	} else if (rfi->settings->ColorDepth == 65) {
 		/* /gfx:avc420 (Win8.1) */
