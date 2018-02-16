@@ -740,14 +740,18 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		/* /gfx:avc420 (Win8.1) */
 		rfi->settings->ColorDepth = 32;
 		rfi->settings->SupportGraphicsPipeline = TRUE;
+#ifdef WITH_GFX_H264
 		rfi->settings->GfxH264 = TRUE;
 		rfi->settings->GfxAVC444 = FALSE;
+#endif
 	} else if (rfi->settings->ColorDepth >= 66) {
 		/* /gfx:avc444 (Win10) */
 		rfi->settings->ColorDepth = 32;
 		rfi->settings->SupportGraphicsPipeline = TRUE;
+#ifdef WITH_GFX_H264
 		rfi->settings->GfxH264 = TRUE;
 		rfi->settings->GfxAVC444 = TRUE;
+#endif
 	}
 
 	rfi->settings->DesktopWidth = remmina_plugin_service->get_profile_remote_width(gp);
@@ -1331,8 +1335,10 @@ static gboolean remmina_rdp_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 static gpointer colordepth_list[] =
 {
 	/* 1st one is the default in a new install */
+#ifdef WITH_GFX_H264
 	"66",  N_("GFX AVC444 (32 bpp)"),
 	"65",  N_("GFX AVC420 (32 bpp)"),
+#endif
 	"64",  N_("GFX RFX (32 bpp)"),
 	"0",  N_("RemoteFX (32 bpp)"),
 	"32", N_("True color (32 bpp)"),
