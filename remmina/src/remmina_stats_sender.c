@@ -54,7 +54,7 @@
 
 #define PERIODIC_UPLOAD_INTERVAL_SEC    2678400
 
-#define PERIODIC_UPLOAD_URL "http://www.remmina.org/stats/upload_stats.php"
+#define PERIODIC_UPLOAD_URL "https://www.remmina.org/stats/upload_stats.php"
 
 
 static gint periodic_check_source;
