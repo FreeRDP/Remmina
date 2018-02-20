@@ -1191,7 +1191,13 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 	TRACE_CALL(__func__);
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	freerdp* instance;
-	RemminaPluginRdpUiObject* ui;
+
+	if (!remmina_plugin_service->is_main_thread()) {
+		g_printf("WARNING: %s called on a subthread, may not work or crash remmina.\n", __func__);
+	}
+
+	/* Immediately deatch GTK clipboard from this connection */
+	remmina_rdp_cliprdr_detach_owner(gp);
 
 	if (freerdp_get_last_error(rfi->instance->context) == 0x10005) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "Another user connected to the server (%s), forcing the disconnection of the current connection.", rfi->settings->ServerHostname);
@@ -1205,13 +1211,6 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 			pthread_join(rfi->thread, NULL);
 
 	}
-
-	/* Cleanup clipboard: we cannot leave clipboard requesting data to this
-	 * connection */
-	ui = g_new0(RemminaPluginRdpUiObject, 1);
-	ui->type = REMMINA_RDP_UI_CLIPBOARD;
-	ui->clipboard.type = REMMINA_RDP_UI_CLIPBOARD_DETACH_OWNER;
-	remmina_rdp_event_queue_ui_sync_retint(gp, ui);
 
 	if (instance) {
 		if ( rfi->connected ) {
