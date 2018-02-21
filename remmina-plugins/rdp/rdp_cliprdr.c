@@ -741,7 +741,7 @@ void remmina_rdp_cliprdr_set_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 	}
 }
 
-static void remmina_rdp_cliprdr_detach_owner(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+void remmina_rdp_cliprdr_detach_owner(RemminaProtocolWidget* gp)
 {
 	/* When closing a rdp connection, we should check if gp is a clipboard owner.
 	 * If it's an owner, detach it from the clipboard */
@@ -759,6 +759,7 @@ static void remmina_rdp_cliprdr_detach_owner(RemminaProtocolWidget* gp, RemminaP
 void remmina_rdp_event_process_clipboard(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
 	TRACE_CALL(__func__);
+
 	switch (ui->clipboard.type) {
 
 	case REMMINA_RDP_UI_CLIPBOARD_FORMATLIST:
@@ -776,11 +777,6 @@ void remmina_rdp_event_process_clipboard(RemminaProtocolWidget* gp, RemminaPlugi
 	case REMMINA_RDP_UI_CLIPBOARD_SET_CONTENT:
 		remmina_rdp_cliprdr_set_clipboard_content(gp, ui);
 		break;
-
-	case REMMINA_RDP_UI_CLIPBOARD_DETACH_OWNER:
-		remmina_rdp_cliprdr_detach_owner(gp, ui);
-		break;
-
 	}
 }
 
