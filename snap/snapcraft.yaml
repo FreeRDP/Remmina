@@ -96,6 +96,7 @@ parts:
       cp -av $SNAPCRAFT_STAGE/../snap $SNAPCRAFT_PART_INSTALL/../src
     stage-packages:
       - xauth
+      - libappindicator3-1
     build-packages:
       - intltool
       - libappindicator3-dev
@@ -120,12 +121,18 @@ parts:
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
     organize:
       snap/remmina/current: .
+    stage:
+      - -./usr/share/fonts/**
 
     after:
       - libssh-0.7
       - freerdp
       - desktop-gtk3
-      - indicator-gtk3
+
+  # Removing files that are accessible thanks to desktop plug
+  desktop-gtk3:
+    stage:
+      - -./usr/share/fonts/**
 
 apps:
   remmina:

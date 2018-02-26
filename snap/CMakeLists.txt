@@ -92,7 +92,7 @@ add_custom_target("snap-push-transfer.sh"
     WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
     COMMAND bash -c "snap=$(ls *.snap -1 | head -n1); \
     curl --upload-file $snap \
-    https://transfer.sh/$(basename $snap)"
+    https://transfer.sh/$(basename $snap); echo"
     DEPENDS "${SNAP_DIR}/SNAP_VERSION"
     COMMENT "Uploading snap package to transfer.sh ${SNAP_VERSION}"
     VERBATIM
