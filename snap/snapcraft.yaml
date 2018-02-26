@@ -1,7 +1,9 @@
-name: @SNAP_NAME@
-version: @SNAP_VERSION@
+name: remmina
+version: git
+version-script: cat parts/remmina/src/snap/SNAP_VERSION
+# license: GPL-2.0-only
 summary: The GTK+ Remote Desktop Client
-icon: @CMAKE_SOURCE_DIR_RELATIVE@/remmina/desktop/scalable/apps/remmina.svg
+icon: remmina/desktop/scalable/apps/remmina.svg
 description: |
   Remmina is a remote desktop client written in GTK+, aiming to be useful for
   system administrators and travellers, who need to work with lots of remote
@@ -44,7 +46,7 @@ parts:
       - libxtst-dev
       - libxv-dev
     configflags:
-      - -DCMAKE_BUILD_TYPE=@CMAKE_BUILD_TYPE@
+      - -DCMAKE_BUILD_TYPE=Release
       - -DWITH_WAYLAND=on
       - -DWITH_CLIENT=off
       - -DWITH_SERVER=off
@@ -60,7 +62,7 @@ parts:
     # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
     organize:
-      snap/@SNAP_NAME@/current: .
+      snap/remmina/current: .
 
     prime:
       - -usr/include
@@ -74,7 +76,7 @@ parts:
     source-depth: 1
     source-branch: v0-7
     configflags:
-      - -DCMAKE_BUILD_TYPE=@CMAKE_BUILD_TYPE@
+      - -DCMAKE_BUILD_TYPE=Release
       - -DWITH_STATIC_LIB=ON
       - -DWITH_GSSAPI=ON
       - -DWITH_NACL=0
@@ -82,14 +84,16 @@ parts:
     # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
     organize:
-      snap/@SNAP_NAME@/current: .
+      snap/remmina/current: .
 
     prime:
       - ./**/libssh*.so.*
 
   remmina:
     plugin: cmake
-    source: @CMAKE_SOURCE_DIR_RELATIVE@
+    source: .
+    prepare:
+      cp -av $SNAPCRAFT_STAGE/../snap $SNAPCRAFT_PART_INSTALL/../src
     stage-packages:
       - xauth
     build-packages:
@@ -108,14 +112,14 @@ parts:
       - libvte-2.91-dev
       - libxkbfile-dev
     configflags:
-      - -DCMAKE_BUILD_TYPE=@CMAKE_BUILD_TYPE@
+      - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
       - -DSNAP_BUILD=on
 
     # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
     organize:
-      snap/@SNAP_NAME@/current: .
+      snap/remmina/current: .
 
     after:
       - libssh-0.7
@@ -151,4 +155,4 @@ slots:
   remmina-gapp:
     interface: dbus
     bus: session
-    name: @UNIQUE_APPNAME@
+    name: org.remmina.Remmina

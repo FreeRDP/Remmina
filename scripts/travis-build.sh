@@ -1,6 +1,6 @@
 #!/bin/bash
 # Remmina - The GTK+ Remote Desktop Client
-# Copyright (C) 2014-2017 Marco Trevisan
+# Copyright (C) 2017-2018 Marco Trevisan
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -77,6 +77,9 @@ elif [ "$BUILD_TYPE" == "snap" ]; then
     elif [ "$TRAVIS_BUILD_STEP" == "install" ]; then
         docker_exec apt-get update -q
         docker_exec apt-get install -y cmake git-core snapcraft
+        if [ "$SNAP_TRANSFER_SH_UPLOAD" == "true" ]; then
+            docker_exec apt-get install -y curl
+        fi
     elif [ "$TRAVIS_BUILD_STEP" == "script" ]; then
         git clean -f
         cmake_buld_type="Release"
@@ -106,15 +109,14 @@ elif [ "$BUILD_TYPE" == "snap" ]; then
         fi
         set -x
 
-        if [ "$TRAVIS_PULL_REQUEST" != "false" ] &&
-           [ "$SNAP_TRANSFER_SH_UPLOAD_ON_PULL_REQUEST" == "true" ]; then
-            docker_exec apt-get install -y curl
+    elif [ "$TRAVIS_BUILD_STEP" == "deploy-unstable" ]; then
+        if [ "$SNAP_TRANSFER_SH_UPLOAD" == "true" ]; then
             docker_exec make snap-push-transfer.sh -C $BUILD_FOLDER
         fi
-    elif [ "$TRAVIS_BUILD_STEP" == "deploy-unstable" ]; then
-        docker_exec make snap-push-$SNAP_UNSTABLE_CHANNEL -C $BUILD_FOLDER
     elif [ "$TRAVIS_BUILD_STEP" == "deploy-release" ]; then
-        docker_exec make snap-push-$SNAP_RELEASE_CHANNEL -C $BUILD_FOLDER
+        if [ "$SNAP_TRANSFER_SH_UPLOAD" == "true" ]; then
+            docker_exec make snap-push-transfer.sh -C $BUILD_FOLDER
+        fi
     fi
 else
     echo 'No $BUILD_TYPE defined'

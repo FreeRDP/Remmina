@@ -47,11 +47,7 @@ env:
   - DEB_BUILD_OPTIONS='-DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON -DWITH_APPINDICATOR=OFF'
   - DOCKER_IMAGE=ubuntu:xenial
   - SNAP_PRIME_ON_PULL_REQUEST=true
-  - SNAP_TRANSFER_SH_UPLOAD_ON_PULL_REQUEST=true
-  - SNAP_UNSTABLE_CHANNEL=edge
-  - SNAP_RELEASE_CHANNEL=candidate
-  - SNAPCRAFT_CONFIG_KEY=$encrypted_fe91ff0c7eee_key
-  - SNAPCRAFT_CONFIG_IV=$encrypted_fe91ff0c7eee_iv
+  - SNAP_TRANSFER_SH_UPLOAD=true
   matrix:
 #  - BUILD_TYPE=deb
   - BUILD_TYPE=snap
@@ -77,14 +73,6 @@ deploy:
     on:
       condition: $BUILD_TYPE = snap
       branch: next
-
-  - provider: script
-    skip_cleanup: true
-    script: scripts/travis-build.sh deploy-release
-    on:
-      condition: $BUILD_TYPE = snap
-      branch: next
-      tags: true
 
 notifications:
   email:

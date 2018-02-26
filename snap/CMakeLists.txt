@@ -1,6 +1,6 @@
 # Remmina - The GTK+ Remote Desktop Client
 #
-# Copyright (C) 2017 Marco Trevisan
+# Copyright (C) 2017-2018 Marco Trevisan
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -37,16 +37,15 @@ if(NOT ${GIT_REVISION} STREQUAL ${REMMINA_VERSION_SUFFIX} AND
     set(SNAP_VERSION ${SNAP_VERSION}+git${GIT_REVISION})
 endif()
 
-set(SNAP_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
-set(SNAP_SETUP_DIR ${SNAP_BUILD_DIR}/snap)
-set(SNAP_GUI_DIR ${SNAP_SETUP_DIR}/gui)
+set(SNAP_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+set(SNAP_GUI_DIR ${SNAP_DIR}/gui)
 
 file(MAKE_DIRECTORY ${SNAP_GUI_DIR})
-file(RELATIVE_PATH CMAKE_SOURCE_DIR_RELATIVE ${SNAP_BUILD_DIR}
+file(RELATIVE_PATH CMAKE_SOURCE_DIR_RELATIVE ${SNAP_DIR}
     ${CMAKE_SOURCE_DIR})
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/snapcraft.yaml.in
-    ${SNAP_BUILD_DIR}/snapcraft.yaml @ONLY)
+configure_file(${SNAP_DIR}/SNAP_VERSION.in
+    ${SNAP_DIR}/SNAP_VERSION @ONLY)
 
 set(REMMINA_BINARY_PATH "remmina")
 set(REMMINA_ICON "\${SNAP}/meta/gui/icon.svg")
@@ -54,29 +53,35 @@ configure_file(${CMAKE_SOURCE_DIR}/remmina/desktop/remmina.desktop.in
     ${SNAP_GUI_DIR}/${UNIQUE_APPNAME}.desktop @ONLY)
 
 configure_file(${CMAKE_SOURCE_DIR}/LICENSE
-    ${SNAP_SETUP_DIR}/license.txt COPYONLY)
+    ${SNAP_GUI_DIR}/license.txt COPYONLY)
+
+add_custom_target("snap-version-script" ALL
+    DEPENDS "${SNAP_DIR}/SNAP_VERSION"
+    COMMENT "Preparing snap version file ${SNAP_VERSION}"
+    VERBATIM
+    )
 
 add_custom_target("snap-prime"
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
     COMMAND ${SNAPCRAFT} prime
-    WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
-    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/snapcraft.yaml"
+    DEPENDS "${SNAP_DIR}/SNAP_VERSION"
     COMMENT "Priming snap package ${SNAP_VERSION}"
     VERBATIM
     )
 
 add_custom_target("snap"
     COMMAND ${SNAPCRAFT}
-    WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
-    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/snapcraft.yaml"
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+    DEPENDS "${SNAP_DIR}/SNAP_VERSION"
     COMMENT "Create snap package ${SNAP_VERSION}"
     VERBATIM
     )
 
 foreach(channel stable candidate beta edge)
     add_custom_target("snap-push-${channel}"
+        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
         COMMAND bash -c "${SNAPCRAFT} push --release ${channel} *.snap"
-        WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
-        DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/snapcraft.yaml"
+        DEPENDS "${SNAP_DIR}/SNAP_VERSION"
         COMMENT "Create snap package ${SNAP_VERSION}"
         VERBATIM
         )
@@ -84,12 +89,12 @@ foreach(channel stable candidate beta edge)
 endforeach()
 
 add_custom_target("snap-push-transfer.sh"
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
     COMMAND bash -c "snap=$(ls *.snap -1 | head -n1); \
     curl --upload-file $snap \
     https://transfer.sh/$(basename $snap)"
-    WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
-    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/snapcraft.yaml"
-    COMMENT "Create snap package ${SNAP_VERSION}"
+    DEPENDS "${SNAP_DIR}/SNAP_VERSION"
+    COMMENT "Uploading snap package to transfer.sh ${SNAP_VERSION}"
     VERBATIM
     )
 add_dependencies("snap-push-transfer.sh" "snap")
