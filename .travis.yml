@@ -49,9 +49,9 @@ env:
   - SNAP_PRIME_ON_PULL_REQUEST=true
   - SNAP_TRANSFER_SH_UPLOAD_ON_PULL_REQUEST=true
   - SNAP_UNSTABLE_CHANNEL=edge
-  - SNAP_RELEASE_CHANNEL=stable
-  - SNAPCRAFT_CONFIG_KEY=$encrypted_8816994192a9_key
-  - SNAPCRAFT_CONFIG_IV=$encrypted_8816994192a9_iv
+  - SNAP_RELEASE_CHANNEL=candidate
+  - SNAPCRAFT_CONFIG_KEY=$encrypted_fe91ff0c7eee_key
+  - SNAPCRAFT_CONFIG_IV=$encrypted_fe91ff0c7eee_iv
   matrix:
 #  - BUILD_TYPE=deb
   - BUILD_TYPE=snap
