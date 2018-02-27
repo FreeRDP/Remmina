@@ -127,6 +127,10 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 		executed = TRUE;
 	}
 
+	/** @todo This should be a G_OPTION_ARG_FILENAME_ARRAY (^aay) so that
+	 * we can implement multi profile connection:
+	 *    https://github.com/FreeRDP/Remmina/issues/915
+	 */
 	if (g_variant_dict_lookup(opts, "connect", "^ay", &str)) {
 		remmina_exec_command(REMMINA_COMMAND_CONNECT, str);
 		g_free(str);

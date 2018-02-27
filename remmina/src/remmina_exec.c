@@ -174,6 +174,10 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		break;
 
 	case REMMINA_COMMAND_CONNECT:
+		/** @todo This should be a G_OPTION_ARG_FILENAME_ARRAY (^aay) so that
+		 * we can implement multi profile connection:
+		 *    https://github.com/FreeRDP/Remmina/issues/915
+		 */
 		remmina_connection_window_open_from_filename(data);
 		break;
 
