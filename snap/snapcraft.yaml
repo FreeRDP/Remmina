@@ -117,8 +117,12 @@ parts:
       - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
       - -DSNAP_BUILD=on
 
-    # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
+      # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
+
+    install: |
+      cp -av $SNAPCRAFT_PART_INSTALL/../src/snap/gui $SNAPCRAFT_STAGE/../snap
+
     organize:
       snap/remmina/current: .
     stage:
