@@ -85,6 +85,8 @@ static const gchar * cmd_tips = N_(    "<tt><big>"
 	"* %t is substituted with the SSH server name\n"
 	"* %u is substituted with the user name\n"
 	"* %U is substituted with the SSH user name\n"
+	"* %p is substituted with Remmina profile name\n"
+	"* %g is substituted with Remmina profile group name\n"
 	"Do not run in background if you want the command to be executed before connecting.\n"
 	"</big></tt>");
 
@@ -1429,7 +1431,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	priv->precommand_entry = widget;
 	cs = remmina_file_get_string(remminafile, "precommand");
 	gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
-	gtk_entry_set_placeholder_text(GTK_ENTRY(widget), "command %h %u %t %U --option");
+	gtk_entry_set_placeholder_text(GTK_ENTRY(widget), "command %h %u %t %U %p %g --option");
 	gtk_widget_set_tooltip_markup(widget, _(cmd_tips));
 
 	/* POST Connection Command */
@@ -1447,7 +1449,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 	priv->postcommand_entry = widget;
 	cs = remmina_file_get_string(remminafile, "postcommand");
 	gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
-	gtk_entry_set_placeholder_text(GTK_ENTRY(widget), "/path/to/command -opt1 arg %h %u %t -opt2 %U");
+	gtk_entry_set_placeholder_text(GTK_ENTRY(widget), "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g");
 	gtk_widget_set_tooltip_markup(widget, _(cmd_tips));
 
 	/* Create the Preference frame */
