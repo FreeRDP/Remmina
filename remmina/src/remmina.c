@@ -75,19 +75,20 @@ static int gcrypt_thread_initialized = 0;
 
 static GOptionEntry remmina_options[] =
 {
-	{ "about",	  'a', 0,		     G_OPTION_ARG_NONE,	    NULL, N_("Show about dialog"),					       NULL	  },
-	{ "connect",	  'c', 0,		     G_OPTION_ARG_FILENAME, NULL, N_("Connect to a .remmina file"),				       "FILE"	  },
-	{ "edit",	  'e', 0,		     G_OPTION_ARG_FILENAME, NULL, N_("Edit a .remmina file"),					       "FILE"	  },
-	{ "help",	  '?', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE,	    NULL, NULL,								       NULL	  },
-	{ "new",	  'n', 0,		     G_OPTION_ARG_NONE,	    NULL, N_("Create a new connection profile"),			       NULL	  },
-	{ "pref",	  'p', 0,		     G_OPTION_ARG_STRING,   NULL, N_("Show preferences dialog page"),				       "PAGENR"	  },
-	{ "plugin",	  'x', 0,		     G_OPTION_ARG_STRING,   NULL, N_("Execute the plugin"),					       "PLUGIN"	  },
-	{ "quit",	  'q', 0,		     G_OPTION_ARG_NONE,	    NULL, N_("Quit the application"),					       NULL	  },
-	{ "server",	  's', 0,		     G_OPTION_ARG_STRING,   NULL, N_("Use default server name (for --new)"),			       "SERVER"	  },
-	{ "protocol",	  't', 0,		     G_OPTION_ARG_STRING,   NULL, N_("Use default protocol (for --new)"),			       "PROTOCOL" },
-	{ "icon",	  'i', 0,		     G_OPTION_ARG_NONE,	    NULL, N_("Start as tray icon"),					       NULL	  },
-	{ "version",	  'v', 0,		     G_OPTION_ARG_NONE,	    NULL, N_("Show the application's version"),				       NULL	  },
-	{ "full-version", 'V', 0,		     G_OPTION_ARG_NONE,	    NULL, N_("Show the application's version, including the pulgin versions"), NULL	  },
+	{ "about",	  'a', 0,		     G_OPTION_ARG_NONE,		    NULL, N_("Show about dialog"),					       NULL	  },
+	{ "connect",	  'c', 0,		     G_OPTION_ARG_FILENAME,	    NULL, N_("Connect to a .remmina file"),				       "FILE"	  },
+	{ G_OPTION_REMAINING, '\0', 0,		     G_OPTION_ARG_FILENAME_ARRAY,   NULL, N_("Connect to a .remmina file"),				       "FILE"	  },
+	{ "edit",	  'e', 0,		     G_OPTION_ARG_FILENAME,	    NULL, N_("Edit a .remmina file"),					       "FILE"	  },
+	{ "help",	  '?', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE,	   	    NULL, NULL,								       NULL	  },
+	{ "new",	  'n', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Create a new connection profile"),			       NULL	  },
+	{ "pref",	  'p', 0,		     G_OPTION_ARG_STRING,  	    NULL, N_("Show preferences dialog page"),				       "PAGENR"	  },
+	{ "plugin",	  'x', 0,		     G_OPTION_ARG_STRING,  	    NULL, N_("Execute the plugin"),					       "PLUGIN"	  },
+	{ "quit",	  'q', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Quit the application"),					       NULL	  },
+	{ "server",	  's', 0,		     G_OPTION_ARG_STRING,  	    NULL, N_("Use default server name (for --new)"),			       "SERVER"	  },
+	{ "protocol",	  't', 0,		     G_OPTION_ARG_STRING,  	    NULL, N_("Use default protocol (for --new)"),			       "PROTOCOL" },
+	{ "icon",	  'i', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Start as tray icon"),					       NULL	  },
+	{ "version",	  'v', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Show the application's version"),				       NULL	  },
+	{ "full-version", 'V', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Show the application's version, including the pulgin versions"), NULL	  },
 	{ NULL }
 };
 
@@ -111,6 +112,7 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 	gboolean executed = FALSE;
 	GVariantDict *opts;
 	gchar *str;
+	const gchar **remaining_args;
 	gchar *protocol;
 	gchar *server;
 
@@ -132,8 +134,14 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 	 *    https://github.com/FreeRDP/Remmina/issues/915
 	 */
 	if (g_variant_dict_lookup(opts, "connect", "^ay", &str)) {
-		remmina_exec_command(REMMINA_COMMAND_CONNECT, str);
+		remmina_exec_command(REMMINA_COMMAND_CONNECT, g_strdup(str));
 		g_free(str);
+		executed = TRUE;
+	}
+
+	if (g_variant_dict_lookup(opts, G_OPTION_REMAINING, "^a&ay", &remaining_args)) {
+		remmina_exec_command(REMMINA_COMMAND_CONNECT, remaining_args[0]);
+		g_free(remaining_args);
 		executed = TRUE;
 	}
 
