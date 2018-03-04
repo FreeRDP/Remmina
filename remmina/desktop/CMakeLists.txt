@@ -93,5 +93,12 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop
 install(FILES appdata.xml
     RENAME ${UNIQUE_APPNAME}.appdata.xml
     DESTINATION "${REMMINA_DATADIR}/metainfo")
-install(FILES remmina-mime.xml DESTINATION "${REMMINA_DATADIR}/mime/packages")
+# XML mime types
+set( SHARED_MIME_INFO_MINIMUM_VERSION "0.30" )
+set( XDG_MIME_INSTALL_DIR "${REMMINA_DATADIR}/mime/packages" )
+find_package( SharedMimeInfo )
+if( SHARED_MIME_INFO_FOUND )
+    install( FILES remmina-mime.xml DESTINATION ${XDG_MIME_INSTALL_DIR} )
+    update_xdg_mimetypes( ${XDG_MIME_INSTALL_DIR} )
+endif()
 
