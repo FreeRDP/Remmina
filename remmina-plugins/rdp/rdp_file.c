@@ -42,6 +42,11 @@ gboolean remmina_rdp_file_import_test(const gchar* from_file)
 {
 	TRACE_CALL(__func__);
 	gchar* ext;
+	gchar* buf;
+	GRegex* regex;
+	GMatchInfo* match_info;
+	GError* error = NULL;
+	gboolean is_rdp;
 
 	ext = strrchr(from_file, '.');
 
@@ -50,10 +55,36 @@ gboolean remmina_rdp_file_import_test(const gchar* from_file)
 
 	ext++;
 
-	if (g_strcmp0(ext, "RDP") == 0)
-		return TRUE;
+	if ((g_strcmp0(ext, "RDP") == 0) || (g_strcmp0(ext, "rdp") == 0)) {
+		g_print ("File %s has a valid extention %s\n", from_file, ext);
+	}else {
+		g_print ("File %s has not a valid extention %s\n", from_file, ext);
+	}
 
-	if (g_strcmp0(ext, "rdp") == 0)
+	/** If checking the file extention failed, we try to parse the file.
+	 * We send a warning message to the user, notifying that the parser may
+	 * fail.
+	 * We should find at least "full address:s:xxxxxx".
+	 */
+	regex = g_regex_new ("full address:s:", 0, 0, NULL);
+	g_file_get_contents (from_file, &buf, NULL, &error);
+	if (error != NULL)
+	{
+		g_print ("Unable to read file: %s\n", error->message);
+		g_error_free (error);
+		return FALSE;
+	}
+	g_regex_match (regex, buf, 0, &match_info);
+	while (g_match_info_matches (match_info)) {
+		gchar *word = g_match_info_fetch (match_info, 0);
+		g_free (word);
+		is_rdp = TRUE;
+		g_match_info_next (match_info, NULL);
+	}
+	g_match_info_free (match_info);
+	g_regex_unref (regex);
+	g_free (buf);
+	if (is_rdp)
 		return TRUE;
 
 	return FALSE;
