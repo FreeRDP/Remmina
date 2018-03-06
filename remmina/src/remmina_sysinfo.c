@@ -137,7 +137,7 @@ gchar *remmina_sysinfo_get_wm_name()
 
 	if (!xdg_current_desktop || xdg_current_desktop[0] == '\0') {
 		if (!gdmsession || gdmsession[0] == '\0') {
-			ret = "\0";
+			ret = NULL;
 		}else {
 			ret = g_strdup_printf("%s", gdmsession);
 		}
