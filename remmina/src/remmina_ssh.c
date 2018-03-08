@@ -490,7 +490,8 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 	ssh->session = ssh_new();
 	ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->server);
 	ssh_options_set(ssh->session, SSH_OPTIONS_PORT, &ssh->port);
-	ssh_options_set(ssh->session, SSH_OPTIONS_COMPRESSION, "yes");
+	/** @todo add an option to set the compression nad set it to no as the default option */
+	//ssh_options_set(ssh->session, SSH_OPTIONS_COMPRESSION, "yes");
 	/* When SSH_OPTIONS_USER is not set, the local user account is used */
 	if (*ssh->user != 0)
 		ssh_options_set(ssh->session, SSH_OPTIONS_USER, ssh->user);
