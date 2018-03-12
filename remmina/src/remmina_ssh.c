@@ -537,6 +537,12 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 	}else {
 		remmina_log_printf("[SSH] SSH_OPTIONS_STRICTHOSTKEYCHECK does not have a valid value: %d\n", ssh->stricthostkeycheck);
 	}
+	rc = ssh_options_set(ssh->session, SSH_OPTIONS_COMPRESSION, ssh->compression);
+	if (rc == 0) {
+		remmina_log_printf("[SSH] SSH_OPTIONS_COMPRESSION has been set to: %s\n", ssh->compression);
+	}else {
+		remmina_log_printf("[SSH] SSH_OPTIONS_COMPRESSION does not have a valid value: %s\n", ssh->compression);
+	}
 
 	ssh_callbacks_init(ssh->callback);
 	if (remmina_log_running()) {
@@ -647,6 +653,8 @@ remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile)
 	ssh->hostkeytypes = g_strdup(remmina_file_get_string(remminafile, "ssh_hostkeytypes"));
 	ssh->proxycommand = g_strdup(remmina_file_get_string(remminafile, "ssh_proxycommand"));
 	ssh->stricthostkeycheck = remmina_file_get_int(remminafile, "ssh_stricthostkeycheck", 0);
+	gint c = remmina_file_get_int(remminafile, "ssh_compression", 0);
+	ssh->compression = (c == 1) ? "yes" : "no";
 
 	/* Public/Private keys */
 	s = (ssh_privatekey ? g_strdup(ssh_privatekey) : remmina_ssh_find_identity());
@@ -680,7 +688,7 @@ remmina_ssh_init_from_ssh(RemminaSSH *ssh, const RemminaSSH *ssh_src)
 	ssh->kex_algorithms = g_strdup(ssh_src->kex_algorithms);
 	ssh->ciphers = g_strdup(ssh_src->ciphers);
 	ssh->hostkeytypes = g_strdup(ssh_src->hostkeytypes);
-	ssh->stricthostkeycheck = ssh_src->stricthostkeycheck;
+	ssh->compression = ssh_src->compression;
 
 	return TRUE;
 }

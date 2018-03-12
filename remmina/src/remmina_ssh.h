@@ -74,6 +74,7 @@ typedef struct _RemminaSSH {
         gchar *hostkeytypes;
         gchar *proxycommand;
         gint stricthostkeycheck;
+        const gchar *compression;
 
 	gchar *error;
 
