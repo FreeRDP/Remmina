@@ -9,7 +9,7 @@ Initially developed by [Vic Lee](https://github.com/llyzs)
 system administrators and travellers, who need to work with lots of remote
 computers in front of either large monitors or tiny netbooks. Remmina supports
 multiple network protocols in an integrated and consistent user interface.
-Currently RDP, VNC, SPICE, NX, XDMCP and SSH are supported.
+Currently RDP, VNC, SPICE, NX, XDMCP, SSH and EXEC are supported.
 
 Remmina is released in separated source packages:
 * "remmina", the main GTK+ application
@@ -104,7 +104,6 @@ Install [remmina-git](https://aur.archlinux.org/packages/remmina-git) from [AUR]
 
 There are also some external, not supported plugins provided by [Muflone](https://github.com/muflone) :
 
-* [remmina-plugin-exec](https://aur.archlinux.org/packages/remmina-plugin-exec/) A protocol plugin for Remmina to execute an external process.
 * [remmina-plugin-folder](https://aur.archlinux.org/packages/remmina-plugin-folder/) A protocol plugin for Remmina to open a folder.
 * [remmina-plugin-open](https://aur.archlinux.org/packages/remmina-plugin-open/) A protocol plugin for Remmina to open a document with its associated application.
 * [remmina-plugin-rdesktop](https://aur.archlinux.org/packages/remmina-plugin-rdesktop/) A protocol plugin for Remmina to open a RDP connection with rdesktop.
