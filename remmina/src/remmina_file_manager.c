@@ -332,6 +332,12 @@ RemminaFile* remmina_file_manager_load_file(const gchar* filename)
 		plugin = remmina_plugin_manager_get_import_file_handler(filename);
 		if (plugin) {
 			remminafile = plugin->import_func(filename);
+		}else {
+			/** When it's not a .remmina file and the import handler
+			 * doesn't recognize it, we try to load it anyway.
+			 */
+			if (g_file_test (filename, G_FILE_TEST_IS_REGULAR))
+				remminafile = remmina_file_load(filename);
 		}
 	}
 	return remminafile;
