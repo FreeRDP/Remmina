@@ -1041,6 +1041,7 @@ static void remmina_main_init(void)
 	TRACE_CALL(__func__);
 	int i;
 	char *name;
+	gint n;
 
 	remminamain->priv->expanded_group = remmina_string_array_new_from_string(remmina_pref.expanded_group);
 	gtk_window_set_title(remminamain->window, _("Remmina Remote Desktop Client"));
@@ -1065,9 +1066,12 @@ static void remmina_main_init(void)
 	/* Set the Quick Connection */
 	gtk_entry_set_activates_default(remminamain->entry_quick_connect_server, TRUE);
 	/* Set the TreeView for the files list */
-	gtk_tree_selection_set_select_function(
-		gtk_tree_view_get_selection(remminamain->tree_files_list),
-		remmina_main_selection_func, NULL, NULL);
+	n = gtk_tree_selection_count_selected_rows (gtk_tree_view_get_selection(remminamain->tree_files_list));
+	if (n <= 1) {
+		gtk_tree_selection_set_select_function(
+			gtk_tree_view_get_selection(remminamain->tree_files_list),
+			remmina_main_selection_func, NULL, NULL);
+	}
 	/** @todo Set entry_quick_connect_server as default search entry. Weirdly. This does not work yet. */
 	gtk_tree_view_set_search_entry(remminamain->tree_files_list, GTK_ENTRY(remminamain->entry_quick_connect_server));
 	/* Load the files list */
