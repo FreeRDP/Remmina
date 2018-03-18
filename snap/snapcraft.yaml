@@ -109,13 +109,13 @@ parts:
       - libsoup2.4-dev
       - libspice-client-gtk-3.0-dev
       - libspice-protocol-dev
-      - libtelepathy-glib-dev
       - libvncserver-dev
       - libvte-2.91-dev
       - libxkbfile-dev
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
+      - -DWITH_TELEPATHY=off
       - -DSNAP_BUILD=on
 
       # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
