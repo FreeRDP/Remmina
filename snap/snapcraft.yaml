@@ -133,21 +133,19 @@ parts:
       - freerdp
       - desktop-gtk3
 
-  shared-mime-info:
-    after: [remmina]
-    plugin: nil
-    stage-packages:
-      - shared-mime-info
-    build-attributes: [no-system-libraries]
-    install: |
-      set -eux
-      update-mime-database $SNAPCRAFT_PART_INSTALL/usr/share/mime
-
-
   # Removing files that are accessible thanks to desktop plug
   desktop-gtk3:
     stage:
       - -./usr/share/fonts/**
+    install: |
+      set -x
+      export XDG_DATA_DIRS=$SNAPCRAFT_PART_INSTALL/usr/share
+      update-mime-database $SNAPCRAFT_PART_INSTALL/usr/share/mime
+      for dir in $SNAPCRAFT_PART_INSTALL/usr/share/icons/*/; do
+        if [ -f $dir/index.theme ]; then
+          gtk-update-icon-cache-3.0 -q $dir
+        fi
+      done
 
 apps:
   remmina:
