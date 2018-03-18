@@ -97,6 +97,7 @@ parts:
     stage-packages:
       - xauth
       - libappindicator3-1
+      - gnome-icon-theme
     build-packages:
       - intltool
       - libappindicator3-dev
@@ -108,13 +109,13 @@ parts:
       - libsoup2.4-dev
       - libspice-client-gtk-3.0-dev
       - libspice-protocol-dev
-      - libtelepathy-glib-dev
       - libvncserver-dev
       - libvte-2.91-dev
       - libxkbfile-dev
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
+      - -DWITH_TELEPATHY=off
       - -DSNAP_BUILD=on
 
       # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
@@ -133,24 +134,26 @@ parts:
       - freerdp
       - desktop-gtk3
 
-  shared-mime-info:
-    after: [remmina]
-    plugin: nil
-    stage-packages:
-      - shared-mime-info
-    build-attributes: [no-system-libraries]
-    install: |
-      set -eux
-      update-mime-database $SNAPCRAFT_PART_INSTALL/usr/share/mime
-
-
   # Removing files that are accessible thanks to desktop plug
   desktop-gtk3:
     stage:
       - -./usr/share/fonts/**
+    install: |
+      set -x
+      export XDG_DATA_DIRS=$SNAPCRAFT_PART_INSTALL/usr/share
+      update-mime-database $SNAPCRAFT_PART_INSTALL/usr/share/mime
+      for dir in $SNAPCRAFT_PART_INSTALL/usr/share/icons/*/; do
+        if [ -f $dir/index.theme ]; then
+          gtk-update-icon-cache-3.0 -q $dir
+        fi
+      done
 
 apps:
   remmina:
+    # desktop-launch seems to be broken when setting up wayland env
+    # so we disable it
+    environment:
+      DISABLE_WAYLAND: 1
     command: desktop-launch remmina
     plugs:
       - avahi-observe
