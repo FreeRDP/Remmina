@@ -150,6 +150,10 @@ parts:
 
 apps:
   remmina:
+    # desktop-launch seems to be broken when setting up wayland env
+    # so we disable it
+    environment:
+      DISABLE_WAYLAND: 1
     command: desktop-launch remmina
     plugs:
       - avahi-observe
