@@ -208,6 +208,7 @@
                 "/lib/libuwac0.so*"
             ],
             "config-opts": [
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DWITH_CLIENT:BOOL=OFF",
                 "-DWITH_CUPS:BOOL=ON",
                 "-DWITH_JPEG:BOOL=ON",
@@ -347,6 +348,7 @@
             "buildsystem": "cmake-ninja",
             "builddir": true,
             "config-opts": [
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DWITH_EXAMPLES:BOOL=OFF"
             ],
             "sources": [
@@ -475,6 +477,7 @@
             "name": "remmina",
             "buildsystem": "cmake-ninja",
             "config-opts": [
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DWITH_MANPAGES:BOOL=OFF",
                 "-DWITH_TELEPATHY:BOOL=OFF"
             ],
