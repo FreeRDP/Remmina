@@ -183,19 +183,13 @@
         },
         {
             "name": "nxproxy",
-            "buildsystem": "simple",
-            "build-commands": [
-                "make CONFIGURE='./configure --prefix=/app'",
-                "# Install target does a `gzip /app/share/man/man1/*.1`",
-                "rm -rf /app/share/man",
-                "make PREFIX=/app install",
-                "sed -e 's|/usr/lib/nx|/app/lib/nx|g' -i /app/bin/nxproxy"
-            ],
+            "no-autogen": true,
+            "make-args": ["PREFIX=/app"],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://code.x2go.org/releases/source/nx-libs/nx-libs-3.5.0.33-lite.tar.gz",
-                    "sha256": "e43824f820f8d307207aa4686c68f9b0808909a6b6cd2c7d75b751b14dd3129f"
+                    "url": "https://code.x2go.org/releases/source/nx-libs/nx-libs-3.5.99.16-lite.tar.gz",
+                    "sha256": "02c2e382ad27d1b3a0febe31c19f0c2868460f0703b85e8c98ef6203074f7fd4"
                 }
             ]
         },
