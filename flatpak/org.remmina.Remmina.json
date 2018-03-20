@@ -201,7 +201,7 @@
         },
         {
             "name": "freerdp",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "cleanup": [
                 "/bin",
                 "/lib/libwinpr-tools2.so*",
@@ -345,7 +345,7 @@
         },
         {
             "name": "libssh",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "builddir": true,
             "config-opts": [
                 "-DWITH_EXAMPLES:BOOL=OFF"
@@ -474,7 +474,7 @@
         },
         {
             "name": "remmina",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-DCMAKE_INSTALL_LIBDIR:PATH=/app/lib",
                 "-DWITH_MANPAGES:BOOL=OFF",
