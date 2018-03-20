@@ -296,11 +296,10 @@
                 },
                 {
                     "name": "lz4",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "make -C lib lib",
-                        "make -C lib PREFIX=/app install"
-                    ],
+                    "subdir": "lib",
+                    "no-autogen": true,
+                    "make-args": ["lib"],
+                    "make-install-args": ["PREFIX=/app"],
                     "sources": [
                         {
                             "type": "archive",
