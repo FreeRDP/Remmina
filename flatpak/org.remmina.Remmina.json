@@ -22,7 +22,6 @@
         "/share/pkgconfig"
     ],
     "finish-args": [
-        "--own-name=org.remmina.Remmina",
         /* X11 + XShm access */
         "--share=ipc", "--socket=x11",
         /* Needs to talk to the network */
@@ -184,32 +183,26 @@
         },
         {
             "name": "nxproxy",
-            "buildsystem": "simple",
-            "build-commands": [
-                "make CONFIGURE='./configure --prefix=/app'",
-                "# Install target does a `gzip /app/share/man/man1/*.1`",
-                "rm -rf /app/share/man",
-                "make PREFIX=/app install",
-                "sed -e 's|/usr/lib/nx|/app/lib/nx|g' -i /app/bin/nxproxy"
-            ],
+            "no-autogen": true,
+            "make-args": ["PREFIX=/app"],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://code.x2go.org/releases/source/nx-libs/nx-libs-3.5.0.33-lite.tar.gz",
-                    "sha256": "e43824f820f8d307207aa4686c68f9b0808909a6b6cd2c7d75b751b14dd3129f"
+                    "url": "https://code.x2go.org/releases/source/nx-libs/nx-libs-3.5.99.16-lite.tar.gz",
+                    "sha256": "02c2e382ad27d1b3a0febe31c19f0c2868460f0703b85e8c98ef6203074f7fd4"
                 }
             ]
         },
         {
             "name": "freerdp",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "cleanup": [
                 "/bin",
                 "/lib/libwinpr-tools2.so*",
                 "/lib/libuwac0.so*"
             ],
             "config-opts": [
-                "-DCMAKE_INSTALL_LIBDIR:PATH=/app/lib",
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DWITH_CLIENT:BOOL=OFF",
                 "-DWITH_CUPS:BOOL=ON",
                 "-DWITH_JPEG:BOOL=ON",
@@ -235,8 +228,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://xorg.freedesktop.org/releases/individual/app/xprop-1.2.2.tar.bz2",
-                            "sha256": "9bee88b1025865ad121f72d32576dd3027af1446774aa8300cce3c261d869bc6"
+                            "url": "https://xorg.freedesktop.org/releases/individual/app/xprop-1.2.3.tar.bz2",
+                            "sha256": "d22afb28c86d85fff10a50156a7d0fa930c80ae865d70b26d805fd28a17a521b"
                         }
                     ]
                 }
@@ -297,11 +290,10 @@
                 },
                 {
                     "name": "lz4",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "make -C lib lib",
-                        "make -C lib PREFIX=/app install"
-                    ],
+                    "subdir": "lib",
+                    "no-autogen": true,
+                    "make-args": ["lib"],
+                    "make-install-args": ["PREFIX=/app"],
                     "sources": [
                         {
                             "type": "archive",
@@ -346,9 +338,10 @@
         },
         {
             "name": "libssh",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "builddir": true,
             "config-opts": [
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DWITH_EXAMPLES:BOOL=OFF"
             ],
             "sources": [
@@ -466,8 +459,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://xorg.freedesktop.org/releases/individual/app/xkbcomp-1.4.0.tar.bz2",
-                            "sha256": "bc69c8748c03c5ad9afdc8dff9db11994dd871b614c65f8940516da6bf61ce6b"
+                            "url": "https://xorg.freedesktop.org/releases/individual/app/xkbcomp-1.4.1.tar.bz2",
+                            "sha256": "748dc4cf58ac95684106bd9cf163ac6ab7de9a236faec02a6f4d4006d63a5736"
                         }
                     ]
                 }
@@ -475,9 +468,9 @@
         },
         {
             "name": "remmina",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "config-opts": [
-                "-DCMAKE_INSTALL_LIBDIR:PATH=/app/lib",
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DWITH_MANPAGES:BOOL=OFF",
                 "-DWITH_TELEPATHY:BOOL=OFF"
             ],
