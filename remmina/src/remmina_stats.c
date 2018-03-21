@@ -360,6 +360,14 @@ JsonNode *remmina_stats_get_version()
 #else
 	json_builder_add_int_value(b, 0);
 #endif
+
+	json_builder_set_member_name(b, "flatpak_build");
+#ifdef FLATPAK_BUILD
+	json_builder_add_int_value(b, 1);
+#else
+	json_builder_add_int_value(b, 0);
+#endif
+
 	json_builder_end_object(b);
 	r = json_builder_get_root(b);
 	g_object_unref(b);
