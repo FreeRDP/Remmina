@@ -158,6 +158,10 @@ typedef struct _RemminaConnectionObject {
 	gboolean connected;
 	gboolean dynres_unlocked;
 
+	/* The time of the GTK event which called remmina_connection_window_open_from_file_full().
+	 * Needed to make gtk_window_present_with_time() work under wayland */
+	guint32 open_from_file_event_time;
+
 } RemminaConnectionObject;
 
 struct _RemminaConnectionHolder {
@@ -3574,6 +3578,14 @@ static RemminaConnectionWindow* remmina_connection_window_find(RemminaFile* remm
 	return REMMINA_CONNECTION_WINDOW(remmina_widget_pool_find(REMMINA_TYPE_CONNECTION_WINDOW, tag));
 }
 
+static gboolean remmina_connection_object_delayed_window_present(gpointer user_data)
+{
+	RemminaConnectionObject* cnnobj = (RemminaConnectionObject*)user_data;
+	if (cnnobj && cnnobj->cnnhld && cnnobj->cnnhld->cnnwin)
+		gtk_window_present_with_time(GTK_WINDOW(cnnobj->cnnhld->cnnwin), cnnobj->open_from_file_event_time);
+	return FALSE;
+}
+
 static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
@@ -3641,8 +3653,12 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 		gtk_widget_reparent(cnnobj->viewport, cnnobj->scrolled_container);
 		G_GNUC_END_IGNORE_DEPRECATIONS
 
-		gtk_window_present(GTK_WINDOW(cnnhld->cnnwin));
 		gtk_notebook_set_current_page(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook), i);
+
+		/* Present the windows after a delay so GTK can realize and show its objects
+		 * before calling gtk_window_present_with_time() */
+		g_timeout_add(200, remmina_connection_object_delayed_window_present, (gpointer)cnnobj);
+
 	}
 
 #if FLOATING_TOOLBAR_WIDGET
@@ -3765,6 +3781,10 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 
 	cnnobj = g_new0(RemminaConnectionObject, 1);
 	cnnobj->remmina_file = remminafile;
+
+	/* Save the time of the event which caused the file open, so we can
+	 * use gtk_window_present_with_time() later */
+	cnnobj->open_from_file_event_time = gtk_get_current_event_time();
 
 	/* Create the RemminaProtocolWidget */
 	protocolwidget = cnnobj->proto = remmina_protocol_widget_new();
