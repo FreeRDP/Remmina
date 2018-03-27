@@ -1,6 +1,5 @@
-# Remmina - The GTK+ Remote Desktop Client
+# remmina-plugin-tool_hello_world - The GTK+ Remote Desktop Client
 #
-# Copyright (C) 2011 Marc-Andre Moreau
 # Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
 # Copyright (C) 2016-2017 Antenore Gatta, Giovanni Panozzo
 #
@@ -32,57 +31,27 @@
 # version. If you delete this exception statement from all source
 # files in the program, then also delete it here.
 
-# Needed FreeRDP version to build freerdp plugin
-set(FREERDP_REQUIRED_MAJOR 2)
-set(FREERDP_REQUIRED_MINOR 0)
-set(FREERDP_REQUIRED_REVISION 0)
-set(FREERDP_REQUIRED_VERSIONSTRING
-    ${FREERDP_REQUIRED_MAJOR}.${FREERDP_REQUIRED_MINOR}.${FREERDP_REQUIRED_REVISION})
 
-include_directories(${CMAKE_SOURCE_DIR}/remmina-plugins)
+set(REMMINA_PLUGIN_SRCS
+        plugin_config.h
+        plugin.c
+)
 
-set(APPICON16_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/16x16/emblems")
-set(APPICON22_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/22x22/emblems")
+add_library(remmina-plugin-tool_hello_world MODULE ${REMMINA_PLUGIN_SRCS})
+set_target_properties(remmina-plugin-tool_hello_world PROPERTIES PREFIX "")
+set_target_properties(remmina-plugin-tool_hello_world PROPERTIES NO_SONAME 1)
 
-set(REMMINA_COMMON_INCLUDE_DIRS ${GTK_INCLUDE_DIRS})
-set(REMMINA_COMMON_LIBRARIES ${GTK_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+include_directories(${REMMINA_COMMON_INCLUDE_DIRS})
+include_directories(${GTK_INCLUDE_DIRS})
+include_directories(${CMAKE_SOURCE_DIR}/plugins)
 
-find_suggested_package(LIBSSH)
-if(LIBSSH_FOUND)
-        add_definitions(-DHAVE_LIBSSH)
-        include_directories(${SSH_INCLUDE_DIRS})
-        target_link_libraries(remmina ${SSH_LIBRARIES})
-endif()
+install(TARGETS remmina-plugin-tool_hello_world DESTINATION ${REMMINA_PLUGINDIR})
 
-find_required_package(XKBFILE)
-
-if(LIBSSH_FOUND AND XKBFILE_FOUND)
-        add_subdirectory(nx)
-endif()
-
-add_subdirectory(xdmcp)
-
-find_suggested_package(FREERDP)
-if(FREERDP_FOUND)
-        add_subdirectory(rdp)
-endif()
-
-find_suggested_package(TELEPATHY)
-if(TELEPATHY_FOUND)
-        add_subdirectory(telepathy)
-endif()
-
-find_suggested_package(LIBVNCSERVER)
-if(LIBVNCSERVER_FOUND)
-        add_subdirectory(vnc)
-endif()
-
-find_suggested_package(SPICE)
-if(SPICE_FOUND)
-        add_subdirectory(spice)
-endif()
-
-if(WITH_EXAMPLES)
-        add_subdirectory(tool_hello_world)
-endif()
-add_subdirectory(exec)
+install(FILES
+    16x16/emblems/remmina-tool.png
+    16x16/emblems/remmina-tool.png
+    DESTINATION ${APPICON16_EMBLEMS_DIR})
+install(FILES
+    22x22/emblems/remmina-tool.png
+    22x22/emblems/remmina-tool.png
+    DESTINATION ${APPICON22_EMBLEMS_DIR})
