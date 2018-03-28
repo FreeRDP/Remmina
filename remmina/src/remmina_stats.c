@@ -344,6 +344,7 @@ JsonNode *remmina_stats_get_version()
 	TRACE_CALL(__func__);
 	JsonBuilder *b;
 	JsonNode *r;
+	gchar *flatpak_info;
 
 	/** @warning this function is usually executed on a dedicated thread,
 	 * not on the main thread */
@@ -361,12 +362,18 @@ JsonNode *remmina_stats_get_version()
 	json_builder_add_int_value(b, 0);
 #endif
 
+	/**
+	 * Detect if we are running under Flatpak
+	 */
 	json_builder_set_member_name(b, "flatpak_build");
-#ifdef FLATPAK_BUILD
-	json_builder_add_int_value(b, 1);
-#else
-	json_builder_add_int_value(b, 0);
-#endif
+	/* Flatpak sandbox should contain the file ${XDG_RUNTIME_DIR}/flatpak-info */
+	flatpak_info = g_build_filename(g_get_user_runtime_dir(), "flatpak-info", NULL);
+	if (g_file_test(flatpak_info, G_FILE_TEST_EXISTS)) {
+		json_builder_add_int_value(b, 1);
+	} else {
+		json_builder_add_int_value(b, 0);
+	}
+	g_free(flatpak_info);
 
 	json_builder_end_object(b);
 	r = json_builder_get_root(b);
