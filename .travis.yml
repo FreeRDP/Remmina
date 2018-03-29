@@ -58,7 +58,7 @@ before_install:
   - scripts/travis-build.sh before_install
 
 install:
-  - travis_wait scripts/travis-build.sh install
+  - scripts/travis-build.sh install
 
 script:
   - scripts/travis-build.sh script
@@ -69,7 +69,7 @@ after_success:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: travis_wait scripts/travis-build.sh deploy-unstable
+    script: scripts/travis-build.sh deploy-unstable
     on:
       condition: $BUILD_TYPE = snap
       branch: next
