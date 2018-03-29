@@ -183,10 +183,6 @@ if(SNAP_BUILD)
     add_definitions(-DSNAP_BUILD)
 endif()
 
-if(FLATPAK_BUILD)
-	add_definitions(-DFLATPAK_BUILD)
-endif()
-
 # Uninstall support
 configure_file(
         "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
