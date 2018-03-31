@@ -36,22 +36,17 @@ language: generic
 
 group: edge
 
-services:
-- docker
-
 env:
   global:
   - BUILD_FOLDER=build
   - DEB_PPA='ppa:remmina-ppa-team/remmina-next'
+  - FREERDP_DAILY_PPA='ppa:remmina-ppa-team/freerdp-daily'
   - DEB_EXTRA_DEPS='libspice-protocol-dev libspice-client-gtk-3.0-dev'
   - DEB_BUILD_OPTIONS='-DCMAKE_BUILD_TYPE=Debug -DWITH_SSE2=ON -DWITH_APPINDICATOR=OFF'
   - DOCKER_IMAGE=ubuntu:xenial
-  - SNAP_PRIME_ON_PULL_REQUEST=true
-  - SNAP_TRANSFER_SH_UPLOAD=true
+  - CMAKE_BUILD_OPTIONS='-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on'
   matrix:
-#  - BUILD_TYPE=deb
-  - BUILD_TYPE=snap
-  - BUILD_TYPE=snap ARCH=i386
+  - BUILD_TYPE=cmake
 
 
 before_install:
@@ -66,23 +61,8 @@ script:
 after_success:
   - scripts/travis-build.sh after_success
 
-deploy:
-  - provider: script
-    skip_cleanup: true
-    script: scripts/travis-build.sh deploy-unstable
-    on:
-      condition: $BUILD_TYPE = snap
-      branch: next
 
 notifications:
   email:
     - antenore@simbiosi.org
     - giovanni@panozzo.it
-  irc:
-      channels:
-          - "chat.freenode.net#remmina"
-      template:
-          - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
-          - "Change view : %{compare_url}"
-          - "Build details : %{build_url}"
-# EOF #

@@ -61,62 +61,29 @@ if [ "$BUILD_TYPE" == "deb" ]; then
         cmake -B$BUILD_FOLDER -H. $DEB_BUILD_OPTIONS
         make VERBOSE=1 -C $BUILD_FOLDER
     fi
-elif [ "$BUILD_TYPE" == "snap" ]; then
-    if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-        if [ "$SNAP_PRIME_ON_PULL_REQUEST" != "true" ]; then
-            echo '$SNAP_PRIME_ON_PULL_REQUEST is not set to true, thus we skip this now'
-            exit 0
-        fi
-    fi
-
+elif [ "$BUILD_TYPE" == "cmake" ]; then
+	echo "TRAVIS_EVENT_TYPE=" $TRAVIS_EVENT_TYPE
     if [ "$TRAVIS_BUILD_STEP" == "before_install" ]; then
-        if [ -n "$ARCH" ]; then DOCKER_IMAGE="$ARCH/$DOCKER_IMAGE"; fi
-        docker run --name $DOCKER_BUILDER_NAME \
-            -e LC_ALL=C.UTF-8 -e LANG=C.UTF-8 \
-            -v $PWD:$PWD -w $PWD -td $DOCKER_IMAGE
-    elif [ "$TRAVIS_BUILD_STEP" == "install" ]; then
-        docker_exec apt-get update -q
-        docker_exec apt-get install -y cmake git-core snapcraft
-        if [ "$SNAP_TRANSFER_SH_UPLOAD" == "true" ]; then
-            docker_exec apt-get install -y curl
-        fi
+		# We use our freerdp-daily PPA to get freerdp precompiled packages
+		# travis builds are for ubuntu trusty 14.04
+		sudo apt-add-repository $FREERDP_DAILY_PPA -y
+        sudo apt-get update -qq
+        sudo apt-get install -y build-essential git-core cmake \
+			libssl-dev libx11-dev libxext-dev libxinerama-dev \
+			libxcursor-dev libxdamage-dev libxv-dev libxkbfile-dev libasound2-dev libcups2-dev libxml2 libxml2-dev \
+			libxrandr-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev \
+			libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libxi-dev libavutil-dev \
+			libavcodec-dev libxtst-dev libgtk-3-dev libgcrypt11-dev libssh-dev libpulse-dev \
+			libvte-2.90-dev libxkbfile-dev libfreerdp-dev libtelepathy-glib-dev libjpeg-dev \
+			libgnutls-dev libgnome-keyring-dev libavahi-ui-gtk3-dev libvncserver-dev \
+			libappindicator3-dev intltool libsecret-1-dev libwebkit2gtk-3.0-dev \
+			libsoup2.4-dev libjson-glib-dev \
+			libfreerdp-dev
     elif [ "$TRAVIS_BUILD_STEP" == "script" ]; then
         git clean -f
-        cmake_buld_type="Release"
-
-        if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-            cmake_buld_type="Debug"
-        fi
-
-        mkdir -p $BUILD_FOLDER
-        docker_exec cmake -B$BUILD_FOLDER -H. -DSNAP_BUILD_ONLY=ON \
-                          -DCMAKE_BUILD_TYPE=$cmake_buld_type
-
-        make_target='snap'
-        if [ -z "$TRAVIS_TAG" ] || [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-            make_target='snap-prime'
-        fi
-
-        docker_exec make $make_target -C $BUILD_FOLDER
-    elif [ "$TRAVIS_BUILD_STEP" == "after_success" ]; then
-        set +x
-        if [ -n "$SNAPCRAFT_CONFIG_KEY" ] && [ -n "$SNAPCRAFT_CONFIG_IV" ]; then
-            sudo mkdir -p $BUILD_FOLDER/snap/.snapcraft -m 777
-            openssl aes-256-cbc -K $SNAPCRAFT_CONFIG_KEY \
-                -iv $SNAPCRAFT_CONFIG_IV \
-                -in snap/.snapcraft/travis_snapcraft.cfg \
-                -out $BUILD_FOLDER/snap/.snapcraft/snapcraft.cfg -d
-        fi
-        set -x
-
-    elif [ "$TRAVIS_BUILD_STEP" == "deploy-unstable" ]; then
-        if [ "$SNAP_TRANSFER_SH_UPLOAD" == "true" ]; then
-            docker_exec make snap-push-transfer.sh -C $BUILD_FOLDER
-        fi
-    elif [ "$TRAVIS_BUILD_STEP" == "deploy-release" ]; then
-        if [ "$SNAP_TRANSFER_SH_UPLOAD" == "true" ]; then
-            docker_exec make snap-push-transfer.sh -C $BUILD_FOLDER
-        fi
+        mkdir $BUILD_FOLDER
+        cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS
+        make VERBOSE=1 -C $BUILD_FOLDER
     fi
 else
     echo 'No $BUILD_TYPE defined'
