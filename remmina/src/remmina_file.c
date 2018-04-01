@@ -216,6 +216,7 @@ remmina_file_load(const gchar *filename)
 	gchar *s, *sec;
 	RemminaProtocolPlugin* protocol_plugin;
 	RemminaSecretPlugin *secret_plugin;
+	gboolean secret_service_available;
 	int w, h;
 
 	gkeyfile = g_key_file_new();
@@ -238,6 +239,8 @@ remmina_file_load(const gchar *filename)
 		}
 
 		secret_plugin = remmina_plugin_manager_get_secret_plugin();
+		secret_service_available = secret_plugin->is_service_available();
+
 		remminafile->filename = g_strdup(filename);
 		keys = g_key_file_get_keys(gkeyfile, "remmina", NULL, NULL);
 		if (keys) {
@@ -246,7 +249,7 @@ remmina_file_load(const gchar *filename)
 				if (is_encrypted_setting_by_name(key, protocol_plugin)) {
 					s = g_key_file_get_string(gkeyfile, "remmina", key, NULL);
 					if (g_strcmp0(s, ".") == 0) {
-						if (secret_plugin) {
+						if (secret_service_available) {
 							sec = secret_plugin->get_password(remminafile, key);
 							remmina_file_set_string(remminafile, key, sec);
 							/* Annotate in spsettings that this value comes from secret_plugin */
@@ -406,6 +409,7 @@ void remmina_file_save(RemminaFile *remminafile)
 {
 	TRACE_CALL(__func__);
 	RemminaSecretPlugin *secret_plugin;
+	gboolean secret_service_available;
 	RemminaProtocolPlugin* protocol_plugin;
 	GHashTableIter iter;
 	const gchar *key, *value;
@@ -429,12 +433,13 @@ void remmina_file_save(RemminaFile *remminafile)
 	}
 
 	secret_plugin = remmina_plugin_manager_get_secret_plugin();
+	secret_service_available = secret_plugin->is_service_available();
 
 	g_hash_table_iter_init(&iter, remminafile->settings);
 	while (g_hash_table_iter_next(&iter, (gpointer*)&key, (gpointer*)&value)) {
 		if (is_encrypted_setting_by_name(key, protocol_plugin)) {
 			if (remminafile->filename && g_strcmp0(remminafile->filename, remmina_pref_file)) {
-				if (secret_plugin) {
+				if (secret_service_available) {
 					if (value && value[0]) {
 						if (g_strcmp0(value, ".") != 0) {
 							secret_plugin->store_password(remminafile, key, value);

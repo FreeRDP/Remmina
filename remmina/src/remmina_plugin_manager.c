@@ -103,9 +103,7 @@ static gboolean remmina_gtksocket_available()
 		available = TRUE;
 	}
 #endif
-
 	return available;
-
 }
 
 

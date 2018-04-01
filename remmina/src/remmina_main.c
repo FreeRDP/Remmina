@@ -198,6 +198,7 @@ static void remmina_main_show_snap_welcome()
 	static gboolean shown_once = FALSE;
 	gboolean need_snap_interface_connections = FALSE;
 	GtkWidget* dsa;
+	RemminaSecretPlugin *remmina_secret_plugin;
 
 	if (shown_once)
 		return;
@@ -205,9 +206,15 @@ static void remmina_main_show_snap_welcome()
 		shown_once = TRUE;
 
 	g_print("Remmina is compiled as a SNAP package.\n");
-	if (remmina_plugin_manager_get_secret_plugin() == NULL) {
-		g_print("  but we can't access a secret service\n");
+	remmina_secret_plugin = remmina_plugin_manager_get_secret_plugin();
+	if (remmina_secret_plugin == NULL) {
+		g_print("  but we can't find the secret plugin inside the SNAP.\n");
 		need_snap_interface_connections = TRUE;
+	} else {
+		if (!remmina_secret_plugin->is_service_available()) {
+			g_print("  but we can't access a secret service. Secret service or SNAP interface connection is missing.\n");
+			need_snap_interface_connections = TRUE;
+		}
 	}
 
 	if (need_snap_interface_connections && !remmina_pref.prevent_snap_welcome_message) {
