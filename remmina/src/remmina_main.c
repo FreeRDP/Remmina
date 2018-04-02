@@ -187,6 +187,59 @@ static void remmina_main_clear_selection_data(void)
 	G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
+#ifdef SNAP_BUILD
+
+static void remmina_main_show_snap_welcome()
+{
+	GtkBuilder *dlgbuilder = NULL;
+	GtkWidget *dlg;
+	GtkWindow *parent;
+	int result;
+	static gboolean shown_once = FALSE;
+	gboolean need_snap_interface_connections = FALSE;
+	GtkWidget* dsa;
+	RemminaSecretPlugin *remmina_secret_plugin;
+
+	if (shown_once)
+		return;
+	else
+		shown_once = TRUE;
+
+	g_print("Remmina is compiled as a SNAP package.\n");
+	remmina_secret_plugin = remmina_plugin_manager_get_secret_plugin();
+	if (remmina_secret_plugin == NULL) {
+		g_print("  but we can't find the secret plugin inside the SNAP.\n");
+		need_snap_interface_connections = TRUE;
+	} else {
+		if (!remmina_secret_plugin->is_service_available()) {
+			g_print("  but we can't access a secret service. Secret service or SNAP interface connection is missing.\n");
+			need_snap_interface_connections = TRUE;
+		}
+	}
+
+	if (need_snap_interface_connections && !remmina_pref.prevent_snap_welcome_message) {
+		dlgbuilder = remmina_public_gtk_builder_new_from_file("remmina_snap_info_dialog.glade");
+		dsa = GTK_WIDGET(gtk_builder_get_object(dlgbuilder, "dontshowagain"));
+		if(dlgbuilder) {
+			parent = remmina_main_get_window();
+			dlg = GTK_WIDGET(gtk_builder_get_object(dlgbuilder, "snapwarndlg"));
+			if (parent)
+				gtk_window_set_transient_for(GTK_WINDOW(dlg), parent);
+			gtk_builder_connect_signals(dlgbuilder,NULL);
+			result = gtk_dialog_run(GTK_DIALOG(dlg));
+			if (result == 1) {
+				remmina_pref.prevent_snap_welcome_message = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(dsa));
+				remmina_pref_save();
+			}
+			gtk_widget_destroy(dlg);
+			g_object_unref(dlgbuilder);
+		}
+	}
+
+}
+#endif
+
+
 static gboolean remmina_main_selection_func(GtkTreeSelection *selection, GtkTreeModel *model, GtkTreePath *path,
 					    gboolean path_currently_selected, gpointer user_data)
 {
@@ -1102,6 +1155,11 @@ void remmina_main_on_show(GtkWidget *w, gpointer user_data)
 	if (!remmina_pref.periodic_usage_stats_permission_asked) {
 		gtk_widget_set_visible(GTK_WIDGET(remminamain->box_ustat), TRUE);
 	}
+
+#ifdef SNAP_BUILD
+	remmina_main_show_snap_welcome();
+#endif
+
 }
 
 void remmina_main_on_click_ustat_yes(GtkWidget *w, gpointer user_data)

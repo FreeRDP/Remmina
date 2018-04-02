@@ -152,6 +152,7 @@ typedef struct _RemminaPref {
 	gboolean toolbar_pin_down;
 	gint floating_toolbar_placement;
 	gint toolbar_placement;
+	gboolean prevent_snap_welcome_message;
 
 	/* Crypto */
 	gchar *secret;

@@ -137,6 +137,7 @@ typedef struct _RemminaSecretPlugin {
 	void (* store_password)(RemminaFile *remminafile, const gchar *key, const gchar *password);
 	gchar* (*get_password)(RemminaFile * remminafile, const gchar * key);
 	void (* delete_password)(RemminaFile *remminafile, const gchar *key);
+	gboolean (* is_service_available)(void);
 } RemminaSecretPlugin;
 
 /* Plugin Service is a struct containing a list of function pointers,

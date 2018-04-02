@@ -201,6 +201,9 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 static void remmina_on_startup(GApplication *app)
 {
 	TRACE_CALL(__func__);
+
+	RemminaSecretPlugin *secret_plugin;
+
 	remmina_file_manager_init();
 	remmina_pref_init();
 	remmina_plugin_manager_init();
@@ -217,6 +220,18 @@ static void remmina_on_startup(GApplication *app)
 	g_application_hold(app);
 
 	remmina_stats_sender_schedule();
+
+	/* Check for secret plugin and service initialization and show some warnings on the console if
+	 * there is something missing */
+	secret_plugin = remmina_plugin_manager_get_secret_plugin();
+	if (!secret_plugin) {
+		g_print("WARNING: Remmina is running without a secret plugin. Passwords will be saved in a less secure way.\n");
+	} else {
+		if (!secret_plugin->is_service_available()) {
+			g_print("WARNING: Remmina is running with a secret plugin, but it cannot connect to a secret service.\n");
+		}
+	}
+
 }
 
 static gint remmina_on_local_cmdline(GApplication *app, GVariantDict *options, gpointer user_data)
