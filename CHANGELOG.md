@@ -1,5 +1,64 @@
 # Change Log
 
+## [v1.2.0-rcgit.28](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.28) (2018-04-03)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.27...v1.2.0-rcgit.28)
+
+**Implemented enhancements:**
+
+- window has no focus when open ssh sessions [\#1530](https://github.com/FreeRDP/Remmina/issues/1530)
+- Enhancement - Variables for pre- and post-commands [\#1485](https://github.com/FreeRDP/Remmina/issues/1485)
+- Register and support opening rdp files - Mime improvements [\#1497](https://github.com/FreeRDP/Remmina/pull/1497) ([antenore](https://github.com/antenore))
+- Profile and group name niddles in the pre/post commands [\#1492](https://github.com/FreeRDP/Remmina/pull/1492) ([antenore](https://github.com/antenore))
+- Add xdmcp protocol to Keywords [\#1491](https://github.com/FreeRDP/Remmina/pull/1491) ([mfvescovi](https://github.com/mfvescovi))
+- flatpak: update manifest file [\#1480](https://github.com/FreeRDP/Remmina/pull/1480) ([larchunix](https://github.com/larchunix))
+
+**Fixed bugs:**
+
+- Remmina fails to connect to SSH server without compression since 1.2.0-rcgit-27 \(git rcgit-27\) [\#1505](https://github.com/FreeRDP/Remmina/issues/1505)
+- Pasting something that was copied in another VM that has since been closed causes crash [\#1484](https://github.com/FreeRDP/Remmina/issues/1484)
+- SSH password authentication failed Wrong state during pending SSH call [\#1428](https://github.com/FreeRDP/Remmina/issues/1428)
+- Fix clipboard cleanup, fixes issue \#1484 [\#1486](https://github.com/FreeRDP/Remmina/pull/1486) ([giox069](https://github.com/giox069))
+
+**Closed issues:**
+
+- Is it possible to install to SailfishOS ? [\#1540](https://github.com/FreeRDP/Remmina/issues/1540)
+- Icon missing in Gnome Activities on Fedora 27 [\#1534](https://github.com/FreeRDP/Remmina/issues/1534)
+- Wrong state during pending SSH call - only one particular server affected [\#1525](https://github.com/FreeRDP/Remmina/issues/1525)
+- Remmina Application - unable to find when searching or pin to launcher [\#1521](https://github.com/FreeRDP/Remmina/issues/1521)
+- AppStream metadata [\#1520](https://github.com/FreeRDP/Remmina/issues/1520)
+- Problem connecting to Windows machine since this last patch Tuesday [\#1515](https://github.com/FreeRDP/Remmina/issues/1515)
+- No RDP connections to Windows 10 1803 [\#1512](https://github.com/FreeRDP/Remmina/issues/1512)
+- RDP to Windows on custom port [\#1509](https://github.com/FreeRDP/Remmina/issues/1509)
+- Unable to connect to RDP [\#1501](https://github.com/FreeRDP/Remmina/issues/1501)
+- Dependency Error installing v1.2 on Debian Stretch [\#1481](https://github.com/FreeRDP/Remmina/issues/1481)
+- Can't build version 1.2.0-rcgit27 on openSUSE Tumbleweed [\#1476](https://github.com/FreeRDP/Remmina/issues/1476)
+- Crash on RDP connection [\#1475](https://github.com/FreeRDP/Remmina/issues/1475)
+- this error message occur. i can not install remmina at tails. [\#1473](https://github.com/FreeRDP/Remmina/issues/1473)
+- RDP on Custom Port [\#1465](https://github.com/FreeRDP/Remmina/issues/1465)
+- Remmina does not save password [\#1440](https://github.com/FreeRDP/Remmina/issues/1440)
+- Telepathy plugin can not be built on openSUSE using 1.2.0-rcgit.26 [\#1432](https://github.com/FreeRDP/Remmina/issues/1432)
+- Please don't change releases after you publish them [\#1231](https://github.com/FreeRDP/Remmina/issues/1231)
+- clipboard not synchonizing between RDP sessions and host [\#556](https://github.com/FreeRDP/Remmina/issues/556)
+
+**Merged pull requests:**
+
+- Minor improvements on secure plugin and SNAP welcome message [\#1545](https://github.com/FreeRDP/Remmina/pull/1545) ([giox069](https://github.com/giox069))
+- Remove SNAP build from Travis [\#1544](https://github.com/FreeRDP/Remmina/pull/1544) ([giox069](https://github.com/giox069))
+- telepathy: add dbus-glib-1 to link flags [\#1543](https://github.com/FreeRDP/Remmina/pull/1543) ([larchunix](https://github.com/larchunix))
+- stats: detect flatpak sandbox at runtime [\#1541](https://github.com/FreeRDP/Remmina/pull/1541) ([larchunix](https://github.com/larchunix))
+- Refactoring [\#1537](https://github.com/FreeRDP/Remmina/pull/1537) ([antenore](https://github.com/antenore))
+- Redesign - Removed icons where not needed [\#1535](https://github.com/FreeRDP/Remmina/pull/1535) ([antenore](https://github.com/antenore))
+- Delay and use gtk\_window\_present\_with\_time\(\) [\#1533](https://github.com/FreeRDP/Remmina/pull/1533) ([giox069](https://github.com/giox069))
+- Make compilation and stats collection FLATPAK aware [\#1527](https://github.com/FreeRDP/Remmina/pull/1527) ([giox069](https://github.com/giox069))
+- Update flatpak manifest according to feedback from Flathub [\#1526](https://github.com/FreeRDP/Remmina/pull/1526) ([larchunix](https://github.com/larchunix))
+- Update fr.po [\#1524](https://github.com/FreeRDP/Remmina/pull/1524) ([DevDef](https://github.com/DevDef))
+- Fixes for fedora bugs - desktop file and AppStream metadata [\#1523](https://github.com/FreeRDP/Remmina/pull/1523) ([antenore](https://github.com/antenore))
+- Desktop data fixes [\#1522](https://github.com/FreeRDP/Remmina/pull/1522) ([antenore](https://github.com/antenore))
+- Fixes for snapcraft.yaml [\#1519](https://github.com/FreeRDP/Remmina/pull/1519) ([giox069](https://github.com/giox069))
+- Updated Hungarian translation [\#1517](https://github.com/FreeRDP/Remmina/pull/1517) ([meskobalazs](https://github.com/meskobalazs))
+- Removed compression option as not compatible with all SSH servers [\#1506](https://github.com/FreeRDP/Remmina/pull/1506) ([antenore](https://github.com/antenore))
+- Fixes segmentation fault reported by \#1499 [\#1503](https://github.com/FreeRDP/Remmina/pull/1503) ([antenore](https://github.com/antenore))
+
 ## [v1.2.0-rcgit.27](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.27) (2018-02-14)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.26...v1.2.0-rcgit.27)
 
@@ -852,7 +911,6 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - remmina: \_g\_log\_abort\(\): remmina killed by SIGTRAP [\#671](https://github.com/FreeRDP/Remmina/issues/671)
 - Concurrent  remote desktop sessions on Win XP Pro [\#670](https://github.com/FreeRDP/Remmina/issues/670)
 - Optimize screen space usage [\#661](https://github.com/FreeRDP/Remmina/issues/661)
-- clipboard not synchonizing between RDP sessions and host [\#556](https://github.com/FreeRDP/Remmina/issues/556)
 - FTBS 1.0.0 :  ld - undefined reference to symbol 'g\_module\_symbol' -- links.txt missing necessary libraries [\#182](https://github.com/FreeRDP/Remmina/issues/182)
 
 **Merged pull requests:**
