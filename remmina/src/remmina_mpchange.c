@@ -313,15 +313,30 @@ static gboolean remmina_file_multipasswd_changer_mt(gpointer d)
 	GtkDialog* dialog;
 	GtkWindow* mainwindow;
 	GtkCellRendererToggle *toggle;
+	RemminaSecretPlugin *secret_plugin;
+	char *initerror;
 
+	mainwindow = remmina_main_get_window();
 
 	/* The multiple passowrd changer works only when a secret plugin is available */
-	if (remmina_plugin_manager_get_secret_plugin() == NULL) {
-		remmina_log_printf("The multi password changer does not work without a secret plugin\n");
+	initerror = NULL;
+	secret_plugin = remmina_plugin_manager_get_secret_plugin();
+	if (secret_plugin == NULL) {
+		initerror = _("The multi password changer cannot work without a secret plugin.\n");
+	}else {
+		if (!secret_plugin->is_service_available()) {
+			initerror = _("The multi password changer does not work without a secret service.\n");
+		}
+	}
+	if (initerror) {
+		GtkWidget *msgDialog;
+		msgDialog = gtk_message_dialog_new(mainwindow, GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_OK,
+			"%s", initerror);
+		gtk_dialog_run(GTK_DIALOG(msgDialog));
+		gtk_widget_destroy(msgDialog);
 		return FALSE;
 	}
 
-	mainwindow = remmina_main_get_window();
 
 	bu = remmina_public_gtk_builder_new_from_file("remmina_mpc.glade");
 	if (!bu) {
