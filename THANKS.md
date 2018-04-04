@@ -91,7 +91,9 @@ Long life to Remmina and their maintainers!
 
 **Luca Falavigna** ([dktrkranz](https://github.com/dktrkranz)) for his great support with the Ubuntu PPA and Remmina patches.
 
-**Matteo Nastasi** ([nastasi](https://github.com/nastasi)) that is bringing to us his great development experience and a new flamming build receipt for Ubuntu and Debian.
+**Matteo F. Vescovi** ([mfvescovi](https://github.com/mfvescovi)) that has done a huge and impressive job to bring the Remmina upstream version to Debian and Ubuntu.
+
+**Matteo Nastasi** ([nastasi](https://github.com/nastasi)) that during the years 2016 and 2017 started to implement the new receipts for Ubuntu and Debian.
 
 **Johannes Weberhofer** ([weberhofer](https://github.com/weberhofer)) and **Pavel Alexeev** ([Hubbitus](https://github.com/Hubbitus))
 
