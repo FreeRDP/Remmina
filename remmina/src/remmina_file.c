@@ -239,7 +239,7 @@ remmina_file_load(const gchar *filename)
 		}
 
 		secret_plugin = remmina_plugin_manager_get_secret_plugin();
-		secret_service_available = secret_plugin->is_service_available();
+		secret_service_available = secret_plugin && secret_plugin->is_service_available();
 
 		remminafile->filename = g_strdup(filename);
 		keys = g_key_file_get_keys(gkeyfile, "remmina", NULL, NULL);
@@ -433,7 +433,7 @@ void remmina_file_save(RemminaFile *remminafile)
 	}
 
 	secret_plugin = remmina_plugin_manager_get_secret_plugin();
-	secret_service_available = secret_plugin->is_service_available();
+	secret_service_available = secret_plugin && secret_plugin->is_service_available();
 
 	g_hash_table_iter_init(&iter, remminafile->settings);
 	while (g_hash_table_iter_next(&iter, (gpointer*)&key, (gpointer*)&value)) {
