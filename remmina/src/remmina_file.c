@@ -569,28 +569,28 @@ void remmina_file_unsave_password(RemminaFile *remminafile)
 	proto = (gchar*)g_hash_table_lookup(remminafile->settings, "protocol");
 	if (proto) {
 		protocol_plugin = (RemminaProtocolPlugin*)remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL, proto);
-	}
-
-	setting_iter = protocol_plugin->basic_settings;
-	if (setting_iter) {
-		while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
-			if (is_encrypted_setting(setting_iter)) {
-				remmina_file_set_string(remminafile, remmina_plugin_manager_get_canonical_setting_name(setting_iter), NULL);
+		if (protocol_plugin) {
+			setting_iter = protocol_plugin->basic_settings;
+			if (setting_iter) {
+				while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
+					if (is_encrypted_setting(setting_iter)) {
+						remmina_file_set_string(remminafile, remmina_plugin_manager_get_canonical_setting_name(setting_iter), NULL);
+					}
+					setting_iter++;
+				}
 			}
-			setting_iter++;
+			setting_iter = protocol_plugin->advanced_settings;
+			if (setting_iter) {
+				while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
+					if (is_encrypted_setting(setting_iter)) {
+						remmina_file_set_string(remminafile, remmina_plugin_manager_get_canonical_setting_name(setting_iter), NULL);
+					}
+					setting_iter++;
+				}
+			}
+			remmina_file_save(remminafile);
 		}
 	}
-	setting_iter = protocol_plugin->advanced_settings;
-	if (setting_iter) {
-		while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
-			if (is_encrypted_setting(setting_iter)) {
-				remmina_file_set_string(remminafile, remmina_plugin_manager_get_canonical_setting_name(setting_iter), NULL);
-			}
-			setting_iter++;
-		}
-	}
-
-	remmina_file_save(remminafile);
 }
 
 /**
