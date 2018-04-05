@@ -135,7 +135,7 @@ Remmina support also the following options:
   -t, --protocol=PROTOCOL     Use default protocol
   -i, --icon                  Start as tray icon
   -v, --version               Show the application's version
-  -V, --full-version          Show the application's version, including the pulgin versions
+  -V, --full-version          Show the application's version, including the plugin versions
   --display=DISPLAY           X display to use
 ```
 
