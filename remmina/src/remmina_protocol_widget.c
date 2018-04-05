@@ -547,9 +547,6 @@ void remmina_protocol_widget_call_feature_by_ref(RemminaProtocolWidget* gp, cons
 static gboolean remmina_protocol_widget_on_key_press(GtkWidget *widget, GdkEventKey *event, RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
-	guint16 keycode;
-	gdk_event_get_keycode((GdkEvent *)event, &keycode);
-	printf("keycode: %d\n", keycode);
 	if (gp->priv->hostkey_func) {
 		return gp->priv->hostkey_func(gp, event->keyval, FALSE, gp->priv->hostkey_func_data);
 	}
