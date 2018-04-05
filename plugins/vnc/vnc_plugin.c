@@ -1053,6 +1053,7 @@ static void remmina_plugin_vnc_rfb_chat(rfbClient* cl, int value, char *text)
 	}
 }
 
+#ifdef ENABLE_VNCI
 static gboolean remmina_plugin_vnc_incoming_connection(RemminaProtocolWidget *gp, rfbClient *cl)
 {
 	TRACE_CALL(__func__);
@@ -1086,6 +1087,7 @@ static gboolean remmina_plugin_vnc_incoming_connection(RemminaProtocolWidget *gp
 
 	return TRUE;
 }
+#endif
 
 static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 {
@@ -1175,6 +1177,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		rfbClientSetClientData(cl, NULL, gp);
 
 		if (host[0] == '\0') {
+#ifdef ENABLE_VNCI
 			cl->serverHost = strdup(host);
 			cl->listenSpecified = TRUE;
 			if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
@@ -1187,6 +1190,9 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 			}
 
 			remmina_plugin_vnc_incoming_connection(gp, cl);
+#else
+			return FALSE;
+#endif
 		}else {
 			remmina_plugin_service->get_server_port(host, 5900, &s, &cl->serverPort);
 			cl->serverHost = strdup(s);
@@ -1857,6 +1863,7 @@ static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		  NULL,			   FALSE,		     NULL,			       NULL						    }
 };
 
+#ifdef ENABLE_VNCI
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
  * a) RemminaProtocolSettingType for setting type
@@ -1876,6 +1883,7 @@ static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP,	  NULL,		    NULL,		       FALSE,			   NULL,			     NULL						   },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,		       FALSE,			   NULL,			     NULL						   }
 };
+#endif
 
 /* Array of RemminaProtocolSetting for advanced settings.
  * Each item is composed by:
@@ -1936,6 +1944,7 @@ static RemminaProtocolPlugin remmina_plugin_vnc =
 	remmina_plugin_vnc_keystroke                    // Send a keystroke
 };
 
+#ifdef ENABLE_VNCI
 /* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin_vnci =
 {
@@ -1958,6 +1967,7 @@ static RemminaProtocolPlugin remmina_plugin_vnci =
 	remmina_plugin_vnc_keystroke,                   // Send a keystroke
 	NULL                                            // No screenshot support available
 };
+#endif
 
 G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
@@ -1972,9 +1982,11 @@ remmina_plugin_entry(RemminaPluginService *service)
 		return FALSE;
 	}
 
+#ifdef ENABLE_VNCI
 	if (!service->register_plugin((RemminaPlugin*)&remmina_plugin_vnci)) {
 		return FALSE;
 	}
+#endif
 
 	return TRUE;
 }

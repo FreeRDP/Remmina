@@ -52,3 +52,7 @@ install(FILES
 install(FILES
     22x22/emblems/remmina-vnc-ssh.png
     22x22/emblems/remmina-vnc.png DESTINATION ${APPICON22_EMBLEMS_DIR})
+
+if(WITH_VNCI)
+	add_definitions(-DENABLE_VNCI)
+endif()
