@@ -107,8 +107,6 @@ parts:
       cp -av $SNAPCRAFT_STAGE/../snap $SNAPCRAFT_PART_SRC
     stage-packages:
       - xauth
-      - libappindicator3-1
-      - gnome-icon-theme
     build-packages:
       - intltool
       - libappindicator3-dev
@@ -148,6 +146,9 @@ parts:
 
   # Removing files that are accessible thanks to desktop plug
   desktop-gtk3:
+    stage-packages:
+      - gnome-icon-theme
+      - libappindicator3-1
     stage:
       - -./usr/share/fonts/**
     install: |
