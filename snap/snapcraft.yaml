@@ -1,8 +1,7 @@
 name: remmina
+adopt-info: remmina
 version: git
 version-script: cat parts/remmina/src/snap/SNAP_VERSION
-# license: GPL-2.0-only
-summary: The GTK+ Remote Desktop Client
 icon: remmina/desktop/scalable/apps/remmina.svg
 description: |
   Remmina is a remote desktop client written in GTK+, aiming to be useful for
@@ -89,11 +88,23 @@ parts:
     prime:
       - ./**/libssh*.so.*
 
+  # FIXME: this is an ugly workaround for https://pad.lv/1761633
+  remmina-appdata:
+    plugin: nil
+    source: remmina/desktop
+    prime: [-./*]
+    prepare: |
+      SNAPCRAFT_PART_SRC=$SNAPCRAFT_PART_INSTALL/../src
+      cp -av $SNAPCRAFT_PART_SRC/appdata.xml \
+            $SNAPCRAFT_PART_SRC/org.remmina.Remmina.appdata.xml
+
   remmina:
     plugin: cmake
     source: .
-    prepare:
-      cp -av $SNAPCRAFT_STAGE/../snap $SNAPCRAFT_PART_INSTALL/../src
+    parse-info: [../../remmina-appdata/src/org.remmina.Remmina.appdata.xml]
+    prepare: |
+      SNAPCRAFT_PART_SRC=$SNAPCRAFT_PART_INSTALL/../src
+      cp -av $SNAPCRAFT_STAGE/../snap $SNAPCRAFT_PART_SRC
     stage-packages:
       - xauth
       - libappindicator3-1
@@ -133,6 +144,7 @@ parts:
       - libssh-0.7
       - freerdp
       - desktop-gtk3
+      - remmina-appdata
 
   # Removing files that are accessible thanks to desktop plug
   desktop-gtk3:
@@ -155,6 +167,7 @@ apps:
     environment:
       DISABLE_WAYLAND: 1
     command: desktop-launch remmina
+    common-id: org.Remmina.desktop
     plugs:
       - avahi-observe
       - cups-control
