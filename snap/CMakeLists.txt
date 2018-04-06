@@ -37,7 +37,14 @@ if(NOT ${GIT_REVISION} STREQUAL ${REMMINA_VERSION_SUFFIX} AND
     set(SNAP_VERSION ${SNAP_VERSION}+git${GIT_REVISION})
 endif()
 
-set(SNAP_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+if(DEFINED ENV{SNAPCRAFT_PROJECT_NAME})
+    # We're building in snapcraft so, the source dir will be
+    # parts/remmina/src
+    set(SNAP_DIR ${CMAKE_SOURCE_DIR}/../../../snap)
+else()
+    set(SNAP_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+endif()
+
 set(SNAP_GUI_DIR ${SNAP_DIR}/gui)
 
 file(MAKE_DIRECTORY ${SNAP_GUI_DIR})
@@ -46,11 +53,6 @@ file(RELATIVE_PATH CMAKE_SOURCE_DIR_RELATIVE ${SNAP_DIR}
 
 configure_file(${SNAP_DIR}/SNAP_VERSION.in
     ${SNAP_DIR}/SNAP_VERSION @ONLY)
-
-set(REMMINA_BINARY_PATH "remmina")
-set(REMMINA_ICON "\${SNAP}/meta/gui/icon.svg")
-configure_file(${CMAKE_SOURCE_DIR}/remmina/desktop/remmina.desktop.in
-    ${SNAP_GUI_DIR}/${UNIQUE_APPNAME}.desktop @ONLY)
 
 configure_file(${CMAKE_SOURCE_DIR}/LICENSE
     ${SNAP_GUI_DIR}/license.txt COPYONLY)
