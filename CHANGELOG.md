@@ -1,5 +1,18 @@
 # Change Log
 
+## [v1.2.0-rcgit.29](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.29) (2018-04-08)
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.28...v1.2.0-rcgit.29)
+
+**Merged pull requests:**
+
+- Update Czech translation [\#1555](https://github.com/FreeRDP/Remmina/pull/1555) ([AsciiWolf](https://github.com/AsciiWolf))
+- Switch back to x11 GTK backend under Wayland [\#1554](https://github.com/FreeRDP/Remmina/pull/1554) ([giox069](https://github.com/giox069))
+- TCP\_USER\_TIMEOUT is in milliseconds [\#1553](https://github.com/FreeRDP/Remmina/pull/1553) ([antenore](https://github.com/antenore))
+- Disable VNCI plugin [\#1550](https://github.com/FreeRDP/Remmina/pull/1550) ([giox069](https://github.com/giox069))
+- Fix typo [\#1549](https://github.com/FreeRDP/Remmina/pull/1549) ([mfvescovi](https://github.com/mfvescovi))
+- Missing secret plugin handling [\#1548](https://github.com/FreeRDP/Remmina/pull/1548) ([giox069](https://github.com/giox069))
+- Fixes for rcgit-28 [\#1547](https://github.com/FreeRDP/Remmina/pull/1547) ([antenore](https://github.com/antenore))
+
 ## [v1.2.0-rcgit.28](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.28) (2018-04-03)
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.27...v1.2.0-rcgit.28)
 
