@@ -32,7 +32,6 @@
 # version. If you delete this exception statement from all source
 # files in the program, then also delete it here.
 
-
 set(ICON16_DIR "${REMMINA_DATADIR}/icons/hicolor/16x16/apps")
 set(ICON22_DIR "${REMMINA_DATADIR}/icons/hicolor/22x22/apps")
 set(ICON24_DIR "${REMMINA_DATADIR}/icons/hicolor/24x24/apps")
@@ -83,6 +82,50 @@ install(FILES ${ICONSVG_DATA} DESTINATION ${ICONSVG_DIR})
 
 set(REMMINA_BINARY_PATH ${CMAKE_INSTALL_FULL_BINDIR}/remmina)
 set(REMMINA_ICON "remmina")
+
+find_program(XDGICON xdg-icon-resource)
+find_program(GTKICON gtk-update-icon-cache)
+find_program(XDGMENU xdg-desktop-menu)
+
+if(XDGICON)
+    message(STATUS "${XDGICON} found")
+    install(CODE "
+    MESSAGE(\"Updating icon cache.\")
+    execute_process(COMMAND ${XDGICON} install --mode system --novendor ${ICON16_DIR}/remmina.png --size 16 remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --novendor ${ICON22_DIR}/remmina.png --size 22 remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --novendor ${ICON24_DIR}/remmina.png --size 24 remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --novendor ${ICON32_DIR}/remmina.png --size 32 remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --novendor ${ICON48_DIR}/remmina.png --size 48 remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --novendor ${ICON64_DIR}/remmina.png --size 64 remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --novendor ${ICON72_DIR}/remmina.png --size 72 remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --novendor ${ICON96_DIR}/remmina.png --size 96 remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --novendor ${ICON128_DIR}/remmina.png --size 128 remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --novendor ${ICON256_DIR}/remmina.png --size 256 remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --context mimetypes ${ICON16_DIR}/remmina.png --size 16 application-x-remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --context mimetypes ${ICON22_DIR}/remmina.png --size 22 application-x-remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --context mimetypes ${ICON24_DIR}/remmina.png --size 24 application-x-remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --context mimetypes ${ICON32_DIR}/remmina.png --size 32 application-x-remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --context mimetypes ${ICON48_DIR}/remmina.png --size 48 application-x-remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --context mimetypes ${ICON64_DIR}/remmina.png --size 64 application-x-remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --context mimetypes ${ICON72_DIR}/remmina.png --size 72 application-x-remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --context mimetypes ${ICON96_DIR}/remmina.png --size 96 application-x-remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --context mimetypes ${ICON128_DIR}/remmina.png --size 128 application-x-remmina)
+    execute_process(COMMAND ${XDGICON} install --mode system --context mimetypes ${ICON256_DIR}/remmina.png --size 256 application-x-remmina)
+    ")
+else()
+    message(WARNING "Cannot update icon cache: xdg-icon-resource not found")
+endif()
+
+if(GTKICON)
+    message(STATUS "${GTKICON} found")
+    install(CODE "
+    MESSAGE(\"Updating theme icon cache.\")
+    execute_process(COMMAND ${GTKICON} -f ${REMMINA_DATADIR}/icons/hicolor)
+    ")
+else()
+    message(WARNING "Cannot update icon cache: gtk-update-icon-cache not found")
+endif()
+
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/remmina.desktop @ONLY)
