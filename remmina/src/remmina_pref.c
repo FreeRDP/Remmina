@@ -375,6 +375,26 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.sshtunnel_port = DEFAULT_SSHTUNNEL_PORT;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "ssh_tcp_keepidle", NULL))
+		remmina_pref.ssh_tcp_keepidle = g_key_file_get_integer(gkeyfile, "remmina_pref", "ssh_tcp_keepidle", NULL);
+	else
+		remmina_pref.ssh_tcp_keepidle = SSH_SOCKET_TCP_KEEPIDLE;
+
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "ssh_tcp_keepintvl", NULL))
+		remmina_pref.ssh_tcp_keepintvl = g_key_file_get_integer(gkeyfile, "remmina_pref", "ssh_tcp_keepintvl", NULL);
+	else
+		remmina_pref.ssh_tcp_keepintvl = SSH_SOCKET_TCP_KEEPINTVL;
+
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "ssh_tcp_keepcnt", NULL))
+		remmina_pref.ssh_tcp_keepcnt = g_key_file_get_integer(gkeyfile, "remmina_pref", "ssh_tcp_keepcnt", NULL);
+	else
+		remmina_pref.ssh_tcp_keepcnt = SSH_SOCKET_TCP_KEEPCNT;
+
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "ssh_tcp_usrtimeout", NULL))
+		remmina_pref.ssh_tcp_usrtimeout = g_key_file_get_integer(gkeyfile, "remmina_pref", "ssh_tcp_usrtimeout", NULL);
+	else
+		remmina_pref.ssh_tcp_usrtimeout = SSH_SOCKET_TCP_USER_TIMEOUT;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "applet_new_ontop", NULL))
 		remmina_pref.applet_new_ontop = g_key_file_get_boolean(gkeyfile, "remmina_pref", "applet_new_ontop", NULL);
 	else
@@ -747,6 +767,10 @@ void remmina_pref_save(void)
 	g_key_file_set_string(gkeyfile, "remmina_pref", "expanded_group", remmina_pref.expanded_group);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "toolbar_pin_down", remmina_pref.toolbar_pin_down);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "sshtunnel_port", remmina_pref.sshtunnel_port);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "ssh_tcp_keepidle", remmina_pref.ssh_tcp_keepidle);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "ssh_tcp_keepintvl", remmina_pref.ssh_tcp_keepintvl);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "ssh_tcp_keepcnt", remmina_pref.ssh_tcp_keepcnt);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "ssh_tcp_usrtimeout", remmina_pref.ssh_tcp_usrtimeout);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "applet_new_ontop", remmina_pref.applet_new_ontop);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "applet_hide_count", remmina_pref.applet_hide_count);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "applet_enable_avahi", remmina_pref.applet_enable_avahi);
@@ -964,6 +988,30 @@ gint remmina_pref_get_sshtunnel_port(void)
 {
 	TRACE_CALL(__func__);
 	return remmina_pref.sshtunnel_port;
+}
+
+gint remmina_pref_get_ssh_tcp_keepidle(void)
+{
+	TRACE_CALL(__func__);
+	return remmina_pref.ssh_tcp_keepidle;
+}
+
+gint remmina_pref_get_ssh_tcp_keepintvl(void)
+{
+	TRACE_CALL(__func__);
+	return remmina_pref.ssh_tcp_keepintvl;
+}
+
+gint remmina_pref_get_ssh_tcp_keepcnt(void)
+{
+	TRACE_CALL(__func__);
+	return remmina_pref.ssh_tcp_keepcnt;
+}
+
+gint remmina_pref_get_ssh_tcp_usrtimeout(void)
+{
+	TRACE_CALL(__func__);
+	return remmina_pref.ssh_tcp_usrtimeout;
 }
 
 void remmina_pref_set_value(const gchar *key, const gchar *value)

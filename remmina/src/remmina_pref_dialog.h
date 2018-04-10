@@ -65,6 +65,10 @@ typedef struct _RemminaPrefDialog {
 	GtkFileChooser *filechooserbutton_options_screenshots_path;
 	GtkCheckButton *checkbutton_options_ssh_parseconfig;
 	GtkEntry *entry_options_ssh_port;
+	GtkEntry *entry_options_ssh_tcp_keepidle;
+	GtkEntry *entry_options_ssh_tcp_keepintvl;
+	GtkEntry *entry_options_ssh_tcp_keepcnt;
+	GtkEntry *entry_options_ssh_tcp_usrtimeout;
 	GtkEntry *entry_options_scroll;
 	GtkEntry *entry_options_recent_items;
 	GtkButton *button_options_recent_items_clear;

@@ -113,6 +113,10 @@ typedef struct _RemminaPref {
 	gint ssh_loglevel;
 	gboolean ssh_parseconfig;
 	gint sshtunnel_port;
+	gint ssh_tcp_keepidle;
+	gint ssh_tcp_keepintvl;
+	gint ssh_tcp_keepcnt;
+	gint ssh_tcp_usrtimeout;
 	/* In RemminaPrefDialog keyboard tab */
 	guint hostkey;
 	guint shortcutkey_fullscreen;
@@ -195,6 +199,10 @@ typedef struct _RemminaPref {
 #define DEFAULT_SSHTUNNEL_PORT 4732
 #define DEFAULT_SSH_PORT 22
 #define DEFAULT_SSH_LOGLEVEL 1
+#define SSH_SOCKET_TCP_KEEPIDLE 20
+#define SSH_SOCKET_TCP_KEEPINTVL 10
+#define SSH_SOCKET_TCP_KEEPCNT 3
+#define SSH_SOCKET_TCP_USER_TIMEOUT 60000 // 60 seconds
 
 extern const gchar *default_resolutions;
 extern gchar *remmina_pref_file;
@@ -215,6 +223,10 @@ gint remmina_pref_get_scale_quality(void);
 gint remmina_pref_get_ssh_loglevel(void);
 gboolean remmina_pref_get_ssh_parseconfig(void);
 gint remmina_pref_get_sshtunnel_port(void);
+gint remmina_pref_get_ssh_tcp_keepidle(void);
+gint remmina_pref_get_ssh_tcp_keepintvl(void);
+gint remmina_pref_get_ssh_tcp_keepcnt(void);
+gint remmina_pref_get_ssh_tcp_usrtimeout(void);
 
 void remmina_pref_set_value(const gchar *key, const gchar *value);
 gchar* remmina_pref_get_value(const gchar *key);

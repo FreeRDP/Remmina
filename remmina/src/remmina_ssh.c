@@ -94,11 +94,8 @@
 #endif
 #endif
 
-#define SSH_SOCKET_TCP_KEEPIDLE 20
-#define SSH_SOCKET_TCP_KEEPINTVL 10
-#define SSH_SOCKET_TCP_KEEPCNT 3
-#define SSH_SOCKET_TCP_USER_TIMEOUT 60000 // 60 seconds
 #endif
+
 
 /*-----------------------------------------------------------------------------*
 *                           SSH Base                                          *
@@ -572,29 +569,39 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 		optval = 1;
 		if (setsockopt(sshsock, SOL_SOCKET, SO_KEEPALIVE, &optval, sizeof(optval)) < 0) {
 			remmina_log_printf("[SSH] TCP KeepAlive not set\n");
+		}else {
+			remmina_log_printf("[SSH] TCP KeepAlive enabled\n");
 		}
 #ifdef TCP_KEEPIDLE
-		optval = SSH_SOCKET_TCP_KEEPIDLE;
+		optval = remmina_pref.ssh_tcp_keepidle;
 		if (setsockopt(sshsock, IPPROTO_TCP, TCP_KEEPIDLE, &optval, sizeof(optval)) < 0) {
 			remmina_log_printf("[SSH] TCP_KEEPIDLE not set\n");
+		}else {
+			remmina_log_printf("[SSH] TCP_KEEPIDLE set to %i\n", optval);
 		}
 #endif
 #ifdef TCP_KEEPCNT
-		optval = SSH_SOCKET_TCP_KEEPCNT;
+		optval = remmina_pref.ssh_tcp_keepcnt;
 		if (setsockopt(sshsock, IPPROTO_TCP, TCP_KEEPCNT, &optval, sizeof(optval)) < 0) {
 			remmina_log_printf("[SSH] TCP_KEEPCNT not set\n");
+		}else {
+			remmina_log_printf("[SSH] TCP_KEEPCNT set to %i\n", optval);
 		}
 #endif
 #ifdef TCP_KEEPINTVL
-		optval = SSH_SOCKET_TCP_KEEPINTVL;
+		optval = remmina_pref.ssh_tcp_keepintvl;
 		if (setsockopt(sshsock, IPPROTO_TCP, TCP_KEEPINTVL, &optval, sizeof(optval)) < 0) {
 			remmina_log_printf("[SSH] TCP_KEEPINTVL not set\n");
+		}else {
+			remmina_log_printf("[SSH] TCP_KEEPINTVL set to %i\n", optval);
 		}
 #endif
 #ifdef TCP_USER_TIMEOUT
-		optval = SSH_SOCKET_TCP_USER_TIMEOUT;
+		optval = remmina_pref.ssh_tcp_usrtimeout;
 		if (setsockopt(sshsock, IPPROTO_TCP, TCP_USER_TIMEOUT, &optval, sizeof(optval)) < 0) {
 			remmina_log_printf("[SSH] TCP_USER_TIMEOUT not set\n");
+		}else {
+			remmina_log_printf("[SSH] TCP_USER_TIMEOUT set to %i\n", optval);
 		}
 #endif
 	}

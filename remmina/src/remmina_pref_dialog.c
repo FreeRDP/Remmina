@@ -180,10 +180,22 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.scale_quality = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_options_scale_quality);
 	remmina_pref.screenshot_path = gtk_file_chooser_get_filename(remmina_pref_dialog->filechooserbutton_options_screenshots_path);
 	remmina_pref.ssh_loglevel = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_options_ssh_loglevel);
-	remmina_pref.ssh_parseconfig = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_options_ssh_parseconfig));
 	remmina_pref.sshtunnel_port = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_options_ssh_port));
 	if (remmina_pref.sshtunnel_port <= 0)
 		remmina_pref.sshtunnel_port = DEFAULT_SSHTUNNEL_PORT;
+	remmina_pref.ssh_tcp_keepidle = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_options_ssh_tcp_keepidle));
+	if (remmina_pref.ssh_tcp_keepidle <= 0)
+		remmina_pref.ssh_tcp_keepidle = SSH_SOCKET_TCP_KEEPIDLE;
+	remmina_pref.ssh_tcp_keepintvl = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_options_ssh_tcp_keepintvl));
+	if (remmina_pref.ssh_tcp_keepintvl <= 0)
+		remmina_pref.ssh_tcp_keepintvl = SSH_SOCKET_TCP_KEEPINTVL;
+	remmina_pref.ssh_tcp_keepcnt = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_options_ssh_tcp_keepcnt));
+	if (remmina_pref.ssh_tcp_keepcnt <= 0)
+		remmina_pref.ssh_tcp_keepcnt = SSH_SOCKET_TCP_KEEPCNT;
+	remmina_pref.ssh_tcp_usrtimeout = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_options_ssh_tcp_usrtimeout));
+	if (remmina_pref.ssh_tcp_usrtimeout <= 0)
+		remmina_pref.ssh_tcp_usrtimeout = SSH_SOCKET_TCP_USER_TIMEOUT;
+	remmina_pref.ssh_parseconfig = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_options_ssh_parseconfig));
 
 	remmina_pref.auto_scroll_step = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_options_scroll));
 	if (remmina_pref.auto_scroll_step < 10)
@@ -361,6 +373,14 @@ static void remmina_pref_dialog_init(void)
 
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.sshtunnel_port);
 	gtk_entry_set_text(remmina_pref_dialog->entry_options_ssh_port, buf);
+	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.ssh_tcp_keepidle);
+	gtk_entry_set_text(remmina_pref_dialog->entry_options_ssh_tcp_keepidle, buf);
+	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.ssh_tcp_keepintvl);
+	gtk_entry_set_text(remmina_pref_dialog->entry_options_ssh_tcp_keepintvl, buf);
+	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.ssh_tcp_keepcnt);
+	gtk_entry_set_text(remmina_pref_dialog->entry_options_ssh_tcp_keepcnt, buf);
+	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.ssh_tcp_usrtimeout);
+	gtk_entry_set_text(remmina_pref_dialog->entry_options_ssh_tcp_usrtimeout, buf);
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.auto_scroll_step);
 	gtk_entry_set_text(remmina_pref_dialog->entry_options_scroll, buf);
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.recent_maximum);
@@ -522,6 +542,10 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->comboboxtext_options_ssh_loglevel = GTK_COMBO_BOX(GET_OBJECT("comboboxtext_options_ssh_loglevel"));
 	remmina_pref_dialog->filechooserbutton_options_screenshots_path = GTK_FILE_CHOOSER(GET_OBJECT("filechooserbutton_options_screenshots_path"));
 	remmina_pref_dialog->entry_options_ssh_port = GTK_ENTRY(GET_OBJECT("entry_options_ssh_port"));
+	remmina_pref_dialog->entry_options_ssh_tcp_keepidle = GTK_ENTRY(GET_OBJECT("entry_options_ssh_tcp_keepidle"));
+	remmina_pref_dialog->entry_options_ssh_tcp_keepintvl = GTK_ENTRY(GET_OBJECT("entry_options_ssh_tcp_keepintvl"));
+	remmina_pref_dialog->entry_options_ssh_tcp_keepcnt = GTK_ENTRY(GET_OBJECT("entry_options_ssh_tcp_keepcnt"));
+	remmina_pref_dialog->entry_options_ssh_tcp_usrtimeout = GTK_ENTRY(GET_OBJECT("entry_options_ssh_tcp_usrtimeout"));
 	remmina_pref_dialog->entry_options_scroll = GTK_ENTRY(GET_OBJECT("entry_options_scroll"));
 	remmina_pref_dialog->entry_options_recent_items = GTK_ENTRY(GET_OBJECT("entry_options_recent_items"));
 	remmina_pref_dialog->button_options_recent_items_clear = GTK_BUTTON(GET_OBJECT("button_options_recent_items_clear"));
