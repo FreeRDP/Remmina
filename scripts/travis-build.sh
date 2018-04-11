@@ -92,7 +92,7 @@ elif [ "$BUILD_TYPE" == "flatpak" ]; then
     elif [ "$TRAVIS_BUILD_STEP" == "install" ]; then
         docker build -t flatpak ./flatpak
     elif [ "$TRAVIS_BUILD_STEP" == "script" ]; then
-        docker run --privileged flatpak
+        docker run --privileged --env=FLATPAK_ARCH=$FLATPAK_ARCH flatpak
     fi
 else
     echo 'No $BUILD_TYPE defined'
