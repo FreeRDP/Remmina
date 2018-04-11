@@ -85,6 +85,15 @@ elif [ "$BUILD_TYPE" == "cmake" ]; then
         cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS
         make VERBOSE=1 -C $BUILD_FOLDER
     fi
+elif [ "$BUILD_TYPE" == "flatpak" ]; then
+        echo "TRAVIS_EVENT_TYPE=" $TRAVIS_EVENT_TYPE
+    if [ "$TRAVIS_BUILD_STEP" == "before_install" ]; then
+        sudo service docker start
+    elif [ "$TRAVIS_BUILD_STEP" == "install" ]; then
+        docker build -t flatpak ./flatpak
+    elif [ "$TRAVIS_BUILD_STEP" == "script" ]; then
+        docker run --privileged flatpak
+    fi
 else
     echo 'No $BUILD_TYPE defined'
     exit 1
