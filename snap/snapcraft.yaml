@@ -1,7 +1,7 @@
 name: remmina
 adopt-info: remmina
 version: git
-version-script: cat parts/remmina/src/snap/SNAP_VERSION
+version-script: cat snap/SNAP_VERSION || echo echo +git$(git rev-parse --short HEAD)
 icon: remmina/desktop/scalable/apps/remmina.svg
 description: |
   Remmina is a remote desktop client written in GTK+, aiming to be useful for
