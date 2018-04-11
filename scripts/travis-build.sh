@@ -88,7 +88,7 @@ elif [ "$BUILD_TYPE" == "cmake" ]; then
 elif [ "$BUILD_TYPE" == "flatpak" ]; then
         echo "TRAVIS_EVENT_TYPE=" $TRAVIS_EVENT_TYPE
     if [ "$TRAVIS_BUILD_STEP" == "before_install" ]; then
-        sudo service docker start
+        sudo service docker start || true
     elif [ "$TRAVIS_BUILD_STEP" == "install" ]; then
         docker build -t flatpak ./flatpak
     elif [ "$TRAVIS_BUILD_STEP" == "script" ]; then
