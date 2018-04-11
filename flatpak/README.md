@@ -1,3 +1,8 @@
+Precompiled binaries
+-----------------
+
+See [the wiki](https://github.com/FreeRDP/Remmina/wiki#for-users-with-a-distro-that-supports-flatpak-including-ubuntu) for instructions. The recipe here is always pointed to the `next` branch. The recipe in [the flathub repository](https://github.com/flathub/org.remmina.Remmina/blob/master/org.remmina.Remmina.json) is pointed to the latest tagged release. Files except the JSON file in this directory is used for automatic builds.
+
 Build instructions
 ------------------
 
