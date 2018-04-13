@@ -107,9 +107,9 @@ Install [remmina-git](https://aur.archlinux.org/packages/remmina-git) from [AUR]
 ### For users with a distro that supports [Flatpak](https://flathub.org/), including Ubuntu ###
 
 ```sh
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak --system install org.remmina.Remmina
-flatpak run org.remmina.Remmina
+flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install --user flathub org.remmina.Remmina
+flatpak run --user org.remmina.Remmina
 ```
 
 Just be aware that flatpak store data for installed applications (the XDG config/data folders) under ```$HOME/.var```
