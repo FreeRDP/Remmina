@@ -205,11 +205,7 @@ void rf_Pointer_Free(rdpContext* context, rdpPointer* pointer)
 	RemminaPluginRdpUiObject* ui;
 	rfContext* rfi = (rfContext*)context;
 
-#if GTK_VERSION == 2
-	if (((rfPointer*)pointer)->cursor != NULL)
-#else
 	if (G_IS_OBJECT(((rfPointer*)pointer)->cursor))
-#endif
 	{
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
 		ui->type = REMMINA_RDP_UI_CURSOR;

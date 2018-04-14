@@ -35,9 +35,7 @@
  */
 
 #include "common/remmina_plugin.h"
-#if GTK_VERSION == 3
-#  include <gtk/gtkx.h>
-#endif
+#include <gtk/gtkx.h>
 
 INCLUDE_GET_AVAILABLE_XDISPLAY
 
