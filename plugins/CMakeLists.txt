@@ -83,6 +83,7 @@ if(SPICE_FOUND)
 endif()
 
 if(WITH_EXAMPLES)
+        message(STATUS "Enabling examples and test plugins.")
         add_subdirectory(tool_hello_world)
 endif()
 add_subdirectory(exec)
