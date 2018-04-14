@@ -237,10 +237,5 @@ if(GTK_FOUND)
         add_subdirectory(plugins/secret)
 endif()
 
-if(WITH_EXAMPLES)
-        message(STATUS "Enabling examples and test plugins.")
-        add_definitions(-DWITH_EXAMPLES)
-endif()
-
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
     ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
