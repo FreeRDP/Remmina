@@ -37,9 +37,7 @@
 #include "config.h"
 
 #include <gtk/gtk.h>
-#if GTK_VERSION == 3
-#  include <gtk/gtkx.h>
-#endif
+#include <gtk/gtkx.h>
 #include <glib/gi18n.h>
 #include <stdlib.h>
 

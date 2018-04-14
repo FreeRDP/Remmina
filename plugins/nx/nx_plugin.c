@@ -37,9 +37,7 @@
 #include <errno.h>
 #include <pthread.h>
 #include "common/remmina_plugin.h"
-#if GTK_VERSION == 3
-#  include <gtk/gtkx.h>
-#endif
+#include <gtk/gtkx.h>
 #include <time.h>
 #define LIBSSH_STATIC 1
 #include <libssh/libssh.h>

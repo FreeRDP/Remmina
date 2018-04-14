@@ -719,7 +719,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, vte);
 
-#if VTE_CHECK_VERSION(0, 28, 0) && GTK_CHECK_VERSION(3, 0, 0)
+#if VTE_CHECK_VERSION(0, 28, 0)
 	vadjustment = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE(vte));
 #else
 	vadjustment = vte_terminal_get_adjustment(VTE_TERMINAL(vc->vte.terminal));

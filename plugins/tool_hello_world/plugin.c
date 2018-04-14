@@ -38,10 +38,8 @@
 
 #include "common/remmina_plugin.h"
 
-#if GTK_VERSION == 3
-# include <gtk/gtkx.h>
-# include <gdk/gdkx.h>
-#endif
+#include <gtk/gtkx.h>
+#include <gdk/gdkx.h>
 
 static RemminaPluginService *remmina_plugin_service = NULL;
 
