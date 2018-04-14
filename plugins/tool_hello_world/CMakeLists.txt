@@ -42,8 +42,7 @@ set_target_properties(remmina-plugin-tool_hello_world PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-tool_hello_world PROPERTIES NO_SONAME 1)
 
 include_directories(${REMMINA_COMMON_INCLUDE_DIRS})
-include_directories(${GTK_INCLUDE_DIRS})
-include_directories(${CMAKE_SOURCE_DIR}/plugins)
+target_link_libraries(remmina-plugin-tool_hello_world ${REMMINA_COMMON_LIBRARIES})
 
 install(TARGETS remmina-plugin-tool_hello_world DESTINATION ${REMMINA_PLUGINDIR})
 
