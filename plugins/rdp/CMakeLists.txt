@@ -58,11 +58,6 @@ add_definitions(-DFREERDP_REQUIRED_MAJOR=${FREERDP_REQUIRED_MAJOR})
 add_definitions(-DFREERDP_REQUIRED_MINOR=${FREERDP_REQUIRED_MINOR})
 add_definitions(-DFREERDP_REQUIRED_REVISION=${FREERDP_REQUIRED_REVISION})
 
-if(WITH_EXAMPLES)
-        message(STATUS "Enabling examples and test plugins.")
-        add_definitions(-DWITH_EXAMPLES)
-endif()
-
 option(WITH_GFX_H264 "Enable support for H264 modes in GFX" ON)
 if (WITH_GFX_H264)
 	add_definitions(-DWITH_GFX_H264)
