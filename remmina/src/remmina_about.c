@@ -37,7 +37,6 @@
 
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
-#include <gmodule.h>
 #include "remmina_about.h"
 #include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"
@@ -46,13 +45,11 @@
 void remmina_about_open(GtkWindow *parent)
 {
 	TRACE_CALL(__func__);
-	GString *version = g_string_new(NULL);
 
-	g_string_printf(version, "%s (git %s)", VERSION, REMMINA_GIT_REVISION);
 	GtkBuilder *builder = remmina_public_gtk_builder_new_from_file("remmina_about.glade");
 	GtkDialog *dialog = GTK_DIALOG(gtk_builder_get_object(builder, "dialog_remmina_about"));
 
-	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), version->str);
+	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), VERSION " (git " REMMINA_GIT_REVISION ")");
 	gtk_about_dialog_set_translator_credits(GTK_ABOUT_DIALOG(dialog), _("translator-credits"));
 
 	if (parent) {
@@ -64,5 +61,4 @@ void remmina_about_open(GtkWindow *parent)
 	gtk_window_present(GTK_WINDOW(dialog));
 
 	g_object_unref(G_OBJECT(builder));
-	g_string_free(version, TRUE);
 }
