@@ -821,7 +821,8 @@ void remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "usage_stats", "periodic_usage_stats_permission_asked", remmina_pref.periodic_usage_stats_permission_asked);
 	g_key_file_set_boolean(gkeyfile, "usage_stats", "periodic_usage_stats_permitted", remmina_pref.periodic_usage_stats_permitted);
 	g_key_file_set_int64(gkeyfile, "usage_stats", "periodic_usage_stats_last_sent", remmina_pref.periodic_usage_stats_last_sent);
-	g_key_file_set_string(gkeyfile, "usage_stats", "periodic_usage_stats_uuid_prefix", remmina_pref.periodic_usage_stats_uuid_prefix);
+	g_key_file_set_string(gkeyfile, "usage_stats", "periodic_usage_stats_uuid_prefix",
+			remmina_pref.periodic_usage_stats_uuid_prefix ? remmina_pref.periodic_usage_stats_uuid_prefix : "");
 
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
 	g_file_set_contents(remmina_pref_file, content, length, NULL);
