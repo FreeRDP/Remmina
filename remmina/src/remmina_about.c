@@ -64,5 +64,5 @@ void remmina_about_open(GtkWindow *parent)
 	gtk_window_present(GTK_WINDOW(dialog));
 
 	g_object_unref(G_OBJECT(builder));
-        g_string_free(version, TRUE);
+	g_string_free(version, TRUE);
 }
