@@ -111,6 +111,11 @@ flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flath
 flatpak install --user flathub org.remmina.Remmina
 flatpak run --user org.remmina.Remmina
 ```
+If you use SSH agent (https://github.com/flatpak/flatpak/issues/1438 )
+
+```sh
+flatpak run --filesystem=$SSH_AUTH_SOCK --env=SSH_AUTH_SOCK=$SSH_AUTH_SOCK org.remmina.Remmina
+```
 
 Just be aware that flatpak store data for installed applications (the XDG config/data folders) under ```$HOME/.var```
 So for instance, if you previously have installed remmina with another package manager, you will have to transfer what was under ```$HOME/.config/remmina``` and ```$HOME/.local/share/remmina``` under, respectively ```~/.var/app/org.remmina.Remmina/config/remmina``` and ```~/.var/app/org.remmina.Remmina/data/remmina```
