@@ -1,7 +1,7 @@
 {
     "app-id": "org.remmina.Remmina",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.26",
+    "runtime-version": "3.28",
     "sdk": "org.gnome.Sdk",
     "build-options" : {
         "cflags": "-O2 -g",
@@ -64,6 +64,10 @@
                     "type": "archive",
                     "url": "https://launchpad.net/libappindicator/12.10/12.10.0/+download/libappindicator-12.10.0.tar.gz",
                     "sha256": "d5907c1f98084acf28fd19593cb70672caa0ca1cf82d747ba6f4830d4cc3b49f"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/libappindicator-ftbfs-gnome-sdk-3.28.patch"
                 },
                 {
                     "type": "shell",
@@ -214,8 +218,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/FreeRDP/FreeRDP.git",
-                    "tag": "2.0.0-rc1",
-                    "commit": "84f8161897534d9263ffebe43092827d40fc7ffb"
+                    "tag": "2.0.0-rc2",
+                    "commit": "7a7b180277a9c04809bf07a54882d7c33eeeb9f9"
                 }
             ],
             "modules": [
