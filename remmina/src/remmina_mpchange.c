@@ -318,7 +318,7 @@ static gboolean remmina_file_multipasswd_changer_mt(gpointer d)
 
 	mainwindow = remmina_main_get_window();
 
-	/* The multiple passowrd changer works only when a secret plugin is available */
+	/* The multiple password changer works only when a secret plugin is available */
 	initerror = NULL;
 	secret_plugin = remmina_plugin_manager_get_secret_plugin();
 	if (secret_plugin == NULL) {
