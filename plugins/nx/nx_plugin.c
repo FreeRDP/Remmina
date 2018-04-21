@@ -577,7 +577,6 @@ static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginNxData *gpdata = GET_PLUGIN_DATA(gp);
-	RemminaFile *remminafile;
 	gint width, height;
 
 	if (!remmina_plugin_nx_service->gtksocket_available()) {
@@ -586,8 +585,6 @@ static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 			remmina_plugin_nx.name);
 		return FALSE;
 	}
-
-	remminafile = remmina_plugin_nx_service->protocol_plugin_get_file(gp);
 
 	width = remmina_plugin_nx_service->get_profile_remote_width(gp);
 	height = remmina_plugin_nx_service->get_profile_remote_height(gp);
