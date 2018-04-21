@@ -331,9 +331,7 @@ static gboolean remmina_plugin_xdmcp_query_feature(RemminaProtocolWidget *gp, co
 static void remmina_plugin_xdmcp_call_feature(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature)
 {
 	TRACE_CALL(__func__);
-	RemminaFile *remminafile;
 
-	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 	switch (feature->id) {
 	case REMMINA_PLUGIN_XDMCP_FEATURE_TOOL_SENDCTRLALTDEL:
 		remmina_plugin_xdmcp_send_ctrlaltdel(gp);
