@@ -104,6 +104,17 @@ dnf upgrade --refresh 'remmina*' 'freerdp*'
 
 Install [remmina-git](https://aur.archlinux.org/packages/remmina-git) from [AUR](https://aur.archlinux.org/)
 
+### openSUSE
+
+Remmina is in the offical repositories for all openSUSE distributions.
+In case the version in the released stable branch of openSUSE is too old you can install the latest one from the [devel project](https://build.opensuse.org/package/show/X11%3ARemoteDesktop/remmina) via:
+
+```
+zypper ar -f obs://X11:RemoteDesktop/remmina remmina
+zypper ref
+zypper in remmina
+```
+
 ### For users with a distro that supports [Flatpak](https://flathub.org/), including Ubuntu ###
 
 ```sh
