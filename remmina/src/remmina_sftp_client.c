@@ -863,8 +863,11 @@ static gboolean
 remmina_sftp_client_refresh(RemminaSFTPClient *client)
 {
 	TRACE_CALL(__func__);
-	SET_CURSOR(gdk_cursor_new_for_display(gdk_display_get_default(), GDK_WATCH));
-	gdk_flush();
+
+	GdkDisplay *display = gdk_display_get_default();
+
+	SET_CURSOR(gdk_cursor_new_for_display(display, GDK_WATCH));
+	gdk_display_flush(display);
 
 	remmina_sftp_client_on_opendir(client, ".", NULL);
 
@@ -965,13 +968,16 @@ GtkWidget*
 remmina_sftp_client_new_init(RemminaSFTP *sftp)
 {
 	TRACE_CALL(__func__);
+	GdkDisplay *display;
 	GtkWidget *client;
 	GtkWidget *dialog;
 
+	display = gdk_display_get_default();
 	client = remmina_sftp_client_new();
 
-	SET_CURSOR(gdk_cursor_new_for_display(gdk_display_get_default(), GDK_WATCH));
-	gdk_flush();
+
+	SET_CURSOR(gdk_cursor_new_for_display(display, GDK_WATCH));
+	gdk_display_flush(display);
 
 	if (!remmina_ssh_init_session(REMMINA_SSH(sftp)) ||
 	    remmina_ssh_auth(REMMINA_SSH(sftp), NULL) <= 0 ||

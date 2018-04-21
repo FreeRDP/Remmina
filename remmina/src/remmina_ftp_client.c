@@ -123,7 +123,7 @@ G_DEFINE_TYPE( RemminaFTPClient, remmina_ftp_client, GTK_TYPE_GRID)
 	if (GDK_IS_WINDOW(gtk_widget_get_window(GTK_WIDGET(client)))) \
 	{ \
 		gdk_window_set_cursor(gtk_widget_get_window(GTK_WIDGET(client)), gdk_cursor_new_for_display(gdk_display_get_default(), GDK_WATCH)); \
-		gdk_flush(); \
+		gdk_display_flush(gdk_display_get_default()); \
 	}
 
 #define NORMAL_CURSOR \
