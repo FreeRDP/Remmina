@@ -41,9 +41,9 @@ else()
 	# Try with normal libappindicator
 	pkg_check_modules(PC_APPINDICATOR appindicator3-0.1)
 
-	find_path(APPINDICATOR_INCLUDE_DIR NAMES app-indicator.h
+	find_path(APPINDICATOR_INCLUDE_DIR NAMES libappindicator/app-indicator.h
 		HINTS ${PC_APPINDICATOR_INCLUDEDIR} ${PC_APPINDICATOR_INCLUDE_DIRS}
-		PATH_SUFFIXES libappindicator3-0.1/libappindicator)
+		PATH_SUFFIXES libappindicator3-0.1)
 
 	find_library(APPINDICATOR_LIBRARY NAMES appindicator3)
 

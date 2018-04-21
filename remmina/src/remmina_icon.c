@@ -49,7 +49,7 @@
 #include "remmina_sysinfo.h"
 
 #ifdef HAVE_LIBAPPINDICATOR
-#include <app-indicator.h>
+#include <libappindicator/app-indicator.h>
 #endif
 
 typedef struct _RemminaIcon {
