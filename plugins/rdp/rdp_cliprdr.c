@@ -456,7 +456,6 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionDa
 	/* Called by GTK when someone press "Paste" on the client side.
 	 * We ask to the server the data we need */
 
-	GdkAtom target;
 	CLIPRDR_FORMAT_DATA_REQUEST* pFormatDataRequest;
 	rfClipboard* clipboard;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
@@ -471,8 +470,6 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionDa
 		return;
 	}
 
-	target = gtk_selection_data_get_target(selection_data);
-	// clipboard->format = remmina_rdp_cliprdr_get_format_from_gdkatom(target);
 	clipboard->format = info;
 
 	/* Request Clipboard content from the server, the request is async */
@@ -532,7 +529,6 @@ CLIPRDR_FORMAT_LIST *remmina_rdp_cliprdr_get_client_format_list(RemminaProtocolW
 	TRACE_CALL(__func__);
 
 	GtkClipboard* gtkClipboard;
-	rfClipboard* clipboard;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	GdkAtom* targets;
 	gboolean result = 0;
@@ -544,7 +540,6 @@ CLIPRDR_FORMAT_LIST *remmina_rdp_cliprdr_get_client_format_list(RemminaProtocolW
 		CLIPRDR_FORMAT formats[];
 	} *retp;
 
-	clipboard = &(rfi->clipboard);
 	formats = NULL;
 
 	retp = NULL;
@@ -601,7 +596,6 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 {
 	TRACE_CALL(__func__);
 	GtkClipboard* gtkClipboard;
-	rfClipboard* clipboard;
 	UINT8* inbuf = NULL;
 	UINT8* outbuf = NULL;
 	GdkPixbuf *image = NULL;
@@ -610,7 +604,6 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 	RemminaPluginRdpEvent rdp_event = { 0 };
 	CLIPRDR_FORMAT_DATA_RESPONSE* pFormatDataResponse;
 
-	clipboard = ui->clipboard.clipboard;
 	gtkClipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);
 	if (gtkClipboard) {
 		switch (ui->clipboard.format) {
@@ -728,9 +721,7 @@ void remmina_rdp_cliprdr_set_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 	GtkTargetEntry* targets;
 	gint n_targets;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	rfClipboard* clipboard;
 
-	clipboard = ui->clipboard.clipboard;
 	targets = gtk_target_table_new_from_list(ui->clipboard.targetlist, &n_targets);
 	gtkClipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);
 	if (gtkClipboard && targets) {

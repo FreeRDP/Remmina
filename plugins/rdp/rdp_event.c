@@ -249,10 +249,7 @@ static void remmina_rdp_event_update_scale_factor(RemminaProtocolWidget* gp)
 	GtkAllocation a;
 	gint rdwidth, rdheight;
 	gint gpwidth, gpheight;
-	RemminaFile* remminafile;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
-
-	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	gtk_widget_get_allocation(GTK_WIDGET(gp), &a);
 	gpwidth = a.width;
@@ -568,7 +565,6 @@ static gboolean remmina_rdp_event_on_scroll(GtkWidget* widget, GdkEventScroll* e
 static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
-	GdkDisplay* display;
 	guint32 unicode_keyval;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent rdp_event;
@@ -620,7 +616,6 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 				keypress_list_add(gp, rdp_event);
 			}
 		} else {
-			display = gtk_widget_get_display(widget);
 			unicode_keyval = gdk_keyval_to_unicode(event->keyval);
 			/* Decide when whe should send a keycode or a unicode character.
 			 * - All non char keys (shift, alt, win) should be sent as keycode
@@ -843,11 +838,9 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
 	gint width, height;
-	RemminaFile* remminafile;
 	rdpGdi* gdi;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 
-	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 	width = remmina_plugin_service->protocol_plugin_get_width(gp);
 	height = remmina_plugin_service->protocol_plugin_get_height(gp);
 
