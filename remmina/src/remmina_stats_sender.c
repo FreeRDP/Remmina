@@ -170,7 +170,6 @@ static gboolean remmina_stats_collector_done(gpointer data)
 	JsonObject *o;
 	BIO *pkbio;
 	RSA *pubkey;
-	int pksize;
 	gchar *uid;
 	sc_tdata *sctdata;
 
@@ -215,7 +214,6 @@ static gboolean remmina_stats_collector_done(gpointer data)
 		return G_SOURCE_REMOVE;
 	}
 
-	pksize = RSA_size(pubkey);
 	enc_s = rsa_encrypt_string(pubkey, unenc_s);
 
 	g_free(unenc_s);

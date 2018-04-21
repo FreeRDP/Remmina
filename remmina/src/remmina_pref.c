@@ -187,7 +187,6 @@ void remmina_pref_init(void)
 	const gchar *colors_filename = g_strdup_printf("%s.colors", g_get_prgname());
 	gchar *remmina_colors_file;
 	GDir *dir;
-	GFile *path;
 	gchar *legacy = g_strdup_printf(".%s", g_get_prgname());
 	int i;
 
@@ -233,7 +232,6 @@ void remmina_pref_init(void)
 	remmina_pref_file = g_strdup_printf("%s/remmina.pref", remmina_dir);
 	/* remmina.colors */
 	remmina_colors_file = g_strdup_printf("%s/%s", remmina_dir, colors_filename);
-	path = g_file_new_for_path(remmina_colors_file);
 
 	remmina_keymap_file = g_strdup_printf("%s/remmina.keymap", remmina_dir);
 
@@ -716,13 +714,6 @@ void remmina_pref_init(void)
 
 
 	g_key_file_free(gkeyfile);
-
-#if 0
-	/* We delete the colorscheme file because we save its content in the remmina.pref */
-	if (g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
-		g_file_delete(path, NULL, NULL);
-	}
-#endif
 
 	if (remmina_pref.secret == NULL)
 		remmina_pref_gen_secret();

@@ -684,15 +684,10 @@ static void remmina_connection_window_tb_drag_begin(GtkWidget *widget, GdkDragCo
 {
 	TRACE_CALL(__func__);
 
-	RemminaConnectionHolder* cnnhld;
-	RemminaConnectionWindowPriv* priv;
 	cairo_surface_t *surface;
 	cairo_t *cr;
 	GtkAllocation wa;
 	double dashes[] = { 10 };
-
-	cnnhld = (RemminaConnectionHolder*)user_data;
-	priv = cnnhld->cnnwin->priv;
 
 	gtk_widget_get_allocation(widget, &wa);
 
@@ -2932,7 +2927,6 @@ remmina_connection_holder_on_notebook_create_window(GtkNotebook* notebook, GtkWi
 	RemminaConnectionWindow* srccnnwin;
 	RemminaConnectionWindow* dstcnnwin;
 	RemminaConnectionObject* cnnobj;
-	gint srcpagenum;
 	GdkWindow* window;
 
 #if GTK_CHECK_VERSION(3, 20, 0)
@@ -2961,7 +2955,6 @@ remmina_connection_holder_on_notebook_create_window(GtkNotebook* notebook, GtkWi
 		return NULL;
 
 	cnnobj = (RemminaConnectionObject*)g_object_get_data(G_OBJECT(page), "cnnobj");
-	srcpagenum = gtk_notebook_page_num(GTK_NOTEBOOK(srccnnwin->priv->notebook), cnnobj->scrolled_container);
 
 	if (dstcnnwin) {
 		cnnobj->cnnhld = dstcnnwin->priv->cnnhld;
@@ -3117,10 +3110,8 @@ static gboolean remmina_connection_window_go_fullscreen(GtkWidget *widget, GdkEv
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionHolder* cnnhld;
-	RemminaConnectionWindowPriv* priv;
 
 	cnnhld = (RemminaConnectionHolder*)data;
-	priv = cnnhld->cnnwin->priv;
 
 #if GTK_CHECK_VERSION(3, 18, 0)
 	if (remmina_pref.fullscreen_on_auto) {
@@ -3230,11 +3221,8 @@ static gboolean remmina_connection_window_ftb_drag_drop(GtkWidget *widget, GdkDr
 	GtkAllocation wa;
 	gint new_floating_toolbar_placement;
 	RemminaConnectionHolder* cnnhld;
-	RemminaConnectionWindowPriv* priv;
 
 	cnnhld = (RemminaConnectionHolder*)user_data;
-	priv = cnnhld->cnnwin->priv;
-
 
 	gtk_widget_get_allocation(widget, &wa);
 
@@ -3261,15 +3249,10 @@ static void remmina_connection_window_ftb_drag_begin(GtkWidget *widget, GdkDragC
 {
 	TRACE_CALL(__func__);
 
-	RemminaConnectionHolder* cnnhld;
-	RemminaConnectionWindowPriv* priv;
 	cairo_surface_t *surface;
 	cairo_t *cr;
 	GtkAllocation wa;
 	double dashes[] = { 10 };
-
-	cnnhld = (RemminaConnectionHolder*)user_data;
-	priv = cnnhld->cnnwin->priv;
 
 	gtk_widget_get_allocation(widget, &wa);
 
