@@ -316,12 +316,10 @@ BOOL rf_end_paint(rdpContext* context)
 	UINT32 w, h;
 	rdpGdi* gdi;
 	rfContext* rfi;
-	RemminaProtocolWidget* gp;
 	RemminaPluginRdpUiObject* ui;
 
 	gdi = context->gdi;
 	rfi = (rfContext*)context;
-	gp = rfi->protocol_widget;
 
 	if (gdi->primary->hdc->hwnd->invalid->null)
 		return FALSE;
@@ -373,11 +371,9 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 	TRACE_CALL(__func__);
 	rfContext* rfi;
 	ALIGN64 rdpSettings* settings;
-	RemminaProtocolWidget* gp;
 
 	rfi = (rfContext*)instance->context;
 	settings = instance->settings;
-	gp = rfi->protocol_widget;
 
 	settings->OsMajorType = OSMAJORTYPE_UNIX;
 	settings->OsMinorType = OSMINORTYPE_UNSPECIFIED;
@@ -463,7 +459,6 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	RemminaProtocolWidget* gp;
 	RemminaPluginRdpUiObject* ui;
 	rdpGdi* gdi;
-	int hdcBytesPerPixel, hdcBitsPerPixel;
 
 	rfi = (rfContext*)instance->context;
 	gp = rfi->protocol_widget;
@@ -479,16 +474,10 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	rf_register_graphics(instance->context->graphics);
 
 	if (rfi->bpp == 32) {
-		hdcBytesPerPixel = 4;
-		hdcBitsPerPixel = 32;
 		rfi->cairo_format = CAIRO_FORMAT_ARGB32;
 	}else if (rfi->bpp == 24) {
-		hdcBytesPerPixel = 4;
-		hdcBitsPerPixel = 32;
 		rfi->cairo_format = CAIRO_FORMAT_RGB24;
 	}else {
-		hdcBytesPerPixel = 2;
-		hdcBitsPerPixel = 16;
 		rfi->cairo_format = CAIRO_FORMAT_RGB16_565;
 	}
 
@@ -1262,10 +1251,7 @@ static gboolean remmina_rdp_query_feature(RemminaProtocolWidget* gp, const Remmi
 static void remmina_rdp_call_feature(RemminaProtocolWidget* gp, const RemminaProtocolFeature* feature)
 {
 	TRACE_CALL(__func__);
-	RemminaFile* remminafile;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
-
-	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	switch (feature->id) {
 	case REMMINA_RDP_FEATURE_UNFOCUS:
