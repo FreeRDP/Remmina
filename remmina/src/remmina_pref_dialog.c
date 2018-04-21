@@ -240,7 +240,7 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_font_system))) {
 		remmina_pref.vte_font = NULL;
 	}else  {
-		remmina_pref.vte_font = g_strdup(gtk_font_button_get_font_name(remmina_pref_dialog->fontbutton_terminal_font));
+		remmina_pref.vte_font = g_strdup(gtk_font_chooser_get_font(GTK_FONT_CHOOSER(remmina_pref_dialog->fontbutton_terminal_font)));
 	}
 	remmina_pref.vte_allow_bold_text = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_bold));
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_foreground), &color);
@@ -410,9 +410,9 @@ static void remmina_pref_dialog_init(void)
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_font_system), TRUE);
 	}
 	if (remmina_pref.vte_font && remmina_pref.vte_font[0]) {
-		gtk_font_button_set_font_name(remmina_pref_dialog->fontbutton_terminal_font, remmina_pref.vte_font);
+		gtk_font_chooser_set_font(GTK_FONT_CHOOSER(remmina_pref_dialog->fontbutton_terminal_font), remmina_pref.vte_font);
 	}else  {
-		gtk_font_button_set_font_name(remmina_pref_dialog->fontbutton_terminal_font, "Monospace 12");
+		gtk_font_chooser_set_font(GTK_FONT_CHOOSER(remmina_pref_dialog->fontbutton_terminal_font), "Monospace 12");
 		gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->fontbutton_terminal_font), FALSE);
 	}
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_bold), remmina_pref.vte_allow_bold_text);
