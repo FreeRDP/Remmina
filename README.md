@@ -89,15 +89,20 @@ sudo add-apt-repository ppa:kedazo/libssh-0.7.x
 sudo apt-get update
 ```
 
-### Fedora
+### Fedora and Red Hat
 
-As of March 2018 Remmina is available on most fedora testing and stable, we still have a (not updated) copr
-
-[Hubbitus](https://github.com/Hubbitus) (Pavel Alexeev) provided us a copr, to install just execute as root:
+As of March 2018 Remmina is available on most fedora testing and stable, we still have a (not updated) copr provided by [Hubbitus](https://github.com/Hubbitus) (Pavel Alexeev), to install just execute as root:
 
 ```sh
 dnf copr enable hubbitus/remmina-next
 dnf upgrade --refresh 'remmina*' 'freerdp*'
+```
+
+On Red Hat you can enable the EPEL repository:
+
+```sh
+wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+rpm -ivh epel-release-latest-7.noarch.rpm
 ```
 
 ### Arch Linux based
