@@ -125,7 +125,7 @@ typedef struct _RemminaPrefDialog {
 	GtkColorButton *colorbutton_color13;
 	GtkColorButton *colorbutton_color14;
 	GtkColorButton *colorbutton_color15;
-	GtkFileChooser *filechooserbutton_terminal_color_scheme;
+	GtkFileChooser *button_term_cs;
 
 	RemminaPrefDialogPriv *priv;
 } RemminaPrefDialog;
