@@ -7,38 +7,32 @@ Build instructions
 ------------------
 
 1. Install `flatpak` and `flatpak-builder` ([instructions]). Remmina
-   Flatpak manifest requires `flatpak-builder` >= 0.9.1.
+   Flatpak manifest recommends the latest version of `flatpak-builder`.
 
 [instructions]: http://flatpak.org/getting.html
 
-2. Enable GNOME Flatpak repository:
+2. Enable the Flatpak repository maintained by Flathub:
 
-        flatpak --user remote-add --if-not-exists --from gnome https://sdk.gnome.org/gnome.flatpakrepo
+        flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-3. Install GNOME runtime (have a look to the file `org.remmina.Remmina.json`
-   to get the required version, e.g, `"runtime-version": "3.28"`):
-
-        flatpak --user install gnome org.gnome.Platform//3.28
-        flatpak --user install gnome org.gnome.Sdk//3.28
-
-4. Build Remmina:
+3. Build Remmina:
 
         git submodule init -- shared-modules/
         git submodule update -- shared-modules/
-        flatpak-builder --repo=repo/ appdir/ org.remmina.Remmina.json
+        flatpak-builder --user --sandbox --install-deps-from=flathub --repo=repo/ appdir/ org.remmina.Remmina.json
 
    Remmina will be built in `appdir/` folder and the result will be exported
    to a local Flatpak repository in `repo/` folder.
 
-5. Enable the local repository:
+4. Enable the local repository:
 
         flatpak --user remote-add --no-gpg-verify --if-not-exists my-repo repo/
 
-6. Install Remmina from your repository:
+5. Install Remmina from your repository:
 
         flatpak --user install my-repo org.remmina.Remmina
 
-7. Launch Remmina
+6. Launch Remmina
 
         flatpak run org.remmina.Remmina
 
