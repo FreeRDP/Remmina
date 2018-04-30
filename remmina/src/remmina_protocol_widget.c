@@ -361,7 +361,7 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget* gp, GtkMenuI
 	gchar *keystrokes = g_object_get_data(G_OBJECT(widget), "keystrokes");
 	guint *keyvals;
 	gint i;
-	GdkKeymap *keymap = gdk_keymap_get_default();
+	GdkKeymap *keymap = gdk_keymap_get_for_display(gdk_display_get_default());
 	gchar *iter = keystrokes;
 	gunichar character;
 	guint keyval;
@@ -1231,8 +1231,8 @@ void remmina_protocol_widget_send_keys_signals(GtkWidget *widget, const guint *k
 	TRACE_CALL(__func__);
 	int i;
 	GdkEventKey event;
-	GdkKeymap *keymap = gdk_keymap_get_default();
 	gboolean result;
+	GdkKeymap *keymap = gdk_keymap_get_for_display(gdk_display_get_default());
 
 	event.window = gtk_widget_get_window(widget);
 	event.send_event = TRUE;
