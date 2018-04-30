@@ -16,13 +16,15 @@ Build instructions
         flatpak --user remote-add --if-not-exists --from gnome https://sdk.gnome.org/gnome.flatpakrepo
 
 3. Install GNOME runtime (have a look to the file `org.remmina.Remmina.json`
-   to get the required version, e.g, `"runtime-version": "3.26"`):
+   to get the required version, e.g, `"runtime-version": "3.28"`):
 
-        flatpak --user install gnome org.gnome.Platform//3.26
-        flatpak --user install gnome org.gnome.Sdk//3.26
+        flatpak --user install gnome org.gnome.Platform//3.28
+        flatpak --user install gnome org.gnome.Sdk//3.28
 
 4. Build Remmina:
 
+        git submodule init -- shared-modules/
+        git submodule update -- shared-modules/
         flatpak-builder --repo=repo/ appdir/ org.remmina.Remmina.json
 
    Remmina will be built in `appdir/` folder and the result will be exported
