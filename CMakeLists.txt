@@ -51,7 +51,7 @@ include(FindOptionalPackage)
 include(ConfigOptions)
 
 if(NOT CMAKE_BUILD_TYPE)
-        set(CMAKE_BUILD_TYPE "Release")
+    set(CMAKE_BUILD_TYPE "Release")
 endif()
 
 if(NOT BUILD_SHARED_LIBS)
@@ -59,15 +59,15 @@ if(NOT BUILD_SHARED_LIBS)
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCC)
-        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
-        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
-        if(WITH_SSE2)
-                set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2")
-        endif()
-        CHECK_C_COMPILER_FLAG(-Wno-unused-function Wno-unused-function)
-        if(Wno-unused-function)
-                set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-function")
-        endif()
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+    if(WITH_SSE2)
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2")
+    endif()
+    CHECK_C_COMPILER_FLAG(-Wno-unused-function Wno-unused-function)
+    if(Wno-unused-function)
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-function")
+    endif()
 endif()
 
 check_include_files(sys/socket.h HAVE_SYS_SOCKET_H)
@@ -87,11 +87,11 @@ include_directories(remmina/include)
 # FreeBSD
 
 if(CMAKE_SYSTEM_NAME MATCHES "FreeBSD")
-        set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "-rdynamic")
-        include_directories(/usr/local/include /usr/include)
-        link_directories(/usr/local/lib /usr/lib)
-        set(CMAKE_REQUIRED_INCLUDES /usr/local/include)
-        set(CMAKE_SHARED_LIBRARY_PREFIX ${CMAKE_SHARED_LIBRARY_PREFIX} /usr/local/lib)
+    set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "-rdynamic")
+    include_directories(/usr/local/include /usr/include)
+    link_directories(/usr/local/lib /usr/lib)
+    set(CMAKE_REQUIRED_INCLUDES /usr/local/include)
+    set(CMAKE_SHARED_LIBRARY_PREFIX ${CMAKE_SHARED_LIBRARY_PREFIX} /usr/local/lib)
 endif()
 
 # Versioning
@@ -102,7 +102,7 @@ set(REMMINA_VERSION_REVISION "0")
 set(REMMINA_VERSION_SUFFIX "rcgit-29")
 set(REMMINA_VERSION "${REMMINA_VERSION_MAJOR}.${REMMINA_VERSION_MINOR}.${REMMINA_VERSION_REVISION}")
 if(NOT ${REMMINA_VERSION_SUFFIX} STREQUAL "")
-        set(REMMINA_VERSION "${REMMINA_VERSION}-${REMMINA_VERSION_SUFFIX}")
+    set(REMMINA_VERSION "${REMMINA_VERSION}-${REMMINA_VERSION_SUFFIX}")
 endif()
 
 include(GetGitRevisionDescription)
@@ -128,7 +128,7 @@ if(NOT REMMINA_DATADIR)
     endif()
 endif()
 if(NOT REMMINA_TERM_CS_DIR)
-	set(REMMINA_TERM_CS_DIR "${REMMINA_DATADIR}/remmina/term_colors")
+    set(REMMINA_TERM_CS_DIR "${REMMINA_DATADIR}/remmina/term_colors")
 endif()
 if(NOT REMMINA_LOCALEDIR)
     set(REMMINA_LOCALEDIR "${CMAKE_INSTALL_FULL_LOCALEDIR}")
@@ -179,24 +179,32 @@ endif()
 
 # Uninstall support
 configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
-        "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
-        IMMEDIATE @ONLY)
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+    IMMEDIATE @ONLY)
 add_custom_target(uninstall
-        "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
+    "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
 
 find_required_package(GTK)
 
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 find_package(Threads REQUIRED)
 if(NOT CMAKE_USE_PTHREADS_INIT)
-        message(FATAL_ERROR "pthreads thread library not found")
+    message(FATAL_ERROR "pthreads thread library not found")
 endif()
 
 # Add GCC sanitizer options, must be done after pthreads detection
 # see remmina issue #1276
 if(CMAKE_COMPILER_IS_GNUCC AND WITH_GCC_SANITIZE_ADDRESS)
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
+endif()
+
+# Clang LLVM coverage flags - https://clang.llvm.org/docs/SourceBasedCodeCoverage.html
+if("${CMAKE_C_COMPILER_ID}" MATCHES "Clang" AND WITH_CLANG_COVERAGE)
+    message(STATUS "Enabling coverage.")
+    add_definitions(-DWITH_CLANG_COVERAGE)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -fprofile-instr-generate -fcoverage-mapping")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fprofile-instr-generate")
 endif()
 
 find_suggested_package(GCRYPT)
@@ -204,8 +212,8 @@ find_suggested_package(AVAHI)
 find_package(OpenSSL)
 
 if(WITH_TRACE_CALLS)
-        message(STATUS "Enabling trace calls.")
-        add_definitions(-DWITH_TRACE_CALLS)
+    message(STATUS "Enabling trace calls.")
+    add_definitions(-DWITH_TRACE_CALLS)
 endif()
 
 option(WITH_MANPAGES "Build with MANPAGES" ON)
@@ -217,19 +225,19 @@ else()
 endif()
 
 if(GCRYPT_FOUND)
-        add_definitions(-DHAVE_LIBGCRYPT)
+    add_definitions(-DHAVE_LIBGCRYPT)
 endif()
 
 if(AVAHI_FOUND)
-        add_definitions(-DHAVE_LIBAVAHI_UI)
-        add_definitions(-DHAVE_LIBAVAHI_CLIENT)
+    add_definitions(-DHAVE_LIBAVAHI_UI)
+    add_definitions(-DHAVE_LIBAVAHI_CLIENT)
 endif()
 
 if(GTK_FOUND)
-        add_subdirectory(remmina)
-        add_subdirectory(data)
-        add_subdirectory(plugins)
-        add_subdirectory(plugins/secret)
+    add_subdirectory(remmina)
+    add_subdirectory(data)
+    add_subdirectory(plugins)
+    add_subdirectory(plugins/secret)
 endif()
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
