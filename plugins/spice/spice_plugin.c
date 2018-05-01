@@ -97,17 +97,25 @@ static gboolean remmina_plugin_spice_open_connection(RemminaProtocolWidget *gp)
 
 	gint port;
 	const gchar *cacert;
-	gchar *host;
+	gchar *host, *tunnel;
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
-	remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"),
+	/* Setup SSH tunnel if needed */
+	tunnel = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, XSPICE_DEFAULT_PORT, FALSE);
+
+	if (!tunnel) {
+		return FALSE;
+	}
+
+	remmina_plugin_service->get_server_port(tunnel,
 		XSPICE_DEFAULT_PORT,
 		&host,
 		&port);
 
 	g_object_set(gpdata->session, "host", host, NULL);
 	g_free(host);
+	g_free(tunnel);
 
 	/* Unencrypted connection */
 	if (!remmina_plugin_service->file_get_int(remminafile, "usetls", FALSE)) {
@@ -465,7 +473,7 @@ static RemminaProtocolPlugin remmina_plugin_spice =
 	"remmina-spice",                                                        // Icon for SSH connection
 	remmina_plugin_spice_basic_settings,                                    // Array for basic settings
 	remmina_plugin_spice_advanced_settings,                                 // Array for advanced settings
-	REMMINA_PROTOCOL_SSH_SETTING_NONE,                                      // SSH settings type
+	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,                                    // SSH settings type
 	remmina_plugin_spice_features,                                          // Array for available features
 	remmina_plugin_spice_init,                                              // Plugin initialization
 	remmina_plugin_spice_open_connection,                                   // Plugin open connection

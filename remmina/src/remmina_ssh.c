@@ -891,6 +891,51 @@ remmina_ssh_tunnel_add_channel(RemminaSSHTunnel *tunnel, ssh_channel channel, gi
 	fcntl(sock, F_SETFL, flags | O_NONBLOCK);
 }
 
+static int
+remmina_ssh_tunnel_accept_local_connection(RemminaSSHTunnel *tunnel, gboolean blocking)
+{
+	gint sock, sock_flags;
+
+	sock_flags = fcntl(tunnel->server_sock, F_GETFL, 0);
+	if (blocking) {
+		sock_flags &= ~O_NONBLOCK;
+	}else  {
+		sock_flags |= O_NONBLOCK;
+	}
+	fcntl(tunnel->server_sock, F_SETFL, sock_flags);
+
+	/* Accept a local connection */
+	sock = accept(tunnel->server_sock, NULL, NULL);
+	if (sock < 0) {
+		REMMINA_SSH(tunnel)->error = g_strdup("Failed to accept local socket");
+	}
+
+	return sock;
+}
+
+static ssh_channel
+remmina_ssh_tunnel_create_forward_channel(RemminaSSHTunnel *tunnel)
+{
+	ssh_channel channel = NULL;
+
+	channel = ssh_channel_new(tunnel->ssh.session);
+	if (!channel) {
+		remmina_ssh_set_error(REMMINA_SSH(tunnel), "Failed to create channel : %s");
+		return NULL;
+	}
+
+	/* Request the SSH server to connect to the destination */
+	if (ssh_channel_open_forward(channel, tunnel->dest, tunnel->port, "127.0.0.1", 0) != SSH_OK) {
+		ssh_channel_close(channel);
+		ssh_channel_send_eof(channel);
+		ssh_channel_free(channel);
+		remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Failed to connect to the SSH tunnel destination: %s"));
+		return NULL;
+	}
+
+	return channel;
+}
+
 static gpointer
 remmina_ssh_tunnel_main_thread_proc(gpointer data)
 {
@@ -916,30 +961,19 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 
 	switch (tunnel->tunnel_type) {
 	case REMMINA_SSH_TUNNEL_OPEN:
-		/* Accept a local connection */
-		sock = accept(tunnel->server_sock, NULL, NULL);
+		sock = remmina_ssh_tunnel_accept_local_connection(tunnel, TRUE);
 		if (sock < 0) {
-			REMMINA_SSH(tunnel)->error = g_strdup("Failed to accept local socket");
+		    tunnel->thread = 0;
+		    return NULL;
+		}
+
+		channel = remmina_ssh_tunnel_create_forward_channel(tunnel);
+		if (!tunnel) {
+			close(sock);
 			tunnel->thread = 0;
 			return NULL;
 		}
 
-		if ((channel = ssh_channel_new(tunnel->ssh.session)) == NULL) {
-			close(sock);
-			remmina_ssh_set_error(REMMINA_SSH(tunnel), "Failed to create channel : %s");
-			tunnel->thread = 0;
-			return NULL;
-		}
-		/* Request the SSH server to connect to the destination */
-		if (ssh_channel_open_forward(channel, tunnel->dest, tunnel->port, "127.0.0.1", 0) != SSH_OK) {
-			close(sock);
-			ssh_channel_close(channel);
-			ssh_channel_send_eof(channel);
-			ssh_channel_free(channel);
-			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Failed to connect to the SSH tunnel destination: %s"));
-			tunnel->thread = 0;
-			return NULL;
-		}
 		remmina_ssh_tunnel_add_channel(tunnel, channel, sock);
 		break;
 
@@ -1172,7 +1206,6 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 		i = 0;
 		while (tunnel->running && i < tunnel->num_channels) {
 			disconnected = FALSE;
-
 			if (!tunnel->socketbuffers[i]) {
 				len = ssh_channel_poll(tunnel->channels[i], 0);
 				if (len == SSH_ERROR || len == SSH_EOF) {
@@ -1218,6 +1251,22 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 				continue;
 			}
 			i++;
+		}
+		/**
+		 * Some protocols may open new connections during the session.
+		 * e.g: SPICE opens a new connection for some channels.
+		 */
+		sock = remmina_ssh_tunnel_accept_local_connection(tunnel, FALSE);
+		if (sock > 0) {
+			channel = remmina_ssh_tunnel_create_forward_channel(tunnel);
+			if (!channel) {
+				remmina_log_printf("[SSH] Failed to open new connection: %s\n", REMMINA_SSH(tunnel)->error);
+				close(sock);
+				/* Leave thread loop */
+				tunnel->running = FALSE;
+			}else  {
+				remmina_ssh_tunnel_add_channel(tunnel, channel, sock);
+			}
 		}
 	}
 
