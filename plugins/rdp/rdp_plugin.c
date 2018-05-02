@@ -894,8 +894,13 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	rfi->settings->NegotiateSecurityLayer = True;
 
 	rfi->settings->CompressionEnabled = True;
-	rfi->settings->FastPathInput = True;
-	rfi->settings->FastPathOutput = True;
+	if (remmina_plugin_service->file_get_int(remminafile, "disable_fastpath", FALSE)) {
+		rfi->settings->FastPathInput = False;
+		rfi->settings->FastPathOutput = False;
+	} else {
+		rfi->settings->FastPathInput = True;
+		rfi->settings->FastPathOutput = True;
+	}
 
 	/* Orientation and scaling settings */
 	remmina_rdp_settings_get_orientation_scale_prefs(&desktopOrientation, &desktopScaleFactor, &deviceScaleFactor);
@@ -1431,7 +1436,8 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "shareprinter",	       N_("Share local printers"),		TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disablepasswordstoring",  N_("Disable password storing"),		TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disableclipboard",	       N_("Disable clipboard sync"),		TRUE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "console",		       N_("Attach to console (2003/2003 R2)"),	FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "console",		       N_("Attach to console (2003/2003 R2)"),	TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disable_fastpath",	       N_("Disable fast-path"),	TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "gateway_usage",	       N_("Server detection using RD Gateway"),	FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			NULL,					FALSE,	NULL,		NULL}
 };
