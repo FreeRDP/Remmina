@@ -31,3 +31,4 @@
 # files in the program, then also delete it here.
 
 install(DIRECTORY term_colors DESTINATION "${REMMINA_DATADIR}/remmina")
+add_subdirectory(ui)
