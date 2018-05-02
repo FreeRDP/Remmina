@@ -240,5 +240,16 @@ if(GTK_FOUND)
     add_subdirectory(plugins/secret)
 endif()
 
+find_package(Intl)
+if(INTL_FOUND AND "${CMAKE_SYSTEM_NAME}" MATCHES "FreeBSD")
+    message(STATUS "FreeBSD detected, building with Intl")
+    include_directories(${Intl_INCLUDE_DIRS})
+    target_link_libraries(remmina ${Intl_LIBRARIES})
+endif()
+if(WITH_TRANSLATIONS)
+        add_subdirectory(po)
+endif()
+
+
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
     ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
