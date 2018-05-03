@@ -1,4 +1,4 @@
-# data - The GTK+ Remote Desktop Client
+# data/theme - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2014-2018 Antenore Gatta, Giovanni Panozzo
 #
@@ -30,5 +30,8 @@
 # version. If you delete this exception statement from all source
 # files in the program, then also delete it here.
 
-add_subdirectory(ui)
-add_subdirectory(theme)
+file(GLOB TERM_COLOR_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.colors")
+foreach(ITEM ${TERM_COLOR_FILES})
+    list( APPEND FILES_TO_DEPLOY "${ITEM}" )
+endforeach()
+install( FILES ${FILES_TO_DEPLOY} DESTINATION "${REMMINA_THEMEDIR}" )
