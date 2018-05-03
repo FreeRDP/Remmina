@@ -82,7 +82,7 @@ check_include_files(sys/un.h HAVE_SYS_UN_H)
 check_include_files(errno.h HAVE_ERRNO_H)
 
 include_directories(.)
-include_directories(remmina/include)
+include_directories(src/include)
 
 # FreeBSD
 
@@ -240,7 +240,7 @@ if(AVAHI_FOUND)
 endif()
 
 if(GTK_FOUND)
-    add_subdirectory(remmina)
+    add_subdirectory(src)
     add_subdirectory(data)
     add_subdirectory(plugins)
     add_subdirectory(plugins/secret)

@@ -32,3 +32,9 @@
 
 add_subdirectory(ui)
 add_subdirectory(theme)
+add_subdirectory(desktop)
+add_subdirectory(icons)
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina.pc.in
+    ${CMAKE_CURRENT_BINARY_DIR}/remmina.pc @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
