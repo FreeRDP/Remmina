@@ -213,7 +213,7 @@ static void remmina_on_startup(GApplication *app)
 	remmina_icon_init();
 
 	g_set_application_name("Remmina");
-	gtk_window_set_default_icon_name("remmina");
+	gtk_window_set_default_icon_name("org.remmina.Remmina");
 
 	gtk_icon_theme_append_search_path(gtk_icon_theme_get_default(),
 		REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons");
