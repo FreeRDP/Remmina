@@ -2,7 +2,7 @@ name: remmina
 adopt-info: remmina
 version: git
 version-script: cat snap/SNAP_VERSION || echo echo +git$(git rev-parse --short HEAD)
-icon: remmina/desktop/scalable/apps/remmina.svg
+icon: data/desktop/scalable/apps/org.remmina.Remmina.svg
 description: |
   Remmina is a remote desktop client written in GTK+, aiming to be useful for
   system administrators and travellers, who need to work with lots of remote
@@ -91,7 +91,7 @@ parts:
   # FIXME: this is an ugly workaround for https://pad.lv/1761633
   remmina-appdata:
     plugin: nil
-    source: remmina/desktop
+    source: data/desktop
     prime: [-./*]
     prepare: |
       SNAPCRAFT_PART_SRC=$SNAPCRAFT_PART_INSTALL/../src

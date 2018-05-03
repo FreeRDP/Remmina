@@ -44,22 +44,22 @@ set(ICON96_DIR "${REMMINA_DATADIR}/icons/hicolor/96x96/apps")
 set(ICON128_DIR "${REMMINA_DATADIR}/icons/hicolor/128x128/apps")
 set(ICONSVG_DIR "${REMMINA_DATADIR}/icons/hicolor/scalable/apps")
 
-set(ICON16_DATA 16x16/apps/remmina.png)
-set(ICON22_DATA 22x22/apps/remmina.png)
-set(ICON24_DATA 24x24/apps/remmina.png)
+set(ICON16_DATA 16x16/apps/org.remmina.Remmina.png)
+set(ICON22_DATA 22x22/apps/org.remmina.Remmina.png)
+set(ICON24_DATA 24x24/apps/org.remmina.Remmina.png)
 set(ICON16_DATA_PANEL 16x16/apps/remmina-panel.png)
 set(ICON22_DATA_PANEL 22x22/apps/remmina-panel.png)
 set(ICON24_DATA_PANEL 24x24/apps/remmina-panel.png)
 set(ICON16_DATA_PANEL_LIGHT 16x16/apps/remmina-panel-inverted.png)
 set(ICON22_DATA_PANEL_LIGHT 22x22/apps/remmina-panel-inverted.png)
 set(ICON24_DATA_PANEL_LIGHT 24x24/apps/remmina-panel-inverted.png)
-set(ICON32_DATA 32x32/apps/remmina.png)
-set(ICON48_DATA 48x48/apps/remmina.png)
-set(ICON64_DATA 64x64/apps/remmina.png)
-set(ICON72_DATA 72x72/apps/remmina.png)
-set(ICON96_DATA 96x96/apps/remmina.png)
-set(ICON128_DATA 128x128/apps/remmina.png)
-set(ICONSVG_DATA scalable/apps/remmina.svg)
+set(ICON32_DATA 32x32/apps/org.remmina.Remmina.png)
+set(ICON48_DATA 48x48/apps/org.remmina.Remmina.png)
+set(ICON64_DATA 64x64/apps/org.remmina.Remmina.png)
+set(ICON72_DATA 72x72/apps/org.remmina.Remmina.png)
+set(ICON96_DATA 96x96/apps/org.remmina.Remmina.png)
+set(ICON128_DATA 128x128/apps/org.remmina.Remmina.png)
+set(ICONSVG_DATA scalable/apps/org.remmina.Remmina.svg)
 
 install(FILES ${ICON16_DATA} DESTINATION ${ICON16_DIR})
 install(FILES ${ICON22_DATA} DESTINATION ${ICON22_DIR})
@@ -79,19 +79,17 @@ install(FILES ${ICON128_DATA} DESTINATION ${ICON128_DIR})
 install(FILES ${ICONSVG_DATA} DESTINATION ${ICONSVG_DIR})
 
 set(REMMINA_BINARY_PATH ${CMAKE_INSTALL_FULL_BINDIR}/remmina)
-set(REMMINA_ICON "remmina")
+set(REMMINA_ICON "org.remmina.Remmina")
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina.desktop.in
-    ${CMAKE_CURRENT_BINARY_DIR}/remmina.desktop @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/org.remmina.Remmina.desktop.in
+    ${CMAKE_CURRENT_BINARY_DIR}/org.remmina.Remmina.desktop @ONLY)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina-file.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop @ONLY)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina.desktop
-    RENAME ${UNIQUE_APPNAME}.desktop
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.remmina.Remmina.desktop
     DESTINATION "${REMMINA_DATADIR}/applications")
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop
     DESTINATION "${REMMINA_DATADIR}/applications")
-install(FILES appdata.xml
-    RENAME ${UNIQUE_APPNAME}.appdata.xml
+install(FILES org.remmina.Remmina.appdata.xml
     DESTINATION "${REMMINA_DATADIR}/metainfo")
 # XML mime types
 set( SHARED_MIME_INFO_MINIMUM_VERSION "0.30" )
@@ -101,4 +99,3 @@ if( SHARED_MIME_INFO_FOUND )
     install( FILES remmina-mime.xml DESTINATION ${XDG_MIME_INSTALL_DIR} )
     update_xdg_mimetypes( ${XDG_MIME_INSTALL_DIR} )
 endif()
-
