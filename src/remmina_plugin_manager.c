@@ -56,7 +56,11 @@
 #include "remmina_masterthread_exec.h"
 #include "remmina/remmina_trace_calls.h"
 
+
 static GPtrArray* remmina_plugin_table = NULL;
+
+/* A GHashTable of GHashTables where to store the names of the encrypted settings */
+static GHashTable *encrypted_settings_cache = NULL;
 
 /* There can be only one secret plugin loaded */
 static RemminaSecretPlugin *remmina_secret_plugin = NULL;
@@ -70,9 +74,61 @@ static gint remmina_plugin_manager_compare_func(RemminaPlugin **a, RemminaPlugin
 	return g_strcmp0((*a)->name, (*b)->name);
 }
 
+static void htdestroy(gpointer ht)
+{
+	g_hash_table_unref(ht);
+}
+
+static void init_settings_cache(RemminaPlugin *plugin)
+{
+	TRACE_CALL(__func__);
+	RemminaProtocolPlugin *protocol_plugin;
+	const RemminaProtocolSetting* setting_iter;
+	GHashTable *pht;
+
+	/* This code make a encrypted setting cache only for protocol plugins */
+
+	if (plugin->type != REMMINA_PLUGIN_TYPE_PROTOCOL) {
+		return;
+	}
+
+	if (encrypted_settings_cache == NULL)
+		encrypted_settings_cache = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, htdestroy);
+
+	if (!(pht = g_hash_table_lookup(encrypted_settings_cache, plugin->name))) {
+		pht = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, NULL);
+		g_hash_table_insert(encrypted_settings_cache, g_strdup(plugin->name), pht);
+	}
+
+	/* Some settings are encrypted "by name" */
+	g_hash_table_insert(pht, g_strdup("ssh_password"), (gpointer)TRUE);
+	g_hash_table_insert(pht, g_strdup("ssh_passphrase"), (gpointer)TRUE);
+
+	/* Other settings are encrypted because of their type */
+	protocol_plugin = (RemminaProtocolPlugin *)plugin;
+	setting_iter = protocol_plugin->basic_settings;
+	if (setting_iter) {
+		while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
+			if (setting_iter->type == REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD)
+				g_hash_table_insert(pht, g_strdup(remmina_plugin_manager_get_canonical_setting_name(setting_iter)), (gpointer)TRUE);
+			setting_iter++;
+		}
+	}
+	setting_iter = protocol_plugin->advanced_settings;
+	if (setting_iter) {
+		while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
+			if (setting_iter->type == REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD)
+				g_hash_table_insert(pht, g_strdup(remmina_plugin_manager_get_canonical_setting_name(setting_iter)), (gpointer)TRUE);
+			setting_iter++;
+		}
+	}
+
+}
+
 static gboolean remmina_plugin_manager_register_plugin(RemminaPlugin *plugin)
 {
 	TRACE_CALL(__func__);
+
 	if (plugin->type == REMMINA_PLUGIN_TYPE_SECRET) {
 		if (remmina_secret_plugin) {
 			g_print("Remmina plugin %s (type=%s) bypassed.\n", plugin->name,
@@ -81,6 +137,8 @@ static gboolean remmina_plugin_manager_register_plugin(RemminaPlugin *plugin)
 		}
 		remmina_secret_plugin = (RemminaSecretPlugin*)plugin;
 	}
+	init_settings_cache(plugin);
+
 	g_ptr_array_add(remmina_plugin_table, plugin);
 	g_ptr_array_sort(remmina_plugin_table, (GCompareFunc)remmina_plugin_manager_compare_func);
 	/* g_print("Remmina plugin %s (type=%s) registered.\n", plugin->name, _(remmina_plugin_type_name[plugin->type])); */
@@ -419,6 +477,7 @@ RemminaSecretPlugin* remmina_plugin_manager_get_secret_plugin(void)
 
 gboolean remmina_plugin_manager_query_feature_by_type(RemminaPluginType ptype, const gchar* name, RemminaProtocolFeatureType ftype)
 {
+	TRACE_CALL(__func__);
 	const RemminaProtocolFeature *feature;
 	RemminaProtocolPlugin* plugin;
 
@@ -434,4 +493,24 @@ gboolean remmina_plugin_manager_query_feature_by_type(RemminaPluginType ptype, c
 	}
 	return FALSE;
 }
+
+gboolean remmina_plugin_manager_is_encrypted_setting(RemminaProtocolPlugin *pp, const char *setting)
+{
+	TRACE_CALL(__func__);
+	GHashTable *pht;
+
+	if (encrypted_settings_cache == NULL)
+		return FALSE;
+
+	if (!(pht = g_hash_table_lookup(encrypted_settings_cache, pp->name)))
+		return FALSE;
+
+	if (!g_hash_table_lookup(pht, setting))
+		return FALSE;
+
+	return TRUE;
+}
+
+
+
 

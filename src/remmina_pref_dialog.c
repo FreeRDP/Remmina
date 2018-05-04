@@ -156,6 +156,7 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	TRACE_CALL(__func__);
 	gboolean b;
 	GdkRGBA color;
+	gboolean rebuild_remmina_icon = FALSE;
 
 	remmina_pref.save_view_mode = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_options_remember_last_view_mode));
 	remmina_pref.fullscreen_on_auto = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_fullscreen_on_auto));
@@ -209,12 +210,16 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 
 	remmina_pref.applet_new_ontop = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_new_connection_on_top));
 	remmina_pref.applet_hide_count = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_hide_totals));
-	remmina_pref.dark_tray_icon = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_light_tray));
+	b = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_light_tray));
+	if (remmina_pref.dark_tray_icon != b) {
+		remmina_pref.dark_tray_icon = b;
+		rebuild_remmina_icon = TRUE;
+	}
 
 	b = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_disable_tray));
 	if (remmina_pref.disable_tray_icon != b) {
 		remmina_pref.disable_tray_icon = b;
-		remmina_icon_init();
+		rebuild_remmina_icon = TRUE;
 	}
 	if (b) {
 		b = FALSE;
@@ -222,6 +227,11 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 		b = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_applet_start_in_tray));
 	}
 	remmina_icon_set_autostart(b);
+
+	if (rebuild_remmina_icon) {
+		remmina_icon_init();
+		remmina_icon_populate_menu();
+	}
 
 	remmina_pref.hostkey = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_host_key));
 	remmina_pref.shortcutkey_fullscreen = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_fullscreen));

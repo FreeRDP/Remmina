@@ -263,18 +263,20 @@ remmina_icon_populate_menu(void)
 	GtkWidget *menu;
 	GtkWidget *menuitem;
 
-	menu = remmina_applet_menu_new();
-	app_indicator_set_menu(remmina_icon.icon, GTK_MENU(menu));
+	if (remmina_icon.icon && !remmina_pref.disable_tray_icon) {
+		menu = remmina_applet_menu_new();
+		app_indicator_set_menu(remmina_icon.icon, GTK_MENU(menu));
 
-	remmina_applet_menu_set_hide_count(REMMINA_APPLET_MENU(menu), remmina_pref.applet_hide_count);
-	remmina_applet_menu_populate(REMMINA_APPLET_MENU(menu));
-	remmina_icon_populate_extra_menu_item(menu);
+		remmina_applet_menu_set_hide_count(REMMINA_APPLET_MENU(menu), remmina_pref.applet_hide_count);
+		remmina_applet_menu_populate(REMMINA_APPLET_MENU(menu));
+		remmina_icon_populate_extra_menu_item(menu);
 
-	menuitem = gtk_separator_menu_item_new();
-	gtk_widget_show(menuitem);
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
+		menuitem = gtk_separator_menu_item_new();
+		gtk_widget_show(menuitem);
+		gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 
-	remmina_icon_populate_additional_menu_item(menu);
+		remmina_icon_populate_additional_menu_item(menu);
+	}
 }
 
 #else
@@ -480,8 +482,11 @@ void remmina_icon_init(void)
 #ifdef HAVE_LIBAPPINDICATOR
 		app_indicator_set_status(remmina_icon.icon, remmina_pref.disable_tray_icon ?
 			APP_INDICATOR_STATUS_PASSIVE : APP_INDICATOR_STATUS_ACTIVE);
+		/* With libappindicator we can also change the icon on the fly */
+		app_indicator_set_icon(remmina_icon.icon, remmina_panel);
 #else
 		gtk_status_icon_set_visible(remmina_icon.icon, !remmina_pref.disable_tray_icon);
+
 #endif
 	}
 	if (!remmina_icon.avahi) {

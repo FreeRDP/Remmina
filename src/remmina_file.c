@@ -176,32 +176,6 @@ static const RemminaProtocolSetting* find_protocol_setting(const gchar *name, Re
 
 }
 
-static gboolean is_encrypted_setting(const RemminaProtocolSetting* setting)
-{
-	TRACE_CALL(__func__);
-	if (setting != NULL &&
-	    (setting->type == REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD) ) {
-		return TRUE;
-	}
-	return FALSE;
-}
-
-static gboolean is_encrypted_setting_by_name(const gchar *setting_name, RemminaProtocolPlugin* protocol_plugin)
-{
-	TRACE_CALL(__func__);
-	const RemminaProtocolSetting* setting;
-
-	if (strcmp(setting_name, "ssh_password") == 0) {
-		return TRUE;
-	}
-	if (strcmp(setting_name, "ssh_passphrase") == 0) {
-		return TRUE;
-	}
-
-	setting = find_protocol_setting(setting_name, protocol_plugin);
-	return is_encrypted_setting(setting);
-}
-
 RemminaFile*
 remmina_file_load(const gchar *filename)
 {
@@ -246,37 +220,39 @@ remmina_file_load(const gchar *filename)
 		if (keys) {
 			for (i = 0; keys[i]; i++) {
 				key = keys[i];
-				if (is_encrypted_setting_by_name(key, protocol_plugin)) {
-					s = g_key_file_get_string(gkeyfile, "remmina", key, NULL);
-					if (g_strcmp0(s, ".") == 0) {
-						if (secret_service_available) {
-							sec = secret_plugin->get_password(remminafile, key);
-							remmina_file_set_string(remminafile, key, sec);
-							/* Annotate in spsettings that this value comes from secret_plugin */
-							g_hash_table_insert(remminafile->spsettings, g_strdup(key), NULL);
-							g_free(sec);
+				if (protocol_plugin) {
+					if (remmina_plugin_manager_is_encrypted_setting(protocol_plugin, key)) {
+						s = g_key_file_get_string(gkeyfile, "remmina", key, NULL);
+						if (g_strcmp0(s, ".") == 0) {
+							if (secret_service_available) {
+								sec = secret_plugin->get_password(remminafile, key);
+								remmina_file_set_string(remminafile, key, sec);
+								/* Annotate in spsettings that this value comes from secret_plugin */
+								g_hash_table_insert(remminafile->spsettings, g_strdup(key), NULL);
+								g_free(sec);
+							}else {
+								remmina_file_set_string(remminafile, key, s);
+							}
 						}else {
-							remmina_file_set_string(remminafile, key, s);
+							remmina_file_set_string_ref(remminafile, key, remmina_crypt_decrypt(s));
 						}
+						g_free(s);
 					}else {
-						remmina_file_set_string_ref(remminafile, key, remmina_crypt_decrypt(s));
-					}
-					g_free(s);
-				}else {
-					/* If we find "resolution", then we split it in two */
-					if (strcmp(key, "resolution") == 0) {
-						resolution_str = g_key_file_get_string(gkeyfile, "remmina", key, NULL);
-						if (remmina_public_split_resolution_string(resolution_str, &w, &h)) {
-							remmina_file_set_string_ref(remminafile, "resolution_width", g_strdup_printf("%i", w));
-							remmina_file_set_string_ref(remminafile, "resolution_height", g_strdup_printf("%i", h));
-						} else {
-							remmina_file_set_string_ref(remminafile, "resolution_width", NULL);
-							remmina_file_set_string_ref(remminafile, "resolution_height", NULL);
+						/* If we find "resolution", then we split it in two */
+						if (strcmp(key, "resolution") == 0) {
+							resolution_str = g_key_file_get_string(gkeyfile, "remmina", key, NULL);
+							if (remmina_public_split_resolution_string(resolution_str, &w, &h)) {
+								remmina_file_set_string_ref(remminafile, "resolution_width", g_strdup_printf("%i", w));
+								remmina_file_set_string_ref(remminafile, "resolution_height", g_strdup_printf("%i", h));
+							} else {
+								remmina_file_set_string_ref(remminafile, "resolution_width", NULL);
+								remmina_file_set_string_ref(remminafile, "resolution_height", NULL);
+							}
+							g_free(resolution_str);
+						}else {
+							remmina_file_set_string_ref(remminafile, key,
+								g_key_file_get_string(gkeyfile, "remmina", key, NULL));
 						}
-						g_free(resolution_str);
-					}else {
-						remmina_file_set_string_ref(remminafile, key,
-							g_key_file_get_string(gkeyfile, "remmina", key, NULL));
 					}
 				}
 			}
@@ -437,7 +413,7 @@ void remmina_file_save(RemminaFile *remminafile)
 
 	g_hash_table_iter_init(&iter, remminafile->settings);
 	while (g_hash_table_iter_next(&iter, (gpointer*)&key, (gpointer*)&value)) {
-		if (is_encrypted_setting_by_name(key, protocol_plugin)) {
+		if (remmina_plugin_manager_is_encrypted_setting(protocol_plugin, key)) {
 			if (remminafile->filename && g_strcmp0(remminafile->filename, remmina_pref_file)) {
 				if (secret_service_available) {
 					if (value && value[0]) {
@@ -573,7 +549,7 @@ void remmina_file_unsave_password(RemminaFile *remminafile)
 			setting_iter = protocol_plugin->basic_settings;
 			if (setting_iter) {
 				while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
-					if (is_encrypted_setting(setting_iter)) {
+					if (remmina_plugin_manager_is_encrypted_setting(protocol_plugin, setting_iter->name)) {
 						remmina_file_set_string(remminafile, remmina_plugin_manager_get_canonical_setting_name(setting_iter), NULL);
 					}
 					setting_iter++;
@@ -582,7 +558,7 @@ void remmina_file_unsave_password(RemminaFile *remminafile)
 			setting_iter = protocol_plugin->advanced_settings;
 			if (setting_iter) {
 				while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
-					if (is_encrypted_setting(setting_iter)) {
+					if (remmina_plugin_manager_is_encrypted_setting(protocol_plugin, setting_iter->name)) {
 						remmina_file_set_string(remminafile, remmina_plugin_manager_get_canonical_setting_name(setting_iter), NULL);
 					}
 					setting_iter++;
