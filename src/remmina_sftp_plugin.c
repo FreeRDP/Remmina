@@ -381,7 +381,8 @@ static RemminaProtocolPlugin remmina_plugin_sftp =
 	remmina_plugin_sftp_close_connection,           // Plugin close connection
 	remmina_plugin_sftp_query_feature,              // Query for available features
 	remmina_plugin_sftp_call_feature,               // Call a feature
-	NULL                                            // Send a keystroke
+	NULL,                                           // Send a keystroke
+	NULL                                            // No screenshot support available
 };
 
 void
