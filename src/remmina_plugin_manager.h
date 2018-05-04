@@ -53,6 +53,7 @@ RemminaFilePlugin* remmina_plugin_manager_get_import_file_handler(const gchar *f
 RemminaFilePlugin* remmina_plugin_manager_get_export_file_handler(RemminaFile *remminafile);
 RemminaSecretPlugin* remmina_plugin_manager_get_secret_plugin(void);
 const gchar *remmina_plugin_manager_get_canonical_setting_name(const RemminaProtocolSetting* setting);
+gboolean remmina_plugin_manager_is_encrypted_setting(RemminaProtocolPlugin *pp, const char *setting);
 
 extern RemminaPluginService remmina_plugin_manager_service;
 
