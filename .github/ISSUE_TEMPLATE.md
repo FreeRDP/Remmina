@@ -1,4 +1,7 @@
-Please give us some details about the systems you are using:
+**We support Remmina 1.2+ versions only.** 
+*Do not report bugs related to older Remmina versions!* 
+ 
+## Local System Description
 
 * Client (OS name and version):
 * Remmina version ( ```remmina --version``` ):
@@ -14,6 +17,10 @@ Please give us some details about the systems you are using:
   - [ ] Other (Please specify):
 * Gtk Backend (Wayland, Xorg, ??):
 
-**We support Remmina 1.2+ versions only.**
-*Do not report bugs related to older Remmina versions!*
+## Remote System Description
+
+* Server (OS name and version): 
+* Special notes regarding the remote system (i.e. gateways, tunnel, etc): 
+
+## Problem Description
 
