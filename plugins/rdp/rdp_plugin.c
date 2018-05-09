@@ -1056,6 +1056,13 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount is disabled."),
 					rfi->settings->ServerHostname );
 				break;
+#ifdef FREERDP_ERROR_SERVER_INSUFFICIENT_PRIVILEGES
+			/* https://msdn.microsoft.com/en-us/library/ee392247.aspx */
+			case FREERDP_ERROR_SERVER_INSUFFICIENT_PRIVILEGES:
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nUser has insufficient privileges."),
+					rfi->settings->ServerHostname );
+				break;
+#endif
 			case STATUS_ACCOUNT_RESTRICTION:
 #ifdef FREERDP_ERROR_CONNECT_ACCOUNT_RESTRICTION
 			case FREERDP_ERROR_CONNECT_ACCOUNT_RESTRICTION:
