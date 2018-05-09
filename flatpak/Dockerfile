@@ -1,5 +1,6 @@
 FROM fedora:latest
 RUN dnf install -yq flatpak flatpak-builder git xz
+RUN mkdir -m1777 -p /tmp
 RUN adduser -U -m user
 USER user
 WORKDIR /home/user
