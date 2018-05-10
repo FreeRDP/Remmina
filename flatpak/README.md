@@ -13,7 +13,7 @@ Build instructions
 
 2. Enable the Flatpak repository maintained by Flathub:
 
-        flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 3. Build Remmina:
 
