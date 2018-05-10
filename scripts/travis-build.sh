@@ -85,7 +85,7 @@ elif [ "$BUILD_TYPE" == "flatpak" ]; then
     if [ "$TRAVIS_BUILD_STEP" == "before_install" ]; then
         sudo service docker start || true
     elif [ "$TRAVIS_BUILD_STEP" == "install" ]; then
-        docker build -t flatpak ./flatpak
+        docker build -t flatpak -f ./flatpak/Dockerfile .
     elif [ "$TRAVIS_BUILD_STEP" == "script" ]; then
         docker run --privileged --env=FLATPAK_ARCH=$FLATPAK_ARCH flatpak
     fi
