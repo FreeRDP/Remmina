@@ -1,5 +1,5 @@
 FROM fedora:latest
-RUN dnf install -yq flatpak flatpak-builder git
+RUN dnf install -yq flatpak flatpak-builder fuse git
 RUN mkdir -m1777 -p /tmp
 RUN useradd -U -m remmina
 USER remmina
