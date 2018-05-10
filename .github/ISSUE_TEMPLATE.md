@@ -13,7 +13,6 @@
   - [ ] Compiled from sources.
   - [ ] Other - detail:
 * Desktop environment (GNOME, Unity, KDE, ..):
-* Connecting to (OS and version):
 * Plugin:
   - [X] RDP - freerdp version ( ```xfreerdp --version``` ):
   - [ ] VNC
