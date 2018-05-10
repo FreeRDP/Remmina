@@ -6,4 +6,4 @@ USER remmina
 WORKDIR /home/remmina
 COPY --chown=remmina:remmina . .
 RUN flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-CMD ["/bin/sh", "-xe", "flatpak-build.sh"]
+CMD ["/bin/sh", "-xe", "./flatpak/flatpak-build.sh"]
