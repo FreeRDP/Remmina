@@ -6,22 +6,22 @@
 * Client (OS name and version):
 * Remmina version ( ```remmina --version``` ):
 * Installation mean:
-  - [ X ] Distribution package.
-  - [  ] PPA.
-  - [  ] Snap.
-  - [  ] Flatpak.
-  - [  ] Compiled from sources.
-  - [  ] Other - detail:
+  - [X] Distribution package.
+  - [ ] PPA.
+  - [ ] Snap.
+  - [ ] Flatpak.
+  - [ ] Compiled from sources.
+  - [ ] Other - detail:
 * Desktop environment (GNOME, Unity, KDE, ..):
 * Connecting to (OS and version):
 * Plugin:
-  - [ X ] RDP - freerdp version ( ```xfreerdp --version``` ):
-  - [  ] VNC
-  - [  ] SSH
-  - [  ] SFTP
-  - [  ] SPICE
-  - [  ] EXEC
-  - [  ] Other (Please specify):
+  - [X] RDP - freerdp version ( ```xfreerdp --version``` ):
+  - [ ] VNC
+  - [ ] SSH
+  - [ ] SFTP
+  - [ ] SPICE
+  - [ ] EXEC
+  - [ ] Other (Please specify):
 * Gtk Backend (Wayland, Xorg, ??):
 
 ## Remote System Description
