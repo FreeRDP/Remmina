@@ -34,16 +34,11 @@
 set -xe
 
 TRAVIS_BUILD_STEP="$1"
-DOCKER_BUILDER_NAME='builder'
 
 if [ -z "$TRAVIS_BUILD_STEP" ]; then
     echo "No travis build step defined"
     exit 0
 fi
-
-function docker_exec() {
-    docker exec -i $DOCKER_BUILDER_NAME $*
-}
 
 if [ "$BUILD_TYPE" == "deb" ]; then
     if [ "$TRAVIS_BUILD_STEP" == "before_install" ]; then
@@ -95,6 +90,6 @@ elif [ "$BUILD_TYPE" == "flatpak" ]; then
         docker run --privileged --env=FLATPAK_ARCH=$FLATPAK_ARCH flatpak
     fi
 else
-    echo 'No $BUILD_TYPE defined'
+    echo 'No $BUILD_TYPE defined' >&2
     exit 1
 fi
