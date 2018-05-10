@@ -98,7 +98,9 @@ dnf copr enable hubbitus/remmina-next
 dnf upgrade --refresh 'remmina*' 'freerdp*'
 ```
 
-On Red Hat you can enable the EPEL repository:
+~~On Red Hat you can enable the EPEL repository:~~
+
+Note: Unlucky Remmina is not yet in EPEL, you can help submitting a request on the [Red Hat bugzilla](https://bugzilla.redhat.com/). 
 
 ```sh
 wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
