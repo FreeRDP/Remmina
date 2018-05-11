@@ -258,7 +258,7 @@ static gboolean remmina_nx_session_get_response(RemminaNXSession *nx)
 	TRACE_CALL(__func__);
 	struct timeval timeout;
 	ssh_channel ch[2];
-	ssh_buffer buffer;
+	gchar *buffer;
 	gint len;
 	gint is_stderr;
 
@@ -282,23 +282,17 @@ static gboolean remmina_nx_session_get_response(RemminaNXSession *nx)
 	if (is_stderr > 1)
 		return FALSE;
 
-	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-		buffer = buffer_new();
-	len = channel_read_buffer(nx->channel, buffer, len, is_stderr);
-	G_GNUC_END_IGNORE_DEPRECATIONS
+	buffer = g_malloc(sizeof(*buffer) * len);
+	len = ssh_channel_read(nx->channel, buffer, len, is_stderr);
 	if (len <= 0) {
 		remmina_nx_session_set_application_error(nx, "Channel closed.");
 		return FALSE;
 	}
 	if (len > 0) {
-		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-		g_string_append_len(nx->response, (const gchar*)buffer_get(buffer), len);
-		G_GNUC_END_IGNORE_DEPRECATIONS
+		g_string_append_len(nx->response, buffer, len);
 	}
 
-	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-	buffer_free(buffer);
-	G_GNUC_END_IGNORE_DEPRECATIONS
+	g_free(buffer);
 	return TRUE;
 }
 
@@ -833,9 +827,7 @@ static gpointer remmina_nx_session_tunnel_main_thread(gpointer data)
 			else if (len > 0) {
 				for (ptr = buffer, lenw = 0; len > 0; len -= lenw, ptr += lenw) {
 					ssh_set_fd_towrite(nx->session);
-					G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-						lenw = channel_write(channels[0], (char*)ptr, len);
-					G_GNUC_END_IGNORE_DEPRECATIONS
+					lenw = ssh_channel_write(channels[0], (char*)ptr, len);
 					if (lenw <= 0) {
 						nx->running = FALSE;
 						break;
@@ -848,9 +840,7 @@ static gpointer remmina_nx_session_tunnel_main_thread(gpointer data)
 			break;
 
 		if (channels_out[0] && socketbuffer_len <= 0) {
-			G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-				len = channel_read_nonblocking(channels_out[0], socketbuffer, sizeof(socketbuffer), 0);
-			G_GNUC_END_IGNORE_DEPRECATIONS
+			len = ssh_channel_read_nonblocking(channels_out[0], socketbuffer, sizeof(socketbuffer), 0);
 			if (len == SSH_ERROR || len == SSH_EOF) {
 				nx->running = FALSE;
 				break;
@@ -859,13 +849,11 @@ static gpointer remmina_nx_session_tunnel_main_thread(gpointer data)
 				socketbuffer_len = len;
 			} else {
 				/* Clean up the stderr buffer in case FreeNX send something there */
-				G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-					len = channel_read_nonblocking(channels_out[0], buffer, sizeof(buffer), 1);
+				len = ssh_channel_read_nonblocking(channels_out[0], buffer, sizeof(buffer), 1);
 				if (len == SSH_ERROR || len == SSH_EOF) {
 					nx->running = FALSE;
 					break;
 				}
-				G_GNUC_END_IGNORE_DEPRECATIONS
 			}
 		}
 
