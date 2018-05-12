@@ -34,6 +34,8 @@
  *
  */
 
+#define _GNU_SOURCE
+
 #include "rdp_plugin.h"
 #include "rdp_event.h"
 #include "rdp_graphics.h"
@@ -54,6 +56,8 @@
 #include <freerdp/error.h>
 #include <winpr/memory.h>
 
+#include <string.h>
+
 #define REMMINA_RDP_FEATURE_TOOL_REFRESH         1
 #define REMMINA_RDP_FEATURE_SCALE                2
 #define REMMINA_RDP_FEATURE_UNFOCUS              3
@@ -65,6 +69,8 @@
 
 RemminaPluginService* remmina_plugin_service = NULL;
 static char remmina_rdp_plugin_default_drive_name[] = "RemminaDisk";
+
+static BOOL gfx_h264_available = FALSE;
 
 static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 {
@@ -711,6 +717,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	rfi->settings->SoftwareGdi = TRUE;
 
+	/* Avoid using H264 modes if they are not available on libfreerdp */
+	if (!gfx_h264_available && (rfi->settings->ColorDepth == 65 || rfi->settings->ColorDepth == 66))
+		rfi->settings->ColorDepth = 64;	// Fallback to GFX RFX
+
 	if (rfi->settings->ColorDepth == 0) {
 		/* RFX (Win7)*/
 		rfi->settings->RemoteFxCodec = TRUE;
@@ -726,18 +736,14 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		/* /gfx:avc420 (Win8.1) */
 		rfi->settings->ColorDepth = 32;
 		rfi->settings->SupportGraphicsPipeline = TRUE;
-#ifdef WITH_GFX_H264
 		rfi->settings->GfxH264 = TRUE;
 		rfi->settings->GfxAVC444 = FALSE;
-#endif
 	} else if (rfi->settings->ColorDepth >= 66) {
 		/* /gfx:avc444 (Win10) */
 		rfi->settings->ColorDepth = 32;
 		rfi->settings->SupportGraphicsPipeline = TRUE;
-#ifdef WITH_GFX_H264
 		rfi->settings->GfxH264 = TRUE;
 		rfi->settings->GfxAVC444 = TRUE;
-#endif
 	}
 
 	rfi->settings->DesktopWidth = remmina_plugin_service->get_profile_remote_width(gp);
@@ -1095,7 +1101,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 						remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to initialize libfreerdp gdi") );
 						break;
 					case REMMINA_POSTCONNECT_ERROR_NO_H264:
-						remmina_plugin_service->protocol_plugin_set_error(gp, _("You requested an H264 GFX mode for server %s, but your libfreerdp does not support H264. Please check Color Depth settings."), rfi->settings->ServerHostname);
+						remmina_plugin_service->protocol_plugin_set_error(gp, _("You requested an H264 GFX mode for server %s, but your libfreerdp does not support H264. Please use a non-AVC Color Depth setting."), rfi->settings->ServerHostname);
 						break;
 				}
 				break;
@@ -1347,10 +1353,8 @@ static gboolean remmina_rdp_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 static gpointer colordepth_list[] =
 {
 	/* 1st one is the default in a new install */
-#ifdef WITH_GFX_H264
 	"66",  N_("GFX AVC444 (32 bpp)"),
 	"65",  N_("GFX AVC420 (32 bpp)"),
-#endif
 	"64",  N_("GFX RFX (32 bpp)"),
 	"0",  N_("RemoteFX (32 bpp)"),
 	"32", N_("True color (32 bpp)"),
@@ -1511,6 +1515,27 @@ static RemminaPrefPlugin remmina_rdps =
 	remmina_rdp_settings_new                        // Preferences body function
 };
 
+static char *buildconfig_strstr(const char *bc, const char *option)
+{
+	TRACE_CALL(__func__);
+
+	char *p, *n;
+
+	p = strcasestr(bc, option);
+	if (p == NULL)
+		return NULL;
+
+	if (p > bc && *(p-1) > ' ')
+		return NULL;
+
+	n = p + strlen(option);
+	if (*n > ' ')
+		return NULL;
+
+	return p;
+
+}
+
 G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService* service)
 {
 	int vermaj, vermin, verrev;
@@ -1544,6 +1569,26 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService* service)
 
 	if (!service->register_plugin((RemminaPlugin*)&remmina_rdps))
 		return FALSE;
+
+	if (buildconfig_strstr(freerdp_get_build_config(), "WITH_GFX_H264=ON"))
+		gfx_h264_available = TRUE;
+	else {
+		gfx_h264_available = FALSE;
+		/* Remove values 65 and 66 from colordepth_list array by shifting it */
+		gpointer *src, *dst;
+		dst = src = colordepth_list;
+		while(*src) {
+			if (strcmp(*src,"66") != 0 && strcmp(*src, "65") != 0) {
+				if (dst != src)  {
+					*dst = *src;
+					*(dst+1) = *(src+1);
+				}
+				dst += 2;
+			}
+			src += 2;
+		}
+		*dst = NULL;
+	}
 
 	remmina_rdp_settings_init();
 

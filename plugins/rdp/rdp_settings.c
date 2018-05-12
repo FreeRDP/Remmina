@@ -34,6 +34,7 @@
  *
  */
 
+
 #include "rdp_plugin.h"
 #include "rdp_settings.h"
 #include <freerdp/locale/keyboard.h>
