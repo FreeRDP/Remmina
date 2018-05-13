@@ -432,32 +432,6 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 	return True;
 }
 
-static UINT32 rf_get_local_color_format(rfContext* rfi, BOOL aligned)
-{
-	UINT32 DstFormat;
-	BOOL invert = aligned;
-
-	if (!rfi)
-		return 0;
-
-	if (rfi->bpp == 32)
-		DstFormat = (!invert) ? PIXEL_FORMAT_RGBA32 : PIXEL_FORMAT_BGRA32;
-	else if (rfi->bpp == 24) {
-		if (aligned)
-			DstFormat = (!invert) ? PIXEL_FORMAT_RGBX32 : PIXEL_FORMAT_BGRX32;
-		else
-			DstFormat = (!invert) ? PIXEL_FORMAT_RGB24 : PIXEL_FORMAT_BGR24;
-	}else if (rfi->bpp == 16)
-		DstFormat = (!invert) ? PIXEL_FORMAT_RGB16 : PIXEL_FORMAT_BGR16;
-	else if (rfi->bpp == 15)
-		DstFormat = (!invert) ? PIXEL_FORMAT_RGB16 : PIXEL_FORMAT_BGR16;
-	else
-		DstFormat = (!invert) ? PIXEL_FORMAT_RGBX32 : PIXEL_FORMAT_BGRX32;
-
-	return DstFormat;
-}
-
-
 static BOOL remmina_rdp_post_connect(freerdp* instance)
 {
 	TRACE_CALL(__func__);
@@ -465,6 +439,7 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	RemminaProtocolWidget* gp;
 	RemminaPluginRdpUiObject* ui;
 	rdpGdi* gdi;
+	UINT32 freerdp_local_color_format;
 
 	rfi = (rfContext*)instance->context;
 	gp = rfi->protocol_widget;
@@ -480,14 +455,18 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	rf_register_graphics(instance->context->graphics);
 
 	if (rfi->bpp == 32) {
+		freerdp_local_color_format = PIXEL_FORMAT_BGRA32;
 		rfi->cairo_format = CAIRO_FORMAT_ARGB32;
 	}else if (rfi->bpp == 24) {
+		/* CAIRO_FORMAT_RGB24 is 32bit aligned, so we map it to libfreerdp's PIXEL_FORMAT_BGRX32 */
+		freerdp_local_color_format = PIXEL_FORMAT_BGRX32;
 		rfi->cairo_format = CAIRO_FORMAT_RGB24;
 	}else {
+		freerdp_local_color_format = PIXEL_FORMAT_RGB16;
 		rfi->cairo_format = CAIRO_FORMAT_RGB16_565;
 	}
 
-	if (!gdi_init(instance, rf_get_local_color_format(rfi, TRUE))) {
+	if (!gdi_init(instance, freerdp_local_color_format)) {
 		rfi->postconnect_error = REMMINA_POSTCONNECT_ERROR_GDI_INIT;
 		return FALSE;
 	}
