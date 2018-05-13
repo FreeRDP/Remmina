@@ -22,6 +22,10 @@
   - [ ] EXEC
   - [ ] Other (Please specify):
 * Gtk Backend (Wayland, Xorg, ??):
+* Optional: include the output of the following commands at the end of this text:
+  - `remmina --full-version`
+  - `sudo lshw -C video`
+  - `uname -a`
 
 ## Remote System Description
 
