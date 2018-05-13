@@ -1465,6 +1465,9 @@ static const RemminaProtocolFeature remmina_rdp_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,	      0,					NULL,			    NULL,	NULL}
 };
 
+/* This will be filled with version info string */
+static char remmina_plugin_rdp_version[256];
+
 /* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_rdp =
 {
@@ -1472,7 +1475,7 @@ static RemminaProtocolPlugin remmina_rdp =
 	"RDP",                                          // Name
 	N_("RDP - Remote Desktop Protocol"),            // Description
 	GETTEXT_PACKAGE,                                // Translation domain
-	REMMINA_PLUGIN_RDP_VERSION,                     // Version number
+	remmina_plugin_rdp_version,                     // Version number
 	"remmina-rdp",                                  // Icon for normal connection
 	"remmina-rdp-ssh",                              // Icon for SSH connection
 	remmina_rdp_basic_settings,                     // Array for basic settings
@@ -1495,7 +1498,7 @@ static RemminaFilePlugin remmina_rdpf =
 	"RDPF",                                         // Name
 	N_("RDP - RDP File Handler"),                   // Description
 	GETTEXT_PACKAGE,                                // Translation domain
-	REMMINA_PLUGIN_RDP_VERSION,                     // Version number
+	remmina_plugin_rdp_version,                     // Version number
 	remmina_rdp_file_import_test,                   // Test import function
 	remmina_rdp_file_import,                        // Import function
 	remmina_rdp_file_export_test,                   // Test export function
@@ -1510,7 +1513,7 @@ static RemminaPrefPlugin remmina_rdps =
 	"RDPS",                                         // Name
 	N_("RDP - Preferences"),                        // Description
 	GETTEXT_PACKAGE,                                // Translation domain
-	REMMINA_PLUGIN_RDP_VERSION,                     // Version number
+	remmina_plugin_rdp_version,                     // Version number
 	"RDP",                                          // Label
 	remmina_rdp_settings_new                        // Preferences body function
 };
@@ -1589,6 +1592,15 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService* service)
 		}
 		*dst = NULL;
 	}
+
+	snprintf(remmina_plugin_rdp_version, sizeof(remmina_plugin_rdp_version),
+		"RDP Plugin: %s (git %s), Compiled with FreeRDP lib: %s (%s), Running with FreeRDP lib: %s (rev %s), H264: %s",
+		VERSION, REMMINA_GIT_REVISION,
+		FREERDP_VERSION_FULL, GIT_REVISION,
+		freerdp_get_version_string(),
+		freerdp_get_build_revision(),
+		gfx_h264_available ? "Yes" : "No"
+	);
 
 	remmina_rdp_settings_init();
 
