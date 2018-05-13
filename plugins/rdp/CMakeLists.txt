@@ -58,12 +58,6 @@ add_definitions(-DFREERDP_REQUIRED_MAJOR=${FREERDP_REQUIRED_MAJOR})
 add_definitions(-DFREERDP_REQUIRED_MINOR=${FREERDP_REQUIRED_MINOR})
 add_definitions(-DFREERDP_REQUIRED_REVISION=${FREERDP_REQUIRED_REVISION})
 
-option(WITH_GFX_H264 "Enable support for H264 modes in GFX" ON)
-if (WITH_GFX_H264)
-	add_definitions(-DWITH_GFX_H264)
-endif()
-
-
 add_library(remmina-plugin-rdp MODULE ${REMMINA_PLUGIN_RDP_SRCS})
 set_target_properties(remmina-plugin-rdp PROPERTIES PREFIX "")
 set_target_properties(remmina-plugin-rdp PROPERTIES NO_SONAME 1)
