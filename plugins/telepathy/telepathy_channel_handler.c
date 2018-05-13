@@ -199,7 +199,7 @@ static void remmina_tp_channel_handler_on_response(GtkDialog *dialog, gint respo
 		g_value_unset(&noop);
 		tp_svc_client_handler_return_from_handle_channels(chandler->context);
 	}else  {
-		error = g_error_new(TP_ERRORS, TP_ERROR_NOT_AVAILABLE, "Channel rejected by user.");
+		error = g_error_new(TP_ERROR, TP_ERROR_NOT_AVAILABLE, "Channel rejected by user.");
 		dbus_g_method_return_error(chandler->context, error);
 		g_error_free(error);
 		remmina_tp_channel_handler_free(chandler);
