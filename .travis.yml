@@ -36,8 +36,11 @@ sudo: required
 language: generic
 
 cache:
-  - directories:
+  ccache: true
+  directories:
     - .cache
+    # This should be not needed. Remove if .cache is correcthly used.
+    - .flatpak-builder/
 
 group: edge
 
