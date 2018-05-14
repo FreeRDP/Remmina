@@ -14,8 +14,6 @@ flatpak_builder()
 
 FLATPAK_MANIFEST_DIR=$(dirname "$(readlink -f "$0")")
 
-mkdir -p ~/.ccache/ && touch ~/.ccache/ccache.conf
-
 cd "${FLATPAK_MANIFEST_DIR}"
 
 # Build everything but Remmina module
