@@ -32,8 +32,12 @@
 #
 
 sudo: required
+
 language: generic
-cache: ccache
+
+cache:
+  - paths:
+    - .flatpak-builder/
 
 group: edge
 
