@@ -201,7 +201,7 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 	}else {
 		dialog = GTK_DIALOG(gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL,
 					GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
-			_("WARNING! Executing a command synchronously, may hung Remmina.\rDo you really want to continue?")));
+			_("WARNING! Executing a command synchronously, may hung Remmina.\nDo you really want to continue?")));
 		gint result = gtk_dialog_run (GTK_DIALOG (dialog));
 
 		switch (result)
@@ -226,14 +226,14 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 				&stderr_buffer,			    // STDERR
 				NULL,				    // Exit status
 				&error);
-	}
-	if (!error) {
-		remmina_plugin_service->log_printf("[%s] Command executed\n", PLUGIN_NAME);
-		gtk_text_buffer_set_text (gpdata->log_buffer, stdout_buffer, -1);
-	}else  {
-		g_warning("Command %s exited with error: %s\n", cmd, error->message);
-		gtk_text_buffer_set_text (gpdata->log_buffer, error->message, -1);
-		g_error_free(error);
+		if (!error) {
+			remmina_plugin_service->log_printf("[%s] Command executed\n", PLUGIN_NAME);
+			gtk_text_buffer_set_text (gpdata->log_buffer, stdout_buffer, -1);
+		}else  {
+			g_warning("Command %s exited with error: %s\n", cmd, error->message);
+			gtk_text_buffer_set_text (gpdata->log_buffer, error->message, -1);
+			g_error_free(error);
+		}
 	}
 
 	g_strfreev(argv);

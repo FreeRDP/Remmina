@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2018-05-16 16:37+0200\n"
+"POT-Creation-Date: 2018-05-16 22:02+0200\n"
 "PO-Revision-Date: 2018-05-16 13:46+0200\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <de@li.org>\n"
@@ -19,144 +19,141 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 "X-Generator: Poedit 2.0.7\n"
 
-#: plugins/nx/nx_session_manager.c:98
-msgid "Terminating"
-msgstr "Beende"
-
-#: plugins/nx/nx_session_manager.c:143
+#: plugins/spice/spice_plugin.c:262
 #, c-format
-msgid "NX Sessions on %s"
-msgstr "NX-Sitzungen auf %s"
+msgid "Disconnected from SPICE server %s."
+msgstr "Vom SPICE Server %s getrennt."
 
-#: plugins/nx/nx_session_manager.c:147
-msgid "Attach"
-msgstr "Verbinden"
+#: plugins/spice/spice_plugin.c:272
+msgid "Invalid password."
+msgstr "Ungültiges Passwort."
 
-#: plugins/nx/nx_session_manager.c:151
-msgid "Restore"
-msgstr "Wiederherstellen"
+#: plugins/spice/spice_plugin.c:277
+msgid "TLS connection error."
+msgstr "TLS Verbindungsfehler."
 
-#: plugins/nx/nx_session_manager.c:152
-msgid "Start"
-msgstr "Starten"
+#: plugins/spice/spice_plugin.c:283
+msgid "Connection to SPICE server failed."
+msgstr "Verbindung zum SPICE Server fehlgeschlagen."
 
-#: plugins/nx/nx_session_manager.c:156
-#: plugins/spice/spice_plugin_file_transfer.c:84 src/remmina_sftp_client.c:917
-#: src/remmina_init_dialog.c:88 src/remmina_file_editor.c:158
-#: src/remmina_file_editor.c:355 src/remmina_file_editor.c:1251
-#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
-#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
-msgid "_Cancel"
-msgstr "_Schließen"
-
-#: plugins/nx/nx_session_manager.c:158
-msgid "Terminate"
-msgstr "Beenden"
-
-#: plugins/nx/nx_session_manager.c:183 src/remmina_plugin_manager.c:416
-msgid "Type"
-msgstr "Typ"
-
-#: plugins/nx/nx_session_manager.c:190
-msgid "Display"
-msgstr "Anzeigen"
-
-#: plugins/nx/nx_session_manager.c:197
-msgid "Status"
-msgstr "Status"
-
-#: plugins/nx/nx_session_manager.c:204 src/remmina_file_editor.c:1359
-#: src/remmina_plugin_manager.c:410 data/ui/remmina_mpc.glade:314
-#: data/ui/remmina_main.glade:513
-msgid "Name"
-msgstr "Bezeichnung"
-
-#: plugins/nx/nx_plugin.c:584 plugins/xdmcp/xdmcp_plugin.c:263
-#, c-format
-msgid "Protocol %s is unavailable because GtkSocket only works under Xorg"
-msgstr ""
-"Protokoll %s ist nicht verfügbar, da GtkSocket nur unter Xorg funktioniert"
-
-#: plugins/nx/nx_plugin.c:677 plugins/vnc/vnc_plugin.c:1832
-#: plugins/rdp/rdp_settings.c:269 plugins/rdp/rdp_plugin.c:1357
-msgid "Poor (fastest)"
-msgstr "Niedrig (schnell)"
-
-#: plugins/nx/nx_plugin.c:678 plugins/vnc/vnc_plugin.c:1833
-#: plugins/rdp/rdp_settings.c:271 plugins/rdp/rdp_plugin.c:1358
-msgid "Medium"
-msgstr "Mittel"
-
-#: plugins/nx/nx_plugin.c:679 plugins/vnc/vnc_plugin.c:1834
-#: plugins/rdp/rdp_settings.c:273 plugins/rdp/rdp_plugin.c:1359
-msgid "Good"
-msgstr "Gut"
-
-#: plugins/nx/nx_plugin.c:680 plugins/vnc/vnc_plugin.c:1835
-#: plugins/rdp/rdp_settings.c:275 plugins/rdp/rdp_plugin.c:1360
-msgid "Best (slowest)"
-msgstr "Beste (langsam)"
-
-#: plugins/nx/nx_plugin.c:696 src/remmina_sftp_plugin.c:360
-#: src/remmina_file_editor.c:347 src/remmina_file_editor.c:354
-#: src/remmina_ssh_plugin.c:979
-msgid "Identity file"
-msgstr "Identitätsdatei"
-
-#: plugins/nx/nx_plugin.c:697 plugins/vnc/vnc_plugin.c:1852
-#: plugins/vnc/vnc_plugin.c:1872 plugins/rdp/rdp_plugin.c:1398
-#: src/remmina_sftp_plugin.c:357 src/remmina_init_dialog.c:344
-#: src/remmina_file_editor.c:894 src/remmina_ssh_plugin.c:976
-#: data/ui/remmina_mpc.glade:152
-msgid "User name"
-msgstr "Benutzername"
-
-#: plugins/nx/nx_plugin.c:698 plugins/vnc/vnc_plugin.c:1853
-#: plugins/vnc/vnc_plugin.c:1873 plugins/spice/spice_plugin.c:424
-#: plugins/rdp/rdp_plugin.c:1399 src/remmina_sftp_plugin.c:358
-#: src/remmina_ssh_plugin.c:977
+#: plugins/spice/spice_plugin.c:424 plugins/vnc/vnc_plugin.c:1853
+#: plugins/vnc/vnc_plugin.c:1873 plugins/rdp/rdp_plugin.c:1399
+#: plugins/nx/nx_plugin.c:698 src/remmina_ssh_plugin.c:977
+#: src/remmina_sftp_plugin.c:358
 msgid "User password"
 msgstr "Benutzerpasswort"
 
-#: plugins/nx/nx_plugin.c:700 plugins/vnc/vnc_plugin.c:1855
-#: plugins/vnc/vnc_plugin.c:1875 plugins/rdp/rdp_plugin.c:1419
-msgid "Quality"
-msgstr "Qualität"
+#: plugins/spice/spice_plugin.c:425
+msgid "Use TLS encryption"
+msgstr "TLS Verschlüsselung nutzen"
 
-#: plugins/nx/nx_plugin.c:701 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/rdp/rdp_plugin.c:1427 src/remmina_ssh_plugin.c:981
-msgid "Startup program"
-msgstr "Startprogramm"
+#: plugins/spice/spice_plugin.c:426
+msgid "Server CA certificate"
+msgstr "Server CA Zertifikat"
 
-#: plugins/nx/nx_plugin.c:716 plugins/vnc/vnc_plugin.c:1893
+#: plugins/spice/spice_plugin.c:427 plugins/rdp/rdp_plugin.c:1403
+msgid "Share folder"
+msgstr "Ordner freigeben"
+
 #: plugins/spice/spice_plugin.c:442 plugins/spice/spice_plugin.c:458
-#: plugins/rdp/rdp_plugin.c:1435
+#: plugins/vnc/vnc_plugin.c:1893 plugins/rdp/rdp_plugin.c:1435
+#: plugins/nx/nx_plugin.c:716
 msgid "Disable clipboard sync"
 msgstr "Abgleich der Zwischenablage abschalten"
 
-#: plugins/nx/nx_plugin.c:717 plugins/vnc/vnc_plugin.c:1894
-msgid "Disable encryption"
-msgstr "Verschlüsselung deaktivieren"
-
-#: plugins/nx/nx_plugin.c:718 plugins/xdmcp/xdmcp_plugin.c:370
-msgid "Use local cursor"
-msgstr "Lokalen Mauszeiger verwenden"
-
-#: plugins/nx/nx_plugin.c:719 plugins/vnc/vnc_plugin.c:1896
-#: plugins/spice/spice_plugin.c:443 plugins/rdp/rdp_plugin.c:1434
+#: plugins/spice/spice_plugin.c:443 plugins/vnc/vnc_plugin.c:1896
+#: plugins/rdp/rdp_plugin.c:1434 plugins/nx/nx_plugin.c:719
 #: src/remmina_ssh_plugin.c:1008
 msgid "Disable password storing"
 msgstr "Deaktiviere Passwortspeicherung"
 
-#: plugins/nx/nx_plugin.c:727 plugins/vnc/vnc_plugin.c:1911
-#: plugins/xdmcp/xdmcp_plugin.c:380 plugins/spice/spice_plugin.c:459
-#: plugins/rdp/rdp_plugin.c:1449
+#: plugins/spice/spice_plugin.c:444
+msgid "Enable audio channel"
+msgstr "Klang aktivieren"
+
+#: plugins/spice/spice_plugin.c:445 plugins/spice/spice_plugin.c:457
+msgid "Resize guest to match window size"
+msgstr "Gast an Fenstergröße anpassen"
+
+#: plugins/spice/spice_plugin.c:446 plugins/rdp/rdp_plugin.c:1432
+msgid "Share smartcard"
+msgstr "Smartcard teilen"
+
+#: plugins/spice/spice_plugin.c:447 plugins/spice/spice_plugin.c:456
+#: plugins/vnc/vnc_plugin.c:1892 plugins/vnc/vnc_plugin.c:1907
+msgid "View only"
+msgstr "Nur anzeigen"
+
+#: plugins/spice/spice_plugin.c:459 plugins/vnc/vnc_plugin.c:1911
+#: plugins/xdmcp/xdmcp_plugin.c:380 plugins/rdp/rdp_plugin.c:1449
+#: plugins/nx/nx_plugin.c:727
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Sende Strg+Alt+Entfernen"
 
-#: plugins/nx/nx_plugin.c:736
-msgid "NX - NX Technology"
-msgstr "NX - NX Technologie"
+#: plugins/spice/spice_plugin.c:460 plugins/spice/spice_plugin_usb.c:51
+msgid "Select USB devices for redirection"
+msgstr "USB Gerät zur Weiterleitung auswählen"
+
+#: plugins/spice/spice_plugin.c:469
+msgid "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr "SPICE - Simple Protocol for Independent Computing Environments"
+
+#: plugins/spice/spice_plugin_usb.c:54
+msgid "_Close"
+msgstr "_Schließen"
+
+#: plugins/spice/spice_plugin_usb.c:94
+msgid "USB redirection error"
+msgstr "USB Weiterleitungsfehler"
+
+#: plugins/spice/spice_plugin_file_transfer.c:82
+msgid "File Transfers"
+msgstr "Dateiübertragung"
+
+#: plugins/spice/spice_plugin_file_transfer.c:84
+#: plugins/nx/nx_session_manager.c:156 src/remmina_file_editor.c:158
+#: src/remmina_file_editor.c:355 src/remmina_file_editor.c:1251
+#: src/remmina_init_dialog.c:88 src/remmina_sftp_client.c:917
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
+msgid "_Cancel"
+msgstr "_Schließen"
+
+#: plugins/spice/spice_plugin_file_transfer.c:219
+msgid "Transfer error"
+msgstr "Übertragungsfehler"
+
+#: plugins/spice/spice_plugin_file_transfer.c:220
+#, c-format
+msgid "%s: %s"
+msgstr ""
+
+#: plugins/spice/spice_plugin_file_transfer.c:223
+msgid "Transfer completed"
+msgstr "Übertragung abgeschlossen"
+
+#: plugins/spice/spice_plugin_file_transfer.c:224
+#, c-format
+msgid "File %s transferred successfully"
+msgstr "Datei %s erfolgreich übertragen"
+
+#: plugins/exec/exec_plugin.c:158
+msgid "You did not set any command to be executed"
+msgstr "Sie haben kein Kommando zur Ausführung angegeben"
+
+#: plugins/exec/exec_plugin.c:204
+msgid ""
+"WARNING! Executing a command synchronously, may hung Remmina.\n"
+"Do you really want to continue?"
+msgstr ""
+
+#: plugins/exec/exec_plugin.c:264
+msgid "Command"
+msgstr "Kommando"
+
+#: plugins/exec/exec_plugin.c:265
+msgid "Asynchrounous execution"
+msgstr "Asynchrone Ausführung"
 
 #: plugins/vnc/vnc_plugin.c:940
 msgid "Unable to connect to VNC server"
@@ -206,14 +203,47 @@ msgstr "Echtfarben (24 bpp)"
 msgid "True color (32 bpp)"
 msgstr "Echtfarben (32 bpp)"
 
+#: plugins/vnc/vnc_plugin.c:1832 plugins/rdp/rdp_plugin.c:1357
+#: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:677
+msgid "Poor (fastest)"
+msgstr "Niedrig (schnell)"
+
+#: plugins/vnc/vnc_plugin.c:1833 plugins/rdp/rdp_plugin.c:1358
+#: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:678
+msgid "Medium"
+msgstr "Mittel"
+
+#: plugins/vnc/vnc_plugin.c:1834 plugins/rdp/rdp_plugin.c:1359
+#: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:679
+msgid "Good"
+msgstr "Gut"
+
+#: plugins/vnc/vnc_plugin.c:1835 plugins/rdp/rdp_plugin.c:1360
+#: plugins/rdp/rdp_settings.c:275 plugins/nx/nx_plugin.c:680
+msgid "Best (slowest)"
+msgstr "Beste (langsam)"
+
 #: plugins/vnc/vnc_plugin.c:1851
 msgid "Repeater"
 msgstr "Repeater"
+
+#: plugins/vnc/vnc_plugin.c:1852 plugins/vnc/vnc_plugin.c:1872
+#: plugins/rdp/rdp_plugin.c:1398 plugins/nx/nx_plugin.c:697
+#: src/remmina_file_editor.c:894 src/remmina_init_dialog.c:344
+#: src/remmina_ssh_plugin.c:976 src/remmina_sftp_plugin.c:357
+#: data/ui/remmina_mpc.glade:152
+msgid "User name"
+msgstr "Benutzername"
 
 #: plugins/vnc/vnc_plugin.c:1854 plugins/vnc/vnc_plugin.c:1874
 #: plugins/xdmcp/xdmcp_plugin.c:368 plugins/rdp/rdp_plugin.c:1402
 msgid "Color depth"
 msgstr "Farbtiefe"
+
+#: plugins/vnc/vnc_plugin.c:1855 plugins/vnc/vnc_plugin.c:1875
+#: plugins/rdp/rdp_plugin.c:1419 plugins/nx/nx_plugin.c:700
+msgid "Quality"
+msgstr "Qualität"
 
 #: plugins/vnc/vnc_plugin.c:1871
 msgid "Listen on port"
@@ -223,10 +253,9 @@ msgstr "Auf Port hören"
 msgid "Show remote cursor"
 msgstr "Entfernten Mauszeiger anzeigen"
 
-#: plugins/vnc/vnc_plugin.c:1892 plugins/vnc/vnc_plugin.c:1907
-#: plugins/spice/spice_plugin.c:447 plugins/spice/spice_plugin.c:456
-msgid "View only"
-msgstr "Nur anzeigen"
+#: plugins/vnc/vnc_plugin.c:1894 plugins/nx/nx_plugin.c:717
+msgid "Disable encryption"
+msgstr "Verschlüsselung deaktivieren"
 
 #: plugins/vnc/vnc_plugin.c:1895 plugins/vnc/vnc_plugin.c:1908
 msgid "Disable server input"
@@ -253,6 +282,12 @@ msgstr ""
 msgid "Run out of available local X display number."
 msgstr "Keine lokale X Anzeige verfügbar."
 
+#: plugins/xdmcp/xdmcp_plugin.c:263 plugins/nx/nx_plugin.c:584
+#, c-format
+msgid "Protocol %s is unavailable because GtkSocket only works under Xorg"
+msgstr ""
+"Protokoll %s ist nicht verfügbar, da GtkSocket nur unter Xorg funktioniert"
+
 #: plugins/xdmcp/xdmcp_plugin.c:347
 msgid "Default"
 msgstr "Standard"
@@ -273,6 +308,15 @@ msgstr "Hohe Farbtiefe (16 Bit)"
 msgid "True color (24 bit)"
 msgstr "Echtfarben (24 Bit)"
 
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1427
+#: plugins/nx/nx_plugin.c:701 src/remmina_ssh_plugin.c:981
+msgid "Startup program"
+msgstr "Startprogramm"
+
+#: plugins/xdmcp/xdmcp_plugin.c:370 plugins/nx/nx_plugin.c:718
+msgid "Use local cursor"
+msgstr "Lokalen Mauszeiger verwenden"
+
 #: plugins/xdmcp/xdmcp_plugin.c:371
 msgid "Disconnect after one session"
 msgstr "Die Verbindung nach einer Sitzung trennen"
@@ -284,197 +328,6 @@ msgstr "Warte auf TCP Verbindung"
 #: plugins/xdmcp/xdmcp_plugin.c:389
 msgid "XDMCP - X Remote Session"
 msgstr "XDMCP – Entfernte X-Sitzung"
-
-#: plugins/exec/exec_plugin.c:158
-msgid "You did not set any command to be executed"
-msgstr "Sie haben kein Kommando zur Ausführung angegeben"
-
-#: plugins/exec/exec_plugin.c:204
-msgid ""
-"WARNING! Executing a command synchronously, may hung Remmina.\rDo you really "
-"want to continue?"
-msgstr ""
-
-#: plugins/exec/exec_plugin.c:264
-msgid "Command"
-msgstr "Kommando"
-
-#: plugins/exec/exec_plugin.c:265
-msgid "Asynchrounous execution"
-msgstr "Asynchrone Ausführung"
-
-#: plugins/spice/spice_plugin_file_transfer.c:82
-msgid "File Transfers"
-msgstr "Dateiübertragung"
-
-#: plugins/spice/spice_plugin_file_transfer.c:219
-msgid "Transfer error"
-msgstr "Übertragungsfehler"
-
-#: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format
-msgid "%s: %s"
-msgstr ""
-
-#: plugins/spice/spice_plugin_file_transfer.c:223
-msgid "Transfer completed"
-msgstr "Übertragung abgeschlossen"
-
-#: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format
-msgid "File %s transferred successfully"
-msgstr "Datei %s erfolgreich übertragen"
-
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:460
-msgid "Select USB devices for redirection"
-msgstr "USB Gerät zur Weiterleitung auswählen"
-
-#: plugins/spice/spice_plugin_usb.c:54
-msgid "_Close"
-msgstr "_Schließen"
-
-#: plugins/spice/spice_plugin_usb.c:94
-msgid "USB redirection error"
-msgstr "USB Weiterleitungsfehler"
-
-#: plugins/spice/spice_plugin.c:262
-#, c-format
-msgid "Disconnected from SPICE server %s."
-msgstr "Vom SPICE Server %s getrennt."
-
-#: plugins/spice/spice_plugin.c:272
-msgid "Invalid password."
-msgstr "Ungültiges Passwort."
-
-#: plugins/spice/spice_plugin.c:277
-msgid "TLS connection error."
-msgstr "TLS Verbindungsfehler."
-
-#: plugins/spice/spice_plugin.c:283
-msgid "Connection to SPICE server failed."
-msgstr "Verbindung zum SPICE Server fehlgeschlagen."
-
-#: plugins/spice/spice_plugin.c:425
-msgid "Use TLS encryption"
-msgstr "TLS Verschlüsselung nutzen"
-
-#: plugins/spice/spice_plugin.c:426
-msgid "Server CA certificate"
-msgstr "Server CA Zertifikat"
-
-#: plugins/spice/spice_plugin.c:427 plugins/rdp/rdp_plugin.c:1403
-msgid "Share folder"
-msgstr "Ordner freigeben"
-
-#: plugins/spice/spice_plugin.c:444
-msgid "Enable audio channel"
-msgstr "Klang aktivieren"
-
-#: plugins/spice/spice_plugin.c:445 plugins/spice/spice_plugin.c:457
-msgid "Resize guest to match window size"
-msgstr "Gast an Fenstergröße anpassen"
-
-#: plugins/spice/spice_plugin.c:446 plugins/rdp/rdp_plugin.c:1432
-msgid "Share smartcard"
-msgstr "Smartcard teilen"
-
-#: plugins/spice/spice_plugin.c:469
-msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr "SPICE - Simple Protocol for Independent Computing Environments"
-
-#: plugins/telepathy/telepathy_channel_handler.c:237
-#, c-format
-msgid ""
-"%s wants to share his/her desktop.\n"
-"Do you accept the invitation?"
-msgstr ""
-"%s möchte seinen Rechner für Sie freigeben.\n"
-"Möchten Sie die Einladung annehmen?"
-
-#: plugins/telepathy/telepathy_channel_handler.c:240
-msgid "Desktop sharing invitation"
-msgstr "Einladung zur Freigabe des Rechners"
-
-#: plugins/telepathy/telepathy_plugin.c:57
-msgid "Telepathy - Desktop Sharing"
-msgstr "Telepathy - Rechnerfreigabe"
-
-#: plugins/rdp/rdp_settings.c:200
-msgid "<Auto detect>"
-msgstr "<Automatisch feststellen>"
-
-#: plugins/rdp/rdp_settings.c:233
-msgid "<Not set>"
-msgstr "<Nicht konfiguriert>"
-
-#: plugins/rdp/rdp_settings.c:267
-msgid "<Choose a quality level to edit...>"
-msgstr "<Wählen Sie eine Qualitätsstufe zur Bearbeitung...>"
-
-#: plugins/rdp/rdp_settings.c:418
-msgid "Keyboard layout"
-msgstr "Tastenbelegung"
-
-#: plugins/rdp/rdp_settings.c:443
-msgid "Use client keyboard mapping"
-msgstr "Tastenbelegung des Clients verwenden"
-
-#: plugins/rdp/rdp_settings.c:453
-msgid "Quality settings"
-msgstr "Qualitätsstufe"
-
-#: plugins/rdp/rdp_settings.c:473
-msgid "Wallpaper"
-msgstr "Hintergrundbild"
-
-#: plugins/rdp/rdp_settings.c:480
-msgid "Window drag"
-msgstr "Fenster ziehen"
-
-#: plugins/rdp/rdp_settings.c:487
-msgid "Menu animation"
-msgstr "Menüanimationen"
-
-#: plugins/rdp/rdp_settings.c:494
-msgid "Theme"
-msgstr "Thema"
-
-#: plugins/rdp/rdp_settings.c:501
-msgid "Cursor shadow"
-msgstr "Mauszeigerschatten"
-
-#: plugins/rdp/rdp_settings.c:508
-msgid "Cursor blinking"
-msgstr "Blinkender Mauszeiger"
-
-#: plugins/rdp/rdp_settings.c:515
-msgid "Font smoothing"
-msgstr "Schriftartenglättung"
-
-#: plugins/rdp/rdp_settings.c:522
-msgid "Composition"
-msgstr "Arbeitsplatzeffekte"
-
-#: plugins/rdp/rdp_settings.c:532
-msgid "Remote scale factor"
-msgstr "Remoteskalierungsfaktor"
-
-#: plugins/rdp/rdp_settings.c:545
-msgid "Desktop scale factor %"
-msgstr "Schreibtischskalierungsfaktor %"
-
-#: plugins/rdp/rdp_settings.c:556
-msgid "Device scale factor %"
-msgstr "Geräteskalierungsfaktor %"
-
-#: plugins/rdp/rdp_settings.c:578
-msgid "Desktop orientation"
-msgstr "Bildschirmausrichtung"
-
-#: plugins/rdp/rdp_event.c:297
-#, c-format
-msgid "Reconnection in progress. Attempt %d of %d..."
-msgstr "Wiederherstellen der Verbindung. Versuch %d von %d..."
 
 #: plugins/rdp/rdp_plugin.c:1018
 #, c-format
@@ -712,6 +565,153 @@ msgstr "RDP – Einstellungen"
 msgid "Export connection in Windows .rdp file format"
 msgstr "Verbindung als Windows-*.rdp-Datei exportieren"
 
+#: plugins/rdp/rdp_event.c:297
+#, c-format
+msgid "Reconnection in progress. Attempt %d of %d..."
+msgstr "Wiederherstellen der Verbindung. Versuch %d von %d..."
+
+#: plugins/rdp/rdp_settings.c:200
+msgid "<Auto detect>"
+msgstr "<Automatisch feststellen>"
+
+#: plugins/rdp/rdp_settings.c:233
+msgid "<Not set>"
+msgstr "<Nicht konfiguriert>"
+
+#: plugins/rdp/rdp_settings.c:267
+msgid "<Choose a quality level to edit...>"
+msgstr "<Wählen Sie eine Qualitätsstufe zur Bearbeitung...>"
+
+#: plugins/rdp/rdp_settings.c:418
+msgid "Keyboard layout"
+msgstr "Tastenbelegung"
+
+#: plugins/rdp/rdp_settings.c:443
+msgid "Use client keyboard mapping"
+msgstr "Tastenbelegung des Clients verwenden"
+
+#: plugins/rdp/rdp_settings.c:453
+msgid "Quality settings"
+msgstr "Qualitätsstufe"
+
+#: plugins/rdp/rdp_settings.c:473
+msgid "Wallpaper"
+msgstr "Hintergrundbild"
+
+#: plugins/rdp/rdp_settings.c:480
+msgid "Window drag"
+msgstr "Fenster ziehen"
+
+#: plugins/rdp/rdp_settings.c:487
+msgid "Menu animation"
+msgstr "Menüanimationen"
+
+#: plugins/rdp/rdp_settings.c:494
+msgid "Theme"
+msgstr "Thema"
+
+#: plugins/rdp/rdp_settings.c:501
+msgid "Cursor shadow"
+msgstr "Mauszeigerschatten"
+
+#: plugins/rdp/rdp_settings.c:508
+msgid "Cursor blinking"
+msgstr "Blinkender Mauszeiger"
+
+#: plugins/rdp/rdp_settings.c:515
+msgid "Font smoothing"
+msgstr "Schriftartenglättung"
+
+#: plugins/rdp/rdp_settings.c:522
+msgid "Composition"
+msgstr "Arbeitsplatzeffekte"
+
+#: plugins/rdp/rdp_settings.c:532
+msgid "Remote scale factor"
+msgstr "Remoteskalierungsfaktor"
+
+#: plugins/rdp/rdp_settings.c:545
+msgid "Desktop scale factor %"
+msgstr "Schreibtischskalierungsfaktor %"
+
+#: plugins/rdp/rdp_settings.c:556
+msgid "Device scale factor %"
+msgstr "Geräteskalierungsfaktor %"
+
+#: plugins/rdp/rdp_settings.c:578
+msgid "Desktop orientation"
+msgstr "Bildschirmausrichtung"
+
+#: plugins/nx/nx_session_manager.c:98
+msgid "Terminating"
+msgstr "Beende"
+
+#: plugins/nx/nx_session_manager.c:143
+#, c-format
+msgid "NX Sessions on %s"
+msgstr "NX-Sitzungen auf %s"
+
+#: plugins/nx/nx_session_manager.c:147
+msgid "Attach"
+msgstr "Verbinden"
+
+#: plugins/nx/nx_session_manager.c:151
+msgid "Restore"
+msgstr "Wiederherstellen"
+
+#: plugins/nx/nx_session_manager.c:152
+msgid "Start"
+msgstr "Starten"
+
+#: plugins/nx/nx_session_manager.c:158
+msgid "Terminate"
+msgstr "Beenden"
+
+#: plugins/nx/nx_session_manager.c:183 src/remmina_plugin_manager.c:416
+msgid "Type"
+msgstr "Typ"
+
+#: plugins/nx/nx_session_manager.c:190
+msgid "Display"
+msgstr "Anzeigen"
+
+#: plugins/nx/nx_session_manager.c:197
+msgid "Status"
+msgstr "Status"
+
+#: plugins/nx/nx_session_manager.c:204 src/remmina_file_editor.c:1359
+#: src/remmina_plugin_manager.c:410 data/ui/remmina_mpc.glade:314
+#: data/ui/remmina_main.glade:513
+msgid "Name"
+msgstr "Bezeichnung"
+
+#: plugins/nx/nx_plugin.c:696 src/remmina_file_editor.c:347
+#: src/remmina_file_editor.c:354 src/remmina_ssh_plugin.c:979
+#: src/remmina_sftp_plugin.c:360
+msgid "Identity file"
+msgstr "Identitätsdatei"
+
+#: plugins/nx/nx_plugin.c:736
+msgid "NX - NX Technology"
+msgstr "NX - NX Technologie"
+
+#: plugins/telepathy/telepathy_channel_handler.c:237
+#, c-format
+msgid ""
+"%s wants to share his/her desktop.\n"
+"Do you accept the invitation?"
+msgstr ""
+"%s möchte seinen Rechner für Sie freigeben.\n"
+"Möchten Sie die Einladung annehmen?"
+
+#: plugins/telepathy/telepathy_channel_handler.c:240
+msgid "Desktop sharing invitation"
+msgstr "Einladung zur Freigabe des Rechners"
+
+#: plugins/telepathy/telepathy_plugin.c:57
+msgid "Telepathy - Desktop Sharing"
+msgstr "Telepathy - Rechnerfreigabe"
+
 #: src/remmina_ftp_client.c:398
 msgid "Choose download location"
 msgstr "Downloadverzeichnis wählen"
@@ -803,6 +803,237 @@ msgstr "Rechte"
 msgid "Progress"
 msgstr "Fortschritt"
 
+#: src/remmina_exec.c:227
+#, c-format
+msgid "Plugin %s is not registered."
+msgstr "Plugin %s ist nicht registriert."
+
+#: src/remmina_file_editor.c:74
+msgid ""
+"<tt><big>Supported formats\n"
+"* server\n"
+"* server:port\n"
+"* [server]:port</big></tt>"
+msgstr ""
+"<tt><big>Unterstützte Formate\n"
+"* server\n"
+"* server:port\n"
+"* [server]:port</big></tt>"
+
+#: src/remmina_file_editor.c:81
+msgid ""
+"<tt><big>* command in PATH args %h\n"
+"* /path/to/foo -options %h %u\n"
+"* %h is substituted with the server name\n"
+"* %t is substituted with the SSH server name\n"
+"* %u is substituted with the user name\n"
+"* %U is substituted with the SSH user name\n"
+"* %p is substituted with Remmina profile name\n"
+"* %g is substituted with Remmina profile group name\n"
+"Do not run in background if you want the command to be executed before "
+"connecting.\n"
+"</big></tt>"
+msgstr ""
+"<tt><big>* Kommando in PATH Argumente %h\n"
+"* /pfad/zu/kommando -optionen %h %u\n"
+"* %h wird ersetzt durch den Servernamen\n"
+"* %t wird ersetzt durch den SSH Servernamen\n"
+"* %u wird ersetzt durch den Benutzernamen\n"
+"* %U wird ersetzt durch den SSH Benutzernamen\n"
+"* %p wird ersetzt durch den Remmina Profilnamen\n"
+"* %g wird ersetzt durch den Remmina Profil-Gruppennamen\n"
+"Wenn Sie das Kommando vor der Verbindung starten wollen darf nicht im "
+"Hintergrund gestartet werden.\n"
+"</big></tt>"
+
+#: src/remmina_file_editor.c:94
+msgid ""
+"<tt><big>Supported formats\n"
+"* :port\n"
+"* server\n"
+"* server:port\n"
+"* [server]:port\n"
+"* username@server:port (SSH protocol only)</big></tt>"
+msgstr ""
+"<tt><big>Unterstützte Formate\n"
+"* :port\n"
+"* server\n"
+"* server:port\n"
+"* [server]:port\n"
+"* benutzername@server:port (nur SSH Prtokoll)</big></tt>"
+
+#: src/remmina_file_editor.c:156
+msgid "Choose a Remote Desktop Server"
+msgstr "Einen Server für eine entfernte Arbeitsfläche auswählen"
+
+#: src/remmina_file_editor.c:159 src/remmina_init_dialog.c:88
+#: src/remmina_plugin_manager.c:392
+msgid "_OK"
+msgstr "_Ok"
+
+#: src/remmina_file_editor.c:356
+msgid "_Open"
+msgstr "Ö_ffnen"
+
+#: src/remmina_file_editor.c:395 src/remmina_file_editor.c:854
+#: src/remmina_protocol_widget.c:1215 data/ui/remmina_main.glade:549
+msgid "Server"
+msgstr "Server"
+
+#: src/remmina_file_editor.c:419
+#, c-format
+msgid "Browse the network to find a %s server"
+msgstr "Durchsuche das Netzwerk nach einem %s Server"
+
+#: src/remmina_file_editor.c:485 src/remmina_pref_dialog.c:82
+#: data/ui/remmina_preferences.glade:240
+msgid "Resolutions"
+msgstr "Bildschirmauflösungen"
+
+#: src/remmina_file_editor.c:485 src/remmina_pref_dialog.c:82
+msgid "Configure the available resolutions"
+msgstr "Definieren Sie die möglichen Bildschirmauflösungen"
+
+#: src/remmina_file_editor.c:504
+msgid "Resolution"
+msgstr "Bildschirmauflösung"
+
+#: src/remmina_file_editor.c:510
+msgid "Use window size"
+msgstr "Aktuelle Fenstergröße verwenden"
+
+#: src/remmina_file_editor.c:510
+msgid "Use client resolution"
+msgstr "Auflösung des Clients verwenden"
+
+#: src/remmina_file_editor.c:519 src/remmina_file_editor.c:833
+msgid "Custom"
+msgstr "Benutzerdefiniert"
+
+#: src/remmina_file_editor.c:711
+msgid "Keyboard mapping"
+msgstr "Tastaturlayout"
+
+#: src/remmina_file_editor.c:807
+msgid "Enable SSH tunnel"
+msgstr "SSH-Tunnel aktivieren"
+
+#: src/remmina_file_editor.c:814
+msgid "Tunnel via loopback address"
+msgstr "Tunnel über Loopback-Adresse"
+
+#: src/remmina_file_editor.c:824
+#, c-format
+msgid "Same server at port %i"
+msgstr "Server auf Port %i"
+
+#: src/remmina_file_editor.c:873 src/remmina_ssh_plugin.c:999
+msgid "Character set"
+msgstr "Zeichensatz"
+
+#: src/remmina_file_editor.c:887
+msgid "SSH Authentication"
+msgstr "SSH-Authentifizierung"
+
+#: src/remmina_file_editor.c:897
+msgid "SSH Agent (automatic)"
+msgstr "SSH Agent (automatisch)"
+
+#: src/remmina_file_editor.c:904 src/remmina_init_dialog.c:358
+#: src/remmina_ssh_plugin.c:877 src/remmina_sftp_plugin.c:325
+#: src/remmina_protocol_widget.c:977 data/ui/remmina_mpc.glade:113
+msgid "Password"
+msgstr "Passwort"
+
+#: src/remmina_file_editor.c:911 src/remmina_ssh_plugin.c:880
+#: src/remmina_sftp_plugin.c:328
+msgid "Public key (automatic)"
+msgstr "Öffentlicher Schlüssel (automatisch)"
+
+#: src/remmina_file_editor.c:968
+msgid "Basic"
+msgstr "Basis"
+
+#: src/remmina_file_editor.c:974
+msgid "Advanced"
+msgstr "Erweitert"
+
+#: src/remmina_file_editor.c:1179
+msgid "Default settings saved."
+msgstr "Standard-Einstellungen wurden gespeichert."
+
+#: src/remmina_file_editor.c:1249
+msgid "Remote Desktop Preference"
+msgstr "Vorgabe für entfernte Arbeitsflächen"
+
+#: src/remmina_file_editor.c:1255
+msgid "Save as Default"
+msgstr "Als Standard speichern"
+
+#: src/remmina_file_editor.c:1258 src/remmina_main.c:886
+msgid "_Save"
+msgstr "_Speichern"
+
+#: src/remmina_file_editor.c:1263 data/ui/remmina_main.glade:77
+#: data/ui/remmina_main.glade:78
+msgid "Connect"
+msgstr "Verbinden"
+
+#: src/remmina_file_editor.c:1266
+msgid "_Save and Connect"
+msgstr "_Speichern und verbinden"
+
+#: src/remmina_file_editor.c:1356
+msgid "Profile"
+msgstr "Profil"
+
+#: src/remmina_file_editor.c:1373
+msgid "Quick Connect"
+msgstr "Schnellverbindung"
+
+#: src/remmina_file_editor.c:1397
+#, c-format
+msgid "Use '%s' as subgroup delimiter"
+msgstr "Benutze '%s' als Untergruppenteiler"
+
+#: src/remmina_file_editor.c:1402 src/remmina_plugin_manager.c:69
+msgid "Protocol"
+msgstr "Protokoll"
+
+#: src/remmina_file_editor.c:1416
+msgid "Pre Command"
+msgstr "Befehle vor Verbindung ausführen"
+
+#: src/remmina_file_editor.c:1434
+msgid "Post Command"
+msgstr "Befehle nach Verbindung ausführen"
+
+#: src/remmina_file_editor.c:1498 src/remmina_file_editor.c:1516
+#: src/remmina_connection_window.c:3745
+#, c-format
+msgid "File %s not found."
+msgstr "Datei %s nicht gefunden."
+
+#: src/remmina_about.c:53
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Daniel Dietrich https://launchpad.net/~shaddowy2\n"
+"  Dennis Baudys https://launchpad.net/~thecondordb\n"
+"  Eduard Gotwig https://launchpad.net/~gotwig\n"
+"  Envy https://launchpad.net/~element-oxygen\n"
+"  Felix Kaechele https://launchpad.net/~felix-kaechele\n"
+"  Hendrik Knackstedt https://launchpad.net/~hennekn\n"
+"  J. Ruprecht https://launchpad.net/~jrgenruprecht\n"
+"  Markus Neubauer https://launchpad.net/~neubauer-i\n"
+"  Martin Lettner https://launchpad.net/~m.lettner\n"
+"  Spencer Young https://launchpad.net/~spenceryoung\n"
+"  Tobias Bannert https://launchpad.net/~toba\n"
+"  jstarek https://launchpad.net/~juergen-starek\n"
+"  mkuerschner https://launchpad.net/~michael-kuerschner\n"
+"  sme https://launchpad.net/~05kosh\n"
+"  staedtler-przyborski https://launchpad.net/~staedtler-przyborski"
+
 #: src/remmina_applet_menu_item.c:121
 msgid "Discovered"
 msgstr "Erkannt"
@@ -811,137 +1042,172 @@ msgstr "Erkannt"
 msgid "New Connection"
 msgstr "Neue Verbindung"
 
-#: src/remmina_protocol_widget.c:139
-#, c-format
-msgid "Connecting to '%s'..."
-msgstr "Verbindung zu »%s« wird hergestellt …"
-
-#: src/remmina_protocol_widget.c:225
-#, c-format
-msgid "Protocol plugin %s is not installed."
-msgstr "Protokoll Plugin %s ist nicht installiert"
-
-#: src/remmina_protocol_widget.c:257
-msgid "Open Secure Shell in New Terminal..."
-msgstr "Secure-Shell (SSH) in einem neuen Terminal starten …"
-
-#: src/remmina_protocol_widget.c:263
-msgid "Open Secure File Transfer..."
-msgstr "Sichere Dateiübertragung (SFTP) öffnen …"
-
-#: src/remmina_protocol_widget.c:590
-#, c-format
-msgid "Connecting to SSH server %s..."
-msgstr "Verbinde zu SSH-Server %s  …"
-
-#: src/remmina_protocol_widget.c:657 src/remmina_protocol_widget.c:811
-#, c-format
-msgid "Connecting to %s through SSH tunnel..."
-msgstr "Verbinde zu %s über den SSH-Tunnel …"
-
-#: src/remmina_protocol_widget.c:695
-#, c-format
-msgid "Waiting for an incoming SSH tunnel at port %i..."
-msgstr "Warte auf eingehende SSH-Tunnel Verbindung über Port %i …"
-
-#: src/remmina_protocol_widget.c:738
-#, c-format
-msgid "Command %s not found on SSH server"
-msgstr "Befehl %s wurde auf dem SSH Server nicht gefunden."
-
-#: src/remmina_protocol_widget.c:742
-#, c-format
-msgid "Command %s failed on SSH server (status = %i)."
-msgstr "Befehl %s ist auf dem SSH Server fehlgeschlagen  (Status == %i)."
-
-#: src/remmina_protocol_widget.c:749
-#, c-format
-msgid "Failed to execute command: %s"
-msgstr "Fehler beim Ausführen des Befehls: %s"
-
-#: src/remmina_protocol_widget.c:968
-#, c-format
-msgid "%s password"
-msgstr "%s Passwort"
-
-#: src/remmina_protocol_widget.c:971 src/remmina_ssh.c:419
-msgid "SSH password"
-msgstr "SSH-Passwort"
-
-#: src/remmina_protocol_widget.c:974 src/remmina_ssh.c:426
-msgid "SSH private key passphrase"
-msgstr "SSH-Passphrase für privaten Schlüssel"
-
-#: src/remmina_protocol_widget.c:977 src/remmina_sftp_plugin.c:325
-#: src/remmina_init_dialog.c:358 src/remmina_file_editor.c:904
-#: src/remmina_ssh_plugin.c:877 data/ui/remmina_mpc.glade:113
-msgid "Password"
-msgstr "Passwort"
-
-#: src/remmina_protocol_widget.c:1145
-#, c-format
-msgid "Listening on port %i for an incoming %s connection..."
-msgstr "Lausche auf Port %i auf eine eingehende %s-Verbindung …"
-
-#: src/remmina_protocol_widget.c:1153
-msgid "Authentication failed. Trying to reconnect..."
-msgstr "Authentifizierung fehlgeschlagen. Versuche erneut zu verbinden…"
-
-#: src/remmina_protocol_widget.c:1215 src/remmina_file_editor.c:395
-#: src/remmina_file_editor.c:854 data/ui/remmina_main.glade:549
-msgid "Server"
-msgstr "Server"
-
-#: src/remmina_main.c:589
-#, c-format
-msgid "Total %i item."
-msgid_plural "Total %i items."
-msgstr[0] "Gesamt %i Objekt."
-msgstr[1] "Gesamt %i Objekte."
-
-#: src/remmina_main.c:725
-#, c-format
-msgid "Are you sure to delete '%s'"
-msgstr "Soll '%s' wirklich gelöscht werden"
-
-#: src/remmina_main.c:836
+#: src/remmina_connection_window.c:537
 #, c-format
 msgid ""
-"Unable to import:\n"
-"%s"
+"There are %i active connections in the current window. Are you sure to close?"
 msgstr ""
-"Import fehlgeschlagen:\n"
-"%s"
+"Es sind %i Verbindungen in diesem Fenster aktiv. Sind Sie sicher, dass Sie "
+"das Fenster schließen möchten?"
 
-#: src/remmina_main.c:863 data/ui/remmina_main.glade:180
-#: data/ui/remmina_main.glade:181 data/ui/remmina_main.glade:323
-msgid "Import"
-msgstr "Importieren"
+#: src/remmina_connection_window.c:1180
+msgid "Viewport fullscreen mode"
+msgstr "Vollbildmodus"
 
-#: src/remmina_main.c:886 src/remmina_file_editor.c:1258
-msgid "_Save"
-msgstr "_Speichern"
+#: src/remmina_connection_window.c:1189
+msgid "Scrolled fullscreen mode"
+msgstr "Vollbildmodus mit Scollbar"
 
-#: src/remmina_main.c:893
-msgid "This protocol does not support exporting."
-msgstr "Das Protokoll unterstützt den Export nicht."
+#: src/remmina_connection_window.c:1258
+msgid "Keep aspect ratio when scaled"
+msgstr "Bildformat im skalierten Modus beibehalten"
 
-#: src/remmina_main.c:1099 src/remmina_icon.c:475 src/remmina_icon.c:476
-msgid "Remmina Remote Desktop Client"
-msgstr "Remmina - Zugriff auf entfernte Arbeitsflächen"
+#: src/remmina_connection_window.c:1267
+msgid "Fill client window when scaled"
+msgstr "Client-Fenster füllen wenn skaliert"
 
-#: src/remmina_chat_window.c:178
+#: src/remmina_connection_window.c:1680 src/remmina_pref_dialog.c:140
+#: data/ui/remmina_preferences.glade:252
+msgid "Keystrokes"
+msgstr "Tastenkombinationen"
+
+#: src/remmina_connection_window.c:1776
+msgid ""
+"Warning: screenshot is scaled or distorted. Disable scaling to have better "
+"screenshot."
+msgstr ""
+"Warnung: Bildschirmfoto ist skaliert oder verzerrt. Skalierung abschalten, "
+"um bessere Bildschirmfotos zu bekommen."
+
+#: src/remmina_connection_window.c:1825
+msgid "Screenshot taken"
+msgstr "Screenshot wurde erzeugt"
+
+#: src/remmina_connection_window.c:1885
+msgid "Resize the window to fit in remote resolution"
+msgstr "Das Fenster auf die entfernte Bildschirmauflösung anpassen"
+
+#: src/remmina_connection_window.c:1895 data/ui/remmina_preferences.glade:737
+msgid "Toggle fullscreen mode"
+msgstr "Vollbildmodus umschalten"
+
+#: src/remmina_connection_window.c:1937 data/ui/remmina_preferences.glade:793
+msgid "Switch tab pages"
+msgstr "Wechsel zwischen den Reitern"
+
+#: src/remmina_connection_window.c:1951
+msgid "Toggle dynamic resolution update"
+msgstr "Dynamische Auflösung umschalten"
+
+#: src/remmina_connection_window.c:1961 data/ui/remmina_preferences.glade:834
+msgid "Toggle scaled mode"
+msgstr "Skalierten Modus umschalten"
+
+#: src/remmina_connection_window.c:1997
+msgid "Grab all keyboard events"
+msgstr "Alle Tastatureingaben abfangen"
+
+#: src/remmina_connection_window.c:2006 data/ui/remmina_main.glade:42
+#: data/ui/remmina_main.glade:43
+msgid "Preferences"
+msgstr "Einstellungen"
+
+#: src/remmina_connection_window.c:2014 src/remmina_connection_window.c:2015
+msgid "Tools"
+msgstr "Werkzeuge"
+
+#: src/remmina_connection_window.c:2027 data/ui/remmina_preferences.glade:975
+msgid "Screenshot"
+msgstr "Bildschirmfoto"
+
+#: src/remmina_connection_window.c:2034 data/ui/remmina_preferences.glade:890
+msgid "Minimize window"
+msgstr "Fenster minimieren"
+
+#: src/remmina_connection_window.c:2041 data/ui/remmina_preferences.glade:919
+msgid "Disconnect"
+msgstr "Verbindung trennen"
+
+#: src/remmina_init_dialog.c:268
 #, c-format
-msgid "Chat with %s"
-msgstr "Chat mit %s"
+msgid "Save %s"
+msgstr "%s speichern"
 
-#: src/remmina_chat_window.c:230
-msgid "_Send"
-msgstr "_Senden"
+#: src/remmina_init_dialog.c:389
+msgid "Save password"
+msgstr "Passwort speichern"
 
-#: src/remmina_chat_window.c:240
-msgid "_Clear"
-msgstr "_Leeren"
+#: src/remmina_init_dialog.c:455
+msgid "Certificate Details:"
+msgstr "Zertifikatsdetails:"
+
+#: src/remmina_init_dialog.c:468 src/remmina_init_dialog.c:570
+msgid "Subject:"
+msgstr "Betreff:"
+
+#: src/remmina_init_dialog.c:480 src/remmina_init_dialog.c:583
+msgid "Issuer:"
+msgstr "Aussteller:"
+
+#: src/remmina_init_dialog.c:492
+msgid "Fingerprint:"
+msgstr "Fingerprint:"
+
+#: src/remmina_init_dialog.c:505
+msgid "Accept Certificate?"
+msgstr "Zertifikat akzeptieren?"
+
+#: src/remmina_init_dialog.c:557
+msgid "Certificate Changed! Details:"
+msgstr "Zertifikat geändert! Details:"
+
+#: src/remmina_init_dialog.c:595
+msgid "Old Fingerprint:"
+msgstr "Alter Fingerprint:"
+
+#: src/remmina_init_dialog.c:607
+msgid "New Fingerprint:"
+msgstr "Neuer Fingerprint:"
+
+#: src/remmina_init_dialog.c:620
+msgid "Accept Changed Certificate?"
+msgstr "Zertifikatsänderungen akzeptieren?"
+
+#: src/remmina_init_dialog.c:717
+msgid "CA certificate"
+msgstr "CA-Zertifikat"
+
+#: src/remmina_init_dialog.c:718
+msgid "CA CRL"
+msgstr "CA CRL"
+
+#: src/remmina_init_dialog.c:719
+msgid "Client certificate"
+msgstr "Client-Zertifikat"
+
+#: src/remmina_init_dialog.c:720
+msgid "Client key"
+msgstr "Client-Schlüssel"
+
+#: src/remmina_init_dialog.c:790
+msgid "Do you trust the new public key?"
+msgstr "Vertrauen Sie dem neuen öffentlichen Schlüssel?"
+
+#: src/remmina_init_dialog.c:818
+msgid "The server is unknown. The public key fingerprint is:"
+msgstr ""
+"Der Server ist unbekannt. Der Fingerabdruck des öffentlichen Schlüssels ist:"
+
+#: src/remmina_init_dialog.c:827
+msgid ""
+"WARNING: The server has changed its public key. This means either you are "
+"under attack,\n"
+"or the administrator has changed the key. The new public key fingerprint is:"
+msgstr ""
+"WARNUNG: Der Server hat den öffentlichen Schlüssel geändert. Das bedeutet, "
+"dass Sie entweder angegriffen\n"
+"werden, oder dass der Systemverwalter den Schlüssel geändert hat. Der neue "
+"öffentliche Schlüssel ist:"
 
 #: src/remmina.c:78
 msgid "Show about dialog"
@@ -991,68 +1257,132 @@ msgstr "Zeige die Version"
 msgid "Show the application's version, including the pulgin versions"
 msgstr "Zeige die Programmversionen inklusive aller Plugin-Versionsn"
 
-#: src/remmina_sftp_plugin.c:326 src/remmina_ssh_plugin.c:878
-msgid "SSH identity file"
-msgstr "SSH-Identity Datei"
+#: src/remmina_icon.c:135
+msgid "Open Main Window"
+msgstr "Hauptfenster öffnen"
 
-#: src/remmina_sftp_plugin.c:327 src/remmina_ssh_plugin.c:879
-msgid "SSH agent"
-msgstr "SSH Agent"
+#: src/remmina_icon.c:140
+msgid "_Preferences"
+msgstr "_Einstellungen"
 
-#: src/remmina_sftp_plugin.c:328 src/remmina_file_editor.c:911
-#: src/remmina_ssh_plugin.c:880
-msgid "Public key (automatic)"
-msgstr "Öffentlicher Schlüssel (automatisch)"
+#: src/remmina_icon.c:145 data/ui/remmina_main.glade:52
+#: data/ui/remmina_main.glade:53
+msgid "_About"
+msgstr "_Über"
 
-#: src/remmina_sftp_plugin.c:329 src/remmina_ssh_plugin.c:881
-msgid "Kerberos (GSSAPI)"
-msgstr "Kerberos (GSSAPI)"
+#: src/remmina_icon.c:155
+msgid "Enable Service Discovery"
+msgstr "Erkennungsdienst aktivieren"
 
-#: src/remmina_sftp_plugin.c:338
-msgid "Show Hidden Files"
-msgstr "Versteckte Dateien anzeigen"
+#: src/remmina_icon.c:168 data/ui/remmina_main.glade:33
+#: data/ui/remmina_main.glade:34
+msgid "_Quit"
+msgstr "_Beenden"
 
-#: src/remmina_sftp_plugin.c:340
-msgid "Overwrite all"
-msgstr "Alles überschreiben"
+#: src/remmina_icon.c:351 src/remmina_icon.c:534
+msgid "Remmina Applet"
+msgstr "Remmina-Applet"
 
-#: src/remmina_sftp_plugin.c:359 src/remmina_ssh_plugin.c:978
-msgid "Authentication type"
-msgstr "Authentifizierungstyp"
+#: src/remmina_icon.c:353 src/remmina_icon.c:536
+msgid "Connect to remote desktops through the applet menu"
+msgstr "Mit dem Applet-Menü zur entfernten Arbeitsflächen verbinden"
 
-#: src/remmina_sftp_plugin.c:361 src/remmina_ssh_plugin.c:980
-msgid "Private key passphrase"
-msgstr "Passphrase zum privaten Schlüssel"
+#: src/remmina_icon.c:475 src/remmina_icon.c:476 src/remmina_main.c:1099
+msgid "Remmina Remote Desktop Client"
+msgstr "Remmina - Zugriff auf entfernte Arbeitsflächen"
 
-#: src/remmina_sftp_plugin.c:370
-msgid "SFTP - Secure File Transfer"
-msgstr "SFTP - Sichere Dateiübertragung"
+#: src/remmina_ssh.c:203
+#, c-format
+msgid "SSH password authentication failed: %s"
+msgstr "SSH Passwort-Authentifizierung ist fehlgeschlagen: %s"
 
-#: src/remmina_public.c:638
-msgid "Please enter format 'widthxheight'."
-msgstr "Bitte im Format »BreitexHöhe« eingeben."
+#: src/remmina_ssh.c:221 src/remmina_ssh.c:230 src/remmina_ssh.c:238
+#, c-format
+msgid "SSH public key authentication failed: %s"
+msgstr ""
+"SSH-Authentifizierung mit öffentlichem Schlüssel ist fehlgeschlagen: %s"
 
-#: src/remmina_pref_dialog.c:82 src/remmina_file_editor.c:485
-#: data/ui/remmina_preferences.glade:240
-msgid "Resolutions"
-msgstr "Bildschirmauflösungen"
+#: src/remmina_ssh.c:222
+msgid "SSH Key file not yet set."
+msgstr "SSH Schlüssel-Datei wurde noch nicht festgelegt"
 
-#: src/remmina_pref_dialog.c:82 src/remmina_file_editor.c:485
-msgid "Configure the available resolutions"
-msgstr "Definieren Sie die möglichen Bildschirmauflösungen"
+#: src/remmina_ssh.c:253
+#, c-format
+msgid "SSH automatic public key authentication failed: %s"
+msgstr ""
+"SSH-Authentifizierung mit automatischem öffentlichem Schlüssel ist "
+"fehlgeschlagen: %s"
 
-#: src/remmina_pref_dialog.c:129
-msgid "Recent lists cleared."
-msgstr "Liste zuletzt geöffneter Verbindungen geleert."
+#: src/remmina_ssh.c:269
+#, c-format
+msgid "SSH public key authentication with ssh agent failed: %s"
+msgstr "SSH-Authentifizierung mittels SSH Agent ist fehlgeschlagen: %s"
 
-#: src/remmina_pref_dialog.c:140 src/remmina_connection_window.c:1680
-#: data/ui/remmina_preferences.glade:252
-msgid "Keystrokes"
-msgstr "Tastenkombinationen"
+#: src/remmina_ssh.c:288
+#, c-format
+msgid "SSH Kerberos/GSSAPI authentication failed: %s"
+msgstr "SSH Kerberos/GSSAPI authentifizierung is fehlgeschlagen: %s"
 
-#: src/remmina_pref_dialog.c:140 data/ui/remmina_preferences.glade:262
-msgid "Configure the keystrokes"
-msgstr "Tastenkombinationen konfigurieren"
+#: src/remmina_ssh.c:418
+#, c-format
+msgid "Authenticating %s's password to SSH server %s..."
+msgstr "Überprüfe Passwort des Benutzers %s am SSH-Server %s …"
+
+#: src/remmina_ssh.c:419 src/remmina_protocol_widget.c:971
+msgid "SSH password"
+msgstr "SSH-Passwort"
+
+#: src/remmina_ssh.c:425
+#, c-format
+msgid "Authenticating %s's identity to SSH server %s..."
+msgstr "Überprüfe die Identität von Benutzer %s am SSH-Server %s …"
+
+#: src/remmina_ssh.c:426 src/remmina_protocol_widget.c:974
+msgid "SSH private key passphrase"
+msgstr "SSH-Passphrase für privaten Schlüssel"
+
+#: src/remmina_ssh.c:430
+#, c-format
+msgid "Authenticating %s's Kerberos to SSH server %s..."
+msgstr "Authenitifiziere über %s's Kerberos Ticket am SSH-Server %s..."
+
+#: src/remmina_ssh.c:431
+msgid "SSH Kerberos/GSSAPI"
+msgstr "SSH Kerberos/GSSAPI"
+
+#: src/remmina_ssh.c:560
+#, c-format
+msgid "Failed to startup SSH session: %s"
+msgstr "Fehler beim Starten der SSH-Verbindung: %s"
+
+#: src/remmina_ssh.c:932
+#, c-format
+msgid "Failed to connect to the SSH tunnel destination: %s"
+msgstr "Fehler beim Verbinden mit dem Ziel des SSH-Tunnels: %s"
+
+#: src/remmina_ssh.c:1002
+#, c-format
+msgid "Failed to execute %s on SSH server : %%s"
+msgstr "Ausführen von %s auf dem SSH Server ist fehlgeschlagen : %%s"
+
+#: src/remmina_ssh.c:1033 src/remmina_ssh.c:1055
+#, c-format
+msgid "Failed to request port forwarding : %s"
+msgstr "Anfrage zur Portweiterleitung ist fehlgeschlagen: %s"
+
+#: src/remmina_ssh.c:1093
+msgid "No response from the server."
+msgstr "Keine Rückmeldung vom Server."
+
+#: src/remmina_ssh.c:1482
+#, c-format
+msgid "Failed to create sftp session: %s"
+msgstr "Start der SFTP-Sitzung fehlgeschlagen: %s"
+
+#: src/remmina_ssh.c:1486
+#, c-format
+msgid "Failed to initialize sftp session: %s"
+msgstr "Initialisierung der SFTP-Sitzung fehlgeschlagen: %s"
 
 #: src/remmina_mpchange.c:232
 msgid "The passwords do not match"
@@ -1078,6 +1408,165 @@ msgid "%d password changed."
 msgid_plural "%d passwords changed."
 msgstr[0] "%d Passwort wurde geändert"
 msgstr[1] "%d Passwörter wurden geändert"
+
+#: src/remmina_plugin_manager.c:69
+msgid "Entry"
+msgstr "Eintrag"
+
+#: src/remmina_plugin_manager.c:69
+msgid "File"
+msgstr "Datei"
+
+#: src/remmina_plugin_manager.c:69
+msgid "Tool"
+msgstr "Werkzeug"
+
+#: src/remmina_plugin_manager.c:69
+msgid "Preference"
+msgstr "Einstellung"
+
+#: src/remmina_plugin_manager.c:69
+msgid "Secret"
+msgstr "Geheimnis"
+
+#: src/remmina_plugin_manager.c:392 data/ui/remmina_main.glade:60
+#: data/ui/remmina_main.glade:61 data/ui/remmina_main.glade:341
+msgid "Plugins"
+msgstr "Plugins"
+
+#: src/remmina_plugin_manager.c:422
+msgid "Description"
+msgstr "Beschreibung"
+
+#: src/remmina_plugin_manager.c:428
+msgid "Version"
+msgstr "Version"
+
+#: src/remmina_ssh_plugin.c:473
+#, c-format
+msgid "%s"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:490
+msgid "Terminal content saved under"
+msgstr "Inhalt des Terminals wurde gespeichert unter"
+
+#: src/remmina_ssh_plugin.c:547
+msgid "Select All (Host+a)"
+msgstr "Alles auswählen (Host+a)"
+
+#: src/remmina_ssh_plugin.c:548
+msgid "Copy (Host+c)"
+msgstr "Kopieren (Host+c)"
+
+#: src/remmina_ssh_plugin.c:549
+msgid "Paste (Host+v)"
+msgstr "Einfügen (Host+v)"
+
+#: src/remmina_ssh_plugin.c:550
+msgid "Save session to file"
+msgstr "Sitzung in Datei speichern"
+
+#: src/remmina_ssh_plugin.c:878 src/remmina_sftp_plugin.c:326
+msgid "SSH identity file"
+msgstr "SSH-Identity Datei"
+
+#: src/remmina_ssh_plugin.c:879 src/remmina_sftp_plugin.c:327
+msgid "SSH agent"
+msgstr "SSH Agent"
+
+#: src/remmina_ssh_plugin.c:881 src/remmina_sftp_plugin.c:329
+msgid "Kerberos (GSSAPI)"
+msgstr "Kerberos (GSSAPI)"
+
+#: src/remmina_ssh_plugin.c:956 data/ui/remmina_main.glade:97
+#: data/ui/remmina_main.glade:98
+msgid "Copy"
+msgstr "Kopieren"
+
+#: src/remmina_ssh_plugin.c:956
+msgid "_Copy"
+msgstr "_Kopieren"
+
+#: src/remmina_ssh_plugin.c:957
+msgid "Paste"
+msgstr "Einfügen"
+
+#: src/remmina_ssh_plugin.c:957
+msgid "_Paste"
+msgstr "_Einfügen"
+
+#: src/remmina_ssh_plugin.c:958
+msgid "Select all"
+msgstr "Alles auswählen"
+
+#: src/remmina_ssh_plugin.c:958
+msgid "_Select all"
+msgstr "_Alles auswählen"
+
+#: src/remmina_ssh_plugin.c:978 src/remmina_sftp_plugin.c:359
+msgid "Authentication type"
+msgstr "Authentifizierungstyp"
+
+#: src/remmina_ssh_plugin.c:980 src/remmina_sftp_plugin.c:361
+msgid "Private key passphrase"
+msgstr "Passphrase zum privaten Schlüssel"
+
+#: src/remmina_ssh_plugin.c:998
+msgid "Terminal color scheme"
+msgstr "Farbschema des Terminals"
+
+#: src/remmina_ssh_plugin.c:1000
+msgid "SSH Proxy Command"
+msgstr "SSH Proxy Kommando"
+
+#: src/remmina_ssh_plugin.c:1001
+msgid "KEX (Key Exchange) algorithms"
+msgstr "KEX (Key Exchange) Algorithmen"
+
+#: src/remmina_ssh_plugin.c:1002
+msgid "Symmetric cipher client to server"
+msgstr "Symmetrische Cipher am Server"
+
+#: src/remmina_ssh_plugin.c:1003
+msgid "Preferred server host key types"
+msgstr "Bevorzugte Server Host-Key Typen"
+
+#: src/remmina_ssh_plugin.c:1004
+msgid "SSH session log folder"
+msgstr "SSH Session Protokollordner"
+
+#: src/remmina_ssh_plugin.c:1005
+msgid "SSH session log file name"
+msgstr "SSH Session Protokolldatei"
+
+#: src/remmina_ssh_plugin.c:1006
+msgid "Enable SSH session logging at exit"
+msgstr "Aktiviere SSH Session Logging beim Verlassen"
+
+#: src/remmina_ssh_plugin.c:1007
+msgid "Enable SSH compression"
+msgstr "Aktiviere SSH Komprimierung"
+
+#: src/remmina_ssh_plugin.c:1009
+msgid "Strict host key checking"
+msgstr "Strikte Host-Key Überprüfung"
+
+#: src/remmina_ssh_plugin.c:1023
+msgid "SSH - Secure Shell"
+msgstr "SSH - Secure Shell"
+
+#: src/remmina_public.c:638
+msgid "Please enter format 'widthxheight'."
+msgstr "Bitte im Format »BreitexHöhe« eingeben."
+
+#: src/remmina_pref_dialog.c:129
+msgid "Recent lists cleared."
+msgstr "Liste zuletzt geöffneter Verbindungen geleert."
+
+#: src/remmina_pref_dialog.c:140 data/ui/remmina_preferences.glade:262
+msgid "Configure the keystrokes"
+msgstr "Tastenkombinationen konfigurieren"
 
 #: src/remmina_sftp_client.c:170
 #, c-format
@@ -1167,611 +1656,323 @@ msgstr "Frage"
 msgid "The following file already exists in the target folder:"
 msgstr "Die folgende Datei ist im Zielordner bereits vorhanden:"
 
-#: src/remmina_ssh.c:203
+#: src/remmina_sftp_plugin.c:338
+msgid "Show Hidden Files"
+msgstr "Versteckte Dateien anzeigen"
+
+#: src/remmina_sftp_plugin.c:340
+msgid "Overwrite all"
+msgstr "Alles überschreiben"
+
+#: src/remmina_sftp_plugin.c:370
+msgid "SFTP - Secure File Transfer"
+msgstr "SFTP - Sichere Dateiübertragung"
+
+#: src/remmina_main.c:589
 #, c-format
-msgid "SSH password authentication failed: %s"
-msgstr "SSH Passwort-Authentifizierung ist fehlgeschlagen: %s"
+msgid "Total %i item."
+msgid_plural "Total %i items."
+msgstr[0] "Gesamt %i Objekt."
+msgstr[1] "Gesamt %i Objekte."
 
-#: src/remmina_ssh.c:221 src/remmina_ssh.c:230 src/remmina_ssh.c:238
+#: src/remmina_main.c:725
 #, c-format
-msgid "SSH public key authentication failed: %s"
-msgstr ""
-"SSH-Authentifizierung mit öffentlichem Schlüssel ist fehlgeschlagen: %s"
+msgid "Are you sure to delete '%s'"
+msgstr "Soll '%s' wirklich gelöscht werden"
 
-#: src/remmina_ssh.c:222
-msgid "SSH Key file not yet set."
-msgstr "SSH Schlüssel-Datei wurde noch nicht festgelegt"
-
-#: src/remmina_ssh.c:253
-#, c-format
-msgid "SSH automatic public key authentication failed: %s"
-msgstr ""
-"SSH-Authentifizierung mit automatischem öffentlichem Schlüssel ist "
-"fehlgeschlagen: %s"
-
-#: src/remmina_ssh.c:269
-#, c-format
-msgid "SSH public key authentication with ssh agent failed: %s"
-msgstr "SSH-Authentifizierung mittels SSH Agent ist fehlgeschlagen: %s"
-
-#: src/remmina_ssh.c:288
-#, c-format
-msgid "SSH Kerberos/GSSAPI authentication failed: %s"
-msgstr "SSH Kerberos/GSSAPI authentifizierung is fehlgeschlagen: %s"
-
-#: src/remmina_ssh.c:418
-#, c-format
-msgid "Authenticating %s's password to SSH server %s..."
-msgstr "Überprüfe Passwort des Benutzers %s am SSH-Server %s …"
-
-#: src/remmina_ssh.c:425
-#, c-format
-msgid "Authenticating %s's identity to SSH server %s..."
-msgstr "Überprüfe die Identität von Benutzer %s am SSH-Server %s …"
-
-#: src/remmina_ssh.c:430
-#, c-format
-msgid "Authenticating %s's Kerberos to SSH server %s..."
-msgstr "Authenitifiziere über %s's Kerberos Ticket am SSH-Server %s..."
-
-#: src/remmina_ssh.c:431
-msgid "SSH Kerberos/GSSAPI"
-msgstr "SSH Kerberos/GSSAPI"
-
-#: src/remmina_ssh.c:560
-#, c-format
-msgid "Failed to startup SSH session: %s"
-msgstr "Fehler beim Starten der SSH-Verbindung: %s"
-
-#: src/remmina_ssh.c:932
-#, c-format
-msgid "Failed to connect to the SSH tunnel destination: %s"
-msgstr "Fehler beim Verbinden mit dem Ziel des SSH-Tunnels: %s"
-
-#: src/remmina_ssh.c:1002
-#, c-format
-msgid "Failed to execute %s on SSH server : %%s"
-msgstr "Ausführen von %s auf dem SSH Server ist fehlgeschlagen : %%s"
-
-#: src/remmina_ssh.c:1033 src/remmina_ssh.c:1055
-#, c-format
-msgid "Failed to request port forwarding : %s"
-msgstr "Anfrage zur Portweiterleitung ist fehlgeschlagen: %s"
-
-#: src/remmina_ssh.c:1093
-msgid "No response from the server."
-msgstr "Keine Rückmeldung vom Server."
-
-#: src/remmina_ssh.c:1482
-#, c-format
-msgid "Failed to create sftp session: %s"
-msgstr "Start der SFTP-Sitzung fehlgeschlagen: %s"
-
-#: src/remmina_ssh.c:1486
-#, c-format
-msgid "Failed to initialize sftp session: %s"
-msgstr "Initialisierung der SFTP-Sitzung fehlgeschlagen: %s"
-
-#: src/remmina_init_dialog.c:88 src/remmina_file_editor.c:159
-#: src/remmina_plugin_manager.c:392
-msgid "_OK"
-msgstr "_Ok"
-
-#: src/remmina_init_dialog.c:268
-#, c-format
-msgid "Save %s"
-msgstr "%s speichern"
-
-#: src/remmina_init_dialog.c:389
-msgid "Save password"
-msgstr "Passwort speichern"
-
-#: src/remmina_init_dialog.c:455
-msgid "Certificate Details:"
-msgstr "Zertifikatsdetails:"
-
-#: src/remmina_init_dialog.c:468 src/remmina_init_dialog.c:570
-msgid "Subject:"
-msgstr "Betreff:"
-
-#: src/remmina_init_dialog.c:480 src/remmina_init_dialog.c:583
-msgid "Issuer:"
-msgstr "Aussteller:"
-
-#: src/remmina_init_dialog.c:492
-msgid "Fingerprint:"
-msgstr "Fingerprint:"
-
-#: src/remmina_init_dialog.c:505
-msgid "Accept Certificate?"
-msgstr "Zertifikat akzeptieren?"
-
-#: src/remmina_init_dialog.c:557
-msgid "Certificate Changed! Details:"
-msgstr "Zertifikat geändert! Details:"
-
-#: src/remmina_init_dialog.c:595
-msgid "Old Fingerprint:"
-msgstr "Alter Fingerprint:"
-
-#: src/remmina_init_dialog.c:607
-msgid "New Fingerprint:"
-msgstr "Neuer Fingerprint:"
-
-#: src/remmina_init_dialog.c:620
-msgid "Accept Changed Certificate?"
-msgstr "Zertifikatsänderungen akzeptieren?"
-
-#: src/remmina_init_dialog.c:717
-msgid "CA certificate"
-msgstr "CA-Zertifikat"
-
-#: src/remmina_init_dialog.c:718
-msgid "CA CRL"
-msgstr "CA CRL"
-
-#: src/remmina_init_dialog.c:719
-msgid "Client certificate"
-msgstr "Client-Zertifikat"
-
-#: src/remmina_init_dialog.c:720
-msgid "Client key"
-msgstr "Client-Schlüssel"
-
-#: src/remmina_init_dialog.c:790
-msgid "Do you trust the new public key?"
-msgstr "Vertrauen Sie dem neuen öffentlichen Schlüssel?"
-
-#: src/remmina_init_dialog.c:818
-msgid "The server is unknown. The public key fingerprint is:"
-msgstr ""
-"Der Server ist unbekannt. Der Fingerabdruck des öffentlichen Schlüssels ist:"
-
-#: src/remmina_init_dialog.c:827
-msgid ""
-"WARNING: The server has changed its public key. This means either you are "
-"under attack,\n"
-"or the administrator has changed the key. The new public key fingerprint is:"
-msgstr ""
-"WARNUNG: Der Server hat den öffentlichen Schlüssel geändert. Das bedeutet, "
-"dass Sie entweder angegriffen\n"
-"werden, oder dass der Systemverwalter den Schlüssel geändert hat. Der neue "
-"öffentliche Schlüssel ist:"
-
-#: src/remmina_icon.c:135
-msgid "Open Main Window"
-msgstr "Hauptfenster öffnen"
-
-#: src/remmina_icon.c:140
-msgid "_Preferences"
-msgstr "_Einstellungen"
-
-#: src/remmina_icon.c:145 data/ui/remmina_main.glade:52
-#: data/ui/remmina_main.glade:53
-msgid "_About"
-msgstr "_Über"
-
-#: src/remmina_icon.c:155
-msgid "Enable Service Discovery"
-msgstr "Erkennungsdienst aktivieren"
-
-#: src/remmina_icon.c:168 data/ui/remmina_main.glade:33
-#: data/ui/remmina_main.glade:34
-msgid "_Quit"
-msgstr "_Beenden"
-
-#: src/remmina_icon.c:351 src/remmina_icon.c:534
-msgid "Remmina Applet"
-msgstr "Remmina-Applet"
-
-#: src/remmina_icon.c:353 src/remmina_icon.c:536
-msgid "Connect to remote desktops through the applet menu"
-msgstr "Mit dem Applet-Menü zur entfernten Arbeitsflächen verbinden"
-
-#: src/remmina_file_editor.c:74
-msgid ""
-"<tt><big>Supported formats\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port</big></tt>"
-msgstr ""
-"<tt><big>Unterstützte Formate\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port</big></tt>"
-
-#: src/remmina_file_editor.c:81
-msgid ""
-"<tt><big>* command in PATH args %h\n"
-"* /path/to/foo -options %h %u\n"
-"* %h is substituted with the server name\n"
-"* %t is substituted with the SSH server name\n"
-"* %u is substituted with the user name\n"
-"* %U is substituted with the SSH user name\n"
-"* %p is substituted with Remmina profile name\n"
-"* %g is substituted with Remmina profile group name\n"
-"Do not run in background if you want the command to be executed before "
-"connecting.\n"
-"</big></tt>"
-msgstr ""
-"<tt><big>* Kommando in PATH Argumente %h\n"
-"* /pfad/zu/kommando -optionen %h %u\n"
-"* %h wird ersetzt durch den Servernamen\n"
-"* %t wird ersetzt durch den SSH Servernamen\n"
-"* %u wird ersetzt durch den Benutzernamen\n"
-"* %U wird ersetzt durch den SSH Benutzernamen\n"
-"* %p wird ersetzt durch den Remmina Profilnamen\n"
-"* %g wird ersetzt durch den Remmina Profil-Gruppennamen\n"
-"Wenn Sie das Kommando vor der Verbindung starten wollen darf nicht im "
-"Hintergrund gestartet werden.\n"
-"</big></tt>"
-
-#: src/remmina_file_editor.c:94
-msgid ""
-"<tt><big>Supported formats\n"
-"* :port\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port\n"
-"* username@server:port (SSH protocol only)</big></tt>"
-msgstr ""
-"<tt><big>Unterstützte Formate\n"
-"* :port\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port\n"
-"* benutzername@server:port (nur SSH Prtokoll)</big></tt>"
-
-#: src/remmina_file_editor.c:156
-msgid "Choose a Remote Desktop Server"
-msgstr "Einen Server für eine entfernte Arbeitsfläche auswählen"
-
-#: src/remmina_file_editor.c:356
-msgid "_Open"
-msgstr "Ö_ffnen"
-
-#: src/remmina_file_editor.c:419
-#, c-format
-msgid "Browse the network to find a %s server"
-msgstr "Durchsuche das Netzwerk nach einem %s Server"
-
-#: src/remmina_file_editor.c:504
-msgid "Resolution"
-msgstr "Bildschirmauflösung"
-
-#: src/remmina_file_editor.c:510
-msgid "Use window size"
-msgstr "Aktuelle Fenstergröße verwenden"
-
-#: src/remmina_file_editor.c:510
-msgid "Use client resolution"
-msgstr "Auflösung des Clients verwenden"
-
-#: src/remmina_file_editor.c:519 src/remmina_file_editor.c:833
-msgid "Custom"
-msgstr "Benutzerdefiniert"
-
-#: src/remmina_file_editor.c:711
-msgid "Keyboard mapping"
-msgstr "Tastaturlayout"
-
-#: src/remmina_file_editor.c:807
-msgid "Enable SSH tunnel"
-msgstr "SSH-Tunnel aktivieren"
-
-#: src/remmina_file_editor.c:814
-msgid "Tunnel via loopback address"
-msgstr "Tunnel über Loopback-Adresse"
-
-#: src/remmina_file_editor.c:824
-#, c-format
-msgid "Same server at port %i"
-msgstr "Server auf Port %i"
-
-#: src/remmina_file_editor.c:873 src/remmina_ssh_plugin.c:999
-msgid "Character set"
-msgstr "Zeichensatz"
-
-#: src/remmina_file_editor.c:887
-msgid "SSH Authentication"
-msgstr "SSH-Authentifizierung"
-
-#: src/remmina_file_editor.c:897
-msgid "SSH Agent (automatic)"
-msgstr "SSH Agent (automatisch)"
-
-#: src/remmina_file_editor.c:968
-msgid "Basic"
-msgstr "Basis"
-
-#: src/remmina_file_editor.c:974
-msgid "Advanced"
-msgstr "Erweitert"
-
-#: src/remmina_file_editor.c:1179
-msgid "Default settings saved."
-msgstr "Standard-Einstellungen wurden gespeichert."
-
-#: src/remmina_file_editor.c:1249
-msgid "Remote Desktop Preference"
-msgstr "Vorgabe für entfernte Arbeitsflächen"
-
-#: src/remmina_file_editor.c:1255
-msgid "Save as Default"
-msgstr "Als Standard speichern"
-
-#: src/remmina_file_editor.c:1263 data/ui/remmina_main.glade:77
-#: data/ui/remmina_main.glade:78
-msgid "Connect"
-msgstr "Verbinden"
-
-#: src/remmina_file_editor.c:1266
-msgid "_Save and Connect"
-msgstr "_Speichern und verbinden"
-
-#: src/remmina_file_editor.c:1356
-msgid "Profile"
-msgstr "Profil"
-
-#: src/remmina_file_editor.c:1373
-msgid "Quick Connect"
-msgstr "Schnellverbindung"
-
-#: src/remmina_file_editor.c:1397
-#, c-format
-msgid "Use '%s' as subgroup delimiter"
-msgstr "Benutze '%s' als Untergruppenteiler"
-
-#: src/remmina_file_editor.c:1402 src/remmina_plugin_manager.c:69
-msgid "Protocol"
-msgstr "Protokoll"
-
-#: src/remmina_file_editor.c:1416
-msgid "Pre Command"
-msgstr "Befehle vor Verbindung ausführen"
-
-#: src/remmina_file_editor.c:1434
-msgid "Post Command"
-msgstr "Befehle nach Verbindung ausführen"
-
-#: src/remmina_file_editor.c:1498 src/remmina_file_editor.c:1516
-#: src/remmina_connection_window.c:3745
-#, c-format
-msgid "File %s not found."
-msgstr "Datei %s nicht gefunden."
-
-#: src/remmina_exec.c:227
-#, c-format
-msgid "Plugin %s is not registered."
-msgstr "Plugin %s ist nicht registriert."
-
-#: src/remmina_about.c:53
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Daniel Dietrich https://launchpad.net/~shaddowy2\n"
-"  Dennis Baudys https://launchpad.net/~thecondordb\n"
-"  Eduard Gotwig https://launchpad.net/~gotwig\n"
-"  Envy https://launchpad.net/~element-oxygen\n"
-"  Felix Kaechele https://launchpad.net/~felix-kaechele\n"
-"  Hendrik Knackstedt https://launchpad.net/~hennekn\n"
-"  J. Ruprecht https://launchpad.net/~jrgenruprecht\n"
-"  Markus Neubauer https://launchpad.net/~neubauer-i\n"
-"  Martin Lettner https://launchpad.net/~m.lettner\n"
-"  Spencer Young https://launchpad.net/~spenceryoung\n"
-"  Tobias Bannert https://launchpad.net/~toba\n"
-"  jstarek https://launchpad.net/~juergen-starek\n"
-"  mkuerschner https://launchpad.net/~michael-kuerschner\n"
-"  sme https://launchpad.net/~05kosh\n"
-"  staedtler-przyborski https://launchpad.net/~staedtler-przyborski"
-
-#: src/remmina_ssh_plugin.c:473
-#, c-format
-msgid "%s"
-msgstr ""
-
-#: src/remmina_ssh_plugin.c:490
-msgid "Terminal content saved under"
-msgstr "Inhalt des Terminals wurde gespeichert unter"
-
-#: src/remmina_ssh_plugin.c:547
-msgid "Select All (Host+a)"
-msgstr "Alles auswählen (Host+a)"
-
-#: src/remmina_ssh_plugin.c:548
-msgid "Copy (Host+c)"
-msgstr "Kopieren (Host+c)"
-
-#: src/remmina_ssh_plugin.c:549
-msgid "Paste (Host+v)"
-msgstr "Einfügen (Host+v)"
-
-#: src/remmina_ssh_plugin.c:550
-msgid "Save session to file"
-msgstr "Sitzung in Datei speichern"
-
-#: src/remmina_ssh_plugin.c:956 data/ui/remmina_main.glade:97
-#: data/ui/remmina_main.glade:98
-msgid "Copy"
-msgstr "Kopieren"
-
-#: src/remmina_ssh_plugin.c:956
-msgid "_Copy"
-msgstr "_Kopieren"
-
-#: src/remmina_ssh_plugin.c:957
-msgid "Paste"
-msgstr "Einfügen"
-
-#: src/remmina_ssh_plugin.c:957
-msgid "_Paste"
-msgstr "_Einfügen"
-
-#: src/remmina_ssh_plugin.c:958
-msgid "Select all"
-msgstr "Alles auswählen"
-
-#: src/remmina_ssh_plugin.c:958
-msgid "_Select all"
-msgstr "_Alles auswählen"
-
-#: src/remmina_ssh_plugin.c:998
-msgid "Terminal color scheme"
-msgstr "Farbschema des Terminals"
-
-#: src/remmina_ssh_plugin.c:1000
-msgid "SSH Proxy Command"
-msgstr "SSH Proxy Kommando"
-
-#: src/remmina_ssh_plugin.c:1001
-msgid "KEX (Key Exchange) algorithms"
-msgstr "KEX (Key Exchange) Algorithmen"
-
-#: src/remmina_ssh_plugin.c:1002
-msgid "Symmetric cipher client to server"
-msgstr "Symmetrische Cipher am Server"
-
-#: src/remmina_ssh_plugin.c:1003
-msgid "Preferred server host key types"
-msgstr "Bevorzugte Server Host-Key Typen"
-
-#: src/remmina_ssh_plugin.c:1004
-msgid "SSH session log folder"
-msgstr "SSH Session Protokollordner"
-
-#: src/remmina_ssh_plugin.c:1005
-msgid "SSH session log file name"
-msgstr "SSH Session Protokolldatei"
-
-#: src/remmina_ssh_plugin.c:1006
-msgid "Enable SSH session logging at exit"
-msgstr "Aktiviere SSH Session Logging beim Verlassen"
-
-#: src/remmina_ssh_plugin.c:1007
-msgid "Enable SSH compression"
-msgstr "Aktiviere SSH Komprimierung"
-
-#: src/remmina_ssh_plugin.c:1009
-msgid "Strict host key checking"
-msgstr "Strikte Host-Key Überprüfung"
-
-#: src/remmina_ssh_plugin.c:1023
-msgid "SSH - Secure Shell"
-msgstr "SSH - Secure Shell"
-
-#: src/remmina_plugin_manager.c:69
-msgid "Entry"
-msgstr "Eintrag"
-
-#: src/remmina_plugin_manager.c:69
-msgid "File"
-msgstr "Datei"
-
-#: src/remmina_plugin_manager.c:69
-msgid "Tool"
-msgstr "Werkzeug"
-
-#: src/remmina_plugin_manager.c:69
-msgid "Preference"
-msgstr "Einstellung"
-
-#: src/remmina_plugin_manager.c:69
-msgid "Secret"
-msgstr "Geheimnis"
-
-#: src/remmina_plugin_manager.c:392 data/ui/remmina_main.glade:60
-#: data/ui/remmina_main.glade:61 data/ui/remmina_main.glade:341
-msgid "Plugins"
-msgstr "Plugins"
-
-#: src/remmina_plugin_manager.c:422
-msgid "Description"
-msgstr "Beschreibung"
-
-#: src/remmina_plugin_manager.c:428
-msgid "Version"
-msgstr "Version"
-
-#: src/remmina_connection_window.c:537
+#: src/remmina_main.c:836
 #, c-format
 msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
+"Unable to import:\n"
+"%s"
 msgstr ""
-"Es sind %i Verbindungen in diesem Fenster aktiv. Sind Sie sicher, dass Sie "
-"das Fenster schließen möchten?"
+"Import fehlgeschlagen:\n"
+"%s"
 
-#: src/remmina_connection_window.c:1180
-msgid "Viewport fullscreen mode"
-msgstr "Vollbildmodus"
+#: src/remmina_main.c:863 data/ui/remmina_main.glade:180
+#: data/ui/remmina_main.glade:181 data/ui/remmina_main.glade:323
+msgid "Import"
+msgstr "Importieren"
 
-#: src/remmina_connection_window.c:1189
-msgid "Scrolled fullscreen mode"
-msgstr "Vollbildmodus mit Scollbar"
+#: src/remmina_main.c:893
+msgid "This protocol does not support exporting."
+msgstr "Das Protokoll unterstützt den Export nicht."
 
-#: src/remmina_connection_window.c:1258
-msgid "Keep aspect ratio when scaled"
-msgstr "Bildformat im skalierten Modus beibehalten"
+#: src/remmina_protocol_widget.c:139
+#, c-format
+msgid "Connecting to '%s'..."
+msgstr "Verbindung zu »%s« wird hergestellt …"
 
-#: src/remmina_connection_window.c:1267
-msgid "Fill client window when scaled"
-msgstr "Client-Fenster füllen wenn skaliert"
+#: src/remmina_protocol_widget.c:225
+#, c-format
+msgid "Protocol plugin %s is not installed."
+msgstr "Protokoll Plugin %s ist nicht installiert"
 
-#: src/remmina_connection_window.c:1776
+#: src/remmina_protocol_widget.c:257
+msgid "Open Secure Shell in New Terminal..."
+msgstr "Secure-Shell (SSH) in einem neuen Terminal starten …"
+
+#: src/remmina_protocol_widget.c:263
+msgid "Open Secure File Transfer..."
+msgstr "Sichere Dateiübertragung (SFTP) öffnen …"
+
+#: src/remmina_protocol_widget.c:590
+#, c-format
+msgid "Connecting to SSH server %s..."
+msgstr "Verbinde zu SSH-Server %s  …"
+
+#: src/remmina_protocol_widget.c:657 src/remmina_protocol_widget.c:811
+#, c-format
+msgid "Connecting to %s through SSH tunnel..."
+msgstr "Verbinde zu %s über den SSH-Tunnel …"
+
+#: src/remmina_protocol_widget.c:695
+#, c-format
+msgid "Waiting for an incoming SSH tunnel at port %i..."
+msgstr "Warte auf eingehende SSH-Tunnel Verbindung über Port %i …"
+
+#: src/remmina_protocol_widget.c:738
+#, c-format
+msgid "Command %s not found on SSH server"
+msgstr "Befehl %s wurde auf dem SSH Server nicht gefunden."
+
+#: src/remmina_protocol_widget.c:742
+#, c-format
+msgid "Command %s failed on SSH server (status = %i)."
+msgstr "Befehl %s ist auf dem SSH Server fehlgeschlagen  (Status == %i)."
+
+#: src/remmina_protocol_widget.c:749
+#, c-format
+msgid "Failed to execute command: %s"
+msgstr "Fehler beim Ausführen des Befehls: %s"
+
+#: src/remmina_protocol_widget.c:968
+#, c-format
+msgid "%s password"
+msgstr "%s Passwort"
+
+#: src/remmina_protocol_widget.c:1145
+#, c-format
+msgid "Listening on port %i for an incoming %s connection..."
+msgstr "Lausche auf Port %i auf eine eingehende %s-Verbindung …"
+
+#: src/remmina_protocol_widget.c:1153
+msgid "Authentication failed. Trying to reconnect..."
+msgstr "Authentifizierung fehlgeschlagen. Versuche erneut zu verbinden…"
+
+#: src/remmina_chat_window.c:178
+#, c-format
+msgid "Chat with %s"
+msgstr "Chat mit %s"
+
+#: src/remmina_chat_window.c:230
+msgid "_Send"
+msgstr "_Senden"
+
+#: src/remmina_chat_window.c:240
+msgid "_Clear"
+msgstr "_Leeren"
+
+#: data/ui/remmina_spinner.glade:29 data/ui/remmina_key_chooser.glade:38
+#: data/ui/remmina_key_chooser.glade:53
+msgid "button"
+msgstr "Schaltfläche"
+
+#: data/ui/remmina_spinner.glade:54
+msgid "PLEASE WAIT ..."
+msgstr "BITTE WARTEN SIE..."
+
+#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+msgid "_Remove"
+msgstr "_Entfernen"
+
+#: data/ui/remmina_key_chooser.glade:23
+msgid "Choose a new key"
+msgstr "Wählen Sie eine neue Taste"
+
+#: data/ui/remmina_key_chooser.glade:82
+msgid "Please press the new key..."
+msgstr "Bitte drücken Sie die neue Taste..."
+
+#: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
+#: data/ui/remmina_string_list.glade:63 data/ui/remmina_preferences.glade:33
+#: data/ui/remmina_preferences.glade:34 data/ui/remmina_preferences.glade:60
+msgid "Close"
+msgstr "Schließen"
+
+#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
+msgid "Remove"
+msgstr "Entfernen"
+
+#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+msgid "Move up"
+msgstr "Nach oben bewegen"
+
+#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
+msgid "Move down"
+msgstr "Nach unten bewegen"
+
+#: data/ui/remmina_mpc.glade:7
+msgid "Remmina - Multi Password Changer"
+msgstr "Remmina - Mehrfach Passwortwechsler"
+
+#: data/ui/remmina_mpc.glade:21
+msgid "Change"
+msgstr "Ändern"
+
+#: data/ui/remmina_mpc.glade:35
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: data/ui/remmina_mpc.glade:61
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'>Mehrfach Passwortwechsler</span>"
+
+#: data/ui/remmina_mpc.glade:166
+msgid "Selection criteria"
+msgstr "Auswahlkriterium"
+
+#: data/ui/remmina_mpc.glade:195
+msgid "Confirm password"
+msgstr "Passwort bestätigen"
+
+#: data/ui/remmina_mpc.glade:208
+msgid "Reset to"
+msgstr "Zurücksetzen in"
+
+#: data/ui/remmina_mpc.glade:302
+msgid "F"
+msgstr "F"
+
+#: data/ui/remmina_mpc.glade:336
+msgid "Domain\\Username"
+msgstr "Domäne\\Benutzername"
+
+#: data/ui/remmina_main.glade:44
+msgid "Open the preferences dialog"
+msgstr "Öffne den Eigenschaftsdialog"
+
+#: data/ui/remmina_main.glade:67 data/ui/remmina_main.glade:350
+msgid "Multi password changer"
+msgstr "Mehrfach Passwortwechsler"
+
+#: data/ui/remmina_main.glade:68
+msgid "MPChange"
+msgstr "MPWechsler"
+
+#: data/ui/remmina_main.glade:79
+msgid "Open the connection to the selected remote desktop file"
+msgstr "Öffne eineVerbindung zur ausgewählten Remote-Desktop Datei"
+
+#: data/ui/remmina_main.glade:87 data/ui/remmina_main.glade:88
+msgid "_Edit"
+msgstr "_Bearbeiten"
+
+#: data/ui/remmina_main.glade:89
+msgid "Edit the selected remote desktop file"
+msgstr "Bearbeite die ausgewählte Remote-Desktop Datei"
+
+#: data/ui/remmina_main.glade:99
+msgid "Create a copy of the selected remote desktop file"
+msgstr "Erstelle eine Kopie der ausgewählten Remote-Desktop Datei"
+
+#: data/ui/remmina_main.glade:109
+msgid "Delete the selected remote desktop file"
+msgstr "Lösche die ausgewählte Remote-Desktop Datei"
+
+#: data/ui/remmina_main.glade:117 data/ui/remmina_main.glade:118
+msgid "External Tools"
+msgstr "Externe Werkzeuge"
+
+#: data/ui/remmina_main.glade:128 data/ui/remmina_main.glade:129
+msgid "_New"
+msgstr "_Neu"
+
+#: data/ui/remmina_main.glade:130
+msgid "Create a new remote desktop file"
+msgstr "Erstelle eine neue Remote-Desktop Datei"
+
+#: data/ui/remmina_main.glade:142 data/ui/remmina_main.glade:143
+#: data/ui/remmina_main.glade:420
+msgid "Homepage"
+msgstr "Homepage"
+
+#: data/ui/remmina_main.glade:149 data/ui/remmina_main.glade:150
+#: data/ui/remmina_main.glade:429
+msgid "Online Wiki"
+msgstr "Online Wiki"
+
+#: data/ui/remmina_main.glade:156 data/ui/remmina_main.glade:157
+#: data/ui/remmina_main.glade:438
+msgid "G+ Remmina Community"
+msgstr "G+ Remmina Community"
+
+#: data/ui/remmina_main.glade:163 data/ui/remmina_main.glade:164
+#: data/ui/remmina_main.glade:447
+msgid "Donations"
+msgstr "Spenden"
+
+#: data/ui/remmina_main.glade:170 data/ui/remmina_main.glade:171
+#: data/ui/remmina_main.glade:456
+msgid "Debug Window"
+msgstr "Debugfenster"
+
+#: data/ui/remmina_main.glade:187 data/ui/remmina_main.glade:188
+#: data/ui/remmina_main.glade:332
+msgid "Export"
+msgstr "Exportieren"
+
+#: data/ui/remmina_main.glade:197 data/ui/remmina_main.glade:198
+msgid "Statusbar"
+msgstr "Statuszeile"
+
+#: data/ui/remmina_main.glade:205 data/ui/remmina_main.glade:206
+msgid "List View"
+msgstr "Listenansicht"
+
+#: data/ui/remmina_main.glade:214 data/ui/remmina_main.glade:215
+msgid "Tree View"
+msgstr "Baumansicht"
+
+#: data/ui/remmina_main.glade:563
+msgid "Last time used"
+msgstr "Zuletzt benutzt"
+
+#: data/ui/remmina_main.glade:626
 msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
+"Do you allow Remmina to send periodic anonymous usage statistics to its "
+"developers?"
 msgstr ""
-"Warnung: Bildschirmfoto ist skaliert oder verzerrt. Skalierung abschalten, "
-"um bessere Bildschirmfotos zu bekommen."
+"Erlauben Sie Remmina periodisch anonymisierte Benutzungsstatistiken an die "
+"Entwickler zu schicken?"
 
-#: src/remmina_connection_window.c:1825
-msgid "Screenshot taken"
-msgstr "Screenshot wurde erzeugt"
+#: data/ui/remmina_main.glade:637
+msgid "No"
+msgstr "Nein"
 
-#: src/remmina_connection_window.c:1885
-msgid "Resize the window to fit in remote resolution"
-msgstr "Das Fenster auf die entfernte Bildschirmauflösung anpassen"
+#: data/ui/remmina_main.glade:653
+msgid "Yes"
+msgstr "Ja"
 
-#: src/remmina_connection_window.c:1895 data/ui/remmina_preferences.glade:737
-msgid "Toggle fullscreen mode"
-msgstr "Vollbildmodus umschalten"
+#: data/ui/remmina_main.glade:729
+msgid "search string or server name/ip address for quick connect"
+msgstr "Suchstring, Servername oder IP-Adresse zur schnellen Verbindung"
 
-#: src/remmina_connection_window.c:1937 data/ui/remmina_preferences.glade:793
-msgid "Switch tab pages"
-msgstr "Wechsel zwischen den Reitern"
+#: data/ui/remmina_main.glade:734
+msgid "Server name or IP address"
+msgstr "Servername oder IP-Adresse"
 
-#: src/remmina_connection_window.c:1951
-msgid "Toggle dynamic resolution update"
-msgstr "Dynamische Auflösung umschalten"
+#: data/ui/remmina_main.glade:735 data/ui/remmina_preferences.glade:224
+msgid "Clear"
+msgstr "Leeren"
 
-#: src/remmina_connection_window.c:1961 data/ui/remmina_preferences.glade:834
-msgid "Toggle scaled mode"
-msgstr "Skalierten Modus umschalten"
-
-#: src/remmina_connection_window.c:1997
-msgid "Grab all keyboard events"
-msgstr "Alle Tastatureingaben abfangen"
-
-#: src/remmina_connection_window.c:2006 data/ui/remmina_main.glade:42
-#: data/ui/remmina_main.glade:43
-msgid "Preferences"
-msgstr "Einstellungen"
-
-#: src/remmina_connection_window.c:2014 src/remmina_connection_window.c:2015
-msgid "Tools"
-msgstr "Werkzeuge"
-
-#: src/remmina_connection_window.c:2027 data/ui/remmina_preferences.glade:975
-msgid "Screenshot"
-msgstr "Bildschirmfoto"
-
-#: src/remmina_connection_window.c:2034 data/ui/remmina_preferences.glade:890
-msgid "Minimize window"
-msgstr "Fenster minimieren"
-
-#: src/remmina_connection_window.c:2041 data/ui/remmina_preferences.glade:919
-msgid "Disconnect"
-msgstr "Verbindung trennen"
+#: data/ui/remmina_main.glade:780
+msgid "Actions"
+msgstr "Aktionen"
 
 #: data/ui/remmina_about.glade:30
 msgid "About Remmina"
@@ -1801,12 +2002,6 @@ msgid ""
 "Shuhrat Dehkanov <k@efir.uz>\n"
 "theraser <mail@hegerfeld.org>\n"
 msgstr ""
-
-#: data/ui/remmina_preferences.glade:33 data/ui/remmina_preferences.glade:34
-#: data/ui/remmina_preferences.glade:60 data/ui/remmina_string_list.glade:8
-#: data/ui/remmina_string_list.glade:9 data/ui/remmina_string_list.glade:63
-msgid "Close"
-msgstr "Schließen"
 
 #: data/ui/remmina_preferences.glade:41
 msgid "Remmina Preferences"
@@ -1855,10 +2050,6 @@ msgstr "Automatische Schrittweite zum Scrollen"
 #: data/ui/remmina_preferences.glade:203
 msgid "Maximum recent items"
 msgstr "Anzahl zuletzt geöffnete Dateien"
-
-#: data/ui/remmina_preferences.glade:224 data/ui/remmina_main.glade:735
-msgid "Clear"
-msgstr "Leeren"
 
 #: data/ui/remmina_preferences.glade:279
 msgid "Screenshots folder"
@@ -2250,59 +2441,6 @@ msgstr "Farbschema für Konsolenfarbe wählen"
 msgid "Terminal"
 msgstr "Terminal"
 
-#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
-msgid "_Remove"
-msgstr "_Entfernen"
-
-#: data/ui/remmina_key_chooser.glade:23
-msgid "Choose a new key"
-msgstr "Wählen Sie eine neue Taste"
-
-#: data/ui/remmina_key_chooser.glade:38 data/ui/remmina_key_chooser.glade:53
-#: data/ui/remmina_spinner.glade:29
-msgid "button"
-msgstr "Schaltfläche"
-
-#: data/ui/remmina_key_chooser.glade:82
-msgid "Please press the new key..."
-msgstr "Bitte drücken Sie die neue Taste..."
-
-#: data/ui/remmina_mpc.glade:7
-msgid "Remmina - Multi Password Changer"
-msgstr "Remmina - Mehrfach Passwortwechsler"
-
-#: data/ui/remmina_mpc.glade:21
-msgid "Change"
-msgstr "Ändern"
-
-#: data/ui/remmina_mpc.glade:35
-msgid "Cancel"
-msgstr "Abbrechen"
-
-#: data/ui/remmina_mpc.glade:61
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'>Mehrfach Passwortwechsler</span>"
-
-#: data/ui/remmina_mpc.glade:166
-msgid "Selection criteria"
-msgstr "Auswahlkriterium"
-
-#: data/ui/remmina_mpc.glade:195
-msgid "Confirm password"
-msgstr "Passwort bestätigen"
-
-#: data/ui/remmina_mpc.glade:208
-msgid "Reset to"
-msgstr "Zurücksetzen in"
-
-#: data/ui/remmina_mpc.glade:302
-msgid "F"
-msgstr "F"
-
-#: data/ui/remmina_mpc.glade:336
-msgid "Domain\\Username"
-msgstr "Domäne\\Benutzername"
-
 #: data/ui/remmina_snap_info_dialog.glade:46
 msgid ""
 "It seems that Remmina is running on your system as a SNAP package. To enable "
@@ -2320,142 +2458,3 @@ msgstr ""
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"
 msgstr "Diese Nachricht nicht mehr anzeigen"
-
-#: data/ui/remmina_main.glade:44
-msgid "Open the preferences dialog"
-msgstr "Öffne den Eigenschaftsdialog"
-
-#: data/ui/remmina_main.glade:67 data/ui/remmina_main.glade:350
-msgid "Multi password changer"
-msgstr "Mehrfach Passwortwechsler"
-
-#: data/ui/remmina_main.glade:68
-msgid "MPChange"
-msgstr "MPWechsler"
-
-#: data/ui/remmina_main.glade:79
-msgid "Open the connection to the selected remote desktop file"
-msgstr "Öffne eineVerbindung zur ausgewählten Remote-Desktop Datei"
-
-#: data/ui/remmina_main.glade:87 data/ui/remmina_main.glade:88
-msgid "_Edit"
-msgstr "_Bearbeiten"
-
-#: data/ui/remmina_main.glade:89
-msgid "Edit the selected remote desktop file"
-msgstr "Bearbeite die ausgewählte Remote-Desktop Datei"
-
-#: data/ui/remmina_main.glade:99
-msgid "Create a copy of the selected remote desktop file"
-msgstr "Erstelle eine Kopie der ausgewählten Remote-Desktop Datei"
-
-#: data/ui/remmina_main.glade:109
-msgid "Delete the selected remote desktop file"
-msgstr "Lösche die ausgewählte Remote-Desktop Datei"
-
-#: data/ui/remmina_main.glade:117 data/ui/remmina_main.glade:118
-msgid "External Tools"
-msgstr "Externe Werkzeuge"
-
-#: data/ui/remmina_main.glade:128 data/ui/remmina_main.glade:129
-msgid "_New"
-msgstr "_Neu"
-
-#: data/ui/remmina_main.glade:130
-msgid "Create a new remote desktop file"
-msgstr "Erstelle eine neue Remote-Desktop Datei"
-
-#: data/ui/remmina_main.glade:142 data/ui/remmina_main.glade:143
-#: data/ui/remmina_main.glade:420
-msgid "Homepage"
-msgstr "Homepage"
-
-#: data/ui/remmina_main.glade:149 data/ui/remmina_main.glade:150
-#: data/ui/remmina_main.glade:429
-msgid "Online Wiki"
-msgstr "Online Wiki"
-
-#: data/ui/remmina_main.glade:156 data/ui/remmina_main.glade:157
-#: data/ui/remmina_main.glade:438
-msgid "G+ Remmina Community"
-msgstr "G+ Remmina Community"
-
-#: data/ui/remmina_main.glade:163 data/ui/remmina_main.glade:164
-#: data/ui/remmina_main.glade:447
-msgid "Donations"
-msgstr "Spenden"
-
-#: data/ui/remmina_main.glade:170 data/ui/remmina_main.glade:171
-#: data/ui/remmina_main.glade:456
-msgid "Debug Window"
-msgstr "Debugfenster"
-
-#: data/ui/remmina_main.glade:187 data/ui/remmina_main.glade:188
-#: data/ui/remmina_main.glade:332
-msgid "Export"
-msgstr "Exportieren"
-
-#: data/ui/remmina_main.glade:197 data/ui/remmina_main.glade:198
-msgid "Statusbar"
-msgstr "Statuszeile"
-
-#: data/ui/remmina_main.glade:205 data/ui/remmina_main.glade:206
-msgid "List View"
-msgstr "Listenansicht"
-
-#: data/ui/remmina_main.glade:214 data/ui/remmina_main.glade:215
-msgid "Tree View"
-msgstr "Baumansicht"
-
-#: data/ui/remmina_main.glade:563
-msgid "Last time used"
-msgstr "Zuletzt benutzt"
-
-#: data/ui/remmina_main.glade:626
-msgid ""
-"Do you allow Remmina to send periodic anonymous usage statistics to its "
-"developers?"
-msgstr ""
-"Erlauben Sie Remmina periodisch anonymisierte Benutzungsstatistiken an die "
-"Entwickler zu schicken?"
-
-#: data/ui/remmina_main.glade:637
-msgid "No"
-msgstr "Nein"
-
-#: data/ui/remmina_main.glade:653
-msgid "Yes"
-msgstr "Ja"
-
-#: data/ui/remmina_main.glade:729
-msgid "search string or server name/ip address for quick connect"
-msgstr "Suchstring, Servername oder IP-Adresse zur schnellen Verbindung"
-
-#: data/ui/remmina_main.glade:734
-msgid "Server name or IP address"
-msgstr "Servername oder IP-Adresse"
-
-#: data/ui/remmina_main.glade:780
-msgid "Actions"
-msgstr "Aktionen"
-
-#: data/ui/remmina_spinner.glade:54
-msgid "PLEASE WAIT ..."
-msgstr "BITTE WARTEN SIE..."
-
-#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
-msgid "Add"
-msgstr "Hinzufügen"
-
-#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
-msgid "Remove"
-msgstr "Entfernen"
-
-#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
-msgid "Move up"
-msgstr "Nach oben bewegen"
-
-#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
-msgid "Move down"
-msgstr "Nach unten bewegen"
-
