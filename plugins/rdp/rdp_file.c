@@ -98,11 +98,11 @@ static void remmina_rdp_file_import_field(RemminaFile* remminafile, const gchar*
 	}else if (g_strcmp0(key, "gatewayhostname") == 0) {
 		remmina_plugin_service->file_set_string(remminafile, "gateway_server", value);
 	}else if (g_strcmp0(key, "gatewayusagemethod") == 0) {
-		remmina_plugin_service->file_set_string(remminafile, "gatewayusagemethod", value);
-	}else if (g_strcmp0(key, "gatewaycredentialssource") == 0) {
-		remmina_plugin_service->file_set_string(remminafile, "gatewaycredentialssource", value);
-	}else if (g_strcmp0(key, "gatewayprofileusagemethod") == 0) {
-		remmina_plugin_service->file_set_string(remminafile, "gatewayprofileusagemethod", value);
+		remmina_plugin_service->file_set_int(remminafile, "gateway_usage", (atoi(value) == TSC_PROXY_MODE_DETECT));
+	} else if (g_strcmp0(key, "gatewayaccesstoken") == 0) {
+		remmina_plugin_service->file_set_string(remminafile, "gatewayaccesstoken", value);
+	} else if (g_strcmp0(key, "authentication level") == 0) {
+		remmina_plugin_service->file_set_int(remminafile, "authentication level", atoi(value));
 	}
 	/* tsclient fields, import only */
 	else if (g_strcmp0(key, "client hostname") == 0) {
