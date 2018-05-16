@@ -32,8 +32,15 @@
 #
 
 sudo: required
+
 language: generic
-cache: ccache
+
+cache:
+  ccache: true
+  directories:
+    - .cache
+    # This should be not needed. Remove if .cache is correcthly used.
+    - .flatpak-builder/
 
 group: edge
 
@@ -51,6 +58,8 @@ env:
   - BUILD_TYPE=flatpak FLATPAK_ARCH=x86_64
   - BUILD_TYPE=flatpak FLATPAK_ARCH=i386
 
+before_cache:
+  - tar --xattrs --xattrs-include=* -cpf .cache/cache.tar .flatpak-builder/
 
 before_install:
   - scripts/travis-build.sh before_install
@@ -59,11 +68,12 @@ install:
   - scripts/travis-build.sh install
 
 script:
+  - "mkdir -p ~/.ccache/ && touch ~/.ccache/ccache.conf"
+  - "tar --xattrs --xattrs-include=* -xf .cache/cache.tar || true"
   - scripts/travis-build.sh script
 
 after_success:
   - scripts/travis-build.sh after_success
-
 
 notifications:
   email:

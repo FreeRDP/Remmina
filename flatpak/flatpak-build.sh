@@ -21,7 +21,7 @@ flatpak_builder \
     --force-clean \
     --install-deps-from=flathub \
     --stop-at=remmina \
-    app/ org.remmina.Remmina.json
+    app/ org.remmina.Remmina.json --ccache
 
 # Build Remmina module from local checkout
 mkdir -p _flatpak_build
