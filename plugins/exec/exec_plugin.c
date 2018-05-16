@@ -226,14 +226,14 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 				&stderr_buffer,			    // STDERR
 				NULL,				    // Exit status
 				&error);
-	}
-	if (!error) {
-		remmina_plugin_service->log_printf("[%s] Command executed\n", PLUGIN_NAME);
-		gtk_text_buffer_set_text (gpdata->log_buffer, stdout_buffer, -1);
-	}else  {
-		g_warning("Command %s exited with error: %s\n", cmd, error->message);
-		gtk_text_buffer_set_text (gpdata->log_buffer, error->message, -1);
-		g_error_free(error);
+		if (!error) {
+			remmina_plugin_service->log_printf("[%s] Command executed\n", PLUGIN_NAME);
+			gtk_text_buffer_set_text (gpdata->log_buffer, stdout_buffer, -1);
+		}else  {
+			g_warning("Command %s exited with error: %s\n", cmd, error->message);
+			gtk_text_buffer_set_text (gpdata->log_buffer, error->message, -1);
+			g_error_free(error);
+		}
 	}
 
 	g_strfreev(argv);
