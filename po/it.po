@@ -74,7 +74,7 @@ msgstr "Abilita canale audio"
 
 #: plugins/spice/spice_plugin.c:445 plugins/spice/spice_plugin.c:457
 msgid "Resize guest to match window size"
-msgstr ""
+msgstr "Ridimensiona guest con la finestra"
 
 #: plugins/spice/spice_plugin.c:446 plugins/rdp/rdp_plugin.c:1432
 msgid "Share smartcard"
@@ -93,7 +93,7 @@ msgstr "Inviare Ctrl+Alt+Canc"
 
 #: plugins/spice/spice_plugin.c:460 plugins/spice/spice_plugin_usb.c:51
 msgid "Select USB devices for redirection"
-msgstr ""
+msgstr "Seleziona i dispositivi USB per il reindirizzamento"
 
 #: plugins/spice/spice_plugin.c:469
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
@@ -105,11 +105,11 @@ msgstr "_Chiudi"
 
 #: plugins/spice/spice_plugin_usb.c:94
 msgid "USB redirection error"
-msgstr ""
+msgstr "Errore di reindirizzamento USB"
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
-msgstr ""
+msgstr "Trasferimenti file"
 
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 src/remmina_file_editor.c:158
@@ -136,17 +136,18 @@ msgstr "Trasferimento completato"
 #: plugins/spice/spice_plugin_file_transfer.c:224
 #, c-format
 msgid "File %s transferred successfully"
-msgstr "FIle %s trasferito con successo"
+msgstr "File %s trasferito con successo"
 
 #: plugins/exec/exec_plugin.c:158
 msgid "You did not set any command to be executed"
-msgstr ""
+msgstr "Non hai impostato nessun comando da eseguire"
 
 #: plugins/exec/exec_plugin.c:204
 msgid ""
 "WARNING! Executing a command synchronously, may hung Remmina.\n"
 "Do you really want to continue?"
-msgstr ""
+msgstr "ATTENZIONE! Eseguire un comando in modo sincrono potrebbe bloccare Remmina.\n"
+"Vuoi veramente continuare?"
 
 #: plugins/exec/exec_plugin.c:264
 msgid "Command"
@@ -277,7 +278,7 @@ msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:1944
 msgid "VNCI - VNC viewer listen mode"
-msgstr ""
+msgstr "VNCI - VNC viewer in modalità ascolto"
 
 #: plugins/xdmcp/xdmcp_plugin.c:96
 msgid "Run out of available local X display number."
@@ -286,7 +287,7 @@ msgstr ""
 #: plugins/xdmcp/xdmcp_plugin.c:263 plugins/nx/nx_plugin.c:584
 #, c-format
 msgid "Protocol %s is unavailable because GtkSocket only works under Xorg"
-msgstr ""
+msgstr "Il protocollo %s non è disponibile perché GtkSocket funziona solo sotto Xorg"
 
 #: plugins/xdmcp/xdmcp_plugin.c:347
 msgid "Default"
@@ -398,7 +399,7 @@ msgstr "La connessione al server RDP %s non è riuscita."
 #: plugins/rdp/rdp_plugin.c:1069
 #, c-format
 msgid "Unable to find the address of RDP server %s."
-msgstr ""
+msgstr "Impossibile trovare l'indirizzo del server RDP %s."
 
 #: plugins/rdp/rdp_plugin.c:1073
 #, c-format
@@ -406,16 +407,18 @@ msgid ""
 "Error connecting to RDP server %s. TLS connection failed. Check that client "
 "and server support a common TLS version."
 msgstr ""
+"Errore di connessione al server %s. Connessione TLS non riuscita. Controlla che "
+"client e server supportino una versione TLS comune."
 
 #: plugins/rdp/rdp_plugin.c:1076
 #, c-format
 msgid "Unable to establish a connection to RDP server %s."
-msgstr ""
+msgstr "Impossibile stabilire una connessione con il server RDP %s."
 
 #: plugins/rdp/rdp_plugin.c:1084
 #, c-format
 msgid "Unable to connect to RDP server %s."
-msgstr ""
+msgstr "Impossibile connettersi al server RDP %s."
 
 #: plugins/rdp/rdp_plugin.c:1087
 msgid "Unable to initialize libfreerdp gdi"
@@ -500,15 +503,15 @@ msgstr "Server RD Gateway"
 
 #: plugins/rdp/rdp_plugin.c:1423
 msgid "RD Gateway username"
-msgstr ""
+msgstr "Nome utente RD Gateway"
 
 #: plugins/rdp/rdp_plugin.c:1424
 msgid "RD Gateway password"
-msgstr ""
+msgstr "Password RD Gateway"
 
 #: plugins/rdp/rdp_plugin.c:1425
 msgid "RD Gateway domain"
-msgstr ""
+msgstr "Dominio RD Gateway"
 
 #: plugins/rdp/rdp_plugin.c:1426
 msgid "Client name"
@@ -520,7 +523,7 @@ msgstr "Percorso all'avvio"
 
 #: plugins/rdp/rdp_plugin.c:1429
 msgid "Load Balance Info"
-msgstr ""
+msgstr "Informazioni bilanciamento di carico"
 
 #: plugins/rdp/rdp_plugin.c:1430
 msgid "Ignore certificate"
@@ -528,7 +531,7 @@ msgstr "Ignora il certificato"
 
 #: plugins/rdp/rdp_plugin.c:1431
 msgid "Redirect local microphone"
-msgstr ""
+msgstr "Reindirizza il microfono locale"
 
 #: plugins/rdp/rdp_plugin.c:1433
 msgid "Share local printers"
@@ -540,7 +543,7 @@ msgstr "Collegare alla console (Windows 2003 / 2003 R2)"
 
 #: plugins/rdp/rdp_plugin.c:1437
 msgid "Disable fast-path"
-msgstr ""
+msgstr "Disabilita fast-path"
 
 #: plugins/rdp/rdp_plugin.c:1438
 msgid "Server detection using RD Gateway"
@@ -841,6 +844,12 @@ msgid ""
 "* [server]:port\n"
 "* username@server:port (SSH protocol only)</big></tt>"
 msgstr ""
+"<tt><big>Formati supportati\n"
+"* :porta\n"
+"* server\n"
+"* server:porta\n"
+"* [server]:porta\n"
+"* nomeutente@server:porta (solo protocollo SSH)</big></tt>"
 
 #: src/remmina_file_editor.c:156
 msgid "Choose a Remote Desktop Server"
@@ -1068,7 +1077,7 @@ msgstr "Cambia Scheda"
 
 #: src/remmina_connection_window.c:1951
 msgid "Toggle dynamic resolution update"
-msgstr ""
+msgstr "Attiva aggiornamento dinamico della risoluzione"
 
 #: src/remmina_connection_window.c:1961 data/ui/remmina_preferences.glade:834
 msgid "Toggle scaled mode"
@@ -1089,7 +1098,7 @@ msgstr "Strumenti"
 
 #: src/remmina_connection_window.c:2027 data/ui/remmina_preferences.glade:975
 msgid "Screenshot"
-msgstr ""
+msgstr "Cattura schermata"
 
 #: src/remmina_connection_window.c:2034 data/ui/remmina_preferences.glade:890
 msgid "Minimize window"
@@ -2311,75 +2320,75 @@ msgstr "Colore del cursore"
 
 #: data/ui/remmina_preferences.glade:1603
 msgid "Normal colors"
-msgstr ""
+msgstr "Colori normali"
 
 #: data/ui/remmina_preferences.glade:1616
 msgid "Bright colors"
-msgstr ""
+msgstr "Colori chiari"
 
 #: data/ui/remmina_preferences.glade:1628
 msgid "Pick a color for black"
-msgstr ""
+msgstr "Seleziona un colore per nero"
 
 #: data/ui/remmina_preferences.glade:1640
 msgid "Pick a color for bright black"
-msgstr ""
+msgstr "Seleziona un colore per nero chiero"
 
 #: data/ui/remmina_preferences.glade:1652
 msgid "Pick a color for red"
-msgstr ""
+msgstr "Seleziona un colore per rosso"
 
 #: data/ui/remmina_preferences.glade:1664
 msgid "Pick a color for green"
-msgstr ""
+msgstr "Seleziona un colore per verde"
 
 #: data/ui/remmina_preferences.glade:1676
 msgid "Pick a color for yellow"
-msgstr ""
+msgstr "Seleziona un colore per giallo"
 
 #: data/ui/remmina_preferences.glade:1688
 msgid "Pick a color for blue"
-msgstr ""
+msgstr "Seleziona un colore per blu"
 
 #: data/ui/remmina_preferences.glade:1700
 msgid "Pick a color for magenta"
-msgstr ""
+msgstr "Seleziona un colore per magenta"
 
 #: data/ui/remmina_preferences.glade:1712
 msgid "Pick a color for Cyan"
-msgstr ""
+msgstr "Seleziona un colore per ciano"
 
 #: data/ui/remmina_preferences.glade:1724
 msgid "Pick a color for white"
-msgstr ""
+msgstr "Seleziona un colore per bianco"
 
 #: data/ui/remmina_preferences.glade:1736
 msgid "Pick a color for bright red"
-msgstr ""
+msgstr "Seleziona un colore per rosso chiaro"
 
 #: data/ui/remmina_preferences.glade:1748
 msgid "Pick a color for bright green"
-msgstr ""
+msgstr "Seleziona un colore per verde chiaro"
 
 #: data/ui/remmina_preferences.glade:1760
 msgid "Pick a color for bright yellow"
-msgstr ""
+msgstr "Seleziona un colore per giallo chiaro"
 
 #: data/ui/remmina_preferences.glade:1772
 msgid "Pick a color for bright blue"
-msgstr ""
+msgstr "Seleziona un colore per blu chiaro"
 
 #: data/ui/remmina_preferences.glade:1784
 msgid "Pick a color for bright magenta"
-msgstr ""
+msgstr "Seleziona un colore per magenta chiaro"
 
 #: data/ui/remmina_preferences.glade:1796
 msgid "Pick a color for bright Cyan"
-msgstr ""
+msgstr "Seleziona un colore per ciano chiaro"
 
 #: data/ui/remmina_preferences.glade:1808
 msgid "Pick a color for bright white"
-msgstr ""
+msgstr "Seleziona un colore per bianco chiaro"
 
 #: data/ui/remmina_preferences.glade:1821
 msgid "Load color scheme"
@@ -2391,10 +2400,13 @@ msgid ""
 "usr/share/remmina/theme. See https://github.com/mbadolato/iTerm2-Color-"
 "Schemes."
 msgstr ""
+"Seleziona un file per lo schema colori, i temi prenstallati si trovano di solito sotto /"
+"usr/share/remmina/theme. Vedi https://github.com/mbadolato/iTerm2-Color-"
+"Schemes."
 
 #: data/ui/remmina_preferences.glade:1833
 msgid "Terminal Color Scheme file chooser"
-msgstr ""
+msgstr "Seleziona un file per lo schema colori terminale"
 
 #: data/ui/remmina_preferences.glade:1923
 msgid "Terminal"
@@ -2408,8 +2420,13 @@ msgid ""
 "appropriate permissions to Remmina.  As an alternative you can to enter the "
 "following commands in a terminal window:"
 msgstr ""
+"Sembra che Remmina stia girando nel tuo sistema come pacchetto SNAP. Per abilitare "
+"l'accesso ad alcune importanti funzionalià, come il salvataggio delle password nel portachiavi "
+"e la condivisione delle stampanti in RDP, apri il software center e assegna "
+"i corretti permessi a Remmina. In alternativa pui eseguire i seguenti comandi in "
+"una finestra terminale:"
 
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"
-msgstr ""
+msgstr "Non mostrare più questo messaggio"
 
