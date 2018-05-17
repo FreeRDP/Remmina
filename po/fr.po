@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
 "POT-Creation-Date: 2018-05-16 22:02+0200\n"
-"PO-Revision-Date: 2017-12-21 13:27+0100\n"
+"PO-Revision-Date: 2018-05-17 17:43+0200\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: français <fr@li.org>\n"
 "Language: fr\n"
@@ -17,7 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n >= 2;\n"
-"X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 "X-Generator: Poedit 2.0.2\n"
 
 #: plugins/spice/spice_plugin.c:262
@@ -147,6 +146,8 @@ msgid ""
 "WARNING! Executing a command synchronously, may hung Remmina.\n"
 "Do you really want to continue?"
 msgstr ""
+"Attention ! Exécuter une commande synchrone, peut bloquer Remmina.\n"
+"Voulez‐vous vraiment continuer ?"
 
 #: plugins/exec/exec_plugin.c:264
 msgid "Command"
@@ -272,11 +273,11 @@ msgstr "Ouvrir une discussion…"
 
 #: plugins/vnc/vnc_plugin.c:1922
 msgid "VNC - VNC viewer"
-msgstr ""
+msgstr "VNC — Visionneur"
 
 #: plugins/vnc/vnc_plugin.c:1944
 msgid "VNCI - VNC viewer listen mode"
-msgstr ""
+msgstr "VNCI — Visionneur VNC en mode écoute"
 
 #: plugins/xdmcp/xdmcp_plugin.c:96
 msgid "Run out of available local X display number."
@@ -380,6 +381,8 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "User has insufficient privileges."
 msgstr ""
+"L’accès au serveur RDP %s a échoué.\n"
+"Les privilèges de l’utilisateur sont insuffisants."
 
 #: plugins/rdp/rdp_plugin.c:1062
 #, c-format
@@ -418,11 +421,11 @@ msgstr "Impossible d’établir une connexion RDP avec le serveur %s."
 #: plugins/rdp/rdp_plugin.c:1084
 #, c-format
 msgid "Unable to connect to RDP server %s."
-msgstr ""
+msgstr "Connexion au serveur RDP %s impossible."
 
 #: plugins/rdp/rdp_plugin.c:1087
 msgid "Unable to initialize libfreerdp gdi"
-msgstr ""
+msgstr "Impossible d’initialiser l’interface GDI de libfreerdp."
 
 #: plugins/rdp/rdp_plugin.c:1090
 #, c-format
@@ -430,6 +433,9 @@ msgid ""
 "You requested an H264 GFX mode for server %s, but your libfreerdp does not "
 "support H264. Please use a non-AVC Color Depth setting."
 msgstr ""
+"Vous avez demandé le mode d’affichage graphique H.264 pour le serveur %s, "
+"mais votre version de la bibliothèque libfreerdp ne le prend pas en charge. "
+"Veuillez sélectionner un mode de profondeur de couleur non AVC."
 
 #: plugins/rdp/rdp_plugin.c:1097
 #, c-format
@@ -438,15 +444,15 @@ msgstr "Échec de la connexion au serveur RDP %s"
 
 #: plugins/rdp/rdp_plugin.c:1342
 msgid "GFX AVC444 (32 bpp)"
-msgstr ""
+msgstr "GFX AVC 4:4:4 (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1343
 msgid "GFX AVC420 (32 bpp)"
-msgstr ""
+msgstr "GFX AVC 4:2:0 (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1344
 msgid "GFX RFX (32 bpp)"
-msgstr ""
+msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1345
 msgid "RemoteFX (32 bpp)"
@@ -543,7 +549,7 @@ msgstr "Attacher à la console (Windows 2003 / 2003 R2)"
 
 #: plugins/rdp/rdp_plugin.c:1437
 msgid "Disable fast-path"
-msgstr ""
+msgstr "Désactiver le mode fast‐path"
 
 #: plugins/rdp/rdp_plugin.c:1438
 msgid "Server detection using RD Gateway"
@@ -836,6 +842,17 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
+"<tt><big>* commande [accessible depuis $PATH] arguments %h\n"
+"* /chemin/vers/commande -options %h %u\n"
+"* %h est remplacé par le nom du serveur\n"
+"* %t est remplacé par nom du serveur SSH\n"
+"* %u est remplacé par le nom d’utilisateur\n"
+"* %U est remplacé par le nom d’utilisateur SSH\n"
+"* %p est remplacé par le nom du profil Remmina\n"
+"* %g est remplacé par le nom de groupe du profil Remmina\n\n"
+"Ne lancez pas la commande en tâche de fond si vous voulez qu’elle soit "
+"exécutée avant la connexion.\n"
+"</big></tt>"
 
 #: src/remmina_file_editor.c:94
 msgid ""
@@ -846,6 +863,12 @@ msgid ""
 "* [server]:port\n"
 "* username@server:port (SSH protocol only)</big></tt>"
 msgstr ""
+"<tt><big>Formats pris en charge :\n"
+"* :port\n"
+"* serveur\n"
+"* serveur:port\n"
+"* [serveur]:port\n"
+"* utilisateur@serveur:port (uniquement pour le protocole SSH)</big></tt>"
 
 #: src/remmina_file_editor.c:156
 msgid "Choose a Remote Desktop Server"
@@ -1376,10 +1399,14 @@ msgstr "Réinitialisation des mots de passe, veuillez patienter…"
 #: src/remmina_mpchange.c:325
 msgid "The multi password changer cannot work without a secret plugin.\n"
 msgstr ""
+"Le modificateur de mots de passe multiples ne peut pas fonctionner sans "
+"un greffon « secret ».\n"
 
 #: src/remmina_mpchange.c:328
 msgid "The multi password changer does not work without a secret service.\n"
 msgstr ""
+"Le modificateur de mots de passe multiples ne peut pas fonctionner sans "
+"service de gestion des mots de passe tel que GNOME Keyring.\n"
 
 #: src/remmina_mpchange.c:417
 #, c-format
@@ -1525,7 +1552,7 @@ msgstr "Activer la journalisation de la session SSH en quittant"
 
 #: src/remmina_ssh_plugin.c:1007
 msgid "Enable SSH compression"
-msgstr ""
+msgstr "Activer la compression SSH"
 
 #: src/remmina_ssh_plugin.c:1009
 msgid "Strict host key checking"
@@ -1533,7 +1560,7 @@ msgstr "Vérification stricte des clefs d’hôte"
 
 #: src/remmina_ssh_plugin.c:1023
 msgid "SSH - Secure Shell"
-msgstr "SSH - Shell sécurisé"
+msgstr "SSH — Shell sécurisé"
 
 #: src/remmina_public.c:638
 msgid "Please enter format 'widthxheight'."
@@ -1928,14 +1955,16 @@ msgid ""
 "Do you allow Remmina to send periodic anonymous usage statistics to its "
 "developers?"
 msgstr ""
+"Souhaitez‐vous autoriser Remmina à envoyer périodiquement des statistiques "
+"d’utilisation à ses développeurs ?"
 
 #: data/ui/remmina_main.glade:637
 msgid "No"
-msgstr ""
+msgstr "Oui"
 
 #: data/ui/remmina_main.glade:653
 msgid "Yes"
-msgstr ""
+msgstr "Non"
 
 #: data/ui/remmina_main.glade:729
 msgid "search string or server name/ip address for quick connect"
@@ -2052,6 +2081,8 @@ msgstr "Configurer les définitions d’affichage"
 #: data/ui/remmina_preferences.glade:317
 msgid "Send periodic usage statistics to remmina developers"
 msgstr ""
+"Envoyer périodiquement des statistiques d’utilisation aux développeurs de "
+"Remmina"
 
 #: data/ui/remmina_preferences.glade:338
 msgid "Options"
@@ -2256,11 +2287,16 @@ msgid ""
 "The time (in seconds) the connection needs to remain idle before TCP starts "
 "sending keepalive probes."
 msgstr ""
+"Temps (en secondes) durant lequel la connexion doit rester inactive avant "
+"que TCP ne commence à envoyer des paquets keepalive pour maintenir la "
+"session."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1203
 msgid "The time (in seconds) between individual keepalive probes."
 msgstr ""
+"Temps (en secondes) entre deux envois de paquets de maintien de la session "
+"TCP."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1218
@@ -2268,6 +2304,8 @@ msgid ""
 "The maximum number of keepalive probes TCP should send before dropping the "
 "connection."
 msgstr ""
+"Nombre maximum de messages de maintien de la session TCP (keepalive probes) "
+"avant abandon."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1233
@@ -2276,6 +2314,9 @@ msgid ""
 "data may remain unacknowledged before TCP will forcibly close the  "
 "corresponding connection."
 msgstr ""
+"Cela permet de spécifier la durée maximum en millisecondes durant laquelle "
+"les données transmises peuvent rester non aquittées avant que TCP ne close "
+"la connexion de force."
 
 #: data/ui/remmina_preferences.glade:1255
 msgid "SSH Options"
@@ -2415,6 +2456,9 @@ msgid ""
 "usr/share/remmina/theme. See https://github.com/mbadolato/iTerm2-Color-"
 "Schemes."
 msgstr ""
+"Veuillez choisir un fichier de thème de couleurs. Les thèmes préinstallés "
+"sont en général dans /usr/share/remmina/theme (voir https://github.com/mbadol"
+"ato/iTerm2-Color-Schemes)."
 
 #: data/ui/remmina_preferences.glade:1833
 msgid "Terminal Color Scheme file chooser"
@@ -2432,8 +2476,13 @@ msgid ""
 "appropriate permissions to Remmina.  As an alternative you can to enter the "
 "following commands in a terminal window:"
 msgstr ""
+"Remmina semble fonctionner sur votre système à partir d’un paquet SNAP. Afin "
+"de pouvoir activer certaines fonctionnalités importantes, telles que la "
+"sauvegarde des mots de passe dans votre trousseau de clef ou le partage des "
+"imprimantes via RDP, veuillez ouvrir votre gestionnaire de logiciels et "
+"donner à Remmina les droits d’accès adéquats. Vous pouvez également taper "
+"les commandes suivantes dans un terminal virtuel :"
 
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"
-msgstr ""
-
+msgstr "Ne plus réafficher ce message"
