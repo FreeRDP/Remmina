@@ -183,7 +183,7 @@ You can configure everything from the graphical interface or editing by hand the
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://raw.githubusercontent.com/FreeRDP/Remmina/next/CONTRIBUTING.md) for a better overview.
+See [CONTRIBUTING.md](https://raw.githubusercontent.com/FreeRDP/Remmina/master/CONTRIBUTING.md) for a better overview.
 
 If you want to contribute with code:
 
@@ -201,7 +201,7 @@ If you rather prefer to contribute to Remmina with money you are more than welco
 
 For more informations See the [Remmina web site donation page](http://remmina.org/wp/donations).
 
-See the [THANKS.md](https://raw.githubusercontent.com/FreeRDP/Remmina/next/THANKS.md) file for an exhaustive list of supporters.
+See the [THANKS.md](https://raw.githubusercontent.com/FreeRDP/Remmina/master/THANKS.md) file for an exhaustive list of supporters.
 
 #### Paypal
 
@@ -224,7 +224,7 @@ Remmina is maintained by:
  * [Giovanni Panozzo](https://github.com/giox069)
  * [Dario Cavedon](https://github.com/ic3d)
 
-See the [AUTHORS](https://raw.githubusercontent.com/FreeRDP/Remmina/next/AUTHORS) for an exhaustive list.
+See the [AUTHORS](https://raw.githubusercontent.com/FreeRDP/Remmina/master/AUTHORS) for an exhaustive list.
 If you are not listed and you have contributed, feel free to update that file.
 
 ## Resources

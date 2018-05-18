@@ -49,7 +49,7 @@ of which some that have a [bounty](https://github.com/FreeRDP/Remmina/issues?mil
 
 ### Internal projects
 
-- Refactorying [remmina_connection_window.c](https://github.com/FreeRDP/Remmina/blob/next/remmina/src/remmina_connection_window.c) as it is big, complicated and hard to extend.
+- Refactorying [remmina_connection_window.c](https://github.com/FreeRDP/Remmina/blob/master/remmina/src/remmina_connection_window.c) as it is big, complicated and hard to extend.
 - Simplify the user interface.
 - Separate plugin processes from the main process to improve stability.
 - Write an additional plugin system to write plugins also in Python and eventually Ruby.
@@ -79,7 +79,7 @@ If you rather prefer to contribute to Remmina with money you are more than welco
 
 For more informations See the [Remmina web site donation page](http://remmina.org/wp/donations).
 
-See the [THANKS.md](https://raw.githubusercontent.com/FreeRDP/Remmina/next/THANKS.md) file for an exhaustive list of supporters.
+See the [THANKS.md](https://raw.githubusercontent.com/FreeRDP/Remmina/master/THANKS.md) file for an exhaustive list of supporters.
 
 #### Paypal
 
