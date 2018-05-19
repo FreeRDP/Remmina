@@ -69,13 +69,13 @@ static void remmina_tp_handler_handle_channels(TpSvcClientHandler *handler, cons
 {
 	TRACE_CALL(__func__);
 	gint i;
-	GValueArray *array;
+	GArray *array;
 
 	for (i = 0; i < channels->len; i++) {
 		array = g_ptr_array_index(channels, i);
 		remmina_tp_channel_handler_new(account_path, connection_path,
-			(const gchar*)g_value_get_boxed(g_value_array_get_nth(array, 0)),
-			(GHashTable*)g_value_get_boxed(g_value_array_get_nth(array, 1)), context);
+			(const gchar*)g_value_get_boxed(&g_array_index(array, GValue, 0)),
+			(GHashTable*)g_value_get_boxed(&g_array_index(array, GValue, 1)), context);
 	}
 }
 
