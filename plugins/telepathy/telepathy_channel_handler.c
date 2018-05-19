@@ -213,8 +213,8 @@ static void remmina_tp_channel_handler_get_contacts(TpConnection *connection, gu
 	RemminaTpChannelHandler *chandler = (RemminaTpChannelHandler*)user_data;
 	TpContact *contact;
 	gchar *token;
-	gchar *cm;
-	gchar *protocol;
+	const gchar *cm;
+	const gchar *protocol;
 	gchar *filename;
 	GdkPixbuf *pixbuf;
 	GtkWidget *image;
@@ -245,14 +245,13 @@ static void remmina_tp_channel_handler_get_contacts(TpConnection *connection, gu
 	if (token == NULL) {
 		return;
 	}
-	if (!tp_connection_parse_object_path(chandler->connection, &protocol, &cm)) {
-		g_print("tp_connection_parse_object_path: failed\n");
+	protocol = tp_connection_get_protocol_name(chandler->connection);
+	cm = tp_connection_get_cm_name(chandler->connection);
+	if (!protocol || !cm) {
 		return;
 	}
 	token = tp_escape_as_identifier(token);
 	filename = g_build_filename(g_get_user_cache_dir(), "telepathy", "avatars", cm, protocol, token, NULL);
-	g_free(cm);
-	g_free(protocol);
 	g_free(token);
 	if (g_file_test(filename, G_FILE_TEST_EXISTS)) {
 		pixbuf = gdk_pixbuf_new_from_file(filename, NULL);
