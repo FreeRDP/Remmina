@@ -220,39 +220,37 @@ remmina_file_load(const gchar *filename)
 		if (keys) {
 			for (i = 0; keys[i]; i++) {
 				key = keys[i];
-				if (protocol_plugin) {
-					if (remmina_plugin_manager_is_encrypted_setting(protocol_plugin, key)) {
-						s = g_key_file_get_string(gkeyfile, "remmina", key, NULL);
-						if (g_strcmp0(s, ".") == 0) {
-							if (secret_service_available) {
-								sec = secret_plugin->get_password(remminafile, key);
-								remmina_file_set_string(remminafile, key, sec);
-								/* Annotate in spsettings that this value comes from secret_plugin */
-								g_hash_table_insert(remminafile->spsettings, g_strdup(key), NULL);
-								g_free(sec);
-							}else {
-								remmina_file_set_string(remminafile, key, s);
-							}
+				if (protocol_plugin && remmina_plugin_manager_is_encrypted_setting(protocol_plugin, key)) {
+					s = g_key_file_get_string(gkeyfile, "remmina", key, NULL);
+					if (g_strcmp0(s, ".") == 0) {
+						if (secret_service_available) {
+							sec = secret_plugin->get_password(remminafile, key);
+							remmina_file_set_string(remminafile, key, sec);
+							/* Annotate in spsettings that this value comes from secret_plugin */
+							g_hash_table_insert(remminafile->spsettings, g_strdup(key), NULL);
+							g_free(sec);
 						}else {
-							remmina_file_set_string_ref(remminafile, key, remmina_crypt_decrypt(s));
+							remmina_file_set_string(remminafile, key, s);
 						}
-						g_free(s);
 					}else {
-						/* If we find "resolution", then we split it in two */
-						if (strcmp(key, "resolution") == 0) {
-							resolution_str = g_key_file_get_string(gkeyfile, "remmina", key, NULL);
-							if (remmina_public_split_resolution_string(resolution_str, &w, &h)) {
-								remmina_file_set_string_ref(remminafile, "resolution_width", g_strdup_printf("%i", w));
-								remmina_file_set_string_ref(remminafile, "resolution_height", g_strdup_printf("%i", h));
-							} else {
-								remmina_file_set_string_ref(remminafile, "resolution_width", NULL);
-								remmina_file_set_string_ref(remminafile, "resolution_height", NULL);
-							}
-							g_free(resolution_str);
-						}else {
-							remmina_file_set_string_ref(remminafile, key,
-								g_key_file_get_string(gkeyfile, "remmina", key, NULL));
+						remmina_file_set_string_ref(remminafile, key, remmina_crypt_decrypt(s));
+					}
+					g_free(s);
+				}else {
+					/* If we find "resolution", then we split it in two */
+					if (strcmp(key, "resolution") == 0) {
+						resolution_str = g_key_file_get_string(gkeyfile, "remmina", key, NULL);
+						if (remmina_public_split_resolution_string(resolution_str, &w, &h)) {
+							remmina_file_set_string_ref(remminafile, "resolution_width", g_strdup_printf("%i", w));
+							remmina_file_set_string_ref(remminafile, "resolution_height", g_strdup_printf("%i", h));
+						} else {
+							remmina_file_set_string_ref(remminafile, "resolution_width", NULL);
+							remmina_file_set_string_ref(remminafile, "resolution_height", NULL);
 						}
+						g_free(resolution_str);
+					}else {
+						remmina_file_set_string_ref(remminafile, key,
+							g_key_file_get_string(gkeyfile, "remmina", key, NULL));
 					}
 				}
 			}
