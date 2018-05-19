@@ -213,7 +213,7 @@ static void remmina_on_startup(GApplication *app)
 	remmina_icon_init();
 
 	g_set_application_name("Remmina");
-	gtk_window_set_default_icon_name("org.remmina.Remmina");
+	gtk_window_set_default_icon_name(REMMINA_APP_ID);
 
 	gtk_icon_theme_append_search_path(gtk_icon_theme_get_default(),
 		REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons");
@@ -276,7 +276,7 @@ int main(int argc, char* argv[])
 	gcry_control(GCRYCTL_INITIALIZATION_FINISHED, 0);
 #endif  /* !HAVE_LIBGCRYPT */
 
-	app_id = g_application_id_is_valid(UNIQUE_APPNAME) ? UNIQUE_APPNAME : NULL;
+	app_id = g_application_id_is_valid(REMMINA_APP_ID) ? REMMINA_APP_ID : NULL;
 	app = gtk_application_new(app_id, G_APPLICATION_HANDLES_COMMAND_LINE);
 	g_signal_connect(app, "startup", G_CALLBACK(remmina_on_startup), NULL);
 	g_signal_connect(app, "command-line", G_CALLBACK(remmina_on_command_line), NULL);
