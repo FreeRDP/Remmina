@@ -116,10 +116,8 @@ if(NOT REMMINA_GIT_REVISION OR ${REMMINA_GIT_REVISION} STREQUAL "n/a")
 endif()
 message(STATUS "Git Revision ${REMMINA_GIT_REVISION}")
 
-if(NOT UNIQUE_APPNAME)
-    # UNIQUE_APPNAME should follow Gnome Application ID rules
-    set(UNIQUE_APPNAME "org.remmina.Remmina")
-endif()
+# REMMINA_APP_ID should follow Gnome Application ID rules
+set(REMMINA_APP_ID "org.remmina.Remmina")
 
 if(NOT REMMINA_DATADIR)
     set(REMMINA_DATADIR "${CMAKE_INSTALL_FULL_DATADIR}")

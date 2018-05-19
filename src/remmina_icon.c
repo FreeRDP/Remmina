@@ -345,20 +345,21 @@ static void remmina_icon_create_autostart_file(void)
 	TRACE_CALL(__func__);
 	GKeyFile *gkeyfile;
 
-	if (!g_file_test(remmina_icon.autostart_file, G_FILE_TEST_EXISTS)) {
-		gkeyfile = g_key_file_new();
-		g_key_file_set_string(gkeyfile, "Desktop Entry", "Version", "1.0");
-		g_key_file_set_string(gkeyfile, "Desktop Entry", "Name", _("Remmina Applet"));
-		g_key_file_set_string(gkeyfile, "Desktop Entry", "Comment",
-			_("Connect to remote desktops through the applet menu"));
-		g_key_file_set_string(gkeyfile, "Desktop Entry", "Icon", "remmina");
-		g_key_file_set_string(gkeyfile, "Desktop Entry", "Exec", "remmina -i");
-		g_key_file_set_boolean(gkeyfile, "Desktop Entry", "Terminal", FALSE);
-		g_key_file_set_string(gkeyfile, "Desktop Entry", "Type", "Application");
-		g_key_file_set_boolean(gkeyfile, "Desktop Entry", "Hidden", TRUE);
-		remmina_icon_save_autostart_file(gkeyfile);
-		g_key_file_free(gkeyfile);
-	}
+	if (g_file_test(remmina_icon.autostart_file, G_FILE_TEST_EXISTS))
+		return;
+
+	gkeyfile = g_key_file_new();
+	g_key_file_set_string(gkeyfile, "Desktop Entry", "Version", "1.0");
+	g_key_file_set_string(gkeyfile, "Desktop Entry", "Name", _("Remmina Applet"));
+	g_key_file_set_string(gkeyfile, "Desktop Entry", "Comment",
+		_("Connect to remote desktops through the applet menu"));
+	g_key_file_set_string(gkeyfile, "Desktop Entry", "Icon", REMMINA_APP_ID);
+	g_key_file_set_string(gkeyfile, "Desktop Entry", "Exec", "remmina -i");
+	g_key_file_set_boolean(gkeyfile, "Desktop Entry", "Terminal", FALSE);
+	g_key_file_set_string(gkeyfile, "Desktop Entry", "Type", "Application");
+	g_key_file_set_boolean(gkeyfile, "Desktop Entry", "Hidden", TRUE);
+	remmina_icon_save_autostart_file(gkeyfile);
+	g_key_file_free(gkeyfile);
 }
 
 /**
