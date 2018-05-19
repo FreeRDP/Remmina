@@ -32,8 +32,7 @@
 
 set(SNAP_NAME "remmina")
 set(SNAP_VERSION ${REMMINA_VERSION})
-if(NOT ${GIT_REVISION} STREQUAL ${REMMINA_VERSION_SUFFIX} AND
-        NOT ${GIT_REVISION} MATCHES "^v?[0-9].[0-9].[0-9](-rcgit.[0-9]*)?$")
+if(NOT ${GIT_REVISION} MATCHES "^v?[0-9].[0-9].[0-9][0-9]?$")
     set(SNAP_VERSION ${SNAP_VERSION}+git${GIT_REVISION})
 endif()
 
