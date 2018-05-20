@@ -24,9 +24,9 @@ include(FindPackageHandleStandardArgs)
 # Try with ayatana-libappindicator
 pkg_check_modules(PC_AYATANA_APPINDICATOR ayatana-appindicator3-0.1)
 
-find_path(AYATANA_APPINDICATOR_INCLUDE_DIR NAMES app-indicator.h
+find_path(AYATANA_APPINDICATOR_INCLUDE_DIR NAMES libayatana-appindicator/app-indicator.h
 	HINTS ${PC_AYATANA_APPINDICATOR_INCLUDEDIR} ${PC_AYATANA_APPINDICATOR_INCLUDE_DIRS}
-	PATH_SUFFIXES libayatana-appindicator3-0.1/libayatana-appindicator)
+	PATH_SUFFIXES libayatana-appindicator3-0.1)
 
 find_library(AYATANA_APPINDICATOR_LIBRARY NAMES ayatana-appindicator3)
 
@@ -35,6 +35,7 @@ if (AYATANA_APPINDICATOR_INCLUDE_DIR AND AYATANA_APPINDICATOR_LIBRARY)
 endif()
 
 if (APPINDICATOR_FOUND)
+	add_definitions(-DHAVE_AYATANA_LIBAPPINDICATOR)
 	set(APPINDICATOR_LIBRARIES ${AYATANA_APPINDICATOR_LIBRARY})
 	set(APPINDICATOR_INCLUDE_DIRS ${AYATANA_APPINDICATOR_INCLUDE_DIR})
 else()
