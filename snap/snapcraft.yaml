@@ -92,7 +92,8 @@ parts:
     plugin: cmake
     source: .
     parse-info: [usr/share/metainfo/org.remmina.Remmina.appdata.xml]
-    prepare: |
+    override-pull: |
+      snapcraftctl pull
       SNAPCRAFT_PART_SRC=$SNAPCRAFT_PART_INSTALL/../src
       cp -av $SNAPCRAFT_STAGE/../snap $SNAPCRAFT_PART_SRC
     stage-packages:
@@ -120,7 +121,8 @@ parts:
       # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
 
-    install: |
+    override-build: |
+      snapcraftctl build
       cp -av $SNAPCRAFT_PART_INSTALL/../src/snap/gui $SNAPCRAFT_STAGE/../snap
 
     organize:
@@ -140,8 +142,9 @@ parts:
       - libappindicator3-1
     stage:
       - -./usr/share/fonts/**
-    install: |
+    override-build: |
       set -x
+      snapcraftctl build
       export XDG_DATA_DIRS=$SNAPCRAFT_PART_INSTALL/usr/share
       update-mime-database $SNAPCRAFT_PART_INSTALL/usr/share/mime
       for dir in $SNAPCRAFT_PART_INSTALL/usr/share/icons/*/; do
