@@ -88,20 +88,10 @@ parts:
     prime:
       - ./**/libssh*.so.*
 
-  # FIXME: this is an ugly workaround for https://pad.lv/1761633
-  remmina-appdata:
-    plugin: nil
-    source: data/desktop
-    prime: [-./*]
-    prepare: |
-      SNAPCRAFT_PART_SRC=$SNAPCRAFT_PART_INSTALL/../src
-      cp -av $SNAPCRAFT_PART_SRC/appdata.xml \
-            $SNAPCRAFT_PART_SRC/org.remmina.Remmina.appdata.xml
-
   remmina:
     plugin: cmake
     source: .
-    parse-info: [../../remmina-appdata/src/org.remmina.Remmina.appdata.xml]
+    parse-info: [usr/share/metainfo/org.remmina.Remmina.appdata.xml]
     prepare: |
       SNAPCRAFT_PART_SRC=$SNAPCRAFT_PART_INSTALL/../src
       cp -av $SNAPCRAFT_STAGE/../snap $SNAPCRAFT_PART_SRC
@@ -142,7 +132,6 @@ parts:
       - libssh-0.7
       - freerdp
       - desktop-gtk3
-      - remmina-appdata
 
   # Removing files that are accessible thanks to desktop plug
   desktop-gtk3:
