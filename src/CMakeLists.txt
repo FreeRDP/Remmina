@@ -132,6 +132,13 @@ target_link_libraries(remmina ${X11_LIBRARIES})
 
 target_link_libraries(remmina ${CMAKE_THREAD_LIBS_INIT})
 
+find_package(Intl)
+if(INTL_FOUND AND "${CMAKE_SYSTEM_NAME}" MATCHES "FreeBSD|OpenBSD|NetBSD")
+    message(STATUS "${CMAKE_SYSTEM_NAME} detected, building with Intl")
+    include_directories(${Intl_INCLUDE_DIRS})
+    target_link_libraries(remmina ${Intl_LIBRARIES})
+endif()
+
 find_suggested_package(LIBSSH)
 if(LIBSSH_FOUND)
         add_definitions(-DHAVE_LIBSSH)
