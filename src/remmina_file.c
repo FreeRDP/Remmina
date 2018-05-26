@@ -547,6 +547,7 @@ void remmina_file_unsave_password(RemminaFile *remminafile)
 			setting_iter = protocol_plugin->basic_settings;
 			if (setting_iter) {
 				while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
+					g_debug("setting name: %s", setting_iter->name);
 					if (remmina_plugin_manager_is_encrypted_setting(protocol_plugin, setting_iter->name)) {
 						remmina_file_set_string(remminafile, remmina_plugin_manager_get_canonical_setting_name(setting_iter), NULL);
 					}
