@@ -1,3 +1,4 @@
+[![Snap Status](https://build.snapcraft.io/badge/FreeRDP/Remmina.svg)](https://build.snapcraft.io/user/FreeRDP/Remmina)
 [![Build Status](https://travis-ci.org/FreeRDP/Remmina.png)](https://travis-ci.org/FreeRDP/Remmina) [![Bountysource](https://img.shields.io/bountysource/team/remmina/activity.svg)](https://www.bountysource.com/teams/remmina) [![CodeTriage](https://www.codetriage.com/freerdp/remmina/badges/users.svg)](https://www.codetriage.com/freerdp/remmina)
 
 # Remmina: The GTK+ Remote Desktop Client
