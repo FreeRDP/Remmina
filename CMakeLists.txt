@@ -64,7 +64,7 @@ if(CMAKE_COMPILER_IS_GNUCC)
     if(WITH_SSE2)
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2")
     endif()
-    CHECK_C_COMPILER_FLAG(-Wno-unused-function Wno-unused-function)
+    check_c_compiler_flag(-Wno-unused-function Wno-unused-function)
     if(Wno-unused-function)
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-function")
     endif()
@@ -91,7 +91,8 @@ if(CMAKE_SYSTEM_NAME MATCHES "FreeBSD")
     include_directories(/usr/local/include /usr/include)
     link_directories(/usr/local/lib /usr/lib)
     set(CMAKE_REQUIRED_INCLUDES /usr/local/include)
-    set(CMAKE_SHARED_LIBRARY_PREFIX ${CMAKE_SHARED_LIBRARY_PREFIX} /usr/local/lib)
+    set(CMAKE_SHARED_LIBRARY_PREFIX ${CMAKE_SHARED_LIBRARY_PREFIX}
+        /usr/local/lib)
 endif()
 
 # Versioning
@@ -99,7 +100,14 @@ set(WITH_LIBRARY_VERSIONING "ON")
 set(REMMINA_VERSION_MAJOR "1")
 set(REMMINA_VERSION_MINOR "2")
 set(REMMINA_VERSION_REVISION "30")
-set(REMMINA_VERSION "${REMMINA_VERSION_MAJOR}.${REMMINA_VERSION_MINOR}.${REMMINA_VERSION_REVISION}")
+set(REMMINA_VERSION_SUFFIX "1")
+set(REMMINA_VERSION "\
+${REMMINA_VERSION_MAJOR}.\
+${REMMINA_VERSION_MINOR}.\
+${REMMINA_VERSION_REVISION}.\
+${REMMINA_VERSION_SUFFIX}")
+
+message(STATUS "Remmina version: ${REMMINA_VERSION}")
 
 include(GetGitRevisionDescription)
 git_get_exact_tag(REMMINA_GIT_REVISION --tags --always)
@@ -107,7 +115,7 @@ if(${REMMINA_GIT_REVISION} STREQUAL "n/a")
     git_rev_parse(REMMINA_GIT_REVISION --short)
 endif()
 
-message(STATUS "Git Revision ${REMMINA_GIT_REVISION}")
+message(STATUS "Git Revision: ${REMMINA_GIT_REVISION}")
 
 # REMMINA_APP_ID should follow Gnome Application ID rules
 set(REMMINA_APP_ID "org.remmina.Remmina")
@@ -165,7 +173,8 @@ endif()
 option(SNAP_BUILD_ONLY "SNAP_BUILD_ONLY" OFF)
 if(SNAP_BUILD_ONLY)
     if(NOT SNAPCRAFT)
-        message(FATAL_ERROR "snapcraft not found, impossible to create only snap target")
+        message(FATAL_ERROR
+            "snapcraft not found, impossible to create only snap target")
     endif()
     return()
 endif()
@@ -196,13 +205,15 @@ if(CMAKE_COMPILER_IS_GNUCC AND WITH_GCC_SANITIZE_ADDRESS)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
 endif()
 
-# Clang LLVM coverage flags - https://clang.llvm.org/docs/SourceBasedCodeCoverage.html
+# LLVM coverage flags - https://clang.llvm.org/docs/SourceBasedCodeCoverage.html
 if("${CMAKE_C_COMPILER_ID}" MATCHES "Clang" AND WITH_CLANG_COVERAGE)
     message(STATUS "Enabling coverage.")
     add_definitions(-DWITH_CLANG_COVERAGE)
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -fprofile-instr-generate -fcoverage-mapping")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fprofile-instr-generate")
-elseif ("${CMAKE_C_COMPILER_ID}" MATCHES "GNU" AND WITH_GCC_PROFILING)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}
+    -g -fprofile-instr-generate -fcoverage-mapping")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}
+    -fprofile-instr-generate")
+elseif("${CMAKE_C_COMPILER_ID}" MATCHES "GNU" AND WITH_GCC_PROFILING)
     message(STATUS "Enabling profiling.")
     add_definitions(-DWITH_GCC_PROFILING)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pg")

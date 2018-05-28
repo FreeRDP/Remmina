@@ -1,38 +1,100 @@
-# Change Log
+# Changelog
+
+## [v1.2.30.1](https://github.com/FreeRDP/Remmina/tree/v1.2.30.1) (2018-05-29)
+
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.30...v1.2.30.1)
+
+**Implemented enhancements:**
+
+- Move search bar below the header bar [\#1648](https://github.com/FreeRDP/Remmina/issues/1648)
+- Failure to link with lld on OpenBSD [\#1604](https://github.com/FreeRDP/Remmina/issues/1604)
+- Add search toggle [\#1653](https://github.com/FreeRDP/Remmina/pull/1653) ([antenore](https://github.com/antenore))
+- Move search bar below the header.  [\#1649](https://github.com/FreeRDP/Remmina/pull/1649) ([antenore](https://github.com/antenore))
+
+**Fixed bugs:**
+
+- RDP - Remmina process dies after entering password and clicking "OK" [\#1643](https://github.com/FreeRDP/Remmina/issues/1643)
+- Fixing segmentation fault due to setting name NULL [\#1650](https://github.com/FreeRDP/Remmina/pull/1650) ([antenore](https://github.com/antenore))
+
+**Closed issues:**
+
+- Logo Proposal [\#1644](https://github.com/FreeRDP/Remmina/issues/1644)
+- Deleeting a VNC Config makes Remmina crash [\#1642](https://github.com/FreeRDP/Remmina/issues/1642)
+- Problem connecting to Microsoft Terminal server via RDP [\#1635](https://github.com/FreeRDP/Remmina/issues/1635)
+- Copy and Paste stopped working in 1.2.0-rcgit-27 [\#1518](https://github.com/FreeRDP/Remmina/issues/1518)
+- Unable to connect to RDP server [\#1430](https://github.com/FreeRDP/Remmina/issues/1430)
+- clipboard synch not working for second RDP connection [\#1357](https://github.com/FreeRDP/Remmina/issues/1357)
+
+**Merged pull requests:**
+
+- Moved intl linking for \*BSD [\#1645](https://github.com/FreeRDP/Remmina/pull/1645) ([antenore](https://github.com/antenore))
+- Drop libfreerdp-plugins-standard from Debian deps [\#1640](https://github.com/FreeRDP/Remmina/pull/1640) ([mfvescovi](https://github.com/mfvescovi))
 
 ## [v1.2.30](https://github.com/FreeRDP/Remmina/tree/v1.2.30) (2018-05-20)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.29+fpbuild0...v1.2.30)
 
 **Implemented enhancements:**
 
-- HiDPI - Elements spacing in the headerbar is too low [\#1628](https://github.com/FreeRDP/Remmina/issues/1628)
-- Failure to link with lld on OpenBSD [\#1604](https://github.com/FreeRDP/Remmina/issues/1604)
 - Flatpak - Add ffmpeg dependency \(libavutil/libavcodec\) to the Remmina flatpak for FreeRDP [\#1598](https://github.com/FreeRDP/Remmina/issues/1598)
 - RDP - Implement xfreerdp like  --no-fastpath option [\#1596](https://github.com/FreeRDP/Remmina/issues/1596)
-- 'remmina -c' accepting only configs with .remmina extension. [\#1454](https://github.com/FreeRDP/Remmina/issues/1454)
 - \[Feature Request\] Add SPICE Native WebDAV shared folder support [\#1273](https://github.com/FreeRDP/Remmina/issues/1273)
 - Register and support opening rdp files directly [\#1105](https://github.com/FreeRDP/Remmina/issues/1105)
+- HiDPI - Elements spacing in the headerbar is too low [\#1628](https://github.com/FreeRDP/Remmina/issues/1628)
+- 'remmina -c' accepting only configs with .remmina extension. [\#1454](https://github.com/FreeRDP/Remmina/issues/1454)
+- Remove survey as too bloated.  [\#1064](https://github.com/FreeRDP/Remmina/issues/1064)
 - Panel Icon almost invisible [\#1006](https://github.com/FreeRDP/Remmina/issues/1006)
+- Please add man pages for remmina. [\#952](https://github.com/FreeRDP/Remmina/issues/952)
+- Enhancement - Variables for pre- and post-commands [\#849](https://github.com/FreeRDP/Remmina/issues/849)
+- GTK 3.20 VTE3 Remmina shows blank terminal [\#835](https://github.com/FreeRDP/Remmina/issues/835)
+- How do I select all text in SSH terminal session ? [\#833](https://github.com/FreeRDP/Remmina/issues/833)
+- Add a issues-templates to the project [\#822](https://github.com/FreeRDP/Remmina/issues/822)
+- Please support XDG base directory spec [\#818](https://github.com/FreeRDP/Remmina/issues/818)
+- Feature request - Option - Floating Desktop Name \[$5\] [\#815](https://github.com/FreeRDP/Remmina/issues/815)
+- Scrollable profile editor [\#801](https://github.com/FreeRDP/Remmina/issues/801)
+- Quick Find cleanups [\#791](https://github.com/FreeRDP/Remmina/issues/791)
+- the checkbox, 'Save SSH Password',  greyed out. [\#708](https://github.com/FreeRDP/Remmina/issues/708)
+- Screenshot of remote machine \[feature request\] [\#644](https://github.com/FreeRDP/Remmina/issues/644)
+- Auto-Highlight Quick Search Text Upon Each Remote Session Launch [\#544](https://github.com/FreeRDP/Remmina/issues/544)
+- Support opening rdp files [\#47](https://github.com/FreeRDP/Remmina/issues/47)
 - Rename UNIQUE\_APPNAME to REMMINA\_APP\_ID and use it wherever possible [\#1637](https://github.com/FreeRDP/Remmina/pull/1637) ([larchunix](https://github.com/larchunix))
 - Update new logo from Ura Design [\#1636](https://github.com/FreeRDP/Remmina/pull/1636) ([antenore](https://github.com/antenore))
-- Increase headerbar elements spacing [\#1629](https://github.com/FreeRDP/Remmina/pull/1629) ([antenore](https://github.com/antenore))
-- Support for "gatewayaccesstoken" \(aka PAA\) and "authentication level" RDP file properties [\#1621](https://github.com/FreeRDP/Remmina/pull/1621) ([p-pautov](https://github.com/p-pautov))
 - Autodetect missing H264 on libfreerdp [\#1617](https://github.com/FreeRDP/Remmina/pull/1617) ([giox069](https://github.com/giox069))
 - Project folder refactoring following the GNOME guidelines. 2nd batch. [\#1600](https://github.com/FreeRDP/Remmina/pull/1600) ([antenore](https://github.com/antenore))
 - RDP: option to disable fast-path, fixes \#1596 [\#1597](https://github.com/FreeRDP/Remmina/pull/1597) ([giox069](https://github.com/giox069))
 - Term enhance - Color scheme import [\#1585](https://github.com/FreeRDP/Remmina/pull/1585) ([antenore](https://github.com/antenore))
+- Increase headerbar elements spacing [\#1629](https://github.com/FreeRDP/Remmina/pull/1629) ([antenore](https://github.com/antenore))
+- Support for "gatewayaccesstoken" \(aka PAA\) and "authentication level" RDP file properties [\#1621](https://github.com/FreeRDP/Remmina/pull/1621) ([p-pautov](https://github.com/p-pautov))
+- No debian/ubuntu distributions files included. [\#1062](https://github.com/FreeRDP/Remmina/pull/1062) ([nastasi](https://github.com/nastasi))
+- Fix fullscreen window position \(\#873\) [\#1060](https://github.com/FreeRDP/Remmina/pull/1060) ([spasche](https://github.com/spasche))
+- CMAKE: fix GNUInstallDirs usage [\#1004](https://github.com/FreeRDP/Remmina/pull/1004) ([hasufell](https://github.com/hasufell))
+- XDG base directory spec [\#1003](https://github.com/FreeRDP/Remmina/pull/1003) ([antenore](https://github.com/antenore))
+- When focus-in inside the quick search, select the whole text as per \#544 [\#1001](https://github.com/FreeRDP/Remmina/pull/1001) ([antenore](https://github.com/antenore))
+- spice: send a notification at the end of file transfers [\#994](https://github.com/FreeRDP/Remmina/pull/994) ([larchunix](https://github.com/larchunix))
+- spice: show progress of drag & drop file transfers [\#993](https://github.com/FreeRDP/Remmina/pull/993) ([larchunix](https://github.com/larchunix))
+- Remmina main fixes [\#891](https://github.com/FreeRDP/Remmina/pull/891) ([antenore](https://github.com/antenore))
+- Remmina Main Window Refactoring [\#875](https://github.com/FreeRDP/Remmina/pull/875) ([antenore](https://github.com/antenore))
+- Quickfind fixes - Close \#791 [\#811](https://github.com/FreeRDP/Remmina/pull/811) ([antenore](https://github.com/antenore))
 
 **Fixed bugs:**
 
 - Assert in remmina\_pref\_save [\#1570](https://github.com/FreeRDP/Remmina/issues/1570)
 - Minor graphical issue on Ubuntu 18.04 with communitheme [\#1546](https://github.com/FreeRDP/Remmina/issues/1546)
+- When "Server" GtkComboBox is selected, TAB key doesn't work [\#1049](https://github.com/FreeRDP/Remmina/issues/1049)
+- \[remmina\_main\] Quick connect bar not visible [\#878](https://github.com/FreeRDP/Remmina/issues/878)
+- 100% CPU Usage [\#842](https://github.com/FreeRDP/Remmina/issues/842)
 - Security Bug: Unchecked call to gcry\_control [\#830](https://github.com/FreeRDP/Remmina/issues/830)
+- Remmina main connection window loose it's minimum height when the toolbar is hidden [\#829](https://github.com/FreeRDP/Remmina/issues/829)
+- Problem with changing key assignment in the "Keyboard" tab \(rcgit.11\) [\#819](https://github.com/FreeRDP/Remmina/issues/819)
+- Remmina forces its windows to appear at the center of the screen [\#817](https://github.com/FreeRDP/Remmina/issues/817)
 - "Floating point exception" while connecting to Windows 10 machine [\#681](https://github.com/FreeRDP/Remmina/issues/681)
+- Toolbar buttons initially enabled in the main window [\#467](https://github.com/FreeRDP/Remmina/issues/467)
+- Position of popup menu is wrong [\#423](https://github.com/FreeRDP/Remmina/issues/423)
+- Command line help not showing all the options [\#327](https://github.com/FreeRDP/Remmina/issues/327)
 
 **Closed issues:**
 
 - Nix package [\#1605](https://github.com/FreeRDP/Remmina/issues/1605)
-- Remmina refactoring - Merge 'next' in 'master' and switch back to master [\#1602](https://github.com/FreeRDP/Remmina/issues/1602)
 - undefined symbol: vte\_terminal\_copy\_clipboard\_format [\#1591](https://github.com/FreeRDP/Remmina/issues/1591)
 - Remmina snap fonts are ... gone. [\#1587](https://github.com/FreeRDP/Remmina/issues/1587)
 - Typo in snap pop up "passowrd" instead of "password" [\#1579](https://github.com/FreeRDP/Remmina/issues/1579)
@@ -47,16 +109,21 @@
 - Remmina lock screen when i use it to connect to Win10. [\#1396](https://github.com/FreeRDP/Remmina/issues/1396)
 - Windows 10 BSOD on file copy [\#1019](https://github.com/FreeRDP/Remmina/issues/1019)
 - ALT + F4 closes Remina remote Window [\#125](https://github.com/FreeRDP/Remmina/issues/125)
+- Remmina refactoring - Merge 'next' in 'master' and switch back to master [\#1602](https://github.com/FreeRDP/Remmina/issues/1602)
+- English fixes [\#1040](https://github.com/FreeRDP/Remmina/issues/1040)
+- Complete GTK3 migration [\#365](https://github.com/FreeRDP/Remmina/issues/365)
+- Please create an AppData file for Remmina [\#272](https://github.com/FreeRDP/Remmina/issues/272)
+- "Overwrite all" button [\#238](https://github.com/FreeRDP/Remmina/issues/238)
 
 **Merged pull requests:**
 
+- Fix ayatana libappindicator cmake search [\#1639](https://github.com/FreeRDP/Remmina/pull/1639) ([giox069](https://github.com/giox069))
 - Fixed some links in Readme [\#1634](https://github.com/FreeRDP/Remmina/pull/1634) ([weberhofer](https://github.com/weberhofer))
 - Update italian translation [\#1631](https://github.com/FreeRDP/Remmina/pull/1631) ([giox069](https://github.com/giox069))
 - Updated French po file [\#1630](https://github.com/FreeRDP/Remmina/pull/1630) ([DevDef](https://github.com/DevDef))
 -  Write newline instead of return  [\#1626](https://github.com/FreeRDP/Remmina/pull/1626) ([weberhofer](https://github.com/weberhofer))
 - Fix German translations po file [\#1625](https://github.com/FreeRDP/Remmina/pull/1625) ([antenore](https://github.com/antenore))
 - Updated German Translation [\#1624](https://github.com/FreeRDP/Remmina/pull/1624) ([weberhofer](https://github.com/weberhofer))
-- Update translations after refactoring [\#1623](https://github.com/FreeRDP/Remmina/pull/1623) ([antenore](https://github.com/antenore))
 - Enable travis cache for flatpak [\#1620](https://github.com/FreeRDP/Remmina/pull/1620) ([antenore](https://github.com/antenore))
 - Enable travis cache [\#1619](https://github.com/FreeRDP/Remmina/pull/1619) ([antenore](https://github.com/antenore))
 - Fix libssh deprecations in NX plugin [\#1613](https://github.com/FreeRDP/Remmina/pull/1613) ([larchunix](https://github.com/larchunix))
@@ -80,8 +147,18 @@
 - Update Flatpak to GNOME SDK 3.28 [\#1571](https://github.com/FreeRDP/Remmina/pull/1571) ([larchunix](https://github.com/larchunix))
 - Use string constant [\#1569](https://github.com/FreeRDP/Remmina/pull/1569) ([amtlib-dot-dll](https://github.com/amtlib-dot-dll))
 - CMake cleanup [\#1568](https://github.com/FreeRDP/Remmina/pull/1568) ([larchunix](https://github.com/larchunix))
+- Update translations after refactoring [\#1623](https://github.com/FreeRDP/Remmina/pull/1623) ([antenore](https://github.com/antenore))
+- Updated German translation [\#1063](https://github.com/FreeRDP/Remmina/pull/1063) ([theraser](https://github.com/theraser))
+- Spice package and integrated debian packaging. [\#964](https://github.com/FreeRDP/Remmina/pull/964) ([nastasi](https://github.com/nastasi))
+- spice: add support for tls encrypted connections [\#962](https://github.com/FreeRDP/Remmina/pull/962) ([larchunix](https://github.com/larchunix))
+- SPICE plugin: USB redirection support + minor fixes [\#881](https://github.com/FreeRDP/Remmina/pull/881) ([larchunix](https://github.com/larchunix))
+- Spice plugin: scaling support  [\#879](https://github.com/FreeRDP/Remmina/pull/879) ([larchunix](https://github.com/larchunix))
+- More SPICE plugin improvements [\#874](https://github.com/FreeRDP/Remmina/pull/874) ([larchunix](https://github.com/larchunix))
+- SPICE plugin improvements [\#872](https://github.com/FreeRDP/Remmina/pull/872) ([larchunix](https://github.com/larchunix))
+- New plugin with basic support for the SPICE protocol [\#870](https://github.com/FreeRDP/Remmina/pull/870) ([larchunix](https://github.com/larchunix))
 
 ## [v1.2.0-rcgit.29+fpbuild0](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.29+fpbuild0) (2018-04-13)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.29...v1.2.0-rcgit.29+fpbuild0)
 
 **Implemented enhancements:**
@@ -107,6 +184,7 @@
 - TCP Socket parameters as global options. Closes \#1487 [\#1556](https://github.com/FreeRDP/Remmina/pull/1556) ([antenore](https://github.com/antenore))
 
 ## [v1.2.0-rcgit.29](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.29) (2018-04-08)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.28...v1.2.0-rcgit.29)
 
 **Merged pull requests:**
@@ -120,6 +198,7 @@
 - Fixes for rcgit-28 [\#1547](https://github.com/FreeRDP/Remmina/pull/1547) ([antenore](https://github.com/antenore))
 
 ## [v1.2.0-rcgit.28](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.28) (2018-04-03)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.27...v1.2.0-rcgit.28)
 
 **Implemented enhancements:**
@@ -179,6 +258,7 @@
 - Fixes segmentation fault reported by \#1499 [\#1503](https://github.com/FreeRDP/Remmina/pull/1503) ([antenore](https://github.com/antenore))
 
 ## [v1.2.0-rcgit.27](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.27) (2018-02-14)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.26...v1.2.0-rcgit.27)
 
 **Implemented enhancements:**
@@ -215,6 +295,7 @@
 - Ensure the return value is initialized [\#1433](https://github.com/FreeRDP/Remmina/pull/1433) ([weberhofer](https://github.com/weberhofer))
 
 ## [v1.2.0-rcgit.26](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.26) (2017-12-28)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.25...v1.2.0-rcgit.26)
 
 **Fixed bugs:**
@@ -226,6 +307,7 @@
 - "Segmentation fault" during start at Xubuntu 17.10 [\#1419](https://github.com/FreeRDP/Remmina/issues/1419)
 
 ## [v1.2.0-rcgit.25](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.25) (2017-12-27)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.24...v1.2.0-rcgit.25)
 
 **Implemented enhancements:**
@@ -234,7 +316,6 @@
 - Feature request - Option to completely hide the floating toolbar when in fullscreen. [\#1379](https://github.com/FreeRDP/Remmina/issues/1379)
 - Option to run Pre Command before ANYTHING else [\#1363](https://github.com/FreeRDP/Remmina/issues/1363)
 -  Rename the plugin 'remmina-plugins-gnome' in 'remmina-plugins-secret' [\#1343](https://github.com/FreeRDP/Remmina/issues/1343)
-- Enhancement - Variables for pre- and post-commands [\#849](https://github.com/FreeRDP/Remmina/issues/849)
 - Failed to load plugin: remmina-plugin-telepathy.so - undefined symbol: remmina\_tp\_handler\_new [\#714](https://github.com/FreeRDP/Remmina/issues/714)
 - Implement an exec protocol plugin [\#1406](https://github.com/FreeRDP/Remmina/pull/1406) ([antenore](https://github.com/antenore))
 - Add SPICE Native WebDAV shared folder support [\#1401](https://github.com/FreeRDP/Remmina/pull/1401) ([larchunix](https://github.com/larchunix))
@@ -252,7 +333,6 @@
 - Un-check of "Fullscreen on the same monitor as the connection window" won't save [\#1344](https://github.com/FreeRDP/Remmina/issues/1344)
 - Remmina resets screen resolution settings in RDP shortcut [\#1323](https://github.com/FreeRDP/Remmina/issues/1323)
 - SSH Tunneling is broken with SSH Agent with public key [\#1228](https://github.com/FreeRDP/Remmina/issues/1228)
-- Failed to load plugin: remmina-plugin-telepathy.so - undefined symbol: remmina\\_tp\\_handler\\_new [\#714](https://github.com/FreeRDP/Remmina/issues/714)
 - Align SFTP and SSH plugins authentication and tunnel functionalities.  [\#1393](https://github.com/FreeRDP/Remmina/pull/1393) ([antenore](https://github.com/antenore))
 - Fix Telepathy plugin compilation [\#1356](https://github.com/FreeRDP/Remmina/pull/1356) ([larchunix](https://github.com/larchunix))
 - \_\_func\_\_ keyword must not be quoted [\#1350](https://github.com/FreeRDP/Remmina/pull/1350) ([larchunix](https://github.com/larchunix))
@@ -292,6 +372,7 @@
 - Create CODE\_OF\_CONDUCT [\#1341](https://github.com/FreeRDP/Remmina/pull/1341) ([antenore](https://github.com/antenore))
 
 ## [v1.2.0-rcgit.24](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.24) (2017-10-25)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.23...v1.2.0-rcgit.24)
 
 **Closed issues:**
@@ -304,6 +385,7 @@
 - Another fix for \#1323 [\#1339](https://github.com/FreeRDP/Remmina/pull/1339) ([giox069](https://github.com/giox069))
 
 ## [v1.2.0-rcgit.23](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.23) (2017-10-23)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.22...v1.2.0-rcgit.23)
 
 **Implemented enhancements:**
@@ -320,6 +402,7 @@
 - Fixes for deprecated "resolution" setting, issue \#1323 [\#1329](https://github.com/FreeRDP/Remmina/pull/1329) ([giox069](https://github.com/giox069))
 
 ## [v1.2.0-rcgit.22](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.22) (2017-10-20)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.21...v1.2.0-rcgit.22)
 
 **Implemented enhancements:**
@@ -356,13 +439,13 @@
 - Dev documentation and Copyright update [\#1311](https://github.com/FreeRDP/Remmina/pull/1311) ([antenore](https://github.com/antenore))
 
 ## [v1.2.0-rcgit.21](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.21) (2017-10-08)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.20...v1.2.0-rcgit.21)
 
 **Implemented enhancements:**
 
 - Feature Request: Create custom Terminal Color Schemes for SSH [\#1235](https://github.com/FreeRDP/Remmina/issues/1235)
 - Enter key doesn't "Connect" when in Edit menu and password field is in focus [\#1233](https://github.com/FreeRDP/Remmina/issues/1233)
-- Feature request - Option - Floating Desktop Name \[$5\] [\#815](https://github.com/FreeRDP/Remmina/issues/815)
 - Don't close connection windows when main window is closed [\#785](https://github.com/FreeRDP/Remmina/issues/785)
 - File association for connections [\#485](https://github.com/FreeRDP/Remmina/issues/485)
 - Implementation of dynamic resolution update for RDP [\#1292](https://github.com/FreeRDP/Remmina/pull/1292) ([giox069](https://github.com/giox069))
@@ -381,7 +464,6 @@
 - "Remember last view mode for each connection" not respected in v1.2.0-rcgit.19 [\#1247](https://github.com/FreeRDP/Remmina/issues/1247)
 - Remmina always remember password [\#1224](https://github.com/FreeRDP/Remmina/issues/1224)
 - Host key not working with SPICE plugin connected to KVM client.  [\#1035](https://github.com/FreeRDP/Remmina/issues/1035)
-- Shortcutkey viewonly [\#1289](https://github.com/FreeRDP/Remmina/pull/1289) ([antenore](https://github.com/antenore))
 
 **Closed issues:**
 
@@ -434,6 +516,7 @@
 - Better button labelling and new save button [\#1250](https://github.com/FreeRDP/Remmina/pull/1250) ([antenore](https://github.com/antenore))
 
 ## [v1.2.0-rcgit.20](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.20) (2017-08-25)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.19...v1.2.0-rcgit.20)
 
 **Implemented enhancements:**
@@ -467,6 +550,7 @@
 - Change Status Icon availability for gnome 3.16 [\#1230](https://github.com/FreeRDP/Remmina/pull/1230) ([giox069](https://github.com/giox069))
 
 ## [v1.2.0-rcgit.19](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.19) (2017-07-24)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.18...v1.2.0-rcgit.19)
 
 **Implemented enhancements:**
@@ -474,7 +558,6 @@
 - SSH tunneling does not work with RDP server redirection [\#1175](https://github.com/FreeRDP/Remmina/issues/1175)
 - Enhancement - Another User connected to the server, forcing \[...\] pop-up [\#1141](https://github.com/FreeRDP/Remmina/issues/1141)
 - RD Gateway Doesn't Support different username/password [\#933](https://github.com/FreeRDP/Remmina/issues/933)
-- the checkbox, 'Save SSH Password',  greyed out. [\#708](https://github.com/FreeRDP/Remmina/issues/708)
 - RD Gateway authentication doesn't work [\#511](https://github.com/FreeRDP/Remmina/issues/511)
 - Allow the user to hide the toolbar inside a remmina connection window [\#413](https://github.com/FreeRDP/Remmina/issues/413)
 - Support for RDP Gateway [\#347](https://github.com/FreeRDP/Remmina/issues/347)
@@ -495,7 +578,6 @@
 - problem with tui interfaces in remmina [\#1076](https://github.com/FreeRDP/Remmina/issues/1076)
 - test bounty source [\#1048](https://github.com/FreeRDP/Remmina/issues/1048)
 - Importing rdp file not successful [\#1039](https://github.com/FreeRDP/Remmina/issues/1039)
-- Implementing separate user and password for RD Gateway [\#1193](https://github.com/FreeRDP/Remmina/pull/1193) ([antenore](https://github.com/antenore))
 
 **Closed issues:**
 
@@ -553,6 +635,7 @@
 - Fix german translation [\#1120](https://github.com/FreeRDP/Remmina/pull/1120) ([giox069](https://github.com/giox069))
 
 ## [v1.2.0-rcgit.18](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.18) (2017-02-13)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.17...v1.2.0-rcgit.18)
 
 **Implemented enhancements:**
@@ -574,7 +657,6 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Crashing since upgraded to 1.2.0-rcgit-17 [\#1077](https://github.com/FreeRDP/Remmina/issues/1077)
 - Remmina windows unmovable/unresizable [\#1073](https://github.com/FreeRDP/Remmina/issues/1073)
 - Russian translation fixes [\#1071](https://github.com/FreeRDP/Remmina/issues/1071)
-- English fixes [\#1040](https://github.com/FreeRDP/Remmina/issues/1040)
 - Compile failed on Archlinux [\#1012](https://github.com/FreeRDP/Remmina/issues/1012)
 - RDP connections or whole Remmina are crashing regularly [\#778](https://github.com/FreeRDP/Remmina/issues/778)
 - xfce4 applet gone? [\#609](https://github.com/FreeRDP/Remmina/issues/609)
@@ -598,19 +680,13 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Fix russian translations as per \#1070 [\#1072](https://github.com/FreeRDP/Remmina/pull/1072) ([antenore](https://github.com/antenore))
 
 ## [v1.2.0-rcgit.17](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.17) (2016-12-22)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.16...v1.2.0-rcgit.17)
 
 **Implemented enhancements:**
 
-- Remove survey as too bloated.  [\#1064](https://github.com/FreeRDP/Remmina/issues/1064)
 - Cannot connect to neoma-bs RDP server [\#1056](https://github.com/FreeRDP/Remmina/issues/1056)
 - Import gateay values from rdp files - \#1056 [\#1068](https://github.com/FreeRDP/Remmina/pull/1068) ([antenore](https://github.com/antenore))
-- No debian/ubuntu distributions files included. [\#1062](https://github.com/FreeRDP/Remmina/pull/1062) ([nastasi](https://github.com/nastasi))
-- Fix fullscreen window position \(\#873\) [\#1060](https://github.com/FreeRDP/Remmina/pull/1060) ([spasche](https://github.com/spasche))
-
-**Fixed bugs:**
-
-- When "Server" GtkComboBox is selected, TAB key doesn't work [\#1049](https://github.com/FreeRDP/Remmina/issues/1049)
 
 **Closed issues:**
 
@@ -633,7 +709,6 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Updated Russian translations [\#1070](https://github.com/FreeRDP/Remmina/pull/1070) ([antenore](https://github.com/antenore))
 - Libfreerdp updates [\#1067](https://github.com/FreeRDP/Remmina/pull/1067) ([giox069](https://github.com/giox069))
 - Removed survey to clean up the code - API CHANGE [\#1065](https://github.com/FreeRDP/Remmina/pull/1065) ([antenore](https://github.com/antenore))
-- Updated German translation [\#1063](https://github.com/FreeRDP/Remmina/pull/1063) ([theraser](https://github.com/theraser))
 - When 'Server' GtkComboBox is selected, TAB doesn't work [\#1050](https://github.com/FreeRDP/Remmina/pull/1050) ([antenore](https://github.com/antenore))
 - Customizable app name and locations [\#1046](https://github.com/FreeRDP/Remmina/pull/1046) ([3v1n0](https://github.com/3v1n0))
 - remmina.desktop: add Quit desktop action for Unity [\#1045](https://github.com/FreeRDP/Remmina/pull/1045) ([3v1n0](https://github.com/3v1n0))
@@ -642,21 +717,14 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Uzbek cyrillic: update translations [\#1037](https://github.com/FreeRDP/Remmina/pull/1037) ([ozbek](https://github.com/ozbek))
 
 ## [v1.2.0-rcgit.16](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.16) (2016-10-31)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.14...v1.2.0-rcgit.16)
 
 **Implemented enhancements:**
 
 - Add RDP scaling factor as implemented by FreeRDP  [\#969](https://github.com/FreeRDP/Remmina/issues/969)
-- Please add man pages for remmina. [\#952](https://github.com/FreeRDP/Remmina/issues/952)
 - No dark tray icon [\#905](https://github.com/FreeRDP/Remmina/issues/905)
-- Please support XDG base directory spec [\#818](https://github.com/FreeRDP/Remmina/issues/818)
-- Auto-Highlight Quick Search Text Upon Each Remote Session Launch [\#544](https://github.com/FreeRDP/Remmina/issues/544)
 - spice support [\#117](https://github.com/FreeRDP/Remmina/issues/117)
-- CMAKE: fix GNUInstallDirs usage [\#1004](https://github.com/FreeRDP/Remmina/pull/1004) ([hasufell](https://github.com/hasufell))
-- XDG base directory spec [\#1003](https://github.com/FreeRDP/Remmina/pull/1003) ([antenore](https://github.com/antenore))
-- When focus-in inside the quick search, select the whole text as per \#544 [\#1001](https://github.com/FreeRDP/Remmina/pull/1001) ([antenore](https://github.com/antenore))
-- spice: send a notification at the end of file transfers [\#994](https://github.com/FreeRDP/Remmina/pull/994) ([larchunix](https://github.com/larchunix))
-- spice: show progress of drag & drop file transfers [\#993](https://github.com/FreeRDP/Remmina/pull/993) ([larchunix](https://github.com/larchunix))
 
 **Fixed bugs:**
 
@@ -667,11 +735,14 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - crash of remmina when terminal bell rings [\#163](https://github.com/FreeRDP/Remmina/issues/163)
 - Support for left-handed mouse [\#136](https://github.com/FreeRDP/Remmina/issues/136)
 
+**Security fixes:**
+
+- Security Issue? [\#1027](https://github.com/FreeRDP/Remmina/issues/1027)
+
 **Closed issues:**
 
 - Segmentation error on Gnome Desktop with Wayland  [\#1034](https://github.com/FreeRDP/Remmina/issues/1034)
 - untranslated lines missed  [\#1029](https://github.com/FreeRDP/Remmina/issues/1029)
-- Security Issue? [\#1027](https://github.com/FreeRDP/Remmina/issues/1027)
 - remmina fails to compile against freerdp [\#1015](https://github.com/FreeRDP/Remmina/issues/1015)
 - VNC connection doesn't work if color is set to 256 colors \(8 bpp\) [\#989](https://github.com/FreeRDP/Remmina/issues/989)
 - remmina.org down [\#988](https://github.com/FreeRDP/Remmina/issues/988)
@@ -729,9 +800,7 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Grab focus without selecting text in the remmina file editor [\#976](https://github.com/FreeRDP/Remmina/pull/976) ([antenore](https://github.com/antenore))
 - make gettext \*really\* behave correctly [\#972](https://github.com/FreeRDP/Remmina/pull/972) ([diogocp](https://github.com/diogocp))
 - Update name [\#971](https://github.com/FreeRDP/Remmina/pull/971) ([qwertos](https://github.com/qwertos))
-- Spice package and integrated debian packaging. [\#964](https://github.com/FreeRDP/Remmina/pull/964) ([nastasi](https://github.com/nastasi))
 - .travis.yml: Add a missing dependency [\#963](https://github.com/FreeRDP/Remmina/pull/963) ([dshcherb](https://github.com/dshcherb))
-- spice: add support for tls encrypted connections [\#962](https://github.com/FreeRDP/Remmina/pull/962) ([larchunix](https://github.com/larchunix))
 - Update AUTHORS [\#959](https://github.com/FreeRDP/Remmina/pull/959) ([antenore](https://github.com/antenore))
 - Fix import label [\#957](https://github.com/FreeRDP/Remmina/pull/957) ([Justinzobel](https://github.com/Justinzobel))
 - Updated Hungarian translation [\#949](https://github.com/FreeRDP/Remmina/pull/949) ([meskobalazs](https://github.com/meskobalazs))
@@ -744,12 +813,12 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Inverted tray icon for light theme [\#907](https://github.com/FreeRDP/Remmina/pull/907) ([antenore](https://github.com/antenore))
 
 ## [v1.2.0-rcgit.14](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.14) (2016-06-15)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0.rcgit.13...v1.2.0-rcgit.14)
 
 **Implemented enhancements:**
 
 - No more keyboard shortcuts for quick search [\#887](https://github.com/FreeRDP/Remmina/issues/887)
-- Support opening rdp files [\#47](https://github.com/FreeRDP/Remmina/issues/47)
 
 **Fixed bugs:**
 
@@ -769,19 +838,16 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - added \n in the credits [\#893](https://github.com/FreeRDP/Remmina/pull/893) ([jgjimenez](https://github.com/jgjimenez))
 
 ## [1.2.0.rcgit.13](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.13) (2016-06-02)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0.rcgit.12...1.2.0.rcgit.13)
 
 **Implemented enhancements:**
 
 - RDP: Fix extended mouse event to register the click for forward/back buttons [\#638](https://github.com/FreeRDP/Remmina/issues/638)
-- Remmina main fixes [\#891](https://github.com/FreeRDP/Remmina/pull/891) ([antenore](https://github.com/antenore))
-- Remmina Main Window Refactoring [\#875](https://github.com/FreeRDP/Remmina/pull/875) ([antenore](https://github.com/antenore))
 
 **Fixed bugs:**
 
-- \[remmina\_main\] Quick connect bar not visible [\#878](https://github.com/FreeRDP/Remmina/issues/878)
 - Remmina doesn't support ssh-rsa hostkeys [\#647](https://github.com/FreeRDP/Remmina/issues/647)
-- Toolbar buttons initially enabled in the main window [\#467](https://github.com/FreeRDP/Remmina/issues/467)
 
 **Closed issues:**
 
@@ -800,37 +866,22 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Translations ready [\#889](https://github.com/FreeRDP/Remmina/pull/889) ([jgjimenez](https://github.com/jgjimenez))
 - Translations [\#884](https://github.com/FreeRDP/Remmina/pull/884) ([antenore](https://github.com/antenore))
 - Spice plugin: smartcard redirection support [\#882](https://github.com/FreeRDP/Remmina/pull/882) ([larchunix](https://github.com/larchunix))
-- SPICE plugin: USB redirection support + minor fixes [\#881](https://github.com/FreeRDP/Remmina/pull/881) ([larchunix](https://github.com/larchunix))
-- Spice plugin: scaling support  [\#879](https://github.com/FreeRDP/Remmina/pull/879) ([larchunix](https://github.com/larchunix))
 - SPICE plugin improvements \(again\) [\#877](https://github.com/FreeRDP/Remmina/pull/877) ([larchunix](https://github.com/larchunix))
-- More SPICE plugin improvements [\#874](https://github.com/FreeRDP/Remmina/pull/874) ([larchunix](https://github.com/larchunix))
-- SPICE plugin improvements [\#872](https://github.com/FreeRDP/Remmina/pull/872) ([larchunix](https://github.com/larchunix))
 - Initial support for Wayland and Mir [\#871](https://github.com/FreeRDP/Remmina/pull/871) ([giox069](https://github.com/giox069))
-- New plugin with basic support for the SPICE protocol [\#870](https://github.com/FreeRDP/Remmina/pull/870) ([larchunix](https://github.com/larchunix))
 
 ## [1.2.0.rcgit.12](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.12) (2016-05-17)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0.rcgit.11...1.2.0.rcgit.12)
 
 **Implemented enhancements:**
 
 - \[Feature Request\] Focus on 'server' box during 'New Connection' [\#838](https://github.com/FreeRDP/Remmina/issues/838)
-- GTK 3.20 VTE3 Remmina shows blank terminal [\#835](https://github.com/FreeRDP/Remmina/issues/835)
-- How do I select all text in SSH terminal session ? [\#833](https://github.com/FreeRDP/Remmina/issues/833)
-- Add a issues-templates to the project [\#822](https://github.com/FreeRDP/Remmina/issues/822)
-- Quick Find cleanups [\#791](https://github.com/FreeRDP/Remmina/issues/791)
 - Remmina crashed when Windows Server TS Session is Remote Controlled [\#621](https://github.com/FreeRDP/Remmina/issues/621)
-- Quickfind fixes - Close \#791 [\#811](https://github.com/FreeRDP/Remmina/pull/811) ([antenore](https://github.com/antenore))
 
 **Fixed bugs:**
 
-- 100% CPU Usage [\#842](https://github.com/FreeRDP/Remmina/issues/842)
 - Screenshot crash under Ubuntu 16.04 [\#836](https://github.com/FreeRDP/Remmina/issues/836)
-- Remmina main connection window loose it's minimum height when the toolbar is hidden [\#829](https://github.com/FreeRDP/Remmina/issues/829)
 - Unable to connect to Win7 PCs via RDESKTOP with Remmina 1.2.0-rcgit.11 [\#823](https://github.com/FreeRDP/Remmina/issues/823)
-- Problem with changing key assignment in the "Keyboard" tab \(rcgit.11\) [\#819](https://github.com/FreeRDP/Remmina/issues/819)
-- Remmina forces its windows to appear at the center of the screen [\#817](https://github.com/FreeRDP/Remmina/issues/817)
-- Quick Find cleanups [\#791](https://github.com/FreeRDP/Remmina/issues/791)
-- Quickfind fixes - Close \\#791 [\#811](https://github.com/FreeRDP/Remmina/pull/811) ([antenore](https://github.com/antenore))
 
 **Closed issues:**
 
@@ -867,12 +918,8 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - VNC - HandleRFBServerMessage return status [\#804](https://github.com/FreeRDP/Remmina/pull/804) ([antenore](https://github.com/antenore))
 
 ## [1.2.0.rcgit.11](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.11) (2016-03-17)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0.rcgit.10...1.2.0.rcgit.11)
-
-**Implemented enhancements:**
-
-- Scrollable profile editor [\#801](https://github.com/FreeRDP/Remmina/issues/801)
-- Screenshot of remote machine \[feature request\] [\#644](https://github.com/FreeRDP/Remmina/issues/644)
 
 **Closed issues:**
 
@@ -888,6 +935,7 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Don't unlock keyring when libsecret is \< 0.18 [\#796](https://github.com/FreeRDP/Remmina/pull/796) ([giox069](https://github.com/giox069))
 
 ## [1.2.0.rcgit.10](https://github.com/FreeRDP/Remmina/tree/1.2.0.rcgit.10) (2016-03-08)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0-rcgit.9...1.2.0.rcgit.10)
 
 **Fixed bugs:**
@@ -910,6 +958,7 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Freebsd support [\#779](https://github.com/FreeRDP/Remmina/pull/779) ([antenore](https://github.com/antenore))
 
 ## [1.2.0-rcgit.9](https://github.com/FreeRDP/Remmina/tree/1.2.0-rcgit.9) (2016-02-28)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0-rcgit.8...1.2.0-rcgit.9)
 
 **Fixed bugs:**
@@ -957,48 +1006,35 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Make tool\_hello\_world compliant with our plugins model [\#735](https://github.com/FreeRDP/Remmina/pull/735) ([antenore](https://github.com/antenore))
 - Added user survey, community links and fixed all deprecations warnings [\#734](https://github.com/FreeRDP/Remmina/pull/734) ([antenore](https://github.com/antenore))
 - Align library name with latest freerdp master [\#731](https://github.com/FreeRDP/Remmina/pull/731) ([weberhofer](https://github.com/weberhofer))
-- Added microphone redirection [\#727](https://github.com/FreeRDP/Remmina/pull/727) ([akallabeth](https://github.com/akallabeth))
-- RDP plugin update client main loop to new API [\#726](https://github.com/FreeRDP/Remmina/pull/726) ([akallabeth](https://github.com/akallabeth))
-- Make Remmina really exit when you choose Exit or Quit [\#720](https://github.com/FreeRDP/Remmina/pull/720) ([giox069](https://github.com/giox069))
-- Remove some compiler warnings [\#716](https://github.com/FreeRDP/Remmina/pull/716) ([jviksell](https://github.com/jviksell))
 
 ## [1.2.0-rcgit.8](https://github.com/FreeRDP/Remmina/tree/1.2.0-rcgit.8) (2016-01-04)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0-rcgit.7...1.2.0-rcgit.8)
 
 **Closed issues:**
 
 - tot remmina crashes when marking text in the client iff clipboard sync is disabled [\#695](https://github.com/FreeRDP/Remmina/issues/695)
 
-**Merged pull requests:**
-
-- Fix a bunch of memleaks [\#712](https://github.com/FreeRDP/Remmina/pull/712) ([jviksell](https://github.com/jviksell))
-
 ## [1.2.0-rcgit.7](https://github.com/FreeRDP/Remmina/tree/1.2.0-rcgit.7) (2015-12-17)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0-rcgit.6...1.2.0-rcgit.7)
 
 **Implemented enhancements:**
 
 - Icons not shown at the correct size in the main window's listview/treeview [\#701](https://github.com/FreeRDP/Remmina/issues/701)
-- Reduce main window icons size fixes \#701 [\#702](https://github.com/FreeRDP/Remmina/pull/702) ([antenore](https://github.com/antenore))
 
 **Closed issues:**
 
 - VNC window immediately closes after connection attempt [\#699](https://github.com/FreeRDP/Remmina/issues/699)
 
-**Merged pull requests:**
-
-- Moved to markdown and updated text. [\#705](https://github.com/FreeRDP/Remmina/pull/705) ([antenore](https://github.com/antenore))
-- Vnc exit with 8bpp issue699 [\#704](https://github.com/FreeRDP/Remmina/pull/704) ([antenore](https://github.com/antenore))
-- Temporay fixes \#699 - Set default color depth to 15 \(high colors\) [\#703](https://github.com/FreeRDP/Remmina/pull/703) ([antenore](https://github.com/antenore))
-
 ## [1.2.0-rcgit.6](https://github.com/FreeRDP/Remmina/tree/1.2.0-rcgit.6) (2015-12-10)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.2.0-rcgit.5...1.2.0-rcgit.6)
 
 **Implemented enhancements:**
 
 - Migrate from libgnome-keyring to libsecret [\#652](https://github.com/FreeRDP/Remmina/issues/652)
 - Move ~/.remmina to a proper place \(follow XDG standards\) [\#197](https://github.com/FreeRDP/Remmina/issues/197)
-- X2goplugin refactoring closes \#603 [\#655](https://github.com/FreeRDP/Remmina/pull/655) ([antenore](https://github.com/antenore))
 
 **Closed issues:**
 
@@ -1016,20 +1052,13 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Optimize screen space usage [\#661](https://github.com/FreeRDP/Remmina/issues/661)
 - FTBS 1.0.0 :  ld - undefined reference to symbol 'g\_module\_symbol' -- links.txt missing necessary libraries [\#182](https://github.com/FreeRDP/Remmina/issues/182)
 
-**Merged pull requests:**
-
-- Avoiding conditional directives that break statements [\#698](https://github.com/FreeRDP/Remmina/pull/698) ([RomeroMalaquias](https://github.com/RomeroMalaquias))
-- Fix memory leaks in RDP plugin, fix window width in remmina\_connection\_window [\#690](https://github.com/FreeRDP/Remmina/pull/690) ([giox069](https://github.com/giox069))
-- Disable wayland backend  [\#680](https://github.com/FreeRDP/Remmina/pull/680) ([antenore](https://github.com/antenore))
-- Migrate from libgnome-keyring to libsecret \#652 - Inital import [\#653](https://github.com/FreeRDP/Remmina/pull/653) ([antenore](https://github.com/antenore))
-
 ## [1.2.0-rcgit.5](https://github.com/FreeRDP/Remmina/tree/1.2.0-rcgit.5) (2015-11-02)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.4...1.2.0-rcgit.5)
 
 **Implemented enhancements:**
 
 - Feature request: Provide a way to disable parsing of .ssh/config [\#648](https://github.com/FreeRDP/Remmina/issues/648)
-- Toolbar drag and drop, for issue \#661 [\#668](https://github.com/FreeRDP/Remmina/pull/668) ([giox069](https://github.com/giox069))
 
 **Closed issues:**
 
@@ -1042,11 +1071,8 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - SSH Tunneling [\#96](https://github.com/FreeRDP/Remmina/issues/96)
 - Feature Request: SSH Tunnel with no authentication [\#83](https://github.com/FreeRDP/Remmina/issues/83)
 
-**Merged pull requests:**
-
-- Makes parsing of ~/.ssh/config optional closes \#648 [\#650](https://github.com/FreeRDP/Remmina/pull/650) ([antenore](https://github.com/antenore))
-
 ## [v1.2.0-rcgit.4](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.4) (2015-09-23)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.3...v1.2.0-rcgit.4)
 
 **Implemented enhancements:**
@@ -1056,12 +1082,9 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Quick Search Textbox is Only 8 Characters Wide [\#547](https://github.com/FreeRDP/Remmina/issues/547)
 - \[feature request\] agent forwarding with ssh! [\#395](https://github.com/FreeRDP/Remmina/issues/395)
 - How about support XDG dir structure [\#129](https://github.com/FreeRDP/Remmina/issues/129)
-- SSH and VTE imporvements [\#642](https://github.com/FreeRDP/Remmina/pull/642) ([antenore](https://github.com/antenore))
-- Gtk3 -  Deprecation fixes [\#637](https://github.com/FreeRDP/Remmina/pull/637) ([antenore](https://github.com/antenore))
 
 **Fixed bugs:**
 
-- Prior connections commands are executed in background [\#553](https://github.com/FreeRDP/Remmina/issues/553)
 - Remmina fullscreen is wrongly placed - not real fullscreen [\#525](https://github.com/FreeRDP/Remmina/issues/525)
 - SSH not passing locale info [\#331](https://github.com/FreeRDP/Remmina/issues/331)
 
@@ -1112,41 +1135,16 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 
 **Merged pull requests:**
 
-- libssh fixes - SSH\_OPTIONS\_LOG\_VERBOSITY [\#640](https://github.com/FreeRDP/Remmina/pull/640) ([antenore](https://github.com/antenore))
-- Updated AUTHORS list [\#636](https://github.com/FreeRDP/Remmina/pull/636) ([antenore](https://github.com/antenore))
-- Improve vnc rendering speed by using cairo surface directly [\#635](https://github.com/FreeRDP/Remmina/pull/635) ([mar-kolya](https://github.com/mar-kolya))
-- CMake rules adjustments when compiling under linux [\#634](https://github.com/FreeRDP/Remmina/pull/634) ([fundawang](https://github.com/fundawang))
-- Remove some legacy Xorg code, fixes \#554 [\#622](https://github.com/FreeRDP/Remmina/pull/622) ([giox069](https://github.com/giox069))
-- fix regression introduced by 190ea2f98ab0443b8a05f70c79e2af037f9fca94 [\#617](https://github.com/FreeRDP/Remmina/pull/617) ([zfil](https://github.com/zfil))
-- remmina.desktop: Use full path to execute remmina [\#612](https://github.com/FreeRDP/Remmina/pull/612) ([lanoxx](https://github.com/lanoxx))
 - remmina.desktop: Use full path to execute remmina [\#607](https://github.com/FreeRDP/Remmina/pull/607) ([lanoxx](https://github.com/lanoxx))
-- Filling out LoadBalanceInfo in the RDP settings struct [\#593](https://github.com/FreeRDP/Remmina/pull/593) ([qwertos](https://github.com/qwertos))
-- Exception when precommad in NULL. Reference \#591 [\#592](https://github.com/FreeRDP/Remmina/pull/592) ([antenore](https://github.com/antenore))
-- Xdg folders fixes \#129  \#197  [\#590](https://github.com/FreeRDP/Remmina/pull/590) ([antenore](https://github.com/antenore))
-- coredump when precommand is not quoted. Resolve \#520 [\#589](https://github.com/FreeRDP/Remmina/pull/589) ([antenore](https://github.com/antenore))
-- Support for ~/.ssh/config closes \#235 , libssh does not support most of the ssh options [\#588](https://github.com/FreeRDP/Remmina/pull/588) ([antenore](https://github.com/antenore))
-- Revert "License update" [\#587](https://github.com/FreeRDP/Remmina/pull/587) ([antenore](https://github.com/antenore))
-- Revert "License update" [\#586](https://github.com/FreeRDP/Remmina/pull/586) ([antenore](https://github.com/antenore))
-- Remmina freerdp subtree + fixes for FreeBSD [\#585](https://github.com/FreeRDP/Remmina/pull/585) ([antenore](https://github.com/antenore))
-- License update [\#581](https://github.com/FreeRDP/Remmina/pull/581) ([antenore](https://github.com/antenore))
-- Fix GTK+2 build failure [\#565](https://github.com/FreeRDP/Remmina/pull/565) ([heptalium](https://github.com/heptalium))
-- Prior Connection Command [\#562](https://github.com/FreeRDP/Remmina/pull/562) ([antenore](https://github.com/antenore))
-- Update Uzbek translation [\#561](https://github.com/FreeRDP/Remmina/pull/561) ([ozbek](https://github.com/ozbek))
-- Update for GTK+2 port [\#555](https://github.com/FreeRDP/Remmina/pull/555) ([repzilon](https://github.com/repzilon))
 
 ## [v1.2.0-rcgit.3](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.3) (2015-04-14)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.2...v1.2.0-rcgit.3)
 
 **Implemented enhancements:**
 
 - Show or hide the icons near the menu [\#504](https://github.com/FreeRDP/Remmina/issues/504)
 - Show or hide the icons near the buttons [\#503](https://github.com/FreeRDP/Remmina/issues/503)
-- Show or hide the icons near the buttons and the menus [\#505](https://github.com/FreeRDP/Remmina/pull/505) ([muflone](https://github.com/muflone))
-- Fixes FreeRDP/Remmina\#473 - Customize button in the connection editor should  show the resolutions dialog [\#501](https://github.com/FreeRDP/Remmina/pull/501) ([antenore](https://github.com/antenore))
-- The quick search doesn't list the folders [\#497](https://github.com/FreeRDP/Remmina/pull/497) ([muflone](https://github.com/muflone))
-- Enable and disable buttons in the string list dialog [\#496](https://github.com/FreeRDP/Remmina/pull/496) ([muflone](https://github.com/muflone))
-- Added Ctrl+F accelerator for quick search entry [\#494](https://github.com/FreeRDP/Remmina/pull/494) ([muflone](https://github.com/muflone))
-- Removed the RemminaMain GType and used a static RemminaMain struct instead [\#461](https://github.com/FreeRDP/Remmina/pull/461) ([muflone](https://github.com/muflone))
 
 **Fixed bugs:**
 
@@ -1161,9 +1159,6 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Enable the use of the menu key [\#470](https://github.com/FreeRDP/Remmina/issues/470)
 - Connections list is not refreshed upon update or copy \(duplicate an existing connection\) [\#460](https://github.com/FreeRDP/Remmina/issues/460)
 - Double-clicking a column header to sort list of saved connections actually attempts connection [\#250](https://github.com/FreeRDP/Remmina/issues/250)
-- Fix small memory leaks and a NULL ptr dereference. [\#500](https://github.com/FreeRDP/Remmina/pull/500) ([KyleSanderson](https://github.com/KyleSanderson))
-- Show the popup menu by pressing the menu key [\#495](https://github.com/FreeRDP/Remmina/pull/495) ([muflone](https://github.com/muflone))
-- Use the correct label for the font section [\#466](https://github.com/FreeRDP/Remmina/pull/466) ([weberhofer](https://github.com/weberhofer))
 
 **Closed issues:**
 
@@ -1230,39 +1225,14 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Issues with viewport fullscreen [\#44](https://github.com/FreeRDP/Remmina/issues/44)
 - make sessions in the NX session dialog double-clickable [\#16](https://github.com/FreeRDP/Remmina/issues/16)
 
-**Merged pull requests:**
-
-- Added an option to execute commands just before to connect to a remote server closes  \#520 [\#552](https://github.com/FreeRDP/Remmina/pull/552) ([antenore](https://github.com/antenore))
-- Uzbek Cyrillic: use proper naming convention for filename [\#549](https://github.com/FreeRDP/Remmina/pull/549) ([ozbek](https://github.com/ozbek))
-- Uzbek Cyrillic: Add configure keystrokes and XDMCP feature text [\#538](https://github.com/FreeRDP/Remmina/pull/538) ([ozbek](https://github.com/ozbek))
-- Remmina 1.2.0-rcgit.3: new floating toolbar for GTK\>=3.10 and many other fixes [\#536](https://github.com/FreeRDP/Remmina/pull/536) ([giox069](https://github.com/giox069))
-- Fix for notebook tab drag and drop, fixes issues \#529 \#478 [\#531](https://github.com/FreeRDP/Remmina/pull/531) ([giox069](https://github.com/giox069))
-- Fix race condition in VNC event queue [\#519](https://github.com/FreeRDP/Remmina/pull/519) ([mar-kolya](https://github.com/mar-kolya))
-- Uzbek Cyrillic: apply latest additions [\#509](https://github.com/FreeRDP/Remmina/pull/509) ([ozbek](https://github.com/ozbek))
-- Implemented custom keystrokes for plugins [\#508](https://github.com/FreeRDP/Remmina/pull/508) ([muflone](https://github.com/muflone))
-- Add translations for Uzbek Cyrillic [\#502](https://github.com/FreeRDP/Remmina/pull/502) ([ozbek](https://github.com/ozbek))
-- Update Spanish translation [\#490](https://github.com/FreeRDP/Remmina/pull/490) ([fitojb](https://github.com/fitojb))
-- Fixes FreeRDP/Remmina\#460 [\#463](https://github.com/FreeRDP/Remmina/pull/463) ([antenore](https://github.com/antenore))
-- Updated German translation [\#458](https://github.com/FreeRDP/Remmina/pull/458) ([weberhofer](https://github.com/weberhofer))
-- Update es.po [\#455](https://github.com/FreeRDP/Remmina/pull/455) ([agdg](https://github.com/agdg))
-- Update es.po [\#454](https://github.com/FreeRDP/Remmina/pull/454) ([agdg](https://github.com/agdg))
-- Updated FSF address [\#451](https://github.com/FreeRDP/Remmina/pull/451) ([weberhofer](https://github.com/weberhofer))
-- Rework of scaler code [\#447](https://github.com/FreeRDP/Remmina/pull/447) ([giox069](https://github.com/giox069))
-- Added feature to send Ctrl+Alt+Del keys [\#446](https://github.com/FreeRDP/Remmina/pull/446) ([muflone](https://github.com/muflone))
-- Moved the double click event and the enter buttons press in the row-activated signal handler [\#438](https://github.com/FreeRDP/Remmina/pull/438) ([muflone](https://github.com/muflone))
-- Handle double click on the NX session rows to activate the default response [\#437](https://github.com/FreeRDP/Remmina/pull/437) ([muflone](https://github.com/muflone))
-- SSH terminal color customization [\#432](https://github.com/FreeRDP/Remmina/pull/432) ([muflone](https://github.com/muflone))
-- remmina: Actually install its headers. [\#428](https://github.com/FreeRDP/Remmina/pull/428) ([rakuco](https://github.com/rakuco))
-
 ## [v1.2.0-rcgit.2](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.2) (2014-12-30)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.1.2...v1.2.0-rcgit.2)
 
 **Fixed bugs:**
 
-- Position of popup menu is wrong [\#423](https://github.com/FreeRDP/Remmina/issues/423)
 - Remmina crashes exporting a remote desktop file [\#412](https://github.com/FreeRDP/Remmina/issues/412)
 - \[BUG\] RDP Preferences don't saving [\#391](https://github.com/FreeRDP/Remmina/issues/391)
-- Command line help not showing all the options [\#327](https://github.com/FreeRDP/Remmina/issues/327)
 
 **Closed issues:**
 
@@ -1272,25 +1242,10 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Copy/paste inop Windows to Mint 17 [\#404](https://github.com/FreeRDP/Remmina/issues/404)
 - remmina/src/remmina\_ssh\_plugin.h should also check for HAVE\_LIBVTE [\#394](https://github.com/FreeRDP/Remmina/issues/394)
 - I have to click on "Resize the window to fit remote resolution" to see my RDP session. [\#387](https://github.com/FreeRDP/Remmina/issues/387)
-- Please create an AppData file for Remmina [\#272](https://github.com/FreeRDP/Remmina/issues/272)
 - "Protocol plugin RDP is not installed."/The Application Not Recognizing the RDP Plugin  [\#249](https://github.com/FreeRDP/Remmina/issues/249)
-- "Overwrite all" button [\#238](https://github.com/FreeRDP/Remmina/issues/238)
-
-**Merged pull requests:**
-
-- .po files cleanup and updates [\#425](https://github.com/FreeRDP/Remmina/pull/425) ([giox069](https://github.com/giox069))
-- Fixes the position of popup menu [\#424](https://github.com/FreeRDP/Remmina/pull/424) ([muflone](https://github.com/muflone))
-- Add a "Overwrite all" button [\#420](https://github.com/FreeRDP/Remmina/pull/420) ([muflone](https://github.com/muflone))
-- New AppData specification file [\#419](https://github.com/FreeRDP/Remmina/pull/419) ([muflone](https://github.com/muflone))
-- Expose the arguments in the help text and parse --help and -h arguments locally [\#417](https://github.com/FreeRDP/Remmina/pull/417) ([muflone](https://github.com/muflone))
-- Clipboard: improved handling of time consuming clipboard transfer [\#416](https://github.com/FreeRDP/Remmina/pull/416) ([giox069](https://github.com/giox069))
-- Clipboard fixes [\#415](https://github.com/FreeRDP/Remmina/pull/415) ([giox069](https://github.com/giox069))
-- Next [\#414](https://github.com/FreeRDP/Remmina/pull/414) ([giox069](https://github.com/giox069))
-- GTK3 fixes [\#409](https://github.com/FreeRDP/Remmina/pull/409) ([giox069](https://github.com/giox069))
--  GTK3 migration of remmina\_ftp\_client, fixes \#365 [\#408](https://github.com/FreeRDP/Remmina/pull/408) ([giox069](https://github.com/giox069))
-- Update Remmina GTK+2 branch to 1.1.2 [\#405](https://github.com/FreeRDP/Remmina/pull/405) ([repzilon](https://github.com/repzilon))
 
 ## [v1.1.2](https://github.com/FreeRDP/Remmina/tree/v1.1.2) (2014-12-08)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.1.1-gtk2...v1.1.2)
 
 **Fixed bugs:**
@@ -1303,13 +1258,8 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - resize remote to fit window option [\#398](https://github.com/FreeRDP/Remmina/issues/398)
 - Rename README to README.md [\#304](https://github.com/FreeRDP/Remmina/issues/304)
 
-**Merged pull requests:**
-
-- Fix RDP race condifion, fixes \#394 \(missing HAVE\_LIBVTE\), removed unused function [\#399](https://github.com/FreeRDP/Remmina/pull/399) ([giox069](https://github.com/giox069))
-- Merge pull request \#396 from FreeRDP/issue366 [\#397](https://github.com/FreeRDP/Remmina/pull/397) ([muflone](https://github.com/muflone))
-- Issue \#366 [\#396](https://github.com/FreeRDP/Remmina/pull/396) ([muflone](https://github.com/muflone))
-
 ## [v1.1.1-gtk2](https://github.com/FreeRDP/Remmina/tree/v1.1.1-gtk2) (2014-12-07)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.1.1...v1.1.1-gtk2)
 
 **Closed issues:**
@@ -1322,28 +1272,12 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Can't get RDP to work in Remmina recently  [\#374](https://github.com/FreeRDP/Remmina/issues/374)
 - One IP, more RDP ports [\#373](https://github.com/FreeRDP/Remmina/issues/373)
 - about box reports 1.1.0 rather than 1.1.1 [\#370](https://github.com/FreeRDP/Remmina/issues/370)
-- Complete GTK3 migration [\#365](https://github.com/FreeRDP/Remmina/issues/365)
 - Build failure with remmina-rdp\_cliprdr\_\* [\#363](https://github.com/FreeRDP/Remmina/issues/363)
 - Key with code 95 si incorrectly mapped  [\#361](https://github.com/FreeRDP/Remmina/issues/361)
 - SSH connection not working: "ssh\_userauth\_password: Wrong state during pending SSH call" [\#305](https://github.com/FreeRDP/Remmina/issues/305)
 
-**Merged pull requests:**
-
-- Remmina 1.1.2 [\#402](https://github.com/FreeRDP/Remmina/pull/402) ([ic3d](https://github.com/ic3d))
-- Varoius fixes [\#393](https://github.com/FreeRDP/Remmina/pull/393) ([giox069](https://github.com/giox069))
-- install external tools to datadir, not user's home dir [\#385](https://github.com/FreeRDP/Remmina/pull/385) ([eworm-de](https://github.com/eworm-de))
-- Fix rdp\_cliprd for freerdp 1.2. Fixes \#378 \#379 [\#384](https://github.com/FreeRDP/Remmina/pull/384) ([giox069](https://github.com/giox069))
-- Update to work with vte 2.91 as well as 2.90 [\#372](https://github.com/FreeRDP/Remmina/pull/372) ([iainlane](https://github.com/iainlane))
-- Update to work with vte 2.91 as well as 2.90 [\#371](https://github.com/FreeRDP/Remmina/pull/371) ([iainlane](https://github.com/iainlane))
-- Added a Show quick connect menu item to show/hide the fast connection box [\#368](https://github.com/FreeRDP/Remmina/pull/368) ([muflone](https://github.com/muflone))
-- Fixed GTK3 issue [\#367](https://github.com/FreeRDP/Remmina/pull/367) ([weberhofer](https://github.com/weberhofer))
-- Rename relevant CB\_FORMAT to CF [\#364](https://github.com/FreeRDP/Remmina/pull/364) ([giox069](https://github.com/giox069))
-- Add printer and smartcard redirection, fix freerdp connection closing [\#359](https://github.com/FreeRDP/Remmina/pull/359) ([giox069](https://github.com/giox069))
-- Add printer and smartcard redirection, fix freerdp connection closing [\#358](https://github.com/FreeRDP/Remmina/pull/358) ([giox069](https://github.com/giox069))
-- Screenshots page with real screenshots! [\#355](https://github.com/FreeRDP/Remmina/pull/355) ([ic3d](https://github.com/ic3d))
-- Good News!  [\#354](https://github.com/FreeRDP/Remmina/pull/354) ([ic3d](https://github.com/ic3d))
-
 ## [v1.1.1](https://github.com/FreeRDP/Remmina/tree/v1.1.1) (2014-10-10)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.0-rcgit.1...v1.1.1)
 
 **Fixed bugs:**
@@ -1355,7 +1289,6 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Clipboard Sync with RDP [\#280](https://github.com/FreeRDP/Remmina/issues/280)
 - Terminal windows disappearing [\#274](https://github.com/FreeRDP/Remmina/issues/274)
 - Remmina crash when trying to connect to remote VNC [\#252](https://github.com/FreeRDP/Remmina/issues/252)
-- Fix segfault reported by issue \#1 \#280 \#131 \#135 \#199 \#270 [\#282](https://github.com/FreeRDP/Remmina/pull/282) ([antenore](https://github.com/antenore))
 
 **Closed issues:**
 
@@ -1370,40 +1303,16 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Shared folder on RDP does not work [\#270](https://github.com/FreeRDP/Remmina/issues/270)
 - RDP connection cannot be established [\#248](https://github.com/FreeRDP/Remmina/issues/248)
 
-**Merged pull requests:**
-
-- Fix debian bug 764142 [\#353](https://github.com/FreeRDP/Remmina/pull/353) ([giox069](https://github.com/giox069))
-- Internationalization fixes [\#320](https://github.com/FreeRDP/Remmina/pull/320) ([giox069](https://github.com/giox069))
-- Merge antenore:master with FreeRDP:gtk3 - GTK3 migration - File editor [\#311](https://github.com/FreeRDP/Remmina/pull/311) ([antenore](https://github.com/antenore))
-- Help GNOME SHELL to not hide the floating toolbar [\#309](https://github.com/FreeRDP/Remmina/pull/309) ([giox069](https://github.com/giox069))
-- Enabled sound \(fixes \#296 \#281\) and improved disconnection detection. [\#297](https://github.com/FreeRDP/Remmina/pull/297) ([giox069](https://github.com/giox069))
-- Corrections to keyboard grab/ungrab. Fixes \#245 [\#295](https://github.com/FreeRDP/Remmina/pull/295) ([giox069](https://github.com/giox069))
-- Fixes for clipboard issues [\#294](https://github.com/FreeRDP/Remmina/pull/294) ([giox069](https://github.com/giox069))
-- Fix GTK2 compatibility [\#293](https://github.com/FreeRDP/Remmina/pull/293) ([amon-sha](https://github.com/amon-sha))
-- Indentation fix [\#290](https://github.com/FreeRDP/Remmina/pull/290) ([giox069](https://github.com/giox069))
-- Fix \#288 \#143 and deprecated gtk\_widget\_reparent\(\) [\#289](https://github.com/FreeRDP/Remmina/pull/289) ([giox069](https://github.com/giox069))
-- Issue \#286 - License OpenSSL linking exception [\#287](https://github.com/FreeRDP/Remmina/pull/287) ([antenore](https://github.com/antenore))
-- GTK+ 2 compatibility [\#276](https://github.com/FreeRDP/Remmina/pull/276) ([repzilon](https://github.com/repzilon))
-- Fix issue with invisible toolbar in fullscreen. [\#275](https://github.com/FreeRDP/Remmina/pull/275) ([jeebsorg](https://github.com/jeebsorg))
-- Fix for issue \#251 [\#253](https://github.com/FreeRDP/Remmina/pull/253) ([giox069](https://github.com/giox069))
-
 ## [v1.2.0-rcgit.1](https://github.com/FreeRDP/Remmina/tree/v1.2.0-rcgit.1) (2014-10-08)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.1.0...v1.2.0-rcgit.1)
 
 **Closed issues:**
 
 - undefined symbol: freerdp\_channels\_global\_init in remmina-plugin-rdp.so [\#278](https://github.com/FreeRDP/Remmina/issues/278)
 
-**Merged pull requests:**
-
-- Fix issue \#90 and website URL [\#352](https://github.com/FreeRDP/Remmina/pull/352) ([giox069](https://github.com/giox069))
-- Fix issue \#90 and various updates [\#351](https://github.com/FreeRDP/Remmina/pull/351) ([giox069](https://github.com/giox069))
-- Updated menu links [\#350](https://github.com/FreeRDP/Remmina/pull/350) ([ic3d](https://github.com/ic3d))
-- Update links [\#349](https://github.com/FreeRDP/Remmina/pull/349) ([ic3d](https://github.com/ic3d))
-- Changed links [\#348](https://github.com/FreeRDP/Remmina/pull/348) ([ic3d](https://github.com/ic3d))
-- Remove call to freerdp\_get\_last\_error [\#346](https://github.com/FreeRDP/Remmina/pull/346) ([dktrkranz](https://github.com/dktrkranz))
-
 ## [v1.1.0](https://github.com/FreeRDP/Remmina/tree/v1.1.0) (2014-10-03)
+
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/1.0.0...v1.1.0)
 
 **Fixed bugs:**
@@ -1510,83 +1419,14 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - linker problem [\#9](https://github.com/FreeRDP/Remmina/issues/9)
 - rdp plugin crashes [\#1](https://github.com/FreeRDP/Remmina/issues/1)
 
-**Merged pull requests:**
-
-- Frdp 1.1 [\#344](https://github.com/FreeRDP/Remmina/pull/344) ([giox069](https://github.com/giox069))
-- Fixes for latest FreeRDP [\#343](https://github.com/FreeRDP/Remmina/pull/343) ([dktrkranz](https://github.com/dktrkranz))
-- GTK3 migration - about [\#339](https://github.com/FreeRDP/Remmina/pull/339) ([antenore](https://github.com/antenore))
-- GTK3 migration + gix069 fixes [\#338](https://github.com/FreeRDP/Remmina/pull/338) ([antenore](https://github.com/antenore))
-- Added more translations from launchpad, fixes \#216 [\#336](https://github.com/FreeRDP/Remmina/pull/336) ([giox069](https://github.com/giox069))
-- Make 8bpp and 32bpp working again. Fixes \#329 [\#334](https://github.com/FreeRDP/Remmina/pull/334) ([giox069](https://github.com/giox069))
-- Fix compilation issues with latest FreeRDP [\#333](https://github.com/FreeRDP/Remmina/pull/333) ([giox069](https://github.com/giox069))
-- Various SSH fixes, fixes \#262 and \#223 [\#330](https://github.com/FreeRDP/Remmina/pull/330) ([giox069](https://github.com/giox069))
-- Fix missing extended keycode and 'up' action when releasing all keys [\#328](https://github.com/FreeRDP/Remmina/pull/328) ([giox069](https://github.com/giox069))
-- Fix compilation problems with latest version of FreeRDP/FreeRDP master [\#326](https://github.com/FreeRDP/Remmina/pull/326) ([giox069](https://github.com/giox069))
-- GTK3 migration - preferences dialog upggraded to Grid Layout [\#322](https://github.com/FreeRDP/Remmina/pull/322) ([antenore](https://github.com/antenore))
-- GTK3 Migration - Move from GtkTable to GtkGrid - Chat window and auth dialogs [\#321](https://github.com/FreeRDP/Remmina/pull/321) ([antenore](https://github.com/antenore))
-- gtk\_widget\_set\_margin\_end too new as reported in \#commitcomment-7689638 [\#318](https://github.com/FreeRDP/Remmina/pull/318) ([antenore](https://github.com/antenore))
-- Scaler layout improvement - gtk\_widget\_set\_margin\_end [\#317](https://github.com/FreeRDP/Remmina/pull/317) ([antenore](https://github.com/antenore))
-- Should fix issue \#314 and other related problems [\#315](https://github.com/FreeRDP/Remmina/pull/315) ([antenore](https://github.com/antenore))
-- Fixes for ssh, floating toolbar and version number change [\#312](https://github.com/FreeRDP/Remmina/pull/312) ([giox069](https://github.com/giox069))
-- ssh, minimize to tray and file sharing fixes [\#303](https://github.com/FreeRDP/Remmina/pull/303) ([giox069](https://github.com/giox069))
-- Minor fixes to floating toolbar [\#301](https://github.com/FreeRDP/Remmina/pull/301) ([giox069](https://github.com/giox069))
-- GTK+ \< 3.8 compatibility, fixes \#299 [\#300](https://github.com/FreeRDP/Remmina/pull/300) ([giox069](https://github.com/giox069))
-- Added one-liner apt-get to install all dependencies, for the lazy people [\#240](https://github.com/FreeRDP/Remmina/pull/240) ([Photonios](https://github.com/Photonios))
-- Typo in preference name broke key mapping in VNC [\#236](https://github.com/FreeRDP/Remmina/pull/236) ([nopdotcom](https://github.com/nopdotcom))
-- fixes \#193: Instructions for compiling against master FreeRDP [\#231](https://github.com/FreeRDP/Remmina/pull/231) ([krlmlr](https://github.com/krlmlr))
-- rename context\_size to ContextSize to match changes in FreeRDP [\#215](https://github.com/FreeRDP/Remmina/pull/215) ([benkohler](https://github.com/benkohler))
-- Finish replacing the old stream macros [\#206](https://github.com/FreeRDP/Remmina/pull/206) ([floppym](https://github.com/floppym))
-- Fix compilation against freerdp master [\#191](https://github.com/FreeRDP/Remmina/pull/191) ([darklajid](https://github.com/darklajid))
-- Remove call to rfx\_context\_set\_cpu\_opt, which was removed from FreeRDP [\#172](https://github.com/FreeRDP/Remmina/pull/172) ([floppym](https://github.com/floppym))
-- DWORD is the replacement for RDP\_SCANCODE [\#166](https://github.com/FreeRDP/Remmina/pull/166) ([dktrkranz](https://github.com/dktrkranz))
-- Do not define any SONAME for the plugins [\#149](https://github.com/FreeRDP/Remmina/pull/149) ([dktrkranz](https://github.com/dktrkranz))
-- external tools [\#132](https://github.com/FreeRDP/Remmina/pull/132) ([loki36](https://github.com/loki36))
-- Couple of packaging fixes [\#114](https://github.com/FreeRDP/Remmina/pull/114) ([floppym](https://github.com/floppym))
-- Some improvements [\#105](https://github.com/FreeRDP/Remmina/pull/105) ([dupondje](https://github.com/dupondje))
-- Multiple fixes + Quickconnect [\#95](https://github.com/FreeRDP/Remmina/pull/95) ([dupondje](https://github.com/dupondje))
-- Porting to Cairo and some bugfixes/new features [\#67](https://github.com/FreeRDP/Remmina/pull/67) ([dupondje](https://github.com/dupondje))
-- GTK2 compatibility [\#65](https://github.com/FreeRDP/Remmina/pull/65) ([dupondje](https://github.com/dupondje))
-- A couple of build fixes [\#64](https://github.com/FreeRDP/Remmina/pull/64) ([floppym](https://github.com/floppym))
-- last clipboard commits [\#62](https://github.com/FreeRDP/Remmina/pull/62) ([dupondje](https://github.com/dupondje))
-- Some more clipboard fixes [\#60](https://github.com/FreeRDP/Remmina/pull/60) ([dupondje](https://github.com/dupondje))
-- Patches [\#58](https://github.com/FreeRDP/Remmina/pull/58) ([dupondje](https://github.com/dupondje))
-- Clipboard support [\#56](https://github.com/FreeRDP/Remmina/pull/56) ([dupondje](https://github.com/dupondje))
-- Some fixes [\#53](https://github.com/FreeRDP/Remmina/pull/53) ([dupondje](https://github.com/dupondje))
-- Fix all deprecated function calls [\#52](https://github.com/FreeRDP/Remmina/pull/52) ([dupondje](https://github.com/dupondje))
-- Fixes compiling on ubuntu [\#51](https://github.com/FreeRDP/Remmina/pull/51) ([dupondje](https://github.com/dupondje))
-- Fix for scrolling in Remmina [\#50](https://github.com/FreeRDP/Remmina/pull/50) ([dupondje](https://github.com/dupondje))
-- Fix app indicator when using custom install prefix [\#48](https://github.com/FreeRDP/Remmina/pull/48) ([rawlinc](https://github.com/rawlinc))
-- Issue \#9 [\#39](https://github.com/FreeRDP/Remmina/pull/39) ([Gankov](https://github.com/Gankov))
-- bump version to 1.0.0. fixed \#35  [\#38](https://github.com/FreeRDP/Remmina/pull/38) ([chihchun](https://github.com/chihchun))
-- Fixed missing system pointer update skeletons. [\#37](https://github.com/FreeRDP/Remmina/pull/37) ([chihchun](https://github.com/chihchun))
-- Add an option to remmina to redirect smartcard over rdp [\#36](https://github.com/FreeRDP/Remmina/pull/36) ([absmall](https://github.com/absmall))
-- Corrected mistake in desktop file [\#34](https://github.com/FreeRDP/Remmina/pull/34) ([krnekhelesh](https://github.com/krnekhelesh))
-- Updated Quicklists [\#33](https://github.com/FreeRDP/Remmina/pull/33) ([krnekhelesh](https://github.com/krnekhelesh))
-- update french translation [\#32](https://github.com/FreeRDP/Remmina/pull/32) ([emmanuelgrognet](https://github.com/emmanuelgrognet))
-- Fixes for recent git FreeRDP headers [\#31](https://github.com/FreeRDP/Remmina/pull/31) ([maelnor](https://github.com/maelnor))
-- GTK cleanup in remmina\_main.c [\#30](https://github.com/FreeRDP/Remmina/pull/30) ([floppym](https://github.com/floppym))
-- Install plugins under CMAKE\_INSTALL\_LIBDIR. [\#29](https://github.com/FreeRDP/Remmina/pull/29) ([floppym](https://github.com/floppym))
-- Implementing X-GNOME-FullName [\#28](https://github.com/FreeRDP/Remmina/pull/28) ([dktrkranz](https://github.com/dktrkranz))
-- Make Gnome Keyring an optional dependency. [\#27](https://github.com/FreeRDP/Remmina/pull/27) ([floppym](https://github.com/floppym))
-- Fix installation of desktop file and related icons. [\#26](https://github.com/FreeRDP/Remmina/pull/26) ([floppym](https://github.com/floppym))
-- Mark 'Connect' and 'New' as important tool items so they always have labels [\#25](https://github.com/FreeRDP/Remmina/pull/25) ([robert-ancell](https://github.com/robert-ancell))
-- Mark main toolbar as a primary toolbar \(so is correctly themed\) [\#24](https://github.com/FreeRDP/Remmina/pull/24) ([robert-ancell](https://github.com/robert-ancell))
-- Do not use convenience copy of libvncserver [\#22](https://github.com/FreeRDP/Remmina/pull/22) ([dktrkranz](https://github.com/dktrkranz))
-- remmina: install .desktop file [\#20](https://github.com/FreeRDP/Remmina/pull/20) ([jbicha](https://github.com/jbicha))
-
 ## [1.0.0](https://github.com/FreeRDP/Remmina/tree/1.0.0) (2012-02-10)
+
+[Full Changelog](https://github.com/FreeRDP/Remmina/compare/250757180bc57075eb2a20f1cf0290239a720b8e...1.0.0)
+
 **Closed issues:**
 
 - Can't compile with GTK+ [\#3](https://github.com/FreeRDP/Remmina/issues/3)
 
-**Merged pull requests:**
-
-- A few minor issues [\#11](https://github.com/FreeRDP/Remmina/pull/11) ([doctaweeks](https://github.com/doctaweeks))
-- remmina: menu separator fix if avahi is disabled [\#10](https://github.com/FreeRDP/Remmina/pull/10) ([doctaweeks](https://github.com/doctaweeks))
-- GTK2/3 issue + re-enable ssh [\#8](https://github.com/FreeRDP/Remmina/pull/8) ([doctaweeks](https://github.com/doctaweeks))
-- Fix missed header path, closes \#4 [\#5](https://github.com/FreeRDP/Remmina/pull/5) ([chihchun](https://github.com/chihchun))
-- CMake Migration [\#2](https://github.com/FreeRDP/Remmina/pull/2) ([awakecoding](https://github.com/awakecoding))
 
 
-
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
