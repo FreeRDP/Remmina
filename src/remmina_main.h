@@ -50,6 +50,9 @@ typedef struct _RemminaMain {
 	GtkMenu *menu_popup_full;
 	GtkRadioMenuItem *menuitem_view_mode_list;
 	GtkRadioMenuItem *menuitem_view_mode_tree;
+	/* Search bar objects */
+	GtkToggleButton *search_toggle;
+	GtkSearchBar *search_bar;
 	/* Quick connect objects */
 	GtkBox *box_quick_connect;
 	GtkComboBoxText *combo_quick_connect_protocol;

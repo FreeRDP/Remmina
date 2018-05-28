@@ -223,6 +223,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     <property name="inline_completion">True</property>
     <property name="inline_selection">True</property>
   </object>
+  <object class="GtkImage" id="find_toggle_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-find</property>
+  </object>
   <object class="GtkImage" id="image_new">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -257,6 +262,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           </object>
         </child>
         <child>
+          <object class="GtkToggleButton" id="search_toggle">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="tooltip_text" translatable="yes">Show search bar</property>
+            <property name="image">find_toggle_image</property>
+            <property name="active">True</property>
+            <signal name="toggled" handler="remmina_main_on_search_toggle" swapped="no"/>
+          </object>
+          <packing>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkMenuButton" id="menu_header_button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -289,7 +308,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkSearchBar">
+          <object class="GtkSearchBar" id="search_bar">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="search_mode_enabled">True</property>
