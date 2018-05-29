@@ -576,13 +576,14 @@ gboolean remmina_public_get_modifier_for_keycode(GdkKeymap *keymap, guint16 keyc
 GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename)
 {
 	TRACE_CALL(__func__);
+	GError *err = NULL;
 	gchar *ui_path = g_strconcat(REMMINA_RUNTIME_UIDIR, G_DIR_SEPARATOR_S, filename, NULL);
-#if GTK_CHECK_VERSION(3, 10, 0)
-	GtkBuilder *builder = gtk_builder_new_from_file(ui_path);
-#else
 	GtkBuilder *builder = gtk_builder_new();
-	gtk_builder_add_from_file(builder, ui_path, NULL);
-#endif
+	gtk_builder_add_from_file(builder, ui_path, &err);
+	if (err != NULL) {
+		fprintf(stderr, "Error adding build from file. Error: %s\n", err->message);
+		g_error_free(err);
+	}
 	g_free(ui_path);
 	return builder;
 }
