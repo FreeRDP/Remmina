@@ -60,7 +60,7 @@
 
 static RemminaMain *remminamain;
 
-#define GET_OBJECT(object_name) GET_OBJECT(object_name)
+#define GET_OBJECT(object_name) gtk_builder_get_object(remminamain->builder, object_name)
 
 enum {
 PROTOCOL_COLUMN,
