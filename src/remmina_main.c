@@ -1196,10 +1196,10 @@ GtkWidget* remmina_main_new(void)
 	remminamain->priv = g_new0(RemminaMainPriv, 1);
 	/* Assign UI widgets to the private members */
 	remminamain->builder = remmina_public_gtk_builder_new_from_file("remmina_main.glade");
-	remminamain->window = GTK_WINDOW(gtk_builder_get_object(remminamain->builder, "RemminaMain"));
+	remminamain->window = GTK_WINDOW(GET_OBJECT("RemminaMain"));
 	/* Search bar */
-	remminamain->search_toggle = GTK_TOGGLE_BUTTON (gtk_builder_get_object (remminamain->builder, "search_toggle"));
-	remminamain->search_bar = GTK_SEARCH_BAR (gtk_builder_get_object (remminamain->builder, "search_bar"));
+	remminamain->search_toggle = GTK_TOGGLE_BUTTON (GET_OBJECT("search_toggle"));
+	remminamain->search_bar = GTK_SEARCH_BAR (GET_OBJECT("search_bar"));
 	/* Menu widgets */
 	remminamain->menu_popup = GTK_MENU(GET_OBJECT("menu_popup"));
 	remminamain->menu_popup_full = GTK_MENU(GET_OBJECT("menu_popup_full"));
