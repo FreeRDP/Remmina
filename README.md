@@ -128,7 +128,7 @@ zypper in remmina
 ```sh
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --user flathub org.remmina.Remmina
-flatpak run --user org.remmina.Remmina
+flatpak run org.remmina.Remmina
 ```
 If you use SSH agent (https://github.com/flatpak/flatpak/issues/1438 )
 
