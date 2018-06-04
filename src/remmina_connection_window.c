@@ -1874,10 +1874,8 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	toolbar = gtk_toolbar_new();
 	gtk_widget_show(toolbar);
 	gtk_toolbar_set_style(GTK_TOOLBAR(toolbar), GTK_TOOLBAR_ICONS);
+	gtk_toolbar_set_icon_size(GTK_TOOLBAR(toolbar), GTK_ICON_SIZE_SMALL_TOOLBAR);
 	gtk_toolbar_set_show_arrow(GTK_TOOLBAR(toolbar), FALSE);
-	if (remmina_pref.small_toolbutton) {
-		gtk_toolbar_set_icon_size(GTK_TOOLBAR(toolbar), GTK_ICON_SIZE_MENU);
-	}
 
 	/* Auto-Fit */
 	toolitem = gtk_tool_button_new(NULL, NULL);

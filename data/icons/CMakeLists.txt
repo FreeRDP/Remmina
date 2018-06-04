@@ -38,61 +38,30 @@ set(APPICON22_ACTIONS_DIR "${REMMINA_DATADIR}/icons/hicolor/22x22/actions")
 set(APPICON22_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/22x22/emblems")
 
 set(APPICON16_ACTIONS_DATA
-    ./16x16/actions/remmina-dynres.png
-    ./16x16/actions/remmina-fit-window.png
-    ./16x16/actions/remmina-switch-page.png
-    ./16x16/actions/remmina-pin-down.png
-    ./16x16/actions/remmina-fullscreen.png
-    ./16x16/actions/remmina-scale.png
-    ./16x16/actions/remmina-pin-up.png
-    ./22x22/actions/remmina-dynres.png
-    ./22x22/actions/remmina-fit-window.png
-    ./22x22/actions/remmina-switch-page.png
-    ./22x22/actions/remmina-fullscreen.png
-    ./22x22/actions/remmina-scale.png
-    ./24x24/actions/remmina-dynres.png
-    ./24x24/actions/remmina-fit-window.png
-    ./24x24/actions/remmina-switch-page.png
-    ./24x24/actions/remmina-fullscreen.png
-    ./24x24/actions/remmina-scale.png
-    ./64x64/actions/remmina-dynres.png
-    ./32x32/actions/remmina-dynres.png
-    ./32x32/actions/remmina-fit-window.png
-    ./32x32/actions/remmina-switch-page.png
-    ./32x32/actions/remmina-fullscreen.png
-    ./32x32/actions/remmina-scale.png
-    ./48x48/actions/remmina-dynres.png
-    ./48x48/actions/remmina-fit-window.png
-    ./48x48/actions/remmina-switch-page.png
-    ./48x48/actions/remmina-fullscreen.png
-    ./48x48/actions/remmina-scale.png
-    ./64x64/actions/remmina-fit-window.png
-    ./64x64/actions/remmina-switch-page.png
-    ./64x64/actions/remmina-fullscreen.png
-    ./64x64/actions/remmina-scale.png
+    16x16/actions/remmina-dynres.png
+    16x16/actions/remmina-fit-window.png
+    16x16/actions/remmina-switch-page.png
+    16x16/actions/remmina-pin-down.png
+    16x16/actions/remmina-fullscreen.png
+    16x16/actions/remmina-scale.png
+    16x16/actions/remmina-pin-up.png
     )
 
 set(APPICON16_EMBLEMS_DATA
-        16x16/emblems/remmina-sftp.png
-    ./16x16/emblems/remmina-sftp.png
-    ./22x22/emblems/remmina-sftp.png
-    ./24x24/emblems/remmina-sftp.png
-    ./32x32/emblems/remmina-sftp.png
-    ./48x48/emblems/remmina-sftp.png
-    ./64x64/emblems/remmina-sftp.png
-        )
+    16x16/emblems/remmina-sftp.png
+    )
 
 set(APPICON22_ACTIONS_DATA
-        22x22/actions/remmina-fit-window.png
-        22x22/actions/remmina-scale.png
-        22x22/actions/remmina-dynres.png
-        22x22/actions/remmina-fullscreen.png
-        22x22/actions/remmina-switch-page.png
-        )
+    22x22/actions/remmina-fit-window.png
+    22x22/actions/remmina-scale.png
+    22x22/actions/remmina-dynres.png
+    22x22/actions/remmina-fullscreen.png
+    22x22/actions/remmina-switch-page.png
+    )
 
 set(APPICON22_EMBLEMS_DATA
-        22x22/emblems/remmina-sftp.png
-        )
+    22x22/emblems/remmina-sftp.png
+    )
 
 install(FILES ${APPICON16_ACTIONS_DATA} DESTINATION ${APPICON16_ACTIONS_DIR})
 install(FILES ${APPICON16_EMBLEMS_DATA} DESTINATION ${APPICON16_EMBLEMS_DIR})
