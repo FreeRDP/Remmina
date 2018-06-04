@@ -64,10 +64,6 @@ set(APPICON16_ACTIONS_DATA
     16x16/actions/remmina-system-run.png
     )
 
-set(APPICON16_EMBLEMS_DATA
-    16x16/emblems/remmina-sftp.png
-    )
-
 set(APPICON22_ACTIONS_DATA
     22x22/actions/remmina-camera-photo.png
     22x22/actions/remmina-connect.png
@@ -152,17 +148,26 @@ set(APPICON48_ACTIONS_DATA
     48x48/actions/remmina-system-run.png
     )
 
+set(APPICON16_EMBLEMS_DATA
+    16x16/emblems/remmina-sftp.png
+    16x16/emblems/remmina-ssh.png
+    )
+
 set(APPICON22_EMBLEMS_DATA
     22x22/emblems/remmina-sftp.png
+    22x22/emblems/remmina-ssh.png
     )
 set(APPICON24_EMBLEMS_DATA
     24x24/emblems/remmina-sftp.png
+    24x24/emblems/remmina-ssh.png
     )
 set(APPICON32_EMBLEMS_DATA
     32x32/emblems/remmina-sftp.png
+    32x32/emblems/remmina-ssh.png
     )
 set(APPICON48_EMBLEMS_DATA
     48x48/emblems/remmina-sftp.png
+    48x48/emblems/remmina-ssh.png
     )
 
 install(FILES ${APPICON16_ACTIONS_DATA} DESTINATION ${APPICON16_ACTIONS_DIR})
