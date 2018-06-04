@@ -1023,8 +1023,8 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 	N_("SSH - Secure Shell"),                       /**< Description */
 	GETTEXT_PACKAGE,                                /**< Translation domain */
 	VERSION,                                        /**< Version number */
-	"utilities-terminal",                           /**< Icon for normal connection */
-	"utilities-terminal",                           /**< Icon for SSH connection */
+	"remmina-ssh",                           /**< Icon for normal connection */
+	"remmina-ssh",                           /**< Icon for SSH connection */
 	remmina_ssh_basic_settings,                     /**< Array for basic settings */
 	remmina_ssh_advanced_settings,                  /**< Array for advanced settings */
 	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,            /**< SSH settings type */

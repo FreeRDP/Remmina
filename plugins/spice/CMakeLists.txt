@@ -47,3 +47,5 @@ install(TARGETS remmina-plugin-spice DESTINATION ${REMMINA_PLUGINDIR})
 
 install(FILES 16x16/emblems/remmina-spice.png DESTINATION ${APPICON16_EMBLEMS_DIR})
 install(FILES 22x22/emblems/remmina-spice.png DESTINATION ${APPICON22_EMBLEMS_DIR})
+install(FILES 16x16/emblems/remmina-spice-ssh.png DESTINATION ${APPICON16_EMBLEMS_DIR})
+install(FILES 22x22/emblems/remmina-spice-ssh.png DESTINATION ${APPICON22_EMBLEMS_DIR})
