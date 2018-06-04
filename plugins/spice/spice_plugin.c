@@ -470,7 +470,7 @@ static RemminaProtocolPlugin remmina_plugin_spice =
 	GETTEXT_PACKAGE,                                                        // Translation domain
 	VERSION,                                                                // Version number
 	"remmina-spice",                                                        // Icon for normal connection
-	"remmina-spice",                                                        // Icon for SSH connection
+	"remmina-spice-ssh",                                                        // Icon for SSH connection
 	remmina_plugin_spice_basic_settings,                                    // Array for basic settings
 	remmina_plugin_spice_advanced_settings,                                 // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,                                    // SSH settings type

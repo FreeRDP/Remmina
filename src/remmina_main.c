@@ -310,7 +310,7 @@ if (node->data) {
 	iter = g_new0(GtkTreeIter, 1);
 	gtk_tree_store_append(store, iter, parent);
 	gtk_tree_store_set(store, iter,
-		PROTOCOL_COLUMN,    "folder",
+		PROTOCOL_COLUMN,    "remmina-folder-symbolic",
 		NAME_COLUMN,        data->name,
 		GROUP_COLUMN,       data->group,
 		DATE_COLUMN,        data->datetime,
@@ -459,7 +459,7 @@ if (text && text[0]) {
 		SERVER_COLUMN, &server,
 		DATE_COLUMN, &date,
 		-1);
-	if (g_strcmp0(protocol, "folder") != 0) {
+	if (g_strcmp0(protocol, "remmina-folder-symbolic") != 0) {
 		s = g_ascii_strdown(name ? name : "", -1);
 		g_free(name);
 		name = s;

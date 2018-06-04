@@ -51,6 +51,7 @@ set(APPICON16_ACTIONS_DATA
     16x16/actions/remmina-document-send.png
     16x16/actions/remmina-dynres.png
     16x16/actions/remmina-fit-window.png
+    16x16/actions/remmina-folder-symbolic.png
     16x16/actions/remmina-fullscreen.png
     16x16/actions/remmina-go-bottom.png
     16x16/actions/remmina-keyboard.png
@@ -72,6 +73,7 @@ set(APPICON22_ACTIONS_DATA
     22x22/actions/remmina-document-send.png
     22x22/actions/remmina-dynres.png
     22x22/actions/remmina-fit-window.png
+    22x22/actions/remmina-folder-symbolic.png
     22x22/actions/remmina-fullscreen.png
     22x22/actions/remmina-go-bottom.png
     22x22/actions/remmina-keyboard.png
@@ -93,6 +95,7 @@ set(APPICON24_ACTIONS_DATA
     24x24/actions/remmina-document-send.png
     24x24/actions/remmina-dynres.png
     24x24/actions/remmina-fit-window.png
+    24x24/actions/remmina-folder-symbolic.png
     24x24/actions/remmina-fullscreen.png
     24x24/actions/remmina-go-bottom.png
     24x24/actions/remmina-keyboard.png
@@ -114,6 +117,7 @@ set(APPICON32_ACTIONS_DATA
     32x32/actions/remmina-document-send.png
     32x32/actions/remmina-dynres.png
     32x32/actions/remmina-fit-window.png
+    32x32/actions/remmina-folder-symbolic.png
     32x32/actions/remmina-fullscreen.png
     32x32/actions/remmina-go-bottom.png
     32x32/actions/remmina-keyboard.png
@@ -135,6 +139,7 @@ set(APPICON48_ACTIONS_DATA
     48x48/actions/remmina-document-send.png
     48x48/actions/remmina-dynres.png
     48x48/actions/remmina-fit-window.png
+    48x48/actions/remmina-folder-symbolic.png
     48x48/actions/remmina-fullscreen.png
     48x48/actions/remmina-go-bottom.png
     48x48/actions/remmina-keyboard.png
