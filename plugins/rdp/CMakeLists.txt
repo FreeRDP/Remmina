@@ -69,10 +69,10 @@ target_link_libraries(remmina-plugin-rdp
 install(TARGETS remmina-plugin-rdp DESTINATION ${REMMINA_PLUGINDIR})
 
 install(FILES
-    16x16/emblems/remmina-rdp-ssh.png
-    16x16/emblems/remmina-rdp.png
+    16x16/emblems/remmina-rdp-ssh.svg
+    16x16/emblems/remmina-rdp.svg
     DESTINATION ${APPICON16_EMBLEMS_DIR})
 install(FILES
-    22x22/emblems/remmina-rdp-ssh.png
-    22x22/emblems/remmina-rdp.png
+    22x22/emblems/remmina-rdp-ssh.svg
+    22x22/emblems/remmina-rdp.svg
     DESTINATION ${APPICON22_EMBLEMS_DIR})
