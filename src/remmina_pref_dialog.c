@@ -176,6 +176,8 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.default_mode = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_appearance_view_mode);
 	remmina_pref.tab_mode = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_appearance_tab_interface);
 	remmina_pref.fullscreen_toolbar_visibility = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_appearance_fullscreen_toolbar_visibility);
+	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_icons), &color);
+	remmina_pref.icons_colour = gdk_rgba_to_string(&color);
 	remmina_pref.show_buttons_icons = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_appearance_show_buttons_icons);
 	remmina_pref.show_menu_icons = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_appearance_show_menu_icons);
 	remmina_pref.scale_quality = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_options_scale_quality);
@@ -427,6 +429,9 @@ static void remmina_pref_dialog_init(void)
 	}
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_bold), remmina_pref.vte_allow_bold_text);
 
+	/* Icons color option */
+	gdk_rgba_parse(&color, remmina_pref.icons_colour);
+	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_icons), &color);
 	/* Foreground color option */
 	gdk_rgba_parse(&color, remmina_pref.foreground);
 	gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_foreground), &color);
@@ -586,6 +591,8 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->button_keyboard_copy = GTK_BUTTON(GET_OBJECT("button_keyboard_copy"));
 	remmina_pref_dialog->button_keyboard_paste = GTK_BUTTON(GET_OBJECT("button_keyboard_paste"));
 	remmina_pref_dialog->button_keyboard_select_all = GTK_BUTTON(GET_OBJECT("button_keyboard_select_all"));
+	remmina_pref_dialog->label_icons_colour = GTK_LABEL(GET_OBJECT("label_icons_colour"));
+	remmina_pref_dialog->colorbutton_icons = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_icons"));
 	remmina_pref_dialog->label_terminal_foreground = GTK_LABEL(GET_OBJECT("label_terminal_foreground"));
 	remmina_pref_dialog->colorbutton_foreground = GTK_COLOR_BUTTON(GET_OBJECT("colorbutton_foreground"));
 	remmina_pref_dialog->label_terminal_background = GTK_LABEL(GET_OBJECT("label_terminal_background"));
