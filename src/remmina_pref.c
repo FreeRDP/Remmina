@@ -294,6 +294,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.hide_statusbar = FALSE;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "small_toolbutton", NULL))
+		remmina_pref.small_toolbutton = g_key_file_get_boolean(gkeyfile, "remmina_pref", "small_toolbutton", NULL);
+	else
+		remmina_pref.small_toolbutton = FALSE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "view_file_mode", NULL))
 		remmina_pref.view_file_mode = g_key_file_get_integer(gkeyfile, "remmina_pref", "view_file_mode", NULL);
 	else
@@ -433,6 +438,12 @@ void remmina_pref_init(void)
 		remmina_pref.fullscreen_toolbar_visibility = g_key_file_get_integer(gkeyfile, "remmina_pref", "fullscreen_toolbar_visibility", NULL);
 	else
 		remmina_pref.fullscreen_toolbar_visibility = FLOATING_TOOLBAR_VISIBILITY_PEEKING;
+	/* Icons colour */
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "icons_colour", NULL))
+		remmina_pref.icons_colour = g_key_file_get_string(gkeyfile, "remmina_pref", "icons_colour",
+			NULL);
+	else
+		remmina_pref.icons_colour = "#000000";
 	/* Show buttons icons */
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "show_buttons_icons", NULL)) {
 		remmina_pref.show_buttons_icons = g_key_file_get_integer(gkeyfile, "remmina_pref", "show_buttons_icons", NULL);
@@ -732,6 +743,7 @@ void remmina_pref_save(void)
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "toolbar_placement", remmina_pref.toolbar_placement);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "prevent_snap_welcome_message", remmina_pref.prevent_snap_welcome_message);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "fullscreen_on_auto", remmina_pref.fullscreen_on_auto);
+	g_key_file_set_string(gkeyfile, "remmina_pref", "icons_colour", remmina_pref.icons_colour ? remmina_pref.icons_colour : "");
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "always_show_tab", remmina_pref.always_show_tab);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_connection_toolbar", remmina_pref.hide_connection_toolbar);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "default_action", remmina_pref.default_action);
@@ -741,6 +753,7 @@ void remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "ssh_parseconfig", remmina_pref.ssh_parseconfig);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_toolbar", remmina_pref.hide_toolbar);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_statusbar", remmina_pref.hide_statusbar);
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "small_toolbutton", remmina_pref.small_toolbutton);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "view_file_mode", remmina_pref.view_file_mode);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "resolutions", remmina_pref.resolutions);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "keystrokes", remmina_pref.keystrokes);

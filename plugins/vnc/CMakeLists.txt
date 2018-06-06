@@ -47,8 +47,8 @@ target_link_libraries(remmina-plugin-vnc ${REMMINA_COMMON_LIBRARIES} ${LIBVNCSER
 install(TARGETS remmina-plugin-vnc DESTINATION ${REMMINA_PLUGINDIR})
 
 install(FILES
-    16x16/emblems/remmina-vnc-ssh.png
-    16x16/emblems/remmina-vnc.png DESTINATION ${APPICON16_EMBLEMS_DIR})
+    16x16/emblems/remmina-vnc-ssh.svg
+    16x16/emblems/remmina-vnc.svg DESTINATION ${APPICON16_EMBLEMS_DIR})
 install(FILES
-    22x22/emblems/remmina-vnc-ssh.png
-    22x22/emblems/remmina-vnc.png DESTINATION ${APPICON22_EMBLEMS_DIR})
+    22x22/emblems/remmina-vnc-ssh.svg
+    22x22/emblems/remmina-vnc.svg DESTINATION ${APPICON22_EMBLEMS_DIR})

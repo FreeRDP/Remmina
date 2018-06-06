@@ -45,7 +45,7 @@ target_link_libraries(remmina-plugin-spice ${REMMINA_COMMON_LIBRARIES} ${SPICE_L
 
 install(TARGETS remmina-plugin-spice DESTINATION ${REMMINA_PLUGINDIR})
 
-install(FILES 16x16/emblems/remmina-spice.png DESTINATION ${APPICON16_EMBLEMS_DIR})
-install(FILES 22x22/emblems/remmina-spice.png DESTINATION ${APPICON22_EMBLEMS_DIR})
-install(FILES 16x16/emblems/remmina-spice-ssh.png DESTINATION ${APPICON16_EMBLEMS_DIR})
-install(FILES 22x22/emblems/remmina-spice-ssh.png DESTINATION ${APPICON22_EMBLEMS_DIR})
+install(FILES 16x16/emblems/remmina-spice.svg DESTINATION ${APPICON16_EMBLEMS_DIR})
+install(FILES 22x22/emblems/remmina-spice.svg DESTINATION ${APPICON22_EMBLEMS_DIR})
+install(FILES 16x16/emblems/remmina-spice-ssh.svg DESTINATION ${APPICON16_EMBLEMS_DIR})
+install(FILES 22x22/emblems/remmina-spice-ssh.svg DESTINATION ${APPICON22_EMBLEMS_DIR})

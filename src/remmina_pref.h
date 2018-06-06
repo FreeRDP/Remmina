@@ -164,6 +164,9 @@ typedef struct _RemminaPref {
 	/* UID */
 	gchar *uid;
 
+	/* Icons colour */
+	gchar *icons_colour;
+
 	/* Color palette for VTE terminal */
 	gchar *background;
 	gchar *cursor;

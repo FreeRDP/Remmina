@@ -47,8 +47,8 @@ target_link_libraries(remmina-plugin-exec ${REMMINA_COMMON_LIBRARIES})
 install(TARGETS remmina-plugin-exec DESTINATION ${REMMINA_PLUGINDIR})
 
 install(FILES
-    16x16/emblems/remmina-tool.png
+    16x16/emblems/remmina-tool.svg
     DESTINATION ${APPICON16_EMBLEMS_DIR})
 install(FILES
-    22x22/emblems/remmina-tool.png
+    22x22/emblems/remmina-tool.svg
     DESTINATION ${APPICON22_EMBLEMS_DIR})

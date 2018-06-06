@@ -1908,16 +1908,16 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_button_set_relief(GTK_BUTTON(widget), GTK_RELIEF_NONE);
 #if GTK_CHECK_VERSION(3, 20, 0)
 	gtk_widget_set_focus_on_click(GTK_WIDGET(widget), FALSE);
-#else
-	gtk_button_set_focus_on_click(GTK_BUTTON(widget), FALSE);
-#endif
 	if (remmina_pref.small_toolbutton) {
 		gtk_widget_set_name(widget, "remmina-small-button");
 	}
+#else
+	gtk_button_set_focus_on_click(GTK_BUTTON(widget), FALSE);
+#endif
 	gtk_container_add(GTK_CONTAINER(toolitem), widget);
 
 #if GTK_CHECK_VERSION(3, 14, 0)
-	arrow = gtk_image_new_from_icon_name("remmina-pan-down-symbolic", GTK_ICON_SIZE_BUTTON);
+	arrow = gtk_image_new_from_icon_name("remmina-pan-down-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR);
 #else
 	arrow = gtk_arrow_new(GTK_ARROW_DOWN, GTK_SHADOW_NONE);
 #endif
@@ -1980,7 +1980,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	}
 	gtk_container_add(GTK_CONTAINER(toolitem), widget);
 #if GTK_CHECK_VERSION(3, 14, 0)
-	arrow = gtk_image_new_from_icon_name("remmina-pan-down-symbolic", GTK_ICON_SIZE_BUTTON);
+	arrow = gtk_image_new_from_icon_name("remmina-pan-down-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR);
 #else
 	arrow = gtk_arrow_new(GTK_ARROW_DOWN, GTK_SHADOW_NONE);
 #endif

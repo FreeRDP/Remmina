@@ -58,8 +58,8 @@ target_link_libraries(remmina-plugin-nx
 install(TARGETS remmina-plugin-nx DESTINATION ${REMMINA_PLUGINDIR})
 
 install(FILES
-    16x16/emblems/remmina-nx.png
+    16x16/emblems/remmina-nx.svg
     DESTINATION ${APPICON16_EMBLEMS_DIR})
 install(FILES
-    22x22/emblems/remmina-nx.png
+    22x22/emblems/remmina-nx.svg
     DESTINATION ${APPICON22_EMBLEMS_DIR})
