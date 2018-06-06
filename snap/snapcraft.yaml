@@ -29,7 +29,6 @@ parts:
       - libgnutls-dev
       - libgnutls28-dev
       - libjpeg-dev
-      - libnacl-dev
       - libpcsclite-dev
       - libpulse-dev
       - libsecret-1-dev
@@ -79,7 +78,6 @@ parts:
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
       - -DWITH_GSSAPI=ON
-      - -DWITH_NACL=1
       - -DWITH_EXAMPLES:BOOL=OFF
 
     # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
