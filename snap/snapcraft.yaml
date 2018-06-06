@@ -26,8 +26,10 @@ parts:
       - libavcodec-dev
       - libavutil-dev
       - libcups2-dev
+      - libffi-devel
       - libgnutls-dev
       - libgnutls28-dev
+      - libnacl-dev
       - libjpeg-dev
       - libpcsclite-dev
       - libpulse-dev
@@ -78,6 +80,7 @@ parts:
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
       - -DWITH_GSSAPI=ON
+      - -DWITH_NACL=1
       - -DWITH_EXAMPLES:BOOL=OFF
 
     # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
