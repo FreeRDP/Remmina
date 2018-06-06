@@ -116,6 +116,8 @@ void remmina_pref_on_color_scheme_selected(GtkWidget *widget, gpointer user_data
 			NULL);
 		/* Here we should reinitialize the widget */
 	}
+	g_free(sourcepath);
+	g_object_unref(source);
 }
 
 void remmina_pref_dialog_clear_recent(GtkWidget *widget, gpointer user_data)
