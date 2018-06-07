@@ -1,6 +1,13 @@
 [![Snap Status](https://build.snapcraft.io/badge/FreeRDP/Remmina.svg)](https://build.snapcraft.io/user/FreeRDP/Remmina)
 [![Build Status](https://travis-ci.org/FreeRDP/Remmina.png)](https://travis-ci.org/FreeRDP/Remmina) [![Bountysource](https://img.shields.io/bountysource/team/remmina/activity.svg)](https://www.bountysource.com/teams/remmina) [![CodeTriage](https://www.codetriage.com/freerdp/remmina/badges/users.svg)](https://www.codetriage.com/freerdp/remmina)
 
+# IMPORTANT NOTICE
+
+We are moving to [gitlab](https://gitlab.com/DAGUniverse/Remmina)
+
+* [issues URL](https://gitlab.com/DAGUniverse/Remmina/issues)
+* [wiki URL](https://gitlab.com/DAGUniverse/Remmina/wikis/home)
+
 # Remmina: The GTK+ Remote Desktop Client
 
 Initially developed by [Vic Lee](https://github.com/llyzs)
