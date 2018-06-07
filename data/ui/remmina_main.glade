@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 
+<!-- Generated with glade 3.22.1
 
 Remmina - The GTK+ Remmina Remote Desktop Client
 Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2018
@@ -701,18 +701,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                   </object>
                 </child>
                 <child>
+                  <object class="GtkTreeViewColumn" id="column_files_list_plugin">
+                    <property name="resizable">True</property>
+                    <property name="title" translatable="yes">Plugin</property>
+                    <property name="clickable">True</property>
+                    <property name="sort_column_id">4</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="renderer_files_list_plugin"/>
+                      <attributes>
+                        <attribute name="text">4</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
                   <object class="GtkTreeViewColumn" id="column_files_list_date">
                     <property name="resizable">True</property>
                     <property name="title" translatable="yes">Last time used</property>
                     <property name="clickable">True</property>
                     <property name="sort_indicator">True</property>
                     <property name="sort_order">descending</property>
-                    <property name="sort_column_id">4</property>
+                    <property name="sort_column_id">5</property>
                     <signal name="clicked" handler="remmina_main_on_date_column_sort_clicked" swapped="no"/>
                     <child>
                       <object class="GtkCellRendererText" id="renderer_files_list_date"/>
                       <attributes>
-                        <attribute name="text">4</attribute>
+                        <attribute name="text">5</attribute>
                       </attributes>
                     </child>
                   </object>
