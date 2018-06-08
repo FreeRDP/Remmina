@@ -97,8 +97,6 @@ typedef struct _RemminaPrefDialog {
 	GtkFontButton *fontbutton_terminal_font;
 	GtkCheckButton *checkbutton_terminal_bold;
 	GtkCheckButton *checkbutton_terminal_system_colors;
-	GtkLabel *label_icons_colour;
-	GtkColorButton *colorbutton_icons;
 	GtkLabel *label_terminal_foreground;
 	GtkColorButton *colorbutton_foreground;
 	GtkLabel *label_terminal_background;
