@@ -43,11 +43,8 @@ target_link_libraries(remmina-plugin-xdmcp ${REMMINA_COMMON_LIBRARIES})
 
 install(TARGETS remmina-plugin-xdmcp DESTINATION ${REMMINA_PLUGINDIR})
 
+
 install(FILES
-    16x16/emblems/remmina-xdmcp-ssh.svg
-    16x16/emblems/remmina-xdmcp.svg
-    DESTINATION ${APPICON16_EMBLEMS_DIR})
-install(FILES
-    22x22/emblems/remmina-xdmcp-ssh.svg
-    22x22/emblems/remmina-xdmcp.svg
-    DESTINATION ${APPICON22_EMBLEMS_DIR})
+    scalable/emblems/remmina-xdmcp-ssh-symbolic.svg
+    scalable/emblems/remmina-xdmcp-symbolic.svg
+    DESTINATION ${APPICONSCALE_EMBLEMS_DIR})

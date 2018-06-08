@@ -736,8 +736,8 @@ static RemminaProtocolPlugin remmina_plugin_nx =
 	N_("NX - NX Technology"),                       // Description
 	GETTEXT_PACKAGE,                                // Translation domain
 	VERSION,                                        // Version number
-	"remmina-nx",                                   // Icon for normal connection
-	"remmina-nx",                                   // Icon for SSH connection
+	"remmina-nx-symbolic",                          // Icon for normal connection
+	"remmina-nx-symbolic",                          // Icon for SSH connection
 	remmina_plugin_nx_basic_settings,               // Array for basic settings
 	remmina_plugin_nx_advanced_settings,            // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,            // SSH settings type

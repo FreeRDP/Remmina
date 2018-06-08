@@ -389,8 +389,8 @@ static RemminaProtocolPlugin remmina_plugin_xdmcp =
 	N_("XDMCP - X Remote Session"),                 // Description
 	GETTEXT_PACKAGE,                                // Translation domain
 	VERSION,                                        // Version number
-	"remmina-xdmcp",                                // Icon for normal connection
-	"remmina-xdmcp-ssh",                            // Icon for SSH connection
+	"remmina-xdmcp-symbolic",                       // Icon for normal connection
+	"remmina-xdmcp-ssh-symbolic",                   // Icon for SSH connection
 	remmina_plugin_xdmcp_basic_settings,            // Array for basic settings
 	NULL,                                           // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,            // SSH settings type

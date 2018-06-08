@@ -1922,8 +1922,8 @@ static RemminaProtocolPlugin remmina_plugin_vnc =
 	N_("VNC - VNC viewer"),                         // Description
 	GETTEXT_PACKAGE,                                // Translation domain
 	VERSION,                                        // Version number
-	"remmina-vnc",                                  // Icon for normal connection
-	"remmina-vnc-ssh",                              // Icon for SSH connection
+	"remmina-vnc-symbolic",                         // Icon for normal connection
+	"remmina-vnc-ssh-symbolic",                     // Icon for SSH connection
 	remmina_plugin_vnc_basic_settings,              // Array for basic settings
 	remmina_plugin_vnc_advanced_settings,           // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,            // SSH settings type
@@ -1944,8 +1944,8 @@ static RemminaProtocolPlugin remmina_plugin_vnci =
 	N_("VNCI - VNC viewer listen mode"),            // Description
 	GETTEXT_PACKAGE,                                // Translation domain
 	VERSION,                                        // Version number
-	"remmina-vnc",                                  // Icon for normal connection
-	"remmina-vnc-ssh",                              // Icon for SSH connection
+	"remmina-vnc-symbolic",                         // Icon for normal connection
+	"remmina-vnc-ssh-symbolic",                     // Icon for SSH connection
 	remmina_plugin_vnci_basic_settings,             // Array for basic settings
 	remmina_plugin_vnc_advanced_settings,           // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_REVERSE_TUNNEL,    // SSH settings type
