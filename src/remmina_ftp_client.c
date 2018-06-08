@@ -657,14 +657,14 @@ static void remmina_ftp_client_popup_menu(RemminaFTPClient *client, GdkEventButt
 
 	menuitem = gtk_menu_item_new_with_label(_("Download"));
 	gtk_widget_show(menuitem);
-	image = gtk_image_new_from_icon_name("remmina-document-save", GTK_ICON_SIZE_MENU);
+	image = gtk_image_new_from_icon_name("remmina-document-save-symbolic", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_ftp_client_action_download), client);
 
 	menuitem = gtk_menu_item_new_with_label(_("Upload"));
 	gtk_widget_show(menuitem);
-	image = gtk_image_new_from_icon_name("remmina-document-send", GTK_ICON_SIZE_MENU);
+	image = gtk_image_new_from_icon_name("remmina-document-send-symbolic", GTK_ICON_SIZE_MENU);
 	gtk_widget_show(image);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(remmina_ftp_client_action_upload), client);
@@ -781,7 +781,7 @@ static GtkWidget* remmina_ftp_client_create_toolbar(RemminaFTPClient *client)
 	gtk_widget_show(button);
 	gtk_widget_set_tooltip_text(button, _("Download from server"));
 	gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
-	image = gtk_image_new_from_icon_name("remmina-document-save", GTK_ICON_SIZE_BUTTON);
+	image = gtk_image_new_from_icon_name("remmina-document-save-symbolic", GTK_ICON_SIZE_BUTTON);
 	gtk_button_set_image(GTK_BUTTON(button), image);
 	gtk_box_pack_start(GTK_BOX(box), button, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(remmina_ftp_client_action_download), client);
@@ -792,7 +792,7 @@ static GtkWidget* remmina_ftp_client_create_toolbar(RemminaFTPClient *client)
 	gtk_widget_show(button);
 	gtk_widget_set_tooltip_text(button, _("Upload to server"));
 	gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
-	image = gtk_image_new_from_icon_name("remmina-document-send", GTK_ICON_SIZE_BUTTON);
+	image = gtk_image_new_from_icon_name("remmina-document-send-symbolic", GTK_ICON_SIZE_BUTTON);
 	gtk_button_set_image(GTK_BUTTON(button), image);
 	gtk_box_pack_start(GTK_BOX(box), button, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(remmina_ftp_client_action_upload), client);

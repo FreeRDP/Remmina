@@ -370,8 +370,8 @@ static RemminaProtocolPlugin remmina_plugin_sftp =
 	N_("SFTP - Secure File Transfer"),              // Description
 	GETTEXT_PACKAGE,                                // Translation domain
 	VERSION,                                        // Version number
-	"remmina-sftp",                                 // Icon for normal connection
-	"remmina-sftp",                                 // Icon for SSH connection
+	"remmina-sftp-symbolic",                        // Icon for normal connection
+	"remmina-sftp-symbolic",                        // Icon for SSH connection
 	remmina_sftp_basic_settings,                    // Array for basic settings
 	NULL,                                           // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,            // SSH settings type

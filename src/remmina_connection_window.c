@@ -1879,7 +1879,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 
 	/* Auto-Fit */
 	toolitem = gtk_tool_button_new(NULL, NULL);
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-fit-window");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-fit-window-symbolic");
 	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Resize the window to fit in remote resolution"),
 		remmina_pref.shortcutkey_autofit, 0);
 	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_autofit), cnnhld);
@@ -1889,7 +1889,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 
 	/* Fullscreen toggle */
 	toolitem = gtk_toggle_tool_button_new();
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-fullscreen");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-fullscreen-symbolic");
 	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Toggle fullscreen mode"),
 		remmina_pref.shortcutkey_fullscreen, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
@@ -1931,7 +1931,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 
 	/* Switch tabs */
 	toolitem = gtk_toggle_tool_button_new();
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-switch-page");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-switch-page-symbolic");
 	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Switch tab pages"), remmina_pref.shortcutkey_prevtab,
 		remmina_pref.shortcutkey_nexttab);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
@@ -1945,7 +1945,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 
 	/* Dynamic Resolution Update */
 	toolitem = gtk_toggle_tool_button_new();
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-dynres");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-dynres-symbolic");
 	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Toggle dynamic resolution update"),
 		remmina_pref.shortcutkey_dynres, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
@@ -1955,7 +1955,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 
 	/* Scaler button */
 	toolitem = gtk_toggle_tool_button_new();
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-scale");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-scale-symbolic");
 	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Toggle scaled mode"), remmina_pref.shortcutkey_scale, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
@@ -1991,7 +1991,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 
 	/* Grab keyboard button */
 	toolitem = gtk_toggle_tool_button_new();
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-keyboard");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-keyboard-symbolic");
 	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Grab all keyboard events"),
 		remmina_pref.shortcutkey_grab, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
@@ -2000,7 +2000,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	priv->toolitem_grab = toolitem;
 
 	toolitem = gtk_toggle_tool_button_new();
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-preferences-system");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-preferences-system-symbolic");
 	gtk_tool_item_set_tooltip_text(toolitem, _("Preferences"));
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
@@ -2008,7 +2008,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	priv->toolitem_preferences = toolitem;
 
 	toolitem = gtk_toggle_tool_button_new();
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-system-run");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-system-run-symbolic");
 	gtk_tool_button_set_label(GTK_TOOL_BUTTON(toolitem), _("Tools"));
 	gtk_tool_item_set_tooltip_text(toolitem, _("Tools"));
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
@@ -2021,21 +2021,21 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_widget_show(GTK_WIDGET(toolitem));
 
 	toolitem = gtk_tool_button_new(NULL, "_Screenshot");
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-camera-photo");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-camera-photo-symbolic");
 	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Screenshot"), remmina_pref.shortcutkey_screenshot, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_screenshot), cnnhld);
 
 	toolitem = gtk_tool_button_new(NULL, "_Bottom");
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-go-bottom");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-go-bottom-symbolic");
 	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Minimize window"), remmina_pref.shortcutkey_minimize, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_minimize), cnnhld);
 
 	toolitem = gtk_tool_button_new(NULL, "_Disconnect");
-	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-disconnect");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-disconnect-symbolic");
 	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Disconnect"), remmina_pref.shortcutkey_disconnect, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
@@ -2430,10 +2430,10 @@ static void remmina_connection_holder_update_pin(RemminaConnectionHolder* cnnhld
 	TRACE_CALL(__func__);
 	if (cnnhld->cnnwin->priv->pin_down) {
 		gtk_button_set_image(GTK_BUTTON(cnnhld->cnnwin->priv->pin_button),
-			gtk_image_new_from_icon_name("remmina-pin-down", GTK_ICON_SIZE_MENU));
+			gtk_image_new_from_icon_name("remmina-pin-down-symbolic", GTK_ICON_SIZE_MENU));
 	}else {
 		gtk_button_set_image(GTK_BUTTON(cnnhld->cnnwin->priv->pin_button),
-			gtk_image_new_from_icon_name("remmina-pin-up", GTK_ICON_SIZE_MENU));
+			gtk_image_new_from_icon_name("remmina-pin-up-symbolic", GTK_ICON_SIZE_MENU));
 	}
 }
 

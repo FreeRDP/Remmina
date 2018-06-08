@@ -32,157 +32,33 @@
 # files in the program, then also delete it here.
 
 
-set(APPICON16_ACTIONS_DIR "${REMMINA_DATADIR}/icons/hicolor/16x16/actions")
-set(APPICON22_ACTIONS_DIR "${REMMINA_DATADIR}/icons/hicolor/22x22/actions")
-set(APPICON24_ACTIONS_DIR "${REMMINA_DATADIR}/icons/hicolor/24x24/actions")
-set(APPICON32_ACTIONS_DIR "${REMMINA_DATADIR}/icons/hicolor/32x32/actions")
-set(APPICON48_ACTIONS_DIR "${REMMINA_DATADIR}/icons/hicolor/48x48/actions")
-set(APPICON16_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/16x16/emblems")
-set(APPICON22_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/22x22/emblems")
-set(APPICON24_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/24x24/emblems")
-set(APPICON32_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/32x32/emblems")
-set(APPICON48_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/48x48/emblems")
+set(APPICONSCALE_ACTIONS_DIR "${REMMINA_DATADIR}/icons/hicolor/scalable/actions")
+set(APPICONSCALE_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/scalable/emblems")
 
-set(APPICON16_ACTIONS_DATA
-    16x16/actions/remmina-camera-photo.svg
-    16x16/actions/remmina-connect.svg
-    16x16/actions/remmina-disconnect.svg
-    16x16/actions/remmina-document-save.svg
-    16x16/actions/remmina-document-send.svg
-    16x16/actions/remmina-dynres.svg
-    16x16/actions/remmina-fit-window.svg
-    16x16/actions/remmina-folder-symbolic.svg
-    16x16/actions/remmina-fullscreen.svg
-    16x16/actions/remmina-go-bottom.svg
-    16x16/actions/remmina-keyboard.svg
-    16x16/actions/remmina-pan-down-symbolic.svg
-    16x16/actions/remmina-pan-up-symbolic.svg
-    16x16/actions/remmina-pin-down.svg
-    16x16/actions/remmina-pin-up.svg
-    16x16/actions/remmina-preferences-system.svg
-    16x16/actions/remmina-scale.svg
-    16x16/actions/remmina-switch-page.svg
-    16x16/actions/remmina-system-run.svg
+set(APPICONSCALE_ACTIONS_DATA
+    scalable/actions/remmina-camera-photo-symbolic.svg
+    scalable/actions/remmina-disconnect-symbolic.svg
+    scalable/actions/remmina-dynres-symbolic.svg
+    scalable/actions/remmina-fit-window-symbolic.svg
+    scalable/actions/remmina-folder-symbolic.svg
+    scalable/actions/remmina-fullscreen-symbolic.svg
+    scalable/actions/remmina-go-bottom-symbolic.svg
+    scalable/actions/remmina-keyboard-symbolic.svg
+    scalable/actions/remmina-pan-down-symbolic.svg
+    scalable/actions/remmina-pan-up-symbolic.svg
+    scalable/actions/remmina-pin-down-symbolic.svg
+    scalable/actions/remmina-pin-up-symbolic.svg
+    scalable/actions/remmina-preferences-system-symbolic.svg
+    scalable/actions/remmina-scale-symbolic.svg
+    scalable/actions/remmina-switch-page-symbolic.svg
+    scalable/actions/remmina-system-run-symbolic.svg
     )
 
-set(APPICON22_ACTIONS_DATA
-    22x22/actions/remmina-camera-photo.svg
-    22x22/actions/remmina-connect.svg
-    22x22/actions/remmina-disconnect.svg
-    22x22/actions/remmina-document-save.svg
-    22x22/actions/remmina-document-send.svg
-    22x22/actions/remmina-dynres.svg
-    22x22/actions/remmina-fit-window.svg
-    22x22/actions/remmina-folder-symbolic.svg
-    22x22/actions/remmina-fullscreen.svg
-    22x22/actions/remmina-go-bottom.svg
-    22x22/actions/remmina-keyboard.svg
-    22x22/actions/remmina-pan-down-symbolic.svg
-    22x22/actions/remmina-pan-up-symbolic.svg
-    22x22/actions/remmina-pin-down.svg
-    22x22/actions/remmina-pin-up.svg
-    22x22/actions/remmina-preferences-system.svg
-    22x22/actions/remmina-scale.svg
-    22x22/actions/remmina-switch-page.svg
-    22x22/actions/remmina-system-run.svg
+set(APPICONSCALE_EMBLEMS_DATA
+    scalable/emblems/remmina-sftp-symbolic.svg
+    scalable/emblems/remmina-ssh-symbolic.svg
     )
 
-set(APPICON24_ACTIONS_DATA
-    24x24/actions/remmina-camera-photo.svg
-    24x24/actions/remmina-connect.svg
-    24x24/actions/remmina-disconnect.svg
-    24x24/actions/remmina-document-save.svg
-    24x24/actions/remmina-document-send.svg
-    24x24/actions/remmina-dynres.svg
-    24x24/actions/remmina-fit-window.svg
-    24x24/actions/remmina-folder-symbolic.svg
-    24x24/actions/remmina-fullscreen.svg
-    24x24/actions/remmina-go-bottom.svg
-    24x24/actions/remmina-keyboard.svg
-    24x24/actions/remmina-pan-down-symbolic.svg
-    24x24/actions/remmina-pan-up-symbolic.svg
-    24x24/actions/remmina-pin-down.svg
-    24x24/actions/remmina-pin-up.svg
-    24x24/actions/remmina-preferences-system.svg
-    24x24/actions/remmina-scale.svg
-    24x24/actions/remmina-switch-page.svg
-    24x24/actions/remmina-system-run.svg
-    )
-
-set(APPICON32_ACTIONS_DATA
-    32x32/actions/remmina-camera-photo.svg
-    32x32/actions/remmina-connect.svg
-    32x32/actions/remmina-disconnect.svg
-    32x32/actions/remmina-document-save.svg
-    32x32/actions/remmina-document-send.svg
-    32x32/actions/remmina-dynres.svg
-    32x32/actions/remmina-fit-window.svg
-    32x32/actions/remmina-folder-symbolic.svg
-    32x32/actions/remmina-fullscreen.svg
-    32x32/actions/remmina-go-bottom.svg
-    32x32/actions/remmina-keyboard.svg
-    32x32/actions/remmina-pan-down-symbolic.svg
-    32x32/actions/remmina-pan-up-symbolic.svg
-    32x32/actions/remmina-pin-down.svg
-    32x32/actions/remmina-pin-up.svg
-    32x32/actions/remmina-preferences-system.svg
-    32x32/actions/remmina-scale.svg
-    32x32/actions/remmina-switch-page.svg
-    32x32/actions/remmina-system-run.svg
-    )
-
-set(APPICON48_ACTIONS_DATA
-    48x48/actions/remmina-camera-photo.svg
-    48x48/actions/remmina-connect.svg
-    48x48/actions/remmina-disconnect.svg
-    48x48/actions/remmina-document-save.svg
-    48x48/actions/remmina-document-send.svg
-    48x48/actions/remmina-dynres.svg
-    48x48/actions/remmina-fit-window.svg
-    48x48/actions/remmina-folder-symbolic.svg
-    48x48/actions/remmina-fullscreen.svg
-    48x48/actions/remmina-go-bottom.svg
-    48x48/actions/remmina-keyboard.svg
-    48x48/actions/remmina-pan-down-symbolic.svg
-    48x48/actions/remmina-pan-up-symbolic.svg
-    48x48/actions/remmina-pin-down.svg
-    48x48/actions/remmina-pin-up.svg
-    48x48/actions/remmina-preferences-system.svg
-    48x48/actions/remmina-scale.svg
-    48x48/actions/remmina-switch-page.svg
-    48x48/actions/remmina-system-run.svg
-    )
-
-set(APPICON16_EMBLEMS_DATA
-    16x16/emblems/remmina-sftp.svg
-    16x16/emblems/remmina-ssh.svg
-    )
-
-set(APPICON22_EMBLEMS_DATA
-    22x22/emblems/remmina-sftp.svg
-    22x22/emblems/remmina-ssh.svg
-    )
-set(APPICON24_EMBLEMS_DATA
-    24x24/emblems/remmina-sftp.svg
-    24x24/emblems/remmina-ssh.svg
-    )
-set(APPICON32_EMBLEMS_DATA
-    32x32/emblems/remmina-sftp.svg
-    32x32/emblems/remmina-ssh.svg
-    )
-set(APPICON48_EMBLEMS_DATA
-    48x48/emblems/remmina-sftp.svg
-    48x48/emblems/remmina-ssh.svg
-    )
-
-install(FILES ${APPICON16_ACTIONS_DATA} DESTINATION ${APPICON16_ACTIONS_DIR})
-install(FILES ${APPICON22_ACTIONS_DATA} DESTINATION ${APPICON22_ACTIONS_DIR})
-install(FILES ${APPICON24_ACTIONS_DATA} DESTINATION ${APPICON24_ACTIONS_DIR})
-install(FILES ${APPICON32_ACTIONS_DATA} DESTINATION ${APPICON32_ACTIONS_DIR})
-install(FILES ${APPICON48_ACTIONS_DATA} DESTINATION ${APPICON48_ACTIONS_DIR})
-install(FILES ${APPICON16_EMBLEMS_DATA} DESTINATION ${APPICON16_EMBLEMS_DIR})
-install(FILES ${APPICON22_EMBLEMS_DATA} DESTINATION ${APPICON22_EMBLEMS_DIR})
-install(FILES ${APPICON24_EMBLEMS_DATA} DESTINATION ${APPICON24_EMBLEMS_DIR})
-install(FILES ${APPICON32_EMBLEMS_DATA} DESTINATION ${APPICON32_EMBLEMS_DIR})
-install(FILES ${APPICON48_EMBLEMS_DATA} DESTINATION ${APPICON48_EMBLEMS_DIR})
+install(FILES ${APPICONSCALE_ACTIONS_DATA} DESTINATION ${APPICONSCALE_ACTIONS_DIR})
+install(FILES ${APPICONSCALE_EMBLEMS_DATA} DESTINATION ${APPICONSCALE_EMBLEMS_DIR})
 
