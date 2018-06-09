@@ -254,9 +254,8 @@
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DWITH_NACL:BOOL=ON",
-                "-DNACL_LIBRARIES:PATH=/app/lib/nacl/",
+                "-DNACL_INCLUDE_DIR:PATH=/app/include/",
                 "-DNACL_LIBRARY:PATH=/app/lib/nacl/libnacl.a",
-                "-DNACL_INCLUDE_DIRS:PATH=/app/include/nacl/",
                 "-DWITH_EXAMPLES:BOOL=OFF"
             ],
             "sources": [
@@ -277,17 +276,22 @@
                         "sed -e '/shorthostname=/ s/.*/shorthostname=flatpak-builder/g' -i ./do",
                         /* Build */
                         "./do",
+                        "cat ./build/flatpak-builder/log",
                         /* Install */
-                        "mkdir -p /app/lib/nacl",
-                        "install -m644 -t /app/lib/nacl/ ./build/flatpak-builder/lib/*/*.a",
-                        "mkdir -p /app/include/nacl",
-                        "install -m644 -t /app/include/nacl/ ./build/flatpak-builder/include/*/*.h"
+                        "mkdir -v -p /app/lib/nacl",
+                        "install -v -m644 -t /app/lib/nacl/ ./build/flatpak-builder/lib/*/*.a",
+                        "mkdir -v -p /app/include/nacl",
+                        "install -v -m644 -t /app/include/nacl/ ./build/flatpak-builder/include/*/*.h"
                     ],
                     "sources": [
                         {
                             "type": "archive",
                             "url": "https://hyperelliptic.org/nacl/nacl-20110221.tar.bz2",
                             "sha256": "4f277f89735c8b0b8a6bbd043b3efb3fa1cc68a9a5da6a076507d067fc3b3bf8"
+                        },
+                        {
+                            "type": "patch",
+                            "path": "patches/nacl-20110221-cpufreq-fallback.patch"
                         }
                     ]
                 }
