@@ -1,6 +1,17 @@
-**We support Remmina 1.2+ versions only.** 
-*Do not report bugs related to older Remmina versions!* 
- 
+# IMPORTANT NOTICE
+
+We are moving to [gitlab](https://gitlab.com/DAGUniverse/Remmina)
+
+From the 1st of July 2018 the following links have to be used instead og GitHub.
+
+* [issues URL](https://gitlab.com/DAGUniverse/Remmina/issues)
+* [wiki URL](https://gitlab.com/DAGUniverse/Remmina/wikis/home)
+
+Please consider registering a gitlab.com account and link it to github (settings->account->github).
+
+**We support Remmina 1.2+ versions only.**
+*Do not report bugs related to older Remmina versions!*
+
 ## Local System Description
 
 * Client (OS name and version):
@@ -29,8 +40,8 @@
 
 ## Remote System Description
 
-* Server (OS name and version): 
-* Special notes regarding the remote system (i.e. gateways, tunnel, etc): 
+* Server (OS name and version):
+* Special notes regarding the remote system (i.e. gateways, tunnel, etc):
 
 ## Problem Description
 
