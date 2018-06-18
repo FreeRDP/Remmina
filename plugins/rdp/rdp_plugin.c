@@ -1003,6 +1003,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*)smartcard);
 	}
 
+	if (remmina_plugin_service->file_get_int(remminafile, "passwordispin", FALSE)) {
+		/* Option works only combined with Username and Domain, because freerdp
+		 * doesn't know anything about information on smartcard */
+		rfi->settings->PasswordIsSmartcardPin = TRUE;
+	}
+
 	if (!freerdp_connect(rfi->instance)) {
 		if (!rfi->user_cancelled) {
 			UINT32 e;
