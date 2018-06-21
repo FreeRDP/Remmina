@@ -1068,6 +1068,15 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount has restrictions."),
 					rfi->settings->ServerHostname );
 				break;
+
+			case STATUS_PASSWORD_MUST_CHANGE:
+#ifdef FREERDP_ERROR_CONNECT_PASSWORD_MUST_CHANGE
+			case FREERDP_ERROR_CONNECT_PASSWORD_MUST_CHANGE:
+#endif
+			remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nUser must change password before connecting."),
+				rfi->settings->ServerHostname );
+			break;
+
 			case FREERDP_ERROR_CONNECT_FAILED:
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to RDP server %s failed."), rfi->settings->ServerHostname );
 				break;
