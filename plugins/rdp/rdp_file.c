@@ -83,7 +83,7 @@ static void remmina_rdp_file_import_field(RemminaFile* remminafile, const gchar*
 		}
 	}else if (g_strcmp0(key, "microphone") == 0) {
 		remmina_plugin_service->file_set_int(remminafile, "microphone", (atoi(value) == 1));
-	}   else if (g_strcmp0(key, "redirectprinters") == 0) {
+	}else if (g_strcmp0(key, "redirectprinters") == 0) {
 		remmina_plugin_service->file_set_int(remminafile, "shareprinter", (atoi(value) == 1));
 	}else if (g_strcmp0(key, "redirectsmartcard") == 0) {
 		remmina_plugin_service->file_set_int(remminafile, "sharesmartcard", (atoi(value) == 1));

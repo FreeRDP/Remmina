@@ -985,6 +985,15 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->DeviceRedirection = TRUE;
 		rfi->settings->RedirectPrinters = TRUE;
 
+		const gchar* pn = remmina_plugin_service->file_get_string(remminafile, "printername");
+		if ( pn != NULL && pn[0] != '\0' ) {
+			printer->Name = _strdup(pn);
+		}
+		const gchar* dn = remmina_plugin_service->file_get_string(remminafile, "printerdriver");
+		if ( dn != NULL && dn[0] != '\0' ) {
+			printer->DriverName = _strdup(dn);
+		}
+
 		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*)printer);
 	}
 
@@ -1433,12 +1442,14 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "exec",		       N_("Startup program"),			FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "execpath",		       N_("Startup path"),			FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "loadbalanceinfo",	       N_("Load Balance Info"),			FALSE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "cert_ignore",	       N_("Ignore certificate"),		TRUE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "microphone",	       N_("Redirect local microphone"),		TRUE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "sharesmartcard",	       N_("Share smartcard"),			TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printername",	       N_("Local Printer Name"),			FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printerdriver",	       N_("Local Printer Driver"),			FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "shareprinter",	       N_("Share local printers"),		TRUE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disablepasswordstoring",  N_("Disable password storing"),		TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "sharesmartcard",	       N_("Share smartcard"),			TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "microphone",	       N_("Redirect local microphone"),		TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disableclipboard",	       N_("Disable clipboard sync"),		TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "cert_ignore",	       N_("Ignore certificate"),		TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disablepasswordstoring",  N_("Disable password storing"),		TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "console",		       N_("Attach to console (2003/2003 R2)"),	TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disable_fastpath",	       N_("Disable fast-path"),	TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "gateway_usage",	       N_("Server detection using RD Gateway"),	FALSE,	NULL,		NULL},
