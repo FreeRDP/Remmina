@@ -69,7 +69,7 @@ typedef struct _RemminaSSH {
 	gchar *privkeyfile;
 
 	gchar *charset;
-	gchar *kex_algorithms;
+	const gchar *kex_algorithms;
 	gchar *ciphers;
         gchar *hostkeytypes;
         gchar *proxycommand;
