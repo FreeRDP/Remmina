@@ -660,26 +660,26 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 		remminavte.palette = xterm_palette;
 		break;
 	case CUSTOM:
-		gdk_rgba_parse(&foreground_color, remmina_pref.foreground);
-		gdk_rgba_parse(&background_color, remmina_pref.background);
-		gdk_rgba_parse(&cursor_color, remmina_pref.cursor);
+		gdk_rgba_parse(&foreground_color, remmina_pref.color_pref.foreground);
+		gdk_rgba_parse(&background_color, remmina_pref.color_pref.background);
+		gdk_rgba_parse(&cursor_color, remmina_pref.color_pref.cursor);
 
-		gdk_rgba_parse(&cp[0], remmina_pref.color0);
-		gdk_rgba_parse(&cp[1], remmina_pref.color1);
-		gdk_rgba_parse(&cp[2], remmina_pref.color2);
-		gdk_rgba_parse(&cp[3], remmina_pref.color3);
-		gdk_rgba_parse(&cp[4], remmina_pref.color4);
-		gdk_rgba_parse(&cp[5], remmina_pref.color5);
-		gdk_rgba_parse(&cp[6], remmina_pref.color6);
-		gdk_rgba_parse(&cp[7], remmina_pref.color7);
-		gdk_rgba_parse(&cp[8], remmina_pref.color8);
-		gdk_rgba_parse(&cp[9], remmina_pref.color9);
-		gdk_rgba_parse(&cp[10], remmina_pref.color10);
-		gdk_rgba_parse(&cp[11], remmina_pref.color11);
-		gdk_rgba_parse(&cp[12], remmina_pref.color12);
-		gdk_rgba_parse(&cp[13], remmina_pref.color13);
-		gdk_rgba_parse(&cp[14], remmina_pref.color14);
-		gdk_rgba_parse(&cp[15], remmina_pref.color15);
+		gdk_rgba_parse(&cp[0], remmina_pref.color_pref.color0);
+		gdk_rgba_parse(&cp[1], remmina_pref.color_pref.color1);
+		gdk_rgba_parse(&cp[2], remmina_pref.color_pref.color2);
+		gdk_rgba_parse(&cp[3], remmina_pref.color_pref.color3);
+		gdk_rgba_parse(&cp[4], remmina_pref.color_pref.color4);
+		gdk_rgba_parse(&cp[5], remmina_pref.color_pref.color5);
+		gdk_rgba_parse(&cp[6], remmina_pref.color_pref.color6);
+		gdk_rgba_parse(&cp[7], remmina_pref.color_pref.color7);
+		gdk_rgba_parse(&cp[8], remmina_pref.color_pref.color8);
+		gdk_rgba_parse(&cp[9], remmina_pref.color_pref.color9);
+		gdk_rgba_parse(&cp[10], remmina_pref.color_pref.color10);
+		gdk_rgba_parse(&cp[11], remmina_pref.color_pref.color11);
+		gdk_rgba_parse(&cp[12], remmina_pref.color_pref.color12);
+		gdk_rgba_parse(&cp[13], remmina_pref.color_pref.color13);
+		gdk_rgba_parse(&cp[14], remmina_pref.color_pref.color14);
+		gdk_rgba_parse(&cp[15], remmina_pref.color_pref.color15);
 
 		const GdkRGBA custom_palette[PALETTE_SIZE] = {
 			cp[0],	cp[1],	cp[2],	cp[3],
