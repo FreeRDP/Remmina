@@ -227,6 +227,7 @@ gint remmina_pref_get_scale_quality(void);
 gint remmina_pref_get_ssh_loglevel(void);
 gboolean remmina_pref_get_ssh_parseconfig(void);
 gint remmina_pref_get_sshtunnel_port(void);
+void remmina_pref_file_load_colors(GKeyFile *gkeyfile, RemminaColorPref *color_pref);
 gint remmina_pref_get_ssh_tcp_keepidle(void);
 gint remmina_pref_get_ssh_tcp_keepintvl(void);
 gint remmina_pref_get_ssh_tcp_keepcnt(void);
