@@ -63,29 +63,29 @@
 /** Palette colors taken from sakura */
 #define PALETTE_SIZE 16
 
-enum color_schemes { GRUVBOX, TANGO, LINUX, SOLARIZED_DARK, SOLARIZED_LIGHT, XTERM, CUSTOM };
+enum color_schemes { LINUX, TANGO, GRUVBOX, SOLARIZED_DARK, SOLARIZED_LIGHT, XTERM, CUSTOM };
 
 /** 16 color palettes in GdkRGBA format (red, green, blue, alpha).
  * Text displayed in the first 8 colors (0-7) is meek (uses thin strokes).
  * Text displayed in the second 8 colors (8-15) is bold (uses thick strokes).
  **/
-const GdkRGBA gruvbox_palette[PALETTE_SIZE] = {
-	{ 0.156863, 0.156863, 0.156863, 1.000000 },
-	{ 0.800000, 0.141176, 0.113725, 1.000000 },
-	{ 0.596078, 0.592157, 0.101961, 1.000000 },
-	{ 0.843137, 0.600000, 0.129412, 1.000000 },
-	{ 0.270588, 0.521569, 0.533333, 1.000000 },
-	{ 0.694118, 0.384314, 0.525490, 1.000000 },
-	{ 0.407843, 0.615686, 0.415686, 1.000000 },
-	{ 0.658824, 0.600000, 0.517647, 1.000000 },
-	{ 0.572549, 0.513725, 0.454902, 1.000000 },
-	{ 0.984314, 0.286275, 0.203922, 1.000000 },
-	{ 0.721569, 0.733333, 0.149020, 1.000000 },
-	{ 0.980392, 0.741176, 0.184314, 1.000000 },
-	{ 0.513725, 0.647059, 0.596078, 1.000000 },
-	{ 0.827451, 0.525490, 0.607843, 1.000000 },
-	{ 0.556863, 0.752941, 0.486275, 1.000000 },
-	{ 0.921569, 0.858824, 0.698039, 1.000000 },
+const GdkRGBA linux_palette[PALETTE_SIZE] = {
+	{ 0,	    0,		     0,		      1	       },
+	{ 0.666667, 0,		     0,		      1	       },
+	{ 0,	    0.666667,	     0,		      1	       },
+	{ 0.666667, 0.333333,	     0,		      1	       },
+	{ 0,	    0,		     0.666667,	      1	       },
+	{ 0.666667, 0,		     0.666667,	      1	       },
+	{ 0,	    0.666667,	     0.666667,	      1	       },
+	{ 0.666667, 0.666667,	     0.666667,	      1	       },
+	{ 0.333333, 0.333333,	     0.333333,	      1	       },
+	{ 1,	    0.333333,	     0.333333,	      1	       },
+	{ 0.333333, 1,		     0.333333,	      1	       },
+	{ 1,	    1,		     0.333333,	      1	       },
+	{ 0.333333, 0.333333,	     1,		      1	       },
+	{ 1,	    0.333333,	     1,		      1	       },
+	{ 0.333333, 1,		     1,		      1	       },
+	{ 1,	    1,		     1,		      1	       }
 };
 
 const GdkRGBA tango_palette[PALETTE_SIZE] = {
@@ -107,23 +107,23 @@ const GdkRGBA tango_palette[PALETTE_SIZE] = {
 	{ 0.933333,  0.933333, 0.92549,	 1	  }
 };
 
-const GdkRGBA linux_palette[PALETTE_SIZE] = {
-	{ 0,	    0,		     0,		      1	       },
-	{ 0.666667, 0,		     0,		      1	       },
-	{ 0,	    0.666667,	     0,		      1	       },
-	{ 0.666667, 0.333333,	     0,		      1	       },
-	{ 0,	    0,		     0.666667,	      1	       },
-	{ 0.666667, 0,		     0.666667,	      1	       },
-	{ 0,	    0.666667,	     0.666667,	      1	       },
-	{ 0.666667, 0.666667,	     0.666667,	      1	       },
-	{ 0.333333, 0.333333,	     0.333333,	      1	       },
-	{ 1,	    0.333333,	     0.333333,	      1	       },
-	{ 0.333333, 1,		     0.333333,	      1	       },
-	{ 1,	    1,		     0.333333,	      1	       },
-	{ 0.333333, 0.333333,	     1,		      1	       },
-	{ 1,	    0.333333,	     1,		      1	       },
-	{ 0.333333, 1,		     1,		      1	       },
-	{ 1,	    1,		     1,		      1	       }
+const GdkRGBA gruvbox_palette[PALETTE_SIZE] = {
+	{ 0.156863, 0.156863, 0.156863, 1.000000 },
+	{ 0.800000, 0.141176, 0.113725, 1.000000 },
+	{ 0.596078, 0.592157, 0.101961, 1.000000 },
+	{ 0.843137, 0.600000, 0.129412, 1.000000 },
+	{ 0.270588, 0.521569, 0.533333, 1.000000 },
+	{ 0.694118, 0.384314, 0.525490, 1.000000 },
+	{ 0.407843, 0.615686, 0.415686, 1.000000 },
+	{ 0.658824, 0.600000, 0.517647, 1.000000 },
+	{ 0.572549, 0.513725, 0.454902, 1.000000 },
+	{ 0.984314, 0.286275, 0.203922, 1.000000 },
+	{ 0.721569, 0.733333, 0.149020, 1.000000 },
+	{ 0.980392, 0.741176, 0.184314, 1.000000 },
+	{ 0.513725, 0.647059, 0.596078, 1.000000 },
+	{ 0.827451, 0.525490, 0.607843, 1.000000 },
+	{ 0.556863, 0.752941, 0.486275, 1.000000 },
+	{ 0.921569, 0.858824, 0.698039, 1.000000 },
 };
 
 const GdkRGBA solarized_dark_palette[PALETTE_SIZE] = {
@@ -623,11 +623,11 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	GdkRGBA cursor_color;
 	/* Set colors to GdkRGBA */
 	switch (remmina_plugin_service->file_get_int(remminafile, "ssh_color_scheme", FALSE)) {
-	case GRUVBOX:
-		gdk_rgba_parse(&foreground_color, "#ebdbb2");
-		gdk_rgba_parse(&background_color, "#282828");
-		gdk_rgba_parse(&cursor_color, "#d3869b");
-		remminavte.palette = gruvbox_palette;
+	case LINUX:
+		gdk_rgba_parse(&foreground_color, "#ffffff");
+		gdk_rgba_parse(&background_color, "#000000");
+		gdk_rgba_parse(&cursor_color, "#ffffff");
+		remminavte.palette = linux_palette;
 		break;
 	case TANGO:
 		gdk_rgba_parse(&foreground_color, "#eeeeec");
@@ -635,11 +635,11 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 		gdk_rgba_parse(&cursor_color, "#8ae234");
 		remminavte.palette = tango_palette;
 		break;
-	case LINUX:
-		gdk_rgba_parse(&foreground_color, "#ffffff");
-		gdk_rgba_parse(&background_color, "#000000");
-		gdk_rgba_parse(&cursor_color, "#ffffff");
-		remminavte.palette = linux_palette;
+	case GRUVBOX:
+		gdk_rgba_parse(&foreground_color, "#ebdbb2");
+		gdk_rgba_parse(&background_color, "#282828");
+		gdk_rgba_parse(&cursor_color, "#d3869b");
+		remminavte.palette = gruvbox_palette;
 		break;
 	case SOLARIZED_DARK:
 		gdk_rgba_parse(&foreground_color, "#839496");
@@ -1062,4 +1062,3 @@ void remmina_ssh_plugin_register(void)
 }
 
 #endif
-
