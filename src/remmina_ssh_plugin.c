@@ -944,7 +944,7 @@ static gpointer ssh_terminal_palette[] =
 	"4", "Solarized Light",
 	"5", "XTerm",
 	"6", "Custom (Configured in Remmina preferences)",
-	NULL
+	NULL, NULL
 };
 
 /**
@@ -1048,6 +1048,30 @@ remmina_ssh_plugin_register(void)
 	remmina_plugin_ssh_features[3].opt3 = GUINT_TO_POINTER(remmina_pref.vte_shortcutkey_select_all);
 
 	remmina_plugin_service = &remmina_plugin_manager_service;
+
+	RemminaProtocolSettingOpt *settings = malloc(sizeof(remmina_ssh_advanced_settings));
+
+	// preset new settings with (old) static remmina_ssh_advanced_settings data
+	unsigned int rec_size = sizeof(remmina_ssh_advanced_settings) / sizeof(RemminaProtocolSetting);
+	for (int ii=0; ii < rec_size; ii++) {
+		settings[ii].type = remmina_ssh_advanced_settings[ii].type;
+		settings[ii].name = remmina_ssh_advanced_settings[ii].name;
+		settings[ii].label = remmina_ssh_advanced_settings[ii].label;
+		settings[ii].compact = remmina_ssh_advanced_settings[ii].compact;
+		settings[ii].opt1 = remmina_ssh_advanced_settings[ii].opt1;
+		settings[ii].opt2 = remmina_ssh_advanced_settings[ii].opt1;
+	}
+
+	// create dynamic advanced settings to made replacing of ssh_terminal_palette possible
+	rec_size = sizeof(ssh_terminal_palette) / sizeof(gpointer);
+	gpointer *ssh_terminal_palette_new = malloc(rec_size * sizeof(gpointer));
+	// preset with (old) static ssh_terminal_palette data
+	for (int ii=0; ii < rec_size; ii++) {
+		ssh_terminal_palette_new[ii] = ssh_terminal_palette[ii];
+	}
+	settings[0].opt1 = ssh_terminal_palette_new;
+	remmina_plugin_ssh.advanced_settings = (RemminaProtocolSetting*)settings;
+
 	remmina_plugin_service->register_plugin((RemminaPlugin*)&remmina_plugin_ssh);
 
 	ssh_threads_set_callbacks(ssh_threads_get_pthread());
