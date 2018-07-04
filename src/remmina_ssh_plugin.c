@@ -621,78 +621,129 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 #if VTE_CHECK_VERSION(0, 38, 0)
 	GdkRGBA cp[PALETTE_SIZE];
 	GdkRGBA cursor_color;
-	/* Set colors to GdkRGBA */
-	switch (remmina_plugin_service->file_get_int(remminafile, "ssh_color_scheme", FALSE)) {
-	case LINUX:
-		gdk_rgba_parse(&foreground_color, "#ffffff");
-		gdk_rgba_parse(&background_color, "#000000");
-		gdk_rgba_parse(&cursor_color, "#ffffff");
-		remminavte.palette = linux_palette;
-		break;
-	case TANGO:
-		gdk_rgba_parse(&foreground_color, "#eeeeec");
-		gdk_rgba_parse(&background_color, "#2e3436");
-		gdk_rgba_parse(&cursor_color, "#8ae234");
-		remminavte.palette = tango_palette;
-		break;
-	case GRUVBOX:
-		gdk_rgba_parse(&foreground_color, "#ebdbb2");
-		gdk_rgba_parse(&background_color, "#282828");
-		gdk_rgba_parse(&cursor_color, "#d3869b");
-		remminavte.palette = gruvbox_palette;
-		break;
-	case SOLARIZED_DARK:
-		gdk_rgba_parse(&foreground_color, "#839496");
-		gdk_rgba_parse(&background_color, "#002b36");
-		gdk_rgba_parse(&cursor_color, "#93a1a1");
-		remminavte.palette = solarized_dark_palette;
-		break;
-	case SOLARIZED_LIGHT:
-		gdk_rgba_parse(&foreground_color, "#657b83");
-		gdk_rgba_parse(&background_color, "#fdf6e3");
-		gdk_rgba_parse(&cursor_color, "#586e75");
-		remminavte.palette = solarized_light_palette;
-		break;
-	case XTERM:
-		gdk_rgba_parse(&foreground_color, "#000000");
-		gdk_rgba_parse(&background_color, "#ffffff");
-		gdk_rgba_parse(&cursor_color, "#000000");
-		remminavte.palette = xterm_palette;
-		break;
-	case CUSTOM:
-		gdk_rgba_parse(&foreground_color, remmina_pref.color_pref.foreground);
-		gdk_rgba_parse(&background_color, remmina_pref.color_pref.background);
-		gdk_rgba_parse(&cursor_color, remmina_pref.color_pref.cursor);
 
-		gdk_rgba_parse(&cp[0], remmina_pref.color_pref.color0);
-		gdk_rgba_parse(&cp[1], remmina_pref.color_pref.color1);
-		gdk_rgba_parse(&cp[2], remmina_pref.color_pref.color2);
-		gdk_rgba_parse(&cp[3], remmina_pref.color_pref.color3);
-		gdk_rgba_parse(&cp[4], remmina_pref.color_pref.color4);
-		gdk_rgba_parse(&cp[5], remmina_pref.color_pref.color5);
-		gdk_rgba_parse(&cp[6], remmina_pref.color_pref.color6);
-		gdk_rgba_parse(&cp[7], remmina_pref.color_pref.color7);
-		gdk_rgba_parse(&cp[8], remmina_pref.color_pref.color8);
-		gdk_rgba_parse(&cp[9], remmina_pref.color_pref.color9);
-		gdk_rgba_parse(&cp[10], remmina_pref.color_pref.color10);
-		gdk_rgba_parse(&cp[11], remmina_pref.color_pref.color11);
-		gdk_rgba_parse(&cp[12], remmina_pref.color_pref.color12);
-		gdk_rgba_parse(&cp[13], remmina_pref.color_pref.color13);
-		gdk_rgba_parse(&cp[14], remmina_pref.color_pref.color14);
-		gdk_rgba_parse(&cp[15], remmina_pref.color_pref.color15);
+	/*
+	 * custom colors reside inside of the 'colors' subdir of the remmina config folder (.config/remmina/colors)
+	 * with the file extension '.colors'. The name of the colorfile came from the menu (see below)
+	 * sideeffect: it is possible to overwrite the standard colors with a dedicated colorfile like
+	 * '0.colors' for GRUVBOX, '1.colors' for TANGO and so on
+	 */
+	const gchar *color_name = remmina_plugin_service->file_get_string(remminafile, "ssh_color_scheme");
+
+	gchar *remmina_dir = g_build_path( "/", g_get_user_config_dir(), g_get_prgname(), "colors", NULL);
+	const gchar *remmina_colors_file = g_strdup_printf("%s/%s.colors", remmina_dir, color_name);
+
+	if (g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
+		GKeyFile *gkeyfile;
+		RemminaColorPref color_pref;
+
+		gkeyfile = g_key_file_new();
+		g_key_file_load_from_file(gkeyfile, remmina_colors_file, G_KEY_FILE_NONE, NULL);
+		remmina_pref_file_load_colors(gkeyfile, &color_pref);
+
+		gdk_rgba_parse(&foreground_color, color_pref.foreground);
+		gdk_rgba_parse(&background_color, color_pref.background);
+		gdk_rgba_parse(&cursor_color, color_pref.cursor);
+
+		gdk_rgba_parse(&cp[0], color_pref.color0);
+		gdk_rgba_parse(&cp[1], color_pref.color1);
+		gdk_rgba_parse(&cp[2], color_pref.color2);
+		gdk_rgba_parse(&cp[3], color_pref.color3);
+		gdk_rgba_parse(&cp[4], color_pref.color4);
+		gdk_rgba_parse(&cp[5], color_pref.color5);
+		gdk_rgba_parse(&cp[6], color_pref.color6);
+		gdk_rgba_parse(&cp[7], color_pref.color7);
+		gdk_rgba_parse(&cp[8], color_pref.color8);
+		gdk_rgba_parse(&cp[9], color_pref.color9);
+		gdk_rgba_parse(&cp[10], color_pref.color10);
+		gdk_rgba_parse(&cp[11], color_pref.color11);
+		gdk_rgba_parse(&cp[12], color_pref.color12);
+		gdk_rgba_parse(&cp[13], color_pref.color13);
+		gdk_rgba_parse(&cp[14], color_pref.color14);
+		gdk_rgba_parse(&cp[15], color_pref.color15);
 
 		const GdkRGBA custom_palette[PALETTE_SIZE] = {
-			cp[0],	cp[1],	cp[2],	cp[3],
-			cp[4],	cp[5],	cp[6],	cp[7],
-			cp[8],	cp[9],	cp[10], cp[11],
-			cp[12], cp[13], cp[14], cp[15]
+				cp[0],	cp[1],	cp[2],	cp[3],
+				cp[4],	cp[5],	cp[6],	cp[7],
+				cp[8],	cp[9],	cp[10], cp[11],
+				cp[12], cp[13], cp[14], cp[15]
 		};
 
 		remminavte.palette = custom_palette;
-		break;
-	default:
-		remminavte.palette = linux_palette;
-		break;
+	} else {
+	/* Set colors to GdkRGBA */
+	switch (remmina_plugin_service->file_get_int(remminafile, "ssh_color_scheme", FALSE)) {
+		case LINUX:
+			gdk_rgba_parse(&foreground_color, "#ffffff");
+			gdk_rgba_parse(&background_color, "#000000");
+			gdk_rgba_parse(&cursor_color, "#ffffff");
+			remminavte.palette = linux_palette;
+			break;
+		case TANGO:
+			gdk_rgba_parse(&foreground_color, "#eeeeec");
+			gdk_rgba_parse(&background_color, "#2e3436");
+			gdk_rgba_parse(&cursor_color, "#8ae234");
+			remminavte.palette = tango_palette;
+			break;
+		case GRUVBOX:
+			gdk_rgba_parse(&foreground_color, "#ebdbb2");
+			gdk_rgba_parse(&background_color, "#282828");
+			gdk_rgba_parse(&cursor_color, "#d3869b");
+			remminavte.palette = gruvbox_palette;
+			break;
+		case SOLARIZED_DARK:
+			gdk_rgba_parse(&foreground_color, "#839496");
+			gdk_rgba_parse(&background_color, "#002b36");
+			gdk_rgba_parse(&cursor_color, "#93a1a1");
+			remminavte.palette = solarized_dark_palette;
+			break;
+		case SOLARIZED_LIGHT:
+			gdk_rgba_parse(&foreground_color, "#657b83");
+			gdk_rgba_parse(&background_color, "#fdf6e3");
+			gdk_rgba_parse(&cursor_color, "#586e75");
+			remminavte.palette = solarized_light_palette;
+			break;
+		case XTERM:
+			gdk_rgba_parse(&foreground_color, "#000000");
+			gdk_rgba_parse(&background_color, "#ffffff");
+			gdk_rgba_parse(&cursor_color, "#000000");
+			remminavte.palette = xterm_palette;
+			break;
+		case CUSTOM:
+			gdk_rgba_parse(&foreground_color, remmina_pref.color_pref.foreground);
+			gdk_rgba_parse(&background_color, remmina_pref.color_pref.background);
+			gdk_rgba_parse(&cursor_color, remmina_pref.color_pref.cursor);
+
+			gdk_rgba_parse(&cp[0], remmina_pref.color_pref.color0);
+			gdk_rgba_parse(&cp[1], remmina_pref.color_pref.color1);
+			gdk_rgba_parse(&cp[2], remmina_pref.color_pref.color2);
+			gdk_rgba_parse(&cp[3], remmina_pref.color_pref.color3);
+			gdk_rgba_parse(&cp[4], remmina_pref.color_pref.color4);
+			gdk_rgba_parse(&cp[5], remmina_pref.color_pref.color5);
+			gdk_rgba_parse(&cp[6], remmina_pref.color_pref.color6);
+			gdk_rgba_parse(&cp[7], remmina_pref.color_pref.color7);
+			gdk_rgba_parse(&cp[8], remmina_pref.color_pref.color8);
+			gdk_rgba_parse(&cp[9], remmina_pref.color_pref.color9);
+			gdk_rgba_parse(&cp[10], remmina_pref.color_pref.color10);
+			gdk_rgba_parse(&cp[11], remmina_pref.color_pref.color11);
+			gdk_rgba_parse(&cp[12], remmina_pref.color_pref.color12);
+			gdk_rgba_parse(&cp[13], remmina_pref.color_pref.color13);
+			gdk_rgba_parse(&cp[14], remmina_pref.color_pref.color14);
+			gdk_rgba_parse(&cp[15], remmina_pref.color_pref.color15);
+
+			const GdkRGBA custom_palette[PALETTE_SIZE] = {
+				cp[0],	cp[1],	cp[2],	cp[3],
+				cp[4],	cp[5],	cp[6],	cp[7],
+				cp[8],	cp[9],	cp[10], cp[11],
+				cp[12], cp[13], cp[14], cp[15]
+			};
+
+			remminavte.palette = custom_palette;
+			break;
+		default:
+			remminavte.palette = linux_palette;
+			break;
+		}
 	}
 	vte_terminal_set_colors(VTE_TERMINAL(vte), &foreground_color, &background_color, remminavte.palette, PALETTE_SIZE);
 	vte_terminal_set_color_foreground(VTE_TERMINAL(vte), &foreground_color);
@@ -1038,6 +1089,59 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 	NULL                                            /**< No screenshot support available */
 };
 
+
+void
+remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
+{
+	unsigned int preset_rec_size = sizeof(ssh_terminal_palette) / sizeof(gpointer);
+
+	gchar *remmina_dir = g_build_path( "/", g_get_user_config_dir(), g_get_prgname(), "colors", NULL);
+	GDir *dir;
+	GError *error;
+	const gchar *filename;
+
+	dir = g_dir_open(remmina_dir, 0, &error);
+	unsigned int rec_size = 0;
+	/*
+	 * count number of (all) files to reserve enought memory
+	 */
+	while ((filename = g_dir_read_name(dir))) {
+		if (!g_file_test(filename, G_FILE_TEST_IS_DIR)) {
+			if (g_str_has_suffix(filename, ".colors")) {
+				rec_size+=2;
+			}
+		}
+	}
+
+	gpointer *color_palette = malloc((preset_rec_size + rec_size) * sizeof(gpointer));
+
+	unsigned int field_idx = 0;
+	*ssh_terminal_palette_new = color_palette;
+	// preset with (old) static ssh_terminal_palette data
+	for (; field_idx < preset_rec_size; field_idx++) {
+		color_palette[field_idx] = ssh_terminal_palette[field_idx];
+		if (!color_palette[field_idx]) {
+			break;
+		}
+	}
+
+	g_dir_rewind(dir);
+	while ((filename = g_dir_read_name(dir))) {
+		if (!g_file_test(filename, G_FILE_TEST_IS_DIR)) {
+			if (g_str_has_suffix(filename, ".colors")) {
+				char *menu_str = malloc(strlen(filename) + 1);
+				strcpy(menu_str, filename);
+				char *t2 = strrchr(menu_str, '.');
+				t2[0] = 0;
+				color_palette[field_idx++] = menu_str;
+				color_palette[field_idx++] = menu_str;
+			}
+		}
+	}
+	color_palette[field_idx] = NULL;
+	g_dir_close(dir);
+}
+
 void
 remmina_ssh_plugin_register(void)
 {
@@ -1063,12 +1167,10 @@ remmina_ssh_plugin_register(void)
 	}
 
 	// create dynamic advanced settings to made replacing of ssh_terminal_palette possible
-	rec_size = sizeof(ssh_terminal_palette) / sizeof(gpointer);
-	gpointer *ssh_terminal_palette_new = malloc(rec_size * sizeof(gpointer));
-	// preset with (old) static ssh_terminal_palette data
-	for (int ii=0; ii < rec_size; ii++) {
-		ssh_terminal_palette_new[ii] = ssh_terminal_palette[ii];
-	}
+	gpointer ssh_terminal_palette_new = NULL;
+
+	remmina_ssh_plugin_load_terminal_palettes(&ssh_terminal_palette_new);
+
 	settings[0].opt1 = ssh_terminal_palette_new;
 	remmina_plugin_ssh.advanced_settings = (RemminaProtocolSetting*)settings;
 
