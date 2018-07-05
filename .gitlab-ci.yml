@@ -13,7 +13,7 @@ variables:
 
 before_script:
   - apt-get update
-  - apt-get install software-properties-common python-software-properties
+  - apt-get install -y -qq software-properties-common python-software-properties
   - apt-add-repository $FREERDP_DAILY_PPA -y
   - apt-get install -y -qq build-essential git-core cmake
                            libssl-dev libx11-dev libxext-dev libxinerama-dev
