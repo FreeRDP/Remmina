@@ -1,5 +1,5 @@
 ---
-image: ubuntu:latest
+image: ubuntu:16.04
 
 stages:
   - cross_environment
@@ -9,6 +9,7 @@ variables:
   BUILD_FOLDER: build
   DEB_PPA: "ppa:remmina-ppa-team/remmina-next"
   FREERDP_DAILY_PPA: "ppa:remmina-ppa-team/freerdp-daily"
+  FLATPAK_PPA: "ppa:alexlarsson/flatpak"
   DOCKER_IMAGE: "ubuntu:xenial"
   CMAKE_BUILD_OPTIONS: "-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on"
   FLATPAK_ARCH: x86_64
@@ -17,6 +18,7 @@ before_script:
   - apt-get update -qq
   - apt-get install -y -qq software-properties-common python-software-properties
   - apt-add-repository $FREERDP_DAILY_PPA -y
+  - add-apt-repository $FLATPAK_PPA -y
   - apt-get update -qq
   - apt-get install -y -qq build-essential git-core cmake
                            libssl-dev libx11-dev libxext-dev libxinerama-dev
