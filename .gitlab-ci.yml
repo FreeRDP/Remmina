@@ -10,8 +10,8 @@ variables:
   CMAKE_BUILD_OPTIONS: "-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on"
 
 before_script:
+  - apt-get install software-properties-common python-software-properties
   - apt-add-repository $FREERDP_DAILY_PPA -y
-  - apt-get update -qq
   - apt-get install -y -qq build-essential git-core cmake
                            libssl-dev libx11-dev libxext-dev libxinerama-dev
                            libxcursor-dev libxdamage-dev libxv-dev
