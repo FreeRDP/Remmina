@@ -3,6 +3,7 @@ image: ubuntu:16.04
 
 stages:
   - cross_environment
+  - flatpak_build
 
 variables:
   BUILD_FOLDER: build
@@ -10,6 +11,7 @@ variables:
   FREERDP_DAILY_PPA: "ppa:remmina-ppa-team/freerdp-daily"
   DOCKER_IMAGE: "ubuntu:xenial"
   CMAKE_BUILD_OPTIONS: "-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on"
+  FLATPAK_ARCH: x86_64
 
 before_script:
   - apt-get update -qq
@@ -31,7 +33,9 @@ before_script:
                            libvncserver-dev libappindicator3-dev intltool
                            libsecret-1-dev libwebkit2gtk-3.0-dev libsoup2.4-dev
                            libjson-glib-dev libspice-protocol-dev
-                           libspice-client-gtk-3.0-dev
+                           libspice-client-gtk-3.0-dev flatpak-builder docker
+  # validate docker is functional
+  - docker info
 
 # TODO: We should create a job for each distro and test the compile correcthly
 #       but _only_ if triggered at certain conditions (releases, tag, etc)
@@ -48,3 +52,14 @@ ubuntu:devel:
     # - tags
     # - web
     # - schedules
+
+flatpak:test:
+  # image: fedora:latest
+  stage: flatpak_build
+  script:
+    - docker build -t flatpak -f ./flatpak/Dockerfile .
+    - docker run --privileged --env=FLATPAK_ARCH=$FLATPAK_ARCH flatpak
+
+
+
+
