@@ -3,11 +3,11 @@ stages:
   - cross_environment
 
 variables:
-  - BUILD_FOLDER=build
-  - DEB_PPA='ppa:remmina-ppa-team/remmina-next'
-  - FREERDP_DAILY_PPA='ppa:remmina-ppa-team/freerdp-daily'
-  - DOCKER_IMAGE=ubuntu:xenial
-  - CMAKE_BUILD_OPTIONS='-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on'
+  - BUILD_FOLDER: build
+  - DEB_PPA: 'ppa:remmina-ppa-team/remmina-next'
+  - FREERDP_DAILY_PPA: 'ppa:remmina-ppa-team/freerdp-daily'
+  - DOCKER_IMAGE: 'ubuntu:xenial'
+  - CMAKE_BUILD_OPTIONS: '-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on'
 
 before_script:
   - apt-add-repository $FREERDP_DAILY_PPA -y
