@@ -12,6 +12,7 @@ variables:
   CMAKE_BUILD_OPTIONS: "-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on"
 
 before_script:
+  - apt-get update
   - apt-get install software-properties-common python-software-properties
   - apt-add-repository $FREERDP_DAILY_PPA -y
   - apt-get install -y -qq build-essential git-core cmake
@@ -36,7 +37,7 @@ before_script:
 #       http://docs.gitlab.com/ee/ci/yaml/README.html#only-and-except-simplified
 # This is an example for Ubuntu
 ubuntu:devel:
-  image: ubuntu:devel
+  # image: ubuntu:devel
   stage: cross_environment
   script:
     - mkdir $BUILD_FOLDER
