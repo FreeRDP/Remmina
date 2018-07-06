@@ -1,6 +1,9 @@
 #!/bin/sh -e
 
 : ${FLATPAK_ARCH:=$(flatpak --default-arch)}
+FLATHUB_REPO="https://flathub.org/repo/flathub.flatpakrepo"
+DBUS_ID="org.remmina.Remmina"
+
 
 flatpak_builder()
 {
@@ -43,3 +46,5 @@ flatpak_builder \
     --disable-updates \
     --finish-only \
     app/ org.remmina.Remmina.json
+
+flatpak build-bundle repo remmina-dev.flatpak --runtime-repo=${FLATHUB_REPO} ${DBUS_ID}
