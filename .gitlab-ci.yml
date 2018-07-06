@@ -15,6 +15,8 @@ variables:
   DOCKER_IMAGE: "ubuntu:xenial"
   CMAKE_BUILD_OPTIONS: "-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on"
   FLATPAK_ARCH: x86_64
+  DBUS_ID: "org.remmina.Remmina"
+  BUNDLE: "remmina-dev.flatpak"
 
 before_script:
   - mkdir -p .flatpak-builder/cache
@@ -71,10 +73,13 @@ flatpak:test:
     - flatpak --user remote-add --if-not-exists flathub $FLATHUB_REPO
   script:
     - /bin/sh -xe ./flatpak/flatpak-build.sh
+    # TODO: Move inside ./flatpak/flatpak-build.sh
+    - flatpak build-bundle repo ${BUNDLE}
+              --runtime-repo=${FLATHUB_REPO} ${DBUS_ID}
   artifacts:
     paths:
-      - org.remmina.Remmina.flatpak
-    expire_in: 2 days
+      - ${BUNDLE}
+    expire_in: 30 days
   cache:
     paths:
       - .flatpak-builder/cache
