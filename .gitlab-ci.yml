@@ -6,6 +6,7 @@ stages:
   - flatpak_build
 
 variables:
+  GIT_SUBMODULE_STRATEGY: recursive
   BUILD_FOLDER: build
   DEB_PPA: "ppa:remmina-ppa-team/remmina-next"
   FREERDP_DAILY_PPA: "ppa:remmina-ppa-team/freerdp-daily"
