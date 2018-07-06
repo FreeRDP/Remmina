@@ -50,9 +50,12 @@ ubuntu:devel:
     - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS
     - make VERBOSE=1 -C $BUILD_FOLDER
   only:
+    - branches
     - tags
     - web
     - schedules
+  except:
+    - master
 
 flatpak:test:
   # image: fedora:latest
@@ -63,7 +66,7 @@ flatpak:test:
                           python-software-properties
     - add-apt-repository $FLATPAK_PPA -y
     - apt-get update -qq
-    - apt-get install -y -qq flatpak-builder flatpak
+    - apt-get install -y -qq flatpak-builder flatpak build-essential git-core
     - flatpak --user remote-add --if-not-exists flathub $FLATHUB_REPO
   script:
     - /bin/sh -xe ./flatpak/flatpak-build.sh
@@ -75,6 +78,9 @@ flatpak:test:
     paths:
       - .flatpak-builder/cache
   only:
+    - branches
     - tags
     - web
     - schedules
+  except:
+    - master
