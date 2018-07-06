@@ -19,6 +19,8 @@ before_script:
   - apt-get install -y -qq software-properties-common python-software-properties
   - apt-add-repository $FREERDP_DAILY_PPA -y
   - add-apt-repository $FLATPAK_PPA -y
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+  - add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" -y
   - apt-get update -qq
   - apt-get install -y -qq build-essential git-core cmake
                            libssl-dev libx11-dev libxext-dev libxinerama-dev
@@ -35,7 +37,7 @@ before_script:
                            libvncserver-dev libappindicator3-dev intltool
                            libsecret-1-dev libwebkit2gtk-3.0-dev libsoup2.4-dev
                            libjson-glib-dev libspice-protocol-dev
-                           libspice-client-gtk-3.0-dev flatpak-builder docker
+                           libspice-client-gtk-3.0-dev flatpak-builder docker-ce
   # validate docker is functional
   - docker info
 
@@ -61,7 +63,3 @@ flatpak:test:
   script:
     - docker build -t flatpak -f ./flatpak/Dockerfile .
     - docker run --privileged --env=FLATPAK_ARCH=$FLATPAK_ARCH flatpak
-
-
-
-
