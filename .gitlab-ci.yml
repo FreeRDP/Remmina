@@ -77,12 +77,11 @@ flatpak:test:
     - /bin/sh -xe ./flatpak/flatpak-build.sh
   artifacts:
     paths:
-      - ${BUNDLE}
+      - flatpak/repo/${BUNDLE}
     expire_in: 30 days
   cache:
     paths:
       - flatpak/.flatpak-builder/cache
-      - flatpak/repo/remmina-dev.flatpak
   only:
     # - branches
     - tags
