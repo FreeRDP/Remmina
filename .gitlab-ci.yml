@@ -16,6 +16,9 @@ variables:
   CMAKE_BUILD_OPTIONS: "-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on"
   FLATPAK_ARCH: x86_64
 
+before_script:
+  - mkdir -p .flatpak-builder/cache
+
 # TODO: We should create a job for each distro and test the compile correcthly
 #       but _only_ if triggered at certain conditions (releases, tag, etc)
 #       http://docs.gitlab.com/ee/ci/yaml/README.html#only-and-except-simplified
@@ -70,7 +73,7 @@ flatpak:test:
     - /bin/sh -xe ./flatpak/flatpak-build.sh
   artifacts:
     paths:
-      - remmina-dev.flatpak
+      - org.remmina.Remmina.flatpak
     expire_in: 2 days
   cache:
     paths:
