@@ -10,13 +10,10 @@ variables:
   BUILD_FOLDER: build
   DEB_PPA: "ppa:remmina-ppa-team/remmina-next"
   FREERDP_DAILY_PPA: "ppa:remmina-ppa-team/freerdp-daily"
-  FLATPAK_PPA: "ppa:alexlarsson/flatpak"
-  FLATHUB_REPO: "https://flathub.org/repo/flathub.flatpakrepo"
   DOCKER_IMAGE: "ubuntu:xenial"
   CMAKE_BUILD_OPTIONS: "-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on"
   FLATPAK_ARCH: x86_64
   DBUS_ID: "org.remmina.Remmina"
-  BUNDLE: "remmina-dev.flatpak"
 
 before_script:
   - mkdir -p .flatpak-builder/cache
@@ -65,6 +62,9 @@ flatpak:test:
   stage: flatpak_build
   variables:
     MANIFEST_PATH: "flatpak/org.remmina.Remmina.json"
+    BUNDLE: "remmina-dev.flatpak"
+    FLATPAK_PPA: "ppa:alexlarsson/flatpak"
+    FLATHUB_REPO: "https://flathub.org/repo/flathub.flatpakrepo"
   before_script:
     - apt-get update -qq
     - apt-get install -y -qq software-properties-common
@@ -77,7 +77,7 @@ flatpak:test:
     - /bin/sh -xe ./flatpak/flatpak-build.sh
   artifacts:
     paths:
-      - flatpak/repo/${BUNDLE}
+      - flatpak/${BUNDLE}
     expire_in: 30 days
   cache:
     paths:
