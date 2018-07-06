@@ -10,7 +10,7 @@ variables:
   DEB_PPA: "ppa:remmina-ppa-team/remmina-next"
   FREERDP_DAILY_PPA: "ppa:remmina-ppa-team/freerdp-daily"
   FLATPAK_PPA: "ppa:alexlarsson/flatpak"
-  DOCKER_REPO: "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
+  #DOCKER_REPO: "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
   DOCKER_IMAGE: "ubuntu:xenial"
   CMAKE_BUILD_OPTIONS: "-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on"
   FLATPAK_ARCH: x86_64
@@ -36,10 +36,10 @@ before_script:
                            libvncserver-dev libappindicator3-dev intltool
                            libsecret-1-dev libwebkit2gtk-3.0-dev libsoup2.4-dev
                            libjson-glib-dev libspice-protocol-dev
-                           libspice-client-gtk-3.0-dev flatpak-builder curl
-  - add-apt-repository $DOCKER_REPO -y
-  - apt-get update -qq
-  - apt-get install -y -qq docker-ce
+                           libspice-client-gtk-3.0-dev flatpak-builder docker.io
+  # - add-apt-repository $DOCKER_REPO -y
+  # - apt-get update -qq
+  # - apt-get install -y -qq docker-ce
   # validate docker is functional
   - docker info
 
