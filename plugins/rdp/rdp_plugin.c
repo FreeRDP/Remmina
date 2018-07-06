@@ -758,8 +758,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	/* Force GatewayRpcTransport for old firewalls */
 	rfi->settings->GatewayRpcTransport = remmina_plugin_service->file_get_int(remminafile, "gateway_trans", 0);
-	if (rfi->settings->GatewayRpcTransport)
+	if (rfi->settings->GatewayRpcTransport) {
+		rfi->settings->GatewayRpcTransport = TRUE;
 		rfi->settings->GatewayHttpTransport = FALSE;
+	}
 
 
 	freerdp_set_param_string(rfi->settings, FreeRDP_GatewayAccessToken,
