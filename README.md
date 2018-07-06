@@ -3,9 +3,9 @@
 
 # IMPORTANT NOTICE
 
-We are moving to [gitlab](https://gitlab.com/Remmina/Remmina)
+We have moved to [gitlab](https://gitlab.com/Remmina/Remmina)
 
-From the 1st of July 2018 the following links have to be used instead og GitHub.
+Since the 1st of July 2018 the following links have to be used instead of GitHub.
 
 * [issues URL](https://gitlab.com/Remmina/Remmina/issues)
 * [wiki URL](https://gitlab.com/Remmina/Remmina/wikis/home)
@@ -110,7 +110,7 @@ dnf upgrade --refresh 'remmina*' 'freerdp*'
 
 ~~On Red Hat you can enable the EPEL repository:~~
 
-Note: Unlucky Remmina is not yet in EPEL, you can help submitting a request on the [Red Hat bugzilla](https://bugzilla.redhat.com/). 
+Note: Unlucky Remmina is not yet in EPEL, you can help submitting a request on the [Red Hat bugzilla](https://bugzilla.redhat.com/).
 
 ```sh
 wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -133,6 +133,21 @@ zypper in remmina
 ```
 
 ### For users with a distro that supports [Flatpak](https://flathub.org/), including Ubuntu ###
+
+## Development snapshot
+
+Download [this](https://gitlab.com/Remmina/Remmina/-/jobs/artifacts/master/raw/flatpak/remmina-dev.flatpak\?job\=flatpak:test) flatpak
+and install it as described here
+
+```sh
+flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install --user --bundle remmina-dev.flatpak
+flatpak run org.remmina.Remmina
+```
+
+## Last stable official build on [FlatHub](https://flathub.org/apps/details/org.remmina.Remmina)
+
+Execute the following commands.
 
 ```sh
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
