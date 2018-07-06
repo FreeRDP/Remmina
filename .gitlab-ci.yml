@@ -64,9 +64,6 @@ flatpak:test:
   # image: fedora:latest
   stage: flatpak_build
   variables:
-    CMAKE_ARGS: "-G Ninja -DCMAKE_INSTALL_PREFIX:PATH=/app
-      -DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo
-      -DWITH_MANPAGES:BOOL=OFF -DWITH_TELEPATHY:BOOL=OFF"
     MANIFEST_PATH: "flatpak/org.remmina.Remmina.json"
   before_script:
     - apt-get update -qq
@@ -84,7 +81,8 @@ flatpak:test:
     expire_in: 30 days
   cache:
     paths:
-      - .flatpak-builder/cache
+      - flatpak/.flatpak-builder/cache
+      - flatpak/repo/remmina-dev.flatpak
   only:
     # - branches
     - tags
