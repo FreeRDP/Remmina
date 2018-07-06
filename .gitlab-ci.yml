@@ -20,7 +20,6 @@ before_script:
   - apt-get install -y -qq software-properties-common python-software-properties
   - apt-add-repository $FREERDP_DAILY_PPA -y
   - add-apt-repository $FLATPAK_PPA -y
-  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
   - apt-get update -qq
   - apt-get install -y -qq build-essential git-core cmake
                            libssl-dev libx11-dev libxext-dev libxinerama-dev
