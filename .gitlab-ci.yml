@@ -63,6 +63,10 @@ ubuntu:devel:
 flatpak:test:
   # image: fedora:latest
   stage: flatpak_build
+  variables:
+    CMAKE_ARGS: "-G Ninja -DCMAKE_INSTALL_PREFIX:PATH=/app
+      -DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo
+      -DWITH_MANPAGES:BOOL=OFF -DWITH_TELEPATHY:BOOL=OFF"
   before_script:
     - apt-get update -qq
     - apt-get install -y -qq software-properties-common
@@ -72,10 +76,12 @@ flatpak:test:
     - apt-get install -y -qq flatpak-builder flatpak build-essential git-core
     - flatpak --user remote-add --if-not-exists flathub $FLATHUB_REPO
   script:
-    - /bin/sh -xe ./flatpak/flatpak-build.sh
-    # TODO: Move inside ./flatpak/flatpak-build.sh
-    - flatpak build-bundle repo ${BUNDLE}
-              --runtime-repo=${FLATHUB_REPO} ${DBUS_ID}
+    - flatpak-builder --install-deps-from=flathub --stop-at=remmina app org.remmina.Remmina.json --ccache
+    - mkdir -p _build
+    - flatpak build --build-dir="${PWD}/_build" app cmake $CMAKE_ARGS ../..
+    - flatpak build app ninja -v -C _build install
+    - flatpak-builder --finish-only --repo=repo app org.remmina.Remmina.json
+    - flatpak build-bundle repo ${BUNDLE} --runtime-repo=${FLATHUB_REPO} ${DBUS_ID}
   artifacts:
     paths:
       - ${BUNDLE}

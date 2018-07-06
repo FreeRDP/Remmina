@@ -42,5 +42,4 @@ flatpak_builder \
     --disable-download \
     --disable-updates \
     --finish-only \
-    --repo=repo \
     app/ org.remmina.Remmina.json
