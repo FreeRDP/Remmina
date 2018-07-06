@@ -75,13 +75,15 @@ flatpak:test:
     - add-apt-repository $FLATPAK_PPA -y
     - apt-get update -qq
     - apt-get install -y -qq flatpak-builder flatpak build-essential git-core
+    - FLATPAK_ARCH="$(flatpak --default-arch)"
+    - BUILDER_ARGS="--user --arch="${FLATPAK_ARCH}" --repo=repo"
     - flatpak --user remote-add --if-not-exists flathub $FLATHUB_REPO
   script:
-    - flatpak-builder --install-deps-from=flathub --stop-at=remmina app/ $MANIFEST_PATH --ccache
+    - flatpak-builder ${BUILDER_ARGS} --install-deps-from=flathub --stop-at=remmina app/ $MANIFEST_PATH --ccache
     - mkdir -p _build
     - flatpak build --build-dir="${PWD}/_build" app cmake $CMAKE_ARGS ../..
     - flatpak build app ninja -v -C _build install
-    - flatpak-builder --finish-only --repo=repo app $MANIFEST_PATH
+    - flatpak-builder ${BUILDER_ARGS} --finish-only app $MANIFEST_PATH
     - flatpak build-bundle repo ${BUNDLE} --runtime-repo=${FLATHUB_REPO} ${DBUS_ID}
   artifacts:
     paths:
