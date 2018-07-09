@@ -85,6 +85,29 @@ enum {
 	FLOATING_TOOLBAR_VISIBILITY_DISABLE	= 2
 };
 
+typedef struct _RemminaColorPref {
+	/* Color palette for VTE terminal */
+	gchar *background;
+	gchar *cursor;
+	gchar *foreground;
+	gchar *color0;
+	gchar *color1;
+	gchar *color2;
+	gchar *color3;
+	gchar *color4;
+	gchar *color5;
+	gchar *color6;
+	gchar *color7;
+	gchar *color8;
+	gchar *color9;
+	gchar *color10;
+	gchar *color11;
+	gchar *color12;
+	gchar *color13;
+	gchar *color14;
+	gchar *color15;
+} RemminaColorPref;
+
 typedef struct _RemminaPref {
 	/* In RemminaPrefDialog options tab */
 	gboolean save_view_mode;
@@ -164,26 +187,7 @@ typedef struct _RemminaPref {
 	/* UID */
 	gchar *uid;
 
-	/* Color palette for VTE terminal */
-	gchar *background;
-	gchar *cursor;
-	gchar *foreground;
-	gchar *color0;
-	gchar *color1;
-	gchar *color2;
-	gchar *color3;
-	gchar *color4;
-	gchar *color5;
-	gchar *color6;
-	gchar *color7;
-	gchar *color8;
-	gchar *color9;
-	gchar *color10;
-	gchar *color11;
-	gchar *color12;
-	gchar *color13;
-	gchar *color14;
-	gchar *color15;
+	RemminaColorPref color_pref;
 
 	/* Usage stats */
 	gboolean periodic_usage_stats_permission_asked;
@@ -223,6 +227,7 @@ gint remmina_pref_get_scale_quality(void);
 gint remmina_pref_get_ssh_loglevel(void);
 gboolean remmina_pref_get_ssh_parseconfig(void);
 gint remmina_pref_get_sshtunnel_port(void);
+void remmina_pref_file_load_colors(GKeyFile *gkeyfile, RemminaColorPref *color_pref);
 gint remmina_pref_get_ssh_tcp_keepidle(void);
 gint remmina_pref_get_ssh_tcp_keepintvl(void);
 gint remmina_pref_get_ssh_tcp_keepcnt(void);
