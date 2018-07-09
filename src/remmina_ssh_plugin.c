@@ -631,7 +631,35 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	const gchar *color_name = remmina_plugin_service->file_get_string(remminafile, "ssh_color_scheme");
 
 	gchar *remmina_dir = g_build_path( "/", g_get_user_config_dir(), g_get_prgname(), "theme", NULL);
-	const gchar *remmina_colors_file = g_strdup_printf("%s/%s.colors", remmina_dir, color_name);
+	gchar *remmina_colors_file = g_strdup_printf("%s/%s.colors", remmina_dir, color_name);
+	g_free(remmina_dir);
+
+	/*
+	 * try to load theme from one of the system data dirs (based on XDG_DATA_DIRS environment var)
+	 */
+	if (!g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
+		GError *error = NULL;
+		const gchar * const *dirs = g_get_system_data_dirs();
+		for (unsigned int i = 0; dirs[i] != NULL; ++i) {
+			remmina_dir = g_build_path("/", dirs[i], g_get_prgname(), "theme", NULL);
+			GDir *system_data_dir = g_dir_open(remmina_dir, 0, &error);
+			// ignoring this error is ok, because the folder may not existing
+			if (error) {
+				g_error_free(error);
+				error = NULL;
+			} else {
+				if (system_data_dir) {
+					g_dir_close(system_data_dir);
+					g_free(remmina_colors_file);
+					remmina_colors_file = g_strdup_printf("%s/%s.colors", remmina_dir, color_name);
+					if (g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
+						break;
+					}
+				}
+			}
+			g_free(remmina_dir);
+		}
+	}
 
 	if (g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
 		GKeyFile *gkeyfile;
@@ -745,6 +773,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 			break;
 		}
 	}
+	g_free(remmina_colors_file);
 	vte_terminal_set_colors(VTE_TERMINAL(vte), &foreground_color, &background_color, remminavte.palette, PALETTE_SIZE);
 	vte_terminal_set_color_foreground(VTE_TERMINAL(vte), &foreground_color);
 	vte_terminal_set_color_background(VTE_TERMINAL(vte), &background_color);
@@ -1090,28 +1119,87 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
 };
 
 
+/*
+ * this function is used for
+ * - inserting into the list to became a sorted list [g_list_insert_sorted()]
+ * - checking the list to avoid doublicate entries [g_list_find_custom()]
+ */
+static gint
+compare (gconstpointer a, gconstpointer b)
+{
+	return strcmp ((gchar *)a, (gchar *)b);
+}
+
 void
 remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 {
 	unsigned int preset_rec_size = sizeof(ssh_terminal_palette) / sizeof(gpointer);
 
-	gchar *remmina_dir = g_build_path( "/", g_get_user_config_dir(), g_get_prgname(), "theme", NULL);
-	GDir *dir;
-	GError *error;
-	const gchar *filename;
-
-	dir = g_dir_open(remmina_dir, 0, &error);
+	GError *error = NULL;
+	GList *files = NULL;
 	unsigned int rec_size = 0;
 	/*
 	 * count number of (all) files to reserve enought memory
 	 */
-	while ((filename = g_dir_read_name(dir))) {
-		if (!g_file_test(filename, G_FILE_TEST_IS_DIR)) {
-			if (g_str_has_suffix(filename, ".colors")) {
-				rec_size+=2;
+	/* /usr/local/share/remmina */
+	const gchar * const *dirs = g_get_system_data_dirs();
+	for (unsigned int i = 0; dirs[i] != NULL; ++i) {
+		GDir *system_data_dir = NULL;
+		gchar *remmina_dir = g_build_path("/", dirs[i], g_get_prgname(), "theme", NULL);
+		system_data_dir = g_dir_open(remmina_dir, 0, &error);
+		g_free(remmina_dir);
+		// ignoring this error is ok, because the folder may not existing
+		if (error) {
+			g_error_free(error);
+			error = NULL;
+		} else {
+			if (system_data_dir) {
+				const gchar *filename;
+				while ((filename = g_dir_read_name(system_data_dir))) {
+					if (!g_file_test(filename, G_FILE_TEST_IS_DIR)) {
+						if (g_str_has_suffix(filename, ".colors")) {
+							gchar *menu_str = malloc(strlen(filename) + 1);
+							strcpy(menu_str, filename);
+							char *t2 = strrchr(menu_str, '.');
+							t2[0] = 0;
+							if (g_list_find_custom(files, menu_str,compare) == NULL) {
+								files = g_list_insert_sorted(files, menu_str, compare);
+							}
+						}
+					}
+				}
 			}
 		}
 	}
+
+	/* ~/.config/remmina/colors */
+	gchar *remmina_dir = g_build_path( "/", g_get_user_config_dir(), g_get_prgname(), "theme", NULL);
+	GDir *user_data_dir;
+	user_data_dir = g_dir_open(remmina_dir, 0, &error);
+	g_free(remmina_dir);
+	if (error) {
+		g_error_free(error);
+		error = NULL;
+	} else {
+		if (user_data_dir) {
+			const gchar *filename;
+			while ((filename = g_dir_read_name(user_data_dir))) {
+				if (!g_file_test(filename, G_FILE_TEST_IS_DIR)) {
+					if (g_str_has_suffix(filename, ".colors")) {
+						char *menu_str = malloc(strlen(filename) + 1);
+						strcpy(menu_str, filename);
+						char *t2 = strrchr(menu_str, '.');
+						t2[0] = 0;
+						if (g_list_find_custom(files, menu_str, compare) == NULL) {
+							files = g_list_insert_sorted(files, menu_str, compare);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	rec_size = g_list_length(files) * 2;
 
 	gpointer *color_palette = malloc((preset_rec_size + rec_size) * sizeof(gpointer));
 
@@ -1125,21 +1213,15 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 		}
 	}
 
-	g_dir_rewind(dir);
-	while ((filename = g_dir_read_name(dir))) {
-		if (!g_file_test(filename, G_FILE_TEST_IS_DIR)) {
-			if (g_str_has_suffix(filename, ".colors")) {
-				char *menu_str = malloc(strlen(filename) + 1);
-				strcpy(menu_str, filename);
-				char *t2 = strrchr(menu_str, '.');
-				t2[0] = 0;
-				color_palette[field_idx++] = menu_str;
-				color_palette[field_idx++] = menu_str;
-			}
-		}
+	for (GList *l_files = g_list_first(files); l_files != NULL; l_files = l_files->next) {
+		gchar *menu_str = (gchar *) l_files->data;
+
+		color_palette[field_idx++] = menu_str;
+		color_palette[field_idx++] = menu_str;
 	}
+	g_list_free(files);
+
 	color_palette[field_idx] = NULL;
-	g_dir_close(dir);
 }
 
 void
