@@ -40,6 +40,7 @@
 
 #if defined (HAVE_LIBSSH) && defined (HAVE_LIBVTE)
 
+#include <stdlib.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
