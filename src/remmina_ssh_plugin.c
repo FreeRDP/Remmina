@@ -623,14 +623,14 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	GdkRGBA cursor_color;
 
 	/*
-	 * custom colors reside inside of the 'colors' subdir of the remmina config folder (.config/remmina/colors)
+	 * custom colors reside inside of the 'theme' subdir of the remmina config folder (.config/remmina/theme)
 	 * with the file extension '.colors'. The name of the colorfile came from the menu (see below)
 	 * sideeffect: it is possible to overwrite the standard colors with a dedicated colorfile like
 	 * '0.colors' for GRUVBOX, '1.colors' for TANGO and so on
 	 */
 	const gchar *color_name = remmina_plugin_service->file_get_string(remminafile, "ssh_color_scheme");
 
-	gchar *remmina_dir = g_build_path( "/", g_get_user_config_dir(), g_get_prgname(), "colors", NULL);
+	gchar *remmina_dir = g_build_path( "/", g_get_user_config_dir(), g_get_prgname(), "theme", NULL);
 	const gchar *remmina_colors_file = g_strdup_printf("%s/%s.colors", remmina_dir, color_name);
 
 	if (g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
@@ -1095,7 +1095,7 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 {
 	unsigned int preset_rec_size = sizeof(ssh_terminal_palette) / sizeof(gpointer);
 
-	gchar *remmina_dir = g_build_path( "/", g_get_user_config_dir(), g_get_prgname(), "colors", NULL);
+	gchar *remmina_dir = g_build_path( "/", g_get_user_config_dir(), g_get_prgname(), "theme", NULL);
 	GDir *dir;
 	GError *error;
 	const gchar *filename;
