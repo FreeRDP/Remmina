@@ -40,6 +40,7 @@
 
 #if defined (HAVE_LIBSSH) && defined (HAVE_LIBVTE)
 
+#include <stdlib.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
@@ -1158,12 +1159,12 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 				while ((filename = g_dir_read_name(system_data_dir))) {
 					if (!g_file_test(filename, G_FILE_TEST_IS_DIR)) {
 						if (g_str_has_suffix(filename, ".colors")) {
-							gsize len = strrchr(filename, '.') - filename;
-							gchar *menu_str = g_strndup(filename, len);
+							gchar *menu_str = malloc(strlen(filename) + 1);
+							strcpy(menu_str, filename);
+							char *t2 = strrchr(menu_str, '.');
+							t2[0] = 0;
 							if (g_list_find_custom(files, menu_str,compare) == NULL) {
 								files = g_list_insert_sorted(files, menu_str, compare);
-							} else {
-								g_free(menu_str);
 							}
 						}
 					}
@@ -1186,12 +1187,12 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 			while ((filename = g_dir_read_name(user_data_dir))) {
 				if (!g_file_test(filename, G_FILE_TEST_IS_DIR)) {
 					if (g_str_has_suffix(filename, ".colors")) {
-						gsize len = strrchr(filename, '.') - filename;
-						gchar *menu_str = g_strndup(filename, len);
-						if (g_list_find_custom(files, menu_str,compare) == NULL) {
+						char *menu_str = malloc(strlen(filename) + 1);
+						strcpy(menu_str, filename);
+						char *t2 = strrchr(menu_str, '.');
+						t2[0] = 0;
+						if (g_list_find_custom(files, menu_str, compare) == NULL) {
 							files = g_list_insert_sorted(files, menu_str, compare);
-						} else {
-							g_free(menu_str);
 						}
 					}
 				}
@@ -1201,7 +1202,7 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 
 	rec_size = g_list_length(files) * 2;
 
-	gpointer *color_palette = g_new(gpointer, preset_rec_size + rec_size);
+	gpointer *color_palette = malloc((preset_rec_size + rec_size) * sizeof(gpointer));
 
 	unsigned int field_idx = 0;
 	*ssh_terminal_palette_new = color_palette;
@@ -1235,7 +1236,7 @@ remmina_ssh_plugin_register(void)
 
 	remmina_plugin_service = &remmina_plugin_manager_service;
 
-	RemminaProtocolSettingOpt *settings = g_new(RemminaProtocolSettingOpt, 1);
+	RemminaProtocolSettingOpt *settings = malloc(sizeof(remmina_ssh_advanced_settings));
 
 	// preset new settings with (old) static remmina_ssh_advanced_settings data
 	unsigned int rec_size = sizeof(remmina_ssh_advanced_settings) / sizeof(RemminaProtocolSetting);
