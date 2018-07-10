@@ -1162,6 +1162,8 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 							gchar *menu_str = g_strndup(filename, len);
 							if (g_list_find_custom(files, menu_str,compare) == NULL) {
 								files = g_list_insert_sorted(files, menu_str, compare);
+							} else {
+								g_free(menu_str);
 							}
 						}
 					}
@@ -1188,6 +1190,8 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 						gchar *menu_str = g_strndup(filename, len);
 						if (g_list_find_custom(files, menu_str,compare) == NULL) {
 							files = g_list_insert_sorted(files, menu_str, compare);
+						} else {
+							g_free(menu_str);
 						}
 					}
 				}
