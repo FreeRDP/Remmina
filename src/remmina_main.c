@@ -1119,10 +1119,12 @@ static void remmina_main_init(void)
 
 	remminamain->priv->expanded_group = remmina_string_array_new_from_string(remmina_pref.expanded_group);
 	gtk_window_set_title(remminamain->window, _("Remmina Remote Desktop Client"));
-	gtk_window_set_default_size(remminamain->window, remmina_pref.main_width, remmina_pref.main_height);
-	if (remmina_pref.main_maximize) {
-		gtk_window_maximize(remminamain->window);
-	}
+	if (!kioskmode && kioskmode == FALSE)
+		gtk_window_set_default_size(remminamain->window, remmina_pref.main_width, remmina_pref.main_height);
+	if (!kioskmode && kioskmode == FALSE)
+		if (remmina_pref.main_maximize) {
+			gtk_window_maximize(remminamain->window);
+		}
 
 /* Add a GtkMenuItem to the Tools menu for each plugin of type REMMINA_PLUGIN_TYPE_TOOL */
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
@@ -1215,7 +1217,7 @@ GtkWidget* remmina_main_new(void)
 		gtk_window_set_decorated(remminamain->window, FALSE);
 		gtk_window_set_deletable(remminamain->window, FALSE);
 		gtk_window_set_position(remminamain->window, GTK_WIN_POS_CENTER_ALWAYS);
-		gtk_window_set_default_size(remminamain->window, 600, 400);
+		gtk_window_set_default_size(remminamain->window, 800, 400);
 		gtk_window_set_resizable(remminamain->window, FALSE);
 	}
 	/* Search bar */
