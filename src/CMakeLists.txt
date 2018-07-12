@@ -45,6 +45,7 @@ list(APPEND REMMINA_SRCS
     "remmina_avahi.c"
     "remmina_avahi.h"
     "remmina.c"
+    "remmina.h"
     "remmina_chat_window.c"
     "remmina_chat_window.h"
     "remmina_crypt.c"
