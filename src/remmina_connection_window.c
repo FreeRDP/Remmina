@@ -3627,6 +3627,8 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 
 	if (!cnnhld->cnnwin) {
 		i = remmina_file_get_int(cnnobj->remmina_file, "viewmode", 0);
+		if (kioskmode && kioskmode == TRUE)
+			i = VIEWPORT_FULLSCREEN_MODE;
 		switch (i) {
 		case SCROLLED_FULLSCREEN_MODE:
 		case VIEWPORT_FULLSCREEN_MODE:
