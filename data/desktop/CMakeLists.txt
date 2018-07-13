@@ -88,18 +88,47 @@ set(REMMINA_BINARY_PATH ${CMAKE_INSTALL_FULL_BINDIR}/remmina)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${REMMINA_APP_ID}.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/${REMMINA_APP_ID}.desktop @ONLY)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${REMMINA_KIOSK_APP_ID}.desktop.in
-    ${CMAKE_CURRENT_BINARY_DIR}/${REMMINA_KIOSK_APP_ID}.desktop @ONLY)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina-file.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop @ONLY)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${REMMINA_APP_ID}.desktop
     DESTINATION "${REMMINA_DATADIR}/applications")
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${REMMINA_KIOSK_APP_ID}.desktop
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/share/xsessions/)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop
     DESTINATION "${REMMINA_DATADIR}/applications")
 install(FILES ${REMMINA_APP_ID}.appdata.xml
     DESTINATION "${REMMINA_DATADIR}/metainfo")
+# Kiosk Session Files
+install(
+    FILES remmina-gnome-xsession.desktop
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/share/xsessions
+    RENAME remmina-gnome.desktop
+    PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+    )
+install(
+    FILES remmina-gnome.desktop
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications
+    RENAME remmina-gnome.desktop
+    PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+    )
+install(
+    FILES remmina-gnome.session
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/share/gnome-session/sessions
+    RENAME remmina-gnome.session
+    PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+    )
+install(
+    FILES remmina-gnome
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
+    RENAME remmina-gnome
+    PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ
+    WORLD_EXECUTE WORLD_READ
+    )
+install(
+    FILES gnome-session-remmina
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
+    RENAME gnome-session-remmina
+    PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ
+    WORLD_EXECUTE WORLD_READ
+    )
 # XML mime types
 set( SHARED_MIME_INFO_MINIMUM_VERSION "0.30" )
 set( XDG_MIME_INSTALL_DIR "${REMMINA_DATADIR}/mime/packages" )

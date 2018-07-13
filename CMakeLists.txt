@@ -114,7 +114,6 @@ message(STATUS "Git Revision: ${REMMINA_GIT_REVISION}")
 
 # REMMINA_APP_ID should follow Gnome Application ID rules
 set(REMMINA_APP_ID "org.remmina.Remmina")
-set(REMMINA_KIOSK_APP_ID "org.kiosk.remmina.Remmina")
 
 if(NOT REMMINA_DATADIR)
     set(REMMINA_DATADIR "${CMAKE_INSTALL_FULL_DATADIR}")
