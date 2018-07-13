@@ -88,10 +88,14 @@ set(REMMINA_BINARY_PATH ${CMAKE_INSTALL_FULL_BINDIR}/remmina)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${REMMINA_APP_ID}.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/${REMMINA_APP_ID}.desktop @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${REMMINA_KIOSK_APP_ID}.desktop.in
+    ${CMAKE_CURRENT_BINARY_DIR}/${REMMINA_KIOSK_APP_ID}.desktop @ONLY)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina-file.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop @ONLY)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${REMMINA_APP_ID}.desktop
     DESTINATION "${REMMINA_DATADIR}/applications")
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${REMMINA_KIOSK_APP_ID}.desktop
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/share/xsessions/)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop
     DESTINATION "${REMMINA_DATADIR}/applications")
 install(FILES ${REMMINA_APP_ID}.appdata.xml
