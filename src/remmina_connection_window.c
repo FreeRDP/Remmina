@@ -43,6 +43,7 @@
 #include <gtk/gtk.h>
 #include <stdlib.h>
 
+#include "remmina.h"
 #include "remmina_connection_window.h"
 #include "remmina_file.h"
 #include "remmina_file_manager.h"
@@ -1887,6 +1888,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
 
+
 	/* Fullscreen toggle */
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-fullscreen-symbolic");
@@ -1895,8 +1897,12 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	priv->toolitem_fullscreen = toolitem;
-	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem), mode != SCROLLED_WINDOW_MODE);
-	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_fullscreen), cnnhld);
+	if (kioskmode && kioskmode == TRUE) {
+		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem), FALSE);
+	} else {
+		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem), mode != SCROLLED_WINDOW_MODE);
+		g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_fullscreen), cnnhld);
+	}
 
 	/* Fullscreen drop-down options */
 	toolitem = gtk_tool_item_new();
@@ -1942,6 +1948,9 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	toolitem = gtk_separator_tool_item_new();
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
+	if (!kioskmode && kioskmode == FALSE) {
+		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), FALSE);
+	}
 
 	/* Dynamic Resolution Update */
 	toolitem = gtk_toggle_tool_button_new();
@@ -2033,6 +2042,9 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_minimize), cnnhld);
+	if (!kioskmode && kioskmode == FALSE) {
+		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), FALSE);
+	}
 
 	toolitem = gtk_tool_button_new(NULL, "_Disconnect");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-disconnect-symbolic");
@@ -2584,6 +2596,9 @@ static void remmina_connection_window_init(RemminaConnectionWindow* cnnwin)
 	cnnwin->priv = priv;
 
 	priv->view_mode = AUTO_MODE;
+	if (kioskmode && kioskmode == TRUE)
+		priv->view_mode = VIEWPORT_FULLSCREEN_MODE;
+
 	priv->floating_toolbar_opacity = 1.0;
 	priv->kbcaptured = FALSE;
 	priv->mouse_pointer_entered = FALSE;
@@ -3616,6 +3631,8 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 
 	if (!cnnhld->cnnwin) {
 		i = remmina_file_get_int(cnnobj->remmina_file, "viewmode", 0);
+		if (kioskmode && kioskmode == TRUE)
+			i = VIEWPORT_FULLSCREEN_MODE;
 		switch (i) {
 		case SCROLLED_FULLSCREEN_MODE:
 		case VIEWPORT_FULLSCREEN_MODE:

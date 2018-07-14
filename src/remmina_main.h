@@ -47,9 +47,12 @@ typedef struct _RemminaMain {
 	GtkWindow *window;
 	/* Menu widgets */
 	GtkMenu *menu_popup;
+	GtkMenuButton *menu_header_button;
 	GtkMenu *menu_popup_full;
 	GtkRadioMenuItem *menuitem_view_mode_list;
 	GtkRadioMenuItem *menuitem_view_mode_tree;
+	/* Button new */
+	GtkButton *button_new;
 	/* Search bar objects */
 	GtkToggleButton *search_toggle;
 	GtkSearchBar *search_bar;

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Register with gnome-session so that it does not kill the whole session thinking it is dead.
+test -n "$DESKTOP_AUTOSTART_ID" && {
+    dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:remmina-gnome" "string:$DESKTOP_AUTOSTART_ID"
+}
+
+remmina --kiosk
+
+test -n "$DESKTOP_AUTOSTART_ID" && {
+dbus-send --print-reply --session --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.Logout "uint32:1"
+}

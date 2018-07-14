@@ -41,6 +41,7 @@
 #include <stdlib.h>
 
 #include "config.h"
+#include "remmina.h"
 #include "remmina_exec.h"
 #include "remmina_file_manager.h"
 #include "remmina_icon.h"
@@ -73,6 +74,8 @@ static int gcrypt_thread_initialized = 0;
 #endif  /* !GCRYPT_VERSION_NUMBER */
 #endif  /* HAVE_LIBGCRYPT */
 
+gboolean kioskmode;
+
 static GOptionEntry remmina_options[] =
 {
 	{ "about",	  'a', 0,		     G_OPTION_ARG_NONE,		    NULL, N_("Show about dialog"),					       NULL	  },
@@ -80,6 +83,7 @@ static GOptionEntry remmina_options[] =
 	{ G_OPTION_REMAINING, '\0', 0,		     G_OPTION_ARG_FILENAME_ARRAY,   NULL, N_("Connect to a .remmina file"),				       "FILE"	  },
 	{ "edit",	  'e', 0,		     G_OPTION_ARG_FILENAME,	    NULL, N_("Edit a .remmina file"),					       "FILE"	  },
 	{ "help",	  '?', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE,	   	    NULL, NULL,								       NULL	  },
+	{ "kiosk",	  'k', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Start Remmina in Kiosk mode"),				       NULL	  },
 	{ "new",	  'n', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Create a new connection profile"),			       NULL	  },
 	{ "pref",	  'p', 0,		     G_OPTION_ARG_STRING,  	    NULL, N_("Show preferences dialog page"),				       "PAGENR"	  },
 	{ "plugin",	  'x', 0,		     G_OPTION_ARG_STRING,  	    NULL, N_("Execute the plugin"),					       "PLUGIN"	  },
@@ -131,7 +135,7 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 
 	/** @todo This should be a G_OPTION_ARG_FILENAME_ARRAY (^aay) so that
 	 * we can implement multi profile connection:
-	 *    https://github.com/FreeRDP/Remmina/issues/915
+	 *    https://gitlab.com/Remmina/Remmina/issues/915
 	 */
 	if (g_variant_dict_lookup(opts, "connect", "^ay", &str)) {
 		remmina_exec_command(REMMINA_COMMAND_CONNECT, g_strdup(str));
@@ -148,6 +152,12 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 	if (g_variant_dict_lookup(opts, "edit", "^ay", &str)) {
 		remmina_exec_command(REMMINA_COMMAND_EDIT, str);
 		g_free(str);
+		executed = TRUE;
+	}
+
+	if (g_variant_dict_lookup_value(opts, "kiosk", NULL)) {
+		kioskmode = TRUE;
+		remmina_exec_command(REMMINA_COMMAND_MAIN, NULL);
 		executed = TRUE;
 	}
 
