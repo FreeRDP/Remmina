@@ -134,7 +134,7 @@ void remmina_main_save_before_destroy()
 
 static gboolean remmina_main_dexit(gpointer data)
 {
-/* Try to exit remmina after a delete window event */
+	/* Try to exit remmina after a delete window event */
 	TRACE_CALL(__func__);
 	remmina_application_condexit(REMMINA_CONDEXIT_ONMAINWINDELETE);
 	return FALSE;
@@ -763,7 +763,7 @@ void remmina_main_on_action_application_preferences(GtkAction *action, gpointer 
 
 void remmina_main_on_action_application_quit(GtkAction *action, gpointer user_data)
 {
-// Called by quit signal in remmina_main.glade
+	// Called by quit signal in remmina_main.glade
 	TRACE_CALL(__func__);
 	remmina_application_condexit(REMMINA_CONDEXIT_ONQUIT);
 }
@@ -1118,7 +1118,11 @@ static void remmina_main_init(void)
 	char *name;
 
 	remminamain->priv->expanded_group = remmina_string_array_new_from_string(remmina_pref.expanded_group);
-	gtk_window_set_title(remminamain->window, _("Remmina Remote Desktop Client"));
+	if (!kioskmode && kioskmode == FALSE) {
+		gtk_window_set_title(remminamain->window, _("Remmina Remote Desktop Client"));
+	}else {
+		gtk_window_set_title(remminamain->window, _("Remmina Kiosk"));
+	}
 	if (!kioskmode && kioskmode == FALSE)
 		gtk_window_set_default_size(remminamain->window, remmina_pref.main_width, remmina_pref.main_height);
 	if (!kioskmode && kioskmode == FALSE)
@@ -1126,10 +1130,10 @@ static void remmina_main_init(void)
 			gtk_window_maximize(remminamain->window);
 		}
 
-/* Add a GtkMenuItem to the Tools menu for each plugin of type REMMINA_PLUGIN_TYPE_TOOL */
+	/* Add a GtkMenuItem to the Tools menu for each plugin of type REMMINA_PLUGIN_TYPE_TOOL */
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
 
-/* Add available quick connect protocols to remminamain->combo_quick_connect_protocol */
+	/* Add available quick connect protocols to remminamain->combo_quick_connect_protocol */
 	for (i = 0; i < sizeof(quick_connect_plugin_list) / sizeof(quick_connect_plugin_list[0]); i++) {
 		name = quick_connect_plugin_list[i];
 		if (remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL, name))
@@ -1137,19 +1141,19 @@ static void remmina_main_init(void)
 	}
 	gtk_combo_box_set_active(GTK_COMBO_BOX(remminamain->combo_quick_connect_protocol), 0);
 
-/* Connect the group accelerators to the GtkWindow */
+	/* Connect the group accelerators to the GtkWindow */
 	gtk_window_add_accel_group(remminamain->window, remminamain->accelgroup_shortcuts);
-/* Set the Quick Connection */
+	/* Set the Quick Connection */
 	gtk_entry_set_activates_default(remminamain->entry_quick_connect_server, TRUE);
-/* Set the TreeView for the files list */
+	/* Set the TreeView for the files list */
 	gtk_tree_selection_set_select_function(
 		gtk_tree_view_get_selection(remminamain->tree_files_list),
 		remmina_main_selection_func, NULL, NULL);
-/** @todo Set entry_quick_connect_server as default search entry. Weirdly. This does not work yet. */
+	/** @todo Set entry_quick_connect_server as default search entry. Weirdly. This does not work yet. */
 	gtk_tree_view_set_search_entry(remminamain->tree_files_list, GTK_ENTRY(remminamain->entry_quick_connect_server));
-/* Load the files list */
+	/* Load the files list */
 	remmina_main_load_files();
-/* Load the preferences */
+	/* Load the preferences */
 	if (remmina_pref.hide_statusbar) {
 		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		gtk_toggle_action_set_active(remminamain->action_view_statusbar, FALSE);
@@ -1214,20 +1218,25 @@ GtkWidget* remmina_main_new(void)
 	remminamain->builder = remmina_public_gtk_builder_new_from_file("remmina_main.glade");
 	remminamain->window = GTK_WINDOW(GET_OBJECT("RemminaMain"));
 	if (kioskmode && kioskmode == TRUE) {
-		gtk_window_set_decorated(remminamain->window, FALSE);
-		gtk_window_set_deletable(remminamain->window, FALSE);
 		gtk_window_set_position(remminamain->window, GTK_WIN_POS_CENTER_ALWAYS);
 		gtk_window_set_default_size(remminamain->window, 800, 400);
 		gtk_window_set_resizable(remminamain->window, FALSE);
 	}
+	/* New Button */
+	remminamain->button_new = GTK_BUTTON(GET_OBJECT("button_new"));
+	if (kioskmode && kioskmode == TRUE)
+		gtk_widget_set_sensitive(GTK_WIDGET(remminamain->button_new), FALSE);
 	/* Search bar */
 	remminamain->search_toggle = GTK_TOGGLE_BUTTON(GET_OBJECT("search_toggle"));
 	remminamain->search_bar = GTK_SEARCH_BAR(GET_OBJECT("search_bar"));
 	/* Menu widgets */
-	if (!kioskmode && kioskmode == FALSE)
-		remminamain->menu_popup = GTK_MENU(GET_OBJECT("menu_popup"));
-	if (!kioskmode && kioskmode == FALSE)
-		remminamain->menu_popup_full = GTK_MENU(GET_OBJECT("menu_popup_full"));
+	remminamain->menu_popup = GTK_MENU(GET_OBJECT("menu_popup"));
+	remminamain->menu_header_button = GTK_MENU_BUTTON(GET_OBJECT("menu_header_button"));
+	remminamain->menu_popup_full = GTK_MENU(GET_OBJECT("menu_popup_full"));
+	if (kioskmode && kioskmode == TRUE) {
+		gtk_widget_set_sensitive(GTK_WIDGET(remminamain->menu_popup_full), FALSE);
+		gtk_widget_set_sensitive(GTK_WIDGET(remminamain->menu_header_button), FALSE);
+	}
 	/* View mode radios */
 	remminamain->menuitem_view_mode_list = GTK_RADIO_MENU_ITEM(GET_OBJECT("menuitem_view_mode_list"));
 	remminamain->menuitem_view_mode_tree = GTK_RADIO_MENU_ITEM(GET_OBJECT("menuitem_view_mode_tree"));
