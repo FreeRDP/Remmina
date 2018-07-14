@@ -1889,15 +1889,17 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_widget_show(GTK_WIDGET(toolitem));
 
 
-	if (!kioskmode && kioskmode == FALSE) {
-		/* Fullscreen toggle */
-		toolitem = gtk_toggle_tool_button_new();
-		gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-fullscreen-symbolic");
-		remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Toggle fullscreen mode"),
-			remmina_pref.shortcutkey_fullscreen, 0);
-		gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
-		gtk_widget_show(GTK_WIDGET(toolitem));
-		priv->toolitem_fullscreen = toolitem;
+	/* Fullscreen toggle */
+	toolitem = gtk_toggle_tool_button_new();
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-fullscreen-symbolic");
+	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Toggle fullscreen mode"),
+		remmina_pref.shortcutkey_fullscreen, 0);
+	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+	gtk_widget_show(GTK_WIDGET(toolitem));
+	priv->toolitem_fullscreen = toolitem;
+	if (kioskmode && kioskmode == TRUE) {
+		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem), FALSE);
+	} else {
 		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem), mode != SCROLLED_WINDOW_MODE);
 		g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_fullscreen), cnnhld);
 	}
@@ -1933,20 +1935,21 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 		gtk_widget_set_sensitive(GTK_WIDGET(widget), FALSE);
 	}
 
-	if (!kioskmode && kioskmode == FALSE) {
-		/* Switch tabs */
-		toolitem = gtk_toggle_tool_button_new();
-		gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-switch-page-symbolic");
-		remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Switch tab pages"), remmina_pref.shortcutkey_prevtab,
-			remmina_pref.shortcutkey_nexttab);
-		gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
-		gtk_widget_show(GTK_WIDGET(toolitem));
-		g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(remmina_connection_holder_toolbar_switch_page), cnnhld);
-		priv->toolitem_switch_page = toolitem;
+	/* Switch tabs */
+	toolitem = gtk_toggle_tool_button_new();
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-switch-page-symbolic");
+	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Switch tab pages"), remmina_pref.shortcutkey_prevtab,
+		remmina_pref.shortcutkey_nexttab);
+	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+	gtk_widget_show(GTK_WIDGET(toolitem));
+	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(remmina_connection_holder_toolbar_switch_page), cnnhld);
+	priv->toolitem_switch_page = toolitem;
 
-		toolitem = gtk_separator_tool_item_new();
-		gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
-		gtk_widget_show(GTK_WIDGET(toolitem));
+	toolitem = gtk_separator_tool_item_new();
+	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+	gtk_widget_show(GTK_WIDGET(toolitem));
+	if (!kioskmode && kioskmode == FALSE) {
+		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), FALSE);
 	}
 
 	/* Dynamic Resolution Update */
@@ -2033,13 +2036,14 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_screenshot), cnnhld);
 
+	toolitem = gtk_tool_button_new(NULL, "_Bottom");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-go-bottom-symbolic");
+	remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Minimize window"), remmina_pref.shortcutkey_minimize, 0);
+	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+	gtk_widget_show(GTK_WIDGET(toolitem));
+	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_minimize), cnnhld);
 	if (!kioskmode && kioskmode == FALSE) {
-		toolitem = gtk_tool_button_new(NULL, "_Bottom");
-		gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-go-bottom-symbolic");
-		remmina_connection_holder_set_tooltip(GTK_WIDGET(toolitem), _("Minimize window"), remmina_pref.shortcutkey_minimize, 0);
-		gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
-		gtk_widget_show(GTK_WIDGET(toolitem));
-		g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_minimize), cnnhld);
+		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), FALSE);
 	}
 
 	toolitem = gtk_tool_button_new(NULL, "_Disconnect");
