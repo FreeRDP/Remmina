@@ -272,12 +272,6 @@ BOOL rf_begin_paint(rdpContext* context)
 	if (!gdi || !gdi->primary || !gdi->primary->hdc || !gdi->primary->hdc->hwnd)
 		return FALSE;
 
-	hwnd = gdi->primary->hdc->hwnd;
-	if (!hwnd->ninvalid)
-		return FALSE;
-
-	hwnd->invalid->null = 1;
-	hwnd->ninvalid = 0;
 	return TRUE;
 }
 
@@ -292,9 +286,6 @@ BOOL rf_end_paint(rdpContext* context)
 
 	gdi = context->gdi;
 	rfi = (rfContext*)context;
-
-	if (gdi->primary->hdc->hwnd->invalid->null)
-		return FALSE;
 
 	x = gdi->primary->hdc->hwnd->invalid->x;
 	y = gdi->primary->hdc->hwnd->invalid->y;
