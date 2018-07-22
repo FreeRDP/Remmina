@@ -14,14 +14,14 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
 
 set(_GLIB_found_all true)
 
 # Glib
 
-pkg_check_modules(PC_GLIB2 glib-2.0>=2.28)
+pkg_check_modules(PC_GLIB2 glib-2.0>=2.30)
 
 if(NOT PC_GLIB2_FOUND)
 	set(_GLIB_found_all false)

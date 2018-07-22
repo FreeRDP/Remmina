@@ -237,18 +237,8 @@ static gchar*
 remmina_ftp_client_size_to_str(gfloat size)
 {
 	TRACE_CALL(__func__);
-	gchar *str;
 
-	if (size < 1024.0) {
-		str = g_strdup_printf("%i", (gint)size);
-	}else if (size < 1024.0 * 1024.0) {
-		str = g_strdup_printf("%iK", (gint)(size / 1024.0));
-	}else if (size < 1024.0 * 1024.0 * 1024.0) {
-		str = g_strdup_printf("%.1fM", size / 1024.0 / 1024.0);
-	}else  {
-		str = g_strdup_printf("%.1fG", size / 1024.0 / 1024.0 / 1024.0);
-	}
-	return str;
+	return g_format_size_full((guint64)size, G_FORMAT_SIZE_IEC_UNITS);
 }
 
 static void remmina_ftp_client_cell_data_size(GtkTreeViewColumn *col, GtkCellRenderer *renderer, GtkTreeModel *model,
