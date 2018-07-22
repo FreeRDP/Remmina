@@ -1,16 +1,15 @@
 #!/bin/sh -e
 
 : ${FLATPAK_ARCH:=$(flatpak --default-arch)}
-FLATHUB_REPO="https://flathub.org/repo/flathub.flatpakrepo"
-DBUS_ID="org.remmina.Remmina"
-
+FLATHUB_REPO='https://flathub.org/repo/flathub.flatpakrepo'
+REMMINA_APP_ID='org.remmina.Remmina'
 
 flatpak_builder()
 {
     flatpak-builder \
         --user \
         --arch="${FLATPAK_ARCH}" \
-        --repo=repo \
+        --repo=repo/ \
         --sandbox \
         "$@"
 }
@@ -21,10 +20,11 @@ cd "${FLATPAK_MANIFEST_DIR}"
 
 # Build everything but Remmina module
 flatpak_builder \
+    --ccache \
     --force-clean \
     --install-deps-from=flathub \
     --stop-at=remmina \
-    app/ org.remmina.Remmina.json --ccache
+    app/ "${REMMINA_APP_ID}.json"
 
 # Build Remmina module from local checkout
 mkdir -p _flatpak_build
@@ -45,6 +45,8 @@ flatpak_builder \
     --disable-download \
     --disable-updates \
     --finish-only \
-    app/ org.remmina.Remmina.json
+    app/ "${REMMINA_APP_ID}.json"
 
-flatpak build-bundle repo remmina-dev.flatpak --runtime-repo=${FLATHUB_REPO} ${DBUS_ID}
+flatpak build-bundle \
+    --runtime-repo="${FLATHUB_REPO}" \
+    repo/ remmina-dev.flatpak "${REMMINA_APP_ID}"

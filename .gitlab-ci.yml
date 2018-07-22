@@ -13,7 +13,6 @@ variables:
   DOCKER_IMAGE: "ubuntu:xenial"
   CMAKE_BUILD_OPTIONS: "-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on"
   FLATPAK_ARCH: x86_64
-  DBUS_ID: "org.remmina.Remmina"
 
 before_script:
   - mkdir -p .flatpak-builder/cache
