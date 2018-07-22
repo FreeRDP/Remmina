@@ -180,119 +180,40 @@ static gboolean remmina_pref_file_do_copy(const char *src_path, const char *dst_
 
 void remmina_pref_file_load_colors(GKeyFile *gkeyfile, RemminaColorPref *color_pref)
 {
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "background", NULL))
-		color_pref->background = g_key_file_get_string(gkeyfile, "ssh_colors", "background",
-			NULL);
-	else
-		color_pref->background = "#d5ccba";
+	const struct {
+		const char *name;
+		char **setting;
+		char *fallback;
+	} colors[] = {
+		{ "background", &color_pref->background, "#d5ccba" },
+		{ "cursor",     &color_pref->cursor,     "#45373c" },
+		{ "foreground", &color_pref->foreground, "#45373c" },
+		{ "color0",     &color_pref->color0,     "#20111b" },
+		{ "color1",     &color_pref->color1,     "#be100e" },
+		{ "color2",     &color_pref->color2,     "#858162" },
+		{ "color3",     &color_pref->color3,     "#eaa549" },
+		{ "color4",     &color_pref->color4,     "#426a79" },
+		{ "color5",     &color_pref->color5,     "#97522c" },
+		{ "color6",     &color_pref->color6,     "#989a9c" },
+		{ "color7",     &color_pref->color7,     "#968c83" },
+		{ "color8",     &color_pref->color8,     "#5e5252" },
+		{ "color9",     &color_pref->color9,     "#be100e" },
+		{ "color10",    &color_pref->color10,    "#858162" },
+		{ "color11",    &color_pref->color11,    "#eaa549" },
+		{ "color12",    &color_pref->color12,    "#426a79" },
+		{ "color13",    &color_pref->color13,    "#97522c" },
+		{ "color14",    &color_pref->color14,    "#989a9c" },
+		{ "color15",    &color_pref->color15,    "#d5ccba" },
+	};
 
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "cursor", NULL))
-		color_pref->cursor = g_key_file_get_string(gkeyfile, "ssh_colors", "cursor",
-			NULL);
-	else
-		color_pref->cursor = "#45373c";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "foreground", NULL))
-		color_pref->foreground = g_key_file_get_string(gkeyfile, "ssh_colors", "foreground",
-			NULL);
-	else
-		color_pref->foreground = "#45373c";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color0", NULL))
-		color_pref->color0 = g_key_file_get_string(gkeyfile, "ssh_colors", "color0",
-			NULL);
-	else
-		color_pref->color0 = "#20111b";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color1", NULL))
-		color_pref->color1 = g_key_file_get_string(gkeyfile, "ssh_colors", "color1",
-			NULL);
-	else
-		color_pref->color1 = "#be100e";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color2", NULL))
-		color_pref->color2 = g_key_file_get_string(gkeyfile, "ssh_colors", "color2",
-			NULL);
-	else
-		color_pref->color2 = "#858162";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color3", NULL))
-		color_pref->color3 = g_key_file_get_string(gkeyfile, "ssh_colors", "color3",
-			NULL);
-	else
-		color_pref->color3 = "#eaa549";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color4", NULL))
-		color_pref->color4 = g_key_file_get_string(gkeyfile, "ssh_colors", "color4",
-			NULL);
-	else
-		color_pref->color4 = "#426a79";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color5", NULL))
-		color_pref->color5 = g_key_file_get_string(gkeyfile, "ssh_colors", "color5",
-			NULL);
-	else
-		color_pref->color5 = "#97522c";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color6", NULL))
-		color_pref->color6 = g_key_file_get_string(gkeyfile, "ssh_colors", "color6",
-			NULL);
-	else
-		color_pref->color6 = "#989a9c";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color7", NULL))
-		color_pref->color7 = g_key_file_get_string(gkeyfile, "ssh_colors", "color7",
-			NULL);
-	else
-		color_pref->color7 = "#968c83";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color8", NULL))
-		color_pref->color8 = g_key_file_get_string(gkeyfile, "ssh_colors", "color8",
-			NULL);
-	else
-		color_pref->color8 = "#5e5252";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color9", NULL))
-		color_pref->color9 = g_key_file_get_string(gkeyfile, "ssh_colors", "color9",
-			NULL);
-	else
-		color_pref->color9 = "#be100e";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color10", NULL))
-		color_pref->color10 = g_key_file_get_string(gkeyfile, "ssh_colors", "color10",
-			NULL);
-	else
-		color_pref->color10 = "#858162";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color11", NULL))
-		color_pref->color11 = g_key_file_get_string(gkeyfile, "ssh_colors", "color11",
-			NULL);
-	else
-		color_pref->color11 = "#eaa549";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color12", NULL))
-		color_pref->color12 = g_key_file_get_string(gkeyfile, "ssh_colors", "color12",
-			NULL);
-	else
-		color_pref->color12 = "#426a79";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color13", NULL))
-		color_pref->color13 = g_key_file_get_string(gkeyfile, "ssh_colors", "color13",
-			NULL);
-	else
-		color_pref->color13 = "#97522c";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color14", NULL))
-		color_pref->color14 = g_key_file_get_string(gkeyfile, "ssh_colors", "color14",
-			NULL);
-	else
-		color_pref->color14 = "#989a9c";
-
-	if (g_key_file_has_key(gkeyfile, "ssh_colors", "color15", NULL))
-		color_pref->color15 = g_key_file_get_string(gkeyfile, "ssh_colors", "color15",
-			NULL);
-	else
-		color_pref->color15 = "#d5ccba";
+	int i;
+	for (i = 0; i < (sizeof(colors) / sizeof(colors[0])); i++) {
+		if (g_key_file_has_key(gkeyfile, "ssh_colors", colors[i].name, NULL))
+			*colors[i].setting = g_key_file_get_string(gkeyfile, "ssh_colors", colors[i].name,
+				NULL);
+		else
+			*colors[i].setting = colors[i].fallback;
+	}
 }
 
 void remmina_pref_init(void)
