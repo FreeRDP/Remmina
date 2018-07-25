@@ -1233,19 +1233,10 @@ remmina_ssh_plugin_register(void)
 
 	remmina_plugin_service = &remmina_plugin_manager_service;
 
-	unsigned int rec_size = sizeof(remmina_ssh_advanced_settings) / sizeof(RemminaProtocolSetting);
-
-	RemminaProtocolSettingOpt *settings = g_new(RemminaProtocolSettingOpt, rec_size);
+	RemminaProtocolSettingOpt *settings;
 
 	// preset new settings with (old) static remmina_ssh_advanced_settings data
-	for (int ii=0; ii < rec_size; ii++) {
-		settings[ii].type = remmina_ssh_advanced_settings[ii].type;
-		settings[ii].name = remmina_ssh_advanced_settings[ii].name;
-		settings[ii].label = remmina_ssh_advanced_settings[ii].label;
-		settings[ii].compact = remmina_ssh_advanced_settings[ii].compact;
-		settings[ii].opt1 = remmina_ssh_advanced_settings[ii].opt1;
-		settings[ii].opt2 = remmina_ssh_advanced_settings[ii].opt1;
-	}
+	settings = g_memdup(remmina_ssh_advanced_settings, sizeof(remmina_ssh_advanced_settings));
 
 	// create dynamic advanced settings to made replacing of ssh_terminal_palette possible
 	gpointer ssh_terminal_palette_new = NULL;
