@@ -263,7 +263,6 @@ BOOL rf_begin_paint(rdpContext* context)
 {
 	TRACE_CALL(__func__);
 	rdpGdi* gdi;
-	HGDI_WND hwnd;
 
 	if (!context)
 		return FALSE;
