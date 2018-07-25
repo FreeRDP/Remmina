@@ -613,8 +613,8 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	vte_terminal_set_size(VTE_TERMINAL(vte), 80, 25);
 	vte_terminal_set_scroll_on_keystroke(VTE_TERMINAL(vte), TRUE);
 #if !VTE_CHECK_VERSION(0, 38, 0)
-	gdk_rgba_parse(&foreground_color, remmina_pref.foreground);
-	gdk_rgba_parse(&background_color, remmina_pref.background);
+	gdk_rgba_parse(&foreground_color, remmina_pref.color_pref..foreground);
+	gdk_rgba_parse(&background_color, remmina_pref.color_pref..background);
 #endif
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
