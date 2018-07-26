@@ -640,7 +640,9 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	if (!g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
 		GError *error = NULL;
 		const gchar * const *dirs = g_get_system_data_dirs();
-		for (unsigned int i = 0; dirs[i] != NULL; ++i) {
+
+		unsigned int i = 0;
+		for (i = 0; dirs[i] != NULL; ++i) {
 			remmina_dir = g_build_path("/", dirs[i], g_get_prgname(), "theme", NULL);
 			GDir *system_data_dir = g_dir_open(remmina_dir, 0, &error);
 			// ignoring this error is ok, because the folder may not existing
@@ -1143,7 +1145,9 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 	 */
 	/* /usr/local/share/remmina */
 	const gchar * const *dirs = g_get_system_data_dirs();
-	for (unsigned int i = 0; dirs[i] != NULL; ++i) {
+
+	unsigned int i = 0;
+	for (i = 0; dirs[i] != NULL; ++i) {
 		GDir *system_data_dir = NULL;
 		gchar *remmina_dir = g_build_path("/", dirs[i], g_get_prgname(), "theme", NULL);
 		system_data_dir = g_dir_open(remmina_dir, 0, &error);
@@ -1211,7 +1215,8 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 		}
 	}
 
-	for (GList *l_files = g_list_first(files); l_files != NULL; l_files = l_files->next) {
+	GList *l_files = NULL;
+	for (l_files = g_list_first(files); l_files != NULL; l_files = l_files->next) {
 		gchar *menu_str = (gchar *) l_files->data;
 
 		color_palette[field_idx++] = menu_str;
