@@ -872,11 +872,16 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	 * the "disp" dynamic channel, if available */
 	rfi->settings->SupportDisplayControl = TRUE;
 
+	/* Sound settings */
+
 	cs = remmina_plugin_service->file_get_string(remminafile, "sound");
 
 	if (g_strcmp0(cs, "remote") == 0) {
-		rfi->settings->RemoteConsoleAudio = 1;
+		rfi->settings->RemoteConsoleAudio = TRUE;
 	}else if (g_str_has_prefix(cs, "local")) {
+
+		rfi->settings->AudioPlayback = TRUE;
+		rfi->settings->DeviceRedirection = TRUE;	/* rdpsnd requires rdpdr to be registered */
 
 		rdpsnd_nparams = 0;
 		rdpsnd_params[rdpsnd_nparams++] = "rdpsnd";
@@ -900,6 +905,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 		freerdp_client_add_static_channel(rfi->settings, rdpsnd_nparams, (char**)rdpsnd_params);
 
+	}else {
+		/* Disable sound */
+		rfi->settings->AudioPlayback = FALSE;
+		rfi->settings->RemoteConsoleAudio = FALSE;
 	}
 
 	if ( remmina_plugin_service->file_get_int(remminafile, "microphone", FALSE) ? TRUE : FALSE ) {
