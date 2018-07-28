@@ -32,4 +32,4 @@
 # files in the program, then also delete it here.
 
 include(GETTEXT)
-gettext(${CMAKE_CURRENT_SOURCE_DIR} "src")
+gettext(${CMAKE_CURRENT_SOURCE_DIR} "remmina")
