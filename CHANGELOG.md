@@ -1,5 +1,19 @@
 # Changelog
 
+## [v1.2.31](https://gitlab.com/Remmina/Remmina/tags/v1.2.31) (2018-07-28)
+
+This is the first release on GitLab and we are still moving and adapting tools and
+integrations, therefore this changelog is quite short than usually.
+
+Notables changes since the last release are:
+
+- Custom color schemes per profile for the SSH plugin (@denk_mal).
+- Flatpak updates and fixes (@larchunix)
+- Kiosk mode with integration in the login manager (@antenore).
+- New Icons (@antenore and @larchunix).
+- SFTP tool password fixes (@Feishi).
+- Several fixes around RDP and compilations issues (@giox069 and @larchunix).
+
 ## [v1.2.30.1](https://github.com/FreeRDP/Remmina/tree/v1.2.30.1) (2018-05-29)
 
 [Full Changelog](https://github.com/FreeRDP/Remmina/compare/v1.2.30...v1.2.30.1)
@@ -645,7 +659,7 @@
 
 **Fixed bugs:**
 
-- 
+-
 full screen window placement with multiple monitors [\#124](https://github.com/FreeRDP/Remmina/issues/124)
 
 **Closed issues:**
