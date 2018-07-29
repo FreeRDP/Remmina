@@ -1,7 +1,7 @@
 Precompiled binaries
 -----------------
 
-See [the wiki](https://github.com/FreeRDP/Remmina/wiki#for-users-with-a-distro-that-supports-flatpak-including-ubuntu) for instructions. The recipe here is always pointed to the `master` branch. The recipe in [the flathub repository](https://github.com/flathub/org.remmina.Remmina/blob/master/org.remmina.Remmina.json) is pointed to the latest tagged release. Files except the JSON file in this directory is used for automatic builds.
+See [the wiki](https://gitlab.com/Remmina/Remmina/wikis/home#for-users-with-a-distro-that-supports-flatpak-including-ubuntu) for instructions. The recipe here is always pointed to the `master` branch. The recipe in [the flathub repository](https://github.com/flathub/org.remmina.Remmina/blob/master/org.remmina.Remmina.json) is pointed to the latest tagged release. Files except the JSON file in this directory is used for automatic builds.
 
 Build instructions
 ------------------
@@ -62,5 +62,5 @@ Security considerations
   (see downstream and upstream bugs), Remmina's Flatpak bundles an out of date
   version of Xephyr (`1.16.4`) for the XDMCP plugin.
 
-    - https://github.com/FreeRDP/Remmina/issues/366
+    - https://gitlab.com/Remmina/Remmina/issues/366
     - https://bugs.freedesktop.org/show_bug.cgi?id=91700
