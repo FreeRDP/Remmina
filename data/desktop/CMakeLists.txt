@@ -122,6 +122,14 @@ install(
     PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ
     WORLD_EXECUTE WORLD_READ
     )
+
+if(WITH_MANPAGES)
+    install(
+        FILES remmina-gnome.1
+        DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1
+        )
+endif()
+
 install(
     FILES gnome-session-remmina
     DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
@@ -129,6 +137,14 @@ install(
     PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ
     WORLD_EXECUTE WORLD_READ
     )
+
+if(WITH_MANPAGES)
+    install(
+        FILES gnome-session-remmina.1
+        DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1
+        )
+endif()
+
 # XML mime types
 set( SHARED_MIME_INFO_MINIMUM_VERSION "0.30" )
 set( XDG_MIME_INSTALL_DIR "${REMMINA_DATADIR}/mime/packages" )
