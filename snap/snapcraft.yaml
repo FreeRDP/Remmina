@@ -74,13 +74,11 @@ parts:
   # Remove this (and use again libssh-dev) once libssh-0.7 is available in distro
   libssh-0.7:
     plugin: cmake
-    source: git://git.libssh.org/projects/libssh.git
-    source-depth: 1
-    source-branch: v0-7
+    source: "https://git.libssh.org/projects/libssh.git/snapshot/libssh-0.7.5.tar.gz"
     configflags:
-      - -DCMAKE_BUILD_TYPE=Release
+      - -DCMAKE_BUILD_TYPE:STRING=Release
       - -DWITH_GSSAPI=ON
-      - -DWITH_NACL=1
+      - -DWITH_NACL=0
       - -DWITH_EXAMPLES:BOOL=OFF
 
     # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
