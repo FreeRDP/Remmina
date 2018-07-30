@@ -1897,7 +1897,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	priv->toolitem_fullscreen = toolitem;
-	if (kioskmode && kioskmode == TRUE) {
+	if (kioskmode) {
 		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem), FALSE);
 	} else {
 		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem), mode != SCROLLED_WINDOW_MODE);
@@ -1948,9 +1948,6 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	toolitem = gtk_separator_tool_item_new();
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
-	if (!kioskmode && kioskmode == FALSE) {
-		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), FALSE);
-	}
 
 	/* Dynamic Resolution Update */
 	toolitem = gtk_toggle_tool_button_new();
@@ -2042,7 +2039,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_minimize), cnnhld);
-	if (!kioskmode && kioskmode == FALSE) {
+	if (kioskmode) {
 		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), FALSE);
 	}
 
@@ -2104,7 +2101,11 @@ static void remmina_connection_holder_update_toolbar(RemminaConnectionHolder* cn
 	remmina_connection_holder_update_toolbar_autofit_button(cnnhld);
 
 	toolitem = priv->toolitem_switch_page;
-	bval = (gtk_notebook_get_n_pages(GTK_NOTEBOOK(priv->notebook)) > 1);
+	if (kioskmode) {
+		bval = FALSE;
+	} else {
+		bval = (gtk_notebook_get_n_pages(GTK_NOTEBOOK(priv->notebook)) > 1);
+	}
 	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), bval);
 
 	scalemode = get_current_allowed_scale_mode(cnnobj, &dynres_avail, &scale_avail);

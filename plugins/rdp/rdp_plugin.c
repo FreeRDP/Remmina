@@ -286,6 +286,9 @@ BOOL rf_end_paint(rdpContext* context)
 	gdi = context->gdi;
 	rfi = (rfContext*)context;
 
+	if (gdi->primary->hdc->hwnd->invalid->null)
+		return TRUE;
+
 	x = gdi->primary->hdc->hwnd->invalid->x;
 	y = gdi->primary->hdc->hwnd->invalid->y;
 	w = gdi->primary->hdc->hwnd->invalid->w;
@@ -299,6 +302,9 @@ BOOL rf_end_paint(rdpContext* context)
 	ui->region.height = h;
 
 	remmina_rdp_event_queue_ui_async(rfi->protocol_widget, ui);
+
+	gdi->primary->hdc->hwnd->invalid->null = TRUE;
+	gdi->primary->hdc->hwnd->ninvalid = 0;
 
 	return TRUE;
 }
