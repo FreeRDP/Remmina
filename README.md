@@ -180,7 +180,7 @@ There are also some external, not supported plugins provided by [Muflone](https:
 ### From the source code
 
 Follow the guides available on the wiki:
-* [Wiki and compilation instructions](https://github.com/FreeRDP/Remmina/wiki)
+* [Wiki and compilation instructions](https://gitlab.com/Remmina/Remmina/wikis/home)
 
 ## Usage
 
@@ -256,7 +256,7 @@ If you are not listed and you have contributed, feel free to update that file.
 
 ## Resources
 
- * [Wiki and compilation instructions](https://github.com/FreeRDP/Remmina/wiki)
+ * [Wiki and compilation instructions](https://gitlab.com/Remmina/Remmina/wikis/home)
  * [G+ Remmina community](https://plus.google.com/communities/106276095923371962010)
  * [Website](http://www.remmina.org)
  * IRC we are on freenode.net , in the channel #remmina, you can also use a [web client](https://webchat.freenode.net/) in case

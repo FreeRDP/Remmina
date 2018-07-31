@@ -579,7 +579,7 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
  *
  * @see remmina_plugin_ssh_popup_ui
  * @see RemminaProtocolWidget
- * @see https://github.com/FreeRDP/Remmina/wiki/Remmina-SSH-Terminal-colour-schemes
+ * @see https://gitlab.com/Remmina/Remmina/wikis/Remmina-SSH-Terminal-colour-schemes
  */
 static void
 remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
