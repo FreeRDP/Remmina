@@ -1,5 +1,20 @@
 # Changelog
 
+## [v1.2.31.1](https://gitlab.com/Remmina/Remmina/tags/v1.2.31.1) (2018-07-31)
+
+This is a bug fixing release.
+
+**Fixed bugs:**
+
+- Cannot minimize in fullscreen mode.
+- Crash with the RDP plugin.
+- Missing manual pages for Debian.
+
+**Closed issues:**
+
+- Minimize window doesn't minimize the window [\#1696](https://gitlab.com/Remmina/Remmina/issues/1696)
+- Minimize window button is disable, after connecting to RDS [\#1700](https://gitlab.com/Remmina/Remmina/issues/1700)
+
 ## [v1.2.31](https://gitlab.com/Remmina/Remmina/tags/v1.2.31) (2018-07-28)
 
 This is the first release on GitLab and we are still moving and adapting tools and
