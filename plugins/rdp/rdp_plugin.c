@@ -334,6 +334,22 @@ static BOOL rf_desktop_resize(rdpContext* context)
 	return TRUE;
 }
 
+static BOOL rf_play_sound(rdpContext* context, const PLAY_SOUND_UPDATE* play_sound)
+{
+	TRACE_CALL(__func__);
+	rfContext* rfi;
+	RemminaProtocolWidget* gp;
+	GdkDisplay* disp;
+
+	rfi = (rfContext*)context;
+	gp = rfi->protocol_widget;
+
+	disp = gtk_widget_get_display(GTK_WIDGET(gp));
+	gdk_display_beep(disp);
+
+	return TRUE;
+}
+
 static BOOL remmina_rdp_pre_connect(freerdp* instance)
 {
 	TRACE_CALL(__func__);
@@ -447,6 +463,8 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	instance->update->BeginPaint = rf_begin_paint;
 	instance->update->EndPaint = rf_end_paint;
 	instance->update->DesktopResize = rf_desktop_resize;
+
+	instance->update->PlaySound = rf_play_sound;
 
 	remmina_rdp_clipboard_init(rfi);
 	rfi->connected = True;
