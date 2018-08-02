@@ -24,6 +24,12 @@
 
 #include <string.h>
 
+#ifdef GDK_WINDOWING_X11
+	#include <X11/Xlib.h>
+	#include <X11/XKBlib.h>
+	#include <gdk/gdkx.h>
+#endif
+
 #define REMMINA_RDP_FEATURE_TOOL_REFRESH         1
 #define REMMINA_RDP_FEATURE_SCALE                2
 #define REMMINA_RDP_FEATURE_UNFOCUS              3
@@ -350,6 +356,48 @@ static BOOL rf_play_sound(rdpContext* context, const PLAY_SOUND_UPDATE* play_sou
 	return TRUE;
 }
 
+static BOOL rf_keyboard_set_indicators(rdpContext* context, UINT16 led_flags)
+{
+	TRACE_CALL(__func__);
+	rfContext* rfi;
+	RemminaProtocolWidget* gp;
+	GdkDisplay* disp;
+
+	rfi = (rfContext*)context;
+	gp = rfi->protocol_widget;
+	disp = gtk_widget_get_display(GTK_WIDGET(gp));
+
+#ifdef GDK_WINDOWING_X11
+	if (GDK_IS_X11_DISPLAY(disp)) {
+		/* ToDo: we are not on the main thread. Will Xorg complain ? */
+		Display* x11_display;
+		x11_display = gdk_x11_display_get_xdisplay(disp);
+		XkbLockModifiers(x11_display, XkbUseCoreKbd,
+			LockMask | Mod2Mask,
+			(led_flags & KBD_SYNC_CAPS_LOCK ? LockMask : 0) |
+			(led_flags & KBD_SYNC_NUM_LOCK ? Mod2Mask : 0)
+			);
+
+		/* ToDo: add support to KANA_LOCK and SCROLL_LOCK */
+	}
+#endif
+
+	return TRUE;
+}
+
+BOOL rf_keyboard_set_ime_status(rdpContext* context, UINT16 imeId, UINT32 imeState,
+                                UINT32 imeConvMode)
+{
+	TRACE_CALL(__func__);
+	if (!context)
+			return FALSE;
+
+	/* Unimplemented, we ignore it */
+
+	return TRUE;
+}
+
+
 static BOOL remmina_rdp_pre_connect(freerdp* instance)
 {
 	TRACE_CALL(__func__);
@@ -465,6 +513,8 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	instance->update->DesktopResize = rf_desktop_resize;
 
 	instance->update->PlaySound = rf_play_sound;
+	instance->update->SetKeyboardIndicators = rf_keyboard_set_indicators;
+	instance->update->SetKeyboardImeStatus = rf_keyboard_set_ime_status;
 
 	remmina_rdp_clipboard_init(rfi);
 	rfi->connected = True;
