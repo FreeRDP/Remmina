@@ -225,6 +225,10 @@ static void remmina_on_startup(GApplication *app)
 	g_set_application_name("Remmina");
 	gtk_window_set_default_icon_name(REMMINA_APP_ID);
 
+	/* Setting the X11 program class (WM_CLASS) is necessary to group
+	 * windows with .desktop file which has the same StartupWMClass */
+	gdk_set_program_class(REMMINA_APP_ID);
+
 	gtk_icon_theme_append_search_path(gtk_icon_theme_get_default(),
 		REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons");
 	g_application_hold(app);
