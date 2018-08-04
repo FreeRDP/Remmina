@@ -146,7 +146,7 @@ struct remmina_plugin_rdp_event {
 typedef struct remmina_plugin_rdp_event RemminaPluginRdpEvent;
 
 typedef enum {
-	REMMINA_RDP_UI_UPDATE_REGION = 0,
+	REMMINA_RDP_UI_UPDATE_REGIONS = 0,
 	REMMINA_RDP_UI_CONNECTED,
 	REMMINA_RDP_UI_RECONNECT_PROGRESS,
 	REMMINA_RDP_UI_CURSOR,
@@ -176,6 +176,10 @@ typedef enum {
 	REMMINA_RDP_UI_EVENT_UPDATE_SCALE
 } RemminaPluginRdpUiEeventType;
 
+typedef struct {
+	gint x, y, w, h;
+} region;
+
 struct remmina_plugin_rdp_ui_object {
 	RemminaPluginRdpUiType type;
 	gboolean sync;
@@ -184,11 +188,9 @@ struct remmina_plugin_rdp_ui_object {
 	pthread_cond_t sync_wait_cond;
 	union {
 		struct {
-			gint x;
-			gint y;
-			gint width;
-			gint height;
-		} region;
+			region *ureg;
+			gint ninvalid;
+		} reg;
 		struct {
 			rdpContext* context;
 			rfPointer* pointer;

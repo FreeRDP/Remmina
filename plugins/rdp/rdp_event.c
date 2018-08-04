@@ -215,21 +215,24 @@ static void remmina_rdp_event_scale_area(RemminaProtocolWidget* gp, gint* x, gin
 	*h = sh;
 }
 
-void remmina_rdp_event_update_region(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+void remmina_rdp_event_update_regions(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
 	TRACE_CALL(__func__);
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
-	gint x, y, w, h;
+	gint x, y, w, h, i;
 
-	x = ui->region.x;
-	y = ui->region.y;
-	w = ui->region.width;
-	h = ui->region.height;
+	for(i = 0; i < ui->reg.ninvalid; i++) {
+		x = ui->reg.ureg[i].x;
+		y = ui->reg.ureg[i].y;
+		w = ui->reg.ureg[i].w;
+		h = ui->reg.ureg[i].h;
 
-	if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED)
-		remmina_rdp_event_scale_area(gp, &x, &y, &w, &h);
+		if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED)
+			remmina_rdp_event_scale_area(gp, &x, &y, &w, &h);
 
-	gtk_widget_queue_draw_area(rfi->drawing_area, x, y, w, h);
+		gtk_widget_queue_draw_area(rfi->drawing_area, x, y, w, h);
+	}
+	g_free(ui->reg.ureg);
 }
 
 void remmina_rdp_event_update_rect(RemminaProtocolWidget* gp, gint x, gint y, gint w, gint h)
@@ -1033,8 +1036,8 @@ static void remmina_rdp_event_process_ui_event(RemminaProtocolWidget* gp, Remmin
 {
 	TRACE_CALL(__func__);
 	switch (ui->type) {
-	case REMMINA_RDP_UI_UPDATE_REGION:
-		remmina_rdp_event_update_region(gp, ui);
+	case REMMINA_RDP_UI_UPDATE_REGIONS:
+		remmina_rdp_event_update_regions(gp, ui);
 		break;
 
 	case REMMINA_RDP_UI_CONNECTED:
