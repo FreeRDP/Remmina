@@ -283,11 +283,12 @@ BOOL rf_begin_paint(rdpContext* context)
 BOOL rf_end_paint(rdpContext* context)
 {
 	TRACE_CALL(__func__);
-	INT32 x, y;
-	UINT32 w, h;
 	rdpGdi* gdi;
 	rfContext* rfi;
 	RemminaPluginRdpUiObject* ui;
+	int i, ninvalid;
+	region *reg;
+	HGDI_RGN cinvalid;
 
 	gdi = context->gdi;
 	rfi = (rfContext*)context;
@@ -295,22 +296,30 @@ BOOL rf_end_paint(rdpContext* context)
 	if (gdi->primary->hdc->hwnd->invalid->null)
 		return TRUE;
 
-	x = gdi->primary->hdc->hwnd->invalid->x;
-	y = gdi->primary->hdc->hwnd->invalid->y;
-	w = gdi->primary->hdc->hwnd->invalid->w;
-	h = gdi->primary->hdc->hwnd->invalid->h;
+	if (gdi->primary->hdc->hwnd->ninvalid < 1)
+		return TRUE;
+
+	ninvalid = gdi->primary->hdc->hwnd->ninvalid;
+	cinvalid = gdi->primary->hdc->hwnd->cinvalid;
+	reg = (region *)g_malloc(sizeof(region) * ninvalid);
+	for(i = 0; i < ninvalid; i++) {
+		reg[i].x = cinvalid[i].x;
+		reg[i].y = cinvalid[i].y;
+		reg[i].w = cinvalid[i].w;
+		reg[i].h = cinvalid[i].h;
+	}
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
-	ui->type = REMMINA_RDP_UI_UPDATE_REGION;
-	ui->region.x = x;
-	ui->region.y = y;
-	ui->region.width = w;
-	ui->region.height = h;
+	ui->type = REMMINA_RDP_UI_UPDATE_REGIONS;
+	ui->reg.ninvalid = ninvalid;
+	ui->reg.ureg = reg;
 
 	remmina_rdp_event_queue_ui_async(rfi->protocol_widget, ui);
 
+
 	gdi->primary->hdc->hwnd->invalid->null = TRUE;
 	gdi->primary->hdc->hwnd->ninvalid = 0;
+
 
 	return TRUE;
 }
