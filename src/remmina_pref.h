@@ -214,7 +214,7 @@ extern gchar *remmina_colors_file;
 extern RemminaPref remmina_pref;
 
 void remmina_pref_init(void);
-void remmina_pref_save(void);
+gboolean remmina_pref_save(void);
 
 void remmina_pref_add_recent(const gchar *protocol, const gchar *server);
 gchar* remmina_pref_get_recent(const gchar *protocol);
