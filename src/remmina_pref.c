@@ -647,10 +647,11 @@ void remmina_pref_init(void)
 	remmina_pref_init_keymap();
 }
 
-void remmina_pref_save(void)
+gboolean remmina_pref_save(void)
 {
 	TRACE_CALL(__func__);
 	GKeyFile *gkeyfile;
+	GError *error = NULL;
 	gchar *content;
 	gsize length;
 
@@ -742,10 +743,19 @@ void remmina_pref_save(void)
 			remmina_pref.periodic_usage_stats_uuid_prefix ? remmina_pref.periodic_usage_stats_uuid_prefix : "");
 
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
-	g_file_set_contents(remmina_pref_file, content, length, NULL);
+	g_file_set_contents(remmina_pref_file, content, length, &error);
 
+	if (error != NULL)
+	{
+		g_print (error->message);
+		g_clear_error (&error);
+		g_key_file_free(gkeyfile);
+		g_free(content);
+		return FALSE;
+	}
 	g_key_file_free(gkeyfile);
 	g_free(content);
+	return TRUE;
 }
 
 void remmina_pref_add_recent(const gchar *protocol, const gchar *server)

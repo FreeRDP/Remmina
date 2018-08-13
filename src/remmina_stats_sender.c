@@ -292,7 +292,7 @@ void remmina_stats_sender_send(gboolean show_only)
 
 gboolean remmina_stat_sender_can_send()
 {
-	if (remmina_pref.periodic_usage_stats_permission_asked && remmina_pref.periodic_usage_stats_permitted)
+	if (remmina_pref.periodic_usage_stats_permission_asked && remmina_pref.periodic_usage_stats_permitted && remmina_pref_save())
 		return TRUE;
 	else
 		return FALSE;
