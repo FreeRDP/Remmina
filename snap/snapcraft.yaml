@@ -71,10 +71,10 @@ parts:
       - -usr/lib/cmake
       - -usr/lib/pkgconfig
 
-  # Remove this (and use again libssh-dev) once libssh-0.7 is available in distro
-  libssh-0.7:
+  # Remove this (and use again libssh-dev) once libssh-0.8 is available in distro
+  libssh-0.8:
     plugin: cmake
-    source: "https://git.libssh.org/projects/libssh.git/snapshot/libssh-0.7.5.tar.gz"
+    source: "https://git.libssh.org/projects/libssh.git/snapshot/libssh-0.8.0.tar.gz"
     configflags:
       - -DCMAKE_BUILD_TYPE:STRING=Release
       - -DWITH_GSSAPI=ON
@@ -132,7 +132,7 @@ parts:
       - -./usr/share/fonts/**
 
     after:
-      - libssh-0.7
+      - libssh-0.8
       - freerdp
       - desktop-gtk3
 
