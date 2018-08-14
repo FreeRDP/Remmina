@@ -1,5 +1,19 @@
 # Changelog
 
+## [v1.2.31.3](https://gitlab.com/Remmina/Remmina/tags/v1.2.31.3) (2018-08-14)
+
+This is a bug fixing release.
+
+**Fixed bugs:**
+
+- Do not send stats if the remmina.pref file is read-only.
+- cmake: include libssh_threads only when available.
+- Set program class to REMMINA_APP_ID, fixes #1706.
+
+**Implemented enhancements:**
+
+- Implement send ctrl+alt+fn keys. Closes #1707.
+
 ## [v1.2.31.1](https://gitlab.com/Remmina/Remmina/tags/v1.2.31.1) (2018-07-31)
 
 This is a bug fixing release.
