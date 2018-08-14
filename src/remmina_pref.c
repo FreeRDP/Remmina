@@ -747,7 +747,7 @@ gboolean remmina_pref_save(void)
 
 	if (error != NULL)
 	{
-		g_print (error->message);
+		g_print ("%s\n", error->message);
 		g_clear_error (&error);
 		g_key_file_free(gkeyfile);
 		g_free(content);
