@@ -363,8 +363,8 @@ static gpointer colordepth_list[] =
  */
 static const RemminaProtocolSetting remmina_plugin_xdmcp_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	    NULL,	     NULL,					 FALSE, NULL,		 NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, NULL,	     NULL,					 FALSE, NULL,		 NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	    "server",	     NULL,					 FALSE, NULL,		 NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",	     NULL,					 FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",    N_("Color depth"),				 FALSE, colordepth_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "exec",	     N_("Startup program"),			 FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "showcursor",    N_("Use local cursor"),			 FALSE, NULL,		 NULL },
