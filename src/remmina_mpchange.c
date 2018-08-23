@@ -166,9 +166,11 @@ static void remmina_mpchange_dochange(gchar* fname, struct mpchanger_params* mpc
 	RemminaFile* remminafile;
 
 	remminafile = remmina_file_load(fname);
-	remmina_file_store_secret_plugin_password(remminafile, "password", mpcp->password);
-	remmina_file_free(remminafile);
-	mpcp->changed_passwords_count++;
+	if (remminafile) {
+		remmina_file_store_secret_plugin_password(remminafile, "password", mpcp->password);
+		remmina_file_free(remminafile);
+		mpcp->changed_passwords_count++;
+	}
 
 }
 

@@ -198,11 +198,13 @@ gchar* remmina_file_manager_get_groups(void)
 			continue;
 		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", remmina_data_dir, name);
 		remminafile = remmina_file_load(filename);
-		group = remmina_file_get_string(remminafile, "group");
-		if (group && remmina_string_array_find(array, group) < 0) {
-			remmina_string_array_add(array, group);
+		if (remminafile) {
+			group = remmina_file_get_string(remminafile, "group");
+			if (group && remmina_string_array_find(array, group) < 0) {
+				remmina_string_array_add(array, group);
+			}
+			remmina_file_free(remminafile);
 		}
-		remmina_file_free(remminafile);
 	}
 	g_dir_close(dir);
 	remmina_string_array_sort(array);
@@ -290,9 +292,11 @@ GNode* remmina_file_manager_get_group_tree(void)
 			continue;
 		g_snprintf(filename, MAX_PATH_LEN, "%s/%s", remmina_file_get_datadir(), name);
 		remminafile = remmina_file_load(filename);
-		group = remmina_file_get_string(remminafile, "group");
-		remmina_file_manager_add_group(root, group);
-		remmina_file_free(remminafile);
+		if (remminafile) {
+			group = remmina_file_get_string(remminafile, "group");
+			remmina_file_manager_add_group(root, group);
+			remmina_file_free(remminafile);
+		}
 	}
 	g_dir_close(dir);
 	return root;

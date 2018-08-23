@@ -110,6 +110,8 @@ static gboolean remmina_external_tools_launcher(const gchar* filename, const gch
 	g_snprintf(launcher, MAX_PATH_LEN, "%s/launcher.sh", REMMINA_RUNTIME_EXTERNAL_TOOLS_DIR);
 
 	remminafile = remmina_file_load(filename);
+	if (!remminafile)
+		return FALSE;
 	GHashTableIter iter;
 	const gchar *key, *value;
 	g_hash_table_iter_init(&iter, remminafile->settings);

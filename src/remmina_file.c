@@ -141,7 +141,9 @@ remmina_file_copy(const gchar *filename)
 	RemminaFile *remminafile;
 
 	remminafile = remmina_file_load(filename);
-	remmina_file_generate_filename(remminafile);
+	if (remminafile) {
+		remmina_file_generate_filename(remminafile);
+	}
 
 	return remminafile;
 }
@@ -197,6 +199,7 @@ remmina_file_load(const gchar *filename)
 
 	if (!g_key_file_load_from_file(gkeyfile, filename, G_KEY_FILE_NONE, NULL)) {
 		g_key_file_free(gkeyfile);
+		g_printf("WARNING: unable to load remmina profile file %s: g_key_file_load_from_file() returned NULL.\n", filename);
 		return NULL;
 	}
 
@@ -257,6 +260,7 @@ remmina_file_load(const gchar *filename)
 			g_strfreev(keys);
 		}
 	}else {
+		g_printf("WARNING: unable to load remmina profile file %s: cannot find key name= in section remmina.\n", filename);
 		remminafile = NULL;
 	}
 
