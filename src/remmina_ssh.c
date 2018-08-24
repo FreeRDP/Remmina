@@ -1020,14 +1020,21 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 	case REMMINA_SSH_TUNNEL_XPORT:
 		/* Detect the next available port starting from 6010 on the server */
 		for (i = 10; i <= MAX_X_DISPLAY_NUMBER; i++) {
-			G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+#if LIBSSH_VERSION_INT >= SSH_VERSION_INT (0, 7, 0)
+			if (ssh_channel_listen_forward(REMMINA_SSH(tunnel)->session, (tunnel->bindlocalhost ? "localhost" : NULL), 6000 + i, NULL)) {
+				continue;
+			}else  {
+				tunnel->remotedisplay = i;
+				break;
+			}
+#else
 			if (ssh_forward_listen(REMMINA_SSH(tunnel)->session, (tunnel->bindlocalhost ? "localhost" : NULL), 6000 + i, NULL)) {
 				continue;
 			}else  {
 				tunnel->remotedisplay = i;
 				break;
 			}
-			G_GNUC_END_IGNORE_DEPRECATIONS
+#endif
 		}
 		if (tunnel->remotedisplay < 1) {
 			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Failed to request port forwarding : %s"));
@@ -1050,7 +1057,16 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 		break;
 
 	case REMMINA_SSH_TUNNEL_REVERSE:
-		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+#if LIBSSH_VERSION_INT >= SSH_VERSION_INT (0, 7, 0)
+		if (ssh_channel_listen_forward(REMMINA_SSH(tunnel)->session, NULL, tunnel->port, NULL)) {
+			remmina_ssh_set_error(REMMINA_SSH (tunnel), _("Failed to request port forwarding : %s"));
+			if (tunnel->disconnect_func) {
+				(*tunnel->disconnect_func)(tunnel, tunnel->callback_data);
+			}
+			tunnel->thread = 0;
+			return NULL;
+		}
+#else
 		if (ssh_forward_listen(REMMINA_SSH(tunnel)->session, NULL, tunnel->port, NULL)) {
 			remmina_ssh_set_error(REMMINA_SSH (tunnel), _("Failed to request port forwarding : %s"));
 			if (tunnel->disconnect_func) {
@@ -1059,7 +1075,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 			tunnel->thread = 0;
 			return NULL;
 		}
-		G_GNUC_END_IGNORE_DEPRECATIONS
+#endif
 
 		if (tunnel->init_func &&
 		    !(*tunnel->init_func)(tunnel, tunnel->callback_data)) {
@@ -1102,9 +1118,11 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 				}
 				if (tunnel->tunnel_type == REMMINA_SSH_TUNNEL_REVERSE) {
 					/* For reverse tunnel, we only need one connection. */
-					G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+#if LIBSSH_VERSION_INT >= SSH_VERSION_INT (0, 7, 0)
+					ssh_channel_cancel_forward(REMMINA_SSH (tunnel)->session, NULL, tunnel->port);
+#else
 					ssh_forward_cancel(REMMINA_SSH (tunnel)->session, NULL, tunnel->port);
-					G_GNUC_END_IGNORE_DEPRECATIONS
+#endif
 				}
 			}else if (tunnel->tunnel_type != REMMINA_SSH_TUNNEL_REVERSE) {
 				/* Poll once per some period of time if no incoming connections.
@@ -1421,9 +1439,11 @@ remmina_ssh_tunnel_free(RemminaSSHTunnel* tunnel)
 	}
 
 	if (tunnel->tunnel_type == REMMINA_SSH_TUNNEL_XPORT && tunnel->remotedisplay > 0) {
-		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+#if LIBSSH_VERSION_INT >= SSH_VERSION_INT (0, 7, 0)
+		ssh_channel_cancel_forward(REMMINA_SSH (tunnel)->session, NULL, 6000 + tunnel->remotedisplay);
+#else
 		ssh_forward_cancel(REMMINA_SSH (tunnel)->session, NULL, 6000 + tunnel->remotedisplay);
-		G_GNUC_END_IGNORE_DEPRECATIONS
+#endif
 	}
 	if (tunnel->server_sock >= 0) {
 		close(tunnel->server_sock);
