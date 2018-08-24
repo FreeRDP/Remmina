@@ -1,6 +1,5 @@
-# Remmina - The GTK+ Remote Desktop Client
+# remmina-plugin-tool_hello_world - The GTK+ Remote Desktop Client
 #
-# Copyright (C) 2011 Marc-Andre Moreau
 # Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
 # Copyright (C) 2016-2018 Antenore Gatta, Giovanni Panozzo
 #
@@ -32,58 +31,21 @@
 # version. If you delete this exception statement from all source
 # files in the program, then also delete it here.
 
-# Needed FreeRDP version to build freerdp plugin
-set(FREERDP_REQUIRED_MAJOR 2)
-set(FREERDP_REQUIRED_MINOR 0)
-set(FREERDP_REQUIRED_REVISION 0)
-set(FREERDP_REQUIRED_VERSIONSTRING
-    ${FREERDP_REQUIRED_MAJOR}.${FREERDP_REQUIRED_MINOR}.${FREERDP_REQUIRED_REVISION})
 
-include_directories(${CMAKE_SOURCE_DIR}/plugins)
+set(REMMINA_PLUGIN_ST_SRCS
+        st_plugin_config.h
+        st_plugin.c
+)
 
-set(APPICONSCALE_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/scalable/emblems")
+add_library(remmina-plugin-st MODULE ${REMMINA_PLUGIN_ST_SRCS})
+set_target_properties(remmina-plugin-st PROPERTIES PREFIX "")
+set_target_properties(remmina-plugin-st PROPERTIES NO_SONAME 1)
 
-set(REMMINA_COMMON_INCLUDE_DIRS ${GTK_INCLUDE_DIRS})
-set(REMMINA_COMMON_LIBRARIES ${GTK_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${GTK_INCLUDE_DIRS})
+target_link_libraries(remmina-plugin-st ${REMMINA_COMMON_LIBRARIES})
 
-find_suggested_package(LIBSSH)
-if(LIBSSH_FOUND)
-        add_definitions(-DHAVE_LIBSSH)
-        include_directories(${SSH_INCLUDE_DIRS})
-        target_link_libraries(remmina ${SSH_LIBRARIES})
-endif()
+install(TARGETS remmina-plugin-st DESTINATION ${REMMINA_PLUGINDIR})
 
-find_required_package(XKBFILE)
-
-if(LIBSSH_FOUND AND XKBFILE_FOUND)
-        add_subdirectory(nx)
-endif()
-
-add_subdirectory(xdmcp)
-
-find_suggested_package(FREERDP)
-if(FREERDP_FOUND)
-        add_subdirectory(rdp)
-endif()
-
-find_suggested_package(TELEPATHY)
-if(TELEPATHY_FOUND)
-        add_subdirectory(telepathy)
-endif()
-
-find_suggested_package(LIBVNCSERVER)
-if(LIBVNCSERVER_FOUND)
-        add_subdirectory(vnc)
-endif()
-
-find_suggested_package(SPICE)
-if(SPICE_FOUND)
-        add_subdirectory(spice)
-endif()
-
-if(WITH_EXAMPLES)
-        message(STATUS "Enabling examples and test plugins.")
-        add_subdirectory(tool_hello_world)
-endif()
-add_subdirectory(exec)
-add_subdirectory(st)
+install(FILES
+    scalable/emblems/remmina-tool-symbolic.svg
+    DESTINATION ${APPICONSCALE_EMBLEMS_DIR})
