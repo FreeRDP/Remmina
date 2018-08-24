@@ -2822,7 +2822,9 @@ static void remmina_connection_window_initialize_notebook(GtkNotebook* to, GtkNo
 			tab = remmina_connection_object_create_tab(cnnobj);
 			remmina_connection_object_append_page(cnnobj, to, tab, view_mode);
 
-			remmina_public_gtk_widget_reparent(cnnobj->viewport, GTK_CONTAINER(cnnobj->scrolled_container));
+			G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+			gtk_widget_reparent(cnnobj->viewport, cnnobj->scrolled_container);
+			G_GNUC_END_IGNORE_DEPRECATIONS
 
 			if (cnnobj->window) {
 				gtk_widget_destroy(cnnobj->window);
@@ -2842,7 +2844,9 @@ static void remmina_connection_window_initialize_notebook(GtkNotebook* to, GtkNo
 				remmina_connection_object_append_page(tc, to, tab, view_mode);
 
 				/* Reparent cnnobj->viewport */
-				remmina_public_gtk_widget_reparent(tc->viewport, GTK_CONTAINER(tc->scrolled_container));
+				G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+				gtk_widget_reparent(tc->viewport, tc->scrolled_container);
+				G_GNUC_END_IGNORE_DEPRECATIONS
 			}
 			gtk_notebook_set_current_page(to, c);
 		}
@@ -3644,7 +3648,9 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 		tab = remmina_connection_object_create_tab(cnnobj);
 		i = remmina_connection_object_append_page(cnnobj, GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook), tab,
 			cnnhld->cnnwin->priv->view_mode);
-		remmina_public_gtk_widget_reparent(cnnobj->viewport, GTK_CONTAINER(cnnobj->scrolled_container));
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+		gtk_widget_reparent(cnnobj->viewport, cnnobj->scrolled_container);
+		G_GNUC_END_IGNORE_DEPRECATIONS
 
 		gtk_notebook_set_current_page(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook), i);
 
