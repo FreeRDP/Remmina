@@ -168,6 +168,7 @@ typedef struct _RemminaConnectionObject {
 struct _RemminaConnectionHolder {
 	RemminaConnectionWindow* cnnwin;
 	gint fullscreen_view_mode;
+	gint grab_retry_eventsourceid;
 
 	gboolean hostkey_activated;
 	gboolean hostkey_used;
@@ -203,6 +204,7 @@ static gboolean remmina_connection_window_hostkey_func(RemminaProtocolWidget* gp
 static void remmina_connection_holder_grab_focus(GtkNotebook *notebook);
 static GtkWidget* remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint mode);
 static void remmina_connection_holder_place_toolbar(GtkToolbar *toolbar, GtkGrid *grid, GtkWidget *sibling, int toolbar_placement);
+static void remmina_connection_holder_keyboard_grab(RemminaConnectionHolder* cnnhld);
 
 #if FLOATING_TOOLBAR_WIDGET
 static void remmina_connection_window_ftb_drag_begin(GtkWidget *widget, GdkDragContext *context, gpointer user_data);
@@ -415,6 +417,11 @@ static void remmina_connection_holder_keyboard_ungrab(RemminaConnectionHolder* c
 #endif
 	GdkDevice *keyboard = NULL;
 
+	if (cnnhld->grab_retry_eventsourceid) {
+		g_source_remove(cnnhld->grab_retry_eventsourceid);
+		cnnhld->grab_retry_eventsourceid = 0;
+	}
+
 	display = gtk_widget_get_display(GTK_WIDGET(cnnhld->cnnwin));
 #if GTK_CHECK_VERSION(3, 20, 0)
 	seat = gdk_display_get_default_seat(display);
@@ -423,7 +430,6 @@ static void remmina_connection_holder_keyboard_ungrab(RemminaConnectionHolder* c
 	manager = gdk_display_get_device_manager(display);
 	keyboard = gdk_device_manager_get_client_pointer(manager);
 #endif
-
 
 	if (!cnnhld->cnnwin->priv->kbcaptured) {
 		return;
@@ -437,14 +443,28 @@ static void remmina_connection_holder_keyboard_ungrab(RemminaConnectionHolder* c
 		printf("DEBUG_KB_GRABBING: --- ungrabbing\n");
 #endif
 
-#if GTK_CHECK_VERSION(3, 20, 0)
+#if GTK_CHECK_VERSION(3, 24, 0)
+		/* We can use gtk_seat_grab()/_ungrab() only after GTK 3.24 */
 		gdk_seat_ungrab(seat);
 #else
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		gdk_device_ungrab(keyboard, GDK_CURRENT_TIME);
+		G_GNUC_END_IGNORE_DEPRECATIONS
 #endif
 		cnnhld->cnnwin->priv->kbcaptured = FALSE;
 
 	}
+}
+
+static gboolean remmina_connection_holder_keyboard_grab_retry(gpointer user_data)
+{
+	TRACE_CALL(__func__);
+	RemminaConnectionHolder* cnnhld;
+	cnnhld = (RemminaConnectionHolder *)user_data;
+
+	remmina_connection_holder_keyboard_grab(cnnhld);
+	cnnhld->grab_retry_eventsourceid = 0;
+	return G_SOURCE_REMOVE;
 }
 
 static void remmina_connection_holder_keyboard_grab(RemminaConnectionHolder* cnnhld)
@@ -457,6 +477,7 @@ static void remmina_connection_holder_keyboard_grab(RemminaConnectionHolder* cnn
 #else
 	GdkDeviceManager *manager;
 #endif
+	GdkGrabStatus ggs;
 	GdkDevice *keyboard = NULL;
 
 	if (cnnhld->cnnwin->priv->kbcaptured || !cnnhld->cnnwin->priv->mouse_pointer_entered) {
@@ -480,16 +501,43 @@ static void remmina_connection_holder_keyboard_grab(RemminaConnectionHolder* cnn
 
 		if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE)) {
 #if DEBUG_KB_GRABBING
-			printf("DEBUG_KB_GRABBING: +++ grabbing\n");
+			printf("DEBUG_KB_GRABBING: profile asks for grabbing, let's try.\n");
 #endif
-#if GTK_CHECK_VERSION(3, 20, 0)
-			if (gdk_seat_grab(seat, gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)),
-				    GDK_SEAT_CAPABILITY_KEYBOARD, FALSE, NULL, NULL, NULL, NULL) == GDK_GRAB_SUCCESS)
+	/* Up to GTK version 3.20 we can grab the keyboard with gdk_device_grab().
+	 * in GTK 3.20 gdk_seat_grab() should be used instead of gdk_device_grab().
+	 * There is a bug in GTK up to 3.22: when gdk_device_grab() fails
+	 * the widget is hidden:
+	 * https://gitlab.gnome.org/GNOME/gtk/commit/726ad5a5ae7c4f167e8dd454cd7c250821c400ab
+	 * The bug fix will be released with GTK 3.24.
+	 * Also pease note that the newer gdk_seat_grab() is still calling gdk_device_grab().
+	 */
+#if GTK_CHECK_VERSION(3, 24, 0)
+			ggs = gdk_seat_grab(seat, gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)),
+				GDK_SEAT_CAPABILITY_KEYBOARD, FALSE, NULL, NULL, NULL, NULL);
 #else
-			if (gdk_device_grab(keyboard, gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)), GDK_OWNERSHIP_WINDOW,
-				    TRUE, GDK_KEY_PRESS | GDK_KEY_RELEASE, NULL, GDK_CURRENT_TIME) == GDK_GRAB_SUCCESS)
+			G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+			ggs = gdk_device_grab(keyboard, gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)), GDK_OWNERSHIP_WINDOW,
+				    TRUE, GDK_KEY_PRESS | GDK_KEY_RELEASE, NULL, GDK_CURRENT_TIME);
+			G_GNUC_END_IGNORE_DEPRECATIONS
 #endif
+			if ( ggs != GDK_GRAB_SUCCESS )
 			{
+				/* Failure to GRAB keyboard */
+				#if DEBUG_KB_GRABBING
+					printf("GRAB FAILED. GdkGrabStatus: %d\n", (int)ggs);
+				#endif
+				/* Reschedule grabbing in half a second if not already done */
+				if (cnnhld->grab_retry_eventsourceid == 0) {
+					cnnhld->grab_retry_eventsourceid = g_timeout_add(500, (GSourceFunc)remmina_connection_holder_keyboard_grab_retry, cnnhld);
+				}
+			} else {
+			#if DEBUG_KB_GRABBING
+				printf("GRAB SUCCESS\n");
+			#endif
+				if (cnnhld->grab_retry_eventsourceid != 0) {
+					g_source_remove(cnnhld->grab_retry_eventsourceid);
+					cnnhld->grab_retry_eventsourceid = 0;
+				}
 				cnnhld->cnnwin->priv->kbcaptured = TRUE;
 			}
 		}else {
