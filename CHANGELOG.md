@@ -1,5 +1,23 @@
 # Changelog
 
+## [v1.2.31.4](https://gitlab.com/Remmina/Remmina/tags/v1.2.31.4) (2018-08-24)
+
+This is a bug fixing release.
+
+**Fixed bugs:**
+
+- Fix KB grabbing when switching workspace.
+- Fix some possible crashes when reading a remminafile.
+- Fixes a crash deleting XDMCP profile.
+- Fixing libssh deprecations.
+
+**Implemented enhancements:**
+
+- Improving file type hadling.
+- flatpak: update libssh from 0.7.5 to 0.8.1
+- flatpak: update freerdp from 2.0.0-rc2 to 2.0.0-rc3
+- Snap: update to libssh 0.8.0.
+
 ## [v1.2.31.3](https://gitlab.com/Remmina/Remmina/tags/v1.2.31.3) (2018-08-14)
 
 This is a bug fixing release.
