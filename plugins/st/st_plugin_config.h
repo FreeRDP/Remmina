@@ -40,7 +40,7 @@
   #define __PLUGIN_CONFIG_H
 
   #define PLUGIN_NAME        "ST"
-  #define PLUGIN_DESCRIPTION "ST - Socket terminal"
+  #define PLUGIN_DESCRIPTION "Remmina Simple Terminal"
   #define PLUGIN_VERSION     "1.0.0.0"
   #define PLUGIN_APPICON     "remmina-tool-symbolic"
 #endif

@@ -104,16 +104,15 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 	}
 	RemminaPluginData *gpdata;
 	RemminaFile *remminafile;
-	gboolean ret;
 	GError *error = NULL;
-	gchar *argv[50];  // Contains all the arguments included the password
-	gchar *argv_debug[50]; // Contains all the arguments, excluding the password
+	gchar *argv[50];  // Contains all the arguments
+	gchar *argv_debug[50]; // Contains all the arguments
 	gchar *command_line; // The whole command line obtained from argv_debug
+	const gchar *term;
+	const gchar *wflag;
+	const gchar *command; // The command to be passed to the terminal (if any)
 	gint argc;
 	gint i;
-
-	gchar *option_str;
-	gint option_int;
 
 	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
@@ -125,23 +124,34 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 		gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 	}
 
+	term = remmina_plugin_service->file_get_string(remminafile, "terminal");
+	if (g_strcmp0(term, "st") == 0) {
+		wflag = "-w";
+	}else if (g_strcmp0(term, "urxvt") == 0) {
+		wflag = "-embed";
+	}else if (g_strcmp0(term, "xterm") == 0) {
+		wflag = "-into";
+	}
+
 	argc = 0;
 	// Main executable name
 	ADD_ARGUMENT(g_strdup_printf("%s", remmina_plugin_service->file_get_string(remminafile, "terminal")), NULL);
 	// Embed st-window in another window
 	if (gpdata->socket_id != 0)
-		ADD_ARGUMENT("-w", g_strdup_printf("%i", gpdata->socket_id));
+		ADD_ARGUMENT(g_strdup(wflag), g_strdup_printf("%i", gpdata->socket_id));
+	// Add eventually any additional arguments set by the user
+	command = remmina_plugin_service->file_get_string(remminafile, "cmd");
+	if(command)
+		ADD_ARGUMENT("-e", g_strdup_printf("%s", command));
 	// End of the arguments list
 	ADD_ARGUMENT(NULL, NULL);
 	// Retrieve the whole command line
 	command_line = g_strjoinv(g_strdup(" "), (gchar **)&argv_debug[0]);
-	remmina_plugin_service->log_printf("[st] starting %s\n", command_line);
-	g_free(command_line);
+	remmina_plugin_service->log_printf("[%s] starting %s\n", PLUGIN_NAME, command_line);
 	// Execute the external process st
-	ret = g_spawn_async(NULL, argv, NULL, G_SPAWN_SEARCH_PATH,
-			NULL, NULL, &gpdata->pid, &error);
-	remmina_plugin_service->log_printf(
-			"[st] started st with GPid %d\n", &gpdata->pid);
+	g_spawn_command_line_async(command_line, &error);
+	g_free(command_line);
+
 	// Free the arguments list
 	for (i = 0; i < argc; i++)
 	{
@@ -149,12 +159,14 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 		g_free(argv[i]);
 	}
 	// Show error message
-	if (!ret)
+	if (error) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
+		g_error_free(error);
+	}
 	// Show attached window socket ID
 	if (!remmina_plugin_service->file_get_int(remminafile, "detached", FALSE)) {
-		remmina_plugin_service->log_printf("[st] attached window to socket %d\n",
-				gpdata->socket_id);
+		remmina_plugin_service->log_printf("[%s] attached window to socket %d\n",
+				PLUGIN_NAME, gpdata->socket_id);
 		return TRUE;
 	}
 	else
@@ -171,6 +183,14 @@ static gboolean remmina_plugin_st_close_connection(RemminaProtocolWidget *gp)
 	return FALSE;
 }
 
+static gpointer term_list[] =
+{
+	"st", "Suckless Simple Terminal",
+	"urxvt", "rxvt-unicode",
+	"xterm", "Xterm",
+	NULL
+};
+
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
  * a) RemminaProtocolSettingType for setting type
@@ -182,8 +202,8 @@ static gboolean remmina_plugin_st_close_connection(RemminaProtocolWidget *gp)
  */
 static const RemminaProtocolSetting remmina_plugin_st_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "terminal", N_("Terminal Emulator"), FALSE,
-		"st,xterm", NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT, "terminal", N_("Terminal Emulator"), FALSE, term_list, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "cmd", N_("Command to be executed"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
