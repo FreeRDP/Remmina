@@ -162,6 +162,7 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 	if (error) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
 		g_error_free(error);
+		return FALSE;
 	}
 	// Show attached window socket ID
 	if (!remmina_plugin_service->file_get_int(remminafile, "detached", FALSE)) {
