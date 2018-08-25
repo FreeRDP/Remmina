@@ -105,12 +105,13 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 	RemminaPluginData *gpdata;
 	RemminaFile *remminafile;
 	GError *error = NULL;
-	gchar *argv[50];  // Contains all the arguments
+	gchar *argv[50];       // Contains all the arguments
 	gchar *argv_debug[50]; // Contains all the arguments
-	gchar *command_line; // The whole command line obtained from argv_debug
-	const gchar *term;
+	gchar *command_line;   // The whole command line obtained from argv_debug
+	const gchar *term;     // Terminal emulator name from remimna profile.
+	//gchar *eterm;          // Terminal emulator executable full path
 	const gchar *wflag;
-	const gchar *command; // The command to be passed to the terminal (if any)
+	const gchar *command;  // The command to be passed to the terminal (if any)
 	gint argc;
 	gint i;
 
@@ -125,17 +126,25 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 	}
 
 	term = remmina_plugin_service->file_get_string(remminafile, "terminal");
+
 	if (g_strcmp0(term, "st") == 0) {
+		/* on Debian based distros st is packaged as stterm */
+		if (!g_find_program_in_path(term))
+			term = "stterm";
 		wflag = "-w";
 	}else if (g_strcmp0(term, "urxvt") == 0) {
 		wflag = "-embed";
 	}else if (g_strcmp0(term, "xterm") == 0) {
 		wflag = "-into";
 	}
+	if (!g_find_program_in_path(term)) {
+		remmina_plugin_service->protocol_plugin_set_error(gp, "%s not found", term);
+		return FALSE;
+	}
 
 	argc = 0;
 	// Main executable name
-	ADD_ARGUMENT(g_strdup_printf("%s", remmina_plugin_service->file_get_string(remminafile, "terminal")), NULL);
+	ADD_ARGUMENT(g_strdup_printf("%s", term), NULL);
 	// Embed st-window in another window
 	if (gpdata->socket_id != 0)
 		ADD_ARGUMENT(g_strdup(wflag), g_strdup_printf("%i", gpdata->socket_id));
