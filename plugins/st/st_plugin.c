@@ -135,7 +135,7 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 	}else if (g_strcmp0(term, "urxvt") == 0) {
 		wflag = "-embed";
 	}else if (g_strcmp0(term, "xterm") == 0) {
-		wflag = "-into";
+		wflag = "-xrm 'XTerm*allowSendEvents: true' -into";
 	}
 	if (!g_find_program_in_path(term)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s not found", term);
