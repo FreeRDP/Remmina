@@ -135,6 +135,10 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 		wflag = "-embed";
 	}else if (g_strcmp0(term, "xterm") == 0) {
 		wflag = "-xrm 'XTerm*allowSendEvents: true' -into";
+	}else if (g_strcmp0(term, "vim") == 0) {
+		wflag = "-g --socketid";
+	}else if (g_strcmp0(term, "emacs") == 0) {
+		wflag = "--parent-id";
 	}
 	if (!g_find_program_in_path(term)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s not found", term);
@@ -197,6 +201,8 @@ static gpointer term_list[] =
 	"st", "Suckless Simple Terminal",
 	"urxvt", "rxvt-unicode",
 	"xterm", "Xterm",
+	"emacs", "GNU Emacs",
+	"vim", "Vim Text Editor",
 	NULL
 };
 
