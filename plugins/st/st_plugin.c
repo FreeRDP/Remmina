@@ -109,8 +109,7 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 	gchar *argv_debug[50]; // Contains all the arguments
 	gchar *command_line;   // The whole command line obtained from argv_debug
 	const gchar *term;     // Terminal emulator name from remimna profile.
-	//gchar *eterm;          // Terminal emulator executable full path
-	const gchar *wflag;
+	const gchar *wflag = NULL;
 	const gchar *command;  // The command to be passed to the terminal (if any)
 	gint argc;
 	gint i;
