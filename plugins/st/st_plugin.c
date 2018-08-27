@@ -111,6 +111,7 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 	const gchar *term;     // Terminal emulator name from remimna profile.
 	const gchar *wflag = NULL;
 	const gchar *command;  // The command to be passed to the terminal (if any)
+	gboolean isterm;
 	gint argc;
 	gint i;
 
@@ -131,14 +132,19 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 		if (!g_find_program_in_path(term))
 			term = "stterm";
 		wflag = "-w";
+		isterm = TRUE;
 	}else if (g_strcmp0(term, "urxvt") == 0) {
 		wflag = "-embed";
+		isterm = TRUE;
 	}else if (g_strcmp0(term, "xterm") == 0) {
 		wflag = "-xrm 'XTerm*allowSendEvents: true' -into";
+		isterm = TRUE;
 	}else if (g_strcmp0(term, "vim") == 0) {
 		wflag = "-g --socketid";
+		isterm = FALSE;
 	}else if (g_strcmp0(term, "emacs") == 0) {
 		wflag = "--parent-id";
+		isterm = FALSE;
 	}
 	if (!g_find_program_in_path(term)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s not found", term);
@@ -153,8 +159,10 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 		ADD_ARGUMENT(g_strdup(wflag), g_strdup_printf("%i", gpdata->socket_id));
 	// Add eventually any additional arguments set by the user
 	command = remmina_plugin_service->file_get_string(remminafile, "cmd");
-	if(command)
+	if(command && isterm)
 		ADD_ARGUMENT("-e", g_strdup_printf("%s", command));
+	if(command && !isterm)
+		ADD_ARGUMENT("", g_strdup_printf("%s", command));
 	// End of the arguments list
 	ADD_ARGUMENT(NULL, NULL);
 	// Retrieve the whole command line
