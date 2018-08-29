@@ -101,7 +101,7 @@ void remmina_pref_on_color_scheme_selected(GtkWidget *widget, gpointer user_data
 	sourcepath = gtk_file_chooser_get_filename(remmina_pref_dialog->button_term_cs);
 	source = g_file_new_for_path(sourcepath);
 
-	remmina_dir = g_build_path( "/", g_get_user_config_dir(), g_get_prgname(), NULL);
+	remmina_dir = g_build_path( "/", g_get_user_config_dir(), "remmina", NULL);
 	/* /home/foo/.config/remmina */
 	destpath = g_strdup_printf("%s/remmina.colors", remmina_dir);
 	destination = g_file_new_for_path(destpath);

@@ -53,16 +53,15 @@ static gchar *cachedir;
 gchar *remmina_file_get_datadir(void)
 {
 	TRACE_CALL(__func__);
-	gchar *dir = g_strdup_printf(".%s", g_get_prgname());
+	const gchar *dir = ".remmina";
 	int i;
 	/* Legacy ~/.remmina */
 	remminadir = g_build_path("/", g_get_home_dir(), dir, NULL);
-	g_free(dir);
 	if (g_file_test(remminadir, G_FILE_TEST_IS_DIR))
 		return remminadir;
 	g_free(remminadir), remminadir = NULL;
 	/* ~/.local/share/remmina */
-	remminadir = g_build_path( "/", g_get_user_data_dir(), g_get_prgname(), NULL);
+	remminadir = g_build_path( "/", g_get_user_data_dir(), "remmina", NULL);
 	if (g_file_test(remminadir, G_FILE_TEST_IS_DIR))
 		return remminadir;
 	g_free(remminadir), remminadir = NULL;
@@ -70,13 +69,13 @@ gchar *remmina_file_get_datadir(void)
 	const gchar * const *dirs = g_get_system_data_dirs();
 	g_free(remminadir), remminadir = NULL;
 	for (i = 0; dirs[i] != NULL; ++i) {
-		remminadir = g_build_path( "/", dirs[i], g_get_prgname(), NULL);
+		remminadir = g_build_path( "/", dirs[i], "remmina", NULL);
 		if (g_file_test(remminadir, G_FILE_TEST_IS_DIR))
 			return remminadir;
 		g_free(remminadir), remminadir = NULL;
 	}
 	/* The last case we use  the home ~/.local/share/remmina */
-	remminadir = g_build_path( "/", g_get_user_data_dir(), g_get_prgname(), NULL);
+	remminadir = g_build_path( "/", g_get_user_data_dir(), "remmina", NULL);
 	return remminadir;
 }
 
@@ -97,16 +96,16 @@ void remmina_file_manager_init(void)
 {
 	TRACE_CALL(__func__);
 	GDir *dir;
-	gchar *legacy = g_strdup_printf(".%s", g_get_prgname());
+	const gchar *legacy = ".remmina";
 	const gchar *filename;
 	int i;
 
-	remminadir = g_build_path( "/", g_get_user_data_dir(), g_get_prgname(), NULL);
+	remminadir = g_build_path( "/", g_get_user_data_dir(), "remmina", NULL);
 	/* Create the XDG_USER_DATA directory */
 	g_mkdir_with_parents(remminadir, 0750);
 	g_free(remminadir), remminadir = NULL;
 	/* Create the XDG_CACHE_HOME directory */
-	cachedir = g_build_path( "/", g_get_user_cache_dir(), g_get_prgname(), NULL);
+	cachedir = g_build_path( "/", g_get_user_cache_dir(), "remmina", NULL);
 	g_mkdir_with_parents(cachedir, 0750);
 	g_free(cachedir), cachedir = NULL;
 	/* Empty legacy ~/.remmina */
@@ -117,7 +116,7 @@ void remmina_file_manager_init(void)
 			remmina_file_manager_do_copy(
 				g_build_path( "/", remminadir, filename, NULL),
 				g_build_path( "/", g_get_user_data_dir(),
-					g_get_prgname(), filename, NULL));
+					"remmina", filename, NULL));
 		}
 	}
 
@@ -125,14 +124,14 @@ void remmina_file_manager_init(void)
 	const gchar * const *dirs = g_get_system_data_dirs();
 	g_free(remminadir), remminadir = NULL;
 	for (i = 0; dirs[i] != NULL; ++i) {
-		remminadir = g_build_path( "/", dirs[i], g_get_prgname(), NULL);
+		remminadir = g_build_path( "/", dirs[i], "remmina", NULL);
 		if (g_file_test(remminadir, G_FILE_TEST_IS_DIR)) {
 			dir = g_dir_open(remminadir, 0, NULL);
 			while ((filename = g_dir_read_name(dir)) != NULL) {
 				remmina_file_manager_do_copy(
 					g_build_path( "/", remminadir, filename, NULL),
 					g_build_path( "/", g_get_user_data_dir(),
-						g_get_prgname(), filename, NULL));
+						"remmina", filename, NULL));
 			}
 		}
 		g_free(remminadir), remminadir = NULL;

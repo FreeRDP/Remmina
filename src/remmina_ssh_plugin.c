@@ -630,7 +630,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	 */
 	const gchar *color_name = remmina_plugin_service->file_get_string(remminafile, "ssh_color_scheme");
 
-	gchar *remmina_dir = g_build_path( "/", g_get_user_config_dir(), g_get_prgname(), "theme", NULL);
+	gchar *remmina_dir = g_build_path( "/", g_get_user_config_dir(), "remmina", "theme", NULL);
 	gchar *remmina_colors_file = g_strdup_printf("%s/%s.colors", remmina_dir, color_name);
 	g_free(remmina_dir);
 
@@ -643,7 +643,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 
 		unsigned int i = 0;
 		for (i = 0; dirs[i] != NULL; ++i) {
-			remmina_dir = g_build_path("/", dirs[i], g_get_prgname(), "theme", NULL);
+			remmina_dir = g_build_path("/", dirs[i], "remmina", "theme", NULL);
 			GDir *system_data_dir = g_dir_open(remmina_dir, 0, &error);
 			// ignoring this error is ok, because the folder may not existing
 			if (error) {
@@ -820,7 +820,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	rf = g_file_new_for_path(remminafile->filename);
 
 	if (remmina_plugin_service->file_get_string(remminafile, "sshlogfolder") == NULL) {
-		dir = g_build_path( "/", g_get_user_cache_dir(), g_get_prgname(), NULL);
+		dir = g_build_path( "/", g_get_user_cache_dir(), "remmina", NULL);
 	}else  {
 		dir = remmina_plugin_service->file_get_string(remminafile, "sshlogfolder");
 	}
@@ -1149,7 +1149,7 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 	unsigned int i = 0;
 	for (i = 0; dirs[i] != NULL; ++i) {
 		GDir *system_data_dir = NULL;
-		gchar *remmina_dir = g_build_path("/", dirs[i], g_get_prgname(), "theme", NULL);
+		gchar *remmina_dir = g_build_path("/", dirs[i], "remmina", "theme", NULL);
 		system_data_dir = g_dir_open(remmina_dir, 0, &error);
 		g_free(remmina_dir);
 		// ignoring this error is ok, because the folder may not existing
@@ -1175,7 +1175,7 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 	}
 
 	/* ~/.config/remmina/colors */
-	gchar *remmina_dir = g_build_path( "/", g_get_user_config_dir(), g_get_prgname(), "theme", NULL);
+	gchar *remmina_dir = g_build_path( "/", g_get_user_config_dir(), "remmina", "theme", NULL);
 	GDir *user_data_dir;
 	user_data_dir = g_dir_open(remmina_dir, 0, &error);
 	g_free(remmina_dir);
