@@ -722,6 +722,13 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
+	gchar **envp = g_get_environ();
+	if ( remmina_plugin_service->file_get_int(remminafile, "enableproxy", FALSE) ? TRUE : FALSE ) {
+		envp = g_environ_setenv (envp, "http_proxy", "", TRUE);
+		envp = g_environ_setenv (envp, "https_proxy", "", TRUE);
+	}
+	g_strfreev (envp);
+
 	if (!remmina_rdp_tunnel_init(gp))
 		return FALSE;
 
@@ -1481,7 +1488,8 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",		NULL,					    FALSE,	NULL,		    NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",		N_("Color depth"),			    FALSE,	colordepth_list,    NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder",		N_("Share folder"),			    FALSE,	NULL,		    NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disableautoreconnect",	N_("Disable automatic reconnection"),	    FALSE,	NULL,		    NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disableautoreconnect",	N_("Disable automatic reconnection"),	    TRUE,	NULL,		    NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "enableproxy",		N_("Enable proxy support"),		    FALSE,	NULL,		    NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			NULL,					    FALSE,	NULL,		    NULL}
 };
 
