@@ -221,14 +221,14 @@ void remmina_pref_init(void)
 	TRACE_CALL(__func__);
 	GKeyFile *gkeyfile;
 	gchar *remmina_dir;
-	const gchar *filename = g_strdup_printf("%s.pref", g_get_prgname());
-	const gchar *colors_filename = g_strdup_printf("%s.colors", g_get_prgname());
+	const gchar *filename = "remmina.pref";
+	const gchar *colors_filename = "remmina.colors";
 	gchar *remmina_colors_file;
 	GDir *dir;
-	gchar *legacy = g_strdup_printf(".%s", g_get_prgname());
+	gchar *legacy = ".remmina";
 	int i;
 
-	remmina_dir = g_build_path( "/", g_get_user_config_dir(), g_get_prgname(), NULL);
+	remmina_dir = g_build_path( "/", g_get_user_config_dir(), "remmina", NULL);
 	/* Create the XDG_CONFIG_HOME directory */
 	g_mkdir_with_parents(remmina_dir, 0750);
 
@@ -241,21 +241,21 @@ void remmina_pref_init(void)
 		remmina_pref_file_do_copy(
 			g_build_path( "/", remmina_dir, filename, NULL),
 			g_build_path( "/", g_get_user_config_dir(),
-				g_get_prgname(), filename, NULL));
+				"remmina", filename, NULL));
 	}
 
 	/* /usr/local/etc/remmina */
 	const gchar * const *dirs = g_get_system_config_dirs();
 	g_free(remmina_dir), remmina_dir = NULL;
 	for (i = 0; dirs[i] != NULL; ++i) {
-		remmina_dir = g_build_path( "/", dirs[i], g_get_prgname(), NULL);
+		remmina_dir = g_build_path( "/", dirs[i], "remmina", NULL);
 		if (g_file_test(remmina_dir, G_FILE_TEST_IS_DIR)) {
 			dir = g_dir_open(remmina_dir, 0, NULL);
 			while ((filename = g_dir_read_name(dir)) != NULL) {
 				remmina_pref_file_do_copy(
 					g_build_path( "/", remmina_dir, filename, NULL),
 					g_build_path( "/", g_get_user_config_dir(),
-						g_get_prgname(), filename, NULL));
+						"remmina", filename, NULL));
 			}
 			g_free(remmina_dir), remmina_dir = NULL;
 		}
@@ -265,7 +265,7 @@ void remmina_pref_init(void)
 	if (remmina_dir != NULL)
 		g_free(remmina_dir), remmina_dir = NULL;
 	remmina_dir = g_build_path( "/", g_get_user_config_dir(),
-		g_get_prgname(), NULL);
+		"remmina", NULL);
 
 	remmina_pref_file = g_strdup_printf("%s/remmina.pref", remmina_dir);
 	/* remmina.colors */
