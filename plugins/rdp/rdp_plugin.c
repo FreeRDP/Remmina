@@ -38,12 +38,6 @@
 
 /* Some string settings of freerdp are preallocated buffers of N bytes */
 #define FREERDP_CLIENTHOSTNAME_LEN      32
-/* At the moment with use only PROXY_TYPE_IGNORE */
-#define PROXY_TYPE_NONE		0
-#define PROXY_TYPE_HTTP		1
-#define PROXY_TYPE_SOCKS	2
-#define PROXY_TYPE_IGNORE	0xFFFF
-
 
 RemminaPluginService* remmina_plugin_service = NULL;
 static char remmina_rdp_plugin_default_drive_name[] = "RemminaDisk";
