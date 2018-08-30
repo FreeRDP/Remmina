@@ -38,6 +38,12 @@
 
 /* Some string settings of freerdp are preallocated buffers of N bytes */
 #define FREERDP_CLIENTHOSTNAME_LEN      32
+/* At the moment with use only PROXY_TYPE_IGNORE */
+#define PROXY_TYPE_NONE		0
+#define PROXY_TYPE_HTTP		1
+#define PROXY_TYPE_SOCKS	2
+#define PROXY_TYPE_IGNORE	0xFFFF
+
 
 RemminaPluginService* remmina_plugin_service = NULL;
 static char remmina_rdp_plugin_default_drive_name[] = "RemminaDisk";
@@ -722,12 +728,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
-	gchar **envp = g_get_environ();
-	if ( remmina_plugin_service->file_get_int(remminafile, "enableproxy", FALSE) ? TRUE : FALSE ) {
-		envp = g_environ_setenv (envp, "http_proxy", "", TRUE);
-		envp = g_environ_setenv (envp, "https_proxy", "", TRUE);
+	if ( !remmina_plugin_service->file_get_int(remminafile, "enableproxy", FALSE) ? TRUE : FALSE ) {
+		remmina_plugin_service->log_print("[RDP] Ignoring proxy environment variables\n");
+		rfi->settings->ProxyType = PROXY_TYPE_IGNORE;
 	}
-	g_strfreev (envp);
 
 	if (!remmina_rdp_tunnel_init(gp))
 		return FALSE;
