@@ -722,10 +722,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
+#if defined(PROXY_TYPE_IGNORE)
 	if ( !remmina_plugin_service->file_get_int(remminafile, "enableproxy", FALSE) ? TRUE : FALSE ) {
 		remmina_plugin_service->log_print("[RDP] Ignoring proxy environment variables\n");
 		rfi->settings->ProxyType = PROXY_TYPE_IGNORE;
 	}
+#endif
 
 	if (!remmina_rdp_tunnel_init(gp))
 		return FALSE;
@@ -1487,7 +1489,9 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",		N_("Color depth"),			    FALSE,	colordepth_list,    NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder",		N_("Share folder"),			    FALSE,	NULL,		    NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disableautoreconnect",	N_("Disable automatic reconnection"),	    TRUE,	NULL,		    NULL},
+#if defined(PROXY_TYPE_IGNORE)
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "enableproxy",		N_("Enable proxy support"),		    FALSE,	NULL,		    NULL},
+#endif
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			NULL,					    FALSE,	NULL,		    NULL}
 };
 
