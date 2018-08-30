@@ -35,6 +35,7 @@
  */
 
 #include "config.h"
+#include "buildflags.h"
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <stdlib.h>
@@ -67,6 +68,17 @@ static gboolean cb_closewidget(GtkWidget *widget, gpointer data)
 	if (REMMINA_IS_CONNECTION_WINDOW(widget))
 		return remmina_connection_window_delete(REMMINA_CONNECTION_WINDOW(widget));
 	return TRUE;
+}
+
+const gchar* remmina_exec_get_build_config(void)
+{
+	static const gchar build_config[] =
+	    "Build configuration: " BUILD_CONFIG "\n"
+	    "Build type:          " BUILD_TYPE "\n"
+	    "CFLAGS:              " CFLAGS "\n"
+	    "Compiler:            " COMPILER_ID ", " COMPILER_VERSION "\n"
+	    "Target architecture: " TARGET_ARCH "\n";
+	return build_config;
 }
 
 void remmina_exec_exitremmina()
@@ -213,9 +225,10 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 			/* Show th widget with the list of plugins and versions */
 			remmina_plugin_manager_show(mainwindow);
 		}else  {
-			g_print("%s %s %s (git %s)\n", g_get_application_name(), ISSNAP, VERSION, REMMINA_GIT_REVISION);
+			g_print("\n%s %s %s (git %s)\n\n", g_get_application_name(), ISSNAP, VERSION, REMMINA_GIT_REVISION);
 
 			remmina_plugin_manager_show_stdout();
+			g_print("\n%s\n", remmina_exec_get_build_config());
 			remmina_exec_command(REMMINA_COMMAND_EXIT, NULL);
 		}
 
