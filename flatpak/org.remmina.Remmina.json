@@ -3,9 +3,20 @@
     "runtime": "org.gnome.Platform",
     "runtime-version": "3.28",
     "sdk": "org.gnome.Sdk",
+    /**
+     * GCC 8 is required to fix build error since libssh-0.8.2:
+     *  « assuming signed overflow does not occur when simplifying
+     *    conditional to constant [-Werror=strict-overflow] »
+     */
+    "sdk-extensions": ["org.freedesktop.Sdk.Extension.gcc8"],
     "build-options" : {
         "cflags": "-O2 -g",
-        "cxxflags": "-O2 -g"
+        "cxxflags": "-O2 -g",
+        "prepend-path": "/lib/sdk/gcc8/bin",
+        "env": {
+            "CC": "/lib/sdk/gcc8/bin/gcc",
+            "CXX": "/lib/sdk/gcc8/bin/g++"
+        }
     },
     "command": "remmina",
     "cleanup": [
@@ -263,8 +274,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://www.libssh.org/files/0.8/libssh-0.8.1.tar.xz",
-                    "sha256": "d17f1267b4a5e46c0fbe66d39a3e702b8cefe788928f2eb6e339a18bb00b1924"
+                    "url": "https://www.libssh.org/files/0.8/libssh-0.8.2.tar.xz",
+                    "sha256": "8d1290f0fac4f8a75a9001dd404a8a093daba4e86c90c45ecf77d62f14c7b8a5"
                 }
             ],
             "modules": [
