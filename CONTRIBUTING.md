@@ -15,7 +15,7 @@ If you&#8217;d like to make changes to this project then the following basic ste
   2. Make your changes
   3. [Submit a merge request](https://gitlab.com/Remmina/Remmina/merge_requests/new)
 
-See our [wiki](https://https://gitlab.com/Remmina/Remmina/wikis/home) to know how to compile Remmina and FreeRDP.
+See our [wiki](https://gitlab.com/Remmina/Remmina/wikis/home) to know how to compile Remmina and FreeRDP.
 
 In general look at the issues labeled [&#8220;help wanted&#8221;](https://gitlab.com/Remmina/Remmina/issues?label_name%5B%5D=help+wanted), it&#8217;s probaly the best place where to start. If you would like to earn some money there are some bounties available, see below for more details.
 
