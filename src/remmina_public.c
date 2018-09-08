@@ -700,3 +700,30 @@ int remmina_public_split_resolution_string(const char *resolution_string, int *w
 	*h = lh;
 	return 1;
 }
+
+/* Return TRUE if current gtk version library in use is greater or equal than
+ * the requered major.minor.micro */
+gboolean remmina_gtk_check_version(guint major, guint minor, guint micro)
+{
+	guint rtmajor, rtminor, rtmicro;
+	rtmajor = gtk_get_major_version();
+	if (rtmajor > major) {
+		return TRUE;
+	}else if (rtmajor == major) {
+		rtminor = gtk_get_minor_version();
+		if (rtminor > minor) {
+			return TRUE;
+		}else if (rtminor == minor) {
+			rtmicro = gtk_get_micro_version();
+			if (rtmicro >= micro) {
+				return TRUE;
+			}else {
+				return FALSE;
+			}
+		}else {
+			return FALSE;
+		}
+	}else {
+		return FALSE;
+	}
+}

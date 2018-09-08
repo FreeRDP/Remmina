@@ -267,7 +267,12 @@ int main(int argc, char* argv[])
 	const gchar *app_id;
 	int status;
 
-	gdk_set_allowed_backends("x11,broadway,quartz,mir");
+	/* Enable wayland backend only after GTK 3.22.27 or the clipboard
+	 * will not work. See GTK bug 790031 */
+	if (remmina_gtk_check_version(3,22,27))
+		gdk_set_allowed_backends("wayland,x11,broadway,quartz,mir");
+	else
+		gdk_set_allowed_backends("x11,broadway,quartz,mir");
 
 	remmina_masterthread_exec_save_main_thread_id();
 
