@@ -116,3 +116,4 @@ gchar* remmina_public_str_replace(const gchar *string, const gchar *search, cons
  * and overwrites the original string */
 gchar* remmina_public_str_replace_in_place(gchar *string, const gchar *search, const gchar *replacement);
 int remmina_public_split_resolution_string(const char *resolution_string, int *w, int *h);
+gboolean remmina_gtk_check_version(guint major, guint minor, guint micro);
