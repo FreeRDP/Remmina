@@ -71,7 +71,7 @@ Send us your nice embodied desktops.
 
 If you rather prefer to contribute to Remmina with money you are more than welcome.
 
-For more informations See the [Remmina web site donation page](https://remmina.org/jekyll/donations/).
+For more informations See the [Remmina web site donation page](https://remmina.org/donations/).
 
 See the [THANKS.md](THANKS.md) file for an exhaustive list of supporters.
 
