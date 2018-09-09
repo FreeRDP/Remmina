@@ -1056,7 +1056,7 @@ void remmina_main_quick_search_on_icon_press(GtkEntry *entry, GtkEntryIconPositi
 void remmina_main_quick_search_on_changed(GtkEditable *editable, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-/* If a search text was input then temporary set the file mode to list */
+	/* If a search text was input then temporary set the file mode to list */
 	if (gtk_entry_get_text_length(remminamain->entry_quick_connect_server)) {
 		if (GTK_IS_TREE_STORE(remminamain->priv->file_model)) {
 			/* File view mode changed, put it to override and reload list */
@@ -1129,6 +1129,10 @@ static void remmina_main_init(void)
 		if (remmina_pref.main_maximize) {
 			gtk_window_maximize(remminamain->window);
 		}
+
+	/* Honor global peferences Search Bar visibility */
+	if (remmina_pref.hide_searchbar)
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(GET_OBJECT("search_toggle")), FALSE);
 
 	/* Add a GtkMenuItem to the Tools menu for each plugin of type REMMINA_PLUGIN_TYPE_TOOL */
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
