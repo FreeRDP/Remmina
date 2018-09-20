@@ -111,7 +111,7 @@ static gboolean remmina_plugin_st_open_connection(RemminaProtocolWidget *gp)
 	const gchar *term;     // Terminal emulator name from remimna profile.
 	const gchar *wflag = NULL;
 	const gchar *command;  // The command to be passed to the terminal (if any)
-	gboolean isterm;
+	gboolean isterm = FALSE;
 	gint argc;
 	gint i;
 
