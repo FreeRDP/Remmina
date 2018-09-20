@@ -587,6 +587,62 @@ static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** 
 	return True;
 }
 
+static BOOL remmina_rdp_gw_authenticate(freerdp* instance, char** username, char** password, char** domain)
+{
+	TRACE_CALL(__func__);
+	gchar *s_gwserv, *s_username, *s_password, *s_domain;
+	gint ret;
+	rfContext* rfi;
+	RemminaProtocolWidget* gp;
+	gboolean save;
+	gboolean disablepasswordstoring;
+	RemminaFile* remminafile;
+
+	rfi = (rfContext*)instance->context;
+	gp = rfi->protocol_widget;
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	if (!remmina_plugin_service->file_get_string(remminafile, "gateway_server"))
+		return False;
+	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
+	ret = remmina_plugin_service->protocol_plugin_init_authuserpwd(gp, TRUE, !disablepasswordstoring);
+
+	if (ret == GTK_RESPONSE_OK) {
+		s_username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
+		if (s_username) rfi->settings->Username = strdup(s_username);
+
+		s_password = remmina_plugin_service->protocol_plugin_init_get_password(gp);
+		if (s_password) rfi->settings->Password = strdup(s_password);
+
+		s_domain = remmina_plugin_service->protocol_plugin_init_get_domain(gp);
+		if (s_domain) rfi->settings->Domain = strdup(s_domain);
+
+		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
+		if (save) {
+			// User has requested to save credentials. We put all the new cretentials
+			// into remminafile->settings. They will be saved later, on successful connection, by
+			// remmina_connection_window.c
+
+			remmina_plugin_service->file_set_string( remminafile, "gateway_username", s_username );
+			remmina_plugin_service->file_set_string( remminafile, "gateway_password", s_password );
+			remmina_plugin_service->file_set_string( remminafile, "gateway_domain", s_domain );
+
+		}
+
+		if ( s_username ) g_free( s_username );
+		if ( s_password ) g_free( s_password );
+		if ( s_domain ) g_free( s_domain );
+
+		return True;
+	}else {
+		rfi->user_cancelled = TRUE;
+		return False;
+	}
+
+	return True;
+}
+
+
 static DWORD remmina_rdp_verify_certificate(freerdp* instance, const char *common_name, const char* subject,
 					    const char* issuer, const char* fingerprint, BOOL host_mismatch)
 {
@@ -1227,6 +1283,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	instance->PreConnect = remmina_rdp_pre_connect;
 	instance->PostConnect = remmina_rdp_post_connect;
 	instance->Authenticate = remmina_rdp_authenticate;
+	instance->GatewayAuthenticate = remmina_rdp_gw_authenticate;
 	instance->VerifyCertificate = remmina_rdp_verify_certificate;
 	instance->VerifyChangedCertificate = remmina_rdp_verify_changed_certificate;
 
