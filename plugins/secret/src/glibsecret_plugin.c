@@ -106,9 +106,9 @@ void remmina_plugin_glibsecret_store_password(RemminaFile *remminafile, const gc
 		NULL, &r, "filename", path, "key", key, NULL);
 	g_free(s);
 	if (r == NULL) {
-		remmina_plugin_service->log_printf("[glibsecret] password saved for file %s\n", path);
+		remmina_plugin_service->log_printf("[glibsecret] password \"%s\" saved for file %s\n", key, path);
 	}else  {
-		remmina_plugin_service->log_printf("[glibsecret] password cannot be saved for file %s\n", path);
+		remmina_plugin_service->log_printf("[glibsecret] password \"%s\" cannot be saved for file %s\n", key, path);
 		g_error_free(r);
 	}
 }
@@ -144,9 +144,9 @@ void remmina_plugin_glibsecret_delete_password(RemminaFile *remminafile, const g
 	path = remmina_plugin_service->file_get_path(remminafile);
 	secret_password_clear_sync(&remmina_file_secret_schema, NULL, &r, "filename", path, "key", key, NULL);
 	if (r == NULL) {
-		remmina_plugin_service->log_printf("[glibsecret] password deleted for file %s\n", path);
+		remmina_plugin_service->log_printf("[glibsecret] password \"%s\" deleted for file %s\n", key, path);
 	}else  {
-		remmina_plugin_service->log_printf("[glibsecret] password cannot be deleted for file %s\n", path);
+		remmina_plugin_service->log_printf("[glibsecret] password \"%s\" cannot be deleted for file %s\n", key, path);
 	}
 }
 
