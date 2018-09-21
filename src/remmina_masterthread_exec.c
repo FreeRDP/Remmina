@@ -52,7 +52,7 @@ static gboolean remmina_masterthread_exec_callback(RemminaMTExecData *d)
 	if (!d->cancelled) {
 		switch (d->func) {
 		case FUNC_INIT_SAVE_CRED:
-			remmina_protocol_widget_init_save_cred(d->p.init_save_creds.gp);
+			remmina_protocol_widget_save_cred(d->p.init_save_creds.gp);
 			break;
 		case FUNC_CHAT_RECEIVE:
 			remmina_protocol_widget_chat_receive(d->p.chat_receive.gp, d->p.chat_receive.text);
@@ -72,6 +72,16 @@ static gboolean remmina_masterthread_exec_callback(RemminaMTExecData *d)
 		case FUNC_PROTOCOLWIDGET_EMIT_SIGNAL:
 			remmina_protocol_widget_emit_signal(d->p.protocolwidget_emit_signal.gp, d->p.protocolwidget_emit_signal.signal_name);
 			break;
+		case FUNC_PROTOCOLWIDGET_MPPROGRESS:
+			d->p.protocolwidget_mpprogress.ret_mp = remmina_protocol_widget_mpprogress(d->p.protocolwidget_mpprogress.cnnobj, d->p.protocolwidget_mpprogress.message,
+				d->p.protocolwidget_mpprogress.response_callback, d->p.protocolwidget_mpprogress.response_callback_data);
+			break;
+		case FUNC_PROTOCOLWIDGET_MPDESTROY:
+			remmina_protocol_widget_mpdestroy(d->p.protocolwidget_mpdestroy.cnnobj, d->p.protocolwidget_mpdestroy.mp);
+			break;
+		case FUNC_PROTOCOLWIDGET_MPSHOWRETRY:
+			remmina_protocol_widget_panel_show_retry(d->p.protocolwidget_mpshowretry.gp);
+			break;
 		case FUNC_SFTP_CLIENT_CONFIRM_RESUME:
 #ifdef HAVE_LIBSSH
 			d->p.sftp_client_confirm_resume.retval = remmina_sftp_client_confirm_resume( d->p.sftp_client_confirm_resume.client,
@@ -87,9 +97,6 @@ static gboolean remmina_masterthread_exec_callback(RemminaMTExecData *d)
 #endif
 			break;
 
-		case FUNC_MESSAGE_PANEL_SETUP_AUTH:
-			remmina_message_panel_setup_auth(d->p.message_panel_setup_auth.mp, d->p.message_panel_setup_auth.message, d->p.message_panel_setup_auth.flags);
-			break;
 		}
 		pthread_mutex_lock(&d->pt_mutex);
 		d->complete = TRUE;

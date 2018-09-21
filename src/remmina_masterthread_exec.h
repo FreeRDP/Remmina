@@ -47,8 +47,11 @@ typedef struct remmina_masterthread_exec_data {
 	       FUNC_FTP_CLIENT_UPDATE_TASK, FUNC_FTP_CLIENT_GET_WAITING_TASK,
 	       FUNC_SFTP_CLIENT_CONFIRM_RESUME,
 	       FUNC_PROTOCOLWIDGET_EMIT_SIGNAL,
-	       FUNC_VTE_TERMINAL_SET_ENCODING_AND_PTY,
-	       FUNC_MESSAGE_PANEL_SETUP_AUTH } func;
+	       FUNC_PROTOCOLWIDGET_MPPROGRESS,
+	       FUNC_PROTOCOLWIDGET_MPDESTROY,
+	       FUNC_PROTOCOLWIDGET_MPSHOWRETRY,
+	       FUNC_VTE_TERMINAL_SET_ENCODING_AND_PTY
+	      } func;
 
 	union {
 		struct {
@@ -79,6 +82,20 @@ typedef struct remmina_masterthread_exec_data {
 			RemminaProtocolWidget* gp;
 			const gchar* signal_name;
 		} protocolwidget_emit_signal;
+		struct {
+			RemminaConnectionObject *cnnobj;
+			const gchar *message;
+			RemminaMessagePanelCallback response_callback;
+			gpointer response_callback_data;
+			RemminaMessagePanel *ret_mp;
+		} protocolwidget_mpprogress;
+		struct {
+			RemminaConnectionObject *cnnobj;
+			RemminaMessagePanel *mp;
+		} protocolwidget_mpdestroy;
+		struct {
+			RemminaProtocolWidget *gp;
+		} protocolwidget_mpshowretry;
 #ifdef HAVE_LIBSSH
 		struct {
 			RemminaSFTPClient *client;
@@ -94,11 +111,6 @@ typedef struct remmina_masterthread_exec_data {
 			int slave;
 		} vte_terminal_set_encoding_and_pty;
 #endif
-		struct {
-			RemminaMessagePanel *mp;
-			gchar *message;
-			unsigned flags;
-		} message_panel_setup_auth;
 	} p;
 
 	/* Mutex for thread synchronization */

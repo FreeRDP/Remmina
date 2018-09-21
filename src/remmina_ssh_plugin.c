@@ -312,8 +312,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 				break;
 			}
 
-			ret = remmina_ssh_auth_gui(REMMINA_SSH(shell), gp->cnnobj,
-				remminafile);
+			ret = remmina_ssh_auth_gui(REMMINA_SSH(shell), gp, remminafile);
 			if (ret == 0) {
 				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(shell)->error);
 			}

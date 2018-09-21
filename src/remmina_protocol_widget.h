@@ -97,7 +97,6 @@ void remmina_protocol_widget_open_connection(RemminaProtocolWidget *gp, RemminaF
 gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_grab_focus(RemminaProtocolWidget *gp);
 const RemminaProtocolFeature* remmina_protocol_widget_get_features(RemminaProtocolWidget *gp);
-const gchar* remmina_protocol_widget_get_domain(RemminaProtocolWidget *gp);
 gboolean remmina_protocol_widget_query_feature_by_type(RemminaProtocolWidget *gp, RemminaProtocolFeatureType type);
 gboolean remmina_protocol_widget_query_feature_by_ref(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature);
 void remmina_protocol_widget_call_feature_by_type(RemminaProtocolWidget *gp, RemminaProtocolFeatureType type, gint id);
@@ -121,24 +120,32 @@ gboolean remmina_protocol_widget_start_reverse_tunnel(RemminaProtocolWidget *gp,
 gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget *gp, RemminaXPortTunnelInitFunc init_func);
 void remmina_protocol_widget_set_display(RemminaProtocolWidget *gp, gint display);
 
-gint remmina_protocol_widget_init_authpwd(RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type, gboolean allow_password_saving);
-gint remmina_protocol_widget_init_authuserpwd(RemminaProtocolWidget *gp, gboolean want_domain, gboolean allow_password_saving);
-gint remmina_protocol_widget_init_certificate(RemminaProtocolWidget* gp, const gchar* subject, const gchar* issuer, const gchar* fingerprint);
-gint remmina_protocol_widget_changed_certificate(RemminaProtocolWidget *gp, const gchar* subject, const gchar* issuer, const gchar* new_fingerprint, const gchar* old_fingerprint);
-gchar* remmina_protocol_widget_init_get_username(RemminaProtocolWidget *gp);
-gchar* remmina_protocol_widget_init_get_password(RemminaProtocolWidget *gp);
-gchar* remmina_protocol_widget_init_get_domain(RemminaProtocolWidget *gp);
-gboolean remmina_protocol_widget_init_get_savepassword(RemminaProtocolWidget *gp);
-gint remmina_protocol_widget_init_authx509(RemminaProtocolWidget *gp);
-gchar* remmina_protocol_widget_init_get_cacert(RemminaProtocolWidget *gp);
-gchar* remmina_protocol_widget_init_get_cacrl(RemminaProtocolWidget *gp);
-gchar* remmina_protocol_widget_init_get_clientcert(RemminaProtocolWidget *gp);
-gchar* remmina_protocol_widget_init_get_clientkey(RemminaProtocolWidget *gp);
-void remmina_protocol_widget_init_save_cred(RemminaProtocolWidget *gp);
-void remmina_protocol_widget_init_show_listen(RemminaProtocolWidget *gp, gint port);
-void remmina_protocol_widget_init_show_retry(RemminaProtocolWidget *gp);
-void remmina_protocol_widget_init_show(RemminaProtocolWidget *gp);
-void remmina_protocol_widget_init_hide(RemminaProtocolWidget *gp);
+
+/* Dialog panel API used by the plugins */
+
+gint remmina_protocol_widget_panel_authpwd(RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type, gboolean allow_password_saving);
+gint remmina_protocol_widget_panel_authuserpwd(RemminaProtocolWidget *gp, gboolean want_domain, gboolean allow_password_saving, const char *tips);
+gint remmina_protocol_widget_panel_new_certificate(RemminaProtocolWidget* gp, const gchar* subject, const gchar* issuer, const gchar* fingerprint);
+gint remmina_protocol_widget_panel_changed_certificate(RemminaProtocolWidget *gp, const gchar* subject, const gchar* issuer, const gchar* new_fingerprint, const gchar* old_fingerprint);
+gint remmina_protocol_widget_panel_question_yesno(RemminaProtocolWidget* gp, const char *msg);
+
+void remmina_protocol_widget_panel_show(RemminaProtocolWidget *gp);
+void remmina_protocol_widget_panel_hide(RemminaProtocolWidget *gp);
+void remmina_protocol_widget_panel_destroy(RemminaProtocolWidget *gp);
+gint remmina_protocol_widget_panel_authx509(RemminaProtocolWidget *gp);
+void remmina_protocol_widget_panel_show_listen(RemminaProtocolWidget *gp, gint port);
+void remmina_protocol_widget_panel_show_retry(RemminaProtocolWidget *gp);
+
+void remmina_protocol_widget_save_cred(RemminaProtocolWidget *gp);
+
+gchar* remmina_protocol_widget_get_username(RemminaProtocolWidget *gp);
+gchar* remmina_protocol_widget_get_password(RemminaProtocolWidget *gp);
+gchar* remmina_protocol_widget_get_domain(RemminaProtocolWidget *gp);
+gboolean remmina_protocol_widget_get_savepassword(RemminaProtocolWidget *gp);
+gchar* remmina_protocol_widget_get_cacert(RemminaProtocolWidget *gp);
+gchar* remmina_protocol_widget_get_cacrl(RemminaProtocolWidget *gp);
+gchar* remmina_protocol_widget_get_clientcert(RemminaProtocolWidget *gp);
+gchar* remmina_protocol_widget_get_clientkey(RemminaProtocolWidget *gp);
 
 void remmina_protocol_widget_chat_open(RemminaProtocolWidget *gp, const gchar *name,
 				       void (*on_send)(RemminaProtocolWidget *gp, const gchar *text), void (*on_destroy)(RemminaProtocolWidget *gp));
@@ -153,6 +160,10 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget* gp, GtkMenuI
 gboolean remmina_protocol_widget_plugin_screenshot(RemminaProtocolWidget* gp, RemminaPluginScreenshotData *rpsd);
 
 void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp, gint w, gint h);
+
+/* Functions to support execution of GTK code on master thread */
+RemminaMessagePanel* remmina_protocol_widget_mpprogress(RemminaConnectionObject* cnnobj, const gchar *msg, RemminaMessagePanelCallback response_callback, gpointer response_callback_data);
+void remmina_protocol_widget_mpdestroy(RemminaConnectionObject *cnnobj, RemminaMessagePanel *mp);
 
 
 G_END_DECLS

@@ -51,17 +51,35 @@ enum {
 	REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSRORD=4
 };
 
+/* Widgets ID for dialog fields */
+enum {
+	REMMINA_MESSAGE_PANEL_USERNAME=1,
+	REMMINA_MESSAGE_PANEL_PASSWORD,
+	REMMINA_MESSAGE_PANEL_DOMAIN,
+	REMMINA_MESSAGE_PANEL_SAVEPASSWORD,
+	REMMINA_MESSAGE_PANEL_CACERTFILE,
+	REMMINA_MESSAGE_PANEL_CACRLFILE,
+	REMMINA_MESSAGE_PANEL_CLIENTCERTFILE,
+	REMMINA_MESSAGE_PANEL_CLIENTKEYFILE,
+	REMMINA_MESSAGE_PANEL_MAXWIDGETID
+};
+
+/* Callback function type to receive buttons notification */
+typedef void (*RemminaMessagePanelCallback)(void *user_data, int button);
+
 RemminaMessagePanel *remmina_message_panel_new(void);
-void remmina_message_panel_setup_progress(RemminaMessagePanel *mp, gchar *message);
-void remmina_message_panel_setup_message(RemminaMessagePanel *mp, gchar *message);
-void remmina_message_panel_setup_question(RemminaMessagePanel *mp, gchar *message);
-void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, gchar *message, unsigned flags);
-void remmina_message_panel_setup_cert(RemminaMessagePanel *mp, const gchar* subject, const gchar* issuer, const gchar* new_fingerprint, const gchar* old_fingerprint);
-void remmina_message_panel_setup_auth_x509(RemminaMessagePanel *mp, const gchar *cacert, const gchar *cacrl, const gchar *clientcert, const gchar *clientkey);
-gint remmina_message_panel_wait_user_answer(RemminaMessagePanel *mp);
+void remmina_message_panel_setup_progress(RemminaMessagePanel *mp, const gchar *message, RemminaMessagePanelCallback response_callback, gpointer response_callback_data);
+void remmina_message_panel_setup_message(RemminaMessagePanel *mp, const gchar *message, RemminaMessagePanelCallback response_callback, gpointer response_callback_data);
+void remmina_message_panel_setup_question(RemminaMessagePanel *mp, const gchar *message, RemminaMessagePanelCallback response_callback, gpointer response_callback_data);
+void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePanelCallback response_callback, gpointer response_callback_data, const gchar *title, const gchar *password_prompt, unsigned flags);
+void remmina_message_panel_setup_auth_x509(RemminaMessagePanel *mp, RemminaMessagePanelCallback response_callback, gpointer response_callback_data);
+void remmina_message_panel_focus_auth_entry(RemminaMessagePanel *mp);
+void remmina_message_panel_field_set_string(RemminaMessagePanel *mp, int entryid, const gchar *text);
+gchar* remmina_message_panel_field_get_string(RemminaMessagePanel *mp, int entryid);
+void remmina_message_panel_field_set_switch(RemminaMessagePanel *mp, int entryid, gboolean state);
+gboolean remmina_message_panel_field_get_switch_state(RemminaMessagePanel *mp, int entryid);
+void remmina_message_panel_field_set_filename(RemminaMessagePanel *mp, int entryid, const gchar *filename);
+gchar* remmina_message_panel_field_get_filename(RemminaMessagePanel *mp, int entryid);
+
 
 G_END_DECLS
-
-
-
-

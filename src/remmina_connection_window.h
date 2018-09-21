@@ -80,7 +80,8 @@ void remmina_connection_window_set_delete_confirm_mode(RemminaConnectionWindow* 
 GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallback disconnect_cb, gpointer data,
 							 guint* handler);
 
-void remmina_connection_object_hide_message_panel(RemminaConnectionObject *cnnobj);
+
+void remmina_connection_object_destroy_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePanel *mp);
 void remmina_connection_object_show_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePanel *mp);
 
 #define MESSAGE_PANEL_SPINNER 0x00000001

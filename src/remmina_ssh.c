@@ -362,7 +362,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password)
 }
 
 gint
-remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaConnectionObject *cnnobj, RemminaFile *remminafile)
+remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *remminafile)
 {
 	TRACE_CALL(__func__);
 	gchar *tips;
@@ -375,10 +375,6 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaConnectionObject *cnnobj, RemminaFi
 	ssh_key server_pubkey;
 	gboolean disablepasswordstoring;
 	gboolean save_password;
-	RemminaMessagePanel *mp;
-
-	if (!remmina_masterthread_exec_is_main_thread())
-		printf("WARNING: function %s should never be called from the masterthread", __func__);
 
 	/* Check if the server's public key is known */
 	ret = ssh_is_server_known(ssh->session);
@@ -403,29 +399,25 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaConnectionObject *cnnobj, RemminaFi
 		ssh_key_free(server_pubkey);
 		keyname = ssh_get_hexa(pubkey, len);
 
-		mp = remmina_message_panel_new();
 		if (ret == SSH_SERVER_NOT_KNOWN || ret == SSH_SERVER_FILE_NOT_FOUND) {
-			message = g_strdup_printf("%s %s %s",
+			message = g_strdup_printf("%s\n%s\n\n%s",
 				_("The server is unknown. The public key fingerprint is:"),
 				keyname,
 				_("Do you trust the new public key?"));
 		}else  {
-			message =  g_strdup_printf("%s %s %s",
+			message =  g_strdup_printf("%s\n%s\n\n%s",
 				_("WARNING: The server has changed its public key. This means either you are under attack,\n"
 				"or the administrator has changed the key. The new public key fingerprint is:"),
 				keyname,
 				_("Do you trust the new public key?"));
 		}
-		remmina_message_panel_setup_question(mp, message);
+
+		ret = remmina_protocol_widget_panel_question_yesno(gp, message);
 		g_free(message);
-		remmina_connection_object_show_message_panel(cnnobj, mp);
-		/* end of masterthread required */
-		ret = remmina_message_panel_wait_user_answer(mp);
-		g_clear_object(&mp);
 
 		ssh_string_free_char(keyname);
 		ssh_clean_pubkey_hash(&pubkey);
-		if (ret != 1) return -1;
+		if (ret != GTK_RESPONSE_YES) return -1;
 		ssh_write_knownhost(ssh->session);
 		break;
 	case SSH_SERVER_ERROR:
@@ -461,46 +453,25 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaConnectionObject *cnnobj, RemminaFi
 
 	/* Requested for a non-empty password */
 	if (ret < 0) {
-		gchar *msg;
-
-		if (!cnnobj) {
-			printf("WARNING: cnnobj is null in %s\n", __func__);
-			return -1;
-		}
-
-		msg = g_strdup_printf(tips, ssh->user, ssh->server);
+		gchar *pwd;
 
 		disablepasswordstoring = remmina_file_get_int(remminafile, "disablepasswordstoring", FALSE);
 
+		ret = remmina_protocol_widget_panel_authuserpwd(gp, FALSE, !disablepasswordstoring, tips);
+		save_password = remmina_protocol_widget_get_savepassword(gp);
 
-		mp = remmina_message_panel_new();
-		remmina_message_panel_setup_auth(mp, keyname, disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSRORD);
-		remmina_connection_object_show_message_panel(cnnobj, mp);
-
-		g_free(msg);
-		ret = remmina_message_panel_wait_user_answer(mp);
-
-		/* ToDo: get save_password checkbox value from MessagePanel here (and password below) */
-		save_password = FALSE;
-		g_clear_object(&mp);
-
-/*
-		remmina_init_dialog_set_status(dialog, tips, ssh->user, ssh->server);
-
-		ret = remmina_init_dialog_authpwd(dialog, keyname, !disablepasswordstoring);
-
-*/
-
-		if (ret == 1) {
+		if (ret == GTK_RESPONSE_OK) {
 			if (save_password) {
-				/* To do: get password value from mp here */
-				remmina_file_set_string(remminafile, pwdtype, "");
+				pwd = remmina_protocol_widget_get_password(gp);
+				remmina_file_set_string(remminafile, pwdtype, pwd);
+				g_free(pwd);
 			}
 		}else  {
 			return -1;
 		}
-		/* To do: get password value from mp here */
-		ret = remmina_ssh_auth(ssh, "");
+		pwd = remmina_protocol_widget_get_password(gp);
+		ret = remmina_ssh_auth(ssh, pwd);
+		g_free(pwd);
 	}
 
 	if (ret <= 0) {
