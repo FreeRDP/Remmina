@@ -1785,6 +1785,7 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	DECLARE_CNNOBJ
 		gp = REMMINA_PROTOCOL_WIDGET(cnnobj->proto);
 
+	GtkClipboard *c = gtk_clipboard_get (GDK_SELECTION_CLIPBOARD);
 	// Ask the plugin if it can give us a screenshot
 	if (remmina_protocol_widget_plugin_screenshot(gp, &rpsd)) {
 		// Good, we have a screenshot from the plugin !
@@ -1805,7 +1806,9 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 		stride = cairo_format_stride_for_width(cairo_format, width);
 
 		srcsurface = cairo_image_surface_create_for_data(rpsd.buffer, cairo_format, width, height, stride);
-
+		// Transfer the PixBuf in the main clipboard selection
+		gtk_clipboard_set_image (c, gdk_pixbuf_get_from_surface (
+					srcsurface, 0, 0, width, height));
 		surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height);
 		cr = cairo_create(surface);
 		cairo_set_source_surface(cr, srcsurface, 0, 0);
@@ -1838,6 +1841,8 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 		if (screenshot == NULL)
 			g_print("gdk_pixbuf_get_from_window failed\n");
 
+		// Transfer the PixBuf in the main clipboard selection
+		gtk_clipboard_set_image (c, screenshot);
 		// Prepare the destination cairo surface.
 		surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height);
 		cr = cairo_create(surface);
@@ -1884,8 +1889,6 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	//Clean up and return.
 	cairo_destroy(cr);
 	cairo_surface_destroy(surface);
-
-
 }
 
 static void remmina_connection_holder_toolbar_minimize(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
