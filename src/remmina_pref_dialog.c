@@ -183,6 +183,7 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.show_menu_icons = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_appearance_show_menu_icons);
 	remmina_pref.scale_quality = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_options_scale_quality);
 	remmina_pref.screenshot_path = gtk_file_chooser_get_filename(remmina_pref_dialog->filechooserbutton_options_screenshots_path);
+	remmina_pref.screenshot_name = gtk_entry_get_text(remmina_pref_dialog->entry_options_screenshot_name);
 	remmina_pref.ssh_loglevel = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_options_ssh_loglevel);
 	remmina_pref.sshtunnel_port = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_options_ssh_port));
 	if (remmina_pref.sshtunnel_port <= 0)
@@ -512,6 +513,11 @@ static void remmina_pref_dialog_init(void)
 	}else{
 		gtk_file_chooser_set_filename(remmina_pref_dialog->filechooserbutton_options_screenshots_path, g_get_home_dir());
 	}
+	if (remmina_pref.screenshot_name != NULL) {
+		gtk_entry_set_text(remmina_pref_dialog->entry_options_screenshot_name, remmina_pref.screenshot_name);
+	}else{
+		gtk_entry_set_text(remmina_pref_dialog->entry_options_screenshot_name, "remmina_%p_%h_%Y%m%d-%H%M%S");
+	}
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_options_ssh_parseconfig), remmina_pref.ssh_parseconfig);
 
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_copy, remmina_pref.vte_shortcutkey_copy);
@@ -556,6 +562,7 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->checkbutton_options_ssh_parseconfig = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_options_ssh_parseconfig"));
 	remmina_pref_dialog->comboboxtext_options_ssh_loglevel = GTK_COMBO_BOX(GET_OBJECT("comboboxtext_options_ssh_loglevel"));
 	remmina_pref_dialog->filechooserbutton_options_screenshots_path = GTK_FILE_CHOOSER(GET_OBJECT("filechooserbutton_options_screenshots_path"));
+	remmina_pref_dialog->entry_options_screenshot_name = GTK_ENTRY(GET_OBJECT("entry_options_screenshot_name"));
 	remmina_pref_dialog->entry_options_ssh_port = GTK_ENTRY(GET_OBJECT("entry_options_ssh_port"));
 	remmina_pref_dialog->entry_options_ssh_tcp_keepidle = GTK_ENTRY(GET_OBJECT("entry_options_ssh_tcp_keepidle"));
 	remmina_pref_dialog->entry_options_ssh_tcp_keepintvl = GTK_ENTRY(GET_OBJECT("entry_options_ssh_tcp_keepintvl"));

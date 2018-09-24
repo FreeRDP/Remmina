@@ -54,6 +54,7 @@
 #include "remmina_protocol_widget.h"
 #include "remmina_public.h"
 #include "remmina_scrolled_viewport.h"
+#include "remmina_utils.h"
 #include "remmina_widget_pool.h"
 #include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
@@ -1767,9 +1768,8 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 	GdkWindow *active_window;
 	cairo_t *cr;
 	gint width, height;
-	const gchar* remminafile;
+	GString *pngstr;
 	gchar* pngname;
-	gchar* pngdate;
 	GtkWidget* dialog;
 	RemminaProtocolWidget *gp;
 	RemminaPluginScreenshotData rpsd;
@@ -1851,22 +1851,30 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 
 	}
 
-	remminafile = remmina_file_get_filename(cnnobj->remmina_file);
-	//imagedir = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
-	/** @todo Improve file name (DONE:8743571d) + give the user the option */
-	pngdate = g_strdup_printf("%d-%d-%d-%d:%d:%f",
-		g_date_time_get_year(date),
-		g_date_time_get_month(date),
-		g_date_time_get_day_of_month(date),
-		g_date_time_get_hour(date),
-		g_date_time_get_minute(date),
-		g_date_time_get_seconds(date));
+	//home/antenore/Pictures/remmina_%p_%h_%Y  %m %d-%H%M%S.png pngname
+        //home/antenore/Pictures/remmina_st_  _2018 9 24-151958.240374.png
 
+	pngstr = g_string_new(g_strdup_printf("%s/%s.png",
+				remmina_pref.screenshot_path,
+				remmina_pref.screenshot_name));
+	remmina_utils_string_replace_all(pngstr, "%p",
+			remmina_file_get_string(cnnobj->remmina_file, "name"));
+	remmina_utils_string_replace_all(pngstr, "%h",
+			remmina_file_get_string(cnnobj->remmina_file, "server"));
+	remmina_utils_string_replace_all(pngstr, "%Y",
+			g_strdup_printf("%d", g_date_time_get_year(date)));
+	remmina_utils_string_replace_all(pngstr, "%m", g_strdup_printf("%d",
+				g_date_time_get_month(date)));
+	remmina_utils_string_replace_all(pngstr, "%d",
+			g_strdup_printf("%d", g_date_time_get_day_of_month(date)));
+	remmina_utils_string_replace_all(pngstr, "%H",
+			g_strdup_printf("%d", g_date_time_get_hour(date)));
+	remmina_utils_string_replace_all(pngstr, "%M",
+			g_strdup_printf("%d", g_date_time_get_minute(date)));
+	remmina_utils_string_replace_all(pngstr, "%S",
+			g_strdup_printf("%f", g_date_time_get_seconds(date)));
 	g_date_time_unref(date);
-	if (remminafile == NULL)
-		remminafile = "remmina_screenshot";
-	pngname = g_strdup_printf("%s/%s-%s.png", remmina_pref.screenshot_path,
-		g_path_get_basename(remminafile), pngdate);
+	pngname = g_string_free(pngstr, FALSE);
 
 	cairo_surface_write_to_png(surface, pngname);
 

@@ -64,6 +64,7 @@ typedef struct _RemminaPrefDialog {
 	GtkComboBox *comboboxtext_options_ssh_loglevel;
 	GtkComboBox *comboboxtext_appearance_fullscreen_toolbar_visibility;
 	GtkFileChooser *filechooserbutton_options_screenshots_path;
+	GtkEntry *entry_options_screenshot_name;
 	GtkCheckButton *checkbutton_options_ssh_parseconfig;
 	GtkEntry *entry_options_ssh_port;
 	GtkEntry *entry_options_ssh_tcp_keepidle;
