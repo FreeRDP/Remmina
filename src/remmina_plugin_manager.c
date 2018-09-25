@@ -128,7 +128,18 @@ static void init_settings_cache(RemminaPlugin *plugin)
 static gboolean remmina_plugin_manager_register_plugin(RemminaPlugin *plugin)
 {
 	TRACE_CALL(__func__);
-
+	gboolean usegtksocket = FALSE;
+	/* TODO: usegtksocket should be defined inside the plugin, not tested here */
+	usegtksocket = (g_strcmp0 (plugin->name, "ST") == 0    ||
+			g_strcmp0 (plugin->name, "XDMCP") == 0 ||
+			g_strcmp0 (plugin->name, "NX") == 0 ) ? TRUE : FALSE;
+	if (remmina_gtksocket_available() == FALSE && usegtksocket == TRUE) {
+		// We don't have an X11 display, so GtkSocket will not work
+		remmina_public_send_notification("remmina-x11-notsupported",
+				_("X11 backend not available"),
+				_("XWayland or Xorg are required"));
+		return FALSE;
+	}
 	if (plugin->type == REMMINA_PLUGIN_TYPE_SECRET) {
 		if (remmina_secret_plugin) {
 			g_print("Remmina plugin %s (type=%s) bypassed.\n", plugin->name,
@@ -141,11 +152,10 @@ static gboolean remmina_plugin_manager_register_plugin(RemminaPlugin *plugin)
 
 	g_ptr_array_add(remmina_plugin_table, plugin);
 	g_ptr_array_sort(remmina_plugin_table, (GCompareFunc)remmina_plugin_manager_compare_func);
-	/* g_print("Remmina plugin %s (type=%s) registered.\n", plugin->name, _(remmina_plugin_type_name[plugin->type])); */
 	return TRUE;
 }
 
-static gboolean remmina_gtksocket_available()
+gboolean remmina_gtksocket_available()
 {
 	GdkDisplayManager* dm;
 	GdkDisplay* d;
