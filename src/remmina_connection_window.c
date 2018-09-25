@@ -1807,8 +1807,10 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 
 		srcsurface = cairo_image_surface_create_for_data(rpsd.buffer, cairo_format, width, height, stride);
 		// Transfer the PixBuf in the main clipboard selection
-		gtk_clipboard_set_image (c, gdk_pixbuf_get_from_surface (
-					srcsurface, 0, 0, width, height));
+		if (!remmina_pref.deny_screenshot_clipboard) {
+			gtk_clipboard_set_image (c, gdk_pixbuf_get_from_surface (
+						srcsurface, 0, 0, width, height));
+		}
 		surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height);
 		cr = cairo_create(surface);
 		cairo_set_source_surface(cr, srcsurface, 0, 0);
@@ -1842,7 +1844,9 @@ static void remmina_connection_holder_toolbar_screenshot(GtkWidget* widget, Remm
 			g_print("gdk_pixbuf_get_from_window failed\n");
 
 		// Transfer the PixBuf in the main clipboard selection
-		gtk_clipboard_set_image (c, screenshot);
+		if (!remmina_pref.deny_screenshot_clipboard) {
+			gtk_clipboard_set_image (c, screenshot);
+		}
 		// Prepare the destination cairo surface.
 		surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height);
 		cr = cairo_create(surface);
