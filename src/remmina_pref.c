@@ -399,12 +399,23 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.ssh_loglevel = DEFAULT_SSH_LOGLEVEL;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "deny_screenshot_clipboard", NULL))
+		remmina_pref.deny_screenshot_clipboard = g_key_file_get_boolean(gkeyfile, "remmina_pref", "deny_screenshot_clipboard", NULL);
+	else
+		remmina_pref.deny_screenshot_clipboard = TRUE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "screenshot_path", NULL)) {
 		remmina_pref.screenshot_path = g_key_file_get_string(gkeyfile, "remmina_pref", "screenshot_path", NULL);
 	}else{
 		remmina_pref.screenshot_path = g_get_user_special_dir(G_USER_DIRECTORY_PICTURES);
 		if (remmina_pref.screenshot_path == NULL)
 			remmina_pref.screenshot_path = g_get_home_dir();
+	}
+
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "screenshot_name", NULL)) {
+		remmina_pref.screenshot_name = g_key_file_get_string(gkeyfile, "remmina_pref", "screenshot_name", NULL);
+	}else{
+		remmina_pref.screenshot_name = g_strdup("remmina_%p_%h_%Y%m%d-%H%M%S");
 	}
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "ssh_parseconfig", NULL))
@@ -666,6 +677,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
 
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_view_mode", remmina_pref.save_view_mode);
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "deny_screenshot_clipboard", remmina_pref.deny_screenshot_clipboard);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "floating_toolbar_placement", remmina_pref.floating_toolbar_placement);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "toolbar_placement", remmina_pref.toolbar_placement);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "prevent_snap_welcome_message", remmina_pref.prevent_snap_welcome_message);
@@ -677,6 +689,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "scale_quality", remmina_pref.scale_quality);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "ssh_loglevel", remmina_pref.ssh_loglevel);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "screenshot_path", remmina_pref.screenshot_path);
+	g_key_file_set_string(gkeyfile, "remmina_pref", "screenshot_name", remmina_pref.screenshot_name);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "ssh_parseconfig", remmina_pref.ssh_parseconfig);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_toolbar", remmina_pref.hide_toolbar);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "hide_statusbar", remmina_pref.hide_statusbar);
