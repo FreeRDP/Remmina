@@ -587,6 +587,62 @@ static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** 
 	return True;
 }
 
+static BOOL remmina_rdp_gw_authenticate(freerdp* instance, char** username, char** password, char** domain)
+{
+	TRACE_CALL(__func__);
+	gchar *s_username, *s_password, *s_domain;
+	gint ret;
+	rfContext* rfi;
+	RemminaProtocolWidget* gp;
+	gboolean save;
+	gboolean disablepasswordstoring;
+	RemminaFile* remminafile;
+
+	rfi = (rfContext*)instance->context;
+	gp = rfi->protocol_widget;
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	if (!remmina_plugin_service->file_get_string(remminafile, "gateway_server"))
+		return False;
+	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
+	ret = remmina_plugin_service->protocol_plugin_init_authuserpwd(gp, TRUE, !disablepasswordstoring);
+
+	if (ret == GTK_RESPONSE_OK) {
+		s_username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
+		if (s_username) rfi->settings->Username = strdup(s_username);
+
+		s_password = remmina_plugin_service->protocol_plugin_init_get_password(gp);
+		if (s_password) rfi->settings->Password = strdup(s_password);
+
+		s_domain = remmina_plugin_service->protocol_plugin_init_get_domain(gp);
+		if (s_domain) rfi->settings->Domain = strdup(s_domain);
+
+		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
+		if (save) {
+			// User has requested to save credentials. We put all the new cretentials
+			// into remminafile->settings. They will be saved later, on successful connection, by
+			// remmina_connection_window.c
+
+			remmina_plugin_service->file_set_string( remminafile, "gateway_username", s_username );
+			remmina_plugin_service->file_set_string( remminafile, "gateway_password", s_password );
+			remmina_plugin_service->file_set_string( remminafile, "gateway_domain", s_domain );
+
+		}
+
+		if ( s_username ) g_free( s_username );
+		if ( s_password ) g_free( s_password );
+		if ( s_domain ) g_free( s_domain );
+
+		return True;
+	}else {
+		rfi->user_cancelled = TRUE;
+		return False;
+	}
+
+	return True;
+}
+
+
 static DWORD remmina_rdp_verify_certificate(freerdp* instance, const char *common_name, const char* subject,
 					    const char* issuer, const char* fingerprint, BOOL host_mismatch)
 {
@@ -799,6 +855,17 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	rfi->settings->GatewayEnabled = FALSE;
 	s = remmina_plugin_service->file_get_string(remminafile, "gateway_server");
 	if (s) {
+		cs = remmina_plugin_service->file_get_string(remminafile, "gwtransp");
+		if (g_strcmp0(cs, "http") == 0) {
+			rfi->settings->GatewayRpcTransport = False;
+			rfi->settings->GatewayHttpTransport = True;
+		}else if (g_strcmp0(cs, "rpc") == 0) {
+			rfi->settings->GatewayRpcTransport = True;
+			rfi->settings->GatewayHttpTransport = False;
+		}else if (g_strcmp0(cs, "auto") == 0) {
+			rfi->settings->GatewayRpcTransport = True;
+			rfi->settings->GatewayHttpTransport = True;
+		}
 		remmina_plugin_service->get_server_port(s, 443, &gateway_host, &gateway_port);
 		rfi->settings->GatewayHostname = gateway_host;
 		rfi->settings->GatewayPort = gateway_port;
@@ -835,14 +902,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	if (rfi->settings->GatewayEnabled)
 		freerdp_set_gateway_usage_method(rfi->settings,
 			remmina_plugin_service->file_get_int(remminafile, "gateway_usage", FALSE) ? TSC_PROXY_MODE_DETECT : TSC_PROXY_MODE_DIRECT);
-
-	/* Force GatewayRpcTransport for old firewalls */
-	rfi->settings->GatewayRpcTransport = remmina_plugin_service->file_get_int(remminafile, "gateway_trans", 0);
-	if (rfi->settings->GatewayRpcTransport) {
-		rfi->settings->GatewayRpcTransport = TRUE;
-		rfi->settings->GatewayHttpTransport = FALSE;
-	}
-
 
 	freerdp_set_param_string(rfi->settings, FreeRDP_GatewayAccessToken,
 		remmina_plugin_service->file_get_string(remminafile, "gatewayaccesstoken"));
@@ -915,9 +974,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	}
 
 	cs = remmina_plugin_service->file_get_string(remminafile, "security");
-
-
-
 	if (g_strcmp0(cs, "rdp") == 0) {
 		rfi->settings->RdpSecurity = True;
 		rfi->settings->TlsSecurity = False;
@@ -1227,6 +1283,7 @@ static void remmina_rdp_init(RemminaProtocolWidget* gp)
 	instance->PreConnect = remmina_rdp_pre_connect;
 	instance->PostConnect = remmina_rdp_post_connect;
 	instance->Authenticate = remmina_rdp_authenticate;
+	instance->GatewayAuthenticate = remmina_rdp_gw_authenticate;
 	instance->VerifyCertificate = remmina_rdp_verify_certificate;
 	instance->VerifyChangedCertificate = remmina_rdp_verify_changed_certificate;
 
@@ -1470,6 +1527,14 @@ static gpointer security_list[] =
 	NULL
 };
 
+static gpointer gwtransp_list[] =
+{
+	"http", "http",
+	"rpc",  "rpc",
+	"auto", "auto",
+	NULL
+};
+
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
  * a) RemminaProtocolSettingType for setting type
@@ -1509,6 +1574,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "quality",		       N_("Quality"),				FALSE,	quality_list,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "sound",		       N_("Sound"),				FALSE,	sound_list,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "security",		       N_("Security"),				FALSE,	security_list,	NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "gwtransp",		       N_("Gateway transport type"),		FALSE,	gwtransp_list,	NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "gateway_server",	       N_("RD Gateway server"),			FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "gateway_username",	       N_("RD Gateway username"),		FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "gateway_password",	       N_("RD Gateway password"),		FALSE,	NULL,		NULL},
@@ -1528,7 +1594,6 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "console",		       N_("Attach to console (2003/2003 R2)"),	TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disable_fastpath",	       N_("Disable fast-path"),	TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "gateway_usage",	       N_("Server detection using RD Gateway"),	TRUE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "gateway_trans",	       N_("Set Gateway transport type to RPC"),	TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			NULL,					FALSE,	NULL,		NULL}
 };
 
