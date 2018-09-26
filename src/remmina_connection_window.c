@@ -3840,6 +3840,8 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 	TRACE_CALL(__func__);
 	RemminaConnectionObject* cnnobj;
 	GtkWidget* protocolwidget;
+	gint ret;
+	GtkWidget* dialog;
 
 	cnnobj = g_new0(RemminaConnectionObject, 1);
 	cnnobj->remmina_file = remminafile;
@@ -3904,8 +3906,23 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 	if (!remmina_pref.save_view_mode)
 		remmina_file_set_int(cnnobj->remmina_file, "viewmode", remmina_pref.default_mode);
 
-	remmina_protocol_widget_open_connection(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), remminafile);
-
+	/* If it is a GtkSocket plugin and X11 is not available, we inform the
+	 * user and close the connection */
+	ret = remmina_plugin_manager_query_feature_by_type(REMMINA_PLUGIN_TYPE_PROTOCOL,
+			remmina_file_get_string(remminafile, "protocol"),
+			REMMINA_PROTOCOL_FEATURE_TYPE_GTKSOCKET);
+	if (ret && remmina_gtksocket_available()) {
+		dialog = gtk_message_dialog_new(cnnobj->window,
+				GTK_DIALOG_MODAL,
+				GTK_MESSAGE_WARNING,
+				GTK_BUTTONS_OK,
+				_("Warning: This plugin require GtkSocket, but it's not available."));
+		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
+		gtk_widget_show(dialog);
+		protocolwidget = NULL;
+	}else {
+		remmina_protocol_widget_open_connection(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), remminafile);
+	}
 	return protocolwidget;
 }
 

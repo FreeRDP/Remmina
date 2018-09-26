@@ -48,6 +48,7 @@
 #include "nx_session_manager.h"
 
 #define REMMINA_PLUGIN_NX_FEATURE_TOOL_SENDCTRLALTDEL 1
+#define REMMINA_PLUGIN_NX_FEATURE_GTKSOCKET 1
 
 /* Forward declaration */
 static RemminaProtocolPlugin remmina_plugin_nx;
@@ -725,6 +726,7 @@ static const RemminaProtocolSetting remmina_plugin_nx_advanced_settings[] =
 static const RemminaProtocolFeature remmina_plugin_nx_features[] =
 {
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_NX_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_GTKSOCKET, REMMINA_PLUGIN_NX_FEATURE_GTKSOCKET,	    NULL,	   NULL,	NULL},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,  0,					     NULL,			 NULL, NULL }
 };
 

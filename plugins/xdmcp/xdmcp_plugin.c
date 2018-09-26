@@ -40,6 +40,7 @@
 INCLUDE_GET_AVAILABLE_XDISPLAY
 
 #define REMMINA_PLUGIN_XDMCP_FEATURE_TOOL_SENDCTRLALTDEL 1
+#define REMMINA_PLUGIN_XDMCP_FEATURE_GTKSOCKET 1
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginXdmcpData*)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
@@ -378,6 +379,7 @@ static const RemminaProtocolSetting remmina_plugin_xdmcp_basic_settings[] =
 static const RemminaProtocolFeature remmina_plugin_xdmcp_features[] =
 {
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL, REMMINA_PLUGIN_XDMCP_FEATURE_TOOL_SENDCTRLALTDEL, N_("Send Ctrl+Alt+Delete"), NULL, NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_GTKSOCKET, REMMINA_PLUGIN_XDMCP_FEATURE_GTKSOCKET,	    NULL,	   NULL,	NULL},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,  0,						NULL,			    NULL, NULL }
 };
 

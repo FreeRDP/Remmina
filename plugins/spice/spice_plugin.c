@@ -41,18 +41,6 @@ enum {
 	REMMINA_PLUGIN_SPICE_FEATURE_PREF_RESIZEGUEST,
 	REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD,
 	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL,
-	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF1,
-	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF2,
-	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF3,
-	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF4,
-	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF5,
-	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF6,
-	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF7,
-	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF8,
-	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF9,
-	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF10,
-	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF11,
-	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF12,
 	REMMINA_PLUGIN_SPICE_FEATURE_TOOL_USBREDIR,
 	REMMINA_PLUGIN_SPICE_FEATURE_SCALE
 };
@@ -350,126 +338,6 @@ static void remmina_plugin_spice_send_ctrlaltdel(RemminaProtocolWidget *gp)
 	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
 }
 
-/* Send CTRL+ALT+F1 keys keystrokes to the plugin socket widget */
-static void remmina_plugin_spice_send_ctrlaltf1(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F1 };
-
-	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
-}
-
-/* Send CTRL+ALT+F2 keys keystrokes to the plugin socket widget */
-static void remmina_plugin_spice_send_ctrlaltf2(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F2 };
-
-	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
-}
-
-/* Send CTRL+ALT+F3 keys keystrokes to the plugin socket widget */
-static void remmina_plugin_spice_send_ctrlaltf3(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F3 };
-
-	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
-}
-
-/* Send CTRL+ALT+F4 keys keystrokes to the plugin socket widget */
-static void remmina_plugin_spice_send_ctrlaltf4(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F4 };
-
-	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
-}
-
-/* Send CTRL+ALT+F5 keys keystrokes to the plugin socket widget */
-static void remmina_plugin_spice_send_ctrlaltf5(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F5 };
-
-	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
-}
-
-/* Send CTRL+ALT+F6 keys keystrokes to the plugin socket widget */
-static void remmina_plugin_spice_send_ctrlaltf6(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F6 };
-
-	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
-}
-
-/* Send CTRL+ALT+F7 keys keystrokes to the plugin socket widget */
-static void remmina_plugin_spice_send_ctrlaltf7(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F7 };
-
-	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
-}
-
-/* Send CTRL+ALT+F8 keys keystrokes to the plugin socket widget */
-static void remmina_plugin_spice_send_ctrlaltf8(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F8 };
-
-	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
-}
-
-/* Send CTRL+ALT+F9 keys keystrokes to the plugin socket widget */
-static void remmina_plugin_spice_send_ctrlaltf9(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F9 };
-
-	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
-}
-
-/* Send CTRL+ALT+F10 keys keystrokes to the plugin socket widget */
-static void remmina_plugin_spice_send_ctrlaltf10(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F10 };
-
-	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
-}
-
-/* Send CTRL+ALT+F11 keys keystrokes to the plugin socket widget */
-static void remmina_plugin_spice_send_ctrlaltf11(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F11 };
-
-	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
-}
-
-/* Send CTRL+ALT+F12 keys keystrokes to the plugin socket widget */
-static void remmina_plugin_spice_send_ctrlaltf12(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-
-	guint keys[] = { GDK_KEY_Control_L, GDK_KEY_Alt_L, GDK_KEY_F12 };
-
-	remmina_plugin_spice_keystroke(gp, keys, G_N_ELEMENTS(keys));
-}
-
 static void remmina_plugin_spice_update_scale(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -533,42 +401,6 @@ static void remmina_plugin_spice_call_feature(RemminaProtocolWidget *gp, const R
 	case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL:
 		remmina_plugin_spice_send_ctrlaltdel(gp);
 		break;
-	case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF1:
-		remmina_plugin_spice_send_ctrlaltf1(gp);
-		break;
-	case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF2:
-		remmina_plugin_spice_send_ctrlaltf2(gp);
-		break;
-	case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF3:
-		remmina_plugin_spice_send_ctrlaltf3(gp);
-		break;
-	case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF4:
-		remmina_plugin_spice_send_ctrlaltf4(gp);
-		break;
-	case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF5:
-		remmina_plugin_spice_send_ctrlaltf5(gp);
-		break;
-	case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF6:
-		remmina_plugin_spice_send_ctrlaltf6(gp);
-		break;
-	case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF7:
-		remmina_plugin_spice_send_ctrlaltf7(gp);
-		break;
-	case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF8:
-		remmina_plugin_spice_send_ctrlaltf8(gp);
-		break;
-	case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF9:
-		remmina_plugin_spice_send_ctrlaltf9(gp);
-		break;
-	case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF10:
-		remmina_plugin_spice_send_ctrlaltf10(gp);
-		break;
-	case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF11:
-		remmina_plugin_spice_send_ctrlaltf11(gp);
-		break;
-	case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF12:
-		remmina_plugin_spice_send_ctrlaltf12(gp);
-		break;
 	case REMMINA_PLUGIN_SPICE_FEATURE_TOOL_USBREDIR:
 		remmina_plugin_spice_select_usb_devices(gp);
 		break;
@@ -625,18 +457,6 @@ static const RemminaProtocolFeature remmina_plugin_spice_features[] =
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,  REMMINA_PLUGIN_SPICE_FEATURE_PREF_RESIZEGUEST,	    GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),	   "resizeguest",	N_("Resize guest to match window size")},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,  REMMINA_PLUGIN_SPICE_FEATURE_PREF_DISABLECLIPBOARD,  GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),	   "disableclipboard",	N_("Disable clipboard sync")},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTDEL,    N_("Send Ctrl+Alt+Delete"),					   NULL,		NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF1,    N_("Send Ctrl+Alt+F1"),					   NULL,		NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF2,    N_("Send Ctrl+Alt+F2"),					   NULL,		NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF3,    N_("Send Ctrl+Alt+F3"),					   NULL,		NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF4,    N_("Send Ctrl+Alt+F4"),					   NULL,		NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF5,    N_("Send Ctrl+Alt+F5"),					   NULL,		NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF6,    N_("Send Ctrl+Alt+F6"),					   NULL,		NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF7,    N_("Send Ctrl+Alt+F7"),					   NULL,		NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF8,    N_("Send Ctrl+Alt+F8"),					   NULL,		NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF9,    N_("Send Ctrl+Alt+F9"),					   NULL,		NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF10,    N_("Send Ctrl+Alt+F10"),					   NULL,		NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF11,    N_("Send Ctrl+Alt+F11"),					   NULL,		NULL},
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_SENDCTRLALTF12,    N_("Send Ctrl+Alt+F12"),					   NULL,		NULL},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,  REMMINA_PLUGIN_SPICE_FEATURE_TOOL_USBREDIR,	    N_("Select USB devices for redirection"),			   NULL,		NULL},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_SCALE, REMMINA_PLUGIN_SPICE_FEATURE_SCALE,		    NULL,							   NULL,		NULL},
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,   0,						    NULL,							   NULL,		NULL}

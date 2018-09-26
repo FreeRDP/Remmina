@@ -44,6 +44,8 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+#define REMMINA_PLUGIN_ST_FEATURE_GTKSOCKET 1
+
 typedef struct _RemminaPluginData
 {
 	GtkWidget *socket;
@@ -52,6 +54,13 @@ typedef struct _RemminaPluginData
 } RemminaPluginData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
+
+static gboolean remmina_st_query_feature(RemminaProtocolWidget* gp, const RemminaProtocolFeature* feature)
+{
+	TRACE_CALL(__func__);
+	return TRUE;
+}
+
 
 static void remmina_plugin_st_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
@@ -245,6 +254,14 @@ static const RemminaProtocolSetting remmina_plugin_st_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 };
 
+/* Array for available features.
+ * The last element of the array must be REMMINA_PROTOCOL_FEATURE_TYPE_END. */
+static const RemminaProtocolFeature remmina_st_features[] =
+{
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_GTKSOCKET, REMMINA_PLUGIN_ST_FEATURE_GTKSOCKET,	    NULL,	   NULL,	NULL},
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,   0,					    NULL,	   NULL,	NULL}
+};
+
 /* Protocol plugin definition and features */
 static RemminaProtocolPlugin remmina_plugin =
 {
@@ -258,11 +275,11 @@ static RemminaProtocolPlugin remmina_plugin =
 	remmina_plugin_st_basic_settings,             // Array for basic settings
 	remmina_plugin_st_advanced_settings,          // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_NONE,            // SSH settings type
-	NULL,                                         // Array for available features
+	remmina_st_features,                          // Array for available features
 	remmina_plugin_st_init,                       // Plugin initialization
 	remmina_plugin_st_open_connection,            // Plugin open connection
 	remmina_plugin_st_close_connection,           // Plugin close connection
-	NULL,                                         // Query for available features
+	remmina_st_query_feature,                     // Query for available features
 	NULL,                                         // Call a feature
 	NULL,                                         // Send a keystroke
 	NULL                                          // Capture screenshot
