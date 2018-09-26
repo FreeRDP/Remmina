@@ -3911,7 +3911,7 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 	ret = remmina_plugin_manager_query_feature_by_type(REMMINA_PLUGIN_TYPE_PROTOCOL,
 			remmina_file_get_string(remminafile, "protocol"),
 			REMMINA_PROTOCOL_FEATURE_TYPE_GTKSOCKET);
-	if (ret && remmina_gtksocket_available()) {
+	if (ret && !remmina_gtksocket_available()) {
 		dialog = gtk_message_dialog_new(cnnobj->window,
 				GTK_DIALOG_MODAL,
 				GTK_MESSAGE_WARNING,
