@@ -609,13 +609,13 @@ static BOOL remmina_rdp_gw_authenticate(freerdp* instance, char** username, char
 
 	if (ret == GTK_RESPONSE_OK) {
 		s_username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
-		if (s_username) rfi->settings->Username = strdup(s_username);
+		if (s_username) rfi->settings->GatewayUsername  = strdup(s_username);
 
 		s_password = remmina_plugin_service->protocol_plugin_init_get_password(gp);
-		if (s_password) rfi->settings->Password = strdup(s_password);
+		if (s_password) rfi->settings->GatewayPassword = strdup(s_password);
 
 		s_domain = remmina_plugin_service->protocol_plugin_init_get_domain(gp);
-		if (s_domain) rfi->settings->Domain = strdup(s_domain);
+		if (s_domain) rfi->settings->GatewayDomain = strdup(s_domain);
 
 		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
 		if (save) {
