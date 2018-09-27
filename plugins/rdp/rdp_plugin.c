@@ -1553,10 +1553,6 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",		NULL,					    FALSE,	NULL,		    NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",		N_("Color depth"),			    FALSE,	colordepth_list,    NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder",		N_("Share folder"),			    FALSE,	NULL,		    NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disableautoreconnect",	N_("Disable automatic reconnection"),	    TRUE,	NULL,		    NULL},
-#if defined(PROXY_TYPE_IGNORE)
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "enableproxy",		N_("Enable proxy support"),		    FALSE,	NULL,		    NULL},
-#endif
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			NULL,					    FALSE,	NULL,		    NULL}
 };
 
@@ -1583,8 +1579,8 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "exec",		       N_("Startup program"),			FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "execpath",		       N_("Startup path"),			FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "loadbalanceinfo",	       N_("Load Balance Info"),			FALSE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printername",	       N_("Local Printer Name"),			FALSE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printerdriver",	       N_("Local Printer Driver"),			FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printername",	       N_("Local Printer Name"),		FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printerdriver",	       N_("Local Printer Driver"),		FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "shareprinter",	       N_("Share local printers"),		TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "sharesmartcard",	       N_("Share smartcard"),			TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "microphone",	       N_("Redirect local microphone"),		TRUE,	NULL,		NULL},
@@ -1592,8 +1588,12 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "cert_ignore",	       N_("Ignore certificate"),		TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disablepasswordstoring",  N_("Disable password storing"),		TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "console",		       N_("Attach to console (2003/2003 R2)"),	TRUE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disable_fastpath",	       N_("Disable fast-path"),	TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disable_fastpath",	       N_("Disable fast-path"),			TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "gateway_usage",	       N_("Server detection using RD Gateway"),	TRUE,	NULL,		NULL},
+#if defined(PROXY_TYPE_IGNORE)
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "enableproxy",	       N_("Enable proxy support"),		TRUE,	NULL,		NULL},
+#endif
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disableautoreconnect",    N_("Disable automatic reconnection"),	TRUE,	NULL,	        NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			NULL,					FALSE,	NULL,		NULL}
 };
 
