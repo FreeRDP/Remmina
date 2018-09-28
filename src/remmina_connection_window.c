@@ -3688,7 +3688,8 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 		remmina_pref_add_recent(remmina_file_get_string(cnnobj->remmina_file, "protocol"),
 			remmina_file_get_string(cnnobj->remmina_file, "server"));
 	}
-	remmina_file_set_string (cnnobj->remmina_file, "last_success", last_success);
+	if (remmina_pref.periodic_usage_stats_permitted)
+		remmina_file_set_string (cnnobj->remmina_file, "last_success", last_success);
 
 	/* Save credentials */
 	remmina_file_save(cnnobj->remmina_file);
