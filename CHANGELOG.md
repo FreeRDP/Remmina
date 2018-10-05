@@ -1,5 +1,25 @@
 # Changelog
 
+## [v1.2.32](https://gitlab.com/Remmina/Remmina/tags/v1.2.32) (UNRELEASED)
+
+- Avoid to save last_success property if stats are not enabled. @antenore
+- GW auth data was saved in the server auth data. @antenore
+- Do not register socket plugins when X11 is not available. @antenore
+- Screenshot enhancements. @antenore
+- RDP GW authentication. @antenore
+- Adding global preference for search bar visibility. @antenore
+- Allow wayland backend again when GTK >= 3.22.27. @giox069
+- tr.po @TeknoMobil
+- Add option to honour https_proxy and http_proxy environment variable. @antenore
+- Force program name to app id. @antenore
+- Printing builds flags with remmina --full-version command option. @antenore
+- New plugin Simple Terminal. @antenore
+- Fix KB grabbing when switching workspace. @giox069
+- Dealing correcthly with some deprecations, getting rid of most of G_GNUC_BEGIN_IGNORE_DEPRECATIONS. @antenore
+- Improving file type hadling. @antenore
+- Adding error check on remmina_pref_save. @antenore
+- Many bug fixing as usual.
+
 ## [v1.2.31.4](https://gitlab.com/Remmina/Remmina/tags/v1.2.31.4) (2018-08-24)
 
 This is a bug fixing release.
