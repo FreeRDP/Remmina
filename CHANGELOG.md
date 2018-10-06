@@ -1,6 +1,6 @@
 # Changelog
 
-## [v1.2.32](https://gitlab.com/Remmina/Remmina/tags/v1.2.32) (UNRELEASED)
+## [v1.2.32](https://gitlab.com/Remmina/Remmina/tags/v1.2.32) (2018-10-06)
 
 - Avoid to save last_success property if stats are not enabled. @antenore
 - GW auth data was saved in the server auth data. @antenore
