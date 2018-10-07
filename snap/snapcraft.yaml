@@ -156,6 +156,11 @@ parts:
       - libssh-0.8
       - freerdp
       - desktop-gtk3
+    override-prime: |
+      set -eu
+      snapcraftctl prime
+      # Fix application icon lookup
+      sed --in-place 's|^Icon=.*|Icon=\${SNAP}/meta/gui/icon.svg|' usr/share/applications/org.remmina.Remmina.desktop
 
   app:
     after:
