@@ -15,6 +15,27 @@ description: |
 grade: stable
 confinement: strict
 
+plugs:
+  gnome-3-26-1604:
+    interface: content
+    target: $SNAP/gnome-platform
+    default-provider: gnome-3-26-1604:gnome-3-26-1604
+  gtk-3-themes:
+    interface: content
+    target: $SNAP/share/themes
+    default-provider: gtk-common-themes:gtk-3-themes
+  icon-themes:
+    interface: content
+    target: $SNAP/share/icons
+    default-provider: gtk-common-themes:icon-themes
+  sound-themes:
+    interface: content
+    target: $SNAP/share/sounds
+    default-provider: gtk-common-themes:sounds-themes
+
+environment:
+  XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
+
 parts:
   freerdp:
     plugin: cmake
@@ -135,6 +156,31 @@ parts:
       - libssh-0.8
       - freerdp
       - desktop-gtk3
+    override-prime: |
+      set -eu
+      snapcraftctl prime
+      # Fix application icon lookup
+      sed --in-place 's|^Icon=.*|Icon=\${SNAP}/meta/gui/icon.svg|' usr/share/applications/org.remmina.Remmina.desktop
+
+  app:
+    after:
+      - desktop-gnome-platform
+    plugin: nil
+    build-attributes:
+      - no-system-libraries
+    stage-packages:
+      - gtk-3-examples
+    override-build: |
+      set -ex
+      snapcraftctl build
+      mkdir -p $SNAPCRAFT_PART_INSTALL/share/themes
+      mkdir -p $SNAPCRAFT_PART_INSTALL/share/icons
+      mkdir -p $SNAPCRAFT_PART_INSTALL/share/sounds
+    stage:
+      - usr/bin/gtk3-demo
+      - share/icons
+      - share/themes
+      - share/sounds
 
   # Removing files that are accessible thanks to desktop plug
   desktop-gtk3:
@@ -177,6 +223,7 @@ apps:
       - unity7
       - password-manager-service
       - wayland
+      - x11
 
   winpr-makecert:
     command: winpr-makecert
