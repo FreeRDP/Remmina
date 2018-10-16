@@ -1123,7 +1123,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 		smartcard->Type = RDPDR_DTYP_SMARTCARD;
 
-		smartcard->Name = _strdup("scard");
+		const gchar* sn = remmina_plugin_service->file_get_string(remminafile, "smartcardname");
+		if ( sn != NULL && sn[0] != '\0' ) {
+			smartcard->Name = _strdup(sn);
+		}
 
 		rfi->settings->DeviceRedirection = TRUE;
 		rfi->settings->RedirectSmartCards = TRUE;
@@ -1581,6 +1584,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "loadbalanceinfo",	       N_("Load Balance Info"),			FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printername",	       N_("Local Printer Name"),		FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printerdriver",	       N_("Local Printer Driver"),		FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "smartcardname",	       N_("Smartcard Name"),		FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "shareprinter",	       N_("Share local printers"),		TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "sharesmartcard",	       N_("Share smartcard"),			TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "microphone",	       N_("Redirect local microphone"),		TRUE,	NULL,		NULL},
