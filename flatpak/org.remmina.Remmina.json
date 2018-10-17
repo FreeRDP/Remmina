@@ -1,22 +1,11 @@
 {
     "app-id": "org.remmina.Remmina",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.28",
+    "runtime-version": "3.30",
     "sdk": "org.gnome.Sdk",
-    /**
-     * GCC 8 is required to fix build error since libssh-0.8.2:
-     *  « assuming signed overflow does not occur when simplifying
-     *    conditional to constant [-Werror=strict-overflow] »
-     */
-    "sdk-extensions": ["org.freedesktop.Sdk.Extension.gcc8"],
     "build-options" : {
         "cflags": "-O2 -g",
-        "cxxflags": "-O2 -g",
-        "prepend-path": "/lib/sdk/gcc8/bin",
-        "env": {
-            "CC": "/lib/sdk/gcc8/bin/gcc",
-            "CXX": "/lib/sdk/gcc8/bin/g++"
-        }
+        "cxxflags": "-O2 -g"
     },
     "command": "remmina",
     "cleanup": [
@@ -26,9 +15,11 @@
         "/include",
         "/lib/cmake",
         "/lib/pkgconfig",
+        "/share/gnome-session",
         "/share/gtk-doc",
         "/share/man",
-        "/share/pkgconfig"
+        "/share/pkgconfig",
+        "/share/xsessions"
     ],
     "finish-args": [
         /* X11 + XShm access */
@@ -96,16 +87,6 @@
             ]
         },
         {
-            "name": "libxkbfile",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://xorg.freedesktop.org/releases/individual/lib/libxkbfile-1.0.9.tar.bz2",
-                    "sha256": "51817e0530961975d9513b773960b4edd275f7d5c72293d5a151ed4f42aeb16a"
-                }
-            ]
-        },
-        {
             "name": "nxproxy",
             "no-autogen": true,
             "make-args": ["PREFIX=/app"],
@@ -127,6 +108,7 @@
             ],
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DCMAKE_INSTALL_LIBDIR:PATH=lib",
                 "-DWITH_CLIENT:BOOL=OFF",
                 "-DWITH_CUPS:BOOL=ON",
                 "-DWITH_JPEG:BOOL=ON",
@@ -341,12 +323,6 @@
                     "type": "archive",
                     "url": "https://github.com/LibVNC/libvncserver/archive/LibVNCServer-0.9.11.tar.gz",
                     "sha256": "193d630372722a532136fd25c5326b2ca1a636cbb8bf9bb115ef869c804d2894"
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "sed -e '/AM_PATH_LIBGCRYPT/ s/.*/PKG_CHECK_MODULES([LIBGCRYPT], [libgcrypt >= 1.4.0])/' -i configure.ac"
-                    ]
                 }
             ]
         },
@@ -408,27 +384,20 @@
                             "sha256": "1a7f7490774c87f2052d146d1e0e64518d32e6848184a18654e8d0bb57883242"
                         }
                     ]
-                },
-                {
-                    "name": "xkbcomp",
-                    "config-opts": [
-                        "--with-xkb-config-root=/usr/share/X11/xkb"
-                    ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://xorg.freedesktop.org/releases/individual/app/xkbcomp-1.4.2.tar.bz2",
-                            "sha256": "6dd8bcb9be7e85bd7294abe261b8c7b0539d2fc93e41b80fb8bd013767ce8424"
-                        }
-                    ]
                 }
             ]
         },
         {
             "name": "remmina",
             "buildsystem": "cmake-ninja",
+            "cleanup": [
+                "/bin/remmina-gnome",
+                "/bin/gnome-session-remmina",
+                "/share/applications/remmina-gnome.desktop"
+            ],
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DCMAKE_INSTALL_LIBDIR:PATH=lib",
                 "-DWITH_MANPAGES:BOOL=OFF",
                 "-DWITH_TELEPATHY:BOOL=OFF"
             ],
