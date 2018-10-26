@@ -1581,7 +1581,7 @@ remmina_ssh_shell_thread(gpointer data)
 	gint buf_len;
 	gint len;
 	gint i, ret;
-	gint screen;
+	//gint screen;
 
 	LOCK_SSH(shell)
 
@@ -1596,12 +1596,20 @@ remmina_ssh_shell_thread(gpointer data)
 
 	ssh_channel_request_pty(channel);
 
-	screen = gdk_x11_get_default_screen ();
-	ret = ssh_channel_request_x11 (channel, FALSE, NULL, NULL, screen);
+	/* ssh_channel_request_x11 works but I do not know yet how to use the
+	 * channel. At the momonet I leave the code here, commented, for future
+	 * investigations.
+	 */
+	//screen = gdk_x11_screen_get_screen_number(gdk_screen_get_default());
+	//ret = ssh_channel_request_x11 (channel, FALSE, NULL, NULL, screen);
 	/* TODO: We should have a callback that intercept an x11 request to use
 	 * ssh_channel_accept_x11 */
-	if ( ret != SSH_OK )
-		g_print ("[SSH] X11 channel error: %d\n", ret);
+	//if ( ret != SSH_OK ) {
+		//g_print ("[SSH] X11 channel error: %d\n", ret);
+	//}else {
+		//ssh_channel_accept_x11 ( channel, 50);
+	//}
+
 
 	if (shell->exec && shell->exec[0]) {
 		ret = ssh_channel_request_exec(channel, shell->exec);
