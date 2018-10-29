@@ -6,8 +6,8 @@
 .Sh SYNOPSIS
 .Nm
 .Op Fl a|i|n|q|v
-.Op Fl c Ar FILE.remmina
-.Op Fl e Ar FILE.remmina
+.Op Fl c Ar FILE
+.Op Fl e Ar FILE
 .Op Fl p Ar PAGENR
 .Op Fl s Ar SERVER
 .Op Fl t Ar PROTOCOL
@@ -45,9 +45,9 @@ Show help options
 .It Fl a
 Show about dialog
 .It Fl c, -connect\fR=\fIFILE\fR
-Connect to a .remmina file
+Directly connect to desktop using options described by file, file type can be either .remmina or one supported by a file import capable plugin
 .It Fl e, -edit\fR=\fIFILE\fR
-Edit a .remmina file
+Open and edit desktop connection using options described by file, file type can be either .remmina or one supported by a file import capable plugin
 .It Fl k, -kiosk\fR
 Start Remmina in kiosk mode (thin client)
 .It Fl n, -new\fR
