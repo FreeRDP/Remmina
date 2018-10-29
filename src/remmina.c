@@ -79,9 +79,9 @@ gboolean kioskmode;
 static GOptionEntry remmina_options[] =
 {
 	{ "about",	  'a', 0,		     G_OPTION_ARG_NONE,		    NULL, N_("Show about dialog"),					       NULL	  },
-	{ "connect",	  'c', 0,		     G_OPTION_ARG_FILENAME,	    NULL, N_("Connect to a .remmina file"),				       "FILE"	  },
-	{ G_OPTION_REMAINING, '\0', 0,		     G_OPTION_ARG_FILENAME_ARRAY,   NULL, N_("Connect to a .remmina file"),				       "FILE"	  },
-	{ "edit",	  'e', 0,		     G_OPTION_ARG_FILENAME,	    NULL, N_("Edit a .remmina file"),					       "FILE"	  },
+	{ "connect",	  'c', 0,		     G_OPTION_ARG_FILENAME,	    NULL, N_("Connect to desktop described by file (.remmina or type supported by plugin)"),				       "FILE"	  },
+	{ G_OPTION_REMAINING, '\0', 0,		     G_OPTION_ARG_FILENAME_ARRAY,   NULL, N_("Connect to desktop described by file (.remmina or type supported by plugin)"),				       "FILE"	  },
+	{ "edit",	  'e', 0,		     G_OPTION_ARG_FILENAME,	    NULL, N_("Edit desktop connection described by file (.remmina or type supported by plugin)"),					       "FILE"	  },
 	{ "help",	  '?', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE,	   	    NULL, NULL,								       NULL	  },
 	{ "kiosk",	  'k', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Start Remmina in Kiosk mode"),				       NULL	  },
 	{ "new",	  'n', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Create a new connection profile"),			       NULL	  },
