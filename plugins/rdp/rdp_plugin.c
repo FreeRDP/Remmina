@@ -1238,8 +1238,13 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 				}
 				break;
 #endif
+#ifdef FREERDP_ERROR_SERVER_DENIED_CONNECTION
+			case FREERDP_ERROR_SERVER_DENIED_CONNECTION:
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Server %s denied the connection."), rfi->settings->ServerHostname );
+				break;
+#endif
 			default:
-				g_printf("%08X %08X\n", e, (unsigned)ERRCONNECT_POST_CONNECT_FAILED);
+				g_printf("libfreerdp returned code is %08X\n", e);
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
 				break;
 			}
