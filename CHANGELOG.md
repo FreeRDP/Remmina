@@ -1,5 +1,22 @@
 # Changelog
 
+## [v1.2.32.1](https://gitlab.com/Remmina/Remmina/tags/v1.2.32.1) (2018-11-14)
+
+- Add desktop-gnome-platform and fix themes in SNAP, fixes issue #1730 and fixes missing SNAP localization (Giovanni Panozzo)
+- Fix SNAP icon (Giovanni Panozzo)
+- flatpak: update libssh from 0.8.2 to 0.8.3 (Denis Ollier)
+- flatpak: update libssh from 0.8.3 to 0.8.4 (Denis Ollier)
+- flatpak: update libssh from 0.8.4 to 0.8.5 (Denis Ollier)
+- flatpak: update lz4 from 1.8.2 to 1.8.3 (Denis Ollier)
+- flatpak: update pyparsing from 2.2.0 to 2.2.1 (Denis Ollier)
+- flatpak: update pyparsing from 2.2.1 to 2.2.2 (Denis Ollier)
+- flatpak: update pyparsing from 2.2.2 to 2.3.0 (Denis Ollier)
+- Implement smartcard name setting. Should fix #1737 (Antenore Gatta)
+- man+help: elaborate on file types of -connect and -edit cmd line options (Mikkel Kirkgaard Nielsen)
+- RDP: add FREERDP_ERROR_SERVER_DENIED_CONNECTION message (Giovanni Panozzo)
+- Removing X11Forwarding code as it is wrong and causing issues (Antenore Gatta)
+- Update fix tr.po (Serdar Sağlam)
+
 ## [v1.2.32](https://gitlab.com/Remmina/Remmina/tags/v1.2.32) (2018-10-06)
 
 - Avoid to save last_success property if stats are not enabled. @antenore
