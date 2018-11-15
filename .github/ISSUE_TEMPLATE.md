@@ -4,8 +4,8 @@ We are moving to [gitlab](https://gitlab.com/DAGUniverse/Remmina)
 
 From the 1st of July 2018 the following links have to be used instead og GitHub.
 
-* [issues URL](https://gitlab.com/DAGUniverse/Remmina/issues)
-* [wiki URL](https://gitlab.com/DAGUniverse/Remmina/wikis/home)
+* [issues URL](https://gitlab.com/Remmina/Remmina/issues)
+* [wiki URL](https://gitlab.com/Remmina/Remmina/wikis/home)
 
 Please consider registering a gitlab.com account and link it to github (settings->account->github).
 
