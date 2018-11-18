@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2018-09-05 11:02+0200\n"
-"PO-Revision-Date: 2013-04-17 11:18+0000\n"
+"POT-Creation-Date: 2013-04-17 11:18+0000\n"
+"PO-Revision-Date: 2018-11-06 11:18+0000\n"
 "Last-Translator: Serdar Sağlam <teknomobil@yandex.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "Language: tr\n"
@@ -186,23 +186,23 @@ msgstr "Bu profilde şifrelemeyi etkinleştirdikten sonra yeniden deneyin"
 
 #: plugins/vnc/vnc_plugin.c:1821 plugins/rdp/rdp_plugin.c:1350
 msgid "256 colors (8 bpp)"
-msgstr "256 renk (8 bpp)"
+msgstr "256 renk (8 bit)"
 
 #: plugins/vnc/vnc_plugin.c:1822 plugins/rdp/rdp_plugin.c:1349
 msgid "High color (15 bpp)"
-msgstr "Yüksek renk (15 bpp)"
+msgstr "Yüksek renk (15 bit)"
 
 #: plugins/vnc/vnc_plugin.c:1823 plugins/rdp/rdp_plugin.c:1348
 msgid "High color (16 bpp)"
-msgstr "Yüksek renk (16 bpp)"
+msgstr "Yüksek renk (16 bit)"
 
 #: plugins/vnc/vnc_plugin.c:1824 plugins/rdp/rdp_plugin.c:1347
 msgid "True color (24 bpp)"
-msgstr "Gerçek renk (24 bpp)"
+msgstr "Gerçek renk (24 bit)"
 
 #: plugins/vnc/vnc_plugin.c:1825 plugins/rdp/rdp_plugin.c:1346
 msgid "True color (32 bpp)"
-msgstr "Gerçek renk (32 bpp)"
+msgstr "Gerçek renk (32 bit)"
 
 #: plugins/vnc/vnc_plugin.c:1832 plugins/rdp/rdp_plugin.c:1357
 #: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:677
@@ -244,7 +244,7 @@ msgstr "Renk derinliği"
 #: plugins/vnc/vnc_plugin.c:1855 plugins/vnc/vnc_plugin.c:1875
 #: plugins/rdp/rdp_plugin.c:1419 plugins/nx/nx_plugin.c:700
 msgid "Quality"
-msgstr "Kaliteli"
+msgstr "Kalite"
 
 #: plugins/vnc/vnc_plugin.c:1871
 msgid "Listen on port"
@@ -503,7 +503,7 @@ msgstr "Güvenlik"
 
 #: plugins/rdp/rdp_plugin.c:1422
 msgid "RD Gateway server"
-msgstr "RD Gateway server"
+msgstr "RD Ağ Geçidi sunucu"
 
 #: plugins/rdp/rdp_plugin.c:1423
 msgid "RD Gateway username"
@@ -511,7 +511,7 @@ msgstr "RD Ağ Geçidi kullanıcı adı"
 
 #: plugins/rdp/rdp_plugin.c:1424
 msgid "RD Gateway password"
-msgstr "RD Ağ Geçidi şifresi"
+msgstr "RD Ağ Geçidi şifre"
 
 #: plugins/rdp/rdp_plugin.c:1425
 msgid "RD Gateway domain"
@@ -838,16 +838,16 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
-"<tt><big>* command in PATH args %h\n"
-"* /path/to/foo -options %h %u\n"
-"* %h is substituted with the server name\n"
-"* %t is substituted with the SSH server name\n"
-"* %u is substituted with the user name\n"
-"* %U is substituted with the SSH user name\n"
-"* %p is substituted with Remmina profile name\n"
-"* %g is substituted with Remmina profile group name\n"
-"Do not run in background if you want the command to be executed before "
-"connecting.\n"
+"<tt><big>* Komut giriş yolları %h\n"
+"* /path/to/foo -seçenekler %h %u\n"
+"* %h Sunucu adıyla değiştirilir\n"
+"* %t SSH sunucu adıyla değiştirilir\n"
+"* %u Kullanıcı adıyla değiştirilir\n"
+"* %U SSH Kullanıcı adı ile değiştirilir\n"
+"* %p Remmina profil adı ile değiştirilir\n"
+"* %g Remmina profil grubu adı ile değiştirilir\n"
+"Komutun daha önce yürütülmesini istiyorsanız arka planda çalışmayın "
+"bağlanmayın\n"
 "</big></tt>"
 
 #: src/remmina_file_editor.c:94
@@ -861,10 +861,10 @@ msgid ""
 msgstr ""
 "<tt><big>Desteklenen biçimler\n"
 "* :port\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port\n"
-"* username@server:port (sadece SSH protokolü)</big></tt>"
+"* sunucu\n"
+"* sunucu:port\n"
+"* [sunucu]:port\n"
+"* kullanıcıadı@sunucu:port (sadece SSH protokolü)</big></tt>"
 
 #: src/remmina_file_editor.c:156
 msgid "Choose a Remote Desktop Server"
@@ -968,11 +968,11 @@ msgstr "Öntanımlı ayarlar kaydedildi."
 
 #: src/remmina_file_editor.c:1249
 msgid "Remote Desktop Preference"
-msgstr "Uzak Masaüstü Ayarı"
+msgstr "Uzak Masaüstü Ayarları"
 
 #: src/remmina_file_editor.c:1255
 msgid "Save as Default"
-msgstr "Varsayılan olarak kaydet"
+msgstr "Öntanımlı olarak Kaydet"
 
 #: src/remmina_file_editor.c:1258 src/remmina_main.c:886
 msgid "_Save"
@@ -989,7 +989,7 @@ msgstr "_Kaydet ve Bağlan"
 
 #: src/remmina_file_editor.c:1356
 msgid "Profile"
-msgstr "Profil"
+msgstr "Bağlantı Profili"
 
 #: src/remmina_file_editor.c:1373
 msgid "Quick Connect"
@@ -1002,15 +1002,15 @@ msgstr "Alt grup ayracı olarak '%s' kullan"
 
 #: src/remmina_file_editor.c:1402 src/remmina_plugin_manager.c:69
 msgid "Protocol"
-msgstr "İletişim kuralı"
+msgstr "İletişim Kuralı"
 
 #: src/remmina_file_editor.c:1416
 msgid "Pre Command"
-msgstr "Ön Komut"
+msgstr "Öntanımlı Komut"
 
 #: src/remmina_file_editor.c:1434
 msgid "Post Command"
-msgstr "Yazı Komutu"
+msgstr "Yazılı Komut"
 
 #: src/remmina_file_editor.c:1498 src/remmina_file_editor.c:1516
 #: src/remmina_connection_window.c:3745
@@ -1032,7 +1032,7 @@ msgid "translator-credits"
 "  zeugma https://launchpad.net/~sunder67\n"
 "  Şâkir Aşçı https://launchpad.net/~sakirasci\n"
 "  Serdar Sağlam https://launchpad.net/~serdarsaglam\n"
-msgstr "çeviri takımı"
+msgstr "translator-credits"
 "Launchpad Contributions:\n"
 "  Fatih Aydın https://launchpad.net/~editorfatih\n"
 "  Hasan Yılmaz https://launchpad.net/~hasanyilmaz\n"
@@ -1248,11 +1248,11 @@ msgstr "Uygulamadan çıkın"
 
 #: src/remmina.c:87
 msgid "Use default server name (for --new)"
-msgstr "Varsayılan sunucu adını kullanın"
+msgstr "Öntanımlı sunucu adını kullanın"
 
 #: src/remmina.c:88
 msgid "Use default protocol (for --new)"
-msgstr "Varsayılan protokolü kullanın"
+msgstr "Öntanımlı protokolü kullanın"
 
 #: src/remmina.c:89
 msgid "Start as tray icon"
@@ -1298,7 +1298,7 @@ msgstr "Uzak masaüstlerine küçük uygulama menüsü aracılığıyla bağlan"
 
 #: src/remmina_icon.c:475 src/remmina_icon.c:476 src/remmina_main.c:1099
 msgid "Remmina Remote Desktop Client"
-msgstr "Remmina Uzak Masaüstü Bağlantı Aracı"
+msgstr "Remmina Uzak Masaüstü"
 
 #: src/remmina_ssh.c:203
 #, c-format
@@ -1444,7 +1444,7 @@ msgstr "Açıklama"
 
 #: src/remmina_plugin_manager.c:428
 msgid "Version"
-msgstr "Versiyon"
+msgstr "Sürüm"
 
 #: src/remmina_ssh_plugin.c:473
 #, c-format
@@ -1696,7 +1696,7 @@ msgstr ""
 #: src/remmina_main.c:863 data/ui/remmina_main.glade:180
 #: data/ui/remmina_main.glade:181 data/ui/remmina_main.glade:323
 msgid "Import"
-msgstr "İçeri al"
+msgstr "İçeri Al"
 
 #: src/remmina_main.c:893
 msgid "This protocol does not support exporting."
@@ -1826,7 +1826,7 @@ msgstr "Remmina - Çoklu Şifre Değiştirici"
 
 #: data/ui/remmina_mpc.glade:21
 msgid "Change"
-msgstr "İptal"
+msgstr "Değiştir"
 
 #: data/ui/remmina_mpc.glade:35
 msgid "Cancel"
@@ -1928,7 +1928,7 @@ msgstr "Hata Ayıklama"
 #: data/ui/remmina_main.glade:187 data/ui/remmina_main.glade:188
 #: data/ui/remmina_main.glade:332
 msgid "Export"
-msgstr "Dışa Aktar"
+msgstr "Dışarı Aktar"
 
 #: data/ui/remmina_main.glade:197 data/ui/remmina_main.glade:198
 msgid "Statusbar"
@@ -2088,7 +2088,7 @@ msgstr "Sekmeli arayüzde araç çubuğunu gizle"
 
 #: data/ui/remmina_preferences.glade:395
 msgid "Default view mode"
-msgstr "Varsayılan görünüm modu"
+msgstr "Öntanımlı görünüm modu"
 
 #: data/ui/remmina_preferences.glade:408
 msgid "Automatic"
@@ -2224,11 +2224,11 @@ msgstr "Ekran Görüntüsü"
 
 #: data/ui/remmina_preferences.glade:1004
 msgid "View-only mode"
-msgstr "Varsayılan görünüm"
+msgstr "Öntanımlı görünüm"
 
 #: data/ui/remmina_preferences.glade:1014
 msgid "VIEW-ONLY MODE"
-msgstr "Varsayılan Görünüm"
+msgstr "Öntanımlı Görünüm"
 
 #: data/ui/remmina_preferences.glade:1038
 msgid "Keyboard"
@@ -2314,7 +2314,7 @@ msgstr "Kaydırma çizgileri"
 
 #: data/ui/remmina_preferences.glade:1309
 msgid "Use system default font"
-msgstr "Varsayılan sistem yazı tipi kullan"
+msgstr "Öntanımlı sistem yazı tipi kullan"
 
 #: data/ui/remmina_preferences.glade:1362
 msgid "Allow bold text"
@@ -2450,6 +2450,14 @@ msgstr "Uçbirim renk şeması dosya seçici"
 msgid "Terminal"
 msgstr "Uçbirim"
 
+#: data/ui/remmina_main.glade:40
+msgid "Plugin"
+msgstr "Eklenti"
+
+#: /data/ui/remmina_main.glade.h:32
+msgid "Show search bar"
+msgstr "Hızlı bağlantı çubuğu göster/gizle"
+
 #: data/ui/remmina_snap_info_dialog.glade:46
 msgid ""
 "It seems that Remmina is running on your system as a SNAP package. To enable "
@@ -2467,4 +2475,3 @@ msgstr ""
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"
 msgstr "Bu mesajı tekrar gösterme"
-
