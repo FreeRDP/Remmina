@@ -1,24 +1,35 @@
 # The Remmina donors
 
-We don't disclose the exact amount of money each supporter has donated to protect their privacy as much as we can.
+We don't disclose the exact amount of money each supporter has donated to protect their privacy as much as we can, except if otherwise requested by the donor.
 
-As we don't have nothing to hide and as Remmina is a FLOSS project, we disclose the list of the donors, keeping at the top those that gave us an impressive amount of money.
+As we don't have nothing to hide and as Remmina is a FLOSS project, we disclose the list of the donors, keeping at the top those that have donated more. This is not to reduce the importance of smaller donations, as we all give what we can in accordance with their own resources.
 
 You can inquire us at any moment to know how donations are used and any details we shall share with you.
+
+If you want to be removed, or we forgot to list your name, or you want we add more details about you, let us know.
 
 ## The Remmina Patron.
 
 This special place is reserved to who have donated the hisghest amount of money since we collect donations.
 
 - Daniel Bolter
+- Rafael Wolf owner of [EITS, LLC, dba Express IT Solutions](https://eitsonline.com) Kalamazoo, MI 49048 USA. ( **Donated $100** )
+- [Tim Richardson - GrowthPath founder](https://www.growthpath.com.au/people/growthpath-team-2)
 
 ## Year 2018 donors
 
-- Anonymous (4)
 - Anton Karmanov
+- Antonio Quinonez-Mun
+- CSI Dudek Marcin
+- coder-zero @Future Systems bvba
+- Debapriyo Sarkar
 - Marco Polano
+- Michael Hipp
 - Peter Link
+- Praveen Bhamidipati
+- Radek Loutocký
 - Sergey Lebfr
+- Tommy Sweeney
 
 ## Year 2017 donors
 
