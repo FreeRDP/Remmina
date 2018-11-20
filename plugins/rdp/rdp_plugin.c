@@ -912,6 +912,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	/* Certificate ignore */
 	rfi->settings->IgnoreCertificate = remmina_plugin_service->file_get_int(remminafile, "cert_ignore", 0);
 
+	rfi->settings->AllowUnanouncedOrdersFromServer = remmina_plugin_service->file_get_int(remminafile, "relax-order-checks", 0);
+
+	rfi->settings->GlyphSupportLevel = ( remmina_plugin_service->file_get_int(remminafile, "glyph-cache", 0) ? GLYPH_SUPPORT_NONE : GLYPH_SUPPORT_FULL );
+
 	/* ClientHostname is internally preallocated to 32 bytes by libfreerdp */
 	if ((cs = remmina_plugin_service->file_get_string(remminafile, "clientname"))) {
 		strncpy(rfi->settings->ClientHostname, cs, FREERDP_CLIENTHOSTNAME_LEN - 1);
@@ -1603,6 +1607,8 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "enableproxy",	       N_("Enable proxy support"),		TRUE,	NULL,		NULL},
 #endif
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disableautoreconnect",    N_("Disable automatic reconnection"),	TRUE,	NULL,	        NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "relax-order-checks",      N_("Relax Order Checks"),	        TRUE,	NULL,	        NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "glyph-cache",             N_("Glyph Cache"),	                TRUE,	NULL,	        NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,			NULL,					FALSE,	NULL,		NULL}
 };
 
