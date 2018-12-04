@@ -83,7 +83,9 @@
 #include "remmina_log.h"
 #include "remmina_pref.h"
 #include "remmina_ssh.h"
+#include "remmina_masterthread_exec.h"
 #include "remmina/remmina_trace_calls.h"
+
 
 #ifdef HAVE_NETINET_TCP_H
 #include <netinet/tcp.h>
@@ -360,17 +362,19 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password)
 }
 
 gint
-remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaInitDialog *dialog, RemminaFile *remminafile)
+remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *remminafile)
 {
 	TRACE_CALL(__func__);
 	gchar *tips;
 	gchar *keyname;
 	gchar *pwdtype;
+	gchar *message;
 	gint ret;
 	size_t len;
 	guchar *pubkey;
 	ssh_key server_pubkey;
 	gboolean disablepasswordstoring;
+	gboolean save_password;
 
 	/* Check if the server's public key is known */
 	ret = ssh_is_server_known(ssh->session);
@@ -395,16 +399,25 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaInitDialog *dialog, RemminaFile *re
 		ssh_key_free(server_pubkey);
 		keyname = ssh_get_hexa(pubkey, len);
 
-
 		if (ret == SSH_SERVER_NOT_KNOWN || ret == SSH_SERVER_FILE_NOT_FOUND) {
-			ret = remmina_init_dialog_serverkey_unknown(dialog, keyname);
+			message = g_strdup_printf("%s\n%s\n\n%s",
+				_("The server is unknown. The public key fingerprint is:"),
+				keyname,
+				_("Do you trust the new public key?"));
 		}else  {
-			ret = remmina_init_dialog_serverkey_changed(dialog, keyname);
+			message =  g_strdup_printf("%s\n%s\n\n%s",
+				_("WARNING: The server has changed its public key. This means either you are under attack,\n"
+				"or the administrator has changed the key. The new public key fingerprint is:"),
+				keyname,
+				_("Do you trust the new public key?"));
 		}
+
+		ret = remmina_protocol_widget_panel_question_yesno(gp, message);
+		g_free(message);
 
 		ssh_string_free_char(keyname);
 		ssh_clean_pubkey_hash(&pubkey);
-		if (ret != GTK_RESPONSE_OK) return -1;
+		if (ret != GTK_RESPONSE_YES) return -1;
 		ssh_write_knownhost(ssh->session);
 		break;
 	case SSH_SERVER_ERROR:
@@ -440,19 +453,25 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaInitDialog *dialog, RemminaFile *re
 
 	/* Requested for a non-empty password */
 	if (ret < 0) {
-		if (!dialog) return -1;
+		gchar *pwd;
 
-		remmina_init_dialog_set_status(dialog, tips, ssh->user, ssh->server);
 		disablepasswordstoring = remmina_file_get_int(remminafile, "disablepasswordstoring", FALSE);
-		ret = remmina_init_dialog_authpwd(dialog, keyname, !disablepasswordstoring);
+
+		ret = remmina_protocol_widget_panel_authuserpwd(gp, FALSE, !disablepasswordstoring, tips);
+		save_password = remmina_protocol_widget_get_savepassword(gp);
 
 		if (ret == GTK_RESPONSE_OK) {
-			if (dialog->save_password)
-				remmina_file_set_string(remminafile, pwdtype, dialog->password);
+			if (save_password) {
+				pwd = remmina_protocol_widget_get_password(gp);
+				remmina_file_set_string(remminafile, pwdtype, pwd);
+				g_free(pwd);
+			}
 		}else  {
 			return -1;
 		}
-		ret = remmina_ssh_auth(ssh, dialog->password);
+		pwd = remmina_protocol_widget_get_password(gp);
+		ret = remmina_ssh_auth(ssh, pwd);
+		g_free(pwd);
 	}
 
 	if (ret <= 0) {

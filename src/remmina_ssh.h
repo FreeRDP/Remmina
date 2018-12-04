@@ -46,7 +46,7 @@
 #include <libssh/sftp.h>
 #include <pthread.h>
 #include "remmina_file.h"
-#include "remmina_init_dialog.h"
+#include "remmina_connection_window.h"
 
 G_BEGIN_DECLS
 
@@ -99,7 +99,7 @@ gboolean remmina_ssh_init_session(RemminaSSH *ssh);
 gint remmina_ssh_auth(RemminaSSH *ssh, const gchar *password);
 
 /* -1: Cancelled; 0: Failed; 1: Succeeded */
-gint remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaInitDialog *dialog, RemminaFile *remminafile);
+gint remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *remminafile);
 
 /* Error handling */
 #define remmina_ssh_has_error(ssh) (((RemminaSSH*)ssh)->error != NULL)

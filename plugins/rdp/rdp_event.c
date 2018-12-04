@@ -1019,6 +1019,10 @@ static void remmina_rdp_ui_event_update_scale(RemminaProtocolWidget* gp, Remmina
 void remmina_rdp_event_unfocus(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
+
+	if (!rfi || !rfi->connected || rfi->is_reconnecting)
+		return;
 	remmina_rdp_event_release_all_keys(gp);
 }
 
