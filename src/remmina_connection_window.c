@@ -158,6 +158,9 @@ typedef struct _RemminaConnectionObject {
 	gboolean connected;
 	gboolean dynres_unlocked;
 
+
+	gulong deferred_open_size_allocate_handler;
+
 } RemminaConnectionObject;
 
 struct _RemminaConnectionHolder {
@@ -3900,6 +3903,38 @@ gboolean remmina_connection_window_open_from_filename(const gchar* filename)
 	}
 }
 
+static gboolean open_connection_last_stage(gpointer user_data)
+{
+	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)user_data;
+
+	/* Now we have an allocated size for our RemminaProtocolWidget. We can proceed with the connection */
+	remmina_protocol_widget_update_remote_resolution(gp);
+	remmina_protocol_widget_open_connection(gp);
+
+	return FALSE;
+}
+
+static void rpw_size_allocated_on_connection(GtkWidget *w, GdkRectangle *allocation, gpointer user_data)
+{
+	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)w;
+
+	/* Disconnect signal handler to avoid to be called again after a normal resize */
+	g_signal_handler_disconnect(w, gp->cnnobj->deferred_open_size_allocate_handler);
+
+	/* Schedule a connection ASAP */
+	if (remmina_file_get_int(gp->cnnobj->remmina_file, "resolution_mode", RES_INVALID) == RES_USE_INITIAL_WINDOW_SIZE) {
+		/* Allow the WM to decide the real size of our windows before reading current window
+		 * size and connecting: some WM, i.e. GnomeShell/mutter with edge-tiling,
+		 * will resize our window after creating it, so we must wait to be in a stable state
+		 * before reading the window internal widgets allocated size for RES_USE_INTERNAL_WINDOW_SIZE */
+		g_timeout_add(200, open_connection_last_stage, gp);
+	}
+	else
+		g_idle_add(open_connection_last_stage, gp);
+
+	return;
+}
+
 void remmina_connection_window_open_from_file(RemminaFile* remminafile)
 {
 	TRACE_CALL(__func__);
@@ -3916,6 +3951,7 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 	RemminaConnectionWindow* cnnwin;
 	GtkWidget* tab;
 	gint i;
+	gboolean defer_connection_after_size_allocation;
 
 	/* Create the RemminaConnectionObject */
 	cnnobj = g_new0(RemminaConnectionObject, 1);
@@ -3933,14 +3969,6 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 	if (data) {
 		g_object_set_data(G_OBJECT(cnnobj->proto), "user-data", data);
 	}
-
-
-	/* Set default remote desktop size in the profile, so the plugins can query
-	 * protocolwidget and know WxH that the user put on the profile settings */
-	remmina_protocol_widget_update_remote_resolution((RemminaProtocolWidget*)cnnobj->proto,
-		remmina_file_get_int(remminafile, "resolution_width", -1),
-		remmina_file_get_int(remminafile, "resolution_height", -1)
-		);
 
 	/* Create the viewport to make the RemminaProtocolWidget scrollable */
 	cnnobj->viewport = gtk_viewport_new(NULL, NULL);
@@ -4038,7 +4066,27 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 		return cnnobj->proto;
 	}
 
-	remmina_protocol_widget_open_connection(REMMINA_PROTOCOL_WIDGET((RemminaProtocolWidget*)cnnobj->proto), remminafile);
+
+	/* GTK window setup is done here, and we are almost ready to call remmina_protocol_widget_open_connection().
+	 * But size has not yet been allocated by GTK
+	 * to the widgets. If we are in RES_USE_INITIAL_WINDOW_SIZE resolution mode,
+	 * we should wait for a size allocation from GTK for cnnobj->proto
+	 * before connecting */
+
+	defer_connection_after_size_allocation = FALSE;
+	if (remmina_file_get_int(remminafile, "resolution_mode", RES_INVALID) == RES_USE_INITIAL_WINDOW_SIZE) {
+		GtkAllocation al;
+		gtk_widget_get_allocation(cnnobj->proto, &al);
+		if (al.width < 10 || al.height < 10) {
+			defer_connection_after_size_allocation = TRUE;
+		}
+	}
+
+	if (defer_connection_after_size_allocation) {
+		cnnobj->deferred_open_size_allocate_handler = g_signal_connect(G_OBJECT(cnnobj->proto), "size-allocate", G_CALLBACK(rpw_size_allocated_on_connection), NULL);
+	} else {
+		g_idle_add(open_connection_last_stage, cnnobj->proto);
+	}
 
 	return cnnobj->proto;
 

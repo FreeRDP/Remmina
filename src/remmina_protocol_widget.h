@@ -93,7 +93,7 @@ void remmina_protocol_widget_set_error(RemminaProtocolWidget *gp, const gchar *f
 gboolean remmina_protocol_widget_is_closed(RemminaProtocolWidget *gp);
 RemminaFile* remmina_protocol_widget_get_file(RemminaProtocolWidget *gp);
 
-void remmina_protocol_widget_open_connection(RemminaProtocolWidget *gp, RemminaFile *remminafile);
+void remmina_protocol_widget_open_connection(RemminaProtocolWidget *gp);
 gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_grab_focus(RemminaProtocolWidget *gp);
 const RemminaProtocolFeature* remmina_protocol_widget_get_features(RemminaProtocolWidget *gp);
@@ -159,7 +159,7 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget* gp, GtkMenuI
 /* Take screenshot of plugin */
 gboolean remmina_protocol_widget_plugin_screenshot(RemminaProtocolWidget* gp, RemminaPluginScreenshotData *rpsd);
 
-void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp, gint w, gint h);
+void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp);
 
 /* Functions to support execution of GTK code on master thread */
 RemminaMessagePanel* remmina_protocol_widget_mpprogress(RemminaConnectionObject* cnnobj, const gchar *msg, RemminaMessagePanelCallback response_callback, gpointer response_callback_data);

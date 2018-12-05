@@ -1424,17 +1424,25 @@ static void remmina_rdp_call_feature(RemminaProtocolWidget* gp, const RemminaPro
 		break;
 
 	case REMMINA_RDP_FEATURE_SCALE:
-		rfi->scale = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
-		remmina_rdp_event_update_scale(gp);
+		if (rfi) {
+			rfi->scale = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
+			remmina_rdp_event_update_scale(gp);
+		} else {
+			printf("REMMINA RDP PLUGIN WARNING: rfi is null in %s REMMINA_RDP_FEATURE_SCALE\n", __func__);
+		}
 		break;
 
 	case REMMINA_RDP_FEATURE_DYNRESUPDATE:
 		break;
 
 	case REMMINA_RDP_FEATURE_TOOL_REFRESH:
-		gtk_widget_queue_draw_area(rfi->drawing_area, 0, 0,
-			remmina_plugin_service->protocol_plugin_get_width(gp),
-			remmina_plugin_service->protocol_plugin_get_height(gp));
+		if (rfi) {
+			gtk_widget_queue_draw_area(rfi->drawing_area, 0, 0,
+				remmina_plugin_service->protocol_plugin_get_width(gp),
+				remmina_plugin_service->protocol_plugin_get_height(gp));
+		} else {
+			printf("REMMINA RDP PLUGIN WARNING: rfi is null in %s REMMINA_RDP_FEATURE_TOOL_REFRESH\n", __func__);
+		}
 		break;
 
 	case REMMINA_RDP_FEATURE_TOOL_SENDCTRLALTDEL:

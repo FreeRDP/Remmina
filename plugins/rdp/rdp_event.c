@@ -314,9 +314,6 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 		if (!rfi->surface)
 			return FALSE;
 
-		GtkAllocation a;
-		gtk_widget_get_allocation(GTK_WIDGET(gp), &a);
-
 		if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED)
 			cairo_scale(context, rfi->scale_x, rfi->scale_y);
 

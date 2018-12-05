@@ -121,6 +121,13 @@ typedef enum {
 	REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES	= 2
 } RemminaScaleMode;
 
+typedef enum {
+	RES_INVALID = -1,
+	RES_USE_CUSTOM = 0,
+	RES_USE_CLIENT = 1,
+	RES_USE_INITIAL_WINDOW_SIZE = 2
+} RemminaProtocolWidgetResolutionMode;
+
 G_END_DECLS
 
 
