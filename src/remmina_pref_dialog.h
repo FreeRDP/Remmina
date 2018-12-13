@@ -59,8 +59,6 @@ typedef struct _RemminaPrefDialog {
 	GtkComboBox *comboboxtext_options_double_click;
 	GtkComboBox *comboboxtext_appearance_view_mode;
 	GtkComboBox *comboboxtext_appearance_tab_interface;
-	GtkComboBox *comboboxtext_appearance_show_buttons_icons;
-	GtkComboBox *comboboxtext_appearance_show_menu_icons;
 	GtkComboBox *comboboxtext_options_scale_quality;
 	GtkComboBox *comboboxtext_options_ssh_loglevel;
 	GtkComboBox *comboboxtext_appearance_fullscreen_toolbar_visibility;

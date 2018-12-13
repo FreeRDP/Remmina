@@ -128,8 +128,6 @@ typedef struct _RemminaPref {
 	gint default_mode;
 	gint tab_mode;
 	gint fullscreen_toolbar_visibility;
-	gint show_buttons_icons;
-	gint show_menu_icons;
 	/* In RemminaPrefDialog applet tab */
 	gboolean applet_new_ontop;
 	gboolean applet_hide_count;

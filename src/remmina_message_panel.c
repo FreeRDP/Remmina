@@ -202,7 +202,7 @@ void remmina_message_panel_setup_question(RemminaMessagePanel *mp, const gchar *
 	 */
 
 	TRACE_CALL(__func__);
-	GtkBox *hbox;
+	GtkWidget *grid;
 	GtkWidget *w;
 	RemminaMessagePanelPrivate *priv = remmina_message_panel_get_instance_private(mp);
 
@@ -211,22 +211,40 @@ void remmina_message_panel_setup_question(RemminaMessagePanel *mp, const gchar *
 		raise(SIGINT);
 	}
 
-	hbox = GTK_BOX(gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0));
+	/* Create grid */
+	grid = gtk_grid_new();
+	gtk_widget_set_halign(GTK_WIDGET(grid), GTK_ALIGN_CENTER);
+	gtk_widget_set_valign(GTK_WIDGET(grid), GTK_ALIGN_CENTER);
+	gtk_widget_show(grid);
+	gtk_grid_set_row_spacing(GTK_GRID(grid), 6);
+	gtk_grid_set_column_spacing(GTK_GRID(grid), 6);
 
 	/* A message, in HTML format */
 	w = gtk_label_new(NULL);
 	gtk_label_set_markup(GTK_LABEL(w), message);
-	gtk_box_pack_start(hbox, w, TRUE, TRUE, 0);
+
+	gtk_widget_set_halign(GTK_WIDGET(w), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(w), GTK_ALIGN_FILL);
+	gtk_widget_set_margin_top (GTK_WIDGET(w), 18);
+	gtk_widget_set_margin_bottom (GTK_WIDGET(w), 9);
+	gtk_widget_set_margin_start (GTK_WIDGET(w), 18);
+	gtk_widget_set_margin_end (GTK_WIDGET(w), 18);
+	gtk_widget_show(w);
+	gtk_grid_attach(GTK_GRID(grid), w, 0, 0, 2, 1);
 
 	/* A button for yes and one for no */
 	w = gtk_button_new_with_label(_("Yes"));
-	gtk_box_pack_end(hbox, w, FALSE, FALSE, 0);
+	gtk_widget_set_halign(GTK_WIDGET(w), GTK_ALIGN_START);
+	gtk_widget_set_valign(GTK_WIDGET(w), GTK_ALIGN_CENTER);
+	gtk_grid_attach(GTK_GRID(grid), w, 0, 1, 1, 1);
 	g_object_set_data(G_OBJECT(w), btn_response_key, (void *)GTK_RESPONSE_YES);
 
 	g_signal_connect(G_OBJECT(w), "clicked", G_CALLBACK(remmina_message_panel_button_clicked_callback), mp);
 
 	w = gtk_button_new_with_label(_("No"));
-	gtk_box_pack_end(hbox, w, FALSE, FALSE, 0);
+	gtk_widget_set_halign(GTK_WIDGET(w), GTK_ALIGN_END);
+	gtk_widget_set_valign(GTK_WIDGET(w), GTK_ALIGN_CENTER);
+	gtk_grid_attach(GTK_GRID(grid), w, 1, 1, 1, 1);
 	g_object_set_data(G_OBJECT(w), btn_response_key, (void *)GTK_RESPONSE_NO);
 
 	priv->response_callback = response_callback;
@@ -234,7 +252,7 @@ void remmina_message_panel_setup_question(RemminaMessagePanel *mp, const gchar *
 
 	g_signal_connect(G_OBJECT(w), "clicked", G_CALLBACK(remmina_message_panel_button_clicked_callback), mp);
 
-	gtk_box_pack_start(GTK_BOX(mp), GTK_WIDGET(hbox), TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(mp), GTK_WIDGET(grid), TRUE, TRUE, 0);
 
 	gtk_widget_show_all(GTK_WIDGET(mp));
 
@@ -330,7 +348,7 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, grid_row, 1, 1);
 
 	password_entry = gtk_entry_new();
-	gtk_widget_set_halign(GTK_WIDGET(password_entry), GTK_ALIGN_START);
+	gtk_widget_set_halign(GTK_WIDGET(password_entry), GTK_ALIGN_FILL);
 	gtk_widget_set_valign(GTK_WIDGET(password_entry), GTK_ALIGN_FILL);
 	gtk_widget_set_margin_top (GTK_WIDGET(password_entry), 3);
 	gtk_widget_set_margin_bottom (GTK_WIDGET(password_entry), 3);
@@ -355,7 +373,7 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 		gtk_grid_attach(GTK_GRID(grid), widget, 0, grid_row, 1, 1);
 
 		domain_entry = gtk_entry_new();
-		gtk_widget_set_halign(GTK_WIDGET(domain_entry), GTK_ALIGN_START);
+		gtk_widget_set_halign(GTK_WIDGET(domain_entry), GTK_ALIGN_FILL);
 		gtk_widget_set_valign(GTK_WIDGET(domain_entry), GTK_ALIGN_FILL);
 		gtk_widget_set_margin_top (GTK_WIDGET(domain_entry), 3);
 		gtk_widget_set_margin_bottom (GTK_WIDGET(domain_entry), 3);
