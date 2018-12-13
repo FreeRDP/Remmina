@@ -457,7 +457,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 
 		disablepasswordstoring = remmina_file_get_int(remminafile, "disablepasswordstoring", FALSE);
 
-		ret = remmina_protocol_widget_panel_authuserpwd(gp, FALSE, !disablepasswordstoring, tips);
+		ret = remmina_protocol_widget_panel_authuserpwd(gp, FALSE, !disablepasswordstoring);
 		save_password = remmina_protocol_widget_get_savepassword(gp);
 
 		if (ret == GTK_RESPONSE_OK) {

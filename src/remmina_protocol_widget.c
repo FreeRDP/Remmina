@@ -1061,7 +1061,6 @@ struct remmina_protocol_widget_dialog_mt_data_t {
 	/* Input data */
 	RemminaProtocolWidget *gp;
 	char *str1;
-	char *str2;
 	enum panel_type dtype;
 	unsigned pflags;
 	/* Running status */
@@ -1148,7 +1147,7 @@ static gboolean remmina_protocol_widget_dialog_mt_setup(gpointer user_data)
 	return FALSE;
 }
 
-static int remmina_protocol_widget_dialog(enum panel_type dtype, RemminaProtocolWidget* gp, unsigned pflags, const char *str1, const char *str2)
+static int remmina_protocol_widget_dialog(enum panel_type dtype, RemminaProtocolWidget* gp, unsigned pflags, const char *str1)
 {
 
 	struct remmina_protocol_widget_dialog_mt_data_t *d = (struct remmina_protocol_widget_dialog_mt_data_t*)g_malloc( sizeof(struct remmina_protocol_widget_dialog_mt_data_t) );
@@ -1162,7 +1161,6 @@ static int remmina_protocol_widget_dialog(enum panel_type dtype, RemminaProtocol
 	d->pflags = pflags;
 	d->dtype = dtype;
 	d->str1 = g_strdup(str1);
-	d->str2 = g_strdup(str2);
 
 	// pthread_cleanup_push(ptcleanup, (void*)d);
 	pthread_cond_init(&d->pt_cond, NULL);
@@ -1176,7 +1174,6 @@ static int remmina_protocol_widget_dialog(enum panel_type dtype, RemminaProtocol
 
 	rcbutton = d->rcbutton;
 	g_free(d->str1);
-	g_free(d->str2);
 	g_free(d);
 
 	return rcbutton;
@@ -1185,10 +1182,10 @@ static int remmina_protocol_widget_dialog(enum panel_type dtype, RemminaProtocol
 
 gint remmina_protocol_widget_panel_question_yesno(RemminaProtocolWidget* gp, const char *msg)
 {
-	return remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, msg, NULL);
+	return remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, msg);
 }
 
-gint remmina_protocol_widget_panel_authuserpwd(RemminaProtocolWidget* gp, gboolean want_domain, gboolean allow_password_saving, const char *tips)
+gint remmina_protocol_widget_panel_authuserpwd(RemminaProtocolWidget* gp, gboolean want_domain, gboolean allow_password_saving)
 {
 	TRACE_CALL(__func__);
 	unsigned pflags;
@@ -1201,7 +1198,7 @@ gint remmina_protocol_widget_panel_authuserpwd(RemminaProtocolWidget* gp, gboole
 	if (want_domain)
 		pflags |= REMMINA_MESSAGE_PANEL_FLAG_DOMAIN;
 
-	return remmina_protocol_widget_dialog(RPWDT_AUTHUSERPWD, gp, pflags, _("Password"), tips);
+	return remmina_protocol_widget_dialog(RPWDT_AUTHUSERPWD, gp, pflags, _("Password"));
 }
 
 gint remmina_protocol_widget_panel_authpwd(RemminaProtocolWidget* gp, RemminaAuthpwdType authpwd_type, gboolean allow_password_saving)
@@ -1232,7 +1229,7 @@ gint remmina_protocol_widget_panel_authpwd(RemminaProtocolWidget* gp, RemminaAut
 			break;
 	}
 
-	rc = remmina_protocol_widget_dialog(RPWDT_AUTHPWD, gp, pflags, password_prompt, NULL);
+	rc = remmina_protocol_widget_dialog(RPWDT_AUTHPWD, gp, pflags, password_prompt);
 	g_free(password_prompt);
 	return rc;
 
@@ -1242,7 +1239,7 @@ gint remmina_protocol_widget_panel_authx509(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
 
-	return remmina_protocol_widget_dialog(RPWDT_AUTHX509, gp, 0, NULL, NULL);
+	return remmina_protocol_widget_dialog(RPWDT_AUTHX509, gp, 0, NULL);
 }
 
 
@@ -1260,7 +1257,7 @@ gint remmina_protocol_widget_panel_new_certificate(RemminaProtocolWidget* gp, co
 		 _("Issuer:"), issuer,
 		 _("Fingerprint:"), fingerprint,
 		  _("Accept Certificate?"));
-	rc = remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, s, NULL);
+	rc = remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, s);
 	g_free(s);
 
 	/* For compatibility with plugin API: the plugin expects GTK_RESPONSE_OK when user confirms new cert */
@@ -1283,7 +1280,7 @@ gint remmina_protocol_widget_panel_changed_certificate(RemminaProtocolWidget *gp
 		 _("Old Fingerprint:"), old_fingerprint,
 		 _("New Fingerprint:"), new_fingerprint,
 		 _("Accept Changed Certificate?"));
-	rc = remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, s, NULL);
+	rc = remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, s);
 	g_free(s);
 
 	/* For compatibility with plugin API: the plugin expects GTK_RESPONSE_OK when user confirms new cert */

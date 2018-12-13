@@ -124,7 +124,7 @@ void remmina_protocol_widget_set_display(RemminaProtocolWidget *gp, gint display
 /* Dialog panel API used by the plugins */
 
 gint remmina_protocol_widget_panel_authpwd(RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type, gboolean allow_password_saving);
-gint remmina_protocol_widget_panel_authuserpwd(RemminaProtocolWidget *gp, gboolean want_domain, gboolean allow_password_saving, const char *tips);
+gint remmina_protocol_widget_panel_authuserpwd(RemminaProtocolWidget *gp, gboolean want_domain, gboolean allow_password_saving);
 gint remmina_protocol_widget_panel_new_certificate(RemminaProtocolWidget* gp, const gchar* subject, const gchar* issuer, const gchar* fingerprint);
 gint remmina_protocol_widget_panel_changed_certificate(RemminaProtocolWidget *gp, const gchar* subject, const gchar* issuer, const gchar* new_fingerprint, const gchar* old_fingerprint);
 gint remmina_protocol_widget_panel_question_yesno(RemminaProtocolWidget* gp, const char *msg);
