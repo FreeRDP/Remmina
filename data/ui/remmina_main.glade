@@ -128,7 +128,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         <property name="label" translatable="yes">_New</property>
         <property name="short_label" translatable="yes">_New</property>
         <property name="tooltip" translatable="yes">Create a new remote desktop file</property>
-        <property name="stock_id">gtk-add</property>
         <property name="icon_name">document-new</property>
         <signal name="activate" handler="remmina_main_on_action_connections_new" swapped="no"/>
       </object>
@@ -226,17 +225,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
   <object class="GtkImage" id="find_toggle_image">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-find</property>
+    <property name="icon_name">edit-find</property>
   </object>
   <object class="GtkImage" id="image_new">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gtk-add</property>
+    <property name="icon_name">document-new</property>
   </object>
   <object class="GtkWindow" id="RemminaMain">
     <property name="can_focus">False</property>
     <property name="icon_name">org.remmina.Remmina</property>
-    <property name="has_resize_grip">True</property>
     <signal name="delete-event" handler="remmina_main_on_delete_event" swapped="no"/>
     <signal name="destroy" handler="remmina_main_destroy" swapped="no"/>
     <signal name="drag-data-received" handler="remmina_main_on_drag_data_received" swapped="no"/>
@@ -343,8 +341,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     <property name="tooltip_text" translatable="yes">search string or server name/ip address for quick connect</property>
                     <property name="hexpand">True</property>
                     <property name="width_chars">61</property>
-                    <property name="primary_icon_stock">gtk-connect</property>
-                    <property name="secondary_icon_stock">gtk-clear</property>
+                    <property name="primary_icon_name">network-transmit</property>
+                    <property name="secondary_icon_name">edit-delete</property>
                     <property name="primary_icon_tooltip_text" translatable="yes">Server name or IP address</property>
                     <property name="secondary_icon_tooltip_text" translatable="yes">Clear</property>
                     <property name="primary_icon_tooltip_markup" translatable="yes">Server name or IP address</property>
@@ -401,7 +399,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
@@ -416,7 +413,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
@@ -425,7 +421,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
@@ -434,7 +429,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
@@ -443,7 +437,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
                       </object>
                     </child>
                   </object>
@@ -546,7 +539,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
@@ -606,7 +598,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
@@ -621,7 +612,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
                       </object>
                     </child>
                   </object>
@@ -754,8 +744,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         <child>
           <object class="GtkBox" id="box_ustat">
             <property name="can_focus">False</property>
-            <property name="margin_left">16</property>
-            <property name="margin_right">16</property>
             <property name="orientation">vertical</property>
             <child>
               <object class="GtkSeparator" id="ustat_separator">
