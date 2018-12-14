@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1
+<!-- Generated with glade 3.22.1 
 
 Remmina - The GTK+ Remmina Remote Desktop Client
 Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2018
@@ -199,24 +199,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         <signal name="activate" handler="remmina_main_on_action_view_statusbar" swapped="no"/>
       </object>
     </child>
-    <child>
-      <object class="GtkRadioAction" id="action_view_mode_list">
-        <property name="label" translatable="yes">List View</property>
-        <property name="short_label" translatable="yes">List View</property>
-        <property name="draw_as_radio">True</property>
-        <property name="active">True</property>
-        <signal name="activate" handler="remmina_main_on_action_view_file_mode" swapped="no"/>
-      </object>
-    </child>
-    <child>
-      <object class="GtkRadioAction" id="action_view_mode_tree">
-        <property name="label" translatable="yes">Tree View</property>
-        <property name="short_label" translatable="yes">Tree View</property>
-        <property name="draw_as_radio">True</property>
-        <property name="value">1</property>
-        <signal name="activate" handler="remmina_main_on_action_view_file_mode" swapped="no"/>
-      </object>
-    </child>
   </object>
   <object class="GtkEntryCompletion" id="entrycompletion">
     <property name="inline_completion">True</property>
@@ -231,6 +213,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">document-new</property>
+  </object>
+  <object class="GtkImage" id="view_toggle_icon">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">view-list</property>
   </object>
   <object class="GtkWindow" id="RemminaMain">
     <property name="can_focus">False</property>
@@ -297,6 +284,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           <packing>
             <property name="pack_type">end</property>
             <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToggleButton" id="view_toggle_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="tooltip_text" translatable="yes">Toggle view</property>
+            <property name="image">view_toggle_icon</property>
+            <signal name="toggled" handler="remmina_main_on_view_toggle" swapped="no"/>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>
@@ -399,6 +400,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
+                        <property name="use_stock">False</property>
                       </object>
                     </child>
                     <child>
@@ -413,6 +415,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
+                        <property name="use_stock">False</property>
                       </object>
                     </child>
                     <child>
@@ -421,6 +424,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
+                        <property name="use_stock">False</property>
                       </object>
                     </child>
                     <child>
@@ -429,6 +433,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
+                        <property name="use_stock">False</property>
                       </object>
                     </child>
                     <child>
@@ -437,6 +442,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
+                        <property name="use_stock">False</property>
                       </object>
                     </child>
                   </object>
@@ -504,30 +510,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkRadioMenuItem" id="menuitem_view_mode_list">
-                        <property name="use_action_appearance">True</property>
-                        <property name="related_action">action_view_mode_list</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="active">True</property>
-                        <property name="draw_as_radio">True</property>
-                        <property name="group">menuitem_view_mode_tree</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkRadioMenuItem" id="menuitem_view_mode_tree">
-                        <property name="use_action_appearance">True</property>
-                        <property name="related_action">action_view_mode_tree</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="active">True</property>
-                        <property name="draw_as_radio">True</property>
-                        <property name="group">menuitem_view_mode_list</property>
-                      </object>
-                    </child>
-                    <child>
                       <object class="GtkSeparatorMenuItem" id="menuitem_edit_separator1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -539,6 +521,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
+                        <property name="use_stock">False</property>
                       </object>
                     </child>
                     <child>
@@ -598,6 +581,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
+                        <property name="use_stock">False</property>
                       </object>
                     </child>
                     <child>
@@ -612,6 +596,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
+                        <property name="use_stock">False</property>
                       </object>
                     </child>
                   </object>

@@ -55,6 +55,7 @@ typedef struct _RemminaMain {
 	GtkButton *button_new;
 	/* Search bar objects */
 	GtkToggleButton *search_toggle;
+	GtkToggleButton *view_toggle_button;
 	GtkSearchBar *search_bar;
 	/* Quick connect objects */
 	GtkBox *box_quick_connect;
