@@ -158,10 +158,6 @@ typedef struct _RemminaConnectionObject {
 	gboolean connected;
 	gboolean dynres_unlocked;
 
-	/* The time of the GTK event which called remmina_connection_window_open_from_file_full().
-	 * Needed to make gtk_window_present_with_time() work under wayland */
-	guint32 open_from_file_event_time;
-
 } RemminaConnectionObject;
 
 struct _RemminaConnectionHolder {
@@ -3715,7 +3711,7 @@ static gboolean remmina_connection_object_delayed_window_present(gpointer user_d
 {
 	RemminaConnectionObject* cnnobj = (RemminaConnectionObject*)user_data;
 	if (cnnobj && cnnobj->cnnhld && cnnobj->cnnhld->cnnwin) {
-		gtk_window_present_with_time(GTK_WINDOW(cnnobj->cnnhld->cnnwin), cnnobj->open_from_file_event_time);
+		gtk_window_present_with_time(GTK_WINDOW(cnnobj->cnnhld->cnnwin), (guint32)(g_get_monotonic_time() / 1000));
 		remmina_connection_holder_grab_focus(GTK_NOTEBOOK(cnnobj->cnnhld->cnnwin->priv->notebook));
 	}
 	return FALSE;
@@ -3921,10 +3917,6 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 	/* Create the RemminaConnectionObject */
 	cnnobj = g_new0(RemminaConnectionObject, 1);
 	cnnobj->remmina_file = remminafile;
-
-	/* Save the time of the event which caused the file open, so we can
-	 * use gtk_window_present_with_time() later */
-	cnnobj->open_from_file_event_time = gtk_get_current_event_time();
 
 	/* Create the RemminaProtocolWidget */
 	cnnobj->proto = remmina_protocol_widget_new();
