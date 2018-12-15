@@ -30,7 +30,7 @@
         "--socket=pulseaudio",
         /* Wayland access */
         "--socket=wayland",
-        /* SSH_AUTH_SOCK access */
+        /* SSH_AUTH_SOCK access - Requires flatpak >= 0.99.1 */
         "--socket=ssh-auth",
         /* File transfer (although limited to user directory) */
         "--filesystem=home",
@@ -121,8 +121,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/FreeRDP/FreeRDP.git",
-                    "tag": "2.0.0-rc3",
-                    "commit": "a4f147683db7aa99a6075aeaf7c698bc6ba84d11"
+                    "tag": "2.0.0-rc4",
+                    "commit": "e21b72c95f857817b4b32b5ef5406355c005a9e8"
                 }
             ],
             "modules": [
