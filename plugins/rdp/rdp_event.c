@@ -862,7 +862,6 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 		rfi->width = width;
 		rfi->height = height;
 		gdi = ((rdpContext*)rfi)->gdi;
-		gdi_resize(gdi, width, height);
 		rfi->primary_buffer = gdi->primary_buffer;
 		remmina_rdp_event_create_cairo_surface(rfi);
 	}

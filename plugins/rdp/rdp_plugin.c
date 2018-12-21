@@ -337,6 +337,9 @@ static BOOL rf_desktop_resize(rdpContext* context)
 	remmina_plugin_service->protocol_plugin_set_width(gp, rfi->settings->DesktopWidth);
 	remmina_plugin_service->protocol_plugin_set_height(gp, rfi->settings->DesktopHeight);
 
+	/* Tell libfreerdp to change its internal GDI bitmap width and heigt */
+	gdi_resize(((rdpContext*)rfi)->gdi, rfi->settings->DesktopWidth, rfi->settings->DesktopHeight);
+
 	/* Call to remmina_rdp_event_update_scale(gp) on the main UI thread */
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
