@@ -340,7 +340,8 @@ static BOOL rf_desktop_resize(rdpContext* context)
 	/* Tell libfreerdp to change its internal GDI bitmap width and heigt */
 	gdi_resize(((rdpContext*)rfi)->gdi, rfi->settings->DesktopWidth, rfi->settings->DesktopHeight);
 
-	/* Call to remmina_rdp_event_update_scale(gp) on the main UI thread */
+	/* Call to remmina_rdp_event_update_scale(gp) on the main UI thread,
+	 * this will recreate rfi->surface from gdi->primary_buffer */
 
 	ui = g_new0(RemminaPluginRdpUiObject, 1);
 	ui->type = REMMINA_RDP_UI_EVENT;
@@ -476,15 +477,12 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
 	RemminaPluginRdpUiObject* ui;
-	rdpGdi* gdi;
 	UINT32 freerdp_local_color_format;
 
 	rfi = (rfContext*)instance->context;
 	gp = rfi->protocol_widget;
 	rfi->postconnect_error = REMMINA_POSTCONNECT_ERROR_OK;
 
-	rfi->width = rfi->settings->DesktopWidth;
-	rfi->height = rfi->settings->DesktopHeight;
 	rfi->srcBpp = rfi->settings->ColorDepth;
 
 	if (rfi->settings->RemoteFxCodec == FALSE)
@@ -514,9 +512,6 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 		rfi->postconnect_error = REMMINA_POSTCONNECT_ERROR_NO_H264;
 		return FALSE;
 	}
-
-	gdi = instance->context->gdi;
-	rfi->primary_buffer = gdi->primary_buffer;
 
 	pointer_cache_register_callbacks(instance->update);
 
@@ -839,6 +834,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->DesktopWidth = dynresw;
 		rfi->settings->DesktopHeight = dynresh;
 	}
+
 	remmina_plugin_service->protocol_plugin_set_width(gp, rfi->settings->DesktopWidth);
 	remmina_plugin_service->protocol_plugin_set_height(gp, rfi->settings->DesktopHeight);
 

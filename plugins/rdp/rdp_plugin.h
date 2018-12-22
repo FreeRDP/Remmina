@@ -273,11 +273,8 @@ struct rf_context {
 	cairo_surface_t* surface;
 	cairo_format_t cairo_format;
 	gint bpp;
-	gint width;
-	gint height;
 	gint scanline_pad;
 	gint* colormap;
-	UINT8* primary_buffer;
 
 	guint object_id_seq;
 	GHashTable* object_table;

@@ -833,8 +833,8 @@ static void remmina_rdp_event_create_cairo_surface(rfContext* rfi)
 		cairo_surface_destroy(rfi->surface);
 		rfi->surface = NULL;
 	}
-	stride = cairo_format_stride_for_width(rfi->cairo_format, rfi->width);
-	rfi->surface = cairo_image_surface_create_for_data((unsigned char*)gdi->primary_buffer, rfi->cairo_format, rfi->width, rfi->height, stride);
+	stride = cairo_format_stride_for_width(rfi->cairo_format, gdi->width);
+	rfi->surface = cairo_image_surface_create_for_data((unsigned char*)gdi->primary_buffer, rfi->cairo_format, gdi->width, gdi->height, stride);
 }
 
 void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
@@ -847,24 +847,29 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 	width = remmina_plugin_service->protocol_plugin_get_width(gp);
 	height = remmina_plugin_service->protocol_plugin_get_height(gp);
 
+	gdi = ((rdpContext*)rfi)->gdi;
+
 	rfi->scale = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
 
 	/* See if we also must rellocate rfi->surface with different width and height,
 	 * this usually happens after a DesktopResize RDP event*/
-	if ( rfi->surface && (width != cairo_image_surface_get_width(rfi->surface) ||
-			      height != cairo_image_surface_get_height(rfi->surface) )) {
-		/* Destroys and recreate rfi->surface with new width and height,
-		 * calls gdi_resize and save new gdi->primary buffer pointer */
+
+	if ( rfi->surface && (cairo_image_surface_get_width(rfi->surface) != gdi->width ||
+		cairo_image_surface_get_height(rfi->surface) != gdi->height) ) {
+		/* Destroys and recreate rfi->surface with new width and height */
 		if (rfi->surface) {
 			cairo_surface_destroy(rfi->surface);
 			rfi->surface = NULL;
 		}
-		rfi->width = width;
-		rfi->height = height;
-		gdi = ((rdpContext*)rfi)->gdi;
-		rfi->primary_buffer = gdi->primary_buffer;
 		remmina_rdp_event_create_cairo_surface(rfi);
 	}
+
+	/* Send gdi->width and gdi->height obtanied from remote server to gp plugin,
+	 * so they will be saved when closing connection */
+	if (width != gdi->width)
+		remmina_plugin_service->protocol_plugin_set_width(gp, gdi->width);
+	if (height != gdi->height)
+		remmina_plugin_service->protocol_plugin_set_height(gp, gdi->height);
 
 	remmina_rdp_event_update_scale_factor(gp);
 
@@ -882,12 +887,15 @@ static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPlugin
 {
 	TRACE_CALL(__func__);
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rdpGdi* gdi;
+
+	gdi = ((rdpContext *)rfi)->gdi;
 
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 	gtk_widget_realize(rfi->drawing_area);
 
 	remmina_rdp_event_create_cairo_surface(rfi);
-	gtk_widget_queue_draw_area(rfi->drawing_area, 0, 0, rfi->width, rfi->height);
+	gtk_widget_queue_draw_area(rfi->drawing_area, 0, 0, gdi->width, gdi->height);
 
 	remmina_rdp_event_update_scale(gp);
 }
