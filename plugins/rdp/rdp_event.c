@@ -364,8 +364,6 @@ static gboolean remmina_rdp_event_delayed_monitor_layout(RemminaProtocolWidget* 
 			rdp_event.monitor_layout.desktopScaleFactor = desktopScaleFactor;
 			rdp_event.monitor_layout.deviceScaleFactor = deviceScaleFactor;
 			remmina_rdp_event_event_push(gp, &rdp_event);
-			remmina_plugin_service->file_set_int(remminafile, "dynamic_resolution_width", gpwidth);
-			remmina_plugin_service->file_set_int(remminafile, "dynamic_resolution_height", gpheight);
 		}
 	}
 

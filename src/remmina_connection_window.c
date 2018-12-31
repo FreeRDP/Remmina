@@ -1114,6 +1114,7 @@ static void remmina_protocol_widget_update_alignment(RemminaConnectionObject* cn
 	gboolean scaledexpandedmode;
 	int rdwidth, rdheight;
 	gfloat aratio;
+	RemminaProtocolWidgetResolutionMode res_mode;
 
 	if (!cnnobj->plugin_can_scale) {
 		/* If we have a plugin that cannot scale,
@@ -1164,6 +1165,8 @@ static void remmina_protocol_widget_update_alignment(RemminaConnectionObject* cn
 					remmina_connection_holder_grab_focus(GTK_NOTEBOOK(cnnobj->cnnhld->cnnwin->priv->notebook));
 			}
 		}
+
+		res_mode = remmina_file_get_int(cnnobj->remmina_file, "resolution_mode", RES_INVALID);
 
 		if (scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED || scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
 			/* We have a plugin that can be scaled, and the scale button
@@ -1459,11 +1462,6 @@ static void remmina_connection_holder_change_scalemode(RemminaConnectionHolder* 
 		scalemode = REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED;
 	else
 		scalemode = REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE;
-
-	if (scalemode != REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
-		remmina_file_set_int(cnnobj->remmina_file, "dynamic_resolution_width", 0);
-		remmina_file_set_int(cnnobj->remmina_file, "dynamic_resolution_height", 0);
-	}
 
 	remmina_protocol_widget_set_current_scale_mode(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), scalemode);
 	remmina_file_set_int(cnnobj->remmina_file, "scale", scalemode);
@@ -3929,12 +3927,13 @@ static void rpw_size_allocated_on_connection(GtkWidget *w, GdkRectangle *allocat
 	g_signal_handler_disconnect(w, gp->cnnobj->deferred_open_size_allocate_handler);
 
 	/* Schedule a connection ASAP */
-	if (remmina_file_get_int(gp->cnnobj->remmina_file, "resolution_mode", RES_INVALID) == RES_USE_INITIAL_WINDOW_SIZE) {
+	if (remmina_file_get_int(gp->cnnobj->remmina_file, "resolution_mode", RES_INVALID) == RES_USE_INITIAL_WINDOW_SIZE ||
+		remmina_protocol_widget_get_current_scale_mode(gp) == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
 		/* Allow the WM to decide the real size of our windows before reading current window
 		 * size and connecting: some WM, i.e. GnomeShell/mutter with edge-tiling,
 		 * will resize our window after creating it, so we must wait to be in a stable state
 		 * before reading the window internal widgets allocated size for RES_USE_INTERNAL_WINDOW_SIZE */
-		g_timeout_add(200, open_connection_last_stage, gp);
+		g_timeout_add(400, open_connection_last_stage, gp);
 	}
 	else
 		g_idle_add(open_connection_last_stage, gp);
@@ -4026,6 +4025,10 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 		gtk_notebook_set_current_page(GTK_NOTEBOOK(cnnwin->priv->notebook), i);
 	}
 
+
+	// Do not call remmina_protocol_widget_update_alignment(cnnobj); here or cnnobj->proto will not fill its parent size
+	// and remmina_protocol_widget_update_remote_resolution() cannot autodetect available space
+
 	gtk_widget_show(cnnobj->proto);
 	g_signal_connect(G_OBJECT(cnnobj->proto), "connect", G_CALLBACK(remmina_connection_object_on_connect), cnnobj);
 	if (disconnect_cb) {
@@ -4076,12 +4079,13 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 
 	/* GTK window setup is done here, and we are almost ready to call remmina_protocol_widget_open_connection().
 	 * But size has not yet been allocated by GTK
-	 * to the widgets. If we are in RES_USE_INITIAL_WINDOW_SIZE resolution mode,
+	 * to the widgets. If we are in RES_USE_INITIAL_WINDOW_SIZE resolution mode or scale is REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES,
 	 * we should wait for a size allocation from GTK for cnnobj->proto
 	 * before connecting */
 
 	defer_connection_after_size_allocation = FALSE;
-	if (remmina_file_get_int(remminafile, "resolution_mode", RES_INVALID) == RES_USE_INITIAL_WINDOW_SIZE) {
+	if (remmina_file_get_int(remminafile, "resolution_mode", RES_INVALID) == RES_USE_INITIAL_WINDOW_SIZE ||
+		remmina_protocol_widget_get_current_scale_mode(cnnobj->proto) == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
 		GtkAllocation al;
 		gtk_widget_get_allocation(cnnobj->proto, &al);
 		if (al.width < 10 || al.height < 10) {

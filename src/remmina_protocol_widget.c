@@ -1598,8 +1598,10 @@ void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp)
 	gint w, h;
 	gint wfile, hfile;
 	RemminaProtocolWidgetResolutionMode res_mode;
+	RemminaScaleMode scalemode;
 
 	res_mode = remmina_file_get_int(gp->priv->remmina_file, "resolution_mode", RES_INVALID);
+	scalemode = remmina_file_get_int(gp->priv->remmina_file, "scale", REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE);
 	wfile = remmina_file_get_int(gp->priv->remmina_file, "resolution_width", -1);
 	hfile = remmina_file_get_int(gp->priv->remmina_file, "resolution_height", -1);
 
@@ -1612,7 +1614,23 @@ void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp)
 			res_mode = RES_USE_CUSTOM;
 	}
 
-	if (res_mode == RES_USE_CLIENT) {
+	if (res_mode == RES_USE_INITIAL_WINDOW_SIZE || scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
+		/* Use internal window size as remote desktop size */
+		GtkAllocation al;
+		gtk_widget_get_allocation(GTK_WIDGET(gp), &al);
+		w = al.width;
+		h = al.height;
+		if (w < 10) {
+			printf("REMMINA WARNING: %s RemminaProtocolWidget w=%d h=%d are too small, adjusting to 640x480\n", __func__, w, h);
+			w = 640;
+			h = 480;
+		}
+		/* Workaround for FreeRDP issue 5119. This will make our horizontal resolution
+		 * an even value, but it will add a vertical black 1 pixel line on the
+		 * right of the desktop */
+		if ( (w & 1) != 0)
+			w -= 1;
+	} else if (res_mode == RES_USE_CLIENT) {
 		display = gdk_display_get_default();
 		/* gdk_display_get_device_manager deprecated since 3.20, Use gdk_display_get_default_seat */
 #if GTK_CHECK_VERSION(3, 20, 0)
@@ -1632,22 +1650,6 @@ void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp)
 #endif
 		w = rect.width;
 		h = rect.height;
-	} else if (res_mode == RES_USE_INITIAL_WINDOW_SIZE) {
-		GtkAllocation al;
-		gtk_widget_get_allocation(gp, &al);
-		w = al.width;
-		h = al.height;
-		if (w < 10) {
-			printf("REMMINA WARNING: %s RemminaProtocolWidget w=%d h=%d are too small, adjusting to 640x480\n", __func__, w, h);
-			w = 640;
-			h = 480;
-		}
-		/* Workaround for FreeRDP issue 5119. This will make our horizontal resolution
-		 * an even value, but it will add a vertical black 1 pixel line on the
-		 * right of the desktop */
-		if ( w & 1 != 0)
-			w -= 1;
-
 	} else {
 		w = wfile;
 		h = hfile;
