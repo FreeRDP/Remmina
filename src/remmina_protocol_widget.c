@@ -292,9 +292,6 @@ void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp)
 	const gchar *name;
 	RemminaMessagePanel *mp;
 
-	gp->priv->scalemode = remmina_file_get_int(gp->priv->remmina_file, "scale", FALSE);
-	gp->priv->scaler_expand = remmina_file_get_int(gp->priv->remmina_file, "scaler_expand", FALSE);
-
 	/* Exec precommand before everything else */
 	mp = remmina_message_panel_new();
 	remmina_message_panel_setup_progress(mp, _("Executing external commands..."), NULL, NULL);
@@ -1524,6 +1521,9 @@ void remmina_protocol_widget_setup(RemminaProtocolWidget *gp, RemminaFile* remmi
 		return;
 	}
 	gp->priv->plugin = plugin;
+
+	gp->priv->scalemode = remmina_file_get_int(gp->priv->remmina_file, "scale", FALSE);
+	gp->priv->scaler_expand = remmina_file_get_int(gp->priv->remmina_file, "scaler_expand", FALSE);
 
 }
 

@@ -2154,6 +2154,7 @@ remmina_connection_holder_create_toolbar(RemminaConnectionHolder* cnnhld, gint m
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(remmina_connection_holder_toolbar_screenshot), cnnhld);
+	priv->toolitem_screenshot = toolitem;
 
 	toolitem = gtk_tool_button_new(NULL, "_Bottom");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-go-bottom-symbolic");
@@ -2235,8 +2236,8 @@ static void remmina_connection_holder_update_toolbar(RemminaConnectionHolder* cn
 	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), bval);
 
 	scalemode = get_current_allowed_scale_mode(cnnobj, &dynres_avail, &scale_avail);
-	gtk_widget_set_sensitive(GTK_WIDGET(priv->toolitem_dynres), dynres_avail);
-	gtk_widget_set_sensitive(GTK_WIDGET(priv->toolitem_scale), scale_avail);
+	gtk_widget_set_sensitive(GTK_WIDGET(priv->toolitem_dynres), dynres_avail && cnnobj->connected);
+	gtk_widget_set_sensitive(GTK_WIDGET(priv->toolitem_scale), scale_avail && cnnobj->connected);
 
 	switch (scalemode) {
 	case REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE:
@@ -2247,7 +2248,7 @@ static void remmina_connection_holder_update_toolbar(RemminaConnectionHolder* cn
 	case REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED:
 		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_dynres), FALSE);
 		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_scale), TRUE);
-		gtk_widget_set_sensitive(GTK_WIDGET(priv->scaler_option_button), TRUE);
+		gtk_widget_set_sensitive(GTK_WIDGET(priv->scaler_option_button), TRUE && cnnobj->connected);
 		break;
 	case REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES:
 		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_dynres), TRUE);
@@ -2257,10 +2258,12 @@ static void remmina_connection_holder_update_toolbar(RemminaConnectionHolder* cn
 	}
 
 	toolitem = priv->toolitem_grab;
+	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);
 	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem),
 		remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE));
 
 	toolitem = priv->toolitem_preferences;
+	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), cnnobj->connected);
 	bval = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
 		REMMINA_PROTOCOL_FEATURE_TYPE_PREF);
 	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), bval);
@@ -2268,7 +2271,9 @@ static void remmina_connection_holder_update_toolbar(RemminaConnectionHolder* cn
 	toolitem = priv->toolitem_tools;
 	bval = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
 		REMMINA_PROTOCOL_FEATURE_TYPE_TOOL);
-	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), bval);
+	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), bval && cnnobj->connected);
+
+	gtk_widget_set_sensitive(GTK_WIDGET(priv->toolitem_screenshot), cnnobj->connected);
 
 	gtk_window_set_title(GTK_WINDOW(cnnhld->cnnwin), remmina_file_get_string(cnnobj->remmina_file, "name"));
 
@@ -3780,6 +3785,8 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 		gtk_widget_show(cnnhld->cnnwin->priv->floating_toolbar_window);
 	}
 #endif
+
+	remmina_connection_holder_update_toolbar(cnnhld);
 
 	/* Try to present window */
 	g_timeout_add(200, remmina_connection_object_delayed_window_present, (gpointer)cnnobj);
