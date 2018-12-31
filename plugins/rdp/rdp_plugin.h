@@ -173,7 +173,8 @@ typedef enum {
 } RemminaPluginRdpUiPointerType;
 
 typedef enum {
-	REMMINA_RDP_UI_EVENT_UPDATE_SCALE
+	REMMINA_RDP_UI_EVENT_UPDATE_SCALE,
+	REMMINA_RDP_UI_EVENT_DESTROY_CAIRO_SURFACE
 } RemminaPluginRdpUiEeventType;
 
 typedef struct {

@@ -862,6 +862,8 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 			rfi->surface = NULL;
 		}
 		remmina_rdp_event_create_cairo_surface(rfi);
+	} else if ( rfi->surface == NULL ) {
+		remmina_rdp_event_create_cairo_surface(rfi);
 	}
 
 	/* Send gdi->width and gdi->height obtanied from remote server to gp plugin,
@@ -1033,12 +1035,23 @@ void remmina_rdp_event_unfocus(RemminaProtocolWidget* gp)
 	remmina_rdp_event_release_all_keys(gp);
 }
 
+static void remmina_rdp_ui_event_destroy_cairo_surface(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
+{
+	TRACE_CALL(__func__);
+	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	cairo_surface_destroy(rfi->surface);
+	rfi->surface = NULL;
+}
+
 static void remmina_rdp_event_process_event(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
 {
 	TRACE_CALL(__func__);
 	switch (ui->event.type) {
 	case REMMINA_RDP_UI_EVENT_UPDATE_SCALE:
 		remmina_rdp_ui_event_update_scale(gp, ui);
+		break;
+	case REMMINA_RDP_UI_EVENT_DESTROY_CAIRO_SURFACE:
+		remmina_rdp_ui_event_destroy_cairo_surface(gp, ui);
 		break;
 	}
 }
