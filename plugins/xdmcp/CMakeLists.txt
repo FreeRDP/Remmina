@@ -48,3 +48,5 @@ install(FILES
     scalable/emblems/remmina-xdmcp-ssh-symbolic.svg
     scalable/emblems/remmina-xdmcp-symbolic.svg
     DESTINATION ${APPICONSCALE_EMBLEMS_DIR})
+
+gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")

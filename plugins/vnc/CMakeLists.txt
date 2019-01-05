@@ -50,3 +50,5 @@ install(FILES
     scalable/emblems/remmina-vnc-ssh-symbolic.svg
     scalable/emblems/remmina-vnc-symbolic.svg
     DESTINATION ${APPICONSCALE_EMBLEMS_DIR})
+
+gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")

@@ -49,3 +49,5 @@ install(FILES
     scalable/emblems/remmina-spice-ssh-symbolic.svg
     scalable/emblems/remmina-spice-symbolic.svg
     DESTINATION ${APPICONSCALE_EMBLEMS_DIR})
+
+gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")

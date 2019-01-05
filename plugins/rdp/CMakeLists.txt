@@ -72,3 +72,5 @@ install(FILES
     scalable/emblems/remmina-rdp-ssh-symbolic.svg
     scalable/emblems/remmina-rdp-symbolic.svg
     DESTINATION ${APPICONSCALE_EMBLEMS_DIR})
+
+gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
