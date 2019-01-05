@@ -428,36 +428,9 @@ static BOOL remmina_rdp_pre_connect(freerdp* instance)
 
 	settings->OsMajorType = OSMAJORTYPE_UNIX;
 	settings->OsMinorType = OSMINORTYPE_UNSPECIFIED;
-	ZeroMemory(settings->OrderSupport, 32);
 
 	settings->BitmapCacheEnabled = True;
 	settings->OffscreenSupportLevel = True;
-
-
-	settings->OrderSupport[NEG_DSTBLT_INDEX] = True;
-	settings->OrderSupport[NEG_PATBLT_INDEX] = True;
-	settings->OrderSupport[NEG_SCRBLT_INDEX] = True;
-	settings->OrderSupport[NEG_OPAQUE_RECT_INDEX] = True;
-	settings->OrderSupport[NEG_DRAWNINEGRID_INDEX] = False;
-	settings->OrderSupport[NEG_MULTIDSTBLT_INDEX] = False;
-	settings->OrderSupport[NEG_MULTIPATBLT_INDEX] = False;
-	settings->OrderSupport[NEG_MULTISCRBLT_INDEX] = False;
-	settings->OrderSupport[NEG_MULTIOPAQUERECT_INDEX] = True;
-	settings->OrderSupport[NEG_MULTI_DRAWNINEGRID_INDEX] = False;
-	settings->OrderSupport[NEG_LINETO_INDEX] = True;
-	settings->OrderSupport[NEG_POLYLINE_INDEX] = True;
-	settings->OrderSupport[NEG_MEMBLT_INDEX] = settings->BitmapCacheEnabled;
-	settings->OrderSupport[NEG_MEM3BLT_INDEX] = settings->BitmapCacheEnabled;
-	settings->OrderSupport[NEG_MEMBLT_V2_INDEX] = settings->BitmapCacheEnabled;
-	settings->OrderSupport[NEG_MEM3BLT_V2_INDEX] = settings->BitmapCacheEnabled;
-	settings->OrderSupport[NEG_SAVEBITMAP_INDEX] = False;
-	settings->OrderSupport[NEG_GLYPH_INDEX_INDEX] = True;
-	settings->OrderSupport[NEG_FAST_INDEX_INDEX] = True;
-	settings->OrderSupport[NEG_FAST_GLYPH_INDEX] = True;
-	settings->OrderSupport[NEG_POLYGON_SC_INDEX] = False;
-	settings->OrderSupport[NEG_POLYGON_CB_INDEX] = False;
-	settings->OrderSupport[NEG_ELLIPSE_SC_INDEX] = False;
-	settings->OrderSupport[NEG_ELLIPSE_CB_INDEX] = False;
 
 	if (settings->RemoteFxCodec == True) {
 		settings->FrameAcknowledge = False;
@@ -778,7 +751,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	gchar *gateway_host;
 	gint gateway_port;
 	gint desktopOrientation, desktopScaleFactor, deviceScaleFactor;
-	gint dynresw, dynresh;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
