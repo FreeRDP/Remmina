@@ -216,6 +216,7 @@ static void remmina_protocol_widget_init(RemminaProtocolWidget* gp)
 
 	priv = g_new0(RemminaProtocolWidgetPriv, 1);
 	gp->priv = priv;
+	gp->priv->closed = TRUE;
 
 	g_signal_connect(G_OBJECT(gp), "destroy", G_CALLBACK(remmina_protocol_widget_destroy), NULL);
 	g_signal_connect(G_OBJECT(gp), "connect", G_CALLBACK(remmina_protocol_widget_on_connected), NULL);
@@ -231,6 +232,8 @@ void remmina_protocol_widget_open_connection_real(gpointer data)
 	RemminaProtocolFeature* feature;
 	gint num_plugin;
 	gint num_ssh;
+
+	gp->priv->closed = FALSE;
 
 	plugin = gp->priv->plugin;
 	plugin->init(gp);
@@ -282,26 +285,22 @@ static void cancel_open_connection_cb(void *cbdata, int btn)
 	remmina_protocol_widget_close_connection(gp);
 }
 
-void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp, RemminaFile* remminafile)
+void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
 	gchar *s;
 	const gchar *name;
 	RemminaMessagePanel *mp;
 
-	gp->priv->remmina_file = remminafile;
-	gp->priv->scalemode = remmina_file_get_int(remminafile, "scale", FALSE);
-	gp->priv->scaler_expand = remmina_file_get_int(remminafile, "scaler_expand", FALSE);
-
 	/* Exec precommand before everything else */
 	mp = remmina_message_panel_new();
 	remmina_message_panel_setup_progress(mp, _("Executing external commands..."), NULL, NULL);
 	remmina_connection_object_show_message_panel(gp->cnnobj, mp);
 
-	remmina_ext_exec_new(remminafile, "precommand");
+	remmina_ext_exec_new(gp->priv->remmina_file, "precommand");
 	remmina_connection_object_destroy_message_panel(gp->cnnobj, mp);
 
-	name = remmina_file_get_string(remminafile, "name");
+	name = remmina_file_get_string(gp->priv->remmina_file, "name");
 	s = g_strdup_printf(_("Connecting to '%s'..."), (name ? name : "*"));
 
 	mp = remmina_message_panel_new();
@@ -1523,6 +1522,9 @@ void remmina_protocol_widget_setup(RemminaProtocolWidget *gp, RemminaFile* remmi
 	}
 	gp->priv->plugin = plugin;
 
+	gp->priv->scalemode = remmina_file_get_int(gp->priv->remmina_file, "scale", FALSE);
+	gp->priv->scaler_expand = remmina_file_get_int(gp->priv->remmina_file, "scaler_expand", FALSE);
+
 }
 
 GtkWidget* remmina_protocol_widget_new(void)
@@ -1573,7 +1575,7 @@ void remmina_protocol_widget_send_keys_signals(GtkWidget *widget, const guint *k
 	}
 }
 
-void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp, gint w, gint h)
+void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
 	GdkDisplay *display;
@@ -1593,8 +1595,42 @@ void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp,
 #endif
 	gint x, y;
 	GdkRectangle rect;
+	gint w, h;
+	gint wfile, hfile;
+	RemminaProtocolWidgetResolutionMode res_mode;
+	RemminaScaleMode scalemode;
 
-	if (w <= 0 || h <= 0) {
+	res_mode = remmina_file_get_int(gp->priv->remmina_file, "resolution_mode", RES_INVALID);
+	scalemode = remmina_file_get_int(gp->priv->remmina_file, "scale", REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE);
+	wfile = remmina_file_get_int(gp->priv->remmina_file, "resolution_width", -1);
+	hfile = remmina_file_get_int(gp->priv->remmina_file, "resolution_height", -1);
+
+	/* If resolution_mode is non-existent (-1), then we try to calculate it
+	 * as we did before having resolution_mode */
+	if (res_mode == RES_INVALID) {
+		if (wfile <= 0 || hfile <= 0)
+			res_mode = RES_USE_INITIAL_WINDOW_SIZE;
+		else
+			res_mode = RES_USE_CUSTOM;
+	}
+
+	if (res_mode == RES_USE_INITIAL_WINDOW_SIZE || scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
+		/* Use internal window size as remote desktop size */
+		GtkAllocation al;
+		gtk_widget_get_allocation(GTK_WIDGET(gp), &al);
+		w = al.width;
+		h = al.height;
+		if (w < 10) {
+			printf("REMMINA WARNING: %s RemminaProtocolWidget w=%d h=%d are too small, adjusting to 640x480\n", __func__, w, h);
+			w = 640;
+			h = 480;
+		}
+		/* Workaround for FreeRDP issue 5119. This will make our horizontal resolution
+		 * an even value, but it will add a vertical black 1 pixel line on the
+		 * right of the desktop */
+		if ( (w & 1) != 0)
+			w -= 1;
+	} else if (res_mode == RES_USE_CLIENT) {
 		display = gdk_display_get_default();
 		/* gdk_display_get_device_manager deprecated since 3.20, Use gdk_display_get_default_seat */
 #if GTK_CHECK_VERSION(3, 20, 0)
@@ -1614,6 +1650,9 @@ void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp,
 #endif
 		w = rect.width;
 		h = rect.height;
+	} else {
+		w = wfile;
+		h = hfile;
 	}
 	gp->priv->profile_remote_width = w;
 	gp->priv->profile_remote_height = h;

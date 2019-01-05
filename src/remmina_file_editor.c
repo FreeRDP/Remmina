@@ -119,6 +119,7 @@ struct _RemminaFileEditorPriv {
 	GtkWidget* config_container;
 
 	GtkWidget* server_combo;
+	GtkWidget* resolution_iws_radio;
 	GtkWidget* resolution_auto_radio;
 	GtkWidget* resolution_custom_radio;
 	GtkWidget* resolution_custom_combo;
@@ -498,8 +499,26 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 	TRACE_CALL(__func__);
 	GtkWidget* widget;
 	GtkWidget* hbox;
-	const gchar *resolution_w, *resolution_h;
+	int resolution_w, resolution_h;
 	gchar *res_str;
+	RemminaProtocolWidgetResolutionMode res_mode;
+
+	res_mode = remmina_file_get_int(gfe->priv->remmina_file, "resolution_mode", RES_INVALID);
+	resolution_w = remmina_file_get_int(gfe->priv->remmina_file, "resolution_width", -1);
+	resolution_h = remmina_file_get_int(gfe->priv->remmina_file, "resolution_height", -1);
+
+	/* If resolution_mode is non-existent (-1), then we try to calculate it
+	 * as we did before having resolution_mode */
+	if (res_mode == RES_INVALID) {
+		if (resolution_w <= 0 || resolution_h <= 0)
+			res_mode = RES_USE_INITIAL_WINDOW_SIZE;
+		else
+			res_mode = RES_USE_CUSTOM;
+	}
+	if (res_mode == RES_USE_CUSTOM)
+		res_str = g_strdup_printf("%dx%d", resolution_w, resolution_h);
+	else
+		res_str = NULL;
 
 	widget = gtk_label_new(_("Resolution"));
 	gtk_widget_show(widget);
@@ -507,27 +526,27 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 	gtk_widget_set_halign(widget, GTK_ALIGN_START);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, row, 1, 1);
 
-	widget = gtk_radio_button_new_with_label(NULL, setting->opt1 ? _("Use window size") : _("Use client resolution"));
+	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
+	widget = gtk_radio_button_new_with_label(NULL, _("Use initial window size"));
 	gtk_widget_show(widget);
-	gtk_grid_attach(GTK_GRID(grid), widget, 1, row, 1, 1);
+	gtk_box_pack_start(GTK_BOX(hbox), widget, TRUE, TRUE, 0);
+	gfe->priv->resolution_iws_radio = widget;
+	widget = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(gfe->priv->resolution_iws_radio), _("Use client resolution"));
+	gtk_widget_show(widget);
+	gtk_box_pack_start(GTK_BOX(hbox), widget, TRUE, TRUE, 0);
 	gfe->priv->resolution_auto_radio = widget;
+	gtk_grid_attach(GTK_GRID(grid), hbox, 1, row, 1, 1);
+	gtk_widget_show(hbox);
 
 	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_widget_show(hbox);
 	gtk_grid_attach(GTK_GRID(grid), hbox, 1, row + 1, 1, 1);
 
-	widget = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(gfe->priv->resolution_auto_radio), _("Custom"));
+	widget = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(gfe->priv->resolution_iws_radio), _("Custom"));
 	gtk_widget_show(widget);
 	gtk_box_pack_start(GTK_BOX(hbox), widget, FALSE, FALSE, 0);
 	gfe->priv->resolution_custom_radio = widget;
 
-	resolution_w = remmina_file_get_string(gfe->priv->remmina_file, "resolution_width");
-	resolution_h = remmina_file_get_string(gfe->priv->remmina_file, "resolution_height");
-
-	if (resolution_w && resolution_h && resolution_w[0] != 0 && resolution_h[0] != 0)
-		res_str = g_strdup_printf("%sx%s", resolution_w, resolution_h);
-	else
-		res_str = NULL;
 	widget = remmina_public_create_combo_text_d(remmina_pref.resolutions, res_str, NULL);
 	gtk_widget_show(widget);
 	gtk_box_pack_start(GTK_BOX(hbox), widget, TRUE, TRUE, 0);
@@ -541,12 +560,15 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 	g_signal_connect(G_OBJECT(gfe->priv->resolution_custom_radio), "toggled",
 		G_CALLBACK(remmina_file_editor_button_on_toggled), gfe->priv->resolution_custom_combo);
 
-	if (res_str) {
+	if (res_mode == RES_USE_CUSTOM) {
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gfe->priv->resolution_custom_radio), TRUE);
-	}else  {
+	}else  if (res_mode == RES_USE_CLIENT) {
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gfe->priv->resolution_auto_radio), TRUE);
-		gtk_widget_set_sensitive(gfe->priv->resolution_custom_combo, FALSE);
+	}else {
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gfe->priv->resolution_iws_radio), TRUE);
 	}
+
+	gtk_widget_set_sensitive(gfe->priv->resolution_custom_combo, gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->resolution_custom_radio)));
 
 	g_free(res_str);
 }
@@ -701,7 +723,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 
 		case REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION:
 			remmina_file_editor_create_resolution(gfe, settings, grid, grid_row);
-			grid_row++;
+			grid_row += 1;
 			break;
 
 		case REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP:
@@ -995,6 +1017,7 @@ static void remmina_file_editor_protocol_combo_on_changed(GtkComboBox* combo, Re
 	}
 
 	priv->server_combo = NULL;
+	priv->resolution_iws_radio = NULL;
 	priv->resolution_auto_radio = NULL;
 	priv->resolution_custom_radio = NULL;
 	priv->resolution_custom_combo = NULL;
@@ -1106,8 +1129,9 @@ static void remmina_file_editor_update_settings(RemminaFileEditor* gfe)
 static void remmina_file_editor_update(RemminaFileEditor* gfe)
 {
 	TRACE_CALL(__func__);
-	gchar *custom_resolution, *res_w, *res_h;
-	int w, h;
+	int res_w, res_h;
+	gchar *custom_resolution;
+	RemminaProtocolWidgetResolutionMode res_mode;
 
 	RemminaFileEditorPriv* priv = gfe->priv;
 
@@ -1127,21 +1151,26 @@ static void remmina_file_editor_update(RemminaFileEditor* gfe)
 
 	if (priv->resolution_auto_radio) {
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->resolution_auto_radio))) {
-			/* Resolution is set to auto */
-			res_w = res_h = NULL;
+			/* Resolution is set to auto (which means: use client fullscreen resolution, aka use client resolution) */
+			res_w = res_h = 0;
+			res_mode = RES_USE_CLIENT;
+		}else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->resolution_iws_radio))) {
+			/* Resolution is set to initial window size */
+			res_w = res_h = 0;
+			res_mode = RES_USE_INITIAL_WINDOW_SIZE;
 		}else  {
 			/* Resolution is set to a value from the list */
 			custom_resolution = remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->resolution_custom_combo));
-			if (remmina_public_split_resolution_string(custom_resolution, &w, &h)) {
-				res_w = g_strdup_printf("%i", w);
-				res_h = g_strdup_printf("%i", h);
+			if (remmina_public_split_resolution_string(custom_resolution, &res_w, &res_h)) {
+				res_mode = RES_USE_CUSTOM;
 			}else  {
-				res_w = res_h = NULL;
+				res_mode = RES_USE_INITIAL_WINDOW_SIZE;
 			}
 			g_free(custom_resolution);
 		}
-		remmina_file_set_string_ref(priv->remmina_file, "resolution_width", res_w);
-		remmina_file_set_string_ref(priv->remmina_file, "resolution_height", res_h);
+		remmina_file_set_int(priv->remmina_file, "resolution_mode", res_mode);
+		remmina_file_set_int(priv->remmina_file, "resolution_width", res_w);
+		remmina_file_set_int(priv->remmina_file, "resolution_height", res_h);
 	}
 
 	if (priv->keymap_combo) {

@@ -833,13 +833,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	rfi->settings->DesktopWidth = remmina_plugin_service->get_profile_remote_width(gp);
 	rfi->settings->DesktopHeight = remmina_plugin_service->get_profile_remote_height(gp);
-	dynresw = remmina_plugin_service->file_get_int(remminafile, "dynamic_resolution_width", 0);
-	dynresh = remmina_plugin_service->file_get_int(remminafile, "dynamic_resolution_height", 0);
-
-	if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES && dynresh != 0 && dynresw != 0) {
-		rfi->settings->DesktopWidth = dynresw;
-		rfi->settings->DesktopHeight = dynresh;
-	}
 
 	remmina_plugin_service->protocol_plugin_set_width(gp, rfi->settings->DesktopWidth);
 	remmina_plugin_service->protocol_plugin_set_height(gp, rfi->settings->DesktopHeight);
@@ -1424,17 +1417,25 @@ static void remmina_rdp_call_feature(RemminaProtocolWidget* gp, const RemminaPro
 		break;
 
 	case REMMINA_RDP_FEATURE_SCALE:
-		rfi->scale = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
-		remmina_rdp_event_update_scale(gp);
+		if (rfi) {
+			rfi->scale = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
+			remmina_rdp_event_update_scale(gp);
+		} else {
+			printf("REMMINA RDP PLUGIN WARNING: rfi is null in %s REMMINA_RDP_FEATURE_SCALE\n", __func__);
+		}
 		break;
 
 	case REMMINA_RDP_FEATURE_DYNRESUPDATE:
 		break;
 
 	case REMMINA_RDP_FEATURE_TOOL_REFRESH:
-		gtk_widget_queue_draw_area(rfi->drawing_area, 0, 0,
-			remmina_plugin_service->protocol_plugin_get_width(gp),
-			remmina_plugin_service->protocol_plugin_get_height(gp));
+		if (rfi) {
+			gtk_widget_queue_draw_area(rfi->drawing_area, 0, 0,
+				remmina_plugin_service->protocol_plugin_get_width(gp),
+				remmina_plugin_service->protocol_plugin_get_height(gp));
+		} else {
+			printf("REMMINA RDP PLUGIN WARNING: rfi is null in %s REMMINA_RDP_FEATURE_TOOL_REFRESH\n", __func__);
+		}
 		break;
 
 	case REMMINA_RDP_FEATURE_TOOL_SENDCTRLALTDEL:
