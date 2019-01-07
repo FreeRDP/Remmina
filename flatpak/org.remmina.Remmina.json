@@ -314,6 +314,11 @@
         },
         {
             "name": "libvncserver",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE:STRING=Release"
+            ],
             "cleanup": [
                 "/bin",
                 "/lib/libvncserver.so*"
@@ -321,8 +326,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/LibVNC/libvncserver/archive/LibVNCServer-0.9.11.tar.gz",
-                    "sha256": "193d630372722a532136fd25c5326b2ca1a636cbb8bf9bb115ef869c804d2894"
+                    "url": "https://github.com/LibVNC/libvncserver/archive/LibVNCServer-0.9.12.tar.gz",
+                    "sha256": "33cbbb4e15bb390f723c311b323cef4a43bcf781984f92d92adda3243a116136"
                 }
             ]
         },
