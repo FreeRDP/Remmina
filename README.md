@@ -1,3 +1,4 @@
+[![](https://img.shields.io/liberapay/patrons/:entity.svg)](https://liberapay.com/Remmina/)
 [![Snap Status](https://build.snapcraft.io/badge/FreeRDP/Remmina.svg)](https://build.snapcraft.io/user/FreeRDP/Remmina)
 [![Build Status](https://gitlab.com/Remmina/Remmina/badges/master/build.svg)](https://gitlab.com/Remmina/Remmina/pipelines)
 [![Bountysource](https://img.shields.io/bountysource/team/remmina/activity.svg)](https://www.bountysource.com/teams/remmina)
