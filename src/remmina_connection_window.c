@@ -1114,7 +1114,6 @@ static void remmina_protocol_widget_update_alignment(RemminaConnectionObject* cn
 	gboolean scaledexpandedmode;
 	int rdwidth, rdheight;
 	gfloat aratio;
-	RemminaProtocolWidgetResolutionMode res_mode;
 
 	if (!cnnobj->plugin_can_scale) {
 		/* If we have a plugin that cannot scale,
@@ -1165,8 +1164,6 @@ static void remmina_protocol_widget_update_alignment(RemminaConnectionObject* cn
 					remmina_connection_holder_grab_focus(GTK_NOTEBOOK(cnnobj->cnnhld->cnnwin->priv->notebook));
 			}
 		}
-
-		res_mode = remmina_file_get_int(cnnobj->remmina_file, "resolution_mode", RES_INVALID);
 
 		if (scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED || scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
 			/* We have a plugin that can be scaled, and the scale button
@@ -2864,11 +2861,33 @@ static void remmina_connection_holder_grab_focus(GtkNotebook *notebook)
 	}
 }
 
+static void remmina_connection_object_closewin(RemminaProtocolWidget* gp)
+{
+	TRACE_CALL(__func__);
+	RemminaConnectionObject* cnnobj = gp->cnnobj;
+	RemminaConnectionHolder* cnnhld = cnnobj->cnnhld;
+
+	if (cnnhld && cnnhld->cnnwin) {
+		gtk_notebook_remove_page(
+			GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook),
+			gtk_notebook_page_num(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook),
+				cnnobj->page));
+	}
+
+	cnnobj->remmina_file = NULL;
+	g_free(cnnobj);
+
+	remmina_application_condexit(REMMINA_CONDEXIT_ONDISCONNECT);
+}
+
 static void remmina_connection_object_on_close_button_clicked(GtkButton* button, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
 	if (REMMINA_IS_PROTOCOL_WIDGET(cnnobj->proto)) {
-		remmina_protocol_widget_close_connection(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
+		if (!remmina_protocol_widget_is_closed((RemminaProtocolWidget*)cnnobj->proto))
+			remmina_protocol_widget_close_connection(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
+		else
+			remmina_connection_object_closewin((RemminaProtocolWidget*)cnnobj->proto);
 	}
 }
 
@@ -3791,25 +3810,6 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 
 }
 
-static void remmina_connection_object_closewin(RemminaProtocolWidget* gp)
-{
-	TRACE_CALL(__func__);
-	RemminaConnectionObject* cnnobj = gp->cnnobj;
-	RemminaConnectionHolder* cnnhld = cnnobj->cnnhld;
-
-	if (cnnhld && cnnhld->cnnwin) {
-		gtk_notebook_remove_page(
-			GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook),
-			gtk_notebook_page_num(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook),
-				cnnobj->page));
-	}
-
-	cnnobj->remmina_file = NULL;
-	g_free(cnnobj);
-
-	remmina_application_condexit(REMMINA_CONDEXIT_ONDISCONNECT);
-}
-
 static void cb_lasterror_confirmed(void *cbdata, int btn)
 {
 	TRACE_CALL(__func__);
@@ -4085,7 +4085,7 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 
 	defer_connection_after_size_allocation = FALSE;
 	if (remmina_file_get_int(remminafile, "resolution_mode", RES_INVALID) == RES_USE_INITIAL_WINDOW_SIZE ||
-		remmina_protocol_widget_get_current_scale_mode(cnnobj->proto) == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
+		remmina_protocol_widget_get_current_scale_mode((RemminaProtocolWidget*)cnnobj->proto) == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
 		GtkAllocation al;
 		gtk_widget_get_allocation(cnnobj->proto, &al);
 		if (al.width < 10 || al.height < 10) {
