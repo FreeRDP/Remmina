@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-01-09 13:34+0100\n"
+"POT-Creation-Date: 2019-01-09 22:42+0100\n"
 "PO-Revision-Date: 2018-12-09 21:06+0200\n"
 "Last-Translator: Soltys Sergey <treefeed@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -322,7 +322,7 @@ msgstr "Вверх"
 msgid "Go to parent folder"
 msgstr "На одну папку вверх"
 
-#: src/remmina_ftp_client.c:763 plugins/rdp/rdp_plugin.c:1625
+#: src/remmina_ftp_client.c:763 plugins/rdp/rdp_plugin.c:1597
 #: plugins/vnc/vnc_plugin.c:1909
 msgid "Refresh"
 msgstr "Обновить"
@@ -370,11 +370,11 @@ msgstr "Группа"
 msgid "Permission"
 msgstr "Разрешение"
 
-#: src/remmina_ftp_client.c:988 plugins/rdp/rdp_plugin.c:1534
+#: src/remmina_ftp_client.c:988 plugins/rdp/rdp_plugin.c:1506
 msgid "Remote"
 msgstr "Удалённый"
 
-#: src/remmina_ftp_client.c:995 plugins/rdp/rdp_plugin.c:1530
+#: src/remmina_ftp_client.c:995 plugins/rdp/rdp_plugin.c:1502
 msgid "Local"
 msgstr "Локальный"
 
@@ -709,13 +709,13 @@ msgstr "Нет"
 
 #: src/remmina_message_panel.c:310 src/remmina_sftp_plugin.c:355
 #: src/remmina_ssh_plugin.c:1063 src/remmina_file_editor.c:916
-#: plugins/rdp/rdp_plugin.c:1568 plugins/vnc/vnc_plugin.c:1852
+#: plugins/rdp/rdp_plugin.c:1540 plugins/vnc/vnc_plugin.c:1852
 #: plugins/vnc/vnc_plugin.c:1872 plugins/nx/nx_plugin.c:698
 #: data/ui/remmina_mpc.glade:152
 msgid "User name"
 msgstr "Имя пользователя"
 
-#: src/remmina_message_panel.c:367 plugins/rdp/rdp_plugin.c:1570
+#: src/remmina_message_panel.c:367 plugins/rdp/rdp_plugin.c:1542
 #: data/ui/remmina_mpc.glade:138
 msgid "Domain"
 msgstr "Домен"
@@ -813,7 +813,8 @@ msgid ""
 "plugin)"
 msgstr ""
 
-#: src/remmina.c:86
+#. Start Remmina with a minimal interface for kiosk/thin client mode
+#: src/remmina.c:86 data/desktop/org.remmina.Remmina.desktop.in:107
 msgid "Start Remmina in Kiosk mode"
 msgstr ""
 
@@ -879,7 +880,7 @@ msgid "Overwrite all"
 msgstr "Переписать все"
 
 #: src/remmina_sftp_plugin.c:356 src/remmina_ssh_plugin.c:1064
-#: plugins/rdp/rdp_plugin.c:1569 plugins/spice/spice_plugin.c:424
+#: plugins/rdp/rdp_plugin.c:1541 plugins/spice/spice_plugin.c:424
 #: plugins/vnc/vnc_plugin.c:1853 plugins/vnc/vnc_plugin.c:1873
 #: plugins/nx/nx_plugin.c:699
 msgid "User password"
@@ -955,7 +956,7 @@ msgstr "Выбрать все"
 msgid "_Select all"
 msgstr "_Выбрать все"
 
-#: src/remmina_ssh_plugin.c:1068 plugins/rdp/rdp_plugin.c:1597
+#: src/remmina_ssh_plugin.c:1068 plugins/rdp/rdp_plugin.c:1569
 #: plugins/xdmcp/xdmcp_plugin.c:370 plugins/nx/nx_plugin.c:702
 msgid "Startup program"
 msgstr "Запуск программы"
@@ -1000,7 +1001,7 @@ msgstr "Включить логирование SSH сессии при выхо
 msgid "Enable SSH compression"
 msgstr "Включить SSH сжатие"
 
-#: src/remmina_ssh_plugin.c:1095 plugins/rdp/rdp_plugin.c:1608
+#: src/remmina_ssh_plugin.c:1095 plugins/rdp/rdp_plugin.c:1580
 #: plugins/spice/spice_plugin.c:443 plugins/vnc/vnc_plugin.c:1896
 #: plugins/nx/nx_plugin.c:720
 msgid "Disable password storing"
@@ -1116,7 +1117,7 @@ msgstr "Туннель через loopback адрес"
 msgid "Same server at port %i"
 msgstr "Этот же сервер на порту %i"
 
-#: src/remmina_file_editor.c:900 plugins/rdp/rdp_plugin.c:1598
+#: src/remmina_file_editor.c:900 plugins/rdp/rdp_plugin.c:1570
 msgid "Startup path"
 msgstr "Путь запуска"
 
@@ -1211,7 +1212,7 @@ msgstr[0] "%d пароль изменён."
 msgstr[1] "%d пароля изменено."
 msgstr[2] "%d паролей изменено."
 
-#: plugins/rdp/rdp_plugin.c:1157
+#: plugins/rdp/rdp_plugin.c:1129
 #, c-format
 msgid ""
 "Authentication to RDP server %s failed.\n"
@@ -1220,7 +1221,7 @@ msgstr ""
 "Аутентификация на сервере RDP %s не удалась.\n"
 "Проверьте имя пользователя, пароль и домен."
 
-#: plugins/rdp/rdp_plugin.c:1166
+#: plugins/rdp/rdp_plugin.c:1138
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
@@ -1229,7 +1230,7 @@ msgstr ""
 "Доступ к RDP серверу %s неудался.\n"
 "Аккаунту закрыт доступ."
 
-#: plugins/rdp/rdp_plugin.c:1173
+#: plugins/rdp/rdp_plugin.c:1145
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
@@ -1238,7 +1239,7 @@ msgstr ""
 "Доступ к RDP серверу %s неудался.\n"
 "Истёк срок аккаунта."
 
-#: plugins/rdp/rdp_plugin.c:1180
+#: plugins/rdp/rdp_plugin.c:1152
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
@@ -1247,7 +1248,7 @@ msgstr ""
 "Доступ к RDP серверу %s неудался.\n"
 "Истёк пароль."
 
-#: plugins/rdp/rdp_plugin.c:1187
+#: plugins/rdp/rdp_plugin.c:1159
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
@@ -1256,7 +1257,7 @@ msgstr ""
 "Доступ к RDP серверу %s неудался.\n"
 "Аккаунт заблокирован."
 
-#: plugins/rdp/rdp_plugin.c:1193
+#: plugins/rdp/rdp_plugin.c:1165
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
@@ -1265,7 +1266,7 @@ msgstr ""
 "Доступ к RDP серверу %s неудался.\n"
 "У пользователя нет привилегий."
 
-#: plugins/rdp/rdp_plugin.c:1201
+#: plugins/rdp/rdp_plugin.c:1173
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
@@ -1274,24 +1275,24 @@ msgstr ""
 "Доступ к RDP серверу %s неудался.\n"
 "У аккаунта ограничения."
 
-#: plugins/rdp/rdp_plugin.c:1209
+#: plugins/rdp/rdp_plugin.c:1181
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
 "User must change password before connecting."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1214
+#: plugins/rdp/rdp_plugin.c:1186
 #, c-format
 msgid "Connection to RDP server %s failed."
 msgstr "Подключение к серверу RDP %s не удалось."
 
-#: plugins/rdp/rdp_plugin.c:1217
+#: plugins/rdp/rdp_plugin.c:1189
 #, c-format
 msgid "Unable to find the address of RDP server %s."
 msgstr "Не удалось найти адрес RDP сервера %s."
 
-#: plugins/rdp/rdp_plugin.c:1221
+#: plugins/rdp/rdp_plugin.c:1193
 #, c-format
 msgid ""
 "Error connecting to RDP server %s. TLS connection failed. Check that client "
@@ -1300,22 +1301,22 @@ msgstr ""
 "Ошибка соединения с RDP сервером %s. Соединение TLS сброшено. Ппроверьте, "
 "что клиент и сервер поддерживают текущую версию TLS."
 
-#: plugins/rdp/rdp_plugin.c:1224
+#: plugins/rdp/rdp_plugin.c:1196
 #, c-format
 msgid "Unable to establish a connection to RDP server %s."
 msgstr "Невозможно установить соединение с RDP сервером %s."
 
 #. We should never come here
-#: plugins/rdp/rdp_plugin.c:1232
+#: plugins/rdp/rdp_plugin.c:1204
 #, c-format
 msgid "Unable to connect to RDP server %s."
 msgstr "Невозможно подключиться к RDP серверу %s."
 
-#: plugins/rdp/rdp_plugin.c:1235
+#: plugins/rdp/rdp_plugin.c:1207
 msgid "Unable to initialize libfreerdp gdi"
 msgstr "Невозможно запустить libfreerdp gdi"
 
-#: plugins/rdp/rdp_plugin.c:1238
+#: plugins/rdp/rdp_plugin.c:1210
 #, c-format
 msgid ""
 "You requested an H264 GFX mode for server %s, but your libfreerdp does not "
@@ -1324,206 +1325,206 @@ msgstr ""
 "Вы запросили режим H264 GFX для сервера %s, но ваш libfreerdp не "
 "поддерживает H264. Пожалуйста, используйте не-AVC настройки цветовой глубины."
 
-#: plugins/rdp/rdp_plugin.c:1245
+#: plugins/rdp/rdp_plugin.c:1217
 #, c-format
 msgid "Server %s denied the connection."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1250
+#: plugins/rdp/rdp_plugin.c:1222
 #, c-format
 msgid "Unable to connect to RDP server %s"
 msgstr "Невозможно подключиться к серверу RDP %s"
 
 #. 1st one is the default in a new install
-#: plugins/rdp/rdp_plugin.c:1504
+#: plugins/rdp/rdp_plugin.c:1476
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (глубина цвета 32-бит)"
 
-#: plugins/rdp/rdp_plugin.c:1505
+#: plugins/rdp/rdp_plugin.c:1477
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 глубина цвета 32-бит)"
 
-#: plugins/rdp/rdp_plugin.c:1506
+#: plugins/rdp/rdp_plugin.c:1478
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 глубина цвета 32-бит)"
 
-#: plugins/rdp/rdp_plugin.c:1507
+#: plugins/rdp/rdp_plugin.c:1479
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1508 plugins/vnc/vnc_plugin.c:1825
+#: plugins/rdp/rdp_plugin.c:1480 plugins/vnc/vnc_plugin.c:1825
 msgid "True color (32 bpp)"
 msgstr "True color (32 бит/пиксель)"
 
-#: plugins/rdp/rdp_plugin.c:1509 plugins/vnc/vnc_plugin.c:1824
+#: plugins/rdp/rdp_plugin.c:1481 plugins/vnc/vnc_plugin.c:1824
 msgid "True color (24 bpp)"
 msgstr "True color (24 бит/пиксель)"
 
-#: plugins/rdp/rdp_plugin.c:1510 plugins/vnc/vnc_plugin.c:1823
+#: plugins/rdp/rdp_plugin.c:1482 plugins/vnc/vnc_plugin.c:1823
 msgid "High color (16 bpp)"
 msgstr "High color (16 бит/пиксель)"
 
-#: plugins/rdp/rdp_plugin.c:1511 plugins/vnc/vnc_plugin.c:1822
+#: plugins/rdp/rdp_plugin.c:1483 plugins/vnc/vnc_plugin.c:1822
 msgid "High color (15 bpp)"
 msgstr "High color (15 бит/пиксель)"
 
-#: plugins/rdp/rdp_plugin.c:1512 plugins/vnc/vnc_plugin.c:1821
+#: plugins/rdp/rdp_plugin.c:1484 plugins/vnc/vnc_plugin.c:1821
 msgid "256 colors (8 bpp)"
 msgstr "256 цветов (8 бит/пиксель)"
 
-#: plugins/rdp/rdp_plugin.c:1519 plugins/rdp/rdp_settings.c:269
+#: plugins/rdp/rdp_plugin.c:1491 plugins/rdp/rdp_settings.c:269
 #: plugins/vnc/vnc_plugin.c:1832 plugins/nx/nx_plugin.c:678
 msgid "Poor (fastest)"
 msgstr "Низкое (самое быстрое)"
 
-#: plugins/rdp/rdp_plugin.c:1520 plugins/rdp/rdp_settings.c:271
+#: plugins/rdp/rdp_plugin.c:1492 plugins/rdp/rdp_settings.c:271
 #: plugins/vnc/vnc_plugin.c:1833 plugins/nx/nx_plugin.c:679
 msgid "Medium"
 msgstr "Среднее"
 
-#: plugins/rdp/rdp_plugin.c:1521 plugins/rdp/rdp_settings.c:273
+#: plugins/rdp/rdp_plugin.c:1493 plugins/rdp/rdp_settings.c:273
 #: plugins/vnc/vnc_plugin.c:1834 plugins/nx/nx_plugin.c:680
 msgid "Good"
 msgstr "Хорошее"
 
-#: plugins/rdp/rdp_plugin.c:1522 plugins/rdp/rdp_settings.c:275
+#: plugins/rdp/rdp_plugin.c:1494 plugins/rdp/rdp_settings.c:275
 #: plugins/vnc/vnc_plugin.c:1835 plugins/nx/nx_plugin.c:681
 msgid "Best (slowest)"
 msgstr "Наилучшее (самое медленное)"
 
-#: plugins/rdp/rdp_plugin.c:1529
+#: plugins/rdp/rdp_plugin.c:1501
 msgid "Off"
 msgstr "Выключен"
 
-#: plugins/rdp/rdp_plugin.c:1531
+#: plugins/rdp/rdp_plugin.c:1503
 msgid "Local - low quality"
 msgstr "Локальный - низкое качество"
 
-#: plugins/rdp/rdp_plugin.c:1532
+#: plugins/rdp/rdp_plugin.c:1504
 msgid "Local - medium quality"
 msgstr "Локальный - среднее качество"
 
-#: plugins/rdp/rdp_plugin.c:1533
+#: plugins/rdp/rdp_plugin.c:1505
 msgid "Local - high quality"
 msgstr "Локально - высокое качество"
 
-#: plugins/rdp/rdp_plugin.c:1541
+#: plugins/rdp/rdp_plugin.c:1513
 msgid "Negotiate"
 msgstr "Согласование"
 
-#: plugins/rdp/rdp_plugin.c:1572 plugins/xdmcp/xdmcp_plugin.c:369
+#: plugins/rdp/rdp_plugin.c:1544 plugins/xdmcp/xdmcp_plugin.c:369
 #: plugins/vnc/vnc_plugin.c:1854 plugins/vnc/vnc_plugin.c:1874
 msgid "Color depth"
 msgstr "Глубина цвета"
 
-#: plugins/rdp/rdp_plugin.c:1573 plugins/spice/spice_plugin.c:427
+#: plugins/rdp/rdp_plugin.c:1545 plugins/spice/spice_plugin.c:427
 msgid "Share folder"
 msgstr "Общая папка"
 
-#: plugins/rdp/rdp_plugin.c:1588 plugins/vnc/vnc_plugin.c:1855
+#: plugins/rdp/rdp_plugin.c:1560 plugins/vnc/vnc_plugin.c:1855
 #: plugins/vnc/vnc_plugin.c:1875 plugins/nx/nx_plugin.c:701
 msgid "Quality"
 msgstr "Качество"
 
-#: plugins/rdp/rdp_plugin.c:1589
+#: plugins/rdp/rdp_plugin.c:1561
 msgid "Sound"
 msgstr "Звук"
 
-#: plugins/rdp/rdp_plugin.c:1590
+#: plugins/rdp/rdp_plugin.c:1562
 msgid "Security"
 msgstr "Безопасность"
 
-#: plugins/rdp/rdp_plugin.c:1591
+#: plugins/rdp/rdp_plugin.c:1563
 msgid "Gateway transport type"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1592
+#: plugins/rdp/rdp_plugin.c:1564
 msgid "RD Gateway server"
 msgstr "Сервер шлюза удаленных рабочих столов"
 
-#: plugins/rdp/rdp_plugin.c:1593
+#: plugins/rdp/rdp_plugin.c:1565
 msgid "RD Gateway username"
 msgstr "Имя пользователя шлюза удаленных рабочих столов"
 
-#: plugins/rdp/rdp_plugin.c:1594
+#: plugins/rdp/rdp_plugin.c:1566
 msgid "RD Gateway password"
 msgstr "Пароль пользователя шлюза удаленных рабочих столов"
 
-#: plugins/rdp/rdp_plugin.c:1595
+#: plugins/rdp/rdp_plugin.c:1567
 msgid "RD Gateway domain"
 msgstr "Доменое имя шлюза удаленных рабочих столов"
 
-#: plugins/rdp/rdp_plugin.c:1596
+#: plugins/rdp/rdp_plugin.c:1568
 msgid "Client name"
 msgstr "Имя клиента"
 
-#: plugins/rdp/rdp_plugin.c:1599
+#: plugins/rdp/rdp_plugin.c:1571
 msgid "Load Balance Info"
 msgstr "Информация для балансировки нагрузки"
 
-#: plugins/rdp/rdp_plugin.c:1600
+#: plugins/rdp/rdp_plugin.c:1572
 msgid "Local Printer Name"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1601
+#: plugins/rdp/rdp_plugin.c:1573
 msgid "Local Printer Driver"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1602
+#: plugins/rdp/rdp_plugin.c:1574
 msgid "Smartcard Name"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1603
+#: plugins/rdp/rdp_plugin.c:1575
 msgid "Share local printers"
 msgstr "Сделать локальные принтеры общедоступными"
 
-#: plugins/rdp/rdp_plugin.c:1604 plugins/spice/spice_plugin.c:446
+#: plugins/rdp/rdp_plugin.c:1576 plugins/spice/spice_plugin.c:446
 msgid "Share smartcard"
 msgstr "Сделать смарт карту общедоступной"
 
-#: plugins/rdp/rdp_plugin.c:1605
+#: plugins/rdp/rdp_plugin.c:1577
 msgid "Redirect local microphone"
 msgstr "Перенаправить локальный микрофон"
 
-#: plugins/rdp/rdp_plugin.c:1606 plugins/spice/spice_plugin.c:442
+#: plugins/rdp/rdp_plugin.c:1578 plugins/spice/spice_plugin.c:442
 #: plugins/spice/spice_plugin.c:458 plugins/vnc/vnc_plugin.c:1893
 #: plugins/nx/nx_plugin.c:717
 msgid "Disable clipboard sync"
 msgstr "Отключить синхронизацию буфера обмена"
 
-#: plugins/rdp/rdp_plugin.c:1607
+#: plugins/rdp/rdp_plugin.c:1579
 msgid "Ignore certificate"
 msgstr "Игнорировать сертификат"
 
-#: plugins/rdp/rdp_plugin.c:1609
+#: plugins/rdp/rdp_plugin.c:1581
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Прикрепить к консоли (Windows 2003 / 2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:1610
+#: plugins/rdp/rdp_plugin.c:1582
 msgid "Disable fast-path"
 msgstr "Отключить fast-path"
 
-#: plugins/rdp/rdp_plugin.c:1611
+#: plugins/rdp/rdp_plugin.c:1583
 msgid "Server detection using RD Gateway"
 msgstr "Обнаружение сервера с помощью шлюза удаленных рабочих столов"
 
-#: plugins/rdp/rdp_plugin.c:1613
+#: plugins/rdp/rdp_plugin.c:1585
 msgid "Enable proxy support"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1615
+#: plugins/rdp/rdp_plugin.c:1587
 msgid "Disable automatic reconnection"
 msgstr "Отключить автоматическое повторное соединение"
 
-#: plugins/rdp/rdp_plugin.c:1616
+#: plugins/rdp/rdp_plugin.c:1588
 msgid "Relax Order Checks"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1617
+#: plugins/rdp/rdp_plugin.c:1589
 msgid "Glyph Cache"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1628 plugins/spice/spice_plugin.c:459
+#: plugins/rdp/rdp_plugin.c:1600 plugins/spice/spice_plugin.c:459
 #: plugins/xdmcp/xdmcp_plugin.c:381 plugins/vnc/vnc_plugin.c:1911
 #: plugins/nx/nx_plugin.c:728
 msgid "Send Ctrl+Alt+Delete"
@@ -1531,23 +1532,23 @@ msgstr "Отправить Ctrl+Alt+Delete"
 
 #. Type
 #. Name
-#: plugins/rdp/rdp_plugin.c:1641
+#: plugins/rdp/rdp_plugin.c:1613
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Протокол удалённого рабочего стола"
 
 #. Type
 #. Name
-#: plugins/rdp/rdp_plugin.c:1664
+#: plugins/rdp/rdp_plugin.c:1636
 msgid "RDP - RDP File Handler"
 msgstr "RDP - файловая поддержка RDP"
 
 #. Type
 #. Name
-#: plugins/rdp/rdp_plugin.c:1679
+#: plugins/rdp/rdp_plugin.c:1651
 msgid "RDP - Preferences"
 msgstr "RDP - Параметры"
 
-#: plugins/rdp/rdp_plugin.c:1733
+#: plugins/rdp/rdp_plugin.c:1705
 msgid "Export connection in Windows .rdp file format"
 msgstr "Экспортировать подключение в формате Windows .rdp"
 
@@ -2604,14 +2605,40 @@ msgstr "Вверх"
 msgid "Move down"
 msgstr "Вниз"
 
+#: data/desktop/org.remmina.Remmina.desktop.in:4
 #: data/desktop/org.remmina.Remmina.appdata.xml:11
 #: data/desktop/org.remmina.Remmina.appdata.xml:12
 #: data/desktop/org.remmina.Remmina.appdata.xml:13
 msgid "Remmina"
 msgstr ""
 
+#: data/desktop/org.remmina.Remmina.desktop.in:24
 #: data/desktop/org.remmina.Remmina.appdata.xml:14
 msgid "Remote Desktop Client"
+msgstr ""
+
+#: data/desktop/org.remmina.Remmina.desktop.in:45
+msgid "Connect to remote desktops"
+msgstr ""
+
+#: data/desktop/org.remmina.Remmina.desktop.in:73
+msgid "@REMMINA_ICON@"
+msgstr ""
+
+#: data/desktop/org.remmina.Remmina.desktop.in:78
+msgid "remote desktop;rdp;vnc;nx;ssh;spice;xdmcp;"
+msgstr ""
+
+#: data/desktop/org.remmina.Remmina.desktop.in:82
+msgid "Create a New Connection Profile"
+msgstr ""
+
+#: data/desktop/org.remmina.Remmina.desktop.in:114
+msgid "Start Remmina Minimized"
+msgstr ""
+
+#: data/desktop/org.remmina.Remmina.desktop.in:138
+msgid "Quit"
 msgstr ""
 
 #: data/desktop/org.remmina.Remmina.appdata.xml:15
@@ -2683,4 +2710,3 @@ msgstr ""
 #: data/desktop/org.remmina.Remmina.appdata.xml:65
 msgid "Ajout possible de greffons pour la gestion de nouveaux protocoles"
 msgstr ""
-

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-01-09 13:34+0100\n"
+"POT-Creation-Date: 2019-01-09 22:42+0100\n"
 "PO-Revision-Date: 2014-01-10 14:06+0000\n"
 "Last-Translator: Joonas Kylmälä <j.kylmala@gmail.com>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -321,7 +321,7 @@ msgstr ""
 msgid "Go to parent folder"
 msgstr ""
 
-#: src/remmina_ftp_client.c:763 plugins/rdp/rdp_plugin.c:1625
+#: src/remmina_ftp_client.c:763 plugins/rdp/rdp_plugin.c:1597
 #: plugins/vnc/vnc_plugin.c:1909
 msgid "Refresh"
 msgstr "Päivitä"
@@ -369,11 +369,11 @@ msgstr "Ryhmä"
 msgid "Permission"
 msgstr "Oikeudet"
 
-#: src/remmina_ftp_client.c:988 plugins/rdp/rdp_plugin.c:1534
+#: src/remmina_ftp_client.c:988 plugins/rdp/rdp_plugin.c:1506
 msgid "Remote"
 msgstr "Etä"
 
-#: src/remmina_ftp_client.c:995 plugins/rdp/rdp_plugin.c:1530
+#: src/remmina_ftp_client.c:995 plugins/rdp/rdp_plugin.c:1502
 msgid "Local"
 msgstr "Paikallinen"
 
@@ -696,13 +696,13 @@ msgstr ""
 
 #: src/remmina_message_panel.c:310 src/remmina_sftp_plugin.c:355
 #: src/remmina_ssh_plugin.c:1063 src/remmina_file_editor.c:916
-#: plugins/rdp/rdp_plugin.c:1568 plugins/vnc/vnc_plugin.c:1852
+#: plugins/rdp/rdp_plugin.c:1540 plugins/vnc/vnc_plugin.c:1852
 #: plugins/vnc/vnc_plugin.c:1872 plugins/nx/nx_plugin.c:698
 #: data/ui/remmina_mpc.glade:152
 msgid "User name"
 msgstr "Käyttäjätunnus"
 
-#: src/remmina_message_panel.c:367 plugins/rdp/rdp_plugin.c:1570
+#: src/remmina_message_panel.c:367 plugins/rdp/rdp_plugin.c:1542
 #: data/ui/remmina_mpc.glade:138
 msgid "Domain"
 msgstr "Verkkoalue"
@@ -800,7 +800,8 @@ msgid ""
 "plugin)"
 msgstr ""
 
-#: src/remmina.c:86
+#. Start Remmina with a minimal interface for kiosk/thin client mode
+#: src/remmina.c:86 data/desktop/org.remmina.Remmina.desktop.in:107
 msgid "Start Remmina in Kiosk mode"
 msgstr ""
 
@@ -866,7 +867,7 @@ msgid "Overwrite all"
 msgstr ""
 
 #: src/remmina_sftp_plugin.c:356 src/remmina_ssh_plugin.c:1064
-#: plugins/rdp/rdp_plugin.c:1569 plugins/spice/spice_plugin.c:424
+#: plugins/rdp/rdp_plugin.c:1541 plugins/spice/spice_plugin.c:424
 #: plugins/vnc/vnc_plugin.c:1853 plugins/vnc/vnc_plugin.c:1873
 #: plugins/nx/nx_plugin.c:699
 msgid "User password"
@@ -942,7 +943,7 @@ msgstr ""
 msgid "_Select all"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1068 plugins/rdp/rdp_plugin.c:1597
+#: src/remmina_ssh_plugin.c:1068 plugins/rdp/rdp_plugin.c:1569
 #: plugins/xdmcp/xdmcp_plugin.c:370 plugins/nx/nx_plugin.c:702
 msgid "Startup program"
 msgstr "Käynnistettävä ohjelma"
@@ -987,7 +988,7 @@ msgstr ""
 msgid "Enable SSH compression"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1095 plugins/rdp/rdp_plugin.c:1608
+#: src/remmina_ssh_plugin.c:1095 plugins/rdp/rdp_plugin.c:1580
 #: plugins/spice/spice_plugin.c:443 plugins/vnc/vnc_plugin.c:1896
 #: plugins/nx/nx_plugin.c:720
 msgid "Disable password storing"
@@ -1086,7 +1087,7 @@ msgstr "Tunneli loopback-osoitteen kautta"
 msgid "Same server at port %i"
 msgstr "Sama palvelin portissa %i"
 
-#: src/remmina_file_editor.c:900 plugins/rdp/rdp_plugin.c:1598
+#: src/remmina_file_editor.c:900 plugins/rdp/rdp_plugin.c:1570
 msgid "Startup path"
 msgstr "Käynnistyspolku"
 
@@ -1180,301 +1181,301 @@ msgid_plural "%d passwords changed."
 msgstr[0] ""
 msgstr[1] ""
 
-#: plugins/rdp/rdp_plugin.c:1157
+#: plugins/rdp/rdp_plugin.c:1129
 #, c-format
 msgid ""
 "Authentication to RDP server %s failed.\n"
 "Check username, password and domain."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1166
+#: plugins/rdp/rdp_plugin.c:1138
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
 "Account is locked out."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1173
+#: plugins/rdp/rdp_plugin.c:1145
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
 "Account is expired."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1180
+#: plugins/rdp/rdp_plugin.c:1152
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
 "Password expired."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1187
+#: plugins/rdp/rdp_plugin.c:1159
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
 "Account is disabled."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1193
+#: plugins/rdp/rdp_plugin.c:1165
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
 "User has insufficient privileges."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1201
+#: plugins/rdp/rdp_plugin.c:1173
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
 "Account has restrictions."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1209
+#: plugins/rdp/rdp_plugin.c:1181
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
 "User must change password before connecting."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1214
+#: plugins/rdp/rdp_plugin.c:1186
 #, c-format
 msgid "Connection to RDP server %s failed."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1217
+#: plugins/rdp/rdp_plugin.c:1189
 #, c-format
 msgid "Unable to find the address of RDP server %s."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1221
+#: plugins/rdp/rdp_plugin.c:1193
 #, c-format
 msgid ""
 "Error connecting to RDP server %s. TLS connection failed. Check that client "
 "and server support a common TLS version."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1224
+#: plugins/rdp/rdp_plugin.c:1196
 #, c-format
 msgid "Unable to establish a connection to RDP server %s."
 msgstr ""
 
 #. We should never come here
-#: plugins/rdp/rdp_plugin.c:1232
+#: plugins/rdp/rdp_plugin.c:1204
 #, c-format
 msgid "Unable to connect to RDP server %s."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1235
+#: plugins/rdp/rdp_plugin.c:1207
 msgid "Unable to initialize libfreerdp gdi"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1238
+#: plugins/rdp/rdp_plugin.c:1210
 #, c-format
 msgid ""
 "You requested an H264 GFX mode for server %s, but your libfreerdp does not "
 "support H264. Please use a non-AVC Color Depth setting."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1245
+#: plugins/rdp/rdp_plugin.c:1217
 #, c-format
 msgid "Server %s denied the connection."
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1250
+#: plugins/rdp/rdp_plugin.c:1222
 #, c-format
 msgid "Unable to connect to RDP server %s"
 msgstr "Yhteys RDP-palvelimeen %s ei onnistu"
 
 #. 1st one is the default in a new install
-#: plugins/rdp/rdp_plugin.c:1504
+#: plugins/rdp/rdp_plugin.c:1476
 msgid "GFX AVC444 (32 bpp)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1505
+#: plugins/rdp/rdp_plugin.c:1477
 msgid "GFX AVC420 (32 bpp)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1506
+#: plugins/rdp/rdp_plugin.c:1478
 msgid "GFX RFX (32 bpp)"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1507
+#: plugins/rdp/rdp_plugin.c:1479
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bit)"
 
-#: plugins/rdp/rdp_plugin.c:1508 plugins/vnc/vnc_plugin.c:1825
+#: plugins/rdp/rdp_plugin.c:1480 plugins/vnc/vnc_plugin.c:1825
 msgid "True color (32 bpp)"
 msgstr "True color (32 bit)"
 
-#: plugins/rdp/rdp_plugin.c:1509 plugins/vnc/vnc_plugin.c:1824
+#: plugins/rdp/rdp_plugin.c:1481 plugins/vnc/vnc_plugin.c:1824
 msgid "True color (24 bpp)"
 msgstr "True color (24 bit)"
 
-#: plugins/rdp/rdp_plugin.c:1510 plugins/vnc/vnc_plugin.c:1823
+#: plugins/rdp/rdp_plugin.c:1482 plugins/vnc/vnc_plugin.c:1823
 msgid "High color (16 bpp)"
 msgstr "High color (16 bit)"
 
-#: plugins/rdp/rdp_plugin.c:1511 plugins/vnc/vnc_plugin.c:1822
+#: plugins/rdp/rdp_plugin.c:1483 plugins/vnc/vnc_plugin.c:1822
 msgid "High color (15 bpp)"
 msgstr "High color (15 bit)"
 
-#: plugins/rdp/rdp_plugin.c:1512 plugins/vnc/vnc_plugin.c:1821
+#: plugins/rdp/rdp_plugin.c:1484 plugins/vnc/vnc_plugin.c:1821
 msgid "256 colors (8 bpp)"
 msgstr "256 väriä (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1519 plugins/rdp/rdp_settings.c:269
+#: plugins/rdp/rdp_plugin.c:1491 plugins/rdp/rdp_settings.c:269
 #: plugins/vnc/vnc_plugin.c:1832 plugins/nx/nx_plugin.c:678
 msgid "Poor (fastest)"
 msgstr "Heikko (nopein)"
 
-#: plugins/rdp/rdp_plugin.c:1520 plugins/rdp/rdp_settings.c:271
+#: plugins/rdp/rdp_plugin.c:1492 plugins/rdp/rdp_settings.c:271
 #: plugins/vnc/vnc_plugin.c:1833 plugins/nx/nx_plugin.c:679
 msgid "Medium"
 msgstr "Keskitaso"
 
-#: plugins/rdp/rdp_plugin.c:1521 plugins/rdp/rdp_settings.c:273
+#: plugins/rdp/rdp_plugin.c:1493 plugins/rdp/rdp_settings.c:273
 #: plugins/vnc/vnc_plugin.c:1834 plugins/nx/nx_plugin.c:680
 msgid "Good"
 msgstr "Hyvä"
 
-#: plugins/rdp/rdp_plugin.c:1522 plugins/rdp/rdp_settings.c:275
+#: plugins/rdp/rdp_plugin.c:1494 plugins/rdp/rdp_settings.c:275
 #: plugins/vnc/vnc_plugin.c:1835 plugins/nx/nx_plugin.c:681
 msgid "Best (slowest)"
 msgstr "Paras (hitain)"
 
-#: plugins/rdp/rdp_plugin.c:1529
+#: plugins/rdp/rdp_plugin.c:1501
 msgid "Off"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1531
+#: plugins/rdp/rdp_plugin.c:1503
 msgid "Local - low quality"
 msgstr "Paikallinen - matala laatu"
 
-#: plugins/rdp/rdp_plugin.c:1532
+#: plugins/rdp/rdp_plugin.c:1504
 msgid "Local - medium quality"
 msgstr "Paikallinen - normaali laatu"
 
-#: plugins/rdp/rdp_plugin.c:1533
+#: plugins/rdp/rdp_plugin.c:1505
 msgid "Local - high quality"
 msgstr "Paikallinen - korkea laatu"
 
-#: plugins/rdp/rdp_plugin.c:1541
+#: plugins/rdp/rdp_plugin.c:1513
 msgid "Negotiate"
 msgstr "Neuvottele"
 
-#: plugins/rdp/rdp_plugin.c:1572 plugins/xdmcp/xdmcp_plugin.c:369
+#: plugins/rdp/rdp_plugin.c:1544 plugins/xdmcp/xdmcp_plugin.c:369
 #: plugins/vnc/vnc_plugin.c:1854 plugins/vnc/vnc_plugin.c:1874
 msgid "Color depth"
 msgstr "Värisyvyys"
 
-#: plugins/rdp/rdp_plugin.c:1573 plugins/spice/spice_plugin.c:427
+#: plugins/rdp/rdp_plugin.c:1545 plugins/spice/spice_plugin.c:427
 msgid "Share folder"
 msgstr "Jaa kansio"
 
-#: plugins/rdp/rdp_plugin.c:1588 plugins/vnc/vnc_plugin.c:1855
+#: plugins/rdp/rdp_plugin.c:1560 plugins/vnc/vnc_plugin.c:1855
 #: plugins/vnc/vnc_plugin.c:1875 plugins/nx/nx_plugin.c:701
 msgid "Quality"
 msgstr "Laatu"
 
-#: plugins/rdp/rdp_plugin.c:1589
+#: plugins/rdp/rdp_plugin.c:1561
 msgid "Sound"
 msgstr "Ääni"
 
-#: plugins/rdp/rdp_plugin.c:1590
+#: plugins/rdp/rdp_plugin.c:1562
 msgid "Security"
 msgstr "Turvallisuus"
 
-#: plugins/rdp/rdp_plugin.c:1591
+#: plugins/rdp/rdp_plugin.c:1563
 msgid "Gateway transport type"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1592
+#: plugins/rdp/rdp_plugin.c:1564
 msgid "RD Gateway server"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1593
+#: plugins/rdp/rdp_plugin.c:1565
 msgid "RD Gateway username"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1594
+#: plugins/rdp/rdp_plugin.c:1566
 msgid "RD Gateway password"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1595
+#: plugins/rdp/rdp_plugin.c:1567
 msgid "RD Gateway domain"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1596
+#: plugins/rdp/rdp_plugin.c:1568
 msgid "Client name"
 msgstr "Asiakkaan nimi"
 
-#: plugins/rdp/rdp_plugin.c:1599
+#: plugins/rdp/rdp_plugin.c:1571
 msgid "Load Balance Info"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1600
+#: plugins/rdp/rdp_plugin.c:1572
 msgid "Local Printer Name"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1601
+#: plugins/rdp/rdp_plugin.c:1573
 msgid "Local Printer Driver"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1602
+#: plugins/rdp/rdp_plugin.c:1574
 msgid "Smartcard Name"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1603
+#: plugins/rdp/rdp_plugin.c:1575
 msgid "Share local printers"
 msgstr "Jaa paikalliset tulostimet"
 
-#: plugins/rdp/rdp_plugin.c:1604 plugins/spice/spice_plugin.c:446
+#: plugins/rdp/rdp_plugin.c:1576 plugins/spice/spice_plugin.c:446
 msgid "Share smartcard"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1605
+#: plugins/rdp/rdp_plugin.c:1577
 msgid "Redirect local microphone"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1606 plugins/spice/spice_plugin.c:442
+#: plugins/rdp/rdp_plugin.c:1578 plugins/spice/spice_plugin.c:442
 #: plugins/spice/spice_plugin.c:458 plugins/vnc/vnc_plugin.c:1893
 #: plugins/nx/nx_plugin.c:717
 msgid "Disable clipboard sync"
 msgstr "Estä leikepöytien synkronointi"
 
-#: plugins/rdp/rdp_plugin.c:1607
+#: plugins/rdp/rdp_plugin.c:1579
 msgid "Ignore certificate"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1609
+#: plugins/rdp/rdp_plugin.c:1581
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Kiinnitä konsoliin (Windows 2003 / 2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:1610
+#: plugins/rdp/rdp_plugin.c:1582
 msgid "Disable fast-path"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1611
+#: plugins/rdp/rdp_plugin.c:1583
 msgid "Server detection using RD Gateway"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1613
+#: plugins/rdp/rdp_plugin.c:1585
 msgid "Enable proxy support"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1615
+#: plugins/rdp/rdp_plugin.c:1587
 msgid "Disable automatic reconnection"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1616
+#: plugins/rdp/rdp_plugin.c:1588
 msgid "Relax Order Checks"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1617
+#: plugins/rdp/rdp_plugin.c:1589
 msgid "Glyph Cache"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1628 plugins/spice/spice_plugin.c:459
+#: plugins/rdp/rdp_plugin.c:1600 plugins/spice/spice_plugin.c:459
 #: plugins/xdmcp/xdmcp_plugin.c:381 plugins/vnc/vnc_plugin.c:1911
 #: plugins/nx/nx_plugin.c:728
 msgid "Send Ctrl+Alt+Delete"
@@ -1482,23 +1483,23 @@ msgstr ""
 
 #. Type
 #. Name
-#: plugins/rdp/rdp_plugin.c:1641
+#: plugins/rdp/rdp_plugin.c:1613
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP - Remote Desktop Protocol"
 
 #. Type
 #. Name
-#: plugins/rdp/rdp_plugin.c:1664
+#: plugins/rdp/rdp_plugin.c:1636
 msgid "RDP - RDP File Handler"
 msgstr ""
 
 #. Type
 #. Name
-#: plugins/rdp/rdp_plugin.c:1679
+#: plugins/rdp/rdp_plugin.c:1651
 msgid "RDP - Preferences"
 msgstr "RDP-asetukset"
 
-#: plugins/rdp/rdp_plugin.c:1733
+#: plugins/rdp/rdp_plugin.c:1705
 msgid "Export connection in Windows .rdp file format"
 msgstr "Vie yhteys Windowsin .rdp-tiedostomuotoon"
 
@@ -2535,14 +2536,40 @@ msgstr ""
 msgid "Move down"
 msgstr ""
 
+#: data/desktop/org.remmina.Remmina.desktop.in:4
 #: data/desktop/org.remmina.Remmina.appdata.xml:11
 #: data/desktop/org.remmina.Remmina.appdata.xml:12
 #: data/desktop/org.remmina.Remmina.appdata.xml:13
 msgid "Remmina"
 msgstr ""
 
+#: data/desktop/org.remmina.Remmina.desktop.in:24
 #: data/desktop/org.remmina.Remmina.appdata.xml:14
 msgid "Remote Desktop Client"
+msgstr ""
+
+#: data/desktop/org.remmina.Remmina.desktop.in:45
+msgid "Connect to remote desktops"
+msgstr ""
+
+#: data/desktop/org.remmina.Remmina.desktop.in:73
+msgid "@REMMINA_ICON@"
+msgstr ""
+
+#: data/desktop/org.remmina.Remmina.desktop.in:78
+msgid "remote desktop;rdp;vnc;nx;ssh;spice;xdmcp;"
+msgstr ""
+
+#: data/desktop/org.remmina.Remmina.desktop.in:82
+msgid "Create a New Connection Profile"
+msgstr ""
+
+#: data/desktop/org.remmina.Remmina.desktop.in:114
+msgid "Start Remmina Minimized"
+msgstr ""
+
+#: data/desktop/org.remmina.Remmina.desktop.in:138
+msgid "Quit"
 msgstr ""
 
 #: data/desktop/org.remmina.Remmina.appdata.xml:15
@@ -2614,4 +2641,3 @@ msgstr ""
 #: data/desktop/org.remmina.Remmina.appdata.xml:65
 msgid "Ajout possible de greffons pour la gestion de nouveaux protocoles"
 msgstr ""
-
