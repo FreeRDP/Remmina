@@ -11,12 +11,6 @@ fi
 if ! find data -name "*.glade" | sed 's/^.\///' >> po/POTFILES.in ; then
     exit 1
 fi
-if ! find data -name "org.remmina.Remmina.desktop.in" | sed 's/^.\///' >> po/POTFILES.in ; then
-    exit 1
-fi
-if ! find data -name "*.appdata.xml" | sed 's/^.\///' >> po/POTFILES.in ; then
-    exit 1
-fi
 
 xgettext --from-code=UTF-8 \
 	--keyword=_ \
@@ -25,9 +19,6 @@ xgettext --from-code=UTF-8 \
 	--keyword=C_:1c,2 \
 	--keyword=NC_:1c,2 \
 	--keyword=g_dngettext:2,3 \
-	--keyword=Name \
-	--keyword=GenericName \
-	--keyword=Comment \
 	--add-comments \
 	--files-from=po/POTFILES.in \
 	--output=po/messages.pot \

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.4 
+<!-- Generated with glade 3.22.1 
 
 Remmina Preferences Dialog - 
 Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2018
@@ -43,6 +43,9 @@ Author: Antenore Gatta
     <property name="type_hint">dialog</property>
     <signal name="close" handler="remmina_pref_dialog_on_close_clicked" swapped="no"/>
     <signal name="destroy" handler="remmina_pref_on_dialog_destroy" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox1">
         <property name="can_focus">False</property>
@@ -346,7 +349,7 @@ Author: Antenore Gatta
 %Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)
 </property>
                         <property name="hexpand">True</property>
-                        <property name="placeholder_text" translatable="yes">remmina_%p_%h_%Y%m%d-%H%M%S</property>
+                        <property name="placeholder_text">remmina_%p_%h_%Y%m%d-%H%M%S</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -1935,9 +1938,6 @@ Author: Antenore Gatta
           </packing>
         </child>
       </object>
-    </child>
-    <child>
-      <placeholder/>
     </child>
   </object>
 </interface>
