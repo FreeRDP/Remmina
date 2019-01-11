@@ -22,6 +22,9 @@ xgettext --from-code=UTF-8 \
 	--add-comments \
 	--files-from=po/POTFILES.in \
 	--output=po/remmina.pot \
+	--package-version="v1.3.0" \
+	--package-name="Remmina" \
+	--copyright-holder="Antenore Gatta and Giovanni Panozzo" \
 	--msgid-bugs-address="admin@remmina.org"
 
 cd "$REMMINATOP"/po || exit 1
