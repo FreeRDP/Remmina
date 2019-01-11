@@ -22,8 +22,6 @@ xgettext --from-code=UTF-8 \
 	--add-comments \
 	--files-from=po/POTFILES.in \
 	--output=po/remmina.pot \
-	--copyright-holder="2014-2019 Antenore Gatta, Giovanni Panozzo" \
-	--package-name="Remmina" --package-version="1.2.32.1" \
 	--msgid-bugs-address="admin@remmina.org"
 
 cd "$REMMINATOP"/po || exit 1
