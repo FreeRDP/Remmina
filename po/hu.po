@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
 "POT-Creation-Date: 2019-01-11 13:38+0100\n"
-"PO-Revision-Date: 2018-03-15 20:43+0100\n"
+"PO-Revision-Date: 2019-01-11 15:05+0100\n"
 "Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #: src/remmina_ftp_client.c:388
 msgid "Choose download location"
@@ -142,7 +142,7 @@ msgstr "Biztonságos fájlátvitel megnyitása…"
 
 #: src/remmina_protocol_widget.c:297
 msgid "Executing external commands..."
-msgstr ""
+msgstr "Külső parancsok végrehajtása…"
 
 #: src/remmina_protocol_widget.c:304
 #, c-format
@@ -181,7 +181,7 @@ msgstr "Parancs végrehajtása sikertelen: %s"
 
 #: src/remmina_protocol_widget.c:1110 src/remmina_protocol_widget.c:1121
 msgid "Enter authentication credentials"
-msgstr ""
+msgstr "Adja meg a hitelesítő adatokat"
 
 #: src/remmina_protocol_widget.c:1200 src/remmina_protocol_widget.c:1227
 #: src/remmina_sftp_plugin.c:323 src/remmina_file_editor.c:926
@@ -298,7 +298,7 @@ msgstr "Remmina távoli asztal ügyfél"
 
 #: src/remmina_main.c:1121
 msgid "Remmina Kiosk"
-msgstr ""
+msgstr "Remmina kioszk"
 
 #. Title
 #: src/remmina_chat_window.c:178
@@ -322,16 +322,20 @@ msgstr "Névjegy párbeszédablak megjelenítése"
 msgid ""
 "Connect to desktop described by file (.remmina or type supported by plugin)"
 msgstr ""
+"Kapcsolódás egy fájl (.remmina vagy bővítmény által támogatott típusú) által "
+"leírt asztalhoz"
 
 #: src/remmina.c:84
 msgid ""
 "Edit desktop connection described by file (.remmina or type supported by "
 "plugin)"
 msgstr ""
+"Egy fájl (.remmina vagy bővítmény által támogatott típusú) által leírt "
+"asztali kapcsolat szerkesztése"
 
 #: src/remmina.c:86
 msgid "Start Remmina in Kiosk mode"
-msgstr ""
+msgstr "A Remmina indítása kioszk módban"
 
 #: src/remmina.c:87 data/ui/remmina_main.glade:752
 msgid "Create a new connection profile"
@@ -504,23 +508,23 @@ msgstr "Mé_gse"
 
 #: src/remmina_message_panel.c:496
 msgid "Enter certificate authentication files"
-msgstr ""
+msgstr "Adja meg a tanúsítvány hitelesítési fájlokat"
 
 #: src/remmina_message_panel.c:508
 msgid "CA Certificate File"
-msgstr ""
+msgstr "CA tanúsítványfájl"
 
 #: src/remmina_message_panel.c:530
 msgid "CA CRL File"
-msgstr ""
+msgstr "CA CRL fájl"
 
 #: src/remmina_message_panel.c:552
 msgid "Client Certificate File"
-msgstr ""
+msgstr "Ügyféltanúsítvány-fájl"
 
 #: src/remmina_message_panel.c:574
 msgid "Client Certificate Key"
-msgstr ""
+msgstr "Ügyféltanúsítvány-kulcs"
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
@@ -532,11 +536,11 @@ msgstr "Jelszavak helyreállítása, várjon…"
 
 #: src/remmina_mpchange.c:327
 msgid "The multi password changer cannot work without a secret plugin.\n"
-msgstr ""
+msgstr "A többszörös jelszóváltoztató nem működik titok bővítmény nélkül.\n"
 
 #: src/remmina_mpchange.c:330
 msgid "The multi password changer does not work without a secret service.\n"
-msgstr ""
+msgstr "A többszörös jelszóváltoztató nem működik titok szolgáltatás nélkül.\n"
 
 #: src/remmina_mpchange.c:419
 #, c-format
@@ -838,7 +842,7 @@ msgstr "Felbontás"
 
 #: src/remmina_file_editor.c:530
 msgid "Use initial window size"
-msgstr ""
+msgstr "A kezdeti ablak méretének használata"
 
 #: src/remmina_file_editor.c:534
 msgid "Use client resolution"
@@ -1058,7 +1062,7 @@ msgstr "SSH kilépéskori munkamenetnaplózás engedélyezése"
 
 #: src/remmina_ssh_plugin.c:1094
 msgid "Enable SSH compression"
-msgstr ""
+msgstr "SSH tömörítés engedélyezése"
 
 #: src/remmina_ssh_plugin.c:1095 plugins/nx/nx_plugin.c:720
 #: plugins/vnc/vnc_plugin.c:1896 plugins/spice/spice_plugin.c:443
@@ -1197,11 +1201,13 @@ msgstr "Bontás"
 #: src/remmina_connection_window.c:3667
 #, c-format
 msgid "File %s is corrupted, unreadable or not found."
-msgstr ""
+msgstr "A(z) %s fájl sérült, nem olvasható vagy nem található."
 
 #: src/remmina_connection_window.c:3821
 msgid "Warning: This plugin require GtkSocket, but it's not available."
 msgstr ""
+"Figyelmeztetés: Ehhez a bővítményhez GtkSocket szükséges, de az nem érhető "
+"el."
 
 #: plugins/nx/nx_session_manager.c:98
 msgid "Terminating"
@@ -1374,13 +1380,13 @@ msgstr "Csevegés megnyitása…"
 #. Name
 #: plugins/vnc/vnc_plugin.c:1922
 msgid "VNC - VNC viewer"
-msgstr ""
+msgstr "VNC - VNC-megjelenítő"
 
 #. Type
 #. Name
 #: plugins/vnc/vnc_plugin.c:1944
 msgid "VNCI - VNC viewer listen mode"
-msgstr ""
+msgstr "VNCI - VNC-megjelenítő figyelő mód"
 
 #: plugins/xdmcp/xdmcp_plugin.c:97
 msgid "Run out of available local X display number."
@@ -1422,15 +1428,15 @@ msgstr "XDMCP - Távoli X-kapcsolat"
 
 #: plugins/st/st_plugin.c:237
 msgid "Terminal Emulator"
-msgstr ""
+msgstr "Parancsértelmező"
 
 #: plugins/st/st_plugin.c:238
 msgid "Command to be executed"
-msgstr ""
+msgstr "Végrehajtandó parancs"
 
 #: plugins/st/st_plugin.c:253
 msgid "Detached window"
-msgstr ""
+msgstr "Leválasztott ablak"
 
 #: plugins/exec/exec_plugin.c:158
 msgid "You did not set any command to be executed"
@@ -1441,6 +1447,8 @@ msgid ""
 "WARNING! Executing a command synchronously, may hung Remmina.\n"
 "Do you really want to continue?"
 msgstr ""
+"FIGYELEM! A parancs szinkron futtatása beakaszthatja a Remminát.\n"
+"Biztos, hogy folytatja?"
 
 #: plugins/exec/exec_plugin.c:264
 msgid "Command"
@@ -1654,7 +1662,7 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "Account is locked out."
 msgstr ""
-"A(z) %s RDP kiszolgálóhoz kapcsolódás meghiúsult.\n"
+"A(z) %s RDP-kiszolgálóhoz hozzáférés meghiúsult.\n"
 "A fiók ki lett zárva."
 
 #: plugins/rdp/rdp_plugin.c:1145
@@ -1663,7 +1671,7 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "Account is expired."
 msgstr ""
-"A(z) %s RDP kiszolgálóhoz kapcsolódás meghiúsult.\n"
+"A(z) %s RDP-kiszolgálóhoz hozzáférés meghiúsult.\n"
 "A fiók lejárt."
 
 #: plugins/rdp/rdp_plugin.c:1152
@@ -1672,7 +1680,7 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "Password expired."
 msgstr ""
-"A(z) %s RDP kiszolgálóhoz kapcsolódás meghiúsult.\n"
+"A(z) %s RDP-kiszolgálóhoz hozzáférés meghiúsult.\n"
 "A jelszó lejárt."
 
 #: plugins/rdp/rdp_plugin.c:1159
@@ -1681,7 +1689,7 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "Account is disabled."
 msgstr ""
-"A(z) %s RDP kiszolgálóhoz kapcsolódás meghiúsult.\n"
+"A(z) %s RDP-kiszolgálóhoz hozzáférés meghiúsult.\n"
 "A fiók tiltott."
 
 #: plugins/rdp/rdp_plugin.c:1165
@@ -1690,6 +1698,8 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "User has insufficient privileges."
 msgstr ""
+"A(z) %s RDP-kiszolgálóhoz hozzáférés meghiúsult.\n"
+"A felhasználónak nincs elengendő jogosultsága."
 
 #: plugins/rdp/rdp_plugin.c:1173
 #, c-format
@@ -1697,7 +1707,7 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "Account has restrictions."
 msgstr ""
-"A(z) %s RDP kiszolgálóhoz kapcsolódás meghiúsult.\n"
+"A(z) %s RDP-kiszolgálóhoz hozzáférés meghiúsult.\n"
 "A fiókon korlátozások vannak."
 
 #: plugins/rdp/rdp_plugin.c:1181
@@ -1706,6 +1716,8 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "User must change password before connecting."
 msgstr ""
+"A(z) %s RDP-kiszolgálóhoz hozzáférés meghiúsult.\n"
+"A felhasználónak módosítania kell a jelszavát a kapcsolódás előtt."
 
 #: plugins/rdp/rdp_plugin.c:1186
 #, c-format
@@ -1747,11 +1759,13 @@ msgid ""
 "You requested an H264 GFX mode for server %s, but your libfreerdp does not "
 "support H264. Please use a non-AVC Color Depth setting."
 msgstr ""
+"H264 GFX módot kért a(z) %s kiszolgálóhoz, de az Ön libfreerdp telepítése "
+"nem támogatja a H264-et. Használja a nem AVC színmélység beállítást."
 
 #: plugins/rdp/rdp_plugin.c:1217
 #, c-format
 msgid "Server %s denied the connection."
-msgstr ""
+msgstr "A(z) %s kiszolgáló megtagadta a kapcsolatot."
 
 #: plugins/rdp/rdp_plugin.c:1222
 #, c-format
@@ -1805,7 +1819,7 @@ msgstr "Biztonság"
 
 #: plugins/rdp/rdp_plugin.c:1563
 msgid "Gateway transport type"
-msgstr ""
+msgstr "Átjáró átviteltípusa"
 
 #: plugins/rdp/rdp_plugin.c:1564
 msgid "RD Gateway server"
@@ -1833,15 +1847,15 @@ msgstr "Terheléselosztási információk"
 
 #: plugins/rdp/rdp_plugin.c:1572
 msgid "Local Printer Name"
-msgstr ""
+msgstr "Helyi nyomtató neve"
 
 #: plugins/rdp/rdp_plugin.c:1573
 msgid "Local Printer Driver"
-msgstr ""
+msgstr "Helyi nyomtatómeghajtó"
 
 #: plugins/rdp/rdp_plugin.c:1574
 msgid "Smartcard Name"
-msgstr ""
+msgstr "Intelligens kártya neve"
 
 #: plugins/rdp/rdp_plugin.c:1575
 msgid "Share local printers"
@@ -1861,7 +1875,7 @@ msgstr "Csatolás konzolhoz (Windows 2003 / 2003 R2)"
 
 #: plugins/rdp/rdp_plugin.c:1582
 msgid "Disable fast-path"
-msgstr ""
+msgstr "Gyors útvonal letiltása"
 
 #: plugins/rdp/rdp_plugin.c:1583
 msgid "Server detection using RD Gateway"
@@ -1869,7 +1883,7 @@ msgstr "Kiszolgálóészlelés RD átjáró használatával"
 
 #: plugins/rdp/rdp_plugin.c:1585
 msgid "Enable proxy support"
-msgstr ""
+msgstr "Proxy támogatás engedélyezése"
 
 #: plugins/rdp/rdp_plugin.c:1587
 msgid "Disable automatic reconnection"
@@ -1877,11 +1891,11 @@ msgstr "Automatikus újrakapcsolódás letiltása"
 
 #: plugins/rdp/rdp_plugin.c:1588
 msgid "Relax Order Checks"
-msgstr ""
+msgstr "Sorrendellenőrzések lazítása"
 
 #: plugins/rdp/rdp_plugin.c:1589
 msgid "Glyph Cache"
-msgstr ""
+msgstr "Szimbólum-gyorsítótár"
 
 #. Type
 #. Name
@@ -1937,6 +1951,27 @@ msgid ""
 "theraser <mail@hegerfeld.org>\n"
 "TreefeedXavier <treefeed@mail.ru>\n"
 msgstr ""
+"Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
+"Antenore Gatta <antenore@simbiosi.org>\n"
+"AsciiWolf <mail@asciiwolf.com>\n"
+"Balázs Meskó <meskobalazs@gmail.com>\n"
+"Davy Defaud <davy.defaud@free.fr>\n"
+"Emmanuel Grognet <emmanuel@grognet.fr>\n"
+"Giovanni Panozzo <giovanni@panozzo.it>\n"
+"Jean-Louis Dupond <jean-louis@dupond.be>\n"
+"Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
+"Jose Gregorio Jimenez Sanchez <josegjimenez@gmail.com>\n"
+"llyzs <llyzs.vic@gmail.com>\n"
+"Meskó Balázs <meskobalazs@gmail.com>\n"
+"morph027 <morphsen@gmx.com>\n"
+"Muflone <muflone@vbsimple.net>\n"
+"Ozzie Isaacs <ozzie.fernandez.isaacs@googlemail.com>\n"
+"Qian Zheng <sotux82@gmail.com>\n"
+"Serdar Sağlam <teknomobil@msn.com>\n"
+"scootergrisen <scootergrisen@gmail.com>\n"
+"Shuhrat Dehkanov <k@efir.uz>\n"
+"theraser <mail@hegerfeld.org>\n"
+"TreefeedXavier <treefeed@mail.ru>\n"
 
 #: data/ui/remmina_preferences.glade:41
 msgid "Remmina Preferences"
@@ -2013,7 +2048,7 @@ msgstr "Időközönként használati statisztika küldése a Remmina fejlesztői
 
 #: data/ui/remmina_preferences.glade:336
 msgid "Screenshots file name"
-msgstr ""
+msgstr "Képernyőképek fájlneve"
 
 #: data/ui/remmina_preferences.glade:347
 msgid ""
@@ -2021,16 +2056,21 @@ msgid ""
 "%h Server name/IP\n"
 "%Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)\n"
 msgstr ""
+"%p Profilnév\n"
+"%h Kiszolgálónév/IP\n"
+"%Y Év, %m Hónap, %d Nap, %H Óra, %M Perc, %S Másodperc (UTC idő)\n"
 
 #: data/ui/remmina_preferences.glade:362
 msgid "Deny Copy Screenshot to clipboard"
-msgstr ""
+msgstr "Képernyőkép vágólapra másolásának megtagadása"
 
 #: data/ui/remmina_preferences.glade:366
 msgid ""
 "If you check this button, when generating a screenshot it will only be saved "
 "on a file and not in the clipboard."
 msgstr ""
+"A bekapcsolja ezt a lehetőséget, akkor a képernyőkép előállításakor csak "
+"fájlba lesz mentve, és nem lesz a vágólapra másolva."
 
 #: data/ui/remmina_preferences.glade:385
 msgid "Options"
@@ -2106,7 +2146,7 @@ msgstr "Eszköztár láthatósága teljes képernyő esetén"
 
 #: data/ui/remmina_preferences.glade:546
 msgid "Hide Search Bar in main window"
-msgstr ""
+msgstr "Keresősáv elrejtése a főablakon"
 
 #: data/ui/remmina_preferences.glade:571
 msgid "Appearance"
@@ -2210,11 +2250,13 @@ msgid ""
 "The time (in seconds) the connection needs to remain idle before TCP starts "
 "sending keepalive probes."
 msgstr ""
+"Az idő (másodpercben), ameddig a kapcsolatnak tétlennek kell lennie ahhoz, "
+"hogy a TCP keepalive kéréseket küldjön."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1206
 msgid "The time (in seconds) between individual keepalive probes."
-msgstr ""
+msgstr "Az egyes keepalive kérések között eltelt idő (másodpercben)."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1221
@@ -2222,6 +2264,8 @@ msgid ""
 "The maximum number of keepalive probes TCP should send before dropping the "
 "connection."
 msgstr ""
+"A TCP keepalive kérések legnagyobb száma, ami után a kapcsolat eldobásra "
+"kerül."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1236
@@ -2230,6 +2274,9 @@ msgid ""
 "data may remain unacknowledged before TCP will forcibly close the  "
 "corresponding connection."
 msgstr ""
+"megadja a leghosszabb időt (másodpercben), amely elérése esetén a TCP "
+"erőszakosan lezárja a kapcsolatot, ha az elküldött adatokra nem érkezett "
+"válasz"
 
 #: data/ui/remmina_preferences.glade:1258
 msgid "SSH Options"
@@ -2369,6 +2416,9 @@ msgid ""
 "usr/share/remmina/theme. See https://github.com/mbadolato/iTerm2-Color-"
 "Schemes."
 msgstr ""
+"Válasszon színsémafájlt, az előre telepített témák általában az /usr/share/"
+"remmina/theme könyvtárban vannak. Lásd https://github.com/mbadolato/iTerm2-"
+"Color-Schemes."
 
 #: data/ui/remmina_preferences.glade:1836
 msgid "Terminal Color Scheme file chooser"
@@ -2435,10 +2485,15 @@ msgid ""
 "appropriate permissions to Remmina.  As an alternative you can to enter the "
 "following commands in a terminal window:"
 msgstr ""
+"Úgy tűnik, hogy a Remmina SNAP csomagként fut a rendszerén. Néhány fontos "
+"funkció eléréséhez, mint a kulcstartóba történő jelszómentés, és az RDP "
+"nyomtatómegosztás, nyissa meg a szoftverközpontot, és adja meg a megfelelő "
+"jogosultságokat a Remminának. Vagy kiadhatja a következő parancsok egy "
+"terminálablakban:"
 
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"
-msgstr ""
+msgstr "Ne mutassa ezt többé"
 
 #: data/ui/remmina_main.glade:44
 msgid "Open the preferences dialog"
@@ -2529,7 +2584,7 @@ msgstr "Kiszolgálónév vagy IP-cím"
 
 #: data/ui/remmina_main.glade:606
 msgid "Plugin"
-msgstr ""
+msgstr "Bővítmény"
 
 #: data/ui/remmina_main.glade:620
 msgid "Last time used"
@@ -2545,7 +2600,7 @@ msgstr ""
 
 #: data/ui/remmina_main.glade:764
 msgid "Show search bar"
-msgstr ""
+msgstr "Keresősáv megjelenítése"
 
 #: data/ui/remmina_main.glade:789
 msgid "Actions"
@@ -2553,7 +2608,7 @@ msgstr "Műveletek"
 
 #: data/ui/remmina_main.glade:803
 msgid "Toggle view"
-msgstr ""
+msgstr "Nézet átváltása"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "PLEASE WAIT ..."
