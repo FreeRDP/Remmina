@@ -38,5 +38,3 @@ for i in "$REMMINATOP"/po/*.po ; do
     awk 'BEGIN{bl=0}/^$/{bl++;if(bl==1)print;else next}/^..*$/{bl=0;print}' $TMPF >| "$i"
     rm $TMPF
 done
-
-rm messages.pot
