@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
 "POT-Creation-Date: 2019-01-11 13:38+0100\n"
-"PO-Revision-Date: 2018-05-17 17:43+0200\n"
+"PO-Revision-Date: 2019-01-11 20:27+0100\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: français <fr@li.org>\n"
 "Language: fr\n"
@@ -144,7 +144,7 @@ msgstr "Ouvrir un transfert de fichier sécurisé…"
 
 #: src/remmina_protocol_widget.c:297
 msgid "Executing external commands..."
-msgstr ""
+msgstr "Exécution de commandes externes…"
 
 #: src/remmina_protocol_widget.c:304
 #, c-format
@@ -169,7 +169,7 @@ msgstr "En attente d’un tunnel SSH entrant sur le port %i…"
 #: src/remmina_protocol_widget.c:834
 #, c-format
 msgid "Command %s not found on SSH server"
-msgstr "Commande %s non trouvée sur le serveur SSH."
+msgstr "Commande %s non trouvée sur le serveur SSH"
 
 #: src/remmina_protocol_widget.c:838
 #, c-format
@@ -183,7 +183,7 @@ msgstr "La commande a échoué : %s"
 
 #: src/remmina_protocol_widget.c:1110 src/remmina_protocol_widget.c:1121
 msgid "Enter authentication credentials"
-msgstr ""
+msgstr "Entrez vos paramètres d’authentification"
 
 #: src/remmina_protocol_widget.c:1200 src/remmina_protocol_widget.c:1227
 #: src/remmina_sftp_plugin.c:323 src/remmina_file_editor.c:926
@@ -300,7 +300,7 @@ msgstr "Visionneur de bureaux distants Remmina"
 
 #: src/remmina_main.c:1121
 msgid "Remmina Kiosk"
-msgstr ""
+msgstr "Démarrer Remmina en mode Kiosque"
 
 #. Title
 #: src/remmina_chat_window.c:178
@@ -324,16 +324,20 @@ msgstr "Afficher la fenêtre « À propos »"
 msgid ""
 "Connect to desktop described by file (.remmina or type supported by plugin)"
 msgstr ""
+"Établir une connexion au bureau définie par un fichier (« *.remmina » ou "
+"format géré par un greffon)"
 
 #: src/remmina.c:84
 msgid ""
 "Edit desktop connection described by file (.remmina or type supported by "
 "plugin)"
 msgstr ""
+"Éditer une connexion au bureau définie par un fichier (« *.remmina » ou "
+"format géré par un greffon)"
 
 #: src/remmina.c:86
 msgid "Start Remmina in Kiosk mode"
-msgstr ""
+msgstr "Démarrer Remmina en mode Kiosque"
 
 #: src/remmina.c:87 data/ui/remmina_main.glade:752
 msgid "Create a new connection profile"
@@ -506,27 +510,27 @@ msgstr "_Annuler"
 
 #: src/remmina_message_panel.c:496
 msgid "Enter certificate authentication files"
-msgstr ""
+msgstr "Entrez les fichiers des certificats d’authentification"
 
 #: src/remmina_message_panel.c:508
 msgid "CA Certificate File"
-msgstr ""
+msgstr "Fichier du certificat de l’AC"
 
 #: src/remmina_message_panel.c:530
 msgid "CA CRL File"
-msgstr ""
+msgstr "Liste de révocation de l’AC"
 
 #: src/remmina_message_panel.c:552
 msgid "Client Certificate File"
-msgstr ""
+msgstr "Fichier certificat client"
 
 #: src/remmina_message_panel.c:574
 msgid "Client Certificate Key"
-msgstr ""
+msgstr "Clef privée associée au certificat client"
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
-msgstr "Les mots de passe ne correspondent pas."
+msgstr "Les mots de passe ne correspondent pas"
 
 #: src/remmina_mpchange.c:244
 msgid "Resetting passwords, please wait..."
@@ -845,7 +849,7 @@ msgstr "Définitions d’affichage"
 
 #: src/remmina_file_editor.c:530
 msgid "Use initial window size"
-msgstr ""
+msgstr "Utiliser la taille de fenêtre initiale"
 
 #: src/remmina_file_editor.c:534
 msgid "Use client resolution"
@@ -1213,11 +1217,13 @@ msgstr "Se déconnecter"
 #: src/remmina_connection_window.c:3667
 #, c-format
 msgid "File %s is corrupted, unreadable or not found."
-msgstr ""
+msgstr "Le fichier %s est corrompu, non accessible en lecture ou introuvable."
 
 #: src/remmina_connection_window.c:3821
 msgid "Warning: This plugin require GtkSocket, but it's not available."
 msgstr ""
+"Attention : ce greffon nécessite GtkSocket, mais ce dernier n’est pas "
+"disponible."
 
 #: plugins/nx/nx_session_manager.c:98
 msgid "Terminating"
@@ -1438,15 +1444,15 @@ msgstr "XDMCP — session X distante"
 
 #: plugins/st/st_plugin.c:237
 msgid "Terminal Emulator"
-msgstr ""
+msgstr "Émulateur de terminal"
 
 #: plugins/st/st_plugin.c:238
 msgid "Command to be executed"
-msgstr ""
+msgstr "Commande à exécuter"
 
 #: plugins/st/st_plugin.c:253
 msgid "Detached window"
-msgstr ""
+msgstr "Fenêtre séparée"
 
 #: plugins/exec/exec_plugin.c:158
 msgid "You did not set any command to be executed"
@@ -1519,7 +1525,7 @@ msgstr "Déconnecté du serveur SPICE %s."
 
 #: plugins/spice/spice_plugin.c:272
 msgid "Invalid password."
-msgstr "Mot de passe incorrect"
+msgstr "Mot de passe incorrect."
 
 #: plugins/spice/spice_plugin.c:277
 msgid "TLS connection error."
@@ -1547,7 +1553,7 @@ msgstr "Activer le canal audio"
 
 #: plugins/spice/spice_plugin.c:445 plugins/spice/spice_plugin.c:457
 msgid "Resize guest to match window size"
-msgstr "Redimensionner l’invité à la taille de la fenêtre."
+msgstr "Redimensionner l’invité à la taille de la fenêtre"
 
 #: plugins/spice/spice_plugin.c:446 plugins/rdp/rdp_plugin.c:1576
 msgid "Share smartcard"
@@ -1726,6 +1732,8 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "User must change password before connecting."
 msgstr ""
+"L’accès au serveur RDP %s a échoué.\n"
+"L’utilisateur doit changer son mot de passe avant de se connecter."
 
 #: plugins/rdp/rdp_plugin.c:1186
 #, c-format
@@ -1760,7 +1768,7 @@ msgstr "Connexion au serveur RDP %s impossible."
 
 #: plugins/rdp/rdp_plugin.c:1207
 msgid "Unable to initialize libfreerdp gdi"
-msgstr "Impossible d’initialiser l’interface GDI de libfreerdp."
+msgstr "Impossible d’initialiser l’interface GDI de libfreerdp"
 
 #: plugins/rdp/rdp_plugin.c:1210
 #, c-format
@@ -1775,7 +1783,7 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:1217
 #, c-format
 msgid "Server %s denied the connection."
-msgstr ""
+msgstr "Le serveur %s a refusé la connexion."
 
 #: plugins/rdp/rdp_plugin.c:1222
 #, c-format
@@ -1829,7 +1837,7 @@ msgstr "Sécurité"
 
 #: plugins/rdp/rdp_plugin.c:1563
 msgid "Gateway transport type"
-msgstr ""
+msgstr "Type de transport de la passerelle"
 
 #: plugins/rdp/rdp_plugin.c:1564
 msgid "RD Gateway server"
@@ -1845,7 +1853,7 @@ msgstr "Mot de passe sur la passerelle RDP"
 
 #: plugins/rdp/rdp_plugin.c:1567
 msgid "RD Gateway domain"
-msgstr " Domaine de la passerelle RDP"
+msgstr "Domaine de la passerelle RDP"
 
 #: plugins/rdp/rdp_plugin.c:1568
 msgid "Client name"
@@ -1857,15 +1865,15 @@ msgstr "Information d’équilibrage de charge"
 
 #: plugins/rdp/rdp_plugin.c:1572
 msgid "Local Printer Name"
-msgstr ""
+msgstr "Nom de l’imprimante locale"
 
 #: plugins/rdp/rdp_plugin.c:1573
 msgid "Local Printer Driver"
-msgstr ""
+msgstr "Pilote de l’imprimante locale"
 
 #: plugins/rdp/rdp_plugin.c:1574
 msgid "Smartcard Name"
-msgstr ""
+msgstr "Nom de la carte à puce"
 
 #: plugins/rdp/rdp_plugin.c:1575
 msgid "Share local printers"
@@ -1893,7 +1901,7 @@ msgstr "Détection du serveur par la passerelle RDP"
 
 #: plugins/rdp/rdp_plugin.c:1585
 msgid "Enable proxy support"
-msgstr ""
+msgstr "Prendre en charge les serveurs mandataires (proxy)"
 
 #: plugins/rdp/rdp_plugin.c:1587
 msgid "Disable automatic reconnection"
@@ -1901,11 +1909,11 @@ msgstr "Désactiver la reconnexion automatique"
 
 #: plugins/rdp/rdp_plugin.c:1588
 msgid "Relax Order Checks"
-msgstr ""
+msgstr "Assouplir les vérifications des ordres"
 
 #: plugins/rdp/rdp_plugin.c:1589
 msgid "Glyph Cache"
-msgstr ""
+msgstr "Cache des glyphes"
 
 #. Type
 #. Name
@@ -1961,6 +1969,24 @@ msgid ""
 "theraser <mail@hegerfeld.org>\n"
 "TreefeedXavier <treefeed@mail.ru>\n"
 msgstr ""
+"Adolfo Jayme‐Barrientos <fitojb@ubuntu.com>\n"
+"Antenore Gatta <antenore@simbiosi.org>\n"
+"Balázs Meskó <meskobalazs@gmail.com>\n"
+"Davy Defaud <davy.defaud@free.fr>\n"
+"Emmanuel Grognet <emmanuel@grognet.fr>\n"
+"Giovanni Panozzo <giovanni@panozzo.it>\n"
+"Jean‐Louis Dupond <jean-louis@dupond.be>\n"
+"Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
+"José‐Gregorio Jiménez‐Sánchez <josegjimenez@gmail.com>\n"
+"llyzs <llyzs.vic@gmail.com>\n"
+"Meskó Balázs <meskobalazs@gmail.com>\n"
+"morph027 <morphsen@gmx.com>\n"
+"Muflone <muflone@vbsimple.net>\n"
+"Qian Zheng <sotux82@gmail.com>\n"
+"scootergrisen <scootergrisen@gmail.com>\n"
+"Shuhrat Dehkanov <k@efir.uz>\n"
+"theraser <mail@hegerfeld.org>\n"
+"TreefeedXavier <treefeed@mail.ru>\n"
 
 #: data/ui/remmina_preferences.glade:41
 msgid "Remmina Preferences"
@@ -2041,7 +2067,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:336
 msgid "Screenshots file name"
-msgstr ""
+msgstr "Noms de fichier des captures d’écran"
 
 #: data/ui/remmina_preferences.glade:347
 msgid ""
@@ -2049,16 +2075,22 @@ msgid ""
 "%h Server name/IP\n"
 "%Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)\n"
 msgstr ""
+"%p : nom du profil\n"
+"%h : nom d’hôte ou adresse IP du serveur\n"
+"%Y : année, %m : mois, %d : jour, %H : heure, %M : minutes, %S : secondes "
+"(temps universel)\n"
 
 #: data/ui/remmina_preferences.glade:362
 msgid "Deny Copy Screenshot to clipboard"
-msgstr ""
+msgstr "Interdire la copie des captures d’écran dans le presse‐papiers"
 
 #: data/ui/remmina_preferences.glade:366
 msgid ""
 "If you check this button, when generating a screenshot it will only be saved "
 "on a file and not in the clipboard."
 msgstr ""
+"En cochant cette case, les captures d’écran seront sauvegardées dans un "
+"fichier mais ne seront pas copiées dans le presse‐papiers."
 
 #: data/ui/remmina_preferences.glade:385
 msgid "Options"
@@ -2136,7 +2168,7 @@ msgstr "Affichage de la barre d’outils"
 
 #: data/ui/remmina_preferences.glade:546
 msgid "Hide Search Bar in main window"
-msgstr ""
+msgstr "Masquer la barre de recherche dans la fenêtre principale"
 
 #: data/ui/remmina_preferences.glade:571
 msgid "Appearance"
@@ -2270,8 +2302,8 @@ msgid ""
 "data may remain unacknowledged before TCP will forcibly close the  "
 "corresponding connection."
 msgstr ""
-"Cela permet de spécifier la durée maximum en millisecondes durant laquelle "
-"les données transmises peuvent rester non aquittées avant que TCP ne close "
+"cela permet de spécifier la durée maximum en millisecondes durant laquelle "
+"les données transmises peuvent rester non acquittées avant que TCP ne close "
 "la connexion de force."
 
 #: data/ui/remmina_preferences.glade:1258
@@ -2575,7 +2607,7 @@ msgstr "Barre d’état"
 #: data/ui/remmina_main.glade:268
 msgid "search string or server name/ip address for quick connect"
 msgstr ""
-"Recherche une chaîne de caractères, le nom ou l’adresse IP d’un serveur"
+"recherche une chaîne de caractères, le nom ou l’adresse IP d’un serveur"
 
 #: data/ui/remmina_main.glade:272 data/ui/remmina_main.glade:274
 msgid "Server name or IP address"
@@ -2583,7 +2615,7 @@ msgstr "Nom ou adresse IP du serveur"
 
 #: data/ui/remmina_main.glade:606
 msgid "Plugin"
-msgstr ""
+msgstr "Greffon"
 
 #: data/ui/remmina_main.glade:620
 msgid "Last time used"
@@ -2599,7 +2631,7 @@ msgstr ""
 
 #: data/ui/remmina_main.glade:764
 msgid "Show search bar"
-msgstr ""
+msgstr "Afficher la barre de recherche"
 
 #: data/ui/remmina_main.glade:789
 msgid "Actions"
@@ -2607,7 +2639,7 @@ msgstr "Actions"
 
 #: data/ui/remmina_main.glade:803
 msgid "Toggle view"
-msgstr ""
+msgstr "Basculer l’affichage"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "PLEASE WAIT ..."
