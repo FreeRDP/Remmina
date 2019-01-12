@@ -572,12 +572,12 @@ static void remmina_rdp_event_init_keymap(rfContext* rfi, const gchar* strmap)
 	s = strmap;
 	rfi->keymap = g_array_new(FALSE, TRUE, sizeof(RemminaPluginRdpKeymapEntry));
 	while(1) {
-		v1 = strtol(s, &endptr, 16);
+		v1 = strtol(s, &endptr, 10);
 		if (endptr == s) break;
 		s = endptr;
 		if (*s != ':') break;
 		s++;
-		v2 = strtol(s, &endptr, 16);
+		v2 = strtol(s, &endptr, 10);
 		if (endptr == s) break;
 		s = endptr;
 		ke.orig_keycode = v1 & 0x7fffffff;
