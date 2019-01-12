@@ -230,6 +230,11 @@ struct remmina_plugin_rdp_ui_object {
 	void *retptr;
 };
 
+typedef struct remmina_plugin_rdp_keymap_entry {
+	unsigned orig_keycode;
+	unsigned translated_keycode;
+} RemminaPluginRdpKeymapEntry;
+
 struct rf_context {
 	rdpContext _p;
 
@@ -290,6 +295,8 @@ struct rf_context {
 	HANDLE event_handle;
 
 	rfClipboard clipboard;
+
+	GArray* keymap;	/* Array of RemminaPluginRdpKeymapEntry */
 
 	enum { REMMINA_POSTCONNECT_ERROR_OK = 0, REMMINA_POSTCONNECT_ERROR_GDI_INIT = 1, REMMINA_POSTCONNECT_ERROR_NO_H264 } postconnect_error;
 };
