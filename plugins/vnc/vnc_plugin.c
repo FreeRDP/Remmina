@@ -1425,6 +1425,9 @@ static void remmina_plugin_vnc_release_key(RemminaProtocolWidget *gp, guint16 ke
 	RemminaKeyVal *k;
 	gint i;
 
+	if (!gpdata)
+		return;
+
 	if (keycode == 0) {
 		/* Send all release key events for previously pressed keys */
 		for (i = 0; i < gpdata->pressed_keys->len; i++) {
