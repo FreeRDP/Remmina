@@ -27,7 +27,7 @@ ubuntu:devel:
   before_script:
     - apt-get update -qq
     - apt-get install -y -qq software-properties-common
-                          python-software-properties
+                          python3-software-properties
     - apt-add-repository $FREERDP_DAILY_PPA -y
     - apt-get update -qq
     - apt-get install -y -qq build-essential git-core cmake
