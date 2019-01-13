@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-01-11 23:13+0100\n"
+"POT-Creation-Date: 2019-01-13 23:46+0100\n"
 "PO-Revision-Date: 2019-01-12 13:23+0200\n"
 "Last-Translator: Soltys Sergey <treefeed@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -45,7 +45,7 @@ msgstr ""
 "%s"
 
 #: src/remmina_main.c:879 data/ui/remmina_main.glade:179
-#: data/ui/remmina_main.glade:180 data/ui/remmina_main.glade:390
+#: data/ui/remmina_main.glade:180 data/ui/remmina_main.glade:402
 msgid "Import"
 msgstr "Импортировать"
 
@@ -324,7 +324,7 @@ msgid "Go to parent folder"
 msgstr "На одну папку вверх"
 
 #: src/remmina_ftp_client.c:763 plugins/rdp/rdp_plugin.c:1597
-#: plugins/vnc/vnc_plugin.c:1909
+#: plugins/vnc/vnc_plugin.c:1912
 msgid "Refresh"
 msgstr "Обновить"
 
@@ -363,7 +363,7 @@ msgstr "Пользователь"
 #. Profile: Group
 #: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1413
 #: data/ui/remmina_mpc.glade:99 data/ui/remmina_mpc.glade:325
-#: data/ui/remmina_main.glade:578
+#: data/ui/remmina_main.glade:606
 msgid "Group"
 msgstr "Группа"
 
@@ -594,7 +594,7 @@ msgid "Authentication failed. Trying to reconnect..."
 msgstr "Аутентификация завершилась ошибкой. Пытаюсь подключиться снова..."
 
 #: src/remmina_protocol_widget.c:1501 src/remmina_file_editor.c:396
-#: src/remmina_file_editor.c:876 data/ui/remmina_main.glade:592
+#: src/remmina_file_editor.c:876 data/ui/remmina_main.glade:620
 msgid "Server"
 msgstr "Сервер"
 
@@ -705,18 +705,18 @@ msgstr "Отмена"
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/remmina_message_panel.c:240 data/ui/remmina_main.glade:708
+#: src/remmina_message_panel.c:240 data/ui/remmina_main.glade:736
 msgid "Yes"
 msgstr "Да"
 
-#: src/remmina_message_panel.c:247 data/ui/remmina_main.glade:692
+#: src/remmina_message_panel.c:247 data/ui/remmina_main.glade:720
 msgid "No"
 msgstr "Нет"
 
 #: src/remmina_message_panel.c:310 src/remmina_sftp_plugin.c:355
 #: src/remmina_ssh_plugin.c:1063 src/remmina_file_editor.c:916
-#: plugins/rdp/rdp_plugin.c:1540 plugins/vnc/vnc_plugin.c:1852
-#: plugins/vnc/vnc_plugin.c:1872 plugins/nx/nx_plugin.c:698
+#: plugins/rdp/rdp_plugin.c:1540 plugins/vnc/vnc_plugin.c:1855
+#: plugins/vnc/vnc_plugin.c:1875 plugins/nx/nx_plugin.c:698
 #: data/ui/remmina_mpc.glade:152
 msgid "User name"
 msgstr "Имя пользователя"
@@ -781,14 +781,14 @@ msgid "Secret"
 msgstr "Ключ безопасности"
 
 #: src/remmina_plugin_manager.c:390 data/ui/remmina_main.glade:60
-#: data/ui/remmina_main.glade:61 data/ui/remmina_main.glade:408
+#: data/ui/remmina_main.glade:61 data/ui/remmina_main.glade:422
 msgid "Plugins"
 msgstr "Модули"
 
 #. Profile: Name
 #: src/remmina_plugin_manager.c:408 src/remmina_file_editor.c:1388
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_mpc.glade:314
-#: data/ui/remmina_main.glade:556
+#: data/ui/remmina_main.glade:584
 msgid "Name"
 msgstr "Название"
 
@@ -827,7 +827,7 @@ msgstr ""
 msgid "Start Remmina in Kiosk mode"
 msgstr "Запустить Remmina в режиме Киоска"
 
-#: src/remmina.c:87 data/ui/remmina_main.glade:752
+#: src/remmina.c:87 data/ui/remmina_main.glade:780
 msgid "Create a new connection profile"
 msgstr "Создать новый профиль соединения"
 
@@ -890,7 +890,7 @@ msgstr "Переписать все"
 
 #: src/remmina_sftp_plugin.c:356 src/remmina_ssh_plugin.c:1064
 #: plugins/rdp/rdp_plugin.c:1541 plugins/spice/spice_plugin.c:424
-#: plugins/vnc/vnc_plugin.c:1853 plugins/vnc/vnc_plugin.c:1873
+#: plugins/vnc/vnc_plugin.c:1856 plugins/vnc/vnc_plugin.c:1876
 #: plugins/nx/nx_plugin.c:699
 msgid "User password"
 msgstr "Пароль пользователя"
@@ -914,6 +914,34 @@ msgstr "Ключевая раза закрытого ключа"
 #: src/remmina_sftp_plugin.c:368
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - защищённая передача файлов"
+
+#: src/remmina_key_chooser.h:38
+msgid "Shift+"
+msgstr ""
+
+#: src/remmina_key_chooser.h:39
+msgid "Ctrl+"
+msgstr ""
+
+#: src/remmina_key_chooser.h:40
+msgid "Alt+"
+msgstr ""
+
+#: src/remmina_key_chooser.h:41
+msgid "Super+"
+msgstr ""
+
+#: src/remmina_key_chooser.h:42
+msgid "Hyper+"
+msgstr ""
+
+#: src/remmina_key_chooser.h:43
+msgid "Meta+"
+msgstr ""
+
+#: src/remmina_key_chooser.h:44
+msgid "<None>"
+msgstr ""
 
 #: src/remmina_ssh_plugin.c:480
 #, c-format
@@ -1011,7 +1039,7 @@ msgid "Enable SSH compression"
 msgstr "Включить SSH сжатие"
 
 #: src/remmina_ssh_plugin.c:1095 plugins/rdp/rdp_plugin.c:1580
-#: plugins/spice/spice_plugin.c:443 plugins/vnc/vnc_plugin.c:1896
+#: plugins/spice/spice_plugin.c:443 plugins/vnc/vnc_plugin.c:1899
 #: plugins/nx/nx_plugin.c:720
 msgid "Disable password storing"
 msgstr "Отключить запоминание пароля"
@@ -1363,43 +1391,43 @@ msgstr "GFX RFX (глубина цвета 32-бит)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1480 plugins/vnc/vnc_plugin.c:1825
+#: plugins/rdp/rdp_plugin.c:1480 plugins/vnc/vnc_plugin.c:1828
 msgid "True color (32 bpp)"
 msgstr "True color (32 бит/пиксель)"
 
-#: plugins/rdp/rdp_plugin.c:1481 plugins/vnc/vnc_plugin.c:1824
+#: plugins/rdp/rdp_plugin.c:1481 plugins/vnc/vnc_plugin.c:1827
 msgid "True color (24 bpp)"
 msgstr "True color (24 бит/пиксель)"
 
-#: plugins/rdp/rdp_plugin.c:1482 plugins/vnc/vnc_plugin.c:1823
+#: plugins/rdp/rdp_plugin.c:1482 plugins/vnc/vnc_plugin.c:1826
 msgid "High color (16 bpp)"
 msgstr "High color (16 бит/пиксель)"
 
-#: plugins/rdp/rdp_plugin.c:1483 plugins/vnc/vnc_plugin.c:1822
+#: plugins/rdp/rdp_plugin.c:1483 plugins/vnc/vnc_plugin.c:1825
 msgid "High color (15 bpp)"
 msgstr "High color (15 бит/пиксель)"
 
-#: plugins/rdp/rdp_plugin.c:1484 plugins/vnc/vnc_plugin.c:1821
+#: plugins/rdp/rdp_plugin.c:1484 plugins/vnc/vnc_plugin.c:1824
 msgid "256 colors (8 bpp)"
 msgstr "256 цветов (8 бит/пиксель)"
 
 #: plugins/rdp/rdp_plugin.c:1491 plugins/rdp/rdp_settings.c:269
-#: plugins/vnc/vnc_plugin.c:1832 plugins/nx/nx_plugin.c:678
+#: plugins/vnc/vnc_plugin.c:1835 plugins/nx/nx_plugin.c:678
 msgid "Poor (fastest)"
 msgstr "Низкое (самое быстрое)"
 
 #: plugins/rdp/rdp_plugin.c:1492 plugins/rdp/rdp_settings.c:271
-#: plugins/vnc/vnc_plugin.c:1833 plugins/nx/nx_plugin.c:679
+#: plugins/vnc/vnc_plugin.c:1836 plugins/nx/nx_plugin.c:679
 msgid "Medium"
 msgstr "Среднее"
 
 #: plugins/rdp/rdp_plugin.c:1493 plugins/rdp/rdp_settings.c:273
-#: plugins/vnc/vnc_plugin.c:1834 plugins/nx/nx_plugin.c:680
+#: plugins/vnc/vnc_plugin.c:1837 plugins/nx/nx_plugin.c:680
 msgid "Good"
 msgstr "Хорошее"
 
 #: plugins/rdp/rdp_plugin.c:1494 plugins/rdp/rdp_settings.c:275
-#: plugins/vnc/vnc_plugin.c:1835 plugins/nx/nx_plugin.c:681
+#: plugins/vnc/vnc_plugin.c:1838 plugins/nx/nx_plugin.c:681
 msgid "Best (slowest)"
 msgstr "Наилучшее (самое медленное)"
 
@@ -1424,7 +1452,7 @@ msgid "Negotiate"
 msgstr "Согласование"
 
 #: plugins/rdp/rdp_plugin.c:1544 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/vnc/vnc_plugin.c:1854 plugins/vnc/vnc_plugin.c:1874
+#: plugins/vnc/vnc_plugin.c:1857 plugins/vnc/vnc_plugin.c:1877
 msgid "Color depth"
 msgstr "Глубина цвета"
 
@@ -1432,8 +1460,8 @@ msgstr "Глубина цвета"
 msgid "Share folder"
 msgstr "Общая папка"
 
-#: plugins/rdp/rdp_plugin.c:1560 plugins/vnc/vnc_plugin.c:1855
-#: plugins/vnc/vnc_plugin.c:1875 plugins/nx/nx_plugin.c:701
+#: plugins/rdp/rdp_plugin.c:1560 plugins/vnc/vnc_plugin.c:1858
+#: plugins/vnc/vnc_plugin.c:1878 plugins/nx/nx_plugin.c:701
 msgid "Quality"
 msgstr "Качество"
 
@@ -1498,7 +1526,7 @@ msgid "Redirect local microphone"
 msgstr "Перенаправлять локальный микрофон"
 
 #: plugins/rdp/rdp_plugin.c:1578 plugins/spice/spice_plugin.c:442
-#: plugins/spice/spice_plugin.c:458 plugins/vnc/vnc_plugin.c:1893
+#: plugins/spice/spice_plugin.c:458 plugins/vnc/vnc_plugin.c:1896
 #: plugins/nx/nx_plugin.c:717
 msgid "Disable clipboard sync"
 msgstr "Отключить синхронизацию буфера обмена"
@@ -1536,7 +1564,7 @@ msgid "Glyph Cache"
 msgstr "Glyph Cache"
 
 #: plugins/rdp/rdp_plugin.c:1600 plugins/spice/spice_plugin.c:459
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/vnc/vnc_plugin.c:1911
+#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/vnc/vnc_plugin.c:1914
 #: plugins/nx/nx_plugin.c:728
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Послать Ctrl+Alt+Delete"
@@ -1720,7 +1748,7 @@ msgid "Resize guest to match window size"
 msgstr "Изменить размер гостевой системы, под размер вашего окна"
 
 #: plugins/spice/spice_plugin.c:447 plugins/spice/spice_plugin.c:456
-#: plugins/vnc/vnc_plugin.c:1892 plugins/vnc/vnc_plugin.c:1907
+#: plugins/vnc/vnc_plugin.c:1895 plugins/vnc/vnc_plugin.c:1910
 msgid "View only"
 msgstr "Только просмотр"
 
@@ -1805,39 +1833,39 @@ msgid "Please retry after enabling encryption on this profile."
 msgstr ""
 "Включите шифрование в настройках этого подключения и повторите попытку."
 
-#: plugins/vnc/vnc_plugin.c:1851
+#: plugins/vnc/vnc_plugin.c:1854
 msgid "Repeater"
 msgstr "Повторитель"
 
-#: plugins/vnc/vnc_plugin.c:1871
+#: plugins/vnc/vnc_plugin.c:1874
 msgid "Listen on port"
 msgstr "Прослушивать порт"
 
-#: plugins/vnc/vnc_plugin.c:1891
+#: plugins/vnc/vnc_plugin.c:1894
 msgid "Show remote cursor"
 msgstr "Показать удалённый курсор"
 
-#: plugins/vnc/vnc_plugin.c:1894 plugins/nx/nx_plugin.c:718
+#: plugins/vnc/vnc_plugin.c:1897 plugins/nx/nx_plugin.c:718
 msgid "Disable encryption"
 msgstr "Отключить шифрование"
 
-#: plugins/vnc/vnc_plugin.c:1895 plugins/vnc/vnc_plugin.c:1908
+#: plugins/vnc/vnc_plugin.c:1898 plugins/vnc/vnc_plugin.c:1911
 msgid "Disable server input"
 msgstr "Отключить ввод на сервере"
 
-#: plugins/vnc/vnc_plugin.c:1910
+#: plugins/vnc/vnc_plugin.c:1913
 msgid "Open Chat..."
 msgstr "Начать разговор..."
 
 #. Type
 #. Name
-#: plugins/vnc/vnc_plugin.c:1922
+#: plugins/vnc/vnc_plugin.c:1925
 msgid "VNC - VNC viewer"
 msgstr "VNC - VNC viewer"
 
 #. Type
 #. Name
-#: plugins/vnc/vnc_plugin.c:1944
+#: plugins/vnc/vnc_plugin.c:1947
 msgid "VNCI - VNC viewer listen mode"
 msgstr "VNCI - VNC viewer режим прослушки"
 
@@ -1852,6 +1880,10 @@ msgstr "Команда будет исполнена"
 #: plugins/st/st_plugin.c:253
 msgid "Detached window"
 msgstr "Отдельное окно"
+
+#: plugins/st/st_plugin_config.h:43
+msgid "Remmina Simple Terminal"
+msgstr ""
 
 #. Type
 #. Name
@@ -1912,6 +1944,10 @@ msgstr "Команда"
 msgid "Asynchrounous execution"
 msgstr "Асинхронное выполнение"
 
+#: plugins/exec/exec_plugin_config.h:41
+msgid "Execute a command"
+msgstr ""
+
 #. Type
 #. Name
 #: plugins/telepathy/telepathy_plugin.c:57
@@ -1930,6 +1966,10 @@ msgstr ""
 #: plugins/telepathy/telepathy_channel_handler.c:240
 msgid "Desktop sharing invitation"
 msgstr "Приглашение удалённого рабочего стола"
+
+#: plugins/tool_hello_world/plugin_config.h:40
+msgid "Hello World!"
+msgstr ""
 
 #: data/ui/remmina_mpc.glade:7
 msgid "Remmina - Multi Password Changer"
@@ -1992,7 +2032,7 @@ msgstr "Пожалуйста нажмите новый ключ..."
 msgid "Open the preferences dialog"
 msgstr "Открыть диалог настроек"
 
-#: data/ui/remmina_main.glade:67 data/ui/remmina_main.glade:417
+#: data/ui/remmina_main.glade:67 data/ui/remmina_main.glade:432
 msgid "Multi password changer"
 msgstr "Множественная смена паролей"
 
@@ -2033,32 +2073,32 @@ msgid "Create a new remote desktop file"
 msgstr "Создать новый файл удалённого рабочего стола"
 
 #: data/ui/remmina_main.glade:141 data/ui/remmina_main.glade:142
-#: data/ui/remmina_main.glade:463
+#: data/ui/remmina_main.glade:484
 msgid "Homepage"
 msgstr "Домашняя страница"
 
 #: data/ui/remmina_main.glade:148 data/ui/remmina_main.glade:149
-#: data/ui/remmina_main.glade:472
+#: data/ui/remmina_main.glade:494
 msgid "Online Wiki"
 msgstr "Вики (он-лайн)"
 
 #: data/ui/remmina_main.glade:155 data/ui/remmina_main.glade:156
-#: data/ui/remmina_main.glade:481
+#: data/ui/remmina_main.glade:504
 msgid "G+ Remmina Community"
 msgstr "Сообщество Remmina в G+"
 
 #: data/ui/remmina_main.glade:162 data/ui/remmina_main.glade:163
-#: data/ui/remmina_main.glade:490
+#: data/ui/remmina_main.glade:514
 msgid "Donations"
 msgstr "Пожертвования"
 
 #: data/ui/remmina_main.glade:169 data/ui/remmina_main.glade:170
-#: data/ui/remmina_main.glade:499
+#: data/ui/remmina_main.glade:524
 msgid "Debug Window"
 msgstr "Окно отладки"
 
 #: data/ui/remmina_main.glade:186 data/ui/remmina_main.glade:187
-#: data/ui/remmina_main.glade:399
+#: data/ui/remmina_main.glade:412
 msgid "Export"
 msgstr "Экспорт"
 
@@ -2080,16 +2120,16 @@ msgid "Clear"
 msgstr "Очистить"
 
 # Pluggin like entity or plug-in as action?
-#: data/ui/remmina_main.glade:606
+#: data/ui/remmina_main.glade:634
 #, fuzzy
 msgid "Plugin"
 msgstr "Плагин"
 
-#: data/ui/remmina_main.glade:620
+#: data/ui/remmina_main.glade:648
 msgid "Last time used"
 msgstr "Последний раз использовано"
 
-#: data/ui/remmina_main.glade:681
+#: data/ui/remmina_main.glade:709
 msgid ""
 "Do you allow Remmina to send periodic anonymous usage statistics to its "
 "developers?"
@@ -2097,15 +2137,15 @@ msgstr ""
 "Хотите разрешить Remmina отсылать переодическую анонимную статистику её "
 "разработчикам?"
 
-#: data/ui/remmina_main.glade:764
+#: data/ui/remmina_main.glade:792
 msgid "Show search bar"
 msgstr "Показать строку поиска"
 
-#: data/ui/remmina_main.glade:789
+#: data/ui/remmina_main.glade:817
 msgid "Actions"
 msgstr "Действия"
 
-#: data/ui/remmina_main.glade:803
+#: data/ui/remmina_main.glade:831
 msgid "Toggle view"
 msgstr "Переключить вид"
 
