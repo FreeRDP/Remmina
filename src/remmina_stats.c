@@ -352,7 +352,7 @@ JsonNode *remmina_stats_get_user_env()
 	JsonBuilder *b;
 	JsonNode *r;
 
-	gchar *lcall;
+	gchar *language;
 
 	language = setlocale (LC_ALL, NULL);
 
