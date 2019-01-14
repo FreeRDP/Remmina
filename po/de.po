@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
 "POT-Creation-Date: 2019-01-11 22:33+0100\n"
-"PO-Revision-Date: 2019-01-11 12:46+0100\n"
+"PO-Revision-Date: 2019-01-14 13:04+0100\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <de@li.org>\n"
 "Language: de\n"
@@ -17,14 +17,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2\n"
 
 #. Show in the status bar the total number of connections found
 #: src/remmina_main.c:599
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
-msgstr[0] "Gesamt %i Objekt."
+msgstr[0] "Gesamt %i Objekte."
 msgstr[1] "Gesamt %i Objekte."
 
 #: src/remmina_main.c:763
@@ -80,7 +80,7 @@ msgstr ""
 
 #: src/remmina_ssh.c:224
 msgid "SSH Key file not yet set."
-msgstr "SSH Schlüssel-Datei wurde noch nicht festgelegt"
+msgstr "Die SSH Schlüssel-Datei wurde noch nicht festgelegt."
 
 #: src/remmina_ssh.c:255
 #, c-format
@@ -233,7 +233,7 @@ msgstr "Verzeichnis %s konnte nicht geöffnet werden. %s"
 #: src/remmina_sftp_client.c:689
 #, c-format
 msgid "Failed reading directory. %s"
-msgstr "Verzeichnis %s konnte nicht gelesen werden."
+msgstr "Das Verzeichnis konnte nicht gelesen werden. %s"
 
 #: src/remmina_sftp_client.c:797
 msgid ""
@@ -504,7 +504,7 @@ msgstr "Warte auf eingehende SSH-Tunnel Verbindung über Port %i …"
 #: src/remmina_protocol_widget.c:834
 #, c-format
 msgid "Command %s not found on SSH server"
-msgstr "Befehl %s wurde auf dem SSH Server nicht gefunden."
+msgstr "Der Befehl %s wurde auf dem SSH Server nicht gefunden"
 
 #: src/remmina_protocol_widget.c:838
 #, c-format
@@ -584,7 +584,7 @@ msgstr "Server"
 #: src/remmina_protocol_widget.c:1518
 #, c-format
 msgid "Protocol plugin %s is not installed."
-msgstr "Protokoll Plugin %s ist nicht installiert"
+msgstr "Das Protokoll-Plugin %s ist nicht installiert."
 
 #: src/remmina_connection_window.c:581
 #, c-format
@@ -1204,8 +1204,8 @@ msgstr ""
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
-msgstr[0] "%d Passwort wurde geändert"
-msgstr[1] "%d Passwörter wurden geändert"
+msgstr[0] "%d Passwort wurde geändert."
+msgstr[1] "%d Passwörter wurden geändert."
 
 #: plugins/rdp/rdp_plugin.c:1129
 #, c-format
@@ -1276,8 +1276,8 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "User must change password before connecting."
 msgstr ""
-"Zugriff auf RDP Server %s fehlgeschlagen.\n"
-"Benutzer muss Passwort vor der Verbindung ändern"
+"Zugriff auf den RDP Server %s fehlgeschlagen.\n"
+"Benutzer muss Passwort vor der Verbindung ändern."
 
 #: plugins/rdp/rdp_plugin.c:1186
 #, c-format
@@ -1517,7 +1517,7 @@ msgstr "Automatisches wiederherstellen der Verbindung deaktivieren"
 
 #: plugins/rdp/rdp_plugin.c:1588
 msgid "Relax Order Checks"
-msgstr ""
+msgstr "Weniger strenge Order-Prüfung"
 
 #: plugins/rdp/rdp_plugin.c:1589
 msgid "Glyph Cache"
@@ -2099,7 +2099,7 @@ msgstr "Schalte Ansicht um"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "PLEASE WAIT..."
-msgstr ""
+msgstr "BITTE WARTEN..."
 
 #: data/ui/remmina_preferences.glade:41
 msgid "Remmina Preferences"
@@ -2193,7 +2193,7 @@ msgid ""
 "on a file and not in the clipboard."
 msgstr ""
 "Falls diese Option gesetzt ist, werden Screenshots nur in eine Datei "
-"gespeichert und nicht in der Zwischenablage abgelegt"
+"gespeichert und nicht in der Zwischenablage abgelegt."
 
 #: data/ui/remmina_preferences.glade:385
 msgid "Options"
@@ -2395,6 +2395,8 @@ msgid ""
 "data may remain unacknowledged before TCP will forcibly close the "
 "corresponding connection."
 msgstr ""
+"definiert die maximale Zeit in Millisekunden, innerhalb derer Daten "
+"bestätigt werden müssen bevor TCP die Verbindung schließt."
 
 #: data/ui/remmina_preferences.glade:1258
 msgid "SSH Options"
@@ -2554,6 +2556,11 @@ msgid ""
 "appropriate permissions to Remmina. As an alternative you can to enter the "
 "following commands in a terminal window:"
 msgstr ""
+"Es scheint, dass Remmina auf Ihrem System als SNAP-Paket läuft. Um wichtige "
+"Features wie das Speichern von Passwörten in den Gnome-Schlüsselbund oder "
+"die RPD Druckerfreigabe zu nutzen öffnen Sie bitte die Systemsteuerung und "
+"geben Sie Remmina die benötigten Berechtigungen. Alternativ können Sie die "
+"folgenden Kommandos in ein Terminal-Fenster eingeben:"
 
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"
@@ -2574,4 +2581,3 @@ msgstr "Nach oben bewegen"
 #: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
 msgid "Move down"
 msgstr "Nach unten bewegen"
-
