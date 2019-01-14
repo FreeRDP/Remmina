@@ -153,7 +153,7 @@ void remmina_plugin_glibsecret_delete_password(RemminaFile *remminafile, const g
 static RemminaSecretPlugin remmina_plugin_glibsecret =
 { REMMINA_PLUGIN_TYPE_SECRET,
   "glibsecret",
-  "GNOME libsecret",
+  N_("GNOME libsecret"),
   NULL,
   VERSION,
   TRUE,
