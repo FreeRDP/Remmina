@@ -38,6 +38,6 @@
 #pragma once
 
 #define PLUGIN_NAME        "EXEC"
-#define PLUGIN_DESCRIPTION "Execute a command"
+#define PLUGIN_DESCRIPTION N_("Execute a command")
 #define PLUGIN_VERSION     "1.0"
 #define PLUGIN_APPICON     "remmina-tool-symbolic"

@@ -310,19 +310,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         </child>
         <child>
           <object class="GtkMenuBar" id="menubar_main">
+            <property name="app_paintable">True</property>
             <property name="can_focus">False</property>
             <child>
               <object class="GtkMenuItem" id="menuitem_popup">
+                <property name="app_paintable">True</property>
                 <property name="can_focus">False</property>
                 <property name="label">Popup menu</property>
                 <child type="submenu">
                   <object class="GtkMenu" id="menu_popup">
                     <property name="visible">True</property>
+                    <property name="app_paintable">True</property>
                     <property name="can_focus">False</property>
                     <child>
                       <object class="GtkImageMenuItem" id="menuitem_popup_connect">
                         <property name="related_action">action_connection_connect</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
@@ -331,6 +335,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     <child>
                       <object class="GtkSeparatorMenuItem" id="separatormenuitem1">
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                       </object>
                     </child>
@@ -338,6 +343,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkImageMenuItem" id="menuitem_popup_copy">
                         <property name="related_action">action_connection_copy</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
@@ -347,6 +353,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkImageMenuItem" id="menuitem_popup_edit">
                         <property name="related_action">action_connection_edit</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
@@ -356,6 +363,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkImageMenuItem" id="menuitem_popup_delete">
                         <property name="related_action">action_connection_delete</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
@@ -365,6 +373,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkImageMenuItem" id="menuitem_popup_externaltools">
                         <property name="related_action">action_connection_external_tools</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
@@ -376,16 +385,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
             </child>
             <child>
               <object class="GtkMenuItem" id="menuitem_popup_full">
+                <property name="app_paintable">True</property>
                 <property name="can_focus">False</property>
                 <property name="label">Menu Popup HeaderBar</property>
                 <child type="submenu">
                   <object class="GtkMenu" id="menu_popup_full">
                     <property name="visible">True</property>
+                    <property name="app_paintable">True</property>
                     <property name="can_focus">False</property>
                     <child>
                       <object class="GtkMenuItem" id="menuitem_tools_import">
                         <property name="related_action">action_tools_import</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Import</property>
                         <property name="use_underline">True</property>
@@ -395,6 +407,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkMenuItem" id="menuitem_tools_export">
                         <property name="related_action">action_tools_export</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Export</property>
                         <property name="use_underline">True</property>
@@ -404,6 +417,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkMenuItem" id="menuitem_tools_plugins">
                         <property name="related_action">action_application_plugins</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Plugins</property>
                         <property name="use_underline">True</property>
@@ -413,6 +427,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkMenuItem" id="menuitem_tools_mpchange">
                         <property name="related_action">action_application_mpchange</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Multi password changer</property>
                         <property name="use_underline">True</property>
@@ -421,6 +436,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     <child>
                       <object class="GtkSeparatorMenuItem" id="menuitem_tools_separator1">
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                       </object>
                     </child>
@@ -429,6 +445,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="use_action_appearance">True</property>
                         <property name="related_action">action_view_statusbar</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="active">True</property>
@@ -437,6 +454,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     <child>
                       <object class="GtkSeparatorMenuItem" id="menuitem_edit_separator1">
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                       </object>
                     </child>
@@ -444,6 +462,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkImageMenuItem" id="menuitem_edit_preferences">
                         <property name="related_action">action_application_preferences</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
@@ -452,6 +471,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     <child>
                       <object class="GtkSeparatorMenuItem" id="menuitem_help_separator1">
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                       </object>
                     </child>
@@ -459,6 +479,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkMenuItem" id="menuitem_help_homepage">
                         <property name="related_action">action_help_homepage</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Homepage</property>
                         <property name="use_underline">True</property>
@@ -468,6 +489,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkMenuItem" id="menuitem_help_wiki">
                         <property name="related_action">action_help_wiki</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Online Wiki</property>
                         <property name="use_underline">True</property>
@@ -477,6 +499,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkMenuItem" id="menuitem_help_gplus">
                         <property name="related_action">action_help_gplus</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">G+ Remmina Community</property>
                         <property name="use_underline">True</property>
@@ -486,6 +509,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkMenuItem" id="menuitem_help_donations">
                         <property name="related_action">action_help_donations</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Donations</property>
                         <property name="use_underline">True</property>
@@ -495,6 +519,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkMenuItem" id="menuitem_help_debug">
                         <property name="related_action">action_help_debug</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Debug Window</property>
                         <property name="use_underline">True</property>
@@ -504,6 +529,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkImageMenuItem" id="menuitem_help_about">
                         <property name="related_action">action_application_about</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
@@ -512,6 +538,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     <child>
                       <object class="GtkSeparatorMenuItem" id="menuitem_quit_separator1">
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                       </object>
                     </child>
@@ -519,6 +546,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       <object class="GtkImageMenuItem" id="menuitem_connection_quit">
                         <property name="related_action">action_application_quit</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>

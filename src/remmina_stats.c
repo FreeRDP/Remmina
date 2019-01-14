@@ -122,6 +122,7 @@
 
 
 #include "config.h"
+#include <locale.h>
 #include <string.h>
 #include <sys/utsname.h>
 #include <unistd.h>
@@ -337,6 +338,40 @@ JsonNode *remmina_stats_get_os_info()
 	r = json_builder_get_root(b);
 	g_object_unref(b);
 	return r;
+}
+
+/**
+ * Gets the following user environment:
+ *   - Gets the user's locale (or NULL by default) coresponding to LC_ALL.
+ *
+ * @return a Json Node structure containg the user's environment.
+ */
+JsonNode *remmina_stats_get_user_env()
+{
+	TRACE_CALL(__func__);
+	JsonBuilder *b;
+	JsonNode *r;
+
+	gchar *language;
+
+	language = setlocale (LC_ALL, NULL);
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+	json_builder_set_member_name(b, "language");
+
+	if (!language || language[0] == '\0') {
+		json_builder_add_null_value(b);
+
+	}else {
+		json_builder_add_string_value(b, language);
+	}
+
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+	return r;
+
 }
 
 JsonNode *remmina_stats_get_version()
@@ -599,29 +634,24 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 				gint res = g_date_time_compare( ds, dd );
 				/** If the date in the hash less than the date in the profile, we take the latter */
 				if (res < 0 ) {
-					//remmina_log_printf("Date %s is newer than the one inside pdata->protocol for protocol %s\n", g_strdup(pdata->pdatestr), g_strdup(pdata->protocol));
 					g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 				}
 			}
 			/** If the date in the hash is NOT valid and the date in the profile is valid we keep the latter */
 			if (!ds && dd) {
-				//remmina_log_printf("Date %s inserted in pdata->protocol for protocol %s\n", g_strdup(pdata->pdatestr), g_strdup(pdata->protocol));
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 			}
 			/** If both date are NULL, we insert NULL for that protocol */
 			if ((!ds && !dd) && pdata->pdatestr) {
-				//remmina_log_printf("Date NULL inserted in pdata->protocol for protocol %s\n", g_strdup(pdata->protocol));
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), NULL);
 			}
 		}else {
 			/** If there is not the protocol in the hash, we add it */
 			/** If the date in the profile is not NULL we use it */
 			if (pdata->pdatestr) {
-				//remmina_log_printf("Date %s inserted in pdata->protocol for protocol %s\n", g_strdup(pdata->pdatestr), g_strdup(pdata->protocol));
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 			}else {
 				/** Otherwise we set it to NULL */
-				//remmina_log_printf("We set %s protocol date to NULL\n", g_strdup(pdata->protocol));
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), NULL);
 			}
 		}
@@ -652,6 +682,7 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
  * | SPICE  |  20171122 |
  * | SSH    |  20180111 |
  *
+ * @return a Json Node structure containg the protocol usage statistics.
  *
  */
 JsonNode *remmina_stats_get_profiles()
@@ -746,6 +777,14 @@ JsonNode *remmina_stats_get_all()
 
 	n = remmina_stats_get_os_info();
 	json_builder_set_member_name(b, "SYSTEM");
+	json_builder_add_value(b, n);
+
+	/**
+	 * The section ENVIRONMENT collect all the user's environment related
+	 * settings.
+	 */
+	n = remmina_stats_get_user_env();
+	json_builder_set_member_name(b, "ENVIRONMENT");
 	json_builder_add_value(b, n);
 
 	n = remmina_stats_get_gtk_version();
