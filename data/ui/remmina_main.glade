@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.4 
+<!-- Generated with glade 3.20.4
 
 Remmina - The GTK+ Remmina Remote Desktop Client
 Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2018
@@ -151,10 +151,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
       </object>
     </child>
     <child>
-      <object class="GtkAction" id="action_help_gplus">
-        <property name="label" translatable="yes">G+ Remmina Community</property>
-        <property name="short_label" translatable="yes">G+ Remmina Community</property>
-        <signal name="activate" handler="remmina_main_on_action_help_gplus" swapped="no"/>
+      <object class="GtkAction" id="action_help_community">
+        <property name="label" translatable="yes">Remmina Community</property>
+        <property name="short_label" translatable="yes"></property>
+        <signal name="activate" handler="remmina_main_on_action_help_community" swapped="no"/>
       </object>
     </child>
     <child>
@@ -414,16 +414,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem" id="menuitem_tools_plugins">
-                        <property name="related_action">action_application_plugins</property>
-                        <property name="visible">True</property>
-                        <property name="app_paintable">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Plugins</property>
-                        <property name="use_underline">True</property>
-                      </object>
-                    </child>
-                    <child>
                       <object class="GtkMenuItem" id="menuitem_tools_mpchange">
                         <property name="related_action">action_application_mpchange</property>
                         <property name="visible">True</property>
@@ -438,6 +428,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_help_debug">
+                        <property name="related_action">action_help_debug</property>
+                        <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Debug Window</property>
+                        <property name="use_underline">True</property>
                       </object>
                     </child>
                     <child>
@@ -456,6 +456,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_tools_plugins">
+                        <property name="related_action">action_application_plugins</property>
+                        <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Plugins</property>
+                        <property name="use_underline">True</property>
                       </object>
                     </child>
                     <child>
@@ -496,12 +506,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem" id="menuitem_help_gplus">
-                        <property name="related_action">action_help_gplus</property>
+                      <object class="GtkMenuItem" id="menuitem_help_community">
+                        <property name="related_action">action_help_community</property>
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">G+ Remmina Community</property>
+                        <property name="label" translatable="yes" comments="Online Remmina community, like reddit, facebook, etc">Online Community</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>
@@ -512,16 +522,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Donations</property>
-                        <property name="use_underline">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkMenuItem" id="menuitem_help_debug">
-                        <property name="related_action">action_help_debug</property>
-                        <property name="visible">True</property>
-                        <property name="app_paintable">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Debug Window</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>
