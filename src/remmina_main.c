@@ -931,10 +931,10 @@ void remmina_main_on_action_help_wiki(GtkAction *action, gpointer user_data)
 	g_app_info_launch_default_for_uri("https://gitlab.com/Remmina/Remmina/wikis/home", NULL, NULL);
 }
 
-void remmina_main_on_action_help_gplus(GtkAction *action, gpointer user_data)
+void remmina_main_on_action_help_community(GtkAction *action, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	g_app_info_launch_default_for_uri("https://plus.google.com/communities/106276095923371962010", NULL, NULL);
+	g_app_info_launch_default_for_uri("https://remmina.org/community", NULL, NULL);
 }
 
 void remmina_main_on_action_help_donations(GtkAction *action, gpointer user_data)
