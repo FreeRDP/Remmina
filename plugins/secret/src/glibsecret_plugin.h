@@ -36,7 +36,5 @@
 #define __BACKEND_LIBSECRET_H__
 
 #include <libsecret/secret.h>
-#include <glib.h>
-
 
 #endif // __BACKEND_LIBSECRET_H__

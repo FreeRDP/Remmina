@@ -37,6 +37,8 @@
 #include "glibsecret_plugin.h"
 #include <gtk/gtk.h>
 #include <glib.h>
+#include <glib/gi18n-lib.h>
+#include <glib/gstdio.h>
 #include <libsecret/secret.h>
 #include <remmina/plugin.h>
 
@@ -153,7 +155,7 @@ void remmina_plugin_glibsecret_delete_password(RemminaFile *remminafile, const g
 static RemminaSecretPlugin remmina_plugin_glibsecret =
 { REMMINA_PLUGIN_TYPE_SECRET,
   "glibsecret",
-  "GNOME libsecret",
+  N_("Secure passwords storing in the GNOME keyring"),
   NULL,
   VERSION,
   TRUE,

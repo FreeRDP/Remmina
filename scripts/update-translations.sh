@@ -5,7 +5,7 @@ REMMINATOP="$(dirname "$SCRIPTPATH")"
 
 cd "$REMMINATOP" || exit 1
 
-if ! find src plugins -name "*.c" | sed 's/^.\///' >| po/POTFILES.in ; then
+if ! find src plugins -name "*\.c" -o -name "*\.h" | sed 's/^.\///'  >| po/POTFILES.in ; then
     exit 1
 fi
 if ! find data -name "*.glade" | sed 's/^.\///' >> po/POTFILES.in ; then
