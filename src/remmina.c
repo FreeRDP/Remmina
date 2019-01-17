@@ -92,7 +92,7 @@ static GOptionEntry remmina_options[] =
 	{ "protocol",	  't', 0,		     G_OPTION_ARG_STRING,  	    NULL, N_("Use default protocol (for --new)"),			       "PROTOCOL" },
 	{ "icon",	  'i', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Start as tray icon"),					       NULL	  },
 	{ "version",	  'v', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Show the application's version"),				       NULL	  },
-	{ "full-version", 'V', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Show the application's version, including the pulgin versions"), NULL	  },
+	{ "full-version", 'V', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Show the application's version, including the plugin versions"), NULL	  },
 	{ NULL }
 };
 
