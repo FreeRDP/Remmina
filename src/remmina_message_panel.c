@@ -319,13 +319,13 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 
 		username_entry = gtk_entry_new();
 		// gtk_style_context_add_class(gtk_widget_get_style_context(username_entry), "panel_entry");
-		gtk_widget_show(username_entry);
 		gtk_widget_set_halign(GTK_WIDGET(username_entry), GTK_ALIGN_FILL);
 		gtk_widget_set_valign(GTK_WIDGET(username_entry), GTK_ALIGN_FILL);
 		gtk_widget_set_margin_top (GTK_WIDGET(username_entry), 9);
 		gtk_widget_set_margin_bottom (GTK_WIDGET(username_entry), 3);
 		gtk_widget_set_margin_start (GTK_WIDGET(username_entry), 6);
 		gtk_widget_set_margin_end (GTK_WIDGET(username_entry), 18);
+		//gtk_entry_set_activates_default (GTK_ENTRY(username_entry), TRUE);
 		gtk_grid_attach(GTK_GRID(grid), username_entry, 1, grid_row, 2, 1);
 		gtk_entry_set_max_length(GTK_ENTRY(username_entry), 100);
 
@@ -356,7 +356,7 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 	gtk_widget_set_margin_bottom (GTK_WIDGET(password_entry), 3);
 	gtk_widget_set_margin_start (GTK_WIDGET(password_entry), 6);
 	gtk_widget_set_margin_end (GTK_WIDGET(password_entry), 18);
-	gtk_widget_show(password_entry);
+	gtk_entry_set_activates_default (GTK_ENTRY(password_entry), TRUE);
 	gtk_grid_attach(GTK_GRID(grid), password_entry, 1, grid_row, 2, 1);
 	gtk_entry_set_max_length(GTK_ENTRY(password_entry), 100);
 	gtk_entry_set_visibility(GTK_ENTRY(password_entry), FALSE);
@@ -425,21 +425,14 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 	gtk_widget_set_margin_end (GTK_WIDGET(bbox), 18);
 	button_ok = gtk_button_new_with_label(_("_OK"));
 	gtk_button_set_use_underline(GTK_BUTTON(button_ok), TRUE);
-	gtk_widget_set_can_focus(GTK_WIDGET(button_ok), TRUE);
-	gtk_widget_set_can_default(GTK_WIDGET(button_ok), TRUE);
-	gtk_widget_set_receives_default(GTK_WIDGET(button_ok), TRUE);
-	//gtk_widget_show(button_ok);
+	gtk_widget_set_can_default(button_ok, TRUE);
+	gtk_widget_grab_default (button_ok);
 	gtk_container_add (GTK_CONTAINER (bbox), button_ok);
-	//gtk_grid_attach(GTK_GRID(grid), button_ok, 0, grid_row, 1, 1);
 	/* Buttons, ok and cancel */
 	button_cancel = gtk_button_new_with_label(_("_Cancel"));
 	gtk_button_set_use_underline(GTK_BUTTON(button_cancel), TRUE);
-	//gtk_widget_show(button_cancel);
 	gtk_container_add (GTK_CONTAINER (bbox), button_cancel);
 	gtk_grid_attach(GTK_GRID(grid), bbox, 0, grid_row, 3, 1);
-	/* use default widget when we press enter */
-	gtk_entry_set_activates_default(GTK_ENTRY(password_entry), TRUE);
-	gtk_entry_set_activates_default(GTK_ENTRY(domain_entry), TRUE);
 	/* Pack it into the panel */
 	gtk_box_pack_start(GTK_BOX(mp), grid, TRUE, TRUE, 4);
 
@@ -451,14 +444,12 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 	priv->response_callback = response_callback;
 	priv->response_callback_data = response_callback_data;
 
+	g_signal_connect_swapped (username_entry, "activate", (GCallback)gtk_widget_grab_focus, password_entry);
+	g_signal_connect_swapped (password_entry, "activate", (GCallback)gtk_widget_grab_focus, button_ok);
 	g_object_set_data(G_OBJECT(button_cancel), btn_response_key, (void *)GTK_RESPONSE_CANCEL);
 	g_signal_connect(G_OBJECT(button_cancel), "clicked", G_CALLBACK(remmina_message_panel_button_clicked_callback), mp);
 	g_object_set_data(G_OBJECT(button_ok), btn_response_key, (void *)GTK_RESPONSE_OK);
 	g_signal_connect(G_OBJECT(button_ok), "clicked", G_CALLBACK(remmina_message_panel_button_clicked_callback), mp);
-	/* This at the moment does not work as we pass en empty password or domain field */
-	//g_signal_connect(G_OBJECT(GTK_ENTRY(password_entry)), "activate", G_CALLBACK(remmina_message_panel_button_clicked_callback), mp);
-	//g_signal_connect(G_OBJECT(GTK_ENTRY(domain_entry)), "activate", G_CALLBACK(remmina_message_panel_button_clicked_callback), mp);
-
 }
 
 void remmina_message_panel_setup_auth_x509(RemminaMessagePanel *mp, RemminaMessagePanelCallback response_callback, gpointer response_callback_data)
@@ -602,6 +593,8 @@ void remmina_message_panel_setup_auth_x509(RemminaMessagePanel *mp, RemminaMessa
 	gtk_widget_set_margin_start (GTK_WIDGET(bbox), 18);
 	gtk_widget_set_margin_end (GTK_WIDGET(bbox), 18);
 	button_ok = gtk_button_new_with_label(_("_OK"));
+	gtk_widget_set_can_default (button_ok, TRUE);
+	gtk_widget_grab_default (button_ok);
 	gtk_button_set_use_underline(GTK_BUTTON(button_ok), TRUE);
 	//gtk_widget_show(button_ok);
 	gtk_container_add (GTK_CONTAINER (bbox), button_ok);
