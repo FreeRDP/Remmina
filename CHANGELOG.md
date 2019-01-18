@@ -2,7 +2,7 @@
 
 Current Remmina changelog, see CHANGELOG.archive.md for old releases.
 
-## [v1.3.0](https://gitlab.com/Remmina/Remmina/tags/v1.3.0) (Unreleased)
+## [v1.3.0](https://gitlab.com/Remmina/Remmina/tags/v1.3.0) (2019-01-18)
 
 ### Most notable
 
