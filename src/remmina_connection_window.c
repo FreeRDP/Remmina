@@ -2737,7 +2737,6 @@ static gint remmina_connection_object_append_page(RemminaConnectionObject* cnnob
 	gtk_box_pack_start(GTK_BOX(cnnobj->page), cnnobj->scrolled_container, TRUE, TRUE, 0);
 	i = gtk_notebook_append_page(notebook, cnnobj->page, tab);
 
-
 	gtk_notebook_set_tab_reorderable(notebook, cnnobj->page, TRUE);
 	gtk_notebook_set_tab_detachable(notebook, cnnobj->page, TRUE);
 	/* This trick prevents the tab label from being focused */
@@ -2780,6 +2779,10 @@ static void remmina_connection_window_initialize_notebook(GtkNotebook* to, GtkNo
 			tab = remmina_connection_object_create_tab(cnnobj);
 
 			remmina_connection_object_append_page(cnnobj, to, tab, view_mode);
+			/* Set the current page to the 1st tab page, otherwise the notebook
+			 * will stay on page -1 for a short time and g_object_get_data(currenntab, "cnnobj") will fail
+			 * together with DECLARE_CNNOBJ (issue #1809)*/
+			gtk_notebook_set_current_page(to, 0);
 			gtk_container_add(GTK_CONTAINER(cnnobj->scrolled_container), cnnobj->viewport);
 		}
 	}else {
@@ -3788,7 +3791,6 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 		gtk_window_present(GTK_WINDOW(cnnwin));
 		gtk_notebook_set_current_page(GTK_NOTEBOOK(cnnwin->priv->notebook), i);
 	}
-
 
 	// Do not call remmina_protocol_widget_update_alignment(cnnobj); here or cnnobj->proto will not fill its parent size
 	// and remmina_protocol_widget_update_remote_resolution() cannot autodetect available space
