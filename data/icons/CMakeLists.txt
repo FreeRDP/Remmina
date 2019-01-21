@@ -36,7 +36,6 @@ set(APPICONSCALE_ACTIONS_DIR "${REMMINA_DATADIR}/icons/hicolor/scalable/actions"
 set(APPICONSCALE_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/scalable/emblems")
 
 set(APPICONSCALE_ACTIONS_DATA
-    scalable/actions/edit-delete.svg
     scalable/actions/view-list.svg
     scalable/actions/remmina-camera-photo-symbolic.svg
     scalable/actions/remmina-connect-symbolic.svg
