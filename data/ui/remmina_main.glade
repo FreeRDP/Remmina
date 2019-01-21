@@ -87,7 +87,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         <property name="label" translatable="yes">_Edit</property>
         <property name="short_label" translatable="yes">_Edit</property>
         <property name="tooltip" translatable="yes">Edit the selected remote desktop file</property>
-        <property name="icon_name">document-properties</property>
         <signal name="activate" handler="remmina_main_on_action_connection_edit" swapped="no"/>
       </object>
       <accelerator key="e" modifiers="GDK_CONTROL_MASK"/>
@@ -97,7 +96,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         <property name="label" translatable="yes">Copy</property>
         <property name="short_label" translatable="yes">Copy</property>
         <property name="tooltip" translatable="yes">Create a copy of the selected remote desktop file</property>
-        <property name="icon_name">edit-copy</property>
         <signal name="activate" handler="remmina_main_on_action_connection_copy" swapped="no"/>
       </object>
       <accelerator key="c" modifiers="GDK_CONTROL_MASK"/>
@@ -107,7 +105,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         <property name="label" translatable="yes">_Delete</property>
         <property name="short_label" translatable="yes">_Delete</property>
         <property name="tooltip" translatable="yes">Delete the selected remote desktop file</property>
-        <property name="icon_name">edit-delete</property>
         <signal name="activate" handler="remmina_main_on_action_connection_delete" swapped="no"/>
       </object>
       <accelerator key="d" modifiers="GDK_CONTROL_MASK"/>
@@ -153,7 +150,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     <child>
       <object class="GtkAction" id="action_help_community">
         <property name="label" translatable="yes">Remmina Community</property>
-        <property name="short_label" translatable="yes"></property>
         <signal name="activate" handler="remmina_main_on_action_help_community" swapped="no"/>
       </object>
     </child>
