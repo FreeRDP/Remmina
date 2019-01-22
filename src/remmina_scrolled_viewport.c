@@ -106,16 +106,16 @@ static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 #endif
 	gdk_device_get_position(pointer, &screen, &x, &y);
 
-	w = gdk_window_get_width(gsvwin) + 2;   // Add 2px of black scroll border
-	h = gdk_window_get_height(gsvwin) + 2;  // Add 2px of black scroll border
+	w = gdk_window_get_width(gsvwin) + SCROLL_BORDER_SIZE;   // Add 2px of black scroll border
+	h = gdk_window_get_height(gsvwin) + SCROLL_BORDER_SIZE;  // Add 2px of black scroll border
 
 	gdk_window_get_root_origin(gsvwin, &rootx, &rooty );
 
 	x -= rootx;
 	y -= rooty;
 
-	mx = (x == 0 ? -1 : (x >= w - 1 ? 1 : 0));
-	my = (y == 0 ? -1 : (y >= h - 1 ? 1 : 0));
+	mx = (x <= 0 ? -1 : (x >= w - 1 ? 1 : 0));
+	my = (y <= 0 ? -1 : (y >= h - 1 ? 1 : 0));
 	if (mx != 0) {
 		gint step = MAX(10, MIN(remmina_pref.auto_scroll_step, w / 5));
 		adj = gtk_scrollable_get_hadjustment(GTK_SCROLLABLE(child));

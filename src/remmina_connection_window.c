@@ -259,7 +259,9 @@ static void remmina_connection_window_class_init(RemminaConnectionWindowClass* k
 		"#remmina-scrolled-container {\n"
 		"}\n"
 		"#remmina-scrolled-container.undershoot {\n"
-		"  background: none\n"
+		"  background: none;\n"
+		"}\n"
+		"#remmina-tab-page {\n"
 		"}\n"
 		"#ftbbox-upper {\n"
 		"  background-color: white;\n"
@@ -326,6 +328,8 @@ static void remmina_connection_window_class_init(RemminaConnectionWindowClass* k
 		"}\n"
 		"#remmina-scrolled-container.undershoot {\n"
 		"  background: none\n"
+		"}\n"
+		"#remmina-tab-page {\n"
 		"}\n"
 		"#ftbbox-upper {\n"
 		"  border-style: none solid solid solid;\n"
@@ -920,7 +924,7 @@ static void remmina_connection_holder_check_resize(RemminaConnectionHolder* cnnh
 		break;
 
 	case VIEWPORT_FULLSCREEN_MODE:
-		bordersz = scroll_required ? 1 : 0;
+		bordersz = scroll_required ? SCROLL_BORDER_SIZE : 0;
 		gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), screen_width, screen_height);
 		if (REMMINA_IS_SCROLLED_VIEWPORT(cnnobj->scrolled_container)) {
 			/* Put a border around Notebook content (RemminaScrolledViewpord), so we can

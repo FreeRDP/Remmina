@@ -69,6 +69,8 @@ G_GNUC_CONST;
 GtkWidget* remmina_scrolled_viewport_new(void);
 void remmina_scrolled_viewport_remove_motion(RemminaScrolledViewport *gsv);
 
+#define SCROLL_BORDER_SIZE 1
+
 G_END_DECLS
 
 
