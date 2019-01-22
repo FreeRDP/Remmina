@@ -2448,7 +2448,6 @@ static void remmina_connection_holder_create_floating_toolbar(RemminaConnectionH
 	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
 	gtk_widget_show(vbox);
 
-
 	gtk_container_add(GTK_CONTAINER(ftb_widget), vbox);
 
 	tb = remmina_connection_holder_create_toolbar(cnnhld, mode);
@@ -2491,8 +2490,7 @@ static void remmina_connection_holder_create_floating_toolbar(RemminaConnectionH
 	}
 
 	priv->floating_toolbar_widget = ftb_widget;
-	if (cnnobj->connected)
-		gtk_widget_show(ftb_widget);
+	gtk_widget_show(ftb_widget);
 
 }
 
