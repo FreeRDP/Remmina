@@ -2727,7 +2727,7 @@ static gint remmina_connection_object_append_page(RemminaConnectionObject* cnnob
 
 	cnnobj->page = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
 	g_object_set_data(G_OBJECT(cnnobj->page), "cnnobj", cnnobj);
-	gtk_widget_set_name(cnnobj->page, "remmina-scrolled-container");
+	gtk_widget_set_name(cnnobj->page, "remmina-tab-page");
 
 	remmina_connection_object_create_scrolled_container(cnnobj, view_mode);
 	gtk_box_pack_start(GTK_BOX(cnnobj->page), cnnobj->scrolled_container, TRUE, TRUE, 0);
@@ -2750,6 +2750,8 @@ static void remmina_connection_window_initialize_notebook(GtkNotebook* to, GtkNo
 	gint i, n, c;
 	GtkWidget* tab;
 	GtkWidget* widget;
+	GtkWidget* frompage;
+	GList *lst, *l;
 	RemminaConnectionObject* tc;
 
 	if (cnnobj) {
@@ -2787,11 +2789,22 @@ static void remmina_connection_window_initialize_notebook(GtkNotebook* to, GtkNo
 			c = gtk_notebook_get_current_page(from);
 			n = gtk_notebook_get_n_pages(from);
 			for (i = 0; i < n; i++) {
-				widget = gtk_notebook_get_nth_page(from, i);
-				tc = (RemminaConnectionObject*)g_object_get_data(G_OBJECT(widget), "cnnobj");
+				frompage = gtk_notebook_get_nth_page(from, i);
+				tc = (RemminaConnectionObject*)g_object_get_data(G_OBJECT(frompage), "cnnobj");
 
 				tab = remmina_connection_object_create_tab(tc);
 				remmina_connection_object_append_page(tc, to, tab, view_mode);
+				/* Reparent message panels */
+				lst = gtk_container_get_children(GTK_CONTAINER(frompage));
+				for (l = lst; l != NULL; l = l->next) {
+					if (REMMINA_IS_MESSAGE_PANEL(l->data)) {
+						G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+						gtk_widget_reparent(l->data, tc->page);
+						G_GNUC_END_IGNORE_DEPRECATIONS
+						gtk_box_reorder_child(GTK_BOX(tc->page), GTK_WIDGET(l->data), 0);
+					}
+				}
+				g_list_free(lst);
 
 				/* Reparent cnnobj->viewport */
 				G_GNUC_BEGIN_IGNORE_DEPRECATIONS
