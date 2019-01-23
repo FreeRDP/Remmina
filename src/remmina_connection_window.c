@@ -807,6 +807,12 @@ static void remmina_connection_holder_get_desktop_size(RemminaConnectionHolder* 
 
 	*width = remmina_protocol_widget_get_width(gp);
 	*height = remmina_protocol_widget_get_height(gp);
+	if (*width == 0) {
+		/* Before connecting we do not have real remote width/height,
+		 * so we ask profile values */
+		*width = remmina_protocol_widget_get_profile_remote_width(gp);
+		*height = remmina_protocol_widget_get_profile_remote_height(gp);
+	}
 }
 
 static void remmina_connection_object_set_scrolled_policy(RemminaConnectionObject* cnnobj, GtkScrolledWindow* scrolled_window)
@@ -3695,6 +3701,7 @@ static gboolean open_connection_last_stage(gpointer user_data)
 	/* Now we have an allocated size for our RemminaProtocolWidget. We can proceed with the connection */
 	remmina_protocol_widget_update_remote_resolution(gp);
 	remmina_protocol_widget_open_connection(gp);
+	remmina_connection_holder_check_resize(gp->cnnobj->cnnhld);
 
 	return FALSE;
 }
