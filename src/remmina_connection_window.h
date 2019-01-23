@@ -83,6 +83,7 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 
 void remmina_connection_object_destroy_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePanel *mp);
 void remmina_connection_object_show_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePanel *mp);
+void remmina_connection_object_get_monitor_geometry(RemminaConnectionObject* cnnobj, GdkRectangle *sz);
 
 #define MESSAGE_PANEL_SPINNER 0x00000001
 #define MESSAGE_PANEL_OKBUTTON 0x00000002
