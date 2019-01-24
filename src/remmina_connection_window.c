@@ -289,7 +289,6 @@ static void remmina_connection_window_class_init(RemminaConnectionWindowClass* k
 		".message_panel {\n"
 		"  border: 0px solid;\n"
 		"  padding: 20px 20px 20px 20px;\n"
-		"  background-color: @bg_color;\n"
 		"}\n"
 		".message_panel entry {\n"
 		"  background-image: none;\n"

@@ -85,6 +85,7 @@ RemminaMessagePanel *remmina_message_panel_new()
 	/* Set widget class, for CSS styling */
 	// gtk_widget_set_name(GTK_WIDGET(mp), "remmina-cw-message-panel");
 	gtk_style_context_add_class(gtk_widget_get_style_context(GTK_WIDGET(mp)), "message_panel");
+	gtk_style_context_add_class(gtk_widget_get_style_context(GTK_WIDGET(mp)), "background");
 
 	return mp;
 }
