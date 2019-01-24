@@ -59,6 +59,11 @@
 #include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
 
+#ifdef GDK_WINDOWING_WAYLAND
+	#include <gdk/gdkwayland.h>
+#endif
+
+
 #define DEBUG_KB_GRABBING 0
 #include "remmina_exec.h"
 
@@ -878,6 +883,59 @@ static void remmina_connection_holder_toolbar_autofit(GtkWidget* widget, Remmina
 
 }
 
+void remmina_connection_object_get_monitor_geometry(RemminaConnectionObject* cnnobj, GdkRectangle *sz)
+{
+	TRACE_CALL(__func__);
+
+	/* Fill sz with the monitor (or workarea) size and position
+	 * of the monitor (or workarea) where cnnhld->cnnwin is located */
+
+	GdkRectangle monitor_geometry;
+
+	sz->x = sz->y = sz->width = sz->height = 0;
+
+	if (!cnnobj->cnnhld)
+		return;
+	if (!cnnobj->cnnhld->cnnwin)
+		return;
+	if (!gtk_widget_is_visible(GTK_WIDGET(cnnobj->cnnhld->cnnwin)))
+		return;
+
+#if GTK_CHECK_VERSION(3, 22, 0)
+	GdkDisplay* display;
+	GdkMonitor* monitor;
+	display = gtk_widget_get_display(GTK_WIDGET(cnnobj->cnnhld->cnnwin));
+	monitor = gdk_display_get_monitor_at_window(display, gtk_widget_get_window(GTK_WIDGET(cnnobj->cnnhld->cnnwin)));
+#else
+	GdkScreen* screen;
+	gint monitor;
+	screen = gtk_window_get_screen(GTK_WINDOW(cnnobj->cnnhld->cnnwin));
+	monitor = gdk_screen_get_monitor_at_window(screen, gtk_widget_get_window(GTK_WIDGET(cnnobj->cnnhld->cnnwin)));
+#endif
+
+#if GTK_CHECK_VERSION(3, 22, 0)
+	gdk_monitor_get_workarea(monitor, &monitor_geometry);
+	/* Under Wayland, GTK 3.22, all values returned by gdk_monitor_get_geometry()
+	 * and gdk_monitor_get_workarea() seem to have been divided by the
+	 * gdk scale factor, so we need to adjust the returned rect
+	 * undoing the division */
+	#ifdef GDK_WINDOWING_WAYLAND
+		if (GDK_IS_WAYLAND_DISPLAY(display)) {
+			int monitor_scale_factor = gdk_monitor_get_scale_factor(monitor);
+			monitor_geometry.width *= monitor_scale_factor;
+			monitor_geometry.height *= monitor_scale_factor;
+		}
+	#endif
+#elif gdk_screen_get_monitor_workarea
+	gdk_screen_get_monitor_workarea(screen, monitor, &monitor_geometry);
+#else
+	gdk_screen_get_monitor_geometry(screen, monitor, &monitor_geometry);
+#endif
+	*sz = monitor_geometry;
+}
+
+
+
 
 static void remmina_connection_holder_check_resize(RemminaConnectionHolder* cnnhld)
 {
@@ -885,45 +943,28 @@ static void remmina_connection_holder_check_resize(RemminaConnectionHolder* cnnh
 	DECLARE_CNNOBJ
 	gboolean scroll_required = FALSE;
 
-#if GTK_CHECK_VERSION(3, 22, 0)
-	GdkDisplay* display;
-	GdkMonitor* monitor;
-#else
-	GdkScreen* screen;
-	gint monitor;
-#endif
-	GdkRectangle screen_size;
-	gint screen_width, screen_height;
-	gint server_width, server_height;
+	GdkRectangle monitor_geometry;
+	gint rd_width, rd_height;
 	gint bordersz;
+	gint scalemode;
 
-	remmina_connection_holder_get_desktop_size(cnnhld, &server_width, &server_height);
-#if GTK_CHECK_VERSION(3, 22, 0)
-	display = gtk_widget_get_display(GTK_WIDGET(cnnhld->cnnwin));
-	monitor = gdk_display_get_monitor_at_window(display, gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
-#else
-	screen = gtk_window_get_screen(GTK_WINDOW(cnnhld->cnnwin));
-	monitor = gdk_screen_get_monitor_at_window(screen, gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
-#endif
-#if GTK_CHECK_VERSION(3, 22, 0)
-	gdk_monitor_get_workarea(monitor, &screen_size);
-#elif gdk_screen_get_monitor_workarea
-	gdk_screen_get_monitor_workarea(screen, monitor, &screen_size);
-#else
-	gdk_screen_get_monitor_geometry(screen, monitor, &screen_size);
-#endif
-	screen_width = screen_size.width;
-	screen_height = screen_size.height;
+	scalemode = remmina_protocol_widget_get_current_scale_mode(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
 
-	if (!remmina_protocol_widget_get_expand(REMMINA_PROTOCOL_WIDGET(cnnobj->proto))
-	    && (server_width <= 0 || server_height <= 0 || screen_width < server_width
-		|| screen_height < server_height)) {
+	/* Get remote destkop size */
+	remmina_connection_holder_get_desktop_size(cnnhld, &rd_width, &rd_height);
+
+	/* Get our monitor size */
+	remmina_connection_object_get_monitor_geometry(cnnobj, &monitor_geometry);
+
+	if (!remmina_protocol_widget_get_expand(REMMINA_PROTOCOL_WIDGET(cnnobj->proto)) &&
+	    (monitor_geometry.width < rd_width || monitor_geometry.height < rd_height) &&
+	    scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE) {
 		scroll_required = TRUE;
 	}
 
 	switch (cnnhld->cnnwin->priv->view_mode) {
 	case SCROLLED_FULLSCREEN_MODE:
-		gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), screen_width, screen_height);
+		gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), monitor_geometry.width, monitor_geometry.height);
 		gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(cnnobj->scrolled_container),
 			(scroll_required ? GTK_POLICY_AUTOMATIC : GTK_POLICY_NEVER),
 			(scroll_required ? GTK_POLICY_AUTOMATIC : GTK_POLICY_NEVER));
@@ -931,7 +972,7 @@ static void remmina_connection_holder_check_resize(RemminaConnectionHolder* cnnh
 
 	case VIEWPORT_FULLSCREEN_MODE:
 		bordersz = scroll_required ? SCROLL_BORDER_SIZE : 0;
-		gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), screen_width, screen_height);
+		gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), monitor_geometry.width, monitor_geometry.height);
 		if (REMMINA_IS_SCROLLED_VIEWPORT(cnnobj->scrolled_container)) {
 			/* Put a border around Notebook content (RemminaScrolledViewpord), so we can
 			 * move the mouse over the border to scroll */
@@ -943,8 +984,8 @@ static void remmina_connection_holder_check_resize(RemminaConnectionHolder* cnnh
 	case SCROLLED_WINDOW_MODE:
 		if (remmina_file_get_int(cnnobj->remmina_file, "viewmode", AUTO_MODE) == AUTO_MODE) {
 			gtk_window_set_default_size(GTK_WINDOW(cnnhld->cnnwin),
-				MIN(server_width, screen_width), MIN(server_height, screen_height));
-			if (server_width >= screen_width || server_height >= screen_height) {
+				MIN(rd_width, monitor_geometry.width), MIN(rd_height, monitor_geometry.height));
+			if (rd_width >= monitor_geometry.width || rd_height >= monitor_geometry.height) {
 				gtk_window_maximize(GTK_WINDOW(cnnhld->cnnwin));
 				remmina_file_set_int(cnnobj->remmina_file, "window_maximize", TRUE);
 			}else {

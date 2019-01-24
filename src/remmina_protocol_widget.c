@@ -52,6 +52,11 @@
 #include "remmina_log.h"
 #include "remmina/remmina_trace_calls.h"
 
+#ifdef GDK_WINDOWING_WAYLAND
+	#include <gdk/gdkwayland.h>
+#endif
+
+
 struct _RemminaProtocolWidgetPriv {
 
 	RemminaFile* remmina_file;
@@ -1600,6 +1605,10 @@ void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp)
 	RemminaProtocolWidgetResolutionMode res_mode;
 	RemminaScaleMode scalemode;
 
+	remmina_connection_object_get_monitor_geometry(gp->cnnobj, &rect);
+
+	/* Integrity check: check that we have a cnnwin visible and get t  */
+
 	res_mode = remmina_file_get_int(gp->priv->remmina_file, "resolution_mode", RES_INVALID);
 	scalemode = remmina_file_get_int(gp->priv->remmina_file, "scale", REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE);
 	wfile = remmina_file_get_int(gp->priv->remmina_file, "resolution_width", -1);
@@ -1630,24 +1639,14 @@ void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp)
 		 * right of the desktop */
 		if ( (w & 1) != 0)
 			w -= 1;
+		/* Due to approximations while GTK calculates scaling, (w x h) may exceed our monitor geometry
+		 * Adjust to fit. */
+		if (w > rect.width)
+			w = rect.width;
+		if (h > rect.height)
+			h = rect.height;
+
 	} else if (res_mode == RES_USE_CLIENT) {
-		display = gdk_display_get_default();
-		/* gdk_display_get_device_manager deprecated since 3.20, Use gdk_display_get_default_seat */
-#if GTK_CHECK_VERSION(3, 20, 0)
-		seat = gdk_display_get_default_seat(display);
-		device = gdk_seat_get_pointer(seat);
-#else
-		device_manager = gdk_display_get_device_manager(display);
-		device = gdk_device_manager_get_client_pointer(device_manager);
-#endif
-		gdk_device_get_position(device, &screen, &x, &y);
-#if GTK_CHECK_VERSION(3, 22, 0)
-		monitor = gdk_display_get_monitor_at_point(display, x, y);
-		gdk_monitor_get_geometry(monitor, &rect);
-#else
-		monitor = gdk_screen_get_monitor_at_point(screen, x, y);
-		gdk_screen_get_monitor_geometry(screen, monitor, &rect);
-#endif
 		w = rect.width;
 		h = rect.height;
 	} else {
