@@ -629,6 +629,7 @@ void remmina_message_panel_focus_auth_entry(RemminaMessagePanel *mp)
 
 	RemminaMessagePanelPrivate *priv;
 	GtkWidget *w;
+	const gchar *username;
 
 	if (mp == NULL)
 		return;
@@ -636,9 +637,16 @@ void remmina_message_panel_focus_auth_entry(RemminaMessagePanel *mp)
 
 	w = priv->w[REMMINA_MESSAGE_PANEL_USERNAME];
 	if (w == NULL)
+	{
 		w = priv->w[REMMINA_MESSAGE_PANEL_PASSWORD];
+	}else {
+		username = gtk_entry_get_text(GTK_ENTRY(w));
+		if (username[0] != 0)
+			w = priv->w[REMMINA_MESSAGE_PANEL_PASSWORD];
+	}
 	if (w == NULL)
 		return;
+
 	if (!G_TYPE_CHECK_INSTANCE_TYPE(w, gtk_entry_get_type()))
 		return;
 
