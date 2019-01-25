@@ -2,8 +2,8 @@
 image: ubuntu:18.04
 
 stages:
-  - cross_environment
-  - flatpak_build
+  - build
+# - flatpak_build
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
@@ -23,7 +23,8 @@ before_script:
 # This is an example for Ubuntu
 ubuntu:devel:
   # image: ubuntu:devel
-  stage: cross_environment
+  # stage: cross_environment
+  stage: build
   before_script:
     - apt-get update -qq
     - apt-get install -y -qq software-properties-common
@@ -54,7 +55,8 @@ ubuntu:devel:
 
 flatpak:test:
   # image: fedora:latest
-  stage: flatpak_build
+  # stage: flatpak_build
+  stage: build
   variables:
     BUNDLE: "remmina-dev.flatpak"
     FLATPAK_PPA: "ppa:alexlarsson/flatpak"
@@ -72,7 +74,7 @@ flatpak:test:
   artifacts:
     paths:
       - flatpak/${BUNDLE}
-    expire_in: 30 days
+    expire_in: 10 days
   cache:
     paths:
       - flatpak/.flatpak-builder/cache
