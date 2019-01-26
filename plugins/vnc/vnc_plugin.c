@@ -1104,6 +1104,16 @@ static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 
 	cl = (rfbClient*)gpdata->client;
 
+	/*
+	 * Do not explicitly wait while data is on the buffer, see:
+	 * - https://jira.glyptodon.com/browse/GUAC-1056
+	 * - https://jira.glyptodon.com/browse/GUAC-1056?focusedCommentId=14348&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-14348
+	 * - https://github.com/apache/guacamole-server/blob/67680bd2d51e7949453f0f7ffc7f4234a1136715/src/protocols/vnc/vnc.c#L155
+	 */
+	if (cl->buffered) {
+		goto handle_buffered;
+        }
+
 	timeout.tv_sec = 10;
 	timeout.tv_usec = 0;
 	FD_ZERO(&fds);
@@ -1123,6 +1133,7 @@ static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 		i = WaitForMessage(cl, 500);
 		if (i < 0)
 			return TRUE;
+	handle_buffered:
 		if (!HandleRFBServerMessage(cl)) {
 			gpdata->running = FALSE;
 			if (gpdata->connected && !remmina_plugin_service->protocol_plugin_is_closed(gp)) {
