@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
 "POT-Creation-Date: 2019-01-17 22:30+0100\n"
-"PO-Revision-Date: 2019-01-12 13:23+0200\n"
+"PO-Revision-Date: 2019-01-26 16:03+0200\n"
 "Last-Translator: Soltys Sergey <treefeed@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Flags-xgettext: --add-comments\n"
 
 #. Show in the status bar the total number of connections found
@@ -68,17 +68,17 @@ msgstr "Remmina Киоск"
 #: src/remmina_exec.c:244
 #, c-format
 msgid "Plugin %s is not registered."
-msgstr "Надстройка %s не зарегестрирована."
+msgstr "Модуль %s не зарегистрирован."
 
 #: src/remmina_ssh.c:205
 #, c-format
 msgid "SSH password authentication failed: %s"
-msgstr "Аутентификация по паролю SSH не удалась: %s"
+msgstr "Аутентификация SSH по паролю не удалась: %s"
 
 #: src/remmina_ssh.c:223 src/remmina_ssh.c:232 src/remmina_ssh.c:240
 #, c-format
 msgid "SSH public key authentication failed: %s"
-msgstr "Аутентификация по публичному ключу SSH не удалась: %s"
+msgstr "Аутентификация SSH по публичному ключу не удалась: %s"
 
 #: src/remmina_ssh.c:224
 msgid "SSH Key file not yet set."
@@ -87,17 +87,17 @@ msgstr "Ключевой файл SSH ещё не установлен."
 #: src/remmina_ssh.c:255
 #, c-format
 msgid "SSH automatic public key authentication failed: %s"
-msgstr "Автоматическая аутентификация по публичному ключу SSH не удалась: %s"
+msgstr "Автоматическая аутентификация SSH по публичному ключу не удалась: %s"
 
 #: src/remmina_ssh.c:271
 #, c-format
 msgid "SSH public key authentication with ssh agent failed: %s"
-msgstr "Аутентификация по публичному ключу SSH с ssh агентом не удалась: %s"
+msgstr "Аутентификация SSH по публичному ключу с ssh агентом не удалась: %s"
 
 #: src/remmina_ssh.c:290
 #, c-format
 msgid "SSH Kerberos/GSSAPI authentication failed: %s"
-msgstr "Аутентификация по SSH Kerberos/GSSAPI не удалась: %s"
+msgstr "Аутентификация SSH через Kerberos/GSSAPI не удалась: %s"
 
 #: src/remmina_ssh.c:404
 msgid "The server is unknown. The public key fingerprint is:"
@@ -113,8 +113,8 @@ msgid ""
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
-"ВНИМАНИЕ: Сервер произвёл изменения своего публичного ключа. Это означает, "
-"что вы либо подверглись атаке\n"
+"ВНИМАНИЕ: Сервер сменил свой публичный ключ. Это означает, что вы либо "
+"подверглись атаке\n"
 "или ключ был изменён администратором. Новый отпечаток публичного ключа:"
 
 #: src/remmina_ssh.c:431
@@ -162,7 +162,7 @@ msgstr "Не удалось выполнить %s на SSH сервере: %%s"
 #: src/remmina_ssh.c:1059 src/remmina_ssh.c:1081 src/remmina_ssh.c:1090
 #, c-format
 msgid "Failed to request port forwarding : %s"
-msgstr "Не удалость запросить переадресацию порта: %s"
+msgstr "Не удалось запросить переадресацию порта: %s"
 
 #: src/remmina_ssh.c:1128
 msgid "No response from the server."
@@ -239,7 +239,7 @@ msgid ""
 "Are you sure to cancel it?"
 msgstr ""
 "Осуществляется передача файла.\n"
-"Вы действительно хотите отменить её?"
+"Вы действительно хотите её отменить?"
 
 #: src/remmina_sftp_client.c:831
 #, c-format
@@ -256,7 +256,7 @@ msgstr "Возобновить"
 
 #: src/remmina_sftp_client.c:916
 msgid "Overwrite"
-msgstr "Заменить"
+msgstr "Перезаписать"
 
 #. Buttons, ok and cancel
 #. gtk_grid_attach(GTK_GRID(grid), button_ok, 0, grid_row, 1, 1);
@@ -273,7 +273,7 @@ msgstr "_Отменить"
 
 #: src/remmina_sftp_client.c:926
 msgid "Question"
-msgstr "Вопрос"
+msgstr "Опросить"
 
 #: src/remmina_sftp_client.c:934
 msgid "The following file already exists in the target folder:"
@@ -293,7 +293,7 @@ msgstr "Выберите файл для выгрузки"
 
 #: src/remmina_ftp_client.c:592
 msgid "Upload folder"
-msgstr "Выгрузить папку"
+msgstr "Выгрузить в папку"
 
 #: src/remmina_ftp_client.c:648 src/remmina_ftp_client.c:770
 msgid "Download"
@@ -370,7 +370,7 @@ msgstr "Группа"
 
 #: src/remmina_ftp_client.c:936
 msgid "Permission"
-msgstr "Разрешение"
+msgstr "Уровень допуска"
 
 #: src/remmina_ftp_client.c:988 plugins/rdp/rdp_plugin.c:1506
 msgid "Remote"
@@ -436,7 +436,7 @@ msgstr "Новое подключение"
 #: src/remmina_pref_dialog.c:82 src/remmina_file_editor.c:486
 #: data/ui/remmina_preferences.glade:240
 msgid "Resolutions"
-msgstr "Разрешение"
+msgstr "Разрешения"
 
 #: src/remmina_pref_dialog.c:82 src/remmina_file_editor.c:486
 msgid "Configure the available resolutions"
@@ -485,7 +485,7 @@ msgstr "Мини-программа Remmina"
 
 #: src/remmina_icon.c:359 src/remmina_icon.c:541
 msgid "Connect to remote desktops through the applet menu"
-msgstr "Подключение к удалённым рабочим столам через меню апплета"
+msgstr "Подключение к удалённым рабочим столам через меню мини-программы"
 
 #: src/remmina_protocol_widget.c:263
 msgid "Open Secure Shell in New Terminal..."
@@ -517,7 +517,7 @@ msgstr "Подключение к %s через SSH туннель..."
 #: src/remmina_protocol_widget.c:788
 #, c-format
 msgid "Waiting for an incoming SSH tunnel at port %i..."
-msgstr "Ожидание входящего SSH тунеля на порту %i..."
+msgstr "Ожидание входящего SSH туннеля на порту %i..."
 
 #: src/remmina_protocol_widget.c:834
 #, c-format
@@ -592,7 +592,7 @@ msgstr "Прослушивание порта %i на входящее %s под
 
 #: src/remmina_protocol_widget.c:1437
 msgid "Authentication failed. Trying to reconnect..."
-msgstr "Аутентификация завершилась ошибкой. Пытаюсь подключиться снова..."
+msgstr "Аутентификация не удалась. Пытаюсь подключиться снова..."
 
 #: src/remmina_protocol_widget.c:1501 src/remmina_file_editor.c:396
 #: src/remmina_file_editor.c:876 data/ui/remmina_main.glade:620
@@ -602,14 +602,15 @@ msgstr "Сервер"
 #: src/remmina_protocol_widget.c:1518
 #, c-format
 msgid "Protocol plugin %s is not installed."
-msgstr "Надстройка протокола %s не установлена."
+msgstr "Протокол модуля %s не установлен."
 
+# You need set up plural forms for 1, 2 and 5 here.
 #: src/remmina_connection_window.c:581
 #, c-format
 msgid ""
 "There are %i active connections in the current window. Are you sure to close?"
 msgstr ""
-"Найдено %i активные подключения в этом окне. Вы действительно хотите выйти?"
+"Найдено %i активных подключений в этом окне. Вы действительно хотите выйти?"
 
 #: src/remmina_connection_window.c:1120
 msgid "Viewport fullscreen mode"
@@ -625,14 +626,14 @@ msgstr "Сохранять пропорции при масштабирован�
 
 #: src/remmina_connection_window.c:1209
 msgid "Fill client window when scaled"
-msgstr "Заполните окно клиента при масштабировании"
+msgstr "Заполнять окно клиента при масштабировании"
 
 #: src/remmina_connection_window.c:1746
 msgid ""
 "Warning: screenshot is scaled or distorted. Disable scaling to have better "
 "screenshot."
 msgstr ""
-"Предупреждение: снимок масштабирован или искажён. Отключить масштабирование "
+"Предупреждение: снимок масштабирован или искажён. Отключите масштабирование "
 "для получения лучшего снимка."
 
 #. send a desktop notification
@@ -642,7 +643,7 @@ msgstr "Снимок сделан"
 
 #: src/remmina_connection_window.c:1874
 msgid "Resize the window to fit in remote resolution"
-msgstr "Растянуть окно в размер удалённого разрешения"
+msgstr "Растянуть окно под размер удалённого разрешения"
 
 #: src/remmina_connection_window.c:1885 data/ui/remmina_preferences.glade:740
 msgid "Toggle fullscreen mode"
@@ -650,11 +651,11 @@ msgstr "Переключить на полный экран"
 
 #: src/remmina_connection_window.c:1931 data/ui/remmina_preferences.glade:796
 msgid "Switch tab pages"
-msgstr "Переключить вкладку"
+msgstr "Перейти на вкладку"
 
 #: src/remmina_connection_window.c:1945
 msgid "Toggle dynamic resolution update"
-msgstr "Включить обновление динамического разрешения"
+msgstr "Переключить на динамическое обновление разрешения"
 
 #: src/remmina_connection_window.c:1955 data/ui/remmina_preferences.glade:837
 msgid "Toggle scaled mode"
@@ -675,7 +676,7 @@ msgstr "Инструменты"
 
 #: src/remmina_connection_window.c:2021 data/ui/remmina_preferences.glade:978
 msgid "Screenshot"
-msgstr "Скриншот"
+msgstr "Снимок экрана"
 
 #: src/remmina_connection_window.c:2029 data/ui/remmina_preferences.glade:893
 msgid "Minimize window"
@@ -692,7 +693,7 @@ msgstr "Файл %s поврежден, не читается или не най
 
 #: src/remmina_connection_window.c:3821
 msgid "Warning: This plugin require GtkSocket, but it's not available."
-msgstr "Внимание: Этот плагин требует GtkSocket, но он недоступен."
+msgstr "Внимание: Этот модуль требует GtkSocket, но он недоступен."
 
 #: src/remmina_message_panel.c:144 data/ui/remmina_mpc.glade:35
 msgid "Cancel"
@@ -814,7 +815,7 @@ msgid ""
 "Connect to desktop described by file (.remmina or type supported by plugin)"
 msgstr ""
 "Подключиться к терминалу, описанному файлом (.remmina или расширением, "
-"поддерживаемым плагином)"
+"поддерживаемым модулем)"
 
 #: src/remmina.c:84
 msgid ""
@@ -822,7 +823,7 @@ msgid ""
 "plugin)"
 msgstr ""
 "Редактировать подключение к терминалу, описанному файлом (.remmina или "
-"расширением, поддерживаемым плагином)"
+"расширением, поддерживаемым модулем)"
 
 #: src/remmina.c:86
 msgid "Start Remmina in Kiosk mode"
@@ -838,7 +839,7 @@ msgstr "Показать настройки диалоговой страниц�
 
 #: src/remmina.c:89
 msgid "Execute the plugin"
-msgstr "Выполнить плагин"
+msgstr "Запустить модуль"
 
 #: src/remmina.c:90
 msgid "Quit the application"
@@ -854,7 +855,7 @@ msgstr "Использовать протокол по умолчанию (дл�
 
 #: src/remmina.c:93
 msgid "Start as tray icon"
-msgstr "Начать как значок в трее"
+msgstr "Запускать в трее"
 
 #: src/remmina.c:94
 msgid "Show the application's version"
@@ -862,7 +863,7 @@ msgstr "Показать версию приложения"
 
 #: src/remmina.c:95
 msgid "Show the application's version, including the plugin versions"
-msgstr ""
+msgstr "Показать версию приложения, включая версии модулей"
 
 #: src/remmina_sftp_plugin.c:324 src/remmina_ssh_plugin.c:965
 msgid "SSH identity file"
@@ -887,7 +888,7 @@ msgstr "Показывать скрытые файлы"
 
 #: src/remmina_sftp_plugin.c:338
 msgid "Overwrite all"
-msgstr "Переписать все"
+msgstr "Перезаписать все"
 
 #: src/remmina_sftp_plugin.c:356 src/remmina_ssh_plugin.c:1064
 #: plugins/rdp/rdp_plugin.c:1541 plugins/spice/spice_plugin.c:424
@@ -904,11 +905,11 @@ msgstr "Тип аутентификации"
 #: src/remmina_file_editor.c:348 src/remmina_file_editor.c:355
 #: plugins/nx/nx_plugin.c:697
 msgid "Identity file"
-msgstr "Файл ключа"
+msgstr "Файл идентификации"
 
 #: src/remmina_sftp_plugin.c:359 src/remmina_ssh_plugin.c:1067
 msgid "Private key passphrase"
-msgstr "Ключевая раза закрытого ключа"
+msgstr "Ключевая фраза закрытого ключа"
 
 #. Type
 #. Name
@@ -918,31 +919,31 @@ msgstr "SFTP - защищённая передача файлов"
 
 #: src/remmina_key_chooser.h:38
 msgid "Shift+"
-msgstr ""
+msgstr "Shift+"
 
 #: src/remmina_key_chooser.h:39
 msgid "Ctrl+"
-msgstr ""
+msgstr "Ctrl+"
 
 #: src/remmina_key_chooser.h:40
 msgid "Alt+"
-msgstr ""
+msgstr "Alt+"
 
 #: src/remmina_key_chooser.h:41
 msgid "Super+"
-msgstr ""
+msgstr "Super+"
 
 #: src/remmina_key_chooser.h:42
 msgid "Hyper+"
-msgstr ""
+msgstr "Hyper+"
 
 #: src/remmina_key_chooser.h:43
 msgid "Meta+"
-msgstr ""
+msgstr "Meta+"
 
 #: src/remmina_key_chooser.h:44
 msgid "<None>"
-msgstr ""
+msgstr "<Никакая>"
 
 #: src/remmina_ssh_plugin.c:480
 #, c-format
@@ -1001,7 +1002,7 @@ msgstr "Запуск программы"
 
 #: src/remmina_ssh_plugin.c:1085
 msgid "Terminal color scheme"
-msgstr "Цветова схема терминала"
+msgstr "Цветовая схема терминала"
 
 #: src/remmina_ssh_plugin.c:1086 src/remmina_file_editor.c:895
 msgid "Character set"
@@ -1013,7 +1014,7 @@ msgstr "Команда прокси SSH"
 
 #: src/remmina_ssh_plugin.c:1088
 msgid "KEX (Key Exchange) algorithms"
-msgstr "Алгоритмы KEX (Key Exchange)"
+msgstr "Алгоритмы обмена ключами (KEX)"
 
 #: src/remmina_ssh_plugin.c:1089
 msgid "Symmetric cipher client to server"
@@ -1187,7 +1188,7 @@ msgstr "Параметры удалённого рабочего стола"
 #. Default button
 #: src/remmina_file_editor.c:1284
 msgid "Save as Default"
-msgstr "Сохранить как Основной"
+msgstr "Сохранить \"по умолчанию\""
 
 #: src/remmina_file_editor.c:1292 data/ui/remmina_main.glade:77
 #: data/ui/remmina_main.glade:78
@@ -1196,7 +1197,7 @@ msgstr "Подключить"
 
 #: src/remmina_file_editor.c:1295
 msgid "_Save and Connect"
-msgstr "Сохранить и Подключить"
+msgstr "_Сохранить и подключить"
 
 #: src/remmina_file_editor.c:1385
 msgid "Profile"
@@ -1236,7 +1237,7 @@ msgstr "Сбрасываю пароли, пожалуйста подождите
 
 #: src/remmina_mpchange.c:327
 msgid "The multi password changer cannot work without a secret plugin.\n"
-msgstr "Множественная смена паролей не работает без плагина секретов.\n"
+msgstr "Множественная смена паролей не работает без модуля секретов.\n"
 
 #: src/remmina_mpchange.c:330
 msgid "The multi password changer does not work without a secret service.\n"
@@ -1252,7 +1253,7 @@ msgstr[2] "%d паролей изменено."
 
 #: plugins/secret/src/glibsecret_plugin.c:158
 msgid "Secure passwords storing in the GNOME keyring"
-msgstr ""
+msgstr "Безопасное содержание паролей в хранилище GNOME"
 
 #: plugins/rdp/rdp_plugin.c:1129
 #, c-format
@@ -1329,7 +1330,7 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:1186
 #, c-format
 msgid "Connection to RDP server %s failed."
-msgstr "Подключение к серверу RDP %s не удалось."
+msgstr "Подключение к RDP серверу %s не удалось."
 
 #: plugins/rdp/rdp_plugin.c:1189
 #, c-format
@@ -1342,8 +1343,8 @@ msgid ""
 "Error connecting to RDP server %s. TLS connection failed. Check that client "
 "and server support a common TLS version."
 msgstr ""
-"Ошибка соединения с RDP сервером %s. Соединение TLS сброшено. Ппроверьте, "
-"что клиент и сервер поддерживают текущую версию TLS."
+"Ошибка соединения с RDP сервером %s. Соединение TLS сброшено. Проверьте, что "
+"клиент и сервер поддерживают текущую версию TLS."
 
 #: plugins/rdp/rdp_plugin.c:1196
 #, c-format
@@ -1367,7 +1368,8 @@ msgid ""
 "support H264. Please use a non-AVC Color Depth setting."
 msgstr ""
 "Вы запросили режим H264 GFX для сервера %s, но ваш libfreerdp не "
-"поддерживает H264. Пожалуйста, используйте не-AVC настройки цветовой глубины."
+"поддерживает H264. Пожалуйста, используйте настройки цветовой глубины не-AVC "
+"формата."
 
 #: plugins/rdp/rdp_plugin.c:1217
 #, c-format
@@ -1377,24 +1379,24 @@ msgstr "Сервер %s отклонил соединение."
 #: plugins/rdp/rdp_plugin.c:1222
 #, c-format
 msgid "Unable to connect to RDP server %s"
-msgstr "Невозможно подключиться к серверу RDP %s"
+msgstr "Невозможно подключиться к RDP серверу %s"
 
 #. 1st one is the default in a new install
 #: plugins/rdp/rdp_plugin.c:1476
 msgid "GFX AVC444 (32 bpp)"
-msgstr "GFX AVC444 (глубина цвета 32-бит)"
+msgstr "GFX AVC444 (32 бит/пиксель)"
 
 #: plugins/rdp/rdp_plugin.c:1477
 msgid "GFX AVC420 (32 bpp)"
-msgstr "GFX AVC420 (глубина цвета 32-бит)"
+msgstr "GFX AVC420 (32 бит/пиксель)"
 
 #: plugins/rdp/rdp_plugin.c:1478
 msgid "GFX RFX (32 bpp)"
-msgstr "GFX RFX (глубина цвета 32-бит)"
+msgstr "GFX RFX (32 бит/пиксель)"
 
 #: plugins/rdp/rdp_plugin.c:1479
 msgid "RemoteFX (32 bpp)"
-msgstr "RemoteFX (32 bpp)"
+msgstr "RemoteFX (32 бит/пиксель)"
 
 #: plugins/rdp/rdp_plugin.c:1480 plugins/vnc/vnc_plugin.c:1828
 msgid "True color (32 bpp)"
@@ -1450,7 +1452,7 @@ msgstr "Локальный - среднее качество"
 
 #: plugins/rdp/rdp_plugin.c:1505
 msgid "Local - high quality"
-msgstr "Локально - высокое качество"
+msgstr "Локальный - высокое качество"
 
 #: plugins/rdp/rdp_plugin.c:1513
 msgid "Negotiate"
@@ -1558,7 +1560,7 @@ msgstr "Включить поддержку прокси"
 
 #: plugins/rdp/rdp_plugin.c:1587
 msgid "Disable automatic reconnection"
-msgstr "Отключить автоматическое повторное соединение"
+msgstr "Отключить автоматическое повторное подключение"
 
 #: plugins/rdp/rdp_plugin.c:1588
 msgid "Relax Order Checks"
@@ -1566,7 +1568,7 @@ msgstr "Relax Order Checks"
 
 #: plugins/rdp/rdp_plugin.c:1589
 msgid "Glyph Cache"
-msgstr "Glyph Cache"
+msgstr "Кэш Glyph"
 
 #: plugins/rdp/rdp_plugin.c:1600 plugins/spice/spice_plugin.c:459
 #: plugins/xdmcp/xdmcp_plugin.c:381 plugins/vnc/vnc_plugin.c:1914
@@ -1594,7 +1596,7 @@ msgstr "RDP - Параметры"
 
 #: plugins/rdp/rdp_plugin.c:1705
 msgid "Export connection in Windows .rdp file format"
-msgstr "Экспортировать подключение в формате Windows .rdp"
+msgstr "Экспортировать подключение в формате .rdp (Windows)"
 
 #: plugins/rdp/rdp_settings.c:200
 msgid "<Auto detect>"
@@ -1651,19 +1653,19 @@ msgstr "Сглаживание шрифтов"
 
 #: plugins/rdp/rdp_settings.c:522
 msgid "Composition"
-msgstr "Композитность"
+msgstr "Компоновка"
 
 #: plugins/rdp/rdp_settings.c:532
 msgid "Remote scale factor"
-msgstr "Удалённый масштабный коэффициент"
+msgstr "Коэффициент масштабирования"
 
 #: plugins/rdp/rdp_settings.c:545
 msgid "Desktop scale factor %"
-msgstr "Масштабный коэффициент рабочего стола %"
+msgstr "Коэффициент масштабирования рабочего стола %"
 
 #: plugins/rdp/rdp_settings.c:556
 msgid "Device scale factor %"
-msgstr "Масштабный коэффициент устройства %"
+msgstr "Коэффициент масштабирования устройства %"
 
 #: plugins/rdp/rdp_settings.c:578
 msgid "Desktop orientation"
@@ -1746,7 +1748,7 @@ msgstr "Сертификат сервера ЦС"
 
 #: plugins/spice/spice_plugin.c:444
 msgid "Enable audio channel"
-msgstr "Включить звуковой канал"
+msgstr "Включить аудио канал"
 
 #: plugins/spice/spice_plugin.c:445 plugins/spice/spice_plugin.c:457
 msgid "Resize guest to match window size"
@@ -1802,7 +1804,7 @@ msgstr "Отключаться после одного сеанса"
 
 #: plugins/xdmcp/xdmcp_plugin.c:373
 msgid "Listening connection on protocol TCP"
-msgstr "Прослушивание соединение по протоколу TCP"
+msgstr "Прослушивание соединения по протоколу TCP"
 
 #. Type
 #. Name
@@ -1848,7 +1850,7 @@ msgstr "Прослушивать порт"
 
 #: plugins/vnc/vnc_plugin.c:1894
 msgid "Show remote cursor"
-msgstr "Показать удалённый курсор"
+msgstr "Показывать удалённый курсор"
 
 #: plugins/vnc/vnc_plugin.c:1897 plugins/nx/nx_plugin.c:718
 msgid "Disable encryption"
@@ -1866,13 +1868,13 @@ msgstr "Начать разговор..."
 #. Name
 #: plugins/vnc/vnc_plugin.c:1925
 msgid "VNC - VNC viewer"
-msgstr "VNC - VNC viewer"
+msgstr "VNC - просмотр VNC"
 
 #. Type
 #. Name
 #: plugins/vnc/vnc_plugin.c:1947
 msgid "VNCI - VNC viewer listen mode"
-msgstr "VNCI - VNC viewer режим прослушки"
+msgstr "VNCI - просмотр VNC в слушающем режиме"
 
 #: plugins/st/st_plugin.c:237
 msgid "Terminal Emulator"
@@ -1880,7 +1882,7 @@ msgstr "Эмулятор терминала"
 
 #: plugins/st/st_plugin.c:238
 msgid "Command to be executed"
-msgstr "Команда будет исполнена"
+msgstr "Команда на исполнение"
 
 #: plugins/st/st_plugin.c:253
 msgid "Detached window"
@@ -1888,7 +1890,7 @@ msgstr "Отдельное окно"
 
 #: plugins/st/st_plugin_config.h:43
 msgid "Remmina Simple Terminal"
-msgstr ""
+msgstr "Простой терминал Remmina"
 
 #. Type
 #. Name
@@ -1919,7 +1921,7 @@ msgstr "Запустить"
 
 #: plugins/nx/nx_session_manager.c:158
 msgid "Terminate"
-msgstr "Завершить"
+msgstr "Прервать"
 
 #: plugins/nx/nx_session_manager.c:190
 msgid "Display"
@@ -1938,7 +1940,7 @@ msgid ""
 "WARNING! Executing a command synchronously, may hung Remmina.\n"
 "Do you really want to continue?"
 msgstr ""
-"ВНИМАНИЕ! Исполнение команды может замедлить Remmina.\n"
+"ВНИМАНИЕ! Синхронное исполнение команд, может замедлить Remmina.\n"
 "Вы действительно желаете продолжить?"
 
 #: plugins/exec/exec_plugin.c:264
@@ -1951,7 +1953,7 @@ msgstr "Асинхронное выполнение"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
-msgstr ""
+msgstr "Выполнить команду"
 
 #. Type
 #. Name
@@ -1970,11 +1972,11 @@ msgstr ""
 
 #: plugins/telepathy/telepathy_channel_handler.c:240
 msgid "Desktop sharing invitation"
-msgstr "Приглашение удалённого рабочего стола"
+msgstr "Пригласить удалённый рабочий стол"
 
 #: plugins/tool_hello_world/plugin_config.h:40
 msgid "Hello World!"
-msgstr ""
+msgstr "Привет, мир!"
 
 #: data/ui/remmina_mpc.glade:7
 msgid "Remmina - Multi Password Changer"
@@ -2002,7 +2004,7 @@ msgstr "Сбросить до"
 
 #: data/ui/remmina_mpc.glade:302
 msgid "F"
-msgstr "F"
+msgstr "Ф"
 
 #: data/ui/remmina_mpc.glade:336
 msgid "Domain\\Username"
@@ -2022,7 +2024,7 @@ msgstr "_Удалить"
 
 #: data/ui/remmina_key_chooser.glade:23
 msgid "Choose a new key"
-msgstr "Выберите новый ключ"
+msgstr "Выберите новую клавишу"
 
 #: data/ui/remmina_key_chooser.glade:38 data/ui/remmina_key_chooser.glade:53
 #: data/ui/remmina_spinner.glade:29
@@ -2031,7 +2033,7 @@ msgstr "кнопка"
 
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key..."
-msgstr "Пожалуйста нажмите новый ключ..."
+msgstr "Пожалуйста нажмите новую клавишу..."
 
 #: data/ui/remmina_main.glade:44
 msgid "Open the preferences dialog"
@@ -2043,11 +2045,11 @@ msgstr "Множественная смена паролей"
 
 #: data/ui/remmina_main.glade:68
 msgid "MPChange"
-msgstr "МПСмена"
+msgstr "МнСмПаролей"
 
 #: data/ui/remmina_main.glade:79
 msgid "Open the connection to the selected remote desktop file"
-msgstr "Открыть соединение к выбранному файлу удалённого рабочего стола"
+msgstr "Открыть соединение к файлу выбранного удалённого рабочего стола"
 
 #: data/ui/remmina_main.glade:87 data/ui/remmina_main.glade:88
 msgid "_Edit"
@@ -2055,15 +2057,15 @@ msgstr "_Редактировать"
 
 #: data/ui/remmina_main.glade:89
 msgid "Edit the selected remote desktop file"
-msgstr "Редактировать выбранный файл удалённого рабочего стола"
+msgstr "Редактировать файл выбранного удалённого рабочего стола"
 
 #: data/ui/remmina_main.glade:99
 msgid "Create a copy of the selected remote desktop file"
-msgstr "Копировать выбранный файл удалённого рабочего стола"
+msgstr "Копировать файл выбранного удалённого рабочего стола"
 
 #: data/ui/remmina_main.glade:109
 msgid "Delete the selected remote desktop file"
-msgstr "Удалить выбранный файл удалённого рабочего стола"
+msgstr "Удалить файл выбранного удалённого рабочего стола"
 
 #: data/ui/remmina_main.glade:117 data/ui/remmina_main.glade:118
 msgid "External Tools"
@@ -2085,11 +2087,11 @@ msgstr "Домашняя страница"
 #: data/ui/remmina_main.glade:148 data/ui/remmina_main.glade:149
 #: data/ui/remmina_main.glade:504
 msgid "Online Wiki"
-msgstr "Вики (он-лайн)"
+msgstr "Он-лайн Вики"
 
 #: data/ui/remmina_main.glade:155
 msgid "Remmina Community"
-msgstr ""
+msgstr "Сообщество Remmina"
 
 #: data/ui/remmina_main.glade:162 data/ui/remmina_main.glade:163
 #: data/ui/remmina_main.glade:524
@@ -2104,7 +2106,7 @@ msgstr "Окно отладки"
 #: data/ui/remmina_main.glade:186 data/ui/remmina_main.glade:187
 #: data/ui/remmina_main.glade:412
 msgid "Export"
-msgstr "Экспорт"
+msgstr "Экспортировать"
 
 #: data/ui/remmina_main.glade:196 data/ui/remmina_main.glade:197
 msgid "Statusbar"
@@ -2126,13 +2128,12 @@ msgstr "Очистить"
 #. Online Remmina community, like reddit, facebook, etc
 #: data/ui/remmina_main.glade:514
 msgid "Online Community"
-msgstr ""
+msgstr "Он-лайн сообщество"
 
 # Pluggin like entity or plug-in as action?
 #: data/ui/remmina_main.glade:634
-#, fuzzy
 msgid "Plugin"
-msgstr "Плагин"
+msgstr "Модуль"
 
 #: data/ui/remmina_main.glade:648
 msgid "Last time used"
@@ -2143,7 +2144,7 @@ msgid ""
 "Do you allow Remmina to send periodic anonymous usage statistics to its "
 "developers?"
 msgstr ""
-"Хотите разрешить Remmina отсылать переодическую анонимную статистику её "
+"Хотите разрешить Remmina отсылать периодическую анонимную статистику её "
 "разработчикам?"
 
 #: data/ui/remmina_main.glade:792
@@ -2192,7 +2193,7 @@ msgstr "Ближайший"
 
 #: data/ui/remmina_preferences.glade:163
 msgid "Tiles"
-msgstr "Плитка"
+msgstr "Плиточный"
 
 #: data/ui/remmina_preferences.glade:164
 msgid "Bilinear"
@@ -2216,7 +2217,7 @@ msgstr "Папка для снимков"
 
 #: data/ui/remmina_preferences.glade:290
 msgid "Choose the directory where you want to save Remmina screenshots."
-msgstr "Выберите паппку, в которой будут храниться снимки Remmina."
+msgstr "Выберите папку, в которой будут храниться снимки Remmina."
 
 #: data/ui/remmina_preferences.glade:293
 msgid "Select a Directory"
@@ -2273,7 +2274,7 @@ msgstr "Основной режим просмотра"
 
 #: data/ui/remmina_preferences.glade:455
 msgid "Automatic"
-msgstr "Автоматично"
+msgstr "Автоматически"
 
 #: data/ui/remmina_preferences.glade:456
 msgid "Scrolled window"
@@ -2309,7 +2310,7 @@ msgstr "Не использовать вкладки"
 
 #: data/ui/remmina_preferences.glade:499
 msgid "Fullscreen on the same monitor as the connection window"
-msgstr "Полно-экранный на том же мониторе что и окно соединения"
+msgstr "Полноэкранный на том же мониторе что и окно соединения"
 
 #: data/ui/remmina_preferences.glade:520
 msgid "Peeking"
@@ -2357,11 +2358,11 @@ msgstr "Тёмная иконка трея"
 
 #: data/ui/remmina_preferences.glade:663
 msgid "Choose this if your theme panel is light."
-msgstr "Выберете, если у вас светлая панель темы."
+msgstr "Выберете, если у вас панель темы - светлая."
 
 #: data/ui/remmina_preferences.glade:685
 msgid "Applet"
-msgstr "Апплет"
+msgstr "Мини-программа"
 
 #: data/ui/remmina_preferences.glade:712
 msgid "Host key"
@@ -2471,7 +2472,7 @@ msgstr "Шрифт терминала"
 
 #: data/ui/remmina_preferences.glade:1303
 msgid "Scrollback lines"
-msgstr "Прокрутить строк"
+msgstr "Лимит обратной прокрутки строк"
 
 #: data/ui/remmina_preferences.glade:1312
 msgid "Use system default font"
@@ -2483,7 +2484,7 @@ msgstr "Разрешить жирный текст"
 
 #: data/ui/remmina_preferences.glade:1397
 msgid "Clipboard copy shortcut"
-msgstr "Комбинация копирования"
+msgstr "Комбинация Копирования"
 
 #: data/ui/remmina_preferences.glade:1409
 #: data/ui/remmina_preferences.glade:1450
@@ -2497,7 +2498,7 @@ msgstr "Комбинация Вставки"
 
 #: data/ui/remmina_preferences.glade:1479
 msgid "Select all shortcut"
-msgstr "Выбрать все комбинации"
+msgstr "Комбинация Выбрать все"
 
 #: data/ui/remmina_preferences.glade:1531
 #: data/ui/remmina_preferences.glade:1543
@@ -2605,7 +2606,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1836
 msgid "Terminal Color Scheme file chooser"
-msgstr "Выбор файла цветовой схемы терминалы"
+msgstr "Выбор файла цветовой схемы терминала"
 
 #: data/ui/remmina_preferences.glade:1926
 msgid "Terminal"
@@ -2627,7 +2628,7 @@ msgstr ""
 
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"
-msgstr "Не показыват это сообщение снова"
+msgstr "Не показывать это сообщение снова"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
@@ -2644,4 +2645,3 @@ msgstr "Вверх"
 #: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
 msgid "Move down"
 msgstr "Вниз"
-
