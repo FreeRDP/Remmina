@@ -930,7 +930,7 @@ gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget* gp, R
 	g_free(server);
 
 	if (!remmina_ssh_tunnel_xport(gp->priv->ssh_tunnel, bindlocalhost)) {
-		remmina_protocol_widget_set_error(gp, "Failed to open channel : %s",
+		remmina_protocol_widget_set_error(gp, "Failed to open channel: %s",
 			ssh_get_error(REMMINA_SSH(gp->priv->ssh_tunnel)->session));
 		return FALSE;
 	}

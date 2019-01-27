@@ -939,7 +939,7 @@ remmina_ssh_tunnel_create_forward_channel(RemminaSSHTunnel *tunnel)
 
 	channel = ssh_channel_new(tunnel->ssh.session);
 	if (!channel) {
-		remmina_ssh_set_error(REMMINA_SSH(tunnel), "Failed to create channel : %s");
+		remmina_ssh_set_error(REMMINA_SSH(tunnel), "Failed to create channel: %s");
 		return NULL;
 	}
 
@@ -998,7 +998,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 
 	case REMMINA_SSH_TUNNEL_X11:
 		if ((tunnel->x11_channel = ssh_channel_new(tunnel->ssh.session)) == NULL) {
-			remmina_ssh_set_error(REMMINA_SSH(tunnel), "Failed to create channel : %s");
+			remmina_ssh_set_error(REMMINA_SSH(tunnel), "Failed to create channel: %s");
 			tunnel->thread = 0;
 			return NULL;
 		}
@@ -1012,13 +1012,13 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 		    ssh_channel_request_x11(tunnel->x11_channel, TRUE, NULL, ptr,
 			    gdk_x11_screen_get_screen_number(gdk_screen_get_default()))) {
 			g_free(ptr);
-			remmina_ssh_set_error(REMMINA_SSH(tunnel), "Failed to open channel : %s");
+			remmina_ssh_set_error(REMMINA_SSH(tunnel), "Failed to open channel: %s");
 			tunnel->thread = 0;
 			return NULL;
 		}
 		g_free(ptr);
 		if (ssh_channel_request_exec(tunnel->x11_channel, tunnel->dest)) {
-			ptr = g_strdup_printf(_("Failed to execute %s on SSH server : %%s"), tunnel->dest);
+			ptr = g_strdup_printf(_("Failed to execute %s on SSH server: %%s"), tunnel->dest);
 			remmina_ssh_set_error(REMMINA_SSH(tunnel), ptr);
 			g_free(ptr);
 			tunnel->thread = 0;
@@ -1056,7 +1056,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 #endif
 		}
 		if (tunnel->remotedisplay < 1) {
-			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Failed to request port forwarding : %s"));
+			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Failed to request port forwarding: %s"));
 			if (tunnel->disconnect_func) {
 				(*tunnel->disconnect_func)(tunnel, tunnel->callback_data);
 			}
@@ -1078,7 +1078,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 	case REMMINA_SSH_TUNNEL_REVERSE:
 #if LIBSSH_VERSION_INT >= SSH_VERSION_INT (0, 7, 0)
 		if (ssh_channel_listen_forward(REMMINA_SSH(tunnel)->session, NULL, tunnel->port, NULL)) {
-			remmina_ssh_set_error(REMMINA_SSH (tunnel), _("Failed to request port forwarding : %s"));
+			remmina_ssh_set_error(REMMINA_SSH (tunnel), _("Failed to request port forwarding: %s"));
 			if (tunnel->disconnect_func) {
 				(*tunnel->disconnect_func)(tunnel, tunnel->callback_data);
 			}
@@ -1087,7 +1087,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 		}
 #else
 		if (ssh_forward_listen(REMMINA_SSH(tunnel)->session, NULL, tunnel->port, NULL)) {
-			remmina_ssh_set_error(REMMINA_SSH (tunnel), _("Failed to request port forwarding : %s"));
+			remmina_ssh_set_error(REMMINA_SSH (tunnel), _("Failed to request port forwarding: %s"));
 			if (tunnel->disconnect_func) {
 				(*tunnel->disconnect_func)(tunnel, tunnel->callback_data);
 			}
@@ -1244,13 +1244,13 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 			if (!tunnel->socketbuffers[i]) {
 				len = ssh_channel_poll(tunnel->channels[i], 0);
 				if (len == SSH_ERROR || len == SSH_EOF) {
-					remmina_ssh_set_error(REMMINA_SSH(tunnel), "ssh_channel_poll() returned an error : %s");
+					remmina_ssh_set_error(REMMINA_SSH(tunnel), "ssh_channel_poll() returned an error: %s");
 					disconnected = TRUE;
 				}else if (len > 0) {
 					tunnel->socketbuffers[i] = remmina_ssh_tunnel_buffer_new(len);
 					len = ssh_channel_read_nonblocking(tunnel->channels[i], tunnel->socketbuffers[i]->data, len, 0);
 					if (len <= 0) {
-						remmina_ssh_set_error(REMMINA_SSH(tunnel), "ssh_channel_read_nonblocking() returned an error : %s");
+						remmina_ssh_set_error(REMMINA_SSH(tunnel), "ssh_channel_read_nonblocking() returned an error: %s");
 						disconnected = TRUE;
 					}else  {
 						tunnel->socketbuffers[i]->len = len;
@@ -1607,7 +1607,7 @@ remmina_ssh_shell_thread(gpointer data)
 	if ((channel = ssh_channel_new(REMMINA_SSH(shell)->session)) == NULL ||
 	    ssh_channel_open_session(channel)) {
 		UNLOCK_SSH(shell)
-		remmina_ssh_set_error(REMMINA_SSH(shell), "Failed to open channel : %s");
+		remmina_ssh_set_error(REMMINA_SSH(shell), "Failed to open channel: %s");
 		if (channel) ssh_channel_free(channel);
 		shell->thread = 0;
 		return NULL;
@@ -1637,7 +1637,7 @@ remmina_ssh_shell_thread(gpointer data)
 	}
 	if (ret) {
 		UNLOCK_SSH(shell)
-		remmina_ssh_set_error(REMMINA_SSH(shell), "Failed to request shell : %s");
+		remmina_ssh_set_error(REMMINA_SSH(shell), "Failed to request shell: %s");
 		ssh_channel_close(channel);
 		ssh_channel_send_eof(channel);
 		ssh_channel_free(channel);
