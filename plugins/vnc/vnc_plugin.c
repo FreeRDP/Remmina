@@ -1112,7 +1112,7 @@ static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 	 */
 	if (cl->buffered) {
 		goto handle_buffered;
-        }
+	}
 
 	timeout.tv_sec = 10;
 	timeout.tv_usec = 0;
