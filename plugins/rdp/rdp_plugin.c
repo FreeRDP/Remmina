@@ -765,7 +765,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		return FALSE;
 
 	rfi->settings->AutoReconnectionEnabled = ( remmina_plugin_service->file_get_int(remminafile, "disableautoreconnect", FALSE) ? FALSE : TRUE );
-	/* Disable RDP auto reconnection when ssh tunnel is enabled */
+	/* Disable RDP auto reconnection when SSH tunnel is enabled */
 	if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
 		rfi->settings->AutoReconnectionEnabled = FALSE;
 	}

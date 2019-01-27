@@ -727,7 +727,7 @@ gchar* remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget* gp, gi
 		return dest;
 	}
 
-	/* If we have a previous ssh tunnel, destroy it */
+	/* If we have a previous SSH tunnel, destroy it */
 	if (gp->priv->ssh_tunnel) {
 		remmina_ssh_tunnel_free(gp->priv->ssh_tunnel);
 		gp->priv->ssh_tunnel = NULL;

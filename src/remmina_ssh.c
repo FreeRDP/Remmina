@@ -268,7 +268,7 @@ remmina_ssh_auth_agent(RemminaSSH* ssh)
 	ret = ssh_userauth_agent(ssh->session, NULL);
 
 	if (ret != SSH_AUTH_SUCCESS) {
-		remmina_ssh_set_error(ssh, _("SSH public key authentication with ssh agent failed: %s"));
+		remmina_ssh_set_error(ssh, _("SSH public key authentication with SSH agent failed: %s"));
 		return 0;
 	}
 
@@ -581,7 +581,7 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 	}
 
 #ifdef HAVE_NETINET_TCP_H
-	/* Set keepalive on ssh socket, so we can keep firewalls awaken and detect
+	/* Set keepalive on SSH socket, so we can keep firewalls awaken and detect
 	 * when we loss the tunnel */
 	sshsock = ssh_get_fd(ssh->session);
 	if (sshsock >= 0) {
@@ -1518,11 +1518,11 @@ remmina_sftp_open(RemminaSFTP *sftp)
 	TRACE_CALL(__func__);
 	sftp->sftp_sess = sftp_new(sftp->ssh.session);
 	if (!sftp->sftp_sess) {
-		remmina_ssh_set_error(REMMINA_SSH(sftp), _("Failed to create sftp session: %s"));
+		remmina_ssh_set_error(REMMINA_SSH(sftp), _("Failed to create SFTP session: %s"));
 		return FALSE;
 	}
 	if (sftp_init(sftp->sftp_sess)) {
-		remmina_ssh_set_error(REMMINA_SSH(sftp), _("Failed to initialize sftp session: %s"));
+		remmina_ssh_set_error(REMMINA_SSH(sftp), _("Failed to initialize SFTP session: %s"));
 		return FALSE;
 	}
 	return TRUE;
