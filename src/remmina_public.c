@@ -420,7 +420,7 @@ gint remmina_public_open_xdisplay(const gchar *disp)
 	ptr = g_strrstr(display, ":");
 	if (ptr) {
 		*ptr++ = '\0';
-		/* Assume you are using a local display... might need to implement remote display in the future */
+		/* Assume you are using a local display… might need to implement remote display in the future */
 		if (display[0] == '\0' || strcmp(display, "unix") == 0) {
 			port = atoi(ptr);
 			sock = socket(AF_UNIX, SOCK_STREAM, 0);

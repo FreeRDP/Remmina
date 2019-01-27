@@ -960,7 +960,7 @@ gboolean remmina_nx_session_invoke_proxy(RemminaNXSession *nx, gint display, GCh
 	gchar *s;
 	gint i;
 
-	/* Copy all current environment variable, but change DISPLAY. Assume we should always have DISPLAY... */
+	/* Copy all current environment variable, but change DISPLAY. Assume we should always have DISPLAY… */
 	if (display >= 0) {
 		envp = g_listenv();
 		for (i = 0; envp[i]; i++) {

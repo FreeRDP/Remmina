@@ -265,13 +265,13 @@ void remmina_protocol_widget_open_connection_real(gpointer data)
 		if (num_ssh) {
 			feature->type = REMMINA_PROTOCOL_FEATURE_TYPE_TOOL;
 			feature->id = REMMINA_PROTOCOL_FEATURE_TOOL_SSH;
-			feature->opt1 = _("Open Secure Shell in New Terminal...");
+			feature->opt1 = _("Open Secure Shell in New Terminal…");
 			feature->opt2 = "utilities-terminal";
 			feature++;
 
 			feature->type = REMMINA_PROTOCOL_FEATURE_TYPE_TOOL;
 			feature->id = REMMINA_PROTOCOL_FEATURE_TOOL_SFTP;
-			feature->opt1 = _("Open Secure File Transfer...");
+			feature->opt1 = _("Open Secure File Transfer…");
 			feature->opt2 = "folder-remote";
 			feature++;
 		}
@@ -299,14 +299,14 @@ void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp)
 
 	/* Exec precommand before everything else */
 	mp = remmina_message_panel_new();
-	remmina_message_panel_setup_progress(mp, _("Executing external commands..."), NULL, NULL);
+	remmina_message_panel_setup_progress(mp, _("Executing external commands…"), NULL, NULL);
 	remmina_connection_object_show_message_panel(gp->cnnobj, mp);
 
 	remmina_ext_exec_new(gp->priv->remmina_file, "precommand");
 	remmina_connection_object_destroy_message_panel(gp->cnnobj, mp);
 
 	name = remmina_file_get_string(gp->priv->remmina_file, "name");
-	s = g_strdup_printf(_("Connecting to '%s'..."), (name ? name : "*"));
+	s = g_strdup_printf(_("Connecting to '%s'…"), (name ? name : "*"));
 
 	mp = remmina_message_panel_new();
 	remmina_message_panel_setup_progress(mp, s, cancel_open_connection_cb, gp);
@@ -655,7 +655,7 @@ static gboolean remmina_protocol_widget_init_tunnel(RemminaProtocolWidget* gp)
 	if (gp->priv->ssh_tunnel == NULL) {
 		tunnel = remmina_ssh_tunnel_new_from_file(gp->priv->remmina_file);
 
-		msg = g_strdup_printf(_("Connecting to SSH server %s..."), REMMINA_SSH(tunnel)->server);
+		msg = g_strdup_printf(_("Connecting to SSH server %s…"), REMMINA_SSH(tunnel)->server);
 
 		mp = remmina_protocol_widget_mpprogress(gp->cnnobj, msg, cancel_init_tunnel_cb, NULL);
 		g_free(msg);
@@ -738,7 +738,7 @@ gchar* remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget* gp, gi
 		return NULL;
 	}
 
-	msg = g_strdup_printf(_("Connecting to %s through SSH tunnel..."), server);
+	msg = g_strdup_printf(_("Connecting to %s through SSH tunnel…"), server);
 	mp = remmina_protocol_widget_mpprogress(gp->cnnobj, msg, cancel_start_direct_tunnel_cb, NULL);
 	g_free(msg);
 
@@ -790,7 +790,7 @@ gboolean remmina_protocol_widget_start_reverse_tunnel(RemminaProtocolWidget* gp,
 		return FALSE;
 	}
 
-	msg = g_strdup_printf(_("Waiting for an incoming SSH tunnel at port %i..."), remmina_file_get_int(gp->priv->remmina_file, "listenport", 0));
+	msg = g_strdup_printf(_("Waiting for an incoming SSH tunnel at port %i…"), remmina_file_get_int(gp->priv->remmina_file, "listenport", 0));
 	mp = remmina_protocol_widget_mpprogress(gp->cnnobj, msg, cancel_start_reverse_tunnel_cb, NULL);
 	g_free(msg);
 
@@ -915,7 +915,7 @@ gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget* gp, R
 
 	if (!remmina_protocol_widget_init_tunnel(gp)) return FALSE;
 
-	msg = g_strdup_printf(_("Connecting to %s through SSH tunnel..."), remmina_file_get_string(gp->priv->remmina_file, "server"));
+	msg = g_strdup_printf(_("Connecting to %s through SSH tunnel…"), remmina_file_get_string(gp->priv->remmina_file, "server"));
 	mp = remmina_protocol_widget_mpprogress(gp->cnnobj, msg, cancel_connect_xport_cb, NULL);
 	g_free(msg);
 
@@ -1414,7 +1414,7 @@ void remmina_protocol_widget_panel_show_listen(RemminaProtocolWidget* gp, gint p
 
 	mp = remmina_message_panel_new();
 	s = g_strdup_printf(
-		_("Listening on port %i for an incoming %s connection..."), port,
+		_("Listening on port %i for an incoming %s connection…"), port,
 		remmina_file_get_string(gp->priv->remmina_file, "protocol"));
 	remmina_message_panel_setup_progress(mp, s, NULL, NULL);
 	g_free(s);
@@ -1439,7 +1439,7 @@ void remmina_protocol_widget_panel_show_retry(RemminaProtocolWidget* gp)
 	}
 
 	mp = remmina_message_panel_new();
-	remmina_message_panel_setup_progress(mp, _("Authentication failed. Trying to reconnect..."), NULL, NULL);
+	remmina_message_panel_setup_progress(mp, _("Authentication failed. Trying to reconnect…"), NULL, NULL);
 	remmina_connection_object_show_message_panel(gp->cnnobj, mp);
 
 }

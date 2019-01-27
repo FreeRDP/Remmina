@@ -1041,7 +1041,7 @@ static void remmina_plugin_vnc_rfb_chat(rfbClient* cl, int value, char *text)
 		IDLE_ADD((GSourceFunc)remmina_plugin_vnc_open_chat, gp);
 		break;
 	case rfbTextChatClose:
-		/* Do nothing... but wait for the next rfbTextChatFinished signal */
+		/* Do nothing… but wait for the next rfbTextChatFinished signal */
 		break;
 	case rfbTextChatFinished:
 		IDLE_ADD((GSourceFunc)remmina_plugin_vnc_close_chat, gp);
@@ -1600,8 +1600,8 @@ static gboolean remmina_plugin_vnc_open_connection(RemminaProtocolWidget *gp)
 
 
 	if (pthread_create(&gpdata->thread, NULL, remmina_plugin_vnc_main_thread, gp)) {
-		/* I don't think this will ever happen... */
-		g_print("Failed to initialize pthread. Falling back to non-thread mode...\n");
+		/* I don't think this will ever happen… */
+		g_print("Failed to initialize pthread. Falling back to non-thread mode…\n");
 		g_timeout_add(0, (GSourceFunc)remmina_plugin_vnc_main, gp);
 		gpdata->thread = 0;
 	}
@@ -1921,7 +1921,7 @@ static const RemminaProtocolFeature remmina_plugin_vnc_features[] =
 	  N_("View only")									      },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_PREF,	 REMMINA_PLUGIN_VNC_FEATURE_PREF_DISABLESERVERINPUT,	GINT_TO_POINTER(REMMINA_PROTOCOL_FEATURE_PREF_CHECK),		    "disableserverinput",					       N_("Disable server input")															      },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	 REMMINA_PLUGIN_VNC_FEATURE_TOOL_REFRESH,		N_("Refresh"),							    NULL,							       NULL																		      },
-	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	 REMMINA_PLUGIN_VNC_FEATURE_TOOL_CHAT,			N_("Open Chat..."),						    "face-smile",						       NULL																		      },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	 REMMINA_PLUGIN_VNC_FEATURE_TOOL_CHAT,			N_("Open Chat…"),						    "face-smile",						       NULL																		      },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_TOOL,	 REMMINA_PLUGIN_VNC_FEATURE_TOOL_SENDCTRLALTDEL,	N_("Send Ctrl+Alt+Delete"),					    NULL,							       NULL																		      },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_SCALE,	 REMMINA_PLUGIN_VNC_FEATURE_SCALE,			NULL,								    NULL,							       NULL																		      },
 	{ REMMINA_PROTOCOL_FEATURE_TYPE_UNFOCUS, REMMINA_PLUGIN_VNC_FEATURE_UNFOCUS,			NULL,								    NULL,							       NULL																		      },

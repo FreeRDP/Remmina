@@ -936,7 +936,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	g_free(value);
 
 	/* PerformanceFlags bitmask need also to be splitted into BOOL variables
-	 * like rfi->settings->DisableWallpaper, rfi->settings->AllowFontSmoothing...
+	 * like rfi->settings->DisableWallpaper, rfi->settings->AllowFontSmoothing…
 	 * or freerdp_get_param_bool() function will return the wrong value
 	 */
 	freerdp_performance_flags_split(rfi->settings);
@@ -1295,7 +1295,7 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget* gp)
 
 	if (pthread_create(&rfi->thread, NULL, remmina_rdp_main_thread, gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s",
-			"Failed to initialize pthread. Falling back to non-thread mode...");
+			"Failed to initialize pthread. Falling back to non-thread mode…");
 
 		rfi->thread = 0;
 
@@ -1447,7 +1447,7 @@ static gboolean remmina_rdp_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 	bitsPerPixel = GetBitsPerPixel(gdi->hdc->format);
 
 	/** @todo we should lock freerdp subthread to update rfi->primary_buffer, rfi->gdi and w/h,
-	 * from here to memcpy, but... how ? */
+	 * from here to memcpy, but… how ? */
 
 	szmem = gdi->width * gdi->height * bytesPerPixel;
 

@@ -241,7 +241,7 @@ static void remmina_mpchange_dochange_clicked(GtkButton *btn, gpointer user_data
 	mpcp->password = g_strdup(passwd1);
 	mpcp->changed_passwords_count = 0;
 
-	gtk_label_set_text(mpcp->statusLabel, _("Resetting passwords, please wait..."));
+	gtk_label_set_text(mpcp->statusLabel, _("Resetting passwords, please wait…"));
 
 	enable_inputs(mpcp, FALSE);
 	mpcp->sid = g_idle_add(changenext, (gpointer)mpcp);

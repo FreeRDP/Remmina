@@ -297,7 +297,7 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 		height = gtk_widget_get_allocated_height(widget);
 
 		/* Draw text */
-		msg = g_strdup_printf(_("Reconnection in progress. Attempt %d of %d..."),
+		msg = g_strdup_printf(_("Reconnection in progress. Attempt %d of %d…"),
 			rfi->reconnect_nattempt, rfi->reconnect_maxattempts);
 
 		cairo_select_font_face(context, "Sans", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_BOLD);
@@ -669,7 +669,7 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 			 * - All keycodes not translatable to unicode chars, as keycode
 			 * - The rest as unicode char
 			 */
-			if (event->keyval >= 0xfe00 ||                                                  // arrows, shift, alt, Fn, num keypad...
+			if (event->keyval >= 0xfe00 ||                                                  // arrows, shift, alt, Fn, num keypad…
 				event->hardware_keycode == 0x41 ||											// space bar
 			    unicode_keyval == 0 ||                                                      // impossible to translate
 			    (event->state & (GDK_MOD1_MASK | GDK_CONTROL_MASK | GDK_SUPER_MASK)) != 0   // a modifier not recognized by gdk_keyval_to_unicode()

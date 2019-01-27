@@ -110,7 +110,7 @@ static void remmina_message_panel_button_clicked_callback(
 void remmina_message_panel_setup_progress(RemminaMessagePanel *mp, const gchar *message, RemminaMessagePanelCallback response_callback, gpointer response_callback_data)
 {
 	/*
-	 * Setup a message panel to show a spinner, a message like "Connecting...",
+	 * Setup a message panel to show a spinner, a message like "Connecting…",
 	 * and a button to cancel the action in progress
 	 *
 	 */
@@ -156,7 +156,7 @@ void remmina_message_panel_setup_progress(RemminaMessagePanel *mp, const gchar *
 void remmina_message_panel_setup_message(RemminaMessagePanel *mp, const gchar *message, RemminaMessagePanelCallback response_callback, gpointer response_callback_data)
 {
 	/*
-	 * Setup a message panel to a message to read like "Cannot connect...",
+	 * Setup a message panel to a message to read like "Cannot connect…",
 	 * and a button to close the panel
 	 *
 	 */

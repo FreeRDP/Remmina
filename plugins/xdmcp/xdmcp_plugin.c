@@ -279,7 +279,7 @@ static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 	if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
 		if (pthread_create(&gpdata->thread, NULL, remmina_plugin_xdmcp_main_thread, gp)) {
 			remmina_plugin_service->protocol_plugin_set_error(gp,
-				"Failed to initialize pthread. Falling back to non-thread mode...");
+				"Failed to initialize pthread. Falling back to non-thread mode…");
 			gpdata->thread = 0;
 			return FALSE;
 		}else  {

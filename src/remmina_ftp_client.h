@@ -129,7 +129,7 @@ void remmina_ftp_client_load_state(RemminaFTPClient *client, RemminaFile *remmin
 
 void remmina_ftp_client_set_show_hidden(RemminaFTPClient *client, gboolean show_hidden);
 void remmina_ftp_client_clear_file_list(RemminaFTPClient *client);
-/* column, value, ..., -1 */
+/* column, value, …, -1 */
 void remmina_ftp_client_add_file(RemminaFTPClient *client, ...);
 /* Set the current directory. Should be called by opendir signal handler */
 void remmina_ftp_client_set_dir(RemminaFTPClient *client, const gchar *dir);

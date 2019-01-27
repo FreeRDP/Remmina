@@ -2819,7 +2819,7 @@ static void remmina_connection_window_initialize_notebook(GtkNotebook* to, GtkNo
 		}
 		if (tc) {
 			/* if cnnobj is already in the "from" notebook, we should be in the drag and drop case.
-			 * just... do not move it. GTK will do the move when the create-window signal
+			 * just… do not move it. GTK will do the move when the create-window signal
 			 * of GtkNotebook will return */
 
 		} else {

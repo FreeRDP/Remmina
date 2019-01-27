@@ -806,7 +806,7 @@ full screen window placement with multiple monitors [\#124](https://github.com/F
 - Update AUTHORS [\#959](https://github.com/FreeRDP/Remmina/pull/959) ([antenore](https://github.com/antenore))
 - Fix import label [\#957](https://github.com/FreeRDP/Remmina/pull/957) ([Justinzobel](https://github.com/Justinzobel))
 - Updated Hungarian translation [\#949](https://github.com/FreeRDP/Remmina/pull/949) ([meskobalazs](https://github.com/meskobalazs))
-- Add missing ClientFormatListResponse\(\) call in RDP plugin clipboard, … [\#948](https://github.com/FreeRDP/Remmina/pull/948) ([giox069](https://github.com/giox069))
+- Add missing ClientFormatListResponse\(\) call in RDP plugin clipboard… [\#948](https://github.com/FreeRDP/Remmina/pull/948) ([giox069](https://github.com/giox069))
 - RDP: allow disabling auto reconnection in .remmina file [\#947](https://github.com/FreeRDP/Remmina/pull/947) ([xhaakon](https://github.com/xhaakon))
 - Embed docs [\#945](https://github.com/FreeRDP/Remmina/pull/945) ([nastasi](https://github.com/nastasi))
 - Allow disabling libsecret dependency [\#942](https://github.com/FreeRDP/Remmina/pull/942) ([diogocp](https://github.com/diogocp))
