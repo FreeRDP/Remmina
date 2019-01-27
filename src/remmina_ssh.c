@@ -1111,7 +1111,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 	tunnel->buffer_len = 10240;
 	tunnel->buffer = g_malloc(tunnel->buffer_len);
 
-	/* Start the tunnel data transmittion */
+	/* Start the tunnel data transmission */
 	while (tunnel->running) {
 		if (tunnel->tunnel_type == REMMINA_SSH_TUNNEL_XPORT ||
 		    tunnel->tunnel_type == REMMINA_SSH_TUNNEL_X11 ||

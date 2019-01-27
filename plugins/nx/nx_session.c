@@ -804,7 +804,7 @@ static gpointer remmina_nx_session_tunnel_main_thread(gpointer data)
 	channels[0] = nx->channel;
 	channels[1] = NULL;
 
-	/* Start the tunnel data transmittion */
+	/* Start the tunnel data transmission */
 	while (nx->running) {
 		timeout.tv_sec = 1;
 		timeout.tv_usec = 0;
