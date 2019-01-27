@@ -449,7 +449,7 @@ void remmina_icon_init(void)
 #ifdef HAVE_LIBAPPINDICATOR
 		strcat(msg, " and libappindicator is compiled in remmina. Good!");
 #else
-		strcat(msg, ", but you did not compile remmina with cmake's -DWITH_APPINDICATOR=on");
+		strcat(msg, ", but you did not compile remmina with cmake’s -DWITH_APPINDICATOR=on");
 #endif
 	} else {
 #ifdef HAVE_LIBAPPINDICATOR

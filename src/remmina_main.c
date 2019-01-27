@@ -211,11 +211,11 @@ static void remmina_main_show_snap_welcome()
 	g_print("Remmina is compiled as a SNAP package.\n");
 	remmina_secret_plugin = remmina_plugin_manager_get_secret_plugin();
 	if (remmina_secret_plugin == NULL) {
-		g_print("  but we can't find the secret plugin inside the SNAP.\n");
+		g_print("  but we can’t find the secret plugin inside the SNAP.\n");
 		need_snap_interface_connections = TRUE;
 	} else {
 		if (!remmina_secret_plugin->is_service_available()) {
-			g_print("  but we can't access a secret service. Secret service or SNAP interface connection is missing.\n");
+			g_print("  but we can’t access a secret service. Secret service or SNAP interface connection is missing.\n");
 			need_snap_interface_connections = TRUE;
 		}
 	}

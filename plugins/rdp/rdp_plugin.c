@@ -219,7 +219,7 @@ BOOL rf_auto_reconnect(rfContext* rfi)
 	/* Sleep half a second to allow:
 	 *  - processing of the ui event we just pushed on the queue
 	 *  - better network conditions
-	 *  Remember: we hare on a thread, so the main gui won't lock */
+	 *  Remember: we hare on a thread, so the main gui won’t lock */
 
 	usleep(500000);
 
@@ -473,7 +473,7 @@ static BOOL remmina_rdp_post_connect(freerdp* instance)
 		freerdp_local_color_format = PIXEL_FORMAT_BGRA32;
 		rfi->cairo_format = CAIRO_FORMAT_ARGB32;
 	}else if (rfi->bpp == 24) {
-		/* CAIRO_FORMAT_RGB24 is 32bit aligned, so we map it to libfreerdp's PIXEL_FORMAT_BGRX32 */
+		/* CAIRO_FORMAT_RGB24 is 32bit aligned, so we map it to libfreerdp’s PIXEL_FORMAT_BGRX32 */
 		freerdp_local_color_format = PIXEL_FORMAT_BGRX32;
 		rfi->cairo_format = CAIRO_FORMAT_RGB24;
 	}else {
@@ -1110,7 +1110,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	if (remmina_plugin_service->file_get_int(remminafile, "passwordispin", FALSE)) {
 		/* Option works only combined with Username and Domain, because freerdp
-		 * doesn't know anything about information on smartcard */
+		 * doesn’t know anything about information on smartcard */
 		rfi->settings->PasswordIsSmartcardPin = TRUE;
 	}
 

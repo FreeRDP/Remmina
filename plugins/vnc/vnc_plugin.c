@@ -556,7 +556,7 @@ static rfbBool remmina_plugin_vnc_rfb_allocfb(rfbClient *cl)
 	/* Notify window of change so that scroll border can be hidden or shown if needed */
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "desktop-resize");
 
-	/* Refresh the client's updateRect - bug in xvncclient */
+	/* Refresh the client’s updateRect - bug in xvncclient */
 	cl->updateRect.w = width;
 	cl->updateRect.h = height;
 
@@ -935,10 +935,10 @@ static void remmina_plugin_vnc_rfb_bell(rfbClient *cl)
 		gdk_window_beep(window);
 }
 
-/* Translate known VNC messages. It's for intltool only, not for gcc */
+/* Translate known VNC messages. It’s for intltool only, not for gcc */
 #ifdef __DO_NOT_COMPILE_ME__
 N_("Unable to connect to VNC server")
-N_("Couldn't convert '%s' to host address")
+N_("Couldn’t convert '%s' to host address")
 N_("VNC connection failed: %s")
 N_("Your connection has been rejected.")
 #endif
@@ -1249,7 +1249,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 			break;
 		}
 
-		/* Otherwise, it's a password error. Try to clear saved password if any */
+		/* Otherwise, it’s a password error. Try to clear saved password if any */
 		remmina_plugin_service->file_set_string(remminafile, "password", NULL);
 
 		if (!gpdata->connected)
@@ -1257,7 +1257,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 
 		remmina_plugin_service->protocol_plugin_init_show_retry(gp);
 
-		/* It's safer to sleep a while before reconnect */
+		/* It’s safer to sleep a while before reconnect */
 		sleep(2);
 
 		gpdata->auth_first = FALSE;
@@ -1520,7 +1520,7 @@ static void remmina_plugin_vnc_on_cuttext_request(GtkClipboard *clipboard, const
 	const char *cur_charset;
 
 	if (text) {
-		/* A timer (1 second) to avoid clipboard "loopback": text cut out from VNC won't paste back into VNC */
+		/* A timer (1 second) to avoid clipboard "loopback": text cut out from VNC won’t paste back into VNC */
 		g_get_current_time(&t);
 		diff = (t.tv_sec - gpdata->clipboard_timer.tv_sec) * 10
 		       + (t.tv_usec - gpdata->clipboard_timer.tv_usec) / 100000;
@@ -1600,7 +1600,7 @@ static gboolean remmina_plugin_vnc_open_connection(RemminaProtocolWidget *gp)
 
 
 	if (pthread_create(&gpdata->thread, NULL, remmina_plugin_vnc_main_thread, gp)) {
-		/* I don't think this will ever happen… */
+		/* I don’t think this will ever happen… */
 		g_print("Failed to initialize pthread. Falling back to non-thread mode…\n");
 		g_timeout_add(0, (GSourceFunc)remmina_plugin_vnc_main, gp);
 		gpdata->thread = 0;

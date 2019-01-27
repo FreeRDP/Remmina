@@ -791,7 +791,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 			grid_column++;
 		}
 		/* Add a new settings row and move to the first column
-		 * if the setting doesn't want the compactness
+		 * if the setting doesn’t want the compactness
 		 * or we already have two columns */
 		if (!settings->compact || grid_column > 1) {
 			grid_row++;

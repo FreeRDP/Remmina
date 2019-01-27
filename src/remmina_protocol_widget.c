@@ -437,7 +437,7 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget* gp, GtkMenuI
 					break;
 				}
 			}
-			/* Decode character if it's not a special character */
+			/* Decode character if it’s not a special character */
 			if (character) {
 				/* get keyval without modifications */
 				if (!gdk_keymap_get_entries_for_keyval(keymap, keyval, &keys, &n_keys)) {
@@ -651,7 +651,7 @@ static gboolean remmina_protocol_widget_init_tunnel(RemminaProtocolWidget* gp)
 	gchar* msg;
 	RemminaMessagePanel* mp;
 
-	/* Reuse existing SSH connection if it's reconnecting to destination */
+	/* Reuse existing SSH connection if it’s reconnecting to destination */
 	if (gp->priv->ssh_tunnel == NULL) {
 		tunnel = remmina_ssh_tunnel_new_from_file(gp->priv->remmina_file);
 
@@ -1370,7 +1370,7 @@ void remmina_protocol_widget_save_cred(RemminaProtocolWidget* gp)
 		return;
 	}
 
-	/* Save user name and certificates if any; save the password if it's requested to do so */
+	/* Save user name and certificates if any; save the password if it’s requested to do so */
 	s = gp->priv->username;
 	if (s && s[0]) {
 		remmina_file_set_string(remminafile, "username", s);

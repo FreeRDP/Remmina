@@ -302,7 +302,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password)
 	gint method;
 	gint ret;
 
-	/* Check known host again to ensure it's still the original server when user forks
+	/* Check known host again to ensure it’s still the original server when user forks
 	   a new session from existing one */
 	if (ssh_is_server_known(ssh->session) != SSH_SERVER_KNOWN_OK) {
 		remmina_ssh_set_application_error(ssh, "SSH public key has changed!");
@@ -376,7 +376,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	gboolean disablepasswordstoring;
 	gboolean save_password;
 
-	/* Check if the server's public key is known */
+	/* Check if the server’s public key is known */
 	ret = ssh_is_server_known(ssh->session);
 	switch (ret) {
 	case SSH_SERVER_KNOWN_OK:
@@ -428,19 +428,19 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 
 	switch (ssh->auth) {
 	case SSH_AUTH_PASSWORD:
-		tips = _("Authenticating %s's password to SSH server %s…");
+		tips = _("Authenticating %s’s password to SSH server %s…");
 		keyname = _("SSH password");
 		pwdtype = "ssh_password";
 		break;
 	case SSH_AUTH_PUBLICKEY:
 	case SSH_AUTH_AGENT:
 	case SSH_AUTH_AUTO_PUBLICKEY:
-		tips = _("Authenticating %s's identity to SSH server %s…");
+		tips = _("Authenticating %s’s identity to SSH server %s…");
 		keyname = _("SSH private key passphrase");
 		pwdtype = "ssh_passphrase";
 		break;
 	case SSH_AUTH_GSSAPI:
-		tips = _("Authenticating %s's Kerberos to SSH server %s…");
+		tips = _("Authenticating %s’s Kerberos to SSH server %s…");
 		keyname = _("SSH Kerberos/GSSAPI");
 		pwdtype = "kerberos_token";
 		break;
@@ -1145,7 +1145,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 				}
 			}else if (tunnel->tunnel_type != REMMINA_SSH_TUNNEL_REVERSE) {
 				/* Poll once per some period of time if no incoming connections.
-				 * Don't try to poll continuously as it will significantly slow down the loop */
+				 * Don’t try to poll continuously as it will significantly slow down the loop */
 				g_get_current_time(&t1);
 				diff = (t1.tv_sec - t2.tv_sec) * 10 + (t1.tv_usec - t2.tv_usec) / 100000;
 				if (diff > 1) {
@@ -1263,7 +1263,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 				     tunnel->socketbuffers[i]->len -= lenw, tunnel->socketbuffers[i]->ptr += lenw) {
 					lenw = write(tunnel->sockets[i], tunnel->socketbuffers[i]->ptr, tunnel->socketbuffers[i]->len);
 					if (lenw == -1 && errno == EAGAIN && tunnel->running) {
-						/* Sometimes we cannot write to a socket (always EAGAIN), probably because it's internal
+						/* Sometimes we cannot write to a socket (always EAGAIN), probably because it’s internal
 						 * buffer is full. We need read the pending bytes from the socket first. so here we simply
 						 * break, leave the buffer there, and continue with other data */
 						break;
@@ -1780,7 +1780,7 @@ remmina_ssh_shell_free(RemminaSSHShell *shell)
 		g_free(shell->exec);
 		shell->exec = NULL;
 	}
-	/* It's not necessary to close shell->slave since the other end (vte) will close it */;
+	/* It’s not necessary to close shell->slave since the other end (vte) will close it */;
 	remmina_ssh_free(REMMINA_SSH(shell));
 }
 

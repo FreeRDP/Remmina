@@ -342,9 +342,9 @@ JsonNode *remmina_stats_get_os_info()
 
 /**
  * Gets the following user environment:
- *   - Gets the user's locale (or NULL by default) coresponding to LC_ALL.
+ *   - Gets the user’s locale (or NULL by default) coresponding to LC_ALL.
  *
- * @return a Json Node structure containg the user's environment.
+ * @return a Json Node structure containg the user’s environment.
  */
 JsonNode *remmina_stats_get_user_env()
 {
@@ -780,7 +780,7 @@ JsonNode *remmina_stats_get_all()
 	json_builder_add_value(b, n);
 
 	/**
-	 * The section ENVIRONMENT collect all the user's environment related
+	 * The section ENVIRONMENT collect all the user’s environment related
 	 * settings.
 	 */
 	n = remmina_stats_get_user_env();

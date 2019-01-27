@@ -788,7 +788,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	vte_terminal_set_color_background(VTE_TERMINAL(vte), &background_color);
 	vte_terminal_set_color_cursor(VTE_TERMINAL(vte), &cursor_color);
 #else
-	/* VTE <= 2.90 doesn't support GdkRGBA so we must convert GdkRGBA to GdkColor */
+	/* VTE <= 2.90 doesn’t support GdkRGBA so we must convert GdkRGBA to GdkColor */
 	foreground_gdkcolor.red = (guint16)(foreground_color.red * 0xFFFF);
 	foreground_gdkcolor.green = (guint16)(foreground_color.green * 0xFFFF);
 	foreground_gdkcolor.blue = (guint16)(foreground_color.blue * 0xFFFF);
@@ -914,7 +914,7 @@ remmina_plugin_ssh_query_feature(RemminaProtocolWidget *gp, const RemminaProtoco
  * In the Remmina Connection Window toolbar, there is a tool menu, this function is used to
  * call the right function for each entry with its parameters.
  *
- * At the moment it's possible to:
+ * At the moment it’s possible to:
  * - Open a new SSH session.
  * - Open an SFTP session.
  * - Select, copy and paste text.

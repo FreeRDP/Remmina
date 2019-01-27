@@ -76,7 +76,7 @@ remmina_file_new_empty(void)
 	remminafile = g_new0(RemminaFile, 1);
 	remminafile->settings = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 	/* spsettings contains settings that are loaded from the secure_plugin.
-	 * it's used by remmina_file_store_secret_plugin_password() to know
+	 * it’s used by remmina_file_store_secret_plugin_password() to know
 	 * where to change */
 	remminafile->spsettings = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 	remminafile->prevent_saving = FALSE;
@@ -365,7 +365,7 @@ remmina_file_get_keyfile(RemminaFile *remminafile)
 		return NULL;
 	gkeyfile = g_key_file_new();
 	if (!g_key_file_load_from_file(gkeyfile, remminafile->filename, G_KEY_FILE_NONE, NULL)) {
-		/* it will fail if it's a new file, but shouldn't matter. */
+		/* it will fail if it’s a new file, but shouldn’t matter. */
 	}
 	return gkeyfile;
 }
@@ -579,7 +579,7 @@ void remmina_file_unsave_password(RemminaFile *remminafile)
 /**
  * Return the string date of the last time a file has been modified.
  *
- * This is used to return the modification date of a file and it's used
+ * This is used to return the modification date of a file and it’s used
  * to return the modification date and time of a givwn remmina file.
  * If it fails it will return "26/01/1976 23:30:00", that is just a date to don't
  * return an empty string (challenge: what was happened that day at that time?).
@@ -612,7 +612,7 @@ remmina_file_get_datetime(RemminaFile *remminafile)
 	g_object_unref(file);
 
 	if (info == NULL) {
-		g_print("couldn't get time info\n");
+		g_print("couldn’t get time info\n");
 		return "26/01/1976 23:30:00";
 	}
 

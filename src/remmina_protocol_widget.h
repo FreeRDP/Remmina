@@ -110,7 +110,7 @@ void remmina_protocol_widget_set_hostkey_func(RemminaProtocolWidget *gp, Remmina
 
 gboolean remmina_protocol_widget_ssh_exec(RemminaProtocolWidget *gp, gboolean wait, const gchar *fmt, ...);
 
-/* Start a SSH tunnel if it's enabled. Returns a newly allocated string indicating:
+/* Start a SSH tunnel if it’s enabled. Returns a newly allocated string indicating:
  * 1. The actual destination (host:port) if SSH tunnel is disable
  * 2. The tunnel local destination (127.0.0.1:port) if SSH tunnel is enabled
  */

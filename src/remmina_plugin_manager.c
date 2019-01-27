@@ -266,7 +266,7 @@ static void remmina_plugin_manager_load_plugin(const gchar *name)
 		return;
 	}
 
-	/* We don't close the module because we will need it throughout the process lifetime */
+	/* We don’t close the module because we will need it throughout the process lifetime */
 }
 
 void remmina_plugin_manager_init(void)
