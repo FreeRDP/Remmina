@@ -340,7 +340,7 @@ static void remmina_nx_session_parse_session_list_line(RemminaNXSession *nx, con
 			p2++;
 		p1 = p2;
 	}
-	/* The last name column might contains space so it's not in the above loop. We simply rtrim it here. */
+	/* The last name column might contains space so it’s not in the above loop. We simply rtrim it here. */
 	i = strlen(p1);
 	if (i < 1)
 		return;
@@ -557,7 +557,7 @@ gboolean remmina_nx_session_open(RemminaNXSession *nx, const gchar *server, guin
 		}
 		g_free(passphrase);
 	} else {
-		/* Use NoMachine's default nx private key */
+		/* Use NoMachine’s default nx private key */
 		if ( ssh_pki_import_privkey_base64(nx_default_private_key, NULL, NULL, NULL, &priv_key) != SSH_OK ) {
 			remmina_nx_session_set_application_error(nx, "Failed to import NX default private key.");
 			return FALSE;
@@ -804,7 +804,7 @@ static gpointer remmina_nx_session_tunnel_main_thread(gpointer data)
 	channels[0] = nx->channel;
 	channels[1] = NULL;
 
-	/* Start the tunnel data transmittion */
+	/* Start the tunnel data transmission */
 	while (nx->running) {
 		timeout.tv_sec = 1;
 		timeout.tv_usec = 0;
@@ -861,7 +861,7 @@ static gpointer remmina_nx_session_tunnel_main_thread(gpointer data)
 			for (lenw = 0; socketbuffer_len > 0; socketbuffer_len -= lenw, socketbuffer_ptr += lenw) {
 				lenw = write(sock, socketbuffer_ptr, socketbuffer_len);
 				if (lenw == -1 && errno == EAGAIN && nx->running) {
-					/* Sometimes we cannot write to a socket (always EAGAIN), probably because it's internal
+					/* Sometimes we cannot write to a socket (always EAGAIN), probably because it’s internal
 					 * buffer is full. We need read the pending bytes from the socket first. so here we simply
 					 * break, leave the buffer there, and continue with other data */
 					break;
@@ -893,7 +893,7 @@ gboolean remmina_nx_session_tunnel_open(RemminaNXSession *nx)
 	remmina_nx_session_send_command(nx, "bye");
 	if (!remmina_nx_session_expect_status(nx, 999)) {
 		/* Shoud not happen, just in case */
-		remmina_nx_session_set_application_error(nx, "Server won't say bye to us?");
+		remmina_nx_session_set_application_error(nx, "Server won’t say bye to us?");
 		return FALSE;
 	}
 
@@ -960,7 +960,7 @@ gboolean remmina_nx_session_invoke_proxy(RemminaNXSession *nx, gint display, GCh
 	gchar *s;
 	gint i;
 
-	/* Copy all current environment variable, but change DISPLAY. Assume we should always have DISPLAY... */
+	/* Copy all current environment variable, but change DISPLAY. Assume we should always have DISPLAY… */
 	if (display >= 0) {
 		envp = g_listenv();
 		for (i = 0; envp[i]; i++) {

@@ -227,7 +227,7 @@ static void remmina_connection_window_class_init(RemminaConnectionWindowClass* k
 
 	provider = gtk_css_provider_new();
 
-	/* It's important to remove padding, border and shadow from GtkViewport or
+	/* It’s important to remove padding, border and shadow from GtkViewport or
 	 * we will never know its internal area size, because GtkViweport::viewport_get_view_allocation,
 	 * which returns the internal size of the GtkViewport, is private and we cannot access it */
 
@@ -503,7 +503,7 @@ static void remmina_connection_holder_keyboard_grab(RemminaConnectionHolder* cnn
 
 		if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE)) {
 #if DEBUG_KB_GRABBING
-			printf("DEBUG_KB_GRABBING: profile asks for grabbing, let's try.\n");
+			printf("DEBUG_KB_GRABBING: profile asks for grabbing, let’s try.\n");
 #endif
 	/* Up to GTK version 3.20 we can grab the keyboard with gdk_device_grab().
 	 * in GTK 3.20 gdk_seat_grab() should be used instead of gdk_device_grab().
@@ -633,7 +633,7 @@ static void remmina_connection_window_destroy(GtkWidget* widget, RemminaConnecti
 	}
 
 	/* There is no need to destroy priv->floating_toolbar_widget,
-	 * because it's our child and will be destroyed automatically */
+	 * because it’s our child and will be destroyed automatically */
 
 	/* Timer used to hide the toolbar */
 	if (priv->hidetb_timer) {
@@ -872,7 +872,7 @@ static void remmina_connection_holder_toolbar_autofit(GtkWidget* widget, Remmina
 			gtk_window_unmaximize(GTK_WINDOW(cnnhld->cnnwin));
 		}
 
-		/* It's tricky to make the toolbars disappear automatically, while keeping scrollable.
+		/* It’s tricky to make the toolbars disappear automatically, while keeping scrollable.
 		   Please tell me if you know a better way to do this */
 		gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(cnnobj->scrolled_container), GTK_POLICY_NEVER,
 			GTK_POLICY_NEVER);
@@ -2209,7 +2209,7 @@ static void remmina_connection_holder_showhide_toolbar(RemminaConnectionHolder* 
 	TRACE_CALL(__func__);
 	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
 
-	/* Here we should threat the resize flag, but we don't */
+	/* Here we should threat the resize flag, but we don’t */
 	if (priv->view_mode == SCROLLED_WINDOW_MODE) {
 		if (remmina_pref.hide_connection_toolbar) {
 			gtk_widget_hide(priv->toolbar);
@@ -2624,7 +2624,7 @@ remmina_connection_window_new_from_holder(RemminaConnectionHolder* cnnhld)
 	g_signal_connect(G_OBJECT(cnnwin), "delete-event", G_CALLBACK(remmina_connection_window_delete_event), cnnhld);
 	g_signal_connect(G_OBJECT(cnnwin), "destroy", G_CALLBACK(remmina_connection_window_destroy), cnnhld);
 
-	/* focus-in-event and focus-out-event don't work when keyboard is grabbed
+	/* focus-in-event and focus-out-event don’t work when keyboard is grabbed
 	 * via gdk_device_grab. So we listen for window-state-event to detect focus in and focus out */
 	g_signal_connect(G_OBJECT(cnnwin), "window-state-event", G_CALLBACK(remmina_connection_window_state_event), cnnhld);
 
@@ -2819,7 +2819,7 @@ static void remmina_connection_window_initialize_notebook(GtkNotebook* to, GtkNo
 		}
 		if (tc) {
 			/* if cnnobj is already in the "from" notebook, we should be in the drag and drop case.
-			 * just... do not move it. GTK will do the move when the create-window signal
+			 * just… do not move it. GTK will do the move when the create-window signal
 			 * of GtkNotebook will return */
 
 		} else {
@@ -3589,7 +3589,7 @@ static void remmina_connection_object_on_connect(RemminaProtocolWidget* gp, Remm
 
 	GDateTime *date = g_date_time_new_now_utc();
 
-	/* This signal handler is called by a plugin when it's correctly connected
+	/* This signal handler is called by a plugin when it’s correctly connected
 	 * (and authenticated) */
 
 	if (!cnnobj->cnnhld) {
@@ -3881,7 +3881,7 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 				GTK_DIALOG_MODAL,
 				GTK_MESSAGE_WARNING,
 				GTK_BUTTONS_OK,
-				_("Warning: This plugin require GtkSocket, but it's not available."));
+				_("Warning: This plugin require GtkSocket, but it’s not available."));
 		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 		gtk_widget_show(dialog);
 		return NULL;	/* Should we destroy something before returning ? */

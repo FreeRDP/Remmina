@@ -107,7 +107,7 @@ static gboolean remmina_plugin_xdmcp_start_xephyr(RemminaProtocolWidget *gp)
 	argv[argc++] = g_strdup_printf("%i", gpdata->socket_id);
 
 	/* All Xephyr version between 1.5.0 and 1.6.4 will break when -screen argument is specified with -parent.
-	 * It's not possible to support color depth if you have those Xephyr version. Please see this bug
+	 * It’s not possible to support color depth if you have those Xephyr version. Please see this bug
 	 * http://bugs.freedesktop.org/show_bug.cgi?id=24144
 	 * As a workaround, a "Default" color depth will not add the -screen argument.
 	 */
@@ -152,7 +152,7 @@ static gboolean remmina_plugin_xdmcp_start_xephyr(RemminaProtocolWidget *gp)
 		argv[argc++] = g_strdup("-nolisten");
 		argv[argc++] = g_strdup("tcp");
 
-		/* FIXME: It's better to get the magic cookie back from xqproxy, then call xauth,
+		/* FIXME: It’s better to get the magic cookie back from xqproxy, then call xauth,
 		 * instead of disable access control */
 		argv[argc++] = g_strdup("-ac");
 	}
@@ -279,7 +279,7 @@ static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 	if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
 		if (pthread_create(&gpdata->thread, NULL, remmina_plugin_xdmcp_main_thread, gp)) {
 			remmina_plugin_service->protocol_plugin_set_error(gp,
-				"Failed to initialize pthread. Falling back to non-thread mode...");
+				"Failed to initialize pthread. Falling back to non-thread mode…");
 			gpdata->thread = 0;
 			return FALSE;
 		}else  {

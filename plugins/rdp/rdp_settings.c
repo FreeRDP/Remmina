@@ -264,7 +264,7 @@ static void remmina_rdp_settings_grid_load_quality(RemminaPluginRdpsetGrid* grid
 	GtkTreeIter iter;
 
 	gtk_list_store_append(grid->quality_store, &iter);
-	gtk_list_store_set(grid->quality_store, &iter, 0, -1, 1, _("<Choose a quality level to edit...>"), -1);
+	gtk_list_store_set(grid->quality_store, &iter, 0, -1, 1, _("<Choose a quality level to edit…>"), -1);
 	gtk_list_store_append(grid->quality_store, &iter);
 	gtk_list_store_set(grid->quality_store, &iter, 0, 0, 1, _("Poor (fastest)"), -1);
 	gtk_list_store_append(grid->quality_store, &iter);

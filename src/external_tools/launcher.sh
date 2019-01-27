@@ -15,6 +15,6 @@ $TERMNAME -e "$1" &
 
 #if [ "$2" = "1" ]
 #then
-#  echo "Hit a key to continue ..."
+#  echo "Hit a key to continue…"
 #  Pause
 #fi

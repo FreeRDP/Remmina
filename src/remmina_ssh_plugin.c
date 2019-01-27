@@ -250,10 +250,10 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	 *
 	 **/
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-	/* We save the ssh server name, so that we can restore it at the end of the connection */
+	/* We save the SSH server name, so that we can restore it at the end of the connection */
 	saveserver = remmina_plugin_service->file_get_string(remminafile, "ssh_server");
 	remmina_plugin_service->file_set_string(remminafile, "save_ssh_server", g_strdup(saveserver));
-	/* We save the ssh username, so that we can restore it at the end of the connection */
+	/* We save the SSH username, so that we can restore it at the end of the connection */
 	saveusername = remmina_plugin_service->file_get_string(remminafile, "ssh_username");
 	remmina_plugin_service->file_set_string(remminafile, "save_ssh_username", g_strdup(saveusername));
 
@@ -277,7 +277,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
         }
 
 	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
-	/* We restore the ssh username as the tunnel is set */
+	/* We restore the SSH username as the tunnel is set */
 	remmina_plugin_service->file_set_string(remminafile, "ssh_username", g_strdup(saveusername));
 	if (hostport == NULL) {
 		return FALSE;
@@ -788,7 +788,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	vte_terminal_set_color_background(VTE_TERMINAL(vte), &background_color);
 	vte_terminal_set_color_cursor(VTE_TERMINAL(vte), &cursor_color);
 #else
-	/* VTE <= 2.90 doesn't support GdkRGBA so we must convert GdkRGBA to GdkColor */
+	/* VTE <= 2.90 doesn’t support GdkRGBA so we must convert GdkRGBA to GdkColor */
 	foreground_gdkcolor.red = (guint16)(foreground_color.red * 0xFFFF);
 	foreground_gdkcolor.green = (guint16)(foreground_color.green * 0xFFFF);
 	foreground_gdkcolor.blue = (guint16)(foreground_color.blue * 0xFFFF);
@@ -861,7 +861,7 @@ remmina_plugin_ssh_open_connection(RemminaProtocolWidget *gp)
 
 	if (pthread_create(&gpdata->thread, NULL, remmina_plugin_ssh_main_thread, gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp,
-			"Failed to initialize pthread. Falling back to non-thread mode...");
+			"Failed to initialize pthread. Falling back to non-thread mode…");
 		gpdata->thread = 0;
 		return FALSE;
 	}else  {
@@ -914,7 +914,7 @@ remmina_plugin_ssh_query_feature(RemminaProtocolWidget *gp, const RemminaProtoco
  * In the Remmina Connection Window toolbar, there is a tool menu, this function is used to
  * call the right function for each entry with its parameters.
  *
- * At the moment it's possible to:
+ * At the moment it’s possible to:
  * - Open a new SSH session.
  * - Open an SFTP session.
  * - Select, copy and paste text.
@@ -958,7 +958,7 @@ remmina_plugin_ssh_call_feature(RemminaProtocolWidget *gp, const RemminaProtocol
 	}
 }
 
-/** Array of key/value pairs for ssh auth type*/
+/** Array of key/value pairs for SSH auth type*/
 static gpointer ssh_auth[] =
 {
 	"0", N_("Password"),

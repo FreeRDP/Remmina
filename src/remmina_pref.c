@@ -169,7 +169,7 @@ static void remmina_pref_init_keymap(void)
 static gboolean remmina_pref_file_do_copy(const char *src_path, const char *dst_path)
 {
 	GFile *src = g_file_new_for_path(src_path), *dst = g_file_new_for_path(dst_path);
-	/* We don't overwrite the target if it exists, because overwrite is not set */
+	/* We don’t overwrite the target if it exists, because overwrite is not set */
 	const gboolean ok = g_file_copy(src, dst, G_FILE_COPY_NONE, NULL, NULL, NULL, NULL);
 
 	g_object_unref(dst);

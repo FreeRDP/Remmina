@@ -127,7 +127,7 @@ void remmina_string_list_on_action_up(GtkWidget *widget, gpointer user_data)
 	if (gtk_tree_selection_get_selected(string_list->treeview_selection, NULL, &iter)) {
 		gtk_tree_selection_get_selected(string_list->treeview_selection, NULL, &target_iter);
 		path = gtk_tree_model_get_path(GTK_TREE_MODEL(string_list->liststore_items), &target_iter);
-		/* Before moving the TreeRow check if there's a previous item */
+		/* Before moving the TreeRow check if there’s a previous item */
 		if (gtk_tree_path_prev(path)) {
 			gtk_tree_model_get_iter(GTK_TREE_MODEL(string_list->liststore_items), &target_iter, path);
 			gtk_tree_path_free(path);

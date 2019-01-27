@@ -268,7 +268,7 @@ remmina_ssh_auth_agent(RemminaSSH* ssh)
 	ret = ssh_userauth_agent(ssh->session, NULL);
 
 	if (ret != SSH_AUTH_SUCCESS) {
-		remmina_ssh_set_error(ssh, _("SSH public key authentication with ssh agent failed: %s"));
+		remmina_ssh_set_error(ssh, _("SSH public key authentication with SSH agent failed: %s"));
 		return 0;
 	}
 
@@ -302,10 +302,10 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password)
 	gint method;
 	gint ret;
 
-	/* Check known host again to ensure it's still the original server when user forks
+	/* Check known host again to ensure it’s still the original server when user forks
 	   a new session from existing one */
 	if (ssh_is_server_known(ssh->session) != SSH_SERVER_KNOWN_OK) {
-		remmina_ssh_set_application_error(ssh, "SSH public key has changed!");
+		remmina_ssh_set_application_error(ssh, _("SSH public key has changed!"));
 		return 0;
 	}
 
@@ -376,7 +376,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	gboolean disablepasswordstoring;
 	gboolean save_password;
 
-	/* Check if the server's public key is known */
+	/* Check if the server’s public key is known */
 	ret = ssh_is_server_known(ssh->session);
 	switch (ret) {
 	case SSH_SERVER_KNOWN_OK:
@@ -388,12 +388,12 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	case SSH_SERVER_KNOWN_CHANGED:
 	case SSH_SERVER_FOUND_OTHER:
 		if ( ssh_get_publickey(ssh->session, &server_pubkey) != SSH_OK ) {
-			remmina_ssh_set_error(ssh, "ssh_get_publickey() has failed: %s");
+			remmina_ssh_set_error(ssh, _("ssh_get_publickey() has failed: %s"));
 			return 0;
 		}
 		if ( ssh_get_publickey_hash(server_pubkey, SSH_PUBLICKEY_HASH_MD5, &pubkey, &len) != 0 ) {
 			ssh_key_free(server_pubkey);
-			remmina_ssh_set_error(ssh, "ssh_get_publickey_hash() has failed: %s");
+			remmina_ssh_set_error(ssh, _("ssh_get_publickey_hash() has failed: %s"));
 			return 0;
 		}
 		ssh_key_free(server_pubkey);
@@ -422,25 +422,25 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 		break;
 	case SSH_SERVER_ERROR:
 	default:
-		remmina_ssh_set_error(ssh, "SSH known host checking failed: %s");
+		remmina_ssh_set_error(ssh, _("SSH known host checking failed: %s"));
 		return 0;
 	}
 
 	switch (ssh->auth) {
 	case SSH_AUTH_PASSWORD:
-		tips = _("Authenticating %s's password to SSH server %s...");
+		tips = _("Authenticating %s’s password to SSH server %s…");
 		keyname = _("SSH password");
 		pwdtype = "ssh_password";
 		break;
 	case SSH_AUTH_PUBLICKEY:
 	case SSH_AUTH_AGENT:
 	case SSH_AUTH_AUTO_PUBLICKEY:
-		tips = _("Authenticating %s's identity to SSH server %s...");
+		tips = _("Authenticating %s’s identity to SSH server %s…");
 		keyname = _("SSH private key passphrase");
 		pwdtype = "ssh_passphrase";
 		break;
 	case SSH_AUTH_GSSAPI:
-		tips = _("Authenticating %s's Kerberos to SSH server %s...");
+		tips = _("Authenticating %s’s Kerberos to SSH server %s…");
 		keyname = _("SSH Kerberos/GSSAPI");
 		pwdtype = "kerberos_token";
 		break;
@@ -581,7 +581,7 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 	}
 
 #ifdef HAVE_NETINET_TCP_H
-	/* Set keepalive on ssh socket, so we can keep firewalls awaken and detect
+	/* Set keepalive on SSH socket, so we can keep firewalls awaken and detect
 	 * when we loss the tunnel */
 	sshsock = ssh_get_fd(ssh->session);
 	if (sshsock >= 0) {
@@ -939,7 +939,7 @@ remmina_ssh_tunnel_create_forward_channel(RemminaSSHTunnel *tunnel)
 
 	channel = ssh_channel_new(tunnel->ssh.session);
 	if (!channel) {
-		remmina_ssh_set_error(REMMINA_SSH(tunnel), "Failed to create channel : %s");
+		remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Failed to create channel: %s"));
 		return NULL;
 	}
 
@@ -998,7 +998,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 
 	case REMMINA_SSH_TUNNEL_X11:
 		if ((tunnel->x11_channel = ssh_channel_new(tunnel->ssh.session)) == NULL) {
-			remmina_ssh_set_error(REMMINA_SSH(tunnel), "Failed to create channel : %s");
+			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Failed to create channel: %s"));
 			tunnel->thread = 0;
 			return NULL;
 		}
@@ -1012,13 +1012,13 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 		    ssh_channel_request_x11(tunnel->x11_channel, TRUE, NULL, ptr,
 			    gdk_x11_screen_get_screen_number(gdk_screen_get_default()))) {
 			g_free(ptr);
-			remmina_ssh_set_error(REMMINA_SSH(tunnel), "Failed to open channel : %s");
+			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Failed to open channel: %s"));
 			tunnel->thread = 0;
 			return NULL;
 		}
 		g_free(ptr);
 		if (ssh_channel_request_exec(tunnel->x11_channel, tunnel->dest)) {
-			ptr = g_strdup_printf(_("Failed to execute %s on SSH server : %%s"), tunnel->dest);
+			ptr = g_strdup_printf(_("Failed to execute %s on SSH server: %%s"), tunnel->dest);
 			remmina_ssh_set_error(REMMINA_SSH(tunnel), ptr);
 			g_free(ptr);
 			tunnel->thread = 0;
@@ -1056,7 +1056,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 #endif
 		}
 		if (tunnel->remotedisplay < 1) {
-			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Failed to request port forwarding : %s"));
+			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Failed to request port forwarding: %s"));
 			if (tunnel->disconnect_func) {
 				(*tunnel->disconnect_func)(tunnel, tunnel->callback_data);
 			}
@@ -1078,7 +1078,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 	case REMMINA_SSH_TUNNEL_REVERSE:
 #if LIBSSH_VERSION_INT >= SSH_VERSION_INT (0, 7, 0)
 		if (ssh_channel_listen_forward(REMMINA_SSH(tunnel)->session, NULL, tunnel->port, NULL)) {
-			remmina_ssh_set_error(REMMINA_SSH (tunnel), _("Failed to request port forwarding : %s"));
+			remmina_ssh_set_error(REMMINA_SSH (tunnel), _("Failed to request port forwarding: %s"));
 			if (tunnel->disconnect_func) {
 				(*tunnel->disconnect_func)(tunnel, tunnel->callback_data);
 			}
@@ -1087,7 +1087,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 		}
 #else
 		if (ssh_forward_listen(REMMINA_SSH(tunnel)->session, NULL, tunnel->port, NULL)) {
-			remmina_ssh_set_error(REMMINA_SSH (tunnel), _("Failed to request port forwarding : %s"));
+			remmina_ssh_set_error(REMMINA_SSH (tunnel), _("Failed to request port forwarding: %s"));
 			if (tunnel->disconnect_func) {
 				(*tunnel->disconnect_func)(tunnel, tunnel->callback_data);
 			}
@@ -1111,7 +1111,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 	tunnel->buffer_len = 10240;
 	tunnel->buffer = g_malloc(tunnel->buffer_len);
 
-	/* Start the tunnel data transmittion */
+	/* Start the tunnel data transmission */
 	while (tunnel->running) {
 		if (tunnel->tunnel_type == REMMINA_SSH_TUNNEL_XPORT ||
 		    tunnel->tunnel_type == REMMINA_SSH_TUNNEL_X11 ||
@@ -1145,7 +1145,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 				}
 			}else if (tunnel->tunnel_type != REMMINA_SSH_TUNNEL_REVERSE) {
 				/* Poll once per some period of time if no incoming connections.
-				 * Don't try to poll continuously as it will significantly slow down the loop */
+				 * Don’t try to poll continuously as it will significantly slow down the loop */
 				g_get_current_time(&t1);
 				diff = (t1.tv_sec - t2.tv_sec) * 10 + (t1.tv_usec - t2.tv_usec) / 100000;
 				if (diff > 1) {
@@ -1168,7 +1168,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 					sock = socket(AF_INET, SOCK_STREAM, 0);
 					if (connect(sock, (struct sockaddr *)&sin, sizeof(sin)) < 0) {
 						remmina_ssh_set_application_error(REMMINA_SSH(tunnel),
-							"Cannot connect to local port %i.", tunnel->localport);
+							_("Cannot connect to local port %i."), tunnel->localport);
 						close(sock);
 						sock = -1;
 					}
@@ -1219,13 +1219,13 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 						lenw = ssh_channel_write(tunnel->channels[i], (char*)ptr, len);
 						if (lenw <= 0) {
 							disconnected = TRUE;
-							remmina_ssh_set_error(REMMINA_SSH(tunnel), "ssh_channel_write() returned an error: %s");
+							remmina_ssh_set_error(REMMINA_SSH(tunnel), _("ssh_channel_write() returned an error: %s"));
 							break;
 						}
 					}
 				}
 				if (len == 0) {
-					remmina_ssh_set_error(REMMINA_SSH(tunnel), "read on tunnel listening socket returned an error: %s");
+					remmina_ssh_set_error(REMMINA_SSH(tunnel), _("read on tunnel listening socket returned an error: %s"));
 					disconnected = TRUE;
 				}
 			}
@@ -1244,13 +1244,13 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 			if (!tunnel->socketbuffers[i]) {
 				len = ssh_channel_poll(tunnel->channels[i], 0);
 				if (len == SSH_ERROR || len == SSH_EOF) {
-					remmina_ssh_set_error(REMMINA_SSH(tunnel), "ssh_channel_poll() returned an error : %s");
+					remmina_ssh_set_error(REMMINA_SSH(tunnel), _("ssh_channel_poll() returned an error: %s"));
 					disconnected = TRUE;
 				}else if (len > 0) {
 					tunnel->socketbuffers[i] = remmina_ssh_tunnel_buffer_new(len);
 					len = ssh_channel_read_nonblocking(tunnel->channels[i], tunnel->socketbuffers[i]->data, len, 0);
 					if (len <= 0) {
-						remmina_ssh_set_error(REMMINA_SSH(tunnel), "ssh_channel_read_nonblocking() returned an error : %s");
+						remmina_ssh_set_error(REMMINA_SSH(tunnel), _("ssh_channel_read_nonblocking() returned an error: %s"));
 						disconnected = TRUE;
 					}else  {
 						tunnel->socketbuffers[i]->len = len;
@@ -1263,13 +1263,13 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 				     tunnel->socketbuffers[i]->len -= lenw, tunnel->socketbuffers[i]->ptr += lenw) {
 					lenw = write(tunnel->sockets[i], tunnel->socketbuffers[i]->ptr, tunnel->socketbuffers[i]->len);
 					if (lenw == -1 && errno == EAGAIN && tunnel->running) {
-						/* Sometimes we cannot write to a socket (always EAGAIN), probably because it's internal
+						/* Sometimes we cannot write to a socket (always EAGAIN), probably because it’s internal
 						 * buffer is full. We need read the pending bytes from the socket first. so here we simply
 						 * break, leave the buffer there, and continue with other data */
 						break;
 					}
 					if (lenw <= 0) {
-						remmina_ssh_set_error(REMMINA_SSH(tunnel), "write on tunnel listening socket returned an error: %s");
+						remmina_ssh_set_error(REMMINA_SSH(tunnel), _("write on tunnel listening socket returned an error: %s"));
 						disconnected = TRUE;
 						break;
 					}
@@ -1348,14 +1348,14 @@ remmina_ssh_tunnel_open(RemminaSSHTunnel* tunnel, const gchar *host, gint port, 
 	tunnel->dest = g_strdup(host);
 	tunnel->port = port;
 	if (tunnel->port == 0) {
-		REMMINA_SSH(tunnel)->error = g_strdup("Destination port has not been assigned");
+		REMMINA_SSH(tunnel)->error = g_strdup(_("Destination port has not been assigned"));
 		return FALSE;
 	}
 
 	/* Create the server socket that listens on the local port */
 	sock = socket(AF_INET, SOCK_STREAM, 0);
 	if (sock < 0) {
-		REMMINA_SSH(tunnel)->error = g_strdup("Failed to create socket.");
+		REMMINA_SSH(tunnel)->error = g_strdup(_("Failed to create socket."));
 		return FALSE;
 	}
 	setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &sockopt, sizeof(sockopt));
@@ -1365,13 +1365,13 @@ remmina_ssh_tunnel_open(RemminaSSHTunnel* tunnel, const gchar *host, gint port, 
 	sin.sin_addr.s_addr = inet_addr("127.0.0.1");
 
 	if (bind(sock, (struct sockaddr *)&sin, sizeof(sin))) {
-		REMMINA_SSH(tunnel)->error = g_strdup("Failed to bind on local port.");
+		REMMINA_SSH(tunnel)->error = g_strdup(_("Failed to bind on local port."));
 		close(sock);
 		return FALSE;
 	}
 
 	if (listen(sock, 1)) {
-		REMMINA_SSH(tunnel)->error = g_strdup("Failed to listen on local port.");
+		REMMINA_SSH(tunnel)->error = g_strdup(_("Failed to listen on local port."));
 		close(sock);
 		return FALSE;
 	}
@@ -1380,7 +1380,7 @@ remmina_ssh_tunnel_open(RemminaSSHTunnel* tunnel, const gchar *host, gint port, 
 	tunnel->running = TRUE;
 
 	if (pthread_create(&tunnel->thread, NULL, remmina_ssh_tunnel_main_thread, tunnel)) {
-		remmina_ssh_set_application_error(REMMINA_SSH(tunnel), "Failed to initialize pthread.");
+		remmina_ssh_set_application_error(REMMINA_SSH(tunnel), _("Failed to initialize pthread."));
 		tunnel->thread = 0;
 		return FALSE;
 	}
@@ -1396,7 +1396,7 @@ remmina_ssh_tunnel_x11(RemminaSSHTunnel *tunnel, const gchar *cmd)
 	tunnel->running = TRUE;
 
 	if (pthread_create(&tunnel->thread, NULL, remmina_ssh_tunnel_main_thread, tunnel)) {
-		remmina_ssh_set_application_error(REMMINA_SSH(tunnel), "Failed to initialize pthread.");
+		remmina_ssh_set_application_error(REMMINA_SSH(tunnel), _("Failed to initialize pthread."));
 		tunnel->thread = 0;
 		return FALSE;
 	}
@@ -1412,7 +1412,7 @@ remmina_ssh_tunnel_xport(RemminaSSHTunnel *tunnel, gboolean bindlocalhost)
 	tunnel->running = TRUE;
 
 	if (pthread_create(&tunnel->thread, NULL, remmina_ssh_tunnel_main_thread, tunnel)) {
-		remmina_ssh_set_application_error(REMMINA_SSH(tunnel), "Failed to initialize pthread.");
+		remmina_ssh_set_application_error(REMMINA_SSH(tunnel), _("Failed to initialize pthread."));
 		tunnel->thread = 0;
 		return FALSE;
 	}
@@ -1429,7 +1429,7 @@ remmina_ssh_tunnel_reverse(RemminaSSHTunnel *tunnel, gint port, gint local_port)
 	tunnel->running = TRUE;
 
 	if (pthread_create(&tunnel->thread, NULL, remmina_ssh_tunnel_main_thread, tunnel)) {
-		remmina_ssh_set_application_error(REMMINA_SSH(tunnel), "Failed to initialize pthread.");
+		remmina_ssh_set_application_error(REMMINA_SSH(tunnel), _("Failed to initialize pthread."));
 		tunnel->thread = 0;
 		return FALSE;
 	}
@@ -1518,11 +1518,11 @@ remmina_sftp_open(RemminaSFTP *sftp)
 	TRACE_CALL(__func__);
 	sftp->sftp_sess = sftp_new(sftp->ssh.session);
 	if (!sftp->sftp_sess) {
-		remmina_ssh_set_error(REMMINA_SSH(sftp), _("Failed to create sftp session: %s"));
+		remmina_ssh_set_error(REMMINA_SSH(sftp), _("Failed to create SFTP session: %s"));
 		return FALSE;
 	}
 	if (sftp_init(sftp->sftp_sess)) {
-		remmina_ssh_set_error(REMMINA_SSH(sftp), _("Failed to initialize sftp session: %s"));
+		remmina_ssh_set_error(REMMINA_SSH(sftp), _("Failed to initialize SFTP session: %s"));
 		return FALSE;
 	}
 	return TRUE;
@@ -1607,7 +1607,7 @@ remmina_ssh_shell_thread(gpointer data)
 	if ((channel = ssh_channel_new(REMMINA_SSH(shell)->session)) == NULL ||
 	    ssh_channel_open_session(channel)) {
 		UNLOCK_SSH(shell)
-		remmina_ssh_set_error(REMMINA_SSH(shell), "Failed to open channel : %s");
+		remmina_ssh_set_error(REMMINA_SSH(shell), _("Failed to open channel: %s"));
 		if (channel) ssh_channel_free(channel);
 		shell->thread = 0;
 		return NULL;
@@ -1637,7 +1637,7 @@ remmina_ssh_shell_thread(gpointer data)
 	}
 	if (ret) {
 		UNLOCK_SSH(shell)
-		remmina_ssh_set_error(REMMINA_SSH(shell), "Failed to request shell : %s");
+		remmina_ssh_set_error(REMMINA_SSH(shell), _("Failed to request shell: %s"));
 		ssh_channel_close(channel);
 		ssh_channel_send_eof(channel);
 		ssh_channel_free(channel);
@@ -1731,7 +1731,7 @@ remmina_ssh_shell_open(RemminaSSHShell *shell, RemminaSSHExitFunc exit_callback,
 	    unlockpt(shell->master) == -1 ||
 	    (slavedevice = ptsname(shell->master)) == NULL ||
 	    (shell->slave = open(slavedevice, O_RDWR | O_NOCTTY)) < 0) {
-		REMMINA_SSH(shell)->error = g_strdup("Failed to create pty device.");
+		REMMINA_SSH(shell)->error = g_strdup(_("Failed to create pty device."));
 		return FALSE;
 	}
 
@@ -1780,7 +1780,7 @@ remmina_ssh_shell_free(RemminaSSHShell *shell)
 		g_free(shell->exec);
 		shell->exec = NULL;
 	}
-	/* It's not necessary to close shell->slave since the other end (vte) will close it */;
+	/* It’s not necessary to close shell->slave since the other end (vte) will close it */;
 	remmina_ssh_free(REMMINA_SSH(shell));
 }
 

@@ -96,7 +96,7 @@ remmina_widget_pool_find_by_window(GType type, GdkWindow *window)
 		widget = GTK_WIDGET(g_ptr_array_index(remmina_widget_pool, i));
 		if (!G_TYPE_CHECK_INSTANCE_TYPE(widget, type))
 			continue;
-		/* gdk_window_get_toplevel won't work here, if the window is an embedded client. So we iterate the window tree */
+		/* gdk_window_get_toplevel won’t work here, if the window is an embedded client. So we iterate the window tree */
 		for (parent = window; parent && parent != GDK_WINDOW_ROOT; parent = gdk_window_get_parent(parent)) {
 			if (gtk_widget_get_window(widget) == parent)
 				return widget;

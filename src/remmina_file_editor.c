@@ -416,7 +416,7 @@ static void remmina_file_editor_create_server(RemminaFileEditor* gfe, const Remm
 		gtk_widget_show(hbox);
 		gtk_box_pack_start(GTK_BOX(hbox), widget, TRUE, TRUE, 0);
 
-		widget = gtk_button_new_with_label("...");
+		widget = gtk_button_new_with_label("…");
 		s = g_strdup_printf(_("Browse the network to find a %s server"), plugin->name);
 		gtk_widget_set_tooltip_text(widget, s);
 		g_free(s);
@@ -552,7 +552,7 @@ static void remmina_file_editor_create_resolution(RemminaFileEditor* gfe, const 
 	gtk_box_pack_start(GTK_BOX(hbox), widget, TRUE, TRUE, 0);
 	gfe->priv->resolution_custom_combo = widget;
 
-	widget = gtk_button_new_with_label("...");
+	widget = gtk_button_new_with_label("…");
 	gtk_widget_show(widget);
 	gtk_box_pack_start(GTK_BOX(hbox), widget, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_file_editor_browse_resolution), gfe);
@@ -791,7 +791,7 @@ static void remmina_file_editor_create_settings(RemminaFileEditor* gfe, GtkWidge
 			grid_column++;
 		}
 		/* Add a new settings row and move to the first column
-		 * if the setting doesn't want the compactness
+		 * if the setting doesn’t want the compactness
 		 * or we already have two columns */
 		if (!settings->compact || grid_column > 1) {
 			grid_row++;

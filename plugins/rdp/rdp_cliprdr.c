@@ -466,7 +466,7 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionDa
 
 	clipboard = &(rfi->clipboard);
 	if ( clipboard->srv_clip_data_wait != SCDW_NONE ) {
-		remmina_plugin_service->log_printf("[RDP] Cannot paste now, I'm transferring clipboard data from server. Try again later\n");
+		remmina_plugin_service->log_printf("[RDP] Cannot paste now, I’m transferring clipboard data from server. Try again later\n");
 		return;
 	}
 
@@ -735,7 +735,7 @@ void remmina_rdp_cliprdr_set_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 void remmina_rdp_cliprdr_detach_owner(RemminaProtocolWidget* gp)
 {
 	/* When closing a rdp connection, we should check if gp is a clipboard owner.
-	 * If it's an owner, detach it from the clipboard */
+	 * If it’s an owner, detach it from the clipboard */
 	TRACE_CALL(__func__);
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	GtkClipboard* gtkClipboard;

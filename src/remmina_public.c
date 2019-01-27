@@ -300,12 +300,12 @@ void remmina_public_popup_position(GtkMenu *menu, gint *x, gint *y, gboolean *pu
 	}
 	gdk_window_get_origin(gtk_widget_get_window(widget), &tx, &ty);
 	gtk_widget_get_allocation(widget, &allocation);
-	/* I'm unsure why the author made the check about a GdkWindow inside the
+	/* I’m unsure why the author made the check about a GdkWindow inside the
 	 * widget argument. This function generally is called passing by a ToolButton
-	 * which hasn't any GdkWindow, therefore the positioning is wrong
+	 * which hasn’t any GdkWindow, therefore the positioning is wrong
 	 * I think the gtk_widget_get_has_window() check should be removed
 	 *
-	 * While leaving the previous check intact I'm checking also if the provided
+	 * While leaving the previous check intact I’m checking also if the provided
 	 * widget is a GtkToggleToolButton and position the menu accordingly. */
 	if (gtk_widget_get_has_window(widget) ||
 	    g_strcmp0(gtk_widget_get_name(widget), "GtkToggleToolButton") == 0) {
@@ -420,7 +420,7 @@ gint remmina_public_open_xdisplay(const gchar *disp)
 	ptr = g_strrstr(display, ":");
 	if (ptr) {
 		*ptr++ = '\0';
-		/* Assume you are using a local display... might need to implement remote display in the future */
+		/* Assume you are using a local display… might need to implement remote display in the future */
 		if (display[0] == '\0' || strcmp(display, "unix") == 0) {
 			port = atoi(ptr);
 			sock = socket(AF_UNIX, SOCK_STREAM, 0);

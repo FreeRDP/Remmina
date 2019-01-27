@@ -107,7 +107,7 @@ gchar* remmina_crypt_encrypt(const gchar *str)
 		return NULL;
 
 	buf_len = strlen(str);
-	/* Pack to 64bit block size, and make sure it's always 0-terminated */
+	/* Pack to 64bit block size, and make sure it’s always 0-terminated */
 	buf_len += 8 - buf_len % 8;
 	buf = (guchar*)g_malloc(buf_len);
 	memset(buf, 0, buf_len);
