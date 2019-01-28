@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-01-17 22:30+0100\n"
+"POT-Creation-Date: 2019-01-28 07:39+0100\n"
 "PO-Revision-Date: 2019-01-11 19:26+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -38,8 +38,8 @@ msgstr ""
 "Kan ikke importere:\n"
 "%s"
 
-#: src/remmina_main.c:879 data/ui/remmina_main.glade:179
-#: data/ui/remmina_main.glade:180 data/ui/remmina_main.glade:402
+#: src/remmina_main.c:879 data/ui/remmina_main.glade:175
+#: data/ui/remmina_main.glade:176 data/ui/remmina_main.glade:398
 msgid "Import"
 msgstr "Importér"
 
@@ -93,6 +93,20 @@ msgstr "Autentifikation af offentlig SSH-nøgle med ssh-agent mislykkedes: %s"
 msgid "SSH Kerberos/GSSAPI authentication failed: %s"
 msgstr "Autentifikation af SSH-Kerberos/GSSAPI mislykkedes: %s"
 
+#: src/remmina_ssh.c:308
+msgid "SSH public key has changed!"
+msgstr ""
+
+#: src/remmina_ssh.c:391
+#, c-format
+msgid "ssh_get_publickey() has failed: %s"
+msgstr ""
+
+#: src/remmina_ssh.c:396
+#, c-format
+msgid "ssh_get_publickey_hash() has failed: %s"
+msgstr ""
+
 #: src/remmina_ssh.c:404
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "Serveren er ukendt. Fingeraftrykket af den offentlige nøgle er:"
@@ -112,12 +126,17 @@ msgstr ""
 "eller at administratoren har ændret nøglen. Det nye fingeraftryk til den "
 "offentlige nøgle er:"
 
+#: src/remmina_ssh.c:425
+#, c-format
+msgid "SSH known host checking failed: %s"
+msgstr ""
+
 #: src/remmina_ssh.c:431
 #, c-format
 msgid "Authenticating %s’s password to SSH server %s…"
 msgstr "Autentificerer %s’s adgangskode på SSH-serveren %s…"
 
-#: src/remmina_ssh.c:432 src/remmina_protocol_widget.c:1221
+#: src/remmina_ssh.c:432 src/remmina_protocol_widget.c:1226
 msgid "SSH password"
 msgstr "SSH-adgangskode"
 
@@ -126,7 +145,7 @@ msgstr "SSH-adgangskode"
 msgid "Authenticating %s’s identity to SSH server %s…"
 msgstr "Autentificerer %s’s identitet på SSH-serveren %s…"
 
-#: src/remmina_ssh.c:439 src/remmina_protocol_widget.c:1224
+#: src/remmina_ssh.c:439 src/remmina_protocol_widget.c:1229
 msgid "SSH private key passphrase"
 msgstr "Nøgleord for privat SSH-nøgle"
 
@@ -144,10 +163,20 @@ msgstr "SSH-Kerberos/GSSAPI"
 msgid "Failed to startup SSH session: %s"
 msgstr "Kunne ikke åbne SSH-session: %s"
 
+#: src/remmina_ssh.c:942 src/remmina_ssh.c:1001
+#, c-format
+msgid "Failed to create channel: %s"
+msgstr ""
+
 #: src/remmina_ssh.c:951
 #, c-format
 msgid "Failed to connect to the SSH tunnel destination: %s"
 msgstr "Kunne ikke oprette forbindelse til SSH-tunnel destinationen: %s"
+
+#: src/remmina_ssh.c:1015 src/remmina_ssh.c:1610
+#, c-format
+msgid "Failed to open channel: %s"
+msgstr ""
 
 #: src/remmina_ssh.c:1021
 #, c-format
@@ -163,6 +192,57 @@ msgstr "Kunne ikke anmode om viderestilling af port: %s"
 msgid "No response from the server."
 msgstr "Intet svar fra serveren."
 
+#: src/remmina_ssh.c:1171
+#, c-format
+msgid "Cannot connect to local port %i."
+msgstr ""
+
+#: src/remmina_ssh.c:1222
+#, c-format
+msgid "ssh_channel_write() returned an error: %s"
+msgstr ""
+
+#: src/remmina_ssh.c:1228
+#, c-format
+msgid "read on tunnel listening socket returned an error: %s"
+msgstr ""
+
+#: src/remmina_ssh.c:1247
+#, c-format
+msgid "ssh_channel_poll() returned an error: %s"
+msgstr ""
+
+#: src/remmina_ssh.c:1253
+#, c-format
+msgid "ssh_channel_read_nonblocking() returned an error: %s"
+msgstr ""
+
+#: src/remmina_ssh.c:1272
+#, c-format
+msgid "write on tunnel listening socket returned an error: %s"
+msgstr ""
+
+#: src/remmina_ssh.c:1351
+msgid "Destination port has not been assigned"
+msgstr ""
+
+#: src/remmina_ssh.c:1358
+msgid "Failed to create socket."
+msgstr ""
+
+#: src/remmina_ssh.c:1368
+msgid "Failed to bind on local port."
+msgstr ""
+
+#: src/remmina_ssh.c:1374
+msgid "Failed to listen on local port."
+msgstr ""
+
+#: src/remmina_ssh.c:1383 src/remmina_ssh.c:1399 src/remmina_ssh.c:1415
+#: src/remmina_ssh.c:1432
+msgid "Failed to initialize pthread."
+msgstr ""
+
 #: src/remmina_ssh.c:1521
 #, c-format
 msgid "Failed to create SFTP session: %s"
@@ -172,6 +252,15 @@ msgstr "Kunne ikke oprette sftp-session: %s"
 #, c-format
 msgid "Failed to initialize SFTP session: %s"
 msgstr "Kunne ikke initiere sftp-session: %s"
+
+#: src/remmina_ssh.c:1640
+#, c-format
+msgid "Failed to request shell: %s"
+msgstr ""
+
+#: src/remmina_ssh.c:1734
+msgid "Failed to create pty device."
+msgstr ""
 
 #: src/remmina_sftp_client.c:170
 #, c-format
@@ -256,8 +345,8 @@ msgstr "Overskriv"
 #. Buttons, ok and cancel
 #. gtk_grid_attach(GTK_GRID(grid), button_ok, 0, grid_row, 1, 1);
 #. Buttons, ok and cancel
-#: src/remmina_sftp_client.c:917 src/remmina_message_panel.c:432
-#: src/remmina_message_panel.c:603 src/remmina_file_editor.c:159
+#: src/remmina_sftp_client.c:917 src/remmina_message_panel.c:433
+#: src/remmina_message_panel.c:604 src/remmina_file_editor.c:159
 #: src/remmina_file_editor.c:356 src/remmina_file_editor.c:1280
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_key_chooser.glade:8
@@ -298,8 +387,8 @@ msgstr "Download"
 msgid "Upload"
 msgstr "Upload"
 
-#: src/remmina_ftp_client.c:662 data/ui/remmina_main.glade:107
-#: data/ui/remmina_main.glade:108
+#: src/remmina_ftp_client.c:662 data/ui/remmina_main.glade:105
+#: data/ui/remmina_main.glade:106
 msgid "_Delete"
 msgstr "_Slet"
 
@@ -320,7 +409,7 @@ msgid "Go to parent folder"
 msgstr "Gå til overliggende mappe"
 
 #: src/remmina_ftp_client.c:763 plugins/rdp/rdp_plugin.c:1597
-#: plugins/vnc/vnc_plugin.c:1912
+#: plugins/vnc/vnc_plugin.c:1923
 msgid "Refresh"
 msgstr "Opdater"
 
@@ -359,7 +448,7 @@ msgstr "Bruger"
 #. Profile: Group
 #: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1413
 #: data/ui/remmina_mpc.glade:99 data/ui/remmina_mpc.glade:325
-#: data/ui/remmina_main.glade:606
+#: data/ui/remmina_main.glade:602
 msgid "Group"
 msgstr "Gruppe"
 
@@ -428,7 +517,7 @@ msgid "Recent lists cleared."
 msgstr "Seneste-liste ryddet."
 
 #. Add a keystrokes submenu
-#: src/remmina_pref_dialog.c:142 src/remmina_connection_window.c:1643
+#: src/remmina_pref_dialog.c:142 src/remmina_connection_window.c:1692
 #: data/ui/remmina_preferences.glade:252
 msgid "Keystrokes"
 msgstr "Tastetryk"
@@ -468,124 +557,124 @@ msgstr "Remmina-applet"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Opret forbindelse til fjernskriveborde gennem applet-menuen"
 
-#: src/remmina_protocol_widget.c:263
+#: src/remmina_protocol_widget.c:268
 msgid "Open Secure Shell in New Terminal…"
 msgstr "Åbn sikker skal i en ny terminal…"
 
-#: src/remmina_protocol_widget.c:269
+#: src/remmina_protocol_widget.c:274
 msgid "Open Secure File Transfer…"
 msgstr "Åbn sikker filoverførsel…"
 
-#: src/remmina_protocol_widget.c:297
+#: src/remmina_protocol_widget.c:302
 msgid "Executing external commands…"
 msgstr "Eksekverer eksterne kommandoer…"
 
-#: src/remmina_protocol_widget.c:304
+#: src/remmina_protocol_widget.c:309
 #, c-format
 msgid "Connecting to '%s'…"
 msgstr "Opretter forbindelse til '%s'…"
 
-#: src/remmina_protocol_widget.c:653
+#: src/remmina_protocol_widget.c:658
 #, c-format
 msgid "Connecting to SSH server %s…"
 msgstr "Opretter forbindelse til SSH-serveren %s…"
 
-#: src/remmina_protocol_widget.c:736 src/remmina_protocol_widget.c:913
+#: src/remmina_protocol_widget.c:741 src/remmina_protocol_widget.c:918
 #, c-format
 msgid "Connecting to %s through SSH tunnel…"
 msgstr "Opretter forbindelse til %s gennem SSH-tunnel…"
 
-#: src/remmina_protocol_widget.c:788
+#: src/remmina_protocol_widget.c:793
 #, c-format
 msgid "Waiting for an incoming SSH tunnel at port %i…"
 msgstr "Venter på en indgående SSH-tunnel på port %i…"
 
-#: src/remmina_protocol_widget.c:834
+#: src/remmina_protocol_widget.c:839
 #, c-format
 msgid "Command %s not found on SSH server"
 msgstr "Kommandoen %s ikke fundet på SSH-server"
 
-#: src/remmina_protocol_widget.c:838
+#: src/remmina_protocol_widget.c:843
 #, c-format
 msgid "Command %s failed on SSH server (status = %i)."
 msgstr "Kommandoen %s mislykkedes på SSH-server (status = %i)."
 
-#: src/remmina_protocol_widget.c:845
+#: src/remmina_protocol_widget.c:850
 #, c-format
 msgid "Failed to execute command: %s"
 msgstr "Kunne ikke udføre kommandoen: %s"
 
-#: src/remmina_protocol_widget.c:1110 src/remmina_protocol_widget.c:1121
+#: src/remmina_protocol_widget.c:1115 src/remmina_protocol_widget.c:1126
 msgid "Enter authentication credentials"
 msgstr "Indtast loginoplysninger for autentifikation"
 
-#: src/remmina_protocol_widget.c:1200 src/remmina_protocol_widget.c:1227
+#: src/remmina_protocol_widget.c:1205 src/remmina_protocol_widget.c:1232
 #: src/remmina_sftp_plugin.c:323 src/remmina_ssh_plugin.c:964
 #: src/remmina_file_editor.c:926 data/ui/remmina_mpc.glade:113
 msgid "Password"
 msgstr "Adgangskode"
 
-#: src/remmina_protocol_widget.c:1218
+#: src/remmina_protocol_widget.c:1223
 #, c-format
 msgid "%s password"
 msgstr "%s adgangskode"
 
-#: src/remmina_protocol_widget.c:1254
+#: src/remmina_protocol_widget.c:1259
 msgid "Certificate Details:"
 msgstr "Certifikatdetaljer:"
 
-#: src/remmina_protocol_widget.c:1255 src/remmina_protocol_widget.c:1277
+#: src/remmina_protocol_widget.c:1260 src/remmina_protocol_widget.c:1282
 msgid "Subject:"
 msgstr "Emne:"
 
-#: src/remmina_protocol_widget.c:1256 src/remmina_protocol_widget.c:1278
+#: src/remmina_protocol_widget.c:1261 src/remmina_protocol_widget.c:1283
 msgid "Issuer:"
 msgstr "Udsteder:"
 
-#: src/remmina_protocol_widget.c:1257
+#: src/remmina_protocol_widget.c:1262
 msgid "Fingerprint:"
 msgstr "Fingeraftryk:"
 
-#: src/remmina_protocol_widget.c:1258
+#: src/remmina_protocol_widget.c:1263
 msgid "Accept Certificate?"
 msgstr "Accepter certifikat?"
 
-#: src/remmina_protocol_widget.c:1276
+#: src/remmina_protocol_widget.c:1281
 msgid "Certificate Changed! Details:"
 msgstr "Certifikatet er blevet ændret! Detaljer:"
 
-#: src/remmina_protocol_widget.c:1279
+#: src/remmina_protocol_widget.c:1284
 msgid "Old Fingerprint:"
 msgstr "Gammelt fingeraftryk:"
 
-#: src/remmina_protocol_widget.c:1280
+#: src/remmina_protocol_widget.c:1285
 msgid "New Fingerprint:"
 msgstr "Nyt fingeraftryk:"
 
-#: src/remmina_protocol_widget.c:1281
+#: src/remmina_protocol_widget.c:1286
 msgid "Accept Changed Certificate?"
 msgstr "Accepter ændret certifikat?"
 
-#: src/remmina_protocol_widget.c:1412
+#: src/remmina_protocol_widget.c:1417
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Lytter på port %i efter en indgående %s-forbindelse…"
 
-#: src/remmina_protocol_widget.c:1437
+#: src/remmina_protocol_widget.c:1442
 msgid "Authentication failed. Trying to reconnect…"
 msgstr "Autentifikation mislykkedes. Prøver at oprette forbindelse igen…"
 
-#: src/remmina_protocol_widget.c:1501 src/remmina_file_editor.c:396
-#: src/remmina_file_editor.c:876 data/ui/remmina_main.glade:620
+#: src/remmina_protocol_widget.c:1506 src/remmina_file_editor.c:396
+#: src/remmina_file_editor.c:876 data/ui/remmina_main.glade:616
 msgid "Server"
 msgstr "Server"
 
-#: src/remmina_protocol_widget.c:1518
+#: src/remmina_protocol_widget.c:1523
 #, c-format
 msgid "Protocol plugin %s is not installed."
 msgstr "Protokol-pluginet %s er ikke installeret."
 
-#: src/remmina_connection_window.c:581
+#: src/remmina_connection_window.c:588
 #, c-format
 msgid ""
 "There are %i active connections in the current window. Are you sure to close?"
@@ -593,23 +682,23 @@ msgstr ""
 "Der er %i aktive forbindelser i det nuværende vindue. Er du sikker på, at du "
 "vil lukke?"
 
-#: src/remmina_connection_window.c:1120
+#: src/remmina_connection_window.c:1169
 msgid "Viewport fullscreen mode"
 msgstr "Viewport - fuldskærmstilstand"
 
-#: src/remmina_connection_window.c:1129
+#: src/remmina_connection_window.c:1178
 msgid "Scrolled fullscreen mode"
 msgstr "Rullet - fuldskærmstilstand"
 
-#: src/remmina_connection_window.c:1200
+#: src/remmina_connection_window.c:1249
 msgid "Keep aspect ratio when scaled"
 msgstr "Bevar højde-bredde-forhold når skaleret"
 
-#: src/remmina_connection_window.c:1209
+#: src/remmina_connection_window.c:1258
 msgid "Fill client window when scaled"
 msgstr "Udfyld klientens vindue når skaleret"
 
-#: src/remmina_connection_window.c:1746
+#: src/remmina_connection_window.c:1795
 msgid ""
 "Warning: screenshot is scaled or distorted. Disable scaling to have better "
 "screenshot."
@@ -618,123 +707,123 @@ msgstr ""
 "for at få et bedre skærmbillede."
 
 #. send a desktop notification
-#: src/remmina_connection_window.c:1807
+#: src/remmina_connection_window.c:1856
 msgid "Screenshot taken"
 msgstr "Skærmbillede taget"
 
-#: src/remmina_connection_window.c:1874
+#: src/remmina_connection_window.c:1923
 msgid "Resize the window to fit in remote resolution"
 msgstr "Tilpas størrelsen på vinduet efter serverens opløsning"
 
-#: src/remmina_connection_window.c:1885 data/ui/remmina_preferences.glade:740
+#: src/remmina_connection_window.c:1934 data/ui/remmina_preferences.glade:740
 msgid "Toggle fullscreen mode"
 msgstr "Fuldskærmstilstand til/fra"
 
-#: src/remmina_connection_window.c:1931 data/ui/remmina_preferences.glade:796
+#: src/remmina_connection_window.c:1980 data/ui/remmina_preferences.glade:796
 msgid "Switch tab pages"
 msgstr "Skift faneblade"
 
-#: src/remmina_connection_window.c:1945
+#: src/remmina_connection_window.c:1994
 msgid "Toggle dynamic resolution update"
 msgstr "Opdatering af dynamisk opløsning til/fra"
 
-#: src/remmina_connection_window.c:1955 data/ui/remmina_preferences.glade:837
+#: src/remmina_connection_window.c:2004 data/ui/remmina_preferences.glade:837
 msgid "Toggle scaled mode"
 msgstr "Skaleret tilstand til/fra"
 
-#: src/remmina_connection_window.c:1991
+#: src/remmina_connection_window.c:2040
 msgid "Grab all keyboard events"
 msgstr "Fang alle tastetryk"
 
-#: src/remmina_connection_window.c:2000 data/ui/remmina_main.glade:42
+#: src/remmina_connection_window.c:2049 data/ui/remmina_main.glade:42
 #: data/ui/remmina_main.glade:43
 msgid "Preferences"
 msgstr "Præferencer"
 
-#: src/remmina_connection_window.c:2008 src/remmina_connection_window.c:2009
+#: src/remmina_connection_window.c:2057 src/remmina_connection_window.c:2058
 msgid "Tools"
 msgstr "Værktøjer"
 
-#: src/remmina_connection_window.c:2021 data/ui/remmina_preferences.glade:978
+#: src/remmina_connection_window.c:2070 data/ui/remmina_preferences.glade:978
 msgid "Screenshot"
 msgstr "Skærmbillede"
 
-#: src/remmina_connection_window.c:2029 data/ui/remmina_preferences.glade:893
+#: src/remmina_connection_window.c:2078 data/ui/remmina_preferences.glade:893
 msgid "Minimize window"
 msgstr "Minimér vindue"
 
-#: src/remmina_connection_window.c:2039 data/ui/remmina_preferences.glade:922
+#: src/remmina_connection_window.c:2088 data/ui/remmina_preferences.glade:922
 msgid "Disconnect"
 msgstr "Afbryd forbindelsen"
 
-#: src/remmina_connection_window.c:3667
+#: src/remmina_connection_window.c:3730
 #, c-format
 msgid "File %s is corrupted, unreadable or not found."
 msgstr "Filen %s er korrupt, ulæselig eller ikke fundet."
 
-#: src/remmina_connection_window.c:3821
+#: src/remmina_connection_window.c:3884
 msgid "Warning: This plugin require GtkSocket, but it’s not available."
 msgstr "Advarsel: Pluginet kræver GtkSocket, men det er ikke tilgængeligt."
 
-#: src/remmina_message_panel.c:144 data/ui/remmina_mpc.glade:35
+#: src/remmina_message_panel.c:145 data/ui/remmina_mpc.glade:35
 msgid "Cancel"
 msgstr "Annuller"
 
 #. A button to confirm reading
-#: src/remmina_message_panel.c:179 data/ui/remmina_preferences.glade:33
+#: src/remmina_message_panel.c:180 data/ui/remmina_preferences.glade:33
 #: data/ui/remmina_preferences.glade:34 data/ui/remmina_preferences.glade:60
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63
 msgid "Close"
 msgstr "Luk"
 
-#: src/remmina_message_panel.c:240 data/ui/remmina_main.glade:736
+#: src/remmina_message_panel.c:241 data/ui/remmina_main.glade:732
 msgid "Yes"
 msgstr "Ja"
 
-#: src/remmina_message_panel.c:247 data/ui/remmina_main.glade:720
+#: src/remmina_message_panel.c:248 data/ui/remmina_main.glade:716
 msgid "No"
 msgstr "Nej"
 
-#: src/remmina_message_panel.c:310 src/remmina_sftp_plugin.c:355
+#: src/remmina_message_panel.c:311 src/remmina_sftp_plugin.c:355
 #: src/remmina_ssh_plugin.c:1063 src/remmina_file_editor.c:916
-#: plugins/rdp/rdp_plugin.c:1540 plugins/vnc/vnc_plugin.c:1855
-#: plugins/vnc/vnc_plugin.c:1875 plugins/nx/nx_plugin.c:698
+#: plugins/rdp/rdp_plugin.c:1540 plugins/vnc/vnc_plugin.c:1866
+#: plugins/vnc/vnc_plugin.c:1886 plugins/nx/nx_plugin.c:698
 #: data/ui/remmina_mpc.glade:152
 msgid "User name"
 msgstr "Brugernavn"
 
-#: src/remmina_message_panel.c:367 plugins/rdp/rdp_plugin.c:1542
+#: src/remmina_message_panel.c:368 plugins/rdp/rdp_plugin.c:1542
 #: data/ui/remmina_mpc.glade:138
 msgid "Domain"
 msgstr "Domæne"
 
-#: src/remmina_message_panel.c:395
+#: src/remmina_message_panel.c:396
 msgid "Save password"
 msgstr "Gem adgangskode"
 
-#: src/remmina_message_panel.c:426 src/remmina_message_panel.c:595
+#: src/remmina_message_panel.c:427 src/remmina_message_panel.c:596
 #: src/remmina_plugin_manager.c:390 src/remmina_file_editor.c:160
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_message_panel.c:487
+#: src/remmina_message_panel.c:488
 msgid "Enter certificate authentication files"
 msgstr "Indtast autentifikationsfiler for certifikat"
 
-#: src/remmina_message_panel.c:499
+#: src/remmina_message_panel.c:500
 msgid "CA Certificate File"
 msgstr "CA-certifikatfil"
 
-#: src/remmina_message_panel.c:521
+#: src/remmina_message_panel.c:522
 msgid "CA CRL File"
 msgstr "CA CRL-fil"
 
-#: src/remmina_message_panel.c:543
+#: src/remmina_message_panel.c:544
 msgid "Client Certificate File"
 msgstr "Klient-certifikatfil"
 
-#: src/remmina_message_panel.c:565
+#: src/remmina_message_panel.c:566
 msgid "Client Certificate Key"
 msgstr "Klient-certifikatnøgle"
 
@@ -764,14 +853,14 @@ msgid "Secret"
 msgstr "Hemmelighed"
 
 #: src/remmina_plugin_manager.c:390 data/ui/remmina_main.glade:60
-#: data/ui/remmina_main.glade:61 data/ui/remmina_main.glade:467
+#: data/ui/remmina_main.glade:61 data/ui/remmina_main.glade:463
 msgid "Plugins"
 msgstr "Plugins"
 
 #. Profile: Name
 #: src/remmina_plugin_manager.c:408 src/remmina_file_editor.c:1388
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_mpc.glade:314
-#: data/ui/remmina_main.glade:584
+#: data/ui/remmina_main.glade:580
 msgid "Name"
 msgstr "Navn"
 
@@ -810,7 +899,7 @@ msgstr ""
 msgid "Start Remmina in Kiosk mode"
 msgstr "Start Remmina i kiosk-tilstand"
 
-#: src/remmina.c:87 data/ui/remmina_main.glade:780
+#: src/remmina.c:87 data/ui/remmina_main.glade:776
 msgid "Create a new connection profile"
 msgstr "Opret en ny forbindelsesprofil"
 
@@ -873,7 +962,7 @@ msgstr "Overskriv alle"
 
 #: src/remmina_sftp_plugin.c:356 src/remmina_ssh_plugin.c:1064
 #: plugins/rdp/rdp_plugin.c:1541 plugins/spice/spice_plugin.c:424
-#: plugins/vnc/vnc_plugin.c:1856 plugins/vnc/vnc_plugin.c:1876
+#: plugins/vnc/vnc_plugin.c:1867 plugins/vnc/vnc_plugin.c:1887
 #: plugins/nx/nx_plugin.c:699
 msgid "User password"
 msgstr "Brugerens adgangskode"
@@ -951,8 +1040,8 @@ msgstr "Indsæt (Vært+v)"
 msgid "Save session to file"
 msgstr "Gem session til fil"
 
-#: src/remmina_ssh_plugin.c:1043 data/ui/remmina_main.glade:97
-#: data/ui/remmina_main.glade:98
+#: src/remmina_ssh_plugin.c:1043 data/ui/remmina_main.glade:96
+#: data/ui/remmina_main.glade:97
 msgid "Copy"
 msgstr "Kopiér"
 
@@ -1022,7 +1111,7 @@ msgid "Enable SSH compression"
 msgstr "Aktivér SSH-komprimering"
 
 #: src/remmina_ssh_plugin.c:1095 plugins/rdp/rdp_plugin.c:1580
-#: plugins/spice/spice_plugin.c:443 plugins/vnc/vnc_plugin.c:1899
+#: plugins/spice/spice_plugin.c:443 plugins/vnc/vnc_plugin.c:1910
 #: plugins/nx/nx_plugin.c:720
 msgid "Disable password storing"
 msgstr "Deaktivér lagring af adgangskode"
@@ -1377,43 +1466,43 @@ msgstr "GFX RFX (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1480 plugins/vnc/vnc_plugin.c:1828
+#: plugins/rdp/rdp_plugin.c:1480 plugins/vnc/vnc_plugin.c:1839
 msgid "True color (32 bpp)"
 msgstr "Ægte farver (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1481 plugins/vnc/vnc_plugin.c:1827
+#: plugins/rdp/rdp_plugin.c:1481 plugins/vnc/vnc_plugin.c:1838
 msgid "True color (24 bpp)"
 msgstr "Ægte farver (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1482 plugins/vnc/vnc_plugin.c:1826
+#: plugins/rdp/rdp_plugin.c:1482 plugins/vnc/vnc_plugin.c:1837
 msgid "High color (16 bpp)"
 msgstr "Mange farver (16 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1483 plugins/vnc/vnc_plugin.c:1825
+#: plugins/rdp/rdp_plugin.c:1483 plugins/vnc/vnc_plugin.c:1836
 msgid "High color (15 bpp)"
 msgstr "Mange farver (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1484 plugins/vnc/vnc_plugin.c:1824
+#: plugins/rdp/rdp_plugin.c:1484 plugins/vnc/vnc_plugin.c:1835
 msgid "256 colors (8 bpp)"
 msgstr "256 farver (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1491 plugins/rdp/rdp_settings.c:269
-#: plugins/vnc/vnc_plugin.c:1835 plugins/nx/nx_plugin.c:678
+#: plugins/vnc/vnc_plugin.c:1846 plugins/nx/nx_plugin.c:678
 msgid "Poor (fastest)"
 msgstr "Dårlig (hurtigst)"
 
 #: plugins/rdp/rdp_plugin.c:1492 plugins/rdp/rdp_settings.c:271
-#: plugins/vnc/vnc_plugin.c:1836 plugins/nx/nx_plugin.c:679
+#: plugins/vnc/vnc_plugin.c:1847 plugins/nx/nx_plugin.c:679
 msgid "Medium"
 msgstr "Medium"
 
 #: plugins/rdp/rdp_plugin.c:1493 plugins/rdp/rdp_settings.c:273
-#: plugins/vnc/vnc_plugin.c:1837 plugins/nx/nx_plugin.c:680
+#: plugins/vnc/vnc_plugin.c:1848 plugins/nx/nx_plugin.c:680
 msgid "Good"
 msgstr "God"
 
 #: plugins/rdp/rdp_plugin.c:1494 plugins/rdp/rdp_settings.c:275
-#: plugins/vnc/vnc_plugin.c:1838 plugins/nx/nx_plugin.c:681
+#: plugins/vnc/vnc_plugin.c:1849 plugins/nx/nx_plugin.c:681
 msgid "Best (slowest)"
 msgstr "Bedste (langsomst)"
 
@@ -1438,7 +1527,7 @@ msgid "Negotiate"
 msgstr "Forhandl"
 
 #: plugins/rdp/rdp_plugin.c:1544 plugins/xdmcp/xdmcp_plugin.c:369
-#: plugins/vnc/vnc_plugin.c:1857 plugins/vnc/vnc_plugin.c:1877
+#: plugins/vnc/vnc_plugin.c:1868 plugins/vnc/vnc_plugin.c:1888
 msgid "Color depth"
 msgstr "Farvedybde"
 
@@ -1446,8 +1535,8 @@ msgstr "Farvedybde"
 msgid "Share folder"
 msgstr "Delingsmappe"
 
-#: plugins/rdp/rdp_plugin.c:1560 plugins/vnc/vnc_plugin.c:1858
-#: plugins/vnc/vnc_plugin.c:1878 plugins/nx/nx_plugin.c:701
+#: plugins/rdp/rdp_plugin.c:1560 plugins/vnc/vnc_plugin.c:1869
+#: plugins/vnc/vnc_plugin.c:1889 plugins/nx/nx_plugin.c:701
 msgid "Quality"
 msgstr "Kvalitet"
 
@@ -1512,7 +1601,7 @@ msgid "Redirect local microphone"
 msgstr "Omdiriger lokal mikrofon"
 
 #: plugins/rdp/rdp_plugin.c:1578 plugins/spice/spice_plugin.c:442
-#: plugins/spice/spice_plugin.c:458 plugins/vnc/vnc_plugin.c:1896
+#: plugins/spice/spice_plugin.c:458 plugins/vnc/vnc_plugin.c:1907
 #: plugins/nx/nx_plugin.c:717
 msgid "Disable clipboard sync"
 msgstr "Deaktivér synkronisering af udklipsholder"
@@ -1550,7 +1639,7 @@ msgid "Glyph Cache"
 msgstr "Glyf-mellemlager"
 
 #: plugins/rdp/rdp_plugin.c:1600 plugins/spice/spice_plugin.c:459
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/vnc/vnc_plugin.c:1914
+#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/vnc/vnc_plugin.c:1925
 #: plugins/nx/nx_plugin.c:728
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Send Ctrl+Alt+Delete"
@@ -1734,7 +1823,7 @@ msgid "Resize guest to match window size"
 msgstr "Tilpas gæst til vinduets størrelse"
 
 #: plugins/spice/spice_plugin.c:447 plugins/spice/spice_plugin.c:456
-#: plugins/vnc/vnc_plugin.c:1895 plugins/vnc/vnc_plugin.c:1910
+#: plugins/vnc/vnc_plugin.c:1906 plugins/vnc/vnc_plugin.c:1921
 msgid "View only"
 msgstr "Kun visning"
 
@@ -1819,39 +1908,39 @@ msgstr "Ukendt autentifikationsskema fra VNC-server: %s"
 msgid "Please retry after enabling encryption on this profile."
 msgstr "Prøv venligst igen når kryptering er blevet aktiveret på denne profil."
 
-#: plugins/vnc/vnc_plugin.c:1854
+#: plugins/vnc/vnc_plugin.c:1865
 msgid "Repeater"
 msgstr "Repeater"
 
-#: plugins/vnc/vnc_plugin.c:1874
+#: plugins/vnc/vnc_plugin.c:1885
 msgid "Listen on port"
 msgstr "Lyt på port"
 
-#: plugins/vnc/vnc_plugin.c:1894
+#: plugins/vnc/vnc_plugin.c:1905
 msgid "Show remote cursor"
 msgstr "Vis fjernmarkør"
 
-#: plugins/vnc/vnc_plugin.c:1897 plugins/nx/nx_plugin.c:718
+#: plugins/vnc/vnc_plugin.c:1908 plugins/nx/nx_plugin.c:718
 msgid "Disable encryption"
 msgstr "Deaktivér kryptering"
 
-#: plugins/vnc/vnc_plugin.c:1898 plugins/vnc/vnc_plugin.c:1911
+#: plugins/vnc/vnc_plugin.c:1909 plugins/vnc/vnc_plugin.c:1922
 msgid "Disable server input"
 msgstr "Deaktivér serverinput"
 
-#: plugins/vnc/vnc_plugin.c:1913
+#: plugins/vnc/vnc_plugin.c:1924
 msgid "Open Chat…"
 msgstr "Åbn chat…"
 
 #. Type
 #. Name
-#: plugins/vnc/vnc_plugin.c:1925
+#: plugins/vnc/vnc_plugin.c:1936
 msgid "VNC - VNC viewer"
 msgstr "VNC - VNC-fremviser"
 
 #. Type
 #. Name
-#: plugins/vnc/vnc_plugin.c:1947
+#: plugins/vnc/vnc_plugin.c:1958
 msgid "VNCI - VNC viewer listen mode"
 msgstr "VNCI - VNC-fremviser lytte-tilstand"
 
@@ -2019,7 +2108,7 @@ msgstr "Tryk venligst på en ny tast…"
 msgid "Open the preferences dialog"
 msgstr "Åbn præferencer-dialogen"
 
-#: data/ui/remmina_main.glade:67 data/ui/remmina_main.glade:422
+#: data/ui/remmina_main.glade:67 data/ui/remmina_main.glade:418
 msgid "Multi password changer"
 msgstr "Multi-adgangskodeskifter"
 
@@ -2039,86 +2128,86 @@ msgstr "_Rediger"
 msgid "Edit the selected remote desktop file"
 msgstr "Rediger den valgte fjernskrivebordsfil"
 
-#: data/ui/remmina_main.glade:99
+#: data/ui/remmina_main.glade:98
 msgid "Create a copy of the selected remote desktop file"
 msgstr "Open en kopi af den valgte fjernskrivebordsfil"
 
-#: data/ui/remmina_main.glade:109
+#: data/ui/remmina_main.glade:107
 msgid "Delete the selected remote desktop file"
 msgstr "Slet den valgte fjernskrivebordsfil"
 
-#: data/ui/remmina_main.glade:117 data/ui/remmina_main.glade:118
+#: data/ui/remmina_main.glade:114 data/ui/remmina_main.glade:115
 msgid "External Tools"
 msgstr "Eksterne værktøjer"
 
-#: data/ui/remmina_main.glade:128 data/ui/remmina_main.glade:129
+#: data/ui/remmina_main.glade:125 data/ui/remmina_main.glade:126
 msgid "_New"
 msgstr "_Ny"
 
-#: data/ui/remmina_main.glade:130
+#: data/ui/remmina_main.glade:127
 msgid "Create a new remote desktop file"
 msgstr "Opret en ny fjernskrivebordsfil"
 
-#: data/ui/remmina_main.glade:141 data/ui/remmina_main.glade:142
-#: data/ui/remmina_main.glade:494
+#: data/ui/remmina_main.glade:138 data/ui/remmina_main.glade:139
+#: data/ui/remmina_main.glade:490
 msgid "Homepage"
 msgstr "Hjemmeside"
 
-#: data/ui/remmina_main.glade:148 data/ui/remmina_main.glade:149
-#: data/ui/remmina_main.glade:504
+#: data/ui/remmina_main.glade:145 data/ui/remmina_main.glade:146
+#: data/ui/remmina_main.glade:500
 msgid "Online Wiki"
 msgstr "Online-wiki"
 
-#: data/ui/remmina_main.glade:155
+#: data/ui/remmina_main.glade:152
 msgid "Remmina Community"
 msgstr ""
 
-#: data/ui/remmina_main.glade:162 data/ui/remmina_main.glade:163
-#: data/ui/remmina_main.glade:524
+#: data/ui/remmina_main.glade:158 data/ui/remmina_main.glade:159
+#: data/ui/remmina_main.glade:520
 msgid "Donations"
 msgstr "Donationer"
 
-#: data/ui/remmina_main.glade:169 data/ui/remmina_main.glade:170
-#: data/ui/remmina_main.glade:439
+#: data/ui/remmina_main.glade:165 data/ui/remmina_main.glade:166
+#: data/ui/remmina_main.glade:435
 msgid "Debug Window"
 msgstr "Fejlretningsvindue"
 
-#: data/ui/remmina_main.glade:186 data/ui/remmina_main.glade:187
-#: data/ui/remmina_main.glade:412
+#: data/ui/remmina_main.glade:182 data/ui/remmina_main.glade:183
+#: data/ui/remmina_main.glade:408
 msgid "Export"
 msgstr "Eksportér"
 
-#: data/ui/remmina_main.glade:196 data/ui/remmina_main.glade:197
+#: data/ui/remmina_main.glade:192 data/ui/remmina_main.glade:193
 msgid "Statusbar"
 msgstr "Statuslinje"
 
-#: data/ui/remmina_main.glade:268
+#: data/ui/remmina_main.glade:264
 msgid "search string or server name/ip address for quick connect"
 msgstr "søg efter streng eller servernavn/IP-adresse for hurtig forbindelse"
 
-#: data/ui/remmina_main.glade:272 data/ui/remmina_main.glade:274
+#: data/ui/remmina_main.glade:268 data/ui/remmina_main.glade:270
 msgid "Server name or IP address"
 msgstr "Servernavn eller IP-adresse"
 
-#: data/ui/remmina_main.glade:273 data/ui/remmina_main.glade:275
+#: data/ui/remmina_main.glade:269 data/ui/remmina_main.glade:271
 #: data/ui/remmina_preferences.glade:224
 msgid "Clear"
 msgstr "Ryd"
 
 #. Online Remmina community, like reddit, facebook, etc
-#: data/ui/remmina_main.glade:514
+#: data/ui/remmina_main.glade:510
 msgid "Online Community"
 msgstr ""
 
-#: data/ui/remmina_main.glade:634
+#: data/ui/remmina_main.glade:630
 msgid "Plugin"
 msgstr "Plugin"
 
-#: data/ui/remmina_main.glade:648
+#: data/ui/remmina_main.glade:644
 msgid "Last time used"
 msgstr "Sidst brugt"
 
-#: data/ui/remmina_main.glade:709
+#: data/ui/remmina_main.glade:705
 msgid ""
 "Do you allow Remmina to send periodic anonymous usage statistics to its "
 "developers?"
@@ -2126,15 +2215,15 @@ msgstr ""
 "Vil du give Remmina tilladelse til periodisk at sende anonym "
 "anvendelsesstatistik til dets udviklere?"
 
-#: data/ui/remmina_main.glade:792
+#: data/ui/remmina_main.glade:788
 msgid "Show search bar"
 msgstr "Vis søgelinje"
 
-#: data/ui/remmina_main.glade:817
+#: data/ui/remmina_main.glade:813
 msgid "Actions"
 msgstr "Handlinger"
 
-#: data/ui/remmina_main.glade:831
+#: data/ui/remmina_main.glade:827
 msgid "Toggle view"
 msgstr "Visning til/fra"
 
@@ -2617,4 +2706,3 @@ msgstr "Flyt op"
 #: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
 msgid "Move down"
 msgstr "Flyt ned"
-
