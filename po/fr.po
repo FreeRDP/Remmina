@@ -1,15 +1,15 @@
-# French translation for remmina
+# French translation for Remmina
 # Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-# Davy Defaud <davy.defaud@free.fr>, 2016.
+# Davy Defaud <davy.defaud@free.fr>, 2016-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
 "POT-Creation-Date: 2019-01-28 07:39+0100\n"
-"PO-Revision-Date: 2019-01-18 14:35+0100\n"
+"PO-Revision-Date: 2019-01-28 18:37+0100\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: français <fr@li.org>\n"
 "Language: fr\n"
@@ -98,17 +98,17 @@ msgstr "L’authentication SSH Kerberos/GSSAPI a échoué : %s"
 
 #: src/remmina_ssh.c:308
 msgid "SSH public key has changed!"
-msgstr ""
+msgstr "La clef SSH publique a changé !"
 
 #: src/remmina_ssh.c:391
 #, c-format
 msgid "ssh_get_publickey() has failed: %s"
-msgstr ""
+msgstr "la fonction ssh_get_publickey() a échoué : %s"
 
 #: src/remmina_ssh.c:396
 #, c-format
 msgid "ssh_get_publickey_hash() has failed: %s"
-msgstr ""
+msgstr "la fonction ssh_get_publickey_hash() a échoué : %s"
 
 #: src/remmina_ssh.c:404
 msgid "The server is unknown. The public key fingerprint is:"
@@ -132,7 +132,7 @@ msgstr ""
 #: src/remmina_ssh.c:425
 #, c-format
 msgid "SSH known host checking failed: %s"
-msgstr ""
+msgstr "La vérification de la clef d’hôte SSH a échoué : %s"
 
 #: src/remmina_ssh.c:431
 #, c-format
@@ -169,7 +169,7 @@ msgstr "Échec de l’initialisation de la session SSH : %s"
 #: src/remmina_ssh.c:942 src/remmina_ssh.c:1001
 #, c-format
 msgid "Failed to create channel: %s"
-msgstr ""
+msgstr "Impossible de créer le canal : %s"
 
 #: src/remmina_ssh.c:951
 #, c-format
@@ -179,7 +179,7 @@ msgstr "Échec de la connexion à la destination du tunnel SSH : %s"
 #: src/remmina_ssh.c:1015 src/remmina_ssh.c:1610
 #, c-format
 msgid "Failed to open channel: %s"
-msgstr ""
+msgstr "Impossible d’ouvrir le canal : %s"
 
 #: src/remmina_ssh.c:1021
 #, c-format
@@ -198,53 +198,55 @@ msgstr "Aucune réponse du serveur."
 #: src/remmina_ssh.c:1171
 #, c-format
 msgid "Cannot connect to local port %i."
-msgstr ""
+msgstr "Impossible de se connecter au port local %i."
 
 #: src/remmina_ssh.c:1222
 #, c-format
 msgid "ssh_channel_write() returned an error: %s"
-msgstr ""
+msgstr "la fonction ssh_channel_write() a retourné une erreur : %s"
 
 #: src/remmina_ssh.c:1228
 #, c-format
 msgid "read on tunnel listening socket returned an error: %s"
 msgstr ""
+"la lecture sur le socket à l’écoute du tunnel a retourné une erreur : %s"
 
 #: src/remmina_ssh.c:1247
 #, c-format
 msgid "ssh_channel_poll() returned an error: %s"
-msgstr ""
+msgstr "la fonction ssh_channel_poll() a retourné une erreur : %s"
 
 #: src/remmina_ssh.c:1253
 #, c-format
 msgid "ssh_channel_read_nonblocking() returned an error: %s"
-msgstr ""
+msgstr "la fonction ssh_channel_read_nonblocking() a retourné une erreur : %s"
 
 #: src/remmina_ssh.c:1272
 #, c-format
 msgid "write on tunnel listening socket returned an error: %s"
 msgstr ""
+"l’écriture sur le socket à l’écoute du tunnel a retourné une erreur : %s"
 
 #: src/remmina_ssh.c:1351
 msgid "Destination port has not been assigned"
-msgstr ""
+msgstr "Le port de destination n’a pas été attribué."
 
 #: src/remmina_ssh.c:1358
 msgid "Failed to create socket."
-msgstr ""
+msgstr "Impossible de créer le socket."
 
 #: src/remmina_ssh.c:1368
 msgid "Failed to bind on local port."
-msgstr ""
+msgstr "Impossible de se lier au port local."
 
 #: src/remmina_ssh.c:1374
 msgid "Failed to listen on local port."
-msgstr ""
+msgstr "Impossible d’écouter sur le port local."
 
 #: src/remmina_ssh.c:1383 src/remmina_ssh.c:1399 src/remmina_ssh.c:1415
 #: src/remmina_ssh.c:1432
 msgid "Failed to initialize pthread."
-msgstr ""
+msgstr "Impossible d’initialiser le fil d’exécution POSIX (pthread)."
 
 #: src/remmina_ssh.c:1521
 #, c-format
@@ -259,11 +261,11 @@ msgstr "Impossible d’initialiser la session SFTP : %s"
 #: src/remmina_ssh.c:1640
 #, c-format
 msgid "Failed to request shell: %s"
-msgstr ""
+msgstr "Impossible d’obtenir un shell : %s"
 
 #: src/remmina_ssh.c:1734
 msgid "Failed to create pty device."
-msgstr ""
+msgstr "Impossible de créer un pseudo‐terminal."
 
 #: src/remmina_sftp_client.c:170
 #, c-format
@@ -951,7 +953,7 @@ msgstr "Afficher la version de l’application"
 
 #: src/remmina.c:95
 msgid "Show the application’s version, including the plugin versions"
-msgstr ""
+msgstr "Afficher la version de l’application et les versions des greffons"
 
 #: src/remmina_sftp_plugin.c:324 src/remmina_ssh_plugin.c:965
 msgid "SSH identity file"
@@ -2755,4 +2757,3 @@ msgstr "Déplacer vers le haut"
 #: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
 msgid "Move down"
 msgstr "Déplacer vers le bas"
-
