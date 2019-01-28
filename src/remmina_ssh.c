@@ -1348,7 +1348,7 @@ remmina_ssh_tunnel_open(RemminaSSHTunnel* tunnel, const gchar *host, gint port, 
 	tunnel->dest = g_strdup(host);
 	tunnel->port = port;
 	if (tunnel->port == 0) {
-		REMMINA_SSH(tunnel)->error = g_strdup(_("Destination port has not been assigned"));
+		REMMINA_SSH(tunnel)->error = g_strdup(_("Destination port has not been assigned."));
 		return FALSE;
 	}
 
