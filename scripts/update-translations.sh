@@ -1,7 +1,24 @@
 #!/bin/bash -
 
+# --------------------------------------------------------------------------
+# Remmina - The GTK+ Remote Desktop Client
+# Copyright (C) 2016-2019 Antenore Gatta, Giovanni Panozzo
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 REMMINATOP="$(dirname "$SCRIPTPATH")"
+
+GIT_TAG="$(git describe --abbrev=0 "${SCRIPTPATH}")"
+
+if [ -n "${GIT_TAG-unset}" ]; then
+	echo "GIT_TAG is either empty or not set. Probably you are not in a git repository"
+	exit 1
+fi
 
 cd "$REMMINATOP" || exit 1
 
@@ -22,7 +39,7 @@ xgettext --from-code=UTF-8 \
 	--add-comments \
 	--files-from=po/POTFILES.in \
 	--output=po/remmina.temp.pot \
-	--package-version="v1.3.1" \
+	--package-version="$GIT_TAG" \
 	--package-name="Remmina" \
 	--copyright-holder="Antenore Gatta and Giovanni Panozzo" \
 	--msgid-bugs-address="admin@remmina.org"
