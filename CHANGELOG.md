@@ -2,6 +2,83 @@
 
 Current Remmina changelog, see CHANGELOG.archive.md for old releases.
 
+## [v1.3.1](https://gitlab.com/Remmina/Remmina/tags/v1.3.1) (2019-01-28)
+
+### Bug Fixing release
+
+[Giovanni Panozzo](@giox069) has fixed many issues that have been introduced during the last release.
+
+Additionally a great rework has been done by [Davy Defaud](@DevDef) to fix many
+typographic errors and translations.
+
+[Wolfgang Scherer](@wolfmanx) has fixed an annoying clipboard bug in the VNC plugin.
+
+### List of changes
+
+- Updated author files (Antenore Gatta)
+- Version bump (Antenore Gatta)
+- Merge branch 'german-translation' into 'master' (Davy Defaud)
+- Updated german translation (Johannes Weberhofer)
+- Updated translations (Antenore Gatta)
+- Fixed pot generation (Antenore Gatta)
+- Fixed LINGUAS format (Antenore Gatta)
+- Merge branch 'typographic_fixes' into 'master' (Antenore Gatta)
+- Use uppercase for VNC, SSH, SFTP and RDP protocol names (Davy Defaud)
+- Gettextize more SSH error messages (Davy Defaud)
+- Replace single quotes by true apostrophes (Davy Defaud)
+- Replace all triple points by ellipsis characters (Davy Defaud)
+- Remove space before colons in English strings (Davy Defaud)
+- Fix English typo transmittion → transmission (Davy Defaud)
+- Fix a bad indent (spaces instead of a tab) (Davy Defaud)
+- Merge branch 'vnc-blocks-after-clipboard' into 'master' (Giovanni Panozzo)
+- VNC: prevent client from blocking when remote clipboard is changed (Wolfgang Scherer)
+- Merge branch 'master' into 'master' (Davy Defaud)
+- Updated ru.po for more human-like language (TreefeedXavier)
+- Merge branch 'patch-5' into 'master' (Davy Defaud)
+- Performance improvement (Antenore Gatta)
+- Update tr.po (Serdar Sağlam)
+- Bump documentation version (Antenore Gatta)
+- Update tr.po (Serdar Sağlam)
+- Fixing docker image (Antenore Gatta)
+- Update tr.po (Serdar Sağlam)
+- Update tr.po (Serdar Sağlam)
+- Update tr.po (Serdar Sağlam)
+- Update tr.po (Serdar Sağlam)
+- Add background class to message panel (Giovanni Panozzo)
+- Merge branch 'css_fix' into 'master' (Giovanni Panozzo)
+- Fix password field focusing, see issue #1811 (Giovanni Panozzo)
+- Fix CSS of message panel and tab page (Giovanni Panozzo)
+- Merge branch 'master' of gitlab.com:Remmina/Remmina (Antenore Gatta)
+- Logo documentation (Antenore Gatta)
+- Merge branch 'italian-strings' into 'master' (Davy Defaud)
+- Remove the duplicate of the first header line (Davy Defaud)
+- Some strings for it.po (Giovanni Panozzo)
+- Merge branch 'rcw_fixess' into 'master' (Giovanni Panozzo)
+- rcw fixes for fullscreen mode (Giovanni Panozzo)
+- all rows translated (Serdar Sağlam)
+- Merge branch 'master' of https://gitlab.com/Remmina/Remmina (Giovanni Panozzo)
+- Fix border appearing in VIEWPORT_FULLSCREEN_MODE when not needed (Giovanni Panozzo)
+- Merge branch '1813-a-few-fixes-improvements-for-the-po-files' into 'master' (Davy Defaud)
+- Fix scrolling in VIEWPORT_FULLSCREEN_MODE (Giovanni Panozzo)
+- Correctly reparent MessagePanel when moving a tab (Giovanni Panozzo)
+- Make ftb visible before connecting (Giovanni Panozzo)
+- Add the missing plural forms of a translation (yet to be translated…) (Davy Defaud)
+- Add missing format specification in a Spanish translation string (Davy Defaud)
+- Fix missing language code in po some file headers (Davy Defaud)
+- Merge branch 'patch-4' into 'master' (Antenore Gatta)
+- Update tr.po (Serdar Sağlam)
+- Merge branch 'blackmp' into 'master' (Antenore Gatta)
+- remove black background (Antenore Gatta)
+- Merge branch 'issue-1809' into 'master' (Giovanni Panozzo)
+- Set notebook current page to 1st page on new cnnwin (Giovanni Panozzo)
+- Merge branch 'issue1810-icons' into 'master' (Antenore Gatta)
+- Removed edit-delete.svg from the repository (Antenore Gatta)
+- Merge branch 'issue1810-icons' into 'master' (Antenore Gatta)
+- Removed edit-delete icon - fixes #1810 (Antenore Gatta)
+- Merge branch 'patch-1' into 'master' (Antenore Gatta)
+- flatpak: update spice-gtk from 0.35 to 0.36 (Denis Ollier)
+- Translate the two new strings recently added (Davy Defaud)
+
 ## [v1.3.0](https://gitlab.com/Remmina/Remmina/tags/v1.3.0) (2019-01-18)
 
 ### Most notable
