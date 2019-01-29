@@ -50,6 +50,7 @@ typedef struct remmina_masterthread_exec_data {
 	       FUNC_PROTOCOLWIDGET_MPPROGRESS,
 	       FUNC_PROTOCOLWIDGET_MPDESTROY,
 	       FUNC_PROTOCOLWIDGET_MPSHOWRETRY,
+	       FUNC_PROTOCOLWIDGET_PANELSHOWLISTEN,
 	       FUNC_VTE_TERMINAL_SET_ENCODING_AND_PTY
 	      } func;
 
@@ -96,6 +97,10 @@ typedef struct remmina_masterthread_exec_data {
 		struct {
 			RemminaProtocolWidget *gp;
 		} protocolwidget_mpshowretry;
+		struct {
+			RemminaProtocolWidget *gp;
+			int port;
+		} protocolwidget_panelshowlisten;
 #ifdef HAVE_LIBSSH
 		struct {
 			RemminaSFTPClient *client;

@@ -1490,6 +1490,18 @@ void remmina_protocol_widget_panel_show_listen(RemminaProtocolWidget* gp, gint p
 	RemminaMessagePanel *mp;
 	gchar* s;
 
+	if ( !remmina_masterthread_exec_is_main_thread() ) {
+		/* Allow the execution of this function from a non main thread */
+		RemminaMTExecData *d;
+		d = (RemminaMTExecData*)g_malloc( sizeof(RemminaMTExecData) );
+		d->func = FUNC_PROTOCOLWIDGET_PANELSHOWLISTEN;
+		d->p.protocolwidget_panelshowlisten.gp = gp;
+		d->p.protocolwidget_panelshowlisten.port = port;
+		remmina_masterthread_exec_and_wait(d);
+		g_free(d);
+		return;
+	}
+
 	mp = remmina_message_panel_new();
 	s = g_strdup_printf(
 		_("Listening on port %i for an incoming %s connection…"), port,

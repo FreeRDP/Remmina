@@ -3572,7 +3572,7 @@ static RemminaConnectionWindow* remmina_connection_window_find(RemminaFile* remm
 static gboolean remmina_connection_object_delayed_window_present(gpointer user_data)
 {
 	RemminaConnectionObject* cnnobj = (RemminaConnectionObject*)user_data;
-	if (cnnobj && cnnobj->cnnhld && cnnobj->cnnhld->cnnwin) {
+	if (cnnobj && cnnobj->connected && cnnobj->cnnhld && cnnobj->cnnhld->cnnwin) {
 		gtk_window_present_with_time(GTK_WINDOW(cnnobj->cnnhld->cnnwin), (guint32)(g_get_monotonic_time() / 1000));
 		remmina_connection_holder_grab_focus(GTK_NOTEBOOK(cnnobj->cnnhld->cnnwin->priv->notebook));
 	}

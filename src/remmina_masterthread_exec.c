@@ -82,6 +82,9 @@ static gboolean remmina_masterthread_exec_callback(RemminaMTExecData *d)
 		case FUNC_PROTOCOLWIDGET_MPSHOWRETRY:
 			remmina_protocol_widget_panel_show_retry(d->p.protocolwidget_mpshowretry.gp);
 			break;
+		case FUNC_PROTOCOLWIDGET_PANELSHOWLISTEN:
+			remmina_protocol_widget_panel_show_listen(d->p.protocolwidget_panelshowlisten.gp, d->p.protocolwidget_panelshowlisten.port);
+			break;
 		case FUNC_SFTP_CLIENT_CONFIRM_RESUME:
 #ifdef HAVE_LIBSSH
 			d->p.sftp_client_confirm_resume.retval = remmina_sftp_client_confirm_resume( d->p.sftp_client_confirm_resume.client,
