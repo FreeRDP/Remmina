@@ -234,11 +234,13 @@ static gboolean remmina_plugin_spice_ask_auth(RemminaProtocolWidget *gp)
 	ret = remmina_plugin_service->protocol_plugin_init_authpwd(gp, REMMINA_AUTHPWD_TYPE_PROTOCOL, !disablepasswordstoring);
 
 	if (ret == GTK_RESPONSE_OK) {
+		gchar *password = remmina_plugin_service->protocol_plugin_init_get_password(gp);
+		if (remmina_plugin_service->protocol_plugin_init_get_savepassword(gp))
+			remmina_plugin_service->file_set_string( remminafile, "password", password );
 		g_object_set(gpdata->session,
 			"password",
-			remmina_plugin_service->protocol_plugin_init_get_password(gp),
+			password,
 			NULL);
-
 		return TRUE;
 	}else {
 		return FALSE;
@@ -269,7 +271,8 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 		if (remmina_plugin_spice_ask_auth(gp)) {
 			remmina_plugin_spice_open_connection(gp);
 		}else{
-			remmina_plugin_service->protocol_plugin_set_error(gp, _("Invalid password."));
+			/* Connection is cancelled by the user by clicking cancel on auth panel, close it without showing errors */
+			// remmina_plugin_service->protocol_plugin_set_error(gp, _("Invalid password."));
 			remmina_plugin_spice_close_connection(gp);
 		}
 		break;

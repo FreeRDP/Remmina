@@ -43,6 +43,7 @@ G_DECLARE_DERIVABLE_TYPE(RemminaMessagePanel, remmina_message_panel, REMMINA, ME
 
 struct _RemminaMessagePanelClass {
 	GtkBoxClass parent_class;
+	void (* response) (RemminaMessagePanel *mp, gint response_id);
 };
 
 enum {
@@ -80,6 +81,7 @@ void remmina_message_panel_field_set_switch(RemminaMessagePanel *mp, int entryid
 gboolean remmina_message_panel_field_get_switch_state(RemminaMessagePanel *mp, int entryid);
 void remmina_message_panel_field_set_filename(RemminaMessagePanel *mp, int entryid, const gchar *filename);
 gchar* remmina_message_panel_field_get_filename(RemminaMessagePanel *mp, int entryid);
+void remmina_message_panel_response(RemminaMessagePanel *mp, gint response_id);
 
 
 G_END_DECLS
