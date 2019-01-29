@@ -54,6 +54,14 @@ typedef struct
 } RemminaMessagePanelPrivate;
 G_DEFINE_TYPE_WITH_PRIVATE (RemminaMessagePanel, remmina_message_panel, GTK_TYPE_BOX)
 
+
+enum {
+  RESPONSE,
+  LAST_SIGNAL
+};
+
+static guint messagepanel_signals[LAST_SIGNAL];
+
 static const gchar btn_response_key[] = "btn_response";
 
 static void remmina_message_panel_init (RemminaMessagePanel *mp)
@@ -65,6 +73,16 @@ static void remmina_message_panel_class_init(RemminaMessagePanelClass *class)
 {
 	TRACE_CALL(__func__);
 	// class->transform_text = my_app_label_real_transform_text;
+
+	messagepanel_signals[RESPONSE] =
+		g_signal_new ("response",
+			G_OBJECT_CLASS_TYPE (class),
+			G_SIGNAL_RUN_LAST,
+			G_STRUCT_OFFSET (RemminaMessagePanelClass, response),
+			NULL, NULL,
+			NULL,
+			G_TYPE_NONE, 1,
+			G_TYPE_INT);
 }
 
 RemminaMessagePanel *remmina_message_panel_new()
@@ -153,6 +171,7 @@ void remmina_message_panel_setup_progress(RemminaMessagePanel *mp, const gchar *
 	gtk_widget_show_all(GTK_WIDGET(mp));
 
 }
+
 void remmina_message_panel_setup_message(RemminaMessagePanel *mp, const gchar *message, RemminaMessagePanelCallback response_callback, gpointer response_callback_data)
 {
 	/*
@@ -445,7 +464,7 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 	priv->response_callback = response_callback;
 	priv->response_callback_data = response_callback_data;
 
-	g_signal_connect_swapped (username_entry, "activate", (GCallback)gtk_widget_grab_focus, password_entry);
+	if (username_entry) g_signal_connect_swapped (username_entry, "activate", (GCallback)gtk_widget_grab_focus, password_entry);
 	g_signal_connect_swapped (password_entry, "activate", (GCallback)gtk_widget_grab_focus, button_ok);
 	g_object_set_data(G_OBJECT(button_cancel), btn_response_key, (void *)GTK_RESPONSE_CANCEL);
 	g_signal_connect(G_OBJECT(button_cancel), "clicked", G_CALLBACK(remmina_message_panel_button_clicked_callback), mp);
@@ -760,4 +779,8 @@ gchar* remmina_message_panel_field_get_filename(RemminaMessagePanel *mp, int ent
 	return gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(priv->w[entryid]));
 }
 
+void remmina_message_panel_response(RemminaMessagePanel *mp, gint response_id)
+{
+	g_signal_emit(mp, messagepanel_signals[RESPONSE], 0, response_id);
+}
 

@@ -1067,6 +1067,7 @@ struct remmina_protocol_widget_dialog_mt_data_t {
 	char *str1;
 	enum panel_type dtype;
 	unsigned pflags;
+	gboolean called_from_subthread;
 	/* Running status */
 	pthread_mutex_t pt_mutex;
 	pthread_cond_t pt_cond;
@@ -1091,14 +1092,20 @@ static void authuserpwd_mt_cb(void *user_data, int button)
 			d->gp->priv->clientkey = remmina_message_panel_field_get_filename(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_CLIENTKEYFILE);
 		}
 	}
-	/* Hide and destroy message panel, we can do it now because we are on the main thread */
-	remmina_connection_object_destroy_message_panel(d->gp->cnnobj, d->gp->priv->auth_message_panel);
 
-	/* Awake the locked subthread */
-	pthread_mutex_lock(&d->pt_mutex);
+	if (d->called_from_subthread) {
+		/* Hide and destroy message panel, we can do it now because we are on the main thread */
+		remmina_connection_object_destroy_message_panel(d->gp->cnnobj, d->gp->priv->auth_message_panel);
 
-	pthread_cond_signal(&d->pt_cond);
-	pthread_mutex_unlock(&d->pt_mutex);
+		/* Awake the locked subthread, when called from subthread */
+		pthread_mutex_lock(&d->pt_mutex);
+		pthread_cond_signal(&d->pt_cond);
+		pthread_mutex_unlock(&d->pt_mutex);
+	} else {
+		/* Signal completion, when called from main thread. Message panel will be destroyed by the caller */
+		remmina_message_panel_response(d->gp->priv->auth_message_panel, button);
+	}
+
 }
 
 static gboolean remmina_protocol_widget_dialog_mt_setup(gpointer user_data)
@@ -1151,35 +1158,106 @@ static gboolean remmina_protocol_widget_dialog_mt_setup(gpointer user_data)
 	return FALSE;
 }
 
+typedef struct
+{
+	RemminaMessagePanel *mp;
+	GMainLoop *loop;
+	gint response;
+	gboolean destroyed;
+} MpRunInfo;
+
+static void shutdown_loop (MpRunInfo *mpri)
+{
+  if (g_main_loop_is_running (mpri->loop))
+    g_main_loop_quit (mpri->loop);
+}
+
+static void run_response_handler(RemminaMessagePanel *mp, gint response_id, gpointer data)
+{
+	MpRunInfo *mpri = (MpRunInfo *)data;
+	mpri->response = response_id;
+	shutdown_loop(mpri);
+}
+
+static void run_unmap_handler(RemminaMessagePanel *mp, gpointer data)
+{
+	MpRunInfo *mpri = (MpRunInfo *)data;
+	mpri->response = GTK_RESPONSE_CANCEL;
+	shutdown_loop(mpri);
+}
+
+static void run_destroy_handler (RemminaMessagePanel *mp, gpointer data)
+{
+	MpRunInfo *mpri = (MpRunInfo *)data;
+	mpri->destroyed = TRUE;
+	mpri->response = GTK_RESPONSE_CANCEL;
+	shutdown_loop(mpri);
+}
+
 static int remmina_protocol_widget_dialog(enum panel_type dtype, RemminaProtocolWidget* gp, unsigned pflags, const char *str1)
 {
 
 	struct remmina_protocol_widget_dialog_mt_data_t *d = (struct remmina_protocol_widget_dialog_mt_data_t*)g_malloc( sizeof(struct remmina_protocol_widget_dialog_mt_data_t) );
 	int rcbutton;
 
-	if (remmina_masterthread_exec_is_main_thread()) {
-		printf("REMMINA warning. %s should not be called from the master thread.\n", __func__);
-	}
-
 	d->gp = gp;
 	d->pflags = pflags;
 	d->dtype = dtype;
 	d->str1 = g_strdup(str1);
+	d->called_from_subthread = FALSE;
 
-	// pthread_cleanup_push(ptcleanup, (void*)d);
-	pthread_cond_init(&d->pt_cond, NULL);
-	pthread_mutex_init(&d->pt_mutex, NULL);
-	g_idle_add(remmina_protocol_widget_dialog_mt_setup, d);
-	pthread_mutex_lock(&d->pt_mutex);
-	pthread_cond_wait(&d->pt_cond, &d->pt_mutex);
-	// pthread_cleanup_pop(0);
-	pthread_mutex_destroy(&d->pt_mutex);
-	pthread_cond_destroy(&d->pt_cond);
+	if (remmina_masterthread_exec_is_main_thread()) {
+		/* Run the MessagePanel in main thread, in a very similar way of gtk_dialog_run() */
+		MpRunInfo mpri = { NULL, NULL, GTK_RESPONSE_CANCEL, FALSE };
 
-	rcbutton = d->rcbutton;
+		gulong unmap_handler;
+		gulong destroy_handler;
+		gulong response_handler;
+
+		remmina_protocol_widget_dialog_mt_setup(d);
+
+		mpri.mp = d->gp->priv->auth_message_panel;
+
+		if (!gtk_widget_get_visible(GTK_WIDGET(mpri.mp)))
+			gtk_widget_show(GTK_WIDGET(mpri.mp));
+		response_handler = g_signal_connect (mpri.mp, "response", G_CALLBACK (run_response_handler), &mpri);
+		unmap_handler = g_signal_connect (mpri.mp, "unmap", G_CALLBACK (run_unmap_handler), &mpri);
+		destroy_handler = g_signal_connect (mpri.mp, "destroy", G_CALLBACK (run_destroy_handler),&mpri);
+
+		g_object_ref(mpri.mp);
+
+		mpri.loop = g_main_loop_new (NULL, FALSE);
+		g_main_loop_run (mpri.loop);
+		g_main_loop_unref (mpri.loop);
+
+		if (!mpri.destroyed) {
+			g_signal_handler_disconnect (mpri.mp, response_handler);
+			g_signal_handler_disconnect (mpri.mp, destroy_handler);
+			g_signal_handler_disconnect (mpri.mp, unmap_handler);
+		}
+		g_object_unref(mpri.mp);
+
+		remmina_connection_object_destroy_message_panel(d->gp->cnnobj, d->gp->priv->auth_message_panel);
+
+		rcbutton = mpri.response;
+
+	} else {
+		d->called_from_subthread = TRUE;
+		// pthread_cleanup_push(ptcleanup, (void*)d);
+		pthread_cond_init(&d->pt_cond, NULL);
+		pthread_mutex_init(&d->pt_mutex, NULL);
+		g_idle_add(remmina_protocol_widget_dialog_mt_setup, d);
+		pthread_mutex_lock(&d->pt_mutex);
+		pthread_cond_wait(&d->pt_cond, &d->pt_mutex);
+		// pthread_cleanup_pop(0);
+		pthread_mutex_destroy(&d->pt_mutex);
+		pthread_cond_destroy(&d->pt_cond);
+
+		rcbutton = d->rcbutton;
+	}
+
 	g_free(d->str1);
 	g_free(d);
-
 	return rcbutton;
 
 }
@@ -1583,22 +1661,6 @@ void remmina_protocol_widget_send_keys_signals(GtkWidget *widget, const guint *k
 void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
-	GdkDisplay *display;
-#if GTK_CHECK_VERSION(3, 20, 0)
-	/** @todo rename to "seat" */
-	GdkSeat *seat;
-	GdkDevice *device;
-#else
-	GdkDeviceManager *device_manager;
-	GdkDevice *device;
-#endif
-	GdkScreen *screen;
-#if GTK_CHECK_VERSION(3, 22, 0)
-	GdkMonitor *monitor;
-#else
-	gint monitor;
-#endif
-	gint x, y;
 	GdkRectangle rect;
 	gint w, h;
 	gint wfile, hfile;
