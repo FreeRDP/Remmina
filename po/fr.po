@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-01-28 23:38+0000\n"
+"POT-Creation-Date: 2019-01-29 22:04+0000\n"
 "PO-Revision-Date: 2019-01-28 18:37+0100\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: français <fr@li.org>\n"
@@ -126,7 +126,7 @@ msgstr "La vérification de la clef d’hôte SSH a échoué : %s"
 msgid "Authenticating %s’s password to SSH server %s…"
 msgstr "Vérification du mot de passe de %s sur le serveur SSH %s…"
 
-#: src/remmina_ssh.c:432 src/remmina_protocol_widget.c:1226
+#: src/remmina_ssh.c:432 src/remmina_protocol_widget.c:1304
 msgid "SSH password"
 msgstr "Mot de passe SSH"
 
@@ -135,7 +135,7 @@ msgstr "Mot de passe SSH"
 msgid "Authenticating %s’s identity to SSH server %s…"
 msgstr "Vérification de l’identité de %s sur le serveur SSH %s…"
 
-#: src/remmina_ssh.c:439 src/remmina_protocol_widget.c:1229
+#: src/remmina_ssh.c:439 src/remmina_protocol_widget.c:1307
 msgid "SSH private key passphrase"
 msgstr "Phrase de passe de la clef SSH privée"
 
@@ -313,7 +313,7 @@ msgid "Plugins"
 msgstr "Greffons"
 
 #: src/remmina_plugin_manager.c:390 src/remmina_file_editor.c:160
-#: src/remmina_message_panel.c:427 src/remmina_message_panel.c:596
+#: src/remmina_message_panel.c:446 src/remmina_message_panel.c:615
 msgid "_OK"
 msgstr "_OK"
 
@@ -383,72 +383,72 @@ msgstr "Échec de la commande %s sur le serveur SSH (statut = %i)."
 msgid "Failed to execute command: %s"
 msgstr "La commande a échoué : %s"
 
-#: src/remmina_protocol_widget.c:1115 src/remmina_protocol_widget.c:1126
+#: src/remmina_protocol_widget.c:1122 src/remmina_protocol_widget.c:1133
 msgid "Enter authentication credentials"
 msgstr "Entrez vos paramètres d’authentification"
 
-#: src/remmina_protocol_widget.c:1205 src/remmina_protocol_widget.c:1232
+#: src/remmina_protocol_widget.c:1283 src/remmina_protocol_widget.c:1310
 #: src/remmina_ssh_plugin.c:964 src/remmina_file_editor.c:926
 #: src/remmina_sftp_plugin.c:323 data/ui/remmina_mpc.glade:113
 msgid "Password"
 msgstr "Mot de passe"
 
-#: src/remmina_protocol_widget.c:1223
+#: src/remmina_protocol_widget.c:1301
 #, c-format
 msgid "%s password"
 msgstr "Mot de passe %s"
 
-#: src/remmina_protocol_widget.c:1259
+#: src/remmina_protocol_widget.c:1337
 msgid "Certificate Details:"
 msgstr "Détails du certificat :"
 
-#: src/remmina_protocol_widget.c:1260 src/remmina_protocol_widget.c:1282
+#: src/remmina_protocol_widget.c:1338 src/remmina_protocol_widget.c:1360
 msgid "Subject:"
 msgstr "Sujet :"
 
-#: src/remmina_protocol_widget.c:1261 src/remmina_protocol_widget.c:1283
+#: src/remmina_protocol_widget.c:1339 src/remmina_protocol_widget.c:1361
 msgid "Issuer:"
 msgstr "Émetteur :"
 
-#: src/remmina_protocol_widget.c:1262
+#: src/remmina_protocol_widget.c:1340
 msgid "Fingerprint:"
 msgstr "Empreinte :"
 
-#: src/remmina_protocol_widget.c:1263
+#: src/remmina_protocol_widget.c:1341
 msgid "Accept Certificate?"
 msgstr "Accepter le certificat ?"
 
-#: src/remmina_protocol_widget.c:1281
+#: src/remmina_protocol_widget.c:1359
 msgid "Certificate Changed! Details:"
 msgstr "Le certificat a changé ! Détails :"
 
-#: src/remmina_protocol_widget.c:1284
+#: src/remmina_protocol_widget.c:1362
 msgid "Old Fingerprint:"
 msgstr "Ancienne empreinte :"
 
-#: src/remmina_protocol_widget.c:1285
+#: src/remmina_protocol_widget.c:1363
 msgid "New Fingerprint:"
 msgstr "Nouvelle empreinte :"
 
-#: src/remmina_protocol_widget.c:1286
+#: src/remmina_protocol_widget.c:1364
 msgid "Accept Changed Certificate?"
 msgstr "Acceptez‐vous le nouveau certificat ?"
 
-#: src/remmina_protocol_widget.c:1417
+#: src/remmina_protocol_widget.c:1507
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
 msgstr "À l’écoute sur le port %i d’une connexion %s entrante…"
 
-#: src/remmina_protocol_widget.c:1442
+#: src/remmina_protocol_widget.c:1532
 msgid "Authentication failed. Trying to reconnect…"
 msgstr "L’authentification a échoué. Nouvelle tentative de connexion…"
 
-#: src/remmina_protocol_widget.c:1506 src/remmina_file_editor.c:396
+#: src/remmina_protocol_widget.c:1596 src/remmina_file_editor.c:396
 #: src/remmina_file_editor.c:876 data/ui/remmina_main.glade:616
 msgid "Server"
 msgstr "Serveur"
 
-#: src/remmina_protocol_widget.c:1523
+#: src/remmina_protocol_widget.c:1613
 #, c-format
 msgid "Protocol plugin %s is not installed."
 msgstr "Le greffon gérant le protocole %s n’est pas installé."
@@ -529,7 +529,7 @@ msgid "_Select all"
 msgstr "_Sélectionner tout"
 
 #: src/remmina_ssh_plugin.c:1063 src/remmina_file_editor.c:916
-#: src/remmina_message_panel.c:311 src/remmina_sftp_plugin.c:355
+#: src/remmina_message_panel.c:330 src/remmina_sftp_plugin.c:355
 #: plugins/rdp/rdp_plugin.c:1540 plugins/nx/nx_plugin.c:698
 #: plugins/vnc/vnc_plugin.c:1866 plugins/vnc/vnc_plugin.c:1886
 #: data/ui/remmina_mpc.glade:152
@@ -538,7 +538,7 @@ msgstr "Nom d’utilisateur"
 
 #: src/remmina_ssh_plugin.c:1064 src/remmina_sftp_plugin.c:356
 #: plugins/rdp/rdp_plugin.c:1541 plugins/nx/nx_plugin.c:699
-#: plugins/spice/spice_plugin.c:424 plugins/vnc/vnc_plugin.c:1867
+#: plugins/spice/spice_plugin.c:427 plugins/vnc/vnc_plugin.c:1867
 #: plugins/vnc/vnc_plugin.c:1887
 msgid "User password"
 msgstr "Mot de passe de l’utilisateur"
@@ -603,7 +603,7 @@ msgid "Enable SSH compression"
 msgstr "Activer la compression SSH"
 
 #: src/remmina_ssh_plugin.c:1095 plugins/rdp/rdp_plugin.c:1580
-#: plugins/nx/nx_plugin.c:720 plugins/spice/spice_plugin.c:443
+#: plugins/nx/nx_plugin.c:720 plugins/spice/spice_plugin.c:446
 #: plugins/vnc/vnc_plugin.c:1910
 msgid "Disable password storing"
 msgstr "Désactiver l’enregistrement des mots de passe"
@@ -725,7 +725,7 @@ msgstr "Choisir un serveur de bureau distant"
 #. Buttons, ok and cancel
 #: src/remmina_file_editor.c:159 src/remmina_file_editor.c:356
 #: src/remmina_file_editor.c:1280 src/remmina_sftp_client.c:917
-#: src/remmina_message_panel.c:433 src/remmina_message_panel.c:604
+#: src/remmina_message_panel.c:452 src/remmina_message_panel.c:623
 #: plugins/nx/nx_session_manager.c:156
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
@@ -1081,52 +1081,52 @@ msgstr[1] "%d mots de passe changés."
 msgid "Plugin %s is not registered."
 msgstr "Le greffon %s n’est pas répertorié."
 
-#: src/remmina_message_panel.c:145 data/ui/remmina_mpc.glade:35
+#: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:35
 msgid "Cancel"
 msgstr "Annuler"
 
 #. A button to confirm reading
-#: src/remmina_message_panel.c:180 data/ui/remmina_preferences.glade:33
+#: src/remmina_message_panel.c:199 data/ui/remmina_preferences.glade:33
 #: data/ui/remmina_preferences.glade:34 data/ui/remmina_preferences.glade:60
 #: data/ui/remmina_string_list.glade:8 data/ui/remmina_string_list.glade:9
 #: data/ui/remmina_string_list.glade:63
 msgid "Close"
 msgstr "Fermer"
 
-#: src/remmina_message_panel.c:241 data/ui/remmina_main.glade:732
+#: src/remmina_message_panel.c:260 data/ui/remmina_main.glade:732
 msgid "Yes"
 msgstr "Non"
 
-#: src/remmina_message_panel.c:248 data/ui/remmina_main.glade:716
+#: src/remmina_message_panel.c:267 data/ui/remmina_main.glade:716
 msgid "No"
 msgstr "Oui"
 
-#: src/remmina_message_panel.c:368 plugins/rdp/rdp_plugin.c:1542
+#: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1542
 #: data/ui/remmina_mpc.glade:138
 msgid "Domain"
 msgstr "Domaine"
 
-#: src/remmina_message_panel.c:396
+#: src/remmina_message_panel.c:415
 msgid "Save password"
 msgstr "Enregistrer le mot de passe"
 
-#: src/remmina_message_panel.c:488
+#: src/remmina_message_panel.c:507
 msgid "Enter certificate authentication files"
 msgstr "Entrez les fichiers des certificats d’authentification"
 
-#: src/remmina_message_panel.c:500
+#: src/remmina_message_panel.c:519
 msgid "CA Certificate File"
 msgstr "Fichier du certificat de l’AC"
 
-#: src/remmina_message_panel.c:522
+#: src/remmina_message_panel.c:541
 msgid "CA CRL File"
 msgstr "Liste de révocation de l’AC"
 
-#: src/remmina_message_panel.c:544
+#: src/remmina_message_panel.c:563
 msgid "Client Certificate File"
 msgstr "Fichier certificat client"
 
-#: src/remmina_message_panel.c:566
+#: src/remmina_message_panel.c:585
 msgid "Client Certificate Key"
 msgstr "Clef privée associée au certificat client"
 
@@ -1560,7 +1560,7 @@ msgstr "Négocier"
 msgid "Color depth"
 msgstr "Profondeur de couleur"
 
-#: plugins/rdp/rdp_plugin.c:1545 plugins/spice/spice_plugin.c:427
+#: plugins/rdp/rdp_plugin.c:1545 plugins/spice/spice_plugin.c:430
 msgid "Share folder"
 msgstr "Dossier partagé"
 
@@ -1621,7 +1621,7 @@ msgstr "Nom de la carte à puce"
 msgid "Share local printers"
 msgstr "Partager les imprimantes locales"
 
-#: plugins/rdp/rdp_plugin.c:1576 plugins/spice/spice_plugin.c:446
+#: plugins/rdp/rdp_plugin.c:1576 plugins/spice/spice_plugin.c:449
 msgid "Share smartcard"
 msgstr "Partager la carte à puce"
 
@@ -1630,7 +1630,7 @@ msgid "Redirect local microphone"
 msgstr "Rediriger le microphone local"
 
 #: plugins/rdp/rdp_plugin.c:1578 plugins/nx/nx_plugin.c:717
-#: plugins/spice/spice_plugin.c:442 plugins/spice/spice_plugin.c:458
+#: plugins/spice/spice_plugin.c:445 plugins/spice/spice_plugin.c:461
 #: plugins/vnc/vnc_plugin.c:1907
 msgid "Disable clipboard sync"
 msgstr "Désactiver la synchro du presse‐papiers"
@@ -1668,7 +1668,7 @@ msgid "Glyph Cache"
 msgstr "Cache des glyphes"
 
 #: plugins/rdp/rdp_plugin.c:1600 plugins/nx/nx_plugin.c:728
-#: plugins/spice/spice_plugin.c:459 plugins/vnc/vnc_plugin.c:1925
+#: plugins/spice/spice_plugin.c:462 plugins/vnc/vnc_plugin.c:1925
 #: plugins/xdmcp/xdmcp_plugin.c:381
 msgid "Send Ctrl+Alt+Delete"
 msgstr "Envoyer un Ctrl + Alt + Suppr"
@@ -1912,7 +1912,7 @@ msgstr "Transfert du fichier %s effectué"
 #. * (and add the GTK_DIALOG_DESTROY_WITH_PARENT flag) if it becomes
 #. * accessible from the Remmina plugin API.
 #.
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:460
+#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:463
 msgid "Select USB devices for redirection"
 msgstr "Sélectionnez les périphériques USB à rediriger"
 
@@ -1924,47 +1924,43 @@ msgstr "_Fermer"
 msgid "USB redirection error"
 msgstr "Erreur de redirection USB"
 
-#: plugins/spice/spice_plugin.c:262
+#: plugins/spice/spice_plugin.c:264
 #, c-format
 msgid "Disconnected from SPICE server %s."
 msgstr "Déconnecté du serveur SPICE %s."
 
-#: plugins/spice/spice_plugin.c:272
-msgid "Invalid password."
-msgstr "Mot de passe incorrect."
-
-#: plugins/spice/spice_plugin.c:277
+#: plugins/spice/spice_plugin.c:280
 msgid "TLS connection error."
 msgstr "Erreur de connexion TLS."
 
-#: plugins/spice/spice_plugin.c:283
+#: plugins/spice/spice_plugin.c:286
 msgid "Connection to SPICE server failed."
 msgstr "Échec de la connexion au serveur SPICE."
 
-#: plugins/spice/spice_plugin.c:425
+#: plugins/spice/spice_plugin.c:428
 msgid "Use TLS encryption"
 msgstr "Utiliser le chiffrement TLS"
 
-#: plugins/spice/spice_plugin.c:426
+#: plugins/spice/spice_plugin.c:429
 msgid "Server CA certificate"
 msgstr "Certificat d’AC du serveur"
 
-#: plugins/spice/spice_plugin.c:444
+#: plugins/spice/spice_plugin.c:447
 msgid "Enable audio channel"
 msgstr "Activer le canal audio"
 
-#: plugins/spice/spice_plugin.c:445 plugins/spice/spice_plugin.c:457
+#: plugins/spice/spice_plugin.c:448 plugins/spice/spice_plugin.c:460
 msgid "Resize guest to match window size"
 msgstr "Redimensionner l’invité à la taille de la fenêtre"
 
-#: plugins/spice/spice_plugin.c:447 plugins/spice/spice_plugin.c:456
+#: plugins/spice/spice_plugin.c:450 plugins/spice/spice_plugin.c:459
 #: plugins/vnc/vnc_plugin.c:1906 plugins/vnc/vnc_plugin.c:1921
 msgid "View only"
 msgstr "Visualisation uniquement"
 
 #. Type
 #. Name
-#: plugins/spice/spice_plugin.c:469
+#: plugins/spice/spice_plugin.c:472
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
 msgstr "SPICE — Simple Protocol for Independent Computing Environments"
 
@@ -2757,3 +2753,4 @@ msgstr ""
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"
 msgstr "Ne plus réafficher ce message"
+
