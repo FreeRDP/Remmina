@@ -3754,17 +3754,8 @@ static void rpw_size_allocated_on_connection(GtkWidget *w, GdkRectangle *allocat
 	/* Disconnect signal handler to avoid to be called again after a normal resize */
 	g_signal_handler_disconnect(w, gp->cnnobj->deferred_open_size_allocate_handler);
 
-	/* Schedule a connection ASAP */
-	if (remmina_file_get_int(gp->cnnobj->remmina_file, "resolution_mode", RES_INVALID) == RES_USE_INITIAL_WINDOW_SIZE ||
-		remmina_protocol_widget_get_current_scale_mode(gp) == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
-		/* Allow the WM to decide the real size of our windows before reading current window
-		 * size and connecting: some WM, i.e. GnomeShell/mutter with edge-tiling,
-		 * will resize our window after creating it, so we must wait to be in a stable state
-		 * before reading the window internal widgets allocated size for RES_USE_INTERNAL_WINDOW_SIZE */
-		g_timeout_add(400, open_connection_last_stage, gp);
-	}
-	else
-		g_idle_add(open_connection_last_stage, gp);
+	/* Allow extra 100ms for size allocation (do we really need it?) */
+	g_timeout_add(100, open_connection_last_stage, gp);
 
 	return;
 }
@@ -3785,7 +3776,6 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 	RemminaConnectionWindow* cnnwin;
 	GtkWidget* tab;
 	gint i;
-	gboolean defer_connection_after_size_allocation;
 
 	/* Create the RemminaConnectionObject */
 	cnnobj = g_new0(RemminaConnectionObject, 1);
@@ -3904,21 +3894,7 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 	 * we should wait for a size allocation from GTK for cnnobj->proto
 	 * before connecting */
 
-	defer_connection_after_size_allocation = FALSE;
-	if (remmina_file_get_int(remminafile, "resolution_mode", RES_INVALID) == RES_USE_INITIAL_WINDOW_SIZE ||
-		remmina_protocol_widget_get_current_scale_mode((RemminaProtocolWidget*)cnnobj->proto) == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
-		GtkAllocation al;
-		gtk_widget_get_allocation(cnnobj->proto, &al);
-		if (al.width < 10 || al.height < 10) {
-			defer_connection_after_size_allocation = TRUE;
-		}
-	}
-
-	if (defer_connection_after_size_allocation) {
-		cnnobj->deferred_open_size_allocate_handler = g_signal_connect(G_OBJECT(cnnobj->proto), "size-allocate", G_CALLBACK(rpw_size_allocated_on_connection), NULL);
-	} else {
-		g_idle_add(open_connection_last_stage, cnnobj->proto);
-	}
+	cnnobj->deferred_open_size_allocate_handler = g_signal_connect(G_OBJECT(cnnobj->proto), "size-allocate", G_CALLBACK(rpw_size_allocated_on_connection), NULL);
 
 	return cnnobj->proto;
 
