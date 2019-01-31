@@ -244,6 +244,7 @@ cat << EOF > "$REMMINATOP"/data/reports/postats.html
                 { max: ${MAX}, stacked: true }
             );
         </script>
-	</body>
+        <!--#include virtual="howto-i18n.html" -->
+    </body>
 </html>
 EOF
