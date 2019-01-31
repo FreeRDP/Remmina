@@ -229,7 +229,7 @@ cat << EOF > "$REMMINATOP"/data/reports/postats.html
         </style>
     </head>
     <body>
-        <div class="container-fluid"></div>
+        <div class="container-fluid">
 
         <h1>Remmina Translation Status</h1>
         <!--<div id="multiple-bar-stacked" style="height: 650px;"></div>-->
@@ -245,6 +245,7 @@ cat << EOF > "$REMMINATOP"/data/reports/postats.html
             );
         </script>
         <!--#include virtual="howto-i18n.html" -->
+        </div>
     </body>
 </html>
 EOF
