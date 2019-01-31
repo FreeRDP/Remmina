@@ -201,7 +201,7 @@ cat << EOF > "$REMMINATOP"/data/reports/postats.html
   <head>
     <title>Remmina Translation Status</title>
     <meta charset="utf-8">
-    <script src="./chartkick.min.js"></script>
+    <script src="chartkick.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
     <script>
