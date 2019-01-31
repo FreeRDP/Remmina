@@ -18,7 +18,7 @@
 #      REVISION:  ---
 #===============================================================================
 
-set -o nounset                                  # Treat unset variables as an error
+set -o nounset                        # Treat unset variables as an error
 
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 REMMINATOP="$(dirname "$SCRIPTPATH")"
@@ -36,7 +36,7 @@ declare -x FUZZY
 #===============================================================================
 
 #-------------------------------------------------------------------------------
-# TODO: Move this functions in an external library file
+# TODO: Move these functions in an external library file
 #-------------------------------------------------------------------------------
 
 rem_varhasvalue () {
@@ -170,7 +170,7 @@ while IFS= read -r _msgstat ; do
 				_untranslated=0
 				;;
 			*)
-				#rem_log INFO "untraslated: $_untranslated"
+				#rem_log INFO "untranslated: $_untranslated"
 				;;
 		esac
 		case $_fuzzy in
@@ -197,52 +197,53 @@ while IFS= read -r _msgstat ; do
 done < "$REMTMPFILE"
 cat << EOF > "$REMMINATOP"/data/reports/postats.html
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Remmina Translation Status</title>
-    <meta charset="utf-8">
-    <script src="chartkick.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us">
+    <head>
+        <title>Remmina Translation Status</title>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="chartkick.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+        <script type="text/javascript">
 
-    <script>
+            Chartkick.CustomChart = function (element, dataSource, options) {
+            };
 
-      Chartkick.CustomChart = function (element, dataSource, options) {
-      };
+        </script>
 
-    </script>
+        <style type="text/css">
+            body {
+                padding: 20px;
+                margin: 0;
+                font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+            }
 
-    <style>
-      body {
-        padding: 20px;
-        margin: 0;
-        font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-      }
+            h1 {
+                text-align: center;
+            }
 
-      h1 {
-        text-align: center;
-      }
+            .container-fluid {
+                max-width: 900px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid"></div>
 
-      .container-fluid {
-        max-width: 900px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container-fluid">
+        <h1>Remmina Translation Status</h1>
+        <!--<div id="multiple-bar-stacked" style="height: 650px;"></div>-->
+        <div id="multiple-bar-stacked" style="height: 750px;"></div>
 
-    <h1>Remmina Translation Status</h1>
-    <!--<div id="multiple-bar-stacked" style="height: 650px;"></div>-->
-    <div id="multiple-bar-stacked" style="height: 750px;"></div>
-
-	    <script>
-		  new Chartkick.BarChart("multiple-bar-stacked", [
-		  {name: "Translated", data: [${TRANSLATED:0:-1}]},
-		  {name: "Fuzzy", data: [${FUZZY:0:-1}]},
-		  {name: "Untraslated", data: [${UNTRANSLATED:0:-1}]}
-		  ], {max: ${MAX}, stacked: true});
-	    </script>
+        <script type="text/javascript">
+            new Chartkick.BarChart("multiple-bar-stacked", [
+                    { name: "Translated", data: [${TRANSLATED:0:-1}] },
+                    { name: "Fuzzy", data: [${FUZZY:0:-1}] },
+                    { name: "Untraslated", data: [${UNTRANSLATED:0:-1}] }
+                ],
+                { max: ${MAX}, stacked: true }
+            );
+        </script>
 	</body>
 </html>
 EOF
