@@ -2,6 +2,20 @@
 
 Current Remmina changelog, see CHANGELOG.archive.md for old releases.
 
+## [v1.3.2](https://gitlab.com/Remmina/Remmina/tags/v1.3.2) (2019-01-31)
+
+- Change rcw size allocation wait algorithm, see issue #1809 (by Giovanni Panozzo)
+- Fix a couple of VNCI crashes, see issue #1821 (by Giovanni Panozzo)
+- Fix spice authentication, issue #1820 (by Giovanni Panozzo)
+- Update translations script fixes (by Antenore Gatta)
+- Add a missing end point in an SSH error message (by Davy Defaud)
+- Complete the French translation (by Davy Defaud)
+- New strings for it.po (by Giovanni Panozzo)
+- Remmina Translations Statistics (by Antenore Gatta)
+- Remmina Translation Report (by Antenore Gatta)
+- Cosmetics fixes: (by Antenore Gatta & Davy Defaud)
+- Development Documentation fixes (by Antenore Gatta)
+
 ## [v1.3.1](https://gitlab.com/Remmina/Remmina/tags/v1.3.1) (2019-01-28)
 
 ### Bug Fixing release
