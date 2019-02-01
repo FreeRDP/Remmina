@@ -136,7 +136,7 @@ rem_which () {
 #===============================================================================
 
 
-if ! rem_which "xgettext" "msgmerge" "git" "gnuplot" ; then
+if ! rem_which "xgettext" "msgmerge" "git" ; then
 	rem_log ERROR "Some tools have not been found"
 	exit 1
 fi
