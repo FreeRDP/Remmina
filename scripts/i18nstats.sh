@@ -196,55 +196,52 @@ while IFS= read -r _msgstat ; do
 	fi
 done < "$REMTMPFILE"
 cat << EOF > "$REMMINATOP"/data/reports/postats.html
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-us">
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Remmina Translation Status</title>
-        <meta charset="utf-8" />
-        <script type="text/javascript" src="chartkick.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+        <script type="text/javascript" src="chartkick.min.js" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js" />
         <script type="text/javascript">
-
             Chartkick.CustomChart = function (element, dataSource, options) {
             };
-
         </script>
-
         <style type="text/css">
             body {
                 padding: 20px;
                 margin: 0;
                 font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
             }
-
             h1 {
                 text-align: center;
             }
-
             .container-fluid {
                 max-width: 900px;
                 margin-left: auto;
                 margin-right: auto;
             }
+            #multiple-bar-stacked {
+                height: 750px;
+            }
         </style>
     </head>
     <body>
-        <div class="container-fluid"></div>
-
-        <h1>Remmina Translation Status</h1>
-        <!--<div id="multiple-bar-stacked" style="height: 650px;"></div>-->
-        <div id="multiple-bar-stacked" style="height: 750px;"></div>
-
-        <script type="text/javascript">
-            new Chartkick.BarChart("multiple-bar-stacked", [
-                    { name: "Translated", data: [${TRANSLATED:0:-1}] },
-                    { name: "Fuzzy", data: [${FUZZY:0:-1}] },
-                    { name: "Untraslated", data: [${UNTRANSLATED:0:-1}] }
-                ],
-                { max: ${MAX}, stacked: true }
-            );
-        </script>
-        <!--#include virtual="howto-i18n.html" -->
+        <div class="container-fluid">
+            <h1>Remmina Translation Status</h1>
+            <div id="multiple-bar-stacked"></div>
+            <script type="text/javascript">
+                new Chartkick.BarChart(
+                    "multiple-bar-stacked", [
+                        { name: "Translated", data: [${TRANSLATED:0:-1}] },
+                        { name: "Fuzzy", data: [${FUZZY:0:-1}] },
+                        { name: "Untranslated", data: [${UNTRANSLATED:0:-1}] }
+                    ],
+                    { max: ${MAX}, stacked: true }
+                );
+            </script>
+            <!--#include virtual="howto-i18n.html" -->
+        </div>
     </body>
 </html>
 EOF
