@@ -201,8 +201,8 @@ cat << EOF > "$REMMINATOP"/data/reports/postats.html
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Remmina Translation Status</title>
-        <script type="text/javascript" src="chartkick.min.js" />
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js" />
+        <script type="text/javascript" src="chartkick.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
         <script type="text/javascript">
             Chartkick.CustomChart = function (element, dataSource, options) {
             };
