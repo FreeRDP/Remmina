@@ -1,52 +1,48 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-us">
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Remmina Translation Status</title>
-        <meta charset="utf-8" />
-        <script type="text/javascript" src="chartkick.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+        <script type="text/javascript" src="chartkick.min.js" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js" />
         <script type="text/javascript">
-
             Chartkick.CustomChart = function (element, dataSource, options) {
             };
-
         </script>
-
         <style type="text/css">
             body {
                 padding: 20px;
                 margin: 0;
                 font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
             }
-
             h1 {
                 text-align: center;
             }
-
             .container-fluid {
                 max-width: 900px;
                 margin-left: auto;
                 margin-right: auto;
             }
+            #multiple-bar-stacked {
+                height: 750px;
+            }
         </style>
     </head>
     <body>
         <div class="container-fluid">
-
-        <h1>Remmina Translation Status</h1>
-        <!--<div id="multiple-bar-stacked" style="height: 650px;"></div>-->
-        <div id="multiple-bar-stacked" style="height: 750px;"></div>
-
-        <script type="text/javascript">
-            new Chartkick.BarChart("multiple-bar-stacked", [
-                    { name: "Translated", data: [["ar.po",1],["ast.po",221],["bg.po",135],["bn.po",7],["bs.po",221],["ca.po",221],["ca@valencia.po",135],["cs.po",285],["da.po",542],["de.po",578],["el.po",221],["en_AU.po",230],["en_GB.po",230],["es.po",477],["es_VE.po",484],["et.po",112],["eu.po",221],["fi.po",173],["fr.po",578],["gl.po",221],["he.po",221],["hr.po",12],["hu.po",542],["id.po",39],["it.po",578],["ja.po",221],["kk.po",71],["km.po",62],["kn.po",6],["ko.po",221],["lt.po",221],["lv.po",221],["ms.po",221],["my.po",14],["nb.po",221],["nl.po",221],["oc.po",221],["pl.po",210],["pt_BR.po",221],["pt.po",221],["pt_PT.po",221],["ro.po",221],["ru.po",559],["shn.po",0],["si.po",40],["sk.po",120],["sl.po",221],["sq.po",93],["sr.po",120],["sv.po",195],["te.po",4],["th.po",128],["tr.po",559],["ug.po",221],["uk.po",221],["uz@cyrillic.po",308],["zh_CN.po",420],["zh_TW.po",221]] },
-                    { name: "Fuzzy", data: [["ar.po",0],["ast.po",0],["bg.po",0],["bn.po",0],["bs.po",0],["ca.po",0],["ca@valencia.po",0],["cs.po",0],["da.po",0],["de.po",0],["el.po",0],["en_AU.po",0],["en_GB.po",0],["es.po",0],["es_VE.po",0],["et.po",0],["eu.po",0],["fi.po",0],["fr.po",0],["gl.po",0],["he.po",0],["hr.po",0],["hu.po",0],["id.po",0],["it.po",0],["ja.po",0],["kk.po",0],["km.po",0],["kn.po",0],["ko.po",0],["lt.po",0],["lv.po",0],["ms.po",0],["my.po",0],["nb.po",0],["nl.po",0],["oc.po",0],["pl.po",0],["pt_BR.po",0],["pt.po",0],["pt_PT.po",0],["ro.po",0],["ru.po",0],["shn.po",0],["si.po",0],["sk.po",0],["sl.po",0],["sq.po",0],["sr.po",0],["sv.po",0],["te.po",0],["th.po",0],["tr.po",0],["ug.po",0],["uk.po",0],["uz@cyrillic.po",0],["zh_CN.po",0],["zh_TW.po",0]] },
-                    { name: "Untraslated", data: [["ar.po",577],["ast.po",357],["bg.po",443],["bn.po",571],["bs.po",357],["ca.po",357],["ca@valencia.po",443],["cs.po",293],["da.po",36],["de.po",0],["el.po",357],["en_AU.po",348],["en_GB.po",348],["es.po",101],["es_VE.po",94],["et.po",466],["eu.po",357],["fi.po",405],["fr.po",0],["gl.po",357],["he.po",357],["hr.po",566],["hu.po",36],["id.po",539],["it.po",0],["ja.po",357],["kk.po",507],["km.po",516],["kn.po",572],["ko.po",357],["lt.po",357],["lv.po",357],["ms.po",357],["my.po",564],["nb.po",357],["nl.po",357],["oc.po",357],["pl.po",368],["pt_BR.po",357],["pt.po",357],["pt_PT.po",357],["ro.po",357],["ru.po",19],["shn.po",578],["si.po",538],["sk.po",458],["sl.po",357],["sq.po",485],["sr.po",458],["sv.po",383],["te.po",574],["th.po",450],["tr.po",19],["ug.po",357],["uk.po",357],["uz@cyrillic.po",270],["zh_CN.po",158],["zh_TW.po",357]] }
-                ],
-                { max: 578, stacked: true }
-            );
-        </script>
-        <!--#include virtual="howto-i18n.html" -->
+            <h1>Remmina Translation Status</h1>
+            <div id="multiple-bar-stacked"></div>
+            <script type="text/javascript">
+                new Chartkick.BarChart(
+                    "multiple-bar-stacked", [
+                        { name: "Translated", data: [["ar.po",1],["ast.po",221],["bg.po",135],["bn.po",7],["bs.po",221],["ca.po",221],["ca@valencia.po",135],["cs.po",285],["da.po",542],["de.po",578],["el.po",221],["en_AU.po",230],["en_GB.po",230],["es.po",477],["es_VE.po",484],["et.po",112],["eu.po",221],["fi.po",173],["fr.po",578],["gl.po",221],["he.po",221],["hr.po",12],["hu.po",542],["id.po",39],["it.po",578],["ja.po",221],["kk.po",71],["km.po",62],["kn.po",6],["ko.po",221],["lt.po",221],["lv.po",221],["ms.po",221],["my.po",14],["nb.po",221],["nl.po",221],["oc.po",221],["pl.po",210],["pt_BR.po",221],["pt.po",221],["pt_PT.po",221],["ro.po",221],["ru.po",559],["shn.po",0],["si.po",40],["sk.po",120],["sl.po",221],["sq.po",93],["sr.po",120],["sv.po",195],["te.po",4],["th.po",128],["tr.po",559],["ug.po",221],["uk.po",221],["uz@cyrillic.po",308],["zh_CN.po",420],["zh_TW.po",221]] },
+                        { name: "Fuzzy", data: [["ar.po",0],["ast.po",0],["bg.po",0],["bn.po",0],["bs.po",0],["ca.po",0],["ca@valencia.po",0],["cs.po",0],["da.po",0],["de.po",0],["el.po",0],["en_AU.po",0],["en_GB.po",0],["es.po",0],["es_VE.po",0],["et.po",0],["eu.po",0],["fi.po",0],["fr.po",0],["gl.po",0],["he.po",0],["hr.po",0],["hu.po",0],["id.po",0],["it.po",0],["ja.po",0],["kk.po",0],["km.po",0],["kn.po",0],["ko.po",0],["lt.po",0],["lv.po",0],["ms.po",0],["my.po",0],["nb.po",0],["nl.po",0],["oc.po",0],["pl.po",0],["pt_BR.po",0],["pt.po",0],["pt_PT.po",0],["ro.po",0],["ru.po",0],["shn.po",0],["si.po",0],["sk.po",0],["sl.po",0],["sq.po",0],["sr.po",0],["sv.po",0],["te.po",0],["th.po",0],["tr.po",0],["ug.po",0],["uk.po",0],["uz@cyrillic.po",0],["zh_CN.po",0],["zh_TW.po",0]] },
+                        { name: "Untranslated", data: [["ar.po",577],["ast.po",357],["bg.po",443],["bn.po",571],["bs.po",357],["ca.po",357],["ca@valencia.po",443],["cs.po",293],["da.po",36],["de.po",0],["el.po",357],["en_AU.po",348],["en_GB.po",348],["es.po",101],["es_VE.po",94],["et.po",466],["eu.po",357],["fi.po",405],["fr.po",0],["gl.po",357],["he.po",357],["hr.po",566],["hu.po",36],["id.po",539],["it.po",0],["ja.po",357],["kk.po",507],["km.po",516],["kn.po",572],["ko.po",357],["lt.po",357],["lv.po",357],["ms.po",357],["my.po",564],["nb.po",357],["nl.po",357],["oc.po",357],["pl.po",368],["pt_BR.po",357],["pt.po",357],["pt_PT.po",357],["ro.po",357],["ru.po",19],["shn.po",578],["si.po",538],["sk.po",458],["sl.po",357],["sq.po",485],["sr.po",458],["sv.po",383],["te.po",574],["th.po",450],["tr.po",19],["ug.po",357],["uk.po",357],["uz@cyrillic.po",270],["zh_CN.po",158],["zh_TW.po",357]] }
+                    ],
+                    { max: 578, stacked: true }
+                );
+            </script>
+            <!--#include virtual="howto-i18n.html" -->
         </div>
     </body>
 </html>
