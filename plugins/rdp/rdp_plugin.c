@@ -543,7 +543,7 @@ static BOOL remmina_rdp_authenticate(freerdp* instance, char** username, char** 
 		if (save) {
 			// User has requested to save credentials. We put all the new cretentials
 			// into remminafile->settings. They will be saved later, on successful connection, by
-			// remmina_connection_window.c
+			// rcw.c
 
 			remmina_plugin_service->file_set_string( remminafile, "username", s_username );
 			remmina_plugin_service->file_set_string( remminafile, "password", s_password );
@@ -598,7 +598,7 @@ static BOOL remmina_rdp_gw_authenticate(freerdp* instance, char** username, char
 		if (save) {
 			// User has requested to save credentials. We put all the new cretentials
 			// into remminafile->settings. They will be saved later, on successful connection, by
-			// remmina_connection_window.c
+			// rcw.c
 
 			remmina_plugin_service->file_set_string( remminafile, "gateway_username", s_username );
 			remmina_plugin_service->file_set_string( remminafile, "gateway_password", s_password );

@@ -46,7 +46,7 @@
 #include <libssh/sftp.h>
 #include <pthread.h>
 #include "remmina_file.h"
-#include "remmina_connection_window.h"
+#include "rcw.h"
 
 G_BEGIN_DECLS
 

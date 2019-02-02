@@ -43,7 +43,7 @@
 #endif
 #include "remmina_public.h"
 #include "remmina_pref.h"
-#include "remmina_connection_window.h"
+#include "rcw.h"
 #include "remmina_string_list.h"
 #include "remmina_pref_dialog.h"
 #include "remmina_file.h"
@@ -1236,7 +1236,7 @@ static void remmina_file_editor_on_connect(GtkWidget* button, RemminaFileEditor*
 	}
 	gtk_widget_destroy(GTK_WIDGET(gfe));
 	gf->prevent_saving = TRUE;
-	remmina_connection_window_open_from_file(gf);
+	rcw_open_from_file(gf);
 }
 
 static void remmina_file_editor_on_save_connect(GtkWidget* button, RemminaFileEditor* gfe)
@@ -1256,7 +1256,7 @@ static void remmina_file_editor_on_save_connect(GtkWidget* button, RemminaFileEd
 		remmina_file_set_string(gf, "name", remmina_file_get_string(gf, "server"));
 	}
 	gtk_widget_destroy(GTK_WIDGET(gfe));
-	remmina_connection_window_open_from_file(gf);
+	rcw_open_from_file(gf);
 }
 
 static void remmina_file_editor_on_cancel(GtkWidget* button, RemminaFileEditor* gfe)

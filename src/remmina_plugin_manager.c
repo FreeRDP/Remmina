@@ -50,7 +50,7 @@
 #include "remmina_protocol_widget.h"
 #include "remmina_log.h"
 #include "remmina_widget_pool.h"
-#include "remmina_connection_window.h"
+#include "rcw.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_public.h"
 #include "remmina_masterthread_exec.h"
@@ -233,7 +233,7 @@ RemminaPluginService remmina_plugin_manager_service =
 
 	remmina_widget_pool_register,
 
-	remmina_connection_window_open_from_file_full,
+	rcw_open_from_file_full,
 	remmina_public_get_server_port,
 	remmina_masterthread_exec_is_main_thread,
 	remmina_gtksocket_available,
