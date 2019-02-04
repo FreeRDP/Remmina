@@ -3882,7 +3882,7 @@ GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafil
 	}
 
 	if (remmina_protocol_widget_has_error((RemminaProtocolWidget*)cnnobj->proto)) {
-		printf("Ok, an error occured in initializing the protocol plugin before connecting. The error is %s.\n"
+		printf("Ok, an error occurred in initializing the protocol plugin before connecting. The error is %s.\n"
 			"ToDo: put this string as error to show", remmina_protocol_widget_get_error_message((RemminaProtocolWidget*)cnnobj->proto));
 		return cnnobj->proto;
 	}
