@@ -43,7 +43,7 @@
 #include "remmina_avahi.h"
 #include "remmina_applet_menu_item.h"
 #include "remmina_applet_menu.h"
-#include "remmina_connection_window.h"
+#include "rcw.h"
 #include "remmina_icon.h"
 #include "remmina/remmina_trace_calls.h"
 #include "remmina_sysinfo.h"

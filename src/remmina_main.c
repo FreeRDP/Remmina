@@ -45,7 +45,7 @@
 #include "remmina_file.h"
 #include "remmina_file_manager.h"
 #include "remmina_file_editor.h"
-#include "remmina_connection_window.h"
+#include "rcw.h"
 #include "remmina_about.h"
 #include "remmina_pref.h"
 #include "remmina_pref_dialog.h"
@@ -623,7 +623,7 @@ void remmina_main_on_action_connection_connect(GtkAction *action, gpointer user_
 		return;
 
 	remmina_file_touch(remminafile);
-	remmina_connection_window_open_from_filename(remminamain->priv->selected_filename);
+	rcw_open_from_filename(remminamain->priv->selected_filename);
 
 	remmina_file_free(remminafile);
 }
@@ -971,7 +971,7 @@ static gboolean remmina_main_quickconnect(void)
 		gtk_combo_box_text_get_active_text(remminamain->combo_quick_connect_protocol));
 	g_free(server);
 
-	remmina_connection_window_open_from_file(remminafile);
+	rcw_open_from_file(remminafile);
 
 	return FALSE;
 }

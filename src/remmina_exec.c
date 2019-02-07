@@ -46,7 +46,7 @@
 #include "remmina_file.h"
 #include "remmina_pref.h"
 #include "remmina_file_editor.h"
-#include "remmina_connection_window.h"
+#include "rcw.h"
 #include "remmina_about.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_exec.h"
@@ -62,11 +62,11 @@
 static gboolean cb_closewidget(GtkWidget *widget, gpointer data)
 {
 	TRACE_CALL(__func__);
-	/* The correct way to close a remmina_connection_window is to send
+	/* The correct way to close a rcw is to send
 	 * it a "delete-event" signal. Simply destroying it will not close
 	 * all network connections */
 	if (REMMINA_IS_CONNECTION_WINDOW(widget))
-		return remmina_connection_window_delete(REMMINA_CONNECTION_WINDOW(widget));
+		return rcw_delete(RCW(widget));
 	return TRUE;
 }
 
@@ -98,14 +98,14 @@ void remmina_exec_exitremmina()
 	g_application_quit(g_application_get_default());
 }
 
-static gboolean disable_remmina_connection_window_delete_confirm_cb(GtkWidget *widget, gpointer data)
+static gboolean disable_rcw_delete_confirm_cb(GtkWidget *widget, gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionWindow *rcw;
 
 	if (REMMINA_IS_CONNECTION_WINDOW(widget)) {
 		rcw = (RemminaConnectionWindow*)widget;
-		remmina_connection_window_set_delete_confirm_mode(rcw, REMMINA_CONNECTION_WINDOW_ONDELETE_NOCONFIRM);
+		rcw_set_delete_confirm_mode(rcw, RCW_ONDELETE_NOCONFIRM);
 	}
 	return TRUE;
 }
@@ -135,7 +135,7 @@ void remmina_application_condexit(RemminaCondExitType why)
 	case REMMINA_CONDEXIT_ONQUIT:
 		// Quit command has been sent from main window or appindicator/systray menu
 		// quit means QUIT.
-		remmina_widget_pool_foreach(disable_remmina_connection_window_delete_confirm_cb, NULL);
+		remmina_widget_pool_foreach(disable_rcw_delete_confirm_cb, NULL);
 		remmina_exec_exitremmina();
 		break;
 	}
@@ -194,7 +194,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		 * we can implement multi profile connection:
 		 *    https://gitlab.com/Remmina/Remmina/issues/915
 		 */
-		remmina_connection_window_open_from_filename(data);
+		rcw_open_from_filename(data);
 		break;
 
 	case REMMINA_COMMAND_EDIT:
@@ -249,7 +249,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		break;
 
 	case REMMINA_COMMAND_EXIT:
-		remmina_widget_pool_foreach(disable_remmina_connection_window_delete_confirm_cb, NULL);
+		remmina_widget_pool_foreach(disable_rcw_delete_confirm_cb, NULL);
 		remmina_exec_exitremmina();
 		break;
 

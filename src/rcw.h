@@ -41,12 +41,12 @@
 
 G_BEGIN_DECLS
 
-#define REMMINA_TYPE_CONNECTION_WINDOW               (remmina_connection_window_get_type())
-#define REMMINA_CONNECTION_WINDOW(obj)               (G_TYPE_CHECK_INSTANCE_CAST((obj), REMMINA_TYPE_CONNECTION_WINDOW, RemminaConnectionWindow))
-#define REMMINA_CONNECTION_WINDOW_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST((klass), REMMINA_TYPE_CONNECTION_WINDOW, RemminaConnectionWindowClass))
-#define REMMINA_IS_CONNECTION_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_TYPE((obj), REMMINA_TYPE_CONNECTION_WINDOW))
-#define REMMINA_IS_CONNECTION_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE((klass), REMMINA_TYPE_CONNECTION_WINDOW))
-#define REMMINA_CONNECTION_WINDOW_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_CONNECTION_WINDOW, RemminaConnectionWindowClass))
+#define   REMMINA_TYPE_CONNECTION_WINDOW            (rcw_get_type())
+#define   RCW(obj)                                  (G_TYPE_CHECK_INSTANCE_CAST((obj), REMMINA_TYPE_CONNECTION_WINDOW, RemminaConnectionWindow))
+#define   RCW_CLASS(klass)                          (G_TYPE_CHECK_CLASS_CAST((klass), REMMINA_TYPE_CONNECTION_WINDOW, RemminaConnectionWindowClass))
+#define   REMMINA_IS_CONNECTION_WINDOW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), REMMINA_TYPE_CONNECTION_WINDOW))
+#define   REMMINA_IS_CONNECTION_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), REMMINA_TYPE_CONNECTION_WINDOW))
+#define   RCW_GET_CLASS(obj)                        (G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_CONNECTION_WINDOW, RemminaConnectionWindowClass))
 
 typedef struct _RemminaConnectionWindowPriv RemminaConnectionWindowPriv;
 
@@ -63,27 +63,25 @@ typedef struct _RemminaConnectionWindowClass {
 typedef struct _RemminaConnectionObject RemminaConnectionObject;
 
 typedef enum {
-	REMMINA_CONNECTION_WINDOW_ONDELETE_CONFIRM_IF_2_OR_MORE = 0,
-	REMMINA_CONNECTION_WINDOW_ONDELETE_NOCONFIRM		= 1
+	RCW_ONDELETE_CONFIRM_IF_2_OR_MORE = 0,
+	RCW_ONDELETE_NOCONFIRM		= 1
 
 } RemminaConnectionWindowOnDeleteConfirmMode;
 
-GType remmina_connection_window_get_type(void)
+GType rcw_get_type(void)
 G_GNUC_CONST;
 
 /* Open a new connection window for a .remmina file */
-gboolean remmina_connection_window_open_from_filename(const gchar* filename);
+gboolean rcw_open_from_filename(const gchar* filename);
 /* Open a new connection window for a given RemminaFile struct. The struct will be freed after the call */
-void remmina_connection_window_open_from_file(RemminaFile* remminafile);
-gboolean remmina_connection_window_delete(RemminaConnectionWindow* cnnwin);
-void remmina_connection_window_set_delete_confirm_mode(RemminaConnectionWindow* cnnwin, RemminaConnectionWindowOnDeleteConfirmMode mode);
-GtkWidget* remmina_connection_window_open_from_file_full(RemminaFile* remminafile, GCallback disconnect_cb, gpointer data,
-							 guint* handler);
+void rcw_open_from_file(RemminaFile* remminafile);
+gboolean rcw_delete(RemminaConnectionWindow* cnnwin);
+void rcw_set_delete_confirm_mode(RemminaConnectionWindow* cnnwin, RemminaConnectionWindowOnDeleteConfirmMode mode);
+GtkWidget* rcw_open_from_file_full(RemminaFile* remminafile, GCallback disconnect_cb, gpointer data, guint* handler);
 
-
-void remmina_connection_object_destroy_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePanel *mp);
-void remmina_connection_object_show_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePanel *mp);
-void remmina_connection_object_get_monitor_geometry(RemminaConnectionObject* cnnobj, GdkRectangle *sz);
+void rco_destroy_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePanel *mp);
+void rco_show_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePanel *mp);
+void rco_get_monitor_geometry(RemminaConnectionObject* cnnobj, GdkRectangle *sz);
 
 #define MESSAGE_PANEL_SPINNER 0x00000001
 #define MESSAGE_PANEL_OKBUTTON 0x00000002

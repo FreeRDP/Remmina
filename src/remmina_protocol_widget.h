@@ -36,7 +36,7 @@
 
 #pragma once
 
-#include "remmina_connection_window.h"
+#include "rcw.h"
 #include "remmina_file.h"
 #include "remmina_ssh.h"
 
