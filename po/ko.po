@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-01-30 14:45+0000\n"
+"POT-Creation-Date: 2019-02-07 15:35+0000\n"
 "PO-Revision-Date: 2014-09-16 05:27+0000\n"
 "Last-Translator: Kim Boram <boramism@gmail.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -53,6 +53,98 @@ msgstr "애플릿 메뉴를 통해 원격 데스크탑에 연결"
 #: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1119
 msgid "Remmina Remote Desktop Client"
 msgstr "리미너' 원격 데스크탑 클라이언트"
+
+#: src/rcw.c:588
+#, c-format
+msgid ""
+"There are %i active connections in the current window. Are you sure to close?"
+msgstr "현재 %i 과(와) 연결되어있습니다. 연결을 종료하시겠습니까?"
+
+#: src/rcw.c:1169
+msgid "Viewport fullscreen mode"
+msgstr "전체 화면 보기"
+
+#: src/rcw.c:1178
+msgid "Scrolled fullscreen mode"
+msgstr "스크롤된 전체화면 보기"
+
+#: src/rcw.c:1249
+msgid "Keep aspect ratio when scaled"
+msgstr ""
+
+#: src/rcw.c:1258
+msgid "Fill client window when scaled"
+msgstr ""
+
+#. Add a keystrokes submenu
+#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
+#: data/ui/remmina_preferences.glade:252
+msgid "Keystrokes"
+msgstr ""
+
+#: src/rcw.c:1795
+msgid ""
+"Warning: screenshot is scaled or distorted. Disable scaling to have better "
+"screenshot."
+msgstr ""
+
+#. send a desktop notification
+#: src/rcw.c:1856
+msgid "Screenshot taken"
+msgstr ""
+
+#: src/rcw.c:1923
+msgid "Resize the window to fit in remote resolution"
+msgstr "원격접속 해상도에 맞춰 내 창 크기 조정"
+
+#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
+msgid "Toggle fullscreen mode"
+msgstr "전체 화면 모드 전환"
+
+#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
+msgid "Switch tab pages"
+msgstr "탭 전환 페이지들"
+
+#: src/rcw.c:1994
+msgid "Toggle dynamic resolution update"
+msgstr ""
+
+#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
+msgid "Toggle scaled mode"
+msgstr "비율보기 전환"
+
+#: src/rcw.c:2040
+msgid "Grab all keyboard events"
+msgstr "모든 키 입력 기록"
+
+#: src/rcw.c:2049 data/ui/remmina_main.glade:42 data/ui/remmina_main.glade:43
+msgid "Preferences"
+msgstr "환경 설정"
+
+#: src/rcw.c:2057 src/rcw.c:2058
+msgid "Tools"
+msgstr "도구"
+
+#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
+msgid "Screenshot"
+msgstr ""
+
+#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
+msgid "Minimize window"
+msgstr "창 최소화"
+
+#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
+msgid "Disconnect"
+msgstr "연결 끊기"
+
+#: src/rcw.c:3729
+#, c-format
+msgid "File %s is corrupted, unreadable or not found."
+msgstr ""
+
+#: src/rcw.c:3873
+msgid "Warning: This plugin require GtkSocket, but it’s not available."
+msgstr ""
 
 #: src/remmina_ssh.c:205
 #, c-format
@@ -838,99 +930,6 @@ msgstr ""
 #, c-format
 msgid "File %s not found."
 msgstr "%s 파일 없음"
-
-#: src/rcw.c:588
-#, c-format
-msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
-msgstr "현재 %i 과(와) 연결되어있습니다. 연결을 종료하시겠습니까?"
-
-#: src/rcw.c:1169
-msgid "Viewport fullscreen mode"
-msgstr "전체 화면 보기"
-
-#: src/rcw.c:1178
-msgid "Scrolled fullscreen mode"
-msgstr "스크롤된 전체화면 보기"
-
-#: src/rcw.c:1249
-msgid "Keep aspect ratio when scaled"
-msgstr ""
-
-#: src/rcw.c:1258
-msgid "Fill client window when scaled"
-msgstr ""
-
-#. Add a keystrokes submenu
-#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
-#: data/ui/remmina_preferences.glade:252
-msgid "Keystrokes"
-msgstr ""
-
-#: src/rcw.c:1795
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
-msgstr ""
-
-#. send a desktop notification
-#: src/rcw.c:1856
-msgid "Screenshot taken"
-msgstr ""
-
-#: src/rcw.c:1923
-msgid "Resize the window to fit in remote resolution"
-msgstr "원격접속 해상도에 맞춰 내 창 크기 조정"
-
-#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
-msgid "Toggle fullscreen mode"
-msgstr "전체 화면 모드 전환"
-
-#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
-msgid "Switch tab pages"
-msgstr "탭 전환 페이지들"
-
-#: src/rcw.c:1994
-msgid "Toggle dynamic resolution update"
-msgstr ""
-
-#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
-msgid "Toggle scaled mode"
-msgstr "비율보기 전환"
-
-#: src/rcw.c:2040
-msgid "Grab all keyboard events"
-msgstr "모든 키 입력 기록"
-
-#: src/rcw.c:2049 data/ui/remmina_main.glade:42
-#: data/ui/remmina_main.glade:43
-msgid "Preferences"
-msgstr "환경 설정"
-
-#: src/rcw.c:2057 src/rcw.c:2058
-msgid "Tools"
-msgstr "도구"
-
-#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
-msgid "Screenshot"
-msgstr ""
-
-#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
-msgid "Minimize window"
-msgstr "창 최소화"
-
-#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
-msgid "Disconnect"
-msgstr "연결 끊기"
-
-#: src/rcw.c:3730
-#, c-format
-msgid "File %s is corrupted, unreadable or not found."
-msgstr ""
-
-#: src/rcw.c:3874
-msgid "Warning: This plugin require GtkSocket, but it’s not available."
-msgstr ""
 
 #: src/remmina_sftp_client.c:170
 #, c-format

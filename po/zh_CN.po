@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-01-30 14:45+0000\n"
+"POT-Creation-Date: 2019-02-07 15:35+0000\n"
 "PO-Revision-Date: 2014-04-02 02:35+0000\n"
 "Last-Translator: shijing <jingshi@ubuntukylin.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
@@ -53,6 +53,98 @@ msgstr "通过小程序菜单快速连接到远程桌面"
 #: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1119
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina 远程桌面客户端"
+
+#: src/rcw.c:588
+#, c-format
+msgid ""
+"There are %i active connections in the current window. Are you sure to close?"
+msgstr "当前窗口已打开 %i 个连接。确认要关闭吗？"
+
+#: src/rcw.c:1169
+msgid "Viewport fullscreen mode"
+msgstr "视口全屏模式"
+
+#: src/rcw.c:1178
+msgid "Scrolled fullscreen mode"
+msgstr "滚动全屏模式"
+
+#: src/rcw.c:1249
+msgid "Keep aspect ratio when scaled"
+msgstr "缩放时保持比例"
+
+#: src/rcw.c:1258
+msgid "Fill client window when scaled"
+msgstr "缩放时填满客户端窗口"
+
+#. Add a keystrokes submenu
+#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
+#: data/ui/remmina_preferences.glade:252
+msgid "Keystrokes"
+msgstr "键盘监听"
+
+#: src/rcw.c:1795
+msgid ""
+"Warning: screenshot is scaled or distorted. Disable scaling to have better "
+"screenshot."
+msgstr "警告：截屏被缩放或扭曲。禁用缩放以取得更好的截屏。"
+
+#. send a desktop notification
+#: src/rcw.c:1856
+msgid "Screenshot taken"
+msgstr ""
+
+#: src/rcw.c:1923
+msgid "Resize the window to fit in remote resolution"
+msgstr "调整窗口大小以适应远程分辨率"
+
+#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
+msgid "Toggle fullscreen mode"
+msgstr "切换全屏模式"
+
+#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
+msgid "Switch tab pages"
+msgstr "切换标签页"
+
+#: src/rcw.c:1994
+msgid "Toggle dynamic resolution update"
+msgstr ""
+
+#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
+msgid "Toggle scaled mode"
+msgstr "切换缩放模式"
+
+#: src/rcw.c:2040
+msgid "Grab all keyboard events"
+msgstr "俘获所有键盘事件"
+
+#: src/rcw.c:2049 data/ui/remmina_main.glade:42 data/ui/remmina_main.glade:43
+msgid "Preferences"
+msgstr "首选项"
+
+#: src/rcw.c:2057 src/rcw.c:2058
+msgid "Tools"
+msgstr "工具"
+
+#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
+msgid "Screenshot"
+msgstr "截屏"
+
+#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
+msgid "Minimize window"
+msgstr "最小化窗口"
+
+#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
+msgid "Disconnect"
+msgstr "断开"
+
+#: src/rcw.c:3729
+#, c-format
+msgid "File %s is corrupted, unreadable or not found."
+msgstr ""
+
+#: src/rcw.c:3873
+msgid "Warning: This plugin require GtkSocket, but it’s not available."
+msgstr ""
 
 #: src/remmina_ssh.c:205
 #, c-format
@@ -838,99 +930,6 @@ msgstr "连接后执行命令"
 #, c-format
 msgid "File %s not found."
 msgstr "文件 %s 未找到"
-
-#: src/rcw.c:588
-#, c-format
-msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
-msgstr "当前窗口已打开 %i 个连接。确认要关闭吗？"
-
-#: src/rcw.c:1169
-msgid "Viewport fullscreen mode"
-msgstr "视口全屏模式"
-
-#: src/rcw.c:1178
-msgid "Scrolled fullscreen mode"
-msgstr "滚动全屏模式"
-
-#: src/rcw.c:1249
-msgid "Keep aspect ratio when scaled"
-msgstr "缩放时保持比例"
-
-#: src/rcw.c:1258
-msgid "Fill client window when scaled"
-msgstr "缩放时填满客户端窗口"
-
-#. Add a keystrokes submenu
-#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
-#: data/ui/remmina_preferences.glade:252
-msgid "Keystrokes"
-msgstr "键盘监听"
-
-#: src/rcw.c:1795
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
-msgstr "警告：截屏被缩放或扭曲。禁用缩放以取得更好的截屏。"
-
-#. send a desktop notification
-#: src/rcw.c:1856
-msgid "Screenshot taken"
-msgstr ""
-
-#: src/rcw.c:1923
-msgid "Resize the window to fit in remote resolution"
-msgstr "调整窗口大小以适应远程分辨率"
-
-#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
-msgid "Toggle fullscreen mode"
-msgstr "切换全屏模式"
-
-#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
-msgid "Switch tab pages"
-msgstr "切换标签页"
-
-#: src/rcw.c:1994
-msgid "Toggle dynamic resolution update"
-msgstr ""
-
-#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
-msgid "Toggle scaled mode"
-msgstr "切换缩放模式"
-
-#: src/rcw.c:2040
-msgid "Grab all keyboard events"
-msgstr "俘获所有键盘事件"
-
-#: src/rcw.c:2049 data/ui/remmina_main.glade:42
-#: data/ui/remmina_main.glade:43
-msgid "Preferences"
-msgstr "首选项"
-
-#: src/rcw.c:2057 src/rcw.c:2058
-msgid "Tools"
-msgstr "工具"
-
-#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
-msgid "Screenshot"
-msgstr "截屏"
-
-#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
-msgid "Minimize window"
-msgstr "最小化窗口"
-
-#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
-msgid "Disconnect"
-msgstr "断开"
-
-#: src/rcw.c:3730
-#, c-format
-msgid "File %s is corrupted, unreadable or not found."
-msgstr ""
-
-#: src/rcw.c:3874
-msgid "Warning: This plugin require GtkSocket, but it’s not available."
-msgstr ""
 
 #: src/remmina_sftp_client.c:170
 #, c-format

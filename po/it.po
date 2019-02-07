@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-01-30 14:45+0000\n"
+"POT-Creation-Date: 2019-02-07 15:35+0000\n"
 "PO-Revision-Date: 2019-01-31 12:56+0100\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Italian <admin@remmina.org>\n"
@@ -54,6 +54,100 @@ msgstr "Connetti al desktop remoto utilizzando il menu dell’applet"
 #: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1119
 msgid "Remmina Remote Desktop Client"
 msgstr "Client di connessione a desktop remoti Remmina"
+
+#: src/rcw.c:588
+#, c-format
+msgid ""
+"There are %i active connections in the current window. Are you sure to close?"
+msgstr "Sono presenti %i connessioni attive. Terminare ugualmente?"
+
+#: src/rcw.c:1169
+msgid "Viewport fullscreen mode"
+msgstr "Modalità area visibile a schermo intero"
+
+#: src/rcw.c:1178
+msgid "Scrolled fullscreen mode"
+msgstr "Modalità schermo intero a scorrimento"
+
+#: src/rcw.c:1249
+msgid "Keep aspect ratio when scaled"
+msgstr "Ridimensiona mantenendo le proporzioni"
+
+#: src/rcw.c:1258
+msgid "Fill client window when scaled"
+msgstr "Ridimensiona riempiendo la finestra"
+
+#. Add a keystrokes submenu
+#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
+#: data/ui/remmina_preferences.glade:252
+msgid "Keystrokes"
+msgstr "Battute"
+
+#: src/rcw.c:1795
+msgid ""
+"Warning: screenshot is scaled or distorted. Disable scaling to have better "
+"screenshot."
+msgstr ""
+"Attenzione: lo screenshot è ridumensionato o distorto. Disabilita il "
+"ridimensionamento per ottenere uno screenshot migliore."
+
+#. send a desktop notification
+#: src/rcw.c:1856
+msgid "Screenshot taken"
+msgstr "Screenshot eseguito"
+
+#: src/rcw.c:1923
+msgid "Resize the window to fit in remote resolution"
+msgstr "Ridimensionare lo schermo per adattarsi alla risoluzione remota"
+
+#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
+msgid "Toggle fullscreen mode"
+msgstr "Imposta Schermo Intero"
+
+#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
+msgid "Switch tab pages"
+msgstr "Cambia Scheda"
+
+#: src/rcw.c:1994
+msgid "Toggle dynamic resolution update"
+msgstr "Attiva aggiornamento dinamico della risoluzione"
+
+#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
+msgid "Toggle scaled mode"
+msgstr "Attivare modalità riscalata"
+
+#: src/rcw.c:2040
+msgid "Grab all keyboard events"
+msgstr "Catturare tutti gli eventi della tastiera"
+
+#: src/rcw.c:2049 data/ui/remmina_main.glade:42 data/ui/remmina_main.glade:43
+msgid "Preferences"
+msgstr "Preferenze"
+
+#: src/rcw.c:2057 src/rcw.c:2058
+msgid "Tools"
+msgstr "Strumenti"
+
+#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
+msgid "Screenshot"
+msgstr "Cattura schermata"
+
+#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
+msgid "Minimize window"
+msgstr "Minimizzare la finestra"
+
+#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
+msgid "Disconnect"
+msgstr "Scollegarsi"
+
+#: src/rcw.c:3729
+#, c-format
+msgid "File %s is corrupted, unreadable or not found."
+msgstr "Il file %s è corrotto, illeggibile o non trovato."
+
+#: src/rcw.c:3873
+msgid "Warning: This plugin require GtkSocket, but it’s not available."
+msgstr "Attenzione: Questo plugin richiede GtkSocket, ma non è disponibile."
 
 #: src/remmina_ssh.c:205
 #, c-format
@@ -108,14 +202,14 @@ msgstr "Considerare attendibile la nuova chiave pubblica?"
 
 #: src/remmina_ssh.c:409
 msgid ""
-"WARNING: The server has changed its public key. This means either you are under "
-"attack,\n"
+"WARNING: The server has changed its public key. This means either you are "
+"under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
 "Attenzione: la chiave pubblica del server è cambiata. Questo potrebbe "
 "significare che si è sotto attacco\n"
-"oppure che l’amministratore ha cambiato la chiave pubblica. La nuova impronta "
-"digitale della chiave pubblica è:"
+"oppure che l’amministratore ha cambiato la chiave pubblica. La nuova "
+"impronta digitale della chiave pubblica è:"
 
 #: src/remmina_ssh.c:425
 #, c-format
@@ -196,7 +290,8 @@ msgstr "ssh_channel_write() ha restituito un errore: %s"
 #: src/remmina_ssh.c:1228
 #, c-format
 msgid "read on tunnel listening socket returned an error: %s"
-msgstr "la lettura dal socket di ascolto del tunnel ha restituito un errore: %s"
+msgstr ""
+"la lettura dal socket di ascolto del tunnel ha restituito un errore: %s"
 
 #: src/remmina_ssh.c:1247
 #, c-format
@@ -211,7 +306,8 @@ msgstr "ssh_channel_read_nonblocking() ha restituito un errore: %s\""
 #: src/remmina_ssh.c:1272
 #, c-format
 msgid "write on tunnel listening socket returned an error: %s"
-msgstr "La scrittura nel socket di ascolto del tunnel ha restituito un errore: %s"
+msgstr ""
+"La scrittura nel socket di ascolto del tunnel ha restituito un errore: %s"
 
 #: src/remmina_ssh.c:1351
 msgid "Destination port has not been assigned."
@@ -694,8 +790,8 @@ msgstr ""
 "* %U viene sostituito con il nome utente SSH\n"
 "* %p viene sostituito con il nome del profilon\n"
 "* %g viene sostituito con il nome del gruppo del profilo di Remmina\n"
-"Non eseguire in background se si desidera che il comando venga completato prima "
-"di connettersi.\n"
+"Non eseguire in background se si desidera che il comando venga completato "
+"prima di connettersi.\n"
 "</big></tt>"
 
 #: src/remmina_file_editor.c:94
@@ -725,9 +821,9 @@ msgstr "Selezionare un server di deskop remoto"
 #: src/remmina_file_editor.c:1280 src/remmina_sftp_client.c:917
 #: src/remmina_message_panel.c:452 src/remmina_message_panel.c:623
 #: plugins/nx/nx_session_manager.c:156
-#: plugins/spice/spice_plugin_file_transfer.c:84 data/ui/remmina_spinner.glade:8
-#: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
-#: data/ui/remmina_key_chooser.glade:9
+#: plugins/spice/spice_plugin_file_transfer.c:84
+#: data/ui/remmina_spinner.glade:8 data/ui/remmina_spinner.glade:9
+#: data/ui/remmina_key_chooser.glade:8 data/ui/remmina_key_chooser.glade:9
 msgid "_Cancel"
 msgstr "A_nnulla"
 
@@ -860,101 +956,6 @@ msgstr "Esegui dopo"
 msgid "File %s not found."
 msgstr "File %s non trovato."
 
-#: src/rcw.c:588
-#, c-format
-msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
-msgstr "Sono presenti %i connessioni attive. Terminare ugualmente?"
-
-#: src/rcw.c:1169
-msgid "Viewport fullscreen mode"
-msgstr "Modalità area visibile a schermo intero"
-
-#: src/rcw.c:1178
-msgid "Scrolled fullscreen mode"
-msgstr "Modalità schermo intero a scorrimento"
-
-#: src/rcw.c:1249
-msgid "Keep aspect ratio when scaled"
-msgstr "Ridimensiona mantenendo le proporzioni"
-
-#: src/rcw.c:1258
-msgid "Fill client window when scaled"
-msgstr "Ridimensiona riempiendo la finestra"
-
-#. Add a keystrokes submenu
-#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
-#: data/ui/remmina_preferences.glade:252
-msgid "Keystrokes"
-msgstr "Battute"
-
-#: src/rcw.c:1795
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
-msgstr ""
-"Attenzione: lo screenshot è ridumensionato o distorto. Disabilita il "
-"ridimensionamento per ottenere uno screenshot migliore."
-
-#. send a desktop notification
-#: src/rcw.c:1856
-msgid "Screenshot taken"
-msgstr "Screenshot eseguito"
-
-#: src/rcw.c:1923
-msgid "Resize the window to fit in remote resolution"
-msgstr "Ridimensionare lo schermo per adattarsi alla risoluzione remota"
-
-#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
-msgid "Toggle fullscreen mode"
-msgstr "Imposta Schermo Intero"
-
-#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
-msgid "Switch tab pages"
-msgstr "Cambia Scheda"
-
-#: src/rcw.c:1994
-msgid "Toggle dynamic resolution update"
-msgstr "Attiva aggiornamento dinamico della risoluzione"
-
-#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
-msgid "Toggle scaled mode"
-msgstr "Attivare modalità riscalata"
-
-#: src/rcw.c:2040
-msgid "Grab all keyboard events"
-msgstr "Catturare tutti gli eventi della tastiera"
-
-#: src/rcw.c:2049 data/ui/remmina_main.glade:42
-#: data/ui/remmina_main.glade:43
-msgid "Preferences"
-msgstr "Preferenze"
-
-#: src/rcw.c:2057 src/rcw.c:2058
-msgid "Tools"
-msgstr "Strumenti"
-
-#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
-msgid "Screenshot"
-msgstr "Cattura schermata"
-
-#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
-msgid "Minimize window"
-msgstr "Minimizzare la finestra"
-
-#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
-msgid "Disconnect"
-msgstr "Scollegarsi"
-
-#: src/rcw.c:3730
-#, c-format
-msgid "File %s is corrupted, unreadable or not found."
-msgstr "Il file %s è corrotto, illeggibile o non trovato."
-
-#: src/rcw.c:3874
-msgid "Warning: This plugin require GtkSocket, but it’s not available."
-msgstr "Attenzione: Questo plugin richiede GtkSocket, ma non è disponibile."
-
 #: src/remmina_sftp_client.c:170
 #, c-format
 msgid "Error creating directory %s."
@@ -1057,7 +1058,8 @@ msgstr "Il multi password changer non può funzionare senza il plugin secret.\n"
 
 #: src/remmina_mpchange.c:330
 msgid "The multi password changer does not work without a secret service.\n"
-msgstr "Il multi password changer non può funzionare senza un servizio secret.\n"
+msgstr ""
+"Il multi password changer non può funzionare senza un servizio secret.\n"
 
 #: src/remmina_mpchange.c:419
 #, c-format
@@ -1133,7 +1135,8 @@ msgstr ""
 
 #: src/remmina.c:84
 msgid ""
-"Edit desktop connection described by file (.remmina or type supported by plugin)"
+"Edit desktop connection described by file (.remmina or type supported by "
+"plugin)"
 msgstr ""
 "Modifica la connessione descritta dal file (.remmina or type supported by "
 "plugin)"
@@ -1407,11 +1410,11 @@ msgstr "Impossibile trovare l’indirizzo del server RDP %s."
 #: plugins/rdp/rdp_plugin.c:1193
 #, c-format
 msgid ""
-"Error connecting to RDP server %s. TLS connection failed. Check that client and "
-"server support a common TLS version."
+"Error connecting to RDP server %s. TLS connection failed. Check that client "
+"and server support a common TLS version."
 msgstr ""
-"Errore di connessione al server %s. Connessione TLS non riuscita. Controlla che "
-"client e server supportino una versione TLS comune."
+"Errore di connessione al server %s. Connessione TLS non riuscita. Controlla "
+"che client e server supportino una versione TLS comune."
 
 #: plugins/rdp/rdp_plugin.c:1196
 #, c-format
@@ -1962,7 +1965,8 @@ msgstr "Connessione rifiutata."
 #: plugins/vnc/vnc_plugin.c:967
 #, c-format
 msgid "Unknown authentication scheme from VNC server: %s"
-msgstr "Il server VNC ha richiesto uno schema di autenticazione sconosciuto: %s"
+msgstr ""
+"Il server VNC ha richiesto uno schema di autenticazione sconosciuto: %s"
 
 #: plugins/vnc/vnc_plugin.c:969
 msgid "Please retry after enabling encryption on this profile."
@@ -2152,8 +2156,8 @@ msgstr "Proibisci la copia dello screenshot sulla clipboard"
 
 #: data/ui/remmina_preferences.glade:366
 msgid ""
-"If you check this button, when generating a screenshot it will only be saved on "
-"a file and not in the clipboard."
+"If you check this button, when generating a screenshot it will only be saved "
+"on a file and not in the clipboard."
 msgstr ""
 "Spuntando questa casella, gli screenshot saranno solamente salvati su file e "
 "non saranno copiati nella clipboard."
@@ -2356,13 +2360,13 @@ msgstr ""
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1236
 msgid ""
-"it specifies the maximum amount of time in milliseconds that transmitted data "
-"may remain unacknowledged before TCP will forcibly close the corresponding "
-"connection."
+"it specifies the maximum amount of time in milliseconds that transmitted "
+"data may remain unacknowledged before TCP will forcibly close the "
+"corresponding connection."
 msgstr ""
 "specifica il tempo massimo in millisecondi durante il quale i dati trasmessi "
-"possono rimanere in stato unacknowledged prima che TCP chiuda forzatamente la "
-"connessione corrispondente."
+"possono rimanere in stato unacknowledged prima che TCP chiuda forzatamente "
+"la connessione corrispondente."
 
 #: data/ui/remmina_preferences.glade:1258
 msgid "SSH Options"
@@ -2388,7 +2392,8 @@ msgstr "Consentire testo in grassetto"
 msgid "Clipboard copy shortcut"
 msgstr "Tasto di scelta rapida per copia"
 
-#: data/ui/remmina_preferences.glade:1409 data/ui/remmina_preferences.glade:1450
+#: data/ui/remmina_preferences.glade:1409
+#: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1491
 msgid "(Host key +)"
 msgstr "(Host key +)"
@@ -2401,11 +2406,13 @@ msgstr "Tasto di scelta rapida per incolla"
 msgid "Select all shortcut"
 msgstr "Tasto di scelta rapida per selezionare tutto"
 
-#: data/ui/remmina_preferences.glade:1531 data/ui/remmina_preferences.glade:1543
+#: data/ui/remmina_preferences.glade:1531
+#: data/ui/remmina_preferences.glade:1543
 msgid "Foreground color"
 msgstr "Colore di primo piano"
 
-#: data/ui/remmina_preferences.glade:1556 data/ui/remmina_preferences.glade:1568
+#: data/ui/remmina_preferences.glade:1556
+#: data/ui/remmina_preferences.glade:1568
 msgid "Background color"
 msgstr "Colore di sfondo"
 
@@ -2496,11 +2503,12 @@ msgstr "Carica schema di colori"
 #: data/ui/remmina_preferences.glade:1835
 msgid ""
 "Chose a color scheme file, pre-installed themes are usually installed under /"
-"usr/share/remmina/theme. See https://github.com/mbadolato/iTerm2-Color-Schemes."
+"usr/share/remmina/theme. See https://github.com/mbadolato/iTerm2-Color-"
+"Schemes."
 msgstr ""
 "Seleziona un file per lo schema colori, i temi prenstallati si trovano di "
-"solito sotto /usr/share/remmina/theme. Vedi https://github.com/mbadolato/iTerm2-"
-"Color-Schemes."
+"solito sotto /usr/share/remmina/theme. Vedi https://github.com/mbadolato/"
+"iTerm2-Color-Schemes."
 
 #: data/ui/remmina_preferences.glade:1836
 msgid "Terminal Color Scheme file chooser"
@@ -2613,8 +2621,8 @@ msgid ""
 "Do you allow Remmina to send periodic anonymous usage statistics to its "
 "developers?"
 msgstr ""
-"Acconsenti ad inviare periodicamente delle statistiche di utilizzo di Remmina "
-"ai suoi sviluppatori?"
+"Acconsenti ad inviare periodicamente delle statistiche di utilizzo di "
+"Remmina ai suoi sviluppatori?"
 
 #: data/ui/remmina_main.glade:788
 msgid "Show search bar"
@@ -2687,16 +2695,17 @@ msgstr "Sposta giù"
 #: data/ui/remmina_snap_info_dialog.glade:46
 msgid ""
 "It seems that Remmina is running on your system as a SNAP package. To enable "
-"access to some important features, like password saving in your keyring and RDP "
-"printer sharing, please open your software center and give the appropriate "
-"permissions to Remmina. As an alternative you can to enter the following "
-"commands in a terminal window:"
+"access to some important features, like password saving in your keyring and "
+"RDP printer sharing, please open your software center and give the "
+"appropriate permissions to Remmina. As an alternative you can to enter the "
+"following commands in a terminal window:"
 msgstr ""
 "Sembra che Remmina stia girando nel tuo sistema come pacchetto SNAP. Per "
 "abilitare l'accesso ad alcune importanti funzionalità, come il salvataggio "
 "delle password nel keyring e la condivisione stampanti via RDP, si prega di "
-"aprire il software center ed assegnare i permessi appropriati a Remmina. Come "
-"alternativa è possibile inserire i seguenti comandi in una finestra terminale:"
+"aprire il software center ed assegnare i permessi appropriati a Remmina. "
+"Come alternativa è possibile inserire i seguenti comandi in una finestra "
+"terminale:"
 
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"

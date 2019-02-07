@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-01-30 14:45+0000\n"
+"POT-Creation-Date: 2019-02-07 15:35+0000\n"
 "PO-Revision-Date: 2019-01-28 18:37+0100\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: français <fr@li.org>\n"
@@ -53,6 +53,104 @@ msgstr "Se connecter aux bureaux distants via le menu de l’appliquette"
 #: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1119
 msgid "Remmina Remote Desktop Client"
 msgstr "Visionneur de bureaux distants Remmina"
+
+#: src/rcw.c:588
+#, c-format
+msgid ""
+"There are %i active connections in the current window. Are you sure to close?"
+msgstr ""
+"Il y a %i connexions actives dans la fenêtre courante. Êtes‐vous sûr(e) de "
+"vouloir quitter ?"
+
+#: src/rcw.c:1169
+msgid "Viewport fullscreen mode"
+msgstr "Mode plein écran avec zone de visualisation"
+
+#: src/rcw.c:1178
+msgid "Scrolled fullscreen mode"
+msgstr "Mode plein écran avec barres de défilement"
+
+#: src/rcw.c:1249
+msgid "Keep aspect ratio when scaled"
+msgstr "Garder le rapport d’aspect lors du redimensionnement"
+
+#: src/rcw.c:1258
+msgid "Fill client window when scaled"
+msgstr "Remplir la fenêtre d’affichage lors du redimensionnement"
+
+#. Add a keystrokes submenu
+#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
+#: data/ui/remmina_preferences.glade:252
+msgid "Keystrokes"
+msgstr "Entrées clavier"
+
+#: src/rcw.c:1795
+msgid ""
+"Warning: screenshot is scaled or distorted. Disable scaling to have better "
+"screenshot."
+msgstr ""
+"Attention : la capture d’écran est redimensionnée ou déformée. Veuillez "
+"désactiver le redimensionnement pour de meilleures captures d’écran."
+
+#. send a desktop notification
+#: src/rcw.c:1856
+msgid "Screenshot taken"
+msgstr "Capture d’écran effectuée"
+
+#: src/rcw.c:1923
+msgid "Resize the window to fit in remote resolution"
+msgstr "Redimensionner la fenêtre en fonction de la définition distante"
+
+#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
+msgid "Toggle fullscreen mode"
+msgstr "Basculer en mode plein écran"
+
+#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
+msgid "Switch tab pages"
+msgstr "Changer d’onglet"
+
+#: src/rcw.c:1994
+msgid "Toggle dynamic resolution update"
+msgstr "Commuter la mise à jour dynamique de la définition"
+
+#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
+msgid "Toggle scaled mode"
+msgstr "Basculer en mode réduit"
+
+#: src/rcw.c:2040
+msgid "Grab all keyboard events"
+msgstr "Capturer les événements du clavier"
+
+#: src/rcw.c:2049 data/ui/remmina_main.glade:42 data/ui/remmina_main.glade:43
+msgid "Preferences"
+msgstr "Préférences"
+
+#: src/rcw.c:2057 src/rcw.c:2058
+msgid "Tools"
+msgstr "Outils"
+
+#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
+msgid "Screenshot"
+msgstr "Capture d’écran"
+
+#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
+msgid "Minimize window"
+msgstr "Réduire la fenêtre"
+
+#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
+msgid "Disconnect"
+msgstr "Se déconnecter"
+
+#: src/rcw.c:3729
+#, c-format
+msgid "File %s is corrupted, unreadable or not found."
+msgstr "Le fichier %s est corrompu, non accessible en lecture ou introuvable."
+
+#: src/rcw.c:3873
+msgid "Warning: This plugin require GtkSocket, but it’s not available."
+msgstr ""
+"Attention : ce greffon nécessite GtkSocket, mais ce dernier n’est pas "
+"disponible."
 
 #: src/remmina_ssh.c:205
 #, c-format
@@ -861,105 +959,6 @@ msgstr "Post‐commande"
 #, c-format
 msgid "File %s not found."
 msgstr "Fichier %s introuvable."
-
-#: src/rcw.c:588
-#, c-format
-msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
-msgstr ""
-"Il y a %i connexions actives dans la fenêtre courante. Êtes‐vous sûr(e) de "
-"vouloir quitter ?"
-
-#: src/rcw.c:1169
-msgid "Viewport fullscreen mode"
-msgstr "Mode plein écran avec zone de visualisation"
-
-#: src/rcw.c:1178
-msgid "Scrolled fullscreen mode"
-msgstr "Mode plein écran avec barres de défilement"
-
-#: src/rcw.c:1249
-msgid "Keep aspect ratio when scaled"
-msgstr "Garder le rapport d’aspect lors du redimensionnement"
-
-#: src/rcw.c:1258
-msgid "Fill client window when scaled"
-msgstr "Remplir la fenêtre d’affichage lors du redimensionnement"
-
-#. Add a keystrokes submenu
-#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
-#: data/ui/remmina_preferences.glade:252
-msgid "Keystrokes"
-msgstr "Entrées clavier"
-
-#: src/rcw.c:1795
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
-msgstr ""
-"Attention : la capture d’écran est redimensionnée ou déformée. Veuillez "
-"désactiver le redimensionnement pour de meilleures captures d’écran."
-
-#. send a desktop notification
-#: src/rcw.c:1856
-msgid "Screenshot taken"
-msgstr "Capture d’écran effectuée"
-
-#: src/rcw.c:1923
-msgid "Resize the window to fit in remote resolution"
-msgstr "Redimensionner la fenêtre en fonction de la définition distante"
-
-#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
-msgid "Toggle fullscreen mode"
-msgstr "Basculer en mode plein écran"
-
-#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
-msgid "Switch tab pages"
-msgstr "Changer d’onglet"
-
-#: src/rcw.c:1994
-msgid "Toggle dynamic resolution update"
-msgstr "Commuter la mise à jour dynamique de la définition"
-
-#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
-msgid "Toggle scaled mode"
-msgstr "Basculer en mode réduit"
-
-#: src/rcw.c:2040
-msgid "Grab all keyboard events"
-msgstr "Capturer les événements du clavier"
-
-#: src/rcw.c:2049 data/ui/remmina_main.glade:42
-#: data/ui/remmina_main.glade:43
-msgid "Preferences"
-msgstr "Préférences"
-
-#: src/rcw.c:2057 src/rcw.c:2058
-msgid "Tools"
-msgstr "Outils"
-
-#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
-msgid "Screenshot"
-msgstr "Capture d’écran"
-
-#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
-msgid "Minimize window"
-msgstr "Réduire la fenêtre"
-
-#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
-msgid "Disconnect"
-msgstr "Se déconnecter"
-
-#: src/rcw.c:3730
-#, c-format
-msgid "File %s is corrupted, unreadable or not found."
-msgstr "Le fichier %s est corrompu, non accessible en lecture ou introuvable."
-
-#: src/rcw.c:3874
-msgid "Warning: This plugin require GtkSocket, but it’s not available."
-msgstr ""
-"Attention : ce greffon nécessite GtkSocket, mais ce dernier n’est pas "
-"disponible."
 
 #: src/remmina_sftp_client.c:170
 #, c-format

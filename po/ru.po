@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-01-30 14:45+0000\n"
+"POT-Creation-Date: 2019-02-07 15:35+0000\n"
 "PO-Revision-Date: 2019-01-26 16:03+0200\n"
 "Last-Translator: Soltys Sergey <treefeed@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -55,6 +55,102 @@ msgstr "Подключение к удалённым рабочим столам
 #: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1119
 msgid "Remmina Remote Desktop Client"
 msgstr "Клиент удалённого рабочего стола Remmina"
+
+# You need set up plural forms for 1, 2 and 5 here.
+#: src/rcw.c:588
+#, c-format
+msgid ""
+"There are %i active connections in the current window. Are you sure to close?"
+msgstr ""
+"Найдено %i активных подключений в этом окне. Вы действительно хотите выйти?"
+
+#: src/rcw.c:1169
+msgid "Viewport fullscreen mode"
+msgstr "Режим полного экрана"
+
+#: src/rcw.c:1178
+msgid "Scrolled fullscreen mode"
+msgstr "Режим полного экрана с прокруткой"
+
+#: src/rcw.c:1249
+msgid "Keep aspect ratio when scaled"
+msgstr "Сохранять пропорции при масштабировании"
+
+#: src/rcw.c:1258
+msgid "Fill client window when scaled"
+msgstr "Заполнять окно клиента при масштабировании"
+
+#. Add a keystrokes submenu
+#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
+#: data/ui/remmina_preferences.glade:252
+msgid "Keystrokes"
+msgstr "Комбинации клавиш"
+
+#: src/rcw.c:1795
+msgid ""
+"Warning: screenshot is scaled or distorted. Disable scaling to have better "
+"screenshot."
+msgstr ""
+"Предупреждение: снимок масштабирован или искажён. Отключите масштабирование "
+"для получения лучшего снимка."
+
+#. send a desktop notification
+#: src/rcw.c:1856
+msgid "Screenshot taken"
+msgstr "Снимок сделан"
+
+#: src/rcw.c:1923
+msgid "Resize the window to fit in remote resolution"
+msgstr "Растянуть окно под размер удалённого разрешения"
+
+#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
+msgid "Toggle fullscreen mode"
+msgstr "Переключить на полный экран"
+
+#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
+msgid "Switch tab pages"
+msgstr "Перейти на вкладку"
+
+#: src/rcw.c:1994
+msgid "Toggle dynamic resolution update"
+msgstr "Переключить на динамическое обновление разрешения"
+
+#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
+msgid "Toggle scaled mode"
+msgstr "Переключить в режим масштабирования"
+
+#: src/rcw.c:2040
+msgid "Grab all keyboard events"
+msgstr "Захватывать все нажатия клавиш"
+
+#: src/rcw.c:2049 data/ui/remmina_main.glade:42 data/ui/remmina_main.glade:43
+msgid "Preferences"
+msgstr "Параметры"
+
+#: src/rcw.c:2057 src/rcw.c:2058
+msgid "Tools"
+msgstr "Инструменты"
+
+#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
+msgid "Screenshot"
+msgstr "Снимок экрана"
+
+#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
+msgid "Minimize window"
+msgstr "Свернуть окно"
+
+#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
+msgid "Disconnect"
+msgstr "Отключиться"
+
+#: src/rcw.c:3729
+#, c-format
+msgid "File %s is corrupted, unreadable or not found."
+msgstr "Файл %s поврежден, не читается или не найден."
+
+#: src/rcw.c:3873
+msgid "Warning: This plugin require GtkSocket, but it’s not available."
+msgstr "Внимание: Этот модуль требует GtkSocket, но он недоступен."
 
 #: src/remmina_ssh.c:205
 #, c-format
@@ -860,103 +956,6 @@ msgstr "Последующая команда"
 #, c-format
 msgid "File %s not found."
 msgstr "Файл %s не найден."
-
-# You need set up plural forms for 1, 2 and 5 here.
-#: src/rcw.c:588
-#, c-format
-msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
-msgstr ""
-"Найдено %i активных подключений в этом окне. Вы действительно хотите выйти?"
-
-#: src/rcw.c:1169
-msgid "Viewport fullscreen mode"
-msgstr "Режим полного экрана"
-
-#: src/rcw.c:1178
-msgid "Scrolled fullscreen mode"
-msgstr "Режим полного экрана с прокруткой"
-
-#: src/rcw.c:1249
-msgid "Keep aspect ratio when scaled"
-msgstr "Сохранять пропорции при масштабировании"
-
-#: src/rcw.c:1258
-msgid "Fill client window when scaled"
-msgstr "Заполнять окно клиента при масштабировании"
-
-#. Add a keystrokes submenu
-#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
-#: data/ui/remmina_preferences.glade:252
-msgid "Keystrokes"
-msgstr "Комбинации клавиш"
-
-#: src/rcw.c:1795
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
-msgstr ""
-"Предупреждение: снимок масштабирован или искажён. Отключите масштабирование "
-"для получения лучшего снимка."
-
-#. send a desktop notification
-#: src/rcw.c:1856
-msgid "Screenshot taken"
-msgstr "Снимок сделан"
-
-#: src/rcw.c:1923
-msgid "Resize the window to fit in remote resolution"
-msgstr "Растянуть окно под размер удалённого разрешения"
-
-#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
-msgid "Toggle fullscreen mode"
-msgstr "Переключить на полный экран"
-
-#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
-msgid "Switch tab pages"
-msgstr "Перейти на вкладку"
-
-#: src/rcw.c:1994
-msgid "Toggle dynamic resolution update"
-msgstr "Переключить на динамическое обновление разрешения"
-
-#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
-msgid "Toggle scaled mode"
-msgstr "Переключить в режим масштабирования"
-
-#: src/rcw.c:2040
-msgid "Grab all keyboard events"
-msgstr "Захватывать все нажатия клавиш"
-
-#: src/rcw.c:2049 data/ui/remmina_main.glade:42
-#: data/ui/remmina_main.glade:43
-msgid "Preferences"
-msgstr "Параметры"
-
-#: src/rcw.c:2057 src/rcw.c:2058
-msgid "Tools"
-msgstr "Инструменты"
-
-#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
-msgid "Screenshot"
-msgstr "Снимок экрана"
-
-#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
-msgid "Minimize window"
-msgstr "Свернуть окно"
-
-#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
-msgid "Disconnect"
-msgstr "Отключиться"
-
-#: src/rcw.c:3730
-#, c-format
-msgid "File %s is corrupted, unreadable or not found."
-msgstr "Файл %s поврежден, не читается или не найден."
-
-#: src/rcw.c:3874
-msgid "Warning: This plugin require GtkSocket, but it’s not available."
-msgstr "Внимание: Этот модуль требует GtkSocket, но он недоступен."
 
 #: src/remmina_sftp_client.c:170
 #, c-format

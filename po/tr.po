@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-01-30 14:45+0000\n"
+"POT-Creation-Date: 2019-02-07 15:35+0000\n"
 "PO-Revision-Date: 2019-01-25 18:34+0300\n"
 "Last-Translator: Serdar Sağlam <teknomobil@yandex.com>\n"
 "Language-Team: Ubuntu’yu Türkçe’ye Çevirenler Takımı <ubuntu-l10n-tr@lists."
@@ -54,6 +54,101 @@ msgstr "Uzak masaüstlerine küçük uygulama menüsü aracılığıyla bağlan"
 #: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1119
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina Uzak Masaüstü İstemcisi"
+
+#: src/rcw.c:588
+#, c-format
+msgid ""
+"There are %i active connections in the current window. Are you sure to close?"
+msgstr ""
+"Aktif pencerede %i aktif bağlantı var. Kapatmak istediğinizdem eminmisiniz?"
+
+#: src/rcw.c:1169
+msgid "Viewport fullscreen mode"
+msgstr "Görünüm alanı tam ekran hali"
+
+#: src/rcw.c:1178
+msgid "Scrolled fullscreen mode"
+msgstr "Kaydırmalı tam ekran"
+
+#: src/rcw.c:1249
+msgid "Keep aspect ratio when scaled"
+msgstr "En boy oranını koru"
+
+#: src/rcw.c:1258
+msgid "Fill client window when scaled"
+msgstr "İstemci penceresini doldur"
+
+#. Add a keystrokes submenu
+#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
+#: data/ui/remmina_preferences.glade:252
+msgid "Keystrokes"
+msgstr "Tuş vuruşları"
+
+#: src/rcw.c:1795
+msgid ""
+"Warning: screenshot is scaled or distorted. Disable scaling to have better "
+"screenshot."
+msgstr ""
+"Uyarı: ekran görüntüsü ölçeklenmiş veya bozuk. Daha iyi bir ekran görüntüsü "
+"için ölçeklendirmeyi devre dışı bırakın."
+
+#. send a desktop notification
+#: src/rcw.c:1856
+msgid "Screenshot taken"
+msgstr "Ekran görüntüsü alındı"
+
+#: src/rcw.c:1923
+msgid "Resize the window to fit in remote resolution"
+msgstr "Pencereyi uzak sunucu çözünürlüğüne göre ayarla"
+
+#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
+msgid "Toggle fullscreen mode"
+msgstr "Tam ekran modunu değiştir"
+
+#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
+msgid "Switch tab pages"
+msgstr "Sekme sayfalarını değiştir"
+
+#: src/rcw.c:1994
+msgid "Toggle dynamic resolution update"
+msgstr "Çözünürlük güncellemesini değiştir"
+
+#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
+msgid "Toggle scaled mode"
+msgstr "Ölçekleme modunu değiştir"
+
+#: src/rcw.c:2040
+msgid "Grab all keyboard events"
+msgstr "Tüm klavye olaylarını yakala"
+
+#: src/rcw.c:2049 data/ui/remmina_main.glade:42 data/ui/remmina_main.glade:43
+msgid "Preferences"
+msgstr "Seçenekler"
+
+#: src/rcw.c:2057 src/rcw.c:2058
+msgid "Tools"
+msgstr "Araçlar"
+
+#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
+msgid "Screenshot"
+msgstr "Ekran görüntüsü"
+
+#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
+msgid "Minimize window"
+msgstr "Pencereyi simge durumuna küçült"
+
+#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
+msgid "Disconnect"
+msgstr "Bağlantıyı kes"
+
+#: src/rcw.c:3729
+#, c-format
+msgid "File %s is corrupted, unreadable or not found."
+msgstr "Dosya %s bozuk, okunamıyor veya bulunamadı."
+
+#: src/rcw.c:3873
+msgid "Warning: This plugin require GtkSocket, but it’s not available."
+msgstr "Uyarı: Bu eklenti GtkSocket gerektirir, ancak mevcut değil."
 
 #: src/remmina_ssh.c:205
 #, c-format
@@ -858,102 +953,6 @@ msgstr "Yazılı Komut"
 #, c-format
 msgid "File %s not found."
 msgstr "Dosya %s bulunamadı."
-
-#: src/rcw.c:588
-#, c-format
-msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
-msgstr ""
-"Aktif pencerede %i aktif bağlantı var. Kapatmak istediğinizdem eminmisiniz?"
-
-#: src/rcw.c:1169
-msgid "Viewport fullscreen mode"
-msgstr "Görünüm alanı tam ekran hali"
-
-#: src/rcw.c:1178
-msgid "Scrolled fullscreen mode"
-msgstr "Kaydırmalı tam ekran"
-
-#: src/rcw.c:1249
-msgid "Keep aspect ratio when scaled"
-msgstr "En boy oranını koru"
-
-#: src/rcw.c:1258
-msgid "Fill client window when scaled"
-msgstr "İstemci penceresini doldur"
-
-#. Add a keystrokes submenu
-#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
-#: data/ui/remmina_preferences.glade:252
-msgid "Keystrokes"
-msgstr "Tuş vuruşları"
-
-#: src/rcw.c:1795
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
-msgstr ""
-"Uyarı: ekran görüntüsü ölçeklenmiş veya bozuk. Daha iyi bir ekran görüntüsü "
-"için ölçeklendirmeyi devre dışı bırakın."
-
-#. send a desktop notification
-#: src/rcw.c:1856
-msgid "Screenshot taken"
-msgstr "Ekran görüntüsü alındı"
-
-#: src/rcw.c:1923
-msgid "Resize the window to fit in remote resolution"
-msgstr "Pencereyi uzak sunucu çözünürlüğüne göre ayarla"
-
-#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
-msgid "Toggle fullscreen mode"
-msgstr "Tam ekran modunu değiştir"
-
-#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
-msgid "Switch tab pages"
-msgstr "Sekme sayfalarını değiştir"
-
-#: src/rcw.c:1994
-msgid "Toggle dynamic resolution update"
-msgstr "Çözünürlük güncellemesini değiştir"
-
-#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
-msgid "Toggle scaled mode"
-msgstr "Ölçekleme modunu değiştir"
-
-#: src/rcw.c:2040
-msgid "Grab all keyboard events"
-msgstr "Tüm klavye olaylarını yakala"
-
-#: src/rcw.c:2049 data/ui/remmina_main.glade:42
-#: data/ui/remmina_main.glade:43
-msgid "Preferences"
-msgstr "Seçenekler"
-
-#: src/rcw.c:2057 src/rcw.c:2058
-msgid "Tools"
-msgstr "Araçlar"
-
-#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
-msgid "Screenshot"
-msgstr "Ekran görüntüsü"
-
-#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
-msgid "Minimize window"
-msgstr "Pencereyi simge durumuna küçült"
-
-#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
-msgid "Disconnect"
-msgstr "Bağlantıyı kes"
-
-#: src/rcw.c:3730
-#, c-format
-msgid "File %s is corrupted, unreadable or not found."
-msgstr "Dosya %s bozuk, okunamıyor veya bulunamadı."
-
-#: src/rcw.c:3874
-msgid "Warning: This plugin require GtkSocket, but it’s not available."
-msgstr "Uyarı: Bu eklenti GtkSocket gerektirir, ancak mevcut değil."
 
 #: src/remmina_sftp_client.c:170
 #, c-format

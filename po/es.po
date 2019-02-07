@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-01-30 14:45+0000\n"
+"POT-Creation-Date: 2019-02-07 15:35+0000\n"
 "PO-Revision-Date: 2015-02-19 03:22-0600\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -54,6 +54,101 @@ msgstr ""
 #: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1119
 msgid "Remmina Remote Desktop Client"
 msgstr "Cliente de escritorio remoto Remmina"
+
+#: src/rcw.c:588
+#, c-format
+msgid ""
+"There are %i active connections in the current window. Are you sure to close?"
+msgstr ""
+"Hay %i conexiones activas en la ventana actual. ¿Confirma que quiere cerrar?"
+
+#: src/rcw.c:1169
+msgid "Viewport fullscreen mode"
+msgstr "Modo a pantalla completa"
+
+#: src/rcw.c:1178
+msgid "Scrolled fullscreen mode"
+msgstr "Modo pantalla completa con barras de desplazamiento"
+
+#: src/rcw.c:1249
+msgid "Keep aspect ratio when scaled"
+msgstr "Mantener relación de aspecto cuando se escala"
+
+#: src/rcw.c:1258
+msgid "Fill client window when scaled"
+msgstr "Ampliar la ventana del cliente cuando se escala"
+
+#. Add a keystrokes submenu
+#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
+#: data/ui/remmina_preferences.glade:252
+msgid "Keystrokes"
+msgstr "Pulsaciones de teclas"
+
+#: src/rcw.c:1795
+msgid ""
+"Warning: screenshot is scaled or distorted. Disable scaling to have better "
+"screenshot."
+msgstr ""
+"Atención: la captura de pantalla está escalada o distorsionada. Desactive el "
+"escalado para mejorar la calidad de la imagen."
+
+#. send a desktop notification
+#: src/rcw.c:1856
+msgid "Screenshot taken"
+msgstr "Captura de pantalla realizada"
+
+#: src/rcw.c:1923
+msgid "Resize the window to fit in remote resolution"
+msgstr "Redimensionar la ventana para ajustarla a la resolución remota"
+
+#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
+msgid "Toggle fullscreen mode"
+msgstr "Conmutar el modo a pantalla completa"
+
+#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
+msgid "Switch tab pages"
+msgstr "Cambiar entre pestañas"
+
+#: src/rcw.c:1994
+msgid "Toggle dynamic resolution update"
+msgstr "Conmutar actualización dinámica de resolución"
+
+#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
+msgid "Toggle scaled mode"
+msgstr "Cambiar el modo de escala"
+
+#: src/rcw.c:2040
+msgid "Grab all keyboard events"
+msgstr "Capturar todos los eventos del teclado"
+
+#: src/rcw.c:2049 data/ui/remmina_main.glade:42 data/ui/remmina_main.glade:43
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: src/rcw.c:2057 src/rcw.c:2058
+msgid "Tools"
+msgstr "Herramientas"
+
+#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
+msgid "Screenshot"
+msgstr "Captura de pantalla"
+
+#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
+msgid "Minimize window"
+msgstr "Minimizar ventana"
+
+#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
+msgid "Disconnect"
+msgstr "Desconectarse"
+
+#: src/rcw.c:3729
+#, c-format
+msgid "File %s is corrupted, unreadable or not found."
+msgstr ""
+
+#: src/rcw.c:3873
+msgid "Warning: This plugin require GtkSocket, but it’s not available."
+msgstr ""
 
 #: src/remmina_ssh.c:205
 #, c-format
@@ -842,102 +937,6 @@ msgstr "Orden posterior"
 #, c-format
 msgid "File %s not found."
 msgstr "No se encontró el archivo %s."
-
-#: src/rcw.c:588
-#, c-format
-msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
-msgstr ""
-"Hay %i conexiones activas en la ventana actual. ¿Confirma que quiere cerrar?"
-
-#: src/rcw.c:1169
-msgid "Viewport fullscreen mode"
-msgstr "Modo a pantalla completa"
-
-#: src/rcw.c:1178
-msgid "Scrolled fullscreen mode"
-msgstr "Modo pantalla completa con barras de desplazamiento"
-
-#: src/rcw.c:1249
-msgid "Keep aspect ratio when scaled"
-msgstr "Mantener relación de aspecto cuando se escala"
-
-#: src/rcw.c:1258
-msgid "Fill client window when scaled"
-msgstr "Ampliar la ventana del cliente cuando se escala"
-
-#. Add a keystrokes submenu
-#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
-#: data/ui/remmina_preferences.glade:252
-msgid "Keystrokes"
-msgstr "Pulsaciones de teclas"
-
-#: src/rcw.c:1795
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
-msgstr ""
-"Atención: la captura de pantalla está escalada o distorsionada. Desactive el "
-"escalado para mejorar la calidad de la imagen."
-
-#. send a desktop notification
-#: src/rcw.c:1856
-msgid "Screenshot taken"
-msgstr "Captura de pantalla realizada"
-
-#: src/rcw.c:1923
-msgid "Resize the window to fit in remote resolution"
-msgstr "Redimensionar la ventana para ajustarla a la resolución remota"
-
-#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
-msgid "Toggle fullscreen mode"
-msgstr "Conmutar el modo a pantalla completa"
-
-#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
-msgid "Switch tab pages"
-msgstr "Cambiar entre pestañas"
-
-#: src/rcw.c:1994
-msgid "Toggle dynamic resolution update"
-msgstr "Conmutar actualización dinámica de resolución"
-
-#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
-msgid "Toggle scaled mode"
-msgstr "Cambiar el modo de escala"
-
-#: src/rcw.c:2040
-msgid "Grab all keyboard events"
-msgstr "Capturar todos los eventos del teclado"
-
-#: src/rcw.c:2049 data/ui/remmina_main.glade:42
-#: data/ui/remmina_main.glade:43
-msgid "Preferences"
-msgstr "Preferencias"
-
-#: src/rcw.c:2057 src/rcw.c:2058
-msgid "Tools"
-msgstr "Herramientas"
-
-#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
-msgid "Screenshot"
-msgstr "Captura de pantalla"
-
-#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
-msgid "Minimize window"
-msgstr "Minimizar ventana"
-
-#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
-msgid "Disconnect"
-msgstr "Desconectarse"
-
-#: src/rcw.c:3730
-#, c-format
-msgid "File %s is corrupted, unreadable or not found."
-msgstr ""
-
-#: src/rcw.c:3874
-msgid "Warning: This plugin require GtkSocket, but it’s not available."
-msgstr ""
 
 #: src/remmina_sftp_client.c:170
 #, c-format

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-01-30 14:45+0000\n"
+"POT-Creation-Date: 2019-02-07 15:35+0000\n"
 "PO-Revision-Date: 2015-04-24 21:34+0900\n"
 "Last-Translator: Shuhrat Dehkanov <k@efir.uz>\n"
 "Language-Team: Uzbek <uz@li.org>\n"
@@ -53,6 +53,101 @@ msgstr "Масофавий столларга аплет менюси орқал
 #: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1119
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina - масофавий боғланиш программаси"
+
+#: src/rcw.c:588
+#, c-format
+msgid ""
+"There are %i active connections in the current window. Are you sure to close?"
+msgstr ""
+"Танланган ойнада %iта фаол боғланишлар мавжуд. Ҳақиқатдан ҳам ёпмоқчимисиз?"
+
+#: src/rcw.c:1169
+msgid "Viewport fullscreen mode"
+msgstr "Тўлиқ экран режими"
+
+#: src/rcw.c:1178
+msgid "Scrolled fullscreen mode"
+msgstr "Скроллик тўлиқ экран режими"
+
+#: src/rcw.c:1249
+msgid "Keep aspect ratio when scaled"
+msgstr "Масштаб ўзгартирилганда томонлар мутаносиблиги сақлансин"
+
+#: src/rcw.c:1258
+msgid "Fill client window when scaled"
+msgstr "Масштаб ўзгартирилганда клиент ойнасини тўлиқ қоплаш"
+
+#. Add a keystrokes submenu
+#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
+#: data/ui/remmina_preferences.glade:252
+msgid "Keystrokes"
+msgstr "Тугма босишлар"
+
+#: src/rcw.c:1795
+msgid ""
+"Warning: screenshot is scaled or distorted. Disable scaling to have better "
+"screenshot."
+msgstr ""
+"Огоҳлантириш: скриншот масштаб ўлчами ўзгартирилган ёки бузилган. Юқорироқ "
+"сифатда скриншотлар олиш учун масштаблашни ўчириб қўйинг."
+
+#. send a desktop notification
+#: src/rcw.c:1856
+msgid "Screenshot taken"
+msgstr ""
+
+#: src/rcw.c:1923
+msgid "Resize the window to fit in remote resolution"
+msgstr "Масофадаги экран ўлчамига хос равишда ойна ўлчамларини мослаш"
+
+#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
+msgid "Toggle fullscreen mode"
+msgstr "Тўлиқ экран режимини ёқиш/ўчириш"
+
+#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
+msgid "Switch tab pages"
+msgstr "Таб саҳифаларига ўтиш"
+
+#: src/rcw.c:1994
+msgid "Toggle dynamic resolution update"
+msgstr ""
+
+#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
+msgid "Toggle scaled mode"
+msgstr "Масштаб услубини ёқиш/ўчириш"
+
+#: src/rcw.c:2040
+msgid "Grab all keyboard events"
+msgstr "Барча клавиатура тугмаларини босиш сигналларини тортиб олиш"
+
+#: src/rcw.c:2049 data/ui/remmina_main.glade:42 data/ui/remmina_main.glade:43
+msgid "Preferences"
+msgstr "Танловлар"
+
+#: src/rcw.c:2057 src/rcw.c:2058
+msgid "Tools"
+msgstr "Функциялар"
+
+#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
+msgid "Screenshot"
+msgstr "Скриншот"
+
+#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
+msgid "Minimize window"
+msgstr "Ойнани минималлаштириш"
+
+#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
+msgid "Disconnect"
+msgstr "Узиш"
+
+#: src/rcw.c:3729
+#, c-format
+msgid "File %s is corrupted, unreadable or not found."
+msgstr ""
+
+#: src/rcw.c:3873
+msgid "Warning: This plugin require GtkSocket, but it’s not available."
+msgstr ""
 
 #: src/remmina_ssh.c:205
 #, c-format
@@ -844,102 +939,6 @@ msgstr "Кейинги комманда"
 #, c-format
 msgid "File %s not found."
 msgstr "%s файли топилмади."
-
-#: src/rcw.c:588
-#, c-format
-msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
-msgstr ""
-"Танланган ойнада %iта фаол боғланишлар мавжуд. Ҳақиқатдан ҳам ёпмоқчимисиз?"
-
-#: src/rcw.c:1169
-msgid "Viewport fullscreen mode"
-msgstr "Тўлиқ экран режими"
-
-#: src/rcw.c:1178
-msgid "Scrolled fullscreen mode"
-msgstr "Скроллик тўлиқ экран режими"
-
-#: src/rcw.c:1249
-msgid "Keep aspect ratio when scaled"
-msgstr "Масштаб ўзгартирилганда томонлар мутаносиблиги сақлансин"
-
-#: src/rcw.c:1258
-msgid "Fill client window when scaled"
-msgstr "Масштаб ўзгартирилганда клиент ойнасини тўлиқ қоплаш"
-
-#. Add a keystrokes submenu
-#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
-#: data/ui/remmina_preferences.glade:252
-msgid "Keystrokes"
-msgstr "Тугма босишлар"
-
-#: src/rcw.c:1795
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
-msgstr ""
-"Огоҳлантириш: скриншот масштаб ўлчами ўзгартирилган ёки бузилган. Юқорироқ "
-"сифатда скриншотлар олиш учун масштаблашни ўчириб қўйинг."
-
-#. send a desktop notification
-#: src/rcw.c:1856
-msgid "Screenshot taken"
-msgstr ""
-
-#: src/rcw.c:1923
-msgid "Resize the window to fit in remote resolution"
-msgstr "Масофадаги экран ўлчамига хос равишда ойна ўлчамларини мослаш"
-
-#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
-msgid "Toggle fullscreen mode"
-msgstr "Тўлиқ экран режимини ёқиш/ўчириш"
-
-#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
-msgid "Switch tab pages"
-msgstr "Таб саҳифаларига ўтиш"
-
-#: src/rcw.c:1994
-msgid "Toggle dynamic resolution update"
-msgstr ""
-
-#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
-msgid "Toggle scaled mode"
-msgstr "Масштаб услубини ёқиш/ўчириш"
-
-#: src/rcw.c:2040
-msgid "Grab all keyboard events"
-msgstr "Барча клавиатура тугмаларини босиш сигналларини тортиб олиш"
-
-#: src/rcw.c:2049 data/ui/remmina_main.glade:42
-#: data/ui/remmina_main.glade:43
-msgid "Preferences"
-msgstr "Танловлар"
-
-#: src/rcw.c:2057 src/rcw.c:2058
-msgid "Tools"
-msgstr "Функциялар"
-
-#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
-msgid "Screenshot"
-msgstr "Скриншот"
-
-#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
-msgid "Minimize window"
-msgstr "Ойнани минималлаштириш"
-
-#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
-msgid "Disconnect"
-msgstr "Узиш"
-
-#: src/rcw.c:3730
-#, c-format
-msgid "File %s is corrupted, unreadable or not found."
-msgstr ""
-
-#: src/rcw.c:3874
-msgid "Warning: This plugin require GtkSocket, but it’s not available."
-msgstr ""
 
 #: src/remmina_sftp_client.c:170
 #, c-format

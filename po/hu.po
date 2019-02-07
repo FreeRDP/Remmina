@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-01-30 14:45+0000\n"
+"POT-Creation-Date: 2019-02-07 15:35+0000\n"
 "PO-Revision-Date: 2019-01-11 15:05+0100\n"
 "Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -53,6 +53,103 @@ msgstr "Kapcsolódás távoli asztalokhoz az értesítő ikon menüjén kereszt�
 #: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1119
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina távoli asztal ügyfél"
+
+#: src/rcw.c:588
+#, c-format
+msgid ""
+"There are %i active connections in the current window. Are you sure to close?"
+msgstr ""
+"%i nyitott kapcsolat van a jelenlegi ablakban. Biztosan be akarja zárni?"
+
+#: src/rcw.c:1169
+msgid "Viewport fullscreen mode"
+msgstr "Munkalap teljes képernyős módja"
+
+#: src/rcw.c:1178
+msgid "Scrolled fullscreen mode"
+msgstr "Görgetett teljes képernyős mód"
+
+#: src/rcw.c:1249
+msgid "Keep aspect ratio when scaled"
+msgstr "Eredeti méretarány megtartása"
+
+#: src/rcw.c:1258
+msgid "Fill client window when scaled"
+msgstr "Képernyő kitöltése"
+
+#. Add a keystrokes submenu
+#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
+#: data/ui/remmina_preferences.glade:252
+msgid "Keystrokes"
+msgstr "Billentyűleütések"
+
+#: src/rcw.c:1795
+msgid ""
+"Warning: screenshot is scaled or distorted. Disable scaling to have better "
+"screenshot."
+msgstr ""
+"Figyelmeztetés: a képernyőkép átméretezett vagy torzított. A jobb "
+"képernyőképhez tiltsa le az átméretezést."
+
+#. send a desktop notification
+#: src/rcw.c:1856
+msgid "Screenshot taken"
+msgstr "Képernyőkép készült"
+
+#: src/rcw.c:1923
+msgid "Resize the window to fit in remote resolution"
+msgstr "Az ablak átméretezése a távoli felbontásnak megfelelően"
+
+#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
+msgid "Toggle fullscreen mode"
+msgstr "Teljes képernyős mód"
+
+#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
+msgid "Switch tab pages"
+msgstr "Lapok váltása"
+
+#: src/rcw.c:1994
+msgid "Toggle dynamic resolution update"
+msgstr "Dinamikus felbontásfrissítés átváltása"
+
+#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
+msgid "Toggle scaled mode"
+msgstr "Átméretezett mód"
+
+#: src/rcw.c:2040
+msgid "Grab all keyboard events"
+msgstr "Minden billentyűesemény elkapása"
+
+#: src/rcw.c:2049 data/ui/remmina_main.glade:42 data/ui/remmina_main.glade:43
+msgid "Preferences"
+msgstr "Beállítások"
+
+#: src/rcw.c:2057 src/rcw.c:2058
+msgid "Tools"
+msgstr "Eszközök"
+
+#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
+msgid "Screenshot"
+msgstr "Képernyőkép"
+
+#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
+msgid "Minimize window"
+msgstr "Ablak minimalizálása"
+
+#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
+msgid "Disconnect"
+msgstr "Bontás"
+
+#: src/rcw.c:3729
+#, c-format
+msgid "File %s is corrupted, unreadable or not found."
+msgstr "A(z) %s fájl sérült, nem olvasható vagy nem található."
+
+#: src/rcw.c:3873
+msgid "Warning: This plugin require GtkSocket, but it’s not available."
+msgstr ""
+"Figyelmeztetés: Ehhez a bővítményhez GtkSocket szükséges, de az nem érhető "
+"el."
 
 #: src/remmina_ssh.c:205
 #, c-format
@@ -858,104 +955,6 @@ msgstr "Parancs utána"
 #, c-format
 msgid "File %s not found."
 msgstr "A(z) „%s” fájl nem található."
-
-#: src/rcw.c:588
-#, c-format
-msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
-msgstr ""
-"%i nyitott kapcsolat van a jelenlegi ablakban. Biztosan be akarja zárni?"
-
-#: src/rcw.c:1169
-msgid "Viewport fullscreen mode"
-msgstr "Munkalap teljes képernyős módja"
-
-#: src/rcw.c:1178
-msgid "Scrolled fullscreen mode"
-msgstr "Görgetett teljes képernyős mód"
-
-#: src/rcw.c:1249
-msgid "Keep aspect ratio when scaled"
-msgstr "Eredeti méretarány megtartása"
-
-#: src/rcw.c:1258
-msgid "Fill client window when scaled"
-msgstr "Képernyő kitöltése"
-
-#. Add a keystrokes submenu
-#: src/rcw.c:1692 src/remmina_pref_dialog.c:142
-#: data/ui/remmina_preferences.glade:252
-msgid "Keystrokes"
-msgstr "Billentyűleütések"
-
-#: src/rcw.c:1795
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
-msgstr ""
-"Figyelmeztetés: a képernyőkép átméretezett vagy torzított. A jobb "
-"képernyőképhez tiltsa le az átméretezést."
-
-#. send a desktop notification
-#: src/rcw.c:1856
-msgid "Screenshot taken"
-msgstr "Képernyőkép készült"
-
-#: src/rcw.c:1923
-msgid "Resize the window to fit in remote resolution"
-msgstr "Az ablak átméretezése a távoli felbontásnak megfelelően"
-
-#: src/rcw.c:1934 data/ui/remmina_preferences.glade:740
-msgid "Toggle fullscreen mode"
-msgstr "Teljes képernyős mód"
-
-#: src/rcw.c:1980 data/ui/remmina_preferences.glade:796
-msgid "Switch tab pages"
-msgstr "Lapok váltása"
-
-#: src/rcw.c:1994
-msgid "Toggle dynamic resolution update"
-msgstr "Dinamikus felbontásfrissítés átváltása"
-
-#: src/rcw.c:2004 data/ui/remmina_preferences.glade:837
-msgid "Toggle scaled mode"
-msgstr "Átméretezett mód"
-
-#: src/rcw.c:2040
-msgid "Grab all keyboard events"
-msgstr "Minden billentyűesemény elkapása"
-
-#: src/rcw.c:2049 data/ui/remmina_main.glade:42
-#: data/ui/remmina_main.glade:43
-msgid "Preferences"
-msgstr "Beállítások"
-
-#: src/rcw.c:2057 src/rcw.c:2058
-msgid "Tools"
-msgstr "Eszközök"
-
-#: src/rcw.c:2070 data/ui/remmina_preferences.glade:978
-msgid "Screenshot"
-msgstr "Képernyőkép"
-
-#: src/rcw.c:2078 data/ui/remmina_preferences.glade:893
-msgid "Minimize window"
-msgstr "Ablak minimalizálása"
-
-#: src/rcw.c:2088 data/ui/remmina_preferences.glade:922
-msgid "Disconnect"
-msgstr "Bontás"
-
-#: src/rcw.c:3730
-#, c-format
-msgid "File %s is corrupted, unreadable or not found."
-msgstr "A(z) %s fájl sérült, nem olvasható vagy nem található."
-
-#: src/rcw.c:3874
-msgid "Warning: This plugin require GtkSocket, but it’s not available."
-msgstr ""
-"Figyelmeztetés: Ehhez a bővítményhez GtkSocket szükséges, de az nem érhető "
-"el."
 
 #: src/remmina_sftp_client.c:170
 #, c-format
