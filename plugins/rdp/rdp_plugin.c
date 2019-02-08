@@ -1114,6 +1114,62 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->PasswordIsSmartcardPin = TRUE;
 	}
 
+	/* /serial[:<name>[,<path>[,<driver>[,permissive]]]] */
+	if (remmina_plugin_service->file_get_int(remminafile, "shareserial", FALSE)) {
+		RDPDR_SERIAL* serial;
+		serial = (RDPDR_SERIAL*)malloc(sizeof(RDPDR_SERIAL));
+		ZeroMemory(serial, sizeof(RDPDR_SERIAL));
+
+		serial->Type = RDPDR_DTYP_SERIAL;
+
+		const gchar* sn = remmina_plugin_service->file_get_string(remminafile, "serialname");
+		if ( sn != NULL && sn[0] != '\0' ) {
+			serial->Name = _strdup(sn);
+		}
+
+		const gchar* sd = remmina_plugin_service->file_get_string(remminafile, "serialdriver");
+		if ( sd != NULL && sd[0] != '\0' ) {
+			serial->Driver = _strdup(sd);
+		}
+
+		const gchar* sp = remmina_plugin_service->file_get_string(remminafile, "serialpath");
+		if ( sp != NULL && sp[0] != '\0' ) {
+			serial->Path = _strdup(sp);
+		}
+
+		if (remmina_plugin_service->file_get_int(remminafile, "serialpermissive", FALSE)) {
+			serial->Permissive = _strdup("permissive");
+		}
+
+		rfi->settings->DeviceRedirection = TRUE;
+		rfi->settings->RedirectSerialPorts = TRUE;
+
+		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*)serial);
+	}
+
+	if (remmina_plugin_service->file_get_int(remminafile, "shareparallel", FALSE)) {
+		RDPDR_PARALLEL* parallel;
+		parallel = (RDPDR_PARALLEL*)malloc(sizeof(RDPDR_PARALLEL));
+		ZeroMemory(parallel, sizeof(RDPDR_PARALLEL));
+
+		parallel->Type = RDPDR_DTYP_PARALLEL;
+
+		rfi->settings->DeviceRedirection = TRUE;
+		rfi->settings->RedirectParallelPorts = TRUE;
+
+		const gchar* pn = remmina_plugin_service->file_get_string(remminafile, "parallelname");
+		if ( pn != NULL && pn[0] != '\0' ) {
+			parallel->Name = _strdup(pn);
+		}
+		const gchar* dp = remmina_plugin_service->file_get_string(remminafile, "parallelpath");
+		if ( dp != NULL && dp[0] != '\0' ) {
+			parallel->Path = _strdup(dp);
+		}
+
+		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*)parallel);
+	}
+
+
 	if (!freerdp_connect(rfi->instance)) {
 		if (!rfi->user_cancelled) {
 			UINT32 e;
@@ -1568,11 +1624,19 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "clientname",	       N_("Client name"),			FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "exec",		       N_("Startup program"),			FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "execpath",		       N_("Startup path"),			FALSE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "loadbalanceinfo",	       N_("Load Balance Info"),			FALSE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printername",	       N_("Local Printer Name"),		FALSE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printerdriver",	       N_("Local Printer Driver"),		FALSE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "smartcardname",	       N_("Smartcard Name"),		FALSE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "shareprinter",	       N_("Share local printers"),		TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "loadbalanceinfo",	       N_("Load balance info"),			FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printername",	       N_("Local printer name"),		FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printerdriver",	       N_("Local printer driver"),		FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "serialname",	       N_("Local serial name"),			FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "serialdriver",	       N_("Local serial driver"),		FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "serialpath",	       N_("Local serial path"),			FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "parallelname",	       N_("Local parallel name"),		FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "parallelpath",	       N_("Local parallel device"),		FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "smartcardname",	       N_("Smartcard Name"),			FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "shareprinter",	       N_("Share printers"),			TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "shareserial",	       N_("Share serial ports"),		TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "serialpermissive",	       N_("Serial ports permissive mode"),	TRUE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "shareparallel",	       N_("Share parallel ports"),		TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "sharesmartcard",	       N_("Share smartcard"),			TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "microphone",	       N_("Redirect local microphone"),		TRUE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "disableclipboard",	       N_("Disable clipboard sync"),		TRUE,	NULL,		NULL},
