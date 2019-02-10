@@ -583,13 +583,13 @@ static void remmina_main_load_files()
 		break;
 	}
 
-/* Unset old model */
+	/* Unset old model */
 	gtk_tree_view_set_model(remminamain->tree_files_list, NULL);
 
-/* Destroy the old model and save the new one */
+	/* Destroy the old model and save the new one */
 	remminamain->priv->file_model = newmodel;
 
-/* Create a sorted filtered model based on newmodel and apply it to the TreeView */
+	/* Create a sorted filtered model based on newmodel and apply it to the TreeView */
 	remminamain->priv->file_model_filter = gtk_tree_model_filter_new(remminamain->priv->file_model, NULL);
 	gtk_tree_model_filter_set_visible_func(GTK_TREE_MODEL_FILTER(remminamain->priv->file_model_filter),
 		(GtkTreeModelFilterVisibleFunc)remmina_main_filter_visible_func, NULL, NULL);
@@ -601,12 +601,12 @@ static void remmina_main_load_files()
 	g_signal_connect(G_OBJECT(remminamain->priv->file_model_sort), "sort-column-changed",
 		G_CALLBACK(remmina_main_file_model_on_sort), NULL);
 	remmina_main_expand_group();
-/* Select the file previously selected */
+	/* Select the file previously selected */
 	if (save_selected_filename) {
 		remmina_main_select_file(save_selected_filename);
 		g_free(save_selected_filename);
 	}
-/* Show in the status bar the total number of connections found */
+	/* Show in the status bar the total number of connections found */
 	g_snprintf(buf, sizeof(buf), ngettext("Total %i item.", "Total %i items.", items_count), items_count);
 	context_id = gtk_statusbar_get_context_id(remminamain->statusbar_main, "status");
 	gtk_statusbar_pop(remminamain->statusbar_main, context_id);
@@ -796,25 +796,6 @@ void remmina_main_on_action_application_quit(GtkAction *action, gpointer user_da
 	// Called by quit signal in remmina_main.glade
 	TRACE_CALL(__func__);
 	remmina_application_condexit(REMMINA_CONDEXIT_ONQUIT);
-}
-
-void remmina_main_on_action_view_statusbar(GtkToggleAction *action, gpointer user_data)
-{
-	TRACE_CALL(__func__);
-	gboolean toggled;
-
-	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-		toggled = gtk_toggle_action_get_active(action);
-	G_GNUC_END_IGNORE_DEPRECATIONS
-	if (toggled) {
-		gtk_widget_show(GTK_WIDGET(remminamain->statusbar_main));
-	}else {
-		gtk_widget_hide(GTK_WIDGET(remminamain->statusbar_main));
-	}
-	if (remminamain->priv->initialized) {
-		remmina_pref.hide_statusbar = !toggled;
-		remmina_pref_save();
-	}
 }
 
 void remmina_main_on_date_column_sort_clicked()
@@ -1166,11 +1147,6 @@ static void remmina_main_init(void)
 	/* Load the files list */
 	remmina_main_load_files();
 	/* Load the preferences */
-	if (remmina_pref.hide_statusbar) {
-		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-		gtk_toggle_action_set_active(remminamain->action_view_statusbar, FALSE);
-		G_GNUC_END_IGNORE_DEPRECATIONS
-	}
 	if (remmina_pref.view_file_mode) {
 		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		gtk_toggle_action_set_active(remminamain->action_view_mode_tree, TRUE);
@@ -1283,8 +1259,6 @@ GtkWidget* remmina_main_new(void)
 	remminamain->action_connection_copy = GTK_ACTION(GET_OBJECT("action_connection_copy"));
 	remminamain->action_connection_delete = GTK_ACTION(GET_OBJECT("action_connection_delete"));
 	remminamain->action_connection_external_tools = GTK_ACTION(GET_OBJECT("action_connection_external_tools"));
-	/* Actions from the view ActionGroup */
-	remminamain->action_view_statusbar = GTK_TOGGLE_ACTION(GET_OBJECT("action_view_statusbar"));
 	/* Actions from the tools ActionGroup */
 	remminamain->action_tools_import = GTK_ACTION(GET_OBJECT("action_tools_import"));
 	remminamain->action_tools_export = GTK_ACTION(GET_OBJECT("action_tools_export"));

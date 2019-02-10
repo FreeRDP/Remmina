@@ -165,7 +165,6 @@ typedef struct _RemminaPref {
 	guint vte_shortcutkey_select_all;
 	/* In View menu */
 	gboolean hide_toolbar;
-	gboolean hide_statusbar;
 	gboolean small_toolbutton;
 	gint view_file_mode;
 	/* In tray icon */
