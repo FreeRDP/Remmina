@@ -44,7 +44,6 @@ set(APPICONSCALE_ACTIONS_DATA
     scalable/actions/remmina-document-send-symbolic.svg
     scalable/actions/remmina-dynres-symbolic.svg
     scalable/actions/remmina-fit-window-symbolic.svg
-    scalable/actions/remmina-folder-symbolic.svg
     scalable/actions/remmina-fullscreen-symbolic.svg
     scalable/actions/remmina-go-bottom-symbolic.svg
     scalable/actions/remmina-keyboard-symbolic.svg

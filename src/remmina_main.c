@@ -85,6 +85,9 @@ static char *quick_connect_plugin_list[] =
 	"RDP", "VNC", "SSH", "NX", "SPICE"
 };
 
+/**
+ * Save the Remmina Main Window size to assure the main geometry at each restart
+ */
 static void remmina_main_save_size(void)
 {
 	TRACE_CALL(__func__);
@@ -123,6 +126,10 @@ static void remmina_main_save_expanded_group(void)
 	}
 }
 
+/**
+ * Save the Remmina Main Window size and the exapnded group before to close Remmina.
+ * This function uses remmina_main_save_size and remmina_main_save_expanded_group.
+ */
 void remmina_main_save_before_destroy()
 {
 	if (!remminamain || !remminamain->window)
@@ -132,9 +139,11 @@ void remmina_main_save_before_destroy()
 	remmina_pref_save();
 }
 
+/**
+ * Try to exit remmina after a delete window event
+ */
 static gboolean remmina_main_dexit(gpointer data)
 {
-	/* Try to exit remmina after a delete window event */
 	TRACE_CALL(__func__);
 	remmina_application_condexit(REMMINA_CONDEXIT_ONMAINWINDELETE);
 	return FALSE;
@@ -145,18 +154,20 @@ gboolean remmina_main_on_delete_event(GtkWidget *widget, GdkEvent *event, gpoint
 	TRACE_CALL(__func__);
 	remmina_main_save_before_destroy();
 
-// Forget the main window: it has been deleted
+	/* Forget the main window: it has been deleted */
 	remminamain->window = NULL;
 	g_idle_add(remmina_main_dexit, NULL);
 
 	return FALSE;
 }
 
+/**
+ * Called when the main window is destroyed via a call from gtk_widget_destroy()
+ */
 void remmina_main_destroy()
 {
 	TRACE_CALL(__func__);
 
-/* Called when main window is destroyed via a call of gtk_widget_destroy() */
 	if (remminamain) {
 		if (remminamain->window)
 			remmina_main_save_before_destroy();
@@ -314,7 +325,7 @@ static gboolean remmina_main_load_file_tree_traverse(GNode *node, GtkTreeStore *
 		iter = g_new0(GtkTreeIter, 1);
 		gtk_tree_store_append(store, iter, parent);
 		gtk_tree_store_set(store, iter,
-			PROTOCOL_COLUMN,    "remmina-folder-symbolic",
+			PROTOCOL_COLUMN,    "folder-symbolic",
 			NAME_COLUMN,        data->name,
 			GROUP_COLUMN,       data->group,
 			DATE_COLUMN,        data->datetime,
@@ -465,7 +476,7 @@ static gboolean remmina_main_filter_visible_func(GtkTreeModel *model, GtkTreeIte
 			PLUGIN_COLUMN, &plugin,
 			DATE_COLUMN, &date,
 			-1);
-		if (g_strcmp0(protocol, "remmina-folder-symbolic") != 0) {
+		if (g_strcmp0(protocol, "folder-symbolic") != 0) {
 			s = g_ascii_strdown(name ? name : "", -1);
 			g_free(name);
 			name = s;
