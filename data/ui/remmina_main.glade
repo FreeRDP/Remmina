@@ -71,7 +71,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
             <property name="halign">start</property>
             <property name="image">image_new</property>
             <property name="always_show_image">True</property>
-            <signal name="clicked" handler="remmina_main_on_action_connections_new" swapped="no"/>
+            <signal name="clicked" handler="remmina_main_on_action_connection_new" swapped="no"/>
           </object>
         </child>
         <child>
@@ -294,6 +294,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     <property name="visible">True</property>
                     <property name="app_paintable">True</property>
                     <property name="can_focus">False</property>
+                    <property name="accel_group">accelgroup_shortcuts</property>
                     <child>
                       <object class="GtkMenuItem" id="menuitem_tools_import">
                         <property name="visible">True</property>
@@ -364,8 +365,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="action_name">main.preferences</property>
-                        <property name="label" translatable="yes">Preferences</property>
+                        <property name="label" translatable="yes">_Preferences</property>
                         <property name="use_underline">True</property>
+                        <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -437,7 +439,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
                         <property name="action_name">main.quit</property>
-                        <property name="label" translatable="yes">Quit</property>
+                        <property name="label" translatable="yes">_Quit</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>

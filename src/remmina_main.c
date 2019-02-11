@@ -1213,6 +1213,9 @@ void remmina_main_on_click_ustat_no(GtkWidget *w, gpointer user_data)
 GtkWidget* remmina_main_new(void)
 {
 	TRACE_CALL(__func__);
+	GSimpleActionGroup *actions;
+	GtkAccelGroup *accel_group = NULL;
+
 	remminamain = g_new0(RemminaMain, 1);
 	remminamain->priv = g_new0(RemminaMainPriv, 1);
 	/* Assign UI widgets to the private members */
@@ -1239,6 +1242,7 @@ GtkWidget* remmina_main_new(void)
 		gtk_widget_set_sensitive(GTK_WIDGET(remminamain->menu_popup_full), FALSE);
 		gtk_widget_set_sensitive(GTK_WIDGET(remminamain->menu_header_button), FALSE);
 	}
+	remminamain->menuitem_connection_quit = GTK_MENU_ITEM(GET_OBJECT("menuitem_connection_quit"));
 	/* View mode radios */
 	remminamain->menuitem_view_mode_list = GTK_RADIO_MENU_ITEM(GET_OBJECT("menuitem_view_mode_list"));
 	remminamain->menuitem_view_mode_tree = GTK_RADIO_MENU_ITEM(GET_OBJECT("menuitem_view_mode_tree"));
@@ -1256,14 +1260,17 @@ GtkWidget* remmina_main_new(void)
 		remminamain->box_ustat = GTK_BOX(GET_OBJECT("box_ustat"));
 	/* Non widget objects */
 	remminamain->accelgroup_shortcuts = GTK_ACCEL_GROUP(GET_OBJECT("accelgroup_shortcuts"));
-	GSimpleActionGroup *actions;
 	actions = g_simple_action_group_new();
 	g_action_map_add_action_entries(G_ACTION_MAP(actions), main_actions, G_N_ELEMENTS(main_actions), remminamain->window);
 	gtk_widget_insert_action_group(GTK_WIDGET(remminamain->window), "main", G_ACTION_GROUP(actions));
 	g_object_unref(actions);
+	accel_group = gtk_accel_group_new();
+	gtk_window_add_accel_group(remminamain->window, accel_group);
+	gtk_widget_add_accelerator(remminamain->menuitem_connection_quit, "activate", accel_group, GDK_KEY_q, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
 
 	/* Connect signals */
 	gtk_builder_connect_signals(remminamain->builder, NULL);
+	g_signal_connect(G_OBJECT(remminamain->menuitem_connection_quit), "activate", G_CALLBACK(remmina_main_on_action_application_quit), NULL);
 	/* Initialize the window and load the preferences */
 	remmina_main_init();
 	return GTK_WIDGET(remminamain->window);
