@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.4
+<!-- Generated with glade 3.22.1 
 
 Remmina - The GTK+ Remmina Remote Desktop Client
-Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2018
+Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2019
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -24,178 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
   <!-- interface-license-type gplv2 -->
   <!-- interface-name Remmina -->
   <!-- interface-description The GTK+ Remmina Remote Desktop Client -->
-  <!-- interface-copyright Antenore Gatta & Giovanni Panozzo 2014-2018 -->
-  <object class="GtkAccelGroup" id="accelgroup_shortcuts"/>
-  <object class="GtkActionGroup" id="actiongroup_application">
-    <property name="accel_group">accelgroup_shortcuts</property>
-    <child>
-      <object class="GtkAction" id="action_application_quit">
-        <property name="label" translatable="yes">_Quit</property>
-        <property name="short_label" translatable="yes">_Quit</property>
-        <property name="icon_name">application-exit</property>
-        <signal name="activate" handler="remmina_main_on_action_application_quit" swapped="no"/>
-      </object>
-      <accelerator key="q" modifiers="GDK_CONTROL_MASK"/>
-    </child>
-    <child>
-      <object class="GtkAction" id="action_application_preferences">
-        <property name="label" translatable="yes">Preferences</property>
-        <property name="short_label" translatable="yes">Preferences</property>
-        <property name="tooltip" translatable="yes">Open the preferences dialog</property>
-        <property name="icon_name">preferences-desktop</property>
-        <signal name="activate" handler="remmina_main_on_action_application_preferences" swapped="no"/>
-      </object>
-      <accelerator key="p" modifiers="GDK_CONTROL_MASK"/>
-    </child>
-    <child>
-      <object class="GtkAction" id="action_application_about">
-        <property name="label" translatable="yes">_About</property>
-        <property name="short_label" translatable="yes">_About</property>
-        <signal name="activate" handler="remmina_main_on_action_application_about" swapped="no"/>
-      </object>
-      <accelerator key="F1"/>
-    </child>
-    <child>
-      <object class="GtkAction" id="action_application_plugins">
-        <property name="label" translatable="yes">Plugins</property>
-        <property name="short_label" translatable="yes">Plugins</property>
-        <signal name="activate" handler="remmina_main_on_action_application_plugins" swapped="no"/>
-      </object>
-    </child>
-    <child>
-      <object class="GtkAction" id="action_application_mpchange">
-        <property name="label" translatable="yes">Multi password changer</property>
-        <property name="short_label" translatable="yes">MPChange</property>
-        <signal name="activate" handler="remmina_main_on_action_application_mpchange" swapped="no"/>
-      </object>
-    </child>
-  </object>
-  <object class="GtkActionGroup" id="actiongroup_connection">
-    <property name="accel_group">accelgroup_shortcuts</property>
-    <child>
-      <object class="GtkAction" id="action_connection_connect">
-        <property name="label" translatable="yes">Connect</property>
-        <property name="short_label" translatable="yes">Connect</property>
-        <property name="tooltip" translatable="yes">Open the connection to the selected remote desktop file</property>
-        <property name="is_important">True</property>
-        <signal name="activate" handler="remmina_main_on_action_connection_connect" swapped="no"/>
-      </object>
-      <accelerator key="o" modifiers="GDK_CONTROL_MASK"/>
-    </child>
-    <child>
-      <object class="GtkAction" id="action_connection_edit">
-        <property name="label" translatable="yes">_Edit</property>
-        <property name="short_label" translatable="yes">_Edit</property>
-        <property name="tooltip" translatable="yes">Edit the selected remote desktop file</property>
-        <signal name="activate" handler="remmina_main_on_action_connection_edit" swapped="no"/>
-      </object>
-      <accelerator key="e" modifiers="GDK_CONTROL_MASK"/>
-    </child>
-    <child>
-      <object class="GtkAction" id="action_connection_copy">
-        <property name="label" translatable="yes">Copy</property>
-        <property name="short_label" translatable="yes">Copy</property>
-        <property name="tooltip" translatable="yes">Create a copy of the selected remote desktop file</property>
-        <signal name="activate" handler="remmina_main_on_action_connection_copy" swapped="no"/>
-      </object>
-      <accelerator key="c" modifiers="GDK_CONTROL_MASK"/>
-    </child>
-    <child>
-      <object class="GtkAction" id="action_connection_delete">
-        <property name="label" translatable="yes">_Delete</property>
-        <property name="short_label" translatable="yes">_Delete</property>
-        <property name="tooltip" translatable="yes">Delete the selected remote desktop file</property>
-        <signal name="activate" handler="remmina_main_on_action_connection_delete" swapped="no"/>
-      </object>
-      <accelerator key="d" modifiers="GDK_CONTROL_MASK"/>
-    </child>
-    <child>
-      <object class="GtkAction" id="action_connection_external_tools">
-        <property name="label" translatable="yes">External Tools</property>
-        <property name="short_label" translatable="yes">External Tools</property>
-        <signal name="activate" handler="remmina_main_on_action_connection_external_tools" swapped="no"/>
-      </object>
-      <accelerator key="t" modifiers="GDK_CONTROL_MASK"/>
-    </child>
-  </object>
-  <object class="GtkActionGroup" id="actiongroup_connections">
-    <property name="accel_group">accelgroup_shortcuts</property>
-    <child>
-      <object class="GtkAction" id="action_connections_new">
-        <property name="label" translatable="yes">_New</property>
-        <property name="short_label" translatable="yes">_New</property>
-        <property name="tooltip" translatable="yes">Create a new remote desktop file</property>
-        <property name="icon_name">document-new</property>
-        <signal name="activate" handler="remmina_main_on_action_connections_new" swapped="no"/>
-      </object>
-      <accelerator key="n" modifiers="GDK_CONTROL_MASK"/>
-    </child>
-  </object>
-  <object class="GtkActionGroup" id="actiongroup_help">
-    <property name="accel_group">accelgroup_shortcuts</property>
-    <child>
-      <object class="GtkAction" id="action_help_homepage">
-        <property name="label" translatable="yes">Homepage</property>
-        <property name="short_label" translatable="yes">Homepage</property>
-        <signal name="activate" handler="remmina_main_on_action_help_homepage" swapped="no"/>
-      </object>
-    </child>
-    <child>
-      <object class="GtkAction" id="action_help_wiki">
-        <property name="label" translatable="yes">Online Wiki</property>
-        <property name="short_label" translatable="yes">Online Wiki</property>
-        <signal name="activate" handler="remmina_main_on_action_help_wiki" swapped="no"/>
-      </object>
-    </child>
-    <child>
-      <object class="GtkAction" id="action_help_community">
-        <property name="label" translatable="yes">Remmina Community</property>
-        <signal name="activate" handler="remmina_main_on_action_help_community" swapped="no"/>
-      </object>
-    </child>
-    <child>
-      <object class="GtkAction" id="action_help_donations">
-        <property name="label" translatable="yes">Donations</property>
-        <property name="short_label" translatable="yes">Donations</property>
-        <signal name="activate" handler="remmina_main_on_action_help_donations" swapped="no"/>
-      </object>
-    </child>
-    <child>
-      <object class="GtkAction" id="action_help_debug">
-        <property name="label" translatable="yes">Debug Window</property>
-        <property name="short_label" translatable="yes">Debug Window</property>
-        <signal name="activate" handler="remmina_main_on_action_help_debug" swapped="no"/>
-      </object>
-    </child>
-  </object>
-  <object class="GtkActionGroup" id="actiongroup_tools">
-    <property name="accel_group">accelgroup_shortcuts</property>
-    <child>
-      <object class="GtkAction" id="action_tools_import">
-        <property name="label" translatable="yes">Import</property>
-        <property name="short_label" translatable="yes">Import</property>
-        <signal name="activate" handler="remmina_main_on_action_tools_import" swapped="no"/>
-      </object>
-    </child>
-    <child>
-      <object class="GtkAction" id="action_tools_export">
-        <property name="label" translatable="yes">Export</property>
-        <property name="short_label" translatable="yes">Export</property>
-        <signal name="activate" handler="remmina_main_on_action_tools_export" swapped="no"/>
-      </object>
-    </child>
-  </object>
-  <object class="GtkActionGroup" id="actiongroup_view">
-    <property name="accel_group">accelgroup_shortcuts</property>
-    <child>
-      <object class="GtkToggleAction" id="action_view_statusbar">
-        <property name="label" translatable="yes">Statusbar</property>
-        <property name="short_label" translatable="yes">Statusbar</property>
-        <property name="active">True</property>
-        <signal name="activate" handler="remmina_main_on_action_view_statusbar" swapped="no"/>
-      </object>
-    </child>
-  </object>
+  <!-- interface-copyright Antenore Gatta & Giovanni Panozzo 2014-2019 -->
   <object class="GtkEntryCompletion" id="entrycompletion">
     <property name="inline_completion">True</property>
     <property name="inline_selection">True</property>
@@ -224,6 +53,81 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     <signal name="drag-data-received" handler="remmina_main_on_drag_data_received" swapped="no"/>
     <signal name="show" handler="remmina_main_on_show" swapped="no"/>
     <signal name="window-state-event" handler="remmina_main_on_window_state_event" swapped="no"/>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="main_headerbar">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="title">Remmina</property>
+        <property name="subtitle">Remote Desktop Client</property>
+        <property name="spacing">10</property>
+        <property name="show_close_button">True</property>
+        <child>
+          <object class="GtkButton" id="button_new">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Create a new connection profile</property>
+            <property name="halign">start</property>
+            <property name="image">image_new</property>
+            <property name="always_show_image">True</property>
+            <signal name="clicked" handler="remmina_main_on_action_connection_new" swapped="no"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkToggleButton" id="search_toggle">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="tooltip_text" translatable="yes">Show search bar</property>
+            <property name="image">find_toggle_image</property>
+            <property name="active">True</property>
+            <signal name="toggled" handler="remmina_main_on_search_toggle" swapped="no"/>
+          </object>
+          <packing>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkMenuButton" id="menu_header_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="popup">menu_popup_full</property>
+            <child>
+              <object class="GtkImage" id="image_menu">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">open-menu-symbolic</property>
+                <property name="icon_size">1</property>
+              </object>
+            </child>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="menu_header_button-atkobject">
+                <property name="AtkObject::accessible-name" translatable="yes">Actions</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToggleButton" id="view_toggle_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="tooltip_text" translatable="yes">Toggle view</property>
+            <property name="image">view_toggle_icon</property>
+            <signal name="toggled" handler="remmina_main_on_view_toggle" swapped="no"/>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
     <child>
       <object class="GtkBox" id="box_main">
         <property name="visible">True</property>
@@ -319,13 +223,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     <property name="app_paintable">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="menuitem_popup_connect">
-                        <property name="related_action">action_connection_connect</property>
+                      <object class="GtkMenuItem" id="menuitem_popup_connect">
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.connect</property>
+                        <property name="label" translatable="yes">Connect</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
                       </object>
                     </child>
                     <child>
@@ -336,43 +240,43 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="menuitem_popup_copy">
-                        <property name="related_action">action_connection_copy</property>
+                      <object class="GtkMenuItem" id="menuitem_popup_copy">
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.copy</property>
+                        <property name="label" translatable="yes">Copy</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="menuitem_popup_edit">
-                        <property name="related_action">action_connection_edit</property>
+                      <object class="GtkMenuItem" id="menuitem_popup_edit">
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.edit</property>
+                        <property name="label" translatable="yes">Edit</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="menuitem_popup_delete">
-                        <property name="related_action">action_connection_delete</property>
+                      <object class="GtkMenuItem" id="menuitem_popup_delete">
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.delete</property>
+                        <property name="label" translatable="yes">Delete</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="menuitem_popup_externaltools">
-                        <property name="related_action">action_connection_external_tools</property>
+                      <object class="GtkMenuItem" id="menuitem_popup_externaltools">
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.exttools</property>
+                        <property name="label" translatable="yes">Tools</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
                       </object>
                     </child>
                   </object>
@@ -391,30 +295,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     <property name="can_focus">False</property>
                     <child>
                       <object class="GtkMenuItem" id="menuitem_tools_import">
-                        <property name="related_action">action_tools_import</property>
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.import</property>
                         <property name="label" translatable="yes">Import</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkMenuItem" id="menuitem_tools_export">
-                        <property name="related_action">action_tools_export</property>
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.export</property>
                         <property name="label" translatable="yes">Export</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkMenuItem" id="menuitem_tools_mpchange">
-                        <property name="related_action">action_application_mpchange</property>
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.mpchange</property>
                         <property name="label" translatable="yes">Multi password changer</property>
                         <property name="use_underline">True</property>
                       </object>
@@ -428,23 +332,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     </child>
                     <child>
                       <object class="GtkMenuItem" id="menuitem_help_debug">
-                        <property name="related_action">action_help_debug</property>
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.debug</property>
                         <property name="label" translatable="yes">Debug Window</property>
                         <property name="use_underline">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkCheckMenuItem" id="menuitem_view_statusbar">
-                        <property name="use_action_appearance">True</property>
-                        <property name="related_action">action_view_statusbar</property>
-                        <property name="visible">True</property>
-                        <property name="app_paintable">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="active">True</property>
                       </object>
                     </child>
                     <child>
@@ -456,22 +349,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     </child>
                     <child>
                       <object class="GtkMenuItem" id="menuitem_tools_plugins">
-                        <property name="related_action">action_application_plugins</property>
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.plugins</property>
                         <property name="label" translatable="yes">Plugins</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="menuitem_edit_preferences">
-                        <property name="related_action">action_application_preferences</property>
+                      <object class="GtkMenuItem" id="menuitem_edit_preferences">
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.preferences</property>
+                        <property name="label" translatable="yes">_Preferences</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
+                        <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -483,52 +377,51 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                     </child>
                     <child>
                       <object class="GtkMenuItem" id="menuitem_help_homepage">
-                        <property name="related_action">action_help_homepage</property>
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.homepage</property>
                         <property name="label" translatable="yes">Homepage</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkMenuItem" id="menuitem_help_wiki">
-                        <property name="related_action">action_help_wiki</property>
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.wiki</property>
                         <property name="label" translatable="yes">Online Wiki</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkMenuItem" id="menuitem_help_community">
-                        <property name="related_action">action_help_community</property>
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.community</property>
                         <property name="label" translatable="yes" comments="Online Remmina community, like reddit, facebook, etc">Online Community</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkMenuItem" id="menuitem_help_donations">
-                        <property name="related_action">action_help_donations</property>
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.donations</property>
                         <property name="label" translatable="yes">Donations</property>
                         <property name="use_underline">True</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="menuitem_help_about">
-                        <property name="related_action">action_application_about</property>
+                      <object class="GtkMenuItem" id="menuitem_help_about">
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
+                        <property name="action_name">main.about</property>
+                        <property name="label" translatable="yes">About</property>
                       </object>
                     </child>
                     <child>
@@ -539,13 +432,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="menuitem_connection_quit">
-                        <property name="related_action">action_application_quit</property>
+                      <object class="GtkMenuItem" id="menuitem_connection_quit">
                         <property name="visible">True</property>
                         <property name="app_paintable">True</property>
                         <property name="can_focus">False</property>
+                        <property name="action_name">main.quit</property>
+                        <property name="label" translatable="yes">_Quit</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">False</property>
+                        <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                   </object>
@@ -756,81 +650,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">4</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-    <child type="titlebar">
-      <object class="GtkHeaderBar" id="main_headerbar">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="title">Remmina</property>
-        <property name="subtitle">Remote Desktop Client</property>
-        <property name="spacing">10</property>
-        <property name="show_close_button">True</property>
-        <child>
-          <object class="GtkButton" id="button_new">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Create a new connection profile</property>
-            <property name="halign">start</property>
-            <property name="image">image_new</property>
-            <property name="always_show_image">True</property>
-            <signal name="clicked" handler="remmina_main_on_action_connections_new" swapped="no"/>
-          </object>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="search_toggle">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="tooltip_text" translatable="yes">Show search bar</property>
-            <property name="image">find_toggle_image</property>
-            <property name="active">True</property>
-            <signal name="toggled" handler="remmina_main_on_search_toggle" swapped="no"/>
-          </object>
-          <packing>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkMenuButton" id="menu_header_button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="popup">menu_popup_full</property>
-            <child>
-              <object class="GtkImage" id="image_menu">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">open-menu-symbolic</property>
-                <property name="icon_size">1</property>
-              </object>
-            </child>
-            <child internal-child="accessible">
-              <object class="AtkObject" id="menu_header_button-atkobject">
-                <property name="AtkObject::accessible-name" translatable="yes">Actions</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="pack_type">end</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="view_toggle_button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="tooltip_text" translatable="yes">Toggle view</property>
-            <property name="image">view_toggle_icon</property>
-            <signal name="toggled" handler="remmina_main_on_view_toggle" swapped="no"/>
-          </object>
-          <packing>
-            <property name="pack_type">end</property>
-            <property name="position">2</property>
           </packing>
         </child>
       </object>
