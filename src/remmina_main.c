@@ -807,6 +807,7 @@ void remmina_main_on_action_application_quit(GSimpleAction *action, GVariant *pa
 {
 	// Called by quit signal in remmina_main.glade
 	TRACE_CALL(__func__);
+	g_print ("Quit intercept");
 	remmina_application_condexit(REMMINA_CONDEXIT_ONQUIT);
 }
 
@@ -1147,7 +1148,7 @@ static void remmina_main_init(void)
 	gtk_combo_box_set_active(GTK_COMBO_BOX(remminamain->combo_quick_connect_protocol), 0);
 
 	/* Connect the group accelerators to the GtkWindow */
-	gtk_window_add_accel_group(remminamain->window, remminamain->accelgroup_shortcuts);
+	//gtk_window_add_accel_group(remminamain->window, remminamain->accelgroup_shortcuts);
 	/* Set the Quick Connection */
 	gtk_entry_set_activates_default(remminamain->entry_quick_connect_server, TRUE);
 	/* Set the TreeView for the files list */
@@ -1242,7 +1243,6 @@ GtkWidget* remmina_main_new(void)
 		gtk_widget_set_sensitive(GTK_WIDGET(remminamain->menu_popup_full), FALSE);
 		gtk_widget_set_sensitive(GTK_WIDGET(remminamain->menu_header_button), FALSE);
 	}
-	remminamain->menuitem_connection_quit = GTK_MENU_ITEM(GET_OBJECT("menuitem_connection_quit"));
 	/* View mode radios */
 	remminamain->menuitem_view_mode_list = GTK_RADIO_MENU_ITEM(GET_OBJECT("menuitem_view_mode_list"));
 	remminamain->menuitem_view_mode_tree = GTK_RADIO_MENU_ITEM(GET_OBJECT("menuitem_view_mode_tree"));
@@ -1259,18 +1259,20 @@ GtkWidget* remmina_main_new(void)
 	if (!kioskmode && kioskmode == FALSE)
 		remminamain->box_ustat = GTK_BOX(GET_OBJECT("box_ustat"));
 	/* Non widget objects */
-	remminamain->accelgroup_shortcuts = GTK_ACCEL_GROUP(GET_OBJECT("accelgroup_shortcuts"));
 	actions = g_simple_action_group_new();
 	g_action_map_add_action_entries(G_ACTION_MAP(actions), main_actions, G_N_ELEMENTS(main_actions), remminamain->window);
 	gtk_widget_insert_action_group(GTK_WIDGET(remminamain->window), "main", G_ACTION_GROUP(actions));
 	g_object_unref(actions);
+	/* Accelerators */
 	accel_group = gtk_accel_group_new();
 	gtk_window_add_accel_group(remminamain->window, accel_group);
-	gtk_widget_add_accelerator(remminamain->menuitem_connection_quit, "activate", accel_group, GDK_KEY_q, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
+	gtk_accel_group_connect (accel_group, GDK_KEY_Q, GDK_CONTROL_MASK, 0,
+			g_cclosure_new_swap (G_CALLBACK (remmina_main_on_action_application_quit), NULL, NULL));
+	gtk_accel_group_connect (accel_group, GDK_KEY_P, GDK_CONTROL_MASK, 0,
+			g_cclosure_new_swap (G_CALLBACK (remmina_main_on_action_application_preferences), NULL, NULL));
 
 	/* Connect signals */
 	gtk_builder_connect_signals(remminamain->builder, NULL);
-	g_signal_connect(G_OBJECT(remminamain->menuitem_connection_quit), "activate", G_CALLBACK(remmina_main_on_action_application_quit), NULL);
 	/* Initialize the window and load the preferences */
 	remmina_main_init();
 	return GTK_WIDGET(remminamain->window);
