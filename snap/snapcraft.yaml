@@ -14,29 +14,75 @@ description: |
 
 grade: stable
 confinement: strict
+base: core18
 
 plugs:
-  gnome-3-26-1604:
+  gnome-3-28-1804:
     interface: content
     target: $SNAP/gnome-platform
-    default-provider: gnome-3-26-1604:gnome-3-26-1604
+    default-provider: gnome-3-28-1804
   gtk-3-themes:
     interface: content
-    target: $SNAP/share/themes
-    default-provider: gtk-common-themes:gtk-3-themes
+    target: $SNAP/data-dir/themes
+    default-provider: gtk-common-themes
   icon-themes:
     interface: content
-    target: $SNAP/share/icons
-    default-provider: gtk-common-themes:icon-themes
+    target: $SNAP/data-dir/icons
+    default-provider: gtk-common-themes
   sound-themes:
     interface: content
-    target: $SNAP/share/sounds
-    default-provider: gtk-common-themes:sounds-themes
+    target: $SNAP/data-dir/sounds
+    default-provider: gtk-common-themes
 
-environment:
-  XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
+slots:
+  remmina-gapp:
+    interface: dbus
+    bus: session
+    name: org.remmina.Remmina
+
+apps:
+  remmina:
+    # desktop-launch seems to be broken when setting up wayland env
+    # so we disable it
+    environment:
+      DISABLE_WAYLAND: 1
+    command: desktop-launch remmina
+    common-id: org.remmina.Remmina.desktop
+    desktop: usr/share/applications/org.remmina.Remmina.desktop
+    plugs:
+      - avahi-observe
+      - cups-control
+      - desktop
+      - desktop-legacy
+      - gsettings
+      - home
+      - mount-observe
+      - network
+      - network-bind
+      - pulseaudio
+      - unity7
+      - password-manager-service
+      - wayland
+      - x11
+
+  winpr-makecert:
+    command: winpr-makecert
+
+  winpr-hash:
+    command: winpr-hash
 
 parts:
+  desktop-gnome-platform:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: gtk
+    plugin: make
+    make-parameters: ["FLAVOR=gtk3"]
+    build-packages:
+      - build-essential
+      - libgtk-3-dev
+    override-build: |
+      snapcraftctl build
+      mkdir -pv $SNAPCRAFT_PART_INSTALL/gnome-platform
   freerdp:
     plugin: cmake
     source: https://github.com/FreeRDP/FreeRDP.git
@@ -48,7 +94,6 @@ parts:
       - libavutil-dev
       - libcups2-dev
       - libffi-dev
-      - libgnutls-dev
       - libgnutls28-dev
       - libnacl-dev
       - libjpeg-dev
@@ -82,7 +127,7 @@ parts:
       - -DWITH_PCSC=on
       - -DWITH_JPEG=on
 
-    # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
+      # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
     organize:
       snap/remmina/current: .
@@ -93,7 +138,7 @@ parts:
       - -usr/lib/pkgconfig
 
   # Remove this (and use again libssh-dev) once libssh-0.8 is available in distro
-  libssh-0.8:
+  libssh-0-8:
     plugin: cmake
     source: "https://git.libssh.org/projects/libssh.git/snapshot/libssh-0.8.1.tar.gz"
     configflags:
@@ -101,8 +146,7 @@ parts:
       - -DWITH_GSSAPI=ON
       - -DWITH_NACL=0
       - -DWITH_EXAMPLES:BOOL=OFF
-
-    # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
+      # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
     organize:
       snap/remmina/current: .
@@ -153,9 +197,8 @@ parts:
       - -./usr/share/fonts/**
 
     after:
-      - libssh-0.8
+      - libssh-0-8
       - freerdp
-      - desktop-gtk3
     override-prime: |
       set -eu
       snapcraftctl prime
@@ -166,73 +209,11 @@ parts:
     after:
       - desktop-gnome-platform
     plugin: nil
-    build-attributes:
-      - no-system-libraries
     stage-packages:
       - gtk-3-examples
+      - libappindicator3-1
     override-build: |
       set -ex
       snapcraftctl build
-      mkdir -p $SNAPCRAFT_PART_INSTALL/share/themes
-      mkdir -p $SNAPCRAFT_PART_INSTALL/share/icons
-      mkdir -p $SNAPCRAFT_PART_INSTALL/share/sounds
     stage:
       - usr/bin/gtk3-demo
-      - share/icons
-      - share/themes
-      - share/sounds
-
-  # Removing files that are accessible thanks to desktop plug
-  desktop-gtk3:
-    stage-packages:
-      - gnome-icon-theme
-      - libappindicator3-1
-    stage:
-      - -./usr/share/fonts/**
-    override-build: |
-      set -x
-      snapcraftctl build
-      export XDG_DATA_DIRS=$SNAPCRAFT_PART_INSTALL/usr/share
-      update-mime-database $SNAPCRAFT_PART_INSTALL/usr/share/mime
-      for dir in $SNAPCRAFT_PART_INSTALL/usr/share/icons/*/; do
-        if [ -f $dir/index.theme ]; then
-          gtk-update-icon-cache-3.0 -q $dir
-        fi
-      done
-
-apps:
-  remmina:
-    # desktop-launch seems to be broken when setting up wayland env
-    # so we disable it
-    environment:
-      DISABLE_WAYLAND: 1
-    command: desktop-launch remmina
-    common-id: org.remmina.Remmina.desktop
-    desktop: usr/share/applications/org.remmina.Remmina.desktop
-    plugs:
-      - avahi-observe
-      - cups-control
-      - desktop
-      - desktop-legacy
-      - gsettings
-      - home
-      - mount-observe
-      - network
-      - network-bind
-      - pulseaudio
-      - unity7
-      - password-manager-service
-      - wayland
-      - x11
-
-  winpr-makecert:
-    command: winpr-makecert
-
-  winpr-hash:
-    command: winpr-hash
-
-slots:
-  remmina-gapp:
-    interface: dbus
-    bus: session
-    name: org.remmina.Remmina
