@@ -183,8 +183,7 @@ remmina_ssh_auth_interactive(RemminaSSH *ssh)
 	}
 
 	if (ret != SSH_AUTH_SUCCESS) {
-		/* We pass the control to remmina_ssh_auth_password */
-		return 0;
+		return 0;	// Generic error
 	}
 
 	ssh->authenticated = TRUE;
@@ -326,13 +325,19 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password)
 	switch (ssh->auth) {
 
 	case SSH_AUTH_PASSWORD:
-		ret = 0;
-		if (method & SSH_AUTH_METHOD_INTERACTIVE || method & SSH_AUTH_METHOD_PASSWORD) {
-			ret = remmina_ssh_auth_interactive(ssh);
-			if (!ssh->authenticated)
-				return remmina_ssh_auth_password(ssh);
+		if (ssh->authenticated)
+			return 1;
+		if (method & SSH_AUTH_METHOD_PASSWORD) {
+			if (remmina_ssh_auth_password(ssh) <= 0)
+					return -1;	// Re-prompt password
 		}
-		return ret;
+		if (method & SSH_AUTH_METHOD_INTERACTIVE) {
+			/* SSH server is requesting us to do interactive auth.
+			 * But we just send the saved password */
+			if (remmina_ssh_auth_interactive(ssh) <= 0)
+				return -1;	// Re-prompt password
+		}
+		return 1;
 
 	case SSH_AUTH_PUBLICKEY:
 		if (method & SSH_AUTH_METHOD_PUBLICKEY)
@@ -460,9 +465,10 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 
 		if (g_strcmp0(pwdtype, "ssh_passphrase") == 0) {
 			ret = remmina_protocol_widget_panel_authpwd(gp, REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY, !disablepasswordstoring);
-		}else {
+		}else if (g_strcmp0(pwdtype, "ssh_password") == 0) {
+			ret = remmina_protocol_widget_panel_authuserpwd_ssh_tunnel(gp, FALSE, !disablepasswordstoring);
+		} else
 			ret = remmina_protocol_widget_panel_authuserpwd(gp, FALSE, !disablepasswordstoring);
-		}
 		save_password = remmina_protocol_widget_get_savepassword(gp);
 
 		if (ret == GTK_RESPONSE_OK) {

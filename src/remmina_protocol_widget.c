@@ -102,6 +102,7 @@ struct _RemminaProtocolWidgetPriv {
 
 enum panel_type {
 	RPWDT_AUTHUSERPWD,
+	RPWDT_AUTHUSERPWD_SSHTUNNEL,
 	RPWDT_AUTHPWD,
 	RPWDT_QUESTIONYESNO,
 	RPWDT_AUTHX509
@@ -1080,7 +1081,7 @@ static void authuserpwd_mt_cb(void *user_data, int button)
 	struct remmina_protocol_widget_dialog_mt_data_t *d = (struct remmina_protocol_widget_dialog_mt_data_t *)user_data;
 	d->rcbutton = button;
 	if (button == GTK_RESPONSE_OK) {
-		if (d->dtype == RPWDT_AUTHUSERPWD || d->dtype == RPWDT_AUTHPWD) {
+		if (d->dtype == RPWDT_AUTHUSERPWD || d->dtype == RPWDT_AUTHPWD || d->dtype == RPWDT_AUTHUSERPWD_SSHTUNNEL) {
 			d->gp->priv->password = remmina_message_panel_field_get_string(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_PASSWORD);
 			d->gp->priv->username = remmina_message_panel_field_get_string(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_USERNAME);
 			d->gp->priv->domain = remmina_message_panel_field_get_string(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_DOMAIN);
@@ -1114,17 +1115,22 @@ static gboolean remmina_protocol_widget_dialog_mt_setup(gpointer user_data)
 
 	RemminaFile* remminafile = d->gp->priv->remmina_file;
 	RemminaMessagePanel *mp;
+	const gchar *key;
 	const gchar *s;
 
 	mp = remmina_message_panel_new();
 
-	if (d->dtype == RPWDT_AUTHUSERPWD) {
-		remmina_message_panel_setup_auth(mp, authuserpwd_mt_cb, d, _("Enter authentication credentials"), d->str1, d->pflags);
-		if ((s = remmina_file_get_string(remminafile, "username")) != NULL)
+	if (d->dtype == RPWDT_AUTHUSERPWD || d->dtype == RPWDT_AUTHUSERPWD_SSHTUNNEL) {
+		remmina_message_panel_setup_auth(mp, authuserpwd_mt_cb, d,
+			d->dtype == RPWDT_AUTHUSERPWD_SSHTUNNEL ? _("Enter SSH tunnel authentication credentials") : _("Enter authentication credentials"),
+			d->str1, d->pflags);
+		key = (d->dtype == RPWDT_AUTHUSERPWD_SSHTUNNEL ? "ssh_username" : "username");
+		if ((s = remmina_file_get_string(remminafile, key)) != NULL)
 			remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_USERNAME, s);
-		if ((d->pflags & REMMINA_MESSAGE_PANEL_FLAG_DOMAIN) && (s = remmina_file_get_string(remminafile, "domain")) != NULL)
+		if (d->dtype == RPWDT_AUTHUSERPWD && (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_DOMAIN) && (s = remmina_file_get_string(remminafile, "domain")) != NULL)
 			remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_DOMAIN, s);
-		if ((s = remmina_file_get_string(remminafile, "password")) != NULL)
+		key = (d->dtype == RPWDT_AUTHUSERPWD_SSHTUNNEL ? "ssh_password" : "password");
+		if ((s = remmina_file_get_string(remminafile, key)) != NULL)
 			remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_PASSWORD, s);
 		if (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSRORD) {
 			remmina_message_panel_field_set_switch(mp, REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSRORD, FALSE);
@@ -1281,6 +1287,20 @@ gint remmina_protocol_widget_panel_authuserpwd(RemminaProtocolWidget* gp, gboole
 		pflags |= REMMINA_MESSAGE_PANEL_FLAG_DOMAIN;
 
 	return remmina_protocol_widget_dialog(RPWDT_AUTHUSERPWD, gp, pflags, _("Password"));
+}
+
+gint remmina_protocol_widget_panel_authuserpwd_ssh_tunnel(RemminaProtocolWidget* gp, gboolean want_domain, gboolean allow_password_saving)
+{
+	TRACE_CALL(__func__);
+	unsigned pflags;
+	RemminaFile* remminafile = gp->priv->remmina_file;
+
+	pflags = REMMINA_MESSAGE_PANEL_FLAG_USERNAME;
+	if (remmina_file_get_filename(remminafile) != NULL &&
+		 !remminafile->prevent_saving && allow_password_saving)
+		pflags |= REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSRORD;
+
+	return remmina_protocol_widget_dialog(RPWDT_AUTHUSERPWD_SSHTUNNEL, gp, pflags, _("Password"));
 }
 
 gint remmina_protocol_widget_panel_authpwd(RemminaProtocolWidget* gp, RemminaAuthpwdType authpwd_type, gboolean allow_password_saving)
