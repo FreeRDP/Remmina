@@ -79,6 +79,7 @@
 #include <pty.h>
 #endif
 #include "remmina_public.h"
+#include "remmina/types.h"
 #include "remmina_file.h"
 #include "remmina_log.h"
 #include "remmina_pref.h"
@@ -458,7 +459,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 		disablepasswordstoring = remmina_file_get_int(remminafile, "disablepasswordstoring", FALSE);
 
 		if (g_strcmp0(pwdtype, "ssh_passphrase") == 0) {
-			ret = remmina_protocol_widget_panel_authpwd(gp, FALSE, !disablepasswordstoring);
+			ret = remmina_protocol_widget_panel_authpwd(gp, REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY, !disablepasswordstoring);
 		}else {
 			ret = remmina_protocol_widget_panel_authuserpwd(gp, FALSE, !disablepasswordstoring);
 		}
