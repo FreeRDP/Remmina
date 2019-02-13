@@ -271,11 +271,11 @@ endif()
 
 # Snap package generation support
 if(DEFINED ENV{SNAPCRAFT_PROJECT_NAME})
-    add_subdirectory(snap)
+    add_subdirectory(snap/local)
 else()
     find_program(SNAPCRAFT "snapcraft")
     if(SNAPCRAFT)
-        add_subdirectory(snap)
+        add_subdirectory(snap/local)
     endif()
 endif()
 
