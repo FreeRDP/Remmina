@@ -39,26 +39,26 @@ endif()
 if(DEFINED ENV{SNAPCRAFT_PROJECT_NAME})
     # We're building in snapcraft so, the source dir will be
     # parts/remmina/src
-    set(SNAP_DIR ${CMAKE_SOURCE_DIR}/../../../snap)
+    set(SNAP_DIR ${CMAKE_SOURCE_DIR}/snap)
 else()
     set(SNAP_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 
-set(SNAP_GUI_DIR ${SNAP_DIR}/gui)
+set(SNAP_GUI_DIR ${SNAP_DIR}/local/gui)
 
 file(MAKE_DIRECTORY ${SNAP_GUI_DIR})
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/gui)
 file(RELATIVE_PATH CMAKE_SOURCE_DIR_RELATIVE ${SNAP_DIR}
     ${CMAKE_SOURCE_DIR})
 
-configure_file(${SNAP_DIR}/SNAP_VERSION.in
-    ${SNAP_DIR}/SNAP_VERSION @ONLY)
+configure_file(${SNAP_DIR}/local/SNAP_VERSION.in
+    ${SNAP_DIR}/local/SNAP_VERSION @ONLY)
 
 configure_file(${CMAKE_SOURCE_DIR}/LICENSE
     ${SNAP_GUI_DIR}/license.txt COPYONLY)
 
 add_custom_target("snap-version-script" ALL
-    DEPENDS "${SNAP_DIR}/SNAP_VERSION"
+    DEPENDS "${SNAP_DIR}/local/SNAP_VERSION"
     COMMENT "Preparing snap version file ${SNAP_VERSION}"
     VERBATIM
     )
@@ -66,7 +66,7 @@ add_custom_target("snap-version-script" ALL
 add_custom_target("snap-prime"
     WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
     COMMAND ${SNAPCRAFT} prime
-    DEPENDS "${SNAP_DIR}/SNAP_VERSION"
+    DEPENDS "${SNAP_DIR}/local/SNAP_VERSION"
     COMMENT "Priming snap package ${SNAP_VERSION}"
     VERBATIM
     )
@@ -74,7 +74,7 @@ add_custom_target("snap-prime"
 add_custom_target("snap"
     COMMAND ${SNAPCRAFT}
     WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-    DEPENDS "${SNAP_DIR}/SNAP_VERSION"
+    DEPENDS "${SNAP_DIR}/local/SNAP_VERSION"
     COMMENT "Create snap package ${SNAP_VERSION}"
     VERBATIM
     )
@@ -83,7 +83,7 @@ foreach(channel stable candidate beta edge)
     add_custom_target("snap-push-${channel}"
         WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
         COMMAND bash -c "${SNAPCRAFT} push --release ${channel} *.snap"
-        DEPENDS "${SNAP_DIR}/SNAP_VERSION"
+        DEPENDS "${SNAP_DIR}/local/SNAP_VERSION"
         COMMENT "Create snap package ${SNAP_VERSION}"
         VERBATIM
         )
@@ -95,7 +95,7 @@ add_custom_target("snap-push-transfer.sh"
     COMMAND bash -c "snap=$(ls *.snap -1 | head -n1); \
     curl --upload-file $snap \
     https://transfer.sh/$(basename $snap); echo"
-    DEPENDS "${SNAP_DIR}/SNAP_VERSION"
+    DEPENDS "${SNAP_DIR}/local/SNAP_VERSION"
     COMMENT "Uploading snap package to transfer.sh ${SNAP_VERSION}"
     VERBATIM
     )
