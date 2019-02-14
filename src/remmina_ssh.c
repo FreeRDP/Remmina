@@ -393,8 +393,8 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	case SSH_SERVER_NOT_KNOWN:
 	case SSH_SERVER_KNOWN_CHANGED:
 	case SSH_SERVER_FOUND_OTHER:
-		if ( ssh_get_publickey(ssh->session, &server_pubkey) != SSH_OK ) {
-			remmina_ssh_set_error(ssh, _("ssh_get_publickey() has failed: %s"));
+		if ( ssh_get_server_publickey(ssh->session, &server_pubkey) != SSH_OK ) {
+			remmina_ssh_set_error(ssh, _("ssh_get_server_publickey() has failed: %s"));
 			return 0;
 		}
 		if ( ssh_get_publickey_hash(server_pubkey, SSH_PUBLICKEY_HASH_MD5, &pubkey, &len) != 0 ) {
