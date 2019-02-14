@@ -214,8 +214,10 @@ static gint
 remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 {
 	TRACE_CALL(__func__);
+
+	ssh_key key = NULL;
+	gchar pubkey[132] = {0}; // +".pub"
 	gint ret;
-	ssh_key priv_key;
 
 	if (ssh->authenticated) return 1;
 
@@ -225,16 +227,26 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 		return 0;
 	}
 
+	g_snprintf (pubkey, sizeof(pubkey), "%s.pub", ssh->privkeyfile);
+
+	ret = ssh_pki_import_pubkey_file( pubkey, &key);
+	if (ret != SSH_OK) {
+		remmina_ssh_set_error(ssh, _("SSH public key cannot be imported: %s"));
+		return 0;
+	}
+
+	ssh_key_free(key);
+
 	if ( ssh_pki_import_privkey_file( ssh->privkeyfile, (ssh->passphrase ? ssh->passphrase : ""),
-		NULL, NULL, &priv_key ) != SSH_OK ) {
+		NULL, NULL, &key ) != SSH_OK ) {
 		if (ssh->passphrase == NULL || ssh->passphrase[0] == '\0') return -1;
 
 		remmina_ssh_set_error(ssh, _("SSH public key authentication failed: %s"));
 		return 0;
 	}
 
-	ret = ssh_userauth_publickey(ssh->session, NULL, priv_key);
-	ssh_key_free(priv_key);
+	ret = ssh_userauth_publickey(ssh->session, NULL, key);
+	ssh_key_free(key);
 
 	if (ret != SSH_AUTH_SUCCESS) {
 		remmina_ssh_set_error(ssh, _("SSH public key authentication failed: %s"));
@@ -516,9 +528,6 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 	ssh->session = ssh_new();
 	ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->server);
 	ssh_options_set(ssh->session, SSH_OPTIONS_PORT, &ssh->port);
-	/** @todo add an option to set the compression nad set it to no as the default option */
-	//ssh_options_set(ssh->session, SSH_OPTIONS_COMPRESSION, "yes");
-	/* When SSH_OPTIONS_USER is not set, the local user account is used */
 	if (*ssh->user != 0)
 		ssh_options_set(ssh->session, SSH_OPTIONS_USER, ssh->user);
 	if (ssh->privkeyfile && *ssh->privkeyfile != 0) {
