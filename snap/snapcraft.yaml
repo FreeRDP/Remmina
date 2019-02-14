@@ -1,7 +1,7 @@
 name: remmina
 adopt-info: remmina
 version: git
-version-script: cat snap/local/SNAP_VERSION || echo echo +git$(git rev-parse --short HEAD)
+version-script: cat snap/local/SNAP_VERSION || echo +git$(git rev-parse --short HEAD)
 icon: data/desktop/scalable/apps/org.remmina.Remmina.svg
 description: |
   Remmina is a remote desktop client written in GTK+, aiming to be useful for
@@ -137,6 +137,23 @@ parts:
       - -usr/lib/cmake
       - -usr/lib/pkgconfig
 
+  # Remove this (and use again libssh-dev) once libssh-0.8 is available in distro
+  libssh-0-8:
+    plugin: cmake
+    source: "https://git.libssh.org/projects/libssh.git/snapshot/libssh-0.8.1.tar.gz"
+    configflags:
+      - -DCMAKE_BUILD_TYPE:STRING=Release
+      - -DWITH_GSSAPI=ON
+      - -DWITH_NACL=0
+      - -DWITH_EXAMPLES:BOOL=OFF
+      # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
+      - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
+    organize:
+      snap/remmina/current: .
+
+    prime:
+      - ./**/libssh*.so.*
+
   remmina:
     plugin: cmake
     source: .
@@ -158,7 +175,6 @@ parts:
       - libsoup2.4-dev
       - libspice-client-gtk-3.0-dev
       - libspice-protocol-dev
-      - libssh-dev
       - libvncserver-dev
       - libvte-2.91-dev
       - libxkbfile-dev
@@ -199,17 +215,100 @@ parts:
       - libdbusmenu-gtk3-4
       - libindicator3-7
       - libgdbm5
-      - libssh-4
       - libavahi-ui-gtk3-0
+      - libxkbfile1
+      - libspice-client-gtk-3.0-5
+      - libvncclient1
+      - libavcodec57
+      - libspice-client-glib-2.0-8
+      - libavutil55
+      - libopus0
+      - libswresample2
+      - libpulse-mainloop-glib0
+      - libcrystalhd3
+      - libcacard0
+      - libva2
+      - libusb-1.0-0
+      - libzvbi0
+      - libxvidcore4
+      - libusbredirhost1
+      - libx265-146
+      - libusbredirparser1
+      - libx264-152
+      - libphodav-2.0-0
+      - libwebpmux3
+      - libnss3
+      - libwavpack1
+      - libnspr4
+      - libvpx5
+      - libtwolame0
+      - libtheora0
+      - libspeex1
+      - libsnappy1v5
+      - libshine3
+      - libopenjp2-7
+      - libmp3lame0
+      - libgsm1
+      - libvdpau1
+      - libva-x11-2
+      - libthai0
+      - libsoxr0
+      - libva-drm2
+      - libnuma1
+      - libgomp1
+  
     override-build: |
       set -ex
       snapcraftctl build
     stage:
+      - lib/*/libusb-1.0.so.*
       - usr/bin/gtk3-demo
-      - usr/lib/*/libssh*.so.*
       - usr/lib/*/libavahi*.so.*
       - usr/lib/*/libappindicator3.so.*
       - usr/lib/*/libindicator3.so.*
       - usr/lib/*/libgdbm.so.*
       - usr/lib/*/libdbusmenu-gtk3.so.*
       - usr/lib/*/libdbusmenu-glib.so.*
+      - usr/lib/*/libxkbfile.so.*
+      - usr/lib/*/libspice-client-gtk-3.0.so.*
+      - usr/lib/*/libvncclient.so.*
+      - usr/lib/*/libavcodec.so.*
+      - usr/lib/*/libspice-client-glib-2.0.so.*
+      - usr/lib/*/libavutil.so.*
+      - usr/lib/*/libopus.so.*
+      - usr/lib/*/libswresample.so.*
+      - usr/lib/*/libpulse-mainloop-glib.so.*
+      - usr/lib/*/libcrystalhd.so.*
+      - usr/lib/*/libcacard.so.*
+      - usr/lib/*/libva.so.*
+      - usr/lib/*/libzvbi.so.*
+      - usr/lib/*/libxvidcore.so.*
+      - usr/lib/*/libusbredirhost.so.*
+      - usr/lib/*/libx265.so.*
+      - usr/lib/*/libusbredirparser.so.*
+      - usr/lib/*/libx264.so.*
+      - usr/lib/*/libphodav-2.0.so.*
+      - usr/lib/*/libwebpmux.so.*
+      - usr/lib/*/libnss3.so
+      - usr/lib/*/libnssutil3.so
+      - usr/lib/*/libwavpack.so.*
+      - usr/lib/*/libnspr4.so
+      - usr/lib/*/libplds4.so
+      - usr/lib/*/libplc4.so
+      - usr/lib/*/libvpx.so.*
+      - usr/lib/*/libtwolame.so.*
+      - usr/lib/*/libtheoraenc.so.*
+      - usr/lib/*/libtheoradec.so.*
+      - usr/lib/*/libspeex.so.*
+      - usr/lib/*/libsnappy.so.*
+      - usr/lib/*/libshine.so.*
+      - usr/lib/*/libopenjp2.so.*
+      - usr/lib/*/libmp3lame.so.*
+      - usr/lib/*/libgsm.so.*
+      - usr/lib/*/libvdpau.so.*
+      - usr/lib/*/libva-x11.so.*
+      - usr/lib/*/libthai.so.*
+      - usr/lib/*/libsoxr.so.*
+      - usr/lib/*/libva-drm.so.*
+      - usr/lib/*/libnuma.so.*
+      - usr/lib/*/libgomp.so.*
