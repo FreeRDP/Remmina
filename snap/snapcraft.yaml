@@ -137,23 +137,6 @@ parts:
       - -usr/lib/cmake
       - -usr/lib/pkgconfig
 
-  # Remove this (and use again libssh-dev) once libssh-0.8 is available in distro
-  libssh-0-8:
-    plugin: cmake
-    source: "https://git.libssh.org/projects/libssh.git/snapshot/libssh-0.8.1.tar.gz"
-    configflags:
-      - -DCMAKE_BUILD_TYPE:STRING=Release
-      - -DWITH_GSSAPI=ON
-      - -DWITH_NACL=0
-      - -DWITH_EXAMPLES:BOOL=OFF
-      # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
-      - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
-    organize:
-      snap/remmina/current: .
-
-    prime:
-      - ./**/libssh*.so.*
-
   remmina:
     plugin: cmake
     source: .
@@ -175,6 +158,7 @@ parts:
       - libsoup2.4-dev
       - libspice-client-gtk-3.0-dev
       - libspice-protocol-dev
+      - libssh-dev
       - libvncserver-dev
       - libvte-2.91-dev
       - libxkbfile-dev
@@ -197,7 +181,6 @@ parts:
       - -./usr/share/fonts/**
 
     after:
-      - libssh-0-8
       - freerdp
     override-prime: |
       set -eu
@@ -212,8 +195,21 @@ parts:
     stage-packages:
       - gtk-3-examples
       - libappindicator3-1
+      - libdbusmenu-glib4
+      - libdbusmenu-gtk3-4
+      - libindicator3-7
+      - libgdbm5
+      - libssh-4
+      - libavahi-ui-gtk3-0
     override-build: |
       set -ex
       snapcraftctl build
     stage:
       - usr/bin/gtk3-demo
+      - usr/lib/*/libssh*.so.*
+      - usr/lib/*/libavahi*.so.*
+      - usr/lib/*/libappindicator3.so.*
+      - usr/lib/*/libindicator3.so.*
+      - usr/lib/*/libgdbm.so.*
+      - usr/lib/*/libdbusmenu-gtk3.so.*
+      - usr/lib/*/libdbusmenu-glib.so.*
