@@ -183,8 +183,7 @@ remmina_ssh_auth_interactive(RemminaSSH *ssh)
 	}
 
 	if (ret != SSH_AUTH_SUCCESS) {
-		/* We pass the control to remmina_ssh_auth_password */
-		return 0;
+		return 0;	// Generic error
 	}
 
 	ssh->authenticated = TRUE;
@@ -215,8 +214,10 @@ static gint
 remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 {
 	TRACE_CALL(__func__);
+
+	ssh_key key = NULL;
+	gchar pubkey[132] = {0}; // +".pub"
 	gint ret;
-	ssh_key priv_key;
 
 	if (ssh->authenticated) return 1;
 
@@ -226,16 +227,26 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 		return 0;
 	}
 
+	g_snprintf (pubkey, sizeof(pubkey), "%s.pub", ssh->privkeyfile);
+
+	ret = ssh_pki_import_pubkey_file( pubkey, &key);
+	if (ret != SSH_OK) {
+		remmina_ssh_set_error(ssh, _("SSH public key cannot be imported: %s"));
+		return 0;
+	}
+
+	ssh_key_free(key);
+
 	if ( ssh_pki_import_privkey_file( ssh->privkeyfile, (ssh->passphrase ? ssh->passphrase : ""),
-		NULL, NULL, &priv_key ) != SSH_OK ) {
+		NULL, NULL, &key ) != SSH_OK ) {
 		if (ssh->passphrase == NULL || ssh->passphrase[0] == '\0') return -1;
 
 		remmina_ssh_set_error(ssh, _("SSH public key authentication failed: %s"));
 		return 0;
 	}
 
-	ret = ssh_userauth_publickey(ssh->session, NULL, priv_key);
-	ssh_key_free(priv_key);
+	ret = ssh_userauth_publickey(ssh->session, NULL, key);
+	ssh_key_free(key);
 
 	if (ret != SSH_AUTH_SUCCESS) {
 		remmina_ssh_set_error(ssh, _("SSH public key authentication failed: %s"));
@@ -326,13 +337,19 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password)
 	switch (ssh->auth) {
 
 	case SSH_AUTH_PASSWORD:
-		ret = 0;
-		if (method & SSH_AUTH_METHOD_INTERACTIVE || method & SSH_AUTH_METHOD_PASSWORD) {
-			ret = remmina_ssh_auth_interactive(ssh);
-			if (!ssh->authenticated)
-				return remmina_ssh_auth_password(ssh);
+		if (ssh->authenticated)
+			return 1;
+		if (method & SSH_AUTH_METHOD_PASSWORD) {
+			if (remmina_ssh_auth_password(ssh) <= 0)
+					return -1;	// Re-prompt password
 		}
-		return ret;
+		if (method & SSH_AUTH_METHOD_INTERACTIVE) {
+			/* SSH server is requesting us to do interactive auth.
+			 * But we just send the saved password */
+			if (remmina_ssh_auth_interactive(ssh) <= 0)
+				return -1;	// Re-prompt password
+		}
+		return 1;
 
 	case SSH_AUTH_PUBLICKEY:
 		if (method & SSH_AUTH_METHOD_PUBLICKEY)
@@ -388,8 +405,8 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	case SSH_SERVER_NOT_KNOWN:
 	case SSH_SERVER_KNOWN_CHANGED:
 	case SSH_SERVER_FOUND_OTHER:
-		if ( ssh_get_publickey(ssh->session, &server_pubkey) != SSH_OK ) {
-			remmina_ssh_set_error(ssh, _("ssh_get_publickey() has failed: %s"));
+		if ( ssh_get_server_publickey(ssh->session, &server_pubkey) != SSH_OK ) {
+			remmina_ssh_set_error(ssh, _("ssh_get_server_publickey() has failed: %s"));
 			return 0;
 		}
 		if ( ssh_get_publickey_hash(server_pubkey, SSH_PUBLICKEY_HASH_MD5, &pubkey, &len) != 0 ) {
@@ -460,9 +477,10 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 
 		if (g_strcmp0(pwdtype, "ssh_passphrase") == 0) {
 			ret = remmina_protocol_widget_panel_authpwd(gp, REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY, !disablepasswordstoring);
-		}else {
+		}else if (g_strcmp0(pwdtype, "ssh_password") == 0) {
+			ret = remmina_protocol_widget_panel_authuserpwd_ssh_tunnel(gp, FALSE, !disablepasswordstoring);
+		} else
 			ret = remmina_protocol_widget_panel_authuserpwd(gp, FALSE, !disablepasswordstoring);
-		}
 		save_password = remmina_protocol_widget_get_savepassword(gp);
 
 		if (ret == GTK_RESPONSE_OK) {
@@ -510,9 +528,6 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 	ssh->session = ssh_new();
 	ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->server);
 	ssh_options_set(ssh->session, SSH_OPTIONS_PORT, &ssh->port);
-	/** @todo add an option to set the compression nad set it to no as the default option */
-	//ssh_options_set(ssh->session, SSH_OPTIONS_COMPRESSION, "yes");
-	/* When SSH_OPTIONS_USER is not set, the local user account is used */
 	if (*ssh->user != 0)
 		ssh_options_set(ssh->session, SSH_OPTIONS_USER, ssh->user);
 	if (ssh->privkeyfile && *ssh->privkeyfile != 0) {

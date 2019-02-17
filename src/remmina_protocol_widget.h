@@ -120,6 +120,8 @@ gboolean remmina_protocol_widget_start_reverse_tunnel(RemminaProtocolWidget *gp,
 gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget *gp, RemminaXPortTunnelInitFunc init_func);
 void remmina_protocol_widget_set_display(RemminaProtocolWidget *gp, gint display);
 
+/* Extension for remmina_protocol_widget_panel_authuserpwd() not currently exported to plugins */
+gint remmina_protocol_widget_panel_authuserpwd_ssh_tunnel(RemminaProtocolWidget* gp, gboolean want_domain, gboolean allow_password_saving);
 
 /* Dialog panel API used by the plugins */
 
