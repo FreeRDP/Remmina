@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-02-17 20:21+0000\n"
+"POT-Creation-Date: 2019-02-18 21:31+0000\n"
 "PO-Revision-Date: 2014-09-16 05:27+0000\n"
 "Last-Translator: Kim Boram <boramism@gmail.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -178,7 +178,7 @@ msgstr ""
 msgid "SSH Kerberos/GSSAPI authentication failed: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:320
+#: src/remmina_ssh.c:319
 msgid "SSH public key has changed!"
 msgstr ""
 
@@ -189,18 +189,23 @@ msgstr ""
 
 #: src/remmina_ssh.c:414
 #, c-format
+msgid "ssh_get_publickey() has failed: %s"
+msgstr ""
+
+#: src/remmina_ssh.c:420
+#, c-format
 msgid "ssh_get_publickey_hash() has failed: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:422
+#: src/remmina_ssh.c:428
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "알려지지 않은 서버. 공중 키의 지문은:"
 
-#: src/remmina_ssh.c:424 src/remmina_ssh.c:430
+#: src/remmina_ssh.c:430 src/remmina_ssh.c:436
 msgid "Do you trust the new public key?"
 msgstr "새 공중 키를 믿을 수 있습니까?"
 
-#: src/remmina_ssh.c:427
+#: src/remmina_ssh.c:433
 msgid ""
 "WARNING: The server has changed its public key. This means either you are "
 "under attack,\n"
@@ -209,139 +214,139 @@ msgstr ""
 "주의: 서버의 공용 키가 바뀌었습니다. 이것은 귀하가 공격 받을 수 있거나,\n"
 "관리자가 키를 바꾼 것입니다. 새 공용 키의 지문은:"
 
-#: src/remmina_ssh.c:443
+#: src/remmina_ssh.c:449
 #, c-format
 msgid "SSH known host checking failed: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:449
+#: src/remmina_ssh.c:455
 #, c-format
 msgid "Authenticating %s’s password to SSH server %s…"
 msgstr "SSH 서버 %s 접속을 위한 %s' 의 열쇠글 인증 중…"
 
-#: src/remmina_ssh.c:450 src/remmina_protocol_widget.c:1324
+#: src/remmina_ssh.c:456 src/remmina_protocol_widget.c:1324
 msgid "SSH password"
 msgstr "SSH 열쇠글"
 
-#: src/remmina_ssh.c:456
+#: src/remmina_ssh.c:462
 #, c-format
 msgid "Authenticating %s’s identity to SSH server %s…"
 msgstr "SSH 서버 %s 접속을 위한 %s' 의 이름 확인중…"
 
-#: src/remmina_ssh.c:457 src/remmina_protocol_widget.c:1327
+#: src/remmina_ssh.c:463 src/remmina_protocol_widget.c:1327
 msgid "SSH private key passphrase"
 msgstr "SSH 개인 키 암호"
 
-#: src/remmina_ssh.c:461
+#: src/remmina_ssh.c:467
 #, c-format
 msgid "Authenticating %s’s Kerberos to SSH server %s…"
 msgstr ""
 
-#: src/remmina_ssh.c:462
+#: src/remmina_ssh.c:468
 msgid "SSH Kerberos/GSSAPI"
 msgstr ""
 
-#: src/remmina_ssh.c:599
+#: src/remmina_ssh.c:605
 #, c-format
 msgid "Failed to startup SSH session: %s"
 msgstr "SSH 세션 시작 실패: %s"
 
-#: src/remmina_ssh.c:962 src/remmina_ssh.c:1021
+#: src/remmina_ssh.c:968 src/remmina_ssh.c:1027
 #, c-format
 msgid "Failed to create channel: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:971
+#: src/remmina_ssh.c:977
 #, c-format
 msgid "Failed to connect to the SSH tunnel destination: %s"
 msgstr "SSH 터널링을 통한 대상과 연결 실패: %s"
 
-#: src/remmina_ssh.c:1035 src/remmina_ssh.c:1630
+#: src/remmina_ssh.c:1041 src/remmina_ssh.c:1636
 #, c-format
 msgid "Failed to open channel: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1041
+#: src/remmina_ssh.c:1047
 #, c-format
 msgid "Failed to execute %s on SSH server: %%s"
 msgstr "SSH 서버의 %s 실행 실패: %%s"
 
-#: src/remmina_ssh.c:1079 src/remmina_ssh.c:1101 src/remmina_ssh.c:1110
+#: src/remmina_ssh.c:1085 src/remmina_ssh.c:1107 src/remmina_ssh.c:1116
 #, c-format
 msgid "Failed to request port forwarding: %s"
 msgstr "포트 포워딩 요청 실패: %s"
 
-#: src/remmina_ssh.c:1148
+#: src/remmina_ssh.c:1154
 msgid "No response from the server."
 msgstr "서버로 부터 응답 없음."
 
-#: src/remmina_ssh.c:1191
+#: src/remmina_ssh.c:1197
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr ""
 
-#: src/remmina_ssh.c:1242
+#: src/remmina_ssh.c:1248
 #, c-format
 msgid "ssh_channel_write() returned an error: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1248
+#: src/remmina_ssh.c:1254
 #, c-format
 msgid "read on tunnel listening socket returned an error: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1267
+#: src/remmina_ssh.c:1273
 #, c-format
 msgid "ssh_channel_poll() returned an error: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1273
+#: src/remmina_ssh.c:1279
 #, c-format
 msgid "ssh_channel_read_nonblocking() returned an error: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1292
+#: src/remmina_ssh.c:1298
 #, c-format
 msgid "write on tunnel listening socket returned an error: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1371
+#: src/remmina_ssh.c:1377
 msgid "Destination port has not been assigned."
 msgstr ""
 
-#: src/remmina_ssh.c:1378
+#: src/remmina_ssh.c:1384
 msgid "Failed to create socket."
 msgstr ""
 
-#: src/remmina_ssh.c:1388
+#: src/remmina_ssh.c:1394
 msgid "Failed to bind on local port."
 msgstr ""
 
-#: src/remmina_ssh.c:1394
+#: src/remmina_ssh.c:1400
 msgid "Failed to listen on local port."
 msgstr ""
 
-#: src/remmina_ssh.c:1403 src/remmina_ssh.c:1419 src/remmina_ssh.c:1435
-#: src/remmina_ssh.c:1452
+#: src/remmina_ssh.c:1409 src/remmina_ssh.c:1425 src/remmina_ssh.c:1441
+#: src/remmina_ssh.c:1458
 msgid "Failed to initialize pthread."
 msgstr ""
 
-#: src/remmina_ssh.c:1541
+#: src/remmina_ssh.c:1547
 #, c-format
 msgid "Failed to create SFTP session: %s"
 msgstr "sft 세션 만들기 실패: %s"
 
-#: src/remmina_ssh.c:1545
+#: src/remmina_ssh.c:1551
 #, c-format
 msgid "Failed to initialize SFTP session: %s"
 msgstr "SFTP 세션 초기화 실패: %s"
 
-#: src/remmina_ssh.c:1660
+#: src/remmina_ssh.c:1666
 #, c-format
 msgid "Failed to request shell: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1754
+#: src/remmina_ssh.c:1760
 msgid "Failed to create pty device."
 msgstr ""
 
