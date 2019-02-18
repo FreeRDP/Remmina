@@ -312,7 +312,6 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password)
 {
 	TRACE_CALL(__func__);
 	gint method;
-	gint ret;
 
 	/* Check known host again to ensure it’s still the original server when user forks
 	   a new session from existing one */
@@ -405,10 +404,17 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	case SSH_SERVER_NOT_KNOWN:
 	case SSH_SERVER_KNOWN_CHANGED:
 	case SSH_SERVER_FOUND_OTHER:
+#if LIBSSH_VERSION_INT >= SSH_VERSION_INT(0, 8, 6)
 		if ( ssh_get_server_publickey(ssh->session, &server_pubkey) != SSH_OK ) {
 			remmina_ssh_set_error(ssh, _("ssh_get_server_publickey() has failed: %s"));
 			return 0;
 		}
+#else
+		if ( ssh_get_publickey(ssh->session, &server_pubkey) != SSH_OK ) {
+			remmina_ssh_set_error(ssh, _("ssh_get_publickey() has failed: %s"));
+			return 0;
+		}
+#endif
 		if ( ssh_get_publickey_hash(server_pubkey, SSH_PUBLICKEY_HASH_MD5, &pubkey, &len) != 0 ) {
 			ssh_key_free(server_pubkey);
 			remmina_ssh_set_error(ssh, _("ssh_get_publickey_hash() has failed: %s"));
