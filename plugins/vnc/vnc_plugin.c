@@ -1059,6 +1059,10 @@ static gboolean remmina_plugin_vnc_incoming_connection(RemminaProtocolWidget *gp
 	RemminaPluginVncData *gpdata = GET_PLUGIN_DATA(gp);
 	fd_set fds;
 
+	/**
+	 * @fixme This may fail or not working as expected with multiple network interfaces,
+	 * change with ListenAtTcpPortAndAddress
+	 */
 	gpdata->listen_sock = ListenAtTcpPort(cl->listenPort);
 	if (gpdata->listen_sock < 0)
 		return FALSE;
@@ -1068,7 +1072,9 @@ static gboolean remmina_plugin_vnc_incoming_connection(RemminaProtocolWidget *gp
 	remmina_plugin_service->protocol_plugin_start_reverse_tunnel(gp, cl->listenPort);
 
 	FD_ZERO(&fds);
-	FD_SET(gpdata->listen_sock, &fds);
+	if(gpdata->listen_sock >= 0)
+		FD_SET(gpdata->listen_sock, &fds);
+
 	select(gpdata->listen_sock + 1, &fds, NULL, NULL, NULL);
 
 	if (!FD_ISSET(gpdata->listen_sock, &fds)) {
@@ -1077,9 +1083,12 @@ static gboolean remmina_plugin_vnc_incoming_connection(RemminaProtocolWidget *gp
 		return FALSE;
 	}
 
-	cl->sock = AcceptTcpConnection(gpdata->listen_sock);
-	close(gpdata->listen_sock);
-	gpdata->listen_sock = -1;
+	if (FD_ISSET(gpdata->listen_sock, &fds))
+		cl->sock = AcceptTcpConnection(gpdata->listen_sock);
+	if(cl->sock >= 0) {
+		close(gpdata->listen_sock);
+		gpdata->listen_sock = -1;
+	}
 	if (cl->sock < 0 || !SetNonBlocking(cl->sock)) {
 		return FALSE;
 	}
