@@ -83,6 +83,7 @@ struct _RemminaProtocolWidgetPriv {
 	gint profile_remote_height;
 
 	RemminaMessagePanel *connect_message_panel;
+	RemminaMessagePanel *listen_message_panel;
 	RemminaMessagePanel *auth_message_panel;
 
 	/* Data saved from the last message_panel when the user confirm */
@@ -193,8 +194,14 @@ static void remmina_protocol_widget_on_connected(RemminaProtocolWidget* gp, gpoi
 		remmina_ssh_tunnel_cancel_accept(gp->priv->ssh_tunnel);
 	}
 #endif
-	rco_destroy_message_panel(gp->cnnobj, gp->priv->connect_message_panel);
-	gp->priv->connect_message_panel = NULL;
+	if (gp->priv->listen_message_panel) {
+		rco_destroy_message_panel(gp->cnnobj, gp->priv->listen_message_panel);
+		gp->priv->listen_message_panel = NULL;
+	}
+	if (gp->priv->connect_message_panel) {
+		rco_destroy_message_panel(gp->cnnobj, gp->priv->connect_message_panel);
+		gp->priv->connect_message_panel = NULL;
+	}
 }
 
 static void remmina_protocol_widget_on_disconnected(RemminaProtocolWidget* gp, gpointer data)
@@ -1528,8 +1535,8 @@ void remmina_protocol_widget_panel_show_listen(RemminaProtocolWidget* gp, gint p
 		remmina_file_get_string(gp->priv->remmina_file, "protocol"));
 	remmina_message_panel_setup_progress(mp, s, NULL, NULL);
 	g_free(s);
+	gp->priv->listen_message_panel = mp;
 	rco_show_message_panel(gp->cnnobj, mp);
-
 }
 
 void remmina_protocol_widget_panel_show_retry(RemminaProtocolWidget* gp)
