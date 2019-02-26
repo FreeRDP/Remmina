@@ -212,20 +212,20 @@
                      * For webdav (shared folder) support
                      */
                     "name": "phodav",
+                    "buildsystem": "meson",
                     "cleanup": [
                         "/bin",
-                        "/sbin",
-                        "/lib/systemd",
-                        "/lib/udev"
+                        "/sbin"
                     ],
                     "config-opts": [
-                        "--disable-gtk-doc"
+                        "-Dgtk_doc=disabled",
+                        "-Dsystemd=disabled"
                     ],
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "http://download.gnome.org/sources/phodav/2.2/phodav-2.2.tar.xz",
-                            "sha256": "080305dc9e804562f200ffc8c7d345c76754fce9cb01489dddb1b2c52c0557c1"
+                            "url": "http://download.gnome.org/sources/phodav/2.3/phodav-2.3.tar.xz",
+                            "sha256": "6ef61e624c30a42fb720ef7ade7447e9ba922d69024b0326dc072fa3362ebe59"
                         }
                     ]
                 },
@@ -277,6 +277,9 @@
                         "install -v -m644 -t /app/lib/nacl/ ./build/flatpak-builder/lib/*/*.a",
                         "mkdir -v -p /app/include/nacl",
                         "install -v -m644 -t /app/include/nacl/ ./build/flatpak-builder/include/*/*.h"
+                    ],
+                    "cleanup": [
+                        "/lib/nacl"
                     ],
                     "sources": [
                         {
