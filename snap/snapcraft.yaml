@@ -157,6 +157,9 @@ parts:
       - ./**/libssh*.so.*
 
   remmina:
+    after:
+      - libssh-0-8
+      - freerdp
     plugin: cmake
     source: .
     parse-info: [usr/share/metainfo/org.remmina.Remmina.appdata.xml]
@@ -198,8 +201,6 @@ parts:
     stage:
       - -./usr/share/fonts/**
 
-    after:
-      - freerdp
     override-prime: |
       set -eu
       snapcraftctl prime
