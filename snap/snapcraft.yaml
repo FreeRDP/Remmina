@@ -1,16 +1,6 @@
 name: remmina
-adopt-info: remmina
 version: git
-icon: data/desktop/scalable/apps/org.remmina.Remmina.svg
-description: |
-  Remmina is a remote desktop client written in GTK+, aiming to be useful for
-  system administrators and travellers, who need to work with lots of remote
-  computers in front of either large monitors or tiny netbooks. Remmina supports
-  multiple network protocols in an integrated and consistent user interface.
-  Currently RDP, VNC, SPICE, NX, XDMCP and SSH are supported.
-
-  Remmina is free and open-source software, released under GNU GPL license.
-
+adopt-info: remmina
 grade: stable
 confinement: strict
 base: core18
@@ -47,7 +37,6 @@ apps:
       DISABLE_WAYLAND: 1
     command: desktop-launch remmina
     common-id: org.remmina.Remmina.desktop
-    desktop: usr/share/applications/org.remmina.Remmina.desktop
     plugs:
       - avahi-observe
       - cups-control
