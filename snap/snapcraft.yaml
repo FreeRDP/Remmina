@@ -177,10 +177,6 @@ parts:
       # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
 
-    override-build: |
-      snapcraftctl build
-      cp -av $SNAPCRAFT_PART_INSTALL/../src/snap/local/gui $SNAPCRAFT_STAGE/../snap
-
     organize:
       snap/remmina/current: .
     stage:
