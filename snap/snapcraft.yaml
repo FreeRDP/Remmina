@@ -151,10 +151,6 @@ parts:
     plugin: cmake
     source: .
     parse-info: [usr/share/metainfo/org.remmina.Remmina.appdata.xml]
-    override-pull: |
-      snapcraftctl pull
-      SNAPCRAFT_PART_SRC=$SNAPCRAFT_PART_INSTALL/../src
-      cp -av $SNAPCRAFT_STAGE/../snap $SNAPCRAFT_PART_SRC
     stage-packages:
       - xauth
     build-packages:
