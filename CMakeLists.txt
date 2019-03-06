@@ -269,16 +269,6 @@ if(NOT REMMINA_EXTERNAL_TOOLS_DIR)
     endif()
 endif()
 
-# Snap package generation support
-if(DEFINED ENV{SNAPCRAFT_PROJECT_NAME})
-    add_subdirectory(snap)
-else()
-    find_program(SNAPCRAFT "snapcraft")
-    if(SNAPCRAFT)
-        add_subdirectory(snap)
-    endif()
-endif()
-
 option(SNAP_BUILD_ONLY "SNAP_BUILD_ONLY" OFF)
 if(SNAP_BUILD_ONLY)
     if(NOT SNAPCRAFT)

@@ -83,3 +83,18 @@ flatpak:test:
     - tags
     - web
     - schedules
+
+snap:build:
+  image: ubuntudesktop/gnome-3-28-1804
+  stage: build
+  script:
+    - export LC_ALL=C.UTF-8
+    - export LANG=C.UTF-8
+    - export SNAP_ARCH=amd64
+    - export SNAPCRAFT_BUILD_INFO=1
+    - apt-get -y update
+    - snapcraft --destructive-mode
+  allow_failure: false
+  artifacts:
+    paths: ['./*.snap']
+    expire_in: 10 days

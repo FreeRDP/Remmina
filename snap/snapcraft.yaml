@@ -1,42 +1,78 @@
 name: remmina
-adopt-info: remmina
 version: git
-version-script: cat snap/SNAP_VERSION || echo echo +git$(git rev-parse --short HEAD)
-icon: data/desktop/scalable/apps/org.remmina.Remmina.svg
-description: |
-  Remmina is a remote desktop client written in GTK+, aiming to be useful for
-  system administrators and travellers, who need to work with lots of remote
-  computers in front of either large monitors or tiny netbooks. Remmina supports
-  multiple network protocols in an integrated and consistent user interface.
-  Currently RDP, VNC, SPICE, NX, XDMCP and SSH are supported.
-
-  Remmina is free and open-source software, released under GNU GPL license.
-
+adopt-info: remmina
 grade: stable
 confinement: strict
+base: core18
 
 plugs:
-  gnome-3-26-1604:
+  gnome-3-28-1804:
     interface: content
     target: $SNAP/gnome-platform
-    default-provider: gnome-3-26-1604:gnome-3-26-1604
+    default-provider: gnome-3-28-1804
   gtk-3-themes:
     interface: content
-    target: $SNAP/share/themes
-    default-provider: gtk-common-themes:gtk-3-themes
+    target: $SNAP/data-dir/themes
+    default-provider: gtk-common-themes
   icon-themes:
     interface: content
-    target: $SNAP/share/icons
-    default-provider: gtk-common-themes:icon-themes
+    target: $SNAP/data-dir/icons
+    default-provider: gtk-common-themes
   sound-themes:
     interface: content
-    target: $SNAP/share/sounds
-    default-provider: gtk-common-themes:sounds-themes
+    target: $SNAP/data-dir/sounds
+    default-provider: gtk-common-themes
 
-environment:
-  XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
+slots:
+  remmina-gapp:
+    interface: dbus
+    bus: session
+    name: org.remmina.Remmina
+
+apps:
+  remmina:
+    # desktop-launch seems to be broken when setting up wayland env
+    # so we disable it
+    environment:
+      DISABLE_WAYLAND: 1
+    command: desktop-launch remmina
+    common-id: org.remmina.Remmina.desktop
+    plugs:
+      - avahi-observe
+      - cups-control
+      - desktop
+      - desktop-legacy
+      - gsettings
+      - home
+      - mount-observe
+      - network
+      - network-bind
+      - pulseaudio
+      - unity7
+      - password-manager-service
+      - wayland
+      - x11
+      - ssh-keys
+      - ssh-public-keys
+
+  winpr-makecert:
+    command: winpr-makecert
+
+  winpr-hash:
+    command: winpr-hash
 
 parts:
+  desktop-gnome-platform:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: gtk
+    plugin: make
+    make-parameters: ["FLAVOR=gtk3"]
+    build-packages:
+      - build-essential
+      - libgtk-3-dev
+    override-build: |
+      snapcraftctl build
+      mkdir -pv $SNAPCRAFT_PART_INSTALL/gnome-platform
   freerdp:
     plugin: cmake
     source: https://github.com/FreeRDP/FreeRDP.git
@@ -48,7 +84,6 @@ parts:
       - libavutil-dev
       - libcups2-dev
       - libffi-dev
-      - libgnutls-dev
       - libgnutls28-dev
       - libnacl-dev
       - libjpeg-dev
@@ -82,7 +117,7 @@ parts:
       - -DWITH_PCSC=on
       - -DWITH_JPEG=on
 
-    # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
+      # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
     organize:
       snap/remmina/current: .
@@ -93,7 +128,7 @@ parts:
       - -usr/lib/pkgconfig
 
   # Remove this (and use again libssh-dev) once libssh-0.8 is available in distro
-  libssh-0.8:
+  libssh-0-8:
     plugin: cmake
     source: "https://git.libssh.org/projects/libssh.git/snapshot/libssh-0.8.1.tar.gz"
     configflags:
@@ -101,8 +136,7 @@ parts:
       - -DWITH_GSSAPI=ON
       - -DWITH_NACL=0
       - -DWITH_EXAMPLES:BOOL=OFF
-
-    # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
+      # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
     organize:
       snap/remmina/current: .
@@ -111,13 +145,12 @@ parts:
       - ./**/libssh*.so.*
 
   remmina:
+    after:
+      - libssh-0-8
+      - freerdp
     plugin: cmake
     source: .
     parse-info: [usr/share/metainfo/org.remmina.Remmina.appdata.xml]
-    override-pull: |
-      snapcraftctl pull
-      SNAPCRAFT_PART_SRC=$SNAPCRAFT_PART_INSTALL/../src
-      cp -av $SNAPCRAFT_STAGE/../snap $SNAPCRAFT_PART_SRC
     stage-packages:
       - xauth
     build-packages:
@@ -131,6 +164,7 @@ parts:
       - libsoup2.4-dev
       - libspice-client-gtk-3.0-dev
       - libspice-protocol-dev
+      - libssh-dev
       - libvncserver-dev
       - libvte-2.91-dev
       - libxkbfile-dev
@@ -143,19 +177,11 @@ parts:
       # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
       - -DCMAKE_INSTALL_PREFIX=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr
 
-    override-build: |
-      snapcraftctl build
-      cp -av $SNAPCRAFT_PART_INSTALL/../src/snap/gui $SNAPCRAFT_STAGE/../snap
-
     organize:
       snap/remmina/current: .
     stage:
       - -./usr/share/fonts/**
 
-    after:
-      - libssh-0.8
-      - freerdp
-      - desktop-gtk3
     override-prime: |
       set -eu
       snapcraftctl prime
@@ -166,73 +192,107 @@ parts:
     after:
       - desktop-gnome-platform
     plugin: nil
-    build-attributes:
-      - no-system-libraries
     stage-packages:
       - gtk-3-examples
+      - libappindicator3-1
+      - libdbusmenu-glib4
+      - libdbusmenu-gtk3-4
+      - libindicator3-7
+      - libgdbm5
+      - libavahi-ui-gtk3-0
+      - libxkbfile1
+      - libspice-client-gtk-3.0-5
+      - libvncclient1
+      - libavcodec57
+      - libspice-client-glib-2.0-8
+      - libavutil55
+      - libopus0
+      - libswresample2
+      - libpulse-mainloop-glib0
+      - libcrystalhd3
+      - libcacard0
+      - libva2
+      - libusb-1.0-0
+      - libzvbi0
+      - libxvidcore4
+      - libusbredirhost1
+      - libx265-146
+      - libusbredirparser1
+      - libx264-152
+      - libphodav-2.0-0
+      - libwebpmux3
+      - libnss3
+      - libwavpack1
+      - libnspr4
+      - libvpx5
+      - libtwolame0
+      - libtheora0
+      - libspeex1
+      - libsnappy1v5
+      - libshine3
+      - libopenjp2-7
+      - libmp3lame0
+      - libgsm1
+      - libvdpau1
+      - libva-x11-2
+      - libthai0
+      - libsoxr0
+      - libva-drm2
+      - libnuma1
+      - libgomp1
+  
     override-build: |
       set -ex
       snapcraftctl build
-      mkdir -p $SNAPCRAFT_PART_INSTALL/share/themes
-      mkdir -p $SNAPCRAFT_PART_INSTALL/share/icons
-      mkdir -p $SNAPCRAFT_PART_INSTALL/share/sounds
     stage:
+      - lib/*/libusb-1.0.so.*
       - usr/bin/gtk3-demo
-      - share/icons
-      - share/themes
-      - share/sounds
-
-  # Removing files that are accessible thanks to desktop plug
-  desktop-gtk3:
-    stage-packages:
-      - gnome-icon-theme
-      - libappindicator3-1
-    stage:
-      - -./usr/share/fonts/**
-    override-build: |
-      set -x
-      snapcraftctl build
-      export XDG_DATA_DIRS=$SNAPCRAFT_PART_INSTALL/usr/share
-      update-mime-database $SNAPCRAFT_PART_INSTALL/usr/share/mime
-      for dir in $SNAPCRAFT_PART_INSTALL/usr/share/icons/*/; do
-        if [ -f $dir/index.theme ]; then
-          gtk-update-icon-cache-3.0 -q $dir
-        fi
-      done
-
-apps:
-  remmina:
-    # desktop-launch seems to be broken when setting up wayland env
-    # so we disable it
-    environment:
-      DISABLE_WAYLAND: 1
-    command: desktop-launch remmina
-    common-id: org.remmina.Remmina.desktop
-    desktop: usr/share/applications/org.remmina.Remmina.desktop
-    plugs:
-      - avahi-observe
-      - cups-control
-      - desktop
-      - desktop-legacy
-      - gsettings
-      - home
-      - mount-observe
-      - network
-      - network-bind
-      - pulseaudio
-      - unity7
-      - password-manager-service
-      - wayland
-      - x11
-
-  winpr-makecert:
-    command: winpr-makecert
-
-  winpr-hash:
-    command: winpr-hash
-
-slots:
-  remmina-gapp:
-    interface: dbus
-    bus: session
-    name: org.remmina.Remmina
+      - usr/lib/*/libavahi*.so.*
+      - usr/lib/*/libappindicator3.so.*
+      - usr/lib/*/libindicator3.so.*
+      - usr/lib/*/libgdbm.so.*
+      - usr/lib/*/libdbusmenu-gtk3.so.*
+      - usr/lib/*/libdbusmenu-glib.so.*
+      - usr/lib/*/libxkbfile.so.*
+      - usr/lib/*/libspice-client-gtk-3.0.so.*
+      - usr/lib/*/libvncclient.so.*
+      - usr/lib/*/libavcodec.so.*
+      - usr/lib/*/libspice-client-glib-2.0.so.*
+      - usr/lib/*/libavutil.so.*
+      - usr/lib/*/libopus.so.*
+      - usr/lib/*/libswresample.so.*
+      - usr/lib/*/libpulse-mainloop-glib.so.*
+      - usr/lib/*/libcrystalhd.so.*
+      - usr/lib/*/libcacard.so.*
+      - usr/lib/*/libva.so.*
+      - usr/lib/*/libzvbi.so.*
+      - usr/lib/*/libxvidcore.so.*
+      - usr/lib/*/libusbredirhost.so.*
+      - usr/lib/*/libx265.so.*
+      - usr/lib/*/libusbredirparser.so.*
+      - usr/lib/*/libx264.so.*
+      - usr/lib/*/libphodav-2.0.so.*
+      - usr/lib/*/libwebpmux.so.*
+      - usr/lib/*/libnss3.so
+      - usr/lib/*/libnssutil3.so
+      - usr/lib/*/libwavpack.so.*
+      - usr/lib/*/libnspr4.so
+      - usr/lib/*/libplds4.so
+      - usr/lib/*/libplc4.so
+      - usr/lib/*/libvpx.so.*
+      - usr/lib/*/libtwolame.so.*
+      - usr/lib/*/libtheoraenc.so.*
+      - usr/lib/*/libtheoradec.so.*
+      - usr/lib/*/libspeex.so.*
+      - usr/lib/*/libsnappy.so.*
+      - usr/lib/*/libshine.so.*
+      - usr/lib/*/libopenjp2.so.*
+      - usr/lib/*/libmp3lame.so.*
+      - usr/lib/*/libgsm.so.*
+      - usr/lib/*/libvdpau.so.*
+      - usr/lib/*/libva-x11.so.*
+      - usr/lib/*/libthai.so.*
+      - usr/lib/*/libsoxr.so.*
+      - usr/lib/*/libva-drm.so.*
+      - usr/lib/*/libnuma.so.*
+      - usr/lib/*/libgomp.so.*
