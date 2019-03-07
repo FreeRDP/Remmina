@@ -94,6 +94,12 @@ snap:build:
     - export SNAPCRAFT_BUILD_INFO=1
     - apt-get -y update
     - snapcraft --destructive-mode
+    - |
+       if [ "$CI_COMMIT_REF_NAME" = "master" ]; then
+         echo $SNAPCRAFT_LOGIN | snapcraft login --with -
+         snapcraft push remmina*.snap --release edge
+         snapcraft logout
+       fi
   allow_failure: false
   artifacts:
     paths: ['./*.snap']
