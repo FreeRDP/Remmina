@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-03-03 08:24+0000\n"
+"POT-Creation-Date: 2019-03-08 21:05+0000\n"
 "PO-Revision-Date: 2013-10-16 05:57+0000\n"
 "Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
@@ -121,7 +121,7 @@ msgid "No"
 msgstr ""
 
 #: src/remmina_message_panel.c:330 src/remmina_file_editor.c:927
-#: src/remmina_sftp_plugin.c:355 src/remmina_ssh_plugin.c:1063
+#: src/remmina_sftp_plugin.c:349 src/remmina_ssh_plugin.c:1049
 #: plugins/rdp/rdp_plugin.c:1596 plugins/nx/nx_plugin.c:698
 #: plugins/vnc/vnc_plugin.c:1875 plugins/vnc/vnc_plugin.c:1895
 #: data/ui/remmina_mpc.glade:152
@@ -142,7 +142,7 @@ msgstr "Enregistrar lo senhal"
 #. Buttons, ok and cancel
 #: src/remmina_message_panel.c:452 src/remmina_message_panel.c:623
 #: src/remmina_file_editor.c:160 src/remmina_file_editor.c:367
-#: src/remmina_file_editor.c:1309 src/remmina_sftp_client.c:917
+#: src/remmina_file_editor.c:1309 src/remmina_sftp_client.c:911
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_key_chooser.glade:8
 #: data/ui/remmina_key_chooser.glade:9 data/ui/remmina_spinner.glade:8
@@ -490,7 +490,7 @@ msgid "Choose a Remote Desktop Server"
 msgstr "Causir un servidor de burèu distant"
 
 #: src/remmina_file_editor.c:359 src/remmina_file_editor.c:366
-#: src/remmina_sftp_plugin.c:358 src/remmina_ssh_plugin.c:1066
+#: src/remmina_sftp_plugin.c:352 src/remmina_ssh_plugin.c:1052
 #: plugins/nx/nx_plugin.c:697
 msgid "Identity file"
 msgstr "Fichièr d’identitat"
@@ -555,7 +555,7 @@ msgstr "Tunnel via adreça de boclatge"
 msgid "Same server at port %i"
 msgstr "Meteis servidor sul pòrt %i"
 
-#: src/remmina_file_editor.c:906 src/remmina_ssh_plugin.c:1086
+#: src/remmina_file_editor.c:906 src/remmina_ssh_plugin.c:1072
 msgid "Character set"
 msgstr "Jòc de caractèrs"
 
@@ -573,13 +573,13 @@ msgstr ""
 
 #: src/remmina_file_editor.c:937 src/remmina_protocol_widget.c:1296
 #: src/remmina_protocol_widget.c:1310 src/remmina_protocol_widget.c:1337
-#: src/remmina_sftp_plugin.c:323 src/remmina_ssh_plugin.c:964
+#: src/remmina_sftp_plugin.c:317 src/remmina_ssh_plugin.c:950
 #: data/ui/remmina_mpc.glade:113
 msgid "Password"
 msgstr "Senhal"
 
-#: src/remmina_file_editor.c:952 src/remmina_sftp_plugin.c:326
-#: src/remmina_ssh_plugin.c:967
+#: src/remmina_file_editor.c:952 src/remmina_sftp_plugin.c:320
+#: src/remmina_ssh_plugin.c:953
 msgid "Public key (automatic)"
 msgstr "Clau publica (automatica)"
 
@@ -705,11 +705,11 @@ msgstr ""
 msgid "%s password"
 msgstr "Senhal %s"
 
-#: src/remmina_protocol_widget.c:1331 src/remmina_ssh.c:456
+#: src/remmina_protocol_widget.c:1331 src/remmina_ssh.c:477
 msgid "SSH password"
 msgstr "Senhal SSH"
 
-#: src/remmina_protocol_widget.c:1334 src/remmina_ssh.c:463
+#: src/remmina_protocol_widget.c:1334 src/remmina_ssh.c:484
 msgid "SSH private key passphrase"
 msgstr "Frasa secreta de la clau privada"
 
@@ -791,42 +791,42 @@ msgstr "Error a la dobertura del fichièr %s sul servidor. %s"
 msgid "Error writing file %s."
 msgstr "Error al moment de l’escritura del fichier %s."
 
-#: src/remmina_sftp_client.c:276
+#: src/remmina_sftp_client.c:275
 #, c-format
 msgid "Error opening directory %s. %s"
 msgstr "Error a la dobertura del repertòri %s. %s"
 
-#: src/remmina_sftp_client.c:380
+#: src/remmina_sftp_client.c:379
 #, c-format
 msgid "Error creating folder %s on server. %s"
 msgstr "Error al moment de la creacion del dorsièr %s sul servidor. %s"
 
-#: src/remmina_sftp_client.c:408 src/remmina_sftp_client.c:430
+#: src/remmina_sftp_client.c:407 src/remmina_sftp_client.c:429
 #, c-format
 msgid "Error creating file %s on server. %s"
 msgstr "Error a la creacion del fichièr %s sul servidor. %s"
 
-#: src/remmina_sftp_client.c:451
+#: src/remmina_sftp_client.c:450
 #, c-format
 msgid "Error opening file %s."
 msgstr "Error a la dobertura del fichièr %s."
 
-#: src/remmina_sftp_client.c:471
+#: src/remmina_sftp_client.c:470
 #, c-format
 msgid "Error writing file %s on server. %s"
 msgstr "Error al moment de l’escritura del fichièr %s sul servidor. %s"
 
-#: src/remmina_sftp_client.c:671 src/remmina_sftp_client.c:734
+#: src/remmina_sftp_client.c:666 src/remmina_sftp_client.c:729
 #, c-format
 msgid "Failed to open directory %s. %s"
 msgstr "Fracàs de la dobertura del repertòri %s. %s"
 
-#: src/remmina_sftp_client.c:689
+#: src/remmina_sftp_client.c:684
 #, c-format
 msgid "Failed reading directory. %s"
 msgstr "Fracàs al moment de la lectura del repertòri. %s"
 
-#: src/remmina_sftp_client.c:797
+#: src/remmina_sftp_client.c:791
 msgid ""
 "File transfer currently in progress.\n"
 "Are you sure to cancel it?"
@@ -834,28 +834,28 @@ msgstr ""
 "Transferiment de fichièrs en cors.\n"
 "Sètz segur que lo volètz anullar ?"
 
-#: src/remmina_sftp_client.c:831
+#: src/remmina_sftp_client.c:825
 #, c-format
 msgid "Failed to delete '%s'. %s"
 msgstr "Impossible de suprimir « %s ». %s"
 
-#: src/remmina_sftp_client.c:912
+#: src/remmina_sftp_client.c:906
 msgid "File exists"
 msgstr "Lo fichièr existís ja"
 
-#: src/remmina_sftp_client.c:915
+#: src/remmina_sftp_client.c:909
 msgid "Resume"
 msgstr "Contunhar"
 
-#: src/remmina_sftp_client.c:916
+#: src/remmina_sftp_client.c:910
 msgid "Overwrite"
 msgstr "Espotir"
 
-#: src/remmina_sftp_client.c:926
+#: src/remmina_sftp_client.c:920
 msgid "Question"
 msgstr ""
 
-#: src/remmina_sftp_client.c:934
+#: src/remmina_sftp_client.c:928
 msgid "The following file already exists in the target folder:"
 msgstr "Lo fichièr seguent es ja present dins lo dorsièr de destinacion :"
 
@@ -867,68 +867,68 @@ msgstr "Las listas recentas son estadas voidadas."
 msgid "Configure the keystrokes"
 msgstr ""
 
-#: src/remmina_ssh.c:205
+#: src/remmina_ssh.c:202
 #, c-format
 msgid "SSH password authentication failed: %s"
 msgstr "L’autentificacion SSH per senhal a fracassat : %s"
 
-#: src/remmina_ssh.c:225 src/remmina_ssh.c:244 src/remmina_ssh.c:252
+#: src/remmina_ssh.c:222 src/remmina_ssh.c:244 src/remmina_ssh.c:252
 #, c-format
 msgid "SSH public key authentication failed: %s"
 msgstr "L’autentificacion SSH per clau publica a fracassat : %s"
 
-#: src/remmina_ssh.c:226
+#: src/remmina_ssh.c:223
 msgid "SSH Key file not yet set."
 msgstr "Lo fichièr que conten la clau SSH es pas encara estat definit."
 
-#: src/remmina_ssh.c:234
+#: src/remmina_ssh.c:233
 #, c-format
 msgid "SSH public key cannot be imported: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:267
+#: src/remmina_ssh.c:290
 #, c-format
 msgid "SSH automatic public key authentication failed: %s"
 msgstr "L’autentificacion automatica per clau publica a fracassat : %s"
 
-#: src/remmina_ssh.c:283
+#: src/remmina_ssh.c:306
 #, c-format
 msgid "SSH public key authentication with SSH agent failed: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:302
+#: src/remmina_ssh.c:325
 #, c-format
 msgid "SSH Kerberos/GSSAPI authentication failed: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:319
+#: src/remmina_ssh.c:342
 msgid "SSH public key has changed!"
 msgstr ""
 
-#: src/remmina_ssh.c:409
+#: src/remmina_ssh.c:430
 #, c-format
 msgid "ssh_get_server_publickey() has failed: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:414
+#: src/remmina_ssh.c:435
 #, c-format
 msgid "ssh_get_publickey() has failed: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:420
+#: src/remmina_ssh.c:441
 #, c-format
 msgid "ssh_get_publickey_hash() has failed: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:428
+#: src/remmina_ssh.c:449
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "Lo servidor es desconegut. L’emprencha de la clau publica es :"
 
-#: src/remmina_ssh.c:430 src/remmina_ssh.c:436
+#: src/remmina_ssh.c:451 src/remmina_ssh.c:457
 msgid "Do you trust the new public key?"
 msgstr "Vos fisatz de la novèla clau publica ?"
 
-#: src/remmina_ssh.c:433
+#: src/remmina_ssh.c:454
 msgid ""
 "WARNING: The server has changed its public key. This means either you are "
 "under attack,\n"
@@ -939,56 +939,56 @@ msgstr ""
 "siá que l’administrator a cambiat la clau. La novèla emprencha de la clau "
 "publica es :"
 
-#: src/remmina_ssh.c:449
+#: src/remmina_ssh.c:470
 #, c-format
 msgid "SSH known host checking failed: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:455
+#: src/remmina_ssh.c:476
 #, c-format
 msgid "Authenticating %s’s password to SSH server %s…"
 msgstr "Verificacion del senhal de %s sul servidor SSH %s…"
 
-#: src/remmina_ssh.c:462
+#: src/remmina_ssh.c:483
 #, c-format
 msgid "Authenticating %s’s identity to SSH server %s…"
 msgstr "Verificacion de l’identitat de %s sul servidor SSH %s…"
 
-#: src/remmina_ssh.c:467
+#: src/remmina_ssh.c:488
 #, c-format
 msgid "Authenticating %s’s Kerberos to SSH server %s…"
 msgstr ""
 
-#: src/remmina_ssh.c:468
+#: src/remmina_ssh.c:489
 msgid "SSH Kerberos/GSSAPI"
 msgstr ""
 
-#: src/remmina_ssh.c:605
+#: src/remmina_ssh.c:617
 #, c-format
 msgid "Failed to startup SSH session: %s"
 msgstr "Fracàs de l’inicializacion de la sesilha SSH : %s"
 
-#: src/remmina_ssh.c:968 src/remmina_ssh.c:1027
+#: src/remmina_ssh.c:975 src/remmina_ssh.c:1034
 #, c-format
 msgid "Failed to create channel: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:977
+#: src/remmina_ssh.c:984
 #, c-format
 msgid "Failed to connect to the SSH tunnel destination: %s"
 msgstr "Fracàs de la connexion a la destinacion del tunèl SSH : %s"
 
-#: src/remmina_ssh.c:1041 src/remmina_ssh.c:1636
+#: src/remmina_ssh.c:1048 src/remmina_ssh.c:1627
 #, c-format
 msgid "Failed to open channel: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1047
+#: src/remmina_ssh.c:1054
 #, c-format
 msgid "Failed to execute %s on SSH server: %%s"
 msgstr "Impossible d’executar %s sul servidor SSH : %%s"
 
-#: src/remmina_ssh.c:1085 src/remmina_ssh.c:1107 src/remmina_ssh.c:1116
+#: src/remmina_ssh.c:1091 src/remmina_ssh.c:1111 src/remmina_ssh.c:1119
 #, c-format
 msgid "Failed to request port forwarding: %s"
 msgstr "Fracàs de la demanda de redireccion de pòrt : %s"
@@ -997,73 +997,73 @@ msgstr "Fracàs de la demanda de redireccion de pòrt : %s"
 msgid "No response from the server."
 msgstr "Lo servidor respond pas."
 
-#: src/remmina_ssh.c:1197
+#: src/remmina_ssh.c:1193
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr ""
 
-#: src/remmina_ssh.c:1248
+#: src/remmina_ssh.c:1242
 #, c-format
 msgid "ssh_channel_write() returned an error: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1254
+#: src/remmina_ssh.c:1248
 #, c-format
 msgid "read on tunnel listening socket returned an error: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1273
+#: src/remmina_ssh.c:1267
 #, c-format
 msgid "ssh_channel_poll() returned an error: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1279
+#: src/remmina_ssh.c:1273
 #, c-format
 msgid "ssh_channel_read_nonblocking() returned an error: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1298
+#: src/remmina_ssh.c:1291
 #, c-format
 msgid "write on tunnel listening socket returned an error: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1377
+#: src/remmina_ssh.c:1370
 msgid "Destination port has not been assigned."
 msgstr ""
 
-#: src/remmina_ssh.c:1384
+#: src/remmina_ssh.c:1377
 msgid "Failed to create socket."
 msgstr ""
 
-#: src/remmina_ssh.c:1394
+#: src/remmina_ssh.c:1387
 msgid "Failed to bind on local port."
 msgstr ""
 
-#: src/remmina_ssh.c:1400
+#: src/remmina_ssh.c:1393
 msgid "Failed to listen on local port."
 msgstr ""
 
-#: src/remmina_ssh.c:1409 src/remmina_ssh.c:1425 src/remmina_ssh.c:1441
-#: src/remmina_ssh.c:1458
+#: src/remmina_ssh.c:1402 src/remmina_ssh.c:1418 src/remmina_ssh.c:1434
+#: src/remmina_ssh.c:1451
 msgid "Failed to initialize pthread."
 msgstr ""
 
-#: src/remmina_ssh.c:1547
+#: src/remmina_ssh.c:1539
 #, c-format
 msgid "Failed to create SFTP session: %s"
 msgstr "Fracàs de la creacion de la sesilha SFTP : %s"
 
-#: src/remmina_ssh.c:1551
+#: src/remmina_ssh.c:1543
 #, c-format
 msgid "Failed to initialize SFTP session: %s"
 msgstr "Impossible d’inicializar la sesilha SFTP : %s"
 
-#: src/remmina_ssh.c:1666
+#: src/remmina_ssh.c:1656
 #, c-format
 msgid "Failed to request shell: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1760
+#: src/remmina_ssh.c:1749
 msgid "Failed to create pty device."
 msgstr ""
 
@@ -1162,150 +1162,150 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Cédric VALMARY (Tot en òc) https://launchpad.net/~cvalmary"
 
-#: src/remmina_sftp_plugin.c:324 src/remmina_ssh_plugin.c:965
+#: src/remmina_sftp_plugin.c:318 src/remmina_ssh_plugin.c:951
 msgid "SSH identity file"
 msgstr ""
 
-#: src/remmina_sftp_plugin.c:325 src/remmina_ssh_plugin.c:966
+#: src/remmina_sftp_plugin.c:319 src/remmina_ssh_plugin.c:952
 msgid "SSH agent"
 msgstr ""
 
-#: src/remmina_sftp_plugin.c:327 src/remmina_ssh_plugin.c:968
+#: src/remmina_sftp_plugin.c:321 src/remmina_ssh_plugin.c:954
 msgid "Kerberos (GSSAPI)"
 msgstr ""
 
-#: src/remmina_sftp_plugin.c:336
+#: src/remmina_sftp_plugin.c:330
 msgid "Show Hidden Files"
 msgstr "Afichar los fichièrs amagats"
 
-#: src/remmina_sftp_plugin.c:338
+#: src/remmina_sftp_plugin.c:332
 msgid "Overwrite all"
 msgstr ""
 
-#: src/remmina_sftp_plugin.c:356 src/remmina_ssh_plugin.c:1064
+#: src/remmina_sftp_plugin.c:350 src/remmina_ssh_plugin.c:1050
 #: plugins/spice/spice_plugin.c:427 plugins/rdp/rdp_plugin.c:1597
 #: plugins/nx/nx_plugin.c:699 plugins/vnc/vnc_plugin.c:1876
 #: plugins/vnc/vnc_plugin.c:1896
 msgid "User password"
 msgstr ""
 
-#: src/remmina_sftp_plugin.c:357 src/remmina_ssh_plugin.c:1065
+#: src/remmina_sftp_plugin.c:351 src/remmina_ssh_plugin.c:1051
 msgid "Authentication type"
 msgstr ""
 
-#: src/remmina_sftp_plugin.c:359 src/remmina_ssh_plugin.c:1067
+#: src/remmina_sftp_plugin.c:353 src/remmina_ssh_plugin.c:1053
 msgid "Private key passphrase"
 msgstr ""
 
 #. Type
 #. Name
-#: src/remmina_sftp_plugin.c:368
+#: src/remmina_sftp_plugin.c:362
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Transferiment de fichièrs securizat"
 
-#: src/remmina_ssh_plugin.c:480
+#: src/remmina_ssh_plugin.c:473
 #, c-format
 msgid "%s"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:497
+#: src/remmina_ssh_plugin.c:490
 msgid "Terminal content saved under"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:554
+#: src/remmina_ssh_plugin.c:544
 msgid "Select All (Host+a)"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:555
+#: src/remmina_ssh_plugin.c:545
 msgid "Copy (Host+c)"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:556
+#: src/remmina_ssh_plugin.c:546
 msgid "Paste (Host+v)"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:557
+#: src/remmina_ssh_plugin.c:547
 msgid "Save session to file"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1043 data/ui/remmina_main.glade:248
+#: src/remmina_ssh_plugin.c:1029 data/ui/remmina_main.glade:248
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/remmina_ssh_plugin.c:1043
+#: src/remmina_ssh_plugin.c:1029
 msgid "_Copy"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1044
+#: src/remmina_ssh_plugin.c:1030
 msgid "Paste"
 msgstr "Empegar"
 
-#: src/remmina_ssh_plugin.c:1044
+#: src/remmina_ssh_plugin.c:1030
 msgid "_Paste"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1045
+#: src/remmina_ssh_plugin.c:1031
 msgid "Select all"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1045
+#: src/remmina_ssh_plugin.c:1031
 msgid "_Select all"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1068 plugins/rdp/rdp_plugin.c:1625
+#: src/remmina_ssh_plugin.c:1054 plugins/rdp/rdp_plugin.c:1625
 #: plugins/nx/nx_plugin.c:702 plugins/xdmcp/xdmcp_plugin.c:370
 msgid "Startup program"
 msgstr "Programa d’aviada"
 
-#: src/remmina_ssh_plugin.c:1085
+#: src/remmina_ssh_plugin.c:1071
 msgid "Terminal color scheme"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1087
+#: src/remmina_ssh_plugin.c:1073
 msgid "SSH Proxy Command"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1088
+#: src/remmina_ssh_plugin.c:1074
 msgid "KEX (Key Exchange) algorithms"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1089
+#: src/remmina_ssh_plugin.c:1075
 msgid "Symmetric cipher client to server"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1090
+#: src/remmina_ssh_plugin.c:1076
 msgid "Preferred server host key types"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1091
+#: src/remmina_ssh_plugin.c:1077
 msgid "SSH session log folder"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1092
+#: src/remmina_ssh_plugin.c:1078
 msgid "SSH session log file name"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1093
+#: src/remmina_ssh_plugin.c:1079
 msgid "Enable SSH session logging at exit"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1094
+#: src/remmina_ssh_plugin.c:1080
 msgid "Enable SSH compression"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1095 plugins/spice/spice_plugin.c:446
+#: src/remmina_ssh_plugin.c:1081 plugins/spice/spice_plugin.c:446
 #: plugins/rdp/rdp_plugin.c:1644 plugins/nx/nx_plugin.c:720
 #: plugins/vnc/vnc_plugin.c:1919
 msgid "Disable password storing"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1096
+#: src/remmina_ssh_plugin.c:1082
 msgid "Strict host key checking"
 msgstr ""
 
 #. *< Type
 #. *< Name
-#: src/remmina_ssh_plugin.c:1110
+#: src/remmina_ssh_plugin.c:1096
 msgid "SSH - Secure Shell"
 msgstr "SSH - shell securizat"
 
