@@ -45,12 +45,12 @@ G_BEGIN_DECLS
 void remmina_ssh_plugin_register(void);
 
 typedef struct _RemminaProtocolSettingOpt {
-    RemminaProtocolSettingType type;
-    const gchar *name;
-    const gchar *label;
-    gboolean compact;
-    gpointer opt1;
-    gpointer opt2;
+	RemminaProtocolSettingType	type;
+	const gchar *			name;
+	const gchar *			label;
+	gboolean			compact;
+	gpointer			opt1;
+	gpointer			opt2;
 } RemminaProtocolSettingOpt;
 
 /* For callback in main thread */
@@ -59,9 +59,7 @@ void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal,
 void remmina_plugin_ssh_vte_select_all(GtkMenuItem *menuitem, gpointer user_data);
 void remmina_plugin_ssh_vte_copy_clipboard(GtkMenuItem *menuitem, gpointer user_data);
 void remmina_plugin_ssh_vte_paste_clipboard(GtkMenuItem *menuitem, gpointer user_data);
-gboolean remmina_ssh_plugin_popup_menu(GtkWidget *widget, GdkEvent  *event, GtkWidget *menu);
+gboolean remmina_ssh_plugin_popup_menu(GtkWidget *widget, GdkEvent *event, GtkWidget *menu);
 #endif
 
 G_END_DECLS
-
-

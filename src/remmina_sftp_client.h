@@ -54,23 +54,22 @@ G_BEGIN_DECLS
 #define REMMINA_SFTP_CLIENT_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_SFTP_CLIENT, RemminaSFTPClientClass))
 
 typedef struct _RemminaSFTPClient {
-	RemminaFTPClient client;
+	RemminaFTPClient	client;
 
-	RemminaSFTP *sftp;
+	RemminaSFTP *		sftp;
 
-	pthread_t thread;
-	gint taskid;
-	gboolean thread_abort;
+	pthread_t		thread;
+	gint			taskid;
+	gboolean		thread_abort;
 } RemminaSFTPClient;
 
 typedef struct _RemminaSFTPClientClass {
 	RemminaFTPClientClass parent_class;
-
 } RemminaSFTPClientClass;
 
 GType remmina_sftp_client_get_type(void) G_GNUC_CONST;
 
-GtkWidget* remmina_sftp_client_new(void);
+GtkWidget *remmina_sftp_client_new(void);
 
 void remmina_sftp_client_open(RemminaSFTPClient *client, RemminaSFTP *sftp);
 gint remmina_sftp_client_confirm_resume(RemminaSFTPClient *client, const gchar *path);
@@ -78,5 +77,3 @@ gint remmina_sftp_client_confirm_resume(RemminaSFTPClient *client, const gchar *
 G_END_DECLS
 
 #endif  /* HAVE_LIBSSH */
-
-
