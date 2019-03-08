@@ -54,39 +54,39 @@ G_BEGIN_DECLS
 *                           SSH Base                                          *
 *-----------------------------------------------------------------------------*/
 
-#define REMMINA_SSH(a) ((RemminaSSH*)a)
+#define REMMINA_SSH(a) ((RemminaSSH *)a)
 
 typedef struct _RemminaSSH {
-	ssh_session session;
-	ssh_callbacks callback;
-	gboolean authenticated;
+	ssh_session	session;
+	ssh_callbacks	callback;
+	gboolean	authenticated;
 
-	gchar *server;
-	gint port;
-	gchar *user;
-	gint auth;
-	gchar *password;
-	gchar *privkeyfile;
+	gchar *		server;
+	gint		port;
+	gchar *		user;
+	gint		auth;
+	gchar *		password;
+	gchar *		privkeyfile;
 
-	gchar *charset;
-	const gchar *kex_algorithms;
-	gchar *ciphers;
-        gchar *hostkeytypes;
-        gchar *proxycommand;
-        gint stricthostkeycheck;
-        const gchar *compression;
+	gchar *		charset;
+	const gchar *	kex_algorithms;
+	gchar *		ciphers;
+	gchar *		hostkeytypes;
+	gchar *		proxycommand;
+	gint		stricthostkeycheck;
+	const gchar *	compression;
 
-	gchar *error;
+	gchar *		error;
 
 	pthread_mutex_t ssh_mutex;
 
-	gchar *passphrase;
+	gchar *		passphrase;
 } RemminaSSH;
 
-gchar* remmina_ssh_identity_path(const gchar *id);
+gchar *remmina_ssh_identity_path(const gchar *id);
 
 /* Auto-detect commonly used private key identities */
-gchar* remmina_ssh_find_identity(void);
+gchar *remmina_ssh_find_identity(void);
 
 /* Initialize the ssh object */
 gboolean remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile);
@@ -96,19 +96,19 @@ gboolean remmina_ssh_init_session(RemminaSSH *ssh);
 
 /* Authenticate SSH session */
 /* -1: Require password; 0: Failed; 1: Succeeded */
-gint remmina_ssh_auth(RemminaSSH *ssh, const gchar *password);
+gint remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *gp, RemminaFile *remminafile);
 
 /* -1: Cancelled; 0: Failed; 1: Succeeded */
 gint remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *remminafile);
 
 /* Error handling */
-#define remmina_ssh_has_error(ssh) (((RemminaSSH*)ssh)->error != NULL)
+#define remmina_ssh_has_error(ssh) (((RemminaSSH *)ssh)->error != NULL)
 void remmina_ssh_set_error(RemminaSSH *ssh, const gchar *fmt);
 void remmina_ssh_set_application_error(RemminaSSH *ssh, const gchar *fmt, ...);
 
 /* Converts a string to/from UTF-8, or simply duplicate it if no conversion */
-gchar* remmina_ssh_convert(RemminaSSH *ssh, const gchar *from);
-gchar* remmina_ssh_unconvert(RemminaSSH *ssh, const gchar *from);
+gchar *remmina_ssh_convert(RemminaSSH *ssh, const gchar *from);
+gchar *remmina_ssh_unconvert(RemminaSSH *ssh, const gchar *from);
 
 void remmina_ssh_free(RemminaSSH *ssh);
 
@@ -118,7 +118,7 @@ void remmina_ssh_free(RemminaSSH *ssh);
 typedef struct _RemminaSSHTunnel RemminaSSHTunnel;
 typedef struct _RemminaSSHTunnelBuffer RemminaSSHTunnelBuffer;
 
-typedef gboolean (*RemminaSSHTunnelCallback) (RemminaSSHTunnel*, gpointer);
+typedef gboolean (*RemminaSSHTunnelCallback) (RemminaSSHTunnel *, gpointer);
 
 enum {
 	REMMINA_SSH_TUNNEL_OPEN,
@@ -128,42 +128,42 @@ enum {
 };
 
 struct _RemminaSSHTunnel {
-	RemminaSSH ssh;
+	RemminaSSH			ssh;
 
-	gint tunnel_type;
+	gint				tunnel_type;
 
-	ssh_channel *channels;
-	gint *sockets;
-	RemminaSSHTunnelBuffer **socketbuffers;
-	gint num_channels;
-	gint max_channels;
+	ssh_channel *			channels;
+	gint *				sockets;
+	RemminaSSHTunnelBuffer **	socketbuffers;
+	gint				num_channels;
+	gint				max_channels;
 
-	ssh_channel x11_channel;
+	ssh_channel			x11_channel;
 
-	pthread_t thread;
-	gboolean running;
+	pthread_t			thread;
+	gboolean			running;
 
-	gchar *buffer;
-	gint buffer_len;
-	ssh_channel *channels_out;
+	gchar *				buffer;
+	gint				buffer_len;
+	ssh_channel *			channels_out;
 
-	gint server_sock;
-	gchar *dest;
-	gint port;
-	gint localport;
+	gint				server_sock;
+	gchar *				dest;
+	gint				port;
+	gint				localport;
 
-	gint remotedisplay;
-	gboolean bindlocalhost;
-	gchar *localdisplay;
+	gint				remotedisplay;
+	gboolean			bindlocalhost;
+	gchar *				localdisplay;
 
-	RemminaSSHTunnelCallback init_func;
-	RemminaSSHTunnelCallback connect_func;
-	RemminaSSHTunnelCallback disconnect_func;
-	gpointer callback_data;
+	RemminaSSHTunnelCallback	init_func;
+	RemminaSSHTunnelCallback	connect_func;
+	RemminaSSHTunnelCallback	disconnect_func;
+	gpointer			callback_data;
 };
 
 /* Create a new SSH Tunnel session and connects to the SSH server */
-RemminaSSHTunnel* remmina_ssh_tunnel_new_from_file(RemminaFile *remminafile);
+RemminaSSHTunnel *remmina_ssh_tunnel_new_from_file(RemminaFile *remminafile);
 
 /* Open the tunnel. A new thread will be started and listen on a local port.
  * dest: The host:port of the remote destination
@@ -203,16 +203,16 @@ void remmina_ssh_tunnel_free(RemminaSSHTunnel *tunnel);
 *-----------------------------------------------------------------------------*/
 
 typedef struct _RemminaSFTP {
-	RemminaSSH ssh;
+	RemminaSSH	ssh;
 
-	sftp_session sftp_sess;
+	sftp_session	sftp_sess;
 } RemminaSFTP;
 
 /* Create a new SFTP session object from RemminaFile */
-RemminaSFTP* remmina_sftp_new_from_file(RemminaFile *remminafile);
+RemminaSFTP *remmina_sftp_new_from_file(RemminaFile *remminafile);
 
 /* Create a new SFTP session object from existing SSH session */
-RemminaSFTP* remmina_sftp_new_from_ssh(RemminaSSH *ssh);
+RemminaSFTP *remmina_sftp_new_from_ssh(RemminaSSH *ssh);
 
 /* open the SFTP session, assuming the session already authenticated */
 gboolean remmina_sftp_open(RemminaSFTP *sftp);
@@ -226,23 +226,23 @@ void remmina_sftp_free(RemminaSFTP *sftp);
 typedef void (*RemminaSSHExitFunc) (gpointer data);
 
 typedef struct _RemminaSSHShell {
-	RemminaSSH ssh;
+	RemminaSSH		ssh;
 
-	gint master;
-	gint slave;
-	gchar *exec;
-	pthread_t thread;
-	ssh_channel channel;
-	gboolean closed;
-	RemminaSSHExitFunc exit_callback;
-	gpointer user_data;
+	gint			master;
+	gint			slave;
+	gchar *			exec;
+	pthread_t		thread;
+	ssh_channel		channel;
+	gboolean		closed;
+	RemminaSSHExitFunc	exit_callback;
+	gpointer		user_data;
 } RemminaSSHShell;
 
 /* Create a new SSH Shell session object from RemminaFile */
-RemminaSSHShell* remmina_ssh_shell_new_from_file(RemminaFile *remminafile);
+RemminaSSHShell *remmina_ssh_shell_new_from_file(RemminaFile *remminafile);
 
 /* Create a new SSH Shell session object from existing SSH session */
-RemminaSSHShell* remmina_ssh_shell_new_from_ssh(RemminaSSH *ssh);
+RemminaSSHShell *remmina_ssh_shell_new_from_ssh(RemminaSSH *ssh);
 
 /* open the SSH Shell, assuming the session already authenticated */
 gboolean remmina_ssh_shell_open(RemminaSSHShell *shell, RemminaSSHExitFunc exit_callback, gpointer data);
@@ -264,5 +264,3 @@ G_END_DECLS
 typedef void (*RemminaSSHTunnelCallback)(void);
 
 #endif /* HAVE_LIBSSH */
-
-

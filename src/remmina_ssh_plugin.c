@@ -58,7 +58,7 @@
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_PASTE 2
 #define REMMINA_PLUGIN_SSH_FEATURE_TOOL_SELECT_ALL 3
 
-#define GET_PLUGIN_DATA(gp) (RemminaPluginSshData*)g_object_get_data(G_OBJECT(gp), "plugin-data");
+#define GET_PLUGIN_DATA(gp) (RemminaPluginSshData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
 /** Palette colors taken from sakura */
 #define PALETTE_SIZE 16
@@ -70,41 +70,41 @@ enum color_schemes { LINUX, TANGO, GRUVBOX, SOLARIZED_DARK, SOLARIZED_LIGHT, XTE
  * Text displayed in the second 8 colors (8-15) is bold (uses thick strokes).
  **/
 const GdkRGBA linux_palette[PALETTE_SIZE] = {
-	{ 0,	    0,		     0,		      1	       },
-	{ 0.666667, 0,		     0,		      1	       },
-	{ 0,	    0.666667,	     0,		      1	       },
-	{ 0.666667, 0.333333,	     0,		      1	       },
-	{ 0,	    0,		     0.666667,	      1	       },
-	{ 0.666667, 0,		     0.666667,	      1	       },
-	{ 0,	    0.666667,	     0.666667,	      1	       },
-	{ 0.666667, 0.666667,	     0.666667,	      1	       },
-	{ 0.333333, 0.333333,	     0.333333,	      1	       },
-	{ 1,	    0.333333,	     0.333333,	      1	       },
-	{ 0.333333, 1,		     0.333333,	      1	       },
-	{ 1,	    1,		     0.333333,	      1	       },
-	{ 0.333333, 0.333333,	     1,		      1	       },
-	{ 1,	    0.333333,	     1,		      1	       },
-	{ 0.333333, 1,		     1,		      1	       },
-	{ 1,	    1,		     1,		      1	       }
+	{ 0,	    0,	      0,	1 },
+	{ 0.666667, 0,	      0,	1 },
+	{ 0,	    0.666667, 0,	1 },
+	{ 0.666667, 0.333333, 0,	1 },
+	{ 0,	    0,	      0.666667, 1 },
+	{ 0.666667, 0,	      0.666667, 1 },
+	{ 0,	    0.666667, 0.666667, 1 },
+	{ 0.666667, 0.666667, 0.666667, 1 },
+	{ 0.333333, 0.333333, 0.333333, 1 },
+	{ 1,	    0.333333, 0.333333, 1 },
+	{ 0.333333, 1,	      0.333333, 1 },
+	{ 1,	    1,	      0.333333, 1 },
+	{ 0.333333, 0.333333, 1,	1 },
+	{ 1,	    0.333333, 1,	1 },
+	{ 0.333333, 1,	      1,	1 },
+	{ 1,	    1,	      1,	1 }
 };
 
 const GdkRGBA tango_palette[PALETTE_SIZE] = {
-	{ 0,	     0,	       0,	 1	  },
-	{ 0.8,	     0,	       0,	 1	  },
-	{ 0.305882,  0.603922, 0.023529, 1	  },
-	{ 0.768627,  0.627451, 0,	 1	  },
-	{ 0.203922,  0.396078, 0.643137, 1	  },
-	{ 0.458824,  0.313725, 0.482353, 1	  },
-	{ 0.0235294, 0.596078, 0.603922, 1	  },
-	{ 0.827451,  0.843137, 0.811765, 1	  },
-	{ 0.333333,  0.341176, 0.32549,	 1	  },
-	{ 0.937255,  0.160784, 0.160784, 1	  },
-	{ 0.541176,  0.886275, 0.203922, 1	  },
-	{ 0.988235,  0.913725, 0.309804, 1	  },
-	{ 0.447059,  0.623529, 0.811765, 1	  },
-	{ 0.678431,  0.498039, 0.658824, 1	  },
-	{ 0.203922,  0.886275, 0.886275, 1	  },
-	{ 0.933333,  0.933333, 0.92549,	 1	  }
+	{ 0,	     0,	       0,	 1 },
+	{ 0.8,	     0,	       0,	 1 },
+	{ 0.305882,  0.603922, 0.023529, 1 },
+	{ 0.768627,  0.627451, 0,	 1 },
+	{ 0.203922,  0.396078, 0.643137, 1 },
+	{ 0.458824,  0.313725, 0.482353, 1 },
+	{ 0.0235294, 0.596078, 0.603922, 1 },
+	{ 0.827451,  0.843137, 0.811765, 1 },
+	{ 0.333333,  0.341176, 0.32549,	 1 },
+	{ 0.937255,  0.160784, 0.160784, 1 },
+	{ 0.541176,  0.886275, 0.203922, 1 },
+	{ 0.988235,  0.913725, 0.309804, 1 },
+	{ 0.447059,  0.623529, 0.811765, 1 },
+	{ 0.678431,  0.498039, 0.658824, 1 },
+	{ 0.203922,  0.886275, 0.886275, 1 },
+	{ 0.933333,  0.933333, 0.92549,	 1 }
 };
 
 const GdkRGBA gruvbox_palette[PALETTE_SIZE] = {
@@ -165,22 +165,22 @@ const GdkRGBA solarized_light_palette[PALETTE_SIZE] = {
 };
 
 const GdkRGBA xterm_palette[PALETTE_SIZE] = {
-	{ 0,	    0,		     0,		      1	       },
-	{ 0.803922, 0,		     0,		      1	       },
-	{ 0,	    0.803922,	     0,		      1	       },
-	{ 0.803922, 0.803922,	     0,		      1	       },
-	{ 0.117647, 0.564706,	     1,		      1	       },
-	{ 0.803922, 0,		     0.803922,	      1	       },
-	{ 0,	    0.803922,	     0.803922,	      1	       },
-	{ 0.898039, 0.898039,	     0.898039,	      1	       },
-	{ 0.298039, 0.298039,	     0.298039,	      1	       },
-	{ 1,	    0,		     0,		      1	       },
-	{ 0,	    1,		     0,		      1	       },
-	{ 1,	    1,		     0,		      1	       },
-	{ 0.27451,  0.509804,	     0.705882,	      1	       },
-	{ 1,	    0,		     1,		      1	       },
-	{ 0,	    1,		     1,		      1	       },
-	{ 1,	    1,		     1,		      1	       }
+	{ 0,	    0,	      0,	1 },
+	{ 0.803922, 0,	      0,	1 },
+	{ 0,	    0.803922, 0,	1 },
+	{ 0.803922, 0.803922, 0,	1 },
+	{ 0.117647, 0.564706, 1,	1 },
+	{ 0.803922, 0,	      0.803922, 1 },
+	{ 0,	    0.803922, 0.803922, 1 },
+	{ 0.898039, 0.898039, 0.898039, 1 },
+	{ 0.298039, 0.298039, 0.298039, 1 },
+	{ 1,	    0,	      0,	1 },
+	{ 0,	    1,	      0,	1 },
+	{ 1,	    1,	      0,	1 },
+	{ 0.27451,  0.509804, 0.705882, 1 },
+	{ 1,	    0,	      1,	1 },
+	{ 0,	    1,	      1,	1 },
+	{ 1,	    1,	      1,	1 }
 };
 
 #if VTE_CHECK_VERSION(0, 38, 0)
@@ -194,13 +194,13 @@ static struct {
 
 /** The SSH plugin implementation */
 typedef struct _RemminaPluginSshData {
-	RemminaSSHShell *shell;
-	GFile *vte_session_file;
-	GtkWidget *vte;
+	RemminaSSHShell *	shell;
+	GFile *			vte_session_file;
+	GtkWidget *		vte;
 
-	const GdkRGBA *palette;
+	const GdkRGBA *		palette;
 
-	pthread_t thread;
+	pthread_t		thread;
 } RemminaPluginSshData;
 
 
@@ -220,7 +220,7 @@ static gpointer
 remmina_plugin_ssh_main_thread(gpointer data)
 {
 	TRACE_CALL(__func__);
-	RemminaProtocolWidget *gp = (RemminaProtocolWidget*)data;
+	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)data;
 	RemminaPluginSshData *gpdata;
 	RemminaFile *remminafile;
 	RemminaSSH *ssh;
@@ -231,16 +231,16 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	const gchar *saveserver;
 	const gchar *saveusername;
 	gchar *hostport;
-	gchar tunneluser[33]; /**< On linux a username can have a 32 char lenght */
-	gchar tunnelserver[256]; /**< On linux a servername can have a 255 char lenght */
-	gchar tunnelport[6]; /**< A TCP port can have a maximum value of 65535 */
+	gchar tunneluser[33];           /**< On linux a username can have a 32 char lenght */
+	gchar tunnelserver[256];        /**< On linux a servername can have a 255 char lenght */
+	gchar tunnelport[6];            /**< A TCP port can have a maximum value of 65535 */
 	gchar *host;
 	gint port;
 
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
 
-	gpdata = GET_PLUGIN_DATA(gp);
+		gpdata = GET_PLUGIN_DATA(gp);
 
 	/**
 	 * remmina_plugin_service->protocol_plugin_start_direct_tunnel start the
@@ -263,25 +263,23 @@ remmina_plugin_ssh_main_thread(gpointer data)
 		 **/
 		if (strchr(saveserver, '@')) {
 			sscanf(saveserver, "%[_a-zA-Z0-9.]@%[_a-zA-Z0-9.]:%[0-9]",
-					tunneluser, tunnelserver, tunnelport);
-			g_print ("Username: %s, tunneluser: %s\n",
-					remmina_plugin_service->file_get_string(remminafile, "ssh_username"), tunneluser);
-			if (saveusername != NULL && tunneluser[0] != '\0') {
+			       tunneluser, tunnelserver, tunnelport);
+			g_print("Username: %s, tunneluser: %s\n",
+				remmina_plugin_service->file_get_string(remminafile, "ssh_username"), tunneluser);
+			if (saveusername != NULL && tunneluser[0] != '\0')
 				remmina_plugin_service->file_set_string(remminafile, "ssh_username", NULL);
-			}
 			remmina_plugin_service->file_set_string(remminafile, "ssh_username",
-					g_strdup(tunneluser));
+								g_strdup(tunneluser));
 			remmina_plugin_service->file_set_string(remminafile, "ssh_server",
-					g_strconcat (tunnelserver, ":", tunnelport, NULL));
+								g_strconcat(tunnelserver, ":", tunnelport, NULL));
 		}
-        }
+	}
 
 	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
 	/* We restore the SSH username as the tunnel is set */
 	remmina_plugin_service->file_set_string(remminafile, "ssh_username", g_strdup(saveusername));
-	if (hostport == NULL) {
+	if (hostport == NULL)
 		return FALSE;
-	}
 	remmina_plugin_service->get_server_port(hostport, 22, &host, &port);
 
 	ssh = g_object_get_data(G_OBJECT(gp), "user-data");
@@ -289,19 +287,17 @@ remmina_plugin_ssh_main_thread(gpointer data)
 		/* Create SSH Shell connection based on existing SSH session */
 		shell = remmina_ssh_shell_new_from_ssh(ssh);
 		if (remmina_ssh_init_session(REMMINA_SSH(shell)) &&
-		    remmina_ssh_auth(REMMINA_SSH(shell), NULL) > 0 &&
+		    remmina_ssh_auth(REMMINA_SSH(shell), NULL, gp, remminafile) > 0 &&
 		    remmina_ssh_shell_open(shell, (RemminaSSHExitFunc)
-			    remmina_plugin_service->protocol_plugin_close_connection, gp)) {
+					   remmina_plugin_service->protocol_plugin_close_connection, gp))
 			cont = TRUE;
-		}
-	}else {
+	} else {
 		/* New SSH Shell connection */
-		if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
+		if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE))
 			remmina_plugin_service->file_set_string(remminafile, "ssh_server", g_strdup(hostport));
-		}else {
+		else
 			remmina_plugin_service->file_set_string(remminafile, "ssh_server",
-				remmina_plugin_service->file_get_string(remminafile, "server"));
-		}
+								remmina_plugin_service->file_get_string(remminafile, "server"));
 		g_free(hostport);
 		g_free(host);
 
@@ -313,13 +309,12 @@ remmina_plugin_ssh_main_thread(gpointer data)
 			}
 
 			ret = remmina_ssh_auth_gui(REMMINA_SSH(shell), gp, remminafile);
-			if (ret == 0) {
+			if (ret == 0)
 				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(shell)->error);
-			}
 			if (ret <= 0) break;
 
 			if (!remmina_ssh_shell_open(shell, (RemminaSSHExitFunc)
-				    remmina_plugin_service->protocol_plugin_close_connection, gp)) {
+						    remmina_plugin_service->protocol_plugin_close_connection, gp)) {
 				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(shell)->error);
 				break;
 			}
@@ -330,7 +325,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 
 		/* We restore the ssh_server name */
 		remmina_plugin_service->file_set_string(remminafile, "ssh_server",
-				remmina_plugin_service->file_get_string(remminafile, "save_ssh_server"));
+							remmina_plugin_service->file_get_string(remminafile, "save_ssh_server"));
 	}
 	if (!cont) {
 		if (shell) remmina_ssh_shell_free(shell);
@@ -355,10 +350,10 @@ remmina_plugin_ssh_main_thread(gpointer data)
 void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal, const char *codeset, int master, int slave)
 {
 	TRACE_CALL(__func__);
-	if ( !remmina_masterthread_exec_is_main_thread() ) {
+	if (!remmina_masterthread_exec_is_main_thread()) {
 		/* Allow the execution of this function from a non main thread */
 		RemminaMTExecData *d;
-		d = (RemminaMTExecData*)g_malloc( sizeof(RemminaMTExecData) );
+		d = (RemminaMTExecData *)g_malloc(sizeof(RemminaMTExecData));
 		d->func = FUNC_VTE_TERMINAL_SET_ENCODING_AND_PTY;
 		d->p.vte_terminal_set_encoding_and_pty.terminal = terminal;
 		d->p.vte_terminal_set_encoding_and_pty.codeset = codeset;
@@ -387,7 +382,6 @@ void remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VteTerminal *terminal,
 #else
 	vte_terminal_set_pty(terminal, master);
 #endif
-
 }
 
 static gboolean
@@ -429,13 +423,12 @@ remmina_plugin_ssh_set_vte_pref(RemminaProtocolWidget *gp)
 		vte_terminal_set_font_from_string(VTE_TERMINAL(gpdata->vte), remmina_pref.vte_font);
 #else
 		vte_terminal_set_font(VTE_TERMINAL(gpdata->vte),
-			pango_font_description_from_string(remmina_pref.vte_font));
+				      pango_font_description_from_string(remmina_pref.vte_font));
 #endif
 	}
 	vte_terminal_set_allow_bold(VTE_TERMINAL(gpdata->vte), remmina_pref.vte_allow_bold_text);
-	if (remmina_pref.vte_lines > 0) {
+	if (remmina_pref.vte_lines > 0)
 		vte_terminal_set_scrollback_lines(VTE_TERMINAL(gpdata->vte), remmina_pref.vte_lines);
-	}
 }
 
 void
@@ -470,14 +463,14 @@ remmina_plugin_ssh_vte_save_session(GtkMenuItem *menuitem, RemminaProtocolWidget
 	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 
-	GtkWidget* widget;
-	GError* err = NULL;
+	GtkWidget *widget;
+	GError *err = NULL;
 
 	GFileOutputStream *stream = g_file_replace(gpdata->vte_session_file, NULL, FALSE, G_FILE_CREATE_NONE, NULL, &err);
 
 	if (err != NULL) {
 		widget = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-			_("%s"), err->message);
+						_("%s"), err->message);
 		g_signal_connect(G_OBJECT(widget), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 		gtk_widget_show(widget);
 		return;
@@ -486,21 +479,20 @@ remmina_plugin_ssh_vte_save_session(GtkMenuItem *menuitem, RemminaProtocolWidget
 	if (stream != NULL)
 #if VTE_CHECK_VERSION(0, 38, 0)
 		vte_terminal_write_contents_sync(VTE_TERMINAL(gpdata->vte), G_OUTPUT_STREAM(stream),
-			VTE_WRITE_DEFAULT, NULL, &err);
+						 VTE_WRITE_DEFAULT, NULL, &err);
 #else
 		vte_terminal_write_contents(VTE_TERMINAL(gpdata->vte), G_OUTPUT_STREAM(stream),
-			VTE_TERMINAL_WRITE_DEFAULT, NULL, &err);
+					    VTE_TERMINAL_WRITE_DEFAULT, NULL, &err);
 #endif
 
 	if (err == NULL) {
 		remmina_public_send_notification("remmina-terminal-saved",
-			_("Terminal content saved under"),
-			g_file_get_path(gpdata->vte_session_file));
+						 _("Terminal content saved under"),
+						 g_file_get_path(gpdata->vte_session_file));
 	}
 
 	g_object_unref(stream);
 	g_free(err);
-
 }
 
 /** Send a keystroke to the plugin window */
@@ -509,21 +501,19 @@ static void remmina_ssh_keystroke(RemminaProtocolWidget *gp, const guint keystro
 	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
 	remmina_plugin_service->protocol_plugin_send_keys_signals(gpdata->vte,
-		keystrokes, keylen, GDK_KEY_PRESS | GDK_KEY_RELEASE);
+								  keystrokes, keylen, GDK_KEY_PRESS | GDK_KEY_RELEASE);
 	return;
 }
 
 gboolean
 remmina_ssh_plugin_popup_menu(GtkWidget *widget, GdkEvent *event, GtkWidget *menu)
 {
-
-	if ((event->type == GDK_BUTTON_PRESS) && (((GdkEventButton*)event)->button == 3)) {
-
+	if ((event->type == GDK_BUTTON_PRESS) && (((GdkEventButton *)event)->button == 3)) {
 #if GTK_CHECK_VERSION(3, 22, 0)
 		gtk_menu_popup_at_pointer(GTK_MENU(menu), NULL);
 #else
 		gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
-			((GdkEventButton*)event)->button, gtk_get_current_event_time());
+			       ((GdkEventButton *)event)->button, gtk_get_current_event_time());
 #endif
 		return TRUE;
 	}
@@ -562,16 +552,16 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), save);
 
 	g_signal_connect(G_OBJECT(gpdata->vte), "button_press_event",
-		G_CALLBACK(remmina_ssh_plugin_popup_menu), menu);
+			 G_CALLBACK(remmina_ssh_plugin_popup_menu), menu);
 
 	g_signal_connect(G_OBJECT(select_all), "activate",
-		G_CALLBACK(remmina_plugin_ssh_vte_select_all), gpdata->vte);
+			 G_CALLBACK(remmina_plugin_ssh_vte_select_all), gpdata->vte);
 	g_signal_connect(G_OBJECT(copy), "activate",
-		G_CALLBACK(remmina_plugin_ssh_vte_copy_clipboard), gpdata->vte);
+			 G_CALLBACK(remmina_plugin_ssh_vte_copy_clipboard), gpdata->vte);
 	g_signal_connect(G_OBJECT(paste), "activate",
-		G_CALLBACK(remmina_plugin_ssh_vte_paste_clipboard), gpdata->vte);
+			 G_CALLBACK(remmina_plugin_ssh_vte_paste_clipboard), gpdata->vte);
 	g_signal_connect(G_OBJECT(save), "activate",
-		G_CALLBACK(remmina_plugin_ssh_vte_save_session), gp);
+			 G_CALLBACK(remmina_plugin_ssh_vte_save_session), gp);
 
 	gtk_widget_show_all(menu);
 }
@@ -637,7 +627,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	 */
 	const gchar *color_name = remmina_plugin_service->file_get_string(remminafile, "ssh_color_scheme");
 
-	gchar *remmina_dir = g_build_path( "/", g_get_user_config_dir(), "remmina", "theme", NULL);
+	gchar *remmina_dir = g_build_path("/", g_get_user_config_dir(), "remmina", "theme", NULL);
 	gchar *remmina_colors_file = g_strdup_printf("%s/%s.colors", remmina_dir, color_name);
 	g_free(remmina_dir);
 
@@ -646,7 +636,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	 */
 	if (!g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
 		GError *error = NULL;
-		const gchar * const *dirs = g_get_system_data_dirs();
+		const gchar *const *dirs = g_get_system_data_dirs();
 
 		unsigned int i = 0;
 		for (i = 0; dirs[i] != NULL; ++i) {
@@ -661,9 +651,8 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 					g_dir_close(system_data_dir);
 					g_free(remmina_colors_file);
 					remmina_colors_file = g_strdup_printf("%s/%s.colors", remmina_dir, color_name);
-					if (g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR)) {
+					if (g_file_test(remmina_colors_file, G_FILE_TEST_IS_REGULAR))
 						break;
-					}
 				}
 			}
 			g_free(remmina_dir);
@@ -700,16 +689,16 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 		gdk_rgba_parse(&cp[15], color_pref.color15);
 
 		const GdkRGBA custom_palette[PALETTE_SIZE] = {
-				cp[0],	cp[1],	cp[2],	cp[3],
-				cp[4],	cp[5],	cp[6],	cp[7],
-				cp[8],	cp[9],	cp[10], cp[11],
-				cp[12], cp[13], cp[14], cp[15]
+			cp[0],	cp[1],	cp[2],	cp[3],
+			cp[4],	cp[5],	cp[6],	cp[7],
+			cp[8],	cp[9],	cp[10], cp[11],
+			cp[12], cp[13], cp[14], cp[15]
 		};
 
 		remminavte.palette = custom_palette;
 	} else {
-	/* Set colors to GdkRGBA */
-	switch (remmina_plugin_service->file_get_int(remminafile, "ssh_color_scheme", FALSE)) {
+		/* Set colors to GdkRGBA */
+		switch (remmina_plugin_service->file_get_int(remminafile, "ssh_color_scheme", FALSE)) {
 		case LINUX:
 			gdk_rgba_parse(&foreground_color, "#ffffff");
 			gdk_rgba_parse(&background_color, "#000000");
@@ -824,17 +813,15 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 
 	rf = g_file_new_for_path(remminafile->filename);
 
-	if (remmina_plugin_service->file_get_string(remminafile, "sshlogfolder") == NULL) {
-		dir = g_build_path( "/", g_get_user_cache_dir(), "remmina", NULL);
-	}else  {
+	if (remmina_plugin_service->file_get_string(remminafile, "sshlogfolder") == NULL)
+		dir = g_build_path("/", g_get_user_cache_dir(), "remmina", NULL);
+	else
 		dir = remmina_plugin_service->file_get_string(remminafile, "sshlogfolder");
-	}
 
-	if (remmina_plugin_service->file_get_string(remminafile, "sshlogname") == NULL) {
+	if (remmina_plugin_service->file_get_string(remminafile, "sshlogname") == NULL)
 		sshlogname = g_strconcat(g_file_get_basename(rf), ".", "log", NULL);
-	}else  {
+	else
 		sshlogname = remmina_plugin_service->file_get_string(remminafile, "sshlogname");
-	}
 
 	fp = g_strconcat(dir, "/", sshlogname, NULL);
 	gpdata->vte_session_file = g_file_new_for_path(fp);
@@ -861,10 +848,10 @@ remmina_plugin_ssh_open_connection(RemminaProtocolWidget *gp)
 
 	if (pthread_create(&gpdata->thread, NULL, remmina_plugin_ssh_main_thread, gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp,
-			"Failed to initialize pthread. Falling back to non-thread mode…");
+								  "Failed to initialize pthread. Falling back to non-thread mode…");
 		gpdata->thread = 0;
 		return FALSE;
-	}else  {
+	} else {
 		return TRUE;
 	}
 	return TRUE;
@@ -880,9 +867,8 @@ remmina_plugin_ssh_close_connection(RemminaProtocolWidget *gp)
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
-	if (remmina_file_get_int(remminafile, "sshlogenabled", FALSE)) {
+	if (remmina_file_get_int(remminafile, "sshlogenabled", FALSE))
 		remmina_plugin_ssh_vte_save_session(NULL, gp);
-	}
 	if (gpdata->thread) {
 		pthread_cancel(gpdata->thread);
 		if (gpdata->thread) pthread_join(gpdata->thread, NULL);
@@ -938,7 +924,7 @@ remmina_plugin_ssh_call_feature(RemminaProtocolWidget *gp, const RemminaProtocol
 		return;
 	case REMMINA_PROTOCOL_FEATURE_TOOL_SFTP:
 		remmina_plugin_service->open_connection(
-				/** @todo start the direct tunnel here */
+			/** @todo start the direct tunnel here */
 			remmina_file_dup_temp_protocol(remmina_plugin_service->protocol_plugin_get_file(gp), "SFTP"),
 			NULL, gpdata->shell, NULL);
 		return;
@@ -1024,13 +1010,13 @@ static gpointer ssh_charset_list[] =
 
 static gpointer ssh_terminal_palette[] =
 {
-	"0", "Linux",
-	"1", "Tango",
-	"2", "Gruvbox",
-	"3", "Solarized Dark",
-	"4", "Solarized Light",
-	"5", "XTerm",
-	"6", "Custom (Configured in Remmina preferences)",
+	"0",  "Linux",
+	"1",  "Tango",
+	"2",  "Gruvbox",
+	"3",  "Solarized Dark",
+	"4",  "Solarized Light",
+	"5",  "XTerm",
+	"6",  "Custom (Configured in Remmina preferences)",
 	NULL, NULL
 };
 
@@ -1059,14 +1045,14 @@ static RemminaProtocolFeature remmina_plugin_ssh_features[] =
  */
 static const RemminaProtocolSetting remmina_ssh_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "ssh_server",		    NULL,			    FALSE, "_ssh._tcp", NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "ssh_username",	    N_("User name"),		    FALSE, NULL,	NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password",	    N_("User password"),	    FALSE, NULL,	NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth",		    N_("Authentication type"),	    FALSE, ssh_auth,	NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey",	    N_("Identity file"),	    FALSE, NULL,	NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase",	    N_("Private key passphrase"),   FALSE, NULL,	NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "exec",		    N_("Startup program"),	    FALSE, NULL,	NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			    NULL,			    FALSE, NULL,	NULL }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "ssh_server",	    NULL,			  FALSE, "_ssh._tcp", NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "ssh_username",   N_("User name"),		  FALSE, NULL,	      NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password",   N_("User password"),	  FALSE, NULL,	      NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth",	    N_("Authentication type"),	  FALSE, ssh_auth,    NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey", N_("Identity file"),	  FALSE, NULL,	      NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase", N_("Private key passphrase"), FALSE, NULL,	      NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "exec",	    N_("Startup program"),	  FALSE, NULL,	      NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,			  FALSE, NULL,	      NULL }
 };
 
 /**
@@ -1091,7 +1077,7 @@ static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER, "sshlogfolder",		  N_("SSH session log folder"),		    FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"sshlogname",		  N_("SSH session log file name"),	    FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshlogenabled",	  N_("Enable SSH session logging at exit"), FALSE, NULL,		 NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_compression",        N_("Enable SSH compression"),		    FALSE, NULL,		 NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_compression",	  N_("Enable SSH compression"),		    FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring", N_("Disable password storing"),	    TRUE,  NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_stricthostkeycheck", N_("Strict host key checking"),	    TRUE,  NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	NULL,			  NULL,					    FALSE, NULL,		 NULL }
@@ -1132,9 +1118,9 @@ static RemminaProtocolPlugin remmina_plugin_ssh =
  * - checking the list to avoid doublicate entries [g_list_find_custom()]
  */
 static gint
-compare (gconstpointer a, gconstpointer b)
+compare(gconstpointer a, gconstpointer b)
 {
-	return strcmp ((gchar *)a, (gchar *)b);
+	return strcmp((gchar *)a, (gchar *)b);
 }
 
 void
@@ -1149,9 +1135,10 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 	 * count number of (all) files to reserve enought memory
 	 */
 	/* /usr/local/share/remmina */
-	const gchar * const *dirs = g_get_system_data_dirs();
+	const gchar *const *dirs = g_get_system_data_dirs();
 
 	unsigned int i = 0;
+
 	for (i = 0; dirs[i] != NULL; ++i) {
 		GDir *system_data_dir = NULL;
 		gchar *remmina_dir = g_build_path("/", dirs[i], "remmina", "theme", NULL);
@@ -1169,9 +1156,8 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 						if (g_str_has_suffix(filename, ".colors")) {
 							gsize len = strrchr(filename, '.') - filename;
 							gchar *menu_str = g_strndup(filename, len);
-							if (g_list_find_custom(files, menu_str,compare) == NULL) {
+							if (g_list_find_custom(files, menu_str, compare) == NULL)
 								files = g_list_insert_sorted(files, menu_str, compare);
-							}
 						}
 					}
 				}
@@ -1180,7 +1166,7 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 	}
 
 	/* ~/.config/remmina/colors */
-	gchar *remmina_dir = g_build_path( "/", g_get_user_config_dir(), "remmina", "theme", NULL);
+	gchar *remmina_dir = g_build_path("/", g_get_user_config_dir(), "remmina", "theme", NULL);
 	GDir *user_data_dir;
 	user_data_dir = g_dir_open(remmina_dir, 0, &error);
 	g_free(remmina_dir);
@@ -1197,9 +1183,8 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 						strcpy(menu_str, filename);
 						char *t2 = strrchr(menu_str, '.');
 						t2[0] = 0;
-						if (g_list_find_custom(files, menu_str, compare) == NULL) {
+						if (g_list_find_custom(files, menu_str, compare) == NULL)
 							files = g_list_insert_sorted(files, menu_str, compare);
-						}
 					}
 				}
 			}
@@ -1215,14 +1200,13 @@ remmina_ssh_plugin_load_terminal_palettes(gpointer *ssh_terminal_palette_new)
 	// preset with (old) static ssh_terminal_palette data
 	for (; field_idx < preset_rec_size; field_idx++) {
 		color_palette[field_idx] = ssh_terminal_palette[field_idx];
-		if (!color_palette[field_idx]) {
+		if (!color_palette[field_idx])
 			break;
-		}
 	}
 
 	GList *l_files = NULL;
 	for (l_files = g_list_first(files); l_files != NULL; l_files = l_files->next) {
-		gchar *menu_str = (gchar *) l_files->data;
+		gchar *menu_str = (gchar *)l_files->data;
 
 		color_palette[field_idx++] = menu_str;
 		color_palette[field_idx++] = menu_str;
@@ -1254,9 +1238,9 @@ remmina_ssh_plugin_register(void)
 	remmina_ssh_plugin_load_terminal_palettes(&ssh_terminal_palette_new);
 
 	settings[0].opt1 = ssh_terminal_palette_new;
-	remmina_plugin_ssh.advanced_settings = (RemminaProtocolSetting*)settings;
+	remmina_plugin_ssh.advanced_settings = (RemminaProtocolSetting *)settings;
 
-	remmina_plugin_service->register_plugin((RemminaPlugin*)&remmina_plugin_ssh);
+	remmina_plugin_service->register_plugin((RemminaPlugin *)&remmina_plugin_ssh);
 
 	ssh_threads_set_callbacks(ssh_threads_get_pthread());
 	ssh_init();
