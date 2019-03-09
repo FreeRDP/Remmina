@@ -182,11 +182,16 @@ parts:
     stage:
       - -./usr/share/fonts/**
 
+    override-build: |
+      set -eu
+      snapcraftctl build
+      mkdir -pv $SNAPCRAFT_PART_INSTALL/meta/gui/
+      cp ../src/data/desktop/scalable/apps/org.remmina.Remmina.svg $SNAPCRAFT_PART_INSTALL/meta/gui/remmina.svg
     override-prime: |
       set -eu
       snapcraftctl prime
       # Fix application icon lookup
-      sed --in-place 's|^Icon=.*|Icon=\${SNAP}/meta/gui/icon.svg|' usr/share/applications/org.remmina.Remmina.desktop
+      sed --in-place 's|^Icon=.*|Icon=\${SNAP}/meta/gui/remmina.svg|' usr/share/applications/org.remmina.Remmina.desktop
 
   app:
     after:
