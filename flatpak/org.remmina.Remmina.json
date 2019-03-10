@@ -85,12 +85,13 @@
         {
             "name": "nxproxy",
             "no-autogen": true,
-            "make-args": ["PREFIX=/app"],
+            "make-args": ["build-lite", "PREFIX=/app"],
+            "install-rule": "install-lite",
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://code.x2go.org/releases/source/nx-libs/nx-libs-3.5.99.17-1-lite.tar.gz",
-                    "sha256": "28a4ebf98577e4848d26be44d1ca79c9a25865ea5d15c682a3a03865e56647a1"
+                    "url": "https://github.com/ArcticaProject/nx-libs/archive/3.5.99.19/nx-libs-3.5.99.19.tar.gz",
+                    "sha256": "4fd7c392c591a2fab06ddc598bd7488c81a20125f01cf4ce4dfd2934de4613df"
                 }
             ]
         },
