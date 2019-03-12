@@ -16,18 +16,30 @@ This special place is reserved to who have donated the hisghest amount of money 
 - Rafael Wolf owner of [EITS, LLC, dba Express IT Solutions](https://eitsonline.com) Kalamazoo, MI 49048 USA. ( **Donated $100** )
 - [Tim Richardson - GrowthPath founder](https://www.growthpath.com.au/people/growthpath-team-2)
 
+## Year 2019 donors
+
+- Clayton Casciato
+- Márcio Oliveira Luiz
+- Andres Zanzani
+- Wolfgang Scherer
+- Roman Cravtov
+- Andrew Hart
+
 ## Year 2018 donors
 
 - Anton Karmanov
 - Antonio Quinonez-Mun
+- Clemens Anhuth
 - CSI Dudek Marcin
 - coder-zero @Future Systems bvba
 - Debapriyo Sarkar
+- Harjit Takshak
 - Marco Polano
 - Michael Hipp
 - Peter Link
 - Praveen Bhamidipati
 - Radek Loutocký
+- Richard Flathmann
 - Sergey Lebfr
 - Tommy Sweeney
 

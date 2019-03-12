@@ -1,8 +1,14 @@
-# Changelog
+## v1.3.4
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.3...v.1.3.4)
 
-Current Remmina changelog, see CHANGELOG.archive.md for old releases.
+* Updated to use core18 and gnome-3-28-1804 [!1797](https://gitlab.com/Remmina/Remmina/merge_requests/1797) *@kenvandine*
+* Snap: Build snap in CI and publish to the edge channel for builds against master [!1810](https://gitlab.com/Remmina/Remmina/merge_requests/1810) *@kenvandine*
+* Resolve "SSH public key cannot be imported: Access denied for 'none'. Authentication that can continie: publickey" [!1811](https://gitlab.com/Remmina/Remmina/merge_requests/1811) *@antenore*
+* snap: Ensure the icon is installed [!1812](https://gitlab.com/Remmina/Remmina/merge_requests/1812) *@kenvandine*
 
-## [v1.3.3](https://gitlab.com/Remmina/Remmina/compare/v1.3.3)
+
+## v1.3.3
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.2...v1.3.3)
 
 * Fix “Utranslated” typo + XHTML 1.0 strictness + move div CSS rule in style block [!1785](https://gitlab.com/Remmina/Remmina/merge_requests/1785) *@DevDef*
 * Revert autoclosed <script> tags. It seems to be badly surported [!1786](https://gitlab.com/Remmina/Remmina/merge_requests/1786) *@DevDef*
@@ -23,6 +29,7 @@ Current Remmina changelog, see CHANGELOG.archive.md for old releases.
 * Translate new strings to German [!1803](https://gitlab.com/Remmina/Remmina/merge_requests/1803) *@jweberhofer*
 * Fix Yes/No inversion [!1805](https://gitlab.com/Remmina/Remmina/merge_requests/1805) *@DevDef*
 * Update Danish translation [!1804](https://gitlab.com/Remmina/Remmina/merge_requests/1804) *@scootergrisen*
+* Remmina release v.1.3.3 [!1807](https://gitlab.com/Remmina/Remmina/merge_requests/1807) *@antenore*
 
 ## [v1.3.2](https://gitlab.com/Remmina/Remmina/tags/v1.3.2) (2019-01-31)
 
