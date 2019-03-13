@@ -40,6 +40,7 @@
 #include <string.h>
 
 #include "remmina_public.h"
+#include "remmina_pref.h"
 #include "remmina_string_array.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_file_manager.h"
@@ -55,6 +56,12 @@ gchar *remmina_file_get_datadir(void)
 	TRACE_CALL(__func__);
 	const gchar *dir = ".remmina";
 	int i;
+	/* From preferences, datadir_path */
+	remminadir = remmina_pref_get_value ("datadir_path");
+	if (remminadir != NULL)
+		if (g_file_test(remminadir, G_FILE_TEST_IS_DIR))
+			return remminadir;
+	g_free(remminadir), remminadir = NULL;
 	/* Legacy ~/.remmina */
 	remminadir = g_build_path("/", g_get_home_dir(), dir, NULL);
 	if (g_file_test(remminadir, G_FILE_TEST_IS_DIR))
