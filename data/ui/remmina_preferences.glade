@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1
+<!-- Generated with glade 3.22.1 
 
 Remmina Preferences Dialog -
 Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2018
@@ -98,31 +98,16 @@ Author: Antenore Gatta
                     <property name="row_spacing">5</property>
                     <property name="column_spacing">7</property>
                     <child>
-                      <object class="GtkCheckButton" id="checkbutton_options_remember_last_view_mode">
-                        <property name="label" translatable="yes">Remember last view mode for each connection</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="halign">start</property>
-                        <property name="hexpand">True</property>
-                        <property name="draw_indicator">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">8</property>
-                        <property name="width">3</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkLabel" id="label_options_double_click">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">start</property>
+                        <property name="halign">end</property>
                         <property name="label" translatable="yes">Double-click action</property>
+                        <property name="justify">right</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
+                        <property name="top_attach">3</property>
                       </packing>
                     </child>
                     <child>
@@ -137,7 +122,7 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">0</property>
+                        <property name="top_attach">3</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -145,12 +130,13 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_options_scale_quality">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">start</property>
+                        <property name="halign">end</property>
                         <property name="label" translatable="yes">Scale quality</property>
+                        <property name="justify">right</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">4</property>
                       </packing>
                     </child>
                     <child>
@@ -167,7 +153,7 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">1</property>
+                        <property name="top_attach">4</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -175,12 +161,13 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_options_scroll">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">start</property>
+                        <property name="halign">end</property>
                         <property name="label" translatable="yes">Auto scroll step size</property>
+                        <property name="justify">right</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">5</property>
+                        <property name="top_attach">6</property>
                       </packing>
                     </child>
                     <child>
@@ -191,7 +178,7 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">5</property>
+                        <property name="top_attach">6</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -199,12 +186,13 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_options_recent_items">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">start</property>
+                        <property name="halign">end</property>
                         <property name="label" translatable="yes">Maximum recent items</property>
+                        <property name="justify">right</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">4</property>
+                        <property name="top_attach">5</property>
                       </packing>
                     </child>
                     <child>
@@ -216,7 +204,7 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">4</property>
+                        <property name="top_attach">5</property>
                       </packing>
                     </child>
                     <child>
@@ -225,36 +213,38 @@ Author: Antenore Gatta
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="halign">start</property>
                         <signal name="clicked" handler="remmina_pref_dialog_clear_recent" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
-                        <property name="top_attach">4</property>
+                        <property name="top_attach">5</property>
                       </packing>
                     </child>
                     <child>
                       <object class="GtkLabel" id="label_options_resolutions">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">start</property>
+                        <property name="halign">end</property>
                         <property name="label" translatable="yes">Resolutions</property>
+                        <property name="justify">right</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">6</property>
+                        <property name="top_attach">7</property>
                       </packing>
                     </child>
                     <child>
                       <object class="GtkLabel" id="label_options_keystrokes">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">start</property>
+                        <property name="halign">end</property>
                         <property name="label" translatable="yes">Keystrokes</property>
-                        <property name="justify">fill</property>
+                        <property name="justify">right</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">7</property>
+                        <property name="top_attach">8</property>
                       </packing>
                     </child>
                     <child>
@@ -267,7 +257,7 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">7</property>
+                        <property name="top_attach">8</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -275,12 +265,13 @@ Author: Antenore Gatta
                       <object class="GtkLabel" id="label_options_screenshot_folder">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">start</property>
+                        <property name="halign">end</property>
                         <property name="label" translatable="yes">Screenshots folder</property>
+                        <property name="justify">right</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">2</property>
+                        <property name="top_attach">1</property>
                       </packing>
                     </child>
                     <child>
@@ -294,7 +285,7 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">2</property>
+                        <property name="top_attach">1</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -308,36 +299,21 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">6</property>
+                        <property name="top_attach">7</property>
                         <property name="width">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkCheckButton" id="checkbutton_permit_send_stats">
-                        <property name="label" translatable="yes">Send periodic usage statistics to remmina developers</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="halign">start</property>
-                        <property name="hexpand">True</property>
-                        <property name="draw_indicator">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">9</property>
-                        <property name="width">3</property>
                       </packing>
                     </child>
                     <child>
                       <object class="GtkLabel" id="label_options_screenshot_name">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">start</property>
+                        <property name="halign">end</property>
                         <property name="label" translatable="yes">Screenshots file name</property>
+                        <property name="justify">right</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
-                        <property name="top_attach">3</property>
+                        <property name="top_attach">2</property>
                       </packing>
                     </child>
                     <child>
@@ -353,25 +329,118 @@ Author: Antenore Gatta
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
-                        <property name="top_attach">3</property>
+                        <property name="top_attach">2</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="checkbutton_options_deny_screenshot_clipboard">
-                        <property name="label" translatable="yes">Deny Copy Screenshot to clipboard</property>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">This is the folder where the connection profiles will be saved, it defaults to the XDG_USER_DATA</property>
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes" comments="It's the folder where the profiles are saved">Remmina data folder</property>
+                        <property name="justify">right</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkFileChooserButton" id="filechooserbutton_options_datadir_path">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="action">select-folder</property>
+                        <property name="title" translatable="yes"/>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="label_options_remember_last_view_mode">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">Remember last view mode for each connection</property>
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Remember last view mode</property>
+                        <property name="justify">right</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">9</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSwitch" id="switch_options_remember_last_view_mode">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="tooltip_text" translatable="yes">If you check this button, when generating a screenshot it will only be saved on a file and not in the clipboard.</property>
                         <property name="halign">start</property>
-                        <property name="hexpand">True</property>
-                        <property name="draw_indicator">True</property>
+                        <property name="valign">center</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">9</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="label_permit_send_stats">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">Send periodic usage statistics to remmina developers</property>
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">Send statistics to remmina.org</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
                         <property name="top_attach">10</property>
-                        <property name="width">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSwitch" id="switch_permit_send_stats">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">10</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSwitch" id="switch_options_deny_screenshot_clipboard">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">11</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="label_options_deny_screenshot_clipboard">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">If you check this button, when generating a screenshot it will only be saved on a file and not in the clipboard.</property>
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Deny screenshot to clipboard</property>
+                        <property name="justify">right</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">11</property>
                       </packing>
                     </child>
                   </object>
@@ -1540,11 +1609,13 @@ Author: Antenore Gatta
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="halign">start</property>
                             <property name="title" translatable="yes">Foreground color</property>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="top_attach">0</property>
+                            <property name="width">8</property>
                           </packing>
                         </child>
                         <child>
@@ -1841,27 +1912,6 @@ Author: Antenore Gatta
                             <property name="top_attach">5</property>
                             <property name="width">8</property>
                           </packing>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
                         </child>
                         <child>
                           <placeholder/>
