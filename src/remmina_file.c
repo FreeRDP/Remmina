@@ -108,8 +108,46 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	GTimeVal gtime;
 	GDir *dir;
 
+	/* File name restrictions:
+	 * - Do not start with space
+	 * - Do not end with space or dot
+	 * - No more than 255 chars
+	 * - Do not contain \0
+	 * - Avoid % and $
+	 * - Avoid underscores and spaces for interoperabiility with everything else
+	 * - Better all lowercase
+	 */
+	gchar *invalid_chars = "\\%|/$?<>:* \"";
+	GString *filenamestr;
+	gchar *filename;
+
+
+	/** functions we can use
+	 * g_strstrip( string )
+	 *	Removes leading and trailing whitespace from a string
+	 * g_strdelimit (str, invalid_chars, '-'))
+	 *	Convert each invalid_chars in a hyphen
+	 * g_ascii_strdown(string)
+	 *	all lowercase
+	 * To be safe we should remove control characters as well (but I'm lazy)
+	 * https://rosettacode.org/wiki/Strip_control_codes_and_extended_characters_from_a_string#C
+	 * g_utf8_strncpy (gchar *dest, const gchar *src, gsize n);
+	 *	copies a given number of characters instead of a given number of bytes. The src string must be valid UTF-8 encoded text.
+	 * g_utf8_validate (const gchar *str, gssize max_len, const gchar **end);
+	 *	Validates UTF-8 encoded text.
+	 */
+
 	g_free(remminafile->filename);
 	g_get_current_time(&gtime);
+
+	filenamestr = g_string_new (g_strdup_printf("%s/%s.remmina",
+				remmina_file_get_datadir(),
+				remmina_pref.remmina_file_name));
+	//remmina_utils_string_replace_all(filenamestr, "%N",
+			//remmina_file_get_string(remminafile, "name"));
+	filename = g_string_free(filenamestr, FALSE);
+
+	g_print ("file name: %s\n", filename);
 
 	dir = g_dir_open(remmina_file_get_datadir(), 0, NULL);
 	if (dir != NULL)

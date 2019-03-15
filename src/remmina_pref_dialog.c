@@ -161,6 +161,7 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	gboolean rebuild_remmina_icon = FALSE;
 
 	remmina_pref.datadir_path = gtk_file_chooser_get_filename(remmina_pref_dialog->filechooserbutton_options_datadir_path);
+	remmina_pref.remmina_file_name = gtk_entry_get_text(remmina_pref_dialog->entry_options_file_name);
 	remmina_pref.screenshot_path = gtk_file_chooser_get_filename(remmina_pref_dialog->filechooserbutton_options_screenshots_path);
 	remmina_pref.screenshot_name = gtk_entry_get_text(remmina_pref_dialog->entry_options_screenshot_name);
 	remmina_pref.deny_screenshot_clipboard = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_options_deny_screenshot_clipboard));
@@ -510,6 +511,11 @@ static void remmina_pref_dialog_init(void)
 	if (remmina_pref.datadir_path != NULL) {
 		gtk_file_chooser_set_filename(remmina_pref_dialog->filechooserbutton_options_datadir_path, remmina_pref.datadir_path);
 	}
+	if (remmina_pref.remmina_file_name != NULL) {
+		gtk_entry_set_text(remmina_pref_dialog->entry_options_file_name, remmina_pref.remmina_file_name);
+	}else{
+		gtk_entry_set_text(remmina_pref_dialog->entry_options_file_name, "%G_%P_%N_%h.remmina");
+	}
 	if (remmina_pref.screenshot_path != NULL) {
 		gtk_file_chooser_set_filename(remmina_pref_dialog->filechooserbutton_options_screenshots_path, remmina_pref.screenshot_path);
 	}else{
@@ -548,6 +554,7 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->notebook_preferences = GTK_NOTEBOOK(GET_OBJECT("notebook_preferences"));
 
 	remmina_pref_dialog->filechooserbutton_options_datadir_path = GTK_FILE_CHOOSER(GET_OBJECT("filechooserbutton_options_datadir_path"));
+	remmina_pref_dialog->entry_options_file_name = GTK_ENTRY(GET_OBJECT("entry_options_file_name"));
 	remmina_pref_dialog->filechooserbutton_options_screenshots_path = GTK_FILE_CHOOSER(GET_OBJECT("filechooserbutton_options_screenshots_path"));
 	remmina_pref_dialog->entry_options_screenshot_name = GTK_ENTRY(GET_OBJECT("entry_options_screenshot_name"));
 	remmina_pref_dialog->switch_options_deny_screenshot_clipboard = GTK_SWITCH(GET_OBJECT("switch_options_deny_screenshot_clipboard"));

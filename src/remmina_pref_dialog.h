@@ -49,6 +49,7 @@ typedef struct _RemminaPrefDialog {
 	GtkNotebook *notebook_preferences;
 
 	GtkFileChooser *filechooserbutton_options_datadir_path;
+	GtkEntry *entry_options_file_name;
 	GtkFileChooser *filechooserbutton_options_screenshots_path;
 	GtkEntry *entry_options_screenshot_name;
 	GtkSwitch *switch_options_deny_screenshot_clipboard;

@@ -403,6 +403,12 @@ void remmina_pref_init(void)
 		remmina_pref.datadir_path = g_key_file_get_string(gkeyfile, "remmina_pref", "datadir_path", NULL);
 	}
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "remmina_file_name", NULL)) {
+		remmina_pref.remmina_file_name = g_key_file_get_string(gkeyfile, "remmina_pref", "remmina_file_name", NULL);
+	}else{
+		remmina_pref.remmina_file_name = g_strdup("%G_%P_%N_%h.remmina");
+	}
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "screenshot_path", NULL)) {
 		remmina_pref.screenshot_path = g_key_file_get_string(gkeyfile, "remmina_pref", "screenshot_path", NULL);
 	}else{
@@ -660,8 +666,9 @@ gboolean remmina_pref_save(void)
 	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
 
 	g_key_file_set_string(gkeyfile, "remmina_pref", "datadir_path", remmina_pref.datadir_path);
+	g_key_file_set_string(gkeyfile, "remmina_pref", "remmina_file_name", remmina_pref.remmina_file_name);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "screenshot_path", remmina_pref.screenshot_path);
-	g_key_file_set_string(gkeyfile, "remmina_pref", "screenshot_name", remmina_pref.screenshot_name);
+	g_key_file_set_string(gkeyfile, "remmina_pref", "remmina_file_name", remmina_pref.remmina_file_name);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "deny_screenshot_clipboard", remmina_pref.deny_screenshot_clipboard);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_view_mode", remmina_pref.save_view_mode);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "floating_toolbar_placement", remmina_pref.floating_toolbar_placement);
