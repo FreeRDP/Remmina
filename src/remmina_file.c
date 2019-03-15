@@ -60,6 +60,7 @@
 #include "remmina_pref.h"
 #include "remmina_main.h"
 #include "remmina_masterthread_exec.h"
+#include "remmina_utils.h"
 #include "remmina/remmina_trace_calls.h"
 
 #define MIN_WINDOW_WIDTH 10
@@ -117,7 +118,7 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	 * - Avoid underscores and spaces for interoperabiility with everything else
 	 * - Better all lowercase
 	 */
-	gchar *invalid_chars = "\\%|/$?<>:* \"";
+	gchar *invalid_chars = "\\%|/$?<>:*. \"";
 	GString *filenamestr;
 	gchar *filename;
 
@@ -140,19 +141,22 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	g_free(remminafile->filename);
 	g_get_current_time(&gtime);
 
-	filenamestr = g_string_new (g_strdup_printf("%s/%s.remmina",
-				remmina_file_get_datadir(),
+	filenamestr = g_string_new (g_strdup_printf("%s",
 				remmina_pref.remmina_file_name));
-	//remmina_utils_string_replace_all(filenamestr, "%N",
-			//remmina_file_get_string(remminafile, "name"));
-	filename = g_string_free(filenamestr, FALSE);
-
-	g_print ("file name: %s\n", filename);
+	remmina_utils_string_replace_all(filenamestr, "%N",
+			remmina_file_get_string(remminafile, "name"));
+	remmina_utils_string_replace_all(filenamestr, "%G",
+			remmina_file_get_string(remminafile, "group"));
+	remmina_utils_string_replace_all(filenamestr, "%P",
+			remmina_file_get_string(remminafile, "protocol"));
+	remmina_utils_string_replace_all(filenamestr, "%h",
+			remmina_file_get_string(remminafile, "server"));
+	filename = g_strdelimit (g_ascii_strdown(g_strstrip(g_string_free(filenamestr, FALSE)), -1),
+			invalid_chars, '-');
 
 	dir = g_dir_open(remmina_file_get_datadir(), 0, NULL);
 	if (dir != NULL)
-		remminafile->filename = g_strdup_printf("%s/%li%03li.remmina", remmina_file_get_datadir(), gtime.tv_sec,
-			gtime.tv_usec / 1000);
+		remminafile->filename = g_strdup_printf("%s/%s.remmina", remmina_file_get_datadir(), filename);
 	else
 		remminafile->filename = NULL;
 	g_dir_close(dir);
@@ -235,11 +239,12 @@ remmina_file_load(const gchar *filename)
 
 	gkeyfile = g_key_file_new();
 
-	if (!g_key_file_load_from_file(gkeyfile, filename, G_KEY_FILE_NONE, NULL)) {
-		g_key_file_free(gkeyfile);
-		g_printf("WARNING: unable to load remmina profile file %s: g_key_file_load_from_file() returned NULL.\n", filename);
-		return NULL;
-	}
+	if (g_file_test(filename, G_FILE_TEST_IS_REGULAR | G_FILE_TEST_EXISTS))
+		if (!g_key_file_load_from_file(gkeyfile, filename, G_KEY_FILE_NONE, NULL)) {
+			g_key_file_free(gkeyfile);
+			g_printf("WARNING: unable to load remmina profile file %s: g_key_file_load_from_file() returned NULL.\n", filename);
+			return NULL;
+		}
 
 	if (g_key_file_has_key(gkeyfile, "remmina", "name", NULL)) {
 		remminafile = remmina_file_new_empty();

@@ -406,7 +406,7 @@ void remmina_pref_init(void)
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "remmina_file_name", NULL)) {
 		remmina_pref.remmina_file_name = g_key_file_get_string(gkeyfile, "remmina_pref", "remmina_file_name", NULL);
 	}else{
-		remmina_pref.remmina_file_name = g_strdup("%G_%P_%N_%h.remmina");
+		remmina_pref.remmina_file_name = g_strdup("%G_%P_%N_%h");
 	}
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "screenshot_path", NULL)) {

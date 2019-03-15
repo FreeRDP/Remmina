@@ -68,6 +68,8 @@ GtkWidget* remmina_file_editor_new_full(const gchar* server, const gchar* protoc
 GtkWidget* remmina_file_editor_new_copy(const gchar* filename);
 /* Open existing file */
 GtkWidget* remmina_file_editor_new_from_filename(const gchar* filename);
+void remmina_file_editor_check_profile(RemminaFileEditor* gfe);
+void remmina_file_editor_file_save(RemminaFileEditor* gfe);
 
 G_END_DECLS
 

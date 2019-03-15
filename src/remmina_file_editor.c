@@ -1244,6 +1244,7 @@ static void remmina_file_editor_on_save(GtkWidget* button, RemminaFileEditor* gf
 	TRACE_CALL(__func__);
 
 	remmina_file_editor_update(gfe);
+	remmina_file_editor_file_save(gfe);
 
 	remmina_file_save(gfe->priv->remmina_file);
 	remmina_icon_populate_menu();
@@ -1275,6 +1276,7 @@ static void remmina_file_editor_on_save_connect(GtkWidget* button, RemminaFileEd
 	RemminaFile* gf;
 
 	remmina_file_editor_update(gfe);
+	remmina_file_editor_file_save(gfe);
 
 	remmina_file_save(gfe->priv->remmina_file);
 	remmina_icon_populate_menu();
@@ -1359,19 +1361,17 @@ static gboolean remmina_file_editor_iterate_protocol(gchar* protocol, RemminaPlu
 	return FALSE;
 }
 
-static void remmina_file_editor_check_profile(RemminaFileEditor* gfe)
+void remmina_file_editor_check_profile(RemminaFileEditor* gfe)
 {
 	TRACE_CALL(__func__);
 	RemminaFileEditorPriv* priv;
 
 	priv = gfe->priv;
-	if (remmina_file_get_filename(priv->remmina_file)) {
-		gtk_widget_set_sensitive(priv->group_combo, TRUE);
-		gtk_widget_set_sensitive(priv->save_button, TRUE);
-	}
+	gtk_widget_set_sensitive(priv->group_combo, TRUE);
+	gtk_widget_set_sensitive(priv->save_button, TRUE);
 }
 
-static void remmina_file_editor_name_on_changed(GtkEditable* editable, RemminaFileEditor* gfe)
+static void remmina_file_editor_entry_on_changed(GtkEditable* editable, RemminaFileEditor* gfe)
 {
 	TRACE_CALL(__func__);
 	RemminaFileEditorPriv* priv;
@@ -1380,8 +1380,27 @@ static void remmina_file_editor_name_on_changed(GtkEditable* editable, RemminaFi
 	if (remmina_file_get_filename(priv->remmina_file) == NULL) {
 		remmina_file_generate_filename(priv->remmina_file);
 		remmina_file_editor_check_profile(gfe);
+	} else {
+		remmina_file_delete(remmina_file_get_filename(priv->remmina_file));
+		remmina_file_generate_filename(priv->remmina_file);
+		remmina_file_editor_check_profile(gfe);
 	}
 }
+
+void remmina_file_editor_file_save(RemminaFileEditor* gfe)
+{
+	TRACE_CALL(__func__);
+	RemminaFileEditorPriv* priv;
+
+	priv = gfe->priv;
+	if (remmina_file_get_filename(priv->remmina_file) == NULL) {
+		remmina_file_generate_filename(priv->remmina_file);
+	} else {
+		remmina_file_delete(remmina_file_get_filename(priv->remmina_file));
+		remmina_file_generate_filename(priv->remmina_file);
+	}
+}
+
 
 GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 {
@@ -1432,7 +1451,7 @@ GtkWidget* remmina_file_editor_new_from_file(RemminaFile* remminafile)
 #if GTK_CHECK_VERSION(3, 16, 0)
 		gtk_entry_grab_focus_without_selecting(GTK_ENTRY(widget));
 #endif
-		g_signal_connect(G_OBJECT(widget), "changed", G_CALLBACK(remmina_file_editor_name_on_changed), gfe);
+		g_signal_connect(G_OBJECT(widget), "changed", G_CALLBACK(remmina_file_editor_entry_on_changed), gfe);
 	}else  {
 		cs = remmina_file_get_string(remminafile, "name");
 		gtk_entry_set_text(GTK_ENTRY(widget), cs ? cs : "");
