@@ -106,7 +106,6 @@ remmina_file_new(void)
 void remmina_file_generate_filename(RemminaFile *remminafile)
 {
 	TRACE_CALL(__func__);
-	GTimeVal gtime;
 	GDir *dir;
 
 	/* File name restrictions:
@@ -121,6 +120,7 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	gchar *invalid_chars = "\\%|/$?<>:*. \"";
 	GString *filenamestr;
 	gchar *filename;
+	const gchar *s;
 
 
 	/** functions we can use
@@ -139,18 +139,27 @@ void remmina_file_generate_filename(RemminaFile *remminafile)
 	 */
 
 	g_free(remminafile->filename);
-	g_get_current_time(&gtime);
 
 	filenamestr = g_string_new (g_strdup_printf("%s",
 				remmina_pref.remmina_file_name));
-	remmina_utils_string_replace_all(filenamestr, "%N",
-			remmina_file_get_string(remminafile, "name"));
-	remmina_utils_string_replace_all(filenamestr, "%G",
-			remmina_file_get_string(remminafile, "group"));
-	remmina_utils_string_replace_all(filenamestr, "%P",
-			remmina_file_get_string(remminafile, "protocol"));
-	remmina_utils_string_replace_all(filenamestr, "%h",
-			remmina_file_get_string(remminafile, "server"));
+	if ((s = remmina_file_get_string(remminafile, "name")) == NULL) s = "name";
+	if (g_strstr_len (filenamestr->str, -1, "%N") != NULL )
+		remmina_utils_string_replace_all(filenamestr, "%N", s);
+
+	if ((s = remmina_file_get_string(remminafile, "group")) == NULL) s = "group";
+	if (g_strstr_len (filenamestr->str, -1, "%G") != NULL )
+		remmina_utils_string_replace_all(filenamestr, "%G", s);
+
+	if ((s = remmina_file_get_string(remminafile, "protocol")) == NULL) s = "proto";
+	if (g_strstr_len (filenamestr->str, -1, "%P") != NULL )
+		remmina_utils_string_replace_all(filenamestr, "%P", s);
+
+	if ((s = remmina_file_get_string(remminafile, "server")) == NULL) s = "host";
+	if (g_strstr_len (filenamestr->str, -1, "%h") != NULL )
+		remmina_utils_string_replace_all(filenamestr, "%h", s);
+
+	s = NULL;
+
 	filename = g_strdelimit (g_ascii_strdown(g_strstrip(g_string_free(filenamestr, FALSE)), -1),
 			invalid_chars, '-');
 
