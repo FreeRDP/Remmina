@@ -77,15 +77,9 @@ G_DEFINE_TYPE( RemminaConnectionWindow, rcw, GTK_TYPE_WINDOW)
 /* default timeout used to hide the floating toolbar wen switching profile */
 #define TB_HIDE_TIME_TIME 1000
 
-typedef struct _RemminaConnectionHolder RemminaConnectionHolder;
-
 struct _RemminaConnectionWindowPriv {
-	RemminaConnectionHolder* cnnhld;
-
 	GtkWidget* notebook;
-
 	guint switch_page_handler;
-
 	GtkWidget* floating_toolbar_widget;
 	GtkWidget* overlay;
 	GtkWidget* revealer;
@@ -125,6 +119,10 @@ struct _RemminaConnectionWindowPriv {
 
 	gboolean sticky;
 
+	gint fullscreen_view_mode;
+
+	gint grab_retry_eventsourceid;
+
 	/* flag to disable toolbar signal handling when toolbar is
 	 * reconfiguring, usually due to a tab switch */
 	gboolean toolbar_is_reconfiguring;
@@ -133,14 +131,14 @@ struct _RemminaConnectionWindowPriv {
 
 	gboolean kbcaptured;
 	gboolean mouse_pointer_entered;
+	gboolean hostkey_activated;
+	gboolean hostkey_used;
 
 	RemminaConnectionWindowOnDeleteConfirmMode on_delete_confirm_mode;
-
 };
 
 typedef struct _RemminaConnectionObject {
-	RemminaConnectionHolder* cnnhld;
-
+	RemminaConnectionWindow* cnnwin;
 	RemminaFile* remmina_file;
 
 	GtkWidget* proto;
@@ -155,20 +153,9 @@ typedef struct _RemminaConnectionObject {
 	gboolean connected;
 	gboolean dynres_unlocked;
 
-
 	gulong deferred_open_size_allocate_handler;
 
 } RemminaConnectionObject;
-
-struct _RemminaConnectionHolder {
-	RemminaConnectionWindow* cnnwin;
-	gint fullscreen_view_mode;
-	gint grab_retry_eventsourceid;
-
-	gboolean hostkey_activated;
-	gboolean hostkey_used;
-
-};
 
 enum {
 	TOOLBARPLACE_SIGNAL,
@@ -178,27 +165,14 @@ enum {
 static guint rcw_signals[LAST_SIGNAL] =
 { 0 };
 
-#define DECLARE_CNNOBJ \
-	if (!cnnhld || !cnnhld->cnnwin || gtk_notebook_get_current_page(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook)) < 0) return; \
-	RemminaConnectionObject* cnnobj = (RemminaConnectionObject*)g_object_get_data( \
-	G_OBJECT(gtk_notebook_get_nth_page(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook), \
-			gtk_notebook_get_current_page(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook)))), "cnnobj");
-
-#define DECLARE_CNNOBJ_WITH_RETURN(r) \
-	if (!cnnhld || !cnnhld->cnnwin || gtk_notebook_get_current_page(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook)) < 0) return r; \
-	RemminaConnectionObject* cnnobj = (RemminaConnectionObject*)g_object_get_data( \
-	G_OBJECT(gtk_notebook_get_nth_page(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook), \
-			gtk_notebook_get_current_page(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook)))), "cnnobj");
-
-void rch_create_scrolled(RemminaConnectionHolder* cnnhld, RemminaConnectionObject* cnnobj);
-void rch_create_fullscreen(RemminaConnectionHolder* cnnhld, RemminaConnectionObject* cnnobj,
-							gint view_mode);
+static void rco_create_scrolled(RemminaConnectionObject* cnnobj);
+static void rco_create_fullscreen(RemminaConnectionObject* cnnobj,	gint view_mode);
 static gboolean rcw_hostkey_func(RemminaProtocolWidget* gp, guint keyval, gboolean release);
 
-void rch_grab_focus(GtkNotebook *notebook);
-static GtkWidget* rch_create_toolbar(RemminaConnectionHolder* cnnhld, gint mode);
-void rch_place_toolbar(GtkToolbar *toolbar, GtkGrid *grid, GtkWidget *sibling, int toolbar_placement);
-void rch_keyboard_grab(RemminaConnectionHolder* cnnhld);
+void rcw_grab_focus(RemminaConnectionWindow* cnnwin);
+static GtkWidget* rcw_create_toolbar(RemminaConnectionWindow* cnnwin, gint mode);
+static void rcw_place_toolbar(GtkToolbar *toolbar, GtkGrid *grid, GtkWidget *sibling, int toolbar_placement);
+static void rcw_keyboard_grab(RemminaConnectionWindow* cnnwin);
 
 static void rcw_ftb_drag_begin(GtkWidget *widget, GdkDragContext *context, gpointer user_data);
 
@@ -367,6 +341,24 @@ static void rcw_class_init(RemminaConnectionWindowClass* klass)
 
 }
 
+static RemminaConnectionObject *rcw_get_cnnobj_at_page(RemminaConnectionWindow *cnnwin, gint npage)
+{
+	GtkWidget *po;
+	if (!cnnwin->priv->notebook)
+		return NULL;
+	po = gtk_notebook_get_nth_page(GTK_NOTEBOOK(cnnwin->priv->notebook), npage);
+	return g_object_get_data(G_OBJECT(po), "cnnobj");
+}
+
+static RemminaConnectionObject *rcw_get_visible_cnnobj(RemminaConnectionWindow *cnnwin)
+{
+	gint np;
+	np = gtk_notebook_get_current_page(GTK_NOTEBOOK(cnnwin->priv->notebook));
+	if (np < 0)
+		return NULL;
+	return rcw_get_cnnobj_at_page(cnnwin, np);
+}
+
 static RemminaScaleMode get_current_allowed_scale_mode(RemminaConnectionObject* cnnobj, gboolean *dynres_avail, gboolean *scale_avail)
 {
 	TRACE_CALL(__func__);
@@ -398,17 +390,15 @@ static RemminaScaleMode get_current_allowed_scale_mode(RemminaConnectionObject* 
 
 }
 
-void rch_disconnect_current_page(RemminaConnectionHolder* cnnhld)
+static void rco_disconnect_current_page(RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
 
 	/* Disconnects the connection which is currently in view in the notebook */
-
 	remmina_protocol_widget_close_connection(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
 }
 
-void rch_keyboard_ungrab(RemminaConnectionHolder* cnnhld)
+static void rcw_keyboard_ungrab(RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
 	GdkDisplay *display;
@@ -419,12 +409,12 @@ void rch_keyboard_ungrab(RemminaConnectionHolder* cnnhld)
 #endif
 	GdkDevice *keyboard = NULL;
 
-	if (cnnhld->grab_retry_eventsourceid) {
-		g_source_remove(cnnhld->grab_retry_eventsourceid);
-		cnnhld->grab_retry_eventsourceid = 0;
+	if (cnnwin->priv->grab_retry_eventsourceid) {
+		g_source_remove(cnnwin->priv->grab_retry_eventsourceid);
+		cnnwin->priv->grab_retry_eventsourceid = 0;
 	}
 
-	display = gtk_widget_get_display(GTK_WIDGET(cnnhld->cnnwin));
+	display = gtk_widget_get_display(GTK_WIDGET(cnnwin));
 #if GTK_CHECK_VERSION(3, 20, 0)
 	seat = gdk_display_get_default_seat(display);
 	keyboard = gdk_seat_get_pointer(seat);
@@ -433,7 +423,7 @@ void rch_keyboard_ungrab(RemminaConnectionHolder* cnnhld)
 	keyboard = gdk_device_manager_get_client_pointer(manager);
 #endif
 
-	if (!cnnhld->cnnwin->priv->kbcaptured) {
+	if (!cnnwin->priv->kbcaptured) {
 		return;
 	}
 
@@ -453,26 +443,24 @@ void rch_keyboard_ungrab(RemminaConnectionHolder* cnnhld)
 		gdk_device_ungrab(keyboard, GDK_CURRENT_TIME);
 		G_GNUC_END_IGNORE_DEPRECATIONS
 #endif
-		cnnhld->cnnwin->priv->kbcaptured = FALSE;
+		cnnwin->priv->kbcaptured = FALSE;
 
 	}
 }
 
-gboolean rch_keyboard_grab_retry(gpointer user_data)
+static gboolean rcw_keyboard_grab_retry(gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionHolder* cnnhld;
-	cnnhld = (RemminaConnectionHolder *)user_data;
+	RemminaConnectionWindow* cnnwin = (RemminaConnectionWindow *)user_data;
 
-	rch_keyboard_grab(cnnhld);
-	cnnhld->grab_retry_eventsourceid = 0;
+	rcw_keyboard_grab(cnnwin);
+	cnnwin->priv->grab_retry_eventsourceid = 0;
 	return G_SOURCE_REMOVE;
 }
 
-void rch_keyboard_grab(RemminaConnectionHolder* cnnhld)
+static void rcw_keyboard_grab(RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
 	GdkDisplay *display;
 #if GTK_CHECK_VERSION(3, 20, 0)
 	GdkSeat *seat;
@@ -482,11 +470,11 @@ void rch_keyboard_grab(RemminaConnectionHolder* cnnhld)
 	GdkGrabStatus ggs;
 	GdkDevice *keyboard = NULL;
 
-	if (cnnhld->cnnwin->priv->kbcaptured || !cnnhld->cnnwin->priv->mouse_pointer_entered) {
+	if (cnnwin->priv->kbcaptured || !cnnwin->priv->mouse_pointer_entered) {
 		return;
 	}
 
-	display = gtk_widget_get_display(GTK_WIDGET(cnnhld->cnnwin));
+	display = gtk_widget_get_display(GTK_WIDGET(cnnwin));
 #if GTK_CHECK_VERSION(3, 20, 0)
 	seat = gdk_display_get_default_seat(display);
 	keyboard = gdk_seat_get_pointer(seat);
@@ -501,9 +489,9 @@ void rch_keyboard_grab(RemminaConnectionHolder* cnnhld)
 			keyboard = gdk_device_get_associated_device( keyboard );
 		}
 
-		if (remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE)) {
+
 #if DEBUG_KB_GRABBING
-			printf("DEBUG_KB_GRABBING: profile asks for grabbing, let’s try.\n");
+		printf("DEBUG_KB_GRABBING: profile asks for grabbing, let’s try.\n");
 #endif
 	/* Up to GTK version 3.20 we can grab the keyboard with gdk_device_grab().
 	 * in GTK 3.20 gdk_seat_grab() should be used instead of gdk_device_grab().
@@ -514,37 +502,36 @@ void rch_keyboard_grab(RemminaConnectionHolder* cnnhld)
 	 * Also pease note that the newer gdk_seat_grab() is still calling gdk_device_grab().
 	 */
 #if GTK_CHECK_VERSION(3, 24, 0)
-			ggs = gdk_seat_grab(seat, gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)),
-				GDK_SEAT_CAPABILITY_KEYBOARD, FALSE, NULL, NULL, NULL, NULL);
+		ggs = gdk_seat_grab(seat, gtk_widget_get_window(GTK_WIDGET(cnnwin)),
+			GDK_SEAT_CAPABILITY_KEYBOARD, FALSE, NULL, NULL, NULL, NULL);
 #else
-			G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-			ggs = gdk_device_grab(keyboard, gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)), GDK_OWNERSHIP_WINDOW,
-				    TRUE, GDK_KEY_PRESS | GDK_KEY_RELEASE, NULL, GDK_CURRENT_TIME);
-			G_GNUC_END_IGNORE_DEPRECATIONS
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+		ggs = gdk_device_grab(keyboard, gtk_widget_get_window(GTK_WIDGET(cnnwin)), GDK_OWNERSHIP_WINDOW,
+			    TRUE, GDK_KEY_PRESS | GDK_KEY_RELEASE, NULL, GDK_CURRENT_TIME);
+		G_GNUC_END_IGNORE_DEPRECATIONS
 #endif
-			if ( ggs != GDK_GRAB_SUCCESS )
-			{
-				/* Failure to GRAB keyboard */
-				#if DEBUG_KB_GRABBING
-					printf("GRAB FAILED. GdkGrabStatus: %d\n", (int)ggs);
-				#endif
-				/* Reschedule grabbing in half a second if not already done */
-				if (cnnhld->grab_retry_eventsourceid == 0) {
-					cnnhld->grab_retry_eventsourceid = g_timeout_add(500, (GSourceFunc)rch_keyboard_grab_retry, cnnhld);
-				}
-			} else {
+		if ( ggs != GDK_GRAB_SUCCESS )
+		{
+			/* Failure to GRAB keyboard */
 			#if DEBUG_KB_GRABBING
-				printf("GRAB SUCCESS\n");
+				printf("GRAB FAILED. GdkGrabStatus: %d\n", (int)ggs);
 			#endif
-				if (cnnhld->grab_retry_eventsourceid != 0) {
-					g_source_remove(cnnhld->grab_retry_eventsourceid);
-					cnnhld->grab_retry_eventsourceid = 0;
-				}
-				cnnhld->cnnwin->priv->kbcaptured = TRUE;
+			/* Reschedule grabbing in half a second if not already done */
+			if (cnnwin->priv->grab_retry_eventsourceid == 0) {
+				cnnwin->priv->grab_retry_eventsourceid = g_timeout_add(500, (GSourceFunc)rcw_keyboard_grab_retry, cnnwin);
 			}
-		}else {
-			rch_keyboard_ungrab(cnnhld);
+		} else {
+		#if DEBUG_KB_GRABBING
+			printf("GRAB SUCCESS\n");
+		#endif
+			if (cnnwin->priv->grab_retry_eventsourceid != 0) {
+				g_source_remove(cnnwin->priv->grab_retry_eventsourceid);
+				cnnwin->priv->grab_retry_eventsourceid = 0;
+			}
+			cnnwin->priv->kbcaptured = TRUE;
 		}
+	}else {
+		rcw_keyboard_ungrab(cnnwin);
 	}
 }
 
@@ -572,7 +559,6 @@ gboolean rcw_delete(RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionWindowPriv* priv = cnnwin->priv;
-	RemminaConnectionHolder *cnnhld = cnnwin->priv->cnnhld;
 	GtkNotebook* notebook = GTK_NOTEBOOK(priv->notebook);
 	GtkWidget* dialog;
 	gint i, n;
@@ -594,13 +580,6 @@ gboolean rcw_delete(RemminaConnectionWindow* cnnwin)
 	}
 	rcw_close_all_connections(cnnwin);
 
-	/* After rcw_close_all_connections() call, cnnwin
-	 * has been already destroyed during a last page of notebook removal.
-	 * So we must rely on cnnhld */
-	if (cnnhld->cnnwin != NULL && GTK_IS_WIDGET(cnnhld->cnnwin))
-		gtk_widget_destroy(GTK_WIDGET(cnnhld->cnnwin));
-	cnnhld->cnnwin = NULL;
-
 	return TRUE;
 }
 
@@ -611,13 +590,20 @@ static gboolean rcw_delete_event(GtkWidget* widget, GdkEvent* event, gpointer da
 	return TRUE;
 }
 
-static void rcw_destroy(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_destroy(GtkWidget* widget, gpointer data)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionWindowPriv* priv = RCW(widget)->priv;
+	RemminaConnectionWindowPriv* priv;
+	RemminaConnectionWindow* cnnwin;
+
+	if (!REMMINA_IS_CONNECTION_WINDOW(widget))
+		return;
+
+	cnnwin = (RemminaConnectionWindow*)widget;
+	priv = cnnwin->priv;
 
 	if (priv->kbcaptured)
-		rch_keyboard_ungrab(cnnhld);
+		rcw_keyboard_ungrab(cnnwin);
 
 	if (priv->floating_toolbar_motion_handler) {
 		g_source_remove(priv->floating_toolbar_motion_handler);
@@ -644,12 +630,9 @@ static void rcw_destroy(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 		g_source_remove(priv->switch_page_handler);
 		priv->switch_page_handler = 0;
 	}
-	g_free(priv);
 
-	if (GTK_WIDGET(cnnhld->cnnwin) == widget) {
-		cnnhld->cnnwin->priv = NULL;
-		cnnhld->cnnwin = NULL;
-	}
+	cnnwin->priv = NULL;
+	g_free(priv);
 
 }
 
@@ -669,11 +652,12 @@ static gboolean rcw_tb_drag_failed(GtkWidget *widget, GdkDragContext *context,
 							 GtkDragResult result, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionHolder* cnnhld;
 	RemminaConnectionWindowPriv* priv;
+	RemminaConnectionObject *cnnobj;
 
-	cnnhld = (RemminaConnectionHolder*)user_data;
-	priv = cnnhld->cnnwin->priv;
+
+	cnnobj = (RemminaConnectionObject*)user_data;
+	priv = cnnobj->cnnwin->priv;
 
 	if (priv->toolbar)
 		gtk_widget_show(GTK_WIDGET(priv->toolbar));
@@ -687,11 +671,11 @@ static gboolean rcw_tb_drag_drop(GtkWidget *widget, GdkDragContext *context,
 	TRACE_CALL(__func__);
 	GtkAllocation wa;
 	gint new_toolbar_placement;
-	RemminaConnectionHolder* cnnhld;
 	RemminaConnectionWindowPriv* priv;
+	RemminaConnectionObject* cnnobj;
 
-	cnnhld = (RemminaConnectionHolder*)user_data;
-	priv = cnnhld->cnnwin->priv;
+	cnnobj = (RemminaConnectionObject*)user_data;
+	priv = cnnobj->cnnwin->priv;
 
 	gtk_widget_get_allocation(widget, &wa);
 
@@ -751,11 +735,10 @@ static void rcw_tb_drag_begin(GtkWidget *widget, GdkDragContext *context, gpoint
 
 }
 
-void rch_update_toolbar_opacity(RemminaConnectionHolder* cnnhld)
+void rco_update_toolbar_opacity(RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 
 	priv->floating_toolbar_opacity = (1.0 - TOOLBAR_OPACITY_MIN) / ((gdouble)TOOLBAR_OPACITY_LEVEL)
 					 * ((gdouble)(TOOLBAR_OPACITY_LEVEL - remmina_file_get_int(cnnobj->remmina_file, "toolbar_opacity", 0)))
@@ -765,7 +748,7 @@ void rch_update_toolbar_opacity(RemminaConnectionHolder* cnnhld)
 	}
 }
 
-gboolean rch_floating_toolbar_make_invisible(gpointer data)
+static gboolean rcw_floating_toolbar_make_invisible(gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionWindowPriv* priv = (RemminaConnectionWindowPriv*)data;
@@ -774,17 +757,17 @@ gboolean rch_floating_toolbar_make_invisible(gpointer data)
 	return FALSE;
 }
 
-void rch_floating_toolbar_show(RemminaConnectionHolder* cnnhld, gboolean show)
+static void rco_floating_toolbar_show(RemminaConnectionObject* cnnobj, gboolean show)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 
 	if (priv->floating_toolbar_widget == NULL)
 		return;
 
 	if (show || priv->pin_down) {
 		/* Make the FTB no longer transparent, in case we have an hidden toolbar */
-		rch_update_toolbar_opacity(cnnhld);
+		rco_update_toolbar_opacity(cnnobj);
 		/* Remove outstanding hide events, if not yet active */
 		if (priv->ftb_hide_eventsource) {
 			g_source_remove(priv->ftb_hide_eventsource);
@@ -795,7 +778,7 @@ void rch_floating_toolbar_show(RemminaConnectionHolder* cnnhld, gboolean show)
 		 * a later toolbar hide */
 		if (remmina_pref.fullscreen_toolbar_visibility == FLOATING_TOOLBAR_VISIBILITY_INVISIBLE) {
 			if (priv->ftb_hide_eventsource == 0)
-				priv->ftb_hide_eventsource = g_timeout_add(1000, rch_floating_toolbar_make_invisible, priv);
+				priv->ftb_hide_eventsource = g_timeout_add(1000, rcw_floating_toolbar_make_invisible, priv);
 		}
 	}
 
@@ -803,10 +786,9 @@ void rch_floating_toolbar_show(RemminaConnectionHolder* cnnhld, gboolean show)
 
 }
 
-void rch_get_desktop_size(RemminaConnectionHolder* cnnhld, gint* width, gint* height)
+static void rco_get_desktop_size(RemminaConnectionObject* cnnobj, gint* width, gint* height)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
 	RemminaProtocolWidget* gp = REMMINA_PROTOCOL_WIDGET(cnnobj->proto);
 
 
@@ -830,31 +812,34 @@ void rco_set_scrolled_policy(RemminaConnectionObject* cnnobj, GtkScrolledWindow*
 		scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED ? GTK_POLICY_NEVER : GTK_POLICY_AUTOMATIC);
 }
 
-gboolean rch_toolbar_autofit_restore(RemminaConnectionHolder* cnnhld)
+gboolean rcw_toolbar_autofit_restore(RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ_WITH_RETURN(FALSE)
-	RemminaConnectionWindowPriv * priv = cnnhld->cnnwin->priv;
+
+	RemminaConnectionWindowPriv * priv = cnnwin->priv;
+	RemminaConnectionObject* cnnobj;
 	gint dwidth, dheight;
 	GtkAllocation nba, ca, ta;
 
 	if (priv->toolbar_is_reconfiguring)
 		return FALSE;
 
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return FALSE;
+
 	if (cnnobj->connected && GTK_IS_SCROLLED_WINDOW(cnnobj->scrolled_container)) {
-		rch_get_desktop_size(cnnhld, &dwidth, &dheight);
+		rco_get_desktop_size(cnnobj, &dwidth, &dheight);
 		gtk_widget_get_allocation(priv->notebook, &nba);
 		gtk_widget_get_allocation(cnnobj->scrolled_container, &ca);
 		gtk_widget_get_allocation(priv->toolbar, &ta);
 		if (remmina_pref.toolbar_placement == TOOLBAR_PLACEMENT_LEFT ||
 		    remmina_pref.toolbar_placement == TOOLBAR_PLACEMENT_RIGHT) {
-			gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), MAX(1, dwidth + ta.width + nba.width - ca.width),
+			gtk_window_resize(GTK_WINDOW(cnnobj->cnnwin), MAX(1, dwidth + ta.width + nba.width - ca.width),
 				MAX(1, dheight + nba.height - ca.height));
 		}else {
-			gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), MAX(1, dwidth + nba.width - ca.width),
+			gtk_window_resize(GTK_WINDOW(cnnobj->cnnwin), MAX(1, dwidth + nba.width - ca.width),
 				MAX(1, dheight + ta.height + nba.height - ca.height));
 		}
-		gtk_container_check_resize(GTK_CONTAINER(cnnhld->cnnwin));
+		gtk_container_check_resize(GTK_CONTAINER(cnnobj->cnnwin));
 	}
 	if (GTK_IS_SCROLLED_WINDOW(cnnobj->scrolled_container)) {
 		rco_set_scrolled_policy(cnnobj, GTK_SCROLLED_WINDOW(cnnobj->scrolled_container));
@@ -862,14 +847,13 @@ gboolean rch_toolbar_autofit_restore(RemminaConnectionHolder* cnnhld)
 	return FALSE;
 }
 
-void rch_toolbar_autofit(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_toolbar_autofit(GtkWidget* widget, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
 
 	if (GTK_IS_SCROLLED_WINDOW(cnnobj->scrolled_container)) {
-		if ((gdk_window_get_state(gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin))) & GDK_WINDOW_STATE_MAXIMIZED) != 0) {
-			gtk_window_unmaximize(GTK_WINDOW(cnnhld->cnnwin));
+		if ((gdk_window_get_state(gtk_widget_get_window(GTK_WIDGET(cnnobj->cnnwin))) & GDK_WINDOW_STATE_MAXIMIZED) != 0) {
+			gtk_window_unmaximize(GTK_WINDOW(cnnobj->cnnwin));
 		}
 
 		/* It’s tricky to make the toolbars disappear automatically, while keeping scrollable.
@@ -878,7 +862,7 @@ void rch_toolbar_autofit(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 			GTK_POLICY_NEVER);
 
 		/** @todo save returned source id in priv->something and then delete when main object is destroyed */
-		g_timeout_add(200, (GSourceFunc)rch_toolbar_autofit_restore, cnnhld);
+		g_timeout_add(200, (GSourceFunc)rcw_toolbar_autofit_restore, cnnobj);
 	}
 
 }
@@ -888,29 +872,29 @@ void rco_get_monitor_geometry(RemminaConnectionObject* cnnobj, GdkRectangle *sz)
 	TRACE_CALL(__func__);
 
 	/* Fill sz with the monitor (or workarea) size and position
-	 * of the monitor (or workarea) where cnnhld->cnnwin is located */
+	 * of the monitor (or workarea) where cnnobj->cnnwin is located */
 
 	GdkRectangle monitor_geometry;
 
 	sz->x = sz->y = sz->width = sz->height = 0;
 
-	if (!cnnobj->cnnhld)
+	if (!cnnobj)
 		return;
-	if (!cnnobj->cnnhld->cnnwin)
+	if (!cnnobj->cnnwin)
 		return;
-	if (!gtk_widget_is_visible(GTK_WIDGET(cnnobj->cnnhld->cnnwin)))
+	if (!gtk_widget_is_visible(GTK_WIDGET(cnnobj->cnnwin)))
 		return;
 
 #if GTK_CHECK_VERSION(3, 22, 0)
 	GdkDisplay* display;
 	GdkMonitor* monitor;
-	display = gtk_widget_get_display(GTK_WIDGET(cnnobj->cnnhld->cnnwin));
-	monitor = gdk_display_get_monitor_at_window(display, gtk_widget_get_window(GTK_WIDGET(cnnobj->cnnhld->cnnwin)));
+	display = gtk_widget_get_display(GTK_WIDGET(cnnobj->cnnwin));
+	monitor = gdk_display_get_monitor_at_window(display, gtk_widget_get_window(GTK_WIDGET(cnnobj->cnnwin)));
 #else
 	GdkScreen* screen;
 	gint monitor;
-	screen = gtk_window_get_screen(GTK_WINDOW(cnnobj->cnnhld->cnnwin));
-	monitor = gdk_screen_get_monitor_at_window(screen, gtk_widget_get_window(GTK_WIDGET(cnnobj->cnnhld->cnnwin)));
+	screen = gtk_window_get_screen(GTK_WINDOW(cnnobj->cnnwin));
+	monitor = gdk_screen_get_monitor_at_window(screen, gtk_widget_get_window(GTK_WIDGET(cnnobj->cnnwin)));
 #endif
 
 #if GTK_CHECK_VERSION(3, 22, 0)
@@ -934,13 +918,9 @@ void rco_get_monitor_geometry(RemminaConnectionObject* cnnobj, GdkRectangle *sz)
 	*sz = monitor_geometry;
 }
 
-
-
-
-void rch_check_resize(RemminaConnectionHolder* cnnhld)
+static void rco_check_resize(RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
 	gboolean scroll_required = FALSE;
 
 	GdkRectangle monitor_geometry;
@@ -951,7 +931,7 @@ void rch_check_resize(RemminaConnectionHolder* cnnhld)
 	scalemode = remmina_protocol_widget_get_current_scale_mode(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
 
 	/* Get remote destkop size */
-	rch_get_desktop_size(cnnhld, &rd_width, &rd_height);
+	rco_get_desktop_size(cnnobj, &rd_width, &rd_height);
 
 	/* Get our monitor size */
 	rco_get_monitor_geometry(cnnobj, &monitor_geometry);
@@ -962,9 +942,9 @@ void rch_check_resize(RemminaConnectionHolder* cnnhld)
 		scroll_required = TRUE;
 	}
 
-	switch (cnnhld->cnnwin->priv->view_mode) {
+	switch (cnnobj->cnnwin->priv->view_mode) {
 	case SCROLLED_FULLSCREEN_MODE:
-		gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), monitor_geometry.width, monitor_geometry.height);
+		gtk_window_resize(GTK_WINDOW(cnnobj->cnnwin), monitor_geometry.width, monitor_geometry.height);
 		gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(cnnobj->scrolled_container),
 			(scroll_required ? GTK_POLICY_AUTOMATIC : GTK_POLICY_NEVER),
 			(scroll_required ? GTK_POLICY_AUTOMATIC : GTK_POLICY_NEVER));
@@ -972,7 +952,7 @@ void rch_check_resize(RemminaConnectionHolder* cnnhld)
 
 	case VIEWPORT_FULLSCREEN_MODE:
 		bordersz = scroll_required ? SCROLL_BORDER_SIZE : 0;
-		gtk_window_resize(GTK_WINDOW(cnnhld->cnnwin), monitor_geometry.width, monitor_geometry.height);
+		gtk_window_resize(GTK_WINDOW(cnnobj->cnnwin), monitor_geometry.width, monitor_geometry.height);
 		if (REMMINA_IS_SCROLLED_VIEWPORT(cnnobj->scrolled_container)) {
 			/* Put a border around Notebook content (RemminaScrolledViewpord), so we can
 			 * move the mouse over the border to scroll */
@@ -983,18 +963,18 @@ void rch_check_resize(RemminaConnectionHolder* cnnhld)
 
 	case SCROLLED_WINDOW_MODE:
 		if (remmina_file_get_int(cnnobj->remmina_file, "viewmode", AUTO_MODE) == AUTO_MODE) {
-			gtk_window_set_default_size(GTK_WINDOW(cnnhld->cnnwin),
+			gtk_window_set_default_size(GTK_WINDOW(cnnobj->cnnwin),
 				MIN(rd_width, monitor_geometry.width), MIN(rd_height, monitor_geometry.height));
 			if (rd_width >= monitor_geometry.width || rd_height >= monitor_geometry.height) {
-				gtk_window_maximize(GTK_WINDOW(cnnhld->cnnwin));
+				gtk_window_maximize(GTK_WINDOW(cnnobj->cnnwin));
 				remmina_file_set_int(cnnobj->remmina_file, "window_maximize", TRUE);
 			}else {
-				rch_toolbar_autofit(NULL, cnnhld);
+				rcw_toolbar_autofit(NULL, cnnobj);
 				remmina_file_set_int(cnnobj->remmina_file, "window_maximize", FALSE);
 			}
 		}else {
 			if (remmina_file_get_int(cnnobj->remmina_file, "window_maximize", FALSE)) {
-				gtk_window_maximize(GTK_WINDOW(cnnhld->cnnwin));
+				gtk_window_maximize(GTK_WINDOW(cnnobj->cnnwin));
 			}
 		}
 		break;
@@ -1004,7 +984,7 @@ void rch_check_resize(RemminaConnectionHolder* cnnhld)
 	}
 }
 
-void rch_set_tooltip(GtkWidget* item, const gchar* tip, guint key1, guint key2)
+static void rcw_set_tooltip(GtkWidget* item, const gchar* tip, guint key1, guint key2)
 {
 	TRACE_CALL(__func__);
 	gchar* s1;
@@ -1065,8 +1045,8 @@ static void remmina_protocol_widget_update_alignment(RemminaConnectionObject* cn
 				gtk_container_add(GTK_CONTAINER(cnnobj->aspectframe), cnnobj->proto);
 				g_object_unref(cnnobj->proto);
 				gtk_widget_show(cnnobj->aspectframe);
-				if (cnnobj->cnnhld != NULL && cnnobj->cnnhld->cnnwin != NULL && cnnobj->cnnhld->cnnwin->priv->notebook != NULL)
-					rch_grab_focus(GTK_NOTEBOOK(cnnobj->cnnhld->cnnwin->priv->notebook));
+				if (cnnobj != NULL && cnnobj->cnnwin != NULL && cnnobj->cnnwin->priv->notebook != NULL)
+					rcw_grab_focus(cnnobj->cnnwin);
 			}else {
 				gtk_aspect_frame_set(GTK_ASPECT_FRAME(cnnobj->aspectframe), 0.5, 0.5, aratio, FALSE);
 			}
@@ -1082,8 +1062,8 @@ static void remmina_protocol_widget_update_alignment(RemminaConnectionObject* cn
 				cnnobj->aspectframe = NULL;
 				gtk_container_add(GTK_CONTAINER(cnnobj->viewport), cnnobj->proto);
 				g_object_unref(cnnobj->proto);
-				if (cnnobj->cnnhld != NULL && cnnobj->cnnhld->cnnwin != NULL && cnnobj->cnnhld->cnnwin->priv->notebook != NULL)
-					rch_grab_focus(GTK_NOTEBOOK(cnnobj->cnnhld->cnnwin->priv->notebook));
+				if (cnnobj != NULL && cnnobj->cnnwin != NULL && cnnobj->cnnwin->priv->notebook != NULL)
+					rcw_grab_focus(cnnobj->cnnwin);
 			}
 		}
 
@@ -1103,66 +1083,70 @@ static void remmina_protocol_widget_update_alignment(RemminaConnectionObject* cn
 }
 
 
-void rch_toolbar_fullscreen(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_toolbar_fullscreen(GtkWidget* widget, RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
 
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionObject* cnnobj;
 
-	if (priv->toolbar_is_reconfiguring)
+	if (cnnwin->priv->toolbar_is_reconfiguring)
 		return;
 
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
+
 	if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(widget))) {
-		rch_create_fullscreen(cnnhld, NULL, cnnhld->fullscreen_view_mode);
+		rco_create_fullscreen(cnnobj, cnnobj->cnnwin->priv->fullscreen_view_mode);
 	}else {
-		rch_create_scrolled(cnnhld, NULL);
+		rco_create_scrolled(cnnobj);
 	}
 }
 
-void rch_viewport_fullscreen_mode(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rco_viewport_fullscreen_mode(GtkWidget* widget, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
 	if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget)))
 		return;
-	cnnhld->fullscreen_view_mode = VIEWPORT_FULLSCREEN_MODE;
-	rch_create_fullscreen(cnnhld, NULL, cnnhld->fullscreen_view_mode);
+	cnnobj->cnnwin->priv->fullscreen_view_mode = VIEWPORT_FULLSCREEN_MODE;
+	rco_create_fullscreen(cnnobj, cnnobj->cnnwin->priv->fullscreen_view_mode);
 }
 
-void rch_scrolled_fullscreen_mode(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rco_scrolled_fullscreen_mode(GtkWidget* widget, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
 	if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget)))
 		return;
-	cnnhld->fullscreen_view_mode = SCROLLED_FULLSCREEN_MODE;
-	rch_create_fullscreen(cnnhld, NULL, cnnhld->fullscreen_view_mode);
+	cnnobj->cnnwin->priv->fullscreen_view_mode = SCROLLED_FULLSCREEN_MODE;
+	rco_create_fullscreen(cnnobj, cnnobj->cnnwin->priv->fullscreen_view_mode);
 }
 
-void rch_fullscreen_option_popdown(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rco_fullscreen_option_popdown(GtkWidget* widget, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 
 	priv->sticky = FALSE;
 
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(priv->fullscreen_option_button), FALSE);
-	rch_floating_toolbar_show(cnnhld, FALSE);
+	rco_floating_toolbar_show(cnnobj, FALSE);
 }
 
-void rch_toolbar_fullscreen_option(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+void rcw_toolbar_fullscreen_option(GtkWidget* widget, RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionObject* cnnobj;
 	GtkWidget* menu;
 	GtkWidget* menuitem;
 	GSList* group;
 
-	if (priv->toolbar_is_reconfiguring)
+	if (cnnwin->priv->toolbar_is_reconfiguring)
 		return;
+
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
 	if (!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
 		return;
 
-	priv->sticky = TRUE;
+	cnnwin->priv->sticky = TRUE;
 
 	menu = gtk_menu_new();
 
@@ -1170,56 +1154,54 @@ void rch_toolbar_fullscreen_option(GtkWidget* widget, RemminaConnectionHolder* c
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	group = gtk_radio_menu_item_get_group(GTK_RADIO_MENU_ITEM(menuitem));
-	if (priv->view_mode == VIEWPORT_FULLSCREEN_MODE) {
+	if (cnnwin->priv->view_mode == VIEWPORT_FULLSCREEN_MODE) {
 		gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menuitem), TRUE);
 	}
-	g_signal_connect(G_OBJECT(menuitem), "toggled", G_CALLBACK(rch_viewport_fullscreen_mode), cnnhld);
+	g_signal_connect(G_OBJECT(menuitem), "toggled", G_CALLBACK(rco_viewport_fullscreen_mode), cnnobj);
 
 	menuitem = gtk_radio_menu_item_new_with_label(group, _("Scrolled fullscreen mode"));
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
-	if (priv->view_mode == SCROLLED_FULLSCREEN_MODE) {
+	if (cnnwin->priv->view_mode == SCROLLED_FULLSCREEN_MODE) {
 		gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menuitem), TRUE);
 	}
-	g_signal_connect(G_OBJECT(menuitem), "toggled", G_CALLBACK(rch_scrolled_fullscreen_mode), cnnhld);
+	g_signal_connect(G_OBJECT(menuitem), "toggled", G_CALLBACK(rco_scrolled_fullscreen_mode), cnnobj);
 
-	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(rch_fullscreen_option_popdown), cnnhld);
+	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(rco_fullscreen_option_popdown), cnnobj);
 
 #if GTK_CHECK_VERSION(3, 22, 0)
 	gtk_menu_popup_at_widget(GTK_MENU(menu), widget,
 		GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
 #else
-	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, remmina_public_popup_position, priv->toolitem_fullscreen, 0,
+	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, remmina_public_popup_position, cnnwin->priv->toolitem_fullscreen, 0,
 		gtk_get_current_event_time());
 #endif
 }
 
 
-void rch_scaler_option_popdown(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rco_scaler_option_popdown(GtkWidget* widget, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 	if (priv->toolbar_is_reconfiguring)
 		return;
 	priv->sticky = FALSE;
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(priv->scaler_option_button), FALSE);
-	rch_floating_toolbar_show(cnnhld, FALSE);
+	rco_floating_toolbar_show(cnnobj, FALSE);
 }
 
-void rch_scaler_expand(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rco_scaler_expand(GtkWidget* widget, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
 	if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget)))
 		return;
 	remmina_protocol_widget_set_expand(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), TRUE);
 	remmina_file_set_int(cnnobj->remmina_file, "scaler_expand", TRUE);
 	remmina_protocol_widget_update_alignment(cnnobj);
 }
-void rch_scaler_keep_aspect(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rco_scaler_keep_aspect(GtkWidget* widget, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
 	if (!gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget)))
 		return;
 	remmina_protocol_widget_set_expand(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), FALSE);
@@ -1227,15 +1209,21 @@ void rch_scaler_keep_aspect(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 	remmina_protocol_widget_update_alignment(cnnobj);
 }
 
-void rch_toolbar_scaler_option(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_toolbar_scaler_option(GtkWidget* widget, RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv;
+	RemminaConnectionObject* cnnobj;
 	GtkWidget* menu;
 	GtkWidget* menuitem;
 	GSList* group;
 	gboolean scaler_expand;
+
+	if (cnnwin->priv->toolbar_is_reconfiguring)
+		return;
+
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
+	priv = cnnobj->cnnwin->priv;
 
 	if (!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
 		return;
@@ -1253,7 +1241,7 @@ void rch_toolbar_scaler_option(GtkWidget* widget, RemminaConnectionHolder* cnnhl
 	if (!scaler_expand) {
 		gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menuitem), TRUE);
 	}
-	g_signal_connect(G_OBJECT(menuitem), "toggled", G_CALLBACK(rch_scaler_keep_aspect), cnnhld);
+	g_signal_connect(G_OBJECT(menuitem), "toggled", G_CALLBACK(rco_scaler_keep_aspect), cnnobj);
 
 	menuitem = gtk_radio_menu_item_new_with_label(group, _("Fill client window when scaled"));
 	gtk_widget_show(menuitem);
@@ -1261,9 +1249,9 @@ void rch_toolbar_scaler_option(GtkWidget* widget, RemminaConnectionHolder* cnnhl
 	if (scaler_expand) {
 		gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menuitem), TRUE);
 	}
-	g_signal_connect(G_OBJECT(menuitem), "toggled", G_CALLBACK(rch_scaler_expand), cnnhld);
+	g_signal_connect(G_OBJECT(menuitem), "toggled", G_CALLBACK(rco_scaler_expand), cnnobj);
 
-	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(rch_scaler_option_popdown), cnnhld);
+	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(rco_scaler_option_popdown), cnnobj);
 
 #if GTK_CHECK_VERSION(3, 22, 0)
 	gtk_menu_popup_at_widget(GTK_MENU(menu), widget,
@@ -1274,40 +1262,42 @@ void rch_toolbar_scaler_option(GtkWidget* widget, RemminaConnectionHolder* cnnhl
 #endif
 }
 
-void rch_switch_page_activate(GtkMenuItem* menuitem, RemminaConnectionHolder* cnnhld)
+void rco_switch_page_activate(GtkMenuItem* menuitem, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 	gint page_num;
 
 	page_num = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(menuitem), "new-page-num"));
 	gtk_notebook_set_current_page(GTK_NOTEBOOK(priv->notebook), page_num);
 }
 
-void rch_toolbar_switch_page_popdown(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+void rcw_toolbar_switch_page_popdown(GtkWidget* widget, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 
 	priv->sticky = FALSE;
 
 	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_switch_page), FALSE);
-	rch_floating_toolbar_show(cnnhld, FALSE);
+	rco_floating_toolbar_show(cnnobj, FALSE);
 }
 
-void rch_toolbar_switch_page(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_toolbar_switch_page(GtkWidget* widget, RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
+
+	RemminaConnectionWindowPriv* priv = cnnwin->priv;
 	RemminaConnectionObject* cnnobj;
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+
 	GtkWidget* menu;
 	GtkWidget* menuitem;
 	GtkWidget* image;
-	GtkWidget* page;
 	gint i, n;
 
 	if (priv->toolbar_is_reconfiguring)
 		return;
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
 	if (!gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(widget)))
 		return;
@@ -1318,10 +1308,7 @@ void rch_toolbar_switch_page(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 
 	n = gtk_notebook_get_n_pages(GTK_NOTEBOOK(priv->notebook));
 	for (i = 0; i < n; i++) {
-		page = gtk_notebook_get_nth_page(GTK_NOTEBOOK(priv->notebook), i);
-		if (!page)
-			break;
-		cnnobj = (RemminaConnectionObject*)g_object_get_data(G_OBJECT(page), "cnnobj");
+		cnnobj = rcw_get_cnnobj_at_page(cnnobj->cnnwin, i);
 
 		menuitem = gtk_menu_item_new_with_label(remmina_file_get_string(cnnobj->remmina_file, "name"));
 		gtk_widget_show(menuitem);
@@ -1331,15 +1318,14 @@ void rch_toolbar_switch_page(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 		gtk_widget_show(image);
 
 		g_object_set_data(G_OBJECT(menuitem), "new-page-num", GINT_TO_POINTER(i));
-		g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(rch_switch_page_activate),
-			cnnhld);
+		g_signal_connect(G_OBJECT(menuitem), "activate", G_CALLBACK(rco_switch_page_activate), cnnobj);
 		if (i == gtk_notebook_get_current_page(GTK_NOTEBOOK(priv->notebook))) {
 			gtk_widget_set_sensitive(menuitem, FALSE);
 		}
 	}
 
-	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(rch_toolbar_switch_page_popdown),
-		cnnhld);
+	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(rcw_toolbar_switch_page_popdown),
+		cnnobj);
 
 #if GTK_CHECK_VERSION(3, 22, 0)
 	gtk_menu_popup_at_widget(GTK_MENU(menu), widget,
@@ -1350,11 +1336,10 @@ void rch_toolbar_switch_page(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 
 }
 
-void rch_update_toolbar_autofit_button(RemminaConnectionHolder* cnnhld)
+void rco_update_toolbar_autofit_button(RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 	GtkToolItem* toolitem;
 	RemminaScaleMode sc;
 
@@ -1369,11 +1354,10 @@ void rch_update_toolbar_autofit_button(RemminaConnectionHolder* cnnhld)
 	}
 }
 
-void rch_change_scalemode(RemminaConnectionHolder* cnnhld, gboolean bdyn, gboolean bscale)
+static void rco_change_scalemode(RemminaConnectionObject* cnnobj, gboolean bdyn, gboolean bscale)
 {
 	RemminaScaleMode scalemode;
-	DECLARE_CNNOBJ
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 
 	if (bdyn)
 		scalemode = REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES;
@@ -1385,13 +1369,13 @@ void rch_change_scalemode(RemminaConnectionHolder* cnnhld, gboolean bdyn, gboole
 	remmina_protocol_widget_set_current_scale_mode(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), scalemode);
 	remmina_file_set_int(cnnobj->remmina_file, "scale", scalemode);
 	gtk_widget_set_sensitive(GTK_WIDGET(priv->scaler_option_button), scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED);
-	rch_update_toolbar_autofit_button(cnnhld);
+	rco_update_toolbar_autofit_button(cnnobj);
 
 	remmina_protocol_widget_call_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
 		REMMINA_PROTOCOL_FEATURE_TYPE_SCALE, 0);
 
-	if (cnnhld->cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE) {
-		rch_check_resize(cnnhld);
+	if (cnnobj->cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE) {
+		rco_check_resize(cnnobj);
 	}
 	if (GTK_IS_SCROLLED_WINDOW(cnnobj->scrolled_container)) {
 		rco_set_scrolled_policy(cnnobj, GTK_SCROLLED_WINDOW(cnnobj->scrolled_container));
@@ -1399,68 +1383,70 @@ void rch_change_scalemode(RemminaConnectionHolder* cnnhld, gboolean bdyn, gboole
 
 }
 
-void rch_toolbar_dynres(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_toolbar_dynres(GtkWidget* widget, RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
 	gboolean bdyn, bscale;
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionObject* cnnobj;
 
-	if (priv->toolbar_is_reconfiguring)
+	if (cnnwin->priv->toolbar_is_reconfiguring)
 		return;
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
 	if (cnnobj->connected) {
 		bdyn = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(widget));
-		bscale = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_scale));
+		bscale = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(cnnobj->cnnwin->priv->toolitem_scale));
 
 		if (bdyn && bscale) {
-			gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_scale), FALSE);
+			gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(cnnobj->cnnwin->priv->toolitem_scale), FALSE);
 			bscale = FALSE;
 		}
 
-		rch_change_scalemode(cnnhld, bdyn, bscale);
+		rco_change_scalemode(cnnobj, bdyn, bscale);
 	}
 }
 
 
-void rch_toolbar_scaled_mode(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_toolbar_scaled_mode(GtkWidget* widget, RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
 	gboolean bdyn, bscale;
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionObject* cnnobj;
 
-	if (priv->toolbar_is_reconfiguring)
+	if (cnnwin->priv->toolbar_is_reconfiguring)
 		return;
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
-	bdyn = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_dynres));
+	bdyn = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(cnnobj->cnnwin->priv->toolitem_dynres));
 	bscale = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(widget));
 
 	if (bdyn && bscale) {
-		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_dynres), FALSE);
+		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(cnnobj->cnnwin->priv->toolitem_dynres), FALSE);
 		bdyn = FALSE;
 	}
 
-	rch_change_scalemode(cnnhld, bdyn, bscale);
+	rco_change_scalemode(cnnobj, bdyn, bscale);
 }
 
-void rch_toolbar_preferences_popdown(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_toolbar_preferences_popdown(GtkWidget* widget, RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionObject* cnnobj;
 
-	if (priv->toolbar_is_reconfiguring)
+	if (cnnwin->priv->toolbar_is_reconfiguring)
 		return;
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
-	priv->sticky = FALSE;
+	cnnobj->cnnwin->priv->sticky = FALSE;
 
-	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_preferences), FALSE);
-	rch_floating_toolbar_show(cnnhld, FALSE);
+	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(cnnobj->cnnwin->priv->toolitem_preferences), FALSE);
+	rco_floating_toolbar_show(cnnobj, FALSE);
 }
 
-void rch_toolbar_tools_popdown(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+void rcw_toolbar_tools_popdown(GtkWidget* widget, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 
 	if (priv->toolbar_is_reconfiguring)
 		return;
@@ -1468,13 +1454,12 @@ void rch_toolbar_tools_popdown(GtkWidget* widget, RemminaConnectionHolder* cnnhl
 	priv->sticky = FALSE;
 
 	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_tools), FALSE);
-	rch_floating_toolbar_show(cnnhld, FALSE);
+	rco_floating_toolbar_show(cnnobj, FALSE);
 }
 
-void rch_call_protocol_feature_radio(GtkMenuItem* menuitem, RemminaConnectionHolder* cnnhld)
+static void rco_call_protocol_feature_radio(GtkMenuItem* menuitem, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
 	RemminaProtocolFeature* feature;
 	gpointer value;
 
@@ -1487,10 +1472,9 @@ void rch_call_protocol_feature_radio(GtkMenuItem* menuitem, RemminaConnectionHol
 	}
 }
 
-void rch_call_protocol_feature_check(GtkMenuItem* menuitem, RemminaConnectionHolder* cnnhld)
+static void rco_call_protocol_feature_check(GtkMenuItem* menuitem, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
 	RemminaProtocolFeature* feature;
 	gboolean value;
 
@@ -1500,17 +1484,16 @@ void rch_call_protocol_feature_check(GtkMenuItem* menuitem, RemminaConnectionHol
 	remmina_protocol_widget_call_feature_by_ref(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), feature);
 }
 
-void rch_call_protocol_feature_activate(GtkMenuItem* menuitem, RemminaConnectionHolder* cnnhld)
+static void rco_call_protocol_feature_activate(GtkMenuItem* menuitem, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
 	RemminaProtocolFeature* feature;
 
 	feature = (RemminaProtocolFeature*)g_object_get_data(G_OBJECT(menuitem), "feature-type");
 	remmina_protocol_widget_call_feature_by_ref(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), feature);
 }
 
-void rch_toolbar_preferences_radio(RemminaConnectionHolder* cnnhld, RemminaFile* remminafile,
+void rcw_toolbar_preferences_radio(RemminaConnectionObject* cnnobj, RemminaFile* remminafile,
 								GtkWidget* menu, const RemminaProtocolFeature* feature, const gchar* domain, gboolean enabled)
 {
 	TRACE_CALL(__func__);
@@ -1538,15 +1521,16 @@ void rch_toolbar_preferences_radio(RemminaConnectionHolder* cnnhld, RemminaFile*
 			}
 
 			g_signal_connect(G_OBJECT(menuitem), "toggled",
-				G_CALLBACK(rch_call_protocol_feature_radio), cnnhld);
+				G_CALLBACK(rco_call_protocol_feature_radio), cnnobj);
 		}else {
 			gtk_widget_set_sensitive(menuitem, FALSE);
 		}
 	}
 }
 
-void rch_toolbar_preferences_check(RemminaConnectionHolder* cnnhld, RemminaFile* remminafile,
-								GtkWidget* menu, const RemminaProtocolFeature* feature, const gchar* domain, gboolean enabled)
+void rcw_toolbar_preferences_check(RemminaConnectionObject* cnnobj,
+	GtkWidget* menu, const RemminaProtocolFeature* feature,
+	const gchar* domain, gboolean enabled)
 {
 	TRACE_CALL(__func__);
 	GtkWidget* menuitem;
@@ -1559,20 +1543,19 @@ void rch_toolbar_preferences_check(RemminaConnectionHolder* cnnhld, RemminaFile*
 		g_object_set_data(G_OBJECT(menuitem), "feature-type", (gpointer)feature);
 
 		gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menuitem),
-			remmina_file_get_int(remminafile, (const gchar*)feature->opt2, FALSE));
+			remmina_file_get_int(cnnobj->remmina_file, (const gchar*)feature->opt2, FALSE));
 
 		g_signal_connect(G_OBJECT(menuitem), "toggled",
-			G_CALLBACK(rch_call_protocol_feature_check), cnnhld);
+			G_CALLBACK(rco_call_protocol_feature_check), cnnobj);
 	}else {
 		gtk_widget_set_sensitive(menuitem, FALSE);
 	}
 }
 
-void rch_toolbar_preferences(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_toolbar_preferences(GtkWidget* widget, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 	const RemminaProtocolFeature* feature;
 	GtkWidget* menu;
 	GtkWidget* menuitem;
@@ -1606,12 +1589,12 @@ void rch_toolbar_preferences(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 		enabled = remmina_protocol_widget_query_feature_by_ref(REMMINA_PROTOCOL_WIDGET(cnnobj->proto), feature);
 		switch (GPOINTER_TO_INT(feature->opt1)) {
 		case REMMINA_PROTOCOL_FEATURE_PREF_RADIO:
-			rch_toolbar_preferences_radio(cnnhld, cnnobj->remmina_file, menu, feature,
+			rcw_toolbar_preferences_radio(cnnobj, cnnobj->remmina_file, menu, feature,
 				domain, enabled);
 			separator = TRUE;
 			break;
 		case REMMINA_PROTOCOL_FEATURE_PREF_CHECK:
-			rch_toolbar_preferences_check(cnnhld, cnnobj->remmina_file, menu, feature,
+			rcw_toolbar_preferences_check(cnnobj, menu, feature,
 				domain, enabled);
 			break;
 		}
@@ -1619,8 +1602,8 @@ void rch_toolbar_preferences(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 
 	g_free(domain);
 
-	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(rch_toolbar_preferences_popdown),
-		cnnhld);
+	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(rcw_toolbar_preferences_popdown),
+		cnnobj);
 
 #if GTK_CHECK_VERSION(3, 22, 0)
 	gtk_menu_popup_at_widget(GTK_MENU(menu), widget,
@@ -1631,11 +1614,11 @@ void rch_toolbar_preferences(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 
 }
 
-void rch_toolbar_tools(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_toolbar_tools(GtkWidget* widget, RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv;
+	RemminaConnectionObject* cnnobj;
 	const RemminaProtocolFeature* feature;
 	GtkWidget* menu;
 	GtkWidget* menuitem = NULL;
@@ -1646,8 +1629,10 @@ void rch_toolbar_tools(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 	gchar **keystroke_values;
 	gint i;
 
-	if (priv->toolbar_is_reconfiguring)
+	if (cnnwin->priv->toolbar_is_reconfiguring)
 		return;
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
+	priv = cnnobj->cnnwin->priv;
 
 	if (!gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(widget)))
 		return;
@@ -1665,7 +1650,7 @@ void rch_toolbar_tools(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 			menuitem = gtk_menu_item_new_with_label(g_dgettext(domain, (const gchar*)feature->opt1));
 		}
 		if (feature->opt3) {
-			rch_set_tooltip(menuitem, "", GPOINTER_TO_UINT(feature->opt3), 0);
+			rcw_set_tooltip(menuitem, "", GPOINTER_TO_UINT(feature->opt3), 0);
 		}
 		gtk_widget_show(menuitem);
 		gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
@@ -1675,13 +1660,13 @@ void rch_toolbar_tools(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 			g_object_set_data(G_OBJECT(menuitem), "feature-type", (gpointer)feature);
 
 			g_signal_connect(G_OBJECT(menuitem), "activate",
-				G_CALLBACK(rch_call_protocol_feature_activate), cnnhld);
+				G_CALLBACK(rco_call_protocol_feature_activate), cnnobj);
 		}else {
 			gtk_widget_set_sensitive(menuitem, FALSE);
 		}
 	}
 
-	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(rch_toolbar_tools_popdown), cnnhld);
+	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(rcw_toolbar_tools_popdown), cnnobj);
 
 	/* If the plugin accepts keystrokes include the keystrokes menu */
 	if (remmina_protocol_widget_plugin_receives_keystrokes(REMMINA_PROTOCOL_WIDGET(cnnobj->proto))) {
@@ -1722,7 +1707,7 @@ void rch_toolbar_tools(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 
 }
 
-void rch_toolbar_screenshot(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_toolbar_screenshot(GtkWidget* widget, RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
 
@@ -1735,20 +1720,20 @@ void rch_toolbar_screenshot(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 	GtkWidget* dialog;
 	RemminaProtocolWidget *gp;
 	RemminaPluginScreenshotData rpsd;
+	RemminaConnectionObject* cnnobj;
 	cairo_surface_t *srcsurface;
 	cairo_format_t cairo_format;
 	cairo_surface_t *surface;
 	int stride;
 
-	if (cnnhld->cnnwin->priv->toolbar_is_reconfiguring)
+	if (cnnwin->priv->toolbar_is_reconfiguring)
 		return;
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
 	GDateTime *date = g_date_time_new_now_utc();
 
 	// We will take a screenshot of the currently displayed RemminaProtocolWidget.
-	// DECLARE_CNNOBJ already did part of the job for us.
-	DECLARE_CNNOBJ
-		gp = REMMINA_PROTOCOL_WIDGET(cnnobj->proto);
+	gp = REMMINA_PROTOCOL_WIDGET(cnnobj->proto);
 
 	GtkClipboard *c = gtk_clipboard_get (GDK_SELECTION_CLIPBOARD);
 	// Ask the plugin if it can give us a screenshot
@@ -1799,9 +1784,9 @@ void rch_toolbar_screenshot(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 
 		// Get the screenshot.
 		active_window = gtk_widget_get_window(GTK_WIDGET(gp));
-		// width = gdk_window_get_width(gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
+		// width = gdk_window_get_width(gtk_widget_get_window(GTK_WIDGET(cnnobj->cnnwin)));
 		width = gdk_window_get_width(active_window);
-		// height = gdk_window_get_height(gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
+		// height = gdk_window_get_height(gtk_widget_get_window(GTK_WIDGET(cnnobj->cnnwin)));
 		height = gdk_window_get_height(active_window);
 
 		screenshot = gdk_pixbuf_get_from_window(active_window, 0, 0, width, height);
@@ -1860,50 +1845,55 @@ void rch_toolbar_screenshot(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 	cairo_surface_destroy(surface);
 }
 
-void rch_toolbar_minimize(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_toolbar_minimize(GtkWidget* widget, RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
+	RemminaConnectionObject* cnnobj;
 
-	if (cnnhld->cnnwin->priv->toolbar_is_reconfiguring)
+	if (cnnwin->priv->toolbar_is_reconfiguring)
 		return;
-	rch_floating_toolbar_show(cnnhld, FALSE);
-	gtk_window_iconify(GTK_WINDOW(cnnhld->cnnwin));
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
+
+	rco_floating_toolbar_show(cnnobj, FALSE);
+	gtk_window_iconify(GTK_WINDOW(cnnobj->cnnwin));
 }
 
-void rch_toolbar_disconnect(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_toolbar_disconnect(GtkWidget* widget, RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
-	if (cnnhld->cnnwin->priv->toolbar_is_reconfiguring)
+	RemminaConnectionObject* cnnobj;
+	if (cnnwin->priv->toolbar_is_reconfiguring)
 		return;
-	rch_disconnect_current_page(cnnhld);
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
+	rco_disconnect_current_page(cnnobj);
 }
 
-void rch_toolbar_grab(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_toolbar_grab(GtkWidget* widget, RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
 	gboolean capture;
+	RemminaConnectionObject* cnnobj;
 
-	if (cnnhld->cnnwin->priv->toolbar_is_reconfiguring)
+	if (cnnwin->priv->toolbar_is_reconfiguring)
 		return;
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
 	capture = gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(widget));
 	remmina_file_set_int(cnnobj->remmina_file, "keyboard_grab", capture);
-	if (capture) {
+	if (capture && cnnobj->connected) {
 #if DEBUG_KB_GRABBING
 		printf("DEBUG_KB_GRABBING: Grabbing for button\n");
 #endif
-		if (cnnobj->connected)
-			rch_keyboard_grab(cnnhld);
+		rcw_keyboard_grab(cnnobj->cnnwin);
 	}else
-		rch_keyboard_ungrab(cnnhld);
+		rcw_keyboard_ungrab(cnnobj->cnnwin);
 }
 
 static GtkWidget*
-rch_create_toolbar(RemminaConnectionHolder* cnnhld, gint mode)
+rcw_create_toolbar(RemminaConnectionWindow* cnnwin, gint mode)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnwin->priv;
 	GtkWidget* toolbar;
 	GtkToolItem* toolitem;
 	GtkWidget* widget;
@@ -1920,9 +1910,9 @@ rch_create_toolbar(RemminaConnectionHolder* cnnhld, gint mode)
 	/* Auto-Fit */
 	toolitem = gtk_tool_button_new(NULL, NULL);
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-fit-window-symbolic");
-	rch_set_tooltip(GTK_WIDGET(toolitem), _("Resize the window to fit in remote resolution"),
+	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Resize the window to fit in remote resolution"),
 		remmina_pref.shortcutkey_autofit, 0);
-	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rch_toolbar_autofit), cnnhld);
+	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rcw_toolbar_autofit), cnnwin);
 	priv->toolitem_autofit = toolitem;
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
@@ -1931,7 +1921,7 @@ rch_create_toolbar(RemminaConnectionHolder* cnnhld, gint mode)
 	/* Fullscreen toggle */
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-fullscreen-symbolic");
-	rch_set_tooltip(GTK_WIDGET(toolitem), _("Toggle fullscreen mode"),
+	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Toggle fullscreen mode"),
 		remmina_pref.shortcutkey_fullscreen, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
@@ -1940,7 +1930,7 @@ rch_create_toolbar(RemminaConnectionHolder* cnnhld, gint mode)
 		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem), FALSE);
 	} else {
 		gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(toolitem), mode != SCROLLED_WINDOW_MODE);
-		g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rch_toolbar_fullscreen), cnnhld);
+		g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rcw_toolbar_fullscreen), cnnwin);
 	}
 
 	/* Fullscreen drop-down options */
@@ -1968,7 +1958,7 @@ rch_create_toolbar(RemminaConnectionHolder* cnnhld, gint mode)
 #endif
 	gtk_widget_show(arrow);
 	gtk_container_add(GTK_CONTAINER(widget), arrow);
-	g_signal_connect(G_OBJECT(widget), "toggled", G_CALLBACK(rch_toolbar_fullscreen_option), cnnhld);
+	g_signal_connect(G_OBJECT(widget), "toggled", G_CALLBACK(rcw_toolbar_fullscreen_option), cnnwin);
 	priv->fullscreen_option_button = widget;
 	if (mode == SCROLLED_WINDOW_MODE) {
 		gtk_widget_set_sensitive(GTK_WIDGET(widget), FALSE);
@@ -1977,11 +1967,11 @@ rch_create_toolbar(RemminaConnectionHolder* cnnhld, gint mode)
 	/* Switch tabs */
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-switch-page-symbolic");
-	rch_set_tooltip(GTK_WIDGET(toolitem), _("Switch tab pages"), remmina_pref.shortcutkey_prevtab,
+	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Switch tab pages"), remmina_pref.shortcutkey_prevtab,
 		remmina_pref.shortcutkey_nexttab);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
-	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rch_toolbar_switch_page), cnnhld);
+	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_switch_page), cnnwin);
 	priv->toolitem_switch_page = toolitem;
 
 	toolitem = gtk_separator_tool_item_new();
@@ -1991,20 +1981,20 @@ rch_create_toolbar(RemminaConnectionHolder* cnnhld, gint mode)
 	/* Dynamic Resolution Update */
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-dynres-symbolic");
-	rch_set_tooltip(GTK_WIDGET(toolitem), _("Toggle dynamic resolution update"),
+	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Toggle dynamic resolution update"),
 		remmina_pref.shortcutkey_dynres, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
-	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rch_toolbar_dynres), cnnhld);
+	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_dynres), cnnwin);
 	priv->toolitem_dynres = toolitem;
 
 	/* Scaler button */
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-scale-symbolic");
-	rch_set_tooltip(GTK_WIDGET(toolitem), _("Toggle scaled mode"), remmina_pref.shortcutkey_scale, 0);
+	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Toggle scaled mode"), remmina_pref.shortcutkey_scale, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
-	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rch_toolbar_scaled_mode), cnnhld);
+	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_scaled_mode), cnnwin);
 	priv->toolitem_scale = toolitem;
 
 	/* Scaler aspect ratio dropdown menu */
@@ -2031,17 +2021,17 @@ rch_create_toolbar(RemminaConnectionHolder* cnnhld, gint mode)
 #endif
 	gtk_widget_show(arrow);
 	gtk_container_add(GTK_CONTAINER(widget), arrow);
-	g_signal_connect(G_OBJECT(widget), "toggled", G_CALLBACK(rch_toolbar_scaler_option), cnnhld);
+	g_signal_connect(G_OBJECT(widget), "toggled", G_CALLBACK(rcw_toolbar_scaler_option), cnnwin);
 	priv->scaler_option_button = widget;
 
 	/* Grab keyboard button */
 	toolitem = gtk_toggle_tool_button_new();
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-keyboard-symbolic");
-	rch_set_tooltip(GTK_WIDGET(toolitem), _("Grab all keyboard events"),
+	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Grab all keyboard events"),
 		remmina_pref.shortcutkey_grab, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
-	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rch_toolbar_grab), cnnhld);
+	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_grab), cnnwin);
 	priv->toolitem_grab = toolitem;
 
 	toolitem = gtk_toggle_tool_button_new();
@@ -2049,7 +2039,7 @@ rch_create_toolbar(RemminaConnectionHolder* cnnhld, gint mode)
 	gtk_tool_item_set_tooltip_text(toolitem, _("Preferences"));
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
-	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rch_toolbar_preferences), cnnhld);
+	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_preferences), cnnwin);
 	priv->toolitem_preferences = toolitem;
 
 	toolitem = gtk_toggle_tool_button_new();
@@ -2058,7 +2048,7 @@ rch_create_toolbar(RemminaConnectionHolder* cnnhld, gint mode)
 	gtk_tool_item_set_tooltip_text(toolitem, _("Tools"));
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
-	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rch_toolbar_tools), cnnhld);
+	g_signal_connect(G_OBJECT(toolitem), "toggled", G_CALLBACK(rcw_toolbar_tools), cnnwin);
 	priv->toolitem_tools = toolitem;
 
 	toolitem = gtk_separator_tool_item_new();
@@ -2067,34 +2057,34 @@ rch_create_toolbar(RemminaConnectionHolder* cnnhld, gint mode)
 
 	toolitem = gtk_tool_button_new(NULL, "_Screenshot");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-camera-photo-symbolic");
-	rch_set_tooltip(GTK_WIDGET(toolitem), _("Screenshot"), remmina_pref.shortcutkey_screenshot, 0);
+	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Screenshot"), remmina_pref.shortcutkey_screenshot, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
-	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rch_toolbar_screenshot), cnnhld);
+	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rcw_toolbar_screenshot), cnnwin);
 	priv->toolitem_screenshot = toolitem;
 
 	toolitem = gtk_tool_button_new(NULL, "_Bottom");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-go-bottom-symbolic");
-	rch_set_tooltip(GTK_WIDGET(toolitem), _("Minimize window"), remmina_pref.shortcutkey_minimize, 0);
+	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Minimize window"), remmina_pref.shortcutkey_minimize, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
-	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rch_toolbar_minimize), cnnhld);
+	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rcw_toolbar_minimize), cnnwin);
 	if (kioskmode) {
 		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), FALSE);
 	}
 
 	toolitem = gtk_tool_button_new(NULL, "_Disconnect");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-disconnect-symbolic");
-	rch_set_tooltip(GTK_WIDGET(toolitem), _("Disconnect"), remmina_pref.shortcutkey_disconnect, 0);
+	rcw_set_tooltip(GTK_WIDGET(toolitem), _("Disconnect"), remmina_pref.shortcutkey_disconnect, 0);
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
-	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rch_toolbar_disconnect), cnnhld);
+	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rcw_toolbar_disconnect), cnnwin);
 
 	priv->toolbar_is_reconfiguring = FALSE;
 	return toolbar;
 }
 
-void rch_place_toolbar(GtkToolbar *toolbar, GtkGrid *grid, GtkWidget *sibling, int toolbar_placement)
+static void rcw_place_toolbar(GtkToolbar *toolbar, GtkGrid *grid, GtkWidget *sibling, int toolbar_placement)
 {
 	/* Place the toolbar inside the grid and set its orientation */
 
@@ -2129,11 +2119,10 @@ void rch_place_toolbar(GtkToolbar *toolbar, GtkGrid *grid, GtkWidget *sibling, i
 
 }
 
-void rch_update_toolbar(RemminaConnectionHolder* cnnhld)
+static void rco_update_toolbar(RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 	GtkToolItem* toolitem;
 	gboolean bval, dynres_avail, scale_avail;
 	gboolean test_floating_toolbar;
@@ -2141,7 +2130,7 @@ void rch_update_toolbar(RemminaConnectionHolder* cnnhld)
 
 	priv->toolbar_is_reconfiguring = TRUE;
 
-	rch_update_toolbar_autofit_button(cnnhld);
+	rco_update_toolbar_autofit_button(cnnobj);
 
 
 	toolitem = priv->toolitem_switch_page;
@@ -2192,7 +2181,7 @@ void rch_update_toolbar(RemminaConnectionHolder* cnnhld)
 
 	gtk_widget_set_sensitive(GTK_WIDGET(priv->toolitem_screenshot), cnnobj->connected);
 
-	gtk_window_set_title(GTK_WINDOW(cnnhld->cnnwin), remmina_file_get_string(cnnobj->remmina_file, "name"));
+	gtk_window_set_title(GTK_WINDOW(cnnobj->cnnwin), remmina_file_get_string(cnnobj->remmina_file, "name"));
 
 	test_floating_toolbar = (priv->floating_toolbar_widget != NULL);
 	if (test_floating_toolbar) {
@@ -2204,10 +2193,10 @@ void rch_update_toolbar(RemminaConnectionHolder* cnnhld)
 
 }
 
-void rch_showhide_toolbar(RemminaConnectionHolder* cnnhld, gboolean resize)
+static void rco_set_tooltip(RemminaConnectionObject* cnnobj, gboolean resize)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 
 	/* Here we should threat the resize flag, but we don’t */
 	if (priv->view_mode == SCROLLED_WINDOW_MODE) {
@@ -2219,11 +2208,11 @@ void rch_showhide_toolbar(RemminaConnectionHolder* cnnhld, gboolean resize)
 	}
 }
 
-gboolean rch_floating_toolbar_on_enter(GtkWidget* widget, GdkEventCrossing* event,
-								    RemminaConnectionHolder* cnnhld)
+static gboolean rco_floating_toolbar_on_enter(GtkWidget* widget, GdkEventCrossing* event,
+								    RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	rch_floating_toolbar_show(cnnhld, TRUE);
+	rco_floating_toolbar_show(cnnobj, TRUE);
 	return TRUE;
 }
 
@@ -2231,32 +2220,34 @@ gboolean rco_enter_protocol_widget(GtkWidget* widget, GdkEventCrossing* event,
 								RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionHolder* cnnhld = cnnobj->cnnhld;
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 	if (!priv->sticky && event->mode == GDK_CROSSING_NORMAL) {
-		rch_floating_toolbar_show(cnnhld, FALSE);
+		rco_floating_toolbar_show(cnnobj, FALSE);
 		return TRUE;
 	}
 	return FALSE;
 }
 
-static void rcw_focus_in(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_focus_in(RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
+	RemminaConnectionObject* cnnobj;
 
-	DECLARE_CNNOBJ
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
-	if (cnnobj->connected)
-		rch_keyboard_grab(cnnhld);
+	if (cnnobj && cnnobj->connected && remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE)) {
+		rcw_keyboard_grab(cnnobj->cnnwin);
+	}
 }
 
-static void rcw_focus_out(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rcw_focus_out(RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
+	RemminaConnectionObject* cnnobj;
 
-	rch_keyboard_ungrab(cnnhld);
-	cnnhld->hostkey_activated = FALSE;
+	rcw_keyboard_ungrab(cnnwin);
+	cnnwin->priv->hostkey_activated = FALSE;
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
 	if (REMMINA_IS_SCROLLED_VIEWPORT(cnnobj->scrolled_container)) {
 		remmina_scrolled_viewport_remove_motion(REMMINA_SCROLLED_VIEWPORT(cnnobj->scrolled_container));
@@ -2269,31 +2260,40 @@ static void rcw_focus_out(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
 
 }
 
-static gboolean rcw_focus_out_event(GtkWidget* widget, GdkEvent* event, RemminaConnectionHolder* cnnhld)
+static gboolean rcw_focus_out_event(GtkWidget* widget, GdkEvent* event, gpointer data)
 {
 	TRACE_CALL(__func__);
 #if DEBUG_KB_GRABBING
-	printf("DEBUG_KB_GRABBING: focus out and mouse_pointer_entered is %s\n", cnnhld->cnnwin->priv->mouse_pointer_entered ? "true" : "false");
+	printf("DEBUG_KB_GRABBING: focus out and mouse_pointer_entered is %s\n", cnnobj->cnnwin->priv->mouse_pointer_entered ? "true" : "false");
 #endif
-	rcw_focus_out(widget, cnnhld);
+	if (REMMINA_IS_CONNECTION_WINDOW(widget))
+		rcw_focus_out((RemminaConnectionWindow*)widget);
 	return FALSE;
 }
 
-static gboolean rcw_focus_in_event(GtkWidget* widget, GdkEvent* event, RemminaConnectionHolder* cnnhld)
+static gboolean rcw_focus_in_event(GtkWidget* widget, GdkEvent* event, gpointer data)
 {
 	TRACE_CALL(__func__);
 #if DEBUG_KB_GRABBING
-	printf("DEBUG_KB_GRABBING: focus in and mouse_pointer_entered is %s\n", cnnhld->cnnwin->priv->mouse_pointer_entered ? "true" : "false");
+	printf("DEBUG_KB_GRABBING: focus in and mouse_pointer_entered is %s\n", cnnobj->cnnwin->priv->mouse_pointer_entered ? "true" : "false");
 #endif
-	rcw_focus_in(widget, cnnhld);
+	if (REMMINA_IS_CONNECTION_WINDOW(widget))
+		rcw_focus_in((RemminaConnectionWindow*)widget);
 	return FALSE;
 }
 
-static gboolean rcw_on_enter(GtkWidget* widget, GdkEventCrossing* event, RemminaConnectionHolder* cnnhld)
+static gboolean rcw_on_enter(GtkWidget* widget, GdkEventCrossing* event, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	cnnhld->cnnwin->priv->mouse_pointer_entered = TRUE;
-	DECLARE_CNNOBJ_WITH_RETURN(FALSE);
+	RemminaConnectionObject* cnnobj;
+	RemminaConnectionWindow* cnnwin;
+
+	if (!REMMINA_IS_CONNECTION_WINDOW(widget))
+		return FALSE;
+	cnnwin = (RemminaConnectionWindow*)widget;
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return FALSE;
+
+	cnnwin->priv->mouse_pointer_entered = TRUE;
 
 #if DEBUG_KB_GRABBING
 	printf("DEBUG_KB_GRABBING: enter detail=");
@@ -2307,17 +2307,23 @@ static gboolean rcw_on_enter(GtkWidget* widget, GdkEventCrossing* event, Remmina
 	}
 	printf("\n");
 #endif
-	if (gtk_window_is_active(GTK_WINDOW(cnnhld->cnnwin))) {
-		if (cnnobj->connected)
-			rch_keyboard_grab(cnnhld);
+	if (gtk_window_is_active(GTK_WINDOW(cnnobj->cnnwin))) {
+		if (cnnobj->connected && remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE)) {
+			rcw_keyboard_grab(cnnwin);
+		}
 	}
 	return FALSE;
 }
 
-
-static gboolean rcw_on_leave(GtkWidget* widget, GdkEventCrossing* event, RemminaConnectionHolder* cnnhld)
+static gboolean rcw_on_leave(GtkWidget* widget, GdkEventCrossing* event, gpointer user_data)
 {
 	TRACE_CALL(__func__);
+	RemminaConnectionWindow* cnnwin;
+
+	if (!REMMINA_IS_CONNECTION_WINDOW(widget))
+		return FALSE;
+	cnnwin = (RemminaConnectionWindow*)widget;
+
 #if DEBUG_KB_GRABBING
 	printf("DEBUG_KB_GRABBING: leave detail=");
 	switch (event->detail) {
@@ -2339,27 +2345,27 @@ static gboolean rcw_on_leave(GtkWidget* widget, GdkEventCrossing* event, Remmina
 	 */
 	if (event->detail == GDK_NOTIFY_VIRTUAL || event->detail == GDK_NOTIFY_ANCESTOR ||
 	    event->detail == GDK_NOTIFY_NONLINEAR_VIRTUAL || event->detail == GDK_NOTIFY_NONLINEAR) {
-		cnnhld->cnnwin->priv->mouse_pointer_entered = FALSE;
-		rch_keyboard_ungrab(cnnhld);
+		cnnwin->priv->mouse_pointer_entered = FALSE;
+		rcw_keyboard_ungrab(cnnwin);
 	}
 	return FALSE;
 }
 
 static gboolean
-rch_floating_toolbar_hide(RemminaConnectionHolder* cnnhld)
+rco_floating_toolbar_hide(RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 	priv->hidetb_timer = 0;
-	rch_floating_toolbar_show(cnnhld, FALSE);
+	rco_floating_toolbar_show(cnnobj, FALSE);
 	return FALSE;
 }
 
-gboolean rch_floating_toolbar_on_scroll(GtkWidget* widget, GdkEventScroll* event,
-								     RemminaConnectionHolder* cnnhld)
+static gboolean rco_floating_toolbar_on_scroll(GtkWidget* widget, GdkEventScroll* event,
+								     RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ_WITH_RETURN(FALSE)
+
 	int opacity;
 
 	opacity = remmina_file_get_int(cnnobj->remmina_file, "toolbar_opacity", 0);
@@ -2367,14 +2373,14 @@ gboolean rch_floating_toolbar_on_scroll(GtkWidget* widget, GdkEventScroll* event
 	case GDK_SCROLL_UP:
 		if (opacity > 0) {
 			remmina_file_set_int(cnnobj->remmina_file, "toolbar_opacity", opacity - 1);
-			rch_update_toolbar_opacity(cnnhld);
+			rco_update_toolbar_opacity(cnnobj);
 			return TRUE;
 		}
 		break;
 	case GDK_SCROLL_DOWN:
 		if (opacity < TOOLBAR_OPACITY_LEVEL) {
 			remmina_file_set_int(cnnobj->remmina_file, "toolbar_opacity", opacity + 1);
-			rch_update_toolbar_opacity(cnnhld);
+			rco_update_toolbar_opacity(cnnobj);
 			return TRUE;
 		}
 		break;
@@ -2382,12 +2388,12 @@ gboolean rch_floating_toolbar_on_scroll(GtkWidget* widget, GdkEventScroll* event
 	case GDK_SCROLL_SMOOTH:
 		if (event->delta_y < 0 && opacity > 0) {
 			remmina_file_set_int(cnnobj->remmina_file, "toolbar_opacity", opacity - 1);
-			rch_update_toolbar_opacity(cnnhld);
+			rco_update_toolbar_opacity(cnnobj);
 			return TRUE;
 		}
 		if (event->delta_y > 0 && opacity < TOOLBAR_OPACITY_LEVEL) {
 			remmina_file_set_int(cnnobj->remmina_file, "toolbar_opacity", opacity + 1);
-			rch_update_toolbar_opacity(cnnhld);
+			rco_update_toolbar_opacity(cnnobj);
 			return TRUE;
 		}
 		break;
@@ -2405,86 +2411,94 @@ static gboolean rcw_after_configure_scrolled(gpointer user_data)
 	GdkWindowState s;
 	gint ipg, npages;
 	RemminaConnectionObject* cnnobj;
-	RemminaConnectionHolder* cnnhld;
 
-	cnnhld = (RemminaConnectionHolder*)user_data;
+	cnnobj = (RemminaConnectionObject*)user_data;
 
-	s = gdk_window_get_state(gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin)));
-
-	if (!cnnhld || !cnnhld->cnnwin)
+	if (!cnnobj || !cnnobj->cnnwin)
 		return FALSE;
+
+	s = gdk_window_get_state(gtk_widget_get_window(GTK_WIDGET(cnnobj->cnnwin)));
+
 
 	/* Changed window_maximize, window_width and window_height for all
 	 * connections inside the notebook */
-	npages = gtk_notebook_get_n_pages(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook));
+	npages = gtk_notebook_get_n_pages(GTK_NOTEBOOK(cnnobj->cnnwin->priv->notebook));
 	for (ipg = 0; ipg < npages; ipg++) {
 		cnnobj = g_object_get_data(
-			G_OBJECT(gtk_notebook_get_nth_page(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook), ipg)),
+			G_OBJECT(gtk_notebook_get_nth_page(GTK_NOTEBOOK(cnnobj->cnnwin->priv->notebook), ipg)),
 			"cnnobj");
 		if (s & GDK_WINDOW_STATE_MAXIMIZED) {
 			remmina_file_set_int(cnnobj->remmina_file, "window_maximize", TRUE);
 		} else {
-			gtk_window_get_size(GTK_WINDOW(cnnhld->cnnwin), &width, &height);
+			gtk_window_get_size(GTK_WINDOW(cnnobj->cnnwin), &width, &height);
 			remmina_file_set_int(cnnobj->remmina_file, "window_width", width);
 			remmina_file_set_int(cnnobj->remmina_file, "window_height", height);
 			remmina_file_set_int(cnnobj->remmina_file, "window_maximize", FALSE);
 		}
 	}
-	cnnhld->cnnwin->priv->savestate_eventsourceid = 0;
+	cnnobj->cnnwin->priv->savestate_eventsourceid = 0;
 	return FALSE;
 }
 
 static gboolean rcw_on_configure(GtkWidget* widget, GdkEventConfigure* event,
-						       RemminaConnectionHolder* cnnhld)
+						       gpointer data)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ_WITH_RETURN(FALSE)
+	RemminaConnectionWindow* cnnwin;
+	RemminaConnectionObject* cnnobj;
 
-	if (cnnhld->cnnwin->priv->savestate_eventsourceid) {
-		g_source_remove(cnnhld->cnnwin->priv->savestate_eventsourceid);
-		cnnhld->cnnwin->priv->savestate_eventsourceid = 0;
+	if (!REMMINA_IS_CONNECTION_WINDOW(widget))
+		return FALSE;
+
+	cnnwin = (RemminaConnectionWindow*)widget;
+
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return FALSE;
+
+	if (cnnwin->priv->savestate_eventsourceid) {
+		g_source_remove(cnnwin->priv->savestate_eventsourceid);
+		cnnwin->priv->savestate_eventsourceid = 0;
 	}
 
-	if (cnnhld->cnnwin && gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin))
-	    && cnnhld->cnnwin->priv->view_mode == SCROLLED_WINDOW_MODE) {
+	if (cnnwin && gtk_widget_get_window(GTK_WIDGET(cnnwin))
+	    && cnnwin->priv->view_mode == SCROLLED_WINDOW_MODE) {
 		/* Under gnome shell we receive this configure_event BEFORE a window
 		 * is really unmaximized, so we must read its new state and dimensions
 		 * later, not now */
-		cnnhld->cnnwin->priv->savestate_eventsourceid = g_timeout_add(500, rcw_after_configure_scrolled, cnnhld);
+		cnnwin->priv->savestate_eventsourceid = g_timeout_add(500, rcw_after_configure_scrolled, cnnobj);
 	}
 
-	if (cnnhld->cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE) {
+	if (cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE) {
 		/* Notify window of change so that scroll border can be hidden or shown if needed */
-		rch_check_resize(cnnobj->cnnhld);
+		rco_check_resize(cnnobj);
 	}
 	return FALSE;
 }
 
-void rch_update_pin(RemminaConnectionHolder* cnnhld)
+static void rco_update_pin(RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	if (cnnhld->cnnwin->priv->pin_down) {
-		gtk_button_set_image(GTK_BUTTON(cnnhld->cnnwin->priv->pin_button),
+	if (cnnobj->cnnwin->priv->pin_down) {
+		gtk_button_set_image(GTK_BUTTON(cnnobj->cnnwin->priv->pin_button),
 			gtk_image_new_from_icon_name("remmina-pin-down-symbolic", GTK_ICON_SIZE_MENU));
 	}else {
-		gtk_button_set_image(GTK_BUTTON(cnnhld->cnnwin->priv->pin_button),
+		gtk_button_set_image(GTK_BUTTON(cnnobj->cnnwin->priv->pin_button),
 			gtk_image_new_from_icon_name("remmina-pin-up-symbolic", GTK_ICON_SIZE_MENU));
 	}
 }
 
-void rch_toolbar_pin(GtkWidget* widget, RemminaConnectionHolder* cnnhld)
+static void rco_toolbar_pin(GtkWidget* widget, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
-	remmina_pref.toolbar_pin_down = cnnhld->cnnwin->priv->pin_down = !cnnhld->cnnwin->priv->pin_down;
+	remmina_pref.toolbar_pin_down = cnnobj->cnnwin->priv->pin_down = !cnnobj->cnnwin->priv->pin_down;
 	remmina_pref_save();
-	rch_update_pin(cnnhld);
+	rco_update_pin(cnnobj);
 }
 
-void rch_create_floating_toolbar(RemminaConnectionHolder* cnnhld, gint mode)
+static void rco_create_floating_toolbar(RemminaConnectionObject* cnnobj, gint mode)
 {
 	TRACE_CALL(__func__);
-	DECLARE_CNNOBJ
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 	GtkWidget* ftb_widget;
 	GtkWidget* vbox;
 	GtkWidget* hbox;
@@ -2501,7 +2515,7 @@ void rch_create_floating_toolbar(RemminaConnectionHolder* cnnhld, gint mode)
 
 	gtk_container_add(GTK_CONTAINER(ftb_widget), vbox);
 
-	tb = rch_create_toolbar(cnnhld, mode);
+	tb = rcw_create_toolbar(cnnobj->cnnwin, mode);
 	hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_widget_show(hbox);
 
@@ -2517,10 +2531,10 @@ void rch_create_floating_toolbar(RemminaConnectionHolder* cnnhld, gint mode)
 	gtk_button_set_focus_on_click(GTK_BUTTON(pinbutton), FALSE);
 #endif
 	gtk_widget_set_name(pinbutton, "remmina-pin-button");
-	g_signal_connect(G_OBJECT(pinbutton), "clicked", G_CALLBACK(rch_toolbar_pin), cnnhld);
+	g_signal_connect(G_OBJECT(pinbutton), "clicked", G_CALLBACK(rco_toolbar_pin), cnnobj);
 	priv->pin_button = pinbutton;
 	priv->pin_down = remmina_pref.toolbar_pin_down;
-	rch_update_pin(cnnhld);
+	rco_update_pin(cnnobj);
 
 
 	label = gtk_label_new(remmina_file_get_string(cnnobj->remmina_file, "name"));
@@ -2555,7 +2569,7 @@ static void rcw_toolbar_place_signal(RemminaConnectionWindow* cnnwin, gpointer d
 	if (priv->toolbar && priv->grid) {
 		g_object_ref(priv->toolbar);
 		gtk_container_remove(GTK_CONTAINER(priv->grid), priv->toolbar);
-		rch_place_toolbar(GTK_TOOLBAR(priv->toolbar), GTK_GRID(priv->grid), priv->notebook, remmina_pref.toolbar_placement);
+		rcw_place_toolbar(GTK_TOOLBAR(priv->toolbar), GTK_GRID(priv->grid), priv->notebook, remmina_pref.toolbar_placement);
 		g_object_unref(priv->toolbar);
 	}
 }
@@ -2588,53 +2602,42 @@ static gboolean rcw_state_event(GtkWidget* widget, GdkEventWindowState* event, g
 {
 	TRACE_CALL(__func__);
 
+	if (!REMMINA_IS_CONNECTION_WINDOW(widget))
+		return FALSE;
+
 	if (event->changed_mask & GDK_WINDOW_STATE_FOCUSED) {
 		if (event->new_window_state & GDK_WINDOW_STATE_FOCUSED)
-			rcw_focus_in(widget, user_data);
+			rcw_focus_in((RemminaConnectionWindow*)widget);
 		else
-			rcw_focus_out(widget, user_data);
+			rcw_focus_out((RemminaConnectionWindow*)widget);
 	}
 
-#ifdef ENABLE_MINIMIZE_TO_TRAY
-	GdkScreen* screen;
-
-	screen = gdk_screen_get_default();
-	if (remmina_pref.minimize_to_tray && (event->changed_mask & GDK_WINDOW_STATE_ICONIFIED) != 0
-	    && (event->new_window_state & GDK_WINDOW_STATE_ICONIFIED) != 0
-	    && remmina_public_get_current_workspace(screen)
-	    == remmina_public_get_window_workspace(GTK_WINDOW(widget))
-	    && gdk_screen_get_number(screen) == gdk_screen_get_number(gtk_widget_get_screen(widget))) {
-		gtk_widget_hide(widget);
-		return TRUE;
-	}
-#endif
 	return FALSE; // moved here because a function should return a value. Should be correct
 }
 
 static GtkWidget*
-rcw_new_from_holder(RemminaConnectionHolder* cnnhld)
+rcw_new()
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionWindow* cnnwin;
 
 	cnnwin = RCW(g_object_new(REMMINA_TYPE_CONNECTION_WINDOW, NULL));
-	cnnwin->priv->cnnhld = cnnhld;
 	cnnwin->priv->on_delete_confirm_mode = RCW_ONDELETE_CONFIRM_IF_2_OR_MORE;
 
-	g_signal_connect(G_OBJECT(cnnwin), "delete-event", G_CALLBACK(rcw_delete_event), cnnhld);
-	g_signal_connect(G_OBJECT(cnnwin), "destroy", G_CALLBACK(rcw_destroy), cnnhld);
+	g_signal_connect(G_OBJECT(cnnwin), "delete-event", G_CALLBACK(rcw_delete_event), NULL);
+	g_signal_connect(G_OBJECT(cnnwin), "destroy", G_CALLBACK(rcw_destroy), NULL);
 
 	/* focus-in-event and focus-out-event don’t work when keyboard is grabbed
 	 * via gdk_device_grab. So we listen for window-state-event to detect focus in and focus out */
-	g_signal_connect(G_OBJECT(cnnwin), "window-state-event", G_CALLBACK(rcw_state_event), cnnhld);
+	g_signal_connect(G_OBJECT(cnnwin), "window-state-event", G_CALLBACK(rcw_state_event), NULL);
 
-	g_signal_connect(G_OBJECT(cnnwin), "focus-in-event", G_CALLBACK(rcw_focus_in_event), cnnhld);
-	g_signal_connect(G_OBJECT(cnnwin), "focus-out-event", G_CALLBACK(rcw_focus_out_event), cnnhld);
+	g_signal_connect(G_OBJECT(cnnwin), "focus-in-event", G_CALLBACK(rcw_focus_in_event), NULL);
+	g_signal_connect(G_OBJECT(cnnwin), "focus-out-event", G_CALLBACK(rcw_focus_out_event), NULL);
 
-	g_signal_connect(G_OBJECT(cnnwin), "enter-notify-event", G_CALLBACK(rcw_on_enter), cnnhld);
-	g_signal_connect(G_OBJECT(cnnwin), "leave-notify-event", G_CALLBACK(rcw_on_leave), cnnhld);
+	g_signal_connect(G_OBJECT(cnnwin), "enter-notify-event", G_CALLBACK(rcw_on_enter), NULL);
+	g_signal_connect(G_OBJECT(cnnwin), "leave-notify-event", G_CALLBACK(rcw_on_leave), NULL);
 
-	g_signal_connect(G_OBJECT(cnnwin), "configure_event", G_CALLBACK(rcw_on_configure), cnnhld);
+	g_signal_connect(G_OBJECT(cnnwin), "configure_event", G_CALLBACK(rcw_on_configure), NULL);
 
 	return GTK_WIDGET(cnnwin);
 }
@@ -2684,14 +2687,13 @@ void rco_create_scrolled_container(RemminaConnectionObject* cnnobj, gint view_mo
 
 }
 
-void rch_grab_focus(GtkNotebook *notebook)
+void rcw_grab_focus(RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionObject* cnnobj;
-	GtkWidget* child;
 
-	child = gtk_notebook_get_nth_page(notebook, gtk_notebook_get_current_page(notebook));
-	cnnobj = g_object_get_data(G_OBJECT(child), "cnnobj");
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
+
 	if (GTK_IS_WIDGET(cnnobj->proto)) {
 		remmina_protocol_widget_grab_focus(REMMINA_PROTOCOL_WIDGET(cnnobj->proto));
 	}
@@ -2701,12 +2703,11 @@ void rco_closewin(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionObject* cnnobj = gp->cnnobj;
-	RemminaConnectionHolder* cnnhld = cnnobj->cnnhld;
 
-	if (cnnhld && cnnhld->cnnwin) {
+	if (cnnobj && cnnobj->cnnwin) {
 		gtk_notebook_remove_page(
-			GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook),
-			gtk_notebook_page_num(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook),
+			GTK_NOTEBOOK(cnnobj->cnnwin->priv->notebook),
+			gtk_notebook_page_num(GTK_NOTEBOOK(cnnobj->cnnwin->priv->notebook),
 				cnnobj->page));
 	}
 
@@ -2770,7 +2771,7 @@ static GtkWidget* rco_create_tab(RemminaConnectionObject* cnnobj)
 	return hbox;
 }
 
-gint rco_append_page(RemminaConnectionObject* cnnobj, GtkNotebook* notebook, GtkWidget* tab,
+static gint rco_append_page(RemminaConnectionObject* cnnobj, GtkNotebook* notebook, GtkWidget* tab,
 						  gint view_mode)
 {
 	TRACE_CALL(__func__);
@@ -2830,7 +2831,8 @@ static void rcw_initialize_notebook(GtkNotebook* to, GtkNotebook* from, RemminaC
 			rco_append_page(cnnobj, to, tab, view_mode);
 			/* Set the current page to the 1st tab page, otherwise the notebook
 			 * will stay on page -1 for a short time and g_object_get_data(currenntab, "cnnobj") will fail
-			 * together with DECLARE_CNNOBJ (issue #1809)*/
+			 * together with DECLARE_CNNOBJ (issue #1809).
+			 */
 			gtk_notebook_set_current_page(to, 0);
 			gtk_container_add(GTK_CONTAINER(cnnobj->scrolled_container), cnnobj->viewport);
 		}
@@ -2867,18 +2869,15 @@ static void rcw_initialize_notebook(GtkNotebook* to, GtkNotebook* from, RemminaC
 	}
 }
 
-void rch_update_notebook(RemminaConnectionHolder* cnnhld)
+static void rcw_update_notebook(RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
 	GtkNotebook* notebook;
 	gint n;
 
-	if (!cnnhld->cnnwin)
-		return;
+	notebook = GTK_NOTEBOOK(cnnwin->priv->notebook);
 
-	notebook = GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook);
-
-	switch (cnnhld->cnnwin->priv->view_mode) {
+	switch (cnnwin->priv->view_mode) {
 	case SCROLLED_WINDOW_MODE:
 		n = gtk_notebook_get_n_pages(notebook);
 		gtk_notebook_set_show_tabs(notebook, remmina_pref.always_show_tab ? TRUE : n > 1);
@@ -2891,65 +2890,74 @@ void rch_update_notebook(RemminaConnectionHolder* cnnhld)
 	}
 }
 
-gboolean rch_on_switch_page_real(gpointer data)
+gboolean rcw_on_switch_page_real(gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionHolder* cnnhld = (RemminaConnectionHolder*)data;
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv;
+	RemminaConnectionObject* cnnobj;
 
-	if (GTK_IS_WIDGET(cnnhld->cnnwin)) {
-		rch_floating_toolbar_show(cnnhld, TRUE);
+	if (!user_data)
+		return FALSE;
+
+	cnnobj = (RemminaConnectionObject*) user_data;
+	if (!cnnobj->cnnwin)
+		return FALSE;
+
+
+
+	priv = cnnobj->cnnwin->priv;
+
+	if (GTK_IS_WIDGET(cnnobj->cnnwin)) {
+		rco_floating_toolbar_show(cnnobj, TRUE);
 		if (!priv->hidetb_timer)
 			priv->hidetb_timer = g_timeout_add(TB_HIDE_TIME_TIME, (GSourceFunc)
-				rch_floating_toolbar_hide, cnnhld);
-		rch_update_toolbar(cnnhld);
-		rch_grab_focus(GTK_NOTEBOOK(priv->notebook));
-		if (cnnhld->cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE) {
-			rch_check_resize(cnnhld);
+				rco_floating_toolbar_hide, cnnobj);
+		rco_update_toolbar(cnnobj);
+		rcw_grab_focus(cnnobj->cnnwin);
+		if (priv->view_mode != SCROLLED_WINDOW_MODE) {
+			rco_check_resize(cnnobj);
 		}
-
 	}
 	priv->switch_page_handler = 0;
 	return FALSE;
 }
 
-void rch_on_switch_page(GtkNotebook* notebook, GtkWidget* page, guint page_num,
-						     RemminaConnectionHolder* cnnhld)
+static void rcw_on_switch_page(GtkNotebook* notebook, GtkWidget* newpage, guint page_num,
+						     RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnwin->priv;
+	RemminaConnectionObject* cnnobj_newpage;
 
+	cnnobj_newpage = g_object_get_data(G_OBJECT(newpage), "cnnobj");
 	if (!priv->switch_page_handler) {
-		priv->switch_page_handler = g_idle_add(rch_on_switch_page_real, cnnhld);
+		priv->switch_page_handler = g_idle_add(rcw_on_switch_page_real, cnnobj_newpage);
 	}
 }
 
-void rch_on_page_added(GtkNotebook* notebook, GtkWidget* child, guint page_num,
-						    RemminaConnectionHolder* cnnhld)
+static void rcw_on_page_added(GtkNotebook* notebook, GtkWidget* child, guint page_num,
+						    RemminaConnectionWindow* cnnwin)
 {
-	if (gtk_notebook_get_n_pages(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook)) > 0)
-		rch_update_notebook(cnnhld);
+	if (gtk_notebook_get_n_pages(GTK_NOTEBOOK(cnnwin->priv->notebook)) > 0)
+		rcw_update_notebook(cnnwin);
 }
 
-void rch_on_page_removed(GtkNotebook* notebook, GtkWidget* child, guint page_num,
-						      RemminaConnectionHolder* cnnhld)
+static void rcw_on_page_removed(GtkNotebook* notebook, GtkWidget* child, guint page_num,
+						      RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
 
-	if (!cnnhld->cnnwin)
-		return;
-
-	if (gtk_notebook_get_n_pages(GTK_NOTEBOOK(cnnhld->cnnwin->priv->notebook)) <= 0) {
-		gtk_widget_destroy(GTK_WIDGET(cnnhld->cnnwin));
-		cnnhld->cnnwin = NULL;
+	if (gtk_notebook_get_n_pages(GTK_NOTEBOOK(cnnwin->priv->notebook)) <= 0) {
+		gtk_widget_destroy(GTK_WIDGET(cnnwin));
 	}
 
 }
 
-GtkNotebook*
-rch_on_notebook_create_window(GtkNotebook* notebook, GtkWidget* page, gint x, gint y, gpointer data)
+static GtkNotebook*
+rcw_on_notebook_create_window(GtkNotebook* notebook, GtkWidget* page, gint x, gint y, gpointer data)
 {
-	/* This signal callback is called by GTK when a detachable tab is dropped on the root window */
+	/* This signal callback is called by GTK when a detachable tab is dropped on the root window
+	 * or in an existing window */
 
 	TRACE_CALL(__func__);
 	RemminaConnectionWindow* srccnnwin;
@@ -2984,26 +2992,22 @@ rch_on_notebook_create_window(GtkNotebook* notebook, GtkWidget* page, gint x, gi
 
 	cnnobj = (RemminaConnectionObject*)g_object_get_data(G_OBJECT(page), "cnnobj");
 
-	if (dstcnnwin) {
-		cnnobj->cnnhld = dstcnnwin->priv->cnnhld;
-	}else {
-		cnnobj->cnnhld = g_new0(RemminaConnectionHolder, 1);
-		if (!cnnobj->cnnhld->cnnwin) {
-			/* Create a new scrolled window to accomodate the dropped connection
-			 * and move our cnnobj there */
-			cnnobj->cnnhld->cnnwin = srccnnwin;
-			rch_create_scrolled(cnnobj->cnnhld, cnnobj);
-		}
-	}
+	if (!dstcnnwin) {
+		/* Drop is directed to a new rcw: create a new scrolled window to accomodate
+		 * the dropped connectionand move our cnnobj there */
+		cnnobj->cnnwin = srccnnwin;
+		rco_create_scrolled(cnnobj);
+	} else
+		cnnobj->cnnwin = dstcnnwin;
 
 	remmina_protocol_widget_set_hostkey_func(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
 		(RemminaHostkeyFunc)rcw_hostkey_func);
 
-	return GTK_NOTEBOOK(cnnobj->cnnhld->cnnwin->priv->notebook);
+	return GTK_NOTEBOOK(cnnobj->cnnwin->priv->notebook);
 }
 
 static GtkWidget*
-rch_create_notebook(RemminaConnectionHolder* cnnhld)
+rcw_create_notebook(RemminaConnectionWindow* cnnwin)
 {
 	TRACE_CALL(__func__);
 	GtkWidget* notebook;
@@ -3013,18 +3017,17 @@ rch_create_notebook(RemminaConnectionHolder* cnnhld)
 	gtk_notebook_set_scrollable(GTK_NOTEBOOK(notebook), TRUE);
 	gtk_widget_show(notebook);
 
-	g_signal_connect(G_OBJECT(notebook), "create-window", G_CALLBACK(rch_on_notebook_create_window),
-		cnnhld);
-	g_signal_connect(G_OBJECT(notebook), "switch-page", G_CALLBACK(rch_on_switch_page), cnnhld);
-	g_signal_connect(G_OBJECT(notebook), "page-added", G_CALLBACK(rch_on_page_added), cnnhld);
-	g_signal_connect(G_OBJECT(notebook), "page-removed", G_CALLBACK(rch_on_page_removed), cnnhld);
+	g_signal_connect(G_OBJECT(notebook), "create-window", G_CALLBACK(rcw_on_notebook_create_window), NULL);
+	g_signal_connect(G_OBJECT(notebook), "switch-page", G_CALLBACK(rcw_on_switch_page), cnnwin);
+	g_signal_connect(G_OBJECT(notebook), "page-added", G_CALLBACK(rcw_on_page_added), cnnwin);
+	g_signal_connect(G_OBJECT(notebook), "page-removed", G_CALLBACK(rcw_on_page_removed), cnnwin);
 	gtk_widget_set_can_focus(notebook, FALSE);
 
 	return notebook;
 }
 
 /* Create a scrolled window container */
-void rch_create_scrolled(RemminaConnectionHolder* cnnhld, RemminaConnectionObject* cnnobj)
+void rco_create_scrolled(RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
 	GtkWidget* window;
@@ -3036,11 +3039,10 @@ void rch_create_scrolled(RemminaConnectionHolder* cnnhld, RemminaConnectionObjec
 	gchar* tag;
 	int newwin_width, newwin_height;
 
-	oldwindow = GTK_WIDGET(cnnhld->cnnwin);
-	window = rcw_new_from_holder(cnnhld);
+	oldwindow = GTK_WIDGET(cnnobj->cnnwin);
+	window = rcw_new();
 	gtk_widget_realize(window);
-	cnnhld->cnnwin = RCW(window);
-
+	cnnobj->cnnwin = RCW(window);
 
 	newwin_width = newwin_height = 100;
 	if (cnnobj) {
@@ -3061,13 +3063,13 @@ void rch_create_scrolled(RemminaConnectionHolder* cnnhld, RemminaConnectionObjec
 		newwin_height = remmina_file_get_int(oldwindow_currentpage_cnnobj->remmina_file, "window_height", 480);
 	}
 
-	gtk_window_set_default_size(GTK_WINDOW(cnnhld->cnnwin), newwin_width, newwin_height);
+	gtk_window_set_default_size(GTK_WINDOW(cnnobj->cnnwin), newwin_width, newwin_height);
 
 	/* Create the toolbar */
-	toolbar = rch_create_toolbar(cnnhld, SCROLLED_WINDOW_MODE);
+	toolbar = rcw_create_toolbar(cnnobj->cnnwin, SCROLLED_WINDOW_MODE);
 
 	/* Create the notebook */
-	notebook = rch_create_notebook(cnnhld);
+	notebook = rcw_create_notebook(cnnobj->cnnwin);
 
 	/* Create the grid container for toolbars+notebook and populate it */
 	grid = gtk_grid_new();
@@ -3076,7 +3078,7 @@ void rch_create_scrolled(RemminaConnectionHolder* cnnhld, RemminaConnectionObjec
 	gtk_widget_set_hexpand(notebook, TRUE);
 	gtk_widget_set_vexpand(notebook, TRUE);
 
-	rch_place_toolbar(GTK_TOOLBAR(toolbar), GTK_GRID(grid), notebook, remmina_pref.toolbar_placement);
+	rcw_place_toolbar(GTK_TOOLBAR(toolbar), GTK_GRID(grid), notebook, remmina_pref.toolbar_placement);
 
 
 	gtk_container_add(GTK_CONTAINER(window), grid);
@@ -3088,24 +3090,24 @@ void rch_create_scrolled(RemminaConnectionHolder* cnnhld, RemminaConnectionObjec
 	/* Add drag capabilities to the toolbar */
 	gtk_drag_source_set(GTK_WIDGET(toolbar), GDK_BUTTON1_MASK,
 		dnd_targets_tb, sizeof dnd_targets_tb / sizeof *dnd_targets_tb, GDK_ACTION_MOVE);
-	g_signal_connect_after(GTK_WIDGET(toolbar), "drag-begin", G_CALLBACK(rcw_tb_drag_begin), cnnhld);
-	g_signal_connect(GTK_WIDGET(toolbar), "drag-failed", G_CALLBACK(rcw_tb_drag_failed), cnnhld);
+	g_signal_connect_after(GTK_WIDGET(toolbar), "drag-begin", G_CALLBACK(rcw_tb_drag_begin), cnnobj);
+	g_signal_connect(GTK_WIDGET(toolbar), "drag-failed", G_CALLBACK(rcw_tb_drag_failed), cnnobj);
 
 	/* Add drop capabilities to the drop/dest target for the toolbar (the notebook) */
 	gtk_drag_dest_set(GTK_WIDGET(notebook), GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT,
 		dnd_targets_tb, sizeof dnd_targets_tb / sizeof *dnd_targets_tb, GDK_ACTION_MOVE);
 	gtk_drag_dest_set_track_motion(GTK_WIDGET(notebook), TRUE);
-	g_signal_connect(GTK_WIDGET(notebook), "drag-drop", G_CALLBACK(rcw_tb_drag_drop), cnnhld);
+	g_signal_connect(GTK_WIDGET(notebook), "drag-drop", G_CALLBACK(rcw_tb_drag_drop), cnnobj);
 
-	cnnhld->cnnwin->priv->view_mode = SCROLLED_WINDOW_MODE;
-	cnnhld->cnnwin->priv->toolbar = toolbar;
-	cnnhld->cnnwin->priv->grid = grid;
-	cnnhld->cnnwin->priv->notebook = notebook;
+	cnnobj->cnnwin->priv->view_mode = SCROLLED_WINDOW_MODE;
+	cnnobj->cnnwin->priv->toolbar = toolbar;
+	cnnobj->cnnwin->priv->grid = grid;
+	cnnobj->cnnwin->priv->notebook = notebook;
 
 	/* The notebook and all its child must be realized now, or a reparent will
 	 * call unrealize() and will destroy a GtkSocket */
 	gtk_widget_show(grid);
-	gtk_widget_show(GTK_WIDGET(cnnhld->cnnwin));
+	gtk_widget_show(GTK_WIDGET(cnnobj->cnnwin));
 
 	rcw_initialize_notebook(GTK_NOTEBOOK(notebook),
 		(oldwindow ? GTK_NOTEBOOK(RCW(oldwindow)->priv->notebook) : NULL), cnnobj,
@@ -3113,58 +3115,56 @@ void rch_create_scrolled(RemminaConnectionHolder* cnnhld, RemminaConnectionObjec
 
 	if (cnnobj) {
 		if (!oldwindow)
-			rcw_update_tag(cnnhld->cnnwin, cnnobj);
+			rcw_update_tag(cnnobj->cnnwin, cnnobj);
 
 		if (remmina_file_get_int(cnnobj->remmina_file, "window_maximize", FALSE)) {
-			gtk_window_maximize(GTK_WINDOW(cnnhld->cnnwin));
+			gtk_window_maximize(GTK_WINDOW(cnnobj->cnnwin));
 		}
 	}
 
 	if (oldwindow) {
 		tag = g_strdup((gchar*)g_object_get_data(G_OBJECT(oldwindow), "tag"));
-		g_object_set_data_full(G_OBJECT(cnnhld->cnnwin), "tag", tag, (GDestroyNotify)g_free);
-		if (!cnnobj)
-			gtk_widget_destroy(oldwindow);
+		g_object_set_data_full(G_OBJECT(cnnobj->cnnwin), "tag", tag, (GDestroyNotify)g_free);
 	}
 
-	rch_update_toolbar(cnnhld);
-	rch_showhide_toolbar(cnnhld, FALSE);
-	rch_check_resize(cnnhld);
+	rco_update_toolbar(cnnobj);
+	rco_set_tooltip(cnnobj, FALSE);
+	rco_check_resize(cnnobj);
 
 }
 
 static gboolean rcw_go_fullscreen(GtkWidget *widget, GdkEvent *event, gpointer data)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionHolder* cnnhld;
+	RemminaConnectionObject* cnnobj;
 
-	cnnhld = (RemminaConnectionHolder*)data;
+	cnnobj = (RemminaConnectionObject*)data;
 
 #if GTK_CHECK_VERSION(3, 18, 0)
 	if (remmina_pref.fullscreen_on_auto) {
-		gtk_window_fullscreen_on_monitor(GTK_WINDOW(cnnhld->cnnwin),
+		gtk_window_fullscreen_on_monitor(GTK_WINDOW(cnnobj->cnnwin),
 			gdk_screen_get_default(),
 			gdk_screen_get_monitor_at_window
-				(gdk_screen_get_default(), gtk_widget_get_window(GTK_WIDGET(cnnhld->cnnwin))
+				(gdk_screen_get_default(), gtk_widget_get_window(GTK_WIDGET(cnnobj->cnnwin))
 				));
 	} else {
 		remmina_log_print("Fullscreen managed by WM or by the user, as per settings");
-		gtk_window_fullscreen(GTK_WINDOW(cnnhld->cnnwin));
+		gtk_window_fullscreen(GTK_WINDOW(cnnobj->cnnwin));
 	}
 #else
 	remmina_log_print("Cannot fullscreen on a specific monitor, feature available from GTK 3.18");
-	gtk_window_fullscreen(GTK_WINDOW(cnnhld->cnnwin));
+	gtk_window_fullscreen(GTK_WINDOW(cnnobj->cnnwin));
 #endif
 	return FALSE;
 }
 
-void rch_create_overlay_ftb_overlay(RemminaConnectionHolder* cnnhld)
+static void rco_create_overlay_ftb_overlay(RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
 
 	GtkWidget* revealer;
 	RemminaConnectionWindowPriv* priv;
-	priv = cnnhld->cnnwin->priv;
+	priv = cnnobj->cnnwin->priv;
 
 	if (priv->overlay_ftb_overlay != NULL) {
 		gtk_widget_destroy(priv->overlay_ftb_overlay);
@@ -3172,8 +3172,8 @@ void rch_create_overlay_ftb_overlay(RemminaConnectionHolder* cnnhld)
 		priv->revealer = NULL;
 	}
 
-	rch_create_floating_toolbar(cnnhld, cnnhld->fullscreen_view_mode);
-	rch_update_toolbar(cnnhld);
+	rco_create_floating_toolbar(cnnobj, priv->fullscreen_view_mode);
+	rco_update_toolbar(cnnobj);
 
 	priv->overlay_ftb_overlay = gtk_event_box_new();
 
@@ -3226,16 +3226,16 @@ void rch_create_overlay_ftb_overlay(RemminaConnectionHolder* cnnhld)
 
 	gtk_overlay_add_overlay(GTK_OVERLAY(priv->overlay), priv->overlay_ftb_overlay);
 
-	rch_floating_toolbar_show(cnnhld, TRUE);
+	rco_floating_toolbar_show(cnnobj, TRUE);
 
-	g_signal_connect(G_OBJECT(priv->overlay_ftb_overlay), "enter-notify-event", G_CALLBACK(rch_floating_toolbar_on_enter), cnnhld);
-	g_signal_connect(G_OBJECT(priv->overlay_ftb_overlay), "scroll-event", G_CALLBACK(rch_floating_toolbar_on_scroll), cnnhld);
+	g_signal_connect(G_OBJECT(priv->overlay_ftb_overlay), "enter-notify-event", G_CALLBACK(rco_floating_toolbar_on_enter), cnnobj);
+	g_signal_connect(G_OBJECT(priv->overlay_ftb_overlay), "scroll-event", G_CALLBACK(rco_floating_toolbar_on_scroll), cnnobj);
 	gtk_widget_add_events(GTK_WIDGET(priv->overlay_ftb_overlay), GDK_SCROLL_MASK);
 
 	/* Add drag and drop capabilities to the source */
 	gtk_drag_source_set(GTK_WIDGET(priv->overlay_ftb_overlay), GDK_BUTTON1_MASK,
 		dnd_targets_ftb, sizeof dnd_targets_ftb / sizeof *dnd_targets_ftb, GDK_ACTION_MOVE);
-	g_signal_connect_after(GTK_WIDGET(priv->overlay_ftb_overlay), "drag-begin", G_CALLBACK(rcw_ftb_drag_begin), cnnhld);
+	g_signal_connect_after(GTK_WIDGET(priv->overlay_ftb_overlay), "drag-begin", G_CALLBACK(rcw_ftb_drag_begin), cnnobj);
 }
 
 
@@ -3245,9 +3245,9 @@ static gboolean rcw_ftb_drag_drop(GtkWidget *widget, GdkDragContext *context,
 	TRACE_CALL(__func__);
 	GtkAllocation wa;
 	gint new_floating_toolbar_placement;
-	RemminaConnectionHolder* cnnhld;
+	RemminaConnectionObject* cnnobj;
 
-	cnnhld = (RemminaConnectionHolder*)user_data;
+	cnnobj = (RemminaConnectionObject*)user_data;
 
 	gtk_widget_get_allocation(widget, &wa);
 
@@ -3263,7 +3263,7 @@ static gboolean rcw_ftb_drag_drop(GtkWidget *widget, GdkDragContext *context,
 		/* Destroy and recreate the FTB */
 		remmina_pref.floating_toolbar_placement = new_floating_toolbar_placement;
 		remmina_pref_save();
-		rch_create_overlay_ftb_overlay(cnnhld);
+		rco_create_overlay_ftb_overlay(cnnobj);
 	}
 
 	return TRUE;
@@ -3294,8 +3294,7 @@ static void rcw_ftb_drag_begin(GtkWidget *widget, GdkDragContext *context, gpoin
 
 }
 
-void rch_create_fullscreen(RemminaConnectionHolder* cnnhld, RemminaConnectionObject* cnnobj,
-							gint view_mode)
+void rco_create_fullscreen(RemminaConnectionObject* cnnobj, gint view_mode)
 {
 	TRACE_CALL(__func__);
 	GtkWidget* window;
@@ -3305,18 +3304,18 @@ void rch_create_fullscreen(RemminaConnectionHolder* cnnhld, RemminaConnectionObj
 
 	gchar* tag;
 
-	oldwindow = GTK_WIDGET(cnnhld->cnnwin);
-	window = rcw_new_from_holder(cnnhld);
+	oldwindow = GTK_WIDGET(cnnobj->cnnwin);
+	window = rcw_new();
 	gtk_widget_set_name(GTK_WIDGET(window), "remmina-connection-window-fullscreen");
 	gtk_widget_realize(window);
 
-	cnnhld->cnnwin = RCW(window);
-	priv = cnnhld->cnnwin->priv;
+	cnnobj->cnnwin = RCW(window);
+	priv = cnnobj->cnnwin->priv;
 
 	if (!view_mode)
 		view_mode = VIEWPORT_FULLSCREEN_MODE;
 
-	notebook = rch_create_notebook(cnnhld);
+	notebook = rcw_create_notebook(cnnobj->cnnwin);
 
 	priv->overlay = gtk_overlay_new();
 	gtk_container_add(GTK_CONTAINER(window), priv->overlay);
@@ -3325,52 +3324,51 @@ void rch_create_fullscreen(RemminaConnectionHolder* cnnhld, RemminaConnectionObj
 
 	priv->notebook = notebook;
 	priv->view_mode = view_mode;
-	cnnhld->fullscreen_view_mode = view_mode;
+	priv->fullscreen_view_mode = view_mode;
 
 	rcw_initialize_notebook(GTK_NOTEBOOK(notebook),
 		(oldwindow ? GTK_NOTEBOOK(RCW(oldwindow)->priv->notebook) : NULL), cnnobj,
 		view_mode);
 
 	if (cnnobj) {
-		rcw_update_tag(cnnhld->cnnwin, cnnobj);
+		rcw_update_tag(cnnobj->cnnwin, cnnobj);
 	}
 	if (oldwindow) {
 		tag = g_strdup((gchar*)g_object_get_data(G_OBJECT(oldwindow), "tag"));
-		g_object_set_data_full(G_OBJECT(cnnhld->cnnwin), "tag", tag, (GDestroyNotify)g_free);
+		g_object_set_data_full(G_OBJECT(cnnobj->cnnwin), "tag", tag, (GDestroyNotify)g_free);
 		gtk_widget_destroy(oldwindow);
 	}
 
 	/* Create the floating toolbar */
 	if (remmina_pref.fullscreen_toolbar_visibility != FLOATING_TOOLBAR_VISIBILITY_DISABLE) {
-		rch_create_overlay_ftb_overlay(cnnhld);
+		rco_create_overlay_ftb_overlay(cnnobj);
 		/* Add drag and drop capabilities to the drop/dest target for floating toolbar */
 		gtk_drag_dest_set(GTK_WIDGET(priv->overlay), GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT,
 			dnd_targets_ftb, sizeof dnd_targets_ftb / sizeof *dnd_targets_ftb, GDK_ACTION_MOVE);
 		gtk_drag_dest_set_track_motion(GTK_WIDGET(priv->notebook), TRUE);
-		g_signal_connect(GTK_WIDGET(priv->overlay), "drag-drop", G_CALLBACK(rcw_ftb_drag_drop), cnnhld);
+		g_signal_connect(GTK_WIDGET(priv->overlay), "drag-drop", G_CALLBACK(rcw_ftb_drag_drop), cnnobj);
 	}
 
-	rch_check_resize(cnnhld);
+	rco_check_resize(cnnobj);
 
 	gtk_widget_show(window);
 
 	/* Put the window in fullscreen after it is mapped to have it appear on the same monitor */
-	g_signal_connect(G_OBJECT(window), "map-event", G_CALLBACK(rcw_go_fullscreen), (gpointer)cnnhld);
+	g_signal_connect(G_OBJECT(window), "map-event", G_CALLBACK(rcw_go_fullscreen), cnnobj);
 }
 
 static gboolean rcw_hostkey_func(RemminaProtocolWidget* gp, guint keyval, gboolean release)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionObject* cnnobj = gp->cnnobj;
-	RemminaConnectionHolder* cnnhld = cnnobj->cnnhld;
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 	const RemminaProtocolFeature* feature;
 	gint i;
 
 	if (release) {
 		if (remmina_pref.hostkey && keyval == remmina_pref.hostkey) {
-			cnnhld->hostkey_activated = FALSE;
-			if (cnnhld->hostkey_used) {
+			priv->hostkey_activated = FALSE;
+			if (priv->hostkey_used) {
 				/* hostkey pressed + something else */
 				return TRUE;
 			}
@@ -3378,7 +3376,7 @@ static gboolean rcw_hostkey_func(RemminaProtocolWidget* gp, guint keyval, gboole
 		/* If hostkey is released without pressing other keys, we should execute the
 		 * shortcut key which is the same as hostkey. Be default, this is grab/ungrab
 		 * keyboard */
-		else if (cnnhld->hostkey_activated) {
+		else if (priv->hostkey_activated) {
 			/* Trap all key releases when hostkey is pressed */
 			/* hostkey pressed + something else */
 			return TRUE;
@@ -3389,19 +3387,18 @@ static gboolean rcw_hostkey_func(RemminaProtocolWidget* gp, guint keyval, gboole
 		}
 	}else if (remmina_pref.hostkey && keyval == remmina_pref.hostkey) {
 		/** @todo Add callback for hostname transparent overlay #832 */
-		cnnhld->hostkey_activated = TRUE;
-		cnnhld->hostkey_used = FALSE;
+		priv->hostkey_activated = TRUE;
+		priv->hostkey_used = FALSE;
 		return TRUE;
-	}else if (!cnnhld->hostkey_activated) {
+	}else if (!priv->hostkey_activated) {
 		/* Any key pressed, no hostkey */
 		return FALSE;
 	}
 
-	cnnhld->hostkey_used = TRUE;
+	priv->hostkey_used = TRUE;
 	keyval = gdk_keyval_to_lower(keyval);
 	if (keyval == GDK_KEY_Up || keyval == GDK_KEY_Down
 	    || keyval == GDK_KEY_Left || keyval == GDK_KEY_Right) {
-		DECLARE_CNNOBJ_WITH_RETURN(FALSE);
 		GtkAdjustment *adjust;
 		int pos;
 
@@ -3462,22 +3459,21 @@ static gboolean rcw_hostkey_func(RemminaProtocolWidget* gp, guint keyval, gboole
 	if (keyval == remmina_pref.shortcutkey_fullscreen) {
 		switch (priv->view_mode) {
 		case SCROLLED_WINDOW_MODE:
-			rch_create_fullscreen(
-				cnnhld,
-				NULL,
-				cnnhld->fullscreen_view_mode ?
-				cnnhld->fullscreen_view_mode : VIEWPORT_FULLSCREEN_MODE);
+			rco_create_fullscreen(
+				cnnobj,
+				priv->fullscreen_view_mode ?
+				priv->fullscreen_view_mode : VIEWPORT_FULLSCREEN_MODE);
 			break;
 		case SCROLLED_FULLSCREEN_MODE:
 		case VIEWPORT_FULLSCREEN_MODE:
-			rch_create_scrolled(cnnhld, NULL);
+			rco_create_scrolled(cnnobj);
 			break;
 		default:
 			break;
 		}
 	}else if (keyval == remmina_pref.shortcutkey_autofit) {
 		if (priv->toolitem_autofit && gtk_widget_is_sensitive(GTK_WIDGET(priv->toolitem_autofit))) {
-			rch_toolbar_autofit(GTK_WIDGET(gp), cnnhld);
+			rcw_toolbar_autofit(GTK_WIDGET(gp), cnnobj);
 		}
 	}else if (keyval == remmina_pref.shortcutkey_nexttab) {
 		i = gtk_notebook_get_current_page(GTK_NOTEBOOK(priv->notebook)) + 1;
@@ -3504,22 +3500,22 @@ static gboolean rcw_hostkey_func(RemminaProtocolWidget* gp, guint keyval, gboole
 				GTK_TOGGLE_TOOL_BUTTON(
 					priv->toolitem_grab)));
 	}else if (keyval == remmina_pref.shortcutkey_minimize) {
-		rch_toolbar_minimize(GTK_WIDGET(gp),
-			cnnhld);
+		rcw_toolbar_minimize(GTK_WIDGET(gp),
+			cnnobj->cnnwin);
 	}else if (keyval == remmina_pref.shortcutkey_viewonly) {
 		remmina_file_set_int(cnnobj->remmina_file, "viewonly",
 			( remmina_file_get_int(cnnobj->remmina_file, "viewonly", 0 )
 			  == 0  ) ? 1 : 0 );
 	}else if (keyval == remmina_pref.shortcutkey_screenshot) {
-		rch_toolbar_screenshot(GTK_WIDGET(gp),
-			cnnhld);
+		rcw_toolbar_screenshot(GTK_WIDGET(gp),
+			cnnobj->cnnwin);
 	}else if (keyval == remmina_pref.shortcutkey_disconnect) {
-		rch_disconnect_current_page(cnnhld);
+		rco_disconnect_current_page(cnnobj);
 	}else if (keyval == remmina_pref.shortcutkey_toolbar) {
 		if (priv->view_mode == SCROLLED_WINDOW_MODE) {
 			remmina_pref.hide_connection_toolbar =
 				!remmina_pref.hide_connection_toolbar;
-			rch_showhide_toolbar( cnnhld, TRUE);
+			rco_set_tooltip(cnnobj, TRUE);
 		}
 	}else {
 		for (feature =
@@ -3541,7 +3537,7 @@ static gboolean rcw_hostkey_func(RemminaProtocolWidget* gp, guint keyval, gboole
 			}
 		}
 	}
-	cnnhld->hostkey_activated = FALSE;
+	priv->hostkey_activated = FALSE;
 	/* Trap all key presses when hostkey is pressed */
 	return TRUE;
 }
@@ -3571,9 +3567,9 @@ static RemminaConnectionWindow* rcw_find(RemminaFile* remminafile)
 gboolean rco_delayed_window_present(gpointer user_data)
 {
 	RemminaConnectionObject* cnnobj = (RemminaConnectionObject*)user_data;
-	if (cnnobj && cnnobj->connected && cnnobj->cnnhld && cnnobj->cnnhld->cnnwin) {
-		gtk_window_present_with_time(GTK_WINDOW(cnnobj->cnnhld->cnnwin), (guint32)(g_get_monotonic_time() / 1000));
-		rch_grab_focus(GTK_NOTEBOOK(cnnobj->cnnhld->cnnwin->priv->notebook));
+	if (cnnobj && cnnobj->connected && cnnobj->cnnwin) {
+		gtk_window_present_with_time(GTK_WINDOW(cnnobj->cnnwin), (guint32)(g_get_monotonic_time() / 1000));
+		rcw_grab_focus(cnnobj->cnnwin);
 	}
 	return FALSE;
 }
@@ -3582,26 +3578,12 @@ void rco_on_connect(RemminaProtocolWidget* gp, RemminaConnectionObject* cnnobj)
 {
 	TRACE_CALL(__func__);
 
-	RemminaConnectionWindow* cnnwin;
-	RemminaConnectionHolder* cnnhld;
 	gchar *last_success;
 
 	GDateTime *date = g_date_time_new_now_utc();
 
 	/* This signal handler is called by a plugin when it’s correctly connected
 	 * (and authenticated) */
-
-	if (!cnnobj->cnnhld) {
-		cnnwin = rcw_find(cnnobj->remmina_file);
-		if (cnnwin) {
-			cnnhld = cnnwin->priv->cnnhld;
-		}else {
-			cnnhld = g_new0(RemminaConnectionHolder, 1);
-		}
-		cnnobj->cnnhld = cnnhld;
-	}else {
-		cnnhld = cnnobj->cnnhld;
-	}
 
 	cnnobj->connected = TRUE;
 
@@ -3625,11 +3607,11 @@ void rco_on_connect(RemminaProtocolWidget* gp, RemminaConnectionObject* cnnobj)
 	/* Save credentials */
 	remmina_file_save(cnnobj->remmina_file);
 
-	if (cnnhld->cnnwin->priv->floating_toolbar_widget) {
-		gtk_widget_show(cnnhld->cnnwin->priv->floating_toolbar_widget);
+	if (cnnobj->cnnwin->priv->floating_toolbar_widget) {
+		gtk_widget_show(cnnobj->cnnwin->priv->floating_toolbar_widget);
 	}
 
-	rch_update_toolbar(cnnhld);
+	rco_update_toolbar(cnnobj);
 
 	/* Try to present window */
 	g_timeout_add(200, rco_delayed_window_present, (gpointer)cnnobj);
@@ -3646,8 +3628,7 @@ void rco_on_disconnect(RemminaProtocolWidget* gp, gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionObject* cnnobj = gp->cnnobj;
-	RemminaConnectionHolder* cnnhld = cnnobj->cnnhld;
-	RemminaConnectionWindowPriv* priv = cnnhld->cnnwin->priv;
+	RemminaConnectionWindowPriv* priv = cnnobj->cnnwin->priv;
 	GtkWidget* pparent;
 
 	/* Detach the protocol widget from the notebook now, or we risk that a
@@ -3661,14 +3642,14 @@ void rco_on_disconnect(RemminaProtocolWidget* gp, gpointer data)
 
 	cnnobj->connected = FALSE;
 
-	if (cnnhld && remmina_pref.save_view_mode) {
-		if (cnnhld->cnnwin) {
-			remmina_file_set_int(cnnobj->remmina_file, "viewmode", cnnhld->cnnwin->priv->view_mode);
+	if (remmina_pref.save_view_mode) {
+		if (cnnobj->cnnwin) {
+			remmina_file_set_int(cnnobj->remmina_file, "viewmode", cnnobj->cnnwin->priv->view_mode);
 		}
 		remmina_file_save(cnnobj->remmina_file);
 	}
 
-	rch_keyboard_ungrab(cnnhld);
+	rcw_keyboard_ungrab(cnnobj->cnnwin);
 	gtk_toggle_tool_button_set_active(
 		GTK_TOGGLE_TOOL_BUTTON(priv->toolitem_grab),
 		FALSE);
@@ -3694,8 +3675,8 @@ void rco_on_desktop_resize(RemminaProtocolWidget* gp, gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionObject* cnnobj = gp->cnnobj;
-	if (cnnobj->cnnhld && cnnobj->cnnhld->cnnwin && cnnobj->cnnhld->cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE) {
-		rch_check_resize(cnnobj->cnnhld);
+	if (cnnobj && cnnobj->cnnwin && cnnobj->cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE) {
+		rco_check_resize(cnnobj);
 	}
 }
 
@@ -3711,7 +3692,7 @@ void rco_on_unlock_dynres(RemminaProtocolWidget* gp, gpointer data)
 	TRACE_CALL(__func__);
 	RemminaConnectionObject* cnnobj = gp->cnnobj;
 	cnnobj->dynres_unlocked = TRUE;
-	rch_update_toolbar(cnnobj->cnnhld);
+	rco_update_toolbar(cnnobj);
 }
 
 gboolean rcw_open_from_filename(const gchar* filename)
@@ -3741,7 +3722,7 @@ static gboolean open_connection_last_stage(gpointer user_data)
 	/* Now we have an allocated size for our RemminaProtocolWidget. We can proceed with the connection */
 	remmina_protocol_widget_update_remote_resolution(gp);
 	remmina_protocol_widget_open_connection(gp);
-	rch_check_resize(gp->cnnobj->cnnhld);
+	rco_check_resize(gp->cnnobj);
 
 	return FALSE;
 }
@@ -3816,23 +3797,22 @@ GtkWidget* rcw_open_from_file_full(RemminaFile* remminafile, GCallback disconnec
 	cnnwin = rcw_find(remminafile);
 	if (!cnnwin) {
 		/* Connection goes on a new toplevel window */
-		cnnobj->cnnhld = g_new0(RemminaConnectionHolder, 1);
 		i = remmina_file_get_int(cnnobj->remmina_file, "viewmode", 0);
 		if (kioskmode)
 			i = VIEWPORT_FULLSCREEN_MODE;
 		switch (i) {
 		case SCROLLED_FULLSCREEN_MODE:
 		case VIEWPORT_FULLSCREEN_MODE:
-			rch_create_fullscreen(cnnobj->cnnhld, cnnobj, i);
+			rco_create_fullscreen(cnnobj, i);
 			break;
 		case SCROLLED_WINDOW_MODE:
 		default:
-			rch_create_scrolled(cnnobj->cnnhld, cnnobj);
+			rco_create_scrolled(cnnobj);
 			break;
 		}
-		cnnwin = cnnobj->cnnhld->cnnwin;
+		cnnwin = cnnobj->cnnwin;
 	}else {
-		cnnobj->cnnhld = cnnwin->priv->cnnhld;
+		cnnobj->cnnwin = cnnwin;
 		tab = rco_create_tab(cnnobj);
 		i = rco_append_page(cnnobj, GTK_NOTEBOOK(cnnwin->priv->notebook), tab,
 			cnnwin->priv->view_mode);
@@ -3885,7 +3865,6 @@ GtkWidget* rcw_open_from_file_full(RemminaFile* remminafile, GCallback disconnec
 			"ToDo: put this string as error to show", remmina_protocol_widget_get_error_message((RemminaProtocolWidget*)cnnobj->proto));
 		return cnnobj->proto;
 	}
-
 
 	/* GTK window setup is done here, and we are almost ready to call remmina_protocol_widget_open_connection().
 	 * But size has not yet been allocated by GTK
