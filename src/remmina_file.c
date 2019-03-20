@@ -60,6 +60,7 @@
 #include "remmina_pref.h"
 #include "remmina_main.h"
 #include "remmina_masterthread_exec.h"
+#include "remmina_utils.h"
 #include "remmina/remmina_trace_calls.h"
 
 #define MIN_WINDOW_WIDTH 10
@@ -105,16 +106,66 @@ remmina_file_new(void)
 void remmina_file_generate_filename(RemminaFile *remminafile)
 {
 	TRACE_CALL(__func__);
-	GTimeVal gtime;
 	GDir *dir;
 
+	/* File name restrictions:
+	 * - Do not start with space
+	 * - Do not end with space or dot
+	 * - No more than 255 chars
+	 * - Do not contain \0
+	 * - Avoid % and $
+	 * - Avoid underscores and spaces for interoperabiility with everything else
+	 * - Better all lowercase
+	 */
+	gchar *invalid_chars = "\\%|/$?<>:*. \"";
+	GString *filenamestr;
+	gchar *filename;
+	const gchar *s;
+
+
+	/** functions we can use
+	 * g_strstrip( string )
+	 *	Removes leading and trailing whitespace from a string
+	 * g_strdelimit (str, invalid_chars, '-'))
+	 *	Convert each invalid_chars in a hyphen
+	 * g_ascii_strdown(string)
+	 *	all lowercase
+	 * To be safe we should remove control characters as well (but I'm lazy)
+	 * https://rosettacode.org/wiki/Strip_control_codes_and_extended_characters_from_a_string#C
+	 * g_utf8_strncpy (gchar *dest, const gchar *src, gsize n);
+	 *	copies a given number of characters instead of a given number of bytes. The src string must be valid UTF-8 encoded text.
+	 * g_utf8_validate (const gchar *str, gssize max_len, const gchar **end);
+	 *	Validates UTF-8 encoded text.
+	 */
+
 	g_free(remminafile->filename);
-	g_get_current_time(&gtime);
+
+	filenamestr = g_string_new (g_strdup_printf("%s",
+				remmina_pref.remmina_file_name));
+	if ((s = remmina_file_get_string(remminafile, "name")) == NULL) s = "name";
+	if (g_strstr_len (filenamestr->str, -1, "%N") != NULL )
+		remmina_utils_string_replace_all(filenamestr, "%N", s);
+
+	if ((s = remmina_file_get_string(remminafile, "group")) == NULL) s = "group";
+	if (g_strstr_len (filenamestr->str, -1, "%G") != NULL )
+		remmina_utils_string_replace_all(filenamestr, "%G", s);
+
+	if ((s = remmina_file_get_string(remminafile, "protocol")) == NULL) s = "proto";
+	if (g_strstr_len (filenamestr->str, -1, "%P") != NULL )
+		remmina_utils_string_replace_all(filenamestr, "%P", s);
+
+	if ((s = remmina_file_get_string(remminafile, "server")) == NULL) s = "host";
+	if (g_strstr_len (filenamestr->str, -1, "%h") != NULL )
+		remmina_utils_string_replace_all(filenamestr, "%h", s);
+
+	s = NULL;
+
+	filename = g_strdelimit (g_ascii_strdown(g_strstrip(g_string_free(filenamestr, FALSE)), -1),
+			invalid_chars, '-');
 
 	dir = g_dir_open(remmina_file_get_datadir(), 0, NULL);
 	if (dir != NULL)
-		remminafile->filename = g_strdup_printf("%s/%li%03li.remmina", remmina_file_get_datadir(), gtime.tv_sec,
-			gtime.tv_usec / 1000);
+		remminafile->filename = g_strdup_printf("%s/%s.remmina", remmina_file_get_datadir(), filename);
 	else
 		remminafile->filename = NULL;
 	g_dir_close(dir);
@@ -197,11 +248,12 @@ remmina_file_load(const gchar *filename)
 
 	gkeyfile = g_key_file_new();
 
-	if (!g_key_file_load_from_file(gkeyfile, filename, G_KEY_FILE_NONE, NULL)) {
-		g_key_file_free(gkeyfile);
-		g_printf("WARNING: unable to load remmina profile file %s: g_key_file_load_from_file() returned NULL.\n", filename);
-		return NULL;
-	}
+	if (g_file_test(filename, G_FILE_TEST_IS_REGULAR | G_FILE_TEST_EXISTS))
+		if (!g_key_file_load_from_file(gkeyfile, filename, G_KEY_FILE_NONE, NULL)) {
+			g_key_file_free(gkeyfile);
+			g_printf("WARNING: unable to load remmina profile file %s: g_key_file_load_from_file() returned NULL.\n", filename);
+			return NULL;
+		}
 
 	if (g_key_file_has_key(gkeyfile, "remmina", "name", NULL)) {
 		remminafile = remmina_file_new_empty();

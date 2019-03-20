@@ -110,12 +110,14 @@ typedef struct _RemminaColorPref {
 
 typedef struct _RemminaPref {
 	/* In RemminaPrefDialog options tab */
+	const gchar *datadir_path;
+	const gchar *remmina_file_name;
+	const gchar *screenshot_path;
+	gboolean deny_screenshot_clipboard;
+	const gchar *screenshot_name;
 	gboolean save_view_mode;
 	gint default_action;
 	gint scale_quality;
-	gboolean deny_screenshot_clipboard;
-	const gchar *screenshot_path;
-	const gchar *screenshot_name;
 	gint auto_scroll_step;
 	gint recent_maximum;
 	gchar *resolutions;

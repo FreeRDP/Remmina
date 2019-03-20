@@ -214,8 +214,8 @@ static void remmina_on_startup(GApplication *app)
 
 	RemminaSecretPlugin *secret_plugin;
 
-	remmina_file_manager_init();
 	remmina_pref_init();
+	remmina_file_manager_init();
 	remmina_plugin_manager_init();
 	remmina_widget_pool_init();
 	remmina_sftp_plugin_register();
