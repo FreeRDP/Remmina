@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-03-18 10:16+0000\n"
+"POT-Creation-Date: 2019-03-20 12:07+0000\n"
 "PO-Revision-Date: 2019-02-12 10:59+0800\n"
 "Last-Translator: shijing <jingshi@ubuntukylin.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Generator: Gtranslator 2.91.7\n"
 
 #. Profile: Protocol
-#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1460
+#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1479
 msgid "Protocol"
 msgstr "协议"
 
@@ -55,7 +55,7 @@ msgid "_OK"
 msgstr "确定(_O)"
 
 #. Profile: Name
-#: src/remmina_plugin_manager.c:408 src/remmina_file_editor.c:1417
+#: src/remmina_plugin_manager.c:408 src/remmina_file_editor.c:1436
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:474
 #: data/ui/remmina_mpc.glade:314
 msgid "Name"
@@ -101,7 +101,8 @@ msgstr "Hyper+"
 msgid "<None>"
 msgstr "<无>"
 
-#: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:35
+#: src/remmina_message_panel.c:163 data/ui/remmina_master_password.glade:30
+#: data/ui/remmina_mpc.glade:35
 msgid "Cancel"
 msgstr "取消"
 
@@ -143,7 +144,7 @@ msgstr "保存密码"
 #. Buttons, ok and cancel
 #: src/remmina_message_panel.c:452 src/remmina_message_panel.c:623
 #: src/remmina_file_editor.c:160 src/remmina_file_editor.c:367
-#: src/remmina_file_editor.c:1309 src/remmina_sftp_client.c:911
+#: src/remmina_file_editor.c:1311 src/remmina_sftp_client.c:911
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_key_chooser.glade:8
 #: data/ui/remmina_key_chooser.glade:9 data/ui/remmina_spinner.glade:8
@@ -209,7 +210,7 @@ msgstr "缩放时填满客户端窗口"
 
 #. Add a keystrokes submenu
 #: src/rcw.c:1677 src/remmina_pref_dialog.c:142
-#: data/ui/remmina_preferences.glade:252
+#: data/ui/remmina_preferences.glade:234
 msgid "Keystrokes"
 msgstr "键盘监听"
 
@@ -228,11 +229,11 @@ msgstr "截屏"
 msgid "Resize the window to fit in remote resolution"
 msgstr "调整窗口大小以适应远程分辨率"
 
-#: src/rcw.c:1924 data/ui/remmina_preferences.glade:740
+#: src/rcw.c:1924 data/ui/remmina_preferences.glade:805
 msgid "Toggle fullscreen mode"
 msgstr "切换全屏模式"
 
-#: src/rcw.c:1970 data/ui/remmina_preferences.glade:796
+#: src/rcw.c:1970 data/ui/remmina_preferences.glade:861
 msgid "Switch tab pages"
 msgstr "切换标签页"
 
@@ -240,7 +241,7 @@ msgstr "切换标签页"
 msgid "Toggle dynamic resolution update"
 msgstr "切换动态分辨率更新"
 
-#: src/rcw.c:1994 data/ui/remmina_preferences.glade:837
+#: src/rcw.c:1994 data/ui/remmina_preferences.glade:902
 msgid "Toggle scaled mode"
 msgstr "切换缩放模式"
 
@@ -256,15 +257,15 @@ msgstr "首选项"
 msgid "Tools"
 msgstr "工具"
 
-#: src/rcw.c:2060 data/ui/remmina_preferences.glade:978
+#: src/rcw.c:2060 data/ui/remmina_preferences.glade:1043
 msgid "Screenshot"
 msgstr "截屏"
 
-#: src/rcw.c:2068 data/ui/remmina_preferences.glade:893
+#: src/rcw.c:2068 data/ui/remmina_preferences.glade:958
 msgid "Minimize window"
 msgstr "最小化窗口"
 
-#: src/rcw.c:2078 data/ui/remmina_preferences.glade:922
+#: src/rcw.c:2078 data/ui/remmina_preferences.glade:987
 msgid "Disconnect"
 msgstr "断开"
 
@@ -381,7 +382,7 @@ msgid "User"
 msgstr "用户名"
 
 #. Profile: Group
-#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1442
+#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1461
 #: data/ui/remmina_main.glade:496 data/ui/remmina_mpc.glade:99
 #: data/ui/remmina_mpc.glade:325
 msgid "Group"
@@ -523,7 +524,7 @@ msgid "Browse the network to find a %s server"
 msgstr "浏览网络查找 %s 服务器"
 
 #: src/remmina_file_editor.c:497 src/remmina_pref_dialog.c:82
-#: data/ui/remmina_preferences.glade:240
+#: data/ui/remmina_preferences.glade:221
 msgid "Resolutions"
 msgstr "分辨率"
 
@@ -609,51 +610,51 @@ msgid "Default settings saved."
 msgstr "默认值已保存。"
 
 #. Create the editor dialog
-#: src/remmina_file_editor.c:1307
+#: src/remmina_file_editor.c:1309
 msgid "Remote Desktop Preference"
 msgstr "远程桌面设定"
 
 #. Default button
-#: src/remmina_file_editor.c:1313
+#: src/remmina_file_editor.c:1315
 msgid "Save as Default"
 msgstr "保存为默认值"
 
-#: src/remmina_file_editor.c:1316 src/remmina_main.c:907
+#: src/remmina_file_editor.c:1318 src/remmina_main.c:907
 msgid "_Save"
 msgstr "保存(_S)"
 
-#: src/remmina_file_editor.c:1321 data/ui/remmina_main.glade:231
+#: src/remmina_file_editor.c:1323 data/ui/remmina_main.glade:231
 msgid "Connect"
 msgstr "连接"
 
-#: src/remmina_file_editor.c:1324
+#: src/remmina_file_editor.c:1326
 msgid "_Save and Connect"
 msgstr "保存并连接(_S)"
 
-#: src/remmina_file_editor.c:1414
+#: src/remmina_file_editor.c:1433
 msgid "Profile"
 msgstr "预置文件"
 
-#: src/remmina_file_editor.c:1431
+#: src/remmina_file_editor.c:1450
 msgid "Quick Connect"
 msgstr "快速连接"
 
-#: src/remmina_file_editor.c:1455
+#: src/remmina_file_editor.c:1474
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "使用“%s”作为分组分隔符"
 
 #. Prior Connection Command
-#: src/remmina_file_editor.c:1474
+#: src/remmina_file_editor.c:1493
 msgid "Pre Command"
 msgstr "连接前执行命令"
 
 #. POST Connection Command
-#: src/remmina_file_editor.c:1492
+#: src/remmina_file_editor.c:1511
 msgid "Post Command"
 msgstr "连接后执行命令"
 
-#: src/remmina_file_editor.c:1556 src/remmina_file_editor.c:1574
+#: src/remmina_file_editor.c:1575 src/remmina_file_editor.c:1593
 #, c-format
 msgid "File %s not found."
 msgstr "文件 %s 未找到"
@@ -874,7 +875,7 @@ msgstr "目标文件夹中已经存在如下文件："
 msgid "Recent lists cleared."
 msgstr "最近项已被清除"
 
-#: src/remmina_pref_dialog.c:142 data/ui/remmina_preferences.glade:262
+#: src/remmina_pref_dialog.c:142 data/ui/remmina_preferences.glade:244
 msgid "Configure the keystrokes"
 msgstr "配置键盘监听"
 
@@ -1644,7 +1645,7 @@ msgstr "画质"
 msgid "Sound"
 msgstr "声音"
 
-#: plugins/rdp/rdp_plugin.c:1618
+#: plugins/rdp/rdp_plugin.c:1618 data/ui/remmina_preferences.glade:1428
 msgid "Security"
 msgstr "安全"
 
@@ -2101,6 +2102,41 @@ msgstr "关于 Remmina"
 msgid "Remmina Web Site"
 msgstr "Remmina 网站"
 
+#: data/ui/remmina_master_password.glade:6
+msgid ""
+"Please make sure you remember the Master Password you have set. If you "
+"forget your Master Password, you will be unable to access any of the "
+"information protected by it."
+msgstr ""
+
+#: data/ui/remmina_master_password.glade:9
+msgid ""
+"A Master Password is used to protect sensitive information like site "
+"passwords. If you create a Master Password you will be asked to enter it "
+"once per session when Remmina retrieves saved information protected by the "
+"password."
+msgstr ""
+
+#: data/ui/remmina_master_password.glade:43
+msgid "OK"
+msgstr ""
+
+#: data/ui/remmina_master_password.glade:87
+msgid "Current Password:"
+msgstr ""
+
+#: data/ui/remmina_master_password.glade:100
+msgid "Enter new password:"
+msgstr ""
+
+#: data/ui/remmina_master_password.glade:113
+msgid "Re-enter new password"
+msgstr ""
+
+#: data/ui/remmina_master_password.glade:165
+msgid "Password quality meter"
+msgstr ""
+
 #: data/ui/remmina_snap_info_dialog.glade:46
 msgid ""
 "It seems that Remmina is running on your system as a SNAP package. To enable "
@@ -2155,7 +2191,7 @@ msgid "Server name or IP address"
 msgstr "服务器名或 IP 地址"
 
 #: data/ui/remmina_main.glade:173 data/ui/remmina_main.glade:175
-#: data/ui/remmina_preferences.glade:224
+#: data/ui/remmina_preferences.glade:204
 msgid "Clear"
 msgstr "清除"
 
@@ -2250,75 +2286,67 @@ msgstr "请稍候…"
 msgid "Remmina Preferences"
 msgstr "Remmina 首选项"
 
-#: data/ui/remmina_preferences.glade:102
-msgid "Remember last view mode for each connection"
-msgstr "为每个连接记住最后的视图模式"
-
-#: data/ui/remmina_preferences.glade:121
+#: data/ui/remmina_preferences.glade:97
 msgid "Double-click action"
 msgstr "双击动作"
 
-#: data/ui/remmina_preferences.glade:134
+#: data/ui/remmina_preferences.glade:111
 msgid "Open connection"
 msgstr "打开连接"
 
-#: data/ui/remmina_preferences.glade:135
+#: data/ui/remmina_preferences.glade:112
 msgid "Edit settings"
 msgstr "编辑设置"
 
-#: data/ui/remmina_preferences.glade:149
+#: data/ui/remmina_preferences.glade:126
 msgid "Scale quality"
 msgstr "缩放质量"
 
-#: data/ui/remmina_preferences.glade:162
+#: data/ui/remmina_preferences.glade:140
 msgid "Nearest"
 msgstr "最近"
 
-#: data/ui/remmina_preferences.glade:163
+#: data/ui/remmina_preferences.glade:141
 msgid "Tiles"
 msgstr "标题"
 
-#: data/ui/remmina_preferences.glade:164
+#: data/ui/remmina_preferences.glade:142
 msgid "Bilinear"
 msgstr "Bilinear"
 
-#: data/ui/remmina_preferences.glade:165
+#: data/ui/remmina_preferences.glade:143
 msgid "Hyper"
 msgstr "Hyper"
 
-#: data/ui/remmina_preferences.glade:179
+#: data/ui/remmina_preferences.glade:157
 msgid "Auto scroll step size"
 msgstr "自动滚动步长"
 
-#: data/ui/remmina_preferences.glade:203
+#: data/ui/remmina_preferences.glade:182
 msgid "Maximum recent items"
 msgstr "最近的项目"
 
-#: data/ui/remmina_preferences.glade:279
+#: data/ui/remmina_preferences.glade:261
 msgid "Screenshots folder"
 msgstr "截屏文件夹"
 
-#: data/ui/remmina_preferences.glade:290
+#: data/ui/remmina_preferences.glade:273
 msgid "Choose the directory where you want to save Remmina screenshots."
 msgstr "选择你想要保存 Remmina 截屏的目录。"
 
-#: data/ui/remmina_preferences.glade:293
+#: data/ui/remmina_preferences.glade:276
 msgid "Select a Directory"
 msgstr "选择一个目录"
 
-#: data/ui/remmina_preferences.glade:303
+#: data/ui/remmina_preferences.glade:286
 msgid "Configure resolutions"
 msgstr "配置分辨率"
 
-#: data/ui/remmina_preferences.glade:317
-msgid "Send periodic usage statistics to remmina developers"
-msgstr "向 remmina 开发人员发送定期使用统计信息"
-
-#: data/ui/remmina_preferences.glade:336
+#: data/ui/remmina_preferences.glade:303
 msgid "Screenshots file name"
 msgstr "截屏文件名"
 
-#: data/ui/remmina_preferences.glade:347
+#: data/ui/remmina_preferences.glade:315
 msgid ""
 "%p Profile name\n"
 "%h Server name/IP\n"
@@ -2328,11 +2356,34 @@ msgstr ""
 "%h 服务器名/IP\n"
 "%Y 年, %m 月, %d 日, %H 时, %M 分, %S 秒（UTC 时间）\n"
 
-#: data/ui/remmina_preferences.glade:362
-msgid "Deny Copy Screenshot to clipboard"
-msgstr "拒绝复制截屏到剪贴板"
+#: data/ui/remmina_preferences.glade:332
+msgid ""
+"This is the folder where the connection profiles will be saved, it defaults "
+"to the XDG_USER_DATA"
+msgstr ""
 
-#: data/ui/remmina_preferences.glade:366
+#. It's the folder where the profiles are saved
+#: data/ui/remmina_preferences.glade:334
+msgid "Remmina data folder"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:360
+msgid "Remember last view mode for each connection"
+msgstr "为每个连接记住最后的视图模式"
+
+#: data/ui/remmina_preferences.glade:363
+msgid "Remember last view mode"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:388
+msgid "Send periodic usage statistics to remmina developers"
+msgstr "向 remmina 开发人员发送定期使用统计信息"
+
+#: data/ui/remmina_preferences.glade:390
+msgid "Send statistics to remmina.org"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:427
 msgid ""
 "If you check this button, when generating a screenshot it will only be saved "
 "on a file and not in the clipboard."
@@ -2340,180 +2391,208 @@ msgstr ""
 "如果选中此按钮，则在生成屏幕截图时，它只会保存在文件中，而不会保存在剪贴板"
 "中。"
 
-#: data/ui/remmina_preferences.glade:385
+#: data/ui/remmina_preferences.glade:430
+msgid "Deny screenshot to clipboard"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:442
+msgid ""
+"Each Remmina connection profile, is stored with a name you can set its "
+"template"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:444
+msgid "Profile filename template"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:456
+msgid ""
+"%G Group Name (slash will be converted to - automatically)\n"
+"%P Protocol name\n"
+"%N Connection Name\n"
+"%h Hostname/IP\n"
+"\n"
+"\n"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:464
+msgid "%G_%P_%N_%h"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:478
 msgid "Options"
 msgstr "选项"
 
-#: data/ui/remmina_preferences.glade:407
+#: data/ui/remmina_preferences.glade:492
 msgid "Always show tabs"
 msgstr "总是显示标签"
 
-#: data/ui/remmina_preferences.glade:423
+#: data/ui/remmina_preferences.glade:508
 msgid "Hide toolbar in tabbed interface"
 msgstr "隐藏标签界面中的工具栏"
 
-#: data/ui/remmina_preferences.glade:442
+#: data/ui/remmina_preferences.glade:527
 msgid "Default view mode"
 msgstr "默认视图模式"
 
-#: data/ui/remmina_preferences.glade:455
+#: data/ui/remmina_preferences.glade:540
 msgid "Automatic"
 msgstr "自动"
 
-#: data/ui/remmina_preferences.glade:456
+#: data/ui/remmina_preferences.glade:541
 msgid "Scrolled window"
 msgstr "滚动窗口"
 
-#: data/ui/remmina_preferences.glade:457
+#: data/ui/remmina_preferences.glade:542
 msgid "Scrolled fullscreen"
 msgstr "滚动全屏"
 
-#: data/ui/remmina_preferences.glade:458
+#: data/ui/remmina_preferences.glade:543
 msgid "Viewport fullscreen"
 msgstr "全屏视口"
 
-#: data/ui/remmina_preferences.glade:472
+#: data/ui/remmina_preferences.glade:557
 msgid "Tab interface"
 msgstr "标签界面"
 
-#: data/ui/remmina_preferences.glade:485
+#: data/ui/remmina_preferences.glade:570
 msgid "Tab by groups"
 msgstr "分组标签"
 
-#: data/ui/remmina_preferences.glade:486
+#: data/ui/remmina_preferences.glade:571
 msgid "Tab by protocols"
 msgstr "协议标签"
 
-#: data/ui/remmina_preferences.glade:487
+#: data/ui/remmina_preferences.glade:572
 msgid "Tab all connections"
 msgstr "所有连接标签"
 
-#: data/ui/remmina_preferences.glade:488
+#: data/ui/remmina_preferences.glade:573
 msgid "Do not use tabs"
 msgstr "不使用标签"
 
-#: data/ui/remmina_preferences.glade:499
+#: data/ui/remmina_preferences.glade:584
 msgid "Fullscreen on the same monitor as the connection window"
 msgstr "与连接窗口相同的监视器上全屏显示"
 
-#: data/ui/remmina_preferences.glade:520
+#: data/ui/remmina_preferences.glade:605
 msgid "Peeking"
 msgstr "窥视"
 
-#: data/ui/remmina_preferences.glade:521
+#: data/ui/remmina_preferences.glade:606
 msgid "Hidden"
 msgstr "隐藏"
 
-#: data/ui/remmina_preferences.glade:522
+#: data/ui/remmina_preferences.glade:607
 msgid "Disabled"
 msgstr "禁用"
 
-#: data/ui/remmina_preferences.glade:536
+#: data/ui/remmina_preferences.glade:621
 msgid "Fullscreen toolbar visibility"
 msgstr "全屏工具栏可见"
 
-#: data/ui/remmina_preferences.glade:546
+#: data/ui/remmina_preferences.glade:631
 msgid "Hide Search Bar in main window"
 msgstr "在主窗口中隐藏搜索栏"
 
-#: data/ui/remmina_preferences.glade:571
+#: data/ui/remmina_preferences.glade:654
 msgid "Appearance"
 msgstr "外观"
 
-#: data/ui/remmina_preferences.glade:594
+#: data/ui/remmina_preferences.glade:669
 msgid "Show new connection on top of the menu"
 msgstr "在菜单顶部显示新的连接"
 
-#: data/ui/remmina_preferences.glade:610
+#: data/ui/remmina_preferences.glade:685
 msgid "Hide total count in group menu"
 msgstr "隐藏组菜单中的总数"
 
-#: data/ui/remmina_preferences.glade:626
+#: data/ui/remmina_preferences.glade:701
 msgid "Disable tray icon"
 msgstr "禁用托盘图标"
 
-#: data/ui/remmina_preferences.glade:643
+#: data/ui/remmina_preferences.glade:718
 msgid "Start Remmina in tray icon at user logon"
 msgstr "在用户登录时启动托盘图标中的 Remmina"
 
-#: data/ui/remmina_preferences.glade:659
+#: data/ui/remmina_preferences.glade:734
 msgid "Dark Tray Icon"
 msgstr "暗色托盘图标"
 
-#: data/ui/remmina_preferences.glade:663
+#: data/ui/remmina_preferences.glade:738
 msgid "Choose this if your theme panel is light."
 msgstr "如果您的主题面板较浅，请选择此选项。"
 
-#: data/ui/remmina_preferences.glade:685
+#: data/ui/remmina_preferences.glade:758
 msgid "Applet"
 msgstr "小程序"
 
-#: data/ui/remmina_preferences.glade:712
+#: data/ui/remmina_preferences.glade:777
 msgid "Host key"
 msgstr "主机键"
 
-#: data/ui/remmina_preferences.glade:768
+#: data/ui/remmina_preferences.glade:833
 msgid "Auto-fit window"
 msgstr "自适应窗口"
 
-#: data/ui/remmina_preferences.glade:865
+#: data/ui/remmina_preferences.glade:930
 msgid "Grab keyboard"
 msgstr "键盘抓取"
 
-#: data/ui/remmina_preferences.glade:950
+#: data/ui/remmina_preferences.glade:1015
 msgid "Show / hide toolbar"
 msgstr "显示、隐藏工具栏"
 
-#: data/ui/remmina_preferences.glade:988
+#: data/ui/remmina_preferences.glade:1053
 msgid "SCREENSHOT"
 msgstr "截屏"
 
-#: data/ui/remmina_preferences.glade:1007
+#: data/ui/remmina_preferences.glade:1072
 msgid "View-only mode"
 msgstr "仅查看模式"
 
-#: data/ui/remmina_preferences.glade:1017
+#: data/ui/remmina_preferences.glade:1082
 msgid "VIEW-ONLY MODE"
 msgstr "仅查看模式"
 
-#: data/ui/remmina_preferences.glade:1041
+#: data/ui/remmina_preferences.glade:1104
 msgid "Keyboard"
 msgstr "键盘"
 
-#: data/ui/remmina_preferences.glade:1067
+#: data/ui/remmina_preferences.glade:1122
 msgid "SSH tunnel local port"
 msgstr "SSH 通道本地端口"
 
-#: data/ui/remmina_preferences.glade:1090
+#: data/ui/remmina_preferences.glade:1145
 msgid "Parse ~/.ssh/config"
 msgstr "解析 ~/.ssh/config"
 
-#: data/ui/remmina_preferences.glade:1110
+#: data/ui/remmina_preferences.glade:1165
 msgid "SSH_LOG_NOLOG"
 msgstr "SSH_LOG_NOLOG"
 
-#: data/ui/remmina_preferences.glade:1111
+#: data/ui/remmina_preferences.glade:1166
 msgid "SSH_LOG_RARE"
 msgstr "SSH_LOG_RARE"
 
-#: data/ui/remmina_preferences.glade:1112
+#: data/ui/remmina_preferences.glade:1167
 msgid "SSH_LOG_ENTRY"
 msgstr "SSH_LOG_ENTRY"
 
-#: data/ui/remmina_preferences.glade:1113
+#: data/ui/remmina_preferences.glade:1168
 msgid "SSH_LOG_PACKET"
 msgstr "SSH_LOG_PACKET"
 
-#: data/ui/remmina_preferences.glade:1114
+#: data/ui/remmina_preferences.glade:1169
 msgid "SSH_LOG_FUNCTIONS"
 msgstr "SSH_LOG_FUNCTIONS"
 
-#: data/ui/remmina_preferences.glade:1128
+#: data/ui/remmina_preferences.glade:1183
 msgid "SSH log level"
 msgstr "SSH 日志级别"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1191
+#: data/ui/remmina_preferences.glade:1246
 msgid ""
 "The time (in seconds) the connection needs to remain idle before TCP starts "
 "sending keepalive probes."
@@ -2521,19 +2600,19 @@ msgstr ""
 "在 TCP 开始发送 keepalive 探测之前，连接需要保持空闲的时间（以秒为单位）。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1206
+#: data/ui/remmina_preferences.glade:1261
 msgid "The time (in seconds) between individual keepalive probes."
 msgstr "各个 keepalive 探测器之间的时间（以秒为单位）。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1221
+#: data/ui/remmina_preferences.glade:1276
 msgid ""
 "The maximum number of keepalive probes TCP should send before dropping the "
 "connection."
 msgstr "丢弃连接之前 TCP 应发送的最大 keepalive 探测数。"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
-#: data/ui/remmina_preferences.glade:1236
+#: data/ui/remmina_preferences.glade:1291
 msgid ""
 "it specifies the maximum amount of time in milliseconds that transmitted "
 "data may remain unacknowledged before TCP will forcibly close the "
@@ -2542,139 +2621,167 @@ msgstr ""
 "它指定在 TCP 强制关闭相应连接之前传输数据可能保持未确认的最长时间（以毫秒为单"
 "位）。"
 
-#: data/ui/remmina_preferences.glade:1258
+#: data/ui/remmina_preferences.glade:1311
 msgid "SSH Options"
 msgstr "SSH 选项"
 
-#: data/ui/remmina_preferences.glade:1290
+#: data/ui/remmina_preferences.glade:1340
+msgid "Use master password"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1349
+msgid "Change master password"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1353
+msgid "You can set a master password that will act like a screensaver."
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1368
+msgid "Passwords and encryption"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1397
+msgid "Auto lock after defined timout"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1408
+msgid "Seconds before to lock Remmina"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1411
+msgid "120"
+msgstr ""
+
+#: data/ui/remmina_preferences.glade:1452
 msgid "Terminal font"
 msgstr "终端字体"
 
-#: data/ui/remmina_preferences.glade:1303
+#: data/ui/remmina_preferences.glade:1465
 msgid "Scrollback lines"
 msgstr "回滚行数"
 
-#: data/ui/remmina_preferences.glade:1312
+#: data/ui/remmina_preferences.glade:1474
 msgid "Use system default font"
 msgstr "使用系统默认字体"
 
-#: data/ui/remmina_preferences.glade:1365
+#: data/ui/remmina_preferences.glade:1527
 msgid "Allow bold text"
 msgstr "允许粗体字"
 
-#: data/ui/remmina_preferences.glade:1397
+#: data/ui/remmina_preferences.glade:1559
 msgid "Clipboard copy shortcut"
 msgstr "剪贴板复制快捷键"
 
-#: data/ui/remmina_preferences.glade:1409
-#: data/ui/remmina_preferences.glade:1450
-#: data/ui/remmina_preferences.glade:1491
+#: data/ui/remmina_preferences.glade:1571
+#: data/ui/remmina_preferences.glade:1612
+#: data/ui/remmina_preferences.glade:1653
 msgid "(Host key +)"
 msgstr "（主机键 +）"
 
-#: data/ui/remmina_preferences.glade:1438
+#: data/ui/remmina_preferences.glade:1600
 msgid "Clipboard paste shortcut"
 msgstr "剪贴板粘贴快捷键"
 
-#: data/ui/remmina_preferences.glade:1479
+#: data/ui/remmina_preferences.glade:1641
 msgid "Select all shortcut"
 msgstr "选择所有快捷键"
 
-#: data/ui/remmina_preferences.glade:1531
-#: data/ui/remmina_preferences.glade:1543
+#: data/ui/remmina_preferences.glade:1693
+#: data/ui/remmina_preferences.glade:1706
 msgid "Foreground color"
 msgstr "前景色"
 
-#: data/ui/remmina_preferences.glade:1556
-#: data/ui/remmina_preferences.glade:1568
+#: data/ui/remmina_preferences.glade:1720
+#: data/ui/remmina_preferences.glade:1732
 msgid "Background color"
 msgstr "背景色"
 
-#: data/ui/remmina_preferences.glade:1581
+#: data/ui/remmina_preferences.glade:1745
 msgid "Cursor color"
 msgstr "光标颜色"
 
-#: data/ui/remmina_preferences.glade:1593
+#: data/ui/remmina_preferences.glade:1757
 msgid "Cursor Color"
 msgstr "光标颜色"
 
-#: data/ui/remmina_preferences.glade:1606
+#: data/ui/remmina_preferences.glade:1770
 msgid "Normal colors"
 msgstr "正常颜色"
 
-#: data/ui/remmina_preferences.glade:1619
+#: data/ui/remmina_preferences.glade:1783
 msgid "Bright colors"
 msgstr "高亮颜色"
 
-#: data/ui/remmina_preferences.glade:1631
+#: data/ui/remmina_preferences.glade:1795
 msgid "Pick a color for black"
 msgstr "选择黑色"
 
-#: data/ui/remmina_preferences.glade:1643
+#: data/ui/remmina_preferences.glade:1807
 msgid "Pick a color for bright black"
 msgstr "选择亮黑色"
 
-#: data/ui/remmina_preferences.glade:1655
+#: data/ui/remmina_preferences.glade:1819
 msgid "Pick a color for red"
 msgstr "选择红色"
 
-#: data/ui/remmina_preferences.glade:1667
+#: data/ui/remmina_preferences.glade:1831
 msgid "Pick a color for green"
 msgstr "选择绿色"
 
-#: data/ui/remmina_preferences.glade:1679
+#: data/ui/remmina_preferences.glade:1843
 msgid "Pick a color for yellow"
 msgstr "选择黄色"
 
-#: data/ui/remmina_preferences.glade:1691
+#: data/ui/remmina_preferences.glade:1855
 msgid "Pick a color for blue"
 msgstr "选择蓝色"
 
-#: data/ui/remmina_preferences.glade:1703
+#: data/ui/remmina_preferences.glade:1867
 msgid "Pick a color for magenta"
 msgstr "选择洋红色"
 
-#: data/ui/remmina_preferences.glade:1715
+#: data/ui/remmina_preferences.glade:1879
 msgid "Pick a color for Cyan"
 msgstr "选择青色"
 
-#: data/ui/remmina_preferences.glade:1727
+#: data/ui/remmina_preferences.glade:1891
 msgid "Pick a color for white"
 msgstr "选择白色"
 
-#: data/ui/remmina_preferences.glade:1739
+#: data/ui/remmina_preferences.glade:1903
 msgid "Pick a color for bright red"
 msgstr "选择亮红色"
 
-#: data/ui/remmina_preferences.glade:1751
+#: data/ui/remmina_preferences.glade:1915
 msgid "Pick a color for bright green"
 msgstr "选择亮绿色"
 
-#: data/ui/remmina_preferences.glade:1763
+#: data/ui/remmina_preferences.glade:1927
 msgid "Pick a color for bright yellow"
 msgstr "选择亮黄色"
 
-#: data/ui/remmina_preferences.glade:1775
+#: data/ui/remmina_preferences.glade:1939
 msgid "Pick a color for bright blue"
 msgstr "选择亮蓝色"
 
-#: data/ui/remmina_preferences.glade:1787
+#: data/ui/remmina_preferences.glade:1951
 msgid "Pick a color for bright magenta"
 msgstr "选择亮洋红色"
 
-#: data/ui/remmina_preferences.glade:1799
+#: data/ui/remmina_preferences.glade:1963
 msgid "Pick a color for bright Cyan"
 msgstr "选择亮青色"
 
-#: data/ui/remmina_preferences.glade:1811
+#: data/ui/remmina_preferences.glade:1975
 msgid "Pick a color for bright white"
 msgstr "选择亮白色"
 
-#: data/ui/remmina_preferences.glade:1824
+#: data/ui/remmina_preferences.glade:1988
 msgid "Load color scheme"
 msgstr "加载配色方案"
 
-#: data/ui/remmina_preferences.glade:1835
+#: data/ui/remmina_preferences.glade:1999
 msgid ""
 "Chose a color scheme file, pre-installed themes are usually installed under /"
 "usr/share/remmina/theme. See https://github.com/mbadolato/iTerm2-Color-"
@@ -2683,10 +2790,11 @@ msgstr ""
 "选择一个配色方案文件，预安装的主题通常在 /usr/share/remmina/theme 下。请参阅 "
 "https://github.com/mbadolato/iTerm2-Color-Schemes "
 
-#: data/ui/remmina_preferences.glade:1836
+#: data/ui/remmina_preferences.glade:2000
 msgid "Terminal Color Scheme file chooser"
 msgstr "终端颜色方案文件选择器"
 
-#: data/ui/remmina_preferences.glade:1926
+#: data/ui/remmina_preferences.glade:2067
 msgid "Terminal"
 msgstr "终端"
+
