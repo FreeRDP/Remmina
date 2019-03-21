@@ -9,7 +9,7 @@
       <placeholder/>
     </child>
     <child internal-child="vbox">
-      <object class="GtkBox">
+      <object class="GtkBox" id="RemminaUnlock">
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
@@ -23,6 +23,8 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="margin_right">6</property>
+                <property name="action_name">unlock.cancel</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -36,6 +38,8 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="margin_left">6</property>
+                <property name="action_name">unlock.submit</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -54,12 +58,15 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="vexpand">True</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="halign">start</property>
                 <property name="margin_left">18</property>
+                <property name="margin_right">18</property>
+                <property name="margin_top">18</property>
+                <property name="margin_bottom">9</property>
                 <property name="hexpand">True</property>
                 <property name="label" translatable="yes">Unlock Remmina</property>
                 <attributes>
@@ -76,8 +83,13 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">18</property>
+                <property name="halign">end</property>
+                <property name="valign">center</property>
+                <property name="margin_left">12</property>
                 <property name="margin_right">6</property>
+                <property name="margin_top">9</property>
+                <property name="margin_bottom">18</property>
+                <property name="hexpand">True</property>
                 <property name="label" translatable="yes">Password</property>
               </object>
               <packing>
@@ -91,8 +103,12 @@
                 <property name="can_focus">True</property>
                 <property name="tooltip_text" translatable="yes">Unix account password</property>
                 <property name="halign">start</property>
+                <property name="valign">center</property>
                 <property name="margin_left">6</property>
-                <property name="hexpand">False</property>
+                <property name="margin_right">18</property>
+                <property name="margin_top">9</property>
+                <property name="margin_bottom">18</property>
+                <property name="hexpand">True</property>
                 <property name="visibility">False</property>
                 <property name="invisible_char">•</property>
                 <property name="input_purpose">password</property>
