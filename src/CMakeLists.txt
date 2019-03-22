@@ -101,6 +101,8 @@ list(APPEND REMMINA_SRCS
     "remmina_string_array.h"
     "remmina_string_list.c"
     "remmina_string_list.h"
+    "remmina_unlock.c"
+    "remmina_unlock.h"
     "remmina_utils.c"
     "remmina_utils.h"
     "remmina_widget_pool.c"

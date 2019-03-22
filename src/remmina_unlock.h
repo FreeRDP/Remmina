@@ -45,4 +45,6 @@ typedef struct _RemminaUnlockDialog {
 
 G_BEGIN_DECLS
 
+GtkDialog* remmina_unlock_new(GtkWindow *parent);
+
 G_END_DECLS

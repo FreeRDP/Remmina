@@ -120,6 +120,8 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 	gchar *protocol;
 	gchar *server;
 
+	remmina_pref_init();
+
 	opts = g_application_command_line_get_options_dict(cmdline);
 
 	if (g_variant_dict_lookup_value(opts, "quit", NULL)) {

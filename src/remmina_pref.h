@@ -238,6 +238,7 @@ gint remmina_pref_get_ssh_tcp_usrtimeout(void);
 
 void remmina_pref_set_value(const gchar *key, const gchar *value);
 gchar* remmina_pref_get_value(const gchar *key);
+gboolean remmina_pref_get_boolean(const gchar *key);
 
 G_END_DECLS
 

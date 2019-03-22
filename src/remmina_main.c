@@ -57,6 +57,7 @@
 #include "remmina_exec.h"
 #include "remmina_mpchange.h"
 #include "remmina_external_tools.h"
+#include "remmina_unlock.h"
 #include "remmina/remmina_trace_calls.h"
 #include "remmina_stats_sender.h"
 
@@ -798,6 +799,11 @@ void remmina_main_on_action_connection_delete(GSimpleAction *action, GVariant *p
 void remmina_main_on_action_application_preferences(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
+	if (remmina_pref_get_boolean("use_master_password")) {
+		GtkDialog *unlock_dialog = remmina_unlock_new(remminamain->window);
+		gtk_dialog_run(unlock_dialog);
+		gtk_widget_destroy(GTK_WIDGET(unlock_dialog));
+	}
 	GtkDialog *dialog = remmina_pref_dialog_new(0, remminamain->window);
 	gtk_dialog_run(dialog);
 	gtk_widget_destroy(GTK_WIDGET(dialog));

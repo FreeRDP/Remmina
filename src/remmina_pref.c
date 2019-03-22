@@ -973,8 +973,7 @@ void remmina_pref_set_value(const gchar *key, const gchar *value)
 	g_free(content);
 }
 
-gchar*
-remmina_pref_get_value(const gchar *key)
+gchar* remmina_pref_get_value(const gchar *key)
 {
 	TRACE_CALL(__func__);
 	GKeyFile *gkeyfile;
@@ -983,6 +982,20 @@ remmina_pref_get_value(const gchar *key)
 	gkeyfile = g_key_file_new();
 	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
 	value = g_key_file_get_string(gkeyfile, "remmina_pref", key, NULL);
+	g_key_file_free(gkeyfile);
+
+	return value;
+}
+
+gboolean remmina_pref_get_boolean(const gchar *key)
+{
+	TRACE_CALL(__func__);
+	GKeyFile *gkeyfile;
+	gboolean value;
+
+	gkeyfile = g_key_file_new();
+	g_key_file_load_from_file(gkeyfile, remmina_pref_file, G_KEY_FILE_NONE, NULL);
+	value = g_key_file_get_boolean(gkeyfile, "remmina_pref", key, NULL);
 	g_key_file_free(gkeyfile);
 
 	return value;
