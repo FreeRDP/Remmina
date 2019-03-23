@@ -641,6 +641,8 @@ void remmina_main_on_action_connection_connect(GSimpleAction *action, GVariant *
 	if (!remminamain->priv->selected_filename)
 		return;
 
+	remmina_unlock_new(remminamain->window);
+
 	remminafile = remmina_file_load(remminamain->priv->selected_filename);
 
 	if (remminafile == NULL)
@@ -657,6 +659,8 @@ void remmina_main_on_action_connection_external_tools(GSimpleAction *action, GVa
 	TRACE_CALL(__func__);
 	if (!remminamain->priv->selected_filename)
 		return;
+
+	remmina_unlock_new(remminamain->window);
 
 	remmina_external_tools_from_filename(remminamain, remminamain->priv->selected_filename);
 }
@@ -688,6 +692,8 @@ void remmina_main_on_action_application_mpchange(GSimpleAction *action, GVariant
 		}
 	}
 
+	remmina_unlock_new(remminamain->window);
+
 	remmina_mpchange_schedule(TRUE, group, domain, username, "");
 
 	if (remminafile != NULL)
@@ -699,6 +705,8 @@ void remmina_main_on_action_connection_new(GSimpleAction *action, GVariant *para
 {
 	TRACE_CALL(__func__);
 	GtkWidget *widget;
+
+	remmina_unlock_new(remminamain->window);
 
 	widget = remmina_file_editor_new();
 	g_signal_connect(G_OBJECT(widget), "destroy", G_CALLBACK(remmina_main_file_editor_destroy), remminamain);
@@ -783,6 +791,7 @@ void remmina_main_on_action_connection_delete(GSimpleAction *action, GVariant *p
 	if (!remminamain->priv->selected_filename)
 		return;
 
+	remmina_unlock_new(remminamain->window);
 	dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
 		_("Are you sure to delete '%s'"), remminamain->priv->selected_name);
 	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES) {
@@ -799,11 +808,7 @@ void remmina_main_on_action_connection_delete(GSimpleAction *action, GVariant *p
 void remmina_main_on_action_application_preferences(GSimpleAction *action, GVariant *param, gpointer data)
 {
 	TRACE_CALL(__func__);
-	if (remmina_pref_get_boolean("use_master_password")) {
-		GtkDialog *unlock_dialog = remmina_unlock_new(remminamain->window);
-		gtk_dialog_run(unlock_dialog);
-		gtk_widget_destroy(GTK_WIDGET(unlock_dialog));
-	}
+	remmina_unlock_new(remminamain->window);
 	GtkDialog *dialog = remmina_pref_dialog_new(0, remminamain->window);
 	gtk_dialog_run(dialog);
 	gtk_widget_destroy(GTK_WIDGET(dialog));

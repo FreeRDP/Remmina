@@ -286,6 +286,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.use_master_password = TRUE;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "unlocked_timeout", NULL))
+		remmina_pref.unlock_timeout  = g_key_file_get_integer(gkeyfile, "remmina_pref", "unlocked_timeout", NULL);
+	else
+		remmina_pref.unlock_timeout  = 300;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "fullscreen_on_auto", NULL))
 		remmina_pref.fullscreen_on_auto = g_key_file_get_boolean(gkeyfile, "remmina_pref", "fullscreen_on_auto", NULL);
 	else
@@ -677,6 +682,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "deny_screenshot_clipboard", remmina_pref.deny_screenshot_clipboard);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_view_mode", remmina_pref.save_view_mode);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "use_master_password", remmina_pref.use_master_password);
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "unlock_timeout", remmina_pref.unlock_timeout);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "floating_toolbar_placement", remmina_pref.floating_toolbar_placement);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "toolbar_placement", remmina_pref.toolbar_placement);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "prevent_snap_welcome_message", remmina_pref.prevent_snap_welcome_message);

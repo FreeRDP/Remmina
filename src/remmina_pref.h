@@ -117,6 +117,7 @@ typedef struct _RemminaPref {
 	const gchar *screenshot_name;
 	gboolean save_view_mode;
 	gboolean use_master_password;
+	gint unlock_timeout;
 	gint default_action;
 	gint scale_quality;
 	gint auto_scroll_step;

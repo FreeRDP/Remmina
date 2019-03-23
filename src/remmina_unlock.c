@@ -32,22 +32,45 @@
  *
  */
 
-#ifdef __linux__
 
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 
 #include "config.h"
+#include "remmina_pref.h"
 #include "remmina_unlock.h"
 #include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"
 
+#ifdef __linux__
 static RemminaUnlockDialog *remmina_unlock_dialog;
 #define GET_OBJ(object_name) gtk_builder_get_object(remmina_unlock_dialog->builder, object_name)
+
+static void remmina_unlock_timer_init (gpointer user_data)
+{
+	TRACE_CALL(__func__);
+
+	remmina_unlock_dialog->timer = g_timer_new();
+}
+
+static void remmina_unlock_timer_reset (gpointer user_data)
+{
+	TRACE_CALL(__func__);
+
+	g_timer_reset(remmina_unlock_dialog->timer);
+}
+
+static void remmina_unlock_timer_destroy (gpointer user_data)
+{
+	TRACE_CALL(__func__);
+
+	g_timer_destroy(remmina_unlock_dialog->timer);
+}
 
 static void remmina_button_unlock_clicked(GtkButton *btn, gpointer user_data)
 {
 	TRACE_CALL(__func__);
+	g_timer_reset(remmina_unlock_dialog->timer);
 	gtk_widget_destroy(GTK_WIDGET(remmina_unlock_dialog->dialog));
 	remmina_unlock_dialog->dialog = NULL;
 }
@@ -59,13 +82,14 @@ static void remmina_button_unlock_cancel_clicked(GtkButton *btn, gpointer user_d
 	remmina_unlock_dialog->dialog = NULL;
 }
 
-GtkDialog* remmina_unlock_new(GtkWindow *parent)
+void remmina_unlock_new(GtkWindow *parent)
 {
     TRACE_CALL(__func__);
 
     remmina_unlock_dialog = g_new0(RemminaUnlockDialog, 1);
     //remmina_unlock_dialog->priv = g_new0(RemminaUnlockDialogPriv, 1);
 
+    //if (remmina_unlock_dialog->unlock_init)
     remmina_unlock_dialog->builder = remmina_public_gtk_builder_new_from_file("remmina_unlock.glade");
     remmina_unlock_dialog->dialog = GTK_DIALOG(gtk_builder_get_object(remmina_unlock_dialog->builder, "RemminaUnlockDialog"));
     if (parent)
@@ -83,7 +107,13 @@ GtkDialog* remmina_unlock_new(GtkWindow *parent)
     /* Connect signals */
     gtk_builder_connect_signals(remmina_unlock_dialog->builder, NULL);
 
-    return remmina_unlock_dialog->dialog;
+    if (remmina_pref_get_boolean("use_master_password"))
+	    gtk_dialog_run(remmina_unlock_dialog->dialog);
 }
 
+#else
+void remmina_unlock_new(...)
+{
+	TRACE_CALL(__func__);
+}
 #endif

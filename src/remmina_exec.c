@@ -166,12 +166,7 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		break;
 
 	case REMMINA_COMMAND_PREF:
-		if (remmina_pref_get_boolean("use_master_password"))
-		if (mainwindow) {
-			GtkDialog *unlock_dialog = remmina_unlock_new(mainwindow);
-			gtk_dialog_run(unlock_dialog);
-			gtk_widget_destroy(GTK_WIDGET(unlock_dialog));
-		}
+		remmina_unlock_new(mainwindow);
 		prefdialog = remmina_pref_dialog_get_dialog();
 		if (prefdialog) {
 			gtk_window_present(GTK_WINDOW(prefdialog));
