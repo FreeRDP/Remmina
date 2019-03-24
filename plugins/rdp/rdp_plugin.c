@@ -700,7 +700,8 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget* gp)
 				remmina_plugin_service->protocol_plugin_set_error(gp, NULL);
 				continue;
 			}
-			fprintf(stderr, "Failed to check FreeRDP event handles\n");
+			if (freerdp_get_last_error(rfi->instance->context) == FREERDP_ERROR_SUCCESS)
+				fprintf(stderr, "Failed to check FreeRDP file descriptor\n");
 			break;
 		}
 	}
