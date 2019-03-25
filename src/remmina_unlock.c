@@ -33,8 +33,13 @@
  */
 
 
+#include <security/pam_appl.h>
+#include <security/pam_misc.h>
+
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <glib.h>
+#include <glib/gprintf.h>
 
 #include "config.h"
 #include "remmina_pref.h"
@@ -70,7 +75,7 @@ static void remmina_unlock_timer_destroy (gpointer user_data)
 static void remmina_button_unlock_clicked(GtkButton *btn, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	g_timer_reset(remmina_unlock_dialog->timer);
+	//g_timer_reset(remmina_unlock_dialog->timer);
 	gtk_widget_destroy(GTK_WIDGET(remmina_unlock_dialog->dialog));
 	remmina_unlock_dialog->dialog = NULL;
 }
@@ -87,7 +92,8 @@ void remmina_unlock_new(GtkWindow *parent)
     TRACE_CALL(__func__);
 
     remmina_unlock_dialog = g_new0(RemminaUnlockDialog, 1);
-    //remmina_unlock_dialog->priv = g_new0(RemminaUnlockDialogPriv, 1);
+
+    remmina_unlock_dialog->username = g_get_user_name ();
 
     //if (remmina_unlock_dialog->unlock_init)
     remmina_unlock_dialog->builder = remmina_public_gtk_builder_new_from_file("remmina_unlock.glade");
@@ -96,7 +102,10 @@ void remmina_unlock_new(GtkWindow *parent)
         gtk_window_set_transient_for(GTK_WINDOW(remmina_unlock_dialog->dialog), parent);
 
     remmina_unlock_dialog->entry_unlock = GTK_ENTRY(GET_OBJ("entry_unlock"));
+    gtk_entry_set_activates_default (GTK_ENTRY(remmina_unlock_dialog->entry_unlock), TRUE);
     remmina_unlock_dialog->button_unlock = GTK_BUTTON(GET_OBJ("button_unlock"));
+    gtk_widget_set_can_default(GTK_WIDGET(remmina_unlock_dialog->button_unlock), TRUE);
+    gtk_widget_grab_default (GTK_WIDGET(remmina_unlock_dialog->button_unlock));
     remmina_unlock_dialog->button_unlock_cancel = GTK_BUTTON(GET_OBJ("button_unlock_cancel"));
 
     g_signal_connect(remmina_unlock_dialog->button_unlock, "clicked",

@@ -167,7 +167,6 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.deny_screenshot_clipboard = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_options_deny_screenshot_clipboard));
 	remmina_pref.save_view_mode = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_options_remember_last_view_mode));
 	remmina_pref.use_master_password = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_use_master_password));
-	remmina_pref.unlock_timeout = atoi(gtk_entry_get_text(remmina_pref_dialog->unlock_timeout));
 	remmina_pref.fullscreen_on_auto = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_fullscreen_on_auto));
 	remmina_pref.always_show_tab = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_show_tabs));
 	remmina_pref.hide_connection_toolbar = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_hide_toolbar));
@@ -204,6 +203,9 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	if (remmina_pref.ssh_tcp_usrtimeout <= 0)
 		remmina_pref.ssh_tcp_usrtimeout = SSH_SOCKET_TCP_USER_TIMEOUT;
 	remmina_pref.ssh_parseconfig = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_options_ssh_parseconfig));
+	remmina_pref.unlock_timeout = atoi(gtk_entry_get_text(remmina_pref_dialog->unlock_timeout));
+	if (remmina_pref.unlock_timeout < 0)
+		remmina_pref.unlock_timeout = 300;
 
 	remmina_pref.auto_scroll_step = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_options_scroll));
 	if (remmina_pref.auto_scroll_step < 10)
