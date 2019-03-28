@@ -1417,25 +1417,6 @@ Author: Antenore Gatta
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="margin_left">18</property>
-                    <property name="margin_top">9</property>
-                    <property name="hexpand">False</property>
-                    <property name="label" translatable="yes">File encryption</property>
-                    <attributes>
-                      <attribute name="weight" value="bold"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">3</property>
-                    <property name="width">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
                     <property name="margin_left">36</property>
                     <property name="label" translatable="yes">Automatic lock interval</property>
                   </object>
@@ -1457,6 +1438,79 @@ Author: Antenore Gatta
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">2</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_left">18</property>
+                    <property name="margin_top">9</property>
+                    <property name="hexpand">False</property>
+                    <property name="label" translatable="yes">File encryption</property>
+                    <attributes>
+                      <attribute name="weight" value="bold"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">5</property>
+                    <property name="width">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_left">36</property>
+                    <property name="label" translatable="yes">Password</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_left">36</property>
+                    <property name="label" translatable="yes">Retype password</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="unlock_password">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="visibility">False</property>
+                    <property name="invisible_char">•</property>
+                    <property name="input_purpose">password</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">3</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="unlock_repassword">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="visibility">False</property>
+                    <property name="invisible_char">•</property>
+                    <property name="input_purpose">password</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">4</property>
                     <property name="width">2</property>
                   </packing>
                 </child>

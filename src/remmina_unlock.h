@@ -34,9 +34,6 @@
 
 #pragma once
 
-#ifdef __linux__
-#include <security/pam_appl.h>
-#include <security/pam_misc.h>
 typedef struct _RemminaUnlockDialog {
 	GtkBuilder *builder;
 	GtkDialog *dialog;
@@ -48,20 +45,12 @@ typedef struct _RemminaUnlockDialog {
 	gboolean unlock_init;
 	GTimer *timer;
 
-	const gchar *username;
-	pam_handle_t *pamh;
-	struct pam_conv conv;
 	int retval;
 
 } RemminaUnlockDialog;
-#endif
 
 G_BEGIN_DECLS
 
-#ifdef __linux__
 void remmina_unlock_new(GtkWindow *parent);
-#else
-void remmina_unlock_new(...);
-#endif
 
 G_END_DECLS
