@@ -240,6 +240,20 @@
             ]
         },
         {
+            "name": "libsodium",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/jedisct1/libsodium.git",
+                    "tag": "1.0.17",
+                    "commit": "b732443c442239c2e0184820e9b23cca0de0828c"
+                }
+            ],
+            "post-install": [
+                "install -Dm644 -t /app/share/licenses/libsodium LICENSE"
+            ]
+        },
+        {
             "name": "libssh",
             "buildsystem": "cmake-ninja",
             "builddir": true,
