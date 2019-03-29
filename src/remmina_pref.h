@@ -118,6 +118,7 @@ typedef struct _RemminaPref {
 	gboolean save_view_mode;
 	gboolean use_master_password;
 	const gchar *unlock_password;
+	const gchar *unlock_repassword;
 	gint unlock_timeout;
 	gint default_action;
 	gint scale_quality;

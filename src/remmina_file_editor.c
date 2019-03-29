@@ -1379,6 +1379,7 @@ static void remmina_file_editor_entry_on_changed(GtkEditable* editable, RemminaF
 	priv = gfe->priv;
 	if (remmina_file_get_filename(priv->remmina_file) == NULL) {
 		remmina_file_generate_filename(priv->remmina_file);
+		/* TODO Probably to be removed */
 		remmina_file_editor_check_profile(gfe);
 	} else {
 		remmina_file_delete(remmina_file_get_filename(priv->remmina_file));

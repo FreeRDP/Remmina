@@ -1507,6 +1507,10 @@ Author: Antenore Gatta
                     <property name="visibility">False</property>
                     <property name="invisible_char">•</property>
                     <property name="input_purpose">password</property>
+                    <signal name="changed" handler="remmina_pref_dialog_entry_on_changed" swapped="no"/>
+                    <style>
+                      <class name="unlock_repassword"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
