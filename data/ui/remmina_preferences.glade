@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 
+<!-- Generated with glade 3.20.4 
 
 Remmina Preferences Dialog -
 Copyright (C) Antenore Gatta & Giovanni Panozzo 2014-2019
@@ -43,9 +43,6 @@ Author: Antenore Gatta
     <property name="type_hint">dialog</property>
     <signal name="close" handler="remmina_pref_dialog_on_close_clicked" swapped="no"/>
     <signal name="destroy" handler="remmina_pref_on_dialog_destroy" swapped="no"/>
-    <child>
-      <placeholder/>
-    </child>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox1">
         <property name="can_focus">False</property>
@@ -1383,7 +1380,7 @@ Author: Antenore Gatta
                   <object class="GtkSwitch" id="switch_security_use_master_password">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes">When activated, some widget will require you to authenticate with  your operating system password</property>
+                    <property name="tooltip_text" translatable="yes">When activated, some widget will require you to authenticate with  a secret key</property>
                     <property name="halign">start</property>
                     <property name="margin_top">9</property>
                     <property name="margin_bottom">9</property>
@@ -1399,7 +1396,7 @@ Author: Antenore Gatta
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">When activated, some widget will require you to authenticate with  your operating system password</property>
+                    <property name="tooltip_text" translatable="yes">When activated, some widget will require you to authenticate with  a secret key</property>
                     <property name="halign">start</property>
                     <property name="margin_left">36</property>
                     <property name="margin_top">9</property>
@@ -1490,8 +1487,12 @@ Author: Antenore Gatta
                   <object class="GtkEntry" id="unlock_password">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="halign">start</property>
+                    <property name="margin_right">18</property>
+                    <property name="hexpand">True</property>
                     <property name="visibility">False</property>
                     <property name="invisible_char">•</property>
+                    <property name="width_chars">24</property>
                     <property name="input_purpose">password</property>
                   </object>
                   <packing>
@@ -1504,8 +1505,12 @@ Author: Antenore Gatta
                   <object class="GtkEntry" id="unlock_repassword">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="halign">start</property>
+                    <property name="margin_right">18</property>
+                    <property name="hexpand">True</property>
                     <property name="visibility">False</property>
                     <property name="invisible_char">•</property>
+                    <property name="width_chars">24</property>
                     <property name="input_purpose">password</property>
                     <signal name="changed" handler="remmina_pref_dialog_entry_on_changed" swapped="no"/>
                     <style>
@@ -2182,6 +2187,9 @@ Author: Antenore Gatta
           </packing>
         </child>
       </object>
+    </child>
+    <child>
+      <placeholder/>
     </child>
   </object>
 </interface>
