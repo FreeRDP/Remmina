@@ -2143,6 +2143,9 @@ msgid ""
 "forget your Master Password, you will be unable to access any of the "
 "information protected by it."
 msgstr ""
+"Veuillez vous assurer de bien mémoriser le mot de passe principal que vous "
+"avez défini. En cas d’oubli de ce mot de passe, vous ne pourrez plus accéder "
+"à aucune des informations dont il assure la protection."
 
 #: data/ui/remmina_master_password.glade:9
 msgid ""
@@ -2151,26 +2154,30 @@ msgid ""
 "once per session when Remmina retrieves saved information protected by the "
 "password."
 msgstr ""
+"Un mot de passe principal permet la protection des informations sensibles, "
+"telles que les mots de passe de connexion. Si vous définissez un mot de "
+"passe principal, il vous sera demandé de le saisir à chaque session afin que "
+"Remmina puisse accéder aux informations protégées par ce mot de passe."
 
 #: data/ui/remmina_master_password.glade:43
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: data/ui/remmina_master_password.glade:87
 msgid "Current Password:"
-msgstr ""
+msgstr "Mot de passe actuel :"
 
 #: data/ui/remmina_master_password.glade:100
 msgid "Enter new password:"
-msgstr ""
+msgstr "Saisissez le nouveau mot de passe :"
 
 #: data/ui/remmina_master_password.glade:113
 msgid "Re‐enter new password:"
-msgstr ""
+msgstr "Saisissez‐le à nouveau :"
 
 #: data/ui/remmina_master_password.glade:165
 msgid "Password quality meter"
-msgstr ""
+msgstr "Mesure de la robustesse du mot de passe"
 
 #: data/ui/remmina_snap_info_dialog.glade:46
 msgid ""
@@ -2407,11 +2414,13 @@ msgid ""
 "This is the folder where the connection profiles will be saved, it defaults "
 "to the XDG_USER_DATA"
 msgstr ""
+"Détermine le répertoire dans lequel les données des connexions sont "
+"sauvegardées, défini par défaut par la variable d’environnement XDG_USER_DATA"
 
 #. It’s the folder where the profiles are saved
 #: data/ui/remmina_preferences.glade:334
 msgid "Remmina data folder"
-msgstr ""
+msgstr "Répertoire de données de Remmina"
 
 #: data/ui/remmina_preferences.glade:360
 msgid "Remember last view mode for each connection"
@@ -2419,7 +2428,7 @@ msgstr "Mémoriser le précédent mode de visualisation de chaque connexion"
 
 #: data/ui/remmina_preferences.glade:363
 msgid "Remember last view mode"
-msgstr ""
+msgstr "Se rappeler du précédent mode d’affichage"
 
 #: data/ui/remmina_preferences.glade:388
 msgid "Send periodic usage statistics to remmina developers"
@@ -2429,7 +2438,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:390
 msgid "Send statistics to remmina.org"
-msgstr ""
+msgstr "Envoyer des données statistiques au site remmina.org"
 
 #: data/ui/remmina_preferences.glade:427
 msgid ""
@@ -2441,17 +2450,19 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:430
 msgid "Deny screenshot to clipboard"
-msgstr ""
+msgstr "Interdire les captures d’écran dans le presse‐papiers"
 
 #: data/ui/remmina_preferences.glade:442
 msgid ""
 "Each Remmina connection profile is stored with a name, you can set its "
 "template"
 msgstr ""
+"Chaque profil de connexion de Remmina est sauvegardé avec un nom dont vous "
+"pouvez définir la nomenclature"
 
 #: data/ui/remmina_preferences.glade:444
 msgid "Profile filename template"
-msgstr ""
+msgstr "Nomenclature des noms des profils"
 
 #: data/ui/remmina_preferences.glade:456
 msgid ""
@@ -2462,10 +2473,17 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
+"%G : nom de groupe (les obliques « / » seront automatiquement convertis en "
+"tirets « - »)\n"
+"%P : nom du protocole\n"
+"%N : nom de la connexion\n"
+"%h : nom d’hôte/IP\n"
+"\n"
+"\n"
 
 #: data/ui/remmina_preferences.glade:464
 msgid "%G_%P_%N_%h"
-msgstr ""
+msgstr "%G_%P_%N_%h"
 
 #: data/ui/remmina_preferences.glade:478
 msgid "Options"
@@ -2687,27 +2705,29 @@ msgstr "Options SSH"
 
 #: data/ui/remmina_preferences.glade:1340
 msgid "Use master password"
-msgstr ""
+msgstr "Utiliser un mot de passe principal"
 
 #: data/ui/remmina_preferences.glade:1349
 msgid "Change master password"
-msgstr ""
+msgstr "Changer le mot de passe principal"
 
 #: data/ui/remmina_preferences.glade:1353
 msgid "You can set a master password that will act like a screensaver."
 msgstr ""
+"Vous pouvez définir un mot de passe principal qui aura le même effet qu’un "
+"verrouillage d’écran."
 
 #: data/ui/remmina_preferences.glade:1368
 msgid "Passwords and encryption"
-msgstr ""
+msgstr "Mots de passe et chiffrement"
 
 #: data/ui/remmina_preferences.glade:1397
 msgid "Auto‐lock after a defined timeout"
-msgstr ""
+msgstr "Verrouiller automatiquement après une durée déterminée"
 
 #: data/ui/remmina_preferences.glade:1408
 msgid "Seconds before locking Remmina"
-msgstr ""
+msgstr "Durée en secondes avant verrouillage de Remmina"
 
 #: data/ui/remmina_preferences.glade:1452
 msgid "Terminal font"
