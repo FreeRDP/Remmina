@@ -46,21 +46,21 @@
 static RemminaUnlockDialog *remmina_unlock_dialog;
 #define GET_OBJ(object_name) gtk_builder_get_object(remmina_unlock_dialog->builder, object_name)
 
-static void remmina_unlock_timer_init (gpointer user_data)
+static void remmina_unlock_timer_init(gpointer user_data)
 {
 	TRACE_CALL(__func__);
 
 	remmina_unlock_dialog->timer = g_timer_new();
 }
 
-static void remmina_unlock_timer_reset (gpointer user_data)
+static void remmina_unlock_timer_reset(gpointer user_data)
 {
 	TRACE_CALL(__func__);
 
 	g_timer_reset(remmina_unlock_dialog->timer);
 }
 
-static void remmina_unlock_timer_destroy (gpointer user_data)
+static void remmina_unlock_timer_destroy(gpointer user_data)
 {
 	TRACE_CALL(__func__);
 
@@ -85,32 +85,31 @@ static void remmina_button_unlock_cancel_clicked(GtkButton *btn, gpointer user_d
 
 void remmina_unlock_new(GtkWindow *parent)
 {
-    TRACE_CALL(__func__);
+	TRACE_CALL(__func__);
 
-    remmina_unlock_dialog = g_new0(RemminaUnlockDialog, 1);
+	remmina_unlock_dialog = g_new0(RemminaUnlockDialog, 1);
 
-    //if (remmina_unlock_dialog->unlock_init)
-    remmina_unlock_dialog->builder = remmina_public_gtk_builder_new_from_file("remmina_unlock.glade");
-    remmina_unlock_dialog->dialog = GTK_DIALOG(gtk_builder_get_object(remmina_unlock_dialog->builder, "RemminaUnlockDialog"));
-    if (parent)
-        gtk_window_set_transient_for(GTK_WINDOW(remmina_unlock_dialog->dialog), parent);
+	//if (remmina_unlock_dialog->unlock_init)
+	remmina_unlock_dialog->builder = remmina_public_gtk_builder_new_from_file("remmina_unlock.glade");
+	remmina_unlock_dialog->dialog = GTK_DIALOG(gtk_builder_get_object(remmina_unlock_dialog->builder, "RemminaUnlockDialog"));
+	if (parent)
+		gtk_window_set_transient_for(GTK_WINDOW(remmina_unlock_dialog->dialog), parent);
 
-    remmina_unlock_dialog->entry_unlock = GTK_ENTRY(GET_OBJ("entry_unlock"));
-    gtk_entry_set_activates_default (GTK_ENTRY(remmina_unlock_dialog->entry_unlock), TRUE);
-    remmina_unlock_dialog->button_unlock = GTK_BUTTON(GET_OBJ("button_unlock"));
-    gtk_widget_set_can_default(GTK_WIDGET(remmina_unlock_dialog->button_unlock), TRUE);
-    gtk_widget_grab_default (GTK_WIDGET(remmina_unlock_dialog->button_unlock));
-    remmina_unlock_dialog->button_unlock_cancel = GTK_BUTTON(GET_OBJ("button_unlock_cancel"));
+	remmina_unlock_dialog->entry_unlock = GTK_ENTRY(GET_OBJ("entry_unlock"));
+	gtk_entry_set_activates_default(GTK_ENTRY(remmina_unlock_dialog->entry_unlock), TRUE);
+	remmina_unlock_dialog->button_unlock = GTK_BUTTON(GET_OBJ("button_unlock"));
+	gtk_widget_set_can_default(GTK_WIDGET(remmina_unlock_dialog->button_unlock), TRUE);
+	gtk_widget_grab_default(GTK_WIDGET(remmina_unlock_dialog->button_unlock));
+	remmina_unlock_dialog->button_unlock_cancel = GTK_BUTTON(GET_OBJ("button_unlock_cancel"));
 
-    g_signal_connect(remmina_unlock_dialog->button_unlock, "clicked",
-            G_CALLBACK(remmina_button_unlock_clicked), (gpointer)remmina_unlock_dialog);
-    g_signal_connect(remmina_unlock_dialog->button_unlock_cancel, "clicked",
-            G_CALLBACK(remmina_button_unlock_cancel_clicked), (gpointer)remmina_unlock_dialog);
+	g_signal_connect(remmina_unlock_dialog->button_unlock, "clicked",
+			 G_CALLBACK(remmina_button_unlock_clicked), (gpointer)remmina_unlock_dialog);
+	g_signal_connect(remmina_unlock_dialog->button_unlock_cancel, "clicked",
+			 G_CALLBACK(remmina_button_unlock_cancel_clicked), (gpointer)remmina_unlock_dialog);
 
-    /* Connect signals */
-    gtk_builder_connect_signals(remmina_unlock_dialog->builder, NULL);
+	/* Connect signals */
+	gtk_builder_connect_signals(remmina_unlock_dialog->builder, NULL);
 
-    if (remmina_pref_get_boolean("use_master_password"))
-	    gtk_dialog_run(remmina_unlock_dialog->dialog);
+	if (remmina_pref_get_boolean("use_master_password"))
+		gtk_dialog_run(remmina_unlock_dialog->dialog);
 }
-

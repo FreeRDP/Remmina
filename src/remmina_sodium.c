@@ -32,6 +32,28 @@
  *
  */
 
+/**
+ * @file remmina_sodium.c
+ * @brief Remmina encryption functions,
+ * @author Antenore Gatta
+ * @date 31 Mar 2019
+ *
+ * These functions are used to:
+ *  - hash password using the Argon2 hashing algorithm.
+ *  - Encrypt and decrypt data streams (files for examples).
+ *
+ * @code
+ *
+ *  gchar *test = remmina_sodium_pwhash("Password test");
+ *  g_free(test);
+ *  test = remmina_sodium_pwhash_str("Password Test");
+ *  g_free(test);
+ *  gint rc = remmina_sodium_pwhash_str_verify("$argon2id$v=19$m=65536,t=2,p=1$6o+kpazlHSaevezH2J9qUA$4pN75oHgyh1BLc/b+ybLYHjZbatG4ZSCSlxLI32YPY4", "Password Test");
+ *
+ * @endcode
+ *
+ */
+
 #include <string.h>
 
 #if defined(__linux__)
@@ -49,45 +71,62 @@
 #include "remmina_sodium.h"
 #include "remmina/remmina_trace_calls.h"
 
-static void remmina_sodium_pwhash(const char *pass)
+gchar *remmina_sodium_pwhash(const gchar *pass)
 {
+	TRACE_CALL(__func__);
 	g_info("Generating passphrase (may take a while)...");
 	/* Create a random salt for the key derivation function */
-	unsigned char salt[crypto_pwhash_SALTBYTES] = {0};
+	unsigned char salt[crypto_pwhash_SALTBYTES] = { 0 };
 	randombytes_buf(salt, sizeof salt);
 
 	/* Use argon2 to convert password to a full size key */
 	unsigned char key[crypto_secretbox_KEYBYTES];
 	if (crypto_pwhash(key, sizeof key, pass, strlen(pass), salt,
-			crypto_pwhash_OPSLIMIT_INTERACTIVE,
-			crypto_pwhash_MEMLIMIT_INTERACTIVE,
-			crypto_pwhash_ALG_DEFAULT) != 0) {
+			  crypto_pwhash_OPSLIMIT_INTERACTIVE,
+			  crypto_pwhash_MEMLIMIT_INTERACTIVE,
+			  crypto_pwhash_ALG_DEFAULT) != 0) {
 		g_error("Out of memory!\n");
 		exit(1);
 	}
 
 	g_info("Password hashed, it is: %s", key);
+	return g_strdup((const char *)key);
 }
-static void remmina_sodium_pwhash_str(const char *pass)
+
+gchar *remmina_sodium_pwhash_str(const gchar *pass)
 {
+	TRACE_CALL(__func__);
 	g_info("Generating passphrase (may take a while)...");
 	/* Create a random salt for the key derivation function */
-	unsigned char salt[crypto_pwhash_SALTBYTES] = {0};
+	unsigned char salt[crypto_pwhash_SALTBYTES] = { 0 };
 	randombytes_buf(salt, sizeof salt);
 
 	/* Use argon2 to convert password to a full size key */
 	char key[crypto_pwhash_STRBYTES];
 	if (crypto_pwhash_str(key, pass, strlen(pass),
-				crypto_pwhash_OPSLIMIT_INTERACTIVE,
-				crypto_pwhash_MEMLIMIT_INTERACTIVE) != 0) {
+			      crypto_pwhash_OPSLIMIT_INTERACTIVE,
+			      crypto_pwhash_MEMLIMIT_INTERACTIVE) != 0) {
 		g_error("Out of memory!\n");
 		exit(1);
 	}
 
 	g_info("Password hashed, it is: %s", key);
+	return g_strdup((const char *)key);
 }
 
-void remmina_sodium_init(void) {
+gint remmina_sodium_pwhash_str_verify(const char *key, const char *pass)
+{
+	TRACE_CALL(__func__);
+
+	gint rc;
+
+	rc = crypto_pwhash_str_verify(key, pass, strlen(pass));
+
+	return rc;
+}
+
+void remmina_sodium_init(void)
+{
 	TRACE_CALL(__func__);
 #if defined(__linux__) && defined(RNDGETENTCNT)
 	int fd;
@@ -96,18 +135,14 @@ void remmina_sodium_init(void) {
 	if ((fd = open("/dev/random", O_RDONLY)) != -1) {
 		if (ioctl(fd, RNDGETENTCNT, &c) == 0 && c < 160) {
 			g_printerr("This system doesn't provide enough entropy to quickly generate high-quality random numbers.\n"
-				"Installing the rng-utils/rng-tools, jitterentropy or haveged packages may help.\n"
-				"On virtualized Linux environments, also consider using virtio-rng.\n"
-				"The service will not start until enough entropy has been collected.\n");
+				   "Installing the rng-utils/rng-tools, jitterentropy or haveged packages may help.\n"
+				   "On virtualized Linux environments, also consider using virtio-rng.\n"
+				   "The service will not start until enough entropy has been collected.\n");
 		}
-		(void) close(fd);
+		(void)close(fd);
 	}
 #endif
-	if (sodium_init() < 0) {
-		g_critical ("%s - Failed to initialize sodium, it is not safe to use", __func__);
-	}
 
-	//remmina_sodium_pwhash("Test di una password 123");
-	remmina_sodium_pwhash_str("Test di una password 123");
-
+	if (sodium_init() < 0)
+		g_critical("%s - Failed to initialize sodium, it is not safe to use", __func__);
 }

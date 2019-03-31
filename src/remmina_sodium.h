@@ -37,6 +37,8 @@
 G_BEGIN_DECLS
 
 void remmina_sodium_init(void);
+gchar *remmina_sodium_pwhash(const gchar *pass);
+gchar *remmina_sodium_pwhash_str(const gchar *pass);
+gint remmina_sodium_pwhash_str_verify(const char *key, const char *pass);
 
 G_END_DECLS
-
