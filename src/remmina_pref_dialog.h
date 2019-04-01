@@ -149,7 +149,7 @@ G_BEGIN_DECLS
 GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent);
 /* Get the current PrefDialog or NULL if not initialized */
 GtkDialog* remmina_pref_dialog_get_dialog(void);
-void remmina_pref_dialog_entry_on_changed(GtkEditable* editable, RemminaPrefDialog *dialog);
+void remmina_prefdiag_unlock_repwd_on_changed(GtkEditable* editable, RemminaPrefDialog *dialog);
 
 G_END_DECLS
 

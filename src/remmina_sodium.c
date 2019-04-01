@@ -85,11 +85,11 @@ gchar *remmina_sodium_pwhash(const gchar *pass)
 			  crypto_pwhash_OPSLIMIT_INTERACTIVE,
 			  crypto_pwhash_MEMLIMIT_INTERACTIVE,
 			  crypto_pwhash_ALG_DEFAULT) != 0) {
-		g_error("Out of memory!\n");
+		g_error("%s - Out of memory!", __func__);
 		exit(1);
 	}
 
-	g_info("Password hashed, it is: %s", key);
+	g_info("%s - Password hashed", __func__);
 	return g_strdup((const char *)key);
 }
 
@@ -106,11 +106,11 @@ gchar *remmina_sodium_pwhash_str(const gchar *pass)
 	if (crypto_pwhash_str(key, pass, strlen(pass),
 			      crypto_pwhash_OPSLIMIT_INTERACTIVE,
 			      crypto_pwhash_MEMLIMIT_INTERACTIVE) != 0) {
-		g_error("Out of memory!\n");
+		g_error("%s - Out of memory!", __func__);
 		exit(1);
 	}
 
-	g_info("Password hashed, it is: %s", key);
+	g_info("%s - Password hashed", __func__);
 	return g_strdup((const char *)key);
 }
 

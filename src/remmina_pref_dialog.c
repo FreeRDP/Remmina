@@ -42,6 +42,7 @@
 #include <vte/vte.h>
 #endif
 #include "remmina_public.h"
+#include "remmina_sodium.h"
 #include "remmina_string_list.h"
 #include "remmina_widget_pool.h"
 #include "remmina_key_chooser.h"
@@ -147,7 +148,7 @@ void remmina_pref_on_button_keystrokes_clicked(GtkWidget *widget, gpointer user_
 	gtk_widget_destroy(GTK_WIDGET(dialog));
 }
 
-void remmina_pref_dialog_entry_on_changed(GtkEditable* editable, RemminaPrefDialog *dialog)
+void remmina_prefdiag_unlock_repwd_on_changed(GtkEditable* editable, RemminaPrefDialog *dialog)
 {
 	TRACE_CALL(__func__);
 	GtkCssProvider  *provider;
@@ -167,10 +168,6 @@ void remmina_pref_dialog_entry_on_changed(GtkEditable* editable, RemminaPrefDial
 
 	if (repassword == NULL || repassword[0] == '\0')
 		color = g_strdup("inherit");
-
-	g_print("Password is %s\n", password);
-	g_print("Re-typed password is %s\n", repassword);
-	g_print("Color is %s\n", color);
 
 	gtk_css_provider_load_from_data(provider,
 			g_strdup_printf (
@@ -208,8 +205,9 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.deny_screenshot_clipboard = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_options_deny_screenshot_clipboard));
 	remmina_pref.save_view_mode = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_options_remember_last_view_mode));
 	remmina_pref.use_master_password = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_use_master_password));
-	remmina_pref.unlock_password = gtk_entry_get_text(remmina_pref_dialog->unlock_password);
 	remmina_pref.unlock_repassword = gtk_entry_get_text(remmina_pref_dialog->unlock_repassword);
+	if (gtk_entry_get_text_length(remmina_pref_dialog->unlock_repassword) != 0)
+		remmina_pref.unlock_password = remmina_sodium_pwhash_str(gtk_entry_get_text(remmina_pref_dialog->unlock_password));
 	remmina_pref.screenshot_path = gtk_file_chooser_get_filename(remmina_pref_dialog->filechooserbutton_options_screenshots_path);
 	remmina_pref.fullscreen_on_auto = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_fullscreen_on_auto));
 	remmina_pref.always_show_tab = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_show_tabs));
@@ -620,7 +618,6 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->switch_security_use_master_password = GTK_SWITCH(GET_OBJECT("switch_security_use_master_password"));
 	remmina_pref_dialog->unlock_password = GTK_ENTRY(GET_OBJECT("unlock_password"));
 	remmina_pref_dialog->unlock_repassword = GTK_ENTRY(GET_OBJECT("unlock_repassword"));
-	//gtk_style_context_add_class(gtk_widget_get_style_context(GTK_WIDGET(remmina_pref_dialog->unlock_repassword)), "unlock_repassword");
 	remmina_pref_dialog->checkbutton_options_save_settings = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_options_save_settings"));
 	remmina_pref_dialog->checkbutton_appearance_fullscreen_on_auto = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_appearance_fullscreen_on_auto"));
 	remmina_pref_dialog->checkbutton_appearance_show_tabs = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_appearance_show_tabs"));
@@ -703,7 +700,6 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 
 	/* Connect signals */
 	gtk_builder_connect_signals(remmina_pref_dialog->builder, NULL);
-	//g_signal_connect(G_OBJECT(remmina_pref_dialog->unlock_repassword), "changed", G_CALLBACK(remmina_pref_dialog_entry_on_changed), remmina_pref_dialog);
 	/* Initialize the window and load the preferences */
 	remmina_pref_dialog_init();
 

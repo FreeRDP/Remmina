@@ -38,6 +38,7 @@
 #include <glib/gprintf.h>
 
 #include "config.h"
+#include "remmina_sodium.h"
 #include "remmina_pref.h"
 #include "remmina_unlock.h"
 #include "remmina_public.h"
@@ -67,27 +68,44 @@ static void remmina_unlock_timer_destroy(gpointer user_data)
 	g_timer_destroy(remmina_unlock_dialog->timer);
 }
 
-static void remmina_button_unlock_clicked(GtkButton *btn, gpointer user_data)
+static void remmina_unlock_unlock_clicked(GtkButton *btn, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	//g_timer_reset(remmina_unlock_dialog->timer);
 
-	gtk_widget_destroy(GTK_WIDGET(remmina_unlock_dialog->dialog));
-	remmina_unlock_dialog->dialog = NULL;
+	gchar *unlock_password;
+	const gchar *entry_passwd;
+	gint rc;
+
+	unlock_password = remmina_pref_get_value("unlock_password");
+	entry_passwd = gtk_entry_get_text(remmina_unlock_dialog->entry_unlock);
+	rc = remmina_sodium_pwhash_str_verify(unlock_password, entry_passwd);
+	g_info("remmina_sodium_pwhash_str_verify returned %i", rc);
+
+	if (rc == 0) {
+		g_info("Passphrase veryfied succesfully");
+		gtk_widget_destroy(GTK_WIDGET(remmina_unlock_dialog->dialog));
+		remmina_unlock_dialog->dialog = NULL;
+	} else {
+		g_warning ("Passphrase is wrong, to reset it, you can edit the remmina.pref file by hand");
+	}
 }
 
-static void remmina_button_unlock_cancel_clicked(GtkButton *btn, gpointer user_data)
+static void remmina_unlock_cancel_clicked(GtkButton *btn, gpointer user_data)
 {
 	TRACE_CALL(__func__);
+	remmina_unlock_dialog->retval = 0;
 	gtk_widget_destroy(GTK_WIDGET(remmina_unlock_dialog->dialog));
 	remmina_unlock_dialog->dialog = NULL;
 }
 
-void remmina_unlock_new(GtkWindow *parent)
+gint remmina_unlock_new(GtkWindow *parent)
 {
 	TRACE_CALL(__func__);
 
 	remmina_unlock_dialog = g_new0(RemminaUnlockDialog, 1);
+	remmina_unlock_dialog->retval = 1;
+	gtk_widget_destroy(GTK_WIDGET(remmina_unlock_dialog->dialog));
 
 	//if (remmina_unlock_dialog->unlock_init)
 	remmina_unlock_dialog->builder = remmina_public_gtk_builder_new_from_file("remmina_unlock.glade");
@@ -103,13 +121,17 @@ void remmina_unlock_new(GtkWindow *parent)
 	remmina_unlock_dialog->button_unlock_cancel = GTK_BUTTON(GET_OBJ("button_unlock_cancel"));
 
 	g_signal_connect(remmina_unlock_dialog->button_unlock, "clicked",
-			 G_CALLBACK(remmina_button_unlock_clicked), (gpointer)remmina_unlock_dialog);
+			 G_CALLBACK(remmina_unlock_unlock_clicked), (gpointer)remmina_unlock_dialog);
 	g_signal_connect(remmina_unlock_dialog->button_unlock_cancel, "clicked",
-			 G_CALLBACK(remmina_button_unlock_cancel_clicked), (gpointer)remmina_unlock_dialog);
+			 G_CALLBACK(remmina_unlock_cancel_clicked), (gpointer)remmina_unlock_dialog);
+	g_signal_connect (remmina_unlock_dialog->dialog, "close",
+                  G_CALLBACK (remmina_unlock_cancel_clicked), (gpointer)remmina_unlock_dialog);
 
 	/* Connect signals */
 	gtk_builder_connect_signals(remmina_unlock_dialog->builder, NULL);
 
-	if (remmina_pref_get_boolean("use_master_password"))
+	if (remmina_pref_get_boolean("use_master_password") &&
+			(g_strcmp0(remmina_pref_get_value("unlock_password"), "") != 0))
 		gtk_dialog_run(remmina_unlock_dialog->dialog);
+	return(remmina_unlock_dialog->retval);
 }

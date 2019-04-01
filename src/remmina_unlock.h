@@ -45,11 +45,11 @@ typedef struct _RemminaUnlockDialog {
 	gboolean	unlock_init;
 	GTimer *	timer;
 
-	int		retval;
+	gint		retval;
 } RemminaUnlockDialog;
 
 G_BEGIN_DECLS
 
-void remmina_unlock_new(GtkWindow *parent);
+gint remmina_unlock_new(GtkWindow *parent);
 
 G_END_DECLS

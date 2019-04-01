@@ -166,7 +166,8 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		break;
 
 	case REMMINA_COMMAND_PREF:
-		remmina_unlock_new(mainwindow);
+		if (remmina_unlock_new(mainwindow) == 0)
+			break;
 		prefdialog = remmina_pref_dialog_get_dialog();
 		if (prefdialog) {
 			gtk_window_present(GTK_WINDOW(prefdialog));
