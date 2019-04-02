@@ -35,18 +35,19 @@
 #pragma once
 
 typedef struct _RemminaUnlockDialog {
-	GtkBuilder *	builder;
-	GtkDialog *	dialog;
+	GtkBuilder *builder;
+	GtkDialog *dialog;
 
-	GtkEntry *	entry_unlock;
-	GtkButton *	button_unlock;
-	GtkButton *	button_unlock_cancel;
+	GtkEntry *entry_unlock;
+	GtkButton *button_unlock;
+	GtkButton *button_unlock_cancel;
 
-	gboolean	unlock_init;
-	GTimer *	timer;
+	gboolean unlock_init;
 
-	gint		retval;
+	gint retval;
 } RemminaUnlockDialog;
+
+extern GTimer *timer;
 
 G_BEGIN_DECLS
 

@@ -47,25 +47,29 @@
 static RemminaUnlockDialog *remmina_unlock_dialog;
 #define GET_OBJ(object_name) gtk_builder_get_object(remmina_unlock_dialog->builder, object_name)
 
-static void remmina_unlock_timer_init(gpointer user_data)
+GTimer *timer;
+
+static void remmina_unlock_timer_init()
 {
 	TRACE_CALL(__func__);
 
-	remmina_unlock_dialog->timer = g_timer_new();
+	timer = g_timer_new();
+	g_info("Unlock Master Password timer initilized");
 }
 
 static void remmina_unlock_timer_reset(gpointer user_data)
 {
 	TRACE_CALL(__func__);
 
-	g_timer_reset(remmina_unlock_dialog->timer);
+	g_timer_reset(timer);
+	g_info("Unlock Master Password timer reset");
 }
 
-static void remmina_unlock_timer_destroy(gpointer user_data)
+static void remmina_unlock_timer_destroy()
 {
 	TRACE_CALL(__func__);
 
-	g_timer_destroy(remmina_unlock_dialog->timer);
+	g_timer_destroy(timer);
 }
 
 static void remmina_unlock_unlock_clicked(GtkButton *btn, gpointer user_data)
@@ -84,6 +88,7 @@ static void remmina_unlock_unlock_clicked(GtkButton *btn, gpointer user_data)
 
 	if (rc == 0) {
 		g_info("Passphrase veryfied succesfully");
+		remmina_unlock_timer_reset(remmina_unlock_dialog);
 		gtk_widget_destroy(GTK_WIDGET(remmina_unlock_dialog->dialog));
 		remmina_unlock_dialog->dialog = NULL;
 	} else {
@@ -103,11 +108,28 @@ gint remmina_unlock_new(GtkWindow *parent)
 {
 	TRACE_CALL(__func__);
 
+	gdouble unlock_timeout;
+	gdouble elapsed;
+	gboolean lock = TRUE;
+
+	unlock_timeout = atof(remmina_pref_get_value("unlock_timeout"));
+
+	g_print ("%f unlock_timeout\n", unlock_timeout);
+
 	remmina_unlock_dialog = g_new0(RemminaUnlockDialog, 1);
 	remmina_unlock_dialog->retval = 1;
-	gtk_widget_destroy(GTK_WIDGET(remmina_unlock_dialog->dialog));
+	//gtk_widget_destroy(GTK_WIDGET(remmina_unlock_dialog->dialog));
 
-	//if (remmina_unlock_dialog->unlock_init)
+	if (timer == NULL)
+		remmina_unlock_timer_init();
+	if (timer != NULL)
+		elapsed = g_timer_elapsed(timer, NULL);
+	g_print ("elapsed %f\n", elapsed);
+	//if (elapsed > unlock_timeout) lock = TRUE;
+	if ((unlock_timeout - unlock_timeout) < 0) lock = TRUE;
+	if (timer != NULL && unlock_timeout == 0) lock = FALSE;
+	if (timer == NULL && unlock_timeout == 0) lock = TRUE;
+
 	remmina_unlock_dialog->builder = remmina_public_gtk_builder_new_from_file("remmina_unlock.glade");
 	remmina_unlock_dialog->dialog = GTK_DIALOG(gtk_builder_get_object(remmina_unlock_dialog->builder, "RemminaUnlockDialog"));
 	if (parent)
@@ -130,8 +152,9 @@ gint remmina_unlock_new(GtkWindow *parent)
 	/* Connect signals */
 	gtk_builder_connect_signals(remmina_unlock_dialog->builder, NULL);
 
-	if (remmina_pref_get_boolean("use_master_password") &&
-			(g_strcmp0(remmina_pref_get_value("unlock_password"), "") != 0))
+	if (remmina_pref_get_boolean("use_master_password")
+			&& (g_strcmp0(remmina_pref_get_value("unlock_password"), "") != 0)
+			&& lock == TRUE)
 		gtk_dialog_run(remmina_unlock_dialog->dialog);
 	return(remmina_unlock_dialog->retval);
 }

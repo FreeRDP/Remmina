@@ -247,7 +247,7 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.ssh_parseconfig = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_options_ssh_parseconfig));
 	remmina_pref.unlock_timeout = atoi(gtk_entry_get_text(remmina_pref_dialog->unlock_timeout));
 	if (remmina_pref.unlock_timeout < 0)
-		remmina_pref.unlock_timeout = 300;
+		remmina_pref.unlock_timeout = 0;
 
 	remmina_pref.auto_scroll_step = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_options_scroll));
 	if (remmina_pref.auto_scroll_step < 10)
