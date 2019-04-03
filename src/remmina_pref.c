@@ -46,6 +46,8 @@
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 
+#include <sodium.h>
+
 #include "remmina_public.h"
 #include "remmina_string_array.h"
 #include "remmina_pref.h"
@@ -284,7 +286,7 @@ void remmina_pref_init(void)
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "use_master_password", NULL))
 		remmina_pref.use_master_password = g_key_file_get_boolean(gkeyfile, "remmina_pref", "use_master_password", NULL);
 	else
-		remmina_pref.use_master_password = TRUE;
+		remmina_pref.use_master_password = FALSE;
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "unlock_timeout", NULL))
 		remmina_pref.unlock_timeout  = g_key_file_get_integer(gkeyfile, "remmina_pref", "unlock_timeout", NULL);
@@ -687,9 +689,15 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_string(gkeyfile, "remmina_pref", "remmina_file_name", remmina_pref.remmina_file_name);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "deny_screenshot_clipboard", remmina_pref.deny_screenshot_clipboard);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "save_view_mode", remmina_pref.save_view_mode);
+#if (SODIUM_LIBRARY_VERSION_MAJOR >= 9) && (SODIUM_LIBRARY_VERSION_MINOR >= 2)
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "use_master_password", remmina_pref.use_master_password);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "unlock_timeout", remmina_pref.unlock_timeout);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "unlock_password", remmina_pref.unlock_password);
+#else
+	g_key_file_set_boolean(gkeyfile, "remmina_pref", "use_master_password", FALSE);
+	g_key_file_set_integer(gkeyfile, "remmina_pref", "unlock_timeout", 0);
+	g_key_file_set_string(gkeyfile, "remmina_pref", "unlock_password", g_strdup(""));
+#endif
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "floating_toolbar_placement", remmina_pref.floating_toolbar_placement);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "toolbar_placement", remmina_pref.toolbar_placement);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "prevent_snap_welcome_message", remmina_pref.prevent_snap_welcome_message);

@@ -42,7 +42,10 @@
 #include <vte/vte.h>
 #endif
 #include "remmina_public.h"
+#include <sodium.h>
+#if (SODIUM_LIBRARY_VERSION_MAJOR >= 9) && (SODIUM_LIBRARY_VERSION_MINOR >= 2)
 #include "remmina_sodium.h"
+#endif
 #include "remmina_string_list.h"
 #include "remmina_widget_pool.h"
 #include "remmina_key_chooser.h"
@@ -205,9 +208,11 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.deny_screenshot_clipboard = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_options_deny_screenshot_clipboard));
 	remmina_pref.save_view_mode = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_options_remember_last_view_mode));
 	remmina_pref.use_master_password = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_security_use_master_password));
+#if (SODIUM_LIBRARY_VERSION_MAJOR >= 9) && (SODIUM_LIBRARY_VERSION_MINOR >= 2)
 	remmina_pref.unlock_repassword = gtk_entry_get_text(remmina_pref_dialog->unlock_repassword);
 	if (gtk_entry_get_text_length(remmina_pref_dialog->unlock_repassword) != 0)
 		remmina_pref.unlock_password = remmina_sodium_pwhash_str(gtk_entry_get_text(remmina_pref_dialog->unlock_password));
+#endif
 	remmina_pref.screenshot_path = gtk_file_chooser_get_filename(remmina_pref_dialog->filechooserbutton_options_screenshots_path);
 	remmina_pref.fullscreen_on_auto = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_fullscreen_on_auto));
 	remmina_pref.always_show_tab = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_show_tabs));
@@ -245,9 +250,11 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	if (remmina_pref.ssh_tcp_usrtimeout <= 0)
 		remmina_pref.ssh_tcp_usrtimeout = SSH_SOCKET_TCP_USER_TIMEOUT;
 	remmina_pref.ssh_parseconfig = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_options_ssh_parseconfig));
+#if (SODIUM_LIBRARY_VERSION_MAJOR >= 9) && (SODIUM_LIBRARY_VERSION_MINOR >= 2)
 	remmina_pref.unlock_timeout = atoi(gtk_entry_get_text(remmina_pref_dialog->unlock_timeout));
 	if (remmina_pref.unlock_timeout < 0)
 		remmina_pref.unlock_timeout = 0;
+#endif
 
 	remmina_pref.auto_scroll_step = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_options_scroll));
 	if (remmina_pref.auto_scroll_step < 10)
@@ -426,12 +433,27 @@ static void remmina_pref_dialog_init(void)
 	gtk_dialog_set_default_response(GTK_DIALOG(remmina_pref_dialog->dialog), GTK_RESPONSE_CLOSE);
 
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_options_remember_last_view_mode), remmina_pref.save_view_mode);
+	g_info("SODIUM_LIBRARY_VERSION_MAJOR %d", SODIUM_LIBRARY_VERSION_MAJOR);
+	g_info("SODIUM_LIBRARY_VERSION_MINOR %d", SODIUM_LIBRARY_VERSION_MINOR);
+#if (SODIUM_LIBRARY_VERSION_MAJOR >= 9) && (SODIUM_LIBRARY_VERSION_MINOR >= 2)
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_security_use_master_password), remmina_pref.use_master_password);
 	if (remmina_pref.unlock_password != NULL) {
 		gtk_entry_set_text(remmina_pref_dialog->unlock_password, remmina_pref.unlock_password);
 	}else{
 		gtk_entry_set_text(remmina_pref_dialog->unlock_password, "");
 	}
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_use_master_password), TRUE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->unlock_password), TRUE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->unlock_repassword), TRUE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->unlock_timeout), TRUE);
+#else
+	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_security_use_master_password), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_use_master_password), FALSE);
+	gtk_widget_set_tooltip_text (GTK_WIDGET(remmina_pref_dialog->switch_security_use_master_password), _("libsodium >= 1.9.0 is required to use master password"));
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->unlock_password), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->unlock_repassword), FALSE);
+	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->unlock_timeout), FALSE);
+#endif
 
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_options_deny_screenshot_clipboard), remmina_pref.deny_screenshot_clipboard);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_fullscreen_on_auto), remmina_pref.fullscreen_on_auto);
@@ -555,8 +577,10 @@ static void remmina_pref_dialog_init(void)
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.vte_lines);
 	gtk_entry_set_text(remmina_pref_dialog->entry_scrollback_lines, buf);
 
+#if (SODIUM_LIBRARY_VERSION_MAJOR >= 9) && (SODIUM_LIBRARY_VERSION_MINOR >= 2)
 	g_snprintf(buf, sizeof(buf), "%i", remmina_pref.unlock_timeout);
 	gtk_entry_set_text(remmina_pref_dialog->unlock_timeout, buf);
+#endif
 
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_options_double_click, remmina_pref.default_action);
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_appearance_view_mode, remmina_pref.default_mode);

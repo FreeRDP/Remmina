@@ -54,6 +54,8 @@
  *
  */
 
+#include <sodium.h>
+#if (SODIUM_LIBRARY_VERSION_MAJOR >= 9) && (SODIUM_LIBRARY_VERSION_MINOR >= 2)
 #include <string.h>
 
 #if defined(__linux__)
@@ -65,8 +67,6 @@
 
 #include "config.h"
 #include <glib.h>
-
-#include <sodium.h>
 
 #include "remmina_sodium.h"
 #include "remmina/remmina_trace_calls.h"
@@ -146,3 +146,5 @@ void remmina_sodium_init(void)
 	if (sodium_init() < 0)
 		g_critical("%s - Failed to initialize sodium, it is not safe to use", __func__);
 }
+
+#endif

@@ -34,6 +34,9 @@
 
 #pragma once
 
+#include <sodium.h>
+
+#if (SODIUM_LIBRARY_VERSION_MAJOR >= 9) && (SODIUM_LIBRARY_VERSION_MINOR >= 2)
 typedef struct _RemminaUnlockDialog {
 	GtkBuilder *builder;
 	GtkDialog *dialog;
@@ -49,6 +52,8 @@ typedef struct _RemminaUnlockDialog {
 
 extern GTimer *timer;
 extern gboolean isinit;
+
+#endif
 
 G_BEGIN_DECLS
 

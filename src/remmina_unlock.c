@@ -40,12 +40,17 @@
 #include <glib/gprintf.h>
 
 #include "config.h"
+#include <sodium.h>
+#if (SODIUM_LIBRARY_VERSION_MAJOR >= 9) && (SODIUM_LIBRARY_VERSION_MINOR >= 2)
 #include "remmina_sodium.h"
+#else
+#endif
 #include "remmina_pref.h"
 #include "remmina_unlock.h"
 #include "remmina_public.h"
 #include "remmina/remmina_trace_calls.h"
 
+#if (SODIUM_LIBRARY_VERSION_MAJOR >= 9) && (SODIUM_LIBRARY_VERSION_MINOR >= 2)
 static RemminaUnlockDialog *remmina_unlock_dialog;
 #define GET_OBJ(object_name) gtk_builder_get_object(remmina_unlock_dialog->builder, object_name)
 
@@ -172,3 +177,10 @@ gint remmina_unlock_new(GtkWindow *parent)
 		gtk_dialog_run(remmina_unlock_dialog->dialog);
 	return(remmina_unlock_dialog->retval);
 }
+
+#else
+gint remmina_unlock_new(GtkWindow *parent)
+{
+	return 1;
+}
+#endif
