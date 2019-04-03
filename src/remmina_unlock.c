@@ -32,6 +32,8 @@
  *
  */
 
+#include <stdlib.h>
+
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <glib.h>
@@ -129,6 +131,7 @@ gint remmina_unlock_new(GtkWindow *parent)
 	if ((unlock_timeout - unlock_timeout) < 0) lock = TRUE;
 	if (timer != NULL && unlock_timeout == 0) lock = FALSE;
 	if (timer == NULL && unlock_timeout == 0) lock = TRUE;
+	g_info("Based on settings and current status, the unlock dialog is set to %d", lock);
 
 	remmina_unlock_dialog->builder = remmina_public_gtk_builder_new_from_file("remmina_unlock.glade");
 	remmina_unlock_dialog->dialog = GTK_DIALOG(gtk_builder_get_object(remmina_unlock_dialog->builder, "RemminaUnlockDialog"));
@@ -154,7 +157,7 @@ gint remmina_unlock_new(GtkWindow *parent)
 
 	if (remmina_pref_get_boolean("use_master_password")
 			&& (g_strcmp0(remmina_pref_get_value("unlock_password"), "") != 0)
-			&& lock == TRUE)
+			&& lock != 0)
 		gtk_dialog_run(remmina_unlock_dialog->dialog);
 	return(remmina_unlock_dialog->retval);
 }
