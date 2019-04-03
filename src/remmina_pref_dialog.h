@@ -54,6 +54,10 @@ typedef struct _RemminaPrefDialog {
 	GtkEntry *entry_options_screenshot_name;
 	GtkSwitch *switch_options_deny_screenshot_clipboard;
 	GtkSwitch *switch_options_remember_last_view_mode;
+	GtkSwitch *switch_security_use_master_password;
+	GtkEntry *unlock_timeout;
+	GtkEntry *unlock_password;
+	GtkEntry *unlock_repassword;
 	GtkCheckButton *checkbutton_options_save_settings;
 	GtkCheckButton *checkbutton_appearance_fullscreen_on_auto;
 	GtkCheckButton *checkbutton_appearance_show_tabs;
@@ -145,6 +149,7 @@ G_BEGIN_DECLS
 GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent);
 /* Get the current PrefDialog or NULL if not initialized */
 GtkDialog* remmina_pref_dialog_get_dialog(void);
+void remmina_prefdiag_unlock_repwd_on_changed(GtkEditable* editable, RemminaPrefDialog *dialog);
 
 G_END_DECLS
 

@@ -93,6 +93,8 @@ list(APPEND REMMINA_SRCS
     "remmina_sftp_client.h"
     "remmina_sftp_plugin.c"
     "remmina_sftp_plugin.h"
+    "remmina_sodium.c"
+    "remmina_sodium.h"
     "remmina_ssh.c"
     "remmina_ssh.h"
     "remmina_ssh_plugin.c"
@@ -101,6 +103,8 @@ list(APPEND REMMINA_SRCS
     "remmina_string_array.h"
     "remmina_string_list.c"
     "remmina_string_list.h"
+    "remmina_unlock.c"
+    "remmina_unlock.h"
     "remmina_utils.c"
     "remmina_utils.h"
     "remmina_widget_pool.c"
@@ -182,6 +186,11 @@ if(VTE_FOUND)
         add_definitions(-DHAVE_LIBVTE)
         include_directories(${VTE_INCLUDE_DIRS})
         target_link_libraries(remmina ${VTE_LIBRARIES})
+endif()
+
+if(sodium_FOUND)
+    include_directories(${sodium_INCLUDE_DIR})
+    target_link_libraries(remmina sodium)
 endif()
 
 if(GTK3_FOUND)

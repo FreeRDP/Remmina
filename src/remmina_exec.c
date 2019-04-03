@@ -41,10 +41,11 @@
 #include <stdlib.h>
 #include "remmina.h"
 #include "remmina_main.h"
+#include "remmina_pref.h"
 #include "remmina_widget_pool.h"
+#include "remmina_unlock.h"
 #include "remmina_pref_dialog.h"
 #include "remmina_file.h"
-#include "remmina_pref.h"
 #include "remmina_file_editor.h"
 #include "rcw.h"
 #include "remmina_about.h"
@@ -151,9 +152,10 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 	GtkDialog* prefdialog;
 	RemminaEntryPlugin* plugin;
 
+	mainwindow = remmina_main_get_window();
+
 	switch (command) {
 	case REMMINA_COMMAND_MAIN:
-		mainwindow = remmina_main_get_window();
 		if (mainwindow) {
 			gtk_window_present(mainwindow);
 			gtk_window_deiconify(GTK_WINDOW(mainwindow));
@@ -164,6 +166,8 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 		break;
 
 	case REMMINA_COMMAND_PREF:
+		if (remmina_unlock_new(mainwindow) == 0)
+			break;
 		prefdialog = remmina_pref_dialog_get_dialog();
 		if (prefdialog) {
 			gtk_window_present(GTK_WINDOW(prefdialog));

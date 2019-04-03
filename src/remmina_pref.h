@@ -116,6 +116,10 @@ typedef struct _RemminaPref {
 	gboolean deny_screenshot_clipboard;
 	const gchar *screenshot_name;
 	gboolean save_view_mode;
+	gboolean use_master_password;
+	const gchar *unlock_password;
+	const gchar *unlock_repassword;
+	gint unlock_timeout;
 	gint default_action;
 	gint scale_quality;
 	gint auto_scroll_step;
@@ -237,6 +241,7 @@ gint remmina_pref_get_ssh_tcp_usrtimeout(void);
 
 void remmina_pref_set_value(const gchar *key, const gchar *value);
 gchar* remmina_pref_get_value(const gchar *key);
+gboolean remmina_pref_get_boolean(const gchar *key);
 
 G_END_DECLS
 

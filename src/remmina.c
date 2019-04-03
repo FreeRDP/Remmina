@@ -49,6 +49,7 @@
 #include "remmina_masterthread_exec.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_pref.h"
+#include "remmina_sodium.h"
 #include "remmina_public.h"
 #include "remmina_sftp_plugin.h"
 #include "remmina_ssh_plugin.h"
@@ -119,6 +120,9 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 	const gchar **remaining_args;
 	gchar *protocol;
 	gchar *server;
+
+	remmina_sodium_init();
+	remmina_pref_init();
 
 	opts = g_application_command_line_get_options_dict(cmdline);
 
