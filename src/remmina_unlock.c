@@ -50,6 +50,7 @@ static RemminaUnlockDialog *remmina_unlock_dialog;
 #define GET_OBJ(object_name) gtk_builder_get_object(remmina_unlock_dialog->builder, object_name)
 
 GTimer *timer;
+gboolean isinit;
 
 static void remmina_unlock_timer_init()
 {
@@ -127,10 +128,20 @@ gint remmina_unlock_new(GtkWindow *parent)
 	if (timer != NULL)
 		elapsed = g_timer_elapsed(timer, NULL);
 	g_print ("elapsed %f\n", elapsed);
-	//if (elapsed > unlock_timeout) lock = TRUE;
-	if ((unlock_timeout - unlock_timeout) < 0) lock = TRUE;
-	if (timer != NULL && unlock_timeout == 0) lock = FALSE;
-	if (timer == NULL && unlock_timeout == 0) lock = TRUE;
+	if (((int)unlock_timeout - elapsed) < 0) lock = TRUE;
+	if (((int)unlock_timeout - elapsed) >= 0) lock = FALSE;
+	/* timer & timout = 0 */
+	if (timer != NULL && (int)unlock_timeout == 0) lock = FALSE;
+	/* first time and timout = 30 */
+	if (isinit == 0 && (int)unlock_timeout >= 0) {
+		lock = TRUE;
+		isinit = TRUE;
+	}
+	/* first time and timout = 0 */
+	if (isinit == 0 && (int)unlock_timeout == 0) {
+		lock = TRUE;
+		isinit = TRUE;
+	}
 	g_info("Based on settings and current status, the unlock dialog is set to %d", lock);
 
 	remmina_unlock_dialog->builder = remmina_public_gtk_builder_new_from_file("remmina_unlock.glade");

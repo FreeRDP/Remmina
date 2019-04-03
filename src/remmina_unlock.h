@@ -48,6 +48,7 @@ typedef struct _RemminaUnlockDialog {
 } RemminaUnlockDialog;
 
 extern GTimer *timer;
+extern gboolean isinit;
 
 G_BEGIN_DECLS
 
