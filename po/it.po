@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-04-03 15:46+0000\n"
+"POT-Creation-Date: 2019-04-03 23:32+0000\n"
 "PO-Revision-Date: 2019-02-19 17:20+0100\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Italian <admin@remmina.org>\n"
@@ -209,7 +209,7 @@ msgid "Fill client window when scaled"
 msgstr "Ridimensiona riempiendo la finestra"
 
 #. Add a keystrokes submenu
-#: src/rcw.c:1846 src/remmina_pref_dialog.c:143
+#: src/rcw.c:1846 src/remmina_pref_dialog.c:146
 #: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
 msgid "Keystrokes"
 msgstr "Battute"
@@ -528,12 +528,12 @@ msgstr "Server"
 msgid "Browse the network to find a %s server"
 msgstr "Esplora la rete per trovare un server %s"
 
-#: src/remmina_file_editor.c:497 src/remmina_pref_dialog.c:83
+#: src/remmina_file_editor.c:497 src/remmina_pref_dialog.c:86
 #: data/ui/remmina_preferences.glade:234
 msgid "Resolutions"
 msgstr "Risoluzioni"
 
-#: src/remmina_file_editor.c:497 src/remmina_pref_dialog.c:83
+#: src/remmina_file_editor.c:497 src/remmina_pref_dialog.c:86
 msgid "Configure the available resolutions"
 msgstr "Configura le risoluzioni disponibili"
 
@@ -879,13 +879,17 @@ msgstr "Chiedi"
 msgid "The following file already exists in the target folder:"
 msgstr "Il seguente file esiste già nella cartella di destinazione:"
 
-#: src/remmina_pref_dialog.c:132
+#: src/remmina_pref_dialog.c:135
 msgid "Recent lists cleared."
 msgstr "Elenchi elementi recenti puliti."
 
-#: src/remmina_pref_dialog.c:143
+#: src/remmina_pref_dialog.c:146
 msgid "Configure the keystrokes"
 msgstr "Configura le battute"
+
+#: src/remmina_pref_dialog.c:452
+msgid "libsodium >= 1.9.0 is required to use master password"
+msgstr ""
 
 #: src/remmina_ssh.c:202
 #, c-format
@@ -1123,18 +1127,18 @@ msgstr "Questo protocollo non supporta l’export."
 msgid "Remmina Kiosk"
 msgstr "Remmina Kiosk"
 
-#: src/remmina.c:82
+#: src/remmina.c:85
 msgid "Show about dialog"
 msgstr "Mostra il dialog about"
 
-#: src/remmina.c:83 src/remmina.c:84
+#: src/remmina.c:86 src/remmina.c:87
 msgid ""
 "Connect to desktop described by file (.remmina or type supported by plugin)"
 msgstr ""
 "Connetti al desktop descritto dal file (.remmina o il tipo supportato dal "
 "plugin)"
 
-#: src/remmina.c:85
+#: src/remmina.c:88
 msgid ""
 "Edit desktop connection described by file (.remmina or type supported by "
 "plugin)"
@@ -1142,43 +1146,43 @@ msgstr ""
 "Modifica la connessione descritta dal file (.remmina or type supported by "
 "plugin)"
 
-#: src/remmina.c:87
+#: src/remmina.c:90
 msgid "Start Remmina in Kiosk mode"
 msgstr "Avvia Remmina in modo Chiosco"
 
-#: src/remmina.c:88 data/ui/remmina_main.glade:69
+#: src/remmina.c:91 data/ui/remmina_main.glade:69
 msgid "Create a new connection profile"
 msgstr "Crea un nuovo profilo di connessione"
 
-#: src/remmina.c:89
+#: src/remmina.c:92
 msgid "Show preferences dialog page"
 msgstr "Mostra pagina dalla finestra di dialogo delle preferenze"
 
-#: src/remmina.c:90
+#: src/remmina.c:93
 msgid "Execute the plugin"
 msgstr "Exegui plugin"
 
-#: src/remmina.c:91
+#: src/remmina.c:94
 msgid "Quit the application"
 msgstr "Termina l’applicazione"
 
-#: src/remmina.c:92
+#: src/remmina.c:95
 msgid "Use default server name (for --new)"
 msgstr "Use default server name (for --new)"
 
-#: src/remmina.c:93
+#: src/remmina.c:96
 msgid "Use default protocol (for --new)"
 msgstr "Use default protocol (for --new)"
 
-#: src/remmina.c:94
+#: src/remmina.c:97
 msgid "Start as tray icon"
 msgstr "Avvia come icona nell’area di norifica"
 
-#: src/remmina.c:95
+#: src/remmina.c:98
 msgid "Show the application’s version"
 msgstr "Mostra la versione dell’applicazione"
 
-#: src/remmina.c:96
+#: src/remmina.c:99
 msgid "Show the application’s version, including the plugin versions"
 msgstr "Mostra la versione dell’applicazione e dei plugins"
 
@@ -2801,4 +2805,3 @@ msgstr "Seleziona un file per lo schema colori terminale"
 #: data/ui/remmina_preferences.glade:2178
 msgid "Terminal"
 msgstr "Terminale"
-

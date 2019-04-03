@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-04-03 15:46+0000\n"
+"POT-Creation-Date: 2019-04-03 23:32+0000\n"
 "PO-Revision-Date: 2019-02-12 10:59+0800\n"
 "Last-Translator: shijing <jingshi@ubuntukylin.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
@@ -209,7 +209,7 @@ msgid "Fill client window when scaled"
 msgstr "缩放时填满客户端窗口"
 
 #. Add a keystrokes submenu
-#: src/rcw.c:1846 src/remmina_pref_dialog.c:143
+#: src/rcw.c:1846 src/remmina_pref_dialog.c:146
 #: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
 msgid "Keystrokes"
 msgstr "键盘监听"
@@ -523,12 +523,12 @@ msgstr "服务器"
 msgid "Browse the network to find a %s server"
 msgstr "浏览网络查找 %s 服务器"
 
-#: src/remmina_file_editor.c:497 src/remmina_pref_dialog.c:83
+#: src/remmina_file_editor.c:497 src/remmina_pref_dialog.c:86
 #: data/ui/remmina_preferences.glade:234
 msgid "Resolutions"
 msgstr "分辨率"
 
-#: src/remmina_file_editor.c:497 src/remmina_pref_dialog.c:83
+#: src/remmina_file_editor.c:497 src/remmina_pref_dialog.c:86
 msgid "Configure the available resolutions"
 msgstr "配置可提供的分辨率"
 
@@ -872,13 +872,17 @@ msgstr "问题"
 msgid "The following file already exists in the target folder:"
 msgstr "目标文件夹中已经存在如下文件："
 
-#: src/remmina_pref_dialog.c:132
+#: src/remmina_pref_dialog.c:135
 msgid "Recent lists cleared."
 msgstr "最近项已被清除"
 
-#: src/remmina_pref_dialog.c:143
+#: src/remmina_pref_dialog.c:146
 msgid "Configure the keystrokes"
 msgstr "配置键盘监听"
+
+#: src/remmina_pref_dialog.c:452
+msgid "libsodium >= 1.9.0 is required to use master password"
+msgstr ""
 
 #: src/remmina_ssh.c:202
 #, c-format
@@ -1111,58 +1115,58 @@ msgstr "此协议不支持导出"
 msgid "Remmina Kiosk"
 msgstr "Remmina Kiosk"
 
-#: src/remmina.c:82
+#: src/remmina.c:85
 msgid "Show about dialog"
 msgstr "显示关于对话框"
 
-#: src/remmina.c:83 src/remmina.c:84
+#: src/remmina.c:86 src/remmina.c:87
 msgid ""
 "Connect to desktop described by file (.remmina or type supported by plugin)"
 msgstr "连接到文件描述的桌面（.remmina 或插件支持的类型）"
 
-#: src/remmina.c:85
+#: src/remmina.c:88
 msgid ""
 "Edit desktop connection described by file (.remmina or type supported by "
 "plugin)"
 msgstr "编辑文件描述的桌面连接（.remmina 或插件支持的类型）"
 
-#: src/remmina.c:87
+#: src/remmina.c:90
 msgid "Start Remmina in Kiosk mode"
 msgstr "在 Kiosk 模式下启动 Remmina"
 
-#: src/remmina.c:88 data/ui/remmina_main.glade:69
+#: src/remmina.c:91 data/ui/remmina_main.glade:69
 msgid "Create a new connection profile"
 msgstr "创建一个新的连接配置文件"
 
-#: src/remmina.c:89
+#: src/remmina.c:92
 msgid "Show preferences dialog page"
 msgstr "显示首选项对话框页面"
 
-#: src/remmina.c:90
+#: src/remmina.c:93
 msgid "Execute the plugin"
 msgstr "执行插件"
 
-#: src/remmina.c:91
+#: src/remmina.c:94
 msgid "Quit the application"
 msgstr "退出应用程序"
 
-#: src/remmina.c:92
+#: src/remmina.c:95
 msgid "Use default server name (for --new)"
 msgstr "使用默认服务名（for --new）"
 
-#: src/remmina.c:93
+#: src/remmina.c:96
 msgid "Use default protocol (for --new)"
 msgstr "使用默认协议（for --new）"
 
-#: src/remmina.c:94
+#: src/remmina.c:97
 msgid "Start as tray icon"
 msgstr "作为托盘图标启动"
 
-#: src/remmina.c:95
+#: src/remmina.c:98
 msgid "Show the application’s version"
 msgstr "显示应用程序版本"
 
-#: src/remmina.c:96
+#: src/remmina.c:99
 msgid "Show the application’s version, including the plugin versions"
 msgstr "显示应用程序的版本，包括插件版本"
 
@@ -2782,4 +2786,3 @@ msgstr "终端颜色方案文件选择器"
 #: data/ui/remmina_preferences.glade:2178
 msgid "Terminal"
 msgstr "终端"
-
