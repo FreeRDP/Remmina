@@ -41,6 +41,7 @@
 #include <stdlib.h>
 
 #include "config.h"
+#include "remmina_sodium.h"
 #include "remmina.h"
 #include "remmina_exec.h"
 #include "remmina_file_manager.h"
@@ -49,10 +50,6 @@
 #include "remmina_masterthread_exec.h"
 #include "remmina_plugin_manager.h"
 #include "remmina_pref.h"
-#include <sodium.h>
-#if (SODIUM_LIBRARY_VERSION_MAJOR >= 9) && (SODIUM_LIBRARY_VERSION_MINOR >= 2)
-#include "remmina_sodium.h"
-#endif
 #include "remmina_public.h"
 #include "remmina_sftp_plugin.h"
 #include "remmina_ssh_plugin.h"
@@ -124,7 +121,7 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 	gchar *protocol;
 	gchar *server;
 
-#if (SODIUM_LIBRARY_VERSION_MAJOR >= 9) && (SODIUM_LIBRARY_VERSION_MINOR >= 2)
+#if SODIUM_VERSION_INT >= 90200
 	remmina_sodium_init();
 #endif
 	remmina_pref_init();

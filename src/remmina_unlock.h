@@ -36,7 +36,7 @@
 
 #include <sodium.h>
 
-#if (SODIUM_LIBRARY_VERSION_MAJOR >= 9) && (SODIUM_LIBRARY_VERSION_MINOR >= 2)
+#if SODIUM_VERSION_INT >= 90200
 typedef struct _RemminaUnlockDialog {
 	GtkBuilder *builder;
 	GtkDialog *dialog;

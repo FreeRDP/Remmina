@@ -54,8 +54,6 @@
  *
  */
 
-#include <sodium.h>
-#if (SODIUM_LIBRARY_VERSION_MAJOR >= 9) && (SODIUM_LIBRARY_VERSION_MINOR >= 2)
 #include <string.h>
 
 #if defined(__linux__)
@@ -67,9 +65,10 @@
 
 #include "config.h"
 #include <glib.h>
+#include "remmina/remmina_trace_calls.h"
 
 #include "remmina_sodium.h"
-#include "remmina/remmina_trace_calls.h"
+#if SODIUM_VERSION_INT >= 90200
 
 gchar *remmina_sodium_pwhash(const gchar *pass)
 {
