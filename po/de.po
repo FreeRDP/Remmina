@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
 "POT-Creation-Date: 2019-04-04 13:55+0000\n"
-"PO-Revision-Date: 2019-02-19 16:34+0100\n"
+"PO-Revision-Date: 2019-04-05 08:14+0200\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <de@li.org>\n"
 "Language: de\n"
@@ -717,7 +717,7 @@ msgstr "Fehler beim Ausführen des Befehls: %s"
 
 #: src/remmina_protocol_widget.c:1132
 msgid "Enter SSH tunnel authentication credentials"
-msgstr "Geben Sie die SSH-Tunnel Anmeldeinformationen ein."
+msgstr "Geben Sie die SSH-Tunnel Anmeldeinformationen ein"
 
 #: src/remmina_protocol_widget.c:1132 src/remmina_protocol_widget.c:1146
 msgid "Enter authentication credentials"
@@ -892,7 +892,7 @@ msgstr "Tastenkombinationen konfigurieren"
 
 #: src/remmina_pref_dialog.c:447
 msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr ""
+msgstr "libsodium >= 1.9.0 wird benötigt, um das Master-Passwort zu setzten"
 
 #: src/remmina_ssh.c:202
 #, c-format
@@ -2163,15 +2163,15 @@ msgstr "Bitte drücken Sie die neue Taste…"
 
 #: data/ui/remmina_unlock.glade:36
 msgid "Unlock"
-msgstr ""
+msgstr "Entsperren"
 
 #: data/ui/remmina_unlock.glade:70
 msgid "Unlock Remmina"
-msgstr ""
+msgstr "Remmina entsperren"
 
 #: data/ui/remmina_unlock.glade:104
 msgid "Unix account password"
-msgstr ""
+msgstr "Passwort des Unix-Kontos"
 
 #: data/ui/remmina_main.glade:81
 msgid "Show search bar"
@@ -2345,7 +2345,7 @@ msgstr "Wählen Sie ein Verzeichnis"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Screen resolutions"
-msgstr ""
+msgstr "Bildschirmauflösungen"
 
 #: data/ui/remmina_preferences.glade:326
 msgid "Screenshots file name"
@@ -2366,11 +2366,13 @@ msgid ""
 "This is the folder where the connection profiles will be saved, it defaults "
 "to the XDG_USER_DATA"
 msgstr ""
+"In diesem Ordner werden die Verbindungsprofile gespeichert. Als Vorgabe wird "
+"der Wert von XDG_USER_DATA verwendet"
 
 #. It's the folder where the profiles are saved
 #: data/ui/remmina_preferences.glade:361
 msgid "Remmina data folder"
-msgstr ""
+msgstr "Remmina Daten-Ordner"
 
 #: data/ui/remmina_preferences.glade:388
 msgid "Remember last view mode for each connection"
@@ -2378,7 +2380,7 @@ msgstr "Letzten Ansichtsmodus für jede Verbindung merken"
 
 #: data/ui/remmina_preferences.glade:392
 msgid "Remember last view mode"
-msgstr ""
+msgstr "Letzten Anzeigemodus merken"
 
 #: data/ui/remmina_preferences.glade:418
 msgid "Send periodic usage statistics to remmina developers"
@@ -2386,7 +2388,7 @@ msgstr "Sende hin und wieder Benutzungsstatistiken an die Entwickler"
 
 #: data/ui/remmina_preferences.glade:422
 msgid "Send statistics to remmina.org"
-msgstr ""
+msgstr "Statistiken an remmina.org senden"
 
 #: data/ui/remmina_preferences.glade:462
 msgid ""
@@ -2398,17 +2400,19 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:467
 msgid "Deny screenshot to clipboard"
-msgstr ""
+msgstr "Verhindere Bildschirmfotos in die Zwischenablage"
 
 #: data/ui/remmina_preferences.glade:479
 msgid ""
 "Each Remmina connection profile, is stored with a name you can set its "
 "template"
 msgstr ""
+"Jedes Remmina Verbindungsprofil wird mit einem Namen gespeichert, für den "
+"Sie eine Vorlage einstellen können"
 
 #: data/ui/remmina_preferences.glade:483
 msgid "Profile filename template"
-msgstr ""
+msgstr "Vorlage für Profilnamen"
 
 #: data/ui/remmina_preferences.glade:495
 msgid ""
@@ -2419,10 +2423,17 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
+"%G Name der Gruppe (Schrägstriche werden automatisch in Bindestriche "
+"verwandelt)\n"
+"%P Protokollname\n"
+"%N Verbindungsname\n"
+"%h Hostname/IP\n"
+"\n"
+"\n"
 
 #: data/ui/remmina_preferences.glade:504
 msgid "%G_%P_%N_%h"
-msgstr ""
+msgstr "%G_%P_%N_%h"
 
 #: data/ui/remmina_preferences.glade:518
 msgid "Options"
@@ -2633,7 +2644,7 @@ msgstr "SSH Optionen"
 
 #: data/ui/remmina_preferences.glade:1371
 msgid "Master password"
-msgstr ""
+msgstr "Master Passwort"
 
 #: data/ui/remmina_preferences.glade:1386
 #: data/ui/remmina_preferences.glade:1402
@@ -2641,30 +2652,32 @@ msgid ""
 "When activated, some widget will require you to authenticate with  a secret "
 "key"
 msgstr ""
+"Einige Werkzeuge werden Sie zur Anmeldung mit ihrem geheimen Schlüssel "
+"auffordern, wenn Sie diese Option aktivieren"
 
 #: data/ui/remmina_preferences.glade:1408
 msgid "Use master password"
-msgstr ""
+msgstr "Benutze ein Master-Passwort"
 
 #: data/ui/remmina_preferences.glade:1421
 msgid "Automatic lock interval"
-msgstr ""
+msgstr "Zeitspanne zur automatischen Sperre"
 
 #: data/ui/remmina_preferences.glade:1432
 msgid "Master password validity in seconds"
-msgstr ""
+msgstr "Gültigkeit des Master-Passworts"
 
 #: data/ui/remmina_preferences.glade:1435
 msgid "300"
-msgstr ""
+msgstr "300"
 
 #: data/ui/remmina_preferences.glade:1452
 msgid "File encryption"
-msgstr ""
+msgstr "Dateiverschlüsselung"
 
 #: data/ui/remmina_preferences.glade:1482
 msgid "Retype password"
-msgstr ""
+msgstr "Passwort wiederholen"
 
 #: data/ui/remmina_preferences.glade:1565
 msgid "Terminal font"
