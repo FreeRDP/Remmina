@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-04-05 11:08+0000\n"
-"PO-Revision-Date: 2019-01-26 16:03+0200\n"
+"POT-Creation-Date: 2019-04-04 13:55+0000\n"
+"PO-Revision-Date: 2019-04-04 23:46+0300\n"
 "Last-Translator: Soltys Sergey <treefeed@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "Language: ru\n"
@@ -102,7 +102,7 @@ msgstr "Meta+"
 msgid "<None>"
 msgstr "<Никакая>"
 
-#: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:19
+#: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:22
 #: data/ui/remmina_mpc.glade:35
 msgid "Cancel"
 msgstr "Отмена"
@@ -562,7 +562,7 @@ msgstr "Раскладка клавиатуры"
 
 #: src/remmina_file_editor.c:833
 msgid "SSH Tunnel"
-msgstr ""
+msgstr "SSH туннель"
 
 #: src/remmina_file_editor.c:840
 msgid "Enable SSH tunnel"
@@ -596,7 +596,7 @@ msgstr "SSH агент (автоматически)"
 #: src/remmina_file_editor.c:937 src/remmina_protocol_widget.c:1296
 #: src/remmina_protocol_widget.c:1310 src/remmina_protocol_widget.c:1337
 #: src/remmina_sftp_plugin.c:317 src/remmina_ssh_plugin.c:950
-#: data/ui/remmina_unlock.glade:89 data/ui/remmina_mpc.glade:113
+#: data/ui/remmina_unlock.glade:92 data/ui/remmina_mpc.glade:113
 #: data/ui/remmina_preferences.glade:1469
 msgid "Password"
 msgstr "Пароль"
@@ -717,7 +717,7 @@ msgstr "Ошибка при выполнении команды: %s"
 
 #: src/remmina_protocol_widget.c:1132
 msgid "Enter SSH tunnel authentication credentials"
-msgstr ""
+msgstr "Введите данные авторизаии SSH туннеля"
 
 #: src/remmina_protocol_widget.c:1132 src/remmina_protocol_widget.c:1146
 msgid "Enter authentication credentials"
@@ -779,7 +779,7 @@ msgstr "Прослушивание порта %i на входящее %s под
 
 #: src/remmina_protocol_widget.c:1559
 msgid "Authentication failed. Trying to reconnect…"
-msgstr "Аутентификация не удалась. Пытаюсь подключиться снова…"
+msgstr "Авторизаия не удалась. Пытаюсь подключиться снова…"
 
 #: src/remmina_protocol_widget.c:1640
 #, c-format
@@ -892,7 +892,7 @@ msgstr "Настройка комбинации клавиш"
 
 #: src/remmina_pref_dialog.c:447
 msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr ""
+msgstr "libsodium >= 1.9.0 требуется для использования мастер-пароля"
 
 #: src/remmina_ssh.c:202
 #, c-format
@@ -911,7 +911,7 @@ msgstr "Ключевой файл SSH ещё не установлен."
 #: src/remmina_ssh.c:233
 #, c-format
 msgid "SSH public key cannot be imported: %s"
-msgstr ""
+msgstr "Публичный ключ SSH не может быть импортирован: %s"
 
 #: src/remmina_ssh.c:290
 #, c-format
@@ -930,22 +930,23 @@ msgstr "Аутентификация SSH через Kerberos/GSSAPI не уда�
 
 #: src/remmina_ssh.c:342
 msgid "SSH public key has changed!"
-msgstr ""
+msgstr "Публичный ключ SSH изменился!"
 
 #: src/remmina_ssh.c:430
 #, c-format
 msgid "ssh_get_server_publickey() has failed: %s"
-msgstr ""
+msgstr "ssh_get_server_publickey() не удался: %s"
 
 #: src/remmina_ssh.c:435
 #, c-format
+#| msgid "SSH public key authentication failed: %s"
 msgid "ssh_get_publickey() has failed: %s"
-msgstr ""
+msgstr "ssh_get_publickey() не удался: %s"
 
 #: src/remmina_ssh.c:441
 #, c-format
 msgid "ssh_get_publickey_hash() has failed: %s"
-msgstr ""
+msgstr "ssh_get_publickey_hash() не удался: %s"
 
 #: src/remmina_ssh.c:449
 msgid "The server is unknown. The public key fingerprint is:"
@@ -968,22 +969,22 @@ msgstr ""
 #: src/remmina_ssh.c:470
 #, c-format
 msgid "SSH known host checking failed: %s"
-msgstr ""
+msgstr "Проверка известного хоста SSH не удалась: %s"
 
 #: src/remmina_ssh.c:476
 #, c-format
 msgid "Authenticating %s’s password to SSH server %s…"
-msgstr "Подключение с паролем %s к SSH-серверу %s…"
+msgstr "Авторизую %s пароль к SSH-серверу %s…"
 
 #: src/remmina_ssh.c:483
 #, c-format
 msgid "Authenticating %s’s identity to SSH server %s…"
-msgstr "Проверка подлинности %s на SSH-сервере %s…"
+msgstr "Авторизую %s личность на SSH-сервере %s…"
 
 #: src/remmina_ssh.c:488
 #, c-format
 msgid "Authenticating %s’s Kerberos to SSH server %s…"
-msgstr "Проверка подлинности %s Kerberos на SSH-сервере %s…"
+msgstr "Авторизую %s Kerberos на SSH-сервере %s…"
 
 #: src/remmina_ssh.c:489
 msgid "SSH Kerberos/GSSAPI"
@@ -997,7 +998,7 @@ msgstr "Ошибка при запуске сеанса SSH: %s"
 #: src/remmina_ssh.c:975 src/remmina_ssh.c:1034
 #, c-format
 msgid "Failed to create channel: %s"
-msgstr ""
+msgstr "Не удалось создать канал: %s"
 
 #: src/remmina_ssh.c:984
 #, c-format
@@ -1007,7 +1008,7 @@ msgstr "Ошибка при подключении к пункту назнач�
 #: src/remmina_ssh.c:1048 src/remmina_ssh.c:1627
 #, c-format
 msgid "Failed to open channel: %s"
-msgstr ""
+msgstr "Не удалось открыть канал: %s"
 
 #: src/remmina_ssh.c:1054
 #, c-format
@@ -1026,58 +1027,58 @@ msgstr "Сервер не отвечает."
 #: src/remmina_ssh.c:1193
 #, c-format
 msgid "Cannot connect to local port %i."
-msgstr ""
+msgstr "Не могу подключиться к локальному порту %i."
 
 #: src/remmina_ssh.c:1242
 #, c-format
 msgid "ssh_channel_write() returned an error: %s"
-msgstr ""
+msgstr "ssh_channel_write() вернул ошибку: %s"
 
 #: src/remmina_ssh.c:1248
 #, c-format
 msgid "read on tunnel listening socket returned an error: %s"
-msgstr ""
+msgstr "чтение в туннеле прослушивания сокета вернуло ошибку: %s"
 
 #: src/remmina_ssh.c:1267
 #, c-format
 msgid "ssh_channel_poll() returned an error: %s"
-msgstr ""
+msgstr "ssh_channel_poll() вернул ошибку: %s"
 
 #: src/remmina_ssh.c:1273
 #, c-format
 msgid "ssh_channel_read_nonblocking() returned an error: %s"
-msgstr ""
+msgstr "ssh_channel_read_nonblocking() вернул ошибку: %s"
 
 #: src/remmina_ssh.c:1291
 #, c-format
 msgid "write on tunnel listening socket returned an error: %s"
-msgstr ""
+msgstr "запись в туннеле прослушивания сокета вернуло ошибку: %s"
 
 #: src/remmina_ssh.c:1370
 msgid "Destination port has not been assigned."
-msgstr ""
+msgstr "Порт назначения не был назначен."
 
 #: src/remmina_ssh.c:1377
 msgid "Failed to create socket."
-msgstr ""
+msgstr "Не удалось создать сокет."
 
 #: src/remmina_ssh.c:1387
 msgid "Failed to bind on local port."
-msgstr ""
+msgstr "Не удалась привязка на локальном порту."
 
 #: src/remmina_ssh.c:1393
 msgid "Failed to listen on local port."
-msgstr ""
+msgstr "Не удалось прослушивание на локальном порту."
 
 #: src/remmina_ssh.c:1402 src/remmina_ssh.c:1418 src/remmina_ssh.c:1434
 #: src/remmina_ssh.c:1451
 msgid "Failed to initialize pthread."
-msgstr ""
+msgstr "Не удалось инициализировать phtread."
 
 #: src/remmina_ssh.c:1539
 #, c-format
 msgid "Failed to create SFTP session: %s"
-msgstr "Не удалось создать SFTP сессию: %s"
+msgstr "Не удалось создать SFPT сессию: %s"
 
 #: src/remmina_ssh.c:1543
 #, c-format
@@ -1087,11 +1088,11 @@ msgstr "Не удалось инициализировать SFTP сессию: 
 #: src/remmina_ssh.c:1656
 #, c-format
 msgid "Failed to request shell: %s"
-msgstr ""
+msgstr "Не удалось запросить оболочку: %s"
 
 #: src/remmina_ssh.c:1749
 msgid "Failed to create pty device."
-msgstr ""
+msgstr "Не удалось создать pty устройство: %s."
 
 #. Show in the status bar the total number of connections found
 #: src/remmina_main.c:623
@@ -1708,35 +1709,35 @@ msgstr "Имя клиента"
 
 #: plugins/rdp/rdp_plugin.c:1628
 msgid "Load balance info"
-msgstr ""
+msgstr "Информация для балансировки нагрузки"
 
 #: plugins/rdp/rdp_plugin.c:1629
 msgid "Local printer name"
-msgstr ""
+msgstr "Имя локального принтера"
 
 #: plugins/rdp/rdp_plugin.c:1630
 msgid "Local printer driver"
-msgstr ""
+msgstr "Драйвер локального принтера"
 
 #: plugins/rdp/rdp_plugin.c:1631
 msgid "Local serial name"
-msgstr ""
+msgstr "Имя локального последовательного порта"
 
 #: plugins/rdp/rdp_plugin.c:1632
 msgid "Local serial driver"
-msgstr ""
+msgstr "Драйвер локального последовательного порта"
 
 #: plugins/rdp/rdp_plugin.c:1633
 msgid "Local serial path"
-msgstr ""
+msgstr "Путь локального последовательного порта"
 
 #: plugins/rdp/rdp_plugin.c:1634
 msgid "Local parallel name"
-msgstr ""
+msgstr "Имя локального паралельного порта"
 
 #: plugins/rdp/rdp_plugin.c:1635
 msgid "Local parallel device"
-msgstr ""
+msgstr "Локальное параллельное устройство"
 
 #: plugins/rdp/rdp_plugin.c:1636
 msgid "Smartcard Name"
@@ -1744,19 +1745,19 @@ msgstr "Имя смарт-карты"
 
 #: plugins/rdp/rdp_plugin.c:1637
 msgid "Share printers"
-msgstr ""
+msgstr "Сделать принтеры общедоступными"
 
 #: plugins/rdp/rdp_plugin.c:1638
 msgid "Share serial ports"
-msgstr ""
+msgstr "Сделать последовательные порты общедоступными"
 
 #: plugins/rdp/rdp_plugin.c:1639
 msgid "Serial ports permissive mode"
-msgstr ""
+msgstr "Режим доступа последовательных портов"
 
 #: plugins/rdp/rdp_plugin.c:1640
 msgid "Share parallel ports"
-msgstr ""
+msgstr "Сделать параллельные порты общедоступными"
 
 #: plugins/rdp/rdp_plugin.c:1642
 msgid "Redirect local microphone"
@@ -2171,17 +2172,17 @@ msgstr "кнопка"
 msgid "Please press the new key…"
 msgstr "Пожалуйста нажмите новую клавишу…"
 
-#: data/ui/remmina_unlock.glade:33
+#: data/ui/remmina_unlock.glade:36
 msgid "Unlock"
-msgstr ""
+msgstr "Разблокировать"
 
-#: data/ui/remmina_unlock.glade:67
+#: data/ui/remmina_unlock.glade:70
 msgid "Unlock Remmina"
-msgstr ""
+msgstr "Разблокировать Remmina"
 
-#: data/ui/remmina_unlock.glade:101
-msgid "Master password secret key"
-msgstr ""
+#: data/ui/remmina_unlock.glade:104
+msgid "Unix account password"
+msgstr "Пароль пользователя Unix"
 
 #: data/ui/remmina_main.glade:81
 msgid "Show search bar"
@@ -2210,7 +2211,7 @@ msgstr "Очистить"
 
 #: data/ui/remmina_main.glade:258
 msgid "Edit"
-msgstr ""
+msgstr "Редактировать"
 
 #: data/ui/remmina_main.glade:312
 msgid "Export"
@@ -2243,7 +2244,7 @@ msgstr "Пожертвования"
 
 #: data/ui/remmina_main.glade:424
 msgid "About"
-msgstr ""
+msgstr "Описание"
 
 # Pluggin like entity or plug-in as action?
 #: data/ui/remmina_main.glade:524
@@ -2356,7 +2357,7 @@ msgstr "Выберите папку"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Screen resolutions"
-msgstr ""
+msgstr "Разрешения экрана"
 
 #: data/ui/remmina_preferences.glade:326
 msgid "Screenshots file name"
@@ -2377,11 +2378,12 @@ msgid ""
 "This is the folder where the connection profiles will be saved, it defaults "
 "to the XDG_USER_DATA"
 msgstr ""
+"Эта папка для хранения профилей подключения, это основа для XDG_USER_DATA"
 
 #. It's the folder where the profiles are saved
 #: data/ui/remmina_preferences.glade:361
 msgid "Remmina data folder"
-msgstr ""
+msgstr "Папка данных Remmina"
 
 #: data/ui/remmina_preferences.glade:388
 msgid "Remember last view mode for each connection"
@@ -2389,7 +2391,7 @@ msgstr "Запоминать последний режим просмотра д
 
 #: data/ui/remmina_preferences.glade:392
 msgid "Remember last view mode"
-msgstr ""
+msgstr "Запоминать последний режим просмотра"
 
 #: data/ui/remmina_preferences.glade:418
 msgid "Send periodic usage statistics to remmina developers"
@@ -2397,7 +2399,7 @@ msgstr "Отправлять статистику использования р�
 
 #: data/ui/remmina_preferences.glade:422
 msgid "Send statistics to remmina.org"
-msgstr ""
+msgstr "Отправлять статистику на remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
 msgid ""
@@ -2408,17 +2410,19 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:467
 msgid "Deny screenshot to clipboard"
-msgstr ""
+msgstr "Запретить копирование снимков в буфер обмена"
 
 #: data/ui/remmina_preferences.glade:479
 msgid ""
-"Each Remmina connection profile is stored with a name you can set its "
+"Each Remmina connection profile, is stored with a name you can set its "
 "template"
 msgstr ""
+"Каждый профиль соединения Remmina, хранится с именем, установленным в этом "
+"шаблоне"
 
 #: data/ui/remmina_preferences.glade:483
 msgid "Profile filename template"
-msgstr ""
+msgstr "Шаблон имени профиля"
 
 #: data/ui/remmina_preferences.glade:495
 msgid ""
@@ -2429,10 +2433,16 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
+"%G Имя группы (косая черта будет преобразована в - автоматически)\n"
+"%P Протоколe\n"
+"%N Соединение\n"
+"%h Хост/IP\n"
+"\n"
+"\n"
 
 #: data/ui/remmina_preferences.glade:504
 msgid "%G_%P_%N_%h"
-msgstr ""
+msgstr "%G_%P_%N_%h"
 
 #: data/ui/remmina_preferences.glade:518
 msgid "Options"
@@ -2646,34 +2656,40 @@ msgstr "Настройки SSH"
 
 #: data/ui/remmina_preferences.glade:1371
 msgid "Master password"
-msgstr ""
+msgstr "Мастер-пароль"
 
 #: data/ui/remmina_preferences.glade:1386
 #: data/ui/remmina_preferences.glade:1402
 msgid ""
-"When activated, some widgets will require you to authenticate with a secret "
+"When activated, some widget will require you to authenticate with  a secret "
 "key"
 msgstr ""
+"Когда активирован, некоторые виджеты могут потребовать авторизации секретным "
+"ключом"
 
 #: data/ui/remmina_preferences.glade:1408
 msgid "Use master password"
-msgstr ""
+msgstr "Использовать мастер-пароль"
 
 #: data/ui/remmina_preferences.glade:1421
 msgid "Automatic lock interval"
-msgstr ""
+msgstr "Интервал автоматической блокировки"
 
 #: data/ui/remmina_preferences.glade:1432
 msgid "Master password validity in seconds"
-msgstr ""
+msgstr "Действительность мастер-пароля в секундах"
+
+#: data/ui/remmina_preferences.glade:1435
+msgid "300"
+msgstr "300"
 
 #: data/ui/remmina_preferences.glade:1452
 msgid "File encryption"
-msgstr ""
+msgstr "Шифрование файлов"
 
 #: data/ui/remmina_preferences.glade:1482
 msgid "Retype password"
-msgstr ""
+msgstr "Введите пароль снова"
 
 #: data/ui/remmina_preferences.glade:1565
 msgid "Terminal font"
