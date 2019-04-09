@@ -1,7 +1,5 @@
-[![](https://img.shields.io/liberapay/patrons/:entity.svg)](https://liberapay.com/Remmina/)
-[![Snap Status](https://build.snapcraft.io/badge/FreeRDP/Remmina.svg)](https://build.snapcraft.io/user/FreeRDP/Remmina)
+[![](https://img.shields.io/liberapay/receives/Remmina.svg?logo=liberapay)](https://liberapay.com/Remmina/donate)
 [![Build Status](https://gitlab.com/Remmina/Remmina/badges/master/build.svg)](https://gitlab.com/Remmina/Remmina/pipelines)
-[![Bountysource](https://img.shields.io/bountysource/team/remmina/activity.svg)](https://www.bountysource.com/teams/remmina)
 [![CodeTriage](https://www.codetriage.com/freerdp/remmina/badges/users.svg)](https://www.codetriage.com/freerdp/remmina)
 
 # IMPORTANT NOTICE
