@@ -116,7 +116,7 @@ gint remmina_unlock_new(GtkWindow *parent)
 	gdouble elapsed;
 	gboolean lock = TRUE;
 
-	unlock_timeout = atof(remmina_pref_get_value("unlock_timeout"));
+	unlock_timeout = remmina_pref.unlock_timeout;
 
 	g_print ("%f unlock_timeout\n", unlock_timeout);
 
