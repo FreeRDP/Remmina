@@ -85,13 +85,12 @@
         {
             "name": "nxproxy",
             "no-autogen": true,
-            "make-args": ["build-lite", "PREFIX=/app"],
-            "install-rule": "install-lite",
+            "make-args": ["PREFIX=/app"],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/ArcticaProject/nx-libs/archive/3.5.99.19/nx-libs-3.5.99.19.tar.gz",
-                    "sha256": "4fd7c392c591a2fab06ddc598bd7488c81a20125f01cf4ce4dfd2934de4613df"
+                    "url": "https://code.x2go.org/releases/source/nx-libs/nx-libs-3.5.99.20-1-lite.tar.gz",
+                    "sha256": "6b934a98e6425b3790ab0fa56e6e1c7047e98ffdb381415afa755375ae1cb123"
                 }
             ]
         },
@@ -349,7 +348,7 @@
             /**
              * Xephyr version 1.17.0 and later don't work fine with GtkSocket,
              * therefore we remain at version 1.16.4:
-             *   - https://github.com//Remmina//Remmina//issues//366
+             *   - https://gitlab.com//Remmina//Remmina//issues//366
              *   - https://bugs.freedesktop.org//show_bug.cgi?id=91700
              */
             "name": "xephyr",
