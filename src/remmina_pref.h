@@ -202,6 +202,8 @@ typedef struct _RemminaPref {
 	gchar *periodic_usage_stats_uuid_prefix;
 	gchar *last_success;
 
+	/* Remmina news */
+	glong periodic_rmnews_last_get;
 
 } RemminaPref;
 

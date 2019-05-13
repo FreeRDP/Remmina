@@ -55,6 +55,7 @@
 #include "remmina_ssh_plugin.h"
 #include "remmina_widget_pool.h"
 #include "remmina/remmina_trace_calls.h"
+#include "rmnews.h"
 #include "remmina_stats_sender.h"
 
 
@@ -240,6 +241,7 @@ static void remmina_on_startup(GApplication *app)
 	g_application_hold(app);
 
 	remmina_stats_sender_schedule();
+	rmnews_schedule();
 
 	/* Check for secret plugin and service initialization and show some warnings on the console if
 	 * there is something missing */

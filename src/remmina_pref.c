@@ -663,6 +663,11 @@ void remmina_pref_init(void)
 		remmina_pref.periodic_usage_stats_uuid_prefix = NULL;
 
 
+	if (g_key_file_has_key(gkeyfile, "remmina_news", "periodic_rmnews_last_get", NULL))
+		remmina_pref.periodic_rmnews_last_get = g_key_file_get_int64(gkeyfile, "remmina_news", "periodic_rmnews_last_get", NULL);
+	else
+		remmina_pref.periodic_rmnews_last_get = 0;
+
 	g_key_file_free(gkeyfile);
 
 	if (remmina_pref.secret == NULL)
@@ -774,6 +779,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_boolean(gkeyfile, "usage_stats", "periodic_usage_stats_permission_asked", remmina_pref.periodic_usage_stats_permission_asked);
 	g_key_file_set_boolean(gkeyfile, "usage_stats", "periodic_usage_stats_permitted", remmina_pref.periodic_usage_stats_permitted);
 	g_key_file_set_int64(gkeyfile, "usage_stats", "periodic_usage_stats_last_sent", remmina_pref.periodic_usage_stats_last_sent);
+	g_key_file_set_int64(gkeyfile, "remmina_news", "periodic_rmnews_last_get", remmina_pref.periodic_rmnews_last_get);
 	g_key_file_set_string(gkeyfile, "usage_stats", "periodic_usage_stats_uuid_prefix",
 			remmina_pref.periodic_usage_stats_uuid_prefix ? remmina_pref.periodic_usage_stats_uuid_prefix : "");
 

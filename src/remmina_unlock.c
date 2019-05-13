@@ -118,17 +118,14 @@ gint remmina_unlock_new(GtkWindow *parent)
 
 	unlock_timeout = remmina_pref.unlock_timeout;
 
-	g_print ("%f unlock_timeout\n", unlock_timeout);
 
 	remmina_unlock_dialog = g_new0(RemminaUnlockDialog, 1);
 	remmina_unlock_dialog->retval = 1;
-	//gtk_widget_destroy(GTK_WIDGET(remmina_unlock_dialog->dialog));
 
 	if (timer == NULL)
 		remmina_unlock_timer_init();
 	if (timer != NULL)
 		elapsed = g_timer_elapsed(timer, NULL);
-	g_print ("elapsed %f\n", elapsed);
 	if (((int)unlock_timeout - elapsed) < 0) lock = TRUE;
 	if (((int)unlock_timeout - elapsed) >= 0) lock = FALSE;
 	/* timer & timout = 0 */

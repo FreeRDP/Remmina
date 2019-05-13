@@ -32,26 +32,59 @@
  *
  */
 
-/**
- *  @file: remmina_utils.h
- *  General utility functions, non-GTK related.
- */
+#include "config.h"
+#include <stdlib.h>
+#include <gio/gio.h>
+#include <glib/gi18n.h>
+#include <string.h>
+#include "remmina_scheduler.h"
+#include "remmina/remmina_trace_calls.h"
 
-#pragma once
+static gboolean remmina_scheduler_periodic_check(gpointer user_data)
+{
+	TRACE_CALL(__func__);
+	rsSchedData *rssd = (rsSchedData *)user_data;
 
-G_BEGIN_DECLS
-gint remmina_utils_string_find(GString *haystack, gint start, gint end, const gchar *needle);
-gint remmina_utils_string_replace(GString *str, gint pos, gint len, const gchar *replace);
-guint remmina_utils_string_replace_all(GString *haystack, const gchar *needle, const gchar *replace);
-gchar *remmina_utils_string_strip(const gchar *s);
+	rssd->count++;
+	if (rssd->cb_func_ptr(rssd->cb_func_data) == G_SOURCE_REMOVE) {
+		g_free(rssd);
+		return G_SOURCE_REMOVE;
+	}
+	if (rssd->count <= 1) {
+		rssd->source = g_timeout_add_full(G_PRIORITY_LOW,
+						  rssd->interval,
+						  remmina_scheduler_periodic_check,
+						  rssd,
+						  NULL);
+		return G_SOURCE_REMOVE;
+	}
+	return G_SOURCE_CONTINUE;
+}
 
-const gchar* remmina_utils_get_kernel_name();
-const gchar* remmina_utils_get_kernel_release();
-const gchar* remmina_utils_get_kernel_arch();
-gchar* remmina_utils_get_lsb_id();
-gchar* remmina_utils_get_lsb_description();
-gchar* remmina_utils_get_lsb_release();
-gchar* remmina_utils_get_lsb_codename();
-GHashTable* remmina_utils_get_etc_release();
-const gchar* remmina_utils_get_os_info();
-gchar* remmina_sha1_file (const gchar *filename);
+void *remmina_scheduler_setup(GSourceFunc	cb,
+			      gpointer		cb_data,
+			      guint		first_interval,
+			      guint		interval)
+{
+	TRACE_CALL(__func__);
+	rsSchedData *rssd;
+	rssd = g_malloc(sizeof(rsSchedData));
+	rssd->cb_func_ptr = cb;
+	rssd->cb_func_data = cb_data;
+	rssd->interval = interval;
+	rssd->count = 0;
+	rssd->source = g_timeout_add_full(G_PRIORITY_LOW,
+					  first_interval,
+					  remmina_scheduler_periodic_check,
+					  rssd,
+					  NULL);
+	return (void *)rssd;
+}
+
+void remmina_schedluer_remove(void *s)
+{
+	TRACE_CALL(__func__);
+	rsSchedData *rssd = (rsSchedData *)s;
+	g_source_remove(rssd->source);
+	g_free(rssd);
+}
