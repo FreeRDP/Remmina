@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-04-04 13:55+0000\n"
+"POT-Creation-Date: 2019-05-13 21:20+0000\n"
 "PO-Revision-Date: 2019-04-04 23:46+0300\n"
 "Last-Translator: Soltys Sergey <treefeed@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -102,7 +102,7 @@ msgstr "Meta+"
 msgid "<None>"
 msgstr "<Никакая>"
 
-#: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:22
+#: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
 #: data/ui/remmina_mpc.glade:35
 msgid "Cancel"
 msgstr "Отмена"
@@ -110,8 +110,8 @@ msgstr "Отмена"
 #. A button to confirm reading
 #: src/remmina_message_panel.c:199 data/ui/remmina_string_list.glade:8
 #: data/ui/remmina_string_list.glade:9 data/ui/remmina_string_list.glade:63
-#: data/ui/remmina_preferences.glade:33 data/ui/remmina_preferences.glade:34
-#: data/ui/remmina_preferences.glade:60
+#: data/ui/remmina_news.glade:45 data/ui/remmina_preferences.glade:33
+#: data/ui/remmina_preferences.glade:34 data/ui/remmina_preferences.glade:60
 msgid "Close"
 msgstr "Закрыть"
 
@@ -596,7 +596,7 @@ msgstr "SSH агент (автоматически)"
 #: src/remmina_file_editor.c:937 src/remmina_protocol_widget.c:1296
 #: src/remmina_protocol_widget.c:1310 src/remmina_protocol_widget.c:1337
 #: src/remmina_sftp_plugin.c:317 src/remmina_ssh_plugin.c:950
-#: data/ui/remmina_unlock.glade:92 data/ui/remmina_mpc.glade:113
+#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:113
 #: data/ui/remmina_preferences.glade:1469
 msgid "Password"
 msgstr "Пароль"
@@ -939,7 +939,6 @@ msgstr "ssh_get_server_publickey() не удался: %s"
 
 #: src/remmina_ssh.c:435
 #, c-format
-#| msgid "SSH public key authentication failed: %s"
 msgid "ssh_get_publickey() has failed: %s"
 msgstr "ssh_get_publickey() не удался: %s"
 
@@ -1129,18 +1128,18 @@ msgstr "Этот протокол не поддерживает экспорти
 msgid "Remmina Kiosk"
 msgstr "Remmina Киоск"
 
-#: src/remmina.c:82
+#: src/remmina.c:83
 msgid "Show about dialog"
 msgstr "Показать диалоговое окно описания"
 
-#: src/remmina.c:83 src/remmina.c:84
+#: src/remmina.c:84 src/remmina.c:85
 msgid ""
 "Connect to desktop described by file (.remmina or type supported by plugin)"
 msgstr ""
 "Подключиться к терминалу, описанному файлом (.remmina или расширением, "
 "поддерживаемым модулем)"
 
-#: src/remmina.c:85
+#: src/remmina.c:86
 msgid ""
 "Edit desktop connection described by file (.remmina or type supported by "
 "plugin)"
@@ -1148,43 +1147,43 @@ msgstr ""
 "Редактировать подключение к терминалу, описанному файлом (.remmina или "
 "расширением, поддерживаемым модулем)"
 
-#: src/remmina.c:87
+#: src/remmina.c:88
 msgid "Start Remmina in Kiosk mode"
 msgstr "Запустить Remmina в режиме Киоска"
 
-#: src/remmina.c:88 data/ui/remmina_main.glade:69
+#: src/remmina.c:89 data/ui/remmina_main.glade:69
 msgid "Create a new connection profile"
 msgstr "Создать новый профиль соединения"
 
-#: src/remmina.c:89
+#: src/remmina.c:90
 msgid "Show preferences dialog page"
 msgstr "Показать настройки диалоговой страницы"
 
-#: src/remmina.c:90
+#: src/remmina.c:91
 msgid "Execute the plugin"
 msgstr "Запустить модуль"
 
-#: src/remmina.c:91
+#: src/remmina.c:92
 msgid "Quit the application"
 msgstr "Выход из приложения"
 
-#: src/remmina.c:92
+#: src/remmina.c:93
 msgid "Use default server name (for --new)"
 msgstr "Использовать имя сервера по умолчанию (для --new)"
 
-#: src/remmina.c:93
+#: src/remmina.c:94
 msgid "Use default protocol (for --new)"
 msgstr "Использовать протокол по умолчанию (для --new)"
 
-#: src/remmina.c:94
+#: src/remmina.c:95
 msgid "Start as tray icon"
 msgstr "Запускать в трее"
 
-#: src/remmina.c:95
+#: src/remmina.c:96
 msgid "Show the application’s version"
 msgstr "Показать версию приложения"
 
-#: src/remmina.c:96
+#: src/remmina.c:97
 msgid "Show the application’s version, including the plugin versions"
 msgstr "Показать версию приложения, включая версии модулей"
 
@@ -2172,17 +2171,17 @@ msgstr "кнопка"
 msgid "Please press the new key…"
 msgstr "Пожалуйста нажмите новую клавишу…"
 
-#: data/ui/remmina_unlock.glade:36
+#: data/ui/remmina_unlock.glade:60
 msgid "Unlock"
 msgstr "Разблокировать"
 
-#: data/ui/remmina_unlock.glade:70
+#: data/ui/remmina_unlock.glade:94
 msgid "Unlock Remmina"
 msgstr "Разблокировать Remmina"
 
-#: data/ui/remmina_unlock.glade:104
-msgid "Unix account password"
-msgstr "Пароль пользователя Unix"
+#: data/ui/remmina_unlock.glade:128
+msgid "Master password secret key"
+msgstr ""
 
 #: data/ui/remmina_main.glade:81
 msgid "Show search bar"
@@ -2414,15 +2413,13 @@ msgstr "Запретить копирование снимков в буфер �
 
 #: data/ui/remmina_preferences.glade:479
 msgid ""
-"Each Remmina connection profile, is stored with a name you can set its "
-"template"
+"Set a custom filename for your Remmina connection profiles, using a "
+"formatting string."
 msgstr ""
-"Каждый профиль соединения Remmina, хранится с именем, установленным в этом "
-"шаблоне"
 
 #: data/ui/remmina_preferences.glade:483
-msgid "Profile filename template"
-msgstr "Шаблон имени профиля"
+msgid "Profiles filename template"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:495
 msgid ""
@@ -2661,11 +2658,9 @@ msgstr "Мастер-пароль"
 #: data/ui/remmina_preferences.glade:1386
 #: data/ui/remmina_preferences.glade:1402
 msgid ""
-"When activated, some widget will require you to authenticate with  a secret "
+"When activated, some widgets will require you to authenticate with a secret "
 "key"
 msgstr ""
-"Когда активирован, некоторые виджеты могут потребовать авторизации секретным "
-"ключом"
 
 #: data/ui/remmina_preferences.glade:1408
 msgid "Use master password"
@@ -2678,10 +2673,6 @@ msgstr "Интервал автоматической блокировки"
 #: data/ui/remmina_preferences.glade:1432
 msgid "Master password validity in seconds"
 msgstr "Действительность мастер-пароля в секундах"
-
-#: data/ui/remmina_preferences.glade:1435
-msgid "300"
-msgstr "300"
 
 #: data/ui/remmina_preferences.glade:1452
 msgid "File encryption"
@@ -2836,3 +2827,4 @@ msgstr "Выбор файла цветовой схемы терминала"
 #: data/ui/remmina_preferences.glade:2178
 msgid "Terminal"
 msgstr "Терминал"
+
