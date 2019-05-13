@@ -32,26 +32,20 @@
  *
  */
 
-/**
- *  @file: remmina_utils.h
- *  General utility functions, non-GTK related.
- */
+typedef struct _RemminaNewsDialog {
+	GtkBuilder *	builder;
+	GtkDialog *	dialog;
+
+	GtkTextView *	rmnews_text_view;
+	GtkLabel *	rmnews_label;
+	GtkButton *	rmnews_button_close;
+
+	gint		retval;
+} RemminaNewsDialog;
 
 #pragma once
 
 G_BEGIN_DECLS
-gint remmina_utils_string_find(GString *haystack, gint start, gint end, const gchar *needle);
-gint remmina_utils_string_replace(GString *str, gint pos, gint len, const gchar *replace);
-guint remmina_utils_string_replace_all(GString *haystack, const gchar *needle, const gchar *replace);
-gchar *remmina_utils_string_strip(const gchar *s);
-
-const gchar* remmina_utils_get_kernel_name();
-const gchar* remmina_utils_get_kernel_release();
-const gchar* remmina_utils_get_kernel_arch();
-gchar* remmina_utils_get_lsb_id();
-gchar* remmina_utils_get_lsb_description();
-gchar* remmina_utils_get_lsb_release();
-gchar* remmina_utils_get_lsb_codename();
-GHashTable* remmina_utils_get_etc_release();
-const gchar* remmina_utils_get_os_info();
-gchar* remmina_sha1_file (const gchar *filename);
+void rmnews_schedule();
+void rmnews_get_url(const char *url);
+G_END_DECLS
