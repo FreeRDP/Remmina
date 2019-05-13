@@ -1,3 +1,25 @@
+## v1.3.5 (unreleased)
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.4...HEAD)
+
+* rcw refactoring [!1815](https://gitlab.com/Remmina/Remmina/merge_requests/1815) *@giox069*
+* Remmina files refactoring [!1814](https://gitlab.com/Remmina/Remmina/merge_requests/1814) *@antenore*
+* RCW fixes [!1817](https://gitlab.com/Remmina/Remmina/merge_requests/1817) *@giox069*
+* Update Czech translation [!1818](https://gitlab.com/Remmina/Remmina/merge_requests/1818) *@asciiwolf*
+* Improve English wording [!1819](https://gitlab.com/Remmina/Remmina/merge_requests/1819) *@DevDef*
+* Typograhic fixes [!1820](https://gitlab.com/Remmina/Remmina/merge_requests/1820) *@DevDef*
+* Fix typo timout → timeout [!1821](https://gitlab.com/Remmina/Remmina/merge_requests/1821) *@DevDef*
+* Unset “120” (duration before locking) as a translatable string [!1822](https://gitlab.com/Remmina/Remmina/merge_requests/1822) *@DevDef*
+* Update Czech translation [!1824](https://gitlab.com/Remmina/Remmina/merge_requests/1824) *@asciiwolf*
+* Translate the new strings [!1823](https://gitlab.com/Remmina/Remmina/merge_requests/1823) *@DevDef*
+* Patch 1 [!1825](https://gitlab.com/Remmina/Remmina/merge_requests/1825) *@DevDef*
+* Unset “300” as a translatable string + grammar fix (some widget*s*) [!1829](https://gitlab.com/Remmina/Remmina/merge_requests/1829) *@DevDef*
+* Update German translation [!1828](https://gitlab.com/Remmina/Remmina/merge_requests/1828) *@jweberhofer*
+* Updated translation [!1830](https://gitlab.com/Remmina/Remmina/merge_requests/1830) *@DevDef*
+* Restore a translation deleted after the removing of a wrong comma in its original string [!1831](https://gitlab.com/Remmina/Remmina/merge_requests/1831) *@DevDef*
+* Updated Russian translation (sent from Soltys Sergey by e-mail) [!1832](https://gitlab.com/Remmina/Remmina/merge_requests/1832) *@DevDef*
+* Replace non-interpreted HTML lists by text lists [!1833](https://gitlab.com/Remmina/Remmina/merge_requests/1833) *@DevDef*
+* Remmina news dialog [!1835](https://gitlab.com/Remmina/Remmina/merge_requests/1835) *@antenore*
+
 ## v1.3.4
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.3...v.1.3.4)
 
@@ -5,7 +27,6 @@
 * Snap: Build snap in CI and publish to the edge channel for builds against master [!1810](https://gitlab.com/Remmina/Remmina/merge_requests/1810) *@kenvandine*
 * Resolve "SSH public key cannot be imported: Access denied for 'none'. Authentication that can continie: publickey" [!1811](https://gitlab.com/Remmina/Remmina/merge_requests/1811) *@antenore*
 * snap: Ensure the icon is installed [!1812](https://gitlab.com/Remmina/Remmina/merge_requests/1812) *@kenvandine*
-
 
 ## v1.3.3
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.2...v1.3.3)
