@@ -41,10 +41,10 @@
 G_BEGIN_DECLS
 
 struct _RemminaFile {
-	gchar *filename;
-	GHashTable *settings;
-	GHashTable *spsettings;
-	gboolean prevent_saving;
+	gchar *		filename;
+	GHashTable *	settings;
+	GHashTable *	spsettings;
+	gboolean	prevent_saving;
 };
 
 enum {
@@ -56,41 +56,39 @@ enum {
 #define TOOLBAR_OPACITY_MIN 0.2
 
 /* Create a empty .remmina file */
-RemminaFile* remmina_file_new(void);
-RemminaFile* remmina_file_copy(const gchar *filename);
+RemminaFile *remmina_file_new(void);
+RemminaFile *remmina_file_copy(const gchar *filename);
 void remmina_file_generate_filename(RemminaFile *remminafile);
 void remmina_file_set_filename(RemminaFile *remminafile, const gchar *filename);
-const gchar* remmina_file_get_filename(RemminaFile *remminafile);
+const gchar *remmina_file_get_filename(RemminaFile *remminafile);
 /* Load a new .remmina file and return the allocated RemminaFile object */
-RemminaFile* remmina_file_load(const gchar *filename);
+RemminaFile *remmina_file_load(const gchar *filename);
 /* Settings get/set functions */
 void remmina_file_set_string(RemminaFile *remminafile, const gchar *setting, const gchar *value);
 void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting, gchar *value);
-const gchar* remmina_file_get_string(RemminaFile *remminafile, const gchar *setting);
-gchar* remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting);
+const gchar *remmina_file_get_string(RemminaFile *remminafile, const gchar *setting);
+gchar *remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting);
 void remmina_file_set_int(RemminaFile *remminafile, const gchar *setting, gint value);
 gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint default_value);
-void remmina_file_store_secret_plugin_password(RemminaFile *remminafile, const gchar* key, const gchar* value);
+void remmina_file_store_secret_plugin_password(RemminaFile *remminafile, const gchar *key, const gchar *value);
 /* Create or overwrite the .remmina file */
 void remmina_file_save(RemminaFile *remminafile);
 /* Free the RemminaFile object */
 void remmina_file_free(RemminaFile *remminafile);
 /* Duplicate a RemminaFile object */
-RemminaFile* remmina_file_dup(RemminaFile *remminafile);
+RemminaFile *remmina_file_dup(RemminaFile *remminafile);
 /* Get the protocol icon name */
-const gchar* remmina_file_get_icon_name(RemminaFile *remminafile);
+const gchar *remmina_file_get_icon_name(RemminaFile *remminafile);
 /* Duplicate a temporary RemminaFile and change the protocol */
-RemminaFile* remmina_file_dup_temp_protocol(RemminaFile *remminafile, const gchar *new_protocol);
+RemminaFile *remmina_file_dup_temp_protocol(RemminaFile *remminafile, const gchar *new_protocol);
 /* Delete a .remmina file */
 void remmina_file_delete(const gchar *filename);
 /* Delete a "password" field and save into .remmina file */
 void remmina_file_unsave_password(RemminaFile *remminafile);
 /* Function used to update the atime and mtime of a given remmina file, partially
  * taken from suckless sbase */
-gchar* remmina_file_get_datetime(RemminaFile *remminafile);
+gchar *remmina_file_get_datetime(RemminaFile *remminafile);
 /* Function used to update the atime and mtime of a given remmina file */
 void remmina_file_touch(RemminaFile *remminafilefile);
 
 G_END_DECLS
-
-

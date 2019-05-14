@@ -641,9 +641,6 @@ void remmina_main_on_action_connection_connect(GSimpleAction *action, GVariant *
 	if (!remminamain->priv->selected_filename)
 		return;
 
-	if (remmina_unlock_new(remminamain->window) == 0)
-		return;
-
 	remminafile = remmina_file_load(remminamain->priv->selected_filename);
 
 	if (remminafile == NULL)
@@ -752,6 +749,9 @@ void remmina_main_on_action_connection_copy(GSimpleAction *action, GVariant *par
 	TRACE_CALL(__func__);
 	GtkWidget *widget;
 
+	if (remmina_unlock_new(remminamain->window) == 0)
+		return;
+
 	if (!remminamain->priv->selected_filename)
 		return;
 
@@ -771,6 +771,9 @@ void remmina_main_on_action_connection_edit(GSimpleAction *action, GVariant *par
 {
 	TRACE_CALL(__func__);
 	GtkWidget *widget;
+
+	if (remmina_unlock_new(remminamain->window) == 0)
+		return;
 
 	if (!remminamain->priv->selected_filename)
 		return;
@@ -797,6 +800,7 @@ void remmina_main_on_action_connection_delete(GSimpleAction *action, GVariant *p
 
 	if (remmina_unlock_new(remminamain->window) == 0)
 		return;
+
 	dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
 		_("Are you sure to delete '%s'"), remminamain->priv->selected_name);
 	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES) {

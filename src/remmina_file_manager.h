@@ -40,23 +40,21 @@
 G_BEGIN_DECLS
 
 typedef struct _RemminaGroupData {
-	gchar *name;
-	gchar *group;
-	gchar *datetime;
+	gchar * name;
+	gchar * group;
+	gchar * datetime;
 } RemminaGroupData;
 
 /* Initialize */
-gchar* remmina_file_get_datadir(void);
+gchar *remmina_file_get_datadir(void);
 void remmina_file_manager_init(void);
 /* Iterate all .remmina connections in the home directory */
 gint remmina_file_manager_iterate(GFunc func, gpointer user_data);
 /* Get a list of groups */
-gchar* remmina_file_manager_get_groups(void);
-GNode* remmina_file_manager_get_group_tree(void);
+gchar *remmina_file_manager_get_groups(void);
+GNode *remmina_file_manager_get_group_tree(void);
 void remmina_file_manager_free_group_tree(GNode *node);
 /* Load or import a file */
-RemminaFile* remmina_file_manager_load_file(const gchar *filename);
+RemminaFile *remmina_file_manager_load_file(const gchar *filename);
 
 G_END_DECLS
-
-
