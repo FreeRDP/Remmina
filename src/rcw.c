@@ -44,6 +44,7 @@
 #include <stdlib.h>
 
 #include "remmina.h"
+#include "remmina_main.h"
 #include "rcw.h"
 #include "remmina_file.h"
 #include "remmina_file_manager.h"
@@ -3821,6 +3822,7 @@ GtkWidget* rcw_open_from_file_full(RemminaFile* remminafile, GCallback disconnec
 	gint width, height;
 	gboolean maximize;
 	gint view_mode;
+	const gchar *msg;
 
 	/* Create the RemminaConnectionObject */
 	cnnobj = g_new0(RemminaConnectionObject, 1);
@@ -3829,6 +3831,18 @@ GtkWidget* rcw_open_from_file_full(RemminaFile* remminafile, GCallback disconnec
 	/* Create the RemminaProtocolWidget */
 	cnnobj->proto = remmina_protocol_widget_new();
 	remmina_protocol_widget_setup((RemminaProtocolWidget*)cnnobj->proto, remminafile, cnnobj);
+	if (remmina_protocol_widget_has_error((RemminaProtocolWidget*)cnnobj->proto)) {
+		GtkWindow *wparent;
+		wparent = remmina_main_get_window();
+		msg = remmina_protocol_widget_get_error_message((RemminaProtocolWidget*)cnnobj->proto);
+		dialog = gtk_message_dialog_new (wparent,  GTK_DIALOG_DESTROY_WITH_PARENT,
+				GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, "%s", msg);
+		gtk_dialog_run(GTK_DIALOG (dialog));
+		gtk_widget_destroy(dialog);
+		/* We should destroy cnnobj->proto and cnnobj now... ToDo: fix this leak */
+		return NULL;
+	}
+
 	/* Set a name for the widget, for CSS selector */
 	gtk_widget_set_name(GTK_WIDGET(cnnobj->proto), "remmina-protocol-widget");
 
