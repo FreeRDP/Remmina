@@ -432,6 +432,7 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 		gtk_switch_set_active(GTK_SWITCH(save_password_switch), TRUE);
 	}else  {
 		gtk_switch_set_active(GTK_SWITCH(save_password_switch), FALSE);
+		gtk_widget_set_sensitive(GTK_WIDGET(save_password_switch), FALSE);
 	}
 	grid_row ++;
 
