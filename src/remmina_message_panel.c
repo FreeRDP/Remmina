@@ -428,10 +428,11 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 	gtk_widget_set_margin_start (GTK_WIDGET(save_password_switch), 6);
 	gtk_widget_set_margin_end (GTK_WIDGET(save_password_switch), 18);
 	gtk_grid_attach(GTK_GRID(grid), save_password_switch, 1, grid_row, 2, 1);
-	if (flags & REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSRORD) {
+	if (flags & REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) {
 		gtk_switch_set_active(GTK_SWITCH(save_password_switch), TRUE);
 	}else  {
 		gtk_switch_set_active(GTK_SWITCH(save_password_switch), FALSE);
+		gtk_widget_set_sensitive(GTK_WIDGET(save_password_switch), FALSE);
 	}
 	grid_row ++;
 
@@ -458,7 +459,7 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 
 	priv->w[REMMINA_MESSAGE_PANEL_USERNAME] = username_entry;
 	priv->w[REMMINA_MESSAGE_PANEL_PASSWORD] = password_entry;
-	priv->w[REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSRORD] = save_password_switch;
+	priv->w[REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD] = save_password_switch;
 	priv->w[REMMINA_MESSAGE_PANEL_DOMAIN] = domain_entry;
 
 	priv->response_callback = response_callback;

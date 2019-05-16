@@ -1092,7 +1092,7 @@ static void authuserpwd_mt_cb(void *user_data, int button)
 			d->gp->priv->password = remmina_message_panel_field_get_string(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_PASSWORD);
 			d->gp->priv->username = remmina_message_panel_field_get_string(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_USERNAME);
 			d->gp->priv->domain = remmina_message_panel_field_get_string(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_DOMAIN);
-			d->gp->priv->save_password = remmina_message_panel_field_get_switch_state(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSRORD);
+			d->gp->priv->save_password = remmina_message_panel_field_get_switch_state(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD);
 		} else if (d->dtype == RPWDT_AUTHX509) {
 			d->gp->priv->cacert = remmina_message_panel_field_get_filename(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_CACERTFILE);
 			d->gp->priv->cacrl = remmina_message_panel_field_get_filename(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_CACRLFILE);
@@ -1139,8 +1139,8 @@ static gboolean remmina_protocol_widget_dialog_mt_setup(gpointer user_data)
 		key = (d->dtype == RPWDT_AUTHUSERPWD_SSHTUNNEL ? "ssh_password" : "password");
 		if ((s = remmina_file_get_string(remminafile, key)) != NULL)
 			remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_PASSWORD, s);
-		if (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSRORD) {
-			remmina_message_panel_field_set_switch(mp, REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSRORD, FALSE);
+		if (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) {
+			remmina_message_panel_field_set_switch(mp, REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD, FALSE);
 		}
 	} else if (d->dtype == RPWDT_AUTHPWD) {
 		remmina_message_panel_setup_auth(mp, authuserpwd_mt_cb, d, _("Enter authentication credentials"), d->str1, d->pflags);
@@ -1148,8 +1148,8 @@ static gboolean remmina_protocol_widget_dialog_mt_setup(gpointer user_data)
 			remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_USERNAME, s);
 		if ((s = remmina_file_get_string(remminafile, "password")) != NULL)
 			remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_PASSWORD, s);
-		if (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSRORD) {
-			remmina_message_panel_field_set_switch(mp, REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSRORD, FALSE);
+		if (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) {
+			remmina_message_panel_field_set_switch(mp, REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD, FALSE);
 		}
 	} else if (d->dtype == RPWDT_QUESTIONYESNO) {
 		remmina_message_panel_setup_question(mp, d->str1, authuserpwd_mt_cb, d);
@@ -1287,11 +1287,15 @@ gint remmina_protocol_widget_panel_authuserpwd(RemminaProtocolWidget* gp, gboole
 	RemminaFile* remminafile = gp->priv->remmina_file;
 
 	pflags = REMMINA_MESSAGE_PANEL_FLAG_USERNAME;
+	g_debug ("pflags is %u", pflags);
 	if (remmina_file_get_filename(remminafile) != NULL &&
 		 !remminafile->prevent_saving && allow_password_saving)
-		pflags |= REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSRORD;
+		pflags |= REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD;
+	g_debug ("pflags is %u", pflags);
 	if (want_domain)
 		pflags |= REMMINA_MESSAGE_PANEL_FLAG_DOMAIN;
+
+	g_debug ("pflags is %u", pflags);
 
 	return remmina_protocol_widget_dialog(RPWDT_AUTHUSERPWD, gp, pflags, _("Password"));
 }
@@ -1305,7 +1309,7 @@ gint remmina_protocol_widget_panel_authuserpwd_ssh_tunnel(RemminaProtocolWidget*
 	pflags = REMMINA_MESSAGE_PANEL_FLAG_USERNAME;
 	if (remmina_file_get_filename(remminafile) != NULL &&
 		 !remminafile->prevent_saving && allow_password_saving)
-		pflags |= REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSRORD;
+		pflags |= REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD;
 
 	return remmina_protocol_widget_dialog(RPWDT_AUTHUSERPWD_SSHTUNNEL, gp, pflags, _("Password"));
 }
@@ -1321,7 +1325,7 @@ gint remmina_protocol_widget_panel_authpwd(RemminaProtocolWidget* gp, RemminaAut
 	pflags = 0;
 	if (remmina_file_get_filename(remminafile) != NULL &&
 		 !remminafile->prevent_saving && allow_password_saving)
-		pflags |= REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSRORD;
+		pflags |= REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD;
 
 	switch (authpwd_type) {
 		case REMMINA_AUTHPWD_TYPE_PROTOCOL:

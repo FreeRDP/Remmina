@@ -443,6 +443,7 @@ void remmina_file_save(RemminaFile *remminafile)
 	GHashTableIter iter;
 	const gchar *key, *value;
 	gchar *s, *proto, *content;
+	gint nopasswdsave;
 	GKeyFile *gkeyfile;
 	gsize length = 0;
 
@@ -452,6 +453,8 @@ void remmina_file_save(RemminaFile *remminafile)
 	if ((gkeyfile = remmina_file_get_keyfile(remminafile)) == NULL)
 		return;
 
+	/* get disablepasswordstoring */
+	nopasswdsave = remmina_file_get_int(remminafile, "disablepasswordstoring", 0);
 	/* Identify the protocol plugin and get pointers to its RemminaProtocolSetting structs */
 	proto = (gchar *)g_hash_table_lookup(remminafile->settings, "protocol");
 	if (proto) {
@@ -468,7 +471,8 @@ void remmina_file_save(RemminaFile *remminafile)
 	while (g_hash_table_iter_next(&iter, (gpointer *)&key, (gpointer *)&value)) {
 		if (remmina_plugin_manager_is_encrypted_setting(protocol_plugin, key)) {
 			if (remminafile->filename && g_strcmp0(remminafile->filename, remmina_pref_file)) {
-				if (secret_service_available) {
+				if (secret_service_available && nopasswdsave == 0) {
+					g_debug ("We have a secret and disablepasswordstoring=0");
 					if (value && value[0]) {
 						if (g_strcmp0(value, ".") != 0)
 							secret_plugin->store_password(remminafile, key, value);
@@ -478,12 +482,22 @@ void remmina_file_save(RemminaFile *remminafile)
 						secret_plugin->delete_password(remminafile, key);
 					}
 				} else {
-					if (value && value[0]) {
+					g_debug ("We have a password and disablepasswordstoring=0");
+					if (value && value[0] && nopasswdsave == 0) {
 						s = remmina_crypt_encrypt(value);
 						g_key_file_set_string(gkeyfile, "remmina", key, s);
 						g_free(s);
 					} else {
 						g_key_file_set_string(gkeyfile, "remmina", key, "");
+					}
+				}
+				if (secret_service_available && nopasswdsave == 1) {
+					if (value && value[0]) {
+						if (g_strcmp0(value, ".") != 0) {
+							g_debug ("Deleting the secret in the keyring as disablepasswordstoring=1");
+							secret_plugin->delete_password(remminafile, key);
+							g_key_file_set_string(gkeyfile, "remmina", key, ".");
+						}
 					}
 				}
 			}
