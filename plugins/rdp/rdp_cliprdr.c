@@ -201,7 +201,7 @@ static void remmina_rdp_cliprdr_send_client_capabilities(rfClipboard* clipboard)
 }
 
 
-static UINT remmina_rdp_cliprdr_monitor_ready(CliprdrClientContext* context, CLIPRDR_MONITOR_READY* monitorReady)
+static UINT remmina_rdp_cliprdr_monitor_ready(CliprdrClientContext* context, const CLIPRDR_MONITOR_READY* monitorReady)
 {
 	TRACE_CALL(__func__);
 	rfClipboard* clipboard = (rfClipboard*)context->custom;
@@ -214,14 +214,14 @@ static UINT remmina_rdp_cliprdr_monitor_ready(CliprdrClientContext* context, CLI
 	return CHANNEL_RC_OK;
 }
 
-static UINT remmina_rdp_cliprdr_server_capabilities(CliprdrClientContext* context, CLIPRDR_CAPABILITIES* capabilities)
+static UINT remmina_rdp_cliprdr_server_capabilities(CliprdrClientContext* context, const CLIPRDR_CAPABILITIES* capabilities)
 {
 	TRACE_CALL(__func__);
 	return CHANNEL_RC_OK;
 }
 
 
-static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext* context, CLIPRDR_FORMAT_LIST* formatList)
+static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext* context, const CLIPRDR_FORMAT_LIST* formatList)
 {
 	TRACE_CALL(__func__);
 
@@ -288,14 +288,14 @@ static UINT remmina_rdp_cliprdr_server_format_list(CliprdrClientContext* context
 
 }
 
-static UINT remmina_rdp_cliprdr_server_format_list_response(CliprdrClientContext* context, CLIPRDR_FORMAT_LIST_RESPONSE* formatListResponse)
+static UINT remmina_rdp_cliprdr_server_format_list_response(CliprdrClientContext* context, const CLIPRDR_FORMAT_LIST_RESPONSE* formatListResponse)
 {
 	TRACE_CALL(__func__);
 	return CHANNEL_RC_OK;
 }
 
 
-static UINT remmina_rdp_cliprdr_server_format_data_request(CliprdrClientContext* context, CLIPRDR_FORMAT_DATA_REQUEST* formatDataRequest)
+static UINT remmina_rdp_cliprdr_server_format_data_request(CliprdrClientContext* context, const CLIPRDR_FORMAT_DATA_REQUEST* formatDataRequest)
 {
 	TRACE_CALL(__func__);
 
@@ -316,11 +316,11 @@ static UINT remmina_rdp_cliprdr_server_format_data_request(CliprdrClientContext*
 	return CHANNEL_RC_OK;
 }
 
-static UINT remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext* context, CLIPRDR_FORMAT_DATA_RESPONSE* formatDataResponse)
+static UINT remmina_rdp_cliprdr_server_format_data_response(CliprdrClientContext* context, const CLIPRDR_FORMAT_DATA_RESPONSE* formatDataResponse)
 {
 	TRACE_CALL(__func__);
 
-	UINT8* data;
+	const UINT8* data;
 	size_t size;
 	rfContext* rfi;
 	RemminaProtocolWidget* gp;
@@ -602,7 +602,6 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 	int size = 0;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent rdp_event = { 0 };
-	CLIPRDR_FORMAT_DATA_RESPONSE* pFormatDataResponse;
 
 	gtkClipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);
 	if (gtkClipboard) {
@@ -681,18 +680,9 @@ void remmina_rdp_cliprdr_get_clipboard_data(RemminaProtocolWidget* gp, RemminaPl
 		}
 	}
 
-	pFormatDataResponse = (CLIPRDR_FORMAT_DATA_RESPONSE*)malloc(sizeof(CLIPRDR_FORMAT_DATA_RESPONSE));
-	if (!pFormatDataResponse) {
-		if (outbuf) free(outbuf);
-		return;
-	}
-
-	ZeroMemory(pFormatDataResponse, sizeof(CLIPRDR_FORMAT_DATA_RESPONSE));
 	rdp_event.type = REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_DATA_RESPONSE;
-	rdp_event.clipboard_formatdataresponse.pFormatDataResponse = pFormatDataResponse;
-	pFormatDataResponse->msgFlags = CB_RESPONSE_OK;
-	pFormatDataResponse->dataLen = size;
-	pFormatDataResponse->requestedFormatData = outbuf;
+	rdp_event.clipboard_formatdataresponse.data = outbuf;
+	rdp_event.clipboard_formatdataresponse.size = size;
 	remmina_rdp_event_event_push(gp, &rdp_event);
 
 }

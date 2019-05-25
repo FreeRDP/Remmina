@@ -99,7 +99,6 @@ struct rf_glyph {
 };
 typedef struct rf_glyph rfGlyph;
 
-
 typedef enum {
 	REMMINA_RDP_EVENT_TYPE_SCANCODE,
 	REMMINA_RDP_EVENT_TYPE_SCANCODE_UNICODE,
@@ -129,7 +128,8 @@ struct remmina_plugin_rdp_event {
 			CLIPRDR_FORMAT_LIST* pFormatList;
 		} clipboard_formatlist;
 		struct {
-			CLIPRDR_FORMAT_DATA_RESPONSE* pFormatDataResponse;
+			BYTE *data;
+			int size;
 		} clipboard_formatdataresponse;
 		struct {
 			CLIPRDR_FORMAT_DATA_REQUEST* pFormatDataRequest;

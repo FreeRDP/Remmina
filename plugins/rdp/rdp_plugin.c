@@ -52,6 +52,7 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	RemminaPluginRdpEvent* event;
 	DISPLAY_CONTROL_MONITOR_LAYOUT* dcml;
+	CLIPRDR_FORMAT_DATA_RESPONSE response = { 0 };
 
 	if (rfi->event_queue == NULL)
 		return True;
@@ -89,10 +90,10 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget* gp)
 			break;
 
 		case REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_DATA_RESPONSE:
-			rfi->clipboard.context->ClientFormatDataResponse(rfi->clipboard.context, event->clipboard_formatdataresponse.pFormatDataResponse);
-			if (event->clipboard_formatdataresponse.pFormatDataResponse->requestedFormatData)
-				free(event->clipboard_formatdataresponse.pFormatDataResponse->requestedFormatData);
-			free(event->clipboard_formatdataresponse.pFormatDataResponse);
+			response.msgFlags = (event->clipboard_formatdataresponse.data) ? CB_RESPONSE_OK : CB_RESPONSE_FAIL;
+			response.dataLen = event->clipboard_formatdataresponse.size;
+			response.requestedFormatData = event->clipboard_formatdataresponse.data;
+			rfi->clipboard.context->ClientFormatDataResponse(rfi->clipboard.context, &response);
 			break;
 
 		case REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_DATA_REQUEST:
@@ -806,7 +807,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
     /* Disable RDPGFX_CAPVERSION_105, RDPGFX_CAPVERSION_104, RDPGFX_CAPVERSION_103 which
        seems to cause problems with GFX AVC444 and resolution <= 640x480 */
-    freerdp_settings_set_uint32(rfi->settings, FreeRDP_GfxCapsFilter, 0x0E0);
+	freerdp_settings_set_uint32(rfi->settings, FreeRDP_GfxCapsFilter, 0x0E0);
 
 	rfi->settings->DesktopWidth = remmina_plugin_service->get_profile_remote_width(gp);
 	rfi->settings->DesktopHeight = remmina_plugin_service->get_profile_remote_height(gp);

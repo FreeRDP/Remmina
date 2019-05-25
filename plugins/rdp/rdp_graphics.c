@@ -313,8 +313,8 @@ void rf_Glyph_Free(rdpContext* context, rdpGlyph* glyph)
 #endif
 }
 
-static BOOL rf_Glyph_Draw(rdpContext* context, const rdpGlyph* glyph, UINT32 x,
-			  UINT32 y, UINT32 w, UINT32 h, UINT32 sx, UINT32 sy,
+static BOOL rf_Glyph_Draw(rdpContext* context, const rdpGlyph* glyph, INT32 x,
+			  INT32 y, INT32 w, INT32 h, INT32 sx, INT32 sy,
 			  BOOL fOpRedundant)
 {
 	TRACE_CALL(__func__);
@@ -332,8 +332,8 @@ static BOOL rf_Glyph_Draw(rdpContext* context, const rdpGlyph* glyph, UINT32 x,
 	return TRUE;
 }
 
-static BOOL rf_Glyph_BeginDraw(rdpContext* context, UINT32 x, UINT32 y,
-			       UINT32 width, UINT32 height, UINT32 bgcolor,
+static BOOL rf_Glyph_BeginDraw(rdpContext* context, INT32 x, INT32 y,
+			       INT32 width, INT32 height, UINT32 bgcolor,
 			       UINT32 fgcolor, BOOL fOpRedundant)
 {
 	TRACE_CALL(__func__);
@@ -360,8 +360,8 @@ static BOOL rf_Glyph_BeginDraw(rdpContext* context, UINT32 x, UINT32 y,
 	return TRUE;
 }
 
-static BOOL rf_Glyph_EndDraw(rdpContext* context, UINT32 x, UINT32 y,
-			     UINT32 width, UINT32 height,
+static BOOL rf_Glyph_EndDraw(rdpContext* context, INT32 x, INT32 y,
+			     INT32 width, INT32 height,
 			     UINT32 bgcolor, UINT32 fgcolor)
 {
 	TRACE_CALL(__func__);
