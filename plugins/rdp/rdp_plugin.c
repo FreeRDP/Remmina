@@ -804,6 +804,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->GfxAVC444 = TRUE;
 	}
 
+    /* Disable RDPGFX_CAPVERSION_105, RDPGFX_CAPVERSION_104, RDPGFX_CAPVERSION_103 which
+       seems to cause problems with GFX AVC444 and resolution <= 640x480 */
+    freerdp_settings_set_uint32(rfi->settings, FreeRDP_GfxCapsFilter, 0x0E0);
+
 	rfi->settings->DesktopWidth = remmina_plugin_service->get_profile_remote_width(gp);
 	rfi->settings->DesktopHeight = remmina_plugin_service->get_profile_remote_height(gp);
 
