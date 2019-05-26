@@ -56,8 +56,10 @@ void remmina_rdp_OnChannelConnectedEventHandler(rdpContext* context, ChannelConn
 		g_print("Unimplemented: channel %s connected but we can’t use it\n", e->name);
 		// xf_tsmf_init(xfc, (TsmfClientContext*) e->pInterface);
 	}else if (g_strcmp0(e->name, RDPGFX_DVC_CHANNEL_NAME) == 0) {
-	   if (rfi->settings->SoftwareGdi)
+	   if (rfi->settings->SoftwareGdi) {
+			rfi->rdpgfxchan = TRUE;
 			gdi_graphics_pipeline_init(context->gdi, (RdpgfxClientContext*) e->pInterface);
+	   }
 	   else
 			g_print("Unimplemented: channel %s connected but libfreerdp is in HardwareGdi mode\n", e->name);
 	}else if (g_strcmp0(e->name, RAIL_SVC_CHANNEL_NAME) == 0) {

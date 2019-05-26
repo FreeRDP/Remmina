@@ -805,12 +805,23 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->GfxAVC444 = TRUE;
 	}
 
-    /* Disable RDPGFX_CAPVERSION_*
-       due to problems with GFX AVC444 and resolution <= 640x480 */
-	freerdp_settings_set_uint32(rfi->settings, FreeRDP_GfxCapsFilter, 0xFFF);
-
 	rfi->settings->DesktopWidth = remmina_plugin_service->get_profile_remote_width(gp);
 	rfi->settings->DesktopHeight = remmina_plugin_service->get_profile_remote_height(gp);
+
+	/* Workaround for FreeRDP issue #5417: in GFX avc modes we can't go under
+	 * AVC_MIN_DESKTOP_WIDTH x AVC_MIN_DESKTOP_HEIGHT */
+	if (rfi->settings->SupportGraphicsPipeline && rfi->settings->GfxH264) {
+		if (rfi->settings->DesktopWidth < AVC_MIN_DESKTOP_WIDTH)
+			rfi->settings->DesktopWidth = AVC_MIN_DESKTOP_WIDTH;
+		if (rfi->settings->DesktopHeight < AVC_MIN_DESKTOP_HEIGHT)
+			rfi->settings->DesktopHeight = AVC_MIN_DESKTOP_HEIGHT;
+	}
+
+	/* Workaround for FreeRDP issue #5119. This will make our horizontal resolution
+	 * an even value, but it will add a vertical black 1 pixel line on the
+	 * right of the desktop */
+	if ((rfi->settings->DesktopWidth & 1) != 0)
+		rfi->settings->DesktopWidth -= 1;
 
 	remmina_plugin_service->protocol_plugin_set_width(gp, rfi->settings->DesktopWidth);
 	remmina_plugin_service->protocol_plugin_set_height(gp, rfi->settings->DesktopHeight);

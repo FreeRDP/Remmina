@@ -1739,11 +1739,6 @@ void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp)
 			w = 640;
 			h = 480;
 		}
-		/* Workaround for FreeRDP issue 5119. This will make our horizontal resolution
-		 * an even value, but it will add a vertical black 1 pixel line on the
-		 * right of the desktop */
-		if ( (w & 1) != 0)
-			w -= 1;
 		/* Due to approximations while GTK calculates scaling, (w x h) may exceed our monitor geometry
 		 * Adjust to fit. */
 		if (w > rect.width)
