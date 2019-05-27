@@ -58,7 +58,7 @@ gchar *remmina_file_get_datadir(void)
 	int i;
 	/* From preferences, datadir_path */
 	remminadir = remmina_pref_get_value("datadir_path");
-	if (remminadir != NULL)
+	if (remminadir != NULL && strlen(remminadir) > 0)
 		if (g_file_test(remminadir, G_FILE_TEST_IS_DIR))
 			return remminadir;
 	g_free(remminadir), remminadir = NULL;

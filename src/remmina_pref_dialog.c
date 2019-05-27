@@ -199,6 +199,8 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	gboolean rebuild_remmina_icon = FALSE;
 
 	remmina_pref.datadir_path = gtk_file_chooser_get_filename(remmina_pref_dialog->filechooserbutton_options_datadir_path);
+	if (remmina_pref.datadir_path == NULL)
+		remmina_pref.datadir_path = g_strdup("");
 	remmina_pref.remmina_file_name = gtk_entry_get_text(remmina_pref_dialog->entry_options_file_name);
 	remmina_pref.screenshot_path = gtk_file_chooser_get_filename(remmina_pref_dialog->filechooserbutton_options_screenshots_path);
 	remmina_pref.screenshot_name = gtk_entry_get_text(remmina_pref_dialog->entry_options_screenshot_name);
@@ -583,7 +585,7 @@ static void remmina_pref_dialog_init(void)
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_appearance_fullscreen_toolbar_visibility, remmina_pref.fullscreen_toolbar_visibility);
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_options_scale_quality, remmina_pref.scale_quality);
 	gtk_combo_box_set_active(remmina_pref_dialog->comboboxtext_options_ssh_loglevel, remmina_pref.ssh_loglevel);
-	if (remmina_pref.datadir_path != NULL) {
+	if (remmina_pref.datadir_path != NULL && strlen(remmina_pref.datadir_path) > 0) {
 		gtk_file_chooser_set_filename(remmina_pref_dialog->filechooserbutton_options_datadir_path, remmina_pref.datadir_path);
 	}
 	if (remmina_pref.remmina_file_name != NULL) {

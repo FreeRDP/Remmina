@@ -417,9 +417,10 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.deny_screenshot_clipboard = TRUE;
 
-	if (g_key_file_has_key(gkeyfile, "remmina_pref", "datadir_path", NULL)) {
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "datadir_path", NULL))
 		remmina_pref.datadir_path = g_key_file_get_string(gkeyfile, "remmina_pref", "datadir_path", NULL);
-	}
+	else
+		remmina_pref.datadir_path = g_strdup("");
 
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "remmina_file_name", NULL)) {
 		remmina_pref.remmina_file_name = g_key_file_get_string(gkeyfile, "remmina_pref", "remmina_file_name", NULL);
