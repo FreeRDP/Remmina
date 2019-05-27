@@ -2860,7 +2860,7 @@ static GtkWidget* nb_find_page_by_cnnobj(GtkNotebook *notebook, RemminaConnectio
 		return NULL;
 	found_page = NULL;
 	np = gtk_notebook_get_n_pages(cnnobj->cnnwin->priv->notebook);
-	for (i = 0; i < np; i--) {
+	for (i = 0; i < np; i++) {
 		pg = gtk_notebook_get_nth_page(cnnobj->cnnwin->priv->notebook, i);
 		if (g_object_get_data(G_OBJECT(pg), "cnnobj") == cnnobj) {
 			found_page = pg;
