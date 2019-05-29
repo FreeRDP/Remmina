@@ -84,6 +84,8 @@ endif()
 pkg_search_module(WEBKIT2
     webkit2gtk-4.0
     webkit2gtk-3.0
+    libwebkit2gtk-4.0
+    libwebkit2gtk-3.0
     )
 
 if(WEBKIT2_FOUND)
