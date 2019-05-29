@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-05-27 17:01+0000\n"
+"POT-Creation-Date: 2019-05-29 22:57+0000\n"
 "PO-Revision-Date: 2014-02-25 14:26+0000\n"
 "Last-Translator: Po-Hsu Lin <po-hsu.lin@canonical.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
@@ -571,8 +571,8 @@ msgstr ""
 #: src/remmina_file_editor.c:926 src/remmina_protocol_widget.c:1300
 #: src/remmina_protocol_widget.c:1314 src/remmina_protocol_widget.c:1341
 #: src/remmina_sftp_plugin.c:317 src/remmina_ssh_plugin.c:950
-#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:113
-#: data/ui/remmina_preferences.glade:1469
+#: plugins/www/www_plugin.c:415 data/ui/remmina_unlock.glade:116
+#: data/ui/remmina_mpc.glade:113 data/ui/remmina_preferences.glade:1469
 msgid "Password"
 msgstr "密碼"
 
@@ -638,7 +638,7 @@ msgstr ""
 msgid "Post Command"
 msgstr ""
 
-#: src/remmina_file_editor.c:1558 src/remmina_file_editor.c:1576
+#: src/remmina_file_editor.c:1559 src/remmina_file_editor.c:1577
 #, c-format
 msgid "File %s not found."
 msgstr "找不到檔案 %s。"
@@ -968,102 +968,102 @@ msgstr ""
 msgid "Failed to startup SSH session: %s"
 msgstr "未能啟動 SSH 作業階段：%s"
 
-#: src/remmina_ssh.c:975 src/remmina_ssh.c:1034
+#: src/remmina_ssh.c:975 src/remmina_ssh.c:1035
 #, c-format
 msgid "Failed to create channel: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:984
+#: src/remmina_ssh.c:985
 #, c-format
 msgid "Failed to connect to the SSH tunnel destination: %s"
 msgstr "未能連接至 SSH 通道目的地：%s"
 
-#: src/remmina_ssh.c:1048 src/remmina_ssh.c:1627
+#: src/remmina_ssh.c:1049 src/remmina_ssh.c:1628
 #, c-format
 msgid "Failed to open channel: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1054
+#: src/remmina_ssh.c:1055
 #, c-format
 msgid "Failed to execute %s on SSH server: %%s"
 msgstr "未能在 SSH 伺服器執行 %s：%%s"
 
-#: src/remmina_ssh.c:1091 src/remmina_ssh.c:1111 src/remmina_ssh.c:1119
+#: src/remmina_ssh.c:1092 src/remmina_ssh.c:1112 src/remmina_ssh.c:1120
 #, c-format
 msgid "Failed to request port forwarding: %s"
 msgstr "未能請求端口轉送：%s"
 
-#: src/remmina_ssh.c:1154
+#: src/remmina_ssh.c:1155
 msgid "No response from the server."
 msgstr "伺服器無回應。"
 
-#: src/remmina_ssh.c:1193
+#: src/remmina_ssh.c:1194
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr ""
 
-#: src/remmina_ssh.c:1242
+#: src/remmina_ssh.c:1243
 #, c-format
 msgid "ssh_channel_write() returned an error: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1248
+#: src/remmina_ssh.c:1249
 #, c-format
 msgid "read on tunnel listening socket returned an error: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1267
+#: src/remmina_ssh.c:1268
 #, c-format
 msgid "ssh_channel_poll() returned an error: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1273
+#: src/remmina_ssh.c:1274
 #, c-format
 msgid "ssh_channel_read_nonblocking() returned an error: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1291
+#: src/remmina_ssh.c:1292
 #, c-format
 msgid "write on tunnel listening socket returned an error: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1370
+#: src/remmina_ssh.c:1371
 msgid "Destination port has not been assigned."
 msgstr ""
 
-#: src/remmina_ssh.c:1377
+#: src/remmina_ssh.c:1378
 msgid "Failed to create socket."
 msgstr ""
 
-#: src/remmina_ssh.c:1387
+#: src/remmina_ssh.c:1388
 msgid "Failed to bind on local port."
 msgstr ""
 
-#: src/remmina_ssh.c:1393
+#: src/remmina_ssh.c:1394
 msgid "Failed to listen on local port."
 msgstr ""
 
-#: src/remmina_ssh.c:1402 src/remmina_ssh.c:1418 src/remmina_ssh.c:1434
-#: src/remmina_ssh.c:1451
+#: src/remmina_ssh.c:1403 src/remmina_ssh.c:1419 src/remmina_ssh.c:1435
+#: src/remmina_ssh.c:1452
 msgid "Failed to initialize pthread."
 msgstr ""
 
-#: src/remmina_ssh.c:1539
+#: src/remmina_ssh.c:1540
 #, c-format
 msgid "Failed to create SFTP session: %s"
 msgstr "未能建立 SFTP 作業階段：%s"
 
-#: src/remmina_ssh.c:1543
+#: src/remmina_ssh.c:1544
 #, c-format
 msgid "Failed to initialize SFTP session: %s"
 msgstr "未能初始化 SFTP 作業階段：%s"
 
-#: src/remmina_ssh.c:1656
+#: src/remmina_ssh.c:1657
 #, c-format
 msgid "Failed to request shell: %s"
 msgstr ""
 
-#: src/remmina_ssh.c:1749
+#: src/remmina_ssh.c:1750
 msgid "Failed to create pty device."
 msgstr ""
 
@@ -1298,7 +1298,7 @@ msgstr ""
 
 #: src/remmina_ssh_plugin.c:1081 plugins/spice/spice_plugin.c:446
 #: plugins/rdp/rdp_plugin.c:1661 plugins/nx/nx_plugin.c:720
-#: plugins/vnc/vnc_plugin.c:1919
+#: plugins/vnc/vnc_plugin.c:1919 plugins/www/www_plugin.c:439
 msgid "Disable password storing"
 msgstr ""
 
@@ -2042,6 +2042,58 @@ msgstr ""
 #: plugins/telepathy/telepathy_channel_handler.c:240
 msgid "Desktop sharing invitation"
 msgstr "桌面共享邀請"
+
+#: plugins/www/www_plugin.c:412
+msgid "Address"
+msgstr ""
+
+#: plugins/www/www_plugin.c:413
+msgid "No authentication"
+msgstr ""
+
+#: plugins/www/www_plugin.c:414
+msgid "Username"
+msgstr ""
+
+#: plugins/www/www_plugin.c:416
+msgid "Username HTML element ID"
+msgstr ""
+
+#: plugins/www/www_plugin.c:417
+msgid "Password HTML element ID"
+msgstr ""
+
+#: plugins/www/www_plugin.c:418
+msgid "iFrame HTML element ID"
+msgstr ""
+
+#: plugins/www/www_plugin.c:433
+msgid "User Agent"
+msgstr ""
+
+#: plugins/www/www_plugin.c:434
+msgid "Enable smooth scrolling"
+msgstr ""
+
+#: plugins/www/www_plugin.c:435
+msgid "Enable Spatial Navigation"
+msgstr ""
+
+#: plugins/www/www_plugin.c:436
+msgid "Enable support for WebGL on pages"
+msgstr ""
+
+#: plugins/www/www_plugin.c:437
+msgid "Enable support for WebAudio on pages"
+msgstr ""
+
+#: plugins/www/www_plugin.c:438
+msgid "Ignore TLS errors"
+msgstr ""
+
+#: plugins/www/www_config.h:43
+msgid "Remmina Browser Plugin"
+msgstr ""
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
