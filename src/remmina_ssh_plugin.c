@@ -264,7 +264,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 		if (strchr(saveserver, '@')) {
 			sscanf(saveserver, "%[_a-zA-Z0-9.]@%[_a-zA-Z0-9.]:%[0-9]",
 			       tunneluser, tunnelserver, tunnelport);
-			g_print("Username: %s, tunneluser: %s\n",
+			g_debug("Username: %s, tunneluser: %s\n",
 				remmina_plugin_service->file_get_string(remminafile, "ssh_username"), tunneluser);
 			if (saveusername != NULL && tunneluser[0] != '\0')
 				remmina_plugin_service->file_set_string(remminafile, "ssh_username", NULL);

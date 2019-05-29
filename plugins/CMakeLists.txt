@@ -48,42 +48,55 @@ set(REMMINA_COMMON_LIBRARIES ${GTK_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
 find_suggested_package(LIBSSH)
 if(LIBSSH_FOUND)
-        add_definitions(-DHAVE_LIBSSH)
-        include_directories(${SSH_INCLUDE_DIRS})
-        target_link_libraries(remmina ${SSH_LIBRARIES})
+    add_definitions(-DHAVE_LIBSSH)
+    include_directories(${SSH_INCLUDE_DIRS})
+    target_link_libraries(remmina ${SSH_LIBRARIES})
 endif()
 
 find_required_package(XKBFILE)
 
 if(LIBSSH_FOUND AND XKBFILE_FOUND)
-        add_subdirectory(nx)
+    add_subdirectory(nx)
 endif()
 
 add_subdirectory(xdmcp)
 
 find_suggested_package(FREERDP)
 if(FREERDP_FOUND)
-        add_subdirectory(rdp)
+    add_subdirectory(rdp)
 endif()
 
-find_suggested_package(TELEPATHY)
-if(TELEPATHY_FOUND)
-        add_subdirectory(telepathy)
-endif()
+#find_suggested_package(TELEPATHY)
+#if(TELEPATHY_FOUND)
+#add_subdirectory(telepathy)
+#endif()
 
 find_suggested_package(LIBVNCSERVER)
 if(LIBVNCSERVER_FOUND)
-        add_subdirectory(vnc)
+    add_subdirectory(vnc)
 endif()
 
 find_suggested_package(SPICE)
 if(SPICE_FOUND)
-        add_subdirectory(spice)
+    add_subdirectory(spice)
 endif()
 
+pkg_search_module(WEBKIT2
+    webkit2gtk-4.0
+    webkit2gtk-3.0
+    )
+
+if(WEBKIT2_FOUND)
+	message(STATUS "Enabling WWW plugin.")
+	add_definitions(-DWITH_WWW)
+	add_subdirectory(www)
+else(WEBKIT2_FOUND)
+	message(WARNING "WEBKIT not found")
+endif(WEBKIT2_FOUND)
+
 if(WITH_EXAMPLES)
-        message(STATUS "Enabling examples and test plugins.")
-        add_subdirectory(tool_hello_world)
+    message(STATUS "Enabling examples and test plugins.")
+    add_subdirectory(tool_hello_world)
 endif()
 add_subdirectory(exec)
 add_subdirectory(st)

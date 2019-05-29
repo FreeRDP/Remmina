@@ -275,7 +275,7 @@ static GtkWidget *remmina_file_editor_create_notebook_tab(RemminaFileEditor *gfe
 static void remmina_file_editor_ssh_server_custom_radio_on_toggled(GtkToggleButton *togglebutton, RemminaFileEditor *gfe)
 {
 	TRACE_CALL(__func__);
-	gtk_widget_set_sensitive(gfe->priv->ssh_server_entry,
+	gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_server_entry),
 				 gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_enabled_check)) &&
 				 (gfe->priv->ssh_server_custom_radio == NULL ||
 				  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_server_custom_radio)))
@@ -291,7 +291,7 @@ static void remmina_file_editor_ssh_auth_publickey_radio_on_toggled(GtkToggleBut
 	b = ((!gfe->priv->ssh_enabled_check ||
 	      gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_enabled_check))) &&
 	     gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_auth_publickey_radio)));
-	gtk_widget_set_sensitive(gfe->priv->ssh_privatekey_chooser, b);
+	gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_privatekey_chooser), b);
 
 	if (b && (s = remmina_file_get_string(gfe->priv->remmina_file, "ssh_privatekey")))
 		gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(gfe->priv->ssh_privatekey_chooser), s);
@@ -309,21 +309,21 @@ static void remmina_file_editor_ssh_enabled_check_on_toggled(GtkToggleButton *to
 	if (gfe->priv->ssh_enabled_check) {
 		enabled = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gfe->priv->ssh_enabled_check));
 		if (gfe->priv->ssh_loopback_check)
-			gtk_widget_set_sensitive(gfe->priv->ssh_loopback_check, enabled);
+			gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_loopback_check), enabled);
 		if (gfe->priv->ssh_server_default_radio)
-			gtk_widget_set_sensitive(gfe->priv->ssh_server_default_radio, enabled);
+			gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_server_default_radio), enabled);
 		if (gfe->priv->ssh_server_custom_radio)
-			gtk_widget_set_sensitive(gfe->priv->ssh_server_custom_radio, enabled);
+			gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_server_custom_radio), enabled);
 		remmina_file_editor_ssh_server_custom_radio_on_toggled(NULL, gfe);
 		p = remmina_public_combo_get_active_text(GTK_COMBO_BOX(priv->protocol_combo));
 		if (!(g_strcmp0(p, "SFTP") == 0 || g_strcmp0(p, "SSH") == 0)) {
-			gtk_widget_set_sensitive(gfe->priv->ssh_charset_combo, enabled);
-			gtk_widget_set_sensitive(gfe->priv->ssh_username_entry, enabled);
-			gtk_widget_set_sensitive(gfe->priv->ssh_auth_agent_radio, enabled);
-			gtk_widget_set_sensitive(gfe->priv->ssh_auth_password_radio, enabled);
-			gtk_widget_set_sensitive(gfe->priv->ssh_auth_password, enabled);
-			gtk_widget_set_sensitive(gfe->priv->ssh_auth_publickey_radio, enabled);
-			gtk_widget_set_sensitive(gfe->priv->ssh_auth_auto_publickey_radio, enabled);
+			gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_charset_combo), enabled);
+			gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_username_entry), enabled);
+			gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_auth_agent_radio), enabled);
+			gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_auth_password_radio), enabled);
+			gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_auth_password), enabled);
+			gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_auth_publickey_radio), enabled);
+			gtk_widget_set_sensitive(GTK_WIDGET(gfe->priv->ssh_auth_auto_publickey_radio), enabled);
 		}
 		g_free(p);
 	}
@@ -826,7 +826,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor *gfe, RemminaPr
 	gtk_grid_attach(GTK_GRID(grid), hbox, 0, 0, 3, 1);
 	row++;
 
-	widget = gtk_check_button_new_with_label(_("Enable SSH tunnel"));
+	widget = gtk_toggle_button_new_with_label(_("Enable SSH tunnel"));
 	gtk_widget_show(widget);
 	gtk_box_pack_start(GTK_BOX(hbox), widget, TRUE, TRUE, 0);
 	g_signal_connect(G_OBJECT(widget), "toggled",
@@ -1551,6 +1551,7 @@ GtkWidget *remmina_file_editor_new_copy(const gchar *filename)
 	GtkWidget *dialog;
 
 	remminafile = remmina_file_copy(filename);
+
 	if (remminafile) {
 		return remmina_file_editor_new_from_file(remminafile);
 	} else {

@@ -172,7 +172,6 @@ parts:
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
-      - -DWITH_TELEPATHY=off
       - -DSNAP_BUILD=on
 
       # XXX: This is an hack to have a kind of bind-mount with absolute prefix.
