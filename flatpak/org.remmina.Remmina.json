@@ -306,26 +306,6 @@
             ]
         },
         {
-            /**
-             * Telepathy plugin would require the following files to be exported
-             * outside of flatpak:
-             *   - ${XDG_DATA_DIR}//telepathy//clients//Remmina.client
-             *   - ${XDG_DATA_DIR}//dbus-1//services//org.freedesktop.Telepathy.Client.Remmina.service
-             */
-            "name": "telepathy-glib",
-            "disabled": true,
-            "config-opts": [
-                "--disable-introspection"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-0.24.1.tar.gz",
-                    "sha256": "9e0df1d8f857e0270cf0b32e2d1ca5a24aa7282873361785d573f72ad7f7d5eb"
-                }
-            ]
-        },
-        {
             "name": "libvncserver",
             "buildsystem": "cmake-ninja",
             "builddir": true,
@@ -417,8 +397,7 @@
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DCMAKE_INSTALL_LIBDIR:PATH=lib",
-                "-DWITH_MANPAGES:BOOL=OFF",
-                "-DWITH_TELEPATHY:BOOL=OFF"
+                "-DWITH_MANPAGES:BOOL=OFF"
             ],
             "sources": [
                 {

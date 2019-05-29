@@ -192,6 +192,12 @@ remmina_file_copy(const gchar *filename)
 	RemminaFile *remminafile;
 
 	remminafile = remmina_file_load(filename);
+	remmina_file_set_string(remminafile,
+			"name",
+			g_strdup_printf(
+				"COPY %s",
+				remmina_file_get_string(remminafile, "name")));
+
 	if (remminafile)
 		remmina_file_generate_filename(remminafile);
 

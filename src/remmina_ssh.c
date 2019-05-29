@@ -977,6 +977,7 @@ remmina_ssh_tunnel_create_forward_channel(RemminaSSHTunnel *tunnel)
 	}
 
 	/* Request the SSH server to connect to the destination */
+	g_debug("SSH tunnel destination is %s", tunnel->dest);
 	if (ssh_channel_open_forward(channel, tunnel->dest, tunnel->port, "127.0.0.1", 0) != SSH_OK) {
 		ssh_channel_close(channel);
 		ssh_channel_send_eof(channel);

@@ -1,4 +1,4 @@
-# remmina-plugin-st - The GTK+ Remote Desktop Client
+# remmina-plugin-www - The GTK+ Remote Desktop Client
 #
 # Copyright (C) 2016-2019 Antenore Gatta, Giovanni Panozzo
 #
@@ -31,22 +31,24 @@
 # files in the program, then also delete it here.
 
 
-set(REMMINA_PLUGIN_ST_SRCS
-        st_plugin_config.h
-        st_plugin.c
+set(REMMINA_PLUGIN_WWW_SRCS
+        www_config.h
+        www_plugin.c
 )
 
-add_library(remmina-plugin-st MODULE ${REMMINA_PLUGIN_ST_SRCS})
-set_target_properties(remmina-plugin-st PROPERTIES PREFIX "")
-set_target_properties(remmina-plugin-st PROPERTIES NO_SONAME 1)
+add_library(remmina-plugin-www MODULE ${REMMINA_PLUGIN_WWW_SRCS})
+set_target_properties(remmina-plugin-www PROPERTIES PREFIX "")
+set_target_properties(remmina-plugin-www PROPERTIES NO_SONAME 1)
 
-include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${GTK_INCLUDE_DIRS})
-target_link_libraries(remmina-plugin-st ${REMMINA_COMMON_LIBRARIES})
+add_definitions(${WEBKIT2_CFLAGS_OTHER})
+include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${GTK_INCLUDE_DIRS} ${WEBKIT2_INCLUDE_DIRS})
+target_link_libraries(remmina-plugin-www ${REMMINA_COMMON_LIBRARIES} ${WEBKIT2_LIBRARIES})
 
-install(TARGETS remmina-plugin-st DESTINATION ${REMMINA_PLUGINDIR})
+install(TARGETS remmina-plugin-www DESTINATION ${REMMINA_PLUGINDIR})
 
 install(FILES
-    scalable/emblems/remmina-tool-symbolic.svg
+    scalable/emblems/remmina-www-symbolic.svg
     DESTINATION ${APPICONSCALE_EMBLEMS_DIR})
 
 gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
+

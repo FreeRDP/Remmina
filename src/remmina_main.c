@@ -761,7 +761,7 @@ void remmina_main_on_action_connection_copy(GSimpleAction *action, GVariant *par
 		gtk_window_set_transient_for(GTK_WINDOW(widget), remminamain->window);
 		gtk_widget_show(widget);
 	}
-/* Select the file previously selected */
+	/* Select the file previously selected */
 	if (remminamain->priv->selected_filename) {
 		remmina_main_select_file(remminamain->priv->selected_filename);
 	}
@@ -988,7 +988,7 @@ static gboolean remmina_main_quickconnect(void)
 	gchar* server;
 
 	remminafile = remmina_file_new();
-	server = strdup(gtk_entry_get_text(remminamain->entry_quick_connect_server));
+	server = g_strdup(gtk_entry_get_text(remminamain->entry_quick_connect_server));
 
 	remmina_file_set_string(remminafile, "sound", "off");
 	remmina_file_set_string(remminafile, "server", server);
