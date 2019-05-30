@@ -45,6 +45,7 @@
 #include <stdlib.h>
 
 #include <webkit2/webkit2.h>
+#include <jsc/jsc.h>
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginExecData *)g_object_get_data(G_OBJECT(gp), "plugin-data")
 
