@@ -67,7 +67,6 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 static void remmina_www_web_view_js_finished (GObject *object, GAsyncResult *result, gpointer user_data)
 {
     WebKitJavascriptResult *js_result;
-    JSCValue               *value;
     GError                 *error = NULL;
     gchar        *str_value;
 
@@ -78,7 +77,7 @@ static void remmina_www_web_view_js_finished (GObject *object, GAsyncResult *res
         return;
     }
 
-    value = webkit_javascript_result_get_js_value (js_result);
+    JSCValue *value = webkit_javascript_result_get_js_value (js_result);
     if (jsc_value_is_string (value) || jsc_value_is_boolean (value)) {
         JSCException *exception;
 
@@ -198,7 +197,7 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 		g_info("enable-webgl enabled");
 	}
 
-	if (remmina_plugin_service->file_get_int(remminafile, "ignore-tls-errors", FALSE)) {
+	if (remmina_plugin_service->file_get_int(remminafile, "ignore-tls-errors", TRUE)) {
 		webkit_web_context_set_tls_errors_policy(gpdata->context, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 		g_info("Ignore TLS errors");
 	}
