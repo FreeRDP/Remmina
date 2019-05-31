@@ -436,7 +436,7 @@ static gboolean remmina_plugin_www_open_connection(RemminaProtocolWidget *gp)
  */
 static const RemminaProtocolSetting remmina_plugin_www_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "server",	       N_("Address"),		       FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "server",	       N_("URL (http://address or https://address)"),		       FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "no-authentication", N_("No authentication"),	       FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	       N_("Username"),		       FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	       N_("Password"),		       FALSE, NULL, NULL },
