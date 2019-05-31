@@ -26,6 +26,8 @@
         "--socket=pulseaudio",
         /* Wayland access */
         "--socket=wayland",
+        /* Smartcard access - Requires flatpak >= 1.3.2 (April 2019) */
+        "--socket=pcsc",
         /* SSH_AUTH_SOCK access - Requires flatpak >= 0.99.1 */
         "--socket=ssh-auth",
         /* File transfer (although limited to user directory) */
@@ -95,6 +97,31 @@
             ]
         },
         {
+            /**
+             * For smartcard support
+             */
+            "name": "pcsc-lite",
+            "cleanup": [
+                "/bin",
+                "/sbin",
+                "/lib/libpcscspy.so*",
+                "/share/doc"
+            ],
+            "config-opts": [
+                "--disable-libsystemd",
+                "--disable-serial",
+                "--disable-usb",
+                "--with-systemdsystemunitdir=no"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://pcsclite.apdu.fr/files/pcsc-lite-1.8.25.tar.bz2",
+                    "sha256": "d76d79edc31cf76e782b9f697420d3defbcc91778c3c650658086a1b748e8792"
+                }
+            ]
+        },
+        {
             "name": "freerdp",
             "buildsystem": "cmake-ninja",
             "cleanup": [
@@ -110,6 +137,7 @@
                 "-DWITH_JPEG:BOOL=ON",
                 "-DWITH_MANPAGES:BOOL=OFF",
                 "-DWITH_OSS:BOOL=OFF",
+                "-DWITH_PCSC:BOOL=ON",
                 "-DWITH_PULSE:BOOL=ON",
                 "-DWITH_SERVER:BOOL=OFF"
             ],
@@ -186,6 +214,22 @@
                             "type": "file",
                             "url": "https://files.pythonhosted.org/packages/73/fb/00a976f728d0d1fecfe898238ce23f502a721c0ac0ecfedb80e0d88c64e9/six-1.12.0-py2.py3-none-any.whl",
                             "sha256": "3350809f0555b11f552448330d0b52d5f24c91a322ea4a15ef22629740f3761c"
+                        }
+                    ]
+                },
+                {
+                    /**
+                     * For smartcard support
+                     */
+                    "name": "libcacard",
+                    "config-opts": [
+                        "--enable-pcsc"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://www.spice-space.org/download/libcacard/libcacard-2.6.1.tar.xz",
+                            "sha256": "6276c6a2bd018bf14f1b97260fff093b4a2325a9177be4fc6be7c1a9e204def0"
                         }
                     ]
                 },
