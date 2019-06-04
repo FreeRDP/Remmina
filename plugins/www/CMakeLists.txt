@@ -32,6 +32,8 @@
 
 
 set(REMMINA_PLUGIN_WWW_SRCS
+	www_utils.c
+	www_utils.h
         www_config.h
         www_plugin.c
 )

@@ -44,6 +44,8 @@
 #include <glib/gprintf.h>
 #include <stdlib.h>
 
+#include "www_utils.h"
+
 #include <webkit2/webkit2.h>
 #if WEBKIT_CHECK_VERSION(2, 21, 1)
 #include <jsc/jsc.h>
@@ -330,8 +332,10 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 					s_uid,
 					s_pwdid);
 			}
-			if (s_username) g_free(s_username);
-			if (s_uid) g_free(s_uid);
+			g_free(s_username);
+			g_free(s_uid);
+			g_free(s_password);
+			g_free(s_pwdid);
 		} else if (remmina_plugin_service->file_get_string(remminafile, "password-id") && !remmina_plugin_service->file_get_string(remminafile, "username-id")) {
 			s_password = g_strdup(remmina_plugin_service->file_get_string(remminafile, "password"));
 			s_pwdid = g_strdup(remmina_plugin_service->file_get_string(remminafile, "password-id"));
@@ -351,14 +355,15 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 					"document.getElementById('%s').dispatchEvent(evt);",
 					s_pwdid, s_password, s_pwdid);
 			}
+			g_free(s_pwdid);
+			g_free(s_password);
 		}
-		g_debug("We are trying to send this JS: %s", s_js);
-		webkit_web_view_run_javascript(webview, s_js, NULL, remmina_www_web_view_js_finished, NULL);
-
-		if (s_password) g_free(s_password);
-		if (s_pwdid) g_free(s_pwdid);
-		if (s_js) g_free(s_js);
-
+		if (!s_js || s_js[0] == '\0') {
+			break;
+		} else {
+			g_debug("We are trying to send this JS: %s", s_js);
+			webkit_web_view_run_javascript(webview, s_js, NULL, remmina_www_web_view_js_finished, NULL);
+		}
 		break;
 	}
 }
@@ -425,6 +430,89 @@ static gboolean remmina_plugin_www_open_connection(RemminaProtocolWidget *gp)
 	return TRUE;
 }
 
+static void remmina_plugin_www_save_snapshot(GObject *object, GAsyncResult *result, RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+
+	WebKitWebView *webview = WEBKIT_WEB_VIEW(object);
+
+	RemminaFile *remminafile;
+
+	GError *err = NULL;
+	cairo_surface_t *surface;
+	//unsigned char* buffer;
+	int width;
+	int height;
+	GdkPixbuf *screenshot;
+	GString *pngstr;
+	gchar *pngname;
+	//cairo_forma_t* cairo_format;
+	GDateTime *date = g_date_time_new_now_utc();
+
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	surface = webkit_web_view_get_snapshot_finish(WEBKIT_WEB_VIEW(webview), result, &err);
+	if (err)
+		g_error("An error happened generating the snapshot: %s\n", err->message);
+	//buffer = cairo_image_surface_get_data (surface);
+	width = cairo_image_surface_get_width(surface);
+	height = cairo_image_surface_get_height(surface);
+	//cairo_format = cairo_image_surface_get_format (surface);
+
+	screenshot = gdk_pixbuf_get_from_surface(surface, 0, 0, width, height);
+	if (screenshot == NULL)
+		g_debug("WWW: gdk_pixbuf_get_from_surface failed");
+
+	// Transfer the PixBuf in the main clipboard selection
+	gchar *value = remmina_plugin_service->pref_get_value("deny_screenshot_clipboard");
+	if (value && value == FALSE) {
+		GtkClipboard *c = gtk_clipboard_get(GDK_SELECTION_CLIPBOARD);
+		gtk_clipboard_set_image(c, screenshot);
+	}
+
+	pngstr = g_string_new(g_strdup_printf("%s/%s.png",
+					      remmina_plugin_service->pref_get_value("screenshot_path"),
+					      remmina_plugin_service->pref_get_value("screenshot_name")));
+	www_utils_string_replace_all(pngstr, "%p",
+				     remmina_plugin_service->file_get_string(remminafile, "name"));
+	www_utils_string_replace_all(pngstr, "%h", "URL");
+	www_utils_string_replace_all(pngstr, "%Y",
+				     g_strdup_printf("%d", g_date_time_get_year(date)));
+	www_utils_string_replace_all(pngstr, "%m", g_strdup_printf("%d",
+								   g_date_time_get_month(date)));
+	www_utils_string_replace_all(pngstr, "%d",
+				     g_strdup_printf("%d", g_date_time_get_day_of_month(date)));
+	www_utils_string_replace_all(pngstr, "%H",
+				     g_strdup_printf("%d", g_date_time_get_hour(date)));
+	www_utils_string_replace_all(pngstr, "%M",
+				     g_strdup_printf("%d", g_date_time_get_minute(date)));
+	www_utils_string_replace_all(pngstr, "%S",
+				     g_strdup_printf("%f", g_date_time_get_seconds(date)));
+	g_date_time_unref(date);
+	pngname = g_string_free(pngstr, FALSE);
+	g_debug("Saving screenshot as %s", pngname);
+
+	cairo_surface_write_to_png(surface, pngname);
+	if (g_file_test(pngname, G_FILE_TEST_EXISTS))
+		www_utils_send_notification("www-plugin-screenshot-is-ready-id", _("Screenshot taken"), pngname);
+
+	cairo_surface_destroy(surface);
+}
+static gboolean remmina_plugin_www_get_snapshot(RemminaProtocolWidget *gp, RemminaPluginScreenshotData *rpsd)
+{
+	TRACE_CALL(__func__);
+	RemminaPluginWWWData *gpdata;
+	gpdata = (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
+
+	webkit_web_view_get_snapshot(gpdata->webview,
+				     WEBKIT_SNAPSHOT_REGION_FULL_DOCUMENT,
+				     WEBKIT_SNAPSHOT_OPTIONS_NONE,
+				     NULL,
+				     (GAsyncReadyCallback)remmina_plugin_www_save_snapshot,
+				     gp);
+	return FALSE;
+}
+
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
  * a) RemminaProtocolSettingType for setting type
@@ -436,14 +524,14 @@ static gboolean remmina_plugin_www_open_connection(RemminaProtocolWidget *gp)
  */
 static const RemminaProtocolSetting remmina_plugin_www_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "server",	       N_("URL (http://address or https://address)"),		       FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "no-authentication", N_("No authentication"),	       FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	       N_("Username"),		       FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	       N_("Password"),		       FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username-id",       N_("Username HTML element ID"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "password-id",       N_("Password HTML element ID"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "iframe-id",	       N_("iFrame HTML element ID"),   FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		       NULL,			       FALSE, NULL, NULL }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "server",	       N_("URL (http://address or https://address)"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "no-authentication", N_("No authentication"),			      FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	       N_("Username"),				      FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	       N_("Password"),				      FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username-id",       N_("Username HTML element ID"),		      FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "password-id",       N_("Password HTML element ID"),		      FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "iframe-id",	       N_("iFrame HTML element ID"),		      FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		       NULL,					      FALSE, NULL, NULL }
 };
 
 /* Array of RemminaProtocolSetting for advanced settings.
@@ -494,7 +582,7 @@ static RemminaProtocolPlugin remmina_plugin =
 	remmina_www_query_feature,              // Query for available features
 	NULL,                                   // Call a feature
 	NULL,                                   // Send a keystroke
-	NULL                                    // Capture screenshot
+	remmina_plugin_www_get_snapshot         // Capture screenshot
 };
 
 G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
