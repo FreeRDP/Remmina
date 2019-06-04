@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-05-31 14:58+0000\n"
+"POT-Creation-Date: 2019-06-04 15:30+0000\n"
 "PO-Revision-Date: 2015-04-24 21:34+0900\n"
 "Last-Translator: Shuhrat Dehkanov <k@efir.uz>\n"
 "Language-Team: Uzbek <uz@li.org>\n"
@@ -185,36 +185,36 @@ msgstr "_Юбориш"
 msgid "_Clear"
 msgstr "_Тозалаш"
 
-#: src/rcw.c:587
+#: src/rcw.c:579
 #, c-format
 msgid ""
 "There are %i active connections in the current window. Are you sure to close?"
 msgstr ""
 "Танланган ойнада %iта фаол боғланишлар мавжуд. Ҳақиқатдан ҳам ёпмоқчимисиз?"
 
-#: src/rcw.c:1312
+#: src/rcw.c:1285
 msgid "Viewport fullscreen mode"
 msgstr "Тўлиқ экран режими"
 
-#: src/rcw.c:1321
+#: src/rcw.c:1293
 msgid "Scrolled fullscreen mode"
 msgstr "Скроллик тўлиқ экран режими"
 
-#: src/rcw.c:1407
+#: src/rcw.c:1378
 msgid "Keep aspect ratio when scaled"
 msgstr "Масштаб ўзгартирилганда томонлар мутаносиблиги сақлансин"
 
-#: src/rcw.c:1416
+#: src/rcw.c:1386
 msgid "Fill client window when scaled"
 msgstr "Масштаб ўзгартирилганда клиент ойнасини тўлиқ қоплаш"
 
 #. Add a keystrokes submenu
-#: src/rcw.c:1847 src/remmina_pref_dialog.c:143
+#: src/rcw.c:1808 src/remmina_pref_dialog.c:143
 #: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
 msgid "Keystrokes"
 msgstr "Тугма босишлар"
 
-#: src/rcw.c:1950
+#: src/rcw.c:1908
 msgid ""
 "Warning: screenshot is scaled or distorted. Disable scaling to have better "
 "screenshot."
@@ -222,61 +222,60 @@ msgstr ""
 "Огоҳлантириш: скриншот масштаб ўлчами ўзгартирилган ёки бузилган. Юқорироқ "
 "сифатда скриншотлар олиш учун масштаблашни ўчириб қўйинг."
 
-#. send a desktop notification
-#: src/rcw.c:2011
+#: src/rcw.c:1968 plugins/www/www_plugin.c:497
 msgid "Screenshot taken"
 msgstr ""
 
-#: src/rcw.c:2081
+#: src/rcw.c:2039
 msgid "Resize the window to fit in remote resolution"
 msgstr "Масофадаги экран ўлчамига хос равишда ойна ўлчамларини мослаш"
 
-#: src/rcw.c:2092 data/ui/remmina_preferences.glade:845
+#: src/rcw.c:2050 data/ui/remmina_preferences.glade:845
 msgid "Toggle fullscreen mode"
 msgstr "Тўлиқ экран режимини ёқиш/ўчириш"
 
-#: src/rcw.c:2138 data/ui/remmina_preferences.glade:901
+#: src/rcw.c:2095 data/ui/remmina_preferences.glade:901
 msgid "Switch tab pages"
 msgstr "Таб саҳифаларига ўтиш"
 
-#: src/rcw.c:2152
+#: src/rcw.c:2109
 msgid "Toggle dynamic resolution update"
 msgstr ""
 
-#: src/rcw.c:2162 data/ui/remmina_preferences.glade:942
+#: src/rcw.c:2119 data/ui/remmina_preferences.glade:942
 msgid "Toggle scaled mode"
 msgstr "Масштаб услубини ёқиш/ўчириш"
 
-#: src/rcw.c:2198
+#: src/rcw.c:2154
 msgid "Grab all keyboard events"
 msgstr "Барча клавиатура тугмаларини босиш сигналларини тортиб олиш"
 
-#: src/rcw.c:2207
+#: src/rcw.c:2163
 msgid "Preferences"
 msgstr "Танловлар"
 
-#: src/rcw.c:2215 src/rcw.c:2216 data/ui/remmina_main.glade:278
+#: src/rcw.c:2171 src/rcw.c:2172 data/ui/remmina_main.glade:278
 msgid "Tools"
 msgstr "Функциялар"
 
-#: src/rcw.c:2228 data/ui/remmina_preferences.glade:1083
+#: src/rcw.c:2184 data/ui/remmina_preferences.glade:1083
 msgid "Screenshot"
 msgstr "Скриншот"
 
-#: src/rcw.c:2236 data/ui/remmina_preferences.glade:998
+#: src/rcw.c:2192 data/ui/remmina_preferences.glade:998
 msgid "Minimize window"
 msgstr "Ойнани минималлаштириш"
 
-#: src/rcw.c:2246 data/ui/remmina_preferences.glade:1027
+#: src/rcw.c:2201 data/ui/remmina_preferences.glade:1027
 msgid "Disconnect"
 msgstr "Узиш"
 
-#: src/rcw.c:3775
+#: src/rcw.c:3701
 #, c-format
 msgid "File %s is corrupted, unreadable or not found."
 msgstr ""
 
-#: src/rcw.c:3935
+#: src/rcw.c:3859
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr ""
 
@@ -575,7 +574,7 @@ msgstr "SSH агент (автоматик)"
 #: src/remmina_file_editor.c:926 src/remmina_protocol_widget.c:1300
 #: src/remmina_protocol_widget.c:1314 src/remmina_protocol_widget.c:1341
 #: src/remmina_sftp_plugin.c:317 src/remmina_ssh_plugin.c:950
-#: plugins/www/www_plugin.c:442 data/ui/remmina_unlock.glade:116
+#: plugins/www/www_plugin.c:530 data/ui/remmina_unlock.glade:116
 #: data/ui/remmina_mpc.glade:113 data/ui/remmina_preferences.glade:1469
 msgid "Password"
 msgstr "Пароль"
@@ -1304,7 +1303,7 @@ msgstr ""
 
 #: src/remmina_ssh_plugin.c:1081 plugins/spice/spice_plugin.c:446
 #: plugins/rdp/rdp_plugin.c:1695 plugins/nx/nx_plugin.c:720
-#: plugins/vnc/vnc_plugin.c:1919 plugins/www/www_plugin.c:466
+#: plugins/vnc/vnc_plugin.c:1919 plugins/www/www_plugin.c:554
 msgid "Disable password storing"
 msgstr "Пароль сақлашни бекор қилиш"
 
@@ -2052,51 +2051,51 @@ msgstr ""
 msgid "Desktop sharing invitation"
 msgstr "Иш столини бўлишиш таклифи"
 
-#: plugins/www/www_plugin.c:439
+#: plugins/www/www_plugin.c:527
 msgid "URL (http://address or https://address)"
 msgstr ""
 
-#: plugins/www/www_plugin.c:440
+#: plugins/www/www_plugin.c:528
 msgid "No authentication"
 msgstr ""
 
-#: plugins/www/www_plugin.c:441
+#: plugins/www/www_plugin.c:529
 msgid "Username"
 msgstr ""
 
-#: plugins/www/www_plugin.c:443
+#: plugins/www/www_plugin.c:531
 msgid "Username HTML element ID"
 msgstr ""
 
-#: plugins/www/www_plugin.c:444
+#: plugins/www/www_plugin.c:532
 msgid "Password HTML element ID"
 msgstr ""
 
-#: plugins/www/www_plugin.c:445
+#: plugins/www/www_plugin.c:533
 msgid "iFrame HTML element ID"
 msgstr ""
 
-#: plugins/www/www_plugin.c:460
+#: plugins/www/www_plugin.c:548
 msgid "User Agent"
 msgstr ""
 
-#: plugins/www/www_plugin.c:461
+#: plugins/www/www_plugin.c:549
 msgid "Enable smooth scrolling"
 msgstr ""
 
-#: plugins/www/www_plugin.c:462
+#: plugins/www/www_plugin.c:550
 msgid "Enable Spatial Navigation"
 msgstr ""
 
-#: plugins/www/www_plugin.c:463
+#: plugins/www/www_plugin.c:551
 msgid "Enable support for WebGL on pages"
 msgstr ""
 
-#: plugins/www/www_plugin.c:464
+#: plugins/www/www_plugin.c:552
 msgid "Enable support for WebAudio on pages"
 msgstr ""
 
-#: plugins/www/www_plugin.c:465
+#: plugins/www/www_plugin.c:553
 msgid "Ignore TLS errors"
 msgstr ""
 
