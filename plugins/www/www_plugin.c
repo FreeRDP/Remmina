@@ -178,6 +178,11 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 
 	/* enable-fullscreen, default TRUE, TODO: Try FALSE */
 
+#ifdef DEBUG
+	/* Enable the developer extras */
+	webkit_settings_set_enable_developer_extras(gpdata->settings, TRUE);
+#endif
+
 	/* user-agent. TODO: Add option. */
 	if (remmina_plugin_service->file_get_string(remminafile, "user-agent")) {
 		gchar *useragent = g_strdup(remmina_plugin_service->file_get_string(remminafile, "user-agent"));
@@ -273,7 +278,8 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 					 WebKitLoadEvent load_event, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	gchar *s_username, *s_password, *s_js;
+	gchar *s_js;
+	GString *jsstr;
 	RemminaPluginWWWData *gpdata;
 	RemminaFile *remminafile;
 
@@ -301,68 +307,27 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 		/* Load finished, we can now set user/password
 		 * in the html form */
 		g_debug("Load finished");
-		gchar *s_uid, *s_pwdid;
-		if (remmina_plugin_service->file_get_string(remminafile, "password-id") && remmina_plugin_service->file_get_string(remminafile, "username-id")) {
-			s_username = g_strdup(remmina_plugin_service->file_get_string(remminafile, "username"));
-			s_password = g_strdup(remmina_plugin_service->file_get_string(remminafile, "password"));
-			s_uid = g_strdup(remmina_plugin_service->file_get_string(remminafile, "username-id"));
-			s_pwdid = g_strdup(remmina_plugin_service->file_get_string(remminafile, "password-id"));
+		if (remmina_plugin_service->file_get_string(remminafile, "username") ||
+		    remmina_plugin_service->file_get_string(remminafile, "password")) {
+			g_debug("Authentication is enabled");
+			g_file_get_contents("/home/tmow/remmina_devel/Remmina/plugins/www/resources/js/www-js.js",
+					    &s_js, NULL, NULL);
+			jsstr = g_string_new(s_js);
+			if (remmina_plugin_service->file_get_string(remminafile, "username"))
+				www_utils_string_replace_all(jsstr, "USRPLACEHOLDER",
+							     remmina_plugin_service->file_get_string(remminafile, "username"));
+			if (remmina_plugin_service->file_get_string(remminafile, "password"))
+				www_utils_string_replace_all(jsstr, "PWDPLACEHOLDER",
+							     remmina_plugin_service->file_get_string(remminafile, "password"));
+			s_js = g_string_free(jsstr, FALSE);
 
-			if (remmina_plugin_service->file_get_string(remminafile, "iframe-id")) {
-				gchar *iframe = g_strdup(remmina_plugin_service->file_get_string(remminafile, "iframe-id"));
-				/* document.getElementById('websso').contentDocument.getElementById('%s') */
-				s_js = g_strdup_printf(
-					"let evt = new Event('change');"
-					"document.getElementById('%s').contentDocument.getElementById('%s').value = '%s';"
-					"document.getElementById('%s').contentDocument.getElementById('%s').value = '%s';"
-					"document.getElementById('%s').contentDocument.getElementById('%s').dispatchEvent(evt);"
-					"document.getElementById('%s').contentDocument.getElementById('%s').dispatchEvent(evt);",
-					iframe, s_uid, s_username, iframe, s_pwdid, s_password,
-					iframe, s_uid, iframe, s_pwdid);
-				g_free(iframe);
+			if (!s_js || s_js[0] == '\0') {
+				break;
 			} else {
-				s_js = g_strdup_printf(
-					"let evt = new Event('change');"
-					"document.getElementById('%s').value = '%s';"
-					"document.getElementById('%s').value = '%s';"
-					"document.getElementById('%s').dispatchEvent(evt);"
-					"document.getElementById('%s').dispatchEvent(evt);",
-					s_uid, s_username,
-					s_pwdid, s_password,
-					s_uid,
-					s_pwdid);
+				g_debug("We are trying to send this JS: %s", s_js);
+				webkit_web_view_run_javascript(webview, s_js, NULL, remmina_www_web_view_js_finished, NULL);
+				g_free(s_js);
 			}
-			g_free(s_username);
-			g_free(s_uid);
-			g_free(s_password);
-			g_free(s_pwdid);
-		} else if (remmina_plugin_service->file_get_string(remminafile, "password-id") && !remmina_plugin_service->file_get_string(remminafile, "username-id")) {
-			s_password = g_strdup(remmina_plugin_service->file_get_string(remminafile, "password"));
-			s_pwdid = g_strdup(remmina_plugin_service->file_get_string(remminafile, "password-id"));
-			if (remmina_plugin_service->file_get_string(remminafile, "iframe-id")) {
-				gchar *iframe = g_strdup(remmina_plugin_service->file_get_string(remminafile, "iframe-id"));
-				/* document.getElementById('websso').contentDocument.getElementById('%s') */
-				s_js = g_strdup_printf(
-					"let evt = new Event('change');"
-					"document.getElementById('%s').contentDocument.getElementById('%s').value = '%s';"
-					"document.getElementById('%s').contentDocument.getElementById('%s').dispatchEvent(evt);",
-					iframe, s_pwdid, s_password, iframe, s_pwdid);
-				g_free(iframe);
-			} else {
-				s_js = g_strdup_printf(
-					"let evt = new Event('change');"
-					"document.getElementById('%s').value = '%s';"
-					"document.getElementById('%s').dispatchEvent(evt);",
-					s_pwdid, s_password, s_pwdid);
-			}
-			g_free(s_pwdid);
-			g_free(s_password);
-		}
-		if (!s_js || s_js[0] == '\0') {
-			break;
-		} else {
-			g_debug("We are trying to send this JS: %s", s_js);
-			webkit_web_view_run_javascript(webview, s_js, NULL, remmina_www_web_view_js_finished, NULL);
 		}
 		break;
 	}
@@ -408,7 +373,9 @@ static gboolean remmina_plugin_www_open_connection(RemminaProtocolWidget *gp)
 
 	gpdata->webview = WEBKIT_WEB_VIEW(webkit_web_view_new_with_context(gpdata->context));
 	webkit_web_view_set_settings(gpdata->webview, gpdata->settings);
-	if (!remmina_plugin_service->file_get_int(remminafile, "no-authentication", FALSE)) {
+
+	if (remmina_plugin_service->file_get_string(remminafile, "username") ||
+	    remmina_plugin_service->file_get_string(remminafile, "password")) {
 		g_debug("Authentication is enabled");
 		remmina_plugin_www_on_auth(gpdata->webview, NULL, gp);
 	}
@@ -424,6 +391,14 @@ static gboolean remmina_plugin_www_open_connection(RemminaProtocolWidget *gp)
 	gtk_widget_set_vexpand(GTK_WIDGET(gpdata->webview), TRUE);
 	gtk_container_add(GTK_CONTAINER(gpdata->box), GTK_WIDGET(gpdata->webview));
 	webkit_web_view_load_uri(gpdata->webview, gpdata->url);
+#ifdef DEBUG
+	if (remmina_plugin_service->file_get_int(remminafile, "enable-webinspector", FALSE)) {
+		g_info("WebInspector enabled");
+		WebKitWebInspector *inspector = webkit_web_view_get_inspector(WEBKIT_WEB_VIEW(gpdata->webview));
+		webkit_web_inspector_attach(inspector);
+		webkit_web_inspector_show(WEBKIT_WEB_INSPECTOR(inspector));
+	}
+#endif
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 	gtk_widget_show_all(gpdata->box);
 
@@ -524,14 +499,10 @@ static gboolean remmina_plugin_www_get_snapshot(RemminaProtocolWidget *gp, Remmi
  */
 static const RemminaProtocolSetting remmina_plugin_www_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "server",	       N_("URL (http://address or https://address)"), FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "no-authentication", N_("No authentication"),			      FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	       N_("Username"),				      FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	       N_("Password"),				      FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username-id",       N_("Username HTML element ID"),		      FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "password-id",       N_("Password HTML element ID"),		      FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "iframe-id",	       N_("iFrame HTML element ID"),		      FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		       NULL,					      FALSE, NULL, NULL }
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "server",   N_("URL (http://address or https://address)"), FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username", N_("Username"),				     FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password", N_("Password"),				     FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,	      NULL,					     FALSE, NULL, NULL }
 };
 
 /* Array of RemminaProtocolSetting for advanced settings.
@@ -552,6 +523,9 @@ static const RemminaProtocolSetting remmina_plugin_www_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-webaudio",	    N_("Enable support for WebAudio on pages"), TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "ignore-tls-errors",	    N_("Ignore TLS errors"),			TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring",    N_("Disable password storing"),		TRUE,  NULL, NULL },
+#ifdef DEBUG
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-webinspector",	    N_("Enable Web Inspector"),			TRUE,  NULL, NULL },
+#endif
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,   NULL,			    NULL,					FALSE, NULL, NULL }
 };
 

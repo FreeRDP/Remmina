@@ -193,8 +193,10 @@ if(VTE_FOUND)
 endif()
 
 if(sodium_FOUND)
-	include_directories(${sodium_INCLUDE_DIR})
-	target_link_libraries(remmina sodium)
+    message(STATUS "Sodium found")
+    message(STATUS "Sodium include dirs ${sodium_INCLUDE_DIR}")
+    include_directories(${sodium_INCLUDE_DIR})
+    target_link_libraries(remmina sodium)
 endif()
 
 if(GTK3_FOUND)
