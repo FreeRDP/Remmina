@@ -111,6 +111,7 @@ struct _RemminaConnectionWindowPriv {
 	GtkToolItem *					toolitem_grab;
 	GtkToolItem *					toolitem_preferences;
 	GtkToolItem *					toolitem_tools;
+	GtkToolItem *					toolitem_duplicate;
 	GtkToolItem *					toolitem_screenshot;
 	GtkWidget *					fullscreen_option_button;
 	GtkWidget *					fullscreen_scaler_button;
@@ -1837,6 +1838,25 @@ static void rcw_toolbar_tools(GtkWidget *widget, RemminaConnectionWindow *cnnwin
 #endif
 }
 
+static void rcw_toolbar_duplicate(GtkWidget *widget, RemminaConnectionWindow *cnnwin)
+{
+	TRACE_CALL(__func__);
+
+	RemminaProtocolWidget *gp;
+	RemminaConnectionObject *cnnobj;
+
+	if (cnnwin->priv->toolbar_is_reconfiguring)
+		return;
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
+
+	GDateTime *date = g_date_time_new_now_utc();
+
+	// We will duplicate the currently displayed RemminaProtocolWidget.
+	gp = REMMINA_PROTOCOL_WIDGET(cnnobj->proto);
+
+	remmina_exec_command(REMMINA_COMMAND_CONNECT, cnnobj->remmina_file->filename);
+
+}
 static void rcw_toolbar_screenshot(GtkWidget *widget, RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
@@ -2178,6 +2198,14 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	toolitem = gtk_separator_tool_item_new();
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
+
+	toolitem = gtk_tool_button_new(NULL, "Duplicate connection");
+	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-duplicate-symbolic");
+	gtk_tool_item_set_tooltip_text(toolitem, _("Duplicate current connection"));
+	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+	gtk_widget_show(GTK_WIDGET(toolitem));
+	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rcw_toolbar_duplicate), cnnwin);
+	priv->toolitem_duplicate = toolitem;
 
 	toolitem = gtk_tool_button_new(NULL, "_Screenshot");
 	gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "remmina-camera-photo-symbolic");

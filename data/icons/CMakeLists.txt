@@ -36,12 +36,12 @@ set(APPICONSCALE_ACTIONS_DIR "${REMMINA_DATADIR}/icons/hicolor/scalable/actions"
 set(APPICONSCALE_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/scalable/emblems")
 
 set(APPICONSCALE_ACTIONS_DATA
-    scalable/actions/view-list.svg
     scalable/actions/remmina-camera-photo-symbolic.svg
     scalable/actions/remmina-connect-symbolic.svg
     scalable/actions/remmina-disconnect-symbolic.svg
     scalable/actions/remmina-document-save-symbolic.svg
     scalable/actions/remmina-document-send-symbolic.svg
+    scalable/actions/remmina-duplicate-symbolic.svg
     scalable/actions/remmina-dynres-symbolic.svg
     scalable/actions/remmina-fit-window-symbolic.svg
     scalable/actions/remmina-fullscreen-symbolic.svg
@@ -55,6 +55,7 @@ set(APPICONSCALE_ACTIONS_DATA
     scalable/actions/remmina-scale-symbolic.svg
     scalable/actions/remmina-switch-page-symbolic.svg
     scalable/actions/remmina-system-run-symbolic.svg
+    scalable/actions/view-list.svg
     )
 
 set(APPICONSCALE_EMBLEMS_DATA
