@@ -255,7 +255,7 @@ remmina_file_load(const gchar *filename)
 	if (g_file_test(filename, G_FILE_TEST_IS_REGULAR | G_FILE_TEST_EXISTS)) {
 		if (!g_key_file_load_from_file(gkeyfile, filename, G_KEY_FILE_NONE, NULL)) {
 			g_key_file_free(gkeyfile);
-			g_warning("Unable to load remmina profile file %s: g_key_file_load_from_file() returned NULL.\n", filename);
+			g_debug("Unable to load remmina profile file %s: g_key_file_load_from_file() returned NULL.\n", filename);
 			return NULL;
 		}
 	}
@@ -317,7 +317,7 @@ remmina_file_load(const gchar *filename)
 			g_strfreev(keys);
 		}
 	} else {
-		g_printf("WARNING: unable to load remmina profile file %s: cannot find key name= in section remmina.\n", filename);
+		g_debug("Unable to load remmina profile file %s: cannot find key name= in section remmina.\n", filename);
 		remminafile = NULL;
 	}
 
@@ -393,7 +393,7 @@ remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting)
 
 	/* This function is in the RemminaPluginService table, we cannot remove it
 	 * without breaking plugin API */
-	printf("WARNING: remmina_file_get_secret(remminafile,\"%s\") is deprecated and must not be called. Use remmina_file_get_string() and do not deallocate returned memory.\n", setting);
+	g_warning("remmina_file_get_secret(remminafile,\"%s\") is deprecated and must not be called. Use remmina_file_get_string() and do not deallocate returned memory.\n", setting);
 	return g_strdup(remmina_file_get_string(remminafile, setting));
 }
 
@@ -466,7 +466,7 @@ void remmina_file_save(RemminaFile *remminafile)
 	if (proto) {
 		protocol_plugin = (RemminaProtocolPlugin *)remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL, proto);
 	} else {
-		printf("Remmina WARNING: saving settings for unknown protocol, because remminafile has non proto key\n");
+		g_warning("Saving settings for unknown protocol, because remminafile has non proto key\n");
 		protocol_plugin = NULL;
 	}
 
@@ -622,7 +622,7 @@ void remmina_file_unsave_password(RemminaFile *remminafile)
 				while (setting_iter->type != REMMINA_PROTOCOL_SETTING_TYPE_END) {
 					g_debug("setting name: %s", setting_iter->name);
 					if (setting_iter->name == NULL) {
-						g_warning("Internal error: a setting name in protocol plugin %s is null. Please fix RemminaProtocolSetting struct content.", proto);
+						g_error("Internal error: a setting name in protocol plugin %s is null. Please fix RemminaProtocolSetting struct content.", proto);
 					} else {
 						if (remmina_plugin_manager_is_encrypted_setting(protocol_plugin, setting_iter->name))
 							remmina_file_set_string(remminafile, remmina_plugin_manager_get_canonical_setting_name(setting_iter), NULL);
