@@ -54,3 +54,10 @@ install(FILES
 
 gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
 
+# In the feature we will have more resources to add, so I use a GLOB
+file(GLOB WWW_RES_FILES "${CMAKE_CURRENT_SOURCE_DIR}/resources/js/www-js.js")
+foreach(ITEM ${WWW_RES_FILES})
+    list( APPEND FILES_TO_DEPLOY "${ITEM}" )
+endforeach()
+install( FILES ${FILES_TO_DEPLOY} DESTINATION "${REMMINA_RESDIR}" )
+

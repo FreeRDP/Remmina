@@ -282,6 +282,9 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 	GString *jsstr;
 	RemminaPluginWWWData *gpdata;
 	RemminaFile *remminafile;
+	gchar *remmina_dir;
+	gchar *www_js_file = NULL;
+	GError *error = NULL;
 
 	gpdata = (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
@@ -290,6 +293,29 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	g_debug("load-changed emitted");
+
+
+	const gchar *const *dirs = g_get_system_data_dirs();
+
+	unsigned int i = 0;
+	for (i = 0; dirs[i] != NULL; ++i) {
+		remmina_dir = g_build_path("/", dirs[i], "remmina", "res", NULL);
+		GDir *system_data_dir = g_dir_open(remmina_dir, 0, &error);
+		// ignoring this error is ok, because the folder may not exists
+		if (error) {
+			g_error_free(error);
+			error = NULL;
+		} else {
+			if (system_data_dir) {
+				g_dir_close(system_data_dir);
+				g_free(www_js_file);
+				www_js_file = g_strdup_printf("%s/www-js.js", remmina_dir);
+				if (g_file_test(www_js_file, G_FILE_TEST_EXISTS))
+					break;
+			}
+		}
+		g_free(remmina_dir);
+	}
 
 	switch (gpdata->load_event) {
 	case WEBKIT_LOAD_STARTED:
@@ -310,8 +336,7 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 		if (remmina_plugin_service->file_get_string(remminafile, "username") ||
 		    remmina_plugin_service->file_get_string(remminafile, "password")) {
 			g_debug("Authentication is enabled");
-			g_file_get_contents("/home/tmow/remmina_devel/Remmina/plugins/www/resources/js/www-js.js",
-					    &s_js, NULL, NULL);
+			g_file_get_contents(www_js_file, &s_js, NULL, NULL);
 			jsstr = g_string_new(s_js);
 			if (remmina_plugin_service->file_get_string(remminafile, "username"))
 				www_utils_string_replace_all(jsstr, "USRPLACEHOLDER",
