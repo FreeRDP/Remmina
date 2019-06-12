@@ -417,7 +417,13 @@ remmina_plugin_ssh_set_vte_pref(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginSshData *gpdata = GET_PLUGIN_DATA(gp);
+	RemminaFile *remminafile;
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
+	if (remmina_plugin_service->file_get_int(remminafile, "audiblebell", FALSE)) {
+		vte_terminal_set_audible_bell(VTE_TERMINAL(gpdata->vte), TRUE);
+		g_info("audible_bell set to %i", vte_terminal_get_audible_bell(VTE_TERMINAL(gpdata->vte)));
+	}
 	if (remmina_pref.vte_font && remmina_pref.vte_font[0]) {
 #if !VTE_CHECK_VERSION(0, 38, 0)
 		vte_terminal_set_font_from_string(VTE_TERMINAL(gpdata->vte), remmina_pref.vte_font);
@@ -1077,6 +1083,7 @@ static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER, "sshlogfolder",		  N_("SSH session log folder"),		    FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"sshlogname",		  N_("SSH session log file name"),	    FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshlogenabled",	  N_("Enable SSH session logging at exit"), FALSE, NULL,		 NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"audiblebell",		  N_("Enable terminal audible bell"),	    FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_compression",	  N_("Enable SSH compression"),		    FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"disablepasswordstoring", N_("Disable password storing"),	    TRUE,  NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_stricthostkeycheck", N_("Strict host key checking"),	    TRUE,  NULL,		 NULL },
