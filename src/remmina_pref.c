@@ -672,6 +672,7 @@ void remmina_pref_init(void)
 	if (!g_key_file_has_key(gkeyfile, "remmina", "name", NULL)) {
 		g_key_file_set_string(gkeyfile, "remmina", "name", "");
 		g_key_file_set_integer(gkeyfile, "remmina", "ignore-tls-errors", 1);
+		g_key_file_set_integer(gkeyfile, "remmina", "enable-plugins", 1);
 		remmina_pref_save();
 	}
 

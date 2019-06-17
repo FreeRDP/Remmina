@@ -4,7 +4,7 @@ Type=Application
 Name=Remmina Connect
 Comment=Access remote desktops with Remmina
 TryExec=@REMMINA_BINARY_PATH@
-Exec=@REMMINA_BINARY_PATH@ --connect %U
+Exec=@CMAKE_INSTALL_FULL_BINDIR@/remmina-file-wrapper.sh -c %U
 Icon=@REMMINA_ICON@
 MimeType=application/x-remmina;
 Actions=Edit;
@@ -12,7 +12,11 @@ Terminal=false
 StartupNotify=true
 NoDisplay=true
 X-Desktop-File-Install-Version=0.24
+x-scheme-handler/remmina=remmina-file.desktop
+x-scheme-handler/rdp=remmina-file.desktop
+x-scheme-handler/spice=remmina-file.desktop
+x-scheme-handler/vnc=remmina-file.desktop
 
 [Desktop Action Edit]
 Name=Remmina Edit
-Exec=@REMMINA_BINARY_PATH@ --edit %U
+Exec=@REMMINA_BINARY_PATH@ -e %U
