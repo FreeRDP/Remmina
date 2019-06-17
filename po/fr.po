@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-06-14 11:09+0000\n"
+"POT-Creation-Date: 2019-06-17 11:38+0000\n"
 "PO-Revision-Date: 2019-05-23 18:06+0200\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: français <fr@li.org>\n"
@@ -55,7 +55,7 @@ msgstr "_OK"
 
 #. Profile: Name
 #: src/remmina_plugin_manager.c:408 src/remmina_file_editor.c:1419
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:474
+#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:491
 #: data/ui/remmina_mpc.glade:314
 msgid "Name"
 msgstr "Nom"
@@ -113,11 +113,11 @@ msgstr "Annuler"
 msgid "Close"
 msgstr "Fermer"
 
-#: src/remmina_message_panel.c:260 data/ui/remmina_main.glade:626
+#: src/remmina_message_panel.c:260 data/ui/remmina_main.glade:643
 msgid "Yes"
 msgstr "Oui"
 
-#: src/remmina_message_panel.c:267 data/ui/remmina_main.glade:610
+#: src/remmina_message_panel.c:267 data/ui/remmina_main.glade:627
 msgid "No"
 msgstr "Non"
 
@@ -223,7 +223,7 @@ msgstr ""
 "Attention : la capture d’écran est redimensionnée ou déformée. Veuillez "
 "désactiver le redimensionnement pour de meilleures captures d’écran."
 
-#: src/rcw.c:1988 plugins/www/www_plugin.c:497
+#: src/rcw.c:1988 plugins/www/www_plugin.c:508
 msgid "Screenshot taken"
 msgstr "Capture d’écran effectuée"
 
@@ -398,7 +398,7 @@ msgstr "Utilisateur"
 
 #. Profile: Group
 #: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1444
-#: data/ui/remmina_main.glade:496 data/ui/remmina_mpc.glade:99
+#: data/ui/remmina_main.glade:513 data/ui/remmina_mpc.glade:99
 #: data/ui/remmina_mpc.glade:325
 msgid "Group"
 msgstr "Groupe"
@@ -444,7 +444,7 @@ msgstr "À _propos"
 msgid "Enable Service Discovery"
 msgstr "Activer la découverte de services"
 
-#: src/remmina_icon.c:172 data/ui/remmina_main.glade:440
+#: src/remmina_icon.c:172 data/ui/remmina_main.glade:457
 msgid "_Quit"
 msgstr "_Quitter"
 
@@ -457,7 +457,7 @@ msgstr "Appliquette Remmina"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Se connecter aux bureaux distants via le menu de l’appliquette"
 
-#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1145
+#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1184
 msgid "Remmina Remote Desktop Client"
 msgstr "Visionneur de bureaux distants Remmina"
 
@@ -533,7 +533,7 @@ msgid "_Open"
 msgstr "_Ouvrir"
 
 #: src/remmina_file_editor.c:402 src/remmina_file_editor.c:876
-#: src/remmina_protocol_widget.c:1627 data/ui/remmina_main.glade:510
+#: src/remmina_protocol_widget.c:1627 data/ui/remmina_main.glade:527
 msgid "Server"
 msgstr "Serveur"
 
@@ -607,7 +607,7 @@ msgstr "Agent SSH (automatique)"
 #: src/remmina_file_editor.c:926 src/remmina_protocol_widget.c:1300
 #: src/remmina_protocol_widget.c:1314 src/remmina_protocol_widget.c:1341
 #: src/remmina_sftp_plugin.c:317 src/remmina_ssh_plugin.c:956
-#: plugins/www/www_plugin.c:529 data/ui/remmina_unlock.glade:116
+#: plugins/www/www_plugin.c:540 data/ui/remmina_unlock.glade:116
 #: data/ui/remmina_mpc.glade:113 data/ui/remmina_preferences.glade:1469
 msgid "Password"
 msgstr "Mot de passe"
@@ -639,7 +639,7 @@ msgstr "Préférences de bureau distant"
 msgid "Save as Default"
 msgstr "Définir par défaut"
 
-#: src/remmina_file_editor.c:1302 src/remmina_main.c:928
+#: src/remmina_file_editor.c:1302 src/remmina_main.c:967
 msgid "_Save"
 msgstr "_Enregistrer"
 
@@ -1110,19 +1110,19 @@ msgid "Failed to create pty device."
 msgstr "Impossible de créer un pseudo‐terminal."
 
 #. Show in the status bar the total number of connections found
-#: src/remmina_main.c:623
+#: src/remmina_main.c:636
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "%i élément au total."
 msgstr[1] "%i éléments au total."
 
-#: src/remmina_main.c:805
+#: src/remmina_main.c:818
 #, c-format
 msgid "Are you sure to delete '%s'"
 msgstr "Êtes‐vous sûr(e) de vouloir effacer « %s » ?"
 
-#: src/remmina_main.c:878
+#: src/remmina_main.c:917
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1131,15 +1131,15 @@ msgstr ""
 "Importation impossible :\n"
 "%s"
 
-#: src/remmina_main.c:905 data/ui/remmina_main.glade:302
+#: src/remmina_main.c:944 data/ui/remmina_main.glade:302
 msgid "Import"
 msgstr "Importer"
 
-#: src/remmina_main.c:935
+#: src/remmina_main.c:974
 msgid "This protocol does not support exporting."
 msgstr "Ce protocole ne gère pas l’exportation."
 
-#: src/remmina_main.c:1147
+#: src/remmina_main.c:1186
 msgid "Remmina Kiosk"
 msgstr "Démarrer Remmina en mode Kiosque"
 
@@ -1359,7 +1359,7 @@ msgstr "Activer la compression SSH"
 
 #: src/remmina_ssh_plugin.c:1088 plugins/spice/spice_plugin.c:446
 #: plugins/rdp/rdp_plugin.c:1696 plugins/nx/nx_plugin.c:720
-#: plugins/vnc/vnc_plugin.c:1919 plugins/www/www_plugin.c:550
+#: plugins/vnc/vnc_plugin.c:1919 plugins/www/www_plugin.c:563
 msgid "Disable password storing"
 msgstr "Désactiver l’enregistrement des mots de passe"
 
@@ -2129,39 +2129,47 @@ msgstr ""
 msgid "Desktop sharing invitation"
 msgstr "Invitation à partager le bureau"
 
-#: plugins/www/www_plugin.c:527
+#: plugins/www/www_plugin.c:538
 msgid "URL (http://address or https://address)"
 msgstr ""
 
-#: plugins/www/www_plugin.c:528
+#: plugins/www/www_plugin.c:539
 msgid "Username"
 msgstr ""
 
-#: plugins/www/www_plugin.c:544
+#: plugins/www/www_plugin.c:555
 msgid "User Agent"
 msgstr ""
 
-#: plugins/www/www_plugin.c:545
+#: plugins/www/www_plugin.c:556
+msgid "Enable java support"
+msgstr ""
+
+#: plugins/www/www_plugin.c:557
 msgid "Enable smooth scrolling"
 msgstr ""
 
-#: plugins/www/www_plugin.c:546
+#: plugins/www/www_plugin.c:558
 msgid "Enable Spatial Navigation"
 msgstr ""
 
-#: plugins/www/www_plugin.c:547
-msgid "Enable support for WebGL on pages"
+#: plugins/www/www_plugin.c:559
+msgid "Enable support for plugins"
 msgstr ""
 
-#: plugins/www/www_plugin.c:548
-msgid "Enable support for WebAudio on pages"
+#: plugins/www/www_plugin.c:560
+msgid "Enable support for WebGL"
 msgstr ""
 
-#: plugins/www/www_plugin.c:549
+#: plugins/www/www_plugin.c:561
+msgid "Enable support for WebAudio"
+msgstr ""
+
+#: plugins/www/www_plugin.c:562
 msgid "Ignore TLS errors"
 msgstr ""
 
-#: plugins/www/www_plugin.c:552
+#: plugins/www/www_plugin.c:565
 msgid "Enable Web Inspector"
 msgstr ""
 
@@ -2304,15 +2312,19 @@ msgstr "Faire un don"
 msgid "About"
 msgstr "À propos"
 
-#: data/ui/remmina_main.glade:524
+#: data/ui/remmina_main.glade:440
+msgid "Set as default remote desktop client"
+msgstr ""
+
+#: data/ui/remmina_main.glade:541
 msgid "Plugin"
 msgstr "Greffon"
 
-#: data/ui/remmina_main.glade:538
+#: data/ui/remmina_main.glade:555
 msgid "Last time used"
 msgstr "Dernière connexion"
 
-#: data/ui/remmina_main.glade:599
+#: data/ui/remmina_main.glade:616
 msgid ""
 "Do you allow Remmina to send periodic anonymous usage statistics to its "
 "developers?"
