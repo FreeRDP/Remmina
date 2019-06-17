@@ -33,7 +33,7 @@
 # files in the program, then also delete it here.
 
 
-cmake_minimum_required(VERSION 2.8.2)
+cmake_minimum_required(VERSION 3.0.0)
 
 set(CMAKE_COLOR_MAKEFILE ON)
 
@@ -354,10 +354,12 @@ if(AVAHI_FOUND)
 endif()
 
 if(GTK_FOUND)
-    add_subdirectory(src)
-    add_subdirectory(data)
-    add_subdirectory(plugins)
-    add_subdirectory(plugins/secret)
+	pkg_check_modules(gio REQUIRED gio-2.0)
+	pkg_check_modules(gio-unix REQUIRED gio-unix-2.0)
+	add_subdirectory(src)
+	add_subdirectory(data)
+	add_subdirectory(plugins)
+	add_subdirectory(plugins/secret)
 endif()
 
 if(WITH_TRANSLATIONS)

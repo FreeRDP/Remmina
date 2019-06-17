@@ -35,9 +35,11 @@
  */
 
 #include "config.h"
-#include <gtk/gtk.h>
+#include <gio/gio.h>
+#include <gio/gdesktopappinfo.h>
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
+#include <gtk/gtk.h>
 
 #include "remmina.h"
 #include "remmina_string_array.h"
@@ -76,8 +78,19 @@ enum {
 	N_COLUMNS
 };
 
+static
+const gchar *supported_mime_types[] = {
+  "x-scheme-handler/rdp",
+  "x-scheme-handler/spice",
+  "x-scheme-handler/vnc",
+  "x-scheme-handler/remmina",
+  "application/x-remmina",
+  NULL
+};
+
 static GActionEntry main_actions[] = {
 	{   "about",       remmina_main_on_action_application_about,         NULL, NULL, NULL },
+	{   "default",     remmina_main_on_action_application_default,       NULL, NULL, NULL },
 	{   "mpchange",    remmina_main_on_action_application_mpchange,      NULL, NULL, NULL },
 	{   "plugins",     remmina_main_on_action_application_plugins,       NULL, NULL, NULL },
 	{   "preferences", remmina_main_on_action_application_preferences,   NULL, NULL, NULL },
@@ -822,6 +835,32 @@ void remmina_main_on_action_application_preferences(GSimpleAction *action, GVari
 	GtkDialog *dialog = remmina_pref_dialog_new(0, remminamain->window);
 	gtk_dialog_run(dialog);
 	gtk_widget_destroy(GTK_WIDGET(dialog));
+}
+
+void remmina_main_on_action_application_default(GSimpleAction *action, GVariant *param, gpointer data)
+{
+	TRACE_CALL(__func__);
+	g_autoptr(GError) error = NULL;
+	GDesktopAppInfo *desktop_info;
+	GAppInfo *info = NULL;
+	g_autofree gchar *id = g_strconcat (REMMINA_APP_ID, ".desktop", NULL);
+	int i;
+
+	desktop_info = g_desktop_app_info_new (id);
+	if (!desktop_info)
+		return;
+
+	info = G_APP_INFO (desktop_info);
+
+	for (i = 0; supported_mime_types[i]; i++) {
+		if (!g_app_info_set_as_default_for_type (info, supported_mime_types[i], &error))
+			g_warning ("Failed to set '%s' as the default application for secondary content type '%s': %s",
+					g_app_info_get_name (info), supported_mime_types[i], error->message);
+		else
+			g_debug ("Set '%s' as the default application for '%s'",
+					g_app_info_get_name (info),
+					supported_mime_types[i]);
+	}
 }
 
 void remmina_main_on_action_application_quit(GSimpleAction *action, GVariant *param, gpointer data)

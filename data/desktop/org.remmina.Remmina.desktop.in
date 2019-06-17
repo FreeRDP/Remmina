@@ -67,15 +67,16 @@ Comment[th]=เชื่อมต่อไปยังพื้นโต๊ะ�
 Comment[tr]=Uzak masaüstlerine bağlan
 Comment[uk]=Приєднатися до віддаленого комп’ютера
 Comment[zh_CN]=连接到远程桌面
-TryExec=@REMMINA_BINARY_PATH@
-Exec=@REMMINA_BINARY_PATH@
+TryExec=@CMAKE_INSTALL_FULL_BINDIR@/remmina-file-wrapper.sh
+Exec=@CMAKE_INSTALL_FULL_BINDIR@/remmina-file-wrapper.sh %U
 Icon=@REMMINA_ICON@
 Terminal=false
 Type=Application
 Categories=GTK;GNOME;X-GNOME-NetworkSettings;Network;
-Actions=Kiosk;Profile;Tray;Quit;
 Keywords=remote desktop;rdp;vnc;nx;ssh;spice;xdmcp;
 StartupWMClass=@REMMINA_APP_ID@
+MimeType=x-scheme-handler/rdp;x-scheme-handler/spice;x-scheme-handler/vnc;x-scheme-handler/remmina;application/x-remmina;
+Actions=Kiosk;Profile;Tray;Quit;
 
 [Desktop Action Profile]
 Name=Create a New Connection Profile

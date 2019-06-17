@@ -33,7 +33,7 @@
 # files in the program, then also delete it here.
 
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.0.0)
 
 list(APPEND REMMINA_SRCS
 	"remmina_about.c"
@@ -128,7 +128,7 @@ list(APPEND REMMINA_SRCS
 	)
 
 add_executable(remmina ${REMMINA_SRCS})
-include_directories(${GTK_INCLUDE_DIRS})
+include_directories(${GTK_INCLUDE_DIRS} ${gio_INCLUDE_DIRS} ${gio-unix_INCLUDE_DIRS})
 target_link_libraries(remmina ${GTK_LIBRARIES})
 
 if(WITH_MANPAGES)

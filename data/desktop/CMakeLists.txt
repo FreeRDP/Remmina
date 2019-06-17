@@ -84,20 +84,25 @@ install(FILES ${ICON128_DATA} DESTINATION ${ICON128_DIR})
 install(FILES ${ICON256_DATA} DESTINATION ${ICON256_DIR})
 install(FILES ${ICONSVG_DATA} DESTINATION ${ICONSVG_DIR})
 
-gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
-
 set(REMMINA_BINARY_PATH ${CMAKE_INSTALL_FULL_BINDIR}/remmina)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${REMMINA_APP_ID}.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/${REMMINA_APP_ID}.desktop @ONLY)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina-file.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina-file-wrapper.sh.in
+    ${CMAKE_CURRENT_BINARY_DIR}/remmina-file-wrapper.sh @ONLY)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${REMMINA_APP_ID}.desktop
     DESTINATION "${REMMINA_DATADIR}/applications")
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop
     DESTINATION "${REMMINA_DATADIR}/applications")
 install(FILES ${REMMINA_APP_ID}.appdata.xml
     DESTINATION "${REMMINA_DATADIR}/metainfo")
+install(
+    FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina-file-wrapper.sh
+    DESTINATION "${CMAKE_INSTALL_FULL_BINDIR}"
+    PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ WORLD_READ WORLD_EXECUTE
+    )
 # Kiosk Session Files
 install(
     FILES remmina-gnome-xsession.desktop
@@ -154,4 +159,15 @@ find_package( SharedMimeInfo )
 if( SHARED_MIME_INFO_FOUND )
     install( FILES remmina-mime.xml DESTINATION ${XDG_MIME_INSTALL_DIR} )
     update_xdg_mimetypes( ${XDG_MIME_INSTALL_DIR} )
+endif()
+gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
+find_program(PROG_UPDATE_DESKTOP_DATABASE update-desktop-database)
+if( PROG_UPDATE_DESKTOP_DATABASE )
+    install(
+        CODE
+        "message(STATUS \"Updating desktop file database\")"
+        CODE
+        "execute_process(COMMAND ${PROG_UPDATE_DESKTOP_DATABASE}
+        -q ${CMAKE_INSTALL_PREFIX}/share/applications)"
+        )
 endif()

@@ -190,6 +190,11 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 		g_info("User Agent set to: %s", useragent);
 		g_free(useragent);
 	}
+	/* enable-java */
+	if (remmina_plugin_service->file_get_int(remminafile, "enable-java", FALSE)) {
+		webkit_settings_set_enable_java(gpdata->settings, TRUE);
+		g_info("Enable java");
+	}
 	/* enable-smooth-scrolling */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-smooth-scrolling", FALSE)) {
 		webkit_settings_set_enable_smooth_scrolling(gpdata->settings, TRUE);
@@ -205,6 +210,11 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 		webkit_settings_set_enable_webaudio(gpdata->settings, TRUE);
 		g_info("enable-webaudio enabled");
 	}
+	/* enable-plugins */
+	if (remmina_plugin_service->file_get_int(remminafile, "enable-plugins", FALSE)) {
+		webkit_settings_set_enable_plugins(gpdata->settings, TRUE);
+		g_info("Enable plugins");
+	}
 	/* enable-webgl */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-webgl", FALSE)) {
 		webkit_settings_set_enable_webgl(gpdata->settings, TRUE);
@@ -215,6 +225,7 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 		webkit_web_context_set_tls_errors_policy(gpdata->context, WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 		g_info("Ignore TLS errors");
 	}
+
 }
 
 static gboolean remmina_plugin_www_on_auth(WebKitWebView *webview, WebKitAuthenticationRequest *request, RemminaProtocolWidget *gp)
@@ -542,10 +553,12 @@ static const RemminaProtocolSetting remmina_plugin_www_basic_settings[] =
 static const RemminaProtocolSetting remmina_plugin_www_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "user-agent",		    N_("User Agent"),				FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-java",		    N_("Enable java support"),			TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-smooth-scrolling",   N_("Enable smooth scrolling"),		TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-spatial-navigation", N_("Enable Spatial Navigation"),		TRUE,  NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-webgl",		    N_("Enable support for WebGL on pages"),	TRUE,  NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-webaudio",	    N_("Enable support for WebAudio on pages"), TRUE,  NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-plugins",	    N_("Enable support for plugins"),		TRUE,  NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-webgl",		    N_("Enable support for WebGL"),		TRUE,  NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-webaudio",	    N_("Enable support for WebAudio"),		TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "ignore-tls-errors",	    N_("Ignore TLS errors"),			TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "disablepasswordstoring",    N_("Disable password storing"),		TRUE,  NULL, NULL },
 #ifdef DEBUG
