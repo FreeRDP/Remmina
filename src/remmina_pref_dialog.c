@@ -219,12 +219,6 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.hide_searchbar = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_appearance_hide_searchbar));
 
 	b = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_permit_send_stats));
-	if (remmina_pref.periodic_usage_stats_permitted) {
-		if (!b) remmina_pref.periodic_usage_stats_permission_asked = FALSE;
-	}
-	else {
-		if (b) remmina_pref.periodic_usage_stats_permission_asked = TRUE;
-	}
 	remmina_pref.periodic_usage_stats_permitted = b;
 
 	remmina_pref.default_action = gtk_combo_box_get_active(remmina_pref_dialog->comboboxtext_options_double_click);
