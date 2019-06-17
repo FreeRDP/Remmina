@@ -196,7 +196,6 @@ typedef struct _RemminaPref {
 	RemminaColorPref color_pref;
 
 	/* Usage stats */
-	gboolean periodic_usage_stats_permission_asked;
 	gboolean periodic_usage_stats_permitted;
 	glong periodic_usage_stats_last_sent;
 	gchar *periodic_usage_stats_uuid_prefix;

@@ -54,9 +54,11 @@ typedef struct _RemminaMain {
 	GtkMenuItem *menuitem_connection_quit;
 	/* Button new */
 	GtkButton *button_new;
+	GtkButton *button_make_default;
 	/* Search bar objects */
 	GtkToggleButton *search_toggle;
 	GtkToggleButton *view_toggle_button;
+	GtkToggleButton *ustats_toggle;
 	GtkSearchBar *search_bar;
 	/* Quick connect objects */
 	GtkBox *box_quick_connect;
@@ -67,7 +69,6 @@ typedef struct _RemminaMain {
 	GtkTreeView *tree_files_list;
 	GtkTreeViewColumn *column_files_list_group;
 	GtkStatusbar *statusbar_main;
-	GtkBox *box_ustat;
 	/* Non widget objects */
 	GtkAccelGroup *accelgroup_shortcuts;
 	/* Actions from the view ActionGroup */

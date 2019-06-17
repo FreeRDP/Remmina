@@ -1241,8 +1241,8 @@ static void remmina_main_init(void)
 void remmina_main_on_show(GtkWidget *w, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	if (!remmina_pref.periodic_usage_stats_permission_asked) {
-		gtk_widget_set_visible(GTK_WIDGET(remminamain->box_ustat), TRUE);
+	if (remmina_pref.periodic_usage_stats_permitted == TRUE) {
+		gtk_toggle_button_set_active(remminamain->ustats_toggle, TRUE);
 	}
 
 #ifdef SNAP_BUILD
@@ -1251,24 +1251,20 @@ void remmina_main_on_show(GtkWidget *w, gpointer user_data)
 
 }
 
-void remmina_main_on_click_ustat_yes(GtkWidget *w, gpointer user_data)
+void remmina_main_on_click_ustat_toggle()
 {
-	remmina_pref.periodic_usage_stats_permission_asked = TRUE;
-	remmina_pref.periodic_usage_stats_permitted = TRUE;
-	gtk_widget_set_visible(GTK_WIDGET(remminamain->box_ustat), FALSE);
-	if (remmina_pref_save()) {
-		remmina_stats_sender_schedule();
+	TRACE_CALL(__func__);
+	if (gtk_toggle_button_get_active(remminamain->ustats_toggle)) {
+		remmina_pref.periodic_usage_stats_permitted = TRUE;
+		if (remmina_pref_save()) {
+			remmina_stats_sender_schedule();
+		}
+	} else {
+		remmina_pref.periodic_usage_stats_permitted = FALSE;
+		remmina_pref_save();
 	}
-}
 
-void remmina_main_on_click_ustat_no(GtkWidget *w, gpointer user_data)
-{
-	remmina_pref.periodic_usage_stats_permission_asked = TRUE;
-	remmina_pref.periodic_usage_stats_permitted = FALSE;
-	remmina_pref_save();
-	gtk_widget_set_visible(GTK_WIDGET(remminamain->box_ustat), FALSE);
 }
-
 
 /* RemminaMain instance */
 GtkWidget* remmina_main_new(void)
@@ -1289,12 +1285,21 @@ GtkWidget* remmina_main_new(void)
 	}
 	/* New Button */
 	remminamain->button_new = GTK_BUTTON(GET_OBJECT("button_new"));
+	remminamain->button_make_default = GTK_BUTTON(GET_OBJECT("button_make_default"));
 	if (kioskmode && kioskmode == TRUE)
 		gtk_widget_set_sensitive(GTK_WIDGET(remminamain->button_new), FALSE);
+	if (kioskmode && kioskmode == TRUE)
+		gtk_widget_set_sensitive(GTK_WIDGET(remminamain->button_make_default), FALSE);
 	/* Search bar */
 	remminamain->search_toggle = GTK_TOGGLE_BUTTON(GET_OBJECT("search_toggle"));
 	remminamain->search_bar = GTK_SEARCH_BAR(GET_OBJECT("search_bar"));
+	/* Enable stats */
+	remminamain->ustats_toggle = GTK_TOGGLE_BUTTON(GET_OBJECT("ustats_toggle"));
+	/* view mode list/tree */
 	remminamain->view_toggle_button = GTK_TOGGLE_BUTTON(GET_OBJECT("view_toggle_button"));
+	if (kioskmode && kioskmode == TRUE)
+		gtk_widget_set_sensitive(GTK_WIDGET(remminamain->view_toggle_button), FALSE);
+
 	/* Menu widgets */
 	remminamain->menu_popup = GTK_MENU(GET_OBJECT("menu_popup"));
 	remminamain->menu_header_button = GTK_MENU_BUTTON(GET_OBJECT("menu_header_button"));
@@ -1316,8 +1321,6 @@ GtkWidget* remmina_main_new(void)
 	remminamain->tree_files_list = GTK_TREE_VIEW(GET_OBJECT("tree_files_list"));
 	remminamain->column_files_list_group = GTK_TREE_VIEW_COLUMN(GET_OBJECT("column_files_list_group"));
 	remminamain->statusbar_main = GTK_STATUSBAR(GET_OBJECT("statusbar_main"));
-	if (!kioskmode && kioskmode == FALSE)
-		remminamain->box_ustat = GTK_BOX(GET_OBJECT("box_ustat"));
 	/* Non widget objects */
 	actions = g_simple_action_group_new();
 	g_action_map_add_action_entries(G_ACTION_MAP(actions), main_actions, G_N_ELEMENTS(main_actions), remminamain->window);
