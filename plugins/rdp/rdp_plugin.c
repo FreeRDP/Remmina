@@ -423,7 +423,7 @@ static BOOL rf_keyboard_set_indicators(rdpContext* context, UINT16 led_flags)
 
 #ifdef GDK_WINDOWING_X11
 	if (GDK_IS_X11_DISPLAY(disp)) {
-		/* ToDo: we are not on the main thread. Will Xorg complain ? */
+		/* ToDo: we are not on the main thread. Will X.Org complain ? */
 		Display* x11_display;
 		x11_display = gdk_x11_display_get_xdisplay(disp);
 		XkbLockModifiers(x11_display, XkbUseCoreKbd,
@@ -810,7 +810,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	rfi->settings->SoftwareGdi = TRUE;
 
-	/* Avoid using H264 modes if they are not available on libfreerdp */
+	/* Avoid using H.264 modes if they are not available on libfreerdp */
 	if (!gfx_h264_available && (rfi->settings->ColorDepth == 65 || rfi->settings->ColorDepth == 66))
 		rfi->settings->ColorDepth = 64;	// Fallback to GFX RFX
 
@@ -1315,7 +1315,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 						remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to initialize libfreerdp gdi") );
 						break;
 					case REMMINA_POSTCONNECT_ERROR_NO_H264:
-						remmina_plugin_service->protocol_plugin_set_error(gp, _("You requested an H264 GFX mode for server %s, but your libfreerdp does not support H264. Please use a non-AVC Color Depth setting."), rfi->settings->ServerHostname);
+						remmina_plugin_service->protocol_plugin_set_error(gp, _("You requested an H.264 GFX mode for server %s, but your libfreerdp does not support H.264. Please use a non-AVC Color Depth setting."), rfi->settings->ServerHostname);
 						break;
 				}
 				break;
@@ -1847,7 +1847,7 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService* service)
 	}
 
 	snprintf(remmina_plugin_rdp_version, sizeof(remmina_plugin_rdp_version),
-		"RDP Plugin: %s (git %s), Compiled with FreeRDP lib: %s (%s), Running with FreeRDP lib: %s (rev %s), H264: %s",
+		"RDP Plugin: %s (git %s), Compiled with FreeRDP lib: %s (%s), Running with FreeRDP lib: %s (rev %s), H.264: %s",
 		VERSION, REMMINA_GIT_REVISION,
 		FREERDP_VERSION_FULL, GIT_REVISION,
 		freerdp_get_version_string(),
