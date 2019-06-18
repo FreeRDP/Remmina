@@ -155,7 +155,7 @@ gboolean remmina_gtksocket_available()
 
 #ifdef GDK_WINDOWING_X11
 	if (GDK_IS_X11_DISPLAY(d)) {
-		/* GtkSocket support is available only under Xorg */
+		/* GtkSocket support is available only under X.Org */
 		available = TRUE;
 	}
 #endif

@@ -193,7 +193,7 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	/* enable-java */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-java", FALSE)) {
 		webkit_settings_set_enable_java(gpdata->settings, TRUE);
-		g_info("Enable java");
+		g_info("Enable Java");
 	}
 	/* enable-smooth-scrolling */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-smooth-scrolling", FALSE)) {
@@ -553,7 +553,7 @@ static const RemminaProtocolSetting remmina_plugin_www_basic_settings[] =
 static const RemminaProtocolSetting remmina_plugin_www_advanced_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "user-agent",		    N_("User Agent"),				FALSE, NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-java",		    N_("Enable java support"),			TRUE,  NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-java",		    N_("Enable Java support"),			TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-smooth-scrolling",   N_("Enable smooth scrolling"),		TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-spatial-navigation", N_("Enable Spatial Navigation"),		TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-plugins",	    N_("Enable support for plugins"),		TRUE,  NULL, NULL },

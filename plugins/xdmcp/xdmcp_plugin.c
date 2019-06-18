@@ -261,7 +261,7 @@ static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 
 	if (!remmina_plugin_service->gtksocket_available()) {
 		remmina_plugin_service->protocol_plugin_set_error(gp,
-			_("Protocol %s is unavailable because GtkSocket only works under Xorg"),
+			_("Protocol %s is unavailable because GtkSocket only works under X.Org"),
 			remmina_plugin_xdmcp.name);
 		return FALSE;
 	}
