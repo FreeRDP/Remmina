@@ -85,10 +85,8 @@ flatpak:test:
     - schedules
 
 snap:build:
-  stage: build
-  before_script:
-    - apt-get update
   image: ubuntudesktop/gnome-3-28-1804
+  stage: build
   script:
     - export LC_ALL=C.UTF-8
     - export LANG=C.UTF-8
