@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
 "POT-Creation-Date: 2019-06-18 21:08+0000\n"
-"PO-Revision-Date: 2019-06-18 13:47+0200\n"
+"PO-Revision-Date: 2019-06-18 23:36+0200\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Italian <admin@remmina.org>\n"
 "Language: it\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Launchpad-Export-Date: 2011-01-18 05:16+0000\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. Profile: Protocol
 #: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1462
@@ -419,7 +419,7 @@ msgstr "Il Plugin %s non è registrato."
 
 #: src/remmina_public.c:639
 msgid "Please enter format 'widthxheight'."
-msgstr "Inserire formato «larghezzaxaltezza»."
+msgstr "Inserire formato “larghezzaxaltezza”."
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -1530,7 +1530,7 @@ msgstr "La connessione al server RDP %s non è riuscita."
 #: plugins/rdp/rdp_plugin.c:1297
 #, c-format
 msgid "Unable to find the address of RDP server %s."
-msgstr "Impossibile trovare l'indirizzo del server RDP %s."
+msgstr "Impossibile trovare l’indirizzo del server RDP %s."
 
 #: plugins/rdp/rdp_plugin.c:1301
 #, c-format
@@ -1562,6 +1562,9 @@ msgid ""
 "You requested an H.264 GFX mode for server %s, but your libfreerdp does not "
 "support H.264. Please use a non-AVC Color Depth setting."
 msgstr ""
+"Hai chiesto il modo di visualizzazione H.264 per il server %s, ma la "
+"versione di FreeRDP installata non lo supporta.\n"
+"Si prega di utilizzare AVC."
 
 #: plugins/rdp/rdp_plugin.c:1325
 #, c-format
@@ -1933,6 +1936,7 @@ msgstr "Esegui un comando"
 #, c-format
 msgid "Protocol %s is unavailable because GtkSocket only works under X.Org"
 msgstr ""
+"Il protocollo %s non è disponibile perché GtkSocket gunziona solo sotto X.Org"
 
 #: plugins/nx/nx_plugin.c:718 plugins/vnc/vnc_plugin.c:1917
 msgid "Disable encryption"
@@ -2112,7 +2116,7 @@ msgstr "Agente utente (User agent)"
 
 #: plugins/www/www_plugin.c:556
 msgid "Enable Java support"
-msgstr ""
+msgstr "Abilita il supporto Java"
 
 #: plugins/www/www_plugin.c:557
 msgid "Enable smooth scrolling"
@@ -2179,7 +2183,7 @@ msgid ""
 "following commands in a terminal window:"
 msgstr ""
 "Sembra che Remmina stia girando nel tuo sistema come pacchetto SNAP. Per "
-"abilitare l'accesso ad alcune importanti funzionalità, come il salvataggio "
+"abilitare l’accesso ad alcune importanti funzionalità, come il salvataggio "
 "delle password nel keyring e la condivisione stampanti via RDP, si prega di "
 "aprire il software center ed assegnare i permessi appropriati a Remmina. "
 "Come alternativa è possibile inserire i seguenti comandi in una finestra "
@@ -2429,11 +2433,11 @@ msgstr "Cartella dati Remmina"
 
 #: data/ui/remmina_preferences.glade:388
 msgid "Remember last view mode for each connection"
-msgstr "Ricordare l'ultima modalità di visualizzazione per ogni connessione"
+msgstr "Ricordare l’ultima modalità di visualizzazione per ogni connessione"
 
 #: data/ui/remmina_preferences.glade:392
 msgid "Remember last view mode"
-msgstr "Ricorda l'ultima modalità di visualizzazione"
+msgstr "Ricorda l’ultima modalità di visualizzazione"
 
 #: data/ui/remmina_preferences.glade:418
 msgid "Send periodic usage statistics to remmina developers"
@@ -2476,11 +2480,10 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G : nome del gruppo (le barre “/” verrnno convertite in una lineetta "
-"“-”) ;\n"
-"%P : nome del protocollo ;\n"
-"%N : nome della connessione ;\n"
-"%h : hostname o indirizzo IP \n"
+"%G nome del gruppo (le barre “/” verranno convertite in una lineetta “-”);\n"
+"%P nome del protocollo;\n"
+"%N nome della connessione;\n"
+"%h hostname o indirizzo IP.\n"
 "\n"
 "\n"
 
@@ -2708,7 +2711,7 @@ msgid ""
 "When activated, some widgets will require you to authenticate with a secret "
 "key"
 msgstr ""
-"Quando attivato, alcuni “widget” richiederanno l'autenticazione con una "
+"Quando attivato, alcuni “widget” richiederanno l’autenticazione con una "
 "chiave segreta"
 
 #: data/ui/remmina_preferences.glade:1408
@@ -2876,4 +2879,3 @@ msgstr "Seleziona un file per lo schema colori terminale"
 #: data/ui/remmina_preferences.glade:2178
 msgid "Terminal"
 msgstr "Terminale"
-
