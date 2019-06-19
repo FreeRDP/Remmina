@@ -1,9 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2019 Antenore Gatta
- *
- * Initially based on the plugin "Remmina Plugin EXEC", created and written by
- * Fabio Castelli (Muflone) <muflone@vbsimple.net>.
+ * Copyright (C) 2016-2019 Antenore Gatta, Giovanni Panozzo
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,11 +33,21 @@
  */
 
 #pragma once
-#ifndef __PLUGIN_CONFIG_H
-#define __PLUGIN_CONFIG_H
 
-#define PLUGIN_NAME        "WWW"
-#define PLUGIN_DESCRIPTION N_("Remmina Browser Plugin")
-#define PLUGIN_VERSION     "0.1.0"
-#define PLUGIN_APPICON     "remmina-www-symbolic"
-#endif
+typedef enum {
+	WWW_WEB_VIEW_DOCUMENT_HTML,
+	WWW_WEB_VIEW_DOCUMENT_XML,
+	WWW_WEB_VIEW_DOCUMENT_IMAGE,
+	WWW_WEB_VIEW_DOCUMENT_OCTET_STREAM,
+	WWW_WEB_VIEW_DOCUMENT_OTHER
+} WWWWebViewDocumentType;
+
+
+G_BEGIN_DECLS
+void remmina_plugin_www_decide_nav(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp);
+void remmina_plugin_www_decide_newwin(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp);
+static gboolean remmina_plugin_www_decide_resource(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp);
+void remmina_plugin_www_response_received(WebKitDownload *download, GParamSpec *ps, RemminaProtocolWidget *gp);
+void remmina_plugin_www_notify_download(WebKitDownload *download, gchar *destination, RemminaProtocolWidget *gp);
+
+G_END_DECLS
