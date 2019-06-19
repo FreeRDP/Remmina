@@ -44,3 +44,5 @@
 #define PLUGIN_VERSION     "0.1.0"
 #define PLUGIN_APPICON     "remmina-www-symbolic"
 #endif
+
+

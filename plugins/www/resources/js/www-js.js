@@ -89,6 +89,8 @@ function setLoginFields() {
                 }
             }
         });
+    } else {
+	    return;
     }
 }
 
