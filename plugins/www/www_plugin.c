@@ -412,7 +412,7 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	/* enable-java */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-java", FALSE)) {
 		webkit_settings_set_enable_java(gpdata->settings, TRUE);
-		g_info("Enable java");
+		g_info("Enable Java");
 	}
 	/* enable-smooth-scrolling */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-smooth-scrolling", FALSE)) {
