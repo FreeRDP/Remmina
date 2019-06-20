@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
 "POT-Creation-Date: 2019-06-19 23:59+0000\n"
-"PO-Revision-Date: 2019-04-04 23:46+0300\n"
+"PO-Revision-Date: 2019-06-20 22:17+0300\n"
 "Last-Translator: Soltys Sergey <treefeed@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "Language: ru\n"
@@ -263,7 +263,7 @@ msgstr "Инструменты"
 
 #: src/rcw.c:2204
 msgid "Duplicate current connection"
-msgstr ""
+msgstr "Дублировать текущее соединение"
 
 #: src/rcw.c:2212 data/ui/remmina_preferences.glade:1083
 msgid "Screenshot"
@@ -1342,7 +1342,7 @@ msgstr "Включить логирование SSH сессии при выхо
 
 #: src/remmina_ssh_plugin.c:1086
 msgid "Enable terminal audible bell"
-msgstr ""
+msgstr "Включить звуковой сигнал терминала"
 
 #: src/remmina_ssh_plugin.c:1087
 msgid "Enable SSH compression"
@@ -1580,6 +1580,9 @@ msgid ""
 "You requested an H.264 GFX mode for server %s, but your libfreerdp does not "
 "support H.264. Please use a non-AVC Color Depth setting."
 msgstr ""
+"Вы запросили режим H.264 GFX для сервера %s, но ваш libfreerdp не "
+"поддерживает H.264. Пожалуйста, используйте настройки цветовой глубины не-"
+"AVC формата."
 
 #: plugins/rdp/rdp_plugin.c:1325
 #, c-format
@@ -1950,7 +1953,7 @@ msgstr "Выполнить команду"
 #: plugins/nx/nx_plugin.c:585 plugins/xdmcp/xdmcp_plugin.c:264
 #, c-format
 msgid "Protocol %s is unavailable because GtkSocket only works under X.Org"
-msgstr ""
+msgstr "Протокол %s недоступен, потому что GtkSocket работает только под X.Org"
 
 #: plugins/nx/nx_plugin.c:718 plugins/vnc/vnc_plugin.c:1917
 msgid "Disable encryption"
@@ -2118,55 +2121,55 @@ msgstr "Пригласить удалённый рабочий стол"
 
 #: plugins/www/www_plugin.c:97
 msgid "File downloaded"
-msgstr ""
+msgstr "Файл загружен"
 
 #: plugins/www/www_plugin.c:774
 msgid "URL (http://address or https://address)"
-msgstr ""
+msgstr "URL (http://адрес или https://адрес)"
 
 #: plugins/www/www_plugin.c:775
 msgid "Username"
-msgstr ""
+msgstr "Имя пользователя"
 
 #: plugins/www/www_plugin.c:791
 msgid "User Agent"
-msgstr ""
+msgstr "Агент"
 
 #: plugins/www/www_plugin.c:792
 msgid "Enable Java support"
-msgstr ""
+msgstr "Включить поддержку Java"
 
 #: plugins/www/www_plugin.c:793
 msgid "Enable smooth scrolling"
-msgstr ""
+msgstr "Включить плавную прокрутку"
 
 #: plugins/www/www_plugin.c:794
 msgid "Enable Spatial Navigation"
-msgstr ""
+msgstr "Включить пространственную навигацию"
 
 #: plugins/www/www_plugin.c:795
 msgid "Enable support for plugins"
-msgstr ""
+msgstr "Включить поддержку плагинов"
 
 #: plugins/www/www_plugin.c:796
 msgid "Enable support for WebGL"
-msgstr ""
+msgstr "Включить поддержку WebGL"
 
 #: plugins/www/www_plugin.c:797
 msgid "Enable support for WebAudio"
-msgstr ""
+msgstr "Включить поддержку WebAudio"
 
 #: plugins/www/www_plugin.c:798
 msgid "Ignore TLS errors"
-msgstr ""
+msgstr "Игнорировать ошибки TLS"
 
 #: plugins/www/www_plugin.c:801
 msgid "Enable Web Inspector"
-msgstr ""
+msgstr "Включить веб-инспектор"
 
 #: plugins/www/www_config.h:43
 msgid "Remmina Browser Plugin"
-msgstr ""
+msgstr "Плагин браузера Remmina"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
@@ -2237,7 +2240,7 @@ msgstr "Разблокировать Remmina"
 
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password secret key"
-msgstr ""
+msgstr "Секретный ключ мастер-пароля"
 
 #: data/ui/remmina_main.glade:91
 msgid "Show search bar"
@@ -2262,6 +2265,7 @@ msgstr ""
 #: data/ui/remmina_main.glade:158
 msgid "Set Remmina as the default Remote Desktop Client"
 msgstr ""
+"Установить Remmina в качестве клиента удалённого рабочего стола по-умолчанию"
 
 #: data/ui/remmina_main.glade:206
 msgid "search string or server name/ip address for quick connect"
@@ -2315,7 +2319,7 @@ msgstr "Описание"
 
 #: data/ui/remmina_main.glade:478
 msgid "Set as default remote desktop client"
-msgstr ""
+msgstr "Установить в качестве клиента удалённого рабочего стола по-умолчанию"
 
 # Pluggin like entity or plug-in as action?
 #: data/ui/remmina_main.glade:579
@@ -2480,10 +2484,12 @@ msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
 msgstr ""
+"Установите собственное имя для профилей соединения Remmina, используя "
+"форматированную строку."
 
 #: data/ui/remmina_preferences.glade:483
 msgid "Profiles filename template"
-msgstr ""
+msgstr "Шаблон имён профиля"
 
 #: data/ui/remmina_preferences.glade:495
 msgid ""
@@ -2725,6 +2731,8 @@ msgid ""
 "When activated, some widgets will require you to authenticate with a secret "
 "key"
 msgstr ""
+"Когда активирован, некоторые виджеты могут потребовать авторизации секретным "
+"ключом"
 
 #: data/ui/remmina_preferences.glade:1408
 msgid "Use master password"
