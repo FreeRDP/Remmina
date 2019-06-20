@@ -161,7 +161,7 @@ fi
 mv remmina.temp.pot remmina.pot
 
 for i in *.po; do
-	msgmerge -N --backup=off --update "$i" remmina.pot
+	msgmerge --backup=off --update "$i" remmina.pot
 done
 
 for i in "$REMMINATOP"/po/*.po ; do
