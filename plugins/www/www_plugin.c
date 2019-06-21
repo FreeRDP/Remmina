@@ -214,6 +214,15 @@ void remmina_plugin_www_decide_newwin(WebKitPolicyDecision *decision, RemminaPro
 		webkit_web_view_load_uri(gpdata->webview, url);
 		break;
 	case WEBKIT_NAVIGATION_TYPE_OTHER:         /* fallthrough */
+		g_debug("WEBKIT_NAVIGATION_TYPE_OTHER");
+		/* Filter domains here */
+		/* If the value of “mouse-button” is not 0, then the navigation was triggered by a mouse event.
+		 * test for link clicked but no button ? */
+		url = webkit_uri_request_get_uri(
+			webkit_navigation_action_get_request(a));
+		g_debug("Trying to open url: %s", url);
+		webkit_web_view_load_uri(gpdata->webview, url);
+		break;
 	default:
 		break;
 	}
@@ -525,8 +534,6 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 
 	gpdata = (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
-	gpdata->load_event = load_event;
-
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	g_debug("load-changed emitted");
@@ -554,7 +561,7 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 		g_free(remmina_dir);
 	}
 
-	switch (gpdata->load_event) {
+	switch (load_event) {
 	case WEBKIT_LOAD_STARTED:
 		break;
 	case WEBKIT_LOAD_REDIRECTED:
