@@ -52,57 +52,11 @@ typedef struct _RemminaPluginX2goData {
 	gint socket_id;
 	gint width;
 	gint height;
-	GPid pidxe;
 	GPid pidx2go;
 	gboolean ready;
 } RemminaPluginX2goData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
-
-static gboolean remmina_plugin_x2go_exec_xephyr(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL("remmina_plugin_x2go_exec_xephyr");
-	RemminaPluginX2goData *gpdata = GET_PLUGIN_DATA(gp);
-	RemminaFile *remminafile;
-	GError *error = NULL;
-	gboolean ret;
-	gchar *argv[50];
-	gint argc;
-	gint i;
-
-	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-
-	argc = 0;
-	argv[argc++] = g_strdup("Xephyr");
-	argv[argc++] = g_strdup_printf(":%i", gpdata->socket_id);	/* We use the window id as our display number */
-	argv[argc++] = g_strdup("-parent");
-	argv[argc++] = g_strdup_printf("%i", gpdata->socket_id);
-	argv[argc++] = g_strdup("-screen");
-	argv[argc++] = g_strdup_printf ("%dx%d", gpdata->width, gpdata->height);
-	argv[argc++] = g_strdup("-resizeable");
-	if (remmina_plugin_service->file_get_int(remminafile, "showcursor", FALSE))
-	{
-		argv[argc++] = g_strdup("-host-cursor");
-	}
-	if (remmina_plugin_service->file_get_int(remminafile, "once", FALSE))
-	{
-		argv[argc++] = g_strdup("-once");
-	}
-	argv[argc++] = g_strdup("-nolisten");
-	argv[argc++] = g_strdup("tcp");
-	argv[argc++] = g_strdup("-ac");
-
-	argv[argc++] = NULL;
-
-	ret = g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &gpdata->pidxe, &error);
-	if (error) {
-		g_printf ("failed to start Xephyr: %s\n", error->message);
-		return FALSE;
-	}
-	for (i = 0; i < argc; i++)
-		g_free (argv[i]);
-	return TRUE;
-}
 
 static gboolean remmina_plugin_x2go_exec_x2go(gchar *host, gint sshport, gchar *username, gchar *password,
 		gchar *command, gchar *kbdlayout, gchar *kbdtype, gchar *resolution, RemminaProtocolWidget *gp)
@@ -271,11 +225,6 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 	gtk_widget_set_size_request(GTK_WIDGET(gp), gpdata->width, gpdata->height);
 
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
-
-	if (!remmina_plugin_x2go_exec_xephyr(gp)) {
-		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
-		return FALSE;
-	}
 
 	remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 

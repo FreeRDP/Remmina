@@ -68,13 +68,13 @@ endif()
 
 # X2GO
 find_program(PYHOCA_EXECUTABLE pyhoca-cli)
-find_program(XEPHYR_EXECUTABLE Xephyr)
 
-if(PYHOCA_EXECUTABLE AND XEPHYR_EXECUTABLE)
-	message(STATUS "pyhoca-cli and/or Xephyr were found. The X2Go plugin will be installed")
+# FIXME: pyhoca-cli is a run-time dependency, not relevant at build-time
+if(PYHOCA_EXECUTABLE)
+	message(STATUS "pyhoca-cli was found. The X2Go plugin will be installed")
 	add_subdirectory(x2go)
 else()
-	message(WARNING "pyhoca-cli and/or Xephyr were not found. X2GO Plugin won't be built")
+	message(WARNING "pyhoca-cli was not found. X2GO Plugin won't be built")
 endif()
 
 find_suggested_package(LIBVNCSERVER)
