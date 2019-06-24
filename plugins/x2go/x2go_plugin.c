@@ -1,8 +1,12 @@
 /*
  *     Project: Remmina Plugin X2Go
  * Description: Remmina protocol plugin to connect via X2Go using PyHoca
- *      Author: Antenore Gatta <antenore@simbiosi.org>
- *   Copyright: 2015 Antenore Gatta
+ *      Author: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+ *              Antenore Gatta <antenore@simbiosi.org>
+ *   Copyright: 2010-2011 Vic Lee
+ *              2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
+ *              2015 Antenore Gatta
+ *              2016-2018 Antenore Gatta, Giovanni Panozzo
  *              2019 Mike Gabriel
  *     License: GPL-2+
  *
