@@ -37,10 +37,8 @@
 
 #include "x2go_plugin.h"
 #include <common/remmina_plugin.h>
-#if GTK_VERSION == 3
-# include <gtk/gtkx.h>
-# include <gdk/gdkx.h>
-#endif
+#include <gtk/gtkx.h>
+#include <gdk/gdkx.h>
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
 #include <X11/extensions/XKBrules.h>
