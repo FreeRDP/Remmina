@@ -281,8 +281,8 @@ static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
 };
 
 /* Protocol plugin definition and features */
-static RemminaProtocolPlugin remmina_plugin = {
-	REMMINA_PLUGIN_TYPE_PROTOCOL,      // Type
+static RemminaProtocolPlugin remmina_plugin_x2go = {
+	REMMINA_PLUGIN_TYPE_PROTOCOL,           // Type
 	PLUGIN_NAME,                            // Name
 	PLUGIN_DESCRIPTION,                     // Description
 	GETTEXT_PACKAGE,                        // Translation domain
@@ -299,7 +299,8 @@ static RemminaProtocolPlugin remmina_plugin = {
 	remmina_plugin_x2go_close_connection,   // Plugin close connection
 	NULL,                                   // Query for available features
 	NULL,                                   // Call a feature
-	/*remmina_plugin_keystroke              // Send a keystroke    */
+	NULL,                                   // Send a keystroke
+	NULL,                                   // Screenshot
 };
 
 G_MODULE_EXPORT gboolean
@@ -311,7 +312,7 @@ remmina_plugin_entry(RemminaPluginService *service)
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 
-	if (!service->register_plugin((RemminaPlugin *) &remmina_plugin)) {
+	if (!service->register_plugin((RemminaPlugin *) &remmina_plugin_x2go)) {
 		return FALSE;
 	}
 
