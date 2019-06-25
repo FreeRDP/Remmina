@@ -607,7 +607,7 @@ static RemminaProtocolPlugin remmina_plugin_x2go = {
 	remmina_plugin_x2go_init,               // Plugin initialization
 	remmina_plugin_x2go_open_connection,    // Plugin open connection
 	remmina_plugin_x2go_close_connection,   // Plugin close connection
-	remmina_plugin_x2go__query_feature,     // Query for available features
+	remmina_plugin_x2go_query_feature,      // Query for available features
 	NULL,                                   // Call a feature
 	NULL,                                   // Send a keystroke
 	NULL,                                   // Screenshot
