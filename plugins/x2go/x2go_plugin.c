@@ -55,9 +55,6 @@ typedef struct _RemminaPluginX2GoData {
 	GtkWidget *socket;
 	gint socket_id;
 
-	gint width;
-	gint height;
-
 	pthread_t thread;
 
 	Display *display;
@@ -411,9 +408,10 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 	RemminaFile *remminafile;
 	GError *error = NULL;
 
-	gchar *servstr, *host, *username, *password, *command, *kbdlayout, *kbdtype;
+	gchar *servstr, *host, *username, *password, *command, *kbdlayout, *kbdtype, *res;
 	gint sshport;
 	GdkDisplay *default_dsp;
+	gint width, height;
 
 	/* We save the X Display name (:0) as we will need to synchronize the clipboards */
 	default_dsp = gdk_display_get_default();
@@ -438,12 +436,20 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 	kbdlayout = GET_PLUGIN_STRING("kbdlayout");
 	kbdtype = GET_PLUGIN_STRING("kbdtype");
 
+	width = remmina_plugin_x2go_service->protocol_plugin_get_width(gp);
+	height = remmina_plugin_x2go_service->protocol_plugin_get_height(gp);
+	if( (width > 0) && (height  > 0))
+		res = g_strdup_printf ("%dx%d", width, height);
+	else
+		res = "800x600";
+	printf("[%s] remmina_plugin_x2go_open_connection: guessing optimal X2Go session geometry %s\n", PLUGIN_NAME, res);
+
 	remmina_plugin_x2go_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 
 	if (!remmina_plugin_x2go_start_create_notify(gp))
 		return FALSE;
 
-	if (!remmina_plugin_x2go_exec_x2go(host, sshport, username, password, command, kbdlayout, kbdtype, NULL, gp)) {
+	if (!remmina_plugin_x2go_exec_x2go(host, sshport, username, password, command, kbdlayout, kbdtype, res, gp)) {
 		remmina_plugin_x2go_service->protocol_plugin_set_error(gp, "%s", error->message);
 		return FALSE;
 	}
@@ -507,9 +513,9 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 
-	remmina_plugin_x2go_service->protocol_plugin_set_width(gp, gpdata->width);
-	remmina_plugin_x2go_service->protocol_plugin_set_height(gp, gpdata->height);
-	gtk_widget_set_size_request(GTK_WIDGET(gp), gpdata->width, gpdata->height);
+	remmina_plugin_x2go_service->protocol_plugin_set_width(gp, width);
+	remmina_plugin_x2go_service->protocol_plugin_set_height(gp, height);
+	gtk_widget_set_size_request(GTK_WIDGET(gp), width, height);
 
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 	if (pthread_create(&gpdata->thread, NULL, remmina_plugin_x2go_main_thread, gp)) {
@@ -581,6 +587,7 @@ static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password", N_("Password"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "command", N_("Startup program"), FALSE,
 		"MATE,KDE,XFCE,LXDE,TERMINAL", NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",               NULL,                                       FALSE,      NULL,               NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdlayout", N_("Keyboard Layout (auto)"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "kbdtype", N_("Keyboard type (auto)"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "showcursor", N_("Use local cursor"), FALSE, NULL, NULL },
