@@ -1,62 +1,98 @@
-# Remmina - The GTK+ Remote Desktop Client
+# - Try to find LibSSH
+# Once done this will define
 #
-# Copyright (C) 2011 Marc-Andre Moreau
+#  LIBSSH_FOUND - system has LibSSH
+#  LIBSSH_INCLUDE_DIRS - the LibSSH include directory
+#  LIBSSH_LIBRARIES - Link these to use LibSSH
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
+#  Copyright (c) 2009 Andreas Schneider <mail@cynapses.org>
+#  Modified by Peter Wu <peter@lekensteyn.nl> to use standard
+#  find_package(LIBSSH ...) without external module.
 #
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
+#  Redistribution and use is allowed according to the terms of the New
+#  BSD license.
+#  For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor,
-# Boston, MA  02110-1301, USA.
 
-include(LibFindMacros)
+if(LIBSSH_LIBRARIES AND LIBSSH_INCLUDE_DIRS)
+  # in cache already
+  set(LIBSSH_FOUND TRUE)
+else ()
 
-# Dependencies
-find_package(PkgConfig)
+  find_path(LIBSSH_INCLUDE_DIR
+    NAMES
+      libssh/libssh.h
+    HINTS
+      "${LIBSSH_HINTS}/include"
+    PATHS
+      /usr/include
+      /usr/local/include
+      /opt/local/include
+      /sw/include
+      ${CMAKE_INCLUDE_PATH}
+      ${CMAKE_INSTALL_PREFIX}/include
+  )
 
-# Use pkg-config to get hints about paths
-libfind_pkg_check_modules(PC_LIBSSH libssh>=0.6)
+  find_library(LIBSSH_LIBRARY
+    NAMES
+      ssh
+      libssh
+    HINTS
+      "${LIBSSH_HINTS}/lib"
+    PATHS
+      /usr/lib
+      /usr/local/lib
+      /opt/local/lib
+      /sw/lib
+      ${CMAKE_LIBRARY_PATH}
+      ${CMAKE_INSTALL_PREFIX}/lib
+  )
 
+  if(LIBSSH_INCLUDE_DIR AND LIBSSH_LIBRARY)
+    set(LIBSSH_INCLUDE_DIRS
+      ${LIBSSH_INCLUDE_DIR}
+    )
+    set(LIBSSH_LIBRARIES
+      ${LIBSSH_LIBRARY}
+    )
 
-set(LIBSSH_DEFINITIONS ${PC_LIBSSH_CFLAGS_OTHER})
+    file(STRINGS ${LIBSSH_INCLUDE_DIR}/libssh/libssh.h LIBSSH_VERSION_MAJOR
+      REGEX "#define[ ]+LIBSSH_VERSION_MAJOR[ ]+[0-9]+")
+    # Older versions of libssh like libssh-0.2 have LIBSSH_VERSION but not LIBSSH_VERSION_MAJOR
+    if(LIBSSH_VERSION_MAJOR)
+      string(REGEX MATCH "[0-9]+" LIBSSH_VERSION_MAJOR ${LIBSSH_VERSION_MAJOR})
+      file(STRINGS ${LIBSSH_INCLUDE_DIR}/libssh/libssh.h LIBSSH_VERSION_MINOR
+        REGEX "#define[ ]+LIBSSH_VERSION_MINOR[ ]+[0-9]+")
+      string(REGEX MATCH "[0-9]+" LIBSSH_VERSION_MINOR ${LIBSSH_VERSION_MINOR})
+      file(STRINGS ${LIBSSH_INCLUDE_DIR}/libssh/libssh.h LIBSSH_VERSION_PATCH
+        REGEX "#define[ ]+LIBSSH_VERSION_MICRO[ ]+[0-9]+")
+      string(REGEX MATCH "[0-9]+" LIBSSH_VERSION_PATCH ${LIBSSH_VERSION_PATCH})
+      set(LIBSSH_VERSION ${LIBSSH_VERSION_MAJOR}.${LIBSSH_VERSION_MINOR}.${LIBSSH_VERSION_PATCH})
+    endif()
+  endif()
 
-# Include dir
-find_path(LIBSSH_INCLUDE_DIR
-	NAMES libssh/libssh.h
-	#HINTS ${PC_LIBSSH_INCLUDEDIR} ${PC_LIBSSH_INCLUDE_DIRS}
-	PATHS ${PC_LIBSSH_PKGCONF_INCLUDE_DIRS}
-)
+  # handle the QUIETLY and REQUIRED arguments and set LIBSSH_FOUND to TRUE if
+  # all listed variables are TRUE and the requested version matches.
+  include(FindPackageHandleStandardArgs)
+  find_package_handle_standard_args(LIBSSH
+    REQUIRED_VARS   LIBSSH_LIBRARIES LIBSSH_INCLUDE_DIRS LIBSSH_VERSION
+    VERSION_VAR     LIBSSH_VERSION)
 
-# The library itself
-find_library(LIBSSH_LIBRARY
-	NAMES ssh
-	#HINTS ${PC_LIBSSH_LIBDIR} ${PC_LIBSSH_LIBRARY_DIRS}
-	PATHS ${PC_LIBSSH_PKGCONF_LIBRARY_DIRS}
-)
+  if(WIN32)
+    set(LIBSSH_DLL_DIR "${LIBSSH_HINTS}/bin"
+      CACHE PATH "Path to libssh DLL"
+    )
+    file(GLOB _libssh_dll RELATIVE "${LIBSSH_DLL_DIR}"
+      "${LIBSSH_DLL_DIR}/libssh.dll"
+    )
+    set(LIBSSH_DLL ${_libssh_dll}
+      # We're storing filenames only. Should we use STRING instead?
+      CACHE FILEPATH "libssh DLL file name"
+    )
+    mark_as_advanced(LIBSSH_DLL_DIR LIBSSH_DLL)
+  endif()
 
-find_library(LIBSSH_THREADS_LIBRARY
-	NAMES ssh_threads
-	PATHS ${PC_LIBSSH_LIBDIR} ${PC_LIBSSH_LIBRARY_DIRS}
-)
+  # show the LIBSSH_INCLUDE_DIRS and LIBSSH_LIBRARIES variables only in the advanced view
+  mark_as_advanced(LIBSSH_INCLUDE_DIRS LIBSSH_LIBRARIES)
 
-include(FindPackageHandleStandardArgs)
-
-find_package_handle_standard_args(LIBSSH DEFAULT_MSG LIBSSH_LIBRARY LIBSSH_INCLUDE_DIR)
-
-if (LIBSSH_THREADS_LIBRARY)
-	set(LIBSSH_LIBRARIES ${LIBSSH_LIBRARY} ${LIBSSH_THREADS_LIBRARY})
-else()
-	set(LIBSSH_LIBRARIES ${LIBSSH_LIBRARY})
 endif()
-set(LIBSSH_INCLUDE_DIRS ${LIBSSH_INCLUDE_DIR})
-
-mark_as_advanced(LIBSSH_INCLUDE_DIR LIBSSH_LIBRARY)
-
