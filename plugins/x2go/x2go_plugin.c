@@ -65,7 +65,6 @@ typedef struct _RemminaPluginX2GoData {
 	int (*orig_handler)(Display *, XErrorEvent *);
 
 	GPid pidx2go;
-	gboolean ready;
 } RemminaPluginX2GoData;
 
 static RemminaPluginService *remmina_plugin_x2go_service = NULL;
@@ -227,7 +226,6 @@ static void remmina_plugin_x2go_on_plug_added(GtkSocket *socket, RemminaProtocol
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 	printf("[%s] remmina_plugin_x2go_on_plug_added socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 	remmina_plugin_x2go_service->protocol_plugin_emit_signal(gp, "connect");
-	gpdata->ready = TRUE;
 	return;
 }
 
