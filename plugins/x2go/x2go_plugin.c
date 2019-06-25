@@ -448,7 +448,7 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 		return FALSE;
 	}
 
-	/* get the window id of the remote nxagent */
+	/* get the window id of the remote x2goagent */
 	if (!remmina_plugin_x2go_monitor_create_notify(gp, "x2goagent"))
 		return FALSE;
 
