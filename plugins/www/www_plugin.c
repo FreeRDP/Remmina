@@ -533,7 +533,7 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 	GError *error = NULL;
 
 	gpdata = (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
-	if (!gpdata->formauthenticated)
+	if (gpdata && !gpdata->formauthenticated)
 		gpdata->formauthenticated = FALSE;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
