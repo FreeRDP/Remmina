@@ -53,3 +53,5 @@ install(FILES 16x16/emblems/remmina-x2go.png DESTINATION ${APPICON16_EMBLEMS_DIR
 
 set(APPICON22_EMBLEMS_DIR "${REMMINA_DATADIR}/icons/hicolor/22x22/emblems")
 install(FILES 22x22/emblems/remmina-x2go.png DESTINATION ${APPICON22_EMBLEMS_DIR})
+
+gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
