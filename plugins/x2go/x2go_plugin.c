@@ -526,14 +526,27 @@ static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
+
+	if (gpdata->thread) {
+		pthread_cancel(gpdata->thread);
+		if (gpdata->thread)
+			pthread_join(gpdata->thread, NULL);
+	}
+
+	if (gpdata->window_id) {
+		remmina_plugin_x2go_remove_window_id(gpdata->window_id);
+	}
+
 	if (gpdata->pidx2go) {
 		kill(gpdata->pidx2go, SIGTERM);
 		g_spawn_close_pid(gpdata->pidx2go);
 		gpdata->pidx2go = 0;
 	}
 
-	if (gpdata->window_id) {
-		remmina_plugin_x2go_remove_window_id(gpdata->window_id);
+	if (gpdata->display) {
+		XSetErrorHandler(gpdata->orig_handler);
+		XCloseDisplay(gpdata->display);
+		gpdata->display = NULL;
 	}
 
 	printf("[%s] remmina_plugin_x2go_close_connection\n", PLUGIN_NAME);
