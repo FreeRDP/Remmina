@@ -571,7 +571,7 @@ static gboolean remmina_plugin_x2go_query_feature(RemminaProtocolWidget* gp, con
  * f) Unused pointer  --->    TODO: used for sensitive
  */
 static const RemminaProtocolSetting remmina_plugin_x2go_basic_settings[] = {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, NULL, NULL, FALSE, NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER, "server", NULL, FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT, "username", N_("User name"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password", N_("Password"), FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO, "command", N_("Startup program"), FALSE,
