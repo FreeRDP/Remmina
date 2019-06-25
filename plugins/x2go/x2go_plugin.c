@@ -497,7 +497,7 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 
 	if (!remmina_plugin_x2go_service->gtksocket_available()) {
 		remmina_plugin_x2go_service->protocol_plugin_set_error(gp,
-			_("Protocol %s is unavailable because required GtkSocket only works under X.org"),
+			_("Protocol %s is unavailable because GtkSocket only works under X.org"),
 			remmina_plugin_x2go.name);
 		return FALSE;
 	}
