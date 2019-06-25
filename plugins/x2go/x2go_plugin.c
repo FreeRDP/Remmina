@@ -70,6 +70,8 @@ typedef struct _RemminaPluginX2GoData {
 
 static RemminaPluginService *remmina_plugin_x2go_service = NULL;
 
+#define REMMINA_PLUGIN_X2GO_FEATURE_GTKSOCKET 1
+
 /* Forward declaration */
 static RemminaProtocolPlugin remmina_plugin_x2go;
 
@@ -560,6 +562,11 @@ static gboolean remmina_plugin_x2go_query_feature(RemminaProtocolWidget* gp, con
 	return TRUE;
 }
 
+static const RemminaProtocolFeature remmina_plugin_x2go_features[] =
+{
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_GTKSOCKET, REMMINA_PLUGIN_X2GO_FEATURE_GTKSOCKET,           NULL,          NULL,        NULL },
+	{ REMMINA_PROTOCOL_FEATURE_TYPE_END,       0,                                               NULL,          NULL,        NULL }
+};
 
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
@@ -596,7 +603,7 @@ static RemminaProtocolPlugin remmina_plugin_x2go = {
 	NULL,                                   // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,    // SSH settings type
 	/* REMMINA_PROTOCOL_SSH_SETTING_NONE,   // SSH settings type */
-	NULL,                                   // Array for available features
+	remmina_plugin_x2go_features,           // Array for available features
 	remmina_plugin_x2go_init,               // Plugin initialization
 	remmina_plugin_x2go_open_connection,    // Plugin open connection
 	remmina_plugin_x2go_close_connection,   // Plugin close connection
