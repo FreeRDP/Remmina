@@ -554,6 +554,13 @@ static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
 	return FALSE;
 }
 
+static gboolean remmina_plugin_x2go_query_feature(RemminaProtocolWidget* gp, const RemminaProtocolFeature* feature)
+{
+	TRACE_CALL(__func__);
+	return TRUE;
+}
+
+
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
  * a) RemminaProtocolSettingType for setting type
@@ -593,7 +600,7 @@ static RemminaProtocolPlugin remmina_plugin_x2go = {
 	remmina_plugin_x2go_init,               // Plugin initialization
 	remmina_plugin_x2go_open_connection,    // Plugin open connection
 	remmina_plugin_x2go_close_connection,   // Plugin close connection
-	NULL,                                   // Query for available features
+	remmina_plugin_x2go__query_feature,     // Query for available features
 	NULL,                                   // Call a feature
 	NULL,                                   // Send a keystroke
 	NULL,                                   // Screenshot
