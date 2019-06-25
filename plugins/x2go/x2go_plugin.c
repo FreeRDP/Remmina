@@ -371,11 +371,11 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 		w = xev.xcreatewindow.window;
 		if (XGetWindowProperty(gpdata->display, w, atom, 0, 255, False, AnyPropertyType, &type, &format, &nitems, &rest,
 			&data) != Success) {
-			printf("[%s] remmina_plugin_x2go_monitor_create_notify: failed to get WM_COMMAND property from X11 window ID [%lx]\n", PLUGIN_NAME, w);
+			printf("[%s] remmina_plugin_x2go_monitor_create_notify: failed to get WM_COMMAND property from X11 window ID [0x%lx]\n", PLUGIN_NAME, w);
 			continue;
 	}
 		if (data)
-			printf("[%s] remmina_plugin_x2go_monitor_create_notify: found X11 window with WM_COMMAND set to '%s'\n", PLUGIN_NAME, (char*)data);
+			printf("[%s] remmina_plugin_x2go_monitor_create_notify: found X11 window with WM_COMMAND set to '%s', window ID is [0x%lx]\n", PLUGIN_NAME, (char*)data, w);
 		if (data && strstr((char*)data, cmd) && remmina_plugin_x2go_try_window_id(w)) {
 			gpdata->window_id = w;
 			XFree(data);
