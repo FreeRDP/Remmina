@@ -579,7 +579,7 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 		/* Load finished, we can now set user/password
 		 * in the html form */
 		g_debug("Load finished");
-		if (gpdata->formauthenticated == TRUE)
+		if (gpdata && gpdata->formauthenticated == TRUE)
 			break;
 
 		if (remmina_plugin_service->file_get_string(remminafile, "username") ||
