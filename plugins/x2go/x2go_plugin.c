@@ -64,7 +64,7 @@ typedef struct _RemminaPluginX2GoData {
 	GPid pidx2go;
 } RemminaPluginX2GoData;
 
-static RemminaPluginService *remmina_plugin_x2go_service = NULL;
+static RemminaPluginService *remmina_plugin_service = NULL;
 
 #define REMMINA_PLUGIN_X2GO_FEATURE_GTKSOCKET 1
 
@@ -156,12 +156,48 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host, gint sshport, gchar *
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 	GError *error = NULL;
+	gchar *s_username, *s_password;
+	gint ret;
+	gboolean save;
+	gboolean disablepasswordstoring;
+	RemminaFile *remminafile;
 
 	gchar **envp;
 
 	gchar *argv[50];
 	gint argc;
 	gint i;
+
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
+	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
+	ret = remmina_plugin_service->protocol_plugin_init_authuserpwd(gp, FALSE, !disablepasswordstoring);
+
+	if (ret == GTK_RESPONSE_OK) {
+		s_username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
+		s_password = remmina_plugin_service->protocol_plugin_init_get_password(gp);
+		if (remmina_plugin_service->protocol_plugin_init_get_savepassword(gp))
+			remmina_plugin_service->file_set_string(remminafile, "password", s_password);
+
+		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
+		if (save) {
+			// User has requested to save credentials. We put all the new credentials
+			// into remminafile->settings. They will be saved later, on successful connection, by
+			// rcw.c
+
+			remmina_plugin_service->file_set_string(remminafile, "username", s_username);
+			remmina_plugin_service->file_set_string(remminafile, "password", s_password);
+		}
+		if (s_username) {
+			g_stpcpy(username, s_username);
+			g_free(s_username);
+		}
+		if (s_password) {
+			g_stpcpy(password, s_password);
+			g_free(s_password);
+		}
+
+	}
 
 	argc = 0;
 
@@ -222,7 +258,7 @@ static void remmina_plugin_x2go_on_plug_added(GtkSocket *socket, RemminaProtocol
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 	printf("[%s] remmina_plugin_x2go_on_plug_added socket %d\n", PLUGIN_NAME, gpdata->socket_id);
-	remmina_plugin_x2go_service->protocol_plugin_emit_signal(gp, "connect");
+	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 	return;
 }
 
@@ -230,7 +266,7 @@ static void remmina_plugin_x2go_on_plug_removed(GtkSocket *socket, RemminaProtoc
 {
 	TRACE_CALL(__func__);
 	printf("[%s] remmina_plugin_x2go_on_plug_removed\n", PLUGIN_NAME);
-	remmina_plugin_x2go_service->protocol_plugin_close_connection(gp);
+	remmina_plugin_service->protocol_plugin_close_connection(gp);
 }
 
 static void remmina_plugin_x2go_init(RemminaProtocolWidget *gp)
@@ -243,7 +279,7 @@ static void remmina_plugin_x2go_init(RemminaProtocolWidget *gp)
 	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
 
 	gpdata->socket = gtk_socket_new();
-	remmina_plugin_x2go_service->protocol_plugin_register_hostkey(gp, gpdata->socket);
+	remmina_plugin_service->protocol_plugin_register_hostkey(gp, gpdata->socket);
 	gtk_widget_show(gpdata->socket);
 
 	g_signal_connect(G_OBJECT(gpdata->socket), "plug-added", G_CALLBACK(remmina_plugin_x2go_on_plug_added), gp);
@@ -396,13 +432,13 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 	printf("[%s] remmina_plugin_x2go_open_connection\n", PLUGIN_NAME);
 #define GET_PLUGIN_STRING(value) \
-		g_strdup(remmina_plugin_x2go_service->file_get_string(remminafile, value))
+		g_strdup(remmina_plugin_service->file_get_string(remminafile, value))
 #define GET_PLUGIN_PASSWORD(value) \
 		GET_PLUGIN_STRING(value)
 #define GET_PLUGIN_INT(value, default_value) \
-		remmina_plugin_x2go_service->file_get_int(remminafile, value, default_value)
+		remmina_plugin_service->file_get_int(remminafile, value, default_value)
 #define GET_PLUGIN_BOOLEAN(value) \
-		remmina_plugin_x2go_service->file_get_int(remminafile, value, FALSE)
+		remmina_plugin_service->file_get_int(remminafile, value, FALSE)
 
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);;
 	RemminaFile *remminafile;
@@ -418,11 +454,11 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 	const gchar *default_dsp_name = gdk_display_get_name(default_dsp);
 	printf("[%s] Default display is %s\n", PLUGIN_NAME, default_dsp_name);
 
-	remminafile = remmina_plugin_x2go_service->protocol_plugin_get_file(gp);
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	servstr = GET_PLUGIN_STRING("server");
 	if ( servstr ) {
-		remmina_plugin_x2go_service->get_server_port(servstr, 22, &host, &sshport);
+		remmina_plugin_service->get_server_port(servstr, 22, &host, &sshport);
 	} else {
 		return FALSE;
 	}
@@ -436,21 +472,21 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 	kbdlayout = GET_PLUGIN_STRING("kbdlayout");
 	kbdtype = GET_PLUGIN_STRING("kbdtype");
 
-	width = remmina_plugin_x2go_service->protocol_plugin_get_width(gp);
-	height = remmina_plugin_x2go_service->protocol_plugin_get_height(gp);
+	width = remmina_plugin_service->protocol_plugin_get_width(gp);
+	height = remmina_plugin_service->protocol_plugin_get_height(gp);
 	if( (width > 0) && (height  > 0))
 		res = g_strdup_printf ("%dx%d", width, height);
 	else
 		res = "800x600";
 	printf("[%s] remmina_plugin_x2go_open_connection: guessing optimal X2Go session geometry %s\n", PLUGIN_NAME, res);
 
-	remmina_plugin_x2go_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
+	remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 
 	if (!remmina_plugin_x2go_start_create_notify(gp))
 		return FALSE;
 
 	if (!remmina_plugin_x2go_exec_x2go(host, sshport, username, password, command, kbdlayout, kbdtype, res, gp)) {
-		remmina_plugin_x2go_service->protocol_plugin_set_error(gp, "%s", error->message);
+		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
 		return FALSE;
 	}
 
@@ -475,7 +511,7 @@ static gboolean remmina_plugin_x2go_main(RemminaProtocolWidget *gp)
 //	if (!ret) {
 //			err = remmina_x2go_session_get_error(gpdata->nx);
 //			if (err) {
-//			remmina_plugin_x2go_service->protocol_plugin_set_error(gp, "%s", err);
+//			remmina_plugin_service->protocol_plugin_set_error(gp, "%s", err);
 //		}
 //	}
 
@@ -490,7 +526,7 @@ static gpointer remmina_plugin_x2go_main_thread(gpointer data)
 
 	CANCEL_ASYNC
 	if (!remmina_plugin_x2go_main((RemminaProtocolWidget*)data)) {
-		IDLE_ADD((GSourceFunc)remmina_plugin_x2go_service->protocol_plugin_close_connection, data);
+		IDLE_ADD((GSourceFunc)remmina_plugin_service->protocol_plugin_close_connection, data);
 	}
 	return NULL;
 }
@@ -501,25 +537,25 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 	gint width, height;
 
-	if (!remmina_plugin_x2go_service->gtksocket_available()) {
-		remmina_plugin_x2go_service->protocol_plugin_set_error(gp,
+	if (!remmina_plugin_service->gtksocket_available()) {
+		remmina_plugin_service->protocol_plugin_set_error(gp,
 			_("Protocol %s is unavailable because GtkSocket only works under X.org"),
 			remmina_plugin_x2go.name);
 		return FALSE;
 	}
 
-	width = remmina_plugin_x2go_service->get_profile_remote_width(gp);
-	height = remmina_plugin_x2go_service->get_profile_remote_height(gp);
+	width = remmina_plugin_service->get_profile_remote_width(gp);
+	height = remmina_plugin_service->get_profile_remote_height(gp);
 
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 
-	remmina_plugin_x2go_service->protocol_plugin_set_width(gp, width);
-	remmina_plugin_x2go_service->protocol_plugin_set_height(gp, height);
+	remmina_plugin_service->protocol_plugin_set_width(gp, width);
+	remmina_plugin_service->protocol_plugin_set_height(gp, height);
 	gtk_widget_set_size_request(GTK_WIDGET(gp), width, height);
 
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 	if (pthread_create(&gpdata->thread, NULL, remmina_plugin_x2go_main_thread, gp)) {
-		remmina_plugin_x2go_service->protocol_plugin_set_error(gp,
+		remmina_plugin_service->protocol_plugin_set_error(gp,
 		        "Failed to initialize pthread. Falling back to non-thread mode...");
 		gpdata->thread = 0;
 		return FALSE;
@@ -556,7 +592,7 @@ static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
 	}
 
 	printf("[%s] remmina_plugin_x2go_close_connection\n", PLUGIN_NAME);
-	remmina_plugin_x2go_service->protocol_plugin_emit_signal(gp, "disconnect");
+	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 	return FALSE;
 }
 
@@ -622,7 +658,7 @@ G_MODULE_EXPORT gboolean
 remmina_plugin_entry(RemminaPluginService *service)
 {
 	TRACE_CALL("remmina_plugin_entry");
-	remmina_plugin_x2go_service = service;
+	remmina_plugin_service = service;
 
 	bindtextdomain(GETTEXT_PACKAGE, REMMINA_RUNTIME_LOCALEDIR);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
