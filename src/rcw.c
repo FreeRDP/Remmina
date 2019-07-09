@@ -1687,10 +1687,11 @@ void rcw_toolbar_preferences_check(RemminaConnectionObject *cnnobj,
 	}
 }
 
-static void rcw_toolbar_preferences(GtkWidget *widget, RemminaConnectionObject *cnnobj)
+static void rcw_toolbar_preferences(GtkWidget *widget, RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
-	RemminaConnectionWindowPriv *priv = cnnobj->cnnwin->priv;
+	RemminaConnectionWindowPriv *priv;
+	RemminaConnectionObject *cnnobj;
 	const RemminaProtocolFeature *feature;
 	GtkWidget *menu;
 	GtkWidget *menuitem;
@@ -1698,8 +1699,10 @@ static void rcw_toolbar_preferences(GtkWidget *widget, RemminaConnectionObject *
 	gchar *domain;
 	gboolean enabled;
 
-	if (priv->toolbar_is_reconfiguring)
+	if (cnnwin->priv->toolbar_is_reconfiguring)
 		return;
+	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
+	priv = cnnobj->cnnwin->priv;
 
 	if (!gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(widget)))
 		return;
@@ -1737,8 +1740,7 @@ static void rcw_toolbar_preferences(GtkWidget *widget, RemminaConnectionObject *
 
 	g_free(domain);
 
-	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(rcw_toolbar_preferences_popdown),
-			 cnnobj);
+	g_signal_connect(G_OBJECT(menu), "deactivate", G_CALLBACK(rcw_toolbar_preferences_popdown), cnnwin);
 
 #if GTK_CHECK_VERSION(3, 22, 0)
 	gtk_menu_popup_at_widget(GTK_MENU(menu), widget,
