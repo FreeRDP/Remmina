@@ -34,20 +34,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     <property name="can_focus">False</property>
     <property name="icon_name">edit-find-symbolic</property>
   </object>
-  <object class="GtkImage" id="image_make_default">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">emblem-default-symbolic</property>
-  </object>
   <object class="GtkImage" id="image_new">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">document-new-symbolic</property>
-  </object>
-  <object class="GtkImage" id="ustat_toggle_image">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">mail-send-receive-symbolic</property>
   </object>
   <object class="GtkImage" id="view_toggle_icon">
     <property name="visible">True</property>
@@ -134,34 +124,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
           <packing>
             <property name="pack_type">end</property>
             <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="ustats_toggle">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Do you allow Remmina to send periodic anonymous usage statistics to its developers?</property>
-            <property name="image">ustat_toggle_image</property>
-            <signal name="toggled" handler="remmina_main_on_click_ustat_toggle" swapped="no"/>
-          </object>
-          <packing>
-            <property name="pack_type">end</property>
-            <property name="position">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="button_make_default">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Set Remmina as the default Remote Desktop Client</property>
-            <property name="action_name">main.default</property>
-            <property name="image">image_make_default</property>
-          </object>
-          <packing>
-            <property name="pack_type">end</property>
-            <property name="position">4</property>
           </packing>
         </child>
       </object>

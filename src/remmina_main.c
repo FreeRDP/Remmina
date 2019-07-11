@@ -61,7 +61,6 @@
 #include "remmina_external_tools.h"
 #include "remmina_unlock.h"
 #include "remmina/remmina_trace_calls.h"
-#include "remmina_stats_sender.h"
 
 static RemminaMain *remminamain;
 
@@ -1241,28 +1240,9 @@ static void remmina_main_init(void)
 void remmina_main_on_show(GtkWidget *w, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	if (remmina_pref.periodic_usage_stats_permitted == TRUE) {
-		gtk_toggle_button_set_active(remminamain->ustats_toggle, TRUE);
-	}
-
 #ifdef SNAP_BUILD
 	remmina_main_show_snap_welcome();
 #endif
-
-}
-
-void remmina_main_on_click_ustat_toggle()
-{
-	TRACE_CALL(__func__);
-	if (gtk_toggle_button_get_active(remminamain->ustats_toggle)) {
-		remmina_pref.periodic_usage_stats_permitted = TRUE;
-		if (remmina_pref_save()) {
-			remmina_stats_sender_schedule();
-		}
-	} else {
-		remmina_pref.periodic_usage_stats_permitted = FALSE;
-		remmina_pref_save();
-	}
 
 }
 
@@ -1285,16 +1265,11 @@ GtkWidget* remmina_main_new(void)
 	}
 	/* New Button */
 	remminamain->button_new = GTK_BUTTON(GET_OBJECT("button_new"));
-	remminamain->button_make_default = GTK_BUTTON(GET_OBJECT("button_make_default"));
 	if (kioskmode && kioskmode == TRUE)
 		gtk_widget_set_sensitive(GTK_WIDGET(remminamain->button_new), FALSE);
-	if (kioskmode && kioskmode == TRUE)
-		gtk_widget_set_sensitive(GTK_WIDGET(remminamain->button_make_default), FALSE);
 	/* Search bar */
 	remminamain->search_toggle = GTK_TOGGLE_BUTTON(GET_OBJECT("search_toggle"));
 	remminamain->search_bar = GTK_SEARCH_BAR(GET_OBJECT("search_bar"));
-	/* Enable stats */
-	remminamain->ustats_toggle = GTK_TOGGLE_BUTTON(GET_OBJECT("ustats_toggle"));
 	/* view mode list/tree */
 	remminamain->view_toggle_button = GTK_TOGGLE_BUTTON(GET_OBJECT("view_toggle_button"));
 	if (kioskmode && kioskmode == TRUE)
