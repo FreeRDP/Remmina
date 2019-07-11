@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-07-09 09:55+0000\n"
+"POT-Creation-Date: 2019-07-11 13:18+0000\n"
 "PO-Revision-Date: 2019-06-20 22:17+0300\n"
 "Last-Translator: Soltys Sergey <treefeed@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -46,7 +46,7 @@ msgstr "Настройка"
 msgid "Secret"
 msgstr "Ключ безопасности"
 
-#: src/remmina_plugin_manager.c:390 data/ui/remmina_main.glade:394
+#: src/remmina_plugin_manager.c:390 data/ui/remmina_main.glade:356
 msgid "Plugins"
 msgstr "Модули"
 
@@ -57,7 +57,7 @@ msgstr "_OK"
 
 #. Profile: Name
 #: src/remmina_plugin_manager.c:408 src/remmina_file_editor.c:1419
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:529
+#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:491
 #: data/ui/remmina_mpc.glade:314
 msgid "Name"
 msgstr "Название"
@@ -110,7 +110,7 @@ msgstr "Отмена"
 #. A button to confirm reading
 #: src/remmina_message_panel.c:199 data/ui/remmina_string_list.glade:8
 #: data/ui/remmina_string_list.glade:9 data/ui/remmina_string_list.glade:63
-#: data/ui/remmina_news.glade:45 data/ui/remmina_preferences.glade:33
+#: data/ui/remmina_news.glade:24 data/ui/remmina_preferences.glade:33
 #: data/ui/remmina_preferences.glade:34 data/ui/remmina_preferences.glade:60
 msgid "Close"
 msgstr "Закрыть"
@@ -257,7 +257,7 @@ msgstr "Захватывать все нажатия клавиш"
 msgid "Preferences"
 msgstr "Параметры"
 
-#: src/rcw.c:2193 src/rcw.c:2194 data/ui/remmina_main.glade:316
+#: src/rcw.c:2193 src/rcw.c:2194 data/ui/remmina_main.glade:278
 msgid "Tools"
 msgstr "Инструменты"
 
@@ -371,7 +371,7 @@ msgstr "Загрузить с сервера"
 msgid "Upload to server"
 msgstr "Выгрузить на сервер"
 
-#: src/remmina_ftp_client.c:790 data/ui/remmina_main.glade:306
+#: src/remmina_ftp_client.c:790 data/ui/remmina_main.glade:268
 msgid "Delete"
 msgstr "Удалить"
 
@@ -393,7 +393,7 @@ msgstr "Пользователь"
 
 #. Profile: Group
 #: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1444
-#: data/ui/remmina_main.glade:551 data/ui/remmina_mpc.glade:99
+#: data/ui/remmina_main.glade:513 data/ui/remmina_mpc.glade:99
 #: data/ui/remmina_mpc.glade:325
 msgid "Group"
 msgstr "Группа"
@@ -427,7 +427,7 @@ msgstr "Пожалуйста, введите в формате 'ширинаxв�
 msgid "Open Main Window"
 msgstr "Открыть основное окно программы"
 
-#: src/remmina_icon.c:144 data/ui/remmina_main.glade:404
+#: src/remmina_icon.c:144 data/ui/remmina_main.glade:366
 msgid "_Preferences"
 msgstr "_Параметры"
 
@@ -439,7 +439,7 @@ msgstr "_Описание"
 msgid "Enable Service Discovery"
 msgstr "Включить службу обнаружения"
 
-#: src/remmina_icon.c:172 data/ui/remmina_main.glade:495
+#: src/remmina_icon.c:172 data/ui/remmina_main.glade:457
 msgid "_Quit"
 msgstr "_Выйти"
 
@@ -452,7 +452,7 @@ msgstr "Мини-программа Remmina"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Подключение к удалённым рабочим столам через меню мини-программы"
 
-#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1184
+#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1183
 msgid "Remmina Remote Desktop Client"
 msgstr "Клиент удалённого рабочего стола Remmina"
 
@@ -525,7 +525,7 @@ msgid "_Open"
 msgstr "_Открыть"
 
 #: src/remmina_file_editor.c:402 src/remmina_file_editor.c:876
-#: src/remmina_protocol_widget.c:1627 data/ui/remmina_main.glade:565
+#: src/remmina_protocol_widget.c:1627 data/ui/remmina_main.glade:527
 msgid "Server"
 msgstr "Сервер"
 
@@ -631,11 +631,11 @@ msgstr "Параметры удалённого рабочего стола"
 msgid "Save as Default"
 msgstr "Сохранить \"по умолчанию\""
 
-#: src/remmina_file_editor.c:1302 src/remmina_main.c:967
+#: src/remmina_file_editor.c:1302 src/remmina_main.c:966
 msgid "_Save"
 msgstr "_Сохранить"
 
-#: src/remmina_file_editor.c:1307 data/ui/remmina_main.glade:269
+#: src/remmina_file_editor.c:1307 data/ui/remmina_main.glade:231
 msgid "Connect"
 msgstr "Подключить"
 
@@ -1097,7 +1097,7 @@ msgid "Failed to create pty device."
 msgstr "Не удалось создать pty устройство: %s."
 
 #. Show in the status bar the total number of connections found
-#: src/remmina_main.c:636
+#: src/remmina_main.c:635
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
@@ -1105,12 +1105,12 @@ msgstr[0] "Всего %i подключение."
 msgstr[1] "Всего %i подключения."
 msgstr[2] "Всего %i подключений."
 
-#: src/remmina_main.c:818
+#: src/remmina_main.c:817
 #, c-format
 msgid "Are you sure to delete '%s'"
 msgstr "Вы действительно хотите удалить '%s' ?"
 
-#: src/remmina_main.c:917
+#: src/remmina_main.c:916
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -1119,15 +1119,15 @@ msgstr ""
 "Не удалось импортировать:\n"
 "%s"
 
-#: src/remmina_main.c:944 data/ui/remmina_main.glade:340
+#: src/remmina_main.c:943 data/ui/remmina_main.glade:302
 msgid "Import"
 msgstr "Импортировать"
 
-#: src/remmina_main.c:974
+#: src/remmina_main.c:973
 msgid "This protocol does not support exporting."
 msgstr "Этот протокол не поддерживает экспортирование."
 
-#: src/remmina_main.c:1186
+#: src/remmina_main.c:1185
 msgid "Remmina Kiosk"
 msgstr "Remmina Киоск"
 
@@ -1154,7 +1154,7 @@ msgstr ""
 msgid "Start Remmina in Kiosk mode"
 msgstr "Запустить Remmina в режиме Киоска"
 
-#: src/remmina.c:89 data/ui/remmina_main.glade:79
+#: src/remmina.c:89 data/ui/remmina_main.glade:69
 msgid "Create a new connection profile"
 msgstr "Создать новый профиль соединения"
 
@@ -1279,7 +1279,7 @@ msgstr "Вставить (Host+v)"
 msgid "Save session to file"
 msgstr "Сохранить сессию в файл"
 
-#: src/remmina_ssh_plugin.c:1035 data/ui/remmina_main.glade:286
+#: src/remmina_ssh_plugin.c:1035 data/ui/remmina_main.glade:248
 msgid "Copy"
 msgstr "Копировать"
 
@@ -2195,6 +2195,56 @@ msgstr "О Remmina"
 msgid "Remmina Web Site"
 msgstr "Сайт Remmina"
 
+#: data/ui/remmina_news.glade:63
+msgid ""
+"<big>What's new in Remmina <b>1.3.5</b>.</big>\n"
+"\n"
+"<tt>\n"
+"* News widget.\n"
+"* Custom profile file names.\n"
+"* Master password.\n"
+"* Cappuccino &amp; Brioche plugin.\n"
+"</tt>\n"
+"\n"
+"<span>\n"
+"More details can be found in the <a href=\"https://www.remmina.org\" title="
+"\"<i>v1.3.5</i> full changelog\">changelog.</a>\n"
+"</span>"
+msgstr ""
+
+#: data/ui/remmina_news.glade:117
+#, fuzzy
+msgid "Send anonymous statistics to remmina.org"
+msgstr "Отправлять статистику на remmina.org"
+
+#: data/ui/remmina_news.glade:141
+#, fuzzy
+msgid "Make Remmina the default Remote Desktop Client"
+msgstr ""
+"Установить Remmina в качестве клиента удалённого рабочего стола по-умолчанию"
+
+#: data/ui/remmina_news.glade:150
+#, fuzzy
+msgid "Apply"
+msgstr "Мини-программа"
+
+#: data/ui/remmina_news.glade:174
+msgid "<big>Important settings</big>"
+msgstr ""
+
+#: data/ui/remmina_news.glade:200
+msgid ""
+"<span>\n"
+"<b>Remmina is developed by brave contributors in their free time, be brave "
+"as well  <a href=\"https://remmina.org/donations/\" title=\"Remmina donations"
+"\">rewarding our heros!</a></b>\n"
+"</span>\n"
+msgstr ""
+
+#: data/ui/remmina_news.glade:220
+msgid "<big>Contribute</big>"
+msgstr ""
+
 #: data/ui/remmina_snap_info_dialog.glade:46
 msgid ""
 "It seems that Remmina is running on your system as a SNAP package. To enable "
@@ -2242,91 +2292,78 @@ msgstr "Разблокировать Remmina"
 msgid "Master password secret key"
 msgstr "Секретный ключ мастер-пароля"
 
-#: data/ui/remmina_main.glade:91
+#: data/ui/remmina_main.glade:81
 msgid "Show search bar"
 msgstr "Показать строку поиска"
 
-#: data/ui/remmina_main.glade:116
+#: data/ui/remmina_main.glade:106
 msgid "Actions"
 msgstr "Действия"
 
-#: data/ui/remmina_main.glade:130
+#: data/ui/remmina_main.glade:120
 msgid "Toggle view"
 msgstr "Переключить вид"
 
-#: data/ui/remmina_main.glade:144
-msgid ""
-"Do you allow Remmina to send periodic anonymous usage statistics to its "
-"developers?"
-msgstr ""
-"Хотите разрешить Remmina отсылать периодическую анонимную статистику её "
-"разработчикам?"
-
-#: data/ui/remmina_main.glade:158
-msgid "Set Remmina as the default Remote Desktop Client"
-msgstr ""
-"Установить Remmina в качестве клиента удалённого рабочего стола по-умолчанию"
-
-#: data/ui/remmina_main.glade:206
+#: data/ui/remmina_main.glade:168
 msgid "search string or server name/ip address for quick connect"
 msgstr "строки поиска или имя сервера/IP адресс для быстрого соединения"
 
-#: data/ui/remmina_main.glade:210 data/ui/remmina_main.glade:212
+#: data/ui/remmina_main.glade:172 data/ui/remmina_main.glade:174
 msgid "Server name or IP address"
 msgstr "Имя сервера или IP адресс"
 
-#: data/ui/remmina_main.glade:211 data/ui/remmina_main.glade:213
+#: data/ui/remmina_main.glade:173 data/ui/remmina_main.glade:175
 #: data/ui/remmina_preferences.glade:215
 msgid "Clear"
 msgstr "Очистить"
 
-#: data/ui/remmina_main.glade:296
+#: data/ui/remmina_main.glade:258
 msgid "Edit"
 msgstr "Редактировать"
 
-#: data/ui/remmina_main.glade:350
+#: data/ui/remmina_main.glade:312
 msgid "Export"
 msgstr "Экспортировать"
 
-#: data/ui/remmina_main.glade:360
+#: data/ui/remmina_main.glade:322
 msgid "Multi password changer"
 msgstr "Множественная смена паролей"
 
-#: data/ui/remmina_main.glade:377
+#: data/ui/remmina_main.glade:339
 msgid "Debug Window"
 msgstr "Окно отладки"
 
-#: data/ui/remmina_main.glade:422
+#: data/ui/remmina_main.glade:384
 msgid "Homepage"
 msgstr "Домашняя страница"
 
-#: data/ui/remmina_main.glade:432
+#: data/ui/remmina_main.glade:394
 msgid "Online Wiki"
 msgstr "Он-лайн Вики"
 
 #. Online Remmina community, like reddit, facebook, etc
-#: data/ui/remmina_main.glade:442
+#: data/ui/remmina_main.glade:404
 msgid "Online Community"
 msgstr "Он-лайн сообщество"
 
-#: data/ui/remmina_main.glade:452
+#: data/ui/remmina_main.glade:414
 msgid "Donations"
 msgstr "Пожертвования"
 
-#: data/ui/remmina_main.glade:462
+#: data/ui/remmina_main.glade:424
 msgid "About"
 msgstr "Описание"
 
-#: data/ui/remmina_main.glade:478
+#: data/ui/remmina_main.glade:440
 msgid "Set as default remote desktop client"
 msgstr "Установить в качестве клиента удалённого рабочего стола по-умолчанию"
 
 # Pluggin like entity or plug-in as action?
-#: data/ui/remmina_main.glade:579
+#: data/ui/remmina_main.glade:541
 msgid "Plugin"
 msgstr "Модуль"
 
-#: data/ui/remmina_main.glade:593
+#: data/ui/remmina_main.glade:555
 msgid "Last time used"
 msgstr "Последний раз использовано"
 
@@ -2899,3 +2936,4 @@ msgstr "Выбор файла цветовой схемы терминала"
 #: data/ui/remmina_preferences.glade:2178
 msgid "Terminal"
 msgstr "Терминал"
+
