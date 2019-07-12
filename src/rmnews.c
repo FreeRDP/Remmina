@@ -39,6 +39,7 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 #include <gio/gio.h>
+#include <gio/gdesktopappinfo.h>
 #include <glib/gi18n.h>
 #include <libsoup/soup.h>
 
@@ -47,6 +48,7 @@
 #include "remmina_public.h"
 #include "remmina_utils.h"
 #include "remmina_scheduler.h"
+#include "remmina_stats_sender.h"
 #include "rmnews.h"
 
 /* Neas file buffer */
@@ -66,6 +68,59 @@ static RemminaNewsDialog *rmnews_news_dialog;
 static SoupSession *session;
 static const gchar *rmnews_url = NULL;
 static const gchar *output_file_path = NULL;
+
+static
+const gchar *supported_mime_types[] = {
+  "x-scheme-handler/rdp",
+  "x-scheme-handler/spice",
+  "x-scheme-handler/vnc",
+  "x-scheme-handler/remmina",
+  "application/x-remmina",
+  NULL
+};
+
+
+void rmnews_stats_switch_state_set_cb()
+{
+	TRACE_CALL(__func__);
+	if (gtk_switch_get_active(rmnews_news_dialog->rmnews_stats_switch)) {
+		remmina_pref.periodic_usage_stats_permitted = TRUE;
+		if (remmina_pref_save()) {
+			remmina_stats_sender_schedule();
+		}
+	} else {
+		remmina_pref.periodic_usage_stats_permitted = FALSE;
+		remmina_pref_save();
+	}
+
+}
+
+void rmnews_defaultcl_on_click()
+{
+	TRACE_CALL(__func__);
+	g_autoptr(GError) error = NULL;
+	GDesktopAppInfo *desktop_info;
+	GAppInfo *info = NULL;
+	g_autofree gchar *id = g_strconcat (REMMINA_APP_ID, ".desktop", NULL);
+	int i;
+
+	desktop_info = g_desktop_app_info_new (id);
+	if (!desktop_info)
+		return;
+
+	info = G_APP_INFO (desktop_info);
+
+	for (i = 0; supported_mime_types[i]; i++) {
+		if (!g_app_info_set_as_default_for_type (info, supported_mime_types[i], &error))
+			g_warning ("Failed to set '%s' as the default application for secondary content type '%s': %s",
+					g_app_info_get_name (info), supported_mime_types[i], error->message);
+		else
+			g_debug ("Set '%s' as the default application for '%s'",
+					g_app_info_get_name (info),
+					supported_mime_types[i]);
+	}
+}
+
 
 static gchar *rmnews_get_file_contents(gchar *path)
 {
@@ -102,6 +157,13 @@ static gint rmnews_show_news(GtkWindow *parent)
 
 	rmnews_news_dialog->rmnews_text_view = GTK_TEXT_VIEW(GET_OBJ("rmnews_text_view"));
 	rmnews_news_dialog->rmnews_label = GTK_LABEL(GET_OBJ("rmnews_label"));
+	rmnews_news_dialog->rmnews_stats_label = GTK_LABEL(GET_OBJ("rmnews_stats_label"));
+	rmnews_news_dialog->rmnews_stats_switch = GTK_SWITCH(GET_OBJ("rmnews_stats_switch"));
+	if (remmina_pref.periodic_usage_stats_permitted == TRUE) {
+		gtk_switch_set_active(rmnews_news_dialog->rmnews_stats_switch, TRUE);
+	}
+	rmnews_news_dialog->rmnews_defaultcl_label = GTK_LABEL(GET_OBJ("rmnews_defaultcl_label"));
+	rmnews_news_dialog->rmnews_defaultcl_button = GTK_BUTTON(GET_OBJ("rmnews_defaultcl_switch"));
 	rmnews_news_dialog->rmnews_button_close = GTK_BUTTON(GET_OBJ("rmnews_button_close"));
 	gtk_widget_set_can_default(GTK_WIDGET(rmnews_news_dialog->rmnews_button_close), TRUE);
 	gtk_widget_grab_default(GTK_WIDGET(rmnews_news_dialog->rmnews_button_close));
