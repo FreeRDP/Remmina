@@ -258,7 +258,7 @@ msgstr "Værktøjer"
 
 #: src/rcw.c:2206
 msgid "Duplicate current connection"
-msgstr ""
+msgstr "Dupliker nuværende forbindelse"
 
 #: src/rcw.c:2214 data/ui/remmina_preferences.glade:1083
 msgid "Screenshot"
@@ -889,7 +889,7 @@ msgstr "Konfigurer tastetrykkene"
 
 #: src/remmina_pref_dialog.c:443
 msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr ""
+msgstr "libsodium >= 1.9.0 kræves for at bruge hovedadgangskode"
 
 #: src/remmina_ssh.c:202
 #, c-format
@@ -1321,7 +1321,7 @@ msgstr "Aktivér logning af SSH-session ved afslutning"
 
 #: src/remmina_ssh_plugin.c:1086
 msgid "Enable terminal audible bell"
-msgstr ""
+msgstr "Aktivér klokke med lyd i terminalen"
 
 #: src/remmina_ssh_plugin.c:1087
 msgid "Enable SSH compression"
@@ -1559,6 +1559,9 @@ msgid ""
 "You requested an H.264 GFX mode for server %s, but your libfreerdp does not "
 "support H.264. Please use a non-AVC Color Depth setting."
 msgstr ""
+"Du anmodede om en H.264 GFX-tilstand for serveren %s, men din libfreerdp "
+"understøtter ikke H.264. Brug venligst en farvedybdeindstilling som ikke er "
+"AVC."
 
 #: plugins/rdp/rdp_plugin.c:1325
 #, c-format
@@ -1930,7 +1933,7 @@ msgstr "Udfør en kommando"
 #: plugins/nx/nx_plugin.c:585 plugins/xdmcp/xdmcp_plugin.c:264
 #, c-format
 msgid "Protocol %s is unavailable because GtkSocket only works under X.Org"
-msgstr ""
+msgstr "Protokollen %s er utilgængelig da GtkSocket kun virker under X.Org"
 
 #: plugins/nx/nx_plugin.c:718 plugins/vnc/vnc_plugin.c:1917
 msgid "Disable encryption"
@@ -2097,55 +2100,55 @@ msgstr "Invitation til skrivebordsdeling"
 
 #: plugins/www/www_plugin.c:97
 msgid "File downloaded"
-msgstr ""
+msgstr "Fil downloadet"
 
 #: plugins/www/www_plugin.c:783
 msgid "URL (http://address or https://address)"
-msgstr ""
+msgstr "URL (http://adresse eller https://adresse)"
 
 #: plugins/www/www_plugin.c:784
 msgid "Username"
-msgstr ""
+msgstr "Brugernavn"
 
 #: plugins/www/www_plugin.c:800
 msgid "User Agent"
-msgstr ""
+msgstr "User agent"
 
 #: plugins/www/www_plugin.c:801
 msgid "Enable Java support"
-msgstr ""
+msgstr "Aktivér understøttelse af Java"
 
 #: plugins/www/www_plugin.c:802
 msgid "Enable smooth scrolling"
-msgstr ""
+msgstr "Aktivér blød rulning"
 
 #: plugins/www/www_plugin.c:803
 msgid "Enable Spatial Navigation"
-msgstr ""
+msgstr "Aktivér rumlig navigering"
 
 #: plugins/www/www_plugin.c:804
 msgid "Enable support for plugins"
-msgstr ""
+msgstr "Aktivér understøttelse af plugins"
 
 #: plugins/www/www_plugin.c:805
 msgid "Enable support for WebGL"
-msgstr ""
+msgstr "Aktivér understøttelse af WebGL"
 
 #: plugins/www/www_plugin.c:806
 msgid "Enable support for WebAudio"
-msgstr ""
+msgstr "Aktivér understøttelse af WebAudio"
 
 #: plugins/www/www_plugin.c:807
 msgid "Ignore TLS errors"
-msgstr ""
+msgstr "Ignorer fejl for TLS"
 
 #: plugins/www/www_plugin.c:810
 msgid "Enable Web Inspector"
-msgstr ""
+msgstr "Aktivér webinspektør"
 
 #: plugins/www/www_config.h:43
 msgid "Remmina Browser Plugin"
-msgstr ""
+msgstr "Remmina-browserplugin"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
@@ -2257,15 +2260,15 @@ msgstr "Tryk venligst på en ny tast …"
 
 #: data/ui/remmina_unlock.glade:60
 msgid "Unlock"
-msgstr ""
+msgstr "Lås op"
 
 #: data/ui/remmina_unlock.glade:94
 msgid "Unlock Remmina"
-msgstr ""
+msgstr "Lås op for Remmina"
 
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password secret key"
-msgstr ""
+msgstr "Hemmelig nøgle for hovedadgangskode"
 
 #: data/ui/remmina_main.glade:81
 msgid "Show search bar"
@@ -2279,7 +2282,19 @@ msgstr "Handlinger"
 msgid "Toggle view"
 msgstr "Visning til/fra"
 
-#: data/ui/remmina_main.glade:168
+#: data/ui/remmina_main.glade:144
+msgid ""
+"Do you allow Remmina to send periodic anonymous usage statistics to its "
+"developers?"
+msgstr ""
+"Vil du give Remmina tilladelse til periodisk at sende anonym "
+"anvendelsesstatistik til dets udviklere?"
+
+#: data/ui/remmina_main.glade:158
+msgid "Set Remmina as the default Remote Desktop Client"
+msgstr "Indstil Remmina som standardfjernskrivebordsklient"
+
+#: data/ui/remmina_main.glade:206
 msgid "search string or server name/ip address for quick connect"
 msgstr "søg efter streng eller servernavn/IP-adresse for hurtig forbindelse"
 
@@ -2331,7 +2346,7 @@ msgstr "Om"
 
 #: data/ui/remmina_main.glade:440
 msgid "Set as default remote desktop client"
-msgstr ""
+msgstr "Indstil som standardfjernskrivebordsklient"
 
 #: data/ui/remmina_main.glade:541
 msgid "Plugin"
@@ -2435,7 +2450,7 @@ msgstr "Vælg en mappe"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Screen resolutions"
-msgstr ""
+msgstr "Skærmopløsninger"
 
 #: data/ui/remmina_preferences.glade:326
 msgid "Screenshots file name"
@@ -2456,11 +2471,12 @@ msgid ""
 "This is the folder where the connection profiles will be saved, it defaults "
 "to the XDG_USER_DATA"
 msgstr ""
+"Standardmappen hvor forbindelsesprofilerne gemmes. Standard er XDG_USER_DATA"
 
 #. It's the folder where the profiles are saved
 #: data/ui/remmina_preferences.glade:361
 msgid "Remmina data folder"
-msgstr ""
+msgstr "Remmina-datamappe"
 
 #: data/ui/remmina_preferences.glade:388
 msgid "Remember last view mode for each connection"
@@ -2468,7 +2484,7 @@ msgstr "Husk sidste visningstilstand for hver forbindelse"
 
 #: data/ui/remmina_preferences.glade:392
 msgid "Remember last view mode"
-msgstr ""
+msgstr "Husk sidste visningstilstand"
 
 #: data/ui/remmina_preferences.glade:418
 msgid "Send periodic usage statistics to remmina developers"
@@ -2476,7 +2492,7 @@ msgstr "Periodisk afsendelse af anvendelsesstatistik til remminas udviklere"
 
 #: data/ui/remmina_preferences.glade:422
 msgid "Send statistics to remmina.org"
-msgstr ""
+msgstr "Send statistik til remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
 msgid ""
@@ -2488,17 +2504,19 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:467
 msgid "Deny screenshot to clipboard"
-msgstr ""
+msgstr "Nægt skærmbillede til udklipsholder"
 
 #: data/ui/remmina_preferences.glade:479
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
 msgstr ""
+"Indstil et tilpasset filnavn til dine Remmina-forbindelsesprofiler, med en "
+"formateringsstreng."
 
 #: data/ui/remmina_preferences.glade:483
 msgid "Profiles filename template"
-msgstr ""
+msgstr "Skabelon til profilers filnavn"
 
 #: data/ui/remmina_preferences.glade:495
 msgid ""
@@ -2509,10 +2527,16 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
+"%G gruppenavn (skråstreg konverteres automatisk til -)\n"
+"%P protokolnavn\n"
+"%N forbindelsesnavn\n"
+"%h værtsnavn/IP\n"
+"\n"
+"\n"
 
 #: data/ui/remmina_preferences.glade:504
 msgid "%G_%P_%N_%h"
-msgstr ""
+msgstr "%G_%P_%N_%h"
 
 #: data/ui/remmina_preferences.glade:518
 msgid "Options"
@@ -2725,7 +2749,7 @@ msgstr "SSH-valgmuligheder"
 
 #: data/ui/remmina_preferences.glade:1371
 msgid "Master password"
-msgstr ""
+msgstr "Hovedadgangskode"
 
 #: data/ui/remmina_preferences.glade:1386
 #: data/ui/remmina_preferences.glade:1402
@@ -2733,26 +2757,28 @@ msgid ""
 "When activated, some widgets will require you to authenticate with a secret "
 "key"
 msgstr ""
+"Når den er aktiveret kræver nogle widgets at du autentificerer med en "
+"hemmelig nøgle"
 
 #: data/ui/remmina_preferences.glade:1408
 msgid "Use master password"
-msgstr ""
+msgstr "Brug hovedadgangskode"
 
 #: data/ui/remmina_preferences.glade:1421
 msgid "Automatic lock interval"
-msgstr ""
+msgstr "Interval for automatisk låsning"
 
 #: data/ui/remmina_preferences.glade:1432
 msgid "Master password validity in seconds"
-msgstr ""
+msgstr "Gyldighed for hovedadgangskode, i sekunder"
 
 #: data/ui/remmina_preferences.glade:1452
 msgid "File encryption"
-msgstr ""
+msgstr "Filkryptering"
 
 #: data/ui/remmina_preferences.glade:1482
 msgid "Retype password"
-msgstr ""
+msgstr "Skriv adgangskoden igen"
 
 #: data/ui/remmina_preferences.glade:1565
 msgid "Terminal font"
