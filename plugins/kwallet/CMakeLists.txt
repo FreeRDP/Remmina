@@ -42,6 +42,8 @@ if(KF5Wallet_FOUND)
     )
 
     add_library(remmina-plugin-kwallet MODULE ${REMMINA_PLUGIN_KF5WALLET_SRCS})
+    set_target_properties(remmina-plugin-kwallet PROPERTIES PREFIX "")
+    set_target_properties(remmina-plugin-kwallet PROPERTIES NO_SONAME 1)
 
     include_directories(${GTK_INCLUDE_DIRS})
     target_link_libraries(remmina-plugin-kwallet KF5::Wallet)
