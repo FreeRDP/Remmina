@@ -1,7 +1,6 @@
-# remmina-plugin-kwallet - The GTK+ Remote Desktop Client
+# remmina-plugin-www - The GTK+ Remote Desktop Client
 #
-# Copyright (C) 2011 Marc-Andre Moreau
-# Copyright (C) 2014-2019 Antenore Gatta, Giovanni Panozzo
+# Copyright (C) 2016-2019 Antenore Gatta, Giovanni Panozzo
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,6 +29,7 @@
 # do not wish to do so, delete this exception statement from your
 # version. If you delete this exception statement from all source
 # files in the program, then also delete it here.
+
 
 
 # find_suggested_package(KF5Wallet) has already been run on main CMakeLists.txt
