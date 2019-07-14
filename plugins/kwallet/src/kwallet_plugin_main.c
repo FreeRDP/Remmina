@@ -117,6 +117,13 @@ remmina_plugin_entry(RemminaPluginService *service)
 {
 	TRACE_CALL(__func__);
 
+	/* Activates only when KDE is running */
+	const gchar *envvar;
+
+	envvar = g_environ_getenv(g_get_environ(), "XDG_CURRENT_DESKTOP");
+	if (strcmp(envvar, "KDE") != 0)
+		return FALSE;
+
 	remmina_plugin_service = service;
 	if (!service->register_plugin((RemminaPlugin*)&remmina_plugin_kwallet)) {
 		return FALSE;
