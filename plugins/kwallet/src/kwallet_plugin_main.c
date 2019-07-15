@@ -46,7 +46,7 @@ static RemminaPluginService *remmina_plugin_service = NULL;
 
 gboolean remmina_plugin_kwallet_is_service_available()
 {
-	return TRUE;
+	return rp_kwallet_is_service_available();
 }
 
 
@@ -99,24 +99,8 @@ void remmina_plugin_kwallet_delete_password(RemminaFile *remminafile, const gcha
 	g_free(kwkey);
 }
 
-static RemminaSecretPlugin remmina_plugin_kwallet =
-{ REMMINA_PLUGIN_TYPE_SECRET,
-  "kwallet",
-  N_("Secure passwords storing in the KDE Wallet"),
-  NULL,
-  VERSION,
-  TRUE,
-  remmina_plugin_kwallet_store_password,
-  remmina_plugin_kwallet_get_password,
-  remmina_plugin_kwallet_delete_password,
-  remmina_plugin_kwallet_is_service_available
-};
-
-G_MODULE_EXPORT gboolean
-remmina_plugin_entry(RemminaPluginService *service)
+gboolean remmina_plugin_kwallet_init()
 {
-	TRACE_CALL(__func__);
-
 	/* Activates only when KDE is running */
 	const gchar *envvar;
 
@@ -124,10 +108,37 @@ remmina_plugin_entry(RemminaPluginService *service)
 	if (strcmp(envvar, "KDE") != 0)
 		return FALSE;
 
+	return rp_kwallet_init();
+
+}
+
+static RemminaSecretPlugin remmina_plugin_kwallet =
+{ REMMINA_PLUGIN_TYPE_SECRET,
+  "kwallet",
+  N_("Secure passwords storing in the KDE Wallet"),
+  NULL,
+  VERSION,
+  1000,
+  remmina_plugin_kwallet_init,
+  remmina_plugin_kwallet_is_service_available,
+  remmina_plugin_kwallet_store_password,
+  remmina_plugin_kwallet_get_password,
+  remmina_plugin_kwallet_delete_password,
+};
+
+G_MODULE_EXPORT gboolean
+remmina_plugin_entry(RemminaPluginService *service)
+{
+	TRACE_CALL(__func__);
+
+	/* This function should only register the secret plugin. No init action
+	 * should be performed here. Initialization will be done later
+	 * with remmina_plugin_xxx_init() . */
+
 	remmina_plugin_service = service;
 	if (!service->register_plugin((RemminaPlugin*)&remmina_plugin_kwallet)) {
 		return FALSE;
 	}
-	return rp_kwallet_init();
+
 }
 

@@ -61,6 +61,11 @@ int rp_kwallet_init(void)
 	return 1;
 }
 
+int rp_kwallet_is_service_available(void)
+{
+	return wallet != 0;
+}
+
 void rp_kwallet_store_password(const char *key, const char *password)
 {
     wallet->writePassword(key, password);
