@@ -66,7 +66,7 @@ static RemminaNewsDialog *rmnews_news_dialog;
 #define GET_OBJ(object_name) gtk_builder_get_object(rmnews_news_dialog->builder, object_name)
 
 static SoupSession *session;
-static const gchar *rmnews_url = NULL;
+//static const gchar *rmnews_url = NULL;
 static const gchar *output_file_path = NULL;
 
 static
@@ -121,7 +121,6 @@ void rmnews_defaultcl_on_click()
 	}
 }
 
-
 static gchar *rmnews_get_file_contents(gchar *path)
 {
 	gsize size;
@@ -143,6 +142,7 @@ static void rmnews_close_clicked(GtkButton *btn, gpointer user_data)
 	gtk_widget_destroy(GTK_WIDGET(rmnews_news_dialog->dialog));
 	rmnews_news_dialog->dialog = NULL;
 }
+
 static gint rmnews_show_news(GtkWindow *parent)
 {
 	TRACE_CALL(__func__);
@@ -330,6 +330,7 @@ void rmnews_get_news()
 
 	SoupLogger *logger = NULL;
 
+
 	gchar *cachedir = g_build_path("/", g_get_user_cache_dir(), REMMINA_APP_ID, NULL);
 	g_mkdir_with_parents(cachedir, 0750);
 	output_file_path = g_build_path("/", cachedir, "latest_news.md", NULL);
@@ -352,10 +353,14 @@ void rmnews_get_news()
 	soup_session_add_feature(session, SOUP_SESSION_FEATURE(logger));
 	g_object_unref(logger);
 
+	gchar *lang = remmina_utils_get_lang();
+	g_debug("Language %s", lang);
+
 	rmnews_get_url(g_strconcat(REMMINA_URL,
-				   "remmina_news.",
+				   "news/remmina_news.php?lang=",
+				   lang,
+				   "&ver="
 				   VERSION,
-				   ".md",
 				   NULL));
 
 	g_object_unref(session);

@@ -39,6 +39,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/utsname.h>
+#include <locale.h>
 
 #include <glib.h>
 #include <glib/gi18n.h>
@@ -280,6 +281,26 @@ static gchar* remmina_utils_read_distrofile(gchar *filename)
 	return distro_desc;
 }
 
+/**
+ * Return the current language defined in the LC_ALL.
+ * @return a language string or en_US.
+ */
+gchar* remmina_utils_get_lang()
+{
+	gchar *lang = setlocale(LC_ALL, NULL);
+	gchar *ptr;
+
+	if (!lang || lang[0] == '\0') {
+		lang = "en_US\0";
+	} else {
+		ptr = strchr(lang, '.');
+		if (ptr != NULL) {
+			*ptr = '\0';
+		}
+	}
+
+	return lang;
+}
 /**
  * Return the OS name as in "uname -s".
  * @return The OS name or NULL.

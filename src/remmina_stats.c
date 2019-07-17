@@ -122,7 +122,6 @@
 
 
 #include "config.h"
-#include <locale.h>
 #include <string.h>
 #include <sys/utsname.h>
 #include <unistd.h>
@@ -354,18 +353,13 @@ JsonNode *remmina_stats_get_user_env()
 
 	gchar *language;
 
-	language = setlocale (LC_ALL, NULL);
+	language = remmina_utils_get_lang();
 
 	b = json_builder_new();
 	json_builder_begin_object(b);
 	json_builder_set_member_name(b, "language");
 
-	if (!language || language[0] == '\0') {
-		json_builder_add_null_value(b);
-
-	}else {
-		json_builder_add_string_value(b, language);
-	}
+	json_builder_add_string_value(b, language);
 
 	json_builder_end_object(b);
 	r = json_builder_get_root(b);
