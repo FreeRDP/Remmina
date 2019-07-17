@@ -37,7 +37,7 @@ cmake_minimum_required(VERSION 3.0.0)
 
 set(CMAKE_COLOR_MAKEFILE ON)
 
-project(Remmina C)
+project(Remmina C CXX)
 
 include(CheckCCompilerFlag)
 include(CheckIncludeFiles)

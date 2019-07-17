@@ -129,12 +129,10 @@ static gboolean remmina_plugin_manager_register_plugin(RemminaPlugin *plugin)
 {
 	TRACE_CALL(__func__);
 	if (plugin->type == REMMINA_PLUGIN_TYPE_SECRET) {
-		if (remmina_secret_plugin) {
-			g_print("Remmina plugin %s (type=%s) bypassed.\n", plugin->name,
-				_(remmina_plugin_type_name[plugin->type]));
-			return FALSE;
-		}
-		remmina_secret_plugin = (RemminaSecretPlugin*)plugin;
+		g_print("Remmina plugin %s (type=%s) has registered but not yet initialized/activated. "
+			"Initialization order is %d.\n", plugin->name,
+			_(remmina_plugin_type_name[plugin->type]),
+			((RemminaSecretPlugin*)plugin)->init_order);
 	}
 	init_settings_cache(plugin);
 
@@ -269,12 +267,31 @@ static void remmina_plugin_manager_load_plugin(const gchar *name)
 	/* We don’t close the module because we will need it throughout the process lifetime */
 }
 
+static gint compare_secret_plugin_init_order(gconstpointer a, gconstpointer b)
+{
+	RemminaSecretPlugin *sa, *sb;
+
+	sa = (RemminaSecretPlugin*)a;
+	sb = (RemminaSecretPlugin*)b;
+
+	if (sa->init_order > sb->init_order)
+		return 1;
+	else if (sa->init_order < sb->init_order)
+		return -1;
+	return 0;
+}
+
 void remmina_plugin_manager_init(void)
 {
 	TRACE_CALL(__func__);
 	GDir *dir;
 	const gchar *name, *ptr;
 	gchar *fullpath;
+	RemminaPlugin *plugin;
+	RemminaSecretPlugin *sp;
+	int i;
+	GSList *secret_plugins;
+	GSList *sple;
 
 	remmina_plugin_table = g_ptr_array_new();
 
@@ -297,6 +314,39 @@ void remmina_plugin_manager_init(void)
 		g_free(fullpath);
 	}
 	g_dir_close(dir);
+
+	/* Now all secret plugins needs to initialize, following their init_order.
+	 * The 1st plugin which will initialize correctly will be
+	 * the default remmina_secret_plugin */
+
+	if (remmina_secret_plugin)
+		g_print("Internal ERROR: remmina_secret_plugin must be null here\n");
+
+	secret_plugins = NULL;
+	for (i = 0; i < remmina_plugin_table->len; i++) {
+		plugin = (RemminaPlugin*)g_ptr_array_index(remmina_plugin_table, i);
+		if (plugin->type == REMMINA_PLUGIN_TYPE_SECRET) {
+			secret_plugins = g_slist_insert_sorted(secret_plugins, (gpointer)plugin, compare_secret_plugin_init_order);
+		}
+	}
+
+	sple = secret_plugins;
+	while(sple != NULL) {
+		sp = (RemminaSecretPlugin*)sple->data;
+		if (sp->init()) {
+			g_print("Secret plugin %s has been successfully initialized and will be your default secret plugin\n",
+				sp->name);
+			remmina_secret_plugin = sp;
+			break;
+		}
+		sple = sple->next;
+	}
+
+	g_slist_free(secret_plugins);
+
+
+
+
 }
 
 RemminaPlugin* remmina_plugin_manager_get_plugin(RemminaPluginType type, const gchar *name)

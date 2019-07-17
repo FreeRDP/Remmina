@@ -132,12 +132,14 @@ typedef struct _RemminaSecretPlugin {
 	const gchar *description;
 	const gchar *domain;
 	const gchar *version;
+	int init_order;
 
-	gboolean trusted;
+	gboolean (* init)(void);
+	gboolean (* is_service_available)(void);
 	void (* store_password)(RemminaFile *remminafile, const gchar *key, const gchar *password);
 	gchar* (*get_password)(RemminaFile * remminafile, const gchar * key);
 	void (* delete_password)(RemminaFile *remminafile, const gchar *key);
-	gboolean (* is_service_available)(void);
+
 } RemminaSecretPlugin;
 
 /* Plugin Service is a struct containing a list of function pointers,
@@ -220,6 +222,7 @@ typedef struct _RemminaPluginService {
 	gboolean (* gtksocket_available)(void);
 	gint (* get_profile_remote_width)(RemminaProtocolWidget *gp);
 	gint (* get_profile_remote_height)(RemminaProtocolWidget *gp);
+
 
 } RemminaPluginService;
 

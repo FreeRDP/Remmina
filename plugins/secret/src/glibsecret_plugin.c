@@ -152,30 +152,8 @@ void remmina_plugin_glibsecret_delete_password(RemminaFile *remminafile, const g
 	}
 }
 
-static RemminaSecretPlugin remmina_plugin_glibsecret =
-{ REMMINA_PLUGIN_TYPE_SECRET,
-  "glibsecret",
-  N_("Secure passwords storing in the GNOME keyring"),
-  NULL,
-  VERSION,
-  TRUE,
-  remmina_plugin_glibsecret_store_password,
-  remmina_plugin_glibsecret_get_password,
-  remmina_plugin_glibsecret_delete_password,
-  remmina_plugin_glibsecret_is_service_available
-};
-
-G_MODULE_EXPORT gboolean
-remmina_plugin_entry(RemminaPluginService *service)
+gboolean remmina_plugin_glibsecret_init()
 {
-	TRACE_CALL(__func__);
-
-	remmina_plugin_service = service;
-
-	if (!service->register_plugin((RemminaPlugin*)&remmina_plugin_glibsecret)) {
-		return FALSE;
-	}
-
 #ifdef LIBSECRET_VERSION_0_18
 	GError *error;
 	error = NULL;
@@ -202,6 +180,38 @@ remmina_plugin_entry(RemminaPluginService *service)
 	g_print("Libsecret was too old during compilation, disabling secret service.\n");
 	return FALSE;
 #endif
+}
+
+static RemminaSecretPlugin remmina_plugin_glibsecret =
+{ REMMINA_PLUGIN_TYPE_SECRET,
+  "glibsecret",
+  N_("Secure passwords storing in the GNOME keyring"),
+  NULL,
+  VERSION,
+  2000,
+  remmina_plugin_glibsecret_init,
+  remmina_plugin_glibsecret_is_service_available,
+  remmina_plugin_glibsecret_store_password,
+  remmina_plugin_glibsecret_get_password,
+  remmina_plugin_glibsecret_delete_password
+};
+
+G_MODULE_EXPORT gboolean
+remmina_plugin_entry(RemminaPluginService *service)
+{
+	TRACE_CALL(__func__);
+
+	/* This function should only register the secret plugin. No init action
+	 * should be performed here. Initialization will be done later
+	 * with remmina_plugin_xxx_init() . */
+
+	remmina_plugin_service = service;
+
+	if (!service->register_plugin((RemminaPlugin*)&remmina_plugin_glibsecret)) {
+		return FALSE;
+	}
+
+	return TRUE;
 
 }
 
