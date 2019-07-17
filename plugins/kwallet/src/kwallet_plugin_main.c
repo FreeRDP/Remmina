@@ -105,7 +105,7 @@ gboolean remmina_plugin_kwallet_init()
 	const gchar *envvar;
 
 	envvar = g_environ_getenv(g_get_environ(), "XDG_CURRENT_DESKTOP");
-	if (strcmp(envvar, "KDE") != 0)
+	if (!envvar || strcmp(envvar, "KDE") != 0)
 		return FALSE;
 
 	return rp_kwallet_init();
