@@ -42,6 +42,11 @@
 #include <gio/gdesktopappinfo.h>
 #include <glib/gi18n.h>
 #include <libsoup/soup.h>
+#include <glib/gstdio.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <time.h>
 
 #include "remmina_main.h"
 #include "remmina_pref.h"
@@ -51,6 +56,7 @@
 #include "remmina_stats_sender.h"
 #include "rmnews.h"
 
+#define ARR_SIZE(arr) ( sizeof((arr)) / sizeof((arr[0])) )
 /* Neas file buffer */
 #define READ_BUFFER_LEN 1024
 /* Timers */
@@ -79,6 +85,15 @@ const gchar *supported_mime_types[] = {
   NULL
 };
 
+gint eweekdays[7] = {
+	86400,
+	172800,
+	259200,
+	345600,
+	432000,
+	518400,
+	604800
+};
 
 void rmnews_stats_switch_state_set_cb()
 {
@@ -329,16 +344,30 @@ void rmnews_get_news()
 	TRACE_CALL(__func__);
 
 	SoupLogger *logger = NULL;
-
+	int fd;
 
 	gchar *cachedir = g_build_path("/", g_get_user_cache_dir(), REMMINA_APP_ID, NULL);
-	g_mkdir_with_parents(cachedir, 0750);
-	output_file_path = g_build_path("/", cachedir, "latest_news.md", NULL);
+	gint d = g_mkdir_with_parents(cachedir, 0750);
+	if (d < 0)
+		output_file_path = RMNEWS_OUTPUT;
+	else
+		output_file_path = g_build_path("/", cachedir, "latest_news.md", NULL);
+
+	g_info("Output file set to %s", output_file_path);
+
+	fd = g_open (output_file_path, O_RDWR|O_CREAT, S_IRUSR|S_IWUSR);
+	g_debug ("Returned %d while creating %s", fd, output_file_path);
+	/* If we cannot create the remmina_news file, we avoid connections */
+	if (fd < 0) {
+		g_debug ("Cannot store the remmina news file");
+		return;
+	}
+	g_close(fd, NULL);
+
+	g_info("Output file %s created succesfully", output_file_path);
 
 	if (output_file_path) {
-		g_info("Output file set to %s", output_file_path);
 	} else {
-		output_file_path = RMNEWS_OUTPUT;
 		g_warning("Output file set to %s", output_file_path);
 	}
 
@@ -370,14 +399,28 @@ static gboolean rmnews_periodic_check(gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	GTimeVal t;
-	glong next;
+	glong next = 0;
+
+	srand(time(NULL));
+
+	g_get_current_time(&t);
+
+	/* if remmina_pref is not writable ... */
+	if (remmina_pref_is_rw() == FALSE && remmina_pref.periodic_rmnews_last_get != 0) {
+		gint randidx = rand() % 7;
+		/* We randmoly set periodic_rmnews_last_get to a a day between today
+		 * and 7 days ago */
+		g_debug ("Setting a random periodic_rmnews_last_get");
+		remmina_pref.periodic_rmnews_last_get = t.tv_sec - eweekdays[randidx];
+	}
+	g_debug ("periodic_rmnews_last_get is %ld", remmina_pref.periodic_rmnews_last_get);
 
 	next = remmina_pref.periodic_rmnews_last_get + RMNEWS_INTERVAL_SEC;
-	g_get_current_time(&t);
 	if (t.tv_sec > next || (t.tv_sec < remmina_pref.periodic_rmnews_last_get && t.tv_sec > 1514764800))
 		rmnews_get_news();
 	return G_SOURCE_CONTINUE;
 }
+
 void rmnews_schedule()
 {
 	TRACE_CALL(__func__);

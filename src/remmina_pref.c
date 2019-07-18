@@ -679,6 +679,15 @@ void remmina_pref_init(void)
 	remmina_pref_init_keymap();
 }
 
+gboolean remmina_pref_is_rw(void)
+{
+	TRACE_CALL(__func__);
+	if (access(remmina_pref_file, W_OK) == 0)
+		return TRUE;
+	else
+		return FALSE;
+	return FALSE;
+}
 gboolean remmina_pref_save(void)
 {
 	TRACE_CALL(__func__);
