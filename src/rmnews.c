@@ -406,7 +406,7 @@ static gboolean rmnews_periodic_check(gpointer user_data)
 	g_get_current_time(&t);
 
 	/* if remmina_pref is not writable ... */
-	if (remmina_pref_is_rw() == FALSE && remmina_pref.periodic_rmnews_last_get != 0) {
+	if (remmina_pref_is_rw() == FALSE && remmina_pref.periodic_rmnews_last_get == 0) {
 		gint randidx = rand() % 7;
 		/* We randmoly set periodic_rmnews_last_get to a a day between today
 		 * and 7 days ago */
