@@ -688,9 +688,15 @@ gboolean remmina_pref_is_rw(void)
 		return FALSE;
 	return FALSE;
 }
+
 gboolean remmina_pref_save(void)
 {
 	TRACE_CALL(__func__);
+
+	if (remmina_pref_is_rw() == FALSE) {
+		g_debug ("remmina.pref is not writable, returning");
+		return FALSE;
+	}
 	GKeyFile *gkeyfile;
 	GError *error = NULL;
 	gchar *content;
@@ -802,7 +808,7 @@ gboolean remmina_pref_save(void)
 
 	if (error != NULL)
 	{
-		g_print ("%s\n", error->message);
+		g_error ("iremmina_pref_save error: %s", error->message);
 		g_clear_error (&error);
 		g_key_file_free(gkeyfile);
 		g_free(content);
