@@ -140,5 +140,7 @@ remmina_plugin_entry(RemminaPluginService *service)
 		return FALSE;
 	}
 
+	return TRUE;
+
 }
 
