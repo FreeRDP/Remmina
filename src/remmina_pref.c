@@ -679,9 +679,24 @@ void remmina_pref_init(void)
 	remmina_pref_init_keymap();
 }
 
+gboolean remmina_pref_is_rw(void)
+{
+	TRACE_CALL(__func__);
+	if (access(remmina_pref_file, W_OK) == 0)
+		return TRUE;
+	else
+		return FALSE;
+	return FALSE;
+}
+
 gboolean remmina_pref_save(void)
 {
 	TRACE_CALL(__func__);
+
+	if (remmina_pref_is_rw() == FALSE) {
+		g_debug ("remmina.pref is not writable, returning");
+		return FALSE;
+	}
 	GKeyFile *gkeyfile;
 	GError *error = NULL;
 	gchar *content;
@@ -793,7 +808,7 @@ gboolean remmina_pref_save(void)
 
 	if (error != NULL)
 	{
-		g_print ("%s\n", error->message);
+		g_error ("iremmina_pref_save error: %s", error->message);
 		g_clear_error (&error);
 		g_key_file_free(gkeyfile);
 		g_free(content);
