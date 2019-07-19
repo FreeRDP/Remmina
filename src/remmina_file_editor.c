@@ -1297,6 +1297,7 @@ static void remmina_file_editor_init(RemminaFileEditor *gfe)
 
 	/* Default button */
 	widget = gtk_dialog_add_button(GTK_DIALOG(gfe), (_("Save as Default")), GTK_RESPONSE_OK);
+	gtk_widget_set_tooltip_text (GTK_WIDGET(widget), _("Use the current settings as the default for all new connection profiles"));
 	g_signal_connect(G_OBJECT(widget), "clicked", G_CALLBACK(remmina_file_editor_on_default), gfe);
 
 	widget = gtk_dialog_add_button(GTK_DIALOG(gfe), (_("_Save")), GTK_RESPONSE_APPLY);
