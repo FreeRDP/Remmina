@@ -34,7 +34,9 @@
 
 # find_suggested_package(KF5Wallet) has already been run on main CMakeLists.txt
 
+find_suggested_package(KF5Wallet)
 if(KF5Wallet_FOUND)
+    message(STATUS "KF5Wallet library found.")
     set(REMMINA_PLUGIN_KF5WALLET_SRCS
         src/kwallet_plugin_main.c
         src/kwallet_plugin.cpp
