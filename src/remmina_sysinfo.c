@@ -37,6 +37,7 @@
 #include "config.h"
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <sys/stat.h>
 #include "remmina/remmina_trace_calls.h"
 #include "remmina_sysinfo.h"
 
@@ -150,4 +151,35 @@ gchar *remmina_sysinfo_get_wm_name()
 		ret = g_strdup_printf("%s %s", xdg_current_desktop, gdmsession);
 	}
 	return ret;
+}
+
+/**
+ * Try to get a unique system+user ID to identify this remmina user
+ * and avoid some duplicated task, especially on news management
+ * @return a string
+  * @warning The returned string must be freed with g_free.
+ */
+gchar *remmina_sysinfo_get_unique_user_id()
+{
+	unsigned long long hostid, uid, sddinodenumber, id;
+	struct stat sb;
+	const gchar * const * sdd;
+
+	hostid = (unsigned long long)gethostid();
+	uid = (unsigned long long)getuid();
+
+	/* Get the 1st inode number of g_get_system_data_dirs() */
+	sdd = g_get_system_data_dirs();
+	sddinodenumber = 0;
+	if (sdd != NULL && sdd[0] != NULL) {
+		if ( stat(sdd[0], &sb) == 0 ) {
+			sddinodenumber = (unsigned long long)sb.st_ino;
+		}
+	}
+
+	/* Mix up the three value in a irreversible way */
+	id = hostid ^ uid * 4957 ^ sddinodenumber * 33797;
+
+	return g_strdup_printf("%lld", id);
+
 }

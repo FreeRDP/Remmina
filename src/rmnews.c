@@ -54,6 +54,7 @@
 #include "remmina_utils.h"
 #include "remmina_scheduler.h"
 #include "remmina_stats_sender.h"
+#include "remmina_sysinfo.h"
 #include "rmnews.h"
 
 #define ARR_SIZE(arr) ( sizeof((arr)) / sizeof((arr[0])) )
@@ -345,6 +346,7 @@ void rmnews_get_news()
 
 	SoupLogger *logger = NULL;
 	int fd;
+	gchar *uid;
 
 	gchar *cachedir = g_build_path("/", g_get_user_cache_dir(), REMMINA_APP_ID, NULL);
 	gint d = g_mkdir_with_parents(cachedir, 0750);
@@ -385,13 +387,18 @@ void rmnews_get_news()
 	gchar *lang = remmina_utils_get_lang();
 	g_debug("Language %s", lang);
 
+	uid = remmina_sysinfo_get_unique_user_id();
+
 	rmnews_get_url(g_strconcat(REMMINA_URL,
 				   "news/remmina_news.php?lang=",
 				   lang,
 				   "&ver="
 				   VERSION,
+				   "&uid=",
+				   uid,
 				   NULL));
 
+	g_free(uid);
 	g_object_unref(session);
 }
 
