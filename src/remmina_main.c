@@ -1024,6 +1024,16 @@ static gboolean remmina_main_quickconnect(void)
 	TRACE_CALL(__func__);
 	RemminaFile* remminafile;
 	gchar* server;
+	gchar *qcp;
+
+
+	/* Save quick connect protocol if different from the previuous one */
+	qcp = gtk_combo_box_text_get_active_text(remminamain->combo_quick_connect_protocol);
+	if (strcmp(qcp, remmina_pref.last_quickconnect_protocol) != 0) {
+		g_free(remmina_pref.last_quickconnect_protocol);
+		remmina_pref.last_quickconnect_protocol = g_strdup(qcp);
+		remmina_pref_save();
+	}
 
 	remminafile = remmina_file_new();
 	server = g_strdup(gtk_entry_get_text(remminamain->entry_quick_connect_server));
@@ -1031,8 +1041,7 @@ static gboolean remmina_main_quickconnect(void)
 	remmina_file_set_string(remminafile, "sound", "off");
 	remmina_file_set_string(remminafile, "server", server);
 	remmina_file_set_string(remminafile, "name", server);
-	remmina_file_set_string(remminafile, "protocol",
-		gtk_combo_box_text_get_active_text(remminamain->combo_quick_connect_protocol));
+	remmina_file_set_string(remminafile, "protocol", qcp);
 	g_free(server);
 
 	rcw_open_from_file(remminafile);
@@ -1175,7 +1184,7 @@ gboolean remmina_main_on_window_state_event(GtkWidget *widget, GdkEventWindowSta
 static void remmina_main_init(void)
 {
 	TRACE_CALL(__func__);
-	int i;
+	int i, qcp_idx, qcp_actidx;
 	char *name;
 
 	remminamain->priv->expanded_group = remmina_string_array_new_from_string(remmina_pref.expanded_group);
@@ -1199,12 +1208,17 @@ static void remmina_main_init(void)
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_TOOL, remmina_main_add_tool_plugin, remminamain);
 
 	/* Add available quick connect protocols to remminamain->combo_quick_connect_protocol */
+	qcp_idx = qcp_actidx = 0;
 	for (i = 0; i < sizeof(quick_connect_plugin_list) / sizeof(quick_connect_plugin_list[0]); i++) {
 		name = quick_connect_plugin_list[i];
-		if (remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL, name))
+		if (remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL, name)) {
 			gtk_combo_box_text_append(remminamain->combo_quick_connect_protocol, name, name);
+			if (remmina_pref.last_quickconnect_protocol != NULL && strcmp(name, remmina_pref.last_quickconnect_protocol) == 0)
+				qcp_actidx = qcp_idx;
+			qcp_idx ++;
+		}
 	}
-	gtk_combo_box_set_active(GTK_COMBO_BOX(remminamain->combo_quick_connect_protocol), 0);
+	gtk_combo_box_set_active(GTK_COMBO_BOX(remminamain->combo_quick_connect_protocol), qcp_actidx);
 
 	/* Connect the group accelerators to the GtkWindow */
 	//gtk_window_add_accel_group(remminamain->window, remminamain->accelgroup_shortcuts);
