@@ -206,6 +206,7 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 	TRACE_CALL(__func__);
 	const char *name;
 	const char *header;
+	SoupBuffer *sb;
 	FILE *output_file = NULL;
 	gchar *filesha = NULL;
 	gchar *filesha_after = NULL;
@@ -300,11 +301,9 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 		}
 
 
+		sb = soup_message_body_flatten (msg->response_body);
 		if (output_file) {
-			fwrite(msg->response_body->data,
-			       1,
-			       msg->response_body->length,
-			       output_file);
+			fwrite(sb->data, 1, sb->length, output_file);
 
 			if (output_file_path)
 				fclose(output_file);
@@ -334,7 +333,7 @@ void rmnews_get_url(const char *url)
 	msg = soup_message_new("GET", url);
 	soup_message_set_flags(msg, SOUP_MESSAGE_NO_REDIRECT);
 
-	g_info("Fetching %s", url);
+	g_debug("Fetching %s", url);
 
 	g_object_ref(msg);
 	soup_session_queue_message(session, msg, rmnews_get_url_cb, NULL);
@@ -380,7 +379,8 @@ void rmnews_get_news()
 			       SOUP_SESSION_USER_AGENT, "get ",
 			       SOUP_SESSION_ACCEPT_LANGUAGE_AUTO, TRUE,
 			       NULL);
-	logger = soup_logger_new(SOUP_LOGGER_LOG_BODY, -1);
+	/* TODO: Catch log level and set SOUP_LOGGER_LOG_MINIMAL or more */
+	logger = soup_logger_new(SOUP_LOGGER_LOG_NONE, -1);
 	soup_session_add_feature(session, SOUP_SESSION_FEATURE(logger));
 	g_object_unref(logger);
 
