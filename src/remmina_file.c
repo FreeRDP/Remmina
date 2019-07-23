@@ -204,7 +204,7 @@ remmina_file_copy(const gchar *filename)
 	return remminafile;
 }
 
-static const RemminaProtocolSetting *find_protocol_setting(const gchar *name, RemminaProtocolPlugin *protocol_plugin)
+const RemminaProtocolSetting *find_protocol_setting(const gchar *name, RemminaProtocolPlugin *protocol_plugin)
 {
 	TRACE_CALL(__func__);
 	const RemminaProtocolSetting *setting_iter;
