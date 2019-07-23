@@ -1844,6 +1844,7 @@ static void rcw_toolbar_duplicate(GtkWidget *widget, RemminaConnectionWindow *cn
 {
 	TRACE_CALL(__func__);
 
+	//RemminaProtocolWidget *gp;
 	RemminaConnectionObject *cnnobj;
 
 	if (cnnwin->priv->toolbar_is_reconfiguring)
@@ -1851,7 +1852,7 @@ static void rcw_toolbar_duplicate(GtkWidget *widget, RemminaConnectionWindow *cn
 	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
 	// We will duplicate the currently displayed RemminaProtocolWidget.
-	gp = REMMINA_PROTOCOL_WIDGET(cnnobj->proto);
+	//gp = REMMINA_PROTOCOL_WIDGET(cnnobj->proto);
 
 	remmina_exec_command(REMMINA_COMMAND_CONNECT, cnnobj->remmina_file->filename);
 
