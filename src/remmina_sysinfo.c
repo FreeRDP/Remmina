@@ -180,6 +180,6 @@ gchar *remmina_sysinfo_get_unique_user_id()
 	/* Mix up the three value in a irreversible way */
 	id = hostid ^ uid * 4957 ^ sddinodenumber * 33797;
 
-	return g_strdup_printf("%lld", id);
+	return g_strdup_printf("%llu", id);
 
 }
