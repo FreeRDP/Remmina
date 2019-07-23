@@ -403,7 +403,6 @@ gint
 remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *remminafile)
 {
 	TRACE_CALL(__func__);
-	gchar *tips;
 	gchar *keyname;
 	gchar *pwdtype;
 	gchar *message;
@@ -473,19 +472,16 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 
 	switch (ssh->auth) {
 	case SSH_AUTH_PASSWORD:
-		tips = _("Authenticating %s’s password to SSH server %s…");
 		keyname = _("SSH password");
 		pwdtype = "ssh_password";
 		break;
 	case SSH_AUTH_PUBLICKEY:
 	case SSH_AUTH_AGENT:
 	case SSH_AUTH_AUTO_PUBLICKEY:
-		tips = _("Authenticating %s’s identity to SSH server %s…");
 		keyname = _("SSH private key passphrase");
 		pwdtype = "ssh_passphrase";
 		break;
 	case SSH_AUTH_GSSAPI:
-		tips = _("Authenticating %s’s Kerberos to SSH server %s…");
 		keyname = _("SSH Kerberos/GSSAPI");
 		pwdtype = "kerberos_token";
 		break;
