@@ -1844,14 +1844,11 @@ static void rcw_toolbar_duplicate(GtkWidget *widget, RemminaConnectionWindow *cn
 {
 	TRACE_CALL(__func__);
 
-	RemminaProtocolWidget *gp;
 	RemminaConnectionObject *cnnobj;
 
 	if (cnnwin->priv->toolbar_is_reconfiguring)
 		return;
 	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
-
-	GDateTime *date = g_date_time_new_now_utc();
 
 	// We will duplicate the currently displayed RemminaProtocolWidget.
 	gp = REMMINA_PROTOCOL_WIDGET(cnnobj->proto);
@@ -3203,10 +3200,10 @@ static gboolean rcw_go_fullscreen(GtkWidget *widget, GdkEvent *event, gpointer d
 #if GTK_CHECK_VERSION(3, 18, 0)
 	if (remmina_pref.fullscreen_on_auto) {
 		gtk_window_fullscreen_on_monitor(GTK_WINDOW(widget),
-						 gdk_screen_get_default(),
-						 gdk_screen_get_monitor_at_window
-							 (gdk_screen_get_default(), gtk_widget_get_window(widget)
-							 ));
+				gdk_screen_get_default(),
+				gdk_screen_get_monitor_at_window (
+					gdk_screen_get_default(),
+					gtk_widget_get_window(widget)));
 	} else {
 		remmina_log_print("Fullscreen managed by WM or by the user, as per settings");
 		gtk_window_fullscreen(GTK_WINDOW(widget));
@@ -3215,6 +3212,7 @@ static gboolean rcw_go_fullscreen(GtkWidget *widget, GdkEvent *event, gpointer d
 	remmina_log_print("Cannot fullscreen on a specific monitor, feature available from GTK 3.18");
 	gtk_window_fullscreen(GTK_WINDOW(widget));
 #endif
+
 	return FALSE;
 }
 
