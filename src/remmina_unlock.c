@@ -69,7 +69,7 @@ static void remmina_unlock_timer_reset(gpointer user_data)
 	g_info("Unlock Master Password timer reset");
 }
 
-static void remmina_unlock_timer_destroy()
+void remmina_unlock_timer_destroy()
 {
 	TRACE_CALL(__func__);
 
