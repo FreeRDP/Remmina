@@ -1,12 +1,12 @@
 ## v1.3.5 (unreleased)
-[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.4...HEAD)
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.4...v1.3.5)
 
 * rcw refactoring [!1815](https://gitlab.com/Remmina/Remmina/merge_requests/1815) *@giox069*
 * Remmina files refactoring [!1814](https://gitlab.com/Remmina/Remmina/merge_requests/1814) *@antenore*
 * RCW fixes [!1817](https://gitlab.com/Remmina/Remmina/merge_requests/1817) *@giox069*
 * Update Czech translation [!1818](https://gitlab.com/Remmina/Remmina/merge_requests/1818) *@asciiwolf*
 * Improve English wording [!1819](https://gitlab.com/Remmina/Remmina/merge_requests/1819) *@DevDef*
-* Typograhic fixes [!1820](https://gitlab.com/Remmina/Remmina/merge_requests/1820) *@DevDef*
+* Typographic fixes [!1820](https://gitlab.com/Remmina/Remmina/merge_requests/1820) *@DevDef*
 * Fix typo timout → timeout [!1821](https://gitlab.com/Remmina/Remmina/merge_requests/1821) *@DevDef*
 * Unset “120” (duration before locking) as a translatable string [!1822](https://gitlab.com/Remmina/Remmina/merge_requests/1822) *@DevDef*
 * Update Czech translation [!1824](https://gitlab.com/Remmina/Remmina/merge_requests/1824) *@asciiwolf*
@@ -19,6 +19,46 @@
 * Updated Russian translation (sent from Soltys Sergey by e-mail) [!1832](https://gitlab.com/Remmina/Remmina/merge_requests/1832) *@DevDef*
 * Replace non-interpreted HTML lists by text lists [!1833](https://gitlab.com/Remmina/Remmina/merge_requests/1833) *@DevDef*
 * Remmina news dialog [!1835](https://gitlab.com/Remmina/Remmina/merge_requests/1835) *@antenore*
+* Fixing unlock called in the wrong places [!1836](https://gitlab.com/Remmina/Remmina/merge_requests/1836) *@antenore*
+* Show an error dialog instead of crashing, fixes issue #1896 [!1837](https://gitlab.com/Remmina/Remmina/merge_requests/1837) *@giox069*
+* Resolve "Remmina profile file always gets overwriten when connecting" [!1838](https://gitlab.com/Remmina/Remmina/merge_requests/1838) *@antenore*
+* Translate two new strings [!1839](https://gitlab.com/Remmina/Remmina/merge_requests/1839) *@DevDef*
+* WWW plugin - A new plugin to connect to Webbased administration consoles fixes  #551 [!1841](https://gitlab.com/Remmina/Remmina/merge_requests/1841) *@antenore*
+* Fixes #1904 - Change Address to URL [!1842](https://gitlab.com/Remmina/Remmina/merge_requests/1842) *@antenore*
+* Adding default settings on startup [!1843](https://gitlab.com/Remmina/Remmina/merge_requests/1843) *@antenore*
+* Adding default settings on startup [!1844](https://gitlab.com/Remmina/Remmina/merge_requests/1844) *@antenore*
+* flatpak: enable smartcard support [!1834](https://gitlab.com/Remmina/Remmina/merge_requests/1834) *@larchunix*
+* WWW screenshot features [!1845](https://gitlab.com/Remmina/Remmina/merge_requests/1845) *@antenore*
+* WWW Plugin improvements [!1846](https://gitlab.com/Remmina/Remmina/merge_requests/1846) *@antenore*
+* Multiple fixes: duplicate tab, remmina_file warning, audible bell setting [!1847](https://gitlab.com/Remmina/Remmina/merge_requests/1847) *@antenore*
+* Workaround for #1633 - re-ask user and password when auth error [!1848](https://gitlab.com/Remmina/Remmina/merge_requests/1848) *@antenore*
+* Www enhance2 [!1850](https://gitlab.com/Remmina/Remmina/merge_requests/1850) *@antenore*
+* Remmina main window improvements to gain space and reduce code [!1851](https://gitlab.com/Remmina/Remmina/merge_requests/1851) *@antenore*
+* Updating italian translations [!1852](https://gitlab.com/Remmina/Remmina/merge_requests/1852) *@antenore*
+* Updating German translation [!1853](https://gitlab.com/Remmina/Remmina/merge_requests/1853) *@jweberhofer*
+* Complete the French translation [!1854](https://gitlab.com/Remmina/Remmina/merge_requests/1854) *@DevDef*
+* Fixing typos of X.Org, Java and H.264 [!1855](https://gitlab.com/Remmina/Remmina/merge_requests/1855) *@antenore*
+* Translations fixes [!1856](https://gitlab.com/Remmina/Remmina/merge_requests/1856) *@antenore*
+* Complete the French translation [!1858](https://gitlab.com/Remmina/Remmina/merge_requests/1858) *@DevDef*
+* Updated German translation [!1857](https://gitlab.com/Remmina/Remmina/merge_requests/1857) *@jweberhofer*
+* www policies [!1859](https://gitlab.com/Remmina/Remmina/merge_requests/1859) *@antenore*
+* Remove msgmerge -N option to enable fuzzy strings [!1860](https://gitlab.com/Remmina/Remmina/merge_requests/1860) *@DevDef*
+* One more string translated to French [!1861](https://gitlab.com/Remmina/Remmina/merge_requests/1861) *@DevDef*
+* Replace ru.po [!1862](https://gitlab.com/Remmina/Remmina/merge_requests/1862) *@TreefeedXavier*
+* Update Croatian language [!1864](https://gitlab.com/Remmina/Remmina/merge_requests/1864) *@muzena*
+* Remove outdated strings [!1865](https://gitlab.com/Remmina/Remmina/merge_requests/1865) *@DevDef*
+* Fixing preferences menu in the rcw toolbar [!1866](https://gitlab.com/Remmina/Remmina/merge_requests/1866) *@antenore*
+* UI Stats and News refactoring [!1868](https://gitlab.com/Remmina/Remmina/merge_requests/1868) *@antenore*
+* Update tr.po [!1869](https://gitlab.com/Remmina/Remmina/merge_requests/1869) *@TeknoMobil*
+* Update da.po [!1867](https://gitlab.com/Remmina/Remmina/merge_requests/1867) *@scootergrisen*
+* Removed unused string in the remmina_news.glade file [!1870](https://gitlab.com/Remmina/Remmina/merge_requests/1870) *@antenore*
+* Complete the French translation [!1871](https://gitlab.com/Remmina/Remmina/merge_requests/1871) *@DevDef*
+* Adding support for internationalization [!1872](https://gitlab.com/Remmina/Remmina/merge_requests/1872) *@antenore*
+* Kwallet [!1873](https://gitlab.com/Remmina/Remmina/merge_requests/1873) *@giox069*
+* remmina.pref readonly patches [!1874](https://gitlab.com/Remmina/Remmina/merge_requests/1874) *@antenore*
+* Add uid to news GET request [!1876](https://gitlab.com/Remmina/Remmina/merge_requests/1876) *@giox069*
+* Remember last quickconnect selected protocol [!1875](https://gitlab.com/Remmina/Remmina/merge_requests/1875) *@giox069*
+* Refactoring - warnings cleanup [!1877](https://gitlab.com/Remmina/Remmina/merge_requests/1877) *@antenore*
 
 ## v1.3.4
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.3...v.1.3.4)
