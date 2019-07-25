@@ -227,7 +227,6 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	RemminaSSHShell *shell = NULL;
 	gboolean cont = FALSE;
 	gint ret;
-	gchar *charset;
 	const gchar *saveserver;
 	const gchar *saveusername;
 	gchar *hostport;
@@ -335,7 +334,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 
 	gpdata->shell = shell;
 
-	charset = REMMINA_SSH(shell)->charset;
+	gchar *charset = REMMINA_SSH(shell)->charset;
 	remmina_plugin_ssh_vte_terminal_set_encoding_and_pty(VTE_TERMINAL(gpdata->vte), charset, shell->master, shell->slave);
 
 	/* ToDo: the following call should be moved on the main thread, or something weird could happen */

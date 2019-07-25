@@ -803,7 +803,14 @@ void remmina_rdp_event_init(RemminaProtocolWidget* gp)
 	rfi->object_table = g_hash_table_new_full(NULL, NULL, NULL, g_free);
 
 	rfi->display = gdk_display_get_default();
+
+#if GTK_CHECK_VERSION(3, 22, 0)
+	GdkVisual *visual = gdk_screen_get_system_visual(
+			gdk_display_get_default_screen(rfi->display));
+	rfi->bpp = gdk_visual_get_depth (visual);
+#else
 	rfi->bpp = gdk_visual_get_best_depth();
+#endif
 }
 
 
