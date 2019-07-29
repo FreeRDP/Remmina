@@ -709,7 +709,7 @@ static void remmina_plugin_www_save_snapshot(GObject *object, GAsyncResult *resu
 
 	surface = webkit_web_view_get_snapshot_finish(WEBKIT_WEB_VIEW(webview), result, &err);
 	if (err)
-		g_error("An error happened generating the snapshot: %s\n", err->message);
+		g_warning("An error happened generating the snapshot: %s\n", err->message);
 	//buffer = cairo_image_surface_get_data (surface);
 	width = cairo_image_surface_get_width(surface);
 	height = cairo_image_surface_get_height(surface);
