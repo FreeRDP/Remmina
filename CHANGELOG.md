@@ -1,4 +1,11 @@
 ## v1.3.5 (unreleased)
+
+**ATTENTION** New dependencies.
+
+* -DWITH_KF5WALLET=ON is needed for the KDE Wallet plugin (and the kf5wallet libs to build it).
+* webkit2gtk3 is needed to build the WWW plugin.
+* libsodium is needed to buil Remmina
+
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.4...v1.3.5)
 
 * rcw refactoring [!1815](https://gitlab.com/Remmina/Remmina/merge_requests/1815) *@giox069*
