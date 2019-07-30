@@ -144,7 +144,7 @@ static gchar *rmnews_get_file_contents(gchar *path)
 
 	if (g_file_get_contents(path, &content, &size, NULL)) {
 		if (!g_utf8_validate(content, size, NULL)) {
-			g_error("%s content is not UTF-8", path);
+			g_warning("%s content is not UTF-8", path);
 			g_free(content);
 		}
 	}
@@ -293,7 +293,7 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 				return;
 			}
 		} else {
-			g_error("Cannot open output file for writing, because output_file_path is NULL");
+			g_warning("Cannot open output file for writing, because output_file_path is NULL");
 			g_get_current_time(&t);
 			remmina_pref.periodic_rmnews_last_get = t.tv_sec;
 			remmina_pref_save();
