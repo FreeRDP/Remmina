@@ -55,7 +55,7 @@ Similarly, we have a quite important list of feature requests, that are labeled 
 
 Install it, use it and report back to us. Whatever you find that it doesn&#8217;t work, it&#8217;s missing, it&#8217;s ugly don&#8217;t hesitate to let us know.
 
-For bug and feature requests use [GitLab issues](https://gitlab.com/Remmina/Remmina/issues) For discussions you can use G+, reddit ad irc (we are not often connected, be patient)
+For bug and feature requests use [GitLab issues](https://gitlab.com/Remmina/Remmina/issues) For discussions you can use reddit ad irc (we are not often connected, be patient)
 
 ## Translating
 

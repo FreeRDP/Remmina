@@ -256,7 +256,7 @@ If you are not listed and you have contributed, feel free to update that file.
 ## Resources
 
  * [Wiki and compilation instructions](https://gitlab.com/Remmina/Remmina/wikis/home)
- * [G+ Remmina community](https://plus.google.com/communities/106276095923371962010)
+ * [Remmina community](https://remmina.org/community)
  * [Website](http://www.remmina.org)
  * IRC we are on freenode.net , in the channel #remmina, you can also use a [web client](https://webchat.freenode.net/) in case
 
