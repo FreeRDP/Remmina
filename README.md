@@ -124,7 +124,7 @@ Install [remmina-git](https://aur.archlinux.org/packages/remmina-git) from [AUR]
 
 ### openSUSE
 
-Remmina is in the offical repositories for all openSUSE distributions.
+Remmina is in the official repositories for all openSUSE distributions.
 In case the version in the released stable branch of openSUSE is too old you can install the latest one from the [devel project](https://build.opensuse.org/package/show/X11%3ARemoteDesktop/remmina) via:
 
 ```
@@ -225,7 +225,7 @@ If you want to contribute in other ways, drop us an email using the form provide
 
 If you rather prefer to contribute to Remmina with money you are more than welcome.
 
-For more informations See the [Remmina web site donation page](http://remmina.org/wp/donations).
+For more information, see the [Remmina web site donation page](http://remmina.org/wp/donations).
 
 See the [THANKS.md](THANKS.md) file for an exhaustive list of supporters.
 

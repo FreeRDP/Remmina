@@ -10,7 +10,7 @@ If you want to be removed, or we forgot to list your name, or you want we add mo
 
 ## The Remmina Patron.
 
-This special place is reserved to who have donated the hisghest amount of money since we collect donations.
+This special place is reserved to who have donated the highest amount of money since we collect donations.
 
 - Daniel Bolter
 - Rafael Wolf owner of [EITS, LLC, dba Express IT Solutions](https://eitsonline.com) Kalamazoo, MI 49048 USA. ( **Donated $100** )
@@ -132,8 +132,8 @@ to date.
 
 # The Gnome VTE project
 
-Particulary **Egmont Koblinger** ([@egmontkob](https://github.com/egmontkob)) and **Christian Persch** for their support.
+Particularly **Egmont Koblinger** ([@egmontkob](https://github.com/egmontkob)) and **Christian Persch** for their support.
 
 # Disclaimer
 
-If we have forgot anybody or the data in here is worng don't hesitate to contact us ASAP. We will fix and/or add whatever is missing or wrong immediately.
+If we have forgot anybody or the data in here is wrong don't hesitate to contact us ASAP. We will fix and/or add whatever is missing or wrong immediately.
