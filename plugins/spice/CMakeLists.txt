@@ -50,4 +50,6 @@ install(FILES
     scalable/emblems/remmina-spice-symbolic.svg
     DESTINATION ${APPICONSCALE_EMBLEMS_DIR})
 
-gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
+if(WITH_ICON_CACHE)
+    gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
+endif()
