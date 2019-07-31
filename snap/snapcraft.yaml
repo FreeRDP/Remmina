@@ -23,6 +23,10 @@ plugs:
     target: $SNAP/data-dir/sounds
     default-provider: gtk-common-themes
 
+layout:
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0:
+    bind: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0
+
 slots:
   remmina-gapp:
     interface: dbus
@@ -34,11 +38,13 @@ apps:
     # desktop-launch seems to be broken when setting up wayland env
     # so we disable it
     environment:
-      DISABLE_WAYLAND: 1
+      DISABLE_WAYLAND: "1"
+      LD_LIBRARY_PATH: "$SNAP/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/:$LD_LIBRARY_PATH"
     command: desktop-launch remmina
     common-id: org.remmina.Remmina.desktop
     plugs:
       - avahi-observe
+      - browser-support
       - cups-control
       - desktop
       - desktop-legacy
@@ -47,13 +53,14 @@ apps:
       - mount-observe
       - network
       - network-bind
-      - pulseaudio
-      - unity7
+      - opengl
       - password-manager-service
-      - wayland
-      - x11
+      - pulseaudio
       - ssh-keys
       - ssh-public-keys
+      - unity7
+      - wayland
+      - x11
 
   winpr-makecert:
     command: winpr-makecert
@@ -146,13 +153,12 @@ parts:
 
   remmina:
     after:
+      - desktop-gnome-platform
       - libssh-0-8
       - freerdp
     plugin: cmake
     source: .
     parse-info: [usr/share/metainfo/org.remmina.Remmina.appdata.xml]
-    stage-packages:
-      - xauth
     build-packages:
       - intltool
       - libappindicator3-dev
@@ -170,6 +176,8 @@ parts:
       - libvte-2.91-dev
       - libxkbfile-dev
       - libwebkit2gtk-4.0-dev
+    stage-packages:
+      - xauth
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
