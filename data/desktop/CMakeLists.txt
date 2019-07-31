@@ -160,14 +160,18 @@ if( SHARED_MIME_INFO_FOUND )
     install( FILES remmina-mime.xml DESTINATION ${XDG_MIME_INSTALL_DIR} )
     update_xdg_mimetypes( ${XDG_MIME_INSTALL_DIR} )
 endif()
-gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
-find_program(PROG_UPDATE_DESKTOP_DATABASE update-desktop-database)
-if( PROG_UPDATE_DESKTOP_DATABASE )
-    install(
-        CODE
-        "message(STATUS \"Updating desktop file database\")"
-        CODE
-        "execute_process(COMMAND ${PROG_UPDATE_DESKTOP_DATABASE}
-        -q ${CMAKE_INSTALL_PREFIX}/share/applications)"
-        )
+if(WITH_ICON_CACHE)
+    gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
+endif()
+if(WITH_UPDATE_DESKTOP_DB)
+    find_program(PROG_UPDATE_DESKTOP_DATABASE update-desktop-database)
+    if( PROG_UPDATE_DESKTOP_DATABASE )
+        install(
+            CODE
+            "message(STATUS \"Updating desktop file database\")"
+            CODE
+            "execute_process(COMMAND ${PROG_UPDATE_DESKTOP_DATABASE}
+            -q ${CMAKE_INSTALL_PREFIX}/share/applications)"
+            )
+    endif()
 endif()

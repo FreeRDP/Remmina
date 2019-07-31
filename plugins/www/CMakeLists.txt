@@ -53,7 +53,9 @@ install(FILES
     scalable/emblems/remmina-www-symbolic.svg
     DESTINATION ${APPICONSCALE_EMBLEMS_DIR})
 
-gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
+if(WITH_ICON_CACHE)
+    gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
+endif()
 
 # In the feature we will have more resources to add, so I use a GLOB
 file(GLOB WWW_RES_FILES "${CMAKE_CURRENT_SOURCE_DIR}/resources/js/www-js.js")

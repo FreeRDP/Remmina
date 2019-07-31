@@ -81,20 +81,25 @@ if(SPICE_FOUND)
     add_subdirectory(spice)
 endif()
 
-pkg_search_module(WEBKIT2
-    webkit2gtk-4.0
-    webkit2gtk-3.0
-    libwebkit2gtk-4.0
-    libwebkit2gtk-3.0
-    )
-
-if(WEBKIT2_FOUND)
-	message(STATUS "Enabling WWW plugin.")
-	add_definitions(-DWITH_WWW)
-	add_subdirectory(www)
-else(WEBKIT2_FOUND)
-	message(WARNING "WEBKIT not found")
-endif(WEBKIT2_FOUND)
+option(WITH_WWW "Build WWW plugin" ON)
+if(WITH_WWW)
+    message(STATUS "Enabling WWW plugin.")
+    add_definitions(-DWITH_WWW)
+    pkg_search_module(WEBKIT2
+        webkit2gtk-4.0
+        webkit2gtk-3.0
+        libwebkit2gtk-4.0
+        libwebkit2gtk-3.0
+        )
+    if(WEBKIT2_FOUND)
+        message(STATUS "WWW plugin dependencies found")
+        add_subdirectory(www)
+    else(WEBKIT2_FOUND)
+        message(WARNING "WEBKIT not found")
+    endif(WEBKIT2_FOUND)
+else()
+    message(STATUS "Disabling WWW plugin.")
+endif()
 
 if(WITH_EXAMPLES)
     message(STATUS "Enabling examples and test plugins.")
