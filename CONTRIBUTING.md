@@ -3,7 +3,7 @@
 Given the implied openness of the project, contributing to Remmina is extremely simple.
 Everything is needed to contribute is well known and available to be used, and, most important, we are a kind, openminded, simple community.
 
-In this page you should find everything you need to know if you want to contribute, if it misses anything let us know otr try to fix it yourself.
+In this page you should find everything you need to know if you want to contribute, if it misses anything let us know or try to fix it yourself.
 
 ## Writing Code
 
@@ -17,7 +17,7 @@ If you&#8217;d like to make changes to this project then the following basic ste
 
 See our [wiki](https://gitlab.com/Remmina/Remmina/wikis/home) to know how to compile Remmina and FreeRDP.
 
-In general look at the issues labeled [&#8220;help wanted&#8221;](https://gitlab.com/Remmina/Remmina/issues?label_name%5B%5D=help+wanted), it&#8217;s probaly the best place where to start. If you would like to earn some money there are some bounties available, see below for more details.
+In general look at the issues labeled [&#8220;help wanted&#8221;](https://gitlab.com/Remmina/Remmina/issues?label_name%5B%5D=help+wanted), it&#8217;s probably the best place where to start. If you would like to earn some money there are some bounties available, see below for more details.
 
 ### Fix existing bugs
 
@@ -27,7 +27,7 @@ At the moment there are not critical bugs to be fixed, but several annoyances an
 
 To see all the issues already labeled as bug, you can use [this query](https://gitlab.com/Remmina/Remmina/issues?label_name%5B%5D=bug)
 
-Some exemples are:
+Some examples are:
 
   * [#146](https://gitlab.com/Remmina/Remmina/issues/146) : XFCE intercepts shortcuts no matter of &#8220;Grab all keyboard events&#8221; button
   * [#190](https://gitlab.com/Remmina/Remmina/issues/190) : Modifier keys (alt) are wrongly mapped across a Ubuntu -> Mac remote session
@@ -46,7 +46,7 @@ Similarly, we have a quite important list of feature requests, that are labeled 
 
 ### Internal projects
 
-  * Refactorying [remmina\_connection\_window.c](https://gitlab.com/Remmina/Remmina/blob/next/remmina/src/remmina_connection_window.c) as it is big, complicated and hard to extend.
+  * Refactoring [remmina\_connection\_window.c](https://gitlab.com/Remmina/Remmina/blob/next/remmina/src/remmina_connection_window.c) as it is big, complicated and hard to extend.
   * Simplify the user interface.
   * Separate plugin processes from the main process to improve stability.
   * Write an additional plugin system to write plugins also in Python and eventually Ruby.
