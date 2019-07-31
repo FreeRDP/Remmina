@@ -163,13 +163,15 @@ endif()
 if(WITH_ICON_CACHE)
     gtk_update_icon_cache("${REMMINA_DATADIR}/icons/hicolor")
 endif()
-find_program(PROG_UPDATE_DESKTOP_DATABASE update-desktop-database)
-if( PROG_UPDATE_DESKTOP_DATABASE )
-    install(
-        CODE
-        "message(STATUS \"Updating desktop file database\")"
-        CODE
-        "execute_process(COMMAND ${PROG_UPDATE_DESKTOP_DATABASE}
-        -q ${CMAKE_INSTALL_PREFIX}/share/applications)"
-        )
+if(WITH_UPDATE_DESKTOP_DB)
+    find_program(PROG_UPDATE_DESKTOP_DATABASE update-desktop-database)
+    if( PROG_UPDATE_DESKTOP_DATABASE )
+        install(
+            CODE
+            "message(STATUS \"Updating desktop file database\")"
+            CODE
+            "execute_process(COMMAND ${PROG_UPDATE_DESKTOP_DATABASE}
+            -q ${CMAKE_INSTALL_PREFIX}/share/applications)"
+            )
+    endif()
 endif()
