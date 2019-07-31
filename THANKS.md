@@ -14,16 +14,32 @@ This special place is reserved to who have donated the highest amount of money s
 
 - Daniel Bolter
 - Rafael Wolf owner of [EITS, LLC, dba Express IT Solutions](https://eitsonline.com) Kalamazoo, MI 49048 USA. ( **Donated $100** )
+- [Khalifa Alshamsi ](https://twitter.com/kha1ifa__)
 - [Tim Richardson - GrowthPath founder](https://www.growthpath.com.au/people/growthpath-team-2)
 
 ## Year 2019 donors
 
-- Clayton Casciato
-- Márcio Oliveira Luiz
+- Daniel Bolter
+- Khalifa Alshamsi (https://twitter.com/kha1ifa__)
+
+- Abdulkarim Khormi
 - Andres Zanzani
-- Wolfgang Scherer
-- Roman Cravtov
 - Andrew Hart
+- Benoit Mercier
+- Clayton Casciato
+- Dennis Lampe
+- Josef Abdel Wahed
+- Marwan Yassin
+- Matthias Baumann
+- Matthias Tapis
+- Michael Brazeau
+- Márcio Oliveira Luiz
+- Roman Cravtov
+- Ruston Rountree
+- Sergio Omiccioli
+- Thomas Stofer Computerservice
+- Welles Freire Ximenes
+- Wolfgang Scherer
 
 ## Year 2018 donors
 
