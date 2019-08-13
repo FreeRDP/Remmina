@@ -784,9 +784,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	const gchar* cs;
 	RemminaFile* remminafile;
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
+	rdpChannels* channels;
 	gchar *gateway_host;
 	gint gateway_port;
 	gint desktopOrientation, desktopScaleFactor, deviceScaleFactor;
+
+	channels = rfi->instance->context->channels;
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
@@ -1103,6 +1106,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		drive = (RDPDR_DRIVE*)malloc(sizeof(RDPDR_DRIVE));
 		ZeroMemory(drive, sizeof(RDPDR_DRIVE));
 
+		rfi->settings->DeviceRedirection = TRUE;
+		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
+
 		s = strrchr( cs, '/' );
 		if ( s == NULL || s[1] == 0 )
 			s = remmina_rdp_plugin_default_drive_name;
@@ -1120,13 +1126,13 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "shareprinter", FALSE)) {
-		RDPDR_PRINTER* printer;
-		printer = (RDPDR_PRINTER*)malloc(sizeof(RDPDR_PRINTER));
-		ZeroMemory(printer, sizeof(RDPDR_PRINTER));
-
-		printer->Type = RDPDR_DTYP_PRINT;
 
 		rfi->settings->DeviceRedirection = TRUE;
+		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
+
+		RDPDR_PRINTER* printer;
+		printer = (RDPDR_PRINTER*) calloc(1, sizeof(RDPDR_PRINTER));
+		printer->Type = RDPDR_DTYP_PRINT;
 		rfi->settings->RedirectPrinters = TRUE;
 
 		const gchar* pn = remmina_plugin_service->file_get_string(remminafile, "printername");
@@ -1148,12 +1154,14 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 		smartcard->Type = RDPDR_DTYP_SMARTCARD;
 
+		rfi->settings->DeviceRedirection = TRUE;
+		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
+
 		const gchar* sn = remmina_plugin_service->file_get_string(remminafile, "smartcardname");
 		if ( sn != NULL && sn[0] != '\0' ) {
 			smartcard->Name = _strdup(sn);
 		}
 
-		rfi->settings->DeviceRedirection = TRUE;
 		rfi->settings->RedirectSmartCards = TRUE;
 
 		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*)smartcard);
@@ -1172,6 +1180,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		ZeroMemory(serial, sizeof(RDPDR_SERIAL));
 
 		serial->Type = RDPDR_DTYP_SERIAL;
+
+		rfi->settings->DeviceRedirection = TRUE;
+		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
 
 		const gchar* sn = remmina_plugin_service->file_get_string(remminafile, "serialname");
 		if ( sn != NULL && sn[0] != '\0' ) {
@@ -1192,7 +1203,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 			serial->Permissive = _strdup("permissive");
 		}
 
-		rfi->settings->DeviceRedirection = TRUE;
 		rfi->settings->RedirectSerialPorts = TRUE;
 
 		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*)serial);
@@ -1206,6 +1216,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		parallel->Type = RDPDR_DTYP_PARALLEL;
 
 		rfi->settings->DeviceRedirection = TRUE;
+		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
+
 		rfi->settings->RedirectParallelPorts = TRUE;
 
 		const gchar* pn = remmina_plugin_service->file_get_string(remminafile, "parallelname");
