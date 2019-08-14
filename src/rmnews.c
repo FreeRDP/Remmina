@@ -346,6 +346,7 @@ void rmnews_get_news()
 	SoupLogger *logger = NULL;
 	int fd;
 	gchar *uid;
+	gboolean sa;
 
 	gchar *cachedir = g_build_path("/", g_get_user_cache_dir(), REMMINA_APP_ID, NULL);
 	gint d = g_mkdir_with_parents(cachedir, 0750);
@@ -389,14 +390,23 @@ void rmnews_get_news()
 
 	uid = remmina_sysinfo_get_unique_user_id();
 
+	sa = FALSE;
+	if (remmina_pref.periodic_usage_stats_permitted &&
+		remmina_pref.periodic_usage_stats_uuid_prefix != NULL &&
+		remmina_pref.periodic_usage_stats_uuid_prefix[0] != 0) {
+		sa = TRUE;
+	}
+
 	rmnews_get_url(g_strconcat(REMMINA_URL,
-				   "news/remmina_news.php?lang=",
-				   lang,
-				   "&ver="
-				   VERSION,
-				   "&uid=",
-				   uid,
-				   NULL));
+				"news/remmina_news.php?lang=",
+				lang,
+				"&ver="
+				VERSION,
+				"&uid=",
+				uid,
+				"&sa=",
+				sa ? "1" : "0",
+				NULL));
 
 	g_free(uid);
 	g_object_unref(session);
