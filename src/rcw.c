@@ -3201,9 +3201,9 @@ static gboolean rcw_go_fullscreen(GtkWidget *widget, GdkEvent *event, gpointer d
 #if GTK_CHECK_VERSION(3, 18, 0)
 	if (remmina_pref.fullscreen_on_auto) {
 		gtk_window_fullscreen_on_monitor(GTK_WINDOW(widget),
-				gdk_screen_get_default(),
-				gdk_screen_get_monitor_at_window (
-					gdk_screen_get_default(),
+				gdk_display_get_default(),
+				gdk_display_get_monitor_at_window (
+					gdk_display_get_default(),
 					gtk_widget_get_window(widget)));
 	} else {
 		remmina_log_print("Fullscreen managed by WM or by the user, as per settings");
