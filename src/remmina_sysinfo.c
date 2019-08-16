@@ -38,6 +38,8 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <sys/stat.h>
+#include <sys/types.h>
+#include <fcntl.h>
 #include "remmina/remmina_trace_calls.h"
 #include "remmina_sysinfo.h"
 
@@ -161,12 +163,40 @@ gchar *remmina_sysinfo_get_wm_name()
  */
 gchar *remmina_sysinfo_get_unique_user_id()
 {
-	unsigned long long hostid, uid, sddinodenumber, id;
+	unsigned long long uid, sddinodenumber, machineid, id;
 	struct stat sb;
 	const gchar * const * sdd;
+	int fdmid, i;
+	gchar *buf;
 
-	hostid = (unsigned long long)gethostid();
 	uid = (unsigned long long)getuid();
+
+	fdmid = open("/etc/machine-id", O_RDONLY, 0);
+	machineid = 0;
+	if (fdmid >= 0) {
+		/* According to freedesktop specs, machine-id is a 32char hex string
+		 * representing a 128bits value. We are fitting it into a 64bit
+		 valie (machineid)*/
+		buf = g_malloc(32);
+		if (read(fdmid, buf, 32) == 32) {
+			for(i = 0; i < 32; i++) {
+				char c;
+				unsigned char b;
+				c = buf[i];
+				if (c >= '0' && c <= '9')
+					b = c - '0';
+				else if (c >= 'A' && c <= 'F')
+					b = c - 'A' + 10;
+				else if (c >= 'a' && c <= 'f')
+					b = c - 'a' + 10;
+				else
+					b = 0;
+				machineid = ((machineid >> 60) | (machineid << 4)) ^ b;
+			}
+		}
+		close(fdmid);
+		g_free(buf);
+	}
 
 	/* Get the 1st inode number of g_get_system_data_dirs() */
 	sdd = g_get_system_data_dirs();
@@ -178,8 +208,9 @@ gchar *remmina_sysinfo_get_unique_user_id()
 	}
 
 	/* Mix up the three value in a irreversible way */
-	id = hostid ^ uid * 4957 ^ sddinodenumber * 33797;
+	id = machineid ^ uid << 32 ^ sddinodenumber;
 
-	return g_strdup_printf("%llu", id);
+	/* First 2 chars before '-' are the version number of IDs */
+	return g_strdup_printf("01-%llu", id);
 
 }
