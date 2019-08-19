@@ -114,7 +114,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">start</property>
-                            <signal name="state-set" handler="rmnews_stats_switch_state_set_cb" swapped="no"/>
+                            <signal name="notify::active" handler="rmnews_stats_switch_state_set_cb" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
