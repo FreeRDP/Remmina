@@ -15,7 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA  02110-1301, USA.
 
 set(_GTK3_found_all true)
@@ -64,6 +64,15 @@ find_required_package(GLIB2)
 if(NOT GLIB2_FOUND)
 	set(_GTK3_found_all false)
 endif()
+
+# Harfbuzz
+
+pkg_check_modules(PC_HB harfbuzz)
+find_path(HB_INCLUDE_DIR
+    NAMES hb.h
+    HINTS ${PC_HB_INCLUDE_DIRS}
+    PATH_SUFFIXES harfbuzz
+)
 
 # Pango
 
@@ -114,7 +123,7 @@ if(_GTK3_found_all)
 	find_package_handle_standard_args(GTK3 DEFAULT_MSG GTK3_LIBRARY GTK3_INCLUDE_DIR)
 
 	set(GTK3_LIBRARIES ${GTK3_LIBRARY} ${GDK3_LIBRARY} ${GLIB2_LIBRARIES} ${PANGO_LIBRARY} ${CAIRO_LIBRARY} ${GDKPIXBUF_LIBRARY} ${ATK_LIBRARY})
-	set(GTK3_INCLUDE_DIRS ${GTK3_INCLUDE_DIR} ${GLIB2_INCLUDE_DIRS} ${PANGO_INCLUDE_DIR} ${CAIRO_INCLUDE_DIR} ${GDKPIXBUF_INCLUDE_DIR} ${ATK_INCLUDE_DIR})
+        set(GTK3_INCLUDE_DIRS ${GTK3_INCLUDE_DIR} ${GLIB2_INCLUDE_DIRS} ${HB_INCLUDE_DIR} ${PANGO_INCLUDE_DIR} ${CAIRO_INCLUDE_DIR} ${GDKPIXBUF_INCLUDE_DIR} ${ATK_INCLUDE_DIR})
 	if (WAYLAND_INCLUDE_DIR)
 		set(GTK3_INCLUDE_DIRS ${GTK3_INCLUDE_DIRS} ${WAYLAND_INCLUDE_DIR})
 	endif()
