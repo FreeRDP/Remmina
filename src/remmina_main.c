@@ -196,6 +196,27 @@ gboolean remmina_main_on_delete_event(GtkWidget *widget, GdkEvent *event, gpoint
 }
 
 /**
+ * Called after the main window is destroyed, will cleanup remminamain object and related data
+ */
+static gboolean remmina_main_rmodestroy(gpointer data)
+{
+	g_free(remmina_pref.expanded_group);
+	remmina_pref.expanded_group = remmina_string_array_to_string(remminamain->priv->expanded_group);
+	remmina_string_array_free(remminamain->priv->expanded_group);
+	remminamain->priv->expanded_group = NULL;
+	if (remminamain->priv->file_model)
+		g_object_unref(G_OBJECT(remminamain->priv->file_model));
+
+	g_object_unref(G_OBJECT(remminamain->priv->file_model_filter));
+	g_object_unref(remminamain->builder);
+	g_free(remminamain->priv->selected_filename);
+	g_free(remminamain->priv->selected_name);
+	g_free(remminamain->priv);
+	g_free(remminamain);
+	remminamain = NULL;
+	return FALSE;
+}
+/**
  * Called when the main window is destroyed via a call from gtk_widget_destroy()
  */
 void remmina_main_destroy()
@@ -203,23 +224,11 @@ void remmina_main_destroy()
 	TRACE_CALL(__func__);
 
 	if (remminamain) {
+		/* Schedule remminamain object destruction after
+		 * GTK will finish to destroy the main window */
 		if (remminamain->window)
 			remmina_main_save_before_destroy();
-		g_free(remmina_pref.expanded_group);
-		remmina_pref.expanded_group = remmina_string_array_to_string(remminamain->priv->expanded_group);
-		remmina_string_array_free(remminamain->priv->expanded_group);
-		remminamain->priv->expanded_group = NULL;
-
-		if (remminamain->priv->file_model)
-			g_object_unref(G_OBJECT(remminamain->priv->file_model));
-		g_object_unref(G_OBJECT(remminamain->priv->file_model_filter));
-		g_object_unref(remminamain->builder);
-		g_free(remminamain->priv->selected_filename);
-		g_free(remminamain->priv->selected_name);
-		g_free(remminamain->priv);
-		g_free(remminamain);
-
-		remminamain = NULL;
+		g_idle_add(remmina_main_rmodestroy, NULL);
 	}
 }
 
