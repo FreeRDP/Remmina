@@ -3526,6 +3526,7 @@ static gboolean rcw_hostkey_func(RemminaProtocolWidget *gp, guint keyval, gboole
 		switch (priv->view_mode) {
 		case SCROLLED_WINDOW_MODE:
 			rcw_switch_viewmode(cnnobj->cnnwin, priv->fss_view_mode);
+			break;
 		case SCROLLED_FULLSCREEN_MODE:
 		case VIEWPORT_FULLSCREEN_MODE:
 			rcw_switch_viewmode(cnnobj->cnnwin, SCROLLED_WINDOW_MODE);
