@@ -3201,7 +3201,7 @@ static gboolean rcw_go_fullscreen(GtkWidget *widget, GdkEvent *event, gpointer d
 	if (!REMMINA_IS_CONNECTION_WINDOW(widget))
 		return FALSE;
 
-	target_monitor = (gint)data;
+	target_monitor = GPOINTER_TO_INT(data);
 
 #if GTK_CHECK_VERSION(3, 18, 0)
 	if (remmina_pref.fullscreen_on_auto) {
@@ -3421,7 +3421,7 @@ RemminaConnectionWindow *rcw_create_fullscreen(GtkWindow *old, gint view_mode)
 
 
 	/* Put the window in fullscreen after it is mapped to have it appear on the same monitor */
-	g_signal_connect(G_OBJECT(cnnwin), "map-event", G_CALLBACK(rcw_go_fullscreen), (gpointer)full_screen_target_monitor);
+	g_signal_connect(G_OBJECT(cnnwin), "map-event", G_CALLBACK(rcw_go_fullscreen), GINT_TO_POINTER(full_screen_target_monitor));
 
 	return cnnwin;
 }
