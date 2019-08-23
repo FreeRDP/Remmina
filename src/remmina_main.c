@@ -875,7 +875,7 @@ void remmina_main_on_action_application_quit(GSimpleAction *action, GVariant *pa
 {
 	// Called by quit signal in remmina_main.glade
 	TRACE_CALL(__func__);
-	g_print ("Quit intercept");
+	g_debug ("Quit intercept");
 	remmina_application_condexit(REMMINA_CONDEXIT_ONQUIT);
 }
 

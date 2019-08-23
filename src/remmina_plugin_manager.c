@@ -343,10 +343,6 @@ void remmina_plugin_manager_init(void)
 	}
 
 	g_slist_free(secret_plugins);
-
-
-
-
 }
 
 RemminaPlugin* remmina_plugin_manager_get_plugin(RemminaPluginType type, const gchar *name)
