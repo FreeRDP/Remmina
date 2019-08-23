@@ -3359,11 +3359,13 @@ RemminaConnectionWindow *rcw_create_fullscreen(GtkWindow *old, gint view_mode)
 	TRACE_CALL(__func__);
 	RemminaConnectionWindow *cnnwin;
 	GtkNotebook *notebook;
+#if GTK_CHECK_VERSION(3, 22, 0)
 	gint n_monitors;
 	gint i;
-	GdkDisplay* old_display;
 	GdkMonitor* old_monitor;
+	GdkDisplay* old_display;
 	GdkWindow* old_window;
+#endif
 	gint full_screen_target_monitor;
 
 	cnnwin = rcw_new();
@@ -3397,18 +3399,24 @@ RemminaConnectionWindow *rcw_create_fullscreen(GtkWindow *old, gint view_mode)
 	gtk_widget_show(GTK_WIDGET(cnnwin));
 
     full_screen_target_monitor = FULL_SCREEN_TARGET_MONITOR_UNDEFINED;
-	
+
     if (old) {
-		old_window = gtk_widget_get_window(GTK_WIDGET(old));
-		old_display = gdk_window_get_display(old_window);
-		old_monitor = gdk_display_get_monitor_at_window(old_display, old_window);
-		n_monitors = gdk_display_get_n_monitors(old_display);
-		for (i = 0; i < n_monitors; ++i) {
-			if (gdk_display_get_monitor(old_display, i) == old_monitor) {
-				full_screen_target_monitor = i;
-				break;
+		#if GTK_CHECK_VERSION(3, 22, 0)
+			old_window = gtk_widget_get_window(GTK_WIDGET(old));
+			old_display = gdk_window_get_display(old_window);
+			old_monitor = gdk_display_get_monitor_at_window(old_display, old_window);
+			n_monitors = gdk_display_get_n_monitors(old_display);
+			for (i = 0; i < n_monitors; ++i) {
+				if (gdk_display_get_monitor(old_display, i) == old_monitor) {
+					full_screen_target_monitor = i;
+					break;
+				}
 			}
-		}
+		#else
+			full_screen_target_monitor = gdk_screen_get_monitor_at_window(
+				gdk_screen_get_default(),
+				gtk_widget_get_window(GTK_WIDGET(old)));
+		#endif
 	}
 
 
