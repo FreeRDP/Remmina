@@ -103,6 +103,9 @@
  *        "DATE_PYTHON_SIMPLE": ""
  *        "DATE_SPICE": ""
  *    }
+ *    "ACTIVESECRETPLUGIN": {
+ *        "plugin_name": "kwallet"
+ *    }
  *
  * }
  * @endcode
@@ -138,6 +141,7 @@
 #include "remmina_sysinfo.h"
 #include "remmina_utils.h"
 #include "remmina/remmina_trace_calls.h"
+#include "remmina_plugin_manager.h"
 
 #ifdef GDK_WINDOWING_WAYLAND
 	#include <gdk/gdkwayland.h>
@@ -743,6 +747,36 @@ JsonNode *remmina_stats_get_profiles()
 }
 
 /**
+ * Add a json member ACTIVESECRETPLUGIN which shows the current secret plugin in use by remmina.
+ *
+ * @return a Json Node structure containg the secret plugin in use
+ *
+ */
+JsonNode *remmina_stats_get_secret_plugin()
+{
+	TRACE_CALL(__func__);
+
+	JsonBuilder *b;
+	JsonNode *r;
+	RemminaSecretPlugin *secret_plugin;
+	secret_plugin = remmina_plugin_manager_get_secret_plugin();
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+
+	if (secret_plugin && secret_plugin->is_service_available) {
+		json_builder_set_member_name(b, "plugin_name");
+		json_builder_add_string_value(b, secret_plugin->name);
+	}
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+
+	return r;
+}
+
+
+/**
  * Get all statistics in json format to send periodically to the PHP server.
  * The caller should free the returned buffer with g_free()
  * @warning This function is usually executed on a dedicated thread,
@@ -799,6 +833,10 @@ JsonNode *remmina_stats_get_all()
 
 	n = remmina_stats_get_profiles();
 	json_builder_set_member_name(b, "PROFILES");
+	json_builder_add_value(b, n);
+
+	n = remmina_stats_get_secret_plugin();
+	json_builder_set_member_name(b, "ACTIVESECRETPLUGIN");
 	json_builder_add_value(b, n);
 
 	json_builder_end_object(b);
