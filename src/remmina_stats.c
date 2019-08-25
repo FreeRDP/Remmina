@@ -775,6 +775,57 @@ JsonNode *remmina_stats_get_secret_plugin()
 	return r;
 }
 
+/**
+ * Add a json member BUILDHOST that will be used to determine how Remmina has been
+ * installed (locally compiled, PPA, copr, … , ).
+ *
+ * When the BUILDHOST is the same as the local hostname, we can safely store "local_build" as
+ * we don't need and want to store the user hostname.
+ *
+ * When the two differ, we store the build hostname, that will be parsed and compared
+ * with the other known build hosts. The goal is only to catch if the running Remmina
+ * has beeen built on known system. Later we will tune this to be much less intrusive.
+ *
+ * @return a Json Node structure containg the string "local_build" or the build hostname
+ *
+ */
+JsonNode *remmina_stats_get_build_host()
+{
+	TRACE_CALL(__func__);
+
+	JsonBuilder *b;
+	JsonNode *r;
+
+	char host[HOST_NAME_MAX + 1];
+	gchar *build_host;
+
+	if (gethostname(host, sizeof(host)) < 0) {
+		g_debug("Hostname is: %s", host);
+		strcpy (host, "NOHOST");
+	}
+	g_debug("Hostname is: %s", host);
+	g_debug("REMMINA_BUILD_HOST is: %s", REMMINA_BUILD_HOST);
+
+	if (g_strcmp0 (REMMINA_BUILD_HOST, host) == 0) {
+		build_host = "local_build";
+	} else {
+		build_host = REMMINA_BUILD_HOST;
+	}
+
+	g_debug("build_host: %s", build_host);
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+
+	json_builder_set_member_name(b, "build_host");
+	json_builder_add_string_value(b, build_host);
+
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+
+	return r;
+}
 
 /**
  * Get all statistics in json format to send periodically to the PHP server.
@@ -837,6 +888,10 @@ JsonNode *remmina_stats_get_all()
 
 	n = remmina_stats_get_secret_plugin();
 	json_builder_set_member_name(b, "ACTIVESECRETPLUGIN");
+	json_builder_add_value(b, n);
+
+	n = remmina_stats_get_build_host();
+	json_builder_set_member_name(b, "BUILDHOST");
 	json_builder_add_value(b, n);
 
 	json_builder_end_object(b);
