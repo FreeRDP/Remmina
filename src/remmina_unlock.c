@@ -91,7 +91,7 @@ static void remmina_unlock_unlock_clicked(GtkButton *btn, gpointer user_data)
 	g_info("remmina_sodium_pwhash_str_verify returned %i", rc);
 
 	if (rc == 0) {
-		g_info("Passphrase veryfied succesfully");
+		g_info("Passphrase veryfied successfully");
 		remmina_unlock_timer_reset(remmina_unlock_dialog);
 		gtk_widget_destroy(GTK_WIDGET(remmina_unlock_dialog->dialog));
 		remmina_unlock_dialog->dialog = NULL;

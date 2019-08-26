@@ -366,7 +366,7 @@ void rmnews_get_news()
 	}
 	g_close(fd, NULL);
 
-	g_info("Output file %s created succesfully", output_file_path);
+	g_info("Output file %s created successfully", output_file_path);
 
 	if (output_file_path) {
 	} else {

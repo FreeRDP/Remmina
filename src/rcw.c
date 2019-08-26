@@ -3643,6 +3643,7 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 
 	gchar *last_success;
 
+	g_debug("Connect signal emitted");
 	GDateTime *date = g_date_time_new_now_utc();
 
 	/* This signal handler is called by a plugin when it’s correctly connected
@@ -3663,9 +3664,13 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 	if (remmina_file_get_filename(cnnobj->remmina_file) == NULL)
 		remmina_pref_add_recent(remmina_file_get_string(cnnobj->remmina_file, "protocol"),
 					remmina_file_get_string(cnnobj->remmina_file, "server"));
-	if (remmina_pref.periodic_usage_stats_permitted)
+	if (remmina_pref.periodic_usage_stats_permitted) {
+		g_debug("Stats are allowed, we save the last successful connection date");
 		remmina_file_set_string(cnnobj->remmina_file, "last_success", last_success);
+		g_debug("Last successful connection date is %s ", last_success);
+	}
 
+	g_debug("Saving credentials");
 	/* Save credentials */
 	remmina_file_save(cnnobj->remmina_file);
 
@@ -3674,6 +3679,7 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 
 	rco_update_toolbar(cnnobj);
 
+	g_debug("Trying to present the window");
 	/* Try to present window */
 	g_timeout_add(200, rco_delayed_window_present, (gpointer)cnnobj);
 }
@@ -3691,6 +3697,7 @@ void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
 	RemminaConnectionWindowPriv *priv = cnnobj->cnnwin->priv;
 	GtkWidget *pparent;
 
+	g_debug("disconnect signal emitted");
 	/* Detach the protocol widget from the notebook now, or we risk that a
 	 * window delete will destroy cnnobj->proto before we complete disconnection.
 	 */
@@ -3724,8 +3731,10 @@ void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
 		mp = remmina_message_panel_new();
 		remmina_message_panel_setup_message(mp, remmina_protocol_widget_get_error_message(gp), cb_lasterror_confirmed, gp);
 		rco_show_message_panel(gp->cnnobj, mp);
+		g_debug("disconnect was not successful");
 	} else {
 		rco_closewin(gp);
+		g_debug("disconnect was successful");
 	}
 }
 

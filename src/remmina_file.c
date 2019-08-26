@@ -452,6 +452,7 @@ void remmina_file_save(RemminaFile *remminafile)
 	gint nopasswdsave;
 	GKeyFile *gkeyfile;
 	gsize length = 0;
+	GError *err = NULL;
 
 	if (remminafile->prevent_saving)
 		return;
@@ -459,6 +460,7 @@ void remmina_file_save(RemminaFile *remminafile)
 	if ((gkeyfile = remmina_file_get_keyfile(remminafile)) == NULL)
 		return;
 
+	g_debug("Saving profile");
 	/* get disablepasswordstoring */
 	nopasswdsave = remmina_file_get_int(remminafile, "disablepasswordstoring", 0);
 	/* Identify the protocol plugin and get pointers to its RemminaProtocolSetting structs */
@@ -517,7 +519,14 @@ void remmina_file_save(RemminaFile *remminafile)
 
 	/* Store gkeyfile to disk (password are already sent to keyring) */
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
-	g_file_set_contents(remminafile->filename, content, length, NULL);
+	if (g_file_set_contents(remminafile->filename, content, length, &err)) {
+		g_debug("Profile saved");
+	} else {
+		g_warning("Remmina connection profile cannot be saved, with error %d (%s)", err->code, err->message);
+	}
+	g_error_free (err);
+
+
 
 	g_free(content);
 	g_key_file_free(gkeyfile);
