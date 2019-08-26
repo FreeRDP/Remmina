@@ -524,9 +524,8 @@ void remmina_file_save(RemminaFile *remminafile)
 	} else {
 		g_warning("Remmina connection profile cannot be saved, with error %d (%s)", err->code, err->message);
 	}
-	g_error_free (err);
-
-
+	if (err != NULL)
+		g_error_free (err);
 
 	g_free(content);
 	g_key_file_free(gkeyfile);
