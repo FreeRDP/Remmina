@@ -81,6 +81,7 @@
  *    }
  *    "APPINDICATOR": {
  *        "appindicator_supported": 0
+ *        "appindicator_compiled": 1
  *        "icon_is_active": 1
  *        "appindicator_type": "AppIndicator on GtkStatusIcon/xembed"
  *    }
@@ -102,6 +103,15 @@
  *        "DATE_SFTP": ""
  *        "DATE_PYTHON_SIMPLE": ""
  *        "DATE_SPICE": ""
+ *    }
+ *    "ENVIRONMENT": {
+ *        "language": "en_US.utf8"
+ *    }
+ *    "ACTIVESECRETPLUGIN": {
+ *        "plugin_name": "kwallet"
+ *    }
+ *    "BUILDHOST": {
+ *        "build_host": "local_build"
  *    }
  *
  * }
@@ -138,6 +148,7 @@
 #include "remmina_sysinfo.h"
 #include "remmina_utils.h"
 #include "remmina/remmina_trace_calls.h"
+#include "remmina_plugin_manager.h"
 
 #ifdef GDK_WINDOWING_WAYLAND
 	#include <gdk/gdkwayland.h>
@@ -534,25 +545,24 @@ JsonNode *remmina_stats_get_indicator()
 		/** Remmina not compiled with -DWITH_APPINDICATOR=on */
 		json_builder_add_int_value(b, 0);
 #endif
-	} else {
-		/** StatusNotifier/Appindicator NOT supported by desktop */
-		json_builder_add_int_value(b, 0);
-		json_builder_set_member_name(b, "icon_is_active");
-		if (remmina_icon_is_available()) {
-			/** Remmina icon is active */
-			json_builder_add_int_value(b, 1);
-			json_builder_set_member_name(b, "appindicator_type");
+	}
+	/** StatusNotifier/Appindicator NOT supported by desktop */
+	json_builder_add_int_value(b, 0);
+	json_builder_set_member_name(b, "icon_is_active");
+	if (remmina_icon_is_available()) {
+		/** Remmina icon is active */
+		json_builder_add_int_value(b, 1);
+		json_builder_set_member_name(b, "appindicator_type");
 #ifdef HAVE_LIBAPPINDICATOR
-			/** libappindicator fallback to GtkStatusIcon/xembed"); */
-			json_builder_add_string_value(b, "AppIndicator on GtkStatusIcon/xembed");
+		/** libappindicator fallback to GtkStatusIcon/xembed"); */
+		json_builder_add_string_value(b, "AppIndicator on GtkStatusIcon/xembed");
 #else
-			/** Remmina fallback to GtkStatusIcon/xembed */
-			json_builder_add_string_value(b, "Remmina icon on GtkStatusIcon/xembed");
+		/** Remmina fallback to GtkStatusIcon/xembed */
+		json_builder_add_string_value(b, "Remmina icon on GtkStatusIcon/xembed");
 #endif
-		}else {
-			/** Remmina icon is NOT active */
-			json_builder_add_int_value(b, 0);
-		}
+	}else {
+		/** Remmina icon is NOT active */
+		json_builder_add_int_value(b, 0);
 	}
 	json_builder_end_object(b);
 	r = json_builder_get_root(b);
@@ -743,6 +753,36 @@ JsonNode *remmina_stats_get_profiles()
 }
 
 /**
+ * Add a json member ACTIVESECRETPLUGIN which shows the current secret plugin in use by remmina.
+ *
+ * @return a Json Node structure containg the secret plugin in use
+ *
+ */
+JsonNode *remmina_stats_get_secret_plugin()
+{
+	TRACE_CALL(__func__);
+
+	JsonBuilder *b;
+	JsonNode *r;
+	RemminaSecretPlugin *secret_plugin;
+	secret_plugin = remmina_plugin_manager_get_secret_plugin();
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+
+	if (secret_plugin && secret_plugin->is_service_available) {
+		json_builder_set_member_name(b, "plugin_name");
+		json_builder_add_string_value(b, secret_plugin->name);
+	}
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+
+	return r;
+}
+
+
+/**
  * Get all statistics in json format to send periodically to the PHP server.
  * The caller should free the returned buffer with g_free()
  * @warning This function is usually executed on a dedicated thread,
@@ -799,6 +839,10 @@ JsonNode *remmina_stats_get_all()
 
 	n = remmina_stats_get_profiles();
 	json_builder_set_member_name(b, "PROFILES");
+	json_builder_add_value(b, n);
+
+	n = remmina_stats_get_secret_plugin();
+	json_builder_set_member_name(b, "ACTIVESECRETPLUGIN");
 	json_builder_add_value(b, n);
 
 	json_builder_end_object(b);
