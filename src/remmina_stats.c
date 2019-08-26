@@ -81,6 +81,7 @@
  *    }
  *    "APPINDICATOR": {
  *        "appindicator_supported": 0
+ *        "appindicator_compiled": 1
  *        "icon_is_active": 1
  *        "appindicator_type": "AppIndicator on GtkStatusIcon/xembed"
  *    }
@@ -544,25 +545,24 @@ JsonNode *remmina_stats_get_indicator()
 		/** Remmina not compiled with -DWITH_APPINDICATOR=on */
 		json_builder_add_int_value(b, 0);
 #endif
-	} else {
-		/** StatusNotifier/Appindicator NOT supported by desktop */
-		json_builder_add_int_value(b, 0);
-		json_builder_set_member_name(b, "icon_is_active");
-		if (remmina_icon_is_available()) {
-			/** Remmina icon is active */
-			json_builder_add_int_value(b, 1);
-			json_builder_set_member_name(b, "appindicator_type");
+	}
+	/** StatusNotifier/Appindicator NOT supported by desktop */
+	json_builder_add_int_value(b, 0);
+	json_builder_set_member_name(b, "icon_is_active");
+	if (remmina_icon_is_available()) {
+		/** Remmina icon is active */
+		json_builder_add_int_value(b, 1);
+		json_builder_set_member_name(b, "appindicator_type");
 #ifdef HAVE_LIBAPPINDICATOR
-			/** libappindicator fallback to GtkStatusIcon/xembed"); */
-			json_builder_add_string_value(b, "AppIndicator on GtkStatusIcon/xembed");
+		/** libappindicator fallback to GtkStatusIcon/xembed"); */
+		json_builder_add_string_value(b, "AppIndicator on GtkStatusIcon/xembed");
 #else
-			/** Remmina fallback to GtkStatusIcon/xembed */
-			json_builder_add_string_value(b, "Remmina icon on GtkStatusIcon/xembed");
+		/** Remmina fallback to GtkStatusIcon/xembed */
+		json_builder_add_string_value(b, "Remmina icon on GtkStatusIcon/xembed");
 #endif
-		}else {
-			/** Remmina icon is NOT active */
-			json_builder_add_int_value(b, 0);
-		}
+	}else {
+		/** Remmina icon is NOT active */
+		json_builder_add_int_value(b, 0);
 	}
 	json_builder_end_object(b);
 	r = json_builder_get_root(b);
