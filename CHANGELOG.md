@@ -1,3 +1,19 @@
+## v1.3.6
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.5...v.1.3.6)
+
+* Fix fullscreen switching [!1895](https://gitlab.com/Remmina/Remmina/merge_requests/1895) *@ToolsDevler*
+* Fullscreen fixes [!1897](https://gitlab.com/Remmina/Remmina/merge_requests/1897) *@giox069*
+* rdpr channel initialization for special devices sharing. Closes #1955 [!1892](https://gitlab.com/Remmina/Remmina/merge_requests/1892) *@antenore*
+* Fixing remminamain destroy issues [!1896](https://gitlab.com/Remmina/Remmina/merge_requests/1896) *@antenore*
+* Makes Rmnews modal to avoid that it steals input to the RCW [!1899](https://gitlab.com/Remmina/Remmina/merge_requests/1899) *@antenore*
+* Make some cmake targets optional to avoid packaging isssues [!1887](https://gitlab.com/Remmina/Remmina/merge_requests/1887) *@antenore*
+* SNAP fixing dependencies for the plugin WWW [!1890](https://gitlab.com/Remmina/Remmina/merge_requests/1890) *@antenore*
+* Updating Remmna icon to the yaru/suru icon set. [!1891](https://gitlab.com/Remmina/Remmina/merge_requests/1891) *@antenore*
+* Adding harfbuzz headers, closes #1941 [!1894](https://gitlab.com/Remmina/Remmina/merge_requests/1894) *@antenore*
+* New stats [!1898](https://gitlab.com/Remmina/Remmina/merge_requests/1898) *@antenore*
+* *.md: typo corrections [!1889](https://gitlab.com/Remmina/Remmina/merge_requests/1889) *@Cypresslin*
+* Remove G+ from documents [!1888](https://gitlab.com/Remmina/Remmina/merge_requests/1888) *@Cypresslin*
+
 ## v1.3.5
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.4...v.1.3.5)
 
