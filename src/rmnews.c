@@ -159,6 +159,14 @@ static void rmnews_close_clicked(GtkButton *btn, gpointer user_data)
 	rmnews_news_dialog->dialog = NULL;
 }
 
+static void rmnews_set_modal (GtkWindow *window, gpointer user_data)
+{
+	TRACE_CALL(__func__);
+	g_debug("Unsetting modality for RemMinaNews");
+	gtk_window_set_modal(window, FALSE);
+}
+
+
 static gint rmnews_show_news(GtkWindow *parent)
 {
 	TRACE_CALL(__func__);
@@ -168,8 +176,6 @@ static gint rmnews_show_news(GtkWindow *parent)
 
 	rmnews_news_dialog->builder = remmina_public_gtk_builder_new_from_file("remmina_news.glade");
 	rmnews_news_dialog->dialog = GTK_DIALOG(gtk_builder_get_object(rmnews_news_dialog->builder, "RemminaNewsDialog"));
-	if (parent)
-		gtk_window_set_transient_for(GTK_WINDOW(rmnews_news_dialog->dialog), parent);
 
 	rmnews_news_dialog->rmnews_text_view = GTK_TEXT_VIEW(GET_OBJ("rmnews_text_view"));
 	rmnews_news_dialog->rmnews_label = GTK_LABEL(GET_OBJ("rmnews_label"));
@@ -194,12 +200,15 @@ static gint rmnews_show_news(GtkWindow *parent)
 			 G_CALLBACK(rmnews_close_clicked), (gpointer)rmnews_news_dialog);
 	g_signal_connect(rmnews_news_dialog->dialog, "close",
 			 G_CALLBACK(rmnews_close_clicked), (gpointer)rmnews_news_dialog);
+	g_signal_connect(rmnews_news_dialog->dialog, "show",
+			 G_CALLBACK(rmnews_set_modal), (gpointer)rmnews_news_dialog);
 
 	/* Connect signals */
 	gtk_builder_connect_signals(rmnews_news_dialog->builder, NULL);
 	gtk_dialog_run(rmnews_news_dialog->dialog);
 	return rmnews_news_dialog->retval;
 }
+
 
 static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer data)
 {
@@ -313,7 +322,10 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 			if (g_strcmp0(filesha, filesha_after) != 0) {
 				g_info("SHA1 differs, we show the news and reset the counter");
 				remmina_pref.periodic_rmnews_last_get = 0;
-				rmnews_show_news(remmina_main_get_window());
+				GtkWindow *parent = remmina_main_get_window();
+				rmnews_show_news(parent);
+				if (parent)
+					gtk_window_set_transient_for(GTK_WINDOW(rmnews_news_dialog->dialog), parent);
 			} else {
 				g_get_current_time(&t);
 				remmina_pref.periodic_rmnews_last_get = t.tv_sec;
