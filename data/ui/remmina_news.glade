@@ -4,9 +4,10 @@
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkDialog" id="RemminaNewsDialog">
     <property name="can_focus">False</property>
+    <property name="hexpand">True</property>
+    <property name="vexpand">True</property>
     <property name="default_width">640</property>
     <property name="default_height">480</property>
-    <property name="destroy_with_parent">True</property>
     <property name="type_hint">dialog</property>
     <property name="urgency_hint">True</property>
     <child>
@@ -51,6 +52,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">in</property>
+                <property name="min_content_height">380</property>
                 <property name="propagate_natural_height">True</property>
                 <child>
                   <object class="GtkViewport">
@@ -60,8 +62,6 @@
                       <object class="GtkLabel" id="rmnews_label">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
                         <property name="use_markup">True</property>
                         <property name="wrap">True</property>
                         <property name="wrap_mode">word-char</property>
