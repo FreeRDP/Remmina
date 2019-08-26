@@ -103,8 +103,14 @@
  *        "DATE_PYTHON_SIMPLE": ""
  *        "DATE_SPICE": ""
  *    }
+ *    "ENVIRONMENT": {
+ *        "language": "en_US.utf8"
+ *    }
  *    "ACTIVESECRETPLUGIN": {
  *        "plugin_name": "kwallet"
+ *    }
+ *    "BUILDHOST": {
+ *        "build_host": "local_build"
  *    }
  *
  * }
