@@ -118,8 +118,8 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${REMMINA_APP_ID}.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/${REMMINA_APP_ID}.desktop @ONLY)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina-file.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop @ONLY)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina-file-wrapper.sh.in
-    ${CMAKE_CURRENT_BINARY_DIR}/remmina-file-wrapper.sh @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/remmina-file-wrapper.in
+    ${CMAKE_CURRENT_BINARY_DIR}/remmina-file-wrapper @ONLY)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${REMMINA_APP_ID}.desktop
     DESTINATION "${REMMINA_DATADIR}/applications")
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop
@@ -127,7 +127,7 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina-file.desktop
 install(FILES ${REMMINA_APP_ID}.appdata.xml
     DESTINATION "${REMMINA_DATADIR}/metainfo")
 install(
-    FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina-file-wrapper.sh
+    FILES ${CMAKE_CURRENT_BINARY_DIR}/remmina-file-wrapper
     DESTINATION "${CMAKE_INSTALL_FULL_BINDIR}"
     PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ WORLD_READ WORLD_EXECUTE
     )
@@ -176,6 +176,10 @@ install(
 if(WITH_MANPAGES)
     install(
         FILES gnome-session-remmina.1
+        DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1
+        )
+    install(
+        FILES remmina-file-wrapper.1
         DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1
         )
 endif()
