@@ -1,5 +1,5 @@
 ---
-image: antenore/ubuntu:19.04
+image: antenore/ubuntu:18.04
 
 stages:
   - build
@@ -70,8 +70,7 @@ appimage:build:
     - web
 
 flatpak:test:
-  # image: fedora:latest
-  # stage: flatpak_build
+  image: ubuntu:18.04
   stage: build
   variables:
     BUNDLE: "remmina-dev.flatpak"
