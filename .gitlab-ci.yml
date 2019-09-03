@@ -33,10 +33,11 @@ ubuntu:devel:
     - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS
     - make VERBOSE=1 -C $BUILD_FOLDER
   only:
-    # - branches
-    - tags
-    - web
-    - schedules
+    refs:
+      - master
+      - web
+      - schedules
+      - merge_requests
 
 appimage:build:
   # image: ubuntu:devel
@@ -51,8 +52,8 @@ appimage:build:
     - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS
     - make VERBOSE=1 -C $BUILD_FOLDER
   only:
-    # - branches
-    - web
+    refs:
+      - web
 
 flatpak:test:
   image: ubuntu:18.04
@@ -79,10 +80,10 @@ flatpak:test:
     paths:
       - flatpak/.flatpak-builder/cache
   only:
-    # - branches
-    - tags
-    - web
-    - schedules
+    refs:
+      - master
+      - web
+      - schedules
 
 snap:build:
   image: ubuntudesktop/gnome-3-28-1804
@@ -104,3 +105,8 @@ snap:build:
   artifacts:
     paths: ['./*.snap']
     expire_in: 10 days
+  only:
+    refs:
+      - master
+      - web
+      - schedules
