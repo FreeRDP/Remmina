@@ -1,5 +1,5 @@
 ---
-image: ubuntu:18.04
+image: antenore/ubuntu:18.04
 
 stages:
   - build
@@ -27,66 +27,36 @@ ubuntu:devel:
   stage: build
   before_script:
     - apt-get update -qq
-    - apt-get install -y -qq software-properties-common
-                          python3-software-properties
-    - apt-add-repository $FREERDP_DAILY_PPA -y
-    - apt-get update -qq
-    - apt-get install -y -qq build-essential git-core cmake libssl-dev
-      libx11-dev libxext-dev libxinerama-dev libxcursor-dev libxdamage-dev
-      libxv-dev libxkbfile-dev libasound2-dev libcups2-dev libxml2 libxml2-dev
-      libxrandr-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
-      libxi-dev libavutil-dev libavcodec-dev libxtst-dev libgtk-3-dev
-      libgcrypt11-dev libssh-dev libpulse-dev libvte-2.91-dev libxkbfile-dev
-      libtelepathy-glib-dev libjpeg-dev libgnutls28-dev libgnome-keyring-dev
-      libavahi-ui-gtk3-dev libvncserver-dev libappindicator3-dev intltool
-      libsecret-1-dev libsodium-dev libwebkit2gtk-4.0-dev libsystemd-dev
-      libsoup2.4-dev libjson-glib-dev libavresample-dev freerdp2-dev
-      libspice-protocol-dev libspice-client-gtk-3.0-dev
 
   script:
     - mkdir $BUILD_FOLDER
     - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS
     - make VERBOSE=1 -C $BUILD_FOLDER
   only:
-    # - branches
-    - tags
-    - web
-    - schedules
+    refs:
+      - master
+      - web
+      - schedules
+      - merge_requests
 
 appimage:build:
   # image: ubuntu:devel
   # stage: cross_environment
-  image: ubuntu:xenial
+  image: antenore/ubuntu:16.04
   stage: build
   before_script:
     - apt-get update -qq
-    - apt-get install -y -qq software-properties-common
-                          python3-software-properties
-    - apt-add-repository $FREERDP_DAILY_PPA -y
-    - apt-get update -qq
-    - apt-get install -y -qq build-essential git-core cmake libssl-dev
-      libx11-dev libxext-dev libxinerama-dev libxcursor-dev libxdamage-dev
-      libxv-dev libxkbfile-dev libasound2-dev libcups2-dev libxml2 libxml2-dev
-      libxrandr-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
-      libxi-dev libavutil-dev libavcodec-dev libxtst-dev libgtk-3-dev
-      libgcrypt11-dev libssh-dev libpulse-dev libvte-2.91-dev libxkbfile-dev
-      libtelepathy-glib-dev libjpeg-dev libgnutls28-dev libgnome-keyring-dev
-      libavahi-ui-gtk3-dev libvncserver-dev libappindicator3-dev intltool
-      libsecret-1-dev libsodium-dev libwebkit2gtk-4.0-dev libsystemd-dev
-      libsoup2.4-dev libjson-glib-dev libavresample-dev freerdp2-dev
-      libspice-protocol-dev libspice-client-gtk-3.0-dev
 
   script:
     - mkdir $BUILD_FOLDER
     - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS
     - make VERBOSE=1 -C $BUILD_FOLDER
   only:
-    # - branches
-    - web
+    refs:
+      - web
 
 flatpak:test:
-  # image: fedora:latest
-  # stage: flatpak_build
+  image: ubuntu:18.04
   stage: build
   variables:
     BUNDLE: "remmina-dev.flatpak"
@@ -110,10 +80,10 @@ flatpak:test:
     paths:
       - flatpak/.flatpak-builder/cache
   only:
-    # - branches
-    - tags
-    - web
-    - schedules
+    refs:
+      - master
+      - web
+      - schedules
 
 snap:build:
   image: ubuntudesktop/gnome-3-28-1804
@@ -135,3 +105,8 @@ snap:build:
   artifacts:
     paths: ['./*.snap']
     expire_in: 10 days
+  only:
+    refs:
+      - master
+      - web
+      - schedules
