@@ -407,8 +407,10 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 
 	gpdata = GET_PLUGIN_DATA(gp);
 	atom = XInternAtom(gpdata->display, "WM_COMMAND", True);
-	if (atom == None)
+	if (atom == None) {
+		CANCEL_ASYNC
 		return FALSE;
+	}
 
 	ts.tv_sec = 0;
 	ts.tv_nsec = 200000000;
