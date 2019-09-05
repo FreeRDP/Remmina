@@ -399,6 +399,7 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 	unsigned char *data = NULL;
 	struct timespec ts;
 	gboolean agent_window_found = FALSE;
+	int wait_period = 100; // 100 * 0.2msec = 20sec
 
 	CANCEL_DEFER
 
@@ -412,10 +413,16 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 	ts.tv_sec = 0;
 	ts.tv_nsec = 200000000;
 
-	while (1) {
+	while (wait_period > 0) {
 		pthread_testcancel();
+		if (!(gpdata->pidx2go > 0)) {
+			nanosleep(&ts, NULL);
+			printf("[%s] remmina_plugin_x2go_monitor_create_notify: waiting for X2Go session to be launched\n", PLUGIN_NAME);
+			continue;
+		}
 		while (!XPending(gpdata->display)) {
 			nanosleep(&ts, NULL);
+			wait_period--;
 			printf("[%s] remmina_plugin_x2go_monitor_create_notify: still XPending for this DISPLAY\n", PLUGIN_NAME);
 			continue;
 		}
