@@ -517,16 +517,9 @@ static gboolean remmina_plugin_x2go_main(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
-	gboolean ret;
-	const gchar *err;
+	gboolean ret = FALSE;
 
 	ret = remmina_plugin_x2go_start_session(gp);
-//	if (!ret) {
-//			err = remmina_x2go_session_get_error(gpdata->nx);
-//			if (err) {
-//			remmina_plugin_service->protocol_plugin_set_error(gp, "%s", err);
-//		}
-//	}
 
 	gpdata->thread = 0;
 	return ret;
