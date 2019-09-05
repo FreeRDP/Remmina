@@ -278,6 +278,19 @@ static void remmina_plugin_x2go_init(RemminaProtocolWidget *gp)
 	gpdata = g_new0(RemminaPluginX2GoData, 1);
 	g_object_set_data_full(G_OBJECT(gp), "plugin-data", gpdata, g_free);
 
+	if (!remmina_plugin_service->gtksocket_available()) {
+		/* report this in open_connection, not reportable here... */
+		return;
+	}
+
+	gpdata->socket_id = 0;
+	gpdata->thread = 0;
+
+	gpdata->display = NULL;
+	gpdata->window_id = 0;
+	gpdata->pidx2go = 0;
+	gpdata->orig_handler = NULL;
+
 	gpdata->socket = gtk_socket_new();
 	remmina_plugin_service->protocol_plugin_register_hostkey(gp, gpdata->socket);
 	gtk_widget_show(gpdata->socket);
@@ -535,23 +548,13 @@ static gboolean remmina_plugin_x2go_open_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
-	gint width, height;
 
 	if (!remmina_plugin_service->gtksocket_available()) {
 		remmina_plugin_service->protocol_plugin_set_error(gp,
-			_("Protocol %s is unavailable because GtkSocket only works under X.org"),
-			remmina_plugin_x2go.name);
+		    _("Protocol %s is unavailable because GtkSocket only works under X.org"),
+		    remmina_plugin_x2go.name);
 		return FALSE;
 	}
-
-	width = remmina_plugin_service->get_profile_remote_width(gp);
-	height = remmina_plugin_service->get_profile_remote_height(gp);
-
-	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
-
-	remmina_plugin_service->protocol_plugin_set_width(gp, width);
-	remmina_plugin_service->protocol_plugin_set_height(gp, height);
-	gtk_widget_set_size_request(GTK_WIDGET(gp), width, height);
 
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 	if (pthread_create(&gpdata->thread, NULL, remmina_plugin_x2go_main_thread, gp)) {
