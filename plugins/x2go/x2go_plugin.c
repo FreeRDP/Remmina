@@ -459,7 +459,7 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	printf("[%s] remmina_plugin_x2go_open_connection\n", PLUGIN_NAME);
+	printf("[%s] remmina_plugin_x2go_start_session\n", PLUGIN_NAME);
 #define GET_PLUGIN_STRING(value) \
 		g_strdup(remmina_plugin_service->file_get_string(remminafile, value))
 #define GET_PLUGIN_PASSWORD(value) \
@@ -508,9 +508,9 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 		res = g_strdup_printf ("%dx%d", width, height);
 	else
 		res = "800x600";
-	printf("[%s] remmina_plugin_x2go_open_connection: guessing optimal X2Go session geometry %s\n", PLUGIN_NAME, res);
+	printf("[%s] remmina_plugin_x2go_start_session: guessing optimal X2Go session geometry %s\n", PLUGIN_NAME, res);
 
-	remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
+	printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 
 	/* register for notifications of window creation events */
 	if (ret)
