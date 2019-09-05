@@ -569,6 +569,8 @@ static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 
+	printf("[%s] remmina_plugin_x2go_close_connection\n", PLUGIN_NAME);
+
 	if (gpdata->thread) {
 		pthread_cancel(gpdata->thread);
 		if (gpdata->thread)
@@ -591,7 +593,6 @@ static gboolean remmina_plugin_x2go_close_connection(RemminaProtocolWidget *gp)
 		gpdata->display = NULL;
 	}
 
-	printf("[%s] remmina_plugin_x2go_close_connection\n", PLUGIN_NAME);
 	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
 	return FALSE;
 }
