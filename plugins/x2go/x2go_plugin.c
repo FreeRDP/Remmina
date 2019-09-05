@@ -308,7 +308,6 @@ static gboolean remmina_plugin_x2go_try_window_id(Window window_id)
 
 	printf("[%s] remmina_plugin_x2go_start_create_notify: check if X2Go Agent window [0x%lx] is already known or if it needs registration\n", PLUGIN_NAME, window_id);
 
-	CANCEL_DEFER
 	pthread_mutex_lock(&remmina_x2go_init_mutex);
 	for (i = 0; i < remmina_x2go_window_id_array->len; i++) {
 		if (g_array_index(remmina_x2go_window_id_array, Window, i) == window_id) {
@@ -322,7 +321,6 @@ static gboolean remmina_plugin_x2go_try_window_id(Window window_id)
 		printf("[%s] remmina_plugin_x2go_try_window_id: registered new X2Go Agent window with ID [0x%lx]\n", PLUGIN_NAME, window_id);
 	}
 	pthread_mutex_unlock(&remmina_x2go_init_mutex);
-	CANCEL_ASYNC
 
 	return (!already_seen);
 }
@@ -333,7 +331,6 @@ remmina_plugin_x2go_remove_window_id (Window window_id)
 	gint i;
 	gboolean already_seen = FALSE;
 
-	CANCEL_DEFER
 	pthread_mutex_lock (&remmina_x2go_init_mutex);
 	for (i = 0; i < remmina_x2go_window_id_array->len; i++)
 	{
@@ -350,7 +347,6 @@ remmina_plugin_x2go_remove_window_id (Window window_id)
 		printf("[%s] remmina_plugin_x2go_remove_window_id: forgetting about X2Go Agent window with ID [0x%lx]\n", PLUGIN_NAME, window_id);
 	}
 	pthread_mutex_unlock (&remmina_x2go_init_mutex);
-	CANCEL_ASYNC
 }
 
 static int remmina_plugin_x2go_dummy_handler(Display *dsp, XErrorEvent *err)
