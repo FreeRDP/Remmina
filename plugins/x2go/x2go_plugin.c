@@ -150,8 +150,16 @@ static void onMainThread_gtk_socket_add_id( GtkSocket* sk, Window w)
 /* --------------------------------------- */
 
 
-static gboolean remmina_plugin_x2go_exec_x2go(gchar *host, gint sshport, gchar *username, gchar *password,
-		gchar *command, gchar *kbdlayout, gchar *kbdtype, gchar *resolution, RemminaProtocolWidget *gp)
+static gboolean remmina_plugin_x2go_exec_x2go(gchar *host,
+                                              gint sshport,
+                                              gchar *username,
+                                              gchar *password,
+                                              gchar *command,
+                                              gchar *kbdlayout,
+                                              gchar *kbdtype,
+                                              gchar *resolution,
+                                              RemminaProtocolWidget *gp,
+                                              gchar *errmsg)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
@@ -196,7 +204,10 @@ static gboolean remmina_plugin_x2go_exec_x2go(gchar *host, gint sshport, gchar *
 			g_stpcpy(password, s_password);
 			g_free(s_password);
 		}
-
+	} else  {
+		g_strlcpy(errmsg, "Authentication cancelled.", 512);
+		printf("[%s] remmina_plugin_x2go_exec_x2go: %s\n", PLUGIN_NAME, errmsg);
+		return FALSE;
 	}
 
 	argc = 0;
@@ -355,14 +366,16 @@ static int remmina_plugin_x2go_dummy_handler(Display *dsp, XErrorEvent *err)
 	return 0;
 }
 
-static gboolean remmina_plugin_x2go_start_create_notify(RemminaProtocolWidget *gp)
+static gboolean remmina_plugin_x2go_start_create_notify(RemminaProtocolWidget *gp, gchar *errmsg)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);
 
 	gpdata->display = XOpenDisplay(gdk_display_get_name(gdk_display_get_default()));
-	if (gpdata->display == NULL)
+	if (gpdata->display == NULL) {
+		g_strlcpy(errmsg, "Failed to open X11 DISPLAY.", 512);
 		return FALSE;
+	}
 
 	gpdata->orig_handler = XSetErrorHandler(remmina_plugin_x2go_dummy_handler);
 
@@ -373,7 +386,7 @@ static gboolean remmina_plugin_x2go_start_create_notify(RemminaProtocolWidget *g
 	return TRUE;
 }
 
-static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget *gp, const gchar *cmd)
+static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget *gp, const gchar *cmd, gchar *errmsg)
 {
 	TRACE_CALL(__func__);
 	RemminaPluginX2GoData *gpdata;
@@ -385,6 +398,7 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 	unsigned long nitems, rest;
 	unsigned char *data = NULL;
 	struct timespec ts;
+	gboolean agent_window_found = FALSE;
 
 	CANCEL_DEFER
 
@@ -420,6 +434,7 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 			printf("[%s] remmina_plugin_x2go_monitor_create_notify: found X11 window with WM_COMMAND set to '%s', window ID is [0x%lx]\n", PLUGIN_NAME, (char*)data, w);
 		if (data && strstr((char*)data, cmd) && remmina_plugin_x2go_try_window_id(w)) {
 			gpdata->window_id = w;
+			agent_window_found = TRUE;
 			XFree(data);
 			break;
 		}
@@ -432,6 +447,11 @@ static gboolean remmina_plugin_x2go_monitor_create_notify(RemminaProtocolWidget 
 	gpdata->display = NULL;
 
 	CANCEL_ASYNC
+
+	if (!agent_window_found) {
+		g_strlcpy(errmsg, "X2Go session window did not appear. Something went wrong...", 512);
+		return FALSE;
+	}
 
 	return TRUE;
 }
@@ -451,7 +471,8 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 
 	RemminaPluginX2GoData *gpdata = GET_PLUGIN_DATA(gp);;
 	RemminaFile *remminafile;
-	GError *error = NULL;
+	const gchar errmsg[512] = {0};
+	gboolean ret = TRUE;
 
 	gchar *servstr, *host, *username, *password, *command, *kbdlayout, *kbdtype, *res;
 	gint sshport;
@@ -491,17 +512,23 @@ static gboolean remmina_plugin_x2go_start_session(RemminaProtocolWidget *gp)
 
 	remmina_plugin_service->log_printf("[%s] attached window to socket %d\n", PLUGIN_NAME, gpdata->socket_id);
 
-	if (!remmina_plugin_x2go_start_create_notify(gp))
-		return FALSE;
+	/* register for notifications of window creation events */
+	if (ret)
+		ret = remmina_plugin_x2go_start_create_notify(gp, (gchar*)&errmsg);
 
-	if (!remmina_plugin_x2go_exec_x2go(host, sshport, username, password, command, kbdlayout, kbdtype, res, gp)) {
-		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", error->message);
-		return FALSE;
-	}
+	/* trigger the session start, session window should appear soon after this */
+	if (ret)
+		ret = remmina_plugin_x2go_exec_x2go(host, sshport, username, password, command, kbdlayout, kbdtype, res, gp, (gchar*)&errmsg);
 
 	/* get the window id of the remote x2goagent */
-	if (!remmina_plugin_x2go_monitor_create_notify(gp, "x2goagent"))
+	if (ret)
+		ret = remmina_plugin_x2go_monitor_create_notify(gp, "x2goagent", (gchar*)&errmsg);
+
+	if (!ret) {
+		printf ("%s\n", errmsg);
+		remmina_plugin_service->protocol_plugin_set_error(gp, "%s", errmsg);
 		return FALSE;
+	}
 
 	/* embed it */
 	onMainThread_gtk_socket_add_id(GTK_SOCKET(gpdata->socket), gpdata->window_id);
