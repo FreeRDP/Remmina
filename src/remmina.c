@@ -95,6 +95,8 @@ static GOptionEntry remmina_options[] =
 	{ "icon",	  'i', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Start as tray icon"),					       NULL	  },
 	{ "version",	  'v', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Show the application’s version"),				       NULL	  },
 	{ "full-version", 'V', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Show the application’s version, including the plugin versions"), NULL	  },
+	{ "update-profile", 0, 0,	 G_OPTION_ARG_FILENAME,	   NULL, N_("Modify connection profile, require also --set-option"), NULL	  },
+	{ "set-option", 0, 0,	 G_OPTION_ARG_STRING_ARRAY,	   NULL, N_("Set a profile setting, to be used with --update-profile"), NULL	  },
 	{ NULL }
 };
 
@@ -198,16 +200,6 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 		executed = TRUE;
 	}
 
-	if (g_variant_dict_lookup_value(opts, "version", NULL)) {
-		remmina_exec_command(REMMINA_COMMAND_VERSION, NULL);
-		executed = TRUE;
-	}
-
-	if (g_variant_dict_lookup_value(opts, "full-version", NULL)) {
-		remmina_exec_command(REMMINA_COMMAND_FULL_VERSION, NULL);
-		executed = TRUE;
-	}
-
 	if (!executed) {
 		remmina_exec_command(REMMINA_COMMAND_MAIN, NULL);
 	}
@@ -221,9 +213,6 @@ static void remmina_on_startup(GApplication *app)
 
 	RemminaSecretPlugin *secret_plugin;
 
-	remmina_pref_init();
-	remmina_file_manager_init();
-	remmina_plugin_manager_init();
 	remmina_widget_pool_init();
 	remmina_sftp_plugin_register();
 	remmina_ssh_plugin_register();
@@ -256,15 +245,41 @@ static void remmina_on_startup(GApplication *app)
 
 }
 
-static gint remmina_on_local_cmdline(GApplication *app, GVariantDict *options, gpointer user_data)
+static gint remmina_on_local_cmdline(GApplication *app, GVariantDict *opts, gpointer user_data)
 {
 	TRACE_CALL(__func__);
 
 	int status = -1;
+	gchar *str;
+	gchar **settings;
 
 	/* Here you handle any command line options that you want to be executed
-	 * from command line, one time, and than exit */
+	 * in the local instance (the non-unique instance) */
 
+	if (g_variant_dict_lookup_value(opts, "version", NULL)) {
+		remmina_exec_command(REMMINA_COMMAND_VERSION, NULL);
+		status = 0;
+	}
+
+	if (g_variant_dict_lookup_value(opts, "full-version", NULL)) {
+		remmina_exec_command(REMMINA_COMMAND_FULL_VERSION, NULL);
+		status = 0;
+	}
+
+	if (g_variant_dict_lookup(opts, "update-profile", "^&ay", &str)) { /* ^&ay no need to free */
+		if (g_variant_dict_lookup(opts, "set-option", "^a&s", &settings)) {
+			if (settings != NULL) {
+				status = remmina_exec_set_setting(str, settings);
+				g_free(settings);
+			} else
+				status = 1;
+		} else {
+			status = 1;
+			g_print("Error: --update-profile requires --set-option\n");
+		}
+	}
+
+	/* Returning a non negative value here makes the application exit */
 	return status;
 }
 
@@ -302,6 +317,12 @@ int main(int argc, char* argv[])
 	gcry_control(GCRYCTL_DISABLE_SECMEM, 0);
 	gcry_control(GCRYCTL_INITIALIZATION_FINISHED, 0);
 #endif  /* !HAVE_LIBGCRYPT */
+
+	/* Initialize some remmina parts needed also on a local instance for correct handle-local-options */
+	remmina_pref_init();
+	remmina_file_manager_init();
+	remmina_plugin_manager_init();
+
 
 	app_id = g_application_id_is_valid(REMMINA_APP_ID) ? REMMINA_APP_ID : NULL;
 	app = gtk_application_new(app_id, G_APPLICATION_HANDLES_COMMAND_LINE);
