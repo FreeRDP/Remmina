@@ -1652,7 +1652,7 @@ static gpointer gwtransp_list[] =
  * c) Setting description
  * d) Compact disposition
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
- * f) Unused pointer
+ * f) Setting Tooltip
  */
 static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 {
@@ -1673,7 +1673,7 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
  * c) Setting description
  * d) Compact disposition
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
- * f) Unused pointer
+ * f) Setting Tooltip
  */
 static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 {
@@ -1689,11 +1689,11 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "exec",		       N_("Startup program"),			FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "execpath",		       N_("Startup path"),			FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "loadbalanceinfo",	       N_("Load balance info"),			FALSE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printername",	       N_("Local printer name"),		FALSE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printerdriver",	       N_("Local printer driver"),		FALSE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "serialname",	       N_("Local serial name"),			FALSE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "serialdriver",	       N_("Local serial driver"),		FALSE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "serialpath",	       N_("Local serial path"),			FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printername",	       N_("Local printer name"),		FALSE,	NULL,		N_("Name of the printer as it is defined locally, i.e. cupspdf")},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printerdriver",	       N_("Local printer driver"),		FALSE,	NULL,		N_("Full name of the printer driver, i.e. Samsung CLX-3300 Series PS")},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "serialname",	       N_("Local serial name"),			FALSE,	NULL,		N_("COM1, COM2, etc")},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "serialdriver",	       N_("Local serial driver"),		FALSE,	NULL,		N_("Serial")},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "serialpath",	       N_("Local serial path"),			FALSE,	NULL,		N_("/dev/ttyS0, /dev/ttyS1, etc")},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "parallelname",	       N_("Local parallel name"),		FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "parallelpath",	       N_("Local parallel device"),		FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "smartcardname",	       N_("Smartcard Name"),			FALSE,	NULL,		NULL},

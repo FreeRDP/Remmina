@@ -77,7 +77,7 @@ static gboolean remmina_plugin_tool_close_connection(RemminaProtocolWidget *gp)
  * c) Setting description
  * d) Compact disposition
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
- * f) Unused pointer
+ * f) Setting Tooltip
  */
 static const RemminaProtocolSetting remmina_plugin_tool_basic_settings[] =
 {

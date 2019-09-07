@@ -341,7 +341,7 @@ static const RemminaProtocolFeature remmina_plugin_sftp_features[] =
  * c) Setting description
  * d) Compact disposition
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
- * f) Unused pointer
+ * f) Setting Tooltip
  */
 static const RemminaProtocolSetting remmina_sftp_basic_settings[] =
 {

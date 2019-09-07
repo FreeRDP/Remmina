@@ -1045,7 +1045,7 @@ static RemminaProtocolFeature remmina_plugin_ssh_features[] =
  *  3. Setting description.
  *  4. Compact disposition.
  *  5. Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO.
- *  6. Unused pointer.
+ *  6. Setting Tooltip.
  * .
  */
 static const RemminaProtocolSetting remmina_ssh_basic_settings[] =
@@ -1068,7 +1068,7 @@ static const RemminaProtocolSetting remmina_ssh_basic_settings[] =
  *  3. Setting description.
  *  4. Compact disposition.
  *  5. Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO.
- *  6. Unused pointer.
+ *  6. Setting Tooltip.
  *
  */
 static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
