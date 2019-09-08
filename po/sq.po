@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-09-07 08:54+0000\n"
+"POT-Creation-Date: 2019-09-08 22:31+0000\n"
 "PO-Revision-Date: 2014-03-21 13:27+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -407,7 +407,16 @@ msgstr "Lokal"
 msgid "Progress"
 msgstr "Përparimi"
 
-#: src/remmina_exec.c:248
+#: src/remmina_exec.c:171
+#, c-format
+msgid "Unable to open profile file %s\n"
+msgstr ""
+
+#: src/remmina_exec.c:184
+msgid "Error: an extra line of standard input is needed\n"
+msgstr ""
+
+#: src/remmina_exec.c:305
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr ""
@@ -1141,6 +1150,14 @@ msgstr ""
 
 #: src/remmina.c:97
 msgid "Show the application’s version, including the plugin versions"
+msgstr ""
+
+#: src/remmina.c:98
+msgid "Modify connection profile, require also --set-option"
+msgstr ""
+
+#: src/remmina.c:99
+msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
 
 #: src/remmina_about.c:53

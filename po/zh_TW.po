@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-09-07 08:54+0000\n"
+"POT-Creation-Date: 2019-09-08 22:31+0000\n"
 "PO-Revision-Date: 2014-02-25 14:26+0000\n"
 "Last-Translator: Po-Hsu Lin <po-hsu.lin@canonical.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
@@ -406,7 +406,16 @@ msgstr "本地"
 msgid "Progress"
 msgstr "進度"
 
-#: src/remmina_exec.c:248
+#: src/remmina_exec.c:171
+#, c-format
+msgid "Unable to open profile file %s\n"
+msgstr ""
+
+#: src/remmina_exec.c:184
+msgid "Error: an extra line of standard input is needed\n"
+msgstr ""
+
+#: src/remmina_exec.c:305
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "外掛 %s 尚未註冊。"
@@ -1162,6 +1171,14 @@ msgstr "顯示應用程式版本"
 #: src/remmina.c:97
 msgid "Show the application’s version, including the plugin versions"
 msgstr "顯示應用程式版本，以及外掛版本"
+
+#: src/remmina.c:98
+msgid "Modify connection profile, require also --set-option"
+msgstr ""
+
+#: src/remmina.c:99
+msgid "Set one or more profile settings, to be used with --update-profile"
+msgstr ""
 
 #: src/remmina_about.c:53
 msgid "translator-credits"

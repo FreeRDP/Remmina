@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-09-07 08:54+0000\n"
+"POT-Creation-Date: 2019-09-08 22:31+0000\n"
 "PO-Revision-Date: 2019-02-24 14:49+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -408,7 +408,16 @@ msgstr "Lokal"
 msgid "Progress"
 msgstr "Forløb"
 
-#: src/remmina_exec.c:248
+#: src/remmina_exec.c:171
+#, c-format
+msgid "Unable to open profile file %s\n"
+msgstr ""
+
+#: src/remmina_exec.c:184
+msgid "Error: an extra line of standard input is needed\n"
+msgstr ""
+
+#: src/remmina_exec.c:305
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "Pluginet %s er ikke registreret."
@@ -1173,6 +1182,14 @@ msgstr "Vis programmets version"
 #: src/remmina.c:97
 msgid "Show the application’s version, including the plugin versions"
 msgstr "Vis programmets version, inklusiv pluginversionerne"
+
+#: src/remmina.c:98
+msgid "Modify connection profile, require also --set-option"
+msgstr ""
+
+#: src/remmina.c:99
+msgid "Set one or more profile settings, to be used with --update-profile"
+msgstr ""
 
 #: src/remmina_about.c:53
 msgid "translator-credits"

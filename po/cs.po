@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-09-07 08:54+0000\n"
+"POT-Creation-Date: 2019-09-08 22:31+0000\n"
 "PO-Revision-Date: 2019-03-30 21:30+0100\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -409,7 +409,16 @@ msgstr "Místní"
 msgid "Progress"
 msgstr "Průběh"
 
-#: src/remmina_exec.c:248
+#: src/remmina_exec.c:171
+#, c-format
+msgid "Unable to open profile file %s\n"
+msgstr ""
+
+#: src/remmina_exec.c:184
+msgid "Error: an extra line of standard input is needed\n"
+msgstr ""
+
+#: src/remmina_exec.c:305
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "Plugin %s není registrován."
@@ -1154,6 +1163,14 @@ msgstr "Zobrazit verzi aplikace"
 #: src/remmina.c:97
 msgid "Show the application’s version, including the plugin versions"
 msgstr "Zobrazit verzi aplikace včetně verzí pluginů"
+
+#: src/remmina.c:98
+msgid "Modify connection profile, require also --set-option"
+msgstr ""
+
+#: src/remmina.c:99
+msgid "Set one or more profile settings, to be used with --update-profile"
+msgstr ""
 
 #: src/remmina_about.c:53
 msgid "translator-credits"
