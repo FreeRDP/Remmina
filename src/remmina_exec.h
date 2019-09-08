@@ -61,6 +61,8 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data);
 void remmina_exec_exitremmina(void);
 void remmina_application_condexit(RemminaCondExitType why);
 
+int remmina_exec_set_setting(gchar *profilefilename, gchar **settings);
+
 G_END_DECLS
 
 

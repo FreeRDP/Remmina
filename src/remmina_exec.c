@@ -53,6 +53,7 @@
 #include "remmina_exec.h"
 #include "remmina_icon.h"
 #include "remmina/remmina_trace_calls.h"
+#include "remmina_file_manager.h"
 
 #ifdef SNAP_BUILD
 #   define ISSNAP "- SNAP Build -"
@@ -140,6 +141,62 @@ void remmina_application_condexit(RemminaCondExitType why)
 		remmina_exec_exitremmina();
 		break;
 	}
+}
+
+
+static void newline_remove(char *s)
+{
+	char c;
+	while((c = *s) != 0 && c != '\r' && c != '\n')
+		s++;
+	*s = 0;
+}
+
+/* used for commandline parameter --update-profile X --set-option Y --set-option Z
+ * return a status code for exit()
+ */
+int remmina_exec_set_setting(gchar *profilefilename, gchar **settings)
+{
+	RemminaFile *remminafile;
+	int i;
+	gchar **tk, *value;
+	char *line = NULL;
+	size_t len = 0;
+	ssize_t read;
+	gboolean abort = FALSE;
+
+	remminafile = remmina_file_manager_load_file(profilefilename);
+
+	if (!remminafile) {
+		g_print(_("Unable to open profile file %s\n"), profilefilename);
+		return 2;
+	}
+
+	for(i = 0; settings[i] != NULL && !abort; i++) {
+		if (strlen(settings[i]) > 0) {
+			tk = g_strsplit(settings[i], "=", 2);
+			if (tk[1] == NULL) {
+				read = getline(&line, &len, stdin);
+				if (read > 0) {
+					newline_remove(line);
+					value = line;
+				} else {
+					g_print(_("Error: an extra line of standard input is needed\n"));
+					abort = TRUE;
+				}
+			} else
+				value = tk[1];
+			remmina_file_set_string(remminafile, tk[0], value);
+			g_strfreev(tk);
+		}
+	}
+
+	if (line) free(line);
+
+	if (!abort) remmina_file_save(remminafile);
+
+	return 0;
+
 }
 
 void remmina_exec_command(RemminaCommandType command, const gchar* data)
