@@ -96,7 +96,7 @@ static GOptionEntry remmina_options[] =
 	{ "version",	      'v',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show the application’s version"),						     NULL	},
 	{ "full-version",     'V',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show the application’s version, including the plugin versions"),		     NULL	},
 	{ "update-profile",   0,    0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Modify connection profile, require also --set-option"),			     NULL	},
-	{ "set-option",	      0,    0,			  G_OPTION_ARG_STRING_ARRAY,   NULL, N_("Set a profile setting, to be used with --update-profile"),			     NULL	},
+	{ "set-option",	      0,    0,			  G_OPTION_ARG_STRING_ARRAY,   NULL, N_("Set one or more profile settings, to be used with --update-profile"),		     NULL	},
 	{ NULL }
 };
 
