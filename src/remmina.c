@@ -80,23 +80,23 @@ gboolean kioskmode;
 
 static GOptionEntry remmina_options[] =
 {
-	{ "about",	  'a', 0,		     G_OPTION_ARG_NONE,		    NULL, N_("Show about dialog"),					       NULL	  },
-	{ "connect",	  'c', 0,		     G_OPTION_ARG_FILENAME,	    NULL, N_("Connect to desktop described by file (.remmina or type supported by plugin)"),				       "FILE"	  },
-	{ G_OPTION_REMAINING, '\0', 0,		     G_OPTION_ARG_FILENAME_ARRAY,   NULL, N_("Connect to desktop described by file (.remmina or type supported by plugin)"),				       "FILE"	  },
-	{ "edit",	  'e', 0,		     G_OPTION_ARG_FILENAME,	    NULL, N_("Edit desktop connection described by file (.remmina or type supported by plugin)"),					       "FILE"	  },
-	{ "help",	  '?', G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE,	   	    NULL, NULL,								       NULL	  },
-	{ "kiosk",	  'k', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Start Remmina in Kiosk mode"),				       NULL	  },
-	{ "new",	  'n', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Create a new connection profile"),			       NULL	  },
-	{ "pref",	  'p', 0,		     G_OPTION_ARG_STRING,  	    NULL, N_("Show preferences dialog page"),				       "PAGENR"	  },
-	{ "plugin",	  'x', 0,		     G_OPTION_ARG_STRING,  	    NULL, N_("Execute the plugin"),					       "PLUGIN"	  },
-	{ "quit",	  'q', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Quit the application"),					       NULL	  },
-	{ "server",	  's', 0,		     G_OPTION_ARG_STRING,  	    NULL, N_("Use default server name (for --new)"),			       "SERVER"	  },
-	{ "protocol",	  't', 0,		     G_OPTION_ARG_STRING,  	    NULL, N_("Use default protocol (for --new)"),			       "PROTOCOL" },
-	{ "icon",	  'i', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Start as tray icon"),					       NULL	  },
-	{ "version",	  'v', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Show the application’s version"),				       NULL	  },
-	{ "full-version", 'V', 0,		     G_OPTION_ARG_NONE,	   	    NULL, N_("Show the application’s version, including the plugin versions"), NULL	  },
-	{ "update-profile", 0, 0,	 G_OPTION_ARG_FILENAME,	   NULL, N_("Modify connection profile, require also --set-option"), NULL	  },
-	{ "set-option", 0, 0,	 G_OPTION_ARG_STRING_ARRAY,	   NULL, N_("Set a profile setting, to be used with --update-profile"), NULL	  },
+	{ "about",	      'a',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show about dialog"),								     NULL	},
+	{ "connect",	      'c',  0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Connect to desktop described by file (.remmina or type supported by plugin)"),	     "FILE"	},
+	{ G_OPTION_REMAINING, '\0', 0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect to desktop described by file (.remmina or type supported by plugin)"),	     "FILE"	},
+	{ "edit",	      'e',  0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Edit desktop connection described by file (.remmina or type supported by plugin)"), "FILE"	},
+	{ "help",	      '?',  G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE,	       NULL, NULL,										     NULL	},
+	{ "kiosk",	      'k',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Start Remmina in Kiosk mode"),							     NULL	},
+	{ "new",	      'n',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Create a new connection profile"),						     NULL	},
+	{ "pref",	      'p',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Show preferences dialog page"),						     "PAGENR"	},
+	{ "plugin",	      'x',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Execute the plugin"),								     "PLUGIN"	},
+	{ "quit",	      'q',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Quit the application"),							     NULL	},
+	{ "server",	      's',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Use default server name (for --new)"),						     "SERVER"	},
+	{ "protocol",	      't',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Use default protocol (for --new)"),						     "PROTOCOL" },
+	{ "icon",	      'i',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Start as tray icon"),								     NULL	},
+	{ "version",	      'v',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show the application’s version"),						     NULL	},
+	{ "full-version",     'V',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show the application’s version, including the plugin versions"),		     NULL	},
+	{ "update-profile",   0,    0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Modify connection profile, require also --set-option"),			     NULL	},
+	{ "set-option",	      0,    0,			  G_OPTION_ARG_STRING_ARRAY,   NULL, N_("Set a profile setting, to be used with --update-profile"),			     NULL	},
 	{ NULL }
 };
 
@@ -106,9 +106,9 @@ _gpg_error_to_errno(gcry_error_t e)
 {
 	/* be lazy right now */
 	if (e == GPG_ERR_NO_ERROR)
-		return (0);
+		return 0;
 	else
-		return (EINVAL);
+		return EINVAL;
 }
 #endif /* !WITH_LIBGCRYPT */
 
@@ -174,11 +174,10 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 		if (!g_variant_dict_lookup(opts, "protocol", "&s", &protocol))
 			protocol = NULL;
 
-		if (g_variant_dict_lookup(opts, "server", "&s", &server)) {
+		if (g_variant_dict_lookup(opts, "server", "&s", &server))
 			str = g_strdup_printf("%s,%s", protocol, server);
-		}else  {
+		else
 			str = g_strdup(protocol);
-		}
 
 		remmina_exec_command(REMMINA_COMMAND_NEW, str);
 		g_free(str);
@@ -200,9 +199,8 @@ static gint remmina_on_command_line(GApplication *app, GApplicationCommandLine *
 		executed = TRUE;
 	}
 
-	if (!executed) {
+	if (!executed)
 		remmina_exec_command(REMMINA_COMMAND_MAIN, NULL);
-	}
 
 	return status;
 }
@@ -222,11 +220,11 @@ static void remmina_on_startup(GApplication *app)
 	gtk_window_set_default_icon_name(REMMINA_APP_ID);
 
 	/* Setting the X11 program class (WM_CLASS) is necessary to group
-	 * windows with .desktop file which has the same StartupWMClass */
+	* windows with .desktop file which has the same StartupWMClass */
 	gdk_set_program_class(REMMINA_APP_ID);
 
 	gtk_icon_theme_append_search_path(gtk_icon_theme_get_default(),
-		REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons");
+					  REMMINA_RUNTIME_DATADIR G_DIR_SEPARATOR_S "icons");
 	g_application_hold(app);
 
 	remmina_stats_sender_schedule();
@@ -238,11 +236,9 @@ static void remmina_on_startup(GApplication *app)
 	if (!secret_plugin) {
 		g_print("WARNING: Remmina is running without a secret plugin. Passwords will be saved in a less secure way.\n");
 	} else {
-		if (!secret_plugin->is_service_available()) {
+		if (!secret_plugin->is_service_available())
 			g_print("WARNING: Remmina is running with a secret plugin, but it cannot connect to a secret service.\n");
-		}
 	}
-
 }
 
 static gint remmina_on_local_cmdline(GApplication *app, GVariantDict *opts, gpointer user_data)
@@ -271,8 +267,9 @@ static gint remmina_on_local_cmdline(GApplication *app, GVariantDict *opts, gpoi
 			if (settings != NULL) {
 				status = remmina_exec_set_setting(str, settings);
 				g_free(settings);
-			} else
+			} else {
 				status = 1;
+			}
 		} else {
 			status = 1;
 			g_print("Error: --update-profile requires --set-option\n");
@@ -283,7 +280,7 @@ static gint remmina_on_local_cmdline(GApplication *app, GVariantDict *opts, gpoi
 	return status;
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
 	TRACE_CALL(__func__);
 	GtkApplication *app;
@@ -292,7 +289,7 @@ int main(int argc, char* argv[])
 
 	/* Enable wayland backend only after GTK 3.22.27 or the clipboard
 	 * will not work. See GTK bug 790031 */
-	if (remmina_gtk_check_version(3,22,27))
+	if (remmina_gtk_check_version(3, 22, 27))
 		gdk_set_allowed_backends("wayland,x11,broadway,quartz,mir");
 	else
 		gdk_set_allowed_backends("x11,broadway,quartz,mir");
@@ -307,9 +304,8 @@ int main(int argc, char* argv[])
 # if GCRYPT_VERSION_NUMBER < 0x010600
 	gcry_error_t e;
 	if (!gcrypt_thread_initialized) {
-		if ((e = gcry_control(GCRYCTL_SET_THREAD_CBS, &gcry_threads_pthread)) != GPG_ERR_NO_ERROR) {
-			return (-1);
-		}
+		if ((e = gcry_control(GCRYCTL_SET_THREAD_CBS, &gcry_threads_pthread)) != GPG_ERR_NO_ERROR)
+			return -1;
 		gcrypt_thread_initialized++;
 	}
 #endif  /* !GCRYPT_VERSION_NUMBER */
