@@ -49,8 +49,12 @@ appimage:build:
 
   script:
     - mkdir $BUILD_FOLDER
-    - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS
+    - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS -CMAKE_INSTALL_PREFIX=/usr
     - make VERBOSE=1 -C $BUILD_FOLDER
+    - make install DESTDIR=AppDir
+  artifacts:
+    paths:
+      - $BUILD_FOLDER/AppDir
   only:
     refs:
       - web
