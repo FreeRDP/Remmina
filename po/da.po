@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
 "POT-Creation-Date: 2019-09-08 22:31+0000\n"
-"PO-Revision-Date: 2019-02-24 14:49+0200\n"
+"PO-Revision-Date: 2019-09-09 18:17+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
 "Language: da\n"
@@ -411,11 +411,11 @@ msgstr "Forløb"
 #: src/remmina_exec.c:171
 #, c-format
 msgid "Unable to open profile file %s\n"
-msgstr ""
+msgstr "Kan ikke åbne profilfilen %s\n"
 
 #: src/remmina_exec.c:184
 msgid "Error: an extra line of standard input is needed\n"
-msgstr ""
+msgstr "Fejl: der behøves en ekstra linje med standardinput\n"
 
 #: src/remmina_exec.c:305
 #, c-format
@@ -637,6 +637,8 @@ msgstr "Gem som standard"
 #: src/remmina_file_editor.c:1312
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
+"Brug de nuværende indstillinger som standard til alle nye "
+"forbindelsesprofiler"
 
 #: src/remmina_file_editor.c:1315 src/remmina_main.c:975
 msgid "_Save"
@@ -1185,11 +1187,13 @@ msgstr "Vis programmets version, inklusiv pluginversionerne"
 
 #: src/remmina.c:98
 msgid "Modify connection profile, require also --set-option"
-msgstr ""
+msgstr "Rediger forbindelsesprofil, kræver også --set-option"
 
 #: src/remmina.c:99
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
+"Indstil en eller flere profilindstillinger som skal bruges med --update-"
+"profile"
 
 #: src/remmina_about.c:53
 msgid "translator-credits"
@@ -1708,7 +1712,7 @@ msgstr "Navn på lokal printer"
 
 #: plugins/rdp/rdp_plugin.c:1692
 msgid "Name of the printer as it is defined locally, i.e. cupspdf"
-msgstr ""
+msgstr "Navnet på printeren som den er angivet lokalt. F.eks. cupspdf"
 
 #: plugins/rdp/rdp_plugin.c:1693
 msgid "Local printer driver"
@@ -1716,7 +1720,7 @@ msgstr "Driver til lokal printer"
 
 #: plugins/rdp/rdp_plugin.c:1693
 msgid "Full name of the printer driver, i.e. Samsung CLX-3300 Series PS"
-msgstr ""
+msgstr "Printerens fulde navn. F.eks. Samsung CLX-3300 Series PS"
 
 #: plugins/rdp/rdp_plugin.c:1694
 msgid "Local serial name"
@@ -1724,7 +1728,7 @@ msgstr "Navn på lokal seriel"
 
 #: plugins/rdp/rdp_plugin.c:1694
 msgid "COM1, COM2, etc"
-msgstr ""
+msgstr "COM1, COM2 osv."
 
 #: plugins/rdp/rdp_plugin.c:1695
 msgid "Local serial driver"
@@ -1732,7 +1736,7 @@ msgstr "Driver til lokal seriel"
 
 #: plugins/rdp/rdp_plugin.c:1695
 msgid "Serial"
-msgstr ""
+msgstr "Serienummer"
 
 #: plugins/rdp/rdp_plugin.c:1696
 msgid "Local serial path"
@@ -1740,7 +1744,7 @@ msgstr "Sti til lokal seriel"
 
 #: plugins/rdp/rdp_plugin.c:1696
 msgid "/dev/ttyS0, /dev/ttyS1, etc"
-msgstr ""
+msgstr "/dev/ttyS0, /dev/ttyS1 osv."
 
 #: plugins/rdp/rdp_plugin.c:1697
 msgid "Local parallel name"
@@ -2130,12 +2134,11 @@ msgstr "Fil downloadet"
 
 #: plugins/www/www_plugin.c:783
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: plugins/www/www_plugin.c:783
-#, fuzzy
 msgid "http://address or https://address"
-msgstr "URL (http://adresse eller https://adresse)"
+msgstr "http://adresse eller https://adresse"
 
 #: plugins/www/www_plugin.c:784
 msgid "Username"
@@ -2182,9 +2185,8 @@ msgid "Remmina Browser Plugin"
 msgstr "Remmina-browserplugin"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
-#, fuzzy
 msgid "Secure passwords storing in the KDE Wallet"
-msgstr "Sikre adgangskoder gemt i GNOME-nøgleringen"
+msgstr "Sikre adgangskoder som er gemt i KDE-tegnebogen"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
@@ -2211,23 +2213,20 @@ msgid "Remmina Web Site"
 msgstr "Remmina-websted"
 
 #: data/ui/remmina_news.glade:107
-#, fuzzy
 msgid "Send anonymous statistics to remmina.org"
-msgstr "Periodisk afsendelse af anvendelsesstatistik til remminas udviklere"
+msgstr "Send anonym statisk til remmina.org"
 
 #: data/ui/remmina_news.glade:131
-#, fuzzy
 msgid "Make Remmina the default Remote Desktop Client"
-msgstr "Remmina-fjernskrivebordsklient"
+msgstr "Gør Remmina til standardfjernskrivebordsklienten"
 
 #: data/ui/remmina_news.glade:140
-#, fuzzy
 msgid "Apply"
-msgstr "Applet"
+msgstr "Anvend"
 
 #: data/ui/remmina_news.glade:164
 msgid "<big>Important settings</big>"
-msgstr ""
+msgstr "<big>Vigtige indstillinger</big>"
 
 #: data/ui/remmina_news.glade:190
 msgid ""
@@ -2237,10 +2236,15 @@ msgid ""
 "\">rewarding our heros!</a></b>\n"
 "</span>\n"
 msgstr ""
+"<span>\n"
+"<b>Remmina er udviklet af stapre bidragsydere i deres fritid. Du kan også "
+"være tapper ved at <a href=\"https://remmina.org/donations/\" "
+"title=\"Donationer til Remmina\">belønne vores helte!</a></b>\n"
+"</span>\n"
 
 #: data/ui/remmina_news.glade:210
 msgid "<big>Contribute</big>"
-msgstr ""
+msgstr "<big>Bidrag</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:46
 msgid ""
