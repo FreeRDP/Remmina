@@ -37,7 +37,7 @@ set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 find_package(Threads REQUIRED)
 find_package(X11)
 
-find_package(Cups)
+find_required_package(Cups)
 
 
 set(REMMINA_PLUGIN_RDP_SRCS

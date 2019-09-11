@@ -762,17 +762,20 @@ int remmina_rdp_load_static_channel_addin(rdpChannels* channels, rdpSettings* se
 int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 {
 	rfContext *rfi = (rfContext *)user_data;
-	const char *model = cupsGetOption("printer-make-and-model",
+	const char *model = cupsGetOption("printer-driver-name",
 			dest->num_options,
 			dest->options);
 
 	RDPDR_PRINTER* printer;
 	printer = (RDPDR_PRINTER*) calloc(1, sizeof(RDPDR_PRINTER));
 	printer->Type = RDPDR_DTYP_PRINT;
+	g_debug("Printer Type: %d", printer->Type);
 	rfi->settings->RedirectPrinters = TRUE;
 
 	printer->Name = _strdup(dest->name);
+	g_debug("Printer Name: %s", printer->Name);
 	printer->DriverName = _strdup(model);
+	g_debug("Printer Driver: %s", printer->DriverName);
 	freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*)printer);
 	return (1);
 }
