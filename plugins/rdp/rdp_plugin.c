@@ -55,6 +55,7 @@
 #include <freerdp/client/cmdline.h>
 #include <freerdp/error.h>
 #include <winpr/memory.h>
+#include <cups/cups.h>
 
 #include <string.h>
 
@@ -758,6 +759,25 @@ int remmina_rdp_load_static_channel_addin(rdpChannels* channels, rdpSettings* se
 	return -1;
 }
 
+int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
+{
+	rfContext *rfi = (rfContext *)user_data;
+	const char *model = cupsGetOption("printer-make-and-model",
+			dest->num_options,
+			dest->options);
+
+	RDPDR_PRINTER* printer;
+	printer = (RDPDR_PRINTER*) calloc(1, sizeof(RDPDR_PRINTER));
+	printer->Type = RDPDR_DTYP_PRINT;
+	rfi->settings->RedirectPrinters = TRUE;
+
+	printer->Name = _strdup(dest->name);
+	printer->DriverName = _strdup(model);
+	freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*)printer);
+	return (1);
+}
+
+
 /* Send CTRL+ALT+DEL keys keystrokes to the plugin drawing_area widget */
 static void remmina_rdp_send_ctrlaltdel(RemminaProtocolWidget *gp)
 {
@@ -1129,22 +1149,12 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 		rfi->settings->DeviceRedirection = TRUE;
 		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
+		if (cupsEnumDests(CUPS_DEST_FLAGS_NONE, 1000, NULL, 0, 0, remmina_rdp_set_printers, rfi)) {
+			g_debug ("Sharing printers");
 
-		RDPDR_PRINTER* printer;
-		printer = (RDPDR_PRINTER*) calloc(1, sizeof(RDPDR_PRINTER));
-		printer->Type = RDPDR_DTYP_PRINT;
-		rfi->settings->RedirectPrinters = TRUE;
-
-		const gchar* pn = remmina_plugin_service->file_get_string(remminafile, "printername");
-		if ( pn != NULL && pn[0] != '\0' ) {
-			printer->Name = _strdup(pn);
+		} else {
+			g_debug ("Cannot share printers, are there any available?");
 		}
-		const gchar* dn = remmina_plugin_service->file_get_string(remminafile, "printerdriver");
-		if ( dn != NULL && dn[0] != '\0' ) {
-			printer->DriverName = _strdup(dn);
-		}
-
-		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*)printer);
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE)) {
@@ -1689,8 +1699,6 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "exec",		       N_("Startup program"),			FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "execpath",		       N_("Startup path"),			FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "loadbalanceinfo",	       N_("Load balance info"),			FALSE,	NULL,		NULL},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printername",	       N_("Local printer name"),		FALSE,	NULL,		N_("Name of the printer as it is defined locally, i.e. cupspdf")},
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printerdriver",	       N_("Local printer driver"),		FALSE,	NULL,		N_("Full name of the printer driver, i.e. Samsung CLX-3300 Series PS")},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "serialname",	       N_("Local serial name"),			FALSE,	NULL,		N_("COM1, COM2, etc")},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "serialdriver",	       N_("Local serial driver"),		FALSE,	NULL,		N_("Serial")},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "serialpath",	       N_("Local serial path"),			FALSE,	NULL,		N_("/dev/ttyS0, /dev/ttyS1, etc")},
