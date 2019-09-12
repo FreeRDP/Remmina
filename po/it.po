@@ -9,16 +9,17 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
 "POT-Creation-Date: 2019-09-08 22:31+0000\n"
-"PO-Revision-Date: 2019-07-26 21:33+0200\n"
+"PO-Revision-Date: 2019-09-09 21:21+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
-"Language-Team: Remmina l10N <l10n@lists.remmina.org>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
+"it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9-dev\n"
 "X-Launchpad-Export-Date: 2011-01-18 05:16+0000\n"
-"X-Generator: Poedit 2.2.1\n"
 
 #. Profile: Protocol
 #: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1475
@@ -158,19 +159,19 @@ msgstr "Inserire i certificati di autenticazione"
 
 #: src/remmina_message_panel.c:520
 msgid "CA Certificate File"
-msgstr "CA Certificate File"
+msgstr "File di certificato CA"
 
 #: src/remmina_message_panel.c:542
 msgid "CA CRL File"
-msgstr "CA CRL File"
+msgstr "Elenco di revocazione della CA"
 
 #: src/remmina_message_panel.c:564
 msgid "Client Certificate File"
-msgstr "Client Certificate File"
+msgstr "File di certificato client"
 
 #: src/remmina_message_panel.c:586
 msgid "Client Certificate Key"
-msgstr "Client Certificate Key"
+msgstr "Chiave del certificato del cliente"
 
 #. Title
 #: src/remmina_chat_window.c:178
@@ -415,11 +416,11 @@ msgstr "Avanzamento"
 #: src/remmina_exec.c:171
 #, c-format
 msgid "Unable to open profile file %s\n"
-msgstr ""
+msgstr "Impossibile aprire il file di profilo %s\n"
 
 #: src/remmina_exec.c:184
 msgid "Error: an extra line of standard input is needed\n"
-msgstr ""
+msgstr "Errore: è necessaria una linea supplementare di input standard\n"
 
 #: src/remmina_exec.c:305
 #, c-format
@@ -1101,8 +1102,8 @@ msgstr "Creazione del device pty fallita."
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
-msgstr[0] "Elementi totali: %i."
-msgstr[1] "Elementi totali: %i."
+msgstr[0] "%i elemento in totale."
+msgstr[1] "%i elementi in totale."
 
 #: src/remmina_main.c:826
 #, c-format
@@ -1128,7 +1129,7 @@ msgstr "Questo protocollo non supporta l’export."
 
 #: src/remmina_main.c:1203
 msgid "Remmina Kiosk"
-msgstr "Remmina Kiosk"
+msgstr "Avviare Remmina in modo Chiosco"
 
 #: src/remmina.c:83
 msgid "Show about dialog"
@@ -1171,11 +1172,11 @@ msgstr "Termina l’applicazione"
 
 #: src/remmina.c:93
 msgid "Use default server name (for --new)"
-msgstr "Use default server name (for --new)"
+msgstr "Utilizzare il nome del server per default (per --new)"
 
 #: src/remmina.c:94
 msgid "Use default protocol (for --new)"
-msgstr "Use default protocol (for --new)"
+msgstr "Utilizzare il protocollo di default (per --new)"
 
 #: src/remmina.c:95
 msgid "Start as tray icon"
@@ -1191,11 +1192,12 @@ msgstr "Mostra la versione dell’applicazione e dei plugins"
 
 #: src/remmina.c:98
 msgid "Modify connection profile, require also --set-option"
-msgstr ""
+msgstr "Modificare il profilo di connessione, richiede anche --set-option"
 
 #: src/remmina.c:99
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
+"Imposta una o più opzioni del profilo, da utilizzare con --update-profile"
 
 #: src/remmina_about.c:53
 msgid "translator-credits"
@@ -1203,7 +1205,7 @@ msgstr "translator-credits"
 
 #: src/remmina_sftp_plugin.c:318 src/remmina_ssh_plugin.c:956
 msgid "SSH identity file"
-msgstr "SSH identity file"
+msgstr "File di identità SSH"
 
 #: src/remmina_sftp_plugin.c:319 src/remmina_ssh_plugin.c:957
 msgid "SSH agent"
@@ -1657,7 +1659,7 @@ msgstr "Locale - alta qualità"
 
 #: plugins/rdp/rdp_plugin.c:1633
 msgid "Negotiate"
-msgstr "Negotiate"
+msgstr "Negoziare"
 
 #: plugins/rdp/rdp_plugin.c:1664 plugins/xdmcp/xdmcp_plugin.c:369
 #: plugins/vnc/vnc_plugin.c:1877 plugins/vnc/vnc_plugin.c:1897
@@ -1712,6 +1714,7 @@ msgstr "Nome stampante locale"
 #: plugins/rdp/rdp_plugin.c:1692
 msgid "Name of the printer as it is defined locally, i.e. cupspdf"
 msgstr ""
+"Nome della stampante così come è definita localmente, ad esempio cupspdf"
 
 #: plugins/rdp/rdp_plugin.c:1693
 msgid "Local printer driver"
@@ -1720,6 +1723,7 @@ msgstr "Driver stampante locale"
 #: plugins/rdp/rdp_plugin.c:1693
 msgid "Full name of the printer driver, i.e. Samsung CLX-3300 Series PS"
 msgstr ""
+"Nome completo del driver di stampa, ad esempio Samsung CLX-3300 Series PS"
 
 #: plugins/rdp/rdp_plugin.c:1694
 msgid "Local serial name"
@@ -1727,7 +1731,7 @@ msgstr "Nome porta seriale locale"
 
 #: plugins/rdp/rdp_plugin.c:1694
 msgid "COM1, COM2, etc"
-msgstr ""
+msgstr "COM1, COM2, ecc"
 
 #: plugins/rdp/rdp_plugin.c:1695
 msgid "Local serial driver"
@@ -1735,7 +1739,7 @@ msgstr "Driver porta seriale locale"
 
 #: plugins/rdp/rdp_plugin.c:1695
 msgid "Serial"
-msgstr ""
+msgstr "Seriale"
 
 #: plugins/rdp/rdp_plugin.c:1696
 msgid "Local serial path"
@@ -1743,7 +1747,7 @@ msgstr "Percorso porta seriale locale"
 
 #: plugins/rdp/rdp_plugin.c:1696
 msgid "/dev/ttyS0, /dev/ttyS1, etc"
-msgstr ""
+msgstr "/dev/ttyS0, /dev/ttyS1, ecc"
 
 #: plugins/rdp/rdp_plugin.c:1697
 msgid "Local parallel name"
@@ -1807,13 +1811,13 @@ msgstr "Relax Order Checks"
 
 #: plugins/rdp/rdp_plugin.c:1717
 msgid "Glyph Cache"
-msgstr "Glyph Cache"
+msgstr "Cache glifi"
 
 #. Type
 #. Name
 #: plugins/rdp/rdp_plugin.c:1741
 msgid "RDP - Remote Desktop Protocol"
-msgstr "RDP - Remote Desktop Protocol"
+msgstr "RDP — Remote Desktop Protocol"
 
 #. Type
 #. Name
@@ -2005,7 +2009,7 @@ msgstr "Termina"
 
 #: plugins/nx/nx_session_manager.c:190
 msgid "Display"
-msgstr "Display"
+msgstr "Visualizza"
 
 #: plugins/nx/nx_session_manager.c:197
 msgid "Status"
@@ -2047,7 +2051,7 @@ msgstr "Connessione in ascolto su protocollo TCP"
 #. Name
 #: plugins/xdmcp/xdmcp_plugin.c:391
 msgid "XDMCP - X Remote Session"
-msgstr "XDMCP - X Remote Session"
+msgstr "XDMCP - Sessione remota X"
 
 #: plugins/vnc/vnc_plugin.c:940
 msgid "Unable to connect to VNC server"
@@ -2134,12 +2138,11 @@ msgstr "File scaricato"
 
 #: plugins/www/www_plugin.c:783
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: plugins/www/www_plugin.c:783
-#, fuzzy
 msgid "http://address or https://address"
-msgstr "URL (http://indirizzo o https://indirizzo)"
+msgstr "http: // indirizzo o https: // indirizzo"
 
 #: plugins/www/www_plugin.c:784
 msgid "Username"
@@ -2207,7 +2210,7 @@ msgstr "Sposta giù"
 
 #: data/ui/remmina_about.glade:30
 msgid "About Remmina"
-msgstr "About Remmina"
+msgstr "Informazioni su Remmina"
 
 #: data/ui/remmina_about.glade:40
 msgid "Remmina Web Site"
@@ -2330,7 +2333,7 @@ msgstr "Esporta"
 
 #: data/ui/remmina_main.glade:322
 msgid "Multi password changer"
-msgstr "Multi password changer"
+msgstr "Cambio password multiplo"
 
 #: data/ui/remmina_main.glade:339
 msgid "Debug Window"
@@ -2347,7 +2350,7 @@ msgstr "Wiki del progetto"
 #. Online Remmina community, like reddit, facebook, etc
 #: data/ui/remmina_main.glade:404
 msgid "Online Community"
-msgstr "Online Community"
+msgstr "Comunità online"
 
 #: data/ui/remmina_main.glade:414
 msgid "Donations"
@@ -2371,7 +2374,7 @@ msgstr "Ultimo utilizzo"
 
 #: data/ui/remmina_mpc.glade:7
 msgid "Remmina - Multi Password Changer"
-msgstr "Remmina - Multi Password Changer"
+msgstr "Remmina — Cambio password multiplo"
 
 #: data/ui/remmina_mpc.glade:21
 msgid "Change"
@@ -2379,7 +2382,7 @@ msgstr "Cambia"
 
 #: data/ui/remmina_mpc.glade:61
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'>Cambio Password multiplo</span>"
 
 #: data/ui/remmina_mpc.glade:166
 msgid "Selection criteria"
@@ -2427,7 +2430,7 @@ msgstr "Qualità della scalatura"
 
 #: data/ui/remmina_preferences.glade:145
 msgid "Nearest"
-msgstr "Nearest"
+msgstr "Più vicino"
 
 #: data/ui/remmina_preferences.glade:146
 msgid "Tiles"
@@ -2827,7 +2830,7 @@ msgstr "Tasto di scelta rapida per selezionare tutto"
 #: data/ui/remmina_preferences.glade:1733
 #: data/ui/remmina_preferences.glade:1750
 msgid "(Host key +)"
-msgstr "(Host key +)"
+msgstr "(Tasto Host +)"
 
 #: data/ui/remmina_preferences.glade:1794
 #: data/ui/remmina_preferences.glade:1810
