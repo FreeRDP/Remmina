@@ -759,12 +759,29 @@ int remmina_rdp_load_static_channel_addin(rdpChannels* channels, rdpSettings* se
 	return -1;
 }
 
+/**
+ * Callback function used by cupsEnumDests
+ *   - For each enumerated local printer tries to set the Printer Name and Driver.
+ * @return 1 if there arte other printers to scan or 0 when it's done.
+ */
 int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 {
 	rfContext *rfi = (rfContext *)user_data;
-	const char *model = cupsGetOption("printer-driver-name",
-			dest->num_options,
-			dest->options);
+
+	/** warning printer-make-and-model is not always the same as on the Windows,
+	 * therefore it fails finding to right one and it fails to add
+	 * the printer.
+	 *
+	 * We pass NULL and we do not check for errors. The following code is
+	 * how it is supposed to work. @todo Ask CUPS mailing list for help.
+	 *
+	 * @code
+	 * const char *model = cupsGetOption("printer-make-and-model",
+	 * 		dest->num_options,
+	 * 		dest->options);
+	 * @endcode
+	 */
+	const char *model = NULL;
 
 	RDPDR_PRINTER* printer;
 	printer = (RDPDR_PRINTER*) calloc(1, sizeof(RDPDR_PRINTER));
@@ -772,14 +789,32 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 	g_debug("Printer Type: %d", printer->Type);
 	rfi->settings->RedirectPrinters = TRUE;
 
-	printer->Name = _strdup(dest->name);
+	if (!(printer->Name = _strdup(dest->name))) {
+		free(printer);
+		return (1);
+	}
+
 	g_debug("Printer Name: %s", printer->Name);
+	/** @warning The right way is to assign a DriverName or free the resources
+	 * like the folloging code
+	 * @code
+	 * if (!(printer->DriverName = _strdup(model))) {
+	 * 	free(printer->Name);
+	 * 	free(printer);
+	 * 	return (1);
+	 * }
+	 * @endcode
+	 */
 	printer->DriverName = _strdup(model);
 	g_debug("Printer Driver: %s", printer->DriverName);
-	freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*)printer);
+	if (!freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*)printer)) {
+		free(printer->DriverName);
+		free(printer->Name);
+		free(printer);
+		return (1);
+	}
 	return (1);
 }
-
 
 /* Send CTRL+ALT+DEL keys keystrokes to the plugin drawing_area widget */
 static void remmina_rdp_send_ctrlaltdel(RemminaProtocolWidget *gp)
