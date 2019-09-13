@@ -759,6 +759,76 @@ int remmina_rdp_load_static_channel_addin(rdpChannels* channels, rdpSettings* se
 	return -1;
 }
 
+gchar *remmina_rdp_find_prdriver(char *smap, char *prn)
+{
+    char c, *p, *dr;
+    int matching;
+    size_t sz;
+
+    enum { S_WAITPR,
+        S_INPRINTER,
+        S_WAITCOLON,
+        S_WAITDRIVER,
+        S_INDRIVER,
+        S_WAITSEMICOLON
+    } state = S_WAITPR;
+
+    matching = 0;
+    while((c = *smap++) != 0) {
+        switch(state) {
+            case S_WAITPR:
+                if (c != '\"') return NULL;
+                state = S_INPRINTER;
+                p = prn;
+                matching = 1;
+                break;
+            case S_INPRINTER:
+                if (matching && c == *p && *p != 0)
+                    p++;
+                else if (c == '\"') {
+                    if (*p != 0)
+                        matching = 0;
+                    state = S_WAITCOLON;
+                } else
+                    matching = 0;
+                break;
+            case S_WAITCOLON:
+                if (c != ':')
+                    return NULL;
+                state = S_WAITDRIVER;
+                break;
+            case S_WAITDRIVER:
+                if (c != '\"')
+                    return NULL;
+                state = S_INDRIVER;
+                dr = smap;
+                break;
+            case S_INDRIVER:
+                if (c == '\"') {
+                    if (matching)
+                        goto found;
+                    else
+                        state = S_WAITSEMICOLON;
+                }
+                break;
+            case S_WAITSEMICOLON:
+                if (c != ';')
+                    return NULL;
+                state = S_WAITPR;
+                break;
+        }
+    }
+    return NULL;
+
+found:
+    sz = smap - dr;
+    p = (char *)malloc(sz);
+    memcpy(p, dr, sz);
+    p[sz - 1] = 0;
+    return p;
+
+}
+
 /**
  * Callback function used by cupsEnumDests
  *   - For each enumerated local printer tries to set the Printer Name and Driver.
@@ -767,8 +837,9 @@ int remmina_rdp_load_static_channel_addin(rdpChannels* channels, rdpSettings* se
 int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 {
 	rfContext *rfi = (rfContext *)user_data;
+	RemminaProtocolWidget* gp = rfi->protocol_widget;
 
-	/** warning printer-make-and-model is not always the same as on the Windows,
+	/** @warning printer-make-and-model is not always the same as on the Windows,
 	 * therefore it fails finding to right one and it fails to add
 	 * the printer.
 	 *
@@ -783,6 +854,9 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 	 */
 	const char *model = NULL;
 
+	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+	const gchar *s = remmina_plugin_service->file_get_string(remminafile, "printer_overrides");
+
 	RDPDR_PRINTER* printer;
 	printer = (RDPDR_PRINTER*) calloc(1, sizeof(RDPDR_PRINTER));
 	printer->Type = RDPDR_DTYP_PRINT;
@@ -795,17 +869,19 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 	}
 
 	g_debug("Printer Name: %s", printer->Name);
-	/** @warning The right way is to assign a DriverName or free the resources
-	 * like the folloging code
-	 * @code
-	 * if (!(printer->DriverName = _strdup(model))) {
-	 * 	free(printer->Name);
-	 * 	free(printer);
-	 * 	return (1);
-	 * }
-	 * @endcode
-	 */
-	printer->DriverName = _strdup(model);
+
+	if (s) {
+		gchar *d = remmina_rdp_find_prdriver(strdup(s), printer->Name);
+		if (d) {
+			printer->DriverName = strdup(d);
+			g_debug("Printer DriverName set to: %s", printer->DriverName);
+			g_free(d);
+		}
+	} else {
+		/* At the moment it's NULL */
+		printer->DriverName = _strdup(model);
+	}
+
 	g_debug("Printer Driver: %s", printer->DriverName);
 	if (!freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE*)printer)) {
 		free(printer->DriverName);
@@ -1737,6 +1813,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "exec",		       N_("Startup program"),			FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "execpath",		       N_("Startup path"),			FALSE,	NULL,		NULL},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "loadbalanceinfo",	       N_("Load balance info"),			FALSE,	NULL,		NULL},
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "printer_overrides",       N_("Override Printer Drivers"),		FALSE,	NULL,		N_("\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":\"Canon MF410 Series UFR II\"")},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "serialname",	       N_("Local serial name"),			FALSE,	NULL,		N_("COM1, COM2, etc")},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "serialdriver",	       N_("Local serial driver"),		FALSE,	NULL,		N_("Serial")},
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "serialpath",	       N_("Local serial path"),			FALSE,	NULL,		N_("/dev/ttyS0, /dev/ttyS1, etc")},
