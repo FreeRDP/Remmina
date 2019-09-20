@@ -55,7 +55,10 @@
 #include <freerdp/client/cmdline.h>
 #include <freerdp/error.h>
 #include <winpr/memory.h>
-#include <cups/cups.h>
+
+#ifdef HAVE_CUPS
+	#include <cups/cups.h>
+#endif
 
 #include <string.h>
 
@@ -829,10 +832,11 @@ found:
 
 }
 
+#ifdef HAVE_CUPS
 /**
  * Callback function used by cupsEnumDests
  *   - For each enumerated local printer tries to set the Printer Name and Driver.
- * @return 1 if there arte other printers to scan or 0 when it's done.
+ * @return 1 if there are other printers to scan or 0 when it's done.
  */
 int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 {
@@ -891,6 +895,7 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 	}
 	return (1);
 }
+#endif /* HAVE_CUPS */
 
 /* Send CTRL+ALT+DEL keys keystrokes to the plugin drawing_area widget */
 static void remmina_rdp_send_ctrlaltdel(RemminaProtocolWidget *gp)
@@ -1263,12 +1268,14 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 		rfi->settings->DeviceRedirection = TRUE;
 		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
+#ifdef HAVE_CUPS
 		if (cupsEnumDests(CUPS_DEST_FLAGS_NONE, 1000, NULL, 0, 0, remmina_rdp_set_printers, rfi)) {
 			g_debug ("Sharing printers");
 
 		} else {
 			g_debug ("Cannot share printers, are there any available?");
 		}
+#endif /* HAVE_CUPS */
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE)) {
