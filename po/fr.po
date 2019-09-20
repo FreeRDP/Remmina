@@ -8,16 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-09-16 21:49+0000\n"
-"PO-Revision-Date: 2019-07-26 11:57+0200\n"
-"Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
-"Language-Team: français <fr@li.org>\n"
+"POT-Creation-Date: 2019-09-08 22:31+0000\n"
+"PO-Revision-Date: 2019-09-13 16:18+0000\n"
+"Last-Translator: Éfrit <Efrit@posteo.net>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
+"fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n >= 2;\n"
-"X-Generator: Poedit 2.2.3\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.9-dev\n"
 
 #. Profile: Protocol
 #: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1475
@@ -422,11 +423,11 @@ msgstr "État d’avancement"
 #: src/remmina_exec.c:171
 #, c-format
 msgid "Unable to open profile file %s\n"
-msgstr ""
+msgstr "Impossible d’ouvrir le fichier de profil « %s »\n"
 
 #: src/remmina_exec.c:184
 msgid "Error: an extra line of standard input is needed\n"
-msgstr ""
+msgstr "Erreur : une ligne d’entrée standard supplémentaire est requise\n"
 
 #: src/remmina_exec.c:305
 #, c-format
@@ -1120,7 +1121,7 @@ msgstr[1] "%i éléments au total."
 #: src/remmina_main.c:826
 #, c-format
 msgid "Are you sure to delete '%s'"
-msgstr "Êtes‐vous sûr(e) de vouloir effacer « %s » ?"
+msgstr "Êtes‐vous sûr de vouloir effacer « %s » ?"
 
 #: src/remmina_main.c:925
 #, c-format
@@ -1204,11 +1205,13 @@ msgstr "Afficher la version de l’application et les versions des greffons"
 
 #: src/remmina.c:98
 msgid "Modify connection profile, require also --set-option"
-msgstr ""
+msgstr "Modifier le profil de connexion, nécessite également --set-option"
 
 #: src/remmina.c:99
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
+"Définir un ou plusieurs profils de paramètres, à utiliser avec --update-"
+"profile"
 
 #: src/remmina_about.c:53
 msgid "translator-credits"
@@ -1735,15 +1738,20 @@ msgstr "Nom du client"
 msgid "Load balance info"
 msgstr "Info d’équilibrage de charge"
 
-#: plugins/rdp/rdp_plugin.c:1816
-msgid "Override Printer Drivers"
-msgstr ""
+#: plugins/rdp/rdp_plugin.c:1692
+msgid "Local printer name"
+msgstr "Nom de l’imprimante locale"
+
+#: plugins/rdp/rdp_plugin.c:1692
+msgid "Name of the printer as it is defined locally, i.e. cupspdf"
+msgstr "Nom de l’imprimante tel que défini en local, p. ex. cupspdf"
 
 #: plugins/rdp/rdp_plugin.c:1816
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
+"Nom complet du pilote d’impression, p. ex. « Samsung CLX-3300 Series PS »"
 
 #: plugins/rdp/rdp_plugin.c:1817
 msgid "Local serial name"
@@ -1751,7 +1759,7 @@ msgstr "Nom du port série local"
 
 #: plugins/rdp/rdp_plugin.c:1817
 msgid "COM1, COM2, etc"
-msgstr ""
+msgstr "COM1, COM2, etc."
 
 #: plugins/rdp/rdp_plugin.c:1818
 msgid "Local serial driver"
@@ -1759,7 +1767,7 @@ msgstr "Pilote du port série local"
 
 #: plugins/rdp/rdp_plugin.c:1818
 msgid "Serial"
-msgstr ""
+msgstr "Série"
 
 #: plugins/rdp/rdp_plugin.c:1819
 msgid "Local serial path"
@@ -1767,7 +1775,7 @@ msgstr "Chemin d’accès du port série local"
 
 #: plugins/rdp/rdp_plugin.c:1819
 msgid "/dev/ttyS0, /dev/ttyS1, etc"
-msgstr ""
+msgstr "/dev/ttyS0, /dev/ttyS1, etc."
 
 #: plugins/rdp/rdp_plugin.c:1820
 msgid "Local parallel name"
@@ -2157,12 +2165,11 @@ msgstr "Fichier téléchargé"
 
 #: plugins/www/www_plugin.c:783
 msgid "URL"
-msgstr ""
+msgstr "Adresse URL"
 
 #: plugins/www/www_plugin.c:783
-#, fuzzy
 msgid "http://address or https://address"
-msgstr "Adresse URL (HTTP ou HTTPS)"
+msgstr "http://adresse or https://adresse"
 
 #: plugins/www/www_plugin.c:784
 msgid "Username"
