@@ -880,6 +880,15 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 			printer->DriverName = strdup(d);
 			g_debug("Printer DriverName set to: %s", printer->DriverName);
 			g_free(d);
+		} else {
+			/**
+			 * When remmina_rdp_find_prdriver doesn't return a DriverName
+			 * it means that we don't want to share that rpinter
+			 *
+			 */
+			free(printer->Name);
+			free(printer);
+			return (1);
 		}
 	} else {
 		/* At the moment it's NULL */
