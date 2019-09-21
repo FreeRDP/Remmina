@@ -51,10 +51,19 @@ appimage:build:
     - mkdir $BUILD_FOLDER
     - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS -DCMAKE_INSTALL_PREFIX=/usr
     - make VERBOSE=1 -C $BUILD_FOLDER
-    - make install DESTDIR=AppDir
+    - make VERBOSE=1 -C $BUILD_FOLDER install DESTDIR=AppDir
+    - wget wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
+    - wget https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/linuxdeploy-plugin-appimage-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
+    - chmod +x $BUILD_FOLDER/*AppImage
+    - |
+      cd $BUILD_FOLDER && \
+      linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage && \
+      echo Remmina-86d73981-x86_64.AppImage | \
+      mv Remmina-????????-x86_64.AppImage $( echo Remmina-????????-x86_64.AppImage | sed -e 's/\(Remmina\)\(-.*-\)\(x86_64.AppImage\)/\1-\3/g' )
   artifacts:
+    name: "Remmina-x86_64.AppImage"
     paths:
-      - $BUILD_FOLDER/AppDir
+      - $BUILD_FOLDER/Remmina-x86_64.AppImage
   only:
     refs:
       - web
