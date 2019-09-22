@@ -1,5 +1,5 @@
 ---
-image: antenore/ubuntu:18.04
+image: remmina/ubuntu:18.04
 
 stages:
   - build
@@ -42,11 +42,10 @@ ubuntu:devel:
 appimage:build:
   # image: ubuntu:devel
   # stage: cross_environment
-  image: antenore/ubuntu:16.04
+  image: remmina/ubuntu:16.04
   stage: build
   before_script:
     - apt-get update -qq
-    - apt-get install -y -qq libfuse-dev
 
   script:
     - mkdir $BUILD_FOLDER
@@ -70,10 +69,12 @@ appimage:build:
       - $BUILD_FOLDER/Remmina-x86_64.AppImage
   only:
     refs:
+      - master
       - web
+      - schedules
 
 flatpak:test:
-  image: ubuntu:18.04
+  image: remmina/ubuntu:18.04
   stage: build
   variables:
     BUNDLE: "remmina-dev.flatpak"
@@ -81,8 +82,6 @@ flatpak:test:
     FLATHUB_REPO: "https://flathub.org/repo/flathub.flatpakrepo"
   before_script:
     - apt-get update -qq
-    - apt-get install -y -qq software-properties-common
-                          python3-software-properties
     - add-apt-repository $FLATPAK_PPA -y
     - apt-get update -qq
     - apt-get install -y -qq flatpak-builder flatpak build-essential git-core
