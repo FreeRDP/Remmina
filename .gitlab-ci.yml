@@ -46,6 +46,7 @@ appimage:build:
   stage: build
   before_script:
     - apt-get update -qq
+    - apt-get install -y -qq libfuse-dev
 
   script:
     - mkdir $BUILD_FOLDER
@@ -55,11 +56,14 @@ appimage:build:
     - wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
     - wget https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/linuxdeploy-plugin-appimage-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
     - chmod +x $BUILD_FOLDER/*AppImage
-    - |
-      cd $BUILD_FOLDER && \
-      linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage && \
-      echo Remmina-86d73981-x86_64.AppImage | \
-      mv Remmina-????????-x86_64.AppImage $( echo Remmina-????????-x86_64.AppImage | sed -e 's/\(Remmina\)\(-.*-\)\(x86_64.AppImage\)/\1-\3/g' )
+    - export OUTPUT="Remmina-x86_64.AppImage"
+    - cd $BUILD_FOLDER && linuxdeploy-x86_64.AppImage --appdir AppDir --appimage-extract
+    - mv squashfs-root/ linuxdeploy/
+    - export UPDATE_INFORMATION="gh-releases-zsync|AppImage|appimaged|continuous|appimaged*$ARCH*.AppImage.zsync"
+    - export SIGN=1
+    - export VERBOSE=1
+    - linuxdeploy/AppRun --appdir AppDir --output appimage
+
   artifacts:
     name: "Remmina-x86_64.AppImage"
     paths:
