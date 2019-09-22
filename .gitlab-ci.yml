@@ -52,7 +52,7 @@ appimage:build:
     - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS -DCMAKE_INSTALL_PREFIX=/usr
     - make VERBOSE=1 -C $BUILD_FOLDER
     - make VERBOSE=1 -C $BUILD_FOLDER install DESTDIR=AppDir
-    - wget wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
+    - wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
     - wget https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/linuxdeploy-plugin-appimage-x86_64.AppImage --directory-prefix=$BUILD_FOLDER/
     - chmod +x $BUILD_FOLDER/*AppImage
     - |
