@@ -23,6 +23,6 @@ RUN \
     libavahi-ui-gtk3-dev libvncserver-dev libappindicator3-dev intltool \
     libsecret-1-dev libsodium-dev libwebkit2gtk-4.0-dev libsystemd-dev \
     libsoup2.4-dev libjson-glib-dev libavresample-dev freerdp2-dev \
-    libspice-protocol-dev libspice-client-gtk-3.0-dev libfuse-dev \
+    libspice-protocol-dev libspice-client-gtk-3.0-dev libfuse-dev wget \
     && apt autoremove -y \
     && apt clean -y
