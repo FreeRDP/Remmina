@@ -21,20 +21,31 @@
 
 set -o nounset                                  # Treat unset variables as an error
 
+USRBIN="$(dirname "$(readlink -f "${0}")")"
+REMMINA="@REMMINA_BINARY_PATH@"
+
+if [[ ! -f "$REMMINA" ]] ; then
+    REMMINA="${USRBIN}/remmina"
+else
+    REMMINA="remmina"
+fi
+
+export GLADE_HOME="$USRBIN/../share/remmina/ui/"
+
 case "$@" in
     *rdp:*)
-        @REMMINA_BINARY_PATH@ "${@#rdp:\/\/}"
+        "$REMMINA" "${@#rdp:\/\/}"
         ;;
     *spice:*)
-        @REMMINA_BINARY_PATH@ "${@#spice:\/\/}"
+        "$REMMINA" "${@#spice:\/\/}"
         ;;
     *vnc:*)
-        @REMMINA_BINARY_PATH@ "${@#vnc:\/\/}"
+        "$REMMINA" "${@#vnc:\/\/}"
         ;;
     *remmina:*)
-        @REMMINA_BINARY_PATH@ "${@#remmina:\/\/}"
+        "$REMMINA" "${@#remmina:\/\/}"
         ;;
     *)
-        @REMMINA_BINARY_PATH@ "${@}"
+        "$REMMINA" "${@}"
         ;;
 esac
