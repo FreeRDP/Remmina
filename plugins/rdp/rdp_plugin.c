@@ -867,6 +867,7 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 	g_debug("Printer Type: %d", printer->Type);
 	rfi->settings->RedirectPrinters = TRUE;
 
+	g_debug("Destination: %s", dest->name);
 	if (!(printer->Name = _strdup(dest->name))) {
 		free(printer);
 		return (1);
@@ -883,7 +884,7 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 		} else {
 			/**
 			 * When remmina_rdp_find_prdriver doesn't return a DriverName
-			 * it means that we don't want to share that rpinter
+			 * it means that we don't want to share that printer
 			 *
 			 */
 			free(printer->Name);
@@ -891,7 +892,8 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 			return (1);
 		}
 	} else {
-		/* At the moment it's NULL */
+		/* We set to a default driver*/
+		model = _strdup("MS Publisher Imagesetter");
 		printer->DriverName = _strdup(model);
 	}
 
@@ -1278,8 +1280,9 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		rfi->settings->DeviceRedirection = TRUE;
 		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
 #ifdef HAVE_CUPS
+		g_debug ("Sharing printers");
 		if (cupsEnumDests(CUPS_DEST_FLAGS_NONE, 1000, NULL, 0, 0, remmina_rdp_set_printers, rfi)) {
-			g_debug ("Sharing printers");
+			g_debug ("All printers have been shared");
 
 		} else {
 			g_debug ("Cannot share printers, are there any available?");
