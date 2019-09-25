@@ -55,7 +55,10 @@
 #include <freerdp/client/cmdline.h>
 #include <freerdp/error.h>
 #include <winpr/memory.h>
-#include <cups/cups.h>
+
+#ifdef HAVE_CUPS
+	#include <cups/cups.h>
+#endif
 
 #include <string.h>
 
@@ -829,15 +832,18 @@ found:
 
 }
 
+#ifdef HAVE_CUPS
 /**
  * Callback function used by cupsEnumDests
  *   - For each enumerated local printer tries to set the Printer Name and Driver.
- * @return 1 if there arte other printers to scan or 0 when it's done.
+ * @return 1 if there are other printers to scan or 0 when it's done.
  */
 int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 {
 	rfContext *rfi = (rfContext *)user_data;
 	RemminaProtocolWidget* gp = rfi->protocol_widget;
+	rdpChannels* channels;
+	channels = rfi->instance->context->channels;
 
 	/** @warning printer-make-and-model is not always the same as on the Windows,
 	 * therefore it fails finding to right one and it fails to add
@@ -858,11 +864,17 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 	const gchar *s = remmina_plugin_service->file_get_string(remminafile, "printer_overrides");
 
 	RDPDR_PRINTER* printer;
-	printer = (RDPDR_PRINTER*) calloc(1, sizeof(RDPDR_PRINTER));
+	//printer = (RDPDR_PRINTER*) calloc(1, sizeof(RDPDR_PRINTER));
+	printer = (RDPDR_PRINTER*) malloc(sizeof(RDPDR_PRINTER));
+	ZeroMemory(printer, sizeof(RDPDR_PRINTER));
+
 	printer->Type = RDPDR_DTYP_PRINT;
 	g_debug("Printer Type: %d", printer->Type);
-	rfi->settings->RedirectPrinters = TRUE;
 
+	rfi->settings->RedirectPrinters = TRUE;
+	remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
+
+	g_debug("Destination: %s", dest->name);
 	if (!(printer->Name = _strdup(dest->name))) {
 		free(printer);
 		return (1);
@@ -876,9 +888,19 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 			printer->DriverName = strdup(d);
 			g_debug("Printer DriverName set to: %s", printer->DriverName);
 			g_free(d);
+		} else {
+			/**
+			 * When remmina_rdp_find_prdriver doesn't return a DriverName
+			 * it means that we don't want to share that printer
+			 *
+			 */
+			free(printer->Name);
+			free(printer);
+			return (1);
 		}
 	} else {
-		/* At the moment it's NULL */
+		/* We set to a default driver*/
+		model = _strdup("MS Publisher Imagesetter");
 		printer->DriverName = _strdup(model);
 	}
 
@@ -889,8 +911,10 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 		free(printer);
 		return (1);
 	}
+	rfi->settings->DeviceRedirection = TRUE;
 	return (1);
 }
+#endif /* HAVE_CUPS */
 
 /* Send CTRL+ALT+DEL keys keystrokes to the plugin drawing_area widget */
 static void remmina_rdp_send_ctrlaltdel(RemminaProtocolWidget *gp)
@@ -1261,14 +1285,15 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	if (remmina_plugin_service->file_get_int(remminafile, "shareprinter", FALSE)) {
 
-		rfi->settings->DeviceRedirection = TRUE;
-		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
+#ifdef HAVE_CUPS
+		g_debug ("Sharing printers");
 		if (cupsEnumDests(CUPS_DEST_FLAGS_NONE, 1000, NULL, 0, 0, remmina_rdp_set_printers, rfi)) {
-			g_debug ("Sharing printers");
+			g_debug ("All printers have been shared");
 
 		} else {
 			g_debug ("Cannot share printers, are there any available?");
 		}
+#endif /* HAVE_CUPS */
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE)) {
@@ -1577,7 +1602,8 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget* gp)
 
 	if (instance) {
 		if ( rfi->connected ) {
-			freerdp_disconnect(instance);
+			//freerdp_disconnect(instance);
+			freerdp_abort_connect(instance);
 			rfi->connected = False;
 		}
 	}
