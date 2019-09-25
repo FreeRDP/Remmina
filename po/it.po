@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-09-08 22:31+0000\n"
+"POT-Creation-Date: 2019-09-25 21:56+0000\n"
 "PO-Revision-Date: 2019-09-09 21:21+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -125,13 +125,13 @@ msgstr "No"
 
 #: src/remmina_message_panel.c:330 src/remmina_file_editor.c:928
 #: src/remmina_sftp_plugin.c:349 src/remmina_ssh_plugin.c:1054
-#: plugins/rdp/rdp_plugin.c:1784 plugins/nx/nx_plugin.c:698
+#: plugins/rdp/rdp_plugin.c:1810 plugins/nx/nx_plugin.c:698
 #: plugins/vnc/vnc_plugin.c:1875 plugins/vnc/vnc_plugin.c:1895
 #: data/ui/remmina_mpc.glade:152
 msgid "User name"
 msgstr "Nome utente"
 
-#: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1786
+#: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1812
 #: data/ui/remmina_mpc.glade:138
 msgid "Domain"
 msgstr "Dominio"
@@ -353,7 +353,7 @@ msgstr "Su"
 msgid "Go to parent folder"
 msgstr "Visualizzare la cartella padre"
 
-#: src/remmina_ftp_client.c:763 plugins/rdp/rdp_plugin.c:1848
+#: src/remmina_ftp_client.c:763 plugins/rdp/rdp_plugin.c:1874
 #: plugins/vnc/vnc_plugin.c:1932
 msgid "Refresh"
 msgstr "Aggiorna"
@@ -401,11 +401,11 @@ msgstr "Gruppo"
 msgid "Permission"
 msgstr "Permesso"
 
-#: src/remmina_ftp_client.c:988 plugins/rdp/rdp_plugin.c:1750
+#: src/remmina_ftp_client.c:988 plugins/rdp/rdp_plugin.c:1776
 msgid "Remote"
 msgstr "Remoto"
 
-#: src/remmina_ftp_client.c:995 plugins/rdp/rdp_plugin.c:1746
+#: src/remmina_ftp_client.c:995 plugins/rdp/rdp_plugin.c:1772
 msgid "Local"
 msgstr "Locale"
 
@@ -592,7 +592,7 @@ msgstr "Lo stesso server su porta %i"
 msgid "Character set"
 msgstr "Set di caratteri"
 
-#: src/remmina_file_editor.c:912 plugins/rdp/rdp_plugin.c:1814
+#: src/remmina_file_editor.c:912 plugins/rdp/rdp_plugin.c:1840
 msgid "Startup path"
 msgstr "Percorso all’avvio"
 
@@ -1224,7 +1224,7 @@ msgid "Overwrite all"
 msgstr "Sovrascrivi tutto"
 
 #: src/remmina_sftp_plugin.c:350 src/remmina_ssh_plugin.c:1055
-#: plugins/spice/spice_plugin.c:427 plugins/rdp/rdp_plugin.c:1785
+#: plugins/spice/spice_plugin.c:427 plugins/rdp/rdp_plugin.c:1811
 #: plugins/nx/nx_plugin.c:699 plugins/vnc/vnc_plugin.c:1876
 #: plugins/vnc/vnc_plugin.c:1896
 msgid "User password"
@@ -1293,7 +1293,7 @@ msgstr "Seleziona tutto"
 msgid "_Select all"
 msgstr "_Seleziona tutto"
 
-#: src/remmina_ssh_plugin.c:1059 plugins/rdp/rdp_plugin.c:1813
+#: src/remmina_ssh_plugin.c:1059 plugins/rdp/rdp_plugin.c:1839
 #: plugins/nx/nx_plugin.c:702 plugins/xdmcp/xdmcp_plugin.c:370
 msgid "Startup program"
 msgstr "Programma all’avvio"
@@ -1339,7 +1339,7 @@ msgid "Enable SSH compression"
 msgstr "Abilita la compressione SSH"
 
 #: src/remmina_ssh_plugin.c:1087 plugins/spice/spice_plugin.c:446
-#: plugins/rdp/rdp_plugin.c:1831 plugins/nx/nx_plugin.c:720
+#: plugins/rdp/rdp_plugin.c:1857 plugins/nx/nx_plugin.c:720
 #: plugins/vnc/vnc_plugin.c:1919 plugins/www/www_plugin.c:808
 msgid "Disable password storing"
 msgstr "Disabilitare la memorizzazione della password"
@@ -1375,12 +1375,12 @@ msgstr "Usa cifratura TLS"
 msgid "Server CA certificate"
 msgstr "Certificato CA server"
 
-#: plugins/spice/spice_plugin.c:430 plugins/rdp/rdp_plugin.c:1789
+#: plugins/spice/spice_plugin.c:430 plugins/rdp/rdp_plugin.c:1815
 msgid "Share folder"
 msgstr "Cartella condivisa"
 
 #: plugins/spice/spice_plugin.c:445 plugins/spice/spice_plugin.c:461
-#: plugins/rdp/rdp_plugin.c:1829 plugins/nx/nx_plugin.c:717
+#: plugins/rdp/rdp_plugin.c:1855 plugins/nx/nx_plugin.c:717
 #: plugins/vnc/vnc_plugin.c:1916
 msgid "Disable clipboard sync"
 msgstr "Disabilitare la sincronizzazione degli appunti"
@@ -1393,7 +1393,7 @@ msgstr "Abilita canale audio"
 msgid "Resize guest to match window size"
 msgstr "Ridimensiona guest con la finestra"
 
-#: plugins/spice/spice_plugin.c:449 plugins/rdp/rdp_plugin.c:1827
+#: plugins/spice/spice_plugin.c:449 plugins/rdp/rdp_plugin.c:1853
 msgid "Share smartcard"
 msgstr "Condividere smartcard"
 
@@ -1402,7 +1402,7 @@ msgstr "Condividere smartcard"
 msgid "View only"
 msgstr "Solo visualizzazione"
 
-#: plugins/spice/spice_plugin.c:462 plugins/rdp/rdp_plugin.c:1851
+#: plugins/spice/spice_plugin.c:462 plugins/rdp/rdp_plugin.c:1877
 #: plugins/nx/nx_plugin.c:728 plugins/xdmcp/xdmcp_plugin.c:381
 #: plugins/vnc/vnc_plugin.c:1934
 msgid "Send Ctrl+Alt+Delete"
@@ -1458,7 +1458,7 @@ msgstr "_Chiudi"
 msgid "USB redirection error"
 msgstr "Errore di reindirizzamento USB"
 
-#: plugins/rdp/rdp_plugin.c:1372
+#: plugins/rdp/rdp_plugin.c:1397
 #, c-format
 msgid ""
 "Authentication to RDP server %s failed.\n"
@@ -1467,7 +1467,7 @@ msgstr ""
 "L’autenticazione al server RDP %s non è riuscita.\n"
 "Controlla nome utente, password e dominio."
 
-#: plugins/rdp/rdp_plugin.c:1382
+#: plugins/rdp/rdp_plugin.c:1407
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
@@ -1476,7 +1476,7 @@ msgstr ""
 "Accesso al server RDP %s fallito.\n"
 "L’account è bloccato."
 
-#: plugins/rdp/rdp_plugin.c:1389
+#: plugins/rdp/rdp_plugin.c:1414
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
@@ -1485,7 +1485,7 @@ msgstr ""
 "Accesso al server RDP %s fallito.\n"
 "L’account è scaduto."
 
-#: plugins/rdp/rdp_plugin.c:1396
+#: plugins/rdp/rdp_plugin.c:1421
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
@@ -1494,7 +1494,7 @@ msgstr ""
 "Accesso al server RDP %s fallito.\n"
 "La password è scaduta."
 
-#: plugins/rdp/rdp_plugin.c:1403
+#: plugins/rdp/rdp_plugin.c:1428
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
@@ -1503,7 +1503,7 @@ msgstr ""
 "Accesso al server RDP %s fallito.\n"
 "L’account è disabilitato."
 
-#: plugins/rdp/rdp_plugin.c:1409
+#: plugins/rdp/rdp_plugin.c:1434
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
@@ -1512,7 +1512,7 @@ msgstr ""
 "Accesso al server RDP %s fallito.\n"
 "L’utente ha privilegi insufficenti."
 
-#: plugins/rdp/rdp_plugin.c:1417
+#: plugins/rdp/rdp_plugin.c:1442
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
@@ -1521,7 +1521,7 @@ msgstr ""
 "Accesso al server RDP %s fallito.\n"
 "L’account ha delle restrizioni."
 
-#: plugins/rdp/rdp_plugin.c:1425
+#: plugins/rdp/rdp_plugin.c:1450
 #, c-format
 msgid ""
 "Access to RDP server %s failed.\n"
@@ -1530,17 +1530,17 @@ msgstr ""
 "Accesso al server RDP %s fallito.\n"
 "L’utende deve cambiare la password prima di accedere."
 
-#: plugins/rdp/rdp_plugin.c:1430
+#: plugins/rdp/rdp_plugin.c:1455
 #, c-format
 msgid "Connection to RDP server %s failed."
 msgstr "La connessione al server RDP %s non è riuscita."
 
-#: plugins/rdp/rdp_plugin.c:1433
+#: plugins/rdp/rdp_plugin.c:1458
 #, c-format
 msgid "Unable to find the address of RDP server %s."
 msgstr "Impossibile trovare l’indirizzo del server RDP %s."
 
-#: plugins/rdp/rdp_plugin.c:1437
+#: plugins/rdp/rdp_plugin.c:1462
 #, c-format
 msgid ""
 "Error connecting to RDP server %s. TLS connection failed. Check that client "
@@ -1549,22 +1549,22 @@ msgstr ""
 "Errore di connessione al server %s. Connessione TLS non riuscita. Controlla "
 "che client e server supportino una versione TLS comune."
 
-#: plugins/rdp/rdp_plugin.c:1440
+#: plugins/rdp/rdp_plugin.c:1465
 #, c-format
 msgid "Unable to establish a connection to RDP server %s."
 msgstr "Impossibile stabilire una connessione con il server RDP %s."
 
 #. We should never come here
-#: plugins/rdp/rdp_plugin.c:1448
+#: plugins/rdp/rdp_plugin.c:1473
 #, c-format
 msgid "Unable to connect to RDP server %s."
 msgstr "Impossibile connettersi al server RDP %s."
 
-#: plugins/rdp/rdp_plugin.c:1451
+#: plugins/rdp/rdp_plugin.c:1476
 msgid "Unable to initialize libfreerdp gdi"
 msgstr "Inizializzazione della libreria libfreerdp gdi fallita"
 
-#: plugins/rdp/rdp_plugin.c:1454
+#: plugins/rdp/rdp_plugin.c:1479
 #, c-format
 msgid ""
 "You requested an H.264 GFX mode for server %s, but your libfreerdp does not "
@@ -1574,258 +1574,258 @@ msgstr ""
 "versione di FreeRDP installata non lo supporta.\n"
 "Si prega di utilizzare AVC."
 
-#: plugins/rdp/rdp_plugin.c:1461
+#: plugins/rdp/rdp_plugin.c:1486
 #, c-format
 msgid "Server %s denied the connection."
 msgstr "Server %s rifiuta la connessione."
 
-#: plugins/rdp/rdp_plugin.c:1466
+#: plugins/rdp/rdp_plugin.c:1491
 #, c-format
 msgid "Unable to connect to RDP server %s"
 msgstr "Impossibile connettersi al server RDP %s"
 
 #. 1st one is the default in a new install
-#: plugins/rdp/rdp_plugin.c:1720
+#: plugins/rdp/rdp_plugin.c:1746
 msgid "GFX AVC444 (32 bpp)"
 msgstr "GFX AVC444 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1721
+#: plugins/rdp/rdp_plugin.c:1747
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC420 (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1722
+#: plugins/rdp/rdp_plugin.c:1748
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX RFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1723
+#: plugins/rdp/rdp_plugin.c:1749
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1724 plugins/vnc/vnc_plugin.c:1848
+#: plugins/rdp/rdp_plugin.c:1750 plugins/vnc/vnc_plugin.c:1848
 msgid "True color (32 bpp)"
 msgstr "Truecolor (32 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1725 plugins/vnc/vnc_plugin.c:1847
+#: plugins/rdp/rdp_plugin.c:1751 plugins/vnc/vnc_plugin.c:1847
 msgid "True color (24 bpp)"
 msgstr "Truecolor (24 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1726 plugins/vnc/vnc_plugin.c:1846
+#: plugins/rdp/rdp_plugin.c:1752 plugins/vnc/vnc_plugin.c:1846
 msgid "High color (16 bpp)"
 msgstr "Highcolor (16 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1727 plugins/vnc/vnc_plugin.c:1845
+#: plugins/rdp/rdp_plugin.c:1753 plugins/vnc/vnc_plugin.c:1845
 msgid "High color (15 bpp)"
 msgstr "Highcolor (15 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1728 plugins/vnc/vnc_plugin.c:1844
+#: plugins/rdp/rdp_plugin.c:1754 plugins/vnc/vnc_plugin.c:1844
 msgid "256 colors (8 bpp)"
 msgstr "256 colori (8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1735 plugins/rdp/rdp_settings.c:269
+#: plugins/rdp/rdp_plugin.c:1761 plugins/rdp/rdp_settings.c:269
 #: plugins/nx/nx_plugin.c:678 plugins/vnc/vnc_plugin.c:1855
 msgid "Poor (fastest)"
 msgstr "Scarsa (più veloce)"
 
-#: plugins/rdp/rdp_plugin.c:1736 plugins/rdp/rdp_settings.c:271
+#: plugins/rdp/rdp_plugin.c:1762 plugins/rdp/rdp_settings.c:271
 #: plugins/nx/nx_plugin.c:679 plugins/vnc/vnc_plugin.c:1856
 msgid "Medium"
 msgstr "Media"
 
-#: plugins/rdp/rdp_plugin.c:1737 plugins/rdp/rdp_settings.c:273
+#: plugins/rdp/rdp_plugin.c:1763 plugins/rdp/rdp_settings.c:273
 #: plugins/nx/nx_plugin.c:680 plugins/vnc/vnc_plugin.c:1857
 msgid "Good"
 msgstr "Buona"
 
-#: plugins/rdp/rdp_plugin.c:1738 plugins/rdp/rdp_settings.c:275
+#: plugins/rdp/rdp_plugin.c:1764 plugins/rdp/rdp_settings.c:275
 #: plugins/nx/nx_plugin.c:681 plugins/vnc/vnc_plugin.c:1858
 msgid "Best (slowest)"
 msgstr "Ottima (più lenta)"
 
-#: plugins/rdp/rdp_plugin.c:1745
+#: plugins/rdp/rdp_plugin.c:1771
 msgid "Off"
 msgstr "Inattivo"
 
-#: plugins/rdp/rdp_plugin.c:1747
+#: plugins/rdp/rdp_plugin.c:1773
 msgid "Local - low quality"
 msgstr "Locale - bassa qualità"
 
-#: plugins/rdp/rdp_plugin.c:1748
+#: plugins/rdp/rdp_plugin.c:1774
 msgid "Local - medium quality"
 msgstr "Locale - media qualità"
 
-#: plugins/rdp/rdp_plugin.c:1749
+#: plugins/rdp/rdp_plugin.c:1775
 msgid "Local - high quality"
 msgstr "Locale - alta qualità"
 
-#: plugins/rdp/rdp_plugin.c:1757
+#: plugins/rdp/rdp_plugin.c:1783
 msgid "Negotiate"
 msgstr "Negoziare"
 
-#: plugins/rdp/rdp_plugin.c:1788 plugins/xdmcp/xdmcp_plugin.c:369
+#: plugins/rdp/rdp_plugin.c:1814 plugins/xdmcp/xdmcp_plugin.c:369
 #: plugins/vnc/vnc_plugin.c:1877 plugins/vnc/vnc_plugin.c:1897
 msgid "Color depth"
 msgstr "Profondità colore"
 
-#: plugins/rdp/rdp_plugin.c:1804 plugins/nx/nx_plugin.c:701
+#: plugins/rdp/rdp_plugin.c:1830 plugins/nx/nx_plugin.c:701
 #: plugins/vnc/vnc_plugin.c:1878 plugins/vnc/vnc_plugin.c:1898
 msgid "Quality"
 msgstr "Qualità"
 
-#: plugins/rdp/rdp_plugin.c:1805
+#: plugins/rdp/rdp_plugin.c:1831
 msgid "Sound"
 msgstr "Audio"
 
-#: plugins/rdp/rdp_plugin.c:1806 data/ui/remmina_preferences.glade:1538
+#: plugins/rdp/rdp_plugin.c:1832 data/ui/remmina_preferences.glade:1538
 msgid "Security"
 msgstr "Sicurezza"
 
-#: plugins/rdp/rdp_plugin.c:1807
+#: plugins/rdp/rdp_plugin.c:1833
 msgid "Gateway transport type"
 msgstr "Typo di trasporto del gateway"
 
-#: plugins/rdp/rdp_plugin.c:1808
+#: plugins/rdp/rdp_plugin.c:1834
 msgid "RD Gateway server"
 msgstr "Server RD Gateway"
 
-#: plugins/rdp/rdp_plugin.c:1809
+#: plugins/rdp/rdp_plugin.c:1835
 msgid "RD Gateway username"
 msgstr "Nome utente RD Gateway"
 
-#: plugins/rdp/rdp_plugin.c:1810
+#: plugins/rdp/rdp_plugin.c:1836
 msgid "RD Gateway password"
 msgstr "Password RD Gateway"
 
-#: plugins/rdp/rdp_plugin.c:1811
+#: plugins/rdp/rdp_plugin.c:1837
 msgid "RD Gateway domain"
 msgstr "Dominio RD Gateway"
 
-#: plugins/rdp/rdp_plugin.c:1812
+#: plugins/rdp/rdp_plugin.c:1838
 msgid "Client name"
 msgstr "Nome client"
 
-#: plugins/rdp/rdp_plugin.c:1815
+#: plugins/rdp/rdp_plugin.c:1841
 msgid "Load balance info"
 msgstr "Info bilanciamento del carico"
 
-#: plugins/rdp/rdp_plugin.c:1816
+#: plugins/rdp/rdp_plugin.c:1842
 msgid "Override Printer Drivers"
 msgstr ""
 "Nome della stampante così come è definita localmente, ad esempio cupspdf"
 
-#: plugins/rdp/rdp_plugin.c:1816
+#: plugins/rdp/rdp_plugin.c:1842
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
 "Nome completo del driver di stampa, ad esempio Samsung CLX-3300 Series PS"
 
-#: plugins/rdp/rdp_plugin.c:1817
+#: plugins/rdp/rdp_plugin.c:1843
 msgid "Local serial name"
 msgstr "Nome porta seriale locale"
 
-#: plugins/rdp/rdp_plugin.c:1817
+#: plugins/rdp/rdp_plugin.c:1843
 msgid "COM1, COM2, etc"
 msgstr "COM1, COM2, ecc"
 
-#: plugins/rdp/rdp_plugin.c:1818
+#: plugins/rdp/rdp_plugin.c:1844
 msgid "Local serial driver"
 msgstr "Driver porta seriale locale"
 
-#: plugins/rdp/rdp_plugin.c:1818
+#: plugins/rdp/rdp_plugin.c:1844
 msgid "Serial"
 msgstr "Seriale"
 
-#: plugins/rdp/rdp_plugin.c:1819
+#: plugins/rdp/rdp_plugin.c:1845
 msgid "Local serial path"
 msgstr "Percorso porta seriale locale"
 
-#: plugins/rdp/rdp_plugin.c:1819
+#: plugins/rdp/rdp_plugin.c:1845
 msgid "/dev/ttyS0, /dev/ttyS1, etc"
 msgstr "/dev/ttyS0, /dev/ttyS1, ecc"
 
-#: plugins/rdp/rdp_plugin.c:1820
+#: plugins/rdp/rdp_plugin.c:1846
 msgid "Local parallel name"
 msgstr "Nome porta parallela locale"
 
-#: plugins/rdp/rdp_plugin.c:1821
+#: plugins/rdp/rdp_plugin.c:1847
 msgid "Local parallel device"
 msgstr "Percorso porta seriale locale"
 
-#: plugins/rdp/rdp_plugin.c:1822
+#: plugins/rdp/rdp_plugin.c:1848
 msgid "Smartcard Name"
 msgstr "Nome Smartcard"
 
-#: plugins/rdp/rdp_plugin.c:1823
+#: plugins/rdp/rdp_plugin.c:1849
 msgid "Share printers"
 msgstr "Condividi stampanti"
 
-#: plugins/rdp/rdp_plugin.c:1824
+#: plugins/rdp/rdp_plugin.c:1850
 msgid "Share serial ports"
 msgstr "Condividi porte seriali"
 
-#: plugins/rdp/rdp_plugin.c:1825
+#: plugins/rdp/rdp_plugin.c:1851
 msgid "Serial ports permissive mode"
 msgstr "Modo permissivo per porte seriali"
 
-#: plugins/rdp/rdp_plugin.c:1826
+#: plugins/rdp/rdp_plugin.c:1852
 msgid "Share parallel ports"
 msgstr "Condividi porte parallele"
 
-#: plugins/rdp/rdp_plugin.c:1828
+#: plugins/rdp/rdp_plugin.c:1854
 msgid "Redirect local microphone"
 msgstr "Reindirizza il microfono locale"
 
-#: plugins/rdp/rdp_plugin.c:1830
+#: plugins/rdp/rdp_plugin.c:1856
 msgid "Ignore certificate"
 msgstr "Ignora il certificato"
 
-#: plugins/rdp/rdp_plugin.c:1832
+#: plugins/rdp/rdp_plugin.c:1858
 msgid "Attach to console (2003/2003 R2)"
 msgstr "Collegare alla console (Windows 2003 / 2003 R2)"
 
-#: plugins/rdp/rdp_plugin.c:1833
+#: plugins/rdp/rdp_plugin.c:1859
 msgid "Disable fast-path"
 msgstr "Disabilita fast-path"
 
-#: plugins/rdp/rdp_plugin.c:1834
+#: plugins/rdp/rdp_plugin.c:1860
 msgid "Server detection using RD Gateway"
 msgstr "Usa il server RD Gateway per la rilevazione del server"
 
-#: plugins/rdp/rdp_plugin.c:1836
+#: plugins/rdp/rdp_plugin.c:1862
 msgid "Enable proxy support"
 msgstr "Attiva il supporto proxy"
 
-#: plugins/rdp/rdp_plugin.c:1838
+#: plugins/rdp/rdp_plugin.c:1864
 msgid "Disable automatic reconnection"
 msgstr "Disabilita la riconnessione automatica"
 
-#: plugins/rdp/rdp_plugin.c:1839
+#: plugins/rdp/rdp_plugin.c:1865
 msgid "Relax Order Checks"
 msgstr "Relax Order Checks"
 
-#: plugins/rdp/rdp_plugin.c:1840
+#: plugins/rdp/rdp_plugin.c:1866
 msgid "Glyph Cache"
 msgstr "Cache glifi"
 
 #. Type
 #. Name
-#: plugins/rdp/rdp_plugin.c:1864
+#: plugins/rdp/rdp_plugin.c:1890
 msgid "RDP - Remote Desktop Protocol"
 msgstr "RDP — Remote Desktop Protocol"
 
 #. Type
 #. Name
-#: plugins/rdp/rdp_plugin.c:1887
+#: plugins/rdp/rdp_plugin.c:1913
 msgid "RDP - RDP File Handler"
 msgstr "Gestore file RDP"
 
 #. Type
 #. Name
-#: plugins/rdp/rdp_plugin.c:1902
+#: plugins/rdp/rdp_plugin.c:1928
 msgid "RDP - Preferences"
 msgstr "Preferenze RDP"
 
-#: plugins/rdp/rdp_plugin.c:1956
+#: plugins/rdp/rdp_plugin.c:1982
 msgid "Export connection in Windows .rdp file format"
 msgstr "Esporta la connessione nel formato .rdp di Windows"
 
