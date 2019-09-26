@@ -2,13 +2,13 @@
 # Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-#
+# Allan Nordhøy <epost@anotheragency.no>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
-"Report-Msgid-Bugs-To: admin@remmina.org\n"
+"Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-09-25 21:56+0000\n"
-"PO-Revision-Date: 2019-09-19 18:56+0000\n"
+"PO-Revision-Date: 2019-09-26 15:46+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
@@ -672,12 +672,12 @@ msgstr "Bruk «%s» som skilletegn for undergrupper"
 #. Prior Connection Command
 #: src/remmina_file_editor.c:1489
 msgid "Pre Command"
-msgstr ""
+msgstr "Forhåndskommando"
 
 #. POST Connection Command
 #: src/remmina_file_editor.c:1507
 msgid "Post Command"
-msgstr ""
+msgstr "Etterfølgende kommando"
 
 #: src/remmina_file_editor.c:1572 src/remmina_file_editor.c:1590
 #, c-format
@@ -906,11 +906,11 @@ msgstr "Listene over nylig aktivitet er tømt."
 
 #: src/remmina_pref_dialog.c:143
 msgid "Configure the keystrokes"
-msgstr ""
+msgstr "Sett opp tastetrykkene"
 
 #: src/remmina_pref_dialog.c:443
 msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr ""
+msgstr "libsodium >= 1.9.0 kreves for å bruke hovedpassord"
 
 #: src/remmina_ssh.c:202
 #, c-format
@@ -927,9 +927,9 @@ msgid "SSH Key file not yet set."
 msgstr "Du har ikke valgt SSH-nøkkelfil enda."
 
 #: src/remmina_ssh.c:233
-#, c-format
+#, c-format, fuzzy
 msgid "SSH public key cannot be imported: %s"
-msgstr ""
+msgstr "Kunne ikke importere offentlig SSH-nøkkel: %s"
 
 #: src/remmina_ssh.c:290
 #, c-format
@@ -940,30 +940,32 @@ msgstr "Feil ved automatisk SSH-identitetsbekreftelse med offentlig nøkkel: %s"
 #, c-format
 msgid "SSH public key authentication with SSH agent failed: %s"
 msgstr ""
+"Identitetsbekreftelse med offentlig SSH-nøkkel ved bruk av SSH-agent "
+"mislyktes: %s"
 
 #: src/remmina_ssh.c:325
 #, c-format
 msgid "SSH Kerberos/GSSAPI authentication failed: %s"
-msgstr ""
+msgstr "Identitetsbereftelse med SSH-Kerberos/GGSAPI mislyktes: %s"
 
 #: src/remmina_ssh.c:342
 msgid "SSH public key has changed!"
-msgstr ""
+msgstr "Offentlig SSH-nøkkel har endret seg!"
 
 #: src/remmina_ssh.c:429
-#, c-format
+#, c-format, fuzzy
 msgid "ssh_get_server_publickey() has failed: %s"
-msgstr ""
+msgstr "ssh_get_server_publickey() har mislyktes: %s"
 
 #: src/remmina_ssh.c:434
-#, c-format
+#, c-format, fuzzy
 msgid "ssh_get_publickey() has failed: %s"
-msgstr ""
+msgstr "ssh_get_publickey() har mislyktes: %s"
 
 #: src/remmina_ssh.c:440
 #, c-format
 msgid "ssh_get_publickey_hash() has failed: %s"
-msgstr ""
+msgstr "ssh_get_publickey_hash() har mislyktes: %s"
 
 #: src/remmina_ssh.c:448
 msgid "The server is unknown. The public key fingerprint is:"
@@ -1067,16 +1069,16 @@ msgstr ""
 
 #: src/remmina_ssh.c:1384
 msgid "Failed to bind on local port."
-msgstr ""
+msgstr "Klarte ikke å binde på lokal port."
 
 #: src/remmina_ssh.c:1390
 msgid "Failed to listen on local port."
-msgstr ""
+msgstr "Kunne ikke lytte til lokal port."
 
 #: src/remmina_ssh.c:1399 src/remmina_ssh.c:1415 src/remmina_ssh.c:1431
 #: src/remmina_ssh.c:1448
 msgid "Failed to initialize pthread."
-msgstr ""
+msgstr "Klarte ikke å igangsette pthread."
 
 #: src/remmina_ssh.c:1536
 #, c-format
@@ -1091,7 +1093,7 @@ msgstr "Klarte ikke å starte opp SFTP-økt: %s"
 #: src/remmina_ssh.c:1653
 #, c-format
 msgid "Failed to request shell: %s"
-msgstr ""
+msgstr "Klarte ikke å forespørre skall: %s"
 
 #: src/remmina_ssh.c:1746
 msgid "Failed to create pty device."
@@ -1222,7 +1224,7 @@ msgstr "Vis skjulte filer"
 
 #: src/remmina_sftp_plugin.c:332
 msgid "Overwrite all"
-msgstr ""
+msgstr "Overskriv alt"
 
 #: src/remmina_sftp_plugin.c:350 src/remmina_ssh_plugin.c:1055
 #: plugins/spice/spice_plugin.c:427 plugins/rdp/rdp_plugin.c:1811
@@ -1237,7 +1239,7 @@ msgstr "Identitetsbekreftelsestype"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_ssh_plugin.c:1058
 msgid "Private key passphrase"
-msgstr ""
+msgstr "Passord for privat nøkkel"
 
 #. Type
 #. Name
@@ -1325,11 +1327,11 @@ msgstr ""
 
 #: src/remmina_ssh_plugin.c:1083
 msgid "SSH session log file name"
-msgstr ""
+msgstr "Filnavn for SSH-øktlogg"
 
 #: src/remmina_ssh_plugin.c:1084
 msgid "Enable SSH session logging at exit"
-msgstr ""
+msgstr "Skru på SSH-øktlogging ved avslutning"
 
 #: src/remmina_ssh_plugin.c:1085
 msgid "Enable terminal audible bell"
@@ -1518,12 +1520,12 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:1455
 #, c-format
 msgid "Connection to RDP server %s failed."
-msgstr ""
+msgstr "Tilkobling til RDP-tjeneren %s mislyktes."
 
 #: plugins/rdp/rdp_plugin.c:1458
-#, c-format
+#, c-format, fuzzy
 msgid "Unable to find the address of RDP server %s."
-msgstr ""
+msgstr "Klarte ikke å finne adressen til RDP-tjeneren %s."
 
 #: plugins/rdp/rdp_plugin.c:1462
 #, c-format
@@ -1541,7 +1543,7 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:1473
 #, c-format
 msgid "Unable to connect to RDP server %s."
-msgstr ""
+msgstr "Kunne ikke koble til RDP-tjeneren %s."
 
 #: plugins/rdp/rdp_plugin.c:1476
 msgid "Unable to initialize libfreerdp gdi"
@@ -1557,7 +1559,7 @@ msgstr ""
 #: plugins/rdp/rdp_plugin.c:1486
 #, c-format
 msgid "Server %s denied the connection."
-msgstr ""
+msgstr "Tjeneren %s avslo tilkoblingen."
 
 #: plugins/rdp/rdp_plugin.c:1491
 #, c-format
@@ -1567,15 +1569,15 @@ msgstr "Klarte ikke å koble til RDP-tjeneren %s"
 #. 1st one is the default in a new install
 #: plugins/rdp/rdp_plugin.c:1746
 msgid "GFX AVC444 (32 bpp)"
-msgstr ""
+msgstr "GFX AVC444 (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1747
 msgid "GFX AVC420 (32 bpp)"
-msgstr ""
+msgstr "GFX AVC420 (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1748
 msgid "GFX RFX (32 bpp)"
-msgstr ""
+msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1749
 msgid "RemoteFX (32 bpp)"
@@ -1662,23 +1664,23 @@ msgstr "Sikkerhet"
 
 #: plugins/rdp/rdp_plugin.c:1833
 msgid "Gateway transport type"
-msgstr ""
+msgstr "Portner-transporttype"
 
 #: plugins/rdp/rdp_plugin.c:1834
 msgid "RD Gateway server"
-msgstr ""
+msgstr "RD-portnertjener"
 
 #: plugins/rdp/rdp_plugin.c:1835
 msgid "RD Gateway username"
-msgstr ""
+msgstr "RD-portnerbrukernavn"
 
 #: plugins/rdp/rdp_plugin.c:1836
 msgid "RD Gateway password"
-msgstr ""
+msgstr "RD-portnerpassord"
 
 #: plugins/rdp/rdp_plugin.c:1837
 msgid "RD Gateway domain"
-msgstr ""
+msgstr "RD-portnerdomene"
 
 #: plugins/rdp/rdp_plugin.c:1838
 msgid "Client name"
@@ -1690,7 +1692,7 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1842
 msgid "Override Printer Drivers"
-msgstr ""
+msgstr "Overskriv utskriftsdriverrutiner"
 
 #: plugins/rdp/rdp_plugin.c:1842
 msgid ""
@@ -1703,20 +1705,21 @@ msgid "Local serial name"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1843
+#, fuzzy
 msgid "COM1, COM2, etc"
-msgstr ""
+msgstr "COM1, COM2, osv."
 
 #: plugins/rdp/rdp_plugin.c:1844
 msgid "Local serial driver"
-msgstr ""
+msgstr "Lokal seriell driverrutine"
 
 #: plugins/rdp/rdp_plugin.c:1844
 msgid "Serial"
-msgstr ""
+msgstr "Seriell"
 
 #: plugins/rdp/rdp_plugin.c:1845
 msgid "Local serial path"
-msgstr ""
+msgstr "Lokal seriell-sti"
 
 #: plugins/rdp/rdp_plugin.c:1845
 #, fuzzy
@@ -1725,11 +1728,11 @@ msgstr "/dev/ttyS0, /dev/ttyS1, osv."
 
 #: plugins/rdp/rdp_plugin.c:1846
 msgid "Local parallel name"
-msgstr ""
+msgstr "Lokalt parallell-navn"
 
 #: plugins/rdp/rdp_plugin.c:1847
 msgid "Local parallel device"
-msgstr ""
+msgstr "Lokal parallell-enhet"
 
 #: plugins/rdp/rdp_plugin.c:1848
 msgid "Smartcard Name"
@@ -1741,7 +1744,7 @@ msgstr "Del skrivere"
 
 #: plugins/rdp/rdp_plugin.c:1850
 msgid "Share serial ports"
-msgstr ""
+msgstr "Del seriellporter"
 
 #: plugins/rdp/rdp_plugin.c:1851
 msgid "Serial ports permissive mode"
@@ -1749,15 +1752,15 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1852
 msgid "Share parallel ports"
-msgstr ""
+msgstr "Del parallellporter"
 
 #: plugins/rdp/rdp_plugin.c:1854
 msgid "Redirect local microphone"
-msgstr ""
+msgstr "Videresend lokal mikrofon"
 
 #: plugins/rdp/rdp_plugin.c:1856
 msgid "Ignore certificate"
-msgstr ""
+msgstr "Ignorer sertifikat"
 
 #: plugins/rdp/rdp_plugin.c:1858
 msgid "Attach to console (2003/2003 R2)"
@@ -1815,11 +1818,11 @@ msgstr "<Oppdag automatisk>"
 
 #: plugins/rdp/rdp_settings.c:233
 msgid "<Not set>"
-msgstr ""
+msgstr "<Ikke satt>"
 
 #: plugins/rdp/rdp_settings.c:267
 msgid "<Choose a quality level to edit…>"
-msgstr ""
+msgstr "<Velg kvalitetsnivå å redigere…>"
 
 #. Create the content
 #: plugins/rdp/rdp_settings.c:418
@@ -1832,7 +1835,7 @@ msgstr "Bruk klientens tastaturkobling"
 
 #: plugins/rdp/rdp_settings.c:453
 msgid "Quality settings"
-msgstr ""
+msgstr "Kvalitetsinnstillinger"
 
 #: plugins/rdp/rdp_settings.c:473
 msgid "Wallpaper"
@@ -1890,15 +1893,15 @@ msgstr ""
 
 #: plugins/st/st_plugin.c:237
 msgid "Terminal Emulator"
-msgstr ""
+msgstr "Terminalemulator"
 
 #: plugins/st/st_plugin.c:238
 msgid "Command to be executed"
-msgstr ""
+msgstr "Kommando å kjøre"
 
 #: plugins/st/st_plugin.c:253
 msgid "Detached window"
-msgstr ""
+msgstr "Løsrevet vindu"
 
 #: plugins/st/st_plugin_config.h:43
 msgid "Remmina Simple Terminal"
@@ -1906,7 +1909,7 @@ msgstr ""
 
 #: plugins/tool_hello_world/plugin_config.h:40
 msgid "Hello World!"
-msgstr ""
+msgstr "Hei verden!"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
 msgid "Secure passwords storing in the GNOME keyring"
@@ -2880,4 +2883,3 @@ msgstr ""
 #: data/ui/remmina_preferences.glade:2178
 msgid "Terminal"
 msgstr "Terminal"
-
