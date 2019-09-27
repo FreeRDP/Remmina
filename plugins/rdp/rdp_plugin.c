@@ -864,9 +864,7 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 	const gchar *s = remmina_plugin_service->file_get_string(remminafile, "printer_overrides");
 
 	RDPDR_PRINTER* printer;
-	//printer = (RDPDR_PRINTER*) calloc(1, sizeof(RDPDR_PRINTER));
-	printer = (RDPDR_PRINTER*) malloc(sizeof(RDPDR_PRINTER));
-	ZeroMemory(printer, sizeof(RDPDR_PRINTER));
+	printer = (RDPDR_PRINTER*) calloc(1, sizeof(RDPDR_PRINTER));
 
 	printer->Type = RDPDR_DTYP_PRINT;
 	g_debug("Printer Type: %d", printer->Type);
@@ -1261,8 +1259,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 		RDPDR_DRIVE* drive;
 		gsize sz;
 
-		drive = (RDPDR_DRIVE*)malloc(sizeof(RDPDR_DRIVE));
-		ZeroMemory(drive, sizeof(RDPDR_DRIVE));
+		drive = (RDPDR_DRIVE*) calloc(1, sizeof(RDPDR_DRIVE));
 
 		rfi->settings->DeviceRedirection = TRUE;
 		remmina_rdp_load_static_channel_addin(channels, rfi->settings, "rdpdr", rfi->settings);
@@ -1298,8 +1295,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	if (remmina_plugin_service->file_get_int(remminafile, "sharesmartcard", FALSE)) {
 		RDPDR_SMARTCARD* smartcard;
-		smartcard = (RDPDR_SMARTCARD*)malloc(sizeof(RDPDR_SMARTCARD));
-		ZeroMemory(smartcard, sizeof(RDPDR_SMARTCARD));
+		smartcard = (RDPDR_SMARTCARD*) calloc(1, sizeof(RDPDR_SMARTCARD));
 
 		smartcard->Type = RDPDR_DTYP_SMARTCARD;
 
@@ -1325,8 +1321,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 	/* /serial[:<name>[,<path>[,<driver>[,permissive]]]] */
 	if (remmina_plugin_service->file_get_int(remminafile, "shareserial", FALSE)) {
 		RDPDR_SERIAL* serial;
-		serial = (RDPDR_SERIAL*)malloc(sizeof(RDPDR_SERIAL));
-		ZeroMemory(serial, sizeof(RDPDR_SERIAL));
+		serial = (RDPDR_SERIAL*) calloc(1, sizeof(RDPDR_SERIAL));
 
 		serial->Type = RDPDR_DTYP_SERIAL;
 
@@ -1359,8 +1354,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget* gp)
 
 	if (remmina_plugin_service->file_get_int(remminafile, "shareparallel", FALSE)) {
 		RDPDR_PARALLEL* parallel;
-		parallel = (RDPDR_PARALLEL*)malloc(sizeof(RDPDR_PARALLEL));
-		ZeroMemory(parallel, sizeof(RDPDR_PARALLEL));
+		parallel = (RDPDR_PARALLEL*) calloc(1, sizeof(RDPDR_PARALLEL));
 
 		parallel->Type = RDPDR_DTYP_PARALLEL;
 
