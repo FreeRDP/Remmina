@@ -327,7 +327,7 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 
 
 	if (flags & REMMINA_MESSAGE_PANEL_FLAG_USERNAME) {
-		widget = gtk_label_new(_("User name"));
+		widget = gtk_label_new(_("Username"));
 		gtk_widget_set_halign(GTK_WIDGET(widget), GTK_ALIGN_START);
 		gtk_widget_set_valign(GTK_WIDGET(widget), GTK_ALIGN_CENTER);
 		gtk_widget_set_margin_top (GTK_WIDGET(widget), 9);

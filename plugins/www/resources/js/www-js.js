@@ -83,7 +83,7 @@ function setLoginFields() {
                     }
                     if(userFound) {
                         inputs[i].dispatchEvent(evt);
-                        console.debug("User name field found and set(?)");
+                        console.debug("Username field found and set(?)");
                         break;
                     }
                 }

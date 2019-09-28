@@ -1479,7 +1479,7 @@ void remmina_protocol_widget_save_cred(RemminaProtocolWidget* gp)
 		return;
 	}
 
-	/* Save user name and certificates if any; save the password if it’s requested to do so */
+	/* Save username and certificates if any; save the password if it’s requested to do so */
 	s = gp->priv->username;
 	if (s && s[0]) {
 		remmina_file_set_string(remminafile, "username", s);

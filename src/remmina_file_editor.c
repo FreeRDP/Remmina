@@ -83,8 +83,8 @@ static const gchar *cmd_tips = N_("<tt><big>"
 				  "* /path/to/foo -options %h %u\n"
 				  "* %h is substituted with the server name\n"
 				  "* %t is substituted with the SSH server name\n"
-				  "* %u is substituted with the user name\n"
-				  "* %U is substituted with the SSH user name\n"
+				  "* %u is substituted with the username\n"
+				  "* %U is substituted with the SSH username\n"
 				  "* %p is substituted with Remmina profile name\n"
 				  "* %g is substituted with Remmina profile group name\n"
 				  "Do not run in background if you want the command to be executed before connecting.\n"
@@ -925,7 +925,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor *gfe, RemminaPr
 		    ssh_setting == REMMINA_PROTOCOL_SSH_SETTING_REVERSE_TUNNEL) {
 			priv->ssh_username_entry =
 				remmina_file_editor_create_text(gfe, grid, row + 10, 0,
-								_("User name"), NULL);
+								_("Username"), NULL);
 			row++;
 		}
 		widget = gtk_radio_button_new_with_label(NULL, _("SSH Agent (automatic)"));
