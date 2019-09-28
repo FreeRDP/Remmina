@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
-"Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-09-27 20:11+0000\n"
+"Report-Msgid-Bugs-To: admin@remmina.org\n"
+"POT-Creation-Date: 2019-09-28 22:54+0000\n"
 "PO-Revision-Date: 2019-09-28 10:30+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -127,8 +127,8 @@ msgstr "否"
 #: src/remmina_sftp_plugin.c:349 src/remmina_ssh_plugin.c:1054
 #: plugins/rdp/rdp_plugin.c:1804 plugins/nx/nx_plugin.c:698
 #: plugins/vnc/vnc_plugin.c:1875 plugins/vnc/vnc_plugin.c:1895
-#: data/ui/remmina_mpc.glade:152
-msgid "User name"
+#: plugins/www/www_plugin.c:784 data/ui/remmina_mpc.glade:152
+msgid "Username"
 msgstr "使用者名稱"
 
 #: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1806
@@ -472,13 +472,14 @@ msgstr ""
 "* [伺服器]:連接埠</big></tt>"
 
 #: src/remmina_file_editor.c:81
+#, fuzzy
 msgid ""
 "<tt><big>* command in PATH args %h\n"
 "* /path/to/foo -options %h %u\n"
 "* %h is substituted with the server name\n"
 "* %t is substituted with the SSH server name\n"
-"* %u is substituted with the user name\n"
-"* %U is substituted with the SSH user name\n"
+"* %u is substituted with the username\n"
+"* %U is substituted with the SSH username\n"
 "* %p is substituted with Remmina profile name\n"
 "* %g is substituted with Remmina profile group name\n"
 "Do not run in background if you want the command to be executed before "
@@ -2121,10 +2122,6 @@ msgstr ""
 msgid "http://address or https://address"
 msgstr "URL (http://位址 或 https://位址)"
 
-#: plugins/www/www_plugin.c:784
-msgid "Username"
-msgstr "使用者名稱"
-
 #: plugins/www/www_plugin.c:800
 msgid "User Agent"
 msgstr "使用者代理"
@@ -2898,3 +2895,4 @@ msgstr "終端機配色檔選擇器"
 #: data/ui/remmina_preferences.glade:2178
 msgid "Terminal"
 msgstr "終端機"
+
