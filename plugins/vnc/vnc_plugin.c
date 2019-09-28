@@ -427,24 +427,30 @@ typedef struct _RemminaPluginVncCuttextParam {
 static void remmina_plugin_vnc_update_quality(rfbClient *cl, gint quality)
 {
 	TRACE_CALL(__func__);
+	/**
+	 * "0", "Poor (fastest)
+	 * "1", "Medium"
+	 * "2", "Good"
+	 * "9", "Best
+	 */
 	switch (quality) {
 	case 9:
 		cl->appData.useBGR233 = 0;
-		cl->appData.encodingsString = "copyrect zlib hextile raw";
-		cl->appData.compressLevel = 0;
+		cl->appData.encodingsString = "tight copyrect zlib hextile raw";
+		cl->appData.compressLevel = 1;
 		cl->appData.qualityLevel = 9;
 		break;
 	case 2:
 		cl->appData.useBGR233 = 0;
 		cl->appData.encodingsString = "tight zrle ultra copyrect hextile zlib corre rre raw";
-		cl->appData.compressLevel = 3;
+		cl->appData.compressLevel = 2;
 		cl->appData.qualityLevel = 7;
 		break;
 	case 1:
 		cl->appData.useBGR233 = 0;
 		cl->appData.encodingsString = "tight zrle ultra copyrect hextile zlib corre rre raw";
-		cl->appData.compressLevel = 5;
-		cl->appData.qualityLevel = 7;
+		cl->appData.compressLevel = 3;
+		cl->appData.qualityLevel = 5;
 		break;
 	case 0:
 	default:
@@ -968,6 +974,7 @@ static void remmina_plugin_vnc_rfb_output(const char *format, ...)
 	va_end(args);
 
 	remmina_plugin_service->log_printf("[VNC] %s\n", vnc_error);
+	g_debug ("[VNC] %s", vnc_error);
 }
 
 static void remmina_plugin_vnc_chat_on_send(RemminaProtocolWidget *gp, const gchar *text)
