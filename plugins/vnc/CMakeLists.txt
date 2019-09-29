@@ -35,7 +35,10 @@
 set(LIBVNCSERVER_INCLUDE_DIRS)
 set(LIBVNCSERVER_LIBRARIES vncclient)
 
-set(REMMINA_PLUGIN_VNC_SRCS vnc_plugin.c)
+set(REMMINA_PLUGIN_VNC_SRCS
+	vnc_plugin.c
+	vnc_plugin.h
+)
 
 add_library(remmina-plugin-vnc MODULE ${REMMINA_PLUGIN_VNC_SRCS})
 set_target_properties(remmina-plugin-vnc PROPERTIES PREFIX "")
