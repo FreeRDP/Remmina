@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
-"Report-Msgid-Bugs-To: admin@remmina.org\n"
+"Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-09-28 22:54+0000\n"
-"PO-Revision-Date: 2019-09-26 15:46+0000\n"
+"PO-Revision-Date: 2019-09-29 07:31+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
@@ -128,7 +128,7 @@ msgstr "Nei"
 #: plugins/vnc/vnc_plugin.c:1875 plugins/vnc/vnc_plugin.c:1895
 #: plugins/www/www_plugin.c:784 data/ui/remmina_mpc.glade:152
 msgid "Username"
-msgstr ""
+msgstr "Brukernavn"
 
 #: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1806
 #: data/ui/remmina_mpc.glade:138
@@ -267,7 +267,7 @@ msgstr "Verktøy"
 
 #: src/rcw.c:2205
 msgid "Duplicate current connection"
-msgstr ""
+msgstr "Dupliser nåværende tilkobling"
 
 #: src/rcw.c:2213 data/ui/remmina_preferences.glade:1083
 msgid "Screenshot"
@@ -1065,7 +1065,7 @@ msgstr "Målport er ikke tildelt."
 
 #: src/remmina_ssh.c:1374
 msgid "Failed to create socket."
-msgstr ""
+msgstr "Klarte ikke å opprette socket."
 
 #: src/remmina_ssh.c:1384
 msgid "Failed to bind on local port."
@@ -1097,7 +1097,7 @@ msgstr "Klarte ikke å forespørre skall: %s"
 
 #: src/remmina_ssh.c:1746
 msgid "Failed to create pty device."
-msgstr ""
+msgstr "Klarte ikke å opprette PTY-enhet."
 
 #. Show in the status bar the total number of connections found
 #: src/remmina_main.c:644
@@ -1142,12 +1142,16 @@ msgstr "Vis «Om»-dialog"
 msgid ""
 "Connect to desktop described by file (.remmina or type supported by plugin)"
 msgstr ""
+"Koble til skrivebord beskrevet i fil (.remmina eller type støttet av "
+"programtillegg)"
 
 #: src/remmina.c:86
 msgid ""
 "Edit desktop connection described by file (.remmina or type supported by "
 "plugin)"
 msgstr ""
+"Rediger skrivebordstilkobling beskrevet i fil (.remmina eller type støttet "
+"av programtillegg)"
 
 #: src/remmina.c:88
 msgid "Start Remmina in Kiosk mode"
@@ -1303,15 +1307,15 @@ msgstr "Oppstartsprogram"
 
 #: src/remmina_ssh_plugin.c:1076
 msgid "Terminal color scheme"
-msgstr ""
+msgstr "Terminalfargedrakt"
 
 #: src/remmina_ssh_plugin.c:1078
 msgid "SSH Proxy Command"
-msgstr ""
+msgstr "SSH-mellomtjenerkommando"
 
 #: src/remmina_ssh_plugin.c:1079
 msgid "KEX (Key Exchange) algorithms"
-msgstr ""
+msgstr "KEX (nøkkelutveksling)-algoritmer"
 
 #: src/remmina_ssh_plugin.c:1080
 msgid "Symmetric cipher client to server"
@@ -1424,7 +1428,7 @@ msgstr "Velg USB-enheter for videresendelse"
 #. Name
 #: plugins/spice/spice_plugin.c:472
 msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr ""
+msgstr "SPICE - Enkel protokoll for uavhengig datamaskinsmiljø"
 
 #.
 #. * FIXME: Use the RemminaConnectionWindow as transient parent widget
@@ -1462,11 +1466,13 @@ msgid "USB redirection error"
 msgstr "USB-videresendingsfeil"
 
 #: plugins/rdp/rdp_plugin.c:1391
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "Authentication to RDP server %s failed.\n"
 "Check username, password and domain."
 msgstr ""
+"Identitetsbekreftelse til RDP-tjener %s mislyktes\n"
+"Sjekk brukernavn, passord og domene."
 
 #: plugins/rdp/rdp_plugin.c:1401
 #, c-format
@@ -1474,13 +1480,17 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "Account is locked out."
 msgstr ""
+"Tilgang til RDP-tjener %s mislyktes.\n"
+"Kontoen er utelåst."
 
 #: plugins/rdp/rdp_plugin.c:1408
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "Access to RDP server %s failed.\n"
 "Account is expired."
 msgstr ""
+"Tilgang til RDP-tjener %s mislyktes.\n"
+"Kontoen er utløpt."
 
 #: plugins/rdp/rdp_plugin.c:1415
 #, c-format
@@ -1488,13 +1498,17 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "Password expired."
 msgstr ""
+"Tilgang til RDP-tjener %s mislyktes.\n"
+"Passord utløpt."
 
 #: plugins/rdp/rdp_plugin.c:1422
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "Access to RDP server %s failed.\n"
 "Account is disabled."
 msgstr ""
+"Tilgang til RDP-tjener %s mislyktes.\n"
+"Konto avskrudd."
 
 #: plugins/rdp/rdp_plugin.c:1428
 #, c-format
@@ -1502,13 +1516,17 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "User has insufficient privileges."
 msgstr ""
+"Tilgang til RDP-tjener %s mislyktes.\n"
+"Bruker mangler tilgang."
 
 #: plugins/rdp/rdp_plugin.c:1436
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "Access to RDP server %s failed.\n"
 "Account has restrictions."
 msgstr ""
+"Tilgang til RDP-tjener %s mislyktes.\n"
+"Kontoen har begrensninger."
 
 #: plugins/rdp/rdp_plugin.c:1444
 #, c-format
@@ -1516,6 +1534,8 @@ msgid ""
 "Access to RDP server %s failed.\n"
 "User must change password before connecting."
 msgstr ""
+"Tilgang til RDP-tjener %s mislyktes.\n"
+"Bruker må endre passord før tilkobling."
 
 #: plugins/rdp/rdp_plugin.c:1449
 #, c-format
@@ -1528,16 +1548,18 @@ msgid "Unable to find the address of RDP server %s."
 msgstr "Klarte ikke å finne adressen til RDP-tjeneren %s."
 
 #: plugins/rdp/rdp_plugin.c:1456
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "Error connecting to RDP server %s. TLS connection failed. Check that client "
 "and server support a common TLS version."
 msgstr ""
+"Feil under tilkobling til RDP-tjener %s. TLS-tilknytning mislyktes. Sjekk at "
+"klient og tjener støtter en felles TLS-versjon."
 
 #: plugins/rdp/rdp_plugin.c:1459
-#, c-format
+#, c-format, fuzzy
 msgid "Unable to establish a connection to RDP server %s."
-msgstr ""
+msgstr "Kunne ikke etablere tilkobling til RDP-tjener %s."
 
 #. We should never come here
 #: plugins/rdp/rdp_plugin.c:1467
@@ -1546,15 +1568,18 @@ msgid "Unable to connect to RDP server %s."
 msgstr "Kunne ikke koble til RDP-tjeneren %s."
 
 #: plugins/rdp/rdp_plugin.c:1470
+#, fuzzy
 msgid "Unable to initialize libfreerdp gdi"
-msgstr ""
+msgstr "Kunne ikke igangsette libfreerdp-gdi"
 
 #: plugins/rdp/rdp_plugin.c:1473
-#, c-format
+#, c-format, fuzzy
 msgid ""
 "You requested an H.264 GFX mode for server %s, but your libfreerdp does not "
 "support H.264. Please use a non-AVC Color Depth setting."
 msgstr ""
+"Du forespurte et H.264 GFX-modus for tjeneren %s, men din libfreerdp støtter "
+"ikke H.264. Bruk en innstilling som ikke er AVC-fargedybde."
 
 #: plugins/rdp/rdp_plugin.c:1480
 #, c-format
@@ -1735,8 +1760,9 @@ msgid "Local parallel device"
 msgstr "Lokal parallell-enhet"
 
 #: plugins/rdp/rdp_plugin.c:1842
+#, fuzzy
 msgid "Smartcard Name"
-msgstr ""
+msgstr "Smartkortsnavn"
 
 #: plugins/rdp/rdp_plugin.c:1843
 msgid "Share printers"
@@ -1771,16 +1797,18 @@ msgid "Disable fast-path"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1854
+#, fuzzy
 msgid "Server detection using RD Gateway"
-msgstr ""
+msgstr "Tjeneroppdagelse ved bruk av RD-portner"
 
 #: plugins/rdp/rdp_plugin.c:1856
 msgid "Enable proxy support"
-msgstr ""
+msgstr "Skru på mellomtjenerstøtte"
 
 #: plugins/rdp/rdp_plugin.c:1858
+#, fuzzy
 msgid "Disable automatic reconnection"
-msgstr ""
+msgstr "Skru av automatisk tilknytning ved tapt forbindelse"
 
 #: plugins/rdp/rdp_plugin.c:1859
 msgid "Relax Order Checks"
@@ -1875,7 +1903,7 @@ msgstr ""
 
 #: plugins/rdp/rdp_settings.c:545
 msgid "Desktop scale factor %"
-msgstr ""
+msgstr "Skrivebordsskaleringsfaktor %"
 
 #: plugins/rdp/rdp_settings.c:556
 msgid "Device scale factor %"
@@ -1883,7 +1911,7 @@ msgstr ""
 
 #: plugins/rdp/rdp_settings.c:578
 msgid "Desktop orientation"
-msgstr ""
+msgstr "Skrivebordssideretning"
 
 #. Draw text
 #: plugins/rdp/rdp_event.c:299
@@ -1927,20 +1955,21 @@ msgstr ""
 
 #: plugins/exec/exec_plugin.c:264
 msgid "Command"
-msgstr ""
+msgstr "Kommando"
 
 #: plugins/exec/exec_plugin.c:265
 msgid "Asynchrounous execution"
-msgstr ""
+msgstr "Asynkron kjøring"
 
 #: plugins/exec/exec_plugin_config.h:41
 msgid "Execute a command"
-msgstr ""
+msgstr "Kjør en kommando"
 
 #: plugins/nx/nx_plugin.c:585 plugins/xdmcp/xdmcp_plugin.c:264
-#, c-format
+#, c-format, fuzzy
 msgid "Protocol %s is unavailable because GtkSocket only works under X.Org"
 msgstr ""
+"Protokollen %s er utilgjengelig fordi GtkSocket kun fungerer under X.Org."
 
 #: plugins/nx/nx_plugin.c:718 plugins/vnc/vnc_plugin.c:1917
 msgid "Disable encryption"
@@ -2018,8 +2047,9 @@ msgid "Disconnect after one session"
 msgstr "Koble fra etter én økt"
 
 #: plugins/xdmcp/xdmcp_plugin.c:373
+#, fuzzy
 msgid "Listening connection on protocol TCP"
-msgstr ""
+msgstr "Lytter etter TCP-tilknytning"
 
 #. Type
 #. Name
@@ -2078,13 +2108,13 @@ msgstr "Åpne sludrevindu …"
 #. Name
 #: plugins/vnc/vnc_plugin.c:1945
 msgid "VNC - VNC viewer"
-msgstr ""
+msgstr "VNC - VNC-framviser"
 
 #. Type
 #. Name
 #: plugins/vnc/vnc_plugin.c:1967
 msgid "VNCI - VNC viewer listen mode"
-msgstr ""
+msgstr "VNCI - VNC-framviser i lyttemodus"
 
 #. Type
 #. Name
@@ -2107,59 +2137,64 @@ msgstr "Invitasjon til delt skrivebord"
 
 #: plugins/www/www_plugin.c:97
 msgid "File downloaded"
-msgstr ""
+msgstr "Fil nedlastet"
 
 #: plugins/www/www_plugin.c:783
 msgid "URL"
-msgstr ""
+msgstr "Nettadresse"
 
 #: plugins/www/www_plugin.c:783
 msgid "http://address or https://address"
-msgstr ""
+msgstr "http://adresse eller https://adresse"
 
 #: plugins/www/www_plugin.c:800
 msgid "User Agent"
-msgstr ""
+msgstr "Brukeragent"
 
 #: plugins/www/www_plugin.c:801
 msgid "Enable Java support"
-msgstr ""
+msgstr "Skru på Java-støtte"
 
 #: plugins/www/www_plugin.c:802
+#, fuzzy
 msgid "Enable smooth scrolling"
-msgstr ""
+msgstr "Skru på myk rulling"
 
 #: plugins/www/www_plugin.c:803
 msgid "Enable Spatial Navigation"
 msgstr ""
 
 #: plugins/www/www_plugin.c:804
+#, fuzzy
 msgid "Enable support for plugins"
-msgstr ""
+msgstr "Skru på støtte for programtillegg"
 
 #: plugins/www/www_plugin.c:805
+#, fuzzy
 msgid "Enable support for WebGL"
-msgstr ""
+msgstr "Skru på støtte for WebGL"
 
 #: plugins/www/www_plugin.c:806
+#, fuzzy
 msgid "Enable support for WebAudio"
-msgstr ""
+msgstr "Skru på støtte for WebAudio"
 
 #: plugins/www/www_plugin.c:807
 msgid "Ignore TLS errors"
 msgstr "Ignorer TLS-feil"
 
 #: plugins/www/www_plugin.c:810
+#, fuzzy
 msgid "Enable Web Inspector"
-msgstr ""
+msgstr "Skru på vev-inspektør"
 
 #: plugins/www/www_config.h:43
 msgid "Remmina Browser Plugin"
-msgstr ""
+msgstr "Remmina-nettleserprogramtillegg"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 msgid "Secure passwords storing in the KDE Wallet"
-msgstr ""
+msgstr "Sikker passordslagring i KDE-lommeboken"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
@@ -2201,9 +2236,10 @@ msgstr "Bruk"
 
 #: data/ui/remmina_news.glade:164
 msgid "<big>Important settings</big>"
-msgstr ""
+msgstr "<big>Viktige innstillinger</big>"
 
 #: data/ui/remmina_news.glade:190
+#, fuzzy
 msgid ""
 "<span>\n"
 "<b>Remmina is developed by brave contributors in their free time, be brave "
@@ -2211,6 +2247,11 @@ msgid ""
 "\">rewarding our heros!</a></b>\n"
 "</span>\n"
 msgstr ""
+"<span>\n"
+"<b>Remmina utvikles av uredde bidragsytere på fritiden, ta bladet fra munnen "
+"og <a href=\"https://remmina.org/donations/\" title=\"Remmina donations\">"
+"bidra med midler.</a></b>\n"
+"</span>\n"
 
 #: data/ui/remmina_news.glade:210
 #, fuzzy
@@ -2244,8 +2285,9 @@ msgid "button"
 msgstr "knapp"
 
 #: data/ui/remmina_key_chooser.glade:82
+#, fuzzy
 msgid "Please press the new key…"
-msgstr ""
+msgstr "Trykk på den nye tasten…"
 
 #: data/ui/remmina_unlock.glade:60
 msgid "Unlock"
@@ -2269,7 +2311,7 @@ msgstr "Handlinger"
 
 #: data/ui/remmina_main.glade:120
 msgid "Toggle view"
-msgstr ""
+msgstr "Veksle visning"
 
 #: data/ui/remmina_main.glade:168
 msgid "search string or server name/ip address for quick connect"
@@ -2277,7 +2319,7 @@ msgstr ""
 
 #: data/ui/remmina_main.glade:172 data/ui/remmina_main.glade:174
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Tjenernavn eller IP-adresse"
 
 #: data/ui/remmina_main.glade:173 data/ui/remmina_main.glade:175
 #: data/ui/remmina_preferences.glade:215
@@ -2286,7 +2328,7 @@ msgstr "Tøm"
 
 #: data/ui/remmina_main.glade:258
 msgid "Edit"
-msgstr ""
+msgstr "Rediger"
 
 #: data/ui/remmina_main.glade:312
 msgid "Export"
@@ -2340,7 +2382,7 @@ msgstr ""
 
 #: data/ui/remmina_mpc.glade:21
 msgid "Change"
-msgstr ""
+msgstr "Endre"
 
 #: data/ui/remmina_mpc.glade:61
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
@@ -2377,7 +2419,7 @@ msgstr "Remmina-innstillinger"
 
 #: data/ui/remmina_preferences.glade:100
 msgid "Double-click action"
-msgstr ""
+msgstr "Dobbeltklikkshandling"
 
 #: data/ui/remmina_preferences.glade:114
 msgid "Open connection"
@@ -2393,47 +2435,51 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:145
 msgid "Nearest"
-msgstr ""
+msgstr "Nærmeste"
 
 #: data/ui/remmina_preferences.glade:146
 msgid "Tiles"
-msgstr ""
+msgstr "Flis"
 
 #: data/ui/remmina_preferences.glade:147
 msgid "Bilinear"
-msgstr ""
+msgstr "Bi-lineær"
 
 #: data/ui/remmina_preferences.glade:148
+#, fuzzy
 msgid "Hyper"
-msgstr ""
+msgstr "Hyper"
 
 #: data/ui/remmina_preferences.glade:164
+#, fuzzy
 msgid "Auto scroll step size"
-msgstr ""
+msgstr "Trinnstørrelse for automatisk rulling"
 
 #: data/ui/remmina_preferences.glade:192
 msgid "Maximum recent items"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:280
+#, fuzzy
 msgid "Screenshots folder"
-msgstr ""
+msgstr "Skjermavbildningsmappe"
 
 #: data/ui/remmina_preferences.glade:292
+#, fuzzy
 msgid "Choose the directory where you want to save Remmina screenshots."
-msgstr ""
+msgstr "Velg en mappe å lagre Remmina-skjermavbildninger i."
 
 #: data/ui/remmina_preferences.glade:295
 msgid "Select a Directory"
-msgstr ""
+msgstr "Velg en mappe"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Screen resolutions"
-msgstr ""
+msgstr "Skjermoppløsninger"
 
 #: data/ui/remmina_preferences.glade:326
 msgid "Screenshots file name"
-msgstr ""
+msgstr "Skjermavbildningsfilnavn"
 
 #: data/ui/remmina_preferences.glade:338
 msgid ""
@@ -2441,6 +2487,9 @@ msgid ""
 "%h Server name/IP\n"
 "%Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)\n"
 msgstr ""
+"%p Profilnavn\n"
+"%h Tjenernavn/IP\n"
+"%Y År, %m Måned, %d Dag, %H Time, %M Minutt, %S Sekunder (UTC-tid)\n"
 
 #: data/ui/remmina_preferences.glade:356
 msgid ""
@@ -2451,23 +2500,25 @@ msgstr ""
 #. It's the folder where the profiles are saved
 #: data/ui/remmina_preferences.glade:361
 msgid "Remmina data folder"
-msgstr ""
+msgstr "Remmina-datamappe"
 
 #: data/ui/remmina_preferences.glade:388
+#, fuzzy
 msgid "Remember last view mode for each connection"
-msgstr ""
+msgstr "Husk siste visningsmodus for hver tilkobling"
 
 #: data/ui/remmina_preferences.glade:392
 msgid "Remember last view mode"
-msgstr ""
+msgstr "Husk siste visningsmodus"
 
 #: data/ui/remmina_preferences.glade:418
+#, fuzzy
 msgid "Send periodic usage statistics to remmina developers"
-msgstr ""
+msgstr "Send periodisk bruksstatistikk til Remmina-utviklerne"
 
 #: data/ui/remmina_preferences.glade:422
 msgid "Send statistics to remmina.org"
-msgstr ""
+msgstr "Send statistikk til remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
 msgid ""
@@ -2477,13 +2528,16 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:467
 msgid "Deny screenshot to clipboard"
-msgstr ""
+msgstr "Forhindre at skjermavbildning havner i utklippstavle"
 
 #: data/ui/remmina_preferences.glade:479
+#, fuzzy
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
 msgstr ""
+"Velg et egendefinert filnavn for dine Remmina-tilkoblingsprofiler, ved bruk "
+"av en formateringsstreng."
 
 #: data/ui/remmina_preferences.glade:483
 msgid "Profiles filename template"
@@ -2498,22 +2552,29 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
+"%G gruppenavn (skråstrek konverteres automatisk til -)\n"
+"%P protokollnavn\n"
+"%N tilknytningsnavn\n"
+"%h vertsnavn/IP\n"
+"\n"
+"\n"
 
 #: data/ui/remmina_preferences.glade:504
 msgid "%G_%P_%N_%h"
-msgstr ""
+msgstr "%G_%P_%N_%h"
 
 #: data/ui/remmina_preferences.glade:518
 msgid "Options"
-msgstr ""
+msgstr "Innstillinger"
 
 #: data/ui/remmina_preferences.glade:532
 msgid "Always show tabs"
 msgstr "Alltid vis faner"
 
 #: data/ui/remmina_preferences.glade:548
+#, fuzzy
 msgid "Hide toolbar in tabbed interface"
-msgstr ""
+msgstr "Skjul verktøylinje i fanebasert grensesnitt"
 
 #: data/ui/remmina_preferences.glade:567
 msgid "Default view mode"
@@ -2525,11 +2586,11 @@ msgstr "Automatisk"
 
 #: data/ui/remmina_preferences.glade:581
 msgid "Scrolled window"
-msgstr ""
+msgstr "Rullet vindu"
 
 #: data/ui/remmina_preferences.glade:582
 msgid "Scrolled fullscreen"
-msgstr ""
+msgstr "Rullet fullskjermsvisning"
 
 #: data/ui/remmina_preferences.glade:583
 msgid "Viewport fullscreen"
@@ -2541,15 +2602,15 @@ msgstr "Fanegrensesnitt"
 
 #: data/ui/remmina_preferences.glade:610
 msgid "Tab by groups"
-msgstr ""
+msgstr "Faner i grupper"
 
 #: data/ui/remmina_preferences.glade:611
 msgid "Tab by protocols"
-msgstr ""
+msgstr "Faner basert på protokoller"
 
 #: data/ui/remmina_preferences.glade:612
 msgid "Tab all connections"
-msgstr ""
+msgstr "Faner for alle tilknytninger"
 
 #: data/ui/remmina_preferences.glade:613
 msgid "Do not use tabs"
@@ -2585,35 +2646,38 @@ msgstr "Utseende"
 
 #: data/ui/remmina_preferences.glade:709
 msgid "Show new connection on top of the menu"
-msgstr ""
+msgstr "Vis ny tilkobling på toppen av menyen"
 
 #: data/ui/remmina_preferences.glade:725
+#, fuzzy
 msgid "Hide total count in group menu"
-msgstr ""
+msgstr "Skjul totalt antall i gruppemeny"
 
 #: data/ui/remmina_preferences.glade:741
+#, fuzzy
 msgid "Disable tray icon"
-msgstr ""
+msgstr "Skru av systemkurvsikon"
 
 #: data/ui/remmina_preferences.glade:758
 msgid "Start Remmina in tray icon at user logon"
-msgstr ""
+msgstr "Start Remmina i systemkurv når bruker logger seg på"
 
 #: data/ui/remmina_preferences.glade:774
 msgid "Dark Tray Icon"
 msgstr "Mørkt systemkurvsikon"
 
 #: data/ui/remmina_preferences.glade:778
+#, fuzzy
 msgid "Choose this if your theme panel is light."
-msgstr ""
+msgstr "Velg dette hvis du har et lyst draktpanel."
 
 #: data/ui/remmina_preferences.glade:798
 msgid "Applet"
-msgstr ""
+msgstr "Miniprogram"
 
 #: data/ui/remmina_preferences.glade:817
 msgid "Host key"
-msgstr ""
+msgstr "Vertsnøkkel"
 
 #: data/ui/remmina_preferences.glade:873
 msgid "Auto-fit window"
@@ -2621,11 +2685,12 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:970
 msgid "Grab keyboard"
-msgstr ""
+msgstr "Fang tastaturtrykk"
 
 #: data/ui/remmina_preferences.glade:1055
+#, fuzzy
 msgid "Show / hide toolbar"
-msgstr ""
+msgstr "Vis / skjul verktøylinje"
 
 #: data/ui/remmina_preferences.glade:1093
 msgid "SCREENSHOT"
@@ -2703,12 +2768,13 @@ msgid ""
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1351
+#, fuzzy
 msgid "SSH Options"
-msgstr ""
+msgstr "SSH-valgmuligheter"
 
 #: data/ui/remmina_preferences.glade:1371
 msgid "Master password"
-msgstr ""
+msgstr "Hovedpassord"
 
 #: data/ui/remmina_preferences.glade:1386
 #: data/ui/remmina_preferences.glade:1402
@@ -2719,7 +2785,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1408
 msgid "Use master password"
-msgstr ""
+msgstr "Bruk hovedpassord"
 
 #: data/ui/remmina_preferences.glade:1421
 msgid "Automatic lock interval"
@@ -2731,11 +2797,11 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1452
 msgid "File encryption"
-msgstr ""
+msgstr "Filkryptering"
 
 #: data/ui/remmina_preferences.glade:1482
 msgid "Retype password"
-msgstr ""
+msgstr "Skriv inn passord igjen"
 
 #: data/ui/remmina_preferences.glade:1565
 msgid "Terminal font"
@@ -2743,7 +2809,7 @@ msgstr "Terminalskrift"
 
 #: data/ui/remmina_preferences.glade:1579
 msgid "Scrollback lines"
-msgstr ""
+msgstr "Rulleminne-linjer"
 
 #: data/ui/remmina_preferences.glade:1588
 msgid "Use system default font"
@@ -2863,20 +2929,24 @@ msgstr "Velg en farge for lys hvit"
 
 #: data/ui/remmina_preferences.glade:2138
 msgid "Load color scheme"
-msgstr ""
+msgstr "Last inn fargedrakt"
 
 #: data/ui/remmina_preferences.glade:2149
+#, fuzzy
 msgid ""
 "Chose a color scheme file, pre-installed themes are usually installed under /"
 "usr/share/remmina/theme. See https://github.com/mbadolato/iTerm2-Color-"
 "Schemes."
 msgstr ""
+"Velg en fargedraktsfil, forhåndsinstallerte drakter er vanligvis installert "
+"i /usr/share/remmina/theme. Se https://github.com/mbadolato/iTerm2-Color-"
+"Schemes"
 
 #: data/ui/remmina_preferences.glade:2153
+#, fuzzy
 msgid "Terminal Color Scheme file chooser"
-msgstr ""
+msgstr "Fargedraktsvelger for terminalfarge"
 
 #: data/ui/remmina_preferences.glade:2178
 msgid "Terminal"
 msgstr "Terminal"
-
