@@ -36,6 +36,7 @@
 
 #include "common/remmina_plugin.h"
 #include "vnc_plugin.h"
+#include <rfb/rfbclient.h>
 
 #define REMMINA_PLUGIN_VNC_FEATURE_PREF_QUALITY            1
 #define REMMINA_PLUGIN_VNC_FEATURE_PREF_VIEWONLY           2
@@ -48,45 +49,6 @@
 
 #define GET_PLUGIN_DATA(gp) (RemminaPluginVncData *)g_object_get_data(G_OBJECT(gp), "plugin-data")
 
-typedef struct _RemminaPluginVncData {
-	/* Whether the user requests to connect/disconnect */
-	gboolean		connected;
-	/* Whether the vnc process is running */
-	gboolean		running;
-	/* Whether the initialzation calls the authentication process */
-	gboolean		auth_called;
-	/* Whether it is the first attempt for authentication. Only first attempt will try to use cached credentials */
-	gboolean		auth_first;
-
-	GtkWidget *		drawing_area;
-	guchar *		vnc_buffer;
-	cairo_surface_t *	rgb_buffer;
-
-	gint			queuedraw_x, queuedraw_y, queuedraw_w, queuedraw_h;
-	guint			queuedraw_handler;
-
-	gulong			clipboard_handler;
-	GTimeVal		clipboard_timer;
-
-	cairo_surface_t *	queuecursor_surface;
-	gint			queuecursor_x, queuecursor_y;
-	guint			queuecursor_handler;
-
-	gpointer		client;
-	gint			listen_sock;
-
-	gint			button_mask;
-
-	GPtrArray *		pressed_keys;
-
-	pthread_mutex_t		vnc_event_queue_mutex;
-	GQueue *		vnc_event_queue;
-	gint			vnc_event_pipe[2];
-
-	pthread_t		thread;
-	pthread_mutex_t		buffer_mutex;
-} RemminaPluginVncData;
-
 static RemminaPluginService *remmina_plugin_service = NULL;
 
 static int dot_cursor_x_hot = 2;
@@ -98,40 +60,7 @@ static const gchar *dot_cursor_xpm[] =
 #define LOCK_BUFFER(t)      if (t) { CANCEL_DEFER } pthread_mutex_lock(&gpdata->buffer_mutex);
 #define UNLOCK_BUFFER(t)    pthread_mutex_unlock(&gpdata->buffer_mutex); if (t) { CANCEL_ASYNC }
 
-enum {
-	REMMINA_PLUGIN_VNC_EVENT_KEY,
-	REMMINA_PLUGIN_VNC_EVENT_POINTER,
-	REMMINA_PLUGIN_VNC_EVENT_CUTTEXT,
-	REMMINA_PLUGIN_VNC_EVENT_CHAT_OPEN,
-	REMMINA_PLUGIN_VNC_EVENT_CHAT_SEND,
-	REMMINA_PLUGIN_VNC_EVENT_CHAT_CLOSE
-};
 
-typedef struct _RemminaPluginVncEvent {
-	gint event_type;
-	union {
-		struct {
-			guint		keyval;
-			gboolean	pressed;
-		} key;
-		struct {
-			gint	x;
-			gint	y;
-			gint	button_mask;
-		} pointer;
-		struct {
-			gchar *text;
-		} text;
-	} event_data;
-} RemminaPluginVncEvent;
-
-typedef struct _RemminaPluginVncCoordinates {
-	gint x, y;
-} RemminaPluginVncCoordinates;
-
-
-/* --------- Support for execution on main thread of GUI functions -------------- */
-static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean scale);
 
 struct onMainThread_cb_data {
 	enum { FUNC_UPDATE_SCALE } func;
@@ -357,7 +286,6 @@ typedef struct _RemminaKeyVal {
 } RemminaKeyVal;
 
 /***************************** LibVNCClient related codes *********************************/
-#include <rfb/rfbclient.h>
 
 static const uint32_t remmina_plugin_vnc_no_encrypt_auth_types[] =
 { rfbNoAuth, rfbVncAuth, rfbMSLogon, 0 };
@@ -502,15 +430,15 @@ static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 		cl->format.greenMax = 0xff;
 		break;
 	}
-	g_debug ("colordepth          = %d", colordepth);
-	g_debug ("format.depth        = %d", cl->format.depth);
-	g_debug ("format.bitsPerPixel = %d", cl->format.bitsPerPixel);
-	g_debug ("format.blueShift    = %d", cl->format.blueShift);
-	g_debug ("format.redShift     = %d", cl->format.redShift);
-	g_debug ("format.greenShift   = %d", cl->format.greenShift);
-	g_debug ("format.blueMax      = %d", cl->format.blueMax);
-	g_debug ("format.redMax       = %d", cl->format.redMax);
-	g_debug ("format.greenMax     = %d", cl->format.greenMax);
+	g_debug("colordepth          = %d", colordepth);
+	g_debug("format.depth        = %d", cl->format.depth);
+	g_debug("format.bitsPerPixel = %d", cl->format.bitsPerPixel);
+	g_debug("format.blueShift    = %d", cl->format.blueShift);
+	g_debug("format.redShift     = %d", cl->format.redShift);
+	g_debug("format.greenShift   = %d", cl->format.greenShift);
+	g_debug("format.blueMax      = %d", cl->format.blueMax);
+	g_debug("format.redMax       = %d", cl->format.redMax);
+	g_debug("format.greenMax     = %d", cl->format.greenMax);
 }
 
 static rfbBool remmina_plugin_vnc_rfb_allocfb(rfbClient *cl)
@@ -974,7 +902,7 @@ static void remmina_plugin_vnc_rfb_output(const char *format, ...)
 	va_end(args);
 
 	remmina_plugin_service->log_printf("[VNC] %s\n", vnc_error);
-	g_debug ("[VNC] %s", vnc_error);
+	g_debug("[VNC] %s", vnc_error);
 }
 
 static void remmina_plugin_vnc_chat_on_send(RemminaProtocolWidget *gp, const gchar *text)
@@ -1175,22 +1103,21 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		}
 
 		switch (colordepth) {
-			case 8:
-				cl = rfbGetClient(2,3,1);
-				break;
-			case 15:
-			case 16:
-				cl = rfbGetClient(5,3,2);
-				break;
-			case 24:
-				cl = rfbGetClient(6,3,3);
-				break;
-			case 32:
-			default:
-				cl = rfbGetClient(8,3,4);
-				break;
+		case 8:
+			cl = rfbGetClient(2, 3, 1);
+			break;
+		case 15:
+		case 16:
+			cl = rfbGetClient(5, 3, 2);
+			break;
+		case 24:
+			cl = rfbGetClient(6, 3, 3);
+			break;
+		case 32:
+		default:
+			cl = rfbGetClient(8, 3, 4);
+			break;
 		}
-		//cl = rfbGetClient(8,3,4);
 		cl->MallocFrameBuffer = remmina_plugin_vnc_rfb_allocfb;
 		cl->canHandleNewFBSize = TRUE;
 		cl->GetPassword = remmina_plugin_vnc_rfb_password;
@@ -1874,7 +1801,7 @@ static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "server",	NULL,		     FALSE, "_rfb._tcp",     NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "proxy",	N_("Repeater"),	     FALSE, NULL,	     NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	N_("User name"),     FALSE, NULL,	     NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	N_("Username"),	     FALSE, NULL,	     NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	N_("User password"), FALSE, NULL,	     NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "colordepth", N_("Color depth"),   FALSE, colordepth_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "quality",	N_("Quality"),	     FALSE, quality_list,    NULL },
@@ -1894,7 +1821,7 @@ static const RemminaProtocolSetting remmina_plugin_vnc_basic_settings[] =
 static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "listenport", N_("Listen on port"), FALSE, NULL,	      NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	N_("User name"),      FALSE, NULL,	      NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",	N_("Username"),	      FALSE, NULL,	      NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	N_("User password"),  FALSE, NULL,	      NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "colordepth", N_("Color depth"),    FALSE, colordepth_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "quality",	N_("Quality"),	      FALSE, quality_list,    NULL },
@@ -1943,12 +1870,12 @@ static const RemminaProtocolFeature remmina_plugin_vnc_features[] =
 static RemminaProtocolPlugin remmina_plugin_vnc =
 {
 	REMMINA_PLUGIN_TYPE_PROTOCOL,                   // Type
-	PLUGIN_NAME,                                          // Name
-	PLUGIN_DESCRIPTION,                         // Description
+	VNC_PLUGIN_NAME,                                // Name
+	VNC_PLUGIN_DESCRIPTION,                         // Description
 	GETTEXT_PACKAGE,                                // Translation domain
-	PLUGIN_VERSION,                                        // Version number
-	PLUGIN_APPICON,                         // Icon for normal connection
-	PLUGIN_SSH_APPICON,                     // Icon for SSH connection
+	VNC_PLUGIN_VERSION,                             // Version number
+	VNC_PLUGIN_APPICON,                             // Icon for normal connection
+	VNC_PLUGIN_SSH_APPICON,                         // Icon for SSH connection
 	remmina_plugin_vnc_basic_settings,              // Array for basic settings
 	remmina_plugin_vnc_advanced_settings,           // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_TUNNEL,            // SSH settings type
@@ -1965,12 +1892,12 @@ static RemminaProtocolPlugin remmina_plugin_vnc =
 static RemminaProtocolPlugin remmina_plugin_vnci =
 {
 	REMMINA_PLUGIN_TYPE_PROTOCOL,                   // Type
-	"VNCI",                                         // Name
-	N_("VNCI - VNC viewer listen mode"),            // Description
+	VNCI_PLUGIN_NAME,                               // Name
+	VNCI_PLUGIN_DESCRIPTION,                        // Description
 	GETTEXT_PACKAGE,                                // Translation domain
 	VERSION,                                        // Version number
-	PLUGIN_APPICON,                         // Icon for normal connection
-	PLUGIN_SSH_APPICON,                     // Icon for SSH connection
+	VNCI_PLUGIN_APPICON,                            // Icon for normal connection
+	VNCI_PLUGIN_SSH_APPICON,                        // Icon for SSH connection
 	remmina_plugin_vnci_basic_settings,             // Array for basic settings
 	remmina_plugin_vnc_advanced_settings,           // Array for advanced settings
 	REMMINA_PROTOCOL_SSH_SETTING_REVERSE_TUNNEL,    // SSH settings type

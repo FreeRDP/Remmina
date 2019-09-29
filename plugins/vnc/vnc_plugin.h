@@ -37,14 +37,91 @@
 #ifndef __PLUGIN_CONFIG_H
 #define __PLUGIN_CONFIG_H
 
-#define PLUGIN_NAME        "VNC"
-#define PLUGIN_DESCRIPTION N_("Remmina VNC Plugin")
-#define PLUGIN_VERSION     "0.1.0"
-#define PLUGIN_APPICON     "remmina-vnc-symbolic"
-#define PLUGIN_SSH_APPICON     "remmina-vnc-ssh-symbolic"
+#define VNC_PLUGIN_NAME        "VNC"
+#define VNC_PLUGIN_DESCRIPTION N_("Remmina VNC Plugin")
+#define VNC_PLUGIN_VERSION     VERSION
+#define VNC_PLUGIN_APPICON     "remmina-vnc-symbolic"
+#define VNC_PLUGIN_SSH_APPICON     "remmina-vnc-ssh-symbolic"
+#define VNCI_PLUGIN_NAME        "VNCI"
+#define VNCI_PLUGIN_DESCRIPTION N_("Remmina VNC listener Plugin")
+#define VNCI_PLUGIN_VERSION     VERSION
+#define VNCI_PLUGIN_APPICON     "remmina-vnc-symbolic"
+#define VNCI_PLUGIN_SSH_APPICON     "remmina-vnc-ssh-symbolic"
 #endif
+
+typedef struct _RemminaPluginVncData {
+	/* Whether the user requests to connect/disconnect */
+	gboolean		connected;
+	/* Whether the vnc process is running */
+	gboolean		running;
+	/* Whether the initialzation calls the authentication process */
+	gboolean		auth_called;
+	/* Whether it is the first attempt for authentication. Only first attempt will try to use cached credentials */
+	gboolean		auth_first;
+
+	GtkWidget *		drawing_area;
+	guchar *		vnc_buffer;
+	cairo_surface_t *	rgb_buffer;
+
+	gint			queuedraw_x, queuedraw_y, queuedraw_w, queuedraw_h;
+	guint			queuedraw_handler;
+
+	gulong			clipboard_handler;
+	GTimeVal		clipboard_timer;
+
+	cairo_surface_t *	queuecursor_surface;
+	gint			queuecursor_x, queuecursor_y;
+	guint			queuecursor_handler;
+
+	gpointer		client;
+	gint			listen_sock;
+
+	gint			button_mask;
+
+	GPtrArray *		pressed_keys;
+
+	pthread_mutex_t		vnc_event_queue_mutex;
+	GQueue *		vnc_event_queue;
+	gint			vnc_event_pipe[2];
+
+	pthread_t		thread;
+	pthread_mutex_t		buffer_mutex;
+} RemminaPluginVncData;
+
+enum {
+	REMMINA_PLUGIN_VNC_EVENT_KEY,
+	REMMINA_PLUGIN_VNC_EVENT_POINTER,
+	REMMINA_PLUGIN_VNC_EVENT_CUTTEXT,
+	REMMINA_PLUGIN_VNC_EVENT_CHAT_OPEN,
+	REMMINA_PLUGIN_VNC_EVENT_CHAT_SEND,
+	REMMINA_PLUGIN_VNC_EVENT_CHAT_CLOSE
+};
+
+typedef struct _RemminaPluginVncEvent {
+	gint event_type;
+	union {
+		struct {
+			guint		keyval;
+			gboolean	pressed;
+		} key;
+		struct {
+			gint	x;
+			gint	y;
+			gint	button_mask;
+		} pointer;
+		struct {
+			gchar *text;
+		} text;
+	} event_data;
+} RemminaPluginVncEvent;
+
+typedef struct _RemminaPluginVncCoordinates {
+	gint x, y;
+} RemminaPluginVncCoordinates;
 
 G_BEGIN_DECLS
 
+/* --------- Support for execution on main thread of GUI functions -------------- */
+static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean scale);
 
 G_END_DECLS
