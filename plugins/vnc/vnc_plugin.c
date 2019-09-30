@@ -1160,7 +1160,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 			cl->destPort = cl->serverPort;
 			remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "proxy"), 5900,
 								&s, &cl->serverPort);
-			cl->serverHost = strdup(s);
+			cl->serverHost = g_strdup(s);
 			g_free(s);
 		}
 
