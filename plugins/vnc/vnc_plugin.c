@@ -322,10 +322,13 @@ static void remmina_plugin_vnc_process_vnc_event(RemminaProtocolWidget *gp)
 				break;
 			case REMMINA_PLUGIN_VNC_EVENT_POINTER:
 				SendPointerEvent(cl, event->event_data.pointer.x, event->event_data.pointer.y,
-						 event->event_data.pointer.button_mask);
+						event->event_data.pointer.button_mask);
 				break;
 			case REMMINA_PLUGIN_VNC_EVENT_CUTTEXT:
-				SendClientCutText(cl, event->event_data.text.text, strlen(event->event_data.text.text));
+				if (event->event_data.text.text) {
+					rfbClientLog("sending clipboard text '%s'\n", event->event_data.text.text);
+					SendClientCutText(cl, event->event_data.text.text, strlen(event->event_data.text.text));
+				}
 				break;
 			case REMMINA_PLUGIN_VNC_EVENT_CHAT_OPEN:
 				TextChatOpen(cl);
@@ -336,6 +339,9 @@ static void remmina_plugin_vnc_process_vnc_event(RemminaProtocolWidget *gp)
 			case REMMINA_PLUGIN_VNC_EVENT_CHAT_CLOSE:
 				TextChatClose(cl);
 				TextChatFinish(cl);
+				break;
+			default:
+				rfbClientLog("Ignoring VNC event: 0x%x\n", event->event_type);
 				break;
 			}
 		}
@@ -430,15 +436,15 @@ static void remmina_plugin_vnc_update_colordepth(rfbClient *cl, gint colordepth)
 		cl->format.greenMax = 0xff;
 		break;
 	}
-	g_debug("colordepth          = %d", colordepth);
-	g_debug("format.depth        = %d", cl->format.depth);
-	g_debug("format.bitsPerPixel = %d", cl->format.bitsPerPixel);
-	g_debug("format.blueShift    = %d", cl->format.blueShift);
-	g_debug("format.redShift     = %d", cl->format.redShift);
-	g_debug("format.greenShift   = %d", cl->format.greenShift);
-	g_debug("format.blueMax      = %d", cl->format.blueMax);
-	g_debug("format.redMax       = %d", cl->format.redMax);
-	g_debug("format.greenMax     = %d", cl->format.greenMax);
+	rfbClientLog ("colordepth          = %d\n", colordepth);
+	rfbClientLog ("format.depth        = %d\n", cl->format.depth);
+	rfbClientLog ("format.bitsPerPixel = %d\n", cl->format.bitsPerPixel);
+	rfbClientLog ("format.blueShift    = %d\n", cl->format.blueShift);
+	rfbClientLog ("format.redShift     = %d\n", cl->format.redShift);
+	rfbClientLog ("format.greenShift   = %d\n", cl->format.greenShift);
+	rfbClientLog ("format.blueMax      = %d\n", cl->format.blueMax);
+	rfbClientLog ("format.redMax       = %d\n", cl->format.redMax);
+	rfbClientLog ("format.greenMax     = %d\n", cl->format.greenMax);
 }
 
 static rfbBool remmina_plugin_vnc_rfb_allocfb(rfbClient *cl)
@@ -876,6 +882,8 @@ static void remmina_plugin_vnc_rfb_output(const char *format, ...)
 	va_start(args, format);
 	gchar *f, *p, *ff;
 
+	if(!rfbEnableClientLogging)
+		return;
 	/* eliminate the last \n */
 	f = g_strdup(format);
 	if (f[strlen(f) - 1] == '\n') f[strlen(f) - 1] = '\0';
@@ -1087,8 +1095,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 	gpdata->running = TRUE;
 
-	rfbClientLog = remmina_plugin_vnc_rfb_output;
-	rfbClientErr = remmina_plugin_vnc_rfb_output;
+	rfbClientLog = rfbClientErr = remmina_plugin_vnc_rfb_output;
 
 	gint colordepth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 32);
 
