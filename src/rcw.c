@@ -367,10 +367,14 @@ static RemminaConnectionObject *rcw_get_visible_cnnobj(RemminaConnectionWindow *
 {
 	gint np;
 
-	np = gtk_notebook_get_current_page(GTK_NOTEBOOK(cnnwin->priv->notebook));
-	if (np < 0)
-		return NULL;
-	return rcw_get_cnnobj_at_page(cnnwin, np);
+	if (cnnwin != NULL && cnnwin->priv!=NULL && cnnwin->priv->notebook != NULL) {
+        np = gtk_notebook_get_current_page(GTK_NOTEBOOK(cnnwin->priv->notebook));
+        if (np < 0)
+            return NULL;
+        return rcw_get_cnnobj_at_page(cnnwin, np);
+    }
+	else
+		return  NULL;
 }
 
 static RemminaScaleMode get_current_allowed_scale_mode(RemminaConnectionObject *cnnobj, gboolean *dynres_avail, gboolean *scale_avail)
@@ -1383,7 +1387,7 @@ static void rcw_toolbar_scaler_option(GtkWidget *widget, RemminaConnectionWindow
 	group = gtk_radio_menu_item_get_group(GTK_RADIO_MENU_ITEM(menuitem));
 	if (!scaler_expand)
 		gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menuitem), TRUE);
-	g_signal_connect(G_OBJECT(menuitem), "toggled", G_CALLBACK(rcw_scaler_keep_aspect), cnnobj);
+	g_signal_connect(G_OBJECT(menuitem), "toggled", G_CALLBACK(rcw_scaler_keep_aspect), cnnwin);
 
 	menuitem = gtk_radio_menu_item_new_with_label(group, _("Fill client window when scaled"));
 	gtk_widget_show(menuitem);
