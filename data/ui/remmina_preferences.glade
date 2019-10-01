@@ -289,10 +289,10 @@ Author: Antenore Gatta
                   <object class="GtkFileChooserButton" id="filechooserbutton_options_screenshots_path">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">Choose the directory where you want to save Remmina screenshots.</property>
+                    <property name="tooltip_text" translatable="yes">Choose the a folder to save screenshots from Remmina in.</property>
                     <property name="margin_right">18</property>
                     <property name="action">select-folder</property>
-                    <property name="title" translatable="yes">Select a Directory</property>
+                    <property name="title" translatable="yes">Select a Folder</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -323,7 +323,7 @@ Author: Antenore Gatta
                     <property name="halign">start</property>
                     <property name="margin_left">18</property>
                     <property name="hexpand">False</property>
-                    <property name="label" translatable="yes">Screenshots file name</property>
+                    <property name="label" translatable="yes">Screenshots filename</property>
                     <property name="justify">right</property>
                   </object>
                   <packing>
@@ -415,7 +415,7 @@ Author: Antenore Gatta
                   <object class="GtkLabel" id="label_permit_send_stats">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">Send periodic usage statistics to remmina developers</property>
+                    <property name="tooltip_text" translatable="yes">Send periodic usage statistics to Remmina developers</property>
                     <property name="halign">start</property>
                     <property name="margin_left">18</property>
                     <property name="hexpand">False</property>
@@ -459,12 +459,12 @@ Author: Antenore Gatta
                   <object class="GtkLabel" id="label_options_deny_screenshot_clipboard">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">If you check this button, when generating a screenshot it will only be saved on a file and not in the clipboard.</property>
+                    <property name="tooltip_text" translatable="yes">Only save generated screenshots, don't copy them to clipboard.</property>
                     <property name="halign">start</property>
                     <property name="margin_left">18</property>
                     <property name="margin_bottom">18</property>
                     <property name="hexpand">False</property>
-                    <property name="label" translatable="yes">Deny screenshot to clipboard</property>
+                    <property name="label" translatable="yes">Prevent screenshots from entering clipboard</property>
                     <property name="justify">right</property>
                   </object>
                   <packing>
@@ -480,7 +480,7 @@ Author: Antenore Gatta
                     <property name="halign">start</property>
                     <property name="margin_left">18</property>
                     <property name="hexpand">False</property>
-                    <property name="label" translatable="yes">Profiles filename template</property>
+                    <property name="label" translatable="yes">Profile filename template</property>
                     <property name="justify">right</property>
                   </object>
                   <packing>
@@ -492,7 +492,7 @@ Author: Antenore Gatta
                   <object class="GtkEntry" id="entry_options_file_name">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes">%G Group Name (slash will be converted to - automatically)
+                    <property name="tooltip_text" translatable="yes">%G Group name (slash will be converted to - automatically)
 %P Protocol name
 %N Connection Name
 %h Hostname/IP
@@ -610,7 +610,7 @@ Author: Antenore Gatta
                       <item id="0" translatable="yes">Tab by groups</item>
                       <item id="1" translatable="yes">Tab by protocols</item>
                       <item id="2" translatable="yes">Tab all connections</item>
-                      <item id="3" translatable="yes">Do not use tabs</item>
+                      <item id="3" translatable="yes">No tabs</item>
                     </items>
                   </object>
                   <packing>
@@ -644,7 +644,7 @@ Author: Antenore Gatta
                     <items>
                       <item id="0" translatable="yes">Peeking</item>
                       <item id="1" translatable="yes">Hidden</item>
-                      <item id="2" translatable="yes">Disabled</item>
+                      <item id="2" translatable="yes">Off</item>
                     </items>
                   </object>
                   <packing>
@@ -738,7 +738,7 @@ Author: Antenore Gatta
                 </child>
                 <child>
                   <object class="GtkCheckButton" id="checkbutton_applet_disable_tray">
-                    <property name="label" translatable="yes">Disable tray icon</property>
+                    <property name="label" translatable="yes">No tray icon</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -1383,7 +1383,7 @@ Author: Antenore Gatta
                   <object class="GtkSwitch" id="switch_security_use_master_password">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes">When activated, some widgets will require you to authenticate with a secret key</property>
+                    <property name="tooltip_text" translatable="yes">Use secret key to authenticate with some widgets</property>
                     <property name="halign">start</property>
                     <property name="margin_top">9</property>
                     <property name="margin_bottom">9</property>
@@ -1399,7 +1399,7 @@ Author: Antenore Gatta
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="tooltip_text" translatable="yes">When activated, some widgets will require you to authenticate with a secret key</property>
+                    <property name="tooltip_text" translatable="yes">Use secret key to authenticate with some widgets</property>
                     <property name="halign">start</property>
                     <property name="margin_left">36</property>
                     <property name="margin_top">9</property>
@@ -1670,7 +1670,7 @@ Author: Antenore Gatta
                         <property name="halign">start</property>
                         <property name="margin_left">18</property>
                         <property name="margin_right">6</property>
-                        <property name="label" translatable="yes">Clipboard copy shortcut</property>
+                        <property name="label" translatable="yes">Copy to clipboard shortcut</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -1684,7 +1684,7 @@ Author: Antenore Gatta
                         <property name="halign">start</property>
                         <property name="margin_left">18</property>
                         <property name="margin_right">6</property>
-                        <property name="label" translatable="yes">Clipboard paste shortcut</property>
+                        <property name="label" translatable="yes">Paste from clipboard shortcut</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -1910,7 +1910,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">6</property>
-                        <property name="title" translatable="yes">Pick a color for black</property>
+                        <property name="title" translatable="yes">Pick a black color</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -1924,7 +1924,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">6</property>
-                        <property name="title" translatable="yes">Pick a color for bright black</property>
+                        <property name="title" translatable="yes">Pick a light black color</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -1938,7 +1938,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">6</property>
-                        <property name="title" translatable="yes">Pick a color for red</property>
+                        <property name="title" translatable="yes">Pick a red color</property>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -1952,7 +1952,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">6</property>
-                        <property name="title" translatable="yes">Pick a color for green</property>
+                        <property name="title" translatable="yes">Pick a green color</property>
                       </object>
                       <packing>
                         <property name="left_attach">3</property>
@@ -1966,7 +1966,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">6</property>
-                        <property name="title" translatable="yes">Pick a color for yellow</property>
+                        <property name="title" translatable="yes">Pick a yellow color</property>
                       </object>
                       <packing>
                         <property name="left_attach">4</property>
@@ -1980,7 +1980,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">6</property>
-                        <property name="title" translatable="yes">Pick a color for blue</property>
+                        <property name="title" translatable="yes">Pick a blue color</property>
                       </object>
                       <packing>
                         <property name="left_attach">5</property>
@@ -1994,7 +1994,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">6</property>
-                        <property name="title" translatable="yes">Pick a color for magenta</property>
+                        <property name="title" translatable="yes">Pick a magenta color</property>
                       </object>
                       <packing>
                         <property name="left_attach">6</property>
@@ -2008,7 +2008,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">6</property>
-                        <property name="title" translatable="yes">Pick a color for Cyan</property>
+                        <property name="title" translatable="yes">Pick a cyan color</property>
                       </object>
                       <packing>
                         <property name="left_attach">7</property>
@@ -2022,7 +2022,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">18</property>
-                        <property name="title" translatable="yes">Pick a color for white</property>
+                        <property name="title" translatable="yes">Pick a white color</property>
                       </object>
                       <packing>
                         <property name="left_attach">8</property>
@@ -2036,7 +2036,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">6</property>
-                        <property name="title" translatable="yes">Pick a color for bright red</property>
+                        <property name="title" translatable="yes">Pick a light red color</property>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -2050,7 +2050,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">6</property>
-                        <property name="title" translatable="yes">Pick a color for bright green</property>
+                        <property name="title" translatable="yes">Pick a bright green color</property>
                       </object>
                       <packing>
                         <property name="left_attach">3</property>
@@ -2064,7 +2064,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">6</property>
-                        <property name="title" translatable="yes">Pick a color for bright yellow</property>
+                        <property name="title" translatable="yes">Pick a bright yellow color</property>
                       </object>
                       <packing>
                         <property name="left_attach">4</property>
@@ -2078,7 +2078,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">6</property>
-                        <property name="title" translatable="yes">Pick a color for bright blue</property>
+                        <property name="title" translatable="yes">Pick a bright blue color</property>
                       </object>
                       <packing>
                         <property name="left_attach">5</property>
@@ -2092,7 +2092,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">6</property>
-                        <property name="title" translatable="yes">Pick a color for bright magenta</property>
+                        <property name="title" translatable="yes">Pick a light magenta color</property>
                       </object>
                       <packing>
                         <property name="left_attach">6</property>
@@ -2106,7 +2106,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">6</property>
-                        <property name="title" translatable="yes">Pick a color for bright Cyan</property>
+                        <property name="title" translatable="yes">Pick a light cyan color</property>
                       </object>
                       <packing>
                         <property name="left_attach">7</property>
@@ -2120,7 +2120,7 @@ Author: Antenore Gatta
                         <property name="receives_default">True</property>
                         <property name="margin_left">6</property>
                         <property name="margin_right">18</property>
-                        <property name="title" translatable="yes">Pick a color for bright white</property>
+                        <property name="title" translatable="yes">Pick a light white color</property>
                       </object>
                       <packing>
                         <property name="left_attach">8</property>
@@ -2150,7 +2150,7 @@ Author: Antenore Gatta
                         <property name="margin_left">6</property>
                         <property name="margin_right">18</property>
                         <property name="margin_bottom">18</property>
-                        <property name="title" translatable="yes">Terminal Color Scheme file chooser</property>
+                        <property name="title" translatable="yes">Terminal file picker color Scheme</property>
                         <signal name="file-set" handler="remmina_pref_on_color_scheme_selected" swapped="no"/>
                       </object>
                       <packing>
