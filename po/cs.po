@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-10-01 20:16+0000\n"
+"POT-Creation-Date: 2019-10-01 20:33+0000\n"
 "PO-Revision-Date: 2019-09-30 22:29+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
@@ -1633,7 +1633,7 @@ msgstr "Dobrá"
 msgid "Best (slowest)"
 msgstr "Nejlepší (nejpomalejší)"
 
-#: plugins/rdp/rdp_plugin.c:1765
+#: plugins/rdp/rdp_plugin.c:1765 data/ui/remmina_preferences.glade:647
 msgid "Off"
 msgstr "Vypnout"
 
@@ -2430,19 +2430,21 @@ msgid "Screenshots folder"
 msgstr "Složka snímků obrazovky"
 
 #: data/ui/remmina_preferences.glade:292
-msgid "Choose the directory where you want to save Remmina screenshots."
-msgstr "Zvolte adresář, kam si přejete, aby Remmina ukládala snímky obrazovky."
+msgid "Choose the a folder to save screenshots from Remmina in."
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:295
-msgid "Select a Directory"
-msgstr "Vyberte adresář"
+#, fuzzy
+msgid "Select a Folder"
+msgstr "Vybrat vše"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Screen resolutions"
 msgstr "Rozlišení obrazovky"
 
 #: data/ui/remmina_preferences.glade:326
-msgid "Screenshots file name"
+#, fuzzy
+msgid "Screenshots filename"
 msgstr "Název souboru snímků obrazovky"
 
 #: data/ui/remmina_preferences.glade:338
@@ -2477,7 +2479,8 @@ msgid "Remember last view mode"
 msgstr "Zapamatovat si minule použitý režim zobrazení"
 
 #: data/ui/remmina_preferences.glade:418
-msgid "Send periodic usage statistics to remmina developers"
+#, fuzzy
+msgid "Send periodic usage statistics to Remmina developers"
 msgstr "Posílat pravidelné statistiky využití vývojářům"
 
 #: data/ui/remmina_preferences.glade:422
@@ -2485,13 +2488,12 @@ msgid "Send statistics to remmina.org"
 msgstr "Posílat statistiky na remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
-msgid ""
-"If you check this button, when generating a screenshot it will only be saved "
-"on a file and not in the clipboard."
+msgid "Only save generated screenshots, don't copy them to clipboard."
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:467
-msgid "Deny screenshot to clipboard"
+#, fuzzy
+msgid "Prevent screenshots from entering clipboard"
 msgstr "Odepřít snímek obrazovky do schránky"
 
 #: data/ui/remmina_preferences.glade:479
@@ -2501,12 +2503,13 @@ msgid ""
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:483
-msgid "Profiles filename template"
+#, fuzzy
+msgid "Profile filename template"
 msgstr "Šablona názvu souborů se šablonou"
 
 #: data/ui/remmina_preferences.glade:495
 msgid ""
-"%G Group Name (slash will be converted to - automatically)\n"
+"%G Group name (slash will be converted to - automatically)\n"
 "%P Protocol name\n"
 "%N Connection Name\n"
 "%h Hostname/IP\n"
@@ -2567,8 +2570,8 @@ msgid "Tab all connections"
 msgstr "Všechna spojení do panelů"
 
 #: data/ui/remmina_preferences.glade:613
-msgid "Do not use tabs"
-msgstr "Nepoužívat panely"
+msgid "No tabs"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:624
 msgid "Fullscreen on the same monitor as the connection window"
@@ -2581,10 +2584,6 @@ msgstr ""
 #: data/ui/remmina_preferences.glade:646
 msgid "Hidden"
 msgstr "Skryté"
-
-#: data/ui/remmina_preferences.glade:647
-msgid "Disabled"
-msgstr "Vypnuté"
 
 #: data/ui/remmina_preferences.glade:661
 msgid "Fullscreen toolbar visibility"
@@ -2607,7 +2606,8 @@ msgid "Hide total count in group menu"
 msgstr "Skrýt celkový počet v nabídce skupiny"
 
 #: data/ui/remmina_preferences.glade:741
-msgid "Disable tray icon"
+#, fuzzy
+msgid "No tray icon"
 msgstr "Zakázat ikonu v oznamovací oblasti"
 
 #: data/ui/remmina_preferences.glade:758
@@ -2727,12 +2727,8 @@ msgstr "Hlavní heslo"
 
 #: data/ui/remmina_preferences.glade:1386
 #: data/ui/remmina_preferences.glade:1402
-msgid ""
-"When activated, some widgets will require you to authenticate with a secret "
-"key"
+msgid "Use secret key to authenticate with some widgets"
 msgstr ""
-"Když je aktivováno, některé ovládací prvky budou vyžadovat, abyste se "
-"ověřili pomocí tajného klíče"
 
 #: data/ui/remmina_preferences.glade:1408
 msgid "Use master password"
@@ -2771,12 +2767,14 @@ msgid "Allow bold text"
 msgstr "Povolit tučný text"
 
 #: data/ui/remmina_preferences.glade:1673
-msgid "Clipboard copy shortcut"
+#, fuzzy
+msgid "Copy to clipboard shortcut"
 msgstr "Zkratka zkopírování do schránky"
 
 #: data/ui/remmina_preferences.glade:1687
-msgid "Clipboard paste shortcut"
-msgstr "Zkratka vložení ze chránky"
+#, fuzzy
+msgid "Paste from clipboard shortcut"
+msgstr "Zkratka zkopírování do schránky"
 
 #: data/ui/remmina_preferences.glade:1702
 #, fuzzy
@@ -2816,67 +2814,83 @@ msgid "Bright colors"
 msgstr "Světlé barvy"
 
 #: data/ui/remmina_preferences.glade:1913
-msgid "Pick a color for black"
-msgstr "Zvolte barvu pro černou"
+#, fuzzy
+msgid "Pick a black color"
+msgstr "Zvolte barvu pro červenou"
 
 #: data/ui/remmina_preferences.glade:1927
-msgid "Pick a color for bright black"
+#, fuzzy
+msgid "Pick a light black color"
 msgstr "Zvolte barvu pro jasnou černou"
 
 #: data/ui/remmina_preferences.glade:1941
-msgid "Pick a color for red"
+#, fuzzy
+msgid "Pick a red color"
 msgstr "Zvolte barvu pro červenou"
 
 #: data/ui/remmina_preferences.glade:1955
-msgid "Pick a color for green"
-msgstr "Zvolte barvu pro zelenou"
+#, fuzzy
+msgid "Pick a green color"
+msgstr "Barva pozadí"
 
 #: data/ui/remmina_preferences.glade:1969
-msgid "Pick a color for yellow"
+#, fuzzy
+msgid "Pick a yellow color"
 msgstr "Zvolte barvu pro žlutou"
 
 #: data/ui/remmina_preferences.glade:1983
-msgid "Pick a color for blue"
-msgstr "Zvolte barvu pro modrou"
+#, fuzzy
+msgid "Pick a blue color"
+msgstr "Zvolte barvu pro červenou"
 
 #: data/ui/remmina_preferences.glade:1997
-msgid "Pick a color for magenta"
+#, fuzzy
+msgid "Pick a magenta color"
 msgstr "Zvolte barvu pro fialovou"
 
 #: data/ui/remmina_preferences.glade:2011
-msgid "Pick a color for Cyan"
-msgstr ""
+#, fuzzy
+msgid "Pick a cyan color"
+msgstr "Zvolte barvu pro červenou"
 
 #: data/ui/remmina_preferences.glade:2025
-msgid "Pick a color for white"
-msgstr "Zvolte barvu pro bílou"
+#, fuzzy
+msgid "Pick a white color"
+msgstr "Zvolte barvu pro červenou"
 
 #: data/ui/remmina_preferences.glade:2039
-msgid "Pick a color for bright red"
+#, fuzzy
+msgid "Pick a light red color"
 msgstr "Zvolte barvu pro světle červenou"
 
 #: data/ui/remmina_preferences.glade:2053
-msgid "Pick a color for bright green"
+#, fuzzy
+msgid "Pick a bright green color"
 msgstr "Zvolte barvu pro světle zelenou"
 
 #: data/ui/remmina_preferences.glade:2067
-msgid "Pick a color for bright yellow"
+#, fuzzy
+msgid "Pick a bright yellow color"
 msgstr "Zvolte barvu pro světle žlutou"
 
 #: data/ui/remmina_preferences.glade:2081
-msgid "Pick a color for bright blue"
+#, fuzzy
+msgid "Pick a bright blue color"
 msgstr "Zvolte barvu pro světle modrou"
 
 #: data/ui/remmina_preferences.glade:2095
-msgid "Pick a color for bright magenta"
-msgstr ""
+#, fuzzy
+msgid "Pick a light magenta color"
+msgstr "Zvolte barvu pro fialovou"
 
 #: data/ui/remmina_preferences.glade:2109
-msgid "Pick a color for bright Cyan"
-msgstr ""
+#, fuzzy
+msgid "Pick a light cyan color"
+msgstr "Zvolte barvu pro světle žlutou"
 
 #: data/ui/remmina_preferences.glade:2123
-msgid "Pick a color for bright white"
+#, fuzzy
+msgid "Pick a light white color"
 msgstr "Zvolte barvu pro světle bílou"
 
 #: data/ui/remmina_preferences.glade:2138
@@ -2891,9 +2905,11 @@ msgid ""
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:2153
-msgid "Terminal Color Scheme file chooser"
-msgstr "Výběr souboru barevného schématu terminálu"
+#, fuzzy
+msgid "Terminal file picker color Scheme"
+msgstr "Barevné schéma terminálu"
 
 #: data/ui/remmina_preferences.glade:2178
 msgid "Terminal"
 msgstr "Terminál"
+

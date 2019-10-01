@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-10-01 20:16+0000\n"
+"POT-Creation-Date: 2019-10-01 20:33+0000\n"
 "PO-Revision-Date: 2019-09-29 07:31+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1644,7 +1644,7 @@ msgstr "God"
 msgid "Best (slowest)"
 msgstr "Bedste (langsomst)"
 
-#: plugins/rdp/rdp_plugin.c:1765
+#: plugins/rdp/rdp_plugin.c:1765 data/ui/remmina_preferences.glade:647
 msgid "Off"
 msgstr "Fra"
 
@@ -2446,19 +2446,21 @@ msgid "Screenshots folder"
 msgstr "Mappe til skærmbilleder"
 
 #: data/ui/remmina_preferences.glade:292
-msgid "Choose the directory where you want to save Remmina screenshots."
-msgstr "Vælg mappen hvor Remmina skal gemme skærmbilleder."
+msgid "Choose the a folder to save screenshots from Remmina in."
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:295
-msgid "Select a Directory"
-msgstr "Vælg en mappe"
+#, fuzzy
+msgid "Select a Folder"
+msgstr "Vælg alt"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Screen resolutions"
 msgstr "Skærmopløsninger"
 
 #: data/ui/remmina_preferences.glade:326
-msgid "Screenshots file name"
+#, fuzzy
+msgid "Screenshots filename"
 msgstr "Filnavn for skærmbilleder"
 
 #: data/ui/remmina_preferences.glade:338
@@ -2492,7 +2494,8 @@ msgid "Remember last view mode"
 msgstr "Husk sidste visningstilstand"
 
 #: data/ui/remmina_preferences.glade:418
-msgid "Send periodic usage statistics to remmina developers"
+#, fuzzy
+msgid "Send periodic usage statistics to Remmina developers"
 msgstr "Periodisk afsendelse af anvendelsesstatistik til Remminas udviklere"
 
 #: data/ui/remmina_preferences.glade:422
@@ -2500,15 +2503,12 @@ msgid "Send statistics to remmina.org"
 msgstr "Send statistik til remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
-msgid ""
-"If you check this button, when generating a screenshot it will only be saved "
-"on a file and not in the clipboard."
+msgid "Only save generated screenshots, don't copy them to clipboard."
 msgstr ""
-"Hvis du tilvælger knappen, så gemmes det genererede skærmbillede kun i en "
-"fil, og ikke i udklipsholderen."
 
 #: data/ui/remmina_preferences.glade:467
-msgid "Deny screenshot to clipboard"
+#, fuzzy
+msgid "Prevent screenshots from entering clipboard"
 msgstr "Nægt skærmbillede til udklipsholder"
 
 #: data/ui/remmina_preferences.glade:479
@@ -2520,12 +2520,14 @@ msgstr ""
 "formateringsstreng."
 
 #: data/ui/remmina_preferences.glade:483
-msgid "Profiles filename template"
+#, fuzzy
+msgid "Profile filename template"
 msgstr "Skabelon til profilers filnavn"
 
 #: data/ui/remmina_preferences.glade:495
+#, fuzzy
 msgid ""
-"%G Group Name (slash will be converted to - automatically)\n"
+"%G Group name (slash will be converted to - automatically)\n"
 "%P Protocol name\n"
 "%N Connection Name\n"
 "%h Hostname/IP\n"
@@ -2592,8 +2594,8 @@ msgid "Tab all connections"
 msgstr "Faneblad for alle forbindelser"
 
 #: data/ui/remmina_preferences.glade:613
-msgid "Do not use tabs"
-msgstr "Brug ikke faneblade"
+msgid "No tabs"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:624
 msgid "Fullscreen on the same monitor as the connection window"
@@ -2606,10 +2608,6 @@ msgstr "Smugkig"
 #: data/ui/remmina_preferences.glade:646
 msgid "Hidden"
 msgstr "Skjult"
-
-#: data/ui/remmina_preferences.glade:647
-msgid "Disabled"
-msgstr "Deaktiveret"
 
 #: data/ui/remmina_preferences.glade:661
 msgid "Fullscreen toolbar visibility"
@@ -2632,7 +2630,8 @@ msgid "Hide total count in group menu"
 msgstr "Skjul total-tælling i gruppemenu"
 
 #: data/ui/remmina_preferences.glade:741
-msgid "Disable tray icon"
+#, fuzzy
+msgid "No tray icon"
 msgstr "Deaktivér bakkeikon"
 
 #: data/ui/remmina_preferences.glade:758
@@ -2758,12 +2757,8 @@ msgstr "Hovedadgangskode"
 
 #: data/ui/remmina_preferences.glade:1386
 #: data/ui/remmina_preferences.glade:1402
-msgid ""
-"When activated, some widgets will require you to authenticate with a secret "
-"key"
+msgid "Use secret key to authenticate with some widgets"
 msgstr ""
-"Når den er aktiveret kræver nogle widgets at du autentificerer med en "
-"hemmelig nøgle"
 
 #: data/ui/remmina_preferences.glade:1408
 msgid "Use master password"
@@ -2802,12 +2797,14 @@ msgid "Allow bold text"
 msgstr "Tillad fed tekst"
 
 #: data/ui/remmina_preferences.glade:1673
-msgid "Clipboard copy shortcut"
+#, fuzzy
+msgid "Copy to clipboard shortcut"
 msgstr "Udklipsholderens kopiér-genvej"
 
 #: data/ui/remmina_preferences.glade:1687
-msgid "Clipboard paste shortcut"
-msgstr "Udklipsholderens indsæt-genvej"
+#, fuzzy
+msgid "Paste from clipboard shortcut"
+msgstr "Udklipsholderens kopiér-genvej"
 
 #: data/ui/remmina_preferences.glade:1702
 #, fuzzy
@@ -2847,67 +2844,83 @@ msgid "Bright colors"
 msgstr "Lyse farver"
 
 #: data/ui/remmina_preferences.glade:1913
-msgid "Pick a color for black"
-msgstr "Vælg en farve til sort"
+#, fuzzy
+msgid "Pick a black color"
+msgstr "Vælg en farve til rød"
 
 #: data/ui/remmina_preferences.glade:1927
-msgid "Pick a color for bright black"
+#, fuzzy
+msgid "Pick a light black color"
 msgstr "Vælg en farve til lys sort"
 
 #: data/ui/remmina_preferences.glade:1941
-msgid "Pick a color for red"
+#, fuzzy
+msgid "Pick a red color"
 msgstr "Vælg en farve til rød"
 
 #: data/ui/remmina_preferences.glade:1955
-msgid "Pick a color for green"
-msgstr "Vælg en farve til grøn"
+#, fuzzy
+msgid "Pick a green color"
+msgstr "Baggrundsfarve"
 
 #: data/ui/remmina_preferences.glade:1969
-msgid "Pick a color for yellow"
+#, fuzzy
+msgid "Pick a yellow color"
 msgstr "Vælg en farve til gul"
 
 #: data/ui/remmina_preferences.glade:1983
-msgid "Pick a color for blue"
-msgstr "Vælg en farve til blå"
+#, fuzzy
+msgid "Pick a blue color"
+msgstr "Vælg en farve til rød"
 
 #: data/ui/remmina_preferences.glade:1997
-msgid "Pick a color for magenta"
+#, fuzzy
+msgid "Pick a magenta color"
 msgstr "Vælg en farve til magenta"
 
 #: data/ui/remmina_preferences.glade:2011
-msgid "Pick a color for Cyan"
-msgstr "Vælg en farve til cyan"
+#, fuzzy
+msgid "Pick a cyan color"
+msgstr "Vælg en farve til rød"
 
 #: data/ui/remmina_preferences.glade:2025
-msgid "Pick a color for white"
-msgstr "Vælg en farve til hvid"
+#, fuzzy
+msgid "Pick a white color"
+msgstr "Vælg en farve til rød"
 
 #: data/ui/remmina_preferences.glade:2039
-msgid "Pick a color for bright red"
+#, fuzzy
+msgid "Pick a light red color"
 msgstr "Vælg en farve til lys rød"
 
 #: data/ui/remmina_preferences.glade:2053
-msgid "Pick a color for bright green"
+#, fuzzy
+msgid "Pick a bright green color"
 msgstr "Vælg en farve til lys grøn"
 
 #: data/ui/remmina_preferences.glade:2067
-msgid "Pick a color for bright yellow"
+#, fuzzy
+msgid "Pick a bright yellow color"
 msgstr "Vælg en farve til lys gul"
 
 #: data/ui/remmina_preferences.glade:2081
-msgid "Pick a color for bright blue"
+#, fuzzy
+msgid "Pick a bright blue color"
 msgstr "Vælg en farve til lys blå"
 
 #: data/ui/remmina_preferences.glade:2095
-msgid "Pick a color for bright magenta"
+#, fuzzy
+msgid "Pick a light magenta color"
 msgstr "Vælg en farve til lys magenta"
 
 #: data/ui/remmina_preferences.glade:2109
-msgid "Pick a color for bright Cyan"
+#, fuzzy
+msgid "Pick a light cyan color"
 msgstr "Vælg en farve til lys cyan"
 
 #: data/ui/remmina_preferences.glade:2123
-msgid "Pick a color for bright white"
+#, fuzzy
+msgid "Pick a light white color"
 msgstr "Vælg en farve til lys hvid"
 
 #: data/ui/remmina_preferences.glade:2138
@@ -2925,9 +2938,11 @@ msgstr ""
 "Schemes."
 
 #: data/ui/remmina_preferences.glade:2153
-msgid "Terminal Color Scheme file chooser"
-msgstr "Filvælger til terminalens farveskema"
+#, fuzzy
+msgid "Terminal file picker color Scheme"
+msgstr "Terminalens farvetema"
 
 #: data/ui/remmina_preferences.glade:2178
 msgid "Terminal"
 msgstr "Terminal"
+

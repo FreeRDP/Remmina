@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-10-01 20:16+0000\n"
+"POT-Creation-Date: 2019-10-01 20:33+0000\n"
 "PO-Revision-Date: 2019-09-28 10:30+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -1628,7 +1628,7 @@ msgstr "佳"
 msgid "Best (slowest)"
 msgstr "最佳（最慢）"
 
-#: plugins/rdp/rdp_plugin.c:1765
+#: plugins/rdp/rdp_plugin.c:1765 data/ui/remmina_preferences.glade:647
 msgid "Off"
 msgstr "關"
 
@@ -2427,19 +2427,21 @@ msgid "Screenshots folder"
 msgstr "螢幕截圖資料夾"
 
 #: data/ui/remmina_preferences.glade:292
-msgid "Choose the directory where you want to save Remmina screenshots."
-msgstr "選擇您想要儲存 Remmina 螢幕截圖的目錄。"
+msgid "Choose the a folder to save screenshots from Remmina in."
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:295
-msgid "Select a Directory"
-msgstr "選擇一個資料夾"
+#, fuzzy
+msgid "Select a Folder"
+msgstr "全選"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Screen resolutions"
 msgstr "螢幕解析度"
 
 #: data/ui/remmina_preferences.glade:326
-msgid "Screenshots file name"
+#, fuzzy
+msgid "Screenshots filename"
 msgstr "螢幕截圖檔案名稱"
 
 #: data/ui/remmina_preferences.glade:338
@@ -2472,7 +2474,8 @@ msgid "Remember last view mode"
 msgstr "記住最後一次的觀看模式"
 
 #: data/ui/remmina_preferences.glade:418
-msgid "Send periodic usage statistics to remmina developers"
+#, fuzzy
+msgid "Send periodic usage statistics to Remmina developers"
 msgstr "定期傳送使用統計資料給 remmina 開發人員"
 
 #: data/ui/remmina_preferences.glade:422
@@ -2480,14 +2483,12 @@ msgid "Send statistics to remmina.org"
 msgstr "傳送統計資料至 remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
-msgid ""
-"If you check this button, when generating a screenshot it will only be saved "
-"on a file and not in the clipboard."
+msgid "Only save generated screenshots, don't copy them to clipboard."
 msgstr ""
-"若您勾選此選項，當產生螢幕截圖時它只會儲存在檔案中，而不會存在剪貼簿裡。"
 
 #: data/ui/remmina_preferences.glade:467
-msgid "Deny screenshot to clipboard"
+#, fuzzy
+msgid "Prevent screenshots from entering clipboard"
 msgstr "拒絕將螢幕截圖存入剪貼簿"
 
 #: data/ui/remmina_preferences.glade:479
@@ -2497,12 +2498,13 @@ msgid ""
 msgstr "用一個格式化的文字為您的 Remmina 連線設定檔設定一個自訂的檔案名稱。"
 
 #: data/ui/remmina_preferences.glade:483
-msgid "Profiles filename template"
+#, fuzzy
+msgid "Profile filename template"
 msgstr "設定檔檔案名稱範本"
 
 #: data/ui/remmina_preferences.glade:495
 msgid ""
-"%G Group Name (slash will be converted to - automatically)\n"
+"%G Group name (slash will be converted to - automatically)\n"
 "%P Protocol name\n"
 "%N Connection Name\n"
 "%h Hostname/IP\n"
@@ -2563,8 +2565,8 @@ msgid "Tab all connections"
 msgstr "將所有連線分頁"
 
 #: data/ui/remmina_preferences.glade:613
-msgid "Do not use tabs"
-msgstr "不使用分頁"
+msgid "No tabs"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:624
 msgid "Fullscreen on the same monitor as the connection window"
@@ -2577,10 +2579,6 @@ msgstr "窺視"
 #: data/ui/remmina_preferences.glade:646
 msgid "Hidden"
 msgstr "隱藏"
-
-#: data/ui/remmina_preferences.glade:647
-msgid "Disabled"
-msgstr "停用"
 
 #: data/ui/remmina_preferences.glade:661
 msgid "Fullscreen toolbar visibility"
@@ -2603,7 +2601,8 @@ msgid "Hide total count in group menu"
 msgstr "在群組選單中隱藏總數"
 
 #: data/ui/remmina_preferences.glade:741
-msgid "Disable tray icon"
+#, fuzzy
+msgid "No tray icon"
 msgstr "停用工作列圖示"
 
 #: data/ui/remmina_preferences.glade:758
@@ -2725,10 +2724,8 @@ msgstr "主密碼"
 
 #: data/ui/remmina_preferences.glade:1386
 #: data/ui/remmina_preferences.glade:1402
-msgid ""
-"When activated, some widgets will require you to authenticate with a secret "
-"key"
-msgstr "當啟用時，有些小工具會需要您以密鑰進行驗證"
+msgid "Use secret key to authenticate with some widgets"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1408
 msgid "Use master password"
@@ -2767,12 +2764,14 @@ msgid "Allow bold text"
 msgstr "允許粗體字"
 
 #: data/ui/remmina_preferences.glade:1673
-msgid "Clipboard copy shortcut"
+#, fuzzy
+msgid "Copy to clipboard shortcut"
 msgstr "剪貼簿複製快速縣"
 
 #: data/ui/remmina_preferences.glade:1687
-msgid "Clipboard paste shortcut"
-msgstr "剪貼簿貼上快速鍵"
+#, fuzzy
+msgid "Paste from clipboard shortcut"
+msgstr "剪貼簿複製快速縣"
 
 #: data/ui/remmina_preferences.glade:1702
 #, fuzzy
@@ -2812,67 +2811,83 @@ msgid "Bright colors"
 msgstr "高亮度顏色"
 
 #: data/ui/remmina_preferences.glade:1913
-msgid "Pick a color for black"
-msgstr "選擇黑色"
+#, fuzzy
+msgid "Pick a black color"
+msgstr "選擇紅色"
 
 #: data/ui/remmina_preferences.glade:1927
-msgid "Pick a color for bright black"
+#, fuzzy
+msgid "Pick a light black color"
 msgstr "選擇亮黑色"
 
 #: data/ui/remmina_preferences.glade:1941
-msgid "Pick a color for red"
+#, fuzzy
+msgid "Pick a red color"
 msgstr "選擇紅色"
 
 #: data/ui/remmina_preferences.glade:1955
-msgid "Pick a color for green"
-msgstr "選擇綠色"
+#, fuzzy
+msgid "Pick a green color"
+msgstr "背景色"
 
 #: data/ui/remmina_preferences.glade:1969
-msgid "Pick a color for yellow"
+#, fuzzy
+msgid "Pick a yellow color"
 msgstr "選擇黃色"
 
 #: data/ui/remmina_preferences.glade:1983
-msgid "Pick a color for blue"
-msgstr "選擇藍色"
+#, fuzzy
+msgid "Pick a blue color"
+msgstr "選擇紅色"
 
 #: data/ui/remmina_preferences.glade:1997
-msgid "Pick a color for magenta"
+#, fuzzy
+msgid "Pick a magenta color"
 msgstr "選擇洋紅色"
 
 #: data/ui/remmina_preferences.glade:2011
-msgid "Pick a color for Cyan"
-msgstr "選擇青色"
+#, fuzzy
+msgid "Pick a cyan color"
+msgstr "選擇紅色"
 
 #: data/ui/remmina_preferences.glade:2025
-msgid "Pick a color for white"
-msgstr "選擇白色"
+#, fuzzy
+msgid "Pick a white color"
+msgstr "選擇紅色"
 
 #: data/ui/remmina_preferences.glade:2039
-msgid "Pick a color for bright red"
+#, fuzzy
+msgid "Pick a light red color"
 msgstr "選擇亮紅色"
 
 #: data/ui/remmina_preferences.glade:2053
-msgid "Pick a color for bright green"
+#, fuzzy
+msgid "Pick a bright green color"
 msgstr "選擇亮綠色"
 
 #: data/ui/remmina_preferences.glade:2067
-msgid "Pick a color for bright yellow"
+#, fuzzy
+msgid "Pick a bright yellow color"
 msgstr "選擇亮黃色"
 
 #: data/ui/remmina_preferences.glade:2081
-msgid "Pick a color for bright blue"
+#, fuzzy
+msgid "Pick a bright blue color"
 msgstr "選擇亮藍色"
 
 #: data/ui/remmina_preferences.glade:2095
-msgid "Pick a color for bright magenta"
+#, fuzzy
+msgid "Pick a light magenta color"
 msgstr "選擇亮洋紅色"
 
 #: data/ui/remmina_preferences.glade:2109
-msgid "Pick a color for bright Cyan"
+#, fuzzy
+msgid "Pick a light cyan color"
 msgstr "選擇亮青色"
 
 #: data/ui/remmina_preferences.glade:2123
-msgid "Pick a color for bright white"
+#, fuzzy
+msgid "Pick a light white color"
 msgstr "選擇亮白色"
 
 #: data/ui/remmina_preferences.glade:2138
@@ -2889,9 +2904,11 @@ msgstr ""
 "https://github.com/mbadolato/iTerm2-Color-Schemes"
 
 #: data/ui/remmina_preferences.glade:2153
-msgid "Terminal Color Scheme file chooser"
-msgstr "終端機配色檔選擇器"
+#, fuzzy
+msgid "Terminal file picker color Scheme"
+msgstr "終端機配色"
 
 #: data/ui/remmina_preferences.glade:2178
 msgid "Terminal"
 msgstr "終端機"
+
