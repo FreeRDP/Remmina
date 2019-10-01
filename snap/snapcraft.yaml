@@ -5,24 +5,6 @@ grade: stable
 confinement: strict
 base: core18
 
-plugs:
-  gnome-3-28-1804:
-    interface: content
-    target: $SNAP/gnome-platform
-    default-provider: gnome-3-28-1804
-  gtk-3-themes:
-    interface: content
-    target: $SNAP/data-dir/themes
-    default-provider: gtk-common-themes
-  icon-themes:
-    interface: content
-    target: $SNAP/data-dir/icons
-    default-provider: gtk-common-themes
-  sound-themes:
-    interface: content
-    target: $SNAP/data-dir/sounds
-    default-provider: gtk-common-themes
-
 layout:
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0:
     bind: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0
@@ -35,19 +17,17 @@ slots:
 
 apps:
   remmina:
-    # desktop-launch seems to be broken when setting up wayland env
-    # so we disable it
+    # desktop-launch (used under the covers in gnome-3-28 extension) seems to
+    # be broken when setting up wayland env so we disable it
     environment:
       DISABLE_WAYLAND: "1"
-      LD_LIBRARY_PATH: "$SNAP/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/:$LD_LIBRARY_PATH"
-    command: desktop-launch remmina
+    command: usr/bin/remmina
+    extensions: [gnome-3-28]
     common-id: org.remmina.Remmina.desktop
     plugs:
       - avahi-observe
       - browser-support
       - cups-control
-      - desktop
-      - desktop-legacy
       - gsettings
       - home
       - mount-observe
@@ -58,9 +38,6 @@ apps:
       - pulseaudio
       - ssh-keys
       - ssh-public-keys
-      - unity7
-      - wayland
-      - x11
 
   winpr-makecert:
     command: winpr-makecert
@@ -69,17 +46,6 @@ apps:
     command: winpr-hash
 
 parts:
-  desktop-gnome-platform:
-    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
-    source-subdir: gtk
-    plugin: make
-    make-parameters: ["FLAVOR=gtk3"]
-    build-packages:
-      - build-essential
-      - libgtk-3-dev
-    override-build: |
-      snapcraftctl build
-      mkdir -pv $SNAPCRAFT_PART_INSTALL/gnome-platform
   freerdp:
     plugin: cmake
     source: https://github.com/FreeRDP/FreeRDP.git
@@ -153,7 +119,6 @@ parts:
 
   remmina:
     after:
-      - desktop-gnome-platform
       - libssh-0-8
       - freerdp
     plugin: cmake
@@ -203,8 +168,6 @@ parts:
       sed --in-place 's|^Icon=.*|Icon=\${SNAP}/meta/gui/remmina.svg|' usr/share/applications/org.remmina.Remmina.desktop
 
   app:
-    after:
-      - desktop-gnome-platform
     plugin: nil
     stage-packages:
       - gtk-3-examples
