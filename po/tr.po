@@ -7,10 +7,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
-"Report-Msgid-Bugs-To: admin@remmina.org\n"
-"POT-Creation-Date: 2019-10-02 14:21+0000\n"
-"PO-Revision-Date: 2019-09-30 22:28+0000\n"
-"Last-Translator: Oguz Ersen <oguzersen@protonmail.com>\n"
+"Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
+"POT-Creation-Date: 2019-10-01 20:33+0000\n"
+"PO-Revision-Date: 2019-10-02 14:21+0000\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
 "Language: tr\n"
@@ -837,7 +837,7 @@ msgstr "Hata! dizin açılamadı %s. %s"
 #: src/remmina_sftp_client.c:379
 #, c-format
 msgid "Error creating folder %s on server. %s"
-msgstr "Hata! klasör oluşturulamadı %s sunucu. %s"
+msgstr "Sunucu üstünde %s klasörü oluşturulurken hata oluştu. %s"
 
 #: src/remmina_sftp_client.c:407 src/remmina_sftp_client.c:429
 #, c-format
@@ -1091,7 +1091,7 @@ msgstr "Kabuk istenemedi: %s"
 
 #: src/remmina_ssh.c:1746
 msgid "Failed to create pty device."
-msgstr "Pty cihazı oluşturulamadı."
+msgstr "PTY cihazı oluşturulamadı."
 
 #. Show in the status bar the total number of connections found
 #: src/remmina_main.c:644
@@ -2234,9 +2234,9 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>Remmina, boş zamanlarında cesur katkıda bulunanlar tarafından "
-"geliştirilmiştir  <a href=\"https://remmina.org/donations/\" title=\"Remmina "
-"donations\">kahramanlarımızı ödüllendiren cesur ol!</a></b>\n"
+"<b>Remmina, serbest zamanlarında cesurca katkı verenler tarafından "
+"geliştirilmiştir.  <a href=\"https://remmina.org/donations/\" title=\""
+"Remmina donations\">Cesur ol ve kahramanlarımızı ödüllendir!</a></b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:210
@@ -2244,7 +2244,6 @@ msgid "<big>Contribute</big>"
 msgstr "<big>Katkıcılar</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:46
-#, fuzzy
 msgid ""
 "It seems that Remmina is running on your system as a SNAP package. To enable "
 "access to some important features, like password saving in your keyring and "
@@ -2253,9 +2252,10 @@ msgid ""
 "following commands in a terminal window:"
 msgstr ""
 "Remmina, sisteminizde bir SNAP paketi olarak çalışıyor gibi görünüyor. "
-"Anahtarlık ve RDP yazıcı paylaşımı parola tasarrufu gibi özelliklere erişmek "
-"için, lütfen yazılım merkezinizi açın ve Remmina’ya uygun izinleri verin. "
-"Yada, bir uçbirim penceresinde aşağıdaki komutları girebilirsiniz:"
+"Anahtarlıkta parola kaydetmek ve RDP yazıcı paylaşımı gibi kimi önemli "
+"özelliklere erişmek için, lütfen yazılım merkezinizi açın ve Remmina’ya "
+"uygun izinleri verin. Alternatif olarak, aşağıdaki komutları uçbirim "
+"penceresinde girebilirsiniz:"
 
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"
@@ -2450,21 +2450,19 @@ msgstr "Ekran görüntüsü klasörü"
 
 #: data/ui/remmina_preferences.glade:292
 msgid "Choose the a folder to save screenshots from Remmina in."
-msgstr ""
+msgstr "Remmina ekran görüntülerinin kaydedileceği klasörü seçin."
 
 #: data/ui/remmina_preferences.glade:295
-#, fuzzy
 msgid "Select a Folder"
-msgstr "Tümünü seç"
+msgstr "Klasör Seç"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Screen resolutions"
 msgstr "Ekran çözünürlükleri"
 
 #: data/ui/remmina_preferences.glade:326
-#, fuzzy
 msgid "Screenshots filename"
-msgstr "Ekran görüntüsü ismi"
+msgstr "Ekran görüntüsü dosya adı"
 
 #: data/ui/remmina_preferences.glade:338
 msgid ""
@@ -2498,9 +2496,8 @@ msgid "Remember last view mode"
 msgstr "Son görüntüleme kipini hatırla"
 
 #: data/ui/remmina_preferences.glade:418
-#, fuzzy
 msgid "Send periodic usage statistics to Remmina developers"
-msgstr "Remmina geliştiricilerine periyodik kullanım istatistikleri gönder"
+msgstr "Remmina geliştiricilerine düzenli olarak kullanım istatistikleri gönder"
 
 #: data/ui/remmina_preferences.glade:422
 msgid "Send statistics to remmina.org"
@@ -2508,12 +2505,11 @@ msgstr "İstatistikleri remmina.org'a gönder"
 
 #: data/ui/remmina_preferences.glade:462
 msgid "Only save generated screenshots, don't copy them to clipboard."
-msgstr ""
+msgstr "Sadece oluşturulan ekran görüntülerini kaydet, panoya kopyalama."
 
 #: data/ui/remmina_preferences.glade:467
-#, fuzzy
 msgid "Prevent screenshots from entering clipboard"
-msgstr "Ekran görüntüsünü panoda reddet"
+msgstr "Ekran görüntülerinin panoya girmesini önle"
 
 #: data/ui/remmina_preferences.glade:479
 msgid ""
@@ -2524,12 +2520,10 @@ msgstr ""
 "bir dosya adı belirleyin."
 
 #: data/ui/remmina_preferences.glade:483
-#, fuzzy
 msgid "Profile filename template"
-msgstr "Profiller dosya adı şablonu"
+msgstr "Profil dosya adı şablonu"
 
 #: data/ui/remmina_preferences.glade:495
-#, fuzzy
 msgid ""
 "%G Group name (slash will be converted to - automatically)\n"
 "%P Protocol name\n"
@@ -2599,7 +2593,7 @@ msgstr "Tüm bağlantılar sekmeli"
 
 #: data/ui/remmina_preferences.glade:613
 msgid "No tabs"
-msgstr ""
+msgstr "Sekme yok"
 
 #: data/ui/remmina_preferences.glade:624
 msgid "Fullscreen on the same monitor as the connection window"
@@ -2634,9 +2628,8 @@ msgid "Hide total count in group menu"
 msgstr "Grup menüsündeki toplam sayıyı gizle"
 
 #: data/ui/remmina_preferences.glade:741
-#, fuzzy
 msgid "No tray icon"
-msgstr "Tepsi simgesini devre dışı bırak"
+msgstr "Tepsi simgesi yok"
 
 #: data/ui/remmina_preferences.glade:758
 msgid "Start Remmina in tray icon at user logon"
@@ -2762,7 +2755,7 @@ msgstr "Ana parola"
 #: data/ui/remmina_preferences.glade:1386
 #: data/ui/remmina_preferences.glade:1402
 msgid "Use secret key to authenticate with some widgets"
-msgstr ""
+msgstr "Bazı widget'leri yetkilendirmek için gizli anahtarı kullan"
 
 #: data/ui/remmina_preferences.glade:1408
 msgid "Use master password"
@@ -2801,19 +2794,16 @@ msgid "Allow bold text"
 msgstr "Kalın metne izin ver"
 
 #: data/ui/remmina_preferences.glade:1673
-#, fuzzy
 msgid "Copy to clipboard shortcut"
 msgstr "Panoya kopyala kısayolu"
 
 #: data/ui/remmina_preferences.glade:1687
-#, fuzzy
 msgid "Paste from clipboard shortcut"
-msgstr "Panoya kopyala kısayolu"
+msgstr "Panodan yapıştır kısayolu"
 
 #: data/ui/remmina_preferences.glade:1702
-#, fuzzy
 msgid "Select all shortcuts"
-msgstr "Tüm kısayolu seç"
+msgstr "Tüm kısayolları seç"
 
 #: data/ui/remmina_preferences.glade:1716
 #: data/ui/remmina_preferences.glade:1733
@@ -2848,84 +2838,68 @@ msgid "Bright colors"
 msgstr "Parlak renkler"
 
 #: data/ui/remmina_preferences.glade:1913
-#, fuzzy
 msgid "Pick a black color"
-msgstr "Kırmızı bir renk seçin"
+msgstr "Siyah bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:1927
-#, fuzzy
 msgid "Pick a light black color"
-msgstr "Parlak siyah için bir renk seçin"
+msgstr "Açık siyah bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:1941
-#, fuzzy
 msgid "Pick a red color"
 msgstr "Kırmızı bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:1955
-#, fuzzy
 msgid "Pick a green color"
-msgstr "Arka plan rengi"
+msgstr "Yeşil bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:1969
-#, fuzzy
 msgid "Pick a yellow color"
-msgstr "Sarı için bir renk seçin"
+msgstr "Sarı bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:1983
-#, fuzzy
 msgid "Pick a blue color"
-msgstr "Kırmızı bir renk seçin"
+msgstr "Mavi bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:1997
-#, fuzzy
 msgid "Pick a magenta color"
-msgstr "Pembemsi için bir renk seçin"
+msgstr "Magenta bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:2011
-#, fuzzy
 msgid "Pick a cyan color"
-msgstr "Kırmızı bir renk seçin"
+msgstr "Camgöbeği bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:2025
-#, fuzzy
 msgid "Pick a white color"
-msgstr "Kırmızı bir renk seçin"
+msgstr "Beyaz bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:2039
-#, fuzzy
 msgid "Pick a light red color"
-msgstr "Parlak kırmızı için bir renk seçin"
+msgstr "Açık kırmızı bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:2053
-#, fuzzy
 msgid "Pick a bright green color"
-msgstr "Parlak yeşil için bir renk seçin"
+msgstr "Parlak yeşil bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:2067
-#, fuzzy
 msgid "Pick a bright yellow color"
-msgstr "Parlak sarı için bir renk seçin"
+msgstr "Parlak sarı bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:2081
-#, fuzzy
 msgid "Pick a bright blue color"
-msgstr "Parlak mavi için bir renk seçin"
+msgstr "Parlak mavi bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:2095
-#, fuzzy
 msgid "Pick a light magenta color"
-msgstr "Parlak pembemsi için bir renk seçin"
+msgstr "Açık macenta bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:2109
-#, fuzzy
 msgid "Pick a light cyan color"
-msgstr "Parlak camgöbeği için bir renk seçin"
+msgstr "Açık camgöbeği bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:2123
-#, fuzzy
 msgid "Pick a light white color"
-msgstr "Parlak beyaz için bir renk seçin"
+msgstr "Açık beyaz bir renk seçin"
 
 #: data/ui/remmina_preferences.glade:2138
 msgid "Load color scheme"
@@ -2942,9 +2916,8 @@ msgstr ""
 "iTerm2-Color-Schemes."
 
 #: data/ui/remmina_preferences.glade:2153
-#, fuzzy
 msgid "Terminal file picker color Scheme"
-msgstr "Uçbirim renk düzeni"
+msgstr "Uçbirim dosya seçici renk Düzeni"
 
 #: data/ui/remmina_preferences.glade:2178
 msgid "Terminal"
