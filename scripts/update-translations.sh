@@ -145,7 +145,7 @@ xgettext --from-code=UTF-8 \
 	--package-version="$GIT_TAG" \
 	--package-name="Remmina" \
 	--copyright-holder="Antenore Gatta and Giovanni Panozzo" \
-	--msgid-bugs-address="admin@remmina.org"
+	--msgid-bugs-address="l10n@lists.remmina.org"
 
 cd "$REMMINATOP"/po || exit 1
 
