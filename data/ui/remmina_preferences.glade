@@ -1641,23 +1641,6 @@ Author: Antenore Gatta
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="checkbutton_terminal_font_system">
-                    <property name="label" translatable="yes">Use system default font</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="halign">start</property>
-                    <property name="margin_right">18</property>
-                    <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="remmina_pref_dialog_vte_font_on_toggled" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">1</property>
-                    <property name="width">8</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkFontButton" id="fontbutton_terminal_font">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -1694,22 +1677,6 @@ Author: Antenore Gatta
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkCheckButton" id="checkbutton_terminal_bold">
-                    <property name="label" translatable="yes">Allow bold text</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="halign">start</property>
-                    <property name="margin_right">18</property>
-                    <property name="draw_indicator">True</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">2</property>
-                    <property name="width">8</property>
                   </packing>
                 </child>
                 <child>
@@ -1758,7 +1725,6 @@ Author: Antenore Gatta
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="margin_left">18</property>
-                    <property name="margin_bottom">18</property>
                     <property name="label" translatable="yes">Select all shortcuts</property>
                   </object>
                   <packing>
@@ -1812,7 +1778,6 @@ Author: Antenore Gatta
                     <property name="tooltip_text" translatable="yes">(Host key +)</property>
                     <property name="halign">start</property>
                     <property name="margin_right">18</property>
-                    <property name="margin_bottom">18</property>
                     <signal name="clicked" handler="remmina_pref_dialog_on_key_chooser" swapped="no"/>
                   </object>
                   <packing>
@@ -1827,7 +1792,6 @@ Author: Antenore Gatta
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="margin_left">18</property>
-                    <property name="margin_top">18</property>
                     <property name="label" translatable="yes">Foreground color</property>
                   </object>
                   <packing>
@@ -1842,7 +1806,6 @@ Author: Antenore Gatta
                     <property name="receives_default">True</property>
                     <property name="halign">start</property>
                     <property name="margin_right">18</property>
-                    <property name="margin_top">18</property>
                     <property name="title" translatable="yes">Foreground color</property>
                   </object>
                   <packing>
@@ -2155,6 +2118,57 @@ Author: Antenore Gatta
                   <packing>
                     <property name="left_attach">8</property>
                     <property name="top_attach">11</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_left">18</property>
+                    <property name="label" translatable="yes">Use system default font</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="halign">start</property>
+                    <signal name="activate" handler="remmina_pref_dialog_vte_font_on_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">1</property>
+                    <property name="width">8</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="switch_terminal_bold">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="halign">start</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">2</property>
+                    <property name="width">8</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin_left">18</property>
+                    <property name="label" translatable="yes">Allow bold text</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
                   </packing>
                 </child>
               </object>
