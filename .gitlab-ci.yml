@@ -69,9 +69,7 @@ appimage:build:
       - $BUILD_FOLDER/Remmina-x86_64.AppImage
   only:
     refs:
-      - master
       - web
-      - schedules
 
 flatpak:test:
   image: remmina/ubuntu:18.04
