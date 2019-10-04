@@ -298,12 +298,12 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	remmina_pref.shortcutkey_toolbar = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_toolbar));
 
 	g_free(remmina_pref.vte_font);
-	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_font_system))) {
+	if (gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_terminal_font_system))) {
 		remmina_pref.vte_font = NULL;
 	}else  {
 		remmina_pref.vte_font = g_strdup(gtk_font_chooser_get_font(GTK_FONT_CHOOSER(remmina_pref_dialog->fontbutton_terminal_font)));
 	}
-	remmina_pref.vte_allow_bold_text = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_bold));
+	remmina_pref.vte_allow_bold_text = gtk_switch_get_active(GTK_SWITCH(remmina_pref_dialog->switch_terminal_bold));
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_foreground), &color);
 	remmina_pref.color_pref.foreground = gdk_rgba_to_string(&color);
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_background), &color);
@@ -490,7 +490,7 @@ static void remmina_pref_dialog_init(void)
 	remmina_pref_dialog_set_button_label(remmina_pref_dialog->button_keyboard_toolbar, remmina_pref.shortcutkey_toolbar);
 
 	if (!(remmina_pref.vte_font && remmina_pref.vte_font[0])) {
-		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_font_system), TRUE);
+		gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_terminal_font_system), TRUE);
 	}
 	if (remmina_pref.vte_font && remmina_pref.vte_font[0]) {
 		gtk_font_chooser_set_font(GTK_FONT_CHOOSER(remmina_pref_dialog->fontbutton_terminal_font), remmina_pref.vte_font);
@@ -498,7 +498,7 @@ static void remmina_pref_dialog_init(void)
 		gtk_font_chooser_set_font(GTK_FONT_CHOOSER(remmina_pref_dialog->fontbutton_terminal_font), "Monospace 12");
 		gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->fontbutton_terminal_font), FALSE);
 	}
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(remmina_pref_dialog->checkbutton_terminal_bold), remmina_pref.vte_allow_bold_text);
+	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_terminal_bold), remmina_pref.vte_allow_bold_text);
 
 	/* Foreground color option */
 	gdk_rgba_parse(&color, remmina_pref.color_pref.foreground);
@@ -675,9 +675,9 @@ GtkDialog* remmina_pref_dialog_new(gint default_tab, GtkWindow *parent)
 	remmina_pref_dialog->button_keyboard_disconnect = GTK_BUTTON(GET_OBJECT("button_keyboard_disconnect"));
 	remmina_pref_dialog->button_keyboard_toolbar = GTK_BUTTON(GET_OBJECT("button_keyboard_toolbar"));
 
-	remmina_pref_dialog->checkbutton_terminal_font_system = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_terminal_font_system"));
+	remmina_pref_dialog->switch_terminal_font_system = GTK_SWITCH(GET_OBJECT("switch_terminal_font_system"));
 	remmina_pref_dialog->fontbutton_terminal_font = GTK_FONT_BUTTON(GET_OBJECT("fontbutton_terminal_font"));
-	remmina_pref_dialog->checkbutton_terminal_bold = GTK_CHECK_BUTTON(GET_OBJECT("checkbutton_terminal_bold"));
+	remmina_pref_dialog->switch_terminal_bold = GTK_SWITCH(GET_OBJECT("switch_terminal_bold"));
 	remmina_pref_dialog->entry_scrollback_lines = GTK_ENTRY(GET_OBJECT("entry_scrollback_lines"));
 	remmina_pref_dialog->button_keyboard_copy = GTK_BUTTON(GET_OBJECT("button_keyboard_copy"));
 	remmina_pref_dialog->button_keyboard_paste = GTK_BUTTON(GET_OBJECT("button_keyboard_paste"));
