@@ -101,6 +101,7 @@ static void init_settings_cache(RemminaPlugin *plugin)
 	}
 
 	/* Some settings are encrypted "by name" */
+	/* g_hash_table_insert(pht, g_strdup("proxy_password"), (gpointer)TRUE); */
 	g_hash_table_insert(pht, g_strdup("ssh_password"), (gpointer)TRUE);
 	g_hash_table_insert(pht, g_strdup("ssh_passphrase"), (gpointer)TRUE);
 
