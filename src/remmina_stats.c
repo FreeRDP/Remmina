@@ -781,6 +781,38 @@ JsonNode *remmina_stats_get_secret_plugin()
 	return r;
 }
 
+/**
+ * Add a json member HASMASTERPASSWORD which shows the status of the master password.
+ *
+ * @return a Json Node structure containg the status of the master password
+ *
+ */
+JsonNode *remmina_stats_get_master_password_status()
+{
+	TRACE_CALL(__func__);
+
+	JsonBuilder *b;
+	JsonNode *r;
+	RemminaSecretPlugin *secret_plugin;
+	secret_plugin = remmina_plugin_manager_get_secret_plugin();
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+
+	json_builder_set_member_name(b, "master_password_status");
+	if (remmina_pref_get_boolean("use_master_password")) {
+		json_builder_add_string_value(b, "ON");
+	} else {
+		json_builder_add_string_value(b, "OFF");
+	}
+
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+
+	return r;
+}
+
 
 /**
  * Get all statistics in json format to send periodically to the PHP server.
@@ -843,6 +875,10 @@ JsonNode *remmina_stats_get_all()
 
 	n = remmina_stats_get_secret_plugin();
 	json_builder_set_member_name(b, "ACTIVESECRETPLUGIN");
+	json_builder_add_value(b, n);
+
+	n = remmina_stats_get_master_password_status();
+	json_builder_set_member_name(b, "HASMASTERPASSWORD");
 	json_builder_add_value(b, n);
 
 	json_builder_end_object(b);
