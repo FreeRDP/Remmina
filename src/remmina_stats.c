@@ -110,8 +110,8 @@
  *    "ACTIVESECRETPLUGIN": {
  *        "plugin_name": "kwallet"
  *    }
- *    "BUILDHOST": {
- *        "build_host": "local_build"
+ *    "HASMASTERPASSWORD": {
+ *        "master_password_status": "OFF"
  *    }
  *
  * }
@@ -140,6 +140,7 @@
 #include <glib/gstdio.h>
 #include <gtk/gtk.h>
 
+#include "remmina.h"
 #include "remmina_file.h"
 #include "remmina_file_manager.h"
 #include "remmina_icon.h"
@@ -594,12 +595,14 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 
 	pdata->protocol = remmina_file_get_string(remminafile, "protocol");
 	pdata->pdatestr = remmina_file_get_string(remminafile, "last_success");
+	g_debug("%s date %s", pdata->protocol, pdata->pdatestr);
 
 	ds = dd = NULL;
 	if (pdata->pdatestr && pdata->pdatestr[0] != '\0' && strlen(pdata->pdatestr) >= 6) {
 		dyear = g_strdup_printf("%.4s", pdata->pdatestr);
 		dmonth = g_strdup_printf("%.2s", pdata->pdatestr + 4);
 		dday = g_strdup_printf("%.2s", pdata->pdatestr + 6);
+		g_debug("dyear: %s, dmonth: %s, dday: %s", dyear, dmonth, dday);
 		dd = g_date_time_new_local(g_ascii_strtoll(dyear, NULL, 0),
 				g_ascii_strtoll(dmonth, NULL, 0),
 				g_ascii_strtoll(dday, NULL, 0), 0, 0, 0.0);
@@ -625,6 +628,7 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 				syear = g_strdup_printf("%.4s", (char*)pdate);
 				smonth = g_strdup_printf("%.2s", (char*)pdate + 4);
 				sday = g_strdup_printf("%.2s", (char*)pdate + 6);
+				g_debug("syear: %s, smonth: %s, sday: %s", syear, smonth, sday);
 				ds = g_date_time_new_local(g_ascii_strtoll(syear, NULL, 0),
 						g_ascii_strtoll(smonth, NULL, 0),
 						g_ascii_strtoll(sday, NULL, 0), 0, 0, 0.0);
@@ -633,7 +637,7 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 				g_free(sday);
 			}
 
-			/** When both date in the has and in the profile are valid we compare the date */
+			/** When both date in the hash and in the profile are valid we compare the date */
 			if (ds && dd) {
 				gint res = g_date_time_compare( ds, dd );
 				/** If the date in the hash less than the date in the profile, we take the latter */
@@ -721,6 +725,7 @@ JsonNode *remmina_stats_get_profiles()
 	profiles_count = remmina_file_manager_iterate(
 		(GFunc)remmina_profiles_get_data,
 		(gpointer)pdata);
+	g_debug("Number of profiles: %d", profiles_count);
 
 	json_builder_add_int_value(b, profiles_count);
 
@@ -733,9 +738,11 @@ JsonNode *remmina_stats_get_profiles()
 	g_hash_table_iter_init(&pdateiter, pdata->proto_date);
 	while (g_hash_table_iter_next(&pdateiter, &pdatekey, &pdatevalue)) {
 		s = g_strdup_printf("DATE_%s", (gchar*)pdatekey);
+		g_debug("Protocol date label: %s", s);
 		json_builder_set_member_name(b, s);
 		g_free(s);
 		json_builder_add_string_value(b, (gchar*)pdatevalue);
+		g_debug("Protocol date: %s", (gchar*)pdatevalue);
 	}
 
 	json_builder_end_object(b);
@@ -793,8 +800,6 @@ JsonNode *remmina_stats_get_master_password_status()
 
 	JsonBuilder *b;
 	JsonNode *r;
-	RemminaSecretPlugin *secret_plugin;
-	secret_plugin = remmina_plugin_manager_get_secret_plugin();
 
 	b = json_builder_new();
 	json_builder_begin_object(b);
@@ -812,6 +817,37 @@ JsonNode *remmina_stats_get_master_password_status()
 
 	return r;
 }
+
+/**
+ * Add a json member KIOSK which shows the status of the kiosk.
+ *
+ * @return a Json Node structure containg the status of the master password
+ *
+ */
+JsonNode *remmina_stats_get_kiosk_mode()
+{
+	TRACE_CALL(__func__);
+
+	JsonBuilder *b;
+	JsonNode *r;
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+
+	json_builder_set_member_name(b, "kiosk_status");
+	if (!kioskmode && kioskmode == FALSE) {
+		json_builder_add_string_value(b, "OFF");
+	}else {
+		json_builder_add_string_value(b, "ON");
+	}
+
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+
+	return r;
+}
+
 
 
 /**
@@ -880,6 +916,11 @@ JsonNode *remmina_stats_get_all()
 	n = remmina_stats_get_master_password_status();
 	json_builder_set_member_name(b, "HASMASTERPASSWORD");
 	json_builder_add_value(b, n);
+
+	n = remmina_stats_get_kiosk_mode();
+	json_builder_set_member_name(b, "KIOSK");
+	json_builder_add_value(b, n);
+
 
 	json_builder_end_object(b);
 	n = json_builder_get_root(b);
