@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-10-04 08:18+0000\n"
-"PO-Revision-Date: 2019-09-22 08:00+0000\n"
+"PO-Revision-Date: 2019-10-09 15:53+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
@@ -494,6 +494,17 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
+"<tt><big>* orden en argumentos de RUTA %h\n"
+"* /ruta/a/algún/lugar -opciones %h %u\n"
+"* %h se sustituye por el nombre del servidor\n"
+"* %t se sustituye por el nombre del servidor SSH\n"
+"* %u se sustituye por el nombre de usuario\n"
+"* %U se sustituye por el nombre de usuario SSH\n"
+"* %p se sustituye por el nombre de perfil de Remmina\n"
+"* %g se sustituye por el nombre de grupo de perfiles de Remmina\n"
+"No lo utilice en segundo plano si quiere que la orden se ejecute antes de "
+"establecer una conexión.\n"
+"</big></tt>"
 
 #: src/remmina_file_editor.c:94
 msgid ""
@@ -1168,7 +1179,7 @@ msgstr "Usar protocolo predeterminado (para --new)"
 
 #: src/remmina.c:95
 msgid "Start as tray icon"
-msgstr "Iniciar como icono de la bandeja"
+msgstr "Iniciar como icono de área de notificación"
 
 #: src/remmina.c:96
 msgid "Show the application’s version"
@@ -1922,7 +1933,6 @@ msgid "Hello World!"
 msgstr "¡Hola, mundo!"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
-#, fuzzy
 msgid "Secure password storing in the GNOME keyring"
 msgstr "Almacenamiento seguro de contraseñas en el llavero de GNOME"
 
@@ -1931,12 +1941,11 @@ msgid "You did not set any command to be executed"
 msgstr "No estableció ninguna orden para su ejecución"
 
 #: plugins/exec/exec_plugin.c:204
-#, fuzzy
 msgid ""
 "WARNING! Running a command synchronously may cause Remmina not to respond.\n"
 "Do you really want to continue?"
 msgstr ""
-"ATENCIÓN: ejecutar una orden de forma sincronizada puede congelar Remmina.\n"
+"ATENCIÓN: ejecutar una orden de manera sincrónica puede congelar Remmina.\n"
 "¿Realmente quiere continuar?"
 
 #: plugins/exec/exec_plugin.c:264
@@ -2043,14 +2052,12 @@ msgid "XDMCP - X Remote Session"
 msgstr "XDMCP - Sesión X remota"
 
 #: plugins/vnc/vnc_plugin.h:41
-#, fuzzy
 msgid "Remmina VNC Plugin"
-msgstr "Complemento para el navegador de Remmina"
+msgstr "Complemento para VNC de Remmina"
 
 #: plugins/vnc/vnc_plugin.h:46
-#, fuzzy
 msgid "Remmina VNC listener Plugin"
-msgstr "Complemento para el navegador de Remmina"
+msgstr "Complemento para escucha de VNC de Remmina"
 
 #: plugins/vnc/vnc_plugin.c:868
 msgid "Unable to connect to VNC server"
@@ -2270,9 +2277,8 @@ msgid "Master password secret key"
 msgstr ""
 
 #: data/ui/remmina_main.glade:69
-#, fuzzy
 msgid "New connection profile"
-msgstr "Crear un perfil de conexión nuevo"
+msgstr "Perfil de conexión nuevo"
 
 #: data/ui/remmina_main.glade:81
 msgid "Show search bar"
@@ -2312,9 +2318,8 @@ msgid "Multi password changer"
 msgstr "Modificador de contraseñas múltiples"
 
 #: data/ui/remmina_main.glade:339
-#, fuzzy
 msgid "Debugging"
-msgstr "Ventana de depuración"
+msgstr "Depuración"
 
 #: data/ui/remmina_main.glade:384
 msgid "Homepage"
@@ -2342,7 +2347,6 @@ msgid "Plugin"
 msgstr ""
 
 #: data/ui/remmina_main.glade:555
-#, fuzzy
 msgid "Last used"
 msgstr "Última utilización"
 
@@ -2436,16 +2440,14 @@ msgid "Choose the a folder to save screenshots from Remmina in."
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:295
-#, fuzzy
 msgid "Select a Folder"
-msgstr "Seleccionar todo"
+msgstr "Seleccione una carpeta"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Screen resolutions"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:326
-#, fuzzy
 msgid "Screenshots filename"
 msgstr "Nombre de archivo de capturas de pantalla"
 
@@ -2476,9 +2478,8 @@ msgid "Remember last view mode"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:418
-#, fuzzy
 msgid "Send periodic usage statistics to Remmina developers"
-msgstr "Enviar estadísticas anónimas a remmina.org"
+msgstr "Enviar estadísticas de uso periódicas a los desarrolladores de Remmina"
 
 #: data/ui/remmina_preferences.glade:422
 msgid "Send statistics to remmina.org"
@@ -2601,17 +2602,16 @@ msgid "Hide total count in group menu"
 msgstr "Ocultar recuento total en el menú de grupo"
 
 #: data/ui/remmina_preferences.glade:757
-#, fuzzy
 msgid "No tray icon"
-msgstr "Desactivar icono de la bandeja"
+msgstr "Sin icono de área de notificación"
 
 #: data/ui/remmina_preferences.glade:775
 msgid "Start Remmina in tray icon at user logon"
-msgstr "Iniciar Remmina minimizado al iniciar la sesión"
+msgstr "Iniciar Remmina como icono de área de notificación al acceder"
 
 #: data/ui/remmina_preferences.glade:793
 msgid "Dark Tray Icon"
-msgstr "Icono oscuro de bandeja"
+msgstr "Icono oscuro de área de notificación"
 
 #: data/ui/remmina_preferences.glade:797
 msgid "Choose this if your theme panel is light."
@@ -2754,14 +2754,12 @@ msgid "Scrollback lines"
 msgstr "Renglones de retrodesplazamiento"
 
 #: data/ui/remmina_preferences.glade:1702
-#, fuzzy
 msgid "Copy to clipboard shortcut"
-msgstr "Atajo de copia de portapapeles"
+msgstr "Atajo de copia en portapapeles"
 
 #: data/ui/remmina_preferences.glade:1715
-#, fuzzy
 msgid "Paste from clipboard shortcut"
-msgstr "Atajo de copia de portapapeles"
+msgstr "Atajo de pegado desde portapapeles"
 
 #: data/ui/remmina_preferences.glade:1728
 #, fuzzy
@@ -2812,89 +2810,72 @@ msgid ""
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1920
-#, fuzzy
 msgid "Terminal file picker color Scheme"
-msgstr "Combinación de colores de terminal"
+msgstr "Combinación de colores de selector de archivos de terminal"
 
 #: data/ui/remmina_preferences.glade:1934
-#, fuzzy
 msgid "Pick a black color"
-msgstr "Elija el tono de rojo"
+msgstr "Elija un tono de negro"
 
 #: data/ui/remmina_preferences.glade:1946
-#, fuzzy
 msgid "Pick a red color"
-msgstr "Elija el tono de rojo"
+msgstr "Elija un tono de rojo"
 
 #: data/ui/remmina_preferences.glade:1958
-#, fuzzy
 msgid "Pick a green color"
-msgstr "Color de segundo plano"
+msgstr "Elija un tono de verde"
 
 #: data/ui/remmina_preferences.glade:1970
-#, fuzzy
 msgid "Pick a yellow color"
-msgstr "Elija el tono de amarillo"
+msgstr "Elija un tono de amarillo"
 
 #: data/ui/remmina_preferences.glade:1982
-#, fuzzy
 msgid "Pick a blue color"
-msgstr "Elija el tono de rojo"
+msgstr "Elija un tono de azul"
 
 #: data/ui/remmina_preferences.glade:1994
-#, fuzzy
 msgid "Pick a magenta color"
-msgstr "Elija el tono de magenta"
+msgstr "Elija un tono de magenta"
 
 #: data/ui/remmina_preferences.glade:2006
-#, fuzzy
 msgid "Pick a cyan color"
-msgstr "Elija el tono de rojo"
+msgstr "Elija un tono de cian"
 
 #: data/ui/remmina_preferences.glade:2019
-#, fuzzy
 msgid "Pick a white color"
-msgstr "Elija el tono de rojo"
+msgstr "Elija un tono de blanco"
 
 #: data/ui/remmina_preferences.glade:2031
-#, fuzzy
 msgid "Pick a light black color"
-msgstr "Elija el tono de negro brillante"
+msgstr "Elija un tono de negro claro"
 
 #: data/ui/remmina_preferences.glade:2043
-#, fuzzy
 msgid "Pick a light red color"
-msgstr "Elija el tono de rojo brillante"
+msgstr "Elija un tono de rojo claro"
 
 #: data/ui/remmina_preferences.glade:2055
-#, fuzzy
 msgid "Pick a bright green color"
-msgstr "Elija el tono de verde brillante"
+msgstr "Elija un tono de verde vivo"
 
 #: data/ui/remmina_preferences.glade:2067
-#, fuzzy
 msgid "Pick a bright yellow color"
-msgstr "Elija el tono de amarillo brillante"
+msgstr "Elija un tono de amarillo vivo"
 
 #: data/ui/remmina_preferences.glade:2079
-#, fuzzy
 msgid "Pick a bright blue color"
-msgstr "Elija el tono de azul brillante"
+msgstr "Elija un tono de azul vivo"
 
 #: data/ui/remmina_preferences.glade:2091
-#, fuzzy
 msgid "Pick a light magenta color"
-msgstr "Elija el tono de magenta brillante"
+msgstr "Elija un tono de magenta claro"
 
 #: data/ui/remmina_preferences.glade:2103
-#, fuzzy
 msgid "Pick a light cyan color"
-msgstr "Elija el tono de cian brillante"
+msgstr "Elija un tono de cian claro"
 
 #: data/ui/remmina_preferences.glade:2116
-#, fuzzy
 msgid "Pick a light white color"
-msgstr "Elija el tono de blanco brillante"
+msgstr "Elija un tono de blanco claro"
 
 #: data/ui/remmina_preferences.glade:2129
 msgid "Use system default font"
