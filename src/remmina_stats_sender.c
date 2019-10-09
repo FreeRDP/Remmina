@@ -196,6 +196,7 @@ static gboolean remmina_stats_collector_done(gpointer data)
 	json_node_unref(n);
 	unenc_s = json_generator_to_data(g, NULL);	// unenc_s=serialized stats
 	remmina_log_printf("STATS upload: JSON data%s\n", unenc_s);
+	g_debug("STATS upload: JSON data%s\n", unenc_s);
 	g_object_unref(g);
 
 	/* Now encrypt "s" with remminastats public key */

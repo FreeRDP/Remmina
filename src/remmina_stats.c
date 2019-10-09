@@ -603,12 +603,10 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 		pyear = g_strdup_printf("%.4s", last_success);
 		pmonth = g_strdup_printf("%.2s", last_success + 4);
 		pday = g_strdup_printf("%.2s", last_success + 6);
-		g_debug("pyear: %s, pmonth: %s, pday: %s", pyear, pmonth, pday);
 		prof_gdate = g_date_time_new_local(
-				g_ascii_strtoll(pyear, NULL, 0),
-				g_ascii_strtoll(pmonth, NULL, 0),
-				g_ascii_strtoll(pday, NULL, 0), 0, 0, 0);
-		g_debug("prof_gdate: %s", prof_gdate);
+				atoi(pyear),
+				atoi(pmonth),
+				atoi(pday), 0, 0, 0);
 		g_free(pyear);
 		g_free(pmonth);
 		g_free(pday);
@@ -632,10 +630,10 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 				hyear = g_strdup_printf("%.4s", (char*)pdate);
 				hmonth = g_strdup_printf("%.2s", (char*)pdate + 4);
 				hday = g_strdup_printf("%.2s", (char*)pdate + 6);
-				g_debug("hyear: %s, hmonth: %s, hday: %s", hyear, hmonth, hday);
-				pdata_gdate = g_date_time_new_local(g_ascii_strtoll(hyear, NULL, 0),
-						g_ascii_strtoll(hmonth, NULL, 0),
-						g_ascii_strtoll(hday, NULL, 0), 0, 0, 0);
+				pdata_gdate = g_date_time_new_local(
+						atoi(hyear),
+						atoi(hmonth),
+						atoi(hday), 0, 0, 0);
 				g_free(hyear);
 				g_free(hmonth);
 				g_free(hday);
