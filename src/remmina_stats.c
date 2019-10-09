@@ -110,8 +110,8 @@
  *    "ACTIVESECRETPLUGIN": {
  *        "plugin_name": "kwallet"
  *    }
- *    "BUILDHOST": {
- *        "build_host": "local_build"
+ *    "HASMASTERPASSWORD": {
+ *        "master_password_status": "OFF"
  *    }
  *
  * }
@@ -140,6 +140,7 @@
 #include <glib/gstdio.h>
 #include <gtk/gtk.h>
 
+#include "remmina.h"
 #include "remmina_file.h"
 #include "remmina_file_manager.h"
 #include "remmina_icon.h"
@@ -583,29 +584,32 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 	gint count = 0;
 	gpointer pcount, kpo;
 	gpointer pdate, kdo;
-	gchar *sday, *smonth, *syear;
-	gchar *dday, *dmonth, *dyear;
+	gchar *hday, *hmonth, *hyear;
+	gchar *pday, *pmonth, *pyear;
 
-	GDateTime *ds;          /** Source date -> from profile */
-	GDateTime *dd;          /** Destination date -> The date in the pdata structure */
+	GDateTime *prof_gdate;          /** Source date -> from profile */
+	GDateTime *pdata_gdate;          /** Destination date -> The date in the pdata structure */
 
 	struct ProfilesData* pdata;
 	pdata = (struct ProfilesData*)user_data;
 
 	pdata->protocol = remmina_file_get_string(remminafile, "protocol");
-	pdata->pdatestr = remmina_file_get_string(remminafile, "last_success");
+	//pdata->pdatestr = remmina_file_get_string(remminafile, "last_success");
+	const gchar *last_success = remmina_file_get_string(remminafile, "last_success");
+	g_debug("%s date %s", pdata->protocol, last_success);
 
-	ds = dd = NULL;
-	if (pdata->pdatestr && pdata->pdatestr[0] != '\0' && strlen(pdata->pdatestr) >= 6) {
-		dyear = g_strdup_printf("%.4s", pdata->pdatestr);
-		dmonth = g_strdup_printf("%.2s", pdata->pdatestr + 4);
-		dday = g_strdup_printf("%.2s", pdata->pdatestr + 6);
-		dd = g_date_time_new_local(g_ascii_strtoll(dyear, NULL, 0),
-				g_ascii_strtoll(dmonth, NULL, 0),
-				g_ascii_strtoll(dday, NULL, 0), 0, 0, 0.0);
-		g_free(dyear);
-		g_free(dmonth);
-		g_free(dday);
+	prof_gdate = pdata_gdate = NULL;
+	if (last_success && last_success[0] != '\0' && strlen(last_success) >= 6) {
+		pyear = g_strdup_printf("%.4s", last_success);
+		pmonth = g_strdup_printf("%.2s", last_success + 4);
+		pday = g_strdup_printf("%.2s", last_success + 6);
+		prof_gdate = g_date_time_new_local(
+				atoi(pyear),
+				atoi(pmonth),
+				atoi(pday), 0, 0, 0);
+		g_free(pyear);
+		g_free(pmonth);
+		g_free(pday);
 	}
 
 
@@ -620,33 +624,49 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 		pdate = NULL;
 		if (g_hash_table_lookup_extended(pdata->proto_date, pdata->protocol, &kdo, &pdate)) {
 
-			ds = NULL;
+			pdata_gdate = NULL;
 			if (pdate && strlen(pdate) >= 6) {
-				syear = g_strdup_printf("%.4s", (char*)pdate);
-				smonth = g_strdup_printf("%.2s", (char*)pdate + 4);
-				sday = g_strdup_printf("%.2s", (char*)pdate + 6);
-				ds = g_date_time_new_local(g_ascii_strtoll(syear, NULL, 0),
-						g_ascii_strtoll(smonth, NULL, 0),
-						g_ascii_strtoll(sday, NULL, 0), 0, 0, 0.0);
-				g_free(syear);
-				g_free(smonth);
-				g_free(sday);
+				pdata->pdatestr = g_strdup(pdate);
+				hyear = g_strdup_printf("%.4s", (char*)pdate);
+				hmonth = g_strdup_printf("%.2s", (char*)pdate + 4);
+				hday = g_strdup_printf("%.2s", (char*)pdate + 6);
+				pdata_gdate = g_date_time_new_local(
+						atoi(hyear),
+						atoi(hmonth),
+						atoi(hday), 0, 0, 0);
+				g_free(hyear);
+				g_free(hmonth);
+				g_free(hday);
 			}
 
-			/** When both date in the has and in the profile are valid we compare the date */
-			if (ds && dd) {
-				gint res = g_date_time_compare( ds, dd );
+			/** When both date in the hash and in the profile are valid we compare the date */
+			if (prof_gdate != NULL && pdata_gdate != NULL ) {
+				g_debug("Comparing dates");
+				gint res = g_date_time_compare( pdata_gdate, prof_gdate );
 				/** If the date in the hash less than the date in the profile, we take the latter */
 				if (res < 0 ) {
+					g_debug("hash date is less than profile date. Replacing date in the hashtable");
+					g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(last_success));
+				} else {
+					g_debug("profile date is less than hash date. Replacing date in the hashtable");
 					g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 				}
+
 			}
-			/** If the date in the hash is NOT valid and the date in the profile is valid we keep the latter */
-			if (!ds && dd) {
+			/** If the date in the profile is NOT valid and the date in the hash is valid we keep the latter */
+			if (prof_gdate == NULL && pdata_gdate != NULL) {
+				g_debug("prof_gdate is NULL, replacing date in the hashtable");
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 			}
+
+			/** If the date in the hash is NOT valid and the date in the profile is valid we keep the latter */
+			if (prof_gdate != NULL && pdata_gdate == NULL) {
+				g_debug("pdata_gdate is NULL, replacing date in the hashtable");
+				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(last_success));
+			}
 			/** If both date are NULL, we insert NULL for that protocol */
-			if ((!ds && !dd) && pdata->pdatestr) {
+			if ((prof_gdate == NULL && pdata_gdate == NULL) && pdata->pdatestr) {
+				g_debug("All dates are NULL, replacing date in the hashtable");
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), NULL);
 			}
 		}else {
@@ -660,10 +680,11 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 			}
 		}
 	}
-	if (dd)
-		g_date_time_unref(dd);
-	if (ds)
-		g_date_time_unref(ds);
+	g_debug("pdata set to %s protocol with last_success to %s",  pdata->protocol, pdata->pdatestr);
+	if (pdata_gdate)
+		g_date_time_unref(pdata_gdate);
+	if (prof_gdate)
+		g_date_time_unref(prof_gdate);
 }
 
 /**
@@ -721,6 +742,7 @@ JsonNode *remmina_stats_get_profiles()
 	profiles_count = remmina_file_manager_iterate(
 		(GFunc)remmina_profiles_get_data,
 		(gpointer)pdata);
+	g_debug("Number of profiles: %d", profiles_count);
 
 	json_builder_add_int_value(b, profiles_count);
 
@@ -733,9 +755,11 @@ JsonNode *remmina_stats_get_profiles()
 	g_hash_table_iter_init(&pdateiter, pdata->proto_date);
 	while (g_hash_table_iter_next(&pdateiter, &pdatekey, &pdatevalue)) {
 		s = g_strdup_printf("DATE_%s", (gchar*)pdatekey);
+		g_debug("Protocol date label: %s", s);
 		json_builder_set_member_name(b, s);
 		g_free(s);
 		json_builder_add_string_value(b, (gchar*)pdatevalue);
+		g_debug("Protocol date: %s", (gchar*)pdatevalue);
 	}
 
 	json_builder_end_object(b);
@@ -780,6 +804,67 @@ JsonNode *remmina_stats_get_secret_plugin()
 
 	return r;
 }
+
+/**
+ * Add a json member HASMASTERPASSWORD which shows the status of the master password.
+ *
+ * @return a Json Node structure containg the status of the master password
+ *
+ */
+JsonNode *remmina_stats_get_master_password_status()
+{
+	TRACE_CALL(__func__);
+
+	JsonBuilder *b;
+	JsonNode *r;
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+
+	json_builder_set_member_name(b, "master_password_status");
+	if (remmina_pref_get_boolean("use_master_password")) {
+		json_builder_add_string_value(b, "ON");
+	} else {
+		json_builder_add_string_value(b, "OFF");
+	}
+
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+
+	return r;
+}
+
+/**
+ * Add a json member KIOSK which shows the status of the kiosk.
+ *
+ * @return a Json Node structure containg the status of the master password
+ *
+ */
+JsonNode *remmina_stats_get_kiosk_mode()
+{
+	TRACE_CALL(__func__);
+
+	JsonBuilder *b;
+	JsonNode *r;
+
+	b = json_builder_new();
+	json_builder_begin_object(b);
+
+	json_builder_set_member_name(b, "kiosk_status");
+	if (!kioskmode && kioskmode == FALSE) {
+		json_builder_add_string_value(b, "OFF");
+	}else {
+		json_builder_add_string_value(b, "ON");
+	}
+
+	json_builder_end_object(b);
+	r = json_builder_get_root(b);
+	g_object_unref(b);
+
+	return r;
+}
+
 
 
 /**
@@ -844,6 +929,15 @@ JsonNode *remmina_stats_get_all()
 	n = remmina_stats_get_secret_plugin();
 	json_builder_set_member_name(b, "ACTIVESECRETPLUGIN");
 	json_builder_add_value(b, n);
+
+	n = remmina_stats_get_master_password_status();
+	json_builder_set_member_name(b, "HASMASTERPASSWORD");
+	json_builder_add_value(b, n);
+
+	n = remmina_stats_get_kiosk_mode();
+	json_builder_set_member_name(b, "KIOSK");
+	json_builder_add_value(b, n);
+
 
 	json_builder_end_object(b);
 	n = json_builder_get_root(b);

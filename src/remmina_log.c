@@ -140,7 +140,6 @@ void remmina_log_start(void)
 		g_signal_connect(G_OBJECT(log_window), "destroy", G_CALLBACK(remmina_log_end), NULL);
 		gtk_widget_show(log_window);
 	}
-	remmina_log_print("Welcome to the remmina log window\n");
 	if (remmina_stat_sender_can_send())
 		remmina_log_print("Shortcut keys for stats:\n"
 			"\tCTRL+S: collect, show and send stats\n"
