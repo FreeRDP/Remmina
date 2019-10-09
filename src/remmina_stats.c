@@ -584,31 +584,34 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 	gint count = 0;
 	gpointer pcount, kpo;
 	gpointer pdate, kdo;
-	gchar *sday, *smonth, *syear;
-	gchar *dday, *dmonth, *dyear;
+	gchar *hday, *hmonth, *hyear;
+	gchar *pday, *pmonth, *pyear;
 
-	GDateTime *ds;          /** Source date -> from profile */
-	GDateTime *dd;          /** Destination date -> The date in the pdata structure */
+	GDateTime *prof_gdate;          /** Source date -> from profile */
+	GDateTime *pdata_gdate;          /** Destination date -> The date in the pdata structure */
 
 	struct ProfilesData* pdata;
 	pdata = (struct ProfilesData*)user_data;
 
 	pdata->protocol = remmina_file_get_string(remminafile, "protocol");
-	pdata->pdatestr = remmina_file_get_string(remminafile, "last_success");
-	g_debug("%s date %s", pdata->protocol, pdata->pdatestr);
+	//pdata->pdatestr = remmina_file_get_string(remminafile, "last_success");
+	const gchar *last_success = remmina_file_get_string(remminafile, "last_success");
+	g_debug("%s date %s", pdata->protocol, last_success);
 
-	ds = dd = NULL;
-	if (pdata->pdatestr && pdata->pdatestr[0] != '\0' && strlen(pdata->pdatestr) >= 6) {
-		dyear = g_strdup_printf("%.4s", pdata->pdatestr);
-		dmonth = g_strdup_printf("%.2s", pdata->pdatestr + 4);
-		dday = g_strdup_printf("%.2s", pdata->pdatestr + 6);
-		g_debug("dyear: %s, dmonth: %s, dday: %s", dyear, dmonth, dday);
-		dd = g_date_time_new_local(g_ascii_strtoll(dyear, NULL, 0),
-				g_ascii_strtoll(dmonth, NULL, 0),
-				g_ascii_strtoll(dday, NULL, 0), 0, 0, 0.0);
-		g_free(dyear);
-		g_free(dmonth);
-		g_free(dday);
+	prof_gdate = pdata_gdate = NULL;
+	if (last_success && last_success[0] != '\0' && strlen(last_success) >= 6) {
+		pyear = g_strdup_printf("%.4s", last_success);
+		pmonth = g_strdup_printf("%.2s", last_success + 4);
+		pday = g_strdup_printf("%.2s", last_success + 6);
+		g_debug("pyear: %s, pmonth: %s, pday: %s", pyear, pmonth, pday);
+		prof_gdate = g_date_time_new_local(
+				g_ascii_strtoll(pyear, NULL, 0),
+				g_ascii_strtoll(pmonth, NULL, 0),
+				g_ascii_strtoll(pday, NULL, 0), 0, 0, 0);
+		g_debug("prof_gdate: %s", prof_gdate);
+		g_free(pyear);
+		g_free(pmonth);
+		g_free(pday);
 	}
 
 
@@ -623,34 +626,49 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 		pdate = NULL;
 		if (g_hash_table_lookup_extended(pdata->proto_date, pdata->protocol, &kdo, &pdate)) {
 
-			ds = NULL;
+			pdata_gdate = NULL;
 			if (pdate && strlen(pdate) >= 6) {
-				syear = g_strdup_printf("%.4s", (char*)pdate);
-				smonth = g_strdup_printf("%.2s", (char*)pdate + 4);
-				sday = g_strdup_printf("%.2s", (char*)pdate + 6);
-				g_debug("syear: %s, smonth: %s, sday: %s", syear, smonth, sday);
-				ds = g_date_time_new_local(g_ascii_strtoll(syear, NULL, 0),
-						g_ascii_strtoll(smonth, NULL, 0),
-						g_ascii_strtoll(sday, NULL, 0), 0, 0, 0.0);
-				g_free(syear);
-				g_free(smonth);
-				g_free(sday);
+				pdata->pdatestr = g_strdup(pdate);
+				hyear = g_strdup_printf("%.4s", (char*)pdate);
+				hmonth = g_strdup_printf("%.2s", (char*)pdate + 4);
+				hday = g_strdup_printf("%.2s", (char*)pdate + 6);
+				g_debug("hyear: %s, hmonth: %s, hday: %s", hyear, hmonth, hday);
+				pdata_gdate = g_date_time_new_local(g_ascii_strtoll(hyear, NULL, 0),
+						g_ascii_strtoll(hmonth, NULL, 0),
+						g_ascii_strtoll(hday, NULL, 0), 0, 0, 0);
+				g_free(hyear);
+				g_free(hmonth);
+				g_free(hday);
 			}
 
 			/** When both date in the hash and in the profile are valid we compare the date */
-			if (ds && dd) {
-				gint res = g_date_time_compare( ds, dd );
+			if (prof_gdate != NULL && pdata_gdate != NULL ) {
+				g_debug("Comparing dates");
+				gint res = g_date_time_compare( pdata_gdate, prof_gdate );
 				/** If the date in the hash less than the date in the profile, we take the latter */
 				if (res < 0 ) {
+					g_debug("hash date is less than profile date. Replacing date in the hashtable");
+					g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(last_success));
+				} else {
+					g_debug("profile date is less than hash date. Replacing date in the hashtable");
 					g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 				}
+
 			}
-			/** If the date in the hash is NOT valid and the date in the profile is valid we keep the latter */
-			if (!ds && dd) {
+			/** If the date in the profile is NOT valid and the date in the hash is valid we keep the latter */
+			if (prof_gdate == NULL && pdata_gdate != NULL) {
+				g_debug("prof_gdate is NULL, replacing date in the hashtable");
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(pdata->pdatestr));
 			}
+
+			/** If the date in the hash is NOT valid and the date in the profile is valid we keep the latter */
+			if (prof_gdate != NULL && pdata_gdate == NULL) {
+				g_debug("pdata_gdate is NULL, replacing date in the hashtable");
+				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), g_strdup(last_success));
+			}
 			/** If both date are NULL, we insert NULL for that protocol */
-			if ((!ds && !dd) && pdata->pdatestr) {
+			if ((prof_gdate == NULL && pdata_gdate == NULL) && pdata->pdatestr) {
+				g_debug("All dates are NULL, replacing date in the hashtable");
 				g_hash_table_replace(pdata->proto_date, g_strdup(pdata->protocol), NULL);
 			}
 		}else {
@@ -664,10 +682,11 @@ static void remmina_profiles_get_data(RemminaFile *remminafile, gpointer user_da
 			}
 		}
 	}
-	if (dd)
-		g_date_time_unref(dd);
-	if (ds)
-		g_date_time_unref(ds);
+	g_debug("pdata set to %s protocol with last_success to %s",  pdata->protocol, pdata->pdatestr);
+	if (pdata_gdate)
+		g_date_time_unref(pdata_gdate);
+	if (prof_gdate)
+		g_date_time_unref(prof_gdate);
 }
 
 /**
