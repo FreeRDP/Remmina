@@ -184,7 +184,7 @@ static void rmnews_show_news(GtkWindow *parent)
 
 	rmnews_news_dialog->rmnews_text_view = GTK_TEXT_VIEW(GET_OBJ("rmnews_text_view"));
 	rmnews_news_dialog->rmnews_label = GTK_LABEL(GET_OBJ("rmnews_label"));
-	rmnews_news_dialog->rmnews_stats_label = GTK_LABEL(GET_OBJ("rmnews_stats_label"));
+	//rmnews_news_dialog->rmnews_stats_label = GTK_LABEL(GET_OBJ("rmnews_stats_label"));
 	rmnews_news_dialog->rmnews_stats_switch = GTK_SWITCH(GET_OBJ("rmnews_stats_switch"));
 	if (remmina_pref.periodic_usage_stats_permitted == TRUE) {
 		gtk_switch_set_active(rmnews_news_dialog->rmnews_stats_switch, TRUE);
