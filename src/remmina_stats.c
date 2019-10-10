@@ -170,33 +170,6 @@ struct ProfilesData {
 	gchar datestr;
 };
 
-static gchar* remmina_stats_gen_random_uuid_prefix()
-{
-	TRACE_CALL(__func__);
-	GRand *rand;
-	GTimeVal t;
-	gchar *result;
-	int i;
-	static char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-	result = g_malloc0(15);
-
-	g_get_current_time(&t);
-	rand = g_rand_new_with_seed((guint32)t.tv_sec ^ (guint32)t.tv_usec);
-
-	for (i = 0; i < 7; i++) {
-		result[i] = alpha[g_rand_int_range(rand, 0, sizeof(alpha) - 1)];
-	}
-
-	g_rand_set_seed(rand, (guint32)t.tv_usec);
-	for (i = 0; i < 7; i++) {
-		result[i + 7] = alpha[g_rand_int_range(rand, 0, sizeof(alpha) - 1)];
-	}
-	g_rand_free(rand);
-
-	return result;
-}
-
 JsonNode *remmina_stats_get_uid()
 {
 	TRACE_CALL(__func__);
@@ -213,7 +186,7 @@ JsonNode *remmina_stats_get_uid()
 
 	if (remmina_pref.periodic_usage_stats_uuid_prefix == NULL || remmina_pref.periodic_usage_stats_uuid_prefix[0] == 0) {
 		/* Generate a new UUID_PREFIX for this installation */
-		uid_prefix = remmina_stats_gen_random_uuid_prefix();
+		uid_prefix = remmina_gen_random_uuid();
 		if (remmina_pref.periodic_usage_stats_uuid_prefix)
 			g_free(remmina_pref.periodic_usage_stats_uuid_prefix);
 		remmina_pref.periodic_usage_stats_uuid_prefix = uid_prefix;

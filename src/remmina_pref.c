@@ -668,6 +668,16 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.periodic_rmnews_last_get = 0;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_news", "periodic_rmnews_get_count", NULL))
+		remmina_pref.periodic_rmnews_get_count = g_key_file_get_int64(gkeyfile, "remmina_news", "periodic_rmnews_get_count", NULL);
+	else
+		remmina_pref.periodic_rmnews_get_count = 0;
+
+	if (g_key_file_has_key(gkeyfile, "remmina_news", "periodic_rmnews_uuid_prefix", NULL))
+		remmina_pref.periodic_rmnews_uuid_prefix = g_key_file_get_string(gkeyfile, "remmina_news", "periodic_rmnews_uuid_prefix", NULL);
+	else
+		remmina_pref.periodic_rmnews_uuid_prefix = NULL;
+
 	/* Default settings */
 	if (!g_key_file_has_key(gkeyfile, "remmina", "name", NULL)) {
 		g_key_file_set_string(gkeyfile, "remmina", "name", "");
@@ -802,9 +812,13 @@ gboolean remmina_pref_save(void)
 
 	g_key_file_set_boolean(gkeyfile, "usage_stats", "periodic_usage_stats_permitted", remmina_pref.periodic_usage_stats_permitted);
 	g_key_file_set_int64(gkeyfile, "usage_stats", "periodic_usage_stats_last_sent", remmina_pref.periodic_usage_stats_last_sent);
-	g_key_file_set_int64(gkeyfile, "remmina_news", "periodic_rmnews_last_get", remmina_pref.periodic_rmnews_last_get);
 	g_key_file_set_string(gkeyfile, "usage_stats", "periodic_usage_stats_uuid_prefix",
 			remmina_pref.periodic_usage_stats_uuid_prefix ? remmina_pref.periodic_usage_stats_uuid_prefix : "");
+	g_key_file_set_int64(gkeyfile, "remmina_news", "periodic_rmnews_last_get", remmina_pref.periodic_rmnews_last_get);
+	g_key_file_set_integer(gkeyfile, "remmina_news", "periodic_rmnews_get_count", remmina_pref.periodic_rmnews_get_count);
+	g_key_file_set_string(gkeyfile, "remmina_news", "periodic_rmnews_uuid_prefix",
+			remmina_pref.periodic_rmnews_uuid_prefix ? remmina_pref.periodic_rmnews_uuid_prefix : "");
+
 	/* Default settings */
 	g_key_file_set_string(gkeyfile, "remmina", "name", "");
 	g_key_file_set_integer(gkeyfile, "remmina", "ignore-tls-errors", 1);

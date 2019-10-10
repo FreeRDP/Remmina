@@ -41,7 +41,6 @@ G_BEGIN_DECLS
 gboolean remmina_sysinfo_is_appindicator_available(void);
 gchar *remmina_sysinfo_get_gnome_shell_version(void);
 gchar *remmina_sysinfo_get_wm_name(void);
-gchar *remmina_sysinfo_get_unique_user_id(void);
 
 G_END_DECLS
 

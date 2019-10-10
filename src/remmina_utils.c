@@ -500,3 +500,35 @@ gchar* remmina_sha1_file (const gchar *filename)
 
     return digest;
 }
+
+/**
+ * Generate a random sting of chars to be used as part of UID for news or stats
+  * @return a string or NULL. Caller must free it with g_free().
+ */
+gchar* remmina_gen_random_uuid()
+{
+	TRACE_CALL(__func__);
+	GRand *rand;
+	GTimeVal t;
+	gchar *result;
+	int i;
+	static char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+	result = g_malloc0(15);
+
+	g_get_current_time(&t);
+	rand = g_rand_new_with_seed((guint32)t.tv_sec ^ (guint32)t.tv_usec);
+
+	for (i = 0; i < 7; i++) {
+		result[i] = alpha[g_rand_int_range(rand, 0, sizeof(alpha) - 1)];
+	}
+
+	g_rand_set_seed(rand, (guint32)t.tv_usec);
+	for (i = 0; i < 7; i++) {
+		result[i + 7] = alpha[g_rand_int_range(rand, 0, sizeof(alpha) - 1)];
+	}
+	g_rand_free(rand);
+
+	return result;
+}
+

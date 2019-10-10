@@ -54,6 +54,7 @@
 #include "remmina_utils.h"
 #include "remmina_scheduler.h"
 #include "remmina_stats_sender.h"
+#include "remmina_stats.h"
 #include "remmina_sysinfo.h"
 #include "rmnews.h"
 
@@ -339,11 +340,52 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 				g_get_current_time(&t);
 				remmina_pref.periodic_rmnews_last_get = t.tv_sec;
 			}
+			/* Increase counter with number of successful GETs */
+			remmina_pref.periodic_rmnews_get_count = remmina_pref.periodic_rmnews_get_count + 1;
 			remmina_pref_save();
 		}
 	}
 	g_object_unref(msg);
 }
+/**
+ * Try to get a unique system+user ID to identify this remmina user
+ * and avoid some duplicated task, especially on news management
+ * @return a string
+  * @warning The returned string must be freed with g_free.
+ */
+gchar *rmnews_get_uid()
+{
+	TRACE_CALL(__func__);
+	GChecksum *chs;
+	const gchar *uname, *hname;
+	const gchar *uid_suffix;
+	gchar *uid_prefix;
+	gchar *uid;
+
+	/* This code is very similar to remmina_stats_get_uid() */
+
+	if (remmina_pref.periodic_rmnews_uuid_prefix == NULL || remmina_pref.periodic_rmnews_uuid_prefix[0] == 0) {
+		/* Generate a new UUID_PREFIX for news on this installation */
+		uid_prefix = remmina_gen_random_uuid();
+		if (remmina_pref.periodic_rmnews_uuid_prefix)
+			g_free(remmina_pref.periodic_rmnews_uuid_prefix);
+		remmina_pref.periodic_rmnews_uuid_prefix = uid_prefix;
+		remmina_pref_save();
+	}
+
+	uname = g_get_user_name();
+	hname = g_get_host_name();
+	chs = g_checksum_new(G_CHECKSUM_SHA256);
+	g_checksum_update(chs, (const guchar*)uname, strlen(uname));
+	g_checksum_update(chs, (const guchar*)hname, strlen(hname));
+	uid_suffix = g_checksum_get_string(chs);
+
+	uid = g_strdup_printf("02-%s-%.10s", remmina_pref.periodic_rmnews_uuid_prefix, uid_suffix);
+	g_checksum_free(chs);
+
+	return uid;
+}
+
 
 void rmnews_get_url(const char *url)
 {
@@ -367,7 +409,9 @@ void rmnews_get_news()
 	SoupLogger *logger = NULL;
 	int fd;
 	gchar *uid;
+	gchar mage[20], gcount[20];
 	gboolean sa;
+	struct stat sb;
 
 	gchar *cachedir = g_build_path("/", g_get_user_cache_dir(), REMMINA_APP_ID, NULL);
 	gint d = g_mkdir_with_parents(cachedir, 0750);
@@ -409,7 +453,7 @@ void rmnews_get_news()
 	gchar *lang = remmina_utils_get_lang();
 	g_debug("Language %s", lang);
 
-	uid = remmina_sysinfo_get_unique_user_id();
+	uid = rmnews_get_uid();
 
 	sa = FALSE;
 	if (remmina_pref.periodic_usage_stats_permitted &&
@@ -417,6 +461,13 @@ void rmnews_get_news()
 		remmina_pref.periodic_usage_stats_uuid_prefix[0] != 0) {
 		sa = TRUE;
 	}
+
+	if (stat("/etc/machine-id", &sb) == 0)
+		sprintf(mage, "%ld", (long)(time(NULL) - sb.st_mtim.tv_sec));
+	else
+		strcpy(mage, "0");
+
+	sprintf(gcount, "%ld", remmina_pref.periodic_rmnews_get_count);
 
 	rmnews_get_url(g_strconcat(REMMINA_URL,
 				"news/remmina_news.php?lang=",
@@ -427,6 +478,10 @@ void rmnews_get_news()
 				uid,
 				"&sa=",
 				sa ? "1" : "0",
+				"&mage=",
+				mage,
+				"&gcount=",
+				gcount,
 				NULL));
 
 	g_free(uid);

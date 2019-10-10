@@ -56,4 +56,5 @@ gchar *remmina_utils_get_lsb_codename();
 GHashTable *remmina_utils_get_etc_release();
 const gchar *remmina_utils_get_os_info();
 gchar *remmina_sha1_file(const gchar *filename);
+gchar* remmina_gen_random_uuid();
 G_END_DECLS
