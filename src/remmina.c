@@ -1,5 +1,5 @@
 /*
- * Remmina - The GTK+ Remote Desktop Client
+ * Remmina - The GTK Remote Desktop Client
  * Copyright (C) 2009-2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  * Copyright (C) 2016-2019 Antenore Gatta, Giovanni Panozzo
@@ -80,22 +80,22 @@ gboolean kioskmode;
 
 static GOptionEntry remmina_options[] =
 {
-	{ "about",	      'a',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show about dialog"),								     NULL	},
-	{ "connect",	      'c',  0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Connect to desktop described by file (.remmina or type supported by plugin)"),	     "FILE"	},
-	{ G_OPTION_REMAINING, '\0', 0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect to desktop described by file (.remmina or type supported by plugin)"),	     "FILE"	},
-	{ "edit",	      'e',  0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Edit desktop connection described by file (.remmina or type supported by plugin)"), "FILE"	},
+	{ "about",	      'a',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show '\About\'"),								     NULL	},
+	{ "connect",	      'c',  0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Connect to desktop described in file (.remmina or type supported by plugin)"),	     "FILE"	},
+	{ G_OPTION_REMAINING, '\0', 0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect to desktop described in file (.remmina or type supported by plugin)"),	     "FILE"	},
+	{ "edit",	      'e',  0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Edit desktop connection described in file (.remmina or type supported by plugin)"), "FILE"	},
 	{ "help",	      '?',  G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE,	       NULL, NULL,										     NULL	},
-	{ "kiosk",	      'k',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Start Remmina in Kiosk mode"),							     NULL	},
-	{ "new",	      'n',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Create a new connection profile"),						     NULL	},
-	{ "pref",	      'p',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Show preferences dialog page"),						     "PAGENR"	},
-	{ "plugin",	      'x',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Execute the plugin"),								     "PLUGIN"	},
-	{ "quit",	      'q',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Quit the application"),							     NULL	},
+	{ "kiosk",	      'k',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Start in Kiosk mode"),							     NULL	},
+	{ "new",	      'n',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Create new connection profile"),						     NULL	},
+	{ "pref",	      'p',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Show preferences"),						     "PAGENR"	},
+	{ "plugin",	      'x',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Run a plugin"),								     "PLUGIN"	},
+	{ "quit",	      'q',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Quit"),							     NULL	},
 	{ "server",	      's',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Use default server name (for --new)"),						     "SERVER"	},
 	{ "protocol",	      't',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Use default protocol (for --new)"),						     "PROTOCOL" },
-	{ "icon",	      'i',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Start as tray icon"),								     NULL	},
-	{ "version",	      'v',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show the application’s version"),						     NULL	},
-	{ "full-version",     'V',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show the application’s version, including the plugin versions"),		     NULL	},
-	{ "update-profile",   0,    0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Modify connection profile, require also --set-option"),			     NULL	},
+	{ "icon",	      'i',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Start in tray"),								     NULL	},
+	{ "version",	      'v',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show the application version"),						     NULL	},
+	{ "full-version",     'V',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show version of the application and its plugins"),		     NULL	},
+	{ "update-profile",   0,    0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Modify connection profile, (requires --set-option)"),			     NULL	},
 	{ "set-option",	      0,    0,			  G_OPTION_ARG_STRING_ARRAY,   NULL, N_("Set one or more profile settings, to be used with --update-profile"),		     NULL	},
 	{ NULL }
 };
@@ -230,8 +230,8 @@ static void remmina_on_startup(GApplication *app)
 	remmina_stats_sender_schedule();
 	rmnews_schedule();
 
-	/* Check for secret plugin and service initialization and show some warnings on the console if
-	 * there is something missing */
+	/* Check for secret plugin and service initialization and show console warnings if
+	 * something is missing */
 	secret_plugin = remmina_plugin_manager_get_secret_plugin();
 	if (!secret_plugin) {
 		g_print("WARNING: Remmina is running without a secret plugin. Passwords will be saved in a less secure way.\n");
@@ -314,7 +314,7 @@ int main(int argc, char *argv[])
 	gcry_control(GCRYCTL_INITIALIZATION_FINISHED, 0);
 #endif  /* !HAVE_LIBGCRYPT */
 
-	/* Initialize some remmina parts needed also on a local instance for correct handle-local-options */
+	/* Initialize some Remmina parts needed also on a local instance for correct handle-local-options */
 	remmina_pref_init();
 	remmina_file_manager_init();
 	remmina_plugin_manager_init();
@@ -322,7 +322,7 @@ int main(int argc, char *argv[])
 
 	app_id = g_application_id_is_valid(REMMINA_APP_ID) ? REMMINA_APP_ID : NULL;
 	app = gtk_application_new(app_id, G_APPLICATION_HANDLES_COMMAND_LINE);
-#if !GTK_CHECK_VERSION(4, 0, 0) /* This is not needed anymore starting from Gtk+ 4 */
+#if !GTK_CHECK_VERSION(4, 0, 0) /* This is not needed anymore starting from GTK 4 */
 	g_set_prgname(app_id);
 #endif
 	g_signal_connect(app, "startup", G_CALLBACK(remmina_on_startup), NULL);
