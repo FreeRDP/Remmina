@@ -80,7 +80,7 @@ gboolean kioskmode;
 
 static GOptionEntry remmina_options[] =
 {
-	{ "about",	      'a',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show '\About\'"),								     NULL	},
+	{ "about",	      'a',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show \'About\'"),								     NULL	},
 	{ "connect",	      'c',  0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Connect to desktop described in file (.remmina or type supported by plugin)"),	     "FILE"	},
 	{ G_OPTION_REMAINING, '\0', 0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect to desktop described in file (.remmina or type supported by plugin)"),	     "FILE"	},
 	{ "edit",	      'e',  0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Edit desktop connection described in file (.remmina or type supported by plugin)"), "FILE"	},
