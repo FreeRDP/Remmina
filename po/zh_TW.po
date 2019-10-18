@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-10-11 18:58+0000\n"
-"PO-Revision-Date: 2019-09-28 10:30+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2019-10-19 08:53+0000\n"
+"Last-Translator: Walter Cheuk <wwycheuk@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hant/>\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Weblate 3.9.1-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #. Profile: Protocol
@@ -411,11 +411,11 @@ msgstr "進度"
 #: src/remmina_exec.c:171
 #, c-format
 msgid "Unable to open profile file %s\n"
-msgstr ""
+msgstr "無法開啟連線設定檔 %s\n"
 
 #: src/remmina_exec.c:184
 msgid "Error: an extra line of standard input is needed\n"
-msgstr ""
+msgstr "錯誤：標準輸入需要額外一行\n"
 
 #: src/remmina_exec.c:305
 #, c-format
@@ -472,7 +472,6 @@ msgstr ""
 "* [伺服器]:連接埠</big></tt>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
 msgid ""
 "<tt><big>* command in PATH args %h\n"
 "* /path/to/foo -options %h %u\n"
@@ -486,7 +485,7 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
-"<tt><big>* PATH 參數中的指令 %h\n"
+"<tt><big>* PATH 引數中的指令 %h\n"
 "* /path/to/foo -options %h %u\n"
 "* %h 會被替換為伺服器名\n"
 "* %t 會被替換為 SSH 伺服器名\n"
@@ -494,7 +493,7 @@ msgstr ""
 "* %U 會被替換為 SSH 使用者名稱\n"
 "* %p 會被替換為 Remmina 連線設定檔名稱\n"
 "* %P 會被替換為 Remmina 連線設定檔群組名稱\n"
-"如果您想在連線前執行命令，請不要在背景執行。\n"
+"如果想在連線前執行指令，請不要在背景執行。\n"
 "</big></tt>"
 
 #: src/remmina_file_editor.c:94
@@ -1097,7 +1096,7 @@ msgstr[0] "共 %i 項。"
 #: src/remmina_main.c:826
 #, c-format
 msgid "Are you sure to delete '%s'"
-msgstr "您確定要刪除「%s」？"
+msgstr "確定要刪除「%s」？"
 
 #: src/remmina_main.c:925
 #, c-format
@@ -1121,47 +1120,39 @@ msgid "Remmina Kiosk"
 msgstr "Remmina 服務台"
 
 #: src/remmina.c:83
-#, fuzzy
 msgid "Show 'About'"
-msgstr "顯示關於對話框"
+msgstr "顯示「關於」對話框"
 
 #: src/remmina.c:84 src/remmina.c:85
-#, fuzzy
 msgid ""
 "Connect to desktop described in file (.remmina or type supported by plugin)"
 msgstr "連接到檔案描述的桌面（.remmina 或外掛支援的檔案類型）"
 
 #: src/remmina.c:86
-#, fuzzy
 msgid ""
 "Edit desktop connection described in file (.remmina or type supported by "
 "plugin)"
 msgstr "編輯檔案描述的桌面連接（.remmina 或外掛支援的檔案類型）"
 
 #: src/remmina.c:88
-#, fuzzy
 msgid "Start in Kiosk mode"
-msgstr "在服務台模式下啟動 Remmina"
+msgstr "在服務台模式啟動"
 
 #: src/remmina.c:89
-#, fuzzy
 msgid "Create new connection profile"
 msgstr "建立新的連線設定檔"
 
 #: src/remmina.c:90
-#, fuzzy
 msgid "Show preferences"
-msgstr "偏好設定"
+msgstr "顯示偏好設定"
 
 #: src/remmina.c:91
-#, fuzzy
 msgid "Run a plugin"
 msgstr "執行外掛"
 
 #: src/remmina.c:92
-#, fuzzy
 msgid "Quit"
-msgstr "離開(_Q)"
+msgstr "離開"
 
 #: src/remmina.c:93
 msgid "Use default server name (for --new)"
@@ -1172,27 +1163,24 @@ msgid "Use default protocol (for --new)"
 msgstr "使用預設協定（針對 --new）"
 
 #: src/remmina.c:95
-#, fuzzy
 msgid "Start in tray"
 msgstr "以工作列模式啟動"
 
 #: src/remmina.c:96
-#, fuzzy
 msgid "Show the application version"
 msgstr "顯示應用程式版本"
 
 #: src/remmina.c:97
-#, fuzzy
 msgid "Show version of the application and its plugins"
-msgstr "顯示應用程式版本"
+msgstr "顯示應用程式及外掛版本"
 
 #: src/remmina.c:98
 msgid "Modify connection profile, (requires --set-option)"
-msgstr ""
+msgstr "修改連線設定檔（需要 --set-option）"
 
 #: src/remmina.c:99
 msgid "Set one or more profile settings, to be used with --update-profile"
-msgstr ""
+msgstr "設定一個或多個連線設定，與 --update-profile 一起使用"
 
 #: src/remmina_about.c:53
 msgid "translator-credits"
@@ -1570,7 +1558,7 @@ msgstr "無法初始化 libfreerdp gdi"
 msgid ""
 "You requested an H.264 GFX mode for server %s, but your libfreerdp does not "
 "support H.264. Please use a non-AVC Color Depth setting."
-msgstr ""
+msgstr "要求了於 %s 伺服器使用 H.264 GFX 模式，但您的 libfreerdp 並不支援 H.264。請使用非 AVC 的色彩深度設定。"
 
 #: plugins/rdp/rdp_plugin.c:1540
 #, c-format
@@ -1710,10 +1698,13 @@ msgid "Override Printer Drivers"
 msgstr "凌駕印表機驅動程式"
 
 #: plugins/rdp/rdp_plugin.c:1891
+#, fuzzy
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":\""
+"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:1892
 msgid "Local serial name"
@@ -1925,7 +1916,6 @@ msgid "Hello World!"
 msgstr "Hello World!"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
-#, fuzzy
 msgid "Secure password storing in the GNOME keyring"
 msgstr "儲存在 GNOME 鑰匙圈的安全密碼"
 
@@ -1934,13 +1924,12 @@ msgid "You did not set any command to be executed"
 msgstr "您沒有設定要執行的指令"
 
 #: plugins/exec/exec_plugin.c:204
-#, fuzzy
 msgid ""
 "WARNING! Running a command synchronously may cause Remmina not to respond.\n"
 "Do you really want to continue?"
 msgstr ""
 "警告！同步執行命令可能使 Remmina 停止回應。\n"
-"您真的想要繼續嗎？"
+"真的想要繼續嗎？"
 
 #: plugins/exec/exec_plugin.c:264
 msgid "Command"
@@ -2045,14 +2034,12 @@ msgid "XDMCP - X Remote Session"
 msgstr "XDMCP - X 遠端作業階段"
 
 #: plugins/vnc/vnc_plugin.h:41
-#, fuzzy
 msgid "Remmina VNC Plugin"
-msgstr "Remmina 瀏覽器外掛"
+msgstr "Remmina VNC 外掛"
 
 #: plugins/vnc/vnc_plugin.h:46
-#, fuzzy
 msgid "Remmina VNC listener Plugin"
-msgstr "Remmina 瀏覽器外掛"
+msgstr "Remmina VNC 傾聽程式外掛"
 
 #: plugins/vnc/vnc_plugin.c:868
 msgid "Unable to connect to VNC server"
@@ -2125,8 +2112,9 @@ msgid "File downloaded"
 msgstr "檔案已下載"
 
 #: plugins/www/www_plugin.c:783
+#, fuzzy
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: plugins/www/www_plugin.c:783
 msgid "http://address or https://address"
@@ -2137,43 +2125,38 @@ msgid "User Agent"
 msgstr "使用者代理"
 
 #: plugins/www/www_plugin.c:801
-#, fuzzy
 msgid "Turn on Java support"
 msgstr "啟用 Java 支援"
 
 #: plugins/www/www_plugin.c:802
-#, fuzzy
 msgid "Turn on smooth scrolling"
-msgstr "啟用滑順捲動"
+msgstr "啟用順滑捲動"
 
 #: plugins/www/www_plugin.c:803
-#, fuzzy
 msgid "Turn on Spatial Navigation"
-msgstr "啟用 Spatial Navigation"
+msgstr "啟用空間導覽"
 
 #: plugins/www/www_plugin.c:804
 msgid "Turn on plugin support"
-msgstr ""
+msgstr "啟用外掛支援"
 
 #: plugins/www/www_plugin.c:805
 msgid "Turn on WebGL support"
-msgstr ""
+msgstr "啟用 WebGL 支援"
 
 #: plugins/www/www_plugin.c:806
 msgid "Turn on WebAudio support"
-msgstr ""
+msgstr "啟用 WebAudio 支援"
 
 #: plugins/www/www_plugin.c:807
 msgid "Ignore TLS errors"
 msgstr "忽略 TLS 錯誤"
 
 #: plugins/www/www_plugin.c:808
-#, fuzzy
 msgid "No password storing"
-msgstr "停用記住密碼"
+msgstr "不要記住密碼"
 
 #: plugins/www/www_plugin.c:810
-#, fuzzy
 msgid "Turn on Web Inspector"
 msgstr "啟用 Web 檢視器"
 
@@ -2207,7 +2190,7 @@ msgstr "關於"
 
 #: data/ui/remmina_about.glade:40
 msgid "Website"
-msgstr ""
+msgstr "網站"
 
 #: data/ui/remmina_news.glade:108
 msgid ""
@@ -2215,6 +2198,9 @@ msgid ""
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics to remmina.org"
 msgstr ""
+"傳送<b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
+">匿名</a></b>統計資料給 remmina.org"
 
 #: data/ui/remmina_news.glade:133
 msgid "Make Remmina the default Remote Desktop Client"
@@ -2247,7 +2233,6 @@ msgid "<big>Contribute</big>"
 msgstr "<big>提供貢獻</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:46
-#, fuzzy
 msgid ""
 "It seems that Remmina is running on your system as a SNAP package. To enable "
 "access to some important features, like password saving in your keyring and "
@@ -2255,9 +2240,8 @@ msgid ""
 "appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"似乎 Remmina 是以 SNAP 套件的方式在您的系統上運行，為了啟用一些重要的功能，像"
-"是將密碼儲存到您的鑰匙圈與 RDP 印表機共享，請開啟您的軟體中心並給予 Remmina "
-"適當的權限。或者您可以在終端機中輸入下列指令："
+"似乎 Remmina 是以 SNAP 套件的方式在您的系統上運行。為了啟用一些重要的功能，像是將密碼儲存到您的鑰匙圈與 RDP "
+"印表機共享，請開啟您的「軟體中心」，並給予 Remmina 適當的權限；又或在終端機輸入以下指令："
 
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"
@@ -2293,7 +2277,6 @@ msgid "Master password secret key"
 msgstr "主密碼密鑰"
 
 #: data/ui/remmina_main.glade:69
-#, fuzzy
 msgid "New connection profile"
 msgstr "建立新的連線設定檔"
 
@@ -2335,17 +2318,17 @@ msgid "Multi password changer"
 msgstr "批次密碼變更工具"
 
 #: data/ui/remmina_main.glade:339
-#, fuzzy
 msgid "Debugging"
-msgstr "除錯視窗"
+msgstr "除錯"
 
 #: data/ui/remmina_main.glade:384
 msgid "Homepage"
 msgstr "首頁"
 
 #: data/ui/remmina_main.glade:394
+#, fuzzy
 msgid "Wiki"
-msgstr ""
+msgstr "Wiki"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:404
@@ -2365,7 +2348,6 @@ msgid "Plugin"
 msgstr "外掛"
 
 #: data/ui/remmina_main.glade:555
-#, fuzzy
 msgid "Last used"
 msgstr "最後使用時間"
 
@@ -2455,19 +2437,17 @@ msgstr "螢幕截圖資料夾"
 
 #: data/ui/remmina_preferences.glade:292
 msgid "Choose the a folder to save screenshots from Remmina in."
-msgstr ""
+msgstr "選擇儲存 Remmina 螢幕截圖的資料夾。"
 
 #: data/ui/remmina_preferences.glade:295
-#, fuzzy
 msgid "Select a Folder"
-msgstr "全選"
+msgstr "選取資料夾"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Screen resolutions"
 msgstr "螢幕解析度"
 
 #: data/ui/remmina_preferences.glade:326
-#, fuzzy
 msgid "Screenshots filename"
 msgstr "螢幕截圖檔案名稱"
 
@@ -2501,7 +2481,6 @@ msgid "Remember last view mode"
 msgstr "記住最後一次的觀看模式"
 
 #: data/ui/remmina_preferences.glade:418
-#, fuzzy
 msgid "Send periodic usage statistics to Remmina developers"
 msgstr "定期傳送使用統計資料給 remmina 開發人員"
 
@@ -2511,10 +2490,9 @@ msgstr "傳送統計資料至 remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
 msgid "Only save generated screenshots, don't copy them to clipboard."
-msgstr ""
+msgstr "僅將螢幕截圖儲存為檔案，不要存入剪貼簿。"
 
 #: data/ui/remmina_preferences.glade:467
-#, fuzzy
 msgid "Prevent screenshots from entering clipboard"
 msgstr "拒絕將螢幕截圖存入剪貼簿"
 
@@ -2525,7 +2503,6 @@ msgid ""
 msgstr "用一個格式化的文字為您的 Remmina 連線設定檔設定一個自訂的檔案名稱。"
 
 #: data/ui/remmina_preferences.glade:483
-#, fuzzy
 msgid "Profile filename template"
 msgstr "設定檔檔案名稱範本"
 
@@ -2538,6 +2515,12 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
+"%G 群組名 (斜線 / 會自動換成 - )\n"
+"%P 協定名\n"
+"%N 連線名\n"
+"%h 主機名/IP\n"
+"\n"
+"\n"
 
 #: data/ui/remmina_preferences.glade:504
 msgid "%G_%P_%N_%h"
@@ -2573,7 +2556,7 @@ msgstr "捲動全螢幕"
 
 #: data/ui/remmina_preferences.glade:587
 msgid "Viewport fullscreen"
-msgstr ""
+msgstr "Viewport 全螢幕"
 
 #: data/ui/remmina_preferences.glade:603
 msgid "Tab interface"
@@ -2593,11 +2576,11 @@ msgstr "將所有連線分頁"
 
 #: data/ui/remmina_preferences.glade:621
 msgid "No tabs"
-msgstr ""
+msgstr "無分頁"
 
 #: data/ui/remmina_preferences.glade:632
 msgid "Fullscreen on the same monitor as the connection window"
-msgstr ""
+msgstr "全螢幕，並與連線視窗位於同一個螢幕"
 
 #: data/ui/remmina_preferences.glade:656
 msgid "Peeking"
@@ -2628,7 +2611,6 @@ msgid "Hide total count in group menu"
 msgstr "在群組選單中隱藏總數"
 
 #: data/ui/remmina_preferences.glade:757
-#, fuzzy
 msgid "No tray icon"
 msgstr "停用工作列圖示"
 
@@ -2752,7 +2734,7 @@ msgstr "主密碼"
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
 msgid "Use secret key to authenticate with some widgets"
-msgstr ""
+msgstr "使用密鑰來對某些器件進行身分核對"
 
 #: data/ui/remmina_preferences.glade:1472
 msgid "Use master password"
@@ -2783,17 +2765,14 @@ msgid "Scrollback lines"
 msgstr "回捲行數"
 
 #: data/ui/remmina_preferences.glade:1702
-#, fuzzy
 msgid "Copy to clipboard shortcut"
-msgstr "剪貼簿複製快速縣"
+msgstr "剪貼簿複製快速鍵"
 
 #: data/ui/remmina_preferences.glade:1715
-#, fuzzy
 msgid "Paste from clipboard shortcut"
-msgstr "剪貼簿複製快速縣"
+msgstr "剪貼簿貼上快速鍵"
 
 #: data/ui/remmina_preferences.glade:1728
-#, fuzzy
 msgid "Select all shortcuts"
 msgstr "選擇所有快速鍵"
 
@@ -2834,96 +2813,78 @@ msgid "Cursor Color"
 msgstr "游標顏色"
 
 #: data/ui/remmina_preferences.glade:1917
-#, fuzzy
 msgid ""
 "Choose a color scheme file. Usually available in /usr/share/remmina/theme. "
 "More details in https://github.com/mbadolato/iTerm2-Color-Schemes."
 msgstr ""
-"選擇一個配色檔，預先安裝的配色通常在 /usr/share/remmina/theme 下。請參閱 "
-"https://github.com/mbadolato/iTerm2-Color-Schemes"
+"選擇配色檔。預先安裝的配色通常在 /usr/share/remmina/theme。請參閱 https://github.com/mbadolato/"
+"iTerm2-Color-Schemes"
 
 #: data/ui/remmina_preferences.glade:1920
-#, fuzzy
 msgid "Pick a terminal coloring file"
-msgstr "選擇洋紅色"
+msgstr "選擇終端機配色檔案"
 
 #: data/ui/remmina_preferences.glade:1934
-#, fuzzy
 msgid "Pick a black color"
-msgstr "選擇紅色"
+msgstr "選擇黑色"
 
 #: data/ui/remmina_preferences.glade:1946
-#, fuzzy
 msgid "Pick a red color"
 msgstr "選擇紅色"
 
 #: data/ui/remmina_preferences.glade:1958
-#, fuzzy
 msgid "Pick a green color"
-msgstr "背景色"
+msgstr "選擇綠色"
 
 #: data/ui/remmina_preferences.glade:1970
-#, fuzzy
 msgid "Pick a yellow color"
 msgstr "選擇黃色"
 
 #: data/ui/remmina_preferences.glade:1982
-#, fuzzy
 msgid "Pick a blue color"
-msgstr "選擇紅色"
+msgstr "選擇藍色"
 
 #: data/ui/remmina_preferences.glade:1994
-#, fuzzy
 msgid "Pick a magenta color"
 msgstr "選擇洋紅色"
 
 #: data/ui/remmina_preferences.glade:2006
-#, fuzzy
 msgid "Pick a cyan color"
-msgstr "選擇紅色"
+msgstr "選擇青綠色"
 
 #: data/ui/remmina_preferences.glade:2019
-#, fuzzy
 msgid "Pick a white color"
-msgstr "選擇紅色"
+msgstr "選擇白色"
 
 #: data/ui/remmina_preferences.glade:2031
-#, fuzzy
 msgid "Pick a light black color"
 msgstr "選擇亮黑色"
 
 #: data/ui/remmina_preferences.glade:2043
-#, fuzzy
 msgid "Pick a light red color"
 msgstr "選擇亮紅色"
 
 #: data/ui/remmina_preferences.glade:2055
-#, fuzzy
 msgid "Pick a bright green color"
 msgstr "選擇亮綠色"
 
 #: data/ui/remmina_preferences.glade:2067
-#, fuzzy
 msgid "Pick a bright yellow color"
 msgstr "選擇亮黃色"
 
 #: data/ui/remmina_preferences.glade:2079
-#, fuzzy
 msgid "Pick a bright blue color"
 msgstr "選擇亮藍色"
 
 #: data/ui/remmina_preferences.glade:2091
-#, fuzzy
 msgid "Pick a light magenta color"
 msgstr "選擇亮洋紅色"
 
 #: data/ui/remmina_preferences.glade:2103
-#, fuzzy
 msgid "Pick a light cyan color"
-msgstr "選擇亮青色"
+msgstr "選擇亮青綠色"
 
 #: data/ui/remmina_preferences.glade:2116
-#, fuzzy
 msgid "Pick a light white color"
 msgstr "選擇亮白色"
 
@@ -2938,4 +2899,3 @@ msgstr "允許粗體字"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "終端機"
-
