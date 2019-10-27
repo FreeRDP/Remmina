@@ -730,6 +730,8 @@ void remmina_rdp_cliprdr_detach_owner(RemminaProtocolWidget* gp)
 	rfContext* rfi = GET_PLUGIN_DATA(gp);
 	GtkClipboard* gtkClipboard;
 
+	if (!rfi || !rfi->drawing_area) return;
+
 	gtkClipboard = gtk_widget_get_clipboard(rfi->drawing_area, GDK_SELECTION_CLIPBOARD);
 	if (gtkClipboard && gtk_clipboard_get_owner(gtkClipboard) == (GObject*)gp) {
 		gtk_clipboard_clear(gtkClipboard);

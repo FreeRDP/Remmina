@@ -68,14 +68,14 @@ static void remmina_plugin_xdmcp_on_plug_added(GtkSocket *socket, RemminaProtoco
 	TRACE_CALL(__func__);
 	RemminaPluginXdmcpData *gpdata = GET_PLUGIN_DATA(gp);
 
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
+	remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
 	gpdata->ready = TRUE;
 }
 
 static void remmina_plugin_xdmcp_on_plug_removed(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_service->protocol_plugin_close_connection(gp);
+	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 }
 
 static gboolean remmina_plugin_xdmcp_start_xephyr(RemminaProtocolWidget *gp)
@@ -228,7 +228,7 @@ remmina_plugin_xdmcp_main_thread(gpointer data)
 
 	CANCEL_ASYNC
 	if (!remmina_plugin_xdmcp_main((RemminaProtocolWidget*)data)) {
-		IDLE_ADD((GSourceFunc)remmina_plugin_service->protocol_plugin_close_connection, data);
+		IDLE_ADD((GSourceFunc)remmina_plugin_service->protocol_plugin_signal_connection_closed, data);
 	}
 	return NULL;
 }
@@ -307,7 +307,7 @@ static gboolean remmina_plugin_xdmcp_close_connection(RemminaProtocolWidget *gp)
 		gpdata->pid = 0;
 	}
 
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 
 	return FALSE;
 }
@@ -421,4 +421,3 @@ remmina_plugin_entry(RemminaPluginService *service)
 
 	return TRUE;
 }
-

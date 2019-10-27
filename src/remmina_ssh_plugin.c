@@ -288,7 +288,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 		if (remmina_ssh_init_session(REMMINA_SSH(shell)) &&
 		    remmina_ssh_auth(REMMINA_SSH(shell), NULL, gp, remminafile) > 0 &&
 		    remmina_ssh_shell_open(shell, (RemminaSSHExitFunc)
-					   remmina_plugin_service->protocol_plugin_close_connection, gp))
+					   remmina_plugin_service->protocol_plugin_signal_connection_closed, gp))
 			cont = TRUE;
 	} else {
 		/* New SSH Shell connection */
@@ -313,7 +313,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 			if (ret <= 0) break;
 
 			if (!remmina_ssh_shell_open(shell, (RemminaSSHExitFunc)
-						    remmina_plugin_service->protocol_plugin_close_connection, gp)) {
+						    remmina_plugin_service->protocol_plugin_signal_connection_closed, gp)) {
 				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(shell)->error);
 				break;
 			}
@@ -328,7 +328,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	}
 	if (!cont) {
 		if (shell) remmina_ssh_shell_free(shell);
-		IDLE_ADD((GSourceFunc)remmina_plugin_service->protocol_plugin_close_connection, gp);
+		IDLE_ADD((GSourceFunc)remmina_plugin_service->protocol_plugin_signal_connection_closed, gp);
 		return NULL;
 	}
 

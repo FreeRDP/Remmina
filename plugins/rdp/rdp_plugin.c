@@ -34,6 +34,7 @@
  *
  */
 
+
 #define _GNU_SOURCE
 
 #include "rdp_plugin.h"
@@ -54,6 +55,7 @@
 #include <freerdp/client/channels.h>
 #include <freerdp/client/cmdline.h>
 #include <freerdp/error.h>
+#include <freerdp/event.h>
 #include <winpr/memory.h>
 
 #ifdef HAVE_CUPS
@@ -151,6 +153,10 @@ static BOOL rf_process_event_queue(RemminaProtocolWidget *gp)
 				rfi->dispcontext->SendMonitorLayout(rfi->dispcontext, 1, dcml);
 				g_free(dcml);
 			}
+			break;
+		case REMMINA_RDP_EVENT_DISCONNECT:
+			/* Disconnect requested via GUI (i.e.: tab destroy/close) */
+			freerdp_abort_connect(rfi->instance);
 			break;
 		}
 
@@ -391,7 +397,7 @@ static BOOL rf_desktop_resize(rdpContext *context)
 	ui->event.type = REMMINA_RDP_UI_EVENT_UPDATE_SCALE;
 	remmina_rdp_event_queue_ui_sync_retint(gp, ui);
 
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "desktop-resize");
+    remmina_plugin_service->protocol_plugin_desktop_resize(gp);
 
 	return TRUE;
 }
@@ -499,6 +505,8 @@ static BOOL remmina_rdp_post_connect(freerdp *instance)
 	gp = rfi->protocol_widget;
 	rfi->postconnect_error = REMMINA_POSTCONNECT_ERROR_OK;
 
+	rfi->attempt_interactive_authentication = FALSE; // We did authenticate!
+
 	rfi->srcBpp = rfi->settings->ColorDepth;
 
 	if (rfi->settings->RemoteFxCodec == FALSE)
@@ -529,7 +537,7 @@ static BOOL remmina_rdp_post_connect(freerdp *instance)
 		return FALSE;
 	}
 
-	pointer_cache_register_callbacks(instance->update);
+	// pointer_cache_register_callbacks(instance->update);
 
 	instance->update->BeginPaint = rf_begin_paint;
 	instance->update->EndPaint = rf_end_paint;
@@ -593,7 +601,6 @@ static BOOL remmina_rdp_authenticate(freerdp *instance, char **username, char **
 
 		return True;
 	} else {
-		rfi->user_cancelled = TRUE;
 		return False;
 	}
 
@@ -638,7 +645,6 @@ static BOOL remmina_rdp_proxy_authenticate(RemminaProtocolWidget *gp)
 
 		return True;
 	} else {
-		rfi->user_cancelled = TRUE;
 		return False;
 	}
 
@@ -691,7 +697,6 @@ static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char
 
 		return True;
 	} else {
-		rfi->user_cancelled = TRUE;
 		return False;
 	}
 
@@ -737,6 +742,27 @@ static DWORD remmina_rdp_verify_changed_certificate(freerdp *instance,
 	return 0;
 }
 
+static void remmina_rdp_post_disconnect(freerdp *instance)
+{
+	TRACE_CALL(__func__);
+	rfContext *rfi;
+
+	if (!instance || !instance->context)
+		return;
+
+	rfi = (rfContext *)instance->context;
+
+	PubSub_UnsubscribeChannelConnected(instance->context->pubSub,
+					 (pChannelConnectedEventHandler)remmina_rdp_OnChannelConnectedEventHandler);
+	PubSub_UnsubscribeChannelDisconnected(instance->context->pubSub,
+					    (pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
+
+	gdi_free(instance);
+
+	remmina_rdp_clipboard_free(rfi);
+
+}
+
 static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -746,10 +772,13 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 	gchar buf[100];
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
+
 	while (!freerdp_shall_disconnect(rfi->instance)) {
 		nCount = freerdp_get_event_handles(rfi->instance->context, &handles[0], 64);
 		if (rfi->event_handle)
 			handles[nCount++] = rfi->event_handle;
+
+		handles[nCount++] = rfi->instance->context->abortEvent;
 
 		if (nCount == 0) {
 			fprintf(stderr, "freerdp_get_event_handles failed\n");
@@ -772,6 +801,12 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 			}
 		}
 
+		/* Check if a processed event called freerdp_abort_connect() and exit if true */
+		if (WaitForSingleObject(rfi->instance->context->abortEvent, 0) == WAIT_OBJECT_0) {
+			/* Session disconnected by local user action */
+			break;
+		}
+
 		if (!freerdp_check_event_handles(rfi->instance->context)) {
 			if (rf_auto_reconnect(rfi)) {
 				/* Reset the possible reason/error which made us doing many reconnection reattempts and continue */
@@ -783,6 +818,8 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 			break;
 		}
 	}
+	freerdp_disconnect(rfi->instance);
+	g_debug("RDP client disconnected\n");
 }
 
 int remmina_rdp_load_static_channel_addin(rdpChannels *channels, rdpSettings *settings, char *name, void *data)
@@ -1058,6 +1095,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	remmina_plugin_service->protocol_plugin_set_width(gp, rfi->settings->DesktopWidth);
 	remmina_plugin_service->protocol_plugin_set_height(gp, rfi->settings->DesktopHeight);
 
+
 	if (remmina_plugin_service->file_get_string(remminafile, "username"))
 		rfi->settings->Username = strdup(remmina_plugin_service->file_get_string(remminafile, "username"));
 
@@ -1065,11 +1103,10 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		rfi->settings->Domain = strdup(remmina_plugin_service->file_get_string(remminafile, "domain"));
 
 	s = remmina_plugin_service->file_get_string(remminafile, "password");
+	if (s) rfi->settings->Password = strdup(s);
 
-	if (s) {
-		rfi->settings->Password = strdup(s);
-		rfi->settings->AutoLogonEnabled = 1;
-	}
+	rfi->settings->AutoLogonEnabled = 1;
+
 	/**
 	 * Proxy support
 	 * Proxy settings are hidden at the moment as an advanced feauture
@@ -1436,8 +1473,32 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		freerdp_device_collection_add(rfi->settings, (RDPDR_DEVICE *)parallel);
 	}
 
+	/* If needed, force interactive authentication by deleting all authentication fields,
+	 * forcing libfreerdp to call our callbacks for authentication.
+		This usually happens from a second attempt of connection, never on the 1st one. */
+	if (rfi->attempt_interactive_authentication) {
+		if (rfi->settings->Username) free(rfi->settings->Username);
+		rfi->settings->Username = NULL;
+		if (rfi->settings->Password) free(rfi->settings->Password);
+		rfi->settings->Password = NULL;
+		if (rfi->settings->Domain) free(rfi->settings->Domain);
+		rfi->settings->Domain = NULL;
+
+		if (rfi->settings->GatewayDomain) free(rfi->settings->GatewayDomain);
+		rfi->settings->GatewayDomain = NULL;
+		if (rfi->settings->GatewayUsername) free(rfi->settings->GatewayUsername);
+		rfi->settings->GatewayUsername = NULL;
+		if (rfi->settings->GatewayPassword) free(rfi->settings->GatewayPassword);
+		rfi->settings->GatewayPassword = NULL;
+		rfi->settings->GatewayUseSameCredentials = FALSE;
+
+	}
+
+	gboolean orphaned;
+
 	if (!freerdp_connect(rfi->instance)) {
-		if (!rfi->user_cancelled) {
+		if (GET_PLUGIN_DATA(rfi->protocol_widget) == NULL) orphaned = True; else orphaned = False;
+		if (!orphaned) {
 			UINT32 e;
 
 			e = freerdp_get_last_error(rfi->instance->context);
@@ -1448,11 +1509,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 #ifdef FREERDP_ERROR_CONNECT_LOGON_FAILURE
 			case FREERDP_ERROR_CONNECT_LOGON_FAILURE:
 #endif
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Authentication to RDP server %s failed.\nCheck username, password and domain."),
-										  rfi->settings->ServerHostname);
-				// Invalidate the saved password, so the user will be re-asked at next logon
-				if (!remmina_rdp_authenticate(rfi->instance, NULL, NULL, NULL))
-					remmina_plugin_service->file_unsave_password(remminafile);
+				/* Logon failure, will retry with interactive authentication */
+				rfi->attempt_interactive_authentication = TRUE;
 				break;
 			case STATUS_ACCOUNT_LOCKED_OUT:
 #ifdef FREERDP_ERROR_CONNECT_ACCOUNT_LOCKED_OUT
@@ -1540,6 +1598,11 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Server %s denied the connection."), rfi->settings->ServerHostname);
 				break;
 #endif
+
+			case FREERDP_ERROR_CONNECT_NO_OR_MISSING_CREDENTIALS:
+				rfi->user_cancelled = TRUE;
+				break;
+
 			default:
 				g_printf("libfreerdp returned code is %08X\n", e);
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
@@ -1550,9 +1613,75 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		return FALSE;
 	}
 
-	remmina_rdp_main_loop(gp);
+	if (GET_PLUGIN_DATA(rfi->protocol_widget) == NULL) orphaned = True; else orphaned = False;
+	if (!orphaned && freerdp_get_last_error(rfi->instance->context) == FREERDP_ERROR_SUCCESS && !rfi->user_cancelled) {
+		remmina_rdp_main_loop(gp);
+	}
 
 	return TRUE;
+}
+
+static void rfi_uninit(rfContext* rfi)
+{
+	freerdp *instance;
+
+	instance = rfi->instance;
+
+	if (rfi->remmina_plugin_thread) {
+		rfi->thread_cancelled = TRUE;   // Avoid all rf_queue function to run
+		pthread_cancel(rfi->remmina_plugin_thread);
+		if (rfi->remmina_plugin_thread)
+			pthread_join(rfi->remmina_plugin_thread, NULL);
+	}
+
+	if (instance) {
+		if (rfi->connected) {
+			freerdp_abort_connect(instance);
+			rfi->connected = False;
+		}
+	}
+
+
+	if (rfi->rfx_context) {
+		rfx_context_free(rfi->rfx_context);
+		rfi->rfx_context = NULL;
+	}
+	if (instance) {
+		RDP_CLIENT_ENTRY_POINTS* pEntryPoints = instance->pClientEntryPoints;
+		if (pEntryPoints)
+			IFCALL(pEntryPoints->GlobalUninit);
+		free(instance->pClientEntryPoints);
+		freerdp_context_free(instance); /* context is rfContext* rfi */
+		freerdp_free(instance);         /* This implicitly frees instance->context and rfi is no longer valid */
+	}
+
+
+}
+
+static gboolean complete_cleanup_on_main_thread(gpointer data)
+{
+	TRACE_CALL(__func__);
+
+	gboolean orphaned;
+	rfContext *rfi = (rfContext *)data;
+	RemminaProtocolWidget *gp;
+
+	gp = rfi->protocol_widget;
+	if (GET_PLUGIN_DATA(gp) == NULL) orphaned = True; else orphaned = False;
+
+	remmina_rdp_cliprdr_detach_owner(gp);
+	if (!orphaned) remmina_rdp_event_uninit(gp);
+
+	if (!orphaned) g_object_steal_data(G_OBJECT(gp), "plugin-data");
+
+	rfi_uninit(rfi);
+
+	/* Notify the RemminaProtocolWidget that we closed our connection, and the GUI interface
+	   can be removed */
+	if (!orphaned)
+		remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
+
+	return G_SOURCE_REMOVE;
 }
 
 static gpointer remmina_rdp_main_thread(gpointer data)
@@ -1564,15 +1693,19 @@ static gpointer remmina_rdp_main_thread(gpointer data)
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
 
-		gp = (RemminaProtocolWidget *)data;
+	gp = (RemminaProtocolWidget *)data;
 	rfi = GET_PLUGIN_DATA(gp);
-	remmina_rdp_main(gp);
-	rfi->thread = 0;
 
+	rfi->attempt_interactive_authentication = FALSE;
+	do {
+		remmina_rdp_main(gp);
+	} while(!remmina_plugin_service->protocol_plugin_has_error(gp) && rfi->attempt_interactive_authentication == TRUE && !rfi->user_cancelled);
 
-	/* Signal main thread that we closed the connection. But wait 200ms, because we may
-	 * have outstaiding events to process in the meanwhile */
-	g_timeout_add(200, ((GSourceFunc)remmina_plugin_service->protocol_plugin_close_connection), gp);
+	rfi->remmina_plugin_thread = 0;
+
+	/* cleanup */
+	g_idle_add(complete_cleanup_on_main_thread, (gpointer)rfi);
+
 
 	return NULL;
 }
@@ -1586,6 +1719,7 @@ static void remmina_rdp_init(RemminaProtocolWidget *gp)
 	instance = freerdp_new();
 	instance->PreConnect = remmina_rdp_pre_connect;
 	instance->PostConnect = remmina_rdp_post_connect;
+	instance->PostDisconnect = remmina_rdp_post_disconnect;
 	instance->Authenticate = remmina_rdp_authenticate;
 	instance->GatewayAuthenticate = remmina_rdp_gw_authenticate;
 	instance->VerifyCertificate = remmina_rdp_verify_certificate;
@@ -1602,6 +1736,7 @@ static void remmina_rdp_init(RemminaProtocolWidget *gp)
 	rfi->settings = instance->settings;
 	rfi->connected = False;
 	rfi->is_reconnecting = False;
+	rfi->user_cancelled = FALSE;
 
 	freerdp_register_addin_provider(freerdp_channels_load_static_addin_entry, 0);
 
@@ -1615,11 +1750,11 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget *gp)
 
 	rfi->scale = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
 
-	if (pthread_create(&rfi->thread, NULL, remmina_rdp_main_thread, gp)) {
+	if (pthread_create(&rfi->remmina_plugin_thread, NULL, remmina_rdp_main_thread, gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s",
 								  "Failed to initialize pthread. Falling back to non-thread mode…");
 
-		rfi->thread = 0;
+		rfi->remmina_plugin_thread = 0;
 
 		return FALSE;
 	}
@@ -1630,64 +1765,27 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget *gp)
 static gboolean remmina_rdp_close_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
+
+	RemminaPluginRdpEvent rdp_event = { 0 };
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
-	freerdp *instance;
 
 	if (!remmina_plugin_service->is_main_thread())
 		g_printf("WARNING: %s called on a subthread, may not work or crash remmina.\n", __func__);
 
-	/* Immediately deatch GTK clipboard from this connection */
-	remmina_rdp_cliprdr_detach_owner(gp);
-
-	if (freerdp_get_last_error(rfi->instance->context) == 0x10005)
-		remmina_plugin_service->protocol_plugin_set_error(gp, "Another user connected to the server (%s), forcing the disconnection of the current connection.", rfi->settings->ServerHostname);
-	instance = rfi->instance;
-	if (rfi->thread) {
-		rfi->thread_cancelled = TRUE;   // Avoid all rf_queue function to run
-		pthread_cancel(rfi->thread);
-
-		if (rfi->thread)
-			pthread_join(rfi->thread, NULL);
+	if (rfi && !rfi->connected) {
+		/* libfreerdp is attempting to connect, we cannot interrupt our main thread
+		 * in the connect phase.
+		 * So we remove "plugin-data" from gp, so our rfi remains "orphan"
+		 */
+		remmina_rdp_event_uninit(gp);
+		g_object_steal_data(G_OBJECT(gp), "plugin-data");
+		remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
+		return FALSE;
 	}
 
-	if (instance) {
-		if (rfi->connected) {
-			//freerdp_disconnect(instance);
-			freerdp_abort_connect(instance);
-			rfi->connected = False;
-		}
-	}
 
-	if (rfi->hdc) {
-		gdi_DeleteDC(rfi->hdc);
-		rfi->hdc = NULL;
-	}
-
-	remmina_rdp_clipboard_free(rfi);
-	if (rfi->rfx_context) {
-		rfx_context_free(rfi->rfx_context);
-		rfi->rfx_context = NULL;
-	}
-
-	if (instance) {
-		gdi_free(instance);
-		cache_free(instance->context->cache);
-		instance->context->cache = NULL;
-	}
-
-	/* Destroy event queue. Pending async events will be discarded. Should we flush it ? */
-	remmina_rdp_event_uninit(gp);
-
-	if (instance) {
-		freerdp_context_free(instance); /* context is rfContext* rfi */
-		freerdp_free(instance);         /* This implicitly frees instance->context and rfi is no longer valid */
-	}
-
-	/* Remove instance->context from gp object data to avoid double free */
-	g_object_steal_data(G_OBJECT(gp), "plugin-data");
-
-	/* Now let remmina to complete its disconnection tasks */
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+	rdp_event.type = REMMINA_RDP_EVENT_DISCONNECT;
+	remmina_rdp_event_event_push(gp, &rdp_event);
 
 	return FALSE;
 }

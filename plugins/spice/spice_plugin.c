@@ -157,7 +157,7 @@ static gboolean remmina_plugin_spice_close_connection(RemminaProtocolWidget *gp)
 		spice_session_disconnect(gpdata->session);
 		g_object_unref(gpdata->session);
 		gpdata->session = NULL;
-		remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+		remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 	}
 
 #ifdef SPICE_GTK_CHECK_VERSION
@@ -313,7 +313,7 @@ static void remmina_plugin_spice_display_ready_cb(GObject *display, GParamSpec *
 		gtk_widget_show(GTK_WIDGET(display));
 
 		remmina_plugin_service->protocol_plugin_register_hostkey(gp, GTK_WIDGET(display));
-		remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
+		remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
 	}
 }
 

@@ -41,6 +41,8 @@
 #include <glib/gi18n.h>
 #include <stdlib.h>
 
+
+
 #include "remmina_chat_window.h"
 #include "remmina_masterthread_exec.h"
 #include "remmina_ext_exec.h"
@@ -55,7 +57,6 @@
 #ifdef GDK_WINDOWING_WAYLAND
 	#include <gdk/gdkwayland.h>
 #endif
-
 
 struct _RemminaProtocolWidgetPriv {
 
@@ -186,28 +187,7 @@ static void remmina_protocol_widget_destroy(RemminaProtocolWidget* gp, gpointer 
 	gp->priv = NULL;
 }
 
-static void remmina_protocol_widget_on_connected(RemminaProtocolWidget* gp, gpointer data)
-{
-	TRACE_CALL(__func__);
-#ifdef HAVE_LIBSSH
-	if (gp->priv->ssh_tunnel) {
-		remmina_ssh_tunnel_cancel_accept(gp->priv->ssh_tunnel);
-	}
-#endif
-	if (gp->priv->listen_message_panel) {
-		rco_destroy_message_panel(gp->cnnobj, gp->priv->listen_message_panel);
-		gp->priv->listen_message_panel = NULL;
-	}
-	if (gp->priv->connect_message_panel) {
-		rco_destroy_message_panel(gp->cnnobj, gp->priv->connect_message_panel);
-		gp->priv->connect_message_panel = NULL;
-	}
-}
 
-static void remmina_protocol_widget_on_disconnected(RemminaProtocolWidget* gp, gpointer data)
-{
-	TRACE_CALL(__func__);
-}
 
 void remmina_protocol_widget_grab_focus(RemminaProtocolWidget* gp)
 {
@@ -232,8 +212,6 @@ static void remmina_protocol_widget_init(RemminaProtocolWidget* gp)
 	gp->priv->closed = TRUE;
 
 	g_signal_connect(G_OBJECT(gp), "destroy", G_CALLBACK(remmina_protocol_widget_destroy), NULL);
-	g_signal_connect(G_OBJECT(gp), "connect", G_CALLBACK(remmina_protocol_widget_on_connected), NULL);
-	g_signal_connect(G_OBJECT(gp), "disconnect", G_CALLBACK(remmina_protocol_widget_on_disconnected), NULL);
 }
 
 void remmina_protocol_widget_open_connection_real(gpointer data)
@@ -325,62 +303,130 @@ void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp)
 	remmina_protocol_widget_open_connection_real(gp);
 }
 
-gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
+static gboolean conn_closed(RemminaProtocolWidget* gp)
+{
+	/* Close ssh tunnel */
+	#ifdef HAVE_LIBSSH
+		if (gp->priv->ssh_tunnel) {
+			remmina_ssh_tunnel_free(gp->priv->ssh_tunnel);
+			gp->priv->ssh_tunnel = NULL;
+		}
+	#endif
+	/* Exec postcommand */
+	remmina_ext_exec_new(gp->priv->remmina_file, "postcommand");
+	/* Notify listeners (usually rcw) that the connection is closed */
+	g_signal_emit_by_name(G_OBJECT(gp), "disconnect");
+	return G_SOURCE_REMOVE;
+}
+
+void remmina_protocol_widget_signal_connection_closed(RemminaProtocolWidget* gp)
+{
+	/* Plugin told us that it closed the connection,
+	   add async event to main thread to complete our close tasks */
+	TRACE_CALL(__func__);
+	gp->priv->closed = TRUE;
+	g_idle_add(conn_closed, (gpointer)gp);
+}
+
+static gboolean conn_opened(RemminaProtocolWidget* gp)
+{
+    TRACE_CALL(__func__);
+#ifdef HAVE_LIBSSH
+	if (gp->priv->ssh_tunnel) {
+		remmina_ssh_tunnel_cancel_accept(gp->priv->ssh_tunnel);
+	}
+#endif
+	if (gp->priv->listen_message_panel) {
+		rco_destroy_message_panel(gp->cnnobj, gp->priv->listen_message_panel);
+		gp->priv->listen_message_panel = NULL;
+	}
+	if (gp->priv->connect_message_panel) {
+		rco_destroy_message_panel(gp->cnnobj, gp->priv->connect_message_panel);
+		gp->priv->connect_message_panel = NULL;
+	}
+    g_signal_emit_by_name(G_OBJECT(gp), "connect");
+    return G_SOURCE_REMOVE;
+}
+
+void remmina_protocol_widget_signal_connection_opened(RemminaProtocolWidget* gp)
+{
+	/* Plugin told us that it closed the connection,
+	   add async event to main thread to complete our close tasks */
+	TRACE_CALL(__func__);
+	g_idle_add(conn_opened, (gpointer)gp);
+}
+
+static gboolean update_align(RemminaProtocolWidget* gp)
+{
+    g_signal_emit_by_name(G_OBJECT(gp), "update-align");
+    return G_SOURCE_REMOVE;
+}
+
+void remmina_protocol_widget_update_align(RemminaProtocolWidget* gp)
+{
+    /* Called by the plugin to do updates on rcw */
+    TRACE_CALL(__func__);
+    g_idle_add(update_align, (gpointer)gp);
+}
+
+static gboolean unlock_dynres(RemminaProtocolWidget* gp)
+{
+    g_signal_emit_by_name(G_OBJECT(gp), "unlock-dynres");
+    return G_SOURCE_REMOVE;
+}
+
+void remmina_protocol_widget_unlock_dynres(RemminaProtocolWidget* gp)
+{
+    /* Called by the plugin to do updates on rcw */
+    TRACE_CALL(__func__);
+    g_idle_add(unlock_dynres, (gpointer)gp);
+}
+
+static gboolean desktop_resize(RemminaProtocolWidget* gp)
+{
+    g_signal_emit_by_name(G_OBJECT(gp), "desktop-resize");
+    return G_SOURCE_REMOVE;
+}
+
+void remmina_protocol_widget_desktop_resize(RemminaProtocolWidget* gp)
+{
+    /* Called by the plugin to do updates on rcw */
+    TRACE_CALL(__func__);
+    g_idle_add(desktop_resize, (gpointer)gp);
+}
+
+
+void remmina_protocol_widget_close_connection(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
-	GdkDisplay *display;
-#if GTK_CHECK_VERSION(3, 20, 0)
-	GdkSeat *seat;
-#else
-	GdkDeviceManager *manager;
-#endif
-	GdkDevice *device = NULL;
-	gboolean retval;
 
-	if (!GTK_IS_WIDGET(gp) || gp->priv->closed)
-		return FALSE;
+	/* kindly ask the protocol plugin to close the connection.
+		Nothing else is done here. */
 
-	gp->priv->closed = TRUE;
-
-	display = gtk_widget_get_display(GTK_WIDGET(gp));
-#if GTK_CHECK_VERSION(3, 20, 0)
-	seat = gdk_display_get_default_seat(display);
-	device = gdk_seat_get_pointer(seat);
-#else
-	manager = gdk_display_get_device_manager(display);
-	device = gdk_device_manager_get_client_pointer(manager);
-#endif
-	if (device != NULL) {
-#if GTK_CHECK_VERSION(3, 20, 0)
-		gdk_seat_ungrab(seat);
-#else
-		gdk_device_ungrab(device, GDK_CURRENT_TIME);
-#endif
-	}
+	if (!GTK_IS_WIDGET(gp))
+			return;
 
 	if (gp->priv->chat_window) {
 		gtk_widget_destroy(gp->priv->chat_window);
 		gp->priv->chat_window = NULL;
 	}
 
-	if (!gp->priv->plugin || !gp->priv->plugin->close_connection) {
-		remmina_protocol_widget_emit_signal(gp, "disconnect");
-		return FALSE;
+	if (gp->priv->closed) {
+		/* Connection is already closed by the plugin, but
+		 * rcw is asking to close again (usually after an error panel)
+		*/
+		g_signal_emit_by_name(G_OBJECT(gp), "disconnect");
+		return;
 	}
 
-	retval = gp->priv->plugin->close_connection(gp);
+	/* Ask the plugin to close, async.
+	 	The plugin will emit a "disconnect" signal on gp to call our
+		remmina_protocol_widget_on_disconnected() when done */
+	gp->priv->plugin->close_connection(gp);
 
-#ifdef HAVE_LIBSSH
-	if (gp->priv->ssh_tunnel) {
-		remmina_ssh_tunnel_free(gp->priv->ssh_tunnel);
-		gp->priv->ssh_tunnel = NULL;
-	}
-#endif
-
-	/* Exec postcommand before to close the connection */
-	remmina_ext_exec_new(gp->priv->remmina_file, "postcommand");
-	return retval;
+	return;
 }
+
 
 /** Check if the plugin accepts keystrokes.
  */
@@ -487,6 +533,9 @@ gboolean remmina_protocol_widget_plugin_screenshot(RemminaProtocolWidget* gp, Re
 void remmina_protocol_widget_emit_signal(RemminaProtocolWidget* gp, const gchar* signal_name)
 {
 	TRACE_CALL(__func__);
+
+	g_print("Emitting signals should be used from the object itself, not from another object");
+	raise(SIGINT);
 
 	if ( !remmina_masterthread_exec_is_main_thread() ) {
 		/* Allow the execution of this function from a non main thread */
@@ -1756,6 +1805,3 @@ void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget* gp)
 	gp->priv->profile_remote_width = w;
 	gp->priv->profile_remote_height = h;
 }
-
-
-

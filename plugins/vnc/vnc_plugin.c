@@ -60,8 +60,6 @@ static const gchar *dot_cursor_xpm[] =
 #define LOCK_BUFFER(t)      if (t) { CANCEL_DEFER } pthread_mutex_lock(&gpdata->buffer_mutex);
 #define UNLOCK_BUFFER(t)    pthread_mutex_unlock(&gpdata->buffer_mutex); if (t) { CANCEL_ASYNC }
 
-
-
 struct onMainThread_cb_data {
 	enum { FUNC_UPDATE_SCALE } func;
 	GtkWidget *		widget;
@@ -239,7 +237,7 @@ static void remmina_plugin_vnc_update_scale(RemminaProtocolWidget *gp, gboolean 
 		/* In non scaled mode, the plugins forces dimensions of drawing area */
 		gtk_widget_set_size_request(GTK_WIDGET(gpdata->drawing_area), width, height);
 
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "update-align");
+	remmina_plugin_service->protocol_plugin_update_align(gp);
 }
 
 gboolean remmina_plugin_vnc_setcursor(RemminaProtocolWidget *gp)
@@ -487,7 +485,7 @@ static rfbBool remmina_plugin_vnc_rfb_allocfb(rfbClient *cl)
 	remmina_plugin_vnc_update_scale(gp, scale);
 
 	/* Notify window of change so that scroll border can be hidden or shown if needed */
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "desktop-resize");
+	remmina_plugin_service->protocol_plugin_desktop_resize(gp);
 
 	/* Refresh the client’s updateRect - bug in xvncclient */
 	cl->updateRect.w = width;
@@ -1027,6 +1025,7 @@ static gboolean remmina_plugin_vnc_incoming_connection(RemminaProtocolWidget *gp
 	return TRUE;
 }
 
+
 static gboolean remmina_plugin_vnc_main_loop(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -1075,7 +1074,7 @@ handle_buffered:
 		if (!HandleRFBServerMessage(cl)) {
 			gpdata->running = FALSE;
 			if (gpdata->connected && !remmina_plugin_service->protocol_plugin_is_closed(gp))
-				IDLE_ADD((GSourceFunc)remmina_plugin_service->protocol_plugin_close_connection, gp);
+				remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 			return FALSE;
 		}
 	}
@@ -1220,7 +1219,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 			remmina_plugin_service->protocol_plugin_set_error(gp, "%s", vnc_error);
 		gpdata->running = FALSE;
 
-		IDLE_ADD((GSourceFunc)remmina_plugin_service->protocol_plugin_close_connection, gp);
+		remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 
 		return FALSE;
 	}
@@ -1229,7 +1228,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 
 	gpdata->client = cl;
 
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
+	remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
 
 	if (remmina_plugin_service->file_get_int(remminafile, "disableserverinput", FALSE))
 		PermitServerInput(cl, 1);
@@ -1609,9 +1608,7 @@ static gboolean remmina_plugin_vnc_close_connection_timeout(RemminaProtocolWidge
 
 
 	pthread_mutex_destroy(&gpdata->buffer_mutex);
-
-
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 
 	return FALSE;
 }

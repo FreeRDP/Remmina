@@ -111,7 +111,8 @@ typedef enum {
 	REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_LIST,
 	REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_DATA_RESPONSE,
 	REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_DATA_REQUEST,
-	REMMINA_RDP_EVENT_TYPE_SEND_MONITOR_LAYOUT
+	REMMINA_RDP_EVENT_TYPE_SEND_MONITOR_LAYOUT,
+	REMMINA_RDP_EVENT_DISCONNECT
 } RemminaPluginRdpEventType;
 
 struct remmina_plugin_rdp_event {
@@ -241,7 +242,8 @@ typedef struct remmina_plugin_rdp_keymap_entry {
 } RemminaPluginRdpKeymapEntry;
 
 struct rf_context {
-	rdpContext _p;
+	rdpContext context;
+	DEFINE_RDP_CLIENT_COMMON();
 
 	RemminaProtocolWidget* protocol_widget;
 
@@ -249,7 +251,7 @@ struct rf_context {
 	rdpSettings* settings;
 	freerdp* instance;
 
-	pthread_t thread;
+	pthread_t remmina_plugin_thread;
 	RemminaScaleMode scale;
 	gboolean user_cancelled;
 	gboolean thread_cancelled;
@@ -266,6 +268,11 @@ struct rf_context {
 
 	gboolean connected;
 	gboolean is_reconnecting;
+	/* orphaned: rf_context has still one or more libfreerdp thread active,
+	 * but no longer maintained by an open RemminaProtocolWidget/tab.
+	 * When the orphaned thread terminates, we must cleanup rf_context.
+	*/
+	gboolean orphaned;
 	int reconnect_maxattempts;
 	int reconnect_nattempt;
 
@@ -278,7 +285,6 @@ struct rf_context {
 	guint delayed_monitor_layout_handler;
 	gboolean use_client_keymap;
 
-	HGDI_DC hdc;
 	gint srcBpp;
 	GdkDisplay* display;
 	GdkVisual* visual;
@@ -304,6 +310,8 @@ struct rf_context {
 
 	GArray* keymap;	/* Array of RemminaPluginRdpKeymapEntry */
 
+	gboolean attempt_interactive_authentication;
+
 	enum { REMMINA_POSTCONNECT_ERROR_OK = 0, REMMINA_POSTCONNECT_ERROR_GDI_INIT = 1, REMMINA_POSTCONNECT_ERROR_NO_H264 } postconnect_error;
 };
 
@@ -316,4 +324,3 @@ BOOL rf_check_fds(RemminaProtocolWidget* gp);
 void rf_object_free(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* obj);
 
 void remmina_rdp_event_event_push(RemminaProtocolWidget* gp, const RemminaPluginRdpEvent* e);
-

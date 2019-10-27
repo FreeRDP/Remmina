@@ -68,7 +68,7 @@ static void remmina_plugin_st_on_plug_added(GtkSocket *socket, RemminaProtocolWi
 	RemminaPluginData *gpdata;
 	gpdata = (RemminaPluginData*) g_object_get_data(G_OBJECT(gp), "plugin-data");
 	remmina_plugin_service->log_printf("[%s] Plugin plug added on socket %d\n", PLUGIN_NAME, gpdata->socket_id);
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
+	remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
 	return;
 }
 
@@ -76,7 +76,7 @@ static void remmina_plugin_st_on_plug_removed(GtkSocket *socket, RemminaProtocol
 {
 	TRACE_CALL(__func__);
 	remmina_plugin_service->log_printf("[%s] Plugin plug removed\n", PLUGIN_NAME);
-	remmina_plugin_service->protocol_plugin_close_connection(gp);
+	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 }
 
 static void remmina_plugin_st_init(RemminaProtocolWidget *gp)
@@ -209,7 +209,7 @@ static gboolean remmina_plugin_st_close_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	remmina_plugin_service->log_printf("[%s] Plugin close connection\n", PLUGIN_NAME);
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 	return FALSE;
 }
 

@@ -603,13 +603,13 @@ void remmina_file_delete(const gchar *filename)
 
 	remminafile = remmina_file_load(filename);
 	if (remminafile) {
-		remmina_file_unsave_password(remminafile);
+		remmina_file_unsave_passwords(remminafile);
 		remmina_file_free(remminafile);
 	}
 	g_unlink(filename);
 }
 
-void remmina_file_unsave_password(RemminaFile *remminafile)
+void remmina_file_unsave_passwords(RemminaFile *remminafile)
 {
 	/* Delete all saved secrets for this profile */
 

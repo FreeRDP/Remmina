@@ -3701,7 +3701,7 @@ void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
 	RemminaConnectionWindowPriv *priv = cnnobj->cnnwin->priv;
 	GtkWidget *pparent;
 
-	g_debug("disconnect signal emitted");
+	g_debug("disconnect signal received on RemminaProtocolWidget");
 	/* Detach the protocol widget from the notebook now, or we risk that a
 	 * window delete will destroy cnnobj->proto before we complete disconnection.
 	 */
@@ -3729,8 +3729,10 @@ void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
 		RemminaMessagePanel *mp;
 		/* Destroy scrolled_contaner (and viewport) and all its children the plugin created
 		 * on it, so they will not receive GUI signals */
-		gtk_widget_destroy(cnnobj->scrolled_container);
-		cnnobj->scrolled_container = NULL;
+		if (cnnobj->scrolled_container) {
+			gtk_widget_destroy(cnnobj->scrolled_container);
+			cnnobj->scrolled_container = NULL;
+		}
 		cnnobj->viewport = NULL;
 		mp = remmina_message_panel_new();
 		remmina_message_panel_setup_message(mp, remmina_protocol_widget_get_error_message(gp), cb_lasterror_confirmed, gp);
@@ -3829,6 +3831,12 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 	gint view_mode;
 	const gchar *msg;
 
+	if (disconnect_cb) {
+		g_print("disconnect_cb is deprecated inside rcw_open_from_file_full() and should be null");
+		return NULL;
+	}
+
+
 	/* Create the RemminaConnectionObject */
 	cnnobj = g_new0(RemminaConnectionObject, 1);
 	cnnobj->remmina_file = remminafile;
@@ -3913,8 +3921,6 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 
 	gtk_widget_show(cnnobj->proto);
 	g_signal_connect(G_OBJECT(cnnobj->proto), "connect", G_CALLBACK(rco_on_connect), cnnobj);
-	if (disconnect_cb)
-		*handler = g_signal_connect(G_OBJECT(cnnobj->proto), "disconnect", disconnect_cb, data);
 	g_signal_connect(G_OBJECT(cnnobj->proto), "disconnect", G_CALLBACK(rco_on_disconnect), NULL);
 	g_signal_connect(G_OBJECT(cnnobj->proto), "desktop-resize", G_CALLBACK(rco_on_desktop_resize), NULL);
 	g_signal_connect(G_OBJECT(cnnobj->proto), "update-align", G_CALLBACK(rco_on_update_align), NULL);
