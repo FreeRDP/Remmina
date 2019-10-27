@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-10-11 18:58+0000\n"
-"PO-Revision-Date: 2019-10-09 15:53+0000\n"
+"PO-Revision-Date: 2019-10-28 16:08+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #. Profile: Protocol
@@ -956,17 +956,17 @@ msgstr "Ha cambiado la clave pública SSH."
 #: src/remmina_ssh.c:429
 #, c-format
 msgid "ssh_get_server_publickey() has failed: %s"
-msgstr ""
+msgstr "Falló ssh_get_server_publickey(): %s"
 
 #: src/remmina_ssh.c:434
 #, c-format
 msgid "ssh_get_publickey() has failed: %s"
-msgstr ""
+msgstr "Falló ssh_get_publickey(): %s"
 
 #: src/remmina_ssh.c:440
 #, c-format
 msgid "ssh_get_publickey_hash() has failed: %s"
-msgstr ""
+msgstr "Falló ssh_get_publickey_hash(): %s"
 
 #: src/remmina_ssh.c:448
 msgid "The server is unknown. The public key fingerprint is:"
@@ -1070,16 +1070,16 @@ msgstr ""
 
 #: src/remmina_ssh.c:1384
 msgid "Failed to bind on local port."
-msgstr ""
+msgstr "Falló al enlazar con el puerto local."
 
 #: src/remmina_ssh.c:1390
 msgid "Failed to listen on local port."
-msgstr ""
+msgstr "Falló al escuchar en el puerto local."
 
 #: src/remmina_ssh.c:1399 src/remmina_ssh.c:1415 src/remmina_ssh.c:1431
 #: src/remmina_ssh.c:1448
 msgid "Failed to initialize pthread."
-msgstr ""
+msgstr "Falló al inicializar pthread."
 
 #: src/remmina_ssh.c:1536
 #, c-format
@@ -1094,11 +1094,11 @@ msgstr "Fallo al inicializar la sesión SFTP: %s"
 #: src/remmina_ssh.c:1653
 #, c-format
 msgid "Failed to request shell: %s"
-msgstr ""
+msgstr "Falló al solicitar el intérprete: %s"
 
 #: src/remmina_ssh.c:1746
 msgid "Failed to create pty device."
-msgstr ""
+msgstr "Falló al crear el dispositivo pty."
 
 #. Show in the status bar the total number of connections found
 #: src/remmina_main.c:644
@@ -1135,25 +1135,27 @@ msgid "Remmina Kiosk"
 msgstr "Quiosco de Remmina"
 
 #: src/remmina.c:83
-#, fuzzy
 msgid "Show 'About'"
-msgstr "Mostrar la ventana Acerca de"
+msgstr "Mostrar «Acerca de»"
 
 #: src/remmina.c:84 src/remmina.c:85
 msgid ""
 "Connect to desktop described in file (.remmina or type supported by plugin)"
 msgstr ""
+"Conectar con escritorio descrito en archivo (.remmina o tipo admitido por "
+"complemento)"
 
 #: src/remmina.c:86
 msgid ""
 "Edit desktop connection described in file (.remmina or type supported by "
 "plugin)"
 msgstr ""
+"Editar conexión de escritorio descrita en archivo (.remmina o tipo admitido "
+"por complemento)"
 
 #: src/remmina.c:88
-#, fuzzy
 msgid "Start in Kiosk mode"
-msgstr "Iniciar Remmina en modo quiosco"
+msgstr "Iniciar en modo quiosco"
 
 #: src/remmina.c:89
 #, fuzzy
@@ -1600,39 +1602,39 @@ msgstr "No se pudo conectar con el servidor RDP %s"
 #. 1st one is the default in a new install
 #: plugins/rdp/rdp_plugin.c:1795
 msgid "GFX AVC444 (32 bpp)"
-msgstr ""
+msgstr "GFX AVC444 (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1796
 msgid "GFX AVC420 (32 bpp)"
-msgstr ""
+msgstr "GFX AVC420 (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1797
 msgid "GFX RFX (32 bpp)"
-msgstr ""
+msgstr "GFX RFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1798
 msgid "RemoteFX (32 bpp)"
-msgstr "RemoteFX (32 ppp)"
+msgstr "RemoteFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1799 plugins/vnc/vnc_plugin.c:1784
 msgid "True color (32 bpp)"
-msgstr "Color verdadero (32 ppp)"
+msgstr "Color verdadero (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1800
 msgid "True color (24 bpp)"
-msgstr "Color verdadero (24 ppp)"
+msgstr "Color verdadero (24 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1801 plugins/vnc/vnc_plugin.c:1783
 msgid "High color (16 bpp)"
-msgstr "Color alto (16 ppp)"
+msgstr "Color alto (16 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1802
 msgid "High color (15 bpp)"
-msgstr "Color alto (15 ppp)"
+msgstr "Color alto (15 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1803 plugins/vnc/vnc_plugin.c:1782
 msgid "256 colors (8 bpp)"
-msgstr "256 colores (8 ppp)"
+msgstr "256 colores (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1810 plugins/rdp/rdp_settings.c:269
 #: plugins/nx/nx_plugin.c:678 plugins/vnc/vnc_plugin.c:1791
@@ -1660,15 +1662,15 @@ msgstr "Apagar"
 
 #: plugins/rdp/rdp_plugin.c:1822
 msgid "Local - low quality"
-msgstr "Local - calidad baja"
+msgstr "Local, calidad baja"
 
 #: plugins/rdp/rdp_plugin.c:1823
 msgid "Local - medium quality"
-msgstr "Local - calidad media"
+msgstr "Local, calidad media"
 
 #: plugins/rdp/rdp_plugin.c:1824
 msgid "Local - high quality"
-msgstr "Local - calidad alta"
+msgstr "Local, calidad alta"
 
 #: plugins/rdp/rdp_plugin.c:1832
 msgid "Negotiate"
@@ -1694,11 +1696,11 @@ msgstr "Seguridad"
 
 #: plugins/rdp/rdp_plugin.c:1882
 msgid "Gateway transport type"
-msgstr ""
+msgstr "Tipo de transporte de puerta de enlace"
 
 #: plugins/rdp/rdp_plugin.c:1883
 msgid "RD Gateway server"
-msgstr "Puerta de enlace"
+msgstr "Servidor de puerta de enlace RD"
 
 #: plugins/rdp/rdp_plugin.c:1884
 msgid "RD Gateway username"
@@ -1718,11 +1720,11 @@ msgstr "Nombre del cliente"
 
 #: plugins/rdp/rdp_plugin.c:1890
 msgid "Load balance info"
-msgstr ""
+msgstr "Información de equilibrio de carga"
 
 #: plugins/rdp/rdp_plugin.c:1891
 msgid "Override Printer Drivers"
-msgstr ""
+msgstr "Anteponerse a controladores de impresoras"
 
 #: plugins/rdp/rdp_plugin.c:1891
 msgid ""
@@ -1748,7 +1750,7 @@ msgstr "En serie"
 
 #: plugins/rdp/rdp_plugin.c:1894
 msgid "Local serial path"
-msgstr ""
+msgstr "Ruta en serie local"
 
 #: plugins/rdp/rdp_plugin.c:1894
 msgid "/dev/ttyS0, /dev/ttyS1, etc"
@@ -1756,15 +1758,15 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1895
 msgid "Local parallel name"
-msgstr ""
+msgstr "Nombre en paralelo local"
 
 #: plugins/rdp/rdp_plugin.c:1896
 msgid "Local parallel device"
-msgstr ""
+msgstr "Dispositivo en paralelo local"
 
 #: plugins/rdp/rdp_plugin.c:1897
 msgid "Smartcard Name"
-msgstr ""
+msgstr "Nombre de tarjeta inteligente"
 
 #: plugins/rdp/rdp_plugin.c:1898
 msgid "Share printers"
@@ -2165,15 +2167,15 @@ msgstr "Activar navegación espacial"
 
 #: plugins/www/www_plugin.c:804
 msgid "Turn on plugin support"
-msgstr ""
+msgstr "Activar compatibilidad con complementos"
 
 #: plugins/www/www_plugin.c:805
 msgid "Turn on WebGL support"
-msgstr ""
+msgstr "Activar compatibilidad con WebGL"
 
 #: plugins/www/www_plugin.c:806
 msgid "Turn on WebAudio support"
-msgstr ""
+msgstr "Activar compatibilidad con WebAudio"
 
 #: plugins/www/www_plugin.c:807
 msgid "Ignore TLS errors"
@@ -2219,7 +2221,7 @@ msgstr "Acerca de"
 
 #: data/ui/remmina_about.glade:40
 msgid "Website"
-msgstr ""
+msgstr "Sitio web"
 
 #: data/ui/remmina_news.glade:108
 msgid ""
@@ -2227,6 +2229,9 @@ msgid ""
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics to remmina.org"
 msgstr ""
+"Enviar estadísticas <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab."
+"io/remmina__stats_8c.html#details\" title=\"estadísticas de uso de Remmina\""
+">anónimas</a></b> a remmina.org"
 
 #: data/ui/remmina_news.glade:133
 msgid "Make Remmina the default Remote Desktop Client"
@@ -2248,6 +2253,11 @@ msgid ""
 "\">rewarding our heros!</a></b>\n"
 "</span>\n"
 msgstr ""
+"<span>\n"
+"<b>Audaces colaboradores desarrollan Remmina en su tiempo libre. Sea audaz "
+"también  <a href=\"https://remmina.org/donations/\" title=\"donativos a "
+"Remmina\">gratificando a nuestros héroes.</a></b>\n"
+"</span>\n"
 
 #: data/ui/remmina_news.glade:212
 msgid "<big>Contribute</big>"
@@ -2261,6 +2271,11 @@ msgid ""
 "appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
+"Parece que Remmina está ejecutándose en el sistema como un paquete snap. "
+"Para activar el acceso a determinadas funcionalidades importantes tales como "
+"el guardado de contraseñas en el llavero y la compartición de impresoras por "
+"RDP, abra el centro de software y otorgue los permisos pertinentes a "
+"Remmina. Alternativamente, ejecute estas órdenes en un terminal:"
 
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"
@@ -2293,7 +2308,7 @@ msgstr "Desbloquear Remmina"
 
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password secret key"
-msgstr ""
+msgstr "Clave secreta de contraseña maestra"
 
 #: data/ui/remmina_main.glade:69
 msgid "New connection profile"
@@ -2346,7 +2361,7 @@ msgstr "Sitio web"
 
 #: data/ui/remmina_main.glade:394
 msgid "Wiki"
-msgstr ""
+msgstr "Wiki"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:404
@@ -2359,11 +2374,11 @@ msgstr "Donaciones"
 
 #: data/ui/remmina_main.glade:440
 msgid "Set as default remote desktop client"
-msgstr ""
+msgstr "Establecer como cliente de escritorios remotos predeterminado"
 
 #: data/ui/remmina_main.glade:541
 msgid "Plugin"
-msgstr ""
+msgstr "Complemento"
 
 #: data/ui/remmina_main.glade:555
 msgid "Last used"
@@ -2464,7 +2479,7 @@ msgstr "Seleccione una carpeta"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Screen resolutions"
-msgstr ""
+msgstr "Resoluciones de pantalla"
 
 #: data/ui/remmina_preferences.glade:326
 msgid "Screenshots filename"
@@ -2476,17 +2491,22 @@ msgid ""
 "%h Server name/IP\n"
 "%Y Year, %m Month, %d Day, %H Hour, %M Minute, %S Seconds (UTC time)\n"
 msgstr ""
+"%p Nombre de perfil\n"
+"%h Nombre/IP de servidor\n"
+"%Y Año, %m Mes, %d Día, %H Hora, %M Minuto, %S Segundos (hora UTC)\n"
 
 #: data/ui/remmina_preferences.glade:356
 msgid ""
 "This is the folder where the connection profiles will be saved, it defaults "
 "to the XDG_USER_DATA"
 msgstr ""
+"En esta carpeta se guardarán los perfiles de conexión; el valor "
+"predeterminado es XDG_USER_DATA"
 
 #. It's the folder where the profiles are saved
 #: data/ui/remmina_preferences.glade:361
 msgid "Remmina data folder"
-msgstr ""
+msgstr "Carpeta de datos de Remmina"
 
 #: data/ui/remmina_preferences.glade:388
 msgid "Remember last view mode for each connection"
@@ -2506,21 +2526,23 @@ msgstr "Enviar estadísticas a remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
 msgid "Only save generated screenshots, don't copy them to clipboard."
-msgstr ""
+msgstr "Solo guardar las capturas generadas; no copiarlas en el portapapeles."
 
 #: data/ui/remmina_preferences.glade:467
 msgid "Prevent screenshots from entering clipboard"
-msgstr ""
+msgstr "Evitar que las capturas de pantalla entren en el portapapeles"
 
 #: data/ui/remmina_preferences.glade:479
 msgid ""
 "Set a custom filename for your Remmina connection profiles, using a "
 "formatting string."
 msgstr ""
+"Establezca un nombre de archivo personalizado para sus perfiles de conexión "
+"de Remmina utilizando una cadena de formato."
 
 #: data/ui/remmina_preferences.glade:483
 msgid "Profile filename template"
-msgstr ""
+msgstr "Plantilla de nombre de archivo de perfil"
 
 #: data/ui/remmina_preferences.glade:495
 msgid ""
@@ -2531,6 +2553,12 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
+"%G Nombre de grupo (las barras se convertirán en - automáticamente)\n"
+"%P Nombre de protocolo\n"
+"%N Nombre de conexión\n"
+"%h Nombre/IP de anfitrión\n"
+"\n"
+"\n"
 
 #: data/ui/remmina_preferences.glade:504
 msgid "%G_%P_%N_%h"
@@ -2586,7 +2614,7 @@ msgstr "Abrir en pestañas todas las conexiones"
 
 #: data/ui/remmina_preferences.glade:621
 msgid "No tabs"
-msgstr ""
+msgstr "Sin pestañas"
 
 #: data/ui/remmina_preferences.glade:632
 msgid "Fullscreen on the same monitor as the connection window"
@@ -2710,11 +2738,13 @@ msgid ""
 "The time (in seconds) the connection needs to remain idle before TCP starts "
 "sending keepalive probes."
 msgstr ""
+"El tiempo (en segundos) que la conexión debe permanecer inactiva antes de "
+"que TCP comience a enviar sondeos de «keepalive»."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1360
 msgid "The time (in seconds) between individual keepalive probes."
-msgstr ""
+msgstr "El tiempo (en segundos) entre cada sondeo «keepalive»."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1376
@@ -2722,6 +2752,8 @@ msgid ""
 "The maximum number of keepalive probes TCP should send before dropping the "
 "connection."
 msgstr ""
+"El número máximo de sondeos «keepalive» que TCP debe enviar antes de anular "
+"la conexión."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1392
@@ -2730,6 +2762,9 @@ msgid ""
 "data may remain unacknowledged before TCP will forcibly close the "
 "corresponding connection."
 msgstr ""
+"especifica la cantidad máxima de tiempo en milisegundos en que los datos "
+"transmitidos pueden permanecer sin confirmar antes de que TCP cierre de "
+"manera forzosa la conexión correspondiente."
 
 #: data/ui/remmina_preferences.glade:1413
 msgid "SSH Options"
@@ -2742,19 +2777,19 @@ msgstr "Contraseña maestra"
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
 msgid "Use secret key to authenticate with some widgets"
-msgstr ""
+msgstr "Utilizar clave secreta para autenticarse con algunos controles"
 
 #: data/ui/remmina_preferences.glade:1472
 msgid "Use master password"
-msgstr ""
+msgstr "Utilizar contraseña maestra"
 
 #: data/ui/remmina_preferences.glade:1485
 msgid "Automatic lock interval"
-msgstr ""
+msgstr "Intervalo de bloqueo automático"
 
 #: data/ui/remmina_preferences.glade:1496
 msgid "Master password validity in seconds"
-msgstr ""
+msgstr "Validez de contraseña maestra en segundos"
 
 #: data/ui/remmina_preferences.glade:1516
 msgid "File encryption"
@@ -2762,7 +2797,7 @@ msgstr "Cifrado de archivos"
 
 #: data/ui/remmina_preferences.glade:1546
 msgid "Retype password"
-msgstr ""
+msgstr "Escriba de nuevo la contraseña"
 
 #: data/ui/remmina_preferences.glade:1623
 msgid "Terminal font"
@@ -2826,11 +2861,13 @@ msgid ""
 "Choose a color scheme file. Usually available in /usr/share/remmina/theme. "
 "More details in https://github.com/mbadolato/iTerm2-Color-Schemes."
 msgstr ""
+"Elija un archivo de combinación de colores; normalmente se encuentran en /"
+"usr/share/remmina/theme. Para más detalles, visite https://github.com/"
+"mbadolato/iTerm2-Color-Schemes."
 
 #: data/ui/remmina_preferences.glade:1920
-#, fuzzy
 msgid "Pick a terminal coloring file"
-msgstr "Elija un tono de magenta"
+msgstr "Elija un archivo de coloración de terminal"
 
 #: data/ui/remmina_preferences.glade:1934
 msgid "Pick a black color"
@@ -2907,4 +2944,3 @@ msgstr "Permitir texto en negrita"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminal"
-
