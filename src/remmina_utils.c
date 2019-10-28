@@ -57,67 +57,67 @@ struct utsname u;
  * Some of the code in this file is taken from the VMware open client.
  */
 typedef struct lsb_distro_info {
-	gchar * name;
-	gchar * scanstring;
+	gchar *name;
+	gchar *scanstring;
 } LSBDistroInfo;
 
 /*
- * static LSBDistroInfo lsbFields[] = {
- *      { "DISTRIB_ID=",	  "DISTRIB_ID=%s"		},
- *      { "DISTRIB_RELEASE=",	  "DISTRIB_RELEASE=%s"		},
- *      { "DISTRIB_CODENAME=",	  "DISTRIB_CODENAME=%s"		},
- *      { "DISTRIB_DESCRIPTION=", "DISTRIB_DESCRIPTION=%s"	},
- *      { NULL,			  NULL				},
- * };
- */
+static LSBDistroInfo lsbFields[] = {
+	{ "DISTRIB_ID=",	  "DISTRIB_ID=%s"		},
+	{ "DISTRIB_RELEASE=",	  "DISTRIB_RELEASE=%s"		},
+	{ "DISTRIB_CODENAME=",	  "DISTRIB_CODENAME=%s"		},
+	{ "DISTRIB_DESCRIPTION=", "DISTRIB_DESCRIPTION=%s"	},
+	{ NULL,			  NULL				},
+};
+*/
 
 typedef struct distro_info {
-	gchar * name;
-	gchar * filename;
+	gchar *name;
+	gchar *filename;
 } DistroInfo;
 
 static DistroInfo distroArray[] = {
-	{ "RedHat",		"/etc/redhat-release"	     },
-	{ "RedHat",		"/etc/redhat_version"	     },
-	{ "Sun",		"/etc/sun-release"	     },
-	{ "SuSE",		"/etc/SuSE-release"	     },
-	{ "SuSE",		"/etc/novell-release"	     },
-	{ "SuSE",		"/etc/sles-release"	     },
-	{ "SuSE",		"/etc/os-release"	     },
-	{ "Debian",		"/etc/debian_version"	     },
-	{ "Debian",		"/etc/debian_release"	     },
-	{ "Ubuntu",		"/etc/lsb-release"	     },
-	{ "Mandrake",		"/etc/mandrake-release"	     },
-	{ "Mandriva",		"/etc/mandriva-release"	     },
-	{ "Mandrake",		"/etc/mandrakelinux-release" },
-	{ "TurboLinux",		"/etc/turbolinux-release"    },
-	{ "Fedora Core",	"/etc/fedora-release"	     },
-	{ "Gentoo",		"/etc/gentoo-release"	     },
-	{ "Novell",		"/etc/nld-release"	     },
-	{ "Annvix",		"/etc/annvix-release"	     },
-	{ "Arch",		"/etc/arch-release"	     },
-	{ "Arklinux",		"/etc/arklinux-release"	     },
-	{ "Aurox",		"/etc/aurox-release"	     },
-	{ "BlackCat",		"/etc/blackcat-release"	     },
-	{ "Cobalt",		"/etc/cobalt-release"	     },
-	{ "Conectiva",		"/etc/conectiva-release"     },
-	{ "Immunix",		"/etc/immunix-release"	     },
-	{ "Knoppix",		"/etc/knoppix_version"	     },
-	{ "Linux-From-Scratch", "/etc/lfs-release"	     },
-	{ "Linux-PPC",		"/etc/linuxppc-release"	     },
-	{ "MkLinux",		"/etc/mklinux-release"	     },
-	{ "PLD",		"/etc/pld-release"	     },
-	{ "Slackware",		"/etc/slackware-version"     },
-	{ "Slackware",		"/etc/slackware-release"     },
-	{ "SMEServer",		"/etc/e-smith-release"	     },
-	{ "Solaris",		"/etc/release"		     },
-	{ "Solus",		"/etc/solus-release"	     },
-	{ "Tiny Sofa",		"/etc/tinysofa-release"	     },
-	{ "UltraPenguin",	"/etc/ultrapenguin-release"  },
-	{ "UnitedLinux",	"/etc/UnitedLinux-release"   },
-	{ "VALinux",		"/etc/va-release"	     },
-	{ "Yellow Dog",		"/etc/yellowdog-release"     },
-	{ NULL,			NULL			     },
+	{ "RedHat",		"/etc/redhat-release"		},
+	{ "RedHat",		"/etc/redhat_version"		},
+	{ "Sun",		"/etc/sun-release"		},
+	{ "SuSE",		"/etc/SuSE-release"		},
+	{ "SuSE",		"/etc/novell-release"		},
+	{ "SuSE",		"/etc/sles-release"		},
+	{ "SuSE",		"/etc/os-release"		},
+	{ "Debian",		"/etc/debian_version"		},
+	{ "Debian",		"/etc/debian_release"		},
+	{ "Ubuntu",		"/etc/lsb-release"		},
+	{ "Mandrake",		"/etc/mandrake-release"		},
+	{ "Mandriva",		"/etc/mandriva-release"		},
+	{ "Mandrake",		"/etc/mandrakelinux-release"	},
+	{ "TurboLinux",		"/etc/turbolinux-release"	},
+	{ "Fedora Core",	"/etc/fedora-release"		},
+	{ "Gentoo",		"/etc/gentoo-release"		},
+	{ "Novell",		"/etc/nld-release"		},
+	{ "Annvix",		"/etc/annvix-release"		},
+	{ "Arch",		"/etc/arch-release"		},
+	{ "Arklinux",		"/etc/arklinux-release"		},
+	{ "Aurox",		"/etc/aurox-release"		},
+	{ "BlackCat",		"/etc/blackcat-release"		},
+	{ "Cobalt",		"/etc/cobalt-release"		},
+	{ "Conectiva",		"/etc/conectiva-release"	},
+	{ "Immunix",		"/etc/immunix-release"		},
+	{ "Knoppix",		"/etc/knoppix_version"		},
+	{ "Linux-From-Scratch", "/etc/lfs-release"		},
+	{ "Linux-PPC",		"/etc/linuxppc-release"		},
+	{ "MkLinux",		"/etc/mklinux-release"		},
+	{ "PLD",		"/etc/pld-release"		},
+	{ "Slackware",		"/etc/slackware-version"	},
+	{ "Slackware",		"/etc/slackware-release"	},
+	{ "SMEServer",		"/etc/e-smith-release"		},
+	{ "Solaris",		"/etc/release"			},
+	{ "Solus",		"/etc/solus-release"		},
+	{ "Tiny Sofa",		"/etc/tinysofa-release"		},
+	{ "UltraPenguin",	"/etc/ultrapenguin-release"	},
+	{ "UnitedLinux",	"/etc/UnitedLinux-release"	},
+	{ "VALinux",		"/etc/va-release"		},
+	{ "Yellow Dog",		"/etc/yellowdog-release"	},
+	{ NULL,			NULL				},
 };
 
 gint remmina_utils_strpos(const gchar *haystack, const gchar *needle)
@@ -224,10 +224,11 @@ gchar *remmina_utils_string_strip(const gchar *s)
 	if (p) {
 		gchar *p2 = p;
 		while (*s != '\0') {
-			if (*s != '\t' && *s != '\n' && *s != '\"')
+			if (*s != '\t' && *s != '\n' && *s != '\"') {
 				*p2++ = *s++;
-			else
+			} else {
 				++s;
+			}
 		}
 		*p2 = '\0';
 	}
@@ -248,7 +249,7 @@ gchar *remmina_utils_string_strip(const gchar *s)
  * @return Returns a string containing distro information verbatium from /etc/xxx-release (distro). Use g_free to free the string.
  *
  */
-static gchar *remmina_utils_read_distrofile(gchar *filename)
+static gchar* remmina_utils_read_distrofile(gchar *filename)
 {
 	TRACE_CALL(__func__);
 	gsize file_sz;
@@ -284,7 +285,7 @@ static gchar *remmina_utils_read_distrofile(gchar *filename)
  * Return the current language defined in the LC_ALL.
  * @return a language string or en_US.
  */
-gchar *remmina_utils_get_lang()
+gchar* remmina_utils_get_lang()
 {
 	gchar *lang = setlocale(LC_ALL, NULL);
 	gchar *ptr;
@@ -293,8 +294,9 @@ gchar *remmina_utils_get_lang()
 		lang = "en_US\0";
 	} else {
 		ptr = strchr(lang, '.');
-		if (ptr != NULL)
+		if (ptr != NULL) {
 			*ptr = '\0';
+		}
 	}
 
 	return lang;
@@ -303,14 +305,14 @@ gchar *remmina_utils_get_lang()
  * Return the OS name as in "uname -s".
  * @return The OS name or NULL.
  */
-const gchar *remmina_utils_get_kernel_name()
+const gchar* remmina_utils_get_kernel_name()
 {
 	TRACE_CALL(__func__);
 	if (u.sysname)
 		return u.sysname;
 }
 
-const gchar *remmina_utils_get_kernel_release()
+const gchar* remmina_utils_get_kernel_release()
 /**
  * Return the OS version as in "uname -r".
  * @return The OS release or NULL.
@@ -325,7 +327,7 @@ const gchar *remmina_utils_get_kernel_release()
  * Return the machine hardware name as in "uname -m".
  * @return The machine hardware name or NULL.
  */
-const gchar *remmina_utils_get_kernel_arch()
+const gchar* remmina_utils_get_kernel_arch()
 {
 	TRACE_CALL(__func__);
 	if (u.machine)
@@ -336,12 +338,13 @@ const gchar *remmina_utils_get_kernel_arch()
  * Print the Distributor as specified by the lsb_release command.
  * @return the distributor ID string or NULL. Caller must free it with g_free().
  */
-gchar *remmina_utils_get_lsb_id()
+gchar* remmina_utils_get_lsb_id()
 {
 	TRACE_CALL(__func__);
 	gchar *lsb_id = NULL;
-	if (g_spawn_command_line_sync("/usr/bin/lsb_release -si", &lsb_id, NULL, NULL, NULL))
+	if (g_spawn_command_line_sync("/usr/bin/lsb_release -si", &lsb_id, NULL, NULL, NULL)) {
 		return lsb_id;
+	}
 	return NULL;
 }
 
@@ -349,7 +352,7 @@ gchar *remmina_utils_get_lsb_id()
  * Print the Distribution description as specified by the lsb_release command.
  * @return the Distribution description string or NULL. Caller must free it with g_free().
  */
-gchar *remmina_utils_get_lsb_description()
+gchar* remmina_utils_get_lsb_description()
 {
 	TRACE_CALL(__func__);
 	gchar *lsb_description = NULL;
@@ -357,7 +360,7 @@ gchar *remmina_utils_get_lsb_description()
 
 	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sd", &lsb_description, NULL, NULL, &err)) {
 		return lsb_description;
-	} else {
+	}else {
 		g_debug("%s: could not execute lsb_release %s\n", __func__, err->message);
 		g_error_free(err);
 	}
@@ -369,12 +372,13 @@ gchar *remmina_utils_get_lsb_description()
  * Print the Distribution release name as specified by the lsb_release command.
  * @return the Distribution release name string or NULL. Caller must free it with g_free().
  */
-gchar *remmina_utils_get_lsb_release()
+gchar* remmina_utils_get_lsb_release()
 {
 	TRACE_CALL(__func__);
 	gchar *lsb_release = NULL;
-	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sr", &lsb_release, NULL, NULL, NULL))
+	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sr", &lsb_release, NULL, NULL, NULL)) {
 		return lsb_release;
+	}
 	return NULL;
 }
 
@@ -382,12 +386,13 @@ gchar *remmina_utils_get_lsb_release()
  * Print the Distribution codename as specified by the lsb_release command.
  * @return the codename string or NULL. Caller must free it with g_free().
  */
-gchar *remmina_utils_get_lsb_codename()
+gchar* remmina_utils_get_lsb_codename()
 {
 	TRACE_CALL(__func__);
 	gchar *lsb_codename = NULL;
-	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sc", &lsb_codename, NULL, NULL, NULL))
+	if (g_spawn_command_line_sync("/usr/bin/lsb_release -sc", &lsb_codename, NULL, NULL, NULL)) {
 		return lsb_codename;
+	}
 	return NULL;
 }
 
@@ -396,7 +401,7 @@ gchar *remmina_utils_get_lsb_codename()
  * Test each known distribution specific information file and print it’s content.
  * @return a string or NULL. Caller must free it with g_free().
  */
-GHashTable *remmina_utils_get_etc_release()
+GHashTable* remmina_utils_get_etc_release()
 {
 	TRACE_CALL(__func__);
 	gchar *etc_release = NULL;
@@ -412,9 +417,8 @@ GHashTable *remmina_utils_get_etc_release()
 			if (etc_release[0] != '\0') {
 				g_debug("%s: Distro description %s\n", __func__, etc_release);
 				g_hash_table_insert(r, distroArray[i].filename, etc_release);
-			} else {
+			} else
 				g_free(etc_release);
-			}
 		}
 	}
 	return r;
@@ -424,7 +428,7 @@ GHashTable *remmina_utils_get_etc_release()
  * A sample function to show how use the other fOS releated functions.
  * @return a semicolon separated OS data like in "uname -srm".
  */
-const gchar *remmina_utils_get_os_info()
+const gchar* remmina_utils_get_os_info()
 {
 	TRACE_CALL(__func__);
 	gchar *kernel_string;
@@ -433,15 +437,14 @@ const gchar *remmina_utils_get_os_info()
 		g_print("uname:");
 
 	kernel_string = g_strdup_printf("%s;%s;%s\n",
-					remmina_utils_get_kernel_name(),
-					remmina_utils_get_kernel_release(),
-					remmina_utils_get_kernel_arch());
-	if (!kernel_string || kernel_string[0] == '\0') {
+		remmina_utils_get_kernel_name(),
+		remmina_utils_get_kernel_release(),
+		remmina_utils_get_kernel_arch());
+	if (!kernel_string || kernel_string[0] == '\0')
 		kernel_string = g_strdup_printf("%s;%s;%s\n",
-						"UNKNOWN",
-						"UNKNOWN",
-						"UNKNOWN");
-	}
+			"UNKNOWN",
+			"UNKNOWN",
+			"UNKNOWN");
 	return kernel_string;
 }
 
@@ -458,52 +461,51 @@ const gchar *remmina_utils_get_os_info()
  * Taken from https://github.com/ttuegel/notmuch do PR in case of substantial modifications.
  *
  */
-gchar *remmina_sha1_file(const gchar *filename)
+gchar* remmina_sha1_file (const gchar *filename)
 {
-	FILE *file;
-
+    FILE *file;
 #define BLOCK_SIZE 4096
-	unsigned char block[BLOCK_SIZE];
-	size_t bytes_read;
-	GChecksum *sha1;
-	char *digest = NULL;
+    unsigned char block[BLOCK_SIZE];
+    size_t bytes_read;
+    GChecksum *sha1;
+    char *digest = NULL;
 
-	file = fopen(filename, "r");
-	if (file == NULL)
-		return NULL;
+    file = fopen (filename, "r");
+    if (file == NULL)
+	return NULL;
 
-	sha1 = g_checksum_new(G_CHECKSUM_SHA1);
-	if (sha1 == NULL)
+    sha1 = g_checksum_new (G_CHECKSUM_SHA1);
+    if (sha1 == NULL)
+	goto DONE;
+
+    while (1) {
+	bytes_read = fread (block, 1, 4096, file);
+	if (bytes_read == 0) {
+	    if (feof (file))
+		break;
+	    else if (ferror (file))
 		goto DONE;
-
-	while (1) {
-		bytes_read = fread(block, 1, 4096, file);
-		if (bytes_read == 0) {
-			if (feof(file))
-				break;
-			else if (ferror(file))
-				goto DONE;
-		} else {
-			g_checksum_update(sha1, block, bytes_read);
-		}
+	} else {
+	    g_checksum_update (sha1, block, bytes_read);
 	}
+    }
 
-	digest = g_strdup(g_checksum_get_string(sha1));
+    digest = g_strdup (g_checksum_get_string (sha1));
 
-DONE:
-	if (sha1)
-		g_checksum_free(sha1);
-	if (file)
-		fclose(file);
+  DONE:
+    if (sha1)
+	g_checksum_free (sha1);
+    if (file)
+	fclose (file);
 
-	return digest;
+    return digest;
 }
 
 /**
  * Generate a random sting of chars to be used as part of UID for news or stats
- * @return a string or NULL. Caller must free it with g_free().
+  * @return a string or NULL. Caller must free it with g_free().
  */
-gchar *remmina_gen_random_uuid()
+gchar* remmina_gen_random_uuid()
 {
 	TRACE_CALL(__func__);
 	GRand *rand;
@@ -517,13 +519,16 @@ gchar *remmina_gen_random_uuid()
 	g_get_current_time(&t);
 	rand = g_rand_new_with_seed((guint32)t.tv_sec ^ (guint32)t.tv_usec);
 
-	for (i = 0; i < 7; i++)
+	for (i = 0; i < 7; i++) {
 		result[i] = alpha[g_rand_int_range(rand, 0, sizeof(alpha) - 1)];
+	}
 
 	g_rand_set_seed(rand, (guint32)t.tv_usec);
-	for (i = 0; i < 7; i++)
+	for (i = 0; i < 7; i++) {
 		result[i + 7] = alpha[g_rand_int_range(rand, 0, sizeof(alpha) - 1)];
+	}
 	g_rand_free(rand);
 
 	return result;
 }
+
