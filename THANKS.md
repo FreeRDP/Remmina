@@ -29,6 +29,7 @@ This special place is reserved to who have donated the highest amount of money s
 - Clayton Casciato
 - Dennis Lampe
 - Josef Abdel Wahed
+- Marcin Wolcendorf
 - Marwan Yassin
 - Matthias Baumann
 - Matthias Tapis
