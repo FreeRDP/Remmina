@@ -78,7 +78,7 @@ char *rp_kwallet_get_password(const char *key)
         return NULL;
     }
     QByteArray pba = password.toUtf8();
-    char *cpassword = new char[pba.size()+1];
+    char *cpassword = (char *)malloc(pba.size()+1);
     strcpy(cpassword, pba.data());
     return cpassword;
 }
