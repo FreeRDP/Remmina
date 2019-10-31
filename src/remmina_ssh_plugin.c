@@ -340,7 +340,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	/* ToDo: the following call should be moved on the main thread, or something weird could happen */
 	remmina_plugin_ssh_on_size_allocate(GTK_WIDGET(gpdata->vte), NULL, gp);
 
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
+	remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
 
 	gpdata->thread = 0;
 	return NULL;
@@ -883,7 +883,7 @@ remmina_plugin_ssh_close_connection(RemminaProtocolWidget *gp)
 		gpdata->shell = NULL;
 	}
 
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 	return FALSE;
 }
 
