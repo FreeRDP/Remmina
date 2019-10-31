@@ -631,7 +631,7 @@ static gboolean remmina_plugin_www_close_connection(RemminaProtocolWidget *gp)
 	/* Remove instance->context from gp object data to avoid double free */
 	g_object_steal_data(G_OBJECT(gp), "plugin-data");
 
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 	return FALSE;
 }
 
@@ -680,7 +680,7 @@ static gboolean remmina_plugin_www_open_connection(RemminaProtocolWidget *gp)
 		webkit_web_inspector_show(WEBKIT_WEB_INSPECTOR(inspector));
 	}
 #endif
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
+	remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
 	gtk_widget_show_all(gpdata->box);
 
 	return TRUE;
