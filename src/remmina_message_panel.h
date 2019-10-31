@@ -46,11 +46,6 @@ struct _RemminaMessagePanelClass {
 	void (* response) (RemminaMessagePanel *mp, gint response_id);
 };
 
-enum {
-	REMMINA_MESSAGE_PANEL_FLAG_USERNAME=1,
-	REMMINA_MESSAGE_PANEL_FLAG_DOMAIN=2,
-	REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD=4
-};
 
 /* Widgets ID for dialog fields */
 enum {

@@ -170,8 +170,8 @@ typedef struct _RemminaPluginService {
     void (* protocol_plugin_update_align)(RemminaProtocolWidget *gp);
     void (* protocol_plugin_unlock_dynres)(RemminaProtocolWidget *gp);
     void (* protocol_plugin_desktop_resize)(RemminaProtocolWidget *gp);
-	gint (* protocol_plugin_init_authpwd)(RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type, gboolean allow_password_saving);
-	gint (* protocol_plugin_init_authuserpwd)(RemminaProtocolWidget *gp, gboolean want_domain, gboolean allow_password_saving);
+	gint (* protocol_plugin_init_auth)(RemminaProtocolWidget *gp, RemminaMessagePanelFlags pflags, const gchar *title, const gchar *default_username, const gchar *default_password,
+		const gchar *default_domain, const gchar *password_prompt);
 	gint (* protocol_plugin_init_certificate)(RemminaProtocolWidget *gp, const gchar* subject, const gchar* issuer, const gchar* fingerprint);
 	gint (* protocol_plugin_changed_certificate)(RemminaProtocolWidget *gp, const gchar* subject, const gchar* issuer, const gchar* new_fingerprint, const gchar* old_fingerprint);
 	gchar*       (*protocol_plugin_init_get_username)(RemminaProtocolWidget * gp);

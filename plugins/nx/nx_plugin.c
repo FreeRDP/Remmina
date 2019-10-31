@@ -198,13 +198,16 @@ gboolean remmina_plugin_nx_ssh_auth_callback(gchar **passphrase, gpointer userda
 	gint ret;
 
 	/* SSH passwords must not be saved */
-	ret = remmina_plugin_nx_service->protocol_plugin_init_authpwd(gp, REMMINA_AUTHPWD_TYPE_SSH_PRIVKEY, FALSE);
-
-	if (ret != GTK_RESPONSE_OK)
+	ret = remmina_plugin_nx_service->protocol_plugin_init_auth(gp, 0,
+		_("SSH credentials"), NULL,
+		NULL,
+		NULL,
+		_("SSH private key passphrase"));
+	if (ret == GTK_RESPONSE_OK) {
+		*passphrase = remmina_plugin_nx_service->protocol_plugin_init_get_password(gp);
+		return TRUE;
+	} else
 		return FALSE;
-	*passphrase = remmina_plugin_nx_service->protocol_plugin_init_get_password(gp);
-
-	return TRUE;
 }
 
 static void remmina_plugin_nx_on_proxy_exit(GPid pid, gint status, gpointer data)
@@ -355,15 +358,34 @@ static gboolean remmina_plugin_nx_start_session(RemminaProtocolWidget *gp)
 		g_free(s1);
 		g_free(s2);
 
+		gchar *s_username, *s_password;
+
 		disablepasswordstoring = remmina_plugin_nx_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
-		ret = remmina_plugin_nx_service->protocol_plugin_init_authuserpwd(gp, FALSE, !disablepasswordstoring);
 
-		if (ret != GTK_RESPONSE_OK)
-			return FALSE;
+		ret = remmina_plugin_nx_service->protocol_plugin_init_auth(gp,
+			(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) | REMMINA_MESSAGE_PANEL_FLAG_USERNAME,
+			_("Enter NX authentication credentials"),
+			remmina_plugin_nx_service->file_get_string(remminafile, "username"),
+			remmina_plugin_nx_service->file_get_string(remminafile, "password"),
+			NULL,
+			NULL);
+		if (ret == GTK_RESPONSE_OK) {
+			gboolean save;
+			s_username = remmina_plugin_nx_service->protocol_plugin_init_get_username(gp);
+			s_password = remmina_plugin_nx_service->protocol_plugin_init_get_password(gp);
+			save = remmina_plugin_nx_service->protocol_plugin_init_get_savepassword(gp);
+			if (save) {
+				remmina_plugin_nx_service->file_set_string(remminafile, "username", s_username);
+				remmina_plugin_nx_service->file_set_string(remminafile, "password", s_password);
+			} else
+				remmina_plugin_nx_service->file_unsave_passwords(remminafile);
+		} else {
+			return False;
+		}
 
-		s1 = remmina_plugin_nx_service->protocol_plugin_init_get_username(gp);
-		s2 = remmina_plugin_nx_service->protocol_plugin_init_get_password(gp);
-		ret = remmina_nx_session_login(nx, s1, s2);
+		ret = remmina_nx_session_login(nx, s_username, s_password);
+		g_free(s_username);
+		g_free(s_password);
 	}
 	g_free(s1);
 	g_free(s2);

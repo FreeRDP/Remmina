@@ -130,8 +130,7 @@ gint remmina_protocol_widget_panel_authuserpwd_ssh_tunnel(RemminaProtocolWidget*
 
 /* Dialog panel API used by the plugins */
 
-gint remmina_protocol_widget_panel_authpwd(RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type, gboolean allow_password_saving);
-gint remmina_protocol_widget_panel_authuserpwd(RemminaProtocolWidget *gp, gboolean want_domain, gboolean allow_password_saving);
+gint remmina_protocol_widget_panel_auth(RemminaProtocolWidget* gp, RemminaMessagePanelFlags pflags, const gchar *title, const gchar *default_username, const gchar *default_password, const gchar *default_domain, const gchar *password_prompt);
 gint remmina_protocol_widget_panel_new_certificate(RemminaProtocolWidget* gp, const gchar* subject, const gchar* issuer, const gchar* fingerprint);
 gint remmina_protocol_widget_panel_changed_certificate(RemminaProtocolWidget *gp, const gchar* subject, const gchar* issuer, const gchar* new_fingerprint, const gchar* old_fingerprint);
 gint remmina_protocol_widget_panel_question_yesno(RemminaProtocolWidget* gp, const char *msg);
