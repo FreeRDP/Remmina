@@ -1598,6 +1598,11 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Server %s denied the connection."), rfi->settings->ServerHostname);
 				break;
 #endif
+			case 0x800759DB:
+				// E_PROXY_NAP_ACCESSDENIED https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-tsgu/84cd92e4-592c-4219-95d8-18021ac654b0
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("The remote desktop gateway %s denied user %s\\%s access due to policy."),
+					rfi->settings->GatewayHostname, rfi->settings->GatewayDomain, rfi->settings->GatewayUsername);
+				break;
 
 			case FREERDP_ERROR_CONNECT_NO_OR_MISSING_CREDENTIALS:
 				rfi->user_cancelled = TRUE;
