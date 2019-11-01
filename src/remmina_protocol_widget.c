@@ -1387,16 +1387,16 @@ gint remmina_protocol_widget_panel_changed_certificate(RemminaProtocolWidget *gp
 	// For markup see https://developer.gnome.org/pygtk/stable/pango-markup-language.html
 	s = g_strdup_printf(
 		"<big>%s</big>\n\n%s %s\n%s %s\n%s %s\n%s %s\n\n<big>%s</big>",
-		 _("Certificate Changed! Details:"),
+		 _("The certificate changed! Details:"),
 		 _("Subject:"), subject,
 		 _("Issuer:"), issuer,
-		 _("Old Fingerprint:"), old_fingerprint,
-		 _("New Fingerprint:"), new_fingerprint,
-		 _("Accept Changed Certificate?"));
+		 _("Old fingerprint:"), old_fingerprint,
+		 _("New fingerprint:"), new_fingerprint,
+		 _("Accept changed certificate?"));
 	rc = remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, s);
 	g_free(s);
 
-	/* For compatibility with plugin API: the plugin expects GTK_RESPONSE_OK when user confirms new cert */
+	/* For compatibility with plugin API: The plugin expects GTK_RESPONSE_OK when user confirms new cert */
 	return rc == GTK_RESPONSE_YES ? GTK_RESPONSE_OK : rc;
 }
 

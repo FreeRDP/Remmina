@@ -1,5 +1,5 @@
 /*
- * Remmina - The GTK+ Remote Desktop Client
+ * Remmina - The GTK Remote Desktop Client
  * Copyright (C) 2010 Jay Sorg
  * Copyright (C) 2010-2011 Vic Lee
  * Copyright (C) 2011 Marc-Andre Moreau <marcandre.moreau@gmail.com>
@@ -290,13 +290,13 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 
 
 	if (rfi->is_reconnecting) {
-		/* freerdp is reconnecting, just show a message to the user */
+		/* FreeRDP is reconnecting, just show a message to the user */
 
 		width = gtk_widget_get_allocated_width(widget);
 		height = gtk_widget_get_allocated_height(widget);
 
 		/* Draw text */
-		msg = g_strdup_printf(_("Reconnection in progress. Attempt %d of %d…"),
+		msg = g_strdup_printf(_("Reconnection attempt %d of %d…"),
 			rfi->reconnect_nattempt, rfi->reconnect_maxattempts);
 
 		cairo_select_font_face(context, "Sans", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_BOLD);
@@ -308,7 +308,7 @@ static gboolean remmina_rdp_event_on_draw(GtkWidget* widget, cairo_t* context, R
 		g_free(msg);
 
 	}else  {
-		/* Standard drawing: we copy the surface from RDP */
+		/* Standard drawing: We copy the surface from RDP */
 
 		if (!rfi->surface)
 			return FALSE;
@@ -668,18 +668,18 @@ static gboolean remmina_rdp_event_on_key(GtkWidget* widget, GdkEventKey* event, 
 			}
 		} else {
 			unicode_keyval = gdk_keyval_to_unicode(event->keyval);
-			/* Decide when whe should send a keycode or a unicode character.
-			 * - All non char keys (shift, alt, win) should be sent as keycode
+			/* Decide when whe should send a keycode or a Unicode character.
+			 * - All non char keys (Shift, Alt, Super) should be sent as keycode
 			 * - Space should be sent as keycode (see issue #1364)
-			 * - All special keys (F1-F10, numeric pad, home/end/arrows/pgup/pgdn/ins/del) keycode
-			 * - All key pressed while CTRL or ALT or WIN is down are not decoded by gdk_keyval_to_unicode(), so send it as keycode
+			 * - All special keys (F1-F10, numeric pad, Home/End/Arrows/PgUp/PgDn/Insert/Delete) keycode
+			 * - All key pressed while Ctrl or Alt or Super is down are not decoded by gdk_keyval_to_unicode(), so send it as keycode
 			 * - All keycodes not translatable to unicode chars, as keycode
-			 * - The rest as unicode char
+			 * - The rest as Unicode char
 			 */
-			if (event->keyval >= 0xfe00 ||                                                  // arrows, shift, alt, Fn, num keypad…
-				event->hardware_keycode == 0x41 ||											// space bar
-			    unicode_keyval == 0 ||                                                      // impossible to translate
-			    (event->state & (GDK_MOD1_MASK | GDK_CONTROL_MASK | GDK_SUPER_MASK)) != 0   // a modifier not recognized by gdk_keyval_to_unicode()
+			if (event->keyval >= 0xfe00 ||                                                  // Arrows, Shift, Alt, Fn, num keypad…
+				event->hardware_keycode == 0x41 ||											// Spacebar
+			    unicode_keyval == 0 ||                                                      // Impossible to translate
+			    (event->state & (GDK_MOD1_MASK | GDK_CONTROL_MASK | GDK_SUPER_MASK)) != 0   // A modifier not recognized by gdk_keyval_to_unicode()
 			    ) {
 				scancode = freerdp_keyboard_get_rdp_scancode_from_x11_keycode(event->hardware_keycode);
 				rdp_event.key_event.key_code = scancode & 0xFF;
