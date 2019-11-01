@@ -85,7 +85,7 @@ static GOptionEntry remmina_options[] =
 	{ G_OPTION_REMAINING, '\0', 0,			  G_OPTION_ARG_FILENAME_ARRAY, NULL, N_("Connect to desktop described in file (.remmina or type supported by plugin)"),	     "FILE"	},
 	{ "edit",	      'e',  0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Edit desktop connection described in file (.remmina or type supported by plugin)"), "FILE"	},
 	{ "help",	      '?',  G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE,	       NULL, NULL,										     NULL	},
-	{ "kiosk",	      'k',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Start in Kiosk mode"),							     NULL	},
+	{ "kiosk",	      'k',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Start in kiosk mode"),							     NULL	},
 	{ "new",	      'n',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Create new connection profile"),						     NULL	},
 	{ "pref",	      'p',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Show preferences"),						     "PAGENR"	},
 	{ "plugin",	      'x',  0,			  G_OPTION_ARG_STRING,	       NULL, N_("Run a plugin"),								     "PLUGIN"	},

@@ -900,7 +900,7 @@ static void remmina_ftp_client_init(RemminaFTPClient *client)
 
 	/* Remote File List - Columns */
 	column = gtk_tree_view_column_new();
-	gtk_tree_view_column_set_title(column, _("File Name"));
+	gtk_tree_view_column_set_title(column, _("Filename"));
 	gtk_tree_view_column_set_expand(column, TRUE);
 	gtk_tree_view_column_set_resizable(column, TRUE);
 	gtk_tree_view_column_set_sort_column_id(column, REMMINA_FTP_FILE_COLUMN_NAME_SORT);
@@ -969,7 +969,7 @@ static void remmina_ftp_client_init(RemminaFTPClient *client)
 
 	/* Task List - Columns */
 	column = gtk_tree_view_column_new();
-	gtk_tree_view_column_set_title(column, _("File Name"));
+	gtk_tree_view_column_set_title(column, _("Filename"));
 	gtk_tree_view_column_set_resizable(column, TRUE);
 	gtk_tree_view_column_set_expand(column, TRUE);
 	gtk_tree_view_column_set_sort_column_id(column, REMMINA_FTP_TASK_COLUMN_NAME);

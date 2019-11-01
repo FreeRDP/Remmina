@@ -1,5 +1,5 @@
 /*
- * Remmina - The GTK+ Remote Desktop Client
+ * Remmina - The GTK Remote Desktop Client
  * Copyright (C) 2010 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
  * Copyright (C) 2016-2019 Antenore Gatta, Giovanni Panozzo
@@ -129,7 +129,7 @@ static gboolean remmina_plugin_xdmcp_start_xephyr(RemminaProtocolWidget *gp)
 	if (remmina_plugin_service->file_get_int(remminafile, "once", FALSE)) {
 		argv[argc++] = g_strdup("-once");
 	}
-	/* Listen on protocol TCP */
+	/* Listen on TCP protocol */
 	if (remmina_plugin_service->file_get_int(remminafile, "listen_on_tcp", FALSE)) {
 		argv[argc++] = g_strdup("-listen");
 		argv[argc++] = g_strdup("tcp");
@@ -147,8 +147,8 @@ static gboolean remmina_plugin_xdmcp_start_xephyr(RemminaProtocolWidget *gp)
 			argv[argc++] = g_strdup_printf("%i", i);
 		}
 	}else  {
-		/* When the connection is through an SSH tunnel, it connects back to local unix socket,
-		 * so for security we can disable tcp listening */
+		/* When the connection is through an SSH tunnel, it connects back to local Unix socket,
+		 * so for security we can disable TCP listening */
 		argv[argc++] = g_strdup("-nolisten");
 		argv[argc++] = g_strdup("tcp");
 
@@ -369,8 +369,8 @@ static const RemminaProtocolSetting remmina_plugin_xdmcp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",    N_("Color depth"),				 FALSE, colordepth_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "exec",	     N_("Startup program"),			 FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "showcursor",    N_("Use local cursor"),			 FALSE, NULL,		 NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "once",	     N_("Disconnect after one session"),	 FALSE, NULL,		 NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "listen_on_tcp", N_("Listening connection on protocol TCP"), FALSE, NULL,		 NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "once",	     N_("Disconnect after first session"),	 FALSE, NULL,		 NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "listen_on_tcp", N_("Listen for TCP connections"), FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,	     NULL,					 FALSE, NULL,		 NULL }
 };
 
