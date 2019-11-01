@@ -182,13 +182,13 @@ static void remmina_plugin_nx_remove_window_id(Window window_id)
 static void remmina_plugin_nx_on_plug_added(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_nx_service->protocol_plugin_emit_signal(gp, "connect");
+	remmina_plugin_nx_service->protocol_plugin_signal_connection_opened(gp);
 }
 
 static void remmina_plugin_nx_on_plug_removed(GtkSocket *socket, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	remmina_plugin_nx_service->protocol_plugin_close_connection(gp);
+	remmina_plugin_nx_service->protocol_plugin_signal_connection_closed(gp);
 }
 
 gboolean remmina_plugin_nx_ssh_auth_callback(gchar **passphrase, gpointer userdata)
@@ -212,7 +212,7 @@ static void remmina_plugin_nx_on_proxy_exit(GPid pid, gint status, gpointer data
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = (RemminaProtocolWidget*)data;
 
-	remmina_plugin_nx_service->protocol_plugin_close_connection(gp);
+	remmina_plugin_nx_service->protocol_plugin_signal_connection_closed(gp);
 }
 
 static int remmina_plugin_nx_dummy_handler(Display *dsp, XErrorEvent *err)
@@ -539,11 +539,12 @@ static gboolean remmina_plugin_nx_main(RemminaProtocolWidget *gp)
 static gpointer remmina_plugin_nx_main_thread(gpointer data)
 {
 	TRACE_CALL(__func__);
+	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)data;
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 
 	CANCEL_ASYNC
-	if (!remmina_plugin_nx_main((RemminaProtocolWidget*)data)) {
-		IDLE_ADD((GSourceFunc)remmina_plugin_nx_service->protocol_plugin_close_connection, data);
+	if (!remmina_plugin_nx_main(gp)) {
+		remmina_plugin_nx_service->protocol_plugin_signal_connection_closed(gp);
 	}
 	return NULL;
 }
@@ -638,7 +639,7 @@ static gboolean remmina_plugin_nx_close_connection(RemminaProtocolWidget *gp)
 	close(gpdata->event_pipe[0]);
 	close(gpdata->event_pipe[1]);
 
-	remmina_plugin_nx_service->protocol_plugin_emit_signal(gp, "disconnect");
+	remmina_plugin_nx_service->protocol_plugin_signal_connection_closed(gp);
 
 	return FALSE;
 }
@@ -795,4 +796,3 @@ remmina_plugin_entry(RemminaPluginService *service)
 
 	return TRUE;
 }
-

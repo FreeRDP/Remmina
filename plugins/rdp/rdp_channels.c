@@ -74,7 +74,7 @@ void remmina_rdp_OnChannelConnectedEventHandler(rdpContext* context, ChannelConn
 		// "disp" channel connected, save its context pointer
 		rfi->dispcontext = (DispClientContext*)e->pInterface;
 		// Notify rcw to unlock dynres capability
-		remmina_plugin_service->protocol_plugin_emit_signal(rfi->protocol_widget, "unlock-dynres");
+		remmina_plugin_service->protocol_plugin_unlock_dynres(rfi->protocol_widget);
 		// Send monitor layout message here to ask for resize of remote desktop now
 		if (rfi->scale == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES) {
 			remmina_rdp_event_send_delayed_monitor_layout(rfi->protocol_widget);

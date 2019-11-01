@@ -94,7 +94,12 @@ gboolean remmina_protocol_widget_is_closed(RemminaProtocolWidget *gp);
 RemminaFile* remmina_protocol_widget_get_file(RemminaProtocolWidget *gp);
 
 void remmina_protocol_widget_open_connection(RemminaProtocolWidget *gp);
-gboolean remmina_protocol_widget_close_connection(RemminaProtocolWidget *gp);
+void remmina_protocol_widget_close_connection(RemminaProtocolWidget *gp);
+void remmina_protocol_widget_signal_connection_closed(RemminaProtocolWidget *gp);
+void remmina_protocol_widget_signal_connection_opened(RemminaProtocolWidget *gp);
+void remmina_protocol_widget_update_align(RemminaProtocolWidget *gp);
+void remmina_protocol_widget_unlock_dynres(RemminaProtocolWidget *gp);
+void remmina_protocol_widget_desktop_resize(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_grab_focus(RemminaProtocolWidget *gp);
 const RemminaProtocolFeature* remmina_protocol_widget_get_features(RemminaProtocolWidget *gp);
 gboolean remmina_protocol_widget_query_feature_by_type(RemminaProtocolWidget *gp, RemminaProtocolFeatureType type);
@@ -169,5 +174,3 @@ void remmina_protocol_widget_mpdestroy(RemminaConnectionObject *cnnobj, RemminaM
 
 
 G_END_DECLS
-
-

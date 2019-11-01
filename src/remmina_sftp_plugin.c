@@ -177,7 +177,7 @@ remmina_plugin_sftp_main_thread(gpointer data)
 	}
 	if (!cont) {
 		if (sftp) remmina_sftp_free(sftp);
-		IDLE_ADD((GSourceFunc)remmina_plugin_service->protocol_plugin_close_connection, gp);
+		IDLE_ADD((GSourceFunc)remmina_plugin_service->protocol_plugin_signal_connection_closed, gp);
 		return NULL;
 	}
 
@@ -185,7 +185,7 @@ remmina_plugin_sftp_main_thread(gpointer data)
 	/* RemminaSFTPClient owns the object, we just take the reference */
 	gpdata->sftp = sftp;
 
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
+	remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
 
 	gpdata->thread = 0;
 	return NULL;
@@ -265,7 +265,7 @@ remmina_plugin_sftp_close_connection(RemminaProtocolWidget *gp)
 	}
 
 	remmina_ftp_client_save_state(REMMINA_FTP_CLIENT(gpdata->client), remminafile);
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 	/* The session preference overwrite_all is always saved to FALSE in order
 	 * to avoid unwanted overwriting.
 	 * If we'd change idea just remove the next line to save the preference. */

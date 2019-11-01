@@ -949,7 +949,7 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 		/* In non scaled mode, the plugins forces dimensions of drawing area */
 		gtk_widget_set_size_request(rfi->drawing_area, width, height);
 	}
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "update-align");
+	remmina_plugin_service->protocol_plugin_update_align(gp);
 }
 
 static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)
@@ -960,13 +960,14 @@ static void remmina_rdp_event_connected(RemminaProtocolWidget* gp, RemminaPlugin
 
 	gdi = ((rdpContext *)rfi)->gdi;
 
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
 	gtk_widget_realize(rfi->drawing_area);
 
 	remmina_rdp_event_create_cairo_surface(rfi);
 	gtk_widget_queue_draw_area(rfi->drawing_area, 0, 0, gdi->width, gdi->height);
 
 	remmina_rdp_event_update_scale(gp);
+    
+    remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
 }
 
 static void remmina_rdp_event_reconnect_progress(RemminaProtocolWidget* gp, RemminaPluginRdpUiObject* ui)

@@ -585,27 +585,38 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 		if (remmina_plugin_service->file_get_string(remminafile, "username") ||
 		    remmina_plugin_service->file_get_string(remminafile, "password")) {
 			g_debug("Authentication is enabled");
-			g_file_get_contents(www_js_file, &s_js, NULL, NULL);
-			jsstr = g_string_new(s_js);
-			if (remmina_plugin_service->file_get_string(remminafile, "username"))
-				www_utils_string_replace_all(jsstr, "USRPLACEHOLDER",
-							     remmina_plugin_service->file_get_string(remminafile, "username"));
-			if (remmina_plugin_service->file_get_string(remminafile, "password"))
-				www_utils_string_replace_all(jsstr, "PWDPLACEHOLDER",
-							     remmina_plugin_service->file_get_string(remminafile, "password"));
-			s_js = g_string_free(jsstr, FALSE);
+			if (www_js_file) {
+				error = NULL;
+				if (g_file_get_contents(www_js_file, &s_js, NULL, &error)) {
+					jsstr = g_string_new(s_js);
+					if (remmina_plugin_service->file_get_string(remminafile, "username"))
+						www_utils_string_replace_all(jsstr, "USRPLACEHOLDER",
+										remmina_plugin_service->file_get_string(remminafile, "username"));
+					if (remmina_plugin_service->file_get_string(remminafile, "password"))
+						www_utils_string_replace_all(jsstr, "PWDPLACEHOLDER",
+										remmina_plugin_service->file_get_string(remminafile, "password"));
+					s_js = g_string_free(jsstr, FALSE);
 
-			if (!s_js || s_js[0] == '\0') {
-				break;
-			} else {
-				g_debug("Trying to send this JavaScript: %s", s_js);
-				webkit_web_view_run_javascript(
-						webview,
-						s_js,
-						NULL,
-						remmina_www_web_view_js_finished,
-						gp);
-				g_free(s_js);
+					if (!s_js || s_js[0] == '\0') {
+						break;
+					} else {
+						g_debug("Trying to send this JavaScript: %s", s_js);
+						webkit_web_view_run_javascript(
+								webview,
+								s_js,
+								NULL,
+								remmina_www_web_view_js_finished,
+								gp);
+						g_free(s_js);
+					}
+				} else {
+					if (error) {
+						g_debug("Unable to read file: %s\n", error->message);
+						g_error_free(error);
+					} else {
+						g_debug("Unable to read file. No error returned from glib.\n");
+					}
+				}
 			}
 		}
 		break;
@@ -631,7 +642,7 @@ static gboolean remmina_plugin_www_close_connection(RemminaProtocolWidget *gp)
 	/* Remove instance->context from gp object data to avoid double free */
 	g_object_steal_data(G_OBJECT(gp), "plugin-data");
 
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "disconnect");
+	remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 	return FALSE;
 }
 
@@ -680,7 +691,7 @@ static gboolean remmina_plugin_www_open_connection(RemminaProtocolWidget *gp)
 		webkit_web_inspector_show(WEBKIT_WEB_INSPECTOR(inspector));
 	}
 #endif
-	remmina_plugin_service->protocol_plugin_emit_signal(gp, "connect");
+	remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
 	gtk_widget_show_all(gpdata->box);
 
 	return TRUE;

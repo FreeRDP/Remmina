@@ -165,7 +165,11 @@ typedef struct _RemminaPluginService {
 	gboolean (* protocol_plugin_start_reverse_tunnel)(RemminaProtocolWidget *gp, gint local_port);
 	gboolean (* protocol_plugin_start_xport_tunnel)(RemminaProtocolWidget *gp, RemminaXPortTunnelInitFunc init_func);
 	void (* protocol_plugin_set_display)(RemminaProtocolWidget *gp, gint display);
-	gboolean (* protocol_plugin_close_connection)(RemminaProtocolWidget *gp);
+	void (* protocol_plugin_signal_connection_closed)(RemminaProtocolWidget *gp);
+    void (* protocol_plugin_signal_connection_opened)(RemminaProtocolWidget *gp);
+    void (* protocol_plugin_update_align)(RemminaProtocolWidget *gp);
+    void (* protocol_plugin_unlock_dynres)(RemminaProtocolWidget *gp);
+    void (* protocol_plugin_desktop_resize)(RemminaProtocolWidget *gp);
 	gint (* protocol_plugin_init_authpwd)(RemminaProtocolWidget *gp, RemminaAuthpwdType authpwd_type, gboolean allow_password_saving);
 	gint (* protocol_plugin_init_authuserpwd)(RemminaProtocolWidget *gp, gboolean want_domain, gboolean allow_password_saving);
 	gint (* protocol_plugin_init_certificate)(RemminaProtocolWidget *gp, const gchar* subject, const gchar* issuer, const gchar* fingerprint);
@@ -201,7 +205,7 @@ typedef struct _RemminaPluginService {
 	gchar*       (*file_get_secret)(RemminaFile * remminafile, const gchar * setting);
 	void (* file_set_int)(RemminaFile *remminafile, const gchar *setting, gint value);
 	gint (* file_get_int)(RemminaFile *remminafile, const gchar *setting, gint default_value);
-	void (* file_unsave_password)(RemminaFile *remminafile);
+	void (* file_unsave_passwords)(RemminaFile *remminafile);
 
 	void (* pref_set_value)(const gchar *key, const gchar *value);
 	gchar*       (*pref_get_value)(const gchar * key);
@@ -230,5 +234,3 @@ typedef struct _RemminaPluginService {
 typedef gboolean (*RemminaPluginEntryFunc) (RemminaPluginService *service);
 
 G_END_DECLS
-
-

@@ -84,7 +84,7 @@ RemminaFile *remmina_file_dup_temp_protocol(RemminaFile *remminafile, const gcha
 /* Delete a .remmina file */
 void remmina_file_delete(const gchar *filename);
 /* Delete a "password" field and save into .remmina file */
-void remmina_file_unsave_password(RemminaFile *remminafile);
+void remmina_file_unsave_passwords(RemminaFile *remminafile);
 /* Function used to update the atime and mtime of a given remmina file, partially
  * taken from suckless sbase */
 gchar *remmina_file_get_datetime(RemminaFile *remminafile);
