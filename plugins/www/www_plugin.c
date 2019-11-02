@@ -811,7 +811,7 @@ static const RemminaProtocolSetting remmina_plugin_www_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,  "user-agent",		    N_("User agent"),		       FALSE, NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-java",		    N_("Turn on Java support"),	       TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-smooth-scrolling",   N_("Turn on smooth scrolling"),     TRUE,  NULL, NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-spatial-navigation", N_("Turn on Spatial Navigation"),   TRUE,  NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-spatial-navigation", N_("Turn on spatial navigation"),   TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-plugins",	    N_("Turn on plugin support"),  TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-webgl",		    N_("Turn on WebGL support"),    TRUE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-webaudio",	    N_("Turn on HTML5 audio support"), TRUE,  NULL, NULL },
@@ -848,8 +848,8 @@ static RemminaProtocolPlugin remmina_plugin =
 	remmina_plugin_www_open_connection,     // Plugin open connection
 	remmina_plugin_www_close_connection,    // Plugin close connection
 	remmina_www_query_feature,              // Query for available features
-	NULL,                                   // Call a feature
-	NULL,                                   // Send a keystroke
+	NULL,                                   // Call feature
+	NULL,                                   // Send keystroke
 	remmina_plugin_www_get_snapshot         // Capture screenshot
 };
 
