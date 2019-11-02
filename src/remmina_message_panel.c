@@ -447,7 +447,6 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 	button_ok = gtk_button_new_with_label(_("_OK"));
 	gtk_button_set_use_underline(GTK_BUTTON(button_ok), TRUE);
 	gtk_widget_set_can_default(button_ok, TRUE);
-	gtk_widget_grab_default (button_ok);
 	gtk_container_add (GTK_CONTAINER (bbox), button_ok);
 	/* Buttons, ok and cancel */
 	button_cancel = gtk_button_new_with_label(_("_Cancel"));
@@ -461,6 +460,7 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 	priv->w[REMMINA_MESSAGE_PANEL_PASSWORD] = password_entry;
 	priv->w[REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD] = save_password_switch;
 	priv->w[REMMINA_MESSAGE_PANEL_DOMAIN] = domain_entry;
+	priv->w[REMMINA_MESSAGE_PANEL_BUTTONTOFOCUS] = button_ok;
 
 	priv->response_callback = response_callback;
 	priv->response_callback_data = response_callback_data;
@@ -615,7 +615,7 @@ void remmina_message_panel_setup_auth_x509(RemminaMessagePanel *mp, RemminaMessa
 	gtk_widget_set_margin_end (GTK_WIDGET(bbox), 18);
 	button_ok = gtk_button_new_with_label(_("_OK"));
 	gtk_widget_set_can_default (button_ok, TRUE);
-	gtk_widget_grab_default (button_ok);
+
 	gtk_button_set_use_underline(GTK_BUTTON(button_ok), TRUE);
 	//gtk_widget_show(button_ok);
 	gtk_container_add (GTK_CONTAINER (bbox), button_ok);
@@ -636,6 +636,7 @@ void remmina_message_panel_setup_auth_x509(RemminaMessagePanel *mp, RemminaMessa
 	priv->w[REMMINA_MESSAGE_PANEL_CACRLFILE] = cacrl_file;
 	priv->w[REMMINA_MESSAGE_PANEL_CLIENTCERTFILE] = clientcert_file;
 	priv->w[REMMINA_MESSAGE_PANEL_CLIENTKEYFILE] = clientkey_file;
+	priv->w[REMMINA_MESSAGE_PANEL_BUTTONTOFOCUS] = button_ok;
 
 	g_object_set_data(G_OBJECT(button_cancel), btn_response_key, (void *)GTK_RESPONSE_CANCEL);
 	g_signal_connect(G_OBJECT(button_cancel), "clicked", G_CALLBACK(remmina_message_panel_button_clicked_callback), mp);
@@ -655,6 +656,11 @@ void remmina_message_panel_focus_auth_entry(RemminaMessagePanel *mp)
 	if (mp == NULL)
 		return;
 	priv = remmina_message_panel_get_instance_private(mp);
+
+	/* Activate default button */
+	w = priv->w[REMMINA_MESSAGE_PANEL_BUTTONTOFOCUS];
+	if (w && G_TYPE_CHECK_INSTANCE_TYPE(w, gtk_button_get_type()))
+		gtk_widget_grab_default(w);
 
 	w = priv->w[REMMINA_MESSAGE_PANEL_USERNAME];
 	if (w == NULL)
