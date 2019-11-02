@@ -177,7 +177,7 @@ remmina_plugin_sftp_main_thread(gpointer data)
 	}
 	if (!cont) {
 		if (sftp) remmina_sftp_free(sftp);
-		IDLE_ADD((GSourceFunc)remmina_plugin_service->protocol_plugin_signal_connection_closed, gp);
+		remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
 		return NULL;
 	}
 
