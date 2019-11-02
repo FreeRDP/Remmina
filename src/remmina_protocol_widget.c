@@ -103,9 +103,7 @@ struct _RemminaProtocolWidgetPriv {
 };
 
 enum panel_type {
-	RPWDT_AUTHUSERPWD,
-	RPWDT_AUTHUSERPWD_SSHTUNNEL,
-	RPWDT_AUTHPWD,
+	RPWDT_AUTH,
 	RPWDT_QUESTIONYESNO,
 	RPWDT_AUTHX509
 };
@@ -303,9 +301,12 @@ void remmina_protocol_widget_open_connection(RemminaProtocolWidget* gp)
 	remmina_protocol_widget_open_connection_real(gp);
 }
 
-static gboolean conn_closed(RemminaProtocolWidget* gp)
+static gboolean conn_closed(gpointer data)
 {
 	/* Close ssh tunnel */
+	TRACE_CALL(__func__);
+	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)data;
+
 	#ifdef HAVE_LIBSSH
 		if (gp->priv->ssh_tunnel) {
 			remmina_ssh_tunnel_free(gp->priv->ssh_tunnel);
@@ -328,9 +329,11 @@ void remmina_protocol_widget_signal_connection_closed(RemminaProtocolWidget* gp)
 	g_idle_add(conn_closed, (gpointer)gp);
 }
 
-static gboolean conn_opened(RemminaProtocolWidget* gp)
+static gboolean conn_opened(gpointer data)
 {
     TRACE_CALL(__func__);
+	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)data;
+
 #ifdef HAVE_LIBSSH
 	if (gp->priv->ssh_tunnel) {
 		remmina_ssh_tunnel_cancel_accept(gp->priv->ssh_tunnel);
@@ -356,8 +359,11 @@ void remmina_protocol_widget_signal_connection_opened(RemminaProtocolWidget* gp)
 	g_idle_add(conn_opened, (gpointer)gp);
 }
 
-static gboolean update_align(RemminaProtocolWidget* gp)
+static gboolean update_align(gpointer data)
 {
+	TRACE_CALL(__func__);
+	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)data;
+
     g_signal_emit_by_name(G_OBJECT(gp), "update-align");
     return G_SOURCE_REMOVE;
 }
@@ -369,8 +375,10 @@ void remmina_protocol_widget_update_align(RemminaProtocolWidget* gp)
     g_idle_add(update_align, (gpointer)gp);
 }
 
-static gboolean unlock_dynres(RemminaProtocolWidget* gp)
+static gboolean unlock_dynres(gpointer data)
 {
+	TRACE_CALL(__func__);
+	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)data;
     g_signal_emit_by_name(G_OBJECT(gp), "unlock-dynres");
     return G_SOURCE_REMOVE;
 }
@@ -382,8 +390,10 @@ void remmina_protocol_widget_unlock_dynres(RemminaProtocolWidget* gp)
     g_idle_add(unlock_dynres, (gpointer)gp);
 }
 
-static gboolean desktop_resize(RemminaProtocolWidget* gp)
+static gboolean desktop_resize(gpointer data)
 {
+	TRACE_CALL(__func__);
+	RemminaProtocolWidget *gp = (RemminaProtocolWidget *)data;
     g_signal_emit_by_name(G_OBJECT(gp), "desktop-resize");
     return G_SOURCE_REMOVE;
 }
@@ -1121,9 +1131,13 @@ RemminaFile* remmina_protocol_widget_get_file(RemminaProtocolWidget* gp)
 struct remmina_protocol_widget_dialog_mt_data_t {
 	/* Input data */
 	RemminaProtocolWidget *gp;
-	char *str1;
+	gchar *title;
+	gchar *default_username;
+	gchar *default_password;
+	gchar *default_domain;
+	gchar *strpasswordlabel;
 	enum panel_type dtype;
-	unsigned pflags;
+	RemminaMessagePanelFlags pflags;
 	gboolean called_from_subthread;
 	/* Running status */
 	pthread_mutex_t pt_mutex;
@@ -1132,12 +1146,12 @@ struct remmina_protocol_widget_dialog_mt_data_t {
 	int rcbutton;
 };
 
-static void authuserpwd_mt_cb(void *user_data, int button)
+static void authpanel_mt_cb(void *user_data, int button)
 {
 	struct remmina_protocol_widget_dialog_mt_data_t *d = (struct remmina_protocol_widget_dialog_mt_data_t *)user_data;
 	d->rcbutton = button;
 	if (button == GTK_RESPONSE_OK) {
-		if (d->dtype == RPWDT_AUTHUSERPWD || d->dtype == RPWDT_AUTHPWD || d->dtype == RPWDT_AUTHUSERPWD_SSHTUNNEL) {
+		if (d->dtype == RPWDT_AUTH) {
 			d->gp->priv->password = remmina_message_panel_field_get_string(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_PASSWORD);
 			d->gp->priv->username = remmina_message_panel_field_get_string(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_USERNAME);
 			d->gp->priv->domain = remmina_message_panel_field_get_string(d->gp->priv->auth_message_panel, REMMINA_MESSAGE_PANEL_DOMAIN);
@@ -1171,39 +1185,23 @@ static gboolean remmina_protocol_widget_dialog_mt_setup(gpointer user_data)
 
 	RemminaFile* remminafile = d->gp->priv->remmina_file;
 	RemminaMessagePanel *mp;
-	const gchar *key;
 	const gchar *s;
 
 	mp = remmina_message_panel_new();
 
-	if (d->dtype == RPWDT_AUTHUSERPWD || d->dtype == RPWDT_AUTHUSERPWD_SSHTUNNEL) {
-		remmina_message_panel_setup_auth(mp, authuserpwd_mt_cb, d,
-			d->dtype == RPWDT_AUTHUSERPWD_SSHTUNNEL ? _("Enter SSH tunnel authentication credentials") : _("Enter authentication credentials"),
-			d->str1, d->pflags);
-		key = (d->dtype == RPWDT_AUTHUSERPWD_SSHTUNNEL ? "ssh_username" : "username");
-		if ((s = remmina_file_get_string(remminafile, key)) != NULL)
-			remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_USERNAME, s);
-		if (d->dtype == RPWDT_AUTHUSERPWD && (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_DOMAIN) && (s = remmina_file_get_string(remminafile, "domain")) != NULL)
-			remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_DOMAIN, s);
-		key = (d->dtype == RPWDT_AUTHUSERPWD_SSHTUNNEL ? "ssh_password" : "password");
-		if ((s = remmina_file_get_string(remminafile, key)) != NULL)
-			remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_PASSWORD, s);
+	if (d->dtype == RPWDT_AUTH) {
+		remmina_message_panel_setup_auth(mp, authpanel_mt_cb, d, d->title, d->strpasswordlabel, d->pflags);
+		remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_USERNAME, d->default_username);
+		if (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_DOMAIN)
+			remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_DOMAIN, d->default_domain);
+		remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_PASSWORD, d->default_password);
 		if (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) {
-			remmina_message_panel_field_set_switch(mp, REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD, FALSE);
-		}
-	} else if (d->dtype == RPWDT_AUTHPWD) {
-		remmina_message_panel_setup_auth(mp, authuserpwd_mt_cb, d, _("Enter authentication credentials"), d->str1, d->pflags);
-		if ((s = remmina_file_get_string(remminafile, "username")) != NULL)
-			remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_USERNAME, s);
-		if ((s = remmina_file_get_string(remminafile, "password")) != NULL)
-			remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_PASSWORD, s);
-		if (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) {
-			remmina_message_panel_field_set_switch(mp, REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD, FALSE);
+			remmina_message_panel_field_set_switch(mp, REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD, (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) ? TRUE: FALSE);
 		}
 	} else if (d->dtype == RPWDT_QUESTIONYESNO) {
-		remmina_message_panel_setup_question(mp, d->str1, authuserpwd_mt_cb, d);
+		remmina_message_panel_setup_question(mp, d->title, authpanel_mt_cb, d);
 	} else if (d->dtype == RPWDT_AUTHX509) {
-		remmina_message_panel_setup_auth_x509(mp, authuserpwd_mt_cb, d);
+		remmina_message_panel_setup_auth_x509(mp, authpanel_mt_cb, d);
 		if ((s = remmina_file_get_string(remminafile, "cacert")) != NULL)
 			remmina_message_panel_field_set_filename(mp, REMMINA_MESSAGE_PANEL_CACERTFILE, s);
 		if ((s = remmina_file_get_string(remminafile, "cacrl")) != NULL)
@@ -1256,8 +1254,11 @@ static void run_destroy_handler (RemminaMessagePanel *mp, gpointer data)
 	shutdown_loop(mpri);
 }
 
-static int remmina_protocol_widget_dialog(enum panel_type dtype, RemminaProtocolWidget* gp, unsigned pflags, const char *str1)
+static int remmina_protocol_widget_dialog(enum panel_type dtype, RemminaProtocolWidget* gp, RemminaMessagePanelFlags pflags,
+		const gchar *title, const gchar *default_username, const gchar *default_password, const gchar *default_domain,
+		const gchar *strpasswordlabel)
 {
+	TRACE_CALL(__func__);
 
 	struct remmina_protocol_widget_dialog_mt_data_t *d = (struct remmina_protocol_widget_dialog_mt_data_t*)g_malloc( sizeof(struct remmina_protocol_widget_dialog_mt_data_t) );
 	int rcbutton;
@@ -1265,7 +1266,11 @@ static int remmina_protocol_widget_dialog(enum panel_type dtype, RemminaProtocol
 	d->gp = gp;
 	d->pflags = pflags;
 	d->dtype = dtype;
-	d->str1 = g_strdup(str1);
+	d->title = g_strdup(title);
+	d->strpasswordlabel = g_strdup(strpasswordlabel);
+	d->default_username = g_strdup(default_username);
+	d->default_password = g_strdup(default_password);
+	d->default_domain = g_strdup(default_domain);
 	d->called_from_subthread = FALSE;
 
 	if (remmina_masterthread_exec_is_main_thread()) {
@@ -1318,7 +1323,11 @@ static int remmina_protocol_widget_dialog(enum panel_type dtype, RemminaProtocol
 		rcbutton = d->rcbutton;
 	}
 
-	g_free(d->str1);
+	g_free(d->title);
+	g_free(d->strpasswordlabel);
+	g_free(d->default_username);
+	g_free(d->default_password);
+	g_free(d->default_domain);
 	g_free(d);
 	return rcbutton;
 
@@ -1326,27 +1335,15 @@ static int remmina_protocol_widget_dialog(enum panel_type dtype, RemminaProtocol
 
 gint remmina_protocol_widget_panel_question_yesno(RemminaProtocolWidget* gp, const char *msg)
 {
-	return remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, msg);
+	return remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, msg, NULL, NULL, NULL, NULL);
 }
 
-gint remmina_protocol_widget_panel_authuserpwd(RemminaProtocolWidget* gp, gboolean want_domain, gboolean allow_password_saving)
+gint remmina_protocol_widget_panel_auth(RemminaProtocolWidget* gp, RemminaMessagePanelFlags pflags,
+	const gchar *title, const gchar *default_username, const gchar *default_password, const gchar *default_domain, const gchar *password_prompt)
 {
 	TRACE_CALL(__func__);
-	unsigned pflags;
-	RemminaFile* remminafile = gp->priv->remmina_file;
-
-	pflags = REMMINA_MESSAGE_PANEL_FLAG_USERNAME;
-	g_debug ("pflags is %u", pflags);
-	if (remmina_file_get_filename(remminafile) != NULL &&
-		 !remminafile->prevent_saving && allow_password_saving)
-		pflags |= REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD;
-	g_debug ("pflags is %u", pflags);
-	if (want_domain)
-		pflags |= REMMINA_MESSAGE_PANEL_FLAG_DOMAIN;
-
-	g_debug ("pflags is %u", pflags);
-
-	return remmina_protocol_widget_dialog(RPWDT_AUTHUSERPWD, gp, pflags, _("Password"));
+	return remmina_protocol_widget_dialog(RPWDT_AUTH, gp, pflags, title, default_username,
+			default_password, default_domain, password_prompt == NULL ? _("Password") : password_prompt);
 }
 
 gint remmina_protocol_widget_panel_authuserpwd_ssh_tunnel(RemminaProtocolWidget* gp, gboolean want_domain, gboolean allow_password_saving)
@@ -1354,15 +1351,21 @@ gint remmina_protocol_widget_panel_authuserpwd_ssh_tunnel(RemminaProtocolWidget*
 	TRACE_CALL(__func__);
 	unsigned pflags;
 	RemminaFile* remminafile = gp->priv->remmina_file;
+	const gchar *username, *password;
 
 	pflags = REMMINA_MESSAGE_PANEL_FLAG_USERNAME;
 	if (remmina_file_get_filename(remminafile) != NULL &&
 		 !remminafile->prevent_saving && allow_password_saving)
 		pflags |= REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD;
 
-	return remmina_protocol_widget_dialog(RPWDT_AUTHUSERPWD_SSHTUNNEL, gp, pflags, _("Password"));
+	username = remmina_file_get_string(remminafile, "ssh_username");
+	password = remmina_file_get_string(remminafile, "ssh_password");
+
+	return remmina_protocol_widget_dialog(RPWDT_AUTH, gp, pflags, _("Enter SSH tunnel authentication credentials"), username,
+			password, NULL, _("Password"));
 }
 
+/*
 gint remmina_protocol_widget_panel_authpwd(RemminaProtocolWidget* gp, RemminaAuthpwdType authpwd_type, gboolean allow_password_saving)
 {
 	TRACE_CALL(__func__);
@@ -1391,17 +1394,18 @@ gint remmina_protocol_widget_panel_authpwd(RemminaProtocolWidget* gp, RemminaAut
 			break;
 	}
 
-	rc = remmina_protocol_widget_dialog(RPWDT_AUTHPWD, gp, pflags, password_prompt);
+	rc = remmina_protocol_widget_dialog(RPWDT_AUTH, gp, pflags, password_prompt);
 	g_free(password_prompt);
 	return rc;
 
 }
+*/
 
 gint remmina_protocol_widget_panel_authx509(RemminaProtocolWidget* gp)
 {
 	TRACE_CALL(__func__);
 
-	return remmina_protocol_widget_dialog(RPWDT_AUTHX509, gp, 0, NULL);
+	return remmina_protocol_widget_dialog(RPWDT_AUTHX509, gp, 0, NULL, NULL, NULL, NULL, NULL);
 }
 
 
@@ -1419,7 +1423,7 @@ gint remmina_protocol_widget_panel_new_certificate(RemminaProtocolWidget* gp, co
 		 _("Issuer:"), issuer,
 		 _("Fingerprint:"), fingerprint,
 		  _("Accept Certificate?"));
-	rc = remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, s);
+	rc = remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, s, NULL, NULL, NULL, NULL);
 	g_free(s);
 
 	/* For compatibility with plugin API: the plugin expects GTK_RESPONSE_OK when user confirms new cert */
@@ -1439,10 +1443,10 @@ gint remmina_protocol_widget_panel_changed_certificate(RemminaProtocolWidget *gp
 		 _("The certificate changed! Details:"),
 		 _("Subject:"), subject,
 		 _("Issuer:"), issuer,
-		 _("Old fingerprint:"), old_fingerprint,
-		 _("New fingerprint:"), new_fingerprint,
-		 _("Accept changed certificate?"));
-	rc = remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, s);
+		 _("Old Fingerprint:"), old_fingerprint,
+		 _("New Fingerprint:"), new_fingerprint,
+		 _("Accept Changed Certificate?"));
+	rc = remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, s, NULL, NULL, NULL, NULL);
 	g_free(s);
 
 	/* For compatibility with plugin API: The plugin expects GTK_RESPONSE_OK when user confirms new cert */

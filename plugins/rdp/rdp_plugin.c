@@ -572,8 +572,14 @@ static BOOL remmina_rdp_authenticate(freerdp *instance, char **username, char **
 	gp = rfi->protocol_widget;
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
-	ret = remmina_plugin_service->protocol_plugin_init_authuserpwd(gp, TRUE, !disablepasswordstoring);
 
+	ret = remmina_plugin_service->protocol_plugin_init_auth(gp,
+		(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) | REMMINA_MESSAGE_PANEL_FLAG_USERNAME | REMMINA_MESSAGE_PANEL_FLAG_DOMAIN,
+		_("Enter RDP authentication credentials"),
+		remmina_plugin_service->file_get_string(remminafile, "username"),
+		remmina_plugin_service->file_get_string(remminafile, "password"),
+		remmina_plugin_service->file_get_string(remminafile, "domain"),
+		NULL);
 	if (ret == GTK_RESPONSE_OK) {
 		s_username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
 		if (s_username) rfi->settings->Username = strdup(s_username);
@@ -593,63 +599,25 @@ static BOOL remmina_rdp_authenticate(freerdp *instance, char **username, char **
 			remmina_plugin_service->file_set_string(remminafile, "username", s_username);
 			remmina_plugin_service->file_set_string(remminafile, "password", s_password);
 			remmina_plugin_service->file_set_string(remminafile, "domain", s_domain);
+		} else {
+			remmina_plugin_service->file_set_string(remminafile, "username", NULL);
+			remmina_plugin_service->file_set_string(remminafile, "password", NULL);
+			remmina_plugin_service->file_set_string(remminafile, "domain", NULL);
 		}
+
 
 		if (s_username) g_free(s_username);
 		if (s_password) g_free(s_password);
 		if (s_domain) g_free(s_domain);
 
-		return True;
+		return TRUE;
 	} else {
-		return False;
+		return FALSE;
 	}
 
-	return True;
+	return TRUE;
 }
 
-static BOOL remmina_rdp_proxy_authenticate(RemminaProtocolWidget *gp)
-{
-	TRACE_CALL(__func__);
-	rfContext *rfi = GET_PLUGIN_DATA(gp);
-	gchar *p_username, *p_password;
-	gint ret;
-	gboolean save;
-	gboolean disablepasswordstoring;
-	RemminaFile *remminafile;
-
-	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-
-	if (!remmina_plugin_service->file_get_string(remminafile, "proxy_hostname"))
-		return False;
-	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
-	ret = remmina_plugin_service->protocol_plugin_init_authuserpwd(gp, TRUE, !disablepasswordstoring);
-	if (ret == GTK_RESPONSE_OK) {
-		p_username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
-		if (p_username) rfi->settings->ProxyUsername = strdup(p_username);
-
-		p_password = remmina_plugin_service->protocol_plugin_init_get_password(gp);
-		if (p_password) rfi->settings->ProxyPassword = strdup(p_password);
-
-		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
-		if (save) {
-			// User has requested to save credentials. We put all the new cretentials
-			// into remminafile->settings. They will be saved later, on successful connection, by
-			// rcw.c
-
-			remmina_plugin_service->file_set_string(remminafile, "proxy_username", p_username);
-			remmina_plugin_service->file_set_string(remminafile, "proxy_password", p_password);
-		}
-
-		if (p_username) g_free(p_username);
-		if (p_password) g_free(p_password);
-
-		return True;
-	} else {
-		return False;
-	}
-
-	return True;
-}
 static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char **password, char **domain)
 {
 	TRACE_CALL(__func__);
@@ -668,7 +636,14 @@ static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char
 	if (!remmina_plugin_service->file_get_string(remminafile, "gateway_server"))
 		return False;
 	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
-	ret = remmina_plugin_service->protocol_plugin_init_authuserpwd(gp, TRUE, !disablepasswordstoring);
+
+	ret = remmina_plugin_service->protocol_plugin_init_auth(gp,
+		(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) | REMMINA_MESSAGE_PANEL_FLAG_USERNAME | REMMINA_MESSAGE_PANEL_FLAG_DOMAIN,
+		_("Enter RDP gateway authentication credentials"),
+		remmina_plugin_service->file_get_string(remminafile, "gateway_username"),
+		remmina_plugin_service->file_get_string(remminafile, "gateway_password"),
+		remmina_plugin_service->file_get_string(remminafile, "gateway_domain"),
+		NULL);
 
 	if (ret == GTK_RESPONSE_OK) {
 		s_username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
@@ -689,6 +664,10 @@ static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char
 			remmina_plugin_service->file_set_string(remminafile, "gateway_username", s_username);
 			remmina_plugin_service->file_set_string(remminafile, "gateway_password", s_password);
 			remmina_plugin_service->file_set_string(remminafile, "gateway_domain", s_domain);
+		} else {
+			remmina_plugin_service->file_set_string(remminafile, "gateway_username", NULL);
+			remmina_plugin_service->file_set_string(remminafile, "gateway_password", NULL);
+			remmina_plugin_service->file_set_string(remminafile, "gateway_domain", NULL);
 		}
 
 		if (s_username) g_free(s_username);
@@ -1598,6 +1577,11 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 				remmina_plugin_service->protocol_plugin_set_error(gp, _("Server %s denied the connection."), rfi->settings->ServerHostname);
 				break;
 #endif
+			case 0x800759DB:
+				// E_PROXY_NAP_ACCESSDENIED https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-tsgu/84cd92e4-592c-4219-95d8-18021ac654b0
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("The remote desktop gateway %s denied user %s\\%s access due to policy."),
+					rfi->settings->GatewayHostname, rfi->settings->GatewayDomain, rfi->settings->GatewayUsername);
+				break;
 
 			case FREERDP_ERROR_CONNECT_NO_OR_MISSING_CREDENTIALS:
 				rfi->user_cancelled = TRUE;

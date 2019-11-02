@@ -226,25 +226,35 @@ static gboolean remmina_plugin_spice_ask_auth(RemminaProtocolWidget *gp)
 
 	gint ret;
 	gboolean disablepasswordstoring;
+	gchar *s_password;
+	gboolean save;
 
 	RemminaPluginSpiceData *gpdata = GET_PLUGIN_DATA(gp);
 	RemminaFile *remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
-	ret = remmina_plugin_service->protocol_plugin_init_authpwd(gp, REMMINA_AUTHPWD_TYPE_PROTOCOL, !disablepasswordstoring);
 
+	ret = remmina_plugin_service->protocol_plugin_init_auth(gp,
+		(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD),
+		_("Enter SPICE password"),
+		NULL,
+		remmina_plugin_service->file_get_string(remminafile, "password"),
+		NULL,
+		NULL);
 	if (ret == GTK_RESPONSE_OK) {
-		gchar *password = remmina_plugin_service->protocol_plugin_init_get_password(gp);
-		if (remmina_plugin_service->protocol_plugin_init_get_savepassword(gp))
-			remmina_plugin_service->file_set_string( remminafile, "password", password );
-		g_object_set(gpdata->session,
-			"password",
-			password,
-			NULL);
-		return TRUE;
-	}else {
+		s_password = remmina_plugin_service->protocol_plugin_init_get_password(gp);
+		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
+		if (save) {
+			remmina_plugin_service->file_set_string(remminafile, "password", s_password);
+		} else {
+			remmina_plugin_service->file_set_string(remminafile, "password", NULL);
+		}
+	} else {
 		return FALSE;
 	}
+
+	g_object_set(gpdata->session, "password", s_password, NULL);
+	return TRUE;
 }
 
 static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, SpiceChannelEvent event, RemminaProtocolWidget *gp)

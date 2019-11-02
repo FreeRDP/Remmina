@@ -727,13 +727,25 @@ remmina_plugin_vnc_rfb_password(rfbClient *cl)
 	if (gpdata->auth_first)
 		pwd = g_strdup(remmina_plugin_service->file_get_string(remminafile, "password"));
 	if (!pwd) {
+		gboolean save;
 		disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
-		ret = remmina_plugin_service->protocol_plugin_init_authpwd(gp, REMMINA_AUTHPWD_TYPE_PROTOCOL, !disablepasswordstoring);
-
-		if (ret == GTK_RESPONSE_OK)
-			pwd = remmina_plugin_service->protocol_plugin_init_get_password(gp);
-		else
+		ret = remmina_plugin_service->protocol_plugin_init_auth(gp,
+			(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD),
+			_("Enter VNC password"),
+			NULL,
+			remmina_plugin_service->file_get_string(remminafile, "password"),
+			NULL,
+			NULL);
+		if (ret != GTK_RESPONSE_OK) {
 			gpdata->connected = FALSE;
+			return NULL;
+		}
+		pwd = remmina_plugin_service->protocol_plugin_init_get_password(gp);
+		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
+		if (save)
+			remmina_plugin_service->file_set_string(remminafile, "password", pwd);
+		else
+			remmina_plugin_service->file_set_string(remminafile, "password", NULL);
 	}
 	return pwd;
 }
@@ -770,12 +782,24 @@ remmina_plugin_vnc_rfb_credential(rfbClient *cl, int credentialType)
 			g_free(s2);
 
 			disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
-			ret = remmina_plugin_service->protocol_plugin_init_authuserpwd(gp, FALSE, !disablepasswordstoring);
-
-
+			ret = remmina_plugin_service->protocol_plugin_init_auth(gp,
+				(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) | REMMINA_MESSAGE_PANEL_FLAG_USERNAME,
+				_("Enter VNC authentication credentials"),
+				remmina_plugin_service->file_get_string(remminafile, "username"),
+				remmina_plugin_service->file_get_string(remminafile, "password"),
+				NULL,
+				NULL);
 			if (ret == GTK_RESPONSE_OK) {
+				gboolean save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
 				cred->userCredential.username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
 				cred->userCredential.password = remmina_plugin_service->protocol_plugin_init_get_password(gp);
+				if (save) {
+					remmina_plugin_service->file_set_string(remminafile, "username", cred->userCredential.username);
+					remmina_plugin_service->file_set_string(remminafile, "password", cred->userCredential.password);
+				} else {
+					remmina_plugin_service->file_set_string(remminafile, "username", NULL);
+					remmina_plugin_service->file_set_string(remminafile, "password", NULL);
+				}
 			} else {
 				g_free(cred);
 				cred = NULL;

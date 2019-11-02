@@ -473,7 +473,6 @@ static gboolean remmina_plugin_www_on_auth(WebKitWebView *webview, WebKitAuthent
 	gboolean disablepasswordstoring;
 	RemminaFile *remminafile;
 
-
 	gpdata = (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
 	g_info("Authenticate");
@@ -481,13 +480,25 @@ static gboolean remmina_plugin_www_on_auth(WebKitWebView *webview, WebKitAuthent
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	disablepasswordstoring = remmina_plugin_service->file_get_int(remminafile, "disablepasswordstoring", FALSE);
-	ret = remmina_plugin_service->protocol_plugin_init_authuserpwd(gp, FALSE, !disablepasswordstoring);
-
+	ret = remmina_plugin_service->protocol_plugin_init_auth(gp,
+		(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) | REMMINA_MESSAGE_PANEL_FLAG_USERNAME,
+		_("Enter WWW authentication credentials"),
+		remmina_plugin_service->file_get_string(remminafile, "username"),
+		remmina_plugin_service->file_get_string(remminafile, "password"),
+		NULL,
+		NULL);
 	if (ret == GTK_RESPONSE_OK) {
 		s_username = remmina_plugin_service->protocol_plugin_init_get_username(gp);
 		s_password = remmina_plugin_service->protocol_plugin_init_get_password(gp);
-		if (remmina_plugin_service->protocol_plugin_init_get_savepassword(gp))
+
+		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
+		if (save) {
+			remmina_plugin_service->file_set_string(remminafile, "username", s_username);
 			remmina_plugin_service->file_set_string(remminafile, "password", s_password);
+		} else {
+			remmina_plugin_service->file_set_string(remminafile, "username", NULL);
+			remmina_plugin_service->file_set_string(remminafile, "password", NULL);
+		}
 		if (request) {
 			gpdata->credentials = webkit_credential_new(
 				g_strdup(s_username),
@@ -496,22 +507,8 @@ static gboolean remmina_plugin_www_on_auth(WebKitWebView *webview, WebKitAuthent
 			webkit_authentication_request_authenticate(request, gpdata->credentials);
 			webkit_credential_free(gpdata->credentials);
 		}
-
-		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
-		if (save) {
-			// The user has requested to save credentials. We put all the new credentials
-			// into remminafile->settings. They will be saved later, upon connection, by
-			// rcw.c
-
-			remmina_plugin_service->file_set_string(remminafile, "username", s_username);
-			remmina_plugin_service->file_set_string(remminafile, "password", s_password);
-		}
-
 		if (s_username) g_free(s_username);
 		if (s_password) g_free(s_password);
-
-		/* Free credentials */
-
 		gpdata->authenticated = TRUE;
 	} else {
 		gpdata->authenticated = FALSE;
