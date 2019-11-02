@@ -253,7 +253,7 @@ static gboolean remmina_plugin_spice_ask_auth(RemminaProtocolWidget *gp)
 		return FALSE;
 	}
 
-	g_object_set(gpdata->session, s_password);
+	g_object_set(gpdata->session, "password", s_password, NULL);
 	return TRUE;
 }
 
