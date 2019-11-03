@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-03 01:33+0000\n"
-"PO-Revision-Date: 2019-11-02 20:25+0000\n"
+"PO-Revision-Date: 2019-11-03 12:02+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
 ">\n"
@@ -761,17 +761,14 @@ msgid "The certificate changed! Details:"
 msgstr "Certifikát byl změněn! Podrobnosti:"
 
 #: src/remmina_protocol_widget.c:1446
-#, fuzzy
 msgid "Old Fingerprint:"
 msgstr "Původní otisk:"
 
 #: src/remmina_protocol_widget.c:1447
-#, fuzzy
 msgid "New Fingerprint:"
 msgstr "Nový otisk:"
 
 #: src/remmina_protocol_widget.c:1448
-#, fuzzy
 msgid "Accept Changed Certificate?"
 msgstr "Přijmout změněný certifikát?"
 
@@ -920,9 +917,8 @@ msgstr "Veřejný klíč SSH se nepodařilo naimportovat: %s"
 
 #: src/remmina_ssh.c:274 src/remmina_ssh.c:505 src/remmina_ssh.c:520
 #: plugins/nx/nx_plugin.c:202
-#, fuzzy
 msgid "SSH credentials"
-msgstr "soubor s identitou pro SSH"
+msgstr "přihlašovací údaje pro SSH"
 
 #: src/remmina_ssh.c:277 src/remmina_ssh.c:483 src/remmina_ssh.c:508
 #: plugins/nx/nx_plugin.c:205
@@ -1000,43 +996,42 @@ msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:541
-#, fuzzy
 msgid "SSH authentication"
 msgstr "Ověřování se pro SSH"
 
 #: src/remmina_ssh.c:656
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SSH session: %s"
 msgstr "Nepodařilo se zahájit SSH relaci: %s"
 
 #: src/remmina_ssh.c:1014 src/remmina_ssh.c:1074
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel, %s"
 msgstr "Nepodařilo se vytvořit kanál: %s"
 
 #: src/remmina_ssh.c:1024
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to the SSH tunnel destination %s"
 msgstr "Nepodařilo se připojit k cíli SSH tunelu: %s"
 
 #: src/remmina_ssh.c:1088
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel, %s"
 msgstr "Nepodařilo se otevřít kanál: %s"
 
 #: src/remmina_ssh.c:1094
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to execute %s on SSH server, %%s"
 msgstr "Vykonání %s na SSH serveru se nezdařilo: %%s"
 
 #: src/remmina_ssh.c:1131 src/remmina_ssh.c:1151 src/remmina_ssh.c:1159
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request port forwarding, %s"
 msgstr "Nepodařilo se vyžádat si přeposílání portů: %s"
 
 #: src/remmina_ssh.c:1194
 msgid "The server did not respond."
-msgstr ""
+msgstr "Žádná odpověď od serveru."
 
 #: src/remmina_ssh.c:1233
 #, c-format
@@ -1046,85 +1041,79 @@ msgstr "Není možné se připojit k místnímu portu %i."
 #: src/remmina_ssh.c:1282
 #, c-format
 msgid "Could not run ssh_channel_write(), %s"
-msgstr ""
+msgstr "Nedaří se spustit funkci ssh_channel_write(), %s"
 
 #: src/remmina_ssh.c:1288
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket, %s"
-msgstr "čtení ze soketu, na kterém tunel očekává spojení, vrátilo chybu: %s"
+msgstr "Nedaří se číst ze soketu, na kterém tunel očekává spojení, %s"
 
 #: src/remmina_ssh.c:1307
 #, c-format
 msgid "Could not run ssh_channel_poll(), %s"
-msgstr ""
+msgstr "Nedaří se spustit funkci ssh_channel_poll(), %s"
 
 #: src/remmina_ssh.c:1313
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_read_nonblocking(), %s"
-msgstr "volání funkce ssh_channel_read_nonblocking() vrátilo chybu: %s"
+msgstr "Nedaří se spustit funkci ssh_channel_read_nonblocking(), %s"
 
 #: src/remmina_ssh.c:1331
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket, %s"
-msgstr "čtení ze soketu, na kterém tunel očekává spojení, vrátilo chybu: %s"
+msgstr "Nedaří se odeslat data na soket, na kterém tunel očekává spojení, %s"
 
 #: src/remmina_ssh.c:1410
 msgid "Assign a destination port."
-msgstr ""
+msgstr "Přiřadit cílový port."
 
 #: src/remmina_ssh.c:1417
-#, fuzzy
 msgid "Could not create socket."
-msgstr "Nepodařilo se vytvořit soket."
+msgstr "Nedaří se vytvořit soket."
 
 #: src/remmina_ssh.c:1427
-#, fuzzy
 msgid "Could not bind server socket to local port."
-msgstr "Není možné se připojit k místnímu portu %i."
+msgstr "Nedaří se navázat soket serveru na místní port."
 
 #: src/remmina_ssh.c:1433
-#, fuzzy
 msgid "Could not listen to local port."
-msgstr "Nepodařilo se očekávat spojení na místním portu."
+msgstr "Nedaří se očekávat spojení na místním portu."
 
 #: src/remmina_ssh.c:1442
-#, fuzzy
 msgid "Could not start pthread."
 msgstr "Nepodařilo se inicializovat pthread."
 
 #: src/remmina_ssh.c:1458 src/remmina_ssh.c:1491
-#, fuzzy
 msgid "Could not initialize pthread."
-msgstr "Nepodařilo se inicializovat pthread."
+msgstr "Nedaří se inicializovat pthread."
 
 #: src/remmina_ssh.c:1474
 msgid "Failed to initialize pthread."
 msgstr "Nepodařilo se inicializovat pthread."
 
 #: src/remmina_ssh.c:1579
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create SFTP session: %s"
-msgstr "Nepodařilo se vytvořit sftp relaci: %s"
+msgstr "Nedaří se vytvořit sftp relaci: %s"
 
 #: src/remmina_ssh.c:1583
-#, fuzzy, c-format
+#, c-format
 msgid "Could not initialize SFTP session: %s"
-msgstr "Nepodařilo se inicializovat sftp relaci: %s"
+msgstr "Nedaří se inicializovat sftp relaci: %s"
 
 #: src/remmina_ssh.c:1667
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel: %s"
 msgstr "Nepodařilo se otevřít kanál: %s"
 
 #: src/remmina_ssh.c:1696
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request shell: %s"
 msgstr "Nepodařilo se vyžádat si shell: %s"
 
 #: src/remmina_ssh.c:1789
-#, fuzzy
 msgid "Could not create PTY device."
-msgstr "Nepodařilo se vytvořit zařízení pseudoterminálu."
+msgstr "Nedaří se vytvořit zařízení pseudoterminálu."
 
 #. Show in the status bar the total number of connections found
 #: src/remmina_main.c:644
@@ -1391,9 +1380,8 @@ msgid "SSH - Secure Shell"
 msgstr "SSH – zabezpečený shell"
 
 #: plugins/spice/spice_plugin.c:239
-#, fuzzy
 msgid "Enter SPICE password"
-msgstr "Hlavní heslo"
+msgstr "Zadejte SPICE heslo"
 
 #: plugins/spice/spice_plugin.c:274
 #, c-format
@@ -1499,14 +1487,12 @@ msgid "USB redirection error"
 msgstr "Chyba přesměrování USB"
 
 #: plugins/rdp/rdp_plugin.c:578
-#, fuzzy
 msgid "Enter RDP authentication credentials"
-msgstr "Zadejte přihlašovací údaje"
+msgstr "Zadejte přihlašovací údaje pro RDP"
 
 #: plugins/rdp/rdp_plugin.c:642
-#, fuzzy
 msgid "Enter RDP gateway authentication credentials"
-msgstr "Zadejte přihlašovací údaje"
+msgstr "Zadejte přihlašovací údaje pro bránu do RDP"
 
 #: plugins/rdp/rdp_plugin.c:1498
 #, c-format
@@ -1624,6 +1610,8 @@ msgstr "Server %s odmítl připojení."
 #, c-format
 msgid "The remote desktop gateway %s denied user %s\\%s access due to policy."
 msgstr ""
+"Brána %s do vzdálené plochy odepřela uživateli %s\\%s přístup kvůli "
+"systémové zásadě."
 
 #: plugins/rdp/rdp_plugin.c:1592
 #, c-format
@@ -2011,9 +1999,8 @@ msgid "Execute a command"
 msgstr "Vykonat příkaz"
 
 #: plugins/nx/nx_plugin.c:367
-#, fuzzy
 msgid "Enter NX authentication credentials"
-msgstr "Zadejte přihlašovací údaje"
+msgstr "Zadejte přihlašovací údaje pro NX"
 
 #: plugins/nx/nx_plugin.c:608 plugins/xdmcp/xdmcp_plugin.c:264
 #, c-format
@@ -2114,14 +2101,12 @@ msgid "Remmina VNC listener Plugin"
 msgstr "Zásuvný modul Remmina pro očekávání VNC spojení"
 
 #: plugins/vnc/vnc_plugin.c:734
-#, fuzzy
 msgid "Enter VNC password"
-msgstr "Hlavní heslo"
+msgstr "Zadejte heslo pro VNC"
 
 #: plugins/vnc/vnc_plugin.c:787
-#, fuzzy
 msgid "Enter VNC authentication credentials"
-msgstr "Zadejte přihlašovací údaje"
+msgstr "Zadejte přihlašovací údaje pro VNC"
 
 #: plugins/vnc/vnc_plugin.c:890
 msgid "Unable to connect to VNC server"
@@ -2194,9 +2179,8 @@ msgid "File downloaded"
 msgstr "Soubor stažen"
 
 #: plugins/www/www_plugin.c:485
-#, fuzzy
 msgid "Enter WWW authentication credentials"
-msgstr "Zadejte přihlašovací údaje"
+msgstr "Zadejte přihlašovací údaje pro WWW"
 
 #: plugins/www/www_plugin.c:791
 msgid "URL"
@@ -2219,7 +2203,6 @@ msgid "Turn on smooth scrolling"
 msgstr "Zapnout plynulé posouvání"
 
 #: plugins/www/www_plugin.c:811
-#, fuzzy
 msgid "Turn on spatial navigation"
 msgstr "Zapnout prostorovou navigaci"
 
@@ -2999,4 +2982,3 @@ msgstr "Povolit tučný text"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminál"
-
