@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-03 01:33+0000\n"
-"PO-Revision-Date: 2019-11-03 01:31+0000\n"
+"PO-Revision-Date: 2019-11-03 12:02+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
@@ -211,8 +211,9 @@ msgid "Keep aspect ratio when scaled"
 msgstr "Behold sideforhold ved skalering"
 
 #: src/rcw.c:1392
+#, fuzzy
 msgid "Fill client window when scaled"
-msgstr ""
+msgstr "Fyll klientvindu når skalert"
 
 #. Add a keystrokes submenu
 #: src/rcw.c:1816 src/remmina_pref_dialog.c:143
@@ -247,7 +248,7 @@ msgstr "Bytt mellom fanesider"
 
 #: src/rcw.c:2134
 msgid "Toggle dynamic resolution update"
-msgstr ""
+msgstr "Veksle dynamisk oppløsningsoppdatering"
 
 #: src/rcw.c:2144 data/ui/remmina_preferences.glade:973
 msgid "Toggle scaled mode"
@@ -301,12 +302,14 @@ msgid "Resetting passwords, please wait…"
 msgstr "Tilbakestiller passord, vent …"
 
 #: src/remmina_mpchange.c:327
+#, fuzzy
 msgid "The multi password changer cannot work without a secret plugin.\n"
-msgstr ""
+msgstr "Multipassordsendreren virker ikke uten et hemmelighetsprogramtillegg.\n"
 
 #: src/remmina_mpchange.c:330
+#, fuzzy
 msgid "The multi password changer does not work without a secret service.\n"
-msgstr ""
+msgstr "Multipassordsendreren virker ikke uten en hemmelighetstjeneste.\n"
 
 #: src/remmina_mpchange.c:419
 #, c-format
@@ -428,8 +431,9 @@ msgid "Unable to open profile file %s\n"
 msgstr "Klarte ikke å åpne profilfil %s\n"
 
 #: src/remmina_exec.c:184
+#, fuzzy
 msgid "Error: an extra line of standard input is needed\n"
-msgstr ""
+msgstr "Feil: En ekstra linje vanlig inndata behøves\n"
 
 #: src/remmina_exec.c:305
 #, c-format
@@ -486,6 +490,7 @@ msgstr ""
 "* [tjener]:port</big></tt>"
 
 #: src/remmina_file_editor.c:81
+#, fuzzy
 msgid ""
 "<tt><big>* command in PATH args %h\n"
 "* /path/to/foo -options %h %u\n"
@@ -499,6 +504,17 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
+"<tt><big>* kommando PATH-argumenter %h\n"
+"* /path/to/foo -valg %h %u\n"
+"* %h byttes ut med tjenernavnet\n"
+"* %t byttes ut med SSH-tjenernavnet\n"
+"* %u byttes ut med brukernavnet\n"
+"* %U byttes ut med SSH-brukernavnet\n"
+"* %p byttes ut med Remmina-profilnavnet\n"
+"* %g byttes ut med Remmina-profilgruppenavnet\n"
+"Ikke kjør i bakgrunnen hvis du ønsker at kommandoen skal kjøres før "
+"tilknytning.\n"
+"</big></tt>"
 
 #: src/remmina_file_editor.c:94
 msgid ""
@@ -969,7 +985,7 @@ msgstr "Tjeneren er ukjent. Fingeravtrykket av den offentlige nøkkelen er:"
 
 #: src/remmina_ssh.c:452 src/remmina_ssh.c:458
 msgid "Do you trust the new public key?"
-msgstr "Stoler du på den nye offentlige nøkkelen"
+msgstr "Stoler du på den nye offentlige nøkkelen?"
 
 #: src/remmina_ssh.c:455
 msgid ""
@@ -983,9 +999,9 @@ msgstr ""
 "offentlige nøkkelen er:"
 
 #: src/remmina_ssh.c:471
-#, c-format
+#, c-format, fuzzy
 msgid "SSH known host checking failed: %s"
-msgstr ""
+msgstr "Sjekking av kjent SSH-vert mislyktes: %s"
 
 #: src/remmina_ssh.c:477
 msgid "SSH password"
@@ -1032,7 +1048,7 @@ msgstr "Klarte ikke å be om videresending av porter: %s"
 
 #: src/remmina_ssh.c:1194
 msgid "The server did not respond."
-msgstr ""
+msgstr "Tjeneren svarte ikke."
 
 #: src/remmina_ssh.c:1233
 #, fuzzy, c-format
@@ -1040,33 +1056,34 @@ msgid "Cannot connect to local port %i."
 msgstr "Kan ikke koble til lokal port %i."
 
 #: src/remmina_ssh.c:1282
-#, c-format
+#, c-format, fuzzy
 msgid "Could not run ssh_channel_write(), %s"
-msgstr ""
+msgstr "Kunne ikke kjøre ssh_channel_write(), %s"
 
 #: src/remmina_ssh.c:1288
-#, c-format
+#, c-format, fuzzy
 msgid "Could not read from tunnel listening socket, %s"
-msgstr ""
+msgstr "Kunne ikke lese fra tunnel-lyttesocket, %s"
 
 #: src/remmina_ssh.c:1307
 #, c-format
 msgid "Could not run ssh_channel_poll(), %s"
-msgstr ""
+msgstr "Kunne ikke kjøre ssh_channel_poll(), %s"
 
 #: src/remmina_ssh.c:1313
 #, c-format
 msgid "Could not run ssh_channel_read_nonblocking(), %s"
-msgstr ""
+msgstr "Kunne ikke kjøre ssh_channel_read_nonblocking(), %s"
 
 #: src/remmina_ssh.c:1331
-#, c-format
+#, c-format, fuzzy
 msgid "Could not send data to tunnel listening socket, %s"
-msgstr ""
+msgstr "Kunne ikke sende data til tunnel-lyttesocket, %s"
 
 #: src/remmina_ssh.c:1410
+#, fuzzy
 msgid "Assign a destination port."
-msgstr ""
+msgstr "Tildel en målport"
 
 #: src/remmina_ssh.c:1417
 #, fuzzy
@@ -1224,7 +1241,7 @@ msgstr "Vis programversjonen og dens programtillegg"
 
 #: src/remmina.c:98
 msgid "Modify connection profile, (requires --set-option)"
-msgstr ""
+msgstr "Endre tilkoblingsprofil, (krever --set-option)"
 
 #: src/remmina.c:99
 msgid "Set one or more profile settings, to be used with --update-profile"
@@ -1291,16 +1308,18 @@ msgid "Terminal content saved under"
 msgstr "Terminalinnhold lagret under"
 
 #: src/remmina_ssh_plugin.c:549
+#, fuzzy
 msgid "Select All (Host+a)"
-msgstr ""
+msgstr "Velt alt (vert+A)"
 
 #: src/remmina_ssh_plugin.c:550
+#, fuzzy
 msgid "Copy (Host+c)"
-msgstr ""
+msgstr "Kopier (vert+C)"
 
 #: src/remmina_ssh_plugin.c:551
 msgid "Paste (Host+v)"
-msgstr ""
+msgstr "Lim inn (vert+v)"
 
 #: src/remmina_ssh_plugin.c:552
 msgid "Save session to file"
@@ -1348,16 +1367,18 @@ msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX (nøkkelutveksling)-algoritmer"
 
 #: src/remmina_ssh_plugin.c:1080
+#, fuzzy
 msgid "Symmetric cipher client to server"
-msgstr ""
+msgstr "Symmetrisk chifferklient til tjener"
 
 #: src/remmina_ssh_plugin.c:1081
 msgid "Preferred server host key types"
-msgstr ""
+msgstr "Foretrukne tjenervertsnøkkeltyper"
 
 #: src/remmina_ssh_plugin.c:1082
+#, fuzzy
 msgid "SSH session log folder"
-msgstr ""
+msgstr "Loggingsmappe for SSH-økter"
 
 #: src/remmina_ssh_plugin.c:1083
 msgid "SSH session log file name"
@@ -1381,8 +1402,9 @@ msgid "Disable password storing"
 msgstr "Skru av passordslagring"
 
 #: src/remmina_ssh_plugin.c:1088
+#, fuzzy
 msgid "Strict host key checking"
-msgstr ""
+msgstr "Streng vertsnøkkelsjekking"
 
 #. *< Type
 #. *< Name
@@ -1430,8 +1452,9 @@ msgid "Enable audio channel"
 msgstr "Skru på lydkanal"
 
 #: plugins/spice/spice_plugin.c:458 plugins/spice/spice_plugin.c:470
+#, fuzzy
 msgid "Resize guest to match window size"
-msgstr ""
+msgstr "Tilpass gjest til vinduets størrelse"
 
 #: plugins/spice/spice_plugin.c:459 plugins/rdp/rdp_plugin.c:1984
 #, fuzzy
@@ -1622,9 +1645,9 @@ msgstr "Tjeneren %s avslo tilkoblingen."
 
 #. E_PROXY_NAP_ACCESSDENIED https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-tsgu/84cd92e4-592c-4219-95d8-18021ac654b0
 #: plugins/rdp/rdp_plugin.c:1582
-#, c-format
+#, c-format, fuzzy
 msgid "The remote desktop gateway %s denied user %s\\%s access due to policy."
-msgstr ""
+msgstr "Fjernskrivebordet %s nektet bruker %s\\%s tilgang på grunn av praksis."
 
 #: plugins/rdp/rdp_plugin.c:1592
 #, c-format
@@ -1772,8 +1795,9 @@ msgstr ""
 "\"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:1974
+#, fuzzy
 msgid "Local serial name"
-msgstr ""
+msgstr "Lokalt seriellnavn"
 
 #: plugins/rdp/rdp_plugin.c:1974
 #, fuzzy
@@ -1819,8 +1843,9 @@ msgid "Share serial ports"
 msgstr "Del seriellporter"
 
 #: plugins/rdp/rdp_plugin.c:1982
+#, fuzzy
 msgid "Serial ports permissive mode"
-msgstr ""
+msgstr "Tilforlatelig modus for serielle porter"
 
 #: plugins/rdp/rdp_plugin.c:1983
 msgid "Share parallel ports"
@@ -1849,8 +1874,9 @@ msgid "Attach to console (2003/2003 R2)"
 msgstr "Fest til konsoll (Windows 2003 / 2003 R2)"
 
 #: plugins/rdp/rdp_plugin.c:1990
+#, fuzzy
 msgid "Turn off fast-path"
-msgstr ""
+msgstr "Skru av fast-path"
 
 #: plugins/rdp/rdp_plugin.c:1991
 #, fuzzy
@@ -1867,8 +1893,9 @@ msgid "Turn off automatic reconnection"
 msgstr "Skru av automatisk tilknytning ved tapt forbindelse"
 
 #: plugins/rdp/rdp_plugin.c:1996
+#, fuzzy
 msgid "Relax Order Checks"
-msgstr ""
+msgstr "Avslappet sjekk av rekkefølge"
 
 #: plugins/rdp/rdp_plugin.c:1997
 #, fuzzy
@@ -1955,16 +1982,18 @@ msgid "Composition"
 msgstr "Komposisjon"
 
 #: plugins/rdp/rdp_settings.c:532
+#, fuzzy
 msgid "Remote scale factor"
-msgstr ""
+msgstr "Fjernskaleringsfaktor"
 
 #: plugins/rdp/rdp_settings.c:545
 msgid "Desktop scale factor %"
 msgstr "Skrivebordsskaleringsfaktor %"
 
 #: plugins/rdp/rdp_settings.c:556
+#, fuzzy
 msgid "Device scale factor %"
-msgstr ""
+msgstr "Enhetsskaleringsfaktorprosent"
 
 #: plugins/rdp/rdp_settings.c:578
 msgid "Desktop orientation"
@@ -1989,8 +2018,9 @@ msgid "Detached window"
 msgstr "Løsrevet vindu"
 
 #: plugins/st/st_plugin_config.h:43
+#, fuzzy
 msgid "Remmina Simple Terminal"
-msgstr ""
+msgstr "Enkel Remmina-terminal"
 
 #: plugins/tool_hello_world/plugin_config.h:40
 msgid "Hello World!"
@@ -2084,8 +2114,9 @@ msgid "Status"
 msgstr "Status"
 
 #: plugins/xdmcp/xdmcp_plugin.c:97
+#, fuzzy
 msgid "Run out of available local X display number."
-msgstr ""
+msgstr "Slapp opp for tilgjengelige nummer for lokale X-skjermer."
 
 #: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
@@ -2161,9 +2192,9 @@ msgid "Your connection has been rejected."
 msgstr "Tilkoblingen ble nektet."
 
 #: plugins/vnc/vnc_plugin.c:919
-#, c-format
+#, c-format, fuzzy
 msgid "Unknown authentication scheme from VNC server: %s"
-msgstr ""
+msgstr "Ukjent identitetsbekreftelsesmetode fra VNC-tjener: %s"
 
 #: plugins/vnc/vnc_plugin.c:921
 msgid "Please retry after enabling encryption on this profile."
@@ -2240,7 +2271,7 @@ msgstr "Skru på myk rulling"
 
 #: plugins/www/www_plugin.c:811
 msgid "Turn on spatial navigation"
-msgstr ""
+msgstr "Skru på romnavigering"
 
 #: plugins/www/www_plugin.c:812
 msgid "Turn on plugin support"
@@ -2345,6 +2376,7 @@ msgid "<big>Contribute</big>"
 msgstr "<big>Bidra</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:46
+#, fuzzy
 msgid ""
 "It seems that Remmina is running on your system as a SNAP package. To enable "
 "access to some important features, like password saving in your keyring and "
@@ -2352,6 +2384,11 @@ msgid ""
 "appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
+"Det later til at Remmina kjører på systemet ditt som en SNAP-pakke. For å "
+"skru på tilgang til noen viktige funksjoner, som passordslagring i "
+"nøkkelringen din og RDP-skriverdeling, åpne programvaresenteret ditt og "
+"innvilg tilstrekkelige tilganger til Remmina. Alternativt kan du skrive "
+"følgende kommandoer i terminalen."
 
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"
@@ -2384,16 +2421,18 @@ msgid "Unlock Remmina"
 msgstr "Lås opp Remmina"
 
 #: data/ui/remmina_unlock.glade:128
+#, fuzzy
 msgid "Master password secret key"
-msgstr ""
+msgstr "Hemmelig nøkkel for hovedpassord"
 
 #: data/ui/remmina_main.glade:69
 msgid "New connection profile"
 msgstr "Ny tilkoblingsprofil"
 
 #: data/ui/remmina_main.glade:81
+#, fuzzy
 msgid "Show search bar"
-msgstr ""
+msgstr "Vis søkefelt"
 
 #: data/ui/remmina_main.glade:106
 msgid "Actions"
@@ -2404,8 +2443,9 @@ msgid "Toggle view"
 msgstr "Veksle visning"
 
 #: data/ui/remmina_main.glade:168
+#, fuzzy
 msgid "search string or server name/ip address for quick connect"
-msgstr ""
+msgstr "søk etter streng eller tjenernavn/IP-addresse for hurtigtilkobling"
 
 #: data/ui/remmina_main.glade:172 data/ui/remmina_main.glade:174
 msgid "Server name or IP address"
@@ -2425,8 +2465,9 @@ msgid "Export"
 msgstr "Eksporter"
 
 #: data/ui/remmina_main.glade:322
+#, fuzzy
 msgid "Multi password changer"
-msgstr ""
+msgstr "Multipassordsendrer"
 
 #: data/ui/remmina_main.glade:339
 msgid "Debugging"
@@ -2450,8 +2491,9 @@ msgid "Donations"
 msgstr "Donasjoner"
 
 #: data/ui/remmina_main.glade:440
+#, fuzzy
 msgid "Set as default remote desktop client"
-msgstr ""
+msgstr "Sett som forvalgt fjernskrivebordsklient"
 
 #: data/ui/remmina_main.glade:541
 msgid "Plugin"
@@ -2463,20 +2505,23 @@ msgid "Last used"
 msgstr "Sist brukt"
 
 #: data/ui/remmina_mpc.glade:7
+#, fuzzy
 msgid "Remmina - Multi Password Changer"
-msgstr ""
+msgstr "Remmina - multipassordsendrer"
 
 #: data/ui/remmina_mpc.glade:21
 msgid "Change"
 msgstr "Endre"
 
 #: data/ui/remmina_mpc.glade:61
+#, fuzzy
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr ""
+msgstr "<span weight='bold' size='larger'>Multipassordsendrer</span>"
 
 #: data/ui/remmina_mpc.glade:166
+#, fuzzy
 msgid "Selection criteria"
-msgstr ""
+msgstr "Utvalgskriterium"
 
 #: data/ui/remmina_mpc.glade:195
 msgid "Confirm password"
@@ -2517,7 +2562,7 @@ msgstr "Rediger innstillinger"
 
 #: data/ui/remmina_preferences.glade:130
 msgid "Scale quality"
-msgstr ""
+msgstr "Skaleringskvalitet"
 
 #: data/ui/remmina_preferences.glade:144
 msgid "Nearest"
@@ -2542,8 +2587,9 @@ msgid "Auto scroll step size"
 msgstr "Trinnstørrelse for automatisk rulling"
 
 #: data/ui/remmina_preferences.glade:191
+#, fuzzy
 msgid "Maximum recent items"
-msgstr ""
+msgstr "Maks. antall nylige elementer"
 
 #: data/ui/remmina_preferences.glade:280
 #, fuzzy
@@ -2551,8 +2597,9 @@ msgid "Screenshots folder"
 msgstr "Skjermavbildningsmappe"
 
 #: data/ui/remmina_preferences.glade:292
+#, fuzzy
 msgid "Choose the a folder to save screenshots from Remmina in."
-msgstr ""
+msgstr "Velg mappe å lagre skjermavbildninger fra Remmina i."
 
 #: data/ui/remmina_preferences.glade:295
 #, fuzzy
@@ -2579,10 +2626,11 @@ msgstr ""
 "%Y År, %m Måned, %d Dag, %H Time, %M Minutt, %S Sekunder (UTC-tid)\n"
 
 #: data/ui/remmina_preferences.glade:356
+#, fuzzy
 msgid ""
 "This is the folder where the connection profiles will be saved, it defaults "
 "to the XDG_USER_DATA"
-msgstr ""
+msgstr "Dette er mappen tilkoblingsprofiler lagres i, som forvalg XDG_USER_DATA"
 
 #. It's the folder where the profiles are saved
 #: data/ui/remmina_preferences.glade:361
@@ -2608,8 +2656,9 @@ msgid "Send statistics to remmina.org"
 msgstr "Send statistikk til remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
+#, fuzzy
 msgid "Only save generated screenshots, don't copy them to clipboard."
-msgstr ""
+msgstr "Kun lagre skjermavbildninger, ikke kopier dem til utklippstavle."
 
 #: data/ui/remmina_preferences.glade:467
 #, fuzzy
@@ -2627,7 +2676,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:483
 msgid "Profile filename template"
-msgstr ""
+msgstr "Mal for profilfilnavn"
 
 #: data/ui/remmina_preferences.glade:495
 msgid ""
@@ -2679,8 +2728,9 @@ msgid "Scrolled fullscreen"
 msgstr "Rullet fullskjermsvisning"
 
 #: data/ui/remmina_preferences.glade:587
+#, fuzzy
 msgid "Viewport fullscreen"
-msgstr ""
+msgstr "Fullskjermsvisning for visningsområde"
 
 #: data/ui/remmina_preferences.glade:603
 msgid "Tab interface"
@@ -2703,24 +2753,28 @@ msgid "No tabs"
 msgstr "Ingen faner"
 
 #: data/ui/remmina_preferences.glade:632
+#, fuzzy
 msgid "Fullscreen on the same monitor as the connection window"
-msgstr ""
+msgstr "Fullskjerm på samme skjerm som tilkoblingsvinduet"
 
 #: data/ui/remmina_preferences.glade:656
+#, fuzzy
 msgid "Peeking"
-msgstr ""
+msgstr "Snugkikking"
 
 #: data/ui/remmina_preferences.glade:657
 msgid "Hidden"
 msgstr "Skjult"
 
 #: data/ui/remmina_preferences.glade:673
+#, fuzzy
 msgid "Fullscreen toolbar visibility"
-msgstr ""
+msgstr "Synlighet for fullskjermsverktøyslinje"
 
 #: data/ui/remmina_preferences.glade:683
+#, fuzzy
 msgid "Hide Search Bar in main window"
-msgstr ""
+msgstr "Skjul søkefelt i hovedvindu"
 
 #: data/ui/remmina_preferences.glade:707
 msgid "Appearance"
@@ -2781,16 +2835,18 @@ msgstr "SKJERMAVBILDNING"
 
 #: data/ui/remmina_preferences.glade:1156
 #: data/ui/remmina_preferences.glade:1166
+#, fuzzy
 msgid "View-only mode"
-msgstr ""
+msgstr "Modus begrenset til visning"
 
 #: data/ui/remmina_preferences.glade:1190
 msgid "Keyboard"
 msgstr "Tastatur"
 
 #: data/ui/remmina_preferences.glade:1209
+#, fuzzy
 msgid "SSH tunnel local port"
-msgstr ""
+msgstr "Lokal SSH-tunnelport"
 
 #: data/ui/remmina_preferences.glade:1233
 #, fuzzy
@@ -2799,23 +2855,23 @@ msgstr "Fortolk ~/.ssh.config"
 
 #: data/ui/remmina_preferences.glade:1257
 msgid "SSH_LOG_NOLOG"
-msgstr ""
+msgstr "SSH_LOG_NOLOG"
 
 #: data/ui/remmina_preferences.glade:1258
 msgid "SSH_LOG_RARE"
-msgstr ""
+msgstr "SSH_LOG_RARE"
 
 #: data/ui/remmina_preferences.glade:1259
 msgid "SSH_LOG_ENTRY"
-msgstr ""
+msgstr "SSH_LOG_ENTRY"
 
 #: data/ui/remmina_preferences.glade:1260
 msgid "SSH_LOG_PACKET"
-msgstr ""
+msgstr "SSH_LOG_PACKET"
 
 #: data/ui/remmina_preferences.glade:1261
 msgid "SSH_LOG_FUNCTIONS"
-msgstr ""
+msgstr "SSH_LOG_FUNCTIONS"
 
 #: data/ui/remmina_preferences.glade:1277
 msgid "SSH log level"
@@ -2823,30 +2879,39 @@ msgstr "SSH-loggingsnivå"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1344
+#, fuzzy
 msgid ""
 "The time (in seconds) the connection needs to remain idle before TCP starts "
 "sending keepalive probes."
 msgstr ""
+"Antall sekunder tilkoblingen må gå ubrukt før TCP begynner å sende keepalive-"
+"pakker."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1360
+#, fuzzy
 msgid "The time (in seconds) between individual keepalive probes."
-msgstr ""
+msgstr "Antall sekunder mellom forsendelse av keepalive-pakker."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1376
+#, fuzzy
 msgid ""
 "The maximum number of keepalive probes TCP should send before dropping the "
 "connection."
 msgstr ""
+"Maksimalt antall keepalive-pakker TCP skal sende før tilkoblingen droppes."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1392
+#, fuzzy
 msgid ""
 "it specifies the maximum amount of time in milliseconds that transmitted "
 "data may remain unacknowledged before TCP will forcibly close the "
 "corresponding connection."
 msgstr ""
+"Angir maksimal antall tid i millisekunder overført data kan forbli "
+"ubehandlet før TCP tvangsmessig lukker respektiv tilkobling."
 
 #: data/ui/remmina_preferences.glade:1413
 #, fuzzy
@@ -2859,20 +2924,23 @@ msgstr "Hovedpassord"
 
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
+#, fuzzy
 msgid "Use secret key to authenticate with some widgets"
-msgstr ""
+msgstr "Bruk hemmelig nøkkel til identitetsbekreftelse med noen miniprogrammer"
 
 #: data/ui/remmina_preferences.glade:1472
 msgid "Use master password"
 msgstr "Bruk hovedpassord"
 
 #: data/ui/remmina_preferences.glade:1485
+#, fuzzy
 msgid "Automatic lock interval"
-msgstr ""
+msgstr "Automatisk låseintervall"
 
 #: data/ui/remmina_preferences.glade:1496
+#, fuzzy
 msgid "Master password validity in seconds"
-msgstr ""
+msgstr "Antall sekunder hovedpassordet skal være gyldig"
 
 #: data/ui/remmina_preferences.glade:1516
 msgid "File encryption"
@@ -2891,12 +2959,14 @@ msgid "Scrollback lines"
 msgstr "Rulleminne-linjer"
 
 #: data/ui/remmina_preferences.glade:1702
+#, fuzzy
 msgid "Copy to clipboard shortcut"
-msgstr ""
+msgstr "Snarvei for kopiering til utklippstavle"
 
 #: data/ui/remmina_preferences.glade:1715
+#, fuzzy
 msgid "Paste from clipboard shortcut"
-msgstr ""
+msgstr "Snarvei for innliming fra utklippstavle"
 
 #: data/ui/remmina_preferences.glade:1728
 msgid "Select all shortcuts"
@@ -2905,8 +2975,9 @@ msgstr "Velg alle snarveier"
 #: data/ui/remmina_preferences.glade:1742
 #: data/ui/remmina_preferences.glade:1760
 #: data/ui/remmina_preferences.glade:1778
+#, fuzzy
 msgid "(Host key +)"
-msgstr ""
+msgstr "(Vertstast +)"
 
 #: data/ui/remmina_preferences.glade:1795
 #: data/ui/remmina_preferences.glade:1809
@@ -3028,4 +3099,3 @@ msgstr "Tillat fet tekst"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminal"
-
