@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-02 22:29+0000\n"
+"POT-Creation-Date: 2019-11-03 01:33+0000\n"
 "PO-Revision-Date: 2019-11-02 20:25+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
@@ -1000,42 +1000,43 @@ msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:541
-msgid "SSH ? credentials"
-msgstr ""
+#, fuzzy
+msgid "SSH authentication"
+msgstr "Ověřování se pro SSH"
 
 #: src/remmina_ssh.c:656
-#, c-format
-msgid "Failed to startup SSH session: %s"
+#, fuzzy, c-format
+msgid "Could not start SSH session: %s"
 msgstr "Nepodařilo se zahájit SSH relaci: %s"
 
 #: src/remmina_ssh.c:1014 src/remmina_ssh.c:1074
-#, c-format
-msgid "Failed to create channel: %s"
+#, fuzzy, c-format
+msgid "Could not create channel, %s"
 msgstr "Nepodařilo se vytvořit kanál: %s"
 
 #: src/remmina_ssh.c:1024
-#, c-format
-msgid "Failed to connect to the SSH tunnel destination: %s"
+#, fuzzy, c-format
+msgid "Could not connect to the SSH tunnel destination %s"
 msgstr "Nepodařilo se připojit k cíli SSH tunelu: %s"
 
-#: src/remmina_ssh.c:1088 src/remmina_ssh.c:1667
-#, c-format
-msgid "Failed to open channel: %s"
+#: src/remmina_ssh.c:1088
+#, fuzzy, c-format
+msgid "Could not open channel, %s"
 msgstr "Nepodařilo se otevřít kanál: %s"
 
 #: src/remmina_ssh.c:1094
-#, c-format
-msgid "Failed to execute %s on SSH server: %%s"
+#, fuzzy, c-format
+msgid "Failed to execute %s on SSH server, %%s"
 msgstr "Vykonání %s na SSH serveru se nezdařilo: %%s"
 
 #: src/remmina_ssh.c:1131 src/remmina_ssh.c:1151 src/remmina_ssh.c:1159
-#, c-format
-msgid "Failed to request port forwarding: %s"
+#, fuzzy, c-format
+msgid "Could not request port forwarding, %s"
 msgstr "Nepodařilo se vyžádat si přeposílání portů: %s"
 
 #: src/remmina_ssh.c:1194
-msgid "No response from the server."
-msgstr "Žádná odpověď od serveru."
+msgid "The server did not respond."
+msgstr ""
 
 #: src/remmina_ssh.c:1233
 #, c-format
@@ -1044,67 +1045,85 @@ msgstr "Není možné se připojit k místnímu portu %i."
 
 #: src/remmina_ssh.c:1282
 #, c-format
-msgid "ssh_channel_write() returned an error: %s"
-msgstr "volání funkce ssh_channel_write() vrátilo chybu: %s"
+msgid "Could not run ssh_channel_write(), %s"
+msgstr ""
 
 #: src/remmina_ssh.c:1288
-#, c-format
-msgid "read on tunnel listening socket returned an error: %s"
+#, fuzzy, c-format
+msgid "Could not read from tunnel listening socket, %s"
 msgstr "čtení ze soketu, na kterém tunel očekává spojení, vrátilo chybu: %s"
 
 #: src/remmina_ssh.c:1307
 #, c-format
-msgid "ssh_channel_poll() returned an error: %s"
-msgstr "volání funkce ssh_channel_poll() vrátilo chybu: %s"
+msgid "Could not run ssh_channel_poll(), %s"
+msgstr ""
 
 #: src/remmina_ssh.c:1313
-#, c-format
-msgid "ssh_channel_read_nonblocking() returned an error: %s"
+#, fuzzy, c-format
+msgid "Could not run ssh_channel_read_nonblocking(), %s"
 msgstr "volání funkce ssh_channel_read_nonblocking() vrátilo chybu: %s"
 
 #: src/remmina_ssh.c:1331
-#, c-format
-msgid "write on tunnel listening socket returned an error: %s"
-msgstr "zápis do soketu, na kterém tunel očekává spojení, vrátil chybu: %s"
+#, fuzzy, c-format
+msgid "Could not send data to tunnel listening socket, %s"
+msgstr "čtení ze soketu, na kterém tunel očekává spojení, vrátilo chybu: %s"
 
 #: src/remmina_ssh.c:1410
-msgid "Destination port has not been assigned."
-msgstr "Cílový port nebyl přiřazen."
+msgid "Assign a destination port."
+msgstr ""
 
 #: src/remmina_ssh.c:1417
-msgid "Failed to create socket."
+#, fuzzy
+msgid "Could not create socket."
 msgstr "Nepodařilo se vytvořit soket."
 
 #: src/remmina_ssh.c:1427
-msgid "Failed to bind on local port."
-msgstr "Nepodařilo se navázat na místní port."
+#, fuzzy
+msgid "Could not bind server socket to local port."
+msgstr "Není možné se připojit k místnímu portu %i."
 
 #: src/remmina_ssh.c:1433
-msgid "Failed to listen on local port."
+#, fuzzy
+msgid "Could not listen to local port."
 msgstr "Nepodařilo se očekávat spojení na místním portu."
 
-#: src/remmina_ssh.c:1442 src/remmina_ssh.c:1458 src/remmina_ssh.c:1474
-#: src/remmina_ssh.c:1491
+#: src/remmina_ssh.c:1442
+#, fuzzy
+msgid "Could not start pthread."
+msgstr "Nepodařilo se inicializovat pthread."
+
+#: src/remmina_ssh.c:1458 src/remmina_ssh.c:1491
+#, fuzzy
+msgid "Could not initialize pthread."
+msgstr "Nepodařilo se inicializovat pthread."
+
+#: src/remmina_ssh.c:1474
 msgid "Failed to initialize pthread."
 msgstr "Nepodařilo se inicializovat pthread."
 
 #: src/remmina_ssh.c:1579
-#, c-format
-msgid "Failed to create SFTP session: %s"
+#, fuzzy, c-format
+msgid "Could not create SFTP session: %s"
 msgstr "Nepodařilo se vytvořit sftp relaci: %s"
 
 #: src/remmina_ssh.c:1583
-#, c-format
-msgid "Failed to initialize SFTP session: %s"
+#, fuzzy, c-format
+msgid "Could not initialize SFTP session: %s"
 msgstr "Nepodařilo se inicializovat sftp relaci: %s"
 
+#: src/remmina_ssh.c:1667
+#, fuzzy, c-format
+msgid "Could not open channel: %s"
+msgstr "Nepodařilo se otevřít kanál: %s"
+
 #: src/remmina_ssh.c:1696
-#, c-format
-msgid "Failed to request shell: %s"
+#, fuzzy, c-format
+msgid "Could not request shell: %s"
 msgstr "Nepodařilo se vyžádat si shell: %s"
 
 #: src/remmina_ssh.c:1789
-msgid "Failed to create pty device."
+#, fuzzy
+msgid "Could not create PTY device."
 msgstr "Nepodařilo se vytvořit zařízení pseudoterminálu."
 
 #. Show in the status bar the total number of connections found

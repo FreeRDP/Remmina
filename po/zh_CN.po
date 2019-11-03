@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-02 22:29+0000\n"
+"POT-Creation-Date: 2019-11-03 01:33+0000\n"
 "PO-Revision-Date: 2019-02-12 10:59+0800\n"
 "Last-Translator: shijing <jingshi@ubuntukylin.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
@@ -984,42 +984,43 @@ msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:541
-msgid "SSH ? credentials"
-msgstr ""
+#, fuzzy
+msgid "SSH authentication"
+msgstr "SSH 验证"
 
 #: src/remmina_ssh.c:656
-#, c-format
-msgid "Failed to startup SSH session: %s"
+#, fuzzy, c-format
+msgid "Could not start SSH session: %s"
 msgstr "无法启动 SSH 会话：%s"
 
 #: src/remmina_ssh.c:1014 src/remmina_ssh.c:1074
-#, c-format
-msgid "Failed to create channel: %s"
+#, fuzzy, c-format
+msgid "Could not create channel, %s"
 msgstr "创建通道失败：%s"
 
 #: src/remmina_ssh.c:1024
-#, c-format
-msgid "Failed to connect to the SSH tunnel destination: %s"
+#, fuzzy, c-format
+msgid "Could not connect to the SSH tunnel destination %s"
 msgstr "无法连接到 SSH 通道的目的地：%s"
 
-#: src/remmina_ssh.c:1088 src/remmina_ssh.c:1667
-#, c-format
-msgid "Failed to open channel: %s"
+#: src/remmina_ssh.c:1088
+#, fuzzy, c-format
+msgid "Could not open channel, %s"
 msgstr "打开通道失败：%s"
 
 #: src/remmina_ssh.c:1094
-#, c-format
-msgid "Failed to execute %s on SSH server: %%s"
+#, fuzzy, c-format
+msgid "Failed to execute %s on SSH server, %%s"
 msgstr "无法在 SSH 服务器上运行 %s：%%s"
 
 #: src/remmina_ssh.c:1131 src/remmina_ssh.c:1151 src/remmina_ssh.c:1159
-#, c-format
-msgid "Failed to request port forwarding: %s"
+#, fuzzy, c-format
+msgid "Could not request port forwarding, %s"
 msgstr "无法申请端口转发：%s"
 
 #: src/remmina_ssh.c:1194
-msgid "No response from the server."
-msgstr "服务器无响应。"
+msgid "The server did not respond."
+msgstr ""
 
 #: src/remmina_ssh.c:1233
 #, c-format
@@ -1028,67 +1029,85 @@ msgstr "无法连接到本地端口 %i。"
 
 #: src/remmina_ssh.c:1282
 #, c-format
-msgid "ssh_channel_write() returned an error: %s"
-msgstr "ssh_channel_write() 返回错误：%s"
+msgid "Could not run ssh_channel_write(), %s"
+msgstr ""
 
 #: src/remmina_ssh.c:1288
-#, c-format
-msgid "read on tunnel listening socket returned an error: %s"
+#, fuzzy, c-format
+msgid "Could not read from tunnel listening socket, %s"
 msgstr "读取隧道侦听套接字返回错误：%s"
 
 #: src/remmina_ssh.c:1307
 #, c-format
-msgid "ssh_channel_poll() returned an error: %s"
-msgstr "ssh_channel_poll() 返回错误：%s"
+msgid "Could not run ssh_channel_poll(), %s"
+msgstr ""
 
 #: src/remmina_ssh.c:1313
-#, c-format
-msgid "ssh_channel_read_nonblocking() returned an error: %s"
+#, fuzzy, c-format
+msgid "Could not run ssh_channel_read_nonblocking(), %s"
 msgstr "ssh_channel_read_nonblocking() 返回错误：%s"
 
 #: src/remmina_ssh.c:1331
-#, c-format
-msgid "write on tunnel listening socket returned an error: %s"
-msgstr "写入隧道侦听套接字返回错误：%s"
+#, fuzzy, c-format
+msgid "Could not send data to tunnel listening socket, %s"
+msgstr "读取隧道侦听套接字返回错误：%s"
 
 #: src/remmina_ssh.c:1410
-msgid "Destination port has not been assigned."
-msgstr "目标端口尚未分配。"
+msgid "Assign a destination port."
+msgstr ""
 
 #: src/remmina_ssh.c:1417
-msgid "Failed to create socket."
+#, fuzzy
+msgid "Could not create socket."
 msgstr "无法创建套接字。"
 
 #: src/remmina_ssh.c:1427
-msgid "Failed to bind on local port."
-msgstr "无法绑定本地端口。"
+#, fuzzy
+msgid "Could not bind server socket to local port."
+msgstr "无法连接到本地端口 %i。"
 
 #: src/remmina_ssh.c:1433
-msgid "Failed to listen on local port."
+#, fuzzy
+msgid "Could not listen to local port."
 msgstr "无法侦听本地端口。"
 
-#: src/remmina_ssh.c:1442 src/remmina_ssh.c:1458 src/remmina_ssh.c:1474
-#: src/remmina_ssh.c:1491
+#: src/remmina_ssh.c:1442
+#, fuzzy
+msgid "Could not start pthread."
+msgstr "无法初始化 pthread。"
+
+#: src/remmina_ssh.c:1458 src/remmina_ssh.c:1491
+#, fuzzy
+msgid "Could not initialize pthread."
+msgstr "无法初始化 pthread。"
+
+#: src/remmina_ssh.c:1474
 msgid "Failed to initialize pthread."
 msgstr "无法初始化 pthread。"
 
 #: src/remmina_ssh.c:1579
-#, c-format
-msgid "Failed to create SFTP session: %s"
+#, fuzzy, c-format
+msgid "Could not create SFTP session: %s"
 msgstr "无法创建 SFTP 会话：%s"
 
 #: src/remmina_ssh.c:1583
-#, c-format
-msgid "Failed to initialize SFTP session: %s"
+#, fuzzy, c-format
+msgid "Could not initialize SFTP session: %s"
 msgstr "无法初始化 SFTP 会话：%s"
 
+#: src/remmina_ssh.c:1667
+#, fuzzy, c-format
+msgid "Could not open channel: %s"
+msgstr "打开通道失败：%s"
+
 #: src/remmina_ssh.c:1696
-#, c-format
-msgid "Failed to request shell: %s"
+#, fuzzy, c-format
+msgid "Could not request shell: %s"
 msgstr "无法请求 shell：%s"
 
 #: src/remmina_ssh.c:1789
-msgid "Failed to create pty device."
+#, fuzzy
+msgid "Could not create PTY device."
 msgstr "无法创建 pty 设备。"
 
 #. Show in the status bar the total number of connections found

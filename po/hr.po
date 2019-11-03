@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-02 22:29+0000\n"
+"POT-Creation-Date: 2019-11-03 01:33+0000\n"
 "PO-Revision-Date: 2019-09-29 07:31+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -994,42 +994,43 @@ msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:541
-msgid "SSH ? credentials"
-msgstr ""
+#, fuzzy
+msgid "SSH authentication"
+msgstr "SSH ovjera"
 
 #: src/remmina_ssh.c:656
-#, c-format
-msgid "Failed to startup SSH session: %s"
+#, fuzzy, c-format
+msgid "Could not start SSH session: %s"
 msgstr "Neuspjelo pokretanje SSH sesije: %s"
 
 #: src/remmina_ssh.c:1014 src/remmina_ssh.c:1074
-#, c-format
-msgid "Failed to create channel: %s"
+#, fuzzy, c-format
+msgid "Could not create channel, %s"
 msgstr "Neuspjelo stvaranje kanala: %s"
 
 #: src/remmina_ssh.c:1024
-#, c-format
-msgid "Failed to connect to the SSH tunnel destination: %s"
+#, fuzzy, c-format
+msgid "Could not connect to the SSH tunnel destination %s"
 msgstr "Neuspjelo povezivanje s SSH tuneliranim odredištem: %s"
 
-#: src/remmina_ssh.c:1088 src/remmina_ssh.c:1667
-#, c-format
-msgid "Failed to open channel: %s"
+#: src/remmina_ssh.c:1088
+#, fuzzy, c-format
+msgid "Could not open channel, %s"
 msgstr "Neuspjelo otvaranje kanala: %s"
 
 #: src/remmina_ssh.c:1094
-#, c-format
-msgid "Failed to execute %s on SSH server: %%s"
+#, fuzzy, c-format
+msgid "Failed to execute %s on SSH server, %%s"
 msgstr "Neuspjelo pokretanje %s na SSH poslužitelju: %%s"
 
 #: src/remmina_ssh.c:1131 src/remmina_ssh.c:1151 src/remmina_ssh.c:1159
-#, c-format
-msgid "Failed to request port forwarding: %s"
+#, fuzzy, c-format
+msgid "Could not request port forwarding, %s"
 msgstr "Neuspio zahtjev prosljeđivanja ulaza: %s"
 
 #: src/remmina_ssh.c:1194
-msgid "No response from the server."
-msgstr "Poslužitelj nije odgovorio."
+msgid "The server did not respond."
+msgstr ""
 
 #: src/remmina_ssh.c:1233
 #, c-format
@@ -1038,67 +1039,85 @@ msgstr "Nemoguće povezivanje na lokalni ulaz %i."
 
 #: src/remmina_ssh.c:1282
 #, c-format
-msgid "ssh_channel_write() returned an error: %s"
-msgstr "ssh_channel_write() je vratio grešku: %s"
+msgid "Could not run ssh_channel_write(), %s"
+msgstr ""
 
 #: src/remmina_ssh.c:1288
-#, c-format
-msgid "read on tunnel listening socket returned an error: %s"
+#, fuzzy, c-format
+msgid "Could not read from tunnel listening socket, %s"
 msgstr "čitanje na priključnici slušanja tunela je vratilo grešku: %s"
 
 #: src/remmina_ssh.c:1307
 #, c-format
-msgid "ssh_channel_poll() returned an error: %s"
-msgstr "ssh_channel_poll() je vratio grešku: %s"
+msgid "Could not run ssh_channel_poll(), %s"
+msgstr ""
 
 #: src/remmina_ssh.c:1313
-#, c-format
-msgid "ssh_channel_read_nonblocking() returned an error: %s"
+#, fuzzy, c-format
+msgid "Could not run ssh_channel_read_nonblocking(), %s"
 msgstr "ssh_channel_read_nonblocking() je vratio grešku: %s"
 
 #: src/remmina_ssh.c:1331
-#, c-format
-msgid "write on tunnel listening socket returned an error: %s"
-msgstr "zapisivanje na priključnici slušanja tunela je vratilo grešku: %s"
+#, fuzzy, c-format
+msgid "Could not send data to tunnel listening socket, %s"
+msgstr "čitanje na priključnici slušanja tunela je vratilo grešku: %s"
 
 #: src/remmina_ssh.c:1410
-msgid "Destination port has not been assigned."
-msgstr "Odredišni ulaz nije dodijeljen."
+msgid "Assign a destination port."
+msgstr ""
 
 #: src/remmina_ssh.c:1417
-msgid "Failed to create socket."
+#, fuzzy
+msgid "Could not create socket."
 msgstr "Neuspjelo stvaranje priključnice."
 
 #: src/remmina_ssh.c:1427
-msgid "Failed to bind on local port."
-msgstr "Neuspjelo povezivanje na lokalnom ulazu."
+#, fuzzy
+msgid "Could not bind server socket to local port."
+msgstr "Nemoguće povezivanje na lokalni ulaz %i."
 
 #: src/remmina_ssh.c:1433
-msgid "Failed to listen on local port."
+#, fuzzy
+msgid "Could not listen to local port."
 msgstr "Neuspjelo osluškivanje na lokalnom ulazu."
 
-#: src/remmina_ssh.c:1442 src/remmina_ssh.c:1458 src/remmina_ssh.c:1474
-#: src/remmina_ssh.c:1491
+#: src/remmina_ssh.c:1442
+#, fuzzy
+msgid "Could not start pthread."
+msgstr "Neuspjelo pthread pokretanje."
+
+#: src/remmina_ssh.c:1458 src/remmina_ssh.c:1491
+#, fuzzy
+msgid "Could not initialize pthread."
+msgstr "Neuspjelo pthread pokretanje."
+
+#: src/remmina_ssh.c:1474
 msgid "Failed to initialize pthread."
 msgstr "Neuspjelo pthread pokretanje."
 
 #: src/remmina_ssh.c:1579
-#, c-format
-msgid "Failed to create SFTP session: %s"
+#, fuzzy, c-format
+msgid "Could not create SFTP session: %s"
 msgstr "Neuspjelo stvaranje SFTP sesije: %s"
 
 #: src/remmina_ssh.c:1583
-#, c-format
-msgid "Failed to initialize SFTP session: %s"
+#, fuzzy, c-format
+msgid "Could not initialize SFTP session: %s"
 msgstr "Neuspjelo pokretanje SFTP sesije: %s"
 
+#: src/remmina_ssh.c:1667
+#, fuzzy, c-format
+msgid "Could not open channel: %s"
+msgstr "Neuspjelo otvaranje kanala: %s"
+
 #: src/remmina_ssh.c:1696
-#, c-format
-msgid "Failed to request shell: %s"
+#, fuzzy, c-format
+msgid "Could not request shell: %s"
 msgstr "Neuspio zahtjev ljuske: %s"
 
 #: src/remmina_ssh.c:1789
-msgid "Failed to create pty device."
+#, fuzzy
+msgid "Could not create PTY device."
 msgstr "Neuspjelo stvaranje pty uređaja."
 
 #. Show in the status bar the total number of connections found
