@@ -693,7 +693,7 @@ void remmina_message_panel_field_set_string(RemminaMessagePanel *mp, int entryid
 	if (!G_TYPE_CHECK_INSTANCE_TYPE(priv->w[entryid], gtk_entry_get_type()))
 		return;
 
-	gtk_entry_set_text(GTK_ENTRY(priv->w[entryid]), text);
+	gtk_entry_set_text(GTK_ENTRY(priv->w[entryid]), text != NULL ? text : "");
 }
 
 gchar* remmina_message_panel_field_get_string(RemminaMessagePanel *mp, int entryid)
