@@ -125,11 +125,11 @@ struct _RemminaConnectionWindowPriv {
 	gboolean					sticky;
 	gint						grab_retry_eventsourceid;
 
-	/* flag to disable toolbar signal handling when toolbar is
+	/* Flag to turn off toolbar signal handling when toolbar is
 	 * reconfiguring, usually due to a tab switch */
 	gboolean					toolbar_is_reconfiguring;
 
-	/* This is the current view mode, i.e. VIEWPORT_FULLSCREEN_MODE
+	/* This is the current view mode, i.e. VIEWPORT_FULLSCREEN_MODE,
 	 * as saved on the "viwemode" profile preference file */
 	gint						view_mode;
 
@@ -391,11 +391,11 @@ static RemminaScaleMode get_current_allowed_scale_mode(RemminaConnectionObject *
 	plugin_can_scale = remmina_protocol_widget_query_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
 									 REMMINA_PROTOCOL_FEATURE_TYPE_SCALE);
 
-	/* forbid scalemode REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES when not possible */
+	/* Forbid scalemode REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES when not possible */
 	if ((!plugin_has_dynres) && scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_DYNRES)
 		scalemode = REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE;
 
-	/* forbid scalemode REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED when not possible */
+	/* Forbid scalemode REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED when not possible */
 	if (!plugin_can_scale && scalemode == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED)
 		scalemode = REMMINA_PROTOCOL_WIDGET_SCALE_MODE_NONE;
 
@@ -509,10 +509,10 @@ static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin)
 #endif
 		/* Up to GTK version 3.20 we can grab the keyboard with gdk_device_grab().
 		 * in GTK 3.20 gdk_seat_grab() should be used instead of gdk_device_grab().
-		 * There is a bug in GTK up to 3.22: when gdk_device_grab() fails
+		 * There is a bug in GTK up to 3.22: When gdk_device_grab() fails
 		 * the widget is hidden:
 		 * https://gitlab.gnome.org/GNOME/gtk/commit/726ad5a5ae7c4f167e8dd454cd7c250821c400ab
-		 * The bug fix will be released with GTK 3.24.
+		 * The bugfix will be released with GTK 3.24.
 		 * Also pease note that the newer gdk_seat_grab() is still calling gdk_device_grab().
 		 */
 #if GTK_CHECK_VERSION(3, 24, 0)
@@ -534,7 +534,7 @@ static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin)
 				cnnwin->priv->grab_retry_eventsourceid = g_timeout_add(500, (GSourceFunc)rcw_keyboard_grab_retry, cnnwin);
 		} else {
 #if DEBUG_KB_GRABBING
-			printf("GRAB SUCCESS\n");
+			printf("Keyboard grabbed\n");
 #endif
 			if (cnnwin->priv->grab_retry_eventsourceid != 0) {
 				g_source_remove(cnnwin->priv->grab_retry_eventsourceid);
@@ -582,7 +582,7 @@ gboolean rcw_delete(RemminaConnectionWindow *cnnwin)
 		if (n > 1) {
 			dialog = gtk_message_dialog_new(GTK_WINDOW(cnnwin), GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION,
 							GTK_BUTTONS_YES_NO,
-							_("There are %i active connections in the current window. Are you sure to close?"), n);
+							_("Are you sure you want to close %i active connections in the current window?"), n);
 			i = gtk_dialog_run(GTK_DIALOG(dialog));
 			gtk_widget_destroy(dialog);
 			if (i != GTK_RESPONSE_YES)
@@ -1296,7 +1296,7 @@ void rcw_toolbar_fullscreen_option(GtkWidget *widget, RemminaConnectionWindow *c
 		gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(menuitem), TRUE);
 	g_signal_connect(G_OBJECT(menuitem), "toggled", G_CALLBACK(rco_viewport_fullscreen_mode), cnnobj);
 
-	menuitem = gtk_radio_menu_item_new_with_label(group, _("Scrolled fullscreen mode"));
+	menuitem = gtk_radio_menu_item_new_with_label(group, _("Scrolled fullscreen"));
 	gtk_widget_show(menuitem);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
 	if (cnnwin->priv->view_mode == SCROLLED_FULLSCREEN_MODE)
@@ -1928,7 +1928,7 @@ static void rcw_toolbar_screenshot(GtkWidget *widget, RemminaConnectionWindow *c
 		if (cnnobj->plugin_can_scale &&
 		    get_current_allowed_scale_mode(cnnobj, NULL, NULL) == REMMINA_PROTOCOL_WIDGET_SCALE_MODE_SCALED) {
 			dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_OK,
-							_("Warning: screenshot is scaled or distorted. Disable scaling to have better screenshot."));
+							_("Turn off scaling to avoid screenshot distortion."));
 			g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 			gtk_widget_show(dialog);
 		}
@@ -2408,7 +2408,7 @@ static gboolean rcw_focus_out_event(GtkWidget *widget, GdkEvent *event, gpointer
 {
 	TRACE_CALL(__func__);
 #if DEBUG_KB_GRABBING
-	printf("DEBUG_KB_GRABBING: focus out and mouse_pointer_entered is %s\n", cnnobj->cnnwin->priv->mouse_pointer_entered ? "true" : "false");
+	printf("DEBUG_KB_GRABBING: Focus out and mouse_pointer_entered is %s\n", cnnobj->cnnwin->priv->mouse_pointer_entered ? "true" : "false");
 #endif
 	if (REMMINA_IS_CONNECTION_WINDOW(widget))
 		rcw_focus_out((RemminaConnectionWindow *)widget);
@@ -2419,7 +2419,7 @@ static gboolean rcw_focus_in_event(GtkWidget *widget, GdkEvent *event, gpointer 
 {
 	TRACE_CALL(__func__);
 #if DEBUG_KB_GRABBING
-	printf("DEBUG_KB_GRABBING: focus in and mouse_pointer_entered is %s\n", cnnobj->cnnwin->priv->mouse_pointer_entered ? "true" : "false");
+	printf("DEBUG_KB_GRABBING: Focus in and mouse_pointer_entered is %s\n", cnnobj->cnnwin->priv->mouse_pointer_entered ? "true" : "false");
 #endif
 	if (REMMINA_IS_CONNECTION_WINDOW(widget))
 		rcw_focus_in((RemminaConnectionWindow *)widget);
@@ -2481,9 +2481,9 @@ static gboolean rcw_on_leave(GtkWidget *widget, GdkEventCrossing *event, gpointe
 	printf("\n");
 #endif
 	/*
-	 * Unity: we leave windows with GDK_NOTIFY_VIRTUAL or GDK_NOTIFY_NONLINEAR_VIRTUAL
-	 * Gnome shell: we leave windows with both GDK_NOTIFY_VIRTUAL or GDK_NOTIFY_ANCESTOR
-	 * Xfce: we cannot drag this window when grabbed, so we need to ungrab in response to GDK_NOTIFY_NONLINEAR
+	 * Unity: We leave windows with GDK_NOTIFY_VIRTUAL or GDK_NOTIFY_NONLINEAR_VIRTUAL
+	 * Gnome shell: We leave windows with both GDK_NOTIFY_VIRTUAL or GDK_NOTIFY_ANCESTOR
+	 * Xfce: We cannot drag this window when grabbed, so we need to ungrab in response to GDK_NOTIFY_NONLINEAR
 	 */
 	if (event->detail == GDK_NOTIFY_VIRTUAL || event->detail == GDK_NOTIFY_ANCESTOR ||
 	    event->detail == GDK_NOTIFY_NONLINEAR_VIRTUAL || event->detail == GDK_NOTIFY_NONLINEAR) {
@@ -2608,7 +2608,7 @@ static gboolean rcw_on_configure(GtkWidget *widget, GdkEventConfigure *event,
 
 	if (cnnwin && gtk_widget_get_window(GTK_WIDGET(cnnwin))
 	    && cnnwin->priv->view_mode == SCROLLED_WINDOW_MODE)
-		/* Under gnome shell we receive this configure_event BEFORE a window
+		/* Under Gnome shell we receive this configure_event BEFORE a window
 		 * is really unmaximized, so we must read its new state and dimensions
 		 * later, not now */
 		cnnwin->priv->savestate_eventsourceid = g_timeout_add(500, rcw_after_configure_scrolled, cnnobj);
@@ -3693,7 +3693,7 @@ void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
 	RemminaConnectionWindowPriv *priv = cnnobj->cnnwin->priv;
 	GtkWidget *pparent;
 
-	g_debug("disconnect signal received on RemminaProtocolWidget");
+	g_debug("Disconnect signal received on RemminaProtocolWidget");
 	/* Detach the protocol widget from the notebook now, or we risk that a
 	 * window delete will destroy cnnobj->proto before we complete disconnection.
 	 */
@@ -3729,10 +3729,10 @@ void rco_on_disconnect(RemminaProtocolWidget *gp, gpointer data)
 		mp = remmina_message_panel_new();
 		remmina_message_panel_setup_message(mp, remmina_protocol_widget_get_error_message(gp), cb_lasterror_confirmed, gp);
 		rco_show_message_panel(gp->cnnobj, mp);
-		g_debug("disconnect was not successful");
+		g_debug("Could not disconnect");
 	} else {
 		rco_closewin(gp);
-		g_debug("disconnect was successful");
+		g_debug("Disconnected");
 	}
 }
 
@@ -3844,7 +3844,7 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 						GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, "%s", msg);
 		gtk_dialog_run(GTK_DIALOG(dialog));
 		gtk_widget_destroy(dialog);
-		/* We should destroy cnnobj->proto and cnnobj now... ToDo: fix this leak */
+		/* We should destroy cnnobj->proto and cnnobj now… ToDo: fix this leak */
 		return NULL;
 	}
 
@@ -3936,15 +3936,15 @@ GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnec
 			_("Warning: This plugin requires GtkSocket, but it’s not available."));
 		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 		gtk_widget_show(dialog);
-		return NULL;    /* Should we destroy something before returning ? */
+		return NULL;    /* Should we destroy something before returning? */
 	}
 
 	if (cnnobj->cnnwin->priv->floating_toolbar_widget)
 		gtk_widget_show(cnnobj->cnnwin->priv->floating_toolbar_widget);
 
 	if (remmina_protocol_widget_has_error((RemminaProtocolWidget *)cnnobj->proto)) {
-		printf("Ok, an error occurred in initializing the protocol plugin before connecting. The error is %s.\n"
-		       "ToDo: put this string as error to show", remmina_protocol_widget_get_error_message((RemminaProtocolWidget *)cnnobj->proto));
+		printf("OK, an error occurred in initializing the protocol plugin before connecting. The error is %s.\n"
+		       "ToDo: Put this string as error to show", remmina_protocol_widget_get_error_message((RemminaProtocolWidget *)cnnobj->proto));
 		return cnnobj->proto;
 	}
 
@@ -3988,7 +3988,7 @@ void rco_destroy_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePa
 	g_list_free(childs);
 
 	if (cc == NULL) {
-		printf("REMMINA: warning, request to destroy a RemminaMessagePanel which is not on the page\n");
+		printf("Remmina: Warning, request to destroy a RemminaMessagePanel which is not on the page\n");
 		return;
 	}
 	was_visible = gtk_widget_is_visible(GTK_WIDGET(mp));
