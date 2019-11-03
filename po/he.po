@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-03 01:33+0000\n"
-"PO-Revision-Date: 2019-10-16 11:53+0000\n"
+"PO-Revision-Date: 2019-11-03 12:02+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 3.9\n"
+"X-Generator: Weblate 3.10-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #. Profile: Protocol
@@ -376,7 +376,6 @@ msgid "Delete files on server"
 msgstr "מחיקת קבצים בשרת"
 
 #: src/remmina_ftp_client.c:903 src/remmina_ftp_client.c:972
-#, fuzzy
 msgid "Filename"
 msgstr "שם הקובץ"
 
@@ -736,22 +735,18 @@ msgid "Accept Certificate?"
 msgstr "האם לקבל את האישור?"
 
 #: src/remmina_protocol_widget.c:1443
-#, fuzzy
 msgid "The certificate changed! Details:"
 msgstr "האישור הוחלף! פרטים:"
 
 #: src/remmina_protocol_widget.c:1446
-#, fuzzy
 msgid "Old Fingerprint:"
 msgstr "טביעת אצבע ישנה:"
 
 #: src/remmina_protocol_widget.c:1447
-#, fuzzy
 msgid "New Fingerprint:"
 msgstr "טביעת אצבע חדשה:"
 
 #: src/remmina_protocol_widget.c:1448
-#, fuzzy
 msgid "Accept Changed Certificate?"
 msgstr "לקבל את השינוי באישור?"
 
@@ -971,39 +966,38 @@ msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/‏GSSAPI"
 
 #: src/remmina_ssh.c:541
-#, fuzzy
 msgid "SSH authentication"
 msgstr "אימות SSH"
 
 #: src/remmina_ssh.c:656
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SSH session: %s"
 msgstr "הפעלת התקשרות ה־SSH נכשלה: %s"
 
 #: src/remmina_ssh.c:1014 src/remmina_ssh.c:1074
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel, %s"
-msgstr "יצירת הערוץ נכשלה: %s"
+msgstr "יצירת הערוץ נכשלה, %s"
 
 #: src/remmina_ssh.c:1024
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to the SSH tunnel destination %s"
-msgstr "ההתחברות ליעד תעלת ה־SSH נכשלה: %s"
+msgstr "ההתחברות ליעד תעלת ה־SSH נכשלה %s"
 
 #: src/remmina_ssh.c:1088
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel, %s"
-msgstr "פתיחת הערוץ נכשלה: %s"
+msgstr "פתיחת הערוץ נכשלה, %s"
 
 #: src/remmina_ssh.c:1094
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to execute %s on SSH server, %%s"
-msgstr "הפעלת %s בשרת ה־SSH נכשלה: %%s"
+msgstr "הפעלת %s בשרת ה־SSH נכשלה, %%s"
 
 #: src/remmina_ssh.c:1131 src/remmina_ssh.c:1151 src/remmina_ssh.c:1159
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request port forwarding, %s"
-msgstr "בקשת הפניית הפתחות נכשלה: %s"
+msgstr "בקשת הפניית הפתחות נכשלה, %s"
 
 #: src/remmina_ssh.c:1194
 msgid "The server did not respond."
@@ -1020,9 +1014,9 @@ msgid "Could not run ssh_channel_write(), %s"
 msgstr ""
 
 #: src/remmina_ssh.c:1288
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket, %s"
-msgstr "הקריאה משקע ההאזנה לתעלת SSH החזירה שגיאה: %s"
+msgstr "הקריאה משקע ההאזנה לתעלת SSH החזירה שגיאה, %s"
 
 #: src/remmina_ssh.c:1307
 #, c-format
@@ -1030,28 +1024,26 @@ msgid "Could not run ssh_channel_poll(), %s"
 msgstr ""
 
 #: src/remmina_ssh.c:1313
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_read_nonblocking(), %s"
-msgstr "ssh_channel_read_nonblocking()‎ החזירה שגיאה: %s"
+msgstr "לא ניתן להריץ את ssh_channel_read_nonblocking()‎‏, %s"
 
 #: src/remmina_ssh.c:1331
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket, %s"
-msgstr "הקריאה משקע ההאזנה לתעלת SSH החזירה שגיאה: %s"
+msgstr "לא ניתן לשלוח קריאה משקע ההאזנה לתעלה, %s"
 
 #: src/remmina_ssh.c:1410
 msgid "Assign a destination port."
 msgstr ""
 
 #: src/remmina_ssh.c:1417
-#, fuzzy
 msgid "Could not create socket."
 msgstr "יצירת השקע נכשלה."
 
 #: src/remmina_ssh.c:1427
-#, fuzzy
 msgid "Could not bind server socket to local port."
-msgstr "לא ניתן להתחבר לפתחה המקומית %i."
+msgstr "לא ניתן לאגד את השקע לפתחה המקומית."
 
 #: src/remmina_ssh.c:1433
 #, fuzzy
@@ -2913,4 +2905,3 @@ msgstr "לאפשר טקסט מודגש"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "מסוף"
-
