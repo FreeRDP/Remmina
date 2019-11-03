@@ -581,7 +581,7 @@ GtkBuilder* remmina_public_gtk_builder_new_from_file(gchar *filename)
 	GtkBuilder *builder = gtk_builder_new();
 	gtk_builder_add_from_file(builder, ui_path, &err);
 	if (err != NULL) {
-		fprintf(stderr, "Error adding build from file. Error: %s\n", err->message);
+		g_print("Error adding build from file. Error: %s", err->message);
 		g_error_free(err);
 	}
 	g_free(ui_path);

@@ -168,7 +168,7 @@ int remmina_exec_set_setting(gchar *profilefilename, gchar **settings)
 	remminafile = remmina_file_manager_load_file(profilefilename);
 
 	if (!remminafile) {
-		g_print(_("Unable to open profile file %s\n"), profilefilename);
+		g_print("Unable to open profile file %s\n", profilefilename);
 		return 2;
 	}
 
@@ -181,7 +181,7 @@ int remmina_exec_set_setting(gchar *profilefilename, gchar **settings)
 					newline_remove(line);
 					value = line;
 				} else {
-					g_print(_("Error: an extra line of standard input is needed\n"));
+					g_print("Error: an extra line of standard input is needed\n");
 					abort = TRUE;
 				}
 			} else
