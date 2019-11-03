@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 14:45+0000\n"
+"POT-Creation-Date: 2019-11-03 23:45+0000\n"
 "PO-Revision-Date: 2019-10-11 12:17+0000\n"
 "Last-Translator: Jennifer <jen@elypia.org>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/remmina/remmina/nl/"
@@ -190,9 +190,9 @@ msgid "_Clear"
 msgstr "_Wissen"
 
 #: src/rcw.c:585
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
+"Are you sure you want to close %i active connections in the current window?"
 msgstr ""
 "Er zijn %i actieve verbindingen in dit venster. Weet u zeker dat u wilt "
 "afsluiten?"
@@ -201,9 +201,9 @@ msgstr ""
 msgid "Viewport fullscreen mode"
 msgstr "Blikveld op volledig scherm"
 
-#: src/rcw.c:1299
-msgid "Scrolled fullscreen mode"
-msgstr "Volledig scherm met schuifbalk"
+#: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
+msgid "Scrolled fullscreen"
+msgstr ""
 
 #: src/rcw.c:1384
 msgid "Keep aspect ratio when scaled"
@@ -220,12 +220,8 @@ msgid "Keystrokes"
 msgstr "toetsaanslagen"
 
 #: src/rcw.c:1931
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
+msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
-"Waarschuwing: screenshot is geschaald of vervormd. Schakel schalen uit om "
-"een betere screenshot te hebben."
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -2603,10 +2599,6 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:585
 msgid "Scrolled window"
-msgstr ""
-
-#: data/ui/remmina_preferences.glade:586
-msgid "Scrolled fullscreen"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:587

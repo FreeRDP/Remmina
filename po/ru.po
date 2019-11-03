@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 14:45+0000\n"
+"POT-Creation-Date: 2019-11-03 23:45+0000\n"
 "PO-Revision-Date: 2019-07-27 16:47+0300\n"
 "Last-Translator: Soltys Sergey <treefeed@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -189,9 +189,9 @@ msgstr "_Очистить"
 
 # You need set up plural forms for 1, 2 and 5 here.
 #: src/rcw.c:585
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
+"Are you sure you want to close %i active connections in the current window?"
 msgstr ""
 "Найдено %i активных подключений в этом окне. Вы действительно хотите выйти?"
 
@@ -199,9 +199,9 @@ msgstr ""
 msgid "Viewport fullscreen mode"
 msgstr "Режим полного экрана"
 
-#: src/rcw.c:1299
-msgid "Scrolled fullscreen mode"
-msgstr "Режим полного экрана с прокруткой"
+#: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
+msgid "Scrolled fullscreen"
+msgstr "Полноэкранный с прокруткой"
 
 #: src/rcw.c:1384
 msgid "Keep aspect ratio when scaled"
@@ -218,12 +218,8 @@ msgid "Keystrokes"
 msgstr "Комбинации клавиш"
 
 #: src/rcw.c:1931
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
+msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
-"Предупреждение: снимок масштабирован или искажён. Отключите масштабирование "
-"для получения лучшего снимка."
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -2683,10 +2679,6 @@ msgstr "Автоматически"
 msgid "Scrolled window"
 msgstr "Окно с прокруткой"
 
-#: data/ui/remmina_preferences.glade:586
-msgid "Scrolled fullscreen"
-msgstr "Полноэкранный с прокруткой"
-
 #: data/ui/remmina_preferences.glade:587
 msgid "Viewport fullscreen"
 msgstr "Полноэкранный"
@@ -3059,3 +3051,4 @@ msgstr "Разрешить жирный текст"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Терминал"
+

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 14:45+0000\n"
+"POT-Creation-Date: 2019-11-03 23:45+0000\n"
 "PO-Revision-Date: 2019-11-03 17:06+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -187,18 +187,18 @@ msgid "_Clear"
 msgstr "_Pulisci"
 
 #: src/rcw.c:585
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
+"Are you sure you want to close %i active connections in the current window?"
 msgstr "Sono presenti %i connessioni attive. Terminare ugualmente?"
 
 #: src/rcw.c:1291
 msgid "Viewport fullscreen mode"
 msgstr "Modalità area visibile a schermo intero"
 
-#: src/rcw.c:1299
-msgid "Scrolled fullscreen mode"
-msgstr "Modalità schermo intero a scorrimento"
+#: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
+msgid "Scrolled fullscreen"
+msgstr "Schermo intero scrollabile"
 
 #: src/rcw.c:1384
 msgid "Keep aspect ratio when scaled"
@@ -215,12 +215,8 @@ msgid "Keystrokes"
 msgstr "Battute"
 
 #: src/rcw.c:1931
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
+msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
-"Attenzione: lo screenshot è ridumensionato o distorto. Disabilita il "
-"ridimensionamento per ottenere uno screenshot migliore."
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -2274,9 +2270,9 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>Sei un grande per l'utilizzo del software Libero, <a href-\""
-"https://remmina.org/donations/\" title: \"Donazioni Remmina\">fai una "
-"donazione</a>, per renderci felici e rendere il programma migliore.</b>\n"
+"<b>Sei un grande per l'utilizzo del software Libero, <a href-\"https://"
+"remmina.org/donations/\" title: \"Donazioni Remmina\">fai una donazione</a>, "
+"per renderci felici e rendere il programma migliore.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:212
@@ -2607,10 +2603,6 @@ msgstr "Automatico"
 #: data/ui/remmina_preferences.glade:585
 msgid "Scrolled window"
 msgstr "Finestra scrollabile"
-
-#: data/ui/remmina_preferences.glade:586
-msgid "Scrolled fullscreen"
-msgstr "Schermo intero scrollabile"
 
 #: data/ui/remmina_preferences.glade:587
 msgid "Viewport fullscreen"
@@ -2960,3 +2952,4 @@ msgstr "Consentire testo in grassetto"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminale"
+

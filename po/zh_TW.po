@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 14:45+0000\n"
+"POT-Creation-Date: 2019-11-03 23:45+0000\n"
 "PO-Revision-Date: 2019-10-19 08:53+0000\n"
 "Last-Translator: Walter Cheuk <wwycheuk@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -188,18 +188,18 @@ msgid "_Clear"
 msgstr "清除(_C)"
 
 #: src/rcw.c:585
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
+"Are you sure you want to close %i active connections in the current window?"
 msgstr "目前視窗中已開啟 %i 個活動中的連線。您確定要關閉嗎？"
 
 #: src/rcw.c:1291
 msgid "Viewport fullscreen mode"
 msgstr "視埠全螢幕模式"
 
-#: src/rcw.c:1299
-msgid "Scrolled fullscreen mode"
-msgstr "捲動的全螢幕模式"
+#: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
+msgid "Scrolled fullscreen"
+msgstr "捲動全螢幕"
 
 #: src/rcw.c:1384
 msgid "Keep aspect ratio when scaled"
@@ -216,10 +216,8 @@ msgid "Keystrokes"
 msgstr "自訂快捷鍵"
 
 #: src/rcw.c:1931
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
-msgstr "警告：螢幕截圖被縮放或扭曲。停用縮放來獲得更好的螢幕截圖。"
+msgid "Turn off scaling to avoid screenshot distortion."
+msgstr ""
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -2626,10 +2624,6 @@ msgstr "自動"
 #: data/ui/remmina_preferences.glade:585
 msgid "Scrolled window"
 msgstr "捲動視窗"
-
-#: data/ui/remmina_preferences.glade:586
-msgid "Scrolled fullscreen"
-msgstr "捲動全螢幕"
 
 #: data/ui/remmina_preferences.glade:587
 msgid "Viewport fullscreen"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 14:45+0000\n"
+"POT-Creation-Date: 2019-11-03 23:45+0000\n"
 "PO-Revision-Date: 2019-02-12 10:59+0800\n"
 "Last-Translator: shijing <jingshi@ubuntukylin.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
@@ -187,18 +187,18 @@ msgid "_Clear"
 msgstr "清除(_C)"
 
 #: src/rcw.c:585
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
+"Are you sure you want to close %i active connections in the current window?"
 msgstr "当前窗口已打开 %i 个连接。确认要关闭吗？"
 
 #: src/rcw.c:1291
 msgid "Viewport fullscreen mode"
 msgstr "视口全屏模式"
 
-#: src/rcw.c:1299
-msgid "Scrolled fullscreen mode"
-msgstr "滚动全屏模式"
+#: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
+msgid "Scrolled fullscreen"
+msgstr "滚动全屏"
 
 #: src/rcw.c:1384
 msgid "Keep aspect ratio when scaled"
@@ -215,10 +215,8 @@ msgid "Keystrokes"
 msgstr "键盘监听"
 
 #: src/rcw.c:1931
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
-msgstr "警告：截屏被缩放或扭曲。禁用缩放以取得更好的截屏。"
+msgid "Turn off scaling to avoid screenshot distortion."
+msgstr ""
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -2625,10 +2623,6 @@ msgstr "自动"
 msgid "Scrolled window"
 msgstr "滚动窗口"
 
-#: data/ui/remmina_preferences.glade:586
-msgid "Scrolled fullscreen"
-msgstr "滚动全屏"
-
 #: data/ui/remmina_preferences.glade:587
 msgid "Viewport fullscreen"
 msgstr "全屏视口"
@@ -2996,3 +2990,4 @@ msgstr "允许粗体字"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "终端"
+

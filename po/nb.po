@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 14:45+0000\n"
+"POT-Creation-Date: 2019-11-03 23:45+0000\n"
 "PO-Revision-Date: 2019-11-03 23:42+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
@@ -188,9 +188,9 @@ msgid "_Clear"
 msgstr "_Tøm"
 
 #: src/rcw.c:585
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
+"Are you sure you want to close %i active connections in the current window?"
 msgstr ""
 "Det aktive vinduet står for %i aktive tilkoblinger. Er du sikker på at du "
 "vil lukke det?"
@@ -200,9 +200,9 @@ msgstr ""
 msgid "Viewport fullscreen mode"
 msgstr "Fullskjermsmodus"
 
-#: src/rcw.c:1299
-msgid "Scrolled fullscreen mode"
-msgstr "Rullbart fullskjermmodus"
+#: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
+msgid "Scrolled fullscreen"
+msgstr "Rullet fullskjermsvisning"
 
 #: src/rcw.c:1384
 #, fuzzy
@@ -221,13 +221,8 @@ msgid "Keystrokes"
 msgstr "Tastetrykk"
 
 #: src/rcw.c:1931
-#, fuzzy
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
+msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
-"Advarsel: Skjermavbildningen er skalert eller fordreid. Skru av skalering "
-"for bedre resultat."
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -2342,8 +2337,8 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>Du er storartet i din bruk av gemenslig fri programvare, <a href=\""
-"https://remmina.org/donations/\" title=\"Remmina donations\">doner en "
+"<b>Du er storartet i din bruk av gemenslig fri programvare, <a href="
+"\"https://remmina.org/donations/\" title=\"Remmina donations\">doner en "
 "slant</a>, for å gjøre oss glade, og videre gjøre programmet bedre</b>\n"
 "</span>\n"
 
@@ -2695,10 +2690,6 @@ msgstr "Automatisk"
 #: data/ui/remmina_preferences.glade:585
 msgid "Scrolled window"
 msgstr "Rullet vindu"
-
-#: data/ui/remmina_preferences.glade:586
-msgid "Scrolled fullscreen"
-msgstr "Rullet fullskjermsvisning"
 
 #: data/ui/remmina_preferences.glade:587
 #, fuzzy
@@ -3071,3 +3062,4 @@ msgstr "Tillat fet tekst"
 msgid "Terminal"
 msgstr "Terminal"
 
+#, fuzzy

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 14:45+0000\n"
+"POT-Creation-Date: 2019-11-03 23:45+0000\n"
 "PO-Revision-Date: 2019-09-29 07:31+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -186,9 +186,9 @@ msgid "_Clear"
 msgstr "_Ryd"
 
 #: src/rcw.c:585
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
+"Are you sure you want to close %i active connections in the current window?"
 msgstr ""
 "Der er %i aktive forbindelser i det nuværende vindue. Er du sikker på, at du "
 "vil lukke?"
@@ -197,9 +197,9 @@ msgstr ""
 msgid "Viewport fullscreen mode"
 msgstr "Visningsområde - fuldskærmstilstand"
 
-#: src/rcw.c:1299
-msgid "Scrolled fullscreen mode"
-msgstr "Rullet - fuldskærmstilstand"
+#: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
+msgid "Scrolled fullscreen"
+msgstr "Rullet fuldskærm"
 
 #: src/rcw.c:1384
 msgid "Keep aspect ratio when scaled"
@@ -216,12 +216,8 @@ msgid "Keystrokes"
 msgstr "Tastetryk"
 
 #: src/rcw.c:1931
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
+msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
-"Advarsel: skærmbilledet er skaleret eller forvrænget. Deaktivér skalering "
-"for at få et bedre skærmbillede."
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -2667,10 +2663,6 @@ msgstr "Automatisk"
 #: data/ui/remmina_preferences.glade:585
 msgid "Scrolled window"
 msgstr "Rullet vindue"
-
-#: data/ui/remmina_preferences.glade:586
-msgid "Scrolled fullscreen"
-msgstr "Rullet fuldskærm"
 
 #: data/ui/remmina_preferences.glade:587
 msgid "Viewport fullscreen"

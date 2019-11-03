@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 14:45+0000\n"
+"POT-Creation-Date: 2019-11-03 23:45+0000\n"
 "PO-Revision-Date: 2019-11-03 12:02+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
@@ -187,9 +187,9 @@ msgid "_Clear"
 msgstr "_Vyčistit"
 
 #: src/rcw.c:585
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
+"Are you sure you want to close %i active connections in the current window?"
 msgstr ""
 "Ve stávajícím okně je %i aktivních připojení. Opravdu ho chcete zavřít?"
 
@@ -197,9 +197,9 @@ msgstr ""
 msgid "Viewport fullscreen mode"
 msgstr "Režim výřezu při zobrazení na celou obrazovku"
 
-#: src/rcw.c:1299
-msgid "Scrolled fullscreen mode"
-msgstr "Režim na celou obrazovku s posouváním"
+#: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
+msgid "Scrolled fullscreen"
+msgstr "Celá obrazovka s posuvníky"
 
 #: src/rcw.c:1384
 msgid "Keep aspect ratio when scaled"
@@ -216,12 +216,8 @@ msgid "Keystrokes"
 msgstr "Stisky kláves"
 
 #: src/rcw.c:1931
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
+msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
-"Varování: snímek obrazovky byl pořízen ze zvětšeného/zmenšeného zobrazení "
-"nebo je zdeformovaný. Pro lepší kvalitu vypněte změnu měřítka zobrazení."
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -2618,10 +2614,6 @@ msgstr "Automaticky"
 #: data/ui/remmina_preferences.glade:585
 msgid "Scrolled window"
 msgstr "Okno s posuvníky"
-
-#: data/ui/remmina_preferences.glade:586
-msgid "Scrolled fullscreen"
-msgstr "Celá obrazovka s posuvníky"
 
 #: data/ui/remmina_preferences.glade:587
 msgid "Viewport fullscreen"

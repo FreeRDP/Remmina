@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 14:45+0000\n"
+"POT-Creation-Date: 2019-11-03 23:45+0000\n"
 "PO-Revision-Date: 2019-11-03 01:31+0000\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -187,9 +187,9 @@ msgid "_Clear"
 msgstr "_Limpar"
 
 #: src/rcw.c:585
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
+"Are you sure you want to close %i active connections in the current window?"
 msgstr ""
 "Existem %i conexões ativas na janela atual. Tem certeza que deseja fechá-la?"
 
@@ -197,9 +197,9 @@ msgstr ""
 msgid "Viewport fullscreen mode"
 msgstr "Ver modo de porta em tela cheia"
 
-#: src/rcw.c:1299
-msgid "Scrolled fullscreen mode"
-msgstr "Listagem do modo de tela cheia"
+#: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
+msgid "Scrolled fullscreen"
+msgstr "Tela cheia roalada"
 
 #: src/rcw.c:1384
 msgid "Keep aspect ratio when scaled"
@@ -216,12 +216,8 @@ msgid "Keystrokes"
 msgstr "Teclas"
 
 #: src/rcw.c:1931
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
+msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
-"Aviso: a captura de tela está dimensionada ou distorcida. Desative a "
-"escalabilidade para ter uma melhor captura de tela."
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -2646,10 +2642,6 @@ msgstr "Automático"
 #: data/ui/remmina_preferences.glade:585
 msgid "Scrolled window"
 msgstr "Janela rolada"
-
-#: data/ui/remmina_preferences.glade:586
-msgid "Scrolled fullscreen"
-msgstr "Tela cheia roalada"
 
 #: data/ui/remmina_preferences.glade:587
 msgid "Viewport fullscreen"

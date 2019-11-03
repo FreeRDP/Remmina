@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 14:45+0000\n"
+"POT-Creation-Date: 2019-11-03 23:45+0000\n"
 "PO-Revision-Date: 2019-09-19 18:56+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -187,9 +187,9 @@ msgid "_Clear"
 msgstr "_Limpiar"
 
 #: src/rcw.c:585
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"There are %i active connections in the current window. Are you sure to close?"
+"Are you sure you want to close %i active connections in the current window?"
 msgstr ""
 "Hay %i conexiones activas en la ventana actual. ¿Realmente quiere cerrar?"
 
@@ -197,9 +197,9 @@ msgstr ""
 msgid "Viewport fullscreen mode"
 msgstr "Modo a pantalla completa"
 
-#: src/rcw.c:1299
-msgid "Scrolled fullscreen mode"
-msgstr "Modo pantalla completa con barras de desplazamiento"
+#: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
+msgid "Scrolled fullscreen"
+msgstr "Pantalla completa desplazable"
 
 #: src/rcw.c:1384
 msgid "Keep aspect ratio when scaled"
@@ -216,12 +216,8 @@ msgid "Keystrokes"
 msgstr "Pulsaciones de teclas"
 
 #: src/rcw.c:1931
-msgid ""
-"Warning: screenshot is scaled or distorted. Disable scaling to have better "
-"screenshot."
+msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
-"Advertencia: captura de pantalla escalada o distorsionada. Desactivar el "
-"escalado para tener una mejorcaptura de pantalla."
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -2597,10 +2593,6 @@ msgstr "Automatico"
 msgid "Scrolled window"
 msgstr "Ventana desplazable"
 
-#: data/ui/remmina_preferences.glade:586
-msgid "Scrolled fullscreen"
-msgstr "Pantalla completa desplazable"
-
 #: data/ui/remmina_preferences.glade:587
 msgid "Viewport fullscreen"
 msgstr "Pantalla completa de vista general"
@@ -2962,3 +2954,4 @@ msgstr "Permitir texto en negrita"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminal"
+
