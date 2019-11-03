@@ -41,7 +41,6 @@
 #include "remmina_ssh_plugin.h"
 
 typedef struct remmina_masterthread_exec_data {
-
 	enum { FUNC_GTK_LABEL_SET_TEXT,
 	       FUNC_INIT_SAVE_CRED, FUNC_CHAT_RECEIVE, FUNC_FILE_GET_STRING,
 	       FUNC_FTP_CLIENT_UPDATE_TASK, FUNC_FTP_CLIENT_GET_WAITING_TASK,
@@ -51,86 +50,81 @@ typedef struct remmina_masterthread_exec_data {
 	       FUNC_PROTOCOLWIDGET_MPDESTROY,
 	       FUNC_PROTOCOLWIDGET_MPSHOWRETRY,
 	       FUNC_PROTOCOLWIDGET_PANELSHOWLISTEN,
-	       FUNC_VTE_TERMINAL_SET_ENCODING_AND_PTY
-	      } func;
+	       FUNC_VTE_TERMINAL_SET_ENCODING_AND_PTY } func;
 
 	union {
 		struct {
-			GtkLabel *label;
-			const gchar *str;
+			GtkLabel *	label;
+			const gchar *	str;
 		} gtk_label_set_text;
 		struct {
-			RemminaProtocolWidget* gp;
+			RemminaProtocolWidget *gp;
 		} init_save_creds;
 		struct {
-			RemminaProtocolWidget* gp;
-			const gchar *text;
+			RemminaProtocolWidget * gp;
+			const gchar *		text;
 		} chat_receive;
 		struct {
-			RemminaFile *remminafile;
-			const gchar *setting;
-			const gchar* retval;
+			RemminaFile *	remminafile;
+			const gchar *	setting;
+			const gchar *	retval;
 		} file_get_string;
 		struct {
-			RemminaFTPClient *client;
-			RemminaFTPTask* task;
+			RemminaFTPClient *	client;
+			RemminaFTPTask *	task;
 		} ftp_client_update_task;
 		struct {
-			RemminaFTPClient *client;
-			RemminaFTPTask* retval;
+			RemminaFTPClient *	client;
+			RemminaFTPTask *	retval;
 		} ftp_client_get_waiting_task;
 		struct {
-			RemminaProtocolWidget* gp;
-			const gchar* signal_name;
+			RemminaProtocolWidget * gp;
+			const gchar *		signal_name;
 		} protocolwidget_emit_signal;
 		struct {
-			RemminaConnectionObject *cnnobj;
-			const gchar *message;
-			RemminaMessagePanelCallback response_callback;
-			gpointer response_callback_data;
-			RemminaMessagePanel *ret_mp;
+			RemminaConnectionObject *	cnnobj;
+			const gchar *			message;
+			RemminaMessagePanelCallback	response_callback;
+			gpointer			response_callback_data;
+			RemminaMessagePanel *		ret_mp;
 		} protocolwidget_mpprogress;
 		struct {
-			RemminaConnectionObject *cnnobj;
-			RemminaMessagePanel *mp;
+			RemminaConnectionObject *	cnnobj;
+			RemminaMessagePanel *		mp;
 		} protocolwidget_mpdestroy;
 		struct {
 			RemminaProtocolWidget *gp;
 		} protocolwidget_mpshowretry;
 		struct {
-			RemminaProtocolWidget *gp;
-			int port;
+			RemminaProtocolWidget * gp;
+			int			port;
 		} protocolwidget_panelshowlisten;
 #ifdef HAVE_LIBSSH
 		struct {
-			RemminaSFTPClient *client;
-			const gchar *path;
-			gint retval;
+			RemminaSFTPClient *	client;
+			const gchar *		path;
+			gint			retval;
 		} sftp_client_confirm_resume;
 #endif
 #ifdef HAVE_LIBVTE
 		struct {
-			VteTerminal *terminal;
-			const char *codeset;
-			int master;
-			int slave;
+			VteTerminal *	terminal;
+			const char *	codeset;
+			int		master;
+			int		slave;
 		} vte_terminal_set_encoding_and_pty;
 #endif
 	} p;
 
 	/* Mutex for thread synchronization */
 	pthread_mutex_t pt_mutex;
-	pthread_cond_t pt_cond;
+	pthread_cond_t	pt_cond;
 	/* Flag to catch cancellations */
-	gboolean cancelled;
-	gboolean complete;
-
+	gboolean	cancelled;
+	gboolean	complete;
 } RemminaMTExecData;
 
 void remmina_masterthread_exec_and_wait(RemminaMTExecData *d);
 
 void remmina_masterthread_exec_save_main_thread_id(void);
 gboolean remmina_masterthread_exec_is_main_thread(void);
-
-
-

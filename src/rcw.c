@@ -367,14 +367,14 @@ static RemminaConnectionObject *rcw_get_visible_cnnobj(RemminaConnectionWindow *
 {
 	gint np;
 
-	if (cnnwin != NULL && cnnwin->priv!=NULL && cnnwin->priv->notebook != NULL) {
-        np = gtk_notebook_get_current_page(GTK_NOTEBOOK(cnnwin->priv->notebook));
-        if (np < 0)
-            return NULL;
-        return rcw_get_cnnobj_at_page(cnnwin, np);
-    }
-	else
-		return  NULL;
+	if (cnnwin != NULL && cnnwin->priv != NULL && cnnwin->priv->notebook != NULL) {
+		np = gtk_notebook_get_current_page(GTK_NOTEBOOK(cnnwin->priv->notebook));
+		if (np < 0)
+			return NULL;
+		return rcw_get_cnnobj_at_page(cnnwin, np);
+	} else {
+		return NULL;
+	}
 }
 
 static RemminaScaleMode get_current_allowed_scale_mode(RemminaConnectionObject *cnnobj, gboolean *dynres_avail, gboolean *scale_avail)
@@ -1521,7 +1521,6 @@ static void rco_change_scalemode(RemminaConnectionObject *cnnobj, gboolean bdyn,
 		rco_check_resize(cnnobj);
 	if (GTK_IS_SCROLLED_WINDOW(cnnobj->scrolled_container))
 		rco_set_scrolled_policy(cnnobj, GTK_SCROLLED_WINDOW(cnnobj->scrolled_container));
-
 }
 
 static void rcw_toolbar_dynres(GtkWidget *widget, RemminaConnectionWindow *cnnwin)
@@ -1860,7 +1859,6 @@ static void rcw_toolbar_duplicate(GtkWidget *widget, RemminaConnectionWindow *cn
 	//gp = REMMINA_PROTOCOL_WIDGET(cnnobj->proto);
 
 	remmina_exec_command(REMMINA_COMMAND_CONNECT, cnnobj->remmina_file->filename);
-
 }
 static void rcw_toolbar_screenshot(GtkWidget *widget, RemminaConnectionWindow *cnnwin)
 {
@@ -2404,7 +2402,6 @@ static void rcw_focus_out(RemminaConnectionWindow *cnnwin)
 	if (cnnobj->proto && cnnobj->scrolled_container)
 		remmina_protocol_widget_call_feature_by_type(REMMINA_PROTOCOL_WIDGET(cnnobj->proto),
 							     REMMINA_PROTOCOL_FEATURE_TYPE_UNFOCUS, 0);
-
 }
 
 static gboolean rcw_focus_out_event(GtkWidget *widget, GdkEvent *event, gpointer data)
@@ -2454,10 +2451,9 @@ static gboolean rcw_on_enter(GtkWidget *widget, GdkEventCrossing *event, gpointe
 	}
 	printf("\n");
 #endif
-	if (gtk_window_is_active(GTK_WINDOW(cnnobj->cnnwin))) {
+	if (gtk_window_is_active(GTK_WINDOW(cnnobj->cnnwin)))
 		if (cnnobj->connected && remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE))
 			rcw_keyboard_grab(cnnwin);
-	}
 	return FALSE;
 }
 
@@ -2742,7 +2738,6 @@ static void rcw_init(RemminaConnectionWindow *cnnwin)
 	priv->ss_maximized = FALSE;
 
 	remmina_widget_pool_register(GTK_WIDGET(cnnwin));
-
 }
 
 static gboolean rcw_state_event(GtkWidget *widget, GdkEventWindowState *event, gpointer user_data)
@@ -2775,12 +2770,11 @@ static gboolean rcw_map_event_fullscreen(GtkWidget *widget, GdkEvent *event, gpo
 
 #if GTK_CHECK_VERSION(3, 18, 0)
 	if (remmina_pref.fullscreen_on_auto) {
-		if (target_monitor == FULL_SCREEN_TARGET_MONITOR_UNDEFINED) {
+		if (target_monitor == FULL_SCREEN_TARGET_MONITOR_UNDEFINED)
 			gtk_window_fullscreen(GTK_WINDOW(widget));
-		} else {
+		else
 			gtk_window_fullscreen_on_monitor(GTK_WINDOW(widget), gtk_window_get_screen(GTK_WINDOW(widget)),
-				target_monitor);
-		}
+							 target_monitor);
 	} else {
 		remmina_log_print("Fullscreen managed by WM or by the user, as per settings");
 		gtk_window_fullscreen(GTK_WINDOW(widget));
@@ -2802,10 +2796,9 @@ rcw_new(gboolean fullscreen, int full_screen_target_monitor)
 	cnnwin = RCW(g_object_new(REMMINA_TYPE_CONNECTION_WINDOW, NULL));
 	cnnwin->priv->on_delete_confirm_mode = RCW_ONDELETE_CONFIRM_IF_2_OR_MORE;
 
-	if (fullscreen) {
+	if (fullscreen)
 		/* Put the window in fullscreen after it is mapped to have it appear on the same monitor */
 		g_signal_connect(G_OBJECT(cnnwin), "map-event", G_CALLBACK(rcw_map_event_fullscreen), GINT_TO_POINTER(full_screen_target_monitor));
-	}
 
 	gtk_container_set_border_width(GTK_CONTAINER(cnnwin), 0);
 	g_signal_connect(G_OBJECT(cnnwin), "toolbar-place", G_CALLBACK(rcw_toolbar_place_signal), NULL);
@@ -3077,7 +3070,6 @@ static void rcw_on_page_removed(GtkNotebook *notebook, GtkWidget *child, guint p
 
 	if (gtk_notebook_get_n_pages(GTK_NOTEBOOK(cnnwin->priv->notebook)) <= 0)
 		gtk_widget_destroy(GTK_WIDGET(cnnwin));
-
 }
 
 static GtkNotebook *
@@ -3371,30 +3363,30 @@ RemminaConnectionWindow *rcw_create_fullscreen(GtkWindow *old, gint view_mode)
 #if GTK_CHECK_VERSION(3, 22, 0)
 	gint n_monitors;
 	gint i;
-	GdkMonitor* old_monitor;
-	GdkDisplay* old_display;
-	GdkWindow* old_window;
+	GdkMonitor *old_monitor;
+	GdkDisplay *old_display;
+	GdkWindow *old_window;
 #endif
 	gint full_screen_target_monitor;
 
-    full_screen_target_monitor = FULL_SCREEN_TARGET_MONITOR_UNDEFINED;
-    if (old) {
-		#if GTK_CHECK_VERSION(3, 22, 0)
-			old_window = gtk_widget_get_window(GTK_WIDGET(old));
-			old_display = gdk_window_get_display(old_window);
-			old_monitor = gdk_display_get_monitor_at_window(old_display, old_window);
-			n_monitors = gdk_display_get_n_monitors(old_display);
-			for (i = 0; i < n_monitors; ++i) {
-				if (gdk_display_get_monitor(old_display, i) == old_monitor) {
-					full_screen_target_monitor = i;
-					break;
-				}
+	full_screen_target_monitor = FULL_SCREEN_TARGET_MONITOR_UNDEFINED;
+	if (old) {
+#if GTK_CHECK_VERSION(3, 22, 0)
+		old_window = gtk_widget_get_window(GTK_WIDGET(old));
+		old_display = gdk_window_get_display(old_window);
+		old_monitor = gdk_display_get_monitor_at_window(old_display, old_window);
+		n_monitors = gdk_display_get_n_monitors(old_display);
+		for (i = 0; i < n_monitors; ++i) {
+			if (gdk_display_get_monitor(old_display, i) == old_monitor) {
+				full_screen_target_monitor = i;
+				break;
 			}
-		#else
-			full_screen_target_monitor = gdk_screen_get_monitor_at_window(
-				gdk_screen_get_default(),
-				gtk_widget_get_window(GTK_WIDGET(old)));
-		#endif
+		}
+#else
+		full_screen_target_monitor = gdk_screen_get_monitor_at_window(
+			gdk_screen_get_default(),
+			gtk_widget_get_window(GTK_WIDGET(old)));
+#endif
 	}
 
 	cnnwin = rcw_new(TRUE, full_screen_target_monitor);

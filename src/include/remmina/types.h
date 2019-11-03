@@ -54,27 +54,26 @@ typedef enum {
 #define REMMINA_PROTOCOL_FEATURE_PREF_CHECK 2
 
 typedef struct _RemminaProtocolFeature {
-	RemminaProtocolFeatureType type;
-	gint id;
-	gpointer opt1;
-	gpointer opt2;
-	gpointer opt3;
+	RemminaProtocolFeatureType	type;
+	gint				id;
+	gpointer			opt1;
+	gpointer			opt2;
+	gpointer			opt3;
 } RemminaProtocolFeature;
 
 typedef struct _RemminaPluginScreenshotData {
-	unsigned char* buffer;
-	int bitsPerPixel;
-	int bytesPerPixel;
-	int width;
-	int height;
+	unsigned char * buffer;
+	int		bitsPerPixel;
+	int		bytesPerPixel;
+	int		width;
+	int		height;
 } RemminaPluginScreenshotData;
 
 
 typedef struct _RemminaProtocolWidgetClass RemminaProtocolWidgetClass;
 typedef struct _RemminaProtocolWidget RemminaProtocolWidget;
 typedef gpointer RemminaTunnelInitFunc;
-typedef gboolean (*RemminaXPortTunnelInitFunc) (RemminaProtocolWidget *gp,
-						gint remotedisplay, const gchar *server, gint port);
+typedef gboolean (*RemminaXPortTunnelInitFunc) (RemminaProtocolWidget *gp, gint remotedisplay, const gchar *server, gint port);
 
 typedef enum {
 	REMMINA_PROTOCOL_SETTING_TYPE_END,
@@ -93,12 +92,12 @@ typedef enum {
 } RemminaProtocolSettingType;
 
 typedef struct _RemminaProtocolSetting {
-	RemminaProtocolSettingType type;
-	const gchar *name;
-	const gchar *label;
-	gboolean compact;
-	const gpointer opt1;
-	const gpointer opt2;
+	RemminaProtocolSettingType	type;
+	const gchar *			name;
+	const gchar *			label;
+	gboolean			compact;
+	const gpointer			opt1;
+	const gpointer			opt2;
 } RemminaProtocolSetting;
 
 typedef enum {
@@ -122,19 +121,17 @@ typedef enum {
 } RemminaScaleMode;
 
 typedef enum {
-	RES_INVALID = -1,
-	RES_USE_CUSTOM = 0,
-	RES_USE_CLIENT = 1,
-	RES_USE_INITIAL_WINDOW_SIZE = 2
+	RES_INVALID			= -1,
+	RES_USE_CUSTOM			= 0,
+	RES_USE_CLIENT			= 1,
+	RES_USE_INITIAL_WINDOW_SIZE	= 2
 } RemminaProtocolWidgetResolutionMode;
 
 /* pflags field for remmina_protocol_widget_panel_auth() */
 typedef enum {
-	REMMINA_MESSAGE_PANEL_FLAG_USERNAME = 1, /* require username in auth panel */
-	REMMINA_MESSAGE_PANEL_FLAG_DOMAIN = 2, /* require domain in auth panel */
-	REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD = 4 /* require savepassword switch in auth panel */
+	REMMINA_MESSAGE_PANEL_FLAG_USERNAME	= 1,    /* require username in auth panel */
+	REMMINA_MESSAGE_PANEL_FLAG_DOMAIN	= 2,    /* require domain in auth panel */
+	REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD = 4     /* require savepassword switch in auth panel */
 } RemminaMessagePanelFlags;
 
 G_END_DECLS
-
-

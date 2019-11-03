@@ -43,5 +43,3 @@ void remmina_log_print(const gchar *text);
 void remmina_log_printf(const gchar *fmt, ...);
 
 G_END_DECLS
-
-

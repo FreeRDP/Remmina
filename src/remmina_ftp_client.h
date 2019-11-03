@@ -48,9 +48,9 @@ G_BEGIN_DECLS
 typedef struct _RemminaFTPClientPriv RemminaFTPClientPriv;
 
 typedef struct _RemminaFTPClient {
-	GtkVBox vbox;
+	GtkVBox			vbox;
 
-	RemminaFTPClientPriv *priv;
+	RemminaFTPClientPriv *	priv;
 } RemminaFTPClient;
 
 typedef struct _RemminaFTPClientClass {
@@ -108,21 +108,21 @@ enum {
 
 typedef struct _RemminaFTPTask {
 	/* Read-only */
-	gint type;
-	gchar *name;
-	gint taskid;
-	gint tasktype;
-	gchar *remotedir;
-	gchar *localdir;
-	GtkTreeRowReference *rowref;
+	gint			type;
+	gchar *			name;
+	gint			taskid;
+	gint			tasktype;
+	gchar *			remotedir;
+	gchar *			localdir;
+	GtkTreeRowReference *	rowref;
 	/* Updatable */
-	gfloat size;
-	gint status;
-	gfloat donesize;
-	gchar *tooltip;
+	gfloat			size;
+	gint			status;
+	gfloat			donesize;
+	gchar *			tooltip;
 } RemminaFTPTask;
 
-GtkWidget* remmina_ftp_client_new(void);
+GtkWidget *remmina_ftp_client_new(void);
 
 void remmina_ftp_client_save_state(RemminaFTPClient *client, RemminaFile *remminafile);
 void remmina_ftp_client_load_state(RemminaFTPClient *client, RemminaFile *remminafile);
@@ -134,11 +134,11 @@ void remmina_ftp_client_add_file(RemminaFTPClient *client, ...);
 /* Set the current directory. Should be called by opendir signal handler */
 void remmina_ftp_client_set_dir(RemminaFTPClient *client, const gchar *dir);
 /* Get the current directory as newly allocated string */
-gchar* remmina_ftp_client_get_dir(RemminaFTPClient *client);
+gchar *remmina_ftp_client_get_dir(RemminaFTPClient *client);
 /* Get the next waiting task */
-RemminaFTPTask* remmina_ftp_client_get_waiting_task(RemminaFTPClient *client);
+RemminaFTPTask *remmina_ftp_client_get_waiting_task(RemminaFTPClient *client);
 /* Update the task */
-void remmina_ftp_client_update_task(RemminaFTPClient *client, RemminaFTPTask* task);
+void remmina_ftp_client_update_task(RemminaFTPClient *client, RemminaFTPTask *task);
 /* Free the RemminaFTPTask object */
 void remmina_ftp_task_free(RemminaFTPTask *task);
 /* Get/Set Set overwrite_all status */
@@ -146,5 +146,3 @@ void remmina_ftp_client_set_overwrite_status(RemminaFTPClient *client, gboolean 
 gboolean remmina_ftp_client_get_overwrite_status(RemminaFTPClient *client);
 
 G_END_DECLS
-
-

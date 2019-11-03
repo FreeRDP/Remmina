@@ -271,10 +271,10 @@ remmina_ssh_auth_auto_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, Remmina
 		disablepasswordstoring = remmina_file_get_int(remminafile, "disablepasswordstoring", FALSE);
 
 		ret = remmina_protocol_widget_panel_auth(gp, (disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD),
-			_("SSH credentials"), NULL,
-			remmina_file_get_string(remminafile, "ssh_passphrase"),
-			NULL,
-			_("SSH private key passphrase"));
+							 _("SSH credentials"), NULL,
+							 remmina_file_get_string(remminafile, "ssh_passphrase"),
+							 NULL,
+							 _("SSH private key passphrase"));
 		if (ret == GTK_RESPONSE_OK) {
 			pwd = remmina_protocol_widget_get_password(gp);
 			save_password = remmina_protocol_widget_get_savepassword(gp);
@@ -282,8 +282,9 @@ remmina_ssh_auth_auto_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, Remmina
 				remmina_file_set_string(remminafile, "ssh_passphrase", pwd);
 			else
 				remmina_file_set_string(remminafile, "ssh_passphrase", NULL);
-		} else
+		} else {
 			return -1;
+		}
 		ssh->passphrase = pwd;
 	}
 	ret = ssh_userauth_publickey_auto(ssh->session, NULL, ssh->passphrase);
@@ -502,10 +503,10 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 
 		if (g_strcmp0(pwdtype, "ssh_passphrase") == 0) {
 			ret = remmina_protocol_widget_panel_auth(gp, (disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD),
-				_("SSH credentials"), NULL,
-				remmina_file_get_string(remminafile, "ssh_passphrase"),
-				NULL,
-				_("SSH private key passphrase"));
+								 _("SSH credentials"), NULL,
+								 remmina_file_get_string(remminafile, "ssh_passphrase"),
+								 NULL,
+								 _("SSH private key passphrase"));
 			if (ret == GTK_RESPONSE_OK) {
 				pwd = remmina_protocol_widget_get_password(gp);
 				save_password = remmina_protocol_widget_get_savepassword(gp);
@@ -514,14 +515,16 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 				else
 					remmina_file_set_string(remminafile, "ssh_passphrase", NULL);
 				g_free(pwd);
-			} else return -1;
+			} else {
+				return -1;
+			}
 		} else if (g_strcmp0(pwdtype, "ssh_password") == 0) {
-		   ret = remmina_protocol_widget_panel_auth(gp, (disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) | REMMINA_MESSAGE_PANEL_FLAG_USERNAME,
-				_("SSH credentials"),
-				remmina_file_get_string(remminafile, "ssh_username"),
-				remmina_file_get_string(remminafile, "ssh_password"),
-				NULL,
-				NULL);
+			ret = remmina_protocol_widget_panel_auth(gp, (disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) | REMMINA_MESSAGE_PANEL_FLAG_USERNAME,
+								 _("SSH credentials"),
+								 remmina_file_get_string(remminafile, "ssh_username"),
+								 remmina_file_get_string(remminafile, "ssh_password"),
+								 NULL,
+								 NULL);
 			if (ret == GTK_RESPONSE_OK) {
 				pwd = remmina_protocol_widget_get_username(gp);
 				remmina_file_set_string(remminafile, "ssh_username", pwd);
@@ -533,16 +536,17 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 				else
 					remmina_file_set_string(remminafile, "ssh_password", NULL);
 				g_free(pwd);
-			} else
+			} else {
 				return -1;
+			}
 		} else {
 			/* ??? */
 			ret = remmina_protocol_widget_panel_auth(gp, (disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) | REMMINA_MESSAGE_PANEL_FLAG_USERNAME,
-				_("SSH authentication"),
-				remmina_file_get_string(remminafile, "Username"),
-				remmina_file_get_string(remminafile, "Password"),
-				NULL,
-				NULL);
+								 _("SSH authentication"),
+								 remmina_file_get_string(remminafile, "Username"),
+								 remmina_file_get_string(remminafile, "Password"),
+								 NULL,
+								 NULL);
 			if (ret == GTK_RESPONSE_OK) {
 				pwd = remmina_protocol_widget_get_username(gp);
 				remmina_file_set_string(remminafile, "Username", pwd);
@@ -554,8 +558,9 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 				else
 					remmina_file_set_string(remminafile, "Password", NULL);
 				g_free(pwd);
-			} else
+			} else {
 				return -1;
+			}
 		}
 
 		pwd = remmina_protocol_widget_get_password(gp);

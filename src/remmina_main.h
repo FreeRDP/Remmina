@@ -43,67 +43,67 @@
 typedef struct _RemminaMainPriv RemminaMainPriv;
 
 typedef struct _RemminaMain {
-	GtkBuilder *builder;
-	GtkWindow *window;
+	GtkBuilder *		builder;
+	GtkWindow *		window;
 	/* Menu widgets */
-	GtkMenu *menu_popup;
-	GtkMenuButton *menu_header_button;
-	GtkMenu *menu_popup_full;
-	GtkRadioMenuItem *menuitem_view_mode_list;
-	GtkRadioMenuItem *menuitem_view_mode_tree;
-	GtkMenuItem *menuitem_connection_quit;
+	GtkMenu *		menu_popup;
+	GtkMenuButton *		menu_header_button;
+	GtkMenu *		menu_popup_full;
+	GtkRadioMenuItem *	menuitem_view_mode_list;
+	GtkRadioMenuItem *	menuitem_view_mode_tree;
+	GtkMenuItem *		menuitem_connection_quit;
 	/* Button new */
-	GtkButton *button_new;
-	GtkButton *button_make_default;
+	GtkButton *		button_new;
+	GtkButton *		button_make_default;
 	/* Search bar objects */
-	GtkToggleButton *search_toggle;
-	GtkToggleButton *view_toggle_button;
-	GtkToggleButton *ustats_toggle;
-	GtkSearchBar *search_bar;
+	GtkToggleButton *	search_toggle;
+	GtkToggleButton *	view_toggle_button;
+	GtkToggleButton *	ustats_toggle;
+	GtkSearchBar *		search_bar;
 	/* Quick connect objects */
-	GtkBox *box_quick_connect;
-	GtkComboBoxText *combo_quick_connect_protocol;
-	GtkEntry *entry_quick_connect_server;
-	GtkButton *button_quick_connect;
+	GtkBox *		box_quick_connect;
+	GtkComboBoxText *	combo_quick_connect_protocol;
+	GtkEntry *		entry_quick_connect_server;
+	GtkButton *		button_quick_connect;
 	/* Other widgets */
-	GtkTreeView *tree_files_list;
-	GtkTreeViewColumn *column_files_list_group;
-	GtkStatusbar *statusbar_main;
+	GtkTreeView *		tree_files_list;
+	GtkTreeViewColumn *	column_files_list_group;
+	GtkStatusbar *		statusbar_main;
 	/* Non widget objects */
-	GtkAccelGroup *accelgroup_shortcuts;
+	GtkAccelGroup *		accelgroup_shortcuts;
 	/* Actions from the view ActionGroup */
-	GtkToggleAction *action_view_quick_connect;
-	GtkToggleAction *action_view_mode_list;
-	GtkToggleAction *action_view_mode_tree;
-	RemminaMainPriv *priv;
+	GtkToggleAction *	action_view_quick_connect;
+	GtkToggleAction *	action_view_mode_list;
+	GtkToggleAction *	action_view_mode_tree;
+	RemminaMainPriv *	priv;
 } RemminaMain;
 
 struct _RemminaMainPriv {
-	GtkTreeModel *file_model;
-	GtkTreeModel *file_model_filter;
-	GtkTreeModel *file_model_sort;
+	GtkTreeModel *		file_model;
+	GtkTreeModel *		file_model_filter;
+	GtkTreeModel *		file_model_sort;
 
-	gboolean initialized;
+	gboolean		initialized;
 
-	gchar *selected_filename;
-	gchar *selected_name;
-	gboolean override_view_file_mode_to_list;
-	RemminaStringArray *expanded_group;
+	gchar *			selected_filename;
+	gchar *			selected_name;
+	gboolean		override_view_file_mode_to_list;
+	RemminaStringArray *	expanded_group;
 };
 
 G_BEGIN_DECLS
 
 /* Create the main Remmina window */
-GtkWidget* remmina_main_new(void);
+GtkWidget *remmina_main_new(void);
 /* Get the current main window or NULL if not initialized */
-GtkWindow* remmina_main_get_window(void);
+GtkWindow *remmina_main_get_window(void);
 
 void remmina_main_update_file_datetime(RemminaFile *file);
 
 void remmina_main_destroy(void);
 void remmina_main_save_before_destroy(void);
 
-void remmina_main_show_warning_dialog(const gchar* message);
+void remmina_main_show_warning_dialog(const gchar *message);
 void remmina_main_on_action_application_about(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_application_default(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_application_mpchange(GSimpleAction *action, GVariant *param, gpointer data);
@@ -125,4 +125,3 @@ void remmina_main_on_action_tools_export(GSimpleAction *action, GVariant *param,
 void remmina_main_on_action_tools_import(GSimpleAction *action, GVariant *param, gpointer data);
 
 G_END_DECLS
-

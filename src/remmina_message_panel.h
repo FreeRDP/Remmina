@@ -42,8 +42,8 @@ G_BEGIN_DECLS
 G_DECLARE_DERIVABLE_TYPE(RemminaMessagePanel, remmina_message_panel, REMMINA, MESSAGE_PANEL, GtkBox)
 
 struct _RemminaMessagePanelClass {
-	GtkBoxClass parent_class;
-	void (* response) (RemminaMessagePanel *mp, gint response_id);
+	GtkBoxClass	parent_class;
+	void		(*response) (RemminaMessagePanel *mp, gint response_id);
 };
 
 
@@ -72,11 +72,11 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 void remmina_message_panel_setup_auth_x509(RemminaMessagePanel *mp, RemminaMessagePanelCallback response_callback, gpointer response_callback_data);
 void remmina_message_panel_focus_auth_entry(RemminaMessagePanel *mp);
 void remmina_message_panel_field_set_string(RemminaMessagePanel *mp, int entryid, const gchar *text);
-gchar* remmina_message_panel_field_get_string(RemminaMessagePanel *mp, int entryid);
+gchar *remmina_message_panel_field_get_string(RemminaMessagePanel *mp, int entryid);
 void remmina_message_panel_field_set_switch(RemminaMessagePanel *mp, int entryid, gboolean state);
 gboolean remmina_message_panel_field_get_switch_state(RemminaMessagePanel *mp, int entryid);
 void remmina_message_panel_field_set_filename(RemminaMessagePanel *mp, int entryid, const gchar *filename);
-gchar* remmina_message_panel_field_get_filename(RemminaMessagePanel *mp, int entryid);
+gchar *remmina_message_panel_field_get_filename(RemminaMessagePanel *mp, int entryid);
 void remmina_message_panel_response(RemminaMessagePanel *mp, gint response_id);
 
 

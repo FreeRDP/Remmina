@@ -51,4 +51,3 @@
 #else
 #define TRACE_CALL(text)
 #endif  /* _WITH_TRACE_CALLS_ */
-

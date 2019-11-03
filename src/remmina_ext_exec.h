@@ -38,13 +38,12 @@
 G_BEGIN_DECLS
 
 typedef struct {
-	GtkDialog *dialog;
-	GtkLabel *label_pleasewait;
-	GtkButton *button_cancel;
-	GtkWidget *spinner;
+	GtkDialog *	dialog;
+	GtkLabel *	label_pleasewait;
+	GtkButton *	button_cancel;
+	GtkWidget *	spinner;
 } PCon_Spinner;
 
-GtkDialog* remmina_ext_exec_new(RemminaFile* remminafile, const char *remmina_ext_exec_type);
+GtkDialog *remmina_ext_exec_new(RemminaFile *remminafile, const char *remmina_ext_exec_type);
 
 G_END_DECLS
-

@@ -66,7 +66,7 @@
 #endif
 #include "remmina/remmina_trace_calls.h"
 
-typedef void (*PThreadCleanupFunc)(void*);
+typedef void (*PThreadCleanupFunc)(void *);
 
 
 #define IDLE_ADD        gdk_threads_add_idle
@@ -97,5 +97,3 @@ typedef void (*PThreadCleanupFunc)(void*);
 		} \
 		return display; \
 	}
-
-

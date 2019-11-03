@@ -51,12 +51,11 @@ G_BEGIN_DECLS
 	(G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_SCROLLED_VIEWPORT, RemminaScrolledViewportClass))
 
 typedef struct _RemminaScrolledViewport {
-	GtkEventBox event_box;
+	GtkEventBox	event_box;
 
 	/* Motion activates in Viewport Fullscreen mode */
-	gboolean viewport_motion;
-	guint viewport_motion_handler;
-
+	gboolean	viewport_motion;
+	guint		viewport_motion_handler;
 } RemminaScrolledViewport;
 
 typedef struct _RemminaScrolledViewportClass {
@@ -66,11 +65,9 @@ typedef struct _RemminaScrolledViewportClass {
 GType remmina_scrolled_viewport_get_type(void)
 G_GNUC_CONST;
 
-GtkWidget* remmina_scrolled_viewport_new(void);
+GtkWidget *remmina_scrolled_viewport_new(void);
 void remmina_scrolled_viewport_remove_motion(RemminaScrolledViewport *gsv);
 
 #define SCROLL_BORDER_SIZE 1
 
 G_END_DECLS
-
-

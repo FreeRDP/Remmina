@@ -51,41 +51,38 @@ G_BEGIN_DECLS
 typedef struct _RemminaConnectionWindowPriv RemminaConnectionWindowPriv;
 
 typedef struct _RemminaConnectionWindow {
-	GtkWindow window;
-	RemminaConnectionWindowPriv* priv;
+	GtkWindow			window;
+	RemminaConnectionWindowPriv *	priv;
 } RemminaConnectionWindow;
 
 typedef struct _RemminaConnectionWindowClass {
 	GtkWindowClass parent_class;
-	void (*toolbar_place)(RemminaConnectionWindow * gp);
+	void (*toolbar_place)(RemminaConnectionWindow *gp);
 } RemminaConnectionWindowClass;
 
 typedef struct _RemminaConnectionObject RemminaConnectionObject;
 
 typedef enum {
-	RCW_ONDELETE_CONFIRM_IF_2_OR_MORE = 0,
-	RCW_ONDELETE_NOCONFIRM		= 1
-
+	RCW_ONDELETE_CONFIRM_IF_2_OR_MORE	= 0,
+	RCW_ONDELETE_NOCONFIRM			= 1
 } RemminaConnectionWindowOnDeleteConfirmMode;
 
 GType rcw_get_type(void)
 G_GNUC_CONST;
 
 /* Open a new connection window for a .remmina file */
-gboolean rcw_open_from_filename(const gchar* filename);
+gboolean rcw_open_from_filename(const gchar *filename);
 /* Open a new connection window for a given RemminaFile struct. The struct will be freed after the call */
-void rcw_open_from_file(RemminaFile* remminafile);
-gboolean rcw_delete(RemminaConnectionWindow* cnnwin);
-void rcw_set_delete_confirm_mode(RemminaConnectionWindow* cnnwin, RemminaConnectionWindowOnDeleteConfirmMode mode);
-GtkWidget* rcw_open_from_file_full(RemminaFile* remminafile, GCallback disconnect_cb, gpointer data, guint* handler);
+void rcw_open_from_file(RemminaFile *remminafile);
+gboolean rcw_delete(RemminaConnectionWindow *cnnwin);
+void rcw_set_delete_confirm_mode(RemminaConnectionWindow *cnnwin, RemminaConnectionWindowOnDeleteConfirmMode mode);
+GtkWidget *rcw_open_from_file_full(RemminaFile *remminafile, GCallback disconnect_cb, gpointer data, guint *handler);
 
 void rco_destroy_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePanel *mp);
 void rco_show_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePanel *mp);
-void rco_get_monitor_geometry(RemminaConnectionObject* cnnobj, GdkRectangle *sz);
+void rco_get_monitor_geometry(RemminaConnectionObject *cnnobj, GdkRectangle *sz);
 
 #define MESSAGE_PANEL_SPINNER 0x00000001
 #define MESSAGE_PANEL_OKBUTTON 0x00000002
 
 G_END_DECLS
-
-

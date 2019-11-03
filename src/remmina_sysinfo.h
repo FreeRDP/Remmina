@@ -43,5 +43,3 @@ gchar *remmina_sysinfo_get_gnome_shell_version(void);
 gchar *remmina_sysinfo_get_wm_name(void);
 
 G_END_DECLS
-
-

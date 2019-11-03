@@ -37,5 +37,4 @@
 
 #include "rdp_plugin.h"
 
-void rf_register_graphics(rdpGraphics* graphics);
-
+void rf_register_graphics(rdpGraphics *graphics);

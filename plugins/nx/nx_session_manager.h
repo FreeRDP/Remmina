@@ -40,4 +40,3 @@ G_BEGIN_DECLS
 void remmina_nx_session_manager_start(RemminaProtocolWidget *gp);
 
 G_END_DECLS
-

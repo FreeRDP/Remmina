@@ -43,5 +43,3 @@ gboolean remmina_stat_sender_can_send(void);
 void remmina_stats_sender_send(gboolean show_only);
 
 G_END_DECLS
-
-

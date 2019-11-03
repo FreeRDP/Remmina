@@ -47,5 +47,3 @@ int rp_kwallet_is_service_available(void);
 #ifdef __cplusplus
 }
 #endif
-
-

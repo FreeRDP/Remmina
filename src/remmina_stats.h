@@ -41,5 +41,3 @@ G_BEGIN_DECLS
 JsonNode *remmina_stats_get_all(void);
 
 G_END_DECLS
-
-

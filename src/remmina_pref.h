@@ -87,126 +87,125 @@ enum {
 
 typedef struct _RemminaColorPref {
 	/* Color palette for VTE terminal */
-	gchar *background;
-	gchar *cursor;
-	gchar *foreground;
-	gchar *color0;
-	gchar *color1;
-	gchar *color2;
-	gchar *color3;
-	gchar *color4;
-	gchar *color5;
-	gchar *color6;
-	gchar *color7;
-	gchar *color8;
-	gchar *color9;
-	gchar *color10;
-	gchar *color11;
-	gchar *color12;
-	gchar *color13;
-	gchar *color14;
-	gchar *color15;
+	gchar * background;
+	gchar * cursor;
+	gchar * foreground;
+	gchar * color0;
+	gchar * color1;
+	gchar * color2;
+	gchar * color3;
+	gchar * color4;
+	gchar * color5;
+	gchar * color6;
+	gchar * color7;
+	gchar * color8;
+	gchar * color9;
+	gchar * color10;
+	gchar * color11;
+	gchar * color12;
+	gchar * color13;
+	gchar * color14;
+	gchar * color15;
 } RemminaColorPref;
 
 typedef struct _RemminaPref {
 	/* In RemminaPrefDialog options tab */
-	const gchar *datadir_path;
-	const gchar *remmina_file_name;
-	const gchar *screenshot_path;
-	gboolean deny_screenshot_clipboard;
-	const gchar *screenshot_name;
-	gboolean save_view_mode;
-	gboolean use_master_password;
-	const gchar *unlock_password;
-	const gchar *unlock_repassword;
-	gint unlock_timeout;
-	gint default_action;
-	gint scale_quality;
-	gint auto_scroll_step;
-	gint recent_maximum;
-	gchar *resolutions;
-	gchar *keystrokes;
+	const gchar *		datadir_path;
+	const gchar *		remmina_file_name;
+	const gchar *		screenshot_path;
+	gboolean		deny_screenshot_clipboard;
+	const gchar *		screenshot_name;
+	gboolean		save_view_mode;
+	gboolean		use_master_password;
+	const gchar *		unlock_password;
+	const gchar *		unlock_repassword;
+	gint			unlock_timeout;
+	gint			default_action;
+	gint			scale_quality;
+	gint			auto_scroll_step;
+	gint			recent_maximum;
+	gchar *			resolutions;
+	gchar *			keystrokes;
 	/* In RemminaPrefDialog appearance tab */
-	gboolean fullscreen_on_auto;
-	gboolean always_show_tab;
-	gboolean hide_connection_toolbar;
-	gboolean hide_searchbar;
-	gint default_mode;
-	gint tab_mode;
-	gint fullscreen_toolbar_visibility;
+	gboolean		fullscreen_on_auto;
+	gboolean		always_show_tab;
+	gboolean		hide_connection_toolbar;
+	gboolean		hide_searchbar;
+	gint			default_mode;
+	gint			tab_mode;
+	gint			fullscreen_toolbar_visibility;
 	/* In RemminaPrefDialog applet tab */
-	gboolean applet_new_ontop;
-	gboolean applet_hide_count;
-	gboolean disable_tray_icon;
-	gboolean dark_tray_icon;
+	gboolean		applet_new_ontop;
+	gboolean		applet_hide_count;
+	gboolean		disable_tray_icon;
+	gboolean		dark_tray_icon;
 	/* In RemminaPrefDialog SSH Option tab */
-	gint ssh_loglevel;
-	gboolean ssh_parseconfig;
-	gint sshtunnel_port;
-	gint ssh_tcp_keepidle;
-	gint ssh_tcp_keepintvl;
-	gint ssh_tcp_keepcnt;
-	gint ssh_tcp_usrtimeout;
+	gint			ssh_loglevel;
+	gboolean		ssh_parseconfig;
+	gint			sshtunnel_port;
+	gint			ssh_tcp_keepidle;
+	gint			ssh_tcp_keepintvl;
+	gint			ssh_tcp_keepcnt;
+	gint			ssh_tcp_usrtimeout;
 	/* In RemminaPrefDialog keyboard tab */
-	guint hostkey;
-	guint shortcutkey_fullscreen;
-	guint shortcutkey_autofit;
-	guint shortcutkey_prevtab;
-	guint shortcutkey_nexttab;
-	guint shortcutkey_dynres;
-	guint shortcutkey_scale;
-	guint shortcutkey_grab;
-	guint shortcutkey_viewonly;
-	guint shortcutkey_screenshot;
-	guint shortcutkey_minimize;
-	guint shortcutkey_disconnect;
-	guint shortcutkey_toolbar;
+	guint			hostkey;
+	guint			shortcutkey_fullscreen;
+	guint			shortcutkey_autofit;
+	guint			shortcutkey_prevtab;
+	guint			shortcutkey_nexttab;
+	guint			shortcutkey_dynres;
+	guint			shortcutkey_scale;
+	guint			shortcutkey_grab;
+	guint			shortcutkey_viewonly;
+	guint			shortcutkey_screenshot;
+	guint			shortcutkey_minimize;
+	guint			shortcutkey_disconnect;
+	guint			shortcutkey_toolbar;
 	/* In RemminaPrefDialog terminal tab */
-	gchar *vte_font;
-	gboolean vte_allow_bold_text;
-	gboolean vte_system_colors;
-	gint vte_lines;
-	guint vte_shortcutkey_copy;
-	guint vte_shortcutkey_paste;
-	guint vte_shortcutkey_select_all;
+	gchar *			vte_font;
+	gboolean		vte_allow_bold_text;
+	gboolean		vte_system_colors;
+	gint			vte_lines;
+	guint			vte_shortcutkey_copy;
+	guint			vte_shortcutkey_paste;
+	guint			vte_shortcutkey_select_all;
 	/* In View menu */
-	gboolean hide_toolbar;
-	gboolean small_toolbutton;
-	gint view_file_mode;
+	gboolean		hide_toolbar;
+	gboolean		small_toolbutton;
+	gint			view_file_mode;
 	/* In tray icon */
-	gboolean applet_enable_avahi;
+	gboolean		applet_enable_avahi;
 	/* Auto */
-	gint main_width;
-	gint main_height;
-	gboolean main_maximize;
-	gint main_sort_column_id;
-	gint main_sort_order;
-	gchar *expanded_group;
-	gboolean toolbar_pin_down;
-	gint floating_toolbar_placement;
-	gint toolbar_placement;
-	gboolean prevent_snap_welcome_message;
-	gchar *last_quickconnect_protocol;
+	gint			main_width;
+	gint			main_height;
+	gboolean		main_maximize;
+	gint			main_sort_column_id;
+	gint			main_sort_order;
+	gchar *			expanded_group;
+	gboolean		toolbar_pin_down;
+	gint			floating_toolbar_placement;
+	gint			toolbar_placement;
+	gboolean		prevent_snap_welcome_message;
+	gchar *			last_quickconnect_protocol;
 
 	/* Crypto */
-	gchar *secret;
+	gchar *			secret;
 
 	/* UID */
-	gchar *uid;
+	gchar *			uid;
 
-	RemminaColorPref color_pref;
+	RemminaColorPref	color_pref;
 
 	/* Usage stats */
-	gboolean periodic_usage_stats_permitted;
-	glong periodic_usage_stats_last_sent;
-	gchar *periodic_usage_stats_uuid_prefix;
-	gchar *last_success;
+	gboolean		periodic_usage_stats_permitted;
+	glong			periodic_usage_stats_last_sent;
+	gchar *			periodic_usage_stats_uuid_prefix;
+	gchar *			last_success;
 
 	/* Remmina news */
-	glong periodic_rmnews_last_get;
-	glong periodic_rmnews_get_count;
-	gchar *periodic_rmnews_uuid_prefix;
-
+	glong			periodic_rmnews_last_get;
+	glong			periodic_rmnews_get_count;
+	gchar *			periodic_rmnews_uuid_prefix;
 } RemminaPref;
 
 #define DEFAULT_SSH_PARSECONFIG TRUE
@@ -228,11 +227,11 @@ gboolean remmina_pref_is_rw(void);
 gboolean remmina_pref_save(void);
 
 void remmina_pref_add_recent(const gchar *protocol, const gchar *server);
-gchar* remmina_pref_get_recent(const gchar *protocol);
+gchar *remmina_pref_get_recent(const gchar *protocol);
 void remmina_pref_clear_recent(void);
 
 guint remmina_pref_keymap_get_keyval(const gchar *keymap, guint keyval);
-gchar** remmina_pref_keymap_groups(void);
+gchar **remmina_pref_keymap_groups(void);
 
 gint remmina_pref_get_scale_quality(void);
 gint remmina_pref_get_ssh_loglevel(void);
@@ -245,8 +244,7 @@ gint remmina_pref_get_ssh_tcp_keepcnt(void);
 gint remmina_pref_get_ssh_tcp_usrtimeout(void);
 
 void remmina_pref_set_value(const gchar *key, const gchar *value);
-gchar* remmina_pref_get_value(const gchar *key);
+gchar *remmina_pref_get_value(const gchar *key);
 gboolean remmina_pref_get_boolean(const gchar *key);
 
 G_END_DECLS
-

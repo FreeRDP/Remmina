@@ -45,10 +45,10 @@ G_BEGIN_DECLS
 #define REMMINA_CHAT_WINDOW_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS((obj), REMMINA_TYPE_CHAT_WINDOW, RemminaChatWindowClass))
 
 typedef struct _RemminaChatWindow {
-	GtkWindow window;
+	GtkWindow	window;
 
-	GtkWidget *history_text;
-	GtkWidget *send_text;
+	GtkWidget *	history_text;
+	GtkWidget *	send_text;
 } RemminaChatWindow;
 
 typedef struct _RemminaChatWindowClass {
@@ -60,9 +60,7 @@ typedef struct _RemminaChatWindowClass {
 GType remmina_chat_window_get_type(void)
 G_GNUC_CONST;
 
-GtkWidget* remmina_chat_window_new(GtkWindow *parent, const gchar *chat_with);
+GtkWidget *remmina_chat_window_new(GtkWindow *parent, const gchar *chat_with);
 void remmina_chat_window_receive(RemminaChatWindow *window, const gchar *name, const gchar *text);
 
 G_END_DECLS
-
-

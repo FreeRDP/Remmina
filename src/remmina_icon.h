@@ -45,5 +45,3 @@ void remmina_icon_destroy(void);
 gboolean remmina_icon_is_available(void);
 
 G_END_DECLS
-
-

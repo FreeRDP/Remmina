@@ -52,7 +52,6 @@ typedef struct _RemminaTpHandlerClass {
 	GObjectClass parent_class;
 } RemminaTpHandlerClass;
 
-RemminaTpHandler* remmina_tp_handler_new(void);
+RemminaTpHandler *remmina_tp_handler_new(void);
 
 G_END_DECLS
-

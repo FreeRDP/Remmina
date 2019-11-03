@@ -49,15 +49,15 @@ typedef enum {
 } RemminaAppletMenuItemType;
 
 typedef struct _RemminaAppletMenuItem {
-	GtkImageMenuItem image_menu_item;
+	GtkImageMenuItem		image_menu_item;
 
-	RemminaAppletMenuItemType item_type;
-	gchar* filename;
-	gchar* name;
-	gchar* group;
-	gchar* protocol;
-	gchar* server;
-	gboolean ssh_enabled;
+	RemminaAppletMenuItemType	item_type;
+	gchar *				filename;
+	gchar *				name;
+	gchar *				group;
+	gchar *				protocol;
+	gchar *				server;
+	gboolean			ssh_enabled;
 } RemminaAppletMenuItem;
 
 typedef struct _RemminaAppletMenuItemClass {
@@ -67,9 +67,7 @@ typedef struct _RemminaAppletMenuItemClass {
 GType remmina_applet_menu_item_get_type(void)
 G_GNUC_CONST;
 
-GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...);
+GtkWidget *remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...);
 gint remmina_applet_menu_item_compare(gconstpointer a, gconstpointer b, gpointer user_data);
 
 G_END_DECLS
-
-

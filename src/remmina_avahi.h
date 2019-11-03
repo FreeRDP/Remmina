@@ -40,17 +40,15 @@ G_BEGIN_DECLS
 typedef struct _RemminaAvahiPriv RemminaAvahiPriv;
 
 typedef struct _RemminaAvahi {
-	GHashTable *discovered_services;
-	gboolean started;
+	GHashTable *		discovered_services;
+	gboolean		started;
 
-	RemminaAvahiPriv *priv;
+	RemminaAvahiPriv *	priv;
 } RemminaAvahi;
 
-RemminaAvahi* remmina_avahi_new(void);
-void remmina_avahi_start(RemminaAvahi* ga);
-void remmina_avahi_stop(RemminaAvahi* ga);
-void remmina_avahi_free(RemminaAvahi* ga);
+RemminaAvahi *remmina_avahi_new(void);
+void remmina_avahi_start(RemminaAvahi *ga);
+void remmina_avahi_stop(RemminaAvahi *ga);
+void remmina_avahi_free(RemminaAvahi *ga);
 
 G_END_DECLS
-
-
