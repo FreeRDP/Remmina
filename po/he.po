@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-03 23:45+0000\n"
-"PO-Revision-Date: 2019-11-03 12:02+0000\n"
+"PO-Revision-Date: 2019-11-05 11:00+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
@@ -187,10 +187,10 @@ msgid "_Clear"
 msgstr "_ניקוי"
 
 #: src/rcw.c:585
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
-msgstr "ישנם %i חיבורים פעילים בחלון הנוכחי. האם ברצונך לסגור?"
+msgstr "לסגור את %i החיבורים הפעילים בחלון הנוכחי?"
 
 #: src/rcw.c:1291
 msgid "Viewport fullscreen mode"
@@ -1033,48 +1033,44 @@ msgid "Could not bind server socket to local port."
 msgstr "לא ניתן לאגד את השקע לפתחה המקומית."
 
 #: src/remmina_ssh.c:1438
-#, fuzzy
 msgid "Could not listen to local port."
-msgstr "ההאזנה לפתחה המקומית נכשלה."
+msgstr "לא ניתן להאזין לפתחה המקומית."
 
 #: src/remmina_ssh.c:1447
-#, fuzzy
 msgid "Could not start pthread."
-msgstr "הפעלת pthread נכשלה."
+msgstr "לא ניתן להתחיל את pthread."
 
 #: src/remmina_ssh.c:1463 src/remmina_ssh.c:1496
-#, fuzzy
 msgid "Could not initialize pthread."
-msgstr "הפעלת pthread נכשלה."
+msgstr "לא ניתן להפעיל את pthread."
 
 #: src/remmina_ssh.c:1479
 msgid "Failed to initialize pthread."
 msgstr "הפעלת pthread נכשלה."
 
 #: src/remmina_ssh.c:1584
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create SFTP session: %s"
-msgstr "יצירת התקשרות ה־SFTP נכשלה: %s"
+msgstr "לא ניתן ליצור התקשרות SFTP‏: %s"
 
 #: src/remmina_ssh.c:1588
-#, fuzzy, c-format
+#, c-format
 msgid "Could not initialize SFTP session: %s"
-msgstr "הפעלת התקשרות ה־SFTP נכשלה: %s"
+msgstr "לא ניתן להפעיל התקשרות SFTP‏: %s"
 
 #: src/remmina_ssh.c:1672
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel: %s"
-msgstr "פתיחת הערוץ נכשלה: %s"
+msgstr "לא ניתן לפתוח את הערוץ: %s"
 
 #: src/remmina_ssh.c:1701
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request shell: %s"
-msgstr "בקשת גישת מעטפת נכשלה: %s"
+msgstr "לא ניתן לבקש מעטפת: %s"
 
 #: src/remmina_ssh.c:1794
-#, fuzzy
 msgid "Could not create PTY device."
-msgstr "יצירת התקן pty נכשלה."
+msgstr "לא ניתן ליצור התקן pty."
 
 #. Show in the status bar the total number of connections found
 #: src/remmina_main.c:644
@@ -1127,7 +1123,6 @@ msgstr ""
 "עריכת התחברות לשולחן עבודה שמתוארת בקובץ (‎.remmina או סוג שנתמך על ידי תוסף)"
 
 #: src/remmina.c:88
-#, fuzzy
 msgid "Start in kiosk mode"
 msgstr "התחלה במצב קיוסק"
 
@@ -1441,9 +1436,8 @@ msgid "USB redirection error"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:577
-#, fuzzy
 msgid "Enter RDP authentication credentials"
-msgstr "הקלדת פרטי אימות"
+msgstr "נא להקליד פרטי אימות של RDP"
 
 #: plugins/rdp/rdp_plugin.c:641
 #, fuzzy
@@ -2888,4 +2882,3 @@ msgstr "לאפשר טקסט מודגש"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "מסוף"
-
