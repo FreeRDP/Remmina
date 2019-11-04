@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-03 23:45+0000\n"
-"PO-Revision-Date: 2019-10-14 13:45+0000\n"
+"PO-Revision-Date: 2019-11-05 11:00+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Weblate 3.10-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #. Profile: Protocol
@@ -187,12 +187,11 @@ msgid "_Clear"
 msgstr "_Leeren"
 
 #: src/rcw.c:585
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr ""
-"Es sind %i Verbindungen in diesem Fenster aktiv. Sind Sie sicher, dass Sie "
-"das Fenster schließen möchten?"
+"Wollen Sie wirklich %i aktive Verbindungen im aktuellen Fenster schließen?"
 
 #: src/rcw.c:1291
 msgid "Viewport fullscreen mode"
@@ -219,6 +218,7 @@ msgstr "Tastenkombinationen"
 #: src/rcw.c:1931
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
+"Schalten Sie die Skalierung aus um Verzerrungen bei Screenshots zu vermeiden."
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -377,7 +377,6 @@ msgid "Delete files on server"
 msgstr "Dateien auf dem Server löschen"
 
 #: src/remmina_ftp_client.c:903 src/remmina_ftp_client.c:972
-#, fuzzy
 msgid "Filename"
 msgstr "Dateiname"
 
@@ -746,24 +745,20 @@ msgid "Accept Certificate?"
 msgstr "Zertifikat akzeptieren?"
 
 #: src/remmina_protocol_widget.c:1424
-#, fuzzy
 msgid "The certificate changed! Details:"
-msgstr "Zertifikat geändert! Details:"
+msgstr "Das Zertifikat hat sich verändert! Details:"
 
 #: src/remmina_protocol_widget.c:1427
-#, fuzzy
 msgid "Old Fingerprint:"
 msgstr "Alter Fingerprint:"
 
 #: src/remmina_protocol_widget.c:1428
-#, fuzzy
 msgid "New Fingerprint:"
 msgstr "Neuer Fingerprint:"
 
 #: src/remmina_protocol_widget.c:1429
-#, fuzzy
 msgid "Accept Changed Certificate?"
-msgstr "Zertifikatsänderungen akzeptieren?"
+msgstr "Geändertes Zertifikat akzeptieren?"
 
 #: src/remmina_protocol_widget.c:1571
 #, c-format
@@ -909,9 +904,8 @@ msgstr "Der öffentliche SSH-Schlüssel kann nicht importiert werden: %s"
 
 #: src/remmina_ssh.c:274 src/remmina_ssh.c:506 src/remmina_ssh.c:523
 #: plugins/nx/nx_plugin.c:202
-#, fuzzy
 msgid "SSH credentials"
-msgstr "SSH‐Identity Datei"
+msgstr "SSH‐Anmeldeinformationen"
 
 #: src/remmina_ssh.c:277 src/remmina_ssh.c:484 src/remmina_ssh.c:509
 #: plugins/nx/nx_plugin.c:205
@@ -988,43 +982,42 @@ msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:545
-#, fuzzy
 msgid "SSH authentication"
 msgstr "SSH‐Authentifizierung"
 
 #: src/remmina_ssh.c:661
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SSH session: %s"
-msgstr "Fehler beim Starten der SSH‐Verbindung: %s"
+msgstr "Die SSH‐Verbindung kontte nicht gestartet werden: %s"
 
 #: src/remmina_ssh.c:1019 src/remmina_ssh.c:1079
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel, %s"
-msgstr "Das Erzeugen eines Channels ist fehlgeschlagen: %s"
+msgstr "Der Channel konnte nicht erzeugt werden: %s"
 
 #: src/remmina_ssh.c:1029
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to the SSH tunnel destination %s"
-msgstr "Fehler beim Verbinden mit dem Ziel des SSH‐Tunnels: %s"
+msgstr "Verbindung mit dem SSH‐Tunnel konnte nicht hergestellt werden: %s"
 
 #: src/remmina_ssh.c:1093
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel, %s"
-msgstr "Das Öffnen eines Channels ist fehlgeschlagen: %s"
+msgstr "Konnte den Channel nicht öffnen: %s"
 
 #: src/remmina_ssh.c:1099
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to execute %s on SSH server, %%s"
 msgstr "Ausführen von %s auf dem SSH Server ist fehlgeschlagen: %%s"
 
 #: src/remmina_ssh.c:1136 src/remmina_ssh.c:1156 src/remmina_ssh.c:1164
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request port forwarding, %s"
 msgstr "Anfrage zur Portweiterleitung ist fehlgeschlagen: %s"
 
 #: src/remmina_ssh.c:1199
 msgid "The server did not respond."
-msgstr ""
+msgstr "Der Server hat nicht geantwortet."
 
 #: src/remmina_ssh.c:1238
 #, c-format
@@ -1034,87 +1027,79 @@ msgstr "Kann nicht zum lokalen Port %i verbinden."
 #: src/remmina_ssh.c:1287
 #, c-format
 msgid "Could not run ssh_channel_write(), %s"
-msgstr ""
+msgstr "Konnte ssh_channel_write() nicht ausführen: %s"
 
 #: src/remmina_ssh.c:1293
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket, %s"
-msgstr ""
-"Lesen auf dem Listening‐Sockel des Tunnels hat einen Fehler ergeben: %s"
+msgstr "Vom Listening‐Socket des Tunnels kann nicht gelesen werden: %s"
 
 #: src/remmina_ssh.c:1312
 #, c-format
 msgid "Could not run ssh_channel_poll(), %s"
-msgstr ""
+msgstr "Kann ssh_channel_poll() nicht ausführen: %s"
 
 #: src/remmina_ssh.c:1318
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_read_nonblocking(), %s"
-msgstr "ssh_channel_read_nonblocking() hat einen Fehler ergeben: %s"
+msgstr "Kann ssh_channel_read_nonblocking() nicht ausführen: %s"
 
 #: src/remmina_ssh.c:1336
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket, %s"
-msgstr ""
-"Lesen auf dem Listening‐Sockel des Tunnels hat einen Fehler ergeben: %s"
+msgstr "Kann keine Daten über den Listening‐Socket des Tunnels senden: %s"
 
 #: src/remmina_ssh.c:1415
 msgid "Assign a destination port."
-msgstr ""
+msgstr "Ziel-Port zuweisen."
 
 #: src/remmina_ssh.c:1422
-#, fuzzy
 msgid "Could not create socket."
 msgstr "Konnte den Socket nicht erzeugen."
 
 #: src/remmina_ssh.c:1432
-#, fuzzy
 msgid "Could not bind server socket to local port."
-msgstr "Kann nicht zum lokalen Port %i verbinden."
+msgstr "Kann den Server-Socket nicht mit dem lokalen Port %i verbinden."
 
 #: src/remmina_ssh.c:1438
-#, fuzzy
 msgid "Could not listen to local port."
-msgstr "Konnte nicht am lokalen Port lauschen."
+msgstr "Kann am lokalen Port nicht lauschen."
 
 #: src/remmina_ssh.c:1447
-#, fuzzy
 msgid "Could not start pthread."
-msgstr "Konnte pthread nicht initialisieren."
+msgstr "Kann pthread nicht starten."
 
 #: src/remmina_ssh.c:1463 src/remmina_ssh.c:1496
-#, fuzzy
 msgid "Could not initialize pthread."
-msgstr "Konnte pthread nicht initialisieren."
+msgstr "Kann pthread nicht initialisieren."
 
 #: src/remmina_ssh.c:1479
 msgid "Failed to initialize pthread."
 msgstr "Konnte pthread nicht initialisieren."
 
 #: src/remmina_ssh.c:1584
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create SFTP session: %s"
-msgstr "Start der SFTP‐Sitzung fehlgeschlagen: %s"
+msgstr "Start der SFTP‐Sitzung ist fehlgeschlagen: %s"
 
 #: src/remmina_ssh.c:1588
-#, fuzzy, c-format
+#, c-format
 msgid "Could not initialize SFTP session: %s"
-msgstr "Initialisierung der SFTP‐Sitzung fehlgeschlagen: %s"
+msgstr "Initialisierung der SFTP‐Sitzung ist fehlgeschlagen: %s"
 
 #: src/remmina_ssh.c:1672
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel: %s"
 msgstr "Das Öffnen eines Channels ist fehlgeschlagen: %s"
 
 #: src/remmina_ssh.c:1701
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request shell: %s"
-msgstr "Fehler beim Anfordern der Shell: %s"
+msgstr "Shell kann nicht angefordert werden: %s"
 
 #: src/remmina_ssh.c:1794
-#, fuzzy
 msgid "Could not create PTY device."
-msgstr "Konnte das PTY‐Gerät nicht öffnen."
+msgstr "Kann das PTY‐Gerät nicht öffnen."
 
 #. Show in the status bar the total number of connections found
 #: src/remmina_main.c:644
@@ -1170,9 +1155,8 @@ msgstr ""
 "von einem Plugin unterstützten Datei definiert ist"
 
 #: src/remmina.c:88
-#, fuzzy
 msgid "Start in kiosk mode"
-msgstr "Starte im Kiosk Modus"
+msgstr "Starte im Kiosk-Modus"
 
 #: src/remmina.c:89
 msgid "Create new connection profile"
@@ -1375,9 +1359,8 @@ msgid "SSH - Secure Shell"
 msgstr "SSH - Secure Shell"
 
 #: plugins/spice/spice_plugin.c:239
-#, fuzzy
 msgid "Enter SPICE password"
-msgstr "Master Passwort"
+msgstr "SPICE Passwort eingeben"
 
 #: plugins/spice/spice_plugin.c:274
 #, c-format
@@ -1472,7 +1455,7 @@ msgstr "Übertragung abgeschlossen"
 #: plugins/spice/spice_plugin_file_transfer.c:224
 #, c-format
 msgid "The %s file has been transferred"
-msgstr ""
+msgstr "Die Datei %s wurde übermittelt"
 
 #: plugins/spice/spice_plugin_usb.c:54
 msgid "_Close"
@@ -1483,14 +1466,12 @@ msgid "USB redirection error"
 msgstr "USB Weiterleitungsfehler"
 
 #: plugins/rdp/rdp_plugin.c:577
-#, fuzzy
 msgid "Enter RDP authentication credentials"
-msgstr "Authentifizierungsinformationen eingeben"
+msgstr "RDP - Authentifizierunginformationen eingeben"
 
 #: plugins/rdp/rdp_plugin.c:641
-#, fuzzy
 msgid "Enter RDP gateway authentication credentials"
-msgstr "Authentifizierungsinformationen eingeben"
+msgstr "RDP-Gateway - Authentifizierunginformationen eingeben"
 
 #: plugins/rdp/rdp_plugin.c:1494
 #, c-format
@@ -1610,6 +1591,8 @@ msgstr "Der Server %s hat die Verbindung abgewiesen."
 #, c-format
 msgid "The remote desktop gateway %s denied user %s\\%s access due to policy."
 msgstr ""
+"Das Remote-Desktop-Gateway %s hat den Benutzer %s\\%s aufgrund einer Policy "
+"abgelehnt."
 
 #: plugins/rdp/rdp_plugin.c:1588
 #, c-format
@@ -1716,24 +1699,20 @@ msgid "Gateway transport type"
 msgstr "Gateway Transport Typ"
 
 #: plugins/rdp/rdp_plugin.c:1958
-#, fuzzy
 msgid "Remote Desktop Gateway server"
-msgstr "RD Gateway Server"
+msgstr "Remote-Desktop-Gateway Server"
 
 #: plugins/rdp/rdp_plugin.c:1959
-#, fuzzy
 msgid "Remote Desktop Gateway username"
-msgstr "RD Gateway Benutzername"
+msgstr "Remote-Desktop-Gateway Benutzername"
 
 #: plugins/rdp/rdp_plugin.c:1960
-#, fuzzy
 msgid "Remote Desktop Gateway password"
-msgstr "RD Gateway Passwort"
+msgstr "Remote-Desktop-Gateway Passwort"
 
 #: plugins/rdp/rdp_plugin.c:1961
-#, fuzzy
 msgid "Remote Desktop Gateway domain"
-msgstr "RD Gateway Domäne"
+msgstr "Remote-Desktop-Gateway Domäne"
 
 #: plugins/rdp/rdp_plugin.c:1962
 msgid "Client name"
@@ -1760,9 +1739,8 @@ msgid "Local serial name"
 msgstr "Name des lokalen seriellen Anschlusses"
 
 #: plugins/rdp/rdp_plugin.c:1967
-#, fuzzy
 msgid "COM1, COM2, etc."
-msgstr "COM1, COM2 usw"
+msgstr "COM1, COM2 usw."
 
 #: plugins/rdp/rdp_plugin.c:1968
 msgid "Local serial driver"
@@ -1777,9 +1755,8 @@ msgid "Local serial path"
 msgstr "Pfad des lokalen seriellen Gerätes"
 
 #: plugins/rdp/rdp_plugin.c:1969
-#, fuzzy
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
-msgstr "/dev/ttyS0, /dev/ttyS1 usw"
+msgstr "/dev/ttyS0, /dev/ttyS1 usw."
 
 #: plugins/rdp/rdp_plugin.c:1970
 msgid "Local parallel name"
@@ -1814,7 +1791,6 @@ msgid "Redirect local microphone"
 msgstr "Lokales Mikrofon teilen"
 
 #: plugins/rdp/rdp_plugin.c:1979
-#, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "Abgleich der Zwischenablage abschalten"
 
@@ -1823,7 +1799,6 @@ msgid "Ignore certificate"
 msgstr "Zertifikat ignorieren"
 
 #: plugins/rdp/rdp_plugin.c:1981
-#, fuzzy
 msgid "Turn off password storing"
 msgstr "Passwörter nicht speichern"
 
@@ -1833,22 +1808,19 @@ msgstr "Mit Konsole verbinden (Windows 2003 / 2003 R2)"
 
 #: plugins/rdp/rdp_plugin.c:1983
 msgid "Turn off fast-path"
-msgstr ""
+msgstr "Fast-Path ausschalten"
 
 #: plugins/rdp/rdp_plugin.c:1984
-#, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
-msgstr "Server‐Erkennung mittels RD Gateway"
+msgstr "Server‐Erkennung mittels Remote-Desktop-Gateway"
 
 #: plugins/rdp/rdp_plugin.c:1986
-#, fuzzy
 msgid "Turn on proxy support"
-msgstr "Plugin-Unterstützung aktivieren"
+msgstr "Plugin Unterstützung aktivieren"
 
 #: plugins/rdp/rdp_plugin.c:1988
-#, fuzzy
 msgid "Turn off automatic reconnection"
-msgstr "Automatisches wiederherstellen der Verbindung deaktivieren"
+msgstr "Automatisches Wiederherstellen der Verbindung deaktivieren"
 
 #: plugins/rdp/rdp_plugin.c:1989
 msgid "Relax Order Checks"
@@ -1955,7 +1927,7 @@ msgstr "Bildschirmausrichtung"
 
 #. Draw text
 #: plugins/rdp/rdp_event.c:299
-#, fuzzy, c-format
+#, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Wiederherstellen der Verbindung. Versuch %d von %d…"
 
@@ -2009,9 +1981,8 @@ msgid "Execute a command"
 msgstr "Ein Kommando ausführen"
 
 #: plugins/nx/nx_plugin.c:367
-#, fuzzy
 msgid "Enter NX authentication credentials"
-msgstr "Authentifizierungsinformationen eingeben"
+msgstr "Geben Sie die Anmeldedaten zur NX-Authentifizierung ein"
 
 #: plugins/nx/nx_plugin.c:608 plugins/xdmcp/xdmcp_plugin.c:264
 #, c-format
@@ -2091,14 +2062,12 @@ msgid "True color (24 bit)"
 msgstr "Echtfarben (24 Bit)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:372
-#, fuzzy
 msgid "Disconnect after first session"
-msgstr "Die Verbindung nach einer Sitzung trennen"
+msgstr "Verbindung nach der ersten Sitzung trennen"
 
 #: plugins/xdmcp/xdmcp_plugin.c:373
-#, fuzzy
 msgid "Listen for TCP connections"
-msgstr "Verbindung öffnen"
+msgstr "Auf TCP-Verbindungen warten"
 
 #. Type
 #. Name
@@ -2115,14 +2084,12 @@ msgid "Remmina VNC listener Plugin"
 msgstr "Remmina Browser Plugin"
 
 #: plugins/vnc/vnc_plugin.c:734
-#, fuzzy
 msgid "Enter VNC password"
-msgstr "Master Passwort"
+msgstr "VNC-Passwort eingeben"
 
 #: plugins/vnc/vnc_plugin.c:787
-#, fuzzy
 msgid "Enter VNC authentication credentials"
-msgstr "Authentifizierungsinformationen eingeben"
+msgstr "VNC-Anmeldedaten eingeben"
 
 #: plugins/vnc/vnc_plugin.c:890
 msgid "Unable to connect to VNC server"
@@ -2196,9 +2163,8 @@ msgid "File downloaded"
 msgstr "Datei wurde heruntergeladen"
 
 #: plugins/www/www_plugin.c:485
-#, fuzzy
 msgid "Enter WWW authentication credentials"
-msgstr "Authentifizierungsinformationen eingeben"
+msgstr "WWW-Anmeldedaten eingeben"
 
 #: plugins/www/www_plugin.c:791
 msgid "URL"
@@ -2209,9 +2175,8 @@ msgid "http://address or https://address"
 msgstr "http://Adresse oder https://Adresse"
 
 #: plugins/www/www_plugin.c:808
-#, fuzzy
 msgid "User agent"
-msgstr "User Agent"
+msgstr "User-Agent"
 
 #: plugins/www/www_plugin.c:809
 msgid "Turn on Java support"
@@ -2222,7 +2187,6 @@ msgid "Turn on smooth scrolling"
 msgstr "Sanften Bildlauf aktivieren"
 
 #: plugins/www/www_plugin.c:811
-#, fuzzy
 msgid "Turn on spatial navigation"
 msgstr "Räumliche Navigation aktivieren"
 
@@ -2235,16 +2199,14 @@ msgid "Turn on WebGL support"
 msgstr "WebGL Unterstützung aktivieren"
 
 #: plugins/www/www_plugin.c:814
-#, fuzzy
 msgid "Turn on HTML5 audio support"
-msgstr "WebAudio Unterstützung aktivieren"
+msgstr "HTML-Audiounterstützung aktivieren"
 
 #: plugins/www/www_plugin.c:815
 msgid "Ignore TLS errors"
 msgstr "TLS-Fehler ignorieren"
 
 #: plugins/www/www_plugin.c:816
-#, fuzzy
 msgid "No password storage"
 msgstr "Passwörter nicht speichern"
 
@@ -2307,7 +2269,6 @@ msgid "<big>Important settings</big>"
 msgstr "<big>Wichtige Einstellungen</big>"
 
 #: data/ui/remmina_news.glade:192
-#, fuzzy
 msgid ""
 "<span>\n"
 "<b>You are great for using copylefted libre software, <a href=\"https://"
@@ -2316,9 +2277,10 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>Remmina wird von kühnen Leuten in ihrer Freizeit entwickelt. Seien auch "
-"Sie kühn und <a href=\"https://remmina.org/donations/\" title=\"Spenden an "
-"Remmina\">belohnen Sie unsere Helden!</a></b>\n"
+"<b>Es ist großartig, dass sie freie Software mit einer Copyleft-Lizenz "
+"benutzen! <a href=\"https://remmina.org/donations/\" title=\"Spenden!\">"
+"Spenden Sie</a> an unser Projekt, um uns eine Freude und das Programm noch "
+"besser zu machen.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:212
@@ -2714,18 +2676,16 @@ msgid "No tray icon"
 msgstr "Taskleisten‐Icon nicht anzeigen"
 
 #: data/ui/remmina_preferences.glade:775
-#, fuzzy
 msgid "Start in tray upon user login"
-msgstr "Remmina Taskleisten‐Icon beim Login anzeigen"
+msgstr "Remmina als Symbol beim Login starten"
 
 #: data/ui/remmina_preferences.glade:793
 msgid "Dark Tray Icon"
 msgstr "Dunkles Taskleisten‐Icon"
 
 #: data/ui/remmina_preferences.glade:797
-#, fuzzy
 msgid "Gives better contrast if your panel is light."
-msgstr "Wählen Sie dieses wenn Sie ein dunkles Thema verwenden."
+msgstr "Erzeugt einen besseren Kontrast wenn das Panel hell ist."
 
 #: data/ui/remmina_preferences.glade:818
 msgid "Applet"
@@ -2999,4 +2959,3 @@ msgstr "Fette Schriften erlauben"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminal"
-
