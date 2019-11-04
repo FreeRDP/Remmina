@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-03 23:45+0000\n"
-"PO-Revision-Date: 2019-11-03 23:42+0000\n"
+"PO-Revision-Date: 2019-11-05 11:00+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
@@ -188,12 +188,11 @@ msgid "_Clear"
 msgstr "_Tøm"
 
 #: src/rcw.c:585
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr ""
-"Det aktive vinduet står for %i aktive tilkoblinger. Er du sikker på at du "
-"vil lukke det?"
+"Er du sikker på at du vil lukke %i aktive tilkoblinger i det aktive vinduet?"
 
 #: src/rcw.c:1291
 #, fuzzy
@@ -222,7 +221,7 @@ msgstr "Tastetrykk"
 
 #: src/rcw.c:1931
 msgid "Turn off scaling to avoid screenshot distortion."
-msgstr ""
+msgstr "Skru av skalering for å unngå fordreining av skjermavbildninger."
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -384,7 +383,6 @@ msgid "Delete files on server"
 msgstr "Slett filer på tjeneren"
 
 #: src/remmina_ftp_client.c:903 src/remmina_ftp_client.c:972
-#, fuzzy
 msgid "Filename"
 msgstr "Filnavn"
 
@@ -1007,9 +1005,9 @@ msgid "Could not start SSH session: %s"
 msgstr "Klarte ikke å starte SSH-økt. %s"
 
 #: src/remmina_ssh.c:1019 src/remmina_ssh.c:1079
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel, %s"
-msgstr "Klarte ikke å opprette kanal: %s"
+msgstr "Klarte ikke å opprette kanal, %s"
 
 #: src/remmina_ssh.c:1029
 #, fuzzy, c-format
@@ -1071,24 +1069,21 @@ msgid "Assign a destination port."
 msgstr "Tildel en målport"
 
 #: src/remmina_ssh.c:1422
-#, fuzzy
 msgid "Could not create socket."
 msgstr "Klarte ikke å opprette socket."
 
 #: src/remmina_ssh.c:1432
-#, fuzzy
 msgid "Could not bind server socket to local port."
-msgstr "Kan ikke koble til lokal port %i."
+msgstr "Kunne ikke binde tjenersocket til lokal port."
 
 #: src/remmina_ssh.c:1438
-#, fuzzy
 msgid "Could not listen to local port."
 msgstr "Kunne ikke lytte til lokal port."
 
 #: src/remmina_ssh.c:1447
 #, fuzzy
 msgid "Could not start pthread."
-msgstr "Klarte ikke å igangsette pthread."
+msgstr "Klarte ikke å starte pthread."
 
 #: src/remmina_ssh.c:1463 src/remmina_ssh.c:1496
 #, fuzzy
@@ -1193,7 +1188,6 @@ msgid "Show preferences"
 msgstr "Innstillinger"
 
 #: src/remmina.c:91
-#, fuzzy
 msgid "Run a plugin"
 msgstr "Kjør et programtillegg"
 
@@ -1396,9 +1390,8 @@ msgid "SSH - Secure Shell"
 msgstr "SSH - sikkert skall"
 
 #: plugins/spice/spice_plugin.c:239
-#, fuzzy
 msgid "Enter SPICE password"
-msgstr "Hovedpassord"
+msgstr "Skriv inn SPICE-passord"
 
 #: plugins/spice/spice_plugin.c:274
 #, fuzzy, c-format
@@ -1845,7 +1838,6 @@ msgid "Ignore certificate"
 msgstr "Ignorer sertifikat"
 
 #: plugins/rdp/rdp_plugin.c:1981
-#, fuzzy
 msgid "Turn off password storing"
 msgstr "Skru av passordslagring"
 
@@ -2328,7 +2320,6 @@ msgid "<big>Important settings</big>"
 msgstr "<big>Viktige innstillinger</big>"
 
 #: data/ui/remmina_news.glade:192
-#, fuzzy
 msgid ""
 "<span>\n"
 "<b>You are great for using copylefted libre software, <a href=\"https://"
@@ -2337,9 +2328,9 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>Du er storartet i din bruk av gemenslig fri programvare, <a href="
-"\"https://remmina.org/donations/\" title=\"Remmina donations\">doner en "
-"slant</a>, for å gjøre oss glade, og videre gjøre programmet bedre</b>\n"
+"<b>Du er storartet i din bruk av gemenslig fri programvare, <a href=\""
+"https://remmina.org/donations/\" title=\"Remmina donations\">doner en "
+"slant</a>, for å gjøre oss glade, og forbedre programmet enda mer.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:212
@@ -2896,7 +2887,6 @@ msgid "Use master password"
 msgstr "Bruk hovedpassord"
 
 #: data/ui/remmina_preferences.glade:1485
-#, fuzzy
 msgid "Automatic lock interval"
 msgstr "Automatisk låseintervall"
 
@@ -2973,14 +2963,13 @@ msgid "Cursor Color"
 msgstr "Pekerfarge"
 
 #: data/ui/remmina_preferences.glade:1917
-#, fuzzy
 msgid ""
 "Choose a color scheme file. Usually available in /usr/share/remmina/theme. "
 "More details in https://github.com/mbadolato/iTerm2-Color-Schemes."
 msgstr ""
-"Velg en fargedraktsfil, forhåndsinstallerte drakter er vanligvis installert "
-"i /usr/share/remmina/theme. Se https://github.com/mbadolato/iTerm2-Color-"
-"Schemes"
+"Velg en fargedraktsfil, forhåndsinstallerte drakter er vanligvis å finne i /"
+"usr/share/remmina/theme. Se https://github.com/mbadolato/iTerm2-Color-"
+"Schemes."
 
 #: data/ui/remmina_preferences.glade:1920
 msgid "Pick a terminal coloring file"
@@ -3062,4 +3051,3 @@ msgstr "Tillat fet tekst"
 msgid "Terminal"
 msgstr "Terminal"
 
-#, fuzzy
