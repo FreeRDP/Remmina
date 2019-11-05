@@ -245,13 +245,13 @@ void remmina_protocol_widget_open_connection_real(gpointer data)
 		if (num_ssh) {
 			feature->type = REMMINA_PROTOCOL_FEATURE_TYPE_TOOL;
 			feature->id = REMMINA_PROTOCOL_FEATURE_TOOL_SSH;
-			feature->opt1 = _("Open Secure Shell in New Terminal…");
+			feature->opt1 = _("Connect via SSH from a new terminal");
 			feature->opt2 = "utilities-terminal";
 			feature++;
 
 			feature->type = REMMINA_PROTOCOL_FEATURE_TYPE_TOOL;
 			feature->id = REMMINA_PROTOCOL_FEATURE_TOOL_SFTP;
-			feature->opt1 = _("Open Secure File Transfer…");
+			feature->opt1 = _("Open SFTP transfer");
 			feature->opt2 = "folder-remote";
 			feature++;
 		}
@@ -472,7 +472,7 @@ void remmina_protocol_widget_send_keystrokes(RemminaProtocolWidget *gp, GtkMenuI
 		{ "\\\\", "\\", GDK_KEY_backslash },
 		{ NULL,	  NULL, 0		  }
 	};
-	/* Keystrokes can be sent only to plugins that accepts them */
+	/* Keystrokes can only be sent to plugins that accepts them */
 	if (remmina_protocol_widget_plugin_receives_keystrokes(gp)) {
 		/* Replace special characters */
 		for (i = 0; keystrokes_replaces[i].replace; i++) {
@@ -699,7 +699,7 @@ void remmina_protocol_widget_mpdestroy(RemminaConnectionObject *cnnobj, RemminaM
 #ifdef HAVE_LIBSSH
 static void cancel_init_tunnel_cb(void *cbdata, int btn)
 {
-	printf("REMMINA: cancelling an opening tunnel is not implemented\n");
+	printf("Remmina: Cancelling an opening tunnel is not implemented\n");
 }
 static gboolean remmina_protocol_widget_init_tunnel(RemminaProtocolWidget *gp)
 {
@@ -713,7 +713,7 @@ static gboolean remmina_protocol_widget_init_tunnel(RemminaProtocolWidget *gp)
 	if (gp->priv->ssh_tunnel == NULL) {
 		tunnel = remmina_ssh_tunnel_new_from_file(gp->priv->remmina_file);
 
-		msg = g_strdup_printf(_("Connecting to SSH server %s…"), REMMINA_SSH(tunnel)->server);
+		msg = g_strdup_printf(_("Connecting to %s via SSH…"), REMMINA_SSH(tunnel)->server);
 
 		mp = remmina_protocol_widget_mpprogress(gp->cnnobj, msg, cancel_init_tunnel_cb, NULL);
 		g_free(msg);
@@ -745,7 +745,7 @@ static gboolean remmina_protocol_widget_init_tunnel(RemminaProtocolWidget *gp)
 #ifdef HAVE_LIBSSH
 static void cancel_start_direct_tunnel_cb(void *cbdata, int btn)
 {
-	printf("REMMINA: cancelling start_direct_tunnel is not implemented\n");
+	printf("Remmina: Cancelling start_direct_tunnel is not implemented\n");
 }
 #endif
 
@@ -770,7 +770,7 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 	remmina_public_get_server_port(server, default_port, &host, &port);
 
 	if (port_plus && port < 100)
-		/* Protocols like VNC supports using instance number :0, :1, etc as port number. */
+		/* Protocols like VNC supports using instance number :0, :1, etc. as port number. */
 		port += default_port;
 
 #ifdef HAVE_LIBSSH
@@ -793,7 +793,7 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 		return NULL;
 	}
 
-	msg = g_strdup_printf(_("Connecting to %s through SSH tunnel…"), server);
+	msg = g_strdup_printf(_("Connecting to %s via SSH…"), server);
 	mp = remmina_protocol_widget_mpprogress(gp->cnnobj, msg, cancel_start_direct_tunnel_cb, NULL);
 	g_free(msg);
 
@@ -825,7 +825,7 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 #ifdef HAVE_LIBSSH
 static void cancel_start_reverse_tunnel_cb(void *cbdata, int btn)
 {
-	printf("REMMINA: cancelling start_reverse_tunnel is not implemented\n");
+	printf("Remmina: Cancelling start_reverse_tunnel is not implemented\n");
 }
 #endif
 
@@ -843,7 +843,7 @@ gboolean remmina_protocol_widget_start_reverse_tunnel(RemminaProtocolWidget *gp,
 	if (!remmina_protocol_widget_init_tunnel(gp))
 		return FALSE;
 
-	msg = g_strdup_printf(_("Waiting for an incoming SSH tunnel at port %i…"), remmina_file_get_int(gp->priv->remmina_file, "listenport", 0));
+	msg = g_strdup_printf(_("Awaiting incoming SSH connection at port %i…"), remmina_file_get_int(gp->priv->remmina_file, "listenport", 0));
 	mp = remmina_protocol_widget_mpprogress(gp->cnnobj, msg, cancel_start_reverse_tunnel_cb, NULL);
 	g_free(msg);
 
@@ -888,18 +888,18 @@ gboolean remmina_protocol_widget_ssh_exec(RemminaProtocolWidget *gp, gboolean wa
 				break;
 			case 127:
 				remmina_ssh_set_application_error(REMMINA_SSH(tunnel),
-								  _("Command %s not found on SSH server"), cmd);
+								  _("Could not find %s command on the SSH server"), cmd);
 				break;
 			default:
 				remmina_ssh_set_application_error(REMMINA_SSH(tunnel),
-								  _("Command %s failed on SSH server (status = %i)."), cmd, status);
+								  _("Could not run %s command on the SSH server (status = %i)."), cmd, status);
 				break;
 			}
 		} else {
 			ret = TRUE;
 		}
 	} else {
-		remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Failed to execute command: %s"));
+		remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not run command, %s"));
 	}
 	g_free(cmd);
 	if (wait)
@@ -952,7 +952,7 @@ static gboolean remmina_protocol_widget_tunnel_disconnect_callback(RemminaSSHTun
 #ifdef HAVE_LIBSSH
 static void cancel_connect_xport_cb(void *cbdata, int btn)
 {
-	printf("REMMINA: cancelling a xport connect is not implemented\n");
+	printf("Remmina: Cancelling an XPort connection is not implemented\n");
 }
 #endif
 gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget *gp, RemminaXPortTunnelInitFunc init_func)
@@ -966,7 +966,7 @@ gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget *gp, R
 
 	if (!remmina_protocol_widget_init_tunnel(gp)) return FALSE;
 
-	msg = g_strdup_printf(_("Connecting to %s through SSH tunnel…"), remmina_file_get_string(gp->priv->remmina_file, "server"));
+	msg = g_strdup_printf(_("Connecting to %s via SSH…"), remmina_file_get_string(gp->priv->remmina_file, "server"));
 	mp = remmina_protocol_widget_mpprogress(gp->cnnobj, msg, cancel_connect_xport_cb, NULL);
 	g_free(msg);
 
@@ -981,7 +981,7 @@ gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget *gp, R
 	g_free(server);
 
 	if (!remmina_ssh_tunnel_xport(gp->priv->ssh_tunnel, bindlocalhost)) {
-		remmina_protocol_widget_set_error(gp, "Failed to open channel: %s",
+		remmina_protocol_widget_set_error(gp, "Could not open channel, %s",
 						  ssh_get_error(REMMINA_SSH(gp->priv->ssh_tunnel)->session));
 		return FALSE;
 	}
@@ -1344,7 +1344,7 @@ gint remmina_protocol_widget_panel_authuserpwd_ssh_tunnel(RemminaProtocolWidget 
 	username = remmina_file_get_string(remminafile, "ssh_username");
 	password = remmina_file_get_string(remminafile, "ssh_password");
 
-	return remmina_protocol_widget_dialog(RPWDT_AUTH, gp, pflags, _("Enter SSH tunnel authentication credentials"), username,
+	return remmina_protocol_widget_dialog(RPWDT_AUTH, gp, pflags, _("Type in username and password for SSH."), username,
 					      password, NULL, _("Password"));
 }
 
@@ -1400,11 +1400,11 @@ gint remmina_protocol_widget_panel_new_certificate(RemminaProtocolWidget *gp, co
 	// For markup see https://developer.gnome.org/pygtk/stable/pango-markup-language.html
 	s = g_strdup_printf(
 		"<big>%s</big>\n\n%s %s\n%s %s\n%s %s\n\n<big>%s</big>",
-		_("Certificate Details:"),
+		_("Certificate details:"),
 		_("Subject:"), subject,
 		_("Issuer:"), issuer,
 		_("Fingerprint:"), fingerprint,
-		_("Accept Certificate?"));
+		_("Accept certificate?"));
 	rc = remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, s, NULL, NULL, NULL, NULL);
 	g_free(s);
 
@@ -1424,9 +1424,9 @@ gint remmina_protocol_widget_panel_changed_certificate(RemminaProtocolWidget *gp
 		_("The certificate changed! Details:"),
 		_("Subject:"), subject,
 		_("Issuer:"), issuer,
-		_("Old Fingerprint:"), old_fingerprint,
-		_("New Fingerprint:"), new_fingerprint,
-		_("Accept Changed Certificate?"));
+		_("Old fingerprint:"), old_fingerprint,
+		_("New fingerprint:"), new_fingerprint,
+		_("Accept changed certificate?"));
 	rc = remmina_protocol_widget_dialog(RPWDT_QUESTIONYESNO, gp, 0, s, NULL, NULL, NULL, NULL);
 	g_free(s);
 
@@ -1593,20 +1593,20 @@ void remmina_protocol_widget_panel_show_retry(RemminaProtocolWidget *gp)
 	}
 
 	mp = remmina_message_panel_new();
-	remmina_message_panel_setup_progress(mp, _("Authentication failed. Trying to reconnect…"), NULL, NULL);
+	remmina_message_panel_setup_progress(mp, _("Could not authenticate, attempting reconnection…"), NULL, NULL);
 	rco_show_message_panel(gp->cnnobj, mp);
 }
 
 void remmina_protocol_widget_panel_show(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	printf("REMMINA: error, function %s is not implemented. Is left here only for plugin API compatibility.\n", __func__);
+	printf("Remmina: The %s function is not implemented, and is left here only for plugin API compatibility.\n", __func__);
 }
 
 void remmina_protocol_widget_panel_hide(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
-	printf("REMMINA: error, function %s is not implemented. Is left here only for plugin API compatibility.\n", __func__);
+	printf("Remmina: The %s function is not implemented, and is left here only for plugin API compatibility.\n", __func__);
 }
 
 static void remmina_protocol_widget_chat_on_destroy(RemminaProtocolWidget *gp)
@@ -1672,7 +1672,7 @@ void remmina_protocol_widget_setup(RemminaProtocolWidget *gp, RemminaFile *remmi
 									    remmina_file_get_string(remminafile, "protocol"));
 
 	if (!plugin || !plugin->init || !plugin->open_connection) {
-		remmina_protocol_widget_set_error(gp, _("Protocol plugin %s is not installed."),
+		remmina_protocol_widget_set_error(gp, _("Install the %s protocol plugin first."),
 						  remmina_file_get_string(remminafile, "protocol"));
 		gp->priv->plugin = NULL;
 		return;
@@ -1765,7 +1765,7 @@ void remmina_protocol_widget_update_remote_resolution(RemminaProtocolWidget *gp)
 		w = al.width;
 		h = al.height;
 		if (w < 10) {
-			printf("REMMINA WARNING: %s RemminaProtocolWidget w=%d h=%d are too small, adjusting to 640x480\n", __func__, w, h);
+			printf("Remmina warning: %s RemminaProtocolWidget w=%d h=%d are too small, adjusting to 640x480\n", __func__, w, h);
 			w = 640;
 			h = 480;
 		}
