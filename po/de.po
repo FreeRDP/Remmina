@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 23:45+0000\n"
+"POT-Creation-Date: 2019-11-05 14:39+0000\n"
 "PO-Revision-Date: 2019-11-05 11:00+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -228,7 +228,7 @@ msgstr "Screenshot wurde erzeugt"
 msgid "Resize the window to fit in remote resolution"
 msgstr "Das Fenster auf die entfernte Bildschirmauflösung anpassen"
 
-#: src/rcw.c:2073 data/ui/remmina_preferences.glade:870
+#: src/rcw.c:2073
 msgid "Toggle fullscreen mode"
 msgstr "Vollbildmodus umschalten"
 
@@ -240,7 +240,7 @@ msgstr "Wechsel zwischen den Reitern"
 msgid "Toggle dynamic resolution update"
 msgstr "Dynamische Auflösung umschalten"
 
-#: src/rcw.c:2142 data/ui/remmina_preferences.glade:973
+#: src/rcw.c:2142
 msgid "Toggle scaled mode"
 msgstr "Skalierten Modus umschalten"
 
@@ -261,6 +261,7 @@ msgid "Duplicate current connection"
 msgstr "Aktuelle Verbindung duplizieren"
 
 #: src/rcw.c:2215 data/ui/remmina_preferences.glade:1124
+#: data/ui/remmina_preferences.glade:1134
 msgid "Screenshot"
 msgstr "Bildschirmfoto"
 
@@ -674,11 +675,12 @@ msgid "File %s not found."
 msgstr "Datei %s nicht gefunden."
 
 #: src/remmina_protocol_widget.c:248
-msgid "Open Secure Shell in New Terminal…"
-msgstr "Secure‐Shell (SSH) in einem neuen Terminal starten …"
+msgid "Connect via SSH from a new terminal"
+msgstr ""
 
 #: src/remmina_protocol_widget.c:254
-msgid "Open Secure File Transfer…"
+#, fuzzy
+msgid "Open SFTP transfer"
 msgstr "Sichere Dateiübertragung (SFTP) öffnen …"
 
 #: src/remmina_protocol_widget.c:282
@@ -690,42 +692,39 @@ msgstr "Externe Kommandos ausführen…"
 msgid "Connecting to '%s'…"
 msgstr "Verbindung zu »%s« wird hergestellt …"
 
-#: src/remmina_protocol_widget.c:716
-#, c-format
-msgid "Connecting to SSH server %s…"
-msgstr "Verbinde zu SSH‐Server %s …"
-
-#: src/remmina_protocol_widget.c:796 src/remmina_protocol_widget.c:969
-#, c-format
-msgid "Connecting to %s through SSH tunnel…"
-msgstr "Verbinde zu %s über den SSH‐Tunnel …"
+#: src/remmina_protocol_widget.c:716 src/remmina_protocol_widget.c:796
+#: src/remmina_protocol_widget.c:969
+#, fuzzy, c-format
+msgid "Connecting to %s via SSH…"
+msgstr "Verbindung zu »%s« wird hergestellt …"
 
 #: src/remmina_protocol_widget.c:846
-#, c-format
-msgid "Waiting for an incoming SSH tunnel at port %i…"
+#, fuzzy, c-format
+msgid "Awaiting incoming SSH connection at port %i…"
 msgstr "Warte auf eingehende SSH‐Tunnel Verbindung über Port %i …"
 
 #: src/remmina_protocol_widget.c:891
-#, c-format
-msgid "Command %s not found on SSH server"
+#, fuzzy, c-format
+msgid "Could not find %s command on the SSH server"
 msgstr "Der Befehl %s wurde auf dem SSH Server nicht gefunden"
 
 #: src/remmina_protocol_widget.c:895
-#, c-format
-msgid "Command %s failed on SSH server (status = %i)."
+#, fuzzy, c-format
+msgid "Could not run %s command on the SSH server (status = %i)."
 msgstr "Befehl %s ist auf dem SSH Server fehlgeschlagen  (Status == %i)."
 
 #: src/remmina_protocol_widget.c:902
-#, c-format
-msgid "Failed to execute command: %s"
-msgstr "Fehler beim Ausführen des Befehls: %s"
+#, fuzzy, c-format
+msgid "Could not run command, %s"
+msgstr "Konnte den Channel nicht öffnen: %s"
 
 #: src/remmina_protocol_widget.c:1347
-msgid "Enter SSH tunnel authentication credentials"
-msgstr "Geben Sie die SSH-Tunnel Anmeldeinformationen ein"
+msgid "Type in username and password for SSH."
+msgstr ""
 
 #: src/remmina_protocol_widget.c:1403
-msgid "Certificate Details:"
+#, fuzzy
+msgid "Certificate details:"
 msgstr "Zertifikatsdetails:"
 
 #: src/remmina_protocol_widget.c:1404 src/remmina_protocol_widget.c:1425
@@ -741,7 +740,8 @@ msgid "Fingerprint:"
 msgstr "Fingerprint:"
 
 #: src/remmina_protocol_widget.c:1407
-msgid "Accept Certificate?"
+#, fuzzy
+msgid "Accept certificate?"
 msgstr "Zertifikat akzeptieren?"
 
 #: src/remmina_protocol_widget.c:1424
@@ -749,15 +749,18 @@ msgid "The certificate changed! Details:"
 msgstr "Das Zertifikat hat sich verändert! Details:"
 
 #: src/remmina_protocol_widget.c:1427
-msgid "Old Fingerprint:"
+#, fuzzy
+msgid "Old fingerprint:"
 msgstr "Alter Fingerprint:"
 
 #: src/remmina_protocol_widget.c:1428
-msgid "New Fingerprint:"
+#, fuzzy
+msgid "New fingerprint:"
 msgstr "Neuer Fingerprint:"
 
 #: src/remmina_protocol_widget.c:1429
-msgid "Accept Changed Certificate?"
+#, fuzzy
+msgid "Accept changed certificate?"
 msgstr "Geändertes Zertifikat akzeptieren?"
 
 #: src/remmina_protocol_widget.c:1571
@@ -766,13 +769,14 @@ msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Lausche auf Port %i auf eine eingehende %s‐Verbindung …"
 
 #: src/remmina_protocol_widget.c:1596
-msgid "Authentication failed. Trying to reconnect…"
+#, fuzzy
+msgid "Could not authenticate, attempting reconnection…"
 msgstr "Authentifizierung fehlgeschlagen. Versuche erneut zu verbinden…"
 
 #: src/remmina_protocol_widget.c:1675
 #, c-format
-msgid "Protocol plugin %s is not installed."
-msgstr "Das Protokoll‐Plugin %s ist nicht installiert."
+msgid "Install the %s protocol plugin first."
+msgstr ""
 
 #: src/remmina_applet_menu_item.c:121
 msgid "Discovered"
@@ -2278,9 +2282,9 @@ msgid ""
 msgstr ""
 "<span>\n"
 "<b>Es ist großartig, dass sie freie Software mit einer Copyleft-Lizenz "
-"benutzen! <a href=\"https://remmina.org/donations/\" title=\"Spenden!\">"
-"Spenden Sie</a> an unser Projekt, um uns eine Freude und das Programm noch "
-"besser zu machen.</b>\n"
+"benutzen! <a href=\"https://remmina.org/donations/\" title=\"Spenden!"
+"\">Spenden Sie</a> an unser Projekt, um uns eine Freude und das Programm "
+"noch besser zu machen.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:212
@@ -2461,7 +2465,8 @@ msgid "Edit settings"
 msgstr "Einstellungen bearbeiten"
 
 #: data/ui/remmina_preferences.glade:130
-msgid "Scale quality"
+#, fuzzy
+msgid "Scaling quality"
 msgstr "Skalierungsqualität"
 
 #: data/ui/remmina_preferences.glade:144
@@ -2481,15 +2486,17 @@ msgid "Hyper"
 msgstr "Hyper"
 
 #: data/ui/remmina_preferences.glade:163
-msgid "Auto scroll step size"
-msgstr "Automatische Schrittweite zum Scrollen"
+msgid "Step size for auto scroll"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:191
-msgid "Maximum recent items"
+#, fuzzy
+msgid "Maximal amount of recent items"
 msgstr "Anzahl zuletzt geöffnete Dateien"
 
 #: data/ui/remmina_preferences.glade:280
-msgid "Screenshots folder"
+#, fuzzy
+msgid "Screenshot folder"
 msgstr "Ordner für Bildschirmfotos"
 
 #: data/ui/remmina_preferences.glade:292
@@ -2506,7 +2513,8 @@ msgid "Screen resolutions"
 msgstr "Bildschirmauflösungen"
 
 #: data/ui/remmina_preferences.glade:326
-msgid "Screenshots filename"
+#, fuzzy
+msgid "Screenshot filename"
 msgstr "Dateiname für Screenshots"
 
 #: data/ui/remmina_preferences.glade:338
@@ -2520,14 +2528,15 @@ msgstr ""
 "%Y Jahr, %m Monat, %d Tag, %H Stunde, %M Minute, %S Sekunde (UTC Zeit)\n"
 
 #: data/ui/remmina_preferences.glade:356
+#, fuzzy
 msgid ""
-"This is the folder where the connection profiles will be saved, it defaults "
-"to the XDG_USER_DATA"
+"The folder where connection profiles are saved, it defaults to the "
+"XDG_USER_DATA"
 msgstr ""
 "In diesem Ordner werden die Verbindungsprofile gespeichert. Als Vorgabe wird "
 "der Wert von XDG_USER_DATA verwendet"
 
-#. It's the folder where the profiles are saved
+#. The folder where profiles are saved
 #: data/ui/remmina_preferences.glade:361
 msgid "Remmina data folder"
 msgstr "Remmina Daten-Ordner"
@@ -2599,7 +2608,8 @@ msgid "Always show tabs"
 msgstr "Register immer anzeigen"
 
 #: data/ui/remmina_preferences.glade:549
-msgid "Hide toolbar in tabbed interface"
+#, fuzzy
+msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Werkzeugleiste im Interface mit Registern verstecken"
 
 #: data/ui/remmina_preferences.glade:570
@@ -2619,7 +2629,8 @@ msgid "Viewport fullscreen"
 msgstr "Gesamte Vollbildschirmanzeige"
 
 #: data/ui/remmina_preferences.glade:603
-msgid "Tab interface"
+#, fuzzy
+msgid "Tabbed interface"
 msgstr "Registeransicht"
 
 #: data/ui/remmina_preferences.glade:618
@@ -2639,7 +2650,8 @@ msgid "No tabs"
 msgstr "Keine Tabulatoren"
 
 #: data/ui/remmina_preferences.glade:632
-msgid "Fullscreen on the same monitor as the connection window"
+#, fuzzy
+msgid "Fullscreen on the same screen as the connection window"
 msgstr ""
 "Vollbildschirmanzeige auf dem selben Monitor wie das Verbindungsfenster"
 
@@ -2656,7 +2668,8 @@ msgid "Fullscreen toolbar visibility"
 msgstr "Sichtbarkeit der Symbolleiste im Vollbildschirm‐Modus"
 
 #: data/ui/remmina_preferences.glade:683
-msgid "Hide Search Bar in main window"
+#, fuzzy
+msgid "Hide the search bar shown in the main window"
 msgstr "Suchleiste im Hauptfenster verbergen"
 
 #: data/ui/remmina_preferences.glade:707
@@ -2668,7 +2681,8 @@ msgid "Show new connection on top of the menu"
 msgstr "Neue Verbindung oben im Menü zeigen"
 
 #: data/ui/remmina_preferences.glade:740
-msgid "Hide total count in group menu"
+#, fuzzy
+msgid "Hide total count shown in the group menu"
 msgstr "Gesamtanzahl im Gruppenmenü ausschalten"
 
 #: data/ui/remmina_preferences.glade:757
@@ -2680,11 +2694,13 @@ msgid "Start in tray upon user login"
 msgstr "Remmina als Symbol beim Login starten"
 
 #: data/ui/remmina_preferences.glade:793
-msgid "Dark Tray Icon"
+#, fuzzy
+msgid "Dark tray icon"
 msgstr "Dunkles Taskleisten‐Icon"
 
 #: data/ui/remmina_preferences.glade:797
-msgid "Gives better contrast if your panel is light."
+#, fuzzy
+msgid "Improves contrast if you have a light panel."
 msgstr "Erzeugt einen besseren Kontrast wenn das Panel hell ist."
 
 #: data/ui/remmina_preferences.glade:818
@@ -2695,21 +2711,27 @@ msgstr "Applet"
 msgid "Host key"
 msgstr "Host‐Taste"
 
+#: data/ui/remmina_preferences.glade:870
+#, fuzzy
+msgid "Show/hide fullscreen"
+msgstr "Verschiebbare Vollbildschirmanzeige"
+
 #: data/ui/remmina_preferences.glade:900
 msgid "Auto-fit window"
 msgstr "Fenstergröße automatisch anpassen"
+
+#: data/ui/remmina_preferences.glade:973
+msgid "Apply/remove scaling"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1003
 msgid "Grab keyboard"
 msgstr "Alle Tasteneingaben weiterleiten"
 
 #: data/ui/remmina_preferences.glade:1094
-msgid "Show / hide toolbar"
+#, fuzzy
+msgid "Show/hide toolbar"
 msgstr "Symbolleiste anzeigen/verstecken"
-
-#: data/ui/remmina_preferences.glade:1134
-msgid "SCREENSHOT"
-msgstr "BILDSCHIRMFOTO"
 
 #: data/ui/remmina_preferences.glade:1156
 #: data/ui/remmina_preferences.glade:1166
@@ -2721,8 +2743,8 @@ msgid "Keyboard"
 msgstr "Tastatur"
 
 #: data/ui/remmina_preferences.glade:1209
-msgid "SSH tunnel local port"
-msgstr "Lokaler Port des SSH‐Tunnels"
+msgid "Local SSH port"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1233
 msgid "Parse ~/.ssh/config"
@@ -2783,7 +2805,8 @@ msgstr ""
 "bestätigt werden müssen bevor TCP die Verbindung schließt."
 
 #: data/ui/remmina_preferences.glade:1413
-msgid "SSH Options"
+#, fuzzy
+msgid "SSH options"
 msgstr "SSH Optionen"
 
 #: data/ui/remmina_preferences.glade:1435
@@ -2792,7 +2815,8 @@ msgstr "Master Passwort"
 
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
-msgid "Use secret key to authenticate with some widgets"
+#, fuzzy
+msgid "Use secret key authentication for some widgets"
 msgstr "Geheimen Schlüssel benutzen um sich an bestimmten Geräten anzumelden"
 
 #: data/ui/remmina_preferences.glade:1472
@@ -2812,7 +2836,8 @@ msgid "File encryption"
 msgstr "Dateiverschlüsselung"
 
 #: data/ui/remmina_preferences.glade:1546
-msgid "Retype password"
+#, fuzzy
+msgid "Repeat the password"
 msgstr "Passwort wiederholen"
 
 #: data/ui/remmina_preferences.glade:1623
@@ -2824,12 +2849,12 @@ msgid "Scrollback lines"
 msgstr "Zeilen im Bildrücklauf"
 
 #: data/ui/remmina_preferences.glade:1702
-msgid "Copy to clipboard shortcut"
-msgstr "Tastenkürzel zum Kopieren in die Zwischenablage"
+msgid "Shortcut for copying to clipboard"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1715
-msgid "Paste from clipboard shortcut"
-msgstr "Tastenkürzel zum Einfügen aus der Zwischenablage"
+msgid "Shortcut for pasting from clipboard"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1728
 msgid "Select all shortcuts"
@@ -2842,30 +2867,42 @@ msgid "(Host key +)"
 msgstr "(Host‐Taste +)"
 
 #: data/ui/remmina_preferences.glade:1795
+#, fuzzy
+msgid "Foreground colour"
+msgstr "Vordergdundfarbe"
+
 #: data/ui/remmina_preferences.glade:1809
 msgid "Foreground color"
 msgstr "Vordergdundfarbe"
 
 #: data/ui/remmina_preferences.glade:1823
-#: data/ui/remmina_preferences.glade:1890
-msgid "Background color"
+#, fuzzy
+msgid "Background colour"
 msgstr "Hintergrundfarbe"
 
 #: data/ui/remmina_preferences.glade:1836
-msgid "Cursor color"
+#, fuzzy
+msgid "Cursor colour"
 msgstr "Cursorfarbe"
 
 #: data/ui/remmina_preferences.glade:1849
-msgid "Normal colors"
+#, fuzzy
+msgid "Normal colours"
 msgstr "Standardfarbe"
 
 #: data/ui/remmina_preferences.glade:1862
-msgid "Bright colors"
+#, fuzzy
+msgid "Bright colours"
 msgstr "Leuchtende Farbe"
 
 #: data/ui/remmina_preferences.glade:1876
-msgid "Load color scheme"
+#, fuzzy
+msgid "Load colour scheme"
 msgstr "Farbschema laden"
+
+#: data/ui/remmina_preferences.glade:1890
+msgid "Background color"
+msgstr "Hintergrundfarbe"
 
 #: data/ui/remmina_preferences.glade:1905
 msgid "Cursor Color"
@@ -2949,7 +2986,8 @@ msgid "Pick a light white color"
 msgstr "Wählen Sie eine Farbe für helles Weiß"
 
 #: data/ui/remmina_preferences.glade:2129
-msgid "Use system default font"
+#, fuzzy
+msgid "Use default system font"
 msgstr "Benutze die Systemschrift"
 
 #: data/ui/remmina_preferences.glade:2167
@@ -2959,3 +2997,4 @@ msgstr "Fette Schriften erlauben"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminal"
+

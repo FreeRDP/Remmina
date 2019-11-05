@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 23:45+0000\n"
+"POT-Creation-Date: 2019-11-05 14:39+0000\n"
 "PO-Revision-Date: 2019-01-11 15:05+0100\n"
 "Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -226,7 +226,7 @@ msgstr "Képernyőkép készült"
 msgid "Resize the window to fit in remote resolution"
 msgstr "Az ablak átméretezése a távoli felbontásnak megfelelően"
 
-#: src/rcw.c:2073 data/ui/remmina_preferences.glade:870
+#: src/rcw.c:2073
 msgid "Toggle fullscreen mode"
 msgstr "Teljes képernyős mód"
 
@@ -238,7 +238,7 @@ msgstr "Lapok váltása"
 msgid "Toggle dynamic resolution update"
 msgstr "Dinamikus felbontásfrissítés átváltása"
 
-#: src/rcw.c:2142 data/ui/remmina_preferences.glade:973
+#: src/rcw.c:2142
 msgid "Toggle scaled mode"
 msgstr "Átméretezett mód"
 
@@ -259,6 +259,7 @@ msgid "Duplicate current connection"
 msgstr ""
 
 #: src/rcw.c:2215 data/ui/remmina_preferences.glade:1124
+#: data/ui/remmina_preferences.glade:1134
 msgid "Screenshot"
 msgstr "Képernyőkép"
 
@@ -672,11 +673,12 @@ msgid "File %s not found."
 msgstr "A(z) „%s” fájl nem található."
 
 #: src/remmina_protocol_widget.c:248
-msgid "Open Secure Shell in New Terminal…"
-msgstr "SSH megnyitása új terminálban…"
+msgid "Connect via SSH from a new terminal"
+msgstr ""
 
 #: src/remmina_protocol_widget.c:254
-msgid "Open Secure File Transfer…"
+#, fuzzy
+msgid "Open SFTP transfer"
 msgstr "Biztonságos fájlátvitel megnyitása…"
 
 #: src/remmina_protocol_widget.c:282
@@ -688,42 +690,39 @@ msgstr "Külső parancsok végrehajtása…"
 msgid "Connecting to '%s'…"
 msgstr "Csatlakozás ehhez: „%s”…"
 
-#: src/remmina_protocol_widget.c:716
-#, c-format
-msgid "Connecting to SSH server %s…"
-msgstr "Csatlakozás a(z) %s SSH-kiszolgálóhoz…"
-
-#: src/remmina_protocol_widget.c:796 src/remmina_protocol_widget.c:969
-#, c-format
-msgid "Connecting to %s through SSH tunnel…"
-msgstr "Csatlakozás SSH-alagúton keresztül ehhez: %s…"
+#: src/remmina_protocol_widget.c:716 src/remmina_protocol_widget.c:796
+#: src/remmina_protocol_widget.c:969
+#, fuzzy, c-format
+msgid "Connecting to %s via SSH…"
+msgstr "Csatlakozás ehhez: „%s”…"
 
 #: src/remmina_protocol_widget.c:846
-#, c-format
-msgid "Waiting for an incoming SSH tunnel at port %i…"
+#, fuzzy, c-format
+msgid "Awaiting incoming SSH connection at port %i…"
 msgstr "Várakozás bejövő SSH-alagútra a(z) %i porton…"
 
 #: src/remmina_protocol_widget.c:891
-#, c-format
-msgid "Command %s not found on SSH server"
+#, fuzzy, c-format
+msgid "Could not find %s command on the SSH server"
 msgstr "%s parancs nem található az SSH-kiszolgálón"
 
 #: src/remmina_protocol_widget.c:895
-#, c-format
-msgid "Command %s failed on SSH server (status = %i)."
+#, fuzzy, c-format
+msgid "Could not run %s command on the SSH server (status = %i)."
 msgstr "%s parancs hibát jelzett az SSH-kiszolgálón (állapot = %i)."
 
 #: src/remmina_protocol_widget.c:902
-#, c-format
-msgid "Failed to execute command: %s"
-msgstr "Parancs végrehajtása sikertelen: %s"
+#, fuzzy, c-format
+msgid "Could not run command, %s"
+msgstr "Nem sikerült a porttovábbítás kérése: %s"
 
 #: src/remmina_protocol_widget.c:1347
-msgid "Enter SSH tunnel authentication credentials"
+msgid "Type in username and password for SSH."
 msgstr ""
 
 #: src/remmina_protocol_widget.c:1403
-msgid "Certificate Details:"
+#, fuzzy
+msgid "Certificate details:"
 msgstr "Tanúsítvány részletei:"
 
 #: src/remmina_protocol_widget.c:1404 src/remmina_protocol_widget.c:1425
@@ -739,7 +738,8 @@ msgid "Fingerprint:"
 msgstr "Ujjlenyomat:"
 
 #: src/remmina_protocol_widget.c:1407
-msgid "Accept Certificate?"
+#, fuzzy
+msgid "Accept certificate?"
 msgstr "Elfogadja a tanúsítványt?"
 
 #: src/remmina_protocol_widget.c:1424
@@ -749,17 +749,17 @@ msgstr "A tanúsítvány megváltozott! Részletek:"
 
 #: src/remmina_protocol_widget.c:1427
 #, fuzzy
-msgid "Old Fingerprint:"
+msgid "Old fingerprint:"
 msgstr "Régi ujjlenyomat:"
 
 #: src/remmina_protocol_widget.c:1428
 #, fuzzy
-msgid "New Fingerprint:"
+msgid "New fingerprint:"
 msgstr "Új ujjlenyomat:"
 
 #: src/remmina_protocol_widget.c:1429
 #, fuzzy
-msgid "Accept Changed Certificate?"
+msgid "Accept changed certificate?"
 msgstr "Elfogadja a megváltozott tanúsítványt?"
 
 #: src/remmina_protocol_widget.c:1571
@@ -768,13 +768,14 @@ msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Várakozás egy %i porton bejövő %s kapcsolatra…"
 
 #: src/remmina_protocol_widget.c:1596
-msgid "Authentication failed. Trying to reconnect…"
+#, fuzzy
+msgid "Could not authenticate, attempting reconnection…"
 msgstr "Hitelesítés sikertelen. Kísérlet újracsatlakozásra…"
 
 #: src/remmina_protocol_widget.c:1675
 #, c-format
-msgid "Protocol plugin %s is not installed."
-msgstr "A(z) %s protokollbővítmény nincs telepítve."
+msgid "Install the %s protocol plugin first."
+msgstr ""
 
 #: src/remmina_applet_menu_item.c:121
 msgid "Discovered"
@@ -2481,7 +2482,8 @@ msgid "Edit settings"
 msgstr "Beállítások szerkesztése"
 
 #: data/ui/remmina_preferences.glade:130
-msgid "Scale quality"
+#, fuzzy
+msgid "Scaling quality"
 msgstr "Méretezés minősége"
 
 #: data/ui/remmina_preferences.glade:144
@@ -2501,15 +2503,17 @@ msgid "Hyper"
 msgstr "Hyper"
 
 #: data/ui/remmina_preferences.glade:163
-msgid "Auto scroll step size"
-msgstr "Automatikus görgetés lépésmérete"
+msgid "Step size for auto scroll"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:191
-msgid "Maximum recent items"
+#, fuzzy
+msgid "Maximal amount of recent items"
 msgstr "Legutóbbi elemek maximális száma"
 
 #: data/ui/remmina_preferences.glade:280
-msgid "Screenshots folder"
+#, fuzzy
+msgid "Screenshot folder"
 msgstr "Képernyőképek mappa"
 
 #: data/ui/remmina_preferences.glade:292
@@ -2527,7 +2531,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:326
 #, fuzzy
-msgid "Screenshots filename"
+msgid "Screenshot filename"
 msgstr "Képernyőképek fájlneve"
 
 #: data/ui/remmina_preferences.glade:338
@@ -2542,11 +2546,11 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:356
 msgid ""
-"This is the folder where the connection profiles will be saved, it defaults "
-"to the XDG_USER_DATA"
+"The folder where connection profiles are saved, it defaults to the "
+"XDG_USER_DATA"
 msgstr ""
 
-#. It's the folder where the profiles are saved
+#. The folder where profiles are saved
 #: data/ui/remmina_preferences.glade:361
 msgid "Remmina data folder"
 msgstr ""
@@ -2609,7 +2613,8 @@ msgid "Always show tabs"
 msgstr "Mindig jelenítse meg a lapokat"
 
 #: data/ui/remmina_preferences.glade:549
-msgid "Hide toolbar in tabbed interface"
+#, fuzzy
+msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Eszköztár elrejtése a többlapos felületen"
 
 #: data/ui/remmina_preferences.glade:570
@@ -2629,7 +2634,8 @@ msgid "Viewport fullscreen"
 msgstr "Nézetablak teljes képernyős módban"
 
 #: data/ui/remmina_preferences.glade:603
-msgid "Tab interface"
+#, fuzzy
+msgid "Tabbed interface"
 msgstr "Többlapos felület"
 
 #: data/ui/remmina_preferences.glade:618
@@ -2649,7 +2655,8 @@ msgid "No tabs"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:632
-msgid "Fullscreen on the same monitor as the connection window"
+#, fuzzy
+msgid "Fullscreen on the same screen as the connection window"
 msgstr "Teljes képernyő a kapcsolati ablakéval megegyező kijelzőn"
 
 #: data/ui/remmina_preferences.glade:656
@@ -2665,7 +2672,8 @@ msgid "Fullscreen toolbar visibility"
 msgstr "Eszköztár láthatósága teljes képernyő esetén"
 
 #: data/ui/remmina_preferences.glade:683
-msgid "Hide Search Bar in main window"
+#, fuzzy
+msgid "Hide the search bar shown in the main window"
 msgstr "Keresősáv elrejtése a főablakon"
 
 #: data/ui/remmina_preferences.glade:707
@@ -2677,7 +2685,8 @@ msgid "Show new connection on top of the menu"
 msgstr "Új kapcsolat megjelenítése a menü tetején"
 
 #: data/ui/remmina_preferences.glade:740
-msgid "Hide total count in group menu"
+#, fuzzy
+msgid "Hide total count shown in the group menu"
 msgstr "Szám elrejtése a csoport menüben"
 
 #: data/ui/remmina_preferences.glade:757
@@ -2691,12 +2700,13 @@ msgid "Start in tray upon user login"
 msgstr "A Remmina indítása tálcaikonként bejelentkezéskor"
 
 #: data/ui/remmina_preferences.glade:793
-msgid "Dark Tray Icon"
+#, fuzzy
+msgid "Dark tray icon"
 msgstr "Sötét tálcaikon"
 
 #: data/ui/remmina_preferences.glade:797
 #, fuzzy
-msgid "Gives better contrast if your panel is light."
+msgid "Improves contrast if you have a light panel."
 msgstr "Válassza ezt, ha a paneltémája világos."
 
 #: data/ui/remmina_preferences.glade:818
@@ -2707,21 +2717,27 @@ msgstr "Kisalkalmazás"
 msgid "Host key"
 msgstr "Gazda billentyű"
 
+#: data/ui/remmina_preferences.glade:870
+#, fuzzy
+msgid "Show/hide fullscreen"
+msgstr "Görgetett teljes képernyős mód"
+
 #: data/ui/remmina_preferences.glade:900
 msgid "Auto-fit window"
 msgstr "Ablak automatikus kitöltése"
+
+#: data/ui/remmina_preferences.glade:973
+msgid "Apply/remove scaling"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1003
 msgid "Grab keyboard"
 msgstr "Billentyűzet megragadása"
 
 #: data/ui/remmina_preferences.glade:1094
-msgid "Show / hide toolbar"
+#, fuzzy
+msgid "Show/hide toolbar"
 msgstr "Eszköztár megjelenítése/elrejtése"
-
-#: data/ui/remmina_preferences.glade:1134
-msgid "SCREENSHOT"
-msgstr "KÉPERNYŐKÉP"
 
 #: data/ui/remmina_preferences.glade:1156
 #: data/ui/remmina_preferences.glade:1166
@@ -2733,8 +2749,8 @@ msgid "Keyboard"
 msgstr "Billentyűzet"
 
 #: data/ui/remmina_preferences.glade:1209
-msgid "SSH tunnel local port"
-msgstr "SSH-alagút helyi portja"
+msgid "Local SSH port"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1233
 msgid "Parse ~/.ssh/config"
@@ -2796,7 +2812,8 @@ msgid ""
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1413
-msgid "SSH Options"
+#, fuzzy
+msgid "SSH options"
 msgstr "SSH beállítások"
 
 #: data/ui/remmina_preferences.glade:1435
@@ -2805,8 +2822,9 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
-msgid "Use secret key to authenticate with some widgets"
-msgstr ""
+#, fuzzy
+msgid "Use secret key authentication for some widgets"
+msgstr "Adja meg a tanúsítvány hitelesítési fájlokat"
 
 #: data/ui/remmina_preferences.glade:1472
 msgid "Use master password"
@@ -2825,8 +2843,9 @@ msgid "File encryption"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1546
-msgid "Retype password"
-msgstr ""
+#, fuzzy
+msgid "Repeat the password"
+msgstr "Jelszó mentése"
 
 #: data/ui/remmina_preferences.glade:1623
 msgid "Terminal font"
@@ -2837,14 +2856,12 @@ msgid "Scrollback lines"
 msgstr "Mentett sorok"
 
 #: data/ui/remmina_preferences.glade:1702
-#, fuzzy
-msgid "Copy to clipboard shortcut"
-msgstr "Vágólapra másolás gyorsbillentyűje"
+msgid "Shortcut for copying to clipboard"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1715
-#, fuzzy
-msgid "Paste from clipboard shortcut"
-msgstr "Vágólapra másolás gyorsbillentyűje"
+msgid "Shortcut for pasting from clipboard"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1728
 #, fuzzy
@@ -2858,30 +2875,42 @@ msgid "(Host key +)"
 msgstr "(Gazda billentyű +)"
 
 #: data/ui/remmina_preferences.glade:1795
+#, fuzzy
+msgid "Foreground colour"
+msgstr "Előtérszín"
+
 #: data/ui/remmina_preferences.glade:1809
 msgid "Foreground color"
 msgstr "Előtérszín"
 
 #: data/ui/remmina_preferences.glade:1823
-#: data/ui/remmina_preferences.glade:1890
-msgid "Background color"
+#, fuzzy
+msgid "Background colour"
 msgstr "Háttérszín"
 
 #: data/ui/remmina_preferences.glade:1836
-msgid "Cursor color"
+#, fuzzy
+msgid "Cursor colour"
 msgstr "Kurzor színe"
 
 #: data/ui/remmina_preferences.glade:1849
-msgid "Normal colors"
+#, fuzzy
+msgid "Normal colours"
 msgstr "Normál színek"
 
 #: data/ui/remmina_preferences.glade:1862
-msgid "Bright colors"
+#, fuzzy
+msgid "Bright colours"
 msgstr "Fényes színek"
 
 #: data/ui/remmina_preferences.glade:1876
-msgid "Load color scheme"
+#, fuzzy
+msgid "Load colour scheme"
 msgstr "Színséma betöltése"
+
+#: data/ui/remmina_preferences.glade:1890
+msgid "Background color"
+msgstr "Háttérszín"
 
 #: data/ui/remmina_preferences.glade:1905
 msgid "Cursor Color"
@@ -2983,7 +3012,8 @@ msgid "Pick a light white color"
 msgstr "Válasszon egy színt a fényes fehérhez"
 
 #: data/ui/remmina_preferences.glade:2129
-msgid "Use system default font"
+#, fuzzy
+msgid "Use default system font"
 msgstr "Rendszer alapértelmezett betűkészletének használata"
 
 #: data/ui/remmina_preferences.glade:2167
@@ -2994,3 +3024,6 @@ msgstr "Félkövér betűk engedélyezése"
 msgid "Terminal"
 msgstr "Terminál"
 
+#, fuzzy
+
+#, fuzzy

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 23:45+0000\n"
+"POT-Creation-Date: 2019-11-05 14:39+0000\n"
 "PO-Revision-Date: 2019-10-19 08:53+0000\n"
 "Last-Translator: Walter Cheuk <wwycheuk@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -227,7 +227,7 @@ msgstr "拍下的螢幕截圖"
 msgid "Resize the window to fit in remote resolution"
 msgstr "調整視窗大小以適應遠端解析度"
 
-#: src/rcw.c:2073 data/ui/remmina_preferences.glade:870
+#: src/rcw.c:2073
 msgid "Toggle fullscreen mode"
 msgstr "切換全螢幕模式"
 
@@ -239,7 +239,7 @@ msgstr "切換分頁"
 msgid "Toggle dynamic resolution update"
 msgstr "切換動態解析度更新"
 
-#: src/rcw.c:2142 data/ui/remmina_preferences.glade:973
+#: src/rcw.c:2142
 msgid "Toggle scaled mode"
 msgstr "啟用縮放的模式"
 
@@ -260,6 +260,7 @@ msgid "Duplicate current connection"
 msgstr "複製當前連線"
 
 #: src/rcw.c:2215 data/ui/remmina_preferences.glade:1124
+#: data/ui/remmina_preferences.glade:1134
 msgid "Screenshot"
 msgstr "螢幕截圖"
 
@@ -668,11 +669,12 @@ msgid "File %s not found."
 msgstr "找不到檔案 %s。"
 
 #: src/remmina_protocol_widget.c:248
-msgid "Open Secure Shell in New Terminal…"
-msgstr "於新的終端機中開啟安全 Shell…"
+msgid "Connect via SSH from a new terminal"
+msgstr ""
 
 #: src/remmina_protocol_widget.c:254
-msgid "Open Secure File Transfer…"
+#, fuzzy
+msgid "Open SFTP transfer"
 msgstr "開啟安全檔案傳輸…"
 
 #: src/remmina_protocol_widget.c:282
@@ -684,42 +686,39 @@ msgstr "執行外部指令…"
 msgid "Connecting to '%s'…"
 msgstr "正連接至「%s」…"
 
-#: src/remmina_protocol_widget.c:716
-#, c-format
-msgid "Connecting to SSH server %s…"
-msgstr "正連接至 SSH 伺服器 %s…"
-
-#: src/remmina_protocol_widget.c:796 src/remmina_protocol_widget.c:969
-#, c-format
-msgid "Connecting to %s through SSH tunnel…"
-msgstr "正透過 SSH 隧道連接至 %s…"
+#: src/remmina_protocol_widget.c:716 src/remmina_protocol_widget.c:796
+#: src/remmina_protocol_widget.c:969
+#, fuzzy, c-format
+msgid "Connecting to %s via SSH…"
+msgstr "正連接至「%s」…"
 
 #: src/remmina_protocol_widget.c:846
-#, c-format
-msgid "Waiting for an incoming SSH tunnel at port %i…"
+#, fuzzy, c-format
+msgid "Awaiting incoming SSH connection at port %i…"
 msgstr "正於 %i 連接埠上等待傳入的 SSH 通道…"
 
 #: src/remmina_protocol_widget.c:891
-#, c-format
-msgid "Command %s not found on SSH server"
+#, fuzzy, c-format
+msgid "Could not find %s command on the SSH server"
 msgstr "SSH 伺服器上找不到命令 %s"
 
 #: src/remmina_protocol_widget.c:895
-#, c-format
-msgid "Command %s failed on SSH server (status = %i)."
+#, fuzzy, c-format
+msgid "Could not run %s command on the SSH server (status = %i)."
 msgstr "SSH 伺服器運行命令 %s 失敗 (狀態 = %i)。"
 
 #: src/remmina_protocol_widget.c:902
-#, c-format
-msgid "Failed to execute command: %s"
-msgstr "無法執行指令：%s"
+#, fuzzy, c-format
+msgid "Could not run command, %s"
+msgstr "開啟通道失敗：%s"
 
 #: src/remmina_protocol_widget.c:1347
-msgid "Enter SSH tunnel authentication credentials"
-msgstr "輸入 SSH 通道驗證密碼"
+msgid "Type in username and password for SSH."
+msgstr ""
 
 #: src/remmina_protocol_widget.c:1403
-msgid "Certificate Details:"
+#, fuzzy
+msgid "Certificate details:"
 msgstr "憑證詳細資料："
 
 #: src/remmina_protocol_widget.c:1404 src/remmina_protocol_widget.c:1425
@@ -735,7 +734,8 @@ msgid "Fingerprint:"
 msgstr "指紋："
 
 #: src/remmina_protocol_widget.c:1407
-msgid "Accept Certificate?"
+#, fuzzy
+msgid "Accept certificate?"
 msgstr "是否接受憑證？"
 
 #: src/remmina_protocol_widget.c:1424
@@ -745,17 +745,17 @@ msgstr "憑證已變更！詳細資料："
 
 #: src/remmina_protocol_widget.c:1427
 #, fuzzy
-msgid "Old Fingerprint:"
+msgid "Old fingerprint:"
 msgstr "舊指紋："
 
 #: src/remmina_protocol_widget.c:1428
 #, fuzzy
-msgid "New Fingerprint:"
+msgid "New fingerprint:"
 msgstr "新指紋："
 
 #: src/remmina_protocol_widget.c:1429
 #, fuzzy
-msgid "Accept Changed Certificate?"
+msgid "Accept changed certificate?"
 msgstr "接受變更的憑證嗎？"
 
 #: src/remmina_protocol_widget.c:1571
@@ -764,13 +764,14 @@ msgid "Listening on port %i for an incoming %s connection…"
 msgstr "正於 %i 連接埠上監聽傳入的 %s 連接…"
 
 #: src/remmina_protocol_widget.c:1596
-msgid "Authentication failed. Trying to reconnect…"
+#, fuzzy
+msgid "Could not authenticate, attempting reconnection…"
 msgstr "驗證失敗。正試著重新連接…"
 
 #: src/remmina_protocol_widget.c:1675
 #, c-format
-msgid "Protocol plugin %s is not installed."
-msgstr "協定外掛 %s 尚未安裝。"
+msgid "Install the %s protocol plugin first."
+msgstr ""
 
 #: src/remmina_applet_menu_item.c:121
 msgid "Discovered"
@@ -2479,7 +2480,8 @@ msgid "Edit settings"
 msgstr "編輯設定"
 
 #: data/ui/remmina_preferences.glade:130
-msgid "Scale quality"
+#, fuzzy
+msgid "Scaling quality"
 msgstr "縮放品質"
 
 #: data/ui/remmina_preferences.glade:144
@@ -2499,15 +2501,17 @@ msgid "Hyper"
 msgstr "Hyper"
 
 #: data/ui/remmina_preferences.glade:163
-msgid "Auto scroll step size"
-msgstr "自動捲動步進大小"
+msgid "Step size for auto scroll"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:191
-msgid "Maximum recent items"
+#, fuzzy
+msgid "Maximal amount of recent items"
 msgstr "最近的項目上限值"
 
 #: data/ui/remmina_preferences.glade:280
-msgid "Screenshots folder"
+#, fuzzy
+msgid "Screenshot folder"
 msgstr "螢幕截圖資料夾"
 
 #: data/ui/remmina_preferences.glade:292
@@ -2523,7 +2527,8 @@ msgid "Screen resolutions"
 msgstr "螢幕解析度"
 
 #: data/ui/remmina_preferences.glade:326
-msgid "Screenshots filename"
+#, fuzzy
+msgid "Screenshot filename"
 msgstr "螢幕截圖檔案名稱"
 
 #: data/ui/remmina_preferences.glade:338
@@ -2537,12 +2542,13 @@ msgstr ""
 "%Y 年，%m 月，%d 日，%H 時，%M 分，%S 秒（UTC時間）\n"
 
 #: data/ui/remmina_preferences.glade:356
+#, fuzzy
 msgid ""
-"This is the folder where the connection profiles will be saved, it defaults "
-"to the XDG_USER_DATA"
+"The folder where connection profiles are saved, it defaults to the "
+"XDG_USER_DATA"
 msgstr "這是存放連線設定檔的資料夾，預設值指向 XDG_USER_DATA"
 
-#. It's the folder where the profiles are saved
+#. The folder where profiles are saved
 #: data/ui/remmina_preferences.glade:361
 msgid "Remmina data folder"
 msgstr "Remmina 資料夾"
@@ -2610,7 +2616,8 @@ msgid "Always show tabs"
 msgstr "永遠顯示分頁"
 
 #: data/ui/remmina_preferences.glade:549
-msgid "Hide toolbar in tabbed interface"
+#, fuzzy
+msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "在分頁界面中隱藏工具列"
 
 #: data/ui/remmina_preferences.glade:570
@@ -2630,7 +2637,8 @@ msgid "Viewport fullscreen"
 msgstr "Viewport 全螢幕"
 
 #: data/ui/remmina_preferences.glade:603
-msgid "Tab interface"
+#, fuzzy
+msgid "Tabbed interface"
 msgstr "分頁界面"
 
 #: data/ui/remmina_preferences.glade:618
@@ -2650,7 +2658,8 @@ msgid "No tabs"
 msgstr "無分頁"
 
 #: data/ui/remmina_preferences.glade:632
-msgid "Fullscreen on the same monitor as the connection window"
+#, fuzzy
+msgid "Fullscreen on the same screen as the connection window"
 msgstr "全螢幕，並與連線視窗位於同一個螢幕"
 
 #: data/ui/remmina_preferences.glade:656
@@ -2666,7 +2675,8 @@ msgid "Fullscreen toolbar visibility"
 msgstr "全螢幕工具列可見度"
 
 #: data/ui/remmina_preferences.glade:683
-msgid "Hide Search Bar in main window"
+#, fuzzy
+msgid "Hide the search bar shown in the main window"
 msgstr "在主視窗中隱藏搜尋列"
 
 #: data/ui/remmina_preferences.glade:707
@@ -2678,7 +2688,8 @@ msgid "Show new connection on top of the menu"
 msgstr "在選單上方顯示新的連線"
 
 #: data/ui/remmina_preferences.glade:740
-msgid "Hide total count in group menu"
+#, fuzzy
+msgid "Hide total count shown in the group menu"
 msgstr "在群組選單中隱藏總數"
 
 #: data/ui/remmina_preferences.glade:757
@@ -2691,12 +2702,13 @@ msgid "Start in tray upon user login"
 msgstr "在使用者登錄後將 Remmina 啟動至工作列"
 
 #: data/ui/remmina_preferences.glade:793
-msgid "Dark Tray Icon"
+#, fuzzy
+msgid "Dark tray icon"
 msgstr "暗色工作列圖示"
 
 #: data/ui/remmina_preferences.glade:797
 #, fuzzy
-msgid "Gives better contrast if your panel is light."
+msgid "Improves contrast if you have a light panel."
 msgstr "若您的主題面板色彩較淡，請選此選項。"
 
 #: data/ui/remmina_preferences.glade:818
@@ -2707,21 +2719,27 @@ msgstr "小工具"
 msgid "Host key"
 msgstr "Host 鍵"
 
+#: data/ui/remmina_preferences.glade:870
+#, fuzzy
+msgid "Show/hide fullscreen"
+msgstr "捲動全螢幕"
+
 #: data/ui/remmina_preferences.glade:900
 msgid "Auto-fit window"
 msgstr "自動調整視窗"
+
+#: data/ui/remmina_preferences.glade:973
+msgid "Apply/remove scaling"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1003
 msgid "Grab keyboard"
 msgstr "鍵盤抓取"
 
 #: data/ui/remmina_preferences.glade:1094
-msgid "Show / hide toolbar"
+#, fuzzy
+msgid "Show/hide toolbar"
 msgstr "顯示 / 隱藏工具列"
-
-#: data/ui/remmina_preferences.glade:1134
-msgid "SCREENSHOT"
-msgstr "螢幕截圖"
 
 #: data/ui/remmina_preferences.glade:1156
 #: data/ui/remmina_preferences.glade:1166
@@ -2733,8 +2751,8 @@ msgid "Keyboard"
 msgstr "鍵盤"
 
 #: data/ui/remmina_preferences.glade:1209
-msgid "SSH tunnel local port"
-msgstr "SSH 通道本地端連接埠"
+msgid "Local SSH port"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1233
 msgid "Parse ~/.ssh/config"
@@ -2794,7 +2812,8 @@ msgstr ""
 "秒）。"
 
 #: data/ui/remmina_preferences.glade:1413
-msgid "SSH Options"
+#, fuzzy
+msgid "SSH options"
 msgstr "SSH 選項"
 
 #: data/ui/remmina_preferences.glade:1435
@@ -2803,7 +2822,8 @@ msgstr "主密碼"
 
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
-msgid "Use secret key to authenticate with some widgets"
+#, fuzzy
+msgid "Use secret key authentication for some widgets"
 msgstr "使用密鑰來對某些器件進行身分核對"
 
 #: data/ui/remmina_preferences.glade:1472
@@ -2823,7 +2843,8 @@ msgid "File encryption"
 msgstr "檔案加密"
 
 #: data/ui/remmina_preferences.glade:1546
-msgid "Retype password"
+#, fuzzy
+msgid "Repeat the password"
 msgstr "再次輸入密碼"
 
 #: data/ui/remmina_preferences.glade:1623
@@ -2835,12 +2856,12 @@ msgid "Scrollback lines"
 msgstr "回捲行數"
 
 #: data/ui/remmina_preferences.glade:1702
-msgid "Copy to clipboard shortcut"
-msgstr "剪貼簿複製快速鍵"
+msgid "Shortcut for copying to clipboard"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1715
-msgid "Paste from clipboard shortcut"
-msgstr "剪貼簿貼上快速鍵"
+msgid "Shortcut for pasting from clipboard"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1728
 msgid "Select all shortcuts"
@@ -2853,30 +2874,42 @@ msgid "(Host key +)"
 msgstr "（Host 鍵 +）"
 
 #: data/ui/remmina_preferences.glade:1795
+#, fuzzy
+msgid "Foreground colour"
+msgstr "前景色"
+
 #: data/ui/remmina_preferences.glade:1809
 msgid "Foreground color"
 msgstr "前景色"
 
 #: data/ui/remmina_preferences.glade:1823
-#: data/ui/remmina_preferences.glade:1890
-msgid "Background color"
+#, fuzzy
+msgid "Background colour"
 msgstr "背景色"
 
 #: data/ui/remmina_preferences.glade:1836
-msgid "Cursor color"
+#, fuzzy
+msgid "Cursor colour"
 msgstr "游標顏色"
 
 #: data/ui/remmina_preferences.glade:1849
-msgid "Normal colors"
+#, fuzzy
+msgid "Normal colours"
 msgstr "一般顏色"
 
 #: data/ui/remmina_preferences.glade:1862
-msgid "Bright colors"
+#, fuzzy
+msgid "Bright colours"
 msgstr "高亮度顏色"
 
 #: data/ui/remmina_preferences.glade:1876
-msgid "Load color scheme"
+#, fuzzy
+msgid "Load colour scheme"
 msgstr "載入配色"
+
+#: data/ui/remmina_preferences.glade:1890
+msgid "Background color"
+msgstr "背景色"
 
 #: data/ui/remmina_preferences.glade:1905
 msgid "Cursor Color"
@@ -2959,7 +2992,8 @@ msgid "Pick a light white color"
 msgstr "選擇亮白色"
 
 #: data/ui/remmina_preferences.glade:2129
-msgid "Use system default font"
+#, fuzzy
+msgid "Use default system font"
 msgstr "使用系統預設字型"
 
 #: data/ui/remmina_preferences.glade:2167

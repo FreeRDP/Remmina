@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 23:45+0000\n"
+"POT-Creation-Date: 2019-11-05 14:39+0000\n"
 "PO-Revision-Date: 2019-09-29 07:31+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -229,7 +229,7 @@ msgstr "Zaslon uslikan"
 msgid "Resize the window to fit in remote resolution"
 msgstr "Promijeni veličinu prozora prema razlučivosti udaljene površine"
 
-#: src/rcw.c:2073 data/ui/remmina_preferences.glade:870
+#: src/rcw.c:2073
 msgid "Toggle fullscreen mode"
 msgstr "Uklj/Isklj cjelozaslonski način rada"
 
@@ -241,7 +241,7 @@ msgstr "Zamijeni stranice kartica"
 msgid "Toggle dynamic resolution update"
 msgstr "Uklj/Isklj promjenjivu nadopnu razlučivosti"
 
-#: src/rcw.c:2142 data/ui/remmina_preferences.glade:973
+#: src/rcw.c:2142
 msgid "Toggle scaled mode"
 msgstr "Aktiviraj promjenjivi način"
 
@@ -262,6 +262,7 @@ msgid "Duplicate current connection"
 msgstr "Udvostruči trenutno povezivanje"
 
 #: src/rcw.c:2215 data/ui/remmina_preferences.glade:1124
+#: data/ui/remmina_preferences.glade:1134
 msgid "Screenshot"
 msgstr "Slika zaslona"
 
@@ -673,11 +674,12 @@ msgid "File %s not found."
 msgstr "Datoteka %s nije pronađena."
 
 #: src/remmina_protocol_widget.c:248
-msgid "Open Secure Shell in New Terminal…"
-msgstr "Otvori osiguranu ljusku u novom terminalu…"
+msgid "Connect via SSH from a new terminal"
+msgstr ""
 
 #: src/remmina_protocol_widget.c:254
-msgid "Open Secure File Transfer…"
+#, fuzzy
+msgid "Open SFTP transfer"
 msgstr "Otvori osigurani prijenos datoteka…"
 
 #: src/remmina_protocol_widget.c:282
@@ -689,42 +691,39 @@ msgstr "Pokretanje vanjskih naredbi…"
 msgid "Connecting to '%s'…"
 msgstr "Povezivanje sa '%s'…"
 
-#: src/remmina_protocol_widget.c:716
-#, c-format
-msgid "Connecting to SSH server %s…"
-msgstr "Povezivanje sa SSH poslužiteljem %s…"
-
-#: src/remmina_protocol_widget.c:796 src/remmina_protocol_widget.c:969
-#, c-format
-msgid "Connecting to %s through SSH tunnel…"
-msgstr "Povezivanje sa %s poslužiteljem putem SSH tuneliranja…"
+#: src/remmina_protocol_widget.c:716 src/remmina_protocol_widget.c:796
+#: src/remmina_protocol_widget.c:969
+#, fuzzy, c-format
+msgid "Connecting to %s via SSH…"
+msgstr "Povezivanje sa '%s'…"
 
 #: src/remmina_protocol_widget.c:846
-#, c-format
-msgid "Waiting for an incoming SSH tunnel at port %i…"
+#, fuzzy, c-format
+msgid "Awaiting incoming SSH connection at port %i…"
 msgstr "Čekanje dolazećeg SSH tunela na ulazu %i…"
 
 #: src/remmina_protocol_widget.c:891
-#, c-format
-msgid "Command %s not found on SSH server"
+#, fuzzy, c-format
+msgid "Could not find %s command on the SSH server"
 msgstr "Naredba %s nije pronađena na SSH poslužitelju"
 
 #: src/remmina_protocol_widget.c:895
-#, c-format
-msgid "Command %s failed on SSH server (status = %i)."
+#, fuzzy, c-format
+msgid "Could not run %s command on the SSH server (status = %i)."
 msgstr "Naredba %s neuspjela na SSH poslužitelju (stanje = %i)."
 
 #: src/remmina_protocol_widget.c:902
-#, c-format
-msgid "Failed to execute command: %s"
-msgstr "Neuspjelo pokretanje naredbe: %s"
+#, fuzzy, c-format
+msgid "Could not run command, %s"
+msgstr "Neuspjelo otvaranje kanala: %s"
 
 #: src/remmina_protocol_widget.c:1347
-msgid "Enter SSH tunnel authentication credentials"
-msgstr "Upišite vjerodajnicu ovjere SSH tunela"
+msgid "Type in username and password for SSH."
+msgstr ""
 
 #: src/remmina_protocol_widget.c:1403
-msgid "Certificate Details:"
+#, fuzzy
+msgid "Certificate details:"
 msgstr "Pojedinosti vjerodajnice:"
 
 #: src/remmina_protocol_widget.c:1404 src/remmina_protocol_widget.c:1425
@@ -740,7 +739,8 @@ msgid "Fingerprint:"
 msgstr "Otisak:"
 
 #: src/remmina_protocol_widget.c:1407
-msgid "Accept Certificate?"
+#, fuzzy
+msgid "Accept certificate?"
 msgstr "Prihvati vjerodajnicu?"
 
 #: src/remmina_protocol_widget.c:1424
@@ -750,17 +750,17 @@ msgstr "Vjerodajnica promijenjena! Pojedinosti:"
 
 #: src/remmina_protocol_widget.c:1427
 #, fuzzy
-msgid "Old Fingerprint:"
+msgid "Old fingerprint:"
 msgstr "Stari otisak:"
 
 #: src/remmina_protocol_widget.c:1428
 #, fuzzy
-msgid "New Fingerprint:"
+msgid "New fingerprint:"
 msgstr "Novi otisak:"
 
 #: src/remmina_protocol_widget.c:1429
 #, fuzzy
-msgid "Accept Changed Certificate?"
+msgid "Accept changed certificate?"
 msgstr "Prihvati promijenjenu vjerodajnicu?"
 
 #: src/remmina_protocol_widget.c:1571
@@ -769,13 +769,14 @@ msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Osluškivanje na ulazu %i za nadolazeće %s povezivanje…"
 
 #: src/remmina_protocol_widget.c:1596
-msgid "Authentication failed. Trying to reconnect…"
+#, fuzzy
+msgid "Could not authenticate, attempting reconnection…"
 msgstr "Neuspjela ovjera. Pokušavam ponovno povezivanje…"
 
 #: src/remmina_protocol_widget.c:1675
 #, c-format
-msgid "Protocol plugin %s is not installed."
-msgstr "Priključak protokola %s nije instaliran."
+msgid "Install the %s protocol plugin first."
+msgstr ""
 
 #: src/remmina_applet_menu_item.c:121
 msgid "Discovered"
@@ -2498,7 +2499,8 @@ msgid "Edit settings"
 msgstr "Uredi postavke"
 
 #: data/ui/remmina_preferences.glade:130
-msgid "Scale quality"
+#, fuzzy
+msgid "Scaling quality"
 msgstr "Kvaliteta promjene veličine"
 
 #: data/ui/remmina_preferences.glade:144
@@ -2518,15 +2520,17 @@ msgid "Hyper"
 msgstr "Hiper"
 
 #: data/ui/remmina_preferences.glade:163
-msgid "Auto scroll step size"
-msgstr "Veličina koraka automatskog pomicanja"
+msgid "Step size for auto scroll"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:191
-msgid "Maximum recent items"
+#, fuzzy
+msgid "Maximal amount of recent items"
 msgstr "Najviše nedavnih stavki"
 
 #: data/ui/remmina_preferences.glade:280
-msgid "Screenshots folder"
+#, fuzzy
+msgid "Screenshot folder"
 msgstr "Mapa slika zaslona"
 
 #: data/ui/remmina_preferences.glade:292
@@ -2544,7 +2548,7 @@ msgstr "Razlučivost zaslona"
 
 #: data/ui/remmina_preferences.glade:326
 #, fuzzy
-msgid "Screenshots filename"
+msgid "Screenshot filename"
 msgstr "Naziv datoteke slike zaslona"
 
 #: data/ui/remmina_preferences.glade:338
@@ -2558,14 +2562,15 @@ msgstr ""
 "%Y Godina, %m Mjesec, %d Dan, %H Sat, %M Minuta, %S Sekunda (UTC vrijeme)\n"
 
 #: data/ui/remmina_preferences.glade:356
+#, fuzzy
 msgid ""
-"This is the folder where the connection profiles will be saved, it defaults "
-"to the XDG_USER_DATA"
+"The folder where connection profiles are saved, it defaults to the "
+"XDG_USER_DATA"
 msgstr ""
 "Ovo je mapa gdje će profili povezivanja biti spremljeni, zadano spremanje je "
 "u XDG_USER_DATA"
 
-#. It's the folder where the profiles are saved
+#. The folder where profiles are saved
 #: data/ui/remmina_preferences.glade:361
 msgid "Remmina data folder"
 msgstr "Remmina mapa podataka"
@@ -2639,7 +2644,8 @@ msgid "Always show tabs"
 msgstr "Uvijek prikaži kartice"
 
 #: data/ui/remmina_preferences.glade:549
-msgid "Hide toolbar in tabbed interface"
+#, fuzzy
+msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Sakrij alatnu traku u sučelju kartica"
 
 #: data/ui/remmina_preferences.glade:570
@@ -2659,7 +2665,8 @@ msgid "Viewport fullscreen"
 msgstr "Cjelozaslonski prikaz"
 
 #: data/ui/remmina_preferences.glade:603
-msgid "Tab interface"
+#, fuzzy
+msgid "Tabbed interface"
 msgstr "Sučelje kartice"
 
 #: data/ui/remmina_preferences.glade:618
@@ -2679,7 +2686,8 @@ msgid "No tabs"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:632
-msgid "Fullscreen on the same monitor as the connection window"
+#, fuzzy
+msgid "Fullscreen on the same screen as the connection window"
 msgstr "Cjelozaslonski prikaz na istome zaslonu kao i na prozoru povezivanja"
 
 #: data/ui/remmina_preferences.glade:656
@@ -2695,7 +2703,8 @@ msgid "Fullscreen toolbar visibility"
 msgstr "Vidljivost alatne trake cjelozaslonskog prikaza"
 
 #: data/ui/remmina_preferences.glade:683
-msgid "Hide Search Bar in main window"
+#, fuzzy
+msgid "Hide the search bar shown in the main window"
 msgstr "Sakrij traku pretrage u glavnom prozoru"
 
 #: data/ui/remmina_preferences.glade:707
@@ -2707,7 +2716,8 @@ msgid "Show new connection on top of the menu"
 msgstr "Prikaži novo povezivanje na vrhu izbornika"
 
 #: data/ui/remmina_preferences.glade:740
-msgid "Hide total count in group menu"
+#, fuzzy
+msgid "Hide total count shown in the group menu"
 msgstr "Sakrij ukupni broj u izborniku grupe"
 
 #: data/ui/remmina_preferences.glade:757
@@ -2721,12 +2731,13 @@ msgid "Start in tray upon user login"
 msgstr "Pokreni reminu u ikoni trake sustava pri prijavljivanju korisnika"
 
 #: data/ui/remmina_preferences.glade:793
-msgid "Dark Tray Icon"
+#, fuzzy
+msgid "Dark tray icon"
 msgstr "Tamna ikona trake sustava"
 
 #: data/ui/remmina_preferences.glade:797
 #, fuzzy
-msgid "Gives better contrast if your panel is light."
+msgid "Improves contrast if you have a light panel."
 msgstr "Odaberite ovo ako je vaša tema panela svijetla."
 
 #: data/ui/remmina_preferences.glade:818
@@ -2737,21 +2748,27 @@ msgstr "Aplet"
 msgid "Host key"
 msgstr "Tipka računala"
 
+#: data/ui/remmina_preferences.glade:870
+#, fuzzy
+msgid "Show/hide fullscreen"
+msgstr "Pomični cijeli zaslon"
+
 #: data/ui/remmina_preferences.glade:900
 msgid "Auto-fit window"
 msgstr "Automatski prilagodi na prozor"
+
+#: data/ui/remmina_preferences.glade:973
+msgid "Apply/remove scaling"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1003
 msgid "Grab keyboard"
 msgstr "Uhvati tipkovnicu"
 
 #: data/ui/remmina_preferences.glade:1094
-msgid "Show / hide toolbar"
+#, fuzzy
+msgid "Show/hide toolbar"
 msgstr "Prikaži/Sakrij alatnu traku"
-
-#: data/ui/remmina_preferences.glade:1134
-msgid "SCREENSHOT"
-msgstr "SLIKA_ZASLONA"
 
 #: data/ui/remmina_preferences.glade:1156
 #: data/ui/remmina_preferences.glade:1166
@@ -2763,8 +2780,8 @@ msgid "Keyboard"
 msgstr "Tipkovnica"
 
 #: data/ui/remmina_preferences.glade:1209
-msgid "SSH tunnel local port"
-msgstr "Lokalni ulaz SSH tunela"
+msgid "Local SSH port"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1233
 msgid "Parse ~/.ssh/config"
@@ -2830,7 +2847,8 @@ msgstr ""
 "povezivanje."
 
 #: data/ui/remmina_preferences.glade:1413
-msgid "SSH Options"
+#, fuzzy
+msgid "SSH options"
 msgstr "SSH mogućnosti"
 
 #: data/ui/remmina_preferences.glade:1435
@@ -2839,8 +2857,9 @@ msgstr "Glavna lozinka"
 
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
-msgid "Use secret key to authenticate with some widgets"
-msgstr ""
+#, fuzzy
+msgid "Use secret key authentication for some widgets"
+msgstr "Upišite vjerodajnicu datoteka ovjere"
 
 #: data/ui/remmina_preferences.glade:1472
 msgid "Use master password"
@@ -2859,7 +2878,8 @@ msgid "File encryption"
 msgstr "Šifriranje datoteke"
 
 #: data/ui/remmina_preferences.glade:1546
-msgid "Retype password"
+#, fuzzy
+msgid "Repeat the password"
 msgstr "Ponovno upišite lozinku"
 
 #: data/ui/remmina_preferences.glade:1623
@@ -2871,14 +2891,12 @@ msgid "Scrollback lines"
 msgstr "Redci pomicanja"
 
 #: data/ui/remmina_preferences.glade:1702
-#, fuzzy
-msgid "Copy to clipboard shortcut"
-msgstr "Prečac kopiranja međuspremnika"
+msgid "Shortcut for copying to clipboard"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1715
-#, fuzzy
-msgid "Paste from clipboard shortcut"
-msgstr "Prečac kopiranja međuspremnika"
+msgid "Shortcut for pasting from clipboard"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1728
 #, fuzzy
@@ -2892,30 +2910,42 @@ msgid "(Host key +)"
 msgstr "(Host key +)"
 
 #: data/ui/remmina_preferences.glade:1795
+#, fuzzy
+msgid "Foreground colour"
+msgstr "Boja prednjeg prikaza"
+
 #: data/ui/remmina_preferences.glade:1809
 msgid "Foreground color"
 msgstr "Boja prednjeg prikaza"
 
 #: data/ui/remmina_preferences.glade:1823
-#: data/ui/remmina_preferences.glade:1890
-msgid "Background color"
+#, fuzzy
+msgid "Background colour"
 msgstr "Boja pozadine"
 
 #: data/ui/remmina_preferences.glade:1836
-msgid "Cursor color"
+#, fuzzy
+msgid "Cursor colour"
 msgstr "Boja pokazivača"
 
 #: data/ui/remmina_preferences.glade:1849
-msgid "Normal colors"
+#, fuzzy
+msgid "Normal colours"
 msgstr "Normalne boje"
 
 #: data/ui/remmina_preferences.glade:1862
-msgid "Bright colors"
+#, fuzzy
+msgid "Bright colours"
 msgstr "Svjetle boje"
 
 #: data/ui/remmina_preferences.glade:1876
-msgid "Load color scheme"
+#, fuzzy
+msgid "Load colour scheme"
 msgstr "Učitaj shemu boja"
+
+#: data/ui/remmina_preferences.glade:1890
+msgid "Background color"
+msgstr "Boja pozadine"
 
 #: data/ui/remmina_preferences.glade:1905
 msgid "Cursor Color"
@@ -3017,7 +3047,8 @@ msgid "Pick a light white color"
 msgstr "Odaberi boju za svjetlo bijelu"
 
 #: data/ui/remmina_preferences.glade:2129
-msgid "Use system default font"
+#, fuzzy
+msgid "Use default system font"
 msgstr "Koristi slova zadana sustavom"
 
 #: data/ui/remmina_preferences.glade:2167
@@ -3028,3 +3059,6 @@ msgstr "Dopusti podebljani tekst"
 msgid "Terminal"
 msgstr "Terminal"
 
+#, fuzzy
+
+#, fuzzy

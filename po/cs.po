@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 23:45+0000\n"
+"POT-Creation-Date: 2019-11-05 14:39+0000\n"
 "PO-Revision-Date: 2019-11-05 11:00+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
@@ -226,7 +226,7 @@ msgstr "Snímek pořízen"
 msgid "Resize the window to fit in remote resolution"
 msgstr "Upravit velikost okna podle rozlišení na protějšku"
 
-#: src/rcw.c:2073 data/ui/remmina_preferences.glade:870
+#: src/rcw.c:2073
 msgid "Toggle fullscreen mode"
 msgstr "Vyp/zap. zobrazení na celou obrazovku"
 
@@ -238,7 +238,7 @@ msgstr "Přepínat mezi panely"
 msgid "Toggle dynamic resolution update"
 msgstr "Vyp/zap. dynamickou aktualizaci rozlišení"
 
-#: src/rcw.c:2142 data/ui/remmina_preferences.glade:973
+#: src/rcw.c:2142
 msgid "Toggle scaled mode"
 msgstr "Vyp/zap. měnění měřítka zobrazení"
 
@@ -259,6 +259,7 @@ msgid "Duplicate current connection"
 msgstr "Zduplikovat stávající spojení"
 
 #: src/rcw.c:2215 data/ui/remmina_preferences.glade:1124
+#: data/ui/remmina_preferences.glade:1134
 msgid "Screenshot"
 msgstr "Snímek obrazovky"
 
@@ -672,11 +673,12 @@ msgid "File %s not found."
 msgstr "Soubor %s nenalezen."
 
 #: src/remmina_protocol_widget.c:248
-msgid "Open Secure Shell in New Terminal…"
-msgstr "Otevřít zabezpečený shell v novém terminálu…"
+msgid "Connect via SSH from a new terminal"
+msgstr ""
 
 #: src/remmina_protocol_widget.c:254
-msgid "Open Secure File Transfer…"
+#, fuzzy
+msgid "Open SFTP transfer"
 msgstr "Otevřít zabezpečený přenos souborů…"
 
 #: src/remmina_protocol_widget.c:282
@@ -688,42 +690,39 @@ msgstr "Spouštění externích příkazů…"
 msgid "Connecting to '%s'…"
 msgstr "Připojování k „%s“…"
 
-#: src/remmina_protocol_widget.c:716
-#, c-format
-msgid "Connecting to SSH server %s…"
-msgstr "Připojování k SSH serveru %s…"
-
-#: src/remmina_protocol_widget.c:796 src/remmina_protocol_widget.c:969
-#, c-format
-msgid "Connecting to %s through SSH tunnel…"
-msgstr "Připojování k %s skrze SSH tunel…"
+#: src/remmina_protocol_widget.c:716 src/remmina_protocol_widget.c:796
+#: src/remmina_protocol_widget.c:969
+#, fuzzy, c-format
+msgid "Connecting to %s via SSH…"
+msgstr "Připojování k „%s“…"
 
 #: src/remmina_protocol_widget.c:846
-#, c-format
-msgid "Waiting for an incoming SSH tunnel at port %i…"
+#, fuzzy, c-format
+msgid "Awaiting incoming SSH connection at port %i…"
 msgstr "Čekání na příchozí SSH tunel na portu %i…"
 
 #: src/remmina_protocol_widget.c:891
-#, c-format
-msgid "Command %s not found on SSH server"
+#, fuzzy, c-format
+msgid "Could not find %s command on the SSH server"
 msgstr "Příkaz %s nebyl na SSH serveru nalezen"
 
 #: src/remmina_protocol_widget.c:895
-#, c-format
-msgid "Command %s failed on SSH server (status = %i)."
+#, fuzzy, c-format
+msgid "Could not run %s command on the SSH server (status = %i)."
 msgstr "Provedení příkazu %s na SSH serveru se nezdařilo (stav = %i)."
 
 #: src/remmina_protocol_widget.c:902
-#, c-format
-msgid "Failed to execute command: %s"
-msgstr "Nepodařilo se provést příkaz: %s"
+#, fuzzy, c-format
+msgid "Could not run command, %s"
+msgstr "Nepodařilo se otevřít kanál: %s"
 
 #: src/remmina_protocol_widget.c:1347
-msgid "Enter SSH tunnel authentication credentials"
-msgstr "Zadejte přihlašovací údaje k SSH tunelu"
+msgid "Type in username and password for SSH."
+msgstr ""
 
 #: src/remmina_protocol_widget.c:1403
-msgid "Certificate Details:"
+#, fuzzy
+msgid "Certificate details:"
 msgstr "Podrobnosti certifikátu:"
 
 #: src/remmina_protocol_widget.c:1404 src/remmina_protocol_widget.c:1425
@@ -739,7 +738,8 @@ msgid "Fingerprint:"
 msgstr "Otisk:"
 
 #: src/remmina_protocol_widget.c:1407
-msgid "Accept Certificate?"
+#, fuzzy
+msgid "Accept certificate?"
 msgstr "Přijmout certifikát?"
 
 #: src/remmina_protocol_widget.c:1424
@@ -747,15 +747,18 @@ msgid "The certificate changed! Details:"
 msgstr "Certifikát byl změněn! Podrobnosti:"
 
 #: src/remmina_protocol_widget.c:1427
-msgid "Old Fingerprint:"
+#, fuzzy
+msgid "Old fingerprint:"
 msgstr "Původní otisk:"
 
 #: src/remmina_protocol_widget.c:1428
-msgid "New Fingerprint:"
+#, fuzzy
+msgid "New fingerprint:"
 msgstr "Nový otisk:"
 
 #: src/remmina_protocol_widget.c:1429
-msgid "Accept Changed Certificate?"
+#, fuzzy
+msgid "Accept changed certificate?"
 msgstr "Přijmout změněný certifikát?"
 
 #: src/remmina_protocol_widget.c:1571
@@ -764,13 +767,14 @@ msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Na portu %i očekáváno příchozí %s spojení…"
 
 #: src/remmina_protocol_widget.c:1596
-msgid "Authentication failed. Trying to reconnect…"
+#, fuzzy
+msgid "Could not authenticate, attempting reconnection…"
 msgstr "Ověření se nebylo úspěšné. Zkouší se připojit znovu…"
 
 #: src/remmina_protocol_widget.c:1675
 #, c-format
-msgid "Protocol plugin %s is not installed."
-msgstr "Zásuvný modul pro protokol %s není nainstalován."
+msgid "Install the %s protocol plugin first."
+msgstr ""
 
 #: src/remmina_applet_menu_item.c:121
 msgid "Discovered"
@@ -2464,7 +2468,8 @@ msgid "Edit settings"
 msgstr "Upravit nastavení"
 
 #: data/ui/remmina_preferences.glade:130
-msgid "Scale quality"
+#, fuzzy
+msgid "Scaling quality"
 msgstr "Kvalita přepočítávání zobrazení při změně měřítka"
 
 #: data/ui/remmina_preferences.glade:144
@@ -2484,15 +2489,17 @@ msgid "Hyper"
 msgstr "Hyper"
 
 #: data/ui/remmina_preferences.glade:163
-msgid "Auto scroll step size"
-msgstr "Velikost kroku automatického posouvání"
+msgid "Step size for auto scroll"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:191
-msgid "Maximum recent items"
+#, fuzzy
+msgid "Maximal amount of recent items"
 msgstr "Nedávných položek nejvýše"
 
 #: data/ui/remmina_preferences.glade:280
-msgid "Screenshots folder"
+#, fuzzy
+msgid "Screenshot folder"
 msgstr "Složka pro snímky obrazovky"
 
 #: data/ui/remmina_preferences.glade:292
@@ -2508,7 +2515,8 @@ msgid "Screen resolutions"
 msgstr "Rozlišení obrazovky"
 
 #: data/ui/remmina_preferences.glade:326
-msgid "Screenshots filename"
+#, fuzzy
+msgid "Screenshot filename"
 msgstr "Vzor názvu souborů se snímky obrazovky"
 
 #: data/ui/remmina_preferences.glade:338
@@ -2522,14 +2530,15 @@ msgstr ""
 "%Y rok, %m měsíc, %d den, %H hodina, %M minute, %S sekunda (UTC čas)\n"
 
 #: data/ui/remmina_preferences.glade:356
+#, fuzzy
 msgid ""
-"This is the folder where the connection profiles will be saved, it defaults "
-"to the XDG_USER_DATA"
+"The folder where connection profiles are saved, it defaults to the "
+"XDG_USER_DATA"
 msgstr ""
 "Toto je složka do které budou ukládány profily připojení, výchozí je "
 "XDG_USER_DATA"
 
-#. It's the folder where the profiles are saved
+#. The folder where profiles are saved
 #: data/ui/remmina_preferences.glade:361
 msgid "Remmina data folder"
 msgstr "Složka s daty Remmina"
@@ -2599,7 +2608,8 @@ msgid "Always show tabs"
 msgstr "Panely zobrazovat vždy"
 
 #: data/ui/remmina_preferences.glade:549
-msgid "Hide toolbar in tabbed interface"
+#, fuzzy
+msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "V rozhraní s panely skrýt lištu nástrojů"
 
 #: data/ui/remmina_preferences.glade:570
@@ -2619,7 +2629,8 @@ msgid "Viewport fullscreen"
 msgstr "Výřez na celé obrazovce"
 
 #: data/ui/remmina_preferences.glade:603
-msgid "Tab interface"
+#, fuzzy
+msgid "Tabbed interface"
 msgstr "Rozhraní s panely"
 
 #: data/ui/remmina_preferences.glade:618
@@ -2639,7 +2650,8 @@ msgid "No tabs"
 msgstr "Žádné panely"
 
 #: data/ui/remmina_preferences.glade:632
-msgid "Fullscreen on the same monitor as the connection window"
+#, fuzzy
+msgid "Fullscreen on the same screen as the connection window"
 msgstr ""
 "Na celou obrazovku zobrazit na tom monitoru, na kterém se nachází okno s "
 "připojením"
@@ -2657,7 +2669,8 @@ msgid "Fullscreen toolbar visibility"
 msgstr "Viditelnost lišty nástrojů na celé obrazovce"
 
 #: data/ui/remmina_preferences.glade:683
-msgid "Hide Search Bar in main window"
+#, fuzzy
+msgid "Hide the search bar shown in the main window"
 msgstr "V hlavním okně skrýt lištu hledání"
 
 #: data/ui/remmina_preferences.glade:707
@@ -2669,7 +2682,8 @@ msgid "Show new connection on top of the menu"
 msgstr "Zobrazovat nová spojení na začátku nabídky"
 
 #: data/ui/remmina_preferences.glade:740
-msgid "Hide total count in group menu"
+#, fuzzy
+msgid "Hide total count shown in the group menu"
 msgstr "Skrýt celkový počet v nabídce skupiny"
 
 #: data/ui/remmina_preferences.glade:757
@@ -2683,11 +2697,13 @@ msgstr ""
 "systémového panelu"
 
 #: data/ui/remmina_preferences.glade:793
-msgid "Dark Tray Icon"
+#, fuzzy
+msgid "Dark tray icon"
 msgstr "Tmavá ikona v oznamovací oblasti panelu"
 
 #: data/ui/remmina_preferences.glade:797
-msgid "Gives better contrast if your panel is light."
+#, fuzzy
+msgid "Improves contrast if you have a light panel."
 msgstr "Zvolte pokud je motiv vzhledu panelu světlý."
 
 #: data/ui/remmina_preferences.glade:818
@@ -2698,21 +2714,27 @@ msgstr "Miniaplikace"
 msgid "Host key"
 msgstr "Host klávesa"
 
+#: data/ui/remmina_preferences.glade:870
+#, fuzzy
+msgid "Show/hide fullscreen"
+msgstr "Celá obrazovka s posuvníky"
+
 #: data/ui/remmina_preferences.glade:900
 msgid "Auto-fit window"
 msgstr "Automaticky přizpůsobit oknu"
+
+#: data/ui/remmina_preferences.glade:973
+msgid "Apply/remove scaling"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1003
 msgid "Grab keyboard"
 msgstr "Zachytávat klávesnici"
 
 #: data/ui/remmina_preferences.glade:1094
-msgid "Show / hide toolbar"
+#, fuzzy
+msgid "Show/hide toolbar"
 msgstr "Zobrazit / skrýt panel nástrojů"
-
-#: data/ui/remmina_preferences.glade:1134
-msgid "SCREENSHOT"
-msgstr "SNÍMEK OBRAZOVKY"
 
 #: data/ui/remmina_preferences.glade:1156
 #: data/ui/remmina_preferences.glade:1166
@@ -2724,8 +2746,8 @@ msgid "Keyboard"
 msgstr "Klávesnice"
 
 #: data/ui/remmina_preferences.glade:1209
-msgid "SSH tunnel local port"
-msgstr "Místní port SSH tunelu"
+msgid "Local SSH port"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1233
 msgid "Parse ~/.ssh/config"
@@ -2789,7 +2811,8 @@ msgstr ""
 "přenos dat nepotvrzen, než TCP vynutí uzavření příslušného spojení."
 
 #: data/ui/remmina_preferences.glade:1413
-msgid "SSH Options"
+#, fuzzy
+msgid "SSH options"
 msgstr "Možnosti SSH"
 
 #: data/ui/remmina_preferences.glade:1435
@@ -2798,7 +2821,8 @@ msgstr "Hlavní heslo"
 
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
-msgid "Use secret key to authenticate with some widgets"
+#, fuzzy
+msgid "Use secret key authentication for some widgets"
 msgstr "Použít tajný klíč pro ověřování se pro některé ovládací prvky"
 
 #: data/ui/remmina_preferences.glade:1472
@@ -2818,7 +2842,8 @@ msgid "File encryption"
 msgstr "Šifrování souboru"
 
 #: data/ui/remmina_preferences.glade:1546
-msgid "Retype password"
+#, fuzzy
+msgid "Repeat the password"
 msgstr "Zopakování zadání hesla"
 
 #: data/ui/remmina_preferences.glade:1623
@@ -2830,12 +2855,12 @@ msgid "Scrollback lines"
 msgstr "Počet řádků historie"
 
 #: data/ui/remmina_preferences.glade:1702
-msgid "Copy to clipboard shortcut"
-msgstr "Zkratka pro zkopírování do schránky"
+msgid "Shortcut for copying to clipboard"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1715
-msgid "Paste from clipboard shortcut"
-msgstr "Zkratka pro vložení ze schránky"
+msgid "Shortcut for pasting from clipboard"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1728
 msgid "Select all shortcuts"
@@ -2848,30 +2873,42 @@ msgid "(Host key +)"
 msgstr "(Host klávesa +)"
 
 #: data/ui/remmina_preferences.glade:1795
+#, fuzzy
+msgid "Foreground colour"
+msgstr "Barva popředí"
+
 #: data/ui/remmina_preferences.glade:1809
 msgid "Foreground color"
 msgstr "Barva popředí"
 
 #: data/ui/remmina_preferences.glade:1823
-#: data/ui/remmina_preferences.glade:1890
-msgid "Background color"
+#, fuzzy
+msgid "Background colour"
 msgstr "Barva pozadí"
 
 #: data/ui/remmina_preferences.glade:1836
-msgid "Cursor color"
+#, fuzzy
+msgid "Cursor colour"
 msgstr "Barva kurzoru"
 
 #: data/ui/remmina_preferences.glade:1849
-msgid "Normal colors"
+#, fuzzy
+msgid "Normal colours"
 msgstr "Normální barvy"
 
 #: data/ui/remmina_preferences.glade:1862
-msgid "Bright colors"
+#, fuzzy
+msgid "Bright colours"
 msgstr "Světlé barvy"
 
 #: data/ui/remmina_preferences.glade:1876
-msgid "Load color scheme"
+#, fuzzy
+msgid "Load colour scheme"
 msgstr "Načíst schéma barev"
+
+#: data/ui/remmina_preferences.glade:1890
+msgid "Background color"
+msgstr "Barva pozadí"
 
 #: data/ui/remmina_preferences.glade:1905
 msgid "Cursor Color"
@@ -2954,7 +2991,8 @@ msgid "Pick a light white color"
 msgstr "Zvolte barvu pro zářivě bílou"
 
 #: data/ui/remmina_preferences.glade:2129
-msgid "Use system default font"
+#, fuzzy
+msgid "Use default system font"
 msgstr "Použít výchozí písmo systému"
 
 #: data/ui/remmina_preferences.glade:2167
@@ -2964,3 +3002,4 @@ msgstr "Povolit tučný text"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminál"
+

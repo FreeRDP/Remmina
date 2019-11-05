@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-03 23:45+0000\n"
+"POT-Creation-Date: 2019-11-05 14:39+0000\n"
 "PO-Revision-Date: 2019-07-27 16:47+0300\n"
 "Last-Translator: Soltys Sergey <treefeed@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -229,7 +229,7 @@ msgstr "Снимок сделан"
 msgid "Resize the window to fit in remote resolution"
 msgstr "Растянуть окно под размер удалённого разрешения"
 
-#: src/rcw.c:2073 data/ui/remmina_preferences.glade:870
+#: src/rcw.c:2073
 msgid "Toggle fullscreen mode"
 msgstr "Переключить на полный экран"
 
@@ -241,7 +241,7 @@ msgstr "Перейти на вкладку"
 msgid "Toggle dynamic resolution update"
 msgstr "Переключить на динамическое обновление разрешения"
 
-#: src/rcw.c:2142 data/ui/remmina_preferences.glade:973
+#: src/rcw.c:2142
 msgid "Toggle scaled mode"
 msgstr "Переключить в режим масштабирования"
 
@@ -262,6 +262,7 @@ msgid "Duplicate current connection"
 msgstr "Дублировать текущее соединение"
 
 #: src/rcw.c:2215 data/ui/remmina_preferences.glade:1124
+#: data/ui/remmina_preferences.glade:1134
 msgid "Screenshot"
 msgstr "Снимок экрана"
 
@@ -676,11 +677,12 @@ msgid "File %s not found."
 msgstr "Файл %s не найден."
 
 #: src/remmina_protocol_widget.c:248
-msgid "Open Secure Shell in New Terminal…"
-msgstr "Открыть защищённую оболочку SSH в новом терминале…"
+msgid "Connect via SSH from a new terminal"
+msgstr ""
 
 #: src/remmina_protocol_widget.c:254
-msgid "Open Secure File Transfer…"
+#, fuzzy
+msgid "Open SFTP transfer"
 msgstr "Открыть защищённую передачу файлов (SFTP)…"
 
 #: src/remmina_protocol_widget.c:282
@@ -692,42 +694,39 @@ msgstr "Выполняю внешние команды…"
 msgid "Connecting to '%s'…"
 msgstr "Подключение к '%s'…"
 
-#: src/remmina_protocol_widget.c:716
-#, c-format
-msgid "Connecting to SSH server %s…"
-msgstr "Подключение к SSH серверу %s…"
-
-#: src/remmina_protocol_widget.c:796 src/remmina_protocol_widget.c:969
-#, c-format
-msgid "Connecting to %s through SSH tunnel…"
-msgstr "Подключение к %s через SSH туннель…"
+#: src/remmina_protocol_widget.c:716 src/remmina_protocol_widget.c:796
+#: src/remmina_protocol_widget.c:969
+#, fuzzy, c-format
+msgid "Connecting to %s via SSH…"
+msgstr "Подключение к '%s'…"
 
 #: src/remmina_protocol_widget.c:846
-#, c-format
-msgid "Waiting for an incoming SSH tunnel at port %i…"
+#, fuzzy, c-format
+msgid "Awaiting incoming SSH connection at port %i…"
 msgstr "Ожидание входящего SSH туннеля на порту %i…"
 
 #: src/remmina_protocol_widget.c:891
-#, c-format
-msgid "Command %s not found on SSH server"
+#, fuzzy, c-format
+msgid "Could not find %s command on the SSH server"
 msgstr "Команда %s не найдена на сервере SSH"
 
 #: src/remmina_protocol_widget.c:895
-#, c-format
-msgid "Command %s failed on SSH server (status = %i)."
+#, fuzzy, c-format
+msgid "Could not run %s command on the SSH server (status = %i)."
 msgstr "Команда %s завершилась ошибкой на сервере SSH (статус = %i)."
 
 #: src/remmina_protocol_widget.c:902
-#, c-format
-msgid "Failed to execute command: %s"
-msgstr "Ошибка при выполнении команды: %s"
+#, fuzzy, c-format
+msgid "Could not run command, %s"
+msgstr "Не удалось открыть канал: %s"
 
 #: src/remmina_protocol_widget.c:1347
-msgid "Enter SSH tunnel authentication credentials"
-msgstr "Введите данные авторизаии SSH туннеля"
+msgid "Type in username and password for SSH."
+msgstr ""
 
 #: src/remmina_protocol_widget.c:1403
-msgid "Certificate Details:"
+#, fuzzy
+msgid "Certificate details:"
 msgstr "Детали сертификата:"
 
 #: src/remmina_protocol_widget.c:1404 src/remmina_protocol_widget.c:1425
@@ -743,7 +742,8 @@ msgid "Fingerprint:"
 msgstr "Отпечаток:"
 
 #: src/remmina_protocol_widget.c:1407
-msgid "Accept Certificate?"
+#, fuzzy
+msgid "Accept certificate?"
 msgstr "Принять сертификат?"
 
 #: src/remmina_protocol_widget.c:1424
@@ -753,17 +753,17 @@ msgstr "Сертификат изменён! Детали:"
 
 #: src/remmina_protocol_widget.c:1427
 #, fuzzy
-msgid "Old Fingerprint:"
+msgid "Old fingerprint:"
 msgstr "Старый отпечаток:"
 
 #: src/remmina_protocol_widget.c:1428
 #, fuzzy
-msgid "New Fingerprint:"
+msgid "New fingerprint:"
 msgstr "Новый отпечаток:"
 
 #: src/remmina_protocol_widget.c:1429
 #, fuzzy
-msgid "Accept Changed Certificate?"
+msgid "Accept changed certificate?"
 msgstr "Принять изменённый сертификат?"
 
 #: src/remmina_protocol_widget.c:1571
@@ -772,13 +772,14 @@ msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Прослушивание порта %i на входящее %s подключение…"
 
 #: src/remmina_protocol_widget.c:1596
-msgid "Authentication failed. Trying to reconnect…"
+#, fuzzy
+msgid "Could not authenticate, attempting reconnection…"
 msgstr "Авторизаия не удалась. Пытаюсь подключиться снова…"
 
 #: src/remmina_protocol_widget.c:1675
 #, c-format
-msgid "Protocol plugin %s is not installed."
-msgstr "Протокол модуля %s не установлен."
+msgid "Install the %s protocol plugin first."
+msgstr ""
 
 #: src/remmina_applet_menu_item.c:121
 msgid "Discovered"
@@ -2524,7 +2525,8 @@ msgid "Edit settings"
 msgstr "Изменить настройки"
 
 #: data/ui/remmina_preferences.glade:130
-msgid "Scale quality"
+#, fuzzy
+msgid "Scaling quality"
 msgstr "Масштабировать качество"
 
 #: data/ui/remmina_preferences.glade:144
@@ -2544,15 +2546,17 @@ msgid "Hyper"
 msgstr "Гипер"
 
 #: data/ui/remmina_preferences.glade:163
-msgid "Auto scroll step size"
-msgstr "Шаг авто прокрутки"
+msgid "Step size for auto scroll"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:191
-msgid "Maximum recent items"
+#, fuzzy
+msgid "Maximal amount of recent items"
 msgstr "Максимум текущих пунктов"
 
 #: data/ui/remmina_preferences.glade:280
-msgid "Screenshots folder"
+#, fuzzy
+msgid "Screenshot folder"
 msgstr "Папка для снимков"
 
 #: data/ui/remmina_preferences.glade:292
@@ -2570,7 +2574,7 @@ msgstr "Разрешения экрана"
 
 #: data/ui/remmina_preferences.glade:326
 #, fuzzy
-msgid "Screenshots filename"
+msgid "Screenshot filename"
 msgstr "Имя файла снимков экрана"
 
 #: data/ui/remmina_preferences.glade:338
@@ -2584,13 +2588,14 @@ msgstr ""
 "%Y Год, %m Месяц, %d День, %H Час, %M Минута, %S Секунды (UTC)\n"
 
 #: data/ui/remmina_preferences.glade:356
+#, fuzzy
 msgid ""
-"This is the folder where the connection profiles will be saved, it defaults "
-"to the XDG_USER_DATA"
+"The folder where connection profiles are saved, it defaults to the "
+"XDG_USER_DATA"
 msgstr ""
 "Эта папка для хранения профилей подключения, это основа для XDG_USER_DATA"
 
-#. It's the folder where the profiles are saved
+#. The folder where profiles are saved
 #: data/ui/remmina_preferences.glade:361
 msgid "Remmina data folder"
 msgstr "Папка данных Remmina"
@@ -2664,7 +2669,8 @@ msgid "Always show tabs"
 msgstr "Всегда показывать вкладки"
 
 #: data/ui/remmina_preferences.glade:549
-msgid "Hide toolbar in tabbed interface"
+#, fuzzy
+msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Прятать панель инструментов при включённых вкладках"
 
 #: data/ui/remmina_preferences.glade:570
@@ -2684,7 +2690,8 @@ msgid "Viewport fullscreen"
 msgstr "Полноэкранный"
 
 #: data/ui/remmina_preferences.glade:603
-msgid "Tab interface"
+#, fuzzy
+msgid "Tabbed interface"
 msgstr "Вкладки"
 
 #: data/ui/remmina_preferences.glade:618
@@ -2704,7 +2711,8 @@ msgid "No tabs"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:632
-msgid "Fullscreen on the same monitor as the connection window"
+#, fuzzy
+msgid "Fullscreen on the same screen as the connection window"
 msgstr "Полноэкранный на том же мониторе что и окно соединения"
 
 #: data/ui/remmina_preferences.glade:656
@@ -2720,7 +2728,8 @@ msgid "Fullscreen toolbar visibility"
 msgstr "Видимость полноэкранной панели инструментов"
 
 #: data/ui/remmina_preferences.glade:683
-msgid "Hide Search Bar in main window"
+#, fuzzy
+msgid "Hide the search bar shown in the main window"
 msgstr "Скрыть строку поиска в основном окне"
 
 #: data/ui/remmina_preferences.glade:707
@@ -2732,7 +2741,8 @@ msgid "Show new connection on top of the menu"
 msgstr "Показывать новые соединения сверху меню"
 
 #: data/ui/remmina_preferences.glade:740
-msgid "Hide total count in group menu"
+#, fuzzy
+msgid "Hide total count shown in the group menu"
 msgstr "Скрыть общее количество в групповом меню"
 
 #: data/ui/remmina_preferences.glade:757
@@ -2746,12 +2756,13 @@ msgid "Start in tray upon user login"
 msgstr "Запускать Remmina в трее при входе в систему"
 
 #: data/ui/remmina_preferences.glade:793
-msgid "Dark Tray Icon"
+#, fuzzy
+msgid "Dark tray icon"
 msgstr "Тёмная иконка трея"
 
 #: data/ui/remmina_preferences.glade:797
 #, fuzzy
-msgid "Gives better contrast if your panel is light."
+msgid "Improves contrast if you have a light panel."
 msgstr "Выберете, если у вас панель темы - светлая."
 
 #: data/ui/remmina_preferences.glade:818
@@ -2762,21 +2773,27 @@ msgstr "Мини-программа"
 msgid "Host key"
 msgstr "Host клавиша"
 
+#: data/ui/remmina_preferences.glade:870
+#, fuzzy
+msgid "Show/hide fullscreen"
+msgstr "Полноэкранный с прокруткой"
+
 #: data/ui/remmina_preferences.glade:900
 msgid "Auto-fit window"
 msgstr "Автоподстройка окна"
+
+#: data/ui/remmina_preferences.glade:973
+msgid "Apply/remove scaling"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1003
 msgid "Grab keyboard"
 msgstr "Захват клавиатуры"
 
 #: data/ui/remmina_preferences.glade:1094
-msgid "Show / hide toolbar"
+#, fuzzy
+msgid "Show/hide toolbar"
 msgstr "Показать/спрятать панель инструментов"
-
-#: data/ui/remmina_preferences.glade:1134
-msgid "SCREENSHOT"
-msgstr "СНИМОК ЭКРАНА"
 
 #: data/ui/remmina_preferences.glade:1156
 #: data/ui/remmina_preferences.glade:1166
@@ -2788,8 +2805,8 @@ msgid "Keyboard"
 msgstr "Клавиатура"
 
 #: data/ui/remmina_preferences.glade:1209
-msgid "SSH tunnel local port"
-msgstr "Локальный порт SSH туннеля"
+msgid "Local SSH port"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1233
 msgid "Parse ~/.ssh/config"
@@ -2854,7 +2871,8 @@ msgstr ""
 "отключения TCP соответствующего соединения."
 
 #: data/ui/remmina_preferences.glade:1413
-msgid "SSH Options"
+#, fuzzy
+msgid "SSH options"
 msgstr "Настройки SSH"
 
 #: data/ui/remmina_preferences.glade:1435
@@ -2863,8 +2881,9 @@ msgstr "Мастер-пароль"
 
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
-msgid "Use secret key to authenticate with some widgets"
-msgstr ""
+#, fuzzy
+msgid "Use secret key authentication for some widgets"
+msgstr "Укажите файлы сертификата аутентификации"
 
 #: data/ui/remmina_preferences.glade:1472
 msgid "Use master password"
@@ -2883,7 +2902,8 @@ msgid "File encryption"
 msgstr "Шифрование файлов"
 
 #: data/ui/remmina_preferences.glade:1546
-msgid "Retype password"
+#, fuzzy
+msgid "Repeat the password"
 msgstr "Введите пароль снова"
 
 #: data/ui/remmina_preferences.glade:1623
@@ -2895,14 +2915,12 @@ msgid "Scrollback lines"
 msgstr "Лимит обратной прокрутки строк"
 
 #: data/ui/remmina_preferences.glade:1702
-#, fuzzy
-msgid "Copy to clipboard shortcut"
-msgstr "Комбинация Копирования"
+msgid "Shortcut for copying to clipboard"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1715
-#, fuzzy
-msgid "Paste from clipboard shortcut"
-msgstr "Комбинация Копирования"
+msgid "Shortcut for pasting from clipboard"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1728
 #, fuzzy
@@ -2916,30 +2934,42 @@ msgid "(Host key +)"
 msgstr "(Host клавиша +)"
 
 #: data/ui/remmina_preferences.glade:1795
+#, fuzzy
+msgid "Foreground colour"
+msgstr "Цвет переднего плана"
+
 #: data/ui/remmina_preferences.glade:1809
 msgid "Foreground color"
 msgstr "Цвет переднего плана"
 
 #: data/ui/remmina_preferences.glade:1823
-#: data/ui/remmina_preferences.glade:1890
-msgid "Background color"
+#, fuzzy
+msgid "Background colour"
 msgstr "Цвет заднего плана"
 
 #: data/ui/remmina_preferences.glade:1836
-msgid "Cursor color"
+#, fuzzy
+msgid "Cursor colour"
 msgstr "Цвет курсора"
 
 #: data/ui/remmina_preferences.glade:1849
-msgid "Normal colors"
+#, fuzzy
+msgid "Normal colours"
 msgstr "Обычные цвета"
 
 #: data/ui/remmina_preferences.glade:1862
-msgid "Bright colors"
+#, fuzzy
+msgid "Bright colours"
 msgstr "Яркие цвета"
 
 #: data/ui/remmina_preferences.glade:1876
-msgid "Load color scheme"
+#, fuzzy
+msgid "Load colour scheme"
 msgstr "Загрузить цветовую схему"
+
+#: data/ui/remmina_preferences.glade:1890
+msgid "Background color"
+msgstr "Цвет заднего плана"
 
 #: data/ui/remmina_preferences.glade:1905
 msgid "Cursor Color"
@@ -3041,7 +3071,8 @@ msgid "Pick a light white color"
 msgstr "Выбрать цвет для ярко белого"
 
 #: data/ui/remmina_preferences.glade:2129
-msgid "Use system default font"
+#, fuzzy
+msgid "Use default system font"
 msgstr "Использовать системный шрифт"
 
 #: data/ui/remmina_preferences.glade:2167
@@ -3052,3 +3083,6 @@ msgstr "Разрешить жирный текст"
 msgid "Terminal"
 msgstr "Терминал"
 
+#, fuzzy
+
+#, fuzzy
