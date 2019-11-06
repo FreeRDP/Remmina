@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-06 06:18+0000\n"
-"PO-Revision-Date: 2019-11-06 06:15+0000\n"
+"PO-Revision-Date: 2019-11-06 17:08+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
@@ -704,36 +704,35 @@ msgstr "Kobler til «%s» …"
 
 #: src/remmina_protocol_widget.c:716 src/remmina_protocol_widget.c:796
 #: src/remmina_protocol_widget.c:969
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to %s via SSH…"
-msgstr "Kobler til «%s» …"
+msgstr "Kobler til «%s» via SSH…"
 
 #: src/remmina_protocol_widget.c:846
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection at port %i…"
-msgstr "Venter på en innkommende SSH-tunnel på port %i …"
+msgstr "Venter på innkommende SSH-tilkobling på port %i …"
 
 #: src/remmina_protocol_widget.c:891
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find %s command on the SSH server"
-msgstr "Kommandoen «%s» finnes ikke på SSH-tjeneren"
+msgstr "Fant ikke kommandoen «%s» på SSH-tjeneren"
 
 #: src/remmina_protocol_widget.c:895
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run %s command on the SSH server (status = %i)."
-msgstr "Feil ved kjøring av kommandoen «%s» på SSH-tjeneren (status = %i)."
+msgstr "Kunne ikke kjøre kommandoen «%s» på SSH-tjeneren (status = %i)."
 
 #: src/remmina_protocol_widget.c:902
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command, %s"
-msgstr "Klarte ikke å åpne kanal: %s"
+msgstr "Kunne ikke kjøre kommandoen, %s"
 
 #: src/remmina_protocol_widget.c:1347
 msgid "Type in username and password for SSH."
 msgstr "Skriv inn brukernavn og passord for SSH."
 
 #: src/remmina_protocol_widget.c:1403
-#, fuzzy
 msgid "Certificate details:"
 msgstr "Sertifikatsdetaljer:"
 
@@ -750,27 +749,22 @@ msgid "Fingerprint:"
 msgstr "Fingeravtrykk:"
 
 #: src/remmina_protocol_widget.c:1407
-#, fuzzy
 msgid "Accept certificate?"
-msgstr "Godtar du sertifikatet?"
+msgstr "Godta sertifikat?"
 
 #: src/remmina_protocol_widget.c:1424
-#, fuzzy
 msgid "The certificate changed! Details:"
 msgstr "Sertifikat endret! Detaljer:"
 
 #: src/remmina_protocol_widget.c:1427
-#, fuzzy
 msgid "Old fingerprint:"
 msgstr "Gammelt fingeravtrykk:"
 
 #: src/remmina_protocol_widget.c:1428
-#, fuzzy
 msgid "New fingerprint:"
 msgstr "Nytt fingeravtrykk:"
 
 #: src/remmina_protocol_widget.c:1429
-#, fuzzy
 msgid "Accept changed certificate?"
 msgstr "Godta endret sertifikat?"
 
@@ -780,9 +774,8 @@ msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Lytter til port nr. %i i påvente av en %s-tilkobling …"
 
 #: src/remmina_protocol_widget.c:1596
-#, fuzzy
 msgid "Could not authenticate, attempting reconnection…"
-msgstr "Feil ved identitetsbekreftelse. Prøver å koble til på ny …"
+msgstr "Kunne ikke identitetsbekrefte. Prøver å koble til på ny …"
 
 #: src/remmina_protocol_widget.c:1675
 #, c-format
@@ -918,9 +911,8 @@ msgstr "Kunne ikke importere offentlig SSH-nøkkel: %s"
 
 #: src/remmina_ssh.c:274 src/remmina_ssh.c:506 src/remmina_ssh.c:523
 #: plugins/nx/nx_plugin.c:202
-#, fuzzy
 msgid "SSH credentials"
-msgstr "SSH-identitetsfil"
+msgstr "SSH-identitetbekreftelsesdetaljer"
 
 #: src/remmina_ssh.c:277 src/remmina_ssh.c:484 src/remmina_ssh.c:509
 #: plugins/nx/nx_plugin.c:205
@@ -1001,9 +993,9 @@ msgid "SSH authentication"
 msgstr "SSH-identitetsbekreftelse"
 
 #: src/remmina_ssh.c:661
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SSH session: %s"
-msgstr "Klarte ikke å starte SSH-økt. %s"
+msgstr "Kunne ikke starte SSH-økt. %s"
 
 #: src/remmina_ssh.c:1019 src/remmina_ssh.c:1079
 #, c-format
@@ -1016,14 +1008,14 @@ msgid "Could not connect to the SSH tunnel destination %s"
 msgstr "Klarte ikke å koble til SSH-tunnelmålet: %s"
 
 #: src/remmina_ssh.c:1093
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel, %s"
-msgstr "Klarte ikke å åpne kanal: %s"
+msgstr "Kunne ikke åpne kanal, %s"
 
 #: src/remmina_ssh.c:1099
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to execute %s on SSH server, %%s"
-msgstr "Klarte ikke å kjøre «%s» på SSH-tjeneren: %%s"
+msgstr "Klarte ikke å kjøre «%s» på SSH-tjeneren, %%s"
 
 #: src/remmina_ssh.c:1136 src/remmina_ssh.c:1156 src/remmina_ssh.c:1164
 #, fuzzy, c-format
@@ -1035,7 +1027,7 @@ msgid "The server did not respond."
 msgstr "Tjeneren svarte ikke."
 
 #: src/remmina_ssh.c:1238
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Kan ikke koble til lokal port %i."
 
@@ -1045,7 +1037,7 @@ msgid "Could not run ssh_channel_write(), %s"
 msgstr "Kunne ikke kjøre ssh_channel_write(), %s"
 
 #: src/remmina_ssh.c:1293
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket, %s"
 msgstr "Kunne ikke lese fra tunnel-lyttesocket, %s"
 
@@ -1060,12 +1052,11 @@ msgid "Could not run ssh_channel_read_nonblocking(), %s"
 msgstr "Kunne ikke kjøre ssh_channel_read_nonblocking(), %s"
 
 #: src/remmina_ssh.c:1336
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket, %s"
 msgstr "Kunne ikke sende data til tunnel-lyttesocket, %s"
 
 #: src/remmina_ssh.c:1415
-#, fuzzy
 msgid "Assign a destination port."
 msgstr "Tildel en målport"
 
@@ -1082,12 +1073,10 @@ msgid "Could not listen to local port."
 msgstr "Kunne ikke lytte til lokal port."
 
 #: src/remmina_ssh.c:1447
-#, fuzzy
 msgid "Could not start pthread."
 msgstr "Klarte ikke å starte pthread."
 
 #: src/remmina_ssh.c:1463 src/remmina_ssh.c:1496
-#, fuzzy
 msgid "Could not initialize pthread."
 msgstr "Klarte ikke å igangsette pthread."
 
@@ -1096,9 +1085,9 @@ msgid "Failed to initialize pthread."
 msgstr "Klarte ikke å igangsette pthread."
 
 #: src/remmina_ssh.c:1584
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create SFTP session: %s"
-msgstr "Klarte ikke å lage SFTP-økt: %s"
+msgstr "Klarte ikke å opprette SFTP-økt: %s"
 
 #: src/remmina_ssh.c:1588
 #, fuzzy, c-format
@@ -1179,14 +1168,12 @@ msgid "Start in kiosk mode"
 msgstr "Start i kioskmodus"
 
 #: src/remmina.c:89
-#, fuzzy
 msgid "Create new connection profile"
 msgstr "Opprett en ny tilkoblingsprofil"
 
 #: src/remmina.c:90
-#, fuzzy
 msgid "Show preferences"
-msgstr "Innstillinger"
+msgstr "Vis innstillinger"
 
 #: src/remmina.c:91
 msgid "Run a plugin"
@@ -1209,9 +1196,8 @@ msgid "Start in tray"
 msgstr "Start i systemkurv"
 
 #: src/remmina.c:96
-#, fuzzy
 msgid "Show the application version"
-msgstr "Vis programversjon"
+msgstr "Vis programversjonen"
 
 #: src/remmina.c:97
 msgid "Show version of the application and its plugins"
@@ -2573,7 +2559,6 @@ msgid "Screen resolutions"
 msgstr "Skjermoppløsninger"
 
 #: data/ui/remmina_preferences.glade:326
-#, fuzzy
 msgid "Screenshot filename"
 msgstr "Skjermavbildningsfilnavn"
 
@@ -2610,7 +2595,6 @@ msgid "Remember last view mode"
 msgstr "Husk siste visningsmodus"
 
 #: data/ui/remmina_preferences.glade:418
-#, fuzzy
 msgid "Send periodic usage statistics to Remmina developers"
 msgstr "Send periodisk bruksstatistikk til Remmina-utviklerne"
 
@@ -2619,7 +2603,6 @@ msgid "Send statistics to remmina.org"
 msgstr "Send statistikk til remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
-#, fuzzy
 msgid "Only save generated screenshots, don't copy them to clipboard."
 msgstr "Kun lagre skjermavbildninger, ikke kopier dem til utklippstavle."
 
@@ -2668,9 +2651,8 @@ msgid "Always show tabs"
 msgstr "Alltid vis faner"
 
 #: data/ui/remmina_preferences.glade:549
-#, fuzzy
 msgid "Hide the toolbar shown in the tabbed interface"
-msgstr "Skjul verktøylinje i fanebasert grensesnitt"
+msgstr "Skjul verktøylinje vist i fanebasert grensesnitt"
 
 #: data/ui/remmina_preferences.glade:570
 msgid "Default view mode"
@@ -2690,9 +2672,8 @@ msgid "Viewport fullscreen"
 msgstr "Fullskjermsvisning for visningsområde"
 
 #: data/ui/remmina_preferences.glade:603
-#, fuzzy
 msgid "Tabbed interface"
-msgstr "Fanegrensesnitt"
+msgstr "Fanebasert grensesnitt"
 
 #: data/ui/remmina_preferences.glade:618
 msgid "Tab by groups"
@@ -2711,7 +2692,6 @@ msgid "No tabs"
 msgstr "Ingen faner"
 
 #: data/ui/remmina_preferences.glade:632
-#, fuzzy
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "Fullskjerm på samme skjerm som tilkoblingsvinduet"
 
@@ -2730,9 +2710,8 @@ msgid "Fullscreen toolbar visibility"
 msgstr "Synlighet for fullskjermsverktøyslinje"
 
 #: data/ui/remmina_preferences.glade:683
-#, fuzzy
 msgid "Hide the search bar shown in the main window"
-msgstr "Skjul søkefelt i hovedvindu"
+msgstr "Skjul søkefelt vist i hovedvindu"
 
 #: data/ui/remmina_preferences.glade:707
 msgid "Appearance"
@@ -2756,14 +2735,12 @@ msgid "Start in tray upon user login"
 msgstr "Start i systemkurv ved brukerinnlogging"
 
 #: data/ui/remmina_preferences.glade:793
-#, fuzzy
 msgid "Dark tray icon"
 msgstr "Mørkt systemkurvsikon"
 
 #: data/ui/remmina_preferences.glade:797
-#, fuzzy
 msgid "Improves contrast if you have a light panel."
-msgstr "Velg dette hvis du har et lyst draktpanel."
+msgstr "Gir bedre kontrast hvis du har et lyst panel."
 
 #: data/ui/remmina_preferences.glade:818
 msgid "Applet"
@@ -2774,17 +2751,14 @@ msgid "Host key"
 msgstr "Vertsnøkkel"
 
 #: data/ui/remmina_preferences.glade:870
-#, fuzzy
 msgid "Show/hide fullscreen"
-msgstr "Rullet fullskjermsvisning"
+msgstr "Vis/skjul fullskjermsvisning"
 
 #: data/ui/remmina_preferences.glade:900
-#, fuzzy
 msgid "Auto-fit window"
 msgstr "Tilpass til vindu"
 
 #: data/ui/remmina_preferences.glade:973
-#, fuzzy
 msgid "Apply/remove scaling"
 msgstr "Legg til/fjern skalering"
 
@@ -2793,9 +2767,8 @@ msgid "Grab keyboard"
 msgstr "Fang tastaturtrykk"
 
 #: data/ui/remmina_preferences.glade:1094
-#, fuzzy
 msgid "Show/hide toolbar"
-msgstr "Vis / skjul verktøylinje"
+msgstr "Vis/skjul verktøylinje"
 
 #: data/ui/remmina_preferences.glade:1156
 #: data/ui/remmina_preferences.glade:1166
@@ -2812,7 +2785,6 @@ msgid "Local SSH port"
 msgstr "Lokal SSH-port"
 
 #: data/ui/remmina_preferences.glade:1233
-#, fuzzy
 msgid "Parse ~/.ssh/config"
 msgstr "Fortolk ~/.ssh.config"
 
