@@ -3663,7 +3663,7 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 	if (remmina_pref.periodic_usage_stats_permitted) {
 		g_debug("Stats are allowed, we save the last successful connection date");
 		remmina_file_set_string(cnnobj->remmina_file, "last_success", last_success);
-		g_debug("Last successful connection date is %s ", last_success);
+		g_debug("Last connection was made on %s.", last_success);
 	}
 
 	g_debug("Saving credentials");
@@ -3771,7 +3771,7 @@ gboolean rcw_open_from_filename(const gchar *filename)
 		return TRUE;
 	} else {
 		dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
-						_("File %s is corrupted, unreadable or not found."), filename);
+						_("The file %s is corrupted, unreadable, or could not be found."), filename);
 		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 		gtk_widget_show(dialog);
 		remmina_widget_pool_register(dialog);
@@ -3988,7 +3988,7 @@ void rco_destroy_message_panel(RemminaConnectionObject *cnnobj, RemminaMessagePa
 	g_list_free(childs);
 
 	if (cc == NULL) {
-		printf("Remmina: Warning, request to destroy a RemminaMessagePanel which is not on the page\n");
+		printf("Remmina: Warning, request to destroy a RemminaMessagePanel, which is not on the page\n");
 		return;
 	}
 	was_visible = gtk_widget_is_visible(GTK_WIDGET(mp));
