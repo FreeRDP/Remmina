@@ -302,7 +302,7 @@ static void remmina_mpchange_searchfield_changed(GtkSearchEntry *se, gpointer us
 static void remmina_mpchange_stopsearch(GtkSearchEntry *entry, gpointer user_data)
 {
 	TRACE_CALL(__func__);
-	/* The stop-search signal is emitted when pressing ESC on a GtkSearchEntry. We end the dialog. */
+	/* The stop-search signal is emitted when pressing Esc on a GtkSearchEntry. We end the dialog. */
 	struct mpchanger_params *mpcp = (struct mpchanger_params *)user_data;
 	gtk_dialog_response(mpcp->dialog, 1);
 }
@@ -320,14 +320,14 @@ static gboolean remmina_file_multipasswd_changer_mt(gpointer d)
 
 	mainwindow = remmina_main_get_window();
 
-	/* The multiple password changer works only when a secret plugin is available */
+	/* The multiple password changer works only when a secrecy plugin is available */
 	initerror = NULL;
 	secret_plugin = remmina_plugin_manager_get_secret_plugin();
 	if (secret_plugin == NULL) {
-		initerror = _("The multi password changer cannot work without a secret plugin.\n");
+		initerror = _("The multi password changer requires a secrecy plugin.\n");
 	}else {
 		if (!secret_plugin->is_service_available()) {
-			initerror = _("The multi password changer does not work without a secret service.\n");
+			initerror = _("The multi password changer requires a secrecy service.\n");
 		}
 	}
 	if (initerror) {
