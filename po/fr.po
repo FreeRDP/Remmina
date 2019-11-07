@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-07 00:16+0000\n"
-"PO-Revision-Date: 2019-10-13 17:52+0000\n"
-"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
+"PO-Revision-Date: 2019-11-09 00:04+0000\n"
+"Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
 "Language: fr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Weblate 3.10-dev\n"
 
 #. Profile: Protocol
 #: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1475
@@ -187,12 +187,12 @@ msgid "_Clear"
 msgstr "_Effacer"
 
 #: src/rcw.c:585
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr ""
-"Il y a %i connexions actives dans la fenêtre courante. Êtes‐vous sûr(e) de "
-"vouloir quitter ?"
+"Êtes‐vous sûr(e) de vouloir clore les %i connexions actives de la fenêtre "
+"courante ?"
 
 #: src/rcw.c:1291
 msgid "Viewport fullscreen mode"
@@ -219,6 +219,8 @@ msgstr "Entrées clavier"
 #: src/rcw.c:1931
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
+"Désactiver la mise à l’échelle afin d’éviter l’étirement des captures "
+"d’écran."
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -274,7 +276,7 @@ msgid "Disconnect"
 msgstr "Se déconnecter"
 
 #: src/rcw.c:3774
-#, fuzzy, c-format
+#, c-format
 msgid "The file %s is corrupted, unreadable, or could not be found."
 msgstr "Le fichier %s est corrompu, non accessible en lecture ou introuvable."
 
@@ -293,18 +295,16 @@ msgid "Resetting passwords, please wait…"
 msgstr "Réinitialisation des mots de passe, veuillez patienter…"
 
 #: src/remmina_mpchange.c:327
-#, fuzzy
 msgid "The multi password changer requires a secrecy plugin.\n"
 msgstr ""
-"Le modificateur de mots de passe multiples ne peut pas fonctionner sans un "
-"greffon « secret ».\n"
+"Le modificateur de mots de passe multiples nécessite un greffon de connexion "
+"à un gestionnaire de mots de passe.\n"
 
 #: src/remmina_mpchange.c:330
-#, fuzzy
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr ""
-"Le modificateur de mots de passe multiples ne peut pas fonctionner sans "
-"service de gestion des mots de passe tel que GNOME Keyring.\n"
+"Le modificateur de mots de passe multiples nécessite un gestionnaire de mots "
+"de passe.\n"
 
 #: src/remmina_mpchange.c:419
 #, c-format
@@ -385,7 +385,6 @@ msgid "Delete files on server"
 msgstr "Supprimer les fichiers sur le serveur"
 
 #: src/remmina_ftp_client.c:903 src/remmina_ftp_client.c:972
-#, fuzzy
 msgid "Filename"
 msgstr "Nom du fichier"
 
@@ -476,7 +475,6 @@ msgstr ""
 "</big>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
 msgid ""
 "<tt><big>* command in PATH args %h\n"
 "* /path/to/foo -options %h %u\n"
@@ -689,12 +687,11 @@ msgstr "Fichier %s introuvable."
 
 #: src/remmina_protocol_widget.c:248
 msgid "Connect via SSH from a new terminal"
-msgstr ""
+msgstr "Se connecter via SSH depuis a nouveau terminal"
 
 #: src/remmina_protocol_widget.c:254
-#, fuzzy
 msgid "Open SFTP transfer"
-msgstr "Ouvrir un transfert de fichier sécurisé…"
+msgstr "Ouvrir un transfert de fichier sécurisé SFTP"
 
 #: src/remmina_protocol_widget.c:282
 msgid "Executing external commands…"
@@ -707,36 +704,36 @@ msgstr "Connexion à « %s » en cours…"
 
 #: src/remmina_protocol_widget.c:716 src/remmina_protocol_widget.c:796
 #: src/remmina_protocol_widget.c:969
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to %s via SSH…"
-msgstr "Connexion à « %s » en cours…"
+msgstr "Connexion à « %s » via SSH…"
 
 #: src/remmina_protocol_widget.c:846
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection at port %i…"
-msgstr "En attente d’un tunnel SSH entrant sur le port %i…"
+msgstr "En attente d’une connexion SSH entrante sur le port %i…"
 
 #: src/remmina_protocol_widget.c:891
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find %s command on the SSH server"
-msgstr "Commande %s non trouvée sur le serveur SSH"
+msgstr "Impossible de trouver la commande « %s » sur le serveur SSH"
 
 #: src/remmina_protocol_widget.c:895
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run %s command on the SSH server (status = %i)."
-msgstr "Échec de la commande %s sur le serveur SSH (statut = %i)."
+msgstr ""
+"L’exécution de la commande %s sur le serveur SSH a échoué (statut = %i)."
 
 #: src/remmina_protocol_widget.c:902
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command, %s"
-msgstr "Impossible d’ouvrir le canal : %s"
+msgstr "Impossible d’exécuter la commande, %s"
 
 #: src/remmina_protocol_widget.c:1347
 msgid "Type in username and password for SSH."
-msgstr ""
+msgstr "Entrez le nom d’utilisateur SSH et le mot de passe."
 
 #: src/remmina_protocol_widget.c:1403
-#, fuzzy
 msgid "Certificate details:"
 msgstr "Détails du certificat :"
 
@@ -753,27 +750,22 @@ msgid "Fingerprint:"
 msgstr "Empreinte :"
 
 #: src/remmina_protocol_widget.c:1407
-#, fuzzy
 msgid "Accept certificate?"
 msgstr "Accepter le certificat ?"
 
 #: src/remmina_protocol_widget.c:1424
-#, fuzzy
 msgid "The certificate changed! Details:"
 msgstr "Le certificat a changé ! Détails :"
 
 #: src/remmina_protocol_widget.c:1427
-#, fuzzy
 msgid "Old fingerprint:"
 msgstr "Ancienne empreinte :"
 
 #: src/remmina_protocol_widget.c:1428
-#, fuzzy
 msgid "New fingerprint:"
 msgstr "Nouvelle empreinte :"
 
 #: src/remmina_protocol_widget.c:1429
-#, fuzzy
 msgid "Accept changed certificate?"
 msgstr "Acceptez‐vous le nouveau certificat ?"
 
@@ -783,14 +775,13 @@ msgid "Listening on port %i for an incoming %s connection…"
 msgstr "À l’écoute sur le port %i d’une connexion %s entrante…"
 
 #: src/remmina_protocol_widget.c:1596
-#, fuzzy
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "L’authentification a échoué. Nouvelle tentative de connexion…"
 
 #: src/remmina_protocol_widget.c:1675
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr ""
+msgstr "Veuillez d’abord installer le greffon pour le protocole %s."
 
 #: src/remmina_applet_menu_item.c:121
 msgid "Discovered"
@@ -923,9 +914,8 @@ msgstr "L’importation de la clef SSH publique a échoué : %s"
 
 #: src/remmina_ssh.c:274 src/remmina_ssh.c:506 src/remmina_ssh.c:523
 #: plugins/nx/nx_plugin.c:202
-#, fuzzy
 msgid "SSH credentials"
-msgstr "Fichier d’identité SSH"
+msgstr "Identifiants SSH"
 
 #: src/remmina_ssh.c:277 src/remmina_ssh.c:484 src/remmina_ssh.c:509
 #: plugins/nx/nx_plugin.c:205
@@ -996,46 +986,45 @@ msgstr "Mot de passe SSH"
 
 #: src/remmina_ssh.c:488
 msgid "SSH Kerberos/GSSAPI"
-msgstr "SSH Kerberos/GSSAPI"
+msgstr "SSH avec Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:545
-#, fuzzy
 msgid "SSH authentication"
 msgstr "Authentification SSH"
 
 #: src/remmina_ssh.c:661
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SSH session: %s"
-msgstr "Échec de l’initialisation de la session SSH : %s"
+msgstr "Impossible d’établir la connexion SSH : %s"
 
 #: src/remmina_ssh.c:1019 src/remmina_ssh.c:1079
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel, %s"
-msgstr "Impossible de créer le canal : %s"
+msgstr "Impossible de créer le canal, %s"
 
 #: src/remmina_ssh.c:1029
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to the SSH tunnel destination %s"
-msgstr "Échec de la connexion à la destination du tunnel SSH : %s"
+msgstr "Échec de la connexion à la cible %s à travers le tunnel SSH"
 
 #: src/remmina_ssh.c:1093
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel, %s"
-msgstr "Impossible d’ouvrir le canal : %s"
+msgstr "Impossible d’ouvrir le canal, %s"
 
 #: src/remmina_ssh.c:1099
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to execute %s on SSH server, %%s"
-msgstr "Impossible d’exécuter %s sur le serveur SSH : %%s"
+msgstr "Impossible d’exécuter %s sur le serveur SSH, %%s"
 
 #: src/remmina_ssh.c:1136 src/remmina_ssh.c:1156 src/remmina_ssh.c:1164
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request port forwarding, %s"
-msgstr "Échec de la demande de redirection de port : %s"
+msgstr "Échec de la demande de redirection de port, %s"
 
 #: src/remmina_ssh.c:1199
 msgid "The server did not respond."
-msgstr ""
+msgstr "Le serveur n’a pas répondu."
 
 #: src/remmina_ssh.c:1238
 #, c-format
@@ -1045,56 +1034,49 @@ msgstr "Impossible de se connecter au port local %i."
 #: src/remmina_ssh.c:1287
 #, c-format
 msgid "Could not run ssh_channel_write(), %s"
-msgstr ""
+msgstr "Impossible d’exécuter ssh_channel_write(), %s"
 
 #: src/remmina_ssh.c:1293
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket, %s"
-msgstr ""
-"la lecture sur le socket à l’écoute du tunnel a retourné une erreur : %s"
+msgstr "Impossible de lire sur le socket à l’écoute du tunnel, %s"
 
 #: src/remmina_ssh.c:1312
 #, c-format
 msgid "Could not run ssh_channel_poll(), %s"
-msgstr ""
+msgstr "Impossible d’exécuter ssh_channel_poll(), %s"
 
 #: src/remmina_ssh.c:1318
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_read_nonblocking(), %s"
-msgstr "la fonction ssh_channel_read_nonblocking() a retourné une erreur : %s"
+msgstr "Impossible d’exécuter la fonction ssh_channel_read_nonblocking(), %s"
 
 #: src/remmina_ssh.c:1336
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket, %s"
-msgstr ""
-"la lecture sur le socket à l’écoute du tunnel a retourné une erreur : %s"
+msgstr "Impossible d’envoyer des données au socket d’écoute du tunnel, %s"
 
 #: src/remmina_ssh.c:1415
 msgid "Assign a destination port."
-msgstr ""
+msgstr "Attribuer un port de destination."
 
 #: src/remmina_ssh.c:1422
-#, fuzzy
 msgid "Could not create socket."
 msgstr "Impossible de créer le socket."
 
 #: src/remmina_ssh.c:1432
-#, fuzzy
 msgid "Could not bind server socket to local port."
-msgstr "Impossible de se connecter au port local %i."
+msgstr "Impossible de lier le socket serveur au port local."
 
 #: src/remmina_ssh.c:1438
-#, fuzzy
 msgid "Could not listen to local port."
-msgstr "Impossible d’écouter sur le port local."
+msgstr "Impossible d’écouter le port local."
 
 #: src/remmina_ssh.c:1447
-#, fuzzy
 msgid "Could not start pthread."
-msgstr "Impossible d’initialiser le fil d’exécution POSIX (pthread)."
+msgstr "Impossible de démarrer le fil d’exécution POSIX (pthread)."
 
 #: src/remmina_ssh.c:1463 src/remmina_ssh.c:1496
-#, fuzzy
 msgid "Could not initialize pthread."
 msgstr "Impossible d’initialiser le fil d’exécution POSIX (pthread)."
 
@@ -1103,27 +1085,26 @@ msgid "Failed to initialize pthread."
 msgstr "Impossible d’initialiser le fil d’exécution POSIX (pthread)."
 
 #: src/remmina_ssh.c:1584
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create SFTP session: %s"
-msgstr "Échec de la création de la session SFTP : %s"
+msgstr "Impossible d’établir la session SFTP : %s"
 
 #: src/remmina_ssh.c:1588
-#, fuzzy, c-format
+#, c-format
 msgid "Could not initialize SFTP session: %s"
 msgstr "Impossible d’initialiser la session SFTP : %s"
 
 #: src/remmina_ssh.c:1672
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel: %s"
 msgstr "Impossible d’ouvrir le canal : %s"
 
 #: src/remmina_ssh.c:1701
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request shell: %s"
 msgstr "Impossible d’obtenir un shell : %s"
 
 #: src/remmina_ssh.c:1794
-#, fuzzy
 msgid "Could not create PTY device."
 msgstr "Impossible de créer un pseudo‐terminal."
 
@@ -1181,9 +1162,8 @@ msgstr ""
 "format géré par un greffon)"
 
 #: src/remmina.c:88
-#, fuzzy
 msgid "Start in kiosk mode"
-msgstr "Démarrer Remmina en mode Kiosque"
+msgstr "Démarrer Remmina en mode kiosque"
 
 #: src/remmina.c:89
 msgid "Create new connection profile"
@@ -1210,7 +1190,6 @@ msgid "Use default protocol (for --new)"
 msgstr "Utiliser le protocole par défaut (pour les --new)"
 
 #: src/remmina.c:95
-#, fuzzy
 msgid "Start in tray"
 msgstr "Démarrer en icône de notification"
 
@@ -1403,9 +1382,8 @@ msgid "SSH - Secure Shell"
 msgstr "SSH — Shell sécurisé"
 
 #: plugins/spice/spice_plugin.c:239
-#, fuzzy
 msgid "Enter SPICE password"
-msgstr "Mot de passe principal"
+msgstr "Entrez le mot de passe SPICE"
 
 #: plugins/spice/spice_plugin.c:274
 #, c-format
@@ -1500,7 +1478,7 @@ msgstr "Transfert effectué"
 #: plugins/spice/spice_plugin_file_transfer.c:224
 #, c-format
 msgid "The %s file has been transferred"
-msgstr ""
+msgstr "Le fichier %s a été transféré"
 
 #: plugins/spice/spice_plugin_usb.c:54
 msgid "_Close"
@@ -1511,14 +1489,12 @@ msgid "USB redirection error"
 msgstr "Erreur de redirection USB"
 
 #: plugins/rdp/rdp_plugin.c:577
-#, fuzzy
 msgid "Enter RDP authentication credentials"
 msgstr "Entrez vos paramètres d’authentification"
 
 #: plugins/rdp/rdp_plugin.c:641
-#, fuzzy
 msgid "Enter RDP gateway authentication credentials"
-msgstr "Entrez vos paramètres d’authentification"
+msgstr "Entrez les paramètres d’authentification sur la passerelle RDP"
 
 #: plugins/rdp/rdp_plugin.c:1494
 #, c-format
@@ -1638,6 +1614,8 @@ msgstr "Le serveur %s a refusé la connexion."
 #, c-format
 msgid "The remote desktop gateway %s denied user %s\\%s access due to policy."
 msgstr ""
+"La passerelle de bureau à distance %s a refusé l’accès à l’utilisateur %s\\%"
+"s en raison de sa politique de sécurité."
 
 #: plugins/rdp/rdp_plugin.c:1588
 #, c-format
@@ -1744,22 +1722,18 @@ msgid "Gateway transport type"
 msgstr "Type de transport de la passerelle"
 
 #: plugins/rdp/rdp_plugin.c:1958
-#, fuzzy
 msgid "Remote Desktop Gateway server"
-msgstr "Passerelle RDP"
+msgstr "Passerelle d’accès bureau à distance"
 
 #: plugins/rdp/rdp_plugin.c:1959
-#, fuzzy
 msgid "Remote Desktop Gateway username"
 msgstr "Nom d’utilisateur sur la passerelle RDP"
 
 #: plugins/rdp/rdp_plugin.c:1960
-#, fuzzy
 msgid "Remote Desktop Gateway password"
 msgstr "Mot de passe sur la passerelle RDP"
 
 #: plugins/rdp/rdp_plugin.c:1961
-#, fuzzy
 msgid "Remote Desktop Gateway domain"
 msgstr "Domaine de la passerelle RDP"
 
@@ -1787,7 +1761,6 @@ msgid "Local serial name"
 msgstr "Nom du port série local"
 
 #: plugins/rdp/rdp_plugin.c:1967
-#, fuzzy
 msgid "COM1, COM2, etc."
 msgstr "COM1, COM2, etc."
 
@@ -1804,7 +1777,6 @@ msgid "Local serial path"
 msgstr "Chemin d’accès du port série local"
 
 #: plugins/rdp/rdp_plugin.c:1969
-#, fuzzy
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1, etc."
 
@@ -1841,7 +1813,6 @@ msgid "Redirect local microphone"
 msgstr "Rediriger le microphone local"
 
 #: plugins/rdp/rdp_plugin.c:1979
-#, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "Désactiver la synchro du presse‐papiers"
 
@@ -1850,7 +1821,6 @@ msgid "Ignore certificate"
 msgstr "Ignorer le certificat"
 
 #: plugins/rdp/rdp_plugin.c:1981
-#, fuzzy
 msgid "Turn off password storing"
 msgstr "Désactiver l’enregistrement des mots de passe"
 
@@ -1860,20 +1830,17 @@ msgstr "Attacher à la console (Windows 2003 / 2003 R2)"
 
 #: plugins/rdp/rdp_plugin.c:1983
 msgid "Turn off fast-path"
-msgstr ""
+msgstr "Désactiver le mode fast‐path"
 
 #: plugins/rdp/rdp_plugin.c:1984
-#, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Détection du serveur par la passerelle RDP"
 
 #: plugins/rdp/rdp_plugin.c:1986
-#, fuzzy
 msgid "Turn on proxy support"
-msgstr "Activer la prise en charge des greffons"
+msgstr "Activer la prise en charge des serveurs mandataires (proxy)"
 
 #: plugins/rdp/rdp_plugin.c:1988
-#, fuzzy
 msgid "Turn off automatic reconnection"
 msgstr "Désactiver la reconnexion automatique"
 
@@ -1982,9 +1949,9 @@ msgstr "Orientation du bureau"
 
 #. Draw text
 #: plugins/rdp/rdp_event.c:299
-#, fuzzy, c-format
+#, c-format
 msgid "Reconnection attempt %d of %d…"
-msgstr "Reconnexion en cours. Essai %d sur %d…"
+msgstr "Tentative de reconnexion %d sur %d…"
 
 #: plugins/st/st_plugin.c:237
 msgid "Terminal Emulator"
@@ -2035,9 +2002,8 @@ msgid "Execute a command"
 msgstr "Exécute une commande"
 
 #: plugins/nx/nx_plugin.c:367
-#, fuzzy
 msgid "Enter NX authentication credentials"
-msgstr "Entrez vos paramètres d’authentification"
+msgstr "Entrez vos paramètres d’authentification NX"
 
 #: plugins/nx/nx_plugin.c:608 plugins/xdmcp/xdmcp_plugin.c:264
 #, c-format
@@ -2117,14 +2083,12 @@ msgid "True color (24 bit)"
 msgstr "Vraie couleur (24 bits)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:372
-#, fuzzy
 msgid "Disconnect after first session"
-msgstr "Se déconnecter à la fin de la session"
+msgstr "Se déconnecter après la première session"
 
 #: plugins/xdmcp/xdmcp_plugin.c:373
-#, fuzzy
 msgid "Listen for TCP connections"
-msgstr "Ouvrir la connexion"
+msgstr "Écouter les connexions TCP"
 
 #. Type
 #. Name
@@ -2133,24 +2097,20 @@ msgid "XDMCP - X Remote Session"
 msgstr "XDMCP — session X distante"
 
 #: plugins/vnc/vnc_plugin.h:41
-#, fuzzy
 msgid "Remmina VNC Plugin"
-msgstr "Greffon navigateur pour Remmina"
+msgstr "Greffon VNC pour Remmina"
 
 #: plugins/vnc/vnc_plugin.h:46
-#, fuzzy
 msgid "Remmina VNC listener Plugin"
-msgstr "Greffon navigateur pour Remmina"
+msgstr "Greffon VNC en mode écoute pour Remmina"
 
 #: plugins/vnc/vnc_plugin.c:734
-#, fuzzy
 msgid "Enter VNC password"
-msgstr "Mot de passe principal"
+msgstr "Mot de passe VNC"
 
 #: plugins/vnc/vnc_plugin.c:787
-#, fuzzy
 msgid "Enter VNC authentication credentials"
-msgstr "Entrez vos paramètres d’authentification"
+msgstr "Entrez vos paramètres d’authentification VNC"
 
 #: plugins/vnc/vnc_plugin.c:890
 msgid "Unable to connect to VNC server"
@@ -2223,9 +2183,8 @@ msgid "File downloaded"
 msgstr "Fichier téléchargé"
 
 #: plugins/www/www_plugin.c:485
-#, fuzzy
 msgid "Enter WWW authentication credentials"
-msgstr "Entrez vos paramètres d’authentification"
+msgstr "Entrez vos paramètres d’authentification Web"
 
 #: plugins/www/www_plugin.c:791
 msgid "URL"
@@ -2236,7 +2195,6 @@ msgid "http://address or https://address"
 msgstr "http://adresse or https://adresse"
 
 #: plugins/www/www_plugin.c:808
-#, fuzzy
 msgid "User agent"
 msgstr "Agent utilisateur (User agent)"
 
@@ -2249,7 +2207,6 @@ msgid "Turn on smooth scrolling"
 msgstr "Activer le défilement doux"
 
 #: plugins/www/www_plugin.c:811
-#, fuzzy
 msgid "Turn on spatial navigation"
 msgstr "Activer la navigation spatiale"
 
@@ -2262,18 +2219,16 @@ msgid "Turn on WebGL support"
 msgstr "Activer la prise en charge de WebGL"
 
 #: plugins/www/www_plugin.c:814
-#, fuzzy
 msgid "Turn on HTML5 audio support"
-msgstr "Activer la prise en charge de WebAudio"
+msgstr "Activer la prise en charge de l’audio HTML5"
 
 #: plugins/www/www_plugin.c:815
 msgid "Ignore TLS errors"
 msgstr "Ignorer les erreurs TLS"
 
 #: plugins/www/www_plugin.c:816
-#, fuzzy
 msgid "No password storage"
-msgstr "Désactiver l’enregistrement des mots de passe"
+msgstr "Ne pas enregistrer les mots de passe"
 
 #: plugins/www/www_plugin.c:818
 msgid "Turn on Web Inspector"
@@ -2317,6 +2272,9 @@ msgid ""
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics to remmina.org"
 msgstr ""
+"Envoyer des statistiques <b><a href=\"https://remmina.gitlab.io/"
+"remminadoc.gitlab.io/remmina__stats_8c.html#details\" title=\"Statistiques d’"
+"utilisation de Remmina\">anonymisées</a></b> à remmina.org"
 
 #: data/ui/remmina_news.glade:133
 msgid "Make Remmina the default Remote Desktop Client"
@@ -2331,7 +2289,6 @@ msgid "<big>Important settings</big>"
 msgstr "<big>Paramètres importants</big>"
 
 #: data/ui/remmina_news.glade:192
-#, fuzzy
 msgid ""
 "<span>\n"
 "<b>You are great for using copylefted libre software, <a href=\"https://"
@@ -2340,9 +2297,10 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>Remmina est développé par de braves contributeurs pendant leur temps "
-"libre, soyez brave vous aussi <a href=\"https://remmina.org/donations/\" "
-"title=\"Faire un don à Remmina\">en récompensant nos héros !</a></b>\n"
+"<b>Vous avez la clairvoyance d’utiliser un logiciel libre, envisagez donc de "
+"<a href=\"https://remmina.org/donations/\" title=\"Dons fantastiques faits à "
+"Remmina\">faire un don</a> afin de nous gratifier et de rendre le logiciel "
+"encore meilleur.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:212
@@ -2350,7 +2308,6 @@ msgid "<big>Contribute</big>"
 msgstr "<big>Contribuer</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:46
-#, fuzzy
 msgid ""
 "It seems that Remmina is running on your system as a SNAP package. To enable "
 "access to some important features, like password saving in your keyring and "
@@ -2528,9 +2485,8 @@ msgid "Edit settings"
 msgstr "Modifier les paramètres"
 
 #: data/ui/remmina_preferences.glade:130
-#, fuzzy
 msgid "Scaling quality"
-msgstr "Type de redimensionnement"
+msgstr "Qualité du redimensionnement"
 
 #: data/ui/remmina_preferences.glade:144
 msgid "Nearest"
@@ -2550,21 +2506,21 @@ msgstr "hyper‐interpolation"
 
 #: data/ui/remmina_preferences.glade:163
 msgid "Step size for auto scroll"
-msgstr ""
+msgstr "Taille des pas du défilement automatique"
 
 #: data/ui/remmina_preferences.glade:191
-#, fuzzy
 msgid "Maximal amount of recent items"
 msgstr "Nombre maximum d’éléments récents"
 
 #: data/ui/remmina_preferences.glade:280
-#, fuzzy
 msgid "Screenshot folder"
 msgstr "Dossier des captures d’écran"
 
 #: data/ui/remmina_preferences.glade:292
 msgid "Choose the a folder to save screenshots from Remmina in."
 msgstr ""
+"Choisissez un dossier dans lequel enregistrer les captures d’écran de "
+"Remmina."
 
 #: data/ui/remmina_preferences.glade:295
 msgid "Select a Folder"
@@ -2575,9 +2531,8 @@ msgid "Screen resolutions"
 msgstr "Définitions d’affichage"
 
 #: data/ui/remmina_preferences.glade:326
-#, fuzzy
 msgid "Screenshot filename"
-msgstr "Noms de fichier des captures d’écran"
+msgstr "Nom de fichier de la capture d’écran"
 
 #: data/ui/remmina_preferences.glade:338
 msgid ""
@@ -2591,13 +2546,12 @@ msgstr ""
 "(temps universel).\n"
 
 #: data/ui/remmina_preferences.glade:356
-#, fuzzy
 msgid ""
 "The folder where connection profiles are saved, it defaults to the "
 "XDG_USER_DATA"
 msgstr ""
-"Détermine le répertoire dans lequel les données des connexions sont "
-"sauvegardées, défini par défaut par la variable d’environnement XDG_USER_DATA"
+"Répertoire dans lequel les données des connexions sont sauvegardées, il est "
+"défini par défaut par la variable d’environnement XDG_USER_DATA"
 
 #. The folder where profiles are saved
 #: data/ui/remmina_preferences.glade:361
@@ -2613,7 +2567,6 @@ msgid "Remember last view mode"
 msgstr "Se rappeler du précédent mode d’affichage"
 
 #: data/ui/remmina_preferences.glade:418
-#, fuzzy
 msgid "Send periodic usage statistics to Remmina developers"
 msgstr ""
 "Envoyer périodiquement des statistiques d’utilisation aux développeurs de "
@@ -2626,11 +2579,12 @@ msgstr "Envoyer des données statistiques au site remmina.org"
 #: data/ui/remmina_preferences.glade:462
 msgid "Only save generated screenshots, don't copy them to clipboard."
 msgstr ""
+"Sauvegarder les captures d’écran générées, mais ne pas les copier dans le "
+"presse‑papiers."
 
 #: data/ui/remmina_preferences.glade:467
-#, fuzzy
 msgid "Prevent screenshots from entering clipboard"
-msgstr "Interdire les captures d’écran dans le presse‐papiers"
+msgstr "Empêcher la copie des captures d’écran dans le presse‑papiers"
 
 #: data/ui/remmina_preferences.glade:479
 msgid ""
@@ -2641,12 +2595,10 @@ msgstr ""
 "Remmina à l’aide d’une chaîne de formatage."
 
 #: data/ui/remmina_preferences.glade:483
-#, fuzzy
 msgid "Profile filename template"
-msgstr "Format des noms de fichier des profils"
+msgstr "Nomenclature des noms des fichiers de profil"
 
 #: data/ui/remmina_preferences.glade:495
-#, fuzzy
 msgid ""
 "%G Group name (slash will be converted to - automatically)\n"
 "%P Protocol name\n"
@@ -2676,7 +2628,6 @@ msgid "Always show tabs"
 msgstr "Toujours afficher les onglets"
 
 #: data/ui/remmina_preferences.glade:549
-#, fuzzy
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Masquer la barre d’outils si des onglets sont utilisés"
 
@@ -2697,7 +2648,6 @@ msgid "Viewport fullscreen"
 msgstr "vue en plein écran"
 
 #: data/ui/remmina_preferences.glade:603
-#, fuzzy
 msgid "Tabbed interface"
 msgstr "Interface avec onglets"
 
@@ -2715,10 +2665,9 @@ msgstr "onglet pour chaque connexion"
 
 #: data/ui/remmina_preferences.glade:621
 msgid "No tabs"
-msgstr ""
+msgstr "Sans onglets"
 
 #: data/ui/remmina_preferences.glade:632
-#, fuzzy
 msgid "Fullscreen on the same screen as the connection window"
 msgstr ""
 "Afficher en plein écran sur le même écran que celui de la fenêtre de "
@@ -2737,7 +2686,6 @@ msgid "Fullscreen toolbar visibility"
 msgstr "Affichage de la barre d’outils"
 
 #: data/ui/remmina_preferences.glade:683
-#, fuzzy
 msgid "Hide the search bar shown in the main window"
 msgstr "Masquer la barre de recherche dans la fenêtre principale"
 
@@ -2750,32 +2698,26 @@ msgid "Show new connection on top of the menu"
 msgstr "Afficher « Nouvelle connexion » en tête du menu"
 
 #: data/ui/remmina_preferences.glade:740
-#, fuzzy
 msgid "Hide total count shown in the group menu"
-msgstr "Masquer le nombre d’éléments des groupes de connexions"
+msgstr "Masquer le nombre d’éléments des groupes"
 
 #: data/ui/remmina_preferences.glade:757
-#, fuzzy
 msgid "No tray icon"
-msgstr "Désactiver l’icône en zone notification"
+msgstr "Désactiver l’icône en zone de notification"
 
 #: data/ui/remmina_preferences.glade:775
-#, fuzzy
 msgid "Start in tray upon user login"
 msgstr ""
 "Démarrer Remmina en zone de notification à l’ouverture de la session de "
 "l’utilisateur"
 
 #: data/ui/remmina_preferences.glade:793
-#, fuzzy
 msgid "Dark tray icon"
-msgstr "Icône de notificaton sombre"
+msgstr "Icône de notification sombre"
 
 #: data/ui/remmina_preferences.glade:797
-#, fuzzy
 msgid "Improves contrast if you have a light panel."
-msgstr ""
-"Choisissez une icône sombre si votre thème a une zone de notification claire."
+msgstr "Améliore le contraste en cas de zone de notification claire."
 
 #: data/ui/remmina_preferences.glade:818
 msgid "Applet"
@@ -2786,9 +2728,8 @@ msgid "Host key"
 msgstr "Touche hôte"
 
 #: data/ui/remmina_preferences.glade:870
-#, fuzzy
 msgid "Show/hide fullscreen"
-msgstr "plein écran avec barres de défilement"
+msgstr "Afficher/masquer le plein écran"
 
 #: data/ui/remmina_preferences.glade:900
 msgid "Auto-fit window"
@@ -2796,14 +2737,13 @@ msgstr "Ajustement automatique de la taille de la fenêtre"
 
 #: data/ui/remmina_preferences.glade:973
 msgid "Apply/remove scaling"
-msgstr ""
+msgstr "(Dés)activer le redimensionnement"
 
 #: data/ui/remmina_preferences.glade:1003
 msgid "Grab keyboard"
 msgstr "Capturer les entrées clavier"
 
 #: data/ui/remmina_preferences.glade:1094
-#, fuzzy
 msgid "Show/hide toolbar"
 msgstr "Commuter l’affichage de la barre d’outils"
 
@@ -2818,7 +2758,7 @@ msgstr "Clavier"
 
 #: data/ui/remmina_preferences.glade:1209
 msgid "Local SSH port"
-msgstr ""
+msgstr "Port SSH local"
 
 #: data/ui/remmina_preferences.glade:1233
 msgid "Parse ~/.ssh/config"
@@ -2886,7 +2826,6 @@ msgstr ""
 "connexion associée."
 
 #: data/ui/remmina_preferences.glade:1413
-#, fuzzy
 msgid "SSH options"
 msgstr "Options SSH"
 
@@ -2896,9 +2835,8 @@ msgstr "Mot de passe principal"
 
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
-#, fuzzy
 msgid "Use secret key authentication for some widgets"
-msgstr "Entrez les fichiers des certificats d’authentification"
+msgstr "Utiliser une clef d’authentification avec certains widgets"
 
 #: data/ui/remmina_preferences.glade:1472
 msgid "Use master password"
@@ -2917,7 +2855,6 @@ msgid "File encryption"
 msgstr "Chiffrement des fichiers"
 
 #: data/ui/remmina_preferences.glade:1546
-#, fuzzy
 msgid "Repeat the password"
 msgstr "Tapez à nouveau le mot de passe"
 
@@ -2931,11 +2868,11 @@ msgstr "Nombre de lignes d’historique"
 
 #: data/ui/remmina_preferences.glade:1702
 msgid "Shortcut for copying to clipboard"
-msgstr ""
+msgstr "Raccourci clavier pour copier dans le presse‑papiers"
 
 #: data/ui/remmina_preferences.glade:1715
 msgid "Shortcut for pasting from clipboard"
-msgstr ""
+msgstr "Raccourci clavier pour coller le contenu du presse‑papiers"
 
 #: data/ui/remmina_preferences.glade:1728
 msgid "Select all shortcuts"
@@ -2948,36 +2885,30 @@ msgid "(Host key +)"
 msgstr "(touche hôte +)"
 
 #: data/ui/remmina_preferences.glade:1795
-#, fuzzy
 msgid "Foreground colour"
-msgstr "Couleur d’affichage"
+msgstr "Couleur de premier plan"
 
 #: data/ui/remmina_preferences.glade:1809
 msgid "Foreground color"
 msgstr "Couleur d’affichage"
 
 #: data/ui/remmina_preferences.glade:1823
-#, fuzzy
 msgid "Background colour"
 msgstr "Couleur de fond"
 
 #: data/ui/remmina_preferences.glade:1836
-#, fuzzy
 msgid "Cursor colour"
 msgstr "Couleur du curseur"
 
 #: data/ui/remmina_preferences.glade:1849
-#, fuzzy
 msgid "Normal colours"
 msgstr "Couleurs normales"
 
 #: data/ui/remmina_preferences.glade:1862
-#, fuzzy
 msgid "Bright colours"
 msgstr "Couleurs claires"
 
 #: data/ui/remmina_preferences.glade:1876
-#, fuzzy
 msgid "Load colour scheme"
 msgstr "Charger un jeu de couleurs"
 
@@ -2990,7 +2921,6 @@ msgid "Cursor Color"
 msgstr "Couleur du curseur"
 
 #: data/ui/remmina_preferences.glade:1917
-#, fuzzy
 msgid ""
 "Choose a color scheme file. Usually available in /usr/share/remmina/theme. "
 "More details in https://github.com/mbadolato/iTerm2-Color-Schemes."
@@ -3000,9 +2930,8 @@ msgstr ""
 "mbadolato/iTerm2-Color-Schemes)."
 
 #: data/ui/remmina_preferences.glade:1920
-#, fuzzy
 msgid "Pick a terminal coloring file"
-msgstr "Choisissez une couleur pour le magenta"
+msgstr "Choisissez la couleur du terminal"
 
 #: data/ui/remmina_preferences.glade:1934
 msgid "Pick a black color"
@@ -3069,9 +2998,8 @@ msgid "Pick a light white color"
 msgstr "Choisissez une couleur pour le blanc clair"
 
 #: data/ui/remmina_preferences.glade:2129
-#, fuzzy
 msgid "Use default system font"
-msgstr "Utiliser la police par défaut du système"
+msgstr "Utiliser la police de caractères par défaut du système"
 
 #: data/ui/remmina_preferences.glade:2167
 msgid "Allow bold text"
