@@ -3,22 +3,23 @@
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # Allan Nordhøy <epost@anotheragency.no>, 2019.
+# gogogogi <trebelnik2@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-07 00:16+0000\n"
-"PO-Revision-Date: 2019-09-29 07:31+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2019-11-12 11:25+0000\n"
+"Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
 "hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.10-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
 #. Profile: Protocol
@@ -188,12 +189,10 @@ msgid "_Clear"
 msgstr "_Obriši"
 
 #: src/rcw.c:585
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
-msgstr ""
-"Postoji %i aktivnih povezivanja u trenutnom prozoru. Sigurno želite "
-"zatvoriti?"
+msgstr "Sigurno želite zatvoriti %i aktivnih povezivanja u trenutnom prozoru?"
 
 #: src/rcw.c:1291
 msgid "Viewport fullscreen mode"
@@ -220,6 +219,7 @@ msgstr "Tipke prečaca"
 #: src/rcw.c:1931
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
+"Isključi promjenu veličine kako bi se izbjeglo izobličenje slike zaslona."
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -275,7 +275,7 @@ msgid "Disconnect"
 msgstr "Prekini povezivanje"
 
 #: src/rcw.c:3774
-#, fuzzy, c-format
+#, c-format
 msgid "The file %s is corrupted, unreadable, or could not be found."
 msgstr "Datoteka %s je oštećena, nečitljiva ili nije pronađena."
 
@@ -292,14 +292,12 @@ msgid "Resetting passwords, please wait…"
 msgstr "Obnova lozinka, malo pričekajte…"
 
 #: src/remmina_mpchange.c:327
-#, fuzzy
 msgid "The multi password changer requires a secrecy plugin.\n"
-msgstr "Višestruki mjenjač lozinka ne može raditi bez priključka tajni.\n"
+msgstr "Višestruki mjenjač lozinka zahtijeva priključak tajni.\n"
 
 #: src/remmina_mpchange.c:330
-#, fuzzy
 msgid "The multi password changer requires a secrecy service.\n"
-msgstr "Višestruki mjenjač lozinka ne može raditi bez tajne usluge.\n"
+msgstr "Višestruki mjenjač lozinka zahtijeva tajne usluge.\n"
 
 #: src/remmina_mpchange.c:419
 #, c-format
@@ -379,7 +377,6 @@ msgid "Delete files on server"
 msgstr "Obriši datoteke na pslužitelju"
 
 #: src/remmina_ftp_client.c:903 src/remmina_ftp_client.c:972
-#, fuzzy
 msgid "Filename"
 msgstr "Naziv datoteke"
 
@@ -469,7 +466,6 @@ msgstr ""
 "* [poslužitelj]: ulaz</big></tt>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
 msgid ""
 "<tt><big>* command in PATH args %h\n"
 "* /path/to/foo -options %h %u\n"
@@ -633,7 +629,7 @@ msgstr "Spremi kao zadano"
 
 #: src/remmina_file_editor.c:1312
 msgid "Use the current settings as the default for all new connection profiles"
-msgstr ""
+msgstr "Koristi trenutne postavke kao zadane za sve nove profile povezivanja"
 
 #: src/remmina_file_editor.c:1315 src/remmina_main.c:975
 msgid "_Save"
@@ -677,12 +673,11 @@ msgstr "Datoteka %s nije pronađena."
 
 #: src/remmina_protocol_widget.c:248
 msgid "Connect via SSH from a new terminal"
-msgstr ""
+msgstr "Poveži putem SSH-a iz novog terminala"
 
 #: src/remmina_protocol_widget.c:254
-#, fuzzy
 msgid "Open SFTP transfer"
-msgstr "Otvori osigurani prijenos datoteka…"
+msgstr "Otvori SFTP prijenos"
 
 #: src/remmina_protocol_widget.c:282
 msgid "Executing external commands…"
@@ -695,36 +690,35 @@ msgstr "Povezivanje sa '%s'…"
 
 #: src/remmina_protocol_widget.c:716 src/remmina_protocol_widget.c:796
 #: src/remmina_protocol_widget.c:969
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to %s via SSH…"
-msgstr "Povezivanje sa '%s'…"
+msgstr "Povezivanje sa %s putem SSH-a…"
 
 #: src/remmina_protocol_widget.c:846
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection at port %i…"
-msgstr "Čekanje dolazećeg SSH tunela na ulazu %i…"
+msgstr "Čekanje dolazećeg SSH povezivanja na ulazu %i…"
 
 #: src/remmina_protocol_widget.c:891
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find %s command on the SSH server"
-msgstr "Naredba %s nije pronađena na SSH poslužitelju"
+msgstr "Nemoguć pronalazak %s naredbe na SSH poslužitelju"
 
 #: src/remmina_protocol_widget.c:895
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run %s command on the SSH server (status = %i)."
-msgstr "Naredba %s neuspjela na SSH poslužitelju (stanje = %i)."
+msgstr "Nemoguće pokretanje %s naredbe na SSH poslužitelju (stanje = %i)."
 
 #: src/remmina_protocol_widget.c:902
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command, %s"
-msgstr "Neuspjelo otvaranje kanala: %s"
+msgstr "Neuspjelo pokretanje naredbe, %s"
 
 #: src/remmina_protocol_widget.c:1347
 msgid "Type in username and password for SSH."
-msgstr ""
+msgstr "Upišite korisničko ime i lozinku za SSH."
 
 #: src/remmina_protocol_widget.c:1403
-#, fuzzy
 msgid "Certificate details:"
 msgstr "Pojedinosti vjerodajnice:"
 
@@ -741,27 +735,22 @@ msgid "Fingerprint:"
 msgstr "Otisak:"
 
 #: src/remmina_protocol_widget.c:1407
-#, fuzzy
 msgid "Accept certificate?"
 msgstr "Prihvati vjerodajnicu?"
 
 #: src/remmina_protocol_widget.c:1424
-#, fuzzy
 msgid "The certificate changed! Details:"
 msgstr "Vjerodajnica promijenjena! Pojedinosti:"
 
 #: src/remmina_protocol_widget.c:1427
-#, fuzzy
 msgid "Old fingerprint:"
 msgstr "Stari otisak:"
 
 #: src/remmina_protocol_widget.c:1428
-#, fuzzy
 msgid "New fingerprint:"
 msgstr "Novi otisak:"
 
 #: src/remmina_protocol_widget.c:1429
-#, fuzzy
 msgid "Accept changed certificate?"
 msgstr "Prihvati promijenjenu vjerodajnicu?"
 
@@ -771,14 +760,13 @@ msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Osluškivanje na ulazu %i za nadolazeće %s povezivanje…"
 
 #: src/remmina_protocol_widget.c:1596
-#, fuzzy
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Neuspjela ovjera. Pokušavam ponovno povezivanje…"
 
 #: src/remmina_protocol_widget.c:1675
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr ""
+msgstr "Prvo instalirajte %s priključak protokola."
 
 #: src/remmina_applet_menu_item.c:121
 msgid "Discovered"
@@ -909,14 +897,13 @@ msgstr "SSH javni ključ ne može biti uvezen: %s"
 
 #: src/remmina_ssh.c:274 src/remmina_ssh.c:506 src/remmina_ssh.c:523
 #: plugins/nx/nx_plugin.c:202
-#, fuzzy
 msgid "SSH credentials"
-msgstr "Datoteka SSH identiteta"
+msgstr "SSH vjerodajnice"
 
 #: src/remmina_ssh.c:277 src/remmina_ssh.c:484 src/remmina_ssh.c:509
 #: plugins/nx/nx_plugin.c:205
 msgid "SSH private key passphrase"
-msgstr "SSH lozinka provatnog ključa"
+msgstr "SSH lozinka privatnog ključa"
 
 #: src/remmina_ssh.c:293
 #, c-format
@@ -984,43 +971,42 @@ msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:545
-#, fuzzy
 msgid "SSH authentication"
 msgstr "SSH ovjera"
 
 #: src/remmina_ssh.c:661
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SSH session: %s"
 msgstr "Neuspjelo pokretanje SSH sesije: %s"
 
 #: src/remmina_ssh.c:1019 src/remmina_ssh.c:1079
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel, %s"
-msgstr "Neuspjelo stvaranje kanala: %s"
+msgstr "Neuspjelo stvaranje kanala, %s"
 
 #: src/remmina_ssh.c:1029
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to the SSH tunnel destination %s"
-msgstr "Neuspjelo povezivanje s SSH tuneliranim odredištem: %s"
+msgstr "Neuspjelo povezivanje sa SSH tuneliranim odredištem %s"
 
 #: src/remmina_ssh.c:1093
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel, %s"
-msgstr "Neuspjelo otvaranje kanala: %s"
+msgstr "Neuspjelo otvaranje kanala, %s"
 
 #: src/remmina_ssh.c:1099
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to execute %s on SSH server, %%s"
-msgstr "Neuspjelo pokretanje %s na SSH poslužitelju: %%s"
+msgstr "Neuspjelo pokretanje %s na SSH poslužitelju, %%s"
 
 #: src/remmina_ssh.c:1136 src/remmina_ssh.c:1156 src/remmina_ssh.c:1164
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request port forwarding, %s"
-msgstr "Neuspio zahtjev prosljeđivanja ulaza: %s"
+msgstr "Neuspio zahtjev prosljeđivanja ulaza, %s"
 
 #: src/remmina_ssh.c:1199
 msgid "The server did not respond."
-msgstr ""
+msgstr "Poslužitelj ne odgovara."
 
 #: src/remmina_ssh.c:1238
 #, c-format
@@ -1030,54 +1016,49 @@ msgstr "Nemoguće povezivanje na lokalni ulaz %i."
 #: src/remmina_ssh.c:1287
 #, c-format
 msgid "Could not run ssh_channel_write(), %s"
-msgstr ""
+msgstr "Nemoguće pokretanje ssh_channel_write(), %s"
 
 #: src/remmina_ssh.c:1293
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket, %s"
-msgstr "čitanje na priključnici slušanja tunela je vratilo grešku: %s"
+msgstr "Nemoguće čitanje s priključnice osluškivanja tunela, %s"
 
 #: src/remmina_ssh.c:1312
 #, c-format
 msgid "Could not run ssh_channel_poll(), %s"
-msgstr ""
+msgstr "Nemoguće pokretanje ssh_channel_poll(), %s"
 
 #: src/remmina_ssh.c:1318
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_read_nonblocking(), %s"
-msgstr "ssh_channel_read_nonblocking() je vratio grešku: %s"
+msgstr "Nemoguće pokretanje ssh_channel_read_nonblocking(), %s"
 
 #: src/remmina_ssh.c:1336
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket, %s"
-msgstr "čitanje na priključnici slušanja tunela je vratilo grešku: %s"
+msgstr "Nemoguće slanje podataka u priključnicu osluškivanja tunela, %s"
 
 #: src/remmina_ssh.c:1415
 msgid "Assign a destination port."
-msgstr ""
+msgstr "Dodijeli odredišni ulaz."
 
 #: src/remmina_ssh.c:1422
-#, fuzzy
 msgid "Could not create socket."
 msgstr "Neuspjelo stvaranje priključnice."
 
 #: src/remmina_ssh.c:1432
-#, fuzzy
 msgid "Could not bind server socket to local port."
-msgstr "Nemoguće povezivanje na lokalni ulaz %i."
+msgstr "Nemoguće povezivanje priključnice poslužitelja na lokalni ulaz."
 
 #: src/remmina_ssh.c:1438
-#, fuzzy
 msgid "Could not listen to local port."
 msgstr "Neuspjelo osluškivanje na lokalnom ulazu."
 
 #: src/remmina_ssh.c:1447
-#, fuzzy
 msgid "Could not start pthread."
 msgstr "Neuspjelo pthread pokretanje."
 
 #: src/remmina_ssh.c:1463 src/remmina_ssh.c:1496
-#, fuzzy
 msgid "Could not initialize pthread."
 msgstr "Neuspjelo pthread pokretanje."
 
@@ -1086,29 +1067,28 @@ msgid "Failed to initialize pthread."
 msgstr "Neuspjelo pthread pokretanje."
 
 #: src/remmina_ssh.c:1584
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create SFTP session: %s"
 msgstr "Neuspjelo stvaranje SFTP sesije: %s"
 
 #: src/remmina_ssh.c:1588
-#, fuzzy, c-format
+#, c-format
 msgid "Could not initialize SFTP session: %s"
 msgstr "Neuspjelo pokretanje SFTP sesije: %s"
 
 #: src/remmina_ssh.c:1672
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel: %s"
 msgstr "Neuspjelo otvaranje kanala: %s"
 
 #: src/remmina_ssh.c:1701
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request shell: %s"
 msgstr "Neuspio zahtjev ljuske: %s"
 
 #: src/remmina_ssh.c:1794
-#, fuzzy
 msgid "Could not create PTY device."
-msgstr "Neuspjelo stvaranje pty uređaja."
+msgstr "Neuspjelo stvaranje PTY uređaja."
 
 #. Show in the status bar the total number of connections found
 #: src/remmina_main.c:644
@@ -1122,7 +1102,7 @@ msgstr[2] "Ukupno %i stavki."
 #: src/remmina_main.c:826
 #, c-format
 msgid "Are you sure to delete '%s'"
-msgstr "Sigurno želite obrisati %s"
+msgstr "Sigurno želite obrisati '%s'"
 
 #: src/remmina_main.c:925
 #, c-format
@@ -1146,12 +1126,10 @@ msgid "Remmina Kiosk"
 msgstr "Remmina Kiosk"
 
 #: src/remmina.c:83
-#, fuzzy
 msgid "Show 'About'"
-msgstr "Prikaži dijalog o programu"
+msgstr "Prikaži 'O programu'"
 
 #: src/remmina.c:84 src/remmina.c:85
-#, fuzzy
 msgid ""
 "Connect to desktop described in file (.remmina or type supported by plugin)"
 msgstr ""
@@ -1159,7 +1137,6 @@ msgstr ""
 "podržani priključak)"
 
 #: src/remmina.c:86
-#, fuzzy
 msgid ""
 "Edit desktop connection described in file (.remmina or type supported by "
 "plugin)"
@@ -1168,29 +1145,24 @@ msgstr ""
 "upišite podržani priključak)"
 
 #: src/remmina.c:88
-#, fuzzy
 msgid "Start in kiosk mode"
 msgstr "Pokreni Remminu u Kiosk načinu rada"
 
 #: src/remmina.c:89
-#, fuzzy
 msgid "Create new connection profile"
 msgstr "Stvori novi profil povezivanja"
 
 #: src/remmina.c:90
-#, fuzzy
 msgid "Show preferences"
-msgstr "Osobitosti"
+msgstr "Prikaži osobitosti"
 
 #: src/remmina.c:91
-#, fuzzy
 msgid "Run a plugin"
 msgstr "Pokreni priključak"
 
 #: src/remmina.c:92
-#, fuzzy
 msgid "Quit"
-msgstr "_Zatvori"
+msgstr "Zatvori"
 
 #: src/remmina.c:93
 msgid "Use default server name (for --new)"
@@ -1201,27 +1173,26 @@ msgid "Use default protocol (for --new)"
 msgstr "Koristi zadani protokol (za --new)"
 
 #: src/remmina.c:95
-#, fuzzy
 msgid "Start in tray"
 msgstr "Pokreni u ikoni trake sustava"
 
 #: src/remmina.c:96
-#, fuzzy
 msgid "Show the application version"
 msgstr "Prikaži inačicu aplikacije"
 
 #: src/remmina.c:97
-#, fuzzy
 msgid "Show version of the application and its plugins"
-msgstr "Prikaži inačicu aplikacije"
+msgstr "Prikaži inačicu aplikacije i njenih priključaka"
 
 #: src/remmina.c:98
 msgid "Modify connection profile, (requires --set-option)"
-msgstr ""
+msgstr "Promijeni profil povezivanja, (zahtijeva --set-option)"
 
 #: src/remmina.c:99
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
+"Postavi jedan ili više postavki profila, mora se koristiti sa --update-"
+"profile"
 
 #: src/remmina_about.c:53
 msgid "translator-credits"
@@ -1380,9 +1351,8 @@ msgid "SSH - Secure Shell"
 msgstr "SSH - Osigurana ljuska"
 
 #: plugins/spice/spice_plugin.c:239
-#, fuzzy
 msgid "Enter SPICE password"
-msgstr "Glavna lozinka"
+msgstr "Upiši SPICE lozinku"
 
 #: plugins/spice/spice_plugin.c:274
 #, c-format
@@ -1477,7 +1447,7 @@ msgstr "Prijenos završen"
 #: plugins/spice/spice_plugin_file_transfer.c:224
 #, c-format
 msgid "The %s file has been transferred"
-msgstr ""
+msgstr "Datoteka %s je prenesena"
 
 #: plugins/spice/spice_plugin_usb.c:54
 msgid "_Close"
@@ -1488,14 +1458,12 @@ msgid "USB redirection error"
 msgstr "Greška USB preusmjeravanja"
 
 #: plugins/rdp/rdp_plugin.c:577
-#, fuzzy
 msgid "Enter RDP authentication credentials"
-msgstr "Upišite vjerodajnicu ovjere"
+msgstr "Upišite RDP vjerodajnicu ovjere"
 
 #: plugins/rdp/rdp_plugin.c:641
-#, fuzzy
 msgid "Enter RDP gateway authentication credentials"
-msgstr "Upišite vjerodajnicu ovjere"
+msgstr "Upišite RDP pristupnik vjerodajnice ovjere"
 
 #: plugins/rdp/rdp_plugin.c:1494
 #, c-format
@@ -1613,6 +1581,8 @@ msgstr "Poslužitelj %s je uskratio povezivanje."
 #, c-format
 msgid "The remote desktop gateway %s denied user %s\\%s access due to policy."
 msgstr ""
+"Pristupnik %s udaljene radne površine je obio pristup korisnik %s\\%s zbog "
+"pravila pristupa."
 
 #: plugins/rdp/rdp_plugin.c:1588
 #, c-format
@@ -1719,22 +1689,18 @@ msgid "Gateway transport type"
 msgstr "Vrsta transporta pristupnika"
 
 #: plugins/rdp/rdp_plugin.c:1958
-#, fuzzy
 msgid "Remote Desktop Gateway server"
 msgstr "Poslužitelj pristupnika udaljene radne površine"
 
 #: plugins/rdp/rdp_plugin.c:1959
-#, fuzzy
 msgid "Remote Desktop Gateway username"
 msgstr "Korisničko ime pristupnika udaljene radne površine"
 
 #: plugins/rdp/rdp_plugin.c:1960
-#, fuzzy
 msgid "Remote Desktop Gateway password"
 msgstr "Lozinka pristupnika udaljene radne površine"
 
 #: plugins/rdp/rdp_plugin.c:1961
-#, fuzzy
 msgid "Remote Desktop Gateway domain"
 msgstr "Domena pristupnika udaljene radne površine"
 
@@ -1748,21 +1714,23 @@ msgstr "Učitaj uravnotežene informacije"
 
 #: plugins/rdp/rdp_plugin.c:1966
 msgid "Override Printer Drivers"
-msgstr ""
+msgstr "Zaobiđi upravljačke programe pisača"
 
 #: plugins/rdp/rdp_plugin.c:1966
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":\""
+"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:1967
 msgid "Local serial name"
-msgstr "Naziv lokalnog serijskog uređajuređaj"
+msgstr "Naziv lokalnog serijskog uređaja"
 
 #: plugins/rdp/rdp_plugin.c:1967
 msgid "COM1, COM2, etc."
-msgstr ""
+msgstr "COM1, COM2, itd."
 
 #: plugins/rdp/rdp_plugin.c:1968
 msgid "Local serial driver"
@@ -1770,7 +1738,7 @@ msgstr "Upravljački program lokalnog serijskog uređaja"
 
 #: plugins/rdp/rdp_plugin.c:1968
 msgid "Serial"
-msgstr ""
+msgstr "Serijski"
 
 #: plugins/rdp/rdp_plugin.c:1969
 msgid "Local serial path"
@@ -1778,7 +1746,7 @@ msgstr "Putanja lokalnog serijskog uređaja"
 
 #: plugins/rdp/rdp_plugin.c:1969
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
-msgstr ""
+msgstr "/dev/ttyS0, /dev/ttyS1, itd."
 
 #: plugins/rdp/rdp_plugin.c:1970
 msgid "Local parallel name"
@@ -1813,18 +1781,16 @@ msgid "Redirect local microphone"
 msgstr "Preusmjeri lokalni mikrofon"
 
 #: plugins/rdp/rdp_plugin.c:1979
-#, fuzzy
 msgid "Turn off clipboard sync"
-msgstr "Onemogući usklađivanje međuspremnika"
+msgstr "Isključi usklađivanje međuspremnika"
 
 #: plugins/rdp/rdp_plugin.c:1980
 msgid "Ignore certificate"
 msgstr "Zanemari vjerodajnicu"
 
 #: plugins/rdp/rdp_plugin.c:1981
-#, fuzzy
 msgid "Turn off password storing"
-msgstr "Onemogući spremanje lozinke"
+msgstr "Isključi spremanje lozinke"
 
 #: plugins/rdp/rdp_plugin.c:1982
 msgid "Attach to console (2003/2003 R2)"
@@ -1832,22 +1798,19 @@ msgstr "Prikači za konzolu (2003/2003 R2)"
 
 #: plugins/rdp/rdp_plugin.c:1983
 msgid "Turn off fast-path"
-msgstr ""
+msgstr "Iskluči brzu-putanju"
 
 #: plugins/rdp/rdp_plugin.c:1984
-#, fuzzy
 msgid "Server detection using Remote Desktop Gateway"
 msgstr "Otkrivanje poslužitelja pomoću pristupnika udaljene radne površine"
 
 #: plugins/rdp/rdp_plugin.c:1986
-#, fuzzy
 msgid "Turn on proxy support"
-msgstr "Omogući java podršku"
+msgstr "Isključi proxy podršku"
 
 #: plugins/rdp/rdp_plugin.c:1988
-#, fuzzy
 msgid "Turn off automatic reconnection"
-msgstr "Onemogući automatsko ponovno povezivanje"
+msgstr "Isključi automatsko ponovno povezivanje"
 
 #: plugins/rdp/rdp_plugin.c:1989
 msgid "Relax Order Checks"
@@ -1954,9 +1917,9 @@ msgstr "Orijentacija radne povšine"
 
 #. Draw text
 #: plugins/rdp/rdp_event.c:299
-#, fuzzy, c-format
+#, c-format
 msgid "Reconnection attempt %d of %d…"
-msgstr "Ponovno povezivanje u tijeku. Pokušaj %d od %d…"
+msgstr "Pokušaj ponovnog povezivanja %d od %d…"
 
 #: plugins/st/st_plugin.c:237
 msgid "Terminal Emulator"
@@ -1979,7 +1942,6 @@ msgid "Hello World!"
 msgstr "Pozdrav svijete!"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
-#, fuzzy
 msgid "Secure password storing in the GNOME keyring"
 msgstr "Osigurane lozinke se pohranjuju u GNOME skupu ključeva"
 
@@ -1988,7 +1950,6 @@ msgid "You did not set any command to be executed"
 msgstr "Niste postavili naredbu za izvršavanje"
 
 #: plugins/exec/exec_plugin.c:204
-#, fuzzy
 msgid ""
 "WARNING! Running a command synchronously may cause Remmina not to respond.\n"
 "Do you really want to continue?"
@@ -2009,9 +1970,8 @@ msgid "Execute a command"
 msgstr "Pokreni naredbu"
 
 #: plugins/nx/nx_plugin.c:367
-#, fuzzy
 msgid "Enter NX authentication credentials"
-msgstr "Upišite vjerodajnicu ovjere"
+msgstr "Upišite NX vjerodajnicu ovjere"
 
 #: plugins/nx/nx_plugin.c:608 plugins/xdmcp/xdmcp_plugin.c:264
 #, c-format
@@ -2090,14 +2050,12 @@ msgid "True color (24 bit)"
 msgstr "Stvarna boja (24 bitna)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:372
-#, fuzzy
 msgid "Disconnect after first session"
-msgstr "Prekini povezivanje nakon jedne sesije"
+msgstr "Prekini povezivanje nakon prve sesije"
 
 #: plugins/xdmcp/xdmcp_plugin.c:373
-#, fuzzy
 msgid "Listen for TCP connections"
-msgstr "Otvori povezivanje"
+msgstr "Osluškuj TCP povezivanja"
 
 #. Type
 #. Name
@@ -2106,24 +2064,20 @@ msgid "XDMCP - X Remote Session"
 msgstr "XDMCP - X udaljena sesija"
 
 #: plugins/vnc/vnc_plugin.h:41
-#, fuzzy
 msgid "Remmina VNC Plugin"
-msgstr "Priključak Remmina preglednika"
+msgstr "Remmina VNC priključak"
 
 #: plugins/vnc/vnc_plugin.h:46
-#, fuzzy
 msgid "Remmina VNC listener Plugin"
-msgstr "Priključak Remmina preglednika"
+msgstr "Priključak Remmina VNC osluškivanja"
 
 #: plugins/vnc/vnc_plugin.c:734
-#, fuzzy
 msgid "Enter VNC password"
-msgstr "Glavna lozinka"
+msgstr "Upiši VNC lozinku"
 
 #: plugins/vnc/vnc_plugin.c:787
-#, fuzzy
 msgid "Enter VNC authentication credentials"
-msgstr "Upišite vjerodajnicu ovjere"
+msgstr "Upišite VNC vjerodajnicu ovjere"
 
 #: plugins/vnc/vnc_plugin.c:890
 msgid "Unable to connect to VNC server"
@@ -2196,74 +2150,64 @@ msgid "File downloaded"
 msgstr "Datoteka preuzeta"
 
 #: plugins/www/www_plugin.c:485
-#, fuzzy
 msgid "Enter WWW authentication credentials"
-msgstr "Upišite vjerodajnicu ovjere"
+msgstr "Upišite WWW vjerodajnicu ovjere"
 
 #: plugins/www/www_plugin.c:791
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: plugins/www/www_plugin.c:791
-#, fuzzy
 msgid "http://address or https://address"
-msgstr "URL (http://adresa ili https://adresa)"
+msgstr "http://adresa ili https://adresa"
 
 #: plugins/www/www_plugin.c:808
-#, fuzzy
 msgid "User agent"
 msgstr "Korisnički agent"
 
 #: plugins/www/www_plugin.c:809
-#, fuzzy
 msgid "Turn on Java support"
-msgstr "Omogući java podršku"
+msgstr "Uključi java podršku"
 
 #: plugins/www/www_plugin.c:810
-#, fuzzy
 msgid "Turn on smooth scrolling"
-msgstr "Omogući glatko pomicanje"
+msgstr "Uključi glatko pomicanje"
 
 #: plugins/www/www_plugin.c:811
-#, fuzzy
 msgid "Turn on spatial navigation"
-msgstr "Omogući prostornu navigaciju"
+msgstr "Uključi prostornu navigaciju"
 
 #: plugins/www/www_plugin.c:812
 msgid "Turn on plugin support"
-msgstr ""
+msgstr "Uključi podršku priključaka"
 
 #: plugins/www/www_plugin.c:813
 msgid "Turn on WebGL support"
-msgstr ""
+msgstr "Uključi WebGL podršku"
 
 #: plugins/www/www_plugin.c:814
-#, fuzzy
 msgid "Turn on HTML5 audio support"
-msgstr "Omogući java podršku"
+msgstr "Uključi HTML5 podršku"
 
 #: plugins/www/www_plugin.c:815
 msgid "Ignore TLS errors"
 msgstr "Zanemari TLS greške"
 
 #: plugins/www/www_plugin.c:816
-#, fuzzy
 msgid "No password storage"
-msgstr "Onemogući spremanje lozinke"
+msgstr "Nema spremišta lozinki"
 
 #: plugins/www/www_plugin.c:818
-#, fuzzy
 msgid "Turn on Web Inspector"
-msgstr "Omogući Web inspektora"
+msgstr "Uključi Web inspektora"
 
 #: plugins/www/www_config.h:43
 msgid "Remmina Browser Plugin"
 msgstr "Priključak Remmina preglednika"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
-#, fuzzy
 msgid "Secure passwords storing in the KDE Wallet"
-msgstr "Osigurane lozinke se pohranjuju u GNOME skupu ključeva"
+msgstr "Osigurane lozinke se pohranjuju u KDE Wallet"
 
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
@@ -2287,7 +2231,7 @@ msgstr "O programu"
 
 #: data/ui/remmina_about.glade:40
 msgid "Website"
-msgstr ""
+msgstr "Web stranica"
 
 #: data/ui/remmina_news.glade:108
 msgid ""
@@ -2295,20 +2239,21 @@ msgid ""
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics to remmina.org"
 msgstr ""
+"Pošalji <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
+">anonimno</a></b> statistiku na remmina.org"
 
 #: data/ui/remmina_news.glade:133
-#, fuzzy
 msgid "Make Remmina the default Remote Desktop Client"
 msgstr "Postavi Remminu kao zadani klijent za udaljenu površinu"
 
 #: data/ui/remmina_news.glade:142
-#, fuzzy
 msgid "Apply"
-msgstr "Aplet"
+msgstr "Primijeni"
 
 #: data/ui/remmina_news.glade:166
 msgid "<big>Important settings</big>"
-msgstr ""
+msgstr "<big>Bitne postavke</big>"
 
 #: data/ui/remmina_news.glade:192
 msgid ""
@@ -2318,13 +2263,17 @@ msgid ""
 "donation</a>, to make us happy, and further make the program better.</b>\n"
 "</span>\n"
 msgstr ""
+"<span>\n"
+"<b>Vi ste veliki zato što koristite copylefted slobodan softver, <a href=\""
+"https://remmina.org/donations/\" title=\"Remmina donacije\">ubacite "
+"donaciju</a>, kako bi nas usrećili, i ubuduće učinili program boljim.</b>\n"
+"</span>\n"
 
 #: data/ui/remmina_news.glade:212
 msgid "<big>Contribute</big>"
-msgstr ""
+msgstr "<big>Doprinesite</big>"
 
 #: data/ui/remmina_snap_info_dialog.glade:46
-#, fuzzy
 msgid ""
 "It seems that Remmina is running on your system as a SNAP package. To enable "
 "access to some important features, like password saving in your keyring and "
@@ -2372,9 +2321,8 @@ msgid "Master password secret key"
 msgstr "Tajni ključ glavne lozinke"
 
 #: data/ui/remmina_main.glade:69
-#, fuzzy
 msgid "New connection profile"
-msgstr "Stvori novi profil povezivanja"
+msgstr "Novi profil povezivanja"
 
 #: data/ui/remmina_main.glade:81
 msgid "Show search bar"
@@ -2414,9 +2362,8 @@ msgid "Multi password changer"
 msgstr "Višestruki mjenjač lozinka"
 
 #: data/ui/remmina_main.glade:339
-#, fuzzy
 msgid "Debugging"
-msgstr "Prozor otklanjanja grešaka"
+msgstr "Otklanjanje grešaka"
 
 #: data/ui/remmina_main.glade:384
 msgid "Homepage"
@@ -2424,7 +2371,7 @@ msgstr "Početna stranica"
 
 #: data/ui/remmina_main.glade:394
 msgid "Wiki"
-msgstr ""
+msgstr "Wiki"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:404
@@ -2444,9 +2391,8 @@ msgid "Plugin"
 msgstr "Priključak"
 
 #: data/ui/remmina_main.glade:555
-#, fuzzy
 msgid "Last used"
-msgstr "Korišteno posljednji puta"
+msgstr "Posljednje korišteno"
 
 #: data/ui/remmina_mpc.glade:7
 msgid "Remmina - Multi Password Changer"
@@ -2501,7 +2447,6 @@ msgid "Edit settings"
 msgstr "Uredi postavke"
 
 #: data/ui/remmina_preferences.glade:130
-#, fuzzy
 msgid "Scaling quality"
 msgstr "Kvaliteta promjene veličine"
 
@@ -2523,33 +2468,29 @@ msgstr "Hiper"
 
 #: data/ui/remmina_preferences.glade:163
 msgid "Step size for auto scroll"
-msgstr ""
+msgstr "Korak veličine za automatsko pomicanje"
 
 #: data/ui/remmina_preferences.glade:191
-#, fuzzy
 msgid "Maximal amount of recent items"
 msgstr "Najviše nedavnih stavki"
 
 #: data/ui/remmina_preferences.glade:280
-#, fuzzy
 msgid "Screenshot folder"
 msgstr "Mapa slika zaslona"
 
 #: data/ui/remmina_preferences.glade:292
 msgid "Choose the a folder to save screenshots from Remmina in."
-msgstr ""
+msgstr "Odaberite mapu za spremanje slika zaslona iz Remmine."
 
 #: data/ui/remmina_preferences.glade:295
-#, fuzzy
 msgid "Select a Folder"
-msgstr "Odaberi sve"
+msgstr "Odaberi mapu"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Screen resolutions"
 msgstr "Razlučivost zaslona"
 
 #: data/ui/remmina_preferences.glade:326
-#, fuzzy
 msgid "Screenshot filename"
 msgstr "Naziv datoteke slike zaslona"
 
@@ -2564,7 +2505,6 @@ msgstr ""
 "%Y Godina, %m Mjesec, %d Dan, %H Sat, %M Minuta, %S Sekunda (UTC vrijeme)\n"
 
 #: data/ui/remmina_preferences.glade:356
-#, fuzzy
 msgid ""
 "The folder where connection profiles are saved, it defaults to the "
 "XDG_USER_DATA"
@@ -2586,7 +2526,6 @@ msgid "Remember last view mode"
 msgstr "Zapamti posljednji način prikaza"
 
 #: data/ui/remmina_preferences.glade:418
-#, fuzzy
 msgid "Send periodic usage statistics to Remmina developers"
 msgstr "Šalji povremenu statistiku o korištenju Remmina razvijateljima"
 
@@ -2596,10 +2535,9 @@ msgstr "Šalji anonimnu statistiku na remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
 msgid "Only save generated screenshots, don't copy them to clipboard."
-msgstr ""
+msgstr "Samo spremi stvorene slike zaslona, ne kopiraj ih u međuspremnik."
 
 #: data/ui/remmina_preferences.glade:467
-#, fuzzy
 msgid "Prevent screenshots from entering clipboard"
 msgstr "Uskrati spremanje slike zaslona u međuspremnik"
 
@@ -2612,12 +2550,10 @@ msgstr ""
 "pomoću izraza oblikovanja."
 
 #: data/ui/remmina_preferences.glade:483
-#, fuzzy
 msgid "Profile filename template"
 msgstr "Predložak naziva datoteka profila"
 
 #: data/ui/remmina_preferences.glade:495
-#, fuzzy
 msgid ""
 "%G Group name (slash will be converted to - automatically)\n"
 "%P Protocol name\n"
@@ -2646,7 +2582,6 @@ msgid "Always show tabs"
 msgstr "Uvijek prikaži kartice"
 
 #: data/ui/remmina_preferences.glade:549
-#, fuzzy
 msgid "Hide the toolbar shown in the tabbed interface"
 msgstr "Sakrij alatnu traku u sučelju kartica"
 
@@ -2667,7 +2602,6 @@ msgid "Viewport fullscreen"
 msgstr "Cjelozaslonski prikaz"
 
 #: data/ui/remmina_preferences.glade:603
-#, fuzzy
 msgid "Tabbed interface"
 msgstr "Sučelje kartice"
 
@@ -2685,10 +2619,9 @@ msgstr "Kartice svih povezivanja"
 
 #: data/ui/remmina_preferences.glade:621
 msgid "No tabs"
-msgstr ""
+msgstr "Nema kartica"
 
 #: data/ui/remmina_preferences.glade:632
-#, fuzzy
 msgid "Fullscreen on the same screen as the connection window"
 msgstr "Cjelozaslonski prikaz na istome zaslonu kao i na prozoru povezivanja"
 
@@ -2705,7 +2638,6 @@ msgid "Fullscreen toolbar visibility"
 msgstr "Vidljivost alatne trake cjelozaslonskog prikaza"
 
 #: data/ui/remmina_preferences.glade:683
-#, fuzzy
 msgid "Hide the search bar shown in the main window"
 msgstr "Sakrij traku pretrage u glavnom prozoru"
 
@@ -2718,29 +2650,24 @@ msgid "Show new connection on top of the menu"
 msgstr "Prikaži novo povezivanje na vrhu izbornika"
 
 #: data/ui/remmina_preferences.glade:740
-#, fuzzy
 msgid "Hide total count shown in the group menu"
 msgstr "Sakrij ukupni broj u izborniku grupe"
 
 #: data/ui/remmina_preferences.glade:757
-#, fuzzy
 msgid "No tray icon"
-msgstr "Onemogući ikonu trake sustava"
+msgstr "Nema ikone trake sustava"
 
 #: data/ui/remmina_preferences.glade:775
-#, fuzzy
 msgid "Start in tray upon user login"
-msgstr "Pokreni reminu u ikoni trake sustava pri prijavljivanju korisnika"
+msgstr "Pokreni Remminu u ikoni trake sustava pri prijavljivanju korisnika"
 
 #: data/ui/remmina_preferences.glade:793
-#, fuzzy
 msgid "Dark tray icon"
 msgstr "Tamna ikona trake sustava"
 
 #: data/ui/remmina_preferences.glade:797
-#, fuzzy
 msgid "Improves contrast if you have a light panel."
-msgstr "Odaberite ovo ako je vaša tema panela svijetla."
+msgstr "Poboljšava kontrast ako imate svjetliji panel."
 
 #: data/ui/remmina_preferences.glade:818
 msgid "Applet"
@@ -2751,9 +2678,8 @@ msgid "Host key"
 msgstr "Tipka računala"
 
 #: data/ui/remmina_preferences.glade:870
-#, fuzzy
 msgid "Show/hide fullscreen"
-msgstr "Pomični cijeli zaslon"
+msgstr "Prikaži/Sakrij cijeli zaslon"
 
 #: data/ui/remmina_preferences.glade:900
 msgid "Auto-fit window"
@@ -2761,14 +2687,13 @@ msgstr "Automatski prilagodi na prozor"
 
 #: data/ui/remmina_preferences.glade:973
 msgid "Apply/remove scaling"
-msgstr ""
+msgstr "Primijeni/Ukloni promjenu veličine"
 
 #: data/ui/remmina_preferences.glade:1003
 msgid "Grab keyboard"
 msgstr "Uhvati tipkovnicu"
 
 #: data/ui/remmina_preferences.glade:1094
-#, fuzzy
 msgid "Show/hide toolbar"
 msgstr "Prikaži/Sakrij alatnu traku"
 
@@ -2783,7 +2708,7 @@ msgstr "Tipkovnica"
 
 #: data/ui/remmina_preferences.glade:1209
 msgid "Local SSH port"
-msgstr ""
+msgstr "Lokalni SSH ulaz"
 
 #: data/ui/remmina_preferences.glade:1233
 msgid "Parse ~/.ssh/config"
@@ -2849,7 +2774,6 @@ msgstr ""
 "povezivanje."
 
 #: data/ui/remmina_preferences.glade:1413
-#, fuzzy
 msgid "SSH options"
 msgstr "SSH mogućnosti"
 
@@ -2859,9 +2783,8 @@ msgstr "Glavna lozinka"
 
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
-#, fuzzy
 msgid "Use secret key authentication for some widgets"
-msgstr "Upišite vjerodajnicu datoteka ovjere"
+msgstr "Koristite ovjeru tajnim ključem za određene widgete"
 
 #: data/ui/remmina_preferences.glade:1472
 msgid "Use master password"
@@ -2880,7 +2803,6 @@ msgid "File encryption"
 msgstr "Šifriranje datoteke"
 
 #: data/ui/remmina_preferences.glade:1546
-#, fuzzy
 msgid "Repeat the password"
 msgstr "Ponovno upišite lozinku"
 
@@ -2894,14 +2816,13 @@ msgstr "Redci pomicanja"
 
 #: data/ui/remmina_preferences.glade:1702
 msgid "Shortcut for copying to clipboard"
-msgstr ""
+msgstr "Prečac kopiranja u međuspremnik"
 
 #: data/ui/remmina_preferences.glade:1715
 msgid "Shortcut for pasting from clipboard"
-msgstr ""
+msgstr "Prečac lijepljenja u međuspremnik"
 
 #: data/ui/remmina_preferences.glade:1728
-#, fuzzy
 msgid "Select all shortcuts"
 msgstr "Odaberi sve prečace"
 
@@ -2912,7 +2833,6 @@ msgid "(Host key +)"
 msgstr "(Host key +)"
 
 #: data/ui/remmina_preferences.glade:1795
-#, fuzzy
 msgid "Foreground colour"
 msgstr "Boja prednjeg prikaza"
 
@@ -2921,27 +2841,22 @@ msgid "Foreground color"
 msgstr "Boja prednjeg prikaza"
 
 #: data/ui/remmina_preferences.glade:1823
-#, fuzzy
 msgid "Background colour"
 msgstr "Boja pozadine"
 
 #: data/ui/remmina_preferences.glade:1836
-#, fuzzy
 msgid "Cursor colour"
 msgstr "Boja pokazivača"
 
 #: data/ui/remmina_preferences.glade:1849
-#, fuzzy
 msgid "Normal colours"
 msgstr "Normalne boje"
 
 #: data/ui/remmina_preferences.glade:1862
-#, fuzzy
 msgid "Bright colours"
 msgstr "Svjetle boje"
 
 #: data/ui/remmina_preferences.glade:1876
-#, fuzzy
 msgid "Load colour scheme"
 msgstr "Učitaj shemu boja"
 
@@ -2954,102 +2869,83 @@ msgid "Cursor Color"
 msgstr "Boja pokazivača"
 
 #: data/ui/remmina_preferences.glade:1917
-#, fuzzy
 msgid ""
 "Choose a color scheme file. Usually available in /usr/share/remmina/theme. "
 "More details in https://github.com/mbadolato/iTerm2-Color-Schemes."
 msgstr ""
-"Odaberite datoteku shemu boja, predinstalirane teme su uobičajeno "
-"instalirane u putanji /usr/share/remmina/theme. Pogledajte https://github."
-"com/mbadolato/iTerm2-Color-Schemes."
+"Odaberite datoteku shemu boja. Uobičajeno su dostupne u putanji /usr/share/"
+"remmina/theme. Za više pojedinosti pogledajte https://github.com/mbadolato/"
+"iTerm2-Color-Schemes."
 
 #: data/ui/remmina_preferences.glade:1920
-#, fuzzy
 msgid "Pick a terminal coloring file"
-msgstr "Odaberi boju za purpurnu"
+msgstr "Odaberi datoteku boje za terminal"
 
 #: data/ui/remmina_preferences.glade:1934
-#, fuzzy
 msgid "Pick a black color"
-msgstr "Odaberi boju za crvenu"
+msgstr "Odaberi crnu boju"
 
 #: data/ui/remmina_preferences.glade:1946
-#, fuzzy
 msgid "Pick a red color"
-msgstr "Odaberi boju za crvenu"
+msgstr "Odaberi crvenu boju"
 
 #: data/ui/remmina_preferences.glade:1958
-#, fuzzy
 msgid "Pick a green color"
-msgstr "Boja pozadine"
+msgstr "Odaberi zelenu boju"
 
 #: data/ui/remmina_preferences.glade:1970
-#, fuzzy
 msgid "Pick a yellow color"
-msgstr "Odaberi boju za žutu"
+msgstr "Odaberi žutu boju"
 
 #: data/ui/remmina_preferences.glade:1982
-#, fuzzy
 msgid "Pick a blue color"
-msgstr "Odaberi boju za crvenu"
+msgstr "Odaberi plavu boju"
 
 #: data/ui/remmina_preferences.glade:1994
-#, fuzzy
 msgid "Pick a magenta color"
-msgstr "Odaberi boju za purpurnu"
+msgstr "Odaberi ljubičastu boju"
 
 #: data/ui/remmina_preferences.glade:2006
-#, fuzzy
 msgid "Pick a cyan color"
-msgstr "Odaberi boju za crvenu"
+msgstr "Odaberi modru boju"
 
 #: data/ui/remmina_preferences.glade:2019
-#, fuzzy
 msgid "Pick a white color"
-msgstr "Odaberi boju za crvenu"
+msgstr "Odaberi bijelu boju"
 
 #: data/ui/remmina_preferences.glade:2031
-#, fuzzy
 msgid "Pick a light black color"
-msgstr "Odaberi boju za svjetlo crnu"
+msgstr "Odaberi svijetlo crnu boju"
 
 #: data/ui/remmina_preferences.glade:2043
-#, fuzzy
 msgid "Pick a light red color"
-msgstr "Odaberi boju za svjetlo crvenu"
+msgstr "Odaberi svijetlo crvenu boju"
 
 #: data/ui/remmina_preferences.glade:2055
-#, fuzzy
 msgid "Pick a bright green color"
-msgstr "Odaberi boju za svjetlo zelenu"
+msgstr "Odaberi svijetlo zelenu boju"
 
 #: data/ui/remmina_preferences.glade:2067
-#, fuzzy
 msgid "Pick a bright yellow color"
-msgstr "Odaberi boju za svjetlo žutu"
+msgstr "Odaberi svijetlo žutu boju"
 
 #: data/ui/remmina_preferences.glade:2079
-#, fuzzy
 msgid "Pick a bright blue color"
-msgstr "Odaberi boju za svjetlo plavu"
+msgstr "Odaberi svijetlo plavu boju"
 
 #: data/ui/remmina_preferences.glade:2091
-#, fuzzy
 msgid "Pick a light magenta color"
-msgstr "Odaberi boju za svjetlo purpurnu"
+msgstr "Odaberi svijetlo ljubičastu boju"
 
 #: data/ui/remmina_preferences.glade:2103
-#, fuzzy
 msgid "Pick a light cyan color"
-msgstr "Odaberi boju za svjetlo modru"
+msgstr "Odaberi svijetlo modru boju"
 
 #: data/ui/remmina_preferences.glade:2116
-#, fuzzy
 msgid "Pick a light white color"
-msgstr "Odaberi boju za svjetlo bijelu"
+msgstr "Odaberi svijetlo bijelu boju"
 
 #: data/ui/remmina_preferences.glade:2129
-#, fuzzy
 msgid "Use default system font"
 msgstr "Koristi slova zadana sustavom"
 
