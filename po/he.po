@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-07 00:16+0000\n"
-"PO-Revision-Date: 2019-11-05 11:00+0000\n"
+"PO-Revision-Date: 2019-11-12 11:25+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
@@ -198,7 +198,7 @@ msgstr "מצב מסך מלא בלתי מתואם"
 
 #: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
 msgid "Scrolled fullscreen"
-msgstr ""
+msgstr "מסך מלא נגלל"
 
 #: src/rcw.c:1384
 msgid "Keep aspect ratio when scaled"
@@ -216,7 +216,7 @@ msgstr "צירופי מקשים"
 
 #: src/rcw.c:1931
 msgid "Turn off scaling to avoid screenshot distortion."
-msgstr ""
+msgstr "כיבוי מתיחה כדי להימנע מעיוותים בצילומי המסך."
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -272,7 +272,7 @@ msgid "Disconnect"
 msgstr "ניתוק"
 
 #: src/rcw.c:3774
-#, fuzzy, c-format
+#, c-format
 msgid "The file %s is corrupted, unreadable, or could not be found."
 msgstr "הקובץ %s פגום, בלתי קריא או חסר."
 
@@ -289,14 +289,12 @@ msgid "Resetting passwords, please wait…"
 msgstr "הססמאות מתאפסות, נא להמתין…"
 
 #: src/remmina_mpchange.c:327
-#, fuzzy
 msgid "The multi password changer requires a secrecy plugin.\n"
-msgstr "מחליף הססמאות הסדרתי לא יכול לעבור בלי תוסף הסודות.\n"
+msgstr "מחליף הססמאות הסדרתי לא יכול לעבוד בלי תוסף הסודות.\n"
 
 #: src/remmina_mpchange.c:330
-#, fuzzy
 msgid "The multi password changer requires a secrecy service.\n"
-msgstr "מחליף הססמאות הסדרתי לא יכול לעבור בלי שירות סודות.\n"
+msgstr "מחליף הססמאות הסדרתי לא יכול לעבוד בלי שירות הסודות.\n"
 
 #: src/remmina_mpchange.c:419
 #, c-format
@@ -487,6 +485,12 @@ msgid ""
 "* [server]:port\n"
 "* username@server:port (SSH protocol only)</big></tt>"
 msgstr ""
+"<tt><big>תבניות נתמכות\n"
+"* :port\n"
+"* server\n"
+"* server:port\n"
+"* [server]:port\n"
+"* username@server:port (פרוטוקול SSH בלבד)</big></tt>"
 
 #: src/remmina_file_editor.c:158
 msgid "Choose a Remote Desktop Server"
@@ -655,12 +659,11 @@ msgstr "הקובץ %s לא נמצא."
 
 #: src/remmina_protocol_widget.c:248
 msgid "Connect via SSH from a new terminal"
-msgstr ""
+msgstr "להתחבר דרך SSH במסוף חדש"
 
 #: src/remmina_protocol_widget.c:254
-#, fuzzy
 msgid "Open SFTP transfer"
-msgstr "פתיחת העברת קבצים מאובטחת…"
+msgstr "פתיחת העברת SFTP"
 
 #: src/remmina_protocol_widget.c:282
 msgid "Executing external commands…"
@@ -673,36 +676,35 @@ msgstr "התחברות אל '%s'…"
 
 #: src/remmina_protocol_widget.c:716 src/remmina_protocol_widget.c:796
 #: src/remmina_protocol_widget.c:969
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to %s via SSH…"
-msgstr "התחברות אל '%s'…"
+msgstr "מתקיים חיבור אל %s דרך SSH…"
 
 #: src/remmina_protocol_widget.c:846
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection at port %i…"
-msgstr "בהמתנה לתעלת SSH נכנסת בפתחה %i…"
+msgstr "בהמתנה לחיבור SSH נכנס בפתחה %i…"
 
 #: src/remmina_protocol_widget.c:891
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find %s command on the SSH server"
 msgstr "הפקודה %s לא נמצאה בשרת ה־SSH"
 
 #: src/remmina_protocol_widget.c:895
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run %s command on the SSH server (status = %i)."
 msgstr "הפקודה %s נכשלה בשרת ה־SSH (מצב = %i)."
 
 #: src/remmina_protocol_widget.c:902
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command, %s"
-msgstr "פתיחת הערוץ נכשלה, %s"
+msgstr "לא ניתן להריץ פקודה, %s"
 
 #: src/remmina_protocol_widget.c:1347
 msgid "Type in username and password for SSH."
-msgstr ""
+msgstr "נא להקליד שם משתמש וססמה ל־SSH."
 
 #: src/remmina_protocol_widget.c:1403
-#, fuzzy
 msgid "Certificate details:"
 msgstr "פרטי אישור:"
 
@@ -719,28 +721,24 @@ msgid "Fingerprint:"
 msgstr "טביעת אצבע:"
 
 #: src/remmina_protocol_widget.c:1407
-#, fuzzy
 msgid "Accept certificate?"
-msgstr "האם לקבל את האישור?"
+msgstr "לקבל את האישור?"
 
 #: src/remmina_protocol_widget.c:1424
 msgid "The certificate changed! Details:"
 msgstr "האישור הוחלף! פרטים:"
 
 #: src/remmina_protocol_widget.c:1427
-#, fuzzy
 msgid "Old fingerprint:"
 msgstr "טביעת אצבע ישנה:"
 
 #: src/remmina_protocol_widget.c:1428
-#, fuzzy
 msgid "New fingerprint:"
 msgstr "טביעת אצבע חדשה:"
 
 #: src/remmina_protocol_widget.c:1429
-#, fuzzy
 msgid "Accept changed certificate?"
-msgstr "לקבל את השינוי באישור?"
+msgstr "לקבל את האישור החלופי?"
 
 #: src/remmina_protocol_widget.c:1571
 #, c-format
@@ -748,14 +746,13 @@ msgid "Listening on port %i for an incoming %s connection…"
 msgstr "בהאזנה לפתחה %i עקב המתנה לחיבור %s נכנס…"
 
 #: src/remmina_protocol_widget.c:1596
-#, fuzzy
 msgid "Could not authenticate, attempting reconnection…"
-msgstr "האימות נכשל. מתבצע ניסיון חיבור מחדש…"
+msgstr "האימות נכשל, מתבצע ניסיון חיבור מחדש…"
 
 #: src/remmina_protocol_widget.c:1675
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr ""
+msgstr "תחילה יש להתקין את תוסף הפרוטוקול %s."
 
 #: src/remmina_applet_menu_item.c:121
 msgid "Discovered"
@@ -887,7 +884,7 @@ msgstr "לא ניתן לייבא את מפתח ה־SSH הציבורי: %s"
 #: src/remmina_ssh.c:274 src/remmina_ssh.c:506 src/remmina_ssh.c:523
 #: plugins/nx/nx_plugin.c:202
 msgid "SSH credentials"
-msgstr ""
+msgstr "פרטי גישה ב־SSH"
 
 #: src/remmina_ssh.c:277 src/remmina_ssh.c:484 src/remmina_ssh.c:509
 #: plugins/nx/nx_plugin.c:205
@@ -994,7 +991,7 @@ msgstr "בקשת הפניית הפתחות נכשלה, %s"
 
 #: src/remmina_ssh.c:1199
 msgid "The server did not respond."
-msgstr ""
+msgstr "השרת לא הגיב."
 
 #: src/remmina_ssh.c:1238
 #, c-format
@@ -1004,7 +1001,7 @@ msgstr "לא ניתן להתחבר לפתחה המקומית %i."
 #: src/remmina_ssh.c:1287
 #, c-format
 msgid "Could not run ssh_channel_write(), %s"
-msgstr ""
+msgstr "לא ניתן להריץ את ssh_channel_write()‎,‏ %s"
 
 #: src/remmina_ssh.c:1293
 #, c-format
@@ -1014,7 +1011,7 @@ msgstr "הקריאה משקע ההאזנה לתעלת SSH החזירה שגיא�
 #: src/remmina_ssh.c:1312
 #, c-format
 msgid "Could not run ssh_channel_poll(), %s"
-msgstr ""
+msgstr "לא ניתן להריץ את ssh_channel_poll()‎,‏ %s"
 
 #: src/remmina_ssh.c:1318
 #, c-format
@@ -1028,7 +1025,7 @@ msgstr "לא ניתן לשלוח קריאה משקע ההאזנה לתעלה, %s
 
 #: src/remmina_ssh.c:1415
 msgid "Assign a destination port."
-msgstr ""
+msgstr "הקצאת פתחת יעד."
 
 #: src/remmina_ssh.c:1422
 msgid "Could not create socket."
@@ -1110,7 +1107,7 @@ msgstr "פרוטוקול זה אינו תומך בייצוא."
 
 #: src/remmina_main.c:1203
 msgid "Remmina Kiosk"
-msgstr ""
+msgstr "קיוסק Remmina"
 
 #: src/remmina.c:83
 msgid "Show 'About'"
@@ -1334,9 +1331,8 @@ msgid "SSH - Secure Shell"
 msgstr "SSH - מעטפת מאובטחת"
 
 #: plugins/spice/spice_plugin.c:239
-#, fuzzy
 msgid "Enter SPICE password"
-msgstr "ססמה ראשית"
+msgstr "נא להקליד ססמה ל־SPICE"
 
 #: plugins/spice/spice_plugin.c:274
 #, c-format
@@ -1446,9 +1442,8 @@ msgid "Enter RDP authentication credentials"
 msgstr "נא להקליד פרטי אימות של RDP"
 
 #: plugins/rdp/rdp_plugin.c:641
-#, fuzzy
 msgid "Enter RDP gateway authentication credentials"
-msgstr "הקלדת פרטי אימות"
+msgstr "נא להקליד פרטי אימות מול שער הגישה ל־RDP"
 
 #: plugins/rdp/rdp_plugin.c:1494
 #, c-format
@@ -1654,24 +1649,20 @@ msgid "Gateway transport type"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1958
-#, fuzzy
 msgid "Remote Desktop Gateway server"
-msgstr "העדפת שולחן עבודה מרוחק"
+msgstr "שרת שער גישה לשולחן עבודה מרוחק"
 
 #: plugins/rdp/rdp_plugin.c:1959
-#, fuzzy
 msgid "Remote Desktop Gateway username"
-msgstr "העדפת שולחן עבודה מרוחק"
+msgstr "שם משתמש לשער גישה לשולחן עבודה מרחוק"
 
 #: plugins/rdp/rdp_plugin.c:1960
-#, fuzzy
 msgid "Remote Desktop Gateway password"
-msgstr "העדפת שולחן עבודה מרוחק"
+msgstr "ססמה לגשר גישה לשולחן עבודה מרוחק"
 
 #: plugins/rdp/rdp_plugin.c:1961
-#, fuzzy
 msgid "Remote Desktop Gateway domain"
-msgstr "העדפת שולחן עבודה מרוחק"
+msgstr "שם מתחם לגשר גישה לשולחן עבודה מרוחק"
 
 #: plugins/rdp/rdp_plugin.c:1962
 msgid "Client name"
@@ -1748,18 +1739,16 @@ msgid "Redirect local microphone"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1979
-#, fuzzy
 msgid "Turn off clipboard sync"
-msgstr "נטרול סנכרון לוח הגזירים"
+msgstr "השבתת סנכרון לוח הגזירים"
 
 #: plugins/rdp/rdp_plugin.c:1980
 msgid "Ignore certificate"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1981
-#, fuzzy
 msgid "Turn off password storing"
-msgstr "ללא אחסון ססמאות"
+msgstr "כיבוי אחסון ססמאות"
 
 #: plugins/rdp/rdp_plugin.c:1982
 msgid "Attach to console (2003/2003 R2)"
@@ -1886,9 +1875,9 @@ msgstr ""
 
 #. Draw text
 #: plugins/rdp/rdp_event.c:299
-#, fuzzy, c-format
+#, c-format
 msgid "Reconnection attempt %d of %d…"
-msgstr "התחברות אל '%s'…"
+msgstr "ניסיון התחברות חוזרת %d מתוך %d…"
 
 #: plugins/st/st_plugin.c:237
 msgid "Terminal Emulator"
@@ -1937,9 +1926,8 @@ msgid "Execute a command"
 msgstr ""
 
 #: plugins/nx/nx_plugin.c:367
-#, fuzzy
 msgid "Enter NX authentication credentials"
-msgstr "הקלדת פרטי אימות"
+msgstr "נא להקליד פרטי אימות ל־NX"
 
 #: plugins/nx/nx_plugin.c:608 plugins/xdmcp/xdmcp_plugin.c:264
 #, c-format
@@ -2018,14 +2006,12 @@ msgid "True color (24 bit)"
 msgstr "צבע אמתי (‎24 bit)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:372
-#, fuzzy
 msgid "Disconnect after first session"
 msgstr "ניתוק לאחר התקשרות אחת"
 
 #: plugins/xdmcp/xdmcp_plugin.c:373
-#, fuzzy
 msgid "Listen for TCP connections"
-msgstr "פתיחת חיבור"
+msgstr "להאזין לחיבורי TCP"
 
 #. Type
 #. Name
@@ -2042,14 +2028,12 @@ msgid "Remmina VNC listener Plugin"
 msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:734
-#, fuzzy
 msgid "Enter VNC password"
-msgstr "ססמה ראשית"
+msgstr "נא להקליד ססמת VNC"
 
 #: plugins/vnc/vnc_plugin.c:787
-#, fuzzy
 msgid "Enter VNC authentication credentials"
-msgstr "הקלדת פרטי אימות"
+msgstr "נא להקליד פרטי אימות ל־VNC"
 
 #: plugins/vnc/vnc_plugin.c:890
 msgid "Unable to connect to VNC server"
@@ -2122,9 +2106,8 @@ msgid "File downloaded"
 msgstr ""
 
 #: plugins/www/www_plugin.c:485
-#, fuzzy
 msgid "Enter WWW authentication credentials"
-msgstr "הקלדת פרטי אימות"
+msgstr "נא להקליד פרטי אימות ל־WWW"
 
 #: plugins/www/www_plugin.c:791
 msgid "URL"
@@ -2135,9 +2118,8 @@ msgid "http://address or https://address"
 msgstr ""
 
 #: plugins/www/www_plugin.c:808
-#, fuzzy
 msgid "User agent"
-msgstr "שם משתמש"
+msgstr "סוכן משתמש"
 
 #: plugins/www/www_plugin.c:809
 msgid "Turn on Java support"
@@ -2168,7 +2150,6 @@ msgid "Ignore TLS errors"
 msgstr ""
 
 #: plugins/www/www_plugin.c:816
-#, fuzzy
 msgid "No password storage"
 msgstr "ללא אחסון ססמאות"
 
@@ -2409,7 +2390,6 @@ msgid "Edit settings"
 msgstr "עריכת הגדרות"
 
 #: data/ui/remmina_preferences.glade:130
-#, fuzzy
 msgid "Scaling quality"
 msgstr "איכות שינוי יחס תצוגה"
 
@@ -2438,9 +2418,8 @@ msgid "Maximal amount of recent items"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:280
-#, fuzzy
 msgid "Screenshot folder"
-msgstr "שמות קובצי צילומי המסך"
+msgstr "תיקיית צילומי המסך"
 
 #: data/ui/remmina_preferences.glade:292
 msgid "Choose the a folder to save screenshots from Remmina in."
@@ -2455,7 +2434,6 @@ msgid "Screen resolutions"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:326
-#, fuzzy
 msgid "Screenshot filename"
 msgstr "שמות קובצי צילומי המסך"
 
@@ -2630,9 +2608,8 @@ msgid "Host key"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:870
-#, fuzzy
 msgid "Show/hide fullscreen"
-msgstr "הפעלה/כיבוי מצב מסך מלא"
+msgstr "הצגה/הפסקה של מסך מלא"
 
 #: data/ui/remmina_preferences.glade:900
 msgid "Auto-fit window"
@@ -2721,7 +2698,6 @@ msgid ""
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1413
-#, fuzzy
 msgid "SSH options"
 msgstr "אפשרויות SSH"
 
@@ -2731,9 +2707,8 @@ msgstr "ססמה ראשית"
 
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
-#, fuzzy
 msgid "Use secret key authentication for some widgets"
-msgstr "נא להביא את קובצי אימות האישור"
+msgstr "להשתמש באימות עם מפתח סודי עבור חלק מהווידג׳טים"
 
 #: data/ui/remmina_preferences.glade:1472
 msgid "Use master password"
@@ -2752,9 +2727,8 @@ msgid "File encryption"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1546
-#, fuzzy
 msgid "Repeat the password"
-msgstr "ססמה ראשית"
+msgstr "לחזור על הססמה"
 
 #: data/ui/remmina_preferences.glade:1623
 msgid "Terminal font"
@@ -2783,7 +2757,6 @@ msgid "(Host key +)"
 msgstr "(מקש מארח +)"
 
 #: data/ui/remmina_preferences.glade:1795
-#, fuzzy
 msgid "Foreground colour"
 msgstr "צבע חזית"
 
@@ -2792,27 +2765,22 @@ msgid "Foreground color"
 msgstr "צבע חזית"
 
 #: data/ui/remmina_preferences.glade:1823
-#, fuzzy
 msgid "Background colour"
 msgstr "צבע רקע"
 
 #: data/ui/remmina_preferences.glade:1836
-#, fuzzy
 msgid "Cursor colour"
 msgstr "צבע סמן"
 
 #: data/ui/remmina_preferences.glade:1849
-#, fuzzy
 msgid "Normal colours"
 msgstr "צבעים רגילים"
 
 #: data/ui/remmina_preferences.glade:1862
-#, fuzzy
 msgid "Bright colours"
 msgstr "צבעים בוהקים"
 
 #: data/ui/remmina_preferences.glade:1876
-#, fuzzy
 msgid "Load colour scheme"
 msgstr "טעינת ערכת צבעים"
 
@@ -2901,7 +2869,6 @@ msgid "Pick a light white color"
 msgstr "נא לבחור צבע לבן בהיר"
 
 #: data/ui/remmina_preferences.glade:2129
-#, fuzzy
 msgid "Use default system font"
 msgstr "להשתמש בגופן בררת המחדל של המערכת"
 
