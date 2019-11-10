@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-07 00:16+0000\n"
-"PO-Revision-Date: 2019-09-29 07:31+0000\n"
+"PO-Revision-Date: 2019-11-12 11:24+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/remmina/remmina/"
 "da/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Weblate 3.10-dev\n"
 
 #. Profile: Protocol
 #: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1475
@@ -217,7 +217,7 @@ msgstr "Tastetryk"
 
 #: src/rcw.c:1931
 msgid "Turn off scaling to avoid screenshot distortion."
-msgstr ""
+msgstr "Skru af for at undgå skjermdumpsfordrejning."
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -676,8 +676,9 @@ msgid "File %s not found."
 msgstr "Filen %s findes ikke."
 
 #: src/remmina_protocol_widget.c:248
+#, fuzzy
 msgid "Connect via SSH from a new terminal"
-msgstr ""
+msgstr "Koble til via SSH fra en ny terminal"
 
 #: src/remmina_protocol_widget.c:254
 #, fuzzy
@@ -721,7 +722,7 @@ msgstr "Kunne ikke åbne kanal: %s"
 
 #: src/remmina_protocol_widget.c:1347
 msgid "Type in username and password for SSH."
-msgstr ""
+msgstr "Skriv in brugernavn og adgangskode for SSH."
 
 #: src/remmina_protocol_widget.c:1403
 #, fuzzy
@@ -778,7 +779,7 @@ msgstr "Autentifikation mislykkedes. Prøver at oprette forbindelse igen …"
 #: src/remmina_protocol_widget.c:1675
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr ""
+msgstr "Indstaller %s-protokolplug-in først."
 
 #: src/remmina_applet_menu_item.c:121
 msgid "Discovered"
@@ -1022,7 +1023,7 @@ msgstr "Kunne ikke anmode om viderestilling af port: %s"
 
 #: src/remmina_ssh.c:1199
 msgid "The server did not respond."
-msgstr ""
+msgstr "Serveren svarte ikke."
 
 #: src/remmina_ssh.c:1238
 #, c-format
@@ -1030,9 +1031,9 @@ msgid "Cannot connect to local port %i."
 msgstr "Kan ikke oprette forbindelse til porten %i."
 
 #: src/remmina_ssh.c:1287
-#, c-format
+#, c-format, fuzzy
 msgid "Could not run ssh_channel_write(), %s"
-msgstr ""
+msgstr "Kunde ikke køre ssh_channel_write(), %s"
 
 #: src/remmina_ssh.c:1293
 #, fuzzy, c-format
@@ -1040,9 +1041,9 @@ msgid "Could not read from tunnel listening socket, %s"
 msgstr "læsning på tunnellyttesokkel returnerede en fejl: %s"
 
 #: src/remmina_ssh.c:1312
-#, c-format
+#, c-format, fuzzy
 msgid "Could not run ssh_channel_poll(), %s"
-msgstr ""
+msgstr "Kunde ikke køre ssh_channel_poll(), %s"
 
 #: src/remmina_ssh.c:1318
 #, fuzzy, c-format
@@ -1055,8 +1056,9 @@ msgid "Could not send data to tunnel listening socket, %s"
 msgstr "læsning på tunnellyttesokkel returnerede en fejl: %s"
 
 #: src/remmina_ssh.c:1415
+#, fuzzy
 msgid "Assign a destination port."
-msgstr ""
+msgstr "Tildel en målport."
 
 #: src/remmina_ssh.c:1422
 #, fuzzy
@@ -1480,9 +1482,9 @@ msgid "Transfer completed"
 msgstr "Overførsel fuldført"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format
+#, c-format, fuzzy
 msgid "The %s file has been transferred"
-msgstr ""
+msgstr "%s-filen har ikke blidt overføret."
 
 #: plugins/spice/spice_plugin_usb.c:54
 msgid "_Close"
@@ -1616,9 +1618,11 @@ msgstr "Serveren %s nægtede forbindelsen."
 
 #. E_PROXY_NAP_ACCESSDENIED https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-tsgu/84cd92e4-592c-4219-95d8-18021ac654b0
 #: plugins/rdp/rdp_plugin.c:1578
-#, c-format
+#, c-format, fuzzy
 msgid "The remote desktop gateway %s denied user %s\\%s access due to policy."
 msgstr ""
+"Remote desktop gateway  %s friholdt brugeren %s\\%s tilgang som følge af "
+"praksis."
 
 #: plugins/rdp/rdp_plugin.c:1588
 #, c-format
@@ -1753,14 +1757,17 @@ msgid "Load balance info"
 msgstr "Information om belastning"
 
 #: plugins/rdp/rdp_plugin.c:1966
+#, fuzzy
 msgid "Override Printer Drivers"
-msgstr ""
+msgstr "Overstyr skriverdrivere"
 
 #: plugins/rdp/rdp_plugin.c:1966
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":\""
+"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:1967
 msgid "Local serial name"
@@ -1839,8 +1846,9 @@ msgid "Attach to console (2003/2003 R2)"
 msgstr "Kobl til konsol (2003/2003 R2)"
 
 #: plugins/rdp/rdp_plugin.c:1983
+#, fuzzy
 msgid "Turn off fast-path"
-msgstr ""
+msgstr "Skru av fast-path"
 
 #: plugins/rdp/rdp_plugin.c:1984
 #, fuzzy
@@ -1983,8 +1991,9 @@ msgid "Remmina Simple Terminal"
 msgstr "Remmina simpel terminal"
 
 #: plugins/tool_hello_world/plugin_config.h:40
+#, fuzzy
 msgid "Hello World!"
-msgstr "Hello World!"
+msgstr "Hallo verden!"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
 #, fuzzy
@@ -2239,11 +2248,11 @@ msgstr "Aktivér rumlig navigering"
 
 #: plugins/www/www_plugin.c:812
 msgid "Turn on plugin support"
-msgstr ""
+msgstr "Skru på plug-in-stødte"
 
 #: plugins/www/www_plugin.c:813
 msgid "Turn on WebGL support"
-msgstr ""
+msgstr "Skru på WebGL-stødte"
 
 #: plugins/www/www_plugin.c:814
 #, fuzzy
@@ -2293,8 +2302,9 @@ msgid "About"
 msgstr "Om"
 
 #: data/ui/remmina_about.glade:40
+#, fuzzy
 msgid "Website"
-msgstr ""
+msgstr "Netsted"
 
 #: data/ui/remmina_news.glade:108
 msgid ""
@@ -2302,6 +2312,9 @@ msgid ""
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics to remmina.org"
 msgstr ""
+"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
+">anonym</a></b> statistik til remmina.org"
 
 #: data/ui/remmina_news.glade:133
 msgid "Make Remmina the default Remote Desktop Client"
@@ -2435,7 +2448,7 @@ msgstr "Hjemmeside"
 
 #: data/ui/remmina_main.glade:394
 msgid "Wiki"
-msgstr ""
+msgstr "Wiki"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:404
@@ -2533,8 +2546,9 @@ msgid "Hyper"
 msgstr "Hyper"
 
 #: data/ui/remmina_preferences.glade:163
+#, fuzzy
 msgid "Step size for auto scroll"
-msgstr ""
+msgstr "Skridtlengde for automatisk rulning"
 
 #: data/ui/remmina_preferences.glade:191
 #, fuzzy
@@ -2548,7 +2562,7 @@ msgstr "Mappe til skærmbilleder"
 
 #: data/ui/remmina_preferences.glade:292
 msgid "Choose the a folder to save screenshots from Remmina in."
-msgstr ""
+msgstr "Pluk en mappe at lagre skærmdumps fra Remmina i."
 
 #: data/ui/remmina_preferences.glade:295
 #, fuzzy
@@ -2605,8 +2619,9 @@ msgid "Send statistics to remmina.org"
 msgstr "Send statistik til remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
+#, fuzzy
 msgid "Only save generated screenshots, don't copy them to clipboard."
-msgstr ""
+msgstr "Kun lagre genererede skærmdumper, ikke kopier dem til udklipstavle."
 
 #: data/ui/remmina_preferences.glade:467
 #, fuzzy
@@ -2695,7 +2710,7 @@ msgstr "Faneblad for alle forbindelser"
 
 #: data/ui/remmina_preferences.glade:621
 msgid "No tabs"
-msgstr ""
+msgstr "Ingen faner"
 
 #: data/ui/remmina_preferences.glade:632
 #, fuzzy
@@ -2770,8 +2785,9 @@ msgid "Auto-fit window"
 msgstr "Automatisk tilpasning af vindue"
 
 #: data/ui/remmina_preferences.glade:973
+#, fuzzy
 msgid "Apply/remove scaling"
-msgstr ""
+msgstr "Tillæg/fjern skalering"
 
 #: data/ui/remmina_preferences.glade:1003
 msgid "Grab keyboard"
@@ -2793,7 +2809,7 @@ msgstr "Tastatur"
 
 #: data/ui/remmina_preferences.glade:1209
 msgid "Local SSH port"
-msgstr ""
+msgstr "Lokal SSH-port"
 
 #: data/ui/remmina_preferences.glade:1233
 msgid "Parse ~/.ssh/config"
@@ -2901,12 +2917,14 @@ msgid "Scrollback lines"
 msgstr "Tilbagerulningslinjer"
 
 #: data/ui/remmina_preferences.glade:1702
+#, fuzzy
 msgid "Shortcut for copying to clipboard"
-msgstr ""
+msgstr "Genvej for kopiering til udklipstavlen"
 
 #: data/ui/remmina_preferences.glade:1715
+#, fuzzy
 msgid "Shortcut for pasting from clipboard"
-msgstr ""
+msgstr "Genvej for indlimning fra udklipstavlen"
 
 #: data/ui/remmina_preferences.glade:1728
 #, fuzzy
