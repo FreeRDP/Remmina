@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-12 23:35+0000\n"
-"PO-Revision-Date: 2019-11-12 23:32+0000\n"
+"PO-Revision-Date: 2019-11-12 23:42+0000\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "remmina/remmina/pt_BR/>\n"
@@ -711,9 +711,9 @@ msgstr "Não foi possível executar o comando %s no servidor SSH (estado = %i)."
 
 #. / TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:903
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command: %s"
-msgstr "Não foi possível executar o comando, %s"
+msgstr "Não foi possível executar o comando: %s"
 
 #: src/remmina_protocol_widget.c:1348
 msgid "Type in username and password for SSH."
@@ -997,15 +997,15 @@ msgstr "Falha ao iniciar sessão SSH: %s"
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1033 src/remmina_ssh.c:1095
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel: %s"
-msgstr "Falha ao criar o canal, %s"
+msgstr "Falha ao criar o canal: %s"
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1044
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to the SSH tunnel destination: %s"
-msgstr "Falha ao conectar no túnel SSH de destino %s"
+msgstr "Falha ao conectar no túnel SSH de destino: %s"
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1110 src/remmina_ssh.c:1704
@@ -1020,9 +1020,9 @@ msgstr "Falha ao executar %s no servidor SSH, %%s"
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1154 src/remmina_ssh.c:1175 src/remmina_ssh.c:1184
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request port forwarding: %s"
-msgstr "Falha ao solicitar encaminhamento de porta, %s"
+msgstr "Não foi possível solicitar encaminhamento de porta: %s"
 
 #: src/remmina_ssh.c:1219
 msgid "The server did not respond."
@@ -1035,27 +1035,27 @@ msgstr "Não foi possível conectar à porta local %i."
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1308
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_write(): %s"
-msgstr "Não foi possível executar ssh_channel_write(), %s"
+msgstr "Não foi possível executar ssh_channel_write(): %s"
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1315
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket: %s"
-msgstr "Não foi possível ler do socket de escuta de túnel, %s"
+msgstr "Não foi possível ler do socket de escuta de túnel: %s"
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1335
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_poll(): %s"
-msgstr "Não foi possível executar ssh_channel_poll(), %s"
+msgstr "Não foi possível executar ssh_channel_poll(): %s"
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1342
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_read_nonblocking(): %s"
-msgstr "Não foi possível executar ssh_channel_read_nonblocking(), %s"
+msgstr "Não foi possível executar ssh_channel_read_nonblocking(): %s"
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1361
@@ -3012,4 +3012,3 @@ msgstr "Permitir texto em negrito"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminal"
-
