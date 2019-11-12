@@ -440,6 +440,7 @@ static void remmina_pref_dialog_init(void)
 #else
 	gtk_switch_set_active(GTK_SWITCH(remmina_pref_dialog->switch_security_use_master_password), FALSE);
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->switch_security_use_master_password), FALSE);
+	/// TRANSLATORS: Do not translate libsodium, is the name of a library
 	gtk_widget_set_tooltip_text (GTK_WIDGET(remmina_pref_dialog->switch_security_use_master_password), _("libsodium >= 1.9.0 is required to use master password"));
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->unlock_password), FALSE);
 	gtk_widget_set_sensitive(GTK_WIDGET(remmina_pref_dialog->unlock_repassword), FALSE);
