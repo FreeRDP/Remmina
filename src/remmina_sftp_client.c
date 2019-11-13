@@ -167,7 +167,7 @@ remmina_sftp_client_thread_download_file(RemminaSFTPClient *client, RemminaSFTP 
 	if (tmp && tmp != buf) {
 		*tmp = '\0';
 		if (g_mkdir_with_parents(buf, 0755) < 0) {
-			/// TRANSLATORS: The placeholder %s is a directory path
+			// TRANSLATORS: The placeholder %s is a directory path
 			remmina_sftp_client_thread_set_error(client, task, _("Error creating directory %s."), buf);
 			return FALSE;
 		}
@@ -175,7 +175,7 @@ remmina_sftp_client_thread_download_file(RemminaSFTPClient *client, RemminaSFTP 
 
 	local_file = g_fopen(local_path, "ab");
 	if (!local_file) {
-			/// TRANSLATORS: The placeholder %s is a file path
+			// TRANSLATORS: The placeholder %s is a file path
 		remmina_sftp_client_thread_set_error(client, task, _("Error creating file %s."), local_path);
 		return FALSE;
 	}
@@ -196,7 +196,7 @@ remmina_sftp_client_thread_download_file(RemminaSFTPClient *client, RemminaSFTP 
 			fclose(local_file);
 			local_file = g_fopen(local_path, "wb");
 			if (!local_file) {
-				/// TRANSLATORS: The placeholder %s is a file path
+				// TRANSLATORS: The placeholder %s is a file path
 				remmina_sftp_client_thread_set_error(client, task, _("Error creating file %s."), local_path);
 				return FALSE;
 			}
@@ -214,7 +214,7 @@ remmina_sftp_client_thread_download_file(RemminaSFTPClient *client, RemminaSFTP 
 
 	if (!remote_file) {
 		fclose(local_file);
-		/// TRANSLATORS: The placeholders %s are a file path and a server name
+		// TRANSLATORS: The placeholders %s are a file path and a server name
 		remmina_sftp_client_thread_set_error(client, task, _("Error opening file %s on server. %s"),
 						     remote_path, ssh_get_error(REMMINA_SSH(client->sftp)->session));
 		return FALSE;
