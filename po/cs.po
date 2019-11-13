@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-13 08:54+0000\n"
+"POT-Creation-Date: 2019-11-13 17:19+0000\n"
 "PO-Revision-Date: 2019-11-13 09:29+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
@@ -926,7 +926,8 @@ msgid "SSH Kerberos/GSSAPI authentication failed: %s"
 msgstr "SSH Kerberos/GSSAPI ověření se nezdařilo: %s"
 
 #: src/remmina_ssh.c:353
-msgid "SSH public key has changed!"
+#, fuzzy
+msgid "The public SSH key changed!"
 msgstr "Veřejný SSH klíč byl změněn!"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -968,10 +969,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:484
-#, c-format
-msgid "SSH known host checking failed: %s"
-msgstr ""
-"Kontrola vůči už známým SSH hostitelům (known_hosts) nedopadla dobře: %s"
+#, fuzzy, c-format
+msgid "Could not check list of known SSH hosts: %s"
+msgstr "Nepodařilo se zahájit SSH relaci: %s"
 
 #: src/remmina_ssh.c:490
 msgid "SSH password"
@@ -999,8 +999,8 @@ msgstr "Nepodařilo se vytvořit kanál: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1044
-#, c-format
-msgid "Could not connect to the SSH tunnel destination: %s"
+#, fuzzy, c-format
+msgid "Could not connect to SSH tunnel: %s"
 msgstr "Nepodařilo se připojit k cíli SSH tunelu: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1010,8 +1010,8 @@ msgid "Could not open channel: %s"
 msgstr "Nepodařilo se otevřít kanál: %s"
 
 #: src/remmina_ssh.c:1116
-#, c-format
-msgid "Failed to execute %s on SSH server, %%s"
+#, fuzzy, c-format
+msgid "Could not run %s on SSH server, %%s"
 msgstr "Vykonání %s na SSH serveru se nezdařilo: %%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -2963,3 +2963,4 @@ msgstr "Povolit tučný text"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminál"
+

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-13 08:54+0000\n"
+"POT-Creation-Date: 2019-11-13 17:19+0000\n"
 "PO-Revision-Date: 2019-11-13 17:15+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -904,7 +904,8 @@ msgid "SSH Kerberos/GSSAPI authentication failed: %s"
 msgstr "אימות SSH Kerberos‏/GSSAPI נכשל: %s"
 
 #: src/remmina_ssh.c:353
-msgid "SSH public key has changed!"
+#, fuzzy
+msgid "The public SSH key changed!"
 msgstr "מפתח ה־SSH הציבורי הוחלף!"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -944,9 +945,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:484
-#, c-format
-msgid "SSH known host checking failed: %s"
-msgstr "בדיקה האם המארח מוכר עם SSH נכשלה: %s"
+#, fuzzy, c-format
+msgid "Could not check list of known SSH hosts: %s"
+msgstr "הפעלת התקשרות ה־SSH נכשלה: %s"
 
 #: src/remmina_ssh.c:490
 msgid "SSH password"
@@ -974,8 +975,8 @@ msgstr "יצירת הערוץ נכשלה: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1044
-#, c-format
-msgid "Could not connect to the SSH tunnel destination: %s"
+#, fuzzy, c-format
+msgid "Could not connect to SSH tunnel: %s"
 msgstr "ההתחברות ליעד תעלת ה־SSH נכשלה: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -985,8 +986,8 @@ msgid "Could not open channel: %s"
 msgstr "לא ניתן לפתוח את הערוץ: %s"
 
 #: src/remmina_ssh.c:1116
-#, c-format
-msgid "Failed to execute %s on SSH server, %%s"
+#, fuzzy, c-format
+msgid "Could not run %s on SSH server, %%s"
 msgstr "הפעלת %s בשרת ה־SSH נכשלה, %%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1707,8 +1708,8 @@ msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":\""
-"Canon MF410 Series UFR II\""
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
+"\"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:1967
 msgid "Local serial name"
@@ -2903,3 +2904,4 @@ msgstr "לאפשר טקסט מודגש"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "מסוף"
+

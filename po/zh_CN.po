@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-13 08:54+0000\n"
+"POT-Creation-Date: 2019-11-13 17:19+0000\n"
 "PO-Revision-Date: 2019-02-12 10:59+0800\n"
 "Last-Translator: shijing <jingshi@ubuntukylin.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
@@ -924,7 +924,8 @@ msgid "SSH Kerberos/GSSAPI authentication failed: %s"
 msgstr "SSH Kerberos/GSSAPI 验证失败: %s"
 
 #: src/remmina_ssh.c:353
-msgid "SSH public key has changed!"
+#, fuzzy
+msgid "The public SSH key changed!"
 msgstr "SSH 公钥已变更！"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -964,9 +965,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:484
-#, c-format
-msgid "SSH known host checking failed: %s"
-msgstr "SSH 已知主机检查失败：%s"
+#, fuzzy, c-format
+msgid "Could not check list of known SSH hosts: %s"
+msgstr "无法启动 SSH 会话：%s"
 
 #: src/remmina_ssh.c:490
 msgid "SSH password"
@@ -996,7 +997,7 @@ msgstr "创建通道失败：%s"
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1044
 #, fuzzy, c-format
-msgid "Could not connect to the SSH tunnel destination: %s"
+msgid "Could not connect to SSH tunnel: %s"
 msgstr "无法连接到 SSH 通道的目的地：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1007,7 +1008,7 @@ msgstr "打开通道失败：%s"
 
 #: src/remmina_ssh.c:1116
 #, fuzzy, c-format
-msgid "Failed to execute %s on SSH server, %%s"
+msgid "Could not run %s on SSH server, %%s"
 msgstr "无法在 SSH 服务器上运行 %s：%%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -3016,3 +3017,4 @@ msgstr "允许粗体字"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "终端"
+

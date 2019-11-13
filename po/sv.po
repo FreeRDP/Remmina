@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-13 08:54+0000\n"
+"POT-Creation-Date: 2019-11-13 17:19+0000\n"
 "PO-Revision-Date: 2019-11-13 17:15+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -294,7 +294,7 @@ msgid "The multi password changer requires a secrecy service.\n"
 msgstr ""
 
 #: src/remmina_mpchange.c:419
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
 msgstr[0] "%d lösenord ändrat."
@@ -922,7 +922,7 @@ msgid "SSH Kerberos/GSSAPI authentication failed: %s"
 msgstr ""
 
 #: src/remmina_ssh.c:353
-msgid "SSH public key has changed!"
+msgid "The public SSH key changed!"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -960,9 +960,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:484
-#, c-format
-msgid "SSH known host checking failed: %s"
-msgstr ""
+#, fuzzy, c-format
+msgid "Could not check list of known SSH hosts: %s"
+msgstr "Misslyckades att starta SSH-session: %s"
 
 #: src/remmina_ssh.c:490
 msgid "SSH password"
@@ -992,18 +992,18 @@ msgstr "Misslyckades att skapa sftp-session: %s"
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1044
 #, fuzzy, c-format
-msgid "Could not connect to the SSH tunnel destination: %s"
+msgid "Could not connect to SSH tunnel: %s"
 msgstr "Misslyckades att starta SSH-session: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1110 src/remmina_ssh.c:1704
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not open channel: %s"
 msgstr "Kunde inte öppna kanal: %s"
 
 #: src/remmina_ssh.c:1116
 #, fuzzy, c-format
-msgid "Failed to execute %s on SSH server, %%s"
+msgid "Could not run %s on SSH server, %%s"
 msgstr "Kunde inte utföra kommando: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1018,7 +1018,7 @@ msgid "The server did not respond."
 msgstr "Tjänaren svarade inte."
 
 #: src/remmina_ssh.c:1258
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Kan inte ansluta till lokal port %i."
 
@@ -1042,7 +1042,7 @@ msgstr "Kunde inte utföra kommando: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1342
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not run ssh_channel_read_nonblocking(): %s"
 msgstr "Kunde inte köra ssh_channel_read_nonblocking(): %s"
 
@@ -1102,7 +1102,7 @@ msgstr "Misslyckades att initiera sftp-session: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1734
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Could not request shell: %s"
 msgstr "Kunde inte fråga om skall: %s"
 
@@ -1280,7 +1280,7 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Secure File Transfer"
 
 #: src/remmina_ssh_plugin.c:479
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Error: %s"
 msgstr "Fel: %s"
 
@@ -1399,7 +1399,7 @@ msgid "Enter SPICE password"
 msgstr "Lösenord för SSH"
 
 #: plugins/spice/spice_plugin.c:274
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "Disconnected from SPICE server %s."
 msgstr "Frånkopplad frän SPICE-tjäner %s"
 

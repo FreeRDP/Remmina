@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-13 08:54+0000\n"
+"POT-Creation-Date: 2019-11-13 17:19+0000\n"
 "PO-Revision-Date: 2019-11-13 17:14+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -921,7 +921,8 @@ msgid "SSH Kerberos/GSSAPI authentication failed: %s"
 msgstr "SSH Kerberos/GSSAPI kimlik doğrulaması başarısız: %s"
 
 #: src/remmina_ssh.c:353
-msgid "SSH public key has changed!"
+#, fuzzy
+msgid "The public SSH key changed!"
 msgstr "SSH ortak anahtarı değişti!"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -962,9 +963,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:484
-#, c-format
-msgid "SSH known host checking failed: %s"
-msgstr "SSH bilinen ana bilgisayar denetimi başarısız: %s"
+#, fuzzy, c-format
+msgid "Could not check list of known SSH hosts: %s"
+msgstr "SSH oturumu başlatılamadı: %s"
 
 #: src/remmina_ssh.c:490
 msgid "SSH password"
@@ -992,8 +993,8 @@ msgstr "Kanal oluşturulamadı: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1044
-#, c-format
-msgid "Could not connect to the SSH tunnel destination: %s"
+#, fuzzy, c-format
+msgid "Could not connect to SSH tunnel: %s"
 msgstr "SSH tüneli hedefine bağlanılamadı: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1003,8 +1004,8 @@ msgid "Could not open channel: %s"
 msgstr "Kanal açılamadı: %s"
 
 #: src/remmina_ssh.c:1116
-#, c-format
-msgid "Failed to execute %s on SSH server, %%s"
+#, fuzzy, c-format
+msgid "Could not run %s on SSH server, %%s"
 msgstr "SSH sunucusunda %s çalıştırılamadı, %%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -2955,3 +2956,4 @@ msgstr "Kalın metne izin ver"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Uçbirim"
+

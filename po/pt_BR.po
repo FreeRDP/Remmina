@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-13 08:54+0000\n"
+"POT-Creation-Date: 2019-11-13 17:19+0000\n"
 "PO-Revision-Date: 2019-11-12 23:44+0000\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -918,7 +918,8 @@ msgid "SSH Kerberos/GSSAPI authentication failed: %s"
 msgstr "Autenticação SSH Kerberos/GSSAPI falhou: %s"
 
 #: src/remmina_ssh.c:353
-msgid "SSH public key has changed!"
+#, fuzzy
+msgid "The public SSH key changed!"
 msgstr "A chave pública SSH foi alterada!"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -959,9 +960,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:484
-#, c-format
-msgid "SSH known host checking failed: %s"
-msgstr "Verificação de host SSH conhecido falhou: %s"
+#, fuzzy, c-format
+msgid "Could not check list of known SSH hosts: %s"
+msgstr "Falha ao iniciar sessão SSH: %s"
 
 #: src/remmina_ssh.c:490
 msgid "SSH password"
@@ -989,8 +990,8 @@ msgstr "Falha ao criar o canal: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1044
-#, c-format
-msgid "Could not connect to the SSH tunnel destination: %s"
+#, fuzzy, c-format
+msgid "Could not connect to SSH tunnel: %s"
 msgstr "Falha ao conectar no túnel SSH de destino: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1000,8 +1001,8 @@ msgid "Could not open channel: %s"
 msgstr "Não foi possível abrir o canal: %s"
 
 #: src/remmina_ssh.c:1116
-#, c-format
-msgid "Failed to execute %s on SSH server, %%s"
+#, fuzzy, c-format
+msgid "Could not run %s on SSH server, %%s"
 msgstr "Falha ao executar %s no servidor SSH, %%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -2964,3 +2965,4 @@ msgstr "Permitir texto em negrito"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminal"
+

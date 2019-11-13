@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-13 08:54+0000\n"
+"POT-Creation-Date: 2019-11-13 17:19+0000\n"
 "PO-Revision-Date: 2019-10-04 11:55+0000\n"
 "Last-Translator: Joan Montané <joan@montane.cat>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -918,7 +918,8 @@ msgid "SSH Kerberos/GSSAPI authentication failed: %s"
 msgstr ""
 
 #: src/remmina_ssh.c:353
-msgid "SSH public key has changed!"
+#, fuzzy
+msgid "The public SSH key changed!"
 msgstr "La clau pública SSH ha canviat!"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -960,9 +961,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:484
-#, c-format
-msgid "SSH known host checking failed: %s"
-msgstr ""
+#, fuzzy, c-format
+msgid "Could not check list of known SSH hosts: %s"
+msgstr "Ha fallat en iniciar la sessió SSH: %s"
 
 #: src/remmina_ssh.c:490
 msgid "SSH password"
@@ -992,7 +993,7 @@ msgstr "No s'ha pogut crear el canal: %s"
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1044
 #, fuzzy, c-format
-msgid "Could not connect to the SSH tunnel destination: %s"
+msgid "Could not connect to SSH tunnel: %s"
 msgstr "Ha fallat la connexió amb túnel SSH amb el destí: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
@@ -1003,7 +1004,7 @@ msgstr "No s'ha pogut obrir el canal: %s"
 
 #: src/remmina_ssh.c:1116
 #, fuzzy, c-format
-msgid "Failed to execute %s on SSH server, %%s"
+msgid "Could not run %s on SSH server, %%s"
 msgstr "Ha fallat l’execució de %s al servidor SSH: %%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
