@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-13 09:39+0100\n"
+"POT-Creation-Date: 2019-11-13 08:54+0000\n"
 "PO-Revision-Date: 2019-11-12 11:25+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Uyghur <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -20,50 +20,839 @@ msgstr ""
 "X-Generator: Weblate 3.10-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
-#: src/remmina_main.c:644
-#, c-format
-msgid "Total %i item."
-msgid_plural "Total %i items."
-msgstr[0] "جەمئىي %i تۈر بار."
+#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1475
+msgid "Protocol"
+msgstr "كېلىشىم"
 
-#: src/remmina_main.c:826
+#: src/remmina_plugin_manager.c:69
+msgid "Entry"
+msgstr "كىرگۈ"
+
+#: src/remmina_plugin_manager.c:69
+msgid "File"
+msgstr "ھۆججەت"
+
+#: src/remmina_plugin_manager.c:69
+msgid "Tool"
+msgstr "قورال"
+
+#: src/remmina_plugin_manager.c:69
+msgid "Preference"
+msgstr "مايىللىق"
+
+#: src/remmina_plugin_manager.c:69
+msgid "Secret"
+msgstr "مەخپىي"
+
+#: src/remmina_plugin_manager.c:440 data/ui/remmina_main.glade:356
+msgid "Plugins"
+msgstr "قىستۇرمىلار"
+
+#: src/remmina_plugin_manager.c:440 src/remmina_message_panel.c:447
+#: src/remmina_message_panel.c:616 src/remmina_file_editor.c:161
+msgid "_OK"
+msgstr ""
+
+#: src/remmina_plugin_manager.c:458 src/remmina_file_editor.c:1432
+#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:491
+#: data/ui/remmina_mpc.glade:314
+msgid "Name"
+msgstr "ئاتى"
+
+#: src/remmina_plugin_manager.c:464 plugins/nx/nx_session_manager.c:183
+msgid "Type"
+msgstr "تىپى"
+
+#: src/remmina_plugin_manager.c:470
+msgid "Description"
+msgstr "چۈشەندۈرۈش"
+
+#: src/remmina_plugin_manager.c:476
+msgid "Version"
+msgstr "نەشرى"
+
+#: src/remmina_key_chooser.h:38
+msgid "Shift+"
+msgstr ""
+
+#: src/remmina_key_chooser.h:39
+msgid "Ctrl+"
+msgstr ""
+
+#: src/remmina_key_chooser.h:40
+msgid "Alt+"
+msgstr ""
+
+#: src/remmina_key_chooser.h:41
+msgid "Super+"
+msgstr ""
+
+#: src/remmina_key_chooser.h:42
+msgid "Hyper+"
+msgstr ""
+
+#: src/remmina_key_chooser.h:43
+msgid "Meta+"
+msgstr ""
+
+#: src/remmina_key_chooser.h:44
+msgid "<None>"
+msgstr ""
+
+#: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
+#: data/ui/remmina_mpc.glade:35
+msgid "Cancel"
+msgstr ""
+
+#: src/remmina_message_panel.c:199 data/ui/remmina_string_list.glade:8
+#: data/ui/remmina_string_list.glade:9 data/ui/remmina_string_list.glade:63
+#: data/ui/remmina_news.glade:27 data/ui/remmina_preferences.glade:33
+#: data/ui/remmina_preferences.glade:34 data/ui/remmina_preferences.glade:60
+msgid "Close"
+msgstr ""
+
+#: src/remmina_message_panel.c:260
+msgid "Yes"
+msgstr ""
+
+#: src/remmina_message_panel.c:267
+msgid "No"
+msgstr ""
+
+#: src/remmina_message_panel.c:330 src/remmina_file_editor.c:928
+#: src/remmina_sftp_plugin.c:349 src/remmina_ssh_plugin.c:1055
+#: plugins/rdp/rdp_plugin.c:1934 plugins/nx/nx_plugin.c:721
+#: plugins/vnc/vnc_plugin.c:1832 plugins/vnc/vnc_plugin.c:1852
+#: plugins/www/www_plugin.c:792 data/ui/remmina_mpc.glade:152
+msgid "Username"
+msgstr ""
+
+#: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1936
+#: data/ui/remmina_mpc.glade:138
+msgid "Domain"
+msgstr "دائىرە"
+
+#: src/remmina_message_panel.c:415
+msgid "Save password"
+msgstr "ئىم ساقلا"
+
+#: src/remmina_message_panel.c:452 src/remmina_message_panel.c:624
+#: src/remmina_file_editor.c:160 src/remmina_file_editor.c:364
+#: src/remmina_file_editor.c:1307 src/remmina_sftp_client.c:915
+#: plugins/spice/spice_plugin_file_transfer.c:84
+#: plugins/nx/nx_session_manager.c:156 data/ui/remmina_key_chooser.glade:8
+#: data/ui/remmina_key_chooser.glade:9 data/ui/remmina_spinner.glade:8
+#: data/ui/remmina_spinner.glade:9
+msgid "_Cancel"
+msgstr ""
+
+#: src/remmina_message_panel.c:508
+msgid "Enter certificate authentication files"
+msgstr ""
+
+#: src/remmina_message_panel.c:520
+msgid "CA Certificate File"
+msgstr ""
+
+#: src/remmina_message_panel.c:542
+msgid "CA CRL File"
+msgstr ""
+
+#: src/remmina_message_panel.c:564
+msgid "Client Certificate File"
+msgstr ""
+
+#: src/remmina_message_panel.c:586
+msgid "Client Certificate Key"
+msgstr ""
+
+#: src/remmina_chat_window.c:178
+#, c-format
+msgid "Chat with %s"
+msgstr "%s بىلەن سۆزلىشىش"
+
+#: src/remmina_chat_window.c:230
+msgid "_Send"
+msgstr "ئەۋەت(_S)"
+
+#: src/remmina_chat_window.c:240
+msgid "_Clear"
+msgstr "تازىلا(_C)"
+
+#: src/rcw.c:585
 #, fuzzy, c-format
-msgid "Are you sure you want to delete '%s'?"
-msgstr "راستلا ‹%s› نى ئۆچۈرەمسىز؟"
-
-#: src/remmina_main.c:926
-#, c-format
 msgid ""
-"Unable to import:\n"
-"%s"
-msgstr ""
-"ئىمپورت قىلغىلى بولمىدى:\n"
-"%s"
+"Are you sure you want to close %i active connections in the current window?"
+msgstr "نۆۋەتتىكى كۆزنەكتە %i دانە ئاكتىپ باغلىنىش باش. راستلا ياپامسىز؟"
 
-#: src/remmina_main.c:953 data/ui/remmina_main.glade:302
-msgid "Import"
-msgstr "ئىمپورت قىل"
+#: src/rcw.c:1291
+msgid "Viewport fullscreen mode"
+msgstr "Viewport  پۈتۈن ئېكران ھالىتى"
 
-#: src/remmina_main.c:976 src/remmina_file_editor.c:1315
-msgid "_Save"
+#: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
+msgid "Scrolled fullscreen"
 msgstr ""
 
-#: src/remmina_main.c:983
-msgid "This protocol does not support exporting."
-msgstr "بۇ كېلىشىمنى ئېكسپورت قىلغىلى بولمايدۇ."
-
-#: src/remmina_main.c:1202 src/remmina_icon.c:480 src/remmina_icon.c:481
-msgid "Remmina Remote Desktop Client"
-msgstr "Remmina يىراقتىكى ئۈستەلئۈستى خېرىدارى"
-
-#: src/remmina_main.c:1204
-msgid "Remmina Kiosk"
+#: src/rcw.c:1384
+msgid "Keep aspect ratio when scaled"
 msgstr ""
+
+#: src/rcw.c:1392
+msgid "Fill client window when scaled"
+msgstr ""
+
+#: src/rcw.c:1815 src/remmina_pref_dialog.c:143
+#: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
+msgid "Keystrokes"
+msgstr ""
+
+#: src/rcw.c:1931
+msgid "Turn off scaling to avoid screenshot distortion."
+msgstr ""
+
+#: src/rcw.c:1991 plugins/www/www_plugin.c:761
+msgid "Screenshot taken"
+msgstr ""
+
+#: src/rcw.c:2062
+msgid "Resize the window to fit in remote resolution"
+msgstr "يىراقتىكى ئېنىقلىققا ماسلاشتۇرۇپ كۆزنەك چوڭلۇقىنى ئۆزگەرتىدۇ"
+
+#: src/rcw.c:2073
+msgid "Toggle fullscreen mode"
+msgstr "تولۇق ئېكران ھالىتىنى ئالماشتۇرۇش"
+
+#: src/rcw.c:2118 data/ui/remmina_preferences.glade:930
+msgid "Switch tab pages"
+msgstr "بەتكۈچلەرنى ئالماشتۇرۇش"
+
+#: src/rcw.c:2132
+msgid "Toggle dynamic resolution update"
+msgstr ""
+
+#: src/rcw.c:2142
+msgid "Toggle scaled mode"
+msgstr "چوڭايتىلغان ھالەتنى ئالماشتۇرۇش"
+
+#: src/rcw.c:2177
+msgid "Grab all keyboard events"
+msgstr "بارلىق كۇنۇپكا ھادىسىلىرىنى تۇتىدۇ"
+
+#: src/rcw.c:2186
+msgid "Preferences"
+msgstr "مايىللىقلار"
+
+#: src/rcw.c:2194 src/rcw.c:2195 data/ui/remmina_main.glade:278
+msgid "Tools"
+msgstr "قوراللار"
+
+#: src/rcw.c:2207
+msgid "Duplicate current connection"
+msgstr ""
+
+#: src/rcw.c:2215 data/ui/remmina_preferences.glade:1124
+#: data/ui/remmina_preferences.glade:1134
+msgid "Screenshot"
+msgstr ""
+
+#: src/rcw.c:2223 data/ui/remmina_preferences.glade:1033
+msgid "Minimize window"
+msgstr "كۆزنەكنى كىچىكلىتىدۇ"
+
+#: src/rcw.c:2232 data/ui/remmina_preferences.glade:1064
+msgid "Disconnect"
+msgstr "ئۈزۈش"
+
+#: src/rcw.c:3774
+#, c-format
+msgid "The file %s is corrupted, unreadable, or could not be found."
+msgstr ""
+
+#: src/rcw.c:3936
+msgid "Warning: This plugin requires GtkSocket, but it’s not available."
+msgstr ""
+
+#: src/remmina_mpchange.c:234
+msgid "The passwords do not match"
+msgstr ""
+
+#: src/remmina_mpchange.c:244
+msgid "Resetting passwords, please wait…"
+msgstr ""
+
+#: src/remmina_mpchange.c:327
+msgid "The multi password changer requires a secrecy plugin.\n"
+msgstr ""
+
+#: src/remmina_mpchange.c:330
+msgid "The multi password changer requires a secrecy service.\n"
+msgstr ""
+
+#: src/remmina_mpchange.c:419
+#, c-format
+msgid "%d password changed."
+msgid_plural "%d passwords changed."
+msgstr[0] ""
+
+#: src/remmina_ftp_client.c:388
+msgid "Choose download location"
+msgstr "چۈشۈرۈش ئورنىنى تاللاڭ"
+
+#: src/remmina_ftp_client.c:528
+msgid "Are you sure to delete the selected files on server?"
+msgstr "مۇلازىمېتىردىكى تاللانغان ھۆججەتنى راستلا ئۆچۈرەمسىز؟"
+
+#: src/remmina_ftp_client.c:585
+msgid "Choose a file to upload"
+msgstr "يۈكلەيدىغان ھۆججەتنى تاللاڭ"
+
+#: src/remmina_ftp_client.c:592
+msgid "Upload folder"
+msgstr "يۈكلەش قىسقۇچ"
+
+#: src/remmina_ftp_client.c:648 src/remmina_ftp_client.c:770
+msgid "Download"
+msgstr "چۈشۈر"
+
+#: src/remmina_ftp_client.c:655 src/remmina_ftp_client.c:781
+msgid "Upload"
+msgstr "يۈكلە"
+
+#: src/remmina_ftp_client.c:662
+msgid "_Delete"
+msgstr ""
+
+#: src/remmina_ftp_client.c:749
+msgid "Home"
+msgstr ""
+
+#: src/remmina_ftp_client.c:751
+msgid "Go to home folder"
+msgstr "ماكان مۇندەرىجىگە بار"
+
+#: src/remmina_ftp_client.c:756
+msgid "Up"
+msgstr ""
+
+#: src/remmina_ftp_client.c:758
+msgid "Go to parent folder"
+msgstr "ئۈستىدىكى مۇندەرىجىگە بار"
+
+#: src/remmina_ftp_client.c:763 plugins/rdp/rdp_plugin.c:1998
+#: plugins/vnc/vnc_plugin.c:1889
+msgid "Refresh"
+msgstr "يېڭىلا"
+
+#: src/remmina_ftp_client.c:765
+msgid "Refresh current folder"
+msgstr "نۆۋەتتىكى مۇندەرىجىسىنى يېڭىلا"
+
+#: src/remmina_ftp_client.c:772
+msgid "Download from server"
+msgstr "مۇلازىمېتىردىن چۈشۈر"
+
+#: src/remmina_ftp_client.c:783
+msgid "Upload to server"
+msgstr "مۇلازىمېتىرغا يۈكلە"
+
+#: src/remmina_ftp_client.c:790 data/ui/remmina_main.glade:268
+msgid "Delete"
+msgstr ""
+
+#: src/remmina_ftp_client.c:792
+msgid "Delete files on server"
+msgstr "مۇلازىمېتىردىكى ھۆججەتلەرنى ئۆچۈر"
+
+#: src/remmina_ftp_client.c:903 src/remmina_ftp_client.c:972
+#, fuzzy
+msgid "Filename"
+msgstr "ھۆججەت ئاتى"
+
+#: src/remmina_ftp_client.c:916 src/remmina_ftp_client.c:1001
+msgid "Size"
+msgstr "چوڭلۇقى"
+
+#: src/remmina_ftp_client.c:924
+msgid "User"
+msgstr "ئىشلەتكۈچى"
+
+#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1457
+#: data/ui/remmina_main.glade:513 data/ui/remmina_mpc.glade:99
+#: data/ui/remmina_mpc.glade:325
+msgid "Group"
+msgstr "گۇرۇپپا"
+
+#: src/remmina_ftp_client.c:936
+msgid "Permission"
+msgstr "ئىمتىيازلار"
+
+#: src/remmina_ftp_client.c:988 plugins/rdp/rdp_plugin.c:1900
+msgid "Remote"
+msgstr "يىراقتىكى"
+
+#: src/remmina_ftp_client.c:995 plugins/rdp/rdp_plugin.c:1896
+msgid "Local"
+msgstr "يەرلىك"
+
+#: src/remmina_ftp_client.c:1009
+msgid "Progress"
+msgstr "سۈرئەت"
 
 #: src/remmina_exec.c:305
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "قىستۇرما %s خەتلىتىلمىگەن."
+
+#: src/remmina_public.c:639
+msgid "Please enter format 'widthxheight'."
+msgstr "«كەڭلىكxئېگىزلىك» پىچىمىدا كىرگۈزۈڭ"
+
+#: src/remmina_icon.c:139
+msgid "Open Main Window"
+msgstr "ئاساسىي كۆزنەكنى ئاچ"
+
+#: src/remmina_icon.c:144 data/ui/remmina_main.glade:366
+msgid "_Preferences"
+msgstr ""
+
+#: src/remmina_icon.c:149
+msgid "_About"
+msgstr ""
+
+#: src/remmina_icon.c:159
+msgid "Enable Service Discovery"
+msgstr "مۇلازىمەت بايقاشنى ئىناۋەتلىك قىل"
+
+#: src/remmina_icon.c:172 data/ui/remmina_main.glade:457
+msgid "_Quit"
+msgstr ""
+
+#: src/remmina_icon.c:357 src/remmina_icon.c:539
+msgid "Remmina Applet"
+msgstr "Remmina قوللانچىقى"
+
+#: src/remmina_icon.c:359 src/remmina_icon.c:541
+msgid "Connect to remote desktops through the applet menu"
+msgstr "يىراقتىكى ئۈستەلئۈستىلىرىگە قوللانچاق تىزىملىكى ئارقىلىق باغلىنىدۇ"
+
+#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1202
+msgid "Remmina Remote Desktop Client"
+msgstr "Remmina يىراقتىكى ئۈستەلئۈستى خېرىدارى"
+
+#: src/remmina_file_editor.c:74
+msgid ""
+"<tt><big>Supported formats\n"
+"* server\n"
+"* server:port\n"
+"* [server]:port</big></tt>"
+msgstr ""
+"<tt><big>ئىشلەتكىلى بولىدىغان پىچىملار\n"
+"* مۇلازىمېتىر\n"
+"* مۇلازىمېتىر:ئېغىز\n"
+"* [مۇلازىمېتىر]:ئېغىز</big></tt>"
+
+#: src/remmina_file_editor.c:81
+msgid ""
+"<tt><big>* command in PATH args %h\n"
+"* /path/to/foo -options %h %u\n"
+"* %h is substituted with the server name\n"
+"* %t is substituted with the SSH server name\n"
+"* %u is substituted with the username\n"
+"* %U is substituted with the SSH username\n"
+"* %p is substituted with Remmina profile name\n"
+"* %g is substituted with Remmina profile group name\n"
+"Do not run in background if you want the command to be executed before "
+"connecting.\n"
+"</big></tt>"
+msgstr ""
+
+#: src/remmina_file_editor.c:94
+msgid ""
+"<tt><big>Supported formats\n"
+"* :port\n"
+"* server\n"
+"* server:port\n"
+"* [server]:port\n"
+"* username@server:port (SSH protocol only)</big></tt>"
+msgstr ""
+
+#: src/remmina_file_editor.c:158
+msgid "Choose a Remote Desktop Server"
+msgstr "بىر يىراقتىكى ئۈستەلئۈستى مۇلازىمېتىرىنى تاللاڭ"
+
+#: src/remmina_file_editor.c:356 src/remmina_file_editor.c:363
+#: src/remmina_sftp_plugin.c:352 src/remmina_ssh_plugin.c:1058
+#: plugins/nx/nx_plugin.c:720
+msgid "Identity file"
+msgstr "كىملىك ھۆججىتى"
+
+#: src/remmina_file_editor.c:365
+msgid "_Open"
+msgstr ""
+
+#: src/remmina_file_editor.c:402 src/remmina_file_editor.c:888
+#: src/remmina_protocol_widget.c:1659 data/ui/remmina_main.glade:527
+msgid "Server"
+msgstr "مۇلازىمېتىر"
+
+#: src/remmina_file_editor.c:426
+#, c-format
+msgid "Browse the network to find a %s server"
+msgstr "تورنى كۆرۈپ %s مۇلازىمېتىرنى تاپىدۇ"
+
+#: src/remmina_file_editor.c:491 src/remmina_pref_dialog.c:83
+#: data/ui/remmina_preferences.glade:234
+msgid "Resolutions"
+msgstr "ئېنىقلىقلار"
+
+#: src/remmina_file_editor.c:491 src/remmina_pref_dialog.c:83
+msgid "Configure the available resolutions"
+msgstr ""
+
+#: src/remmina_file_editor.c:527
+msgid "Resolution"
+msgstr "ئېنىقلىق"
+
+#: src/remmina_file_editor.c:534
+msgid "Use initial window size"
+msgstr ""
+
+#: src/remmina_file_editor.c:538
+msgid "Use client resolution"
+msgstr "خېرىدار ئېنىقلىقىنى ئىشلەت"
+
+#: src/remmina_file_editor.c:549 src/remmina_file_editor.c:867
+msgid "Custom"
+msgstr "ئىختىيارى"
+
+#: src/remmina_file_editor.c:735
+msgid "Keyboard mapping"
+msgstr "ھەرپتاختا خەرىتىسى"
+
+#: src/remmina_file_editor.c:834
+msgid "SSH Tunnel"
+msgstr ""
+
+#: src/remmina_file_editor.c:841
+msgid "Enable SSH tunnel"
+msgstr "س س خ (SSH) تونېلىنى ئىناۋەتلىك قىل"
+
+#: src/remmina_file_editor.c:848
+msgid "Tunnel via loopback address"
+msgstr "loopback ئادرېس ئارقىلىق تونىل قۇرىدۇ"
+
+#: src/remmina_file_editor.c:858
+#, c-format
+msgid "Same server at port %i"
+msgstr "ئوخشاش مۇلازىمېتىر %i غا ئېغىزدا"
+
+#: src/remmina_file_editor.c:907 src/remmina_ssh_plugin.c:1078
+msgid "Character set"
+msgstr "ھەرپ توپى"
+
+#: src/remmina_file_editor.c:912 plugins/rdp/rdp_plugin.c:1964
+msgid "Startup path"
+msgstr "باشلاش يولى"
+
+#: src/remmina_file_editor.c:921
+msgid "SSH Authentication"
+msgstr "س س خ (SSH) كىملىك دەلىللەش"
+
+#: src/remmina_file_editor.c:931
+msgid "SSH Agent (automatic)"
+msgstr ""
+
+#: src/remmina_file_editor.c:938 src/remmina_protocol_widget.c:1330
+#: src/remmina_protocol_widget.c:1349 src/remmina_sftp_plugin.c:317
+#: src/remmina_ssh_plugin.c:956 plugins/www/www_plugin.c:793
+#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:113
+#: data/ui/remmina_preferences.glade:1533
+msgid "Password"
+msgstr "ئىم"
+
+#: src/remmina_file_editor.c:953 src/remmina_sftp_plugin.c:320
+#: src/remmina_ssh_plugin.c:959
+msgid "Public key (automatic)"
+msgstr "ئاممىۋى ئاچقۇچ(ئاپتوماتىك)"
+
+#: src/remmina_file_editor.c:1010
+msgid "Basic"
+msgstr "ئاساسىي"
+
+#: src/remmina_file_editor.c:1016
+msgid "Advanced"
+msgstr "ئالىي"
+
+#: src/remmina_file_editor.c:1235
+msgid "Default settings saved."
+msgstr "كۆڭۈلدىكى تەڭشەكلەر ساقلاندى."
+
+#: src/remmina_file_editor.c:1305
+msgid "Remote Desktop Preference"
+msgstr "يىراقتىكى ئۈستەلئۈستى مايىللىقلىرى"
+
+#: src/remmina_file_editor.c:1311
+msgid "Save as Default"
+msgstr ""
+
+#: src/remmina_file_editor.c:1312
+msgid "Use the current settings as the default for all new connection profiles"
+msgstr ""
+
+#: src/remmina_file_editor.c:1315 src/remmina_main.c:976
+msgid "_Save"
+msgstr ""
+
+#: src/remmina_file_editor.c:1320 data/ui/remmina_main.glade:231
+msgid "Connect"
+msgstr ""
+
+#: src/remmina_file_editor.c:1323
+msgid "_Save and Connect"
+msgstr ""
+
+#: src/remmina_file_editor.c:1429
+msgid "Profile"
+msgstr "رويخەت(Profile)"
+
+#: src/remmina_file_editor.c:1446
+msgid "Quick Connect"
+msgstr "تېز باغلىنىش"
+
+#: src/remmina_file_editor.c:1470
+#, c-format
+msgid "Use '%s' as subgroup delimiter"
+msgstr "بۇ ‹%s› نى تارماق گۇرۇپپا بۆلگۈچىسى سۈپىتىدە ئىشلىتىدۇ"
+
+#: src/remmina_file_editor.c:1489
+msgid "Pre Command"
+msgstr ""
+
+#: src/remmina_file_editor.c:1507
+msgid "Post Command"
+msgstr ""
+
+#: src/remmina_file_editor.c:1572 src/remmina_file_editor.c:1590
+#, c-format
+msgid "File %s not found."
+msgstr "ھۆججەت %s تېپىلمىدى."
+
+#: src/remmina_protocol_widget.c:248
+msgid "Connect via SSH from a new terminal"
+msgstr ""
+
+#: src/remmina_protocol_widget.c:254
+#, fuzzy
+msgid "Open SFTP transfer"
+msgstr "بىخەتەر ھۆججەت يەتكۈزۈشنى ئاچ…"
+
+#: src/remmina_protocol_widget.c:282
+msgid "Executing external commands…"
+msgstr ""
+
+#: src/remmina_protocol_widget.c:289
+#, c-format
+msgid "Connecting to '%s'…"
+msgstr "ھازىر ‹%s› غا باغلىنىۋاتىدۇ…"
+
+#: src/remmina_protocol_widget.c:716 src/remmina_protocol_widget.c:796
+#: src/remmina_protocol_widget.c:970
+#, fuzzy, c-format
+msgid "Connecting to %s via SSH…"
+msgstr "ھازىر ‹%s› غا باغلىنىۋاتىدۇ…"
+
+#: src/remmina_protocol_widget.c:846
+#, fuzzy, c-format
+msgid "Awaiting incoming SSH connection at port %i…"
+msgstr "ئېغىز %i دا SSH تونېلىنىڭ كېلىشىنى كۈتۈۋاتىدۇ…"
+
+#: src/remmina_protocol_widget.c:891
+#, fuzzy, c-format
+msgid "Could not find %s command on the SSH server"
+msgstr "بۇيرۇق %s نى SSH مۇلازىمېتىرىدىن تاپالمىدى"
+
+#: src/remmina_protocol_widget.c:895
+#, fuzzy, c-format
+msgid "Could not run %s command on the SSH server (status = %i)."
+msgstr "بۇيرۇق %s SSH مۇلازىمېتىرىدا مەغلۇپ بولدى (ھالەت = %i)."
+
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_protocol_widget.c:903
+#, fuzzy, c-format
+msgid "Could not run command: %s"
+msgstr "ئېغىزنى يوللاش(forwarding) ئىلتىماسى مەغلۇپ بولدى: %s"
+
+#: src/remmina_protocol_widget.c:1348
+msgid "Type in username and password for SSH."
+msgstr ""
+
+#: src/remmina_protocol_widget.c:1404
+msgid "Certificate details:"
+msgstr ""
+
+#: src/remmina_protocol_widget.c:1405 src/remmina_protocol_widget.c:1426
+msgid "Subject:"
+msgstr "ماۋزۇ："
+
+#: src/remmina_protocol_widget.c:1406 src/remmina_protocol_widget.c:1427
+msgid "Issuer:"
+msgstr "تارقاتقۇچى:"
+
+#: src/remmina_protocol_widget.c:1407
+msgid "Fingerprint:"
+msgstr "بارماق ئىزى:"
+
+#: src/remmina_protocol_widget.c:1408
+#, fuzzy
+msgid "Accept certificate?"
+msgstr "ئىسپاتنامە قوبۇل قىلامدۇ؟"
+
+#: src/remmina_protocol_widget.c:1425
+msgid "The certificate changed! Details:"
+msgstr ""
+
+#: src/remmina_protocol_widget.c:1428
+#, fuzzy
+msgid "Old fingerprint:"
+msgstr "بارماق ئىزى:"
+
+#: src/remmina_protocol_widget.c:1429
+#, fuzzy
+msgid "New fingerprint:"
+msgstr "بارماق ئىزى:"
+
+#: src/remmina_protocol_widget.c:1430
+#, fuzzy
+msgid "Accept changed certificate?"
+msgstr "ئىسپاتنامە قوبۇل قىلامدۇ؟"
+
+#: src/remmina_protocol_widget.c:1572
+#, c-format
+msgid "Listening on port %i for an incoming %s connection…"
+msgstr "ھازىر ئېغىز %i نىڭدا كىرىدىغان %s باغلىنىشنى كۈتۈۋاتىدۇ…"
+
+#: src/remmina_protocol_widget.c:1597
+#, fuzzy
+msgid "Could not authenticate, attempting reconnection…"
+msgstr "كىملىك دەلىللەش مەغلۇپ بولدى. قايتا باغلىنىۋاتىدۇ…"
+
+#: src/remmina_protocol_widget.c:1676
+#, c-format
+msgid "Install the %s protocol plugin first."
+msgstr ""
+
+#: src/remmina_applet_menu_item.c:121
+msgid "Discovered"
+msgstr "بايقالدى"
+
+#: src/remmina_applet_menu_item.c:126
+msgid "New Connection"
+msgstr "يېڭى باغلىنىش"
+
+#. TRANSLATORS: The placeholder %s is a directory path
+#: src/remmina_sftp_client.c:171
+#, c-format
+msgid "Error creating directory %s."
+msgstr "مۇندەرىجە %s نى قۇرۇشتا خاتالىق كۆرۈلدى."
+
+#. TRANSLATORS: The placeholder %s is a file path
+#: src/remmina_sftp_client.c:179 src/remmina_sftp_client.c:200
+#, c-format
+msgid "Error creating file %s."
+msgstr "ھۆججەت %s نى قۇرۇشتا خاتالىق كۆرۈلدى."
+
+#. TRANSLATORS: The placeholders %s are a file path and a server name
+#: src/remmina_sftp_client.c:218
+#, c-format
+msgid "Error opening file %s on server. %s"
+msgstr "مۇلازىمېتىردىكى ھۆججەت %s نى ئېچىشتا خاتالىق كۆرۈلدى. %s"
+
+#: src/remmina_sftp_client.c:240
+#, c-format
+msgid "Error writing file %s."
+msgstr "ھۆججەت %s نىڭغا يېزىشتا خاتالىق كۆرۈلدى."
+
+#: src/remmina_sftp_client.c:279
+#, c-format
+msgid "Error opening directory %s. %s"
+msgstr "مۇندەرىجە %s نى ئېچىشتا خاتالىق كۆرۈلدى. %s"
+
+#: src/remmina_sftp_client.c:383
+#, c-format
+msgid "Error creating folder %s on server. %s"
+msgstr "مۇلازىمېتىردا قىسقۇچ %s نى قۇرۇشتا خاتالىق كۆرۈلدى. %s"
+
+#: src/remmina_sftp_client.c:411 src/remmina_sftp_client.c:433
+#, c-format
+msgid "Error creating file %s on server. %s"
+msgstr "مۇلازىمېتىردا ھۆججەت %s نى قۇرۇشتا خاتالىق كۆرۈلدى. %s"
+
+#: src/remmina_sftp_client.c:454
+#, c-format
+msgid "Error opening file %s."
+msgstr "ھۆججەت %s نى ئېچىشتا خاتالىق كۆرۈلدى."
+
+#: src/remmina_sftp_client.c:474
+#, c-format
+msgid "Error writing file %s on server. %s"
+msgstr "مۇلازىمېتىردىكى ھۆججەت %s نىڭغا يېزىشتا خاتالىق كۆرۈلدى. %s"
+
+#: src/remmina_sftp_client.c:670 src/remmina_sftp_client.c:733
+#, c-format
+msgid "Failed to open directory %s. %s"
+msgstr "مۇندەرىجە %s نى ئېچىش مەغلۇپ بولدى. %s"
+
+#: src/remmina_sftp_client.c:688
+#, c-format
+msgid "Failed reading directory. %s"
+msgstr "مۇندەرىجىنى ئوقۇش مەغلۇپ بولدى. %s"
+
+#: src/remmina_sftp_client.c:795
+msgid ""
+"File transfer currently in progress.\n"
+"Are you sure to cancel it?"
+msgstr ""
+"ھازىر ھۆججەتنى يوللاۋاتىدۇ.\n"
+"راستلا ئۇنى ئەمەلدىن قالدۇرامسىز؟"
+
+#: src/remmina_sftp_client.c:829
+#, c-format
+msgid "Failed to delete '%s'. %s"
+msgstr "ئۆچۈرۈش(‹%s› نى ) مەغلۇپ بولدى. %s"
+
+#: src/remmina_sftp_client.c:910
+msgid "File exists"
+msgstr "ھۆججەت مەۋجۇت"
+
+#: src/remmina_sftp_client.c:913
+msgid "Resume"
+msgstr "قايتا قىل"
+
+#: src/remmina_sftp_client.c:914
+msgid "Overwrite"
+msgstr "قاپلا"
+
+#: src/remmina_sftp_client.c:924
+msgid "Question"
+msgstr ""
+
+#: src/remmina_sftp_client.c:932
+#, fuzzy
+msgid "The following file already exists in the target folder:"
+msgstr "تۆۋەندىكى ھۆججەت نىشان قىسقۇچتا بار ئىكەن."
+
+#: src/remmina_pref_dialog.c:132
+msgid "Recent lists cleared."
+msgstr "يېقىنقى تىزىملار تازىلاندى."
+
+#: src/remmina_pref_dialog.c:143
+msgid "Configure the keystrokes"
+msgstr ""
+
+#. TRANSLATORS: Do not translate libsodium, is the name of a library
+#: src/remmina_pref_dialog.c:444
+msgid "libsodium >= 1.9.0 is required to use master password"
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:203
@@ -303,614 +1092,37 @@ msgstr ""
 msgid "Could not create PTY device."
 msgstr ""
 
-#. TRANSLATORS: The placeholder %s is a directory path
-#: src/remmina_sftp_client.c:171
+#: src/remmina_main.c:644
 #, c-format
-msgid "Error creating directory %s."
-msgstr "مۇندەرىجە %s نى قۇرۇشتا خاتالىق كۆرۈلدى."
+msgid "Total %i item."
+msgid_plural "Total %i items."
+msgstr[0] "جەمئىي %i تۈر بار."
 
-#. TRANSLATORS: The placeholder %s is a file path
-#: src/remmina_sftp_client.c:179 src/remmina_sftp_client.c:200
+#: src/remmina_main.c:826
+#, fuzzy, c-format
+msgid "Are you sure you want to delete '%s'?"
+msgstr "راستلا ‹%s› نى ئۆچۈرەمسىز؟"
+
+#: src/remmina_main.c:926
 #, c-format
-msgid "Error creating file %s."
-msgstr "ھۆججەت %s نى قۇرۇشتا خاتالىق كۆرۈلدى."
-
-#. TRANSLATORS: The placeholders %s are a file path and a server name
-#: src/remmina_sftp_client.c:218
-#, c-format
-msgid "Error opening file %s on server. %s"
-msgstr "مۇلازىمېتىردىكى ھۆججەت %s نى ئېچىشتا خاتالىق كۆرۈلدى. %s"
-
-#: src/remmina_sftp_client.c:240
-#, c-format
-msgid "Error writing file %s."
-msgstr "ھۆججەت %s نىڭغا يېزىشتا خاتالىق كۆرۈلدى."
-
-#: src/remmina_sftp_client.c:279
-#, c-format
-msgid "Error opening directory %s. %s"
-msgstr "مۇندەرىجە %s نى ئېچىشتا خاتالىق كۆرۈلدى. %s"
-
-#: src/remmina_sftp_client.c:383
-#, c-format
-msgid "Error creating folder %s on server. %s"
-msgstr "مۇلازىمېتىردا قىسقۇچ %s نى قۇرۇشتا خاتالىق كۆرۈلدى. %s"
-
-#: src/remmina_sftp_client.c:411 src/remmina_sftp_client.c:433
-#, c-format
-msgid "Error creating file %s on server. %s"
-msgstr "مۇلازىمېتىردا ھۆججەت %s نى قۇرۇشتا خاتالىق كۆرۈلدى. %s"
-
-#: src/remmina_sftp_client.c:454
-#, c-format
-msgid "Error opening file %s."
-msgstr "ھۆججەت %s نى ئېچىشتا خاتالىق كۆرۈلدى."
-
-#: src/remmina_sftp_client.c:474
-#, c-format
-msgid "Error writing file %s on server. %s"
-msgstr "مۇلازىمېتىردىكى ھۆججەت %s نىڭغا يېزىشتا خاتالىق كۆرۈلدى. %s"
-
-#: src/remmina_sftp_client.c:670 src/remmina_sftp_client.c:733
-#, c-format
-msgid "Failed to open directory %s. %s"
-msgstr "مۇندەرىجە %s نى ئېچىش مەغلۇپ بولدى. %s"
-
-#: src/remmina_sftp_client.c:688
-#, c-format
-msgid "Failed reading directory. %s"
-msgstr "مۇندەرىجىنى ئوقۇش مەغلۇپ بولدى. %s"
-
-#: src/remmina_sftp_client.c:795
 msgid ""
-"File transfer currently in progress.\n"
-"Are you sure to cancel it?"
+"Unable to import:\n"
+"%s"
 msgstr ""
-"ھازىر ھۆججەتنى يوللاۋاتىدۇ.\n"
-"راستلا ئۇنى ئەمەلدىن قالدۇرامسىز؟"
+"ئىمپورت قىلغىلى بولمىدى:\n"
+"%s"
 
-#: src/remmina_sftp_client.c:829
-#, c-format
-msgid "Failed to delete '%s'. %s"
-msgstr "ئۆچۈرۈش(‹%s› نى ) مەغلۇپ بولدى. %s"
+#: src/remmina_main.c:953 data/ui/remmina_main.glade:302
+msgid "Import"
+msgstr "ئىمپورت قىل"
 
-#: src/remmina_sftp_client.c:910
-msgid "File exists"
-msgstr "ھۆججەت مەۋجۇت"
+#: src/remmina_main.c:983
+msgid "This protocol does not support exporting."
+msgstr "بۇ كېلىشىمنى ئېكسپورت قىلغىلى بولمايدۇ."
 
-#: src/remmina_sftp_client.c:913
-msgid "Resume"
-msgstr "قايتا قىل"
-
-#: src/remmina_sftp_client.c:914
-msgid "Overwrite"
-msgstr "قاپلا"
-
-#: src/remmina_sftp_client.c:915 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:624 src/remmina_file_editor.c:160
-#: src/remmina_file_editor.c:364 src/remmina_file_editor.c:1307
-#: plugins/spice/spice_plugin_file_transfer.c:84
-#: plugins/nx/nx_session_manager.c:156 data/ui/remmina_key_chooser.glade:8
-#: data/ui/remmina_key_chooser.glade:9 data/ui/remmina_spinner.glade:8
-#: data/ui/remmina_spinner.glade:9
-msgid "_Cancel"
+#: src/remmina_main.c:1204
+msgid "Remmina Kiosk"
 msgstr ""
-
-#: src/remmina_sftp_client.c:924
-msgid "Question"
-msgstr ""
-
-#: src/remmina_sftp_client.c:932
-#, fuzzy
-msgid "The following file already exists in the target folder:"
-msgstr "تۆۋەندىكى ھۆججەت نىشان قىسقۇچتا بار ئىكەن."
-
-#: src/remmina_ftp_client.c:388
-msgid "Choose download location"
-msgstr "چۈشۈرۈش ئورنىنى تاللاڭ"
-
-#: src/remmina_ftp_client.c:528
-msgid "Are you sure to delete the selected files on server?"
-msgstr "مۇلازىمېتىردىكى تاللانغان ھۆججەتنى راستلا ئۆچۈرەمسىز؟"
-
-#: src/remmina_ftp_client.c:585
-msgid "Choose a file to upload"
-msgstr "يۈكلەيدىغان ھۆججەتنى تاللاڭ"
-
-#: src/remmina_ftp_client.c:592
-msgid "Upload folder"
-msgstr "يۈكلەش قىسقۇچ"
-
-#: src/remmina_ftp_client.c:648 src/remmina_ftp_client.c:770
-msgid "Download"
-msgstr "چۈشۈر"
-
-#: src/remmina_ftp_client.c:655 src/remmina_ftp_client.c:781
-msgid "Upload"
-msgstr "يۈكلە"
-
-#: src/remmina_ftp_client.c:662
-msgid "_Delete"
-msgstr ""
-
-#: src/remmina_ftp_client.c:749
-msgid "Home"
-msgstr ""
-
-#: src/remmina_ftp_client.c:751
-msgid "Go to home folder"
-msgstr "ماكان مۇندەرىجىگە بار"
-
-#: src/remmina_ftp_client.c:756
-msgid "Up"
-msgstr ""
-
-#: src/remmina_ftp_client.c:758
-msgid "Go to parent folder"
-msgstr "ئۈستىدىكى مۇندەرىجىگە بار"
-
-#: src/remmina_ftp_client.c:763 plugins/rdp/rdp_plugin.c:1998
-#: plugins/vnc/vnc_plugin.c:1889
-msgid "Refresh"
-msgstr "يېڭىلا"
-
-#: src/remmina_ftp_client.c:765
-msgid "Refresh current folder"
-msgstr "نۆۋەتتىكى مۇندەرىجىسىنى يېڭىلا"
-
-#: src/remmina_ftp_client.c:772
-msgid "Download from server"
-msgstr "مۇلازىمېتىردىن چۈشۈر"
-
-#: src/remmina_ftp_client.c:783
-msgid "Upload to server"
-msgstr "مۇلازىمېتىرغا يۈكلە"
-
-#: src/remmina_ftp_client.c:790 data/ui/remmina_main.glade:268
-msgid "Delete"
-msgstr ""
-
-#: src/remmina_ftp_client.c:792
-msgid "Delete files on server"
-msgstr "مۇلازىمېتىردىكى ھۆججەتلەرنى ئۆچۈر"
-
-#: src/remmina_ftp_client.c:903 src/remmina_ftp_client.c:972
-#, fuzzy
-msgid "Filename"
-msgstr "ھۆججەت ئاتى"
-
-#: src/remmina_ftp_client.c:916 src/remmina_ftp_client.c:1001
-msgid "Size"
-msgstr "چوڭلۇقى"
-
-#: src/remmina_ftp_client.c:924
-msgid "User"
-msgstr "ئىشلەتكۈچى"
-
-#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1457
-#: data/ui/remmina_mpc.glade:99 data/ui/remmina_mpc.glade:325
-#: data/ui/remmina_main.glade:513
-msgid "Group"
-msgstr "گۇرۇپپا"
-
-#: src/remmina_ftp_client.c:936
-msgid "Permission"
-msgstr "ئىمتىيازلار"
-
-#: src/remmina_ftp_client.c:988 plugins/rdp/rdp_plugin.c:1900
-msgid "Remote"
-msgstr "يىراقتىكى"
-
-#: src/remmina_ftp_client.c:995 plugins/rdp/rdp_plugin.c:1896
-msgid "Local"
-msgstr "يەرلىك"
-
-#: src/remmina_ftp_client.c:1009
-msgid "Progress"
-msgstr "سۈرئەت"
-
-#: src/remmina_public.c:639
-msgid "Please enter format 'widthxheight'."
-msgstr "«كەڭلىكxئېگىزلىك» پىچىمىدا كىرگۈزۈڭ"
-
-#: src/remmina_chat_window.c:178
-#, c-format
-msgid "Chat with %s"
-msgstr "%s بىلەن سۆزلىشىش"
-
-#: src/remmina_chat_window.c:230
-msgid "_Send"
-msgstr "ئەۋەت(_S)"
-
-#: src/remmina_chat_window.c:240
-msgid "_Clear"
-msgstr "تازىلا(_C)"
-
-#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
-#: src/remmina_about.c:54
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Burkut https://launchpad.net/~burkut\n"
-"  Gheyret T.Kenji https://launchpad.net/~gheyretkenji\n"
-"  Sahran https://launchpad.net/~sahran\n"
-"  bilgeturghun https://launchpad.net/~bilgeks"
-
-#: src/remmina_applet_menu_item.c:121
-msgid "Discovered"
-msgstr "بايقالدى"
-
-#: src/remmina_applet_menu_item.c:126
-msgid "New Connection"
-msgstr "يېڭى باغلىنىش"
-
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:491
-#: data/ui/remmina_preferences.glade:234
-msgid "Resolutions"
-msgstr "ئېنىقلىقلار"
-
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:491
-msgid "Configure the available resolutions"
-msgstr ""
-
-#: src/remmina_pref_dialog.c:132
-msgid "Recent lists cleared."
-msgstr "يېقىنقى تىزىملار تازىلاندى."
-
-#: src/remmina_pref_dialog.c:143 src/rcw.c:1815
-#: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
-msgid "Keystrokes"
-msgstr ""
-
-#: src/remmina_pref_dialog.c:143
-msgid "Configure the keystrokes"
-msgstr ""
-
-#. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:444
-msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr ""
-
-#: src/remmina_icon.c:139
-msgid "Open Main Window"
-msgstr "ئاساسىي كۆزنەكنى ئاچ"
-
-#: src/remmina_icon.c:144 data/ui/remmina_main.glade:366
-msgid "_Preferences"
-msgstr ""
-
-#: src/remmina_icon.c:149
-msgid "_About"
-msgstr ""
-
-#: src/remmina_icon.c:159
-msgid "Enable Service Discovery"
-msgstr "مۇلازىمەت بايقاشنى ئىناۋەتلىك قىل"
-
-#: src/remmina_icon.c:172 data/ui/remmina_main.glade:457
-msgid "_Quit"
-msgstr ""
-
-#: src/remmina_icon.c:357 src/remmina_icon.c:539
-msgid "Remmina Applet"
-msgstr "Remmina قوللانچىقى"
-
-#: src/remmina_icon.c:359 src/remmina_icon.c:541
-msgid "Connect to remote desktops through the applet menu"
-msgstr "يىراقتىكى ئۈستەلئۈستىلىرىگە قوللانچاق تىزىملىكى ئارقىلىق باغلىنىدۇ"
-
-#: src/remmina_protocol_widget.c:248
-msgid "Connect via SSH from a new terminal"
-msgstr ""
-
-#: src/remmina_protocol_widget.c:254
-#, fuzzy
-msgid "Open SFTP transfer"
-msgstr "بىخەتەر ھۆججەت يەتكۈزۈشنى ئاچ…"
-
-#: src/remmina_protocol_widget.c:282
-msgid "Executing external commands…"
-msgstr ""
-
-#: src/remmina_protocol_widget.c:289
-#, c-format
-msgid "Connecting to '%s'…"
-msgstr "ھازىر ‹%s› غا باغلىنىۋاتىدۇ…"
-
-#: src/remmina_protocol_widget.c:716 src/remmina_protocol_widget.c:796
-#: src/remmina_protocol_widget.c:970
-#, fuzzy, c-format
-msgid "Connecting to %s via SSH…"
-msgstr "ھازىر ‹%s› غا باغلىنىۋاتىدۇ…"
-
-#: src/remmina_protocol_widget.c:846
-#, fuzzy, c-format
-msgid "Awaiting incoming SSH connection at port %i…"
-msgstr "ئېغىز %i دا SSH تونېلىنىڭ كېلىشىنى كۈتۈۋاتىدۇ…"
-
-#: src/remmina_protocol_widget.c:891
-#, fuzzy, c-format
-msgid "Could not find %s command on the SSH server"
-msgstr "بۇيرۇق %s نى SSH مۇلازىمېتىرىدىن تاپالمىدى"
-
-#: src/remmina_protocol_widget.c:895
-#, fuzzy, c-format
-msgid "Could not run %s command on the SSH server (status = %i)."
-msgstr "بۇيرۇق %s SSH مۇلازىمېتىرىدا مەغلۇپ بولدى (ھالەت = %i)."
-
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:903
-#, fuzzy, c-format
-msgid "Could not run command: %s"
-msgstr "ئېغىزنى يوللاش(forwarding) ئىلتىماسى مەغلۇپ بولدى: %s"
-
-#: src/remmina_protocol_widget.c:1330 src/remmina_protocol_widget.c:1349
-#: src/remmina_sftp_plugin.c:317 src/remmina_ssh_plugin.c:956
-#: src/remmina_file_editor.c:938 plugins/www/www_plugin.c:793
-#: data/ui/remmina_mpc.glade:113 data/ui/remmina_preferences.glade:1533
-#: data/ui/remmina_unlock.glade:116
-msgid "Password"
-msgstr "ئىم"
-
-#: src/remmina_protocol_widget.c:1348
-msgid "Type in username and password for SSH."
-msgstr ""
-
-#: src/remmina_protocol_widget.c:1404
-msgid "Certificate details:"
-msgstr ""
-
-#: src/remmina_protocol_widget.c:1405 src/remmina_protocol_widget.c:1426
-msgid "Subject:"
-msgstr "ماۋزۇ："
-
-#: src/remmina_protocol_widget.c:1406 src/remmina_protocol_widget.c:1427
-msgid "Issuer:"
-msgstr "تارقاتقۇچى:"
-
-#: src/remmina_protocol_widget.c:1407
-msgid "Fingerprint:"
-msgstr "بارماق ئىزى:"
-
-#: src/remmina_protocol_widget.c:1408
-#, fuzzy
-msgid "Accept certificate?"
-msgstr "ئىسپاتنامە قوبۇل قىلامدۇ؟"
-
-#: src/remmina_protocol_widget.c:1425
-msgid "The certificate changed! Details:"
-msgstr ""
-
-#: src/remmina_protocol_widget.c:1428
-#, fuzzy
-msgid "Old fingerprint:"
-msgstr "بارماق ئىزى:"
-
-#: src/remmina_protocol_widget.c:1429
-#, fuzzy
-msgid "New fingerprint:"
-msgstr "بارماق ئىزى:"
-
-#: src/remmina_protocol_widget.c:1430
-#, fuzzy
-msgid "Accept changed certificate?"
-msgstr "ئىسپاتنامە قوبۇل قىلامدۇ؟"
-
-#: src/remmina_protocol_widget.c:1572
-#, c-format
-msgid "Listening on port %i for an incoming %s connection…"
-msgstr "ھازىر ئېغىز %i نىڭدا كىرىدىغان %s باغلىنىشنى كۈتۈۋاتىدۇ…"
-
-#: src/remmina_protocol_widget.c:1597
-#, fuzzy
-msgid "Could not authenticate, attempting reconnection…"
-msgstr "كىملىك دەلىللەش مەغلۇپ بولدى. قايتا باغلىنىۋاتىدۇ…"
-
-#: src/remmina_protocol_widget.c:1659 src/remmina_file_editor.c:402
-#: src/remmina_file_editor.c:888 data/ui/remmina_main.glade:527
-msgid "Server"
-msgstr "مۇلازىمېتىر"
-
-#: src/remmina_protocol_widget.c:1676
-#, c-format
-msgid "Install the %s protocol plugin first."
-msgstr ""
-
-#: src/rcw.c:585
-#, fuzzy, c-format
-msgid ""
-"Are you sure you want to close %i active connections in the current window?"
-msgstr "نۆۋەتتىكى كۆزنەكتە %i دانە ئاكتىپ باغلىنىش باش. راستلا ياپامسىز؟"
-
-#: src/rcw.c:1291
-msgid "Viewport fullscreen mode"
-msgstr "Viewport  پۈتۈن ئېكران ھالىتى"
-
-#: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
-msgid "Scrolled fullscreen"
-msgstr ""
-
-#: src/rcw.c:1384
-msgid "Keep aspect ratio when scaled"
-msgstr ""
-
-#: src/rcw.c:1392
-msgid "Fill client window when scaled"
-msgstr ""
-
-#: src/rcw.c:1931
-msgid "Turn off scaling to avoid screenshot distortion."
-msgstr ""
-
-#: src/rcw.c:1991 plugins/www/www_plugin.c:761
-msgid "Screenshot taken"
-msgstr ""
-
-#: src/rcw.c:2062
-msgid "Resize the window to fit in remote resolution"
-msgstr "يىراقتىكى ئېنىقلىققا ماسلاشتۇرۇپ كۆزنەك چوڭلۇقىنى ئۆزگەرتىدۇ"
-
-#: src/rcw.c:2073
-msgid "Toggle fullscreen mode"
-msgstr "تولۇق ئېكران ھالىتىنى ئالماشتۇرۇش"
-
-#: src/rcw.c:2118 data/ui/remmina_preferences.glade:930
-msgid "Switch tab pages"
-msgstr "بەتكۈچلەرنى ئالماشتۇرۇش"
-
-#: src/rcw.c:2132
-msgid "Toggle dynamic resolution update"
-msgstr ""
-
-#: src/rcw.c:2142
-msgid "Toggle scaled mode"
-msgstr "چوڭايتىلغان ھالەتنى ئالماشتۇرۇش"
-
-#: src/rcw.c:2177
-msgid "Grab all keyboard events"
-msgstr "بارلىق كۇنۇپكا ھادىسىلىرىنى تۇتىدۇ"
-
-#: src/rcw.c:2186
-msgid "Preferences"
-msgstr "مايىللىقلار"
-
-#: src/rcw.c:2194 src/rcw.c:2195 data/ui/remmina_main.glade:278
-msgid "Tools"
-msgstr "قوراللار"
-
-#: src/rcw.c:2207
-msgid "Duplicate current connection"
-msgstr ""
-
-#: src/rcw.c:2215 data/ui/remmina_preferences.glade:1124
-#: data/ui/remmina_preferences.glade:1134
-msgid "Screenshot"
-msgstr ""
-
-#: src/rcw.c:2223 data/ui/remmina_preferences.glade:1033
-msgid "Minimize window"
-msgstr "كۆزنەكنى كىچىكلىتىدۇ"
-
-#: src/rcw.c:2232 data/ui/remmina_preferences.glade:1064
-msgid "Disconnect"
-msgstr "ئۈزۈش"
-
-#: src/rcw.c:3774
-#, c-format
-msgid "The file %s is corrupted, unreadable, or could not be found."
-msgstr ""
-
-#: src/rcw.c:3936
-msgid "Warning: This plugin requires GtkSocket, but it’s not available."
-msgstr ""
-
-#: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:35
-#: data/ui/remmina_unlock.glade:46
-msgid "Cancel"
-msgstr ""
-
-#: src/remmina_message_panel.c:199 data/ui/remmina_news.glade:27
-#: data/ui/remmina_preferences.glade:33 data/ui/remmina_preferences.glade:34
-#: data/ui/remmina_preferences.glade:60 data/ui/remmina_string_list.glade:8
-#: data/ui/remmina_string_list.glade:9 data/ui/remmina_string_list.glade:63
-msgid "Close"
-msgstr ""
-
-#: src/remmina_message_panel.c:260
-msgid "Yes"
-msgstr ""
-
-#: src/remmina_message_panel.c:267
-msgid "No"
-msgstr ""
-
-#: src/remmina_message_panel.c:330 src/remmina_sftp_plugin.c:349
-#: src/remmina_ssh_plugin.c:1055 src/remmina_file_editor.c:928
-#: plugins/rdp/rdp_plugin.c:1934 plugins/vnc/vnc_plugin.c:1832
-#: plugins/vnc/vnc_plugin.c:1852 plugins/nx/nx_plugin.c:721
-#: plugins/www/www_plugin.c:792 data/ui/remmina_mpc.glade:152
-msgid "Username"
-msgstr ""
-
-#: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1936
-#: data/ui/remmina_mpc.glade:138
-msgid "Domain"
-msgstr "دائىرە"
-
-#: src/remmina_message_panel.c:415
-msgid "Save password"
-msgstr "ئىم ساقلا"
-
-#: src/remmina_message_panel.c:447 src/remmina_message_panel.c:616
-#: src/remmina_plugin_manager.c:440 src/remmina_file_editor.c:161
-msgid "_OK"
-msgstr ""
-
-#: src/remmina_message_panel.c:508
-msgid "Enter certificate authentication files"
-msgstr ""
-
-#: src/remmina_message_panel.c:520
-msgid "CA Certificate File"
-msgstr ""
-
-#: src/remmina_message_panel.c:542
-msgid "CA CRL File"
-msgstr ""
-
-#: src/remmina_message_panel.c:564
-msgid "Client Certificate File"
-msgstr ""
-
-#: src/remmina_message_panel.c:586
-msgid "Client Certificate Key"
-msgstr ""
-
-#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1475
-msgid "Protocol"
-msgstr "كېلىشىم"
-
-#: src/remmina_plugin_manager.c:69
-msgid "Entry"
-msgstr "كىرگۈ"
-
-#: src/remmina_plugin_manager.c:69
-msgid "File"
-msgstr "ھۆججەت"
-
-#: src/remmina_plugin_manager.c:69
-msgid "Tool"
-msgstr "قورال"
-
-#: src/remmina_plugin_manager.c:69
-msgid "Preference"
-msgstr "مايىللىق"
-
-#: src/remmina_plugin_manager.c:69
-msgid "Secret"
-msgstr "مەخپىي"
-
-#: src/remmina_plugin_manager.c:440 data/ui/remmina_main.glade:356
-msgid "Plugins"
-msgstr "قىستۇرمىلار"
-
-#: src/remmina_plugin_manager.c:458 src/remmina_file_editor.c:1432
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_mpc.glade:314
-#: data/ui/remmina_main.glade:491
-msgid "Name"
-msgstr "ئاتى"
-
-#: src/remmina_plugin_manager.c:464 plugins/nx/nx_session_manager.c:183
-msgid "Type"
-msgstr "تىپى"
-
-#: src/remmina_plugin_manager.c:470
-msgid "Description"
-msgstr "چۈشەندۈرۈش"
-
-#: src/remmina_plugin_manager.c:476
-msgid "Version"
-msgstr "نەشرى"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:84
@@ -992,6 +1204,16 @@ msgstr ""
 msgid "Set one or more profile settings, to be used with --update-profile"
 msgstr ""
 
+#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
+#: src/remmina_about.c:54
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Burkut https://launchpad.net/~burkut\n"
+"  Gheyret T.Kenji https://launchpad.net/~gheyretkenji\n"
+"  Sahran https://launchpad.net/~sahran\n"
+"  bilgeturghun https://launchpad.net/~bilgeks"
+
 #: src/remmina_sftp_plugin.c:318 src/remmina_ssh_plugin.c:957
 msgid "SSH identity file"
 msgstr ""
@@ -999,11 +1221,6 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:319 src/remmina_ssh_plugin.c:958
 msgid "SSH agent"
 msgstr ""
-
-#: src/remmina_sftp_plugin.c:320 src/remmina_ssh_plugin.c:959
-#: src/remmina_file_editor.c:953
-msgid "Public key (automatic)"
-msgstr "ئاممىۋى ئاچقۇچ(ئاپتوماتىك)"
 
 #: src/remmina_sftp_plugin.c:321 src/remmina_ssh_plugin.c:960
 msgid "Kerberos (GSSAPI)"
@@ -1018,21 +1235,15 @@ msgid "Overwrite all"
 msgstr ""
 
 #: src/remmina_sftp_plugin.c:350 src/remmina_ssh_plugin.c:1056
-#: plugins/rdp/rdp_plugin.c:1935 plugins/spice/spice_plugin.c:437
-#: plugins/vnc/vnc_plugin.c:1833 plugins/vnc/vnc_plugin.c:1853
-#: plugins/nx/nx_plugin.c:722
+#: plugins/spice/spice_plugin.c:437 plugins/rdp/rdp_plugin.c:1935
+#: plugins/nx/nx_plugin.c:722 plugins/vnc/vnc_plugin.c:1833
+#: plugins/vnc/vnc_plugin.c:1853
 msgid "User password"
 msgstr ""
 
 #: src/remmina_sftp_plugin.c:351 src/remmina_ssh_plugin.c:1057
 msgid "Authentication type"
 msgstr ""
-
-#: src/remmina_sftp_plugin.c:352 src/remmina_ssh_plugin.c:1058
-#: src/remmina_file_editor.c:356 src/remmina_file_editor.c:363
-#: plugins/nx/nx_plugin.c:720
-msgid "Identity file"
-msgstr "كىملىك ھۆججىتى"
 
 #: src/remmina_sftp_plugin.c:353 src/remmina_ssh_plugin.c:1059
 msgid "Private key passphrase"
@@ -1041,34 +1252,6 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:362
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - بىخەتەر ھۆججەت يوللاش"
-
-#: src/remmina_key_chooser.h:38
-msgid "Shift+"
-msgstr ""
-
-#: src/remmina_key_chooser.h:39
-msgid "Ctrl+"
-msgstr ""
-
-#: src/remmina_key_chooser.h:40
-msgid "Alt+"
-msgstr ""
-
-#: src/remmina_key_chooser.h:41
-msgid "Super+"
-msgstr ""
-
-#: src/remmina_key_chooser.h:42
-msgid "Hyper+"
-msgstr ""
-
-#: src/remmina_key_chooser.h:43
-msgid "Meta+"
-msgstr ""
-
-#: src/remmina_key_chooser.h:44
-msgid "<None>"
-msgstr ""
 
 #: src/remmina_ssh_plugin.c:479
 #, c-format
@@ -1120,17 +1303,13 @@ msgid "_Select all"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1060 plugins/rdp/rdp_plugin.c:1963
-#: plugins/xdmcp/xdmcp_plugin.c:370 plugins/nx/nx_plugin.c:725
+#: plugins/nx/nx_plugin.c:725 plugins/xdmcp/xdmcp_plugin.c:370
 msgid "Startup program"
 msgstr "باشلاش پروگراممىسى"
 
 #: src/remmina_ssh_plugin.c:1077
 msgid "Terminal color scheme"
 msgstr ""
-
-#: src/remmina_ssh_plugin.c:1078 src/remmina_file_editor.c:907
-msgid "Character set"
-msgstr "ھەرپ توپى"
 
 #: src/remmina_ssh_plugin.c:1079
 msgid "SSH Proxy Command"
@@ -1169,7 +1348,7 @@ msgid "Enable SSH compression"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1088 plugins/spice/spice_plugin.c:456
-#: plugins/vnc/vnc_plugin.c:1876 plugins/nx/nx_plugin.c:743
+#: plugins/nx/nx_plugin.c:743 plugins/vnc/vnc_plugin.c:1876
 msgid "Disable password storing"
 msgstr ""
 
@@ -1181,187 +1360,100 @@ msgstr ""
 msgid "SSH - Secure Shell"
 msgstr "س س خ (SSH) - بىخەتەر Shell"
 
-#: src/remmina_file_editor.c:74
-msgid ""
-"<tt><big>Supported formats\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port</big></tt>"
-msgstr ""
-"<tt><big>ئىشلەتكىلى بولىدىغان پىچىملار\n"
-"* مۇلازىمېتىر\n"
-"* مۇلازىمېتىر:ئېغىز\n"
-"* [مۇلازىمېتىر]:ئېغىز</big></tt>"
+#: plugins/spice/spice_plugin.c:239
+#, fuzzy
+msgid "Enter SPICE password"
+msgstr "SSH ئىمى"
 
-#: src/remmina_file_editor.c:81
-msgid ""
-"<tt><big>* command in PATH args %h\n"
-"* /path/to/foo -options %h %u\n"
-"* %h is substituted with the server name\n"
-"* %t is substituted with the SSH server name\n"
-"* %u is substituted with the username\n"
-"* %U is substituted with the SSH username\n"
-"* %p is substituted with Remmina profile name\n"
-"* %g is substituted with Remmina profile group name\n"
-"Do not run in background if you want the command to be executed before "
-"connecting.\n"
-"</big></tt>"
-msgstr ""
-
-#: src/remmina_file_editor.c:94
-msgid ""
-"<tt><big>Supported formats\n"
-"* :port\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port\n"
-"* username@server:port (SSH protocol only)</big></tt>"
-msgstr ""
-
-#: src/remmina_file_editor.c:158
-msgid "Choose a Remote Desktop Server"
-msgstr "بىر يىراقتىكى ئۈستەلئۈستى مۇلازىمېتىرىنى تاللاڭ"
-
-#: src/remmina_file_editor.c:365
-msgid "_Open"
-msgstr ""
-
-#: src/remmina_file_editor.c:426
+#: plugins/spice/spice_plugin.c:274
 #, c-format
-msgid "Browse the network to find a %s server"
-msgstr "تورنى كۆرۈپ %s مۇلازىمېتىرنى تاپىدۇ"
-
-#: src/remmina_file_editor.c:527
-msgid "Resolution"
-msgstr "ئېنىقلىق"
-
-#: src/remmina_file_editor.c:534
-msgid "Use initial window size"
+msgid "Disconnected from SPICE server %s."
 msgstr ""
 
-#: src/remmina_file_editor.c:538
-msgid "Use client resolution"
-msgstr "خېرىدار ئېنىقلىقىنى ئىشلەت"
-
-#: src/remmina_file_editor.c:549 src/remmina_file_editor.c:867
-msgid "Custom"
-msgstr "ئىختىيارى"
-
-#: src/remmina_file_editor.c:735
-msgid "Keyboard mapping"
-msgstr "ھەرپتاختا خەرىتىسى"
-
-#: src/remmina_file_editor.c:834
-msgid "SSH Tunnel"
+#: plugins/spice/spice_plugin.c:290
+msgid "TLS connection error."
 msgstr ""
 
-#: src/remmina_file_editor.c:841
-msgid "Enable SSH tunnel"
-msgstr "س س خ (SSH) تونېلىنى ئىناۋەتلىك قىل"
+#: plugins/spice/spice_plugin.c:296
+msgid "Connection to SPICE server failed."
+msgstr ""
 
-#: src/remmina_file_editor.c:848
-msgid "Tunnel via loopback address"
-msgstr "loopback ئادرېس ئارقىلىق تونىل قۇرىدۇ"
+#: plugins/spice/spice_plugin.c:438
+msgid "Use TLS encryption"
+msgstr ""
 
-#: src/remmina_file_editor.c:858
+#: plugins/spice/spice_plugin.c:439
+msgid "Server CA certificate"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:440 plugins/rdp/rdp_plugin.c:1939
+msgid "Share folder"
+msgstr "ھەمبەھىر قىسقۇچ"
+
+#: plugins/spice/spice_plugin.c:455 plugins/spice/spice_plugin.c:471
+#: plugins/nx/nx_plugin.c:740 plugins/vnc/vnc_plugin.c:1873
+msgid "Disable clipboard sync"
+msgstr "چاپلاش تاختىسىنى قەدەمداشلاشنى ئىناۋەتسىز قىل"
+
+#: plugins/spice/spice_plugin.c:457
+msgid "Enable audio channel"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:458 plugins/spice/spice_plugin.c:470
+msgid "Resize guest to match window size"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:459 plugins/rdp/rdp_plugin.c:1977
+msgid "Share smartcard"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:460 plugins/spice/spice_plugin.c:469
+#: plugins/vnc/vnc_plugin.c:1872 plugins/vnc/vnc_plugin.c:1887
+msgid "View only"
+msgstr "پەقەتلا كۆر"
+
+#: plugins/spice/spice_plugin.c:472 plugins/rdp/rdp_plugin.c:2001
+#: plugins/nx/nx_plugin.c:751 plugins/xdmcp/xdmcp_plugin.c:381
+#: plugins/vnc/vnc_plugin.c:1891
+msgid "Send Ctrl+Alt+Delete"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:473 plugins/spice/spice_plugin_usb.c:51
+msgid "Select USB devices for redirection"
+msgstr ""
+
+#: plugins/spice/spice_plugin.c:482
+msgid "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr ""
+
+#: plugins/spice/spice_plugin_file_transfer.c:82
+msgid "File Transfers"
+msgstr ""
+
+#: plugins/spice/spice_plugin_file_transfer.c:219
+msgid "Transfer error"
+msgstr ""
+
+#: plugins/spice/spice_plugin_file_transfer.c:220
 #, c-format
-msgid "Same server at port %i"
-msgstr "ئوخشاش مۇلازىمېتىر %i غا ئېغىزدا"
-
-#: src/remmina_file_editor.c:912 plugins/rdp/rdp_plugin.c:1964
-msgid "Startup path"
-msgstr "باشلاش يولى"
-
-#: src/remmina_file_editor.c:921
-msgid "SSH Authentication"
-msgstr "س س خ (SSH) كىملىك دەلىللەش"
-
-#: src/remmina_file_editor.c:931
-msgid "SSH Agent (automatic)"
+msgid "%s: %s"
 msgstr ""
 
-#: src/remmina_file_editor.c:1010
-msgid "Basic"
-msgstr "ئاساسىي"
-
-#: src/remmina_file_editor.c:1016
-msgid "Advanced"
-msgstr "ئالىي"
-
-#: src/remmina_file_editor.c:1235
-msgid "Default settings saved."
-msgstr "كۆڭۈلدىكى تەڭشەكلەر ساقلاندى."
-
-#: src/remmina_file_editor.c:1305
-msgid "Remote Desktop Preference"
-msgstr "يىراقتىكى ئۈستەلئۈستى مايىللىقلىرى"
-
-#: src/remmina_file_editor.c:1311
-msgid "Save as Default"
+#: plugins/spice/spice_plugin_file_transfer.c:223
+msgid "Transfer completed"
 msgstr ""
 
-#: src/remmina_file_editor.c:1312
-msgid "Use the current settings as the default for all new connection profiles"
-msgstr ""
-
-#: src/remmina_file_editor.c:1320 data/ui/remmina_main.glade:231
-msgid "Connect"
-msgstr ""
-
-#: src/remmina_file_editor.c:1323
-msgid "_Save and Connect"
-msgstr ""
-
-#: src/remmina_file_editor.c:1429
-msgid "Profile"
-msgstr "رويخەت(Profile)"
-
-#: src/remmina_file_editor.c:1446
-msgid "Quick Connect"
-msgstr "تېز باغلىنىش"
-
-#: src/remmina_file_editor.c:1470
+#: plugins/spice/spice_plugin_file_transfer.c:224
 #, c-format
-msgid "Use '%s' as subgroup delimiter"
-msgstr "بۇ ‹%s› نى تارماق گۇرۇپپا بۆلگۈچىسى سۈپىتىدە ئىشلىتىدۇ"
-
-#: src/remmina_file_editor.c:1489
-msgid "Pre Command"
+msgid "The %s file has been transferred"
 msgstr ""
 
-#: src/remmina_file_editor.c:1507
-msgid "Post Command"
+#: plugins/spice/spice_plugin_usb.c:54
+msgid "_Close"
 msgstr ""
 
-#: src/remmina_file_editor.c:1572 src/remmina_file_editor.c:1590
-#, c-format
-msgid "File %s not found."
-msgstr "ھۆججەت %s تېپىلمىدى."
-
-#: src/remmina_mpchange.c:234
-msgid "The passwords do not match"
-msgstr ""
-
-#: src/remmina_mpchange.c:244
-msgid "Resetting passwords, please wait…"
-msgstr ""
-
-#: src/remmina_mpchange.c:327
-msgid "The multi password changer requires a secrecy plugin.\n"
-msgstr ""
-
-#: src/remmina_mpchange.c:330
-msgid "The multi password changer requires a secrecy service.\n"
-msgstr ""
-
-#: src/remmina_mpchange.c:419
-#, c-format
-msgid "%d password changed."
-msgid_plural "%d passwords changed."
-msgstr[0] ""
-
-#: plugins/secret/src/glibsecret_plugin.c:188
-msgid "Secure password storing in the GNOME keyring"
+#: plugins/spice/spice_plugin_usb.c:94
+msgid "USB redirection error"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:577
@@ -1511,22 +1603,22 @@ msgid "256 colors (8 bpp)"
 msgstr "256 رەڭ (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1885 plugins/rdp/rdp_settings.c:269
-#: plugins/vnc/vnc_plugin.c:1812 plugins/nx/nx_plugin.c:701
+#: plugins/nx/nx_plugin.c:701 plugins/vnc/vnc_plugin.c:1812
 msgid "Poor (fastest)"
 msgstr "ناچار (تېزرەك)"
 
 #: plugins/rdp/rdp_plugin.c:1886 plugins/rdp/rdp_settings.c:271
-#: plugins/vnc/vnc_plugin.c:1813 plugins/nx/nx_plugin.c:702
+#: plugins/nx/nx_plugin.c:702 plugins/vnc/vnc_plugin.c:1813
 msgid "Medium"
 msgstr "نورمال"
 
 #: plugins/rdp/rdp_plugin.c:1887 plugins/rdp/rdp_settings.c:273
-#: plugins/vnc/vnc_plugin.c:1814 plugins/nx/nx_plugin.c:703
+#: plugins/nx/nx_plugin.c:703 plugins/vnc/vnc_plugin.c:1814
 msgid "Good"
 msgstr "ياخشى"
 
 #: plugins/rdp/rdp_plugin.c:1888 plugins/rdp/rdp_settings.c:275
-#: plugins/vnc/vnc_plugin.c:1815 plugins/nx/nx_plugin.c:704
+#: plugins/nx/nx_plugin.c:704 plugins/vnc/vnc_plugin.c:1815
 msgid "Best (slowest)"
 msgstr "ئەڭ ياخشى(ئاستا)"
 
@@ -1555,12 +1647,8 @@ msgstr "ئۆتكۈز"
 msgid "Color depth"
 msgstr "رەڭ چوڭقۇرلۇقى"
 
-#: plugins/rdp/rdp_plugin.c:1939 plugins/spice/spice_plugin.c:440
-msgid "Share folder"
-msgstr "ھەمبەھىر قىسقۇچ"
-
-#: plugins/rdp/rdp_plugin.c:1954 plugins/vnc/vnc_plugin.c:1835
-#: plugins/vnc/vnc_plugin.c:1855 plugins/nx/nx_plugin.c:724
+#: plugins/rdp/rdp_plugin.c:1954 plugins/nx/nx_plugin.c:724
+#: plugins/vnc/vnc_plugin.c:1835 plugins/vnc/vnc_plugin.c:1855
 msgid "Quality"
 msgstr "سۈپىتى"
 
@@ -1666,10 +1754,6 @@ msgstr ""
 msgid "Share parallel ports"
 msgstr ""
 
-#: plugins/rdp/rdp_plugin.c:1977 plugins/spice/spice_plugin.c:459
-msgid "Share smartcard"
-msgstr ""
-
 #: plugins/rdp/rdp_plugin.c:1978
 msgid "Redirect local microphone"
 msgstr ""
@@ -1714,12 +1798,6 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1990
 msgid "Glyph Cache"
-msgstr ""
-
-#: plugins/rdp/rdp_plugin.c:2001 plugins/spice/spice_plugin.c:472
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/vnc/vnc_plugin.c:1891
-#: plugins/nx/nx_plugin.c:751
-msgid "Send Ctrl+Alt+Delete"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2014
@@ -1815,95 +1893,108 @@ msgstr ""
 msgid "Reconnection attempt %d of %d…"
 msgstr "ھازىر ‹%s› غا باغلىنىۋاتىدۇ…"
 
-#: plugins/spice/spice_plugin_file_transfer.c:82
-msgid "File Transfers"
+#: plugins/st/st_plugin.c:237
+msgid "Terminal Emulator"
 msgstr ""
 
-#: plugins/spice/spice_plugin_file_transfer.c:219
-msgid "Transfer error"
+#: plugins/st/st_plugin.c:238
+msgid "Command to be executed"
 msgstr ""
 
-#: plugins/spice/spice_plugin_file_transfer.c:220
+#: plugins/st/st_plugin.c:253
+msgid "Detached window"
+msgstr ""
+
+#: plugins/st/st_plugin_config.h:43
+msgid "Remmina Simple Terminal"
+msgstr ""
+
+#: plugins/tool_hello_world/plugin_config.h:40
+msgid "Hello World!"
+msgstr ""
+
+#: plugins/secret/src/glibsecret_plugin.c:188
+msgid "Secure password storing in the GNOME keyring"
+msgstr ""
+
+#: plugins/exec/exec_plugin.c:158
+msgid "You did not set any command to be executed"
+msgstr ""
+
+#: plugins/exec/exec_plugin.c:204
+msgid ""
+"WARNING! Running a command synchronously may cause Remmina not to respond.\n"
+"Do you really want to continue?"
+msgstr ""
+
+#: plugins/exec/exec_plugin.c:264
+msgid "Command"
+msgstr ""
+
+#: plugins/exec/exec_plugin.c:265
+msgid "Asynchrounous execution"
+msgstr ""
+
+#: plugins/exec/exec_plugin_config.h:41
+msgid "Execute a command"
+msgstr ""
+
+#: plugins/nx/nx_plugin.c:367
+msgid "Enter NX authentication credentials"
+msgstr ""
+
+#: plugins/nx/nx_plugin.c:608 plugins/xdmcp/xdmcp_plugin.c:264
 #, c-format
-msgid "%s: %s"
+msgid "Protocol %s is unavailable because GtkSocket only works under X.Org"
 msgstr ""
 
-#: plugins/spice/spice_plugin_file_transfer.c:223
-msgid "Transfer completed"
-msgstr ""
+#: plugins/nx/nx_plugin.c:741 plugins/vnc/vnc_plugin.c:1874
+msgid "Disable encryption"
+msgstr "شىفىرلاشنى ئىناۋەتسىز قىل"
 
-#: plugins/spice/spice_plugin_file_transfer.c:224
+#: plugins/nx/nx_plugin.c:742 plugins/xdmcp/xdmcp_plugin.c:371
+msgid "Use local cursor"
+msgstr "يەرلىك نۇربەلگە ئىشلەت"
+
+#: plugins/nx/nx_plugin.c:761
+msgid "NX - NX Technology"
+msgstr "NX -NX تېخنىكىسى"
+
+#: plugins/nx/nx_session_manager.c:98
+msgid "Terminating"
+msgstr "ئاخىرلاشتۇرۇش"
+
+#: plugins/nx/nx_session_manager.c:143
 #, c-format
-msgid "The %s file has been transferred"
-msgstr ""
+msgid "NX Sessions on %s"
+msgstr "كومپيۇتېر %s نىڭ ئۇستىدىكى NX ئەڭگىمەلىرى"
 
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:473
-msgid "Select USB devices for redirection"
-msgstr ""
+#: plugins/nx/nx_session_manager.c:147
+msgid "Attach"
+msgstr "قوشۇل"
 
-#: plugins/spice/spice_plugin_usb.c:54
-msgid "_Close"
-msgstr ""
+#: plugins/nx/nx_session_manager.c:151
+msgid "Restore"
+msgstr "ئەسلىگە كەلتۈر"
 
-#: plugins/spice/spice_plugin_usb.c:94
-msgid "USB redirection error"
-msgstr ""
+#: plugins/nx/nx_session_manager.c:152
+msgid "Start"
+msgstr "باشلا"
 
-#: plugins/spice/spice_plugin.c:239
-#, fuzzy
-msgid "Enter SPICE password"
-msgstr "SSH ئىمى"
+#: plugins/nx/nx_session_manager.c:158
+msgid "Terminate"
+msgstr "ئاخىرلاشتۇر"
 
-#: plugins/spice/spice_plugin.c:274
-#, c-format
-msgid "Disconnected from SPICE server %s."
-msgstr ""
+#: plugins/nx/nx_session_manager.c:190
+msgid "Display"
+msgstr "كۆرسەت"
 
-#: plugins/spice/spice_plugin.c:290
-msgid "TLS connection error."
-msgstr ""
-
-#: plugins/spice/spice_plugin.c:296
-msgid "Connection to SPICE server failed."
-msgstr ""
-
-#: plugins/spice/spice_plugin.c:438
-msgid "Use TLS encryption"
-msgstr ""
-
-#: plugins/spice/spice_plugin.c:439
-msgid "Server CA certificate"
-msgstr ""
-
-#: plugins/spice/spice_plugin.c:455 plugins/spice/spice_plugin.c:471
-#: plugins/vnc/vnc_plugin.c:1873 plugins/nx/nx_plugin.c:740
-msgid "Disable clipboard sync"
-msgstr "چاپلاش تاختىسىنى قەدەمداشلاشنى ئىناۋەتسىز قىل"
-
-#: plugins/spice/spice_plugin.c:457
-msgid "Enable audio channel"
-msgstr ""
-
-#: plugins/spice/spice_plugin.c:458 plugins/spice/spice_plugin.c:470
-msgid "Resize guest to match window size"
-msgstr ""
-
-#: plugins/spice/spice_plugin.c:460 plugins/spice/spice_plugin.c:469
-#: plugins/vnc/vnc_plugin.c:1872 plugins/vnc/vnc_plugin.c:1887
-msgid "View only"
-msgstr "پەقەتلا كۆر"
-
-#: plugins/spice/spice_plugin.c:482
-msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr ""
+#: plugins/nx/nx_session_manager.c:197
+msgid "Status"
+msgstr "ھالەت"
 
 #: plugins/xdmcp/xdmcp_plugin.c:97
 msgid "Run out of available local X display number."
-msgstr ""
-
-#: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:608
-#, c-format
-msgid "Protocol %s is unavailable because GtkSocket only works under X.Org"
 msgstr ""
 
 #: plugins/xdmcp/xdmcp_plugin.c:348
@@ -1926,10 +2017,6 @@ msgstr "ئېنىق رەڭ (16 بىت)"
 msgid "True color (24 bit)"
 msgstr "ھەقىقىي رەڭ (24 بىت)"
 
-#: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:742
-msgid "Use local cursor"
-msgstr "يەرلىك نۇربەلگە ئىشلەت"
-
 #: plugins/xdmcp/xdmcp_plugin.c:372
 #, fuzzy
 msgid "Disconnect after first session"
@@ -1943,6 +2030,14 @@ msgstr "يېڭى باغلىنىش"
 #: plugins/xdmcp/xdmcp_plugin.c:391
 msgid "XDMCP - X Remote Session"
 msgstr "XDMCP -X يىراقتىكى ئەڭگىمە"
+
+#: plugins/vnc/vnc_plugin.h:41
+msgid "Remmina VNC Plugin"
+msgstr ""
+
+#: plugins/vnc/vnc_plugin.h:46
+msgid "Remmina VNC listener Plugin"
+msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:734
 #, fuzzy
@@ -1992,10 +2087,6 @@ msgstr "تىڭشايدىغان ئېغىز"
 msgid "Show remote cursor"
 msgstr "يىراقتىكى نۇربەلگىسىنى كۆرسەت"
 
-#: plugins/vnc/vnc_plugin.c:1874 plugins/nx/nx_plugin.c:741
-msgid "Disable encryption"
-msgstr "شىفىرلاشنى ئىناۋەتسىز قىل"
-
 #: plugins/vnc/vnc_plugin.c:1875 plugins/vnc/vnc_plugin.c:1888
 msgid "Disable server input"
 msgstr "مۇلازىمېتىر كىرگۈزۈشىنى ئىناۋەتسىز قىل"
@@ -2003,93 +2094,6 @@ msgstr "مۇلازىمېتىر كىرگۈزۈشىنى ئىناۋەتسىز قى�
 #: plugins/vnc/vnc_plugin.c:1890
 msgid "Open Chat…"
 msgstr "سۆھبەتنى ئاچ…"
-
-#: plugins/vnc/vnc_plugin.h:41
-msgid "Remmina VNC Plugin"
-msgstr ""
-
-#: plugins/vnc/vnc_plugin.h:46
-msgid "Remmina VNC listener Plugin"
-msgstr ""
-
-#: plugins/st/st_plugin.c:237
-msgid "Terminal Emulator"
-msgstr ""
-
-#: plugins/st/st_plugin.c:238
-msgid "Command to be executed"
-msgstr ""
-
-#: plugins/st/st_plugin.c:253
-msgid "Detached window"
-msgstr ""
-
-#: plugins/st/st_plugin_config.h:43
-msgid "Remmina Simple Terminal"
-msgstr ""
-
-#: plugins/nx/nx_plugin.c:367
-msgid "Enter NX authentication credentials"
-msgstr ""
-
-#: plugins/nx/nx_plugin.c:761
-msgid "NX - NX Technology"
-msgstr "NX -NX تېخنىكىسى"
-
-#: plugins/nx/nx_session_manager.c:98
-msgid "Terminating"
-msgstr "ئاخىرلاشتۇرۇش"
-
-#: plugins/nx/nx_session_manager.c:143
-#, c-format
-msgid "NX Sessions on %s"
-msgstr "كومپيۇتېر %s نىڭ ئۇستىدىكى NX ئەڭگىمەلىرى"
-
-#: plugins/nx/nx_session_manager.c:147
-msgid "Attach"
-msgstr "قوشۇل"
-
-#: plugins/nx/nx_session_manager.c:151
-msgid "Restore"
-msgstr "ئەسلىگە كەلتۈر"
-
-#: plugins/nx/nx_session_manager.c:152
-msgid "Start"
-msgstr "باشلا"
-
-#: plugins/nx/nx_session_manager.c:158
-msgid "Terminate"
-msgstr "ئاخىرلاشتۇر"
-
-#: plugins/nx/nx_session_manager.c:190
-msgid "Display"
-msgstr "كۆرسەت"
-
-#: plugins/nx/nx_session_manager.c:197
-msgid "Status"
-msgstr "ھالەت"
-
-#: plugins/exec/exec_plugin.c:158
-msgid "You did not set any command to be executed"
-msgstr ""
-
-#: plugins/exec/exec_plugin.c:204
-msgid ""
-"WARNING! Running a command synchronously may cause Remmina not to respond.\n"
-"Do you really want to continue?"
-msgstr ""
-
-#: plugins/exec/exec_plugin.c:264
-msgid "Command"
-msgstr ""
-
-#: plugins/exec/exec_plugin.c:265
-msgid "Asynchrounous execution"
-msgstr ""
-
-#: plugins/exec/exec_plugin_config.h:41
-msgid "Execute a command"
-msgstr ""
 
 #: plugins/telepathy/telepathy_plugin.c:57
 msgid "Telepathy - Desktop Sharing"
@@ -2107,14 +2111,6 @@ msgstr ""
 #: plugins/telepathy/telepathy_channel_handler.c:240
 msgid "Desktop sharing invitation"
 msgstr "ئۈستەلئۈستىنى ھەمبەھىرلەش تەكلىپى"
-
-#: plugins/tool_hello_world/plugin_config.h:40
-msgid "Hello World!"
-msgstr ""
-
-#: plugins/kwallet/src/kwallet_plugin_main.c:118
-msgid "Secure passwords storing in the KDE Wallet"
-msgstr ""
 
 #: plugins/www/www_plugin.c:97
 msgid "File downloaded"
@@ -2178,36 +2174,24 @@ msgstr ""
 msgid "Remmina Browser Plugin"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:7
-msgid "Remmina - Multi Password Changer"
+#: plugins/kwallet/src/kwallet_plugin_main.c:118
+msgid "Secure passwords storing in the KDE Wallet"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:21
-msgid "Change"
+#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
+msgid "Add"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:61
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
+msgid "Remove"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:166
-msgid "Selection criteria"
+#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
+msgid "Move up"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:195
-msgid "Confirm password"
-msgstr ""
-
-#: data/ui/remmina_mpc.glade:208
-msgid "Reset to"
-msgstr ""
-
-#: data/ui/remmina_mpc.glade:302
-msgid "F"
-msgstr ""
-
-#: data/ui/remmina_mpc.glade:336
-msgid "Domain\\Username"
+#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
+msgid "Move down"
 msgstr ""
 
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:424
@@ -2251,6 +2235,19 @@ msgstr ""
 msgid "<big>Contribute</big>"
 msgstr ""
 
+#: data/ui/remmina_snap_info_dialog.glade:46
+msgid ""
+"It seems that Remmina is running on your system as a SNAP package. To enable "
+"access to some important features, like password saving in your keyring and "
+"RDP printer sharing, please open your software center and give the "
+"appropriate permissions to Remmina. As an alternative you can enter the "
+"following commands in a terminal window:"
+msgstr ""
+
+#: data/ui/remmina_snap_info_dialog.glade:82
+msgid "Do not show this message again"
+msgstr ""
+
 #: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
 msgid "_Remove"
 msgstr ""
@@ -2266,6 +2263,18 @@ msgstr ""
 
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
+msgstr ""
+
+#: data/ui/remmina_unlock.glade:60
+msgid "Unlock"
+msgstr ""
+
+#: data/ui/remmina_unlock.glade:94
+msgid "Unlock Remmina"
+msgstr ""
+
+#: data/ui/remmina_unlock.glade:128
+msgid "Master password secret key"
 msgstr ""
 
 #: data/ui/remmina_main.glade:69
@@ -2341,6 +2350,38 @@ msgstr ""
 
 #: data/ui/remmina_main.glade:555
 msgid "Last used"
+msgstr ""
+
+#: data/ui/remmina_mpc.glade:7
+msgid "Remmina - Multi Password Changer"
+msgstr ""
+
+#: data/ui/remmina_mpc.glade:21
+msgid "Change"
+msgstr ""
+
+#: data/ui/remmina_mpc.glade:61
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr ""
+
+#: data/ui/remmina_mpc.glade:166
+msgid "Selection criteria"
+msgstr ""
+
+#: data/ui/remmina_mpc.glade:195
+msgid "Confirm password"
+msgstr ""
+
+#: data/ui/remmina_mpc.glade:208
+msgid "Reset to"
+msgstr ""
+
+#: data/ui/remmina_mpc.glade:302
+msgid "F"
+msgstr ""
+
+#: data/ui/remmina_mpc.glade:336
+msgid "Domain\\Username"
 msgstr ""
 
 #: data/ui/remmina_spinner.glade:54
@@ -2850,45 +2891,4 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
-msgstr ""
-
-#: data/ui/remmina_unlock.glade:60
-msgid "Unlock"
-msgstr ""
-
-#: data/ui/remmina_unlock.glade:94
-msgid "Unlock Remmina"
-msgstr ""
-
-#: data/ui/remmina_unlock.glade:128
-msgid "Master password secret key"
-msgstr ""
-
-#: data/ui/remmina_snap_info_dialog.glade:46
-msgid ""
-"It seems that Remmina is running on your system as a SNAP package. To enable "
-"access to some important features, like password saving in your keyring and "
-"RDP printer sharing, please open your software center and give the "
-"appropriate permissions to Remmina. As an alternative you can enter the "
-"following commands in a terminal window:"
-msgstr ""
-
-#: data/ui/remmina_snap_info_dialog.glade:82
-msgid "Do not show this message again"
-msgstr ""
-
-#: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
-msgid "Add"
-msgstr ""
-
-#: data/ui/remmina_string_list.glade:20 data/ui/remmina_string_list.glade:137
-msgid "Remove"
-msgstr ""
-
-#: data/ui/remmina_string_list.glade:26 data/ui/remmina_string_list.glade:116
-msgid "Move up"
-msgstr ""
-
-#: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
-msgid "Move down"
 msgstr ""
