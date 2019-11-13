@@ -899,7 +899,7 @@ gboolean remmina_protocol_widget_ssh_exec(RemminaProtocolWidget *gp, gboolean wa
 			ret = TRUE;
 		}
 	} else {
-		/// TRANSLATORS: %s is a placeholder for an error message
+		// TRANSLATORS: %s is a placeholder for an error message
 		remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not run command: %s"));
 	}
 	g_free(cmd);

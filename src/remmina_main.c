@@ -921,7 +921,7 @@ static void remmina_main_import_file_list(GSList *files)
 	}
 	g_slist_free(files);
 	if (err->len > 0) {
-		/// TRANSLATORS: The placeholder %s is an error message
+		// TRANSLATORS: The placeholder %s is an error message
 		dlg = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 			_("Unable to import:\n%s"), err->str);
 		g_signal_connect(G_OBJECT(dlg), "response", G_CALLBACK(gtk_widget_destroy), NULL);

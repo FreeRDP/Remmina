@@ -50,7 +50,7 @@ void remmina_about_open(GtkWindow *parent)
 	GtkDialog *dialog = GTK_DIALOG(gtk_builder_get_object(builder, "dialog_remmina_about"));
 
 	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), VERSION " (git " REMMINA_GIT_REVISION ")");
-	/// TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
+	// TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
 	gtk_about_dialog_set_translator_credits(GTK_ABOUT_DIALOG(dialog), _("translator-credits"));
 
 	if (parent) {

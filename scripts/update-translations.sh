@@ -139,7 +139,7 @@ xgettext --from-code=UTF-8 \
 	--keyword=C_:1c,2 \
 	--keyword=NC_:1c,2 \
 	--keyword=g_dngettext:2,3 \
-	--add-comments \
+	--add-comments=TRANSLATORS: \
 	--files-from=po/POTFILES.in \
 	--output=po/remmina.temp.pot \
 	--package-version="$GIT_TAG" \
