@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-12 23:35+0000\n"
-"PO-Revision-Date: 2019-11-09 00:04+0000\n"
+"PO-Revision-Date: 2019-11-13 08:32+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
 ">\n"
@@ -714,9 +714,9 @@ msgstr "Nedaří se spustit příkaz %s na SSH serveru (stav = %i)."
 
 #. / TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:903
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command: %s"
-msgstr "Nedaří se spustit příkaz, %s"
+msgstr "Nepodařilo se spustit příkaz: %s"
 
 #: src/remmina_protocol_widget.c:1348
 msgid "Type in username and password for SSH."
@@ -1007,13 +1007,13 @@ msgstr "Nepodařilo se zahájit SSH relaci: %s"
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1033 src/remmina_ssh.c:1095
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel: %s"
 msgstr "Nepodařilo se vytvořit kanál: %s"
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1044
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to the SSH tunnel destination: %s"
 msgstr "Nepodařilo se připojit k cíli SSH tunelu: %s"
 
@@ -1030,7 +1030,7 @@ msgstr "Vykonání %s na SSH serveru se nezdařilo: %%s"
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1154 src/remmina_ssh.c:1175 src/remmina_ssh.c:1184
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request port forwarding: %s"
 msgstr "Nepodařilo se vyžádat si přeposílání portů: %s"
 
@@ -1045,33 +1045,34 @@ msgstr "Není možné se připojit k místnímu portu %i."
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1308
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_write(): %s"
-msgstr "Nedaří se spustit funkci ssh_channel_write(), %s"
+msgstr "Nepodařilo se spustit funkci ssh_channel_write(): %s"
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1315
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket: %s"
-msgstr "Nedaří se číst ze soketu, na kterém tunel očekává spojení, %s"
+msgstr "Nepodařilo se číst ze soketu, na kterém tunel očekává spojení: %s"
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1335
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_poll(): %s"
-msgstr "Nedaří se spustit funkci ssh_channel_poll(), %s"
+msgstr "Nepodařilo se spustit funkci ssh_channel_poll(): %s"
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1342
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_read_nonblocking(): %s"
-msgstr "Nedaří se spustit funkci ssh_channel_read_nonblocking(), %s"
+msgstr "Nepodařilo se spustit funkci ssh_channel_read_nonblocking(): %s"
 
 #. / TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1361
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket: %s"
-msgstr "Nedaří se odeslat data na soket, na kterém tunel očekává spojení, %s"
+msgstr ""
+"Nepodařilo se odeslat data na soket, na kterém tunel očekává spojení: %s"
 
 #: src/remmina_ssh.c:1440
 msgid "Assign a destination port."
@@ -1136,7 +1137,7 @@ msgstr[1] "Celkem %i položky."
 msgstr[2] "Celkem %i položek."
 
 #: src/remmina_main.c:826
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr "Opravdu chcete „%s“ smazat?"
 
@@ -1300,7 +1301,7 @@ msgstr "SFTP – Zabezpečený přenos souborů"
 #: src/remmina_ssh_plugin.c:479
 #, c-format
 msgid "Error: %s"
-msgstr ""
+msgstr "Chyba: %s"
 
 #: src/remmina_ssh_plugin.c:496
 msgid "Terminal content saved under"
@@ -3014,4 +3015,3 @@ msgstr "Povolit tučný text"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminál"
-
