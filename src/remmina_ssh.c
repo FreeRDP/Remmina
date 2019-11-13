@@ -350,7 +350,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 	/* Check known host again to ensure it’s still the original server when user forks
 	 * a new session from existing one */
 	if (ssh_is_server_known(ssh->session) != SSH_SERVER_KNOWN_OK) {
-		remmina_ssh_set_application_error(ssh, _("SSH public key has changed!"));
+		remmina_ssh_set_application_error(ssh, _("The public SSH key changed!"));
 		return 0;
 	}
 
@@ -481,7 +481,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	case SSH_SERVER_ERROR:
 	default:
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(ssh, _("SSH known host checking failed: %s"));
+		remmina_ssh_set_error(ssh, _("Could not check list of known SSH hosts: %s"));
 		return 0;
 	}
 
@@ -1041,7 +1041,7 @@ remmina_ssh_tunnel_create_forward_channel(RemminaSSHTunnel *tunnel)
 		ssh_channel_send_eof(channel);
 		ssh_channel_free(channel);
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not connect to the SSH tunnel destination: %s"));
+		remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not connect to SSH tunnel: %s"));
 		return NULL;
 	}
 
@@ -1113,7 +1113,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 		}
 		g_free(ptr);
 		if (ssh_channel_request_exec(tunnel->x11_channel, tunnel->dest)) {
-			ptr = g_strdup_printf(_("Failed to execute %s on SSH server, %%s"), tunnel->dest);
+			ptr = g_strdup_printf(_("Could not run %s on SSH server, %%s"), tunnel->dest);
 			remmina_ssh_set_error(REMMINA_SSH(tunnel), ptr);
 			g_free(ptr);
 			tunnel->thread = 0;
