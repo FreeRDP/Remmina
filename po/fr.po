@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-12 23:35+0000\n"
+"POT-Creation-Date: 2019-11-13 08:36+0000\n"
 "PO-Revision-Date: 2019-11-09 00:04+0000\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -2832,9 +2832,8 @@ msgstr "Niveau de verbosité de SSH"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1344
-msgid ""
-"The time (in seconds) the connection needs to remain idle before TCP starts "
-"sending keepalive probes."
+#, fuzzy
+msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr ""
 "Temps (en secondes) durant lequel la connexion doit rester inactive avant "
 "que TCP ne commence à envoyer des paquets keepalive pour maintenir la "
@@ -2842,26 +2841,27 @@ msgstr ""
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1360
-msgid "The time (in seconds) between individual keepalive probes."
+#, fuzzy
+msgid "Seconds between each keepalive probe."
 msgstr ""
 "Temps (en secondes) entre deux envois de paquets de maintien de la session "
 "TCP."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1376
+#, fuzzy
 msgid ""
-"The maximum number of keepalive probes TCP should send before dropping the "
-"connection."
+"Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
 "Nombre maximum de messages de maintien de la session TCP (keepalive probes) "
 "avant abandon."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1392
+#, fuzzy
 msgid ""
-"it specifies the maximum amount of time in milliseconds that transmitted "
-"data may remain unacknowledged before TCP will forcibly close the "
-"corresponding connection."
+"Amount of milliseconds to attempt acknowledging data before closing the "
+"corresponding TCP connection forcibly."
 msgstr ""
 "Ceci spécifie la durée maximum en millisecondes durant laquelle des données "
 "transmises peuvent demeurer non acquittées avant que TCP ne ferme la "
@@ -3050,4 +3050,3 @@ msgstr "Autoriser le texte en caractères gras"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminal"
-
