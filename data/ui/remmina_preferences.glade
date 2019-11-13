@@ -1341,7 +1341,7 @@ Author: Antenore Gatta
                   <object class="GtkEntry" id="entry_options_ssh_tcp_keepidle">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">The time (in seconds) the connection needs to remain idle before TCP starts sending keepalive probes.</property>
+                    <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Seconds of connection idleness before TCP keepalive probes are sent.</property>
                     <property name="margin_right">18</property>
                     <property name="hexpand">True</property>
                     <property name="max_length">5</property>
@@ -1357,7 +1357,7 @@ Author: Antenore Gatta
                   <object class="GtkEntry" id="entry_options_ssh_tcp_keepintvl">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">The time (in seconds) between individual keepalive probes.</property>
+                    <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Seconds between each keepalive probe.</property>
                     <property name="margin_right">18</property>
                     <property name="hexpand">True</property>
                     <property name="max_length">5</property>
@@ -1373,7 +1373,7 @@ Author: Antenore Gatta
                   <object class="GtkEntry" id="entry_options_ssh_tcp_keepcnt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">The maximum number of keepalive probes TCP should send before dropping the connection.</property>
+                    <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Number of keepalive probes sent via TCP connection before it is dropped.</property>
                     <property name="margin_right">18</property>
                     <property name="hexpand">True</property>
                     <property name="max_length">5</property>
@@ -1389,7 +1389,7 @@ Author: Antenore Gatta
                   <object class="GtkEntry" id="entry_options_ssh_tcp_usrtimeout">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">it specifies the maximum amount of time in milliseconds that transmitted data may remain unacknowledged before TCP will forcibly close the corresponding connection.</property>
+                    <property name="tooltip_text" translatable="yes" comments="http://man7.org/linux/man-pages/man7/tcp.7.html">Amount of milliseconds to attempt acknowledging data before closing the corresponding TCP connection forcibly.</property>
                     <property name="margin_right">18</property>
                     <property name="hexpand">True</property>
                     <property name="max_length">5</property>
