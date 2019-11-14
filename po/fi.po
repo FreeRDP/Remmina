@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-13 17:19+0000\n"
-"PO-Revision-Date: 2019-11-09 00:04+0000\n"
+"PO-Revision-Date: 2019-11-14 10:13+0000\n"
 "Last-Translator: Tuomas Lähteenmäki <lahtis@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
@@ -26,7 +26,7 @@ msgstr "Protokolla"
 
 #: src/remmina_plugin_manager.c:69
 msgid "Entry"
-msgstr ""
+msgstr "Syöttö"
 
 #: src/remmina_plugin_manager.c:69
 msgid "File"
@@ -37,12 +37,13 @@ msgid "Tool"
 msgstr "Työkalu"
 
 #: src/remmina_plugin_manager.c:69
+#, fuzzy
 msgid "Preference"
-msgstr ""
+msgstr "Asetukset"
 
 #: src/remmina_plugin_manager.c:69
 msgid "Secret"
-msgstr ""
+msgstr "Salainen"
 
 #: src/remmina_plugin_manager.c:440 data/ui/remmina_main.glade:356
 msgid "Plugins"
@@ -51,7 +52,7 @@ msgstr "Liitännäiset"
 #: src/remmina_plugin_manager.c:440 src/remmina_message_panel.c:447
 #: src/remmina_message_panel.c:616 src/remmina_file_editor.c:161
 msgid "_OK"
-msgstr ""
+msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:458 src/remmina_file_editor.c:1432
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:491
@@ -73,31 +74,31 @@ msgstr "Versio"
 
 #: src/remmina_key_chooser.h:38
 msgid "Shift+"
-msgstr ""
+msgstr "Shift+"
 
 #: src/remmina_key_chooser.h:39
 msgid "Ctrl+"
-msgstr ""
+msgstr "Ctrl+"
 
 #: src/remmina_key_chooser.h:40
 msgid "Alt+"
-msgstr ""
+msgstr "Alt+"
 
 #: src/remmina_key_chooser.h:41
 msgid "Super+"
-msgstr ""
+msgstr "Super+"
 
 #: src/remmina_key_chooser.h:42
 msgid "Hyper+"
-msgstr ""
+msgstr "Hyper+"
 
 #: src/remmina_key_chooser.h:43
 msgid "Meta+"
-msgstr ""
+msgstr "Meta+"
 
 #: src/remmina_key_chooser.h:44
 msgid "<None>"
-msgstr ""
+msgstr "<Ei mitään>"
 
 #: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
 #: data/ui/remmina_mpc.glade:35
@@ -144,7 +145,7 @@ msgstr "Tallenna salasana"
 #: data/ui/remmina_key_chooser.glade:9 data/ui/remmina_spinner.glade:8
 #: data/ui/remmina_spinner.glade:9
 msgid "_Cancel"
-msgstr ""
+msgstr "_Peruuta"
 
 #: src/remmina_message_panel.c:508
 msgid "Enter certificate authentication files"
@@ -180,7 +181,7 @@ msgid "_Clear"
 msgstr "_Tyhjennä"
 
 #: src/rcw.c:585
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr ""
@@ -205,11 +206,11 @@ msgstr "Täytä asiakasikkuna, kun skaalataan"
 #: src/rcw.c:1815 src/remmina_pref_dialog.c:143
 #: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
 msgid "Keystrokes"
-msgstr ""
+msgstr "Painalluksia"
 
 #: src/rcw.c:1931
 msgid "Turn off scaling to avoid screenshot distortion."
-msgstr ""
+msgstr "Poista skaalaus käytöstä kuvakaappauksen vääristymien välttämiseksi."
 
 #: src/rcw.c:1991 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
@@ -225,15 +226,15 @@ msgstr "Koko näytön tila päälle/pois"
 
 #: src/rcw.c:2118 data/ui/remmina_preferences.glade:930
 msgid "Switch tab pages"
-msgstr ""
+msgstr "Vaihtaa välilehtien sivuja"
 
 #: src/rcw.c:2132
 msgid "Toggle dynamic resolution update"
-msgstr ""
+msgstr "Vaihda dynaamisen resoluution päivitystä"
 
 #: src/rcw.c:2142
 msgid "Toggle scaled mode"
-msgstr ""
+msgstr "Vaihda skaalattu tila"
 
 #: src/rcw.c:2177
 msgid "Grab all keyboard events"
@@ -249,12 +250,12 @@ msgstr "Työkalut"
 
 #: src/rcw.c:2207
 msgid "Duplicate current connection"
-msgstr ""
+msgstr "Kahdenna nykyinen yhteys"
 
 #: src/rcw.c:2215 data/ui/remmina_preferences.glade:1124
 #: data/ui/remmina_preferences.glade:1134
 msgid "Screenshot"
-msgstr ""
+msgstr "Kuvakaappaus"
 
 #: src/rcw.c:2223 data/ui/remmina_preferences.glade:1033
 msgid "Minimize window"
@@ -267,34 +268,35 @@ msgstr "Katkaise yhteys"
 #: src/rcw.c:3774
 #, c-format
 msgid "The file %s is corrupted, unreadable, or could not be found."
-msgstr ""
+msgstr "Tiedosto %s on vioittunut, lukukelvoton tai sitä ei löytynyt."
 
 #: src/rcw.c:3936
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr ""
+"Varoitus: Tämä liitännäinen vaatii GtkSocketin, mutta se ei ole saatavilla."
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
-msgstr ""
+msgstr "Salasanat eivät täsmää"
 
 #: src/remmina_mpchange.c:244
 msgid "Resetting passwords, please wait…"
-msgstr ""
+msgstr "Salasanojen nollaaminen, odota hetki…"
 
 #: src/remmina_mpchange.c:327
 msgid "The multi password changer requires a secrecy plugin.\n"
-msgstr ""
+msgstr "Monen salasanan vaihto vaatii secrecy -lisäosan.\n"
 
 #: src/remmina_mpchange.c:330
 msgid "The multi password changer requires a secrecy service.\n"
-msgstr ""
+msgstr "Monen salasanan vaihto vaatii secrecy -palvelun.\n"
 
 #: src/remmina_mpchange.c:419
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d salasana muutettu."
+msgstr[1] "%d salasanaa muutettu."
 
 #: src/remmina_ftp_client.c:388
 msgid "Choose download location"
@@ -310,23 +312,23 @@ msgstr "Valitse lähetettävä tiedosto"
 
 #: src/remmina_ftp_client.c:592
 msgid "Upload folder"
-msgstr ""
+msgstr "Latauskansio"
 
 #: src/remmina_ftp_client.c:648 src/remmina_ftp_client.c:770
 msgid "Download"
-msgstr ""
+msgstr "Lataa"
 
 #: src/remmina_ftp_client.c:655 src/remmina_ftp_client.c:781
 msgid "Upload"
-msgstr ""
+msgstr "Lataa"
 
 #: src/remmina_ftp_client.c:662
 msgid "_Delete"
-msgstr ""
+msgstr "_Poista"
 
 #: src/remmina_ftp_client.c:749
 msgid "Home"
-msgstr ""
+msgstr "Koti"
 
 #: src/remmina_ftp_client.c:751
 msgid "Go to home folder"
@@ -334,11 +336,11 @@ msgstr "Siirry kotikansioon"
 
 #: src/remmina_ftp_client.c:756
 msgid "Up"
-msgstr ""
+msgstr "Ylös"
 
 #: src/remmina_ftp_client.c:758
 msgid "Go to parent folder"
-msgstr ""
+msgstr "Siirry yläkansioon"
 
 #: src/remmina_ftp_client.c:763 plugins/rdp/rdp_plugin.c:1998
 #: plugins/vnc/vnc_plugin.c:1889
@@ -359,14 +361,13 @@ msgstr "Lähetä palvelimelle"
 
 #: src/remmina_ftp_client.c:790 data/ui/remmina_main.glade:268
 msgid "Delete"
-msgstr ""
+msgstr "Poista"
 
 #: src/remmina_ftp_client.c:792
 msgid "Delete files on server"
 msgstr "Poista tiedostoja palvelimelta"
 
 #: src/remmina_ftp_client.c:903 src/remmina_ftp_client.c:972
-#, fuzzy
 msgid "Filename"
 msgstr "Tiedostonimi"
 
@@ -407,7 +408,7 @@ msgstr "Liitännäistä %s ei ole rekisteröity."
 
 #: src/remmina_public.c:639
 msgid "Please enter format 'widthxheight'."
-msgstr ""
+msgstr "Syötä muodossa 'widthxheight'."
 
 #: src/remmina_icon.c:139
 msgid "Open Main Window"
@@ -415,11 +416,11 @@ msgstr "Avaa pääikkuna"
 
 #: src/remmina_icon.c:144 data/ui/remmina_main.glade:366
 msgid "_Preferences"
-msgstr ""
+msgstr "_Asetukset"
 
 #: src/remmina_icon.c:149
 msgid "_About"
-msgstr ""
+msgstr "_Tietoja"
 
 #: src/remmina_icon.c:159
 msgid "Enable Service Discovery"
@@ -427,7 +428,7 @@ msgstr "Käytä Service Discovery -etsintäprotokollaa"
 
 #: src/remmina_icon.c:172 data/ui/remmina_main.glade:457
 msgid "_Quit"
-msgstr ""
+msgstr "_Lopeta"
 
 #: src/remmina_icon.c:357 src/remmina_icon.c:539
 msgid "Remmina Applet"
@@ -467,6 +468,17 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
+"<tt><big>* komento POLUN argumenteilla %h\n"
+"* /path/to/foo -options %h %u\n"
+"* %h on korvattu palvelimen nimellä \n"
+"* %t on korvattu SSH-palvelimen nimellä \n"
+"* %u on korvattu käyttäjätunnuksella\n"
+"* %U on korvattu SSH-käyttäjätunnuksella\n"
+"* %p on korvattu Remmina profiilin nimellä\n"
+"* %g on korvattu Remmina ryhmän profiilin nimellä\n"
+"Älä käynnistä taustalla, jos haluat, että komento suoritetaan ennen yhteyden "
+"muodostamista.\n"
+"</big></tt>"
 
 #: src/remmina_file_editor.c:94
 msgid ""
@@ -477,6 +489,12 @@ msgid ""
 "* [server]:port\n"
 "* username@server:port (SSH protocol only)</big></tt>"
 msgstr ""
+"<tt><big>Tuetut formaatit\n"
+"* :portti\n"
+"* palvelin\n"
+"* palvelin:portti\n"
+"* [palvelin]:portti\n"
+"* käyttäjätunnus@palvelin:portti (SSH protokolla ainoastaan)</big></tt>"
 
 #: src/remmina_file_editor.c:158
 msgid "Choose a Remote Desktop Server"
@@ -490,7 +508,7 @@ msgstr "Identiteettitiedosto"
 
 #: src/remmina_file_editor.c:365
 msgid "_Open"
-msgstr ""
+msgstr "_Avaa"
 
 #: src/remmina_file_editor.c:402 src/remmina_file_editor.c:888
 #: src/remmina_protocol_widget.c:1659 data/ui/remmina_main.glade:527
@@ -509,7 +527,7 @@ msgstr "Resoluutiot"
 
 #: src/remmina_file_editor.c:491 src/remmina_pref_dialog.c:83
 msgid "Configure the available resolutions"
-msgstr ""
+msgstr "Määritä käytettävissä olevat tarkkuudet"
 
 #: src/remmina_file_editor.c:527
 msgid "Resolution"
@@ -517,7 +535,7 @@ msgstr "Resoluutio"
 
 #: src/remmina_file_editor.c:534
 msgid "Use initial window size"
-msgstr ""
+msgstr "Käytä alkuperäistä ikkunakokoa"
 
 #: src/remmina_file_editor.c:538
 msgid "Use client resolution"
@@ -533,7 +551,7 @@ msgstr "Näppäimistöasettelu"
 
 #: src/remmina_file_editor.c:834
 msgid "SSH Tunnel"
-msgstr ""
+msgstr "SSH-tunneli"
 
 #: src/remmina_file_editor.c:841
 msgid "Enable SSH tunnel"
@@ -562,7 +580,7 @@ msgstr "SSH-todennus"
 
 #: src/remmina_file_editor.c:931
 msgid "SSH Agent (automatic)"
-msgstr ""
+msgstr "SSH-agentti (automaattinen)"
 
 #: src/remmina_file_editor.c:938 src/remmina_protocol_widget.c:1330
 #: src/remmina_protocol_widget.c:1349 src/remmina_sftp_plugin.c:317
@@ -595,23 +613,24 @@ msgstr "Etätyöpöydän asetukset"
 
 #: src/remmina_file_editor.c:1311
 msgid "Save as Default"
-msgstr ""
+msgstr "Tallenna oletuksena"
 
 #: src/remmina_file_editor.c:1312
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
+"Käytä nykyisiä asetuksia kaikkien uusien yhteysprofiilien oletusasetuksina"
 
 #: src/remmina_file_editor.c:1315 src/remmina_main.c:976
 msgid "_Save"
-msgstr ""
+msgstr "_Tallenna"
 
 #: src/remmina_file_editor.c:1320 data/ui/remmina_main.glade:231
 msgid "Connect"
-msgstr ""
+msgstr "Yhdistä"
 
 #: src/remmina_file_editor.c:1323
 msgid "_Save and Connect"
-msgstr ""
+msgstr "_Tallenna ja Yhdistä"
 
 #: src/remmina_file_editor.c:1429
 msgid "Profile"
@@ -624,15 +643,15 @@ msgstr "Pikayhteys"
 #: src/remmina_file_editor.c:1470
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
-msgstr ""
+msgstr "Käytä '%s' alaryhmän erottimena"
 
 #: src/remmina_file_editor.c:1489
 msgid "Pre Command"
-msgstr ""
+msgstr "Esikomento"
 
 #: src/remmina_file_editor.c:1507
 msgid "Post Command"
-msgstr ""
+msgstr "Post Command"
 
 #: src/remmina_file_editor.c:1572 src/remmina_file_editor.c:1590
 #, c-format
@@ -641,15 +660,15 @@ msgstr "Tiedostoa %s ei löytynyt."
 
 #: src/remmina_protocol_widget.c:248
 msgid "Connect via SSH from a new terminal"
-msgstr ""
+msgstr "Yhdistä SSH:n kautta uudesta terminaalista"
 
 #: src/remmina_protocol_widget.c:254
 msgid "Open SFTP transfer"
-msgstr ""
+msgstr "Avaa SFTP-siirto"
 
 #: src/remmina_protocol_widget.c:282
 msgid "Executing external commands…"
-msgstr ""
+msgstr "Suoritetaan ulkoisia komentoja…"
 
 #: src/remmina_protocol_widget.c:289
 #, c-format
@@ -658,17 +677,17 @@ msgstr "Yhdistetään kohteeseen ”%s”…"
 
 #: src/remmina_protocol_widget.c:716 src/remmina_protocol_widget.c:796
 #: src/remmina_protocol_widget.c:970
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to %s via SSH…"
 msgstr "Yhdistetään kohteeseen ”%s”…"
 
 #: src/remmina_protocol_widget.c:846
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection at port %i…"
-msgstr "Odotetaan saapuvaa SSH-tunnelia portissa %i…"
+msgstr "Odotetaan saapuvaa SSH-tunnelia portissa %i"
 
 #: src/remmina_protocol_widget.c:891
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find %s command on the SSH server"
 msgstr "Komentoa %s ei löytynyt SSH-palvelimelta"
 
@@ -679,21 +698,21 @@ msgstr "Komento %s epäonnistui SSH-palvelimella (tila = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:903
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command: %s"
 msgstr "Komennon suoritus epäonnistui: %s"
 
 #: src/remmina_protocol_widget.c:1348
 msgid "Type in username and password for SSH."
-msgstr ""
+msgstr "Kirjoita käyttäjätunnus ja salasana SSH:lle."
 
 #: src/remmina_protocol_widget.c:1404
 msgid "Certificate details:"
-msgstr ""
+msgstr "Varmenteen tiedot:"
 
 #: src/remmina_protocol_widget.c:1405 src/remmina_protocol_widget.c:1426
 msgid "Subject:"
-msgstr ""
+msgstr "Aihe:"
 
 #: src/remmina_protocol_widget.c:1406 src/remmina_protocol_widget.c:1427
 msgid "Issuer:"
@@ -704,28 +723,24 @@ msgid "Fingerprint:"
 msgstr "Sormenjälki:"
 
 #: src/remmina_protocol_widget.c:1408
-#, fuzzy
 msgid "Accept certificate?"
 msgstr "Hyväksytäänkö varmenne?"
 
 #: src/remmina_protocol_widget.c:1425
 msgid "The certificate changed! Details:"
-msgstr ""
+msgstr "Sertifikaatti muuttui! Tiedot:"
 
 #: src/remmina_protocol_widget.c:1428
-#, fuzzy
 msgid "Old fingerprint:"
-msgstr "Sormenjälki:"
+msgstr "Vanha sormenjälki:"
 
 #: src/remmina_protocol_widget.c:1429
-#, fuzzy
 msgid "New fingerprint:"
-msgstr "Sormenjälki:"
+msgstr "Uusi sormenjälki:"
 
 #: src/remmina_protocol_widget.c:1430
-#, fuzzy
 msgid "Accept changed certificate?"
-msgstr "Hyväksytäänkö varmenne?"
+msgstr "Hyväksytäänkö muutettu varmenne?"
 
 #: src/remmina_protocol_widget.c:1572
 #, c-format
@@ -733,18 +748,17 @@ msgid "Listening on port %i for an incoming %s connection…"
 msgstr "Kuunnellaan porttia %i saapuvan %s-yhteyden varalta…"
 
 #: src/remmina_protocol_widget.c:1597
-#, fuzzy
 msgid "Could not authenticate, attempting reconnection…"
-msgstr "Tunnistautuminen epäonnistui. Yritetään yhdistää uudelleen…"
+msgstr "Todentaminen epäonnistui. Yritetään yhdistää uudelleen…"
 
 #: src/remmina_protocol_widget.c:1676
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr ""
+msgstr "Asenna %s protokollan lisäosa ensin."
 
 #: src/remmina_applet_menu_item.c:121
 msgid "Discovered"
-msgstr ""
+msgstr "Löydetty"
 
 #: src/remmina_applet_menu_item.c:126
 msgid "New Connection"
@@ -766,27 +780,27 @@ msgstr "Virhe luotaessa tiedostoa %s."
 #: src/remmina_sftp_client.c:218
 #, c-format
 msgid "Error opening file %s on server. %s"
-msgstr ""
+msgstr "Virhe avattaessa tiedostoa %s palvelimessa %s"
 
 #: src/remmina_sftp_client.c:240
 #, c-format
 msgid "Error writing file %s."
-msgstr ""
+msgstr "Virhe kirjoitettaessa tiedostoa %s."
 
 #: src/remmina_sftp_client.c:279
 #, c-format
 msgid "Error opening directory %s. %s"
-msgstr ""
+msgstr "Virhe avattaessa kansiota %s. %s"
 
 #: src/remmina_sftp_client.c:383
 #, c-format
 msgid "Error creating folder %s on server. %s"
-msgstr ""
+msgstr "Virhe luotaessa kansiota %s palvelimelle %s"
 
 #: src/remmina_sftp_client.c:411 src/remmina_sftp_client.c:433
 #, c-format
 msgid "Error creating file %s on server. %s"
-msgstr ""
+msgstr "Virhe luotaessa tiedostoa %s palvelimelle %s"
 
 #: src/remmina_sftp_client.c:454
 #, c-format
@@ -796,7 +810,7 @@ msgstr "Virhe avatessa tiedostoa %s."
 #: src/remmina_sftp_client.c:474
 #, c-format
 msgid "Error writing file %s on server. %s"
-msgstr ""
+msgstr "Virhe kirjoitettaessa tiedostoa %s palvelimeen %s"
 
 #: src/remmina_sftp_client.c:670 src/remmina_sftp_client.c:733
 #, c-format
@@ -806,7 +820,7 @@ msgstr "Kansion %s avaus epäonnistui. %s"
 #: src/remmina_sftp_client.c:688
 #, c-format
 msgid "Failed reading directory. %s"
-msgstr ""
+msgstr "Kansion %s lukeminen epäonnistui."
 
 #: src/remmina_sftp_client.c:795
 msgid ""
@@ -835,7 +849,7 @@ msgstr "Korvaa"
 
 #: src/remmina_sftp_client.c:924
 msgid "Question"
-msgstr ""
+msgstr "Kysymys"
 
 #: src/remmina_sftp_client.c:932
 msgid "The following file already exists in the target folder:"
@@ -847,12 +861,12 @@ msgstr "Viimeaikaisten luettelo tyhjennetty."
 
 #: src/remmina_pref_dialog.c:143
 msgid "Configure the keystrokes"
-msgstr ""
+msgstr "Määritä näppäimistön painikkeet"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:444
 msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr ""
+msgstr "libsodium >= 1.9.0 vaaditaan pääsalasanan käyttämiseksi"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:203
@@ -874,12 +888,12 @@ msgstr "SSH-avaintiedostoa ei ole asetettu."
 #: src/remmina_ssh.c:236
 #, c-format
 msgid "SSH public key cannot be imported: %s"
-msgstr ""
+msgstr "Julkista SSH-avainta ei voi tuoda: %s"
 
 #: src/remmina_ssh.c:279 src/remmina_ssh.c:518 src/remmina_ssh.c:535
 #: plugins/nx/nx_plugin.c:202
 msgid "SSH credentials"
-msgstr ""
+msgstr "SSH-käyttöoikeustiedot"
 
 #: src/remmina_ssh.c:282 src/remmina_ssh.c:496 src/remmina_ssh.c:521
 #: plugins/nx/nx_plugin.c:205
@@ -890,7 +904,7 @@ msgstr "Yksityisen SSH-avaimen salalause"
 #: src/remmina_ssh.c:299
 #, c-format
 msgid "SSH automatic public key authentication failed: %s"
-msgstr ""
+msgstr "Automaattisen julkisen SSH-avaimen todennus epäonnistui: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:316
