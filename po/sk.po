@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-13 17:19+0000\n"
+"POT-Creation-Date: 2019-11-14 10:16+0000\n"
 "PO-Revision-Date: 2013-05-09 08:38+0000\n"
 "Last-Translator: DanoTT <dano.nagy@gmail.com>\n"
 "Language-Team: Slovak <sk@li.org>\n"
@@ -54,7 +54,6 @@ msgstr ""
 
 #: src/remmina_plugin_manager.c:458 src/remmina_file_editor.c:1432
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:491
-#: data/ui/remmina_mpc.glade:314
 msgid "Name"
 msgstr "Meno"
 
@@ -99,7 +98,7 @@ msgid "<None>"
 msgstr ""
 
 #: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
-#: data/ui/remmina_mpc.glade:35
+#: data/ui/remmina_mpc.glade:38
 msgid "Cancel"
 msgstr ""
 
@@ -122,12 +121,12 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:349 src/remmina_ssh_plugin.c:1055
 #: plugins/rdp/rdp_plugin.c:1934 plugins/nx/nx_plugin.c:721
 #: plugins/vnc/vnc_plugin.c:1832 plugins/vnc/vnc_plugin.c:1852
-#: plugins/www/www_plugin.c:792 data/ui/remmina_mpc.glade:152
+#: plugins/www/www_plugin.c:792 data/ui/remmina_mpc.glade:155
 msgid "Username"
 msgstr ""
 
 #: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1936
-#: data/ui/remmina_mpc.glade:138
+#: data/ui/remmina_mpc.glade:141
 msgid "Domain"
 msgstr ""
 
@@ -378,8 +377,7 @@ msgid "User"
 msgstr "Užívateľ"
 
 #: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1457
-#: data/ui/remmina_main.glade:513 data/ui/remmina_mpc.glade:99
-#: data/ui/remmina_mpc.glade:325
+#: data/ui/remmina_main.glade:513 data/ui/remmina_mpc.glade:102
 msgid "Group"
 msgstr "Skupina"
 
@@ -566,7 +564,7 @@ msgstr ""
 #: src/remmina_file_editor.c:938 src/remmina_protocol_widget.c:1330
 #: src/remmina_protocol_widget.c:1349 src/remmina_sftp_plugin.c:317
 #: src/remmina_ssh_plugin.c:956 plugins/www/www_plugin.c:793
-#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:113
+#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:116
 #: data/ui/remmina_preferences.glade:1533
 msgid "Password"
 msgstr "Heslo"
@@ -2346,31 +2344,48 @@ msgstr ""
 msgid "Remmina - Multi Password Changer"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:21
+#: data/ui/remmina_mpc.glade:24
 msgid "Change"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:61
+#: data/ui/remmina_mpc.glade:64
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:166
+#: data/ui/remmina_mpc.glade:169
 msgid "Selection criteria"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:195
+#: data/ui/remmina_mpc.glade:198
 msgid "Confirm password"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:208
-msgid "Reset to"
+#: data/ui/remmina_mpc.glade:211
+#, fuzzy
+msgctxt "Multi password changer"
+msgid "Set new password"
+msgstr "Uložiť heslo"
+
+#. A column table with multiple check-boxes
+#: data/ui/remmina_mpc.glade:305
+msgctxt "Multi password changer"
+msgid "Select"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:302
-msgid "F"
-msgstr ""
+#: data/ui/remmina_mpc.glade:317
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Name"
+msgstr "Meno"
 
-#: data/ui/remmina_mpc.glade:336
+#: data/ui/remmina_mpc.glade:328
+#, fuzzy
+msgctxt "Multi password changer table"
+msgid "Group"
+msgstr "Skupina"
+
+#: data/ui/remmina_mpc.glade:339
+msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr ""
 
