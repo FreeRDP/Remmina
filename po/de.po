@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-14 10:16+0000\n"
-"PO-Revision-Date: 2019-11-13 17:14+0000\n"
+"PO-Revision-Date: 2019-11-15 10:15+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -924,7 +924,6 @@ msgid "SSH Kerberos/GSSAPI authentication failed: %s"
 msgstr "SSH Kerberos/GSSAPI authentifizierung is fehlgeschlagen: %s"
 
 #: src/remmina_ssh.c:353
-#, fuzzy
 msgid "The public SSH key changed!"
 msgstr "Der öffentliche SSH‐Schlüssel hat sich geändert!"
 
@@ -968,9 +967,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:484
-#, fuzzy, c-format
+#, c-format
 msgid "Could not check list of known SSH hosts: %s"
-msgstr "Die SSH‐Verbindung kontte nicht gestartet werden: %s"
+msgstr "Die Liste der bekannten SSH-Server kann nicht geprüft werden: %s"
 
 #: src/remmina_ssh.c:490
 msgid "SSH password"
@@ -998,9 +997,9 @@ msgstr "Der Channel kann nicht erzeugt werden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1044
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to SSH tunnel: %s"
-msgstr "Verbindung zum Ziel des SSH‐Tunnels kann nicht hergestellt werden: %s"
+msgstr "Kann nicht zum SSH‐Tunnel verbinden: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1110 src/remmina_ssh.c:1704
@@ -1009,9 +1008,9 @@ msgid "Could not open channel: %s"
 msgstr "Das Öffnen eines Channels ist fehlgeschlagen: %s"
 
 #: src/remmina_ssh.c:1116
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run %s on SSH server, %%s"
-msgstr "Ausführen von %s auf dem SSH Server ist fehlgeschlagen: %%s"
+msgstr "Kann %s auf dem SSH-Server nicht ausführen: %%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1154 src/remmina_ssh.c:1175 src/remmina_ssh.c:1184
@@ -2421,32 +2420,27 @@ msgid "Confirm password"
 msgstr "Passwort bestätigen"
 
 #: data/ui/remmina_mpc.glade:211
-#, fuzzy
 msgctxt "Multi password changer"
 msgid "Set new password"
-msgstr "Passwort speichern"
+msgstr "Passwort neu setzen"
 
 #. A column table with multiple check-boxes
 #: data/ui/remmina_mpc.glade:305
-#, fuzzy
 msgctxt "Multi password changer"
 msgid "Select"
-msgstr "Alles auswählen"
+msgstr "Auswählen"
 
 #: data/ui/remmina_mpc.glade:317
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Name"
-msgstr "Bezeichnung"
+msgstr "Name"
 
 #: data/ui/remmina_mpc.glade:328
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "Gruppe"
 
 #: data/ui/remmina_mpc.glade:339
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "Domäne\\Benutzername"
@@ -2977,4 +2971,3 @@ msgstr "Fette Schriften erlauben"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminal"
-
