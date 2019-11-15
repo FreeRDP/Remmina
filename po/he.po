@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-15 15:49+0000\n"
-"PO-Revision-Date: 2019-11-15 10:15+0000\n"
+"PO-Revision-Date: 2019-11-16 20:03+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
@@ -1556,17 +1556,16 @@ msgid "Unable to establish a connection to RDP server %s."
 msgstr "לא ניתן ליצור התחברות לשרת ה־RDP‏ %s."
 
 #: plugins/rdp/rdp_plugin.c:1560
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to RDP server %s."
 msgstr "לא ניתן להתחבר לשרת ה־RDP‏ %s."
 
 #: plugins/rdp/rdp_plugin.c:1563
-#, fuzzy
 msgid "Could not start libfreerdp-gdi"
-msgstr "לא ניתן להתחיל את pthread."
+msgstr "לא ניתן להתחיל את libfreerdp-gdi"
 
 #: plugins/rdp/rdp_plugin.c:1566
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for server %s, but your libfreerdp does not "
 "support H.264. Please use a non-AVC color depth setting."
@@ -1575,7 +1574,7 @@ msgstr ""
 "H.264. נא להשתמש בהגדרת עומק צבע שאינה AVC."
 
 #: plugins/rdp/rdp_plugin.c:1573
-#, fuzzy, c-format
+#, c-format
 msgid "The %s server denied the connection."
 msgstr "השרת %s דחה את החיבור."
 
@@ -1586,7 +1585,7 @@ msgstr ""
 "שער הגישה לשולחן העבודה המרוחק %s דחה את הגישה של המשתמש %s\\%s עקב מדיניות."
 
 #: plugins/rdp/rdp_plugin.c:1588
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the %s RDP server."
 msgstr "לא ניתן להתחבר לשרת ה־RDP‏ %s."
 
@@ -1713,7 +1712,6 @@ msgid "Load balance info"
 msgstr "פרטי איזון עומס"
 
 #: plugins/rdp/rdp_plugin.c:1966
-#, fuzzy
 msgid "Override printer drivers"
 msgstr "דריסת מנהלי התקן של מדפסות"
 
@@ -1814,12 +1812,10 @@ msgid "Turn off automatic reconnection"
 msgstr "כיבוי התחברות חוזרת אוטומטית"
 
 #: plugins/rdp/rdp_plugin.c:1989
-#, fuzzy
 msgid "Relax order checks"
 msgstr "הקלת בדיקות סדר"
 
 #: plugins/rdp/rdp_plugin.c:1990
-#, fuzzy
 msgid "Glyph cache"
 msgstr "מטמון צורות תווים"
 
@@ -2943,4 +2939,3 @@ msgstr "לאפשר טקסט מודגש"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "מסוף"
-
