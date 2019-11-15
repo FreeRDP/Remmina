@@ -1557,20 +1557,20 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 				switch (rfi->postconnect_error) {
 				case REMMINA_POSTCONNECT_ERROR_OK:
 					/* We should never come here */
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s."), rfi->settings->ServerHostname);
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Cannot connect to RDP server %s."), rfi->settings->ServerHostname);
 					break;
 				case REMMINA_POSTCONNECT_ERROR_GDI_INIT:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to initialize libfreerdp gdi"));
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not start libfreerdp-gdi"));
 					break;
 				case REMMINA_POSTCONNECT_ERROR_NO_H264:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("You requested an H.264 GFX mode for server %s, but your libfreerdp does not support H.264. Please use a non-AVC Color Depth setting."), rfi->settings->ServerHostname);
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("You requested a H.264 GFX mode for server %s, but your libfreerdp does not support H.264. Please use a non-AVC color depth setting."), rfi->settings->ServerHostname);
 					break;
 				}
 				break;
 #endif
 #ifdef FREERDP_ERROR_SERVER_DENIED_CONNECTION
 			case FREERDP_ERROR_SERVER_DENIED_CONNECTION:
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Server %s denied the connection."), rfi->settings->ServerHostname);
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("The %s server denied the connection."), rfi->settings->ServerHostname);
 				break;
 #endif
 			case 0x800759DB:
@@ -1585,7 +1585,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 			default:
 				g_printf("libfreerdp returned code is %08X\n", e);
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to connect to RDP server %s"), rfi->settings->ServerHostname);
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Cannot connect to the %s RDP server."), rfi->settings->ServerHostname);
 				break;
 			}
 		}
@@ -1729,7 +1729,7 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget *gp)
 
 	if (pthread_create(&rfi->remmina_plugin_thread, NULL, remmina_rdp_main_thread, gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s",
-								  "Failed to initialize pthread. Falling back to non-thread mode…");
+								  "Could not start pthread. Falling back to non-thread mode…");
 
 		rfi->remmina_plugin_thread = 0;
 
@@ -1747,7 +1747,7 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget *gp)
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
 	if (!remmina_plugin_service->is_main_thread())
-		g_printf("WARNING: %s called on a subthread, may not work or crash remmina.\n", __func__);
+		g_printf("WARNING: %s called on a subthread, which may not work or crash Remmina.\n", __func__);
 
 	if (rfi && !rfi->connected) {
 		/* libfreerdp is attempting to connect, we cannot interrupt our main thread
@@ -1849,7 +1849,7 @@ static gboolean remmina_rdp_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 	remmina_plugin_service->log_printf("[RDP] allocating %zu bytes for a full screenshot\n", szmem);
 	rpsd->buffer = malloc(szmem);
 	if (!rpsd->buffer) {
-		remmina_plugin_service->log_printf("[RDP] unable to allocate %zu bytes for a full screenshot\n", szmem);
+		remmina_plugin_service->log_printf("[RDP] could not set aside %zu bytes for a full screenshot\n", szmem);
 		return FALSE;
 	}
 	rpsd->width = gdi->width;
@@ -1963,7 +1963,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "exec",		    N_("Startup program"),				 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "execpath",		    N_("Startup path"),					 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "loadbalanceinfo",	    N_("Load balance info"),				 FALSE, NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "printer_overrides",	    N_("Override Printer Drivers"),			 FALSE, NULL,	       N_("\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":\"Canon MF410 Series UFR II\"") },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "printer_overrides",	    N_("Override printer drivers"),			 FALSE, NULL,	       N_("\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":\"Canon MF410 Series UFR II\"") },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "serialname",		    N_("Local serial name"),				 FALSE, NULL,	       N_("COM1, COM2, etc.")											      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "serialdriver",	    N_("Local serial driver"),				 FALSE, NULL,	       N_("Serial")												      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "serialpath",		    N_("Local serial path"),				 FALSE, NULL,	       N_("/dev/ttyS0, /dev/ttyS1, etc.")									      },
@@ -1986,8 +1986,8 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "enableproxy",	    N_("Turn on proxy support"),			 TRUE,	NULL,	       NULL													      },
 #endif
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disableautoreconnect",   N_("Turn off automatic reconnection"),		 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "relax-order-checks",	    N_("Relax Order Checks"),				 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "glyph-cache",	    N_("Glyph Cache"),					 TRUE,	NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "relax-order-checks",	    N_("Relax order checks"),				 TRUE,	NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "glyph-cache",	    N_("Glyph cache"),					 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,			    NULL,						 FALSE, NULL,	       NULL													      }
 };
 
