@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-14 10:16+0000\n"
+"POT-Creation-Date: 2019-11-15 15:49+0000\n"
 "PO-Revision-Date: 2019-11-15 10:15+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
@@ -1576,26 +1576,27 @@ msgid "Unable to establish a connection to RDP server %s."
 msgstr "Nedaří se navázat spojení s RDP serverem %s."
 
 #: plugins/rdp/rdp_plugin.c:1560
-#, c-format
-msgid "Unable to connect to RDP server %s."
+#, fuzzy, c-format
+msgid "Cannot connect to RDP server %s."
 msgstr "Nedaří se připojit k RDP serveru %s."
 
 #: plugins/rdp/rdp_plugin.c:1563
-msgid "Unable to initialize libfreerdp gdi"
-msgstr "Nedaří se inicializovat libfreerdp-gdi"
+#, fuzzy
+msgid "Could not start libfreerdp-gdi"
+msgstr "Nepodařilo se inicializovat pthread."
 
 #: plugins/rdp/rdp_plugin.c:1566
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"You requested an H.264 GFX mode for server %s, but your libfreerdp does not "
-"support H.264. Please use a non-AVC Color Depth setting."
+"You requested a H.264 GFX mode for server %s, but your libfreerdp does not "
+"support H.264. Please use a non-AVC color depth setting."
 msgstr ""
 "Pro server %s jste vyžádali režim H.264 GFX, ale vámi používaná knihovna "
 "libfreerdp nepodporuje H.264. Použijte ne-AVC nastavení hloubky barev."
 
 #: plugins/rdp/rdp_plugin.c:1573
-#, c-format
-msgid "Server %s denied the connection."
+#, fuzzy, c-format
+msgid "The %s server denied the connection."
 msgstr "Server %s odmítl připojení."
 
 #: plugins/rdp/rdp_plugin.c:1578
@@ -1606,9 +1607,9 @@ msgstr ""
 "systémové zásadě."
 
 #: plugins/rdp/rdp_plugin.c:1588
-#, c-format
-msgid "Unable to connect to RDP server %s"
-msgstr "Nedaří se připojit k RDP serveru %s"
+#, fuzzy, c-format
+msgid "Cannot connect to the %s RDP server."
+msgstr "Nedaří se připojit k RDP serveru %s."
 
 #: plugins/rdp/rdp_plugin.c:1870
 msgid "GFX AVC444 (32 bpp)"
@@ -1733,7 +1734,8 @@ msgid "Load balance info"
 msgstr "Informace o rozdělování zátěže"
 
 #: plugins/rdp/rdp_plugin.c:1966
-msgid "Override Printer Drivers"
+#, fuzzy
+msgid "Override printer drivers"
 msgstr "Přebít tiskové ovladače"
 
 #: plugins/rdp/rdp_plugin.c:1966
@@ -1833,11 +1835,13 @@ msgid "Turn off automatic reconnection"
 msgstr "Vypnout automatické znovunavazování spojení"
 
 #: plugins/rdp/rdp_plugin.c:1989
-msgid "Relax Order Checks"
+#, fuzzy
+msgid "Relax order checks"
 msgstr "Volnější kontroly pořadí"
 
 #: plugins/rdp/rdp_plugin.c:1990
-msgid "Glyph Cache"
+#, fuzzy
+msgid "Glyph cache"
 msgstr "Mezipaměť znaků"
 
 #: plugins/rdp/rdp_plugin.c:2014
@@ -2974,3 +2978,4 @@ msgstr "Povolit tučný text"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminál"
+

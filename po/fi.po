@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-14 10:16+0000\n"
+"POT-Creation-Date: 2019-11-15 15:49+0000\n"
 "PO-Revision-Date: 2019-11-15 10:15+0000\n"
 "Last-Translator: Tuomas Lähteenmäki <lahtis@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1564,26 +1564,27 @@ msgid "Unable to establish a connection to RDP server %s."
 msgstr "Yhteyttä RDP-palvelimeen %s ei voi muodostaa."
 
 #: plugins/rdp/rdp_plugin.c:1560
-#, c-format
-msgid "Unable to connect to RDP server %s."
+#, fuzzy, c-format
+msgid "Cannot connect to RDP server %s."
 msgstr "Yhteyden muodostaminen RDP-palvelimeen %s ei onnistu."
 
 #: plugins/rdp/rdp_plugin.c:1563
-msgid "Unable to initialize libfreerdp gdi"
-msgstr "Libfreerdp-gdi -sovellusta ei voi alustaa"
+#, fuzzy
+msgid "Could not start libfreerdp-gdi"
+msgstr "Pthread-käynnistys ei onnistunut."
 
 #: plugins/rdp/rdp_plugin.c:1566
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"You requested an H.264 GFX mode for server %s, but your libfreerdp does not "
-"support H.264. Please use a non-AVC Color Depth setting."
+"You requested a H.264 GFX mode for server %s, but your libfreerdp does not "
+"support H.264. Please use a non-AVC color depth setting."
 msgstr ""
 "Palvelin pyysi H.264 GFX-tilaa palvelimelle %s, mutta libfreerdp ei tue "
 "H.264: tä. Käytä muuta kuin AVC-värisyvyysasetusta."
 
 #: plugins/rdp/rdp_plugin.c:1573
-#, c-format
-msgid "Server %s denied the connection."
+#, fuzzy, c-format
+msgid "The %s server denied the connection."
 msgstr "Palvelin %s esti yhteyden."
 
 #: plugins/rdp/rdp_plugin.c:1578
@@ -1594,9 +1595,9 @@ msgstr ""
 "vuoksi."
 
 #: plugins/rdp/rdp_plugin.c:1588
-#, c-format
-msgid "Unable to connect to RDP server %s"
-msgstr "Yhteys RDP-palvelimeen %s ei onnistu"
+#, fuzzy, c-format
+msgid "Cannot connect to the %s RDP server."
+msgstr "Yhteyden muodostaminen RDP-palvelimeen %s ei onnistu."
 
 #: plugins/rdp/rdp_plugin.c:1870
 msgid "GFX AVC444 (32 bpp)"
@@ -1721,7 +1722,8 @@ msgid "Load balance info"
 msgstr "Kuormitustiedot"
 
 #: plugins/rdp/rdp_plugin.c:1966
-msgid "Override Printer Drivers"
+#, fuzzy
+msgid "Override printer drivers"
 msgstr "Ohita tulostinajurit"
 
 #: plugins/rdp/rdp_plugin.c:1966
@@ -1729,8 +1731,8 @@ msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":\""
-"Canon MF410 Series UFR II\""
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
+"\"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:1967
 msgid "Local serial name"
@@ -1821,11 +1823,13 @@ msgid "Turn off automatic reconnection"
 msgstr "Sammuta automaattinen uudelleen yhdistäminen"
 
 #: plugins/rdp/rdp_plugin.c:1989
-msgid "Relax Order Checks"
+#, fuzzy
+msgid "Relax order checks"
 msgstr "Rentoudu, tilaustarkistukset"
 
 #: plugins/rdp/rdp_plugin.c:1990
-msgid "Glyph Cache"
+#, fuzzy
+msgid "Glyph cache"
 msgstr "Glyph-välimuisti"
 
 #: plugins/rdp/rdp_plugin.c:2014
@@ -2236,8 +2240,8 @@ msgid ""
 "\">anonymous</a></b> statistics to remmina.org"
 msgstr ""
 "Lähetä <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina käyttötilastoja\">"
-"anonyymisti </a></b> tilastot remmina.org osoitteeseen"
+"remmina__stats_8c.html#details\" title=\"Remmina käyttötilastoja"
+"\">anonyymisti </a></b> tilastot remmina.org osoitteeseen"
 
 #: data/ui/remmina_news.glade:133
 msgid "Make Remmina the default Remote Desktop Client"
@@ -2514,8 +2518,8 @@ msgid ""
 msgstr ""
 "%p Profiilin nimi\n"
 "%h Palvelimen nimi/IP\n"
-"%Y vuosi, %m kuukausi, %d päivä, %H tunti, %M minuutti, %S sekunti (UTC-aika)"
-"\n"
+"%Y vuosi, %m kuukausi, %d päivä, %H tunti, %M minuutti, %S sekunti (UTC-"
+"aika)\n"
 
 #: data/ui/remmina_preferences.glade:356
 msgid ""
@@ -2963,3 +2967,4 @@ msgstr "Salli lihavoitu teksti"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Pääte"
+

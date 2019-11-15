@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-14 10:16+0000\n"
+"POT-Creation-Date: 2019-11-15 15:49+0000\n"
 "PO-Revision-Date: 2019-11-13 08:32+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
@@ -1588,27 +1588,27 @@ msgid "Unable to establish a connection to RDP server %s."
 msgstr "Kunne ikke etablere tilkobling til RDP-tjener %s."
 
 #: plugins/rdp/rdp_plugin.c:1560
-#, c-format
-msgid "Unable to connect to RDP server %s."
+#, fuzzy, c-format
+msgid "Cannot connect to RDP server %s."
 msgstr "Kunne ikke koble til RDP-tjeneren %s."
 
 #: plugins/rdp/rdp_plugin.c:1563
 #, fuzzy
-msgid "Unable to initialize libfreerdp gdi"
-msgstr "Kunne ikke igangsette libfreerdp-gdi"
+msgid "Could not start libfreerdp-gdi"
+msgstr "Klarte ikke å starte pthread."
 
 #: plugins/rdp/rdp_plugin.c:1566
 #, fuzzy, c-format
 msgid ""
-"You requested an H.264 GFX mode for server %s, but your libfreerdp does not "
-"support H.264. Please use a non-AVC Color Depth setting."
+"You requested a H.264 GFX mode for server %s, but your libfreerdp does not "
+"support H.264. Please use a non-AVC color depth setting."
 msgstr ""
 "Du forespurte et H.264 GFX-modus for tjeneren %s, men din libfreerdp støtter "
 "ikke H.264. Bruk en innstilling som ikke er AVC-fargedybde."
 
 #: plugins/rdp/rdp_plugin.c:1573
-#, c-format
-msgid "Server %s denied the connection."
+#, fuzzy, c-format
+msgid "The %s server denied the connection."
 msgstr "Tjeneren %s avslo tilkoblingen."
 
 #: plugins/rdp/rdp_plugin.c:1578
@@ -1617,9 +1617,9 @@ msgid "The remote desktop gateway %s denied user %s\\%s access due to policy."
 msgstr "Fjernskrivebordet %s nektet bruker %s\\%s tilgang på grunn av praksis."
 
 #: plugins/rdp/rdp_plugin.c:1588
-#, c-format
-msgid "Unable to connect to RDP server %s"
-msgstr "Klarte ikke å koble til RDP-tjeneren %s"
+#, fuzzy, c-format
+msgid "Cannot connect to the %s RDP server."
+msgstr "Kunne ikke koble til RDP-tjeneren %s."
 
 #: plugins/rdp/rdp_plugin.c:1870
 msgid "GFX AVC444 (32 bpp)"
@@ -1748,7 +1748,8 @@ msgid "Load balance info"
 msgstr "Lastutjevningsinfo"
 
 #: plugins/rdp/rdp_plugin.c:1966
-msgid "Override Printer Drivers"
+#, fuzzy
+msgid "Override printer drivers"
 msgstr "Overskriv utskriftsdriverrutiner"
 
 #: plugins/rdp/rdp_plugin.c:1966
@@ -1854,12 +1855,12 @@ msgstr "Skru av automatisk tilknytning ved tapt forbindelse"
 
 #: plugins/rdp/rdp_plugin.c:1989
 #, fuzzy
-msgid "Relax Order Checks"
+msgid "Relax order checks"
 msgstr "Avslappet sjekk av rekkefølge"
 
 #: plugins/rdp/rdp_plugin.c:1990
 #, fuzzy
-msgid "Glyph Cache"
+msgid "Glyph cache"
 msgstr "Tegn-hurtiglager"
 
 #: plugins/rdp/rdp_plugin.c:2014
@@ -3033,4 +3034,6 @@ msgstr "Tillat fet tekst"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminal"
+
+#, fuzzy
 

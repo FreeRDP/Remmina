@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-14 10:16+0000\n"
+"POT-Creation-Date: 2019-11-15 15:49+0000\n"
 "PO-Revision-Date: 2019-11-15 10:15+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1556,26 +1556,27 @@ msgid "Unable to establish a connection to RDP server %s."
 msgstr "לא ניתן ליצור התחברות לשרת ה־RDP‏ %s."
 
 #: plugins/rdp/rdp_plugin.c:1560
-#, c-format
-msgid "Unable to connect to RDP server %s."
+#, fuzzy, c-format
+msgid "Cannot connect to RDP server %s."
 msgstr "לא ניתן להתחבר לשרת ה־RDP‏ %s."
 
 #: plugins/rdp/rdp_plugin.c:1563
-msgid "Unable to initialize libfreerdp gdi"
-msgstr "לא ניתן להפעיל את libfreerdp gdi"
+#, fuzzy
+msgid "Could not start libfreerdp-gdi"
+msgstr "לא ניתן להתחיל את pthread."
 
 #: plugins/rdp/rdp_plugin.c:1566
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"You requested an H.264 GFX mode for server %s, but your libfreerdp does not "
-"support H.264. Please use a non-AVC Color Depth setting."
+"You requested a H.264 GFX mode for server %s, but your libfreerdp does not "
+"support H.264. Please use a non-AVC color depth setting."
 msgstr ""
 "ביקשת מצב גרפי H.264 (GFX) עבור השרת %s אך ל־libfreerdp שלך אין תמיכה ב־"
 "H.264. נא להשתמש בהגדרת עומק צבע שאינה AVC."
 
 #: plugins/rdp/rdp_plugin.c:1573
-#, c-format
-msgid "Server %s denied the connection."
+#, fuzzy, c-format
+msgid "The %s server denied the connection."
 msgstr "השרת %s דחה את החיבור."
 
 #: plugins/rdp/rdp_plugin.c:1578
@@ -1585,9 +1586,9 @@ msgstr ""
 "שער הגישה לשולחן העבודה המרוחק %s דחה את הגישה של המשתמש %s\\%s עקב מדיניות."
 
 #: plugins/rdp/rdp_plugin.c:1588
-#, c-format
-msgid "Unable to connect to RDP server %s"
-msgstr "לא ניתן להתחבר לשרת ה־RDP‏ %s"
+#, fuzzy, c-format
+msgid "Cannot connect to the %s RDP server."
+msgstr "לא ניתן להתחבר לשרת ה־RDP‏ %s."
 
 #: plugins/rdp/rdp_plugin.c:1870
 msgid "GFX AVC444 (32 bpp)"
@@ -1712,7 +1713,8 @@ msgid "Load balance info"
 msgstr "פרטי איזון עומס"
 
 #: plugins/rdp/rdp_plugin.c:1966
-msgid "Override Printer Drivers"
+#, fuzzy
+msgid "Override printer drivers"
 msgstr "דריסת מנהלי התקן של מדפסות"
 
 #: plugins/rdp/rdp_plugin.c:1966
@@ -1812,11 +1814,13 @@ msgid "Turn off automatic reconnection"
 msgstr "כיבוי התחברות חוזרת אוטומטית"
 
 #: plugins/rdp/rdp_plugin.c:1989
-msgid "Relax Order Checks"
+#, fuzzy
+msgid "Relax order checks"
 msgstr "הקלת בדיקות סדר"
 
 #: plugins/rdp/rdp_plugin.c:1990
-msgid "Glyph Cache"
+#, fuzzy
+msgid "Glyph cache"
 msgstr "מטמון צורות תווים"
 
 #: plugins/rdp/rdp_plugin.c:2014
@@ -2939,3 +2943,4 @@ msgstr "לאפשר טקסט מודגש"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "מסוף"
+

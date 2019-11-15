@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-14 10:16+0000\n"
+"POT-Creation-Date: 2019-11-15 15:49+0000\n"
 "PO-Revision-Date: 2019-11-12 11:25+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1563,26 +1563,27 @@ msgid "Unable to establish a connection to RDP server %s."
 msgstr "Nemoguće uspostavljenje povezivanja s RDP poslužiteljem %s."
 
 #: plugins/rdp/rdp_plugin.c:1560
-#, c-format
-msgid "Unable to connect to RDP server %s."
+#, fuzzy, c-format
+msgid "Cannot connect to RDP server %s."
 msgstr "Nemoguće povezivanje s RDP poslužiteljem %s."
 
 #: plugins/rdp/rdp_plugin.c:1563
-msgid "Unable to initialize libfreerdp gdi"
-msgstr "Nemoguće pokrenuti libfreerdp gdi"
+#, fuzzy
+msgid "Could not start libfreerdp-gdi"
+msgstr "Neuspjelo pthread pokretanje."
 
 #: plugins/rdp/rdp_plugin.c:1566
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"You requested an H.264 GFX mode for server %s, but your libfreerdp does not "
-"support H.264. Please use a non-AVC Color Depth setting."
+"You requested a H.264 GFX mode for server %s, but your libfreerdp does not "
+"support H.264. Please use a non-AVC color depth setting."
 msgstr ""
 "Zahtijevali ste H.264 GFX način rada za poslužitelj %s, ali vaša libfreerdp "
 "biblioteka ne podržava H.264. Koristite postavke ne-AVC dubine boja."
 
 #: plugins/rdp/rdp_plugin.c:1573
-#, c-format
-msgid "Server %s denied the connection."
+#, fuzzy, c-format
+msgid "The %s server denied the connection."
 msgstr "Poslužitelj %s je uskratio povezivanje."
 
 #: plugins/rdp/rdp_plugin.c:1578
@@ -1593,9 +1594,9 @@ msgstr ""
 "pravila pristupa."
 
 #: plugins/rdp/rdp_plugin.c:1588
-#, c-format
-msgid "Unable to connect to RDP server %s"
-msgstr "Nemoguće povezivanje s RDP poslužiteljem %s"
+#, fuzzy, c-format
+msgid "Cannot connect to the %s RDP server."
+msgstr "Nemoguće povezivanje s RDP poslužiteljem %s."
 
 #: plugins/rdp/rdp_plugin.c:1870
 msgid "GFX AVC444 (32 bpp)"
@@ -1720,7 +1721,8 @@ msgid "Load balance info"
 msgstr "Učitaj uravnotežene informacije"
 
 #: plugins/rdp/rdp_plugin.c:1966
-msgid "Override Printer Drivers"
+#, fuzzy
+msgid "Override printer drivers"
 msgstr "Zaobiđi upravljačke programe pisača"
 
 #: plugins/rdp/rdp_plugin.c:1966
@@ -1820,11 +1822,13 @@ msgid "Turn off automatic reconnection"
 msgstr "Isključi automatsko ponovno povezivanje"
 
 #: plugins/rdp/rdp_plugin.c:1989
-msgid "Relax Order Checks"
+#, fuzzy
+msgid "Relax order checks"
 msgstr "Opuštene provjere redoslijeda"
 
 #: plugins/rdp/rdp_plugin.c:1990
-msgid "Glyph Cache"
+#, fuzzy
+msgid "Glyph cache"
 msgstr "Predmemorija simbola"
 
 #: plugins/rdp/rdp_plugin.c:2014

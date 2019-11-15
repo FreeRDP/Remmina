@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-14 10:16+0000\n"
+"POT-Creation-Date: 2019-11-15 15:49+0000\n"
 "PO-Revision-Date: 2019-11-15 10:15+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1573,26 +1573,27 @@ msgid "Unable to establish a connection to RDP server %s."
 msgstr "RDP sunucu ile %s bağlantı kuramıyor."
 
 #: plugins/rdp/rdp_plugin.c:1560
-#, c-format
-msgid "Unable to connect to RDP server %s."
+#, fuzzy, c-format
+msgid "Cannot connect to RDP server %s."
 msgstr "RDP sunucuna %s bağlanılamıyor."
 
 #: plugins/rdp/rdp_plugin.c:1563
-msgid "Unable to initialize libfreerdp gdi"
-msgstr "Libfreerdp gdi başlatılamadı"
+#, fuzzy
+msgid "Could not start libfreerdp-gdi"
+msgstr "Pthread başlatılamadı."
 
 #: plugins/rdp/rdp_plugin.c:1566
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"You requested an H.264 GFX mode for server %s, but your libfreerdp does not "
-"support H.264. Please use a non-AVC Color Depth setting."
+"You requested a H.264 GFX mode for server %s, but your libfreerdp does not "
+"support H.264. Please use a non-AVC color depth setting."
 msgstr ""
 "Sunucu %s için bir H.264 GFX kipi istediniz, ancak libfreerdp H.264'ü "
 "desteklemiyor. Lütfen AVC olmayan bir Renk Derinliği ayarı kullanın."
 
 #: plugins/rdp/rdp_plugin.c:1573
-#, c-format
-msgid "Server %s denied the connection."
+#, fuzzy, c-format
+msgid "The %s server denied the connection."
 msgstr "Sunucu %s bağlantıyı reddetti."
 
 #: plugins/rdp/rdp_plugin.c:1578
@@ -1603,9 +1604,9 @@ msgstr ""
 "reddetti."
 
 #: plugins/rdp/rdp_plugin.c:1588
-#, c-format
-msgid "Unable to connect to RDP server %s"
-msgstr "RDP sunucusuna %s bağlanılamıyor"
+#, fuzzy, c-format
+msgid "Cannot connect to the %s RDP server."
+msgstr "RDP sunucuna %s bağlanılamıyor."
 
 #: plugins/rdp/rdp_plugin.c:1870
 msgid "GFX AVC444 (32 bpp)"
@@ -1730,7 +1731,8 @@ msgid "Load balance info"
 msgstr "Yük dengesi bilgisi"
 
 #: plugins/rdp/rdp_plugin.c:1966
-msgid "Override Printer Drivers"
+#, fuzzy
+msgid "Override printer drivers"
 msgstr "Yazıcı Sürücülerini Geçersiz Kıl"
 
 #: plugins/rdp/rdp_plugin.c:1966
@@ -1830,11 +1832,13 @@ msgid "Turn off automatic reconnection"
 msgstr "Otomatik yeniden bağlanmayı kapat"
 
 #: plugins/rdp/rdp_plugin.c:1989
-msgid "Relax Order Checks"
+#, fuzzy
+msgid "Relax order checks"
 msgstr "Rahatlık Kontrolü"
 
 #: plugins/rdp/rdp_plugin.c:1990
-msgid "Glyph Cache"
+#, fuzzy
+msgid "Glyph cache"
 msgstr "Glyph Önbelleği"
 
 #: plugins/rdp/rdp_plugin.c:2014
@@ -2967,3 +2971,4 @@ msgstr "Kalın metne izin ver"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Uçbirim"
+

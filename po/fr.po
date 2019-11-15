@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-14 10:16+0000\n"
+"POT-Creation-Date: 2019-11-15 15:49+0000\n"
 "PO-Revision-Date: 2019-11-13 17:15+0000\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1595,27 +1595,28 @@ msgid "Unable to establish a connection to RDP server %s."
 msgstr "Impossible d’établir une connexion RDP avec le serveur %s."
 
 #: plugins/rdp/rdp_plugin.c:1560
-#, c-format
-msgid "Unable to connect to RDP server %s."
+#, fuzzy, c-format
+msgid "Cannot connect to RDP server %s."
 msgstr "Connexion au serveur RDP %s impossible."
 
 #: plugins/rdp/rdp_plugin.c:1563
-msgid "Unable to initialize libfreerdp gdi"
-msgstr "Impossible d’initialiser l’interface GDI de libfreerdp"
+#, fuzzy
+msgid "Could not start libfreerdp-gdi"
+msgstr "Impossible de démarrer le fil d’exécution POSIX (pthread)."
 
 #: plugins/rdp/rdp_plugin.c:1566
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"You requested an H.264 GFX mode for server %s, but your libfreerdp does not "
-"support H.264. Please use a non-AVC Color Depth setting."
+"You requested a H.264 GFX mode for server %s, but your libfreerdp does not "
+"support H.264. Please use a non-AVC color depth setting."
 msgstr ""
 "Vous avez demandé le mode d’affichage graphique H.264 pour le serveur %s, "
 "mais votre version de la bibliothèque libfreerdp ne le prend pas en charge. "
 "Veuillez sélectionner un mode de profondeur de couleur autre qu’AVC."
 
 #: plugins/rdp/rdp_plugin.c:1573
-#, c-format
-msgid "Server %s denied the connection."
+#, fuzzy, c-format
+msgid "The %s server denied the connection."
 msgstr "Le serveur %s a refusé la connexion."
 
 #: plugins/rdp/rdp_plugin.c:1578
@@ -1626,9 +1627,9 @@ msgstr ""
 "%s en raison de sa politique de sécurité."
 
 #: plugins/rdp/rdp_plugin.c:1588
-#, c-format
-msgid "Unable to connect to RDP server %s"
-msgstr "Échec de la connexion au serveur RDP %s"
+#, fuzzy, c-format
+msgid "Cannot connect to the %s RDP server."
+msgstr "Connexion au serveur RDP %s impossible."
 
 #: plugins/rdp/rdp_plugin.c:1870
 msgid "GFX AVC444 (32 bpp)"
@@ -1753,7 +1754,8 @@ msgid "Load balance info"
 msgstr "Info d’équilibrage de charge"
 
 #: plugins/rdp/rdp_plugin.c:1966
-msgid "Override Printer Drivers"
+#, fuzzy
+msgid "Override printer drivers"
 msgstr "Remplacer les pilotes d'imprimante"
 
 #: plugins/rdp/rdp_plugin.c:1966
@@ -1852,11 +1854,13 @@ msgid "Turn off automatic reconnection"
 msgstr "Désactiver la reconnexion automatique"
 
 #: plugins/rdp/rdp_plugin.c:1989
-msgid "Relax Order Checks"
+#, fuzzy
+msgid "Relax order checks"
 msgstr "Assouplir les vérifications des ordres"
 
 #: plugins/rdp/rdp_plugin.c:1990
-msgid "Glyph Cache"
+#, fuzzy
+msgid "Glyph cache"
 msgstr "Cache des glyphes"
 
 #: plugins/rdp/rdp_plugin.c:2014
