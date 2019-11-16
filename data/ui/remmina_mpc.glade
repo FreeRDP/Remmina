@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 -->
+<!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.12"/>
   <object class="GtkDialog" id="MPCDialog">
@@ -7,6 +7,9 @@
     <property name="title" translatable="yes">Remmina - Multi Password Changer</property>
     <property name="modal">True</property>
     <property name="type_hint">dialog</property>
+    <child>
+      <placeholder/>
+    </child>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox1">
         <property name="can_focus">False</property>
@@ -205,7 +208,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="ypad">5</property>
-                <property name="label" translatable="yes">Reset to</property>
+                <property name="label" translatable="yes" context="Multi password changer">Set new password</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
@@ -299,7 +302,7 @@
                 </child>
                 <child>
                   <object class="GtkTreeViewColumn" id="treeviewcolumn1">
-                    <property name="title" translatable="yes">F</property>
+                    <property name="title" translatable="yes" context="Multi password changer" comments="A column table with multiple check-boxes">Select</property>
                     <property name="clickable">True</property>
                     <child>
                       <object class="GtkCellRendererToggle" id="cellrenderertoggle1"/>
@@ -311,7 +314,7 @@
                 </child>
                 <child>
                   <object class="GtkTreeViewColumn" id="treeviewcolumn2">
-                    <property name="title" translatable="yes">Name</property>
+                    <property name="title" translatable="yes" context="Multi password changer table">Name</property>
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext1"/>
                       <attributes>
@@ -322,7 +325,7 @@
                 </child>
                 <child>
                   <object class="GtkTreeViewColumn" id="treeviewcolumn3">
-                    <property name="title" translatable="yes">Group</property>
+                    <property name="title" translatable="yes" context="Multi password changer table">Group</property>
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext2"/>
                       <attributes>
@@ -333,7 +336,7 @@
                 </child>
                 <child>
                   <object class="GtkTreeViewColumn" id="treeviewcolumn4">
-                    <property name="title" translatable="yes">Domain\Username</property>
+                    <property name="title" translatable="yes" context="Multi password changer table">Domain\Username</property>
                     <child>
                       <object class="GtkCellRendererText" id="cellrenderertext3"/>
                       <attributes>
