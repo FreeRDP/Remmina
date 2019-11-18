@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-15 15:49+0000\n"
-"PO-Revision-Date: 2019-11-12 11:25+0000\n"
+"PO-Revision-Date: 2019-11-18 22:19+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
 "hr/>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 3.10-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:25+0000\n"
 
@@ -695,9 +695,9 @@ msgstr "Nemoguće pokretanje %s naredbe na SSH poslužitelju (stanje = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:903
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command: %s"
-msgstr "Neuspjelo pokretanje naredbe, %s"
+msgstr "Neuspjelo pokretanje naredbe: %s"
 
 #: src/remmina_protocol_widget.c:1348
 msgid "Type in username and password for SSH."
@@ -916,7 +916,6 @@ msgid "SSH Kerberos/GSSAPI authentication failed: %s"
 msgstr "SSH Kerberos/GSSAPI ovjera neuspjela: %s"
 
 #: src/remmina_ssh.c:353
-#, fuzzy
 msgid "The public SSH key changed!"
 msgstr "SSH javni ključ je promijenjen!"
 
@@ -958,9 +957,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:484
-#, fuzzy, c-format
+#, c-format
 msgid "Could not check list of known SSH hosts: %s"
-msgstr "Neuspjelo pokretanje SSH sesije: %s"
+msgstr "Nemoguća provjera popisa poznatih SSH poslužitelja: %s"
 
 #: src/remmina_ssh.c:490
 msgid "SSH password"
@@ -982,15 +981,15 @@ msgstr "Neuspjelo pokretanje SSH sesije: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1033 src/remmina_ssh.c:1095
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel: %s"
-msgstr "Neuspjelo stvaranje kanala, %s"
+msgstr "Neuspjelo stvaranje kanala: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1044
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to SSH tunnel: %s"
-msgstr "Neuspjelo povezivanje sa SSH tuneliranim odredištem %s"
+msgstr "Neuspjelo povezivanje sa SSH tunelom: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1110 src/remmina_ssh.c:1704
@@ -999,15 +998,15 @@ msgid "Could not open channel: %s"
 msgstr "Neuspjelo otvaranje kanala: %s"
 
 #: src/remmina_ssh.c:1116
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run %s on SSH server, %%s"
 msgstr "Neuspjelo pokretanje %s na SSH poslužitelju, %%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1154 src/remmina_ssh.c:1175 src/remmina_ssh.c:1184
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request port forwarding: %s"
-msgstr "Neuspio zahtjev prosljeđivanja ulaza, %s"
+msgstr "Neuspio zahtjev prosljeđivanja ulaza: %s"
 
 #: src/remmina_ssh.c:1219
 msgid "The server did not respond."
@@ -1020,33 +1019,33 @@ msgstr "Nemoguće povezivanje na lokalni ulaz %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1308
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_write(): %s"
-msgstr "Nemoguće pokretanje ssh_channel_write(), %s"
+msgstr "Nemoguće pokretanje ssh_channel_write(): %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1315
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket: %s"
-msgstr "Nemoguće čitanje s priključnice osluškivanja tunela, %s"
+msgstr "Nemoguće čitanje s priključnice osluškivanja tunela: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1335
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_poll(): %s"
-msgstr "Nemoguće pokretanje ssh_channel_poll(), %s"
+msgstr "Nemoguće pokretanje ssh_channel_poll(): %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1342
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_read_nonblocking(): %s"
-msgstr "Nemoguće pokretanje ssh_channel_read_nonblocking(), %s"
+msgstr "Nemoguće pokretanje ssh_channel_read_nonblocking(): %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1361
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket: %s"
-msgstr "Nemoguće slanje podataka u priključnicu osluškivanja tunela, %s"
+msgstr "Nemoguće slanje podataka u priključnicu osluškivanja tunela: %s"
 
 #: src/remmina_ssh.c:1440
 msgid "Assign a destination port."
@@ -1110,9 +1109,9 @@ msgstr[1] "Ukupno %i stavke."
 msgstr[2] "Ukupno %i stavki."
 
 #: src/remmina_main.c:826
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "Sigurno želite obrisati '%s'"
+msgstr "Sigurno želite obrisati '%s'?"
 
 #: src/remmina_main.c:926
 #, c-format
@@ -1268,7 +1267,7 @@ msgstr "SFTP - Osigurani prijenos datoteka"
 #: src/remmina_ssh_plugin.c:479
 #, c-format
 msgid "Error: %s"
-msgstr ""
+msgstr "Greška: %s"
 
 #: src/remmina_ssh_plugin.c:496
 msgid "Terminal content saved under"
@@ -1563,17 +1562,16 @@ msgid "Unable to establish a connection to RDP server %s."
 msgstr "Nemoguće uspostavljenje povezivanja s RDP poslužiteljem %s."
 
 #: plugins/rdp/rdp_plugin.c:1560
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to RDP server %s."
 msgstr "Nemoguće povezivanje s RDP poslužiteljem %s."
 
 #: plugins/rdp/rdp_plugin.c:1563
-#, fuzzy
 msgid "Could not start libfreerdp-gdi"
-msgstr "Neuspjelo pthread pokretanje."
+msgstr "Neuspjelo libfreerdp-gdi pokretanje"
 
 #: plugins/rdp/rdp_plugin.c:1566
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for server %s, but your libfreerdp does not "
 "support H.264. Please use a non-AVC color depth setting."
@@ -1582,7 +1580,7 @@ msgstr ""
 "biblioteka ne podržava H.264. Koristite postavke ne-AVC dubine boja."
 
 #: plugins/rdp/rdp_plugin.c:1573
-#, fuzzy, c-format
+#, c-format
 msgid "The %s server denied the connection."
 msgstr "Poslužitelj %s je uskratio povezivanje."
 
@@ -1594,9 +1592,9 @@ msgstr ""
 "pravila pristupa."
 
 #: plugins/rdp/rdp_plugin.c:1588
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the %s RDP server."
-msgstr "Nemoguće povezivanje s RDP poslužiteljem %s."
+msgstr "Nemoguće povezivanje s %s RDP poslužiteljem."
 
 #: plugins/rdp/rdp_plugin.c:1870
 msgid "GFX AVC444 (32 bpp)"
@@ -1721,7 +1719,6 @@ msgid "Load balance info"
 msgstr "Učitaj uravnotežene informacije"
 
 #: plugins/rdp/rdp_plugin.c:1966
-#, fuzzy
 msgid "Override printer drivers"
 msgstr "Zaobiđi upravljačke programe pisača"
 
@@ -1822,12 +1819,10 @@ msgid "Turn off automatic reconnection"
 msgstr "Isključi automatsko ponovno povezivanje"
 
 #: plugins/rdp/rdp_plugin.c:1989
-#, fuzzy
 msgid "Relax order checks"
 msgstr "Opuštene provjere redoslijeda"
 
 #: plugins/rdp/rdp_plugin.c:1990
-#, fuzzy
 msgid "Glyph cache"
 msgstr "Predmemorija simbola"
 
@@ -2412,35 +2407,30 @@ msgid "Confirm password"
 msgstr "Potvrdi lozniku"
 
 #: data/ui/remmina_mpc.glade:211
-#, fuzzy
 msgctxt "Multi password changer"
 msgid "Set new password"
-msgstr "Spremi lozinku"
+msgstr "Postavi novu lozinku"
 
 #. A column table with multiple check-boxes
 #: data/ui/remmina_mpc.glade:305
-#, fuzzy
 msgctxt "Multi password changer"
 msgid "Select"
-msgstr "Odaberi sve"
+msgstr "Odaberi"
 
 #: data/ui/remmina_mpc.glade:317
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "Naziv"
 
 #: data/ui/remmina_mpc.glade:328
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "Grupa"
 
 #: data/ui/remmina_mpc.glade:339
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
-msgstr "Domen\\Korisničko ime"
+msgstr "Domena\\Korisničko ime"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "PLEASE WAIT…"
@@ -2756,7 +2746,6 @@ msgstr "SSH razina zapisivanja"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1344
-#, fuzzy
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr ""
 "Vrijeme (u sekundama) koliko povezivanje mora ostati u mirovanju prije nego "
@@ -2764,14 +2753,12 @@ msgstr ""
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1360
-#, fuzzy
 msgid "Seconds between each keepalive probe."
 msgstr ""
 "Vrijeme (u sekundama) između pojedinih sondiranja za održavanje povezivanja."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1376
-#, fuzzy
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
@@ -2780,12 +2767,11 @@ msgstr ""
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1392
-#, fuzzy
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
 msgstr ""
-"određuje najveće trajanje u milisekundama za koje emitirani podaci mogu "
+"Određuje najveće trajanje u milisekundama za koje emitirani podaci mogu "
 "ostati neodgovoreni prije nego što TCP prisilno zatvori odgovarajuće "
 "povezivanje."
 
@@ -2972,4 +2958,3 @@ msgstr "Dopusti podebljani tekst"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminal"
-
