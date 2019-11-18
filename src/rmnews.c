@@ -48,6 +48,7 @@
 #include <sys/stat.h>
 #include <time.h>
 
+#include "remmina.h"
 #include "remmina_main.h"
 #include "remmina_pref.h"
 #include "remmina_public.h"
@@ -335,7 +336,8 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 				g_info("SHA1 differs, we show the news and reset the counter");
 				remmina_pref.periodic_rmnews_last_get = 0;
 				GtkWindow *parent = remmina_main_get_window();
-				rmnews_show_news(parent);
+				if (!kioskmode  && kioskmode == FALSE)
+					rmnews_show_news(parent);
 			} else {
 				g_get_current_time(&t);
 				remmina_pref.periodic_rmnews_last_get = t.tv_sec;
