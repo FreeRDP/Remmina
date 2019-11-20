@@ -230,8 +230,8 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	const gchar *saveserver;
 	const gchar *saveusername;
 	gchar *hostport;
-	gchar tunneluser[33];           /**< On linux a username can have a 32 char lenght */
-	gchar tunnelserver[256];        /**< On linux a servername can have a 255 char lenght */
+	gchar tunneluser[33];           /**< On Linux a username can have a 32 char length */
+	gchar tunnelserver[256];        /**< On Linux a servername can have a 255 char length */
 	gchar tunnelport[6];            /**< A TCP port can have a maximum value of 65535 */
 	gchar *host;
 	gint port;
@@ -547,9 +547,9 @@ void remmina_plugin_ssh_popup_ui(RemminaProtocolWidget *gp)
 	/* Context menu for slection and clipboard */
 	GtkWidget *menu = gtk_menu_new();
 
-	GtkWidget *select_all = gtk_menu_item_new_with_label(_("Select All (Host+a)"));
-	GtkWidget *copy = gtk_menu_item_new_with_label(_("Copy (Host+c)"));
-	GtkWidget *paste = gtk_menu_item_new_with_label(_("Paste (Host+v)"));
+	GtkWidget *select_all = gtk_menu_item_new_with_label(_("Select All (Host + A)"));
+	GtkWidget *copy = gtk_menu_item_new_with_label(_("Copy (host + C)"));
+	GtkWidget *paste = gtk_menu_item_new_with_label(_("Paste (host + V)"));
 	GtkWidget *save = gtk_menu_item_new_with_label(_("Save session to file"));
 
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), select_all);
@@ -648,7 +648,7 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 		for (i = 0; dirs[i] != NULL; ++i) {
 			remmina_dir = g_build_path("/", dirs[i], "remmina", "theme", NULL);
 			GDir *system_data_dir = g_dir_open(remmina_dir, 0, &error);
-			// ignoring this error is ok, because the folder may not existing
+			// ignoring this error is OK, because the folder may not exist
 			if (error) {
 				g_error_free(error);
 				error = NULL;
