@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-15 15:49+0000\n"
-"PO-Revision-Date: 2019-11-12 23:44+0000\n"
+"PO-Revision-Date: 2019-11-20 22:27+0000\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "remmina/remmina/pt_BR/>\n"
@@ -916,7 +916,6 @@ msgid "SSH Kerberos/GSSAPI authentication failed: %s"
 msgstr "Autenticação SSH Kerberos/GSSAPI falhou: %s"
 
 #: src/remmina_ssh.c:353
-#, fuzzy
 msgid "The public SSH key changed!"
 msgstr "A chave pública SSH foi alterada!"
 
@@ -958,9 +957,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:484
-#, fuzzy, c-format
+#, c-format
 msgid "Could not check list of known SSH hosts: %s"
-msgstr "Falha ao iniciar sessão SSH: %s"
+msgstr "Não foi possível verificar lista de hosts SSH conhecidos: %s"
 
 #: src/remmina_ssh.c:490
 msgid "SSH password"
@@ -988,9 +987,9 @@ msgstr "Falha ao criar o canal: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1044
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to SSH tunnel: %s"
-msgstr "Falha ao conectar no túnel SSH de destino: %s"
+msgstr "Não foi possível conectar no túnel SSH: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1110 src/remmina_ssh.c:1704
@@ -999,9 +998,9 @@ msgid "Could not open channel: %s"
 msgstr "Não foi possível abrir o canal: %s"
 
 #: src/remmina_ssh.c:1116
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run %s on SSH server, %%s"
-msgstr "Falha ao executar %s no servidor SSH, %%s"
+msgstr "Não foi possível executar %s no servidor SSH, %%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1154 src/remmina_ssh.c:1175 src/remmina_ssh.c:1184
@@ -1572,17 +1571,16 @@ msgid "Unable to establish a connection to RDP server %s."
 msgstr "Não foi possível estabelecer uma conexão com o servidor RDP %s."
 
 #: plugins/rdp/rdp_plugin.c:1560
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to RDP server %s."
-msgstr "Não foi possível se conectar ao servidor RDP %s."
+msgstr "Não foi possível conectar ao servidor RDP %s."
 
 #: plugins/rdp/rdp_plugin.c:1563
-#, fuzzy
 msgid "Could not start libfreerdp-gdi"
-msgstr "Não foi possível inicializar pthread."
+msgstr "Não foi possível iniciar libfreerdp-gdi"
 
 #: plugins/rdp/rdp_plugin.c:1566
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for server %s, but your libfreerdp does not "
 "support H.264. Please use a non-AVC color depth setting."
@@ -1592,7 +1590,7 @@ msgstr ""
 "cor não-AVC."
 
 #: plugins/rdp/rdp_plugin.c:1573
-#, fuzzy, c-format
+#, c-format
 msgid "The %s server denied the connection."
 msgstr "O servidor %s negou a conexão."
 
@@ -1604,7 +1602,7 @@ msgstr ""
 "razão de política."
 
 #: plugins/rdp/rdp_plugin.c:1588
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the %s RDP server."
 msgstr "Não foi possível se conectar ao servidor RDP %s."
 
@@ -1731,7 +1729,6 @@ msgid "Load balance info"
 msgstr "Informações de balanceamento de carga"
 
 #: plugins/rdp/rdp_plugin.c:1966
-#, fuzzy
 msgid "Override printer drivers"
 msgstr "Substituir drivers de impressora"
 
@@ -1832,12 +1829,10 @@ msgid "Turn off automatic reconnection"
 msgstr "Desativar reconexão automática"
 
 #: plugins/rdp/rdp_plugin.c:1989
-#, fuzzy
 msgid "Relax order checks"
 msgstr "Verificações com ordem relaxada"
 
 #: plugins/rdp/rdp_plugin.c:1990
-#, fuzzy
 msgid "Glyph cache"
 msgstr "Cache de glifos"
 
@@ -2424,32 +2419,27 @@ msgid "Confirm password"
 msgstr "Confirmar senha"
 
 #: data/ui/remmina_mpc.glade:211
-#, fuzzy
 msgctxt "Multi password changer"
 msgid "Set new password"
-msgstr "Salvar senha"
+msgstr "Definir nova senha"
 
 #. A column table with multiple check-boxes
 #: data/ui/remmina_mpc.glade:305
-#, fuzzy
 msgctxt "Multi password changer"
 msgid "Select"
-msgstr "Selecionar tudo"
+msgstr "Selecionar"
 
 #: data/ui/remmina_mpc.glade:317
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "Nome"
 
 #: data/ui/remmina_mpc.glade:328
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "Grupo"
 
 #: data/ui/remmina_mpc.glade:339
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "Domínio\\Nome de usuário"
@@ -2771,37 +2761,32 @@ msgstr "Nível de log SSH"
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1344
-#, fuzzy
 msgid "Seconds of connection idleness before TCP keepalive probes are sent."
 msgstr ""
-"O tempo (em segundos) que a conexão precisa permanecer ociosa antes que o "
-"TCP comece a enviar testes de \"keepalive\"."
+"Segundos de conexão ociosa antes que testes de keepalive em TCP sejam "
+"enviados."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1360
-#, fuzzy
 msgid "Seconds between each keepalive probe."
-msgstr "O tempo (em segundos) entre os testes individuais de \"keepalive\"."
+msgstr "Segundos entre cada teste de keepalive."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1376
-#, fuzzy
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
-"O número máximo de testes \"keepalive\" TCP que deve ser enviado antes de "
-"encerrar a conexão."
+"O número de testes de keepalive enviados por conexão TCP antes dela ser "
+"descartada."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1392
-#, fuzzy
 msgid ""
 "Amount of milliseconds to attempt acknowledging data before closing the "
 "corresponding TCP connection forcibly."
 msgstr ""
-"Especifica a quantidade máxima de tempo em milissegundos que os dados "
-"transmitidos podem permanecer não confirmados antes de TCP forçosamente "
-"fechar a conexão correspondente."
+"Quantidade de milissegundos para tentar reconhecer dados antes de fechar a "
+"conexão TCP correspondente à força."
 
 #: data/ui/remmina_preferences.glade:1413
 msgid "SSH options"
@@ -2986,4 +2971,3 @@ msgstr "Permitir texto em negrito"
 #: data/ui/remmina_preferences.glade:2183
 msgid "Terminal"
 msgstr "Terminal"
-
