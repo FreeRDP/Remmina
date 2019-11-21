@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-20 22:30+0000\n"
-"PO-Revision-Date: 2019-11-13 17:15+0000\n"
+"PO-Revision-Date: 2019-11-21 14:30+0000\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
@@ -176,19 +176,16 @@ msgid "Terminal content saved under"
 msgstr "Contenu du terminal enregistré sous"
 
 #: src/remmina_ssh_plugin.c:550
-#, fuzzy
 msgid "Select All (Host + A)"
-msgstr "Sélectionner tout (<hôte> + A)"
+msgstr "Tout sélectionner (<hôte> + A)"
 
 #: src/remmina_ssh_plugin.c:551
-#, fuzzy
 msgid "Copy (host + C)"
-msgstr "Copier (<hôte> + C)"
+msgstr "Copier (<hôte> + C)"
 
 #: src/remmina_ssh_plugin.c:552
-#, fuzzy
 msgid "Paste (host + V)"
-msgstr "Coller (<hôte> + V)"
+msgstr "Coller (<hôte> + V)"
 
 #: src/remmina_ssh_plugin.c:553
 msgid "Save session to file"
@@ -1028,7 +1025,6 @@ msgid "SSH Kerberos/GSSAPI authentication failed: %s"
 msgstr "L’authentification SSH Kerberos/GSSAPI a échoué : %s"
 
 #: src/remmina_ssh.c:353
-#, fuzzy
 msgid "The public SSH key changed!"
 msgstr "La clef SSH publique a changé !"
 
@@ -1071,9 +1067,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:484
-#, fuzzy, c-format
+#, c-format
 msgid "Could not check list of known SSH hosts: %s"
-msgstr "Impossible d’établir la connexion SSH : %s"
+msgstr "Impossible de vérifier la liste des hôtes SSH connus : %s"
 
 #: src/remmina_ssh.c:490
 msgid "SSH password"
@@ -1101,9 +1097,9 @@ msgstr "Impossible de créer le canal : %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1044
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to SSH tunnel: %s"
-msgstr "Échec de la connexion à la cible à travers le tunnel SSH : %s"
+msgstr "Connexion au tunnel SSH impossible : %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1110 src/remmina_ssh.c:1704
@@ -1112,7 +1108,7 @@ msgid "Could not open channel: %s"
 msgstr "Impossible d’ouvrir le canal : %s"
 
 #: src/remmina_ssh.c:1116
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run %s on SSH server, %%s"
 msgstr "Impossible d’exécuter %s sur le serveur SSH, %%s"
 
@@ -1861,17 +1857,16 @@ msgid "Unable to establish a connection to RDP server %s."
 msgstr "Impossible d’établir une connexion RDP avec le serveur %s."
 
 #: plugins/rdp/rdp_plugin.c:1560
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to RDP server %s."
 msgstr "Connexion au serveur RDP %s impossible."
 
 #: plugins/rdp/rdp_plugin.c:1563
-#, fuzzy
 msgid "Could not start libfreerdp-gdi"
-msgstr "Impossible de démarrer le fil d’exécution POSIX (pthread)."
+msgstr "Impossible de démarrer libfreerdp-gdi"
 
 #: plugins/rdp/rdp_plugin.c:1566
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for server %s, but your libfreerdp does not "
 "support H.264. Please use a non-AVC color depth setting."
@@ -1881,7 +1876,7 @@ msgstr ""
 "Veuillez sélectionner un mode de profondeur de couleur autre qu’AVC."
 
 #: plugins/rdp/rdp_plugin.c:1573
-#, fuzzy, c-format
+#, c-format
 msgid "The %s server denied the connection."
 msgstr "Le serveur %s a refusé la connexion."
 
@@ -1893,7 +1888,7 @@ msgstr ""
 "%s en raison de sa politique de sécurité."
 
 #: plugins/rdp/rdp_plugin.c:1588
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the %s RDP server."
 msgstr "Connexion au serveur RDP %s impossible."
 
@@ -1978,9 +1973,8 @@ msgid "Load balance info"
 msgstr "Info d’équilibrage de charge"
 
 #: plugins/rdp/rdp_plugin.c:1966
-#, fuzzy
 msgid "Override printer drivers"
-msgstr "Remplacer les pilotes d'imprimante"
+msgstr "Remplacer les pilotes d’imprimante"
 
 #: plugins/rdp/rdp_plugin.c:1966
 msgid ""
@@ -2078,12 +2072,10 @@ msgid "Turn off automatic reconnection"
 msgstr "Désactiver la reconnexion automatique"
 
 #: plugins/rdp/rdp_plugin.c:1989
-#, fuzzy
 msgid "Relax order checks"
 msgstr "Assouplir les vérifications des ordres"
 
 #: plugins/rdp/rdp_plugin.c:1990
-#, fuzzy
 msgid "Glyph cache"
 msgstr "Cache des glyphes"
 
@@ -2429,35 +2421,30 @@ msgid "Confirm password"
 msgstr "Confirmez le mot de passe"
 
 #: data/ui/remmina_mpc.glade:211
-#, fuzzy
 msgctxt "Multi password changer"
 msgid "Set new password"
-msgstr "Enregistrer le mot de passe"
+msgstr "Nouveau mot de passe"
 
 #. A column table with multiple check-boxes
 #: data/ui/remmina_mpc.glade:305
-#, fuzzy
 msgctxt "Multi password changer"
 msgid "Select"
-msgstr "Sélectionner tout"
+msgstr "Sélectionner"
 
 #: data/ui/remmina_mpc.glade:317
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "Nom"
 
 #: data/ui/remmina_mpc.glade:328
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "Groupe"
 
 #: data/ui/remmina_mpc.glade:339
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
-msgstr "Domaine\\Utilisateur"
+msgstr "Domaine\\Nom d’utilisateur"
 
 #: data/ui/remmina_preferences.glade:41
 msgid "Remmina Preferences"
