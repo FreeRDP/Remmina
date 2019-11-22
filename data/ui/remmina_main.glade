@@ -279,6 +279,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="use_underline">True</property>
                       </object>
                     </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_popup_collapse">
+                        <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="action_name">main.collapse</property>
+                        <property name="label" translatable="yes">Collapse all</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_popup_expand">
+                        <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="action_name">main.expand</property>
+                        <property name="label" translatable="yes">Expand all</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -479,6 +499,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="search_column">3</property>
+                <property name="enable_grid_lines">both</property>
                 <signal name="button-press-event" handler="remmina_main_file_list_on_button_press" swapped="no"/>
                 <signal name="key-press-event" handler="remmina_main_file_list_on_key_press" swapped="no"/>
                 <signal name="row-activated" handler="remmina_main_file_list_on_row_activated" swapped="no"/>
