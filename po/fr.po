@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-22 13:15+0000\n"
+"POT-Creation-Date: 2019-11-22 15:42+0000\n"
 "PO-Revision-Date: 2019-11-21 14:30+0000\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -132,7 +132,7 @@ msgstr "Serveur"
 msgid "Install the %s protocol plugin first."
 msgstr "Veuillez d’abord installer le greffon pour le protocole %s."
 
-#: src/remmina_exec.c:305
+#: src/remmina_exec.c:320
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "Le greffon %s n’est pas répertorié."
@@ -466,7 +466,7 @@ msgstr "Taille"
 msgid "User"
 msgstr "Utilisateur"
 
-#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1443
+#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1454
 #: data/ui/remmina_main.glade:513 data/ui/remmina_mpc.glade:102
 msgid "Group"
 msgstr "Groupe"
@@ -697,7 +697,7 @@ msgstr ""
 "Attention : ce greffon nécessite GtkSocket, mais ce dernier n’est pas "
 "disponible."
 
-#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1461
+#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1472
 msgid "Protocol"
 msgstr "Protocole"
 
@@ -730,7 +730,7 @@ msgstr "Greffons"
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:458 src/remmina_file_editor.c:1418
+#: src/remmina_plugin_manager.c:458 src/remmina_file_editor.c:1429
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:491
 msgid "Name"
 msgstr "Nom"
@@ -772,7 +772,7 @@ msgstr ""
 msgid "Import"
 msgstr "Importer"
 
-#: src/remmina_main.c:976 src/remmina_file_editor.c:1301
+#: src/remmina_main.c:976 src/remmina_file_editor.c:1312
 msgid "_Save"
 msgstr "_Enregistrer"
 
@@ -897,7 +897,7 @@ msgstr "Écraser"
 
 #: src/remmina_sftp_client.c:915 src/remmina_message_panel.c:452
 #: src/remmina_message_panel.c:624 src/remmina_file_editor.c:160
-#: src/remmina_file_editor.c:364 src/remmina_file_editor.c:1293
+#: src/remmina_file_editor.c:364 src/remmina_file_editor.c:1304
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
 #: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
@@ -1329,62 +1329,67 @@ msgstr "Authentification SSH"
 msgid "SSH Agent (automatic)"
 msgstr "Agent SSH (automatique)"
 
-#: src/remmina_file_editor.c:996
+#: src/remmina_file_editor.c:994
+msgid "Turn on autostart for this profile"
+msgstr ""
+
+#: src/remmina_file_editor.c:1002
 msgid "Basic"
 msgstr "Basique"
 
-#: src/remmina_file_editor.c:1002
+#: src/remmina_file_editor.c:1008
 msgid "Advanced"
 msgstr "Avancé"
 
-#: src/remmina_file_editor.c:1221
+#: src/remmina_file_editor.c:1013
+#, fuzzy
+msgid "Autostart"
+msgstr "automatique"
+
+#: src/remmina_file_editor.c:1232
 msgid "Default settings saved."
 msgstr "Les paramètres par défaut ont été enregistrés."
 
-#: src/remmina_file_editor.c:1291
+#: src/remmina_file_editor.c:1302
 msgid "Remote Desktop Preference"
 msgstr "Préférences de bureau distant"
 
-#: src/remmina_file_editor.c:1297
+#: src/remmina_file_editor.c:1308
 msgid "Save as Default"
 msgstr "Définir par défaut"
 
-#: src/remmina_file_editor.c:1298
+#: src/remmina_file_editor.c:1309
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Utiliser les paramètres actuels comme paramètres par défaut pour les "
 "nouveaux profils de connexion"
 
-#: src/remmina_file_editor.c:1306 data/ui/remmina_main.glade:231
+#: src/remmina_file_editor.c:1317 data/ui/remmina_main.glade:231
 msgid "Connect"
 msgstr "Connexion"
 
-#: src/remmina_file_editor.c:1309
+#: src/remmina_file_editor.c:1320
 msgid "_Save and Connect"
 msgstr "_Enregistrer et se connecter"
 
-#: src/remmina_file_editor.c:1415
-msgid "Profile"
-msgstr "Profil"
-
-#: src/remmina_file_editor.c:1432
+#: src/remmina_file_editor.c:1443
 msgid "Quick Connect"
 msgstr "Connexion rapide"
 
-#: src/remmina_file_editor.c:1456
+#: src/remmina_file_editor.c:1467
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Utiliser « %s » comme délimiteur de sous‐groupe"
 
-#: src/remmina_file_editor.c:1475
+#: src/remmina_file_editor.c:1486
 msgid "Pre Command"
 msgstr "Précommande"
 
-#: src/remmina_file_editor.c:1493
+#: src/remmina_file_editor.c:1504
 msgid "Post Command"
 msgstr "Post‐commande"
 
-#: src/remmina_file_editor.c:1558 src/remmina_file_editor.c:1576
+#: src/remmina_file_editor.c:1569 src/remmina_file_editor.c:1587
 #, c-format
 msgid "File %s not found."
 msgstr "Fichier %s introuvable."
@@ -3008,3 +3013,4 @@ msgstr "Choisir une nouvelle touche"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Veuillez appuyer sur la nouvelle touche…"
+

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-22 13:15+0000\n"
+"POT-Creation-Date: 2019-11-22 15:42+0000\n"
 "PO-Revision-Date: 2019-11-13 08:32+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
@@ -131,7 +131,7 @@ msgstr "Tjener"
 msgid "Install the %s protocol plugin first."
 msgstr "Installer %s-protokollprogramtillegget først."
 
-#: src/remmina_exec.c:305
+#: src/remmina_exec.c:320
 #, c-format
 msgid "Plugin %s is not registered."
 msgstr "Tillegget «%s» er ikke registrert."
@@ -455,7 +455,7 @@ msgstr "Størrelse"
 msgid "User"
 msgstr "Bruker"
 
-#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1443
+#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1454
 #: data/ui/remmina_main.glade:513 data/ui/remmina_mpc.glade:102
 msgid "Group"
 msgstr "Gruppe"
@@ -687,7 +687,7 @@ msgstr ""
 "Advarsel: Dette programtillegget krever GtkSocket, men det er ikke "
 "tilgjengelig."
 
-#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1461
+#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1472
 msgid "Protocol"
 msgstr "Protokoll"
 
@@ -720,7 +720,7 @@ msgstr "Programtillegg"
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:458 src/remmina_file_editor.c:1418
+#: src/remmina_plugin_manager.c:458 src/remmina_file_editor.c:1429
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:491
 msgid "Name"
 msgstr "Navn"
@@ -762,7 +762,7 @@ msgstr ""
 msgid "Import"
 msgstr "Importer"
 
-#: src/remmina_main.c:976 src/remmina_file_editor.c:1301
+#: src/remmina_main.c:976 src/remmina_file_editor.c:1312
 msgid "_Save"
 msgstr "_Lagre"
 
@@ -887,7 +887,7 @@ msgstr "Overskriv"
 
 #: src/remmina_sftp_client.c:915 src/remmina_message_panel.c:452
 #: src/remmina_message_panel.c:624 src/remmina_file_editor.c:160
-#: src/remmina_file_editor.c:364 src/remmina_file_editor.c:1293
+#: src/remmina_file_editor.c:364 src/remmina_file_editor.c:1304
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
 #: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
@@ -1322,62 +1322,67 @@ msgstr "SSH-identitetsbekreftelse"
 msgid "SSH Agent (automatic)"
 msgstr "SSH-agent (automatisk)"
 
-#: src/remmina_file_editor.c:996
+#: src/remmina_file_editor.c:994
+msgid "Turn on autostart for this profile"
+msgstr ""
+
+#: src/remmina_file_editor.c:1002
 msgid "Basic"
 msgstr "Enkel"
 
-#: src/remmina_file_editor.c:1002
+#: src/remmina_file_editor.c:1008
 msgid "Advanced"
 msgstr "Avansert"
 
-#: src/remmina_file_editor.c:1221
+#: src/remmina_file_editor.c:1013
+#, fuzzy
+msgid "Autostart"
+msgstr "Automatisk"
+
+#: src/remmina_file_editor.c:1232
 msgid "Default settings saved."
 msgstr "Forvalgte innstillinger lagret."
 
-#: src/remmina_file_editor.c:1291
+#: src/remmina_file_editor.c:1302
 msgid "Remote Desktop Preference"
 msgstr "Innstillinger for eksternt skrivebord"
 
-#: src/remmina_file_editor.c:1297
+#: src/remmina_file_editor.c:1308
 msgid "Save as Default"
 msgstr "Lagre som forvalg"
 
-#: src/remmina_file_editor.c:1298
+#: src/remmina_file_editor.c:1309
 #, fuzzy
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Benytt nåværende innstillinger som forvalg for alle nye tilknytningsprofiler"
 
-#: src/remmina_file_editor.c:1306 data/ui/remmina_main.glade:231
+#: src/remmina_file_editor.c:1317 data/ui/remmina_main.glade:231
 msgid "Connect"
 msgstr "Koble til"
 
-#: src/remmina_file_editor.c:1309
+#: src/remmina_file_editor.c:1320
 msgid "_Save and Connect"
 msgstr "_Lagre og koble til"
 
-#: src/remmina_file_editor.c:1415
-msgid "Profile"
-msgstr "Profil"
-
-#: src/remmina_file_editor.c:1432
+#: src/remmina_file_editor.c:1443
 msgid "Quick Connect"
 msgstr "Hurtigtilkobling"
 
-#: src/remmina_file_editor.c:1456
+#: src/remmina_file_editor.c:1467
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Bruk «%s» som skilletegn for undergrupper"
 
-#: src/remmina_file_editor.c:1475
+#: src/remmina_file_editor.c:1486
 msgid "Pre Command"
 msgstr "Forhåndskommando"
 
-#: src/remmina_file_editor.c:1493
+#: src/remmina_file_editor.c:1504
 msgid "Post Command"
 msgstr "Etterfølgende kommando"
 
-#: src/remmina_file_editor.c:1558 src/remmina_file_editor.c:1576
+#: src/remmina_file_editor.c:1569 src/remmina_file_editor.c:1587
 #, c-format
 msgid "File %s not found."
 msgstr "Fant ikke fila «%s»."
@@ -3035,3 +3040,4 @@ msgstr "Velg en ny tast"
 #, fuzzy
 msgid "Please press the new key…"
 msgstr "Trykk på den nye tasten…"
+
