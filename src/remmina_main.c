@@ -107,6 +107,8 @@ static GActionEntry main_actions[] = {
 	{   "wiki",        remmina_main_on_action_help_wiki,                 NULL, NULL, NULL },
 	{   "export",      remmina_main_on_action_tools_export,              NULL, NULL, NULL },
 	{   "import",      remmina_main_on_action_tools_import,              NULL, NULL, NULL },
+	{   "expand",      remmina_main_on_action_expand,                    NULL, NULL, NULL },
+	{   "collapse",    remmina_main_on_action_collapse,                    NULL, NULL, NULL },
 };
 
 static GtkTargetEntry remmina_drop_types[] =
@@ -1072,6 +1074,18 @@ void remmina_main_quick_search_enter(GtkWidget *widget, gpointer user_data)
 {
 	if (gtk_entry_get_text(remminamain->entry_quick_connect_server))
 		gtk_editable_select_region(GTK_EDITABLE(remminamain->entry_quick_connect_server), 0, -1);
+}
+
+void remmina_main_on_action_collapse (GSimpleAction *action, GVariant *param, gpointer data)
+{
+	TRACE_CALL(__func__);
+	gtk_tree_view_collapse_all (remminamain->tree_files_list);
+}
+
+void remmina_main_on_action_expand (GSimpleAction *action, GVariant *param, gpointer data)
+{
+	TRACE_CALL(__func__);
+	gtk_tree_view_expand_all (remminamain->tree_files_list);
 }
 
 /* Handle double click on a row in the connections list */
