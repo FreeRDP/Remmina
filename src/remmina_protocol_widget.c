@@ -713,18 +713,21 @@ static gboolean remmina_protocol_widget_init_tunnel(RemminaProtocolWidget *gp)
 	if (gp->priv->ssh_tunnel == NULL) {
 		tunnel = remmina_ssh_tunnel_new_from_file(gp->priv->remmina_file);
 
+		g_debug ("Connecting to %s via SSH…", REMMINA_SSH(tunnel)->server);
 		msg = g_strdup_printf(_("Connecting to %s via SSH…"), REMMINA_SSH(tunnel)->server);
 
 		mp = remmina_protocol_widget_mpprogress(gp->cnnobj, msg, cancel_init_tunnel_cb, NULL);
 		g_free(msg);
 
 		if (!remmina_ssh_init_session(REMMINA_SSH(tunnel))) {
+			g_debug ("[SSH] Cannot init SSH session with tunnel struct");
 			remmina_protocol_widget_set_error(gp, REMMINA_SSH(tunnel)->error);
 			remmina_ssh_tunnel_free(tunnel);
 			return FALSE;
 		}
 
 		ret = remmina_ssh_auth_gui(REMMINA_SSH(tunnel), gp, gp->priv->remmina_file);
+		g_debug ("[SSH] tunnel auth returned %d", ret);
 		if (ret <= 0) {
 			if (ret == 0)
 				remmina_protocol_widget_set_error(gp, REMMINA_SSH(tunnel)->error);
@@ -758,9 +761,13 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 {
 	TRACE_CALL(__func__);
 	const gchar *server;
+	//const gchar *proto;
 	gchar *host, *dest;
 	gint port;
 	gchar *msg;
+
+	g_debug ("SSH tunnel initialization…");
+	//proto = remmina_file_get_string(gp->priv->remmina_file, "protocol");
 
 	server = remmina_file_get_string(gp->priv->remmina_file, "server");
 
@@ -768,6 +775,7 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 		return g_strdup("");
 
 	remmina_public_get_server_port(server, default_port, &host, &port);
+	g_debug ("server: %s, port: %d", host, port);
 
 	if (port_plus && port < 100)
 		/* Protocols like VNC supports using instance number :0, :1, etc. as port number. */
@@ -790,6 +798,7 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 
 	if (!remmina_protocol_widget_init_tunnel(gp)) {
 		g_free(host);
+		g_debug ("[SSH] Setting up the tunnel failed, returning NULL");
 		return NULL;
 	}
 
