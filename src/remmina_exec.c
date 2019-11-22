@@ -46,6 +46,7 @@
 #include "remmina_unlock.h"
 #include "remmina_pref_dialog.h"
 #include "remmina_file.h"
+#include "remmina_file_manager.h"
 #include "remmina_file_editor.h"
 #include "rcw.h"
 #include "remmina_about.h"
@@ -199,6 +200,16 @@ int remmina_exec_set_setting(gchar *profilefilename, gchar **settings)
 
 }
 
+static void remmina_exec_autostart_cb(RemminaFile *remminafile, gpointer user_data)
+{
+	TRACE_CALL(__func__);
+
+	if (remmina_file_get_int(remminafile, "enable-autostart", FALSE)) {
+		g_debug ("Profile %s is set to autostart", remminafile->filename);
+		rcw_open_from_filename(remminafile->filename);
+	}
+
+}
 void remmina_exec_command(RemminaCommandType command, const gchar* data)
 {
 	TRACE_CALL(__func__);
@@ -212,6 +223,10 @@ void remmina_exec_command(RemminaCommandType command, const gchar* data)
 	mainwindow = remmina_main_get_window();
 
 	switch (command) {
+	case REMMINA_COMMAND_AUTOSTART:
+		remmina_file_manager_iterate((GFunc)remmina_exec_autostart_cb, NULL);
+		break;
+
 	case REMMINA_COMMAND_MAIN:
 		if (mainwindow) {
 			gtk_window_present(mainwindow);

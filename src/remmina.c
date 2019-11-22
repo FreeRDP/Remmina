@@ -255,6 +255,8 @@ static void remmina_on_startup(GApplication *app)
 		if (!secret_plugin->is_service_available())
 			g_print("WARNING: Remmina is running with a secret plugin, but it cannot connect to a secret service.\n");
 	}
+
+	remmina_exec_command(REMMINA_COMMAND_AUTOSTART, NULL);
 }
 
 static gint remmina_on_local_cmdline(GApplication *app, GVariantDict *opts, gpointer user_data)

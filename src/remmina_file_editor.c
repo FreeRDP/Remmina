@@ -989,6 +989,12 @@ static void remmina_file_editor_create_all_settings(RemminaFileEditor *gfe)
 	RemminaFileEditorPriv *priv = gfe->priv;
 	GtkWidget *grid;
 
+	static const RemminaProtocolSetting autostart_settings[] =
+	{
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-autostart", N_("Turn on autostart for this profile"),	       FALSE,  NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
+	};
+
 	remmina_file_editor_create_notebook_container(gfe);
 
 	/* The Basic tab */
@@ -1003,8 +1009,13 @@ static void remmina_file_editor_create_all_settings(RemminaFileEditor *gfe)
 		remmina_file_editor_create_settings(gfe, grid, priv->plugin->advanced_settings);
 	}
 
+	/* Autostart tab */
+	grid = remmina_file_editor_create_notebook_tab(gfe, NULL, _("Autostart"), 20, 2);
+	remmina_file_editor_create_settings(gfe, grid, autostart_settings);
+
 	/* The SSH tab */
 	remmina_file_editor_create_ssh_tab(gfe, priv->plugin->ssh_setting);
+
 }
 
 static void remmina_file_editor_protocol_combo_on_changed(GtkComboBox *combo, RemminaFileEditor *gfe)
@@ -1412,7 +1423,7 @@ GtkWidget *remmina_file_editor_new_from_file(RemminaFile *remminafile)
 	gtk_container_set_border_width(GTK_CONTAINER(grid), 8);
 	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(gfe))), grid, FALSE, FALSE, 2);
 
-	remmina_public_create_group(GTK_GRID(grid), _("Profile"), 0, 4, 3);
+	//remmina_public_create_group(GTK_GRID(grid), _("Profile"), 0, 4, 3);
 
 	/* Profile: Name */
 	widget = gtk_label_new(_("Name"));
