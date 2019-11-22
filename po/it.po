@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-22 15:42+0000\n"
+"POT-Creation-Date: 2019-11-22 16:31+0000\n"
 "PO-Revision-Date: 2019-11-15 10:15+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -124,7 +124,7 @@ msgstr ""
 "Impossibile eseguire l'autenticazione, tentativo di riconnessione in corso…"
 
 #: src/remmina_protocol_widget.c:1668 src/remmina_file_editor.c:402
-#: src/remmina_file_editor.c:877 data/ui/remmina_main.glade:527
+#: src/remmina_file_editor.c:877 data/ui/remmina_main.glade:548
 msgid "Server"
 msgstr "Server"
 
@@ -451,7 +451,7 @@ msgid "User"
 msgstr "Nome utente"
 
 #: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1454
-#: data/ui/remmina_main.glade:513 data/ui/remmina_mpc.glade:102
+#: data/ui/remmina_main.glade:534 data/ui/remmina_mpc.glade:102
 msgid "Group"
 msgstr "Gruppo"
 
@@ -558,7 +558,7 @@ msgstr ""
 msgid "Open Main Window"
 msgstr "Aprire la schermata principale"
 
-#: src/remmina_icon.c:144 data/ui/remmina_main.glade:366
+#: src/remmina_icon.c:144 data/ui/remmina_main.glade:386
 msgid "_Preferences"
 msgstr "_Preferenze"
 
@@ -570,7 +570,7 @@ msgstr "I_nformazioni"
 msgid "Enable Service Discovery"
 msgstr "Abilitare la ricerca dei servizi"
 
-#: src/remmina_icon.c:172 data/ui/remmina_main.glade:457
+#: src/remmina_icon.c:172 data/ui/remmina_main.glade:477
 msgid "_Quit"
 msgstr "_Esci"
 
@@ -582,7 +582,7 @@ msgstr "Applet di Remmina"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Connetti al desktop remoto utilizzando il menu dell’applet"
 
-#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1202
+#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1216
 msgid "Remmina Remote Desktop Client"
 msgstr "Client di connessione a desktop remoti Remmina"
 
@@ -700,7 +700,7 @@ msgstr "Preferenza"
 msgid "Secret"
 msgstr "Segreto"
 
-#: src/remmina_plugin_manager.c:440 data/ui/remmina_main.glade:356
+#: src/remmina_plugin_manager.c:440 data/ui/remmina_main.glade:376
 msgid "Plugins"
 msgstr "Plugins"
 
@@ -710,7 +710,7 @@ msgid "_OK"
 msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:458 src/remmina_file_editor.c:1429
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:491
+#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:512
 msgid "Name"
 msgstr "Nome"
 
@@ -726,19 +726,19 @@ msgstr "Descrizione"
 msgid "Version"
 msgstr "Versione"
 
-#: src/remmina_main.c:644
+#: src/remmina_main.c:646
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "%i elemento in totale."
 msgstr[1] "%i elementi in totale."
 
-#: src/remmina_main.c:826
+#: src/remmina_main.c:828
 #, c-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr "Sei sicuro di voler eliminare '%s'?"
 
-#: src/remmina_main.c:926
+#: src/remmina_main.c:928
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -747,19 +747,19 @@ msgstr ""
 "Impossibile importare:\n"
 "%s"
 
-#: src/remmina_main.c:953 data/ui/remmina_main.glade:302
+#: src/remmina_main.c:955 data/ui/remmina_main.glade:322
 msgid "Import"
 msgstr "Importa"
 
-#: src/remmina_main.c:976 src/remmina_file_editor.c:1312
+#: src/remmina_main.c:978 src/remmina_file_editor.c:1312
 msgid "_Save"
 msgstr "_Salva"
 
-#: src/remmina_main.c:983
+#: src/remmina_main.c:985
 msgid "This protocol does not support exporting."
 msgstr "Questo protocollo non supporta l’export."
 
-#: src/remmina_main.c:1204
+#: src/remmina_main.c:1218
 msgid "Remmina Kiosk"
 msgstr "Avviare Remmina in modo Chiosco"
 
@@ -2237,7 +2237,7 @@ msgstr ""
 msgid "Do not show this message again"
 msgstr "Non mostrare più questo messaggio"
 
-#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:424
+#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:444
 msgid "About"
 msgstr "Informazioni"
 
@@ -2278,44 +2278,52 @@ msgstr "Pulisci"
 msgid "Edit"
 msgstr "Modifica"
 
-#: data/ui/remmina_main.glade:312
+#: data/ui/remmina_main.glade:288
+msgid "Collapse all"
+msgstr ""
+
+#: data/ui/remmina_main.glade:298
+msgid "Expand all"
+msgstr ""
+
+#: data/ui/remmina_main.glade:332
 msgid "Export"
 msgstr "Esporta"
 
-#: data/ui/remmina_main.glade:322
+#: data/ui/remmina_main.glade:342
 msgid "Multi password changer"
 msgstr "Cambio password multiplo"
 
-#: data/ui/remmina_main.glade:339
+#: data/ui/remmina_main.glade:359
 msgid "Debugging"
 msgstr "Debug"
 
-#: data/ui/remmina_main.glade:384
+#: data/ui/remmina_main.glade:404
 msgid "Homepage"
 msgstr "Sito web"
 
-#: data/ui/remmina_main.glade:394
+#: data/ui/remmina_main.glade:414
 msgid "Wiki"
 msgstr "Wiki"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:404
+#: data/ui/remmina_main.glade:424
 msgid "Online Community"
 msgstr "Comunità online"
 
-#: data/ui/remmina_main.glade:414
+#: data/ui/remmina_main.glade:434
 msgid "Donations"
 msgstr "Donazioni"
 
-#: data/ui/remmina_main.glade:440
+#: data/ui/remmina_main.glade:460
 msgid "Set as default remote desktop client"
 msgstr "Imposta come client desktop remoto predefinito"
 
-#: data/ui/remmina_main.glade:541
+#: data/ui/remmina_main.glade:562
 msgid "Plugin"
 msgstr "Plugin"
 
-#: data/ui/remmina_main.glade:555
+#: data/ui/remmina_main.glade:576
 msgid "Last used"
 msgstr "Ultimo utilizzo"
 
@@ -2974,4 +2982,3 @@ msgstr "Sciegli un nuovo tasto"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Premere un nuovo tasto prego…"
-

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-22 15:42+0000\n"
+"POT-Creation-Date: 2019-11-22 16:31+0000\n"
 "PO-Revision-Date: 2019-11-06 06:15+0000\n"
 "Last-Translator: Walter Cheuk <wwycheuk@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -123,7 +123,7 @@ msgid "Could not authenticate, attempting reconnection…"
 msgstr "驗證失敗。正試著重新連接…"
 
 #: src/remmina_protocol_widget.c:1668 src/remmina_file_editor.c:402
-#: src/remmina_file_editor.c:877 data/ui/remmina_main.glade:527
+#: src/remmina_file_editor.c:877 data/ui/remmina_main.glade:548
 msgid "Server"
 msgstr "伺服器"
 
@@ -453,7 +453,7 @@ msgid "User"
 msgstr "使用者"
 
 #: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1454
-#: data/ui/remmina_main.glade:513 data/ui/remmina_mpc.glade:102
+#: data/ui/remmina_main.glade:534 data/ui/remmina_mpc.glade:102
 msgid "Group"
 msgstr "群組"
 
@@ -555,7 +555,7 @@ msgstr "設定一個或多個連線設定，與 --update-profile 一起使用"
 msgid "Open Main Window"
 msgstr "開啟主視窗"
 
-#: src/remmina_icon.c:144 data/ui/remmina_main.glade:366
+#: src/remmina_icon.c:144 data/ui/remmina_main.glade:386
 msgid "_Preferences"
 msgstr "偏好設定(_P)"
 
@@ -567,7 +567,7 @@ msgstr "關於(_A)"
 msgid "Enable Service Discovery"
 msgstr "開啟服務偵測功能"
 
-#: src/remmina_icon.c:172 data/ui/remmina_main.glade:457
+#: src/remmina_icon.c:172 data/ui/remmina_main.glade:477
 msgid "_Quit"
 msgstr "離開(_Q)"
 
@@ -579,7 +579,7 @@ msgstr "Remmina 面板小程式"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "通過小程式選單快速連接到遠端桌面"
 
-#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1202
+#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1216
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina 遠端桌面客戶端"
 
@@ -695,7 +695,7 @@ msgstr "偏好設定"
 msgid "Secret"
 msgstr "機密"
 
-#: src/remmina_plugin_manager.c:440 data/ui/remmina_main.glade:356
+#: src/remmina_plugin_manager.c:440 data/ui/remmina_main.glade:376
 msgid "Plugins"
 msgstr "外掛"
 
@@ -705,7 +705,7 @@ msgid "_OK"
 msgstr "確定(_O)"
 
 #: src/remmina_plugin_manager.c:458 src/remmina_file_editor.c:1429
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:491
+#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:512
 msgid "Name"
 msgstr "名稱"
 
@@ -721,18 +721,18 @@ msgstr "說明"
 msgid "Version"
 msgstr "版本"
 
-#: src/remmina_main.c:644
+#: src/remmina_main.c:646
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "共 %i 項。"
 
-#: src/remmina_main.c:826
+#: src/remmina_main.c:828
 #, fuzzy, c-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr "確定要刪除「%s」？"
 
-#: src/remmina_main.c:926
+#: src/remmina_main.c:928
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -741,19 +741,19 @@ msgstr ""
 "無法匯入:\n"
 "%s"
 
-#: src/remmina_main.c:953 data/ui/remmina_main.glade:302
+#: src/remmina_main.c:955 data/ui/remmina_main.glade:322
 msgid "Import"
 msgstr "匯入"
 
-#: src/remmina_main.c:976 src/remmina_file_editor.c:1312
+#: src/remmina_main.c:978 src/remmina_file_editor.c:1312
 msgid "_Save"
 msgstr "儲存(_S)"
 
-#: src/remmina_main.c:983
+#: src/remmina_main.c:985
 msgid "This protocol does not support exporting."
 msgstr "此協定不支援匯出。"
 
-#: src/remmina_main.c:1204
+#: src/remmina_main.c:1218
 msgid "Remmina Kiosk"
 msgstr "Remmina 服務台"
 
@@ -2221,7 +2221,7 @@ msgstr ""
 msgid "Do not show this message again"
 msgstr "不要再顯示此訊息"
 
-#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:424
+#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:444
 msgid "About"
 msgstr "關於"
 
@@ -2262,44 +2262,52 @@ msgstr "清除"
 msgid "Edit"
 msgstr "編輯"
 
-#: data/ui/remmina_main.glade:312
+#: data/ui/remmina_main.glade:288
+msgid "Collapse all"
+msgstr ""
+
+#: data/ui/remmina_main.glade:298
+msgid "Expand all"
+msgstr ""
+
+#: data/ui/remmina_main.glade:332
 msgid "Export"
 msgstr "輸出"
 
-#: data/ui/remmina_main.glade:322
+#: data/ui/remmina_main.glade:342
 msgid "Multi password changer"
 msgstr "批次密碼變更工具"
 
-#: data/ui/remmina_main.glade:339
+#: data/ui/remmina_main.glade:359
 msgid "Debugging"
 msgstr "除錯"
 
-#: data/ui/remmina_main.glade:384
+#: data/ui/remmina_main.glade:404
 msgid "Homepage"
 msgstr "首頁"
 
-#: data/ui/remmina_main.glade:394
+#: data/ui/remmina_main.glade:414
 msgid "Wiki"
 msgstr "Wiki"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:404
+#: data/ui/remmina_main.glade:424
 msgid "Online Community"
 msgstr "線上社群"
 
-#: data/ui/remmina_main.glade:414
+#: data/ui/remmina_main.glade:434
 msgid "Donations"
 msgstr "捐獻"
 
-#: data/ui/remmina_main.glade:440
+#: data/ui/remmina_main.glade:460
 msgid "Set as default remote desktop client"
 msgstr "設為預設遠端桌面客戶端"
 
-#: data/ui/remmina_main.glade:541
+#: data/ui/remmina_main.glade:562
 msgid "Plugin"
 msgstr "外掛"
 
-#: data/ui/remmina_main.glade:555
+#: data/ui/remmina_main.glade:576
 msgid "Last used"
 msgstr "最後使用時間"
 
@@ -2958,4 +2966,3 @@ msgstr "選擇一個新按鍵"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "請按下新按鍵…"
-

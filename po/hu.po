@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-11-22 15:42+0000\n"
+"POT-Creation-Date: 2019-11-22 16:31+0000\n"
 "PO-Revision-Date: 2019-01-11 15:05+0100\n"
 "Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -129,7 +129,7 @@ msgid "Could not authenticate, attempting reconnection…"
 msgstr "Hitelesítés sikertelen. Kísérlet újracsatlakozásra…"
 
 #: src/remmina_protocol_widget.c:1668 src/remmina_file_editor.c:402
-#: src/remmina_file_editor.c:877 data/ui/remmina_main.glade:527
+#: src/remmina_file_editor.c:877 data/ui/remmina_main.glade:548
 msgid "Server"
 msgstr "Kiszolgáló"
 
@@ -463,7 +463,7 @@ msgid "User"
 msgstr "Felhasználó"
 
 #: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1454
-#: data/ui/remmina_main.glade:513 data/ui/remmina_mpc.glade:102
+#: data/ui/remmina_main.glade:534 data/ui/remmina_mpc.glade:102
 msgid "Group"
 msgstr "Csoport"
 
@@ -580,7 +580,7 @@ msgstr ""
 msgid "Open Main Window"
 msgstr "Főablak megnyitása"
 
-#: src/remmina_icon.c:144 data/ui/remmina_main.glade:366
+#: src/remmina_icon.c:144 data/ui/remmina_main.glade:386
 msgid "_Preferences"
 msgstr "_Beállítások"
 
@@ -592,7 +592,7 @@ msgstr "_Névjegy"
 msgid "Enable Service Discovery"
 msgstr "Szolgáltatásfelfedezés engedélyezése"
 
-#: src/remmina_icon.c:172 data/ui/remmina_main.glade:457
+#: src/remmina_icon.c:172 data/ui/remmina_main.glade:477
 msgid "_Quit"
 msgstr "_Kilépés"
 
@@ -604,7 +604,7 @@ msgstr "Remmina értesítő ikon"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Kapcsolódás távoli asztalokhoz az értesítő ikon menüjén keresztül"
 
-#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1202
+#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1216
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina távoli asztal ügyfél"
 
@@ -723,7 +723,7 @@ msgstr "Beállítás"
 msgid "Secret"
 msgstr "Titok"
 
-#: src/remmina_plugin_manager.c:440 data/ui/remmina_main.glade:356
+#: src/remmina_plugin_manager.c:440 data/ui/remmina_main.glade:376
 msgid "Plugins"
 msgstr "Bővítmények"
 
@@ -733,7 +733,7 @@ msgid "_OK"
 msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:458 src/remmina_file_editor.c:1429
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:491
+#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:512
 msgid "Name"
 msgstr "Név"
 
@@ -749,19 +749,19 @@ msgstr "Leírás"
 msgid "Version"
 msgstr "Verzió"
 
-#: src/remmina_main.c:644
+#: src/remmina_main.c:646
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "Összesen %i elem."
 msgstr[1] "Összesen %i elem."
 
-#: src/remmina_main.c:826
+#: src/remmina_main.c:828
 #, fuzzy, c-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr "Biztosan törölni akarja ezt: „%s”?"
 
-#: src/remmina_main.c:926
+#: src/remmina_main.c:928
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -770,19 +770,19 @@ msgstr ""
 "Nem importálható:\n"
 "%s"
 
-#: src/remmina_main.c:953 data/ui/remmina_main.glade:302
+#: src/remmina_main.c:955 data/ui/remmina_main.glade:322
 msgid "Import"
 msgstr "Importálás"
 
-#: src/remmina_main.c:976 src/remmina_file_editor.c:1312
+#: src/remmina_main.c:978 src/remmina_file_editor.c:1312
 msgid "_Save"
 msgstr "Me_ntés"
 
-#: src/remmina_main.c:983
+#: src/remmina_main.c:985
 msgid "This protocol does not support exporting."
 msgstr "Ez a protokoll nem támogatja az exportálást."
 
-#: src/remmina_main.c:1204
+#: src/remmina_main.c:1218
 msgid "Remmina Kiosk"
 msgstr "Remmina kioszk"
 
@@ -2269,7 +2269,7 @@ msgstr ""
 msgid "Do not show this message again"
 msgstr "Ne mutassa ezt többé"
 
-#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:424
+#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:444
 msgid "About"
 msgstr ""
 
@@ -2312,45 +2312,53 @@ msgstr "Törlés"
 msgid "Edit"
 msgstr ""
 
-#: data/ui/remmina_main.glade:312
+#: data/ui/remmina_main.glade:288
+msgid "Collapse all"
+msgstr ""
+
+#: data/ui/remmina_main.glade:298
+msgid "Expand all"
+msgstr ""
+
+#: data/ui/remmina_main.glade:332
 msgid "Export"
 msgstr "Exportálás"
 
-#: data/ui/remmina_main.glade:322
+#: data/ui/remmina_main.glade:342
 msgid "Multi password changer"
 msgstr "Többszörös jelszó módosító"
 
-#: data/ui/remmina_main.glade:339
+#: data/ui/remmina_main.glade:359
 #, fuzzy
 msgid "Debugging"
 msgstr "Hibakeresési ablak"
 
-#: data/ui/remmina_main.glade:384
+#: data/ui/remmina_main.glade:404
 msgid "Homepage"
 msgstr "Honlap"
 
-#: data/ui/remmina_main.glade:394
+#: data/ui/remmina_main.glade:414
 msgid "Wiki"
 msgstr ""
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:404
+#: data/ui/remmina_main.glade:424
 msgid "Online Community"
 msgstr ""
 
-#: data/ui/remmina_main.glade:414
+#: data/ui/remmina_main.glade:434
 msgid "Donations"
 msgstr "Adományok"
 
-#: data/ui/remmina_main.glade:440
+#: data/ui/remmina_main.glade:460
 msgid "Set as default remote desktop client"
 msgstr ""
 
-#: data/ui/remmina_main.glade:541
+#: data/ui/remmina_main.glade:562
 msgid "Plugin"
 msgstr "Bővítmény"
 
-#: data/ui/remmina_main.glade:555
+#: data/ui/remmina_main.glade:576
 #, fuzzy
 msgid "Last used"
 msgstr "Utolsó használat"
@@ -3046,4 +3054,3 @@ msgstr "Válasszon új gombot"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Nyomja meg az új gombot…"
-
