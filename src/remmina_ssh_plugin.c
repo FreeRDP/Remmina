@@ -273,10 +273,12 @@ remmina_plugin_ssh_main_thread(gpointer data)
 								g_strconcat(tunnelserver, ":", tunnelport, NULL));
 		}
 	}
-
+	g_debug ("Trying to initiate SSH tunnel…");
 	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
+	g_debug ("Tunnel started on %s", hostport);
 	/* We restore the SSH username as the tunnel is set */
 	remmina_plugin_service->file_set_string(remminafile, "ssh_username", g_strdup(saveusername));
+	remmina_plugin_service->file_set_string(remminafile, "ssh_server", g_strdup(saveserver));
 	if (hostport == NULL)
 		return FALSE;
 	remmina_plugin_service->get_server_port(hostport, 22, &host, &port);
@@ -296,7 +298,7 @@ remmina_plugin_ssh_main_thread(gpointer data)
 			remmina_plugin_service->file_set_string(remminafile, "ssh_server", g_strdup(hostport));
 		else
 			remmina_plugin_service->file_set_string(remminafile, "ssh_server",
-								remmina_plugin_service->file_get_string(remminafile, "server"));
+								remmina_plugin_service->file_get_string(remminafile, "save_ssh_server"));
 		g_free(hostport);
 		g_free(host);
 
