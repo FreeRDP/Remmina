@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # Joan Montané <joan@montane.cat>, 2019.
+# Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-11-22 16:31+0000\n"
-"PO-Revision-Date: 2019-10-04 11:55+0000\n"
-"Last-Translator: Joan Montané <joan@montane.cat>\n"
+"PO-Revision-Date: 2019-11-29 04:31+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/remmina/remmina/"
 "ca/>\n"
 "Language: ca\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Weblate 3.10-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:248
@@ -25,9 +26,8 @@ msgid "Connect via SSH from a new terminal"
 msgstr ""
 
 #: src/remmina_protocol_widget.c:254
-#, fuzzy
 msgid "Open SFTP transfer"
-msgstr "Obre SFTP…"
+msgstr "Obre una transferència SFTP"
 
 #: src/remmina_protocol_widget.c:282
 msgid "Executing external commands…"
@@ -40,30 +40,30 @@ msgstr "S’està connectant a «%s»…"
 
 #: src/remmina_protocol_widget.c:717 src/remmina_protocol_widget.c:805
 #: src/remmina_protocol_widget.c:979
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to %s via SSH…"
-msgstr "S’està connectant a «%s»…"
+msgstr "S’està connectant a «%s» mitjançant SSH…"
 
 #: src/remmina_protocol_widget.c:855
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection at port %i…"
-msgstr "S’està esperant un túnel SSH d’entrada al port %i…"
+msgstr "S’està esperant una connexió SSH entrant al port %i…"
 
 #: src/remmina_protocol_widget.c:900
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find %s command on the SSH server"
 msgstr "No s’ha trobat l’ordre %s al servidor SSH"
 
 #: src/remmina_protocol_widget.c:904
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run %s command on the SSH server (status = %i)."
-msgstr "Ha fallat l’ordre %s al servidor SSH (estat = %i)."
+msgstr "No s’ha pogut executar l’ordre %s al servidor SSH (estat = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:912
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command: %s"
-msgstr "No s'ha pogut obrir el canal: %s"
+msgstr "No s’ha pogut executar l’ordre: %s"
 
 #: src/remmina_protocol_widget.c:1339 src/remmina_protocol_widget.c:1358
 #: src/remmina_ssh_plugin.c:958 src/remmina_sftp_plugin.c:317
@@ -78,7 +78,6 @@ msgid "Type in username and password for SSH."
 msgstr ""
 
 #: src/remmina_protocol_widget.c:1413
-#, fuzzy
 msgid "Certificate details:"
 msgstr "Detalls del certificat:"
 
@@ -95,27 +94,22 @@ msgid "Fingerprint:"
 msgstr "Empremta digital:"
 
 #: src/remmina_protocol_widget.c:1417
-#, fuzzy
 msgid "Accept certificate?"
 msgstr "Voleu acceptar el certificat?"
 
 #: src/remmina_protocol_widget.c:1434
-#, fuzzy
 msgid "The certificate changed! Details:"
 msgstr "El certificat ha canviat! Detalls:"
 
 #: src/remmina_protocol_widget.c:1437
-#, fuzzy
 msgid "Old fingerprint:"
-msgstr "Empremta digital:"
+msgstr "Empremta anterior:"
 
 #: src/remmina_protocol_widget.c:1438
-#, fuzzy
 msgid "New fingerprint:"
-msgstr "Empremta digital:"
+msgstr "Empremta nova:"
 
 #: src/remmina_protocol_widget.c:1439
-#, fuzzy
 msgid "Accept changed certificate?"
 msgstr "Voleu acceptar el certificat canviat?"
 
@@ -125,7 +119,6 @@ msgid "Listening on port %i for an incoming %s connection…"
 msgstr "S’està escoltant al port %i una connexió d’entrada %s…"
 
 #: src/remmina_protocol_widget.c:1606
-#, fuzzy
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Ha fallat l’autenticació. S’està intentant reconnectar…"
 
@@ -313,12 +306,12 @@ msgstr ""
 
 #: src/remmina_ssh_plugin.c:1089
 msgid "Enable SSH compression"
-msgstr ""
+msgstr "Activa la compressió SSH"
 
 #: src/remmina_ssh_plugin.c:1090 plugins/vnc/vnc_plugin.c:1876
 #: plugins/spice/spice_plugin.c:456 plugins/nx/nx_plugin.c:743
 msgid "Disable password storing"
-msgstr ""
+msgstr "Desactiva l’emmagatzematge de contrasenyes"
 
 #: src/remmina_ssh_plugin.c:1091
 msgid "Strict host key checking"
@@ -443,9 +436,8 @@ msgid "Delete files on server"
 msgstr "Esborra els fitxers del servidor"
 
 #: src/remmina_ftp_client.c:903 src/remmina_ftp_client.c:972
-#, fuzzy
 msgid "Filename"
-msgstr "Nom del fitxer"
+msgstr "Nom de fitxer"
 
 #: src/remmina_ftp_client.c:916 src/remmina_ftp_client.c:1001
 msgid "Size"
@@ -478,9 +470,8 @@ msgstr "Progrés"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:84
-#, fuzzy
 msgid "Show 'About'"
-msgstr "Mostra el diàleg «Quant a»"
+msgstr "Mostra «Quant a»"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:86 src/remmina.c:88
@@ -497,33 +488,28 @@ msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:93
-#, fuzzy
 msgid "Start in kiosk mode"
-msgstr "Inicia el Remmina en mode quiosc"
+msgstr "Inicia en mode quiosc"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:95
-#, fuzzy
 msgid "Create new connection profile"
 msgstr "Crea un perfil de connexió nou"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:97
-#, fuzzy
 msgid "Show preferences"
-msgstr "Preferències"
+msgstr "Mostra les preferències"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:99
-#, fuzzy
 msgid "Run a plugin"
-msgstr "Executa el connector"
+msgstr "Executa un connector"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:101
-#, fuzzy
 msgid "Quit"
-msgstr "_Surt"
+msgstr "Surt"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:103
@@ -537,21 +523,18 @@ msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:107
-#, fuzzy
 msgid "Start in tray"
-msgstr "Inicia com a icona a la safata"
+msgstr "Inicia a la safata"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:109
-#, fuzzy
 msgid "Show the application version"
-msgstr "Mostra la versió de l'aplicació"
+msgstr "Mostra la versió de l’aplicació"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:111
-#, fuzzy
 msgid "Show version of the application and its plugins"
-msgstr "Mostra la versió de l'aplicació"
+msgstr "Mostra la versió de l’aplicació i dels connectors"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:113
@@ -597,12 +580,10 @@ msgid "Remmina Remote Desktop Client"
 msgstr "Client d’escriptori remot Remmina"
 
 #: src/rcw.c:585
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
-msgstr ""
-"Hi ha %i connexions actives a la finestra actual. Esteu segur que la voleu "
-"tancar?"
+msgstr "Segur que voleu tancar %i connexions actives a la finestra actual?"
 
 #: src/rcw.c:1291
 msgid "Viewport fullscreen mode"
@@ -678,13 +659,13 @@ msgid "Disconnect"
 msgstr "Desconnecta"
 
 #: src/rcw.c:3774
-#, fuzzy, c-format
+#, c-format
 msgid "The file %s is corrupted, unreadable, or could not be found."
-msgstr "El fitxer %s és malmès, no es pot llegir o no s'ha trobat."
+msgstr "El fitxer %s és malmès, no es pot llegir o no s’ha trobat."
 
 #: src/rcw.c:3936
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
-msgstr "Atenció: aquest connector requereix GTkSocket, però no és disponible."
+msgstr "Atenció: aquest connector requereix GtkSocket, però no és disponible."
 
 #: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1472
 msgid "Protocol"
@@ -704,7 +685,7 @@ msgstr "Eina"
 
 #: src/remmina_plugin_manager.c:69
 msgid "Preference"
-msgstr "Preferències"
+msgstr "Preferència"
 
 #: src/remmina_plugin_manager.c:69
 msgid "Secret"
@@ -744,7 +725,7 @@ msgstr[0] "%i element en total."
 msgstr[1] "%i elements en total."
 
 #: src/remmina_main.c:828
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr "Segur que voleu suprimir «%s»?"
 
@@ -1014,7 +995,6 @@ msgid "SSH Kerberos/GSSAPI authentication failed: %s"
 msgstr ""
 
 #: src/remmina_ssh.c:365
-#, fuzzy
 msgid "The public SSH key changed!"
 msgstr "La clau pública SSH ha canviat!"
 
@@ -1057,9 +1037,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:550
-#, fuzzy, c-format
+#, c-format
 msgid "Could not check list of known SSH hosts: %s"
-msgstr "Ha fallat en iniciar la sessió SSH: %s"
+msgstr "No s’ha pogut comprovar la llista d’amfitrions SSH coneguts: %s"
 
 #: src/remmina_ssh.c:557
 msgid "SSH password"
@@ -1126,41 +1106,39 @@ msgstr "No s'ha pogut obrir el canal: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1392
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket: %s"
-msgstr "No s'ha pogut crear el socket."
+msgstr "No s’ha pogut llegir a partir del sòcol de recepció del túnel: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1412
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_poll(): %s"
-msgstr "No s'ha pogut obrir el canal: %s"
+msgstr "No s’ha pogut executar «ssh_channel_poll()»: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1419
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run ssh_channel_read_nonblocking(): %s"
-msgstr "No s'ha pogut obrir el canal: %s"
+msgstr "No s’ha pogut executar «ssh_channel_read_nonblocking()»: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1438
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket: %s"
-msgstr "Ha fallat la connexió amb túnel SSH amb el destí: %s"
+msgstr "No s’ha pogut enviar dades al sòcol de recepció del túnel: %s"
 
 #: src/remmina_ssh.c:1517
 msgid "Assign a destination port."
 msgstr ""
 
 #: src/remmina_ssh.c:1524
-#, fuzzy
 msgid "Could not create socket."
-msgstr "No s'ha pogut crear el socket."
+msgstr "No s’ha pogut crear el sòcol."
 
 #: src/remmina_ssh.c:1534
-#, fuzzy
 msgid "Could not bind server socket to local port."
-msgstr "No s'ha pogut connectar al port local %i."
+msgstr "No s’ha pogut vincular el sòcol del servidor al port local."
 
 #: src/remmina_ssh.c:1540
 #, fuzzy
@@ -1358,15 +1336,15 @@ msgstr "Connexió ràpida"
 #: src/remmina_file_editor.c:1467
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
-msgstr "Utilitza '%s' com a delimitador de subgrup"
+msgstr "Utilitza «%s» com a delimitador de subgrups"
 
 #: src/remmina_file_editor.c:1486
 msgid "Pre Command"
-msgstr ""
+msgstr "Preordre"
 
 #: src/remmina_file_editor.c:1504
 msgid "Post Command"
-msgstr ""
+msgstr "Postordre"
 
 #: src/remmina_file_editor.c:1569 src/remmina_file_editor.c:1587
 #, c-format
@@ -1613,7 +1591,7 @@ msgstr ""
 
 #: plugins/spice/spice_plugin_usb.c:54
 msgid "_Close"
-msgstr ""
+msgstr "_Tanca"
 
 #: plugins/spice/spice_plugin_usb.c:94
 msgid "USB redirection error"
@@ -1639,11 +1617,11 @@ msgstr ""
 
 #: plugins/spice/spice_plugin.c:438
 msgid "Use TLS encryption"
-msgstr ""
+msgstr "Utilitza el xifratge TLS"
 
 #: plugins/spice/spice_plugin.c:439
 msgid "Server CA certificate"
-msgstr ""
+msgstr "Certificat CA del servidor"
 
 #: plugins/spice/spice_plugin.c:440 plugins/rdp/rdp_plugin.c:1939
 msgid "Share folder"
@@ -1667,7 +1645,7 @@ msgstr ""
 
 #: plugins/spice/spice_plugin_file_transfer.c:82
 msgid "File Transfers"
-msgstr ""
+msgstr "Transferències de fitxers"
 
 #: plugins/spice/spice_plugin_file_transfer.c:219
 msgid "Transfer error"
@@ -1680,12 +1658,12 @@ msgstr ""
 
 #: plugins/spice/spice_plugin_file_transfer.c:223
 msgid "Transfer completed"
-msgstr ""
+msgstr "Ha finalitzat la transferència"
 
 #: plugins/spice/spice_plugin_file_transfer.c:224
 #, c-format
 msgid "The %s file has been transferred"
-msgstr ""
+msgstr "S’ha transferit el fitxer %s"
 
 #: plugins/xdmcp/xdmcp_plugin.c:97
 msgid "Run out of available local X display number."
@@ -1695,6 +1673,7 @@ msgstr ""
 #, c-format
 msgid "Protocol %s is unavailable because GtkSocket only works under X.Org"
 msgstr ""
+"El protocol %s no està disponible perquè GtkSocket només funciona amb l’X.org"
 
 #: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
@@ -1858,9 +1837,9 @@ msgid "The remote desktop gateway %s denied user %s\\%s access due to policy."
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1588
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the %s RDP server."
-msgstr "No s’ha pogut connectar al servidor RDP %s"
+msgstr "No s’ha pogut connectar al servidor RDP %s."
 
 #: plugins/rdp/rdp_plugin.c:1870
 msgid "GFX AVC444 (32 bpp)"
@@ -2052,7 +2031,7 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1990
 msgid "Glyph cache"
-msgstr ""
+msgstr "Memòria cau de glifs"
 
 #: plugins/rdp/rdp_plugin.c:2014
 msgid "RDP - Remote Desktop Protocol"
@@ -2076,11 +2055,11 @@ msgstr "<Detecta automàticament>"
 
 #: plugins/rdp/rdp_settings.c:233
 msgid "<Not set>"
-msgstr ""
+msgstr "<Sense definir>"
 
 #: plugins/rdp/rdp_settings.c:267
 msgid "<Choose a quality level to edit…>"
-msgstr ""
+msgstr "<Trieu un nivell de qualitat a editar…>"
 
 #: plugins/rdp/rdp_settings.c:418
 msgid "Keyboard layout"
@@ -2092,7 +2071,7 @@ msgstr "Utilitza la disposició del teclat del client"
 
 #: plugins/rdp/rdp_settings.c:453
 msgid "Quality settings"
-msgstr ""
+msgstr "Configuració de qualitat"
 
 #: plugins/rdp/rdp_settings.c:473
 msgid "Wallpaper"
@@ -2128,24 +2107,24 @@ msgstr "Composició"
 
 #: plugins/rdp/rdp_settings.c:532
 msgid "Remote scale factor"
-msgstr ""
+msgstr "Factor d’escala remot"
 
 #: plugins/rdp/rdp_settings.c:545
 msgid "Desktop scale factor %"
-msgstr ""
+msgstr "% de factor d’escala d’escriptori"
 
 #: plugins/rdp/rdp_settings.c:556
 msgid "Device scale factor %"
-msgstr ""
+msgstr "% de factor d’escala de dispositiu"
 
 #: plugins/rdp/rdp_settings.c:578
 msgid "Desktop orientation"
-msgstr ""
+msgstr "Orientació de l’escriptori"
 
 #: plugins/rdp/rdp_event.c:299
-#, fuzzy, c-format
+#, c-format
 msgid "Reconnection attempt %d of %d…"
-msgstr "S’està connectant a «%s»…"
+msgstr "Intent de reconnexió %d de %d…"
 
 #: plugins/nx/nx_session_manager.c:98
 msgid "Terminating"
@@ -2191,7 +2170,7 @@ msgstr "NX - Tecnologia NX"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
 msgid "Secure passwords storing in the KDE Wallet"
-msgstr ""
+msgstr "Emmagatzematge segur de contrasenyes al KDE Wallet"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, c-format
@@ -2221,15 +2200,15 @@ msgstr ""
 
 #: data/ui/remmina_snap_info_dialog.glade:82
 msgid "Do not show this message again"
-msgstr ""
+msgstr "No tornis a mostrar aquest missatge"
 
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:444
 msgid "About"
-msgstr ""
+msgstr "Quant a"
 
 #: data/ui/remmina_about.glade:40
 msgid "Website"
-msgstr ""
+msgstr "Lloc web"
 
 #: data/ui/remmina_main.glade:69
 msgid "New connection profile"
@@ -2237,32 +2216,33 @@ msgstr "Perfil nou de connexió"
 
 #: data/ui/remmina_main.glade:81
 msgid "Show search bar"
-msgstr ""
+msgstr "Mostra la barra de cerca"
 
 #: data/ui/remmina_main.glade:106
 msgid "Actions"
-msgstr ""
+msgstr "Accions"
 
 #: data/ui/remmina_main.glade:120
 msgid "Toggle view"
-msgstr ""
+msgstr "Commuta la visualització"
 
 #: data/ui/remmina_main.glade:168
 msgid "search string or server name/ip address for quick connect"
 msgstr ""
+"cerqueu una cadena o un nom de servidor/adreça IP per a una connexió ràpida"
 
 #: data/ui/remmina_main.glade:172 data/ui/remmina_main.glade:174
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Nom de servidor o adreça IP"
 
 #: data/ui/remmina_main.glade:173 data/ui/remmina_main.glade:175
 #: data/ui/remmina_preferences.glade:214
 msgid "Clear"
-msgstr ""
+msgstr "Neteja"
 
 #: data/ui/remmina_main.glade:258
 msgid "Edit"
-msgstr ""
+msgstr "Edita"
 
 #: data/ui/remmina_main.glade:288
 msgid "Collapse all"
@@ -2274,7 +2254,7 @@ msgstr ""
 
 #: data/ui/remmina_main.glade:332
 msgid "Export"
-msgstr ""
+msgstr "Exporta"
 
 #: data/ui/remmina_main.glade:342
 msgid "Multi password changer"
@@ -2282,57 +2262,57 @@ msgstr ""
 
 #: data/ui/remmina_main.glade:359
 msgid "Debugging"
-msgstr ""
+msgstr "Depuració"
 
 #: data/ui/remmina_main.glade:404
 msgid "Homepage"
-msgstr ""
+msgstr "Lloc web"
 
 #: data/ui/remmina_main.glade:414
 msgid "Wiki"
-msgstr ""
+msgstr "Wiki"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:424
 msgid "Online Community"
-msgstr ""
+msgstr "Comunitat a la xarxa"
 
 #: data/ui/remmina_main.glade:434
 msgid "Donations"
-msgstr ""
+msgstr "Donatius"
 
 #: data/ui/remmina_main.glade:460
 msgid "Set as default remote desktop client"
-msgstr ""
+msgstr "Estableix com a client d’escriptoris remots per defecte"
 
 #: data/ui/remmina_main.glade:562
 msgid "Plugin"
-msgstr ""
+msgstr "Connector"
 
 #: data/ui/remmina_main.glade:576
 msgid "Last used"
-msgstr ""
+msgstr "Darrer ús"
 
 #: data/ui/remmina_unlock.glade:60
 msgid "Unlock"
-msgstr ""
+msgstr "Desbloca"
 
 #: data/ui/remmina_unlock.glade:94
 msgid "Unlock Remmina"
-msgstr ""
+msgstr "Desbloca el Remmina"
 
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password secret key"
-msgstr ""
+msgstr "Clau secreta de la contrasenya mestra"
 
 #: data/ui/remmina_spinner.glade:29 data/ui/remmina_key_chooser.glade:38
 #: data/ui/remmina_key_chooser.glade:53
 msgid "button"
-msgstr ""
+msgstr "botó"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "PLEASE WAIT…"
-msgstr ""
+msgstr "ESPEREU…"
 
 #: data/ui/remmina_news.glade:108
 msgid ""
@@ -2340,6 +2320,9 @@ msgid ""
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics to remmina.org"
 msgstr ""
+"Envia estadístiques <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab."
+"io/remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
+">anònimes</a></b> a remmina.org"
 
 #: data/ui/remmina_news.glade:133
 msgid "Make Remmina the default Remote Desktop Client"
@@ -2347,11 +2330,11 @@ msgstr "Fes del Remmina el client d’escriptori remot predeterminat"
 
 #: data/ui/remmina_news.glade:142
 msgid "Apply"
-msgstr ""
+msgstr "Aplica"
 
 #: data/ui/remmina_news.glade:166
 msgid "<big>Important settings</big>"
-msgstr ""
+msgstr "<big>Paràmetres importants</big>"
 
 #: data/ui/remmina_news.glade:192
 msgid ""
@@ -2364,7 +2347,7 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:212
 msgid "<big>Contribute</big>"
-msgstr ""
+msgstr "<big>Contribuïu-hi</big>"
 
 #: data/ui/remmina_mpc.glade:7
 msgid "Remmina - Multi Password Changer"
@@ -2372,7 +2355,7 @@ msgstr ""
 
 #: data/ui/remmina_mpc.glade:24
 msgid "Change"
-msgstr ""
+msgstr "Canvia"
 
 #: data/ui/remmina_mpc.glade:64
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
@@ -2380,11 +2363,11 @@ msgstr ""
 
 #: data/ui/remmina_mpc.glade:169
 msgid "Selection criteria"
-msgstr ""
+msgstr "Criteris de selecció"
 
 #: data/ui/remmina_mpc.glade:198
 msgid "Confirm password"
-msgstr ""
+msgstr "Confirmació de contrasenya"
 
 #: data/ui/remmina_mpc.glade:211
 #, fuzzy
@@ -2396,41 +2379,38 @@ msgstr "Desa la contrasenya"
 #: data/ui/remmina_mpc.glade:305
 msgctxt "Multi password changer"
 msgid "Select"
-msgstr ""
+msgstr "Selecciona"
 
 #: data/ui/remmina_mpc.glade:317
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "Nom"
 
 #: data/ui/remmina_mpc.glade:328
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "Grup"
 
 #: data/ui/remmina_mpc.glade:339
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
-msgstr "Nom d'usuari"
+msgstr "Domini o nom d’usuari"
 
 #: data/ui/remmina_preferences.glade:41
 msgid "Remmina Preferences"
-msgstr ""
+msgstr "Preferències del Remmina"
 
 #: data/ui/remmina_preferences.glade:99
 msgid "Double-click action"
-msgstr ""
+msgstr "Acció en fer doble clic"
 
 #: data/ui/remmina_preferences.glade:113
 msgid "Open connection"
-msgstr ""
+msgstr "Obre una connexió"
 
 #: data/ui/remmina_preferences.glade:114
 msgid "Edit settings"
-msgstr ""
+msgstr "Edita la configuració"
 
 #: data/ui/remmina_preferences.glade:130
 #, fuzzy
@@ -2472,16 +2452,15 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:295
 msgid "Select a Folder"
-msgstr ""
+msgstr "Seleccioneu una carpeta"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Screen resolutions"
-msgstr ""
+msgstr "Resolucions de pantalla"
 
 #: data/ui/remmina_preferences.glade:326
-#, fuzzy
 msgid "Screenshot filename"
-msgstr "S'ha fet una captura de pantalla"
+msgstr "Nom de fitxer per a captures de pantalla"
 
 #: data/ui/remmina_preferences.glade:338
 msgid ""
@@ -2495,31 +2474,34 @@ msgid ""
 "The folder where connection profiles are saved, it defaults to the "
 "XDG_USER_DATA"
 msgstr ""
+"La carpeta on es desaran els perfils de connexió; per defecte és "
+"XDG_USER_DATA"
 
 #. The folder where profiles are saved
 #: data/ui/remmina_preferences.glade:361
 msgid "Remmina data folder"
-msgstr ""
+msgstr "Carpeta de dades del Remmina"
 
 #: data/ui/remmina_preferences.glade:388
 msgid "Remember last view mode for each connection"
-msgstr ""
+msgstr "Recorda el darrer mode de visualització de cada connexió"
 
 #: data/ui/remmina_preferences.glade:392
 msgid "Remember last view mode"
-msgstr ""
+msgstr "Recorda el darrer mode de visualització"
 
 #: data/ui/remmina_preferences.glade:418
 msgid "Send periodic usage statistics to Remmina developers"
-msgstr ""
+msgstr "Envia estadístiques d’ús periòdicament a l’equip del Remmina"
 
 #: data/ui/remmina_preferences.glade:422
 msgid "Send statistics to remmina.org"
-msgstr ""
+msgstr "Envia estadístiques a remmina.org"
 
 #: data/ui/remmina_preferences.glade:462
 msgid "Only save generated screenshots, don't copy them to clipboard."
 msgstr ""
+"Desa les captures de pantalla generades sense copiar-les al porta-retalls."
 
 #: data/ui/remmina_preferences.glade:467
 msgid "Prevent screenshots from entering clipboard"
@@ -2551,23 +2533,23 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:518
 msgid "Options"
-msgstr ""
+msgstr "Opcions"
 
 #: data/ui/remmina_preferences.glade:532
 msgid "Always show tabs"
-msgstr ""
+msgstr "Sempre mostra les pestanyes"
 
 #: data/ui/remmina_preferences.glade:549
 msgid "Hide the toolbar shown in the tabbed interface"
-msgstr ""
+msgstr "Amaga la barra d’eines de la interfície amb pestanyes"
 
 #: data/ui/remmina_preferences.glade:570
 msgid "Default view mode"
-msgstr ""
+msgstr "Mode de visualització per defecte"
 
 #: data/ui/remmina_preferences.glade:584
 msgid "Automatic"
-msgstr ""
+msgstr "Automàtic"
 
 #: data/ui/remmina_preferences.glade:585
 msgid "Scrolled window"
@@ -2579,7 +2561,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:603
 msgid "Tabbed interface"
-msgstr ""
+msgstr "Interfície amb pestanyes"
 
 #: data/ui/remmina_preferences.glade:618
 msgid "Tab by groups"
@@ -2595,7 +2577,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:621
 msgid "No tabs"
-msgstr ""
+msgstr "Sense pestanyes"
 
 #: data/ui/remmina_preferences.glade:632
 msgid "Fullscreen on the same screen as the connection window"
@@ -2615,11 +2597,11 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:683
 msgid "Hide the search bar shown in the main window"
-msgstr ""
+msgstr "Amaga la barra de cerca a la finestra principal"
 
 #: data/ui/remmina_preferences.glade:707
 msgid "Appearance"
-msgstr ""
+msgstr "Aparença"
 
 #: data/ui/remmina_preferences.glade:722
 msgid "Show new connection on top of the menu"
@@ -2652,7 +2634,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:839
 msgid "Host key"
-msgstr ""
+msgstr "Tecla d’amfitrió"
 
 #: data/ui/remmina_preferences.glade:870
 #, fuzzy
@@ -2673,20 +2655,20 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1094
 msgid "Show/hide toolbar"
-msgstr ""
+msgstr "Mostra/amaga la barra d’eines"
 
 #: data/ui/remmina_preferences.glade:1156
 #: data/ui/remmina_preferences.glade:1166
 msgid "View-only mode"
-msgstr ""
+msgstr "Mode de només visualització"
 
 #: data/ui/remmina_preferences.glade:1190
 msgid "Keyboard"
-msgstr ""
+msgstr "Teclat"
 
 #: data/ui/remmina_preferences.glade:1209
 msgid "Local SSH port"
-msgstr ""
+msgstr "Port SSH local"
 
 #: data/ui/remmina_preferences.glade:1233
 msgid "Parse ~/.ssh/config"
@@ -2745,7 +2727,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1435
 msgid "Master password"
-msgstr ""
+msgstr "Contrasenya mestra"
 
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
@@ -2767,7 +2749,7 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1516
 msgid "File encryption"
-msgstr ""
+msgstr "Xifratge de fitxers"
 
 #: data/ui/remmina_preferences.glade:1546
 #, fuzzy
