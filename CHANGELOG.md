@@ -56,6 +56,34 @@
 * remmina_preferences: Improve file chooser words [!1928](https://gitlab.com/Remmina/Remmina/merge_requests/1928) *@rafaelff*
 * Brief on custom display numbers in usage. [!1902](https://gitlab.com/Remmina/Remmina/merge_requests/1902) *@kocielnik*
 * Fixing preferences layout [!1930](https://gitlab.com/Remmina/Remmina/merge_requests/1930) *@antenore*
+* Translations (Arabic) @Hosted Weblate
+* Translations (Basque) @Hosted Weblate
+* Translations (Bosnian) @Hosted Weblate
+* Translations (Catalan) @Hosted Weblate
+* Translations (Chinese (Traditional)) @Hosted Weblate
+* Translations (Croatian) @Hosted Weblate
+* Translations (Czech) @Hosted Weblate
+* Translations (Danish) @Hosted Weblate
+* Translations (Dutch) @Hosted Weblate
+* Translations (Finnish) @Hosted Weblate
+* Translations (French) @Hosted Weblate
+* Translations (German) @Hosted Weblate
+* Translations (Greek) @Hosted Weblate
+* Translations (Hebrew) @Hosted Weblate
+* Translations (Italian) @Hosted Weblate
+* Translations (Japanese) @Hosted Weblate
+* Translations (Norwegian Bokmål) @Hosted Weblate
+* Translations (Occidental) @Hosted Weblate
+* Translations (Polish) @Hosted Weblate
+* Translations (Portuguese (Brazil)) @Hosted Weblate
+* Translations (Portuguese (Portugal)) @Hosted Weblate
+* Translations (Spanish) @Hosted Weblate
+* Translations (Swedish) @Hosted Weblate
+* Translations (Turkish) @Hosted Weblate
+* Translations (Ukrainian) @Hosted Weblate
+* Translations (Uyghur) @Hosted Weblate
+* Translations (Uzbek) @Hosted Weblate
+
 
 ## v1.3.6
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.5...v.1.3.6)
