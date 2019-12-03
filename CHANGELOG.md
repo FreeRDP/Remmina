@@ -20,6 +20,7 @@
 * Use ubuntudesktop/gnome-3-28-1804 docker image for snap build [!1925](https://gitlab.com/Remmina/Remmina/merge_requests/1925) *@kenvandine*
 * Various Fixes [!1931](https://gitlab.com/Remmina/Remmina/merge_requests/1931) *@antenore*
 * Fix RDP failed auth after credentials panel: big rework on plugin connection close flow [!1935](https://gitlab.com/Remmina/Remmina/merge_requests/1935) *@giox069*
+* Add RDP option to use old license workflow [!1961](https://gitlab.com/Remmina/Remmina/merge_requests/1961) *@antenore*
 
 ### L10n, language and interface
 
