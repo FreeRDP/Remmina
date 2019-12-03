@@ -1181,6 +1181,8 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	/* Certificate ignore */
 	rfi->settings->IgnoreCertificate = remmina_plugin_service->file_get_int(remminafile, "cert_ignore", 0);
 
+	rfi->settings->OldLicenseBehaviour = remmina_plugin_service->file_get_int(remminafile, "old-license", 0);
+
 	rfi->settings->AllowUnanouncedOrdersFromServer = remmina_plugin_service->file_get_int(remminafile, "relax-order-checks", 0);
 
 	rfi->settings->GlyphSupportLevel = (remmina_plugin_service->file_get_int(remminafile, "glyph-cache", 0) ? GLYPH_SUPPORT_FULL : GLYPH_SUPPORT_NONE);
@@ -1978,6 +1980,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "microphone",		    N_("Redirect local microphone"),			 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disableclipboard",	    N_("Turn off clipboard sync"),			 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "cert_ignore",	    N_("Ignore certificate"),				 TRUE,	NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "old-license",	    N_("Use the old license workflow"),				 TRUE,	NULL,	       N_("It disables CAL and hwId is set to 0")													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disablepasswordstoring", N_("Turn off password storing"),			 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "console",		    N_("Attach to console (2003/2003 R2)"),		 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disable_fastpath",	    N_("Turn off fast-path"),				 TRUE,	NULL,	       NULL													      },
