@@ -1971,7 +1971,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "serialpath",		    N_("Local serial path"),				 FALSE, NULL,	       N_("/dev/ttyS0, /dev/ttyS1, etc.")									      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "parallelname",	    N_("Local parallel name"),				 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "parallelpath",	    N_("Local parallel device"),			 FALSE, NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "smartcardname",	    N_("Smartcard Name"),				 FALSE, NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "smartcardname",	    N_("Smartcard name"),				 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareprinter",	    N_("Share printers"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareserial",	    N_("Share serial ports"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "serialpermissive",	    N_("Serial ports permissive mode"),			 TRUE,	NULL,	       NULL													      },
