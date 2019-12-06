@@ -242,7 +242,7 @@ remmina_plugin_sftp_open_connection(RemminaProtocolWidget *gp)
 
 	if (pthread_create(&gpdata->thread, NULL, remmina_plugin_sftp_main_thread, gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp,
-								  "Failed to initialize pthread. Falling back to non-thread mode…");
+								  "Could not initialize pthread. Falling back to non-thread mode…");
 		gpdata->thread = 0;
 		return FALSE;
 	} else {
@@ -347,10 +347,10 @@ static const RemminaProtocolSetting remmina_sftp_basic_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "ssh_server",	    NULL,			  FALSE, "_sftp-ssh._tcp", NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "ssh_username",   N_("Username"),		  FALSE, NULL,		   NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password",   N_("User password"),	  FALSE, NULL,		   NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password",   N_("Password"),	  FALSE, NULL,		   NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth",	    N_("Authentication type"),	  FALSE, ssh_auth,	   NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey", N_("Identity file"),	  FALSE, NULL,		   NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase", N_("Private key passphrase"), FALSE, NULL,		   NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase", N_("Password to unlock private key"), FALSE, NULL,		   NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,			  FALSE, NULL,		   NULL }
 };
 
@@ -374,7 +374,7 @@ static RemminaProtocolPlugin remmina_plugin_sftp =
 	remmina_plugin_sftp_query_feature,              // Query for available features
 	remmina_plugin_sftp_call_feature,               // Call a feature
 	NULL,                                           // Send a keystroke
-	NULL                                            // No screenshot support available
+	NULL                                            // Screenshot support unavailable
 };
 
 void

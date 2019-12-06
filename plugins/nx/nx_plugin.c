@@ -58,7 +58,7 @@ RemminaPluginService *remmina_plugin_nx_service = NULL;
 static gchar *remmina_kbtype = "pc102/us";
 
 /* When more than one NX sessions is connecting in progress, we need this mutex and array
- * to prevent them from stealing the same window id.
+ * to prevent them from stealing the same window ID.
  */
 static pthread_mutex_t remmina_nx_init_mutex;
 static GArray *remmina_nx_window_id_array;
@@ -88,7 +88,7 @@ static gboolean onMainThread_cb(struct onMainThread_cb_data *d)
 		}
 		pthread_mutex_unlock( &d->mu );
 	} else {
-		/* thread has been cancelled, so we must free d memory here */
+		/* Thread has been cancelled, so we must free d memory here */
 		g_free( d );
 	}
 	return G_SOURCE_REMOVE;
@@ -202,7 +202,7 @@ gboolean remmina_plugin_nx_ssh_auth_callback(gchar **passphrase, gpointer userda
 		_("SSH credentials"), NULL,
 		NULL,
 		NULL,
-		_("SSH private key passphrase"));
+		_("Password for private SSH key"));
 	if (ret == GTK_RESPONSE_OK) {
 		*passphrase = remmina_plugin_nx_service->protocol_plugin_init_get_password(gp);
 		return TRUE;
@@ -605,7 +605,7 @@ static gboolean remmina_plugin_nx_open_connection(RemminaProtocolWidget *gp)
 
 	if (!remmina_plugin_nx_service->gtksocket_available()) {
 		remmina_plugin_nx_service->protocol_plugin_set_error(gp,
-			_("Protocol %s is unavailable because GtkSocket only works under X.Org"),
+			_("The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."),
 			remmina_plugin_nx.name);
 		return FALSE;
 	}
@@ -712,7 +712,7 @@ static gpointer quality_list[] =
  * c) Setting description
  * d) Compact disposition
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
- * f) Setting Tooltip
+ * f) Setting tooltip
  */
 static const RemminaProtocolSetting remmina_plugin_nx_basic_settings[] =
 {
@@ -733,7 +733,7 @@ static const RemminaProtocolSetting remmina_plugin_nx_basic_settings[] =
  * c) Setting description
  * d) Compact disposition
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
- * f) Setting Tooltip
+ * f) Setting tooltip
  */
 static const RemminaProtocolSetting remmina_plugin_nx_advanced_settings[] =
 {
@@ -773,7 +773,7 @@ static RemminaProtocolPlugin remmina_plugin_nx =
 	remmina_plugin_nx_query_feature,                // Query for available features
 	remmina_plugin_nx_call_feature,                 // Call a feature
 	NULL,                                           // Send a keystroke
-	NULL                                            // No screenshot support available
+	NULL                                            // Screenshot support unavailable
 };
 
 G_MODULE_EXPORT gboolean
@@ -803,7 +803,7 @@ remmina_plugin_entry(RemminaPluginService *service)
 			s = strchr(remmina_kbtype, ',');
 			if (s)
 				*s = '\0';
-			/* g_print("NX: detected keyboard type %s\n", remmina_kbtype); */
+			/* g_print("NX: Detected \"%s\" keyboard type\n", remmina_kbtype); */
 		}
 		XCloseDisplay(dpy);
 	}
