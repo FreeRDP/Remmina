@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-12-05 20:28+0000\n"
+"POT-Creation-Date: 2019-12-06 07:47+0000\n"
 "PO-Revision-Date: 2019-11-06 06:15+0000\n"
 "Last-Translator: Walter Cheuk <wwycheuk@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -67,9 +67,9 @@ msgstr "無法執行指令：%s"
 
 #: src/remmina_protocol_widget.c:1339 src/remmina_protocol_widget.c:1358
 #: src/remmina_ssh_plugin.c:958 src/remmina_sftp_plugin.c:317
-#: src/remmina_file_editor.c:926 plugins/www/www_plugin.c:793
-#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:116
-#: data/ui/remmina_preferences.glade:1533
+#: src/remmina_sftp_plugin.c:350 src/remmina_file_editor.c:926
+#: plugins/www/www_plugin.c:793 data/ui/remmina_unlock.glade:116
+#: data/ui/remmina_mpc.glade:116 data/ui/remmina_preferences.glade:1533
 msgid "Password"
 msgstr "密碼"
 
@@ -241,10 +241,9 @@ msgstr "全選(_S)"
 msgid "Username"
 msgstr "使用者名稱"
 
-#: src/remmina_ssh_plugin.c:1058 src/remmina_sftp_plugin.c:350
-#: plugins/vnc/vnc_plugin.c:1833 plugins/vnc/vnc_plugin.c:1853
-#: plugins/spice/spice_plugin.c:437 plugins/rdp/rdp_plugin.c:1937
-#: plugins/nx/nx_plugin.c:722
+#: src/remmina_ssh_plugin.c:1058 plugins/vnc/vnc_plugin.c:1833
+#: plugins/vnc/vnc_plugin.c:1853 plugins/spice/spice_plugin.c:437
+#: plugins/rdp/rdp_plugin.c:1937 plugins/nx/nx_plugin.c:722
 msgid "User password"
 msgstr "使用者密碼"
 
@@ -259,8 +258,8 @@ msgid "Identity file"
 msgstr "辨識身份檔"
 
 #: src/remmina_ssh_plugin.c:1061 src/remmina_sftp_plugin.c:353
-msgid "Private key passphrase"
-msgstr "私鑰密碼"
+msgid "Password to unlock private key"
+msgstr ""
 
 #: src/remmina_ssh_plugin.c:1062 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:1965 plugins/nx/nx_plugin.c:725
@@ -292,29 +291,33 @@ msgid "Preferred server host key types"
 msgstr "偏好的伺服器主機金鑰類型"
 
 #: src/remmina_ssh_plugin.c:1085
-msgid "SSH session log folder"
-msgstr "SSH 作業階段紀錄資料夾"
+#, fuzzy
+msgid "Folder for SSH session log"
+msgstr "未能啟動 SSH 作業階段：%s"
 
 #: src/remmina_ssh_plugin.c:1086
-msgid "SSH session log file name"
-msgstr "SSH 作業階段紀錄檔案名稱"
-
-#: src/remmina_ssh_plugin.c:1087
-msgid "Enable SSH session logging at exit"
+#, fuzzy
+msgid "Filename for SSH session log"
 msgstr "在離開時啟用 SSH 作業階段紀錄"
 
+#: src/remmina_ssh_plugin.c:1087
+msgid "Log SSH session when exiing Remmina"
+msgstr ""
+
 #: src/remmina_ssh_plugin.c:1088
-msgid "Enable terminal audible bell"
+#, fuzzy
+msgid "Audible terminal bell"
 msgstr "啟用終端機鈴聲"
 
 #: src/remmina_ssh_plugin.c:1089
-msgid "Enable SSH compression"
+#, fuzzy
+msgid "SSH compression"
 msgstr "啟用 SSH 壓縮"
 
-#: src/remmina_ssh_plugin.c:1090 plugins/vnc/vnc_plugin.c:1876
-#: plugins/spice/spice_plugin.c:456 plugins/nx/nx_plugin.c:743
-msgid "Disable password storing"
-msgstr "停用記住密碼"
+#: src/remmina_ssh_plugin.c:1090
+#, fuzzy
+msgid "Don't remember passwords"
+msgstr "確認密碼"
 
 #: src/remmina_ssh_plugin.c:1091
 msgid "Strict host key checking"
@@ -543,7 +546,8 @@ msgstr "顯示應用程式及外掛版本"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:113
-msgid "Modify connection profile, (requires --set-option)"
+#, fuzzy
+msgid "Modify connection profile (requires --set-option)"
 msgstr "修改連線設定檔（需要 --set-option）"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
@@ -975,7 +979,6 @@ msgid "SSH credentials"
 msgstr "SSH 身份檔案"
 
 #: src/remmina_ssh.c:282 src/remmina_ssh.c:563 src/remmina_ssh.c:590
-#: plugins/nx/nx_plugin.c:205
 msgid "SSH private key passphrase"
 msgstr "SSH 私鑰密碼"
 
@@ -1294,11 +1297,12 @@ msgid "SSH Authentication"
 msgstr "SSH 驗證"
 
 #: src/remmina_file_editor.c:920
-msgid "SSH Agent (automatic)"
+#, fuzzy
+msgid "SSH agent (automatic)"
 msgstr "SSH 代理（自動）"
 
 #: src/remmina_file_editor.c:994
-msgid "Turn on autostart for this profile"
+msgid "Turn on \"Autostart\" for this profile"
 msgstr ""
 
 #: src/remmina_file_editor.c:1002
@@ -1348,17 +1352,19 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "使用「%s」作為子群組分隔符"
 
 #: src/remmina_file_editor.c:1486
-msgid "Pre Command"
+#, fuzzy
+msgid "Pre-command"
 msgstr "連接前執行指令"
 
 #: src/remmina_file_editor.c:1504
-msgid "Post Command"
+#, fuzzy
+msgid "Post-command"
 msgstr "連接後執行指令"
 
 #: src/remmina_file_editor.c:1569 src/remmina_file_editor.c:1587
-#, c-format
-msgid "File %s not found."
-msgstr "找不到檔案 %s。"
+#, fuzzy, c-format
+msgid "Could not find the file \"%s\"."
+msgstr "無法開啟通道：%s"
 
 #: src/remmina_chat_window.c:178
 #, c-format
@@ -1500,15 +1506,15 @@ msgstr "來自 VNC 伺服器未知的驗證方案：%s"
 msgid "Please retry after enabling encryption on this profile."
 msgstr "請在此連線設定檔上啟用加密後重試"
 
-#: plugins/vnc/vnc_plugin.c:1803 plugins/rdp/rdp_plugin.c:1880
+#: plugins/vnc/vnc_plugin.c:1803
 msgid "256 colors (8 bpp)"
 msgstr "256 色 (8 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1804 plugins/rdp/rdp_plugin.c:1878
+#: plugins/vnc/vnc_plugin.c:1804
 msgid "High color (16 bpp)"
 msgstr "高彩 (16bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1805 plugins/rdp/rdp_plugin.c:1876
+#: plugins/vnc/vnc_plugin.c:1805
 msgid "True color (32 bpp)"
 msgstr "真彩 (32 bpp)"
 
@@ -1537,7 +1543,6 @@ msgid "Repeater"
 msgstr "中繼器"
 
 #: plugins/vnc/vnc_plugin.c:1834 plugins/vnc/vnc_plugin.c:1854
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1940
 msgid "Color depth"
 msgstr "色彩深度"
 
@@ -1571,6 +1576,11 @@ msgstr "停用加密"
 #: plugins/vnc/vnc_plugin.c:1875 plugins/vnc/vnc_plugin.c:1888
 msgid "Disable server input"
 msgstr "停用伺服器輸入"
+
+#: plugins/vnc/vnc_plugin.c:1876 plugins/spice/spice_plugin.c:456
+#: plugins/nx/nx_plugin.c:743
+msgid "Disable password storing"
+msgstr "停用記住密碼"
 
 #: plugins/vnc/vnc_plugin.c:1890
 msgid "Open Chat…"
@@ -1674,8 +1684,9 @@ msgid "Run out of available local X display number."
 msgstr "本機可用的 X 顯示編號已用盡。"
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:608
-#, c-format
-msgid "Protocol %s is unavailable because GtkSocket only works under X.Org"
+#, fuzzy, c-format
+msgid ""
+"The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
 msgstr "協定 %s 不可用，因為 GtkSocket 僅能在 X.Org 下使用"
 
 #: plugins/xdmcp/xdmcp_plugin.c:348
@@ -1687,16 +1698,24 @@ msgid "Grayscale"
 msgstr "灰階"
 
 #: plugins/xdmcp/xdmcp_plugin.c:350
-msgid "256 colors"
+#, fuzzy
+msgid "256 colours"
 msgstr "256 色"
 
 #: plugins/xdmcp/xdmcp_plugin.c:351
-msgid "High color (16 bit)"
+#, fuzzy
+msgid "High colour (16 bit)"
 msgstr "高彩 (16 位元)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:352
-msgid "True color (24 bit)"
+#, fuzzy
+msgid "True colour (24 bit)"
 msgstr "真彩 (24 位元)"
+
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1940
+#, fuzzy
+msgid "Colour depth"
+msgstr "色彩深度"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:742
 msgid "Use local cursor"
@@ -1839,7 +1858,7 @@ msgstr "無法啟動 pthread。"
 #, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for server %s, but your libfreerdp does not "
-"support H.264. Please use a non-AVC color depth setting."
+"support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
 "要求了於 %s 伺服器使用 H.264 GFX 模式，但您的 libfreerdp 並不支援 H.264。請使"
 "用非 AVC 的色彩深度設定。"
@@ -1875,13 +1894,30 @@ msgstr "GFX RFX (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:1876
+#, fuzzy
+msgid "True colour (32 bpp)"
+msgstr "真彩 (32 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:1877
-msgid "True color (24 bpp)"
+#, fuzzy
+msgid "True colour (24 bpp)"
 msgstr "真彩 (24 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:1878
+#, fuzzy
+msgid "High colour (16 bpp)"
+msgstr "高彩 (16bpp)"
+
 #: plugins/rdp/rdp_plugin.c:1879
-msgid "High color (15 bpp)"
+#, fuzzy
+msgid "High colour (15 bpp)"
 msgstr "高彩 (15 bpp)"
+
+#: plugins/rdp/rdp_plugin.c:1880
+#, fuzzy
+msgid "256 colours (8 bpp)"
+msgstr "256 色 (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1897 data/ui/remmina_preferences.glade:658
 msgid "Off"
@@ -1998,8 +2034,8 @@ msgid "Share serial ports"
 msgstr "共享序列埠"
 
 #: plugins/rdp/rdp_plugin.c:1977
-msgid "Serial ports permissive mode"
-msgstr "序列埠許可模式"
+msgid "(SELinux) permissive mode for serial ports"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1978
 msgid "Share parallel ports"
@@ -2153,7 +2189,8 @@ msgid "Reconnection attempt %d of %d…"
 msgstr "重新連線中。第 %d / %d 次嘗試…"
 
 #: plugins/nx/nx_session_manager.c:98
-msgid "Terminating"
+#, fuzzy
+msgid "Terminating…"
 msgstr "正在終止"
 
 #: plugins/nx/nx_session_manager.c:143
@@ -2184,6 +2221,10 @@ msgstr "顯示"
 #: plugins/nx/nx_session_manager.c:197
 msgid "Status"
 msgstr "狀態"
+
+#: plugins/nx/nx_plugin.c:205
+msgid "Password for private SSH key"
+msgstr ""
 
 #: plugins/nx/nx_plugin.c:367
 msgid "Enter NX authentication credentials"
@@ -2255,7 +2296,8 @@ msgid "Toggle view"
 msgstr "切換顯示"
 
 #: data/ui/remmina_main.glade:168
-msgid "search string or server name/ip address for quick connect"
+#, fuzzy
+msgid "Search string or server name/IP address for \"\\Quick Connect\\\""
 msgstr "搜尋字串或伺服器名稱 / ip 位址來進行快速連接"
 
 #: data/ui/remmina_main.glade:172 data/ui/remmina_main.glade:174

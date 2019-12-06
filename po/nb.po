@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-12-05 20:28+0000\n"
+"POT-Creation-Date: 2019-12-06 07:47+0000\n"
 "PO-Revision-Date: 2019-12-05 19:23+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
@@ -66,9 +66,9 @@ msgstr "Kunne ikke kjøre kommandoen, %s"
 
 #: src/remmina_protocol_widget.c:1339 src/remmina_protocol_widget.c:1358
 #: src/remmina_ssh_plugin.c:958 src/remmina_sftp_plugin.c:317
-#: src/remmina_file_editor.c:926 plugins/www/www_plugin.c:793
-#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:116
-#: data/ui/remmina_preferences.glade:1533
+#: src/remmina_sftp_plugin.c:350 src/remmina_file_editor.c:926
+#: plugins/www/www_plugin.c:793 data/ui/remmina_unlock.glade:116
+#: data/ui/remmina_mpc.glade:116 data/ui/remmina_preferences.glade:1533
 msgid "Password"
 msgstr "Passord"
 
@@ -241,10 +241,9 @@ msgstr "_Velg alt"
 msgid "Username"
 msgstr "Brukernavn"
 
-#: src/remmina_ssh_plugin.c:1058 src/remmina_sftp_plugin.c:350
-#: plugins/vnc/vnc_plugin.c:1833 plugins/vnc/vnc_plugin.c:1853
-#: plugins/spice/spice_plugin.c:437 plugins/rdp/rdp_plugin.c:1937
-#: plugins/nx/nx_plugin.c:722
+#: src/remmina_ssh_plugin.c:1058 plugins/vnc/vnc_plugin.c:1833
+#: plugins/vnc/vnc_plugin.c:1853 plugins/spice/spice_plugin.c:437
+#: plugins/rdp/rdp_plugin.c:1937 plugins/nx/nx_plugin.c:722
 msgid "User password"
 msgstr "Brukerpassord"
 
@@ -259,8 +258,8 @@ msgid "Identity file"
 msgstr "Identitetsfil"
 
 #: src/remmina_ssh_plugin.c:1061 src/remmina_sftp_plugin.c:353
-msgid "Private key passphrase"
-msgstr "Passord for privat nøkkel"
+msgid "Password to unlock private key"
+msgstr ""
 
 #: src/remmina_ssh_plugin.c:1062 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:1965 plugins/nx/nx_plugin.c:725
@@ -294,29 +293,32 @@ msgstr "Foretrukne tjenervertsnøkkeltyper"
 
 #: src/remmina_ssh_plugin.c:1085
 #, fuzzy
-msgid "SSH session log folder"
-msgstr "Loggingsmappe for SSH-økter"
+msgid "Folder for SSH session log"
+msgstr "Kunne ikke starte SSH-økt. %s"
 
 #: src/remmina_ssh_plugin.c:1086
-msgid "SSH session log file name"
-msgstr "Filnavn for SSH-øktlogg"
-
-#: src/remmina_ssh_plugin.c:1087
-msgid "Enable SSH session logging at exit"
+#, fuzzy
+msgid "Filename for SSH session log"
 msgstr "Skru på SSH-øktlogging ved avslutning"
 
+#: src/remmina_ssh_plugin.c:1087
+msgid "Log SSH session when exiing Remmina"
+msgstr ""
+
 #: src/remmina_ssh_plugin.c:1088
-msgid "Enable terminal audible bell"
+#, fuzzy
+msgid "Audible terminal bell"
 msgstr "Skru på klokke med lyd i terminalen"
 
 #: src/remmina_ssh_plugin.c:1089
-msgid "Enable SSH compression"
+#, fuzzy
+msgid "SSH compression"
 msgstr "Skru på SSH-komprimering"
 
-#: src/remmina_ssh_plugin.c:1090 plugins/vnc/vnc_plugin.c:1876
-#: plugins/spice/spice_plugin.c:456 plugins/nx/nx_plugin.c:743
-msgid "Disable password storing"
-msgstr "Skru av passordslagring"
+#: src/remmina_ssh_plugin.c:1090
+#, fuzzy
+msgid "Don't remember passwords"
+msgstr "Bekreft passord"
 
 #: src/remmina_ssh_plugin.c:1091
 #, fuzzy
@@ -553,7 +555,8 @@ msgstr "Vis programversjonen og dens programtillegg"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:113
-msgid "Modify connection profile, (requires --set-option)"
+#, fuzzy
+msgid "Modify connection profile (requires --set-option)"
 msgstr "Endre tilkoblingsprofil, (krever --set-option)"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
@@ -993,7 +996,6 @@ msgid "SSH credentials"
 msgstr "SSH-identitetbekreftelsesdetaljer"
 
 #: src/remmina_ssh.c:282 src/remmina_ssh.c:563 src/remmina_ssh.c:590
-#: plugins/nx/nx_plugin.c:205
 msgid "SSH private key passphrase"
 msgstr "Passord for SSH-privatnøkkel"
 
@@ -1319,11 +1321,13 @@ msgid "SSH Authentication"
 msgstr "SSH-identitetsbekreftelse"
 
 #: src/remmina_file_editor.c:920
-msgid "SSH Agent (automatic)"
+#, fuzzy
+msgid "SSH agent (automatic)"
 msgstr "SSH-agent (automatisk)"
 
 #: src/remmina_file_editor.c:994
-msgid "Turn on autostart for this profile"
+#, fuzzy
+msgid "Turn on \"Autostart\" for this profile"
 msgstr "Skru på autostart for denne profilen"
 
 #: src/remmina_file_editor.c:1002
@@ -1375,17 +1379,19 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "Bruk «%s» som skilletegn for undergrupper"
 
 #: src/remmina_file_editor.c:1486
-msgid "Pre Command"
+#, fuzzy
+msgid "Pre-command"
 msgstr "Forhåndskommando"
 
 #: src/remmina_file_editor.c:1504
-msgid "Post Command"
+#, fuzzy
+msgid "Post-command"
 msgstr "Etterfølgende kommando"
 
 #: src/remmina_file_editor.c:1569 src/remmina_file_editor.c:1587
-#, c-format
-msgid "File %s not found."
-msgstr "Fant ikke fila «%s»."
+#, fuzzy, c-format
+msgid "Could not find the file \"%s\"."
+msgstr "Klarte ikke å åpne kanal: %s"
 
 #: src/remmina_chat_window.c:178
 #, c-format
@@ -1529,15 +1535,15 @@ msgstr "Ukjent identitetsbekreftelsesmetode fra VNC-tjener: %s"
 msgid "Please retry after enabling encryption on this profile."
 msgstr "Skru på kryptering for denne profilen og prøv igjen."
 
-#: plugins/vnc/vnc_plugin.c:1803 plugins/rdp/rdp_plugin.c:1880
+#: plugins/vnc/vnc_plugin.c:1803
 msgid "256 colors (8 bpp)"
 msgstr "256 farger (8 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1804 plugins/rdp/rdp_plugin.c:1878
+#: plugins/vnc/vnc_plugin.c:1804
 msgid "High color (16 bpp)"
 msgstr "Høy fargeoppløsning (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1805 plugins/rdp/rdp_plugin.c:1876
+#: plugins/vnc/vnc_plugin.c:1805
 msgid "True color (32 bpp)"
 msgstr "Sann fargeoppløsning (32 bpp)"
 
@@ -1566,7 +1572,6 @@ msgid "Repeater"
 msgstr "Reléstasjon"
 
 #: plugins/vnc/vnc_plugin.c:1834 plugins/vnc/vnc_plugin.c:1854
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1940
 msgid "Color depth"
 msgstr "Fargedybde"
 
@@ -1600,6 +1605,11 @@ msgstr "Skru av kryptering"
 #: plugins/vnc/vnc_plugin.c:1875 plugins/vnc/vnc_plugin.c:1888
 msgid "Disable server input"
 msgstr "Skru av tjener-inndata"
+
+#: plugins/vnc/vnc_plugin.c:1876 plugins/spice/spice_plugin.c:456
+#: plugins/nx/nx_plugin.c:743
+msgid "Disable password storing"
+msgstr "Skru av passordslagring"
 
 #: plugins/vnc/vnc_plugin.c:1890
 msgid "Open Chat…"
@@ -1707,7 +1717,8 @@ msgstr "Slapp opp for tilgjengelige nummer for lokale X-skjermer."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:608
 #, fuzzy, c-format
-msgid "Protocol %s is unavailable because GtkSocket only works under X.Org"
+msgid ""
+"The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
 msgstr ""
 "Protokollen %s er utilgjengelig fordi GtkSocket kun fungerer under X.Org."
 
@@ -1720,16 +1731,24 @@ msgid "Grayscale"
 msgstr "Gråtoner"
 
 #: plugins/xdmcp/xdmcp_plugin.c:350
-msgid "256 colors"
+#, fuzzy
+msgid "256 colours"
 msgstr "256 farger"
 
 #: plugins/xdmcp/xdmcp_plugin.c:351
-msgid "High color (16 bit)"
+#, fuzzy
+msgid "High colour (16 bit)"
 msgstr "Høy fargeoppløsning (16 bit)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:352
-msgid "True color (24 bit)"
+#, fuzzy
+msgid "True colour (24 bit)"
 msgstr "Sann fargeoppløsning (24 bit)"
+
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1940
+#, fuzzy
+msgid "Colour depth"
+msgstr "Fargedybde"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:742
 msgid "Use local cursor"
@@ -1875,7 +1894,7 @@ msgstr "Klarte ikke å starte pthread."
 #, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for server %s, but your libfreerdp does not "
-"support H.264. Please use a non-AVC color depth setting."
+"support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
 "Du forespurte et H.264 GFX-modus for tjeneren %s, men din libfreerdp støtter "
 "ikke H.264. Bruk en innstilling som ikke er AVC-fargedybde."
@@ -1911,13 +1930,30 @@ msgstr "GFX RFX (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "Eksterne effekter (32 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:1876
+#, fuzzy
+msgid "True colour (32 bpp)"
+msgstr "Sann fargeoppløsning (32 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:1877
-msgid "True color (24 bpp)"
+#, fuzzy
+msgid "True colour (24 bpp)"
 msgstr "Sann fargeoppløsning (24 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:1878
+#, fuzzy
+msgid "High colour (16 bpp)"
+msgstr "Høy fargeoppløsning (16 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:1879
-msgid "High color (15 bpp)"
+#, fuzzy
+msgid "High colour (15 bpp)"
 msgstr "Høy fargeoppløsning (15 bpp)"
+
+#: plugins/rdp/rdp_plugin.c:1880
+#, fuzzy
+msgid "256 colours (8 bpp)"
+msgstr "256 farger (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1897 data/ui/remmina_preferences.glade:658
 msgid "Off"
@@ -2039,9 +2075,8 @@ msgid "Share serial ports"
 msgstr "Del seriellporter"
 
 #: plugins/rdp/rdp_plugin.c:1977
-#, fuzzy
-msgid "Serial ports permissive mode"
-msgstr "Tilforlatelig modus for serielle porter"
+msgid "(SELinux) permissive mode for serial ports"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1978
 msgid "Share parallel ports"
@@ -2202,7 +2237,8 @@ msgid "Reconnection attempt %d of %d…"
 msgstr "Gjentilkokblingsforsøk %d av %d…"
 
 #: plugins/nx/nx_session_manager.c:98
-msgid "Terminating"
+#, fuzzy
+msgid "Terminating…"
 msgstr "Avslutter"
 
 #: plugins/nx/nx_session_manager.c:143
@@ -2233,6 +2269,10 @@ msgstr "Skjerm"
 #: plugins/nx/nx_session_manager.c:197
 msgid "Status"
 msgstr "Status"
+
+#: plugins/nx/nx_plugin.c:205
+msgid "Password for private SSH key"
+msgstr ""
 
 #: plugins/nx/nx_plugin.c:367
 #, fuzzy
@@ -2310,7 +2350,7 @@ msgstr "Veksle visning"
 
 #: data/ui/remmina_main.glade:168
 #, fuzzy
-msgid "search string or server name/ip address for quick connect"
+msgid "Search string or server name/IP address for \"\\Quick Connect\\\""
 msgstr "søk etter streng eller tjenernavn/IP-addresse for hurtigtilkobling"
 
 #: data/ui/remmina_main.glade:172 data/ui/remmina_main.glade:174
@@ -3071,3 +3111,6 @@ msgstr "Velg en ny tast"
 msgid "Please press the new key…"
 msgstr "Trykk på den nye tasten…"
 
+#, fuzzy
+
+#, fuzzy

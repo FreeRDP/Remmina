@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-12-05 20:28+0000\n"
+"POT-Creation-Date: 2019-12-06 07:47+0000\n"
 "PO-Revision-Date: 2019-12-05 00:48+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
@@ -66,9 +66,9 @@ msgstr "Nepodařilo se spustit příkaz: %s"
 
 #: src/remmina_protocol_widget.c:1339 src/remmina_protocol_widget.c:1358
 #: src/remmina_ssh_plugin.c:958 src/remmina_sftp_plugin.c:317
-#: src/remmina_file_editor.c:926 plugins/www/www_plugin.c:793
-#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:116
-#: data/ui/remmina_preferences.glade:1533
+#: src/remmina_sftp_plugin.c:350 src/remmina_file_editor.c:926
+#: plugins/www/www_plugin.c:793 data/ui/remmina_unlock.glade:116
+#: data/ui/remmina_mpc.glade:116 data/ui/remmina_preferences.glade:1533
 msgid "Password"
 msgstr "Heslo"
 
@@ -239,10 +239,9 @@ msgstr "_Vybrat vše"
 msgid "Username"
 msgstr "Uživatelské jméno"
 
-#: src/remmina_ssh_plugin.c:1058 src/remmina_sftp_plugin.c:350
-#: plugins/vnc/vnc_plugin.c:1833 plugins/vnc/vnc_plugin.c:1853
-#: plugins/spice/spice_plugin.c:437 plugins/rdp/rdp_plugin.c:1937
-#: plugins/nx/nx_plugin.c:722
+#: src/remmina_ssh_plugin.c:1058 plugins/vnc/vnc_plugin.c:1833
+#: plugins/vnc/vnc_plugin.c:1853 plugins/spice/spice_plugin.c:437
+#: plugins/rdp/rdp_plugin.c:1937 plugins/nx/nx_plugin.c:722
 msgid "User password"
 msgstr "Heslo k uživatelskému účtu"
 
@@ -257,8 +256,8 @@ msgid "Identity file"
 msgstr "Soubor s identitou"
 
 #: src/remmina_ssh_plugin.c:1061 src/remmina_sftp_plugin.c:353
-msgid "Private key passphrase"
-msgstr "Heslová fráze k soukromému klíči"
+msgid "Password to unlock private key"
+msgstr ""
 
 #: src/remmina_ssh_plugin.c:1062 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:1965 plugins/nx/nx_plugin.c:725
@@ -290,29 +289,33 @@ msgid "Preferred server host key types"
 msgstr "Upřednostňované typy klíčů serveru hostitele"
 
 #: src/remmina_ssh_plugin.c:1085
-msgid "SSH session log folder"
-msgstr "Složka pro záznam SSH relace"
+#, fuzzy
+msgid "Folder for SSH session log"
+msgstr "Nepodařilo se zahájit SSH relaci: %s"
 
 #: src/remmina_ssh_plugin.c:1086
-msgid "SSH session log file name"
-msgstr "Název souboru pro záznam SSH relace"
-
-#: src/remmina_ssh_plugin.c:1087
-msgid "Enable SSH session logging at exit"
+#, fuzzy
+msgid "Filename for SSH session log"
 msgstr "Po ukončení zapnout záznam SSH relace"
 
+#: src/remmina_ssh_plugin.c:1087
+msgid "Log SSH session when exiing Remmina"
+msgstr ""
+
 #: src/remmina_ssh_plugin.c:1088
-msgid "Enable terminal audible bell"
+#, fuzzy
+msgid "Audible terminal bell"
 msgstr "Zapnout zvukové upozorňování terminálu"
 
 #: src/remmina_ssh_plugin.c:1089
-msgid "Enable SSH compression"
+#, fuzzy
+msgid "SSH compression"
 msgstr "Komprimovat data přenášená SSH tunelem"
 
-#: src/remmina_ssh_plugin.c:1090 plugins/vnc/vnc_plugin.c:1876
-#: plugins/spice/spice_plugin.c:456 plugins/nx/nx_plugin.c:743
-msgid "Disable password storing"
-msgstr "Neukládat hesla"
+#: src/remmina_ssh_plugin.c:1090
+#, fuzzy
+msgid "Don't remember passwords"
+msgstr "Zopakování hesla"
 
 #: src/remmina_ssh_plugin.c:1091
 msgid "Strict host key checking"
@@ -548,7 +551,8 @@ msgstr "Zobrazit verzi aplikace a jejích zásuvných modulů"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:113
-msgid "Modify connection profile, (requires --set-option)"
+#, fuzzy
+msgid "Modify connection profile (requires --set-option)"
 msgstr "Pozměnit profil připojení (vyžaduje také --set-option)"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
@@ -985,7 +989,6 @@ msgid "SSH credentials"
 msgstr "přihlašovací údaje pro SSH"
 
 #: src/remmina_ssh.c:282 src/remmina_ssh.c:563 src/remmina_ssh.c:590
-#: plugins/nx/nx_plugin.c:205
 msgid "SSH private key passphrase"
 msgstr "Heslová fráze k soukromému SSH klíči"
 
@@ -1310,11 +1313,13 @@ msgid "SSH Authentication"
 msgstr "Ověřování se pro SSH"
 
 #: src/remmina_file_editor.c:920
-msgid "SSH Agent (automatic)"
+#, fuzzy
+msgid "SSH agent (automatic)"
 msgstr "SSH Agent (automatické)"
 
 #: src/remmina_file_editor.c:994
-msgid "Turn on autostart for this profile"
+#, fuzzy
+msgid "Turn on \"Autostart\" for this profile"
 msgstr "Pro tento profil zapnout automatické spouštění"
 
 #: src/remmina_file_editor.c:1002
@@ -1364,17 +1369,19 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "Podskupiny oddělujte pomocí „%s“"
 
 #: src/remmina_file_editor.c:1486
-msgid "Pre Command"
+#, fuzzy
+msgid "Pre-command"
 msgstr "Příkaz před připojením"
 
 #: src/remmina_file_editor.c:1504
-msgid "Post Command"
+#, fuzzy
+msgid "Post-command"
 msgstr "Příkaz po připojení"
 
 #: src/remmina_file_editor.c:1569 src/remmina_file_editor.c:1587
-#, c-format
-msgid "File %s not found."
-msgstr "Soubor %s nenalezen."
+#, fuzzy, c-format
+msgid "Could not find the file \"%s\"."
+msgstr "Nepodařilo se otevřít kanál: %s"
 
 #: src/remmina_chat_window.c:178
 #, c-format
@@ -1516,15 +1523,15 @@ msgstr "Neznámé schéma ověřování od VNC serveru: %s"
 msgid "Please retry after enabling encryption on this profile."
 msgstr "Zapněte v tomto profilu šifrování a zkuste to znovu."
 
-#: plugins/vnc/vnc_plugin.c:1803 plugins/rdp/rdp_plugin.c:1880
+#: plugins/vnc/vnc_plugin.c:1803
 msgid "256 colors (8 bpp)"
 msgstr "256 barev (8 bit/px)"
 
-#: plugins/vnc/vnc_plugin.c:1804 plugins/rdp/rdp_plugin.c:1878
+#: plugins/vnc/vnc_plugin.c:1804
 msgid "High color (16 bpp)"
 msgstr "High color (16 bit/px)"
 
-#: plugins/vnc/vnc_plugin.c:1805 plugins/rdp/rdp_plugin.c:1876
+#: plugins/vnc/vnc_plugin.c:1805
 msgid "True color (32 bpp)"
 msgstr "True color (32 bit/px)"
 
@@ -1553,7 +1560,6 @@ msgid "Repeater"
 msgstr "Opakovač"
 
 #: plugins/vnc/vnc_plugin.c:1834 plugins/vnc/vnc_plugin.c:1854
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1940
 msgid "Color depth"
 msgstr "Barevná hloubka"
 
@@ -1587,6 +1593,11 @@ msgstr "Nešifrovat"
 #: plugins/vnc/vnc_plugin.c:1875 plugins/vnc/vnc_plugin.c:1888
 msgid "Disable server input"
 msgstr "Vypnout klávesnici a myš na straně serveru"
+
+#: plugins/vnc/vnc_plugin.c:1876 plugins/spice/spice_plugin.c:456
+#: plugins/nx/nx_plugin.c:743
+msgid "Disable password storing"
+msgstr "Neukládat hesla"
 
 #: plugins/vnc/vnc_plugin.c:1890
 msgid "Open Chat…"
@@ -1690,8 +1701,9 @@ msgid "Run out of available local X display number."
 msgstr "Došla volná čísla místního X displeje."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:608
-#, c-format
-msgid "Protocol %s is unavailable because GtkSocket only works under X.Org"
+#, fuzzy, c-format
+msgid ""
+"The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
 msgstr "Protokol %s není k dispozici protože GtkSocket funguje pouze pod X.Org"
 
 #: plugins/xdmcp/xdmcp_plugin.c:348
@@ -1703,16 +1715,24 @@ msgid "Grayscale"
 msgstr "Stupně šedi"
 
 #: plugins/xdmcp/xdmcp_plugin.c:350
-msgid "256 colors"
+#, fuzzy
+msgid "256 colours"
 msgstr "256 barev"
 
 #: plugins/xdmcp/xdmcp_plugin.c:351
-msgid "High color (16 bit)"
+#, fuzzy
+msgid "High colour (16 bit)"
 msgstr "High color (16 bitů)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:352
-msgid "True color (24 bit)"
+#, fuzzy
+msgid "True colour (24 bit)"
 msgstr "True color (24 bitů)"
+
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1940
+#, fuzzy
+msgid "Colour depth"
+msgstr "Barevná hloubka"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:742
 msgid "Use local cursor"
@@ -1851,10 +1871,10 @@ msgid "Could not start libfreerdp-gdi"
 msgstr "Nepodařilo se spustit libfreerdp-gdi"
 
 #: plugins/rdp/rdp_plugin.c:1568
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for server %s, but your libfreerdp does not "
-"support H.264. Please use a non-AVC color depth setting."
+"support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
 "Pro server %s jste vyžádali režim H.264 GFX, ale vámi používaná knihovna "
 "libfreerdp nepodporuje H.264. Použijte ne-AVC nastavení hloubky barev."
@@ -1892,13 +1912,30 @@ msgstr "GFX RFX (32 bit/px)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bit/px)"
 
+#: plugins/rdp/rdp_plugin.c:1876
+#, fuzzy
+msgid "True colour (32 bpp)"
+msgstr "True color (32 bit/px)"
+
 #: plugins/rdp/rdp_plugin.c:1877
-msgid "True color (24 bpp)"
+#, fuzzy
+msgid "True colour (24 bpp)"
 msgstr "True color (24 bit/px)"
 
+#: plugins/rdp/rdp_plugin.c:1878
+#, fuzzy
+msgid "High colour (16 bpp)"
+msgstr "High color (16 bit/px)"
+
 #: plugins/rdp/rdp_plugin.c:1879
-msgid "High color (15 bpp)"
+#, fuzzy
+msgid "High colour (15 bpp)"
 msgstr "High color (15 bit/px)"
+
+#: plugins/rdp/rdp_plugin.c:1880
+#, fuzzy
+msgid "256 colours (8 bpp)"
+msgstr "256 barev (8 bit/px)"
 
 #: plugins/rdp/rdp_plugin.c:1897 data/ui/remmina_preferences.glade:658
 msgid "Off"
@@ -2014,8 +2051,8 @@ msgid "Share serial ports"
 msgstr "Sdílet sériové porty"
 
 #: plugins/rdp/rdp_plugin.c:1977
-msgid "Serial ports permissive mode"
-msgstr "Vše dovolující režim sériových portů"
+msgid "(SELinux) permissive mode for serial ports"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1978
 msgid "Share parallel ports"
@@ -2167,7 +2204,8 @@ msgid "Reconnection attempt %d of %d…"
 msgstr "Probíhá opětovné navazování spojení. Pokus %d z %d…"
 
 #: plugins/nx/nx_session_manager.c:98
-msgid "Terminating"
+#, fuzzy
+msgid "Terminating…"
 msgstr "Ukončování"
 
 #: plugins/nx/nx_session_manager.c:143
@@ -2198,6 +2236,10 @@ msgstr "Obrazovka"
 #: plugins/nx/nx_session_manager.c:197
 msgid "Status"
 msgstr "Stav"
+
+#: plugins/nx/nx_plugin.c:205
+msgid "Password for private SSH key"
+msgstr ""
 
 #: plugins/nx/nx_plugin.c:367
 msgid "Enter NX authentication credentials"
@@ -2271,7 +2313,8 @@ msgid "Toggle view"
 msgstr "Přepnout Pohled"
 
 #: data/ui/remmina_main.glade:168
-msgid "search string or server name/ip address for quick connect"
+#, fuzzy
+msgid "Search string or server name/IP address for \"\\Quick Connect\\\""
 msgstr ""
 "vyhledávací řetězec nebo název / ip adresa serveru pro rychlé připojení"
 

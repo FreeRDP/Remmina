@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-12-05 20:28+0000\n"
+"POT-Creation-Date: 2019-12-06 07:47+0000\n"
 "PO-Revision-Date: 2019-12-05 20:25+0000\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -67,9 +67,9 @@ msgstr "Não foi possível executar o comando: %s"
 
 #: src/remmina_protocol_widget.c:1339 src/remmina_protocol_widget.c:1358
 #: src/remmina_ssh_plugin.c:958 src/remmina_sftp_plugin.c:317
-#: src/remmina_file_editor.c:926 plugins/www/www_plugin.c:793
-#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:116
-#: data/ui/remmina_preferences.glade:1533
+#: src/remmina_sftp_plugin.c:350 src/remmina_file_editor.c:926
+#: plugins/www/www_plugin.c:793 data/ui/remmina_unlock.glade:116
+#: data/ui/remmina_mpc.glade:116 data/ui/remmina_preferences.glade:1533
 msgid "Password"
 msgstr "Senha"
 
@@ -238,10 +238,9 @@ msgstr "_Selecionar tudo"
 msgid "Username"
 msgstr "Nome de usuário"
 
-#: src/remmina_ssh_plugin.c:1058 src/remmina_sftp_plugin.c:350
-#: plugins/vnc/vnc_plugin.c:1833 plugins/vnc/vnc_plugin.c:1853
-#: plugins/spice/spice_plugin.c:437 plugins/rdp/rdp_plugin.c:1937
-#: plugins/nx/nx_plugin.c:722
+#: src/remmina_ssh_plugin.c:1058 plugins/vnc/vnc_plugin.c:1833
+#: plugins/vnc/vnc_plugin.c:1853 plugins/spice/spice_plugin.c:437
+#: plugins/rdp/rdp_plugin.c:1937 plugins/nx/nx_plugin.c:722
 msgid "User password"
 msgstr "Senha de usuário"
 
@@ -256,8 +255,8 @@ msgid "Identity file"
 msgstr "Arquivo de identidade"
 
 #: src/remmina_ssh_plugin.c:1061 src/remmina_sftp_plugin.c:353
-msgid "Private key passphrase"
-msgstr "Frase secreta da chave privada"
+msgid "Password to unlock private key"
+msgstr ""
 
 #: src/remmina_ssh_plugin.c:1062 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:1965 plugins/nx/nx_plugin.c:725
@@ -289,29 +288,33 @@ msgid "Preferred server host key types"
 msgstr "Tipos de chaves de host servidor preferidos"
 
 #: src/remmina_ssh_plugin.c:1085
-msgid "SSH session log folder"
-msgstr "Pasta de log de sessão SSH"
+#, fuzzy
+msgid "Folder for SSH session log"
+msgstr "Falha ao iniciar sessão SSH: %s"
 
 #: src/remmina_ssh_plugin.c:1086
-msgid "SSH session log file name"
-msgstr "Nome de arquivo de log de sessão SSH"
-
-#: src/remmina_ssh_plugin.c:1087
-msgid "Enable SSH session logging at exit"
+#, fuzzy
+msgid "Filename for SSH session log"
 msgstr "Habilitar registro log da sessão SSH ao sair"
 
+#: src/remmina_ssh_plugin.c:1087
+msgid "Log SSH session when exiing Remmina"
+msgstr ""
+
 #: src/remmina_ssh_plugin.c:1088
-msgid "Enable terminal audible bell"
+#, fuzzy
+msgid "Audible terminal bell"
 msgstr "Ativar campainha audível de terminal"
 
 #: src/remmina_ssh_plugin.c:1089
-msgid "Enable SSH compression"
+#, fuzzy
+msgid "SSH compression"
 msgstr "Habilitar compressão SSH"
 
-#: src/remmina_ssh_plugin.c:1090 plugins/vnc/vnc_plugin.c:1876
-#: plugins/spice/spice_plugin.c:456 plugins/nx/nx_plugin.c:743
-msgid "Disable password storing"
-msgstr "Desabilitar armazenamento de senha"
+#: src/remmina_ssh_plugin.c:1090
+#, fuzzy
+msgid "Don't remember passwords"
+msgstr "Confirmar senha"
 
 #: src/remmina_ssh_plugin.c:1091
 msgid "Strict host key checking"
@@ -551,7 +554,8 @@ msgstr "Mostrar a versão do aplicativo e seus plugins"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:113
-msgid "Modify connection profile, (requires --set-option)"
+#, fuzzy
+msgid "Modify connection profile (requires --set-option)"
 msgstr "Modificar o perfil de conexão, (requer --set-option)"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
@@ -985,7 +989,6 @@ msgid "SSH credentials"
 msgstr "Credenciais SSH"
 
 #: src/remmina_ssh.c:282 src/remmina_ssh.c:563 src/remmina_ssh.c:590
-#: plugins/nx/nx_plugin.c:205
 msgid "SSH private key passphrase"
 msgstr "Frase secreta da chave privada SSH"
 
@@ -1305,11 +1308,13 @@ msgid "SSH Authentication"
 msgstr "Autenticação SSH"
 
 #: src/remmina_file_editor.c:920
-msgid "SSH Agent (automatic)"
+#, fuzzy
+msgid "SSH agent (automatic)"
 msgstr "Agente SSH (automático)"
 
 #: src/remmina_file_editor.c:994
-msgid "Turn on autostart for this profile"
+#, fuzzy
+msgid "Turn on \"Autostart\" for this profile"
 msgstr "Ativar inicialização automática para esse perfil"
 
 #: src/remmina_file_editor.c:1002
@@ -1360,17 +1365,19 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "Usa \"%s\" como delimitador de subgrupo"
 
 #: src/remmina_file_editor.c:1486
-msgid "Pre Command"
+#, fuzzy
+msgid "Pre-command"
 msgstr "Pré-comando"
 
 #: src/remmina_file_editor.c:1504
-msgid "Post Command"
+#, fuzzy
+msgid "Post-command"
 msgstr "Pós-comando"
 
 #: src/remmina_file_editor.c:1569 src/remmina_file_editor.c:1587
-#, c-format
-msgid "File %s not found."
-msgstr "Arquivo %s não encontrado."
+#, fuzzy, c-format
+msgid "Could not find the file \"%s\"."
+msgstr "Não foi possível abrir o canal: %s"
 
 #: src/remmina_chat_window.c:178
 #, c-format
@@ -1512,15 +1519,15 @@ msgstr "Esquema de autenticação desconhecida para o servidor VNC: %s"
 msgid "Please retry after enabling encryption on this profile."
 msgstr "Tente novamente depois de habilitar a criptografia neste perfil."
 
-#: plugins/vnc/vnc_plugin.c:1803 plugins/rdp/rdp_plugin.c:1880
+#: plugins/vnc/vnc_plugin.c:1803
 msgid "256 colors (8 bpp)"
 msgstr "256 cores (8 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1804 plugins/rdp/rdp_plugin.c:1878
+#: plugins/vnc/vnc_plugin.c:1804
 msgid "High color (16 bpp)"
 msgstr "High color (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1805 plugins/rdp/rdp_plugin.c:1876
+#: plugins/vnc/vnc_plugin.c:1805
 msgid "True color (32 bpp)"
 msgstr "True color (32 bpp)"
 
@@ -1549,7 +1556,6 @@ msgid "Repeater"
 msgstr "Repetidor"
 
 #: plugins/vnc/vnc_plugin.c:1834 plugins/vnc/vnc_plugin.c:1854
-#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1940
 msgid "Color depth"
 msgstr "Profundidade de cores"
 
@@ -1583,6 +1589,11 @@ msgstr "Desabilitar criptografia"
 #: plugins/vnc/vnc_plugin.c:1875 plugins/vnc/vnc_plugin.c:1888
 msgid "Disable server input"
 msgstr "Desativar entrada de servidor"
+
+#: plugins/vnc/vnc_plugin.c:1876 plugins/spice/spice_plugin.c:456
+#: plugins/nx/nx_plugin.c:743
+msgid "Disable password storing"
+msgstr "Desabilitar armazenamento de senha"
 
 #: plugins/vnc/vnc_plugin.c:1890
 msgid "Open Chat…"
@@ -1686,8 +1697,9 @@ msgid "Run out of available local X display number."
 msgstr "Esgotou-se a quantidade de tela X local disponível."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:608
-#, c-format
-msgid "Protocol %s is unavailable because GtkSocket only works under X.Org"
+#, fuzzy, c-format
+msgid ""
+"The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
 msgstr "O protocolo %s está indisponível porque GtkSocket só funciona no X.Org"
 
 #: plugins/xdmcp/xdmcp_plugin.c:348
@@ -1699,16 +1711,24 @@ msgid "Grayscale"
 msgstr "Escala de cinza"
 
 #: plugins/xdmcp/xdmcp_plugin.c:350
-msgid "256 colors"
+#, fuzzy
+msgid "256 colours"
 msgstr "256 cores"
 
 #: plugins/xdmcp/xdmcp_plugin.c:351
-msgid "High color (16 bit)"
+#, fuzzy
+msgid "High colour (16 bit)"
 msgstr "Alta qualidade (16 bits)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:352
-msgid "True color (24 bit)"
+#, fuzzy
+msgid "True colour (24 bit)"
 msgstr "True color (24 bit)"
+
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1940
+#, fuzzy
+msgid "Colour depth"
+msgstr "Profundidade de cores"
 
 #: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:742
 msgid "Use local cursor"
@@ -1847,10 +1867,10 @@ msgid "Could not start libfreerdp-gdi"
 msgstr "Não foi possível iniciar libfreerdp-gdi"
 
 #: plugins/rdp/rdp_plugin.c:1568
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for server %s, but your libfreerdp does not "
-"support H.264. Please use a non-AVC color depth setting."
+"support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
 "Você solicitou um modo H.264 GFX para o servidor %s, mas o libfreerdp não "
 "oferece suporte a H.264. Por favor, use uma configuração de profundidade de "
@@ -1889,13 +1909,30 @@ msgstr "GFX RFX (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:1876
+#, fuzzy
+msgid "True colour (32 bpp)"
+msgstr "True color (32 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:1877
-msgid "True color (24 bpp)"
+#, fuzzy
+msgid "True colour (24 bpp)"
 msgstr "True color (24 bpp)"
 
+#: plugins/rdp/rdp_plugin.c:1878
+#, fuzzy
+msgid "High colour (16 bpp)"
+msgstr "High color (16 bpp)"
+
 #: plugins/rdp/rdp_plugin.c:1879
-msgid "High color (15 bpp)"
+#, fuzzy
+msgid "High colour (15 bpp)"
 msgstr "High color (15 bpp)"
+
+#: plugins/rdp/rdp_plugin.c:1880
+#, fuzzy
+msgid "256 colours (8 bpp)"
+msgstr "256 cores (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1897 data/ui/remmina_preferences.glade:658
 msgid "Off"
@@ -2010,8 +2047,8 @@ msgid "Share serial ports"
 msgstr "Compartilhar portas seriais"
 
 #: plugins/rdp/rdp_plugin.c:1977
-msgid "Serial ports permissive mode"
-msgstr "Modo permissivo das portas seriais"
+msgid "(SELinux) permissive mode for serial ports"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1978
 msgid "Share parallel ports"
@@ -2163,7 +2200,8 @@ msgid "Reconnection attempt %d of %d…"
 msgstr "Tentativa de reconexão %d de %d…"
 
 #: plugins/nx/nx_session_manager.c:98
-msgid "Terminating"
+#, fuzzy
+msgid "Terminating…"
 msgstr "Encerrando"
 
 #: plugins/nx/nx_session_manager.c:143
@@ -2194,6 +2232,10 @@ msgstr "Tela"
 #: plugins/nx/nx_session_manager.c:197
 msgid "Status"
 msgstr "Estado"
+
+#: plugins/nx/nx_plugin.c:205
+msgid "Password for private SSH key"
+msgstr ""
 
 #: plugins/nx/nx_plugin.c:367
 msgid "Enter NX authentication credentials"
@@ -2268,7 +2310,8 @@ msgid "Toggle view"
 msgstr "Alternar visão"
 
 #: data/ui/remmina_main.glade:168
-msgid "search string or server name/ip address for quick connect"
+#, fuzzy
+msgid "Search string or server name/IP address for \"\\Quick Connect\\\""
 msgstr "texto de pesquisa ou nome/endereço ip do servidor para conexão rápida"
 
 #: data/ui/remmina_main.glade:172 data/ui/remmina_main.glade:174
