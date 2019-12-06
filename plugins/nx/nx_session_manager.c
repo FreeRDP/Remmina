@@ -95,7 +95,7 @@ static void remmina_nx_session_manager_on_response(GtkWidget *dialog, gint respo
 		event_type = response_id;
 	}
 	if (response_id == REMMINA_NX_EVENT_TERMINATE && gpdata->manager_selected) {
-		remmina_nx_session_iter_set(gpdata->nx, &gpdata->iter, REMMINA_NX_SESSION_COLUMN_STATUS, _("Terminating"));
+		remmina_nx_session_iter_set(gpdata->nx, &gpdata->iter, REMMINA_NX_SESSION_COLUMN_STATUS, _("Terminating…"));
 	}
 	if (response_id != REMMINA_NX_EVENT_TERMINATE) {
 		gtk_widget_destroy(dialog);
@@ -108,7 +108,7 @@ static void remmina_nx_session_manager_on_response(GtkWidget *dialog, gint respo
 }
 
 /* Handle double click on a row in the NX Session manager
- * Automatically close the dialog using the default response id */
+ * Automatically close the dialog using the default response ID */
 void remmina_nx_session_manager_on_row_activated(GtkTreeView *tree, GtkTreePath *path, GtkTreeViewColumn *column, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);

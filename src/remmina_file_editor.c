@@ -917,7 +917,7 @@ static void remmina_file_editor_create_ssh_tab(RemminaFileEditor *gfe, RemminaPr
 								_("Username"), NULL);
 			row++;
 		}
-		widget = gtk_radio_button_new_with_label(NULL, _("SSH Agent (automatic)"));
+		widget = gtk_radio_button_new_with_label(NULL, _("SSH agent (automatic)"));
 		gtk_grid_attach(GTK_GRID(grid), widget, 0, row + 19, 1, 1);
 		priv->ssh_auth_agent_radio = widget;
 		row++;
@@ -991,7 +991,7 @@ static void remmina_file_editor_create_all_settings(RemminaFileEditor *gfe)
 
 	static const RemminaProtocolSetting autostart_settings[] =
 	{
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-autostart", N_("Turn on autostart for this profile"),	       FALSE,  NULL, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK, "enable-autostart", N_("Turn on \"Autostart\" for this profile"),	       FALSE,  NULL, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END, NULL, NULL, FALSE, NULL, NULL }
 	};
 
@@ -1177,7 +1177,7 @@ static void remmina_file_editor_update(RemminaFileEditor *gfe)
 
 	if (priv->resolution_auto_radio) {
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->resolution_auto_radio))) {
-			/* Resolution is set to auto (which means: use client fullscreen resolution, aka use client resolution) */
+			/* Resolution is set to auto (which means: Use client fullscreen resolution, aka use client resolution) */
 			res_w = res_h = 0;
 			res_mode = RES_USE_CLIENT;
 		} else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(priv->resolution_iws_radio))) {
@@ -1255,7 +1255,7 @@ static void remmina_file_editor_on_connect(GtkWidget *button, RemminaFileEditor 
 	remmina_file_editor_update(gfe);
 
 	gf = remmina_file_dup(gfe->priv->remmina_file);
-	/* Put server into name for Quick Connect */
+	/* Put server into name for "Quick Connect" */
 	if (remmina_file_get_filename(gf) == NULL)
 		remmina_file_set_string(gf, "name", remmina_file_get_string(gf, "server"));
 	gtk_widget_destroy(GTK_WIDGET(gfe));
@@ -1266,7 +1266,7 @@ static void remmina_file_editor_on_connect(GtkWidget *button, RemminaFileEditor 
 static void remmina_file_editor_on_save_connect(GtkWidget *button, RemminaFileEditor *gfe)
 {
 	TRACE_CALL(__func__);
-	/** @todo Call remmina_file_editor_on_save */
+	/** @TODO: Call remmina_file_editor_on_save */
 	RemminaFile *gf;
 
 	remmina_file_editor_update(gfe);
@@ -1372,7 +1372,7 @@ static void remmina_file_editor_entry_on_changed(GtkEditable *editable, RemminaF
 	priv = gfe->priv;
 	if (remmina_file_get_filename(priv->remmina_file) == NULL) {
 		remmina_file_generate_filename(priv->remmina_file);
-		/* TODO Probably to be removed */
+		/* TODO: Probably to be removed */
 		remmina_file_editor_check_profile(gfe);
 	} else {
 		remmina_file_delete(remmina_file_get_filename(priv->remmina_file));
@@ -1414,7 +1414,7 @@ GtkWidget *remmina_file_editor_new_from_file(RemminaFile *remminafile)
 	if (remmina_file_get_filename(remminafile) == NULL)
 		gtk_dialog_set_response_sensitive(GTK_DIALOG(gfe), GTK_RESPONSE_APPLY, FALSE);
 
-	/* Create the Profile group on the top (for name and protocol) */
+	/* Create the "Profile" group on the top (for name and protocol) */
 	grid = gtk_grid_new();
 	gtk_widget_show(grid);
 	gtk_grid_set_row_spacing(GTK_GRID(grid), 4);
@@ -1482,8 +1482,8 @@ GtkWidget *remmina_file_editor_new_from_file(RemminaFile *remminafile)
 	remmina_plugin_manager_for_each_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL, remmina_file_editor_iterate_protocol, gfe);
 	g_signal_connect(G_OBJECT(widget), "changed", G_CALLBACK(remmina_file_editor_protocol_combo_on_changed), gfe);
 
-	/* Prior Connection Command */
-	widget = gtk_label_new(_("Pre Command"));
+	/* Prior connection command */
+	widget = gtk_label_new(_("Pre-command"));
 	gtk_widget_show(widget);
 	gtk_widget_set_valign(widget, GTK_ALIGN_START);
 	gtk_widget_set_halign(widget, GTK_ALIGN_START);
@@ -1500,8 +1500,8 @@ GtkWidget *remmina_file_editor_new_from_file(RemminaFile *remminafile)
 	gtk_entry_set_placeholder_text(GTK_ENTRY(widget), "command %h %u %t %U %p %g --option");
 	gtk_widget_set_tooltip_markup(widget, _(cmd_tips));
 
-	/* POST Connection Command */
-	widget = gtk_label_new(_("Post Command"));
+	/* POST connection command */
+	widget = gtk_label_new(_("Post-command"));
 	gtk_widget_show(widget);
 	gtk_widget_set_valign(widget, GTK_ALIGN_START);
 	gtk_widget_set_halign(widget, GTK_ALIGN_START);
@@ -1518,7 +1518,7 @@ GtkWidget *remmina_file_editor_new_from_file(RemminaFile *remminafile)
 	gtk_entry_set_placeholder_text(GTK_ENTRY(widget), "/path/to/command -opt1 arg %h %u %t -opt2 %U %p %g");
 	gtk_widget_set_tooltip_markup(widget, _(cmd_tips));
 
-	/* Create the Preference frame */
+	/* Create the "Preference" frame */
 	widget = gtk_event_box_new();
 	gtk_widget_show(widget);
 	gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(gfe))), widget, TRUE, TRUE, 2);
@@ -1566,7 +1566,7 @@ GtkWidget *remmina_file_editor_new_copy(const gchar *filename)
 		return remmina_file_editor_new_from_file(remminafile);
 	} else {
 		dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
-						_("File %s not found."), filename);
+						_("Could not find the file \"%s\"."), filename);
 		gtk_dialog_run(GTK_DIALOG(dialog));
 		gtk_widget_destroy(dialog);
 		return NULL;
@@ -1584,7 +1584,7 @@ GtkWidget *remmina_file_editor_new_from_filename(const gchar *filename)
 		return remmina_file_editor_new_from_file(remminafile);
 	} else {
 		dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
-						_("File %s not found."), filename);
+						_("Could not find the file \"%s\"."), filename);
 		gtk_dialog_run(GTK_DIALOG(dialog));
 		gtk_widget_destroy(dialog);
 		return NULL;

@@ -110,7 +110,7 @@ static GOptionEntry remmina_options[] =
 	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 	{ "full-version",     'V',  0,			  G_OPTION_ARG_NONE,	       NULL, N_("Show version of the application and its plugins"),		     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-	{ "update-profile",   0,    0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Modify connection profile, (requires --set-option)"),			     NULL	},
+	{ "update-profile",   0,    0,			  G_OPTION_ARG_FILENAME,       NULL, N_("Modify connection profile (requires --set-option)"),			     NULL	},
 	// TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 	{ "set-option",	      0,    0,			  G_OPTION_ARG_STRING_ARRAY,   NULL, N_("Set one or more profile settings, to be used with --update-profile"),		     NULL	},
 	{ NULL }
@@ -250,10 +250,10 @@ static void remmina_on_startup(GApplication *app)
 	 * something is missing */
 	secret_plugin = remmina_plugin_manager_get_secret_plugin();
 	if (!secret_plugin) {
-		g_print("WARNING: Remmina is running without a secret plugin. Passwords will be saved in a less secure way.\n");
+		g_print("Warning: Remmina is running without a secret plugin. Passwords will be saved in a less secure way.\n");
 	} else {
 		if (!secret_plugin->is_service_available())
-			g_print("WARNING: Remmina is running with a secret plugin, but it cannot connect to a secret service.\n");
+			g_print("Warning: Remmina is running with a secrecy plugin, but it cannot connect to a secrecy service.\n");
 	}
 
 	remmina_exec_command(REMMINA_COMMAND_AUTOSTART, NULL);

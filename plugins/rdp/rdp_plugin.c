@@ -1565,7 +1565,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 					remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not start libfreerdp-gdi"));
 					break;
 				case REMMINA_POSTCONNECT_ERROR_NO_H264:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("You requested a H.264 GFX mode for server %s, but your libfreerdp does not support H.264. Please use a non-AVC color depth setting."), rfi->settings->ServerHostname);
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("You requested a H.264 GFX mode for server %s, but your libfreerdp does not support H.264. Please use a non-AVC colour depth setting."), rfi->settings->ServerHostname);
 					break;
 				}
 				break;
@@ -1865,7 +1865,7 @@ static gboolean remmina_rdp_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 	return TRUE;
 }
 
-/* Array of key/value pairs for color depths */
+/* Array of key/value pairs for colour depths */
 static gpointer colordepth_list[] =
 {
 	/* 1st one is the default in a new install */
@@ -1873,11 +1873,11 @@ static gpointer colordepth_list[] =
 	"65", N_("GFX AVC420 (32 bpp)"),
 	"64", N_("GFX RFX (32 bpp)"),
 	"0",  N_("RemoteFX (32 bpp)"),
-	"32", N_("True color (32 bpp)"),
-	"24", N_("True color (24 bpp)"),
-	"16", N_("High color (16 bpp)"),
-	"15", N_("High color (15 bpp)"),
-	"8",  N_("256 colors (8 bpp)"),
+	"32", N_("True colour (32 bpp)"),
+	"24", N_("True colour (24 bpp)"),
+	"16", N_("High colour (16 bpp)"),
+	"15", N_("High colour (15 bpp)"),
+	"8",  N_("256 colours (8 bpp)"),
 	NULL
 };
 
@@ -1937,7 +1937,7 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",	   N_("User password"), FALSE, NULL,		NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "domain",	   N_("Domain"),	FALSE, NULL,		NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",  NULL,		FALSE, NULL,		NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",  N_("Color depth"),	FALSE, colordepth_list, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",  N_("Colour depth"),	FALSE, colordepth_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder", N_("Share folder"),	FALSE, NULL,		NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,	   NULL,		FALSE, NULL,		NULL }
 };
@@ -1974,7 +1974,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "smartcardname",	    N_("Smartcard name"),				 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareprinter",	    N_("Share printers"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareserial",	    N_("Share serial ports"),				 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "serialpermissive",	    N_("Serial ports permissive mode"),			 TRUE,	NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "serialpermissive",	    N_("(SELinux) permissive mode for serial ports"),			 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareparallel",	    N_("Share parallel ports"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "sharesmartcard",	    N_("Share smartcard"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "microphone",		    N_("Redirect local microphone"),			 TRUE,	NULL,	       NULL													      },

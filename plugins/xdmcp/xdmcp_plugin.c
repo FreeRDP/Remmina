@@ -106,10 +106,10 @@ static gboolean remmina_plugin_xdmcp_start_xephyr(RemminaProtocolWidget *gp)
 	argv[argc++] = g_strdup("-parent");
 	argv[argc++] = g_strdup_printf("%i", gpdata->socket_id);
 
-	/* All Xephyr version between 1.5.0 and 1.6.4 will break when -screen argument is specified with -parent.
-	 * It’s not possible to support color depth if you have those Xephyr version. Please see this bug
+	/* All Xephyr version between 1.5.0 and 1.6.4 will break when "-screen" argument is specified with "-parent".
+	 * It’s not possible to support colour depth if you have those Xephyr version. Please see this bug
 	 * http://bugs.freedesktop.org/show_bug.cgi?id=24144
-	 * As a workaround, a "Default" color depth will not add the -screen argument.
+	 * As a workaround, a "Default" colour depth will not add the "-screen" argument.
 	 */
 	i = remmina_plugin_service->file_get_int(remminafile, "colordepth", 8);
 	if (i >= 8) {
@@ -261,7 +261,7 @@ static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 
 	if (!remmina_plugin_service->gtksocket_available()) {
 		remmina_plugin_service->protocol_plugin_set_error(gp,
-			_("Protocol %s is unavailable because GtkSocket only works under X.Org"),
+			_("The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."),
 			remmina_plugin_xdmcp.name);
 		return FALSE;
 	}
@@ -312,7 +312,7 @@ static gboolean remmina_plugin_xdmcp_close_connection(RemminaProtocolWidget *gp)
 	return FALSE;
 }
 
-/* Send CTRL+ALT+DEL keys keystrokes to the plugin socket widget */
+/* Send Ctrl+Alt+Del keys keystrokes to the plugin socket widget */
 static void remmina_plugin_xdmcp_send_ctrlaltdel(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -342,14 +342,14 @@ static void remmina_plugin_xdmcp_call_feature(RemminaProtocolWidget *gp, const R
 	}
 }
 
-/* Array of key/value pairs for color depths */
+/* Array of key/value pairs for colour depths */
 static gpointer colordepth_list[] =
 {
 	"0",  N_("Default"),
 	"2",  N_("Grayscale"),
-	"8",  N_("256 colors"),
-	"16", N_("High color (16 bit)"),
-	"24", N_("True color (24 bit)"),
+	"8",  N_("256 colours"),
+	"16", N_("High colour (16 bit)"),
+	"24", N_("True colour (24 bit)"),
 	NULL
 };
 
@@ -360,13 +360,13 @@ static gpointer colordepth_list[] =
  * c) Setting description
  * d) Compact disposition
  * e) Values for REMMINA_PROTOCOL_SETTING_TYPE_SELECT or REMMINA_PROTOCOL_SETTING_TYPE_COMBO
- * f) Setting Tooltip
+ * f) Setting tooltip
  */
 static const RemminaProtocolSetting remmina_plugin_xdmcp_basic_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	    "server",	     NULL,					 FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",	     NULL,					 FALSE, NULL,		 NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",    N_("Color depth"),				 FALSE, colordepth_list, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",    N_("Colour depth"),				 FALSE, colordepth_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "exec",	     N_("Startup program"),			 FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "showcursor",    N_("Use local cursor"),			 FALSE, NULL,		 NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	    "once",	     N_("Disconnect after first session"),	 FALSE, NULL,		 NULL },
