@@ -913,12 +913,12 @@ static void remmina_plugin_vnc_rfb_output(const char *format, ...)
 	if (g_strcmp0(f, "VNC connection failed: %s") == 0) {
 		p = va_arg(args, gchar *);
 		g_snprintf(vnc_error, MAX_ERROR_LENGTH, _(f), _(p));
-	} else if (g_strcmp0(f, "Unknown authentication scheme from VNC server: %s") == 0) {
+	} else if (g_strcmp0(f, "The VNC server requested an unknown authentication method. %s") == 0) {
 		p = va_arg(args, gchar *);
 		if (vnc_encryption_disable_requested) {
-			ff = g_strconcat(_("Unknown authentication scheme from VNC server: %s"),
+			ff = g_strconcat(_("The VNC server requested an unknown authentication method. %s"),
 					 ". ",
-					 _("Please retry after enabling encryption on this profile."),
+					 _("Please retry after turning on encryption for this profile."),
 					 NULL);
 			g_snprintf(vnc_error, MAX_ERROR_LENGTH, ff, p);
 			g_free(ff);
