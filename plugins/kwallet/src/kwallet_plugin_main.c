@@ -115,7 +115,7 @@ gboolean remmina_plugin_kwallet_init()
 static RemminaSecretPlugin remmina_plugin_kwallet =
 { REMMINA_PLUGIN_TYPE_SECRET,
   "kwallet",
-  N_("Secure passwords storing in the KDE Wallet"),
+  N_("Secure passwords storage in KWallet"),
   NULL,
   VERSION,
   1000,
