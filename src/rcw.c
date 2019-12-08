@@ -3771,7 +3771,7 @@ gboolean rcw_open_from_filename(const gchar *filename)
 		return TRUE;
 	} else {
 		dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
-						_("The file %s is corrupted, unreadable, or could not be found."), filename);
+						_("The file \"%s\" is corrupted, unreadable, or could not be found."), filename);
 		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 		gtk_widget_show(dialog);
 		remmina_widget_pool_register(dialog);

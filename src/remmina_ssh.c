@@ -200,7 +200,7 @@ remmina_ssh_auth_password(RemminaSSH *ssh)
 	ret = ssh_userauth_password(ssh->session, NULL, ssh->password);
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(ssh, _("SSH password authentication failed: %s"));
+		remmina_ssh_set_error(ssh, _("Could not authenticate with SSH password. %s"));
 		return 0;
 	}
 
@@ -221,7 +221,7 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 
 	if (ssh->privkeyfile == NULL) {
 		// TRANSLATORS: The placeholder %s is an error message
-		ssh->error = g_strdup_printf(_("SSH public key authentication failed: %s"),
+		ssh->error = g_strdup_printf(_("Could not authenticate with public SSH key. %s"),
 					     _("SSH Key file not yet set."));
 		return 0;
 	}
@@ -233,7 +233,7 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 		ret = ssh_pki_import_pubkey_file(pubkey, &key);
 		if (ret != SSH_OK) {
 			// TRANSLATORS: The placeholder %s is an error message
-			remmina_ssh_set_error(ssh, _("SSH public key cannot be imported: %s"));
+			remmina_ssh_set_error(ssh, _("Public SSH key cannot be imported. %s"));
 			return 0;
 		}
 		ssh_key_free(key);
@@ -245,7 +245,7 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 		if (ssh->passphrase == NULL || ssh->passphrase[0] == '\0') return -1;
 
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(ssh, _("SSH public key authentication failed: %s"));
+		remmina_ssh_set_error(ssh, _("Could not authenticate with public SSH key. %s"));
 		return 0;
 	}
 
@@ -254,7 +254,7 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(ssh, _("SSH public key authentication failed: %s"));
+		remmina_ssh_set_error(ssh, _("Could not authenticate with public SSH key. %s"));
 		return 0;
 	}
 
@@ -296,7 +296,7 @@ remmina_ssh_auth_auto_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, Remmina
 
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(ssh, _("SSH automatic public key authentication failed: %s"));
+		remmina_ssh_set_error(ssh, _("Could not authenticate automatically with public SSH key. %s"));
 		return -1;
 	}
 
@@ -313,7 +313,7 @@ remmina_ssh_auth_agent(RemminaSSH *ssh)
 
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(ssh, _("SSH public key authentication with SSH agent failed: %s"));
+		remmina_ssh_set_error(ssh, _("Could not authenticate with public SSH key using SSH agent. %s"));
 		return 0;
 	}
 
@@ -333,7 +333,7 @@ remmina_ssh_auth_gssapi(RemminaSSH *ssh)
 
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(ssh, _("SSH Kerberos/GSSAPI authentication failed: %s"));
+		remmina_ssh_set_error(ssh, _("Could not authenticate with SSH Kerberos/GSSAPI. %s"));
 		return 0;
 	}
 
@@ -489,14 +489,14 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 #if LIBSSH_VERSION_INT >= SSH_VERSION_INT(0, 8, 6)
 		if (ssh_get_server_publickey(ssh->session, &server_pubkey) != SSH_OK) {
 			// TRANSLATORS: The placeholder %s is an error message
-			remmina_ssh_set_error(ssh, _("ssh_get_server_publickey() has failed: %s"));
+			remmina_ssh_set_error(ssh, _("Could not fetch the server\'s public SSH key. %s"));
 			g_debug ("ssh_get_server_publickey() has failed");
 			return 0;
 		}
 #else
 		if (ssh_get_publickey(ssh->session, &server_pubkey) != SSH_OK) {
 			// TRANSLATORS: The placeholder %s is an error message
-			remmina_ssh_set_error(ssh, _("ssh_get_publickey() has failed: %s"));
+			remmina_ssh_set_error(ssh, _("Could not fetch public SSH key. %s"));
 			g_debug ("ssh_get_publickey() has failed");
 			return 0;
 		}
@@ -504,7 +504,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 		if (ssh_get_publickey_hash(server_pubkey, SSH_PUBLICKEY_HASH_MD5, &pubkey, &len) != 0) {
 			ssh_key_free(server_pubkey);
 			// TRANSLATORS: The placeholder %s is an error message
-			remmina_ssh_set_error(ssh, _("ssh_get_publickey_hash() has failed: %s"));
+			remmina_ssh_set_error(ssh, _("Could not fetch checksum for public SSH key. %s"));
 			g_debug ("ssh_get_publickey_hash() has failed");
 			return 0;
 		}
@@ -547,7 +547,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 #endif
 	default:
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(ssh, _("Could not check list of known SSH hosts: %s"));
+		remmina_ssh_set_error(ssh, _("Could not check list of known SSH hosts. %s"));
 		g_debug ("Could not check list of known SSH hosts");
 		return 0;
 	}
@@ -700,32 +700,32 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 	if (rc == 0)
 		remmina_log_printf("[SSH] SSH_OPTIONS_KEY_EXCHANGE is now %s\n", ssh->kex_algorithms);
 	else
-		remmina_log_printf("[SSH] SSH_OPTIONS_KEY_EXCHANGE does not have a valid value, %s\n", ssh->kex_algorithms);
+		remmina_log_printf("[SSH] SSH_OPTIONS_KEY_EXCHANGE does not have a valid value. %s\n", ssh->kex_algorithms);
 	rc = ssh_options_set(ssh->session, SSH_OPTIONS_CIPHERS_C_S, ssh->ciphers);
 	if (rc == 0)
 		remmina_log_printf("[SSH] SSH_OPTIONS_CIPHERS_C_S has been set to %s\n", ssh->ciphers);
 	else
-		remmina_log_printf("[SSH] SSH_OPTIONS_CIPHERS_C_S does not have a valid value, %s\n", ssh->ciphers);
+		remmina_log_printf("[SSH] SSH_OPTIONS_CIPHERS_C_S does not have a valid value. %s\n", ssh->ciphers);
 	rc = ssh_options_set(ssh->session, SSH_OPTIONS_HOSTKEYS, ssh->hostkeytypes);
 	if (rc == 0)
 		remmina_log_printf("[SSH] SSH_OPTIONS_HOSTKEYS is now %s\n", ssh->hostkeytypes);
 	else
-		remmina_log_printf("[SSH] SSH_OPTIONS_HOSTKEYS does not have a valid value, %s\n", ssh->hostkeytypes);
+		remmina_log_printf("[SSH] SSH_OPTIONS_HOSTKEYS does not have a valid value. %s\n", ssh->hostkeytypes);
 	rc = ssh_options_set(ssh->session, SSH_OPTIONS_PROXYCOMMAND, ssh->proxycommand);
 	if (rc == 0)
 		remmina_log_printf("[SSH] SSH_OPTIONS_PROXYCOMMAND is now %s\n", ssh->proxycommand);
 	else
-		remmina_log_printf("[SSH] SSH_OPTIONS_PROXYCOMMAND does not have a valid value, %s\n", ssh->proxycommand);
+		remmina_log_printf("[SSH] SSH_OPTIONS_PROXYCOMMAND does not have a valid value. %s\n", ssh->proxycommand);
 	rc = ssh_options_set(ssh->session, SSH_OPTIONS_STRICTHOSTKEYCHECK, &ssh->stricthostkeycheck);
 	if (rc == 0)
 		remmina_log_printf("[SSH] SSH_OPTIONS_STRICTHOSTKEYCHECK is now %d\n", ssh->stricthostkeycheck);
 	else
-		remmina_log_printf("[SSH] SSH_OPTIONS_STRICTHOSTKEYCHECK does not have a valid value, %d\n", ssh->stricthostkeycheck);
+		remmina_log_printf("[SSH] SSH_OPTIONS_STRICTHOSTKEYCHECK does not have a valid value. %d\n", ssh->stricthostkeycheck);
 	rc = ssh_options_set(ssh->session, SSH_OPTIONS_COMPRESSION, ssh->compression);
 	if (rc == 0)
 		remmina_log_printf("[SSH] SSH_OPTIONS_COMPRESSION is now %s\n", ssh->compression);
 	else
-		remmina_log_printf("[SSH] SSH_OPTIONS_COMPRESSION does not have a valid value, %s\n", ssh->compression);
+		remmina_log_printf("[SSH] SSH_OPTIONS_COMPRESSION does not have a valid value. %s\n", ssh->compression);
 
 	ssh_callbacks_init(ssh->callback);
 	if (remmina_log_running()) {
@@ -744,7 +744,7 @@ remmina_ssh_init_session(RemminaSSH *ssh)
 
 	if (ssh_connect(ssh->session)) {
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(ssh, _("Could not start SSH session: %s"));
+		remmina_ssh_set_error(ssh, _("Could not start SSH session. %s"));
 		return FALSE;
 	}
 
@@ -1103,7 +1103,7 @@ remmina_ssh_tunnel_create_forward_channel(RemminaSSHTunnel *tunnel)
 	channel = ssh_channel_new(tunnel->ssh.session);
 	if (!channel) {
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not create channel: %s"));
+		remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not create channel. %s"));
 		return NULL;
 	}
 
@@ -1114,7 +1114,7 @@ remmina_ssh_tunnel_create_forward_channel(RemminaSSHTunnel *tunnel)
 		ssh_channel_send_eof(channel);
 		ssh_channel_free(channel);
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not connect to SSH tunnel: %s"));
+		remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not connect to SSH tunnel. %s"));
 		return NULL;
 	}
 
@@ -1165,7 +1165,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 	case REMMINA_SSH_TUNNEL_X11:
 		if ((tunnel->x11_channel = ssh_channel_new(tunnel->ssh.session)) == NULL) {
 			// TRANSLATORS: The placeholder %s is an error message
-			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not create channel: %s"));
+			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not create channel. %s"));
 			tunnel->thread = 0;
 			return NULL;
 		}
@@ -1180,7 +1180,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 					    gdk_x11_screen_get_screen_number(gdk_screen_get_default()))) {
 			g_free(ptr);
 			// TRANSLATORS: The placeholder %s is an error message
-			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not open channel: %s"));
+			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not open channel. %s"));
 			tunnel->thread = 0;
 			return NULL;
 		}
@@ -1224,7 +1224,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 		}
 		if (tunnel->remotedisplay < 1) {
 			// TRANSLATORS: The placeholder %s is an error message
-			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not request port forwarding: %s"));
+			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not request port forwarding. %s"));
 			if (tunnel->disconnect_func)
 				(*tunnel->disconnect_func)(tunnel, tunnel->callback_data);
 			tunnel->thread = 0;
@@ -1245,7 +1245,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 #if LIBSSH_VERSION_INT >= SSH_VERSION_INT(0, 7, 0)
 		if (ssh_channel_listen_forward(REMMINA_SSH(tunnel)->session, NULL, tunnel->port, NULL)) {
 			// TRANSLATORS: The placeholder %s is an error message
-			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not request port forwarding: %s"));
+			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not request port forwarding. %s"));
 			if (tunnel->disconnect_func)
 				(*tunnel->disconnect_func)(tunnel, tunnel->callback_data);
 			tunnel->thread = 0;
@@ -1254,7 +1254,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 #else
 		if (ssh_forward_listen(REMMINA_SSH(tunnel)->session, NULL, tunnel->port, NULL)) {
 			// TRANSLATORS: The placeholder %s is an error message
-			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not request port forwarding: %s"));
+			remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not request port forwarding. %s"));
 			if (tunnel->disconnect_func)
 				(*tunnel->disconnect_func)(tunnel, tunnel->callback_data);
 			tunnel->thread = 0;
@@ -1382,14 +1382,14 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 						if (lenw <= 0) {
 							disconnected = TRUE;
 							// TRANSLATORS: The placeholder %s is an error message
-							remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not run ssh_channel_write(): %s"));
+							remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not write to SSH channel. %s"));
 							break;
 						}
 					}
 				}
 				if (len == 0) {
 					// TRANSLATORS: The placeholder %s is an error message
-					remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not read from tunnel listening socket: %s"));
+					remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not read from tunnel listening socket. %s"));
 					disconnected = TRUE;
 				}
 			}
@@ -1409,14 +1409,14 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 				len = ssh_channel_poll(tunnel->channels[i], 0);
 				if (len == SSH_ERROR || len == SSH_EOF) {
 					// TRANSLATORS: The placeholder %s is an error message
-					remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not run ssh_channel_poll(): %s"));
+					remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not poll SSH channel. %s"));
 					disconnected = TRUE;
 				} else if (len > 0) {
 					tunnel->socketbuffers[i] = remmina_ssh_tunnel_buffer_new(len);
 					len = ssh_channel_read_nonblocking(tunnel->channels[i], tunnel->socketbuffers[i]->data, len, 0);
 					if (len <= 0) {
 						// TRANSLATORS: The placeholder %s is an error message
-						remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not run ssh_channel_read_nonblocking(): %s"));
+						remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not read SSH channel in a non-blocking way. %s"));
 						disconnected = TRUE;
 					} else {
 						tunnel->socketbuffers[i]->len = len;
@@ -1435,7 +1435,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 						break;
 					if (lenw <= 0) {
 						// TRANSLATORS: The placeholder %s is an error message
-						remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not send data to tunnel listening socket: %s"));
+						remmina_ssh_set_error(REMMINA_SSH(tunnel), _("Could not send data to tunnel listening socket. %s"));
 						disconnected = TRUE;
 						break;
 					}
@@ -1447,7 +1447,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 			}
 
 			if (disconnected) {
-				remmina_log_printf("Connection to [SSH] tunnel lost, %s\n", REMMINA_SSH(tunnel)->error);
+				remmina_log_printf("Connection to SSH tunnel dropped. %s\n", REMMINA_SSH(tunnel)->error);
 				remmina_ssh_tunnel_remove_channel(tunnel, i);
 				continue;
 			}
@@ -1461,7 +1461,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 		if (sock > 0) {
 			channel = remmina_ssh_tunnel_create_forward_channel(tunnel);
 			if (!channel) {
-				remmina_log_printf("Could not open new [SSH] connection, %s\n", REMMINA_SSH(tunnel)->error);
+				remmina_log_printf("Could not open new SSH connection. %s\n", REMMINA_SSH(tunnel)->error);
 				close(sock);
 				/* Leave thread loop */
 				tunnel->running = FALSE;
@@ -1564,7 +1564,7 @@ remmina_ssh_tunnel_x11(RemminaSSHTunnel *tunnel, const gchar *cmd)
 
 	if (pthread_create(&tunnel->thread, NULL, remmina_ssh_tunnel_main_thread, tunnel)) {
 		// TRANSLATORS: Do not translate pthread
-		remmina_ssh_set_application_error(REMMINA_SSH(tunnel), _("Could not initialize pthread."));
+		remmina_ssh_set_application_error(REMMINA_SSH(tunnel), _("Could not start pthread."));
 		tunnel->thread = 0;
 		return FALSE;
 	}
@@ -1599,7 +1599,7 @@ remmina_ssh_tunnel_reverse(RemminaSSHTunnel *tunnel, gint port, gint local_port)
 
 	if (pthread_create(&tunnel->thread, NULL, remmina_ssh_tunnel_main_thread, tunnel)) {
 		// TRANSLATORS: Do not translate pthread
-		remmina_ssh_set_application_error(REMMINA_SSH(tunnel), _("Could not initialize pthread."));
+		remmina_ssh_set_application_error(REMMINA_SSH(tunnel), _("Could not start pthread."));
 		tunnel->thread = 0;
 		return FALSE;
 	}
@@ -1688,12 +1688,12 @@ remmina_sftp_open(RemminaSFTP *sftp)
 	sftp->sftp_sess = sftp_new(sftp->ssh.session);
 	if (!sftp->sftp_sess) {
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(REMMINA_SSH(sftp), _("Could not create SFTP session: %s"));
+		remmina_ssh_set_error(REMMINA_SSH(sftp), _("Could not create SFTP session. %s"));
 		return FALSE;
 	}
 	if (sftp_init(sftp->sftp_sess)) {
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(REMMINA_SSH(sftp), _("Could not initialize SFTP session: %s"));
+		remmina_ssh_set_error(REMMINA_SSH(sftp), _("Could not start SFTP session. %s"));
 		return FALSE;
 	}
 	return TRUE;
@@ -1778,7 +1778,7 @@ remmina_ssh_shell_thread(gpointer data)
 	    ssh_channel_open_session(channel)) {
 		UNLOCK_SSH(shell)
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(REMMINA_SSH(shell), _("Could not open channel: %s"));
+		remmina_ssh_set_error(REMMINA_SSH(shell), _("Could not open channel. %s"));
 		if (channel) ssh_channel_free(channel);
 		shell->thread = 0;
 		return NULL;
@@ -1808,7 +1808,7 @@ remmina_ssh_shell_thread(gpointer data)
 	if (ret) {
 		UNLOCK_SSH(shell)
 		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(REMMINA_SSH(shell), _("Could not request shell: %s"));
+		remmina_ssh_set_error(REMMINA_SSH(shell), _("Could not request shell. %s"));
 		ssh_channel_close(channel);
 		ssh_channel_send_eof(channel);
 		ssh_channel_free(channel);

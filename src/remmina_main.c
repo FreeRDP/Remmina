@@ -825,7 +825,7 @@ void remmina_main_on_action_connection_delete(GSimpleAction *action, GVariant *p
 		return;
 
 	dialog = gtk_message_dialog_new(remminamain->window, GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
-		_("Are you sure you want to delete '%s'?"), remminamain->priv->selected_name);
+		_("Are you sure you want to delete \"%s\"?"), remminamain->priv->selected_name);
 	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES) {
 		delfilename = g_strdup(remminamain->priv->selected_filename);
 		remmina_file_delete(delfilename);

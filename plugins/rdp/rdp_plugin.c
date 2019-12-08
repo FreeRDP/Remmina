@@ -275,7 +275,7 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 		}
 
 		/* Attempt the next reconnect */
-		remmina_plugin_service->log_printf("[RDP][%s] attempting reconnection, attempt #%d of %d\n",
+		remmina_plugin_service->log_printf("[RDP][%s] reconnection, attempt #%d of %d\n",
 						   rfi->settings->ServerHostname, rfi->reconnect_nattempt, rfi->reconnect_maxattempts);
 
 		ui = g_new0(RemminaPluginRdpUiObject, 1);
@@ -291,7 +291,7 @@ BOOL rf_auto_reconnect(rfContext *rfi)
 		} else {
 			if (freerdp_reconnect(rfi->instance)) {
 				/* Reconnection is successful */
-				remmina_plugin_service->log_printf("[RDP][%s] reconnection successful.\n",
+				remmina_plugin_service->log_printf("[RDP][%s] reconnected.\n",
 								   rfi->settings->ServerHostname);
 				rfi->is_reconnecting = FALSE;
 				return TRUE;
@@ -430,7 +430,7 @@ static BOOL rf_keyboard_set_indicators(rdpContext *context, UINT16 led_flags)
 
 #ifdef GDK_WINDOWING_X11
 	if (GDK_IS_X11_DISPLAY(disp)) {
-		/* ToDo: we are not on the main thread. Will X.Org complain ? */
+		/* TODO: We are not on the main thread. Will X.Org complain? */
 		Display *x11_display;
 		x11_display = gdk_x11_display_get_xdisplay(disp);
 		XkbLockModifiers(x11_display, XkbUseCoreKbd,
@@ -504,7 +504,7 @@ static BOOL remmina_rdp_post_connect(freerdp *instance)
 	gp = rfi->protocol_widget;
 	rfi->postconnect_error = REMMINA_POSTCONNECT_ERROR_OK;
 
-	rfi->attempt_interactive_authentication = FALSE; // We did authenticate!
+	rfi->attempt_interactive_authentication = FALSE; // We authenticated!
 
 	rfi->srcBpp = rfi->settings->ColorDepth;
 
@@ -771,7 +771,7 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 
 		if (rfi->event_handle && WaitForSingleObject(rfi->event_handle, 0) == WAIT_OBJECT_0) {
 			if (!rf_process_event_queue(gp)) {
-				fprintf(stderr, "Failed to process local kb/mouse event queue\n");
+				fprintf(stderr, "Could not process local keyboard/mouse event queue\n");
 				break;
 			}
 			if (read(rfi->event_pipe[0], buf, sizeof(buf))) {
@@ -790,7 +790,7 @@ static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
 				continue;
 			}
 			if (freerdp_get_last_error(rfi->instance->context) == FREERDP_ERROR_SUCCESS)
-				fprintf(stderr, "Failed to check FreeRDP file descriptor\n");
+				fprintf(stderr, "Could not check FreeRDP file descriptor\n");
 			break;
 		}
 	}
@@ -966,7 +966,7 @@ int remmina_rdp_set_printers(void *user_data, unsigned flags, cups_dest_t *dest)
 }
 #endif /* HAVE_CUPS */
 
-/* Send CTRL+ALT+DEL keys keystrokes to the plugin drawing_area widget */
+/* Send Ctrl+Alt+Del keys keystrokes to the plugin drawing_area widget */
 static void remmina_rdp_send_ctrlaltdel(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -1053,7 +1053,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 	rfi->settings->DesktopWidth = remmina_plugin_service->get_profile_remote_width(gp);
 	rfi->settings->DesktopHeight = remmina_plugin_service->get_profile_remote_height(gp);
 
-	/* Workaround for FreeRDP issue #5417: in GFX avc modes we can't go under
+	/* Workaround for FreeRDP issue #5417: in GFX AVC modes we can't go under
 	 * AVC_MIN_DESKTOP_WIDTH x AVC_MIN_DESKTOP_HEIGHT */
 	if (rfi->settings->SupportGraphicsPipeline && rfi->settings->GfxH264) {
 		if (rfi->settings->DesktopWidth < AVC_MIN_DESKTOP_WIDTH)
@@ -1105,7 +1105,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		else if (g_strcmp0(proxy_type, "socks5") == 0)
 			rfi->settings->ProxyType = PROXY_TYPE_SOCKS;
 		else
-			g_warning("Invalid Proxy protocol, at the moment only no_proxy, http and socks5 are supported");
+			g_warning("Invalid proxy protocol, at the moment only no_proxy, HTTP and SOCKS5 are supported");
 		g_debug("ProxyType set to: %d", rfi->settings->ProxyType);
 		rfi->settings->ProxyHostname = proxy_hostname;
 		if (proxy_username)
@@ -1541,17 +1541,17 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 				break;
 
 			case FREERDP_ERROR_CONNECT_FAILED:
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to RDP server %s failed."), rfi->settings->ServerHostname);
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Lost connection to the RDP server \"%s\"."), rfi->settings->ServerHostname);
 				break;
 			case FREERDP_ERROR_DNS_NAME_NOT_FOUND:
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to find the address of RDP server %s."), rfi->settings->ServerHostname);
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not find the address for the RDP server \"%s\"."), rfi->settings->ServerHostname);
 				break;
 			case FREERDP_ERROR_TLS_CONNECT_FAILED:
 				remmina_plugin_service->protocol_plugin_set_error(gp,
-										  _("Error connecting to RDP server %s. TLS connection failed. Check that client and server support a common TLS version."), rfi->settings->ServerHostname);
+										  _("Could not connect to the RDP server \"%s\" via TLS. Check that client and server support a common TLS version."), rfi->settings->ServerHostname);
 				break;
 			case FREERDP_ERROR_SECURITY_NEGO_CONNECT_FAILED:
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to establish a connection to RDP server %s."), rfi->settings->ServerHostname);
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Unable to establish a connection to the RDP server \"%s\"."), rfi->settings->ServerHostname);
 				break;
 #ifdef FREERDP_ERROR_POST_CONNECT_FAILED
 			case FREERDP_ERROR_POST_CONNECT_FAILED:
@@ -1559,25 +1559,25 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 				switch (rfi->postconnect_error) {
 				case REMMINA_POSTCONNECT_ERROR_OK:
 					/* We should never come here */
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Cannot connect to RDP server %s."), rfi->settings->ServerHostname);
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Cannot connect to the RDP server \"%s\"."), rfi->settings->ServerHostname);
 					break;
 				case REMMINA_POSTCONNECT_ERROR_GDI_INIT:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not start libfreerdp-gdi"));
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not start libfreerdp-gdi."));
 					break;
 				case REMMINA_POSTCONNECT_ERROR_NO_H264:
-					remmina_plugin_service->protocol_plugin_set_error(gp, _("You requested a H.264 GFX mode for server %s, but your libfreerdp does not support H.264. Please use a non-AVC color depth setting."), rfi->settings->ServerHostname);
+					remmina_plugin_service->protocol_plugin_set_error(gp, _("You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp does not support H.264. Please use a non-AVC colour depth setting."), rfi->settings->ServerHostname);
 					break;
 				}
 				break;
 #endif
 #ifdef FREERDP_ERROR_SERVER_DENIED_CONNECTION
 			case FREERDP_ERROR_SERVER_DENIED_CONNECTION:
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("The %s server denied the connection."), rfi->settings->ServerHostname);
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("The \"%s\" server refused the connection."), rfi->settings->ServerHostname);
 				break;
 #endif
 			case 0x800759DB:
 				// E_PROXY_NAP_ACCESSDENIED https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-tsgu/84cd92e4-592c-4219-95d8-18021ac654b0
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("The remote desktop gateway %s denied user %s\\%s access due to policy."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("The Remote Desktop Gateway \"%s\" denied the user \"%s\"\\%s access due to policy."),
 										  rfi->settings->GatewayHostname, rfi->settings->GatewayDomain, rfi->settings->GatewayUsername);
 				break;
 
@@ -1587,7 +1587,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 			default:
 				g_printf("libfreerdp returned code is %08X\n", e);
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Cannot connect to the %s RDP server."), rfi->settings->ServerHostname);
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Cannot connect to the \"%s\" RDP server."), rfi->settings->ServerHostname);
 				break;
 			}
 		}
@@ -1865,7 +1865,7 @@ static gboolean remmina_rdp_get_screenshot(RemminaProtocolWidget *gp, RemminaPlu
 	return TRUE;
 }
 
-/* Array of key/value pairs for color depths */
+/* Array of key/value pairs for colour depths */
 static gpointer colordepth_list[] =
 {
 	/* 1st one is the default in a new install */
@@ -1873,11 +1873,11 @@ static gpointer colordepth_list[] =
 	"65", N_("GFX AVC420 (32 bpp)"),
 	"64", N_("GFX RFX (32 bpp)"),
 	"0",  N_("RemoteFX (32 bpp)"),
-	"32", N_("True color (32 bpp)"),
-	"24", N_("True color (24 bpp)"),
-	"16", N_("High color (16 bpp)"),
-	"15", N_("High color (15 bpp)"),
-	"8",  N_("256 colors (8 bpp)"),
+	"32", N_("True colour (32 bpp)"),
+	"24", N_("True colour (24 bpp)"),
+	"16", N_("High colour (16 bpp)"),
+	"15", N_("High colour (15 bpp)"),
+	"8",  N_("256 colours (8 bpp)"),
 	NULL
 };
 
@@ -1934,10 +1934,10 @@ static const RemminaProtocolSetting remmina_rdp_basic_settings[] =
 {
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	    "server",	   NULL,		FALSE, NULL,		NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "username",	   N_("Username"),	FALSE, NULL,		NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",	   N_("User password"), FALSE, NULL,		NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD,   "password",	   N_("Password"), FALSE, NULL,		NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	    "domain",	   N_("Domain"),	FALSE, NULL,		NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_RESOLUTION, "resolution",  NULL,		FALSE, NULL,		NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",  N_("Color depth"),	FALSE, colordepth_list, NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	    "colordepth",  N_("Colour depth"),	FALSE, colordepth_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER,	    "sharefolder", N_("Share folder"),	FALSE, NULL,		NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	    NULL,	   NULL,		FALSE, NULL,		NULL }
 };
@@ -1974,7 +1974,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "smartcardname",	    N_("Smartcard name"),				 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareprinter",	    N_("Share printers"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareserial",	    N_("Share serial ports"),				 TRUE,	NULL,	       NULL													      },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "serialpermissive",	    N_("Serial ports permissive mode"),			 TRUE,	NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "serialpermissive",	    N_("(SELinux) permissive mode for serial ports"),			 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "shareparallel",	    N_("Share parallel ports"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "sharesmartcard",	    N_("Share smartcard"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "microphone",		    N_("Redirect local microphone"),			 TRUE,	NULL,	       NULL													      },

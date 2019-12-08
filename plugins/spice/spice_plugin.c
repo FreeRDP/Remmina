@@ -271,7 +271,7 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 			XSPICE_DEFAULT_PORT,
 			&server,
 			&port);
-		remmina_plugin_service->protocol_plugin_set_error(gp, _("Disconnected from SPICE server %s."), server);
+		remmina_plugin_service->protocol_plugin_set_error(gp, _("Disconnected from the SPICE server \"%s\"."), server);
 		g_free(server);
 		remmina_plugin_spice_close_connection(gp);
 		break;
@@ -293,7 +293,7 @@ static void remmina_plugin_spice_main_channel_event_cb(SpiceChannel *channel, Sp
 	case SPICE_CHANNEL_ERROR_IO:
 	case SPICE_CHANNEL_ERROR_LINK:
 	case SPICE_CHANNEL_ERROR_CONNECT:
-		remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to SPICE server failed."));
+		remmina_plugin_service->protocol_plugin_set_error(gp, _("Connection to the SPICE server dropped."));
 		remmina_plugin_spice_close_connection(gp);
 		break;
 	default:
