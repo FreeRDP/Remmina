@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-12-05 20:28+0000\n"
+"POT-Creation-Date: 2019-12-07 11:16+0000\n"
 "PO-Revision-Date: 2019-12-08 23:03+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -277,9 +277,8 @@ msgid "Identity file"
 msgstr "Identitetsfil"
 
 #: src/remmina_ssh_plugin.c:1061 src/remmina_sftp_plugin.c:353
-#, fuzzy
-msgid "Private key passphrase"
-msgstr "Lösenord for privat nyckel"
+msgid "Password to unlock private key"
+msgstr ""
 
 #: src/remmina_ssh_plugin.c:1062 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:1965 plugins/nx/nx_plugin.c:725
@@ -315,26 +314,27 @@ msgstr ""
 
 #: src/remmina_ssh_plugin.c:1085
 #, fuzzy
-msgid "SSH session log folder"
-msgstr "Loggmapp for SSH-session"
+msgid "Folder for SSH session log"
+msgstr "Misslyckades att starta SSH-session: %s"
 
 #: src/remmina_ssh_plugin.c:1086
 #, fuzzy
-msgid "SSH session log file name"
-msgstr "Loggfilnamn for SSH-session"
-
-#: src/remmina_ssh_plugin.c:1087
-#, fuzzy
-msgid "Enable SSH session logging at exit"
+msgid "Filename for SSH session log"
 msgstr "Aktivera loggning av SSH-session vid avslutning"
 
+#: src/remmina_ssh_plugin.c:1087
+msgid "Log SSH session when exiing Remmina"
+msgstr ""
+
 #: src/remmina_ssh_plugin.c:1088
-msgid "Enable terminal audible bell"
+#, fuzzy
+#| msgid "Enable terminal audible bell"
+msgid "Audible terminal bell"
 msgstr "Hörbar klocka i terminalen"
 
 #: src/remmina_ssh_plugin.c:1089
 #, fuzzy
-msgid "Enable SSH compression"
+msgid "SSH compression"
 msgstr "Aktivera SSH-kompression"
 
 #: src/remmina_ssh_plugin.c:1090
@@ -579,7 +579,9 @@ msgstr "Visa version av programmet och tillhörande programtillegg"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:113
-msgid "Modify connection profile, (requires --set-option)"
+#, fuzzy
+#| msgid "Modify connection profile, (requires --set-option)"
+msgid "Modify connection profile (requires --set-option)"
 msgstr "Ändra anslutningsprofil, (kräver --set-option)"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
@@ -1320,7 +1322,7 @@ msgstr "SSH-agent (automatisk)"
 
 #: src/remmina_file_editor.c:994
 #, fuzzy
-msgid "Turn on autostart for this profile"
+msgid "Turn on \"Autostart\" for this profile"
 msgstr "Aktivera autostart för denna profilen"
 
 #: src/remmina_file_editor.c:1002
@@ -1372,12 +1374,12 @@ msgstr "Använd '%s' som avgränsare för undergrupper"
 
 #: src/remmina_file_editor.c:1486
 #, fuzzy
-msgid "Pre Command"
+msgid "Pre-command"
 msgstr "Förhandskommando"
 
 #: src/remmina_file_editor.c:1504
 #, fuzzy
-msgid "Post Command"
+msgid "Post-command"
 msgstr "Efterföljande kommando"
 
 #: src/remmina_file_editor.c:1569 src/remmina_file_editor.c:1587
@@ -1492,7 +1494,7 @@ msgstr "Aktivera nätinspektör"
 
 #: plugins/www/www_config.h:43
 #, fuzzy
-msgid "Remmina Browser Plugin"
+msgid "Remmina web-browser plugin"
 msgstr "Remmina webbläsare-tillegg"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
@@ -1533,25 +1535,25 @@ msgid "Your connection has been rejected."
 msgstr "Din anslutning nekades."
 
 #: plugins/vnc/vnc_plugin.c:919
-#, c-format, fuzzy
-msgid "Unknown authentication scheme from VNC server: %s"
-msgstr "Okänd identitetsbekräftelsesmetod frän VNC-server: %s"
+#, c-format
+msgid "The VNC server requested an unknown authentication method. %s"
+msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:921
 #, fuzzy
-msgid "Please retry after enabling encryption on this profile."
+msgid "Please retry after turning on encryption for this profile."
 msgstr "Prova aktivera kryptering for denna profilen."
 
 #: plugins/vnc/vnc_plugin.c:1803
 msgid "256 colors (8 bpp)"
 msgstr "256 färger (8 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1804 plugins/rdp/rdp_plugin.c:1878
+#: plugins/vnc/vnc_plugin.c:1804
 #, fuzzy
 msgid "High color (16 bpp)"
 msgstr "Högt färgspektrum (16 bpp)"
 
-#: plugins/vnc/vnc_plugin.c:1805 plugins/rdp/rdp_plugin.c:1876
+#: plugins/vnc/vnc_plugin.c:1805
 #, fuzzy
 msgid "True color (32 bpp)"
 msgstr "Sannolika färger (32 bpp)"
@@ -1738,8 +1740,9 @@ msgid "Run out of available local X display number."
 msgstr "Tom for tillgängliga lokala X-skärmsnummer."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:608
-#, c-format, fuzzy
-msgid "Protocol %s is unavailable because GtkSocket only works under X.Org"
+#, fuzzy, c-format
+msgid ""
+"The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
 msgstr ""
 "Protokollen \"%s\" er otillgänglig eftersom GtkSocket endast fungerar under "
 "X.Org"
@@ -1759,12 +1762,12 @@ msgstr "256 färger"
 
 #: plugins/xdmcp/xdmcp_plugin.c:351
 #, fuzzy
-msgid "High color (16 bit)"
+msgid "High colour (16 bit)"
 msgstr "Högt färgspektrum (16 bit)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:352
 #, fuzzy
-msgid "True color (24 bit)"
+msgid "True colour (24 bit)"
 msgstr "Sannolika färger (24 bit)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1940
@@ -1806,7 +1809,7 @@ msgstr "Lösrivit fönster"
 
 #: plugins/st/st_plugin_config.h:43
 #, fuzzy
-msgid "Remmina Simple Terminal"
+msgid "Remmina simple terminal"
 msgstr "Enkel Remmina-terminal"
 
 #: plugins/rdp/rdp_plugin.c:577
@@ -1872,8 +1875,8 @@ msgid "Lost connection to the RDP server \"%s\"."
 msgstr "Kunde inte koppla upp mot RDP-servern %s"
 
 #: plugins/rdp/rdp_plugin.c:1547
-#, c-format, fuzzy
-msgid "Unable to find the address of RDP server %s."
+#, fuzzy, c-format
+msgid "Could not find the address for the RDP server \"%s\"."
 msgstr "Fann inte adress til RDP-servern %s."
 
 #: plugins/rdp/rdp_plugin.c:1551
@@ -1884,8 +1887,8 @@ msgid ""
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1554
-#, c-format, fuzzy
-msgid "Unable to establish a connection to RDP server %s."
+#, fuzzy, c-format
+msgid "Unable to establish a connection to the RDP server \"%s\"."
 msgstr "Kunde inte etablera anslutning til RDP-server %s."
 
 #: plugins/rdp/rdp_plugin.c:1562
@@ -1945,13 +1948,24 @@ msgstr "256 färger (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1877
 #, fuzzy
-msgid "True color (24 bpp)"
+msgid "True colour (24 bpp)"
 msgstr "Sannolika färger (24 bpp)"
+
+#: plugins/rdp/rdp_plugin.c:1878
+#, fuzzy
+msgid "High colour (16 bpp)"
+msgstr "Högt färgspektrum (16 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1879
 #, fuzzy
-msgid "High color (15 bpp)"
+msgid "High colour (15 bpp)"
 msgstr "Högt färgspektrum (15 bpp)"
+
+#: plugins/rdp/rdp_plugin.c:1880
+#, fuzzy
+#| msgid "256 colors (8 bpp)"
+msgid "256 colours (8 bpp)"
+msgstr "256 färger (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1897 data/ui/remmina_preferences.glade:658
 msgid "Off"
@@ -2023,8 +2037,8 @@ msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
-"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":\""
-"Canon MF410 Series UFR II\""
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
+"\"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:1969
 #, fuzzy
@@ -2080,8 +2094,8 @@ msgid "Share serial ports"
 msgstr "Dela seriellportar"
 
 #: plugins/rdp/rdp_plugin.c:1977
-msgid "Serial ports permissive mode"
-msgstr "Tilforlẗlig modus for seriellportar"
+msgid "(SELinux) permissive mode for serial ports"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1978
 msgid "Share parallel ports"
@@ -2464,8 +2478,8 @@ msgid ""
 "\">anonymous</a></b> statistics to remmina.org"
 msgstr ""
 "Skicka <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina-bruksstatistik\""
-">anonym</a></b> statistik til remmina.org"
+"remmina__stats_8c.html#details\" title=\"Remmina-bruksstatistik\">anonym</"
+"a></b> statistik til remmina.org"
 
 #: data/ui/remmina_news.glade:133
 msgid "Make Remmina the default Remote Desktop Client"
@@ -3016,7 +3030,7 @@ msgstr "Lysa färger"
 
 #: data/ui/remmina_preferences.glade:1876
 #, fuzzy
-msgid "Load colour scheme"
+msgid "Load colour theme"
 msgstr "Använd färgdrakt"
 
 #: data/ui/remmina_preferences.glade:1917
@@ -3154,3 +3168,22 @@ msgstr "Välj en ny tangent"
 #, fuzzy
 msgid "Please press the new key…"
 msgstr "Tryck på den nya tangenten…"
+
+#, fuzzy
+#~ msgid "Private key passphrase"
+#~ msgstr "Lösenord for privat nyckel"
+
+#, fuzzy
+#~ msgid "SSH session log folder"
+#~ msgstr "Loggmapp for SSH-session"
+
+#, fuzzy
+#~ msgid "SSH session log file name"
+#~ msgstr "Loggfilnamn for SSH-session"
+
+#, fuzzy
+#~ msgid "Unknown authentication scheme from VNC server: %s"
+#~ msgstr "Okänd identitetsbekräftelsesmetod frän VNC-server: %s"
+
+#~ msgid "Serial ports permissive mode"
+#~ msgstr "Tilforlẗlig modus for seriellportar"
