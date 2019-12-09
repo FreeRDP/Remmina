@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-12-09 00:10+0000\n"
-"PO-Revision-Date: 2019-12-08 23:03+0000\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"PO-Revision-Date: 2019-12-09 21:19+0000\n"
+"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
 "tr/>\n"
 "Language: tr\n"
@@ -37,14 +37,14 @@ msgid "Executing external commands…"
 msgstr "Dış komutlar çalıştırılıyor…"
 
 #: src/remmina_protocol_widget.c:289
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to \"%s\"…"
-msgstr "Bağlanıyor '%s'…"
+msgstr "\"%s\"e bağlanıyor…"
 
 #: src/remmina_protocol_widget.c:717 src/remmina_protocol_widget.c:805
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to \"%s\" via SSH…"
-msgstr "SSH ile %s'ye bağlanılıyor…"
+msgstr "SSH ile \"%s\"e bağlanıyor…"
 
 #: src/remmina_protocol_widget.c:855
 #, c-format
@@ -52,18 +52,18 @@ msgid "Awaiting incoming SSH connection at port %i…"
 msgstr "%i no'lu portta gelen SSH bağlantısı bekleniyor…"
 
 #: src/remmina_protocol_widget.c:900
-#, fuzzy, c-format
+#, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "SSH sunucusunda %s komutu bulunamadı"
+msgstr "SSH sunucusunda \"%s\" komutu bulunamadı."
 
 #: src/remmina_protocol_widget.c:904
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr "SSH sunucusunda %s komutu çalıştırılamadı (durum = %i)."
+msgstr "SSH sunucusunda \"%s\" komutu çalıştırılamadı (durum = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:912
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command. %s"
 msgstr "Komut çalıştırılamadı: %s"
 
@@ -203,7 +203,7 @@ msgstr "SSH kimlik dosyası"
 
 #: src/remmina_ssh_plugin.c:960 src/remmina_sftp_plugin.c:319
 msgid "SSH agent"
-msgstr "SSH istemci"
+msgstr "SSH agent"
 
 #: src/remmina_ssh_plugin.c:961 src/remmina_sftp_plugin.c:320
 #: src/remmina_file_editor.c:939
@@ -264,7 +264,7 @@ msgstr "Kimlik dosyası"
 
 #: src/remmina_ssh_plugin.c:1061 src/remmina_sftp_plugin.c:353
 msgid "Password to unlock private key"
-msgstr ""
+msgstr "Özel anahtarın kilidini açmak için parola"
 
 #: src/remmina_ssh_plugin.c:1062 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:1965 plugins/nx/nx_plugin.c:725
@@ -296,33 +296,28 @@ msgid "Preferred server host key types"
 msgstr "Tercih edilen sunucu anahtar türleri"
 
 #: src/remmina_ssh_plugin.c:1085
-#, fuzzy
 msgid "Folder for SSH session log"
-msgstr "SSH oturumu başlatılamadı: %s"
+msgstr "SSH oturum günlüğü için klasör"
 
 #: src/remmina_ssh_plugin.c:1086
-#, fuzzy
 msgid "Filename for SSH session log"
-msgstr "Çıkışta SSH oturum kaydını etkinleştir"
+msgstr "SSH oturum günlüğü için dosya adı"
 
 #: src/remmina_ssh_plugin.c:1087
 msgid "Log SSH session when exiing Remmina"
-msgstr ""
+msgstr "Remmina'dan çıkarken SSH oturumunu günlüğe kaydet"
 
 #: src/remmina_ssh_plugin.c:1088
-#, fuzzy
 msgid "Audible terminal bell"
-msgstr "Uçbirim sesli zili etkinleştir"
+msgstr "Sesli terminal zili"
 
 #: src/remmina_ssh_plugin.c:1089
-#, fuzzy
 msgid "SSH compression"
-msgstr "SSH sıkıştırmasını etkinleştir"
+msgstr "SSH sıkıştırma"
 
 #: src/remmina_ssh_plugin.c:1090
-#, fuzzy
 msgid "Don't remember passwords"
-msgstr "Parolayı onayla"
+msgstr "Parolaları kaydetme"
 
 #: src/remmina_ssh_plugin.c:1091
 msgid "Strict host key checking"
@@ -560,9 +555,8 @@ msgstr "Uygulamanın ve eklentilerinin sürümünü göster"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:113
-#, fuzzy
 msgid "Modify connection profile (requires --set-option)"
-msgstr "Bağlantı profilini düzenle, (--set-option gerektirir)"
+msgstr "Bağlantı profilini düzenle (--set-option gerektirir)"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:115
@@ -603,10 +597,7 @@ msgid "Remmina Remote Desktop Client"
 msgstr "Remmina Uzak Masaüstü İstemcisi"
 
 #: src/rcw.c:585
-#, fuzzy, c-format
-#| msgid ""
-#| "Are you sure you want to close %i active connections in the current "
-#| "window?"
+#, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr ""
@@ -686,9 +677,9 @@ msgid "Disconnect"
 msgstr "Bağlantıyı kes"
 
 #: src/rcw.c:3774
-#, fuzzy, c-format
+#, c-format
 msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
-msgstr "%s dosyası bozuk, okunamıyor veya bulunamadı."
+msgstr "\"%s\" dosyası bozuk, okunamıyor veya bulunamadı."
 
 #: src/rcw.c:3936
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
@@ -752,9 +743,9 @@ msgstr[0] "Toplam %i öge."
 msgstr[1] "Toplam %i öge."
 
 #: src/remmina_main.c:828
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete \"%s\"?"
-msgstr "'%s'i silmek istediğinizden emin misiniz?"
+msgstr "\"%s\"i silmek istediğinizden emin misiniz?"
 
 #: src/remmina_main.c:928
 #, c-format
@@ -811,75 +802,74 @@ msgstr "<Yok>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:171
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the folder \"%s\"."
-msgstr "Kanal açılamadı: %s"
+msgstr "\"%s\" klasörü oluşturulamadı."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:179 src/remmina_sftp_client.c:200
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the file \"%s\"."
-msgstr "Kanal açılamadı: %s"
+msgstr "\"%s\" dosyası oluşturulamadı."
 
 #. TRANSLATORS: The placeholders %s are a file path and a server name
 #: src/remmina_sftp_client.c:218
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the file \"%s\" on the server. %s"
-msgstr "Kanal açılamadı: %s"
+msgstr "Sunucudaki \"%s\" dosyası açılamadı. %s"
 
 #: src/remmina_sftp_client.c:240
-#, fuzzy, c-format
+#, c-format
 msgid "Could not save the file \"%s\"."
-msgstr "Kanal açılamadı: %s"
+msgstr "\"%s\" dosyası kaydedilemedi."
 
 #: src/remmina_sftp_client.c:279 src/remmina_sftp_client.c:733
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the folder \"%s\". %s"
-msgstr "Kanal açılamadı: %s"
+msgstr "\"%s\" klasörü açılamadı. %s"
 
 #: src/remmina_sftp_client.c:383
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the folder \"%s\" on the server. %s"
-msgstr "Sunucu üstünde %s klasörü oluşturulurken hata oluştu. %s"
+msgstr "Sunucuda \"%s\" klasörü oluşturulamadı. %s"
 
 #: src/remmina_sftp_client.c:411 src/remmina_sftp_client.c:433
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the file \"%s\" on the server. %s"
-msgstr "Hata! dosya oluşturulamadı %s sunucu. %s"
+msgstr "Sunucuda \"%s\" dosyası oluşturulamadı. %s"
 
 #: src/remmina_sftp_client.c:454
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the file \"%s\"."
-msgstr "Kanal açılamadı: %s"
+msgstr "\"%s\" dosyası açılamadı."
 
 #: src/remmina_sftp_client.c:474
-#, fuzzy, c-format
+#, c-format
 msgid "Could not write to the file \"%s\" on the server. %s"
-msgstr "Hata! dosya yazılamadı %s sunucu. %s"
+msgstr "Sunucudaki \"%s\" dosyasına yazılamadı. %s"
 
 #: src/remmina_sftp_client.c:670
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the folder  \"%s\". %s"
-msgstr "Kanal açılamadı: %s"
+msgstr "\"%s\"  klasörü açılamadı. %s"
 
 #: src/remmina_sftp_client.c:688
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from the folder. %s"
-msgstr "Kanal açılamadı: %s"
+msgstr "Klasörden okunamadı. %s"
 
 #: src/remmina_sftp_client.c:795
-#, fuzzy
 msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "'%s'i silmek istediğinizden emin misiniz?"
+msgstr "Devam eden dosya aktarımını iptal etmek istediğinizden emin misiniz?"
 
 #: src/remmina_sftp_client.c:829
-#, fuzzy, c-format
+#, c-format
 msgid "Could not delete \"%s\". %s"
-msgstr "Kanal açılamadı: %s"
+msgstr "\"%s\" silinemedi. %s"
 
 #: src/remmina_sftp_client.c:910
 msgid "The file exists already"
-msgstr ""
+msgstr "Dosya zaten var"
 
 #: src/remmina_sftp_client.c:913
 msgid "Resume"
@@ -970,15 +960,15 @@ msgstr "SFTP - Güvenli Dosya Aktarımı"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:203
-#, fuzzy, c-format
+#, c-format
 msgid "Could not authenticate with SSH password. %s"
-msgstr "SSH oturumu başlatılamadı: %s"
+msgstr "SSH parolası ile kimlik doğrulanamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:224 src/remmina_ssh.c:248 src/remmina_ssh.c:257
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
-msgstr ""
+msgstr "Genel SSH anahtarıyla kimlik doğrulanamadı. %s"
 
 #: src/remmina_ssh.c:225
 msgid "SSH Key file not yet set."
@@ -986,9 +976,9 @@ msgstr "SSH anahtar dosyası belirtilmemiş."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:236
-#, fuzzy, c-format
+#, c-format
 msgid "Public SSH key cannot be imported. %s"
-msgstr "SSH ortak anahtarı alınamıyor: %s"
+msgstr "Genel SSH anahtarı alınamıyor. %s"
 
 #: src/remmina_ssh.c:279 src/remmina_ssh.c:587 src/remmina_ssh.c:606
 #: plugins/nx/nx_plugin.c:202
@@ -1003,19 +993,19 @@ msgstr "SSH özel anahtar passphrase"
 #: src/remmina_ssh.c:299
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
-msgstr ""
+msgstr "Genel SSH anahtarıyla otomatik olarak kimlik doğrulanamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:316
 #, c-format
 msgid "Could not authenticate with public SSH key using SSH agent. %s"
-msgstr ""
+msgstr "SSH agent kullanılarak genel SSH anahtarıyla kimlik doğrulanamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:336
 #, c-format
 msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
-msgstr ""
+msgstr "SSH Kerberos/GSSAPI ile kimlik doğrulanamadı. %s"
 
 #: src/remmina_ssh.c:365
 msgid "The public SSH key changed!"
@@ -1025,30 +1015,29 @@ msgstr "Genel SSH anahtarı değişti!"
 #: src/remmina_ssh.c:492
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
-msgstr ""
+msgstr "Sunucunun genel SSH anahtarı alınamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:499
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch public SSH key. %s"
-msgstr "SSH tüneline bağlanılamadı: %s"
+msgstr "Genel SSH anahtarı alınamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:507
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch checksum for public SSH key. %s"
-msgstr "Bilinen SSH ana bilgisayar listesi kontrol edilemedi: %s"
+msgstr "Genel SSH anahtarı için sağlama toplamı alınamadı. %s"
 
 #: src/remmina_ssh.c:520
 msgid "The server is unknown. The public key fingerprint is:"
-msgstr "Bilinmeyen sunucu. Ortak anahtar parmak izi:"
+msgstr "Bilinmeyen sunucu. Genel anahtar parmak izi:"
 
 #: src/remmina_ssh.c:522 src/remmina_ssh.c:528
 msgid "Do you trust the new public key?"
-msgstr "Yeni ortak anahtara güveniyor musunuz?"
+msgstr "Yeni genel anahtara güveniyor musunuz?"
 
 #: src/remmina_ssh.c:525
-#, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means either you are "
 "under attack,\n"
@@ -1060,7 +1049,7 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:550
-#, fuzzy, c-format
+#, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Bilinen SSH ana bilgisayar listesi kontrol edilemedi: %s"
 
@@ -1078,25 +1067,25 @@ msgstr "SSH kimlik doğrulaması"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:747
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SSH session. %s"
 msgstr "SSH oturumu başlatılamadı: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1106 src/remmina_ssh.c:1168
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel. %s"
 msgstr "Kanal oluşturulamadı: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1117
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "SSH tüneline bağlanılamadı: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1183 src/remmina_ssh.c:1781
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel. %s"
 msgstr "Kanal açılamadı: %s"
 
@@ -1107,7 +1096,7 @@ msgstr "%s SSH sunucusunda çalıştırılamadı, %%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1227 src/remmina_ssh.c:1248 src/remmina_ssh.c:1257
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Port yönlendirme isteği yapılamadı: %s"
 
@@ -1122,31 +1111,31 @@ msgstr "Yerel bağlantı noktasına bağlanılamıyor %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1385
-#, fuzzy, c-format
+#, c-format
 msgid "Could not write to SSH channel. %s"
-msgstr "Kanal oluşturulamadı: %s"
+msgstr "SSH kanalına yazılamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1392
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Tünel dinleme soketinden okunamadı: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1412
-#, fuzzy, c-format
+#, c-format
 msgid "Could not poll SSH channel. %s"
-msgstr "Kanal açılamadı: %s"
+msgstr "SSH kanalı sorgulanamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1419
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
-msgstr "ssh_channel_read_nonblocking() çalıştırılamadı: %s"
+msgstr "SSH kanalı bloklanmayan bir şekilde okunamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1438
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Tünel dinleme soketine veri gönderilemedi: %s"
 
@@ -1178,19 +1167,19 @@ msgstr "Pthread başlatılamadı."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1691
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "SFTP oturumu oluşturulamadı: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1696
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "SSH oturumu başlatılamadı: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1811
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request shell. %s"
 msgstr "Kabuk istenemedi: %s"
 
@@ -1311,12 +1300,10 @@ msgid "SSH Authentication"
 msgstr "SSH Kimlik Doğrulayıcı"
 
 #: src/remmina_file_editor.c:920
-#, fuzzy
 msgid "SSH agent (automatic)"
-msgstr "SSH İstemci (otomatik)"
+msgstr "SSH agent (otomatik)"
 
 #: src/remmina_file_editor.c:994
-#, fuzzy
 msgid "Turn on \"Autostart\" for this profile"
 msgstr "Bu profil için otomatik başlatmayı aç"
 
@@ -1367,19 +1354,17 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "Kullan '%s' alt grup sınırlayıcı olarak"
 
 #: src/remmina_file_editor.c:1486
-#, fuzzy
 msgid "Pre-command"
-msgstr "Öntanımlı Komut"
+msgstr "Ön-komut"
 
 #: src/remmina_file_editor.c:1504
-#, fuzzy
 msgid "Post-command"
-msgstr "Yazılı Komut"
+msgstr "Son-komut"
 
 #: src/remmina_file_editor.c:1569 src/remmina_file_editor.c:1587
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the file \"%s\"."
-msgstr "Kanal açılamadı: %s"
+msgstr "\"%s\" dosyası bulunamadı."
 
 #: src/remmina_chat_window.c:178
 #, c-format
@@ -1403,12 +1388,12 @@ msgid "You did not set any command to be executed"
 msgstr "Yürütülecek herhangi bir komut belirlemediniz"
 
 #: plugins/exec/exec_plugin.c:204
-#, fuzzy
 msgid ""
 "Warning: Running a command synchronously may cause Remmina not to respond.\n"
 "Do you really want to continue?"
 msgstr ""
-"Uyarı! Bir komutu eş zamanlı olarak yürütmek Remmina’yı zorlayabilir.\n"
+"Uyarı: Bir komutu eş zamanlı olarak yürütmek Remmina’nın yanıt vermemesine "
+"neden olabilir.\n"
 "Devam etmek istiyor musunuz?"
 
 #: plugins/exec/exec_plugin.c:264
@@ -1476,9 +1461,8 @@ msgid "Turn on Web Inspector"
 msgstr "Web Denetçisini aç"
 
 #: plugins/www/www_config.h:43
-#, fuzzy
 msgid "Remmina web-browser plugin"
-msgstr "Remmina Tarayıcı Eklentisi"
+msgstr "Remmina tarayıcı eklentisi"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
 msgid "Secure password storing in the GNOME keyring"
@@ -1517,12 +1501,11 @@ msgstr "Bağlantı isteğiniz reddedildi."
 #: plugins/vnc/vnc_plugin.c:919
 #, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
-msgstr ""
+msgstr "VNC sunucusu bilinmeyen bir kimlik doğrulama yöntemi istedi. %s"
 
 #: plugins/vnc/vnc_plugin.c:921
-#, fuzzy
 msgid "Please retry after turning on encryption for this profile."
-msgstr "Bu profilde şifreleme etkinleştirmeyi sonra yeniden deneyin."
+msgstr "Lütfen bu profil için şifrelemeyi açtıktan sonra tekrar deneyin."
 
 #: plugins/vnc/vnc_plugin.c:1803
 msgid "256 colors (8 bpp)"
@@ -1635,18 +1618,17 @@ msgid "Enter SPICE password"
 msgstr "SPICE parolasını girin"
 
 #: plugins/spice/spice_plugin.c:274
-#, fuzzy, c-format
+#, c-format
 msgid "Disconnected from the SPICE server \"%s\"."
-msgstr "SPICE server bağlantısı kesildi %s."
+msgstr "\"%s\" SPICE sunucusuyla bağlantı kesildi."
 
 #: plugins/spice/spice_plugin.c:290
 msgid "TLS connection error."
 msgstr "TLS bağlantı hatası."
 
 #: plugins/spice/spice_plugin.c:296
-#, fuzzy
 msgid "Connection to the SPICE server dropped."
-msgstr "SPICE sunucu bağlantısı başarısız oldu."
+msgstr "SPICE sunucusuna bağlantı kesildi."
 
 #: plugins/spice/spice_plugin.c:438
 msgid "Use TLS encryption"
@@ -1703,11 +1685,12 @@ msgid "Run out of available local X display number."
 msgstr "Mevcut yerel x ekran numarası tükendi."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:608
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
 msgstr ""
-"Protokol %s kullanılamıyor çünkü GtkSocket sadece X.Org altında çalışıyor"
+"GtkSocket yalnızca X.Org altında çalıştığı için \"%s\" protokolü "
+"kullanılamıyor."
 
 #: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
@@ -1718,22 +1701,18 @@ msgid "Grayscale"
 msgstr "Gri ölçek"
 
 #: plugins/xdmcp/xdmcp_plugin.c:350
-#, fuzzy
 msgid "256 colours"
 msgstr "256 renk"
 
 #: plugins/xdmcp/xdmcp_plugin.c:351
-#, fuzzy
 msgid "High colour (16 bit)"
 msgstr "Yüksek renk (16 bit)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:352
-#, fuzzy
 msgid "True colour (24 bit)"
 msgstr "Gerçek renk (24 bit)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1940
-#, fuzzy
 msgid "Colour depth"
 msgstr "Renk derinliği"
 
@@ -1766,9 +1745,8 @@ msgid "Detached window"
 msgstr "Müstakil pencere"
 
 #: plugins/st/st_plugin_config.h:43
-#, fuzzy
 msgid "Remmina simple terminal"
-msgstr "Remmina Basit Uçbirim"
+msgstr "Remmina basit terminal"
 
 #: plugins/rdp/rdp_plugin.c:577
 msgid "Enter RDP authentication credentials"
@@ -1842,66 +1820,66 @@ msgstr ""
 "Kullanıcı bağlanmadan önce parolayı değiştirmelidir."
 
 #: plugins/rdp/rdp_plugin.c:1544
-#, fuzzy, c-format
+#, c-format
 msgid "Lost connection to the RDP server \"%s\"."
-msgstr "%s RDP sunucusuna bağlanılamıyor."
+msgstr "\"%s\" RDP sunucusuyla bağlantı kesildi."
 
 #: plugins/rdp/rdp_plugin.c:1547
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the address for the RDP server \"%s\"."
-msgstr "RDP sunucu %s adresini bulamıyor."
+msgstr "\"%s\" RDP sunucusunun adresi bulunamadı."
 
 #: plugins/rdp/rdp_plugin.c:1551
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
-"RDP sunucusuna %s bağlanırken hata oluştu, TLS bağlantısı başarısız oldu, "
-"kullanıcıyı kontrol et.ve sunucu ortak TLS sürümünü destekler."
+"TLS üzerinden \"%s\" RDP sunucusuna bağlanılamadı. İstemci ve sunucunun "
+"ortak bir TLS sürümünü desteklediğini kontrol edin."
 
 #: plugins/rdp/rdp_plugin.c:1554
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to establish a connection to the RDP server \"%s\"."
-msgstr "RDP sunucu ile %s bağlantı kuramıyor."
+msgstr "\"%s\" RDP sunucusuyla bağlantı kurulamıyor."
 
 #: plugins/rdp/rdp_plugin.c:1562
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the RDP server \"%s\"."
-msgstr "%s RDP sunucusuna bağlanılamıyor."
+msgstr "\"%s\" RDP sunucusuna bağlanılamıyor."
 
 #: plugins/rdp/rdp_plugin.c:1565
-#, fuzzy
 msgid "Could not start libfreerdp-gdi."
-msgstr "libfreerdp-gdi başlatılamadı"
+msgstr "libfreerdp-gdi başlatılamadı."
 
 #: plugins/rdp/rdp_plugin.c:1568
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
 "does not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
-"%s sunucusu için bir H.264 GFX modu istediniz, ancak libfreerdp sürümünüz "
-"H.264'ü desteklemiyor. Lütfen AVC olmayan bir renk derinliği ayarı kullanın."
+"\"%s\" sunucusu için bir H.264 GFX modu istediniz, ancak libfreerdp "
+"sürümünüz H.264'ü desteklemiyor. Lütfen AVC olmayan bir renk derinliği ayarı "
+"kullanın."
 
 #: plugins/rdp/rdp_plugin.c:1575
-#, fuzzy, c-format
+#, c-format
 msgid "The \"%s\" server refused the connection."
-msgstr "%s sunucusu bağlantıyı reddetti."
+msgstr "\"%s\" sunucusu bağlantıyı reddetti."
 
 #: plugins/rdp/rdp_plugin.c:1580
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\"\\%s access due to "
 "policy."
 msgstr ""
-"%s uzak masaüstü ağ geçidi, ilke nedeniyle %s\\%s kullanıcı erişimini "
-"reddetti."
+"\"%s\" uzak masaüstü ağ geçidi, politika nedeniyle \"%s\"\\%s kullanıcı "
+"erişimini reddetti."
 
 #: plugins/rdp/rdp_plugin.c:1590
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the \"%s\" RDP server."
-msgstr "%s RDP sunucusuna bağlanılamıyor."
+msgstr "\"%s\" RDP sunucusuna bağlanılamıyor."
 
 #: plugins/rdp/rdp_plugin.c:1872
 msgid "GFX AVC444 (32 bpp)"
@@ -1920,29 +1898,24 @@ msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bit)"
 
 #: plugins/rdp/rdp_plugin.c:1876
-#, fuzzy
 msgid "True colour (32 bpp)"
-msgstr "Gerçek renk (32 bit)"
+msgstr "Gerçek renk (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1877
-#, fuzzy
 msgid "True colour (24 bpp)"
-msgstr "Gerçek renk (24 bit)"
+msgstr "Gerçek renk (24 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1878
-#, fuzzy
 msgid "High colour (16 bpp)"
-msgstr "Yüksek renk (16 bit)"
+msgstr "Yüksek renk (16 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1879
-#, fuzzy
 msgid "High colour (15 bpp)"
-msgstr "Yüksek renk (15 bit)"
+msgstr "Yüksek renk (15 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1880
-#, fuzzy
 msgid "256 colours (8 bpp)"
-msgstr "256 renk (8 bit)"
+msgstr "256 renk (8 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1897 data/ui/remmina_preferences.glade:658
 msgid "Off"
@@ -2058,7 +2031,7 @@ msgstr "Seri port paylaş"
 
 #: plugins/rdp/rdp_plugin.c:1977
 msgid "(SELinux) permissive mode for serial ports"
-msgstr ""
+msgstr "(SELinux) Seri portlar için izin verici mod"
 
 #: plugins/rdp/rdp_plugin.c:1978
 msgid "Share parallel ports"
@@ -2210,9 +2183,8 @@ msgid "Reconnection attempt %d of %d…"
 msgstr "Yeniden bağlanma girişimi %d / %d…"
 
 #: plugins/nx/nx_session_manager.c:98
-#, fuzzy
 msgid "Terminating…"
-msgstr "Sonlandırılıyor"
+msgstr "Sonlandırılıyor…"
 
 #: plugins/nx/nx_session_manager.c:143
 #, c-format
@@ -2245,7 +2217,7 @@ msgstr "Durum"
 
 #: plugins/nx/nx_plugin.c:205
 msgid "Password for private SSH key"
-msgstr ""
+msgstr "Özel SSH anahtarı için parola"
 
 #: plugins/nx/nx_plugin.c:367
 msgid "Enter NX authentication credentials"
@@ -2256,18 +2228,17 @@ msgid "NX - NX Technology"
 msgstr "NX - NX Teknolojisi"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
-#, fuzzy
 msgid "Secure passwords storage in KWallet"
-msgstr "KDE Cüzdanında saklanan güvenli parolalar"
+msgstr "KWallet'da güvenli parola saklama"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
 msgstr ""
-"%s kendi masaüstünü paylaşmak istiyor.\n"
-"Daveti kabul ediyor musunuz ?"
+"%s masaüstünü paylaşmak istiyor.\n"
+"Kabul ediyor musunuz?"
 
 #: plugins/telepathy/telepathy_channel_handler.c:240
 msgid "Desktop sharing invitation"
@@ -2320,9 +2291,8 @@ msgid "Toggle view"
 msgstr "Görünümü değiştir"
 
 #: data/ui/remmina_main.glade:168
-#, fuzzy
 msgid "Search string or server name/IP address for \"\\Quick Connect\\\""
-msgstr "hızlı bağlantı için listeyi ara veya sunucu adı/ip adresi gir"
+msgstr "\"\\Quick Connect\\\" için string veya sunucu adı/IP adresi arayın"
 
 #: data/ui/remmina_main.glade:172 data/ui/remmina_main.glade:174
 msgid "Server name or IP address"
@@ -2617,7 +2587,6 @@ msgid "Profile filename template"
 msgstr "Profil dosya adı şablonu"
 
 #: data/ui/remmina_preferences.glade:495
-#, fuzzy
 msgid ""
 "%G Group name (slash will be converted to - automatically)\n"
 "%P Protocol name\n"
@@ -2626,10 +2595,10 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G Grup Adı (eğik çizgi - otomatik olarak dönüştürülür)\n"
+"%G Grup adı (eğik çizgi, otomatik olarak tireye (-) dönüştürülür)\n"
 "%P Protokol adı\n"
-"%N Bağlantı Adı\n"
-"%h Hostadı/IP\n"
+"%N Bağlantı adı\n"
+"%h Ana bilgisayar adı/IP\n"
 "\n"
 "\n"
 
@@ -2914,12 +2883,10 @@ msgid "Bright colours"
 msgstr "Parlak renkler"
 
 #: data/ui/remmina_preferences.glade:1876
-#, fuzzy
 msgid "Load colour theme"
-msgstr "Renk şeması yükle"
+msgstr "Renk teması yükle"
 
 #: data/ui/remmina_preferences.glade:1917
-#, fuzzy
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
