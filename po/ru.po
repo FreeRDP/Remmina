@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-12-07 11:16+0000\n"
+"POT-Creation-Date: 2019-12-09 00:10+0000\n"
 "PO-Revision-Date: 2019-12-08 17:15+0200\n"
 "Last-Translator: Soltys Sergey <treefeed@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 3.10-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 "X-Generator: Poedit 2.2.4\n"
@@ -1048,8 +1048,9 @@ msgid "Do you trust the new public key?"
 msgstr "Вы действительно доверяете новому публичному ключу?"
 
 #: src/remmina_ssh.c:525
+#, fuzzy
 msgid ""
-"WARNING: The server has changed its public key. This means either you are "
+"Warning: The server has changed its public key. This means either you are "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
@@ -1399,8 +1400,9 @@ msgid "You did not set any command to be executed"
 msgstr "Вы не установили никакой команды на исполнение"
 
 #: plugins/exec/exec_plugin.c:204
+#, fuzzy
 msgid ""
-"WARNING! Running a command synchronously may cause Remmina not to respond.\n"
+"Warning: Running a command synchronously may cause Remmina not to respond.\n"
 "Do you really want to continue?"
 msgstr ""
 "ВНИМАНИЕ! Синхронное исполнение команд может заставить Remmina зависнуть.\n"
@@ -2242,10 +2244,10 @@ msgid "Secure passwords storage in KWallet"
 msgstr "Безопасное содержание паролей в KWallet"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"%s wants to share his/her desktop.\n"
-"Do you accept the invitation?"
+"%s wants to share their desktop.\n"
+"Do you accept?"
 msgstr ""
 "%s хочет открыть доступ к его/её рабочему столу.\n"
 "Вы принимаете приглашение?"
@@ -2411,12 +2413,6 @@ msgid "<big>Important settings</big>"
 msgstr "<big>Важные настройки</big>"
 
 #: data/ui/remmina_news.glade:192
-#| msgid ""
-#| "<span>\n"
-#| "<b>Remmina is developed by brave contributors in their free time, be "
-#| "brave as well  <a href=\"https://remmina.org/donations/\" title=\"Remmina "
-#| "donations\">rewarding our heros!</a></b>\n"
-#| "</span>\n"
 msgid ""
 "<span>\n"
 "<b>You are great for using copylefted libre software, <a href=\"https://"
@@ -2825,7 +2821,6 @@ msgstr "Мастер-пароль"
 
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
-#| msgid "Enter certificate authentication files"
 msgid "Use secret key authentication for some widgets"
 msgstr ""
 "Использовать аутентификацию с помощью секретных ключей для некоторых виджетов"
@@ -3020,301 +3015,3 @@ msgstr "Выберите новую клавишу"
 msgid "Please press the new key…"
 msgstr "Пожалуйста нажмите новую клавишу…"
 
-#~ msgid "User name"
-#~ msgstr "Имя пользователя"
-
-#~ msgid "Scrolled fullscreen mode"
-#~ msgstr "Режим полного экрана с прокруткой"
-
-#~ msgid ""
-#~ "Warning: screenshot is scaled or distorted. Disable scaling to have "
-#~ "better screenshot."
-#~ msgstr ""
-#~ "Предупреждение: снимок масштабирован или искажён. Отключите "
-#~ "масштабирование для получения лучшего снимка."
-
-#~ msgid "Profile"
-#~ msgstr "Профиль"
-
-#, c-format
-#~ msgid "File %s not found."
-#~ msgstr "Файл %s не найден."
-
-#~ msgid "Open Secure Shell in New Terminal…"
-#~ msgstr "Открыть защищённую оболочку SSH в новом терминале…"
-
-#, c-format
-#~ msgid "Connecting to SSH server %s…"
-#~ msgstr "Подключение к SSH серверу %s…"
-
-#, c-format
-#~ msgid "Connecting to %s through SSH tunnel…"
-#~ msgstr "Подключение к %s через SSH туннель…"
-
-#~ msgid "Enter SSH tunnel authentication credentials"
-#~ msgstr "Введите данные авторизаии SSH туннеля"
-
-#, c-format
-#~ msgid "%s password"
-#~ msgstr "%s пароль"
-
-#, c-format
-#~ msgid "Protocol plugin %s is not installed."
-#~ msgstr "Протокол модуля %s не установлен."
-
-#, c-format
-#~ msgid "Error creating directory %s."
-#~ msgstr "Ошибка при создании каталога %s."
-
-#, c-format
-#~ msgid "Error creating file %s."
-#~ msgstr "Ошибка при создании файла %s."
-
-#, c-format
-#~ msgid "Error writing file %s."
-#~ msgstr "Ошибка при записи файла %s."
-
-#, c-format
-#~ msgid "Error opening directory %s. %s"
-#~ msgstr "Ошибка при открытии каталога %s. %s"
-
-#, c-format
-#~ msgid "Error opening file %s."
-#~ msgstr "Ошибка при открытии файла %s."
-
-#, c-format
-#~ msgid "Failed reading directory. %s"
-#~ msgstr "Ошибка при чтении каталога. %s"
-
-#~ msgid ""
-#~ "File transfer currently in progress.\n"
-#~ "Are you sure to cancel it?"
-#~ msgstr ""
-#~ "Осуществляется передача файла.\n"
-#~ "Вы действительно хотите её отменить?"
-
-#~ msgid "File exists"
-#~ msgstr "Файл уже существует"
-
-#, c-format
-#~ msgid "SSH password authentication failed: %s"
-#~ msgstr "Аутентификация SSH по паролю не удалась: %s"
-
-#, c-format
-#~ msgid "SSH public key authentication failed: %s"
-#~ msgstr "Аутентификация SSH по публичному ключу не удалась: %s"
-
-#, c-format
-#~ msgid "SSH automatic public key authentication failed: %s"
-#~ msgstr ""
-#~ "Автоматическая аутентификация SSH по публичному ключу не удалась: %s"
-
-#, c-format
-#~ msgid "SSH Kerberos/GSSAPI authentication failed: %s"
-#~ msgstr "Аутентификация SSH через Kerberos/GSSAPI не удалась: %s"
-
-#, c-format
-#~ msgid "ssh_get_server_publickey() has failed: %s"
-#~ msgstr "ssh_get_server_publickey() не удался: %s"
-
-#, c-format
-#~ msgid "ssh_get_publickey() has failed: %s"
-#~ msgstr "ssh_get_publickey() не удался: %s"
-
-#, c-format
-#~ msgid "ssh_get_publickey_hash() has failed: %s"
-#~ msgstr "ssh_get_publickey_hash() не удался: %s"
-
-#, c-format
-#~ msgid "SSH known host checking failed: %s"
-#~ msgstr "Проверка известного хоста SSH не удалась: %s"
-
-#~ msgid "No response from the server."
-#~ msgstr "Сервер не отвечает."
-
-#, c-format
-#~ msgid "ssh_channel_write() returned an error: %s"
-#~ msgstr "ssh_channel_write() вернул ошибку: %s"
-
-#, c-format
-#~ msgid "ssh_channel_poll() returned an error: %s"
-#~ msgstr "ssh_channel_poll() вернул ошибку: %s"
-
-#, c-format
-#~ msgid "ssh_channel_read_nonblocking() returned an error: %s"
-#~ msgstr "ssh_channel_read_nonblocking() вернул ошибку: %s"
-
-#, c-format
-#~ msgid "write on tunnel listening socket returned an error: %s"
-#~ msgstr "запись в туннеле прослушивания сокета вернуло ошибку: %s"
-
-#~ msgid "Destination port has not been assigned."
-#~ msgstr "Порт назначения не был назначен."
-
-#~ msgid "Failed to bind on local port."
-#~ msgstr "Не удалась привязка на локальном порту."
-
-#, c-format
-#~ msgid "Failed to initialize SFTP session: %s"
-#~ msgstr "Не удалось инициализировать SFTP сессию: %s"
-
-#~ msgid "Show preferences dialog page"
-#~ msgstr "Показать настройки диалоговой страницы"
-
-#~ msgid "Quit the application"
-#~ msgstr "Выход из приложения"
-
-#~ msgid "Show the application’s version, including the plugin versions"
-#~ msgstr "Показать версию приложения, включая версии модулей"
-
-#~ msgid "Private key passphrase"
-#~ msgstr "Ключевая фраза закрытого ключа"
-
-#, c-format
-#~ msgid "%s"
-#~ msgstr "%s"
-
-#~ msgid "SSH session log folder"
-#~ msgstr "Папка лога SSH сессии"
-
-#~ msgid "SSH session log file name"
-#~ msgstr "Имя файла лога SSH сессии"
-
-#~ msgid "Enable SSH session logging at exit"
-#~ msgstr "Включить логирование SSH сессии при выходе"
-
-#, c-format
-#~ msgid "File %s transferred successfully"
-#~ msgstr "Файл %s успешно передан"
-
-#, c-format
-#~ msgid ""
-#~ "Authentication to RDP server %s failed.\n"
-#~ "Check username, password and domain."
-#~ msgstr ""
-#~ "Аутентификация на сервере RDP %s не удалась.\n"
-#~ "Проверьте имя пользователя, пароль и домен."
-
-#, c-format
-#~ msgid "Unable to connect to RDP server %s"
-#~ msgstr "Невозможно подключиться к RDP серверу %s"
-
-#~ msgid "Local printer name"
-#~ msgstr "Имя локального принтера"
-
-#~ msgid "Serial ports permissive mode"
-#~ msgstr "Режим доступа последовательных портов"
-
-#~ msgid "Disable fast-path"
-#~ msgstr "Отключить fast-path"
-
-#~ msgid "Listening connection on protocol TCP"
-#~ msgstr "Прослушивание соединения по протоколу TCP"
-
-#, c-format
-#~ msgid "Unknown authentication scheme from VNC server: %s"
-#~ msgstr "Сервер VNC использует неизвестную схему аутентификации: %s"
-
-#~ msgid "VNC - VNC viewer"
-#~ msgstr "VNC - просмотр VNC"
-
-#~ msgid "VNCI - VNC viewer listen mode"
-#~ msgstr "VNCI - просмотр VNC в слушающем режиме"
-
-#~ msgid "Enable support for plugins"
-#~ msgstr "Включить поддержку плагинов"
-
-#~ msgid "Enable support for WebGL"
-#~ msgstr "Включить поддержку WebGL"
-
-#~ msgid "Enable support for WebAudio"
-#~ msgstr "Включить поддержку WebAudio"
-
-#~ msgid "About Remmina"
-#~ msgstr "О Remmina"
-
-#~ msgid "Remmina Web Site"
-#~ msgstr "Сайт Remmina"
-
-#~ msgid "Send anonymous statistics to remmina.org"
-#~ msgstr "Отправлять анонимную статистику на remmina.org"
-
-#~ msgid "Online Wiki"
-#~ msgstr "Он-лайн Вики"
-
-#~ msgid "Reset to"
-#~ msgstr "Сбросить до"
-
-#~ msgid "F"
-#~ msgstr "Ф"
-
-#~ msgid "PLEASE WAIT…"
-#~ msgstr "ПОЖАЛУЙСТА ЖДИТЕ…"
-
-#~ msgid "Auto scroll step size"
-#~ msgstr "Шаг авто прокрутки"
-
-#~ msgid "Choose the directory where you want to save Remmina screenshots."
-#~ msgstr "Выберите папку, в которой будут храниться снимки Remmina."
-
-#~ msgid "Select a Directory"
-#~ msgstr "Выберите папку"
-
-#~ msgid ""
-#~ "If you check this button, when generating a screenshot it will only be "
-#~ "saved on a file and not in the clipboard."
-#~ msgstr ""
-#~ "Если отметить, снимки будут сохранятся только в файл, но не в буфер "
-#~ "обмена."
-
-#~ msgid "Do not use tabs"
-#~ msgstr "Не использовать вкладки"
-
-#~ msgid "Disabled"
-#~ msgstr "Отключен"
-
-#~ msgid "Choose this if your theme panel is light."
-#~ msgstr "Выберете, если у вас панель темы - светлая."
-
-#~ msgid "SCREENSHOT"
-#~ msgstr "СНИМОК ЭКРАНА"
-
-#~ msgid "VIEW-ONLY MODE"
-#~ msgstr "РЕЖИМ ПРОСМОТРА"
-
-#~ msgid "SSH tunnel local port"
-#~ msgstr "Локальный порт SSH туннеля"
-
-#~ msgid ""
-#~ "When activated, some widgets will require you to authenticate with a "
-#~ "secret key"
-#~ msgstr ""
-#~ "Когда активирован, некоторые виджеты могут потребовать авторизации "
-#~ "секретным ключом"
-
-#~ msgid "Clipboard copy shortcut"
-#~ msgstr "Комбинация Копирования"
-
-#~ msgid "Clipboard paste shortcut"
-#~ msgstr "Комбинация Вставки"
-
-#~ msgid "Cursor Color"
-#~ msgstr "Цвет Курсора"
-
-#~ msgid "Pick a color for black"
-#~ msgstr "Выбрать цвет для чёрного"
-
-#~ msgid "Pick a color for green"
-#~ msgstr "Выбрать цвет для зелёного"
-
-#~ msgid "Pick a color for yellow"
-#~ msgstr "Выбрать цвет для жёлтого"
-
-#~ msgid "Pick a color for Cyan"
-#~ msgstr "Выбрать цвет для цианового"
-
-#~ msgid "Pick a color for white"
-#~ msgstr "Выбрать цвет для белого"
-
-#~ msgid "Terminal Color Scheme file chooser"
-#~ msgstr "Выбор файла цветовой схемы терминала"
