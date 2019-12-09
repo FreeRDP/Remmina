@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-12-09 00:10+0000\n"
-"PO-Revision-Date: 2019-12-05 20:25+0000\n"
+"PO-Revision-Date: 2019-12-09 20:27+0000\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "remmina/remmina/pt_BR/>\n"
@@ -34,12 +34,12 @@ msgid "Executing external commands…"
 msgstr "Executando comandos externos…"
 
 #: src/remmina_protocol_widget.c:289
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to \"%s\"…"
 msgstr "Conectando a \"%s\"…"
 
 #: src/remmina_protocol_widget.c:717 src/remmina_protocol_widget.c:805
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to \"%s\" via SSH…"
 msgstr "Conectando a \"%s\" via SSH…"
 
@@ -49,20 +49,21 @@ msgid "Awaiting incoming SSH connection at port %i…"
 msgstr "Aguardando conexão SSH de entrada na porta %i…"
 
 #: src/remmina_protocol_widget.c:900
-#, fuzzy, c-format
+#, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "Não foi possível encontrar o comando %s no servidor SSH"
+msgstr "O comando %s não está disponível no servidor SSH."
 
 #: src/remmina_protocol_widget.c:904
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr "Não foi possível executar o comando %s no servidor SSH (estado = %i)."
+msgstr ""
+"Não foi possível executar o comando \"%s\" no servidor SSH (estado = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:912
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command. %s"
-msgstr "Não foi possível executar o comando: %s"
+msgstr "Não foi possível executar o comando. %s"
 
 #: src/remmina_protocol_widget.c:979
 #, c-format
@@ -261,7 +262,7 @@ msgstr "Arquivo de identidade"
 
 #: src/remmina_ssh_plugin.c:1061 src/remmina_sftp_plugin.c:353
 msgid "Password to unlock private key"
-msgstr ""
+msgstr "Senha para desbloquear a chave privada"
 
 #: src/remmina_ssh_plugin.c:1062 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:1965 plugins/nx/nx_plugin.c:725
@@ -293,14 +294,12 @@ msgid "Preferred server host key types"
 msgstr "Tipos de chaves de host servidor preferidos"
 
 #: src/remmina_ssh_plugin.c:1085
-#, fuzzy
 msgid "Folder for SSH session log"
-msgstr "Falha ao iniciar sessão SSH: %s"
+msgstr "Pasta para o log de sessão SSH"
 
 #: src/remmina_ssh_plugin.c:1086
-#, fuzzy
 msgid "Filename for SSH session log"
-msgstr "Habilitar registro log da sessão SSH ao sair"
+msgstr "Nome de arquivo para o log da sessão SSH"
 
 #: src/remmina_ssh_plugin.c:1087
 msgid "Log SSH session when exiing Remmina"
