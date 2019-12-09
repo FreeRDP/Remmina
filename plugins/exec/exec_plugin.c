@@ -201,7 +201,7 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 	}else {
 		dialog = GTK_DIALOG(gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL,
 					GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
-			_("WARNING! Running a command synchronously may cause Remmina not to respond.\nDo you really want to continue?")));
+			_("Warning: Running a command synchronously may cause Remmina not to respond.\nDo you really want to continue?")));
 		gint result = gtk_dialog_run (GTK_DIALOG (dialog));
 
 		switch (result)
