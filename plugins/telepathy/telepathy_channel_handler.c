@@ -234,7 +234,7 @@ static void remmina_tp_channel_handler_get_contacts(TpConnection *connection, gu
 	chandler->alias = g_strdup(tp_contact_get_alias(contact));
 
 	dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
-		_("%s wants to share his/her desktop.\nDo you accept the invitation?"), chandler->alias);
+		_("%s wants to share their desktop.\nDo you accept?"), chandler->alias);
 	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(remmina_tp_channel_handler_on_response), chandler);
 	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 	gtk_window_set_title(GTK_WINDOW(dialog), _("Desktop sharing invitation"));
