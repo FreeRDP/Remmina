@@ -522,7 +522,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 						  _("Do you trust the new public key?"));
 		} else {
 			message = g_strdup_printf("%s\n%s\n\n%s",
-						  _("WARNING: The server has changed its public key. This means either you are under attack,\n"
+						  _("Warning: The server has changed its public key. This means either you are under attack,\n"
 						    "or the administrator has changed the key. The new public key fingerprint is:"),
 						  keyname,
 						  _("Do you trust the new public key?"));
