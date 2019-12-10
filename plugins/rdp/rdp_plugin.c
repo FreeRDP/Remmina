@@ -1172,8 +1172,15 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		freerdp_set_gateway_usage_method(rfi->settings,
 						 remmina_plugin_service->file_get_int(remminafile, "gateway_usage", FALSE) ? TSC_PROXY_MODE_DETECT : TSC_PROXY_MODE_DIRECT);
 
+#ifdef WITH_FREERDP_MASTER
+#pragma message  "Using FreeRDP master branch!"
+	/* TODO: As soon as FreeRDP 2.0.0-rc5 will be available, implement an ifdef with that version */
 	freerdp_settings_set_string(rfi->settings, (size_t)FreeRDP_GatewayAccessToken,
 				    remmina_plugin_service->file_get_string(remminafile, "gatewayaccesstoken"));
+#else
+	rfi->settings->GatewayAccessToken = g_strdup(
+			remmina_plugin_service->file_get_string(remminafile, "gatewayaccesstoken"));
+#endif
 
 	rfi->settings->AuthenticationLevel = remmina_plugin_service->file_get_int(
 		remminafile, "authentication level", rfi->settings->AuthenticationLevel);
