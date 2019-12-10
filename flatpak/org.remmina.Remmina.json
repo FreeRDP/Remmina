@@ -1,7 +1,7 @@
 {
     "app-id": "org.remmina.Remmina",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.32",
+    "runtime-version": "3.34",
     "sdk": "org.gnome.Sdk",
     "command": "remmina",
     "cleanup": [
@@ -47,6 +47,7 @@
         "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
     "modules": [
+        "shared-modules/dbus-glib/dbus-glib-0.110.json",
         "shared-modules/libappindicator/libappindicator-gtk3-12.10.json",
         {
             "name": "avahi",
@@ -87,12 +88,13 @@
         {
             "name": "nxproxy",
             "no-autogen": true,
-            "make-args": ["PREFIX=/app"],
+            "make-args": ["build-lite", "PREFIX=${FLATPAK_DEST}"],
+            "install-rule": "install-lite",
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://code.x2go.org/releases/source/nx-libs/nx-libs-3.5.99.20-1-lite.tar.gz",
-                    "sha256": "6b934a98e6425b3790ab0fa56e6e1c7047e98ffdb381415afa755375ae1cb123"
+                    "url": "https://github.com/ArcticaProject/nx-libs/archive/3.5.99.22/nx-libs-3.5.99.22.tar.gz",
+                    "sha256": "fa672a7b1cfeca4183a2f9b814f876889ee73a9d49d7ae64e36671dd3562bd5b"
                 }
             ]
         },
@@ -136,6 +138,7 @@
                 "-DWITH_CUPS:BOOL=ON",
                 "-DWITH_JPEG:BOOL=ON",
                 "-DWITH_MANPAGES:BOOL=OFF",
+                "-DWITH_OPENH264:BOOL=ON",
                 "-DWITH_OSS:BOOL=OFF",
                 "-DWITH_PCSC:BOOL=ON",
                 "-DWITH_PULSE:BOOL=ON",
@@ -145,8 +148,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/FreeRDP/FreeRDP.git",
-                    "tag": "2.0.0-rc4",
-                    "commit": "e21b72c95f857817b4b32b5ef5406355c005a9e8"
+                    "branch": "master"
                 }
             ],
             "modules": [
@@ -167,11 +169,6 @@
         },
         {
             "name": "spice-gtk",
-            "build-options": {
-                "env": {
-                    "PYTHONPATH": "/app/build-aux"
-                }
-            },
             "cleanup": [
                 "/bin",
                 "/share/vala"
@@ -189,34 +186,6 @@
                 }
             ],
             "modules": [
-                {
-                    "name": "python-pyparsing",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "pip3 install --target=/app/build-aux ./pyparsing-2.4.2-py2.py3-none-any.whl"
-                    ],
-                    "sources": [
-                        {
-                            "type": "file",
-                            "url": "https://files.pythonhosted.org/packages/11/fa/0160cd525c62d7abd076a070ff02b2b94de589f1a9789774f17d7c54058e/pyparsing-2.4.2-py2.py3-none-any.whl",
-                            "sha256": "d9338df12903bbf5d65a0e4e87c2161968b10d2e489652bb47001d82a9b028b4"
-                        }
-                    ]
-                },
-                {
-                    "name": "python-six",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "pip3 install --target=/app/build-aux ./six-1.12.0-py2.py3-none-any.whl"
-                    ],
-                    "sources": [
-                        {
-                            "type": "file",
-                            "url": "https://files.pythonhosted.org/packages/73/fb/00a976f728d0d1fecfe898238ce23f502a721c0ac0ecfedb80e0d88c64e9/six-1.12.0-py2.py3-none-any.whl",
-                            "sha256": "3350809f0555b11f552448330d0b52d5f24c91a322ea4a15ef22629740f3761c"
-                        }
-                    ]
-                },
                 {
                     /**
                      * For smartcard support
@@ -238,7 +207,7 @@
                     "subdir": "lib",
                     "no-autogen": true,
                     "make-args": ["lib"],
-                    "make-install-args": ["PREFIX=/app"],
+                    "make-install-args": ["PREFIX=${FLATPAK_DEST}"],
                     "sources": [
                         {
                             "type": "archive",
@@ -292,13 +261,14 @@
                 }
             ],
             "post-install": [
-                "install -Dm644 -t /app/share/licenses/libsodium LICENSE"
+                "install -Dm644 -t ${FLATPAK_DEST}/share/licenses/libsodium LICENSE"
             ]
         },
         {
             "name": "libssh",
             "buildsystem": "cmake-ninja",
             "builddir": true,
+            /* FIXME: use ${FLATPAK_DEST} instead of hardcoded //app for nacl flags */
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DWITH_NACL:BOOL=ON",
@@ -309,8 +279,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://www.libssh.org/files/0.9/libssh-0.9.0.tar.xz",
-                    "sha256": "25303c2995e663cd169fdd902bae88106f48242d7e96311d74f812023482c7a5"
+                    "url": "https://www.libssh.org/files/0.9/libssh-0.9.2.tar.xz",
+                    "sha256": "1970a8991374fc8cbdcb7fcc3683fe8f8824aa37d575f38cfb75fe0fe50fd9ad"
                 }
             ],
             "modules": [
@@ -430,6 +400,7 @@
             ]
         },
         {
+            /* Remmina main build */
             "name": "remmina",
             "buildsystem": "cmake-ninja",
             "cleanup": [
