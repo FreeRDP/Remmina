@@ -30,7 +30,7 @@ Remmina is released in separated source packages:
 Remmina is copylefted libre software, licensed GNU GPLv2+.
 
 ## Installation
-Instructions for many operating system and building from source to be found on [here](https://remmina.org/how-to-install-remmina/)
+Instructions for many operating system and building from source to be found [here](https://remmina.org/how-to-install-remmina/),
 it can be edited on [the wiki](https://gitlab.com/Remmina/Remmina/wikis/home).
 
 ## Configuration
