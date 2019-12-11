@@ -578,7 +578,7 @@ remmina_file_get_icon_name(RemminaFile *remminafile)
 	plugin = (RemminaProtocolPlugin *)remmina_plugin_manager_get_plugin(REMMINA_PLUGIN_TYPE_PROTOCOL,
 									    remmina_file_get_string(remminafile, "protocol"));
 	if (!plugin)
-		return REMMINA_APP_ID;
+		return g_strconcat (REMMINA_APP_ID, "-symbolic", NULL);
 
 	return remmina_file_get_int(remminafile, "ssh_enabled", FALSE) ? plugin->icon_name_ssh : plugin->icon_name;
 }
