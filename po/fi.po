@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-12-12 15:22+0000\n"
-"PO-Revision-Date: 2019-12-02 17:51+0000\n"
+"PO-Revision-Date: 2019-12-12 21:48+0000\n"
 "Last-Translator: Tuomas Lähteenmäki <lahtis@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
@@ -33,14 +33,14 @@ msgid "Executing external commands…"
 msgstr "Suoritetaan ulkoisia komentoja…"
 
 #: src/remmina_protocol_widget.c:289
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to \"%s\"…"
-msgstr "Yhdistetään kohteeseen ”%s”…"
+msgstr "Yhdistetään kohteeseen \"%s\"…"
 
 #: src/remmina_protocol_widget.c:717 src/remmina_protocol_widget.c:805
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to \"%s\" via SSH…"
-msgstr "Yhdistetään kohteeseen ”%s”…"
+msgstr "Muodostetaan yhteys kohteeseen \"%s\" SSH-yhteyden kautta…"
 
 #: src/remmina_protocol_widget.c:855
 #, c-format
@@ -48,20 +48,21 @@ msgid "Awaiting incoming SSH connection at port %i…"
 msgstr "Odotetaan saapuvaa SSH-tunnelia portissa %i…"
 
 #: src/remmina_protocol_widget.c:900
-#, fuzzy, c-format
+#, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "Komentoa %s ei löytynyt SSH-palvelimelta"
+msgstr "Komento \"%s\" ei ole käytettävissä SSH-palvelimessa."
 
 #: src/remmina_protocol_widget.c:904
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr "Komento %s epäonnistui SSH-palvelimella (tila = %i)."
+msgstr ""
+"Komennon \"%s\" suorittaminen SSH-palvelimessa ei onnistunut (tila = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:912
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command. %s"
-msgstr "Komennon suoritus epäonnistui: %s"
+msgstr "Komentoa %s ei voi suorittaa"
 
 #: src/remmina_protocol_widget.c:979
 #, c-format
@@ -260,7 +261,7 @@ msgstr "Identiteettitiedosto"
 
 #: src/remmina_ssh_plugin.c:1061 src/remmina_sftp_plugin.c:353
 msgid "Password to unlock private key"
-msgstr ""
+msgstr "Salasana avataksesi yksityisen avaimen"
 
 #: src/remmina_ssh_plugin.c:1062 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:1972 plugins/nx/nx_plugin.c:725
@@ -292,33 +293,28 @@ msgid "Preferred server host key types"
 msgstr "Ensisijaiset palvelimen isäntäavaintyypit"
 
 #: src/remmina_ssh_plugin.c:1085
-#, fuzzy
 msgid "Folder for SSH session log"
-msgstr "SSH-istunnon käynnistys epäonnistui: %s"
+msgstr "Kansio SSH-istunnolokille"
 
 #: src/remmina_ssh_plugin.c:1086
-#, fuzzy
 msgid "Filename for SSH session log"
-msgstr "Ota SSH-istunnon kirjaaminen käyttöön poistumisen yhteydessä"
+msgstr "SSH- istuntolokin tiedostonimi"
 
 #: src/remmina_ssh_plugin.c:1087
 msgid "Log SSH session when exiting Remmina"
-msgstr ""
+msgstr "Lokita SSH-istunto poistuessaan Remminasta"
 
 #: src/remmina_ssh_plugin.c:1088
-#, fuzzy
 msgid "Audible terminal bell"
-msgstr "Ota käyttöön päätteen äänikello"
+msgstr "Päätteen äänikello"
 
 #: src/remmina_ssh_plugin.c:1089
-#, fuzzy
 msgid "SSH compression"
-msgstr "Ota SSH-pakkaus käyttöön"
+msgstr "SSH-pakkaus"
 
 #: src/remmina_ssh_plugin.c:1090
-#, fuzzy
 msgid "Don't remember passwords"
-msgstr "Vahvista salasana"
+msgstr "Älä muista salasanoja"
 
 #: src/remmina_ssh_plugin.c:1091
 msgid "Strict host key checking"
@@ -548,9 +544,8 @@ msgstr "Näytä sovelluksen versio ja sen liitännäiset"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:113
-#, fuzzy
 msgid "Modify connection profile (requires --set-option)"
-msgstr "Muokkaa yhteysprofiilia, (vaatii --set-option)"
+msgstr "Muokkaa yhteysprofiilia (vaatii --set-option)"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:115
@@ -591,11 +586,10 @@ msgid "Remmina Remote Desktop Client"
 msgstr "Remmina-etätyöpöytäsovellus"
 
 #: src/rcw.c:586
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
-msgstr ""
-"Nykyisessä ikkunassa on %i aktiivista yhteyttä. Haluatko varmasti sulkea?"
+msgstr "Haluatko varmasti sulkea %i aktiiviset yhteydet nykyisessä ikkunassa?"
 
 #: src/rcw.c:1292
 msgid "Viewport fullscreen mode"
@@ -671,9 +665,9 @@ msgid "Disconnect"
 msgstr "Katkaise yhteys"
 
 #: src/rcw.c:3779
-#, fuzzy, c-format
+#, c-format
 msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
-msgstr "Tiedosto %s on vioittunut, lukukelvoton tai sitä ei löytynyt."
+msgstr "Tiedosto \"%s\" on vioittunut, lukukelvoton tai sitä ei löytynyt."
 
 #: src/rcw.c:3941
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
@@ -738,9 +732,9 @@ msgstr[0] "Yhteensä %i kohde."
 msgstr[1] "Yhteensä %i kohdetta."
 
 #: src/remmina_main.c:828
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete \"%s\"?"
-msgstr "Haluatko varmasti poistaa kohteen \"%s\"?"
+msgstr "Haluatko varmasti poistaa \"%s\"?"
 
 #: src/remmina_main.c:928
 #, c-format
@@ -797,75 +791,74 @@ msgstr "<Ei mitään>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:171
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the folder \"%s\"."
-msgstr "Kanavan avaaminen epäonnistui: %s"
+msgstr "Kansiota \"%s\" ei voitu luoda."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:179 src/remmina_sftp_client.c:200
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the file \"%s\"."
-msgstr "Kanavan avaaminen epäonnistui: %s"
+msgstr "Tiedostoa \"%s\" ei voitu luoda."
 
 #. TRANSLATORS: The placeholders %s are a file path and a server name
 #: src/remmina_sftp_client.c:218
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the file \"%s\" on the server. %s"
-msgstr "Kanavan avaaminen epäonnistui: %s"
+msgstr "Tiedostoa \"%s\" ei voitu avata palvelimella %s."
 
 #: src/remmina_sftp_client.c:240
-#, fuzzy, c-format
+#, c-format
 msgid "Could not save the file \"%s\"."
-msgstr "Kanavan avaaminen epäonnistui: %s"
+msgstr "Tiedostoa \"%s\" ei voitu tallentaa."
 
 #: src/remmina_sftp_client.c:279 src/remmina_sftp_client.c:733
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the folder \"%s\". %s"
-msgstr "Kanavan avaaminen epäonnistui: %s"
+msgstr "Kansiota \"%s\" ei voitu avata. %s"
 
 #: src/remmina_sftp_client.c:383
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the folder \"%s\" on the server. %s"
-msgstr "Virhe luotaessa kansiota %s palvelimelle %s"
+msgstr "Kansiota %s ei voitu luoda palvelimelle %s"
 
 #: src/remmina_sftp_client.c:411 src/remmina_sftp_client.c:433
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the file \"%s\" on the server. %s"
-msgstr "Virhe luotaessa tiedostoa %s palvelimelle %s"
+msgstr "Tiedostoa %s ei voitu luoda palvelimelle %s"
 
 #: src/remmina_sftp_client.c:454
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the file \"%s\"."
-msgstr "Kanavan avaaminen epäonnistui: %s"
+msgstr "Tiedostoa \"%s\" ei voi avata."
 
 #: src/remmina_sftp_client.c:474
-#, fuzzy, c-format
+#, c-format
 msgid "Could not write to the file \"%s\" on the server. %s"
-msgstr "Virhe kirjoitettaessa tiedostoa %s palvelimeen %s"
+msgstr "Palvelimen tiedostoon \"%s\" ei voitu kirjoittaa %s"
 
 #: src/remmina_sftp_client.c:670
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the folder  \"%s\". %s"
-msgstr "Kanavan avaaminen epäonnistui: %s"
+msgstr "Kansiota \"%s\" ei voitu avata. %s"
 
 #: src/remmina_sftp_client.c:688
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from the folder. %s"
-msgstr "Kanavan avaaminen epäonnistui: %s"
+msgstr "Kansiota %s ei voitu lukea."
 
 #: src/remmina_sftp_client.c:795
-#, fuzzy
 msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "Haluatko varmasti poistaa kohteen \"%s\"?"
+msgstr "Haluatko varmasti peruuttaa käynnissä olevan tiedostonsiirron?"
 
 #: src/remmina_sftp_client.c:829
-#, fuzzy, c-format
+#, c-format
 msgid "Could not delete \"%s\". %s"
-msgstr "Kanavan avaaminen epäonnistui: %s"
+msgstr "Kohteen \"%s\" poistaminen ei onnistunut. %s"
 
 #: src/remmina_sftp_client.c:910
 msgid "The file exists already"
-msgstr ""
+msgstr "Tiedosto on jo olemassa"
 
 #: src/remmina_sftp_client.c:913
 msgid "Resume"
@@ -956,15 +949,15 @@ msgstr "SFTP - Suojattu tiedostonsiirto"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:203
-#, fuzzy, c-format
+#, c-format
 msgid "Could not authenticate with SSH password. %s"
-msgstr "SSH-istunnon käynnistys epäonnistui: %s"
+msgstr "Ei voitu todentaa SSH-salasanaa. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:224 src/remmina_ssh.c:248 src/remmina_ssh.c:257
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
-msgstr ""
+msgstr "Todennus ei onnistunut julkisen SSH-avaimen avulla. %s"
 
 #: src/remmina_ssh.c:225
 msgid "SSH Key file not yet set."
@@ -972,9 +965,9 @@ msgstr "SSH-avaintiedostoa ei ole asetettu."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:236
-#, fuzzy, c-format
+#, c-format
 msgid "Public SSH key cannot be imported. %s"
-msgstr "Julkista SSH-avainta ei voi tuoda: %s"
+msgstr "Julkista SSH-avainta ei voi tuoda. %s"
 
 #: src/remmina_ssh.c:279 src/remmina_ssh.c:587 src/remmina_ssh.c:606
 #: plugins/nx/nx_plugin.c:202
