@@ -6,6 +6,14 @@ See [the wiki](https://gitlab.com/Remmina/Remmina/wikis/home#for-users-with-a-di
 Build instructions
 ------------------
 
+0. Update fluthub shared modules
+
+From time to time update the shared-modules provided by flathub
+
+```shell
+git submodule update --remote --merge
+```
+
 1. Install `flatpak` and `flatpak-builder` ([instructions]). Remmina
    Flatpak manifest recommends the latest version of `flatpak-builder`.
 
@@ -13,28 +21,38 @@ Build instructions
 
 2. Enable the Flatpak repository maintained by Flathub:
 
-        flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+```shell
+flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+```
 
 3. Build Remmina:
 
-        git submodule init -- shared-modules/
-        git submodule update -- shared-modules/
-        flatpak-builder --user --sandbox --install-deps-from=flathub --repo=repo/ appdir/ org.remmina.Remmina.json
+```shell
+git submodule init -- shared-modules/
+git submodule update -- shared-modules/
+flatpak-builder --user --sandbox --install-deps-from=flathub --repo=repo/ appdir/ org.remmina.Remmina.json
+```
 
    Remmina will be built in `appdir/` folder and the result will be exported
    to a local Flatpak repository in `repo/` folder.
 
 4. Enable the local repository:
 
-        flatpak --user remote-add --no-gpg-verify --if-not-exists my-repo repo/
+```shell
+flatpak --user remote-add --no-gpg-verify --if-not-exists my-repo repo/
+```
 
 5. Install Remmina from your repository:
 
-        flatpak --user install my-repo org.remmina.Remmina
+```shell
+flatpak --user install my-repo org.remmina.Remmina
+```
 
 6. Launch Remmina
 
-        flatpak run org.remmina.Remmina
+```shell
+flatpak run org.remmina.Remmina
+```
 
 Limitations
 -----------
