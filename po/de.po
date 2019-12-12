@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-12-09 22:34+0100\n"
-"PO-Revision-Date: 2019-12-11 12:54+0000\n"
+"PO-Revision-Date: 2019-12-12 02:43+0100\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10-dev\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:248
@@ -68,7 +68,7 @@ msgstr "SSH-Verbindung zu »%s« wird hergestellt …"
 #: src/remmina_sftp_plugin.c:350 src/remmina_file_editor.c:926
 #: plugins/www/www_plugin.c:793 plugins/rdp/rdp_plugin.c:1944
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:116
-#: data/ui/remmina_preferences.glade:1533
+#: data/ui/remmina_preferences.glade:1533 plugins/rdp/rdp_plugin.c:1937
 msgid "Password"
 msgstr "Passwort"
 
@@ -144,7 +144,8 @@ msgstr "Server"
 #: src/remmina_protocol_widget.c:1685
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
-msgstr "Der öffentliche SSH-Schlüssel des Servers kann nicht gelesen werden. %s"
+msgstr ""
+"Der öffentliche SSH-Schlüssel des Servers kann nicht gelesen werden. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:499
@@ -299,9 +300,9 @@ msgstr "Authentifizierungstyp"
 msgid "Identity file"
 msgstr "Identitätsdatei"
 
-#: src/remmina_ssh_plugin.c:1061 src/remmina_sftp_plugin.c:353
+#: src/remmina_sftp_plugin.c:353 src/remmina_ssh_plugin.c:1061
 msgid "Password to unlock private key"
-msgstr ""
+msgstr "Passwort um den privaten Schlüssel zu entsperren"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1691
@@ -640,10 +641,6 @@ msgstr "Remmina‐Applet"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Mit dem Applet‐Menü zur entfernten Arbeitsflächen verbinden"
 
-#: src/remmina_protocol_widget.c:248
-msgid "Connect via SSH from a new terminal"
-msgstr "Über eine neue Konsole via SSH verbinden"
-
 #: src/remmina_protocol_widget.c:254
 msgid "Open SFTP transfer"
 msgstr "SFTP-Dateiübertragung starten"
@@ -657,60 +654,6 @@ msgstr "Externe Kommandos ausführen…"
 msgid "Connecting to \"%s\"…"
 msgstr "Verbinden zu \"%s\" …"
 
-#: src/remmina_protocol_widget.c:717 src/remmina_protocol_widget.c:805
-#, fuzzy, c-format
-msgid "Connecting to \"%s\" via SSH…"
-msgstr "SSH-Verbindung zu »%s« wird hergestellt …"
-
-#: src/remmina_protocol_widget.c:855
-#, c-format
-msgid "Awaiting incoming SSH connection at port %i…"
-msgstr "Auf Port %i wird auf eine eingehende SSH Verbindung gewartet…"
-
-#: src/remmina_protocol_widget.c:900
-#, fuzzy, c-format
-msgid "The \"%s\" command is not available on the SSH server."
-msgstr "Der Befehl %s wurde auf dem SSH-Server nicht gefunden"
-
-#: src/remmina_protocol_widget.c:904
-#, fuzzy, c-format
-msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr ""
-"Der Befehl %s konnte auf dem SSH-Server nicht ausgeführt werden (Status == "
-"%i)."
-
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:912
-#, fuzzy, c-format
-msgid "Could not run command. %s"
-msgstr "Kommando kann nicht ausführt werden: %s"
-
-#: src/remmina_protocol_widget.c:979
-#, c-format
-msgid "Connecting to %s via SSH…"
-msgstr "SSH-Verbindung zu »%s« wird hergestellt …"
-
-#: src/remmina_protocol_widget.c:1339 src/remmina_protocol_widget.c:1358
-#: src/remmina_sftp_plugin.c:317 src/remmina_sftp_plugin.c:350
-#: src/remmina_ssh_plugin.c:958 src/remmina_file_editor.c:926
-#: plugins/rdp/rdp_plugin.c:1937 plugins/www/www_plugin.c:793
-#: data/ui/remmina_mpc.glade:116 data/ui/remmina_preferences.glade:1533
-#: data/ui/remmina_unlock.glade:116
-msgid "Password"
-msgstr "Passwort"
-
-#: src/remmina_protocol_widget.c:1357
-msgid "Type in username and password for SSH."
-msgstr "Geben Sie Benutzername und Passwort für SSH ein."
-
-#: src/remmina_protocol_widget.c:1413
-msgid "Certificate details:"
-msgstr "Zertifikatsdetails:"
-
-#: src/remmina_protocol_widget.c:1414 src/remmina_protocol_widget.c:1435
-msgid "Subject:"
-msgstr "Betreff:"
-
 #: src/remmina_protocol_widget.c:1415 src/remmina_protocol_widget.c:1436
 msgid "Issuer:"
 msgstr "Aussteller:"
@@ -719,21 +662,9 @@ msgstr "Aussteller:"
 msgid "Fingerprint:"
 msgstr "Fingerprint:"
 
-#: src/remmina_protocol_widget.c:1417
-msgid "Accept certificate?"
-msgstr "Zertifikat akzeptieren?"
-
 #: src/remmina_protocol_widget.c:1434
 msgid "The certificate changed! Details:"
 msgstr "Das Zertifikat hat sich verändert! Details:"
-
-#: src/remmina_protocol_widget.c:1437
-msgid "Old fingerprint:"
-msgstr "Alter Fingerprint:"
-
-#: src/remmina_protocol_widget.c:1438
-msgid "New fingerprint:"
-msgstr "Neuer Fingerprint:"
 
 #: src/remmina_protocol_widget.c:1439
 msgid "Accept changed certificate?"
@@ -747,11 +678,6 @@ msgstr "Lausche auf Port %i auf eine eingehende %s‐Verbindung …"
 #: src/remmina_protocol_widget.c:1606
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Authentifizierung fehlgeschlagen. Versuche erneut zu verbinden…"
-
-#: src/remmina_protocol_widget.c:1668 src/remmina_file_editor.c:402
-#: src/remmina_file_editor.c:877 data/ui/remmina_main.glade:548
-msgid "Server"
-msgstr "Server"
 
 #: src/remmina_protocol_widget.c:1685
 #, c-format
@@ -906,11 +832,6 @@ msgid_plural "Total %i items."
 msgstr[0] "%i Objekt insgesamt."
 msgstr[1] "%i Objekte insgesamt."
 
-#: src/remmina_main.c:828
-#, fuzzy, c-format
-msgid "Are you sure you want to delete \"%s\"?"
-msgstr "Soll '%s' wirklich gelöscht werden?"
-
 #: src/remmina_main.c:928
 #, c-format
 msgid ""
@@ -927,10 +848,6 @@ msgstr "Importieren"
 #: src/remmina_main.c:978 src/remmina_file_editor.c:1312
 msgid "_Save"
 msgstr "_Speichern"
-
-#: src/remmina_sftp_plugin.c:353 src/remmina_ssh_plugin.c:1061
-msgid "Password to unlock private key"
-msgstr "Passwort um den privaten Schlüssel zu entsperren"
 
 #: src/remmina_main.c:1218
 msgid "Remmina Kiosk"
@@ -963,15 +880,6 @@ msgstr "Meta+"
 #: src/remmina_key_chooser.h:44
 msgid "<None>"
 msgstr "<Keine>"
-
-#: src/remmina_ssh_plugin.c:481
-#, c-format
-msgid "Error: %s"
-msgstr "Fehler: %s"
-
-#: src/remmina_ssh_plugin.c:498
-msgid "Terminal content saved under"
-msgstr "Inhalt des Terminals wurde gespeichert unter"
 
 #: src/remmina_ssh_plugin.c:552
 msgid "Select All (Host + A)"
@@ -1009,16 +917,6 @@ msgstr "_Einfügen"
 msgid "Select all"
 msgstr "Alles auswählen"
 
-#: src/remmina_ssh_plugin.c:1039
-msgid "_Select all"
-msgstr "_Alles auswählen"
-
-#: src/remmina_ssh_plugin.c:1058 plugins/spice/spice_plugin.c:437
-#: plugins/vnc/vnc_plugin.c:1833 plugins/vnc/vnc_plugin.c:1853
-#: plugins/nx/nx_plugin.c:722
-msgid "User password"
-msgstr "Benutzerpasswort"
-
 #: src/remmina_ssh_plugin.c:1062 plugins/rdp/rdp_plugin.c:1965
 #: plugins/xdmcp/xdmcp_plugin.c:370 plugins/nx/nx_plugin.c:725
 msgid "Startup program"
@@ -1031,18 +929,6 @@ msgstr "Farbschema des Terminals"
 #: src/remmina_ssh_plugin.c:1080 src/remmina_file_editor.c:896
 msgid "Character set"
 msgstr "Zeichensatz"
-
-#: src/remmina_ssh_plugin.c:1081
-msgid "SSH Proxy Command"
-msgstr "SSH Proxy Kommando"
-
-#: src/remmina_ssh_plugin.c:1082
-msgid "KEX (Key Exchange) algorithms"
-msgstr "KEX (Key Exchange) Algorithmen"
-
-#: src/remmina_ssh_plugin.c:1083
-msgid "Symmetric cipher client to server"
-msgstr "Symmetrische Cipher am Server"
 
 #: src/remmina_ssh_plugin.c:1084
 msgid "Preferred server host key types"
@@ -1139,78 +1025,6 @@ msgstr ""
 "* [server]:port\n"
 "* benutzername@server:port (nur SSH Prtokoll)</big></tt>"
 
-#. TRANSLATORS: The placeholder %s is a directory path
-#: src/remmina_sftp_client.c:171
-#, fuzzy, c-format
-msgid "Could not create the folder \"%s\"."
-msgstr "Das Öffnen eines Channels ist fehlgeschlagen: %s"
-
-#. TRANSLATORS: The placeholder %s is a file path
-#: src/remmina_sftp_client.c:179 src/remmina_sftp_client.c:200
-#, fuzzy, c-format
-msgid "Could not create the file \"%s\"."
-msgstr "Das Öffnen eines Channels ist fehlgeschlagen: %s"
-
-#. TRANSLATORS: The placeholders %s are a file path and a server name
-#: src/remmina_sftp_client.c:218
-#, fuzzy, c-format
-msgid "Could not open the file \"%s\" on the server. %s"
-msgstr "Das Öffnen eines Channels ist fehlgeschlagen: %s"
-
-#: src/remmina_sftp_client.c:240
-#, fuzzy, c-format
-msgid "Could not save the file \"%s\"."
-msgstr "Das Öffnen eines Channels ist fehlgeschlagen: %s"
-
-#: src/remmina_sftp_client.c:279 src/remmina_sftp_client.c:733
-#, fuzzy, c-format
-msgid "Could not open the folder \"%s\". %s"
-msgstr "Das Öffnen eines Channels ist fehlgeschlagen: %s"
-
-#: src/remmina_sftp_client.c:383
-#, fuzzy, c-format
-msgid "Could not create the folder \"%s\" on the server. %s"
-msgstr "Fehler beim Erzeugen des Ordners %s auf dem Server: %s"
-
-#: src/remmina_sftp_client.c:411 src/remmina_sftp_client.c:433
-#, fuzzy, c-format
-msgid "Could not create the file \"%s\" on the server. %s"
-msgstr "Datei %s konnte am Server nicht erstellt werden. %s"
-
-#: src/remmina_sftp_client.c:454
-#, fuzzy, c-format
-msgid "Could not open the file \"%s\"."
-msgstr "Das Öffnen eines Channels ist fehlgeschlagen: %s"
-
-#: src/remmina_sftp_client.c:474
-#, fuzzy, c-format
-msgid "Could not write to the file \"%s\" on the server. %s"
-msgstr "Datei %s konnte am Server nicht gespeichert werden. %s"
-
-#: src/remmina_sftp_client.c:670
-#, fuzzy, c-format
-msgid "Could not open the folder  \"%s\". %s"
-msgstr "Das Öffnen eines Channels ist fehlgeschlagen: %s"
-
-#: src/remmina_sftp_client.c:688
-#, fuzzy, c-format
-msgid "Could not read from the folder. %s"
-msgstr "Das Öffnen eines Channels ist fehlgeschlagen: %s"
-
-#: src/remmina_sftp_client.c:795
-#, fuzzy
-msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "Soll '%s' wirklich gelöscht werden?"
-
-#: src/remmina_sftp_client.c:829
-#, fuzzy, c-format
-msgid "Could not delete \"%s\". %s"
-msgstr "Das Öffnen eines Channels ist fehlgeschlagen: %s"
-
-#: src/remmina_sftp_client.c:910
-msgid "The file exists already"
-msgstr ""
-
 #: src/remmina_sftp_client.c:913
 msgid "Resume"
 msgstr "Fortsetzen"
@@ -1298,27 +1112,9 @@ msgstr "Alles überschreiben"
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Sichere Dateiübertragung"
 
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:203
-#, fuzzy, c-format
-msgid "Could not authenticate with SSH password. %s"
-msgstr "Die SSH‐Verbindung kontte nicht gestartet werden: %s"
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:224 src/remmina_ssh.c:248 src/remmina_ssh.c:257
-#, c-format
-msgid "Could not authenticate with public SSH key. %s"
-msgstr ""
-
 #: src/remmina_ssh.c:225
 msgid "SSH Key file not yet set."
 msgstr "Die SSH Schlüssel‐Datei wurde noch nicht festgelegt."
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:236
-#, fuzzy, c-format
-msgid "Public SSH key cannot be imported. %s"
-msgstr "Der öffentliche SSH-Schlüssel kann nicht importiert werden: %s"
 
 #: src/remmina_ssh.c:279 src/remmina_ssh.c:587 src/remmina_ssh.c:606
 #: plugins/nx/nx_plugin.c:202
@@ -1329,45 +1125,9 @@ msgstr "SSH‐Anmeldeinformationen"
 msgid "SSH private key passphrase"
 msgstr "SSH‐Passphrase für privaten Schlüssel"
 
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:299
-#, c-format
-msgid "Could not authenticate automatically with public SSH key. %s"
-msgstr ""
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:316
-#, c-format
-msgid "Could not authenticate with public SSH key using SSH agent. %s"
-msgstr ""
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:336
-#, c-format
-msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
-msgstr ""
-
 #: src/remmina_ssh.c:365
 msgid "The public SSH key changed!"
 msgstr "Der öffentliche SSH‐Schlüssel hat sich geändert!"
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:492
-#, c-format
-msgid "Could not fetch the server's public SSH key. %s"
-msgstr ""
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:499
-#, fuzzy, c-format
-msgid "Could not fetch public SSH key. %s"
-msgstr "Kann nicht zum SSH‐Tunnel verbinden: %s"
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:507
-#, fuzzy, c-format
-msgid "Could not fetch checksum for public SSH key. %s"
-msgstr "Die Liste der bekannten SSH-Server kann nicht geprüft werden: %s"
 
 #: src/remmina_ssh.c:520
 msgid "The server is unknown. The public key fingerprint is:"
@@ -1377,24 +1137,6 @@ msgstr ""
 #: src/remmina_ssh.c:522 src/remmina_ssh.c:528
 msgid "Do you trust the new public key?"
 msgstr "Vertrauen Sie dem neuen öffentlichen Schlüssel?"
-
-#: src/remmina_ssh.c:525
-#, fuzzy
-msgid ""
-"Warning: The server has changed its public key. This means either you are "
-"under attack,\n"
-"or the administrator has changed the key. The new public key fingerprint is:"
-msgstr ""
-"WARNUNG: Der Server hat den öffentlichen Schlüssel geändert. Das bedeutet, "
-"dass Sie entweder angegriffen\n"
-"werden, oder dass der Systemverwalter den Schlüssel geändert hat. Der neue "
-"öffentliche Schlüssel ist:"
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:550
-#, fuzzy, c-format
-msgid "Could not check list of known SSH hosts. %s"
-msgstr "Die Liste der bekannten SSH-Server kann nicht geprüft werden: %s"
 
 #: src/remmina_ssh.c:557
 msgid "SSH password"
@@ -1408,40 +1150,10 @@ msgstr "SSH Kerberos/GSSAPI"
 msgid "SSH authentication"
 msgstr "SSH‐Authentifizierung"
 
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:747
-#, fuzzy, c-format
-msgid "Could not start SSH session. %s"
-msgstr "Die SSH‐Verbindung kontte nicht gestartet werden: %s"
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1106 src/remmina_ssh.c:1168
-#, fuzzy, c-format
-msgid "Could not create channel. %s"
-msgstr "Der Channel kann nicht erzeugt werden: %s"
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1117
-#, fuzzy, c-format
-msgid "Could not connect to SSH tunnel. %s"
-msgstr "Kann nicht zum SSH‐Tunnel verbinden: %s"
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1183 src/remmina_ssh.c:1781
-#, fuzzy, c-format
-msgid "Could not open channel. %s"
-msgstr "Das Öffnen eines Channels ist fehlgeschlagen: %s"
-
 #: src/remmina_ssh.c:1189
 #, c-format
 msgid "Could not run %s on SSH server, %%s"
 msgstr "Kann %s auf dem SSH-Server nicht ausführen: %%s"
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1227 src/remmina_ssh.c:1248 src/remmina_ssh.c:1257
-#, fuzzy, c-format
-msgid "Could not request port forwarding. %s"
-msgstr "Portweiterleitung kann nicht eingerichtet werden: %s"
 
 #: src/remmina_ssh.c:1292
 msgid "The server did not respond."
@@ -1451,36 +1163,6 @@ msgstr "Der Server hat nicht geantwortet."
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Kann nicht zum lokalen Port %i verbinden."
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1385
-#, fuzzy, c-format
-msgid "Could not write to SSH channel. %s"
-msgstr "Der Channel kann nicht erzeugt werden: %s"
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1392
-#, fuzzy, c-format
-msgid "Could not read from tunnel listening socket. %s"
-msgstr "Vom Tunnel-Listening‐Socket kann nicht gelesen werden: %s"
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1412
-#, fuzzy, c-format
-msgid "Could not poll SSH channel. %s"
-msgstr "Das Öffnen eines Channels ist fehlgeschlagen: %s"
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1419
-#, fuzzy, c-format
-msgid "Could not read SSH channel in a non-blocking way. %s"
-msgstr "Kann ssh_channel_read_nonblocking() nicht ausführen: %s"
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1438
-#, fuzzy, c-format
-msgid "Could not send data to tunnel listening socket. %s"
-msgstr "Kann keine Daten zum Listening‐Socket des Tunnels senden: %s"
 
 #: src/remmina_ssh.c:1517
 msgid "Assign a destination port."
@@ -1508,81 +1190,9 @@ msgstr "Kann pthread nicht starten."
 msgid "Failed to initialize pthread."
 msgstr "Konnte pthread nicht initialisieren."
 
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1691
-#, fuzzy, c-format
-msgid "Could not create SFTP session. %s"
-msgstr "Start der SFTP‐Sitzung ist fehlgeschlagen: %s"
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1696
-#, fuzzy, c-format
-msgid "Could not start SFTP session. %s"
-msgstr "Die SSH‐Verbindung kontte nicht gestartet werden: %s"
-
-#. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1811
-#, fuzzy, c-format
-msgid "Could not request shell. %s"
-msgstr "Shell kann nicht angefordert werden: %s"
-
 #: src/remmina_ssh.c:1904
 msgid "Could not create PTY device."
 msgstr "Kann das PTY‐Gerät nicht öffnen."
-
-#: src/remmina_file_editor.c:74
-msgid ""
-"<tt><big>Supported formats\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port</big></tt>"
-msgstr ""
-"<tt><big>Unterstützte Formate\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port</big></tt>"
-
-#: src/remmina_file_editor.c:81
-msgid ""
-"<tt><big>* command in PATH args %h\n"
-"* /path/to/foo -options %h %u\n"
-"* %h is substituted with the server name\n"
-"* %t is substituted with the SSH server name\n"
-"* %u is substituted with the username\n"
-"* %U is substituted with the SSH username\n"
-"* %p is substituted with Remmina profile name\n"
-"* %g is substituted with Remmina profile group name\n"
-"Do not run in background if you want the command to be executed before "
-"connecting.\n"
-"</big></tt>"
-msgstr ""
-"<tt><big>* Kommando in PATH Argumenten %h\n"
-"* /pfad/zu/kommando -optionen %h %u\n"
-"* %h wird durch den Servernamen ersetzt\n"
-"* %t wird durch den SSH Servernamen ersetzt\n"
-"* %u wird durch den Benutzernamen ersetzt\n"
-"* %U wird durch den SSH Benutzernamen ersetzt\n"
-"* %p wird durch den Remmina Profilnamen ersetzt\n"
-"* %g wird durch den Remmina Profil‐Gruppennamen ersetzt\n"
-"Starten Sie nicht im Hintergrund, wenn Sie das Kommando vor der Verbindung "
-"starten wollen.\n"
-"</big></tt>"
-
-#: src/remmina_file_editor.c:94
-msgid ""
-"<tt><big>Supported formats\n"
-"* :port\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port\n"
-"* username@server:port (SSH protocol only)</big></tt>"
-msgstr ""
-"<tt><big>Unterstützte Formate\n"
-"* :port\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port\n"
-"* benutzername@server:port (nur SSH Prtokoll)</big></tt>"
 
 #: src/remmina_file_editor.c:158
 msgid "Choose a Remote Desktop Server"
@@ -1851,6 +1461,7 @@ msgstr "Die Verbindung wurde abgelehnt."
 #, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
 msgstr ""
+"Der VNC-Server fordert eine unbekannten Authentifizierungs-Methode an. %s"
 
 #: plugins/vnc/vnc_plugin.c:921
 #, fuzzy
@@ -1950,7 +1561,7 @@ msgstr "Remmina VNC Plugin"
 
 #: plugins/vnc/vnc_plugin.h:46
 msgid "Remmina VNC listener Plugin"
-msgstr ""
+msgstr "Remmina VNC Empfangs-Plugin"
 
 #: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:473
 msgid "Select USB devices for redirection"
@@ -2308,12 +1919,6 @@ msgstr "Klang"
 msgid "Security"
 msgstr "Sicherheit"
 
-#: plugins/vnc/vnc_plugin.c:919
-#, c-format
-msgid "The VNC server requested an unknown authentication method. %s"
-msgstr ""
-"Der VNC-Server fordert eine unbekannten Authentifizierungs-Methode an. %s"
-
 #: plugins/rdp/rdp_plugin.c:1967
 msgid "Remote Desktop Gateway server"
 msgstr "Remote-Desktop-Gateway Server"
@@ -2366,10 +1971,6 @@ msgstr "Treiber des lokalen seriellen Anschlusses"
 msgid "Serial"
 msgstr "Seriell"
 
-#: plugins/vnc/vnc_plugin.h:46
-msgid "Remmina VNC listener Plugin"
-msgstr "Remmina VNC Empfangs-Plugin"
-
 #: plugins/rdp/rdp_plugin.c:1978
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
 msgstr "/dev/ttyS0, /dev/ttyS1 usw."
@@ -2394,10 +1995,6 @@ msgstr "Passwort für den privaten SSH-Schlüssel"
 #: plugins/rdp/rdp_plugin.c:1983
 msgid "Share serial ports"
 msgstr "Serielle Anschlüsse freigeben"
-
-#: plugins/rdp/rdp_plugin.c:1984
-msgid "(SELinux) permissive mode for serial ports"
-msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1985
 msgid "Share parallel ports"
@@ -2581,10 +2178,6 @@ msgstr "Anzeigen"
 #: plugins/nx/nx_session_manager.c:197
 msgid "Status"
 msgstr "Status"
-
-#: plugins/nx/nx_plugin.c:205
-msgid "Password for private SSH key"
-msgstr ""
 
 #: plugins/nx/nx_plugin.c:367
 msgid "Enter NX authentication credentials"
