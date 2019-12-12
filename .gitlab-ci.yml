@@ -72,7 +72,7 @@ appimage:build:
       - web
 
 flatpak:test:
-  image: ubuntudesktop/gnome-3-28-1804
+  image: remmina/ubuntu:18.04
   stage: build
   variables:
     BUNDLE: "remmina-dev.flatpak"
