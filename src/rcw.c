@@ -527,6 +527,7 @@ static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin)
 		if (ggs != GDK_GRAB_SUCCESS) {
 			/* Failure to GRAB keyboard */
 #if DEBUG_KB_GRABBING
+			printf("GRAB FAILED. GdkGrabStatus: %d\n", ggs);
 			printf("GRAB FAILED. GdkGrabStatus: %d\n", (int)ggs);
 #endif
 			/* Reschedule grabbing in half a second if not already done */
@@ -2408,6 +2409,8 @@ static gboolean rcw_focus_out_event(GtkWidget *widget, GdkEvent *event, gpointer
 {
 	TRACE_CALL(__func__);
 #if DEBUG_KB_GRABBING
+	RemminaConnectionObject *cnnobj;
+	cnnobj = rcw_get_visible_cnnobj((RemminaConnectionWindow *)widget);
 	printf("DEBUG_KB_GRABBING: Focus out and mouse_pointer_entered is %s\n", cnnobj->cnnwin->priv->mouse_pointer_entered ? "true" : "false");
 #endif
 	if (REMMINA_IS_CONNECTION_WINDOW(widget))
@@ -2419,6 +2422,8 @@ static gboolean rcw_focus_in_event(GtkWidget *widget, GdkEvent *event, gpointer 
 {
 	TRACE_CALL(__func__);
 #if DEBUG_KB_GRABBING
+	RemminaConnectionObject *cnnobj;
+	cnnobj = rcw_get_visible_cnnobj((RemminaConnectionWindow *)widget);
 	printf("DEBUG_KB_GRABBING: Focus in and mouse_pointer_entered is %s\n", cnnobj->cnnwin->priv->mouse_pointer_entered ? "true" : "false");
 #endif
 	if (REMMINA_IS_CONNECTION_WINDOW(widget))

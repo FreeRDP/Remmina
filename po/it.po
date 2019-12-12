@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-12-12 00:18+0000\n"
-"PO-Revision-Date: 2019-11-24 13:05+0000\n"
+"POT-Creation-Date: 2019-12-12 15:22+0000\n"
+"PO-Revision-Date: 2019-12-12 15:19+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
 "it/>\n"
@@ -35,14 +35,14 @@ msgid "Executing external commands…"
 msgstr "Esecuzione comandi esterni…"
 
 #: src/remmina_protocol_widget.c:289
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to \"%s\"…"
 msgstr "Connessione a “%s”…"
 
 #: src/remmina_protocol_widget.c:717 src/remmina_protocol_widget.c:805
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to \"%s\" via SSH…"
-msgstr "Connessione a %s tramite SSH in corso…"
+msgstr "Connessione a \"%s\" tramite SSH in corso…"
 
 #: src/remmina_protocol_widget.c:855
 #, c-format
@@ -50,9 +50,9 @@ msgid "Awaiting incoming SSH connection at port %i…"
 msgstr "In attesa di connessione SSH in entrata sulla porta %i…"
 
 #: src/remmina_protocol_widget.c:900
-#, fuzzy, c-format
+#, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "Impossibile trovare il comando %s sul server SSH"
+msgstr "Il comando \"%s\" non è disponibile sul server SSH."
 
 #: src/remmina_protocol_widget.c:904
 #, fuzzy, c-format
@@ -157,7 +157,7 @@ msgstr "Configura le risoluzioni disponibili"
 msgid "Recent lists cleared."
 msgstr "Elenchi elementi recenti puliti."
 
-#: src/remmina_pref_dialog.c:143 src/rcw.c:1815
+#: src/remmina_pref_dialog.c:143 src/rcw.c:1816
 #: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
 msgid "Keystrokes"
 msgstr "Battute"
@@ -264,7 +264,7 @@ msgstr "Certificato di identità"
 
 #: src/remmina_ssh_plugin.c:1061 src/remmina_sftp_plugin.c:353
 msgid "Password to unlock private key"
-msgstr ""
+msgstr "Password per sbloccare la chiave privata"
 
 #: src/remmina_ssh_plugin.c:1062 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:1972 plugins/nx/nx_plugin.c:725
@@ -307,7 +307,7 @@ msgstr "Abilitare logging sessione SSH all’uscita"
 
 #: src/remmina_ssh_plugin.c:1087
 msgid "Log SSH session when exiting Remmina"
-msgstr ""
+msgstr "Registra sessione SSH all'uscita da Remmina"
 
 #: src/remmina_ssh_plugin.c:1088
 #, fuzzy
@@ -593,93 +593,93 @@ msgstr "Connetti al desktop remoto utilizzando il menu dell’applet"
 msgid "Remmina Remote Desktop Client"
 msgstr "Client di connessione a desktop remoti Remmina"
 
-#: src/rcw.c:585
+#: src/rcw.c:586
 #, fuzzy, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr ""
 "Sei sicuro di voler chiudere %i connessioni attive nella finestra corrente?"
 
-#: src/rcw.c:1291
+#: src/rcw.c:1292
 msgid "Viewport fullscreen mode"
 msgstr "Modalità area visibile a schermo intero"
 
-#: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
+#: src/rcw.c:1300 data/ui/remmina_preferences.glade:586
 msgid "Scrolled fullscreen"
 msgstr "Schermo intero scrollabile"
 
-#: src/rcw.c:1384
+#: src/rcw.c:1385
 msgid "Keep aspect ratio when scaled"
 msgstr "Ridimensiona mantenendo le proporzioni"
 
-#: src/rcw.c:1392
+#: src/rcw.c:1393
 msgid "Fill client window when scaled"
 msgstr "Ridimensiona riempiendo la finestra"
 
-#: src/rcw.c:1931
+#: src/rcw.c:1932
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr ""
 "Disattivare il ridimensionamento per evitare distorsioni dello screenshot."
 
-#: src/rcw.c:1991 plugins/www/www_plugin.c:761
+#: src/rcw.c:1992 plugins/www/www_plugin.c:761
 msgid "Screenshot taken"
 msgstr "Screenshot eseguito"
 
-#: src/rcw.c:2062
+#: src/rcw.c:2063
 msgid "Resize the window to fit in remote resolution"
 msgstr "Ridimensionare lo schermo per adattarsi alla risoluzione remota"
 
-#: src/rcw.c:2073
+#: src/rcw.c:2074
 msgid "Toggle fullscreen mode"
 msgstr "Imposta Schermo Intero"
 
-#: src/rcw.c:2118 data/ui/remmina_preferences.glade:930
+#: src/rcw.c:2119 data/ui/remmina_preferences.glade:930
 msgid "Switch tab pages"
 msgstr "Cambia Scheda"
 
-#: src/rcw.c:2132
+#: src/rcw.c:2133
 msgid "Toggle dynamic resolution update"
 msgstr "Attiva aggiornamento dinamico della risoluzione"
 
-#: src/rcw.c:2142
+#: src/rcw.c:2143
 msgid "Toggle scaled mode"
 msgstr "Attivare modalità riscalata"
 
-#: src/rcw.c:2177
+#: src/rcw.c:2178
 msgid "Grab all keyboard events"
 msgstr "Catturare tutti gli eventi della tastiera"
 
-#: src/rcw.c:2186
+#: src/rcw.c:2187
 msgid "Preferences"
 msgstr "Preferenze"
 
-#: src/rcw.c:2194 src/rcw.c:2195 data/ui/remmina_main.glade:278
+#: src/rcw.c:2195 src/rcw.c:2196 data/ui/remmina_main.glade:278
 msgid "Tools"
 msgstr "Strumenti"
 
-#: src/rcw.c:2207
+#: src/rcw.c:2208
 msgid "Duplicate current connection"
 msgstr "Duplica la sessione corrente"
 
-#: src/rcw.c:2215 data/ui/remmina_preferences.glade:1124
+#: src/rcw.c:2216 data/ui/remmina_preferences.glade:1124
 #: data/ui/remmina_preferences.glade:1134
 msgid "Screenshot"
 msgstr "Cattura schermata"
 
-#: src/rcw.c:2223 data/ui/remmina_preferences.glade:1033
+#: src/rcw.c:2224 data/ui/remmina_preferences.glade:1033
 msgid "Minimize window"
 msgstr "Minimizzare la finestra"
 
-#: src/rcw.c:2232 data/ui/remmina_preferences.glade:1064
+#: src/rcw.c:2233 data/ui/remmina_preferences.glade:1064
 msgid "Disconnect"
 msgstr "Scollegarsi"
 
-#: src/rcw.c:3774
+#: src/rcw.c:3779
 #, fuzzy, c-format
 msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
 msgstr "Il file %s è danneggiato, illeggibile o non è stato trovato."
 
-#: src/rcw.c:3936
+#: src/rcw.c:3941
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "Attenzione: Questo plugin richiede GtkSocket, ma non è disponibile."
 
@@ -868,7 +868,7 @@ msgstr "Impossibile aprire il canale: %s"
 
 #: src/remmina_sftp_client.c:910
 msgid "The file exists already"
-msgstr ""
+msgstr "Il file esiste già"
 
 #: src/remmina_sftp_client.c:913
 msgid "Resume"
@@ -967,7 +967,7 @@ msgstr "Impossibile creare la sessione SSH: %s"
 #: src/remmina_ssh.c:224 src/remmina_ssh.c:248 src/remmina_ssh.c:257
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
-msgstr ""
+msgstr "Impossibile eseguire l'autenticazione con la chiave SSH pubblica. %s"
 
 #: src/remmina_ssh.c:225
 msgid "SSH Key file not yet set."
@@ -993,18 +993,22 @@ msgstr "Passphrase della chiave privata SSH"
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr ""
+"Impossibile eseguire l'autenticazione automatica con la chiave SSH pubblica. "
+"%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:316
 #, c-format
 msgid "Could not authenticate with public SSH key using SSH agent. %s"
 msgstr ""
+"Impossibile eseguire l'autenticazione con chiave SSH pubblica utilizzando "
+"l'agente SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:336
 #, c-format
 msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
-msgstr ""
+msgstr "Impossibile eseguire l'autenticazione con SSH Kerberos/GSSAPI. %s"
 
 #: src/remmina_ssh.c:365
 msgid "The public SSH key changed!"
@@ -1014,7 +1018,7 @@ msgstr "La chiave pubblica SSH è cambiata!"
 #: src/remmina_ssh.c:492
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
-msgstr ""
+msgstr "Impossibile recuperare la chiave SSH pubblica del server. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:499
@@ -1506,7 +1510,7 @@ msgstr "Connessione rifiutata."
 #: plugins/vnc/vnc_plugin.c:919
 #, c-format
 msgid "The VNC server requested an unknown authentication method. %s"
-msgstr ""
+msgstr "Il server VNC ha richiesto un metodo di autenticazione sconosciuto. %s"
 
 #: plugins/vnc/vnc_plugin.c:921
 #, fuzzy
@@ -2047,7 +2051,7 @@ msgstr "Condividi porte seriali"
 
 #: plugins/rdp/rdp_plugin.c:1984
 msgid "(SELinux) permissive mode for serial ports"
-msgstr ""
+msgstr "(SELinux) modalità permissiva per le porte seriali"
 
 #: plugins/rdp/rdp_plugin.c:1985
 msgid "Share parallel ports"
@@ -2067,11 +2071,11 @@ msgstr "Ignora il certificato"
 
 #: plugins/rdp/rdp_plugin.c:1990
 msgid "Use the old license workflow"
-msgstr ""
+msgstr "Utilizzare il sistema di licenze legacy"
 
 #: plugins/rdp/rdp_plugin.c:1990
 msgid "It disables CAL and hwId is set to 0"
-msgstr ""
+msgstr "Disabilita CAL e hwId è impostato su 0"
 
 #: plugins/rdp/rdp_plugin.c:1991
 msgid "Turn off password storing"
@@ -2234,7 +2238,7 @@ msgstr "Stato"
 
 #: plugins/nx/nx_plugin.c:205
 msgid "Password for private SSH key"
-msgstr ""
+msgstr "Password per la chiave SSH privata"
 
 #: plugins/nx/nx_plugin.c:367
 msgid "Enter NX authentication credentials"
