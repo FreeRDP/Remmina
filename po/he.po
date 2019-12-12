@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2019-12-12 00:39+0100\n"
+"POT-Creation-Date: 2019-12-12 00:18+0000\n"
 "PO-Revision-Date: 2019-12-12 01:02+0100\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -19,6 +19,715 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.2.4\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
+
+#: src/remmina_protocol_widget.c:248
+msgid "Connect via SSH from a new terminal"
+msgstr ""
+
+#: src/remmina_protocol_widget.c:254
+msgid "Open SFTP transfer"
+msgstr "פתיחת העברת SFTP"
+
+#: src/remmina_protocol_widget.c:282
+msgid "Executing external commands…"
+msgstr "מופעלות פקודות חיצוניות…"
+
+#: src/remmina_protocol_widget.c:289
+#, c-format
+msgid "Connecting to \"%s\"…"
+msgstr "מתבצעת התחברות אל „%s”…"
+
+#: src/remmina_protocol_widget.c:717 src/remmina_protocol_widget.c:805
+#, c-format
+msgid "Connecting to \"%s\" via SSH…"
+msgstr "מתבצע חיבור אל „%s” דרך SSH…"
+
+#: src/remmina_protocol_widget.c:855
+#, c-format
+msgid "Awaiting incoming SSH connection at port %i…"
+msgstr "בהמתנה לחיבור SSH נכנס בפתחה %i…"
+
+#: src/remmina_protocol_widget.c:900
+#, c-format
+msgid "The \"%s\" command is not available on the SSH server."
+msgstr "הפקודה „%s” אינה זמינה בשרת ה־SSH."
+
+#: src/remmina_protocol_widget.c:904
+#, c-format
+msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
+msgstr "לא ניתן להריץ את הפקודה „%s” בשרת ה־SSH (מצב = %i)."
+
+#. TRANSLATORS: %s is a placeholder for an error message
+#: src/remmina_protocol_widget.c:912
+#, c-format
+msgid "Could not run command. %s"
+msgstr "לא ניתן להריץ פקודה. %s"
+
+#: src/remmina_protocol_widget.c:979
+#, fuzzy, c-format
+msgid "Connecting to %s via SSH…"
+msgstr "מתבצע חיבור אל „%s” דרך SSH…"
+
+#: src/remmina_protocol_widget.c:1339 src/remmina_protocol_widget.c:1358
+#: src/remmina_ssh_plugin.c:958 src/remmina_sftp_plugin.c:317
+#: src/remmina_sftp_plugin.c:350 src/remmina_file_editor.c:926
+#: plugins/www/www_plugin.c:793 plugins/rdp/rdp_plugin.c:1944
+#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:116
+#: data/ui/remmina_preferences.glade:1533
+msgid "Password"
+msgstr "ססמה"
+
+#: src/remmina_protocol_widget.c:1357
+msgid "Type in username and password for SSH."
+msgstr ""
+
+#: src/remmina_protocol_widget.c:1413
+msgid "Certificate details:"
+msgstr "פרטי אישור:"
+
+#: src/remmina_protocol_widget.c:1414 src/remmina_protocol_widget.c:1435
+msgid "Subject:"
+msgstr "נושא:"
+
+#: src/remmina_protocol_widget.c:1415 src/remmina_protocol_widget.c:1436
+msgid "Issuer:"
+msgstr ""
+
+#: src/remmina_protocol_widget.c:1416
+msgid "Fingerprint:"
+msgstr "טביעת אצבע:"
+
+#: src/remmina_protocol_widget.c:1417
+msgid "Accept certificate?"
+msgstr "לקבל את האישור?"
+
+#: src/remmina_protocol_widget.c:1434
+msgid "The certificate changed! Details:"
+msgstr "האישור הוחלף! פרטים:"
+
+#: src/remmina_protocol_widget.c:1437
+msgid "Old fingerprint:"
+msgstr "טביעת אצבע ישנה:"
+
+#: src/remmina_protocol_widget.c:1438
+msgid "New fingerprint:"
+msgstr "טביעת אצבע חדשה:"
+
+#: src/remmina_protocol_widget.c:1439
+msgid "Accept changed certificate?"
+msgstr "לקבל את האישור החלופי?"
+
+#: src/remmina_protocol_widget.c:1581
+#, c-format
+msgid "Listening on port %i for an incoming %s connection…"
+msgstr "בהאזנה לפתחה %i עקב המתנה לחיבור %s נכנס…"
+
+#: src/remmina_protocol_widget.c:1606
+msgid "Could not authenticate, attempting reconnection…"
+msgstr "האימות נכשל, מתבצע ניסיון חיבור מחדש…"
+
+#: src/remmina_protocol_widget.c:1668 src/remmina_file_editor.c:402
+#: src/remmina_file_editor.c:877 data/ui/remmina_main.glade:548
+msgid "Server"
+msgstr "שרת"
+
+#: src/remmina_protocol_widget.c:1685
+#, c-format
+msgid "Install the %s protocol plugin first."
+msgstr "תחילה יש להתקין את תוסף הפרוטוקול %s."
+
+#: src/remmina_exec.c:320
+#, c-format
+msgid "Plugin %s is not registered."
+msgstr "התוסף %s לא נרשם."
+
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:491
+#: data/ui/remmina_preferences.glade:234
+msgid "Resolutions"
+msgstr "רזולוציות"
+
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:491
+msgid "Configure the available resolutions"
+msgstr "הגדרת הרזולוציות הזמינות"
+
+#: src/remmina_pref_dialog.c:132
+msgid "Recent lists cleared."
+msgstr ""
+
+#: src/remmina_pref_dialog.c:143 src/rcw.c:1815
+#: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
+msgid "Keystrokes"
+msgstr ""
+
+#: src/remmina_pref_dialog.c:143
+#, fuzzy
+msgid "Configure the keystrokes"
+msgstr "הגדרת הרזולוציות הזמינות"
+
+#. TRANSLATORS: Do not translate libsodium, is the name of a library
+#: src/remmina_pref_dialog.c:444
+msgid "libsodium >= 1.9.0 is required to use master password"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:481
+#, c-format
+msgid "Error: %s"
+msgstr "שגיאה: %s"
+
+#: src/remmina_ssh_plugin.c:498
+msgid "Terminal content saved under"
+msgstr "תוכן המסוף נשמר תחת"
+
+#: src/remmina_ssh_plugin.c:552
+msgid "Select All (Host + A)"
+msgstr "לבחור הכול (Host + A)"
+
+#: src/remmina_ssh_plugin.c:553
+msgid "Copy (host + C)"
+msgstr "העתקה (Host + C)"
+
+#: src/remmina_ssh_plugin.c:554
+msgid "Paste (host + V)"
+msgstr "הדבקה (Host + V)"
+
+#: src/remmina_ssh_plugin.c:555
+msgid "Save session to file"
+msgstr "שמירת הפעלה לקובץ"
+
+#: src/remmina_ssh_plugin.c:959 src/remmina_sftp_plugin.c:318
+msgid "SSH identity file"
+msgstr "קובץ זהות SSH"
+
+#: src/remmina_ssh_plugin.c:960 src/remmina_sftp_plugin.c:319
+msgid "SSH agent"
+msgstr "סוכן SSH"
+
+#: src/remmina_ssh_plugin.c:961 src/remmina_sftp_plugin.c:320
+#: src/remmina_file_editor.c:939
+msgid "Public key (automatic)"
+msgstr "מפתח ציבורי (אוטומטי)"
+
+#: src/remmina_ssh_plugin.c:962 src/remmina_sftp_plugin.c:321
+msgid "Kerberos (GSSAPI)"
+msgstr "Kerberos (GSSAPI)"
+
+#: src/remmina_ssh_plugin.c:1037 data/ui/remmina_main.glade:248
+msgid "Copy"
+msgstr "העתקה"
+
+#: src/remmina_ssh_plugin.c:1037
+msgid "_Copy"
+msgstr "ה_עתקה"
+
+#: src/remmina_ssh_plugin.c:1038
+msgid "Paste"
+msgstr "הדבקה"
+
+#: src/remmina_ssh_plugin.c:1038
+msgid "_Paste"
+msgstr "ה_דבקה"
+
+#: src/remmina_ssh_plugin.c:1039
+msgid "Select all"
+msgstr "לבחור הכול"
+
+#: src/remmina_ssh_plugin.c:1039
+msgid "_Select all"
+msgstr "לבחור ה_כול"
+
+#: src/remmina_ssh_plugin.c:1057 src/remmina_message_panel.c:330
+#: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:917
+#: plugins/www/www_plugin.c:792 plugins/vnc/vnc_plugin.c:1832
+#: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:1943
+#: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:155
+#, fuzzy
+msgid "Username"
+msgstr "שם מתחם/משתמש"
+
+#: src/remmina_ssh_plugin.c:1058 plugins/vnc/vnc_plugin.c:1833
+#: plugins/vnc/vnc_plugin.c:1853 plugins/spice/spice_plugin.c:437
+#: plugins/nx/nx_plugin.c:722
+msgid "User password"
+msgstr "ססמת משתמש"
+
+#: src/remmina_ssh_plugin.c:1059 src/remmina_sftp_plugin.c:351
+#, fuzzy
+msgid "Authentication type"
+msgstr "אימות SSH"
+
+#: src/remmina_ssh_plugin.c:1060 src/remmina_sftp_plugin.c:352
+#: src/remmina_file_editor.c:356 src/remmina_file_editor.c:363
+#: plugins/nx/nx_plugin.c:720
+#, fuzzy
+msgid "Identity file"
+msgstr "קובץ זהות SSH"
+
+#: src/remmina_ssh_plugin.c:1061 src/remmina_sftp_plugin.c:353
+#, fuzzy
+msgid "Password to unlock private key"
+msgstr "ססמה למפתח SSH פרטי"
+
+#: src/remmina_ssh_plugin.c:1062 plugins/xdmcp/xdmcp_plugin.c:370
+#: plugins/rdp/rdp_plugin.c:1972 plugins/nx/nx_plugin.c:725
+msgid "Startup program"
+msgstr "תכנית להתחלה"
+
+#: src/remmina_ssh_plugin.c:1079
+msgid "Terminal color scheme"
+msgstr "סכמת צבעים למסוף"
+
+#: src/remmina_ssh_plugin.c:1080 src/remmina_file_editor.c:896
+msgid "Character set"
+msgstr "מערך תווים"
+
+#: src/remmina_ssh_plugin.c:1081
+msgid "SSH Proxy Command"
+msgstr "פקודת מתווך SSH"
+
+#: src/remmina_ssh_plugin.c:1082
+msgid "KEX (Key Exchange) algorithms"
+msgstr "אלגוריתמי KEX (החלפת מפתחות)"
+
+#: src/remmina_ssh_plugin.c:1083
+msgid "Symmetric cipher client to server"
+msgstr "צופן סימטרי מלקוח לשרת"
+
+#: src/remmina_ssh_plugin.c:1084
+msgid "Preferred server host key types"
+msgstr "סוגי מפתחות שרתים מארחים מועדפים"
+
+#: src/remmina_ssh_plugin.c:1085
+msgid "Folder for SSH session log"
+msgstr "תיקייה לתיעוד התחברויות ה‏־SSH"
+
+#: src/remmina_ssh_plugin.c:1086
+msgid "Filename for SSH session log"
+msgstr "שם קובץ תיעוד התחברות ה־SSH"
+
+#: src/remmina_ssh_plugin.c:1087
+msgid "Log SSH session when exiting Remmina"
+msgstr "תיעוד חיבור ה־SSH בטרם היציאה מ־Remmina"
+
+#: src/remmina_ssh_plugin.c:1088
+#, fuzzy
+msgid "Audible terminal bell"
+msgstr ""
+"#-#-#-#-#  catalog.po (remmina)  #-#-#-#-#\n"
+"הפעלת צלצול למסוף\n"
+"#-#-#-#-#  catalog.po (remmina)  #-#-#-#-#\n"
+"צלצול למסוף"
+
+#: src/remmina_ssh_plugin.c:1089
+msgid "SSH compression"
+msgstr "דחיסת SSH"
+
+#: src/remmina_ssh_plugin.c:1090
+msgid "Don't remember passwords"
+msgstr "לא לזכור ססמאות"
+
+#: src/remmina_ssh_plugin.c:1091
+msgid "Strict host key checking"
+msgstr "בדיקת מפתח מארח קפדנית"
+
+#: src/remmina_ssh_plugin.c:1105
+msgid "SSH - Secure Shell"
+msgstr "SSH - מעטפת מאובטחת"
+
+#: src/remmina_applet_menu_item.c:121
+msgid "Discovered"
+msgstr "התגלה"
+
+#: src/remmina_applet_menu_item.c:126
+msgid "New Connection"
+msgstr "חיבור חדש"
+
+#: src/remmina_mpchange.c:234
+msgid "The passwords do not match"
+msgstr "הססמאות אינן תואמות"
+
+#: src/remmina_mpchange.c:244
+msgid "Resetting passwords, please wait…"
+msgstr "הססמאות מתאפסות, נא להמתין…"
+
+#: src/remmina_mpchange.c:327
+msgid "The multi password changer requires a secrecy plugin.\n"
+msgstr "מחליף הססמאות הסדרתי לא יכול לעבוד בלי תוסף הסודות.\n"
+
+#: src/remmina_mpchange.c:330
+msgid "The multi password changer requires a secrecy service.\n"
+msgstr "מחליף הססמאות הסדרתי לא יכול לעבוד בלי שירות הסודות.\n"
+
+#: src/remmina_mpchange.c:419
+#, c-format
+msgid "%d password changed."
+msgid_plural "%d passwords changed."
+msgstr[0] "ססמה אחת הוחלפה."
+msgstr[1] "%d ססמאות הוחלפו."
+
+#: src/remmina_public.c:639
+msgid "Please enter format 'widthxheight'."
+msgstr "נא להקליד בצורה ‚רוחבxגובה’."
+
+#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
+#: src/remmina_about.c:54
+msgid "translator-credits"
+msgstr ""
+"התורמים דרך לאנצ׳פד:\n"
+" Tomer https://launchpad.net/~tomi476\n"
+"Yaron Shahrabani <sh.yaron@gmail.com>"
+
+#: src/remmina_ftp_client.c:388
+msgid "Choose download location"
+msgstr "בחירת מיקום ההורדה"
+
+#: src/remmina_ftp_client.c:528
+msgid "Are you sure to delete the selected files on server?"
+msgstr "האם אכן ברצונך למחוק את הקבצים הנבחרים בשרת?"
+
+#: src/remmina_ftp_client.c:585
+msgid "Choose a file to upload"
+msgstr "נא לבחור קובץ לטעינה"
+
+#: src/remmina_ftp_client.c:592
+msgid "Upload folder"
+msgstr "תיקיית ההעלאה"
+
+#: src/remmina_ftp_client.c:648 src/remmina_ftp_client.c:770
+msgid "Download"
+msgstr "הורדה"
+
+#: src/remmina_ftp_client.c:655 src/remmina_ftp_client.c:781
+msgid "Upload"
+msgstr "העלאה"
+
+#: src/remmina_ftp_client.c:662
+msgid "_Delete"
+msgstr "מ_חיקה"
+
+#: src/remmina_ftp_client.c:749
+msgid "Home"
+msgstr "בית"
+
+#: src/remmina_ftp_client.c:751
+msgid "Go to home folder"
+msgstr "מעבר לתיקיית הבית"
+
+#: src/remmina_ftp_client.c:756
+msgid "Up"
+msgstr "מעבר לתיקיית הבית"
+
+#: src/remmina_ftp_client.c:758
+msgid "Go to parent folder"
+msgstr "מעבר לתיקיית ההורה"
+
+#: src/remmina_ftp_client.c:763 plugins/vnc/vnc_plugin.c:1889
+#: plugins/rdp/rdp_plugin.c:2008
+msgid "Refresh"
+msgstr "רענון"
+
+#: src/remmina_ftp_client.c:765
+msgid "Refresh current folder"
+msgstr "רענון התיקייה הנוכחית"
+
+#: src/remmina_ftp_client.c:772
+msgid "Download from server"
+msgstr "הורדה מהשרת"
+
+#: src/remmina_ftp_client.c:783
+msgid "Upload to server"
+msgstr "העלאה לשרת"
+
+#: src/remmina_ftp_client.c:790 data/ui/remmina_main.glade:268
+msgid "Delete"
+msgstr "מחיקה"
+
+#: src/remmina_ftp_client.c:792
+msgid "Delete files on server"
+msgstr "מחיקת קבצים בשרת"
+
+#: src/remmina_ftp_client.c:903 src/remmina_ftp_client.c:972
+msgid "Filename"
+msgstr "שם הקובץ"
+
+#: src/remmina_ftp_client.c:916 src/remmina_ftp_client.c:1001
+msgid "Size"
+msgstr "גודל"
+
+#: src/remmina_ftp_client.c:924
+msgid "User"
+msgstr "משתמש"
+
+#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1454
+#: data/ui/remmina_main.glade:534 data/ui/remmina_mpc.glade:102
+msgid "Group"
+msgstr "קבוצה"
+
+#: src/remmina_ftp_client.c:936
+msgid "Permission"
+msgstr "הרשאה"
+
+#: src/remmina_ftp_client.c:988 plugins/rdp/rdp_plugin.c:1909
+msgid "Remote"
+msgstr "מרוחק"
+
+#: src/remmina_ftp_client.c:995 plugins/rdp/rdp_plugin.c:1905
+msgid "Local"
+msgstr "מקומי"
+
+#: src/remmina_ftp_client.c:1009
+msgid "Progress"
+msgstr "התקדמות"
+
+#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#: src/remmina.c:84
+msgid "Show 'About'"
+msgstr "Show 'About'"
+
+#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#: src/remmina.c:86 src/remmina.c:88
+msgid ""
+"Connect to desktop described in file (.remmina or type supported by plugin)"
+msgstr ""
+"Connect to desktop described in file (.remmina or type supported by plugin)"
+
+#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#: src/remmina.c:90
+msgid ""
+"Edit desktop connection described in file (.remmina or type supported by "
+"plugin)"
+msgstr ""
+"Edit desktop connection described in file (.remmina or type supported by "
+"plugin)"
+
+#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#: src/remmina.c:93
+msgid "Start in kiosk mode"
+msgstr "Start in kiosk mode"
+
+#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#: src/remmina.c:95
+msgid "Create new connection profile"
+msgstr "Create new connection profile"
+
+#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#: src/remmina.c:97
+msgid "Show preferences"
+msgstr "Show preferences"
+
+#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#: src/remmina.c:99
+msgid "Run a plugin"
+msgstr "Run a plugin"
+
+#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#: src/remmina.c:101
+msgid "Quit"
+msgstr "Quit"
+
+#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#: src/remmina.c:103
+msgid "Use default server name (for --new)"
+msgstr "Use default server name (for --new)"
+
+#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#: src/remmina.c:105
+msgid "Use default protocol (for --new)"
+msgstr "Use default protocol (for --new)"
+
+#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#: src/remmina.c:107
+msgid "Start in tray"
+msgstr "Start in tray"
+
+#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#: src/remmina.c:109
+msgid "Show the application version"
+msgstr "Show the application version"
+
+#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#: src/remmina.c:111
+msgid "Show version of the application and its plugins"
+msgstr "Show version of the application and its plugins"
+
+#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#: src/remmina.c:113
+msgid "Modify connection profile (requires --set-option)"
+msgstr "Modify connection profile (requires --set-option)"
+
+#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
+#: src/remmina.c:115
+msgid "Set one or more profile settings, to be used with --update-profile"
+msgstr "Set one or more profile settings, to be used with --update-profile"
+
+#: src/remmina_icon.c:139
+msgid "Open Main Window"
+msgstr "פתיחת החלון הראשי"
+
+#: src/remmina_icon.c:144 data/ui/remmina_main.glade:386
+msgid "_Preferences"
+msgstr "ה_עדפות"
+
+#: src/remmina_icon.c:149
+msgid "_About"
+msgstr "על _אודות"
+
+#: src/remmina_icon.c:159
+msgid "Enable Service Discovery"
+msgstr "הפעלת גילוי שירותים"
+
+#: src/remmina_icon.c:172 data/ui/remmina_main.glade:477
+msgid "_Quit"
+msgstr "י_ציאה"
+
+#: src/remmina_icon.c:357 src/remmina_icon.c:539
+msgid "Remmina Applet"
+msgstr "יישומון Remmina"
+
+#: src/remmina_icon.c:359 src/remmina_icon.c:541
+msgid "Connect to remote desktops through the applet menu"
+msgstr "התחברות לשולחנות עבודה מרוחקים דרך תפריט היישומון"
+
+#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1216
+msgid "Remmina Remote Desktop Client"
+msgstr "Remmina לקוח חיבורי שולחן עבודה מרוחקים"
+
+#: src/rcw.c:585
+#, c-format
+msgid ""
+"Are you sure you want to close %i active connections in the current window?"
+msgstr "לסגור את %i החיבורים הפעילים בחלון הנוכחי?"
+
+#: src/rcw.c:1291
+msgid "Viewport fullscreen mode"
+msgstr "מצב מסך מלא בלתי מתואם"
+
+#: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
+msgid "Scrolled fullscreen"
+msgstr "מסך מלא נגלל"
+
+#: src/rcw.c:1384
+msgid "Keep aspect ratio when scaled"
+msgstr "לשמור על יחס התצוגה בשינוי גודל"
+
+#: src/rcw.c:1392
+msgid "Fill client window when scaled"
+msgstr "למלא את חלון הלקוח בעת שינוי גודל"
+
+#: src/rcw.c:1931
+msgid "Turn off scaling to avoid screenshot distortion."
+msgstr "כיבוי מתיחה כדי להימנע מעיוותים בצילומי המסך."
+
+#: src/rcw.c:1991 plugins/www/www_plugin.c:761
+msgid "Screenshot taken"
+msgstr "המסך צולם"
+
+#: src/rcw.c:2062
+msgid "Resize the window to fit in remote resolution"
+msgstr "שינוי גודל החלון כדי שיתאים לרזולוציה המרוחקת"
+
+#: src/rcw.c:2073
+msgid "Toggle fullscreen mode"
+msgstr "הפעלה/כיבוי מצב מסך מלא"
+
+#: src/rcw.c:2118 data/ui/remmina_preferences.glade:930
+msgid "Switch tab pages"
+msgstr "מעבר בין עמודי לשוניות"
+
+#: src/rcw.c:2132
+msgid "Toggle dynamic resolution update"
+msgstr "הפעלה/כיבוי של עדכון רזולוציה דינמי"
+
+#: src/rcw.c:2142
+msgid "Toggle scaled mode"
+msgstr "הפעלה/כיבוי מצב התאמת גודל"
+
+#: src/rcw.c:2177
+msgid "Grab all keyboard events"
+msgstr "לכידת כל אירועי המקלדת"
+
+#: src/rcw.c:2186
+msgid "Preferences"
+msgstr "העדפות"
+
+#: src/rcw.c:2194 src/rcw.c:2195 data/ui/remmina_main.glade:278
+msgid "Tools"
+msgstr "כלים"
+
+#: src/rcw.c:2207
+msgid "Duplicate current connection"
+msgstr "שכפול החיבור הנוכחי"
+
+#: src/rcw.c:2215 data/ui/remmina_preferences.glade:1124
+#: data/ui/remmina_preferences.glade:1134
+msgid "Screenshot"
+msgstr "צילום המסך"
+
+#: src/rcw.c:2223 data/ui/remmina_preferences.glade:1033
+msgid "Minimize window"
+msgstr "מזעור חלון"
+
+#: src/rcw.c:2232 data/ui/remmina_preferences.glade:1064
+msgid "Disconnect"
+msgstr "ניתוק"
+
+#: src/rcw.c:3774
+#, c-format
+msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
+msgstr "הקובץ „%s” פגום, בלתי קריא או חסר."
+
+#: src/rcw.c:3936
+msgid "Warning: This plugin requires GtkSocket, but it’s not available."
+msgstr "אזהרה: תוסף זה דורש את GtkSocket, אך הוא אינו זמין."
+
+#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1472
+msgid "Protocol"
+msgstr "פרוטוקול"
+
+#: src/remmina_plugin_manager.c:69
+msgid "Entry"
+msgstr "רשומה"
+
+#: src/remmina_plugin_manager.c:69
+msgid "File"
+msgstr "קובץ"
+
+#: src/remmina_plugin_manager.c:69
+msgid "Tool"
+msgstr "כלי"
+
+#: src/remmina_plugin_manager.c:69
+msgid "Preference"
+msgstr "העדפה"
+
+#: src/remmina_plugin_manager.c:69
+msgid "Secret"
+msgstr "סוד"
+
+#: src/remmina_plugin_manager.c:440 data/ui/remmina_main.glade:376
+msgid "Plugins"
+msgstr "תוספים"
+
+#: src/remmina_plugin_manager.c:440 src/remmina_message_panel.c:447
+#: src/remmina_message_panel.c:616 src/remmina_file_editor.c:161
+msgid "_OK"
+msgstr "_אישור"
+
+#: src/remmina_plugin_manager.c:458 src/remmina_file_editor.c:1429
+#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:512
+msgid "Name"
+msgstr "שם"
+
+#: src/remmina_plugin_manager.c:464 plugins/nx/nx_session_manager.c:183
+msgid "Type"
+msgstr "סוג"
+
+#: src/remmina_plugin_manager.c:470
+msgid "Description"
+msgstr "תיאור"
+
+#: src/remmina_plugin_manager.c:476
+msgid "Version"
+msgstr "גרסה"
 
 #: src/remmina_main.c:646
 #, c-format
@@ -53,18 +762,197 @@ msgstr "_שמירה"
 msgid "This protocol does not support exporting."
 msgstr "פרוטוקול זה אינו תומך בייצוא."
 
-#: src/remmina_main.c:1216 src/remmina_icon.c:480 src/remmina_icon.c:481
-msgid "Remmina Remote Desktop Client"
-msgstr "Remmina לקוח חיבורי שולחן עבודה מרוחקים"
-
 #: src/remmina_main.c:1218
 msgid "Remmina Kiosk"
 msgstr "קיוסק Remmina"
 
-#: src/remmina_exec.c:320
+#: src/remmina_key_chooser.h:38
+msgid "Shift+"
+msgstr "Shift+"
+
+#: src/remmina_key_chooser.h:39
+msgid "Ctrl+"
+msgstr "Ctrl+"
+
+#: src/remmina_key_chooser.h:40
+msgid "Alt+"
+msgstr "Alt+"
+
+#: src/remmina_key_chooser.h:41
+msgid "Super+"
+msgstr "Super+"
+
+#: src/remmina_key_chooser.h:42
+msgid "Hyper+"
+msgstr "Hyper+"
+
+#: src/remmina_key_chooser.h:43
+msgid "Meta+"
+msgstr "Meta+"
+
+#: src/remmina_key_chooser.h:44
+msgid "<None>"
+msgstr "<אין>"
+
+#. TRANSLATORS: The placeholder %s is a directory path
+#: src/remmina_sftp_client.c:171
 #, c-format
-msgid "Plugin %s is not registered."
-msgstr "התוסף %s לא נרשם."
+msgid "Could not create the folder \"%s\"."
+msgstr "לא ניתן ליצור את התיקייה „%s”."
+
+#. TRANSLATORS: The placeholder %s is a file path
+#: src/remmina_sftp_client.c:179 src/remmina_sftp_client.c:200
+#, c-format
+msgid "Could not create the file \"%s\"."
+msgstr "לא ניתן ליצור את הקובץ „%s”."
+
+#. TRANSLATORS: The placeholders %s are a file path and a server name
+#: src/remmina_sftp_client.c:218
+#, c-format
+msgid "Could not open the file \"%s\" on the server. %s"
+msgstr "לא ניתן לפתוח את הקובץ „%s” בשרת. %s"
+
+#: src/remmina_sftp_client.c:240
+#, c-format
+msgid "Could not save the file \"%s\"."
+msgstr "לא ניתן לשמור את הקובץ „%s”."
+
+#: src/remmina_sftp_client.c:279 src/remmina_sftp_client.c:733
+#, c-format
+msgid "Could not open the folder \"%s\". %s"
+msgstr "לא ניתן לפתוח את התיקייה „%s”.‏ %s"
+
+#: src/remmina_sftp_client.c:383
+#, c-format
+msgid "Could not create the folder \"%s\" on the server. %s"
+msgstr "לא ניתן ליצור את התיקייה „%s” בשרת. %s"
+
+#: src/remmina_sftp_client.c:411 src/remmina_sftp_client.c:433
+#, c-format
+msgid "Could not create the file \"%s\" on the server. %s"
+msgstr "לא ניתן ליצור את הקובץ „%s” בשרת. %s"
+
+#: src/remmina_sftp_client.c:454
+#, c-format
+msgid "Could not open the file \"%s\"."
+msgstr "לא ניתן לפתוח את הקובץ „%s”."
+
+#: src/remmina_sftp_client.c:474
+#, c-format
+msgid "Could not write to the file \"%s\" on the server. %s"
+msgstr "לא ניתן לכתוב את הקובץ „%s” לשרת. %s"
+
+#: src/remmina_sftp_client.c:670
+#, c-format
+msgid "Could not open the folder  \"%s\". %s"
+msgstr "לא ניתן לפתוח את התיקייה „%s”.‏ %s"
+
+#: src/remmina_sftp_client.c:688
+#, c-format
+msgid "Could not read from the folder. %s"
+msgstr "לא ניתן לקרוא מהתיקייה. %s"
+
+#: src/remmina_sftp_client.c:795
+msgid "Are you sure you want to cancel the file transfer in progress?"
+msgstr "לבטל את העברת הקבצים שנערכת כעת?"
+
+#: src/remmina_sftp_client.c:829
+#, c-format
+msgid "Could not delete \"%s\". %s"
+msgstr "לא ניתן למחוק את „%s”.‏ %s"
+
+#: src/remmina_sftp_client.c:910
+msgid "The file exists already"
+msgstr "הקובץ כבר קיים"
+
+#: src/remmina_sftp_client.c:913
+msgid "Resume"
+msgstr "המשך"
+
+#: src/remmina_sftp_client.c:914
+msgid "Overwrite"
+msgstr "שכתוב"
+
+#: src/remmina_sftp_client.c:915 src/remmina_message_panel.c:452
+#: src/remmina_message_panel.c:624 src/remmina_file_editor.c:160
+#: src/remmina_file_editor.c:364 src/remmina_file_editor.c:1304
+#: plugins/spice/spice_plugin_file_transfer.c:84
+#: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
+#: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
+#: data/ui/remmina_key_chooser.glade:9
+msgid "_Cancel"
+msgstr "_ביטול"
+
+#: src/remmina_sftp_client.c:924
+msgid "Question"
+msgstr "שאלה"
+
+#: src/remmina_sftp_client.c:932
+msgid "The following file already exists in the target folder:"
+msgstr "הקובץ הבא כבר קיים בתיקיית היעד:"
+
+#: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
+#: data/ui/remmina_mpc.glade:38
+msgid "Cancel"
+msgstr "ביטול"
+
+#: src/remmina_message_panel.c:199 data/ui/remmina_news.glade:27
+#: data/ui/remmina_preferences.glade:33 data/ui/remmina_preferences.glade:34
+#: data/ui/remmina_preferences.glade:60 data/ui/remmina_string_list.glade:8
+#: data/ui/remmina_string_list.glade:9 data/ui/remmina_string_list.glade:63
+msgid "Close"
+msgstr "סגירה"
+
+#: src/remmina_message_panel.c:260
+msgid "Yes"
+msgstr "כן"
+
+#: src/remmina_message_panel.c:267
+msgid "No"
+msgstr "לא"
+
+#: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1945
+#: data/ui/remmina_mpc.glade:141
+msgid "Domain"
+msgstr ""
+
+#: src/remmina_message_panel.c:415
+#, fuzzy
+msgid "Save password"
+msgstr "ססמה ראשית"
+
+#: src/remmina_message_panel.c:508
+#, fuzzy
+msgid "Enter certificate authentication files"
+msgstr "נא להקליד פרטי אימות ל־NX"
+
+#: src/remmina_message_panel.c:520
+msgid "CA Certificate File"
+msgstr "קובץ אישור CA"
+
+#: src/remmina_message_panel.c:542
+msgid "CA CRL File"
+msgstr "קובץ CRL של CA"
+
+#: src/remmina_message_panel.c:564
+msgid "Client Certificate File"
+msgstr "קובץ אישור צד לקוח"
+
+#: src/remmina_message_panel.c:586
+msgid "Client Certificate Key"
+msgstr "מפתח אישור צד לקוח"
+
+#: src/remmina_sftp_plugin.c:330
+msgid "Show Hidden Files"
+msgstr "הצגת קבצים מוסתרים"
+
+#: src/remmina_sftp_plugin.c:332
+msgid "Overwrite all"
+msgstr "לדרוס הכול"
+
+#: src/remmina_sftp_plugin.c:362
+msgid "SFTP - Secure File Transfer"
+msgstr "SFTP - העברת קבצים מאובטחת"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:203
@@ -163,19 +1051,16 @@ msgstr "לא ניתן לבדוק את רשימת מארחי ה־SSH המוכרי
 
 #: src/remmina_ssh.c:557
 #, fuzzy
-#| msgid "User password"
 msgid "SSH password"
 msgstr "ססמת משתמש"
 
 #: src/remmina_ssh.c:567
 #, fuzzy
-#| msgid "Kerberos (GSSAPI)"
 msgid "SSH Kerberos/GSSAPI"
 msgstr "Kerberos (GSSAPI)"
 
 #: src/remmina_ssh.c:628
 #, fuzzy
-#| msgid "SSH Authentication"
 msgid "SSH authentication"
 msgstr "אימות SSH"
 
@@ -220,7 +1105,6 @@ msgstr ""
 
 #: src/remmina_ssh.c:1335
 #, fuzzy, c-format
-#| msgid "Cannot connect to the RDP server \"%s\"."
 msgid "Cannot connect to local port %i."
 msgstr "לא ניתן להתחבר לשרת ה־RDP‏ „%s”."
 
@@ -260,7 +1144,6 @@ msgstr ""
 
 #: src/remmina_ssh.c:1524
 #, fuzzy
-#| msgid "Could not create channel. %s"
 msgid "Could not create socket."
 msgstr "לא ניתן ליצור את הערוץ. %s"
 
@@ -270,14 +1153,12 @@ msgstr ""
 
 #: src/remmina_ssh.c:1540
 #, fuzzy
-#| msgid "Could not write to SSH channel. %s"
 msgid "Could not listen to local port."
 msgstr "לא ניתן לכתוב לערוץ SSH.‏ %s"
 
 #. TRANSLATORS: Do not translate pthread
 #: src/remmina_ssh.c:1550 src/remmina_ssh.c:1567 src/remmina_ssh.c:1602
 #, fuzzy
-#| msgid "Could not start libfreerdp-gdi."
 msgid "Could not start pthread."
 msgstr "לא ניתן להתחיל את libfreerdp-gdi."
 
@@ -307,893 +1188,6 @@ msgstr "לא ניתן לבקש מעטפת. %s"
 #: src/remmina_ssh.c:1904
 msgid "Could not create PTY device."
 msgstr "לא ניתן ליצור התקן pty."
-
-#. TRANSLATORS: The placeholder %s is a directory path
-#: src/remmina_sftp_client.c:171
-#, c-format
-msgid "Could not create the folder \"%s\"."
-msgstr "לא ניתן ליצור את התיקייה „%s”."
-
-#. TRANSLATORS: The placeholder %s is a file path
-#: src/remmina_sftp_client.c:179 src/remmina_sftp_client.c:200
-#, c-format
-msgid "Could not create the file \"%s\"."
-msgstr "לא ניתן ליצור את הקובץ „%s”."
-
-#. TRANSLATORS: The placeholders %s are a file path and a server name
-#: src/remmina_sftp_client.c:218
-#, c-format
-msgid "Could not open the file \"%s\" on the server. %s"
-msgstr "לא ניתן לפתוח את הקובץ „%s” בשרת. %s"
-
-#: src/remmina_sftp_client.c:240
-#, c-format
-msgid "Could not save the file \"%s\"."
-msgstr "לא ניתן לשמור את הקובץ „%s”."
-
-#: src/remmina_sftp_client.c:279 src/remmina_sftp_client.c:733
-#, c-format
-msgid "Could not open the folder \"%s\". %s"
-msgstr "לא ניתן לפתוח את התיקייה „%s”.‏ %s"
-
-#: src/remmina_sftp_client.c:383
-#, c-format
-msgid "Could not create the folder \"%s\" on the server. %s"
-msgstr "לא ניתן ליצור את התיקייה „%s” בשרת. %s"
-
-#: src/remmina_sftp_client.c:411 src/remmina_sftp_client.c:433
-#, c-format
-msgid "Could not create the file \"%s\" on the server. %s"
-msgstr "לא ניתן ליצור את הקובץ „%s” בשרת. %s"
-
-#: src/remmina_sftp_client.c:454
-#, c-format
-msgid "Could not open the file \"%s\"."
-msgstr "לא ניתן לפתוח את הקובץ „%s”."
-
-#: src/remmina_sftp_client.c:474
-#, c-format
-msgid "Could not write to the file \"%s\" on the server. %s"
-msgstr "לא ניתן לכתוב את הקובץ „%s” לשרת. %s"
-
-#: src/remmina_sftp_client.c:670
-#, c-format
-msgid "Could not open the folder  \"%s\". %s"
-msgstr "לא ניתן לפתוח את התיקייה „%s”.‏ %s"
-
-#: src/remmina_sftp_client.c:688
-#, c-format
-msgid "Could not read from the folder. %s"
-msgstr "לא ניתן לקרוא מהתיקייה. %s"
-
-#: src/remmina_sftp_client.c:795
-msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "לבטל את העברת הקבצים שנערכת כעת?"
-
-#: src/remmina_sftp_client.c:829
-#, c-format
-msgid "Could not delete \"%s\". %s"
-msgstr "לא ניתן למחוק את „%s”.‏ %s"
-
-#: src/remmina_sftp_client.c:910
-msgid "The file exists already"
-msgstr "הקובץ כבר קיים"
-
-#: src/remmina_sftp_client.c:913
-msgid "Resume"
-msgstr "המשך"
-
-#: src/remmina_sftp_client.c:914
-msgid "Overwrite"
-msgstr "שכתוב"
-
-#: src/remmina_sftp_client.c:915 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:624 src/remmina_file_editor.c:160
-#: src/remmina_file_editor.c:364 src/remmina_file_editor.c:1304
-#: plugins/spice/spice_plugin_file_transfer.c:84
-#: plugins/nx/nx_session_manager.c:156 data/ui/remmina_key_chooser.glade:8
-#: data/ui/remmina_key_chooser.glade:9 data/ui/remmina_spinner.glade:8
-#: data/ui/remmina_spinner.glade:9
-msgid "_Cancel"
-msgstr "_ביטול"
-
-#: src/remmina_sftp_client.c:924
-msgid "Question"
-msgstr "שאלה"
-
-#: src/remmina_sftp_client.c:932
-msgid "The following file already exists in the target folder:"
-msgstr "הקובץ הבא כבר קיים בתיקיית היעד:"
-
-#: src/remmina_ftp_client.c:388
-msgid "Choose download location"
-msgstr "בחירת מיקום ההורדה"
-
-#: src/remmina_ftp_client.c:528
-msgid "Are you sure to delete the selected files on server?"
-msgstr "האם אכן ברצונך למחוק את הקבצים הנבחרים בשרת?"
-
-#: src/remmina_ftp_client.c:585
-msgid "Choose a file to upload"
-msgstr "נא לבחור קובץ לטעינה"
-
-#: src/remmina_ftp_client.c:592
-msgid "Upload folder"
-msgstr "תיקיית ההעלאה"
-
-#: src/remmina_ftp_client.c:648 src/remmina_ftp_client.c:770
-msgid "Download"
-msgstr "הורדה"
-
-#: src/remmina_ftp_client.c:655 src/remmina_ftp_client.c:781
-msgid "Upload"
-msgstr "העלאה"
-
-#: src/remmina_ftp_client.c:662
-msgid "_Delete"
-msgstr "מ_חיקה"
-
-#: src/remmina_ftp_client.c:749
-msgid "Home"
-msgstr "בית"
-
-#: src/remmina_ftp_client.c:751
-msgid "Go to home folder"
-msgstr "מעבר לתיקיית הבית"
-
-#: src/remmina_ftp_client.c:756
-msgid "Up"
-msgstr "מעבר לתיקיית הבית"
-
-#: src/remmina_ftp_client.c:758
-msgid "Go to parent folder"
-msgstr "מעבר לתיקיית ההורה"
-
-#: src/remmina_ftp_client.c:763 plugins/rdp/rdp_plugin.c:2008
-#: plugins/vnc/vnc_plugin.c:1889
-msgid "Refresh"
-msgstr "רענון"
-
-#: src/remmina_ftp_client.c:765
-msgid "Refresh current folder"
-msgstr "רענון התיקייה הנוכחית"
-
-#: src/remmina_ftp_client.c:772
-msgid "Download from server"
-msgstr "הורדה מהשרת"
-
-#: src/remmina_ftp_client.c:783
-msgid "Upload to server"
-msgstr "העלאה לשרת"
-
-#: src/remmina_ftp_client.c:790 data/ui/remmina_main.glade:268
-msgid "Delete"
-msgstr "מחיקה"
-
-#: src/remmina_ftp_client.c:792
-msgid "Delete files on server"
-msgstr "מחיקת קבצים בשרת"
-
-#: src/remmina_ftp_client.c:903 src/remmina_ftp_client.c:972
-msgid "Filename"
-msgstr "שם הקובץ"
-
-#: src/remmina_ftp_client.c:916 src/remmina_ftp_client.c:1001
-msgid "Size"
-msgstr "גודל"
-
-#: src/remmina_ftp_client.c:924
-msgid "User"
-msgstr "משתמש"
-
-#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1454
-#: data/ui/remmina_mpc.glade:102 data/ui/remmina_main.glade:534
-msgid "Group"
-msgstr "קבוצה"
-
-#: src/remmina_ftp_client.c:936
-msgid "Permission"
-msgstr "הרשאה"
-
-#: src/remmina_ftp_client.c:988 plugins/rdp/rdp_plugin.c:1909
-msgid "Remote"
-msgstr "מרוחק"
-
-#: src/remmina_ftp_client.c:995 plugins/rdp/rdp_plugin.c:1905
-msgid "Local"
-msgstr "מקומי"
-
-#: src/remmina_ftp_client.c:1009
-msgid "Progress"
-msgstr "התקדמות"
-
-#: src/remmina_public.c:639
-msgid "Please enter format 'widthxheight'."
-msgstr "נא להקליד בצורה ‚רוחבxגובה’."
-
-#: src/remmina_chat_window.c:178
-#, c-format
-msgid "Chat with %s"
-msgstr "שיחה עם %s"
-
-#: src/remmina_chat_window.c:230
-msgid "_Send"
-msgstr "_שליחה"
-
-#: src/remmina_chat_window.c:240
-msgid "_Clear"
-msgstr "_ניקוי"
-
-#. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
-#: src/remmina_about.c:54
-msgid "translator-credits"
-msgstr ""
-"התורמים דרך לאנצ׳פד:\n"
-" Tomer https://launchpad.net/~tomi476\n"
-"Yaron Shahrabani <sh.yaron@gmail.com>"
-
-#: src/remmina_applet_menu_item.c:121
-msgid "Discovered"
-msgstr "התגלה"
-
-#: src/remmina_applet_menu_item.c:126
-msgid "New Connection"
-msgstr "חיבור חדש"
-
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:491
-#: data/ui/remmina_preferences.glade:234
-msgid "Resolutions"
-msgstr "רזולוציות"
-
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:491
-msgid "Configure the available resolutions"
-msgstr "הגדרת הרזולוציות הזמינות"
-
-#: src/remmina_pref_dialog.c:132
-msgid "Recent lists cleared."
-msgstr ""
-
-#: src/remmina_pref_dialog.c:143 src/rcw.c:1815
-#: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
-msgid "Keystrokes"
-msgstr ""
-
-#: src/remmina_pref_dialog.c:143
-#, fuzzy
-#| msgid "Configure the available resolutions"
-msgid "Configure the keystrokes"
-msgstr "הגדרת הרזולוציות הזמינות"
-
-#. TRANSLATORS: Do not translate libsodium, is the name of a library
-#: src/remmina_pref_dialog.c:444
-msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr ""
-
-#: src/remmina_icon.c:139
-msgid "Open Main Window"
-msgstr "פתיחת החלון הראשי"
-
-#: src/remmina_icon.c:144 data/ui/remmina_main.glade:386
-msgid "_Preferences"
-msgstr "ה_עדפות"
-
-#: src/remmina_icon.c:149
-msgid "_About"
-msgstr "על _אודות"
-
-#: src/remmina_icon.c:159
-msgid "Enable Service Discovery"
-msgstr "הפעלת גילוי שירותים"
-
-#: src/remmina_icon.c:172 data/ui/remmina_main.glade:477
-msgid "_Quit"
-msgstr "י_ציאה"
-
-#: src/remmina_icon.c:357 src/remmina_icon.c:539
-msgid "Remmina Applet"
-msgstr "יישומון Remmina"
-
-#: src/remmina_icon.c:359 src/remmina_icon.c:541
-msgid "Connect to remote desktops through the applet menu"
-msgstr "התחברות לשולחנות עבודה מרוחקים דרך תפריט היישומון"
-
-#: src/remmina_protocol_widget.c:248
-msgid "Connect via SSH from a new terminal"
-msgstr ""
-
-#: src/remmina_protocol_widget.c:254
-msgid "Open SFTP transfer"
-msgstr "פתיחת העברת SFTP"
-
-#: src/remmina_protocol_widget.c:282
-msgid "Executing external commands…"
-msgstr "מופעלות פקודות חיצוניות…"
-
-#: src/remmina_protocol_widget.c:289
-#, c-format
-msgid "Connecting to \"%s\"…"
-msgstr "מתבצעת התחברות אל „%s”…"
-
-#: src/remmina_protocol_widget.c:717 src/remmina_protocol_widget.c:805
-#, c-format
-msgid "Connecting to \"%s\" via SSH…"
-msgstr "מתבצע חיבור אל „%s” דרך SSH…"
-
-#: src/remmina_protocol_widget.c:855
-#, c-format
-msgid "Awaiting incoming SSH connection at port %i…"
-msgstr "בהמתנה לחיבור SSH נכנס בפתחה %i…"
-
-#: src/remmina_protocol_widget.c:900
-#, c-format
-msgid "The \"%s\" command is not available on the SSH server."
-msgstr "הפקודה „%s” אינה זמינה בשרת ה־SSH."
-
-#: src/remmina_protocol_widget.c:904
-#, c-format
-msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr "לא ניתן להריץ את הפקודה „%s” בשרת ה־SSH (מצב = %i)."
-
-#. TRANSLATORS: %s is a placeholder for an error message
-#: src/remmina_protocol_widget.c:912
-#, c-format
-msgid "Could not run command. %s"
-msgstr "לא ניתן להריץ פקודה. %s"
-
-#: src/remmina_protocol_widget.c:979
-#, fuzzy, c-format
-#| msgid "Connecting to \"%s\" via SSH…"
-msgid "Connecting to %s via SSH…"
-msgstr "מתבצע חיבור אל „%s” דרך SSH…"
-
-#: src/remmina_protocol_widget.c:1339 src/remmina_protocol_widget.c:1358
-#: src/remmina_sftp_plugin.c:317 src/remmina_sftp_plugin.c:350
-#: src/remmina_ssh_plugin.c:958 src/remmina_file_editor.c:926
-#: plugins/rdp/rdp_plugin.c:1944 plugins/www/www_plugin.c:793
-#: data/ui/remmina_mpc.glade:116 data/ui/remmina_preferences.glade:1533
-#: data/ui/remmina_unlock.glade:116
-msgid "Password"
-msgstr "ססמה"
-
-#: src/remmina_protocol_widget.c:1357
-msgid "Type in username and password for SSH."
-msgstr ""
-
-#: src/remmina_protocol_widget.c:1413
-msgid "Certificate details:"
-msgstr "פרטי אישור:"
-
-#: src/remmina_protocol_widget.c:1414 src/remmina_protocol_widget.c:1435
-msgid "Subject:"
-msgstr "נושא:"
-
-#: src/remmina_protocol_widget.c:1415 src/remmina_protocol_widget.c:1436
-msgid "Issuer:"
-msgstr ""
-
-#: src/remmina_protocol_widget.c:1416
-msgid "Fingerprint:"
-msgstr "טביעת אצבע:"
-
-#: src/remmina_protocol_widget.c:1417
-msgid "Accept certificate?"
-msgstr "לקבל את האישור?"
-
-#: src/remmina_protocol_widget.c:1434
-msgid "The certificate changed! Details:"
-msgstr "האישור הוחלף! פרטים:"
-
-#: src/remmina_protocol_widget.c:1437
-msgid "Old fingerprint:"
-msgstr "טביעת אצבע ישנה:"
-
-#: src/remmina_protocol_widget.c:1438
-msgid "New fingerprint:"
-msgstr "טביעת אצבע חדשה:"
-
-#: src/remmina_protocol_widget.c:1439
-msgid "Accept changed certificate?"
-msgstr "לקבל את האישור החלופי?"
-
-#: src/remmina_protocol_widget.c:1581
-#, c-format
-msgid "Listening on port %i for an incoming %s connection…"
-msgstr "בהאזנה לפתחה %i עקב המתנה לחיבור %s נכנס…"
-
-#: src/remmina_protocol_widget.c:1606
-msgid "Could not authenticate, attempting reconnection…"
-msgstr "האימות נכשל, מתבצע ניסיון חיבור מחדש…"
-
-#: src/remmina_protocol_widget.c:1668 src/remmina_file_editor.c:402
-#: src/remmina_file_editor.c:877 data/ui/remmina_main.glade:548
-msgid "Server"
-msgstr "שרת"
-
-#: src/remmina_protocol_widget.c:1685
-#, c-format
-msgid "Install the %s protocol plugin first."
-msgstr "תחילה יש להתקין את תוסף הפרוטוקול %s."
-
-#: src/rcw.c:585
-#, c-format
-msgid ""
-"Are you sure you want to close %i active connections in the current window?"
-msgstr "לסגור את %i החיבורים הפעילים בחלון הנוכחי?"
-
-#: src/rcw.c:1291
-msgid "Viewport fullscreen mode"
-msgstr "מצב מסך מלא בלתי מתואם"
-
-#: src/rcw.c:1299 data/ui/remmina_preferences.glade:586
-msgid "Scrolled fullscreen"
-msgstr "מסך מלא נגלל"
-
-#: src/rcw.c:1384
-msgid "Keep aspect ratio when scaled"
-msgstr "לשמור על יחס התצוגה בשינוי גודל"
-
-#: src/rcw.c:1392
-msgid "Fill client window when scaled"
-msgstr "למלא את חלון הלקוח בעת שינוי גודל"
-
-#: src/rcw.c:1931
-msgid "Turn off scaling to avoid screenshot distortion."
-msgstr "כיבוי מתיחה כדי להימנע מעיוותים בצילומי המסך."
-
-#: src/rcw.c:1991 plugins/www/www_plugin.c:761
-msgid "Screenshot taken"
-msgstr "המסך צולם"
-
-#: src/rcw.c:2062
-msgid "Resize the window to fit in remote resolution"
-msgstr "שינוי גודל החלון כדי שיתאים לרזולוציה המרוחקת"
-
-#: src/rcw.c:2073
-msgid "Toggle fullscreen mode"
-msgstr "הפעלה/כיבוי מצב מסך מלא"
-
-#: src/rcw.c:2118 data/ui/remmina_preferences.glade:930
-msgid "Switch tab pages"
-msgstr "מעבר בין עמודי לשוניות"
-
-#: src/rcw.c:2132
-msgid "Toggle dynamic resolution update"
-msgstr "הפעלה/כיבוי של עדכון רזולוציה דינמי"
-
-#: src/rcw.c:2142
-msgid "Toggle scaled mode"
-msgstr "הפעלה/כיבוי מצב התאמת גודל"
-
-#: src/rcw.c:2177
-msgid "Grab all keyboard events"
-msgstr "לכידת כל אירועי המקלדת"
-
-#: src/rcw.c:2186
-msgid "Preferences"
-msgstr "העדפות"
-
-#: src/rcw.c:2194 src/rcw.c:2195 data/ui/remmina_main.glade:278
-msgid "Tools"
-msgstr "כלים"
-
-#: src/rcw.c:2207
-msgid "Duplicate current connection"
-msgstr "שכפול החיבור הנוכחי"
-
-#: src/rcw.c:2215 data/ui/remmina_preferences.glade:1124
-#: data/ui/remmina_preferences.glade:1134
-msgid "Screenshot"
-msgstr "צילום המסך"
-
-#: src/rcw.c:2223 data/ui/remmina_preferences.glade:1033
-msgid "Minimize window"
-msgstr "מזעור חלון"
-
-#: src/rcw.c:2232 data/ui/remmina_preferences.glade:1064
-msgid "Disconnect"
-msgstr "ניתוק"
-
-#: src/rcw.c:3774
-#, c-format
-msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
-msgstr "הקובץ „%s” פגום, בלתי קריא או חסר."
-
-#: src/rcw.c:3936
-msgid "Warning: This plugin requires GtkSocket, but it’s not available."
-msgstr "אזהרה: תוסף זה דורש את GtkSocket, אך הוא אינו זמין."
-
-#: src/remmina_message_panel.c:163 data/ui/remmina_mpc.glade:38
-#: data/ui/remmina_unlock.glade:46
-msgid "Cancel"
-msgstr "ביטול"
-
-#: src/remmina_message_panel.c:199 data/ui/remmina_news.glade:27
-#: data/ui/remmina_preferences.glade:33 data/ui/remmina_preferences.glade:34
-#: data/ui/remmina_preferences.glade:60 data/ui/remmina_string_list.glade:8
-#: data/ui/remmina_string_list.glade:9 data/ui/remmina_string_list.glade:63
-msgid "Close"
-msgstr "סגירה"
-
-#: src/remmina_message_panel.c:260
-msgid "Yes"
-msgstr "כן"
-
-#: src/remmina_message_panel.c:267
-msgid "No"
-msgstr "לא"
-
-#: src/remmina_message_panel.c:330 src/remmina_sftp_plugin.c:349
-#: src/remmina_ssh_plugin.c:1057 src/remmina_file_editor.c:917
-#: plugins/rdp/rdp_plugin.c:1943 plugins/vnc/vnc_plugin.c:1832
-#: plugins/vnc/vnc_plugin.c:1852 plugins/nx/nx_plugin.c:721
-#: plugins/www/www_plugin.c:792 data/ui/remmina_mpc.glade:155
-#, fuzzy
-#| msgctxt "Multi password changer table"
-#| msgid "Domain\\Username"
-msgid "Username"
-msgstr "שם מתחם/משתמש"
-
-#: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1945
-#: data/ui/remmina_mpc.glade:141
-msgid "Domain"
-msgstr ""
-
-#: src/remmina_message_panel.c:415
-#, fuzzy
-#| msgid "Master password"
-msgid "Save password"
-msgstr "ססמה ראשית"
-
-#: src/remmina_message_panel.c:447 src/remmina_message_panel.c:616
-#: src/remmina_plugin_manager.c:440 src/remmina_file_editor.c:161
-msgid "_OK"
-msgstr "_אישור"
-
-#: src/remmina_message_panel.c:508
-#, fuzzy
-#| msgid "Enter NX authentication credentials"
-msgid "Enter certificate authentication files"
-msgstr "נא להקליד פרטי אימות ל־NX"
-
-#: src/remmina_message_panel.c:520
-msgid "CA Certificate File"
-msgstr "קובץ אישור CA"
-
-#: src/remmina_message_panel.c:542
-msgid "CA CRL File"
-msgstr "קובץ CRL של CA"
-
-#: src/remmina_message_panel.c:564
-msgid "Client Certificate File"
-msgstr "קובץ אישור צד לקוח"
-
-#: src/remmina_message_panel.c:586
-msgid "Client Certificate Key"
-msgstr "מפתח אישור צד לקוח"
-
-#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1472
-msgid "Protocol"
-msgstr "פרוטוקול"
-
-#: src/remmina_plugin_manager.c:69
-msgid "Entry"
-msgstr "רשומה"
-
-#: src/remmina_plugin_manager.c:69
-msgid "File"
-msgstr "קובץ"
-
-#: src/remmina_plugin_manager.c:69
-msgid "Tool"
-msgstr "כלי"
-
-#: src/remmina_plugin_manager.c:69
-msgid "Preference"
-msgstr "העדפה"
-
-#: src/remmina_plugin_manager.c:69
-msgid "Secret"
-msgstr "סוד"
-
-#: src/remmina_plugin_manager.c:440 data/ui/remmina_main.glade:376
-msgid "Plugins"
-msgstr "תוספים"
-
-#: src/remmina_plugin_manager.c:458 src/remmina_file_editor.c:1429
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:512
-msgid "Name"
-msgstr "שם"
-
-#: src/remmina_plugin_manager.c:464 plugins/nx/nx_session_manager.c:183
-msgid "Type"
-msgstr "סוג"
-
-#: src/remmina_plugin_manager.c:470
-msgid "Description"
-msgstr "תיאור"
-
-#: src/remmina_plugin_manager.c:476
-msgid "Version"
-msgstr "גרסה"
-
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-#: src/remmina.c:84
-msgid "Show 'About'"
-msgstr "Show 'About'"
-
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-#: src/remmina.c:86 src/remmina.c:88
-msgid ""
-"Connect to desktop described in file (.remmina or type supported by plugin)"
-msgstr ""
-"Connect to desktop described in file (.remmina or type supported by plugin)"
-
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-#: src/remmina.c:90
-msgid ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
-msgstr ""
-"Edit desktop connection described in file (.remmina or type supported by "
-"plugin)"
-
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-#: src/remmina.c:93
-msgid "Start in kiosk mode"
-msgstr "Start in kiosk mode"
-
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-#: src/remmina.c:95
-msgid "Create new connection profile"
-msgstr "Create new connection profile"
-
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-#: src/remmina.c:97
-msgid "Show preferences"
-msgstr "Show preferences"
-
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-#: src/remmina.c:99
-msgid "Run a plugin"
-msgstr "Run a plugin"
-
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-#: src/remmina.c:101
-msgid "Quit"
-msgstr "Quit"
-
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-#: src/remmina.c:103
-msgid "Use default server name (for --new)"
-msgstr "Use default server name (for --new)"
-
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-#: src/remmina.c:105
-msgid "Use default protocol (for --new)"
-msgstr "Use default protocol (for --new)"
-
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-#: src/remmina.c:107
-msgid "Start in tray"
-msgstr "Start in tray"
-
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-#: src/remmina.c:109
-msgid "Show the application version"
-msgstr "Show the application version"
-
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-#: src/remmina.c:111
-msgid "Show version of the application and its plugins"
-msgstr "Show version of the application and its plugins"
-
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-#: src/remmina.c:113
-msgid "Modify connection profile (requires --set-option)"
-msgstr "Modify connection profile (requires --set-option)"
-
-#. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
-#: src/remmina.c:115
-msgid "Set one or more profile settings, to be used with --update-profile"
-msgstr "Set one or more profile settings, to be used with --update-profile"
-
-#: src/remmina_sftp_plugin.c:318 src/remmina_ssh_plugin.c:959
-msgid "SSH identity file"
-msgstr "קובץ זהות SSH"
-
-#: src/remmina_sftp_plugin.c:319 src/remmina_ssh_plugin.c:960
-msgid "SSH agent"
-msgstr "סוכן SSH"
-
-#: src/remmina_sftp_plugin.c:320 src/remmina_ssh_plugin.c:961
-#: src/remmina_file_editor.c:939
-msgid "Public key (automatic)"
-msgstr "מפתח ציבורי (אוטומטי)"
-
-#: src/remmina_sftp_plugin.c:321 src/remmina_ssh_plugin.c:962
-msgid "Kerberos (GSSAPI)"
-msgstr "Kerberos (GSSAPI)"
-
-#: src/remmina_sftp_plugin.c:330
-msgid "Show Hidden Files"
-msgstr "הצגת קבצים מוסתרים"
-
-#: src/remmina_sftp_plugin.c:332
-msgid "Overwrite all"
-msgstr "לדרוס הכול"
-
-#: src/remmina_sftp_plugin.c:351 src/remmina_ssh_plugin.c:1059
-#, fuzzy
-#| msgid "SSH Authentication"
-msgid "Authentication type"
-msgstr "אימות SSH"
-
-#: src/remmina_sftp_plugin.c:352 src/remmina_ssh_plugin.c:1060
-#: src/remmina_file_editor.c:356 src/remmina_file_editor.c:363
-#: plugins/nx/nx_plugin.c:720
-#, fuzzy
-#| msgid "SSH identity file"
-msgid "Identity file"
-msgstr "קובץ זהות SSH"
-
-#: src/remmina_sftp_plugin.c:353 src/remmina_ssh_plugin.c:1061
-#, fuzzy
-#| msgid "Password for private SSH key"
-msgid "Password to unlock private key"
-msgstr "ססמה למפתח SSH פרטי"
-
-#: src/remmina_sftp_plugin.c:362
-msgid "SFTP - Secure File Transfer"
-msgstr "SFTP - העברת קבצים מאובטחת"
-
-#: src/remmina_key_chooser.h:38
-msgid "Shift+"
-msgstr "Shift+"
-
-#: src/remmina_key_chooser.h:39
-msgid "Ctrl+"
-msgstr "Ctrl+"
-
-#: src/remmina_key_chooser.h:40
-msgid "Alt+"
-msgstr "Alt+"
-
-#: src/remmina_key_chooser.h:41
-msgid "Super+"
-msgstr "Super+"
-
-#: src/remmina_key_chooser.h:42
-msgid "Hyper+"
-msgstr "Hyper+"
-
-#: src/remmina_key_chooser.h:43
-msgid "Meta+"
-msgstr "Meta+"
-
-#: src/remmina_key_chooser.h:44
-msgid "<None>"
-msgstr "<אין>"
-
-#: src/remmina_ssh_plugin.c:481
-#, c-format
-msgid "Error: %s"
-msgstr "שגיאה: %s"
-
-#: src/remmina_ssh_plugin.c:498
-msgid "Terminal content saved under"
-msgstr "תוכן המסוף נשמר תחת"
-
-#: src/remmina_ssh_plugin.c:552
-msgid "Select All (Host + A)"
-msgstr "לבחור הכול (Host + A)"
-
-#: src/remmina_ssh_plugin.c:553
-msgid "Copy (host + C)"
-msgstr "העתקה (Host + C)"
-
-#: src/remmina_ssh_plugin.c:554
-msgid "Paste (host + V)"
-msgstr "הדבקה (Host + V)"
-
-#: src/remmina_ssh_plugin.c:555
-msgid "Save session to file"
-msgstr "שמירת הפעלה לקובץ"
-
-#: src/remmina_ssh_plugin.c:1037 data/ui/remmina_main.glade:248
-msgid "Copy"
-msgstr "העתקה"
-
-#: src/remmina_ssh_plugin.c:1037
-msgid "_Copy"
-msgstr "ה_עתקה"
-
-#: src/remmina_ssh_plugin.c:1038
-msgid "Paste"
-msgstr "הדבקה"
-
-#: src/remmina_ssh_plugin.c:1038
-msgid "_Paste"
-msgstr "ה_דבקה"
-
-#: src/remmina_ssh_plugin.c:1039
-msgid "Select all"
-msgstr "לבחור הכול"
-
-#: src/remmina_ssh_plugin.c:1039
-msgid "_Select all"
-msgstr "לבחור ה_כול"
-
-#: src/remmina_ssh_plugin.c:1058 plugins/spice/spice_plugin.c:437
-#: plugins/vnc/vnc_plugin.c:1833 plugins/vnc/vnc_plugin.c:1853
-#: plugins/nx/nx_plugin.c:722
-msgid "User password"
-msgstr "ססמת משתמש"
-
-#: src/remmina_ssh_plugin.c:1062 plugins/rdp/rdp_plugin.c:1972
-#: plugins/xdmcp/xdmcp_plugin.c:370 plugins/nx/nx_plugin.c:725
-msgid "Startup program"
-msgstr "תכנית להתחלה"
-
-#: src/remmina_ssh_plugin.c:1079
-msgid "Terminal color scheme"
-msgstr "סכמת צבעים למסוף"
-
-#: src/remmina_ssh_plugin.c:1080 src/remmina_file_editor.c:896
-msgid "Character set"
-msgstr "מערך תווים"
-
-#: src/remmina_ssh_plugin.c:1081
-msgid "SSH Proxy Command"
-msgstr "פקודת מתווך SSH"
-
-#: src/remmina_ssh_plugin.c:1082
-msgid "KEX (Key Exchange) algorithms"
-msgstr "אלגוריתמי KEX (החלפת מפתחות)"
-
-#: src/remmina_ssh_plugin.c:1083
-msgid "Symmetric cipher client to server"
-msgstr "צופן סימטרי מלקוח לשרת"
-
-#: src/remmina_ssh_plugin.c:1084
-msgid "Preferred server host key types"
-msgstr "סוגי מפתחות שרתים מארחים מועדפים"
-
-#: src/remmina_ssh_plugin.c:1085
-msgid "Folder for SSH session log"
-msgstr "תיקייה לתיעוד התחברויות ה‏־SSH"
-
-#: src/remmina_ssh_plugin.c:1086
-msgid "Filename for SSH session log"
-msgstr "שם קובץ תיעוד התחברות ה־SSH"
-
-#: src/remmina_ssh_plugin.c:1087
-msgid "Log SSH session when exiting Remmina"
-msgstr "תיעוד חיבור ה־SSH בטרם היציאה מ־Remmina"
-
-#: src/remmina_ssh_plugin.c:1088
-#, fuzzy
-msgid "Audible terminal bell"
-msgstr ""
-"#-#-#-#-#  catalog.po (remmina)  #-#-#-#-#\n"
-"הפעלת צלצול למסוף\n"
-"#-#-#-#-#  catalog.po (remmina)  #-#-#-#-#\n"
-"צלצול למסוף"
-
-#: src/remmina_ssh_plugin.c:1089
-msgid "SSH compression"
-msgstr "דחיסת SSH"
-
-#: src/remmina_ssh_plugin.c:1090
-msgid "Don't remember passwords"
-msgstr "לא לזכור ססמאות"
-
-#: src/remmina_ssh_plugin.c:1091
-msgid "Strict host key checking"
-msgstr "בדיקת מפתח מארח קפדנית"
-
-#: src/remmina_ssh_plugin.c:1105
-msgid "SSH - Secure Shell"
-msgstr "SSH - מעטפת מאובטחת"
 
 #: src/remmina_file_editor.c:74
 msgid ""
@@ -1250,7 +1244,6 @@ msgstr ""
 
 #: src/remmina_file_editor.c:158
 #, fuzzy
-#| msgid "Remote Desktop Preference"
 msgid "Choose a Remote Desktop Server"
 msgstr "העדפת שולחן עבודה מרוחק"
 
@@ -1265,13 +1258,11 @@ msgstr ""
 
 #: src/remmina_file_editor.c:527
 #, fuzzy
-#| msgid "Resolutions"
 msgid "Resolution"
 msgstr "רזולוציות"
 
 #: src/remmina_file_editor.c:534
 #, fuzzy
-#| msgid "Resize guest to match window size"
 msgid "Use initial window size"
 msgstr "לשנות את גודל האורח כדי להתאים לגודל החלון"
 
@@ -1378,32 +1369,387 @@ msgstr "פקודה מסכמת"
 msgid "Could not find the file \"%s\"."
 msgstr "לא ניתן למצוא את הקובץ „%s”."
 
-#: src/remmina_mpchange.c:234
-msgid "The passwords do not match"
-msgstr "הססמאות אינן תואמות"
-
-#: src/remmina_mpchange.c:244
-msgid "Resetting passwords, please wait…"
-msgstr "הססמאות מתאפסות, נא להמתין…"
-
-#: src/remmina_mpchange.c:327
-msgid "The multi password changer requires a secrecy plugin.\n"
-msgstr "מחליף הססמאות הסדרתי לא יכול לעבוד בלי תוסף הסודות.\n"
-
-#: src/remmina_mpchange.c:330
-msgid "The multi password changer requires a secrecy service.\n"
-msgstr "מחליף הססמאות הסדרתי לא יכול לעבוד בלי שירות הסודות.\n"
-
-#: src/remmina_mpchange.c:419
+#: src/remmina_chat_window.c:178
 #, c-format
-msgid "%d password changed."
-msgid_plural "%d passwords changed."
-msgstr[0] "ססמה אחת הוחלפה."
-msgstr[1] "%d ססמאות הוחלפו."
+msgid "Chat with %s"
+msgstr "שיחה עם %s"
+
+#: src/remmina_chat_window.c:230
+msgid "_Send"
+msgstr "_שליחה"
+
+#: src/remmina_chat_window.c:240
+msgid "_Clear"
+msgstr "_ניקוי"
+
+#: plugins/exec/exec_plugin_config.h:41
+msgid "Execute a command"
+msgstr "הפעלת פקודה"
+
+#: plugins/exec/exec_plugin.c:158
+msgid "You did not set any command to be executed"
+msgstr "לא הגדרת פקודה להרצה"
+
+#: plugins/exec/exec_plugin.c:204
+msgid ""
+"Warning: Running a command synchronously may cause Remmina not to respond.\n"
+"Do you really want to continue?"
+msgstr ""
+"אזהרה: הרצת פקודה באופן סנכרוני עשויה לגרום ל־Remmina להפסיק להגיב.\n"
+"להמשיך?"
+
+#: plugins/exec/exec_plugin.c:264
+msgid "Command"
+msgstr "פקודה"
+
+#: plugins/exec/exec_plugin.c:265
+msgid "Asynchrounous execution"
+msgstr "הפעלה אסינכרונית"
+
+#: plugins/www/www_plugin.c:97
+msgid "File downloaded"
+msgstr "התקבל קובץ"
+
+#: plugins/www/www_plugin.c:485
+#, fuzzy
+msgid "Enter WWW authentication credentials"
+msgstr "נא להקליד פרטי אימות ל־NX"
+
+#: plugins/www/www_plugin.c:791
+msgid "URL"
+msgstr "כתובת"
+
+#: plugins/www/www_plugin.c:791
+msgid "http://address or https://address"
+msgstr "http://address או https://address"
+
+#: plugins/www/www_plugin.c:808
+msgid "User agent"
+msgstr "סוכן משתמש"
+
+#: plugins/www/www_plugin.c:809
+msgid "Turn on Java support"
+msgstr "הפעלת תמיכה ב־Java"
+
+#: plugins/www/www_plugin.c:810
+msgid "Turn on smooth scrolling"
+msgstr "הפעלת גלילה חלקה"
+
+#: plugins/www/www_plugin.c:811
+msgid "Turn on spatial navigation"
+msgstr "הפעלת ניווט מרחבי"
+
+#: plugins/www/www_plugin.c:812
+msgid "Turn on plugin support"
+msgstr "הפעלת תמיכה בתוספים"
+
+#: plugins/www/www_plugin.c:813
+msgid "Turn on WebGL support"
+msgstr "הפעלת תמיכה ב־WebGL"
+
+#: plugins/www/www_plugin.c:814
+msgid "Turn on HTML5 audio support"
+msgstr "הפעלת תמיכה בשמע עם HTML5"
+
+#: plugins/www/www_plugin.c:815
+msgid "Ignore TLS errors"
+msgstr "התעלמות משגיאות TLS"
+
+#: plugins/www/www_plugin.c:816
+msgid "No password storage"
+msgstr "ללא אחסון ססמאות"
+
+#: plugins/www/www_plugin.c:818
+msgid "Turn on Web Inspector"
+msgstr "הפעלת מנתח אתרים"
+
+#: plugins/www/www_config.h:43
+msgid "Remmina web-browser plugin"
+msgstr "תוסף דפדפן של Remmina"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
 msgid "Secure password storing in the GNOME keyring"
 msgstr "אחסון ססמאות מאובטח בצרור המפתחות של GNOME"
+
+#: plugins/tool_hello_world/plugin_config.h:40
+msgid "Hello World!"
+msgstr "שלום עולם!"
+
+#: plugins/vnc/vnc_plugin.c:734
+msgid "Enter VNC password"
+msgstr "נא להקליד ססמת VNC"
+
+#: plugins/vnc/vnc_plugin.c:787
+msgid "Enter VNC authentication credentials"
+msgstr "נא להקליד פרטי אימות ל־VNC"
+
+#: plugins/vnc/vnc_plugin.c:890
+msgid "Unable to connect to VNC server"
+msgstr "לא ניתן להתחבר לשרת ה־VNC"
+
+#: plugins/vnc/vnc_plugin.c:891
+#, c-format
+msgid "Couldn’t convert '%s' to host address"
+msgstr "לא ניתן להמיר את '%s' לכתובת מארח"
+
+#: plugins/vnc/vnc_plugin.c:892
+#, c-format
+msgid "VNC connection failed: %s"
+msgstr "חיבור ה־VNC נכשל: %s"
+
+#: plugins/vnc/vnc_plugin.c:893
+msgid "Your connection has been rejected."
+msgstr "החיבור שלך נדחה."
+
+#: plugins/vnc/vnc_plugin.c:919
+#, c-format
+msgid "The VNC server requested an unknown authentication method. %s"
+msgstr "שרת ה־VNC ביקש שיטת אימות בלתי מוכרת. %s"
+
+#: plugins/vnc/vnc_plugin.c:921
+msgid "Please retry after turning on encryption for this profile."
+msgstr "נא לנסות שוב לאחר הפעלת הצפנה על הפרופיל הזה."
+
+#: plugins/vnc/vnc_plugin.c:1803
+msgid "256 colors (8 bpp)"
+msgstr "256 צבעים (‏‎8 bpp)"
+
+#: plugins/vnc/vnc_plugin.c:1804
+msgid "High color (16 bpp)"
+msgstr "צבע איכותי (‎16 bpp)"
+
+#: plugins/vnc/vnc_plugin.c:1805
+msgid "True color (32 bpp)"
+msgstr "צבע אמתי (‎32 bpp)"
+
+#: plugins/vnc/vnc_plugin.c:1812 plugins/rdp/rdp_plugin.c:1894
+#: plugins/rdp/rdp_settings.c:269 plugins/nx/nx_plugin.c:701
+msgid "Poor (fastest)"
+msgstr "גרועה (הכי מהיר)"
+
+#: plugins/vnc/vnc_plugin.c:1813 plugins/rdp/rdp_plugin.c:1895
+#: plugins/rdp/rdp_settings.c:271 plugins/nx/nx_plugin.c:702
+msgid "Medium"
+msgstr "בינונית"
+
+#: plugins/vnc/vnc_plugin.c:1814 plugins/rdp/rdp_plugin.c:1896
+#: plugins/rdp/rdp_settings.c:273 plugins/nx/nx_plugin.c:703
+msgid "Good"
+msgstr "טובה"
+
+#: plugins/vnc/vnc_plugin.c:1815 plugins/rdp/rdp_plugin.c:1897
+#: plugins/rdp/rdp_settings.c:275 plugins/nx/nx_plugin.c:704
+msgid "Best (slowest)"
+msgstr "מעולה (אטי ביותר)"
+
+#: plugins/vnc/vnc_plugin.c:1831
+msgid "Repeater"
+msgstr "ממסר"
+
+#: plugins/vnc/vnc_plugin.c:1834 plugins/vnc/vnc_plugin.c:1854
+msgid "Color depth"
+msgstr "עומק צבעים"
+
+#: plugins/vnc/vnc_plugin.c:1835 plugins/vnc/vnc_plugin.c:1855
+#: plugins/rdp/rdp_plugin.c:1963 plugins/nx/nx_plugin.c:724
+msgid "Quality"
+msgstr "איכות"
+
+#: plugins/vnc/vnc_plugin.c:1851
+msgid "Listen on port"
+msgstr "האזנה לפתחה"
+
+#: plugins/vnc/vnc_plugin.c:1871
+msgid "Show remote cursor"
+msgstr "הצגת הסמן המרוחק"
+
+#: plugins/vnc/vnc_plugin.c:1872 plugins/vnc/vnc_plugin.c:1887
+#: plugins/spice/spice_plugin.c:460 plugins/spice/spice_plugin.c:469
+msgid "View only"
+msgstr "צפייה בלבד"
+
+#: plugins/vnc/vnc_plugin.c:1873 plugins/spice/spice_plugin.c:455
+#: plugins/spice/spice_plugin.c:471 plugins/nx/nx_plugin.c:740
+msgid "Disable clipboard sync"
+msgstr "נטרול סנכרון לוח הגזירים"
+
+#: plugins/vnc/vnc_plugin.c:1874 plugins/nx/nx_plugin.c:741
+msgid "Disable encryption"
+msgstr "נטרול הצפנה"
+
+#: plugins/vnc/vnc_plugin.c:1875 plugins/vnc/vnc_plugin.c:1888
+msgid "Disable server input"
+msgstr "השבתת קלט השרת"
+
+#: plugins/vnc/vnc_plugin.c:1876 plugins/spice/spice_plugin.c:456
+#: plugins/nx/nx_plugin.c:743
+msgid "Disable password storing"
+msgstr "השבתת אחסון ססמאות"
+
+#: plugins/vnc/vnc_plugin.c:1890
+msgid "Open Chat…"
+msgstr "פתיחת הצ׳אט…"
+
+#: plugins/vnc/vnc_plugin.c:1891 plugins/spice/spice_plugin.c:472
+#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/rdp/rdp_plugin.c:2011
+#: plugins/nx/nx_plugin.c:751
+msgid "Send Ctrl+Alt+Delete"
+msgstr "שליחת Ctrl+Alt+Delete"
+
+#: plugins/vnc/vnc_plugin.h:41
+msgid "Remmina VNC Plugin"
+msgstr "תוסף VNC של Remmina"
+
+#: plugins/vnc/vnc_plugin.h:46
+msgid "Remmina VNC listener Plugin"
+msgstr "תוסף האזנת VNC של Remmina"
+
+#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:473
+msgid "Select USB devices for redirection"
+msgstr "נא לבחור התקן USB להפניה"
+
+#: plugins/spice/spice_plugin_usb.c:54
+msgid "_Close"
+msgstr "_סגירה"
+
+#: plugins/spice/spice_plugin_usb.c:94
+msgid "USB redirection error"
+msgstr "שגיאת הפניית USB"
+
+#: plugins/spice/spice_plugin.c:239
+msgid "Enter SPICE password"
+msgstr "נא להקליד ססמה ל־SPICE"
+
+#: plugins/spice/spice_plugin.c:274
+#, c-format
+msgid "Disconnected from the SPICE server \"%s\"."
+msgstr "מנותק משרת SPICE‏ „%s”."
+
+#: plugins/spice/spice_plugin.c:290
+msgid "TLS connection error."
+msgstr "שגיאת חיבור TLS."
+
+#: plugins/spice/spice_plugin.c:296
+msgid "Connection to the SPICE server dropped."
+msgstr "ההתחברות לשרת ה־SPICE נקטעה."
+
+#: plugins/spice/spice_plugin.c:438
+msgid "Use TLS encryption"
+msgstr "להשתמש בהצפנת TLS"
+
+#: plugins/spice/spice_plugin.c:439
+msgid "Server CA certificate"
+msgstr "אישור CA של השרת"
+
+#: plugins/spice/spice_plugin.c:440 plugins/rdp/rdp_plugin.c:1948
+msgid "Share folder"
+msgstr "שיתוף תיקייה"
+
+#: plugins/spice/spice_plugin.c:457
+msgid "Enable audio channel"
+msgstr "הפעלת ערוץ שמע"
+
+#: plugins/spice/spice_plugin.c:458 plugins/spice/spice_plugin.c:470
+msgid "Resize guest to match window size"
+msgstr "לשנות את גודל האורח כדי להתאים לגודל החלון"
+
+#: plugins/spice/spice_plugin.c:459 plugins/rdp/rdp_plugin.c:1986
+msgid "Share smartcard"
+msgstr "שיתוף כרטיס חכם"
+
+#: plugins/spice/spice_plugin.c:482
+msgid "SPICE - Simple Protocol for Independent Computing Environments"
+msgstr ""
+"SPICE‏ - Simple Protocol for Independent Computing Environments (פרוטוקול "
+"פשוט לסביבות מחשבים עצמאיות)"
+
+#: plugins/spice/spice_plugin_file_transfer.c:82
+msgid "File Transfers"
+msgstr "העברות קבצים"
+
+#: plugins/spice/spice_plugin_file_transfer.c:219
+msgid "Transfer error"
+msgstr "שגיאת העברה"
+
+#: plugins/spice/spice_plugin_file_transfer.c:220
+#, c-format
+msgid "%s: %s"
+msgstr "%s: %s"
+
+#: plugins/spice/spice_plugin_file_transfer.c:223
+msgid "Transfer completed"
+msgstr "העברה הושלמה"
+
+#: plugins/spice/spice_plugin_file_transfer.c:224
+#, c-format
+msgid "The %s file has been transferred"
+msgstr "הקובץ %s הועבר"
+
+#: plugins/xdmcp/xdmcp_plugin.c:97
+msgid "Run out of available local X display number."
+msgstr "נגמרו מספרי תצוגות ה־X המקומיות הזמינים."
+
+#: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:608
+#, c-format
+msgid ""
+"The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
+msgstr "הפרוטוקול „%s” אינו זמין כיוון ש־GtkSocket עובד רק תחת X.Org."
+
+#: plugins/xdmcp/xdmcp_plugin.c:348
+msgid "Default"
+msgstr "בררת מחדל"
+
+#: plugins/xdmcp/xdmcp_plugin.c:349
+msgid "Grayscale"
+msgstr "גווני אפור"
+
+#: plugins/xdmcp/xdmcp_plugin.c:350
+msgid "256 colours"
+msgstr "256 צבעים"
+
+#: plugins/xdmcp/xdmcp_plugin.c:351
+msgid "High colour (16 bit)"
+msgstr "צבע איכותי (‎16 סיביות)"
+
+#: plugins/xdmcp/xdmcp_plugin.c:352
+msgid "True colour (24 bit)"
+msgstr "צבע אמתי (‎24 סיביות)"
+
+#: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1947
+msgid "Colour depth"
+msgstr "עומק צבעים"
+
+#: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:742
+msgid "Use local cursor"
+msgstr "שימוש בסמן המקומי"
+
+#: plugins/xdmcp/xdmcp_plugin.c:372
+msgid "Disconnect after first session"
+msgstr "ניתוק לאחר התקשרות אחת"
+
+#: plugins/xdmcp/xdmcp_plugin.c:373
+msgid "Listen for TCP connections"
+msgstr "להאזין לחיבורי TCP"
+
+#: plugins/xdmcp/xdmcp_plugin.c:391
+msgid "XDMCP - X Remote Session"
+msgstr "XDMCP - הפעלה מרוחקת של X"
+
+#: plugins/st/st_plugin.c:237
+msgid "Terminal Emulator"
+msgstr "מדמה מסוף"
+
+#: plugins/st/st_plugin.c:238
+msgid "Command to be executed"
+msgstr "פקודה להרצה"
+
+#: plugins/st/st_plugin.c:253
+msgid "Detached window"
+msgstr "חלון מנותק"
+
+#: plugins/st/st_plugin_config.h:43
+msgid "Remmina simple terminal"
+msgstr "מסוף פשוט של Remmina"
 
 #: plugins/rdp/rdp_plugin.c:577
 msgid "Enter RDP authentication credentials"
@@ -1543,19 +1889,16 @@ msgstr "GFX AVC444 (32 סיביות לפיקסל)"
 
 #: plugins/rdp/rdp_plugin.c:1880
 #, fuzzy
-#| msgid "GFX AVC444 (32 bpp)"
 msgid "GFX AVC420 (32 bpp)"
 msgstr "GFX AVC444 (32 סיביות לפיקסל)"
 
 #: plugins/rdp/rdp_plugin.c:1881
 #, fuzzy
-#| msgid "GFX AVC444 (32 bpp)"
 msgid "GFX RFX (32 bpp)"
 msgstr "GFX AVC444 (32 סיביות לפיקסל)"
 
 #: plugins/rdp/rdp_plugin.c:1882
 #, fuzzy
-#| msgid "True color (32 bpp)"
 msgid "RemoteFX (32 bpp)"
 msgstr "צבע אמתי (‎32 bpp)"
 
@@ -1579,26 +1922,6 @@ msgstr "צבע איכותי (‎15 bpp)"
 msgid "256 colours (8 bpp)"
 msgstr "256 צבעים (‏‎8 bpp)"
 
-#: plugins/rdp/rdp_plugin.c:1894 plugins/rdp/rdp_settings.c:269
-#: plugins/vnc/vnc_plugin.c:1812 plugins/nx/nx_plugin.c:701
-msgid "Poor (fastest)"
-msgstr "גרועה (הכי מהיר)"
-
-#: plugins/rdp/rdp_plugin.c:1895 plugins/rdp/rdp_settings.c:271
-#: plugins/vnc/vnc_plugin.c:1813 plugins/nx/nx_plugin.c:702
-msgid "Medium"
-msgstr "בינונית"
-
-#: plugins/rdp/rdp_plugin.c:1896 plugins/rdp/rdp_settings.c:273
-#: plugins/vnc/vnc_plugin.c:1814 plugins/nx/nx_plugin.c:703
-msgid "Good"
-msgstr "טובה"
-
-#: plugins/rdp/rdp_plugin.c:1897 plugins/rdp/rdp_settings.c:275
-#: plugins/vnc/vnc_plugin.c:1815 plugins/nx/nx_plugin.c:704
-msgid "Best (slowest)"
-msgstr "מעולה (אטי ביותר)"
-
 #: plugins/rdp/rdp_plugin.c:1904 data/ui/remmina_preferences.glade:658
 msgid "Off"
 msgstr "כבוי"
@@ -1619,19 +1942,6 @@ msgstr "מקומי - איכות גבוהה"
 msgid "Negotiate"
 msgstr "משא ומתן"
 
-#: plugins/rdp/rdp_plugin.c:1947 plugins/xdmcp/xdmcp_plugin.c:369
-msgid "Colour depth"
-msgstr "עומק צבעים"
-
-#: plugins/rdp/rdp_plugin.c:1948 plugins/spice/spice_plugin.c:440
-msgid "Share folder"
-msgstr "שיתוף תיקייה"
-
-#: plugins/rdp/rdp_plugin.c:1963 plugins/vnc/vnc_plugin.c:1835
-#: plugins/vnc/vnc_plugin.c:1855 plugins/nx/nx_plugin.c:724
-msgid "Quality"
-msgstr "איכות"
-
 #: plugins/rdp/rdp_plugin.c:1964
 msgid "Sound"
 msgstr "שמע"
@@ -1646,7 +1956,6 @@ msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1967
 #, fuzzy
-#| msgid "Remote Desktop Gateway username"
 msgid "Remote Desktop Gateway server"
 msgstr "שם משתמש לשער גישה לשולחן עבודה מרחוק"
 
@@ -1716,13 +2025,11 @@ msgstr "התקן מקבילי מקומי"
 
 #: plugins/rdp/rdp_plugin.c:1981
 #, fuzzy
-#| msgid "Share smartcard"
 msgid "Smartcard name"
 msgstr "שיתוף כרטיס חכם"
 
 #: plugins/rdp/rdp_plugin.c:1982
 #, fuzzy
-#| msgid "Share serial ports"
 msgid "Share printers"
 msgstr "שיתוף פתחות טוריות"
 
@@ -1736,13 +2043,8 @@ msgstr "(SELinux) מצב מתירני לפתחות טוריות"
 
 #: plugins/rdp/rdp_plugin.c:1985
 #, fuzzy
-#| msgid "Share serial ports"
 msgid "Share parallel ports"
 msgstr "שיתוף פתחות טוריות"
-
-#: plugins/rdp/rdp_plugin.c:1986 plugins/spice/spice_plugin.c:459
-msgid "Share smartcard"
-msgstr "שיתוף כרטיס חכם"
 
 #: plugins/rdp/rdp_plugin.c:1987
 msgid "Redirect local microphone"
@@ -1796,15 +2098,8 @@ msgstr "הקלת בדיקות סדר"
 msgid "Glyph cache"
 msgstr "מטמון צורות תווים"
 
-#: plugins/rdp/rdp_plugin.c:2011 plugins/spice/spice_plugin.c:472
-#: plugins/xdmcp/xdmcp_plugin.c:381 plugins/vnc/vnc_plugin.c:1891
-#: plugins/nx/nx_plugin.c:751
-msgid "Send Ctrl+Alt+Delete"
-msgstr "שליחת Ctrl+Alt+Delete"
-
 #: plugins/rdp/rdp_plugin.c:2024
 #, fuzzy
-#| msgid "Remote Desktop Preference"
 msgid "RDP - Remote Desktop Protocol"
 msgstr "העדפת שולחן עבודה מרוחק"
 
@@ -1878,7 +2173,6 @@ msgstr "הפעלת חלונות"
 
 #: plugins/rdp/rdp_settings.c:532
 #, fuzzy
-#| msgid "Device scale factor %"
 msgid "Remote scale factor"
 msgstr "מקדם גודל תמונה של מכשיר ב־%"
 
@@ -1898,251 +2192,6 @@ msgstr "כיוון שולחן עבודה"
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "ניסיון התחברות חוזרת %d מתוך %d…"
-
-#: plugins/spice/spice_plugin_file_transfer.c:82
-msgid "File Transfers"
-msgstr "העברות קבצים"
-
-#: plugins/spice/spice_plugin_file_transfer.c:219
-msgid "Transfer error"
-msgstr "שגיאת העברה"
-
-#: plugins/spice/spice_plugin_file_transfer.c:220
-#, c-format
-msgid "%s: %s"
-msgstr "%s: %s"
-
-#: plugins/spice/spice_plugin_file_transfer.c:223
-msgid "Transfer completed"
-msgstr "העברה הושלמה"
-
-#: plugins/spice/spice_plugin_file_transfer.c:224
-#, c-format
-msgid "The %s file has been transferred"
-msgstr "הקובץ %s הועבר"
-
-#: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:473
-msgid "Select USB devices for redirection"
-msgstr "נא לבחור התקן USB להפניה"
-
-#: plugins/spice/spice_plugin_usb.c:54
-msgid "_Close"
-msgstr "_סגירה"
-
-#: plugins/spice/spice_plugin_usb.c:94
-msgid "USB redirection error"
-msgstr "שגיאת הפניית USB"
-
-#: plugins/spice/spice_plugin.c:239
-msgid "Enter SPICE password"
-msgstr "נא להקליד ססמה ל־SPICE"
-
-#: plugins/spice/spice_plugin.c:274
-#, c-format
-msgid "Disconnected from the SPICE server \"%s\"."
-msgstr "מנותק משרת SPICE‏ „%s”."
-
-#: plugins/spice/spice_plugin.c:290
-msgid "TLS connection error."
-msgstr "שגיאת חיבור TLS."
-
-#: plugins/spice/spice_plugin.c:296
-msgid "Connection to the SPICE server dropped."
-msgstr "ההתחברות לשרת ה־SPICE נקטעה."
-
-#: plugins/spice/spice_plugin.c:438
-msgid "Use TLS encryption"
-msgstr "להשתמש בהצפנת TLS"
-
-#: plugins/spice/spice_plugin.c:439
-msgid "Server CA certificate"
-msgstr "אישור CA של השרת"
-
-#: plugins/spice/spice_plugin.c:455 plugins/spice/spice_plugin.c:471
-#: plugins/vnc/vnc_plugin.c:1873 plugins/nx/nx_plugin.c:740
-msgid "Disable clipboard sync"
-msgstr "נטרול סנכרון לוח הגזירים"
-
-#: plugins/spice/spice_plugin.c:456 plugins/vnc/vnc_plugin.c:1876
-#: plugins/nx/nx_plugin.c:743
-msgid "Disable password storing"
-msgstr "השבתת אחסון ססמאות"
-
-#: plugins/spice/spice_plugin.c:457
-msgid "Enable audio channel"
-msgstr "הפעלת ערוץ שמע"
-
-#: plugins/spice/spice_plugin.c:458 plugins/spice/spice_plugin.c:470
-msgid "Resize guest to match window size"
-msgstr "לשנות את גודל האורח כדי להתאים לגודל החלון"
-
-#: plugins/spice/spice_plugin.c:460 plugins/spice/spice_plugin.c:469
-#: plugins/vnc/vnc_plugin.c:1872 plugins/vnc/vnc_plugin.c:1887
-msgid "View only"
-msgstr "צפייה בלבד"
-
-#: plugins/spice/spice_plugin.c:482
-msgid "SPICE - Simple Protocol for Independent Computing Environments"
-msgstr ""
-"SPICE‏ - Simple Protocol for Independent Computing Environments (פרוטוקול "
-"פשוט לסביבות מחשבים עצמאיות)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:97
-msgid "Run out of available local X display number."
-msgstr "נגמרו מספרי תצוגות ה־X המקומיות הזמינים."
-
-#: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:608
-#, c-format
-msgid ""
-"The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
-msgstr "הפרוטוקול „%s” אינו זמין כיוון ש־GtkSocket עובד רק תחת X.Org."
-
-#: plugins/xdmcp/xdmcp_plugin.c:348
-msgid "Default"
-msgstr "בררת מחדל"
-
-#: plugins/xdmcp/xdmcp_plugin.c:349
-msgid "Grayscale"
-msgstr "גווני אפור"
-
-#: plugins/xdmcp/xdmcp_plugin.c:350
-msgid "256 colours"
-msgstr "256 צבעים"
-
-#: plugins/xdmcp/xdmcp_plugin.c:351
-msgid "High colour (16 bit)"
-msgstr "צבע איכותי (‎16 סיביות)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:352
-msgid "True colour (24 bit)"
-msgstr "צבע אמתי (‎24 סיביות)"
-
-#: plugins/xdmcp/xdmcp_plugin.c:371 plugins/nx/nx_plugin.c:742
-msgid "Use local cursor"
-msgstr "שימוש בסמן המקומי"
-
-#: plugins/xdmcp/xdmcp_plugin.c:372
-msgid "Disconnect after first session"
-msgstr "ניתוק לאחר התקשרות אחת"
-
-#: plugins/xdmcp/xdmcp_plugin.c:373
-msgid "Listen for TCP connections"
-msgstr "להאזין לחיבורי TCP"
-
-#: plugins/xdmcp/xdmcp_plugin.c:391
-msgid "XDMCP - X Remote Session"
-msgstr "XDMCP - הפעלה מרוחקת של X"
-
-#: plugins/vnc/vnc_plugin.c:734
-msgid "Enter VNC password"
-msgstr "נא להקליד ססמת VNC"
-
-#: plugins/vnc/vnc_plugin.c:787
-msgid "Enter VNC authentication credentials"
-msgstr "נא להקליד פרטי אימות ל־VNC"
-
-#: plugins/vnc/vnc_plugin.c:890
-msgid "Unable to connect to VNC server"
-msgstr "לא ניתן להתחבר לשרת ה־VNC"
-
-#: plugins/vnc/vnc_plugin.c:891
-#, c-format
-msgid "Couldn’t convert '%s' to host address"
-msgstr "לא ניתן להמיר את '%s' לכתובת מארח"
-
-#: plugins/vnc/vnc_plugin.c:892
-#, c-format
-msgid "VNC connection failed: %s"
-msgstr "חיבור ה־VNC נכשל: %s"
-
-#: plugins/vnc/vnc_plugin.c:893
-msgid "Your connection has been rejected."
-msgstr "החיבור שלך נדחה."
-
-#: plugins/vnc/vnc_plugin.c:919
-#, c-format
-msgid "The VNC server requested an unknown authentication method. %s"
-msgstr "שרת ה־VNC ביקש שיטת אימות בלתי מוכרת. %s"
-
-#: plugins/vnc/vnc_plugin.c:921
-msgid "Please retry after turning on encryption for this profile."
-msgstr "נא לנסות שוב לאחר הפעלת הצפנה על הפרופיל הזה."
-
-#: plugins/vnc/vnc_plugin.c:1803
-msgid "256 colors (8 bpp)"
-msgstr "256 צבעים (‏‎8 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1804
-msgid "High color (16 bpp)"
-msgstr "צבע איכותי (‎16 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1805
-msgid "True color (32 bpp)"
-msgstr "צבע אמתי (‎32 bpp)"
-
-#: plugins/vnc/vnc_plugin.c:1831
-msgid "Repeater"
-msgstr "ממסר"
-
-#: plugins/vnc/vnc_plugin.c:1834 plugins/vnc/vnc_plugin.c:1854
-msgid "Color depth"
-msgstr "עומק צבעים"
-
-#: plugins/vnc/vnc_plugin.c:1851
-msgid "Listen on port"
-msgstr "האזנה לפתחה"
-
-#: plugins/vnc/vnc_plugin.c:1871
-msgid "Show remote cursor"
-msgstr "הצגת הסמן המרוחק"
-
-#: plugins/vnc/vnc_plugin.c:1874 plugins/nx/nx_plugin.c:741
-msgid "Disable encryption"
-msgstr "נטרול הצפנה"
-
-#: plugins/vnc/vnc_plugin.c:1875 plugins/vnc/vnc_plugin.c:1888
-msgid "Disable server input"
-msgstr "השבתת קלט השרת"
-
-#: plugins/vnc/vnc_plugin.c:1890
-msgid "Open Chat…"
-msgstr "פתיחת הצ׳אט…"
-
-#: plugins/vnc/vnc_plugin.h:41
-msgid "Remmina VNC Plugin"
-msgstr "תוסף VNC של Remmina"
-
-#: plugins/vnc/vnc_plugin.h:46
-msgid "Remmina VNC listener Plugin"
-msgstr "תוסף האזנת VNC של Remmina"
-
-#: plugins/st/st_plugin.c:237
-msgid "Terminal Emulator"
-msgstr "מדמה מסוף"
-
-#: plugins/st/st_plugin.c:238
-msgid "Command to be executed"
-msgstr "פקודה להרצה"
-
-#: plugins/st/st_plugin.c:253
-msgid "Detached window"
-msgstr "חלון מנותק"
-
-#: plugins/st/st_plugin_config.h:43
-msgid "Remmina simple terminal"
-msgstr "מסוף פשוט של Remmina"
-
-#: plugins/nx/nx_plugin.c:205
-msgid "Password for private SSH key"
-msgstr "ססמה למפתח SSH פרטי"
-
-#: plugins/nx/nx_plugin.c:367
-msgid "Enter NX authentication credentials"
-msgstr "נא להקליד פרטי אימות ל־NX"
-
-#: plugins/nx/nx_plugin.c:761
-msgid "NX - NX Technology"
-msgstr "NX - טכנולוגיית NX"
 
 #: plugins/nx/nx_session_manager.c:98
 msgid "Terminating…"
@@ -2177,33 +2226,21 @@ msgstr "תצוגה"
 msgid "Status"
 msgstr "מצב"
 
-#: plugins/exec/exec_plugin.c:158
-msgid "You did not set any command to be executed"
-msgstr "לא הגדרת פקודה להרצה"
+#: plugins/nx/nx_plugin.c:205
+msgid "Password for private SSH key"
+msgstr "ססמה למפתח SSH פרטי"
 
-#: plugins/exec/exec_plugin.c:204
-msgid ""
-"Warning: Running a command synchronously may cause Remmina not to respond.\n"
-"Do you really want to continue?"
-msgstr ""
-"אזהרה: הרצת פקודה באופן סנכרוני עשויה לגרום ל־Remmina להפסיק להגיב.\n"
-"להמשיך?"
+#: plugins/nx/nx_plugin.c:367
+msgid "Enter NX authentication credentials"
+msgstr "נא להקליד פרטי אימות ל־NX"
 
-#: plugins/exec/exec_plugin.c:264
-msgid "Command"
-msgstr "פקודה"
+#: plugins/nx/nx_plugin.c:761
+msgid "NX - NX Technology"
+msgstr "NX - טכנולוגיית NX"
 
-#: plugins/exec/exec_plugin.c:265
-msgid "Asynchrounous execution"
-msgstr "הפעלה אסינכרונית"
-
-#: plugins/exec/exec_plugin_config.h:41
-msgid "Execute a command"
-msgstr "הפעלת פקודה"
-
-#: plugins/telepathy/telepathy_plugin.c:57
-msgid "Telepathy - Desktop Sharing"
-msgstr "Telepathy - שיתוף שולחנות עבודה"
+#: plugins/kwallet/src/kwallet_plugin_main.c:118
+msgid "Secure passwords storage in KWallet"
+msgstr "אחסון ססמאות מאובטח בארנק של KDE‏ (KWallet)"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, c-format
@@ -2218,121 +2255,26 @@ msgstr ""
 msgid "Desktop sharing invitation"
 msgstr "הזמנה לשיתוף שולחן עבודה"
 
-#: plugins/tool_hello_world/plugin_config.h:40
-msgid "Hello World!"
-msgstr "שלום עולם!"
+#: plugins/telepathy/telepathy_plugin.c:57
+msgid "Telepathy - Desktop Sharing"
+msgstr "Telepathy - שיתוף שולחנות עבודה"
 
-#: plugins/kwallet/src/kwallet_plugin_main.c:118
-msgid "Secure passwords storage in KWallet"
-msgstr "אחסון ססמאות מאובטח בארנק של KDE‏ (KWallet)"
+#: data/ui/remmina_snap_info_dialog.glade:46
+msgid ""
+"It seems that Remmina is running on your system as a SNAP package. To enable "
+"access to some important features, like password saving in your keyring and "
+"RDP printer sharing, please open your software center and give the "
+"appropriate permissions to Remmina. As an alternative you can enter the "
+"following commands in a terminal window:"
+msgstr ""
+"נראה כי התכנית Remmina רצה במערכת שלך כחבילת Snap. כדי להפעיל גישה לכמה "
+"תכונות חשבונות כגון שמירת ססמאות בצרור המפתחות שלך ושיתוף מדפסות דרך RDP נא "
+"לפתוח את מרכז התכנה שלך ולהעניק ל־Remmina את ההרשאות המתאימות. לחלופין ניתן "
+"להקליד את הפקודות הבאות בחלון מסוף:"
 
-#: plugins/www/www_plugin.c:97
-msgid "File downloaded"
-msgstr "התקבל קובץ"
-
-#: plugins/www/www_plugin.c:485
-#, fuzzy
-#| msgid "Enter NX authentication credentials"
-msgid "Enter WWW authentication credentials"
-msgstr "נא להקליד פרטי אימות ל־NX"
-
-#: plugins/www/www_plugin.c:791
-msgid "URL"
-msgstr "כתובת"
-
-#: plugins/www/www_plugin.c:791
-msgid "http://address or https://address"
-msgstr "http://address או https://address"
-
-#: plugins/www/www_plugin.c:808
-msgid "User agent"
-msgstr "סוכן משתמש"
-
-#: plugins/www/www_plugin.c:809
-msgid "Turn on Java support"
-msgstr "הפעלת תמיכה ב־Java"
-
-#: plugins/www/www_plugin.c:810
-msgid "Turn on smooth scrolling"
-msgstr "הפעלת גלילה חלקה"
-
-#: plugins/www/www_plugin.c:811
-msgid "Turn on spatial navigation"
-msgstr "הפעלת ניווט מרחבי"
-
-#: plugins/www/www_plugin.c:812
-msgid "Turn on plugin support"
-msgstr "הפעלת תמיכה בתוספים"
-
-#: plugins/www/www_plugin.c:813
-msgid "Turn on WebGL support"
-msgstr "הפעלת תמיכה ב־WebGL"
-
-#: plugins/www/www_plugin.c:814
-msgid "Turn on HTML5 audio support"
-msgstr "הפעלת תמיכה בשמע עם HTML5"
-
-#: plugins/www/www_plugin.c:815
-msgid "Ignore TLS errors"
-msgstr "התעלמות משגיאות TLS"
-
-#: plugins/www/www_plugin.c:816
-msgid "No password storage"
-msgstr "ללא אחסון ססמאות"
-
-#: plugins/www/www_plugin.c:818
-msgid "Turn on Web Inspector"
-msgstr "הפעלת מנתח אתרים"
-
-#: plugins/www/www_config.h:43
-msgid "Remmina web-browser plugin"
-msgstr "תוסף דפדפן של Remmina"
-
-#: data/ui/remmina_mpc.glade:7
-msgid "Remmina - Multi Password Changer"
-msgstr "Remmina - מחליף ססמאות סדרתי"
-
-#: data/ui/remmina_mpc.glade:24
-msgid "Change"
-msgstr "החלפה"
-
-#: data/ui/remmina_mpc.glade:64
-msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'>מחליף ססמאות סדרתי</span>"
-
-#: data/ui/remmina_mpc.glade:169
-msgid "Selection criteria"
-msgstr "קריטריונים לבחירה"
-
-#: data/ui/remmina_mpc.glade:198
-msgid "Confirm password"
-msgstr "אישור ססמה"
-
-#: data/ui/remmina_mpc.glade:211
-msgctxt "Multi password changer"
-msgid "Set new password"
-msgstr "הגדרת ססמה חדשה"
-
-#. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:305
-msgctxt "Multi password changer"
-msgid "Select"
-msgstr "בחירה"
-
-#: data/ui/remmina_mpc.glade:317
-msgctxt "Multi password changer table"
-msgid "Name"
-msgstr "שם"
-
-#: data/ui/remmina_mpc.glade:328
-msgctxt "Multi password changer table"
-msgid "Group"
-msgstr "קבוצה"
-
-#: data/ui/remmina_mpc.glade:339
-msgctxt "Multi password changer table"
-msgid "Domain\\Username"
-msgstr "שם מתחם/משתמש"
+#: data/ui/remmina_snap_info_dialog.glade:82
+msgid "Do not show this message again"
+msgstr "לא להציג הודעה זו שוב"
 
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:444
 msgid "About"
@@ -2341,63 +2283,6 @@ msgstr "על אודות"
 #: data/ui/remmina_about.glade:40
 msgid "Website"
 msgstr "אתר"
-
-#: data/ui/remmina_news.glade:108
-msgid ""
-"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
-"\">anonymous</a></b> statistics to remmina.org"
-msgstr ""
-"לשלוח סטטיסטיקה <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
-"remmina__stats_8c.html#details\" title=\"סטטיסטיקת שימוש ב־Remmina"
-"\">אלמונית</a></b> אל remmina.org"
-
-#: data/ui/remmina_news.glade:133
-msgid "Make Remmina the default Remote Desktop Client"
-msgstr "הגדרת Remmina כלקוח בררת המחדל לחיבורי שולחן עבודה מרוחקים"
-
-#: data/ui/remmina_news.glade:142
-msgid "Apply"
-msgstr "החלה"
-
-#: data/ui/remmina_news.glade:166
-msgid "<big>Important settings</big>"
-msgstr "<big>הגדרות חשובות</big>"
-
-#: data/ui/remmina_news.glade:192
-msgid ""
-"<span>\n"
-"<b>You are great for using copylefted libre software, <a href=\"https://"
-"remmina.org/donations/\" title=\"Awesome Remmina donations\">throw in a "
-"donation</a>, to make us happy, and further make the program better.</b>\n"
-"</span>\n"
-msgstr ""
-"<span>\n"
-"<b>כל הכבוד לך על השימוש בתכנה חופשית ללא זכויות יוצרים, <a href=\"https://"
-"remmina.org/donations/\" title=\"תרומות מדהימות ל־Remmina\">נשמח לקבל ממך "
-"תרומה</a>, כדי לשמח אותנו ולתמוך בשיפור התכנית.</b>\n"
-"</span>\n"
-
-#: data/ui/remmina_news.glade:212
-msgid "<big>Contribute</big>"
-msgstr "<big>תרומה</big>"
-
-#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
-msgid "_Remove"
-msgstr "ה_סרה"
-
-#: data/ui/remmina_key_chooser.glade:23
-msgid "Choose a new key"
-msgstr "נא לבחור מפתח חדש"
-
-#: data/ui/remmina_key_chooser.glade:38 data/ui/remmina_key_chooser.glade:53
-#: data/ui/remmina_spinner.glade:29
-msgid "button"
-msgstr "כפתור"
-
-#: data/ui/remmina_key_chooser.glade:82
-msgid "Please press the new key…"
-msgstr "נא ללחוץ על המקש החדש…"
 
 #: data/ui/remmina_main.glade:69
 msgid "New connection profile"
@@ -2481,9 +2366,112 @@ msgstr "תוסף"
 msgid "Last used"
 msgstr "שימוש אחרון"
 
+#: data/ui/remmina_unlock.glade:60
+msgid "Unlock"
+msgstr "שחרור"
+
+#: data/ui/remmina_unlock.glade:94
+msgid "Unlock Remmina"
+msgstr "שחרור Remmina"
+
+#: data/ui/remmina_unlock.glade:128
+msgid "Master password secret key"
+msgstr "מפתח סודי לססמה הראשית"
+
+#: data/ui/remmina_spinner.glade:29 data/ui/remmina_key_chooser.glade:38
+#: data/ui/remmina_key_chooser.glade:53
+msgid "button"
+msgstr "כפתור"
+
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
 msgstr "נא להמתין…"
+
+#: data/ui/remmina_news.glade:108
+msgid ""
+"Send <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
+"\">anonymous</a></b> statistics to remmina.org"
+msgstr ""
+"לשלוח סטטיסטיקה <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"סטטיסטיקת שימוש ב־Remmina"
+"\">אלמונית</a></b> אל remmina.org"
+
+#: data/ui/remmina_news.glade:133
+msgid "Make Remmina the default Remote Desktop Client"
+msgstr "הגדרת Remmina כלקוח בררת המחדל לחיבורי שולחן עבודה מרוחקים"
+
+#: data/ui/remmina_news.glade:142
+msgid "Apply"
+msgstr "החלה"
+
+#: data/ui/remmina_news.glade:166
+msgid "<big>Important settings</big>"
+msgstr "<big>הגדרות חשובות</big>"
+
+#: data/ui/remmina_news.glade:192
+msgid ""
+"<span>\n"
+"<b>You are great for using copylefted libre software, <a href=\"https://"
+"remmina.org/donations/\" title=\"Awesome Remmina donations\">throw in a "
+"donation</a>, to make us happy, and further make the program better.</b>\n"
+"</span>\n"
+msgstr ""
+"<span>\n"
+"<b>כל הכבוד לך על השימוש בתכנה חופשית ללא זכויות יוצרים, <a href=\"https://"
+"remmina.org/donations/\" title=\"תרומות מדהימות ל־Remmina\">נשמח לקבל ממך "
+"תרומה</a>, כדי לשמח אותנו ולתמוך בשיפור התכנית.</b>\n"
+"</span>\n"
+
+#: data/ui/remmina_news.glade:212
+msgid "<big>Contribute</big>"
+msgstr "<big>תרומה</big>"
+
+#: data/ui/remmina_mpc.glade:7
+msgid "Remmina - Multi Password Changer"
+msgstr "Remmina - מחליף ססמאות סדרתי"
+
+#: data/ui/remmina_mpc.glade:24
+msgid "Change"
+msgstr "החלפה"
+
+#: data/ui/remmina_mpc.glade:64
+msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
+msgstr "<span weight='bold' size='larger'>מחליף ססמאות סדרתי</span>"
+
+#: data/ui/remmina_mpc.glade:169
+msgid "Selection criteria"
+msgstr "קריטריונים לבחירה"
+
+#: data/ui/remmina_mpc.glade:198
+msgid "Confirm password"
+msgstr "אישור ססמה"
+
+#: data/ui/remmina_mpc.glade:211
+msgctxt "Multi password changer"
+msgid "Set new password"
+msgstr "הגדרת ססמה חדשה"
+
+#. A column table with multiple check-boxes
+#: data/ui/remmina_mpc.glade:305
+msgctxt "Multi password changer"
+msgid "Select"
+msgstr "בחירה"
+
+#: data/ui/remmina_mpc.glade:317
+msgctxt "Multi password changer table"
+msgid "Name"
+msgstr "שם"
+
+#: data/ui/remmina_mpc.glade:328
+msgctxt "Multi password changer table"
+msgid "Group"
+msgstr "קבוצה"
+
+#: data/ui/remmina_mpc.glade:339
+msgctxt "Multi password changer table"
+msgid "Domain\\Username"
+msgstr "שם מתחם/משתמש"
 
 #: data/ui/remmina_preferences.glade:41
 msgid "Remmina Preferences"
@@ -2988,35 +2976,6 @@ msgstr "לאפשר טקסט מודגש"
 msgid "Terminal"
 msgstr "מסוף"
 
-#: data/ui/remmina_unlock.glade:60
-msgid "Unlock"
-msgstr "שחרור"
-
-#: data/ui/remmina_unlock.glade:94
-msgid "Unlock Remmina"
-msgstr "שחרור Remmina"
-
-#: data/ui/remmina_unlock.glade:128
-msgid "Master password secret key"
-msgstr "מפתח סודי לססמה הראשית"
-
-#: data/ui/remmina_snap_info_dialog.glade:46
-msgid ""
-"It seems that Remmina is running on your system as a SNAP package. To enable "
-"access to some important features, like password saving in your keyring and "
-"RDP printer sharing, please open your software center and give the "
-"appropriate permissions to Remmina. As an alternative you can enter the "
-"following commands in a terminal window:"
-msgstr ""
-"נראה כי התכנית Remmina רצה במערכת שלך כחבילת Snap. כדי להפעיל גישה לכמה "
-"תכונות חשבונות כגון שמירת ססמאות בצרור המפתחות שלך ושיתוף מדפסות דרך RDP נא "
-"לפתוח את מרכז התכנה שלך ולהעניק ל־Remmina את ההרשאות המתאימות. לחלופין ניתן "
-"להקליד את הפקודות הבאות בחלון מסוף:"
-
-#: data/ui/remmina_snap_info_dialog.glade:82
-msgid "Do not show this message again"
-msgstr "לא להציג הודעה זו שוב"
-
 #: data/ui/remmina_string_list.glade:14 data/ui/remmina_string_list.glade:158
 msgid "Add"
 msgstr "הוספה"
@@ -3032,3 +2991,15 @@ msgstr "העלאה למעלה"
 #: data/ui/remmina_string_list.glade:32 data/ui/remmina_string_list.glade:95
 msgid "Move down"
 msgstr "הורדה למטה"
+
+#: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
+msgid "_Remove"
+msgstr "ה_סרה"
+
+#: data/ui/remmina_key_chooser.glade:23
+msgid "Choose a new key"
+msgstr "נא לבחור מפתח חדש"
+
+#: data/ui/remmina_key_chooser.glade:82
+msgid "Please press the new key…"
+msgstr "נא ללחוץ על המקש החדש…"
