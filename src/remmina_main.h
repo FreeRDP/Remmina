@@ -105,6 +105,7 @@ void remmina_main_save_before_destroy(void);
 
 void remmina_main_show_warning_dialog(const gchar *message);
 void remmina_main_on_action_application_about(GSimpleAction *action, GVariant *param, gpointer data);
+void remmina_main_on_action_application_news(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_application_default(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_application_mpchange(GSimpleAction *action, GVariant *param, gpointer data);
 void remmina_main_on_action_application_plugins(GSimpleAction *action, GVariant *param, gpointer data);

@@ -51,5 +51,6 @@ typedef struct _RemminaNewsDialog {
 
 G_BEGIN_DECLS
 void rmnews_schedule();
+void rmnews_show_news();
 void rmnews_get_url(const char *url);
 G_END_DECLS
