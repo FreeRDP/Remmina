@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-12-12 15:22+0000\n"
-"PO-Revision-Date: 2019-12-12 15:19+0000\n"
+"PO-Revision-Date: 2019-12-13 13:04+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/remmina/remmina/"
 "da/>\n"
@@ -843,19 +843,18 @@ msgid "Could not open the folder  \"%s\". %s"
 msgstr "Kunne ikke åbne mappen \"%s\". %s"
 
 #: src/remmina_sftp_client.c:688
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from the folder. %s"
-msgstr "Kunne ikke åbne kanal: %s"
+msgstr "Kunne ikke læse fra mappen. %s"
 
 #: src/remmina_sftp_client.c:795
-#, fuzzy
 msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "Er du sikker på, at du vil slette '%s'?"
+msgstr "Er du sikker på, at du vil annullere den igangværende filoverførsel?"
 
 #: src/remmina_sftp_client.c:829
-#, fuzzy, c-format
+#, c-format
 msgid "Could not delete \"%s\". %s"
-msgstr "Kunne ikke åbne kanal: %s"
+msgstr "Kunne ikke slette \"%s\". %s"
 
 #: src/remmina_sftp_client.c:910
 msgid "The file exists already"
@@ -966,9 +965,9 @@ msgstr "SSH-nøglefil ikke valgt."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:236
-#, fuzzy, c-format
+#, c-format
 msgid "Public SSH key cannot be imported. %s"
-msgstr "Offentlig nøgle for SSH kan ikke importeres: %s"
+msgstr "Offentlig SSH-nøgle kan ikke importeres. %s"
 
 #: src/remmina_ssh.c:279 src/remmina_ssh.c:587 src/remmina_ssh.c:606
 #: plugins/nx/nx_plugin.c:202
@@ -1009,15 +1008,15 @@ msgstr "Kunne ikke hente serverens offentlige SSH-nøgle. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:499
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch public SSH key. %s"
-msgstr "Kunne ikke oprette forbindelse til SSH-tunnel: %s"
+msgstr "Kunne ikke hente offentlig SSH-nøgle. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:507
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch checksum for public SSH key. %s"
-msgstr "Kunne ikke tjekke listen over kendte SSH-værter: %s"
+msgstr "Kunne ikke hente checksum til offentlig SSH-nøgle. %s"
 
 #: src/remmina_ssh.c:520
 msgid "The server is unknown. The public key fingerprint is:"
@@ -1028,22 +1027,21 @@ msgid "Do you trust the new public key?"
 msgstr "Stoler du på den nye offentlige nøgle?"
 
 #: src/remmina_ssh.c:525
-#, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means either you are "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
-"ADVARSEL: Serveren har ændret sin offentlige nøgle. Det betyder enten at du "
+"Advarsel: Serveren har ændret sin offentlige nøgle. Det betyder enten at du "
 "er under angreb,\n"
 "eller at administratoren har ændret nøglen. Det nye fingeraftryk til den "
 "offentlige nøgle er:"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:550
-#, fuzzy, c-format
+#, c-format
 msgid "Could not check list of known SSH hosts. %s"
-msgstr "Kunne ikke tjekke listen over kendte SSH-værter: %s"
+msgstr "Kunne ikke tjekke listen over kendte SSH-værter. %s"
 
 #: src/remmina_ssh.c:557
 msgid "SSH password"
@@ -1059,27 +1057,27 @@ msgstr "SSH-autentifikation"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:747
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SSH session. %s"
-msgstr "Kunne ikke starte SSH-session: %s"
+msgstr "Kunne ikke starte SSH-session. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1106 src/remmina_ssh.c:1168
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel. %s"
-msgstr "Kunne ikke oprette kanal: %s"
+msgstr "Kunne ikke oprette kanal. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1117
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to SSH tunnel. %s"
-msgstr "Kunne ikke oprette forbindelse til SSH-tunnel: %s"
+msgstr "Kunne ikke oprette forbindelse til SSH-tunnel. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1183 src/remmina_ssh.c:1781
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel. %s"
-msgstr "Kunne ikke åbne kanal: %s"
+msgstr "Kunne ikke åbne kanal. %s"
 
 #: src/remmina_ssh.c:1189
 #, c-format
@@ -1088,9 +1086,9 @@ msgstr "Kunne ikke køre %s på SSH-server, %%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1227 src/remmina_ssh.c:1248 src/remmina_ssh.c:1257
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request port forwarding. %s"
-msgstr "Kunne ikke anmode om viderestilling af port: %s"
+msgstr "Kunne ikke anmode om viderestilling af port. %s"
 
 #: src/remmina_ssh.c:1292
 msgid "The server did not respond."
@@ -1103,33 +1101,33 @@ msgstr "Kan ikke oprette forbindelse til porten %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1385
-#, fuzzy, c-format
+#, c-format
 msgid "Could not write to SSH channel. %s"
-msgstr "Kunne ikke oprette kanal: %s"
+msgstr "Kunne ikke skrive til SSH-kanal. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1392
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket. %s"
-msgstr "Kunne ikke læse fra tunnellyttesokkel: %s"
+msgstr "Kunne ikke læse fra tunnellyttesokkel. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1412
-#, fuzzy, c-format
+#, c-format
 msgid "Could not poll SSH channel. %s"
-msgstr "Kunne ikke åbne kanal: %s"
+msgstr "Kunne ikke poll SSH-kanal. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1419
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
-msgstr "Kunne ikke køre ssh_channel_read_nonblocking(): %s"
+msgstr "Kunne ikke læse SSH-kanal på en måde som ikke blokerer. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1438
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket. %s"
-msgstr "Kunne ikke sende data til tunnellyttesokkel: %s"
+msgstr "Kunne ikke sende data til tunnellyttesokkel. %s"
 
 #: src/remmina_ssh.c:1517
 msgid "Assign a destination port."
@@ -1159,21 +1157,21 @@ msgstr "Initiering af pthread mislykkedes."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1691
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create SFTP session. %s"
-msgstr "Kunne ikke oprette SFTP-session: %s"
+msgstr "Kunne ikke oprette SFTP-session. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1696
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SFTP session. %s"
-msgstr "Kunne ikke starte SSH-session: %s"
+msgstr "Kunne ikke starte SFTP-session. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1811
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request shell. %s"
-msgstr "Kunne ikke anmode skallen: %s"
+msgstr "Kunne ikke anmode skallen. %s"
 
 #: src/remmina_ssh.c:1904
 msgid "Could not create PTY device."
@@ -1292,14 +1290,12 @@ msgid "SSH Authentication"
 msgstr "SSH-autentifikation"
 
 #: src/remmina_file_editor.c:920
-#, fuzzy
 msgid "SSH agent (automatic)"
 msgstr "SSH-agent (automatisk)"
 
 #: src/remmina_file_editor.c:994
-#, fuzzy
 msgid "Turn on \"Autostart\" for this profile"
-msgstr "Aktivér automatisk start for denne profil"
+msgstr "Aktivér \"Automatisk start\" for denne profil"
 
 #: src/remmina_file_editor.c:1002
 msgid "Basic"
@@ -1349,19 +1345,17 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "Brug '%s' som afgrænser for undergruppe"
 
 #: src/remmina_file_editor.c:1486
-#, fuzzy
 msgid "Pre-command"
-msgstr "Prækommando"
+msgstr "Kommando før"
 
 #: src/remmina_file_editor.c:1504
-#, fuzzy
 msgid "Post-command"
-msgstr "Efterkommando"
+msgstr "Kommando efter"
 
 #: src/remmina_file_editor.c:1569 src/remmina_file_editor.c:1587
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the file \"%s\"."
-msgstr "Kunne ikke åbne kanal: %s"
+msgstr "Kunne ikke finde filen \"%s\"."
 
 #: src/remmina_chat_window.c:178
 #, c-format
@@ -1385,12 +1379,11 @@ msgid "You did not set any command to be executed"
 msgstr "Du satte ikke nogen kommando til at blive udført"
 
 #: plugins/exec/exec_plugin.c:204
-#, fuzzy
 msgid ""
 "Warning: Running a command synchronously may cause Remmina not to respond.\n"
 "Do you really want to continue?"
 msgstr ""
-"ADVARSEL! Hvis en kommando køres synkront, så kan det få Remmina til at "
+"Advarsel! Hvis en kommando køres synkront, så kan det få Remmina til at "
 "hænge.\n"
 "Vil du virkelig fortsætte?"
 
@@ -1459,9 +1452,8 @@ msgid "Turn on Web Inspector"
 msgstr "Aktivér webinspektør"
 
 #: plugins/www/www_config.h:43
-#, fuzzy
 msgid "Remmina web-browser plugin"
-msgstr "Remmina-browserplugin"
+msgstr "Remmina-webbrowserplugin"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
 msgid "Secure password storing in the GNOME keyring"
@@ -1503,7 +1495,6 @@ msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "VNC-serveren anmodede om en ukendt autentificeringsmetode. %s"
 
 #: plugins/vnc/vnc_plugin.c:921
-#, fuzzy
 msgid "Please retry after turning on encryption for this profile."
 msgstr "Prøv venligst igen når kryptering er blevet aktiveret på denne profil."
 
@@ -1618,18 +1609,17 @@ msgid "Enter SPICE password"
 msgstr "Indtast SPICE-adgangskode"
 
 #: plugins/spice/spice_plugin.c:274
-#, fuzzy, c-format
+#, c-format
 msgid "Disconnected from the SPICE server \"%s\"."
-msgstr "Forbindelsen til SPICE-serveren %s blev afbrudt."
+msgstr "Forbindelsen til SPICE-serveren \"%s\" blev afbrudt."
 
 #: plugins/spice/spice_plugin.c:290
 msgid "TLS connection error."
 msgstr "Fejl ved TLS-forbindelse."
 
 #: plugins/spice/spice_plugin.c:296
-#, fuzzy
 msgid "Connection to the SPICE server dropped."
-msgstr "Forbindelse til SPICE-server mislykkedes."
+msgstr "Forbindelsen til SPICE-serveren blev opgivet."
 
 #: plugins/spice/spice_plugin.c:438
 msgid "Use TLS encryption"
@@ -1686,10 +1676,10 @@ msgid "Run out of available local X display number."
 msgstr "Løb tør for tilgængelige tal til lokalt X-display."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:608
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
-msgstr "Protokollen %s er utilgængelig da GtkSocket kun virker under X.Org"
+msgstr "Protokollen \"%s\" er utilgængelig da GtkSocket kun virker under X.Org."
 
 #: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
@@ -1700,22 +1690,18 @@ msgid "Grayscale"
 msgstr "Gråtone"
 
 #: plugins/xdmcp/xdmcp_plugin.c:350
-#, fuzzy
 msgid "256 colours"
 msgstr "256 farver"
 
 #: plugins/xdmcp/xdmcp_plugin.c:351
-#, fuzzy
 msgid "High colour (16 bit)"
 msgstr "Mange farver (16 bit)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:352
-#, fuzzy
 msgid "True colour (24 bit)"
 msgstr "Ægte farver (24 bit)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1947
-#, fuzzy
 msgid "Colour depth"
 msgstr "Farvedybde"
 
@@ -1748,7 +1734,6 @@ msgid "Detached window"
 msgstr "Løsriv vindue"
 
 #: plugins/st/st_plugin_config.h:43
-#, fuzzy
 msgid "Remmina simple terminal"
 msgstr "Remmina simpel terminal"
 
@@ -1824,66 +1809,66 @@ msgstr ""
 "Brugeren skal skifte adgangskode inden der oprettes forbindelse."
 
 #: plugins/rdp/rdp_plugin.c:1551
-#, fuzzy, c-format
+#, c-format
 msgid "Lost connection to the RDP server \"%s\"."
-msgstr "Kan ikke oprette forbindelse til RDP-serveren %s."
+msgstr "Mistede forbindelse til RDP-serveren \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1554
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the address for the RDP server \"%s\"."
-msgstr "Kan ikke finde adressen for RDP-serveren %s."
+msgstr "Kunne ikke finde adressen til RDP-serveren \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1558
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
-"Fejl ved oprettelse af forbindelse til RDP-serveren %s. TLS-forbindelse "
-"mislykkedes. Tjek at klienten og serveren understøtter den samme TLS-version."
+"Kunne ikke oprette forbindelse til RDP-serveren \"%s\" via TLS. Tjek at "
+"klienten og serveren understøtter den samme TLS-version."
 
 #: plugins/rdp/rdp_plugin.c:1561
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to establish a connection to the RDP server \"%s\"."
-msgstr "Kan ikke etablere en forbindelse til RDP-serveren %s."
+msgstr "Kan ikke etablere en forbindelse til RDP-serveren \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1569
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the RDP server \"%s\"."
-msgstr "Kan ikke oprette forbindelse til RDP-serveren %s."
+msgstr "Kan ikke oprette forbindelse til RDP-serveren \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1572
-#, fuzzy
 msgid "Could not start libfreerdp-gdi."
-msgstr "Kunne ikke starte libfreerdp-gdi"
+msgstr "Kunne ikke starte libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:1575
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
 "does not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
-"Du anmodede om en H.264 GFX-tilstand for serveren %s, men din libfreerdp "
+"Du anmodede om en H.264 GFX-tilstand til serveren \"%s\", men din libfreerdp "
 "understøtter ikke H.264. Brug venligst en farvedybdeindstilling som ikke er "
 "AVC."
 
 #: plugins/rdp/rdp_plugin.c:1582
-#, fuzzy, c-format
+#, c-format
 msgid "The \"%s\" server refused the connection."
-msgstr "Serveren %s nægtede forbindelsen."
+msgstr "Serveren \"%s\" nægtede forbindelsen."
 
 #: plugins/rdp/rdp_plugin.c:1587
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\"\\%s access due to "
 "policy."
 msgstr ""
-"Fjernskrivebordsgatewayen %s nægtede brugeren %s\\%s tilgang pga. regler."
+"Fjernskrivebordsgatewayen \"%s\" nægtede brugeren \"%s\"\\%s adgang pga. "
+"regler."
 
 #: plugins/rdp/rdp_plugin.c:1597
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the \"%s\" RDP server."
-msgstr "Kan ikke oprette forbindelse til RDP-serveren %s."
+msgstr "Kan ikke oprette forbindelse til RDP-serveren \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1879
 msgid "GFX AVC444 (32 bpp)"
@@ -1902,27 +1887,22 @@ msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1883
-#, fuzzy
 msgid "True colour (32 bpp)"
 msgstr "Ægte farver (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1884
-#, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "Ægte farver (24 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1885
-#, fuzzy
 msgid "High colour (16 bpp)"
 msgstr "Mange farver (16 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1886
-#, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "Mange farver (15 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1887
-#, fuzzy
 msgid "256 colours (8 bpp)"
 msgstr "256 farver (8 bpp)"
 
@@ -2040,7 +2020,7 @@ msgstr "Del serielle porte"
 
 #: plugins/rdp/rdp_plugin.c:1984
 msgid "(SELinux) permissive mode for serial ports"
-msgstr ""
+msgstr "(SELinux) eftergivende tilstand til serielle porte"
 
 #: plugins/rdp/rdp_plugin.c:1985
 msgid "Share parallel ports"
@@ -2192,9 +2172,8 @@ msgid "Reconnection attempt %d of %d…"
 msgstr "Genoprettelsesforsøg %d af %d …"
 
 #: plugins/nx/nx_session_manager.c:98
-#, fuzzy
 msgid "Terminating…"
-msgstr "Afslutter"
+msgstr "Afslutter …"
 
 #: plugins/nx/nx_session_manager.c:143
 #, c-format
@@ -2238,18 +2217,17 @@ msgid "NX - NX Technology"
 msgstr "NX - NX-teknologi"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
-#, fuzzy
 msgid "Secure passwords storage in KWallet"
-msgstr "Sikre adgangskoder som er gemt i KDE-tegnebogen"
+msgstr "Adgangskoder gemmes sikkert i KWallet"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
 msgstr ""
-"%s vil dele hans/hendes skrivebord.\n"
-"Vil du acceptere denne invitation?"
+"%s vil dele deres skrivebord.\n"
+"Vil du acceptere invitationen?"
 
 #: plugins/telepathy/telepathy_channel_handler.c:240
 msgid "Desktop sharing invitation"
@@ -2302,9 +2280,9 @@ msgid "Toggle view"
 msgstr "Visning til/fra"
 
 #: data/ui/remmina_main.glade:168
-#, fuzzy
 msgid "Search string or server name/IP address for \"\\Quick Connect\\\""
-msgstr "søg efter streng eller servernavn/IP-adresse for hurtig forbindelse"
+msgstr ""
+"Søg efter streng eller servernavn/IP-adresse til \"\\Hurtig forbindelse\\\""
 
 #: data/ui/remmina_main.glade:172 data/ui/remmina_main.glade:174
 msgid "Server name or IP address"
@@ -2598,7 +2576,6 @@ msgid "Profile filename template"
 msgstr "Skabelon til profilers filnavn"
 
 #: data/ui/remmina_preferences.glade:495
-#, fuzzy
 msgid ""
 "%G Group name (slash will be converted to - automatically)\n"
 "%P Protocol name\n"
@@ -2800,7 +2777,7 @@ msgstr "Sekunder mellem hver keepalive-sonde."
 msgid ""
 "Number of keepalive probes sent via TCP connection before it is dropped."
 msgstr ""
-"Antal keepalive-sonder som sendes via TCP-forbindelse inden den droppes."
+"Antal keepalive-sonder som sendes via TCP-forbindelse inden den opgives."
 
 #. http://man7.org/linux/man-pages/man7/tcp.7.html
 #: data/ui/remmina_preferences.glade:1392
