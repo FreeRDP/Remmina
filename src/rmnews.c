@@ -213,14 +213,13 @@ void rmnews_show_news(GtkWindow *parent)
 	/* Connect signals */
 	gtk_builder_connect_signals(rmnews_news_dialog->builder, NULL);
 
-	if (parent)
-		gtk_window_set_transient_for(GTK_WINDOW(rmnews_news_dialog->dialog), parent);
-
-	gtk_window_set_modal (GTK_WINDOW(rmnews_news_dialog->dialog), TRUE);
-
 	/* Show the non-modal news dialog */
 	gtk_widget_show_all(GTK_WIDGET(rmnews_news_dialog->dialog));
 	gtk_window_present(GTK_WINDOW(rmnews_news_dialog->dialog));
+	if (parent)
+		gtk_window_set_transient_for(GTK_WINDOW(rmnews_news_dialog->dialog), parent);
+	gtk_window_set_modal (GTK_WINDOW(rmnews_news_dialog->dialog), TRUE);
+
 
 }
 
