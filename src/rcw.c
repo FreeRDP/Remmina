@@ -3426,6 +3426,9 @@ RemminaConnectionWindow *rcw_create_fullscreen(GtkWindow *old, gint view_mode)
 	}
 
 	gtk_widget_show(GTK_WIDGET(cnnwin));
+	GtkWindowGroup * wingrp = gtk_window_group_new ();
+	gtk_window_group_add_window (wingrp, GTK_WINDOW(cnnwin));
+	gtk_window_set_transient_for(GTK_WINDOW(cnnwin), NULL);
 
 	return cnnwin;
 }
