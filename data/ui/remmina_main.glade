@@ -39,6 +39,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     <property name="can_focus">False</property>
     <property name="icon_name">document-new-symbolic</property>
   </object>
+  <object class="GtkImage" id="image_news">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-info</property>
+  </object>
   <object class="GtkImage" id="view_toggle_icon">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -84,7 +89,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
             <signal name="toggled" handler="remmina_main_on_search_toggle" swapped="no"/>
           </object>
           <packing>
-            <property name="position">2</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="button_news">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="action_name">main.news</property>
+            <property name="image">image_news</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="position">3</property>
           </packing>
         </child>
         <child>
@@ -477,6 +495,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
                         <property name="label" translatable="yes">_Quit</property>
                         <property name="use_underline">True</property>
                         <accelerator key="q" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="menuitem_help_news">
+                        <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="action_name">main.news</property>
                       </object>
                     </child>
                   </object>

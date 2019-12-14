@@ -174,7 +174,7 @@ static gboolean rmnews_dialog_deleted(GtkButton *btn, gpointer user_data)
 	return FALSE;
 }
 
-static void rmnews_show_news(GtkWindow *parent)
+void rmnews_show_news(GtkWindow *parent)
 {
 	TRACE_CALL(__func__);
 
@@ -213,15 +213,15 @@ static void rmnews_show_news(GtkWindow *parent)
 	/* Connect signals */
 	gtk_builder_connect_signals(rmnews_news_dialog->builder, NULL);
 
-	if (parent)
-		gtk_window_set_transient_for(GTK_WINDOW(rmnews_news_dialog->dialog), parent);
-
 	/* Show the non-modal news dialog */
 	gtk_widget_show_all(GTK_WIDGET(rmnews_news_dialog->dialog));
 	gtk_window_present(GTK_WINDOW(rmnews_news_dialog->dialog));
+	if (parent)
+		gtk_window_set_transient_for(GTK_WINDOW(rmnews_news_dialog->dialog), parent);
+	gtk_window_set_modal (GTK_WINDOW(rmnews_news_dialog->dialog), TRUE);
+
 
 }
-
 
 static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer data)
 {
@@ -423,6 +423,13 @@ void rmnews_get_news()
 		output_file_path = g_build_path("/", cachedir, "latest_news.md", NULL);
 
 	g_info("Output file set to %s", output_file_path);
+
+	if (remmina_pref.periodic_rmnews_last_get == 0 &&
+			remmina_pref.periodic_rmnews_get_count == 0) {
+		g_file_set_contents (output_file_path, "", 0, NULL);
+		/* Just a symolic date */
+		remmina_pref.periodic_rmnews_last_get = 191469343000;
+	}
 
 	fd = g_open (output_file_path, O_RDWR|O_CREAT, S_IRUSR|S_IWUSR);
 	g_debug ("Returned %d while creating %s", fd, output_file_path);

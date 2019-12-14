@@ -3219,6 +3219,9 @@ static RemminaConnectionWindow *rcw_create_scrolled(gint width, gint height, gbo
 	 * call unrealize() and will destroy a GtkSocket */
 	gtk_widget_show(grid);
 	gtk_widget_show(GTK_WIDGET(cnnwin));
+	GtkWindowGroup * wingrp = gtk_window_group_new ();
+	gtk_window_group_add_window (wingrp, GTK_WINDOW(cnnwin));
+	gtk_window_set_transient_for(GTK_WINDOW(cnnwin), NULL);
 
 	if (maximize)
 		gtk_window_maximize(GTK_WINDOW(cnnwin));
@@ -3423,6 +3426,9 @@ RemminaConnectionWindow *rcw_create_fullscreen(GtkWindow *old, gint view_mode)
 	}
 
 	gtk_widget_show(GTK_WIDGET(cnnwin));
+	GtkWindowGroup * wingrp = gtk_window_group_new ();
+	gtk_window_group_add_window (wingrp, GTK_WINDOW(cnnwin));
+	gtk_window_set_transient_for(GTK_WINDOW(cnnwin), NULL);
 
 	return cnnwin;
 }

@@ -8,9 +8,10 @@
     <property name="vexpand">True</property>
     <property name="default_width">640</property>
     <property name="default_height">480</property>
+    <property name="destroy_with_parent">True</property>
     <property name="type_hint">dialog</property>
     <property name="urgency_hint">True</property>
-    <child>
+    <child type="titlebar">
       <placeholder/>
     </child>
     <child internal-child="vbox">
@@ -59,15 +60,14 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                        <object class="GtkLabel" id="rmnews_label">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="use_markup">True</property>
-                            <property name="wrap">True</property>
-                            <property name="wrap_mode">word-char</property>
-                            <property name="selectable">True</property>
-                        </object>
-                        <placeholder/>
+                      <object class="GtkLabel" id="rmnews_label">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_markup">True</property>
+                        <property name="wrap">True</property>
+                        <property name="wrap_mode">word-char</property>
+                        <property name="selectable">True</property>
+                      </object>
                     </child>
                   </object>
                 </child>
