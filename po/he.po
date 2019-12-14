@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-12-12 15:22+0000\n"
-"PO-Revision-Date: 2019-12-12 21:03+0000\n"
+"PO-Revision-Date: 2019-12-14 21:05+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/remmina/remmina/"
 "he/>\n"
@@ -79,7 +79,7 @@ msgstr "ססמה"
 
 #: src/remmina_protocol_widget.c:1357
 msgid "Type in username and password for SSH."
-msgstr ""
+msgstr "נא להקליד שם משתמש וססמה ל־SSH."
 
 #: src/remmina_protocol_widget.c:1413
 msgid "Certificate details:"
@@ -91,7 +91,7 @@ msgstr "נושא:"
 
 #: src/remmina_protocol_widget.c:1415 src/remmina_protocol_widget.c:1436
 msgid "Issuer:"
-msgstr ""
+msgstr "גוף מנפיק:"
 
 #: src/remmina_protocol_widget.c:1416
 msgid "Fingerprint:"
@@ -152,22 +152,21 @@ msgstr "הגדרת הרזולוציות הזמינות"
 
 #: src/remmina_pref_dialog.c:132
 msgid "Recent lists cleared."
-msgstr ""
+msgstr "רשימת האחרונים נמחקה."
 
 #: src/remmina_pref_dialog.c:143 src/rcw.c:1816
 #: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
 msgid "Keystrokes"
-msgstr ""
+msgstr "לחיצות מקשים"
 
 #: src/remmina_pref_dialog.c:143
-#, fuzzy
 msgid "Configure the keystrokes"
-msgstr "הגדרת הרזולוציות הזמינות"
+msgstr "הגדרת לחיצות המקשים"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:444
 msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr ""
+msgstr "נדרש libsodium >= 1.9.0 כדי להשתמש בססמה ראשית"
 
 #: src/remmina_ssh_plugin.c:481
 #, c-format
@@ -240,9 +239,8 @@ msgstr "לבחור ה_כול"
 #: plugins/www/www_plugin.c:792 plugins/vnc/vnc_plugin.c:1832
 #: plugins/vnc/vnc_plugin.c:1852 plugins/rdp/rdp_plugin.c:1943
 #: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:155
-#, fuzzy
 msgid "Username"
-msgstr "שם מתחם/משתמש"
+msgstr "שם משתמש"
 
 #: src/remmina_ssh_plugin.c:1058 plugins/vnc/vnc_plugin.c:1833
 #: plugins/vnc/vnc_plugin.c:1853 plugins/spice/spice_plugin.c:437
@@ -251,21 +249,18 @@ msgid "User password"
 msgstr "ססמת משתמש"
 
 #: src/remmina_ssh_plugin.c:1059 src/remmina_sftp_plugin.c:351
-#, fuzzy
 msgid "Authentication type"
-msgstr "אימות SSH"
+msgstr "סוג אימות"
 
 #: src/remmina_ssh_plugin.c:1060 src/remmina_sftp_plugin.c:352
 #: src/remmina_file_editor.c:356 src/remmina_file_editor.c:363
 #: plugins/nx/nx_plugin.c:720
-#, fuzzy
 msgid "Identity file"
-msgstr "קובץ זהות SSH"
+msgstr "קובץ זהות"
 
 #: src/remmina_ssh_plugin.c:1061 src/remmina_sftp_plugin.c:353
-#, fuzzy
 msgid "Password to unlock private key"
-msgstr "ססמה למפתח SSH פרטי"
+msgstr "ססמה לשחרור מפתח פרטי"
 
 #: src/remmina_ssh_plugin.c:1062 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:1972 plugins/nx/nx_plugin.c:725
@@ -309,13 +304,8 @@ msgid "Log SSH session when exiting Remmina"
 msgstr "תיעוד חיבור ה־SSH בטרם היציאה מ־Remmina"
 
 #: src/remmina_ssh_plugin.c:1088
-#, fuzzy
 msgid "Audible terminal bell"
-msgstr ""
-"#-#-#-#-#  catalog.po (remmina)  #-#-#-#-#\n"
-"הפעלת צלצול למסוף\n"
-"#-#-#-#-#  catalog.po (remmina)  #-#-#-#-#\n"
-"צלצול למסוף"
+msgstr "צלצול למסוף"
 
 #: src/remmina_ssh_plugin.c:1089
 msgid "SSH compression"
@@ -914,12 +904,11 @@ msgstr "לא"
 #: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1945
 #: data/ui/remmina_mpc.glade:141
 msgid "Domain"
-msgstr ""
+msgstr "שם מתחם"
 
 #: src/remmina_message_panel.c:415
-#, fuzzy
 msgid "Save password"
-msgstr "ססמה ראשית"
+msgstr "שמירת הססמה"
 
 #: src/remmina_message_panel.c:508
 #, fuzzy
@@ -1050,17 +1039,14 @@ msgid "Could not check list of known SSH hosts. %s"
 msgstr "לא ניתן לבדוק את רשימת מארחי ה־SSH המוכרים. %s"
 
 #: src/remmina_ssh.c:557
-#, fuzzy
 msgid "SSH password"
-msgstr "ססמת משתמש"
+msgstr "ססמת SSH"
 
 #: src/remmina_ssh.c:567
-#, fuzzy
 msgid "SSH Kerberos/GSSAPI"
-msgstr "Kerberos (GSSAPI)"
+msgstr "SSH Kerberos/GSSAPI"
 
 #: src/remmina_ssh.c:628
-#, fuzzy
 msgid "SSH authentication"
 msgstr "אימות SSH"
 
@@ -1101,7 +1087,7 @@ msgstr "לא ניתן לבקש הפניית פתחות. %s"
 
 #: src/remmina_ssh.c:1292
 msgid "The server did not respond."
-msgstr ""
+msgstr "השרת לא הגיב."
 
 #: src/remmina_ssh.c:1335
 #, fuzzy, c-format
