@@ -1190,7 +1190,7 @@ static gboolean remmina_protocol_widget_dialog_mt_setup(gpointer user_data)
 			remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_DOMAIN, d->default_domain);
 		remmina_message_panel_field_set_string(mp, REMMINA_MESSAGE_PANEL_PASSWORD, d->default_password);
 		if (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD)
-			remmina_message_panel_field_set_switch(mp, REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD, (d->pflags & REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD) ? TRUE : FALSE);
+			remmina_message_panel_field_set_switch(mp, REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD, (d->default_password == NULL || d->default_password[0] == 0) ? FALSE: TRUE);
 	} else if (d->dtype == RPWDT_QUESTIONYESNO) {
 		remmina_message_panel_setup_question(mp, d->title, authpanel_mt_cb, d);
 	} else if (d->dtype == RPWDT_AUTHX509) {

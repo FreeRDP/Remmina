@@ -589,19 +589,17 @@ static BOOL remmina_rdp_authenticate(freerdp *instance, char **username, char **
 		s_domain = remmina_plugin_service->protocol_plugin_init_get_domain(gp);
 		if (s_domain) rfi->settings->Domain = strdup(s_domain);
 
+		remmina_plugin_service->file_set_string(remminafile, "username", s_username);
+		remmina_plugin_service->file_set_string(remminafile, "domain", s_domain);
+
 		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
 		if (save) {
-			// User has requested to save credentials. We put all the new cretentials
-			// into remminafile->settings. They will be saved later, on successful connection, by
+			// User has requested to save credentials. We put the password
+			// into remminafile->settings. It will be saved later, on successful connection, by
 			// rcw.c
-
-			remmina_plugin_service->file_set_string(remminafile, "username", s_username);
 			remmina_plugin_service->file_set_string(remminafile, "password", s_password);
-			remmina_plugin_service->file_set_string(remminafile, "domain", s_domain);
 		} else {
-			remmina_plugin_service->file_set_string(remminafile, "username", NULL);
 			remmina_plugin_service->file_set_string(remminafile, "password", NULL);
-			remmina_plugin_service->file_set_string(remminafile, "domain", NULL);
 		}
 
 
@@ -654,19 +652,14 @@ static BOOL remmina_rdp_gw_authenticate(freerdp *instance, char **username, char
 		s_domain = remmina_plugin_service->protocol_plugin_init_get_domain(gp);
 		if (s_domain) rfi->settings->GatewayDomain = strdup(s_domain);
 
+		remmina_plugin_service->file_set_string(remminafile, "gateway_username", s_username);
+		remmina_plugin_service->file_set_string(remminafile, "gateway_domain", s_domain);
+
 		save = remmina_plugin_service->protocol_plugin_init_get_savepassword(gp);
 		if (save) {
-			// User has requested to save credentials. We put all the new cretentials
-			// into remminafile->settings. They will be saved later, on successful connection, by
-			// rcw.c
-
-			remmina_plugin_service->file_set_string(remminafile, "gateway_username", s_username);
 			remmina_plugin_service->file_set_string(remminafile, "gateway_password", s_password);
-			remmina_plugin_service->file_set_string(remminafile, "gateway_domain", s_domain);
 		} else {
-			remmina_plugin_service->file_set_string(remminafile, "gateway_username", NULL);
 			remmina_plugin_service->file_set_string(remminafile, "gateway_password", NULL);
-			remmina_plugin_service->file_set_string(remminafile, "gateway_domain", NULL);
 		}
 
 		if (s_username) g_free(s_username);
