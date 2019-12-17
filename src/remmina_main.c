@@ -1265,12 +1265,6 @@ static void remmina_main_init(void)
 	gtk_tree_view_set_search_entry(remminamain->tree_files_list, GTK_ENTRY(remminamain->entry_quick_connect_server));
 	/* Load the files list */
 	remmina_main_load_files();
-	/* Load the preferences */
-	if (remmina_pref.view_file_mode) {
-		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-		gtk_toggle_action_set_active(remminamain->action_view_mode_tree, TRUE);
-		G_GNUC_END_IGNORE_DEPRECATIONS
-	}
 
 	/* Drag-n-drop support */
 	gtk_drag_dest_set(GTK_WIDGET(remminamain->window), GTK_DEST_DEFAULT_ALL, remmina_drop_types, 1, GDK_ACTION_COPY);
