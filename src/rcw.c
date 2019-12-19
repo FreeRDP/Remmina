@@ -83,7 +83,7 @@ G_DEFINE_TYPE(RemminaConnectionWindow, rcw, GTK_TYPE_WINDOW)
 
 struct _RemminaConnectionWindowPriv {
 	GtkNotebook *					notebook;
-	guint						switch_page_handler;
+	guint						switch_page_finalsel_handler;
 	GtkWidget *					floating_toolbar_widget;
 	GtkWidget *					overlay;
 	GtkWidget *					revealer;
@@ -638,9 +638,9 @@ static void rcw_destroy(GtkWidget *widget, gpointer data)
 		g_source_remove(priv->hidetb_timer);
 		priv->hidetb_timer = 0;
 	}
-	if (priv->switch_page_handler) {
-		g_source_remove(priv->switch_page_handler);
-		priv->switch_page_handler = 0;
+	if (priv->switch_page_finalsel_handler) {
+		g_source_remove(priv->switch_page_finalsel_handler);
+		priv->switch_page_finalsel_handler = 0;
 	}
 
 	cnnwin->priv = NULL;
@@ -3018,7 +3018,7 @@ static void rcw_update_notebook(RemminaConnectionWindow *cnnwin)
 	}
 }
 
-gboolean rcw_on_switch_page_real(gpointer user_data)
+static gboolean rcw_on_switch_page_finalsel(gpointer user_data)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionWindowPriv *priv;
@@ -3045,7 +3045,7 @@ gboolean rcw_on_switch_page_real(gpointer user_data)
 		if (priv->view_mode != SCROLLED_WINDOW_MODE)
 			rco_check_resize(cnnobj);
 	}
-	priv->switch_page_handler = 0;
+	priv->switch_page_finalsel_handler = 0;
 	return FALSE;
 }
 
@@ -3057,8 +3057,9 @@ static void rcw_on_switch_page(GtkNotebook *notebook, GtkWidget *newpage, guint 
 	RemminaConnectionObject *cnnobj_newpage;
 
 	cnnobj_newpage = g_object_get_data(G_OBJECT(newpage), "cnnobj");
-	if (!priv->switch_page_handler)
-		priv->switch_page_handler = g_idle_add(rcw_on_switch_page_real, cnnobj_newpage);
+	if (priv->switch_page_finalsel_handler)
+		g_source_remove(priv->switch_page_finalsel_handler);
+	priv->switch_page_finalsel_handler = g_idle_add(rcw_on_switch_page_finalsel, cnnobj_newpage);
 }
 
 static void rcw_on_page_added(GtkNotebook *notebook, GtkWidget *child, guint page_num,
