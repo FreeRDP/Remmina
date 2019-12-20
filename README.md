@@ -1,3 +1,5 @@
+![](res/santahat.png)
+
 [![](https://img.shields.io/liberapay/receives/Remmina.svg?logo=liberapay)](https://liberapay.com/Remmina/donate)
 [![Build Status](https://gitlab.com/Remmina/Remmina/badges/master/build.svg)](https://gitlab.com/Remmina/Remmina/pipelines)
 [![CodeTriage](https://www.codetriage.com/freerdp/remmina/badges/users.svg)](https://www.codetriage.com/freerdp/remmina)
