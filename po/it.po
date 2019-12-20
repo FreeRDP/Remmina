@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-12-19 21:24+0000\n"
-"PO-Revision-Date: 2019-12-12 15:19+0000\n"
+"PO-Revision-Date: 2019-12-20 12:54+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
 "it/>\n"
@@ -55,15 +55,15 @@ msgid "The \"%s\" command is not available on the SSH server."
 msgstr "Il comando \"%s\" non è disponibile sul server SSH."
 
 #: src/remmina_protocol_widget.c:904
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr "Impossibile eseguire il comando %s sul server SSH (stato = %i)."
+msgstr "Impossibile eseguire il comando \"%s\" sul server SSH (stato : %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:912
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command. %s"
-msgstr "Impossibile eseguire il comando: %s"
+msgstr "Impossibile eseguire il comando. %s"
 
 #: src/remmina_protocol_widget.c:979
 #, c-format
@@ -296,33 +296,28 @@ msgid "Preferred server host key types"
 msgstr "Tipi di chiavi host preferiti"
 
 #: src/remmina_ssh_plugin.c:1085
-#, fuzzy
 msgid "Folder for SSH session log"
-msgstr "Impossibile creare la sessione SSH: %s"
+msgstr "Cartella per il registro di sessione SSH"
 
 #: src/remmina_ssh_plugin.c:1086
-#, fuzzy
 msgid "Filename for SSH session log"
-msgstr "Abilitare logging sessione SSH all’uscita"
+msgstr "Nome file per il registro di sessione SSH"
 
 #: src/remmina_ssh_plugin.c:1087
 msgid "Log SSH session when exiting Remmina"
 msgstr "Registra sessione SSH all'uscita da Remmina"
 
 #: src/remmina_ssh_plugin.c:1088
-#, fuzzy
 msgid "Audible terminal bell"
-msgstr "Abilita campanello acustico del terminale"
+msgstr "Campana terminale udibile"
 
 #: src/remmina_ssh_plugin.c:1089
-#, fuzzy
 msgid "SSH compression"
-msgstr "Abilita la compressione SSH"
+msgstr "Compressione SSH"
 
 #: src/remmina_ssh_plugin.c:1090
-#, fuzzy
 msgid "Don't remember passwords"
-msgstr "Conferma password"
+msgstr "Non ricordare le password"
 
 #: src/remmina_ssh_plugin.c:1091
 msgid "Strict host key checking"
@@ -551,9 +546,8 @@ msgstr "Mostra la versione dell’applicazione e dei plugin"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:113
-#, fuzzy
 msgid "Modify connection profile (requires --set-option)"
-msgstr "Modificare il profilo di connessione, richiede anche --set-option"
+msgstr "Modificare il profilo di connessione (richiede --set-option)"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:115
@@ -594,7 +588,7 @@ msgid "Remmina Remote Desktop Client"
 msgstr "Client di connessione a desktop remoti Remmina"
 
 #: src/rcw.c:586
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr ""
@@ -675,9 +669,9 @@ msgid "Disconnect"
 msgstr "Scollegarsi"
 
 #: src/rcw.c:3786
-#, fuzzy, c-format
+#, c-format
 msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
-msgstr "Il file %s è danneggiato, illeggibile o non è stato trovato."
+msgstr "Il file \"%s\" è danneggiato, illeggibile o non è stato trovato."
 
 #: src/rcw.c:3948
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
@@ -741,9 +735,9 @@ msgstr[0] "%i elemento in totale."
 msgstr[1] "%i elementi in totale."
 
 #: src/remmina_main.c:829
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete \"%s\"?"
-msgstr "Sei sicuro di voler eliminare '%s'?"
+msgstr "Sei sicuro di voler eliminare \"%s\"?"
 
 #: src/remmina_main.c:929
 #, c-format
@@ -800,71 +794,70 @@ msgstr "<Nessuno>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:171
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the folder \"%s\"."
-msgstr "Impossibile aprire il canale: %s"
+msgstr "Impossibile creare la cartella \"%s\"."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:179 src/remmina_sftp_client.c:200
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the file \"%s\"."
-msgstr "Impossibile aprire il canale: %s"
+msgstr "Impossibile creare il file \"%s\"."
 
 #. TRANSLATORS: The placeholders %s are a file path and a server name
 #: src/remmina_sftp_client.c:218
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the file \"%s\" on the server. %s"
-msgstr "Impossibile aprire il canale: %s"
+msgstr "Impossibile aprire il file \"%s\" sul server. %s"
 
 #: src/remmina_sftp_client.c:240
-#, fuzzy, c-format
+#, c-format
 msgid "Could not save the file \"%s\"."
-msgstr "Impossibile aprire il canale: %s"
+msgstr "Impossibile salvare il file \"%s\"."
 
 #: src/remmina_sftp_client.c:279 src/remmina_sftp_client.c:733
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the folder \"%s\". %s"
-msgstr "Impossibile aprire il canale: %s"
+msgstr "Impossibile aprire la cartella \"%s\". %s"
 
 #: src/remmina_sftp_client.c:383
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the folder \"%s\" on the server. %s"
-msgstr "Errore nella creazione della cartella %s sul server. %s"
+msgstr "Impossibile creare la cartella \"%s\" sul server. %s"
 
 #: src/remmina_sftp_client.c:411 src/remmina_sftp_client.c:433
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the file \"%s\" on the server. %s"
-msgstr "Errore durante la creazione del file %s sul server. %s"
+msgstr "Impossibile creare il file \"%s\" sul server. %s"
 
 #: src/remmina_sftp_client.c:454
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the file \"%s\"."
-msgstr "Impossibile aprire il canale: %s"
+msgstr "Impossibile aprire il file \"%s\"."
 
 #: src/remmina_sftp_client.c:474
-#, fuzzy, c-format
+#, c-format
 msgid "Could not write to the file \"%s\" on the server. %s"
-msgstr "Errore durante la scrittura del file %s sul server. %s"
+msgstr "Impossibile scrivere nel file \"%s\" sul server. %s"
 
 #: src/remmina_sftp_client.c:670
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the folder  \"%s\". %s"
-msgstr "Impossibile aprire il canale: %s"
+msgstr "Impossibile aprire la cartella \"%s\". %s"
 
 #: src/remmina_sftp_client.c:688
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from the folder. %s"
-msgstr "Impossibile aprire il canale: %s"
+msgstr "Impossibile leggere dalla cartella. %s"
 
 #: src/remmina_sftp_client.c:795
-#, fuzzy
 msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "Sei sicuro di voler eliminare '%s'?"
+msgstr "Sei sicuro di voler annullare il trasferimento di file in corso?"
 
 #: src/remmina_sftp_client.c:829
-#, fuzzy, c-format
+#, c-format
 msgid "Could not delete \"%s\". %s"
-msgstr "Impossibile aprire il canale: %s"
+msgstr "Impossibile eliminare \"%s\". %s"
 
 #: src/remmina_sftp_client.c:910
 msgid "The file exists already"
@@ -959,9 +952,9 @@ msgstr "SFTP — Trasferimento sicuro dei file"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:203
-#, fuzzy, c-format
+#, c-format
 msgid "Could not authenticate with SSH password. %s"
-msgstr "Impossibile creare la sessione SSH: %s"
+msgstr "Impossibile eseguire l'autenticazione con la password SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:224 src/remmina_ssh.c:248 src/remmina_ssh.c:257
@@ -975,9 +968,9 @@ msgstr "Chiave SSH non ancora impostata."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:236
-#, fuzzy, c-format
+#, c-format
 msgid "Public SSH key cannot be imported. %s"
-msgstr "La chiave pubblica SSH non può essere importata: %s"
+msgstr "Impossibile importare la chiave SSH pubblica. %s"
 
 #: src/remmina_ssh.c:279 src/remmina_ssh.c:587 src/remmina_ssh.c:606
 #: plugins/nx/nx_plugin.c:202
@@ -1022,15 +1015,15 @@ msgstr "Impossibile recuperare la chiave SSH pubblica del server. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:499
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch public SSH key. %s"
-msgstr "Impossibile connettersi al tunnel SSH: %s"
+msgstr "Impossibile recuperare la chiave SSH pubblica. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:507
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch checksum for public SSH key. %s"
-msgstr "Impossibile controllare l'elenco degli host SSH noti: %s"
+msgstr "Impossibile recuperare il checksum per la chiave SSH pubblica. %s"
 
 #: src/remmina_ssh.c:520
 msgid "The server is unknown. The public key fingerprint is:"
@@ -1041,22 +1034,21 @@ msgid "Do you trust the new public key?"
 msgstr "Considerare attendibile la nuova chiave pubblica?"
 
 #: src/remmina_ssh.c:525
-#, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means either you are "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
-"Attenzione: la chiave pubblica del server è cambiata. Questo potrebbe "
-"significare che si è sotto attacco\n"
-"oppure che l’amministratore ha cambiato la chiave pubblica. La nuova "
-"impronta digitale della chiave pubblica è:"
+"Avviso: il server ha modificato la chiave pubblica. Questo significa che o "
+"sei sotto attacco,\n"
+"o l'amministratore ha cambiato la chiave. La nuova impronta digitale a "
+"chiave pubblica è:"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:550
-#, fuzzy, c-format
+#, c-format
 msgid "Could not check list of known SSH hosts. %s"
-msgstr "Impossibile controllare l'elenco degli host SSH noti: %s"
+msgstr "Impossibile controllare l'elenco degli host SSH noti. %s"
 
 #: src/remmina_ssh.c:557
 msgid "SSH password"
@@ -1072,27 +1064,27 @@ msgstr "Autenticazione SSH"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:747
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SSH session. %s"
-msgstr "Impossibile creare la sessione SSH: %s"
+msgstr "Impossibile avviare la sessione SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1106 src/remmina_ssh.c:1168
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel. %s"
-msgstr "Impossibile creare il canale: %s"
+msgstr "Impossibile creare il canale. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1117
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to SSH tunnel. %s"
-msgstr "Impossibile connettersi al tunnel SSH: %s"
+msgstr "Impossibile connettersi al tunnel SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1183 src/remmina_ssh.c:1781
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel. %s"
-msgstr "Impossibile aprire il canale: %s"
+msgstr "Impossibile aprire il canale. %s"
 
 #: src/remmina_ssh.c:1189
 #, c-format
@@ -1101,9 +1093,9 @@ msgstr "Impossibile eseguire %s sul server SSH, %%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1227 src/remmina_ssh.c:1248 src/remmina_ssh.c:1257
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request port forwarding. %s"
-msgstr "Impossibile richiedere l'inoltro delle porte: %s"
+msgstr "Impossibile richiedere l'inoltro della porta. %s"
 
 #: src/remmina_ssh.c:1292
 msgid "The server did not respond."
@@ -1116,33 +1108,33 @@ msgstr "Impossibile connettersi alla porta locale %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1385
-#, fuzzy, c-format
+#, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Impossibile creare il canale: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1392
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket. %s"
-msgstr "Impossibile leggere dal socket di ascolto tunnel: %s"
+msgstr "Impossibile leggere dal socket di ascolto del tunnel. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1412
-#, fuzzy, c-format
+#, c-format
 msgid "Could not poll SSH channel. %s"
-msgstr "Impossibile aprire il canale: %s"
+msgstr "Impossibile eseguire il polling del canale SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1419
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
-msgstr "Impossibile eseguire ssh_channel_read_nonblocking(): %s"
+msgstr "Impossibile leggere il canale SSH in modo non bloccante. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1438
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket. %s"
-msgstr "Impossibile inviare dati al socket di ascolto del tunnel: %s"
+msgstr "Impossibile inviare dati al socket di ascolto del tunnel. %s"
 
 #: src/remmina_ssh.c:1517
 msgid "Assign a destination port."
@@ -1172,21 +1164,21 @@ msgstr "Inizializzazione di pthread fallita."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1691
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create SFTP session. %s"
-msgstr "Impossibile creare la sessione SFTP: %s"
+msgstr "Impossibile creare la sessione SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1696
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SFTP session. %s"
-msgstr "Impossibile creare la sessione SSH: %s"
+msgstr "Impossibile avviare la sessione SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1811
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request shell. %s"
-msgstr "Impossibile richiedere la shell: %s"
+msgstr "Impossibile richiedere shell. %s"
 
 #: src/remmina_ssh.c:1904
 msgid "Could not create PTY device."
@@ -1305,14 +1297,12 @@ msgid "SSH Authentication"
 msgstr "Autenticazione SSH"
 
 #: src/remmina_file_editor.c:920
-#, fuzzy
 msgid "SSH agent (automatic)"
-msgstr "SSH Agent (automatico)"
+msgstr "Agente SSH (automatico)"
 
 #: src/remmina_file_editor.c:994
-#, fuzzy
 msgid "Turn on \"Autostart\" for this profile"
-msgstr "Attivare l'avvio automatico per questo profilo"
+msgstr "Attiva \"Avvio automatico\" per questo profilo"
 
 #: src/remmina_file_editor.c:1002
 msgid "Basic"
@@ -1360,19 +1350,17 @@ msgid "Use '%s' as subgroup delimiter"
 msgstr "Utilizza “%s” come delimitatore di sottogruppo"
 
 #: src/remmina_file_editor.c:1486
-#, fuzzy
 msgid "Pre-command"
-msgstr "Esegui prima"
+msgstr "Pre-comando"
 
 #: src/remmina_file_editor.c:1504
-#, fuzzy
 msgid "Post-command"
-msgstr "Esegui dopo"
+msgstr "Post-comando"
 
 #: src/remmina_file_editor.c:1569 src/remmina_file_editor.c:1587
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the file \"%s\"."
-msgstr "Impossibile aprire il canale: %s"
+msgstr "Impossibile trovare il file \"%s\"."
 
 #: src/remmina_chat_window.c:178
 #, c-format
@@ -1396,13 +1384,13 @@ msgid "You did not set any command to be executed"
 msgstr "Non hai impostato nessun comando da eseguire"
 
 #: plugins/exec/exec_plugin.c:204
-#, fuzzy
 msgid ""
 "Warning: Running a command synchronously may cause Remmina not to respond.\n"
 "Do you really want to continue?"
 msgstr ""
-"ATTENZIONE! Eseguire un comando in modo sincrono potrebbe bloccare Remmina.\n"
-"Vuoi veramente continuare?"
+"Avviso: l'esecuzione sincrona di un comando può causare la non risposta di "
+"Remmina.\n"
+"Vuoi davvero continuare?"
 
 #: plugins/exec/exec_plugin.c:264
 msgid "Command"
@@ -1469,9 +1457,8 @@ msgid "Turn on Web Inspector"
 msgstr "Abilita Web Inspector"
 
 #: plugins/www/www_config.h:43
-#, fuzzy
 msgid "Remmina web-browser plugin"
-msgstr "Plug-in browser per Remmina"
+msgstr "Plug-in Remmina per il browser web"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
 msgid "Secure password storing in the GNOME keyring"
@@ -1513,9 +1500,8 @@ msgid "The VNC server requested an unknown authentication method. %s"
 msgstr "Il server VNC ha richiesto un metodo di autenticazione sconosciuto. %s"
 
 #: plugins/vnc/vnc_plugin.c:921
-#, fuzzy
 msgid "Please retry after turning on encryption for this profile."
-msgstr "Riprova dopo avere abilitato cifratura per questo profilo."
+msgstr "Riprovare dopo aver attivato la crittografia per questo profilo."
 
 #: plugins/vnc/vnc_plugin.c:1803
 msgid "256 colors (8 bpp)"
@@ -1628,18 +1614,17 @@ msgid "Enter SPICE password"
 msgstr "Immettere la password SPICE"
 
 #: plugins/spice/spice_plugin.c:274
-#, fuzzy, c-format
+#, c-format
 msgid "Disconnected from the SPICE server \"%s\"."
-msgstr "Disconnesso dal server SPICE %s."
+msgstr "Disconnesso dal server SPICE \"%s\"."
 
 #: plugins/spice/spice_plugin.c:290
 msgid "TLS connection error."
 msgstr "Errore di connessione TLS."
 
 #: plugins/spice/spice_plugin.c:296
-#, fuzzy
 msgid "Connection to the SPICE server dropped."
-msgstr "Connessione al server SPICE fallita."
+msgstr "Connessione al server SPICE interrotta."
 
 #: plugins/spice/spice_plugin.c:438
 msgid "Use TLS encryption"
@@ -1696,11 +1681,12 @@ msgid "Run out of available local X display number."
 msgstr "I numeri locali di display X sono terminati."
 
 #: plugins/xdmcp/xdmcp_plugin.c:264 plugins/nx/nx_plugin.c:608
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
 msgstr ""
-"Il protocollo %s non è disponibile perché GtkSocket gunziona solo sotto X.Org"
+"Il protocollo \"%s\" non è disponibile perché GtkSocket funziona solo in "
+"X.Org."
 
 #: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
@@ -1711,22 +1697,18 @@ msgid "Grayscale"
 msgstr "Scala di grigi"
 
 #: plugins/xdmcp/xdmcp_plugin.c:350
-#, fuzzy
 msgid "256 colours"
 msgstr "256 colori"
 
 #: plugins/xdmcp/xdmcp_plugin.c:351
-#, fuzzy
 msgid "High colour (16 bit)"
 msgstr "Highcolor (16 bit)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:352
-#, fuzzy
 msgid "True colour (24 bit)"
 msgstr "Truecolor (24 bit)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1940
-#, fuzzy
 msgid "Colour depth"
 msgstr "Profondità colore"
 
@@ -1759,7 +1741,6 @@ msgid "Detached window"
 msgstr "Finestra staccata"
 
 #: plugins/st/st_plugin_config.h:43
-#, fuzzy
 msgid "Remmina simple terminal"
 msgstr "Terminale semplice di Remmina"
 
@@ -1835,66 +1816,66 @@ msgstr ""
 "L’utende deve cambiare la password prima di accedere."
 
 #: plugins/rdp/rdp_plugin.c:1544
-#, fuzzy, c-format
+#, c-format
 msgid "Lost connection to the RDP server \"%s\"."
-msgstr "Impossibile connettersi al server RDP %s."
+msgstr "Perdita della connessione al server RDP \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1547
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the address for the RDP server \"%s\"."
-msgstr "Impossibile trovare l’indirizzo del server RDP %s."
+msgstr "Impossibile trovare l'indirizzo per il server RDP \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1551
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
-"Errore di connessione al server %s. Connessione TLS non riuscita. Controlla "
-"che client e server supportino una versione TLS comune."
+"Impossibile connettersi al server RDP \"%s\" tramite TLS. Verificare che il "
+"client e il server supportino una versione TLS comune."
 
 #: plugins/rdp/rdp_plugin.c:1554
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to establish a connection to the RDP server \"%s\"."
-msgstr "Impossibile stabilire una connessione con il server RDP %s."
+msgstr "Impossibile stabilire una connessione al server RDP \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1562
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the RDP server \"%s\"."
-msgstr "Impossibile connettersi al server RDP %s."
+msgstr "Impossibile connettersi al server RDP \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1565
-#, fuzzy
 msgid "Could not start libfreerdp-gdi."
-msgstr "Impossibile avviare libfreerdp-gdi"
+msgstr "Impossibile avviare libfreerdp-gdi."
 
 #: plugins/rdp/rdp_plugin.c:1568
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
 "does not support H.264. Please use a non-AVC colour depth setting."
 msgstr ""
-"Hai richiesto una modalità H.264 GFX per il server %s, ma il tuo libfreerdp "
-"non supporta H.264. Utilizzare un'impostazione di profondità colore non-AVC."
+"Avete richiesto una modalità H.264 GFX per il server \"%s\", ma il vostro "
+"libfreerdp non supporta H.264. Si prega di utilizzare un'impostazione di "
+"profondità di colore non-AVC."
 
 #: plugins/rdp/rdp_plugin.c:1575
-#, fuzzy, c-format
+#, c-format
 msgid "The \"%s\" server refused the connection."
-msgstr "Il server %s ha negato la connessione."
+msgstr "Il server \"%s\" ha rifiutato la connessione."
 
 #: plugins/rdp/rdp_plugin.c:1580
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\"\\%s access due to "
 "policy."
 msgstr ""
-"Il gateway del desktop remoto %s ha negato l'accesso all'utente %s\\%s a "
-"causa della politica di sicurezza."
+"Il Gateway Desktop remoto \"%s\" ha negato all'utente \"%s\"\\%s l'accesso a "
+"causa dei criteri."
 
 #: plugins/rdp/rdp_plugin.c:1590
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the \"%s\" RDP server."
-msgstr "Impossibile connettersi al server RDP %s."
+msgstr "Impossibile connettersi al server RDP \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1872
 msgid "GFX AVC444 (32 bpp)"
@@ -1913,27 +1894,22 @@ msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1876
-#, fuzzy
 msgid "True colour (32 bpp)"
 msgstr "Truecolor (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1877
-#, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "Truecolor (24 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1878
-#, fuzzy
 msgid "High colour (16 bpp)"
 msgstr "Highcolor (16 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1879
-#, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "Highcolor (15 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1880
-#, fuzzy
 msgid "256 colours (8 bpp)"
 msgstr "256 colori (8 bpp)"
 
@@ -2037,7 +2013,6 @@ msgid "Local parallel device"
 msgstr "Percorso porta seriale locale"
 
 #: plugins/rdp/rdp_plugin.c:1974
-#, fuzzy
 msgid "Smartcard name"
 msgstr "Nome smart card"
 
@@ -2203,9 +2178,8 @@ msgid "Reconnection attempt %d of %d…"
 msgstr "Tentativo di riconnessione %d di %d…"
 
 #: plugins/nx/nx_session_manager.c:98
-#, fuzzy
 msgid "Terminating…"
-msgstr "Terminazione"
+msgstr "Terminazione…"
 
 #: plugins/nx/nx_session_manager.c:143
 #, c-format
@@ -2249,18 +2223,17 @@ msgid "NX - NX Technology"
 msgstr "Tecnologia NX"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
-#, fuzzy
 msgid "Secure passwords storage in KWallet"
-msgstr "Salvataggio protetto delle password nel portafogli di KDE"
+msgstr "Memorizzazione sicura delle password in KWallet"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
 msgstr ""
-"%s vuole condividere il desktop.\n"
-"Accettare l’invito?"
+"%s desidera condividere il desktop.\n"
+"Accetti?"
 
 #: plugins/telepathy/telepathy_channel_handler.c:240
 msgid "Desktop sharing invitation"
@@ -2314,9 +2287,9 @@ msgid "Toggle view"
 msgstr "Cambia vista"
 
 #: data/ui/remmina_main.glade:186
-#, fuzzy
 msgid "Search string or server name/IP address for \"\\Quick Connect\\\""
-msgstr "cerca stringa o nome del server/indirizzo ip per la connessione rapida"
+msgstr ""
+"Stringa di ricerca o nome del server/indirizzo IP per \"Connessione rapida\""
 
 #: data/ui/remmina_main.glade:190 data/ui/remmina_main.glade:192
 msgid "Server name or IP address"
@@ -2611,7 +2584,6 @@ msgid "Profile filename template"
 msgstr "Modello del nome file del profilo"
 
 #: data/ui/remmina_preferences.glade:495
-#, fuzzy
 msgid ""
 "%G Group name (slash will be converted to - automatically)\n"
 "%P Protocol name\n"
@@ -2620,10 +2592,10 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"%G nome del gruppo (le barre “/” verranno convertite in una lineetta “-”);\n"
-"%P nome del protocollo;\n"
-"%N nome della connessione;\n"
-"%h hostname o indirizzo IP.\n"
+"%G Nome gruppo (barra verrà convertita in - automaticamente)\n"
+"%P Nome protocollo\n"
+"%N Nome connessione\n"
+"%h Nome host/IP\n"
 "\n"
 "\n"
 
@@ -2908,104 +2880,85 @@ msgid "Bright colours"
 msgstr "Colori vivaci"
 
 #: data/ui/remmina_preferences.glade:1876
-#, fuzzy
 msgid "Load colour theme"
-msgstr "Carica schema di colori"
+msgstr "Carica tema colori"
 
 #: data/ui/remmina_preferences.glade:1917
-#, fuzzy
 msgid ""
 "Choose a colour scheme file. Usually available in /usr/share/remmina/theme. "
 "https://github.com/mbadolato/iTerm2-Color-Schemes has more details."
 msgstr ""
-"Seleziona un file per lo schema colori, i temi prenstallati si trovano di "
+"Seleziona un file per il tema colori. I temi prenstallati si trovano di "
 "solito sotto /usr/share/remmina/theme. Vedi https://github.com/mbadolato/"
 "iTerm2-Color-Schemes."
 
 #: data/ui/remmina_preferences.glade:1920
-#, fuzzy
 msgid "Pick a terminal colouring file"
-msgstr "Seleziona un tema colore per il terminale"
+msgstr "Scegliere un file di colorazione del terminale"
 
 #: data/ui/remmina_preferences.glade:1934
-#, fuzzy
 msgid "Pick a black colour"
-msgstr "Scegliere un colore nero"
+msgstr "Scegli un colore nero"
 
 #: data/ui/remmina_preferences.glade:1946
-#, fuzzy
 msgid "Pick a red colour"
-msgstr "Scegliere un colore rosso"
+msgstr "Scegli un colore rosso"
 
 #: data/ui/remmina_preferences.glade:1958
-#, fuzzy
 msgid "Pick a green colour"
-msgstr "Scegliere un colore verde"
+msgstr "Scegli un colore verde"
 
 #: data/ui/remmina_preferences.glade:1970
-#, fuzzy
 msgid "Pick a yellow colour"
-msgstr "Scegliere un colore giallo"
+msgstr "Scegli un colore giallo"
 
 #: data/ui/remmina_preferences.glade:1982
-#, fuzzy
 msgid "Pick a blue colour"
-msgstr "Scegliere un colore blu"
+msgstr "Scegli un colore blu"
 
 #: data/ui/remmina_preferences.glade:1994
-#, fuzzy
 msgid "Pick a magenta colour"
 msgstr "Scegliere un colore magenta"
 
 #: data/ui/remmina_preferences.glade:2006
-#, fuzzy
 msgid "Pick a cyan colour"
 msgstr "Scegli un colore ciano"
 
 #: data/ui/remmina_preferences.glade:2019
-#, fuzzy
 msgid "Pick a white colour"
-msgstr "Scegliere un colore bianco"
+msgstr "Scegli un colore bianco"
 
 #: data/ui/remmina_preferences.glade:2031
-#, fuzzy
 msgid "Pick a light black colour"
-msgstr "Scegliere un colore nero chiaro"
+msgstr "Scegli un colore nero chiaro"
 
 #: data/ui/remmina_preferences.glade:2043
-#, fuzzy
 msgid "Pick a light red colour"
-msgstr "Scegliere un colore rosso chiaro"
+msgstr "Scegli un colore rosso chiaro"
 
 #: data/ui/remmina_preferences.glade:2055
-#, fuzzy
 msgid "Pick a bright green colour"
-msgstr "Scegliere un colore verde brillante"
+msgstr "Scegli un colore verde brillante"
 
 #: data/ui/remmina_preferences.glade:2067
-#, fuzzy
 msgid "Pick a bright yellow colour"
-msgstr "Scegliere un colore giallo brillante"
+msgstr "Scegli un colore giallo brillante"
 
 #: data/ui/remmina_preferences.glade:2079
-#, fuzzy
 msgid "Pick a bright blue colour"
 msgstr "Scegli un colore blu brillante"
 
 #: data/ui/remmina_preferences.glade:2091
-#, fuzzy
 msgid "Pick a light magenta colour"
 msgstr "Scegliere un colore magenta chiaro"
 
 #: data/ui/remmina_preferences.glade:2103
-#, fuzzy
 msgid "Pick a light cyan colour"
-msgstr "Scegliere un colore ciano chiaro"
+msgstr "Scegli un colore ciano chiaro"
 
 #: data/ui/remmina_preferences.glade:2116
-#, fuzzy
 msgid "Pick a light white colour"
-msgstr "Scegliere un colore bianco chiaro"
+msgstr "Scegli un colore bianco chiaro"
 
 #: data/ui/remmina_preferences.glade:2129
 msgid "Use default system font"
