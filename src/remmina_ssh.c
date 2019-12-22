@@ -1186,7 +1186,7 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 		}
 		g_free(ptr);
 		if (ssh_channel_request_exec(tunnel->x11_channel, tunnel->dest)) {
-			ptr = g_strdup_printf(_("Could not run %s on SSH server, %%s"), tunnel->dest);
+			ptr = g_strdup_printf(_("Could not run %s on SSH server."), tunnel->dest);
 			remmina_ssh_set_error(REMMINA_SSH(tunnel), ptr);
 			g_free(ptr);
 			tunnel->thread = 0;
