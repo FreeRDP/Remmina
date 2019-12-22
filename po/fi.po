@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-12-19 21:24+0000\n"
-"PO-Revision-Date: 2019-12-12 21:48+0000\n"
+"PO-Revision-Date: 2019-12-22 22:05+0000\n"
 "Last-Translator: Tuomas Lähteenmäki <lahtis@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/remmina/remmina/"
 "fi/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10-dev\n"
+"X-Generator: Weblate 3.10\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_protocol_widget.c:248
@@ -845,7 +845,7 @@ msgstr "Kansiota \"%s\" ei voitu avata. %s"
 #: src/remmina_sftp_client.c:688
 #, c-format
 msgid "Could not read from the folder. %s"
-msgstr "Kansiota %s ei voitu lukea."
+msgstr "Kansiota ei voitu lukea. %s"
 
 #: src/remmina_sftp_client.c:795
 msgid "Are you sure you want to cancel the file transfer in progress?"
@@ -982,7 +982,7 @@ msgstr "Yksityisen SSH-avaimen salalause"
 #: src/remmina_ssh.c:299
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
-msgstr ""
+msgstr "Automaattista todentamista julkisen SSH-avaimen avulla. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:316
@@ -994,7 +994,7 @@ msgstr ""
 #: src/remmina_ssh.c:336
 #, c-format
 msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
-msgstr ""
+msgstr "Todennusta ei voitu todentaa SSH-Kerberos/GSSAPI-todennuksen avulla. %s"
 
 #: src/remmina_ssh.c:365
 msgid "The public SSH key changed!"
@@ -1004,19 +1004,19 @@ msgstr "Julkinen SSH-avain on muutettu!"
 #: src/remmina_ssh.c:492
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
-msgstr ""
+msgstr "Palvelimen julkisen SSH-avaimen hakeminen ei onnistunut. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:499
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch public SSH key. %s"
-msgstr "SSH-istunnon tunnelin yhdistäminen epäonnistui: %s"
+msgstr "Julkisen SSH-avaimen hakeminen ei onnistunut. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:507
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch checksum for public SSH key. %s"
-msgstr "SSH-istunnon käynnistys epäonnistui: %s"
+msgstr "Julkisen SSH-avaimen tarkistussumman hakeminen ei onnistunut. %s"
 
 #: src/remmina_ssh.c:520
 msgid "The server is unknown. The public key fingerprint is:"
@@ -1027,7 +1027,6 @@ msgid "Do you trust the new public key?"
 msgstr "Luotatko uuteen julkiseen avaimeen?"
 
 #: src/remmina_ssh.c:525
-#, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means either you are "
 "under attack,\n"
@@ -1040,9 +1039,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:550
-#, fuzzy, c-format
+#, c-format
 msgid "Could not check list of known SSH hosts. %s"
-msgstr "SSH-istunnon käynnistys epäonnistui: %s"
+msgstr "Tunnettujen SSH-koneiden luetteloa ei voitu tarkistaa. %s"
 
 #: src/remmina_ssh.c:557
 msgid "SSH password"
@@ -1058,27 +1057,27 @@ msgstr "SSH-todennus"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:747
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SSH session. %s"
 msgstr "SSH-istunnon käynnistys epäonnistui: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1106 src/remmina_ssh.c:1168
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel. %s"
-msgstr "SFTP-istunnon luonti epäonnistui: %s"
+msgstr "Kanavaa ei voitu luoda. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1117
-#, fuzzy, c-format
+#, c-format
 msgid "Could not connect to SSH tunnel. %s"
-msgstr "SSH-istunnon tunnelin yhdistäminen epäonnistui: %s"
+msgstr "SSH-tunneliin ei voitu muodostaa yhteyttä. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1183 src/remmina_ssh.c:1781
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel. %s"
-msgstr "Kanavan avaaminen epäonnistui: %s"
+msgstr "Kanavaa ei voitu avata. %s"
 
 #: src/remmina_ssh.c:1189
 #, c-format
