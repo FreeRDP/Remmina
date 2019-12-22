@@ -142,6 +142,7 @@ struct _RemminaConnectionWindowPriv {
 	gboolean					ss_maximized;
 
 	gboolean					kbcaptured;
+	gboolean					dont_ungrab_on_next_focus_out_event;
 	gboolean					mouse_pointer_entered;
 	gboolean					hostkey_activated;
 	gboolean					hostkey_used;
@@ -514,10 +515,19 @@ static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin)
 		 * https://gitlab.gnome.org/GNOME/gtk/commit/726ad5a5ae7c4f167e8dd454cd7c250821c400ab
 		 * The bugfix will be released with GTK 3.24.
 		 * Also pease note that the newer gdk_seat_grab() is still calling gdk_device_grab().
+		 *
+		 * dont_ungrab_on_next_focus_out_event: Xorg when grabbing keyboard
+		 * generates an extra focus-out and focus-in event
+		 * https://stackoverflow.com/questions/15270420/why-xgrabkey-generates-extra-focus-out-and-focus-in-events
+		 * with mode field set to XCB_NOTIFY_MODE_GRAB
+		 * Some windows managers can detect this evend via the mode==XCB_NOTIFY_MODE_GRAB and suppress it.
+		 * Some WM don't. Under GTK we can't check the mode field, so we need a workaround to block
+		 * the spurious focus-out event we receive, setting dont_ungrab_on_next_focus_out_event to true.
 		 */
+		cnnwin->priv->dont_ungrab_on_next_focus_out_event = TRUE;
 #if GTK_CHECK_VERSION(3, 24, 0)
 		ggs = gdk_seat_grab(seat, gtk_widget_get_window(GTK_WIDGET(cnnwin)),
-				    GDK_SEAT_CAPABILITY_ALL_POINTING, TRUE, NULL, NULL, NULL, NULL);
+				    GDK_SEAT_CAPABILITY_KEYBOARD, FALSE, NULL, NULL, NULL, NULL);
 #else
 		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 			ggs = gdk_device_grab(keyboard, gtk_widget_get_window(GTK_WIDGET(cnnwin)), GDK_OWNERSHIP_WINDOW,
@@ -2382,6 +2392,7 @@ static void rcw_focus_in(RemminaConnectionWindow *cnnwin)
 	TRACE_CALL(__func__);
 	RemminaConnectionObject *cnnobj;
 
+	cnnwin->priv->dont_ungrab_on_next_focus_out_event = FALSE;
 	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
 	if (cnnobj && cnnobj->connected && remmina_file_get_int(cnnobj->remmina_file, "keyboard_grab", FALSE))
@@ -2393,7 +2404,10 @@ static void rcw_focus_out(RemminaConnectionWindow *cnnwin)
 	TRACE_CALL(__func__);
 	RemminaConnectionObject *cnnobj;
 
-	rcw_keyboard_ungrab(cnnwin);
+	if (!cnnwin->priv->dont_ungrab_on_next_focus_out_event)
+		rcw_keyboard_ungrab(cnnwin);
+
+	cnnwin->priv->dont_ungrab_on_next_focus_out_event = FALSE;
 	cnnwin->priv->hostkey_activated = FALSE;
 	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return;
 
@@ -2439,7 +2453,10 @@ static gboolean rcw_on_enter(GtkWidget *widget, GdkEventCrossing *event, gpointe
 
 	if (!REMMINA_IS_CONNECTION_WINDOW(widget))
 		return FALSE;
+
 	cnnwin = (RemminaConnectionWindow *)widget;
+	cnnwin->priv->dont_ungrab_on_next_focus_out_event = FALSE;
+
 	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return FALSE;
 
 	cnnwin->priv->mouse_pointer_entered = TRUE;
@@ -2470,6 +2487,7 @@ static gboolean rcw_on_leave(GtkWidget *widget, GdkEventCrossing *event, gpointe
 	if (!REMMINA_IS_CONNECTION_WINDOW(widget))
 		return FALSE;
 	cnnwin = (RemminaConnectionWindow *)widget;
+	cnnwin->priv->dont_ungrab_on_next_focus_out_event = FALSE;
 
 #if DEBUG_KB_GRABBING
 	printf("DEBUG_KB_GRABBING: leave detail=");
