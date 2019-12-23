@@ -214,7 +214,7 @@ remmina_sftp_client_thread_download_file(RemminaSFTPClient *client, RemminaSFTP 
 
 	if (!remote_file) {
 		fclose(local_file);
-		// TRANSLATORS: The placeholders %s are a file path and a server name
+		// TRANSLATORS: The placeholders %s are a file path, and an error message.
 		remmina_sftp_client_thread_set_error(client, task, _("Could not open the file \"%s\" on the server. %s"),
 						     remote_path, ssh_get_error(REMMINA_SSH(client->sftp)->session));
 		return FALSE;
