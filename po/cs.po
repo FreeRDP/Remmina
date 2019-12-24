@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-12-23 01:24+0000\n"
-"PO-Revision-Date: 2019-12-12 15:19+0000\n"
+"PO-Revision-Date: 2019-12-24 13:21+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/remmina/remmina/cs/"
 ">\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.10-dev\n"
+"X-Generator: Weblate 3.10\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:248
@@ -1093,9 +1093,9 @@ msgid "Could not open channel. %s"
 msgstr "Nepodařilo se otevřít kanál: %s"
 
 #: src/remmina_ssh.c:1189
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run %s on SSH server."
-msgstr "Vykonání %s na SSH serveru se nezdařilo, %%s"
+msgstr "Spuštění %s na SSH serveru se nezdařilo."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1227 src/remmina_ssh.c:1248 src/remmina_ssh.c:1257
@@ -1869,12 +1869,12 @@ msgid "The \"%s\" server refused the connection."
 msgstr "Server „%s“ odepřel připojení."
 
 #: plugins/rdp/rdp_plugin.c:1580
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
 "policy."
 msgstr ""
-"Brána „%s“ do vzdálené plochy odepřela uživateli „%s“\\%s přístup kvůli "
+"Brána „%s“ do vzdálené plochy odepřela uživateli „%s\\%s“ přístup kvůli "
 "systémové zásadě."
 
 #: plugins/rdp/rdp_plugin.c:1590
@@ -2292,10 +2292,9 @@ msgid "Toggle view"
 msgstr "Přepnout Pohled"
 
 #: data/ui/remmina_main.glade:186
-#, fuzzy
 msgid "Search string or server name/IP address for “Quick Connect”"
 msgstr ""
-"vyhledávací řetězec nebo název / ip adresa serveru pro „Rychlé připojení“"
+"Vyhledávací řetězec nebo název / ip adresa serveru pro „Rychlé připojení“"
 
 #: data/ui/remmina_main.glade:190 data/ui/remmina_main.glade:192
 msgid "Server name or IP address"
