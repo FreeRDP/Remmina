@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-12-23 01:24+0000\n"
-"PO-Revision-Date: 2019-12-12 21:03+0000\n"
+"PO-Revision-Date: 2019-12-26 16:21+0000\n"
 "Last-Translator: Солтыс Сергей <treefeed@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
 "ru/>\n"
@@ -16,9 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.10-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.10\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 "X-Poedit-Flags-xgettext: --add-comments\n"
 
@@ -1100,9 +1100,9 @@ msgid "Could not open channel. %s"
 msgstr "Не удалось открыть канал. %s"
 
 #: src/remmina_ssh.c:1189
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run %s on SSH server."
-msgstr "Не удалось выполнить %s на SSH сервере, %%s"
+msgstr "Не удалось выполнить %s на SSH сервере."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1227 src/remmina_ssh.c:1248 src/remmina_ssh.c:1257
@@ -1878,12 +1878,12 @@ msgid "The \"%s\" server refused the connection."
 msgstr "Сервер \"%s\" отклонил соединение."
 
 #: plugins/rdp/rdp_plugin.c:1580
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
 "policy."
 msgstr ""
-"Шлюз удалённого доступа \"%s\" запретил пользователю \"%s\"\\%s доступ, из-"
+"Шлюз удалённого доступа \"%s\" запретил пользователю \"%s\\%s\" доступ, из-"
 "за его политик."
 
 #: plugins/rdp/rdp_plugin.c:1590
@@ -2301,9 +2301,8 @@ msgid "Toggle view"
 msgstr "Переключить вид"
 
 #: data/ui/remmina_main.glade:186
-#, fuzzy
 msgid "Search string or server name/IP address for “Quick Connect”"
-msgstr "Строки поиска или имя сервера/IP адрес для быстрого соединения"
+msgstr "Строки поиска или имя сервера/IP адрес для \"быстрого\" соединения"
 
 #: data/ui/remmina_main.glade:190 data/ui/remmina_main.glade:192
 msgid "Server name or IP address"
