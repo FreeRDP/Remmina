@@ -244,6 +244,51 @@ static void remmina_main_clear_selection_data(void)
 	remminamain->priv->selected_name = NULL;
 }
 
+static void remmina_main_check_env()
+{
+	GtkBuilder *dlgbuilder = NULL;
+	GtkWidget *dlg;
+	GtkWindow *parent;
+	GtkWidget* dsa;
+	int result;
+	gint64 nowsec;
+	static gboolean shown_once = FALSE;
+	#define SUPPRESS_DAYS 20
+
+	if (shown_once)
+		return;
+	else
+		shown_once = TRUE;
+
+	static char envvar[] = "GDK_CORE_DEVICE_EVENTS";
+	if (g_getenv(envvar)) {
+		/* It seens that GTK4 no longer makes use of X core events, so all this stuff could be removed in GTK4 */
+		g_print("WARNING: Remmina can freeze during keyboard grab or miss some touch events because %s environment variable is set. Please unset it.\n", envvar);
+		nowsec = g_get_real_time() / 1000000;
+		if (nowsec > remmina_pref.suppress_xinput_welcome_message_time_limit && !kioskmode) {
+			dlgbuilder = remmina_public_gtk_builder_new_from_file("remmina_xinput_env_dialog.glade");
+			dsa = GTK_WIDGET(gtk_builder_get_object(dlgbuilder, "suppress"));
+			if (dlgbuilder) {
+				parent = remmina_main_get_window();
+				dlg = GTK_WIDGET(gtk_builder_get_object(dlgbuilder, "xinputwarndlg"));
+				if (parent)
+					gtk_window_set_transient_for(GTK_WINDOW(dlg), parent);
+				gtk_builder_connect_signals(dlgbuilder, NULL);
+				result = gtk_dialog_run(GTK_DIALOG(dlg));
+				if (result == 1) {
+					if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(dsa)))
+						remmina_pref.suppress_xinput_welcome_message_time_limit = (g_get_real_time() / 1000000) +  SUPPRESS_DAYS * 60 * 60 * 24;
+					else
+						remmina_pref.suppress_xinput_welcome_message_time_limit = 0;
+					remmina_pref_save();
+				}
+				gtk_widget_destroy(dlg);
+				g_object_unref(dlgbuilder);
+			}
+		}
+	}
+}
+
 #ifdef SNAP_BUILD
 
 static void remmina_main_show_snap_welcome()
@@ -1284,7 +1329,7 @@ void remmina_main_on_show(GtkWidget *w, gpointer user_data)
 #ifdef SNAP_BUILD
 	remmina_main_show_snap_welcome();
 #endif
-
+	remmina_main_check_env();
 }
 
 /* RemminaMain instance */
