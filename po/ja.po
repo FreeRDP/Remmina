@@ -4,13 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # Allan Nordhøy <epost@anotheragency.no>, 2019.
 # anonymous <noreply@weblate.org>, 2019.
+# Hinaloe <hina@hinaloe.net>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-12-23 01:24+0000\n"
-"PO-Revision-Date: 2019-11-12 11:24+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2019-12-29 11:21+0000\n"
+"Last-Translator: Hinaloe <hina@hinaloe.net>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
 "Language: ja\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.10-dev\n"
+"X-Generator: Weblate 3.10\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_protocol_widget.c:248
@@ -40,14 +41,14 @@ msgid "Connecting to \"%s\"…"
 msgstr "'%s' に接続中…"
 
 #: src/remmina_protocol_widget.c:717 src/remmina_protocol_widget.c:805
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to \"%s\" via SSH…"
-msgstr "'%s' に接続中…"
+msgstr "SSHで '%s' に接続中…"
 
 #: src/remmina_protocol_widget.c:855
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection at port %i…"
-msgstr "ポート %i で SSH トンネル接続を待っています…"
+msgstr "ポート %i で SSH 接続を待っています…"
 
 #: src/remmina_protocol_widget.c:900
 #, fuzzy, c-format
@@ -61,14 +62,14 @@ msgstr "SSH サーバー上でのコマンド %s に失敗しました(ステー
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:912
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command. %s"
-msgstr "ポートフォワード要求に失敗しました: %s"
+msgstr "コマンドを実行できませんでした: %s"
 
 #: src/remmina_protocol_widget.c:979
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to %s via SSH…"
-msgstr "'%s' に接続中…"
+msgstr "SSHで '%s' に接続中…"
 
 #: src/remmina_protocol_widget.c:1339 src/remmina_protocol_widget.c:1358
 #: src/remmina_ssh_plugin.c:958 src/remmina_sftp_plugin.c:317
@@ -81,11 +82,11 @@ msgstr "パスワード"
 
 #: src/remmina_protocol_widget.c:1357
 msgid "Type in username and password for SSH."
-msgstr ""
+msgstr "SSH のユーザー名とパスワードを入力してください。"
 
 #: src/remmina_protocol_widget.c:1413
 msgid "Certificate details:"
-msgstr ""
+msgstr "証明書の詳細:"
 
 #: src/remmina_protocol_widget.c:1414 src/remmina_protocol_widget.c:1435
 msgid "Subject:"
@@ -106,17 +107,15 @@ msgstr "証明書を受け入れますか?"
 
 #: src/remmina_protocol_widget.c:1434
 msgid "The certificate changed! Details:"
-msgstr ""
+msgstr "証明書が変更されました。詳細:"
 
 #: src/remmina_protocol_widget.c:1437
-#, fuzzy
 msgid "Old fingerprint:"
-msgstr "フィンガープリント:"
+msgstr "古いフィンガープリント:"
 
 #: src/remmina_protocol_widget.c:1438
-#, fuzzy
 msgid "New fingerprint:"
-msgstr "フィンガープリント:"
+msgstr "新しいフィンガープリント:"
 
 #: src/remmina_protocol_widget.c:1439
 #, fuzzy
@@ -141,7 +140,7 @@ msgstr "サーバー"
 #: src/remmina_protocol_widget.c:1685
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr ""
+msgstr "最初に %s プロトコルプラグインをインストールしてください。"
 
 #: src/remmina_exec.c:320
 #, c-format
@@ -155,7 +154,7 @@ msgstr "解像度"
 
 #: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:491
 msgid "Configure the available resolutions"
-msgstr ""
+msgstr "利用可能な解像度の設定"
 
 #: src/remmina_pref_dialog.c:132
 msgid "Recent lists cleared."
@@ -164,21 +163,21 @@ msgstr "リモートリストを消しました。"
 #: src/remmina_pref_dialog.c:143 src/rcw.c:1826
 #: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
 msgid "Keystrokes"
-msgstr ""
+msgstr "キーストローク"
 
 #: src/remmina_pref_dialog.c:143
 msgid "Configure the keystrokes"
-msgstr ""
+msgstr "キーストロークの設定"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:444
 msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr ""
+msgstr "マスターパスワードを使用するには libsodium >= 1.9.0 が必要です"
 
 #: src/remmina_ssh_plugin.c:481
 #, c-format
 msgid "Error: %s"
-msgstr ""
+msgstr "エラー: %s"
 
 #: src/remmina_ssh_plugin.c:498
 msgid "Terminal content saved under"
@@ -186,36 +185,37 @@ msgstr ""
 
 #: src/remmina_ssh_plugin.c:552
 msgid "Select All (Host + A)"
-msgstr ""
+msgstr "すべて選択 (Host + A)"
 
 #: src/remmina_ssh_plugin.c:553
 msgid "Copy (host + C)"
-msgstr ""
+msgstr "コピー (host + C)"
 
 #: src/remmina_ssh_plugin.c:554
 msgid "Paste (host + V)"
-msgstr ""
+msgstr "貼り付け (host + V)"
 
 #: src/remmina_ssh_plugin.c:555
 msgid "Save session to file"
-msgstr ""
+msgstr "セッションをファイルに保存"
 
 #: src/remmina_ssh_plugin.c:959 src/remmina_sftp_plugin.c:318
 msgid "SSH identity file"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:960 src/remmina_sftp_plugin.c:319
+#, fuzzy
 msgid "SSH agent"
-msgstr ""
+msgstr "SSH agent"
 
 #: src/remmina_ssh_plugin.c:961 src/remmina_sftp_plugin.c:320
 #: src/remmina_file_editor.c:939
 msgid "Public key (automatic)"
-msgstr "公開鍵(自動)"
+msgstr "公開鍵 (自動)"
 
 #: src/remmina_ssh_plugin.c:962 src/remmina_sftp_plugin.c:321
 msgid "Kerberos (GSSAPI)"
-msgstr ""
+msgstr "Kerberos (GSSAPI)"
 
 #: src/remmina_ssh_plugin.c:1037 data/ui/remmina_main.glade:266
 msgid "Copy"
@@ -235,7 +235,7 @@ msgstr ""
 
 #: src/remmina_ssh_plugin.c:1039
 msgid "Select all"
-msgstr ""
+msgstr "すべて選択"
 
 #: src/remmina_ssh_plugin.c:1039
 msgid "_Select all"
@@ -253,21 +253,21 @@ msgstr "ユーザーネーム"
 #: plugins/vnc/vnc_plugin.c:1853 plugins/spice/spice_plugin.c:437
 #: plugins/nx/nx_plugin.c:722
 msgid "User password"
-msgstr ""
+msgstr "パスワード"
 
 #: src/remmina_ssh_plugin.c:1059 src/remmina_sftp_plugin.c:351
 msgid "Authentication type"
-msgstr ""
+msgstr "認証方式"
 
 #: src/remmina_ssh_plugin.c:1060 src/remmina_sftp_plugin.c:352
 #: src/remmina_file_editor.c:356 src/remmina_file_editor.c:363
 #: plugins/nx/nx_plugin.c:720
 msgid "Identity file"
-msgstr "ファイルを選択してください"
+msgstr "鍵ファイル"
 
 #: src/remmina_ssh_plugin.c:1061 src/remmina_sftp_plugin.c:353
 msgid "Password to unlock private key"
-msgstr ""
+msgstr "秘密鍵のロックを解除するパスワード"
 
 #: src/remmina_ssh_plugin.c:1062 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:1965 plugins/nx/nx_plugin.c:725
@@ -276,7 +276,7 @@ msgstr "起動プログラム"
 
 #: src/remmina_ssh_plugin.c:1079
 msgid "Terminal color scheme"
-msgstr ""
+msgstr "ターミナルの配色"
 
 #: src/remmina_ssh_plugin.c:1080 src/remmina_file_editor.c:896
 msgid "Character set"
@@ -284,11 +284,11 @@ msgstr "文字コード"
 
 #: src/remmina_ssh_plugin.c:1081
 msgid "SSH Proxy Command"
-msgstr ""
+msgstr "SSH プロキシ コマンド"
 
 #: src/remmina_ssh_plugin.c:1082
 msgid "KEX (Key Exchange) algorithms"
-msgstr ""
+msgstr "KEX (鍵交換) アルゴリズム"
 
 #: src/remmina_ssh_plugin.c:1083
 msgid "Symmetric cipher client to server"
@@ -299,17 +299,16 @@ msgid "Preferred server host key types"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1085
-#, fuzzy
 msgid "Folder for SSH session log"
-msgstr "SSH セッションの開始に失敗しました: %s"
+msgstr "SSH セッションログのフォルダ"
 
 #: src/remmina_ssh_plugin.c:1086
 msgid "Filename for SSH session log"
-msgstr ""
+msgstr "SSH セッションログのファイル名"
 
 #: src/remmina_ssh_plugin.c:1087
 msgid "Log SSH session when exiting Remmina"
-msgstr ""
+msgstr "Remmina を終了するときにSSH session ログを保存する"
 
 #: src/remmina_ssh_plugin.c:1088
 msgid "Audible terminal bell"
@@ -317,16 +316,16 @@ msgstr ""
 
 #: src/remmina_ssh_plugin.c:1089
 msgid "SSH compression"
-msgstr ""
+msgstr "SSH 圧縮"
 
 #: src/remmina_ssh_plugin.c:1090
-#, fuzzy
 msgid "Don't remember passwords"
-msgstr "パスワードを保存する"
+msgstr "パスワードを保存しない"
 
 #: src/remmina_ssh_plugin.c:1091
+#, fuzzy
 msgid "Strict host key checking"
-msgstr ""
+msgstr "厳密なホスト鍵チェック"
 
 #: src/remmina_ssh_plugin.c:1105
 msgid "SSH - Secure Shell"
@@ -342,11 +341,11 @@ msgstr "新しい接続"
 
 #: src/remmina_mpchange.c:234
 msgid "The passwords do not match"
-msgstr ""
+msgstr "パスワードが一致しません"
 
 #: src/remmina_mpchange.c:244
 msgid "Resetting passwords, please wait…"
-msgstr ""
+msgstr "パスワードをリセットしています。お待ちください…"
 
 #: src/remmina_mpchange.c:327
 msgid "The multi password changer requires a secrecy plugin.\n"
@@ -360,11 +359,11 @@ msgstr ""
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
-msgstr[0] ""
+msgstr[0] "%d 個のパスワードが変更されました。"
 
 #: src/remmina_public.c:639
 msgid "Please enter format 'widthxheight'."
-msgstr "'幅×高さ' を入力してください"
+msgstr "'幅×高さ' を入力してください。"
 
 #. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
 #: src/remmina_about.c:54
@@ -972,7 +971,7 @@ msgstr ""
 
 #: src/remmina_ssh.c:225
 msgid "SSH Key file not yet set."
-msgstr "SSH 鍵ファイルがまだ設定されていません"
+msgstr "SSH 鍵ファイルがまだ設定されていません。"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:236
@@ -1481,7 +1480,7 @@ msgstr "VNC 接続失敗: %s"
 
 #: plugins/vnc/vnc_plugin.c:893
 msgid "Your connection has been rejected."
-msgstr "接続を拒否されました"
+msgstr "接続を拒否されました。"
 
 #: plugins/vnc/vnc_plugin.c:919
 #, c-format
@@ -2245,7 +2244,7 @@ msgstr ""
 
 #: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:462
 msgid "About"
-msgstr "PyPIについて"
+msgstr "Remminaについて"
 
 #: data/ui/remmina_about.glade:40
 msgid "Website"
@@ -2295,7 +2294,7 @@ msgstr ""
 
 #: data/ui/remmina_main.glade:350
 msgid "Export"
-msgstr "輸出する"
+msgstr "エクスポート"
 
 #: data/ui/remmina_main.glade:360
 msgid "Multi password changer"
