@@ -527,7 +527,8 @@ static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin)
 		 */
 #if GTK_CHECK_VERSION(3, 24, 0)
 		ggs = gdk_seat_grab(seat, gtk_widget_get_window(GTK_WIDGET(cnnwin)),
-				    GDK_SEAT_CAPABILITY_KEYBOARD, FALSE, NULL, NULL, NULL, NULL);
+				    GDK_SEAT_CAPABILITY_ALL, TRUE, NULL, NULL, NULL, NULL);
+
 #else
 		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 			ggs = gdk_device_grab(keyboard, gtk_widget_get_window(GTK_WIDGET(cnnwin)), GDK_OWNERSHIP_WINDOW,
