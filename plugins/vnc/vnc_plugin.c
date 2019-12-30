@@ -678,7 +678,6 @@ static gboolean remmina_plugin_vnc_queue_cuttext(RemminaPluginVncCuttextParam *p
 	gchar *text;
 	gsize br, bw;
 
-
 	if (GTK_IS_WIDGET(gp) && gpdata->connected) {
 		g_get_current_time(&t);
 		diff = (t.tv_sec - gpdata->clipboard_timer.tv_sec) * 10
@@ -687,7 +686,7 @@ static gboolean remmina_plugin_vnc_queue_cuttext(RemminaPluginVncCuttextParam *p
 			gpdata->clipboard_timer = t;
 			/* Convert text from VNC latin-1 to current GTK charset (usually UTF-8) */
 			g_get_charset(&cur_charset);
-			text = g_convert_with_fallback(param->text, -1, cur_charset, "ISO-8859-1", "?", &br, &bw, NULL);
+			text = g_convert_with_fallback(param->text, param->textlen, cur_charset, "ISO-8859-1", "?", &br, &bw, NULL);
 			gtk_clipboard_set_text(gtk_clipboard_get(GDK_SELECTION_CLIPBOARD), text, bw);
 			g_free(text);
 		}
