@@ -2,14 +2,14 @@
 # Copyright © 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-# Johannes Weberhofer <jweberhofer@weberhofer.at>, 2019.
+# Johannes Weberhofer <jweberhofer@weberhofer.at>, 2019, 2020.
 # Allan Nordhøy <epost@anotheragency.no>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2019-12-30 13:23+0000\n"
-"PO-Revision-Date: 2019-12-21 15:21+0000\n"
+"PO-Revision-Date: 2020-01-02 10:21+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -1090,9 +1090,9 @@ msgid "Could not open channel. %s"
 msgstr "Das Öffnen des Kanals ist fehlgeschlagen: %s"
 
 #: src/remmina_ssh.c:1189
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run %s on SSH server."
-msgstr "Kann %s auf dem SSH-Server nicht ausführen: %%s"
+msgstr "Kann %s auf dem SSH-Server nicht ausführen."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1227 src/remmina_ssh.c:1248 src/remmina_ssh.c:1257
@@ -1602,7 +1602,7 @@ msgstr "Remmina VNC-Plugin"
 
 #: plugins/vnc/vnc_plugin.h:46
 msgid "Remmina VNC listener Plugin"
-msgstr "Remmina VNC Empfangs-Plugin"
+msgstr "Remmina VNC-Server Plugin"
 
 #: plugins/spice/spice_plugin_usb.c:51 plugins/spice/spice_plugin.c:473
 msgid "Select USB devices for redirection"
@@ -1871,13 +1871,13 @@ msgid "The \"%s\" server refused the connection."
 msgstr "Der Server \"%s\" hat die Verbindung abgewiesen."
 
 #: plugins/rdp/rdp_plugin.c:1580
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
 "policy."
 msgstr ""
-"Das Remote-Desktop-Gateway \"%s\" hat den Benutzer \"%s\"\\\"%s\" aufgrund "
-"einer Richtlinie abgelehnt."
+"Das Remote-Desktop-Gateway \"%s\" hat den Benutzer \"%s\\%s\" aufgrund einer "
+"Richtlinie abgelehnt."
 
 #: plugins/rdp/rdp_plugin.c:1590
 #, c-format
@@ -2294,9 +2294,8 @@ msgid "Toggle view"
 msgstr "Schalte Ansicht um"
 
 #: data/ui/remmina_main.glade:186
-#, fuzzy
 msgid "Search string or server name/IP address for “Quick Connect”"
-msgstr "Suchstring, Servername oder IP‐Adresse für Quick Connect"
+msgstr "Suchbegriff, Servername oder IP‐Adresse für \"Quick Connect\""
 
 #: data/ui/remmina_main.glade:190 data/ui/remmina_main.glade:192
 msgid "Server name or IP address"
