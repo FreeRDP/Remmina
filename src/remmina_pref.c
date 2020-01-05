@@ -314,6 +314,11 @@ void remmina_pref_init(void)
 	else
 		remmina_pref.prevent_snap_welcome_message = FALSE;
 
+	if (g_key_file_has_key(gkeyfile, "remmina_pref", "suppress_xinput_welcome_message_time_limit", NULL))
+		remmina_pref.suppress_xinput_welcome_message_time_limit = g_key_file_get_uint64(gkeyfile, "remmina_pref", "suppress_xinput_welcome_message_time_limit", NULL);
+	else
+		remmina_pref.suppress_xinput_welcome_message_time_limit = FALSE;
+
 	if (g_key_file_has_key(gkeyfile, "remmina_pref", "last_quickconnect_protocol", NULL))
 		remmina_pref.last_quickconnect_protocol = g_key_file_get_string(gkeyfile, "remmina_pref", "last_quickconnect_protocol", NULL);
 	else
@@ -739,6 +744,7 @@ gboolean remmina_pref_save(void)
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "floating_toolbar_placement", remmina_pref.floating_toolbar_placement);
 	g_key_file_set_integer(gkeyfile, "remmina_pref", "toolbar_placement", remmina_pref.toolbar_placement);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "prevent_snap_welcome_message", remmina_pref.prevent_snap_welcome_message);
+	g_key_file_set_uint64(gkeyfile, "remmina_pref", "suppress_xinput_welcome_message_time_limit", remmina_pref.suppress_xinput_welcome_message_time_limit);
 	g_key_file_set_string(gkeyfile, "remmina_pref", "last_quickconnect_protocol", remmina_pref.last_quickconnect_protocol);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "fullscreen_on_auto", remmina_pref.fullscreen_on_auto);
 	g_key_file_set_boolean(gkeyfile, "remmina_pref", "always_show_tab", remmina_pref.always_show_tab);
