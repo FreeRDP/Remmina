@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # Davy Defaud <davy.defaud@free.fr>, 2016-2019.
-# Nathan <bonnemainsnathan@gmail.com>, 2019.
+# Nathan <bonnemainsnathan@gmail.com>, 2019, 2020.
 # Aroa Taha <Naturameuocat@protonmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-01-05 13:35+0000\n"
-"PO-Revision-Date: 2019-12-22 22:05+0000\n"
-"Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
+"PO-Revision-Date: 2020-01-06 16:21+0000\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
 "Language: fr\n"
@@ -1110,9 +1110,9 @@ msgid "Could not open channel. %s"
 msgstr "Ouverture du canal impossible. %s"
 
 #: src/remmina_ssh.c:1189
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run %s on SSH server."
-msgstr "Impossible d’exécuter %s sur le serveur SSH, %%s"
+msgstr "Impossible d’exécuter %s sur le serveur SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1227 src/remmina_ssh.c:1248 src/remmina_ssh.c:1257
@@ -1891,13 +1891,13 @@ msgid "The \"%s\" server refused the connection."
 msgstr "Le serveur « %s » a refusé la connexion."
 
 #: plugins/rdp/rdp_plugin.c:1580
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
 "policy."
 msgstr ""
-"La passerelle de bureau à distance « %s » a refusé l’accès à l’utilisateur "
-"« %s\\%s » en raison de sa politique de sécurité."
+"La passerelle de bureau à distance « %s » a refusé l’accès à l’utilisateur « "
+"%s\\%s » en raison de sa politique de sécurité."
 
 #: plugins/rdp/rdp_plugin.c:1590
 #, c-format
@@ -2278,10 +2278,15 @@ msgid ""
 "will not work too.\n"
 "Please unset GDK_CORE_DEVICE_EVENTS environment variable."
 msgstr ""
+"Remmina a détecté que votre variable d'environnement GDK_CORE_DEVICE_EVENTS "
+"est définie.\n"
+"Cela peut causer un plantage de Remmina pendant la capture du clavier, et "
+"les évènement tactiles ne fonctionneront pas non plus.\n"
+"Veuillez désactiver la variable d'environnement GDK_CORE_DEVICE_EVENTS."
 
 #: data/ui/remmina_xinput_env_dialog.glade:65
 msgid "Suppress this message for 20 days"
-msgstr ""
+msgstr "Supprimer ce message pendant 20 jours"
 
 #: data/ui/remmina_snap_info_dialog.glade:46
 msgid ""
@@ -2327,7 +2332,6 @@ msgid "Toggle view"
 msgstr "Basculer l’affichage"
 
 #: data/ui/remmina_main.glade:186
-#, fuzzy
 msgid "Search string or server name/IP address for “Quick Connect”"
 msgstr ""
 "Chaîne de caractères de recherche d’un nom ou d’une adresse IP d’un serveur "
