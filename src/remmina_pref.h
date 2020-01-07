@@ -186,7 +186,6 @@ typedef struct _RemminaPref {
 	gint			floating_toolbar_placement;
 	gint			toolbar_placement;
 	gboolean		prevent_snap_welcome_message;
-	guint64			suppress_xinput_welcome_message_time_limit;
 	gchar *			last_quickconnect_protocol;
 
 	/* Crypto */
