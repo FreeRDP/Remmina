@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-01-05 13:35+0000\n"
+"POT-Creation-Date: 2020-01-07 16:31+0000\n"
 "PO-Revision-Date: 2020-01-06 16:21+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -603,7 +603,7 @@ msgstr "Appliquette Remmina"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Se connecter aux bureaux distants via le menu de l’appliquette"
 
-#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1270
+#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1242
 msgid "Remmina Remote Desktop Client"
 msgstr "Visionneur de bureaux distants Remmina"
 
@@ -752,19 +752,19 @@ msgstr "Description"
 msgid "Version"
 msgstr "Version"
 
-#: src/remmina_main.c:692
+#: src/remmina_main.c:664
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "%i élément au total."
 msgstr[1] "%i éléments au total."
 
-#: src/remmina_main.c:874
+#: src/remmina_main.c:846
 #, c-format
 msgid "Are you sure you want to delete \"%s\"?"
 msgstr "Êtes‐vous sûr(e) de vouloir supprimer « %s » ?"
 
-#: src/remmina_main.c:974
+#: src/remmina_main.c:946
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -773,19 +773,19 @@ msgstr ""
 "Importation impossible :\n"
 "%s"
 
-#: src/remmina_main.c:1001 data/ui/remmina_main.glade:340
+#: src/remmina_main.c:973 data/ui/remmina_main.glade:340
 msgid "Import"
 msgstr "Importer"
 
-#: src/remmina_main.c:1024 src/remmina_file_editor.c:1312
+#: src/remmina_main.c:996 src/remmina_file_editor.c:1312
 msgid "_Save"
 msgstr "_Enregistrer"
 
-#: src/remmina_main.c:1031
+#: src/remmina_main.c:1003
 msgid "This protocol does not support exporting."
 msgstr "Ce protocole ne gère pas l’exportation."
 
-#: src/remmina_main.c:1272
+#: src/remmina_main.c:1244
 msgid "Remmina Kiosk"
 msgstr "Démarrer Remmina en mode Kiosque"
 
@@ -1896,8 +1896,8 @@ msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
 "policy."
 msgstr ""
-"La passerelle de bureau à distance « %s » a refusé l’accès à l’utilisateur « "
-"%s\\%s » en raison de sa politique de sécurité."
+"La passerelle de bureau à distance « %s » a refusé l’accès à l’utilisateur "
+"« %s\\%s » en raison de sa politique de sécurité."
 
 #: plugins/rdp/rdp_plugin.c:1590
 #, c-format
@@ -2269,24 +2269,6 @@ msgstr "Invitation à partager le bureau"
 #: plugins/telepathy/telepathy_plugin.c:57
 msgid "Telepathy - Desktop Sharing"
 msgstr "Telepathy — partage de bureau"
-
-#: data/ui/remmina_xinput_env_dialog.glade:49
-msgid ""
-"Remmina detected that your environment variable  GDK_CORE_DEVICE_EVENTS is "
-"set.\n"
-"This could make remmina freeze when grabbing the keyboard, and touch events "
-"will not work too.\n"
-"Please unset GDK_CORE_DEVICE_EVENTS environment variable."
-msgstr ""
-"Remmina a détecté que votre variable d'environnement GDK_CORE_DEVICE_EVENTS "
-"est définie.\n"
-"Cela peut causer un plantage de Remmina pendant la capture du clavier, et "
-"les évènement tactiles ne fonctionneront pas non plus.\n"
-"Veuillez désactiver la variable d'environnement GDK_CORE_DEVICE_EVENTS."
-
-#: data/ui/remmina_xinput_env_dialog.glade:65
-msgid "Suppress this message for 20 days"
-msgstr "Supprimer ce message pendant 20 jours"
 
 #: data/ui/remmina_snap_info_dialog.glade:46
 msgid ""
@@ -3062,3 +3044,4 @@ msgstr "Choisir une nouvelle touche"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Veuillez appuyer sur la nouvelle touche…"
+
