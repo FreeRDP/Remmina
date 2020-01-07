@@ -305,6 +305,8 @@ int main(int argc, char *argv[])
 	const gchar *app_id;
 	int status;
 
+	g_unsetenv ("GDK_CORE_DEVICE_EVENTS");
+
 	/* Enable wayland backend only after GTK 3.22.27 or the clipboard
 	 * will not work. See GTK bug 790031 */
 	if (remmina_gtk_check_version(3, 22, 27))
