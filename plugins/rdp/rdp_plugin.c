@@ -1108,10 +1108,6 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		if (proxy_port)
 			rfi->settings->ProxyPort = proxy_port;
 	}
-	if (proxy_type) g_free(proxy_type);
-	if (proxy_username) g_free(proxy_username);
-	if (proxy_password) g_free(proxy_password);
-	if (proxy_hostname) g_free(proxy_hostname);
 
 	/* Remote Desktop Gateway server address */
 	rfi->settings->GatewayEnabled = FALSE;
