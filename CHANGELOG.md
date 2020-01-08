@@ -1,3 +1,11 @@
+## v1.3.10
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.9...v1.3.10)
+
+* VNC: Fix a buffer overflow during cuttext [!1987](https://gitlab.com/Remmina/Remmina/merge_requests/1987) *@giox069*
+* Fix KB/pointer grabbing again and add warning when GTK is using [!1988](https://gitlab.com/Remmina/Remmina/merge_requests/1988) *@giox069*
+* GDK_CORE_DEVICE_EVENTS refactoring [!1989](https://gitlab.com/Remmina/Remmina/merge_requests/1989) *@antenore*
+* Proxy support fixes [!1990](https://gitlab.com/Remmina/Remmina/merge_requests/1990) *@antenore*
+
 ## v1.3.9
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.8...v1.3.9)
 
