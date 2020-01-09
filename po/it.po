@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-01-09 14:06+0000\n"
+"POT-Creation-Date: 2020-01-09 21:54+0000\n"
 "PO-Revision-Date: 2019-12-20 12:54+0000\n"
 "Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -130,7 +130,7 @@ msgstr ""
 "Impossibile eseguire l'autenticazione, tentativo di riconnessione in corso…"
 
 #: src/remmina_protocol_widget.c:1668 src/remmina_file_editor.c:402
-#: src/remmina_file_editor.c:877 data/ui/remmina_main.glade:574
+#: src/remmina_file_editor.c:877 data/ui/remmina_main.glade:565
 msgid "Server"
 msgstr "Server"
 
@@ -214,7 +214,7 @@ msgstr "Chiave pubblica (automatico)"
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
-#: src/remmina_ssh_plugin.c:1037 data/ui/remmina_main.glade:266
+#: src/remmina_ssh_plugin.c:1037 data/ui/remmina_main.glade:267
 msgid "Copy"
 msgstr "Copia"
 
@@ -431,7 +431,7 @@ msgstr "Scaricare dal server"
 msgid "Upload to server"
 msgstr "Inviare al server"
 
-#: src/remmina_ftp_client.c:790 data/ui/remmina_main.glade:286
+#: src/remmina_ftp_client.c:790 data/ui/remmina_main.glade:287
 msgid "Delete"
 msgstr "Elimina"
 
@@ -452,7 +452,7 @@ msgid "User"
 msgstr "Nome utente"
 
 #: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1454
-#: data/ui/remmina_main.glade:560 data/ui/remmina_mpc.glade:115
+#: data/ui/remmina_main.glade:551 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Gruppo"
 
@@ -559,7 +559,7 @@ msgstr ""
 msgid "Open Main Window"
 msgstr "Aprire la schermata principale"
 
-#: src/remmina_icon.c:144 data/ui/remmina_main.glade:404
+#: src/remmina_icon.c:144 data/ui/remmina_main.glade:343
 msgid "_Preferences"
 msgstr "_Preferenze"
 
@@ -571,7 +571,7 @@ msgstr "I_nformazioni"
 msgid "Enable Service Discovery"
 msgstr "Abilitare la ricerca dei servizi"
 
-#: src/remmina_icon.c:172 data/ui/remmina_main.glade:495
+#: src/remmina_icon.c:172 data/ui/remmina_main.glade:494
 msgid "_Quit"
 msgstr "_Esci"
 
@@ -647,7 +647,7 @@ msgstr "Catturare tutti gli eventi della tastiera"
 msgid "Preferences"
 msgstr "Preferenze"
 
-#: src/rcw.c:2206 src/rcw.c:2207 data/ui/remmina_main.glade:296
+#: src/rcw.c:2206 src/rcw.c:2207 data/ui/remmina_main.glade:297
 msgid "Tools"
 msgstr "Strumenti"
 
@@ -701,7 +701,7 @@ msgstr "Preferenza"
 msgid "Secret"
 msgstr "Segreto"
 
-#: src/remmina_plugin_manager.c:440 data/ui/remmina_main.glade:394
+#: src/remmina_plugin_manager.c:440 data/ui/remmina_main.glade:414
 msgid "Plugins"
 msgstr "Plugins"
 
@@ -711,7 +711,7 @@ msgid "_OK"
 msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:458 src/remmina_file_editor.c:1429
-#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:538
+#: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:529
 msgid "Name"
 msgstr "Nome"
 
@@ -748,7 +748,7 @@ msgstr ""
 "Impossibile importare:\n"
 "%s"
 
-#: src/remmina_main.c:956 data/ui/remmina_main.glade:340
+#: src/remmina_main.c:956 data/ui/remmina_main.glade:374
 msgid "Import"
 msgstr "Importa"
 
@@ -1332,7 +1332,7 @@ msgstr "Salva come predefinito"
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "Utilizza i parametri correnti per tutti i nuovi profili di connessione"
 
-#: src/remmina_file_editor.c:1317 data/ui/remmina_main.glade:249
+#: src/remmina_file_editor.c:1317 data/ui/remmina_main.glade:250
 msgid "Connect"
 msgstr "Connetti"
 
@@ -2262,7 +2262,7 @@ msgstr ""
 msgid "Do not show this message again"
 msgstr "Non mostrare più questo messaggio"
 
-#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:462
+#: data/ui/remmina_about.glade:30 data/ui/remmina_main.glade:485
 msgid "About"
 msgstr "Informazioni"
 
@@ -2278,79 +2278,83 @@ msgstr "Nuovo profilo di connessione"
 msgid "Show search bar"
 msgstr "Mostra barra di ricerca"
 
-#: data/ui/remmina_main.glade:124
+#: data/ui/remmina_main.glade:125
 msgid "Actions"
 msgstr "Azione"
 
-#: data/ui/remmina_main.glade:138
+#: data/ui/remmina_main.glade:139
 msgid "Toggle view"
 msgstr "Cambia vista"
 
-#: data/ui/remmina_main.glade:186
+#: data/ui/remmina_main.glade:187
 #, fuzzy
 msgid "Search string or server name/IP address for “Quick Connect”"
 msgstr ""
 "Stringa di ricerca o nome del server/indirizzo IP per \"Connessione rapida\""
 
-#: data/ui/remmina_main.glade:190 data/ui/remmina_main.glade:192
+#: data/ui/remmina_main.glade:191 data/ui/remmina_main.glade:193
 msgid "Server name or IP address"
 msgstr "Nome server o indirizzo IP"
 
-#: data/ui/remmina_main.glade:191 data/ui/remmina_main.glade:193
+#: data/ui/remmina_main.glade:192 data/ui/remmina_main.glade:194
 #: data/ui/remmina_preferences.glade:214
 msgid "Clear"
 msgstr "Pulisci"
 
-#: data/ui/remmina_main.glade:276
+#: data/ui/remmina_main.glade:277
 msgid "Edit"
 msgstr "Modifica"
 
-#: data/ui/remmina_main.glade:306
+#: data/ui/remmina_main.glade:307
 msgid "Collapse all"
 msgstr "Comprimi tutto"
 
-#: data/ui/remmina_main.glade:316
+#: data/ui/remmina_main.glade:317
 msgid "Expand all"
 msgstr "Espandi tutto"
 
-#: data/ui/remmina_main.glade:350
-msgid "Export"
-msgstr "Esporta"
-
-#: data/ui/remmina_main.glade:360
+#: data/ui/remmina_main.glade:354
 msgid "Multi password changer"
 msgstr "Cambio password multiplo"
 
-#: data/ui/remmina_main.glade:377
+#: data/ui/remmina_main.glade:364
 msgid "Debugging"
 msgstr "Debug"
 
-#: data/ui/remmina_main.glade:422
+#: data/ui/remmina_main.glade:384
+msgid "Export"
+msgstr "Esporta"
+
+#: data/ui/remmina_main.glade:394
+msgid "News"
+msgstr ""
+
+#: data/ui/remmina_main.glade:404
+msgid "Set as default remote desktop client"
+msgstr "Imposta come client desktop remoto predefinito"
+
+#: data/ui/remmina_main.glade:431
 msgid "Homepage"
 msgstr "Sito web"
 
-#: data/ui/remmina_main.glade:432
+#: data/ui/remmina_main.glade:441
+msgid "Donations"
+msgstr "Donazioni"
+
+#: data/ui/remmina_main.glade:451
 msgid "Wiki"
 msgstr "Wiki"
 
 #. Remmina community website
-#: data/ui/remmina_main.glade:442
+#: data/ui/remmina_main.glade:461
 msgid "Online Community"
 msgstr "Comunità online"
 
-#: data/ui/remmina_main.glade:452
-msgid "Donations"
-msgstr "Donazioni"
-
-#: data/ui/remmina_main.glade:478
-msgid "Set as default remote desktop client"
-msgstr "Imposta come client desktop remoto predefinito"
-
-#: data/ui/remmina_main.glade:588
+#: data/ui/remmina_main.glade:579
 msgid "Plugin"
 msgstr "Plugin"
 
-#: data/ui/remmina_main.glade:602
+#: data/ui/remmina_main.glade:593
 msgid "Last used"
 msgstr "Ultimo utilizzo"
 
@@ -2996,4 +3000,3 @@ msgstr "Sciegli un nuovo tasto"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Premere un nuovo tasto prego…"
-
