@@ -387,16 +387,6 @@ static gboolean remmina_file_multipasswd_changer_mt(gpointer d)
 	mpcp->btnDoChange = GTK_BUTTON(GET_DIALOG_OBJECT("btnDoChange"));
 	g_signal_connect(mpcp->btnDoChange, "clicked", G_CALLBACK(remmina_mpchange_dochange_clicked), (gpointer)mpcp);
 
-#if GTK_CHECK_VERSION(3, 16, 0)
-	GList *fc = NULL;
-	fc = g_list_append(fc, mpcp->eGroup);
-	fc = g_list_append(fc, mpcp->eUsername);
-	fc = g_list_append(fc, mpcp->eDomain);
-	fc = g_list_append(fc, mpcp->ePassword1);
-	fc = g_list_append(fc, mpcp->ePassword2);
-	gtk_container_set_focus_chain(GTK_CONTAINER(GET_DIALOG_OBJECT("inputgrid1")), fc);
-#endif
-
 	gtk_dialog_run(dialog);
 	gtk_widget_destroy(GTK_WIDGET(dialog));
 

@@ -3182,7 +3182,6 @@ static RemminaConnectionWindow *rcw_create_scrolled(gint width, gint height, gbo
 	GtkWidget *grid;
 	GtkWidget *toolbar;
 	GtkNotebook *notebook;
-	GList *chain;
 
 	cnnwin = rcw_new(FALSE, 0);
 	gtk_widget_realize(GTK_WIDGET(cnnwin));
@@ -3205,10 +3204,6 @@ static RemminaConnectionWindow *rcw_create_scrolled(gint width, gint height, gbo
 	rcw_place_toolbar(GTK_TOOLBAR(toolbar), GTK_GRID(grid), GTK_WIDGET(notebook), remmina_pref.toolbar_placement);
 
 	gtk_container_add(GTK_CONTAINER(cnnwin), grid);
-
-	chain = g_list_append(NULL, notebook);
-	gtk_container_set_focus_chain(GTK_CONTAINER(grid), chain);
-	g_list_free(chain);
 
 	/* Add drag capabilities to the toolbar */
 	gtk_drag_source_set(GTK_WIDGET(toolbar), GDK_BUTTON1_MASK,
