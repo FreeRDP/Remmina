@@ -3206,10 +3206,6 @@ static RemminaConnectionWindow *rcw_create_scrolled(gint width, gint height, gbo
 
 	gtk_container_add(GTK_CONTAINER(cnnwin), grid);
 
-	chain = g_list_append(NULL, notebook);
-	gtk_container_set_focus_chain(GTK_CONTAINER(grid), chain);
-	g_list_free(chain);
-
 	/* Add drag capabilities to the toolbar */
 	gtk_drag_source_set(GTK_WIDGET(toolbar), GDK_BUTTON1_MASK,
 			    dnd_targets_tb, sizeof dnd_targets_tb / sizeof *dnd_targets_tb, GDK_ACTION_MOVE);
