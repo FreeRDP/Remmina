@@ -244,23 +244,6 @@ static void remmina_main_clear_selection_data(void)
 	remminamain->priv->selected_name = NULL;
 }
 
-static void remmina_main_check_env()
-{
-	GtkBuilder *dlgbuilder = NULL;
-	GtkWidget *dlg;
-	GtkWindow *parent;
-	GtkWidget* dsa;
-	int result;
-	gint64 nowsec;
-	static gboolean shown_once = FALSE;
-	#define SUPPRESS_DAYS 20
-
-	if (shown_once)
-		return;
-	else
-		shown_once = TRUE;
-}
-
 #ifdef SNAP_BUILD
 
 static void remmina_main_show_snap_welcome()
@@ -1301,7 +1284,6 @@ void remmina_main_on_show(GtkWidget *w, gpointer user_data)
 #ifdef SNAP_BUILD
 	remmina_main_show_snap_welcome();
 #endif
-	remmina_main_check_env();
 }
 
 /* RemminaMain instance */
