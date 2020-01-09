@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-01-08 13:36+0000\n"
+"POT-Creation-Date: 2020-01-09 14:06+0000\n"
 "PO-Revision-Date: 2020-01-09 14:03+0000\n"
 "Last-Translator: Serdar Sağlam <teknomobil@msn.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -77,7 +77,7 @@ msgstr "SSH ile %s'ye bağlanılıyor…"
 #: src/remmina_ssh_plugin.c:958 src/remmina_sftp_plugin.c:317
 #: src/remmina_sftp_plugin.c:350 src/remmina_file_editor.c:926
 #: plugins/www/www_plugin.c:793 plugins/rdp/rdp_plugin.c:1933
-#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:116
+#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1533
 msgid "Password"
 msgstr "Parola"
@@ -243,7 +243,7 @@ msgstr "_Tümünü seç"
 #: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:917
 #: plugins/www/www_plugin.c:792 plugins/vnc/vnc_plugin.c:1831
 #: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:1932
-#: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:155
+#: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Kullanıcı adı"
 
@@ -352,7 +352,7 @@ msgstr "Çoklu parola değiştirici gizlilik eklentisi gerektirir.\n"
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr "Çoklu parola değiştirici gizli servisi gerektirir.\n"
 
-#: src/remmina_mpchange.c:419
+#: src/remmina_mpchange.c:409
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
@@ -462,7 +462,7 @@ msgid "User"
 msgstr "Kullanıcı"
 
 #: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1454
-#: data/ui/remmina_main.glade:560 data/ui/remmina_mpc.glade:102
+#: data/ui/remmina_main.glade:560 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Grup"
 
@@ -593,7 +593,7 @@ msgstr "Remmina Küçük Uygulama"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Uzak masaüstüne küçük uygulama menüsü ile bağlan"
 
-#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1242
+#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1225
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina Uzak Masaüstü İstemcisi"
 
@@ -677,12 +677,12 @@ msgstr "Pencereyi küçült"
 msgid "Disconnect"
 msgstr "Bağlantıyı kes"
 
-#: src/rcw.c:3800
+#: src/rcw.c:3795
 #, c-format
 msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
 msgstr "\"%s\" dosyası bozuk, okunamıyor veya bulunamadı."
 
-#: src/rcw.c:3962
+#: src/rcw.c:3957
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "Uyarı: Bu eklenti GtkSocket gerektirir, ancak mevcut değil."
 
@@ -736,19 +736,19 @@ msgstr "Açıklama"
 msgid "Version"
 msgstr "Sürüm"
 
-#: src/remmina_main.c:664
+#: src/remmina_main.c:647
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "Toplam %i öge."
 msgstr[1] "Toplam %i öge."
 
-#: src/remmina_main.c:846
+#: src/remmina_main.c:829
 #, c-format
 msgid "Are you sure you want to delete \"%s\"?"
 msgstr "\"%s\"i silmek istediğinizden emin misiniz?"
 
-#: src/remmina_main.c:946
+#: src/remmina_main.c:929
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -757,19 +757,19 @@ msgstr ""
 "İçeri aktarılamıyor:\n"
 "%s"
 
-#: src/remmina_main.c:973 data/ui/remmina_main.glade:340
+#: src/remmina_main.c:956 data/ui/remmina_main.glade:340
 msgid "Import"
 msgstr "İçeri Aktar"
 
-#: src/remmina_main.c:996 src/remmina_file_editor.c:1312
+#: src/remmina_main.c:979 src/remmina_file_editor.c:1312
 msgid "_Save"
 msgstr "_Kaydet"
 
-#: src/remmina_main.c:1003
+#: src/remmina_main.c:986
 msgid "This protocol does not support exporting."
 msgstr "Bu protokol dışarı çıkartmayı desteklemiyor."
 
-#: src/remmina_main.c:1244
+#: src/remmina_main.c:1227
 msgid "Remmina Kiosk"
 msgstr "Remmina Kiosk"
 
@@ -899,7 +899,7 @@ msgid "The following file already exists in the target folder:"
 msgstr "Bu dosya hedef klasör içinde zaten var:"
 
 #: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
-#: data/ui/remmina_mpc.glade:38
+#: data/ui/remmina_mpc.glade:46
 msgid "Cancel"
 msgstr "İptal"
 
@@ -919,7 +919,7 @@ msgid "No"
 msgstr "Hayır"
 
 #: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1934
-#: data/ui/remmina_mpc.glade:141
+#: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "Alan adı"
 
@@ -2418,48 +2418,44 @@ msgstr ""
 msgid "<big>Contribute</big>"
 msgstr "<big>Katkıcılar</big>"
 
-#: data/ui/remmina_mpc.glade:7
-msgid "Remmina - Multi Password Changer"
-msgstr "Remmina - Çoklu Parola Değiştirici"
-
-#: data/ui/remmina_mpc.glade:24
-msgid "Change"
-msgstr "Değiştir"
-
-#: data/ui/remmina_mpc.glade:64
+#: data/ui/remmina_mpc.glade:14
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
 msgstr "<span weight='bold' size='larger'>Çoklu Parola Değiştirici</span>"
 
-#: data/ui/remmina_mpc.glade:169
+#: data/ui/remmina_mpc.glade:32
+msgid "Change"
+msgstr "Değiştir"
+
+#: data/ui/remmina_mpc.glade:201
 msgid "Selection criteria"
 msgstr "Seçim kriterleri"
 
-#: data/ui/remmina_mpc.glade:198
+#: data/ui/remmina_mpc.glade:261
 msgid "Confirm password"
 msgstr "Parolayı onayla"
 
-#: data/ui/remmina_mpc.glade:211
-msgctxt "Multi password changer"
+#: data/ui/remmina_mpc.glade:294
+#, fuzzy
 msgid "Set new password"
 msgstr "Yeni parola ayarla"
 
 #. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:305
+#: data/ui/remmina_mpc.glade:331
 msgctxt "Multi password changer"
 msgid "Select"
 msgstr "Seç"
 
-#: data/ui/remmina_mpc.glade:317
+#: data/ui/remmina_mpc.glade:343
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "İsim"
 
-#: data/ui/remmina_mpc.glade:328
+#: data/ui/remmina_mpc.glade:354
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "Grup"
 
-#: data/ui/remmina_mpc.glade:339
+#: data/ui/remmina_mpc.glade:365
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "Alan adı\\Kullanıcı adı"
@@ -3003,3 +2999,4 @@ msgstr "Yeni bir tuş seç"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Lütfen yeni tuşa basın…"
+

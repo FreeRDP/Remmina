@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-01-08 13:36+0000\n"
+"POT-Creation-Date: 2020-01-09 14:06+0000\n"
 "PO-Revision-Date: 2020-01-07 16:28+0000\n"
 "Last-Translator: Солтыс Сергей <treefeed@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -74,7 +74,7 @@ msgstr "Подключение к %s через SSH…"
 #: src/remmina_ssh_plugin.c:958 src/remmina_sftp_plugin.c:317
 #: src/remmina_sftp_plugin.c:350 src/remmina_file_editor.c:926
 #: plugins/www/www_plugin.c:793 plugins/rdp/rdp_plugin.c:1933
-#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:116
+#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1533
 msgid "Password"
 msgstr "Пароль"
@@ -240,7 +240,7 @@ msgstr "_Выбрать все"
 #: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:917
 #: plugins/www/www_plugin.c:792 plugins/vnc/vnc_plugin.c:1831
 #: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:1932
-#: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:155
+#: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "Имя пользователя"
 
@@ -349,7 +349,7 @@ msgstr "Множественная смена паролей требует мо
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr "Множественная смена паролей требует сервиса секретов.\n"
 
-#: src/remmina_mpchange.c:419
+#: src/remmina_mpchange.c:409
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
@@ -467,7 +467,7 @@ msgid "User"
 msgstr "Пользователь"
 
 #: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1454
-#: data/ui/remmina_main.glade:560 data/ui/remmina_mpc.glade:102
+#: data/ui/remmina_main.glade:560 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Группа"
 
@@ -599,7 +599,7 @@ msgstr "Мини-программа Remmina"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "Подключение к удалённым рабочим столам через меню мини-программы"
 
-#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1242
+#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1225
 msgid "Remmina Remote Desktop Client"
 msgstr "Клиент удалённого рабочего стола Remmina"
 
@@ -683,12 +683,12 @@ msgstr "Свернуть окно"
 msgid "Disconnect"
 msgstr "Отключиться"
 
-#: src/rcw.c:3800
+#: src/rcw.c:3795
 #, c-format
 msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
 msgstr "Файл \"%s\" поврежден, не читается или не найден."
 
-#: src/rcw.c:3962
+#: src/rcw.c:3957
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "Внимание: Этот модуль требует GtkSocket, но он недоступен."
 
@@ -742,7 +742,7 @@ msgstr "Описание"
 msgid "Version"
 msgstr "Версия"
 
-#: src/remmina_main.c:664
+#: src/remmina_main.c:647
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
@@ -750,12 +750,12 @@ msgstr[0] "Всего %i подключение."
 msgstr[1] "Всего %i подключения."
 msgstr[2] "Всего %i подключений."
 
-#: src/remmina_main.c:846
+#: src/remmina_main.c:829
 #, c-format
 msgid "Are you sure you want to delete \"%s\"?"
 msgstr "Вы действительно хотите удалить \"%s\"?"
 
-#: src/remmina_main.c:946
+#: src/remmina_main.c:929
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -764,19 +764,19 @@ msgstr ""
 "Не удалось импортировать:\n"
 "%s"
 
-#: src/remmina_main.c:973 data/ui/remmina_main.glade:340
+#: src/remmina_main.c:956 data/ui/remmina_main.glade:340
 msgid "Import"
 msgstr "Импортировать"
 
-#: src/remmina_main.c:996 src/remmina_file_editor.c:1312
+#: src/remmina_main.c:979 src/remmina_file_editor.c:1312
 msgid "_Save"
 msgstr "_Сохранить"
 
-#: src/remmina_main.c:1003
+#: src/remmina_main.c:986
 msgid "This protocol does not support exporting."
 msgstr "Этот протокол не поддерживает экспортирование."
 
-#: src/remmina_main.c:1244
+#: src/remmina_main.c:1227
 msgid "Remmina Kiosk"
 msgstr "Remmina Киоск"
 
@@ -906,7 +906,7 @@ msgid "The following file already exists in the target folder:"
 msgstr "Следующий файл уже существует в папке назначения:"
 
 #: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
-#: data/ui/remmina_mpc.glade:38
+#: data/ui/remmina_mpc.glade:46
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -926,7 +926,7 @@ msgid "No"
 msgstr "Нет"
 
 #: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1934
-#: data/ui/remmina_mpc.glade:141
+#: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "Домен"
 
@@ -2429,48 +2429,44 @@ msgstr ""
 msgid "<big>Contribute</big>"
 msgstr "<big>Внести вклад</big>"
 
-#: data/ui/remmina_mpc.glade:7
-msgid "Remmina - Multi Password Changer"
-msgstr "Множественная смена паролей Remmina"
-
-#: data/ui/remmina_mpc.glade:24
-msgid "Change"
-msgstr "Изменить"
-
-#: data/ui/remmina_mpc.glade:64
+#: data/ui/remmina_mpc.glade:14
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
 msgstr "<span weight='bold' size='larger'>Множественная смена паролей</span>"
 
-#: data/ui/remmina_mpc.glade:169
+#: data/ui/remmina_mpc.glade:32
+msgid "Change"
+msgstr "Изменить"
+
+#: data/ui/remmina_mpc.glade:201
 msgid "Selection criteria"
 msgstr "Критерий отбора"
 
-#: data/ui/remmina_mpc.glade:198
+#: data/ui/remmina_mpc.glade:261
 msgid "Confirm password"
 msgstr "Подтвердите пароль"
 
-#: data/ui/remmina_mpc.glade:211
-msgctxt "Multi password changer"
+#: data/ui/remmina_mpc.glade:294
+#, fuzzy
 msgid "Set new password"
 msgstr "Введите новый пароль"
 
 #. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:305
+#: data/ui/remmina_mpc.glade:331
 msgctxt "Multi password changer"
 msgid "Select"
 msgstr "Выбрать"
 
-#: data/ui/remmina_mpc.glade:317
+#: data/ui/remmina_mpc.glade:343
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "Название"
 
-#: data/ui/remmina_mpc.glade:328
+#: data/ui/remmina_mpc.glade:354
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "Группа"
 
-#: data/ui/remmina_mpc.glade:339
+#: data/ui/remmina_mpc.glade:365
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr "Домен\\Имя пользователя"

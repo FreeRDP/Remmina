@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-01-08 13:36+0000\n"
+"POT-Creation-Date: 2020-01-09 14:06+0000\n"
 "PO-Revision-Date: 2019-12-08 23:03+0000\n"
 "Last-Translator: anonymous <noreply@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -75,7 +75,7 @@ msgstr "正在连接到“%s”…"
 #: src/remmina_ssh_plugin.c:958 src/remmina_sftp_plugin.c:317
 #: src/remmina_sftp_plugin.c:350 src/remmina_file_editor.c:926
 #: plugins/www/www_plugin.c:793 plugins/rdp/rdp_plugin.c:1933
-#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:116
+#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1533
 msgid "Password"
 msgstr "密码"
@@ -251,7 +251,7 @@ msgstr "全选(_S)"
 #: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:917
 #: plugins/www/www_plugin.c:792 plugins/vnc/vnc_plugin.c:1831
 #: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:1932
-#: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:155
+#: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "用户名"
 
@@ -366,7 +366,7 @@ msgstr "没有安全插件，多密码转换器无法工作。\n"
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr "如果没有安全服务，多密码转换器将无法运行。\n"
 
-#: src/remmina_mpchange.c:419
+#: src/remmina_mpchange.c:409
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
@@ -473,7 +473,7 @@ msgid "User"
 msgstr "用户名"
 
 #: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1454
-#: data/ui/remmina_main.glade:560 data/ui/remmina_mpc.glade:102
+#: data/ui/remmina_main.glade:560 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "分组"
 
@@ -610,7 +610,7 @@ msgstr "Remmina 面板小程序"
 msgid "Connect to remote desktops through the applet menu"
 msgstr "通过小程序菜单快速连接到远程桌面"
 
-#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1242
+#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1225
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina 远程桌面客户端"
 
@@ -693,12 +693,12 @@ msgstr "最小化窗口"
 msgid "Disconnect"
 msgstr "断开"
 
-#: src/rcw.c:3800
+#: src/rcw.c:3795
 #, fuzzy, c-format
 msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
 msgstr "文件 %s 已损坏，无法读取或未找到。"
 
-#: src/rcw.c:3962
+#: src/rcw.c:3957
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "警告：此插件需要 GtkSocket，但它不可用。"
 
@@ -752,18 +752,18 @@ msgstr "描述"
 msgid "Version"
 msgstr "版本"
 
-#: src/remmina_main.c:664
+#: src/remmina_main.c:647
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "共 %i 项。"
 
-#: src/remmina_main.c:846
+#: src/remmina_main.c:829
 #, fuzzy, c-format
 msgid "Are you sure you want to delete \"%s\"?"
 msgstr "确认要删除 %s？"
 
-#: src/remmina_main.c:946
+#: src/remmina_main.c:929
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -772,19 +772,19 @@ msgstr ""
 "无法导入：\n"
 "%s"
 
-#: src/remmina_main.c:973 data/ui/remmina_main.glade:340
+#: src/remmina_main.c:956 data/ui/remmina_main.glade:340
 msgid "Import"
 msgstr "导入"
 
-#: src/remmina_main.c:996 src/remmina_file_editor.c:1312
+#: src/remmina_main.c:979 src/remmina_file_editor.c:1312
 msgid "_Save"
 msgstr "保存(_S)"
 
-#: src/remmina_main.c:1003
+#: src/remmina_main.c:986
 msgid "This protocol does not support exporting."
 msgstr "此协议不支持导出"
 
-#: src/remmina_main.c:1244
+#: src/remmina_main.c:1227
 msgid "Remmina Kiosk"
 msgstr "Remmina Kiosk"
 
@@ -915,7 +915,7 @@ msgid "The following file already exists in the target folder:"
 msgstr "目标文件夹中已经存在如下文件："
 
 #: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
-#: data/ui/remmina_mpc.glade:38
+#: data/ui/remmina_mpc.glade:46
 msgid "Cancel"
 msgstr "取消"
 
@@ -935,7 +935,7 @@ msgid "No"
 msgstr "否"
 
 #: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1934
-#: data/ui/remmina_mpc.glade:141
+#: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "域"
 
@@ -2472,52 +2472,47 @@ msgstr ""
 msgid "<big>Contribute</big>"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:7
-msgid "Remmina - Multi Password Changer"
-msgstr "Remmina - 多密码转换器"
-
-#: data/ui/remmina_mpc.glade:24
-msgid "Change"
-msgstr "更改"
-
-#: data/ui/remmina_mpc.glade:64
+#: data/ui/remmina_mpc.glade:14
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
 msgstr "<span weight='bold' size='larger'>多密码转换器</span>"
 
-#: data/ui/remmina_mpc.glade:169
+#: data/ui/remmina_mpc.glade:32
+msgid "Change"
+msgstr "更改"
+
+#: data/ui/remmina_mpc.glade:201
 msgid "Selection criteria"
 msgstr "选择标准"
 
-#: data/ui/remmina_mpc.glade:198
+#: data/ui/remmina_mpc.glade:261
 msgid "Confirm password"
 msgstr "确认密码"
 
-#: data/ui/remmina_mpc.glade:211
+#: data/ui/remmina_mpc.glade:294
 #, fuzzy
-msgctxt "Multi password changer"
 msgid "Set new password"
 msgstr "保存密码"
 
 #. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:305
+#: data/ui/remmina_mpc.glade:331
 #, fuzzy
 msgctxt "Multi password changer"
 msgid "Select"
 msgstr "全选"
 
-#: data/ui/remmina_mpc.glade:317
+#: data/ui/remmina_mpc.glade:343
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "名称"
 
-#: data/ui/remmina_mpc.glade:328
+#: data/ui/remmina_mpc.glade:354
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "分组"
 
-#: data/ui/remmina_mpc.glade:339
+#: data/ui/remmina_mpc.glade:365
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
@@ -3099,4 +3094,3 @@ msgstr "选择一个新按键"
 msgid "Please press the new key…"
 msgstr "请按下新按键…"
 
-#, fuzzy

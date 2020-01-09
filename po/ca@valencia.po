@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-01-08 13:36+0000\n"
+"POT-Creation-Date: 2020-01-09 14:06+0000\n"
 "PO-Revision-Date: 2012-03-25 22:43+0000\n"
 "Last-Translator: Pau Iranzo <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -72,7 +72,7 @@ msgstr "S’està connectant a «%s»…"
 #: src/remmina_ssh_plugin.c:958 src/remmina_sftp_plugin.c:317
 #: src/remmina_sftp_plugin.c:350 src/remmina_file_editor.c:926
 #: plugins/www/www_plugin.c:793 plugins/rdp/rdp_plugin.c:1933
-#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:116
+#: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1533
 msgid "Password"
 msgstr "Contrasenya"
@@ -239,7 +239,7 @@ msgstr ""
 #: src/remmina_sftp_plugin.c:349 src/remmina_file_editor.c:917
 #: plugins/www/www_plugin.c:792 plugins/vnc/vnc_plugin.c:1831
 #: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:1932
-#: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:155
+#: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr ""
 
@@ -350,7 +350,7 @@ msgstr ""
 msgid "The multi password changer requires a secrecy service.\n"
 msgstr ""
 
-#: src/remmina_mpchange.c:419
+#: src/remmina_mpchange.c:409
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
@@ -451,7 +451,7 @@ msgid "User"
 msgstr "Usuari"
 
 #: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1454
-#: data/ui/remmina_main.glade:560 data/ui/remmina_mpc.glade:102
+#: data/ui/remmina_main.glade:560 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Grup"
 
@@ -580,7 +580,7 @@ msgid "Connect to remote desktops through the applet menu"
 msgstr ""
 "Connecteu-vos a escriptoris remots mitjançant el menú de la miniaplicació"
 
-#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1242
+#: src/remmina_icon.c:480 src/remmina_icon.c:481 src/remmina_main.c:1225
 msgid "Remmina Remote Desktop Client"
 msgstr "Client d’escriptori remot Remmina"
 
@@ -665,12 +665,12 @@ msgstr "Minimitza la finestra"
 msgid "Disconnect"
 msgstr "Desconnecta"
 
-#: src/rcw.c:3800
+#: src/rcw.c:3795
 #, c-format
 msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
 msgstr ""
 
-#: src/rcw.c:3962
+#: src/rcw.c:3957
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr ""
 
@@ -724,19 +724,19 @@ msgstr "Descripció"
 msgid "Version"
 msgstr "Versió"
 
-#: src/remmina_main.c:664
+#: src/remmina_main.c:647
 #, c-format
 msgid "Total %i item."
 msgid_plural "Total %i items."
 msgstr[0] "%i element en total."
 msgstr[1] "%i elements en total."
 
-#: src/remmina_main.c:846
+#: src/remmina_main.c:829
 #, fuzzy, c-format
 msgid "Are you sure you want to delete \"%s\"?"
 msgstr "Segur que voleu suprimir «%s»?"
 
-#: src/remmina_main.c:946
+#: src/remmina_main.c:929
 #, c-format
 msgid ""
 "Unable to import:\n"
@@ -745,19 +745,19 @@ msgstr ""
 "No s’ha pogut importar:\n"
 "%s"
 
-#: src/remmina_main.c:973 data/ui/remmina_main.glade:340
+#: src/remmina_main.c:956 data/ui/remmina_main.glade:340
 msgid "Import"
 msgstr "Importa"
 
-#: src/remmina_main.c:996 src/remmina_file_editor.c:1312
+#: src/remmina_main.c:979 src/remmina_file_editor.c:1312
 msgid "_Save"
 msgstr ""
 
-#: src/remmina_main.c:1003
+#: src/remmina_main.c:986
 msgid "This protocol does not support exporting."
 msgstr "Este protocol no admet l’exportació."
 
-#: src/remmina_main.c:1244
+#: src/remmina_main.c:1227
 msgid "Remmina Kiosk"
 msgstr ""
 
@@ -888,7 +888,7 @@ msgid "The following file already exists in the target folder:"
 msgstr ""
 
 #: src/remmina_message_panel.c:163 data/ui/remmina_unlock.glade:46
-#: data/ui/remmina_mpc.glade:38
+#: data/ui/remmina_mpc.glade:46
 msgid "Cancel"
 msgstr ""
 
@@ -908,7 +908,7 @@ msgid "No"
 msgstr ""
 
 #: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1934
-#: data/ui/remmina_mpc.glade:141
+#: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr ""
 
@@ -2358,51 +2358,46 @@ msgstr ""
 msgid "<big>Contribute</big>"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:7
-msgid "Remmina - Multi Password Changer"
-msgstr ""
-
-#: data/ui/remmina_mpc.glade:24
-msgid "Change"
-msgstr ""
-
-#: data/ui/remmina_mpc.glade:64
+#: data/ui/remmina_mpc.glade:14
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:169
+#: data/ui/remmina_mpc.glade:32
+msgid "Change"
+msgstr ""
+
+#: data/ui/remmina_mpc.glade:201
 msgid "Selection criteria"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:198
+#: data/ui/remmina_mpc.glade:261
 msgid "Confirm password"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:211
+#: data/ui/remmina_mpc.glade:294
 #, fuzzy
-msgctxt "Multi password changer"
 msgid "Set new password"
 msgstr "Alça la contrasenya"
 
 #. A column table with multiple check-boxes
-#: data/ui/remmina_mpc.glade:305
+#: data/ui/remmina_mpc.glade:331
 msgctxt "Multi password changer"
 msgid "Select"
 msgstr ""
 
-#: data/ui/remmina_mpc.glade:317
+#: data/ui/remmina_mpc.glade:343
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "Nom"
 
-#: data/ui/remmina_mpc.glade:328
+#: data/ui/remmina_mpc.glade:354
 #, fuzzy
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "Grup"
 
-#: data/ui/remmina_mpc.glade:339
+#: data/ui/remmina_mpc.glade:365
 msgctxt "Multi password changer table"
 msgid "Domain\\Username"
 msgstr ""
