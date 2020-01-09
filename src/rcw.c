@@ -3182,7 +3182,6 @@ static RemminaConnectionWindow *rcw_create_scrolled(gint width, gint height, gbo
 	GtkWidget *grid;
 	GtkWidget *toolbar;
 	GtkNotebook *notebook;
-	GList *chain;
 
 	cnnwin = rcw_new(FALSE, 0);
 	gtk_widget_realize(GTK_WIDGET(cnnwin));
