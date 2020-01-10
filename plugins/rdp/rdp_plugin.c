@@ -997,7 +997,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 #if defined(PROXY_TYPE_IGNORE)
 	if (!remmina_plugin_service->file_get_int(remminafile, "useproxyenv", FALSE) ? TRUE : FALSE) {
-		remmina_plugin_service->log_print("[RDP] Ignoring proxy environment variables\n");
+		remmina_plugin_service->log_print("[RDP] Not using system proxy settings\n");
 		rfi->settings->ProxyType = PROXY_TYPE_IGNORE;
 	}
 #endif
@@ -1982,7 +1982,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disable_fastpath",	    N_("Turn off fast-path"),				 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "gateway_usage",	    N_("Server detection using Remote Desktop Gateway"), TRUE,	NULL,	       NULL													      },
 #if defined(PROXY_TYPE_IGNORE)
-	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "useproxyenv",	    N_("Use environment proxy variables"),			 TRUE,	NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "useproxyenv",	    N_("Use system proxy settings"),			 TRUE,	NULL,	       NULL													      },
 #endif
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "disableautoreconnect",   N_("Turn off automatic reconnection"),		 TRUE,	NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	  "relax-order-checks",	    N_("Relax order checks"),				 TRUE,	NULL,	       NULL													      },
