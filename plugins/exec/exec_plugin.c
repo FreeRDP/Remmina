@@ -1,6 +1,6 @@
 /*
  * Remmina - The GTK+ Remote Desktop Client
- * Copyright (C) 2017-2019 Antenore Gatta, Giovanni Panozzo
+ * Copyright (C) 2017-2020 Antenore Gatta, Giovanni Panozzo
  *
  * Initially based on the plugin "Remmina Plugin EXEC", created and written by
  * Fabio Castelli (Muflone) <muflone@vbsimple.net>.

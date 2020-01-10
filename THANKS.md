@@ -17,28 +17,79 @@ This special place is reserved to who have donated the highest amount of money s
 - [Khalifa Alshamsi ](https://twitter.com/kha1ifa__)
 - [Tim Richardson - GrowthPath founder](https://www.growthpath.com.au/people/growthpath-team-2)
 
+## Year 2020 donors
+
+- Абрамов Павел
+- Peter Vollebregt
+
 ## Year 2019 donors
 
 - Daniel Bolter
 - Khalifa Alshamsi (https://twitter.com/kha1ifa__)
+- Christian Houle
+- Ingo Humann
+- Justin Scott
+- Luděk Habarta
 
+- atzk
 - Abdulkarim Khormi
+- Андрей Коробков
 - Andres Zanzani
 - Andrew Hart
+- Antonio Quinonez-Mun
+- Balvas Eugene
 - Benoit Mercier
+- Blagoy Chepelov
 - Clayton Casciato
+- Clemens Eberwein
+- Cordula Herzog
+- Denis Đukić
 - Dennis Lampe
+- Denoid Tucker
+- EXCOMEDIA, Inc.
+- Герун Данил
+- Graham Sivill
+- Gunter Moegel
+- Hawkins IT Group Inc
+- Hector SAenz
+- Исаков Андрей
+- Janez Košmrlj
+- Jonathan Rogers
 - Josef Abdel Wahed
+- Jürgen Müller
+- Клюенков Алексей
+- Lance Edusei
+- Подловилин Виталий
+- Lutz Urban
+- Majed Zouhairy
+- Manuel Moelgg
+- Мантуров Дмитрий
+- Marc Schlegel
+- Marcel Pötter
+- Marcel Ostrovsky
 - Marcin Wolcendorf
+- Marjan Bugarinović
+- Marko Milosavljevic
+- Markus Heimberg
 - Marwan Yassin
+- Matteo Biaggi
 - Matthias Baumann
 - Matthias Tapis
+- Mathieu Morlon
 - Michael Brazeau
 - Márcio Oliveira Luiz
+- Nils Panitzsch
+- Per Arnold Blaasmo
+- Petar Kulić
+- Philipp Köhler
 - Roman Cravtov
+- Robert Premuž
+- Ross Philip
 - Ruston Rountree
 - Sergio Omiccioli
 - Thomas Stofer Computerservice
+- Trond Nystuen
+- Werner Mittermayer
 - Welles Freire Ximenes
 - Wolfgang Scherer
 
