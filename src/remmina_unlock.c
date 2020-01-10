@@ -58,7 +58,7 @@ static void remmina_unlock_timer_init()
 	TRACE_CALL(__func__);
 
 	timer = g_timer_new();
-	g_info("Unlock Master Password timer initilized");
+	g_info("Unlock Master Password timer initialized");
 }
 
 static void remmina_unlock_timer_reset(gpointer user_data)
