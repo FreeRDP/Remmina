@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-01-09 21:54+0000\n"
-"PO-Revision-Date: 2020-01-09 21:51+0000\n"
+"PO-Revision-Date: 2020-01-10 21:15+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/remmina/remmina/"
 "sv/>\n"
@@ -277,8 +277,9 @@ msgid "Identity file"
 msgstr "Identitetsfil"
 
 #: src/remmina_ssh_plugin.c:1061 src/remmina_sftp_plugin.c:353
+#, fuzzy
 msgid "Password to unlock private key"
-msgstr ""
+msgstr "Lösenord for upplåsning av privat nyckel"
 
 #: src/remmina_ssh_plugin.c:1062 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:1961 plugins/nx/nx_plugin.c:725
@@ -323,8 +324,9 @@ msgid "Filename for SSH session log"
 msgstr "Aktivera loggning av SSH-session vid avslutning"
 
 #: src/remmina_ssh_plugin.c:1087
+#, fuzzy
 msgid "Log SSH session when exiting Remmina"
-msgstr ""
+msgstr "Logga SSH-session vid avslutning av Remmina"
 
 #: src/remmina_ssh_plugin.c:1088
 #, fuzzy
@@ -685,8 +687,9 @@ msgid "Tools"
 msgstr "Verktyg"
 
 #: src/rcw.c:2219
+#, fuzzy
 msgid "Duplicate current connection"
-msgstr ""
+msgstr "Duplicera nuvarande tillkoppling"
 
 #: src/rcw.c:2227 data/ui/remmina_preferences.glade:1124
 #: data/ui/remmina_preferences.glade:1134
@@ -1021,9 +1024,9 @@ msgstr "Lösenfras för privat SSH-nyckel"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:299
-#, c-format
+#, c-format, fuzzy
 msgid "Could not authenticate automatically with public SSH key. %s"
-msgstr ""
+msgstr "Kunde inte identitetsbekräfta med offentlig SSH-nyckel. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:316
@@ -1245,6 +1248,7 @@ msgid ""
 msgstr ""
 
 #: src/remmina_file_editor.c:94
+#, fuzzy
 msgid ""
 "<tt><big>Supported formats\n"
 "* :port\n"
@@ -1253,6 +1257,12 @@ msgid ""
 "* [server]:port\n"
 "* username@server:port (SSH protocol only)</big></tt>"
 msgstr ""
+"<tt><big>Formatstöd\n"
+"* :port\n"
+"* server\n"
+"* server:port\n"
+"* [server]:port\n"
+"* användarnavn@server:port (endast SSH-protokoll)</big></tt>"
 
 #: src/remmina_file_editor.c:158
 msgid "Choose a Remote Desktop Server"
@@ -1409,10 +1419,13 @@ msgid "You did not set any command to be executed"
 msgstr "Ni har inte satt någon kommando för körning"
 
 #: plugins/exec/exec_plugin.c:204
+#, fuzzy
 msgid ""
 "Warning: Running a command synchronously may cause Remmina not to respond.\n"
 "Do you really want to continue?"
 msgstr ""
+"Varning: Körning av synkron-kommando kan föra till att Remmina inte svarar.\n"
+"Önskar ni att fortsätta?"
 
 #: plugins/exec/exec_plugin.c:264
 #, fuzzy
@@ -1533,9 +1546,9 @@ msgid "Your connection has been rejected."
 msgstr "Din anslutning nekades."
 
 #: plugins/vnc/vnc_plugin.c:918
-#, c-format
+#, c-format, fuzzy
 msgid "The VNC server requested an unknown authentication method. %s"
-msgstr ""
+msgstr "VNC-servern begärda et okänd identitetsbekräftelsessett. %s"
 
 #: plugins/vnc/vnc_plugin.c:920
 #, fuzzy
@@ -2293,8 +2306,9 @@ msgid "Status"
 msgstr "Status"
 
 #: plugins/nx/nx_plugin.c:205
+#, fuzzy
 msgid "Password for private SSH key"
-msgstr ""
+msgstr "Lösenord for privat SSH-nyckel"
 
 #: plugins/nx/nx_plugin.c:367
 msgid "Enter NX authentication credentials"
@@ -2315,6 +2329,8 @@ msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
 msgstr ""
+"%s önskar att dela deras skrivbord.\n"
+"Godkänner ni?"
 
 #: plugins/telepathy/telepathy_channel_handler.c:240
 #, fuzzy
@@ -2412,7 +2428,7 @@ msgstr "Exportera"
 
 #: data/ui/remmina_main.glade:394
 msgid "News"
-msgstr ""
+msgstr "Nyheter"
 
 #: data/ui/remmina_main.glade:404
 msgid "Set as default remote desktop client"
