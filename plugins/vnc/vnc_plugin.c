@@ -1163,7 +1163,7 @@ static gboolean remmina_plugin_vnc_main(RemminaProtocolWidget *gp)
 		if (host[0] == '\0') {
 			cl->serverHost = g_strdup(host);
 			cl->listenSpecified = TRUE;
-			if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE))
+			if (remmina_plugin_service->file_get_int(remminafile, "ssh_tunnel_enabled", FALSE))
 				/* When we use reverse tunnel, the local port does not really matter.
 				 * Hardcode a default port just in case the remote port is customized
 				 * to a privilege port then we will have problem listening. */

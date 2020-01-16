@@ -81,6 +81,9 @@ typedef struct _RemminaSSH {
 	pthread_mutex_t ssh_mutex;
 
 	gchar *		passphrase;
+
+	gboolean	is_tunnel;
+
 } RemminaSSH;
 
 gchar *remmina_ssh_identity_path(const gchar *id);
@@ -89,10 +92,10 @@ gchar *remmina_ssh_identity_path(const gchar *id);
 gchar *remmina_ssh_find_identity(void);
 
 /* Initialize the ssh object */
-gboolean remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile);
+gboolean remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile, gboolean is_tunnel);
 
 /* Initialize the SSH session */
-gboolean remmina_ssh_init_session(RemminaSSH *ssh);
+gboolean remmina_ssh_init_session(RemminaSSH *ssh, gboolean is_tunnel);
 
 /* Authenticate SSH session */
 /* -1: Require password; 0: Failed; 1: Succeeded */

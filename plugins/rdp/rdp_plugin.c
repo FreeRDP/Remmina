@@ -184,24 +184,17 @@ static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget *gp)
 	const gchar *cert_hostport;
 
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
-	RemminaFile *remminafile;
-
-	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-
+	g_debug("[RDP] %s\n", __func__);
 	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 3389, FALSE);
 	if (hostport == NULL)
 		return FALSE;
 
 	remmina_plugin_service->get_server_port(hostport, 3389, &host, &port);
 
+	g_debug("[RDP] protocol_plugin_start_direct_tunnel() returned %s\n", hostport);
+
 	cert_host = host;
 	cert_port = port;
-
-	if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
-		cert_hostport = remmina_plugin_service->file_get_string(remminafile, "server");
-		if (cert_hostport)
-			remmina_plugin_service->get_server_port(cert_hostport, 3389, &cert_host, &cert_port);
-	}
 
 	if (!rfi->is_reconnecting) {
 		/* settings->CertificateName and settings->ServerHostname is created
@@ -218,11 +211,15 @@ static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget *gp)
 		}
 	}
 
+	g_debug("[RDP] tunnel has been optionally initialized. Now connecting to %s:%d\n", host, port);
+
 	if (cert_host != host) g_free(cert_host);
 	g_free(host);
 	g_free(hostport);
 
 	rfi->settings->ServerPort = port;
+
+
 
 	return TRUE;
 }
@@ -1007,7 +1004,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 
 	rfi->settings->AutoReconnectionEnabled = (remmina_plugin_service->file_get_int(remminafile, "disableautoreconnect", FALSE) ? FALSE : TRUE);
 	/* Disable RDP auto reconnection when SSH tunnel is enabled */
-	if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE))
+	if (remmina_plugin_service->file_get_int(remminafile, "ssh_tunnel_enabled", FALSE))
 		rfi->settings->AutoReconnectionEnabled = FALSE;
 
 	rfi->settings->ColorDepth = remmina_plugin_service->file_get_int(remminafile, "colordepth", 66);

@@ -69,7 +69,7 @@ static void remmina_applet_menu_item_init(RemminaAppletMenuItem* item)
 	item->group = NULL;
 	item->protocol = NULL;
 	item->server = NULL;
-	item->ssh_enabled = FALSE;
+	item->ssh_tunnel_enabled = FALSE;
 	g_signal_connect(G_OBJECT(item), "destroy", G_CALLBACK(remmina_applet_menu_item_destroy), NULL);
 }
 
@@ -104,7 +104,7 @@ GtkWidget* remmina_applet_menu_item_new(RemminaAppletMenuItemType item_type, ...
 		item->group = g_key_file_get_string(gkeyfile, "remmina", "group", NULL);
 		item->protocol = g_key_file_get_string(gkeyfile, "remmina", "protocol", NULL);
 		item->server = g_key_file_get_string(gkeyfile, "remmina", "server", NULL);
-		item->ssh_enabled = g_key_file_get_boolean(gkeyfile, "remmina", "ssh_enabled", NULL);
+		item->ssh_tunnel_enabled = g_key_file_get_boolean(gkeyfile, "remmina", "ssh_tunnel_enabled", NULL);
 
 		g_key_file_free(gkeyfile);
 
