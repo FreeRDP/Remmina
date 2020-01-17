@@ -961,11 +961,11 @@ static void remmina_file_editor_create_ssh_tunnel_tab(RemminaFileEditor *gfe, Re
 
 	//if (!(g_strcmp0(p, "SFTP") == 0 || g_strcmp0(p, "SSH") == 0)) {
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
-				remmina_file_get_int(priv->remmina_file, "ssh_auth", 0) == SSH_AUTH_PUBLICKEY ?
+				remmina_file_get_int(priv->remmina_file, "ssh_tunnel_auth", 0) == SSH_AUTH_PUBLICKEY ?
 				priv->ssh_tunnel_auth_publickey_radio :
-				remmina_file_get_int(priv->remmina_file, "ssh_auth", 0) == SSH_AUTH_AUTO_PUBLICKEY ?
+				remmina_file_get_int(priv->remmina_file, "ssh_tunnel_auth", 0) == SSH_AUTH_AUTO_PUBLICKEY ?
 				priv->ssh_tunnel_auth_auto_publickey_radio :
-				remmina_file_get_int(priv->remmina_file, "ssh_auth", 0) == SSH_AUTH_AGENT ?
+				remmina_file_get_int(priv->remmina_file, "ssh_tunnel_auth", 0) == SSH_AUTH_AGENT ?
 				priv->ssh_tunnel_auth_agent_radio :
 				priv->ssh_tunnel_auth_password_radio), TRUE);
 
