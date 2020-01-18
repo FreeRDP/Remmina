@@ -197,7 +197,10 @@ remmina_ssh_auth_password(RemminaSSH *ssh)
 	if (ssh->authenticated) return 1;
 	if (ssh->password == NULL) return -1;
 
+	g_debug("[SSH] %s\n", __func__);
+
 	ret = ssh_userauth_password(ssh->session, NULL, ssh->password);
+	g_debug("[SSH] %s ssh_userauth_password returned %d\n", __func__, ret);
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(ssh, _("Could not authenticate with SSH password. %s"));
@@ -276,7 +279,7 @@ remmina_ssh_auth_auto_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, Remmina
 		disablepasswordstoring = remmina_file_get_int(remminafile, "disablepasswordstoring", FALSE);
 
 		ret = remmina_protocol_widget_panel_auth(gp, (disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD),
-							 _("SSH credentials"), NULL,
+							ssh->is_tunnel ? _("SSH tunnel credentials") : _("SSH credentials"), NULL,
 							 remmina_file_get_string(remminafile, ssh->is_tunnel ? "ssh_tunnel_passphrase" : "ssh_passphrase"),
 							 NULL,
 							 _("SSH private key passphrase"));
@@ -453,6 +456,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	ssh_key server_pubkey;
 	gboolean disablepasswordstoring;
 	gboolean save_password;
+	gint attempt;
 
 	/* Check if the server’s public key is known */
 #if LIBSSH_VERSION_INT >= SSH_VERSION_INT(0, 9, 0)
@@ -575,15 +579,22 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	default:
 		return FALSE;
 	}
-	/* Try empty password or existing password/passphrase first */
-	ret = remmina_ssh_auth(ssh, remmina_file_get_string(remminafile, pwdfkey), gp, remminafile);
-	if (ret > 0) return 1;
 
-	/* Requested for a non-empty password */
-	if (ret < 0) {
+	disablepasswordstoring = remmina_file_get_int(remminafile, "disablepasswordstoring", FALSE);
+
+	/* Try existing password/passphrase first */
+	ret = remmina_ssh_auth(ssh, remmina_file_get_string(remminafile, pwdfkey), gp, remminafile);
+	g_debug("[SSH] %s remmina_ssh_auth returned %d at 1st attempt\n", __func__, ret);
+
+	/* It seems that functions like ssh_userauth_password() can only be called 3 times
+	 * on a ssh connection. And the 3rd failed attempt will block the calling thread forever.
+	 * So we retry only 2 extra time authentication. */
+	for(attempt = 0; attempt < 2 && ret <= 0; attempt ++) {
+
 		gchar *pwd;
 
-		disablepasswordstoring = remmina_file_get_int(remminafile, "disablepasswordstoring", FALSE);
+		/* ret == 0: auth error, ret == -1: password is null (empty) or bad username/pwd, so retry here */
+		if (ret == 0) break;	// Auth error
 
 		if (remmina_ssh_auth_type == REMMINA_SSH_AUTH_PKPASSPHRASE) {
 			ret = remmina_protocol_widget_panel_auth(gp,
@@ -605,6 +616,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 				return -1;
 			}
 		} else if (remmina_ssh_auth_type == REMMINA_SSH_AUTH_PASSWORD) {
+			g_debug("Showing panel for password\n");
 			ret = remmina_protocol_widget_panel_auth(gp,
 					(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD)
 					| REMMINA_MESSAGE_PANEL_FLAG_USERNAME,
@@ -631,16 +643,18 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 			g_print("Unimplemented.");
 			return -1;
 		}
-
+		g_debug("[SSH] %s retrying auth\n", __func__);
 		ret = remmina_ssh_auth(ssh, remmina_file_get_string(remminafile, pwdfkey), gp, remminafile);
+		g_debug("[SSH] %s remmina_ssh_auth returned %d at %d attempt\n", __func__, ret, attempt + 2);
 
 	}
 
 	if (ret <= 0) {
-		g_debug ("SSH Authentication failed");
+		g_debug ("[SSH] SSH Authentication failed");
 		return 0;
 	}
 
+	/* Auth successful */
 	return 1;
 }
 
@@ -665,9 +679,18 @@ remmina_ssh_init_session(RemminaSSH *ssh, gboolean is_tunnel)
 	ssh->callback = g_new0(struct ssh_callbacks_struct, 1);
 
 	/* Init & startup the SSH session */
+	g_debug("[SSH] %s server=%s port=%d is_tunnel=%s tunnel_host=%s tunnel_port=%d\n", __func__,
+			ssh->server, ssh->port, ssh->is_tunnel ? "Yes":"No", ssh->tunnel_host, ssh->tunnel_port);
 	ssh->session = ssh_new();
-	ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->server);
-	ssh_options_set(ssh->session, SSH_OPTIONS_PORT, &ssh->port);
+
+	if (is_tunnel) {
+		ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->server);
+		ssh_options_set(ssh->session, SSH_OPTIONS_PORT, &ssh->port);
+	} else {
+		ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->tunnel_host);
+		ssh_options_set(ssh->session, SSH_OPTIONS_PORT, &ssh->tunnel_port);
+	}
+
 	if (*ssh->user != 0)
 		ssh_options_set(ssh->session, SSH_OPTIONS_USER, ssh->user);
 	if (ssh->privkeyfile && *ssh->privkeyfile != 0) {
@@ -800,6 +823,8 @@ remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile, gboolean i
 	ssh->error = NULL;
 	ssh->passphrase = NULL;
 	ssh->is_tunnel = is_tunnel;
+	ssh->tunnel_host = NULL;
+	ssh->tunnel_port = 0;
 	pthread_mutex_init(&ssh->ssh_mutex, NULL);
 
 	/* Parse the address and port */
@@ -866,6 +891,7 @@ remmina_ssh_init_from_ssh(RemminaSSH *ssh, const RemminaSSH *ssh_src)
 	ssh->ciphers = g_strdup(ssh_src->ciphers);
 	ssh->hostkeytypes = g_strdup(ssh_src->hostkeytypes);
 	ssh->compression = ssh_src->compression;
+	ssh->tunnel_host = NULL;
 
 	return TRUE;
 }
@@ -910,6 +936,7 @@ remmina_ssh_free(RemminaSSH *ssh)
 	g_free(ssh->privkeyfile);
 	g_free(ssh->charset);
 	g_free(ssh->error);
+	g_free(ssh->tunnel_host);
 	pthread_mutex_destroy(&ssh->ssh_mutex);
 	g_free(ssh);
 }

@@ -83,6 +83,8 @@ typedef struct _RemminaSSH {
 	gchar *		passphrase;
 
 	gboolean	is_tunnel;
+	gchar *		tunnel_host;
+	gint		tunnel_port;
 
 } RemminaSSH;
 

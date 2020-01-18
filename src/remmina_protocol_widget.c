@@ -720,7 +720,7 @@ static gboolean remmina_protocol_widget_init_tunnel(RemminaProtocolWidget *gp)
 		g_free(msg);
 
 		if (!remmina_ssh_init_session(REMMINA_SSH(tunnel), TRUE)) {
-			g_debug ("[SSH] Cannot init SSH session with tunnel struct");
+			g_debug ("[SSH] %s Cannot init SSH session with tunnel struct", __func__);
 			remmina_protocol_widget_set_error(gp, REMMINA_SSH(tunnel)->error);
 			remmina_ssh_tunnel_free(tunnel);
 			return FALSE;
@@ -803,7 +803,8 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 	if (!remmina_protocol_widget_init_tunnel(gp)) {
 		g_free(srv_host);
 		g_free(ssh_tunnel_host);
-		g_debug ("[SSH] Setting up the tunnel failed, returning NULL");
+		g_debug ("[SSH] %s remmina_protocol_widget_init_tunnel failed with error is %s\n",
+				 __func__, remmina_protocol_widget_get_error_message(gp));
 		return NULL;
 	}
 

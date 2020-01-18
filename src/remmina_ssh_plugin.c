@@ -226,10 +226,10 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	RemminaSSH *ssh;
 	RemminaSSHShell *shell = NULL;
 	gboolean cont = FALSE;
-	gint ret;
 	gchar *hostport;
-	gchar *host;
-	gint port;
+	gchar *tunnel_host;
+	int tunnel_port;
+	gint ret;
 
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
@@ -239,24 +239,29 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	/**
 	 * remmina_plugin_service->protocol_plugin_start_direct_tunnel start the
 	 * SSH Tunnel and return the server + port string
-	 * Therefore we set the SSH Tunnel username here, before the tunnel
-	 * is established and than set it back to the destination SSH user.
 	 *
 	 **/
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	// Optionally start the SSH tunnel
 	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
-	if (hostport == NULL)
-		return FALSE;
+	if (hostport == NULL) {
+		remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
+		return NULL;
+	}
 
-	g_debug ("Tunnel started on %s", hostport);
-	remmina_plugin_service->get_server_port(hostport, 22, &host, &port);
+	remmina_plugin_service->get_server_port(hostport, 22, &tunnel_host, &tunnel_port);
+	g_free(hostport);
 
 	ssh = g_object_get_data(G_OBJECT(gp), "user-data");
 	if (ssh) {
 		/* Create SSH shell connection based on existing SSH session */
+
 		shell = remmina_ssh_shell_new_from_ssh(ssh);
+		if (shell->ssh.tunnel_host)
+			g_free(shell->ssh.tunnel_host);
+		shell->ssh.tunnel_host = tunnel_host;
+		shell->ssh.tunnel_port = tunnel_port;
 		if (remmina_ssh_init_session(REMMINA_SSH(shell), FALSE) &&
 		    remmina_ssh_auth(REMMINA_SSH(shell), NULL, gp, remminafile) > 0 &&
 		    remmina_ssh_shell_open(shell, (RemminaSSHExitFunc)
@@ -264,12 +269,13 @@ remmina_plugin_ssh_main_thread(gpointer data)
 			cont = TRUE;
 	} else {
 		/* New SSH Shell connection */
-		g_free(hostport);
-		g_free(host);
-
 		shell = remmina_ssh_shell_new_from_file(remminafile);
+		shell->ssh.tunnel_host = tunnel_host;
+		shell->ssh.tunnel_port = tunnel_port;
 		while (1) {
+
 			if (!remmina_ssh_init_session(REMMINA_SSH(shell), FALSE)) {
+				g_debug("[SSH] init session error: %s\n",REMMINA_SSH(shell)->error);
 				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(shell)->error);
 				break;
 			}

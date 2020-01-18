@@ -76,8 +76,8 @@ remmina_plugin_sftp_main_thread(gpointer data)
 	gint ret;
 	const gchar *cs;
 	gchar *hostport;
-	gchar *host;
-	gint port;
+	gchar *tunnel_host;
+	int tunnel_port;
 
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
@@ -92,11 +92,16 @@ remmina_plugin_sftp_main_thread(gpointer data)
 	 * */
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
+	// Optionally start the SSH tunnel
 	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
-	if (hostport == NULL)
-		return FALSE;
+	if (hostport == NULL) {
+		remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
+		return NULL;
+	}
 
-	remmina_plugin_service->get_server_port(hostport, 22, &host, &port);
+	remmina_plugin_service->get_server_port(hostport, 22, &tunnel_host, &tunnel_port);
+	g_free(hostport);
+
 
 	ssh = g_object_get_data(G_OBJECT(gp), "user-data");
 	if (ssh) {
@@ -108,8 +113,9 @@ remmina_plugin_sftp_main_thread(gpointer data)
 			cont = TRUE;
 	} else {
 		/* New SFTP connection */
-
 		sftp = remmina_sftp_new_from_file(remminafile);
+		sftp->ssh.tunnel_host = tunnel_host;
+		sftp->ssh.tunnel_port = tunnel_port;
 		while (1) {
 			if (!remmina_ssh_init_session(REMMINA_SSH(sftp), FALSE)) {
 				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(sftp)->error);
