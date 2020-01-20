@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-01-10 21:18+0000\n"
-"PO-Revision-Date: 2020-01-18 08:21+0000\n"
+"PO-Revision-Date: 2020-01-20 11:45+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
@@ -20,12 +20,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.10.2-dev\n"
+"X-Generator: Weblate 3.11-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_protocol_widget.c:248
 msgid "Connect via SSH from a new terminal"
-msgstr ""
+msgstr "通过 SSH 从新终端连接"
 
 #: src/remmina_protocol_widget.c:254
 msgid "Open SFTP transfer"
@@ -53,7 +53,7 @@ msgstr "在端口 %i 等待传入的 SSH 连接…"
 #: src/remmina_protocol_widget.c:900
 #, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr " \"%s\" 命令在 SSH 服务器上不可用。"
+msgstr "\"%s\" 命令在 SSH 服务器上不可用。"
 
 #: src/remmina_protocol_widget.c:904
 #, c-format
@@ -69,7 +69,7 @@ msgstr "无法运行命令。%s"
 #: src/remmina_protocol_widget.c:979
 #, c-format
 msgid "Connecting to %s via SSH…"
-msgstr "通过 SSH 连接到 ％s…"
+msgstr "通过 SSH 连接到 %s …"
 
 #: src/remmina_protocol_widget.c:1339 src/remmina_protocol_widget.c:1358
 #: src/remmina_ssh_plugin.c:958 src/remmina_sftp_plugin.c:317
@@ -169,7 +169,7 @@ msgstr "配置键盘监听"
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:444
 msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr "要使用主密码，必须 libsodium >= 1.9.0 "
+msgstr "要使用主密码，必须 libsodium >= 1.9.0"
 
 #: src/remmina_ssh_plugin.c:481
 #, c-format
@@ -354,11 +354,11 @@ msgstr "如果没有安全服务，多密码转换器将无法运行。\n"
 #, c-format
 msgid "%d password changed."
 msgid_plural "%d passwords changed."
-msgstr[0] "%d 密码已更改。"
+msgstr[0] "%d 个密码已更改。"
 
 #: src/remmina_public.c:639
 msgid "Please enter format 'widthxheight'."
-msgstr "请正确输入“宽x高”"
+msgstr "请正确输入“宽x高”。"
 
 #. TRANSLATORS: translator-credits should be replaced with a formatted list of translators in your own language
 #: src/remmina_about.c:54
@@ -756,7 +756,7 @@ msgstr "保存(_S)"
 
 #: src/remmina_main.c:986
 msgid "This protocol does not support exporting."
-msgstr "此协议不支持导出"
+msgstr "此协议不支持导出。"
 
 #: src/remmina_main.c:1227
 msgid "Remmina Kiosk"
@@ -1106,9 +1106,9 @@ msgstr "无法写入SSH通道。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1392
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket. %s"
-msgstr "读取隧道侦听套接字返回错误：%s"
+msgstr "读取隧道侦听套接字返回错误。%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1412
@@ -1811,9 +1811,9 @@ msgid "Lost connection to the RDP server \"%s\"."
 msgstr "失去到 RDP 服务器 \"%s\" 的连接。"
 
 #: plugins/rdp/rdp_plugin.c:1543
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the address for the RDP server \"%s\"."
-msgstr "无法找到 RDP 服务器 %s 的地址。"
+msgstr "无法找到 RDP 服务器 \"%s\" 的地址。"
 
 #: plugins/rdp/rdp_plugin.c:1547
 #, fuzzy, c-format
@@ -1825,43 +1825,42 @@ msgstr ""
 "TLS 版本。"
 
 #: plugins/rdp/rdp_plugin.c:1550
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to establish a connection to the RDP server \"%s\"."
-msgstr "无法与 RDP 服务器 %s 建立连接。"
+msgstr "无法与 RDP 服务器 \"%s\" 建立连接。"
 
 #: plugins/rdp/rdp_plugin.c:1558
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the RDP server \"%s\"."
-msgstr "无法连接到 RDP 服务器 %s。"
+msgstr "无法连接到 RDP 服务器 \"%s\"。"
 
 #: plugins/rdp/rdp_plugin.c:1561
-#, fuzzy
 msgid "Could not start libfreerdp-gdi."
-msgstr "无法初始化 pthread。"
+msgstr "无法启动 libfreerdp-gdi。"
 
 #: plugins/rdp/rdp_plugin.c:1564
 #, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
 "does not support H.264. Please use a non-AVC colour depth setting."
-msgstr ""
+msgstr "您为服务器 \"%s\" 请求了 H.264 GFX 模式，但您的 libfreerdp 不支持 H.264。 请使用非AVC颜色深度设置。"
 
 #: plugins/rdp/rdp_plugin.c:1571
-#, fuzzy, c-format
+#, c-format
 msgid "The \"%s\" server refused the connection."
-msgstr "服务器 %s 拒绝连接。"
+msgstr "服务器 \"%s\" 拒绝连接。"
 
 #: plugins/rdp/rdp_plugin.c:1576
 #, c-format
 msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
 "policy."
-msgstr ""
+msgstr "由于策略，远程桌面网关 \"%s\" 拒绝了用户 \"%s\\%s\" 的访问。"
 
 #: plugins/rdp/rdp_plugin.c:1586
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the \"%s\" RDP server."
-msgstr "无法连接到 RDP 服务器 %s。"
+msgstr "无法连接到 RDP 服务器 \"%s\" 。"
 
 #: plugins/rdp/rdp_plugin.c:1868
 msgid "GFX AVC444 (32 bpp)"
@@ -1880,27 +1879,22 @@ msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX（32 位）"
 
 #: plugins/rdp/rdp_plugin.c:1872
-#, fuzzy
 msgid "True colour (32 bpp)"
 msgstr "真彩色（32 位）"
 
 #: plugins/rdp/rdp_plugin.c:1873
-#, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "真彩色（24 位）"
 
 #: plugins/rdp/rdp_plugin.c:1874
-#, fuzzy
 msgid "High colour (16 bpp)"
 msgstr "增强色（16 位）"
 
 #: plugins/rdp/rdp_plugin.c:1875
-#, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "增强色（15 位）"
 
 #: plugins/rdp/rdp_plugin.c:1876
-#, fuzzy
 msgid "256 colours (8 bpp)"
 msgstr "256 色（8 位）"
 
@@ -1937,12 +1931,10 @@ msgid "Gateway transport type"
 msgstr "网关传输类型"
 
 #: plugins/rdp/rdp_plugin.c:1956
-#, fuzzy
 msgid "Remote Desktop Gateway server"
 msgstr "RD 网关服务器"
 
 #: plugins/rdp/rdp_plugin.c:1957
-#, fuzzy
 msgid "Remote Desktop Gateway username"
 msgstr "RD 网关用户名"
 
@@ -1951,7 +1943,6 @@ msgid "Remote Desktop Gateway password"
 msgstr "远程桌面网关密码"
 
 #: plugins/rdp/rdp_plugin.c:1959
-#, fuzzy
 msgid "Remote Desktop Gateway domain"
 msgstr "RD 网关域"
 
@@ -1965,13 +1956,16 @@ msgstr "负载平衡信息"
 
 #: plugins/rdp/rdp_plugin.c:1964
 msgid "Override printer drivers"
-msgstr ""
+msgstr "覆盖打印机驱动程序"
 
 #: plugins/rdp/rdp_plugin.c:1964
+#, fuzzy
 msgid ""
 "\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":"
 "\"Canon MF410 Series UFR II\""
 msgstr ""
+"\"Samsung_CLX-3300_Series\":\"Samsung CLX-3300 Series PS\";\"Canon MF410\":\""
+"Canon MF410 Series UFR II\""
 
 #: plugins/rdp/rdp_plugin.c:1965
 msgid "Local serial name"
@@ -1979,7 +1973,7 @@ msgstr "本地串口名称"
 
 #: plugins/rdp/rdp_plugin.c:1965
 msgid "COM1, COM2, etc."
-msgstr ""
+msgstr "COM1，COM2，等等。"
 
 #: plugins/rdp/rdp_plugin.c:1966
 msgid "Local serial driver"
@@ -1987,7 +1981,7 @@ msgstr "本地串口驱动"
 
 #: plugins/rdp/rdp_plugin.c:1966
 msgid "Serial"
-msgstr ""
+msgstr "串口"
 
 #: plugins/rdp/rdp_plugin.c:1967
 msgid "Local serial path"
@@ -2006,7 +2000,6 @@ msgid "Local parallel device"
 msgstr "本地并口驱动"
 
 #: plugins/rdp/rdp_plugin.c:1970
-#, fuzzy
 msgid "Smartcard name"
 msgstr "智能卡名称"
 
@@ -2020,7 +2013,7 @@ msgstr "共享串口"
 
 #: plugins/rdp/rdp_plugin.c:1973
 msgid "(SELinux) permissive mode for serial ports"
-msgstr ""
+msgstr "(SELinux)串行端口许可模式"
 
 #: plugins/rdp/rdp_plugin.c:1974
 msgid "Share parallel ports"
@@ -2031,7 +2024,6 @@ msgid "Redirect local microphone"
 msgstr "重定向本地麦克风"
 
 #: plugins/rdp/rdp_plugin.c:1977
-#, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "禁用剪贴板同步"
 
@@ -2041,7 +2033,7 @@ msgstr "忽略证书"
 
 #: plugins/rdp/rdp_plugin.c:1979
 msgid "Use the old license workflow"
-msgstr ""
+msgstr "使用旧的许可证工作流程"
 
 #: plugins/rdp/rdp_plugin.c:1979
 msgid "It disables CAL and hwId is set to 0"
@@ -2067,20 +2059,17 @@ msgstr "使用 RD 网关检测服务器"
 
 #: plugins/rdp/rdp_plugin.c:1985
 msgid "Use system proxy settings"
-msgstr ""
+msgstr "使用系统代理设置"
 
 #: plugins/rdp/rdp_plugin.c:1987
-#, fuzzy
 msgid "Turn off automatic reconnection"
 msgstr "禁用自动重连"
 
 #: plugins/rdp/rdp_plugin.c:1988
-#, fuzzy
 msgid "Relax order checks"
 msgstr "Relax Order 检查"
 
 #: plugins/rdp/rdp_plugin.c:1989
-#, fuzzy
 msgid "Glyph cache"
 msgstr "字形缓存"
 
@@ -2178,9 +2167,8 @@ msgid "Reconnection attempt %d of %d…"
 msgstr "正在重新连接。尝试 %d 的 %d…"
 
 #: plugins/nx/nx_session_manager.c:98
-#, fuzzy
 msgid "Terminating…"
-msgstr "正在终止"
+msgstr "正在终止…"
 
 #: plugins/nx/nx_session_manager.c:143
 #, c-format
@@ -2216,9 +2204,8 @@ msgid "Password for private SSH key"
 msgstr "私人 SSH 密钥的密码"
 
 #: plugins/nx/nx_plugin.c:367
-#, fuzzy
 msgid "Enter NX authentication credentials"
-msgstr "输入验证凭据"
+msgstr "输入 NX 验证凭据"
 
 #: plugins/nx/nx_plugin.c:761
 msgid "NX - NX Technology"
@@ -2229,7 +2216,7 @@ msgid "Secure passwords storage in KWallet"
 msgstr "存储在 KWallet 中的安全密码"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
@@ -2268,10 +2255,9 @@ msgstr "关于"
 
 #: data/ui/remmina_about.glade:40
 msgid "Website"
-msgstr ""
+msgstr "网站"
 
 #: data/ui/remmina_main.glade:74
-#, fuzzy
 msgid "New connection profile"
 msgstr "创建一个新的连接配置文件"
 
@@ -2288,7 +2274,6 @@ msgid "Toggle view"
 msgstr "切换视图"
 
 #: data/ui/remmina_main.glade:187
-#, fuzzy
 msgid "Search string or server name/IP address for “Quick Connect”"
 msgstr "搜索字符串或服务器名称、IP 地址进行快速连接"
 
@@ -2307,20 +2292,19 @@ msgstr "编辑"
 
 #: data/ui/remmina_main.glade:307
 msgid "Collapse all"
-msgstr ""
+msgstr "全部折叠"
 
 #: data/ui/remmina_main.glade:317
 msgid "Expand all"
-msgstr ""
+msgstr "全部展开"
 
 #: data/ui/remmina_main.glade:354
 msgid "Multi password changer"
 msgstr "多密码更换器"
 
 #: data/ui/remmina_main.glade:364
-#, fuzzy
 msgid "Debugging"
-msgstr "Debug 窗口"
+msgstr "调试"
 
 #: data/ui/remmina_main.glade:384
 msgid "Export"
@@ -2332,7 +2316,7 @@ msgstr ""
 
 #: data/ui/remmina_main.glade:404
 msgid "Set as default remote desktop client"
-msgstr ""
+msgstr "设置为默认的远程桌面客户端"
 
 #: data/ui/remmina_main.glade:431
 msgid "Homepage"
@@ -2344,7 +2328,7 @@ msgstr "捐助"
 
 #: data/ui/remmina_main.glade:451
 msgid "Wiki"
-msgstr ""
+msgstr "Wiki"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:461
@@ -2362,11 +2346,11 @@ msgstr "最后使用时间"
 
 #: data/ui/remmina_unlock.glade:60
 msgid "Unlock"
-msgstr ""
+msgstr "解锁"
 
 #: data/ui/remmina_unlock.glade:94
 msgid "Unlock Remmina"
-msgstr ""
+msgstr "解锁 Remmina"
 
 #: data/ui/remmina_unlock.glade:128
 msgid "Master password secret key"
@@ -2379,7 +2363,7 @@ msgstr "按键"
 
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
-msgstr ""
+msgstr "请稍候…"
 
 #: data/ui/remmina_news.glade:108
 msgid ""
@@ -2387,20 +2371,21 @@ msgid ""
 "remmina__stats_8c.html#details\" title=\"Remmina usage statistics"
 "\">anonymous</a></b> statistics to remmina.org"
 msgstr ""
+"发送 <b><a href=\"https://remmina.gitlab.io/remminadoc.gitlab.io/"
+"remmina__stats_8c.html#details\" title=\"Remmina usage statistics\""
+">匿名</a></b> 统计到 remmina.org"
 
 #: data/ui/remmina_news.glade:133
-#, fuzzy
 msgid "Make Remmina the default Remote Desktop Client"
-msgstr "Remmina 远程桌面客户端"
+msgstr "将 Remmina 设置为默认的远程桌面客户端"
 
 #: data/ui/remmina_news.glade:142
-#, fuzzy
 msgid "Apply"
-msgstr "小程序"
+msgstr "应用"
 
 #: data/ui/remmina_news.glade:166
 msgid "<big>Important settings</big>"
-msgstr ""
+msgstr "<big>重要设置</big>"
 
 #: data/ui/remmina_news.glade:192
 msgid ""
@@ -2413,7 +2398,7 @@ msgstr ""
 
 #: data/ui/remmina_news.glade:212
 msgid "<big>Contribute</big>"
-msgstr ""
+msgstr "<big>贡献</big>"
 
 #: data/ui/remmina_mpc.glade:14
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
@@ -2509,9 +2494,8 @@ msgid "Choose the a folder to save screenshots from Remmina in."
 msgstr "选择一个文件夹保存来自 Remmina 的截图。"
 
 #: data/ui/remmina_preferences.glade:295
-#, fuzzy
 msgid "Select a Folder"
-msgstr "全选"
+msgstr "选择一个文件夹"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Screen resolutions"
@@ -2535,7 +2519,7 @@ msgstr ""
 msgid ""
 "The folder where connection profiles are saved, it defaults to the "
 "XDG_USER_DATA"
-msgstr ""
+msgstr "保存连接配置文件的文件夹，默认为 XDG_USER_DATA"
 
 #. The folder where profiles are saved
 #: data/ui/remmina_preferences.glade:361
@@ -2585,10 +2569,16 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
+"%G 组名（斜杠将自动转换为-）\n"
+"%P 协议名称\n"
+"%N 连接名称\n"
+"%h 主机名/ IP\n"
+"\n"
+"\n"
 
 #: data/ui/remmina_preferences.glade:504
 msgid "%G_%P_%N_%h"
-msgstr ""
+msgstr "%G_%P_%N_%h"
 
 #: data/ui/remmina_preferences.glade:518
 msgid "Options"
@@ -2683,9 +2673,8 @@ msgid "Dark tray icon"
 msgstr "暗色托盘图标"
 
 #: data/ui/remmina_preferences.glade:797
-#, fuzzy
 msgid "Improves contrast if you have a light panel."
-msgstr "如果您的主题面板较浅，请选择此选项。"
+msgstr "如果您的主题面板较浅，可以提高对比度。"
 
 #: data/ui/remmina_preferences.glade:818
 msgid "Applet"
@@ -2885,82 +2874,66 @@ msgid "Pick a terminal colouring file"
 msgstr "选择一个终端配色文件"
 
 #: data/ui/remmina_preferences.glade:1934
-#, fuzzy
 msgid "Pick a black colour"
-msgstr "选择红色"
+msgstr "选择黑色"
 
 #: data/ui/remmina_preferences.glade:1946
-#, fuzzy
 msgid "Pick a red colour"
 msgstr "选择红色"
 
 #: data/ui/remmina_preferences.glade:1958
-#, fuzzy
 msgid "Pick a green colour"
-msgstr "背景色"
+msgstr "选择绿色"
 
 #: data/ui/remmina_preferences.glade:1970
-#, fuzzy
 msgid "Pick a yellow colour"
 msgstr "选择黄色"
 
 #: data/ui/remmina_preferences.glade:1982
-#, fuzzy
 msgid "Pick a blue colour"
-msgstr "选择红色"
+msgstr "选择蓝色"
 
 #: data/ui/remmina_preferences.glade:1994
-#, fuzzy
 msgid "Pick a magenta colour"
 msgstr "选择洋红色"
 
 #: data/ui/remmina_preferences.glade:2006
-#, fuzzy
 msgid "Pick a cyan colour"
-msgstr "选择红色"
+msgstr "选择青色"
 
 #: data/ui/remmina_preferences.glade:2019
-#, fuzzy
 msgid "Pick a white colour"
-msgstr "选择红色"
+msgstr "选择白色"
 
 #: data/ui/remmina_preferences.glade:2031
-#, fuzzy
 msgid "Pick a light black colour"
 msgstr "选择亮黑色"
 
 #: data/ui/remmina_preferences.glade:2043
-#, fuzzy
 msgid "Pick a light red colour"
 msgstr "选择亮红色"
 
 #: data/ui/remmina_preferences.glade:2055
-#, fuzzy
 msgid "Pick a bright green colour"
 msgstr "选择亮绿色"
 
 #: data/ui/remmina_preferences.glade:2067
-#, fuzzy
 msgid "Pick a bright yellow colour"
 msgstr "选择亮黄色"
 
 #: data/ui/remmina_preferences.glade:2079
-#, fuzzy
 msgid "Pick a bright blue colour"
 msgstr "选择亮蓝色"
 
 #: data/ui/remmina_preferences.glade:2091
-#, fuzzy
 msgid "Pick a light magenta colour"
 msgstr "选择亮洋红色"
 
 #: data/ui/remmina_preferences.glade:2103
-#, fuzzy
 msgid "Pick a light cyan colour"
 msgstr "选择亮青色"
 
 #: data/ui/remmina_preferences.glade:2116
-#, fuzzy
 msgid "Pick a light white colour"
 msgstr "选择亮白色"
 
