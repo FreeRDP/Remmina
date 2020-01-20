@@ -713,21 +713,17 @@ static DWORD remmina_rdp_verify_changed_certificate(freerdp *instance,
 static void remmina_rdp_post_disconnect(freerdp *instance)
 {
 	TRACE_CALL(__func__);
-	rfContext *rfi;
 
 	if (!instance || !instance->context)
 		return;
-
-	rfi = (rfContext *)instance->context;
 
 	PubSub_UnsubscribeChannelConnected(instance->context->pubSub,
 					   (pChannelConnectedEventHandler)remmina_rdp_OnChannelConnectedEventHandler);
 	PubSub_UnsubscribeChannelDisconnected(instance->context->pubSub,
 					      (pChannelDisconnectedEventHandler)remmina_rdp_OnChannelDisconnectedEventHandler);
 
-	gdi_free(instance);
+	/* The remaining cleanup will be continued on main thread by complete_cleanup_on_main_thread() */
 
-	remmina_rdp_clipboard_free(rfi);
 }
 
 static void remmina_rdp_main_loop(RemminaProtocolWidget *gp)
@@ -1637,6 +1633,10 @@ static gboolean complete_cleanup_on_main_thread(gpointer data)
 	gboolean orphaned;
 	rfContext *rfi = (rfContext *)data;
 	RemminaProtocolWidget *gp;
+
+	remmina_rdp_clipboard_free(rfi);
+
+	gdi_free(rfi->instance);
 
 	gp = rfi->protocol_widget;
 	if (GET_PLUGIN_DATA(gp) == NULL) orphaned = True; else orphaned = False;
