@@ -256,7 +256,7 @@ static void upgrade_sshkeys_202001_mig_common_setting(RemminaFile *remminafile, 
 		remmina_file_set_string(remminafile, dst_key, val);
 
 	if (!protocol_is_ssh)
-		remmina_file_remove_key(remminafile, src_key);
+		remmina_file_set_string(remminafile, src_key, NULL);
 
 	g_free(dst_key);
 	g_free(src_key);
@@ -288,27 +288,34 @@ static void upgrade_sshkeys_202001(RemminaFile *remminafile)
 		upgrade_sshkeys_202001_mig_common_setting(remminafile, protocol_is_ssh, ssh_enabled, "privatekey");
 
 		val = remmina_file_get_string(remminafile, "ssh_loopback");
-		remmina_file_set_string(remminafile, "ssh_tunnel_loopback", val);
-		remmina_file_remove_key(remminafile, "ssh_loopback");
+		if (val) {
+			remmina_file_set_string(remminafile, "ssh_tunnel_loopback", val);
+			remmina_file_set_string(remminafile, "ssh_loopback", NULL);
+		}
 
 		val = remmina_file_get_string(remminafile, "ssh_username");
-		remmina_file_set_string(remminafile, "ssh_tunnel_username", val);
-		remmina_file_set_string(remminafile, "username", val);
-		remmina_file_remove_key(remminafile, "ssh_username");
+		if (val) {
+			remmina_file_set_string(remminafile, "ssh_tunnel_username", val);
+			if (protocol_is_ssh)
+				remmina_file_set_string(remminafile, "username", val);
+			remmina_file_set_string(remminafile, "ssh_username", NULL);
+		}
 
 		val = remmina_file_get_string(remminafile, "ssh_password");
-		remmina_file_set_string(remminafile, "ssh_tunnel_password", val);
-		remmina_file_set_string(remminafile, "password", val);
-		remmina_file_remove_key(remminafile, "ssh_password");
+		if (val) {
+			remmina_file_set_string(remminafile, "ssh_tunnel_password", val);
+			if (protocol_is_ssh)
+				remmina_file_set_string(remminafile, "password", val);
+			remmina_file_set_string(remminafile, "ssh_password", NULL);
+		}
 
 		val = remmina_file_get_string(remminafile, "ssh_server");
-		remmina_file_set_string(remminafile, "ssh_tunnel_server", val);
-		// g_key_file_set_string(gkeyfile, KEYFILE_GROUP_REMMINA, "server", val);
-		remmina_file_remove_key(remminafile, "ssh_server");
+		if (val) {
+			remmina_file_set_string(remminafile, "ssh_tunnel_server", val);
+			remmina_file_set_string(remminafile, "ssh_server", NULL);
+		}
 
-		remmina_file_remove_key(remminafile, "ssh_enabled");
-		remmina_file_remove_key(remminafile, "save_ssh_server");
-		remmina_file_remove_key(remminafile, "save_ssh_username");
+		/* Real key removal will be done by remmina_file_save() */
 
 		remmina_file_set_int(remminafile, "ssh_tunnel_enabled", ssh_enabled);
 
@@ -436,11 +443,6 @@ void remmina_file_set_string_ref(RemminaFile *remminafile, const gchar *setting,
 	} else {
 		g_hash_table_insert(remminafile->settings, g_strdup(setting), g_strdup(""));
 	}
-}
-
-gboolean remmina_file_remove_key(RemminaFile *remminafile, const gchar *setting)
-{
-	return g_hash_table_remove(remminafile->settings, setting);
 }
 
 const gchar *
@@ -609,8 +611,14 @@ void remmina_file_save(RemminaFile *remminafile)
 	/* Avoid storing redundant and deprecated "resolution" field */
 	g_key_file_remove_key(gkeyfile, KEYFILE_GROUP_REMMINA, "resolution", NULL);
 
+	/* Delete old pre-1.4 ssh keys */
+	g_key_file_remove_key(gkeyfile, KEYFILE_GROUP_REMMINA, "ssh_enabled", NULL);
+	g_key_file_remove_key(gkeyfile, KEYFILE_GROUP_REMMINA, "save_ssh_server", NULL);
+	g_key_file_remove_key(gkeyfile, KEYFILE_GROUP_REMMINA, "save_ssh_username", NULL);
+
 	/* Store gkeyfile to disk (password are already sent to keyring) */
 	content = g_key_file_to_data(gkeyfile, &length, NULL);
+
 	if (g_file_set_contents(remminafile->filename, content, length, &err)) {
 		g_debug("Profile saved");
 	} else {
