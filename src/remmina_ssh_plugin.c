@@ -463,7 +463,7 @@ remmina_plugin_ssh_vte_save_session(GtkMenuItem *menuitem, RemminaProtocolWidget
 
 	if (err == NULL) {
 		remmina_public_send_notification("remmina-terminal-saved",
-						 _("Terminal content saved under"),
+						 _("Terminal content saved in"),
 						 g_file_get_path(gpdata->vte_session_file));
 	}
 
