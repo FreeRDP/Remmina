@@ -226,85 +226,56 @@ remmina_plugin_ssh_main_thread(gpointer data)
 	RemminaSSH *ssh;
 	RemminaSSHShell *shell = NULL;
 	gboolean cont = FALSE;
-	gint ret;
-	const gchar *saveserver;
-	const gchar *saveusername;
 	gchar *hostport;
-	gchar tunneluser[33];           /**< On Linux a username can have a 32 char length */
-	gchar tunnelserver[256];        /**< On Linux a servername can have a 255 char length */
-	gchar tunnelport[6];            /**< A TCP port can have a maximum value of 65535 */
-	gchar *host;
-	gint port;
+	gchar *tunnel_host;
+	int tunnel_port;
+	gint ret;
 
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
 
-		gpdata = GET_PLUGIN_DATA(gp);
+	gpdata = GET_PLUGIN_DATA(gp);
 
 	/**
 	 * remmina_plugin_service->protocol_plugin_start_direct_tunnel start the
 	 * SSH Tunnel and return the server + port string
-	 * Therefore we set the SSH Tunnel username here, before the tunnel
-	 * is established and than set it back to the destination SSH user.
 	 *
 	 **/
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
-	/* We save the SSH server name, so that we can restore it at the end of the connection */
-	saveserver = remmina_plugin_service->file_get_string(remminafile, "ssh_server");
-	remmina_plugin_service->file_set_string(remminafile, "save_ssh_server", g_strdup(saveserver));
-	/* We save the SSH username, so that we can restore it at the end of the connection */
-	saveusername = remmina_plugin_service->file_get_string(remminafile, "ssh_username");
-	remmina_plugin_service->file_set_string(remminafile, "save_ssh_username", g_strdup(saveusername));
 
-	if (saveserver) {
-		/** if the server string contains the character @ we extract the user
-		 * and the server string (host:port)
-		 **/
-		if (strchr(saveserver, '@')) {
-			sscanf(saveserver, "%[_a-zA-Z0-9.]@%[_a-zA-Z0-9.]:%[0-9]",
-			       tunneluser, tunnelserver, tunnelport);
-			g_debug("Username: %s, tunneluser: %s\n",
-				remmina_plugin_service->file_get_string(remminafile, "ssh_username"), tunneluser);
-			if (saveusername != NULL && tunneluser[0] != '\0')
-				remmina_plugin_service->file_set_string(remminafile, "ssh_username", NULL);
-			remmina_plugin_service->file_set_string(remminafile, "ssh_username",
-								g_strdup(tunneluser));
-			remmina_plugin_service->file_set_string(remminafile, "ssh_server",
-								g_strconcat(tunnelserver, ":", tunnelport, NULL));
-		}
-	}
-	g_debug ("Trying to initiate SSH tunnel…");
+	// Optionally start the SSH tunnel
 	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
-	g_debug ("Tunnel started on %s", hostport);
-	/* We restore the SSH username as the tunnel is set */
-	remmina_plugin_service->file_set_string(remminafile, "ssh_username", g_strdup(saveusername));
-	remmina_plugin_service->file_set_string(remminafile, "ssh_server", g_strdup(saveserver));
-	if (hostport == NULL)
-		return FALSE;
-	remmina_plugin_service->get_server_port(hostport, 22, &host, &port);
+	if (hostport == NULL) {
+		remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
+		return NULL;
+	}
+
+	remmina_plugin_service->get_server_port(hostport, 22, &tunnel_host, &tunnel_port);
+	g_free(hostport);
 
 	ssh = g_object_get_data(G_OBJECT(gp), "user-data");
 	if (ssh) {
 		/* Create SSH shell connection based on existing SSH session */
+
 		shell = remmina_ssh_shell_new_from_ssh(ssh);
-		if (remmina_ssh_init_session(REMMINA_SSH(shell)) &&
+		if (shell->ssh.tunnel_host)
+			g_free(shell->ssh.tunnel_host);
+		shell->ssh.tunnel_host = tunnel_host;
+		shell->ssh.tunnel_port = tunnel_port;
+		if (remmina_ssh_init_session(REMMINA_SSH(shell), FALSE) &&
 		    remmina_ssh_auth(REMMINA_SSH(shell), NULL, gp, remminafile) > 0 &&
 		    remmina_ssh_shell_open(shell, (RemminaSSHExitFunc)
 					   remmina_plugin_service->protocol_plugin_signal_connection_closed, gp))
 			cont = TRUE;
 	} else {
 		/* New SSH Shell connection */
-		if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE))
-			remmina_plugin_service->file_set_string(remminafile, "ssh_server", g_strdup(hostport));
-		else
-			remmina_plugin_service->file_set_string(remminafile, "ssh_server",
-								remmina_plugin_service->file_get_string(remminafile, "save_ssh_server"));
-		g_free(hostport);
-		g_free(host);
-
 		shell = remmina_ssh_shell_new_from_file(remminafile);
+		shell->ssh.tunnel_host = tunnel_host;
+		shell->ssh.tunnel_port = tunnel_port;
 		while (1) {
-			if (!remmina_ssh_init_session(REMMINA_SSH(shell))) {
+
+			if (!remmina_ssh_init_session(REMMINA_SSH(shell), FALSE)) {
+				g_debug("[SSH] init session error: %s\n",REMMINA_SSH(shell)->error);
 				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(shell)->error);
 				break;
 			}
@@ -324,9 +295,6 @@ remmina_plugin_ssh_main_thread(gpointer data)
 			break;
 		}
 
-		/* We restore the ssh_server name */
-		remmina_plugin_service->file_set_string(remminafile, "ssh_server",
-							remmina_plugin_service->file_get_string(remminafile, "save_ssh_server"));
 	}
 	if (!cont) {
 		if (shell) remmina_ssh_shell_free(shell);
@@ -1053,9 +1021,9 @@ static RemminaProtocolFeature remmina_plugin_ssh_features[] =
  */
 static const RemminaProtocolSetting remmina_ssh_basic_settings[] =
 {
-	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "ssh_server",	    NULL,			  FALSE, "_ssh._tcp", NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "ssh_username",   N_("Username"),		  FALSE, NULL,	      NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_password",   N_("User password"),	  FALSE, NULL,	      NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_SERVER,	  "server",	    NULL,			  FALSE, "_ssh._tcp", NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "username",   N_("Username"),		  FALSE, NULL,	      NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",   N_("User password"),	  FALSE, NULL,	      NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth",	    N_("Authentication type"),	  FALSE, ssh_auth,    NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey", N_("Identity file"),	  FALSE, NULL,	      NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase", N_("Password to unlock private key"), FALSE, NULL,	      NULL },

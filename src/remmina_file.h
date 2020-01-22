@@ -71,6 +71,7 @@ gchar *remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting);
 void remmina_file_set_int(RemminaFile *remminafile, const gchar *setting, gint value);
 gint remmina_file_get_int(RemminaFile *remminafile, const gchar *setting, gint default_value);
 void remmina_file_store_secret_plugin_password(RemminaFile *remminafile, const gchar *key, const gchar *value);
+gboolean remmina_file_remove_key(RemminaFile *remminafile, const gchar *setting);
 /* Create or overwrite the .remmina file */
 void remmina_file_save(RemminaFile *remminafile);
 /* Free the RemminaFile object */

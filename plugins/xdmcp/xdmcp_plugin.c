@@ -135,7 +135,7 @@ static gboolean remmina_plugin_xdmcp_start_xephyr(RemminaProtocolWidget *gp)
 		argv[argc++] = g_strdup("tcp");
 	}
 
-	if (!remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
+	if (!remmina_plugin_service->file_get_int(remminafile, "ssh_tunnel_enabled", FALSE)) {
 		remmina_plugin_service->get_server_port(remmina_plugin_service->file_get_string(remminafile, "server"), 0,
 			&host, &i);
 
@@ -204,7 +204,7 @@ static gboolean remmina_plugin_xdmcp_main(RemminaProtocolWidget *gp)
 
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
-	if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
+	if (remmina_plugin_service->file_get_int(remminafile, "ssh_tunnel_enabled", FALSE)) {
 		if (!remmina_plugin_service->protocol_plugin_start_xport_tunnel(gp, remmina_plugin_xdmcp_tunnel_init_callback)) {
 			gpdata->thread = 0;
 			return FALSE;
@@ -276,7 +276,7 @@ static gboolean remmina_plugin_xdmcp_open_connection(RemminaProtocolWidget *gp)
 	gpdata->socket_id = gtk_socket_get_id(GTK_SOCKET(gpdata->socket));
 
 
-	if (remmina_plugin_service->file_get_int(remminafile, "ssh_enabled", FALSE)) {
+	if (remmina_plugin_service->file_get_int(remminafile, "ssh_tunnel_enabled", FALSE)) {
 		if (pthread_create(&gpdata->thread, NULL, remmina_plugin_xdmcp_main_thread, gp)) {
 			remmina_plugin_service->protocol_plugin_set_error(gp,
 				"Failed to initialize pthread. Falling back to non-thread mode…");

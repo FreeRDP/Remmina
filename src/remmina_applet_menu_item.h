@@ -57,7 +57,7 @@ typedef struct _RemminaAppletMenuItem {
 	gchar *				group;
 	gchar *				protocol;
 	gchar *				server;
-	gboolean			ssh_enabled;
+	gboolean			ssh_tunnel_enabled;
 } RemminaAppletMenuItem;
 
 typedef struct _RemminaAppletMenuItemClass {

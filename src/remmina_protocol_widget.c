@@ -228,7 +228,7 @@ void remmina_protocol_widget_open_connection_real(gpointer data)
 
 	num_ssh = 0;
 #ifdef HAVE_LIBSSH
-	if (remmina_file_get_int(gp->priv->remmina_file, "ssh_enabled", FALSE))
+	if (remmina_file_get_int(gp->priv->remmina_file, "ssh_tunnel_enabled", FALSE))
 		num_ssh += 2;
 
 #endif
@@ -569,7 +569,7 @@ gboolean remmina_protocol_widget_query_feature_by_type(RemminaProtocolWidget *gp
 
 #ifdef HAVE_LIBSSH
 	if (type == REMMINA_PROTOCOL_FEATURE_TYPE_TOOL &&
-	    remmina_file_get_int(gp->priv->remmina_file, "ssh_enabled", FALSE))
+	    remmina_file_get_int(gp->priv->remmina_file, "ssh_tunnel_enabled", FALSE))
 		return TRUE;
 
 #endif
@@ -719,8 +719,8 @@ static gboolean remmina_protocol_widget_init_tunnel(RemminaProtocolWidget *gp)
 		mp = remmina_protocol_widget_mpprogress(gp->cnnobj, msg, cancel_init_tunnel_cb, NULL);
 		g_free(msg);
 
-		if (!remmina_ssh_init_session(REMMINA_SSH(tunnel))) {
-			g_debug ("[SSH] Cannot init SSH session with tunnel struct");
+		if (!remmina_ssh_init_session(REMMINA_SSH(tunnel), TRUE)) {
+			g_debug ("[SSH] %s Cannot init SSH session with tunnel struct", __func__);
 			remmina_protocol_widget_set_error(gp, REMMINA_SSH(tunnel)->error);
 			remmina_ssh_tunnel_free(tunnel);
 			return FALSE;
@@ -761,32 +761,36 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 {
 	TRACE_CALL(__func__);
 	const gchar *server;
+	const gchar *ssh_tunnel_server;
 	//const gchar *proto;
-	gchar *host, *dest;
-	gint port;
+	gchar *ssh_tunnel_host, *srv_host, *dest;
+	gint srv_port, ssh_tunnel_port;
 	gchar *msg;
 
 	g_debug ("SSH tunnel initialization…");
 	//proto = remmina_file_get_string(gp->priv->remmina_file, "protocol");
 
 	server = remmina_file_get_string(gp->priv->remmina_file, "server");
+	ssh_tunnel_server = remmina_file_get_string(gp->priv->remmina_file, "ssh_tunnel_server");
 
 	if (!server)
 		return g_strdup("");
 
-	remmina_public_get_server_port(server, default_port, &host, &port);
-	g_debug ("server: %s, port: %d", host, port);
+	remmina_public_get_server_port(server, default_port, &srv_host, &srv_port);
+	remmina_public_get_server_port(ssh_tunnel_server, 22, &ssh_tunnel_host, &ssh_tunnel_port);
+	g_debug ("server: %s, port: %d", srv_host, srv_port);
 
-	if (port_plus && port < 100)
+	if (port_plus && srv_port < 100)
 		/* Protocols like VNC supports using instance number :0, :1, etc. as port number. */
-		port += default_port;
+		srv_port += default_port;
 
 #ifdef HAVE_LIBSSH
 	RemminaMessagePanel *mp;
 
-	if (!remmina_file_get_int(gp->priv->remmina_file, "ssh_enabled", FALSE)) {
-		dest = g_strdup_printf("[%s]:%i", host, port);
-		g_free(host);
+	if (!remmina_file_get_int(gp->priv->remmina_file, "ssh_tunnel_enabled", FALSE)) {
+		dest = g_strdup_printf("[%s]:%i", srv_host, srv_port);
+		g_free(srv_host);
+		g_free(ssh_tunnel_host);
 		return dest;
 	}
 
@@ -797,8 +801,10 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 	}
 
 	if (!remmina_protocol_widget_init_tunnel(gp)) {
-		g_free(host);
-		g_debug ("[SSH] Setting up the tunnel failed, returning NULL");
+		g_free(srv_host);
+		g_free(ssh_tunnel_host);
+		g_debug ("[SSH] %s remmina_protocol_widget_init_tunnel failed with error is %s\n",
+				 __func__, remmina_protocol_widget_get_error_message(gp));
 		return NULL;
 	}
 
@@ -806,17 +812,21 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 	mp = remmina_protocol_widget_mpprogress(gp->cnnobj, msg, cancel_start_direct_tunnel_cb, NULL);
 	g_free(msg);
 
-	if (remmina_file_get_int(gp->priv->remmina_file, "ssh_loopback", FALSE)) {
-		g_free(host);
-		host = g_strdup("127.0.0.1");
+	if (remmina_file_get_int(gp->priv->remmina_file, "ssh_tunnel_loopback", FALSE)) {
+		g_free(srv_host);
+		g_free(ssh_tunnel_host);
+		srv_host = g_strdup("127.0.0.1");
 	}
 
-	if (!remmina_ssh_tunnel_open(gp->priv->ssh_tunnel, host, port, remmina_pref.sshtunnel_port)) {
-		g_free(host);
+	g_debug ("%s: starting tunnel to: %s, port: %d", __func__, ssh_tunnel_host, ssh_tunnel_port);
+	if (!remmina_ssh_tunnel_open(gp->priv->ssh_tunnel, srv_host, srv_port, remmina_pref.sshtunnel_port)) {
+		g_free(srv_host);
+		g_free(ssh_tunnel_host);
 		remmina_protocol_widget_set_error(gp, REMMINA_SSH(gp->priv->ssh_tunnel)->error);
 		return NULL;
 	}
-	g_free(host);
+	g_free(srv_host);
+	g_free(ssh_tunnel_host);
 
 	remmina_protocol_widget_mpdestroy(gp->cnnobj, mp);
 
@@ -825,7 +835,8 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 #else
 
 	dest = g_strdup_printf("[%s]:%i", host, port);
-	g_free(host);
+	g_free(srv_host);
+	g_free(ssh_tunnel_host);
 	return dest;
 
 #endif
@@ -846,7 +857,7 @@ gboolean remmina_protocol_widget_start_reverse_tunnel(RemminaProtocolWidget *gp,
 	gchar *msg;
 	RemminaMessagePanel *mp;
 
-	if (!remmina_file_get_int(gp->priv->remmina_file, "ssh_enabled", FALSE))
+	if (!remmina_file_get_int(gp->priv->remmina_file, "ssh_tunnel_enabled", FALSE))
 		return TRUE;
 
 	if (!remmina_protocol_widget_init_tunnel(gp))
@@ -925,7 +936,7 @@ gboolean remmina_protocol_widget_ssh_exec(RemminaProtocolWidget *gp, gboolean wa
 }
 
 #ifdef HAVE_LIBSSH
-static gboolean remmina_protocol_widget_tunnel_init_callback(RemminaSSHTunnel *tunnel, gpointer data)
+static gboolean remmina_protocol_widget_xport_tunnel_init_callback(RemminaSSHTunnel *tunnel, gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = REMMINA_PROTOCOL_WIDGET(data);
@@ -941,13 +952,13 @@ static gboolean remmina_protocol_widget_tunnel_init_callback(RemminaSSHTunnel *t
 	return ret;
 }
 
-static gboolean remmina_protocol_widget_tunnel_connect_callback(RemminaSSHTunnel *tunnel, gpointer data)
+static gboolean remmina_protocol_widget_xport_tunnel_connect_callback(RemminaSSHTunnel *tunnel, gpointer data)
 {
 	TRACE_CALL(__func__);
 	return TRUE;
 }
 
-static gboolean remmina_protocol_widget_tunnel_disconnect_callback(RemminaSSHTunnel *tunnel, gpointer data)
+static gboolean remmina_protocol_widget_xport_tunnel_disconnect_callback(RemminaSSHTunnel *tunnel, gpointer data)
 {
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = REMMINA_PROTOCOL_WIDGET(data);
@@ -981,9 +992,9 @@ gboolean remmina_protocol_widget_start_xport_tunnel(RemminaProtocolWidget *gp, R
 	g_free(msg);
 
 	gp->priv->init_func = init_func;
-	gp->priv->ssh_tunnel->init_func = remmina_protocol_widget_tunnel_init_callback;
-	gp->priv->ssh_tunnel->connect_func = remmina_protocol_widget_tunnel_connect_callback;
-	gp->priv->ssh_tunnel->disconnect_func = remmina_protocol_widget_tunnel_disconnect_callback;
+	gp->priv->ssh_tunnel->init_func = remmina_protocol_widget_xport_tunnel_init_callback;
+	gp->priv->ssh_tunnel->connect_func = remmina_protocol_widget_xport_tunnel_connect_callback;
+	gp->priv->ssh_tunnel->disconnect_func = remmina_protocol_widget_xport_tunnel_disconnect_callback;
 	gp->priv->ssh_tunnel->callback_data = gp;
 
 	remmina_public_get_server_port(remmina_file_get_string(gp->priv->remmina_file, "server"), 0, &server, NULL);
@@ -1351,8 +1362,8 @@ gint remmina_protocol_widget_panel_authuserpwd_ssh_tunnel(RemminaProtocolWidget 
 	    !remminafile->prevent_saving && allow_password_saving)
 		pflags |= REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD;
 
-	username = remmina_file_get_string(remminafile, "ssh_username");
-	password = remmina_file_get_string(remminafile, "ssh_password");
+	username = remmina_file_get_string(remminafile, "ssh_tunnel_username");
+	password = remmina_file_get_string(remminafile, "ssh_tunnel_password");
 
 	return remmina_protocol_widget_dialog(RPWDT_AUTH, gp, pflags, _("Type in username and password for SSH."), username,
 					      password, NULL, _("Password"));
