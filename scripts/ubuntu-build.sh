@@ -30,7 +30,7 @@ while [ "$1" != "" ]; do
     shift
 done
 
-if [ "$DEBEMAIL" == "" -o "$DEBFULLNAME" == "" ]; then
+if [ "$DEBEMAIL" == "" ] || [ "$DEBFULLNAME" == "" ]; then
     echo "DEBEMAIL and DEBFULLNAME variables must be set before run this script"
     exit 1
 fi
