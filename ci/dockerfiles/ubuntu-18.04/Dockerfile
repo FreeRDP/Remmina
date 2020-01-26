@@ -24,5 +24,5 @@ RUN \
     libsecret-1-dev libsodium-dev libwebkit2gtk-4.0-dev libsystemd-dev \
     libsoup2.4-dev libjson-glib-dev libavresample-dev freerdp2-dev \
     libspice-protocol-dev libspice-client-gtk-3.0-dev \
-    && apt autoremove -y \
-    && apt clean -y
+    && apt-get autoremove -y \
+    && apt-get clean -y
