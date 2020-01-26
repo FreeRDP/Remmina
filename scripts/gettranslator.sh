@@ -42,7 +42,7 @@ fi
 
 is_header=1
 for lang in $languages; do
-	if [ $is_header -eq 1 -a -f "$PODIR/$lang.po" ]; then
+	if [ $is_header -eq 1 ] && [ -f "$PODIR/$lang.po" ]; then
 		echo "language;last_translator;last_translator_email;last_translation"
 		is_header=0
 	fi
