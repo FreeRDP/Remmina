@@ -85,7 +85,6 @@ typedef struct _RemminaSSH {
 	gboolean	is_tunnel;
 	gchar *		tunnel_host;
 	gint		tunnel_port;
-
 } RemminaSSH;
 
 gchar *remmina_ssh_identity_path(const gchar *id);
