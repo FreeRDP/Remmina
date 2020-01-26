@@ -92,7 +92,7 @@ EOF
 
     cat ../changelog.orig >>debian/changelog
     debuild -eUBUNTU_SERIE="$serie" -S -sa # add ' -us -uc' flags to avoid signing
-    rm -rf *
+    rm -rf -- *
     tar zxf "../${PKG_NAME}_${PKG_VER}.orig.tar.gz"
 done
 cd -
