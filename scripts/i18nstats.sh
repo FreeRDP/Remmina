@@ -25,7 +25,7 @@ REMMINATOP="$(dirname "$SCRIPTPATH")"
 REMTMPDIR="$(mktemp -d)"
 REMTMPFILE="$(mktemp -p "$REMTMPDIR")"
 
-trap "rm -rf "$REMTMPDIR"" HUP INT QUIT TERM EXIT
+trap "rm -rf $REMTMPDIR" HUP INT QUIT TERM EXIT
 
 declare -x TRANSLATED
 declare -x UNTRANSLATED
