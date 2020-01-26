@@ -14,7 +14,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   mkdir -p /snap/bin && \
   mv snapcraft-wrapper /snap/bin/snapcraft && \
   chmod a+x /snap/bin/snapcraft && \
-  apt remove --yes --purge curl jq squashfs-tools && \
+  apt-get remove --yes --purge curl jq squashfs-tools && \
   apt-get autoclean --yes && \
   apt-get clean --yes
 
