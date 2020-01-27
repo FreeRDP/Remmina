@@ -60,7 +60,7 @@ PKG_DIR="${PKG_NAME}_${PKG_VER}"
 echo $PKG_VER
 
 mkdir -p ${BDIR}
-rm -rf ${BDIR}/*
+rm -rf "${BDIR:?}/"*
 
 # exports repo without .git folder and other operative system clients
 git archive --format tar --prefix "${BDIR}/${PKG_DIR}/" HEAD | \
