@@ -2,7 +2,7 @@
 # Copyright © 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-# Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2019.
+# Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2019, 2020.
 # Aroa Taha <Naturameuocat@protonmail.com>, 2019.
 # Allan Nordhøy <epost@anotheragency.no>, 2019.
 # anonymous <noreply@weblate.org>, 2019.
@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-01-22 22:42+0000\n"
-"PO-Revision-Date: 2020-01-18 08:21+0000\n"
-"Last-Translator: Francisco Javier <xiscodroid@gmail.com>\n"
+"PO-Revision-Date: 2020-01-28 21:50+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
 "es/>\n"
 "Language: es\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10.2-dev\n"
+"X-Generator: Weblate 3.11-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:248
@@ -39,12 +39,12 @@ msgstr "Ejecutando órdenes externas…"
 #: src/remmina_protocol_widget.c:289
 #, c-format
 msgid "Connecting to \"%s\"…"
-msgstr "Conectando con \"%s\"…"
+msgstr "Conectando con «%s»…"
 
 #: src/remmina_protocol_widget.c:717 src/remmina_protocol_widget.c:811
 #, c-format
 msgid "Connecting to \"%s\" via SSH…"
-msgstr "Conectando con «%s» via SSH…"
+msgstr "Conectando con «%s» a través de SSH…"
 
 #: src/remmina_protocol_widget.c:866
 #, c-format
@@ -54,18 +54,18 @@ msgstr "Esperando conexión SSH entrante al puerto %i…"
 #: src/remmina_protocol_widget.c:911
 #, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "La orden %s no esta disponible en el servidor SSH."
+msgstr "La orden «%s» no está disponible en el servidor SSH."
 
 #: src/remmina_protocol_widget.c:915
 #, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr "La orden %s falló en el servidor SSH (estado = %i)."
+msgstr "No pudo ejecutarse la orden «%s» en el servidor SSH (estado = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:923
 #, c-format
 msgid "Could not run command. %s"
-msgstr "No se pudo ejecutar la orden: %s"
+msgstr "No se pudo ejecutar la orden. %s"
 
 #: src/remmina_protocol_widget.c:990
 #, c-format
@@ -178,7 +178,6 @@ msgid "Error: %s"
 msgstr "Error: %s"
 
 #: src/remmina_ssh_plugin.c:466
-#, fuzzy
 msgid "Terminal content saved in"
 msgstr "Contenido de terminal guardado en"
 
@@ -302,7 +301,7 @@ msgstr "Carpeta para la sesión SSH"
 
 #: src/remmina_ssh_plugin.c:1054
 msgid "Filename for SSH session log"
-msgstr "Archivo para el log de la sesión SSH"
+msgstr "Nombre de archivo del registro de sesiones SSH"
 
 #: src/remmina_ssh_plugin.c:1055
 msgid "Log SSH session when exiting Remmina"
@@ -525,7 +524,7 @@ msgstr "Preferencias"
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:99
 msgid "Run a plugin"
-msgstr "Ejecutar un plugin"
+msgstr "Ejecutar un complemento"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:101
@@ -555,7 +554,7 @@ msgstr "Mostrar la versión de la aplicación"
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:111
 msgid "Show version of the application and its plugins"
-msgstr "Mostrar la versión de la aplicación y los plugins"
+msgstr "Mostrar la versión de la aplicación y sus complementos"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:113
@@ -817,48 +816,48 @@ msgstr "No se ha podido crear la carpeta \"%s\"."
 #: src/remmina_sftp_client.c:179 src/remmina_sftp_client.c:200
 #, c-format
 msgid "Could not create the file \"%s\"."
-msgstr "No se ha podido crear el archivo \"%s\"."
+msgstr "No se pudo crear el archivo «%s»."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:218
 #, c-format
 msgid "Could not open the file \"%s\" on the server. %s"
-msgstr "No se ha podido abrir el archivo \"%s\" en el servidor %s"
+msgstr "No se pudo abrir el archivo «%s» en el servidor %s"
 
 #: src/remmina_sftp_client.c:240
 #, c-format
 msgid "Could not save the file \"%s\"."
-msgstr "No se ha podido guardar el archivo \"%s\"."
+msgstr "No se pudo guardar el archivo «%s»."
 
 #: src/remmina_sftp_client.c:279 src/remmina_sftp_client.c:733
 #, c-format
 msgid "Could not open the folder \"%s\". %s"
-msgstr "No se ha podido abrir la carpeta \"%s\".%s"
+msgstr "No se pudo abrir la carpeta «%s». %s"
 
 #: src/remmina_sftp_client.c:383
 #, c-format
 msgid "Could not create the folder \"%s\" on the server. %s"
-msgstr "Error al crear la carpeta \"%s\" en el servidor. %s"
+msgstr "No se pudo crear la carpeta «%s» en el servidor. %s"
 
 #: src/remmina_sftp_client.c:411 src/remmina_sftp_client.c:433
 #, c-format
 msgid "Could not create the file \"%s\" on the server. %s"
-msgstr "No se ha podido crear el archivo \"%s\" en el servidor %s"
+msgstr "No se pudo crear el archivo «%s» en el servidor. %s"
 
 #: src/remmina_sftp_client.c:454
 #, c-format
 msgid "Could not open the file \"%s\"."
-msgstr "No se ha podido abrir el archivo \"%s\"."
+msgstr "No se pudo abrir el archivo «%s»."
 
 #: src/remmina_sftp_client.c:474
 #, c-format
 msgid "Could not write to the file \"%s\" on the server. %s"
-msgstr "No se ha podido escribir el archivo %s en el servidor. %s"
+msgstr "No se pudo escribir el archivo «%s» en el servidor. %s"
 
 #: src/remmina_sftp_client.c:670
 #, c-format
 msgid "Could not open the folder  \"%s\". %s"
-msgstr "No se ha podido abrir la carpeta\"%s\".%s"
+msgstr "No se pudo abrir la carpeta «%s». %s"
 
 #: src/remmina_sftp_client.c:688
 #, c-format
@@ -867,13 +866,12 @@ msgstr "No se ha podido leer de la carpeta.%s"
 
 #: src/remmina_sftp_client.c:795
 msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr ""
-"¿Confirma que quiere cancelar la transferencia de archivos en progreso?"
+msgstr "¿Confirma que quiere cancelar la transferencia de archivos en curso?"
 
 #: src/remmina_sftp_client.c:829
 #, c-format
 msgid "Could not delete \"%s\". %s"
-msgstr "No se ha podido eliminar \"%s\". %s"
+msgstr "No se pudo eliminar «%s». %s"
 
 #: src/remmina_sftp_client.c:910
 msgid "The file exists already"
@@ -989,9 +987,8 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr "No se puede importar la clave pública SSH. %s"
 
 #: src/remmina_ssh.c:282 src/remmina_ssh.c:603 src/remmina_ssh.c:623
-#, fuzzy
 msgid "SSH tunnel credentials"
-msgstr "Credenciales de SSH"
+msgstr "Credenciales de túnel SSH"
 
 #: src/remmina_ssh.c:282 src/remmina_ssh.c:603 src/remmina_ssh.c:623
 #: plugins/nx/nx_plugin.c:202
@@ -1377,7 +1374,7 @@ msgstr "Orden posterior"
 #: src/remmina_file_editor.c:1560 src/remmina_file_editor.c:1578
 #, c-format
 msgid "Could not find the file \"%s\"."
-msgstr "No se puedo encontrar el fichero \"%s\"."
+msgstr "No se puedo encontrar el archivo «%s»."
 
 #: src/remmina_chat_window.c:178
 #, c-format
@@ -1438,7 +1435,7 @@ msgstr "Agente de usuario"
 
 #: plugins/www/www_plugin.c:809
 msgid "Turn on Java support"
-msgstr "Activar soporte para Java"
+msgstr "Activar compatibilidad con Java"
 
 #: plugins/www/www_plugin.c:810
 msgid "Turn on smooth scrolling"
@@ -1466,15 +1463,15 @@ msgstr "Ignorar errores de TLS"
 
 #: plugins/www/www_plugin.c:816
 msgid "No password storage"
-msgstr "No se encuentra el almacén de passwords"
+msgstr "No hay almacén de contraseñas"
 
 #: plugins/www/www_plugin.c:818
 msgid "Turn on Web Inspector"
-msgstr "Activar Web Inspector"
+msgstr "Activar inspector web"
 
 #: plugins/www/www_config.h:43
 msgid "Remmina web-browser plugin"
-msgstr "Remmina plugin de navegador web"
+msgstr "Complemento para el navegador de Remmina"
 
 #: plugins/secret/src/glibsecret_plugin.c:188
 msgid "Secure password storing in the GNOME keyring"
@@ -1627,12 +1624,12 @@ msgstr "Error de redirección USB"
 
 #: plugins/spice/spice_plugin.c:239
 msgid "Enter SPICE password"
-msgstr "Introducir clave SPICE"
+msgstr "Proporcione la contraseña de SPICE"
 
 #: plugins/spice/spice_plugin.c:274
 #, c-format
 msgid "Disconnected from the SPICE server \"%s\"."
-msgstr "Desconectado del servidor SPICE \"%s\"."
+msgstr "Desconectado del servidor SPICE «%s»."
 
 #: plugins/spice/spice_plugin.c:290
 msgid "TLS connection error."
@@ -1702,8 +1699,7 @@ msgstr "Sin disposición de número de pantalla X local."
 msgid ""
 "The protocol \"%s\" is unavailable because GtkSocket only works under X.Org."
 msgstr ""
-"El protocolo \"%s\" no está disponible porque GtkSocket solo funciona en X."
-"Org."
+"El protocolo «%s» no está disponible porque GtkSocket solo funciona en X.Org."
 
 #: plugins/xdmcp/xdmcp_plugin.c:348
 msgid "Default"
@@ -1848,18 +1844,18 @@ msgid ""
 "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
 "server support a common TLS version."
 msgstr ""
-"Error al conectar con el servidor RDP \"%s\" via TLS. Revise que el cliente "
-"y el servidor admitan la misma versión de TLS."
+"Error al conectar con el servidor RDP «%s» mediante TLS. Revise que el "
+"cliente y el servidor admitan la misma versión de TLS."
 
 #: plugins/rdp/rdp_plugin.c:1543
 #, c-format
 msgid "Unable to establish a connection to the RDP server \"%s\"."
-msgstr "No se pudo establecer una conexión RDP con el servidor \"%s\"."
+msgstr "No se pudo establecer una conexión RDP con el servidor «%s»."
 
 #: plugins/rdp/rdp_plugin.c:1551
 #, c-format
 msgid "Cannot connect to the RDP server \"%s\"."
-msgstr "No se pudo conectar con el servidor RDP \"%s\"."
+msgstr "No se pudo conectar con el servidor RDP «%s»."
 
 #: plugins/rdp/rdp_plugin.c:1554
 msgid "Could not start libfreerdp-gdi."
@@ -1886,13 +1882,13 @@ msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
 "policy."
 msgstr ""
-"La puerta de enlace de RDP \"%s\" rechazó el acceso a \"%s\\%s\" como "
-"consecuencia de una politica."
+"La puerta de enlace de escritorio remoto «%s» rechazó el acceso a «%s»\\%s "
+"como consecuencia de una normativa."
 
 #: plugins/rdp/rdp_plugin.c:1579
 #, c-format
 msgid "Cannot connect to the \"%s\" RDP server."
-msgstr "No se pudo conectar con el servidor RDP \"%s\"."
+msgstr "No se pudo conectar con el servidor RDP «%s»."
 
 #: plugins/rdp/rdp_plugin.c:1865
 msgid "GFX AVC444 (32 bpp)"
@@ -1988,7 +1984,7 @@ msgstr "Información de equilibrio de carga"
 
 #: plugins/rdp/rdp_plugin.c:1961
 msgid "Override printer drivers"
-msgstr "Ignorar controladores de impresoras"
+msgstr "Anteponerse a controladores de impresoras"
 
 #: plugins/rdp/rdp_plugin.c:1961
 msgid ""
@@ -2064,11 +2060,11 @@ msgstr "Ignorar certificado"
 
 #: plugins/rdp/rdp_plugin.c:1976
 msgid "Use the old license workflow"
-msgstr "Utilizar la antigua licencia de workflow"
+msgstr "Utilizar flujo de trabajo de licencias antiguo"
 
 #: plugins/rdp/rdp_plugin.c:1976
 msgid "It disables CAL and hwId is set to 0"
-msgstr "Desactiva CAL y hwId se pone a 0"
+msgstr "Desactiva CAL y hwId se establece a 0"
 
 #: plugins/rdp/rdp_plugin.c:1977
 msgid "Turn off password storing"
@@ -2305,7 +2301,7 @@ msgstr "Conmutar vista"
 
 #: data/ui/remmina_main.glade:187
 msgid "Search string or server name/IP address for “Quick Connect”"
-msgstr "Cadena de búsqueda o nombre de servidor/IP para \"conexión rápida\""
+msgstr "Cadena de búsqueda o nombre de servidor/IP para «conexión rápida»"
 
 #: data/ui/remmina_main.glade:191 data/ui/remmina_main.glade:193
 msgid "Server name or IP address"
@@ -2425,9 +2421,9 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b>Eres genial por usar software libre, <a href=\"https://remmina.org/"
-"donations/\" title=\"Awesome Remmina donations\">haz una donación</a>, para "
-"hacernos felices y mejorar aún más el programa.</b>\n"
+"<b>Agradecemos que utilice software libre. <a href=\"https://remmina.org/"
+"donations/\" title=\"Donaciones para Remmina\">Su donativo</a> nos hará "
+"felices y ayudará a mejorar el programa.</b>\n"
 "</span>\n"
 
 #: data/ui/remmina_news.glade:212
@@ -2453,7 +2449,7 @@ msgstr "Confirmar contraseña"
 
 #: data/ui/remmina_mpc.glade:294
 msgid "Set new password"
-msgstr "Establecer nueva contraseña"
+msgstr "Establecer contraseña nueva"
 
 #. A column table with multiple check-boxes
 #: data/ui/remmina_mpc.glade:331
@@ -2514,7 +2510,7 @@ msgstr "Híper"
 
 #: data/ui/remmina_preferences.glade:163
 msgid "Step size for auto scroll"
-msgstr "Tamaño de paso para auto desplazamiento"
+msgstr "Tamaño de paso para desplazamiento automático"
 
 #: data/ui/remmina_preferences.glade:191
 msgid "Maximal amount of recent items"
@@ -2569,7 +2565,7 @@ msgstr "Recordar último modo de visualización de cada conexión"
 
 #: data/ui/remmina_preferences.glade:392
 msgid "Remember last view mode"
-msgstr "Recordar el ultimo modo de vista"
+msgstr "Recordar el último modo de vista"
 
 #: data/ui/remmina_preferences.glade:418
 msgid "Send periodic usage statistics to Remmina developers"
@@ -2705,7 +2701,7 @@ msgstr "Sin icono de área de notificación"
 
 #: data/ui/remmina_preferences.glade:775
 msgid "Start in tray upon user login"
-msgstr "Iniciar como icono del área de notificación al iniciar sesión"
+msgstr "Iniciar como icono del área de notificación al acceder"
 
 #: data/ui/remmina_preferences.glade:793
 msgid "Dark tray icon"
