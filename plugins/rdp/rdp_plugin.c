@@ -1482,34 +1482,34 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 #ifdef FREERDP_ERROR_CONNECT_ACCOUNT_LOCKED_OUT
 			case FREERDP_ERROR_CONNECT_ACCOUNT_LOCKED_OUT:
 #endif
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount is locked out."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server \"%s\".\nAccount locked out."),
 										  rfi->settings->ServerHostname);
 				break;
 			case STATUS_ACCOUNT_EXPIRED:
 #ifdef FREERDP_ERROR_CONNECT_ACCOUNT_EXPIRED
 			case FREERDP_ERROR_CONNECT_ACCOUNT_EXPIRED:
 #endif
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount is expired."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server \"%s\".\nAccount expired."),
 										  rfi->settings->ServerHostname);
 				break;
 			case STATUS_PASSWORD_EXPIRED:
 #ifdef FREERDP_ERROR_CONNECT_PASSWORD_EXPIRED
 			case FREERDP_ERROR_CONNECT_PASSWORD_EXPIRED:
 #endif
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nPassword expired."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server \"%s\".\nPassword expired."),
 										  rfi->settings->ServerHostname);
 				break;
 			case STATUS_ACCOUNT_DISABLED:
 #ifdef FREERDP_ERROR_CONNECT_ACCOUNT_DISABLED
 			case FREERDP_ERROR_CONNECT_ACCOUNT_DISABLED:
 #endif
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount is disabled."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server \"%s\".\nAccount disabled."),
 										  rfi->settings->ServerHostname);
 				break;
 #ifdef FREERDP_ERROR_SERVER_INSUFFICIENT_PRIVILEGES
 			/* https://msdn.microsoft.com/en-us/library/ee392247.aspx */
 			case FREERDP_ERROR_SERVER_INSUFFICIENT_PRIVILEGES:
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nUser has insufficient privileges."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server \"%s\".\nInsufficient user privileges."),
 										  rfi->settings->ServerHostname);
 				break;
 #endif
@@ -1517,7 +1517,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 #ifdef FREERDP_ERROR_CONNECT_ACCOUNT_RESTRICTION
 			case FREERDP_ERROR_CONNECT_ACCOUNT_RESTRICTION:
 #endif
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nAccount has restrictions."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server \"%s\".\nAccount restricted."),
 										  rfi->settings->ServerHostname);
 				break;
 
@@ -1525,7 +1525,7 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 #ifdef FREERDP_ERROR_CONNECT_PASSWORD_MUST_CHANGE
 			case FREERDP_ERROR_CONNECT_PASSWORD_MUST_CHANGE:
 #endif
-				remmina_plugin_service->protocol_plugin_set_error(gp, _("Access to RDP server %s failed.\nUser must change password before connecting."),
+				remmina_plugin_service->protocol_plugin_set_error(gp, _("Could not access the RDP server \"%s\".\nChange user password before connecting."),
 										  rfi->settings->ServerHostname);
 				break;
 
