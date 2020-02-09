@@ -159,8 +159,6 @@
 #endif
 #include "remmina_stats.h"
 
-struct utsname u;
-
 struct ProfilesData {
 	GHashTable *proto_count;
 	GHashTable *proto_date;
@@ -863,9 +861,6 @@ JsonNode *remmina_stats_get_all()
 	n = remmina_stats_get_version();
 	json_builder_set_member_name(b, "REMMINAVERSION");
 	json_builder_add_value(b, n);
-
-	if (uname(&u) == -1)
-		g_print("uname:");
 
 	n = remmina_stats_get_os_info();
 	json_builder_set_member_name(b, "SYSTEM");
