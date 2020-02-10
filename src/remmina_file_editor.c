@@ -358,14 +358,14 @@ static void remmina_file_editor_create_ssh_privatekey(RemminaFileEditor *gfe, Gt
 	RemminaFileEditorPriv *priv = gfe->priv;
 
 	widget = gtk_radio_button_new_with_label_from_widget(
-		GTK_RADIO_BUTTON(priv->ssh_tunnel_auth_password_radio), _("SSH Identity file"));
+		GTK_RADIO_BUTTON(priv->ssh_tunnel_auth_password_radio), _("SSH identity file"));
 	g_signal_connect(G_OBJECT(widget), "toggled",
 			 G_CALLBACK(remmina_file_editor_ssh_tunnel_auth_publickey_radio_on_toggled), gfe);
 	priv->ssh_tunnel_auth_publickey_radio = widget;
 	gtk_widget_show(widget);
 	gtk_grid_attach(GTK_GRID(grid), widget, 0, row + 22, 1, 1);
 
-	dialog = gtk_file_chooser_dialog_new(_("SSH Identity file"), GTK_WINDOW(gfe), GTK_FILE_CHOOSER_ACTION_OPEN,
+	dialog = gtk_file_chooser_dialog_new(_("SSH identity file"), GTK_WINDOW(gfe), GTK_FILE_CHOOSER_ACTION_OPEN,
 					     _("_Cancel"), GTK_RESPONSE_CANCEL,
 					     _("_Open"), GTK_RESPONSE_ACCEPT,
 					     NULL);
