@@ -116,7 +116,9 @@ gchar* remmina_crypt_encrypt(const gchar *str)
 	err = gcry_cipher_encrypt(hd, buf, buf_len, NULL, 0);
 
 	if (err) {
-		g_print("gcry_cipher_encrypt failure: %s\n", gcry_strerror(err));
+		g_debug("gcry_cipher_encrypt failure: %s/%s\n",
+				gcry_strsource(err),
+				gcry_strerror(err));
 		g_free(buf);
 		gcry_cipher_close(hd);
 		return NULL;
@@ -146,10 +148,22 @@ gchar* remmina_crypt_decrypt(const gchar *str)
 
 	buf = g_base64_decode(str, &buf_len);
 
-	err = gcry_cipher_decrypt(hd, buf, buf_len, NULL, 0);
+	g_debug ("%s base64 encoded as %p with length %lu",
+			str,
+			&buf,
+			buf_len);
+
+	err = gcry_cipher_decrypt(
+			hd,	    // gcry_cipher_hd_t
+			buf,	    // guchar
+			buf_len,    // gsize
+			NULL,	    // NULL and 0 -> in place decrypt
+			0);
 
 	if (err) {
-		g_print("gcry_cipher_decrypt failure: %s\n", gcry_strerror(err));
+		g_debug("gcry_cipher_decrypt failure: %s/%s\n",
+				gcry_strsource(err),
+				gcry_strerror(err));
 		g_free(buf);
 		gcry_cipher_close(hd);
 		return NULL;
