@@ -55,7 +55,7 @@ static gboolean remmina_crypt_init(gcry_cipher_hd_t *phd)
 	secret = g_base64_decode(remmina_pref.secret, &secret_len);
 
 	if (secret_len < 32) {
-		g_print("secret corrupted\n");
+		g_debug("secret corrupted\n");
 		g_free(secret);
 		return FALSE;
 	}
@@ -63,7 +63,7 @@ static gboolean remmina_crypt_init(gcry_cipher_hd_t *phd)
 	err = gcry_cipher_open(phd, GCRY_CIPHER_3DES, GCRY_CIPHER_MODE_CBC, 0);
 
 	if (err) {
-		g_print("gcry_cipher_open failure: %s\n", gcry_strerror(err));
+		g_debug("gcry_cipher_open failure: %s\n", gcry_strerror(err));
 		g_free(secret);
 		return FALSE;
 	}
@@ -71,7 +71,7 @@ static gboolean remmina_crypt_init(gcry_cipher_hd_t *phd)
 	err = gcry_cipher_setkey((*phd), secret, 24);
 
 	if (err) {
-		g_print("gcry_cipher_setkey failure: %s\n", gcry_strerror(err));
+		g_debug("gcry_cipher_setkey failure: %s\n", gcry_strerror(err));
 		g_free(secret);
 		gcry_cipher_close((*phd));
 		return FALSE;
@@ -80,7 +80,7 @@ static gboolean remmina_crypt_init(gcry_cipher_hd_t *phd)
 	err = gcry_cipher_setiv((*phd), secret + 24, 8);
 
 	if (err) {
-		g_print("gcry_cipher_setiv failure: %s\n", gcry_strerror(err));
+		g_debug("gcry_cipher_setiv failure: %s\n", gcry_strerror(err));
 		g_free(secret);
 		gcry_cipher_close((*phd));
 		return FALSE;
