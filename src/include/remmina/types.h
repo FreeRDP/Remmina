@@ -130,8 +130,10 @@ typedef enum {
 /* pflags field for remmina_protocol_widget_panel_auth() */
 typedef enum {
 	REMMINA_MESSAGE_PANEL_FLAG_USERNAME	= 1,    /* require username in auth panel */
-	REMMINA_MESSAGE_PANEL_FLAG_DOMAIN	= 2,    /* require domain in auth panel */
-	REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD = 4     /* require savepassword switch in auth panel */
+	REMMINA_MESSAGE_PANEL_FLAG_USERNAME_READONLY	= 2,    /* Username, if required, is readonly */
+	REMMINA_MESSAGE_PANEL_FLAG_DOMAIN	= 4,    /* require domain in auth panel */
+	REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD = 8     /* require savepassword switch in auth panel */
+
 } RemminaMessagePanelFlags;
 
 G_END_DECLS

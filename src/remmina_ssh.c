@@ -1,4 +1,4 @@
-/*
+ /*
  * Remmina - The GTK+ Remote Desktop Client
  * Copyright (C) 2009-2011 Vic Lee
  * Copyright (C) 2014-2015 Antenore Gatta, Fabio Castelli, Giovanni Panozzo
@@ -162,7 +162,7 @@ remmina_ssh_set_application_error(RemminaSSH *ssh, const gchar *fmt, ...)
 	va_end(args);
 }
 
-static gint
+static enum remmina_ssh_auth_result
 remmina_ssh_auth_interactive(RemminaSSH *ssh)
 {
 	TRACE_CALL(__func__);
@@ -171,8 +171,8 @@ remmina_ssh_auth_interactive(RemminaSSH *ssh)
 	gint i;
 
 	ret = SSH_AUTH_ERROR;
-	if (ssh->authenticated) return 1;
-	if (ssh->password == NULL) return -1;
+	if (ssh->authenticated) return REMMINA_SSH_AUTH_SUCCESS;
+	if (ssh->password == NULL) return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 
 	while ((ret = ssh_userauth_kbdint(ssh->session, NULL, NULL)) == SSH_AUTH_INFO) {
 		n = ssh_userauth_kbdint_getnprompts(ssh->session);
@@ -181,37 +181,45 @@ remmina_ssh_auth_interactive(RemminaSSH *ssh)
 	}
 
 	if (ret != SSH_AUTH_SUCCESS)
-		return 0;       // Generic error
+		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;       // Generic error
 
 	ssh->authenticated = TRUE;
-	return 1;
+	return REMMINA_SSH_AUTH_SUCCESS;
 }
 
-static gint
+static enum remmina_ssh_auth_result
 remmina_ssh_auth_password(RemminaSSH *ssh)
 {
 	TRACE_CALL(__func__);
 	gint ret;
 
-	ret = SSH_AUTH_ERROR;
-	if (ssh->authenticated) return 1;
-	if (ssh->password == NULL) return -1;
-
 	g_debug("[SSH] %s\n", __func__);
+
+	ret = SSH_AUTH_ERROR;
+	if (ssh->authenticated) {
+		g_debug("[SSH] already authenticated, returning from %s", __func__);
+		return REMMINA_SSH_AUTH_SUCCESS;
+	}
+	if (ssh->password == NULL) {
+		// TRANSLATORS: The placeholder %s is an error message
+		remmina_ssh_set_error(ssh, _("Password is null"));
+		g_debug("[SSH] password is null, returning from %s", __func__);
+		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
+	}
 
 	ret = ssh_userauth_password(ssh->session, NULL, ssh->password);
 	g_debug("[SSH] %s ssh_userauth_password returned %d\n", __func__, ret);
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(ssh, _("Could not authenticate with SSH password. %s"));
-		return 0;
+		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 	}
 
 	ssh->authenticated = TRUE;
-	return 1;
+	return REMMINA_SSH_AUTH_SUCCESS;
 }
 
-static gint
+static enum remmina_ssh_auth_result
 remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 {
 	TRACE_CALL(__func__);
@@ -220,13 +228,13 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 	gchar pubkey[132] = { 0 }; // +".pub"
 	gint ret;
 
-	if (ssh->authenticated) return 1;
+	if (ssh->authenticated) return REMMINA_SSH_AUTH_SUCCESS;
 
 	if (ssh->privkeyfile == NULL) {
 		// TRANSLATORS: The placeholder %s is an error message
 		ssh->error = g_strdup_printf(_("Could not authenticate with public SSH key. %s"),
 					     _("SSH Key file not yet set."));
-		return 0;
+		return REMMINA_SSH_AUTH_FATAL_ERROR;
 	}
 
 	g_snprintf(pubkey, sizeof(pubkey), "%s.pub", ssh->privkeyfile);
@@ -237,7 +245,7 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 		if (ret != SSH_OK) {
 			// TRANSLATORS: The placeholder %s is an error message
 			remmina_ssh_set_error(ssh, _("Public SSH key cannot be imported. %s"));
-			return 0;
+			return REMMINA_SSH_AUTH_FATAL_ERROR;
 		}
 		ssh_key_free(key);
 	}
@@ -245,11 +253,14 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 
 	if (ssh_pki_import_privkey_file(ssh->privkeyfile, (ssh->passphrase ? ssh->passphrase : ""),
 					NULL, NULL, &key) != SSH_OK) {
-		if (ssh->passphrase == NULL || ssh->passphrase[0] == '\0') return -1;
+		if (ssh->passphrase == NULL || ssh->passphrase[0] == '\0') {
+			remmina_ssh_set_error(ssh, _("SSH passaphrase is empty, it should not."));
+			return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
+		}
 
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(ssh, _("Could not authenticate with public SSH key. %s"));
-		return 0;
+		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 	}
 
 	ret = ssh_userauth_publickey(ssh->session, NULL, key);
@@ -258,14 +269,14 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(ssh, _("Could not authenticate with public SSH key. %s"));
-		return 0;
+		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 	}
 
 	ssh->authenticated = TRUE;
-	return 1;
+	return REMMINA_SSH_AUTH_SUCCESS;
 }
 
-static gint
+static enum remmina_ssh_auth_result
 remmina_ssh_auth_auto_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *remminafile)
 {
 	TRACE_CALL(__func__);
@@ -276,38 +287,22 @@ remmina_ssh_auth_auto_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, Remmina
 	gint ret;
 
 	if (!ssh->passphrase) {
-		disablepasswordstoring = remmina_file_get_int(remminafile, "disablepasswordstoring", FALSE);
-
-		ret = remmina_protocol_widget_panel_auth(gp, (disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD),
-							ssh->is_tunnel ? _("SSH tunnel credentials") : _("SSH credentials"), NULL,
-							 remmina_file_get_string(remminafile, ssh->is_tunnel ? "ssh_tunnel_passphrase" : "ssh_passphrase"),
-							 NULL,
-							 _("SSH private key passphrase"));
-		if (ret == GTK_RESPONSE_OK) {
-			pwd = remmina_protocol_widget_get_password(gp);
-			save_password = remmina_protocol_widget_get_savepassword(gp);
-			if (save_password)
-				remmina_file_set_string(remminafile, ssh->is_tunnel ? "ssh_tunnel_passphrase" : "ssh_passphrase", pwd);
-			else
-				remmina_file_set_string(remminafile, ssh->is_tunnel ? "ssh_tunnel_passphrase" : "ssh_passphrase", NULL);
-		} else {
-			return -1;
-		}
-		ssh->passphrase = pwd;
+		g_debug("[SSH] passphrase is null in %s. It should not.", __func__);
+		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 	}
 	ret = ssh_userauth_publickey_auto(ssh->session, NULL, ssh->passphrase);
 
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(ssh, _("Could not authenticate automatically with public SSH key. %s"));
-		return -1;
+		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 	}
 
 	ssh->authenticated = TRUE;
-	return 1;
+	return REMMINA_SSH_AUTH_SUCCESS;
 }
 
-static gint
+static enum remmina_ssh_auth_result
 remmina_ssh_auth_agent(RemminaSSH *ssh)
 {
 	TRACE_CALL(__func__);
@@ -317,38 +312,39 @@ remmina_ssh_auth_agent(RemminaSSH *ssh)
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(ssh, _("Could not authenticate with public SSH key using SSH agent. %s"));
-		return 0;
+		return REMMINA_SSH_AUTH_FATAL_ERROR;
 	}
 
 	ssh->authenticated = TRUE;
-	return 1;
+	return REMMINA_SSH_AUTH_SUCCESS;
 }
 
-static gint
+static enum remmina_ssh_auth_result
 remmina_ssh_auth_gssapi(RemminaSSH *ssh)
 {
 	TRACE_CALL(__func__);
 	gint ret;
 
-	if (ssh->authenticated) return 1;
+	if (ssh->authenticated) return REMMINA_SSH_AUTH_SUCCESS;
 
 	ret = ssh_userauth_gssapi(ssh->session);
 
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(ssh, _("Could not authenticate with SSH Kerberos/GSSAPI. %s"));
-		return 0;
+		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 	}
 
 	ssh->authenticated = TRUE;
-	return 1;
+	return REMMINA_SSH_AUTH_SUCCESS;
 }
 
-gint
+enum remmina_ssh_auth_result
 remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *gp, RemminaFile *remminafile)
 {
 	TRACE_CALL(__func__);
 	gint method;
+	enum remmina_ssh_auth_result rv;
 
 	/* Check known host again to ensure it’s still the original server when user forks
 	 * a new session from existing one */
@@ -366,7 +362,7 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 	if (ssh_is_server_known(ssh->session) != SSH_SERVER_KNOWN_OK) {
 #endif
 		remmina_ssh_set_application_error(ssh, _("The public SSH key changed!"));
-		return 0;
+		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 	}
 
 	if (password) {
@@ -394,21 +390,22 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 	case SSH_AUTH_PASSWORD:
 		g_debug ("[SSH] ssh->auth: SSH_AUTH_PASSWORD (%d)", ssh->auth);
 		if (ssh->authenticated)
-			return 1;
-		if (method & SSH_AUTH_METHOD_PASSWORD)
-			if (remmina_ssh_auth_password(ssh) <= 0) {
-				g_debug ("SSH using remmina_ssh_auth_password");
-				return -1;              // Re-prompt password
-			}
-		if (method & SSH_AUTH_METHOD_INTERACTIVE) {
+			return REMMINA_SSH_AUTH_SUCCESS;
+		if (method & SSH_AUTH_METHOD_PASSWORD) {
+			rv = remmina_ssh_auth_password(ssh);
+			if (rv != REMMINA_SSH_AUTH_SUCCESS)
+				return rv;
+			g_debug ("SSH using remmina_ssh_auth_password");
+		}
+		if (!ssh->authenticated && (method & SSH_AUTH_METHOD_INTERACTIVE)) {
 			/* SSH server is requesting us to do interactive auth.
 			 * But we just send the saved password */
-			if (remmina_ssh_auth_interactive(ssh) <= 0) {
-				g_debug ("SSH using remmina_ssh_auth_interactive");
-				return -1;      // Re-prompt password
-			}
+			rv = remmina_ssh_auth_interactive(ssh);
+			if (rv != REMMINA_SSH_AUTH_SUCCESS)
+				return rv;
+			g_debug ("SSH using remmina_ssh_auth_interactive");
 		}
-		return 1;
+		return REMMINA_SSH_AUTH_SUCCESS;
 
 	case SSH_AUTH_PUBLICKEY:
 		g_debug ("[SSH] ssh->auth: SSH_AUTH_PUBLICKEY (%d)", ssh->auth);
@@ -439,17 +436,19 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 
 	default:
 		g_debug ("[SSH] ssh->auth: UNKNOWN (%d)", ssh->auth);
-		return 0;
+		return REMMINA_SSH_AUTH_FATAL_ERROR;
 	}
 }
 
-gint
+enum remmina_ssh_auth_result
 remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *remminafile)
 {
 	TRACE_CALL(__func__);
 	gchar *keyname;
 	gchar *pwdfkey;
 	gchar *message;
+	gchar *current_pwd;
+	gchar *username;
 	gint ret;
 	size_t len;
 	guchar *pubkey;
@@ -495,14 +494,14 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 			// TRANSLATORS: The placeholder %s is an error message
 			remmina_ssh_set_error(ssh, _("Could not fetch the server\'s public SSH key. %s"));
 			g_debug ("ssh_get_server_publickey() has failed");
-			return 0;
+			return REMMINA_SSH_AUTH_FATAL_ERROR;
 		}
 #else
 		if (ssh_get_publickey(ssh->session, &server_pubkey) != SSH_OK) {
 			// TRANSLATORS: The placeholder %s is an error message
 			remmina_ssh_set_error(ssh, _("Could not fetch public SSH key. %s"));
 			g_debug ("ssh_get_publickey() has failed");
-			return 0;
+			return REMMINA_SSH_AUTH_FATAL_ERROR;
 		}
 #endif
 		if (ssh_get_publickey_hash(server_pubkey, SSH_PUBLICKEY_HASH_MD5, &pubkey, &len) != 0) {
@@ -510,7 +509,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 			// TRANSLATORS: The placeholder %s is an error message
 			remmina_ssh_set_error(ssh, _("Could not fetch checksum for public SSH key. %s"));
 			g_debug ("ssh_get_publickey_hash() has failed");
-			return 0;
+			return REMMINA_SSH_AUTH_FATAL_ERROR;
 		}
 		ssh_key_free(server_pubkey);
 		keyname = ssh_get_hexa(pubkey, len);
@@ -537,7 +536,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 
 		ssh_string_free_char(keyname);
 		ssh_clean_pubkey_hash(&pubkey);
-		if (ret != GTK_RESPONSE_YES) return -1;
+		if (ret != GTK_RESPONSE_YES) return REMMINA_SSH_AUTH_USERCANCEL;
 #if LIBSSH_VERSION_INT >= SSH_VERSION_INT(0, 9, 0)
 		ssh_session_update_known_hosts(ssh->session);
 #else
@@ -553,7 +552,7 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(ssh, _("Could not check list of known SSH hosts. %s"));
 		g_debug ("Could not check list of known SSH hosts");
-		return 0;
+		return REMMINA_SSH_AUTH_FATAL_ERROR;
 	}
 
 	enum { REMMINA_SSH_AUTH_PASSWORD, REMMINA_SSH_AUTH_PKPASSPHRASE, REMMINA_SSH_AUTH_KRBTOKEN } remmina_ssh_auth_type;
@@ -577,24 +576,27 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 		remmina_ssh_auth_type = REMMINA_SSH_AUTH_KRBTOKEN;
 		break;
 	default:
-		return FALSE;
+		return REMMINA_SSH_AUTH_FATAL_ERROR;
 	}
 
 	disablepasswordstoring = remmina_file_get_int(remminafile, "disablepasswordstoring", FALSE);
 
+
+	current_pwd = g_strdup(remmina_file_get_string(remminafile, pwdfkey));
+
 	/* Try existing password/passphrase first */
-	ret = remmina_ssh_auth(ssh, remmina_file_get_string(remminafile, pwdfkey), gp, remminafile);
+	ret = remmina_ssh_auth(ssh, current_pwd , gp, remminafile);
 	g_debug("[SSH] %s remmina_ssh_auth returned %d at 1st attempt\n", __func__, ret);
 
 	/* It seems that functions like ssh_userauth_password() can only be called 3 times
 	 * on a ssh connection. And the 3rd failed attempt will block the calling thread forever.
 	 * So we retry only 2 extra time authentication. */
-	for(attempt = 0; attempt < 2 && ret <= 0; attempt ++) {
+	for(attempt = 0;
+		attempt < 2 && ret == REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
+		attempt ++) {
 
-		gchar *pwd;
-
-		/* ret == 0: auth error, ret == -1: password is null (empty) or bad username/pwd, so retry here */
-		if (ret == 0) break;	// Auth error
+		if (ssh->error)
+			g_debug("[SSH] retrying auth because %s", ssh->error);
 
 		if (remmina_ssh_auth_type == REMMINA_SSH_AUTH_PKPASSPHRASE) {
 			ret = remmina_protocol_widget_panel_auth(gp,
@@ -605,57 +607,62 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 					NULL,
 					_("SSH private key passphrase"));
 			if (ret == GTK_RESPONSE_OK) {
-				pwd = remmina_protocol_widget_get_password(gp);
+				g_free(current_pwd);
+				current_pwd = remmina_protocol_widget_get_password(gp);
 				save_password = remmina_protocol_widget_get_savepassword(gp);
 				if (save_password)
-					remmina_file_set_string(remminafile, pwdfkey, pwd);
+					remmina_file_set_string(remminafile, pwdfkey, current_pwd);
 				else
 					remmina_file_set_string(remminafile, pwdfkey, NULL);
-				g_free(pwd);
 			} else {
-				return -1;
+				g_free(current_pwd);
+				return REMMINA_SSH_AUTH_USERCANCEL;
 			}
 		} else if (remmina_ssh_auth_type == REMMINA_SSH_AUTH_PASSWORD) {
+			/* Ask for user credentials. Username cannot be changed here,
+			 * because we already sent it when opening the connection */
 			g_debug("Showing panel for password\n");
 			ret = remmina_protocol_widget_panel_auth(gp,
 					(disablepasswordstoring ? 0 : REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD)
-					| REMMINA_MESSAGE_PANEL_FLAG_USERNAME,
+					| REMMINA_MESSAGE_PANEL_FLAG_USERNAME | REMMINA_MESSAGE_PANEL_FLAG_USERNAME_READONLY,
 					ssh->is_tunnel ? _("SSH tunnel credentials") : _("SSH credentials"),
 					remmina_file_get_string(remminafile, ssh->is_tunnel ? "ssh_tunnel_username" : "username"),
 					remmina_file_get_string(remminafile, pwdfkey),
 					NULL,
 					NULL);
 			if (ret == GTK_RESPONSE_OK) {
-				pwd = remmina_protocol_widget_get_username(gp);
-				remmina_file_set_string(remminafile, ssh->is_tunnel ? "ssh_tunnel_username" : "username", pwd);
-				g_free(pwd);
-				pwd = remmina_protocol_widget_get_password(gp);
+				g_free(current_pwd);
+				current_pwd = remmina_protocol_widget_get_password(gp);
 				save_password = remmina_protocol_widget_get_savepassword(gp);
 				if (save_password)
-					remmina_file_set_string(remminafile, pwdfkey, pwd);
+					remmina_file_set_string(remminafile, pwdfkey, current_pwd);
 				else
 					remmina_file_set_string(remminafile, pwdfkey, NULL);
-				g_free(pwd);
 			} else {
-				return -1;
+				g_free(current_pwd);
+				return REMMINA_SSH_AUTH_USERCANCEL;
 			}
 		} else {
 			g_print("Unimplemented.");
-			return -1;
+			g_free(current_pwd);
+			return REMMINA_SSH_AUTH_FATAL_ERROR;
 		}
 		g_debug("[SSH] %s retrying auth\n", __func__);
-		ret = remmina_ssh_auth(ssh, remmina_file_get_string(remminafile, pwdfkey), gp, remminafile);
+		ret = remmina_ssh_auth(ssh, current_pwd, gp, remminafile);
 		g_debug("[SSH] %s remmina_ssh_auth returned %d at %d attempt\n", __func__, ret, attempt + 2);
 
 	}
 
-	if (ret <= 0) {
+	g_free(current_pwd);
+
+	/* After attempting the max number of times, REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT
+	 * becomes REMMINA_SSH_AUTH_FATAL_ERROR */
+	if (ret == REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT) {
 		g_debug ("[SSH] SSH Authentication failed");
-		return 0;
+		ret = REMMINA_SSH_AUTH_FATAL_ERROR;
 	}
 
-	/* Auth successful */
-	return 1;
+	return ret;
 }
 
 void

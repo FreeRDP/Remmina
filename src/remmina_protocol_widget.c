@@ -728,8 +728,8 @@ static gboolean remmina_protocol_widget_init_tunnel(RemminaProtocolWidget *gp)
 
 		ret = remmina_ssh_auth_gui(REMMINA_SSH(tunnel), gp, gp->priv->remmina_file);
 		g_debug ("[SSH] tunnel auth returned %d", ret);
-		if (ret <= 0) {
-			if (ret == 0)
+		if (ret != REMMINA_SSH_AUTH_SUCCESS) {
+			if (ret != REMMINA_SSH_AUTH_USERCANCEL)
 				remmina_protocol_widget_set_error(gp, REMMINA_SSH(tunnel)->error);
 			remmina_ssh_tunnel_free(tunnel);
 			return FALSE;
