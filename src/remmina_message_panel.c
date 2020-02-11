@@ -349,6 +349,10 @@ void remmina_message_panel_setup_auth(RemminaMessagePanel *mp, RemminaMessagePan
 		gtk_grid_attach(GTK_GRID(grid), username_entry, 1, grid_row, 2, 1);
 		gtk_entry_set_max_length(GTK_ENTRY(username_entry), 100);
 
+		if (flags & REMMINA_MESSAGE_PANEL_FLAG_USERNAME_READONLY) {
+			g_object_set(username_entry, "editable", FALSE, NULL);
+		}
+
 		/*
 		if (default_username && default_username[0] != '\0') {
 			gtk_entry_set_text(GTK_ENTRY(username_entry), default_username);

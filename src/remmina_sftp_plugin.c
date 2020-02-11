@@ -123,9 +123,11 @@ remmina_plugin_sftp_main_thread(gpointer data)
 			}
 
 			ret = remmina_ssh_auth_gui(REMMINA_SSH(sftp), gp, remminafile);
-			if (ret == 0)
-				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(sftp)->error);
-			if (ret <= 0) break;
+			if (ret != REMMINA_SSH_AUTH_SUCCESS) {
+				if (ret != REMMINA_SSH_AUTH_USERCANCEL)
+					remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(sftp)->error);
+				break;
+			}
 
 			if (!remmina_sftp_open(sftp)) {
 				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(sftp)->error);

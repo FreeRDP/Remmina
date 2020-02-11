@@ -99,11 +99,18 @@ gboolean remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile, g
 gboolean remmina_ssh_init_session(RemminaSSH *ssh, gboolean is_tunnel);
 
 /* Authenticate SSH session */
-/* -1: Require password; 0: Failed; 1: Succeeded */
-gint remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *gp, RemminaFile *remminafile);
 
-/* -1: Cancelled; 0: Failed; 1: Succeeded */
-gint remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *remminafile);
+
+enum remmina_ssh_auth_result {
+	REMMINA_SSH_AUTH_SUCCESS,
+	REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT,
+	REMMINA_SSH_AUTH_USERCANCEL,
+	REMMINA_SSH_AUTH_FATAL_ERROR
+};
+
+enum remmina_ssh_auth_result remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *gp, RemminaFile *remminafile);
+
+enum remmina_ssh_auth_result remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *remminafile);
 
 /* Error handling */
 #define remmina_ssh_has_error(ssh) (((RemminaSSH *)ssh)->error != NULL)
@@ -130,6 +137,7 @@ enum {
 	REMMINA_SSH_TUNNEL_XPORT,
 	REMMINA_SSH_TUNNEL_REVERSE
 };
+
 
 struct _RemminaSSHTunnel {
 	RemminaSSH			ssh;
