@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-02-07 16:34+0000\n"
+"POT-Creation-Date: 2020-02-11 07:04+0000\n"
 "PO-Revision-Date: 2020-02-07 10:50+0000\n"
 "Last-Translator: Goten <jonathan.breysse@delphisoft.de>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -72,8 +72,8 @@ msgid "Connecting to %s via SSH…"
 msgstr "Connexion à « %s » via SSH…"
 
 #: src/remmina_protocol_widget.c:1350 src/remmina_protocol_widget.c:1369
-#: src/remmina_ssh_plugin.c:926 src/remmina_sftp_plugin.c:282
-#: src/remmina_sftp_plugin.c:315 src/remmina_file_editor.c:919
+#: src/remmina_ssh_plugin.c:926 src/remmina_sftp_plugin.c:284
+#: src/remmina_sftp_plugin.c:317 src/remmina_file_editor.c:926
 #: plugins/www/www_plugin.c:793 plugins/rdp/rdp_plugin.c:1930
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1533
@@ -129,8 +129,8 @@ msgstr "À l’écoute sur le port %i d’une connexion %s entrante…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "L’authentification a échoué. Nouvelle tentative de connexion…"
 
-#: src/remmina_protocol_widget.c:1679 src/remmina_file_editor.c:400
-#: src/remmina_file_editor.c:875 data/ui/remmina_main.glade:565
+#: src/remmina_protocol_widget.c:1679 src/remmina_file_editor.c:407
+#: src/remmina_file_editor.c:882 data/ui/remmina_main.glade:565
 msgid "Server"
 msgstr "Serveur"
 
@@ -144,12 +144,12 @@ msgstr "Veuillez d’abord installer le greffon pour le protocole %s."
 msgid "Plugin %s is not registered."
 msgstr "Le greffon %s n’est pas répertorié."
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:489
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:496
 #: data/ui/remmina_preferences.glade:234
 msgid "Resolutions"
 msgstr "Définitions d’affichage"
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:489
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:496
 msgid "Configure the available resolutions"
 msgstr "Configurer les définitions disponibles"
 
@@ -198,20 +198,21 @@ msgstr "Coller (<hôte> + V)"
 msgid "Save session to file"
 msgstr "Enregistrer la session dans un fichier"
 
-#: src/remmina_ssh_plugin.c:927 src/remmina_sftp_plugin.c:283
+#: src/remmina_ssh_plugin.c:927 src/remmina_sftp_plugin.c:285
+#: src/remmina_file_editor.c:361 src/remmina_file_editor.c:368
 msgid "SSH identity file"
 msgstr "Fichier d’identité SSH"
 
-#: src/remmina_ssh_plugin.c:928 src/remmina_sftp_plugin.c:284
+#: src/remmina_ssh_plugin.c:928 src/remmina_sftp_plugin.c:286
 msgid "SSH agent"
 msgstr "Agent SSH"
 
-#: src/remmina_ssh_plugin.c:929 src/remmina_sftp_plugin.c:285
-#: src/remmina_file_editor.c:932
+#: src/remmina_ssh_plugin.c:929 src/remmina_sftp_plugin.c:287
+#: src/remmina_file_editor.c:939
 msgid "Public key (automatic)"
 msgstr "Clef publique (automatique)"
 
-#: src/remmina_ssh_plugin.c:930 src/remmina_sftp_plugin.c:286
+#: src/remmina_ssh_plugin.c:930 src/remmina_sftp_plugin.c:288
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
@@ -240,7 +241,7 @@ msgid "_Select all"
 msgstr "_Sélectionner tout"
 
 #: src/remmina_ssh_plugin.c:1025 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:314 src/remmina_file_editor.c:910
+#: src/remmina_sftp_plugin.c:316 src/remmina_file_editor.c:917
 #: plugins/www/www_plugin.c:792 plugins/vnc/vnc_plugin.c:1831
 #: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:1929
 #: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:144
@@ -253,17 +254,17 @@ msgstr "Nom d’utilisateur"
 msgid "User password"
 msgstr "Mot de passe de l’utilisateur"
 
-#: src/remmina_ssh_plugin.c:1027 src/remmina_sftp_plugin.c:316
+#: src/remmina_ssh_plugin.c:1027 src/remmina_sftp_plugin.c:318
 msgid "Authentication type"
 msgstr "Type d’authentification"
 
-#: src/remmina_ssh_plugin.c:1028 src/remmina_sftp_plugin.c:317
-#: src/remmina_file_editor.c:354 src/remmina_file_editor.c:361
+#: src/remmina_ssh_plugin.c:1028 src/remmina_sftp_plugin.c:319
 #: plugins/nx/nx_plugin.c:720
 msgid "Identity file"
 msgstr "Fichier d’identité"
 
-#: src/remmina_ssh_plugin.c:1029 src/remmina_sftp_plugin.c:318
+#: src/remmina_ssh_plugin.c:1029 src/remmina_sftp_plugin.c:320
+#: src/remmina_file_editor.c:948
 msgid "Password to unlock private key"
 msgstr "Mot de passe de déverrouillage de la clef privée"
 
@@ -471,7 +472,7 @@ msgstr "Taille"
 msgid "User"
 msgstr "Utilisateur"
 
-#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1445
+#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1468
 #: data/ui/remmina_main.glade:551 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Groupe"
@@ -703,7 +704,7 @@ msgstr ""
 "Attention : ce greffon nécessite GtkSocket, mais ce dernier n’est pas "
 "disponible."
 
-#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1463
+#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1486
 msgid "Protocol"
 msgstr "Protocole"
 
@@ -731,12 +732,12 @@ msgstr "Secret"
 msgid "Plugins"
 msgstr "Greffons"
 
-#: src/remmina_plugin_manager.c:445 src/remmina_message_panel.c:447
-#: src/remmina_message_panel.c:616 src/remmina_file_editor.c:160
+#: src/remmina_plugin_manager.c:445 src/remmina_message_panel.c:451
+#: src/remmina_message_panel.c:620 src/remmina_file_editor.c:161
 msgid "_OK"
 msgstr "_OK"
 
-#: src/remmina_plugin_manager.c:463 src/remmina_file_editor.c:1420
+#: src/remmina_plugin_manager.c:463 src/remmina_file_editor.c:1443
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:529
 msgid "Name"
 msgstr "Nom"
@@ -778,7 +779,7 @@ msgstr ""
 msgid "Import"
 msgstr "Importer"
 
-#: src/remmina_main.c:979 src/remmina_file_editor.c:1303
+#: src/remmina_main.c:979 src/remmina_file_editor.c:1326
 msgid "_Save"
 msgstr "_Enregistrer"
 
@@ -897,9 +898,9 @@ msgstr "Reprendre"
 msgid "Overwrite"
 msgstr "Écraser"
 
-#: src/remmina_sftp_client.c:915 src/remmina_message_panel.c:452
-#: src/remmina_message_panel.c:624 src/remmina_file_editor.c:159
-#: src/remmina_file_editor.c:362 src/remmina_file_editor.c:1295
+#: src/remmina_sftp_client.c:915 src/remmina_message_panel.c:456
+#: src/remmina_message_panel.c:628 src/remmina_file_editor.c:160
+#: src/remmina_file_editor.c:369 src/remmina_file_editor.c:1318
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
 #: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
@@ -935,133 +936,130 @@ msgstr "Oui"
 msgid "No"
 msgstr "Non"
 
-#: src/remmina_message_panel.c:387 plugins/rdp/rdp_plugin.c:1931
+#: src/remmina_message_panel.c:391 plugins/rdp/rdp_plugin.c:1931
 #: data/ui/remmina_mpc.glade:172
 msgid "Domain"
 msgstr "Domaine"
 
-#: src/remmina_message_panel.c:415
+#: src/remmina_message_panel.c:419
 msgid "Save password"
 msgstr "Enregistrer le mot de passe"
 
-#: src/remmina_message_panel.c:508
+#: src/remmina_message_panel.c:512
 msgid "Enter certificate authentication files"
 msgstr "Entrez les fichiers des certificats d’authentification"
 
-#: src/remmina_message_panel.c:520
+#: src/remmina_message_panel.c:524
 msgid "CA Certificate File"
 msgstr "Fichier du certificat de l’AC"
 
-#: src/remmina_message_panel.c:542
+#: src/remmina_message_panel.c:546
 msgid "CA CRL File"
 msgstr "Liste de révocation de l’AC"
 
-#: src/remmina_message_panel.c:564
+#: src/remmina_message_panel.c:568
 msgid "Client Certificate File"
 msgstr "Fichier certificat client"
 
-#: src/remmina_message_panel.c:586
+#: src/remmina_message_panel.c:590
 msgid "Client Certificate Key"
 msgstr "Clef privée associée au certificat client"
 
-#: src/remmina_sftp_plugin.c:295
+#: src/remmina_sftp_plugin.c:297
 msgid "Show Hidden Files"
 msgstr "Afficher les fichiers cachés"
 
-#: src/remmina_sftp_plugin.c:297
+#: src/remmina_sftp_plugin.c:299
 msgid "Overwrite all"
 msgstr "Tout écraser"
 
-#: src/remmina_sftp_plugin.c:327
+#: src/remmina_sftp_plugin.c:329
 msgid "SFTP - Secure File Transfer"
 msgstr "SFTP — transfert de fichiers sécurisé"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:206
+#: src/remmina_ssh.c:205
+#, fuzzy
+msgid "Password is null"
+msgstr "Mot de passe"
+
+#. TRANSLATORS: The placeholder %s is an error message
+#: src/remmina_ssh.c:214
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "Authentification SSH par mot de passe impossible. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:227 src/remmina_ssh.c:251 src/remmina_ssh.c:260
+#: src/remmina_ssh.c:235 src/remmina_ssh.c:262 src/remmina_ssh.c:271
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "Authentification SSH par clef publique impossible. %s"
 
-#: src/remmina_ssh.c:228
+#: src/remmina_ssh.c:236
 msgid "SSH Key file not yet set."
 msgstr "Le fichier contenant la clef SSH n’a pas encore été défini."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:239
+#: src/remmina_ssh.c:247
 #, c-format
 msgid "Public SSH key cannot be imported. %s"
 msgstr "La clef SSH publique n’a pas pu être importée. %s"
 
-#: src/remmina_ssh.c:282 src/remmina_ssh.c:603 src/remmina_ssh.c:623
-msgid "SSH tunnel credentials"
-msgstr "Identifiants du tunnel SSH"
-
-#: src/remmina_ssh.c:282 src/remmina_ssh.c:603 src/remmina_ssh.c:623
-#: plugins/nx/nx_plugin.c:202
-msgid "SSH credentials"
-msgstr "Identifiants SSH"
-
-#: src/remmina_ssh.c:285 src/remmina_ssh.c:570 src/remmina_ssh.c:606
-msgid "SSH private key passphrase"
-msgstr "Phrase de passe de la clef SSH privée"
+#: src/remmina_ssh.c:257
+msgid "SSH passaphrase is empty, it should not."
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:302
+#: src/remmina_ssh.c:297
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "Authentification automatique par clef publique SSH impossible. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:319
+#: src/remmina_ssh.c:314
 #, c-format
 msgid "Could not authenticate with public SSH key using SSH agent. %s"
 msgstr ""
 "L’authentification par clef publique SSH à l’aide de l’agent SSH a échoué. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:339
+#: src/remmina_ssh.c:334
 #, c-format
 msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
 msgstr "Authentification SSH via Kerberos/GSSAPI impossible. %s"
 
-#: src/remmina_ssh.c:368
+#: src/remmina_ssh.c:364
 msgid "The public SSH key changed!"
 msgstr "La clef SSH publique a changé !"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:496
+#: src/remmina_ssh.c:495
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Récupération de la clef publique SSH du serveur impossible. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:503
+#: src/remmina_ssh.c:502
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Récupération de la clef publique SSH impossible. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:511
+#: src/remmina_ssh.c:510
 #, c-format
 msgid "Could not fetch checksum for public SSH key. %s"
 msgstr ""
 "Impossible de récupérer la somme de contrôle de la clef publique SSH. %s"
 
-#: src/remmina_ssh.c:524
+#: src/remmina_ssh.c:523
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "Le serveur est inconnu. L’empreinte de la clef publique est :"
 
-#: src/remmina_ssh.c:526 src/remmina_ssh.c:532
+#: src/remmina_ssh.c:525 src/remmina_ssh.c:531
 msgid "Do you trust the new public key?"
 msgstr "Faites-vous confiance à la nouvelle clef publique ?"
 
-#: src/remmina_ssh.c:529
+#: src/remmina_ssh.c:528
 msgid ""
 "Warning: The server has changed its public key. This means either you are "
 "under attack,\n"
@@ -1073,138 +1071,150 @@ msgstr ""
 "publique est :"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:554
+#: src/remmina_ssh.c:553
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Impossible de vérifier la liste des hôtes SSH connus. %s"
 
-#: src/remmina_ssh.c:563
+#: src/remmina_ssh.c:562
 msgid "SSH password"
 msgstr "Mot de passe SSH"
 
-#: src/remmina_ssh.c:575
+#: src/remmina_ssh.c:569 src/remmina_ssh.c:607
+msgid "SSH private key passphrase"
+msgstr "Phrase de passe de la clef SSH privée"
+
+#: src/remmina_ssh.c:574
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH avec Kerberos/GSSAPI"
 
+#: src/remmina_ssh.c:604 src/remmina_ssh.c:627
+msgid "SSH tunnel credentials"
+msgstr "Identifiants du tunnel SSH"
+
+#: src/remmina_ssh.c:604 src/remmina_ssh.c:627 plugins/nx/nx_plugin.c:202
+msgid "SSH credentials"
+msgstr "Identifiants SSH"
+
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:755
+#: src/remmina_ssh.c:760
 #, c-format
 msgid "Could not start SSH session. %s"
 msgstr "Impossible d’établir la connexion SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1118 src/remmina_ssh.c:1180
+#: src/remmina_ssh.c:1123 src/remmina_ssh.c:1185
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "Impossible de créer le canal. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1129
+#: src/remmina_ssh.c:1134
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Connexion au tunnel SSH impossible. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1195 src/remmina_ssh.c:1793
+#: src/remmina_ssh.c:1200 src/remmina_ssh.c:1798
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Ouverture du canal impossible. %s"
 
-#: src/remmina_ssh.c:1201
+#: src/remmina_ssh.c:1206
 #, c-format
 msgid "Could not run %s on SSH server."
 msgstr "Impossible d’exécuter %s sur le serveur SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1239 src/remmina_ssh.c:1260 src/remmina_ssh.c:1269
+#: src/remmina_ssh.c:1244 src/remmina_ssh.c:1265 src/remmina_ssh.c:1274
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Échec de la demande de redirection de port. %s"
 
-#: src/remmina_ssh.c:1304
+#: src/remmina_ssh.c:1309
 msgid "The server did not respond."
 msgstr "Le serveur n’a pas répondu."
 
-#: src/remmina_ssh.c:1347
+#: src/remmina_ssh.c:1352
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Impossible de se connecter au port local %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1397
+#: src/remmina_ssh.c:1402
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Écriture dans le canal SSH impossible. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1404
+#: src/remmina_ssh.c:1409
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Impossible de lire depuis le socket d’écoute du tunnel. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1424
+#: src/remmina_ssh.c:1429
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Impossible d’interroger le canal SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1431
+#: src/remmina_ssh.c:1436
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "Impossible de lire le canal SSH de manière non bloquante. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1450
+#: src/remmina_ssh.c:1455
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Impossible d’envoyer des données au socket d’écoute du tunnel. %s"
 
-#: src/remmina_ssh.c:1529
+#: src/remmina_ssh.c:1534
 msgid "Assign a destination port."
 msgstr "Attribuer un port de destination."
 
-#: src/remmina_ssh.c:1536
+#: src/remmina_ssh.c:1541
 msgid "Could not create socket."
 msgstr "Impossible de créer le socket."
 
-#: src/remmina_ssh.c:1546
+#: src/remmina_ssh.c:1551
 msgid "Could not bind server socket to local port."
 msgstr "Impossible de lier le socket serveur au port local."
 
-#: src/remmina_ssh.c:1552
+#: src/remmina_ssh.c:1557
 msgid "Could not listen to local port."
 msgstr "Impossible d’écouter le port local."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:1562 src/remmina_ssh.c:1579 src/remmina_ssh.c:1614
+#: src/remmina_ssh.c:1567 src/remmina_ssh.c:1584 src/remmina_ssh.c:1619
 msgid "Could not start pthread."
 msgstr "Impossible de démarrer le fil d’exécution POSIX (pthread)."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:1596
+#: src/remmina_ssh.c:1601
 msgid "Failed to initialize pthread."
 msgstr "Impossible d’initialiser le fil d’exécution POSIX (pthread)."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1703
+#: src/remmina_ssh.c:1708
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "Impossible d’établir la session SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1708
+#: src/remmina_ssh.c:1713
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "Impossible d’établir la connexion SFTP. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1823
+#: src/remmina_ssh.c:1828
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Impossible d’obtenir un shell. %s"
 
-#: src/remmina_ssh.c:1916
+#: src/remmina_ssh.c:1921
 msgid "Could not create PTY device."
 msgstr "Impossible de créer un pseudo‐terminal."
 
@@ -1265,128 +1275,128 @@ msgstr ""
 "- <tt>[serveur]:port</tt> ;\n"
 "- <tt>utilisateur@serveur:port</tt> (uniquement pour le protocole SSH).</big>"
 
-#: src/remmina_file_editor.c:157
+#: src/remmina_file_editor.c:158
 msgid "Choose a Remote Desktop Server"
 msgstr "Choisir un serveur de bureau distant"
 
-#: src/remmina_file_editor.c:363
+#: src/remmina_file_editor.c:370
 msgid "_Open"
 msgstr "_Ouvrir"
 
-#: src/remmina_file_editor.c:424
+#: src/remmina_file_editor.c:431
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Parcourir le réseau à la recherche d’un serveur %s"
 
-#: src/remmina_file_editor.c:525
+#: src/remmina_file_editor.c:532
 msgid "Resolution"
 msgstr "Définitions d’affichage"
 
-#: src/remmina_file_editor.c:532
+#: src/remmina_file_editor.c:539
 msgid "Use initial window size"
 msgstr "Utiliser la taille de fenêtre initiale"
 
-#: src/remmina_file_editor.c:536
+#: src/remmina_file_editor.c:543
 msgid "Use client resolution"
 msgstr "Utiliser la définition d’affichage du client"
 
-#: src/remmina_file_editor.c:547 src/remmina_file_editor.c:856
+#: src/remmina_file_editor.c:554 src/remmina_file_editor.c:863
 msgid "Custom"
 msgstr "Personnalisée"
 
-#: src/remmina_file_editor.c:733
+#: src/remmina_file_editor.c:740
 msgid "Keyboard mapping"
 msgstr "Agencement du clavier"
 
-#: src/remmina_file_editor.c:831
+#: src/remmina_file_editor.c:838
 msgid "SSH Tunnel"
 msgstr "Tunnel SSH"
 
-#: src/remmina_file_editor.c:832
+#: src/remmina_file_editor.c:839
 msgid "Enable SSH tunnel"
 msgstr "Activer le tunnel SSH"
 
-#: src/remmina_file_editor.c:839
+#: src/remmina_file_editor.c:846
 msgid "Tunnel via loopback address"
 msgstr "Tunnel via l’adresse de bouclage"
 
-#: src/remmina_file_editor.c:848
+#: src/remmina_file_editor.c:855
 #, c-format
 msgid "Same server at port %i"
 msgstr "Même serveur sur le port %i"
 
-#: src/remmina_file_editor.c:894 plugins/rdp/rdp_plugin.c:1959
+#: src/remmina_file_editor.c:901 plugins/rdp/rdp_plugin.c:1959
 msgid "Startup path"
 msgstr "Chemin d’accès au démarrage"
 
-#: src/remmina_file_editor.c:903
+#: src/remmina_file_editor.c:910
 msgid "SSH Authentication"
 msgstr "Authentification SSH"
 
-#: src/remmina_file_editor.c:913
+#: src/remmina_file_editor.c:920
 msgid "SSH agent (automatic)"
 msgstr "Agent SSH (automatique)"
 
-#: src/remmina_file_editor.c:987
+#: src/remmina_file_editor.c:1005
 msgid "Turn on \"Autostart\" for this profile"
 msgstr "Activer le « démarrage automatique » pour ce profil"
 
-#: src/remmina_file_editor.c:995
+#: src/remmina_file_editor.c:1013
 msgid "Basic"
 msgstr "Basique"
 
-#: src/remmina_file_editor.c:1001
+#: src/remmina_file_editor.c:1019
 msgid "Advanced"
 msgstr "Avancé"
 
-#: src/remmina_file_editor.c:1006
+#: src/remmina_file_editor.c:1024
 msgid "Autostart"
 msgstr "Démarrage automatique"
 
-#: src/remmina_file_editor.c:1223
+#: src/remmina_file_editor.c:1246
 msgid "Default settings saved."
 msgstr "Les paramètres par défaut ont été enregistrés."
 
-#: src/remmina_file_editor.c:1293
+#: src/remmina_file_editor.c:1316
 msgid "Remote Desktop Preference"
 msgstr "Préférences de bureau distant"
 
-#: src/remmina_file_editor.c:1299
+#: src/remmina_file_editor.c:1322
 msgid "Save as Default"
 msgstr "Définir par défaut"
 
-#: src/remmina_file_editor.c:1300
+#: src/remmina_file_editor.c:1323
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 "Utiliser les paramètres actuels comme paramètres par défaut pour les "
 "nouveaux profils de connexion"
 
-#: src/remmina_file_editor.c:1308 data/ui/remmina_main.glade:250
+#: src/remmina_file_editor.c:1331 data/ui/remmina_main.glade:250
 msgid "Connect"
 msgstr "Connexion"
 
-#: src/remmina_file_editor.c:1311
+#: src/remmina_file_editor.c:1334
 msgid "_Save and Connect"
 msgstr "_Enregistrer et se connecter"
 
-#: src/remmina_file_editor.c:1434
+#: src/remmina_file_editor.c:1457
 msgid "Quick Connect"
 msgstr "Connexion rapide"
 
-#: src/remmina_file_editor.c:1458
+#: src/remmina_file_editor.c:1481
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Utiliser « %s » comme délimiteur de sous‐groupe"
 
-#: src/remmina_file_editor.c:1477
+#: src/remmina_file_editor.c:1500
 msgid "Pre-command"
 msgstr "Précommande"
 
-#: src/remmina_file_editor.c:1495
+#: src/remmina_file_editor.c:1518
 msgid "Post-command"
 msgstr "Post‐commande"
 
-#: src/remmina_file_editor.c:1560 src/remmina_file_editor.c:1578
+#: src/remmina_file_editor.c:1583 src/remmina_file_editor.c:1601
 #, c-format
 msgid "Could not find the file \"%s\"."
 msgstr "Le fichier « %s » est introuvable."
