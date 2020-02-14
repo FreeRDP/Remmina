@@ -5,13 +5,14 @@
 # Allan Nordhøy <epost@anotheragency.no>, 2019.
 # anonymous <noreply@weblate.org>, 2019.
 # Hinaloe <hina@hinaloe.net>, 2019.
+# Ryunosuke Toda <toda.ryunosuke@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-02-11 07:04+0000\n"
-"PO-Revision-Date: 2019-12-29 11:21+0000\n"
-"Last-Translator: Hinaloe <hina@hinaloe.net>\n"
+"PO-Revision-Date: 2020-02-14 18:50+0000\n"
+"Last-Translator: Ryunosuke Toda <toda.ryunosuke@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/remmina/remmina/"
 "ja/>\n"
 "Language: ja\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 3.11-dev\n"
 "X-Launchpad-Export-Date: 2014-09-20 14:24+0000\n"
 
 #: src/remmina_protocol_widget.c:248
@@ -33,10 +34,10 @@ msgstr "SFTP を開く…"
 
 #: src/remmina_protocol_widget.c:282
 msgid "Executing external commands…"
-msgstr ""
+msgstr "外部コマンドの実行…"
 
 #: src/remmina_protocol_widget.c:289
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to \"%s\"…"
 msgstr "'%s' に接続中…"
 
@@ -51,12 +52,12 @@ msgid "Awaiting incoming SSH connection at port %i…"
 msgstr "ポート %i で SSH 接続を待っています…"
 
 #: src/remmina_protocol_widget.c:911
-#, fuzzy, c-format
+#, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "SSH サーバー上にコマンド %s は見つかりませんでした"
+msgstr "SSH サーバー上にコマンド %s は見つかりませんでした。"
 
 #: src/remmina_protocol_widget.c:915
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
 msgstr "SSH サーバー上でのコマンド %s に失敗しました(ステータス = %i)。"
 
@@ -101,7 +102,6 @@ msgid "Fingerprint:"
 msgstr "フィンガープリント:"
 
 #: src/remmina_protocol_widget.c:1428
-#, fuzzy
 msgid "Accept certificate?"
 msgstr "証明書を受け入れますか?"
 
@@ -128,7 +128,6 @@ msgid "Listening on port %i for an incoming %s connection…"
 msgstr "ポート %i への %s 接続を待機しています…"
 
 #: src/remmina_protocol_widget.c:1617
-#, fuzzy
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "認証に失敗しました。再接続しています…"
 
@@ -225,7 +224,7 @@ msgstr "コピー"
 
 #: src/remmina_ssh_plugin.c:1005
 msgid "_Copy"
-msgstr ""
+msgstr "コピー(_C)"
 
 #: src/remmina_ssh_plugin.c:1006
 msgid "Paste"
@@ -233,7 +232,7 @@ msgstr "貼り付け"
 
 #: src/remmina_ssh_plugin.c:1006
 msgid "_Paste"
-msgstr ""
+msgstr "貼り付け(_P)"
 
 #: src/remmina_ssh_plugin.c:1007
 msgid "Select all"
@@ -241,7 +240,7 @@ msgstr "すべて選択"
 
 #: src/remmina_ssh_plugin.c:1007
 msgid "_Select all"
-msgstr ""
+msgstr "すべて選択(_S)"
 
 #: src/remmina_ssh_plugin.c:1025 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:316 src/remmina_file_editor.c:917
@@ -408,7 +407,7 @@ msgstr "アップロード"
 
 #: src/remmina_ftp_client.c:662
 msgid "_Delete"
-msgstr ""
+msgstr "削除(_D)"
 
 #: src/remmina_ftp_client.c:749
 msgid "Home"
@@ -452,7 +451,6 @@ msgid "Delete files on server"
 msgstr "サーバー上のファイルを削除する"
 
 #: src/remmina_ftp_client.c:903 src/remmina_ftp_client.c:972
-#, fuzzy
 msgid "Filename"
 msgstr "ファイル名"
 
@@ -571,11 +569,11 @@ msgstr "メインウィンドウを開く"
 
 #: src/remmina_icon.c:144 data/ui/remmina_main.glade:343
 msgid "_Preferences"
-msgstr ""
+msgstr "設定(_P)"
 
 #: src/remmina_icon.c:149
 msgid "_About"
-msgstr ""
+msgstr "中止(_A)"
 
 #: src/remmina_icon.c:159
 msgid "Enable Service Discovery"
@@ -583,7 +581,7 @@ msgstr "サービス検出を有功にする"
 
 #: src/remmina_icon.c:172 data/ui/remmina_main.glade:494
 msgid "_Quit"
-msgstr ""
+msgstr "修了(_Q)"
 
 #: src/remmina_icon.c:357 src/remmina_icon.c:539
 msgid "Remmina Applet"
@@ -598,11 +596,10 @@ msgid "Remmina Remote Desktop Client"
 msgstr "Remmina リモートデスクトップクライアント"
 
 #: src/rcw.c:597
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
-msgstr ""
-"このウィンドウには %i 個のアクティブな接続があります。本当に閉じますか?"
+msgstr "このウィンドウには %i 個のアクティブな接続があります。本当に閉じますか?"
 
 #: src/rcw.c:1303
 msgid "Viewport fullscreen mode"
@@ -717,7 +714,7 @@ msgstr "プラグイン"
 #: src/remmina_plugin_manager.c:445 src/remmina_message_panel.c:451
 #: src/remmina_message_panel.c:620 src/remmina_file_editor.c:161
 msgid "_OK"
-msgstr ""
+msgstr "_OK"
 
 #: src/remmina_plugin_manager.c:463 src/remmina_file_editor.c:1443
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:529
@@ -743,9 +740,9 @@ msgid_plural "Total %i items."
 msgstr[0] "全 %i アイテム"
 
 #: src/remmina_main.c:829
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete \"%s\"?"
-msgstr "'%s' を削除してもよいですか?"
+msgstr "'%s' を削除してもよろしいですか?"
 
 #: src/remmina_main.c:929
 #, c-format
@@ -762,7 +759,7 @@ msgstr "インポート"
 
 #: src/remmina_main.c:979 src/remmina_file_editor.c:1326
 msgid "_Save"
-msgstr ""
+msgstr "保存(_S)"
 
 #: src/remmina_main.c:986
 msgid "This protocol does not support exporting."
@@ -1270,7 +1267,7 @@ msgstr "キーボードマッピング"
 
 #: src/remmina_file_editor.c:838
 msgid "SSH Tunnel"
-msgstr ""
+msgstr "SSH トンネル"
 
 #: src/remmina_file_editor.c:839
 msgid "Enable SSH tunnel"
@@ -1300,7 +1297,7 @@ msgstr "公開鍵(自動)"
 
 #: src/remmina_file_editor.c:1005
 msgid "Turn on \"Autostart\" for this profile"
-msgstr ""
+msgstr "自動起動する"
 
 #: src/remmina_file_editor.c:1013
 msgid "Basic"
@@ -1312,7 +1309,7 @@ msgstr "高度な設定"
 
 #: src/remmina_file_editor.c:1024
 msgid "Autostart"
-msgstr ""
+msgstr "自動起動"
 
 #: src/remmina_file_editor.c:1246
 msgid "Default settings saved."
@@ -1324,7 +1321,7 @@ msgstr "リモートデスクトップの設定"
 
 #: src/remmina_file_editor.c:1322
 msgid "Save as Default"
-msgstr ""
+msgstr "既定値として保存"
 
 #: src/remmina_file_editor.c:1323
 msgid "Use the current settings as the default for all new connection profiles"
@@ -1332,11 +1329,11 @@ msgstr ""
 
 #: src/remmina_file_editor.c:1331 data/ui/remmina_main.glade:250
 msgid "Connect"
-msgstr ""
+msgstr "接続"
 
 #: src/remmina_file_editor.c:1334
 msgid "_Save and Connect"
-msgstr ""
+msgstr "保存して接続(_S)"
 
 #: src/remmina_file_editor.c:1457
 msgid "Quick Connect"
@@ -2275,7 +2272,7 @@ msgstr ""
 
 #: data/ui/remmina_main.glade:139
 msgid "Toggle view"
-msgstr ""
+msgstr "表示切り替え"
 
 #: data/ui/remmina_main.glade:187
 msgid "Search string or server name/IP address for “Quick Connect”"
@@ -2308,7 +2305,7 @@ msgstr ""
 
 #: data/ui/remmina_main.glade:364
 msgid "Debugging"
-msgstr ""
+msgstr "デバッグ"
 
 #: data/ui/remmina_main.glade:384
 msgid "Export"
@@ -2324,15 +2321,15 @@ msgstr ""
 
 #: data/ui/remmina_main.glade:431
 msgid "Homepage"
-msgstr ""
+msgstr "ホームページ"
 
 #: data/ui/remmina_main.glade:441
 msgid "Donations"
-msgstr ""
+msgstr "寄付"
 
 #: data/ui/remmina_main.glade:451
 msgid "Wiki"
-msgstr ""
+msgstr "Wiki"
 
 #. Remmina community website
 #: data/ui/remmina_main.glade:461
@@ -2341,7 +2338,7 @@ msgstr ""
 
 #: data/ui/remmina_main.glade:579
 msgid "Plugin"
-msgstr ""
+msgstr "プラグイン"
 
 #: data/ui/remmina_main.glade:593
 msgid "Last used"
@@ -2960,7 +2957,7 @@ msgstr ""
 
 #: data/ui/remmina_key_chooser.glade:14 data/ui/remmina_key_chooser.glade:15
 msgid "_Remove"
-msgstr ""
+msgstr "削除(_R)"
 
 #: data/ui/remmina_key_chooser.glade:23
 msgid "Choose a new key"
