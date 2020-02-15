@@ -715,6 +715,11 @@ gboolean remmina_rdp_event_on_clipboard(GtkClipboard *gtkClipboard, GdkEvent *ev
 	 * In the latter case, we must ignore owner change */
 
 	g_debug("[RDP] owner-change event received");
+
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
+	if (rfi)
+		remmina_rdp_clipboard_abort_transfer(rfi);
+
 	if (gtk_clipboard_get_owner(gtkClipboard) != (GObject*)gp) {
 		/* To do: avoid this when the new owner is another remmina protocol widget of
 		 * the same remmina application */

@@ -550,7 +550,7 @@ void remmina_rdp_cliprdr_request_data(GtkClipboard *gtkClipboard, GtkSelectionDa
 		clipboard->srv_clip_data_wait = SCDW_NONE;
 	} else {
 		if (clipboard->srv_clip_data_wait == SCDW_ABORTING) {
-			g_warning("[RDP] Clipboard transfer aborted");
+			g_warning("[RDP] Clipboard data wait aborted.");
 		} else {
 			if ( rc == ETIMEDOUT ) {
 				g_warning("[RDP] Clipboard data from the server is not available in %d seconds. No data will be available to user.",
@@ -829,6 +829,17 @@ void remmina_rdp_clipboard_free(rfContext *rfi)
 
 	// Future: deinitialize rfi->clipboard
 }
+
+void remmina_rdp_clipboard_abort_transfer(rfContext *rfi)
+{
+	if (rfi && rfi->clipboard.srv_clip_data_wait == SCDW_BUSY_WAIT) {
+		g_debug("[RDP] requesting clipboard transfer to abort");
+		/* Allow clipboard transfer from server to terminate */
+		rfi->clipboard.srv_clip_data_wait = SCDW_ABORTING;
+		usleep(100000);
+	}
+}
+
 
 
 void remmina_rdp_cliprdr_init(rfContext* rfi, CliprdrClientContext* cliprdr)
