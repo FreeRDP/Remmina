@@ -57,6 +57,7 @@
 #include <freerdp/error.h>
 #include <freerdp/event.h>
 #include <winpr/memory.h>
+#include <ctype.h>
 
 #ifdef HAVE_CUPS
 #include <cups/cups.h>
@@ -181,7 +182,6 @@ static gboolean remmina_rdp_tunnel_init(RemminaProtocolWidget *gp)
 	gchar *cert_host;
 	gint cert_port;
 	gint port;
-	const gchar *cert_hostport;
 
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
 	g_debug("[RDP] %s\n", __func__);
@@ -1665,7 +1665,7 @@ static gpointer remmina_rdp_main_thread(gpointer data)
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
 
-		gp = (RemminaProtocolWidget *)data;
+	gp = (RemminaProtocolWidget *)data;
 	rfi = GET_PLUGIN_DATA(gp);
 
 	rfi->attempt_interactive_authentication = FALSE;
@@ -1719,8 +1719,15 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
+	RemminaFile *remminafile;
+	const gchar *profile_name, *p;
+	gchar thname[16], c;
+	gint nthname;
 
 	rfi->scale = remmina_plugin_service->remmina_protocol_widget_get_current_scale_mode(gp);
+
+	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
+
 
 	if (pthread_create(&rfi->remmina_plugin_thread, NULL, remmina_rdp_main_thread, gp)) {
 		remmina_plugin_service->protocol_plugin_set_error(gp, "%s",
@@ -1730,6 +1737,19 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget *gp)
 
 		return FALSE;
 	}
+
+	/* Generate a thread name to be used with pthread_setname_np() for debugging */
+	profile_name = remmina_plugin_service->file_get_string(remminafile, "name");
+	p = profile_name;
+	strcpy(thname, "RemmRDP:");
+	nthname = strlen(thname);
+	while((c = *p) != 0 && nthname < sizeof(thname) - 1 ) {
+		if (isalnum(c))
+			thname[nthname++] = c;
+		p++;
+	}
+	thname[nthname] = 0;
+	pthread_setname_np(rfi->remmina_plugin_thread, thname);
 
 	return TRUE;
 }
@@ -1742,7 +1762,7 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget *gp)
 	rfContext *rfi = GET_PLUGIN_DATA(gp);
 
 	if (!remmina_plugin_service->is_main_thread())
-		g_printf("WARNING: %s called on a subthread, which may not work or crash Remmina.\n", __func__);
+		g_warning("WARNING: %s called on a subthread, which may not work or crash Remmina.", __func__);
 
 	if (rfi && !rfi->connected) {
 		/* libfreerdp is attempting to connect, we cannot interrupt our main thread
@@ -1755,6 +1775,13 @@ static gboolean remmina_rdp_close_connection(RemminaProtocolWidget *gp)
 		return FALSE;
 	}
 
+
+	if (rfi && rfi->clipboard.srv_clip_data_wait == SCDW_BUSY_WAIT) {
+		g_debug("[RDP] requesting clipboard transfer to abort");
+		/* Allow clipboard transfer from server to terminate */
+		rfi->clipboard.srv_clip_data_wait = SCDW_ABORTING;
+		usleep(100000);
+	}
 
 	rdp_event.type = REMMINA_RDP_EVENT_DISCONNECT;
 	remmina_rdp_event_event_push(gp, &rdp_event);

@@ -78,7 +78,7 @@ struct rf_clipboard {
 
 	pthread_mutex_t		transfer_clip_mutex;
 	pthread_cond_t		transfer_clip_cond;
-	enum  { SCDW_NONE, SCDW_BUSY_WAIT, SCDW_ASYNCWAIT } srv_clip_data_wait;
+	enum  { SCDW_NONE, SCDW_BUSY_WAIT, SCDW_ABORTING } srv_clip_data_wait;
 	gpointer		srv_data;
 };
 typedef struct rf_clipboard rfClipboard;
