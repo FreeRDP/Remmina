@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-02-17 09:01+0000\n"
-"PO-Revision-Date: 2020-01-28 21:50+0000\n"
+"PO-Revision-Date: 2020-02-17 10:37+0000\n"
 "Last-Translator: Солтыс Сергей <treefeed@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/remmina/remmina/"
 "ru/>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 3.11-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 "X-Poedit-Flags-xgettext: --add-comments\n"
@@ -169,7 +169,7 @@ msgstr "Настройка комбинации клавиш"
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:444
 msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr "libsodium >= 1.9.0 требуется для использования мастер-пароля"
+msgstr "libsodium 1.9.0 (или старше) требуется для использования мастер-пароля"
 
 #: src/remmina_ssh_plugin.c:449
 #, c-format
@@ -382,10 +382,8 @@ msgstr ""
 "\tStas Solovey https://launchpad.net/~whats-up\n"
 "\tVic https://launchpad.net/~llyzs\n"
 "\tjmb_kz https://launchpad.net/~jmb-kz\n"
-"С GitLab:\n"
-"\tСергей Солтыс<treefeed@mail.ru>\n"
 "Текущий перевод:\n"
-"\tСергей Солтыс<treefeed@mail.ru>"
+"\tСергей Солтыс(treefeed@mail.ru)"
 
 #: src/remmina_ftp_client.c:388
 msgid "Choose download location"
@@ -808,7 +806,7 @@ msgstr "Meta+"
 
 #: src/remmina_key_chooser.h:44
 msgid "<None>"
-msgstr "<Никакая>"
+msgstr "Никакая"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:171
@@ -970,9 +968,8 @@ msgstr "SFTP - защищённая передача файлов"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:205
-#, fuzzy
 msgid "Password is null"
-msgstr "Пароль"
+msgstr "Пустой пароль"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:214
@@ -998,7 +995,7 @@ msgstr "Публичный ключ SSH не может быть импорти�
 
 #: src/remmina_ssh.c:257
 msgid "SSH passaphrase is empty, it should not."
-msgstr ""
+msgstr "Ключевая фраза SSH пустая. Она должна быть заполнена."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:297
@@ -1778,66 +1775,66 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "Введите данные авторизации RDP шлюза"
 
 #: plugins/rdp/rdp_plugin.c:1485
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account locked out."
 msgstr ""
-"Доступ к RDP серверу %s не удался.\n"
+"Не удался доступ к RDP серверу \"%s\".\n"
 "Учётной записи закрыт доступ."
 
 #: plugins/rdp/rdp_plugin.c:1492
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account expired."
 msgstr ""
-"Доступ к RDP серверу %s не удался.\n"
+"не удался доступ к RDP серверу \"%s\".\n"
 "Истёк срок учётной записи."
 
 #: plugins/rdp/rdp_plugin.c:1499
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Password expired."
 msgstr ""
-"Доступ к RDP серверу %s не удался.\n"
+"Не удался доступ к RDP серверу \"%s\".\n"
 "Истёк пароль."
 
 #: plugins/rdp/rdp_plugin.c:1506
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account disabled."
 msgstr ""
-"Доступ к RDP серверу %s не удался.\n"
+"Не удался доступ к RDP серверу \"%s\".\n"
 "Учётная запись заблокирована."
 
 #: plugins/rdp/rdp_plugin.c:1512
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Insufficient user privileges."
 msgstr ""
-"Доступ к RDP серверу %s не удался.\n"
+"Не удался доступ к RDP серверу \"%s\".\n"
 "У пользователя нет привилегий."
 
 #: plugins/rdp/rdp_plugin.c:1520
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account restricted."
 msgstr ""
-"Доступ к RDP серверу %s не удался.\n"
+"Не удался доступ к RDP серверу \"%s\".\n"
 "У учётной записи ограничения."
 
 #: plugins/rdp/rdp_plugin.c:1528
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Change user password before connecting."
 msgstr ""
-"Доступ к RDP серверу %s не удался.\n"
+"Не удался доступ к RDP серверу \"%s\".\n"
 "Пользователь должен сменить пароль перед соединением."
 
 #: plugins/rdp/rdp_plugin.c:1533
