@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-02-17 10:40+0000\n"
-"PO-Revision-Date: 2020-02-07 16:31+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2020-02-17 11:23+0000\n"
+"Last-Translator: Giovanni Panozzo <giovanni@panozzo.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/remmina/remmina/"
 "it/>\n"
 "Language: it\n"
@@ -179,9 +179,8 @@ msgid "Error: %s"
 msgstr "Errore: %s"
 
 #: src/remmina_ssh_plugin.c:466
-#, fuzzy
 msgid "Terminal content saved in"
-msgstr "Contenuto del terminale salvato su"
+msgstr "Contenuto del terminale salvato in"
 
 #: src/remmina_ssh_plugin.c:520
 msgid "Select All (Host + A)"
@@ -977,7 +976,7 @@ msgstr "Impossibile importare la chiave SSH pubblica. %s"
 
 #: src/remmina_ssh.c:256
 msgid "SSH passaphrase is empty, it should not."
-msgstr ""
+msgstr "La passphrase ssh è vuota, non dovrebbe esserlo."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:296
@@ -1061,9 +1060,8 @@ msgid "SSH Kerberos/GSSAPI"
 msgstr "Kerberos SSH/GSSAPI"
 
 #: src/remmina_ssh.c:603 src/remmina_ssh.c:626
-#, fuzzy
 msgid "SSH tunnel credentials"
-msgstr "Credenziali SSH"
+msgstr "Credenziali del tunnel SSH"
 
 #: src/remmina_ssh.c:603 src/remmina_ssh.c:626 plugins/nx/nx_plugin.c:202
 msgid "SSH credentials"
@@ -1094,9 +1092,9 @@ msgid "Could not open channel. %s"
 msgstr "Impossibile aprire il canale. %s"
 
 #: src/remmina_ssh.c:1205
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run %s on SSH server."
-msgstr "Impossibile eseguire %s sul server SSH, %%s"
+msgstr "Impossibile eseguire %s sul server SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1243 src/remmina_ssh.c:1264 src/remmina_ssh.c:1273
@@ -1760,66 +1758,66 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "Immettere le credenziali di autenticazione del gateway RDP"
 
 #: plugins/rdp/rdp_plugin.c:1485
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account locked out."
 msgstr ""
-"Accesso al server RDP %s fallito.\n"
+"Accesso al server RDP \"%s\" fallito.\n"
 "L’account è bloccato."
 
 #: plugins/rdp/rdp_plugin.c:1492
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account expired."
 msgstr ""
-"Accesso al server RDP %s fallito.\n"
+"Accesso al server RDP \"%s\" fallito.\n"
 "L’account è scaduto."
 
 #: plugins/rdp/rdp_plugin.c:1499
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Password expired."
 msgstr ""
-"Accesso al server RDP %s fallito.\n"
+"Accesso al server RDP \"%s\" fallito.\n"
 "La password è scaduta."
 
 #: plugins/rdp/rdp_plugin.c:1506
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account disabled."
 msgstr ""
-"Accesso al server RDP %s fallito.\n"
+"Accesso al server RDP \"%s\" fallito.\n"
 "L’account è disabilitato."
 
 #: plugins/rdp/rdp_plugin.c:1512
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Insufficient user privileges."
 msgstr ""
-"Accesso al server RDP %s fallito.\n"
+"Accesso al server RDP \"%s\" fallito.\n"
 "L’utente ha privilegi insufficenti."
 
 #: plugins/rdp/rdp_plugin.c:1520
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account restricted."
 msgstr ""
-"Accesso al server RDP %s fallito.\n"
+"Accesso al server RDP \"%s\" fallito.\n"
 "L’account ha delle restrizioni."
 
 #: plugins/rdp/rdp_plugin.c:1528
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Change user password before connecting."
 msgstr ""
-"Accesso al server RDP %s fallito.\n"
+"Accesso al server RDP \"%s\" fallito.\n"
 "L’utende deve cambiare la password prima di accedere."
 
 #: plugins/rdp/rdp_plugin.c:1533
@@ -1871,13 +1869,13 @@ msgid "The \"%s\" server refused the connection."
 msgstr "Il server \"%s\" ha rifiutato la connessione."
 
 #: plugins/rdp/rdp_plugin.c:1569
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
 "policy."
 msgstr ""
-"Il Gateway Desktop remoto \"%s\" ha negato all'utente \"%s\"\\%s l'accesso a "
-"causa dei criteri."
+"Il Gateway Desktop remoto \"%s\" ha negato all'utente \"%s\\%s\" l'accesso a "
+"causa dei criteri di protezione."
 
 #: plugins/rdp/rdp_plugin.c:1579
 #, c-format
@@ -2294,10 +2292,9 @@ msgid "Toggle view"
 msgstr "Cambia vista"
 
 #: data/ui/remmina_main.glade:187
-#, fuzzy
 msgid "Search string or server name/IP address for “Quick Connect”"
 msgstr ""
-"Stringa di ricerca o nome del server/indirizzo IP per \"Connessione rapida\""
+"Stringa di ricerca o nome del server/indirizzo IP per “Connessione rapida”"
 
 #: data/ui/remmina_main.glade:191 data/ui/remmina_main.glade:193
 msgid "Server name or IP address"
@@ -2428,7 +2425,7 @@ msgstr "<big>Contribuisci</big>"
 
 #: data/ui/remmina_mpc.glade:14
 msgid "<span weight='bold' size='larger'>Multi Password Changer</span>"
-msgstr "<span weight='bold' size='larger'>Cambio Password multiplo</span>"
+msgstr "<span weight='bold' size='larger'>Cambio password multiplo</span>"
 
 #: data/ui/remmina_mpc.glade:32
 msgid "Change"
@@ -2443,7 +2440,6 @@ msgid "Confirm password"
 msgstr "Conferma password"
 
 #: data/ui/remmina_mpc.glade:294
-#, fuzzy
 msgid "Set new password"
 msgstr "Impostare una nuova password"
 
@@ -3007,5 +3003,3 @@ msgstr "Sciegli un nuovo tasto"
 #: data/ui/remmina_key_chooser.glade:82
 msgid "Please press the new key…"
 msgstr "Premere un nuovo tasto prego…"
-
-#, fuzzy
