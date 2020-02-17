@@ -73,31 +73,31 @@ static const gchar *charset_list = "ASCII,BIG5,"
 
 static const gchar *server_tips = N_("<tt><big>"
 				     "Supported formats\n"
-				     "* server\n"
-				     "* server:port\n"
-				     "* [server]:port"
+				     "• server\n"
+				     "• server:port\n"
+				     "• [server]:port"
 				     "</big></tt>");
 
 static const gchar *cmd_tips = N_("<tt><big>"
-				  "* command in PATH args %h\n"
-				  "* /path/to/foo -options %h %u\n"
-				  "* %h is substituted with the server name\n"
-				  "* %t is substituted with the SSH server name\n"
-				  "* %u is substituted with the username\n"
-				  "* %U is substituted with the SSH username\n"
-				  "* %p is substituted with Remmina profile name\n"
-				  "* %g is substituted with Remmina profile group name\n"
+				  "• command in PATH args %h\n"
+				  "• /path/to/foo -options %h %u\n"
+				  "• %h is substituted with the server name\n"
+				  "• %t is substituted with the SSH server name\n"
+				  "• %u is substituted with the username\n"
+				  "• %U is substituted with the SSH username\n"
+				  "• %p is substituted with Remmina profile name\n"
+				  "• %g is substituted with Remmina profile group name\n"
 				  "Do not run in background if you want the command to be executed before connecting.\n"
 				  "</big></tt>");
 
 #ifdef HAVE_LIBSSH
 static const gchar *server_tips2 = N_("<tt><big>"
 				      "Supported formats\n"
-				      "* :port\n"
-				      "* server\n"
-				      "* server:port\n"
-				      "* [server]:port\n"
-				      "* username@server:port (SSH protocol only)"
+				      "• :port\n"
+				      "• server\n"
+				      "• server:port\n"
+				      "• [server]:port\n"
+				      "• username@server:port (SSH protocol only)"
 				      "</big></tt>");
 #endif
 
