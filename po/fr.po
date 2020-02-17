@@ -2,7 +2,7 @@
 # Copyright © 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-# Davy Defaud <davy.defaud@free.fr>, 2016-2019.
+# Davy Defaud <davy.defaud@free.fr>, 2016-2019, 2020.
 # Nathan <bonnemainsnathan@gmail.com>, 2019, 2020.
 # Aroa Taha <Naturameuocat@protonmail.com>, 2019.
 # Goten <jonathan.breysse@delphisoft.de>, 2020.
@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-02-17 10:40+0000\n"
-"PO-Revision-Date: 2020-02-07 10:50+0000\n"
-"Last-Translator: Goten <jonathan.breysse@delphisoft.de>\n"
+"PO-Revision-Date: 2020-02-17 18:52+0000\n"
+"Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
 "Language: fr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.11-dev\n"
+"X-Generator: Weblate 3.11\n"
 
 #: src/remmina_protocol_widget.c:248
 msgid "Connect via SSH from a new terminal"
@@ -373,21 +373,21 @@ msgstr "Veuillez entrer un format de type « largeurxhauteur »."
 msgid "translator-credits"
 msgstr ""
 "Contributions Launchpad :\n"
-"  Davy Defaud https://launchpad.net/~davy-defaud\n"
-"  Emmanuel Andry https://launchpad.net/~eandry\n"
-"  Étienne Bersac https://launchpad.net/~bersace \n"
-"  Florent Deutsch https://launchpad.net/~florent-arawn\n"
-"  Gisèle Perreault https://launchpad.net/~gisele-perreault\n"
-"  Guilhem Lettron https://launchpad.net/~guilhem-fr\n"
-"  Jérôme Portal https://launchpad.net/~portal-j\n"
-"  Laurent Roche https://launchpad.net/~laurent-roche\n"
-"  Jean‐Christophe Leroy https://launchpad.net/~celtic2-deactivatedaccount\n"
-"  Matthieu Jouan https://launchpad.net/~mat-jouan\n"
-"  Olivier Febwin https://launchpad.net/~febcrash\n"
-"  Pierre Slamich https://launchpad.net/~pierre-slamich\n"
-"  Sylvie Gallet https://launchpad.net/~sylvie-gallet\n"
-"  Vic https://launchpad.net/~llyzs\n"
-"  Yannis B. https://launchpad.net/~yannisb"
+"• Davy Defaud https://launchpad.net/~davy-defaud\n"
+"• Emmanuel Andry https://launchpad.net/~eandry\n"
+"• Étienne Bersac https://launchpad.net/~bersace \n"
+"• Florent Deutsch https://launchpad.net/~florent-arawn\n"
+"• Gisèle Perreault https://launchpad.net/~gisele-perreault\n"
+"• Guilhem Lettron https://launchpad.net/~guilhem-fr\n"
+"• Jérôme Portal https://launchpad.net/~portal-j\n"
+"• Laurent Roche https://launchpad.net/~laurent-roche\n"
+"• Jean‐Christophe Leroy https://launchpad.net/~celtic2-deactivatedaccount\n"
+"• Matthieu Jouan https://launchpad.net/~mat-jouan\n"
+"• Olivier Febwin https://launchpad.net/~febcrash\n"
+"• Pierre Slamich https://launchpad.net/~pierre-slamich\n"
+"• Sylvie Gallet https://launchpad.net/~sylvie-gallet\n"
+"• Vic https://launchpad.net/~llyzs\n"
+"• Yannis B. https://launchpad.net/~yannisb"
 
 #: src/remmina_ftp_client.c:388
 msgid "Choose download location"
@@ -1001,7 +1001,7 @@ msgstr "La clef SSH publique n’a pas pu être importée. %s"
 
 #: src/remmina_ssh.c:256
 msgid "SSH passaphrase is empty, it should not."
-msgstr ""
+msgstr "La phrase de passe est vide, elle ne devrait pas l’être."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:296
@@ -1219,11 +1219,10 @@ msgid ""
 "* server:port\n"
 "* [server]:port</big></tt>"
 msgstr ""
-"<big>Formats pris en charge :\n"
-"- <tt>serveur</tt> ;\n"
-"- <tt>serveur:port</tt> ;\n"
-"- <tt>[serveur]:port</tt>.\n"
-"</big>"
+"<big>Formats pris en charge :\n"
+"• <tt>serveur</tt> ;\n"
+"• <tt>serveur:port</tt> ;\n"
+"• <tt>[serveur]:port</tt>.</big>"
 
 #: src/remmina_file_editor.c:81
 msgid ""
@@ -1239,8 +1238,9 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
-"<big>• <tt>commande</tt> [accessible depuis <tt>$PATH</tt>] <tt>arguments "
-"%h</tt> ;\n"
+"<big>\n"
+"• <tt>commande</tt> [accessible depuis <tt>$PATH</tt>] <tt>arguments %h</tt> "
+";\n"
 "• <tt>/chemin/vers/commande -options %h %u</tt> ;\n"
 "• <tt>%h</tt> est remplacé par le nom du serveur ;\n"
 "• <tt>%t</tt> est remplacé par nom du serveur SSH ;\n"
@@ -1785,67 +1785,67 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "Entrez les paramètres d’authentification sur la passerelle RDP"
 
 #: plugins/rdp/rdp_plugin.c:1485
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account locked out."
 msgstr ""
-"L’accès au serveur RDP %s a échoué.\n"
+"L’accès au serveur RDP « %s » a échoué.\n"
 "Le compte est verrouillé."
 
 #: plugins/rdp/rdp_plugin.c:1492
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account expired."
 msgstr ""
-"L’accès au serveur RDP %s a échoué.\n"
+"L’accès au serveur RDP « %s » a échoué.\n"
 "Le compte a expiré."
 
 #: plugins/rdp/rdp_plugin.c:1499
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Password expired."
 msgstr ""
-"L’accès au serveur RDP %s a échoué.\n"
+"L’accès au serveur RDP « %s » a échoué.\n"
 "Le mot de passe a expiré."
 
 #: plugins/rdp/rdp_plugin.c:1506
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account disabled."
 msgstr ""
-"L’accès au serveur RDP %s a échoué.\n"
+"L’accès au serveur RDP « %s » a échoué.\n"
 "Le compte est désactivé."
 
 #: plugins/rdp/rdp_plugin.c:1512
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Insufficient user privileges."
 msgstr ""
-"L’accès au serveur RDP %s a échoué.\n"
+"L’accès au serveur RDP « %s » a échoué.\n"
 "Les privilèges de l’utilisateur sont insuffisants."
 
 #: plugins/rdp/rdp_plugin.c:1520
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account restricted."
 msgstr ""
-"L’accès au serveur RDP %s a échoué.\n"
+"L’accès au serveur RDP « %s » a échoué.\n"
 "Le compte est soumis à des restrictions."
 
 #: plugins/rdp/rdp_plugin.c:1528
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Change user password before connecting."
 msgstr ""
-"L’accès au serveur RDP %s a échoué.\n"
-"L’utilisateur doit changer son mot de passe avant de se connecter."
+"L’accès au serveur RDP « %s » a échoué.\n"
+"L’utilisateur doit changer son mot de passe pour pouvoir se connecter."
 
 #: plugins/rdp/rdp_plugin.c:1533
 #, c-format
@@ -3049,4 +3049,3 @@ msgstr "Choisir une nouvelle touche"
 msgid "Please press the new key…"
 msgstr "Veuillez appuyer sur la nouvelle touche…"
 
-#, fuzzy
