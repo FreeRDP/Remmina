@@ -714,11 +714,24 @@ gboolean remmina_rdp_event_on_clipboard(GtkClipboard *gtkClipboard, GdkEvent *ev
 	 * after receivina a RDP server format list in remmina_rdp_cliprdr_server_format_list()
 	 * In the latter case, we must ignore owner change */
 
+	g_debug("[RDP] owner-change event received");
+
+	rfContext *rfi = GET_PLUGIN_DATA(gp);
+	if (rfi)
+		remmina_rdp_clipboard_abort_transfer(rfi);
+
 	if (gtk_clipboard_get_owner(gtkClipboard) != (GObject*)gp) {
+		/* To do: avoid this when the new owner is another remmina protocol widget of
+		 * the same remmina application */
+		g_debug("[RDP]     new owner is different than me: new=%p me=%p. Sending local clipboard format list to server.",
+				gtk_clipboard_get_owner(gtkClipboard), (GObject*)gp);
+
 		pFormatList = remmina_rdp_cliprdr_get_client_format_list(gp);
 		rdp_event.type = REMMINA_RDP_EVENT_TYPE_CLIPBOARD_SEND_CLIENT_FORMAT_LIST;
 		rdp_event.clipboard_formatlist.pFormatList = pFormatList;
 		remmina_rdp_event_event_push(gp, &rdp_event);
+	} else {
+		g_debug("[RDP]    ... but I'm the owner!");
 	}
 	return TRUE;
 }
