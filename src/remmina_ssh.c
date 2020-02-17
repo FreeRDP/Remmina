@@ -201,8 +201,7 @@ remmina_ssh_auth_password(RemminaSSH *ssh)
 		return REMMINA_SSH_AUTH_SUCCESS;
 	}
 	if (ssh->password == NULL) {
-		// TRANSLATORS: The placeholder %s is an error message
-		remmina_ssh_set_error(ssh, _("Password is null"));
+		remmina_ssh_set_error(ssh, "Password is null");
 		g_debug("[SSH] password is null, returning from %s", __func__);
 		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 	}
