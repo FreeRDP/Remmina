@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-02-17 20:57+0000\n"
-"PO-Revision-Date: 2020-02-11 07:01+0000\n"
+"PO-Revision-Date: 2020-02-18 10:52+0000\n"
 "Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.11-dev\n"
+"X-Generator: Weblate 3.11\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:248
@@ -480,8 +480,8 @@ msgstr "Zeige \"über\""
 msgid ""
 "Connect to desktop described in file (.remmina or type supported by plugin)"
 msgstr ""
-"Baue eine Verbindung zu einem Desktop auf, die in einer .remmina Datei oder  "
-"in einer von einem Plugin unterstützten Datei definiert ist"
+"Verbindung zu Desktop herstellen, der in einer Datei (.remmina oder von "
+"einem Plugin unterstützte Datei) definiert ist"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:90
@@ -975,7 +975,7 @@ msgstr "Der öffentliche SSH-Schlüssel kann nicht importiert werden: %s"
 
 #: src/remmina_ssh.c:256
 msgid "SSH passphrase is empty, it should not."
-msgstr ""
+msgstr "Die SSH Passphrase darf nicht leer sein."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:296
@@ -1192,7 +1192,6 @@ msgid "Could not create PTY device."
 msgstr "Kann das PTY‐Gerät nicht öffnen."
 
 #: src/remmina_file_editor.c:74
-#, fuzzy
 msgid ""
 "<tt><big>Supported formats\n"
 "• server\n"
@@ -1200,12 +1199,11 @@ msgid ""
 "• [server]:port</big></tt>"
 msgstr ""
 "<tt><big>Unterstützte Formate\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port</big></tt>"
+"• server\n"
+"• server:port\n"
+"• [server]:port</big></tt>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1220,19 +1218,18 @@ msgid ""
 "</big></tt>"
 msgstr ""
 "<tt><big>* Kommando in PATH Argumenten %h\n"
-"* /pfad/zu/kommando -optionen %h %u\n"
-"* %h wird durch den Servernamen ersetzt\n"
-"* %t wird durch den SSH Servernamen ersetzt\n"
-"* %u wird durch den Benutzernamen ersetzt\n"
-"* %U wird durch den SSH Benutzernamen ersetzt\n"
-"* %p wird durch den Remmina Profilnamen ersetzt\n"
-"* %g wird durch den Remmina Profil‐Gruppennamen ersetzt\n"
+"• /pfad/zu/kommando -optionen %h %u\n"
+"• %h wird durch den Servernamen ersetzt\n"
+"• %t wird durch den SSH Servernamen ersetzt\n"
+"• %u wird durch den Benutzernamen ersetzt\n"
+"• %U wird durch den SSH Benutzernamen ersetzt\n"
+"• %p wird durch den Remmina Profilnamen ersetzt\n"
+"• %g wird durch den Remmina Profil‐Gruppennamen ersetzt\n"
 "Starten Sie nicht im Hintergrund, wenn Sie das Kommando vor der Verbindung "
 "starten wollen.\n"
 "</big></tt>"
 
 #: src/remmina_file_editor.c:94
-#, fuzzy
 msgid ""
 "<tt><big>Supported formats\n"
 "• :port\n"
@@ -1242,11 +1239,11 @@ msgid ""
 "• username@server:port (SSH protocol only)</big></tt>"
 msgstr ""
 "<tt><big>Unterstützte Formate\n"
-"* :port\n"
-"* server\n"
-"* server:port\n"
-"* [server]:port\n"
-"* benutzername@server:port (nur SSH Prtokoll)</big></tt>"
+"• :port\n"
+"• server\n"
+"• server:port\n"
+"• [server]:port\n"
+"• benutzername@server:port (nur SSH Prtokoll)</big></tt>"
 
 #: src/remmina_file_editor.c:158
 msgid "Choose a Remote Desktop Server"
