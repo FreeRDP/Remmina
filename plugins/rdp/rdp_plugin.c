@@ -71,6 +71,10 @@
 #include <gdk/gdkx.h>
 #endif
 
+#if defined(__FreeBSD__)
+#include <pthread_np.h>
+#endif
+
 #define REMMINA_RDP_FEATURE_TOOL_REFRESH         1
 #define REMMINA_RDP_FEATURE_SCALE                2
 #define REMMINA_RDP_FEATURE_UNFOCUS              3
@@ -1749,7 +1753,11 @@ static gboolean remmina_rdp_open_connection(RemminaProtocolWidget *gp)
 		p++;
 	}
 	thname[nthname] = 0;
+#if defined(__linux__)
 	pthread_setname_np(rfi->remmina_plugin_thread, thname);
+#elif defined(__FreeBSD__)
+	pthread_set_name_np(rfi->remmina_plugin_thread, thname);
+#endif
 
 	return TRUE;
 }
