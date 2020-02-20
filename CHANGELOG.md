@@ -1,3 +1,23 @@
+## 1.4.0
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.10...1.4.0)
+
+* Rdp clipboard fixes [!2007](https://gitlab.com/Remmina/Remmina/merge_requests/2007) *@giox069*
+* Ssh authentication fixes [!2006](https://gitlab.com/Remmina/Remmina/merge_requests/2006) *@giox069*
+* Compiler warnings [!1992](https://gitlab.com/Remmina/Remmina/merge_requests/1992) *@antenore*
+* flatpak manifest update [!1993](https://gitlab.com/Remmina/Remmina/merge_requests/1993) *@dgcampea*
+* Spelling: System proxy settings [!1994](https://gitlab.com/Remmina/Remmina/merge_requests/1994) *@kingu*
+* Update ru.po [!1995](https://gitlab.com/Remmina/Remmina/merge_requests/1995) *@hopyres*
+* SSH tunnel refactoring [!1996](https://gitlab.com/Remmina/Remmina/merge_requests/1996) *@antenore*
+* Parameters passed individually, notation, "Press any key to continue…" [!1997](https://gitlab.com/Remmina/Remmina/merge_requests/1997) *@kingu*
+* Replace apt with apt-get [!1999](https://gitlab.com/Remmina/Remmina/merge_requests/1999) *@kingu*
+* Updated boolean expressions [!2000](https://gitlab.com/Remmina/Remmina/merge_requests/2000) *@kingu*
+* Add end of options escaping [!2002](https://gitlab.com/Remmina/Remmina/merge_requests/2002) *@kingu*
+* Remove double-quotes escaping early [!2001](https://gitlab.com/Remmina/Remmina/merge_requests/2001) *@kingu*
+* Ending code block whitespace line removed [!1998](https://gitlab.com/Remmina/Remmina/merge_requests/1998) *@kingu*
+* Safer removal of build directory [!2003](https://gitlab.com/Remmina/Remmina/merge_requests/2003) *@kingu*
+* Spelling: Could not access the RDP server x7 [!2004](https://gitlab.com/Remmina/Remmina/merge_requests/2004) *@kingu*
+* Removing double struct declaration. [!2005](https://gitlab.com/Remmina/Remmina/merge_requests/2005) *@antenore*
+
 ## v1.3.10
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.9...v1.3.10)
 
