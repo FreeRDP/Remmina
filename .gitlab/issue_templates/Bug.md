@@ -1,5 +1,5 @@
 **Consider to test the latest Remmina version before to submit a bug report**
-*At the moment the latest version available is v1.3.10*
+*At the moment the latest version available is v1.4.0*
 
 If this is not a bug, submit your question to [our reddit](https://reddit.com/r/Remmina) or our [general discussion mailing list](https://lists.remmina.org/listinfo/users).
 Sometimes you can find us on IRC, we are on freenode.net , in the channel #remmina.
