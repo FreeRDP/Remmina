@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-02-20 09:08+0000\n"
+"POT-Creation-Date: 2020-02-22 17:04+0000\n"
 "PO-Revision-Date: 2020-02-18 10:52+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -949,13 +949,14 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Güvenli Dosya Aktarımı"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:213
+#: src/remmina_ssh.c:213 src/remmina_ssh.c:406
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "SSH parolası ile kimlik doğrulanamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:234 src/remmina_ssh.c:261 src/remmina_ssh.c:270
+#: src/remmina_ssh.c:416 src/remmina_ssh.c:429
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "Genel SSH anahtarıyla kimlik doğrulanamadı. %s"
@@ -975,54 +976,54 @@ msgid "SSH passphrase is empty, it should not."
 msgstr "SSH parolası boş olmamalıdır."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:296
+#: src/remmina_ssh.c:289
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "Genel SSH anahtarıyla otomatik olarak kimlik doğrulanamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:313
+#: src/remmina_ssh.c:306
 #, c-format
 msgid "Could not authenticate with public SSH key using SSH agent. %s"
 msgstr "SSH agent kullanılarak genel SSH anahtarıyla kimlik doğrulanamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:333
+#: src/remmina_ssh.c:326
 #, c-format
 msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
 msgstr "SSH Kerberos/GSSAPI ile kimlik doğrulanamadı. %s"
 
-#: src/remmina_ssh.c:363
+#: src/remmina_ssh.c:356
 msgid "The public SSH key changed!"
 msgstr "Genel SSH anahtarı değişti!"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:494
+#: src/remmina_ssh.c:508
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Sunucunun genel SSH anahtarı alınamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:501
+#: src/remmina_ssh.c:515
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Genel SSH anahtarı alınamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:509
+#: src/remmina_ssh.c:523
 #, c-format
 msgid "Could not fetch checksum for public SSH key. %s"
 msgstr "Genel SSH anahtarı için sağlama toplamı alınamadı. %s"
 
-#: src/remmina_ssh.c:522
+#: src/remmina_ssh.c:536
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "Bilinmeyen sunucu. Genel anahtar parmak izi:"
 
-#: src/remmina_ssh.c:524 src/remmina_ssh.c:530
+#: src/remmina_ssh.c:538 src/remmina_ssh.c:544
 msgid "Do you trust the new public key?"
 msgstr "Yeni genel anahtara güveniyor musunuz?"
 
-#: src/remmina_ssh.c:527
+#: src/remmina_ssh.c:541
 msgid ""
 "Warning: The server has changed its public key. This means either you are "
 "under attack,\n"
@@ -1033,150 +1034,150 @@ msgstr ""
 "yönetici anahtarı değiştirdi. Yeni genel anahtar parmak izi:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:552
+#: src/remmina_ssh.c:566
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Bilinen SSH ana bilgisayar listesi kontrol edilemedi: %s"
 
-#: src/remmina_ssh.c:561
+#: src/remmina_ssh.c:575
 msgid "SSH password"
 msgstr "SSH parolası"
 
-#: src/remmina_ssh.c:568 src/remmina_ssh.c:606
+#: src/remmina_ssh.c:582 src/remmina_ssh.c:620
 msgid "SSH private key passphrase"
 msgstr "SSH özel anahtar parolası"
 
-#: src/remmina_ssh.c:573
+#: src/remmina_ssh.c:587
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
-#: src/remmina_ssh.c:603 src/remmina_ssh.c:626
+#: src/remmina_ssh.c:617 src/remmina_ssh.c:640
 msgid "SSH tunnel credentials"
 msgstr "SSH tüneli kimlik bilgileri"
 
-#: src/remmina_ssh.c:603 src/remmina_ssh.c:626 plugins/nx/nx_plugin.c:202
+#: src/remmina_ssh.c:617 src/remmina_ssh.c:640 plugins/nx/nx_plugin.c:202
 msgid "SSH credentials"
 msgstr "SSH kimlik bilgileri"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:759
+#: src/remmina_ssh.c:773
 #, c-format
 msgid "Could not start SSH session. %s"
 msgstr "SSH oturumu başlatılamadı: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1122 src/remmina_ssh.c:1184
+#: src/remmina_ssh.c:1136 src/remmina_ssh.c:1198
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "Kanal oluşturulamadı: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1133
+#: src/remmina_ssh.c:1147
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "SSH tüneline bağlanılamadı: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1199 src/remmina_ssh.c:1797
+#: src/remmina_ssh.c:1213 src/remmina_ssh.c:1811
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Kanal açılamadı: %s"
 
-#: src/remmina_ssh.c:1205
+#: src/remmina_ssh.c:1219
 #, c-format
 msgid "Could not run %s on SSH server."
 msgstr "SSH sunucusunda %s çalıştırılamadı."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1243 src/remmina_ssh.c:1264 src/remmina_ssh.c:1273
+#: src/remmina_ssh.c:1257 src/remmina_ssh.c:1278 src/remmina_ssh.c:1287
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Port yönlendirme isteği yapılamadı: %s"
 
-#: src/remmina_ssh.c:1308
+#: src/remmina_ssh.c:1322
 msgid "The server did not respond."
 msgstr "Sunucu yanıt vermedi."
 
-#: src/remmina_ssh.c:1351
+#: src/remmina_ssh.c:1365
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Yerel bağlantı noktasına bağlanılamıyor %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1401
+#: src/remmina_ssh.c:1415
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "SSH kanalına yazılamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1408
+#: src/remmina_ssh.c:1422
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Tünel dinleme soketinden okunamadı: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1428
+#: src/remmina_ssh.c:1442
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "SSH kanalı sorgulanamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1435
+#: src/remmina_ssh.c:1449
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "SSH kanalı bloklanmayan bir şekilde okunamadı. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1454
+#: src/remmina_ssh.c:1468
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Tünel dinleme soketine veri gönderilemedi: %s"
 
-#: src/remmina_ssh.c:1533
+#: src/remmina_ssh.c:1547
 msgid "Assign a destination port."
 msgstr "Bir hedef port atayın."
 
-#: src/remmina_ssh.c:1540
+#: src/remmina_ssh.c:1554
 msgid "Could not create socket."
 msgstr "Soket oluşturulamadı."
 
-#: src/remmina_ssh.c:1550
+#: src/remmina_ssh.c:1564
 msgid "Could not bind server socket to local port."
 msgstr "Sunucu soketi yerel porta bağlanamadı."
 
-#: src/remmina_ssh.c:1556
+#: src/remmina_ssh.c:1570
 msgid "Could not listen to local port."
 msgstr "Yerel port dinlenemedi."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:1566 src/remmina_ssh.c:1583 src/remmina_ssh.c:1618
+#: src/remmina_ssh.c:1580 src/remmina_ssh.c:1597 src/remmina_ssh.c:1632
 msgid "Could not start pthread."
 msgstr "Pthread başlatılamadı."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:1600
+#: src/remmina_ssh.c:1614
 msgid "Failed to initialize pthread."
 msgstr "Pthread başlatılamadı."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1707
+#: src/remmina_ssh.c:1721
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "SFTP oturumu oluşturulamadı: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1712
+#: src/remmina_ssh.c:1726
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "SSH oturumu başlatılamadı: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1827
+#: src/remmina_ssh.c:1841
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "Kabuk istenemedi: %s"
 
-#: src/remmina_ssh.c:1920
+#: src/remmina_ssh.c:1934
 msgid "Could not create PTY device."
 msgstr "PTY cihazı oluşturulamadı."
 

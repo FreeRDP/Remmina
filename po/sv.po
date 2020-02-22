@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-02-20 09:08+0000\n"
+"POT-Creation-Date: 2020-02-22 17:04+0000\n"
 "PO-Revision-Date: 2020-02-21 12:56+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -1000,14 +1000,15 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Secure File Transfer"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:213
+#: src/remmina_ssh.c:213 src/remmina_ssh.c:406
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "Misslyckades starta SSH-session: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:234 src/remmina_ssh.c:261 src/remmina_ssh.c:270
-#, c-format, fuzzy
+#: src/remmina_ssh.c:416 src/remmina_ssh.c:429
+#, fuzzy, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "Autentisering med offentlig SSH-nyckel misslyckades. %s"
 
@@ -1028,13 +1029,13 @@ msgid "SSH passphrase is empty, it should not."
 msgstr "SSH-løsenordet är tomt, men det ska det inte vara."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:296
+#: src/remmina_ssh.c:289
 #, fuzzy, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "Kunde inte identitetsbekräfta med offentlig SSH-nyckel. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:313
+#: src/remmina_ssh.c:306
 #, c-format
 msgid "Could not authenticate with public SSH key using SSH agent. %s"
 msgstr ""
@@ -1042,43 +1043,43 @@ msgstr ""
 "agent. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:333
+#: src/remmina_ssh.c:326
 #, fuzzy, c-format
 msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
 msgstr "Kunde inte identitetsbekfäfta med Kerberos/GSSAPI. %s"
 
-#: src/remmina_ssh.c:363
+#: src/remmina_ssh.c:356
 #, fuzzy
 msgid "The public SSH key changed!"
 msgstr "Den offentliga SSH-nyckelen ändrades!"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:494
+#: src/remmina_ssh.c:508
 #, fuzzy, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "Kunde inte skaffa serverns offentliga SSH-nyckel. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:501
+#: src/remmina_ssh.c:515
 #, fuzzy, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Misslyckades att starta SSH-session: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:509
+#: src/remmina_ssh.c:523
 #, fuzzy, c-format
 msgid "Could not fetch checksum for public SSH key. %s"
 msgstr "Misslyckades att starta SSH-session: %s"
 
-#: src/remmina_ssh.c:522
+#: src/remmina_ssh.c:536
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "Servern är okänd. Fingeravtrycket för den publika nyckeln är:"
 
-#: src/remmina_ssh.c:524 src/remmina_ssh.c:530
+#: src/remmina_ssh.c:538 src/remmina_ssh.c:544
 msgid "Do you trust the new public key?"
 msgstr "Litar du på den nya publika nyckeln?"
 
-#: src/remmina_ssh.c:527
+#: src/remmina_ssh.c:541
 #, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means either you are "
@@ -1091,153 +1092,153 @@ msgstr ""
 "nyckelfingeravtrycket  är:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:552
+#: src/remmina_ssh.c:566
 #, fuzzy, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Misslyckades att starta SSH-session: %s"
 
-#: src/remmina_ssh.c:561
+#: src/remmina_ssh.c:575
 msgid "SSH password"
 msgstr "Lösenord för SSH"
 
-#: src/remmina_ssh.c:568 src/remmina_ssh.c:606
+#: src/remmina_ssh.c:582 src/remmina_ssh.c:620
 msgid "SSH private key passphrase"
 msgstr "Lösenfras för privat SSH-nyckel"
 
-#: src/remmina_ssh.c:573
+#: src/remmina_ssh.c:587
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
-#: src/remmina_ssh.c:603 src/remmina_ssh.c:626
+#: src/remmina_ssh.c:617 src/remmina_ssh.c:640
 #, fuzzy
 msgid "SSH tunnel credentials"
 msgstr "SSH-identitetsdetaljer"
 
-#: src/remmina_ssh.c:603 src/remmina_ssh.c:626 plugins/nx/nx_plugin.c:202
+#: src/remmina_ssh.c:617 src/remmina_ssh.c:640 plugins/nx/nx_plugin.c:202
 #, fuzzy
 msgid "SSH credentials"
 msgstr "SSH-identitetsdetaljer"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:759
+#: src/remmina_ssh.c:773
 #, fuzzy, c-format
 msgid "Could not start SSH session. %s"
 msgstr "Misslyckades att starta SSH-session: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1122 src/remmina_ssh.c:1184
+#: src/remmina_ssh.c:1136 src/remmina_ssh.c:1198
 #, fuzzy, c-format
 msgid "Could not create channel. %s"
 msgstr "Misslyckades att skapa sftp-session: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1133
+#: src/remmina_ssh.c:1147
 #, fuzzy, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "Misslyckades att starta SSH-session: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1199 src/remmina_ssh.c:1797
+#: src/remmina_ssh.c:1213 src/remmina_ssh.c:1811
 #, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "Kunde inte öppna kanal: %s"
 
-#: src/remmina_ssh.c:1205
+#: src/remmina_ssh.c:1219
 #, fuzzy, c-format
 msgid "Could not run %s on SSH server."
 msgstr "Kunde inte utföra kommando: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1243 src/remmina_ssh.c:1264 src/remmina_ssh.c:1273
+#: src/remmina_ssh.c:1257 src/remmina_ssh.c:1278 src/remmina_ssh.c:1287
 #, fuzzy, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Misslyckades att starta SSH-session: %s"
 
-#: src/remmina_ssh.c:1308
+#: src/remmina_ssh.c:1322
 msgid "The server did not respond."
 msgstr "Servern svarade inte."
 
-#: src/remmina_ssh.c:1351
+#: src/remmina_ssh.c:1365
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "Kan inte ansluta till lokal port %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1401
+#: src/remmina_ssh.c:1415
 #, fuzzy, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "Misslyckades att skapa sftp-session: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1408
+#: src/remmina_ssh.c:1422
 #, fuzzy, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "Misslyckades att skapa sftp-session: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1428
+#: src/remmina_ssh.c:1442
 #, fuzzy, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Kunde inte öppna kanal: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1435
+#: src/remmina_ssh.c:1449
 #, fuzzy, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "Kunde inte köra ssh_channel_read_nonblocking(): %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1454
+#: src/remmina_ssh.c:1468
 #, fuzzy, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "Misslyckades att skapa sftp-session: %s"
 
-#: src/remmina_ssh.c:1533
+#: src/remmina_ssh.c:1547
 #, fuzzy
 msgid "Assign a destination port."
 msgstr "Tilldela en målport."
 
-#: src/remmina_ssh.c:1540
+#: src/remmina_ssh.c:1554
 msgid "Could not create socket."
 msgstr "Kunde inte skapa socket."
 
-#: src/remmina_ssh.c:1550
+#: src/remmina_ssh.c:1564
 msgid "Could not bind server socket to local port."
 msgstr "Kunde inte binda tjänersocket til lokal port."
 
-#: src/remmina_ssh.c:1556
+#: src/remmina_ssh.c:1570
 msgid "Could not listen to local port."
 msgstr "Kunde inte lytta till lokal port."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:1566 src/remmina_ssh.c:1583 src/remmina_ssh.c:1618
+#: src/remmina_ssh.c:1580 src/remmina_ssh.c:1597 src/remmina_ssh.c:1632
 msgid "Could not start pthread."
 msgstr "Kunde inte starta pthread."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:1600
+#: src/remmina_ssh.c:1614
 msgid "Failed to initialize pthread."
 msgstr "Det gick inte att initialisera pthread."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1707
+#: src/remmina_ssh.c:1721
 #, fuzzy, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "Misslyckades att skapa sftp-session: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1712
+#: src/remmina_ssh.c:1726
 #, fuzzy, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "Misslyckades att starta SSH-session: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1827
+#: src/remmina_ssh.c:1841
 #, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "Kunde inte begära shell: %s"
 
-#: src/remmina_ssh.c:1920
+#: src/remmina_ssh.c:1934
 msgid "Could not create PTY device."
 msgstr "Kunde inte skapa PTY-enhet."
 
@@ -1911,7 +1912,7 @@ msgid ""
 msgstr "Fann inte adress til RDP-servern %s."
 
 #: plugins/rdp/rdp_plugin.c:1532
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Change user password before connecting."
@@ -1930,7 +1931,7 @@ msgid "Could not find the address for the RDP server \"%s\"."
 msgstr "Fann inte adress til RDP-servern %s."
 
 #: plugins/rdp/rdp_plugin.c:1544
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Could not connect to the RDP server \"%s\" via TLS. Check that client and "
 "server support a common TLS version."
@@ -1954,7 +1955,7 @@ msgid "Could not start libfreerdp-gdi."
 msgstr "Kunde inte starta pthread."
 
 #: plugins/rdp/rdp_plugin.c:1561
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "You requested a H.264 GFX mode for the server \"%s\", but your libfreerdp "
 "does not support H.264. Please use a non-AVC colour depth setting."
@@ -1968,7 +1969,7 @@ msgid "The \"%s\" server refused the connection."
 msgstr "Tjänaren svarade inte."
 
 #: plugins/rdp/rdp_plugin.c:1573
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid ""
 "The Remote Desktop Gateway \"%s\" denied the user \"%s\\%s\" access due to "
 "policy."
@@ -2579,10 +2580,10 @@ msgid ""
 "</span>\n"
 msgstr ""
 "<span>\n"
-"<b> Du är bra för att använda gemenslig fri programvara, <a href=\""
-"https://remmina.org/donations/\" title=\"Häftiga Remmina-donationer\">slump "
-"till med en donation </a>, för att göra oss lyckliga, och ytterligare "
-"förbättra programmet. </b>\n"
+"<b> Du är bra för att använda gemenslig fri programvara, <a href=\"https://"
+"remmina.org/donations/\" title=\"Häftiga Remmina-donationer\">slump till med "
+"en donation </a>, för att göra oss lyckliga, och ytterligare förbättra "
+"programmet. </b>\n"
 "</ Span>\n"
 
 #: data/ui/remmina_news.glade:212
