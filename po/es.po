@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-02-22 17:04+0000\n"
+"POT-Creation-Date: 2020-02-22 22:23+0000\n"
 "PO-Revision-Date: 2020-02-18 10:52+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -966,14 +966,14 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - Transferencia segura de archivos"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:213 src/remmina_ssh.c:406
+#: src/remmina_ssh.c:213 src/remmina_ssh.c:413
 #, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "No se pudo autentificar con la contraseña de SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:234 src/remmina_ssh.c:261 src/remmina_ssh.c:270
-#: src/remmina_ssh.c:416 src/remmina_ssh.c:429
+#: src/remmina_ssh.c:234 src/remmina_ssh.c:260 src/remmina_ssh.c:269
+#: src/remmina_ssh.c:423 src/remmina_ssh.c:436
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr "No se pudo autentificar con la clave pública SSH. %s"
@@ -988,61 +988,61 @@ msgstr "Aún no se ha definido un archivo de clave SSH."
 msgid "Public SSH key cannot be imported. %s"
 msgstr "No se puede importar la clave pública SSH. %s"
 
-#: src/remmina_ssh.c:256
+#: src/remmina_ssh.c:255
 msgid "SSH passphrase is empty, it should not."
 msgstr "La frase de contraseña de SSH está vacía; no debería ser así."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:289
+#: src/remmina_ssh.c:292
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr "No pudo autenticarse automáticamente con la clave pública SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:306
+#: src/remmina_ssh.c:313
 #, c-format
 msgid "Could not authenticate with public SSH key using SSH agent. %s"
 msgstr ""
 "No pudo autenticarse con la clave pública SSH mediante el agente de SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:326
+#: src/remmina_ssh.c:333
 #, c-format
 msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
 msgstr "No pudo autenticarse con la GSSAPI SSH de Kerberos. %s"
 
-#: src/remmina_ssh.c:356
+#: src/remmina_ssh.c:363
 msgid "The public SSH key changed!"
 msgstr "Ha cambiado la clave pública SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:508
+#: src/remmina_ssh.c:515
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr "No se pudo recuperar la clave pública SSH del servidor. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:515
+#: src/remmina_ssh.c:522
 #, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "Falló la conexión al túnel SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:523
+#: src/remmina_ssh.c:530
 #, c-format
 msgid "Could not fetch checksum for public SSH key. %s"
 msgstr ""
 "No se pudo recuperar la suma de comprobación de la clave pública SSH. %s"
 
-#: src/remmina_ssh.c:536
+#: src/remmina_ssh.c:543
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "El servidor es desconocido. La huella digital de la clave es:"
 
-#: src/remmina_ssh.c:538 src/remmina_ssh.c:544
+#: src/remmina_ssh.c:545 src/remmina_ssh.c:551
 msgid "Do you trust the new public key?"
 msgstr "¿Confía en la clave pública nueva?"
 
-#: src/remmina_ssh.c:541
+#: src/remmina_ssh.c:548
 msgid ""
 "Warning: The server has changed its public key. This means either you are "
 "under attack,\n"
@@ -1054,150 +1054,150 @@ msgstr ""
 "pública es:"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:566
+#: src/remmina_ssh.c:573
 #, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "No se ha podido comprobar la lista de hosts conocidos SSH. %s"
 
-#: src/remmina_ssh.c:575
+#: src/remmina_ssh.c:582
 msgid "SSH password"
 msgstr "Contraseña SSH"
 
-#: src/remmina_ssh.c:582 src/remmina_ssh.c:620
+#: src/remmina_ssh.c:589 src/remmina_ssh.c:627
 msgid "SSH private key passphrase"
 msgstr "Frase de contraseña de clave privada SSH"
 
-#: src/remmina_ssh.c:587
+#: src/remmina_ssh.c:594
 msgid "SSH Kerberos/GSSAPI"
 msgstr "Kerberos/GSSAPI SSH"
 
-#: src/remmina_ssh.c:617 src/remmina_ssh.c:640
+#: src/remmina_ssh.c:624 src/remmina_ssh.c:647
 msgid "SSH tunnel credentials"
 msgstr "Credenciales de túnel SSH"
 
-#: src/remmina_ssh.c:617 src/remmina_ssh.c:640 plugins/nx/nx_plugin.c:202
+#: src/remmina_ssh.c:624 src/remmina_ssh.c:647 plugins/nx/nx_plugin.c:202
 msgid "SSH credentials"
 msgstr "Credenciales de SSH"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:773
+#: src/remmina_ssh.c:780
 #, c-format
 msgid "Could not start SSH session. %s"
 msgstr "No se ha podido iniciar la sesión SSH: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1136 src/remmina_ssh.c:1198
+#: src/remmina_ssh.c:1143 src/remmina_ssh.c:1205
 #, c-format
 msgid "Could not create channel. %s"
 msgstr "Falló la creación del canal: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1147
+#: src/remmina_ssh.c:1154
 #, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "La conexión al túnel SSH ha fallado: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1213 src/remmina_ssh.c:1811
+#: src/remmina_ssh.c:1220 src/remmina_ssh.c:1818
 #, c-format
 msgid "Could not open channel. %s"
 msgstr "Falló la apertura del canal: %s"
 
-#: src/remmina_ssh.c:1219
+#: src/remmina_ssh.c:1226
 #, c-format
 msgid "Could not run %s on SSH server."
 msgstr "No se pudo ejecutar %s en el servidor SSH."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1257 src/remmina_ssh.c:1278 src/remmina_ssh.c:1287
+#: src/remmina_ssh.c:1264 src/remmina_ssh.c:1285 src/remmina_ssh.c:1294
 #, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "Falló la solicitud de redirección de puertos: %s"
 
-#: src/remmina_ssh.c:1322
+#: src/remmina_ssh.c:1329
 msgid "The server did not respond."
 msgstr "El servidor no respondió."
 
-#: src/remmina_ssh.c:1365
+#: src/remmina_ssh.c:1372
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "No se puede conectar con el puerto local %i."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1415
+#: src/remmina_ssh.c:1422
 #, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "No se ha podido escribir en el canal SSH.%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1422
+#: src/remmina_ssh.c:1429
 #, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "No se ha podido leer el socket del tunel.%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1442
+#: src/remmina_ssh.c:1449
 #, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "Falló la apertura del canal SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1449
+#: src/remmina_ssh.c:1456
 #, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "No se ha podido leer del canal SSH de manero no bloqueante.%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1468
+#: src/remmina_ssh.c:1475
 #, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "No se pudo enviar datos al socket del tunel.%s"
 
-#: src/remmina_ssh.c:1547
+#: src/remmina_ssh.c:1554
 msgid "Assign a destination port."
 msgstr "Asigne un puerto de destino."
 
-#: src/remmina_ssh.c:1554
+#: src/remmina_ssh.c:1561
 msgid "Could not create socket."
 msgstr "No se pudo crear el socket."
 
-#: src/remmina_ssh.c:1564
+#: src/remmina_ssh.c:1571
 msgid "Could not bind server socket to local port."
 msgstr "No se pudo conectar el socket con un puerto local."
 
-#: src/remmina_ssh.c:1570
+#: src/remmina_ssh.c:1577
 msgid "Could not listen to local port."
 msgstr "No es posible escuchar en el puerto local."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:1580 src/remmina_ssh.c:1597 src/remmina_ssh.c:1632
+#: src/remmina_ssh.c:1587 src/remmina_ssh.c:1604 src/remmina_ssh.c:1639
 msgid "Could not start pthread."
 msgstr "No se pudo iniciar pthread."
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:1614
+#: src/remmina_ssh.c:1621
 msgid "Failed to initialize pthread."
 msgstr "Falló al inicializar pthread."
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1721
+#: src/remmina_ssh.c:1728
 #, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "No se pudo crear la sesión SFTP.%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1726
+#: src/remmina_ssh.c:1733
 #, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "No se pudo iniciar la sesión SFTP: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1841
+#: src/remmina_ssh.c:1848
 #, c-format
 msgid "Could not request shell. %s"
 msgstr "No se pudo solicitar un shell: %s"
 
-#: src/remmina_ssh.c:1934
+#: src/remmina_ssh.c:1941
 msgid "Could not create PTY device."
 msgstr "No se pudo crear el dispositivo pty."
 

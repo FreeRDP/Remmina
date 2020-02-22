@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-02-22 17:04+0000\n"
+"POT-Creation-Date: 2020-02-22 22:23+0000\n"
 "PO-Revision-Date: 2019-12-08 23:03+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -956,14 +956,14 @@ msgid "SFTP - Secure File Transfer"
 msgstr "SFTP - 安全檔案傳輸"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:213 src/remmina_ssh.c:406
+#: src/remmina_ssh.c:213 src/remmina_ssh.c:413
 #, fuzzy, c-format
 msgid "Could not authenticate with SSH password. %s"
 msgstr "未能啟動 SSH 作業階段：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:234 src/remmina_ssh.c:261 src/remmina_ssh.c:270
-#: src/remmina_ssh.c:416 src/remmina_ssh.c:429
+#: src/remmina_ssh.c:234 src/remmina_ssh.c:260 src/remmina_ssh.c:269
+#: src/remmina_ssh.c:423 src/remmina_ssh.c:436
 #, c-format
 msgid "Could not authenticate with public SSH key. %s"
 msgstr ""
@@ -978,60 +978,60 @@ msgstr "尚未設定 SSH 密鑰檔案。"
 msgid "Public SSH key cannot be imported. %s"
 msgstr "無法匯入 SSH 公鑰：%s"
 
-#: src/remmina_ssh.c:256
+#: src/remmina_ssh.c:255
 msgid "SSH passphrase is empty, it should not."
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:289
+#: src/remmina_ssh.c:292
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:306
+#: src/remmina_ssh.c:313
 #, c-format
 msgid "Could not authenticate with public SSH key using SSH agent. %s"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:326
+#: src/remmina_ssh.c:333
 #, c-format
 msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
 msgstr ""
 
-#: src/remmina_ssh.c:356
+#: src/remmina_ssh.c:363
 #, fuzzy
 msgid "The public SSH key changed!"
 msgstr "SSH 公鑰已變更！"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:508
+#: src/remmina_ssh.c:515
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
 msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:515
+#: src/remmina_ssh.c:522
 #, fuzzy, c-format
 msgid "Could not fetch public SSH key. %s"
 msgstr "無法連接 SSH 通道目的地：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:523
+#: src/remmina_ssh.c:530
 #, fuzzy, c-format
 msgid "Could not fetch checksum for public SSH key. %s"
 msgstr "未能啟動 SSH 作業階段：%s"
 
-#: src/remmina_ssh.c:536
+#: src/remmina_ssh.c:543
 msgid "The server is unknown. The public key fingerprint is:"
 msgstr "該伺服器為未知。公鑰指紋為："
 
-#: src/remmina_ssh.c:538 src/remmina_ssh.c:544
+#: src/remmina_ssh.c:545 src/remmina_ssh.c:551
 msgid "Do you trust the new public key?"
 msgstr "您信任新的公鑰嗎？"
 
-#: src/remmina_ssh.c:541
+#: src/remmina_ssh.c:548
 #, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means either you are "
@@ -1042,151 +1042,151 @@ msgstr ""
 "鑰指紋為："
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:566
+#: src/remmina_ssh.c:573
 #, fuzzy, c-format
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "未能啟動 SSH 作業階段：%s"
 
-#: src/remmina_ssh.c:575
+#: src/remmina_ssh.c:582
 msgid "SSH password"
 msgstr "SSH 密碼"
 
-#: src/remmina_ssh.c:582 src/remmina_ssh.c:620
+#: src/remmina_ssh.c:589 src/remmina_ssh.c:627
 msgid "SSH private key passphrase"
 msgstr "SSH 私鑰密碼"
 
-#: src/remmina_ssh.c:587
+#: src/remmina_ssh.c:594
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
 
-#: src/remmina_ssh.c:617 src/remmina_ssh.c:640
+#: src/remmina_ssh.c:624 src/remmina_ssh.c:647
 #, fuzzy
 msgid "SSH tunnel credentials"
 msgstr "SSH 身份檔案"
 
-#: src/remmina_ssh.c:617 src/remmina_ssh.c:640 plugins/nx/nx_plugin.c:202
+#: src/remmina_ssh.c:624 src/remmina_ssh.c:647 plugins/nx/nx_plugin.c:202
 msgid "SSH credentials"
 msgstr "SSH 身份檔案"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:773
+#: src/remmina_ssh.c:780
 #, fuzzy, c-format
 msgid "Could not start SSH session. %s"
 msgstr "未能啟動 SSH 作業階段：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1136 src/remmina_ssh.c:1198
+#: src/remmina_ssh.c:1143 src/remmina_ssh.c:1205
 #, fuzzy, c-format
 msgid "Could not create channel. %s"
 msgstr "無法建立通道：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1147
+#: src/remmina_ssh.c:1154
 #, fuzzy, c-format
 msgid "Could not connect to SSH tunnel. %s"
 msgstr "無法連接 SSH 通道目的地：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1213 src/remmina_ssh.c:1811
+#: src/remmina_ssh.c:1220 src/remmina_ssh.c:1818
 #, fuzzy, c-format
 msgid "Could not open channel. %s"
 msgstr "無法開啟通道：%s"
 
-#: src/remmina_ssh.c:1219
+#: src/remmina_ssh.c:1226
 #, fuzzy, c-format
 msgid "Could not run %s on SSH server."
 msgstr "未能在 SSH 伺服器執行 %s：%%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1257 src/remmina_ssh.c:1278 src/remmina_ssh.c:1287
+#: src/remmina_ssh.c:1264 src/remmina_ssh.c:1285 src/remmina_ssh.c:1294
 #, fuzzy, c-format
 msgid "Could not request port forwarding. %s"
 msgstr "無法請求連接埠轉送：%s"
 
-#: src/remmina_ssh.c:1322
+#: src/remmina_ssh.c:1329
 msgid "The server did not respond."
 msgstr "伺服器無回應。"
 
-#: src/remmina_ssh.c:1365
+#: src/remmina_ssh.c:1372
 #, c-format
 msgid "Cannot connect to local port %i."
 msgstr "無法連接至本地連接埠 %i。"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1415
+#: src/remmina_ssh.c:1422
 #, fuzzy, c-format
 msgid "Could not write to SSH channel. %s"
 msgstr "無法建立通道：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1422
+#: src/remmina_ssh.c:1429
 #, fuzzy, c-format
 msgid "Could not read from tunnel listening socket. %s"
 msgstr "無法讀取通道監聽網路插座：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1442
+#: src/remmina_ssh.c:1449
 #, fuzzy, c-format
 msgid "Could not poll SSH channel. %s"
 msgstr "無法開啟通道：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1449
+#: src/remmina_ssh.c:1456
 #, fuzzy, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
 msgstr "無法執行 ssh_channel_read_nonblocking()：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1468
+#: src/remmina_ssh.c:1475
 #, fuzzy, c-format
 msgid "Could not send data to tunnel listening socket. %s"
 msgstr "無法傳送資料給通道監聽網路插座：%s"
 
-#: src/remmina_ssh.c:1547
+#: src/remmina_ssh.c:1554
 msgid "Assign a destination port."
 msgstr "指配目的地連接埠。"
 
-#: src/remmina_ssh.c:1554
+#: src/remmina_ssh.c:1561
 msgid "Could not create socket."
 msgstr "無法建立網路插座。"
 
-#: src/remmina_ssh.c:1564
+#: src/remmina_ssh.c:1571
 msgid "Could not bind server socket to local port."
 msgstr "無法將伺服器網路插座連結至本地連接埠 %i。"
 
-#: src/remmina_ssh.c:1570
+#: src/remmina_ssh.c:1577
 msgid "Could not listen to local port."
 msgstr "無法監聽本機連接埠。"
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:1580 src/remmina_ssh.c:1597 src/remmina_ssh.c:1632
+#: src/remmina_ssh.c:1587 src/remmina_ssh.c:1604 src/remmina_ssh.c:1639
 msgid "Could not start pthread."
 msgstr "無法啟動 pthread。"
 
 #. TRANSLATORS: Do not translate pthread
-#: src/remmina_ssh.c:1614
+#: src/remmina_ssh.c:1621
 msgid "Failed to initialize pthread."
 msgstr "無法初始化 pthread。"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1721
+#: src/remmina_ssh.c:1728
 #, fuzzy, c-format
 msgid "Could not create SFTP session. %s"
 msgstr "無法建立 SFTP 作業階段：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1726
+#: src/remmina_ssh.c:1733
 #, fuzzy, c-format
 msgid "Could not start SFTP session. %s"
 msgstr "未能啟動 SSH 作業階段：%s"
 
 #. TRANSLATORS: The placeholder %s is an error message
-#: src/remmina_ssh.c:1841
+#: src/remmina_ssh.c:1848
 #, fuzzy, c-format
 msgid "Could not request shell. %s"
 msgstr "無法請求 shell：%s"
 
-#: src/remmina_ssh.c:1934
+#: src/remmina_ssh.c:1941
 msgid "Could not create PTY device."
 msgstr "無法建立 PTY 裝置。"
 
