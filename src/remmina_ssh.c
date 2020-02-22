@@ -249,7 +249,6 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 		ssh_key_free(key);
 	}
 
-
 	if (ssh_pki_import_privkey_file(ssh->privkeyfile, (ssh->passphrase ? ssh->passphrase : ""),
 					NULL, NULL, &key) != SSH_OK) {
 		if (ssh->passphrase == NULL || ssh->passphrase[0] == '\0') {
@@ -268,6 +267,10 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(ssh, _("Could not authenticate with public SSH key. %s"));
+		if (ret == SSH_AUTH_DENIED) {
+			g_debug("[SSH] ssh_userauth_publickey_auto() failed because the server does not accept this key or this method for this user");
+			return REMMINA_SSH_AUTH_FATAL_ERROR;
+		}
 		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 	}
 
@@ -287,6 +290,10 @@ remmina_ssh_auth_auto_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, Remmina
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
 		remmina_ssh_set_error(ssh, _("Could not authenticate automatically with public SSH key. %s"));
+		if (ret == SSH_AUTH_DENIED) {
+			g_debug("[SSH] ssh_userauth_publickey_auto() failed because the server does not accept this key or this method for this user");
+			return REMMINA_SSH_AUTH_FATAL_ERROR;
+		}
 		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 	}
 
