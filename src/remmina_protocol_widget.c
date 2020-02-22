@@ -765,7 +765,6 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 	//const gchar *proto;
 	gchar *ssh_tunnel_host, *srv_host, *dest;
 	gint srv_port, ssh_tunnel_port;
-	gchar *msg;
 
 	g_debug ("SSH tunnel initialization…");
 	//proto = remmina_file_get_string(gp->priv->remmina_file, "protocol");
@@ -785,6 +784,7 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 		srv_port += default_port;
 
 #ifdef HAVE_LIBSSH
+	gchar *msg;
 	RemminaMessagePanel *mp;
 
 	if (!remmina_file_get_int(gp->priv->remmina_file, "ssh_tunnel_enabled", FALSE)) {
@@ -834,7 +834,7 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 
 #else
 
-	dest = g_strdup_printf("[%s]:%i", host, port);
+	dest = g_strdup_printf("[%s]:%i", srv_host, srv_port);
 	g_free(srv_host);
 	g_free(ssh_tunnel_host);
 	return dest;
