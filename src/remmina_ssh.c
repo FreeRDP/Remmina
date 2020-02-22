@@ -280,16 +280,9 @@ remmina_ssh_auth_auto_pubkey(RemminaSSH *ssh, RemminaProtocolWidget *gp, Remmina
 {
 	TRACE_CALL(__func__);
 
-	gboolean disablepasswordstoring;
-	gboolean save_password;
-	gchar *pwd;
 	gint ret;
 
-	if (!ssh->passphrase) {
-		g_debug("[SSH] passphrase is null in %s. It should not.", __func__);
-		return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
-	}
-	ret = ssh_userauth_publickey_auto(ssh->session, NULL, ssh->passphrase);
+	ret = ssh_userauth_publickey_auto(ssh->session, NULL, (ssh->passphrase ? ssh->passphrase : ""));
 
 	if (ret != SSH_AUTH_SUCCESS) {
 		// TRANSLATORS: The placeholder %s is an error message
@@ -384,7 +377,12 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 	 */
 	ssh_userauth_none(ssh->session, NULL);
 	method = ssh_userauth_list(ssh->session, NULL);
-	g_debug("[SSH] method: %d", method);
+	g_debug("[SSH] methods supported by server: %s%s%s%s",
+			(method & SSH_AUTH_METHOD_PASSWORD) ? "SSH_AUTH_METHOD_PASSWORD ": "",
+			(method & SSH_AUTH_METHOD_PUBLICKEY) ? "SSH_AUTH_METHOD_PUBLICKEY ": "",
+			(method & SSH_AUTH_METHOD_HOSTBASED) ? "SSH_AUTH_METHOD_HOSTBASED ": "",
+			(method & SSH_AUTH_METHOD_INTERACTIVE) ? "SSH_AUTH_METHOD_INTERACTIVE ": ""
+	);
 	switch (ssh->auth) {
 	case SSH_AUTH_PASSWORD:
 		g_debug("[SSH] ssh->auth: SSH_AUTH_PASSWORD (%d)", ssh->auth);
@@ -397,12 +395,16 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 			g_debug("SSH using remmina_ssh_auth_password");
 		}
 		if (!ssh->authenticated && (method & SSH_AUTH_METHOD_INTERACTIVE)) {
-			/* SSH server is requesting us to do interactive auth.
-			 * But we just send the saved password */
+			/* SSH server is requesting us to do interactive auth. */
 			rv = remmina_ssh_auth_interactive(ssh);
 			if (rv != REMMINA_SSH_AUTH_SUCCESS)
 				return rv;
 			g_debug("SSH using remmina_ssh_auth_interactive");
+		}
+		if (!ssh->authenticated) {
+			// The real error here should be: "The SSH server %s:%d does not support password or interactive authentication"
+			ssh->error = g_strdup_printf(_("Could not authenticate with SSH password. %s"), "");
+			break;
 		}
 		return REMMINA_SSH_AUTH_SUCCESS;
 
@@ -410,6 +412,9 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 		g_debug("[SSH] ssh->auth: SSH_AUTH_PUBLICKEY (%d)", ssh->auth);
 		if (method & SSH_AUTH_METHOD_PUBLICKEY)
 			return remmina_ssh_auth_pubkey(ssh);
+		// The real error here should be: "The SSH server %s:%d does not support public key authentication"
+		ssh->error = g_strdup_printf(_("Could not authenticate with public SSH key. %s"), "");
+		break;
 
 	case SSH_AUTH_AGENT:
 		g_debug("[SSH] ssh->auth: SSH_AUTH_AGENT (%d)", ssh->auth);
@@ -418,7 +423,11 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 	case SSH_AUTH_AUTO_PUBLICKEY:
 		g_debug("[SSH] ssh->auth: SSH_AUTH_AUTO_PUBLICKEY (%d)", ssh->auth);
 		/* ssh_agent or none */
-		return remmina_ssh_auth_auto_pubkey(ssh, gp, remminafile);
+		if (method & SSH_AUTH_METHOD_PUBLICKEY)
+			return remmina_ssh_auth_auto_pubkey(ssh, gp, remminafile);
+		// The real error here should be: "The SSH server %s:%d does not support public key authentication"
+		ssh->error = g_strdup_printf(_("Could not authenticate with public SSH key. %s"), "");
+		break;
 
 #if 0
 	/* Not yet supported by libssh */
@@ -432,11 +441,17 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 		g_debug("[SSH] ssh->auth: SSH_AUTH_GSSAPI (%d)", ssh->auth);
 		if (method & SSH_AUTH_METHOD_GSSAPI_MIC)
 			return remmina_ssh_auth_gssapi(ssh);
+		break;
 
 	default:
 		g_debug("[SSH] ssh->auth: UNKNOWN (%d)", ssh->auth);
 		return REMMINA_SSH_AUTH_FATAL_ERROR;
 	}
+
+	g_debug("[SSH] user auth method not supported at server side");
+
+	// We come here after a "break". ssh->error should be already set
+	return REMMINA_SSH_AUTH_FATAL_ERROR;
 }
 
 enum remmina_ssh_auth_result
@@ -447,7 +462,6 @@ remmina_ssh_auth_gui(RemminaSSH *ssh, RemminaProtocolWidget *gp, RemminaFile *re
 	gchar *pwdfkey;
 	gchar *message;
 	gchar *current_pwd;
-	gchar *username;
 	gint ret;
 	size_t len;
 	guchar *pubkey;
