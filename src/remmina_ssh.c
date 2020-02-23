@@ -846,23 +846,36 @@ remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile, gboolean i
 	ssh->tunnel_port = 0;
 	pthread_mutex_init(&ssh->ssh_mutex, NULL);
 
-	/* Parse the address and port */
-	server = remmina_file_get_string(remminafile, is_tunnel ? "ssh_tunnel_server" : "server");
 	username = remmina_file_get_string(remminafile, is_tunnel ? "ssh_tunnel_username" : "username");
 	privatekey = remmina_file_get_string(remminafile, is_tunnel ? "ssh_tunnel_privatekey" : "ssh_privatekey");
-	if (server) {
-		remmina_public_get_server_port(server, 22, &ssh->server, &ssh->port);
-		if (ssh->server[0] == '\0') {
-			g_free(ssh->server);
-			remmina_public_get_server_port(server, 0, &ssh->server, NULL);
+
+	/* The ssh->server and ssh->port values */
+	if (is_tunnel) {
+		server = remmina_file_get_string(remminafile, "ssh_tunnel_server");
+		if (server == NULL || server[0] == 0) {
+			// ssh_tunnel_server empty or invalid, we are opening a tunnel, it means that "Same server at port 22" has been selected
+			server = remmina_file_get_string(remminafile, "server");
+			if (server == NULL || server[0] == 0)
+				server = "localhost";
+			remmina_public_get_server_port(server, 22, &ssh->server, &ssh->port);
+			ssh->port = 22;
+		} else {
+			remmina_public_get_server_port(server, 22, &ssh->server, &ssh->port);
 		}
-	} else if (server == NULL) {
-		ssh->server = g_strdup("localhost");
-		ssh->port = 22;
 	} else {
-		remmina_public_get_server_port(server, 0, &ssh->server, NULL);
-		ssh->port = 22;
+		server = remmina_file_get_string(remminafile, "server");
+		if (server == NULL || server[0] == 0)
+			server = "localhost";
+		remmina_public_get_server_port(server, 22, &ssh->server, &ssh->port);
 	}
+
+	if (ssh->server[0] == '\0') {
+		g_free(ssh->server);
+		// ???
+		remmina_public_get_server_port(server, 0, &ssh->server, NULL);
+	}
+
+	g_debug("[SSH] %s initialized ssh struct from file with ssh->server = %s and ssh->port = %d", __func__, ssh->server, ssh->port);
 
 	ssh->user = g_strdup(username ? username : g_get_user_name());
 	ssh->password = NULL;
