@@ -815,6 +815,7 @@ gchar *remmina_protocol_widget_start_direct_tunnel(RemminaProtocolWidget *gp, gi
 	if (remmina_file_get_int(gp->priv->remmina_file, "ssh_tunnel_loopback", FALSE)) {
 		g_free(srv_host);
 		g_free(ssh_tunnel_host);
+		ssh_tunnel_host = NULL;
 		srv_host = g_strdup("127.0.0.1");
 	}
 
