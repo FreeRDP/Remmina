@@ -148,10 +148,12 @@ gchar* remmina_crypt_decrypt(const gchar *str)
 
 	buf = g_base64_decode(str, &buf_len);
 
+	/*
 	g_debug ("%s base64 encoded as %p with length %lu",
 			str,
 			&buf,
 			buf_len);
+	*/
 
 	err = gcry_cipher_decrypt(
 			hd,	    // gcry_cipher_hd_t
