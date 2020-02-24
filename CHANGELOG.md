@@ -1,3 +1,11 @@
+# Changelog
+
+## 1.4.1
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.0...1.4.1)
+
+* SSH fixes, should fix #2094 [!2009](https://gitlab.com/Remmina/Remmina/merge_requests/2009) *@giox069*
+* Update remmina_filezilla_sftp.sh [!2010](https://gitlab.com/Remmina/Remmina/merge_requests/2010) *@greenfoxua*
+
 ## 1.4.0
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.3.10...1.4.0)
 
