@@ -4,13 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # Mattias Münster <mattiasmun@gmail.com>, 2019.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020.
+# scrdcow <scrdcow@fripost.org>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-02-23 21:07+0000\n"
-"PO-Revision-Date: 2020-02-23 13:32+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2020-02-24 12:39+0000\n"
+"Last-Translator: scrdcow <scrdcow@fripost.org>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/remmina/remmina/"
 "sv/>\n"
 "Language: sv\n"
@@ -22,9 +23,8 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-04-10 15:03+0000\n"
 
 #: src/remmina_protocol_widget.c:248
-#, fuzzy
 msgid "Connect via SSH from a new terminal"
-msgstr "Koppla till via SSH frän en ny terminal"
+msgstr "Koppla upp via SSH från en ny terminal"
 
 #: src/remmina_protocol_widget.c:254
 #, fuzzy
@@ -32,9 +32,8 @@ msgid "Open SFTP transfer"
 msgstr "Öppna Secure File Transfer…"
 
 #: src/remmina_protocol_widget.c:282
-#, fuzzy
 msgid "Executing external commands…"
-msgstr "Körer externa kommandon…"
+msgstr "Exekverar externa kommandon…"
 
 #: src/remmina_protocol_widget.c:289
 #, fuzzy, c-format
@@ -52,20 +51,20 @@ msgid "Awaiting incoming SSH connection at port %i…"
 msgstr "Inväntar inkommande SSH-tunnel på port %i…"
 
 #: src/remmina_protocol_widget.c:912
-#, fuzzy, c-format
+#, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "Kommandot %s kunde inte hittas på SSH-servern"
+msgstr "Kommandot %s kunde inte hittas på SSH-servern."
 
 #: src/remmina_protocol_widget.c:916
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr "Kommandot %s misslyckades på SSH-servern (status = %i)."
+msgstr "Kommandot \"%s\" misslyckades på SSH-servern (status = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:924
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command. %s"
-msgstr "Kunde inte utföra kommando: %s"
+msgstr "Kommandot gick inte att köra. %s"
 
 #: src/remmina_protocol_widget.c:991
 #, c-format
@@ -111,19 +110,16 @@ msgid "The certificate changed! Details:"
 msgstr "Certifikatet ändrades! Detaljer:"
 
 #: src/remmina_protocol_widget.c:1449
-#, fuzzy
 msgid "Old fingerprint:"
-msgstr "Fingeravtryck:"
+msgstr "Gammalt fingeravtryck:"
 
 #: src/remmina_protocol_widget.c:1450
-#, fuzzy
 msgid "New fingerprint:"
-msgstr "Fingeravtryck:"
+msgstr "Nytt fingeravtryck:"
 
 #: src/remmina_protocol_widget.c:1451
-#, fuzzy
 msgid "Accept changed certificate?"
-msgstr "Godkänn certifikatet?"
+msgstr "Godkänn ändrat certifikat?"
 
 #: src/remmina_protocol_widget.c:1593
 #, c-format
@@ -160,9 +156,8 @@ msgid "Configure the available resolutions"
 msgstr "Konfigurera tillgängliga upplösningar"
 
 #: src/remmina_pref_dialog.c:132
-#, fuzzy
 msgid "Recent lists cleared."
-msgstr "Nyliga lister tömd."
+msgstr "Senaste listorna tömdes."
 
 #: src/remmina_pref_dialog.c:143 src/rcw.c:1827
 #: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
@@ -170,9 +165,8 @@ msgid "Keystrokes"
 msgstr "Tangenttryck"
 
 #: src/remmina_pref_dialog.c:143
-#, fuzzy
 msgid "Configure the keystrokes"
-msgstr "Sett upp tangenttrycken"
+msgstr "Ställ in knapptryckningar"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:444
@@ -186,9 +180,8 @@ msgid "Error: %s"
 msgstr "Fel: %s"
 
 #: src/remmina_ssh_plugin.c:466
-#, fuzzy
 msgid "Terminal content saved in"
-msgstr "Terminalinnehåll lagrades under"
+msgstr "Terminalinnehåll sparades i"
 
 #: src/remmina_ssh_plugin.c:520
 #, fuzzy
@@ -288,9 +281,8 @@ msgid "Startup program"
 msgstr "Uppstartsprogram"
 
 #: src/remmina_ssh_plugin.c:1047
-#, fuzzy
 msgid "Terminal color scheme"
-msgstr "Terminal-färgkostymering"
+msgstr "Terminal-färgtema"
 
 #: src/remmina_ssh_plugin.c:1048
 msgid "Character set"
@@ -302,9 +294,8 @@ msgid "SSH Proxy Command"
 msgstr "SSH-proxykommando"
 
 #: src/remmina_ssh_plugin.c:1050
-#, fuzzy
 msgid "KEX (Key Exchange) algorithms"
-msgstr "KEX (nyckelutvexlings)-algoritmer"
+msgstr ""
 
 #: src/remmina_ssh_plugin.c:1051
 #, fuzzy
@@ -1744,9 +1735,8 @@ msgid "Enable audio channel"
 msgstr "Aktivera ljudkanal"
 
 #: plugins/spice/spice_plugin.c:458 plugins/spice/spice_plugin.c:470
-#, fuzzy
 msgid "Resize guest to match window size"
-msgstr "Tillpassa gäst till fönsterstorlek"
+msgstr "Anpassa  gäst till fönsterstorlek"
 
 #: plugins/spice/spice_plugin.c:459 plugins/rdp/rdp_plugin.c:2007
 #, fuzzy
