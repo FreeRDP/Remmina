@@ -667,7 +667,7 @@ remmina_sftp_client_sftp_session_opendir(RemminaSFTPClient *client, const gchar 
 	if (!sftpdir) {
 		dialog = gtk_message_dialog_new(GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(client))),
 						GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-						_("Could not open the folder  \"%s\". %s"), dir,
+						_("Could not open the folder \"%s\". %s"), dir,
 						ssh_get_error(REMMINA_SSH(client->sftp)->session));
 		gtk_dialog_run(GTK_DIALOG(dialog));
 		gtk_widget_destroy(dialog);
