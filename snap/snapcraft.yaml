@@ -190,7 +190,6 @@ parts:
       - libcrystalhd3
       - libcacard0
       - libva2
-      - libusb-1.0-0
       - libzvbi0
       - libxvidcore4
       - libusbredirhost1
@@ -227,7 +226,6 @@ parts:
       set -ex
       snapcraftctl build
     stage:
-      - lib/*/libusb-1.0.so.*
       - usr/bin/gtk3-demo
       - usr/lib/*/libavahi*.so.*
       - usr/lib/*/libappindicator3.so.*
