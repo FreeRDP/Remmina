@@ -18,18 +18,30 @@
         "/share/xsessions"
     ],
     "finish-args": [
+        /* X11 + XShm access */
         "--share=ipc",
         "--socket=x11",
+        /* Needs to talk to the network */
         "--share=network",
+        /* Play sounds redirected from guests */
         "--socket=pulseaudio",
+        /* Wayland access */
         "--socket=wayland",
+        /* Smartcard access - Requires flatpak >= 1.3.2 (April 2019) */
         "--socket=pcsc",
+        /* SSH_AUTH_SOCK access - Requires flatpak >= 0.99.1 */
         "--socket=ssh-auth",
+        /* File transfer (although limited to user directory) */
         "--filesystem=home",
+        /* Desktop notifications */
         "--talk-name=org.freedesktop.Notifications",
+        /* Needed to save login credentials */
         "--talk-name=org.freedesktop.secrets",
+        /* Appindicator */
         "--talk-name=org.kde.StatusNotifierWatcher",
+        /* Query GNOME Shell version (to display systray icon if supported) */
         "--talk-name=org.gnome.Shell",
+        /* Local network host discovery */
         "--system-talk-name=org.freedesktop.Avahi"
     ],
     "modules": [
@@ -74,10 +86,7 @@
         {
             "name": "nxproxy",
             "no-autogen": true,
-            "make-args": [
-                "build-lite",
-                "PREFIX=${FLATPAK_DEST}"
-            ],
+            "make-args": [ "build-lite", "PREFIX=${FLATPAK_DEST}" ],
             "install-rule": "install-lite",
             "sources": [
                 {
@@ -88,6 +97,9 @@
             ]
         },
         {
+            /**
+             * For smartcard support
+             */
             "name": "pcsc-lite",
             "cleanup": [
                 "/bin",
@@ -139,6 +151,9 @@
             ],
             "modules": [
                 {
+                    /**
+                     * libfreerdp uses xprop to try to detect keyboard layout
+                     */
                     "name": "xprop",
                     "sources": [
                         {
@@ -149,6 +164,9 @@
                     ]
                 },
                 {
+                    /**
+                     * libusb-1.0 has been forced as a dependency for FreeRDP
+                     */
                     "name": "libusb",
                     "sources": [
                         {
@@ -183,6 +201,9 @@
             ],
             "modules": [
                 {
+                    /**
+                     * For smartcard support
+                     */
                     "name": "libcacard",
                     "config-opts": [
                         "--enable-pcsc"
@@ -199,12 +220,8 @@
                     "name": "lz4",
                     "subdir": "lib",
                     "no-autogen": true,
-                    "make-args": [
-                        "lib"
-                    ],
-                    "make-install-args": [
-                        "PREFIX=${FLATPAK_DEST}"
-                    ],
+                    "make-args": [ "lib" ],
+                    "make-install-args": [ "PREFIX=${FLATPAK_DEST}" ],
                     "sources": [
                         {
                             "type": "archive",
@@ -214,6 +231,9 @@
                     ]
                 },
                 {
+                    /**
+                     * For webdav (shared folder) support
+                     */
                     "name": "phodav",
                     "buildsystem": "meson",
                     "cleanup": [
@@ -262,6 +282,7 @@
             "name": "libssh",
             "buildsystem": "cmake-ninja",
             "builddir": true,
+            /* FIXME: use ${FLATPAK_DEST} instead of hardcoded //app for nacl flags */
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DWITH_NACL:BOOL=ON",
@@ -281,11 +302,14 @@
                     "name": "nacl",
                     "buildsystem": "simple",
                     "build-commands": [
+                        /* Patch build system */
                         "echo ${CC:-gcc} ${CPPFLAGS} ${CFLAGS} -fPIC >okcompilers/c",
                         "echo ${CXX:-g++} ${CPPFLAGS} ${CXXFLAGS} -fPIC >okcompilers/cpp",
                         "sed -e '/shorthostname=/ s/.*/shorthostname=flatpak-builder/g' -i ./do",
+                        /* Build */
                         "./do",
                         "cat ./build/flatpak-builder/log",
+                        /* Install */
                         "mkdir -v -p /app/lib/nacl",
                         "install -v -m644 -t /app/lib/nacl/ ./build/flatpak-builder/lib/*/*.a",
                         "mkdir -v -p /app/include/nacl",
@@ -328,6 +352,12 @@
             ]
         },
         {
+            /**
+             * Xephyr version 1.17.0 and later don't work fine with GtkSocket,
+             * therefore we remain at version 1.16.4:
+             *   - https://gitlab.com//Remmina//Remmina//issues//366
+             *   - https://bugs.freedesktop.org//show_bug.cgi?id=91700
+             */
             "name": "xephyr",
             "config-opts": [
                 "--enable-kdrive",
@@ -384,6 +414,7 @@
             ]
         },
         {
+            /* Remmina main build */
             "name": "remmina",
             "buildsystem": "cmake-ninja",
             "cleanup": [
