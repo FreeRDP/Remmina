@@ -1187,6 +1187,13 @@ static gboolean remmina_rdp_main(RemminaProtocolWidget *gp)
 		strncpy(rfi->settings->ClientHostname, g_get_host_name(), FREERDP_CLIENTHOSTNAME_LEN - 1);
 	rfi->settings->ClientHostname[FREERDP_CLIENTHOSTNAME_LEN - 1] = 0;
 
+	/* Client Build number is optional, if not specified defaults to 0, allow for comments to appear after number */
+	if ((cs=remmina_plugin_service->file_get_string(remminafile, "clientbuild"))) {
+		if (*cs)
+			rfi->settings->ClientBuild = strtoul(cs, NULL, 0);
+	}
+
+
 	if (remmina_plugin_service->file_get_string(remminafile, "loadbalanceinfo")) {
 		rfi->settings->LoadBalanceInfo = (BYTE *)strdup(remmina_plugin_service->file_get_string(remminafile, "loadbalanceinfo"));
 		rfi->settings->LoadBalanceInfoLength = (UINT32)strlen((char *)rfi->settings->LoadBalanceInfo);
@@ -1949,6 +1956,16 @@ static gpointer gwtransp_list[] =
 	NULL
 };
 
+static gchar clientbuild_list[] =
+	N_("2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 and newer)");
+
+static gchar clientbuild_tooltip[] =
+	N_("Used i.a. by Terminal services in SmartCard channel to distinguish client capabilities:\n"
+	   "  ⏺ < 4034: Windows XP base smartcard functions\n"
+	   "  ⏺ 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
+	   "    SCardGetTransmitCount()\n"
+	   "  ⏺ >= 7065: Windows 8 and newer: SCardGetReaderIcon(), SCardGetDeviceTypeId()");
+
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
  * a) RemminaProtocolSettingType for setting type
@@ -1990,6 +2007,7 @@ static const RemminaProtocolSetting remmina_rdp_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "gateway_password",	    N_("Remote Desktop Gateway password"),		 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "gateway_domain",	    N_("Remote Desktop Gateway domain"),		 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "clientname",		    N_("Client name"),					 FALSE, NULL,	       NULL													      },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_COMBO,	  "clientbuild",		    N_("Client build"),					 FALSE, clientbuild_list,	       clientbuild_tooltip													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "exec",		    N_("Startup program"),				 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "execpath",		    N_("Startup path"),					 FALSE, NULL,	       NULL													      },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "loadbalanceinfo",	    N_("Load balance info"),				 FALSE, NULL,	       NULL													      },
