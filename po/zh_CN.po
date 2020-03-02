@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-02-29 09:33+0000\n"
-"PO-Revision-Date: 2020-01-20 11:45+0000\n"
+"PO-Revision-Date: 2020-03-02 08:53+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "remmina/remmina/zh_Hans/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.11-dev\n"
+"X-Generator: Weblate 4.0-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
 #: src/remmina_protocol_widget.c:248
@@ -177,7 +177,6 @@ msgid "Error: %s"
 msgstr "错误: %s"
 
 #: src/remmina_ssh_plugin.c:466
-#, fuzzy
 msgid "Terminal content saved in"
 msgstr "终端内容保存在"
 
@@ -366,15 +365,17 @@ msgstr "请正确输入“宽x高”。"
 #: src/remmina_about.c:54
 msgid "translator-credits"
 msgstr ""
-"Remmina 的简体中文翻译由作者本人完成\n"
-"\n"
-"Launchpad Contributions:\n"
+"Remmina 的原版本简体中文翻译由作者本人完成\n"
+"Launchpad 贡献者:\n"
 "  Aron Xu https://launchpad.net/~happyaron\n"
 "  Heling Yao https://launchpad.net/~hyao\n"
 "  Vic https://launchpad.net/~llyzs\n"
 "  Wang Dianjin https://launchpad.net/~tuhaihe\n"
 "  YunQiang Su https://launchpad.net/~wzssyqa\n"
-"  shijing https://launchpad.net/~shijing"
+"  shijing https://launchpad.net/~shijing\n"
+"新版本翻译地址已由 Launchpad 迁至:\n"
+"https://hosted.weblate.org/projects/remmina/\n"
+"  玉堂白鹤 <yjwork@qq.com>, 2020"
 
 #: src/remmina_ftp_client.c:388
 msgid "Choose download location"
@@ -971,7 +972,7 @@ msgstr "无法导入公共 SSH 密钥。%s"
 
 #: src/remmina_ssh.c:255
 msgid "SSH passphrase is empty, it should not."
-msgstr ""
+msgstr "SSH 密码为空，但它不应为空。"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:289
@@ -1927,7 +1928,7 @@ msgstr "协商"
 
 #: plugins/rdp/rdp_plugin.c:1960
 msgid "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 and newer)"
-msgstr ""
+msgstr "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 更高版本)"
 
 #: plugins/rdp/rdp_plugin.c:1963
 msgid ""
@@ -2016,7 +2017,7 @@ msgstr "本地串口路径"
 
 #: plugins/rdp/rdp_plugin.c:2017
 msgid "/dev/ttyS0, /dev/ttyS1, etc."
-msgstr ""
+msgstr "/dev/ttyS0，/dev/ttyS1， 等等。"
 
 #: plugins/rdp/rdp_plugin.c:2018
 msgid "Local parallel name"
@@ -2367,9 +2368,8 @@ msgid "Plugin"
 msgstr "插件"
 
 #: data/ui/remmina_main.glade:593
-#, fuzzy
 msgid "Last used"
-msgstr "最后使用时间"
+msgstr "最后使用"
 
 #: data/ui/remmina_unlock.glade:60
 msgid "Unlock"
