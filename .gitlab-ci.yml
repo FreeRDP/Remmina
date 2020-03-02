@@ -18,6 +18,8 @@ before_script:
   - mkdir -p .flatpak-builder/cache
 
 raspbian:test:
+  tags:
+    - arm
   image: raspbian/stretch
   stage: build
   before_script:
