@@ -17,22 +17,22 @@ variables:
 before_script:
   - mkdir -p .flatpak-builder/cache
 
-raspbian:test:
-  services:
-    - docker:dind
-  tags:
-    - arm
-  image: raspbian/stretch
-  stage: build
-  before_script:
-    - apt-get update -qq
-
-  script:
-    - mkdir $BUILD_FOLDER
-    - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS
-    - make VERBOSE=1 -C $BUILD_FOLDER
-  only:
-    - web
+#raspbian:test:
+#  services:
+#    - docker:dind
+#  tags:
+#    - arm
+#  image: raspbian/stretch
+#  stage: build
+#  before_script:
+#    - apt-get update -qq
+#
+#  script:
+#    - mkdir $BUILD_FOLDER
+#    - cmake -B$BUILD_FOLDER -H. $CMAKE_BUILD_OPTIONS
+#    - make VERBOSE=1 -C $BUILD_FOLDER
+#  only:
+#    - web
 
 # TODO: We should create a job for each distro and test the compile correcthly
 #       but _only_ if triggered at certain conditions (releases, tag, etc)
