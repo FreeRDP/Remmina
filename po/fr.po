@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-02-29 09:33+0000\n"
-"PO-Revision-Date: 2020-02-18 10:51+0000\n"
-"Last-Translator: Antenore Gatta <antenore@simbiosi.org>\n"
+"PO-Revision-Date: 2020-03-07 18:16+0000\n"
+"Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/remmina/remmina/"
 "fr/>\n"
 "Language: fr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.11\n"
+"X-Generator: Weblate 4.0-dev\n"
 
 #: src/remmina_protocol_widget.c:248
 msgid "Connect via SSH from a new terminal"
@@ -1966,6 +1966,7 @@ msgstr "Négocier"
 #: plugins/rdp/rdp_plugin.c:1960
 msgid "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 and newer)"
 msgstr ""
+"2600 (Windows XP), 7601 (Windows Vista et 7), 9600 (Windows 8 et supérieur)"
 
 #: plugins/rdp/rdp_plugin.c:1963
 msgid ""
@@ -1977,6 +1978,13 @@ msgid ""
 "  ⏺ >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
 "SCardGetDeviceTypeId()"
 msgstr ""
+"Utilisé entre autres par Terminal services dans le canal SmartCard afin de "
+"distinguer les capacités du client :\n"
+"  • jusqu’à 4033 : fonctions pour cartes à puce pour Windows XP ;\n"
+"  • de 4034 à 7064 : Windows Vista et 7 : SCardReadCache(), SCardWriteCache()"
+" et SCardGetTransmitCount() ;\n"
+"  • à partir de 7065 : Windows 8 et supérieurs : SCardGetReaderIcon() ey "
+"SCardGetDeviceTypeId()."
 
 #: plugins/rdp/rdp_plugin.c:2002
 msgid "Sound"
@@ -2011,9 +2019,8 @@ msgid "Client name"
 msgstr "Nom du client"
 
 #: plugins/rdp/rdp_plugin.c:2010
-#, fuzzy
 msgid "Client build"
-msgstr "Nom du client"
+msgstr "Build du client"
 
 #: plugins/rdp/rdp_plugin.c:2013
 msgid "Load balance info"
