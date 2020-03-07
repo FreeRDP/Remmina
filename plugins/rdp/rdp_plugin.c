@@ -1961,10 +1961,10 @@ static gchar clientbuild_list[] =
 
 static gchar clientbuild_tooltip[] =
 	N_("Used i.a. by Terminal services in SmartCard channel to distinguish client capabilities:\n"
-	   "  ⏺ < 4034: Windows XP base smartcard functions\n"
-	   "  ⏺ 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
+	   "  • < 4034: Windows XP base smartcard functions\n"
+	   "  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
 	   "    SCardGetTransmitCount()\n"
-	   "  ⏺ >= 7065: Windows 8 and newer: SCardGetReaderIcon(), SCardGetDeviceTypeId()");
+	   "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), SCardGetDeviceTypeId()");
 
 /* Array of RemminaProtocolSetting for basic settings.
  * Each item is composed by:
@@ -2180,7 +2180,7 @@ G_MODULE_EXPORT gboolean remmina_plugin_entry(RemminaPluginService *service)
 	}
 
 	snprintf(remmina_plugin_rdp_version, sizeof(remmina_plugin_rdp_version),
-		 "RDP Plugin: %s (git %s), Compiled with FreeRDP lib: %s (%s), Running with FreeRDP lib: %s (rev %s), H.264: %s",
+		 "RDP plugin: %s (Git %s), Compiled with FreeRDP lib: %s (%s), Running with FreeRDP lib: %s (rev %s), H.264: %s",
 		 VERSION, REMMINA_GIT_REVISION,
 		 FREERDP_VERSION_FULL, GIT_REVISION,
 		 freerdp_get_version_string(),
