@@ -2,7 +2,7 @@
 # Copyright © 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-# Olexandr Nesterenko <olexn@ukr.net>, 2019.
+# Olexandr Nesterenko <olexn@ukr.net>, 2019, 2020.
 # anonymous <noreply@weblate.org>, 2019.
 # Rostyslav <info@ubilling.net.ua>, 2020.
 msgid ""
@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-03-07 18:19+0000\n"
 "PO-Revision-Date: 2020-03-11 16:33+0000\n"
-"Last-Translator: Rostyslav <info@ubilling.net.ua>\n"
+"Last-Translator: Olexandr Nesterenko <olexn@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
 "Language: uk\n"
@@ -29,7 +29,7 @@ msgstr "Підключитись за допомогою SSH з нового т�
 
 #: src/remmina_protocol_widget.c:254
 msgid "Open SFTP transfer"
-msgstr "Розпочати захищену передачу файлів (SFTP)…"
+msgstr "Відкрити захищену передачу файлів (SFTP)"
 
 #: src/remmina_protocol_widget.c:282
 msgid "Executing external commands…"
@@ -368,12 +368,12 @@ msgstr "Будь ласка, введіть у форматі „ширинаxв
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Andriy Nezhivy https://launchpad.net/~andriynezhivy\n"
-"  Sergey Hordiyenko https://launchpad.net/~phrippy2\n"
-"  Sergiy Matrunchyk https://launchpad.net/~sergiy.matrunchyk\n"
-"  Serhey Kusyumoff (Сергій Кусюмов) https://launchpad.net/~sergemine\n"
-"  Stuartlittle1970@gmail.com https://launchpad.net/~stuartlittle1970\n"
-"  Сергій Дубик https://launchpad.net/~dubyk-library"
+"\tAndriy Nezhivy https://launchpad.net/~andriynezhivy\n"
+"\tSergey Hordiyenko https://launchpad.net/~phrippy2\n"
+"\tSergiy Matrunchyk https://launchpad.net/~sergiy.matrunchyk\n"
+"\tSerhey Kusyumoff (Сергій Кусюмов) https://launchpad.net/~sergemine\n"
+"\tStuartlittle1970@gmail.com https://launchpad.net/~stuartlittle1970\n"
+"\tСергій Дубик https://launchpad.net/~dubyk-library"
 
 #: src/remmina_ftp_client.c:388
 msgid "Choose download location"
@@ -1090,7 +1090,7 @@ msgstr "Не вдалося створити sftp-сесію: %s"
 #: src/remmina_ssh.c:1233
 #, c-format
 msgid "Could not run %s on SSH server."
-msgstr "Не вдалося виконати „%s“ на SSH-сервері: %s"
+msgstr "Не вдалося виконати „%s“ на SSH-сервері."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1271 src/remmina_ssh.c:1292 src/remmina_ssh.c:1301
@@ -1225,7 +1225,6 @@ msgstr ""
 "</big></tt>"
 
 #: src/remmina_file_editor.c:94
-#, fuzzy
 msgid ""
 "<tt><big>Supported formats\n"
 "• :port\n"
@@ -1235,9 +1234,11 @@ msgid ""
 "• username@server:port (SSH protocol only)</big></tt>"
 msgstr ""
 "<tt><big>Підтримувані формати\n"
-"* сервер\n"
-"* сервер:порт\n"
-"* [сервер]:порт</big></tt>"
+"• :порт\n"
+"• сервер\n"
+"• сервер:порт\n"
+"• [сервер]:порт\n"
+"• користувач@сервер:порт (Лише для протоколу SSH )</big></tt>"
 
 #: src/remmina_file_editor.c:158
 msgid "Choose a Remote Desktop Server"
@@ -1622,18 +1623,17 @@ msgid "Enter SPICE password"
 msgstr "Пароль SSH"
 
 #: plugins/spice/spice_plugin.c:274
-#, fuzzy, c-format
+#, c-format
 msgid "Disconnected from the SPICE server \"%s\"."
-msgstr "При з’єнанні з Windows RDP сервером %s виникла помилка"
+msgstr "При з'єднанні з Windows RDP сервером «%s» виникла помилка."
 
 #: plugins/spice/spice_plugin.c:290
 msgid "TLS connection error."
 msgstr "Помилка з`єднання TLS."
 
 #: plugins/spice/spice_plugin.c:296
-#, fuzzy
 msgid "Connection to the SPICE server dropped."
-msgstr "При з’єнанні з Windows RDP сервером %s виникла помилка"
+msgstr ""
 
 #: plugins/spice/spice_plugin.c:438
 msgid "Use TLS encryption"
@@ -1768,32 +1768,40 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "Введіть дані автентифікації RDP шлюза"
 
 #: plugins/rdp/rdp_plugin.c:1496
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account locked out."
-msgstr "Команда „%s“ не знайдена на SSH-сервері"
+msgstr ""
+"Не вдалося отримати доступ до RDP сервера «%s».\n"
+"Обліковий запис не має доступу."
 
 #: plugins/rdp/rdp_plugin.c:1503
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account expired."
-msgstr "Команда „%s“ не знайдена на SSH-сервері"
+msgstr ""
+"Не вдалося отримати доступ до RDP сервера «%s».\n"
+"Вичерпано термін дії облікового запису."
 
 #: plugins/rdp/rdp_plugin.c:1510
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Password expired."
-msgstr "Команда „%s“ не знайдена на SSH-сервері"
+msgstr ""
+"Не вдалося отримати доступ до RDP сервера «%s».\n"
+"Вичерпано термін дії пароля."
 
 #: plugins/rdp/rdp_plugin.c:1517
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account disabled."
-msgstr "Команда „%s“ не знайдена на SSH-сервері"
+msgstr ""
+"Не вдалося отримати доступ до RDP сервера «%s».\n"
+"Обліковий запис вимкнуто."
 
 #: plugins/rdp/rdp_plugin.c:1523
 #, c-format
@@ -1805,11 +1813,13 @@ msgstr ""
 "Халепа з привілеями користувача."
 
 #: plugins/rdp/rdp_plugin.c:1531
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account restricted."
-msgstr "Команда „%s“ не знайдена на SSH-сервері"
+msgstr ""
+"Не вдалося отримати доступ до RDP сервера «%s».\n"
+"Обмежений обліковий запис."
 
 #: plugins/rdp/rdp_plugin.c:1539
 #, c-format
@@ -1821,14 +1831,14 @@ msgstr ""
 "Змініть пароль перед з`єднанням."
 
 #: plugins/rdp/rdp_plugin.c:1544
-#, fuzzy, c-format
+#, c-format
 msgid "Lost connection to the RDP server \"%s\"."
-msgstr "При з’єнанні з Windows RDP сервером %s виникла помилка"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1547
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the address for the RDP server \"%s\"."
-msgstr "Команда „%s“ не знайдена на SSH-сервері"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1551
 #, c-format
