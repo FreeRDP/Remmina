@@ -73,7 +73,6 @@ GtkDialog* remmina_ext_exec_new(RemminaFile* remminafile, const char *remmina_ex
 	GError *error = NULL;
 	char **argv;
 	gchar *cmd = NULL;
-	GString *cmd_str;
 	gchar pre[11];
 	gchar post[12];
 	GPid child_pid;
@@ -84,18 +83,12 @@ GtkDialog* remmina_ext_exec_new(RemminaFile* remminafile, const char *remmina_ex
 	if (remmina_ext_exec_type != NULL && (
 				strcmp(remmina_ext_exec_type, pre) |
 				strcmp(remmina_ext_exec_type, post) )) {
-		cmd_str = g_string_new(remmina_file_get_string(remminafile, remmina_ext_exec_type));
-		remmina_utils_string_replace_all(cmd_str, "%h", remmina_file_get_string(remminafile, "server"));
-		remmina_utils_string_replace_all(cmd_str, "%t", remmina_file_get_string(remminafile, "ssh_server"));
-		remmina_utils_string_replace_all(cmd_str, "%u", remmina_file_get_string(remminafile, "username"));
-		remmina_utils_string_replace_all(cmd_str, "%U", remmina_file_get_string(remminafile, "ssh_username"));
-		remmina_utils_string_replace_all(cmd_str, "%p", remmina_file_get_string(remminafile, "name"));
-		remmina_utils_string_replace_all(cmd_str, "%g", remmina_file_get_string(remminafile, "group"));
+		cmd = remmina_file_get_string(remminafile, remmina_ext_exec_type);
 	}else{
 		return FALSE;
 	}
 
-	cmd = g_string_free(cmd_str, FALSE);
+	cmd = remmina_file_format_properties(remminafile, cmd);
 	if (*cmd != 0) {
 
 		pcspinner = g_new(PCon_Spinner, 1);
