@@ -34,6 +34,11 @@
 
 #pragma once
 
+#include "common/remmina_plugin.h"
+
+#include <glib.h>
+#include <webkit2/webkit2.h>
+
 typedef enum {
 	WWW_WEB_VIEW_DOCUMENT_HTML,
 	WWW_WEB_VIEW_DOCUMENT_XML,
@@ -46,7 +51,7 @@ typedef enum {
 G_BEGIN_DECLS
 void remmina_plugin_www_decide_nav(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp);
 void remmina_plugin_www_decide_newwin(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp);
-static gboolean remmina_plugin_www_decide_resource(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp);
+gboolean remmina_plugin_www_decide_resource(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp);
 void remmina_plugin_www_response_received(WebKitDownload *download, GParamSpec *ps, RemminaProtocolWidget *gp);
 void remmina_plugin_www_notify_download(WebKitDownload *download, gchar *destination, RemminaProtocolWidget *gp);
 

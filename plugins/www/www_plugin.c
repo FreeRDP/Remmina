@@ -230,8 +230,7 @@ void remmina_plugin_www_decide_newwin(WebKitPolicyDecision *decision, RemminaPro
 
 	webkit_policy_decision_ignore(decision);
 }
-static gboolean
-remmina_plugin_www_decide_resource(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp)
+gboolean remmina_plugin_www_decide_resource(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	g_debug("Policy decision resource");
@@ -409,9 +408,10 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 #ifdef DEBUG
 	/* Turn on the developer extras */
 	webkit_settings_set_enable_developer_extras(gpdata->settings, TRUE);
+	webkit_settings_set_enable_write_console_messages_to_stdout(gpdata->settings, TRUE);
 #endif
 
-	/* user-agent. TODO: Add option. */
+	/* user-agent. */
 	if (remmina_plugin_service->file_get_string(remminafile, "user-agent")) {
 		gchar *useragent = g_strdup(remmina_plugin_service->file_get_string(remminafile, "user-agent"));
 		webkit_settings_set_user_agent(gpdata->settings, useragent);
@@ -446,6 +446,7 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	/* enable-webgl */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-webgl", FALSE)) {
 		webkit_settings_set_enable_webgl(gpdata->settings, TRUE);
+		webkit_settings_set_enable_accelerated_2d_canvas(gpdata->settings, TRUE);
 		g_info("enable-webgl enabled");
 	}
 
@@ -457,6 +458,15 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	webkit_web_context_set_automation_allowed(gpdata->context, TRUE);
 	webkit_settings_set_javascript_can_open_windows_automatically(gpdata->settings, TRUE);
 	webkit_settings_set_allow_modal_dialogs(gpdata->settings, TRUE);
+	/** Frames flattening
+	 * Some websites engage in embedding frames-inside-of-frames. WebKit has
+	 * the ability to flatten them so they behave, when scrolling, as one big
+	 * frame. If for some reason it is not enabled, go ahead and turn it on.
+	 */
+	if (!webkit_settings_get_enable_frame_flattening(gpdata->settings)) {
+		webkit_settings_set_enable_frame_flattening(gpdata->settings, true);
+	}
+	webkit_settings_set_enable_resizable_text_areas(gpdata->settings, true);
 
 	g_signal_connect(G_OBJECT(gpdata->context), "download-started",
 			 G_CALLBACK(remmina_plugin_www_download_started), gp);
@@ -626,6 +636,7 @@ static gboolean remmina_plugin_www_close_connection(RemminaProtocolWidget *gp)
 	RemminaPluginWWWData *gpdata;
 	gpdata = (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
+	webkit_web_view_stop_loading(gpdata->webview);
 	webkit_web_view_try_close(gpdata->webview);
 
 	if (gpdata->url) g_free(gpdata->url);
