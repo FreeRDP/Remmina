@@ -491,6 +491,30 @@ remmina_file_get_secret(RemminaFile *remminafile, const gchar *setting)
 	return g_strdup(remmina_file_get_string(remminafile, setting));
 }
 
+gchar *remmina_file_format_properties(RemminaFile *remminafile, const gchar *setting)
+{
+	gchar *res = NULL;
+	GString *fmt_str;
+	GDateTime *now;
+	gchar *date_str = NULL;
+
+	fmt_str = g_string_new(setting);
+	remmina_utils_string_replace_all(fmt_str, "%h", remmina_file_get_string(remminafile, "server"));
+	remmina_utils_string_replace_all(fmt_str, "%t", remmina_file_get_string(remminafile, "ssh_server"));
+	remmina_utils_string_replace_all(fmt_str, "%u", remmina_file_get_string(remminafile, "username"));
+	remmina_utils_string_replace_all(fmt_str, "%U", remmina_file_get_string(remminafile, "ssh_username"));
+	remmina_utils_string_replace_all(fmt_str, "%p", remmina_file_get_string(remminafile, "name"));
+	remmina_utils_string_replace_all(fmt_str, "%g", remmina_file_get_string(remminafile, "group"));
+
+	now = g_date_time_new_now_local ();
+	date_str = g_date_time_format(now, "YYYY-MM-DDTHH-MM-SSZ");
+	remmina_utils_string_replace_all(fmt_str, "%d", date_str);
+	g_free(date_str);
+
+	res = g_string_free(fmt_str, FALSE);
+	return res;
+}
+
 void remmina_file_set_int(RemminaFile *remminafile, const gchar *setting, gint value)
 {
 	TRACE_CALL(__func__);
