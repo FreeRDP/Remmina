@@ -799,6 +799,8 @@ remmina_plugin_ssh_init(RemminaProtocolWidget *gp)
 	else
 		sshlogname = remmina_plugin_service->file_get_string(remminafile, "sshlogname");
 
+	sshlogname = remmina_file_format_properties(remminafile, sshlogname);
+
 	fp = g_strconcat(dir, "/", sshlogname, NULL);
 	gpdata->vte_session_file = g_file_new_for_path(fp);
 
@@ -1031,6 +1033,16 @@ static const RemminaProtocolSetting remmina_ssh_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,				  FALSE, NULL,	      NULL }
 };
 
+static gchar log_tips[] =
+        N_("The filename can use the following placeholders:\n\n"
+        "  • %h is substituted with the server name\n"
+        "  • %t is substituted with the SSH server name\n"
+        "  • %u is substituted with the username\n"
+        "  • %U is substituted with the SSH username\n"
+        "  • %p is substituted with Remmina profile name\n"
+        "  • %g is substituted with Remmina profile group name\n"
+        "  • %d is substituted with local datetime in iso8601 format\n");
+
 /**
  * Array of RemminaProtocolSetting for advanced settings.
  * - Each item is composed by:
@@ -1051,7 +1063,7 @@ static const RemminaProtocolSetting remmina_ssh_advanced_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"ssh_ciphers",		  N_("Symmetric cipher client to server"),    FALSE, NULL,		   NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"ssh_hostkeytypes",	  N_("Preferred server host key types"),      FALSE, NULL,		   NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FOLDER, "sshlogfolder",		  N_("Folder for SSH session log"),	      FALSE, NULL,		   NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"sshlogname",		  N_("Filename for SSH session log"),	      FALSE, NULL,		   NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	"sshlogname",		  N_("Filename for SSH session log"),	      FALSE, NULL,		   log_tips },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"sshlogenabled",	  N_("Log SSH session when exiting Remmina"), FALSE, NULL,		   NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"audiblebell",		  N_("Audible terminal bell"),		      FALSE, NULL,		   NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_CHECK,	"ssh_compression",	  N_("SSH compression"),		      FALSE, NULL,		   NULL },

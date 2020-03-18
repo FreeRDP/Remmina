@@ -87,6 +87,7 @@ static const gchar *cmd_tips = N_("<tt><big>"
 				  "• %U is substituted with the SSH username\n"
 				  "• %p is substituted with Remmina profile name\n"
 				  "• %g is substituted with Remmina profile group name\n"
+				  "• %d is substituted with local datetime in iso8601 format\n"
 				  "Do not run in background if you want the command to be executed before connecting.\n"
 				  "</big></tt>");
 
