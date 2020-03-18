@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-03-18 13:41+0000\n"
-"PO-Revision-Date: 2020-03-17 13:36+0000\n"
+"PO-Revision-Date: 2020-03-18 14:01+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.0-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
@@ -39,7 +39,7 @@ msgstr "Виконання зовнішніх команд…"
 #: src/remmina_protocol_widget.c:289
 #, c-format
 msgid "Connecting to \"%s\"…"
-msgstr "Встановлення з'єднання до '%s'…"
+msgstr "Встановлення з'єднання з «%s»…"
 
 #: src/remmina_protocol_widget.c:717 src/remmina_protocol_widget.c:811
 #, c-format
@@ -54,18 +54,18 @@ msgstr "Очікування вхідного SSH-тунелю на порті %
 #: src/remmina_protocol_widget.c:912
 #, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "Команда „%s“ не знайдена на SSH-сервері."
+msgstr "На SSH-сервері не можна скористатися командою «%s»."
 
 #: src/remmina_protocol_widget.c:916
 #, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr "Не вдалось виконати команду „%s“ на SSH-сервері (статус = %i)."
+msgstr "Не вдалось виконати команду «%s» на SSH-сервері (стан = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:924
 #, c-format
 msgid "Could not run command. %s"
-msgstr "Не вдалось виконати команду. %s"
+msgstr "Не вдалося виконати команду. %s"
 
 #: src/remmina_protocol_widget.c:991
 #, c-format
@@ -87,7 +87,7 @@ msgstr "Введіть ім'я користувача та пароль для S
 
 #: src/remmina_protocol_widget.c:1425
 msgid "Certificate details:"
-msgstr "Деталі сертифікату:"
+msgstr "Параметри сертифіката:"
 
 #: src/remmina_protocol_widget.c:1426 src/remmina_protocol_widget.c:1447
 msgid "Subject:"
@@ -273,7 +273,6 @@ msgid "Startup program"
 msgstr "Запускати програму"
 
 #: src/remmina_ssh_plugin.c:1037
-#, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -285,17 +284,15 @@ msgid ""
 "  • %g is substituted with Remmina profile group name\n"
 "  • %d is substituted with local datetime in iso8601 format\n"
 msgstr ""
-"<tt><big>• команди у аргументах PATH %h\n"
-"• /path/to/foo -options %h %u\n"
-"• %h призначає ім'я сервера\n"
-"• %t призначає ім'я сервера SSH\n"
-"• %u призначає ім'я користувача\n"
-"• %U призначає ім'я користувача SSH \n"
-"• %p призначає ім'я профілю Remmina\n"
-"• %g призначає ім'я групи профілю Remmina\n"
-"Не запускайте у фоновому режимі, якщо бажаєте, щоб команди виконувались "
-"перед з'єднанням.\n"
-"</big></tt>"
+"Для назв файлів передбачено такі замінники:\n"
+"\n"
+"• %h буде замінено на назву сервера\n"
+"• %t буде замінено на назву сервера SSH\n"
+"• %u буде замінено на ім'я користувача\n"
+"• %U буде замінено на ім'я користувача SSH \n"
+"• %p буде замінено на назву профілю Remmina\n"
+"• %g буде замінено на назву групи профілів Remmina\n"
+"• %d буде замінено на місцеву дату і час у форматі ISO 8601\n"
 
 #: src/remmina_ssh_plugin.c:1059
 msgid "Terminal color scheme"
@@ -948,11 +945,11 @@ msgstr "Запам'ятати пароль"
 
 #: src/remmina_message_panel.c:512
 msgid "Enter certificate authentication files"
-msgstr "Вкажіть файли сертифікату автентифікації"
+msgstr "Вкажіть файли сертифіката для розпізнавання"
 
 #: src/remmina_message_panel.c:524
 msgid "CA Certificate File"
-msgstr "Файл сертифікату CA"
+msgstr "Файл сертифіката CA"
 
 #: src/remmina_message_panel.c:546
 msgid "CA CRL File"
@@ -960,11 +957,11 @@ msgstr "Файл CA CRL"
 
 #: src/remmina_message_panel.c:568
 msgid "Client Certificate File"
-msgstr "Файл сертифікату клієнта"
+msgstr "Файл сертифіката клієнта"
 
 #: src/remmina_message_panel.c:590
 msgid "Client Certificate Key"
-msgstr "Ключ сертифікату клієнта"
+msgstr "Ключ сертифіката клієнта"
 
 #: src/remmina_sftp_plugin.c:297
 msgid "Show Hidden Files"
@@ -1226,7 +1223,6 @@ msgstr ""
 "* [сервер]:порт</big></tt>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1241,14 +1237,15 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
-"<tt><big>• команди у аргументах PATH %h\n"
-"• /path/to/foo -options %h %u\n"
-"• %h призначає ім'я сервера\n"
-"• %t призначає ім'я сервера SSH\n"
-"• %u призначає ім'я користувача\n"
-"• %U призначає ім'я користувача SSH \n"
-"• %p призначає ім'я профілю Remmina\n"
-"• %g призначає ім'я групи профілю Remmina\n"
+"<tt><big>• команда у аргументах PATH %h\n"
+"• /шлях/до/якихось-параметрів %h %u\n"
+"• %h буде замінено на назву сервера\n"
+"• %t буде замінено на назву сервера SSH\n"
+"• %u буде замінено на ім'я користувача\n"
+"• %U буде замінено на ім'я користувача SSH \n"
+"• %p буде замінено на назву профілю Remmina\n"
+"• %g буде замінено на назву групи профілів Remmina\n"
+"• %d буде замінено на місцеву дату і час у форматі ISO 8601\n"
 "Не запускайте у фоновому режимі, якщо бажаєте, щоб команди виконувались "
 "перед з'єднанням.\n"
 "</big></tt>"
