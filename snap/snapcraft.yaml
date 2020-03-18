@@ -77,6 +77,9 @@ parts:
       - libxtst-dev
       - libxv-dev
       - libavresample-dev
+    stage-packages:
+      - libusb-1.0-0
+      - libzvbi0
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
       - -DWITH_WAYLAND=on
@@ -144,6 +147,8 @@ parts:
       - libwebkit2gtk-4.0-dev
     stage-packages:
       - xauth
+      - libusb-1.0-0
+      - libzvbi0
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
@@ -221,6 +226,7 @@ parts:
       - libwebkit2gtk-4.0-37
       - libjavascriptcoregtk-4.0-18
       - libusb-1.0-0
+      - libzvbi0
 
     override-build: |
       set -ex
