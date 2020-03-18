@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-03-07 18:19+0000\n"
+"POT-Creation-Date: 2020-03-18 13:41+0000\n"
 "PO-Revision-Date: 2020-03-02 08:53+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -72,8 +72,8 @@ msgid "Connecting to %s via SSH…"
 msgstr "通过 SSH 连接到 %s …"
 
 #: src/remmina_protocol_widget.c:1351 src/remmina_protocol_widget.c:1370
-#: src/remmina_ssh_plugin.c:926 src/remmina_sftp_plugin.c:284
-#: src/remmina_sftp_plugin.c:317 src/remmina_file_editor.c:926
+#: src/remmina_ssh_plugin.c:928 src/remmina_sftp_plugin.c:284
+#: src/remmina_sftp_plugin.c:317 src/remmina_file_editor.c:927
 #: plugins/www/www_plugin.c:793 plugins/rdp/rdp_plugin.c:1982
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1533
@@ -129,8 +129,8 @@ msgstr "在 %i 端口监听传入的 %s 连接…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "验证失败，重新连接…"
 
-#: src/remmina_protocol_widget.c:1680 src/remmina_file_editor.c:407
-#: src/remmina_file_editor.c:882 data/ui/remmina_main.glade:565
+#: src/remmina_protocol_widget.c:1680 src/remmina_file_editor.c:408
+#: src/remmina_file_editor.c:883 data/ui/remmina_main.glade:565
 msgid "Server"
 msgstr "服务器"
 
@@ -144,12 +144,12 @@ msgstr "请先安装 %s 协议插件。"
 msgid "Plugin %s is not registered."
 msgstr "插件 %s 未注册。"
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:496
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:497
 #: data/ui/remmina_preferences.glade:234
 msgid "Resolutions"
 msgstr "分辨率"
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:496
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:497
 msgid "Configure the available resolutions"
 msgstr "配置可提供的分辨率"
 
@@ -196,134 +196,158 @@ msgstr "粘贴（host+V）"
 msgid "Save session to file"
 msgstr "将会话保存到文件"
 
-#: src/remmina_ssh_plugin.c:927 src/remmina_sftp_plugin.c:285
-#: src/remmina_file_editor.c:361 src/remmina_file_editor.c:368
+#: src/remmina_ssh_plugin.c:929 src/remmina_sftp_plugin.c:285
+#: src/remmina_file_editor.c:362 src/remmina_file_editor.c:369
 msgid "SSH identity file"
 msgstr "SSH 私钥文件"
 
-#: src/remmina_ssh_plugin.c:928 src/remmina_sftp_plugin.c:286
+#: src/remmina_ssh_plugin.c:930 src/remmina_sftp_plugin.c:286
 msgid "SSH agent"
 msgstr "SSH 代理"
 
-#: src/remmina_ssh_plugin.c:929 src/remmina_sftp_plugin.c:287
-#: src/remmina_file_editor.c:939
+#: src/remmina_ssh_plugin.c:931 src/remmina_sftp_plugin.c:287
+#: src/remmina_file_editor.c:940
 msgid "Public key (automatic)"
 msgstr "公钥（自动）"
 
-#: src/remmina_ssh_plugin.c:930 src/remmina_sftp_plugin.c:288
+#: src/remmina_ssh_plugin.c:932 src/remmina_sftp_plugin.c:288
 msgid "Kerberos (GSSAPI)"
 msgstr "Kerberos (GSSAPI)"
 
-#: src/remmina_ssh_plugin.c:1005 data/ui/remmina_main.glade:267
+#: src/remmina_ssh_plugin.c:1007 data/ui/remmina_main.glade:267
 msgid "Copy"
 msgstr "复制"
 
-#: src/remmina_ssh_plugin.c:1005
+#: src/remmina_ssh_plugin.c:1007
 msgid "_Copy"
 msgstr "复制(_C)"
 
-#: src/remmina_ssh_plugin.c:1006
+#: src/remmina_ssh_plugin.c:1008
 msgid "Paste"
 msgstr "粘贴"
 
-#: src/remmina_ssh_plugin.c:1006
+#: src/remmina_ssh_plugin.c:1008
 msgid "_Paste"
 msgstr "粘贴(_P)"
 
-#: src/remmina_ssh_plugin.c:1007
+#: src/remmina_ssh_plugin.c:1009
 msgid "Select all"
 msgstr "全选"
 
-#: src/remmina_ssh_plugin.c:1007
+#: src/remmina_ssh_plugin.c:1009
 msgid "_Select all"
 msgstr "全选(_S)"
 
-#: src/remmina_ssh_plugin.c:1025 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:316 src/remmina_file_editor.c:917
+#: src/remmina_ssh_plugin.c:1027 src/remmina_message_panel.c:330
+#: src/remmina_sftp_plugin.c:316 src/remmina_file_editor.c:918
 #: plugins/www/www_plugin.c:792 plugins/vnc/vnc_plugin.c:1831
 #: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:1981
 #: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr "用户名"
 
-#: src/remmina_ssh_plugin.c:1026 plugins/vnc/vnc_plugin.c:1832
+#: src/remmina_ssh_plugin.c:1028 plugins/vnc/vnc_plugin.c:1832
 #: plugins/vnc/vnc_plugin.c:1852 plugins/spice/spice_plugin.c:437
 #: plugins/nx/nx_plugin.c:722
 msgid "User password"
 msgstr "用户密码"
 
-#: src/remmina_ssh_plugin.c:1027 src/remmina_sftp_plugin.c:318
+#: src/remmina_ssh_plugin.c:1029 src/remmina_sftp_plugin.c:318
 msgid "Authentication type"
 msgstr "认证类型"
 
-#: src/remmina_ssh_plugin.c:1028 src/remmina_sftp_plugin.c:319
+#: src/remmina_ssh_plugin.c:1030 src/remmina_sftp_plugin.c:319
 #: plugins/nx/nx_plugin.c:720
 msgid "Identity file"
 msgstr "私钥文件"
 
-#: src/remmina_ssh_plugin.c:1029 src/remmina_sftp_plugin.c:320
-#: src/remmina_file_editor.c:948
+#: src/remmina_ssh_plugin.c:1031 src/remmina_sftp_plugin.c:320
+#: src/remmina_file_editor.c:949
 msgid "Password to unlock private key"
 msgstr "解锁私钥的密码"
 
-#: src/remmina_ssh_plugin.c:1030 plugins/xdmcp/xdmcp_plugin.c:370
+#: src/remmina_ssh_plugin.c:1032 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2011 plugins/nx/nx_plugin.c:725
 msgid "Startup program"
 msgstr "启动程序"
 
-#: src/remmina_ssh_plugin.c:1047
+#: src/remmina_ssh_plugin.c:1037
+#, fuzzy
+msgid ""
+"The filename can use the following placeholders:\n"
+"\n"
+"  • %h is substituted with the server name\n"
+"  • %t is substituted with the SSH server name\n"
+"  • %u is substituted with the username\n"
+"  • %U is substituted with the SSH username\n"
+"  • %p is substituted with Remmina profile name\n"
+"  • %g is substituted with Remmina profile group name\n"
+"  • %d is substituted with local datetime in iso8601 format\n"
+msgstr ""
+"<tt><big>* command in PATH args %h\n"
+"* /path/to/foo -选项 %h %u\n"
+"* %h 是服务器名\n"
+"* %t 是 SSH 服务器名\n"
+"* %u 是用户名\n"
+"* %U 是 SSH 用户名\n"
+"* %p 是 Remmina 配置文件名\n"
+"* %g 是 Remmina 配置文件组名\n"
+"如果要在连接之前执行命令，请不要在后台运行。\n"
+"</big></tt>"
+
+#: src/remmina_ssh_plugin.c:1059
 msgid "Terminal color scheme"
 msgstr "终端配色方案"
 
-#: src/remmina_ssh_plugin.c:1048
+#: src/remmina_ssh_plugin.c:1060
 msgid "Character set"
 msgstr "字符集"
 
-#: src/remmina_ssh_plugin.c:1049
+#: src/remmina_ssh_plugin.c:1061
 msgid "SSH Proxy Command"
 msgstr "SSH 代理命令"
 
-#: src/remmina_ssh_plugin.c:1050
+#: src/remmina_ssh_plugin.c:1062
 msgid "KEX (Key Exchange) algorithms"
 msgstr "KEX（密钥交换）算法"
 
-#: src/remmina_ssh_plugin.c:1051
+#: src/remmina_ssh_plugin.c:1063
 msgid "Symmetric cipher client to server"
 msgstr "对称加密客户端到服务器"
 
-#: src/remmina_ssh_plugin.c:1052
+#: src/remmina_ssh_plugin.c:1064
 msgid "Preferred server host key types"
 msgstr "首选服务器主机密钥类型"
 
-#: src/remmina_ssh_plugin.c:1053
+#: src/remmina_ssh_plugin.c:1065
 msgid "Folder for SSH session log"
 msgstr "SSH 会话日志文件夹"
 
-#: src/remmina_ssh_plugin.c:1054
+#: src/remmina_ssh_plugin.c:1066
 msgid "Filename for SSH session log"
 msgstr "SSH 会话日志的文件名"
 
-#: src/remmina_ssh_plugin.c:1055
+#: src/remmina_ssh_plugin.c:1067
 msgid "Log SSH session when exiting Remmina"
 msgstr "退出 Remmina 时记录 SSH 会话"
 
-#: src/remmina_ssh_plugin.c:1056
+#: src/remmina_ssh_plugin.c:1068
 msgid "Audible terminal bell"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1057
+#: src/remmina_ssh_plugin.c:1069
 msgid "SSH compression"
 msgstr "SSH 压缩"
 
-#: src/remmina_ssh_plugin.c:1058
+#: src/remmina_ssh_plugin.c:1070
 msgid "Don't remember passwords"
 msgstr "忘记密码"
 
-#: src/remmina_ssh_plugin.c:1059
+#: src/remmina_ssh_plugin.c:1071
 msgid "Strict host key checking"
 msgstr "严格的主机密钥检查"
 
-#: src/remmina_ssh_plugin.c:1073
+#: src/remmina_ssh_plugin.c:1085
 msgid "SSH - Secure Shell"
 msgstr "SSH - 安全 Shell 连接"
 
@@ -458,7 +482,7 @@ msgstr "大小"
 msgid "User"
 msgstr "用户名"
 
-#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1469
+#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1470
 #: data/ui/remmina_main.glade:551 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "分组"
@@ -679,7 +703,7 @@ msgstr "文件 \"%s\" 已损坏，无法读取或未找到。"
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "警告：此插件需要 GtkSocket，但它不可用。"
 
-#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1487
+#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1488
 msgid "Protocol"
 msgstr "协议"
 
@@ -708,11 +732,11 @@ msgid "Plugins"
 msgstr "插件"
 
 #: src/remmina_plugin_manager.c:445 src/remmina_message_panel.c:451
-#: src/remmina_message_panel.c:620 src/remmina_file_editor.c:161
+#: src/remmina_message_panel.c:620 src/remmina_file_editor.c:162
 msgid "_OK"
 msgstr "确定(_O)"
 
-#: src/remmina_plugin_manager.c:463 src/remmina_file_editor.c:1444
+#: src/remmina_plugin_manager.c:463 src/remmina_file_editor.c:1445
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:529
 msgid "Name"
 msgstr "名称"
@@ -753,7 +777,7 @@ msgstr ""
 msgid "Import"
 msgstr "导入"
 
-#: src/remmina_main.c:979 src/remmina_file_editor.c:1327
+#: src/remmina_main.c:979 src/remmina_file_editor.c:1328
 msgid "_Save"
 msgstr "保存(_S)"
 
@@ -869,8 +893,8 @@ msgid "Overwrite"
 msgstr "覆盖"
 
 #: src/remmina_sftp_client.c:915 src/remmina_message_panel.c:456
-#: src/remmina_message_panel.c:628 src/remmina_file_editor.c:160
-#: src/remmina_file_editor.c:369 src/remmina_file_editor.c:1319
+#: src/remmina_message_panel.c:628 src/remmina_file_editor.c:161
+#: src/remmina_file_editor.c:370 src/remmina_file_editor.c:1320
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
 #: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
@@ -1204,6 +1228,7 @@ msgid ""
 "• %U is substituted with the SSH username\n"
 "• %p is substituted with Remmina profile name\n"
 "• %g is substituted with Remmina profile group name\n"
+"• %d is substituted with local datetime in iso8601 format\n"
 "Do not run in background if you want the command to be executed before "
 "connecting.\n"
 "</big></tt>"
@@ -1219,7 +1244,7 @@ msgstr ""
 "如果要在连接之前执行命令，请不要在后台运行。\n"
 "</big></tt>"
 
-#: src/remmina_file_editor.c:94
+#: src/remmina_file_editor.c:95
 #, fuzzy
 msgid ""
 "<tt><big>Supported formats\n"
@@ -1236,126 +1261,126 @@ msgstr ""
 "* [服务器]:端口\n"
 "* 用户名@服务器:端口（仅 SSH 协议）</big></tt>"
 
-#: src/remmina_file_editor.c:158
+#: src/remmina_file_editor.c:159
 msgid "Choose a Remote Desktop Server"
 msgstr "请选择一个远程桌面服务器"
 
-#: src/remmina_file_editor.c:370
+#: src/remmina_file_editor.c:371
 msgid "_Open"
 msgstr "打开(_O)"
 
-#: src/remmina_file_editor.c:431
+#: src/remmina_file_editor.c:432
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "浏览网络查找 %s 服务器"
 
-#: src/remmina_file_editor.c:532
+#: src/remmina_file_editor.c:533
 msgid "Resolution"
 msgstr "分辨率"
 
-#: src/remmina_file_editor.c:539
+#: src/remmina_file_editor.c:540
 msgid "Use initial window size"
 msgstr "使用初始窗口大小"
 
-#: src/remmina_file_editor.c:543
+#: src/remmina_file_editor.c:544
 msgid "Use client resolution"
 msgstr "使用客户机的分辨率"
 
-#: src/remmina_file_editor.c:554 src/remmina_file_editor.c:863
+#: src/remmina_file_editor.c:555 src/remmina_file_editor.c:864
 msgid "Custom"
 msgstr "自定义"
 
-#: src/remmina_file_editor.c:740
+#: src/remmina_file_editor.c:741
 msgid "Keyboard mapping"
 msgstr "键盘映射"
 
-#: src/remmina_file_editor.c:838
+#: src/remmina_file_editor.c:839
 msgid "SSH Tunnel"
 msgstr "SSH 通道"
 
-#: src/remmina_file_editor.c:839
+#: src/remmina_file_editor.c:840
 msgid "Enable SSH tunnel"
 msgstr "启用 SSH 通道"
 
-#: src/remmina_file_editor.c:846
+#: src/remmina_file_editor.c:847
 msgid "Tunnel via loopback address"
 msgstr "通过 loopback 地址建立隧道"
 
-#: src/remmina_file_editor.c:855
+#: src/remmina_file_editor.c:856
 #, c-format
 msgid "Same server at port %i"
 msgstr "相同主机上的 %i 端口"
 
-#: src/remmina_file_editor.c:901 plugins/rdp/rdp_plugin.c:2012
+#: src/remmina_file_editor.c:902 plugins/rdp/rdp_plugin.c:2012
 msgid "Startup path"
 msgstr "启动路径"
 
-#: src/remmina_file_editor.c:910
+#: src/remmina_file_editor.c:911
 msgid "SSH Authentication"
 msgstr "SSH 验证"
 
-#: src/remmina_file_editor.c:920
+#: src/remmina_file_editor.c:921
 msgid "SSH agent (automatic)"
 msgstr "SSH 代理（自动）"
 
-#: src/remmina_file_editor.c:1005
+#: src/remmina_file_editor.c:1006
 msgid "Turn on \"Autostart\" for this profile"
 msgstr "打开此配置文件的“自动启动”"
 
-#: src/remmina_file_editor.c:1013
+#: src/remmina_file_editor.c:1014
 msgid "Basic"
 msgstr "基本"
 
-#: src/remmina_file_editor.c:1019
+#: src/remmina_file_editor.c:1020
 msgid "Advanced"
 msgstr "高级"
 
-#: src/remmina_file_editor.c:1024
+#: src/remmina_file_editor.c:1025
 msgid "Autostart"
 msgstr "自动启动"
 
-#: src/remmina_file_editor.c:1247
+#: src/remmina_file_editor.c:1248
 msgid "Default settings saved."
 msgstr "默认值已保存。"
 
-#: src/remmina_file_editor.c:1317
+#: src/remmina_file_editor.c:1318
 msgid "Remote Desktop Preference"
 msgstr "远程桌面设定"
 
-#: src/remmina_file_editor.c:1323
+#: src/remmina_file_editor.c:1324
 msgid "Save as Default"
 msgstr "保存为默认值"
 
-#: src/remmina_file_editor.c:1324
+#: src/remmina_file_editor.c:1325
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr "将当前设置用作所有新连接配置文件的默认设置"
 
-#: src/remmina_file_editor.c:1332 data/ui/remmina_main.glade:250
+#: src/remmina_file_editor.c:1333 data/ui/remmina_main.glade:250
 msgid "Connect"
 msgstr "连接"
 
-#: src/remmina_file_editor.c:1335
+#: src/remmina_file_editor.c:1336
 msgid "_Save and Connect"
 msgstr "保存并连接(_S)"
 
-#: src/remmina_file_editor.c:1458
+#: src/remmina_file_editor.c:1459
 msgid "Quick Connect"
 msgstr "快速连接"
 
-#: src/remmina_file_editor.c:1482
+#: src/remmina_file_editor.c:1483
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "使用“%s”作为分组分隔符"
 
-#: src/remmina_file_editor.c:1501
+#: src/remmina_file_editor.c:1502
 msgid "Pre-command"
 msgstr "连接前执行命令"
 
-#: src/remmina_file_editor.c:1519
+#: src/remmina_file_editor.c:1520
 msgid "Post-command"
 msgstr "连接后执行命令"
 
-#: src/remmina_file_editor.c:1584 src/remmina_file_editor.c:1602
+#: src/remmina_file_editor.c:1585 src/remmina_file_editor.c:1603
 #, c-format
 msgid "Could not find the file \"%s\"."
 msgstr "找不到文件 \"%s\"。"

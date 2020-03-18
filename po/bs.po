@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-03-07 18:19+0000\n"
+"POT-Creation-Date: 2020-03-18 13:41+0000\n"
 "PO-Revision-Date: 2019-09-28 14:24+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Bosnian <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -71,8 +71,8 @@ msgid "Connecting to %s via SSH…"
 msgstr "Povezivanje na '%s'…"
 
 #: src/remmina_protocol_widget.c:1351 src/remmina_protocol_widget.c:1370
-#: src/remmina_ssh_plugin.c:926 src/remmina_sftp_plugin.c:284
-#: src/remmina_sftp_plugin.c:317 src/remmina_file_editor.c:926
+#: src/remmina_ssh_plugin.c:928 src/remmina_sftp_plugin.c:284
+#: src/remmina_sftp_plugin.c:317 src/remmina_file_editor.c:927
 #: plugins/www/www_plugin.c:793 plugins/rdp/rdp_plugin.c:1982
 #: data/ui/remmina_unlock.glade:116 data/ui/remmina_mpc.glade:236
 #: data/ui/remmina_preferences.glade:1533
@@ -133,8 +133,8 @@ msgstr "Osluškujem port %i za dolaznu %s konekciju…"
 msgid "Could not authenticate, attempting reconnection…"
 msgstr "Autentifikacija neuspjela. Pokušaj ponovnog uspostavljanja…"
 
-#: src/remmina_protocol_widget.c:1680 src/remmina_file_editor.c:407
-#: src/remmina_file_editor.c:882 data/ui/remmina_main.glade:565
+#: src/remmina_protocol_widget.c:1680 src/remmina_file_editor.c:408
+#: src/remmina_file_editor.c:883 data/ui/remmina_main.glade:565
 msgid "Server"
 msgstr "Server"
 
@@ -148,12 +148,12 @@ msgstr ""
 msgid "Plugin %s is not registered."
 msgstr "Dodatak %s nije registrovan."
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:496
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:497
 #: data/ui/remmina_preferences.glade:234
 msgid "Resolutions"
 msgstr "Rezolucije"
 
-#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:496
+#: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:497
 msgid "Configure the available resolutions"
 msgstr ""
 
@@ -200,136 +200,149 @@ msgstr ""
 msgid "Save session to file"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:927 src/remmina_sftp_plugin.c:285
-#: src/remmina_file_editor.c:361 src/remmina_file_editor.c:368
+#: src/remmina_ssh_plugin.c:929 src/remmina_sftp_plugin.c:285
+#: src/remmina_file_editor.c:362 src/remmina_file_editor.c:369
 msgid "SSH identity file"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:928 src/remmina_sftp_plugin.c:286
+#: src/remmina_ssh_plugin.c:930 src/remmina_sftp_plugin.c:286
 msgid "SSH agent"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:929 src/remmina_sftp_plugin.c:287
-#: src/remmina_file_editor.c:939
+#: src/remmina_ssh_plugin.c:931 src/remmina_sftp_plugin.c:287
+#: src/remmina_file_editor.c:940
 msgid "Public key (automatic)"
 msgstr "Javni ključ (automatski)"
 
-#: src/remmina_ssh_plugin.c:930 src/remmina_sftp_plugin.c:288
+#: src/remmina_ssh_plugin.c:932 src/remmina_sftp_plugin.c:288
 msgid "Kerberos (GSSAPI)"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1005 data/ui/remmina_main.glade:267
+#: src/remmina_ssh_plugin.c:1007 data/ui/remmina_main.glade:267
 msgid "Copy"
 msgstr "Kopiraj"
 
-#: src/remmina_ssh_plugin.c:1005
+#: src/remmina_ssh_plugin.c:1007
 msgid "_Copy"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1006
+#: src/remmina_ssh_plugin.c:1008
 msgid "Paste"
 msgstr "Umetni"
 
-#: src/remmina_ssh_plugin.c:1006
+#: src/remmina_ssh_plugin.c:1008
 msgid "_Paste"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1007
+#: src/remmina_ssh_plugin.c:1009
 msgid "Select all"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1007
+#: src/remmina_ssh_plugin.c:1009
 msgid "_Select all"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1025 src/remmina_message_panel.c:330
-#: src/remmina_sftp_plugin.c:316 src/remmina_file_editor.c:917
+#: src/remmina_ssh_plugin.c:1027 src/remmina_message_panel.c:330
+#: src/remmina_sftp_plugin.c:316 src/remmina_file_editor.c:918
 #: plugins/www/www_plugin.c:792 plugins/vnc/vnc_plugin.c:1831
 #: plugins/vnc/vnc_plugin.c:1851 plugins/rdp/rdp_plugin.c:1981
 #: plugins/nx/nx_plugin.c:721 data/ui/remmina_mpc.glade:144
 msgid "Username"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1026 plugins/vnc/vnc_plugin.c:1832
+#: src/remmina_ssh_plugin.c:1028 plugins/vnc/vnc_plugin.c:1832
 #: plugins/vnc/vnc_plugin.c:1852 plugins/spice/spice_plugin.c:437
 #: plugins/nx/nx_plugin.c:722
 msgid "User password"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1027 src/remmina_sftp_plugin.c:318
+#: src/remmina_ssh_plugin.c:1029 src/remmina_sftp_plugin.c:318
 msgid "Authentication type"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1028 src/remmina_sftp_plugin.c:319
+#: src/remmina_ssh_plugin.c:1030 src/remmina_sftp_plugin.c:319
 #: plugins/nx/nx_plugin.c:720
 msgid "Identity file"
 msgstr "Datoteka identiteta"
 
-#: src/remmina_ssh_plugin.c:1029 src/remmina_sftp_plugin.c:320
-#: src/remmina_file_editor.c:948
+#: src/remmina_ssh_plugin.c:1031 src/remmina_sftp_plugin.c:320
+#: src/remmina_file_editor.c:949
 msgid "Password to unlock private key"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1030 plugins/xdmcp/xdmcp_plugin.c:370
+#: src/remmina_ssh_plugin.c:1032 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2011 plugins/nx/nx_plugin.c:725
 msgid "Startup program"
 msgstr "Program koji se pokreće"
 
-#: src/remmina_ssh_plugin.c:1047
+#: src/remmina_ssh_plugin.c:1037
+msgid ""
+"The filename can use the following placeholders:\n"
+"\n"
+"  • %h is substituted with the server name\n"
+"  • %t is substituted with the SSH server name\n"
+"  • %u is substituted with the username\n"
+"  • %U is substituted with the SSH username\n"
+"  • %p is substituted with Remmina profile name\n"
+"  • %g is substituted with Remmina profile group name\n"
+"  • %d is substituted with local datetime in iso8601 format\n"
+msgstr ""
+
+#: src/remmina_ssh_plugin.c:1059
 msgid "Terminal color scheme"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1048
+#: src/remmina_ssh_plugin.c:1060
 msgid "Character set"
 msgstr "Skup znakova"
 
-#: src/remmina_ssh_plugin.c:1049
+#: src/remmina_ssh_plugin.c:1061
 msgid "SSH Proxy Command"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1050
+#: src/remmina_ssh_plugin.c:1062
 msgid "KEX (Key Exchange) algorithms"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1051
+#: src/remmina_ssh_plugin.c:1063
 msgid "Symmetric cipher client to server"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1052
+#: src/remmina_ssh_plugin.c:1064
 msgid "Preferred server host key types"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1053
+#: src/remmina_ssh_plugin.c:1065
 #, fuzzy
 msgid "Folder for SSH session log"
 msgstr "Neuspjelo pokretanje SSH sesije: %s"
 
-#: src/remmina_ssh_plugin.c:1054
+#: src/remmina_ssh_plugin.c:1066
 msgid "Filename for SSH session log"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1055
+#: src/remmina_ssh_plugin.c:1067
 msgid "Log SSH session when exiting Remmina"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1056
+#: src/remmina_ssh_plugin.c:1068
 msgid "Audible terminal bell"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1057
+#: src/remmina_ssh_plugin.c:1069
 msgid "SSH compression"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1058
+#: src/remmina_ssh_plugin.c:1070
 #, fuzzy
 msgid "Don't remember passwords"
 msgstr "Sačuvaj šifru"
 
-#: src/remmina_ssh_plugin.c:1059
+#: src/remmina_ssh_plugin.c:1071
 msgid "Strict host key checking"
 msgstr ""
 
-#: src/remmina_ssh_plugin.c:1073
+#: src/remmina_ssh_plugin.c:1085
 msgid "SSH - Secure Shell"
 msgstr "SSH - Secure Shell"
 
@@ -461,7 +474,7 @@ msgstr "Veličina"
 msgid "User"
 msgstr "Korisnik"
 
-#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1469
+#: src/remmina_ftp_client.c:930 src/remmina_file_editor.c:1470
 #: data/ui/remmina_main.glade:551 data/ui/remmina_mpc.glade:115
 msgid "Group"
 msgstr "Grupa"
@@ -686,7 +699,7 @@ msgstr ""
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr ""
 
-#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1487
+#: src/remmina_plugin_manager.c:69 src/remmina_file_editor.c:1488
 msgid "Protocol"
 msgstr "Protokol"
 
@@ -715,11 +728,11 @@ msgid "Plugins"
 msgstr "Priključci"
 
 #: src/remmina_plugin_manager.c:445 src/remmina_message_panel.c:451
-#: src/remmina_message_panel.c:620 src/remmina_file_editor.c:161
+#: src/remmina_message_panel.c:620 src/remmina_file_editor.c:162
 msgid "_OK"
 msgstr ""
 
-#: src/remmina_plugin_manager.c:463 src/remmina_file_editor.c:1444
+#: src/remmina_plugin_manager.c:463 src/remmina_file_editor.c:1445
 #: plugins/nx/nx_session_manager.c:204 data/ui/remmina_main.glade:529
 msgid "Name"
 msgstr "Naziv"
@@ -762,7 +775,7 @@ msgstr ""
 msgid "Import"
 msgstr "Uvezi"
 
-#: src/remmina_main.c:979 src/remmina_file_editor.c:1327
+#: src/remmina_main.c:979 src/remmina_file_editor.c:1328
 msgid "_Save"
 msgstr ""
 
@@ -879,8 +892,8 @@ msgid "Overwrite"
 msgstr "Prepiši preko"
 
 #: src/remmina_sftp_client.c:915 src/remmina_message_panel.c:456
-#: src/remmina_message_panel.c:628 src/remmina_file_editor.c:160
-#: src/remmina_file_editor.c:369 src/remmina_file_editor.c:1319
+#: src/remmina_message_panel.c:628 src/remmina_file_editor.c:161
+#: src/remmina_file_editor.c:370 src/remmina_file_editor.c:1320
 #: plugins/spice/spice_plugin_file_transfer.c:84
 #: plugins/nx/nx_session_manager.c:156 data/ui/remmina_spinner.glade:8
 #: data/ui/remmina_spinner.glade:9 data/ui/remmina_key_chooser.glade:8
@@ -1213,12 +1226,13 @@ msgid ""
 "• %U is substituted with the SSH username\n"
 "• %p is substituted with Remmina profile name\n"
 "• %g is substituted with Remmina profile group name\n"
+"• %d is substituted with local datetime in iso8601 format\n"
 "Do not run in background if you want the command to be executed before "
 "connecting.\n"
 "</big></tt>"
 msgstr ""
 
-#: src/remmina_file_editor.c:94
+#: src/remmina_file_editor.c:95
 #, fuzzy
 msgid ""
 "<tt><big>Supported formats\n"
@@ -1233,127 +1247,127 @@ msgstr ""
 "* poslužitelj: port\n"
 "* [poslužitelj]: port</big></tt>"
 
-#: src/remmina_file_editor.c:158
+#: src/remmina_file_editor.c:159
 msgid "Choose a Remote Desktop Server"
 msgstr "Izaberi Remote Desktop Server"
 
-#: src/remmina_file_editor.c:370
+#: src/remmina_file_editor.c:371
 msgid "_Open"
 msgstr ""
 
-#: src/remmina_file_editor.c:431
+#: src/remmina_file_editor.c:432
 #, c-format
 msgid "Browse the network to find a %s server"
 msgstr "Istraži mrežu da nađeš %s server"
 
-#: src/remmina_file_editor.c:532
+#: src/remmina_file_editor.c:533
 msgid "Resolution"
 msgstr "Rezolucija"
 
-#: src/remmina_file_editor.c:539
+#: src/remmina_file_editor.c:540
 msgid "Use initial window size"
 msgstr ""
 
-#: src/remmina_file_editor.c:543
+#: src/remmina_file_editor.c:544
 msgid "Use client resolution"
 msgstr "Koristi rezoluciju klijenta"
 
-#: src/remmina_file_editor.c:554 src/remmina_file_editor.c:863
+#: src/remmina_file_editor.c:555 src/remmina_file_editor.c:864
 msgid "Custom"
 msgstr "Prilagođeno"
 
-#: src/remmina_file_editor.c:740
+#: src/remmina_file_editor.c:741
 msgid "Keyboard mapping"
 msgstr "Postavke dugmadi tastature"
 
-#: src/remmina_file_editor.c:838
+#: src/remmina_file_editor.c:839
 msgid "SSH Tunnel"
 msgstr ""
 
-#: src/remmina_file_editor.c:839
+#: src/remmina_file_editor.c:840
 msgid "Enable SSH tunnel"
 msgstr "Uključi SSH tunel"
 
-#: src/remmina_file_editor.c:846
+#: src/remmina_file_editor.c:847
 msgid "Tunnel via loopback address"
 msgstr "Tunel preko lokalnih adresa"
 
-#: src/remmina_file_editor.c:855
+#: src/remmina_file_editor.c:856
 #, c-format
 msgid "Same server at port %i"
 msgstr "Isti server na portu %i"
 
-#: src/remmina_file_editor.c:901 plugins/rdp/rdp_plugin.c:2012
+#: src/remmina_file_editor.c:902 plugins/rdp/rdp_plugin.c:2012
 msgid "Startup path"
 msgstr "Putanja pokretanja"
 
-#: src/remmina_file_editor.c:910
+#: src/remmina_file_editor.c:911
 msgid "SSH Authentication"
 msgstr "SSH ovjera"
 
-#: src/remmina_file_editor.c:920
+#: src/remmina_file_editor.c:921
 #, fuzzy
 msgid "SSH agent (automatic)"
 msgstr "Javni ključ (automatski)"
 
-#: src/remmina_file_editor.c:1005
+#: src/remmina_file_editor.c:1006
 msgid "Turn on \"Autostart\" for this profile"
 msgstr ""
 
-#: src/remmina_file_editor.c:1013
+#: src/remmina_file_editor.c:1014
 msgid "Basic"
 msgstr "Osnovni"
 
-#: src/remmina_file_editor.c:1019
+#: src/remmina_file_editor.c:1020
 msgid "Advanced"
 msgstr "Napredno"
 
-#: src/remmina_file_editor.c:1024
+#: src/remmina_file_editor.c:1025
 msgid "Autostart"
 msgstr ""
 
-#: src/remmina_file_editor.c:1247
+#: src/remmina_file_editor.c:1248
 msgid "Default settings saved."
 msgstr "Zadane postavke spremljene."
 
-#: src/remmina_file_editor.c:1317
+#: src/remmina_file_editor.c:1318
 msgid "Remote Desktop Preference"
 msgstr "Postavke remote desktopa"
 
-#: src/remmina_file_editor.c:1323
+#: src/remmina_file_editor.c:1324
 msgid "Save as Default"
 msgstr ""
 
-#: src/remmina_file_editor.c:1324
+#: src/remmina_file_editor.c:1325
 msgid "Use the current settings as the default for all new connection profiles"
 msgstr ""
 
-#: src/remmina_file_editor.c:1332 data/ui/remmina_main.glade:250
+#: src/remmina_file_editor.c:1333 data/ui/remmina_main.glade:250
 msgid "Connect"
 msgstr ""
 
-#: src/remmina_file_editor.c:1335
+#: src/remmina_file_editor.c:1336
 msgid "_Save and Connect"
 msgstr ""
 
-#: src/remmina_file_editor.c:1458
+#: src/remmina_file_editor.c:1459
 msgid "Quick Connect"
 msgstr "Brzo povezivanje"
 
-#: src/remmina_file_editor.c:1482
+#: src/remmina_file_editor.c:1483
 #, c-format
 msgid "Use '%s' as subgroup delimiter"
 msgstr "Koristi '%s' kao graničnik podgrupe"
 
-#: src/remmina_file_editor.c:1501
+#: src/remmina_file_editor.c:1502
 msgid "Pre-command"
 msgstr ""
 
-#: src/remmina_file_editor.c:1519
+#: src/remmina_file_editor.c:1520
 msgid "Post-command"
 msgstr ""
 
-#: src/remmina_file_editor.c:1584 src/remmina_file_editor.c:1602
+#: src/remmina_file_editor.c:1585 src/remmina_file_editor.c:1603
 #, c-format
 msgid "Could not find the file \"%s\"."
 msgstr ""
