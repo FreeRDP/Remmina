@@ -2055,10 +2055,13 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionWindowPriv *priv = cnnwin->priv;
+	RemminaConnectionObject *cnnobj;
 	GtkWidget *toolbar;
 	GtkToolItem *toolitem;
 	GtkWidget *widget;
 	GtkWidget *arrow;
+
+	cnnobj = rcw_get_visible_cnnobj(cnnwin);
 
 	priv->toolbar_is_reconfiguring = TRUE;
 
@@ -2220,6 +2223,9 @@ rcw_create_toolbar(RemminaConnectionWindow *cnnwin, gint mode)
 	gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 	gtk_widget_show(GTK_WIDGET(toolitem));
 	g_signal_connect(G_OBJECT(toolitem), "clicked", G_CALLBACK(rcw_toolbar_duplicate), cnnwin);
+	if (!cnnobj)
+		gtk_widget_set_sensitive(GTK_WIDGET(toolitem), FALSE);
+
 	priv->toolitem_duplicate = toolitem;
 
 	toolitem = gtk_tool_button_new(NULL, "_Screenshot");
@@ -2304,6 +2310,11 @@ static void rco_update_toolbar(RemminaConnectionObject *cnnobj)
 	else
 		bval = (gtk_notebook_get_n_pages(GTK_NOTEBOOK(priv->notebook)) > 1);
 	gtk_widget_set_sensitive(GTK_WIDGET(toolitem), bval);
+
+	if (cnnobj->remmina_file->filename)
+		gtk_widget_set_sensitive(GTK_WIDGET(priv->toolitem_duplicate), TRUE);
+	else
+		gtk_widget_set_sensitive(GTK_WIDGET(priv->toolitem_duplicate), FALSE);
 
 	scalemode = get_current_allowed_scale_mode(cnnobj, &dynres_avail, &scale_avail);
 	gtk_widget_set_sensitive(GTK_WIDGET(priv->toolitem_dynres), dynres_avail && cnnobj->connected);
