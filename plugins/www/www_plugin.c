@@ -170,6 +170,61 @@ void remmina_plugin_www_decide_nav(WebKitPolicyDecision *decision, RemminaProtoc
 		break;
 	}
 }
+
+void remmina_plugin_www_on_create(WebKitWebView *webview, WebKitNavigationAction *a, RemminaProtocolWidget *gp)
+{
+	TRACE_CALL(__func__);
+	g_debug("New web-view");
+
+	const gchar *url = NULL;
+
+	RemminaPluginWWWData *gpdata;
+	gpdata = (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
+
+	switch (webkit_navigation_action_get_navigation_type(a)) {
+	case WEBKIT_NAVIGATION_TYPE_LINK_CLICKED:
+		g_debug("WEBKIT_NAVIGATION_TYPE_LINK_CLICKED");
+		url = webkit_uri_request_get_uri(
+			webkit_navigation_action_get_request(a));
+		g_debug("Downloading url %s ", url);
+		WebKitDownload *d = webkit_web_view_download_uri(gpdata->webview, url);
+
+		break;
+	case WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED:
+		g_debug("WEBKIT_NAVIGATION_TYPE_FORM_SUBMITTED");
+		break;
+	case WEBKIT_NAVIGATION_TYPE_BACK_FORWARD:
+		g_debug("WEBKIT_NAVIGATION_TYPE_BACK_FORWARD");
+		break;
+	case WEBKIT_NAVIGATION_TYPE_RELOAD:
+		g_debug("WEBKIT_NAVIGATION_TYPE_RELOAD");
+		break;
+	case WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED:
+		g_debug("WEBKIT_NAVIGATION_TYPE_FORM_RESUBMITTED");
+		/* Filter domains here */
+		/* If the value of “mouse-button” is not 0, then the navigation was triggered by a mouse event.
+		 * test for link clicked but no button ? */
+		url = webkit_uri_request_get_uri(
+			webkit_navigation_action_get_request(a));
+		g_debug("Trying to open url: %s", url);
+		webkit_web_view_load_uri(gpdata->webview, url);
+		break;
+	case WEBKIT_NAVIGATION_TYPE_OTHER:         /* fallthrough */
+		g_debug("WEBKIT_NAVIGATION_TYPE_OTHER");
+		/* Filter domains here */
+		/* If the value of “mouse-button” is not 0, then the navigation was triggered by a mouse event.
+		 * test for link clicked but no button ? */
+		url = webkit_uri_request_get_uri(
+			webkit_navigation_action_get_request(a));
+		g_debug("Trying to open url: %s", url);
+		webkit_web_view_load_uri(gpdata->webview, url);
+		break;
+	default:
+		break;
+	}
+	g_debug("WEBKIT_NAVIGATION_TYPE is %d", webkit_navigation_action_get_navigation_type(a));
+}
+
 void remmina_plugin_www_decide_newwin(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
@@ -230,8 +285,7 @@ void remmina_plugin_www_decide_newwin(WebKitPolicyDecision *decision, RemminaPro
 
 	webkit_policy_decision_ignore(decision);
 }
-static gboolean
-remmina_plugin_www_decide_resource(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp)
+gboolean remmina_plugin_www_decide_resource(WebKitPolicyDecision *decision, RemminaProtocolWidget *gp)
 {
 	TRACE_CALL(__func__);
 	g_debug("Policy decision resource");
@@ -409,9 +463,10 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 #ifdef DEBUG
 	/* Turn on the developer extras */
 	webkit_settings_set_enable_developer_extras(gpdata->settings, TRUE);
+	webkit_settings_set_enable_write_console_messages_to_stdout(gpdata->settings, TRUE);
 #endif
 
-	/* user-agent. TODO: Add option. */
+	/* user-agent. */
 	if (remmina_plugin_service->file_get_string(remminafile, "user-agent")) {
 		gchar *useragent = g_strdup(remmina_plugin_service->file_get_string(remminafile, "user-agent"));
 		webkit_settings_set_user_agent(gpdata->settings, useragent);
@@ -446,6 +501,7 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	/* enable-webgl */
 	if (remmina_plugin_service->file_get_int(remminafile, "enable-webgl", FALSE)) {
 		webkit_settings_set_enable_webgl(gpdata->settings, TRUE);
+		webkit_settings_set_enable_accelerated_2d_canvas(gpdata->settings, TRUE);
 		g_info("enable-webgl enabled");
 	}
 
@@ -457,6 +513,15 @@ static void remmina_plugin_www_init(RemminaProtocolWidget *gp)
 	webkit_web_context_set_automation_allowed(gpdata->context, TRUE);
 	webkit_settings_set_javascript_can_open_windows_automatically(gpdata->settings, TRUE);
 	webkit_settings_set_allow_modal_dialogs(gpdata->settings, TRUE);
+	/** Frames flattening
+	 * Some websites engage in embedding frames-inside-of-frames. WebKit has
+	 * the ability to flatten them so they behave, when scrolling, as one big
+	 * frame. If for some reason it is not enabled, go ahead and turn it on.
+	 */
+	if (!webkit_settings_get_enable_frame_flattening(gpdata->settings)) {
+		webkit_settings_set_enable_frame_flattening(gpdata->settings, true);
+	}
+	webkit_settings_set_enable_resizable_text_areas(gpdata->settings, true);
 
 	g_signal_connect(G_OBJECT(gpdata->context), "download-started",
 			 G_CALLBACK(remmina_plugin_www_download_started), gp);
@@ -562,8 +627,10 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 
 	switch (load_event) {
 	case WEBKIT_LOAD_STARTED:
+		g_debug("Load started");
 		break;
 	case WEBKIT_LOAD_REDIRECTED:
+		g_debug("Load redirected");
 		break;
 	case WEBKIT_LOAD_COMMITTED:
 		/* The load is being performed. Current URI is
@@ -571,6 +638,7 @@ static void remmina_plugin_www_form_auth(WebKitWebView *webview,
 		 * load is requested or a navigation within the
 		 * same page is performed
 		 * uri = webkit_web_view_get_uri (webview); */
+		g_debug("Load committed");
 		break;
 	case WEBKIT_LOAD_FINISHED:
 		/* Load finished, we can now set user/password
@@ -626,6 +694,7 @@ static gboolean remmina_plugin_www_close_connection(RemminaProtocolWidget *gp)
 	RemminaPluginWWWData *gpdata;
 	gpdata = (RemminaPluginWWWData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
+	webkit_web_view_stop_loading(gpdata->webview);
 	webkit_web_view_try_close(gpdata->webview);
 
 	if (gpdata->url) g_free(gpdata->url);
@@ -671,6 +740,7 @@ static gboolean remmina_plugin_www_open_connection(RemminaProtocolWidget *gp)
 	//"signal::load-failed-with-tls-errors", G_CALLBACK(remmina_plugin_www_load_failed_tls_cb), gp,
 	g_object_connect(
 		G_OBJECT(gpdata->webview),
+		"signal::create", G_CALLBACK(remmina_plugin_www_on_create), gp,
 		"signal::load-changed", G_CALLBACK(remmina_plugin_www_form_auth), gp,
 		"signal::authenticate", G_CALLBACK(remmina_plugin_www_on_auth), gp,
 		"signal::decide-policy", G_CALLBACK(remmina_plugin_www_decide_policy_cb), gp,
