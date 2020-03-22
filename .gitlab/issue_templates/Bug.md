@@ -1,14 +1,16 @@
-**Consider to test the latest Remmina version before to submit a bug report**
-*At the moment the latest version available is v1.4.0*
+**Test on the latest [![remmina](https://snapcraft.io//remmina/badge.svg)](https://snapcraft.io/remmina) version before submitting a bug-report, and keep trying to reproduce it on any later versions**
+* Reporting back greatly increases the attention and hope of fixing your issue.
 
-If this is not a bug, submit your question to [our reddit](https://reddit.com/r/Remmina) or our [general discussion mailing list](https://lists.remmina.org/listinfo/users).
-Sometimes you can find us on IRC, we are on freenode.net , in the channel #remmina.
+You can also ask questions via
+* IRC room, on freenode.net, in the #remmina channel, you can also use a [web client](https://kiwiirc.com/client/irc.freenode.net/?nick=remminer|?#remmina/).
+* [General discussion mailing list](https://lists.remmina.org/listinfo/users).
+* [Reddit](https://reddit.com/r/Remmina)
 
 ## Local System Description
 
 * Client (OS name and version):
 * Remmina version ( ```remmina --version``` ):
-* Installation mean:
+* Installation:
   - [X] Distribution package.
   - [ ] PPA.
   - [ ] Snap.
@@ -24,9 +26,9 @@ Sometimes you can find us on IRC, we are on freenode.net , in the channel #remmi
   - [ ] SPICE
   - [ ] WWW
   - [ ] EXEC
-  - [ ] Other (Please specify):
-* Gtk Backend (Wayland, Xorg):
-* Optional: include the output of the following commands at the end of this text:
+  - [ ] Other (please specify):
+* GTK back-end (Wayland, Xorg):
+* Optional: Include the output of the following commands at the end of this text:
 
   - `remmina --full-version`
 
@@ -52,19 +54,19 @@ Sometimes you can find us on IRC, we are on freenode.net , in the channel #remmi
 ## Remote System Description
 
 * Server (OS name and version):
-* Special notes regarding the remote system (i.e. gateways, tunnel, etc):
+* Special notes regarding the remote system (i.e. gateways, tunnel, etc.):
 
 ## Problem Description
 
-Write here a detailed description of the problem.
+Write a detailed description of the problem.
 
 ### What is the expected correct behavior?
 
-(What you should see instead)
+(What you want to see instead.)
 
 
 ### Relevant logs and/or screenshots
 
-<!-- (Paste any relevant logs - please use code blocks (```) to format console output, logs, and code as it's very hard to read otherwise.) -->
+<!-- (Paste any relevant logs - please use code blocks (```) to format ```console output, logs, and code``` as it's very hard to read otherwise.) -->
 
 /label ~bug
