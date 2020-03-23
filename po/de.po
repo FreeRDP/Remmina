@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-03-19 14:18+0000\n"
-"PO-Revision-Date: 2020-02-27 07:01+0000\n"
+"PO-Revision-Date: 2020-03-23 03:49+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
@@ -1970,7 +1970,7 @@ msgstr "Verhandeln"
 
 #: plugins/rdp/rdp_plugin.c:1960
 msgid "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 and newer)"
-msgstr ""
+msgstr "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 und neuer)"
 
 #: plugins/rdp/rdp_plugin.c:1963
 msgid ""
@@ -1982,6 +1982,13 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
 "SCardGetDeviceTypeId()"
 msgstr ""
+"Wird u.a. von Terminal-Services im Smartcard-Channel verwendet, um "
+"Fähigkeiten des Clients zu erkennen.\n"
+"  • < 4034: Windows XP base smartcard functions\n"
+"  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
+"    SCardGetTransmitCount()\n"
+"  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
+"SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2002
 msgid "Sound"
