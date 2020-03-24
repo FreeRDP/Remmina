@@ -1050,7 +1050,7 @@ static gboolean remmina_main_quickconnect(void)
 
 	/* Save quick connect protocol if different from the previuous one */
 	qcp = gtk_combo_box_text_get_active_text(remminamain->combo_quick_connect_protocol);
-	if (strcmp(qcp, remmina_pref.last_quickconnect_protocol) != 0) {
+	if (qcp && strcmp(qcp, remmina_pref.last_quickconnect_protocol) != 0) {
 		g_free(remmina_pref.last_quickconnect_protocol);
 		remmina_pref.last_quickconnect_protocol = g_strdup(qcp);
 		remmina_pref_save();
