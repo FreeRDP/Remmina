@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-03-19 14:18+0000\n"
-"PO-Revision-Date: 2020-03-23 03:50+0000\n"
+"PO-Revision-Date: 2020-03-24 20:31+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/remmina/"
 "remmina/nb_NO/>\n"
@@ -837,15 +837,15 @@ msgstr "<Ingen>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:171
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the folder \"%s\"."
-msgstr "Klarte ikke å åpne kanal: %s"
+msgstr "Klarte ikke å opprette mappen: %s."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:179 src/remmina_sftp_client.c:200
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the file \"%s\"."
-msgstr "Klarte ikke å åpne kanal: %s"
+msgstr "Klarte ikke å opprette filen: %s."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:218
@@ -854,9 +854,9 @@ msgid "Could not open the file \"%s\" on the server. %s"
 msgstr "Fant ikke filen:\"%s\" på tjeneren. %s"
 
 #: src/remmina_sftp_client.c:240
-#, fuzzy, c-format
+#, c-format
 msgid "Could not save the file \"%s\"."
-msgstr "Klarte ikke å åpne kanal: %s"
+msgstr "Klarte ikke å lagre filen: %s."
 
 #: src/remmina_sftp_client.c:279 src/remmina_sftp_client.c:670
 #: src/remmina_sftp_client.c:733
@@ -1135,7 +1135,7 @@ msgstr "Klarte ikke å åpne kanal: %s"
 #: src/remmina_ssh.c:1233
 #, fuzzy, c-format
 msgid "Could not run %s on SSH server."
-msgstr "Klarte ikke å kjøre «%s» på SSH-tjeneren, %%s"
+msgstr "Klarte ikke å kjøre «%s» på SSH-tjeneren."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1271 src/remmina_ssh.c:1292 src/remmina_ssh.c:1301
@@ -2013,6 +2013,7 @@ msgid "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 and newer)"
 msgstr "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 og nyere)"
 
 #: plugins/rdp/rdp_plugin.c:1963
+#, fuzzy
 msgid ""
 "Used i.a. by Terminal services in SmartCard channel to distinguish client "
 "capabilities:\n"
@@ -2022,6 +2023,12 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
 "SCardGetDeviceTypeId()"
 msgstr ""
+"Brukt for eksempel av SmartCard-kanal for å skjelne klientmuligheter:\n"
+"  • < 4034: Windows XP base smartcard functions\n"
+"  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
+"    SCardGetTransmitCount()\n"
+"  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
+"SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2002
 msgid "Sound"
