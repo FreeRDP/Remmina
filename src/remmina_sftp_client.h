@@ -61,6 +61,8 @@ typedef struct _RemminaSFTPClient {
 	pthread_t		thread;
 	gint			taskid;
 	gboolean		thread_abort;
+	RemminaProtocolWidget *gp;
+
 } RemminaSFTPClient;
 
 typedef struct _RemminaSFTPClientClass {
@@ -69,7 +71,7 @@ typedef struct _RemminaSFTPClientClass {
 
 GType remmina_sftp_client_get_type(void) G_GNUC_CONST;
 
-GtkWidget *remmina_sftp_client_new(void);
+RemminaSFTPClient *remmina_sftp_client_new();
 
 void remmina_sftp_client_open(RemminaSFTPClient *client, RemminaSFTP *sftp);
 gint remmina_sftp_client_confirm_resume(RemminaSFTPClient *client, const gchar *path);

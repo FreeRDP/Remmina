@@ -50,6 +50,7 @@
 #include "remmina_pref.h"
 #include "remmina_ssh.h"
 #include "remmina_sftp_client.h"
+#include "remmina_sftp_plugin.h"
 #include "remmina_masterthread_exec.h"
 #include "remmina/remmina_trace_calls.h"
 
@@ -503,15 +504,41 @@ remmina_sftp_client_thread_main(gpointer data)
 	gchar *refreshdir = NULL;
 	gchar *tmp;
 	gboolean refresh = FALSE;
+	gchar *host;
+	int port;
 
 	task = remmina_sftp_client_thread_get_task(client);
 	while (task) {
 		size = 0;
 		if (!sftp) {
 			sftp = remmina_sftp_new_from_ssh(REMMINA_SSH(client->sftp));
-			if (!remmina_ssh_init_session(REMMINA_SSH(sftp), FALSE) ||
-			    remmina_ssh_auth(REMMINA_SSH(sftp), NULL, NULL, NULL) <= 0 ||
-			    !remmina_sftp_open(sftp)) {
+
+			/* we may need to open a new tunnel too */
+			host = NULL;
+			port = 0;
+			if (!remmina_plugin_sftp_start_direct_tunnel(client->gp, &host, &port))
+				return NULL;
+			(REMMINA_SSH(sftp))->tunnel_entrance_host = host;
+			(REMMINA_SSH(sftp))->tunnel_entrance_port = port;
+
+			/* Open a new connection for this subcommand */
+			g_debug("[SFTPCLI] %s opening ssh session to %s:%d", __func__, host, port);
+			if (!remmina_ssh_init_session(REMMINA_SSH(sftp))) {
+				g_debug("[SFTPCLI] remmina_ssh_init_session returned error %s\n", (REMMINA_SSH(sftp))->error);
+				remmina_sftp_client_thread_set_error(client, task, (REMMINA_SSH(sftp))->error);
+				remmina_ftp_task_free(task);
+				break;
+			}
+
+			if (remmina_ssh_auth(REMMINA_SSH(sftp), REMMINA_SSH(sftp)->password, client->gp, NULL) != REMMINA_SSH_AUTH_SUCCESS) {
+				g_debug("[SFTPCLI] remmina_ssh_auth returned error %s\n", (REMMINA_SSH(sftp))->error);
+				remmina_sftp_client_thread_set_error(client, task, (REMMINA_SSH(sftp))->error);
+				remmina_ftp_task_free(task);
+				break;
+			}
+
+			if (!remmina_sftp_open(sftp)) {
+				g_debug("[SFTPCLI] remmina_sftp_open returned error %s\n", (REMMINA_SSH(sftp))->error);
 				remmina_sftp_client_thread_set_error(client, task, (REMMINA_SSH(sftp))->error);
 				remmina_ftp_task_free(task);
 				break;
@@ -946,11 +973,11 @@ remmina_sftp_client_confirm_resume(RemminaSFTPClient *client, const gchar *path)
 	return response;
 }
 
-GtkWidget *
+RemminaSFTPClient *
 remmina_sftp_client_new(void)
 {
 	TRACE_CALL(__func__);
-	return GTK_WIDGET(g_object_new(REMMINA_TYPE_SFTP_CLIENT, NULL));
+	return REMMINA_SFTP_CLIENT(g_object_new(REMMINA_TYPE_SFTP_CLIENT, NULL));
 }
 
 void
@@ -962,6 +989,7 @@ remmina_sftp_client_open(RemminaSFTPClient *client, RemminaSFTP *sftp)
 	g_idle_add((GSourceFunc)remmina_sftp_client_refresh, client);
 }
 
+/*
 GtkWidget *
 remmina_sftp_client_new_init(RemminaSFTP *sftp)
 {
@@ -977,8 +1005,8 @@ remmina_sftp_client_new_init(RemminaSFTP *sftp)
 	SET_CURSOR(gdk_cursor_new_for_display(display, GDK_WATCH));
 	gdk_display_flush(display);
 
-	if (!remmina_ssh_init_session(REMMINA_SSH(sftp), FALSE) ||
-	    remmina_ssh_auth(REMMINA_SSH(sftp), NULL, NULL, NULL) <= 0 ||
+	if (!remmina_ssh_init_session(REMMINA_SSH(sftp)) ||
+	    remmina_ssh_auth(REMMINA_SSH(sftp), NULL, NULL, NULL) != REMMINA_SSH_AUTH_SUCCESS ||
 	    !remmina_sftp_open(sftp)) {
 		dialog = gtk_message_dialog_new(GTK_WINDOW(gtk_widget_get_toplevel(client)),
 						GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
@@ -994,5 +1022,6 @@ remmina_sftp_client_new_init(RemminaSFTP *sftp)
 	g_idle_add((GSourceFunc)remmina_sftp_client_refresh, client);
 	return client;
 }
+*/
 
 #endif
