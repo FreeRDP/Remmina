@@ -83,8 +83,9 @@ typedef struct _RemminaSSH {
 	gchar *		passphrase;
 
 	gboolean	is_tunnel;
-	gchar *		tunnel_host;
-	gint		tunnel_port;
+	gchar *		tunnel_entrance_host;
+	gint		tunnel_entrance_port;
+
 } RemminaSSH;
 
 gchar *remmina_ssh_identity_path(const gchar *id);
@@ -96,7 +97,7 @@ gchar *remmina_ssh_find_identity(void);
 gboolean remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile, gboolean is_tunnel);
 
 /* Initialize the SSH session */
-gboolean remmina_ssh_init_session(RemminaSSH *ssh, gboolean is_tunnel);
+gboolean remmina_ssh_init_session(RemminaSSH *ssh);
 
 /* Authenticate SSH session */
 
@@ -172,6 +173,10 @@ struct _RemminaSSHTunnel {
 	RemminaSSHTunnelCallback	connect_func;
 	RemminaSSHTunnelCallback	disconnect_func;
 	gpointer			callback_data;
+
+	RemminaSSHTunnelCallback	destroy_func;
+	gpointer	destroy_func_callback_data;
+
 };
 
 /* Create a new SSH Tunnel session and connects to the SSH server */

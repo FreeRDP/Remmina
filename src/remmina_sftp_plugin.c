@@ -56,12 +56,27 @@
 #define GET_PLUGIN_DATA(gp) (RemminaPluginSftpData *)g_object_get_data(G_OBJECT(gp), "plugin-data");
 
 typedef struct _RemminaPluginSftpData {
-	GtkWidget *	client;
+	RemminaSFTPClient *	client;
 	pthread_t	thread;
 	RemminaSFTP *	sftp;
 } RemminaPluginSftpData;
 
 static RemminaPluginService *remmina_plugin_service = NULL;
+
+gboolean remmina_plugin_sftp_start_direct_tunnel(RemminaProtocolWidget *gp, char **phost, int *pport)
+{
+	gchar *hostport;
+
+	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
+	if (hostport == NULL) {
+		remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
+		return FALSE;
+	}
+
+	remmina_plugin_service->get_server_port(hostport, 22, phost, pport);
+
+	return TRUE;
+}
 
 static gpointer
 remmina_plugin_sftp_main_thread(gpointer data)
@@ -75,62 +90,52 @@ remmina_plugin_sftp_main_thread(gpointer data)
 	gboolean cont = FALSE;
 	gint ret;
 	const gchar *cs;
-	gchar *hostport;
-	gchar *tunnel_host;
-	int tunnel_port;
+	gchar *host;
+	int port;
 
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	CANCEL_ASYNC
 
-		gpdata = GET_PLUGIN_DATA(gp);
-
-	/* remmina_plugin_service->protocol_plugin_start_direct_tunnel start the
-	 * SSH Tunnel and return the server + port string
-	 * Therefore we set the SSH Tunnel username here, before the tunnel
-	 * is established and than set it back to the destination SSH user.
-	 *
-	 * */
+	gpdata = GET_PLUGIN_DATA(gp);
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
-	// Optionally start the SSH tunnel
-	hostport = remmina_plugin_service->protocol_plugin_start_direct_tunnel(gp, 22, FALSE);
-	if (hostport == NULL) {
-		remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
+	/* we may need to open a new tunnel too */
+	host = NULL;
+	port = 0;
+	if (!remmina_plugin_sftp_start_direct_tunnel(gp, &host, &port))
 		return NULL;
-	}
-
-	remmina_plugin_service->get_server_port(hostport, 22, &tunnel_host, &tunnel_port);
-	g_free(hostport);
-
 
 	ssh = g_object_get_data(G_OBJECT(gp), "user-data");
 	if (ssh) {
 		/* Create SFTP connection based on existing SSH session */
 		sftp = remmina_sftp_new_from_ssh(ssh);
-		if (remmina_ssh_init_session(REMMINA_SSH(sftp), FALSE) &&
-		    remmina_ssh_auth(REMMINA_SSH(sftp), NULL, gp, remminafile) > 0 &&
+		ssh->tunnel_entrance_host = host;
+		ssh->tunnel_entrance_port = port;
+		if (remmina_ssh_init_session(REMMINA_SSH(sftp)) &&
+		    remmina_ssh_auth(REMMINA_SSH(sftp), NULL, gp, remminafile) == REMMINA_SSH_AUTH_SUCCESS &&
 		    remmina_sftp_open(sftp))
 			cont = TRUE;
 	} else {
 		/* New SFTP connection */
 		sftp = remmina_sftp_new_from_file(remminafile);
-		sftp->ssh.tunnel_host = tunnel_host;
-		sftp->ssh.tunnel_port = tunnel_port;
+		ssh = REMMINA_SSH(sftp);
+		ssh->tunnel_entrance_host = host;
+		ssh->tunnel_entrance_port = port;
 		while (1) {
-			if (!remmina_ssh_init_session(REMMINA_SSH(sftp), FALSE)) {
-				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(sftp)->error);
+			if (!remmina_ssh_init_session(ssh)) {
+				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", ssh->error);
 				break;
 			}
 
-			ret = remmina_ssh_auth_gui(REMMINA_SSH(sftp), gp, remminafile);
+			ret = remmina_ssh_auth_gui(ssh, gp, remminafile);
 			if (ret != REMMINA_SSH_AUTH_SUCCESS) {
 				if (ret != REMMINA_SSH_AUTH_USERCANCEL)
-					remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(sftp)->error);
+					remmina_plugin_service->protocol_plugin_set_error(gp, "%s", ssh->error);
 				break;
 			}
 
 			if (!remmina_sftp_open(sftp)) {
-				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", REMMINA_SSH(sftp)->error);
+				remmina_plugin_service->protocol_plugin_set_error(gp, "%s", ssh->error);
 				break;
 			}
 
@@ -142,6 +147,7 @@ remmina_plugin_sftp_main_thread(gpointer data)
 			break;
 		}
 	}
+
 	if (!cont) {
 		if (sftp) remmina_sftp_free(sftp);
 		remmina_plugin_service->protocol_plugin_signal_connection_closed(gp);
@@ -181,8 +187,9 @@ remmina_plugin_sftp_init(RemminaProtocolWidget *gp)
 	remminafile = remmina_plugin_service->protocol_plugin_get_file(gp);
 
 	gpdata->client = remmina_sftp_client_new();
-	gtk_widget_show(gpdata->client);
-	gtk_container_add(GTK_CONTAINER(gp), gpdata->client);
+	gpdata->client->gp = gp;
+	gtk_widget_show(GTK_WIDGET(gpdata->client));
+	gtk_container_add(GTK_CONTAINER(gp), GTK_WIDGET(gpdata->client));
 
 	remmina_ftp_client_set_show_hidden(REMMINA_FTP_CLIENT(gpdata->client),
 					   remmina_plugin_service->file_get_int(remminafile, "showhidden", FALSE));
@@ -191,7 +198,7 @@ remmina_plugin_sftp_init(RemminaProtocolWidget *gp)
 						remmina_plugin_service->file_get_int(remminafile,
 										     REMMINA_PLUGIN_SFTP_FEATURE_PREF_OVERWRITE_ALL_KEY, FALSE));
 
-	remmina_plugin_service->protocol_plugin_register_hostkey(gp, gpdata->client);
+	remmina_plugin_service->protocol_plugin_register_hostkey(gp, GTK_WIDGET(gpdata->client));
 
 	g_signal_connect(G_OBJECT(gpdata->client),
 			 "realize", G_CALLBACK(remmina_plugin_sftp_client_on_realize), gp);
@@ -318,6 +325,7 @@ static const RemminaProtocolSetting remmina_sftp_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "ssh_auth",	    N_("Authentication type"),	  FALSE, ssh_auth,	   NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_FILE,	  "ssh_privatekey", N_("Identity file"),	  FALSE, NULL,		   NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "ssh_passphrase", N_("Password to unlock private key"), FALSE, NULL,		   NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_TEXT,	  "ssh_proxycommand",	  N_("SSH Proxy Command"),		      FALSE, NULL,		   NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		    NULL,			  FALSE, NULL,		   NULL }
 };
 

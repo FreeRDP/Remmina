@@ -359,8 +359,8 @@ remmina_ssh_auth(RemminaSSH *ssh, const gchar *password, RemminaProtocolWidget *
 	}
 
 	if (password) {
-		g_free(ssh->password);
-		g_free(ssh->passphrase);
+		if (password != ssh->password) g_free(ssh->password);
+		if (password != ssh->passphrase) g_free(ssh->passphrase);
 		ssh->password = g_strdup(password);
 		ssh->passphrase = g_strdup(password);
 	}
@@ -685,7 +685,7 @@ remmina_ssh_log_callback(ssh_session session, int priority, const char *message,
 }
 
 gboolean
-remmina_ssh_init_session(RemminaSSH *ssh, gboolean is_tunnel)
+remmina_ssh_init_session(RemminaSSH *ssh)
 {
 	TRACE_CALL(__func__);
 	gint verbosity;
@@ -698,16 +698,31 @@ remmina_ssh_init_session(RemminaSSH *ssh, gboolean is_tunnel)
 	ssh->callback = g_new0(struct ssh_callbacks_struct, 1);
 
 	/* Init & startup the SSH session */
-	g_debug("[SSH] %s server=%s port=%d is_tunnel=%s tunnel_host=%s tunnel_port=%d\n", __func__,
-		ssh->server, ssh->port, ssh->is_tunnel ? "Yes" : "No", ssh->tunnel_host, ssh->tunnel_port);
+	g_debug("[SSH] %s server=%s port=%d is_tunnel=%s tunnel_entrance_host=%s tunnel_entrance_port=%d\n", __func__,
+		ssh->server, ssh->port, ssh->is_tunnel ? "Yes" : "No", ssh->tunnel_entrance_host, ssh->tunnel_entrance_port);
+
 	ssh->session = ssh_new();
 
-	if (is_tunnel) {
+	/* Tunnel sanity checks */
+	if (ssh->is_tunnel && ssh->tunnel_entrance_host != NULL) {
+		ssh->error = g_strdup_printf("Internal error in %s: is_tunnel and tunnel_entrance != NULL", __func__);
+		g_debug("[SSH] %s", ssh->error);
+		return FALSE;
+	}
+	if (!ssh->is_tunnel && ssh->tunnel_entrance_host == NULL) {
+		ssh->error = g_strdup_printf("Internal error in %s: is_tunnel == false and tunnel_entrance == NULL", __func__);
+		g_debug("[SSH] %s", ssh->error);
+		return FALSE;
+	}
+
+	/* Set connection host/port */
+	if (ssh->is_tunnel) {
 		ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->server);
 		ssh_options_set(ssh->session, SSH_OPTIONS_PORT, &ssh->port);
 	} else {
-		ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->tunnel_host);
-		ssh_options_set(ssh->session, SSH_OPTIONS_PORT, &ssh->tunnel_port);
+		ssh_options_set(ssh->session, SSH_OPTIONS_HOST, ssh->tunnel_entrance_host);
+		ssh_options_set(ssh->session, SSH_OPTIONS_PORT, &ssh->tunnel_entrance_port);
+		g_debug("[SSH] setting SSH_OPTIONS_HOST to %s and SSH_OPTIONS_PORT to %d", ssh->tunnel_entrance_host, ssh->tunnel_entrance_port);
 	}
 
 	if (*ssh->user != 0)
@@ -842,9 +857,10 @@ remmina_ssh_init_from_file(RemminaSSH *ssh, RemminaFile *remminafile, gboolean i
 	ssh->error = NULL;
 	ssh->passphrase = NULL;
 	ssh->is_tunnel = is_tunnel;
-	ssh->tunnel_host = NULL;
-	ssh->tunnel_port = 0;
 	pthread_mutex_init(&ssh->ssh_mutex, NULL);
+
+	ssh->tunnel_entrance_host = NULL;
+	ssh->tunnel_entrance_port = 0;
 
 	username = remmina_file_get_string(remminafile, is_tunnel ? "ssh_tunnel_username" : "username");
 	privatekey = remmina_file_get_string(remminafile, is_tunnel ? "ssh_tunnel_privatekey" : "ssh_privatekey");
@@ -916,14 +932,17 @@ remmina_ssh_init_from_ssh(RemminaSSH *ssh, const RemminaSSH *ssh_src)
 	ssh->user = g_strdup(ssh_src->user);
 	ssh->auth = ssh_src->auth;
 	ssh->password = g_strdup(ssh_src->password);
+	ssh->passphrase = g_strdup(ssh_src->passphrase);
 	ssh->privkeyfile = g_strdup(ssh_src->privkeyfile);
 	ssh->charset = g_strdup(ssh_src->charset);
 	ssh->proxycommand = g_strdup(ssh_src->proxycommand);
 	ssh->kex_algorithms = g_strdup(ssh_src->kex_algorithms);
 	ssh->ciphers = g_strdup(ssh_src->ciphers);
 	ssh->hostkeytypes = g_strdup(ssh_src->hostkeytypes);
+	ssh->stricthostkeycheck = ssh_src->stricthostkeycheck;
 	ssh->compression = ssh_src->compression;
-	ssh->tunnel_host = NULL;
+	ssh->tunnel_entrance_host = g_strdup(ssh_src->tunnel_entrance_host);
+	ssh->tunnel_entrance_port = ssh_src->tunnel_entrance_port;
 
 	return TRUE;
 }
@@ -968,7 +987,6 @@ remmina_ssh_free(RemminaSSH *ssh)
 	g_free(ssh->privkeyfile);
 	g_free(ssh->charset);
 	g_free(ssh->error);
-	g_free(ssh->tunnel_host);
 	pthread_mutex_destroy(&ssh->ssh_mutex);
 	g_free(ssh);
 }
@@ -1070,6 +1088,8 @@ remmina_ssh_tunnel_close_all_channels(RemminaSSHTunnel *tunnel)
 		ssh_channel_free(tunnel->x11_channel);
 		tunnel->x11_channel = NULL;
 	}
+
+
 }
 
 static void
@@ -1517,7 +1537,25 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 
 	remmina_ssh_tunnel_close_all_channels(tunnel);
 
+	tunnel->running = FALSE;
+
+	/* Notify tunnel owner of disconnection */
+	if (tunnel->disconnect_func)
+		(*tunnel->disconnect_func)(tunnel, tunnel->callback_data);
+
 	return NULL;
+}
+
+static gboolean remmina_ssh_notify_tunnel_main_thread_end(gpointer data)
+{
+	TRACE_CALL(__func__);
+	RemminaSSHTunnel *tunnel = (RemminaSSHTunnel *)data;
+
+	/* Ask tunnel owner to destroy tunnel object */
+	if (tunnel->destroy_func)
+		(*tunnel->destroy_func)(tunnel, tunnel->destroy_func_callback_data);
+
+	return FALSE;
 }
 
 static gpointer
@@ -1533,8 +1571,13 @@ remmina_ssh_tunnel_main_thread(gpointer data)
 		if (tunnel->server_sock < 0 || tunnel->thread == 0 || !tunnel->running) break;
 	}
 	tunnel->thread = 0;
+
+	/* Do after tunnel thread cleanup */
+	IDLE_ADD((GSourceFunc)remmina_ssh_notify_tunnel_main_thread_end, (gpointer)tunnel);
+
 	return NULL;
 }
+
 
 void
 remmina_ssh_tunnel_cancel_accept(RemminaSSHTunnel *tunnel)
@@ -1663,6 +1706,8 @@ remmina_ssh_tunnel_free(RemminaSSHTunnel *tunnel)
 	TRACE_CALL(__func__);
 	pthread_t thread;
 
+	g_debug("[SSH] %s tunnel->thread = %lX\n", __func__,  tunnel->thread);
+
 	thread = tunnel->thread;
 	if (thread != 0) {
 		tunnel->running = FALSE;
@@ -1682,6 +1727,7 @@ remmina_ssh_tunnel_free(RemminaSSHTunnel *tunnel)
 		close(tunnel->server_sock);
 		tunnel->server_sock = -1;
 	}
+
 	remmina_ssh_tunnel_close_all_channels(tunnel);
 
 	g_free(tunnel->buffer);
@@ -1689,7 +1735,8 @@ remmina_ssh_tunnel_free(RemminaSSHTunnel *tunnel)
 	g_free(tunnel->dest);
 	g_free(tunnel->localdisplay);
 
-	remmina_ssh_free(REMMINA_SSH(tunnel));
+	remmina_ssh_free((RemminaSSH *)tunnel);
+
 }
 
 /*-----------------------------------------------------------------------------*
