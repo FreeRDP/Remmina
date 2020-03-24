@@ -905,8 +905,12 @@ static void remmina_rdp_event_create_cairo_surface(rfContext* rfi)
 	int stride;
 	rdpGdi* gdi;
 
+	if (!rfi)
+		return;
+
 	gdi = ((rdpContext *)rfi)->gdi;
-	if (!rfi || !gdi)
+
+	if (!gdi)
 		return;
 
 	if (rfi->surface) {
@@ -937,10 +941,8 @@ void remmina_rdp_event_update_scale(RemminaProtocolWidget* gp)
 	if ( rfi->surface && (cairo_image_surface_get_width(rfi->surface) != gdi->width ||
 		cairo_image_surface_get_height(rfi->surface) != gdi->height) ) {
 		/* Destroys and recreate rfi->surface with new width and height */
-		if (rfi->surface) {
-			cairo_surface_destroy(rfi->surface);
-			rfi->surface = NULL;
-		}
+		cairo_surface_destroy(rfi->surface);
+		rfi->surface = NULL;
 		remmina_rdp_event_create_cairo_surface(rfi);
 	} else if ( rfi->surface == NULL ) {
 		remmina_rdp_event_create_cairo_surface(rfi);

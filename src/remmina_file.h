@@ -91,6 +91,6 @@ void remmina_file_unsave_passwords(RemminaFile *remminafile);
  * taken from suckless sbase */
 gchar *remmina_file_get_datetime(RemminaFile *remminafile);
 /* Function used to update the atime and mtime of a given remmina file */
-void remmina_file_touch(RemminaFile *remminafilefile);
+void remmina_file_touch(RemminaFile *remminafile);
 
 G_END_DECLS

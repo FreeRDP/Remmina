@@ -288,9 +288,8 @@ static gboolean remmina_nx_session_get_response(RemminaNXSession *nx)
 		remmina_nx_session_set_application_error(nx, "Channel closed.");
 		return FALSE;
 	}
-	if (len > 0) {
-		g_string_append_len(nx->response, buffer, len);
-	}
+
+	g_string_append_len(nx->response, buffer, len);
 
 	g_free(buffer);
 	return TRUE;

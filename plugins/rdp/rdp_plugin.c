@@ -436,8 +436,8 @@ static BOOL rf_keyboard_set_indicators(rdpContext *context, UINT16 led_flags)
 		x11_display = gdk_x11_display_get_xdisplay(disp);
 		XkbLockModifiers(x11_display, XkbUseCoreKbd,
 				 LockMask | Mod2Mask,
-				 (led_flags & KBD_SYNC_CAPS_LOCK ? LockMask : 0) |
-				 (led_flags & KBD_SYNC_NUM_LOCK ? Mod2Mask : 0)
+				 ((led_flags & KBD_SYNC_CAPS_LOCK) ? LockMask : 0) |
+				 ((led_flags & KBD_SYNC_NUM_LOCK) ? Mod2Mask : 0)
 				 );
 
 		/* ToDo: add support to KANA_LOCK and SCROLL_LOCK */

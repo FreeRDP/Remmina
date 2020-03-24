@@ -441,6 +441,8 @@ const gchar* remmina_utils_get_os_info()
 		remmina_utils_get_kernel_release(),
 		remmina_utils_get_kernel_arch());
 	if (!kernel_string || kernel_string[0] == '\0')
+		if(kernel_string)
+			g_free(kernel_string);
 		kernel_string = g_strdup_printf("%s;%s;%s\n",
 			"UNKNOWN",
 			"UNKNOWN",
@@ -531,4 +533,3 @@ gchar* remmina_gen_random_uuid()
 
 	return result;
 }
-

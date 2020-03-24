@@ -84,7 +84,7 @@ static gboolean remmina_scrolled_viewport_motion_timeout(gpointer data)
 	if (!GTK_IS_BIN(data))
 		return FALSE;
 	gsv = REMMINA_SCROLLED_VIEWPORT(data);
-	if (!gsv->viewport_motion)
+	if (!gsv || !gsv->viewport_motion)
 		return FALSE;
 	child = gtk_bin_get_child(GTK_BIN(gsv));
 	if (!GTK_IS_VIEWPORT(child))

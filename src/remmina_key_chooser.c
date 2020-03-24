@@ -88,12 +88,12 @@ gchar* remmina_key_chooser_get_value(guint keyval, guint state)
 		return g_strdup(KEY_CHOOSER_NONE);
 
 	return g_strdup_printf("%s%s%s%s%s%s%s",
-		state & GDK_SHIFT_MASK ? KEY_MODIFIER_SHIFT : "",
-		state & GDK_CONTROL_MASK ? KEY_MODIFIER_CTRL : "",
-		state & GDK_MOD1_MASK ? KEY_MODIFIER_ALT : "",
-		state & GDK_SUPER_MASK ? KEY_MODIFIER_SUPER : "",
-		state & GDK_HYPER_MASK ? KEY_MODIFIER_HYPER : "",
-		state & GDK_META_MASK ? KEY_MODIFIER_META : "",
+		(state & GDK_SHIFT_MASK) ? KEY_MODIFIER_SHIFT : "",
+		(state & GDK_CONTROL_MASK) ? KEY_MODIFIER_CTRL : "",
+		(state & GDK_MOD1_MASK) ? KEY_MODIFIER_ALT : "",
+		(state & GDK_SUPER_MASK) ? KEY_MODIFIER_SUPER : "",
+		(state & GDK_HYPER_MASK) ? KEY_MODIFIER_HYPER : "",
+		(state & GDK_META_MASK) ? KEY_MODIFIER_META : "",
 		gdk_keyval_name(gdk_keyval_to_upper(keyval)));
 }
 

@@ -148,6 +148,7 @@ static gchar *rmnews_get_file_contents(gchar *path)
 		if (!g_utf8_validate(content, size, NULL)) {
 			g_warning("%s content is not UTF-8", path);
 			g_free(content);
+			content = NULL;
 		}
 	}
 	//return g_markup_escape_text(content, strlen(content));
@@ -159,7 +160,7 @@ static void rmnews_close_clicked(GtkButton *btn, gpointer user_data)
 	TRACE_CALL(__func__);
 	gtk_widget_destroy(GTK_WIDGET(rmnews_news_dialog->dialog));
 	rmnews_news_dialog->dialog = NULL;
-	g_free(rmnews_news_dialog->dialog);
+	g_free(rmnews_news_dialog);
 	rmnews_news_dialog = NULL;
 
 }
@@ -167,6 +168,7 @@ static void rmnews_close_clicked(GtkButton *btn, gpointer user_data)
 static gboolean rmnews_dialog_deleted(GtkButton *btn, gpointer user_data)
 {
 	TRACE_CALL(__func__);
+	gtk_widget_destroy(GTK_WIDGET(rmnews_news_dialog->dialog));
 	rmnews_news_dialog->dialog = NULL;
 	g_free(rmnews_news_dialog->dialog);
 	rmnews_news_dialog = NULL;
@@ -327,10 +329,10 @@ static void rmnews_get_url_cb(SoupSession *session, SoupMessage *msg, gpointer d
 		if (output_file) {
 			fwrite(sb->data, 1, sb->length, output_file);
 
-			if (output_file_path)
+			if (output_file_path) {
 				fclose(output_file);
-			if (output_file_path)
 				filesha_after = remmina_sha1_file(output_file_path);
+			}
 			g_info("SHA1 after download is %s", filesha_after);
 			if (g_strcmp0(filesha, filesha_after) != 0) {
 				g_info("SHA1 differs, we show the news and reset the counter");

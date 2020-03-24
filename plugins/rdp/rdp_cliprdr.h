@@ -43,7 +43,7 @@
 
 void remmina_rdp_clipboard_init(rfContext *rfi);
 void remmina_rdp_clipboard_free(rfContext *rfi);
-void remmina_rdp_cliprdr_init(rfContext *rfc, CliprdrClientContext *cliprdr);
+void remmina_rdp_cliprdr_init(rfContext *rfi, CliprdrClientContext *cliprdr);
 void remmina_rdp_channel_cliprdr_process(RemminaProtocolWidget *gp, wMessage *event);
 void remmina_rdp_event_process_clipboard(RemminaProtocolWidget *gp, RemminaPluginRdpUiObject *ui);
 CLIPRDR_FORMAT_LIST *remmina_rdp_cliprdr_get_client_format_list(RemminaProtocolWidget *gp);

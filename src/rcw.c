@@ -2919,9 +2919,10 @@ void rco_closewin(RemminaProtocolWidget *gp)
 				gtk_notebook_page_num(cnnobj->cnnwin->priv->notebook, page_to_remove));
 		}
 	}
-
-	cnnobj->remmina_file = NULL;
-	g_free(cnnobj);
+	if (cnnobj) {
+		cnnobj->remmina_file = NULL;
+		g_free(cnnobj);
+	}
 
 	remmina_application_condexit(REMMINA_CONDEXIT_ONDISCONNECT);
 }
