@@ -75,7 +75,7 @@ GtkWidget *remmina_public_create_combo(gboolean use_icon);
 GtkWidget *remmina_public_create_combo_map(const gpointer *key_value_list, const gchar *def, gboolean use_icon, const gchar *domain);
 GtkWidget *remmina_public_create_combo_mapint(const gpointer *key_value_list, gint def, gboolean use_icon, const gchar *domain);
 
-void remmina_public_create_group(GtkGrid *table, const gchar *group, gint row, gint rows, gint cols);
+void remmina_public_create_group(GtkGrid *grid, const gchar *group, gint row, gint rows, gint cols);
 
 gchar *remmina_public_combo_get_active_text(GtkComboBox *combo);
 

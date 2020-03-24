@@ -1226,13 +1226,12 @@ static void remmina_main_init(void)
 	}else {
 		gtk_window_set_title(remminamain->window, _("Remmina Kiosk"));
 	}
-	if (!kioskmode && kioskmode == FALSE)
+	if (!kioskmode && kioskmode == FALSE) {
 		gtk_window_set_default_size(remminamain->window, remmina_pref.main_width, remmina_pref.main_height);
-	if (!kioskmode && kioskmode == FALSE)
 		if (remmina_pref.main_maximize) {
 			gtk_window_maximize(remminamain->window);
 		}
-
+	}
 	/* Honor global peferences Search Bar visibility */
 	if (remmina_pref.hide_searchbar)
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(RM_GET_OBJECT("search_toggle")), FALSE);

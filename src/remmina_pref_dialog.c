@@ -343,7 +343,6 @@ void remmina_pref_on_dialog_destroy(GtkWidget *widget, gpointer user_data)
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(remmina_pref_dialog->colorbutton_color15), &color);
 	remmina_pref.color_pref.color15 = gdk_rgba_to_string(&color);
 	remmina_pref.vte_lines = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_scrollback_lines));
-	remmina_pref.vte_lines = atoi(gtk_entry_get_text(remmina_pref_dialog->entry_scrollback_lines));
 	remmina_pref.vte_shortcutkey_copy = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_copy));
 	remmina_pref.vte_shortcutkey_paste = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_paste));
 	remmina_pref.vte_shortcutkey_select_all = remmina_key_chooser_get_keyval(gtk_button_get_label(remmina_pref_dialog->button_keyboard_select_all));

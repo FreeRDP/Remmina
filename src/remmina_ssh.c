@@ -1212,7 +1212,8 @@ remmina_ssh_tunnel_main_thread_proc(gpointer data)
 	case REMMINA_SSH_TUNNEL_OPEN:
 		sock = remmina_ssh_tunnel_accept_local_connection(tunnel, TRUE);
 		if (sock < 0) {
-			tunnel->thread = 0;
+			if (tunnel)
+				tunnel->thread = 0;
 			return NULL;
 		}
 

@@ -164,8 +164,8 @@ static gboolean remmina_plugin_exec_run(RemminaProtocolWidget *gp)
 	if (error) {
 		gtk_text_buffer_set_text (gpdata->log_buffer, error->message, -1);
 		remmina_plugin_service->protocol_plugin_signal_connection_opened(gp);
-		return TRUE;
 		g_error_free(error);
+		return TRUE;
 	}
 
 	if (remmina_plugin_service->file_get_int(remminafile, "runasync", FALSE)) {

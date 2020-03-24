@@ -107,7 +107,7 @@ gboolean remmina_protocol_widget_query_feature_by_ref(RemminaProtocolWidget *gp,
 void remmina_protocol_widget_call_feature_by_type(RemminaProtocolWidget *gp, RemminaProtocolFeatureType type, gint id);
 void remmina_protocol_widget_call_feature_by_ref(RemminaProtocolWidget *gp, const RemminaProtocolFeature *feature);
 /* Provide thread-safe way to emit signals */
-void remmina_protocol_widget_emit_signal(RemminaProtocolWidget *gp, const gchar *signal);
+void remmina_protocol_widget_emit_signal(RemminaProtocolWidget *gp, const gchar *signal_name);
 void remmina_protocol_widget_register_hostkey(RemminaProtocolWidget *gp, GtkWidget *widget);
 
 typedef gboolean (*RemminaHostkeyFunc)(RemminaProtocolWidget *gp, guint keyval, gboolean release);
@@ -156,7 +156,7 @@ gchar *remmina_protocol_widget_get_clientkey(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_chat_open(RemminaProtocolWidget *gp, const gchar *name, void (*on_send)(RemminaProtocolWidget *gp, const gchar *text), void (*on_destroy)(RemminaProtocolWidget *gp));
 void remmina_protocol_widget_chat_close(RemminaProtocolWidget *gp);
 void remmina_protocol_widget_chat_receive(RemminaProtocolWidget *gp, const gchar *text);
-void remmina_protocol_widget_send_keys_signals(GtkWidget *widget, const guint *keyvals, int length, GdkEventType action);
+void remmina_protocol_widget_send_keys_signals(GtkWidget *widget, const guint *keyvals, int keyvals_length, GdkEventType action);
 /* Check if the plugin accepts keystrokes */
 gboolean remmina_protocol_widget_plugin_receives_keystrokes(RemminaProtocolWidget *gp);
 /* Send to the plugin some keystrokes */

@@ -322,7 +322,7 @@ int main(int argc, char *argv[])
 
 #ifdef HAVE_LIBGCRYPT
 # if GCRYPT_VERSION_NUMBER < 0x010600
-	gcry_error_t e;
+    gcry_error_t e;
 	if (!gcrypt_thread_initialized) {
 		if ((e = gcry_control(GCRYCTL_SET_THREAD_CBS, &gcry_threads_pthread)) != GPG_ERR_NO_ERROR)
 			return -1;

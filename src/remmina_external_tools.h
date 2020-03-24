@@ -42,6 +42,6 @@
 G_BEGIN_DECLS
 
 /* Open a new connection window for a .remmina file */
-gboolean remmina_external_tools_from_filename(RemminaMain *remminamain, gchar *filename);
+gboolean remmina_external_tools_from_filename(RemminaMain *remminamain, gchar *remminafilename);
 
 G_END_DECLS

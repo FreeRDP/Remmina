@@ -265,16 +265,16 @@ static void remmina_ftp_client_cell_data_permission(GtkTreeViewColumn *col, GtkC
 
 	gtk_tree_model_get(model, iter, REMMINA_FTP_FILE_COLUMN_PERMISSION, &permission, -1);
 
-	buf[0] = (permission & 040000 ? 'd' : '-');
-	buf[1] = (permission & 0400 ? 'r' : '-');
-	buf[2] = (permission & 0200 ? 'w' : '-');
-	buf[3] = (permission & 0100 ? 'x' : '-');
-	buf[4] = (permission & 040 ? 'r' : '-');
-	buf[5] = (permission & 020 ? 'w' : '-');
-	buf[6] = (permission & 010 ? 'x' : '-');
-	buf[7] = (permission & 04 ? 'r' : '-');
-	buf[8] = (permission & 02 ? 'w' : '-');
-	buf[9] = (permission & 01 ? 'x' : '-');
+	buf[0] = ((permission & 040000) ? 'd' : '-');
+	buf[1] = ((permission & 0400) ? 'r' : '-');
+	buf[2] = ((permission & 0200) ? 'w' : '-');
+	buf[3] = ((permission & 0100) ? 'x' : '-');
+	buf[4] = ((permission & 040) ? 'r' : '-');
+	buf[5] = ((permission & 020) ? 'w' : '-');
+	buf[6] = ((permission & 010) ? 'x' : '-');
+	buf[7] = ((permission & 04) ? 'r' : '-');
+	buf[8] = ((permission & 02) ? 'w' : '-');
+	buf[9] = ((permission & 01) ? 'x' : '-');
 	buf[10] = '\0';
 
 	g_object_set(renderer, "text", buf, NULL);

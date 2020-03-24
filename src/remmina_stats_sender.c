@@ -213,6 +213,7 @@ static gboolean remmina_stats_collector_done(gpointer data)
 		g_free(unenc_s);
 		ERR_free_strings();
 		g_free(data);
+		g_free(uid);
 		return G_SOURCE_REMOVE;
 	}
 
