@@ -2,7 +2,7 @@
 # Copyright © 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the remmina package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-# Joan Montané <joan@montane.cat>, 2019.
+# Joan Montané <joan@montane.cat>, 2019, 2020.
 # Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2019.
 # anonymous <noreply@weblate.org>, 2019.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020.
@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-03-24 21:58+0000\n"
-"PO-Revision-Date: 2020-03-24 20:31+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2020-03-26 12:46+0000\n"
+"Last-Translator: Joan Montané <joan@montane.cat>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/remmina/remmina/"
 "ca/>\n"
 "Language: ca\n"
@@ -39,12 +39,12 @@ msgstr "Executant comandaments externes …"
 #: src/remmina_protocol_widget.c:315
 #, c-format
 msgid "Connecting to \"%s\"…"
-msgstr "S’està connectant a \"%s\"…"
+msgstr "S’està connectant a «%s»…"
 
 #: src/remmina_protocol_widget.c:744 src/remmina_protocol_widget.c:846
 #, c-format
 msgid "Connecting to \"%s\" via SSH…"
-msgstr "S’està connectant a \"%s\" a través de SSH…"
+msgstr "S’està connectant a «%s» a través de SSH…"
 
 #: src/remmina_protocol_widget.c:909
 #, c-format
@@ -54,7 +54,7 @@ msgstr "S’està esperant una connexió SSH entrant al port %i…"
 #: src/remmina_protocol_widget.c:961
 #, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "No s’ha trobat l’ordre \"%s\" al servidor SSH"
+msgstr "No s’ha trobat l’ordre «%s» al servidor SSH"
 
 #: src/remmina_protocol_widget.c:965
 #, fuzzy, c-format
@@ -83,7 +83,7 @@ msgstr "Contrasenya"
 
 #: src/remmina_protocol_widget.c:1425
 msgid "Type in username and password for SSH."
-msgstr ""
+msgstr "Escriviu el nom d'usuari SSH i la contrasenya."
 
 #: src/remmina_protocol_widget.c:1481
 msgid "Certificate details:"
@@ -138,12 +138,12 @@ msgstr "Servidor"
 #: src/remmina_protocol_widget.c:1753
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr ""
+msgstr "Primer instal·leu el connector del protocol %s."
 
 #: src/remmina_exec.c:320
 #, c-format
 msgid "Plugin %s is not registered."
-msgstr "El connector %s no està registrar."
+msgstr "El connector %s no està enregistrat."
 
 #: src/remmina_pref_dialog.c:83 src/remmina_file_editor.c:497
 #: data/ui/remmina_preferences.glade:234
@@ -161,50 +161,50 @@ msgstr "S’ha netejat la llista dels recents."
 #: src/remmina_pref_dialog.c:143 src/rcw.c:1827
 #: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
 msgid "Keystrokes"
-msgstr ""
+msgstr "Pulsacions de tecles"
 
 #: src/remmina_pref_dialog.c:143
 msgid "Configure the keystrokes"
-msgstr ""
+msgstr "Configura les pulsacions de tecles"
 
 #. TRANSLATORS: Do not translate libsodium, is the name of a library
 #: src/remmina_pref_dialog.c:443
 msgid "libsodium >= 1.9.0 is required to use master password"
-msgstr ""
+msgstr "Per a usar la contrasenya mestra es requereix libsodium >= 1.9.0"
 
 #: src/remmina_ssh_plugin.c:441
 #, c-format
 msgid "Error: %s"
-msgstr ""
+msgstr "Error: %s"
 
 #: src/remmina_ssh_plugin.c:458
 msgid "Terminal content saved in"
-msgstr ""
+msgstr "El contingut del terminal s'ha desat a"
 
 #: src/remmina_ssh_plugin.c:512
 msgid "Select All (Host + A)"
-msgstr ""
+msgstr "Selecciona-ho tot (Amfitrió + A)"
 
 #: src/remmina_ssh_plugin.c:513
 msgid "Copy (host + C)"
-msgstr ""
+msgstr "Copia (Amfitrió + C)"
 
 #: src/remmina_ssh_plugin.c:514
 msgid "Paste (host + V)"
-msgstr ""
+msgstr "Enganxa (Amfitrió + V)"
 
 #: src/remmina_ssh_plugin.c:515
 msgid "Save session to file"
-msgstr ""
+msgstr "Desa la sessió al fitxer"
 
 #: src/remmina_ssh_plugin.c:921 src/remmina_sftp_plugin.c:292
 #: src/remmina_file_editor.c:362 src/remmina_file_editor.c:369
 msgid "SSH identity file"
-msgstr ""
+msgstr "Fitxer d'identitat SSH"
 
 #: src/remmina_ssh_plugin.c:922 src/remmina_sftp_plugin.c:293
 msgid "SSH agent"
-msgstr ""
+msgstr "Agent SSH"
 
 #: src/remmina_ssh_plugin.c:923 src/remmina_sftp_plugin.c:294
 #: src/remmina_file_editor.c:940
@@ -213,7 +213,7 @@ msgstr "Clau pública (automàtic)"
 
 #: src/remmina_ssh_plugin.c:924 src/remmina_sftp_plugin.c:295
 msgid "Kerberos (GSSAPI)"
-msgstr ""
+msgstr "Kerberos (GSSAPI)"
 
 #: src/remmina_ssh_plugin.c:999 data/ui/remmina_main.glade:267
 msgid "Copy"
@@ -221,7 +221,7 @@ msgstr "Copia"
 
 #: src/remmina_ssh_plugin.c:999
 msgid "_Copy"
-msgstr ""
+msgstr "_Copia"
 
 #: src/remmina_ssh_plugin.c:1000
 msgid "Paste"
@@ -229,7 +229,7 @@ msgstr "Enganxa"
 
 #: src/remmina_ssh_plugin.c:1000
 msgid "_Paste"
-msgstr ""
+msgstr "_Enganxa"
 
 #: src/remmina_ssh_plugin.c:1001
 msgid "Select all"
@@ -237,7 +237,7 @@ msgstr "Selecciona-ho tot"
 
 #: src/remmina_ssh_plugin.c:1001
 msgid "_Select all"
-msgstr ""
+msgstr "_Selecciona-ho tot"
 
 #: src/remmina_ssh_plugin.c:1019 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:323 src/remmina_file_editor.c:918
@@ -251,11 +251,11 @@ msgstr "Nom d'usuari"
 #: plugins/vnc/vnc_plugin.c:1852 plugins/spice/spice_plugin.c:437
 #: plugins/nx/nx_plugin.c:722
 msgid "User password"
-msgstr ""
+msgstr "Contrasenya de l'usuari"
 
 #: src/remmina_ssh_plugin.c:1021 src/remmina_sftp_plugin.c:325
 msgid "Authentication type"
-msgstr ""
+msgstr "Tipus d'autenticació"
 
 #: src/remmina_ssh_plugin.c:1022 src/remmina_sftp_plugin.c:326
 #: plugins/nx/nx_plugin.c:720
@@ -265,7 +265,7 @@ msgstr "Fitxer d’identitat"
 #: src/remmina_ssh_plugin.c:1023 src/remmina_sftp_plugin.c:327
 #: src/remmina_file_editor.c:949
 msgid "Password to unlock private key"
-msgstr ""
+msgstr "Contrasenya per a desblocar la clau privada"
 
 #: src/remmina_ssh_plugin.c:1024 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2011 plugins/nx/nx_plugin.c:725
@@ -287,7 +287,7 @@ msgstr ""
 
 #: src/remmina_ssh_plugin.c:1051
 msgid "Terminal color scheme"
-msgstr ""
+msgstr "Esquema de color de terminal"
 
 #: src/remmina_ssh_plugin.c:1052
 msgid "Character set"
@@ -299,11 +299,11 @@ msgstr ""
 
 #: src/remmina_ssh_plugin.c:1054
 msgid "KEX (Key Exchange) algorithms"
-msgstr ""
+msgstr "Algoritmes KEX (intercanvi de claus)"
 
 #: src/remmina_ssh_plugin.c:1055
 msgid "Symmetric cipher client to server"
-msgstr ""
+msgstr "Xifrat simètric entre client i servidor"
 
 #: src/remmina_ssh_plugin.c:1056
 msgid "Preferred server host key types"
@@ -316,11 +316,11 @@ msgstr "Ha fallat en iniciar la sessió SSH: %s"
 
 #: src/remmina_ssh_plugin.c:1058
 msgid "Filename for SSH session log"
-msgstr ""
+msgstr "Nom de fitxer del registre de sessions SSH"
 
 #: src/remmina_ssh_plugin.c:1059
 msgid "Log SSH session when exiting Remmina"
-msgstr ""
+msgstr "Registra la sessió SSH en sortir del Remmina"
 
 #: src/remmina_ssh_plugin.c:1060
 msgid "Audible terminal bell"
