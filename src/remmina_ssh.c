@@ -252,7 +252,7 @@ remmina_ssh_auth_pubkey(RemminaSSH *ssh)
 	if (ssh_pki_import_privkey_file(ssh->privkeyfile, (ssh->passphrase ? ssh->passphrase : ""),
 					NULL, NULL, &key) != SSH_OK) {
 		if (ssh->passphrase == NULL || ssh->passphrase[0] == '\0') {
-			remmina_ssh_set_error(ssh, _("SSH passphrase is empty, it should not."));
+			remmina_ssh_set_error(ssh, _("SSH passphrase is empty, it should not be."));
 			return REMMINA_SSH_AUTH_AUTHFAILED_RETRY_AFTER_PROMPT;
 		}
 
