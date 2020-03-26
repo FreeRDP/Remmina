@@ -39,6 +39,7 @@
 #include <gtk/gtk.h>
 #include <gtk/gtkx.h>
 #include <glib/gi18n.h>
+#include <gmodule.h>
 #include <stdlib.h>
 
 

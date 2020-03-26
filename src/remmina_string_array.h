@@ -34,6 +34,7 @@
  */
 
 #pragma once
+#include <gmodule.h>
 
 G_BEGIN_DECLS
 

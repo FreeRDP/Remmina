@@ -35,6 +35,7 @@
  */
 
 #include <gtk/gtk.h>
+#include <gmodule.h>
 #include "remmina_public.h"
 #include "remmina_widget_pool.h"
 #include "remmina/remmina_trace_calls.h"
