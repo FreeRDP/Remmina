@@ -42,6 +42,7 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
+#include <gmodule.h>
 #include <pthread.h>
 #ifdef HAVE_FCNTL_H
 #include <fcntl.h>

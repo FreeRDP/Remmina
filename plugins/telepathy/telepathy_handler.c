@@ -35,6 +35,7 @@
  */
 
 #include "common/remmina_plugin.h"
+#include <gmodule.h>
 #include <telepathy-glib/dbus.h>
 #include <telepathy-glib/defs.h>
 #include <telepathy-glib/svc-client.h>

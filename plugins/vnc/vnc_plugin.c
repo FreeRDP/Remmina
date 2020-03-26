@@ -35,6 +35,7 @@
  */
 
 #include "common/remmina_plugin.h"
+#include <gmodule.h>
 #include "vnc_plugin.h"
 #include <rfb/rfbclient.h>
 
@@ -1852,7 +1853,7 @@ static const RemminaProtocolSetting remmina_plugin_vnci_basic_settings[] =
 	{ REMMINA_PROTOCOL_SETTING_TYPE_PASSWORD, "password",	N_("User password"),  FALSE, NULL,	      NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "colordepth", N_("Color depth"),    FALSE, colordepth_list, NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_SELECT,	  "quality",	N_("Quality"),	      FALSE, quality_list,    NULL },
-	{ REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP,	  NULL,		NULL,		      FALSE, NULL,	      NULL },
+	{ REMMINA_PROTOCOL_SETTING_TYPE_KEYMAP,	  "keymap",		NULL,		      FALSE, NULL,	      NULL },
 	{ REMMINA_PROTOCOL_SETTING_TYPE_END,	  NULL,		NULL,		      FALSE, NULL,	      NULL }
 };
 

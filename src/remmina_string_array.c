@@ -35,6 +35,7 @@
  */
 
 #include <glib.h>
+#include <gmodule.h>
 #include <string.h>
 #include "remmina_string_array.h"
 #include "remmina/remmina_trace_calls.h"
