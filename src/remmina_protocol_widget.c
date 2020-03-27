@@ -782,8 +782,24 @@ static gboolean remmina_protocol_widget_tunnel_destroy(RemminaSSHTunnel *tunnel,
 	TRACE_CALL(__func__);
 	RemminaProtocolWidget *gp = REMMINA_PROTOCOL_WIDGET(data);
 	guint idx;
+	gboolean found;
 
-	if (g_ptr_array_find(gp->priv->ssh_tunnels, tunnel, &idx)) {
+#if GLIB_CHECK_VERSION(2,54,0)
+	found = g_ptr_array_find(gp->priv->ssh_tunnels, tunnel, &idx);
+#else
+	int i;
+	found = FALSE;
+	for(i = 0;i < gp->priv->ssh_tunnels->len; i++) {
+		if ((RemminaSSHTunnel *)gp->priv->ssh_tunnels->pdata[i] == tunnel) {
+			found = TRUE;
+			idx = i;
+		}
+	}
+#endif
+
+	printf("Tunnel %s found at idx = %d\n", found ? "yes": "not", idx);
+
+	if (found) {
 #ifdef HAVE_LIBSSH
 		g_debug("[RPW] tunnel with idx %u has been disconnected", idx);
 		remmina_ssh_tunnel_free(tunnel);
