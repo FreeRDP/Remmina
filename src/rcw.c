@@ -83,7 +83,6 @@ G_DEFINE_TYPE(RemminaConnectionWindow, rcw, GTK_TYPE_WINDOW)
 
 struct _RemminaConnectionWindowPriv {
 	GtkNotebook *					notebook;
-	guint						switch_page_finalsel_handler;
 	GtkWidget *					floating_toolbar_widget;
 	GtkWidget *					overlay;
 	GtkWidget *					revealer;
@@ -91,15 +90,15 @@ struct _RemminaConnectionWindowPriv {
 
 	GtkWidget *					floating_toolbar_label;
 	gdouble						floating_toolbar_opacity;
-	/* To avoid strange event-loop */
-	guint						floating_toolbar_motion_handler;
-	/* Other event sources to remove when deleting the object */
-	guint						ftb_hide_eventsource;
-	/* Timer to hide the toolbar */
-	guint						hidetb_timer;
 
-	/* Timer to save new window state and wxh */
-	guint						savestate_eventsourceid;
+	/* Various delayed and timer event source ids */
+	guint						acs_eventsourceid;	// timeout
+	guint						spf_eventsourceid;		// idle
+	guint						grab_retry_eventsourceid;	// timeout
+	guint						ftb_hide_eventsource;	// timeout
+	guint						tar_eventsource;	// timeout
+	guint						hidetb_eventsource;	// timeout
+	guint						dwp_eventsourceid;	// timeout
 
 	GtkWidget *					toolbar;
 	GtkWidget *					grid;
@@ -123,7 +122,6 @@ struct _RemminaConnectionWindowPriv {
 	gboolean					pin_down;
 
 	gboolean					sticky;
-	gint						grab_retry_eventsourceid;
 
 	/* Flag to turn off toolbar signal handling when toolbar is
 	 * reconfiguring, usually due to a tab switch */
@@ -165,6 +163,7 @@ typedef struct _RemminaConnectionObject {
 	gboolean			dynres_unlocked;
 
 	gulong				deferred_open_size_allocate_handler;
+
 } RemminaConnectionObject;
 
 enum {
@@ -628,31 +627,37 @@ static void rcw_destroy(GtkWidget *widget, gpointer data)
 	if (priv->kbcaptured)
 		rcw_keyboard_ungrab(cnnwin);
 
-	if (priv->floating_toolbar_motion_handler) {
-		g_source_remove(priv->floating_toolbar_motion_handler);
-		priv->floating_toolbar_motion_handler = 0;
+	if (priv->acs_eventsourceid) {
+		g_source_remove(priv->acs_eventsourceid);
+		priv->acs_eventsourceid = 0;
+	}
+	if (priv->spf_eventsourceid) {
+		g_source_remove(priv->spf_eventsourceid);
+		priv->spf_eventsourceid = 0;
+	}
+	if (priv->grab_retry_eventsourceid) {
+		g_source_remove(priv->grab_retry_eventsourceid);
+		priv->grab_retry_eventsourceid = 0;
 	}
 	if (priv->ftb_hide_eventsource) {
 		g_source_remove(priv->ftb_hide_eventsource);
 		priv->ftb_hide_eventsource = 0;
 	}
-	if (priv->savestate_eventsourceid) {
-		g_source_remove(priv->savestate_eventsourceid);
-		priv->savestate_eventsourceid = 0;
+	if (priv->tar_eventsource) {
+		g_source_remove(priv->tar_eventsource);
+		priv->tar_eventsource = 0;
+	}
+	if (priv->hidetb_eventsource) {
+		g_source_remove(priv->hidetb_eventsource);
+		priv->hidetb_eventsource = 0;
+	}
+	if (priv->dwp_eventsourceid) {
+		g_source_remove(priv->dwp_eventsourceid);
+		priv->dwp_eventsourceid = 0;
 	}
 
 	/* There is no need to destroy priv->floating_toolbar_widget,
 	 * because it’s our child and will be destroyed automatically */
-
-	/* Timer used to hide the toolbar */
-	if (priv->hidetb_timer) {
-		g_source_remove(priv->hidetb_timer);
-		priv->hidetb_timer = 0;
-	}
-	if (priv->switch_page_finalsel_handler) {
-		g_source_remove(priv->switch_page_finalsel_handler);
-		priv->switch_page_finalsel_handler = 0;
-	}
 
 	cnnwin->priv = NULL;
 	g_free(priv);
@@ -776,7 +781,7 @@ static gboolean rcw_floating_toolbar_make_invisible(gpointer data)
 	RemminaConnectionWindowPriv *priv = (RemminaConnectionWindowPriv *)data;
 	gtk_widget_set_opacity(GTK_WIDGET(priv->overlay_ftb_overlay), 0.0);
 	priv->ftb_hide_eventsource = 0;
-	return FALSE;
+	return G_SOURCE_REMOVE;
 }
 
 static void rcw_floating_toolbar_show(RemminaConnectionWindow *cnnwin, gboolean show)
@@ -860,8 +865,10 @@ gboolean rcw_toolbar_autofit_restore(RemminaConnectionWindow *cnnwin)
 	gint dwidth, dheight;
 	GtkAllocation nba, ca, ta;
 
+	cnnwin->priv->tar_eventsource = 0;
+
 	if (priv->toolbar_is_reconfiguring)
-		return FALSE;
+		return G_SOURCE_REMOVE;
 
 	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return FALSE;
 
@@ -881,7 +888,8 @@ gboolean rcw_toolbar_autofit_restore(RemminaConnectionWindow *cnnwin)
 	}
 	if (GTK_IS_SCROLLED_WINDOW(cnnobj->scrolled_container))
 		rco_set_scrolled_policy(cnnobj, GTK_SCROLLED_WINDOW(cnnobj->scrolled_container));
-	return FALSE;
+
+	return G_SOURCE_REMOVE;
 }
 
 static void rcw_toolbar_autofit(GtkWidget *widget, RemminaConnectionWindow *cnnwin)
@@ -899,11 +907,9 @@ static void rcw_toolbar_autofit(GtkWidget *widget, RemminaConnectionWindow *cnnw
 
 		/* It’s tricky to make the toolbars disappear automatically, while keeping scrollable.
 		 * Please tell me if you know a better way to do this */
-		gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(cnnobj->scrolled_container), GTK_POLICY_NEVER,
-					       GTK_POLICY_NEVER);
+		gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(cnnobj->scrolled_container), GTK_POLICY_NEVER, GTK_POLICY_NEVER);
 
-		/** @todo save returned source id in priv->something and then delete when main object is destroyed */
-		g_timeout_add(200, (GSourceFunc)rcw_toolbar_autofit_restore, cnnwin);
+		cnnwin->priv->tar_eventsource = g_timeout_add(200, (GSourceFunc)rcw_toolbar_autofit_restore, cnnwin);
 	}
 }
 
@@ -2528,9 +2534,9 @@ rcw_floating_toolbar_hide(RemminaConnectionWindow *cnnwin)
 {
 	TRACE_CALL(__func__);
 	RemminaConnectionWindowPriv *priv = cnnwin->priv;
-	priv->hidetb_timer = 0;
+	priv->hidetb_eventsource = 0;
 	rcw_floating_toolbar_show(cnnwin, FALSE);
-	return FALSE;
+	return G_SOURCE_REMOVE;
 }
 
 static gboolean rcw_floating_toolbar_on_scroll(GtkWidget *widget, GdkEventScroll *event,
@@ -2613,7 +2619,7 @@ static gboolean rcw_after_configure_scrolled(gpointer user_data)
 			remmina_file_set_int(cnnobj->remmina_file, "window_maximize", FALSE);
 		}
 	}
-	cnnobj->cnnwin->priv->savestate_eventsourceid = 0;
+	cnnobj->cnnwin->priv->acs_eventsourceid = 0;
 	return FALSE;
 }
 
@@ -2631,9 +2637,9 @@ static gboolean rcw_on_configure(GtkWidget *widget, GdkEventConfigure *event,
 
 	if (!(cnnobj = rcw_get_visible_cnnobj(cnnwin))) return FALSE;
 
-	if (cnnwin->priv->savestate_eventsourceid) {
-		g_source_remove(cnnwin->priv->savestate_eventsourceid);
-		cnnwin->priv->savestate_eventsourceid = 0;
+	if (cnnwin->priv->acs_eventsourceid) {
+		g_source_remove(cnnwin->priv->acs_eventsourceid);
+		cnnwin->priv->acs_eventsourceid = 0;
 	}
 
 	if (cnnwin && gtk_widget_get_window(GTK_WIDGET(cnnwin))
@@ -2641,7 +2647,7 @@ static gboolean rcw_on_configure(GtkWidget *widget, GdkEventConfigure *event,
 		/* Under Gnome shell we receive this configure_event BEFORE a window
 		 * is really unmaximized, so we must read its new state and dimensions
 		 * later, not now */
-		cnnwin->priv->savestate_eventsourceid = g_timeout_add(500, rcw_after_configure_scrolled, cnnobj);
+		cnnwin->priv->acs_eventsourceid = g_timeout_add(500, rcw_after_configure_scrolled, cnnobj);
 
 	if (cnnwin->priv->view_mode != SCROLLED_WINDOW_MODE)
 		/* Notify window of change so that scroll border can be hidden or shown if needed */
@@ -3057,21 +3063,19 @@ static gboolean rcw_on_switch_page_finalsel(gpointer user_data)
 	if (!cnnobj->cnnwin)
 		return FALSE;
 
-
-
 	priv = cnnobj->cnnwin->priv;
 
 	if (GTK_IS_WIDGET(cnnobj->cnnwin)) {
 		rcw_floating_toolbar_show(cnnobj->cnnwin, TRUE);
-		if (!priv->hidetb_timer)
-			priv->hidetb_timer = g_timeout_add(TB_HIDE_TIME_TIME, (GSourceFunc)
+		if (!priv->hidetb_eventsource)
+			priv->hidetb_eventsource = g_timeout_add(TB_HIDE_TIME_TIME, (GSourceFunc)
 							   rcw_floating_toolbar_hide, cnnobj->cnnwin);
 		rco_update_toolbar(cnnobj);
 		rcw_grab_focus(cnnobj->cnnwin);
 		if (priv->view_mode != SCROLLED_WINDOW_MODE)
 			rco_check_resize(cnnobj);
 	}
-	priv->switch_page_finalsel_handler = 0;
+	priv->spf_eventsourceid = 0;
 	return FALSE;
 }
 
@@ -3083,9 +3087,9 @@ static void rcw_on_switch_page(GtkNotebook *notebook, GtkWidget *newpage, guint 
 	RemminaConnectionObject *cnnobj_newpage;
 
 	cnnobj_newpage = g_object_get_data(G_OBJECT(newpage), "cnnobj");
-	if (priv->switch_page_finalsel_handler)
-		g_source_remove(priv->switch_page_finalsel_handler);
-	priv->switch_page_finalsel_handler = g_idle_add(rcw_on_switch_page_finalsel, cnnobj_newpage);
+	if (priv->spf_eventsourceid)
+		g_source_remove(priv->spf_eventsourceid);
+	priv->spf_eventsourceid = g_idle_add(rcw_on_switch_page_finalsel, cnnobj_newpage);
 }
 
 static void rcw_on_page_added(GtkNotebook *notebook, GtkWidget *child, guint page_num,
@@ -3655,15 +3659,16 @@ static RemminaConnectionWindow *rcw_find(RemminaFile *remminafile)
 	return RCW(remmina_widget_pool_find(REMMINA_TYPE_CONNECTION_WINDOW, tag));
 }
 
-gboolean rco_delayed_window_present(gpointer user_data)
+gboolean rcw_delayed_window_present(gpointer user_data)
 {
-	RemminaConnectionObject *cnnobj = (RemminaConnectionObject *)user_data;
+	RemminaConnectionWindow *cnnwin = (RemminaConnectionWindow *)user_data;
 
-	if (cnnobj && cnnobj->connected && cnnobj->cnnwin) {
-		gtk_window_present_with_time(GTK_WINDOW(cnnobj->cnnwin), (guint32)(g_get_monotonic_time() / 1000));
-		rcw_grab_focus(cnnobj->cnnwin);
+	if (cnnwin) {
+		gtk_window_present_with_time(GTK_WINDOW(cnnwin), (guint32)(g_get_monotonic_time() / 1000));
+		rcw_grab_focus(cnnwin);
 	}
-	return FALSE;
+	cnnwin->priv->dwp_eventsourceid = 0;
+	return G_SOURCE_REMOVE;
 }
 
 void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
@@ -3710,7 +3715,7 @@ void rco_on_connect(RemminaProtocolWidget *gp, RemminaConnectionObject *cnnobj)
 
 	g_debug("Trying to present the window");
 	/* Try to present window */
-	g_timeout_add(200, rco_delayed_window_present, (gpointer)cnnobj);
+	cnnobj->cnnwin->priv->dwp_eventsourceid = g_timeout_add(200, rcw_delayed_window_present, (gpointer)cnnobj->cnnwin);
 }
 
 static void cb_lasterror_confirmed(void *cbdata, int btn)
