@@ -4,13 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # Johannes Weberhofer <jweberhofer@weberhofer.at>, 2019, 2020.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020.
+# Oliver <websites@posteo.de>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-03-27 14:31+0000\n"
-"PO-Revision-Date: 2020-03-23 03:49+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2020-03-29 14:05+0000\n"
+"Last-Translator: Johannes Weberhofer <jweberhofer@weberhofer.at>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/remmina/remmina/"
 "de/>\n"
 "Language: de\n"
@@ -272,7 +273,6 @@ msgid "Startup program"
 msgstr "Startprogramm"
 
 #: src/remmina_ssh_plugin.c:1029
-#, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -284,17 +284,16 @@ msgid ""
 "  • %g is substituted with Remmina profile group name\n"
 "  • %d is substituted with local datetime in iso8601 format\n"
 msgstr ""
-"<tt><big>* Kommando in PATH Argumenten %h\n"
-"• /pfad/zu/kommando -optionen %h %u\n"
-"• %h wird durch den Servernamen ersetzt\n"
-"• %t wird durch den SSH Servernamen ersetzt\n"
-"• %u wird durch den Benutzernamen ersetzt\n"
-"• %U wird durch den SSH Benutzernamen ersetzt\n"
-"• %p wird durch den Remmina Profilnamen ersetzt\n"
-"• %g wird durch den Remmina Profil‐Gruppennamen ersetzt\n"
-"Starten Sie nicht im Hintergrund, wenn Sie das Kommando vor der Verbindung "
-"starten wollen.\n"
-"</big></tt>"
+"Beim Festlegen des Dateinamens können folgende Platzhalter verwendet werden:"
+"\n"
+"\n"
+"   • %h wird durch den Servernamen ersetzt\n"
+"   • %t wird durch den SSH Servernamen ersetzt\n"
+"   • %u wird durch den Benutzernamen ersetzt\n"
+"   • %U wird durch den SSH Benutzernamen ersetzt\n"
+"   • %p wird durch den Remmina Profilnamen ersetzt\n"
+"   • %g wird durch den Remmina Profil‐Gruppennamen ersetzt\n"
+"   • %d wird durch das lokale Datum im ISO-8601 Format ersetzt\n"
 
 #: src/remmina_ssh_plugin.c:1051
 msgid "Terminal color scheme"
@@ -996,9 +995,8 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr "Der öffentliche SSH-Schlüssel kann nicht importiert werden: %s"
 
 #: src/remmina_ssh.c:255
-#, fuzzy
 msgid "SSH passphrase is empty, it should not be."
-msgstr "Die SSH Passphrase darf nicht leer sein."
+msgstr "Die SSH-Passphrase ist leer, sie sollte es nicht sein."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:289
@@ -1227,7 +1225,6 @@ msgstr ""
 "• [server]:port</big></tt>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1250,6 +1247,7 @@ msgstr ""
 "• %U wird durch den SSH Benutzernamen ersetzt\n"
 "• %p wird durch den Remmina Profilnamen ersetzt\n"
 "• %g wird durch den Remmina Profil‐Gruppennamen ersetzt\n"
+"• %d wird durch das lokale Datum im ISO-8601 Format ersetzt\n"
 "Starten Sie nicht im Hintergrund, wenn Sie das Kommando vor der Verbindung "
 "starten wollen.\n"
 "</big></tt>"
@@ -2024,9 +2022,8 @@ msgid "Client name"
 msgstr "Client‐Name"
 
 #: plugins/rdp/rdp_plugin.c:2010
-#, fuzzy
 msgid "Client build"
-msgstr "Client‐Name"
+msgstr "Client‐Build"
 
 #: plugins/rdp/rdp_plugin.c:2013
 msgid "Load balance info"
@@ -2571,13 +2568,12 @@ msgid "Screenshot folder"
 msgstr "Ordner für Bildschirmfotos"
 
 #: data/ui/remmina_preferences.glade:292
-#, fuzzy
 msgid "Choose a folder to save screenshots from Remmina in."
 msgstr ""
-"Wählen Sie das Verzeichnis in das Remmina Bildschirmfotos speichern soll."
+"Wählen Sie einen Ordner, in dem Sie Bildschirmfotos von Remmina speichern "
+"möchten."
 
 #: data/ui/remmina_preferences.glade:295
-#, fuzzy
 msgid "Select a folder"
 msgstr "Wählen Sie einen Ordner"
 
@@ -2587,7 +2583,7 @@ msgstr "Bildschirmauflösungen"
 
 #: data/ui/remmina_preferences.glade:326
 msgid "Screenshot filename"
-msgstr "Dateiname für Screenshots"
+msgstr "Dateiname für Bildschirmfoto"
 
 #: data/ui/remmina_preferences.glade:338
 msgid ""
