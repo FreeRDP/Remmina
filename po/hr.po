@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-03-27 14:31+0000\n"
-"PO-Revision-Date: 2020-04-04 21:55+0000\n"
+"PO-Revision-Date: 2020-04-04 22:19+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/remmina/remmina/"
 "hr/>\n"
@@ -38,12 +38,12 @@ msgstr "Pokretanje vanjskih naredbi…"
 #: src/remmina_protocol_widget.c:316
 #, c-format
 msgid "Connecting to \"%s\"…"
-msgstr "Povezivanje s „%s”…"
+msgstr "Povezivanje s \"%s\"…"
 
 #: src/remmina_protocol_widget.c:745 src/remmina_protocol_widget.c:863
 #, c-format
 msgid "Connecting to \"%s\" via SSH…"
-msgstr "Povezivanje s „%s” putem SSH-a…"
+msgstr "Povezivanje s \"%s\" putem SSH-a…"
 
 #: src/remmina_protocol_widget.c:926
 #, c-format
@@ -53,12 +53,12 @@ msgstr "Čekanje dolazećeg SSH povezivanja na ulazu %i…"
 #: src/remmina_protocol_widget.c:978
 #, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "Naredba „%s” nije dostupna na SSH poslužitelju."
+msgstr "Naredba \"%s\" nije dostupna na SSH poslužitelju."
 
 #: src/remmina_protocol_widget.c:982
 #, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr "Nemoguće pokretanje „%s” naredbe na SSH poslužitelju (stanje = %i)."
+msgstr "Nemoguće pokretanje \"%s\" naredbe na SSH poslužitelju (stanje = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:990
@@ -272,7 +272,6 @@ msgid "Startup program"
 msgstr "Pokretanje programa"
 
 #: src/remmina_ssh_plugin.c:1029
-#, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -284,16 +283,15 @@ msgid ""
 "  • %g is substituted with Remmina profile group name\n"
 "  • %d is substituted with local datetime in iso8601 format\n"
 msgstr ""
-"<tt><big>* naredba u PUTANJI argumenta %h\n"
-"* /putanja/do/foo -options %h %u\n"
-"* %h je zamijenjen nazivom poslužitelja\n"
-"* %t je zamijenjen nazivom SSH poslužitelja\n"
-"* %u je zamijenjen korisničkim imenom\n"
-"* %U je zamijenjen SSH korisničkim imenom\n"
-"* %p je zamijenjen s Remmina nazivom profila\n"
-"* %g je zamijenjen s Remmina nazivom profila grupe\n"
-"Ne pokrećite u pozadini ako želite da se naredba izvrši prije povezivanja.\n"
-"</big></tt>"
+"Naziv datoteke može sadržavati sljedeća rezervirana mjesta:\n"
+"\n"
+"  • %h je zamijenjen nazivom poslužitelja\n"
+"  • %t je zamijenjen nazivom SSH poslužitelja\n"
+"  • %u je zamijenjen korisničkim imenom\n"
+"  • %U je zamijenjen SSH korisničkim imenom\n"
+"  • %p je zamijenjen s Remmina nazivom profila\n"
+"  • %g je zamijenjen s Remmina nazivom profila grupe\n"
+"  • %d je zamijenjen s lokalnim datumom i vremenom u iso8601 formatu\n"
 
 #: src/remmina_ssh_plugin.c:1051
 msgid "Terminal color scheme"
@@ -394,7 +392,6 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Marko Martinović https://launchpad.net/~marko-martinovic-"
 "deactivatedaccount\n"
-"  Milo Ivir https://launchpad.net/~milotype\n"
 "  gogo https://launchpad.net/~trebelnik-stefina"
 
 #: src/remmina_ftp_client.c:388
@@ -999,7 +996,7 @@ msgstr "SSH javni ključ ne može biti uvezen. %s"
 
 #: src/remmina_ssh.c:255
 msgid "SSH passphrase is empty, it should not be."
-msgstr ""
+msgstr "SSH lozinka je prazna, ne bi trebala biti."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:289
@@ -1220,7 +1217,6 @@ msgstr ""
 "• [poslužitelj]:ulaz</big></tt>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1236,13 +1232,14 @@ msgid ""
 "</big></tt>"
 msgstr ""
 "<tt><big>* naredba u PUTANJI argumenta %h\n"
-"* /putanja/do/foo -options %h %u\n"
-"* %h je zamijenjen nazivom poslužitelja\n"
-"* %t je zamijenjen nazivom SSH poslužitelja\n"
-"* %u je zamijenjen korisničkim imenom\n"
-"* %U je zamijenjen SSH korisničkim imenom\n"
-"* %p je zamijenjen s Remmina nazivom profila\n"
-"* %g je zamijenjen s Remmina nazivom profila grupe\n"
+"• /putanja/do/foo -options %h %u\n"
+"• %h je zamijenjen nazivom poslužitelja\n"
+"• %t je zamijenjen nazivom SSH poslužitelja\n"
+"• %u je zamijenjen korisničkim imenom\n"
+"• %U je zamijenjen SSH korisničkim imenom\n"
+"• %p je zamijenjen s Remmina nazivom profila\n"
+"• %g je zamijenjen s Remmina nazivom profila grupe\n"
+"• %d je zamijenjen s lokalnim datumom i vremenom u iso8601 formatu\n"
 "Ne pokrećite u pozadini ako želite da se naredba izvrši prije povezivanja.\n"
 "</big></tt>"
 
@@ -1867,7 +1864,7 @@ msgstr "Nemoguće povezivanje s RDP poslužiteljem \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1565
 msgid "Could not start libfreerdp-gdi."
-msgstr "Nemoguće je pokrenuti libfreerdp gdi"
+msgstr "Nemoguće je pokrenuti libfreerdp gdi."
 
 #: plugins/rdp/rdp_plugin.c:1568
 #, c-format
@@ -1956,7 +1953,7 @@ msgstr "Pregovaraj"
 
 #: plugins/rdp/rdp_plugin.c:1960
 msgid "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 and newer)"
-msgstr ""
+msgstr "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 i noviji)"
 
 #: plugins/rdp/rdp_plugin.c:1963
 msgid ""
@@ -1968,6 +1965,12 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
 "SCardGetDeviceTypeId()"
 msgstr ""
+"Korišteno od strane usluga Terminala u kanalima Pametne kartice za "
+"razlikovanje klijentovih mogućnosti:\n"
+"  • < 4034: Windows XP osnovne funkcije pametne kartice\n"
+"  • 4034-7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(),\n"
+"    SCardGetTransmitCount()\n"
+"  • >= 7065: Windows 8 i noviji: SCardGetReaderIcon(), SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2002
 msgid "Sound"
@@ -2002,9 +2005,8 @@ msgid "Client name"
 msgstr "Naziv klijenta"
 
 #: plugins/rdp/rdp_plugin.c:2010
-#, fuzzy
 msgid "Client build"
-msgstr "Naziv klijenta"
+msgstr "Izgradnja klijenta"
 
 #: plugins/rdp/rdp_plugin.c:2013
 msgid "Load balance info"
@@ -2548,12 +2550,10 @@ msgid "Screenshot folder"
 msgstr "Mapa slika zaslona"
 
 #: data/ui/remmina_preferences.glade:292
-#, fuzzy
 msgid "Choose a folder to save screenshots from Remmina in."
 msgstr "Odaberite mapu za spremanje slika zaslona iz Remmine."
 
 #: data/ui/remmina_preferences.glade:295
-#, fuzzy
 msgid "Select a folder"
 msgstr "Odaberi mapu"
 
