@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-04-08 09:07+0000\n"
-"PO-Revision-Date: 2020-03-27 10:03+0000\n"
+"PO-Revision-Date: 2020-04-08 14:19+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.0-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
@@ -29,9 +29,8 @@ msgid "Connect via SSH from a new terminal"
 msgstr "З'єднатися за допомогою SSH з нового термінала"
 
 #: src/remmina_protocol_widget.c:281
-#, fuzzy
 msgid "Open SFTP transfer…"
-msgstr "Відкрити захищену передачу файлів (SFTP)"
+msgstr "Відкрити передавання SFTP…"
 
 #: src/remmina_protocol_widget.c:309
 msgid "Executing external commands…"
@@ -997,7 +996,7 @@ msgstr "Ключовий файл SSH ще не встановлено."
 #: src/remmina_ssh.c:246
 #, c-format
 msgid "Public SSH key cannot be imported. %s"
-msgstr "Публічний ключ SSH не може бути імпортовано. %s"
+msgstr "Не вдалося імпортувати відкритий ключ SSH. %s"
 
 #: src/remmina_ssh.c:255
 msgid "SSH passphrase is empty, it should not be."
@@ -1007,14 +1006,15 @@ msgstr "Пароль SSH порожній. Це якась помилка."
 #: src/remmina_ssh.c:289
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
-msgstr "Не можливо автентифікуватись з публічним ключем SSH. %s"
+msgstr "Не вдалося пройти розпізнавання за відкритим ключем SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:307
 #, c-format
 msgid "Could not authenticate with public SSH key using SSH agent. %s"
 msgstr ""
-"Не можливо автентифікуватись з публічним ключем SSH використовуючи агента. %s"
+"Не вдалося пройти розпізнавання за відкритим ключем SSH з використанням "
+"агента SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327
@@ -1024,25 +1024,25 @@ msgstr "Не вдалось автентифікуватись за допомо
 
 #: src/remmina_ssh.c:357
 msgid "The public SSH key changed!"
-msgstr "Публічний ключ SSH змінився!"
+msgstr "Змінено відкритий ключ SSH!"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:509
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
-msgstr "Не можливо отримати публічний ключ SSH серверу. %s"
+msgstr "Не вдалося отримати відкритий ключ сервера SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:516
 #, c-format
 msgid "Could not fetch public SSH key. %s"
-msgstr "Не можу отримати публічного SSH ключа. %s"
+msgstr "Не вдалося отримати відкритий ключ SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:524
 #, c-format
 msgid "Could not fetch checksum for public SSH key. %s"
-msgstr "Не можу отримати контрольну суму для публічного SSH ключа. %s"
+msgstr "Не вдалося отримати контрольну суму для відкритого ключа SSH. %s"
 
 #: src/remmina_ssh.c:537
 msgid "The server is unknown. The public key fingerprint is:"
@@ -1050,7 +1050,7 @@ msgstr "Невідомий сервер. Відкритий ключ відби�
 
 #: src/remmina_ssh.c:539 src/remmina_ssh.c:545
 msgid "Do you trust the new public key?"
-msgstr "Ви довіряєте новому публічному ключу?"
+msgstr "Ви довіряєте новому відкритому ключу?"
 
 #: src/remmina_ssh.c:542
 msgid ""
