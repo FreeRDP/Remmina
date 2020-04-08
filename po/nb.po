@@ -858,9 +858,9 @@ msgstr "Klarte ikke å lagre filen: %s."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the folder \"%s\". %s"
-msgstr "Klarte ikke å åpne kanal: %s"
+msgstr "Klarte ikke å åpne mappen \"%s\". %s"
 
 #: src/remmina_sftp_client.c:385
 #, fuzzy, c-format
@@ -893,9 +893,9 @@ msgid "Are you sure you want to cancel the file transfer in progress?"
 msgstr "Er du sikker på at du vil slette «%s»?"
 
 #: src/remmina_sftp_client.c:857
-#, fuzzy, c-format
+#, c-format
 msgid "Could not delete \"%s\". %s"
-msgstr "Klarte ikke å åpne kanal: %s"
+msgstr "Klarte ikke å slette \"%s\". %s"
 
 #: src/remmina_sftp_client.c:938
 msgid "The file exists already"
@@ -1242,6 +1242,7 @@ msgstr ""
 "* [tjener]:port</big></tt>"
 
 #: src/remmina_file_editor.c:81
+#, fuzzy
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1264,6 +1265,7 @@ msgstr ""
 "• %U erstattes med SSH-brukernavnet\n"
 "• %p erstattes med Remmina-profilnavnet\n"
 "• %g erstattes med Remmina-profilgruppenavnet\n"
+"•  %d erstattes med lokal datotid i iso8601.format\n"
 "Ikke kjør i bakgrunnen hvis du ønsker at kommandoen skal kjøres før "
 "tilknytning.\n"
 "</big></tt>"
