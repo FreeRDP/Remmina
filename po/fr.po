@@ -26,7 +26,7 @@ msgstr ""
 
 #: src/remmina_protocol_widget.c:275
 msgid "Connect via SSH from a new terminal"
-msgstr "Se connecter via SSH depuis a nouveau terminal"
+msgstr "Se connecter via SSH depuis un nouveau terminal"
 
 #: src/remmina_protocol_widget.c:281
 msgid "Open SFTP transfer"
@@ -276,7 +276,6 @@ msgid "Startup program"
 msgstr "Programme de démarrage"
 
 #: src/remmina_ssh_plugin.c:1029
-#, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -288,20 +287,17 @@ msgid ""
 "  • %g is substituted with Remmina profile group name\n"
 "  • %d is substituted with local datetime in iso8601 format\n"
 msgstr ""
-"<big>\n"
-"• <tt>commande</tt> [accessible depuis <tt>$PATH</tt>] <tt>arguments %h</"
-"tt> ;\n"
-"• <tt>/chemin/vers/commande -options %h %u</tt> ;\n"
-"• <tt>%h</tt> est remplacé par le nom du serveur ;\n"
-"• <tt>%t</tt> est remplacé par nom du serveur SSH ;\n"
-"• <tt>%u</tt> est remplacé par le nom d’utilisateur ;\n"
-"• <tt>%U</tt> est remplacé par le nom d’utilisateur SSH ;\n"
-"• <tt>%p</tt> est remplacé par le nom du profil Remmina ;\n"
-"• <tt>%g</tt> est remplacé par le nom de groupe du profil Remmina.\n"
+"Le nom de fichier peut être composé à l’aide des instructions de formatage "
+"suivantes :\n"
 "\n"
-"Ne lancez pas la commande en tâche de fond si vous voulez qu’elle soit "
-"exécutée avant la connexion.\n"
-"</big>"
+"  • <tt>%h</tt>, qui sera remplacé par le nom du serveur ;\n"
+"  • <tt>%t</tt>, qui sera remplacé par nom du serveur SSH ;\n"
+"  • <tt>%u</tt>, qui sera remplacé par le nom d’utilisateur ;\n"
+"  • <tt>%U</tt>, qui sera remplacé par le nom d’utilisateur SSH ;\n"
+"  • <tt>%p</tt>, qui sera remplacé par le nom du profil Remmina ;\n"
+"  • <tt>%g</tt>, qui sera remplacé par le nom de groupe du profil Remmina ;\n"
+"  • <tt>%d</tt>, qui sera remplacé par l’horodatage local au format ISO 8601."
+"\n"
 
 #: src/remmina_ssh_plugin.c:1051
 msgid "Terminal color scheme"
@@ -1027,9 +1023,8 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr "La clef SSH publique n’a pas pu être importée. %s"
 
 #: src/remmina_ssh.c:255
-#, fuzzy
 msgid "SSH passphrase is empty, it should not be."
-msgstr "La phrase de passe est vide, elle ne devrait pas l’être."
+msgstr "La phrase de passe SSH est vide, elle ne devrait pas l’être."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:289
@@ -1253,7 +1248,6 @@ msgstr ""
 "• <tt>[serveur]:port</tt>.</big>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1268,19 +1262,21 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
-"<tt><big>\n"
-"• commande [accessible depuis $PATH] arguments %h ;\n"
-"• /chemin/vers/commande -options %h %u ;\n"
-"• %h est remplacé par le nom du serveur ;\n"
-"• %t est remplacé par nom du serveur SSH ;\n"
-"• %u est remplacé par le nom d’utilisateur ;\n"
-"• %U est remplacé par le nom d’utilisateur SSH ;\n"
-"• %p est remplacé par le nom du profil Remmina ;\n"
-"• %g est remplacé par le nom de groupe du profil Remmina.\n"
+"<big>\n"
+"• <tt>commande</tt> [accessible depuis <tt>$PATH</tt>] <tt>arguments %h</tt> "
+";\n"
+"• <tt>/chemin/vers/commande -options %h %u</tt> ;\n"
+"• <tt>%h</tt> est remplacé par le nom du serveur ;\n"
+"• <tt>%t</tt> est remplacé par nom du serveur SSH ;\n"
+"• <tt>%u</tt> est remplacé par le nom d’utilisateur ;\n"
+"• <tt>%U</tt> est remplacé par le nom d’utilisateur SSH ;\n"
+"• <tt>%p</tt> est remplacé par le nom du profil Remmina ;\n"
+"• <tt>%g</tt> est remplacé par le nom de groupe du profil Remmina ;\n"
+"• <tt>%d</tt> est remplacé par l’horodatage local au format ISO 8601.\n"
 "\n"
 "Ne lancez pas la commande en tâche de fond si vous voulez qu’elle soit "
-"exécutée avant la connexion.\n"
-"</big></tt>"
+"exécutée avant la connexion.\n"
+"</big>"
 
 #: src/remmina_file_editor.c:95
 msgid ""
@@ -2600,14 +2596,12 @@ msgid "Screenshot folder"
 msgstr "Dossier des captures d’écran"
 
 #: data/ui/remmina_preferences.glade:292
-#, fuzzy
 msgid "Choose a folder to save screenshots from Remmina in."
 msgstr ""
 "Choisissez un dossier dans lequel enregistrer les captures d’écran de "
 "Remmina."
 
 #: data/ui/remmina_preferences.glade:295
-#, fuzzy
 msgid "Select a folder"
 msgstr "Sélectionner un dossier"
 

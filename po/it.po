@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.11\n"
+"X-Generator: Weblate 4.0-dev\n"
 "X-Launchpad-Export-Date: 2011-01-18 05:16+0000\n"
 
 #: src/remmina_protocol_widget.c:275
@@ -274,7 +274,6 @@ msgid "Startup program"
 msgstr "Programma all’avvio"
 
 #: src/remmina_ssh_plugin.c:1029
-#, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -286,17 +285,15 @@ msgid ""
 "  • %g is substituted with Remmina profile group name\n"
 "  • %d is substituted with local datetime in iso8601 format\n"
 msgstr ""
-"<tt><big>• comando [accessibile nel $PATH] argomenti [%h]\n"
-"• /percorso/del/comando -opzioni %h %u\n"
+"Il nome del file può utilizzare i seguenti segnaposto\n"
+"\n"
 "• %h viene sostituito con il nome del server\n"
 "• %t viene sostituito con il nome del server SSH\n"
 "• %u viene sostituito con il nome utente\n"
 "• %U viene sostituito con il nome utente SSH\n"
 "• %p viene sostituito con il nome del profilo\n"
 "• %g viene sostituito con il nome del gruppo del profilo di Remmina\n"
-"Non eseguire in background se si desidera che il comando venga completato "
-"prima di connettersi.\n"
-"</big></tt>"
+"• %d è sostituito con l'ora locale in formato iso8601\n"
 
 #: src/remmina_ssh_plugin.c:1051
 msgid "Terminal color scheme"
@@ -997,7 +994,6 @@ msgid "Public SSH key cannot be imported. %s"
 msgstr "Impossibile importare la chiave SSH pubblica. %s"
 
 #: src/remmina_ssh.c:255
-#, fuzzy
 msgid "SSH passphrase is empty, it should not be."
 msgstr "La passphrase ssh è vuota, non dovrebbe esserlo."
 
@@ -1225,7 +1221,6 @@ msgstr ""
 "* [server]:porta</big></tt>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1248,6 +1243,7 @@ msgstr ""
 "• %U viene sostituito con il nome utente SSH\n"
 "• %p viene sostituito con il nome del profilo\n"
 "• %g viene sostituito con il nome del gruppo del profilo di Remmina\n"
+"• %d è sostituito con l'ora locale in formato iso8601\n"
 "Non eseguire in background se si desidera che il comando venga completato "
 "prima di connettersi.\n"
 "</big></tt>"
@@ -1966,6 +1962,8 @@ msgstr "Negoziare"
 #: plugins/rdp/rdp_plugin.c:1960
 msgid "2600 (Windows XP),7601 (Windows Vista/7),9600 (Windows 8 and newer)"
 msgstr ""
+"2600 (Windows XP),7601 (Windows Vista/7), 9600 (Windows 8 e versioni più "
+"recenti)"
 
 #: plugins/rdp/rdp_plugin.c:1963
 msgid ""
@@ -1977,6 +1975,13 @@ msgid ""
 "  • >= 7065: Windows 8 and newer: SCardGetReaderIcon(), "
 "SCardGetDeviceTypeId()"
 msgstr ""
+"Utilizzato tra l'altro da Servizi terminal nel canale SmartCard per "
+"distinguere le funzionalità client:\n"
+"   • fino a 4034: Funzioni per le smart card di base di Windows XP\n"
+"   • da 4034 a 7064: Windows Vista/7: SCardReadCache(), SCardWriteCache(), \n"
+"     SCardGetTransmitCount()\n"
+"   • da 7065: Windows 8 e più recenti: SCardGetReaderIcon(), "
+"SCardGetDeviceTypeId()"
 
 #: plugins/rdp/rdp_plugin.c:2002
 msgid "Sound"
@@ -2011,9 +2016,8 @@ msgid "Client name"
 msgstr "Nome client"
 
 #: plugins/rdp/rdp_plugin.c:2010
-#, fuzzy
 msgid "Client build"
-msgstr "Nome client"
+msgstr "Build del client"
 
 #: plugins/rdp/rdp_plugin.c:2013
 msgid "Load balance info"
@@ -2558,12 +2562,10 @@ msgid "Screenshot folder"
 msgstr "Cartella per screenshot"
 
 #: data/ui/remmina_preferences.glade:292
-#, fuzzy
 msgid "Choose a folder to save screenshots from Remmina in."
 msgstr "Scegli la cartella in cui salvare gli screenshot di Remmina."
 
 #: data/ui/remmina_preferences.glade:295
-#, fuzzy
 msgid "Select a folder"
 msgstr "Selezionare una cartella"
 

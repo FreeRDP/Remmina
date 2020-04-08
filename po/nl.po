@@ -4,7 +4,7 @@
 # Redmar <redmar@ubuntu.com>, 2012.
 # redmar <redmar@ubuntu.com>, 2012.
 # Remon Damen <remondamen@gmail.com>, 2019.
-# Jennifer <jen@elypia.org>, 2019.
+# Jennifer <jen@elypia.org>, 2019, 2020.
 # anonymous <noreply@weblate.org>, 2019.
 # Allan Nordhøy <epost@anotheragency.no>, 2020.
 msgid ""
@@ -26,52 +26,51 @@ msgstr ""
 
 #: src/remmina_protocol_widget.c:275
 msgid "Connect via SSH from a new terminal"
-msgstr ""
+msgstr "Verbinding maken via SSH vanaf een nieuwe terminal"
 
 #: src/remmina_protocol_widget.c:281
-#, fuzzy
 msgid "Open SFTP transfer"
-msgstr "Beveiligde bestandsoverdracht (SFTP) openen…"
+msgstr "Beveiligde bestandsoverdracht (SFTP) openen"
 
 #: src/remmina_protocol_widget.c:309
 msgid "Executing external commands…"
 msgstr "Externe opdrachten uitvoeren…"
 
 #: src/remmina_protocol_widget.c:316
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to \"%s\"…"
-msgstr "Bezig met verbinden met ‘%s’…"
+msgstr "Bezig met verbinden met \"%s\"…"
 
 #: src/remmina_protocol_widget.c:745 src/remmina_protocol_widget.c:863
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to \"%s\" via SSH…"
-msgstr "Bezig met verbinden met ‘%s’…"
+msgstr "Verbinding maken met \"%s\" via SSH…"
 
 #: src/remmina_protocol_widget.c:926
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection at port %i…"
-msgstr "Wachten op een inkomende SSH-tunnel op poort %i…"
+msgstr "Wachten op een inkomende SSH verbinding op poort %i…"
 
 #: src/remmina_protocol_widget.c:978
-#, fuzzy, c-format
+#, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "Opdracht %s niet gevonden op SSH-server"
+msgstr "De opdracht \"%s\" niet beschikbaar op de SSH-server."
 
 #: src/remmina_protocol_widget.c:982
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr "Opdracht %s mislukt op SSH-server (status = %i)."
+msgstr "Kan de opdracht \"%s\" niet uitvoeren op de SSH-server (status = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:990
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command. %s"
-msgstr "Kanaal openen mislukt: %s"
+msgstr "Kon de opdracht niet uitvoeren. %s"
 
 #: src/remmina_protocol_widget.c:1058
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to %s via SSH…"
-msgstr "Bezig met verbinden met ‘%s’…"
+msgstr "Verbinding maken met %s via SSH…"
 
 #: src/remmina_protocol_widget.c:1424 src/remmina_protocol_widget.c:1443
 #: src/remmina_ssh_plugin.c:920 src/remmina_sftp_plugin.c:291
@@ -84,12 +83,11 @@ msgstr "Wachtwoord"
 
 #: src/remmina_protocol_widget.c:1442
 msgid "Type in username and password for SSH."
-msgstr ""
+msgstr "Voer de gebruikersnaam en het wachtwoord voor SSH in."
 
 #: src/remmina_protocol_widget.c:1498
-#, fuzzy
 msgid "Certificate details:"
-msgstr "Certificaat Details:"
+msgstr "Certificaatgegevens:"
 
 #: src/remmina_protocol_widget.c:1499 src/remmina_protocol_widget.c:1520
 msgid "Subject:"
@@ -104,39 +102,33 @@ msgid "Fingerprint:"
 msgstr "Fingerprint:"
 
 #: src/remmina_protocol_widget.c:1502
-#, fuzzy
 msgid "Accept certificate?"
 msgstr "Certificaat accepteren?"
 
 #: src/remmina_protocol_widget.c:1519
-#, fuzzy
 msgid "The certificate changed! Details:"
-msgstr "Certificaat gewijzigd! Details:"
+msgstr "Het certificaat is gewijzigd! Details:"
 
 #: src/remmina_protocol_widget.c:1522
-#, fuzzy
 msgid "Old fingerprint:"
 msgstr "Oude vingerafdruk:"
 
 #: src/remmina_protocol_widget.c:1523
-#, fuzzy
 msgid "New fingerprint:"
 msgstr "Nieuwe vingerafdruk:"
 
 #: src/remmina_protocol_widget.c:1524
-#, fuzzy
 msgid "Accept changed certificate?"
 msgstr "Gewijzigd certificaat accepteren?"
 
 #: src/remmina_protocol_widget.c:1666
 #, c-format
 msgid "Listening on port %i for an incoming %s connection…"
-msgstr "Op poort %i naar een inkomende %s-verbindingen luisteren…"
+msgstr "Op poort %i naar een inkomende %s-verbinding luisteren…"
 
 #: src/remmina_protocol_widget.c:1691
-#, fuzzy
 msgid "Could not authenticate, attempting reconnection…"
-msgstr "Authenticatie mislukt. Opnieuw proberen…"
+msgstr "Authenticatie mislukt. Opnieuw proberen verbinding te maken…"
 
 #: src/remmina_protocol_widget.c:1753 src/remmina_file_editor.c:408
 #: src/remmina_file_editor.c:883 data/ui/remmina_main.glade:565
@@ -146,7 +138,7 @@ msgstr "Server"
 #: src/remmina_protocol_widget.c:1770
 #, c-format
 msgid "Install the %s protocol plugin first."
-msgstr ""
+msgstr "Installeer eerst de %s-protocolplugin."
 
 #: src/remmina_exec.c:320
 #, c-format
@@ -183,36 +175,36 @@ msgstr "libsodium> = 1.9.0 is vereist om het hoofdwachtwoord te gebruiken"
 #: src/remmina_ssh_plugin.c:441
 #, c-format
 msgid "Error: %s"
-msgstr ""
+msgstr "Fout: %s"
 
 #: src/remmina_ssh_plugin.c:458
 msgid "Terminal content saved in"
-msgstr ""
+msgstr "Inhoud van de terminal opgeslagen in"
 
 #: src/remmina_ssh_plugin.c:512
 msgid "Select All (Host + A)"
-msgstr ""
+msgstr "Alles selecteren (Host + A)"
 
 #: src/remmina_ssh_plugin.c:513
 msgid "Copy (host + C)"
-msgstr ""
+msgstr "Kopiëren (host + C)"
 
 #: src/remmina_ssh_plugin.c:514
 msgid "Paste (host + V)"
-msgstr ""
+msgstr "Plakken (host + V)"
 
 #: src/remmina_ssh_plugin.c:515
 msgid "Save session to file"
-msgstr ""
+msgstr "Sessie opslaan in bestand"
 
 #: src/remmina_ssh_plugin.c:921 src/remmina_sftp_plugin.c:292
 #: src/remmina_file_editor.c:362 src/remmina_file_editor.c:369
 msgid "SSH identity file"
-msgstr ""
+msgstr "SSH-identiteitsbestand"
 
 #: src/remmina_ssh_plugin.c:922 src/remmina_sftp_plugin.c:293
 msgid "SSH agent"
-msgstr ""
+msgstr "SSH-agent"
 
 #: src/remmina_ssh_plugin.c:923 src/remmina_sftp_plugin.c:294
 #: src/remmina_file_editor.c:940
@@ -221,7 +213,7 @@ msgstr "Publieke sleutel (automatisch)"
 
 #: src/remmina_ssh_plugin.c:924 src/remmina_sftp_plugin.c:295
 msgid "Kerberos (GSSAPI)"
-msgstr ""
+msgstr "Kerberos (GSSAPI)"
 
 #: src/remmina_ssh_plugin.c:999 data/ui/remmina_main.glade:267
 msgid "Copy"
@@ -229,7 +221,7 @@ msgstr "Kopiëren"
 
 #: src/remmina_ssh_plugin.c:999
 msgid "_Copy"
-msgstr ""
+msgstr "_Kopiëren"
 
 #: src/remmina_ssh_plugin.c:1000
 msgid "Paste"
@@ -237,15 +229,15 @@ msgstr "Plakken"
 
 #: src/remmina_ssh_plugin.c:1000
 msgid "_Paste"
-msgstr ""
+msgstr "_Plakken"
 
 #: src/remmina_ssh_plugin.c:1001
 msgid "Select all"
-msgstr ""
+msgstr "Alles selecteren"
 
 #: src/remmina_ssh_plugin.c:1001
 msgid "_Select all"
-msgstr ""
+msgstr "_Selecteer alles"
 
 #: src/remmina_ssh_plugin.c:1019 src/remmina_message_panel.c:330
 #: src/remmina_sftp_plugin.c:323 src/remmina_file_editor.c:918
@@ -259,11 +251,11 @@ msgstr "Gebruikersnaam"
 #: plugins/vnc/vnc_plugin.c:1853 plugins/spice/spice_plugin.c:437
 #: plugins/nx/nx_plugin.c:722
 msgid "User password"
-msgstr ""
+msgstr "Gebruikerswachtwoord"
 
 #: src/remmina_ssh_plugin.c:1021 src/remmina_sftp_plugin.c:325
 msgid "Authentication type"
-msgstr ""
+msgstr "Verificatietype"
 
 #: src/remmina_ssh_plugin.c:1022 src/remmina_sftp_plugin.c:326
 #: plugins/nx/nx_plugin.c:720
@@ -273,7 +265,7 @@ msgstr "Identiteitsbestand"
 #: src/remmina_ssh_plugin.c:1023 src/remmina_sftp_plugin.c:327
 #: src/remmina_file_editor.c:949
 msgid "Password to unlock private key"
-msgstr ""
+msgstr "Wachtwoord om de privésleutel te ontgrendelen"
 
 #: src/remmina_ssh_plugin.c:1024 plugins/xdmcp/xdmcp_plugin.c:370
 #: plugins/rdp/rdp_plugin.c:2011 plugins/nx/nx_plugin.c:725
@@ -281,7 +273,6 @@ msgid "Startup program"
 msgstr "Opstartprogramma"
 
 #: src/remmina_ssh_plugin.c:1029
-#, fuzzy
 msgid ""
 "The filename can use the following placeholders:\n"
 "\n"
@@ -293,21 +284,19 @@ msgid ""
 "  • %g is substituted with Remmina profile group name\n"
 "  • %d is substituted with local datetime in iso8601 format\n"
 msgstr ""
-"<tt><big>* commando in PATH args %h\n"
-"* /path/to/foo -options %h %u\n"
-"* %h wordt vervangen door de servernaam\n"
-"* %t wordt vervangen door de SSH-servernaam\n"
-"* %u wordt vervangen door de gebruikersnaam\n"
-"* %U wordt vervangen door de SSH-gebruikersnaam\n"
-"* %p wordt vervangen door Remmina profielnaam\n"
-"* %g wordt vervangen door Remmina profielgroepnaam\n"
-"Voer niet op de achtergrond uit als u de opdracht wilt uitvoeren voordat u "
-"verbinding maakt.\n"
-"</big></tt>"
+"De bestandsnaam kan de volgende tijdelijke aanduidingen gebruiken:\n"
+"\n"
+"  • %h wordt vervangen door de servernaam\n"
+"  • %t wordt vervangen door de SSH-servernaam\n"
+"  • %u wordt vervangen door de gebruikersnaam\n"
+"  • %U wordt vervangen door de SSH-gebruikersnaam\n"
+"  • %p wordt vervangen door Remmina profielnaam\n"
+"  • %g wordt vervangen door Remmina profielgroepnaam\n"
+"  • %d wordt vervangen door lokale datetime in iso8601-indeling\n"
 
 #: src/remmina_ssh_plugin.c:1051
 msgid "Terminal color scheme"
-msgstr ""
+msgstr "Terminal kleurenschema"
 
 #: src/remmina_ssh_plugin.c:1052
 msgid "Character set"
@@ -330,9 +319,8 @@ msgid "Preferred server host key types"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1057
-#, fuzzy
 msgid "Folder for SSH session log"
-msgstr "Opstarten van SSH-sessie is mislukt: %s"
+msgstr "Map voor SSH-sessielogboek"
 
 #: src/remmina_ssh_plugin.c:1058
 msgid "Filename for SSH session log"
@@ -351,9 +339,8 @@ msgid "SSH compression"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1062
-#, fuzzy
 msgid "Don't remember passwords"
-msgstr "Wachtwoord onthouden"
+msgstr "Onthoud geen wachtwoorden"
 
 #: src/remmina_ssh_plugin.c:1063
 msgid "Strict host key checking"
@@ -365,7 +352,7 @@ msgstr "SSH - Secure Shell"
 
 #: src/remmina_applet_menu_item.c:121
 msgid "Discovered"
-msgstr "Gevonden"
+msgstr "Ontdekt"
 
 #: src/remmina_applet_menu_item.c:126
 msgid "New Connection"
@@ -380,15 +367,14 @@ msgid "Resetting passwords, please wait…"
 msgstr "Wachtwoorden opnieuw instellen, een ogenblik geduld…"
 
 #: src/remmina_mpchange.c:327
-#, fuzzy
 msgid "The multi password changer requires a secrecy plugin.\n"
 msgstr ""
-"De multi-wachtwoordwisselaar kan niet werken zonder een geheime plug-in.\n"
+"De multi-wachtwoordwisselaar kan niet werken zonder een geheimhoudingsplug-"
+"in.\n"
 
 #: src/remmina_mpchange.c:330
-#, fuzzy
 msgid "The multi password changer requires a secrecy service.\n"
-msgstr "De multi-wachtwoordwisselaar werkt niet zonder een geheime dienst.\n"
+msgstr "De multi-wachtwoordwisselaar vereist een geheimhouding dienst.\n"
 
 #: src/remmina_mpchange.c:409
 #, c-format
@@ -487,7 +473,6 @@ msgid "Delete files on server"
 msgstr "Bestanden op server wissen"
 
 #: src/remmina_ftp_client.c:903 src/remmina_ftp_client.c:972
-#, fuzzy
 msgid "Filename"
 msgstr "Bestandsnaam"
 
@@ -522,52 +507,45 @@ msgstr "Voortgang"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:84
-#, fuzzy
 msgid "Show 'About'"
-msgstr "Weergeven over dialoogvenster"
+msgstr "Toon 'Over'"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:86 src/remmina.c:88
-#, fuzzy
 msgid ""
 "Connect to desktop described in file (.remmina or type supported by plugin)"
 msgstr ""
-"Verbinding maken met bureaublad beschreven door bestand (.remmina of type "
+"Verbinding maken met bureaublad beschreven in bestand (.remmina of type "
 "ondersteund door plug-in)"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:90
-#, fuzzy
 msgid ""
 "Edit desktop connection described in file (.remmina or type supported by "
 "plugin)"
 msgstr ""
-"Bewerk bureaubladverbinding beschreven door bestand (.remmina of type "
+"Bewerk bureaubladverbinding beschreven in bestand (.remmina of type "
 "ondersteund door plug-in)"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:93
-#, fuzzy
 msgid "Start in kiosk mode"
 msgstr "Start Remmina in Kiosk mode"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:95
-#, fuzzy
 msgid "Create new connection profile"
 msgstr "Maak een nieuw verbindingsprofiel"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:97
-#, fuzzy
 msgid "Show preferences"
-msgstr "Voorkeuren"
+msgstr "Voorkeuren weergeven"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:99
-#, fuzzy
 msgid "Run a plugin"
-msgstr "Voer de plug-in uit"
+msgstr "Een plug-in uitvoeren"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:101
@@ -586,27 +564,23 @@ msgstr "Gebruik standaardprotocol (voor --new)"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:107
-#, fuzzy
 msgid "Start in tray"
-msgstr "Begin als tray-pictogram"
+msgstr "In systeemvak starten"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:109
-#, fuzzy
 msgid "Show the application version"
-msgstr "Toon de applicatie versie"
+msgstr "De toepassingsversie weergeven"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:111
-#, fuzzy
 msgid "Show version of the application and its plugins"
-msgstr "Toon de applicatie versie"
+msgstr "Versie van de toepassing en de plug-ins weergeven"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:113
-#, fuzzy
 msgid "Modify connection profile (requires --set-option)"
-msgstr "Aanpassen aansluitprofiel, vereist ook --set-optie"
+msgstr "Verbindingsprofiel wijzigen (vereist ook --set-option)"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:115
@@ -631,7 +605,7 @@ msgstr "Automatisch zoeken"
 
 #: src/remmina_icon.c:172 data/ui/remmina_main.glade:494
 msgid "_Quit"
-msgstr ""
+msgstr "_Verlaten"
 
 #: src/remmina_icon.c:357 src/remmina_icon.c:539
 msgid "Remmina Applet"
@@ -650,8 +624,8 @@ msgstr "Remmina client voor Bureaublad-op-afstand"
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
 msgstr ""
-"Er zijn %i actieve verbindingen in dit venster. Weet u zeker dat u wilt "
-"afsluiten?"
+"Weet u zeker dat u %i actieve verbindingen in het huidige venster wilt "
+"sluiten?"
 
 #: src/rcw.c:1309
 msgid "Viewport fullscreen mode"
@@ -729,7 +703,7 @@ msgstr "Verbinding verbreken"
 #: src/rcw.c:3812
 #, fuzzy, c-format
 msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
-msgstr "Bestand %s is beschadigd, onleesbaar of niet gevonden."
+msgstr "Bestand \"%s\" is beschadigd, onleesbaar of kan niet gevonden worden."
 
 #: src/rcw.c:3974
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
@@ -795,9 +769,9 @@ msgstr[0] "Totaal %i item."
 msgstr[1] "Totaal %i items."
 
 #: src/remmina_main.c:829
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete \"%s\"?"
-msgstr "Weet u zeker dat u ‘%s’ wilt verwijderen?"
+msgstr "Weet u zeker dat u \"%s\" wilt verwijderen?"
 
 #: src/remmina_main.c:929
 #, c-format
@@ -849,73 +823,71 @@ msgid "Meta+"
 msgstr "Meta+"
 
 #: src/remmina_key_chooser.h:44
-#, fuzzy
 msgid "<None>"
 msgstr "<None>"
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the folder \"%s\"."
-msgstr "Kanaal openen mislukt: %s"
+msgstr "Kon de map \"%s\" niet aanmaken."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the file \"%s\"."
-msgstr "Kanaal openen mislukt: %s"
+msgstr "Kon het bestand \"%s\" niet aanmaken."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the file \"%s\" on the server. %s"
-msgstr "Kanaal openen mislukt: %s"
+msgstr "Kon het bestand \"%s\" niet openen op de server. %s"
 
 #: src/remmina_sftp_client.c:242
-#, fuzzy, c-format
+#, c-format
 msgid "Could not save the file \"%s\"."
-msgstr "Kanaal openen mislukt: %s"
+msgstr "Kon het bestand \"%s\" niet opslaan."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the folder \"%s\". %s"
-msgstr "Kanaal openen mislukt: %s"
+msgstr "Kon de map \"%s\" niet openen. %s"
 
 #: src/remmina_sftp_client.c:385
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the folder \"%s\" on the server. %s"
-msgstr "Aanmaken van map %s op server is mislukt. %s"
+msgstr "Kon de map \"%s\" op de server niet aanmaken. %s"
 
 #: src/remmina_sftp_client.c:413 src/remmina_sftp_client.c:435
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the file \"%s\" on the server. %s"
-msgstr "Aanmaken van bestand %s op de server is mislukt. %s"
+msgstr "Kon het bestand \"%s\" op de server niet aanmaken. %s"
 
 #: src/remmina_sftp_client.c:456
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the file \"%s\"."
-msgstr "Kanaal openen mislukt: %s"
+msgstr "Kon het bestand \"%s\" niet openen."
 
 #: src/remmina_sftp_client.c:476
-#, fuzzy, c-format
+#, c-format
 msgid "Could not write to the file \"%s\" on the server. %s"
-msgstr "Schrijven van bestand %s op de sever is mislukt. %s"
+msgstr "Kon niet schrijven naar het bestand \"%s\" op de server. %s"
 
 #: src/remmina_sftp_client.c:716
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from the folder. %s"
-msgstr "Kanaal openen mislukt: %s"
+msgstr "Kon niet lezen uit de map. %s"
 
 #: src/remmina_sftp_client.c:823
-#, fuzzy
 msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "Weet u zeker dat u ‘%s’ wilt verwijderen?"
+msgstr "Weet u zeker dat u de lopende bestandsoverdracht wilt annuleren?"
 
 #: src/remmina_sftp_client.c:857
-#, fuzzy, c-format
+#, c-format
 msgid "Could not delete \"%s\". %s"
-msgstr "Kanaal openen mislukt: %s"
+msgstr "\"%s\" kon niet worden verwijderd. %s"
 
 #: src/remmina_sftp_client.c:938
 msgid "The file exists already"
@@ -1010,9 +982,9 @@ msgstr "SFTP - Secure File Transfer"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:213 src/remmina_ssh.c:407
-#, fuzzy, c-format
+#, c-format
 msgid "Could not authenticate with SSH password. %s"
-msgstr "Opstarten van SSH-sessie is mislukt: %s"
+msgstr "Kon niet verifiëren met SSH wachtwoord. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:234 src/remmina_ssh.c:260 src/remmina_ssh.c:269
@@ -1027,9 +999,9 @@ msgstr "U heeft nog geen bestand met een SSH-sleutel gekozen."
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:246
-#, fuzzy, c-format
+#, c-format
 msgid "Public SSH key cannot be imported. %s"
-msgstr "SSH openbare sleutel kan niet worden geïmporteerd: %s"
+msgstr "Openbare SSH-sleutel kan niet worden geïmporteerd. %s"
 
 #: src/remmina_ssh.c:255
 msgid "SSH passphrase is empty, it should not be."
@@ -1054,7 +1026,6 @@ msgid "Could not authenticate with SSH Kerberos/GSSAPI. %s"
 msgstr ""
 
 #: src/remmina_ssh.c:357
-#, fuzzy
 msgid "The public SSH key changed!"
 msgstr "SSH publieke sleutel is veranderd!"
 
@@ -1066,15 +1037,15 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:516
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch public SSH key. %s"
-msgstr "Kan niet met de bestemming van de SSH-tunnel verbinden: %s"
+msgstr "Kon geen publieke SSH-sleutel ophalen. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:524
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch checksum for public SSH key. %s"
-msgstr "Opstarten van SSH-sessie is mislukt: %s"
+msgstr "Kon geen controlesom ophalen voor de openbare SSH-sleutel. %s"
 
 #: src/remmina_ssh.c:537
 msgid "The server is unknown. The public key fingerprint is:"
@@ -1085,22 +1056,21 @@ msgid "Do you trust the new public key?"
 msgstr "Vertrouwt u de nieuwe publieke sleutel?"
 
 #: src/remmina_ssh.c:542
-#, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means either you are "
 "under attack,\n"
 "or the administrator has changed the key. The new public key fingerprint is:"
 msgstr ""
-"WAARSCHUWING: De server heeft een onbekende publieke sleutel. Dit betekent "
-"dat u aangevallen wordt,\n"
+"WAARSCHUWING: De server heeft zijn publieke sleutel veranderd. Dit betekent "
+"dat u ofwel aangevallen wordt,\n"
 "of dat de beheerder van de server de sleutel heeft veranderd. De vingerprint "
 "van de nieuwe publieke sleutel is:"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:567
-#, fuzzy, c-format
+#, c-format
 msgid "Could not check list of known SSH hosts. %s"
-msgstr "Opstarten van SSH-sessie is mislukt: %s"
+msgstr "Kon de lijst van bekende SSH-hosts niet controleren. %s"
 
 #: src/remmina_ssh.c:576
 msgid "SSH password"
@@ -1124,9 +1094,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:789
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SSH session. %s"
-msgstr "Opstarten van SSH-sessie is mislukt: %s"
+msgstr "Kon de SSH-sessie niet starten. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1170 src/remmina_ssh.c:1233
@@ -1263,7 +1233,6 @@ msgstr ""
 "* [server]:poort</big></tt>"
 
 #: src/remmina_file_editor.c:81
-#, fuzzy
 msgid ""
 "<tt><big>• command in PATH args %h\n"
 "• /path/to/foo -options %h %u\n"
@@ -1278,20 +1247,20 @@ msgid ""
 "connecting.\n"
 "</big></tt>"
 msgstr ""
-"<tt><big>* commando in PATH args %h\n"
-"* /path/to/foo -options %h %u\n"
-"* %h wordt vervangen door de servernaam\n"
-"* %t wordt vervangen door de SSH-servernaam\n"
-"* %u wordt vervangen door de gebruikersnaam\n"
-"* %U wordt vervangen door de SSH-gebruikersnaam\n"
-"* %p wordt vervangen door Remmina profielnaam\n"
-"* %g wordt vervangen door Remmina profielgroepnaam\n"
+"<tt><big>• commando in PATH args %h\n"
+"• /path/to/foo -options %h %u\n"
+"• %h wordt vervangen door de servernaam\n"
+"• %t wordt vervangen door de SSH-servernaam\n"
+"• %u wordt vervangen door de gebruikersnaam\n"
+"• %U wordt vervangen door de SSH-gebruikersnaam\n"
+"• %p wordt vervangen door Remmina profielnaam\n"
+"• %g wordt vervangen door Remmina profielgroepnaam\n"
+"• %d wordt vervangen door lokale datetime in iso8601-indeling\n"
 "Voer niet op de achtergrond uit als u de opdracht wilt uitvoeren voordat u "
 "verbinding maakt.\n"
 "</big></tt>"
 
 #: src/remmina_file_editor.c:95
-#, fuzzy
 msgid ""
 "<tt><big>Supported formats\n"
 "• :port\n"
@@ -1301,9 +1270,11 @@ msgid ""
 "• username@server:port (SSH protocol only)</big></tt>"
 msgstr ""
 "<tt><big>Ondersteunde formaten\n"
-"* server\n"
-"* server:poort\n"
-"* [server]:poort</big></tt>"
+"• :port\n"
+"• server\n"
+"• server:port\n"
+"• [server]:port\n"
+"• username@server:port (SSH protocol only)</big></tt>"
 
 #: src/remmina_file_editor.c:159
 msgid "Choose a Remote Desktop Server"
@@ -1430,9 +1401,9 @@ msgid "Post-command"
 msgstr "Vorige commando"
 
 #: src/remmina_file_editor.c:1585 src/remmina_file_editor.c:1603
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the file \"%s\"."
-msgstr "Kanaal openen mislukt: %s"
+msgstr "Kon het bestand \"%s\" niet vinden."
 
 #: src/remmina_chat_window.c:178
 #, c-format
@@ -1521,9 +1492,8 @@ msgid "Ignore TLS errors"
 msgstr ""
 
 #: plugins/www/www_plugin.c:886
-#, fuzzy
 msgid "No password storage"
-msgstr "%d wachtwoord gewijzigd."
+msgstr "Geen wachtwoordopslag"
 
 #: plugins/www/www_plugin.c:888
 msgid "Turn on Web Inspector"
@@ -1690,18 +1660,17 @@ msgid "Enter SPICE password"
 msgstr "SSH-wachtwoord"
 
 #: plugins/spice/spice_plugin.c:274
-#, fuzzy, c-format
+#, c-format
 msgid "Disconnected from the SPICE server \"%s\"."
-msgstr "Kan niet met RDP-server %s verbinden"
+msgstr "Losgekoppeld van de SPICE server \"%s\"."
 
 #: plugins/spice/spice_plugin.c:290
 msgid "TLS connection error."
 msgstr ""
 
 #: plugins/spice/spice_plugin.c:296
-#, fuzzy
 msgid "Connection to the SPICE server dropped."
-msgstr "Kan niet met RDP-server %s verbinden"
+msgstr "Verbinding met de SPICE-server is verbroken."
 
 #: plugins/spice/spice_plugin.c:438
 msgid "Use TLS encryption"
@@ -1837,32 +1806,40 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr "Voer verificatiegegevens in"
 
 #: plugins/rdp/rdp_plugin.c:1496
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account locked out."
-msgstr "Opdracht %s niet gevonden op SSH-server"
+msgstr ""
+"Kon geen toegang krijgen tot de RDP-server \"%s\".\n"
+"Account vergrendeld."
 
 #: plugins/rdp/rdp_plugin.c:1503
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account expired."
-msgstr "Opdracht %s niet gevonden op SSH-server"
+msgstr ""
+"Kon geen toegang krijgen tot de RDP-server \"%s\".\n"
+"Account verlopen."
 
 #: plugins/rdp/rdp_plugin.c:1510
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Password expired."
-msgstr "Opdracht %s niet gevonden op SSH-server"
+msgstr ""
+"Kon geen toegang krijgen tot de RDP-server \"%s\".\n"
+"Wachtwoord verlopen."
 
 #: plugins/rdp/rdp_plugin.c:1517
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account disabled."
-msgstr "Opdracht %s niet gevonden op SSH-server"
+msgstr ""
+"Kon geen toegang krijgen tot de RDP-server \"%s\".\n"
+"Account uitgeschakeld."
 
 #: plugins/rdp/rdp_plugin.c:1523
 #, c-format
@@ -1872,11 +1849,13 @@ msgid ""
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1531
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account restricted."
-msgstr "Opdracht %s niet gevonden op SSH-server"
+msgstr ""
+"Kon geen toegang krijgen tot de RDP-server \"%s\".\n"
+"Account beperkt."
 
 #: plugins/rdp/rdp_plugin.c:1539
 #, c-format
@@ -1886,14 +1865,14 @@ msgid ""
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1544
-#, fuzzy, c-format
+#, c-format
 msgid "Lost connection to the RDP server \"%s\"."
-msgstr "Kan niet met RDP-server %s verbinden"
+msgstr "Verbinding met de RDP-server \"%s\" verloren."
 
 #: plugins/rdp/rdp_plugin.c:1547
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the address for the RDP server \"%s\"."
-msgstr "Opdracht %s niet gevonden op SSH-server"
+msgstr "Kon het adres voor de RDP-server \"%s\" niet vinden."
 
 #: plugins/rdp/rdp_plugin.c:1551
 #, c-format
@@ -1903,14 +1882,14 @@ msgid ""
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1554
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to establish a connection to the RDP server \"%s\"."
-msgstr "Kan niet met RDP-server %s verbinden"
+msgstr "Kan geen verbinding maken met de RDP-server \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1562
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the RDP server \"%s\"."
-msgstr "Kan niet met RDP-server %s verbinden"
+msgstr "Kan geen verbinding maken met de RDP-server \"%s\"."
 
 #: plugins/rdp/rdp_plugin.c:1565
 #, fuzzy
@@ -1937,9 +1916,9 @@ msgid ""
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1590
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the \"%s\" RDP server."
-msgstr "Kan niet met RDP-server %s verbinden"
+msgstr "Kan geen verbinding maken met de \"%s\" RDP-server."
 
 #: plugins/rdp/rdp_plugin.c:1907
 msgid "GFX AVC444 (32 bpp)"
@@ -2146,9 +2125,8 @@ msgid "It disables CAL and hwId is set to 0"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2030
-#, fuzzy
 msgid "Turn off password storing"
-msgstr "%d wachtwoord gewijzigd."
+msgstr "Wachtwoordopslag uitschakelen"
 
 #: plugins/rdp/rdp_plugin.c:2031
 msgid "Attach to console (2003/2003 R2)"
@@ -2184,7 +2162,7 @@ msgstr "RDP - Remote Desktop Protocol"
 
 #: plugins/rdp/rdp_plugin.c:2086
 msgid "RDP - RDP File Handler"
-msgstr "RDP - RDP File Handler"
+msgstr "RDP - RDP-bestandshandler"
 
 #: plugins/rdp/rdp_plugin.c:2101
 msgid "RDP - Preferences"
@@ -2267,14 +2245,13 @@ msgid "Desktop orientation"
 msgstr ""
 
 #: plugins/rdp/rdp_event.c:299
-#, fuzzy, c-format
+#, c-format
 msgid "Reconnection attempt %d of %d…"
-msgstr "Bezig met verbinden met ‘%s’…"
+msgstr "Nieuwe poging tot verbinden %d van %d…"
 
 #: plugins/nx/nx_session_manager.c:98
-#, fuzzy
 msgid "Terminating…"
-msgstr "Afbreken"
+msgstr "Beëindigen…"
 
 #: plugins/nx/nx_session_manager.c:143
 #, c-format
@@ -2319,9 +2296,8 @@ msgid "NX - NX Technology"
 msgstr "NX -NX Technologie"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
-#, fuzzy
 msgid "Secure passwords storage in KWallet"
-msgstr "%d wachtwoord gewijzigd."
+msgstr "Veilige opslag van wachtwoorden in KWallet"
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
 #, fuzzy, c-format
