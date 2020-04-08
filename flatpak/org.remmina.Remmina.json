@@ -20,6 +20,7 @@
     "finish-args": [
         /* X11 + XShm access */
         "--share=ipc",
+	"--socket=fallback-x11",
         "--socket=x11",
         /* Needs to talk to the network */
         "--share=network",
