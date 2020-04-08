@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
 "POT-Creation-Date: 2020-04-08 10:52+0200\n"
-"PO-Revision-Date: 2020-03-27 10:03+0000\n"
+"PO-Revision-Date: 2020-04-08 09:11+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/remmina/"
 "remmina/uk/>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.0-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
@@ -876,14 +876,15 @@ msgstr "Пароль SSH порожній. Це якась помилка."
 #: src/remmina_ssh.c:289
 #, c-format
 msgid "Could not authenticate automatically with public SSH key. %s"
-msgstr "Не можливо автентифікуватись з публічним ключем SSH. %s"
+msgstr "Неможливо пройти розпізнавання за відкритим ключем SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:307
 #, c-format
 msgid "Could not authenticate with public SSH key using SSH agent. %s"
 msgstr ""
-"Не можливо автентифікуватись з публічним ключем SSH використовуючи агента. %s"
+"Не вдалося пройти розпізнавання за відкритим ключем SSH з використанням "
+"агента SSH. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:327
@@ -899,7 +900,7 @@ msgstr "Публічний ключ SSH змінився!"
 #: src/remmina_ssh.c:509
 #, c-format
 msgid "Could not fetch the server's public SSH key. %s"
-msgstr "Не можливо отримати публічний ключ SSH серверу. %s"
+msgstr "Не вдалося отримати відкритий ключ SSH-сервера. %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:516
@@ -1297,7 +1298,7 @@ msgstr "Від'єднатися"
 #: src/rcw.c:3812
 #, c-format
 msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
-msgstr "Файл «%s» пошкоджено, не можливо прочитати або не знайдено."
+msgstr "Файл «%s» пошкоджено, неможливо прочитати або не знайдено."
 
 #: src/rcw.c:3974
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
@@ -1308,9 +1309,8 @@ msgid "Connect via SSH from a new terminal"
 msgstr "З'єднатися за допомогою SSH з нового термінала"
 
 #: src/remmina_protocol_widget.c:281
-#, fuzzy
 msgid "Open SFTP transfer…"
-msgstr "Відкрити захищену передачу файлів (SFTP)"
+msgstr "Відкрити передавання SFTP…"
 
 #: src/remmina_protocol_widget.c:309
 msgid "Executing external commands…"
@@ -1534,7 +1534,7 @@ msgstr "При з'єднанні з VNC-сервером виникла поми
 #: plugins/vnc/vnc_plugin.c:891
 #, c-format
 msgid "Couldn’t convert '%s' to host address"
-msgstr "Неможливо визначити ІР адресу сервера '%s'"
+msgstr "Неможливо визначити ІР-адресу сервера «%s»"
 
 #: plugins/vnc/vnc_plugin.c:892
 #, c-format
@@ -2469,7 +2469,7 @@ msgid ""
 "appropriate permissions to Remmina. As an alternative you can enter the "
 "following commands in a terminal window:"
 msgstr ""
-"Схоже, що Remmina запущено на вашій системі у вигляді SNAP пакунка. Для "
+"Схоже, що Remmina запущено на вашій системі у вигляді SNAP-пакунка. Для "
 "ввімкнення доступу до деяких важливих можливостей, на кшталт збереження "
 "паролю у зв'язці ключів чи доступу до спільного використання принтера за "
 "RDP, будь ласка, відкрийте ваш центр керування додатками і надайте Remmina "
