@@ -19,8 +19,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.0-dev\n"
 "X-Launchpad-Export-Date: 2014-04-10 15:04+0000\n"
 
@@ -656,6 +656,7 @@ msgstr ""
 msgid "Toggle fullscreen mode"
 msgstr "Переключити повноекранний режим"
 
+<<<<<<< HEAD
 #: src/rcw.c:2139 data/ui/remmina_preferences.glade:930
 msgid "Switch tab pages"
 msgstr "Переключити вкладку"
@@ -663,6 +664,21 @@ msgstr "Переключити вкладку"
 #: src/rcw.c:2153
 msgid "Toggle dynamic resolution update"
 msgstr "Перемкнути динамічне оновлення роздільної здатності"
+=======
+#. TRANSLATORS: The placeholder %s is an error message
+#: src/remmina_ssh.c:289
+#, c-format
+msgid "Could not authenticate automatically with public SSH key. %s"
+msgstr "Неможливо пройти розпізнавання за відкритим ключем SSH. %s"
+
+#. TRANSLATORS: The placeholder %s is an error message
+#: src/remmina_ssh.c:307
+#, c-format
+msgid "Could not authenticate with public SSH key using SSH agent. %s"
+msgstr ""
+"Не вдалося пройти розпізнавання за відкритим ключем SSH з використанням "
+"агента SSH. %s"
+>>>>>>> weblate/weblate
 
 #: src/rcw.c:2163
 msgid "Toggle scaled mode"
@@ -672,9 +688,17 @@ msgstr "Розтягувати під розмір екрана"
 msgid "Grab all keyboard events"
 msgstr "Передавати на віддалений комп'ютер будь-яке натискання клавіш"
 
+<<<<<<< HEAD
 #: src/rcw.c:2207
 msgid "Preferences"
 msgstr "Налаштування"
+=======
+#. TRANSLATORS: The placeholder %s is an error message
+#: src/remmina_ssh.c:509
+#, c-format
+msgid "Could not fetch the server's public SSH key. %s"
+msgstr "Не вдалося отримати відкритий ключ SSH-сервера. %s"
+>>>>>>> weblate/weblate
 
 #: src/rcw.c:2215 src/rcw.c:2216 data/ui/remmina_main.glade:297
 msgid "Tools"
@@ -1064,8 +1088,13 @@ msgstr ""
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:567
 #, c-format
+<<<<<<< HEAD
 msgid "Could not check list of known SSH hosts. %s"
 msgstr "Не вдалось перевірити список відомих вузлів SSH. %s"
+=======
+msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
+msgstr "Файл «%s» пошкоджено, неможливо прочитати або не знайдено."
+>>>>>>> weblate/weblate
 
 #: src/remmina_ssh.c:576
 msgid "SSH password"
@@ -1075,9 +1104,15 @@ msgstr "Пароль SSH"
 msgid "SSH private key passphrase"
 msgstr "Ключова фраза закритого ключа SSH"
 
+<<<<<<< HEAD
 #: src/remmina_ssh.c:588
 msgid "SSH Kerberos/GSSAPI"
 msgstr "SSH Kerberos/GSSAPI"
+=======
+#: src/remmina_protocol_widget.c:281
+msgid "Open SFTP transfer…"
+msgstr "Відкрити передавання SFTP…"
+>>>>>>> weblate/weblate
 
 #: src/remmina_ssh.c:618 src/remmina_ssh.c:641
 msgid "SSH tunnel credentials"
@@ -1363,9 +1398,16 @@ msgstr ""
 "Використовувати поточні налаштування як типові для всіх нових профілів "
 "з'єднань"
 
+<<<<<<< HEAD
 #: src/remmina_file_editor.c:1333 data/ui/remmina_main.glade:250
 msgid "Connect"
 msgstr "Підключити"
+=======
+#: plugins/vnc/vnc_plugin.c:891
+#, c-format
+msgid "Couldn’t convert '%s' to host address"
+msgstr "Неможливо визначити ІР-адресу сервера «%s»"
+>>>>>>> weblate/weblate
 
 #: src/remmina_file_editor.c:1336
 msgid "_Save and Connect"
@@ -2425,10 +2467,30 @@ msgstr "Розблокувати Remmina"
 msgid "Master password secret key"
 msgstr "Секретний ключ мастер-паролю"
 
+<<<<<<< HEAD
 #: data/ui/remmina_spinner.glade:29 data/ui/remmina_key_chooser.glade:38
 #: data/ui/remmina_key_chooser.glade:53
 msgid "button"
 msgstr "кнопка"
+=======
+#: data/ui/remmina_snap_info_dialog.glade:46
+msgid ""
+"It seems that Remmina is running on your system as a SNAP package. To enable "
+"access to some important features, like password saving in your keyring and "
+"RDP printer sharing, please open your software center and give the "
+"appropriate permissions to Remmina. As an alternative you can enter the "
+"following commands in a terminal window:"
+msgstr ""
+"Схоже, що Remmina запущено на вашій системі у вигляді SNAP-пакунка. Для "
+"ввімкнення доступу до деяких важливих можливостей, на кшталт збереження "
+"паролю у зв'язці ключів чи доступу до спільного використання принтера за "
+"RDP, будь ласка, відкрийте ваш центр керування додатками і надайте Remmina "
+"відповідні дозволи. Крім того, ви можете ввести такі команди до термінала:"
+
+#: data/ui/remmina_snap_info_dialog.glade:82
+msgid "Do not show this message again"
+msgstr "Не показувати це сповіщення знову"
+>>>>>>> weblate/weblate
 
 #: data/ui/remmina_spinner.glade:54
 msgid "Please wait…"
