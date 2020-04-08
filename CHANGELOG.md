@@ -1,5 +1,30 @@
 # Changelog
 
+## 1.4.2
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.1...1.4.2)
+
+* Spelling: Doublespace removed [!2011](https://gitlab.com/Remmina/Remmina/merge_requests/2011) *@kingu*
+* Adds ClientBuild settings to RDP plugin to specify client version build number [!2012](https://gitlab.com/Remmina/Remmina/merge_requests/2012) *@mskalski*
+* Spelling: Smaller bullet points, RDP plugin, Git [!2014](https://gitlab.com/Remmina/Remmina/merge_requests/2014) *@kingu*
+* Allow formatting for SSH session filename [!2015](https://gitlab.com/Remmina/Remmina/merge_requests/2015) *@juarez.rudsatz*
+* include juarezr in AUTHORS [!2017](https://gitlab.com/Remmina/Remmina/merge_requests/2017) *@juarez.rudsatz*
+* web-browser plugin fixes [!2016](https://gitlab.com/Remmina/Remmina/merge_requests/2016) *@antenore*
+* Make duplicate session sensitive only if a profile exists [!2019](https://gitlab.com/Remmina/Remmina/merge_requests/2019) *@antenore*
+* Using updated Contribution page from website [!2021](https://gitlab.com/Remmina/Remmina/merge_requests/2021) *@kingu*
+* Issue template reworked [!2020](https://gitlab.com/Remmina/Remmina/merge_requests/2020) *@kingu*
+* Fix null pointer dereference in remmina_main_quickconnect [!2022](https://gitlab.com/Remmina/Remmina/merge_requests/2022) *@Flow*
+* SFTP with tunnel fixes [!2023](https://gitlab.com/Remmina/Remmina/merge_requests/2023) *@giox069*
+* Cppcheck and PVS Studio Fixes [!2018](https://gitlab.com/Remmina/Remmina/merge_requests/2018) *@qarmin*
+* VNCI fixes [!2025](https://gitlab.com/Remmina/Remmina/merge_requests/2025) *@antenore*
+* Flatpak - Updating gnome to 3.36 [!2026](https://gitlab.com/Remmina/Remmina/merge_requests/2026) *@antenore*
+* Typo fix in remmina_ssh.c [!2024](https://gitlab.com/Remmina/Remmina/merge_requests/2024) *@gunnarhj*
+* Spelling: Select a folder, choose a folder [!2027](https://gitlab.com/Remmina/Remmina/merge_requests/2027) *@kingu*
+* Allow enter key in domain textbox of authentication dialog to submit [!2028](https://gitlab.com/Remmina/Remmina/merge_requests/2028) *@piecka*
+* rcw event sources cleanup [!2029](https://gitlab.com/Remmina/Remmina/merge_requests/2029) *@giox069*
+* Contact file replaces CoC and new README [!2030](https://gitlab.com/Remmina/Remmina/merge_requests/2030) *@kingu*
+* THANKS reworked [!2031](https://gitlab.com/Remmina/Remmina/merge_requests/2031) *@kingu*
+* Merge weblate translations in master [!2032](https://gitlab.com/Remmina/Remmina/merge_requests/2032) *@antenore*
+
 ## 1.4.1
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.0...1.4.1)
 
