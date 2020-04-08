@@ -526,20 +526,34 @@ static void rcw_keyboard_grab(RemminaConnectionWindow *cnnwin)
 		 */
 #if GTK_CHECK_VERSION(3, 24, 0)
 		ggs = gdk_seat_grab(seat, gtk_widget_get_window(GTK_WIDGET(cnnwin)),
-				    GDK_SEAT_CAPABILITY_ALL, TRUE, NULL, NULL, NULL, NULL);
-
+				    GDK_SEAT_CAPABILITY_ALL_POINTING, TRUE, NULL, NULL, NULL, NULL);
+		if (ggs != GDK_GRAB_SUCCESS) {
+#if DEBUG_KB_GRABBING
+			printf("GRAB of POINTER failed. GdkGrabStatus: %d\n", (int)ggs);
+#endif
+		} else {
+			ggs = gdk_seat_grab(seat, gtk_widget_get_window(GTK_WIDGET(cnnwin)),
+				GDK_SEAT_CAPABILITY_KEYBOARD, TRUE, NULL, NULL, NULL, NULL);
+			if (ggs != GDK_GRAB_SUCCESS) {
+				gdk_seat_ungrab(seat);
+#if DEBUG_KB_GRABBING
+				printf("GRAB of KEYBOARD failed. GdkGrabStatus: %d\n", (int)ggs);
+#endif
+			}
+		}
+		printf("ggs=%d\n",ggs);
 #else
 		G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 			ggs = gdk_device_grab(keyboard, gtk_widget_get_window(GTK_WIDGET(cnnwin)), GDK_OWNERSHIP_WINDOW,
 					      TRUE, GDK_KEY_PRESS | GDK_KEY_RELEASE, NULL, GDK_CURRENT_TIME);
 		G_GNUC_END_IGNORE_DEPRECATIONS
+#if DEBUG_KB_GRABBING
+		if (ggs != GDK_GRAB_SUCCESS) {
+			printf("GRAB of keyboard failed.\n");
+		}
+#endif
 #endif
 		if (ggs != GDK_GRAB_SUCCESS) {
-			/* Failure to GRAB keyboard */
-#if DEBUG_KB_GRABBING
-			printf("GRAB FAILED. GdkGrabStatus: %d\n", ggs);
-			printf("GRAB FAILED. GdkGrabStatus: %d\n", (int)ggs);
-#endif
 			/* Reschedule grabbing in half a second if not already done */
 			if (cnnwin->priv->grab_retry_eventsourceid == 0)
 				cnnwin->priv->grab_retry_eventsourceid = g_timeout_add(500, (GSourceFunc)rcw_keyboard_grab_retry, cnnwin);
