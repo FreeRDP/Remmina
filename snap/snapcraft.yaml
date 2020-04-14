@@ -147,9 +147,12 @@ parts:
       - libxkbfile-dev
       - libwebkit2gtk-4.0-dev
     stage-packages:
-      - xauth
       - libusb-1.0-0
       - libzvbi0
+      - suckless-tools
+      - vim
+      - xauth
+      - xterm
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
       - -DWITH_FREERDP3=OFF
