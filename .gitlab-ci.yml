@@ -11,7 +11,7 @@ variables:
   DEB_PPA: "ppa:remmina-ppa-team/remmina-next"
   FREERDP_DAILY_PPA: "ppa:remmina-ppa-team/freerdp-daily"
   DOCKER_IMAGE: "ubuntu:bionic"
-  CMAKE_BUILD_OPTIONS: "-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on"
+  CMAKE_BUILD_OPTIONS: "-DCMAKE_BUILD_TYPE=Release -DWITH_APPINDICATOR=on -DWITH_FREERDP3=OFF"
   FLATPAK_ARCH: x86_64
 
 before_script:

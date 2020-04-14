@@ -33,11 +33,7 @@
 # files in the program, then also delete it here.
 
 # Needed FreeRDP version to build freerdp plugin
-set(FREERDP_REQUIRED_MAJOR 2)
-set(FREERDP_REQUIRED_MINOR 0)
-set(FREERDP_REQUIRED_REVISION 0)
-set(FREERDP_REQUIRED_VERSIONSTRING
-    ${FREERDP_REQUIRED_MAJOR}.${FREERDP_REQUIRED_MINOR}.${FREERDP_REQUIRED_REVISION})
+
 
 include_directories(${CMAKE_SOURCE_DIR}/plugins)
 
@@ -61,7 +57,21 @@ endif()
 
 add_subdirectory(xdmcp)
 
-find_suggested_package(FREERDP)
+set(FREERDP_REQUIRED_MAJOR 2)
+set(FREERDP_REQUIRED_MINOR 0)
+set(FREERDP_REQUIRED_REVISION 0)
+set(FREERDP_REQUIRED_VERSIONSTRING
+    ${FREERDP_REQUIRED_MAJOR}.${FREERDP_REQUIRED_MINOR}.${FREERDP_REQUIRED_REVISION})
+option(WITH_FREERDP3 "Building RDP with FREERDP 3" OFF)
+if(WITH_FREERDP3)
+	set(FREERDP_REQUIRED_MAJOR 3)
+	find_suggested_package(FREERDP3)
+	if(FREERDP3_FOUND)
+		set(FREERDP_FOUND FREERDP3_FOUND)
+	endif()
+else()
+	find_suggested_package(FREERDP)
+endif()
 if(FREERDP_FOUND)
     add_subdirectory(rdp)
 endif()

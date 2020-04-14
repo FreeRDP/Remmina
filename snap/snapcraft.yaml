@@ -49,6 +49,7 @@ parts:
   freerdp:
     plugin: cmake
     source: https://github.com/FreeRDP/FreeRDP.git
+    source-tag: 2.0.0
     source-depth: 1
     build-packages:
       - build-essential
@@ -151,6 +152,7 @@ parts:
       - libzvbi0
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
+      - -DWITH_FREERDP3=OFF
       - -DCMAKE_PREFIX_PATH=$SNAPCRAFT_STAGE/usr
       - -DSNAP_BUILD=on
 
