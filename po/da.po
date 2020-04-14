@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-04-08 09:07+0000\n"
+"POT-Creation-Date: 2020-04-14 22:18+0000\n"
 "PO-Revision-Date: 2020-03-26 23:49+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/remmina/remmina/"
@@ -156,7 +156,7 @@ msgstr "Konfigurer de tilgængelige opløsninger"
 msgid "Recent lists cleared."
 msgstr "Seneste-liste ryddet."
 
-#: src/remmina_pref_dialog.c:143 src/rcw.c:1833
+#: src/remmina_pref_dialog.c:143 src/rcw.c:1875
 #: data/ui/remmina_preferences.glade:249 data/ui/remmina_preferences.glade:259
 msgid "Keystrokes"
 msgstr "Tastetryk"
@@ -609,7 +609,7 @@ msgstr "Opret forbindelse til fjernskriveborde gennem applet-menuen"
 msgid "Remmina Remote Desktop Client"
 msgstr "Remmina-fjernskrivebordsklient"
 
-#: src/rcw.c:596
+#: src/rcw.c:638
 #, c-format
 msgid ""
 "Are you sure you want to close %i active connections in the current window?"
@@ -617,85 +617,85 @@ msgstr ""
 "Er du sikker på, at du vil lukke %i aktive forbindelser i det nuværende "
 "vindue?"
 
-#: src/rcw.c:1309
+#: src/rcw.c:1351
 msgid "Viewport fullscreen mode"
 msgstr "Visningsområde - fuldskærmstilstand"
 
-#: src/rcw.c:1317 data/ui/remmina_preferences.glade:586
+#: src/rcw.c:1359 data/ui/remmina_preferences.glade:586
 msgid "Scrolled fullscreen"
 msgstr "Rullet fuldskærm"
 
-#: src/rcw.c:1402
+#: src/rcw.c:1444
 msgid "Keep aspect ratio when scaled"
 msgstr "Bevar højde-bredde-forhold når skaleret"
 
-#: src/rcw.c:1410
+#: src/rcw.c:1452
 msgid "Fill client window when scaled"
 msgstr "Udfyld klientens vindue når skaleret"
 
-#: src/rcw.c:1949
+#: src/rcw.c:1991
 msgid "Turn off scaling to avoid screenshot distortion."
 msgstr "Deaktivér skalering, for at forhindre forvrængning af skærmbillede."
 
-#: src/rcw.c:2009 plugins/www/www_plugin.c:831
+#: src/rcw.c:2051 plugins/www/www_plugin.c:831
 msgid "Screenshot taken"
 msgstr "Skærmbillede taget"
 
-#: src/rcw.c:2083
+#: src/rcw.c:2125
 msgid "Resize the window to fit in remote resolution"
 msgstr "Tilpas størrelsen på vinduet efter serverens opløsning"
 
-#: src/rcw.c:2094
+#: src/rcw.c:2136
 msgid "Toggle fullscreen mode"
 msgstr "Fuldskærmstilstand til/fra"
 
-#: src/rcw.c:2139 data/ui/remmina_preferences.glade:930
+#: src/rcw.c:2181 data/ui/remmina_preferences.glade:930
 msgid "Switch tab pages"
 msgstr "Skift faneblade"
 
-#: src/rcw.c:2153
+#: src/rcw.c:2195
 msgid "Toggle dynamic resolution update"
 msgstr "Opdatering af dynamisk opløsning til/fra"
 
-#: src/rcw.c:2163
+#: src/rcw.c:2205
 msgid "Toggle scaled mode"
 msgstr "Skaleret tilstand til/fra"
 
-#: src/rcw.c:2198
+#: src/rcw.c:2240
 msgid "Grab all keyboard events"
 msgstr "Fang alle tastetryk"
 
-#: src/rcw.c:2207
+#: src/rcw.c:2249
 msgid "Preferences"
 msgstr "Præferencer"
 
-#: src/rcw.c:2215 src/rcw.c:2216 data/ui/remmina_main.glade:297
+#: src/rcw.c:2257 src/rcw.c:2258 data/ui/remmina_main.glade:297
 msgid "Tools"
 msgstr "Værktøjer"
 
-#: src/rcw.c:2228
+#: src/rcw.c:2270
 msgid "Duplicate current connection"
 msgstr "Dupliker nuværende forbindelse"
 
-#: src/rcw.c:2239 data/ui/remmina_preferences.glade:1124
+#: src/rcw.c:2281 data/ui/remmina_preferences.glade:1124
 #: data/ui/remmina_preferences.glade:1134
 msgid "Screenshot"
 msgstr "Skærmbillede"
 
-#: src/rcw.c:2247 data/ui/remmina_preferences.glade:1033
+#: src/rcw.c:2289 data/ui/remmina_preferences.glade:1033
 msgid "Minimize window"
 msgstr "Minimer vindue"
 
-#: src/rcw.c:2256 data/ui/remmina_preferences.glade:1064
+#: src/rcw.c:2298 data/ui/remmina_preferences.glade:1064
 msgid "Disconnect"
 msgstr "Afbryd forbindelsen"
 
-#: src/rcw.c:3812
+#: src/rcw.c:3820
 #, c-format
 msgid "The file \"%s\" is corrupted, unreadable, or could not be found."
 msgstr "Filen \"%s\" er korrupt, ulæselig eller blev ikke fundet."
 
-#: src/rcw.c:3974
+#: src/rcw.c:3984
 msgid "Warning: This plugin requires GtkSocket, but it’s not available."
 msgstr "Advarsel: Pluginet kræver GtkSocket, men det er ikke tilgængeligt."
 
@@ -2219,7 +2219,7 @@ msgstr "Skaleringsfaktor for enhed %"
 msgid "Desktop orientation"
 msgstr "Orientering af skrivebord"
 
-#: plugins/rdp/rdp_event.c:299
+#: plugins/rdp/rdp_event.c:302
 #, c-format
 msgid "Reconnection attempt %d of %d…"
 msgstr "Genoprettelsesforsøg %d af %d …"
