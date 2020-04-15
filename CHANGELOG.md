@@ -1,5 +1,32 @@
 # Changelog
 
+## 1.4.3
+[full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.2...1.4.3)
+
+* KB grabbing fixes (mostly for Wayland) [!2036](https://gitlab.com/Remmina/Remmina/merge_requests/2036) *@giox069*
+* Adding Freerdp 3 compile option and using FreeRDP tag 2.0.0 as default [!2034](https://gitlab.com/Remmina/Remmina/merge_requests/2034) *@antenore*
+* Adding remmina terminal dependencies [!2035](https://gitlab.com/Remmina/Remmina/merge_requests/2035) *@antenore*
+* Translated using Weblate (Turkish) by Oğuz Ersen <oguzersen@protonmail.com>
+* Translated using Weblate (Swedish) by Allan Nordhøy <epost@anotheragency.no>
+* Translated using Weblate (Albanian) by Allan Nordhøy <epost@anotheragency.no>
+* Translated using Weblate (Dutch) by Jennifer <jen@elypia.org>
+* Translated using Weblate (Norwegian Bokmål) by Allan Nordhøy <epost@anotheragency.no>
+* Translated using Weblate (Burmese) by Allan Nordhøy <epost@anotheragency.no>
+* Translated using Weblate (Korean) by Justin Song <mcsong@gmail.com>
+* Translated using Weblate (Japanese) by anonymous <noreply@weblate.org>
+* Translated using Weblate (Japanese) by FeLvi_zzz <felvi.zzz.coffee@gmail.com>
+* Translated using Weblate (Italian) by Allan Nordhøy <epost@anotheragency.no>
+* Translated using Weblate (Basque) by Osoitz <oelkoro@gmail.com>
+* Translated using Weblate (Spanish) by Adolfo Jayme Barrientos <fitojb@ubuntu.com>
+* Translated using Weblate (English (United Kingdom)) by Barbul Gergő <barbul.gergo@stud.u-szeged.hu>
+* Translated using Weblate (Arabic) by ButterflyOfFire <ButterflyOfFire@protonmail.com>
+* Translated using Weblate (Spanish) by Allan Nordhøy <epost@anotheragency.no>
+* Translated using Weblate (Hebrew) by Yaron Shahrabani <sh.yaron@gmail.com>
+* Translated using Weblate (Spanish) by Juan Ignacio Cherrutti <juancherru@gmail.com>
+* Translated using Weblate (Slovak) by Dušan Kazik <prescott66@gmail.com>
+* Translated using Weblate (German) by Johannes Weberhofer <jweberhofer@weberhofer.at>
+* Translated using Weblate (Czech) by Pavel Borecki <pavel.borecki@gmail.com>
+
 ## 1.4.2
 [full changelog](https://gitlab.com/Remmina/Remmina/compare/v1.4.1...1.4.2)
 
