@@ -4,13 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 # Allan Nordhøy <epost@anotheragency.no>, 2019, 2020.
 # anonymous <noreply@weblate.org>, 2019.
+# Osoitz <oelkoro@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: remmina\n"
 "Report-Msgid-Bugs-To: l10n@lists.remmina.org\n"
-"POT-Creation-Date: 2020-04-14 22:18+0000\n"
-"PO-Revision-Date: 2020-03-24 20:30+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"POT-Creation-Date: 2020-04-08 09:07+0000\n"
+"PO-Revision-Date: 2020-04-15 21:14+0000\n"
+"Last-Translator: Osoitz <oelkoro@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/remmina/remmina/"
 "eu/>\n"
 "Language: eu\n"
@@ -35,40 +36,40 @@ msgid "Executing external commands…"
 msgstr ""
 
 #: src/remmina_protocol_widget.c:316
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to \"%s\"…"
-msgstr "'%s'(r)ekin konektatzen…"
+msgstr "\"%s\"(r)ekin konektatzen…"
 
 #: src/remmina_protocol_widget.c:745 src/remmina_protocol_widget.c:863
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to \"%s\" via SSH…"
-msgstr "'%s'(r)ekin konektatzen…"
+msgstr ""
 
 #: src/remmina_protocol_widget.c:926
-#, fuzzy, c-format
+#, c-format
 msgid "Awaiting incoming SSH connection at port %i…"
-msgstr "Sarrerako SSH tunel baten zain %i atakan…"
+msgstr "Sarrerako SSH konexio baten zain %i atakan…"
 
 #: src/remmina_protocol_widget.c:978
-#, fuzzy, c-format
+#, c-format
 msgid "The \"%s\" command is not available on the SSH server."
-msgstr "%s komandoa ez da aurkitu SSH zerbitzarian"
+msgstr "\"%s\" komandoa ez da aurkitu SSH zerbitzarian."
 
 #: src/remmina_protocol_widget.c:982
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run the \"%s\" command on the SSH server (status = %i)."
-msgstr "%s komandoak huts egin du SSH zerbitzarian (egoera = %i)."
+msgstr "Ezin izan da %s komandoa exekutatu SSH zerbitzarian (egoera = %i)."
 
 #. TRANSLATORS: %s is a placeholder for an error message
 #: src/remmina_protocol_widget.c:990
-#, fuzzy, c-format
+#, c-format
 msgid "Could not run command. %s"
-msgstr "Huts egin du ataka birbidaltzea eskatzean: %s"
+msgstr ""
 
 #: src/remmina_protocol_widget.c:1058
-#, fuzzy, c-format
+#, c-format
 msgid "Connecting to %s via SSH…"
-msgstr "'%s'(r)ekin konektatzen…"
+msgstr ""
 
 #: src/remmina_protocol_widget.c:1424 src/remmina_protocol_widget.c:1443
 #: src/remmina_ssh_plugin.c:920 src/remmina_sftp_plugin.c:291
@@ -109,19 +110,16 @@ msgid "The certificate changed! Details:"
 msgstr ""
 
 #: src/remmina_protocol_widget.c:1522
-#, fuzzy
 msgid "Old fingerprint:"
-msgstr "Hatz-marka:"
+msgstr "Hatz-marka zaharra:"
 
 #: src/remmina_protocol_widget.c:1523
-#, fuzzy
 msgid "New fingerprint:"
-msgstr "Hatz-marka:"
+msgstr "Hatz-marka berria:"
 
 #: src/remmina_protocol_widget.c:1524
-#, fuzzy
 msgid "Accept changed certificate?"
-msgstr "Ziurtagiria onartu?"
+msgstr "Aldatutako ziurtagiria onartu?"
 
 #: src/remmina_protocol_widget.c:1666
 #, c-format
@@ -313,9 +311,8 @@ msgid "Preferred server host key types"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1057
-#, fuzzy
 msgid "Folder for SSH session log"
-msgstr "Huts egin du SSH saioa abiatzean: %s"
+msgstr ""
 
 #: src/remmina_ssh_plugin.c:1058
 msgid "Filename for SSH session log"
@@ -334,9 +331,8 @@ msgid "SSH compression"
 msgstr ""
 
 #: src/remmina_ssh_plugin.c:1062
-#, fuzzy
 msgid "Don't remember passwords"
-msgstr "Gorde pasahitza"
+msgstr "Ez gogoratu pasahitzak"
 
 #: src/remmina_ssh_plugin.c:1063
 msgid "Strict host key checking"
@@ -464,7 +460,6 @@ msgid "Delete files on server"
 msgstr "Ezabatu fitxategiak zerbitzaritik"
 
 #: src/remmina_ftp_client.c:903 src/remmina_ftp_client.c:972
-#, fuzzy
 msgid "Filename"
 msgstr "Fitxategi-izena"
 
@@ -522,15 +517,13 @@ msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:95
-#, fuzzy
 msgid "Create new connection profile"
-msgstr "VNC konexioak huts egin du: %s"
+msgstr ""
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:97
-#, fuzzy
 msgid "Show preferences"
-msgstr "Hobespenak"
+msgstr "Erakutsi hobespenak"
 
 #. TRANSLATORS: Shown in terminal. Do not use charcters that may be not supported on a terminal
 #: src/remmina.c:99
@@ -814,15 +807,15 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is a directory path
 #: src/remmina_sftp_client.c:173
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the folder \"%s\"."
-msgstr "Huts egin du SFTP saioa sortzean: %s"
+msgstr "Ezin izan da \"%s\" karpeta sortu."
 
 #. TRANSLATORS: The placeholder %s is a file path
 #: src/remmina_sftp_client.c:181 src/remmina_sftp_client.c:202
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the file \"%s\"."
-msgstr "Huts egin du SFTP saioa sortzean: %s"
+msgstr "Ezin izan da \"%s\" fitxategia sortu."
 
 #. TRANSLATORS: The placeholders %s are a file path, and an error message.
 #: src/remmina_sftp_client.c:220
@@ -831,9 +824,9 @@ msgid "Could not open the file \"%s\" on the server. %s"
 msgstr "Errorea %s fitxategia irekitzean zerbitzarian. %s"
 
 #: src/remmina_sftp_client.c:242
-#, fuzzy, c-format
+#, c-format
 msgid "Could not save the file \"%s\"."
-msgstr "Huts egin du SFTP saioa sortzean: %s"
+msgstr "Ezin izan da \"%s\" fitxategia gorde."
 
 #: src/remmina_sftp_client.c:281 src/remmina_sftp_client.c:698
 #: src/remmina_sftp_client.c:761
@@ -852,9 +845,9 @@ msgid "Could not create the file \"%s\" on the server. %s"
 msgstr "Errorea %s fitxategia sortzean zerbitzarian. %s"
 
 #: src/remmina_sftp_client.c:456
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open the file \"%s\"."
-msgstr "Huts egin du SFTP saioa sortzean: %s"
+msgstr "Ezin izan da \"%s\" fitxategia ireki."
 
 #: src/remmina_sftp_client.c:476
 #, fuzzy, c-format
@@ -862,14 +855,13 @@ msgid "Could not write to the file \"%s\" on the server. %s"
 msgstr "Errorea %s fitxategia irekitzean zerbitzarian. %s"
 
 #: src/remmina_sftp_client.c:716
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from the folder. %s"
-msgstr "Huts egin du SFTP saioa sortzean: %s"
+msgstr ""
 
 #: src/remmina_sftp_client.c:823
-#, fuzzy
 msgid "Are you sure you want to cancel the file transfer in progress?"
-msgstr "Ziur zaude '%s' elementua ezabatu nahi duzula?"
+msgstr ""
 
 #: src/remmina_sftp_client.c:857
 #, fuzzy, c-format
@@ -1024,15 +1016,15 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:516
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch public SSH key. %s"
-msgstr "Huts egin du SSH tunelaren helburuarekin konektatzean: %s"
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:524
-#, fuzzy, c-format
+#, c-format
 msgid "Could not fetch checksum for public SSH key. %s"
-msgstr "Huts egin du SSH saioa abiatzean: %s"
+msgstr ""
 
 #: src/remmina_ssh.c:537
 msgid "The server is unknown. The public key fingerprint is:"
@@ -1043,7 +1035,6 @@ msgid "Do you trust the new public key?"
 msgstr "Gako publiko berriaz fidatzen zara?"
 
 #: src/remmina_ssh.c:542
-#, fuzzy
 msgid ""
 "Warning: The server has changed its public key. This means either you are "
 "under attack,\n"
@@ -1056,9 +1047,9 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:567
-#, fuzzy, c-format
+#, c-format
 msgid "Could not check list of known SSH hosts. %s"
-msgstr "Huts egin du SSH saioa abiatzean: %s"
+msgstr ""
 
 #: src/remmina_ssh.c:576
 msgid "SSH password"
@@ -1088,9 +1079,9 @@ msgstr "Huts egin du SSH saioa abiatzean: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1170 src/remmina_ssh.c:1233
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create channel. %s"
-msgstr "Huts egin du SFTP saioa sortzean: %s"
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1181
@@ -1100,9 +1091,9 @@ msgstr "Huts egin du SSH tunelaren helburuarekin konektatzean: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1248 src/remmina_ssh.c:1873
-#, fuzzy, c-format
+#, c-format
 msgid "Could not open channel. %s"
-msgstr "Huts egin du SFTP saioa sortzean: %s"
+msgstr ""
 
 #: src/remmina_ssh.c:1254
 #, fuzzy, c-format
@@ -1126,33 +1117,33 @@ msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1450
-#, fuzzy, c-format
+#, c-format
 msgid "Could not write to SSH channel. %s"
-msgstr "Huts egin du SFTP saioa sortzean: %s"
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1457
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read from tunnel listening socket. %s"
-msgstr "Huts egin du SFTP saioa sortzean: %s"
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1477
-#, fuzzy, c-format
+#, c-format
 msgid "Could not poll SSH channel. %s"
-msgstr "Huts egin du SFTP saioa sortzean: %s"
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1484
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read SSH channel in a non-blocking way. %s"
-msgstr "Huts egin du SFTP saioa sortzean: %s"
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1503
-#, fuzzy, c-format
+#, c-format
 msgid "Could not send data to tunnel listening socket. %s"
-msgstr "Huts egin du SSH tunelaren helburuarekin konektatzean: %s"
+msgstr ""
 
 #: src/remmina_ssh.c:1605
 msgid "Assign a destination port."
@@ -1188,22 +1179,21 @@ msgstr "Huts egin du SFTP saioa sortzean: %s"
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1788
-#, fuzzy, c-format
+#, c-format
 msgid "Could not start SFTP session. %s"
-msgstr "Huts egin du SSH saioa abiatzean: %s"
+msgstr ""
 
 #. TRANSLATORS: The placeholder %s is an error message
 #: src/remmina_ssh.c:1903
-#, fuzzy, c-format
+#, c-format
 msgid "Could not request shell. %s"
-msgstr "Huts egin du SFTP saioa sortzean: %s"
+msgstr ""
 
 #: src/remmina_ssh.c:1996
 msgid "Could not create PTY device."
 msgstr ""
 
 #: src/remmina_file_editor.c:74
-#, fuzzy
 msgid ""
 "<tt><big>Supported formats\n"
 "• server\n"
@@ -1232,7 +1222,6 @@ msgid ""
 msgstr ""
 
 #: src/remmina_file_editor.c:95
-#, fuzzy
 msgid ""
 "<tt><big>Supported formats\n"
 "• :port\n"
@@ -1242,9 +1231,11 @@ msgid ""
 "• username@server:port (SSH protocol only)</big></tt>"
 msgstr ""
 "<tt><big>Onartutako formatuak\n"
-"* zerbitzaria\n"
-"* zerbitzaria:ataka\n"
-"* [zerbitzaria]:ataka</big></tt>"
+"• :ataka\n"
+"• zerbitzaria\n"
+"• zerbitzaria:ataka\n"
+"• [zerbitzaria]:ataka\n"
+"• erabiltzaile-izena@zerbitzaria:ataka (SSH protokoloa soilik)</big></tt>"
 
 #: src/remmina_file_editor.c:159
 msgid "Choose a Remote Desktop Server"
@@ -1305,9 +1296,8 @@ msgid "SSH Authentication"
 msgstr "SSH autentifikazioa"
 
 #: src/remmina_file_editor.c:921
-#, fuzzy
 msgid "SSH agent (automatic)"
-msgstr "Gako publikoa (automatikoa)"
+msgstr ""
 
 #: src/remmina_file_editor.c:1006
 msgid "Turn on \"Autostart\" for this profile"
@@ -1431,9 +1421,8 @@ msgid "Turn on Java support"
 msgstr ""
 
 #: plugins/www/www_plugin.c:880
-#, fuzzy
 msgid "Turn on smooth scrolling"
-msgstr "Letra-tipoa leuntzea"
+msgstr ""
 
 #: plugins/www/www_plugin.c:881
 msgid "Turn on spatial navigation"
@@ -1456,9 +1445,8 @@ msgid "Ignore TLS errors"
 msgstr ""
 
 #: plugins/www/www_plugin.c:886
-#, fuzzy
 msgid "No password storage"
-msgstr "%s pasahitza"
+msgstr ""
 
 #: plugins/www/www_plugin.c:888
 msgid "Turn on Web Inspector"
@@ -1477,9 +1465,8 @@ msgid "Hello World!"
 msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:734
-#, fuzzy
 msgid "Enter VNC password"
-msgstr "Gorde pasahitza"
+msgstr ""
 
 #: plugins/vnc/vnc_plugin.c:787
 msgid "Enter VNC authentication credentials"
@@ -1619,23 +1606,21 @@ msgid "USB redirection error"
 msgstr ""
 
 #: plugins/spice/spice_plugin.c:239
-#, fuzzy
 msgid "Enter SPICE password"
-msgstr "SSH pasahitza"
+msgstr ""
 
 #: plugins/spice/spice_plugin.c:274
-#, fuzzy, c-format
+#, c-format
 msgid "Disconnected from the SPICE server \"%s\"."
-msgstr "Ezin izan da %s RDP zerbitzarira konektatu"
+msgstr ""
 
 #: plugins/spice/spice_plugin.c:290
 msgid "TLS connection error."
 msgstr ""
 
 #: plugins/spice/spice_plugin.c:296
-#, fuzzy
 msgid "Connection to the SPICE server dropped."
-msgstr "Ezin izan da %s RDP zerbitzarira konektatu"
+msgstr ""
 
 #: plugins/spice/spice_plugin.c:438
 msgid "Use TLS encryption"
@@ -1706,22 +1691,18 @@ msgid "Grayscale"
 msgstr "Gris-eskala"
 
 #: plugins/xdmcp/xdmcp_plugin.c:350
-#, fuzzy
 msgid "256 colours"
 msgstr "256 kolore"
 
 #: plugins/xdmcp/xdmcp_plugin.c:351
-#, fuzzy
 msgid "High colour (16 bit)"
 msgstr "Kolore altua (16 bit)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:352
-#, fuzzy
 msgid "True colour (24 bit)"
 msgstr "Benetako kolorea (24 bit)"
 
 #: plugins/xdmcp/xdmcp_plugin.c:369 plugins/rdp/rdp_plugin.c:1985
-#, fuzzy
 msgid "Colour depth"
 msgstr "Kolore-sakonera"
 
@@ -1730,14 +1711,12 @@ msgid "Use local cursor"
 msgstr "Erabili kurtsore lokala"
 
 #: plugins/xdmcp/xdmcp_plugin.c:372
-#, fuzzy
 msgid "Disconnect after first session"
-msgstr "Deskonektatu saio baten ostean"
+msgstr "Deskonektatu lehen saioaren ostean"
 
 #: plugins/xdmcp/xdmcp_plugin.c:373
-#, fuzzy
 msgid "Listen for TCP connections"
-msgstr "Konexio berria"
+msgstr ""
 
 #: plugins/xdmcp/xdmcp_plugin.c:391
 msgid "XDMCP - X Remote Session"
@@ -1756,9 +1735,8 @@ msgid "Detached window"
 msgstr ""
 
 #: plugins/st/st_plugin_config.h:43
-#, fuzzy
 msgid "Remmina simple terminal"
-msgstr "Remmina Appleta"
+msgstr "Remmina terminal sinplea"
 
 #: plugins/rdp/rdp_plugin.c:578
 msgid "Enter RDP authentication credentials"
@@ -1769,32 +1747,32 @@ msgid "Enter RDP gateway authentication credentials"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1496
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account locked out."
-msgstr "%s komandoa ez da aurkitu SSH zerbitzarian"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1503
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account expired."
-msgstr "%s komandoa ez da aurkitu SSH zerbitzarian"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1510
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Password expired."
-msgstr "%s komandoa ez da aurkitu SSH zerbitzarian"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1517
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account disabled."
-msgstr "%s komandoa ez da aurkitu SSH zerbitzarian"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1523
 #, c-format
@@ -1804,11 +1782,11 @@ msgid ""
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1531
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not access the RDP server \"%s\".\n"
 "Account restricted."
-msgstr "%s komandoa ez da aurkitu SSH zerbitzarian"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1539
 #, c-format
@@ -1818,14 +1796,14 @@ msgid ""
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1544
-#, fuzzy, c-format
+#, c-format
 msgid "Lost connection to the RDP server \"%s\"."
-msgstr "Ezin izan da %s RDP zerbitzarira konektatu"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1547
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the address for the RDP server \"%s\"."
-msgstr "%s komandoa ez da aurkitu SSH zerbitzarian"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1551
 #, c-format
@@ -1835,14 +1813,14 @@ msgid ""
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1554
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to establish a connection to the RDP server \"%s\"."
-msgstr "Ezin izan da %s RDP zerbitzarira konektatu"
+msgstr "Ezin izan da \"%s\" RDP zerbitzarira konexioa ezarri."
 
 #: plugins/rdp/rdp_plugin.c:1562
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the RDP server \"%s\"."
-msgstr "Ezin izan da %s RDP zerbitzarira konektatu"
+msgstr "Ezin izan da \"%s\" RDP zerbitzarira konektatu."
 
 #: plugins/rdp/rdp_plugin.c:1565
 msgid "Could not start libfreerdp-gdi."
@@ -1868,9 +1846,9 @@ msgid ""
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:1590
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot connect to the \"%s\" RDP server."
-msgstr "Ezin izan da %s RDP zerbitzarira konektatu"
+msgstr "Ezin izan da \"%s\" RDP zerbitzarira konektatu."
 
 #: plugins/rdp/rdp_plugin.c:1907
 msgid "GFX AVC444 (32 bpp)"
@@ -1889,27 +1867,22 @@ msgid "RemoteFX (32 bpp)"
 msgstr "RemoteFX (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1911
-#, fuzzy
 msgid "True colour (32 bpp)"
 msgstr "Benetako kolorea (32 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1912
-#, fuzzy
 msgid "True colour (24 bpp)"
 msgstr "Benetako kolorea (24 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1913
-#, fuzzy
 msgid "High colour (16 bpp)"
 msgstr "Kolore altua (16 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1914
-#, fuzzy
 msgid "High colour (15 bpp)"
 msgstr "Kolore altua (15 bpp)"
 
 #: plugins/rdp/rdp_plugin.c:1915
-#, fuzzy
 msgid "256 colours (8 bpp)"
 msgstr "256 kolore (8 bpp)"
 
@@ -1961,33 +1934,28 @@ msgid "Gateway transport type"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2005
-#, fuzzy
 msgid "Remote Desktop Gateway server"
-msgstr "Urruneko mahaigainaren hobespenak"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2006
-#, fuzzy
 msgid "Remote Desktop Gateway username"
-msgstr "Urruneko mahaigainaren hobespenak"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2007
-#, fuzzy
 msgid "Remote Desktop Gateway password"
-msgstr "Urruneko mahaigainaren hobespenak"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2008
-#, fuzzy
 msgid "Remote Desktop Gateway domain"
-msgstr "Urruneko mahaigainaren hobespenak"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2009
 msgid "Client name"
 msgstr "Bezeroaren izena"
 
 #: plugins/rdp/rdp_plugin.c:2010
-#, fuzzy
 msgid "Client build"
-msgstr "Bezeroaren izena"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2013
 msgid "Load balance info"
@@ -2060,7 +2028,6 @@ msgid "Redirect local microphone"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2027
-#, fuzzy
 msgid "Turn off clipboard sync"
 msgstr "Desgaitu arbelaren sinkronizazioa"
 
@@ -2077,9 +2044,8 @@ msgid "It disables CAL and hwId is set to 0"
 msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2030
-#, fuzzy
 msgid "Turn off password storing"
-msgstr "%s pasahitza"
+msgstr ""
 
 #: plugins/rdp/rdp_plugin.c:2031
 msgid "Attach to console (2003/2003 R2)"
@@ -2197,15 +2163,14 @@ msgstr ""
 msgid "Desktop orientation"
 msgstr ""
 
-#: plugins/rdp/rdp_event.c:302
-#, fuzzy, c-format
+#: plugins/rdp/rdp_event.c:299
+#, c-format
 msgid "Reconnection attempt %d of %d…"
-msgstr "'%s'(r)ekin konektatzen…"
+msgstr ""
 
 #: plugins/nx/nx_session_manager.c:98
-#, fuzzy
 msgid "Terminating…"
-msgstr "Amaitzen"
+msgstr "Amaitzen…"
 
 #: plugins/nx/nx_session_manager.c:143
 #, c-format
@@ -2249,12 +2214,11 @@ msgid "NX - NX Technology"
 msgstr "NX - NX Teknologia"
 
 #: plugins/kwallet/src/kwallet_plugin_main.c:118
-#, fuzzy
 msgid "Secure passwords storage in KWallet"
-msgstr "%s pasahitza"
+msgstr ""
 
 #: plugins/telepathy/telepathy_channel_handler.c:237
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s wants to share their desktop.\n"
 "Do you accept?"
@@ -2292,9 +2256,8 @@ msgid "Website"
 msgstr ""
 
 #: data/ui/remmina_main.glade:74
-#, fuzzy
 msgid "New connection profile"
-msgstr "VNC konexioak huts egin du: %s"
+msgstr ""
 
 #: data/ui/remmina_main.glade:86
 msgid "Show search bar"
@@ -2449,9 +2412,8 @@ msgid "Confirm password"
 msgstr ""
 
 #: data/ui/remmina_mpc.glade:294
-#, fuzzy
 msgid "Set new password"
-msgstr "Gorde pasahitza"
+msgstr ""
 
 #. A column table with multiple check-boxes
 #: data/ui/remmina_mpc.glade:331
@@ -2460,13 +2422,11 @@ msgid "Select"
 msgstr ""
 
 #: data/ui/remmina_mpc.glade:343
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Name"
 msgstr "Izena"
 
 #: data/ui/remmina_mpc.glade:354
-#, fuzzy
 msgctxt "Multi password changer table"
 msgid "Group"
 msgstr "Taldea"
@@ -2493,9 +2453,8 @@ msgid "Edit settings"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:130
-#, fuzzy
 msgid "Scaling quality"
-msgstr "Lokala - kalitate altua"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:144
 msgid "Nearest"
@@ -2522,18 +2481,16 @@ msgid "Maximal amount of recent items"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:280
-#, fuzzy
 msgid "Screenshot folder"
-msgstr "Partekatu karpeta"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:292
 msgid "Choose a folder to save screenshots from Remmina in."
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:295
-#, fuzzy
 msgid "Select a folder"
-msgstr "Partekatu karpeta"
+msgstr "Hautatu karpeta"
 
 #: data/ui/remmina_preferences.glade:305
 msgid "Screen resolutions"
@@ -2714,7 +2671,6 @@ msgid "Host key"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:870
-#, fuzzy
 msgid "Show/hide fullscreen"
 msgstr "Txandakatu pantaila osoko modua"
 
@@ -2808,9 +2764,8 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1450
 #: data/ui/remmina_preferences.glade:1466
-#, fuzzy
 msgid "Use secret key authentication for some widgets"
-msgstr "SSHko gako publikoaren autentifikazioak huts egin du: %s"
+msgstr ""
 
 #: data/ui/remmina_preferences.glade:1472
 msgid "Use master password"
@@ -2829,9 +2784,8 @@ msgid "File encryption"
 msgstr ""
 
 #: data/ui/remmina_preferences.glade:1546
-#, fuzzy
 msgid "Repeat the password"
-msgstr "Gorde pasahitza"
+msgstr "Errepikatu pasahitza"
 
 #: data/ui/remmina_preferences.glade:1623
 msgid "Terminal font"
@@ -2871,9 +2825,8 @@ msgstr ""
 
 #: data/ui/remmina_preferences.glade:1836
 #: data/ui/remmina_preferences.glade:1905
-#, fuzzy
 msgid "Cursor colour"
-msgstr "Kurtsorearen itzala"
+msgstr "Kurtsorearen kolorea"
 
 #: data/ui/remmina_preferences.glade:1849
 msgid "Normal colours"
